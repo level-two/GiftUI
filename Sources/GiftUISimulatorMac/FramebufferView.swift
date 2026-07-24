@@ -1,15 +1,24 @@
 import AppKit
 import CoreGraphics
+import GiftUI
 
 @MainActor
 final class FramebufferView: NSView {
+    let scale: Int
+    var onInput: ((InputEvent) -> Void)?
+
     var frameImage: CGImage? {
         didSet {
             needsDisplay = true
         }
     }
 
-    init(frame: NSRect, frameImage: CGImage?) {
+    init(
+        frame: NSRect,
+        frameImage: CGImage?,
+        scale: Int
+    ) {
+        self.scale = scale
         self.frameImage = frameImage
         super.init(frame: frame)
     }
@@ -21,6 +30,22 @@ final class FramebufferView: NSView {
 
     override var isFlipped: Bool {
         true
+    }
+
+    override var acceptsFirstResponder: Bool {
+        true
+    }
+
+    override func mouseDown(with event: NSEvent) {
+        onInput?(.pointerDown(logicalPoint(from: event)))
+    }
+
+    override func mouseDragged(with event: NSEvent) {
+        onInput?(.pointerMove(logicalPoint(from: event)))
+    }
+
+    override func mouseUp(with event: NSEvent) {
+        onInput?(.pointerUp(logicalPoint(from: event)))
     }
 
     override func draw(_ dirtyRect: NSRect) {
@@ -36,5 +61,13 @@ final class FramebufferView: NSView {
 
         context.interpolationQuality = .none
         context.draw(frameImage, in: bounds)
+    }
+
+    private func logicalPoint(from event: NSEvent) -> Point {
+        MouseInputAdapter.logicalPoint(
+            from: event,
+            in: self,
+            scale: scale
+        )
     }
 }

@@ -34,6 +34,14 @@ func applicationRendersAndDispatchesThermostatButtons() {
     #expect(application.renderIfNeeded(into: &backend))
     #expect(backend.texts.map(\.0) == ["Target", "21°", "-", "+"])
     #expect(application.hitRegions.count == 2)
+    #expect(application.hitRegions[0].bounds == Rect(
+        origin: Point(x: 92, y: 128),
+        size: Size(width: 24, height: 24)
+    ))
+    #expect(application.hitRegions[1].bounds == Rect(
+        origin: Point(x: 124, y: 128),
+        size: Size(width: 24, height: 24)
+    ))
     #expect(!application.runtime.isInvalid)
 
     let increment = application.hitRegions[1].bounds
@@ -106,6 +114,30 @@ func draggingOutsideButtonCancelsAction() {
     #expect(activations == 0)
 }
 
+@Test
+func thermostatFramebufferHasDeterministicInitialSnapshot() {
+    struct Thermostat: View {
+        var body: some View {
+            VStack(spacing: 8) {
+                Text("Target")
+                Text("21°")
+                HStack(spacing: 8) {
+                    Button("-") {}
+                    Button("+") {}
+                }
+            }
+        }
+    }
+
+    var backend = FramebufferBackend(
+        surface: MemoryFramebufferSurface(width: 240, height: 240)
+    )
+    let application = GiftUIApplication(root: Thermostat())
+    application.renderIfNeeded(into: &backend)
+
+    #expect(framebufferHash(backend.surface) == 5_328_133_023_529_522_418)
+}
+
 private struct RecordingBackend: RenderBackend {
     let surfaceSize: Size
     var texts: [(String, Point)] = []
@@ -121,4 +153,17 @@ private struct RecordingBackend: RenderBackend {
 
     mutating func endFrame() {}
     mutating func present() {}
+}
+
+private func framebufferHash(
+    _ surface: MemoryFramebufferSurface
+) -> UInt64 {
+    surface.withUnsafeBytes { bytes in
+        var hash: UInt64 = 14_695_981_039_346_656_037
+        for byte in bytes {
+            hash ^= UInt64(byte)
+            hash &*= 1_099_511_628_211
+        }
+        return hash
+    }
 }

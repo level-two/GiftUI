@@ -1,6 +1,7 @@
 import AppKit
 import GiftUI
 import GiftUIBackendFramebuffer
+import GiftUIRuntimeDynamic
 
 @MainActor
 public final class GiftUISimulator<Root: View> {
@@ -8,6 +9,9 @@ public final class GiftUISimulator<Root: View> {
     private let logicalSize: Size
     private let scale: Int
     private var window: SimulatorWindow?
+    private var framebufferView: FramebufferView?
+    private var backend: FramebufferBackend?
+    private var application: GiftUIApplication<Root>?
 
     public init(
         root: Root,
@@ -30,7 +34,8 @@ public final class GiftUISimulator<Root: View> {
                 height: logicalSize.height
             )
         )
-        drawScaffoldFrame(into: &backend)
+        let giftUIApplication = GiftUIApplication(root: root)
+        giftUIApplication.renderIfNeeded(into: &backend)
 
         let window = SimulatorWindow(
             logicalSize: logicalSize,
@@ -42,46 +47,40 @@ public final class GiftUISimulator<Root: View> {
             width: logicalSize.width * scale,
             height: logicalSize.height * scale
         )
-        window.contentView = FramebufferView(
+        let framebufferView = FramebufferView(
             frame: contentFrame,
-            frameImage: FramePresenter.makeImage(from: backend.surface)
+            frameImage: FramePresenter.makeImage(from: backend.surface),
+            scale: scale
         )
+        framebufferView.onInput = { [weak self] event in
+            self?.send(event)
+        }
+        window.contentView = framebufferView
+        window.makeFirstResponder(framebufferView)
         window.makeKeyAndOrderFront(nil)
         self.window = window
+        self.framebufferView = framebufferView
+        self.backend = backend
+        self.application = giftUIApplication
 
         application.activate(ignoringOtherApps: true)
         application.run()
     }
 
-    private func drawScaffoldFrame(
-        into backend: inout FramebufferBackend
-    ) {
-        _ = root
-        backend.beginFrame()
-        backend.clear(Color(red: 24, green: 26, blue: 32))
-        backend.stroke(
-            Rect(
-                origin: Point(x: 48, y: 56),
-                size: Size(width: 144, height: 128)
-            ),
-            color: Color(red: 116, green: 130, blue: 160),
-            lineWidth: 2
-        )
-        backend.fill(
-            Rect(
-                origin: Point(x: 72, y: 132),
-                size: Size(width: 40, height: 28)
-            ),
-            color: Color(red: 62, green: 68, blue: 82)
-        )
-        backend.fill(
-            Rect(
-                origin: Point(x: 128, y: 132),
-                size: Size(width: 40, height: 28)
-            ),
-            color: Color(red: 62, green: 68, blue: 82)
-        )
-        backend.endFrame()
-        backend.present()
+    private func send(_ event: InputEvent) {
+        guard
+            let application,
+            var backend
+        else {
+            return
+        }
+
+        application.send(event)
+        if application.renderIfNeeded(into: &backend) {
+            self.backend = backend
+            framebufferView?.frameImage = FramePresenter.makeImage(
+                from: backend.surface
+            )
+        }
     }
 }

@@ -29,6 +29,7 @@ let package = Package(
             dependencies: [
                 "GiftUI",
                 "GiftUIBackendFramebuffer",
+                "GiftUIRuntimeDynamic",
             ],
             linkerSettings: [
                 .linkedFramework("AppKit"),

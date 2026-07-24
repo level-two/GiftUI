@@ -3,11 +3,11 @@
 GiftUI is an experimental declarative user-interface framework for embedded
 systems, inspired by SwiftUI's source-level model.
 
-This repository currently contains the macOS simulator scaffold for PoC A. It
-establishes the distributable SwiftPM package, backend boundaries, in-memory
-RGBA framebuffer, AppKit presentation shell, thermostat example, and initial
-tests. Layout traversal, bitmap-font rendering, external `@State` binding, and
-input dispatch are subsequent PoC milestones.
+This repository contains the operable macOS simulator for PoC A. It includes
+generic view expansion, deterministic stack layout, runtime-owned `@State`,
+full-root invalidation, button hit testing, an in-memory RGBA framebuffer, a
+compiled bitmap font, AppKit presentation, and the interactive thermostat
+example.
 
 ## Requirements
 
@@ -35,10 +35,10 @@ Run the simulator demo:
 swift run GiftUIExampleThermostat
 ```
 
-The current demo opens a 720×720 point window that presents a 240×240 logical
-RGBA framebuffer at 3× scale with nearest-neighbor interpolation. The visible
-frame is a simulator scaffold; thermostat text, layout, state-driven redraw,
-and button interaction will be implemented in later milestones.
+The demo opens a 720×720 point window that presents a 240×240 logical RGBA
+framebuffer at 3× scale with nearest-neighbor interpolation. Click `-` and `+`
+to update the runtime-owned target temperature and redraw the complete view
+graph.
 
 ## Debug in Xcode
 
@@ -72,5 +72,14 @@ Tests/
 Application view declarations import only `GiftUI`. AppKit and CoreGraphics
 are isolated to `GiftUISimulatorMac`.
 
-The implementation specification is in
+The implementation specifications are in
+[`docs/GiftUI_Framework_Spec.md`](docs/GiftUI_Framework_Spec.md) and
 [`docs/GiftUI_PoC_A_macOS_Simulator_Spec.md`](docs/GiftUI_PoC_A_macOS_Simulator_Spec.md).
+
+## PoC runtime constraints
+
+The dynamic runtime intentionally uses heap-backed arrays and dictionaries,
+escaping button closures, `String`, task-local build context, a full RGBA
+framebuffer, and full-root redraws. Those choices are isolated to replaceable
+runtime/backend modules; the client-facing view declarations remain independent
+of AppKit and framebuffer types.
