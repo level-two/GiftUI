@@ -60,7 +60,11 @@ final class FramebufferView: NSView {
         }
 
         context.interpolationQuality = .none
+        context.saveGState()
+        context.translateBy(x: 0, y: bounds.height)
+        context.scaleBy(x: 1, y: -1)
         context.draw(frameImage, in: bounds)
+        context.restoreGState()
     }
 
     private func logicalPoint(from event: NSEvent) -> Point {
