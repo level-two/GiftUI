@@ -192,7 +192,22 @@ public final class ViewNode {
         }
     }
 
-    package func collectActions(
+    package func makeInteractionSnapshot() -> InteractionSnapshot {
+        var nextID = 0
+        var hitRegions: [HitRegion] = []
+        var actions: [ActionID: () -> Void] = [:]
+        collectActions(
+            nextID: &nextID,
+            hitRegions: &hitRegions,
+            actions: &actions
+        )
+        return InteractionSnapshot(
+            hitTestMap: HitTestMap(regions: hitRegions),
+            actions: actions
+        )
+    }
+
+    private func collectActions(
         nextID: inout Int,
         hitRegions: inout [HitRegion],
         actions: inout [ActionID: () -> Void]

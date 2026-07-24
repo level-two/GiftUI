@@ -2,11 +2,13 @@ import GiftUI
 
 public final class GiftUIApplication<Root: View> {
     public let runtime: DynamicRuntime
-    public private(set) var hitRegions: [HitRegion] = []
+    public var hitRegions: [HitRegion] {
+        interaction.hitTestMap.regions
+    }
 
     private let root: Root
     private let backgroundColor: Color
-    private var actions: [ActionID: () -> Void] = [:]
+    private var interaction = InteractionSnapshot()
     private var pressedAction: ActionID?
     private var isRendering = false
     private var isDispatching = false
@@ -70,28 +72,20 @@ public final class GiftUIApplication<Root: View> {
             guard
                 let pressedAction,
                 releasedAction == pressedAction,
-                let action = actions[pressedAction]
+                interaction.perform(pressedAction)
             else {
                 return false
             }
-            action()
             return true
         }
     }
 
     private func rebuildActions(from graph: ViewNode) {
         pressedAction = nil
-        hitRegions.removeAll(keepingCapacity: true)
-        actions.removeAll(keepingCapacity: true)
-        var nextID = 0
-        graph.collectActions(
-            nextID: &nextID,
-            hitRegions: &hitRegions,
-            actions: &actions
-        )
+        interaction = graph.makeInteractionSnapshot()
     }
 
     private func action(at point: Point) -> ActionID? {
-        hitRegions.last { $0.bounds.contains(point) }?.action
+        interaction.action(at: point)
     }
 }

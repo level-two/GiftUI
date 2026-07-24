@@ -280,6 +280,43 @@ func boundedRenderStorageReportsCapacityExhaustion() {
     }
 }
 
+@Test
+func hitTestingPrefersTheLastOverlappingRegion() {
+    let bounds = Rect(
+        origin: Point(x: 4, y: 6),
+        size: Size(width: 20, height: 12)
+    )
+    let map = HitTestMap(regions: [
+        HitRegion(bounds: bounds, action: ActionID(rawValue: 0)),
+        HitRegion(bounds: bounds, action: ActionID(rawValue: 1)),
+    ])
+
+    #expect(map.action(at: Point(x: 10, y: 10)) == ActionID(rawValue: 1))
+    #expect(map.action(at: Point(x: 24, y: 10)) == nil)
+}
+
+@Test
+func nestedButtonsBuildAConsistentCoreInteractionSnapshot() {
+    var outerActivations = 0
+    var innerActivations = 0
+    let graph = ViewGraph.layout(
+        Button(action: { outerActivations += 1 }) {
+            Button("Inner") { innerActivations += 1 }
+        },
+        in: Size(width: 80, height: 80)
+    )
+    let snapshot = graph.makeInteractionSnapshot()
+    let point = snapshot.hitTestMap.regions[1].bounds.origin
+
+    let action = snapshot.action(at: point)
+
+    #expect(snapshot.hitTestMap.regions.count == 2)
+    #expect(action == ActionID(rawValue: 1))
+    #expect(action.map(snapshot.perform) == true)
+    #expect(outerActivations == 0)
+    #expect(innerActivations == 1)
+}
+
 private final class RecordingStateStorage: StateStorage {
     var keys: [StateKey] = []
     private var values: [StateKey: Any] = [:]
