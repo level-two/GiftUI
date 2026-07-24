@@ -9,6 +9,13 @@ public struct Button<Label: View>: View, PrimitiveView {
         self.action = action
         self.label = label()
     }
+
+    package func _makePrimitiveNode(
+        context: inout ViewBuildContext
+    ) -> ViewNode {
+        let labelNode = context.makeChild(label, index: 0)
+        return ViewNode(kind: .button(action), children: [labelNode])
+    }
 }
 
 public extension Button where Label == Text {

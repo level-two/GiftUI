@@ -12,7 +12,12 @@ public enum ViewBuilder {
         _ a: A,
         _ b: B
     ) -> TupleView<(A, B)> {
-        TupleView((a, b))
+        TupleView((a, b)) { context in
+            [
+                context.makeChild(a, index: 0),
+                context.makeChild(b, index: 1),
+            ]
+        }
     }
 
     public static func buildBlock<A: View, B: View, C: View>(
@@ -20,7 +25,13 @@ public enum ViewBuilder {
         _ b: B,
         _ c: C
     ) -> TupleView<(A, B, C)> {
-        TupleView((a, b, c))
+        TupleView((a, b, c)) { context in
+            [
+                context.makeChild(a, index: 0),
+                context.makeChild(b, index: 1),
+                context.makeChild(c, index: 2),
+            ]
+        }
     }
 
     public static func buildEither<A: View, B: View>(
