@@ -2,6 +2,7 @@ import GiftUI
 
 public final class DynamicRuntime {
     public private(set) var isInvalid = true
+    package private(set) var invalidationGeneration: UInt = 0
     public lazy var state = DynamicStateStore { [weak self] in
         self?.invalidate()
     }
@@ -9,6 +10,7 @@ public final class DynamicRuntime {
     public init() {}
 
     public func invalidate() {
+        invalidationGeneration &+= 1
         isInvalid = true
     }
 
@@ -16,16 +18,22 @@ public final class DynamicRuntime {
         isInvalid = false
     }
 
+    package func markRendered(ifUnchangedSince generation: UInt) {
+        guard invalidationGeneration == generation else { return }
+        markRendered()
+    }
+
     public func layout<Content: View>(
         _ content: Content,
         in surfaceSize: Size
     ) -> LayoutNode {
+        let generation = invalidationGeneration
         let root = ViewGraph.layout(
             content,
             in: surfaceSize,
             stateStorage: state
         )
-        markRendered()
+        markRendered(ifUnchangedSince: generation)
         return root.layoutNode()
     }
 

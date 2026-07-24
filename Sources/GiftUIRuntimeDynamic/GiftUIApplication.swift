@@ -10,6 +10,7 @@ public final class GiftUIApplication<Root: View> {
     private var pressedAction: ActionID?
     private var isRendering = false
     private var isDispatching = false
+    private var hasRendered = false
 
     public init(
         root: Root,
@@ -31,6 +32,7 @@ public final class GiftUIApplication<Root: View> {
         isRendering = true
         defer { isRendering = false }
 
+        let renderGeneration = runtime.invalidationGeneration
         let graph = runtime.makeViewGraph(root, in: backend.surfaceSize)
         let displayList = graph.makeDisplayList()
         rebuildActions(from: graph)
@@ -40,12 +42,14 @@ public final class GiftUIApplication<Root: View> {
         backend.execute(displayList)
         backend.endFrame()
         backend.present()
-        runtime.markRendered()
+        runtime.markRendered(ifUnchangedSince: renderGeneration)
+        hasRendered = true
         return true
     }
 
     @discardableResult
     public func send(_ event: InputEvent) -> Bool {
+        guard hasRendered else { return false }
         precondition(!isDispatching, "GiftUI input dispatch must not be reentrant")
         isDispatching = true
         defer { isDispatching = false }
@@ -76,6 +80,7 @@ public final class GiftUIApplication<Root: View> {
     }
 
     private func rebuildActions(from graph: ViewNode) {
+        pressedAction = nil
         hitRegions.removeAll(keepingCapacity: true)
         actions.removeAll(keepingCapacity: true)
         var nextID = 0

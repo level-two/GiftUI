@@ -115,6 +115,88 @@ func draggingOutsideButtonCancelsAction() {
 }
 
 @Test
+func inputBeforeInitialRenderIsIgnored() {
+    var activations = 0
+    let application = GiftUIApplication(
+        root: Button("Tap") { activations += 1 }
+    )
+
+    #expect(!application.send(.pointerDown(Point(x: 0, y: 0))))
+    #expect(!application.send(.pointerUp(Point(x: 0, y: 0))))
+    #expect(activations == 0)
+}
+
+@Test
+func multipleStateMutationsCoalesceIntoOneRedraw() {
+    struct Counter: View {
+        @State var count = 0
+
+        var body: some View {
+            VStack {
+                Text("\(count)")
+                Button("+2") {
+                    count += 1
+                    count += 1
+                }
+            }
+        }
+    }
+
+    var backend = RecordingBackend(
+        surfaceSize: Size(width: 80, height: 80)
+    )
+    let application = GiftUIApplication(root: Counter())
+    application.renderIfNeeded(into: &backend)
+
+    let button = application.hitRegions[0].bounds
+    let point = Point(
+        x: button.origin.x + 1,
+        y: button.origin.y + 1
+    )
+    application.send(.pointerDown(point))
+    #expect(application.send(.pointerUp(point)))
+    #expect(application.runtime.isInvalid)
+
+    backend.texts.removeAll()
+    #expect(application.renderIfNeeded(into: &backend))
+    #expect(backend.texts.map(\.0) == ["2", "+2"])
+    #expect(backend.frameCount == 2)
+    #expect(!application.renderIfNeeded(into: &backend))
+    #expect(backend.frameCount == 2)
+}
+
+@Test
+func stateMutationDuringRenderingSchedulesFollowUpFrame() {
+    struct Counter: View {
+        @State var count = 0
+
+        var body: some View {
+            Text("\(count)")
+        }
+
+        func increment() {
+            count += 1
+        }
+    }
+
+    let root = Counter()
+    let application = GiftUIApplication(root: root)
+    var backend = MutatingBackend(
+        surfaceSize: Size(width: 40, height: 40),
+        onFirstText: { root.increment() }
+    )
+
+    #expect(application.renderIfNeeded(into: &backend))
+    #expect(application.runtime.isInvalid)
+    #expect(backend.texts == ["0"])
+
+    backend.texts.removeAll()
+    #expect(application.renderIfNeeded(into: &backend))
+    #expect(backend.texts == ["1"])
+    #expect(!application.runtime.isInvalid)
+}
+
+@Test
 func thermostatFramebufferHasDeterministicInitialSnapshot() {
     struct Thermostat: View {
         var body: some View {
@@ -141,6 +223,27 @@ func thermostatFramebufferHasDeterministicInitialSnapshot() {
 private struct RecordingBackend: RenderBackend {
     let surfaceSize: Size
     var texts: [(String, Point)] = []
+    var frameCount = 0
+
+    mutating func beginFrame() {
+        frameCount += 1
+    }
+    mutating func clear(_ color: Color) {}
+    mutating func fill(_ rect: Rect, color: Color) {}
+    mutating func stroke(_ rect: Rect, color: Color, lineWidth: Int) {}
+
+    mutating func drawText(_ text: TextRun, at origin: Point) {
+        texts.append((text.content, origin))
+    }
+
+    mutating func endFrame() {}
+    mutating func present() {}
+}
+
+private struct MutatingBackend: RenderBackend {
+    let surfaceSize: Size
+    var onFirstText: (() -> Void)?
+    var texts: [String] = []
 
     mutating func beginFrame() {}
     mutating func clear(_ color: Color) {}
@@ -148,7 +251,10 @@ private struct RecordingBackend: RenderBackend {
     mutating func stroke(_ rect: Rect, color: Color, lineWidth: Int) {}
 
     mutating func drawText(_ text: TextRun, at origin: Point) {
-        texts.append((text.content, origin))
+        texts.append(text.content)
+        let action = onFirstText
+        onFirstText = nil
+        action?()
     }
 
     mutating func endFrame() {}

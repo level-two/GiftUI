@@ -5,9 +5,9 @@ systems, inspired by SwiftUI's source-level model.
 
 This repository contains the operable macOS simulator for PoC A. It includes
 generic view expansion, deterministic stack layout, runtime-owned `@State`,
-full-root invalidation, button hit testing, an in-memory RGBA framebuffer, a
-compiled bitmap font, AppKit presentation, and the interactive thermostat
-example.
+full-root invalidation, button hit testing, backend-independent display lists,
+an in-memory RGBA framebuffer, a compiled bitmap font, AppKit presentation,
+and the interactive thermostat example.
 
 ## Requirements
 
@@ -83,3 +83,15 @@ escaping button closures, `String`, task-local build context, a full RGBA
 framebuffer, and full-root redraws. Those choices are isolated to replaceable
 runtime/backend modules; the client-facing view declarations remain independent
 of AppKit and framebuffer types.
+
+## Core implementation status
+
+The PoC Core implements variadic result-builder composition, branch-specific
+structural state identity, proposal-based measure/place layout, render-operation
+display lists, and serialized input dispatch. State writes that occur while a
+frame is being emitted leave the application invalid so the next render
+delivers the update; multiple writes before that render coalesce into one frame.
+
+Structural identity is intentionally topology-based for PoC A. Reordering or
+inserting siblings can therefore move state between paths. Explicit identity
+and reconciliation remain future static/runtime work.

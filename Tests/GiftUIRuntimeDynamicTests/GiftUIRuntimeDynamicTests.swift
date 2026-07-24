@@ -75,3 +75,43 @@ func multipleStatePropertiesUseIndependentStructuralSlots() {
             == 48
     )
 }
+
+@Test
+func separateRootInstancesKeepIndependentState() {
+    struct CounterView: View {
+        @State var count = 0
+
+        var body: some View {
+            Text("\(count)")
+        }
+
+        func increment() {
+            count += 1
+        }
+    }
+
+    let firstRoot = CounterView()
+    let secondRoot = CounterView()
+    let firstRuntime = DynamicRuntime()
+    let secondRuntime = DynamicRuntime()
+
+    _ = firstRuntime.layout(
+        firstRoot,
+        in: Size(width: 40, height: 40)
+    )
+    _ = secondRuntime.layout(
+        secondRoot,
+        in: Size(width: 40, height: 40)
+    )
+    firstRoot.increment()
+
+    #expect(
+        firstRuntime.layout(
+            firstRoot,
+            in: Size(width: 40, height: 40)
+        ).frame.size.width == 8
+    )
+    #expect(firstRoot.count == 1)
+    #expect(!secondRuntime.isInvalid)
+    #expect(secondRoot.count == 0)
+}
