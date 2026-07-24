@@ -87,11 +87,21 @@ of AppKit and framebuffer types.
 ## Core implementation status
 
 The PoC Core implements variadic result-builder composition, branch-specific
-structural state identity, proposal-based measure/place layout, render-operation
-display lists, and serialized input dispatch. State writes that occur while a
-frame is being emitted leave the application invalid so the next render
-delivers the update; multiple writes before that render coalesce into one frame.
+structural state identity, proposal-based measure/place layout, checked layout
+arithmetic, render-operation sinks, frame-consistent interaction snapshots, and
+serialized input dispatch. Dynamic runtimes can retain operations in a
+`DisplayList`; allocation-bounded runtimes can provide a custom
+`RenderOperationSink` and report capacity exhaustion without changing view
+declarations.
+
+Hit testing is resolved by Core against the interaction snapshot built for the
+presented frame. Later, deeper regions win when controls overlap. State writes
+that occur while a frame is being emitted leave the application invalid so the
+next render delivers the update; multiple writes before that render coalesce
+into one frame.
 
 Structural identity is intentionally topology-based for PoC A. Reordering or
 inserting siblings can therefore move state between paths. Explicit identity
-and reconciliation remain future static/runtime work.
+and reconciliation remain future static/runtime work. Fixed state arenas and
+typed, non-closure actions likewise belong to the future static runtime rather
+than the completed dynamic PoC Core.
