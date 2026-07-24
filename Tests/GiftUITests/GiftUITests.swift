@@ -190,6 +190,30 @@ func buttonUsesFixedPaddingAndCentersItsLabel() {
     ))
 }
 
+@Test
+func displayListReplaysBackendIndependentOperationsInOrder() {
+    let fillRect = Rect(
+        origin: Point(x: 1, y: 2),
+        size: Size(width: 3, height: 4)
+    )
+    let strokeRect = Rect(
+        origin: Point(x: 5, y: 6),
+        size: Size(width: 7, height: 8)
+    )
+    let text = TextRun("GiftUI", color: .white)
+    let textOrigin = Point(x: 9, y: 10)
+    let displayList = DisplayList(operations: [
+        .fillRect(fillRect, .black),
+        .strokeRect(strokeRect, .white, lineWidth: 2),
+        .text(text, at: textOrigin),
+    ])
+    var backend = OperationRecordingBackend()
+
+    backend.execute(displayList)
+
+    #expect(backend.operations == displayList.operations)
+}
+
 private final class RecordingStateStorage: StateStorage {
     var keys: [StateKey] = []
     private var values: [StateKey: Any] = [:]
@@ -210,4 +234,33 @@ private final class RecordingStateStorage: StateStorage {
     func write<Value>(_ value: Value, key: StateKey) {
         values[key] = value
     }
+}
+
+private struct OperationRecordingBackend: RenderBackend {
+    let surfaceSize = Size(width: 20, height: 20)
+    var operations: [RenderOperation] = []
+
+    mutating func beginFrame() {}
+    mutating func clear(_ color: Color) {}
+
+    mutating func fill(_ rect: Rect, color: Color) {
+        operations.append(.fillRect(rect, color))
+    }
+
+    mutating func stroke(
+        _ rect: Rect,
+        color: Color,
+        lineWidth: Int
+    ) {
+        operations.append(
+            .strokeRect(rect, color, lineWidth: lineWidth)
+        )
+    }
+
+    mutating func drawText(_ text: TextRun, at origin: Point) {
+        operations.append(.text(text, at: origin))
+    }
+
+    mutating func endFrame() {}
+    mutating func present() {}
 }

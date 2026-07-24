@@ -151,31 +151,41 @@ public final class ViewNode {
         )
     }
 
-    package func render<Backend: RenderBackend>(
-        into backend: inout Backend
-    ) {
+    package func makeDisplayList() -> DisplayList {
+        var displayList = DisplayList()
+        appendRenderOperations(to: &displayList)
+        return displayList
+    }
+
+    private func appendRenderOperations(to displayList: inout DisplayList) {
         switch kind {
         case .group, .vStack, .hStack:
             for child in children {
-                child.render(into: &backend)
+                child.appendRenderOperations(to: &displayList)
             }
         case .text(let content):
-            backend.drawText(
-                TextRun(content, color: .white),
-                at: frame.origin
+            displayList.append(
+                .text(
+                    TextRun(content, color: .white),
+                    at: frame.origin
+                )
             )
         case .button:
-            backend.fill(
-                frame,
-                color: Color(red: 62, green: 68, blue: 82)
+            displayList.append(
+                .fillRect(
+                    frame,
+                    Color(red: 62, green: 68, blue: 82)
+                )
             )
-            backend.stroke(
-                frame,
-                color: Color(red: 116, green: 130, blue: 160),
-                lineWidth: 1
+            displayList.append(
+                .strokeRect(
+                    frame,
+                    Color(red: 116, green: 130, blue: 160),
+                    lineWidth: 1
+                )
             )
             for child in children {
-                child.render(into: &backend)
+                child.appendRenderOperations(to: &displayList)
             }
         }
     }

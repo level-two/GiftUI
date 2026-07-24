@@ -32,11 +32,12 @@ public final class GiftUIApplication<Root: View> {
         defer { isRendering = false }
 
         let graph = runtime.makeViewGraph(root, in: backend.surfaceSize)
+        let displayList = graph.makeDisplayList()
         rebuildActions(from: graph)
 
         backend.beginFrame()
         backend.clear(backgroundColor)
-        graph.render(into: &backend)
+        backend.execute(displayList)
         backend.endFrame()
         backend.present()
         runtime.markRendered()
