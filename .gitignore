@@ -2,6 +2,10 @@
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
+.DS_Store
+DerivedData/
+*.xcresult
+
 ## User settings
 xcuserdata/
 
@@ -30,6 +34,9 @@ playground.xcworkspace
 # .swiftpm
 
 .build/
+.swiftpm/configuration/
+.swiftpm/xcode/package.xcworkspace/xcuserdata/
+.swiftpm/xcode/xcuserdata/
 
 # CocoaPods
 #
