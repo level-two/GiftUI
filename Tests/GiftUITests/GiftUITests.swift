@@ -20,6 +20,78 @@ func builderCreatesTupleContent() {
 }
 
 @Test
+func builderSupportsArbitrarySiblingCounts() {
+    struct FiveSiblings: View {
+        var body: some View {
+            HStack(spacing: 1) {
+                Text("A")
+                Text("B")
+                Text("C")
+                Text("D")
+                Text("E")
+            }
+        }
+    }
+
+    let layout = LayoutEngine.layout(
+        FiveSiblings(),
+        in: Size(width: 80, height: 40)
+    )
+
+    #expect(layout.frame.size == Size(width: 44, height: 12))
+    #expect(layout.children.count == 5)
+}
+
+@Test
+func conditionalBranchesHaveDistinctStructuralPaths() {
+    struct FirstBranch: View {
+        @State var value = 1
+
+        var body: some View {
+            Text("\(value)")
+        }
+    }
+
+    struct SecondBranch: View {
+        @State var value = "B"
+
+        var body: some View {
+            Text(value)
+        }
+    }
+
+    struct ConditionalState: View {
+        let showFirst: Bool
+
+        @ViewBuilder
+        var body: some View {
+            if showFirst {
+                FirstBranch()
+            } else {
+                SecondBranch()
+            }
+        }
+    }
+
+    let storage = RecordingStateStorage()
+    _ = ViewGraph.layout(
+        ConditionalState(showFirst: true),
+        in: Size(width: 40, height: 40),
+        stateStorage: storage
+    )
+    _ = ViewGraph.layout(
+        ConditionalState(showFirst: false),
+        in: Size(width: 40, height: 40),
+        stateStorage: storage
+    )
+
+    #expect(storage.keys.count == 2)
+    #expect(storage.keys[0].path.contains(".first."))
+    #expect(storage.keys[1].path.contains(".second."))
+    #expect(storage.keys[0] != storage.keys[1])
+}
+
+@Test
 func nestedStacksMeasureSpaceAlignAndCenterChildren() {
     struct NestedView: View {
         var body: some View {
@@ -95,4 +167,26 @@ func buttonUsesFixedPaddingAndCentersItsLabel() {
         origin: Point(x: 16, y: 14),
         size: Size(width: 8, height: 12)
     ))
+}
+
+private final class RecordingStateStorage: StateStorage {
+    var keys: [StateKey] = []
+    private var values: [StateKey: Any] = [:]
+
+    func read<Value>(
+        key: StateKey,
+        initialValue: @autoclosure () -> Value
+    ) -> Value {
+        keys.append(key)
+        if let value = values[key] as? Value {
+            return value
+        }
+        let value = initialValue()
+        values[key] = value
+        return value
+    }
+
+    func write<Value>(_ value: Value, key: StateKey) {
+        values[key] = value
+    }
 }

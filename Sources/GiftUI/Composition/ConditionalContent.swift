@@ -16,9 +16,13 @@ public struct ConditionalContent<TrueContent: View, FalseContent: View>: View, P
         let child: ViewNode
         switch storage {
         case .first(let content):
-            child = context.makeChild(content, index: 0)
+            child = context.withPathComponent("first") { context in
+                context.makeChild(content, index: 0)
+            }
         case .second(let content):
-            child = context.makeChild(content, index: 0)
+            child = context.withPathComponent("second") { context in
+                context.makeChild(content, index: 0)
+            }
         }
         return ViewNode(kind: .group, children: [child])
     }

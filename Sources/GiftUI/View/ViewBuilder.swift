@@ -8,29 +8,17 @@ public enum ViewBuilder {
         content
     }
 
-    public static func buildBlock<A: View, B: View>(
-        _ a: A,
-        _ b: B
-    ) -> TupleView<(A, B)> {
-        TupleView((a, b)) { context in
-            [
-                context.makeChild(a, index: 0),
-                context.makeChild(b, index: 1),
-            ]
-        }
-    }
-
-    public static func buildBlock<A: View, B: View, C: View>(
-        _ a: A,
-        _ b: B,
-        _ c: C
-    ) -> TupleView<(A, B, C)> {
-        TupleView((a, b, c)) { context in
-            [
-                context.makeChild(a, index: 0),
-                context.makeChild(b, index: 1),
-                context.makeChild(c, index: 2),
-            ]
+    public static func buildBlock<each Content: View>(
+        _ content: repeat each Content
+    ) -> TupleView<(repeat each Content)> {
+        TupleView((repeat each content)) { context in
+            var children: [ViewNode] = []
+            var index = 0
+            for child in repeat each content {
+                children.append(context.makeChild(child, index: index))
+                index += 1
+            }
+            return children
         }
     }
 
