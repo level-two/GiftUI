@@ -109,6 +109,56 @@ public final class ViewNode {
         )
     }
 
+    package func render<Backend: RenderBackend>(
+        into backend: inout Backend
+    ) {
+        switch kind {
+        case .group, .vStack, .hStack:
+            for child in children {
+                child.render(into: &backend)
+            }
+        case .text(let content):
+            backend.drawText(
+                TextRun(content, color: .white),
+                at: frame.origin
+            )
+        case .button:
+            backend.fill(
+                frame,
+                color: Color(red: 62, green: 68, blue: 82)
+            )
+            backend.stroke(
+                frame,
+                color: Color(red: 116, green: 130, blue: 160),
+                lineWidth: 1
+            )
+            for child in children {
+                child.render(into: &backend)
+            }
+        }
+    }
+
+    package func collectActions(
+        nextID: inout Int,
+        hitRegions: inout [HitRegion],
+        actions: inout [ActionID: () -> Void]
+    ) {
+        if case .button(let action) = kind {
+            let actionID = ActionID(rawValue: nextID)
+            nextID += 1
+            hitRegions.append(HitRegion(bounds: frame, action: actionID))
+            actions[actionID] = action
+        }
+
+        for child in children {
+            child.collectActions(
+                nextID: &nextID,
+                hitRegions: &hitRegions,
+                actions: &actions
+            )
+        }
+    }
+
     private func measureGroup() -> Size {
         var width = 0
         var height = 0

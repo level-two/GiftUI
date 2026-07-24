@@ -8,3 +8,117 @@ func modulesComposeWithoutPlatformDependencies() {
     #expect(GiftUIRuntimeDynamicModule.name.hasPrefix(GiftUIModule.name))
     #expect(GiftUIBackendFramebufferModule.name.hasPrefix(GiftUIModule.name))
 }
+
+@Test
+func applicationRendersAndDispatchesThermostatButtons() {
+    struct Thermostat: View {
+        @State var target = 21
+
+        var body: some View {
+            VStack(spacing: 8) {
+                Text("Target")
+                Text("\(target)°")
+                HStack(spacing: 8) {
+                    Button("-") { target -= 1 }
+                    Button("+") { target += 1 }
+                }
+            }
+        }
+    }
+
+    var backend = RecordingBackend(
+        surfaceSize: Size(width: 240, height: 240)
+    )
+    let application = GiftUIApplication(root: Thermostat())
+
+    #expect(application.renderIfNeeded(into: &backend))
+    #expect(backend.texts.map(\.0) == ["Target", "21°", "-", "+"])
+    #expect(application.hitRegions.count == 2)
+    #expect(!application.runtime.isInvalid)
+
+    let increment = application.hitRegions[1].bounds
+    let point = Point(
+        x: increment.origin.x + increment.size.width / 2,
+        y: increment.origin.y + increment.size.height / 2
+    )
+    #expect(!application.send(.pointerDown(point)))
+    #expect(application.send(.pointerUp(point)))
+    #expect(application.runtime.isInvalid)
+
+    backend.texts.removeAll()
+    #expect(application.renderIfNeeded(into: &backend))
+    #expect(backend.texts.map(\.0) == ["Target", "22°", "-", "+"])
+    #expect(!application.renderIfNeeded(into: &backend))
+}
+
+@Test
+func nestedViewStatePersistsAcrossFullRootRebuilds() {
+    struct NestedCounter: View {
+        @State var count = 0
+
+        var body: some View {
+            VStack(spacing: 2) {
+                Text("\(count)")
+                Button("+") { count += 1 }
+            }
+        }
+    }
+
+    struct Root: View {
+        var body: some View {
+            NestedCounter()
+        }
+    }
+
+    var backend = RecordingBackend(
+        surfaceSize: Size(width: 80, height: 80)
+    )
+    let application = GiftUIApplication(root: Root())
+    application.renderIfNeeded(into: &backend)
+
+    let button = application.hitRegions[0].bounds
+    let point = Point(x: button.origin.x + 1, y: button.origin.y + 1)
+    application.send(.pointerDown(point))
+    #expect(application.send(.pointerUp(point)))
+
+    backend.texts.removeAll()
+    application.renderIfNeeded(into: &backend)
+    #expect(backend.texts.map(\.0) == ["1", "+"])
+}
+
+@Test
+func draggingOutsideButtonCancelsAction() {
+    var activations = 0
+    var backend = RecordingBackend(
+        surfaceSize: Size(width: 80, height: 80)
+    )
+    let application = GiftUIApplication(
+        root: Button("Tap") { activations += 1 }
+    )
+    application.renderIfNeeded(into: &backend)
+
+    let button = application.hitRegions[0].bounds
+    let inside = Point(x: button.origin.x + 1, y: button.origin.y + 1)
+    let outside = Point(x: 0, y: 0)
+    application.send(.pointerDown(inside))
+    application.send(.pointerMove(outside))
+    #expect(!application.send(.pointerUp(inside)))
+    #expect(activations == 0)
+}
+
+private struct RecordingBackend: RenderBackend {
+    let surfaceSize: Size
+    var texts: [(String, Point)] = []
+
+    mutating func beginFrame() {}
+    mutating func clear(_ color: Color) {}
+    mutating func fill(_ rect: Rect, color: Color) {}
+    mutating func stroke(_ rect: Rect, color: Color, lineWidth: Int) {}
+
+    mutating func drawText(_ text: TextRun, at origin: Point) {
+        texts.append((text.content, origin))
+    }
+
+    mutating func endFrame() {}
+    mutating func present() {}
+}
