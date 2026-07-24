@@ -17,8 +17,16 @@ package enum ViewGraph {
         root.place(
             in: Rect(
                 origin: Point(
-                    x: (surfaceSize.width - rootSize.width) / 2,
-                    y: (surfaceSize.height - rootSize.height) / 2
+                    x: LayoutArithmetic.requireSubtract(
+                        surfaceSize.width,
+                        rootSize.width,
+                        operation: "centering root width"
+                    ) / 2,
+                    y: LayoutArithmetic.requireSubtract(
+                        surfaceSize.height,
+                        rootSize.height,
+                        operation: "centering root height"
+                    ) / 2
                 ),
                 size: rootSize
             ),

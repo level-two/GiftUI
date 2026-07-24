@@ -14,6 +14,35 @@ func integerGeometryRetainsValues() {
 }
 
 @Test
+func layoutArithmeticReportsOverflowDeterministically() {
+    #expect(throws: LayoutArithmeticError.overflow) {
+        try LayoutArithmetic.add(Int.max, 1)
+    }
+    #expect(throws: LayoutArithmeticError.overflow) {
+        try LayoutArithmetic.subtract(Int.min, 1)
+    }
+    #expect(throws: LayoutArithmeticError.overflow) {
+        try LayoutArithmetic.multiply(Int.max, 2)
+    }
+}
+
+@Test
+func rectangleContainmentAvoidsCoordinateOverflow() {
+    let nearMaximum = Rect(
+        origin: Point(x: Int.max - 1, y: Int.max - 1),
+        size: Size(width: 1, height: 1)
+    )
+    let extremeSpan = Rect(
+        origin: Point(x: Int.min, y: Int.min),
+        size: Size(width: Int.max, height: Int.max)
+    )
+
+    #expect(nearMaximum.contains(Point(x: Int.max - 1, y: Int.max - 1)))
+    #expect(!nearMaximum.contains(Point(x: Int.max, y: Int.max)))
+    #expect(!extremeSpan.contains(Point(x: Int.max, y: Int.max)))
+}
+
+@Test
 func builderCreatesTupleContent() {
     let content = ViewBuilder.buildBlock(Text("A"), Text("B"))
     #expect(type(of: content) == TupleView<(Text, Text)>.self)

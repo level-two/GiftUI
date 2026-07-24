@@ -44,16 +44,44 @@ public final class ViewNode {
             size = measureGroup(proposal: proposal, context: &context)
         case .text(let content):
             size = Size(
-                width: content.unicodeScalars.count * Self.glyphSize.width,
+                width: LayoutArithmetic.requireMultiply(
+                    content.unicodeScalars.count,
+                    Self.glyphSize.width,
+                    operation: "measuring text"
+                ),
                 height: Self.glyphSize.height
             )
         case .button:
+            let horizontalPadding = LayoutArithmetic.requireMultiply(
+                Self.buttonPadding.width,
+                2,
+                operation: "measuring button horizontal padding"
+            )
+            let verticalPadding = LayoutArithmetic.requireMultiply(
+                Self.buttonPadding.height,
+                2,
+                operation: "measuring button vertical padding"
+            )
             let labelProposal = ProposedSize(
                 width: proposal.width.map {
-                    max(0, $0 - Self.buttonPadding.width * 2)
+                    max(
+                        0,
+                        LayoutArithmetic.requireSubtract(
+                            $0,
+                            horizontalPadding,
+                            operation: "proposing button label width"
+                        )
+                    )
                 },
                 height: proposal.height.map {
-                    max(0, $0 - Self.buttonPadding.height * 2)
+                    max(
+                        0,
+                        LayoutArithmetic.requireSubtract(
+                            $0,
+                            verticalPadding,
+                            operation: "proposing button label height"
+                        )
+                    )
                 }
             )
             let labelSize = children.first?.measure(
@@ -61,8 +89,16 @@ public final class ViewNode {
                 context: &context
             ) ?? Size(width: 0, height: 0)
             size = Size(
-                width: labelSize.width + Self.buttonPadding.width * 2,
-                height: labelSize.height + Self.buttonPadding.height * 2
+                width: LayoutArithmetic.requireAdd(
+                    labelSize.width,
+                    horizontalPadding,
+                    operation: "measuring button width"
+                ),
+                height: LayoutArithmetic.requireAdd(
+                    labelSize.height,
+                    verticalPadding,
+                    operation: "measuring button height"
+                )
             )
         case .vStack(let spacing):
             size = measureVerticalStack(
@@ -102,8 +138,16 @@ public final class ViewNode {
             label.place(
                 in: Rect(
                     origin: Point(
-                        x: bounds.origin.x + Self.buttonPadding.width,
-                        y: bounds.origin.y + Self.buttonPadding.height
+                        x: LayoutArithmetic.requireAdd(
+                            bounds.origin.x,
+                            Self.buttonPadding.width,
+                            operation: "placing button label horizontally"
+                        ),
+                        y: LayoutArithmetic.requireAdd(
+                            bounds.origin.y,
+                            Self.buttonPadding.height,
+                            operation: "placing button label vertically"
+                        )
                     ),
                     size: label.measuredSize
                 ),
@@ -115,15 +159,30 @@ public final class ViewNode {
                 child.place(
                     in: Rect(
                         origin: Point(
-                            x: bounds.origin.x
-                                + (bounds.size.width - child.measuredSize.width) / 2,
+                            x: LayoutArithmetic.requireAdd(
+                                bounds.origin.x,
+                                LayoutArithmetic.requireSubtract(
+                                    bounds.size.width,
+                                    child.measuredSize.width,
+                                    operation: "centering vertical stack child"
+                                ) / 2,
+                                operation: "placing vertical stack child"
+                            ),
                             y: y
                         ),
                         size: child.measuredSize
                     ),
                     context: &context
                 )
-                y += child.measuredSize.height + spacing
+                y = LayoutArithmetic.requireAdd(
+                    y,
+                    LayoutArithmetic.requireAdd(
+                        child.measuredSize.height,
+                        spacing,
+                        operation: "advancing vertical stack spacing"
+                    ),
+                    operation: "advancing vertical stack position"
+                )
             }
         case .hStack(let spacing):
             var x = bounds.origin.x
@@ -132,14 +191,29 @@ public final class ViewNode {
                     in: Rect(
                         origin: Point(
                             x: x,
-                            y: bounds.origin.y
-                                + (bounds.size.height - child.measuredSize.height) / 2
+                            y: LayoutArithmetic.requireAdd(
+                                bounds.origin.y,
+                                LayoutArithmetic.requireSubtract(
+                                    bounds.size.height,
+                                    child.measuredSize.height,
+                                    operation: "centering horizontal stack child"
+                                ) / 2,
+                                operation: "placing horizontal stack child"
+                            )
                         ),
                         size: child.measuredSize
                     ),
                     context: &context
                 )
-                x += child.measuredSize.width + spacing
+                x = LayoutArithmetic.requireAdd(
+                    x,
+                    LayoutArithmetic.requireAdd(
+                        child.measuredSize.width,
+                        spacing,
+                        operation: "advancing horizontal stack spacing"
+                    ),
+                    operation: "advancing horizontal stack position"
+                )
             }
         }
     }
@@ -255,14 +329,22 @@ public final class ViewNode {
         }
 
         var width = 0
-        var height = spacing * (children.count - 1)
+        var height = LayoutArithmetic.requireMultiply(
+            spacing,
+            children.count - 1,
+            operation: "measuring vertical stack spacing"
+        )
         for child in children {
             let childSize = child.measure(
                 proposal: ProposedSize(width: proposal.width),
                 context: &context
             )
             width = max(width, childSize.width)
-            height += childSize.height
+            height = LayoutArithmetic.requireAdd(
+                height,
+                childSize.height,
+                operation: "measuring vertical stack height"
+            )
         }
         return Size(width: width, height: height)
     }
@@ -276,14 +358,22 @@ public final class ViewNode {
             return Size(width: 0, height: 0)
         }
 
-        var width = spacing * (children.count - 1)
+        var width = LayoutArithmetic.requireMultiply(
+            spacing,
+            children.count - 1,
+            operation: "measuring horizontal stack spacing"
+        )
         var height = 0
         for child in children {
             let childSize = child.measure(
                 proposal: ProposedSize(height: proposal.height),
                 context: &context
             )
-            width += childSize.width
+            width = LayoutArithmetic.requireAdd(
+                width,
+                childSize.width,
+                operation: "measuring horizontal stack width"
+            )
             height = max(height, childSize.height)
         }
         return Size(width: width, height: height)

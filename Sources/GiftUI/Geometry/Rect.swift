@@ -8,9 +8,15 @@ public struct Rect: Equatable, Hashable, Sendable {
     }
 
     public func contains(_ point: Point) -> Bool {
-        point.x >= origin.x
-            && point.y >= origin.y
-            && point.x < origin.x + size.width
-            && point.y < origin.y + size.height
+        guard point.x >= origin.x, point.y >= origin.y else {
+            return false
+        }
+        guard
+            let relativeX = try? LayoutArithmetic.subtract(point.x, origin.x),
+            let relativeY = try? LayoutArithmetic.subtract(point.y, origin.y)
+        else {
+            return false
+        }
+        return relativeX < size.width && relativeY < size.height
     }
 }
