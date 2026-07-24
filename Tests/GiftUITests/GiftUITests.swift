@@ -214,6 +214,72 @@ func displayListReplaysBackendIndependentOperationsInOrder() {
     #expect(backend.operations == displayList.operations)
 }
 
+@Test
+func viewGraphCanEmitIntoBoundedRenderStorage() throws {
+    enum CapacityError: Error {
+        case exhausted
+    }
+
+    struct BoundedSink: RenderOperationSink {
+        typealias Failure = CapacityError
+
+        let capacity: Int
+        var operations: [RenderOperation] = []
+
+        mutating func append(
+            _ operation: RenderOperation
+        ) throws(CapacityError) {
+            guard operations.count < capacity else {
+                throw CapacityError.exhausted
+            }
+            operations.append(operation)
+        }
+    }
+
+    let graph = ViewGraph.layout(
+        Button("+") {},
+        in: Size(width: 40, height: 40)
+    )
+    var sink = BoundedSink(capacity: 3)
+
+    try graph.appendRenderOperations(to: &sink)
+
+    #expect(sink.operations == graph.makeDisplayList().operations)
+}
+
+@Test
+func boundedRenderStorageReportsCapacityExhaustion() {
+    enum CapacityError: Error {
+        case exhausted
+    }
+
+    struct BoundedSink: RenderOperationSink {
+        typealias Failure = CapacityError
+
+        let capacity: Int
+        var count = 0
+
+        mutating func append(
+            _ operation: RenderOperation
+        ) throws(CapacityError) {
+            guard count < capacity else {
+                throw CapacityError.exhausted
+            }
+            count += 1
+        }
+    }
+
+    let graph = ViewGraph.layout(
+        Button("+") {},
+        in: Size(width: 40, height: 40)
+    )
+    var sink = BoundedSink(capacity: 2)
+
+    #expect(throws: CapacityError.exhausted) {
+        try graph.appendRenderOperations(to: &sink)
+    }
+}
+
 private final class RecordingStateStorage: StateStorage {
     var keys: [StateKey] = []
     private var values: [StateKey: Any] = [:]

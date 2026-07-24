@@ -1,4 +1,4 @@
-public struct DisplayList: Equatable, Sendable {
+public struct DisplayList: Equatable, Sendable, RenderOperationSink {
     public private(set) var operations: [RenderOperation]
 
     public init(operations: [RenderOperation] = []) {

@@ -157,27 +157,29 @@ public final class ViewNode {
         return displayList
     }
 
-    private func appendRenderOperations(to displayList: inout DisplayList) {
+    package func appendRenderOperations<Sink: RenderOperationSink>(
+        to sink: inout Sink
+    ) throws(Sink.Failure) {
         switch kind {
         case .group, .vStack, .hStack:
             for child in children {
-                child.appendRenderOperations(to: &displayList)
+                try child.appendRenderOperations(to: &sink)
             }
         case .text(let content):
-            displayList.append(
+            try sink.append(
                 .text(
                     TextRun(content, color: .white),
                     at: frame.origin
                 )
             )
         case .button:
-            displayList.append(
+            try sink.append(
                 .fillRect(
                     frame,
                     Color(red: 62, green: 68, blue: 82)
                 )
             )
-            displayList.append(
+            try sink.append(
                 .strokeRect(
                     frame,
                     Color(red: 116, green: 130, blue: 160),
@@ -185,7 +187,7 @@ public final class ViewNode {
                 )
             )
             for child in children {
-                child.appendRenderOperations(to: &displayList)
+                try child.appendRenderOperations(to: &sink)
             }
         }
     }
