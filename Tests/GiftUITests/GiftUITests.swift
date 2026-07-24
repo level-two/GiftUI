@@ -122,6 +122,27 @@ func nestedStacksMeasureSpaceAlignAndCenterChildren() {
 }
 
 @Test
+func intrinsicContentIsDeterministicallyCenteredInConstrainedSurfaces() {
+    let constrained = LayoutEngine.layout(
+        Text("AB"),
+        in: Size(width: 8, height: 6)
+    )
+    let zero = LayoutEngine.layout(
+        Text("A"),
+        in: Size(width: 0, height: 0)
+    )
+
+    #expect(constrained.frame == Rect(
+        origin: Point(x: -4, y: -3),
+        size: Size(width: 16, height: 12)
+    ))
+    #expect(zero.frame == Rect(
+        origin: Point(x: -4, y: -6),
+        size: Size(width: 8, height: 12)
+    ))
+}
+
+@Test
 func conditionalAndOptionalContentExpandWithoutRegistration() {
     struct ConditionalView: View {
         let showDetail: Bool

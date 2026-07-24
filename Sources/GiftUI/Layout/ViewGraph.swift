@@ -6,12 +6,23 @@ package enum ViewGraph {
     ) -> ViewNode {
         var context = ViewBuildContext(stateStorage: stateStorage)
         let root = content._makeNode(context: &context)
-        let rootSize = root.measure()
+        var layoutContext = LayoutContext()
+        let rootSize = root.measure(
+            proposal: ProposedSize(
+                width: surfaceSize.width,
+                height: surfaceSize.height
+            ),
+            context: &layoutContext
+        )
         root.place(
-            at: Point(
-                x: (surfaceSize.width - rootSize.width) / 2,
-                y: (surfaceSize.height - rootSize.height) / 2
-            )
+            in: Rect(
+                origin: Point(
+                    x: (surfaceSize.width - rootSize.width) / 2,
+                    y: (surfaceSize.height - rootSize.height) / 2
+                ),
+                size: rootSize
+            ),
+            context: &layoutContext
         )
         return root
     }

@@ -34,68 +34,110 @@ public final class ViewNode {
     }
 
     @discardableResult
-    package func measure() -> Size {
+    package func measure(
+        proposal: ProposedSize,
+        context: inout LayoutContext
+    ) -> Size {
         let size: Size
         switch kind {
         case .group:
-            size = measureGroup()
+            size = measureGroup(proposal: proposal, context: &context)
         case .text(let content):
             size = Size(
                 width: content.unicodeScalars.count * Self.glyphSize.width,
                 height: Self.glyphSize.height
             )
         case .button:
-            let labelSize = children.first?.measure() ?? Size(width: 0, height: 0)
+            let labelProposal = ProposedSize(
+                width: proposal.width.map {
+                    max(0, $0 - Self.buttonPadding.width * 2)
+                },
+                height: proposal.height.map {
+                    max(0, $0 - Self.buttonPadding.height * 2)
+                }
+            )
+            let labelSize = children.first?.measure(
+                proposal: labelProposal,
+                context: &context
+            ) ?? Size(width: 0, height: 0)
             size = Size(
                 width: labelSize.width + Self.buttonPadding.width * 2,
                 height: labelSize.height + Self.buttonPadding.height * 2
             )
         case .vStack(let spacing):
-            size = measureVerticalStack(spacing: spacing)
+            size = measureVerticalStack(
+                spacing: spacing,
+                proposal: proposal,
+                context: &context
+            )
         case .hStack(let spacing):
-            size = measureHorizontalStack(spacing: spacing)
+            size = measureHorizontalStack(
+                spacing: spacing,
+                proposal: proposal,
+                context: &context
+            )
         }
         measuredSize = size
         return size
     }
 
-    package func place(at origin: Point) {
-        frame = Rect(origin: origin, size: measuredSize)
+    package func place(
+        in bounds: Rect,
+        context: inout LayoutContext
+    ) {
+        frame = bounds
 
         switch kind {
         case .group:
             for child in children {
-                child.place(at: origin)
+                child.place(
+                    in: Rect(origin: bounds.origin, size: child.measuredSize),
+                    context: &context
+                )
             }
         case .text:
             break
         case .button:
             guard let label = children.first else { return }
             label.place(
-                at: Point(
-                    x: origin.x + Self.buttonPadding.width,
-                    y: origin.y + Self.buttonPadding.height
-                )
+                in: Rect(
+                    origin: Point(
+                        x: bounds.origin.x + Self.buttonPadding.width,
+                        y: bounds.origin.y + Self.buttonPadding.height
+                    ),
+                    size: label.measuredSize
+                ),
+                context: &context
             )
         case .vStack(let spacing):
-            var y = origin.y
+            var y = bounds.origin.y
             for child in children {
                 child.place(
-                    at: Point(
-                        x: origin.x + (measuredSize.width - child.measuredSize.width) / 2,
-                        y: y
-                    )
+                    in: Rect(
+                        origin: Point(
+                            x: bounds.origin.x
+                                + (bounds.size.width - child.measuredSize.width) / 2,
+                            y: y
+                        ),
+                        size: child.measuredSize
+                    ),
+                    context: &context
                 )
                 y += child.measuredSize.height + spacing
             }
         case .hStack(let spacing):
-            var x = origin.x
+            var x = bounds.origin.x
             for child in children {
                 child.place(
-                    at: Point(
-                        x: x,
-                        y: origin.y + (measuredSize.height - child.measuredSize.height) / 2
-                    )
+                    in: Rect(
+                        origin: Point(
+                            x: x,
+                            y: bounds.origin.y
+                                + (bounds.size.height - child.measuredSize.height) / 2
+                        ),
+                        size: child.measuredSize
+                    ),
+                    context: &context
                 )
                 x += child.measuredSize.width + spacing
             }
@@ -159,18 +201,28 @@ public final class ViewNode {
         }
     }
 
-    private func measureGroup() -> Size {
+    private func measureGroup(
+        proposal: ProposedSize,
+        context: inout LayoutContext
+    ) -> Size {
         var width = 0
         var height = 0
         for child in children {
-            let childSize = child.measure()
+            let childSize = child.measure(
+                proposal: proposal,
+                context: &context
+            )
             width = max(width, childSize.width)
             height = max(height, childSize.height)
         }
         return Size(width: width, height: height)
     }
 
-    private func measureVerticalStack(spacing: Int) -> Size {
+    private func measureVerticalStack(
+        spacing: Int,
+        proposal: ProposedSize,
+        context: inout LayoutContext
+    ) -> Size {
         guard !children.isEmpty else {
             return Size(width: 0, height: 0)
         }
@@ -178,14 +230,21 @@ public final class ViewNode {
         var width = 0
         var height = spacing * (children.count - 1)
         for child in children {
-            let childSize = child.measure()
+            let childSize = child.measure(
+                proposal: ProposedSize(width: proposal.width),
+                context: &context
+            )
             width = max(width, childSize.width)
             height += childSize.height
         }
         return Size(width: width, height: height)
     }
 
-    private func measureHorizontalStack(spacing: Int) -> Size {
+    private func measureHorizontalStack(
+        spacing: Int,
+        proposal: ProposedSize,
+        context: inout LayoutContext
+    ) -> Size {
         guard !children.isEmpty else {
             return Size(width: 0, height: 0)
         }
@@ -193,7 +252,10 @@ public final class ViewNode {
         var width = spacing * (children.count - 1)
         var height = 0
         for child in children {
-            let childSize = child.measure()
+            let childSize = child.measure(
+                proposal: ProposedSize(height: proposal.height),
+                context: &context
+            )
             width += childSize.width
             height = max(height, childSize.height)
         }
