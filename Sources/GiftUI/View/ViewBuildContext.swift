@@ -1,8 +1,13 @@
 public struct ViewBuildContext {
     package private(set) var path: String
+    package let stateStorage: (any StateStorage)?
 
-    package init(path: String = "root") {
+    package init(
+        path: String = "root",
+        stateStorage: (any StateStorage)? = nil
+    ) {
         self.path = path
+        self.stateStorage = stateStorage
     }
 
     package mutating func makeChild<Content: View>(
@@ -22,5 +27,18 @@ public struct ViewBuildContext {
         path += ".\(component)"
         defer { path = previousPath }
         return perform(&self)
+    }
+
+    package func evaluateBody<Result>(
+        _ body: () -> Result
+    ) -> Result {
+        guard let stateStorage else {
+            return body()
+        }
+        return StateBindingContext.with(
+            storage: stateStorage,
+            path: path,
+            perform: body
+        )
     }
 }

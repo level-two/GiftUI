@@ -15,3 +15,63 @@ func statePersistsAndInvalidates() {
     #expect(runtime.state.read(key: key, initialValue: 0) == 22)
     #expect(runtime.isInvalid)
 }
+
+@Test
+func stateWrapperBindsToRuntimeStorageAndSurvivesReevaluation() {
+    struct CounterView: View {
+        @State var count = 1
+
+        var body: some View {
+            Text(String(repeating: "X", count: count))
+        }
+
+        func increment() {
+            count += 1
+        }
+    }
+
+    let runtime = DynamicRuntime()
+    let root = CounterView()
+
+    let initial = runtime.layout(root, in: Size(width: 80, height: 40))
+    #expect(initial.frame.size == Size(width: 8, height: 12))
+    #expect(!runtime.isInvalid)
+
+    root.increment()
+    #expect(runtime.isInvalid)
+
+    let updated = runtime.layout(root, in: Size(width: 80, height: 40))
+    #expect(updated.frame.size == Size(width: 16, height: 12))
+    #expect(!runtime.isInvalid)
+}
+
+@Test
+func multipleStatePropertiesUseIndependentStructuralSlots() {
+    struct TwoValuesView: View {
+        @State var first = 1
+        @State var second = 2
+
+        var body: some View {
+            Text(String(repeating: "X", count: first + second))
+        }
+
+        func update() {
+            first = 2
+            second = 4
+        }
+    }
+
+    let runtime = DynamicRuntime()
+    let root = TwoValuesView()
+
+    #expect(
+        runtime.layout(root, in: Size(width: 100, height: 40)).frame.size.width
+            == 24
+    )
+    root.update()
+    #expect(runtime.isInvalid)
+    #expect(
+        runtime.layout(root, in: Size(width: 100, height: 40)).frame.size.width
+            == 48
+    )
+}

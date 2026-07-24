@@ -1,6 +1,5 @@
 import GiftUI
 
-@MainActor
 public final class DynamicStateStore: StateStorage {
     private var storage: [StateKey: Any] = [:]
     private let didWrite: () -> Void
@@ -27,6 +26,12 @@ public final class DynamicStateStore: StateStorage {
     }
 
     public func write<Value>(_ value: Value, key: StateKey) {
+        if let stored = storage[key] {
+            precondition(
+                stored is Value,
+                "State type mismatch for path '\(key.path)', slot \(key.slot)"
+            )
+        }
         storage[key] = value
         didWrite()
     }

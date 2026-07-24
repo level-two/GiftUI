@@ -13,7 +13,7 @@ extension View {
     public func _makeNode(
         context: inout ViewBuildContext
     ) -> ViewNode {
-        let content = body
+        let content = context.evaluateBody { body }
         return context.withPathComponent("body") { context in
             content._makeNode(context: &context)
         }

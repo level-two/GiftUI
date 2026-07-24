@@ -1,4 +1,3 @@
-@MainActor
 public protocol StateStorage: AnyObject {
     func read<Value>(
         key: StateKey,
