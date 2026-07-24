@@ -84,7 +84,7 @@ public struct FramebufferBackend: RenderBackend, Sendable {
     }
 
     public mutating func drawText(_ text: TextRun, at origin: Point) {
-        // Bitmap-font rasterization is introduced in the renderer milestone.
+        BitmapTextRasterizer.draw(text, at: origin, surface: &surface)
     }
 
     public mutating func endFrame() {}
