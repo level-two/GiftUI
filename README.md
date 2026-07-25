@@ -76,10 +76,26 @@ scripts/raspberry-pi/deploy.sh \
     --product GiftUIExampleThermostatRaspberryPi
 ```
 
-The application product will be introduced with the Raspberry Pi platform
-implementation. Until then, `build.sh --probe` verifies that this Mac can
-produce a 32-bit ARMv6 hard-float Linux executable with a statically linked
-Swift runtime.
+The Raspberry Pi executable uses the kernel-managed framebuffer path, which is
+the preferred first integration for the 3.5-inch PiScreen: the OS driver owns
+SPI and panel initialization, and GiftUI writes frames through `/dev/fb1`.
+The device path, logical dimensions, and rotation are runtime options:
+
+```bash
+GiftUIExampleThermostatRaspberryPi \
+    --display fbdev \
+    --device /dev/fb1 \
+    --width 240 \
+    --height 240 \
+    --rotation 0
+```
+
+Use `--once` for a one-frame hardware smoke test and `--help` for all options.
+The adapter accepts 16-, 24-, or 32-bit framebuffer formats, honors device
+stride, converts from GiftUI's RGBA8888 surface, and aspect-fits with
+nearest-neighbor scaling. See
+[`docs/GiftUI_Raspberry_Pi_Platform.md`](docs/GiftUI_Raspberry_Pi_Platform.md)
+for PiScreen setup and runtime details.
 
 Agent workflows are defined in `skills/giftui-pi-toolchain` and
 `skills/giftui-pi-build-deploy`.
@@ -104,17 +120,24 @@ Sources/
 ├── GiftUIRuntimeDynamic/         # Replaceable dynamic PoC runtime
 ├── GiftUIBackendFramebuffer/     # Platform-neutral RGBA framebuffer
 ├── GiftUISimulatorMac/           # AppKit/CoreGraphics presentation shell
-└── GiftUIExampleThermostat/      # Runnable client example
+├── GiftUIPlatformLinux/           # Linux loop and framebuffer presentation
+├── GiftUIPlatformRaspberryPi/     # Raspberry Pi defaults/configuration
+├── GiftUIExampleThermostatView/   # Shared platform-neutral client view
+├── GiftUIExampleThermostat/       # Runnable macOS client
+└── GiftUIExampleThermostatRaspberryPi/ # Runnable Raspberry Pi client
 
 Tests/
 ├── GiftUITests/
 ├── GiftUIRuntimeDynamicTests/
 ├── GiftUIBackendFramebufferTests/
-└── GiftUIIntegrationTests/
+├── GiftUIIntegrationTests/
+├── GiftUIPlatformLinuxTests/
+└── GiftUIPlatformRaspberryPiTests/
 ```
 
 Application view declarations import only `GiftUI`. AppKit and CoreGraphics
-are isolated to `GiftUISimulatorMac`.
+are isolated to `GiftUISimulatorMac`; Linux framebuffer and Raspberry Pi
+configuration code are isolated to their platform modules.
 
 The implementation specifications are in
 [`docs/GiftUI_Framework_Spec.md`](docs/GiftUI_Framework_Spec.md) and

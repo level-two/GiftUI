@@ -1,4 +1,5 @@
 import GiftUI
+import GiftUIExampleThermostatView
 import GiftUISimulatorMac
 
 let simulator = GiftUISimulator(

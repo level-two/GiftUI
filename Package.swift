@@ -12,7 +12,20 @@ let package = Package(
         .library(name: "GiftUIRuntimeDynamic", targets: ["GiftUIRuntimeDynamic"]),
         .library(name: "GiftUIBackendFramebuffer", targets: ["GiftUIBackendFramebuffer"]),
         .library(name: "GiftUISimulatorMac", targets: ["GiftUISimulatorMac"]),
+        .library(name: "GiftUIPlatformLinux", targets: ["GiftUIPlatformLinux"]),
+        .library(
+            name: "GiftUIPlatformRaspberryPi",
+            targets: ["GiftUIPlatformRaspberryPi"]
+        ),
+        .library(
+            name: "GiftUIExampleThermostatView",
+            targets: ["GiftUIExampleThermostatView"]
+        ),
         .executable(name: "GiftUIExampleThermostat", targets: ["GiftUIExampleThermostat"]),
+        .executable(
+            name: "GiftUIExampleThermostatRaspberryPi",
+            targets: ["GiftUIExampleThermostatRaspberryPi"]
+        ),
     ],
     targets: [
         .target(name: "GiftUI"),
@@ -36,13 +49,43 @@ let package = Package(
                 .linkedFramework("CoreGraphics"),
             ]
         ),
+        .target(
+            name: "CGiftUILinux",
+            publicHeadersPath: "include"
+        ),
+        .target(
+            name: "GiftUIPlatformLinux",
+            dependencies: [
+                "GiftUI",
+                "GiftUIBackendFramebuffer",
+                "GiftUIRuntimeDynamic",
+                "CGiftUILinux",
+            ]
+        ),
+        .target(
+            name: "GiftUIPlatformRaspberryPi",
+            dependencies: [
+                "GiftUI",
+                "GiftUIPlatformLinux",
+            ]
+        ),
+        .target(
+            name: "GiftUIExampleThermostatView",
+            dependencies: ["GiftUI"]
+        ),
         .executableTarget(
             name: "GiftUIExampleThermostat",
             dependencies: [
                 "GiftUI",
-                "GiftUIRuntimeDynamic",
-                "GiftUIBackendFramebuffer",
+                "GiftUIExampleThermostatView",
                 "GiftUISimulatorMac",
+            ]
+        ),
+        .executableTarget(
+            name: "GiftUIExampleThermostatRaspberryPi",
+            dependencies: [
+                "GiftUIExampleThermostatView",
+                "GiftUIPlatformRaspberryPi",
             ]
         ),
         .testTarget(
@@ -64,6 +107,18 @@ let package = Package(
                 "GiftUIRuntimeDynamic",
                 "GiftUIBackendFramebuffer",
             ]
+        ),
+        .testTarget(
+            name: "GiftUIPlatformLinuxTests",
+            dependencies: [
+                "GiftUI",
+                "GiftUIBackendFramebuffer",
+                "GiftUIPlatformLinux",
+            ]
+        ),
+        .testTarget(
+            name: "GiftUIPlatformRaspberryPiTests",
+            dependencies: ["GiftUIPlatformRaspberryPi"]
         ),
     ],
     swiftLanguageModes: [.v6]
