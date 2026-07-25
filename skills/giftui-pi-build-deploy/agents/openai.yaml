@@ -1,0 +1,4 @@
+interface:
+  display_name: "GiftUI Pi Build and Deploy"
+  short_description: "Cross-build and deploy GiftUI Pi binaries"
+  default_prompt: "Use $giftui-pi-build-deploy to build and deploy the GiftUI Raspberry Pi application."

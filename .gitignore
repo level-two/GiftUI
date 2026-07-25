@@ -38,6 +38,10 @@ playground.xcworkspace
 .swiftpm/xcode/package.xcworkspace/xcuserdata/
 .swiftpm/xcode/xcuserdata/
 
+# Project-local Raspberry Pi cross-compilation environment
+.toolchains/
+scripts/raspberry-pi/local.env
+
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However

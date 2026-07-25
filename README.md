@@ -40,6 +40,50 @@ framebuffer at 3× scale with nearest-neighbor interpolation. Click `-` and `+`
 to update the runtime-owned target temperature and redraw the complete view
 graph.
 
+## Raspberry Pi 1 cross-compilation
+
+The project pins both the official Swift.org 6.3.2 macOS compiler and an ARMv6
+SDK for Raspberry Pi OS Bookworm. They are downloaded and unpacked into the
+ignored `.toolchains/` directory, without modifying `/opt`, Xcode, or the
+global Swift installation. Allow roughly 8 GB of free disk space for the
+cached packages and unpacked tools.
+
+Set up and verify the toolchain:
+
+```bash
+scripts/raspberry-pi/setup-toolchain.sh
+scripts/raspberry-pi/doctor.sh --probe
+```
+
+Cross-build a Raspberry Pi executable product:
+
+```bash
+scripts/raspberry-pi/build.sh \
+    --product GiftUIExampleThermostatRaspberryPi
+```
+
+Configure machine-local deployment defaults:
+
+```bash
+cp scripts/raspberry-pi/local.env.example \
+    scripts/raspberry-pi/local.env
+```
+
+Then deploy atomically over SSH:
+
+```bash
+scripts/raspberry-pi/deploy.sh \
+    --product GiftUIExampleThermostatRaspberryPi
+```
+
+The application product will be introduced with the Raspberry Pi platform
+implementation. Until then, `build.sh --probe` verifies that this Mac can
+produce a 32-bit ARMv6 hard-float Linux executable with a statically linked
+Swift runtime.
+
+Agent workflows are defined in `skills/giftui-pi-toolchain` and
+`skills/giftui-pi-build-deploy`.
+
 ## Debug in Xcode
 
 No generated `.xcodeproj` is required. Open the package directly:

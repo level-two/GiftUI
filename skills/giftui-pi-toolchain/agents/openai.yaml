@@ -1,0 +1,4 @@
+interface:
+  display_name: "GiftUI Pi Toolchain"
+  short_description: "Set up and diagnose the ARMv6 Swift SDK"
+  default_prompt: "Use $giftui-pi-toolchain to set up and verify the local Raspberry Pi cross-compilation environment."
