@@ -8,7 +8,7 @@ public struct Text: View, PrimitiveView {
         self.content = content.description
     }
 
-    public init(_ content: String) {
+    package init(dynamicContent content: String) {
         self.content = content
     }
 

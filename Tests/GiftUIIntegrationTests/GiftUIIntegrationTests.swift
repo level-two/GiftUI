@@ -1,11 +1,13 @@
 import GiftUI
 import GiftUIBackendFramebuffer
+import GiftUIDynamicConveniences
 import GiftUIRuntimeDynamic
 import Testing
 
 @Test
 func modulesComposeWithoutPlatformDependencies() {
     #expect(GiftUIRuntimeDynamicModule.name.hasPrefix(GiftUIModule.name))
+    #expect(GiftUIDynamicConveniencesModule.name.hasPrefix(GiftUIModule.name))
     #expect(GiftUIBackendFramebufferModule.name.hasPrefix(GiftUIModule.name))
 }
 

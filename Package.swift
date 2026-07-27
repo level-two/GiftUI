@@ -9,6 +9,10 @@ let package = Package(
     ],
     products: [
         .library(name: "GiftUI", targets: ["GiftUI"]),
+        .library(
+            name: "GiftUIDynamicConveniences",
+            targets: ["GiftUIDynamicConveniences"]
+        ),
         .library(name: "GiftUIRuntimeDynamic", targets: ["GiftUIRuntimeDynamic"]),
         .library(name: "GiftUIBackendFramebuffer", targets: ["GiftUIBackendFramebuffer"]),
         .library(name: "GiftUISimulatorMac", targets: ["GiftUISimulatorMac"]),
@@ -29,6 +33,10 @@ let package = Package(
     ],
     targets: [
         .target(name: "GiftUI"),
+        .target(
+            name: "GiftUIDynamicConveniences",
+            dependencies: ["GiftUI"]
+        ),
         .target(
             name: "GiftUIRuntimeDynamic",
             dependencies: ["GiftUI"]
@@ -75,7 +83,10 @@ let package = Package(
         ),
         .target(
             name: "GiftUIExampleThermostatView",
-            dependencies: ["GiftUI"]
+            dependencies: [
+                "GiftUI",
+                "GiftUIDynamicConveniences",
+            ]
         ),
         .executableTarget(
             name: "GiftUIExampleThermostat",
@@ -98,7 +109,17 @@ let package = Package(
         ),
         .testTarget(
             name: "GiftUIRuntimeDynamicTests",
-            dependencies: ["GiftUIRuntimeDynamic"]
+            dependencies: [
+                "GiftUIDynamicConveniences",
+                "GiftUIRuntimeDynamic",
+            ]
+        ),
+        .testTarget(
+            name: "GiftUIDynamicConveniencesTests",
+            dependencies: [
+                "GiftUI",
+                "GiftUIDynamicConveniences",
+            ]
         ),
         .testTarget(
             name: "GiftUIBackendFramebufferTests",
@@ -108,6 +129,7 @@ let package = Package(
             name: "GiftUIIntegrationTests",
             dependencies: [
                 "GiftUI",
+                "GiftUIDynamicConveniences",
                 "GiftUIRuntimeDynamic",
                 "GiftUIBackendFramebuffer",
             ]
@@ -117,6 +139,7 @@ let package = Package(
             dependencies: [
                 "GiftUI",
                 "GiftUIBackendFramebuffer",
+                "GiftUIDynamicConveniences",
                 "GiftUIPlatformLinux",
             ]
         ),

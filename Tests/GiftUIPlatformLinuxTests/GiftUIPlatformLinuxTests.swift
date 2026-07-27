@@ -1,5 +1,6 @@
 import GiftUI
 import GiftUIBackendFramebuffer
+import GiftUIDynamicConveniences
 import GiftUIPlatformLinux
 import Testing
 
@@ -43,6 +44,29 @@ func linuxApplicationPresentsInitialFrameAndStateUpdate() throws {
     #expect(display.frames.count == 2)
     #expect(display.frames[0] != display.frames[1])
     #expect(try !application.runCycle())
+}
+
+@Test
+func linuxApplicationDispatchesPortableActionIdentifiers() throws {
+    let expectedAction = ActionID(rawValue: 42)
+    var receivedActions: [ActionID] = []
+    let display = RecordingDisplaySurface(
+        logicalSize: Size(width: 80, height: 80)
+    )
+    let application = GiftUILinuxApplication(
+        root: Button("Portable", action: expectedAction),
+        display: display,
+        identifiedActionHandler: { receivedActions.append($0) },
+        logger: { _ in }
+    )
+
+    #expect(try application.runCycle())
+    let button = application.hitRegions[0].bounds
+    let point = Point(x: button.origin.x + 1, y: button.origin.y + 1)
+    application.send(.pointerDown(point))
+
+    #expect(application.send(.pointerUp(point)))
+    #expect(receivedActions == [expectedAction])
 }
 
 @Test

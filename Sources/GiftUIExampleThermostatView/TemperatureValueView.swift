@@ -1,4 +1,5 @@
 import GiftUI
+import GiftUIDynamicConveniences
 
 struct TemperatureValueView: View {
     let value: Int

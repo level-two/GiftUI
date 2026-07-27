@@ -197,7 +197,8 @@ or simulator targets.
 
 ```text
 Sources/
-├── GiftUI/                       # Client-facing, platform-neutral API
+├── GiftUI/                       # Portable declarations and semantic contracts
+├── GiftUIDynamicConveniences/    # Opt-in String and callback APIs
 ├── GiftUIRuntimeDynamic/         # Replaceable dynamic PoC runtime
 ├── GiftUIBackendFramebuffer/     # Platform-neutral RGBA framebuffer
 ├── GiftUISimulatorMac/           # AppKit/CoreGraphics presentation shell
@@ -209,6 +210,7 @@ Sources/
 
 Tests/
 ├── GiftUITests/
+├── GiftUIDynamicConveniencesTests/
 ├── GiftUIRuntimeDynamicTests/
 ├── GiftUIBackendFramebufferTests/
 ├── GiftUIIntegrationTests/
@@ -216,9 +218,11 @@ Tests/
 └── GiftUIPlatformRaspberryPiTests/
 ```
 
-Application view declarations import only `GiftUI`. AppKit and CoreGraphics
-are isolated to `GiftUISimulatorMac`; Linux framebuffer and Raspberry Pi
-configuration code are isolated to their platform modules.
+Portable application views import only `GiftUI`. The current thermostat also
+imports `GiftUIDynamicConveniences` because it uses interpolated `String` text
+and escaping button callbacks. AppKit and CoreGraphics are isolated to
+`GiftUISimulatorMac`; Linux framebuffer and Raspberry Pi configuration code
+are isolated to their platform modules.
 
 The implementation specifications are in
 [`docs/GiftUI_Framework_Spec.md`](docs/GiftUI_Framework_Spec.md) and
@@ -257,6 +261,7 @@ into one frame.
 
 Structural identity is intentionally topology-based for PoC A. Reordering or
 inserting siblings can therefore move state between paths. Explicit identity
-and reconciliation remain future static/runtime work. Fixed state arenas and
-typed, non-closure actions likewise belong to the future static runtime rather
-than the completed dynamic PoC Core.
+and reconciliation remain future static/runtime work. Identified, non-closure
+button actions now provide the first portable interaction path; fixed state
+arenas, bounded text formatting, and typed action facades remain future static
+runtime work.

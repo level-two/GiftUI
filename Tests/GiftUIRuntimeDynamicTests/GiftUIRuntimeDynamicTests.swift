@@ -1,5 +1,6 @@
 import Testing
 import GiftUI
+import GiftUIDynamicConveniences
 @testable import GiftUIRuntimeDynamic
 
 @MainActor

@@ -17,8 +17,8 @@ public struct Button<Label: View>: View, PrimitiveView {
         self.label = label()
     }
 
-    public init(
-        action: @escaping () -> Void,
+    package init(
+        dynamicAction action: @escaping () -> Void,
         @ViewBuilder label: () -> Label
     ) {
         self.action = .callback(action)
@@ -35,12 +35,6 @@ public struct Button<Label: View>: View, PrimitiveView {
 
 public extension Button where Label == Text {
     init(_ title: StaticString, action: ActionID) {
-        self.init(action: action) {
-            Text(title)
-        }
-    }
-
-    init(_ title: String, action: @escaping () -> Void) {
         self.init(action: action) {
             Text(title)
         }

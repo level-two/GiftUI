@@ -1,6 +1,7 @@
 # GiftUI Runtime Profile Migration Plan
 
-**Status:** Active migration plan  
+**Status:** Active migration plan
+
 **Scope:** Prepare the existing dynamic proof of concept for a portable/static
 runtime without implementing the static runtime in the first iteration.
 
@@ -73,12 +74,16 @@ boundary.
 
 ### Stage A — make profile selection explicit
 
+**Status:** Complete in the first preparation iteration.
+
 - Add compile-time profile marker types and a runtime-profile declaration
   protocol to `GiftUI`.
 - Declare `DynamicRuntime` as the dynamic profile.
 - Test the declaration without adding runtime profile switches.
 
 ### Stage B — split the application-facing DSL
+
+**Status:** Complete in the first preparation iteration.
 
 - Add a portable button action-identifier initializer.
 - Teach the dynamic application runtime to dispatch identified actions.
@@ -120,7 +125,8 @@ the dynamic `ViewNode` representation directly.
 
 ## 5. First-iteration exit criteria
 
-This preparation iteration is complete when:
+This preparation iteration is complete. It established the following checked
+conditions:
 
 - `DynamicRuntime` declares the dynamic profile at compile time;
 - `GiftUI` offers a portable identified-action button path;

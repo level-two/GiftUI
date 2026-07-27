@@ -401,6 +401,10 @@ GiftUI/
 │   │   ├── Rendering/
 │   │   └── Geometry/
 │   │
+│   ├── GiftUIDynamicConveniences/
+│   │   ├── DynamicText/
+│   │   └── CallbackButton/
+│   │
 │   ├── GiftUIRuntimeDynamic/
 │   │   ├── DynamicStateStorage/
 │   │   ├── DynamicEventQueue/
@@ -462,11 +466,10 @@ May use:
 - escaping closures;
 - dynamically growing storage.
 
-#### Dynamic convenience extensions
+#### `GiftUIDynamicConveniences`
 
-Dynamic-only public conveniences must be isolated from the portable core,
-whether implemented as a separate `GiftUIDynamicConveniences` module or as a
-narrowly scoped product facade. They may add:
+Dynamic-only public conveniences are isolated from the portable core in the
+`GiftUIDynamicConveniences` module. They may add:
 
 - closure-backed control initializers;
 - unbounded `String` formatting;
@@ -607,7 +610,12 @@ Proposed API:
 
 ```swift
 public struct Text: View {
-    public init(_ content: String)
+    public init(_ content: StaticString)
+}
+
+// GiftUIDynamicConveniences
+public extension Text {
+    init(_ content: String)
 }
 ```
 
@@ -642,8 +650,9 @@ Profile rule:
 PoC API:
 
 ```swift
-public struct Button<Label: View>: View {
-    public init(
+// GiftUIDynamicConveniences
+public extension Button {
+    init(
         action: @escaping () -> Void,
         @ViewBuilder label: () -> Label
     )
@@ -661,21 +670,25 @@ Dynamic runtime:
 Portable/static API:
 
 ```swift
-public struct Button<Label: View, Action: GiftUIAction>: View {
+public struct Button<Label: View>: View {
     public init(
-        action: Action,
+        action: ActionID,
         @ViewBuilder label: () -> Label
     )
 }
 ```
 
-or:
+The first portable representation is an action identifier:
 
 ```swift
-Button("-", action: AppAction.decrement)
+Button("-", action: ActionID(rawValue: ThermostatAction.decrement.rawValue))
 ```
 
-The PoC may implement closure-based actions first, but the core architecture must not make closures the only possible event representation.
+A later typed facade may map an application action enum to the same bounded
+representation without changing runtime dispatch semantics.
+
+The dynamic PoC implements both callback and identified actions. The portable
+module does not expose closures as the only possible event representation.
 
 The closure-backed initializers are dynamic conveniences. They may remain
 available to current macOS and Linux clients through the dynamic facade, but a
@@ -1817,7 +1830,8 @@ Implementations may change, but these constraints should remain stable:
 The PoC is done when a host executable imports:
 
 ```swift
-import GiftUICore
+import GiftUI
+import GiftUIDynamicConveniences
 import GiftUIRuntimeDynamic
 import GiftUIBackendFramebuffer
 ```

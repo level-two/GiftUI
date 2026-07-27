@@ -84,7 +84,8 @@ func conditionalBranchesHaveDistinctStructuralPaths() {
         @State var value = 1
 
         var body: some View {
-            Text("\(value)")
+            let _ = value
+            Text("First")
         }
     }
 
@@ -92,7 +93,8 @@ func conditionalBranchesHaveDistinctStructuralPaths() {
         @State var value = "B"
 
         var body: some View {
-            Text(value)
+            let _ = value
+            Text("Second")
         }
     }
 
@@ -212,7 +214,7 @@ func conditionalAndOptionalContentExpandWithoutRegistration() {
 @Test
 func buttonUsesFixedPaddingAndCentersItsLabel() {
     let layout = LayoutEngine.layout(
-        Button("+") {},
+        Button("+", action: ActionID(rawValue: 0)),
         in: Size(width: 40, height: 40)
     )
 
@@ -273,7 +275,7 @@ func viewGraphCanEmitIntoBoundedRenderStorage() throws {
     }
 
     let graph = ViewGraph.layout(
-        Button("+") {},
+        Button("+", action: ActionID(rawValue: 0)),
         in: Size(width: 40, height: 40)
     )
     var sink = BoundedSink(capacity: 3)
@@ -306,7 +308,7 @@ func boundedRenderStorageReportsCapacityExhaustion() {
     }
 
     let graph = ViewGraph.layout(
-        Button("+") {},
+        Button("+", action: ActionID(rawValue: 0)),
         in: Size(width: 40, height: 40)
     )
     var sink = BoundedSink(capacity: 2)
@@ -332,25 +334,30 @@ func hitTestingPrefersTheLastOverlappingRegion() {
 }
 
 @Test
-func nestedButtonsBuildAConsistentCoreInteractionSnapshot() {
-    var outerActivations = 0
-    var innerActivations = 0
+func nestedPortableButtonsBuildAConsistentInteractionSnapshot() {
+    let outerAction = ActionID(rawValue: 40)
+    let innerAction = ActionID(rawValue: 41)
     let graph = ViewGraph.layout(
-        Button(action: { outerActivations += 1 }) {
-            Button("Inner") { innerActivations += 1 }
+        Button(action: outerAction) {
+            Button("Inner", action: innerAction)
         },
         in: Size(width: 80, height: 80)
     )
     let snapshot = graph.makeInteractionSnapshot()
     let point = snapshot.hitTestMap.regions[1].bounds.origin
+    var dispatchedActions: [ActionID] = []
 
     let action = snapshot.action(at: point)
 
     #expect(snapshot.hitTestMap.regions.count == 2)
     #expect(action == ActionID(rawValue: 1))
-    #expect(action.map { snapshot.perform($0) } == true)
-    #expect(outerActivations == 0)
-    #expect(innerActivations == 1)
+    #expect(action.map {
+        snapshot.perform(
+            $0,
+            identifiedActionHandler: { dispatchedActions.append($0) }
+        )
+    } == true)
+    #expect(dispatchedActions == [innerAction])
 }
 
 private final class RecordingStateStorage: StateStorage {

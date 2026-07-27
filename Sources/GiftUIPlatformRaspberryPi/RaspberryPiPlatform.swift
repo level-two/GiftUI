@@ -14,7 +14,10 @@ public final class RaspberryPiPlatform {
         self.logger = logger
     }
 
-    public func run<Root: View>(root: Root) throws {
+    public func run<Root: View>(
+        root: Root,
+        identifiedActionHandler: ((ActionID) -> Void)? = nil
+    ) throws {
         let display = try LinuxFramebufferDisplaySurface(
             devicePath: configuration.framebufferDevice,
             logicalSize: configuration.logicalSize,
@@ -68,6 +71,7 @@ public final class RaspberryPiPlatform {
             display: display,
             inputSources: inputSources,
             navigationInputSources: navigationInputSources,
+            identifiedActionHandler: identifiedActionHandler,
             configuration: LinuxApplicationConfiguration(
                 idleSleepMilliseconds: configuration.idleSleepMilliseconds,
                 exitAfterInitialFrame: configuration.exitAfterInitialFrame

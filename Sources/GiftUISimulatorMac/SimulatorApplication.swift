@@ -8,6 +8,7 @@ public final class GiftUISimulator<Root: View> {
     private let root: Root
     private let logicalSize: Size
     private let scale: Int
+    private let identifiedActionHandler: ((ActionID) -> Void)?
     private var window: SimulatorWindow?
     private var framebufferView: FramebufferView?
     private var backend: FramebufferBackend?
@@ -16,12 +17,14 @@ public final class GiftUISimulator<Root: View> {
     public init(
         root: Root,
         logicalSize: Size = Size(width: 240, height: 240),
-        scale: Int = 3
+        scale: Int = 3,
+        identifiedActionHandler: ((ActionID) -> Void)? = nil
     ) {
         precondition(scale > 0, "Simulator scale must be positive")
         self.root = root
         self.logicalSize = logicalSize
         self.scale = scale
+        self.identifiedActionHandler = identifiedActionHandler
     }
 
     public func run() {
@@ -34,7 +37,10 @@ public final class GiftUISimulator<Root: View> {
                 height: logicalSize.height
             )
         )
-        let giftUIApplication = GiftUIApplication(root: root)
+        let giftUIApplication = GiftUIApplication(
+            root: root,
+            identifiedActionHandler: identifiedActionHandler
+        )
         giftUIApplication.renderIfNeeded(into: &backend)
 
         let window = SimulatorWindow(

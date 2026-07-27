@@ -27,6 +27,7 @@ public final class GiftUILinuxApplication<Root: View> {
         inputSources: [any LinuxInputSource] = [],
         navigationInputSources: [any LinuxNavigationInputSource] = [],
         runtime: DynamicRuntime = DynamicRuntime(),
+        identifiedActionHandler: ((ActionID) -> Void)? = nil,
         configuration: LinuxApplicationConfiguration = LinuxApplicationConfiguration(),
         logger: @escaping (String) -> Void = { print($0) }
     ) {
@@ -35,7 +36,11 @@ public final class GiftUILinuxApplication<Root: View> {
         self.navigationInputSources = navigationInputSources
         self.configuration = configuration
         self.logger = logger
-        application = GiftUIApplication(root: root, runtime: runtime)
+        application = GiftUIApplication(
+            root: root,
+            runtime: runtime,
+            identifiedActionHandler: identifiedActionHandler
+        )
         backend = FramebufferBackend(
             surface: MemoryFramebufferSurface(
                 width: display.logicalSize.width,
