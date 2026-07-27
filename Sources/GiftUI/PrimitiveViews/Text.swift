@@ -1,20 +1,41 @@
+public struct TextContent {
+    package enum Storage {
+        case staticString(StaticString)
+        #if !hasFeature(Embedded)
+        case dynamicString(String)
+        #endif
+    }
+
+    package let storage: Storage
+
+    package init(_ content: StaticString) {
+        storage = .staticString(content)
+    }
+
+    #if !hasFeature(Embedded)
+    package init(dynamic content: String) {
+        storage = .dynamicString(content)
+    }
+    #endif
+}
+
 public struct Text: View, PrimitiveView {
-    package let content: String
+    package let content: TextContent
 
     /// Creates text from storage whose size is known in the application
     /// binary. Bounded and resource-backed representations will replace the
     /// current graph conversion in the static runtime.
     public init(_ content: StaticString) {
-        self.content = content.description
+        self.content = TextContent(content)
     }
 
+    #if !hasFeature(Embedded)
     package init(dynamicContent content: String) {
-        self.content = content
+        self.content = TextContent(dynamic: content)
     }
+    #endif
 
-    package func _makePrimitiveNode(
-        context: inout ViewBuildContext
-    ) -> ViewNode {
-        ViewNode(kind: .text(content))
+    public func _visit<Visitor: ViewVisitor>(_ visitor: inout Visitor) {
+        visitor.visitText(content)
     }
 }

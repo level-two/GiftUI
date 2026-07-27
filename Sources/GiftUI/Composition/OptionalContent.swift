@@ -5,15 +5,7 @@ public struct OptionalContent<Content: View>: View, PrimitiveView {
         self.content = content
     }
 
-    package func _makePrimitiveNode(
-        context: inout ViewBuildContext
-    ) -> ViewNode {
-        guard let content else {
-            return ViewNode(kind: .group)
-        }
-        return ViewNode(
-            kind: .group,
-            children: [context.makeChild(content, index: 0)]
-        )
+    public func _visit<Visitor: ViewVisitor>(_ visitor: inout Visitor) {
+        visitor.visitOptional(content)
     }
 }

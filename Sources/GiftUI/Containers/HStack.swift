@@ -11,13 +11,7 @@ public struct HStack<Content: View>: View, PrimitiveView {
         self.content = content()
     }
 
-    package func _makePrimitiveNode(
-        context: inout ViewBuildContext
-    ) -> ViewNode {
-        let contentNode = context.makeChild(content, index: 0)
-        return ViewNode(
-            kind: .hStack(spacing: spacing),
-            children: contentNode.unwrappedGroupChildren
-        )
+    public func _visit<Visitor: ViewVisitor>(_ visitor: inout Visitor) {
+        visitor.visitHStack(spacing: spacing, content: content)
     }
 }

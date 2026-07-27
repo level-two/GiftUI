@@ -4,19 +4,12 @@ public protocol View {
     @ViewBuilder
     var body: Body { get }
 
-    func _makeNode(
-        context: inout ViewBuildContext
-    ) -> ViewNode
+    func _visit<Visitor: ViewVisitor>(_ visitor: inout Visitor)
 }
 
 extension View {
-    public func _makeNode(
-        context: inout ViewBuildContext
-    ) -> ViewNode {
-        let content = context.evaluateBody { body }
-        return context.withPathComponent("body") { context in
-            content._makeNode(context: &context)
-        }
+    public func _visit<Visitor: ViewVisitor>(_ visitor: inout Visitor) {
+        visitor.visitBody { body }
     }
 }
 
@@ -25,9 +18,7 @@ extension Never: View {
         fatalError("Never cannot produce a GiftUI view body")
     }
 
-    public func _makeNode(
-        context: inout ViewBuildContext
-    ) -> ViewNode {
-        fatalError("Never cannot produce a GiftUI layout node")
+    public func _visit<Visitor: ViewVisitor>(_ visitor: inout Visitor) {
+        fatalError("Never cannot be traversed as GiftUI content")
     }
 }

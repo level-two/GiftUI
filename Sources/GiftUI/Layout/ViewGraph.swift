@@ -5,7 +5,10 @@ package enum ViewGraph {
         stateStorage: (any StateStorage)? = nil
     ) -> ViewNode {
         var context = ViewBuildContext(stateStorage: stateStorage)
-        let root = content._makeNode(context: &context)
+        content._visit(&context)
+        guard let root = context.root else {
+            preconditionFailure("GiftUI traversal did not produce a root node")
+        }
         var layoutContext = LayoutContext()
         let rootSize = root.measure(
             proposal: ProposedSize(

@@ -34,14 +34,16 @@ package struct InteractionSnapshot {
             return false
         }
 
-        switch action {
+        switch action.storage {
         case .identified(let identifier):
             guard let identifiedActionHandler else { return false }
             identifiedActionHandler(identifier)
             return true
+        #if !hasFeature(Embedded)
         case .callback(let callback):
             callback()
             return true
+        #endif
         }
     }
 }

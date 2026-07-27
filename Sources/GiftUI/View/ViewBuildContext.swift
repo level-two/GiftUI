@@ -1,6 +1,8 @@
 public struct ViewBuildContext {
     package private(set) var path: String
     package let stateStorage: (any StateStorage)?
+    package private(set) var root: ViewNode?
+    private var parents: [ViewNode]
 
     package init(
         path: String = "root",
@@ -8,25 +10,27 @@ public struct ViewBuildContext {
     ) {
         self.path = path
         self.stateStorage = stateStorage
+        root = nil
+        parents = []
     }
 
-    package mutating func makeChild<Content: View>(
-        _ content: Content,
-        index: Int
-    ) -> ViewNode {
-        withPathComponent("child[\(index)]") { context in
-            content._makeNode(context: &context)
+    private mutating func append(_ node: ViewNode) {
+        if let parent = parents.last {
+            parent.children.append(node)
+        } else {
+            precondition(root == nil, "GiftUI traversal produced multiple roots")
+            root = node
         }
     }
 
-    package mutating func withPathComponent<Result>(
+    private mutating func withPathComponent(
         _ component: String,
-        perform: (inout ViewBuildContext) -> Result
-    ) -> Result {
+        perform: (inout ViewBuildContext) -> Void
+    ) {
         let previousPath = path
         path += ".\(component)"
         defer { path = previousPath }
-        return perform(&self)
+        perform(&self)
     }
 
     package func evaluateBody<Result>(
@@ -40,5 +44,127 @@ public struct ViewBuildContext {
             path: path,
             perform: body
         )
+    }
+
+    private mutating func visitNode<Content: View>(
+        _ node: ViewNode,
+        content: Content,
+        flattenGroups: Bool = false
+    ) {
+        append(node)
+        parents.append(node)
+        content._visit(&self)
+        _ = parents.removeLast()
+        if flattenGroups {
+            node.children = node.children.flatMap(\.unwrappedGroupChildren)
+        }
+    }
+}
+
+extension ViewBuildContext: ViewVisitor {
+    public mutating func visitBody<Content: View>(
+        _ content: () -> Content
+    ) {
+        let evaluated = evaluateBody(content)
+        withPathComponent("body") { context in
+            evaluated._visit(&context)
+        }
+    }
+
+    public mutating func visitEmpty() {
+        append(ViewNode(kind: .group))
+    }
+
+    public mutating func visitTuple<each Content: View>(
+        _ content: repeat each Content
+    ) {
+        let group = ViewNode(kind: .group)
+        append(group)
+        parents.append(group)
+        var index = 0
+        for child in repeat each content {
+            withPathComponent("child[\(index)]") { context in
+                child._visit(&context)
+            }
+            index += 1
+        }
+        _ = parents.removeLast()
+    }
+
+    public mutating func visitConditional<TrueContent: View, FalseContent: View>(
+        _ storage: ConditionalContent<TrueContent, FalseContent>.Storage
+    ) {
+        let group = ViewNode(kind: .group)
+        append(group)
+        parents.append(group)
+        switch storage {
+        case .first(let content):
+            withPathComponent("first") { context in
+                context.withPathComponent("child[0]") { context in
+                    content._visit(&context)
+                }
+            }
+        case .second(let content):
+            withPathComponent("second") { context in
+                context.withPathComponent("child[0]") { context in
+                    content._visit(&context)
+                }
+            }
+        }
+        _ = parents.removeLast()
+    }
+
+    public mutating func visitOptional<Content: View>(_ content: Content?) {
+        let group = ViewNode(kind: .group)
+        append(group)
+        guard let content else { return }
+        parents.append(group)
+        withPathComponent("child[0]") { context in
+            content._visit(&context)
+        }
+        _ = parents.removeLast()
+    }
+
+    public mutating func visitVStack<Content: View>(
+        spacing: Int,
+        content: Content
+    ) {
+        let node = ViewNode(kind: .vStack(spacing: spacing))
+        withPathComponent("child[0]") { context in
+            context.visitNode(node, content: content, flattenGroups: true)
+        }
+    }
+
+    public mutating func visitHStack<Content: View>(
+        spacing: Int,
+        content: Content
+    ) {
+        let node = ViewNode(kind: .hStack(spacing: spacing))
+        withPathComponent("child[0]") { context in
+            context.visitNode(node, content: content, flattenGroups: true)
+        }
+    }
+
+    public mutating func visitText(_ content: TextContent) {
+        let string: String
+        switch content.storage {
+        case .staticString(let content):
+            string = content.description
+        #if !hasFeature(Embedded)
+        case .dynamicString(let content):
+            string = content
+        #endif
+        }
+        append(ViewNode(kind: .text(string)))
+    }
+
+    public mutating func visitButton<Label: View>(
+        action: ButtonAction,
+        label: Label
+    ) {
+        let node = ViewNode(kind: .button(action))
+        withPathComponent("child[0]") { context in
+            context.visitNode(node, content: label)
+        }
     }
 }

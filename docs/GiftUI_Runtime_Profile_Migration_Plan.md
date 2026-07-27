@@ -108,6 +108,12 @@ internal graph remains dynamic.
 This is the largest migration stage because the current `View` protocol names
 the dynamic `ViewNode` representation directly.
 
+**Progress:** The public `View` boundary now uses `ViewVisitor`, tuple staging
+is generic rather than closure/array backed, and the portable declaration
+subset compiles as an ARM Embedded Swift module. The remaining retained graph
+and bounded-runtime work is tracked in
+[`GiftUI_Embedded_Layer_Inventory.md`](GiftUI_Embedded_Layer_Inventory.md).
+
 ### Stage D — provide portable state and text
 
 - Replace the core `@State` class box/task-local dependency with an explicit

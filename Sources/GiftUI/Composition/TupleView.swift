@@ -1,18 +1,11 @@
-public struct TupleView<Content>: View, PrimitiveView {
-    public let value: Content
-    private let makeChildren: (inout ViewBuildContext) -> [ViewNode]
+public struct TupleView<each Content: View>: View, PrimitiveView {
+    public let value: (repeat each Content)
 
-    package init(
-        _ value: Content,
-        makeChildren: @escaping (inout ViewBuildContext) -> [ViewNode]
-    ) {
-        self.value = value
-        self.makeChildren = makeChildren
+    package init(_ value: repeat each Content) {
+        self.value = (repeat each value)
     }
 
-    package func _makePrimitiveNode(
-        context: inout ViewBuildContext
-    ) -> ViewNode {
-        ViewNode(kind: .group, children: makeChildren(&context))
+    public func _visit<Visitor: ViewVisitor>(_ visitor: inout Visitor) {
+        visitor.visitTuple(repeat each value)
     }
 }

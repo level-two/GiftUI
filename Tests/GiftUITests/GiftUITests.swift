@@ -52,7 +52,7 @@ func rectangleContainmentAvoidsCoordinateOverflow() {
 @Test
 func builderCreatesTupleContent() {
     let content = ViewBuilder.buildBlock(Text("A"), Text("B"))
-    #expect(type(of: content) == TupleView<(Text, Text)>.self)
+    #expect(type(of: content) == TupleView<Text, Text>.self)
 }
 
 @Test

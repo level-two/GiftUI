@@ -1,9 +1,7 @@
 public struct EmptyView: View, PrimitiveView {
     public init() {}
 
-    package func _makePrimitiveNode(
-        context: inout ViewBuildContext
-    ) -> ViewNode {
-        ViewNode(kind: .group)
+    public func _visit<Visitor: ViewVisitor>(_ visitor: inout Visitor) {
+        visitor.visitEmpty()
     }
 }

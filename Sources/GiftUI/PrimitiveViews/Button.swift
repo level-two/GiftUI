@@ -1,6 +1,22 @@
-package enum ButtonAction {
-    case identified(ActionID)
-    case callback(() -> Void)
+public struct ButtonAction {
+    package enum Storage {
+        case identified(ActionID)
+        #if !hasFeature(Embedded)
+        case callback(() -> Void)
+        #endif
+    }
+
+    package let storage: Storage
+
+    package init(_ action: ActionID) {
+        storage = .identified(action)
+    }
+
+    #if !hasFeature(Embedded)
+    package init(callback: @escaping () -> Void) {
+        storage = .callback(callback)
+    }
+    #endif
 }
 
 public struct Button<Label: View>: View, PrimitiveView {
@@ -13,23 +29,22 @@ public struct Button<Label: View>: View, PrimitiveView {
         action: ActionID,
         @ViewBuilder label: () -> Label
     ) {
-        self.action = .identified(action)
+        self.action = ButtonAction(action)
         self.label = label()
     }
 
+    #if !hasFeature(Embedded)
     package init(
         dynamicAction action: @escaping () -> Void,
         @ViewBuilder label: () -> Label
     ) {
-        self.action = .callback(action)
+        self.action = ButtonAction(callback: action)
         self.label = label()
     }
+    #endif
 
-    package func _makePrimitiveNode(
-        context: inout ViewBuildContext
-    ) -> ViewNode {
-        let labelNode = context.makeChild(label, index: 0)
-        return ViewNode(kind: .button(action), children: [labelNode])
+    public func _visit<Visitor: ViewVisitor>(_ visitor: inout Visitor) {
+        visitor.visitButton(action: action, label: label)
     }
 }
 

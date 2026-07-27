@@ -10,16 +10,8 @@ public enum ViewBuilder {
 
     public static func buildBlock<each Content: View>(
         _ content: repeat each Content
-    ) -> TupleView<(repeat each Content)> {
-        TupleView((repeat each content)) { context in
-            var children: [ViewNode] = []
-            var index = 0
-            for child in repeat each content {
-                children.append(context.makeChild(child, index: index))
-                index += 1
-            }
-            return children
-        }
+    ) -> TupleView<repeat each Content> {
+        TupleView(repeat each content)
     }
 
     public static func buildEither<A: View, B: View>(
