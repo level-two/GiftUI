@@ -38,9 +38,10 @@ playground.xcworkspace
 .swiftpm/xcode/package.xcworkspace/xcuserdata/
 .swiftpm/xcode/xcuserdata/
 
-# Project-local Raspberry Pi cross-compilation environment
+# Project-local cross-compilation environments
 .toolchains/
 scripts/raspberry-pi/local.env
+scripts/nrf52840/local.env
 
 # CocoaPods
 #

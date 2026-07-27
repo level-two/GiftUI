@@ -1,0 +1,4 @@
+interface:
+  display_name: "GiftUI nRF Toolchain"
+  short_description: "Set up and diagnose Embedded Swift for nRF"
+  default_prompt: "Use $giftui-nrf-toolchain to set up and verify the project-local nRF52840 development environment."

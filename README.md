@@ -119,6 +119,62 @@ for PiScreen setup and runtime details.
 Agent workflows are defined in `skills/giftui-pi-toolchain` and
 `skills/giftui-pi-build-deploy`.
 
+## Nordic nRF52840-DK development environment
+
+The proposed microcontroller port uses a separately pinned, project-local
+Embedded Swift and Zephyr environment. Swift, Zephyr 4.3.0, the Zephyr SDK ARM
+toolchain, Nordic modules, and the locked Python environment remain under
+`.toolchains/nrf52840/`; firmware and reports remain under
+`.build/nrf52840/`. Nothing changes Xcode's selected toolchain or the global
+`swift` command.
+
+macOS needs CMake 3.29 or newer, Ninja 1.10 or newer, Devicetree Compiler 1.6
+or newer, Git, and Python 3.10 through 3.13. Python 3.12.13 is the pinned
+baseline. Machine-specific paths can be configured by copying
+`scripts/nrf52840/local.env.example` to the ignored
+`scripts/nrf52840/local.env`.
+
+Set up and run the hardware-free C-to-Swift Zephyr probe:
+
+```bash
+scripts/nrf52840/setup-toolchain.sh
+scripts/nrf52840/doctor.sh --probe
+```
+
+Activate paths in an interactive shell only when needed:
+
+```bash
+source scripts/nrf52840/env.sh
+```
+
+Build a named firmware application:
+
+```bash
+scripts/nrf52840/build.sh --application probe
+```
+
+`build.sh` emits the ELF, HEX, map, resolved Devicetree, section/symbol data,
+and size report. Flashing is never a build side effect. A connected board is
+changed only through an explicit command:
+
+```bash
+scripts/nrf52840/flash.sh --application probe
+```
+
+The included probe proves Zephyr can call an Embedded Swift function for the
+nRF52840 target and exercises the DK's first LED/button when flashed. It is a
+toolchain milestone, not the completed thermostat, ILI9486 display, or ADS7846
+touch port. Those later phases remain governed by
+[`docs/GiftUI_nRF52840_DK_Platform_Spec.md`](docs/GiftUI_nRF52840_DK_Platform_Spec.md).
+
+Swift 6.3.2 names its bundled ARMv7E-M standard module
+`armv7em-none-none-eabi`. Zephyr supplies the Cortex-M4F and
+`-mfloat-abi=hard` flags, and the build rejects firmware whose ELF does not
+declare the VFP hard-float calling convention.
+
+Agent workflows are defined in `skills/giftui-nrf-toolchain` and
+`skills/giftui-nrf-build-flash`.
+
 ## Debug in Xcode
 
 No generated `.xcodeproj` is required. Open the package directly:

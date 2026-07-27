@@ -1,0 +1,4 @@
+interface:
+  display_name: "GiftUI nRF Build and Flash"
+  short_description: "Build, inspect, and explicitly flash nRF firmware"
+  default_prompt: "Use $giftui-nrf-build-flash to build and inspect GiftUI nRF52840 firmware, flashing only when explicitly requested."
