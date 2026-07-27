@@ -100,6 +100,9 @@ grep -Fq 'Tag_ABI_VFP_args: VFP registers' "${build_dir}/reports/arm-attributes.
 if [[ "${application}" == "probe" ]]; then
     grep -Fq 'giftui_swift_probe_value' "${build_dir}/reports/symbols.txt" ||
         giftui_nrf_error "probe ELF does not contain the Swift entry symbol"
+elif [[ "${application}" == "skeleton" ]]; then
+    grep -Fq 'giftui_swift_application_run' "${build_dir}/reports/symbols.txt" ||
+        giftui_nrf_error "skeleton ELF does not contain the Swift application entry symbol"
 fi
 
 printf 'ELF=%s\n' "${elf}"

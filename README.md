@@ -150,7 +150,7 @@ source scripts/nrf52840/env.sh
 Build a named firmware application:
 
 ```bash
-scripts/nrf52840/build.sh --application probe
+scripts/nrf52840/build.sh --application skeleton
 ```
 
 `build.sh` emits the ELF, HEX, map, resolved Devicetree, section/symbol data,
@@ -158,7 +158,7 @@ and size report. Flashing is never a build side effect. A connected board is
 changed only through an explicit command:
 
 ```bash
-scripts/nrf52840/flash.sh --application probe
+scripts/nrf52840/flash.sh --application skeleton
 ```
 
 The included probe proves Zephyr can call an Embedded Swift function for the
@@ -166,6 +166,12 @@ nRF52840 target and exercises the DK's first LED/button when flashed. It is a
 toolchain milestone, not the completed thermostat, ILI9486 display, or ADS7846
 touch port. Those later phases remain governed by
 [`docs/GiftUI_nRF52840_DK_Platform_Spec.md`](docs/GiftUI_nRF52840_DK_Platform_Spec.md).
+
+The `skeleton` application is the first application-shaped Swift firmware.
+Swift owns its persistent event loop and calls a narrow Zephyr bridge for time,
+UART logging, LED1, and Button 1. LED1 blinks while idle and remains lit while
+Button 1 is held. It intentionally stops before the static GiftUI runtime,
+RGB565 renderer, ILI9486 display, and ADS7846 touch phases.
 
 Swift 6.3.2 names its bundled ARMv7E-M standard module
 `armv7em-none-none-eabi`. Zephyr supplies the Cortex-M4F and
