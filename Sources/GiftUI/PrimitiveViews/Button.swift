@@ -1,12 +1,27 @@
+package enum ButtonAction {
+    case identified(ActionID)
+    case callback(() -> Void)
+}
+
 public struct Button<Label: View>: View, PrimitiveView {
-    package let action: () -> Void
+    package let action: ButtonAction
     package let label: Label
+
+    /// Creates a portable button whose bounded identifier is dispatched by
+    /// the selected runtime.
+    public init(
+        action: ActionID,
+        @ViewBuilder label: () -> Label
+    ) {
+        self.action = .identified(action)
+        self.label = label()
+    }
 
     public init(
         action: @escaping () -> Void,
         @ViewBuilder label: () -> Label
     ) {
-        self.action = action
+        self.action = .callback(action)
         self.label = label()
     }
 
@@ -19,6 +34,12 @@ public struct Button<Label: View>: View, PrimitiveView {
 }
 
 public extension Button where Label == Text {
+    init(_ title: StaticString, action: ActionID) {
+        self.init(action: action) {
+            Text(title)
+        }
+    }
+
     init(_ title: String, action: @escaping () -> Void) {
         self.init(action: action) {
             Text(title)

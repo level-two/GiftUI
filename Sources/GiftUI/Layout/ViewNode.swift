@@ -1,7 +1,7 @@
 package enum ViewNodeKind {
     case group
     case text(String)
-    case button(() -> Void)
+    case button(ButtonAction)
     case vStack(spacing: Int)
     case hStack(spacing: Int)
 }
@@ -269,7 +269,7 @@ public final class ViewNode {
     package func makeInteractionSnapshot() -> InteractionSnapshot {
         var nextID = 0
         var hitRegions: [HitRegion] = []
-        var actions: [ActionID: () -> Void] = [:]
+        var actions: [ActionID: ButtonAction] = [:]
         collectActions(
             nextID: &nextID,
             hitRegions: &hitRegions,
@@ -284,7 +284,7 @@ public final class ViewNode {
     private func collectActions(
         nextID: inout Int,
         hitRegions: inout [HitRegion],
-        actions: inout [ActionID: () -> Void]
+        actions: inout [ActionID: ButtonAction]
     ) {
         if case .button(let action) = kind {
             let actionID = ActionID(rawValue: nextID)

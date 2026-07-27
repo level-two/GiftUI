@@ -348,7 +348,7 @@ func nestedButtonsBuildAConsistentCoreInteractionSnapshot() {
 
     #expect(snapshot.hitTestMap.regions.count == 2)
     #expect(action == ActionID(rawValue: 1))
-    #expect(action.map(snapshot.perform) == true)
+    #expect(action.map { snapshot.perform($0) } == true)
     #expect(outerActivations == 0)
     #expect(innerActivations == 1)
 }

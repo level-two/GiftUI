@@ -127,6 +127,27 @@ func inputBeforeInitialRenderIsIgnored() {
 }
 
 @Test
+func dynamicApplicationDispatchesPortableActionIdentifiers() {
+    let expectedAction = ActionID(rawValue: 42)
+    var receivedActions: [ActionID] = []
+    var backend = RecordingBackend(
+        surfaceSize: Size(width: 80, height: 80)
+    )
+    let application = GiftUIApplication(
+        root: Button("Portable", action: expectedAction),
+        identifiedActionHandler: { receivedActions.append($0) }
+    )
+    application.renderIfNeeded(into: &backend)
+
+    let button = application.hitRegions[0].bounds
+    let point = Point(x: button.origin.x + 1, y: button.origin.y + 1)
+    application.send(.pointerDown(point))
+
+    #expect(application.send(.pointerUp(point)))
+    #expect(receivedActions == [expectedAction])
+}
+
+@Test
 func multipleStateMutationsCoalesceIntoOneRedraw() {
     struct Counter: View {
         @State var count = 0

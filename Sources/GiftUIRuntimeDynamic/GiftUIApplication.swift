@@ -8,6 +8,7 @@ public final class GiftUIApplication<Root: View> {
 
     private let root: Root
     private let backgroundColor: Color
+    private let identifiedActionHandler: ((ActionID) -> Void)?
     private var interaction = InteractionSnapshot()
     private var pressedAction: ActionID?
     private var isRendering = false
@@ -17,11 +18,13 @@ public final class GiftUIApplication<Root: View> {
     public init(
         root: Root,
         runtime: DynamicRuntime = DynamicRuntime(),
-        backgroundColor: Color = Color(red: 24, green: 26, blue: 32)
+        backgroundColor: Color = Color(red: 24, green: 26, blue: 32),
+        identifiedActionHandler: ((ActionID) -> Void)? = nil
     ) {
         self.root = root
         self.runtime = runtime
         self.backgroundColor = backgroundColor
+        self.identifiedActionHandler = identifiedActionHandler
     }
 
     @discardableResult
@@ -72,7 +75,10 @@ public final class GiftUIApplication<Root: View> {
             guard
                 let pressedAction,
                 releasedAction == pressedAction,
-                interaction.perform(pressedAction)
+                interaction.perform(
+                    pressedAction,
+                    identifiedActionHandler: identifiedActionHandler
+                )
             else {
                 return false
             }
