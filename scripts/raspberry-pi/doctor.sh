@@ -61,6 +61,8 @@ check "host swift-autolink-extract exists" \
     test -x "${GIFTUI_PI_HOST_BIN_DIR}/swift-autolink-extract"
 check "host llvm-objdump exists" \
     test -x "${GIFTUI_PI_HOST_BIN_DIR}/llvm-objdump"
+check "host llvm-objcopy exists" \
+    test -x "${GIFTUI_PI_HOST_BIN_DIR}/llvm-objcopy"
 check "host Swift is ${GIFTUI_PI_SWIFT_VERSION}" \
     bash -c '[[ "$1" == *"Swift version $2"* ]]' _ \
     "${host_version}" "${GIFTUI_PI_SWIFT_VERSION}"

@@ -133,8 +133,8 @@ fi
 file_description="$(giftui_pi_verify_armv6_binary "${artifact}")"
 giftui_pi_note "verified deploy artifact: ${file_description}"
 
-ssh_options=(-o BatchMode=yes -o ConnectTimeout=10)
-scp_options=(-o BatchMode=yes -o ConnectTimeout=10)
+ssh_options=(-o BatchMode=yes -o ConnectTimeout=30)
+scp_options=(-o BatchMode=yes -o ConnectTimeout=30)
 if [[ -n "${identity}" ]]; then
     [[ -f "${identity}" ]] || giftui_pi_error "SSH identity not found: ${identity}"
     ssh_options+=(-i "${identity}")

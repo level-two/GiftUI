@@ -137,10 +137,11 @@ binary_path="${binary_directory}/${product}"
 [[ -f "${binary_path}" ]] ||
     giftui_pi_error "SwiftPM completed but ${binary_path} was not produced"
 
-file_description="$(giftui_pi_verify_armv6_binary "${binary_path}")"
-
 cp -f "${binary_path}" "${artifact_path}"
+giftui_pi_note "stripping deploy artifact"
+"${GIFTUI_PI_HOST_BIN_DIR}/llvm-objcopy" --strip-all "${artifact_path}"
 chmod 0755 "${artifact_path}"
 
+file_description="$(giftui_pi_verify_armv6_binary "${artifact_path}")"
 giftui_pi_note "verified ARMv6 hard-float binary: ${file_description}"
 printf 'ARTIFACT=%s\n' "${artifact_path}"
