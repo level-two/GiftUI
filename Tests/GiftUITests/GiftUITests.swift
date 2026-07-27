@@ -2,6 +2,13 @@ import Testing
 @testable import GiftUI
 
 @Test
+func runtimeProfilesHaveDistinctCompileTimeIdentities() {
+    #expect(PortableRuntimeProfile.self != DynamicRuntimeProfile.self)
+    #expect(PortableRuntimeProfile.name.description == "portable")
+    #expect(DynamicRuntimeProfile.name.description == "dynamic")
+}
+
+@Test
 func integerGeometryRetainsValues() {
     let rect = Rect(
         origin: Point(x: 4, y: 8),

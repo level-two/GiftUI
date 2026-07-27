@@ -17,6 +17,15 @@ func statePersistsAndInvalidates() {
 }
 
 @Test
+func dynamicRuntimeDeclaresItsProfileAtCompileTime() {
+    func requireDynamicProfile<Runtime: GiftUIRuntime>(
+        _ runtime: Runtime
+    ) where Runtime.Profile == DynamicRuntimeProfile {}
+
+    requireDynamicProfile(DynamicRuntime())
+}
+
+@Test
 func stateWrapperBindsToRuntimeStorageAndSurvivesReevaluation() {
     struct CounterView: View {
         @State var count = 1

@@ -1,6 +1,8 @@
 import GiftUI
 
-public final class DynamicRuntime {
+public final class DynamicRuntime: GiftUIRuntime {
+    public typealias Profile = DynamicRuntimeProfile
+
     public private(set) var isInvalid = true
     package private(set) var invalidationGeneration: UInt = 0
     public lazy var state = DynamicStateStore { [weak self] in
