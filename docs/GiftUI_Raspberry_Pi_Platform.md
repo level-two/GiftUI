@@ -14,6 +14,8 @@ Raspberry Pi platform target. It:
 - supports 16-, 24-, and 32-bit framebuffer layouts;
 - handles framebuffer stride, offsets, aspect-fit scaling, and clockwise
   rotation;
+- reads single-contact evdev touchscreens and maps their absolute coordinates
+  through the same aspect-fit and rotation transform as the framebuffer;
 - reads three GPIO buttons through the libgpiod character-device API;
 - applies independent monotonic 35 ms debouncing;
 - maps previous/next/activate input to visible focus and GiftUI activation;
@@ -67,11 +69,12 @@ After booting the prepared Raspberry Pi OS Bookworm image:
    gpioinfo /dev/gpiochip0
    ```
 
-5. Give the unprivileged runtime user access to the framebuffer and GPIO
-   character device, normally through the `video` and `gpio` groups:
+5. Give the unprivileged runtime user access to the framebuffer, input, and
+   GPIO character devices, normally through the `video`, `input`, and `gpio`
+   groups:
 
    ```bash
-   sudo usermod -aG video,gpio giftui
+   sudo usermod -aG video,input,gpio giftui
    ```
 
 6. Log out and back in after changing group membership.
@@ -102,6 +105,31 @@ resistor and pass `--gpio-bias disabled`.
 The adapter requests both edges from `libgpiod.so.2`, filters for the configured
 pressed edge, and debounces each button independently using the kernel's
 monotonic event timestamp. It never blocks the GiftUI application loop.
+
+## Touchscreen
+
+Enable the PiScreen's evdev touchscreen with `--touch`. The default device is
+`/dev/input/event0`; prefer a stable `/dev/input/by-path/...` link when more
+than one input device may be attached. GiftUI reads `ABS_X`, `ABS_Y`, and
+`BTN_TOUCH` without blocking and emits pointer-down, pointer-move, and
+pointer-up events.
+
+The kernel-reported absolute axis ranges are detected at startup. Touch
+coordinates are mapped into framebuffer pixels, rejected in aspect-fit black
+bars, and transformed back through the selected GiftUI `--rotation`.
+
+Resistive touch orientation varies across PiScreen revisions and Device Tree
+configurations. Prefer configuring `invx`, `invy`, or `swapxy` on the
+`piscreen` overlay. For runtime-only calibration, use `--touch-invert-x`,
+`--touch-invert-y`, and `--touch-swap-xy`. Do not apply the same transform in
+both places.
+
+Inspect the live device before running GiftUI:
+
+```bash
+grep -A12 -B2 -i touchscreen /proc/bus/input/devices
+evtest /dev/input/event0
+```
 
 ## Build and deploy
 
@@ -137,6 +165,7 @@ For the default PiScreen framebuffer:
 giftui/bin/GiftUIExampleThermostatRaspberryPi \
     --display fbdev \
     --device /dev/fb1 \
+    --touch \
     --gpio-buttons
 ```
 
@@ -151,6 +180,12 @@ giftui/bin/GiftUIExampleThermostatRaspberryPi --once
 
 # Use the primary framebuffer if the panel appears there.
 giftui/bin/GiftUIExampleThermostatRaspberryPi --device /dev/fb0
+
+# Enable a stable touchscreen path and adjust runtime axis orientation.
+giftui/bin/GiftUIExampleThermostatRaspberryPi \
+    --touch-device /dev/input/by-path/platform-20204000.spi-cs-1-event \
+    --touch-swap-xy \
+    --touch-invert-x
 
 # Override GPIO chip offsets and debounce time.
 giftui/bin/GiftUIExampleThermostatRaspberryPi \
@@ -176,7 +211,7 @@ The current target establishes rendering and deployment. Remaining PoC B work
 is intentionally separated:
 
 1. validate the exact PiScreen overlay, rotation, and GPIO lines on hardware;
-2. add evdev/touch input if the selected panel provides a touch controller;
+2. validate touch orientation and calibration on the selected panel;
 3. add a service unit after the device path and permissions are confirmed;
 4. consider DRM presentation if the selected kernel panel driver exposes a
    DRM connector rather than fbdev.

@@ -10,6 +10,7 @@ extern "C" {
 
 typedef struct GiftUIFramebufferDevice GiftUIFramebufferDevice;
 typedef struct GiftUIGPIOInput GiftUIGPIOInput;
+typedef struct GiftUITouchInput GiftUITouchInput;
 
 typedef struct GiftUIGPIOEvent {
     uint32_t line_index;
@@ -20,6 +21,18 @@ typedef struct GiftUIGPIOEvent {
 enum {
     GIFTUI_GPIO_EDGE_RISING = 1,
     GIFTUI_GPIO_EDGE_FALLING = 2,
+};
+
+typedef struct GiftUITouchEvent {
+    int32_t x;
+    int32_t y;
+    uint32_t kind;
+} GiftUITouchEvent;
+
+enum {
+    GIFTUI_TOUCH_DOWN = 1,
+    GIFTUI_TOUCH_MOVE = 2,
+    GIFTUI_TOUCH_UP = 3,
 };
 
 int giftui_linux_is_supported(void);
@@ -63,6 +76,29 @@ void giftui_gpio_close(GiftUIGPIOInput *input);
 int giftui_gpio_poll(
     GiftUIGPIOInput *input,
     GiftUIGPIOEvent *events,
+    size_t event_capacity,
+    size_t *event_count,
+    char *error_message,
+    size_t error_capacity
+);
+
+int giftui_touch_open(
+    const char *device_path,
+    GiftUITouchInput **input,
+    char *error_message,
+    size_t error_capacity
+);
+
+void giftui_touch_close(GiftUITouchInput *input);
+
+int giftui_touch_minimum_x(const GiftUITouchInput *input);
+int giftui_touch_maximum_x(const GiftUITouchInput *input);
+int giftui_touch_minimum_y(const GiftUITouchInput *input);
+int giftui_touch_maximum_y(const GiftUITouchInput *input);
+
+int giftui_touch_poll(
+    GiftUITouchInput *input,
+    GiftUITouchEvent *events,
     size_t event_capacity,
     size_t *event_count,
     char *error_message,

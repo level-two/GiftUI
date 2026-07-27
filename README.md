@@ -87,8 +87,14 @@ GiftUIExampleThermostatRaspberryPi \
     --device /dev/fb1 \
     --width 240 \
     --height 240 \
-    --rotation 0
+    --rotation 0 \
+    --touch
 ```
+
+Touch input is read from `/dev/input/event0` by default and maps evdev absolute
+coordinates through the framebuffer's aspect-fit and rotation transform. Use
+`--touch-device` for a stable device path; runtime swap/invert options are
+available for panels whose Device Tree overlay does not calibrate the axes.
 
 Enable three active-low GPIO buttons with internal pull-ups:
 

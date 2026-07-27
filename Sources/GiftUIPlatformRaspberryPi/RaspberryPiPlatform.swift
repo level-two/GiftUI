@@ -27,6 +27,28 @@ public final class RaspberryPiPlatform {
                 + "rotation \(configuration.rotation.rawValue)°"
         )
 
+        var inputSources: [any LinuxInputSource] = []
+        if let touchConfiguration = configuration.touchInput {
+            let touchInput = try TouchInputSource(
+                configuration: touchConfiguration,
+                physicalSize: Size(
+                    width: display.physicalWidth,
+                    height: display.physicalHeight
+                ),
+                logicalSize: configuration.logicalSize,
+                rotation: configuration.rotation
+            )
+            inputSources.append(touchInput)
+            logger(
+                "GiftUI Raspberry Pi touch \(touchConfiguration.devicePath): "
+                    + "x=\(touchInput.xRange.minimum)...\(touchInput.xRange.maximum), "
+                    + "y=\(touchInput.yRange.minimum)...\(touchInput.yRange.maximum), "
+                    + "swapXY=\(touchConfiguration.swapXY), "
+                    + "invertX=\(touchConfiguration.invertX), "
+                    + "invertY=\(touchConfiguration.invertY)"
+            )
+        }
+
         var navigationInputSources: [any LinuxNavigationInputSource] = []
         if let gpioConfiguration = configuration.gpioButtons {
             navigationInputSources.append(
@@ -44,6 +66,7 @@ public final class RaspberryPiPlatform {
         let application = GiftUILinuxApplication(
             root: root,
             display: display,
+            inputSources: inputSources,
             navigationInputSources: navigationInputSources,
             configuration: LinuxApplicationConfiguration(
                 idleSleepMilliseconds: configuration.idleSleepMilliseconds,

@@ -15,6 +15,7 @@
 #include <dlfcn.h>
 #include <fcntl.h>
 #include <linux/fb.h>
+#include <linux/input.h>
 #include <poll.h>
 #include <signal.h>
 #include <sys/ioctl.h>
@@ -28,6 +29,18 @@ struct GiftUIFramebufferDevice {
     struct fb_var_screeninfo variable;
     uint8_t *memory;
     size_t memory_length;
+};
+
+struct GiftUITouchInput {
+    int file_descriptor;
+    struct input_absinfo x_axis;
+    struct input_absinfo y_axis;
+    int x;
+    int y;
+    int touching;
+    int reported_touching;
+    int reported_x;
+    int reported_y;
 };
 
 struct gpiod_chip;
@@ -704,6 +717,179 @@ int giftui_gpio_poll(
     return 0;
 }
 
+int giftui_touch_open(
+    const char *device_path,
+    GiftUITouchInput **input,
+    char *error_message,
+    size_t error_capacity
+) {
+    if (device_path == NULL || input == NULL) {
+        errno = EINVAL;
+        giftui_set_error(error_message, error_capacity, "invalid touch input arguments");
+        return -1;
+    }
+
+    *input = NULL;
+    int file_descriptor = open(
+        device_path,
+        O_RDONLY | O_NONBLOCK | O_CLOEXEC
+    );
+    if (file_descriptor < 0) {
+        giftui_set_error(error_message, error_capacity, "open touch input");
+        return -1;
+    }
+
+    GiftUITouchInput *opened = calloc(1, sizeof(*opened));
+    if (opened == NULL) {
+        giftui_set_error(error_message, error_capacity, "allocate touch input state");
+        close(file_descriptor);
+        return -1;
+    }
+    opened->file_descriptor = file_descriptor;
+
+    if (ioctl(file_descriptor, EVIOCGABS(ABS_X), &opened->x_axis) < 0) {
+        giftui_set_error(error_message, error_capacity, "query touch X axis");
+        giftui_touch_close(opened);
+        return -1;
+    }
+    if (ioctl(file_descriptor, EVIOCGABS(ABS_Y), &opened->y_axis) < 0) {
+        giftui_set_error(error_message, error_capacity, "query touch Y axis");
+        giftui_touch_close(opened);
+        return -1;
+    }
+    if (
+        opened->x_axis.maximum <= opened->x_axis.minimum
+        || opened->y_axis.maximum <= opened->y_axis.minimum
+    ) {
+        errno = EINVAL;
+        giftui_set_error(error_message, error_capacity, "invalid touch axis range");
+        giftui_touch_close(opened);
+        return -1;
+    }
+
+    opened->x = opened->x_axis.value;
+    opened->y = opened->y_axis.value;
+    *input = opened;
+    return 0;
+}
+
+void giftui_touch_close(GiftUITouchInput *input) {
+    if (input == NULL) {
+        return;
+    }
+    if (input->file_descriptor >= 0) {
+        close(input->file_descriptor);
+    }
+    free(input);
+}
+
+int giftui_touch_minimum_x(const GiftUITouchInput *input) {
+    return input == NULL ? 0 : input->x_axis.minimum;
+}
+
+int giftui_touch_maximum_x(const GiftUITouchInput *input) {
+    return input == NULL ? 0 : input->x_axis.maximum;
+}
+
+int giftui_touch_minimum_y(const GiftUITouchInput *input) {
+    return input == NULL ? 0 : input->y_axis.minimum;
+}
+
+int giftui_touch_maximum_y(const GiftUITouchInput *input) {
+    return input == NULL ? 0 : input->y_axis.maximum;
+}
+
+static void giftui_touch_report(
+    GiftUITouchInput *input,
+    GiftUITouchEvent *events,
+    size_t *event_count
+) {
+    uint32_t kind = 0;
+    if (input->touching != 0 && input->reported_touching == 0) {
+        kind = GIFTUI_TOUCH_DOWN;
+    } else if (
+        input->touching != 0
+        && (
+            input->x != input->reported_x
+            || input->y != input->reported_y
+        )
+    ) {
+        kind = GIFTUI_TOUCH_MOVE;
+    } else if (input->touching == 0 && input->reported_touching != 0) {
+        kind = GIFTUI_TOUCH_UP;
+    }
+
+    if (kind != 0) {
+        GiftUITouchEvent *event = &events[*event_count];
+        event->x = input->x;
+        event->y = input->y;
+        event->kind = kind;
+        *event_count += 1;
+    }
+    input->reported_x = input->x;
+    input->reported_y = input->y;
+    input->reported_touching = input->touching;
+}
+
+int giftui_touch_poll(
+    GiftUITouchInput *input,
+    GiftUITouchEvent *events,
+    size_t event_capacity,
+    size_t *event_count,
+    char *error_message,
+    size_t error_capacity
+) {
+    if (
+        input == NULL
+        || events == NULL
+        || event_capacity == 0
+        || event_count == NULL
+    ) {
+        errno = EINVAL;
+        giftui_set_error(error_message, error_capacity, "invalid touch poll arguments");
+        return -1;
+    }
+
+    *event_count = 0;
+    while (*event_count < event_capacity) {
+        struct input_event raw_event;
+        ssize_t byte_count = read(
+            input->file_descriptor,
+            &raw_event,
+            sizeof(raw_event)
+        );
+        if (byte_count < 0) {
+            if (errno == EAGAIN || errno == EWOULDBLOCK || errno == EINTR) {
+                return 0;
+            }
+            giftui_set_error(error_message, error_capacity, "read touch input");
+            return -1;
+        }
+        if (byte_count == 0) {
+            errno = ENODEV;
+            giftui_set_error(error_message, error_capacity, "touch input disconnected");
+            return -1;
+        }
+        if ((size_t)byte_count != sizeof(raw_event)) {
+            errno = EIO;
+            giftui_set_error(error_message, error_capacity, "read partial touch event");
+            return -1;
+        }
+
+        if (raw_event.type == EV_ABS && raw_event.code == ABS_X) {
+            input->x = raw_event.value;
+        } else if (raw_event.type == EV_ABS && raw_event.code == ABS_Y) {
+            input->y = raw_event.value;
+        } else if (raw_event.type == EV_KEY && raw_event.code == BTN_TOUCH) {
+            input->touching = raw_event.value != 0;
+        } else if (raw_event.type == EV_SYN && raw_event.code == SYN_REPORT) {
+            giftui_touch_report(input, events, event_count);
+        }
+    }
+
+    return 0;
+}
+
 int giftui_linux_install_signal_handlers(
     char *error_message,
     size_t error_capacity
@@ -748,6 +934,10 @@ struct GiftUIFramebufferDevice {
 };
 
 struct GiftUIGPIOInput {
+    int unavailable;
+};
+
+struct GiftUITouchInput {
     int unavailable;
 };
 
@@ -848,6 +1038,62 @@ void giftui_gpio_close(GiftUIGPIOInput *input) {
 int giftui_gpio_poll(
     GiftUIGPIOInput *input,
     GiftUIGPIOEvent *events,
+    size_t event_capacity,
+    size_t *event_count,
+    char *error_message,
+    size_t error_capacity
+) {
+    (void)input;
+    (void)events;
+    (void)event_capacity;
+    if (event_count != NULL) {
+        *event_count = 0;
+    }
+    giftui_unsupported(error_message, error_capacity);
+    return -1;
+}
+
+int giftui_touch_open(
+    const char *device_path,
+    GiftUITouchInput **input,
+    char *error_message,
+    size_t error_capacity
+) {
+    (void)device_path;
+    if (input != NULL) {
+        *input = NULL;
+    }
+    giftui_unsupported(error_message, error_capacity);
+    return -1;
+}
+
+void giftui_touch_close(GiftUITouchInput *input) {
+    (void)input;
+}
+
+int giftui_touch_minimum_x(const GiftUITouchInput *input) {
+    (void)input;
+    return 0;
+}
+
+int giftui_touch_maximum_x(const GiftUITouchInput *input) {
+    (void)input;
+    return 0;
+}
+
+int giftui_touch_minimum_y(const GiftUITouchInput *input) {
+    (void)input;
+    return 0;
+}
+
+int giftui_touch_maximum_y(const GiftUITouchInput *input) {
+    (void)input;
+    return 0;
+}
+
+int giftui_touch_poll(
+    GiftUITouchInput *input,
+    GiftUITouchEvent *events,
     size_t event_capacity,
     size_t *event_count,
     char *error_message,

@@ -13,6 +13,80 @@ func raspberryPiConfigurationUsesPiScreenDefaults() throws {
     #expect(configuration.idleSleepMilliseconds == 20)
     #expect(!configuration.exitAfterInitialFrame)
     #expect(configuration.gpioButtons == nil)
+    #expect(configuration.touchInput == nil)
+}
+
+@Test
+func raspberryPiConfigurationParsesTouchInput() throws {
+    let configuration = try RaspberryPiConfiguration(arguments: [
+        "--touch-device", "/dev/input/by-path/piscreen-event",
+        "--touch-swap-xy",
+        "--touch-invert-x",
+        "--touch-invert-y",
+    ])
+
+    let touch = try #require(configuration.touchInput)
+    #expect(touch.devicePath == "/dev/input/by-path/piscreen-event")
+    #expect(touch.swapXY)
+    #expect(touch.invertX)
+    #expect(touch.invertY)
+}
+
+@Test
+func raspberryPiConfigurationRejectsEmptyTouchDevice() {
+    #expect(throws: RaspberryPiConfigurationError.self) {
+        _ = try RaspberryPiConfiguration(arguments: [
+            "--touch-device", "",
+        ])
+    }
+}
+
+@Test
+func touchCoordinatesFollowAspectFitContent() {
+    let mapper = TouchCoordinateMapper(
+        xRange: TouchAxisRange(minimum: 0, maximum: 479),
+        yRange: TouchAxisRange(minimum: 0, maximum: 319),
+        physicalSize: Size(width: 480, height: 320),
+        logicalSize: Size(width: 240, height: 240)
+    )
+
+    #expect(mapper.point(rawX: 79, rawY: 160) == nil)
+    #expect(mapper.point(rawX: 80, rawY: 0) == Point(x: 0, y: 0))
+    #expect(mapper.point(rawX: 399, rawY: 319) == Point(x: 239, y: 239))
+    #expect(mapper.point(rawX: 400, rawY: 160) == nil)
+}
+
+@Test
+func touchCoordinatesInvertFramebufferRotation() {
+    let range = TouchAxisRange(minimum: 0, maximum: 239)
+    let mapper = TouchCoordinateMapper(
+        xRange: range,
+        yRange: range,
+        physicalSize: Size(width: 240, height: 240),
+        logicalSize: Size(width: 240, height: 240),
+        rotation: .degrees90
+    )
+
+    #expect(mapper.point(rawX: 0, rawY: 0) == Point(x: 0, y: 239))
+    #expect(mapper.point(rawX: 239, rawY: 0) == Point(x: 0, y: 0))
+    #expect(mapper.point(rawX: 0, rawY: 239) == Point(x: 239, y: 239))
+    #expect(mapper.point(rawX: 239, rawY: 239) == Point(x: 239, y: 0))
+}
+
+@Test
+func touchCoordinatesApplyAxisCalibration() {
+    let range = TouchAxisRange(minimum: 0, maximum: 99)
+    let mapper = TouchCoordinateMapper(
+        xRange: range,
+        yRange: range,
+        physicalSize: Size(width: 100, height: 100),
+        logicalSize: Size(width: 100, height: 100),
+        swapXY: true,
+        invertX: true,
+        invertY: true
+    )
+
+    #expect(mapper.point(rawX: 10, rawY: 20) == Point(x: 79, y: 89))
 }
 
 @Test

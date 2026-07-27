@@ -8,6 +8,7 @@ public struct RaspberryPiConfiguration: Equatable, Sendable {
     public var idleSleepMilliseconds: UInt32
     public var exitAfterInitialFrame: Bool
     public var gpioButtons: GPIOButtonConfiguration?
+    public var touchInput: TouchInputConfiguration?
 
     public init(
         framebufferDevice: String = "/dev/fb1",
@@ -15,7 +16,8 @@ public struct RaspberryPiConfiguration: Equatable, Sendable {
         rotation: DisplayRotation = .degrees0,
         idleSleepMilliseconds: UInt32 = 20,
         exitAfterInitialFrame: Bool = false,
-        gpioButtons: GPIOButtonConfiguration? = nil
+        gpioButtons: GPIOButtonConfiguration? = nil,
+        touchInput: TouchInputConfiguration? = nil
     ) {
         precondition(!framebufferDevice.isEmpty, "Framebuffer device must not be empty")
         precondition(
@@ -32,6 +34,7 @@ public struct RaspberryPiConfiguration: Equatable, Sendable {
         self.idleSleepMilliseconds = idleSleepMilliseconds
         self.exitAfterInitialFrame = exitAfterInitialFrame
         self.gpioButtons = gpioButtons
+        self.touchInput = touchInput
     }
 
     public init(arguments: [String]) throws {
@@ -49,6 +52,11 @@ public struct RaspberryPiConfiguration: Equatable, Sendable {
         var gpioActiveLow = true
         var gpioBias = GPIOBias.pullUp
         var gpioDebounceMilliseconds: UInt32 = 35
+        var touchEnabled = false
+        var touchDevice = "/dev/input/event0"
+        var touchSwapXY = false
+        var touchInvertX = false
+        var touchInvertY = false
         var index = 0
 
         while index < arguments.count {
@@ -169,6 +177,29 @@ public struct RaspberryPiConfiguration: Equatable, Sendable {
                     )
                 }
                 gpioDebounceMilliseconds = milliseconds
+            case "--touch":
+                touchEnabled = true
+            case "--touch-device":
+                touchEnabled = true
+                touchDevice = try Self.value(
+                    after: argument,
+                    at: &index,
+                    in: arguments
+                )
+                guard !touchDevice.isEmpty else {
+                    throw RaspberryPiConfigurationError(
+                        "--touch-device requires a non-empty path"
+                    )
+                }
+            case "--touch-swap-xy":
+                touchEnabled = true
+                touchSwapXY = true
+            case "--touch-invert-x":
+                touchEnabled = true
+                touchInvertX = true
+            case "--touch-invert-y":
+                touchEnabled = true
+                touchInvertY = true
             default:
                 throw RaspberryPiConfigurationError(
                     "unknown argument '\(argument)'"
@@ -199,6 +230,12 @@ public struct RaspberryPiConfiguration: Equatable, Sendable {
             bias: gpioBias,
             debounceMilliseconds: gpioDebounceMilliseconds
         ) : nil
+        let touchInput = touchEnabled ? TouchInputConfiguration(
+            devicePath: touchDevice,
+            swapXY: touchSwapXY,
+            invertX: touchInvertX,
+            invertY: touchInvertY
+        ) : nil
 
         self.init(
             framebufferDevice: framebufferDevice,
@@ -206,7 +243,8 @@ public struct RaspberryPiConfiguration: Equatable, Sendable {
             rotation: rotation,
             idleSleepMilliseconds: idleSleepMilliseconds,
             exitAfterInitialFrame: exitAfterInitialFrame,
-            gpioButtons: gpioButtons
+            gpioButtons: gpioButtons,
+            touchInput: touchInput
         )
     }
 
@@ -230,6 +268,12 @@ public struct RaspberryPiConfiguration: Equatable, Sendable {
           --gpio-bias MODE   pull-up (default) or disabled.
           --gpio-debounce-ms MS
                              Debounce window (default: 35).
+          --touch            Enable evdev touchscreen input.
+          --touch-device PATH
+                             Touch event device (default: /dev/input/event0).
+          --touch-swap-xy    Swap touchscreen X and Y axes.
+          --touch-invert-x   Invert the mapped touchscreen X axis.
+          --touch-invert-y   Invert the mapped touchscreen Y axis.
           -h, --help         Show this help.
         """
 
