@@ -1522,6 +1522,11 @@ Potential modules:
 - memory-mapped display controller;
 - terminal/text-mode display.
 
+The concrete migration plan for an allocation-bounded RGB565 renderer on the
+Nordic nRF52840-DK, including ILI9486 display and ADS7846 touch integration, is
+defined in
+[`GiftUI_nRF52840_DK_Platform_Spec.md`](GiftUI_nRF52840_DK_Platform_Spec.md).
+
 ### RTOS integration
 
 Adapters may integrate GiftUI's update loop with:

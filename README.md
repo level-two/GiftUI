@@ -161,6 +161,9 @@ configuration code are isolated to their platform modules.
 The implementation specifications are in
 [`docs/GiftUI_Framework_Spec.md`](docs/GiftUI_Framework_Spec.md) and
 [`docs/GiftUI_PoC_A_macOS_Simulator_Spec.md`](docs/GiftUI_PoC_A_macOS_Simulator_Spec.md).
+The proposed Embedded Swift/Zephyr port for the Nordic nRF52840-DK and an
+ILI9486/ADS7846 PiScreen is specified separately in
+[`docs/GiftUI_nRF52840_DK_Platform_Spec.md`](docs/GiftUI_nRF52840_DK_Platform_Spec.md).
 
 ## PoC runtime constraints
 
