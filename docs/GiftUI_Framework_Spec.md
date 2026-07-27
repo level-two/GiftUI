@@ -146,7 +146,126 @@ A `View` describes UI structure. It must not directly:
 
 ### 3.3 Capability-based profiles
 
-The static profile must not be implemented as an afterthought. Code requiring allocation should be isolated behind modules or compile-time capabilities.
+The static profile must not be implemented as an afterthought. Code requiring
+allocation should be isolated behind modules or compile-time capabilities.
+
+GiftUI defines two language/runtime profiles:
+
+1. **Portable profile**
+   - valid for both static and dynamic runtimes;
+   - uses bounded or statically known storage;
+   - uses typed actions instead of requiring stored escaping closures;
+   - has deterministic capacity and failure behavior;
+   - is the only profile for which cross-platform source invariance is
+     guaranteed.
+2. **Dynamic convenience profile**
+   - adds heap-backed strings, collections, heterogeneous storage, escaping
+     callback closures, and other facilities suitable for capable systems;
+   - is opt-in and must not become a dependency of the portable core;
+   - is source-compatible only with configurations that declare dynamic
+     runtime support.
+
+Static and dynamic describe storage and language/runtime capabilities. They do
+not describe a particular operating system. A platform chooses a supported
+combination explicitly; it is not required to implement every runtime profile.
+
+The initial supported configuration matrix is:
+
+| Configuration | Runtime profile | Presentation/input |
+| --- | --- | --- |
+| macOS simulator | Dynamic | AppKit and mouse |
+| Raspberry Pi 1 / Linux | Dynamic | Linux framebuffer, evdev, and libgpiod |
+| nRF52840-DK / Zephyr | Portable/static | RGB565 SPI display, touch, and GPIO |
+| Host static test harness | Portable/static | Recording and bounded test backends |
+
+Adding nRF52840 support does not require a dynamic nRF52840 runtime. Adding the
+static runtime does not require shipping it on every Linux or macOS product.
+
+#### 3.3.1 Source-invariance contract
+
+GiftUI invariance applies at three different levels:
+
+- **Semantic invariance:** layout, state mutation, invalidation, rendering
+  order, and input dispatch have the same documented behavior in every
+  conforming profile.
+- **Portable source invariance:** a view written only with portable-profile
+  APIs must compile unchanged against every supported runtime and platform.
+- **Convenience source invariance:** not guaranteed. A view that selects a
+  dynamic-only overload is intentionally restricted to dynamic configurations.
+
+The implementation and storage representation are not invariant. Dynamic and
+static runtimes may use completely different state, node, text, action, and
+render storage as long as portable semantics and conformance tests agree.
+
+#### 3.3.2 Feature classification
+
+Every public feature must be assigned one of these classes:
+
+| Class | Meaning | Examples | Policy |
+| --- | --- | --- | --- |
+| Portable | Same source and semantics in both profiles | geometry, stacks, bounded state, typed actions, static/bounded text | Lives in the portable core |
+| Dynamic convenience | Requires or permits unbounded allocation/runtime behavior | escaping callback closures, `String` interpolation, dynamic lists, `Any` state | Lives in an opt-in dynamic extension |
+| Platform capability | Depends on an OS, RTOS, or device | mouse, evdev, GPIO, BLE, ILI9486, ADS7846 | Lives in a platform/hardware module |
+| Unsupported | Cannot meet the selected profile's contract | unbounded list on a heap-free target | Produces a compile-time diagnostic |
+
+When a dynamic convenience represents behavior needed by portable
+applications, GiftUI must provide a portable alternative. Examples include:
+
+| Dynamic convenience | Portable alternative |
+| --- | --- |
+| `Button { capturedState += 1 }` | typed `GiftUIAction` or application action enum |
+| `Text("\(value)")` | bounded formatting or a generated/static text value |
+| dynamically growing list | fixed-capacity collection with explicit overflow |
+| `Any`-backed state | typed/generated state slots |
+| retained `DisplayList` array | direct sink or fixed-capacity operation buffer |
+
+#### 3.3.3 Availability and conditional-compilation policy
+
+Profile selection is compile time. GiftUI must not implement profile support as
+runtime `if available` checks in view bodies.
+
+- Use separate products/modules or narrowly scoped compile-time capability
+  facades for dynamic conveniences and platform integrations.
+- Prefer the absence of an unsupported overload plus a clear compiler
+  diagnostic over a runtime trap.
+- `@available` is reserved for genuine platform or API-version availability;
+  it is not the primary mechanism for heap/static capability selection.
+- `#if`, `canImport`, and Embedded Swift feature checks may select
+  implementations at module boundaries, but must not be scattered through
+  client view declarations or core layout semantics.
+- Hardware presence may be checked at runtime by the owning platform module.
+  For example, a platform may report that touch is disconnected. That is
+  distinct from runtime-profile availability.
+- A build must declare its runtime profile and platform capabilities so its
+  supported surface is inspectable and testable.
+
+The preferred module direction is:
+
+```text
+GiftUI dynamic convenience extensions (optional)
+                   ↓ depends on
+GiftUI portable API and semantic contracts
+
+GiftUIRuntimeStatic      GiftUIRuntimeDynamic
+          \                 /
+           selected application product
+                       ↓
+       platform and hardware adapters
+```
+
+Dynamic convenience modules may extend portable types with closure- or
+heap-backed initializers. The portable core must not import those extensions.
+
+#### 3.3.4 Callback policy
+
+Escaping callback closures are a dynamic convenience, not a universal GiftUI
+requirement. The portable action representation is a bounded value or action
+identifier dispatched by the application/runtime.
+
+Closure syntax may become portable only if the Embedded Swift implementation
+can prove that its capture and lifetime require no forbidden or unbounded
+storage. Until that is demonstrated by generated code and allocation tests,
+closure-backed `Button` APIs remain dynamic-only.
 
 ### 3.4 Predictable memory and execution
 
@@ -163,6 +282,50 @@ GiftUI should allow a target to determine or bound:
 ### 3.5 Backend replaceability
 
 A backend implementation must reside outside `GiftUICore`. The PoC framebuffer backend must be independently importable and replaceable.
+
+### 3.6 Cost model and containment
+
+Supporting both runtime profiles has a real engineering cost:
+
+- two storage/runtime implementations and their diagnostics;
+- a deliberately smaller portable API surface;
+- bounded variants of text, actions, lists, state, and render queues;
+- resource accounting and overflow tests that dynamic-only frameworks avoid;
+- semantic conformance tests run against both runtimes;
+- platform adapters and hardware drivers with their own validation fixtures;
+- documentation that classifies each public API by capability.
+
+This is not a duplicate implementation of the entire framework. View
+composition, geometry, layout rules, render-operation semantics, and input
+semantics remain shared. The principal duplication is storage/execution:
+state, nodes, text, actions, queues, invalidation bookkeeping, and render
+staging. In practical planning, the first static runtime is a substantial
+framework milestone comparable to implementing a second runtime, while each
+later platform or hardware target should mostly pay for its adapter/driver and
+end-to-end validation rather than another GiftUI core.
+
+This cost must be contained by testing contracts in layers rather than testing
+the full Cartesian product of every runtime, backend, platform, and device:
+
+1. run shared semantic suites against dynamic and static host runtimes;
+2. run renderer contracts once per backend;
+3. run event-loop/input contracts once per platform adapter;
+4. run driver tests once per hardware controller;
+5. run end-to-end tests only for configurations declared supported in the
+   configuration matrix.
+
+Each new feature pays the two-profile cost only if it is classified portable.
+A dynamic convenience needs dynamic tests and a documented portable
+alternative when equivalent behavior is required. A platform or hardware
+feature remains below the core and does not multiply the runtime API surface.
+
+Review of a public API addition must answer:
+
+- Which feature class does it belong to?
+- What storage and execution bounds does it impose?
+- What is its portable alternative, if one is needed?
+- Which contract suites and supported configurations must exercise it?
+- Does it introduce conditional compilation outside an approved boundary?
 
 ---
 
@@ -298,6 +461,20 @@ May use:
 - reference types;
 - escaping closures;
 - dynamically growing storage.
+
+#### Dynamic convenience extensions
+
+Dynamic-only public conveniences must be isolated from the portable core,
+whether implemented as a separate `GiftUIDynamicConveniences` module or as a
+narrowly scoped product facade. They may add:
+
+- closure-backed control initializers;
+- unbounded `String` formatting;
+- dynamically growing collection views;
+- other APIs whose contract permits heap growth.
+
+Importing a dynamic runtime must not make the portable core depend on these
+extensions. A portable application should be able to compile without them.
 
 #### `GiftUIRuntimeStatic`
 
@@ -451,6 +628,15 @@ Static-profile consideration:
   - string table identifiers;
   - externally supplied buffers.
 
+Profile rule:
+
+- static strings and explicitly bounded text/formatting belong to the portable
+  profile;
+- unbounded `String` construction and interpolation belong to the dynamic
+  convenience profile until their storage can be bounded and verified;
+- both paths must produce equivalent glyph/layout semantics for text that fits
+  within the portable representation.
+
 ## 8.2 `Button`
 
 PoC API:
@@ -472,7 +658,7 @@ Dynamic runtime:
 
 - may store an escaping closure.
 
-Static runtime future-compatible API:
+Portable/static API:
 
 ```swift
 public struct Button<Label: View, Action: GiftUIAction>: View {
@@ -490,6 +676,12 @@ Button("-", action: AppAction.decrement)
 ```
 
 The PoC may implement closure-based actions first, but the core architecture must not make closures the only possible event representation.
+
+The closure-backed initializers are dynamic conveniences. They may remain
+available to current macOS and Linux clients through the dynamic facade, but a
+portable view must use a typed action unless allocation-free closure lowering
+has been proven for the selected Embedded Swift toolchain. This distinction is
+compile-time API selection, not a runtime `if available` branch.
 
 Button responsibilities:
 
@@ -1043,11 +1235,17 @@ The dynamic runtime is the first recommended implementation target.
 - simplest diagnostics;
 - suitable as the foundation for Qt and desktop-host backends.
 
+Dynamic convenience conformance does not expand the portable contract. A
+dynamic runtime must run portable views with the same semantics as the static
+runtime, then may additionally accept dynamic-only APIs.
+
 ---
 
 ## 16. Static Runtime Profile
 
-The static profile must preserve the declarative API where possible while replacing runtime storage.
+The static profile must implement the portable declarative API while replacing
+runtime storage. It is not required to accept APIs classified as dynamic
+conveniences.
 
 ### Constraints
 
@@ -1102,6 +1300,10 @@ enum ThermostatAction {
 ```
 
 The root runtime dispatches actions without heap-allocated closures.
+
+Selecting the static profile must make dynamic-only overloads unavailable at
+compile time. The static runtime must not retain placeholder implementations
+that trap when invoked.
 
 ### Static text model
 
@@ -1599,6 +1801,14 @@ Implementations may change, but these constraints should remain stable:
 8. Layout belongs to GiftUICore, not to the framebuffer backend.
 9. Hardware display transport is below the framebuffer surface abstraction.
 10. Dynamic conveniences must not prevent a later allocation-bounded runtime.
+11. Cross-platform source invariance is guaranteed for the portable profile,
+    not for every dynamic convenience.
+12. Runtime-profile selection is compile time; hardware presence belongs to
+    the owning platform module at runtime.
+13. Conditional compilation is confined to capability/module boundaries and
+    must not spread through portable view declarations or layout semantics.
+14. Supported configurations are explicit; GiftUI does not promise every
+    runtime × backend × platform × hardware combination.
 
 ---
 
@@ -1612,7 +1822,13 @@ import GiftUIRuntimeDynamic
 import GiftUIBackendFramebuffer
 ```
 
-creates a framebuffer-backed application, renders `ThermostatView`, accepts simulated button presses, and produces correctly updated pixels while the `ThermostatView` source remains identical regardless of the selected backend.
+creates a framebuffer-backed application, renders `ThermostatView`, accepts
+simulated button presses, and produces correctly updated pixels while the
+`ThermostatView` source remains identical regardless of the selected backend.
+This source-invariance requirement applies across runtime profiles only when
+the view uses the portable API. A dynamic-only convenience may require a
+portable typed or bounded alternative before the view can target a static
+runtime.
 
 The architecture must also demonstrate a credible replacement path for:
 
@@ -1622,3 +1838,8 @@ GiftUIBackendFramebuffer → GiftUIBackendQt / GiftUIBackendLVGL / another backe
 ```
 
 without rewriting the application's declarative view hierarchy.
+
+The static-runtime milestone must also demonstrate that unsupported dynamic
+conveniences fail at compile time, that portable alternatives exist for the
+thermostat's text and actions, and that the same portable thermostat source
+runs under both static and dynamic host conformance tests.

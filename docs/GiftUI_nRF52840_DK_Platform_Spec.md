@@ -352,7 +352,42 @@ The exact CMake/Swift module packaging may differ from SwiftPM target names,
 but dependency direction must remain the same. `GiftUI` must not import Zephyr,
 Nordic, ILI9486, or ADS7846 APIs.
 
-### 6.2 Current-to-target migration map
+### 6.2 Profile selection and application portability
+
+This firmware selects the portable/static GiftUI profile at compile time. It
+must not expose dynamic-only overloads and then trap when they are used.
+
+The framework-level portability contract is defined in
+[`GiftUI_Framework_Spec.md`](GiftUI_Framework_Spec.md), section 3.3. For this
+board it means:
+
+- core layout, state/invalidation semantics, rendering order, and hit testing
+  remain invariant;
+- storage and execution implementations are nRF52840-specific and bounded;
+- a view source remains unchanged only if it uses portable-profile APIs;
+- escaping closure callbacks and unbounded `String` interpolation are not
+  assumed portable merely because they work in the macOS and Linux products;
+- ILI9486, ADS7846, Zephyr, and board APIs remain below the view declaration.
+
+The current thermostat source uses closure-backed buttons and interpolated
+`String`. The migration must therefore choose and verify one of these paths:
+
+1. replace those uses with typed actions and bounded text, then use the same
+   portable thermostat source in dynamic and static configurations; or
+2. prove that the selected Embedded Swift compiler lowers the existing closure
+   and text forms into bounded, allocation-free storage, then admit those exact
+   forms into the portable profile with generated-code and allocation tests.
+
+Path 1 is the required baseline. Path 2 is an optional ergonomic optimization;
+it must not delay a correct static port.
+
+No `#if` or runtime `if available` branch may be added to `ThermostatView` for
+Zephyr, ILI9486, ADS7846, or static storage. Compile-time conditions belong in
+the profile facade, runtime implementation, platform entry point, or hardware
+adapter. Runtime checks are appropriate only for physical state such as a
+missing/unresponsive touch controller.
+
+### 6.3 Current-to-target migration map
 
 | Current implementation | Why it cannot be used unchanged | Required replacement |
 | --- | --- | --- |
@@ -369,7 +404,7 @@ Nordic, ILI9486, or ADS7846 APIs.
 | `libgpiod` navigation buttons | Requires Linux shared library and file descriptors | Zephyr GPIO callbacks/events |
 | Linux poll/signal loop | Requires process/OS facilities | Zephyr event loop and timer |
 
-### 6.3 Embedded Swift compatibility pass
+### 6.4 Embedded Swift compatibility pass
 
 Before designing static storage around code that does not compile, create an
 Embedded Swift compile-only target for the shared `GiftUI` sources. Classify
@@ -389,7 +424,7 @@ The compatibility pass must produce a tracked inventory. It must not weaken
 the macOS/Linux implementation simply to silence embedded diagnostics; use
 profile-specific storage and implementations where appropriate.
 
-### 6.4 Static state and invalidation
+### 6.5 Static state and invalidation
 
 The thermostat milestone needs one `Int` state value but the runtime design
 must not hard-code temperature semantics.
@@ -406,7 +441,7 @@ Preferred progression:
 No static-runtime state write may silently fall back to local property-wrapper
 storage after the view has been bound.
 
-### 6.5 Static view expansion and layout
+### 6.6 Static view expansion and layout
 
 Replace `ViewNode` allocation with one of:
 
@@ -421,7 +456,7 @@ tests. Its capacity, maximum child count, and traversal depth must be explicit.
 The thermostat firmware must fail deterministically if a view exceeds those
 capacities. Recursion depth and task/interrupt stack measurements are required.
 
-### 6.6 Typed actions and interaction snapshot
+### 6.7 Typed actions and interaction snapshot
 
 For the first firmware, use a typed action model such as:
 
@@ -441,7 +476,7 @@ existing closure-shaped declaration to lower into typed static actions. Until
 that is proven, source compatibility is a goal rather than an unsupported
 claim.
 
-### 6.7 Bounded text and font data
+### 6.8 Bounded text and font data
 
 The static text profile must provide:
 
@@ -455,7 +490,7 @@ The dynamic `Text(String)` API may remain for host targets. The static target
 may introduce a bounded text value internally or publicly if the Embedded
 Swift compiler cannot specialize the existing path safely.
 
-### 6.8 RGB565 tile renderer
+### 6.9 RGB565 tile renderer
 
 The renderer shall:
 
@@ -474,7 +509,7 @@ should track dirty rectangles from invalidation and update only affected
 regions. A thermostat button press should not require a full-screen transfer
 after dirty-region support is accepted.
 
-### 6.9 Zephyr application loop
+### 6.10 Zephyr application loop
 
 The firmware loop must be event driven:
 
@@ -532,13 +567,17 @@ linking Linux or Apple frameworks.
 ### Phase 3 — Static thermostat runtime on the host
 
 1. Implement bounded state, node, action, hit-region, text, and render storage.
-2. Run the thermostat with static storage in host tests.
-3. Add explicit capacity-exhaustion tests.
-4. Compare layout, pixels, touch dispatch, and state changes with the dynamic
+2. Convert the thermostat to portable typed actions and bounded text unless
+   allocation-free lowering of its existing syntax has already been proven.
+3. Run the same portable thermostat source with static and dynamic storage in
+   host conformance tests.
+4. Add explicit capacity-exhaustion and dynamic-API rejection tests.
+5. Compare layout, pixels, touch dispatch, and state changes with the dynamic
    runtime.
 
-**Gate:** The static thermostat passes deterministic host tests with heap use
-disabled or instrumented as zero after initialization.
+**Gate:** The same portable thermostat source passes deterministic static and
+dynamic host tests; the static build rejects dynamic-only APIs at compile time;
+heap use is disabled or instrumented as zero after initialization.
 
 ### Phase 4 — RGB565 backend on the host
 
@@ -589,8 +628,11 @@ specification pass and are captured in a hardware validation report.
 
 ### 8.1 Functional requirements
 
+- The firmware declares and builds against the portable/static GiftUI profile.
 - The same thermostat behavior displays `Target`, a value, and decrement and
   increment controls.
+- The portable thermostat view source also runs under the dynamic host runtime
+  without platform or profile conditionals in the view declaration.
 - Pressing the touch regions changes state exactly once per completed tap.
 - The displayed value reflects the updated state on the next render.
 - Layout and hit testing agree for every supported orientation.
@@ -621,6 +663,9 @@ specification pass and are captured in a hardware validation report.
 
 - Existing macOS, core, dynamic-runtime, framebuffer, Linux, and Raspberry Pi
   tests remain green.
+- Contract tests demonstrate equal portable semantics under both runtimes.
+- Compile-fail tests demonstrate that dynamic-only conveniences are absent from
+  the static API surface.
 - Static runtime and RGB565 backend have host-side unit and integration tests.
 - The firmware build checks ELF architecture and emits a map/size report.
 - Hardware validation records display controller ID/provenance, wiring,
