@@ -56,7 +56,7 @@ func builderCreatesTupleContent() {
 }
 
 @Test
-func builderSupportsArbitrarySiblingCounts() {
+func builderSupportsFiveSiblingAcceptanceArity() {
     struct FiveSiblings: View {
         var body: some View {
             HStack(spacing: 1) {

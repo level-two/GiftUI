@@ -127,6 +127,11 @@ the same visitor contract.
 - Add bounded UTF-8 or resource-backed text and formatting.
 - Run the same portable thermostat fixture against both host runtimes.
 
+**Progress:** Bounded decimal text and an application-typed thermostat state
+model now compile in Embedded Swift. The identical portable thermostat view is
+checked against static and dynamic host layout/action semantics. Generalized
+fixed/generated `@State` slots remain future state-layer work.
+
 ### Stage E — validate Embedded Swift and hardware integration
 
 - Compile the portable core and static runtime with Embedded Swift restrictions.

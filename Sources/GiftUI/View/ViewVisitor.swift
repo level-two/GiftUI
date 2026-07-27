@@ -10,8 +10,18 @@ public protocol ViewVisitor {
 
     mutating func visitEmpty()
 
-    mutating func visitTuple<each Content: View>(
-        _ content: repeat each Content
+    mutating func visitTuple<A: View, B: View>(_ a: A, _ b: B)
+
+    mutating func visitTuple<A: View, B: View, C: View>(
+        _ a: A, _ b: B, _ c: C
+    )
+
+    mutating func visitTuple<A: View, B: View, C: View, D: View>(
+        _ a: A, _ b: B, _ c: C, _ d: D
+    )
+
+    mutating func visitTuple<A: View, B: View, C: View, D: View, E: View>(
+        _ a: A, _ b: B, _ c: C, _ d: D, _ e: E
     )
 
     mutating func visitConditional<TrueContent: View, FalseContent: View>(

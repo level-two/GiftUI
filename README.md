@@ -245,7 +245,8 @@ instead of treating the present module layout as allocation-free readiness.
 
 ## Core implementation status
 
-The PoC Core implements variadic result-builder composition, branch-specific
+The PoC Core implements fixed generic result-builder composition through the
+five-child acceptance arity, branch-specific
 structural state identity, proposal-based measure/place layout, checked layout
 arithmetic, render-operation sinks, frame-consistent interaction snapshots, and
 serialized input dispatch. Dynamic runtimes can retain operations in a
@@ -262,6 +263,6 @@ into one frame.
 Structural identity is intentionally topology-based for PoC A. Reordering or
 inserting siblings can therefore move state between paths. Explicit identity
 and reconciliation remain future static/runtime work. Identified, non-closure
-button actions now provide the first portable interaction path; fixed state
-arenas, bounded text formatting, and typed action facades remain future static
-runtime work.
+button actions, bounded decimal text, and the fixed node/action arena now
+provide the first portable runtime path. General fixed/generated `@State`
+slots remain future static-runtime work.

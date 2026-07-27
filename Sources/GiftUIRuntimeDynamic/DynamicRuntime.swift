@@ -39,6 +39,20 @@ public final class DynamicRuntime: GiftUIRuntime {
         return root.layoutNode()
     }
 
+    public func layoutSnapshot<Content: View>(
+        _ content: Content,
+        in surfaceSize: Size
+    ) -> DynamicLayoutSnapshot {
+        let generation = invalidationGeneration
+        let root = makeViewGraph(content, in: surfaceSize)
+        let snapshot = DynamicLayoutSnapshot(
+            layout: root.layoutNode(),
+            identifiedHitRegions: root.makeIdentifiedHitRegions()
+        )
+        markRendered(ifUnchangedSince: generation)
+        return snapshot
+    }
+
     package func makeViewGraph<Content: View>(
         _ content: Content,
         in surfaceSize: Size

@@ -75,20 +75,63 @@ extension ViewBuildContext: ViewVisitor {
         append(ViewNode(kind: .group))
     }
 
-    public mutating func visitTuple<each Content: View>(
-        _ content: repeat each Content
+    private mutating func visitTupleChildren(
+        _ children: (inout ViewBuildContext) -> Void
     ) {
         let group = ViewNode(kind: .group)
         append(group)
         parents.append(group)
-        var index = 0
-        for child in repeat each content {
-            withPathComponent("child[\(index)]") { context in
-                child._visit(&context)
-            }
-            index += 1
-        }
+        children(&self)
         _ = parents.removeLast()
+    }
+
+    private mutating func visitTupleChild<Content: View>(
+        _ content: Content,
+        index: Int
+    ) {
+        withPathComponent("child[\(index)]") { context in
+            content._visit(&context)
+        }
+    }
+
+    public mutating func visitTuple<A: View, B: View>(_ a: A, _ b: B) {
+        visitTupleChildren { context in
+            context.visitTupleChild(a, index: 0)
+            context.visitTupleChild(b, index: 1)
+        }
+    }
+
+    public mutating func visitTuple<A: View, B: View, C: View>(
+        _ a: A, _ b: B, _ c: C
+    ) {
+        visitTupleChildren { context in
+            context.visitTupleChild(a, index: 0)
+            context.visitTupleChild(b, index: 1)
+            context.visitTupleChild(c, index: 2)
+        }
+    }
+
+    public mutating func visitTuple<A: View, B: View, C: View, D: View>(
+        _ a: A, _ b: B, _ c: C, _ d: D
+    ) {
+        visitTupleChildren { context in
+            context.visitTupleChild(a, index: 0)
+            context.visitTupleChild(b, index: 1)
+            context.visitTupleChild(c, index: 2)
+            context.visitTupleChild(d, index: 3)
+        }
+    }
+
+    public mutating func visitTuple<A: View, B: View, C: View, D: View, E: View>(
+        _ a: A, _ b: B, _ c: C, _ d: D, _ e: E
+    ) {
+        visitTupleChildren { context in
+            context.visitTupleChild(a, index: 0)
+            context.visitTupleChild(b, index: 1)
+            context.visitTupleChild(c, index: 2)
+            context.visitTupleChild(d, index: 3)
+            context.visitTupleChild(e, index: 4)
+        }
     }
 
     public mutating func visitConditional<TrueContent: View, FalseContent: View>(
@@ -150,6 +193,8 @@ extension ViewBuildContext: ViewVisitor {
         switch content.storage {
         case .staticString(let content):
             string = content.description
+        case .boundedInteger(let value, let suffix):
+            string = String(value) + suffix.description
         #if !hasFeature(Embedded)
         case .dynamicString(let content):
             string = content

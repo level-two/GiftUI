@@ -17,6 +17,11 @@ Included:
 - `View`, result-builder composition, stacks, text, and buttons;
 - runtime-neutral `ViewVisitor` traversal.
 
+The result builder uses fixed generic overloads through five children. Swift
+6.3.2 requests forbidden type metadata when the equivalent variadic-pack
+builder is instantiated by an Embedded client module; the fixed overloads
+retain static types and compile cleanly for the accepted thermostat arity.
+
 Embedded compilation exposes only `StaticString` text and identified button
 actions. The allocating build additionally exposes the dynamic text and
 callback storage used by `GiftUIDynamicConveniences`.
@@ -56,3 +61,9 @@ State slots and render emission remain outside this accepted layer. The first
 static application fixture owns typed mutable state and dispatches bounded
 action identifiers explicitly; adapting `@State` to generated/fixed slots is a
 subsequent state-layer step.
+
+The same portable thermostat declaration compiles as an ARM Embedded Swift
+module and runs in the host conformance suite through both runtimes. It uses
+bounded decimal `Text(integer:suffix:)`, and the suite compares intrinsic
+layout, node counts, hit regions, action identifiers, and typed state changes
+before render emission.

@@ -1,6 +1,7 @@
 public struct TextContent {
     package enum Storage {
         case staticString(StaticString)
+        case boundedInteger(Int, suffix: StaticString)
         #if !hasFeature(Embedded)
         case dynamicString(String)
         #endif
@@ -10,6 +11,10 @@ public struct TextContent {
 
     package init(_ content: StaticString) {
         storage = .staticString(content)
+    }
+
+    package init(integer value: Int, suffix: StaticString) {
+        storage = .boundedInteger(value, suffix: suffix)
     }
 
     #if !hasFeature(Embedded)
@@ -27,6 +32,13 @@ public struct Text: View, PrimitiveView {
     /// current graph conversion in the static runtime.
     public init(_ content: StaticString) {
         self.content = TextContent(content)
+    }
+
+    /// Creates allocation-bounded decimal text with a statically stored
+    /// suffix. The complete representation is at most the decimal width of an
+    /// `Int` plus the suffix's UTF-8 storage.
+    public init(integer value: Int, suffix: StaticString = "") {
+        content = TextContent(integer: value, suffix: suffix)
     }
 
     #if !hasFeature(Embedded)

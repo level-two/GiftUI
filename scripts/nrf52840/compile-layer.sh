@@ -110,3 +110,27 @@ giftui_nrf_note "compiling GiftUIRuntimeStatic for ${GIFTUI_NRF_SWIFT_TARGET}"
 
 printf 'MODULE=%s\n' "${runtime_output_dir}/GiftUIRuntimeStatic.swiftmodule"
 printf 'OBJECT=%s\n' "${runtime_output_dir}/GiftUIRuntimeStatic.o"
+
+fixture_output_dir="${GIFTUI_NRF_BUILD_ROOT}/layers/thermostat"
+mkdir -p "${fixture_output_dir}"
+
+giftui_nrf_note "compiling portable thermostat fixture for ${GIFTUI_NRF_SWIFT_TARGET}"
+"${GIFTUI_NRF_SWIFTC}" \
+    -parse-as-library \
+    -Osize \
+    -whole-module-optimization \
+    -enable-experimental-feature Embedded \
+    -target "${GIFTUI_NRF_SWIFT_TARGET}" \
+    -package-name GiftUI \
+    -module-name GiftUIExampleThermostatPortableView \
+    -module-cache-path "${GIFTUI_NRF_CLANG_MODULE_CACHE}" \
+    -I "${output_dir}" \
+    -emit-module \
+    -emit-module-path "${fixture_output_dir}/GiftUIExampleThermostatPortableView.swiftmodule" \
+    -c \
+    -o "${fixture_output_dir}/GiftUIExampleThermostatPortableView.o" \
+    Sources/GiftUIExampleThermostatPortableView/ThermostatModel.swift \
+    Sources/GiftUIExampleThermostatPortableView/ThermostatPortableView.swift
+
+printf 'MODULE=%s\n' "${fixture_output_dir}/GiftUIExampleThermostatPortableView.swiftmodule"
+printf 'OBJECT=%s\n' "${fixture_output_dir}/GiftUIExampleThermostatPortableView.o"

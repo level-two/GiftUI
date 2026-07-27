@@ -26,6 +26,10 @@ let package = Package(
             name: "GiftUIExampleThermostatView",
             targets: ["GiftUIExampleThermostatView"]
         ),
+        .library(
+            name: "GiftUIExampleThermostatPortableView",
+            targets: ["GiftUIExampleThermostatPortableView"]
+        ),
         .executable(name: "GiftUIExampleThermostat", targets: ["GiftUIExampleThermostat"]),
         .executable(
             name: "GiftUIExampleThermostatRaspberryPi",
@@ -93,6 +97,10 @@ let package = Package(
                 "GiftUIDynamicConveniences",
             ]
         ),
+        .target(
+            name: "GiftUIExampleThermostatPortableView",
+            dependencies: ["GiftUI"]
+        ),
         .executableTarget(
             name: "GiftUIExampleThermostat",
             dependencies: [
@@ -141,6 +149,14 @@ let package = Package(
                 "GiftUIDynamicConveniences",
                 "GiftUIRuntimeDynamic",
                 "GiftUIBackendFramebuffer",
+            ]
+        ),
+        .testTarget(
+            name: "GiftUIRuntimeConformanceTests",
+            dependencies: [
+                "GiftUIExampleThermostatPortableView",
+                "GiftUIRuntimeDynamic",
+                "GiftUIRuntimeStatic",
             ]
         ),
         .testTarget(

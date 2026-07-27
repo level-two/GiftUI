@@ -281,6 +281,24 @@ public final class ViewNode {
         )
     }
 
+    package func makeIdentifiedHitRegions() -> [HitRegion] {
+        var regions: [HitRegion] = []
+        collectIdentifiedHitRegions(into: &regions)
+        return regions
+    }
+
+    private func collectIdentifiedHitRegions(
+        into regions: inout [HitRegion]
+    ) {
+        if case .button(let action) = kind,
+           case .identified(let identifier) = action.storage {
+            regions.append(HitRegion(bounds: frame, action: identifier))
+        }
+        for child in children {
+            child.collectIdentifiedHitRegions(into: &regions)
+        }
+    }
+
     private func collectActions(
         nextID: inout Int,
         hitRegions: inout [HitRegion],

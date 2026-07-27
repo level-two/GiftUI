@@ -222,12 +222,39 @@ private struct StaticGraphBuilder: ViewVisitor {
         appendEmptyRootIfNeeded()
     }
 
-    mutating func visitTuple<each Content: View>(
-        _ content: repeat each Content
+    mutating func visitTuple<A: View, B: View>(_ a: A, _ b: B) {
+        a._visit(&self)
+        b._visit(&self)
+        appendEmptyRootIfNeeded()
+    }
+
+    mutating func visitTuple<A: View, B: View, C: View>(
+        _ a: A, _ b: B, _ c: C
     ) {
-        for child in repeat each content {
-            child._visit(&self)
-        }
+        a._visit(&self)
+        b._visit(&self)
+        c._visit(&self)
+        appendEmptyRootIfNeeded()
+    }
+
+    mutating func visitTuple<A: View, B: View, C: View, D: View>(
+        _ a: A, _ b: B, _ c: C, _ d: D
+    ) {
+        a._visit(&self)
+        b._visit(&self)
+        c._visit(&self)
+        d._visit(&self)
+        appendEmptyRootIfNeeded()
+    }
+
+    mutating func visitTuple<A: View, B: View, C: View, D: View, E: View>(
+        _ a: A, _ b: B, _ c: C, _ d: D, _ e: E
+    ) {
+        a._visit(&self)
+        b._visit(&self)
+        c._visit(&self)
+        d._visit(&self)
+        e._visit(&self)
         appendEmptyRootIfNeeded()
     }
 
@@ -268,6 +295,11 @@ private struct StaticGraphBuilder: ViewVisitor {
         switch content.storage {
         case .staticString(let value):
             _ = append(.text(glyphCount: unicodeScalarCount(of: value)))
+        case .boundedInteger(let value, let suffix):
+            _ = append(.text(
+                glyphCount: decimalCharacterCount(of: value)
+                    + unicodeScalarCount(of: suffix)
+            ))
         #if !hasFeature(Embedded)
         case .dynamicString:
             failure = .unsupportedDynamicText
@@ -297,6 +329,17 @@ private struct StaticGraphBuilder: ViewVisitor {
         var count = 0
         for byte in bytes where byte & 0xc0 != 0x80 {
             count += 1
+        }
+        return count
+    }
+
+    private func decimalCharacterCount(of value: Int) -> Int {
+        if value == 0 { return 1 }
+        var remaining = value
+        var count = value < 0 ? 1 : 0
+        while remaining != 0 {
+            count += 1
+            remaining /= 10
         }
         return count
     }
