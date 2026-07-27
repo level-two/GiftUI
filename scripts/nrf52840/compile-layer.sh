@@ -13,7 +13,7 @@ usage() {
 Usage: scripts/nrf52840/compile-layer.sh [options]
 
 Options:
-  --layer NAME  Compile through NAME. Currently supported: giftui.
+  --layer NAME  Compile through NAME. Supported: giftui, runtime.
   -h, --help    Show this help.
 USAGE
 }
@@ -31,7 +31,7 @@ while [[ $# -gt 0 ]]; do
     shift
 done
 
-[[ "${layer}" == "giftui" ]] ||
+[[ "${layer}" == "giftui" || "${layer}" == "runtime" ]] ||
     giftui_nrf_error "unsupported layer: ${layer}"
 
 giftui_nrf_export_environment
@@ -82,3 +82,31 @@ giftui_nrf_note "compiling GiftUI portable layer for ${GIFTUI_NRF_SWIFT_TARGET}"
 
 printf 'MODULE=%s\n' "${output_dir}/GiftUI.swiftmodule"
 printf 'OBJECT=%s\n' "${output_dir}/GiftUI.o"
+
+if [[ "${layer}" == "giftui" ]]; then
+    exit 0
+fi
+
+runtime_output_dir="${GIFTUI_NRF_BUILD_ROOT}/layers/runtime"
+mkdir -p "${runtime_output_dir}"
+
+giftui_nrf_note "compiling GiftUIRuntimeStatic for ${GIFTUI_NRF_SWIFT_TARGET}"
+"${GIFTUI_NRF_SWIFTC}" \
+    -parse-as-library \
+    -Osize \
+    -whole-module-optimization \
+    -enable-experimental-feature Embedded \
+    -target "${GIFTUI_NRF_SWIFT_TARGET}" \
+    -package-name GiftUI \
+    -module-name GiftUIRuntimeStatic \
+    -module-cache-path "${GIFTUI_NRF_CLANG_MODULE_CACHE}" \
+    -I "${output_dir}" \
+    -emit-module \
+    -emit-module-path "${runtime_output_dir}/GiftUIRuntimeStatic.swiftmodule" \
+    -c \
+    -o "${runtime_output_dir}/GiftUIRuntimeStatic.o" \
+    Sources/GiftUIRuntimeStatic/GiftUIRuntimeStatic.swift \
+    Sources/GiftUIRuntimeStatic/StaticRuntime.swift
+
+printf 'MODULE=%s\n' "${runtime_output_dir}/GiftUIRuntimeStatic.swiftmodule"
+printf 'OBJECT=%s\n' "${runtime_output_dir}/GiftUIRuntimeStatic.o"

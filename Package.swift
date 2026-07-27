@@ -14,6 +14,7 @@ let package = Package(
             targets: ["GiftUIDynamicConveniences"]
         ),
         .library(name: "GiftUIRuntimeDynamic", targets: ["GiftUIRuntimeDynamic"]),
+        .library(name: "GiftUIRuntimeStatic", targets: ["GiftUIRuntimeStatic"]),
         .library(name: "GiftUIBackendFramebuffer", targets: ["GiftUIBackendFramebuffer"]),
         .library(name: "GiftUISimulatorMac", targets: ["GiftUISimulatorMac"]),
         .library(name: "GiftUIPlatformLinux", targets: ["GiftUIPlatformLinux"]),
@@ -39,6 +40,10 @@ let package = Package(
         ),
         .target(
             name: "GiftUIRuntimeDynamic",
+            dependencies: ["GiftUI"]
+        ),
+        .target(
+            name: "GiftUIRuntimeStatic",
             dependencies: ["GiftUI"]
         ),
         .target(
@@ -113,6 +118,10 @@ let package = Package(
                 "GiftUIDynamicConveniences",
                 "GiftUIRuntimeDynamic",
             ]
+        ),
+        .testTarget(
+            name: "GiftUIRuntimeStaticTests",
+            dependencies: ["GiftUIRuntimeStatic"]
         ),
         .testTarget(
             name: "GiftUIDynamicConveniencesTests",

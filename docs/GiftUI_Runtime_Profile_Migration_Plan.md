@@ -114,6 +114,11 @@ subset compiles as an ARM Embedded Swift module. The remaining retained graph
 and bounded-runtime work is tracked in
 [`GiftUI_Embedded_Layer_Inventory.md`](GiftUI_Embedded_Layer_Inventory.md).
 
+The first bounded runtime now builds an index-linked node arena, performs
+layout, and records identified hit regions with explicit capacity failures.
+The dynamic runtime continues to build its retained class/array graph through
+the same visitor contract.
+
 ### Stage D — provide portable state and text
 
 - Replace the core `@State` class box/task-local dependency with an explicit
