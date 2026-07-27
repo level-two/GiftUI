@@ -1,3 +1,8 @@
+#if defined(__linux__)
+#define _GNU_SOURCE
+#define _POSIX_C_SOURCE 200809L
+#endif
+
 #include "CGiftUILinux.h"
 
 #include <errno.h>
@@ -7,8 +12,10 @@
 
 #if defined(__linux__)
 
+#include <dlfcn.h>
 #include <fcntl.h>
 #include <linux/fb.h>
+#include <poll.h>
 #include <signal.h>
 #include <sys/ioctl.h>
 #include <sys/mman.h>
@@ -21,6 +28,59 @@ struct GiftUIFramebufferDevice {
     struct fb_var_screeninfo variable;
     uint8_t *memory;
     size_t memory_length;
+};
+
+struct gpiod_chip;
+struct gpiod_line;
+
+struct GiftUIGPIODLineEvent {
+    struct timespec timestamp;
+    int event_type;
+};
+
+typedef struct gpiod_chip *(*GiftUIGPIODChipOpen)(const char *path);
+typedef void (*GiftUIGPIODChipClose)(struct gpiod_chip *chip);
+typedef struct gpiod_line *(*GiftUIGPIODChipGetLine)(
+    struct gpiod_chip *chip,
+    unsigned int offset
+);
+typedef int (*GiftUIGPIODLineRequestBothEdges)(
+    struct gpiod_line *line,
+    const char *consumer
+);
+typedef int (*GiftUIGPIODLineRequestBothEdgesFlags)(
+    struct gpiod_line *line,
+    const char *consumer,
+    int flags
+);
+typedef int (*GiftUIGPIODLineEventGetFD)(struct gpiod_line *line);
+typedef int (*GiftUIGPIODLineEventReadFD)(
+    int file_descriptor,
+    struct GiftUIGPIODLineEvent *event
+);
+typedef void (*GiftUIGPIODLineRelease)(struct gpiod_line *line);
+
+enum {
+    GIFTUI_GPIO_MAX_LINES = 16,
+    GIFTUI_GPIOD_EVENT_RISING_EDGE = 1,
+    GIFTUI_GPIOD_EVENT_FALLING_EDGE = 2,
+    GIFTUI_GPIOD_LINE_REQUEST_FLAG_BIAS_PULL_UP = 1 << 5,
+};
+
+struct GiftUIGPIOInput {
+    void *library;
+    struct gpiod_chip *chip;
+    size_t line_count;
+    struct gpiod_line *lines[GIFTUI_GPIO_MAX_LINES];
+    int event_file_descriptors[GIFTUI_GPIO_MAX_LINES];
+    GiftUIGPIODChipOpen chip_open;
+    GiftUIGPIODChipClose chip_close;
+    GiftUIGPIODChipGetLine chip_get_line;
+    GiftUIGPIODLineRequestBothEdges line_request_both_edges;
+    GiftUIGPIODLineRequestBothEdgesFlags line_request_both_edges_flags;
+    GiftUIGPIODLineEventGetFD line_event_get_fd;
+    GiftUIGPIODLineEventReadFD line_event_read_fd;
+    GiftUIGPIODLineRelease line_release;
 };
 
 static volatile sig_atomic_t giftui_should_terminate = 0;
@@ -41,6 +101,43 @@ static void giftui_set_error(
         operation,
         strerror(errno)
     );
+}
+
+static void giftui_set_message(
+    char *error_message,
+    size_t error_capacity,
+    const char *message
+) {
+    if (error_message == NULL || error_capacity == 0) {
+        return;
+    }
+    snprintf(error_message, error_capacity, "%s", message);
+}
+
+static int giftui_load_gpiod_symbol(
+    void *library,
+    const char *name,
+    void **destination,
+    char *error_message,
+    size_t error_capacity
+) {
+    dlerror();
+    void *symbol = dlsym(library, name);
+    const char *dynamic_error = dlerror();
+    if (dynamic_error != NULL || symbol == NULL) {
+        char message[256];
+        snprintf(
+            message,
+            sizeof(message),
+            "libgpiod is missing %s: %s",
+            name,
+            dynamic_error == NULL ? "symbol unavailable" : dynamic_error
+        );
+        giftui_set_message(error_message, error_capacity, message);
+        return -1;
+    }
+    *destination = symbol;
+    return 0;
 }
 
 static int giftui_validate_bitfield(
@@ -364,6 +461,249 @@ int giftui_fb_present_rgba(
     return 0;
 }
 
+int giftui_gpio_open(
+    const char *chip_path,
+    const uint32_t *line_offsets,
+    size_t line_count,
+    int request_pull_up,
+    GiftUIGPIOInput **input,
+    char *error_message,
+    size_t error_capacity
+) {
+    if (
+        chip_path == NULL
+        || line_offsets == NULL
+        || line_count == 0
+        || line_count > GIFTUI_GPIO_MAX_LINES
+        || input == NULL
+    ) {
+        errno = EINVAL;
+        giftui_set_error(error_message, error_capacity, "invalid GPIO arguments");
+        return -1;
+    }
+
+    *input = NULL;
+    GiftUIGPIOInput *opened = calloc(1, sizeof(*opened));
+    if (opened == NULL) {
+        giftui_set_error(error_message, error_capacity, "allocate GPIO input state");
+        return -1;
+    }
+    for (size_t index = 0; index < GIFTUI_GPIO_MAX_LINES; index += 1) {
+        opened->event_file_descriptors[index] = -1;
+    }
+
+    const char *library_names[] = {
+        "libgpiod.so.2",
+        "libgpiod.so",
+    };
+    for (
+        size_t index = 0;
+        index < sizeof(library_names) / sizeof(library_names[0]);
+        index += 1
+    ) {
+        opened->library = dlopen(library_names[index], RTLD_NOW | RTLD_LOCAL);
+        if (opened->library != NULL) {
+            break;
+        }
+    }
+    if (opened->library == NULL) {
+        giftui_set_message(
+            error_message,
+            error_capacity,
+            "libgpiod.so.2 is unavailable; install the Raspberry Pi OS libgpiod2 package"
+        );
+        giftui_gpio_close(opened);
+        return -1;
+    }
+
+#define GIFTUI_LOAD_GPIOD(name, field) \
+    if (giftui_load_gpiod_symbol( \
+        opened->library, \
+        name, \
+        (void **)&opened->field, \
+        error_message, \
+        error_capacity \
+    ) < 0) { \
+        giftui_gpio_close(opened); \
+        return -1; \
+    }
+
+    GIFTUI_LOAD_GPIOD("gpiod_chip_open", chip_open)
+    GIFTUI_LOAD_GPIOD("gpiod_chip_close", chip_close)
+    GIFTUI_LOAD_GPIOD("gpiod_chip_get_line", chip_get_line)
+    GIFTUI_LOAD_GPIOD(
+        "gpiod_line_request_both_edges_events",
+        line_request_both_edges
+    )
+    GIFTUI_LOAD_GPIOD("gpiod_line_event_get_fd", line_event_get_fd)
+    GIFTUI_LOAD_GPIOD("gpiod_line_event_read_fd", line_event_read_fd)
+    GIFTUI_LOAD_GPIOD("gpiod_line_release", line_release)
+
+#undef GIFTUI_LOAD_GPIOD
+
+    dlerror();
+    *(void **)(&opened->line_request_both_edges_flags) = dlsym(
+        opened->library,
+        "gpiod_line_request_both_edges_events_flags"
+    );
+    (void)dlerror();
+    if (request_pull_up != 0 && opened->line_request_both_edges_flags == NULL) {
+        giftui_set_message(
+            error_message,
+            error_capacity,
+            "installed libgpiod does not support GPIO bias flags"
+        );
+        giftui_gpio_close(opened);
+        return -1;
+    }
+
+    opened->chip = opened->chip_open(chip_path);
+    if (opened->chip == NULL) {
+        giftui_set_error(error_message, error_capacity, "open GPIO chip");
+        giftui_gpio_close(opened);
+        return -1;
+    }
+
+    for (size_t index = 0; index < line_count; index += 1) {
+        struct gpiod_line *line = opened->chip_get_line(
+            opened->chip,
+            line_offsets[index]
+        );
+        if (line == NULL) {
+            giftui_set_error(error_message, error_capacity, "get GPIO line");
+            giftui_gpio_close(opened);
+            return -1;
+        }
+
+        int request_result;
+        if (request_pull_up != 0) {
+            request_result = opened->line_request_both_edges_flags(
+                line,
+                "GiftUI",
+                GIFTUI_GPIOD_LINE_REQUEST_FLAG_BIAS_PULL_UP
+            );
+        } else {
+            request_result = opened->line_request_both_edges(line, "GiftUI");
+        }
+        if (request_result < 0) {
+            giftui_set_error(error_message, error_capacity, "request GPIO edge events");
+            giftui_gpio_close(opened);
+            return -1;
+        }
+
+        opened->lines[index] = line;
+        opened->line_count = index + 1;
+        opened->event_file_descriptors[index] = opened->line_event_get_fd(line);
+        if (opened->event_file_descriptors[index] < 0) {
+            giftui_set_error(error_message, error_capacity, "get GPIO event descriptor");
+            giftui_gpio_close(opened);
+            return -1;
+        }
+    }
+
+    *input = opened;
+    return 0;
+}
+
+void giftui_gpio_close(GiftUIGPIOInput *input) {
+    if (input == NULL) {
+        return;
+    }
+    if (input->line_release != NULL) {
+        for (size_t index = 0; index < input->line_count; index += 1) {
+            if (input->lines[index] != NULL) {
+                input->line_release(input->lines[index]);
+            }
+        }
+    }
+    if (input->chip != NULL && input->chip_close != NULL) {
+        input->chip_close(input->chip);
+    }
+    if (input->library != NULL) {
+        dlclose(input->library);
+    }
+    free(input);
+}
+
+int giftui_gpio_poll(
+    GiftUIGPIOInput *input,
+    GiftUIGPIOEvent *events,
+    size_t event_capacity,
+    size_t *event_count,
+    char *error_message,
+    size_t error_capacity
+) {
+    if (
+        input == NULL
+        || events == NULL
+        || event_capacity == 0
+        || event_count == NULL
+    ) {
+        errno = EINVAL;
+        giftui_set_error(error_message, error_capacity, "invalid GPIO poll arguments");
+        return -1;
+    }
+
+    *event_count = 0;
+    struct pollfd descriptors[GIFTUI_GPIO_MAX_LINES];
+    for (size_t index = 0; index < input->line_count; index += 1) {
+        descriptors[index].fd = input->event_file_descriptors[index];
+        descriptors[index].events = POLLIN | POLLPRI;
+        descriptors[index].revents = 0;
+    }
+
+    int poll_result = poll(descriptors, input->line_count, 0);
+    if (poll_result < 0) {
+        if (errno == EINTR) {
+            return 0;
+        }
+        giftui_set_error(error_message, error_capacity, "poll GPIO events");
+        return -1;
+    }
+
+    for (
+        size_t index = 0;
+        index < input->line_count && *event_count < event_capacity;
+        index += 1
+    ) {
+        if ((descriptors[index].revents & (POLLERR | POLLNVAL)) != 0) {
+            errno = EIO;
+            giftui_set_error(error_message, error_capacity, "GPIO event descriptor failed");
+            return -1;
+        }
+        if ((descriptors[index].revents & (POLLIN | POLLPRI)) == 0) {
+            continue;
+        }
+
+        struct GiftUIGPIODLineEvent raw_event;
+        if (
+            input->line_event_read_fd(
+                input->event_file_descriptors[index],
+                &raw_event
+            ) < 0
+        ) {
+            giftui_set_error(error_message, error_capacity, "read GPIO event");
+            return -1;
+        }
+
+        GiftUIGPIOEvent *event = &events[*event_count];
+        event->line_index = (uint32_t)index;
+        event->edge = raw_event.event_type == GIFTUI_GPIOD_EVENT_RISING_EDGE
+            ? GIFTUI_GPIO_EDGE_RISING
+            : GIFTUI_GPIO_EDGE_FALLING;
+        if (raw_event.timestamp.tv_sec < 0 || raw_event.timestamp.tv_nsec < 0) {
+            event->timestamp_nanoseconds = 0;
+        } else {
+            event->timestamp_nanoseconds =
+                (uint64_t)raw_event.timestamp.tv_sec * 1000000000ull
+                + (uint64_t)raw_event.timestamp.tv_nsec;
+        }
+        *event_count += 1;
+    }
+
+    return 0;
+}
+
 int giftui_linux_install_signal_handlers(
     char *error_message,
     size_t error_capacity
@@ -404,6 +744,10 @@ void giftui_linux_sleep_milliseconds(unsigned int milliseconds) {
 #else
 
 struct GiftUIFramebufferDevice {
+    int unavailable;
+};
+
+struct GiftUIGPIOInput {
     int unavailable;
 };
 
@@ -473,6 +817,48 @@ int giftui_fb_present_rgba(
     (void)source_height;
     (void)source_bytes_per_row;
     (void)clockwise_rotation;
+    giftui_unsupported(error_message, error_capacity);
+    return -1;
+}
+
+int giftui_gpio_open(
+    const char *chip_path,
+    const uint32_t *line_offsets,
+    size_t line_count,
+    int request_pull_up,
+    GiftUIGPIOInput **input,
+    char *error_message,
+    size_t error_capacity
+) {
+    (void)chip_path;
+    (void)line_offsets;
+    (void)line_count;
+    (void)request_pull_up;
+    if (input != NULL) {
+        *input = NULL;
+    }
+    giftui_unsupported(error_message, error_capacity);
+    return -1;
+}
+
+void giftui_gpio_close(GiftUIGPIOInput *input) {
+    (void)input;
+}
+
+int giftui_gpio_poll(
+    GiftUIGPIOInput *input,
+    GiftUIGPIOEvent *events,
+    size_t event_capacity,
+    size_t *event_count,
+    char *error_message,
+    size_t error_capacity
+) {
+    (void)input;
+    (void)events;
+    (void)event_capacity;
+    if (event_count != NULL) {
+        *event_count = 0;
+    }
     giftui_unsupported(error_message, error_capacity);
     return -1;
 }

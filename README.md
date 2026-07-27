@@ -90,6 +90,19 @@ GiftUIExampleThermostatRaspberryPi \
     --rotation 0
 ```
 
+Enable three active-low GPIO buttons with internal pull-ups:
+
+```bash
+GiftUIExampleThermostatRaspberryPi \
+    --device /dev/fb1 \
+    --gpio-buttons
+```
+
+The defaults use BCM GPIO 17 for previous, 27 for next, and 22 for activate.
+Previous/next move an amber focus border; activate dispatches the focused
+GiftUI button. All GPIO lines, polarity, bias, and debounce timing are
+configurable through `--help`.
+
 Use `--once` for a one-frame hardware smoke test and `--help` for all options.
 The adapter accepts 16-, 24-, or 32-bit framebuffer formats, honors device
 stride, converts from GiftUI's RGBA8888 surface, and aspect-fits with

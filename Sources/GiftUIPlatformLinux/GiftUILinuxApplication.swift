@@ -8,24 +8,31 @@ public final class GiftUILinuxApplication<Root: View> {
     public var hitRegions: [HitRegion] {
         application.hitRegions
     }
+    public var focusedHitRegionIndex: Int? {
+        focusInputAdapter.focusedIndex
+    }
 
     private let display: any DisplaySurface
     private let inputSources: [any LinuxInputSource]
+    private let navigationInputSources: [any LinuxNavigationInputSource]
     private let configuration: LinuxApplicationConfiguration
     private let logger: (String) -> Void
     private let application: GiftUIApplication<Root>
     private var backend: FramebufferBackend
+    private var focusInputAdapter = FocusInputAdapter()
 
     public init(
         root: Root,
         display: any DisplaySurface,
         inputSources: [any LinuxInputSource] = [],
+        navigationInputSources: [any LinuxNavigationInputSource] = [],
         runtime: DynamicRuntime = DynamicRuntime(),
         configuration: LinuxApplicationConfiguration = LinuxApplicationConfiguration(),
         logger: @escaping (String) -> Void = { print($0) }
     ) {
         self.display = display
         self.inputSources = inputSources
+        self.navigationInputSources = navigationInputSources
         self.configuration = configuration
         self.logger = logger
         application = GiftUIApplication(root: root, runtime: runtime)
@@ -44,18 +51,52 @@ public final class GiftUILinuxApplication<Root: View> {
 
     @discardableResult
     public func runCycle() throws -> Bool {
+        var focusChanged = false
         for inputSource in inputSources {
             for event in try inputSource.poll() {
                 application.send(event)
             }
         }
+        for inputSource in navigationInputSources {
+            for navigation in try inputSource.pollNavigation() {
+                let previousFocus = focusInputAdapter.focusedIndex
+                for event in focusInputAdapter.events(
+                    for: navigation,
+                    hitRegions: application.hitRegions
+                ) {
+                    application.send(event)
+                }
+                focusChanged = focusChanged
+                    || focusInputAdapter.focusedIndex != previousFocus
+            }
+        }
+        if focusChanged {
+            application.runtime.invalidate()
+        }
 
         guard application.renderIfNeeded(into: &backend) else {
             return false
         }
+        focusInputAdapter.synchronize(with: application.hitRegions)
+        drawFocusIndicatorIfNeeded()
         try display.present(framebuffer: backend.surface)
         frameCount += 1
         return true
+    }
+
+    private func drawFocusIndicatorIfNeeded() {
+        guard
+            !navigationInputSources.isEmpty,
+            let focusedIndex = focusInputAdapter.focusedIndex,
+            application.hitRegions.indices.contains(focusedIndex)
+        else {
+            return
+        }
+        backend.stroke(
+            application.hitRegions[focusedIndex].bounds,
+            color: Color(red: 255, green: 196, blue: 64),
+            lineWidth: 2
+        )
     }
 
     public func run() throws {

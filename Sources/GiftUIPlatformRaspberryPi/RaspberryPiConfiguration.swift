@@ -7,13 +7,15 @@ public struct RaspberryPiConfiguration: Equatable, Sendable {
     public var rotation: DisplayRotation
     public var idleSleepMilliseconds: UInt32
     public var exitAfterInitialFrame: Bool
+    public var gpioButtons: GPIOButtonConfiguration?
 
     public init(
         framebufferDevice: String = "/dev/fb1",
         logicalSize: Size = Size(width: 240, height: 240),
         rotation: DisplayRotation = .degrees0,
         idleSleepMilliseconds: UInt32 = 20,
-        exitAfterInitialFrame: Bool = false
+        exitAfterInitialFrame: Bool = false,
+        gpioButtons: GPIOButtonConfiguration? = nil
     ) {
         precondition(!framebufferDevice.isEmpty, "Framebuffer device must not be empty")
         precondition(
@@ -29,6 +31,7 @@ public struct RaspberryPiConfiguration: Equatable, Sendable {
         self.rotation = rotation
         self.idleSleepMilliseconds = idleSleepMilliseconds
         self.exitAfterInitialFrame = exitAfterInitialFrame
+        self.gpioButtons = gpioButtons
     }
 
     public init(arguments: [String]) throws {
@@ -38,6 +41,14 @@ public struct RaspberryPiConfiguration: Equatable, Sendable {
         var rotation = DisplayRotation.degrees0
         var idleSleepMilliseconds: UInt32 = 20
         var exitAfterInitialFrame = false
+        var gpioEnabled = false
+        var gpioChip = "/dev/gpiochip0"
+        var gpioPrevious: UInt32 = 17
+        var gpioNext: UInt32 = 27
+        var gpioActivate: UInt32 = 22
+        var gpioActiveLow = true
+        var gpioBias = GPIOBias.pullUp
+        var gpioDebounceMilliseconds: UInt32 = 35
         var index = 0
 
         while index < arguments.count {
@@ -95,6 +106,69 @@ public struct RaspberryPiConfiguration: Equatable, Sendable {
                 idleSleepMilliseconds = milliseconds
             case "--once":
                 exitAfterInitialFrame = true
+            case "--gpio-buttons":
+                gpioEnabled = true
+            case "--gpio-chip":
+                gpioEnabled = true
+                gpioChip = try Self.value(
+                    after: argument,
+                    at: &index,
+                    in: arguments
+                )
+                guard !gpioChip.isEmpty else {
+                    throw RaspberryPiConfigurationError(
+                        "--gpio-chip requires a non-empty path"
+                    )
+                }
+            case "--gpio-previous":
+                gpioEnabled = true
+                gpioPrevious = try Self.uint32(
+                    try Self.value(after: argument, at: &index, in: arguments),
+                    option: argument
+                )
+            case "--gpio-next":
+                gpioEnabled = true
+                gpioNext = try Self.uint32(
+                    try Self.value(after: argument, at: &index, in: arguments),
+                    option: argument
+                )
+            case "--gpio-activate":
+                gpioEnabled = true
+                gpioActivate = try Self.uint32(
+                    try Self.value(after: argument, at: &index, in: arguments),
+                    option: argument
+                )
+            case "--gpio-active-low":
+                gpioEnabled = true
+                gpioActiveLow = true
+            case "--gpio-active-high":
+                gpioEnabled = true
+                gpioActiveLow = false
+            case "--gpio-bias":
+                gpioEnabled = true
+                let value = try Self.value(
+                    after: argument,
+                    at: &index,
+                    in: arguments
+                )
+                guard let parsedBias = GPIOBias(rawValue: value) else {
+                    throw RaspberryPiConfigurationError(
+                        "--gpio-bias must be pull-up or disabled"
+                    )
+                }
+                gpioBias = parsedBias
+            case "--gpio-debounce-ms":
+                gpioEnabled = true
+                let value = try Self.positiveInt(
+                    try Self.value(after: argument, at: &index, in: arguments),
+                    option: argument
+                )
+                guard let milliseconds = UInt32(exactly: value) else {
+                    throw RaspberryPiConfigurationError(
+                        "--gpio-debounce-ms is outside the supported range"
+                    )
+                }
+                gpioDebounceMilliseconds = milliseconds
             default:
                 throw RaspberryPiConfigurationError(
                     "unknown argument '\(argument)'"
@@ -108,13 +182,31 @@ public struct RaspberryPiConfiguration: Equatable, Sendable {
                 "logical display dimensions exceed Linux limits"
             )
         }
+        if gpioEnabled {
+            guard Set([gpioPrevious, gpioNext, gpioActivate]).count == 3 else {
+                throw RaspberryPiConfigurationError(
+                    "GPIO previous, next, and activate lines must be distinct"
+                )
+            }
+        }
+
+        let gpioButtons = gpioEnabled ? GPIOButtonConfiguration(
+            chipPath: gpioChip,
+            previousLine: gpioPrevious,
+            nextLine: gpioNext,
+            activateLine: gpioActivate,
+            activeLow: gpioActiveLow,
+            bias: gpioBias,
+            debounceMilliseconds: gpioDebounceMilliseconds
+        ) : nil
 
         self.init(
             framebufferDevice: framebufferDevice,
             logicalSize: Size(width: width, height: height),
             rotation: rotation,
             idleSleepMilliseconds: idleSleepMilliseconds,
-            exitAfterInitialFrame: exitAfterInitialFrame
+            exitAfterInitialFrame: exitAfterInitialFrame,
+            gpioButtons: gpioButtons
         )
     }
 
@@ -128,6 +220,16 @@ public struct RaspberryPiConfiguration: Equatable, Sendable {
           --rotation DEG     Clockwise output rotation: 0, 90, 180, or 270.
           --idle-ms MS       Idle-loop sleep duration (default: 20).
           --once             Present one frame and exit.
+          --gpio-buttons     Enable previous/next/activate GPIO buttons.
+          --gpio-chip PATH   GPIO character device (default: /dev/gpiochip0).
+          --gpio-previous N  Previous button line offset (default: 17).
+          --gpio-next N      Next button line offset (default: 27).
+          --gpio-activate N  Activate button line offset (default: 22).
+          --gpio-active-low  Buttons pull their lines low (default).
+          --gpio-active-high Buttons pull their lines high.
+          --gpio-bias MODE   pull-up (default) or disabled.
+          --gpio-debounce-ms MS
+                             Debounce window (default: 35).
           -h, --help         Show this help.
         """
 
@@ -150,6 +252,18 @@ public struct RaspberryPiConfiguration: Equatable, Sendable {
         guard let parsed = Int(value), parsed > 0 else {
             throw RaspberryPiConfigurationError(
                 "\(option) requires a positive integer"
+            )
+        }
+        return parsed
+    }
+
+    private static func uint32(
+        _ value: String,
+        option: String
+    ) throws -> UInt32 {
+        guard let parsed = UInt32(value) else {
+            throw RaspberryPiConfigurationError(
+                "\(option) requires a non-negative 32-bit integer"
             )
         }
         return parsed

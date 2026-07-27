@@ -51,7 +51,10 @@ let package = Package(
         ),
         .target(
             name: "CGiftUILinux",
-            publicHeadersPath: "include"
+            publicHeadersPath: "include",
+            linkerSettings: [
+                .linkedLibrary("dl", .when(platforms: [.linux])),
+            ]
         ),
         .target(
             name: "GiftUIPlatformLinux",
@@ -67,6 +70,7 @@ let package = Package(
             dependencies: [
                 "GiftUI",
                 "GiftUIPlatformLinux",
+                "CGiftUILinux",
             ]
         ),
         .target(

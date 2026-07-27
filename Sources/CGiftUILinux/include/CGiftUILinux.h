@@ -9,6 +9,18 @@ extern "C" {
 #endif
 
 typedef struct GiftUIFramebufferDevice GiftUIFramebufferDevice;
+typedef struct GiftUIGPIOInput GiftUIGPIOInput;
+
+typedef struct GiftUIGPIOEvent {
+    uint32_t line_index;
+    uint32_t edge;
+    uint64_t timestamp_nanoseconds;
+} GiftUIGPIOEvent;
+
+enum {
+    GIFTUI_GPIO_EDGE_RISING = 1,
+    GIFTUI_GPIO_EDGE_FALLING = 2,
+};
 
 int giftui_linux_is_supported(void);
 
@@ -32,6 +44,27 @@ int giftui_fb_present_rgba(
     int source_height,
     int source_bytes_per_row,
     int clockwise_rotation,
+    char *error_message,
+    size_t error_capacity
+);
+
+int giftui_gpio_open(
+    const char *chip_path,
+    const uint32_t *line_offsets,
+    size_t line_count,
+    int request_pull_up,
+    GiftUIGPIOInput **input,
+    char *error_message,
+    size_t error_capacity
+);
+
+void giftui_gpio_close(GiftUIGPIOInput *input);
+
+int giftui_gpio_poll(
+    GiftUIGPIOInput *input,
+    GiftUIGPIOEvent *events,
+    size_t event_capacity,
+    size_t *event_count,
     char *error_message,
     size_t error_capacity
 );

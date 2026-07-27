@@ -27,9 +27,24 @@ public final class RaspberryPiPlatform {
                 + "rotation \(configuration.rotation.rawValue)°"
         )
 
+        var navigationInputSources: [any LinuxNavigationInputSource] = []
+        if let gpioConfiguration = configuration.gpioButtons {
+            navigationInputSources.append(
+                try GPIOInputSource(configuration: gpioConfiguration)
+            )
+            logger(
+                "GiftUI Raspberry Pi GPIO \(gpioConfiguration.chipPath): "
+                    + "previous=\(gpioConfiguration.previousLine), "
+                    + "next=\(gpioConfiguration.nextLine), "
+                    + "activate=\(gpioConfiguration.activateLine), "
+                    + "debounce=\(gpioConfiguration.debounceMilliseconds) ms"
+            )
+        }
+
         let application = GiftUILinuxApplication(
             root: root,
             display: display,
+            navigationInputSources: navigationInputSources,
             configuration: LinuxApplicationConfiguration(
                 idleSleepMilliseconds: configuration.idleSleepMilliseconds,
                 exitAfterInitialFrame: configuration.exitAfterInitialFrame

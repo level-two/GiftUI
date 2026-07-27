@@ -55,6 +55,84 @@ func framebufferDisplayRejectsNonPositiveLogicalDimensions() {
     }
 }
 
+@Test
+func focusInputWrapsAndActivatesFocusedHitRegion() {
+    let regions = [
+        HitRegion(
+            bounds: Rect(
+                origin: Point(x: 10, y: 20),
+                size: Size(width: 20, height: 10)
+            ),
+            action: ActionID(rawValue: 1)
+        ),
+        HitRegion(
+            bounds: Rect(
+                origin: Point(x: 40, y: 50),
+                size: Size(width: 10, height: 20)
+            ),
+            action: ActionID(rawValue: 2)
+        ),
+    ]
+    var adapter = FocusInputAdapter()
+
+    adapter.synchronize(with: regions)
+    #expect(adapter.focusedIndex == 0)
+    let previousEvents = adapter.events(for: .previous, hitRegions: regions)
+    #expect(previousEvents.isEmpty)
+    #expect(adapter.focusedIndex == 1)
+    let nextEvents = adapter.events(for: .next, hitRegions: regions)
+    #expect(nextEvents.isEmpty)
+    #expect(adapter.focusedIndex == 0)
+    let activationEvents = adapter.events(for: .activate, hitRegions: regions)
+    #expect(activationEvents == [
+        .pointerDown(Point(x: 20, y: 25)),
+        .pointerUp(Point(x: 20, y: 25)),
+    ])
+}
+
+@Test
+func linuxApplicationDispatchesNavigationInput() throws {
+    struct Counter: View {
+        @State var value = 0
+
+        var body: some View {
+            VStack {
+                Text("\(value)")
+                HStack {
+                    Button("-") { value -= 1 }
+                    Button("+") { value += 1 }
+                }
+            }
+        }
+    }
+
+    let display = RecordingDisplaySurface(
+        logicalSize: Size(width: 80, height: 80)
+    )
+    let navigation = RecordingNavigationInputSource()
+    let application = GiftUILinuxApplication(
+        root: Counter(),
+        display: display,
+        navigationInputSources: [navigation],
+        logger: { _ in }
+    )
+
+    #expect(try application.runCycle())
+    #expect(application.focusedHitRegionIndex == 0)
+
+    navigation.pending = [.next]
+    #expect(try application.runCycle())
+    #expect(application.focusedHitRegionIndex == 1)
+    #expect(application.frameCount == 2)
+    #expect(display.frames[0] != display.frames[1])
+
+    navigation.pending = [.activate]
+    #expect(try application.runCycle())
+    #expect(application.focusedHitRegionIndex == 1)
+    #expect(application.frameCount == 3)
+    #expect(display.frames[1] != display.frames[2])
+}
+
 private final class RecordingDisplaySurface: DisplaySurface {
     let logicalSize: Size
     private(set) var frames: [[UInt8]] = []
@@ -65,5 +143,14 @@ private final class RecordingDisplaySurface: DisplaySurface {
 
     func present(framebuffer: MemoryFramebufferSurface) {
         frames.append(framebuffer.withUnsafeBytes { Array($0) })
+    }
+}
+
+private final class RecordingNavigationInputSource: LinuxNavigationInputSource {
+    var pending: [NavigationInput] = []
+
+    func pollNavigation() -> [NavigationInput] {
+        defer { pending.removeAll(keepingCapacity: true) }
+        return pending
     }
 }
