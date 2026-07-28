@@ -41,7 +41,6 @@ build_dir="${GIFTUI_NRF_BUILD_ROOT}/${application}"
     giftui_nrf_error "application '${application}' is not available under firmware/nrf52840/applications"
 
 giftui_nrf_export_environment
-mkdir -p "${build_dir}/reports"
 
 giftui_nrf_note "building ${application} for ${GIFTUI_NRF_BOARD}"
 "${GIFTUI_NRF_WEST}" build \
@@ -62,6 +61,9 @@ map="${build_dir}/zephyr/zephyr.map"
 dts="${build_dir}/zephyr/zephyr.dts"
 readelf="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf"
 size="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-size"
+
+# A pristine west build removes the application build directory.
+mkdir -p "${build_dir}/reports"
 
 for artifact in "${elf}" "${hex}" "${map}" "${dts}"; do
     [[ -f "${artifact}" ]] || giftui_nrf_error "expected build artifact is missing: ${artifact}"
@@ -103,6 +105,9 @@ if [[ "${application}" == "probe" ]]; then
 elif [[ "${application}" == "skeleton" ]]; then
     grep -Fq 'giftui_swift_application_run' "${build_dir}/reports/symbols.txt" ||
         giftui_nrf_error "skeleton ELF does not contain the Swift application entry symbol"
+elif [[ "${application}" == "ili9486" ]]; then
+    grep -Fq 'giftui_swift_display_application_run' "${build_dir}/reports/symbols.txt" ||
+        giftui_nrf_error "ILI9486 ELF does not contain the Swift application entry symbol"
 fi
 
 printf 'ELF=%s\n' "${elf}"
