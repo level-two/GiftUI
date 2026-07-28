@@ -76,6 +76,11 @@ action dispatch, layout, rasterization, and the final synchronous SPI write.
 Use a complete connected-board run to calculate median and worst-case latency;
 the instrumentation alone is not a hardware measurement.
 
+Both the Zephyr system heap and common C allocation arena are explicitly zero.
+The Embedded Swift ABI's `posix_memalign` symbol is a fail-closed shim that
+always returns `ENOMEM` and never links an allocator. The build additionally
+rejects real allocation entry points in the final ILI9486 ELF.
+
 Do not power the screen or flash this firmware until the exact PiScreen
 revision, supply rail, backlight polarity/transistor stage, and unpowered
 continuity have been recorded. After flashing, verify the red/yellow/green/

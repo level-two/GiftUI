@@ -116,6 +116,19 @@ elif [[ "${application}" == "ili9486" ]]; then
         giftui_nrf_error "ILI9486 ELF does not contain ADS7846 input processing"
     grep -Fqx 'CONFIG_HEAP_MEM_POOL_SIZE=0' "${build_dir}/zephyr/.config" ||
         giftui_nrf_error "ILI9486 firmware must keep the Zephyr heap disabled"
+    grep -Fqx 'CONFIG_COMMON_LIBC_MALLOC_ARENA_SIZE=0' "${build_dir}/zephyr/.config" ||
+        giftui_nrf_error "ILI9486 firmware must keep the C allocation arena disabled"
+    if awk '
+        $4 == "FUNC" && $5 == "GLOBAL" &&
+        ($8 == "malloc" || $8 == "calloc" || $8 == "realloc" ||
+         $8 == "aligned_alloc" ||
+         $8 == "k_malloc" || $8 == "k_calloc" || $8 == "k_realloc") {
+            found = 1
+        }
+        END { exit found ? 0 : 1 }
+    ' "${build_dir}/reports/symbols.txt"; then
+        giftui_nrf_error "ILI9486 ELF contains a heap allocation entry point"
+    fi
 fi
 
 printf 'ELF=%s\n' "${elf}"
