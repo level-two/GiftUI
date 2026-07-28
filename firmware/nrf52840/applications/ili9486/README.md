@@ -14,6 +14,12 @@ header. The tracked Devicetree uses the Phase 5 signal assignment:
 | Touch CS | D7 | P1.08 |
 | Touch PENIRQ | D6 | P1.07 |
 
+The supported PiScreen electrical path includes the board's
+SPI-to-16-bit-parallel converter. Controller commands and 8-bit parameters are
+transmitted as zero-extended 16-bit values; RGB565 pixels are transmitted as
+native 16-bit values. A bare ILI9486 configured for its native serial interface
+requires a different transport profile.
+
 Build without changing connected hardware:
 
 ```bash

@@ -21,6 +21,8 @@
 #define ILI9486_MADCTL 0x36U
 #define ILI9486_PIXFMT 0x3AU
 
+#define ILI9486_MAX_COMMAND_PARAMETERS 16U
+
 #define ILI9486_MADCTL_MV BIT(5)
 #define ILI9486_MADCTL_BGR BIT(3)
 #define ILI9486_RGB565_FORMAT 0x55U
@@ -62,6 +64,29 @@ static int write_bytes(const uint8_t *bytes, size_t byte_count)
     return result;
 }
 
+/*
+ * PiScreen and Waveshare rpi-lcd-35 boards place a serial-to-16-bit-parallel
+ * converter in front of the ILI9486. Commands and 8-bit register parameters
+ * must therefore be clocked as 16-bit values with a zero high byte. RGB565
+ * pixel payloads are already complete 16-bit parallel values and must not be
+ * expanded here.
+ */
+static int write_parallel_register_bytes(const uint8_t *bytes,
+                                         size_t byte_count)
+{
+    if (byte_count > ILI9486_MAX_COMMAND_PARAMETERS) {
+        giftui_fault_record(GIFTUI_FAULT_CAPACITY, -EMSGSIZE);
+        return -EMSGSIZE;
+    }
+
+    uint8_t framed[ILI9486_MAX_COMMAND_PARAMETERS * 2U];
+    for (size_t index = 0U; index < byte_count; ++index) {
+        framed[index * 2U] = 0U;
+        framed[index * 2U + 1U] = bytes[index];
+    }
+    return write_bytes(framed, byte_count * 2U);
+}
+
 static int write_pixel_segments(const uint8_t *bytes, size_t byte_count)
 {
     size_t offset = 0U;
@@ -86,7 +111,7 @@ static int write_command(uint8_t command,
     if (result != 0) {
         return result;
     }
-    result = write_bytes(&command, sizeof(command));
+    result = write_parallel_register_bytes(&command, sizeof(command));
     if (result != 0 || parameter_count == 0U) {
         return result;
     }
@@ -95,7 +120,7 @@ static int write_command(uint8_t command,
     if (result != 0) {
         return result;
     }
-    return write_bytes(parameters, parameter_count);
+    return write_parallel_register_bytes(parameters, parameter_count);
 }
 
 static int configure_safe_state(void)

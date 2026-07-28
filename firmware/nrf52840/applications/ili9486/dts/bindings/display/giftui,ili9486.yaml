@@ -1,8 +1,10 @@
-title: GiftUI project-local ILI9486 SPI display
+title: GiftUI project-local PiScreen ILI9486 parallel-bridge display
 
 description: |
   Hardware bring-up binding for the ILI9486 PiScreen used by GiftUI. The
-  application owns controller initialization and bounded RGB565 transfers.
+  PiScreen SPI-to-16-bit-parallel converter carries zero-extended commands and
+  parameters plus native RGB565 pixel words. The application owns controller
+  initialization and bounded transfers.
 
 compatible: "giftui,ili9486"
 
