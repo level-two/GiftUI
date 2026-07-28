@@ -16,6 +16,7 @@ let package = Package(
         .library(name: "GiftUIRuntimeDynamic", targets: ["GiftUIRuntimeDynamic"]),
         .library(name: "GiftUIRuntimeStatic", targets: ["GiftUIRuntimeStatic"]),
         .library(name: "GiftUIBackendFramebuffer", targets: ["GiftUIBackendFramebuffer"]),
+        .library(name: "GiftUIBackendRGB565", targets: ["GiftUIBackendRGB565"]),
         .library(name: "GiftUISimulatorMac", targets: ["GiftUISimulatorMac"]),
         .library(name: "GiftUIPlatformLinux", targets: ["GiftUIPlatformLinux"]),
         .library(
@@ -53,6 +54,13 @@ let package = Package(
         .target(name: "GiftUIBuiltinFont"),
         .target(
             name: "GiftUIBackendFramebuffer",
+            dependencies: [
+                "GiftUI",
+                "GiftUIBuiltinFont",
+            ]
+        ),
+        .target(
+            name: "GiftUIBackendRGB565",
             dependencies: [
                 "GiftUI",
                 "GiftUIBuiltinFont",
@@ -147,6 +155,10 @@ let package = Package(
         .testTarget(
             name: "GiftUIBackendFramebufferTests",
             dependencies: ["GiftUIBackendFramebuffer"]
+        ),
+        .testTarget(
+            name: "GiftUIBackendRGB565Tests",
+            dependencies: ["GiftUIBackendRGB565"]
         ),
         .testTarget(
             name: "GiftUIIntegrationTests",
