@@ -50,9 +50,13 @@ let package = Package(
             name: "GiftUIRuntimeStatic",
             dependencies: ["GiftUI"]
         ),
+        .target(name: "GiftUIBuiltinFont"),
         .target(
             name: "GiftUIBackendFramebuffer",
-            dependencies: ["GiftUI"]
+            dependencies: [
+                "GiftUI",
+                "GiftUIBuiltinFont",
+            ]
         ),
         .target(
             name: "GiftUISimulatorMac",

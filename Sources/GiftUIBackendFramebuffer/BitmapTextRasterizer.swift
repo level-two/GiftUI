@@ -1,4 +1,5 @@
 import GiftUI
+import GiftUIBuiltinFont
 
 enum BitmapTextRasterizer {
     static func draw(
@@ -13,8 +14,9 @@ enum BitmapTextRasterizer {
         surface.withUnsafeMutableBytes { bytes in
             var glyphOriginX = origin.x
             for scalar in text.content.unicodeScalars {
-                let rows = BuiltinFont8x12.rows(for: scalar)
-                for (rowIndex, rowBits) in rows.enumerated() {
+                let glyph = BuiltinFont8x12.glyph(forCodePoint: scalar.value)
+                for rowIndex in 0..<BuiltinFont8x12.glyphHeight {
+                    let rowBits = glyph.row(at: rowIndex)
                     let y = origin.y + 2 + rowIndex
                     guard y >= 0, y < height else { continue }
 
