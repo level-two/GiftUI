@@ -99,36 +99,39 @@ grep -Fq 'Tag_CPU_arch: v7E-M' "${build_dir}/reports/arm-attributes.txt" ||
     giftui_nrf_error "firmware does not declare ARMv7E-M"
 grep -Fq 'Tag_ABI_VFP_args: VFP registers' "${build_dir}/reports/arm-attributes.txt" ||
     giftui_nrf_error "firmware does not declare the hard-float calling convention"
-if [[ "${application}" == "probe" ]]; then
-    grep -Fq 'giftui_swift_probe_value' "${build_dir}/reports/symbols.txt" ||
-        giftui_nrf_error "probe ELF does not contain the Swift entry symbol"
-elif [[ "${application}" == "skeleton" ]]; then
-    grep -Fq 'giftui_swift_application_run' "${build_dir}/reports/symbols.txt" ||
-        giftui_nrf_error "skeleton ELF does not contain the Swift application entry symbol"
-elif [[ "${application}" == "ili9486" ]]; then
-    grep -Fq 'giftui_swift_display_application_run' "${build_dir}/reports/symbols.txt" ||
-        giftui_nrf_error "ILI9486 ELF does not contain the Swift application entry symbol"
-    grep -Fq 'GiftUIBackendRGB565' "${build_dir}/reports/symbols.txt" ||
-        giftui_nrf_error "ILI9486 ELF does not contain the RGB565 backend"
-    grep -Fq 'GiftUIRuntimeStatic' "${build_dir}/reports/symbols.txt" ||
-        giftui_nrf_error "ILI9486 ELF does not contain the static runtime"
-    grep -Fq 'GiftUIInputADS7846' "${build_dir}/reports/symbols.txt" ||
-        giftui_nrf_error "ILI9486 ELF does not contain ADS7846 input processing"
-    grep -Fqx 'CONFIG_HEAP_MEM_POOL_SIZE=0' "${build_dir}/zephyr/.config" ||
-        giftui_nrf_error "ILI9486 firmware must keep the Zephyr heap disabled"
-    grep -Fqx 'CONFIG_COMMON_LIBC_MALLOC_ARENA_SIZE=0' "${build_dir}/zephyr/.config" ||
-        giftui_nrf_error "ILI9486 firmware must keep the C allocation arena disabled"
-    if awk '
-        $4 == "FUNC" && $5 == "GLOBAL" &&
-        ($8 == "malloc" || $8 == "calloc" || $8 == "realloc" ||
-         $8 == "aligned_alloc" ||
-         $8 == "k_malloc" || $8 == "k_calloc" || $8 == "k_realloc") {
-            found = 1
-        }
-        END { exit found ? 0 : 1 }
-    ' "${build_dir}/reports/symbols.txt"; then
-        giftui_nrf_error "ILI9486 ELF contains a heap allocation entry point"
-    fi
+checks_file="${application_dir}/build-checks.conf"
+if [[ -f "${checks_file}" ]]; then
+    while IFS='=' read -r check value; do
+        [[ -n "${check}" && "${check}" != \#* ]] || continue
+        [[ -n "${value}" ]] ||
+            giftui_nrf_error "empty ${check} value in ${checks_file}"
+        case "${check}" in
+            swift-entry-symbol | required-symbol)
+                grep -Fq "${value}" "${build_dir}/reports/symbols.txt" ||
+                    giftui_nrf_error "${application} ELF does not contain required symbol: ${value}"
+                ;;
+            zero-heap)
+                [[ "${value}" == "true" ]] ||
+                    giftui_nrf_error "zero-heap must be true in ${checks_file}"
+                grep -Fqx 'CONFIG_HEAP_MEM_POOL_SIZE=0' "${build_dir}/zephyr/.config" ||
+                    giftui_nrf_error "${application} firmware must keep the Zephyr heap disabled"
+                grep -Fqx 'CONFIG_COMMON_LIBC_MALLOC_ARENA_SIZE=0' "${build_dir}/zephyr/.config" ||
+                    giftui_nrf_error "${application} firmware must keep the C allocation arena disabled"
+                if awk '
+                    $4 == "FUNC" && $5 == "GLOBAL" &&
+                    ($8 == "malloc" || $8 == "calloc" || $8 == "realloc" ||
+                     $8 == "aligned_alloc" ||
+                     $8 == "k_malloc" || $8 == "k_calloc" || $8 == "k_realloc") {
+                        found = 1
+                    }
+                    END { exit found ? 0 : 1 }
+                ' "${build_dir}/reports/symbols.txt"; then
+                    giftui_nrf_error "${application} ELF contains a heap allocation entry point"
+                fi
+                ;;
+            *) giftui_nrf_error "unknown build check '${check}' in ${checks_file}" ;;
+        esac
+    done <"${checks_file}"
 fi
 
 printf 'ELF=%s\n' "${elf}"
