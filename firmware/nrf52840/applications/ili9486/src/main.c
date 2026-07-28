@@ -70,6 +70,11 @@ extern int32_t giftui_swift_display_application_run(void);
 
 int main(void)
 {
+    printk("GiftUI ILI9486 transfer configuration: tile=%u rows, "
+           "segment<=%u bytes\n",
+           ili9486_tile_height(),
+           (unsigned int)ili9486_spi_segment_bytes());
+
     const int touch_result = ads7846_initialize();
     if (touch_result != 0) {
         printk("GiftUI ADS7846 initialization failed: %d\n", touch_result);

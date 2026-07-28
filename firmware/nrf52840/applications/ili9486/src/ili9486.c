@@ -32,6 +32,12 @@ static const struct gpio_dt_spec display_dc =
 static const struct gpio_dt_spec display_reset =
     GPIO_DT_SPEC_GET(ILI9486_NODE, reset_gpios);
 
+BUILD_ASSERT(GIFTUI_ILI9486_SPI_SEGMENT_BYTES > 0U);
+BUILD_ASSERT(
+    GIFTUI_ILI9486_SPI_SEGMENT_BYTES % GIFTUI_ILI9486_BYTES_PER_PIXEL == 0U);
+BUILD_ASSERT(
+    GIFTUI_ILI9486_SPI_SEGMENT_BYTES <= GIFTUI_ILI9486_MAX_TRANSFER_BYTES);
+
 #if DT_NODE_HAS_PROP(ILI9486_NODE, backlight_gpios)
 static const struct gpio_dt_spec display_backlight =
     GPIO_DT_SPEC_GET(ILI9486_NODE, backlight_gpios);
@@ -49,6 +55,22 @@ static int write_bytes(const uint8_t *bytes, size_t byte_count)
     };
 
     return spi_write_dt(&display_spi, &buffers);
+}
+
+static int write_pixel_segments(const uint8_t *bytes, size_t byte_count)
+{
+    size_t offset = 0U;
+    while (offset < byte_count) {
+        const size_t segment_byte_count = MIN(
+            (size_t)GIFTUI_ILI9486_SPI_SEGMENT_BYTES,
+            byte_count - offset);
+        const int result = write_bytes(bytes + offset, segment_byte_count);
+        if (result != 0) {
+            return result;
+        }
+        offset += segment_byte_count;
+    }
+    return 0;
 }
 
 static int write_command(uint8_t command,
@@ -205,6 +227,16 @@ int ili9486_initialize(void)
     return 0;
 }
 
+uint16_t ili9486_tile_height(void)
+{
+    return GIFTUI_ILI9486_TILE_HEIGHT;
+}
+
+size_t ili9486_spi_segment_bytes(void)
+{
+    return GIFTUI_ILI9486_SPI_SEGMENT_BYTES;
+}
+
 int ili9486_write_rgb565(uint16_t x,
                          uint16_t y,
                          uint16_t width,
@@ -234,7 +266,7 @@ int ili9486_write_rgb565(uint16_t x,
     if (result != 0) {
         return result;
     }
-    return write_bytes(pixels, byte_count);
+    return write_pixel_segments(pixels, byte_count);
 }
 
 int ili9486_render_color_bars(void)

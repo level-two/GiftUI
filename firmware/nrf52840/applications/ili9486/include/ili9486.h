@@ -8,11 +8,14 @@
 #define GIFTUI_ILI9486_HEIGHT 320U
 #define GIFTUI_ILI9486_BYTES_PER_PIXEL 2U
 #define GIFTUI_ILI9486_TILE_HEIGHT 16U
+#define GIFTUI_ILI9486_SPI_SEGMENT_BYTES 3840U
 #define GIFTUI_ILI9486_MAX_TRANSFER_BYTES                                  \
     (GIFTUI_ILI9486_WIDTH * GIFTUI_ILI9486_TILE_HEIGHT *                  \
      GIFTUI_ILI9486_BYTES_PER_PIXEL)
 
 int ili9486_initialize(void);
+uint16_t ili9486_tile_height(void);
+size_t ili9486_spi_segment_bytes(void);
 int ili9486_write_rgb565(uint16_t x,
                          uint16_t y,
                          uint16_t width,

@@ -63,6 +63,12 @@ bounds after a completed action. The initial frame and calibration screens
 remain full-surface renders; update tiles are packed to the dirty rectangle so
 the SPI transport does not send unchanged columns or rows.
 
+The tracked Phase 7 measurement candidate keeps the 16-row renderer tile and
+splits pixel payloads into at most 3,840-byte SPI transactions. Both values are
+reported on UART at boot and have one source of truth in `include/ili9486.h`.
+They are bounded starting values, not accepted tuning results; record connected
+hardware measurements before changing them or raising the 4 MHz display clock.
+
 Do not power the screen or flash this firmware until the exact PiScreen
 revision, supply rail, backlight polarity/transistor stage, and unpowered
 continuity have been recorded. After flashing, verify the red/yellow/green/

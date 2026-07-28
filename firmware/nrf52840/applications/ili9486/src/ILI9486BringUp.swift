@@ -10,6 +10,9 @@ func ili9486Initialize() -> Int32
 @_silgen_name("ili9486_render_color_bars")
 func ili9486RenderColorBars() -> Int32
 
+@_silgen_name("ili9486_tile_height")
+func ili9486TileHeight() -> UInt16
+
 @_silgen_name("ili9486_write_rgb565")
 func ili9486WriteRGB565(
     _ x: UInt16,
@@ -78,7 +81,7 @@ public func giftuiSwiftDisplayApplicationRun() -> Int32 {
     guard let configuration = RGB565RendererConfiguration(
             validatingPhysicalWidth: 480,
             physicalHeight: 320,
-            tileHeight: 16,
+            tileHeight: Int(ili9486TileHeight()),
             rotation: .degrees0,
             byteOrder: .mostSignificantByteFirst
         ) else {
