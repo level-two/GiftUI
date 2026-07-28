@@ -173,6 +173,22 @@ UART logging, LED1, and Button 1. LED1 blinks while idle and remains lit while
 Button 1 is held. It intentionally stops before the static GiftUI runtime,
 RGB565 renderer, ILI9486 display, and ADS7846 touch phases.
 
+The Phase 5 `ili9486` application now provides project-local ILI9486 SPI
+transport at a conservative 4 MHz, an eight-bar C/Zephyr diagnostic, and the
+portable thermostat rendered by Embedded Swift through bounded 480 × 16
+RGB565 tiles. Build and inspect it without changing a connected board:
+
+```bash
+scripts/nrf52840/build.sh --application ili9486
+```
+
+The tracked overlay intentionally omits backlight control until the exact
+PiScreen polarity and transistor stage are verified. Hardware provenance,
+continuity, power, flashing, visual checks, and measurements are tracked in
+[`docs/GiftUI_ILI9486_Bring_Up_Record.md`](docs/GiftUI_ILI9486_Bring_Up_Record.md).
+The Phase 5 hardware gate remains open; successful compilation is not a claim
+of tested board support.
+
 Swift 6.3.2 names its bundled ARMv7E-M standard module
 `armv7em-none-none-eabi`. Zephyr supplies the Cortex-M4F and
 `-mfloat-abi=hard` flags, and the build rejects firmware whose ELF does not

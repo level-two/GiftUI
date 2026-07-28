@@ -98,3 +98,26 @@ dictionaries, or runtime strings. Host integration tests replay the static
 thermostat into 480 × 320 RGB565 tiles, compare every pixel with the quantized
 RGBA renderer, pin a deterministic golden hash, and assert that no presented
 or allocated tile exceeds 15,360 bytes.
+
+## ILI9486 firmware integration
+
+**Status:** Hardware-free implementation complete; connected-board gate open.
+
+The `ili9486` Zephyr application links the accepted portable core, static
+runtime, thermostat view, font, and RGB565 backend as Embedded Swift modules.
+A project-local C transport handles the ILI9486 reset, standard initialization,
+480 × 320 address windows, and bounded RGB565 SPI writes because pinned Zephyr
+4.3.0 has no ILI9486 driver. Firmware first emits a C color-bar diagnostic,
+then renders the thermostat through twenty 480 × 16 Swift tiles.
+
+The build requires ARMv7E-M hard-float attributes, the Swift entry point,
+static runtime and RGB565 symbols, disabled Zephyr heap, and linked RAM below
+the project limit. The baseline image uses 49,104 bytes of flash and 38,908
+bytes of linked RAM, including a conservative 32 KiB main stack pending a
+hardware high-water measurement.
+
+No connected-board validation is inferred from these gates. The screen
+revision, power rail, backlight circuit/polarity, continuity, controller-
+specific power/gamma configuration, observed RGB/BGR order, orientation,
+transfer timing, stack margin, and reset/repetition results remain tracked in
+`GiftUI_ILI9486_Bring_Up_Record.md`.

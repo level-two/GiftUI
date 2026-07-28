@@ -594,6 +594,10 @@ no full framebuffer allocation is possible.
 
 ### Phase 5 — ILI9486 display bring-up
 
+**Status:** Hardware-free firmware implementation complete; connected-board
+validation pending. See
+[`GiftUI_ILI9486_Bring_Up_Record.md`](GiftUI_ILI9486_Bring_Up_Record.md).
+
 1. Build the wiring adapter and verify unpowered continuity.
 2. Bring up reset, backlight control, and an ILI9486 color-bar test in C/Zephyr.
 3. Validate RGB565, orientation, address windows, and conservative SPI speed.
