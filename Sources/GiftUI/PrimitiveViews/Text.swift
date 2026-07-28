@@ -22,6 +22,19 @@ public struct TextContent {
         storage = .dynamicString(content)
     }
     #endif
+
+    package func makeTextRun(color: Color = .white) -> TextRun {
+        switch storage {
+        case .staticString(let content):
+            return TextRun(content, color: color)
+        case .boundedInteger(let value, let suffix):
+            return TextRun(integer: value, suffix: suffix, color: color)
+        #if !hasFeature(Embedded)
+        case .dynamicString(let content):
+            return TextRun(dynamic: content, color: color)
+        #endif
+        }
+    }
 }
 
 public struct Text: View, PrimitiveView {

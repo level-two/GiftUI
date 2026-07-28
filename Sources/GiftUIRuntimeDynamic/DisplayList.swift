@@ -1,3 +1,6 @@
+import GiftUI
+
+/// Heap-backed render storage for dynamic runtime clients.
 public struct DisplayList: Equatable, Sendable, RenderOperationSink {
     public private(set) var operations: [RenderOperation]
 
@@ -16,15 +19,12 @@ public extension RenderBackend {
             execute(operation)
         }
     }
+}
 
-    mutating func execute(_ operation: RenderOperation) {
-        switch operation {
-        case .fillRect(let rect, let color):
-            fill(rect, color: color)
-        case .strokeRect(let rect, let color, let lineWidth):
-            stroke(rect, color: color, lineWidth: lineWidth)
-        case .text(let text, let origin):
-            drawText(text, at: origin)
-        }
+extension ViewNode {
+    package func makeDisplayList() -> DisplayList {
+        var displayList = DisplayList()
+        appendRenderOperations(to: &displayList)
+        return displayList
     }
 }

@@ -66,6 +66,72 @@ func staticRuntimeReportsHitRegionCapacityExhaustion() {
     }
 }
 
+@Test
+func staticRuntimeEmitsPortableRenderOperationsWithoutDisplayList() throws {
+    struct RecordingSink: RenderOperationSink {
+        var operations: [RenderOperation] = []
+
+        mutating func append(_ operation: RenderOperation) {
+            operations.append(operation)
+        }
+    }
+
+    let content = VStack(spacing: 4) {
+        Text("Target")
+        Text(integer: -21, suffix: "°")
+        Button("+", action: ActionID(rawValue: 1))
+    }
+    let layout = try StaticRuntime().layout(
+        content,
+        in: Size(width: 120, height: 120)
+    )
+    var sink = RecordingSink()
+
+    layout.appendRenderOperations(to: &sink)
+
+    #expect(sink.operations.count == 5)
+    #expect(sink.operations[0] == .text(
+        TextRun("Target"),
+        at: Point(x: 36, y: 32)
+    ))
+    #expect(sink.operations[1] == .text(
+        TextRun(integer: -21, suffix: "°"),
+        at: Point(x: 44, y: 48)
+    ))
+}
+
+@Test
+func staticRenderEmissionPropagatesSinkCapacityFailure() throws {
+    enum CapacityError: Error {
+        case exhausted
+    }
+
+    struct BoundedSink: RenderOperationSink {
+        typealias Failure = CapacityError
+
+        var remainingCapacity: Int
+
+        mutating func append(
+            _ operation: RenderOperation
+        ) throws(CapacityError) {
+            guard remainingCapacity > 0 else {
+                throw .exhausted
+            }
+            remainingCapacity -= 1
+        }
+    }
+
+    let layout = try StaticRuntime().layout(
+        Button("+", action: ActionID(rawValue: 1)),
+        in: Size(width: 40, height: 40)
+    )
+    var sink = BoundedSink(remainingCapacity: 2)
+
+    #expect(throws: CapacityError.exhausted) {
+        try layout.appendRenderOperations(to: &sink)
+    }
+}
+
 private struct TooManyTextChildren: View {
     var body: Never {
         fatalError("Custom traversal does not evaluate a body")

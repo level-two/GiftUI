@@ -15,6 +15,13 @@ func dynamicTextAcceptsRuntimeStrings() {
 }
 
 @Test
+func dynamicTextRunAcceptsRuntimeStrings() {
+    let content = String(repeating: "A", count: 3)
+
+    #expect(TextRun(content).content == "AAA")
+}
+
+@Test
 func dynamicButtonAcceptsEscapingCallbacks() {
     var activations = 0
     let graph = ViewGraph.layout(

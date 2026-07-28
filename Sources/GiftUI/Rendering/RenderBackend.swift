@@ -9,3 +9,16 @@ public protocol RenderBackend {
     mutating func endFrame()
     mutating func present()
 }
+
+public extension RenderBackend {
+    mutating func execute(_ operation: RenderOperation) {
+        switch operation {
+        case .fillRect(let rect, let color):
+            fill(rect, color: color)
+        case .strokeRect(let rect, let color, let lineWidth):
+            stroke(rect, color: color, lineWidth: lineWidth)
+        case .text(let text, let origin):
+            drawText(text, at: origin)
+        }
+    }
+}

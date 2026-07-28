@@ -49,6 +49,11 @@ sources=(
     Sources/GiftUI/Input/HitRegion.swift
     Sources/GiftUI/Input/InputEvent.swift
     Sources/GiftUI/Layout/LayoutArithmetic.swift
+    Sources/GiftUI/Rendering/Color.swift
+    Sources/GiftUI/Rendering/RenderBackend.swift
+    Sources/GiftUI/Rendering/RenderOperation.swift
+    Sources/GiftUI/Rendering/RenderOperationSink.swift
+    Sources/GiftUI/Rendering/TextRun.swift
     Sources/GiftUI/Runtime/RuntimeProfile.swift
     Sources/GiftUI/View/PrimitiveView.swift
     Sources/GiftUI/View/View.swift

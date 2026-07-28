@@ -119,6 +119,12 @@ layout, and records identified hit regions with explicit capacity failures.
 The dynamic runtime continues to build its retained class/array graph through
 the same visitor contract.
 
+Portable render operations now retain static or bounded-integer text and
+compile in Embedded Swift. The static arena emits them directly into a render
+sink, while heap-backed text and the array-backed `DisplayList` live in the
+dynamic convenience/runtime targets. Static and dynamic thermostat render
+operation order is checked by the host conformance suite.
+
 ### Stage D — provide portable state and text
 
 - Replace the core `@State` class box/task-local dependency with an explicit

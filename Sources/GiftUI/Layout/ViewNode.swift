@@ -1,6 +1,6 @@
 package enum ViewNodeKind {
     case group
-    case text(String)
+    case text(TextRun)
     case button(ButtonAction)
     case vStack(spacing: Int)
     case hStack(spacing: Int)
@@ -45,7 +45,7 @@ public final class ViewNode {
         case .text(let content):
             size = Size(
                 width: LayoutArithmetic.requireMultiply(
-                    content.unicodeScalars.count,
+                    content.glyphCount,
                     Self.glyphSize.width,
                     operation: "measuring text"
                 ),
@@ -225,12 +225,6 @@ public final class ViewNode {
         )
     }
 
-    package func makeDisplayList() -> DisplayList {
-        var displayList = DisplayList()
-        appendRenderOperations(to: &displayList)
-        return displayList
-    }
-
     package func appendRenderOperations<Sink: RenderOperationSink>(
         to sink: inout Sink
     ) throws(Sink.Failure) {
@@ -242,7 +236,7 @@ public final class ViewNode {
         case .text(let content):
             try sink.append(
                 .text(
-                    TextRun(content, color: .white),
+                    content,
                     at: frame.origin
                 )
             )

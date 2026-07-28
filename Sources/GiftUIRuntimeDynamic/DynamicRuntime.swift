@@ -53,6 +53,19 @@ public final class DynamicRuntime: GiftUIRuntime {
         return snapshot
     }
 
+    public func renderOperations<Content: View>(
+        _ content: Content,
+        in surfaceSize: Size
+    ) -> DisplayList {
+        let generation = invalidationGeneration
+        let displayList = makeViewGraph(
+            content,
+            in: surfaceSize
+        ).makeDisplayList()
+        markRendered(ifUnchangedSince: generation)
+        return displayList
+    }
+
     package func makeViewGraph<Content: View>(
         _ content: Content,
         in surfaceSize: Size

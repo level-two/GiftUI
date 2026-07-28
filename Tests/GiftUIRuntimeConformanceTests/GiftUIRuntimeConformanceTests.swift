@@ -18,6 +18,27 @@ func portableThermostatHasEquivalentPreRenderSemantics() throws {
     #expect(model.target == 21)
 }
 
+@Test
+func portableThermostatHasEquivalentRenderOperations() throws {
+    struct RecordingSink: RenderOperationSink {
+        var operations: [RenderOperation] = []
+
+        mutating func append(_ operation: RenderOperation) {
+            operations.append(operation)
+        }
+    }
+
+    let view = ThermostatPortableView(target: 21)
+    let surfaceSize = Size(width: 240, height: 240)
+    let dynamic = DynamicRuntime().renderOperations(view, in: surfaceSize)
+    let fixed = try StaticRuntime().layout(view, in: surfaceSize)
+    var fixedOperations = RecordingSink()
+
+    fixed.appendRenderOperations(to: &fixedOperations)
+
+    #expect(fixedOperations.operations == dynamic.operations)
+}
+
 @Test(arguments: [0, -1, Int.min, Int.max])
 func boundedIntegerTextHasEquivalentIntrinsicWidth(_ value: Int) throws {
     let view = Text(integer: value, suffix: "°")

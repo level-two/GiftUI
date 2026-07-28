@@ -189,18 +189,7 @@ extension ViewBuildContext: ViewVisitor {
     }
 
     public mutating func visitText(_ content: TextContent) {
-        let string: String
-        switch content.storage {
-        case .staticString(let content):
-            string = content.description
-        case .boundedInteger(let value, let suffix):
-            string = String(value) + suffix.description
-        #if !hasFeature(Embedded)
-        case .dynamicString(let content):
-            string = content
-        #endif
-        }
-        append(ViewNode(kind: .text(string)))
+        append(ViewNode(kind: .text(content.makeTextRun())))
     }
 
     public mutating func visitButton<Label: View>(

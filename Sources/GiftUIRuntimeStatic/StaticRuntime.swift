@@ -11,7 +11,7 @@ public enum StaticRuntimeError: Error, Equatable, Sendable {
 
 private enum StaticNodeKind {
     case group
-    case text(glyphCount: Int)
+    case text(TextRun)
     case button(ActionID)
     case vStack(spacing: Int)
     case hStack(spacing: Int)
@@ -127,6 +127,53 @@ public struct StaticLayout {
             }
         }
         return nil
+    }
+
+    /// Emits operations directly from the fixed layout arena. No retained
+    /// display-list allocation is required by the static runtime.
+    public func appendRenderOperations<Sink: RenderOperationSink>(
+        to sink: inout Sink
+    ) throws(Sink.Failure) {
+        try appendRenderOperations(at: rootIndex, to: &sink)
+    }
+
+    private func appendRenderOperations<Sink: RenderOperationSink>(
+        at index: Int,
+        to sink: inout Sink
+    ) throws(Sink.Failure) {
+        let node = nodes[index]
+        switch node.kind {
+        case .group, .vStack, .hStack:
+            try appendChildRenderOperations(of: node, to: &sink)
+        case .text(let text):
+            try sink.append(.text(text, at: node.frame.origin))
+        case .button:
+            try sink.append(
+                .fillRect(
+                    node.frame,
+                    Color(red: 62, green: 68, blue: 82)
+                )
+            )
+            try sink.append(
+                .strokeRect(
+                    node.frame,
+                    Color(red: 116, green: 130, blue: 160),
+                    lineWidth: 1
+                )
+            )
+            try appendChildRenderOperations(of: node, to: &sink)
+        }
+    }
+
+    private func appendChildRenderOperations<Sink: RenderOperationSink>(
+        of node: StaticNode,
+        to sink: inout Sink
+    ) throws(Sink.Failure) {
+        var child = node.firstChild
+        while child >= 0 {
+            try appendRenderOperations(at: child, to: &sink)
+            child = nodes[child].nextSibling
+        }
     }
 }
 
@@ -293,13 +340,8 @@ private struct StaticGraphBuilder: ViewVisitor {
 
     mutating func visitText(_ content: TextContent) {
         switch content.storage {
-        case .staticString(let value):
-            _ = append(.text(glyphCount: unicodeScalarCount(of: value)))
-        case .boundedInteger(let value, let suffix):
-            _ = append(.text(
-                glyphCount: decimalCharacterCount(of: value)
-                    + unicodeScalarCount(of: suffix)
-            ))
+        case .staticString, .boundedInteger:
+            _ = append(.text(content.makeTextRun()))
         #if !hasFeature(Embedded)
         case .dynamicString:
             failure = .unsupportedDynamicText
@@ -321,28 +363,6 @@ private struct StaticGraphBuilder: ViewVisitor {
         }
     }
 
-    private func unicodeScalarCount(of value: StaticString) -> Int {
-        let bytes = UnsafeBufferPointer(
-            start: value.utf8Start,
-            count: value.utf8CodeUnitCount
-        )
-        var count = 0
-        for byte in bytes where byte & 0xc0 != 0x80 {
-            count += 1
-        }
-        return count
-    }
-
-    private func decimalCharacterCount(of value: Int) -> Int {
-        if value == 0 { return 1 }
-        var remaining = value
-        var count = value < 0 ? 1 : 0
-        while remaining != 0 {
-            count += 1
-            remaining /= 10
-        }
-        return count
-    }
 }
 
 private struct StaticLayoutArena {
@@ -397,9 +417,9 @@ private struct StaticLayoutArena {
         switch kind {
         case .group:
             size = measureGroup(index, proposal: proposal)
-        case .text(let glyphCount):
+        case .text(let text):
             size = Size(
-                width: glyphCount * Self.glyphSize.width,
+                width: text.glyphCount * Self.glyphSize.width,
                 height: Self.glyphSize.height
             )
         case .button:

@@ -14,6 +14,7 @@ Included:
 - geometry and checked layout arithmetic;
 - runtime-profile markers;
 - input and identified-action values;
+- backend-independent colors, text runs, render operations, and sinks;
 - `View`, result-builder composition, stacks, text, and buttons;
 - runtime-neutral `ViewVisitor` traversal.
 
@@ -31,13 +32,17 @@ Not yet admitted to this layer:
 - class/task-local `@State` binding and string structural keys;
 - the retained `ViewNode` graph and public array-backed `LayoutNode` snapshot;
 - array/dictionary interaction snapshots;
-- `String`-backed render runs and `DisplayList`;
 - rendering backends.
+
+Portable render text retains `StaticString` labels or bounded integer/suffix
+values and can emit UTF-8 code units without constructing a `String`.
+Heap-backed render text and the array-backed `DisplayList` are available only
+through dynamic targets.
 
 The retained graph, dynamic state, and interaction storage are inputs to the
 dynamic runtime migration. Bounded replacements belong to
-`GiftUIRuntimeStatic`. Render operations and backends are intentionally left
-for the separate render-layer activity.
+`GiftUIRuntimeStatic`. Rendering backends remain separate target-specific
+layers.
 
 ## Static runtime layer
 
@@ -57,7 +62,7 @@ Embedded Swift the arena uses inline fixed-size arrays. The macOS conformance
 harness uses capacity-checked arrays because `InlineArray` has a macOS 26
 availability floor while this package still supports macOS 15.
 
-State slots and render emission remain outside this accepted layer. The first
+State slots remain outside this accepted layer. The first
 static application fixture owns typed mutable state and dispatches bounded
 action identifiers explicitly; adapting `@State` to generated/fixed slots is a
 subsequent state-layer step.
@@ -66,4 +71,9 @@ The same portable thermostat declaration compiles as an ARM Embedded Swift
 module and runs in the host conformance suite through both runtimes. It uses
 bounded decimal `Text(integer:suffix:)`, and the suite compares intrinsic
 layout, node counts, hit regions, action identifiers, and typed state changes
-before render emission.
+as well as ordered render operations.
+
+The fixed layout arena retains portable text payloads and emits render
+operations directly into a caller-provided sink. This avoids a static
+display-list allocation, propagates sink capacity failures, and produces the
+same ordered operations as the dynamic runtime for the portable thermostat.
