@@ -17,6 +17,7 @@ let package = Package(
         .library(name: "GiftUIRuntimeStatic", targets: ["GiftUIRuntimeStatic"]),
         .library(name: "GiftUIBackendFramebuffer", targets: ["GiftUIBackendFramebuffer"]),
         .library(name: "GiftUIBackendRGB565", targets: ["GiftUIBackendRGB565"]),
+        .library(name: "GiftUIInputADS7846", targets: ["GiftUIInputADS7846"]),
         .library(name: "GiftUISimulatorMac", targets: ["GiftUISimulatorMac"]),
         .library(name: "GiftUIPlatformLinux", targets: ["GiftUIPlatformLinux"]),
         .library(
@@ -65,6 +66,10 @@ let package = Package(
                 "GiftUI",
                 "GiftUIBuiltinFont",
             ]
+        ),
+        .target(
+            name: "GiftUIInputADS7846",
+            dependencies: ["GiftUI"]
         ),
         .target(
             name: "GiftUISimulatorMac",
@@ -164,6 +169,10 @@ let package = Package(
                 "GiftUIExampleThermostatPortableView",
                 "GiftUIRuntimeStatic",
             ]
+        ),
+        .testTarget(
+            name: "GiftUIInputADS7846Tests",
+            dependencies: ["GiftUIInputADS7846"]
         ),
         .testTarget(
             name: "GiftUIIntegrationTests",

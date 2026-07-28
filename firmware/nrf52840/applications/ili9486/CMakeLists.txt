@@ -121,6 +121,14 @@ add_library(giftui_rgb565 OBJECT
 giftui_configure_swift_target(giftui_rgb565 GiftUIBackendRGB565)
 target_link_libraries(giftui_rgb565 PRIVATE giftui_core giftui_builtin_font)
 
+add_library(giftui_ads7846_input OBJECT
+    ${giftui_root}/Sources/GiftUIInputADS7846/GiftUIInputADS7846.swift
+    ${giftui_root}/Sources/GiftUIInputADS7846/ADS7846RawSample.swift
+    ${giftui_root}/Sources/GiftUIInputADS7846/ADS7846Calibration.swift
+)
+giftui_configure_swift_target(giftui_ads7846_input GiftUIInputADS7846)
+target_link_libraries(giftui_ads7846_input PRIVATE giftui_core)
+
 add_library(giftui_thermostat_view OBJECT
     ${giftui_root}/Sources/GiftUIExampleThermostatPortableView/ThermostatModel.swift
     ${giftui_root}/Sources/GiftUIExampleThermostatPortableView/ThermostatPortableView.swift
