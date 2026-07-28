@@ -89,12 +89,12 @@ support, application stacks, drivers, GiftUI storage, and display staging.
 | Full PiScreen RGBA8888 surface | 480 × 320 × 4 | 614,400 bytes |
 | Full PiScreen RGB565 surface | 480 × 320 × 2 | 307,200 bytes |
 | One RGB565 scan line | 480 × 2 | 960 bytes |
-| Sixteen RGB565 scan lines | 480 × 16 × 2 | 15,360 bytes |
+| Four RGB565 scan lines | 480 × 4 × 2 | 3,840 bytes |
 
 Neither full-screen representation is acceptable. The first implementation
-shall use an RGB565 scan-line or tile buffer. A 480 × 16 tile is the preferred
-starting point; the height must remain configurable after linker-map and stack
-measurements.
+shall use an RGB565 scan-line or tile buffer. The measured implementation uses
+a 480 × 4 tile so one tile fits the 3,840-byte transport segment; the height
+must remain configurable after linker-map and stack measurements.
 
 ### 3.2 Initial resource requirements
 

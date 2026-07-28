@@ -34,6 +34,9 @@ static const struct gpio_dt_spec display_dc =
     GPIO_DT_SPEC_GET(ILI9486_NODE, dc_gpios);
 static const struct gpio_dt_spec display_reset =
     GPIO_DT_SPEC_GET(ILI9486_NODE, reset_gpios);
+static uint8_t pixel_scratch[
+    (GIFTUI_ILI9486_WIDTH / 8U) * GIFTUI_ILI9486_TILE_HEIGHT *
+    GIFTUI_ILI9486_BYTES_PER_PIXEL];
 
 BUILD_ASSERT(GIFTUI_ILI9486_SPI_SEGMENT_BYTES > 0U);
 BUILD_ASSERT(
@@ -303,9 +306,6 @@ int ili9486_write_rgb565(uint16_t x,
 
 int ili9486_render_color_bars(void)
 {
-    static uint8_t tile[
-        (GIFTUI_ILI9486_WIDTH / 8U) * GIFTUI_ILI9486_TILE_HEIGHT *
-        GIFTUI_ILI9486_BYTES_PER_PIXEL];
     static const uint16_t colors[] = {
         0xF800U,
         0xFFE0U,
@@ -320,9 +320,9 @@ int ili9486_render_color_bars(void)
 
     for (uint16_t bar = 0U; bar < ARRAY_SIZE(colors); ++bar) {
         const uint16_t color = colors[bar];
-        for (size_t index = 0U; index < sizeof(tile); index += 2U) {
-            tile[index] = (uint8_t)(color >> 8);
-            tile[index + 1U] = (uint8_t)color;
+        for (size_t index = 0U; index < sizeof(pixel_scratch); index += 2U) {
+            pixel_scratch[index] = (uint8_t)(color >> 8);
+            pixel_scratch[index + 1U] = (uint8_t)color;
         }
 
         for (uint16_t y = 0U; y < GIFTUI_ILI9486_HEIGHT;
@@ -337,7 +337,7 @@ int ili9486_render_color_bars(void)
                 y,
                 bar_width,
                 height,
-                tile,
+                pixel_scratch,
                 byte_count);
             if (result != 0) {
                 return result;

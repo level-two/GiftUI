@@ -200,7 +200,7 @@ func laterOperationsReplaceEarlierPixels() throws {
 
 @Test
 func textRendersASCIIBoundedIntegerAndDegreeGlyphs() throws {
-    let pixels = try renderPhysicalPixels(width: 32, height: 12, tileHeight: 5) { backend in
+    let pixels = try renderPhysicalPixels(width: 32, height: 12, tileHeight: 4) { backend in
         backend.clear(.black)
         backend.drawText(
             TextRun(integer: -1, suffix: "°", color: .white),

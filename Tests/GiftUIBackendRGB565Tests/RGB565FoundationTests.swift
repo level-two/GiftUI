@@ -30,11 +30,11 @@ func configurationBoundsTheOnlyPixelBuffer() throws {
     let maximum = try RGB565RendererConfiguration(
         physicalWidth: 480,
         physicalHeight: 320,
-        tileHeight: 16
+        tileHeight: 4
     )
 
     #expect(maximum.logicalSize == Size(width: 480, height: 320))
-    #expect(maximum.tileBufferByteCapacity == 15_360)
+    #expect(maximum.tileBufferByteCapacity == 3_840)
     #expect(maximum.tileBufferByteCapacity == RGB565RendererConfiguration.maximumTileBufferByteCapacity)
     #expect(maximum.tileBufferByteCapacity < 480 * 320 * 2)
 
@@ -51,14 +51,14 @@ func optionalConfigurationValidationAvoidsThrownErrors() {
     let valid = RGB565RendererConfiguration(
         validatingPhysicalWidth: 480,
         physicalHeight: 320,
-        tileHeight: 16
+        tileHeight: 4
     )
     let invalid = RGB565RendererConfiguration(
         validatingPhysicalWidth: 481,
         physicalHeight: 320
     )
 
-    #expect(valid?.tileBufferByteCapacity == 15_360)
+    #expect(valid?.tileBufferByteCapacity == 3_840)
     #expect(invalid == nil)
 }
 
@@ -90,7 +90,7 @@ func configurationRejectsInvalidHeights(
 
 @Test(arguments: [
     (0, RGB565ConfigurationError.invalidTileHeight(0)),
-    (17, RGB565ConfigurationError.invalidTileHeight(17)),
+    (5, RGB565ConfigurationError.invalidTileHeight(5)),
 ])
 func configurationRejectsInvalidTileHeights(
     tileHeight: Int,

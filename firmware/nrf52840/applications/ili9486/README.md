@@ -48,7 +48,7 @@ keeps it inactive through reset and enables it only after initialization.
 
 After the color-bar diagnostic, firmware waits two seconds and uses the real
 Embedded Swift `StaticRuntime`, portable thermostat view, built-in font, and
-`RGB565TileRenderer` to draw the thermostat. Each 480 × 16 tile is handed to
+`RGB565TileRenderer` to draw the thermostat. Each 480 × 4 tile is handed to
 the same checked C rectangular writer, so the firmware cannot construct or
 transfer a full-screen framebuffer. UART output reports the color-bar and
 thermostat transfer times separately.
@@ -69,8 +69,8 @@ bounds after a completed action. The initial frame and calibration screens
 remain full-surface renders; update tiles are packed to the dirty rectangle so
 the SPI transport does not send unchanged columns or rows.
 
-The tracked Phase 7 measurement candidate keeps the 16-row renderer tile and
-splits pixel payloads into at most 3,840-byte SPI transactions. Both values are
+The tracked measurement candidate uses a four-row renderer tile and splits
+pixel payloads into at most 3,840-byte SPI transactions. Both values are
 reported on UART at boot and have one source of truth in `include/ili9486.h`.
 They are bounded starting values, not accepted tuning results; record connected
 hardware measurements before changing them or raising the 4 MHz display clock.

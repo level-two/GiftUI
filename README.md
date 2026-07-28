@@ -181,7 +181,7 @@ RGB565 renderer, ILI9486 display, and ADS7846 touch phases.
 
 The Phase 5 `ili9486` application now provides project-local ILI9486 SPI
 transport at a conservative 4 MHz, an eight-bar C/Zephyr diagnostic, and the
-portable thermostat rendered by Embedded Swift through bounded 480 × 16
+portable thermostat rendered by Embedded Swift through bounded 480 × 4
 RGB565 tiles. Build and inspect it without changing a connected board:
 
 ```bash

@@ -63,7 +63,7 @@ func linuxApplicationUsesBoundedRGB565TilesAndDirtyUpdates() throws {
 
     let display = RecordingRGB565TileDisplaySurface(
         logicalSize: Size(width: 80, height: 80),
-        tileHeight: 16
+        tileHeight: 4
     )
     let application = GiftUILinuxApplication(
         root: Counter(),
@@ -72,11 +72,11 @@ func linuxApplicationUsesBoundedRGB565TilesAndDirtyUpdates() throws {
     )
 
     #expect(application.usesRGB565TileRenderer)
-    #expect(application.pixelBufferByteCapacity == 80 * 16 * 2)
+    #expect(application.pixelBufferByteCapacity == 80 * 4 * 2)
     #expect(try application.runCycle())
     #expect(display.fullRefreshes == [true])
     #expect(display.fallbackPresentationCount == 0)
-    #expect(display.tiles.count == 5)
+    #expect(display.tiles.count == 20)
     #expect(display.presentedByteCounts.reduce(0, +) == 80 * 80 * 2)
     let initialPixels = display.pixels
 

@@ -18,7 +18,7 @@ claims that require the exact nRF52840-DK/PiScreen assembly. Do not replace a
 | SPI bring-up clock | 4 MHz |
 | Pixel format | RGB565, most-significant byte first |
 | Initial orientation | 480 × 320 landscape, MADCTL `MV | BGR` |
-| Swift display tile | 480 × 16 × 2 = 15,360 bytes |
+| Initial Swift display tile | 480 × 16 × 2 = 15,360 bytes |
 | Linked flash baseline | 49,104 bytes |
 | Linked RAM baseline | 38,908 bytes, including a 32 KiB main stack |
 | Zephyr heap | Disabled (`CONFIG_HEAP_MEM_POOL_SIZE=0`) |
@@ -28,6 +28,10 @@ Devicetree, section, symbol, and memory reports under
 `.build/nrf52840/ili9486/`. It retains the Embedded Swift entry point, static
 runtime, and RGB565 backend. No firmware was flashed while creating this
 baseline.
+
+The later bounded-storage optimization uses a 480 × 4 × 2 = 3,840-byte Swift
+tile; the table above remains the recorded Phase 5 baseline for revision
+`3e33c55`.
 
 ## Hardware provenance gate
 

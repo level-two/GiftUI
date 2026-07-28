@@ -88,7 +88,7 @@ static slot after mutation and checks both runtimes again.
 **Status:** Compiles in regular and Embedded Swift.
 
 `GiftUIBackendRGB565` rasterizes directly into reusable physical row tiles.
-The fixed maximum is 480 × 16 × 2 bytes (15,360 bytes), while host builds
+The fixed maximum is 480 × 4 × 2 bytes (3,840 bytes), while host builds
 allocate only the configured width and tile height. Logical drawing is clipped
 to the active physical tile before pixel writes and supports 0°, 90°, 180°,
 and 270° rotation plus explicit most- or least-significant-byte-first output.
@@ -97,7 +97,7 @@ The shared `GiftUIBuiltinFont` target stores glyph rows without arrays,
 dictionaries, or runtime strings. Host integration tests replay the static
 thermostat into 480 × 320 RGB565 tiles, compare every pixel with the quantized
 RGBA renderer, pin a deterministic golden hash, and assert that no presented
-or allocated tile exceeds 15,360 bytes.
+or allocated tile exceeds 3,840 bytes.
 
 ## ILI9486 firmware integration
 
@@ -108,11 +108,11 @@ runtime, thermostat view, font, and RGB565 backend as Embedded Swift modules.
 A project-local C transport handles the ILI9486 reset, standard initialization,
 480 × 320 address windows, and bounded RGB565 SPI writes because pinned Zephyr
 4.3.0 has no ILI9486 driver. Firmware first emits a C color-bar diagnostic,
-then renders the thermostat through twenty 480 × 16 Swift tiles.
+then renders the thermostat through eighty 480 × 4 Swift tiles.
 
 The build requires ARMv7E-M hard-float attributes, the Swift entry point,
 static runtime and RGB565 symbols, disabled Zephyr heap, and linked RAM below
-the project limit. The baseline image uses 49,104 bytes of flash and 38,908
+the project limit. The current image uses 57,680 bytes of flash and 37,504
 bytes of linked RAM, including a conservative 32 KiB main stack pending a
 hardware high-water measurement.
 

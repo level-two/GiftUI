@@ -38,7 +38,7 @@ func staticThermostatMatchesQuantizedRGBAFramebuffer() throws {
     let configuration = try RGB565RendererConfiguration(
         physicalWidth: width,
         physicalHeight: height,
-        tileHeight: 16
+        tileHeight: 4
     )
     var renderer = RGB565TileRenderer(configuration: configuration)
     var actual: [UInt16] = []
@@ -58,9 +58,9 @@ func staticThermostatMatchesQuantizedRGBAFramebuffer() throws {
     }
 
     #expect(actual == expected)
-    #expect(presentedTileCount == 20)
-    #expect(largestPresentedTile == 15_360)
-    #expect(renderer.allocatedByteCapacity == 15_360)
+    #expect(presentedTileCount == 80)
+    #expect(largestPresentedTile == 3_840)
+    #expect(renderer.allocatedByteCapacity == 3_840)
     #expect(rgb565Hash(actual) == 2_896_050_032_511_834_899)
 }
 

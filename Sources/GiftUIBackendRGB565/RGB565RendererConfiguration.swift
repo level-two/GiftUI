@@ -16,7 +16,7 @@ public enum RGB565ConfigurationError: Error, Equatable, Sendable {
 public struct RGB565RendererConfiguration: Equatable, Sendable {
     public static let maximumPhysicalWidth = 480
     public static let maximumPhysicalHeight = 320
-    public static let maximumTileHeight = 16
+    public static let maximumTileHeight = 4
     public static let bytesPerPixel = 2
     public static let maximumTileBufferByteCapacity =
         maximumPhysicalWidth * maximumTileHeight * bytesPerPixel

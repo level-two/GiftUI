@@ -12,14 +12,14 @@ unperformed checks as `Not run`; a successful build is not endurance evidence.
 | Board target | `nrf52840dk/nrf52840` |
 | Display clock candidate | 4 MHz; not yet accepted on hardware |
 | Touch clock maximum | 2 MHz |
-| Renderer tile candidate | 480 × 16 × 2 bytes |
+| Renderer tile candidate | 480 × 4 × 2 bytes |
 | SPI pixel segment candidate | 3,840 bytes maximum |
 | Dirty update | Union of previous and updated thermostat layout bounds |
 | Heap | Zephyr system heap 0; C allocation arena 0; fail-closed Swift ABI shim |
 | Runtime telemetry | Transfer time, release-to-visible latency, stack high-water, one-minute heartbeat |
 | Fault categories | Capacity, display controller, display SPI, touch controller, touch SPI |
-| Hardware-free linked flash | 56,752 bytes |
-| Hardware-free linked RAM | 38,908 bytes, including the 32 KiB main stack |
+| Hardware-free linked flash | 57,680 bytes |
+| Hardware-free linked RAM | 37,504 bytes, including the 32 KiB main stack |
 
 The build must emit ARMv7E-M hard-float ELF, HEX, map, Devicetree, symbol, and
 memory reports under `.build/nrf52840/ili9486/` without flashing hardware:
@@ -47,7 +47,7 @@ because it boots once.
 
 | Display clock | Tile rows | Segment bytes | Full frame median/worst | Dirty update median/worst | Touch responsive | Corruption/reset count | Result |
 | ---: | ---: | ---: | --- | --- | --- | --- | --- |
-| 4 MHz | 16 | 3,840 | Not measured | Not measured | Not run | Not run | Not run |
+| 4 MHz | 4 | 3,840 | Not measured | Not measured | Not run | Not run | Not run |
 | Candidate | Candidate | Candidate | Not measured | Not measured | Not run | Not run | Not run |
 
 Accept the smallest tile/segment combination that preserves correct rendering,
@@ -62,8 +62,8 @@ Calculate latency from every `release to visible update` UART sample.
 
 | Measurement | Acceptance criterion | Result |
 | --- | --- | --- |
-| Linked flash | At most 1 MiB; 896 KiB warning threshold | 56,752 bytes |
-| Linked RAM | At most 192 KiB | 38,908 bytes |
+| Linked flash | At most 1 MiB; 896 KiB warning threshold | 57,680 bytes |
+| Linked RAM | At most 192 KiB | 37,504 bytes |
 | Main-stack high-water | At least 25% measured margin after worst case | Not measured |
 | Median release-to-visible latency | Reported from at least 500 taps | Not measured |
 | Worst release-to-visible latency | At most 150 ms | Not measured |

@@ -1,6 +1,6 @@
 struct RGB565TileStorage: Sendable {
     #if hasFeature(Embedded)
-    private var bytes: InlineArray<15360, UInt8> = .init { _ in 0 }
+    private var bytes: InlineArray<3840, UInt8> = .init { _ in 0 }
     let byteCapacity = RGB565RendererConfiguration.maximumTileBufferByteCapacity
     #else
     private var bytes: [UInt8]
