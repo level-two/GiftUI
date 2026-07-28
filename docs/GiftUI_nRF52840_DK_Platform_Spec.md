@@ -623,6 +623,10 @@ classified, including presses near control edges, with no stuck-touch state.
 
 ### Phase 7 — Optimization and hardening
 
+**Status:** Hardware-free implementation complete; connected-board tuning and
+endurance validation pending. See
+[`GiftUI_PiScreen_Phase_7_Validation_Record.md`](GiftUI_PiScreen_Phase_7_Validation_Record.md).
+
 1. Add dirty-region rendering.
 2. Tune tile height and SPI transfer segmentation from measurements.
 3. Measure stack high-water marks and worst-case event latency.

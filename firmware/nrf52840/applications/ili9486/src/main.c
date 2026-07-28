@@ -74,6 +74,20 @@ void giftui_display_log_stack(void)
            (unsigned int)unused);
 }
 
+void giftui_validation_heartbeat(uint32_t update_count)
+{
+    printk("GiftUI validation heartbeat: uptime=%u ms updates=%u "
+           "faults=%u/%u/%u/%u/%u\n",
+           k_uptime_get_32(),
+           update_count,
+           giftui_fault_count(GIFTUI_FAULT_CAPACITY),
+           giftui_fault_count(GIFTUI_FAULT_DISPLAY_CONTROLLER),
+           giftui_fault_count(GIFTUI_FAULT_DISPLAY_SPI),
+           giftui_fault_count(GIFTUI_FAULT_TOUCH_CONTROLLER),
+           giftui_fault_count(GIFTUI_FAULT_TOUCH_SPI));
+    giftui_display_log_stack();
+}
+
 void giftui_touch_log_sample(int32_t target,
                              uint16_t x,
                              uint16_t y,

@@ -88,6 +88,11 @@ hardware failures observable without turning the polling loop into a logging
 spin. Display failures return through bounded render paths; touch failures
 clear pressed state, back off, and leave display updates available.
 
+During calibrated operation, a one-minute validation heartbeat reports uptime,
+successful update count, all five fault totals, and the stack high-water mark.
+Use it with `docs/GiftUI_PiScreen_Phase_7_Validation_Record.md`; the heartbeat
+does not replace visual inspection, power cycling, or captured timing results.
+
 Do not power the screen or flash this firmware until the exact PiScreen
 revision, supply rail, backlight polarity/transistor stage, and unpowered
 continuity have been recorded. After flashing, verify the red/yellow/green/

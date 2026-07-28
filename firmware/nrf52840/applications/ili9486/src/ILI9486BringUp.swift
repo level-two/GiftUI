@@ -49,6 +49,9 @@ func giftuiDisplayLogStack()
 @_silgen_name("giftui_fault_record")
 func giftuiFaultRecord(_ category: Int32, _ detail: Int32)
 
+@_silgen_name("giftui_validation_heartbeat")
+func giftuiValidationHeartbeat(_ updateCount: UInt32)
+
 @_silgen_name("giftui_touch_log_sample")
 func giftuiTouchLogSample(
     _ target: Int32,
@@ -63,6 +66,7 @@ private let calibrationTargetSize = 16
 private let calibrationPointTimeoutMilliseconds: UInt32 = 15_000
 private let releaseTimeoutMilliseconds: UInt32 = 5_000
 private let touchPollMilliseconds: UInt32 = 10
+private let validationHeartbeatMilliseconds: UInt32 = 60_000
 private let capacityFault: Int32 = 0
 private let displayControllerFault: Int32 = 1
 
@@ -122,6 +126,8 @@ public func giftuiSwiftDisplayApplicationRun() -> Int32 {
         orientation: .degrees0
     )
     var pressedAction: ActionID?
+    var updateCount: UInt32 = 0
+    var heartbeatStartedAt = giftuiDisplayUptimeMilliseconds()
 
     while true {
         let penState = ads7846PenIsDown()
@@ -181,8 +187,17 @@ public func giftuiSwiftDisplayApplicationRun() -> Int32 {
                             giftuiDisplayUptimeMilliseconds() &- updateStartedAt)
                     )
                     giftuiDisplayLogStack()
+                    if updateCount < UInt32.max {
+                        updateCount += 1
+                    }
                 }
             }
+        }
+
+        let heartbeatNow = giftuiDisplayUptimeMilliseconds()
+        if heartbeatNow &- heartbeatStartedAt >= validationHeartbeatMilliseconds {
+            giftuiValidationHeartbeat(updateCount)
+            heartbeatStartedAt = heartbeatNow
         }
 
         giftuiDisplaySleep(milliseconds: touchPollMilliseconds)
