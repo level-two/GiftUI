@@ -50,10 +50,27 @@ void giftui_display_log(int32_t event, int32_t value)
     case 11:
         printk("GiftUI thermostat target changed to %d\n", value);
         break;
+    case 12:
+        printk("GiftUI touch release to visible update: %d ms\n", value);
+        break;
     default:
         printk("GiftUI display event %d: %d\n", event, value);
         break;
     }
+}
+
+void giftui_display_log_stack(void)
+{
+    size_t unused = 0U;
+    const int result = k_thread_stack_space_get(k_current_get(), &unused);
+    if (result != 0 || unused > CONFIG_MAIN_STACK_SIZE) {
+        printk("GiftUI main stack measurement failed: %d\n", result);
+        return;
+    }
+
+    printk("GiftUI main stack high-water: used=%u bytes, unused=%u bytes\n",
+           (unsigned int)(CONFIG_MAIN_STACK_SIZE - unused),
+           (unsigned int)unused);
 }
 
 void giftui_touch_log_sample(int32_t target,

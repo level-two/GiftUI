@@ -43,6 +43,9 @@ func giftuiDisplaySleep(milliseconds: UInt32)
 @_silgen_name("giftui_display_log")
 func giftuiDisplayLog(_ event: Int32, _ value: Int32)
 
+@_silgen_name("giftui_display_log_stack")
+func giftuiDisplayLogStack()
+
 @_silgen_name("giftui_touch_log_sample")
 func giftuiTouchLogSample(
     _ target: Int32,
@@ -98,6 +101,7 @@ public func giftuiSwiftDisplayApplicationRun() -> Int32 {
         ) else {
         return -1
     }
+    giftuiDisplayLogStack()
     guard let calibration else {
         while true {
             giftuiDisplaySleep(milliseconds: 60_000)
@@ -150,6 +154,7 @@ public func giftuiSwiftDisplayApplicationRun() -> Int32 {
                     pressedAction = nil
                 }
             case .pointerUp(let point):
+                let updateStartedAt = giftuiDisplayUptimeMilliseconds()
                 let completedAction = pressedAction
                 pressedAction = nil
                 if let completedAction,
@@ -162,6 +167,12 @@ public func giftuiSwiftDisplayApplicationRun() -> Int32 {
                    ) {
                     layout = updatedLayout
                     giftuiDisplayLog(11, Int32(model.target))
+                    giftuiDisplayLog(
+                        12,
+                        Int32(bitPattern:
+                            giftuiDisplayUptimeMilliseconds() &- updateStartedAt)
+                    )
+                    giftuiDisplayLogStack()
                 }
             }
         }

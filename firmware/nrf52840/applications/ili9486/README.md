@@ -69,6 +69,13 @@ reported on UART at boot and have one source of truth in `include/ili9486.h`.
 They are bounded starting values, not accepted tuning results; record connected
 hardware measurements before changing them or raising the 4 MHz display clock.
 
+Stack painting and thread stack metadata are enabled for Phase 7. UART reports
+the main-thread high-water mark after the first thermostat frame and after each
+successful dirty update. It also reports release-to-visible latency around
+action dispatch, layout, rasterization, and the final synchronous SPI write.
+Use a complete connected-board run to calculate median and worst-case latency;
+the instrumentation alone is not a hardware measurement.
+
 Do not power the screen or flash this firmware until the exact PiScreen
 revision, supply rail, backlight polarity/transistor stage, and unpowered
 continuity have been recorded. After flashing, verify the red/yellow/green/
