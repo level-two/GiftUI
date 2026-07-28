@@ -18,8 +18,21 @@ Build without changing connected hardware:
 scripts/nrf52840/build.sh --application ili9486
 ```
 
-The initial Embedded Swift application only verifies the resolved bus and control GPIOs. It
-drives chip-select and D/C inactive, holds reset asserted, and leaves the
-backlight pin unconfigured. Do not add `backlight-gpios`, power the screen, or
-flash this firmware until the exact PiScreen revision, supply rail, backlight
-polarity/transistor stage, and unpowered continuity have been recorded.
+The Embedded Swift application calls a project-local C transport because the
+pinned Zephyr 4.3.0 tree has no ILI9486 binding or driver. It performs hardware
+reset, uses a conservative 4 MHz SPI clock, selects RGB565 MSB-first and a
+fixed 480 × 320 landscape/BGR orientation, then writes eight color bars in
+bounded 60 × 16 tiles. The initialization profile deliberately uses only
+standard reset, pixel-format, memory-access, sleep-out, and display-on
+commands; controller-specific power and gamma values must come from the
+verified working PiScreen configuration.
+
+The backlight pin remains unconfigured in the tracked overlay. If the optional
+`backlight-gpios` property is added after hardware verification, the transport
+keeps it inactive through reset and enables it only after initialization.
+
+Do not power the screen or flash this firmware until the exact PiScreen
+revision, supply rail, backlight polarity/transistor stage, and unpowered
+continuity have been recorded. After flashing, verify the red/yellow/green/
+cyan/blue/magenta/white/black bar order, landscape orientation, and sharp bar
+boundaries before increasing SPI speed or changing the initialization profile.

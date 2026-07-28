@@ -10,7 +10,8 @@ set(CMAKE_Swift_COMPILATION_MODE wholemodule)
 set(CMAKE_Swift_COMPILER_WORKS TRUE CACHE BOOL "Embedded Swift cross-compiler" FORCE)
 project(GiftUIILI9486BringUp LANGUAGES C Swift)
 
-target_sources(app PRIVATE src/main.c src/stubs.c)
+target_sources(app PRIVATE src/ili9486.c src/main.c src/stubs.c)
+target_include_directories(app PRIVATE include)
 
 add_library(app_swift OBJECT src/ILI9486BringUp.swift)
 add_dependencies(app_swift syscall_list_h_target)
