@@ -1,14 +1,16 @@
 import CGiftUILinux
 import GiftUI
 import GiftUIBackendFramebuffer
+import GiftUIBackendRGB565
 
-public final class LinuxFramebufferDisplaySurface: DisplaySurface {
+public final class LinuxFramebufferDisplaySurface: RGB565TileDisplaySurface {
     public let logicalSize: Size
     public let devicePath: String
     public let rotation: DisplayRotation
     public let physicalWidth: Int
     public let physicalHeight: Int
     public let bitsPerPixel: Int
+    public let rgb565RendererConfiguration: RGB565RendererConfiguration?
 
     private let device: OpaquePointer
 
@@ -50,6 +52,12 @@ public final class LinuxFramebufferDisplaySurface: DisplaySurface {
         physicalWidth = Int(giftui_fb_width(openedDevice))
         physicalHeight = Int(giftui_fb_height(openedDevice))
         bitsPerPixel = Int(giftui_fb_bits_per_pixel(openedDevice))
+        rgb565RendererConfiguration = try? RGB565RendererConfiguration(
+            physicalWidth: logicalSize.width,
+            physicalHeight: logicalSize.height,
+            tileHeight: RGB565RendererConfiguration.maximumTileHeight,
+            byteOrder: .mostSignificantByteFirst
+        )
     }
 
     deinit {
@@ -81,6 +89,61 @@ public final class LinuxFramebufferDisplaySurface: DisplaySurface {
                     errorPointer.count
                 )
             }
+        }
+        guard result == 0 else {
+            throw LinuxPlatformError(Self.message(from: errorBuffer))
+        }
+    }
+
+    public func prepareRGB565Frame(isFullRefresh: Bool) throws {
+        guard isFullRefresh else { return }
+
+        var errorBuffer = [CChar](repeating: 0, count: 256)
+        let result = errorBuffer.withUnsafeMutableBufferPointer { errorPointer in
+            giftui_fb_clear(
+                device,
+                0,
+                0,
+                0,
+                255,
+                errorPointer.baseAddress,
+                errorPointer.count
+            )
+        }
+        guard result == 0 else {
+            throw LinuxPlatformError(Self.message(from: errorBuffer))
+        }
+    }
+
+    public func present(
+        tile: RGB565Tile,
+        bytes: UnsafeRawBufferPointer
+    ) throws {
+        guard let configuration = rgb565RendererConfiguration else {
+            throw LinuxPlatformError(
+                "logical display dimensions exceed the RGB565 tile renderer limits"
+            )
+        }
+        guard tile.byteOrder == .mostSignificantByteFirst else {
+            throw LinuxPlatformError("Linux RGB565 tiles must be most-significant-byte first")
+        }
+
+        var errorBuffer = [CChar](repeating: 0, count: 256)
+        let result = errorBuffer.withUnsafeMutableBufferPointer { errorPointer in
+            giftui_fb_present_rgb565_tile(
+                device,
+                bytes.baseAddress?.assumingMemoryBound(to: UInt8.self),
+                Int32(configuration.logicalSize.width),
+                Int32(configuration.logicalSize.height),
+                Int32(tile.physicalX),
+                Int32(tile.physicalY),
+                Int32(tile.width),
+                Int32(tile.height),
+                Int32(tile.bytesPerRow),
+                Int32(rotation.rawValue),
+                errorPointer.baseAddress,
+                errorPointer.count
+            )
         }
         guard result == 0 else {
             throw LinuxPlatformError(Self.message(from: errorBuffer))

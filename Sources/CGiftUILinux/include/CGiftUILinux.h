@@ -61,6 +61,31 @@ int giftui_fb_present_rgba(
     size_t error_capacity
 );
 
+int giftui_fb_clear(
+    GiftUIFramebufferDevice *device,
+    uint8_t red,
+    uint8_t green,
+    uint8_t blue,
+    uint8_t alpha,
+    char *error_message,
+    size_t error_capacity
+);
+
+int giftui_fb_present_rgb565_tile(
+    GiftUIFramebufferDevice *device,
+    const uint8_t *pixels,
+    int source_width,
+    int source_height,
+    int tile_x,
+    int tile_y,
+    int tile_width,
+    int tile_height,
+    int tile_bytes_per_row,
+    int clockwise_rotation,
+    char *error_message,
+    size_t error_capacity
+);
+
 int giftui_gpio_open(
     const char *chip_path,
     const uint32_t *line_offsets,

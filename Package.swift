@@ -95,6 +95,7 @@ let package = Package(
             dependencies: [
                 "GiftUI",
                 "GiftUIBackendFramebuffer",
+                "GiftUIBackendRGB565",
                 "GiftUIRuntimeDynamic",
                 "CGiftUILinux",
             ]
@@ -200,6 +201,7 @@ let package = Package(
             dependencies: [
                 "GiftUI",
                 "GiftUIBackendFramebuffer",
+                "GiftUIBackendRGB565",
                 "GiftUIDynamicConveniences",
                 "GiftUIPlatformLinux",
                 "GiftUIRuntimeDynamic",

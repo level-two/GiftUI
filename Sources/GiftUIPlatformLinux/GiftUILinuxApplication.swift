@@ -1,6 +1,7 @@
 import CGiftUILinux
 import GiftUI
 import GiftUIBackendFramebuffer
+import GiftUIBackendRGB565
 import GiftUIRuntimeDynamic
 
 public final class GiftUILinuxApplication<Root: View> {
@@ -11,6 +12,15 @@ public final class GiftUILinuxApplication<Root: View> {
     public var focusedHitRegionIndex: Int? {
         focusInputAdapter.focusedIndex
     }
+    public var usesRGB565TileRenderer: Bool {
+        rgb565Backend != nil
+    }
+    public var pixelBufferByteCapacity: Int {
+        if let rgb565Backend {
+            return rgb565Backend.allocatedByteCapacity
+        }
+        return display.logicalSize.width * display.logicalSize.height * 4
+    }
 
     private let display: any DisplaySurface
     private let inputSources: [any LinuxInputSource]
@@ -18,7 +28,8 @@ public final class GiftUILinuxApplication<Root: View> {
     private let configuration: LinuxApplicationConfiguration
     private let logger: (String) -> Void
     private let application: GiftUIApplication<Root>
-    private var backend: FramebufferBackend
+    private var framebufferBackend: FramebufferBackend?
+    private var rgb565Backend: RGB565TileRenderer?
     private var focusInputAdapter = FocusInputAdapter()
 
     public init(
@@ -41,12 +52,21 @@ public final class GiftUILinuxApplication<Root: View> {
             runtime: runtime,
             identifiedActionHandler: identifiedActionHandler
         )
-        backend = FramebufferBackend(
-            surface: MemoryFramebufferSurface(
-                width: display.logicalSize.width,
-                height: display.logicalSize.height
+        if let tiledDisplay = display as? any RGB565TileDisplaySurface,
+           let rendererConfiguration = tiledDisplay.rgb565RendererConfiguration {
+            rgb565Backend = RGB565TileRenderer(
+                configuration: rendererConfiguration
             )
-        )
+            framebufferBackend = nil
+        } else {
+            rgb565Backend = nil
+            framebufferBackend = FramebufferBackend(
+                surface: MemoryFramebufferSurface(
+                    width: display.logicalSize.width,
+                    height: display.logicalSize.height
+                )
+            )
+        }
     }
 
     @discardableResult
@@ -79,17 +99,45 @@ public final class GiftUILinuxApplication<Root: View> {
             application.runtime.invalidate()
         }
 
-        guard application.renderIfNeeded(into: &backend) else {
-            return false
+        if var renderer = rgb565Backend,
+           let tiledDisplay = display as? any RGB565TileDisplaySurface {
+            let rendered = try application.renderIfNeeded(
+                in: renderer.surfaceSize
+            ) { backgroundColor, displayList, dirtyRegion, isFullRefresh in
+                try tiledDisplay.prepareRGB565Frame(isFullRefresh: isFullRefresh)
+                focusInputAdapter.synchronize(with: application.hitRegions)
+                try renderer.renderTiles(
+                    dirtyRegion: dirtyRegion
+                ) { tileBackend in
+                    tileBackend.clear(backgroundColor)
+                    tileBackend.execute(displayList)
+                    drawFocusIndicatorIfNeeded(into: &tileBackend)
+                } presenting: { tile, bytes in
+                    try tiledDisplay.present(tile: tile, bytes: bytes)
+                }
+            }
+            rgb565Backend = renderer
+            guard rendered else { return false }
+        } else {
+            guard var backend = framebufferBackend else {
+                preconditionFailure("GiftUI Linux application has no render backend")
+            }
+            guard application.renderIfNeeded(into: &backend) else {
+                framebufferBackend = backend
+                return false
+            }
+            focusInputAdapter.synchronize(with: application.hitRegions)
+            drawFocusIndicatorIfNeeded(into: &backend)
+            try display.present(framebuffer: backend.surface)
+            framebufferBackend = backend
         }
-        focusInputAdapter.synchronize(with: application.hitRegions)
-        drawFocusIndicatorIfNeeded()
-        try display.present(framebuffer: backend.surface)
         frameCount += 1
         return true
     }
 
-    private func drawFocusIndicatorIfNeeded() {
+    private func drawFocusIndicatorIfNeeded<Backend: RenderBackend>(
+        into backend: inout Backend
+    ) {
         guard
             !navigationInputSources.isEmpty,
             let focusedIndex = focusInputAdapter.focusedIndex,

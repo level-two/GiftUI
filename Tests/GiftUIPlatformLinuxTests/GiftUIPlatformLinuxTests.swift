@@ -1,5 +1,6 @@
 import GiftUI
 import GiftUIBackendFramebuffer
+import GiftUIBackendRGB565
 import GiftUIDynamicConveniences
 import GiftUIPlatformLinux
 import GiftUIRuntimeDynamic
@@ -45,6 +46,73 @@ func linuxApplicationPresentsInitialFrameAndStateUpdate() throws {
     #expect(display.frames.count == 2)
     #expect(display.frames[0] != display.frames[1])
     #expect(try !application.runCycle())
+}
+
+@Test
+func linuxApplicationUsesBoundedRGB565TilesAndDirtyUpdates() throws {
+    struct Counter: View {
+        @State var value = 0
+
+        var body: some View {
+            VStack {
+                Text("\(value)")
+                Button("+") { value += 1 }
+            }
+        }
+    }
+
+    let display = RecordingRGB565TileDisplaySurface(
+        logicalSize: Size(width: 80, height: 80),
+        tileHeight: 16
+    )
+    let application = GiftUILinuxApplication(
+        root: Counter(),
+        display: display,
+        logger: { _ in }
+    )
+
+    #expect(application.usesRGB565TileRenderer)
+    #expect(application.pixelBufferByteCapacity == 80 * 16 * 2)
+    #expect(try application.runCycle())
+    #expect(display.fullRefreshes == [true])
+    #expect(display.fallbackPresentationCount == 0)
+    #expect(display.tiles.count == 5)
+    #expect(display.presentedByteCounts.reduce(0, +) == 80 * 80 * 2)
+    let initialPixels = display.pixels
+
+    let button = application.hitRegions[0].bounds
+    let point = Point(
+        x: button.origin.x + button.size.width / 2,
+        y: button.origin.y + button.size.height / 2
+    )
+    application.send(.pointerDown(point))
+    #expect(application.send(.pointerUp(point)))
+    #expect(try application.runCycle())
+
+    #expect(display.fullRefreshes == [true, false])
+    let updateStart = display.frameTileStarts[1]
+    let updateByteCount = display.presentedByteCounts[updateStart...].reduce(0, +)
+    #expect(updateByteCount < 80 * 80 * 2)
+    #expect(display.tiles[updateStart...].allSatisfy { $0.width < 80 })
+    #expect(display.pixels != initialPixels)
+    #expect(display.fallbackPresentationCount == 0)
+}
+
+@Test
+func linuxApplicationFallsBackWhenTileDimensionsExceedCapacity() {
+    let display = RecordingRGB565TileDisplaySurface(
+        logicalSize: Size(width: 481, height: 1),
+        tileHeight: 1
+    )
+    let application = GiftUILinuxApplication(
+        root: Text("fallback"),
+        display: display,
+        logger: { _ in }
+    )
+
+    #expect(display.rgb565RendererConfiguration == nil)
+    #expect(!application.usesRGB565TileRenderer)
+    #expect(application.pixelBufferByteCapacity == 481 * 4)
 }
 
 @Test
@@ -168,6 +236,58 @@ private final class RecordingDisplaySurface: DisplaySurface {
 
     func present(framebuffer: MemoryFramebufferSurface) {
         frames.append(framebuffer.withUnsafeBytes { Array($0) })
+    }
+}
+
+private final class RecordingRGB565TileDisplaySurface: RGB565TileDisplaySurface {
+    let logicalSize: Size
+    let rgb565RendererConfiguration: RGB565RendererConfiguration?
+    private(set) var fullRefreshes: [Bool] = []
+    private(set) var frameTileStarts: [Int] = []
+    private(set) var tiles: [RGB565Tile] = []
+    private(set) var presentedByteCounts: [Int] = []
+    private(set) var fallbackPresentationCount = 0
+    private(set) var pixels: [UInt16]
+
+    init(logicalSize: Size, tileHeight: Int) {
+        self.logicalSize = logicalSize
+        rgb565RendererConfiguration = try? RGB565RendererConfiguration(
+            physicalWidth: logicalSize.width,
+            physicalHeight: logicalSize.height,
+            tileHeight: tileHeight,
+            byteOrder: .mostSignificantByteFirst
+        )
+        pixels = Array(
+            repeating: 0,
+            count: logicalSize.width * logicalSize.height
+        )
+    }
+
+    func prepareRGB565Frame(isFullRefresh: Bool) {
+        fullRefreshes.append(isFullRefresh)
+        frameTileStarts.append(tiles.count)
+        if isFullRefresh {
+            pixels = Array(repeating: 0, count: pixels.count)
+        }
+    }
+
+    func present(tile: RGB565Tile, bytes: UnsafeRawBufferPointer) {
+        tiles.append(tile)
+        presentedByteCounts.append(bytes.count)
+        for y in 0..<tile.height {
+            for x in 0..<tile.width {
+                let sourceOffset = y * tile.bytesPerRow + x * 2
+                let pixel = UInt16(bytes[sourceOffset]) << 8
+                    | UInt16(bytes[sourceOffset + 1])
+                let destinationOffset = (tile.physicalY + y) * logicalSize.width
+                    + tile.physicalX + x
+                pixels[destinationOffset] = pixel
+            }
+        }
+    }
+
+    func present(framebuffer: MemoryFramebufferSurface) {
+        fallbackPresentationCount += 1
     }
 }
 

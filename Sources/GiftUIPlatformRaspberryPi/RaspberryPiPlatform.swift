@@ -78,6 +78,13 @@ public final class RaspberryPiPlatform {
             ),
             logger: logger
         )
+        logger(
+            "GiftUI Raspberry Pi renderer: "
+                + (application.usesRGB565TileRenderer
+                    ? "bounded RGB565 tiles"
+                    : "RGBA8888 compatibility framebuffer")
+                + ", pixel buffer \(application.pixelBufferByteCapacity) bytes"
+        )
         try application.run()
     }
 }

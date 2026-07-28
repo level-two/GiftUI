@@ -8,9 +8,10 @@ Raspberry Pi platform target. It:
 - cross-compiles for Raspberry Pi 1 as
   `armv6-unknown-linux-gnueabihf`;
 - runs the same `ThermostatView` module as the macOS simulator;
-- renders through `GiftUIRuntimeDynamic` and
-  `GiftUIBackendFramebuffer`;
-- presents RGBA8888 pixels to a Linux framebuffer device;
+- renders through `GiftUIRuntimeDynamic` and a bounded
+  `GiftUIBackendRGB565` tile buffer;
+- presents full initial frames and dirty-region updates to a Linux framebuffer
+  device;
 - supports 16-, 24-, and 32-bit framebuffer layouts;
 - handles framebuffer stride, offsets, aspect-fit scaling, and clockwise
   rotation;
@@ -32,7 +33,7 @@ ThermostatView
     ↓
 GiftUI dynamic runtime
     ↓
-RGBA8888 memory framebuffer
+RGB565 tile renderer (240 × 16 × 2 bytes by default)
     ↓
 GiftUIPlatformLinux fbdev adapter
     ↓
@@ -47,6 +48,17 @@ GiftUI does not initialize the panel or send raw SPI commands. The Raspberry
 Pi OS Device Tree overlay/driver must expose the PiScreen as a framebuffer
 device. This keeps controller-specific code outside the renderer and allows a
 different kernel-supported panel to be selected with `--device`.
+
+The adapter keeps `/dev/fb1` as the retained full-frame store. It clears the
+physical framebuffer once, then converts and scales each bounded RGB565 tile
+directly into the mmap. Subsequent invalidations rasterize only the union of
+the previous and current root frames, so unchanged mmap pages and panel GRAM
+remain untouched. At the default 240 × 240 logical size, GiftUI's private pixel
+allocation falls from 230,400 bytes of RGBA8888 to a 7,680-byte RGB565 tile.
+The kernel driver's framebuffer allocation is unchanged.
+
+Logical sizes within 480 × 320 use the tiled path. Larger configurations fall
+back to the full RGBA8888 compatibility renderer rather than failing startup.
 
 ## Raspberry Pi preparation
 
@@ -197,8 +209,9 @@ giftui/bin/GiftUIExampleThermostatRaspberryPi \
 ```
 
 Startup logs report the selected device, physical dimensions, pixel depth,
-logical dimensions, and rotation. Failures to open, inspect, map, or present
-the framebuffer include the underlying Linux error.
+logical dimensions, rotation, selected renderer, and GiftUI pixel-buffer
+capacity. Failures to open, inspect, map, or present the framebuffer include
+the underlying Linux error.
 
 GPIO mode starts with the first GiftUI action focused. Previous and next wrap
 through the current hit regions and redraw an amber focus border. Activate
@@ -210,7 +223,8 @@ the same application dispatch path as pointer input.
 The current target establishes rendering and deployment. Remaining PoC B work
 is intentionally separated:
 
-1. validate the exact PiScreen overlay, rotation, and GPIO lines on hardware;
+1. validate the exact PiScreen overlay, RGB565 tile scaling, rotation, dirty
+   updates, and GPIO lines on hardware;
 2. validate touch orientation and calibration on the selected panel;
 3. add a service unit after the device path and permissions are confirmed;
 4. consider DRM presentation if the selected kernel panel driver exposes a

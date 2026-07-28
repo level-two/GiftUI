@@ -78,7 +78,12 @@ scripts/raspberry-pi/deploy.sh \
 
 The Raspberry Pi executable uses the kernel-managed framebuffer path, which is
 the preferred first integration for the 3.5-inch PiScreen: the OS driver owns
-SPI and panel initialization, and GiftUI writes frames through `/dev/fb1`.
+SPI and panel initialization, and GiftUI writes bounded RGB565 tiles through
+`/dev/fb1`. The first frame initializes the full display; later frames update
+only the union of the previous and current UI bounds, leaving unchanged pixels
+in the kernel framebuffer and panel GRAM. The default 240×240 configuration
+uses a 240×16×2-byte (7,680-byte) pixel buffer instead of a 230,400-byte RGBA
+surface.
 The device path, logical dimensions, and rotation are runtime options:
 
 ```bash
@@ -111,8 +116,9 @@ configurable through `--help`.
 
 Use `--once` for a one-frame hardware smoke test and `--help` for all options.
 The adapter accepts 16-, 24-, or 32-bit framebuffer formats, honors device
-stride, converts from GiftUI's RGBA8888 surface, and aspect-fits with
-nearest-neighbor scaling. See
+stride, converts RGB565 tiles to the reported device bitfields, and aspect-fits
+with nearest-neighbor scaling. Logical dimensions outside the bounded RGB565
+renderer's 480×320 limits retain the RGBA8888 compatibility path. See
 [`docs/GiftUI_Raspberry_Pi_Platform.md`](docs/GiftUI_Raspberry_Pi_Platform.md)
 for PiScreen setup and runtime details.
 

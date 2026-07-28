@@ -6,6 +6,7 @@
 #include "CGiftUILinux.h"
 
 #include <errno.h>
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -196,6 +197,57 @@ static void giftui_write_pixel(
     for (int byte = 0; byte < bytes_per_pixel; byte += 1) {
         destination[byte] = (uint8_t)(pixel >> (byte * 8));
     }
+}
+
+static int giftui_validate_framebuffer_mapping(
+    const GiftUIFramebufferDevice *device,
+    char *error_message,
+    size_t error_capacity
+) {
+    if (device == NULL || device->memory == NULL) {
+        errno = EINVAL;
+        giftui_set_error(error_message, error_capacity, "invalid framebuffer device");
+        return -1;
+    }
+
+    int width = (int)device->variable.xres;
+    int height = (int)device->variable.yres;
+    int bytes_per_pixel = ((int)device->variable.bits_per_pixel + 7) / 8;
+    if (
+        ((size_t)device->variable.xoffset + (size_t)width)
+            * (size_t)bytes_per_pixel
+        > (size_t)device->fixed.line_length
+    ) {
+        errno = EOVERFLOW;
+        giftui_set_error(error_message, error_capacity, "framebuffer row exceeds stride");
+        return -1;
+    }
+    size_t last_byte = (
+        ((size_t)device->variable.yoffset + (size_t)height - 1u)
+        * (size_t)device->fixed.line_length
+    ) + (
+        ((size_t)device->variable.xoffset + (size_t)width)
+        * (size_t)bytes_per_pixel
+    );
+    if (last_byte > device->memory_length) {
+        errno = EOVERFLOW;
+        giftui_set_error(error_message, error_capacity, "framebuffer geometry exceeds mapping");
+        return -1;
+    }
+    return 0;
+}
+
+static int giftui_is_supported_rotation(int clockwise_rotation) {
+    return clockwise_rotation == 0
+        || clockwise_rotation == 90
+        || clockwise_rotation == 180
+        || clockwise_rotation == 270;
+}
+
+static int giftui_scaled_boundary(int source, int destination, int source_extent) {
+    uint64_t numerator = (uint64_t)source * (uint64_t)destination;
+    return (int)((numerator + (uint64_t)source_extent - 1u)
+        / (uint64_t)source_extent);
 }
 
 static void giftui_handle_termination_signal(int signal_number) {
@@ -464,6 +516,242 @@ int giftui_fb_present_rgba(
             );
             giftui_write_pixel(
                 destination_row + (size_t)x * (size_t)bytes_per_pixel,
+                bytes_per_pixel,
+                pixel
+            );
+        }
+    }
+
+    __sync_synchronize();
+    return 0;
+}
+
+int giftui_fb_clear(
+    GiftUIFramebufferDevice *device,
+    uint8_t red,
+    uint8_t green,
+    uint8_t blue,
+    uint8_t alpha,
+    char *error_message,
+    size_t error_capacity
+) {
+    if (giftui_validate_framebuffer_mapping(
+        device,
+        error_message,
+        error_capacity
+    ) != 0) {
+        return -1;
+    }
+
+    int width = (int)device->variable.xres;
+    int height = (int)device->variable.yres;
+    int bytes_per_pixel = ((int)device->variable.bits_per_pixel + 7) / 8;
+    uint32_t pixel = giftui_pack_pixel(device, red, green, blue, alpha);
+    for (int y = 0; y < height; y += 1) {
+        uint8_t *row = device->memory
+            + ((size_t)y + device->variable.yoffset) * device->fixed.line_length
+            + (size_t)device->variable.xoffset * (size_t)bytes_per_pixel;
+        for (int x = 0; x < width; x += 1) {
+            giftui_write_pixel(
+                row + (size_t)x * (size_t)bytes_per_pixel,
+                bytes_per_pixel,
+                pixel
+            );
+        }
+    }
+    __sync_synchronize();
+    return 0;
+}
+
+int giftui_fb_present_rgb565_tile(
+    GiftUIFramebufferDevice *device,
+    const uint8_t *pixels,
+    int source_width,
+    int source_height,
+    int tile_x,
+    int tile_y,
+    int tile_width,
+    int tile_height,
+    int tile_bytes_per_row,
+    int clockwise_rotation,
+    char *error_message,
+    size_t error_capacity
+) {
+    if (
+        device == NULL
+        || pixels == NULL
+        || source_width <= 0
+        || source_height <= 0
+        || tile_x < 0
+        || tile_y < 0
+        || tile_width <= 0
+        || tile_height <= 0
+        || tile_width > source_width - tile_x
+        || tile_height > source_height - tile_y
+        || tile_width > INT_MAX / 2
+        || tile_bytes_per_row < tile_width * 2
+        || !giftui_is_supported_rotation(clockwise_rotation)
+    ) {
+        errno = EINVAL;
+        giftui_set_error(error_message, error_capacity, "invalid RGB565 tile arguments");
+        return -1;
+    }
+    if (giftui_validate_framebuffer_mapping(
+        device,
+        error_message,
+        error_capacity
+    ) != 0) {
+        return -1;
+    }
+
+    int destination_width = (int)device->variable.xres;
+    int destination_height = (int)device->variable.yres;
+    int bytes_per_pixel = ((int)device->variable.bits_per_pixel + 7) / 8;
+    int rotated_width = (
+        clockwise_rotation == 90 || clockwise_rotation == 270
+    ) ? source_height : source_width;
+    int rotated_height = (
+        clockwise_rotation == 90 || clockwise_rotation == 270
+    ) ? source_width : source_height;
+
+    int content_width;
+    int content_height;
+    if (
+        (uint64_t)destination_width * (uint64_t)rotated_height
+        <= (uint64_t)destination_height * (uint64_t)rotated_width
+    ) {
+        content_width = destination_width;
+        content_height = (int)(
+            (uint64_t)destination_width * (uint64_t)rotated_height
+            / (uint64_t)rotated_width
+        );
+    } else {
+        content_height = destination_height;
+        content_width = (int)(
+            (uint64_t)destination_height * (uint64_t)rotated_width
+            / (uint64_t)rotated_height
+        );
+    }
+    if (content_width <= 0 || content_height <= 0) {
+        errno = EINVAL;
+        giftui_set_error(error_message, error_capacity, "invalid scaled framebuffer geometry");
+        return -1;
+    }
+
+    int tile_max_x = tile_x + tile_width;
+    int tile_max_y = tile_y + tile_height;
+    int rotated_min_x;
+    int rotated_max_x;
+    int rotated_min_y;
+    int rotated_max_y;
+    switch (clockwise_rotation) {
+        case 90:
+            rotated_min_x = source_height - tile_max_y;
+            rotated_max_x = source_height - tile_y;
+            rotated_min_y = tile_x;
+            rotated_max_y = tile_max_x;
+            break;
+        case 180:
+            rotated_min_x = source_width - tile_max_x;
+            rotated_max_x = source_width - tile_x;
+            rotated_min_y = source_height - tile_max_y;
+            rotated_max_y = source_height - tile_y;
+            break;
+        case 270:
+            rotated_min_x = tile_y;
+            rotated_max_x = tile_max_y;
+            rotated_min_y = source_width - tile_max_x;
+            rotated_max_y = source_width - tile_x;
+            break;
+        default:
+            rotated_min_x = tile_x;
+            rotated_max_x = tile_max_x;
+            rotated_min_y = tile_y;
+            rotated_max_y = tile_max_y;
+            break;
+    }
+
+    int destination_min_x = giftui_scaled_boundary(
+        rotated_min_x,
+        content_width,
+        rotated_width
+    );
+    int destination_max_x = giftui_scaled_boundary(
+        rotated_max_x,
+        content_width,
+        rotated_width
+    );
+    int destination_min_y = giftui_scaled_boundary(
+        rotated_min_y,
+        content_height,
+        rotated_height
+    );
+    int destination_max_y = giftui_scaled_boundary(
+        rotated_max_y,
+        content_height,
+        rotated_height
+    );
+    int content_origin_x = (destination_width - content_width) / 2;
+    int content_origin_y = (destination_height - content_height) / 2;
+
+    for (int y = destination_min_y; y < destination_max_y; y += 1) {
+        int rotated_y = (int)(
+            (uint64_t)y * (uint64_t)rotated_height / (uint64_t)content_height
+        );
+        uint8_t *destination_row = device->memory
+            + (
+                (size_t)(content_origin_y + y)
+                + device->variable.yoffset
+            ) * device->fixed.line_length
+            + (
+                (size_t)(content_origin_x + destination_min_x)
+                + device->variable.xoffset
+            ) * (size_t)bytes_per_pixel;
+
+        for (int x = destination_min_x; x < destination_max_x; x += 1) {
+            int rotated_x = (int)(
+                (uint64_t)x * (uint64_t)rotated_width / (uint64_t)content_width
+            );
+            int source_x;
+            int source_y;
+            switch (clockwise_rotation) {
+                case 90:
+                    source_x = rotated_y;
+                    source_y = source_height - 1 - rotated_x;
+                    break;
+                case 180:
+                    source_x = source_width - 1 - rotated_x;
+                    source_y = source_height - 1 - rotated_y;
+                    break;
+                case 270:
+                    source_x = source_width - 1 - rotated_y;
+                    source_y = rotated_x;
+                    break;
+                default:
+                    source_x = rotated_x;
+                    source_y = rotated_y;
+                    break;
+            }
+            if (
+                source_x < tile_x
+                || source_x >= tile_max_x
+                || source_y < tile_y
+                || source_y >= tile_max_y
+            ) {
+                continue;
+            }
+
+            const uint8_t *source = pixels
+                + (size_t)(source_y - tile_y) * (size_t)tile_bytes_per_row
+                + (size_t)(source_x - tile_x) * 2u;
+            uint16_t rgb565 = ((uint16_t)source[0] << 8) | source[1];
+            uint8_t red = (uint8_t)((((rgb565 >> 11) & 0x1fu) * 255u + 15u) / 31u);
+            uint8_t green = (uint8_t)((((rgb565 >> 5) & 0x3fu) * 255u + 31u) / 63u);
+            uint8_t blue = (uint8_t)(((rgb565 & 0x1fu) * 255u + 15u) / 31u);
+            uint32_t pixel = giftui_pack_pixel(device, red, green, blue, 255u);
+            giftui_write_pixel(
+                destination_row
+                    + (size_t)(x - destination_min_x) * (size_t)bytes_per_pixel,
                 bytes_per_pixel,
                 pixel
             );
@@ -1006,6 +1294,52 @@ int giftui_fb_present_rgba(
     (void)source_width;
     (void)source_height;
     (void)source_bytes_per_row;
+    (void)clockwise_rotation;
+    giftui_unsupported(error_message, error_capacity);
+    return -1;
+}
+
+int giftui_fb_clear(
+    GiftUIFramebufferDevice *device,
+    uint8_t red,
+    uint8_t green,
+    uint8_t blue,
+    uint8_t alpha,
+    char *error_message,
+    size_t error_capacity
+) {
+    (void)device;
+    (void)red;
+    (void)green;
+    (void)blue;
+    (void)alpha;
+    giftui_unsupported(error_message, error_capacity);
+    return -1;
+}
+
+int giftui_fb_present_rgb565_tile(
+    GiftUIFramebufferDevice *device,
+    const uint8_t *pixels,
+    int source_width,
+    int source_height,
+    int tile_x,
+    int tile_y,
+    int tile_width,
+    int tile_height,
+    int tile_bytes_per_row,
+    int clockwise_rotation,
+    char *error_message,
+    size_t error_capacity
+) {
+    (void)device;
+    (void)pixels;
+    (void)source_width;
+    (void)source_height;
+    (void)tile_x;
+    (void)tile_y;
+    (void)tile_width;
+    (void)tile_height;
+    (void)tile_bytes_per_row;
     (void)clockwise_rotation;
     giftui_unsupported(error_message, error_capacity);
     return -1;
