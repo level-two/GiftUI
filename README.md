@@ -189,6 +189,14 @@ continuity, power, flashing, visual checks, and measurements are tracked in
 The Phase 5 hardware gate remains open; successful compilation is not a claim
 of tested board support.
 
+The same application now includes the hardware-free Phase 6 ADS7846 path: a
+separate 2 MHz touch device on the shared SPI bus, bounded five-point
+calibration, median and pressure filtering, rotation-aware pointer events, and
+static thermostat hit testing with typed action dispatch. The physical touch
+gate and its 100-press-per-control acceptance matrix are tracked in
+[`docs/GiftUI_ADS7846_Bring_Up_Record.md`](docs/GiftUI_ADS7846_Bring_Up_Record.md).
+No board was flashed while implementing this path.
+
 Swift 6.3.2 names its bundled ARMv7E-M standard module
 `armv7em-none-none-eabi`. Zephyr supplies the Cortex-M4F and
 `-mfloat-abi=hard` flags, and the build rejects firmware whose ELF does not
@@ -218,6 +226,7 @@ Sources/
 ├── GiftUIRuntimeDynamic/         # Replaceable dynamic PoC runtime
 ├── GiftUIBackendFramebuffer/     # Platform-neutral RGBA framebuffer
 ├── GiftUIBackendRGB565/          # Bounded RGB565 scan-line/tile renderer
+├── GiftUIInputADS7846/           # Bounded resistive-touch calibration/filter
 ├── GiftUIBuiltinFont/            # Shared allocation-free bitmap glyphs
 ├── GiftUISimulatorMac/           # AppKit/CoreGraphics presentation shell
 ├── GiftUIPlatformLinux/           # Linux loop and framebuffer presentation

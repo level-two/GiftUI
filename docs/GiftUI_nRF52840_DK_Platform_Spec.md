@@ -609,6 +609,10 @@ corruption, watchdog resets, or out-of-bounds writes.
 
 ### Phase 6 — ADS7846 touch bring-up
 
+**Status:** Hardware-free firmware implementation complete; connected-board
+validation pending. See
+[`GiftUI_ADS7846_Bring_Up_Record.md`](GiftUI_ADS7846_Bring_Up_Record.md).
+
 1. Validate PENIRQ and shared-bus arbitration independently of GiftUI.
 2. Capture raw corner/center samples and derive calibration.
 3. Add filtering, pressure threshold, orientation mapping, and release events.
