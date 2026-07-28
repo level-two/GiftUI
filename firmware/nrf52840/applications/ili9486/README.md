@@ -81,6 +81,13 @@ The Embedded Swift ABI's `posix_memalign` symbol is a fail-closed shim that
 always returns `ENOMEM` and never links an allocator. The build additionally
 rejects real allocation entry points in the final ILI9486 ELF.
 
+Capacity, display-controller, display-SPI, touch-controller, and touch-SPI
+faults have separate fixed counters. UART preserves the first eight instances
+of each category and then reports only power-of-two counts, keeping repeated
+hardware failures observable without turning the polling loop into a logging
+spin. Display failures return through bounded render paths; touch failures
+clear pressed state, back off, and leave display updates available.
+
 Do not power the screen or flash this firmware until the exact PiScreen
 revision, supply rail, backlight polarity/transistor stage, and unpowered
 continuity have been recorded. After flashing, verify the red/yellow/green/

@@ -46,6 +46,9 @@ func giftuiDisplayLog(_ event: Int32, _ value: Int32)
 @_silgen_name("giftui_display_log_stack")
 func giftuiDisplayLogStack()
 
+@_silgen_name("giftui_fault_record")
+func giftuiFaultRecord(_ category: Int32, _ detail: Int32)
+
 @_silgen_name("giftui_touch_log_sample")
 func giftuiTouchLogSample(
     _ target: Int32,
@@ -60,11 +63,14 @@ private let calibrationTargetSize = 16
 private let calibrationPointTimeoutMilliseconds: UInt32 = 15_000
 private let releaseTimeoutMilliseconds: UInt32 = 5_000
 private let touchPollMilliseconds: UInt32 = 10
+private let capacityFault: Int32 = 0
+private let displayControllerFault: Int32 = 1
 
 @_cdecl("giftui_swift_display_application_run")
 public func giftuiSwiftDisplayApplicationRun() -> Int32 {
     let initializationResult = ili9486Initialize()
     guard initializationResult == 0 else {
+        giftuiFaultRecord(displayControllerFault, initializationResult)
         giftuiDisplayLog(1, initializationResult)
         return initializationResult
     }
@@ -72,6 +78,7 @@ public func giftuiSwiftDisplayApplicationRun() -> Int32 {
     let startedAt = giftuiDisplayUptimeMilliseconds()
     let colorBarResult = ili9486RenderColorBars()
     guard colorBarResult == 0 else {
+        giftuiFaultRecord(displayControllerFault, colorBarResult)
         giftuiDisplayLog(2, colorBarResult)
         return colorBarResult
     }
@@ -88,6 +95,7 @@ public func giftuiSwiftDisplayApplicationRun() -> Int32 {
             rotation: .degrees0,
             byteOrder: .mostSignificantByteFirst
         ) else {
+        giftuiFaultRecord(capacityFault, -1)
         giftuiDisplayLog(6, -1)
         return -1
     }
@@ -365,6 +373,7 @@ private func renderThermostat(
     case .success(let resolvedLayout):
         layout = resolvedLayout
     case .failure:
+        giftuiFaultRecord(capacityFault, -2)
         giftuiDisplayLog(6, -1)
         return nil
     }
@@ -383,6 +392,7 @@ private func renderThermostat(
         transportResult = present(tile: tile, bytes: bytes)
     }
     guard transportResult == 0 else {
+        giftuiFaultRecord(displayControllerFault, transportResult)
         giftuiDisplayLog(5, transportResult)
         return nil
     }

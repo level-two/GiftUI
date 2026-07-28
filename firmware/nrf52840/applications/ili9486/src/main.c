@@ -1,4 +1,5 @@
 #include "ads7846.h"
+#include "giftui_fault.h"
 #include "ili9486.h"
 
 #include <zephyr/kernel.h>
@@ -94,6 +95,7 @@ int main(void)
 
     const int touch_result = ads7846_initialize();
     if (touch_result != 0) {
+        giftui_fault_record(GIFTUI_FAULT_TOUCH_CONTROLLER, touch_result);
         printk("GiftUI ADS7846 initialization failed: %d\n", touch_result);
         return touch_result;
     }

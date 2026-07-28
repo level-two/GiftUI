@@ -1,4 +1,5 @@
 #include "ili9486.h"
+#include "giftui_fault.h"
 
 #include <errno.h>
 #include <stdbool.h>
@@ -54,7 +55,11 @@ static int write_bytes(const uint8_t *bytes, size_t byte_count)
         .count = 1U,
     };
 
-    return spi_write_dt(&display_spi, &buffers);
+    const int result = spi_write_dt(&display_spi, &buffers);
+    if (result != 0) {
+        giftui_fault_record(GIFTUI_FAULT_DISPLAY_SPI, result);
+    }
+    return result;
 }
 
 static int write_pixel_segments(const uint8_t *bytes, size_t byte_count)
@@ -248,6 +253,7 @@ int ili9486_write_rgb565(uint16_t x,
         x >= GIFTUI_ILI9486_WIDTH || y >= GIFTUI_ILI9486_HEIGHT ||
         width > GIFTUI_ILI9486_WIDTH - x ||
         height > GIFTUI_ILI9486_HEIGHT - y) {
+        giftui_fault_record(GIFTUI_FAULT_CAPACITY, -EINVAL);
         return -EINVAL;
     }
 
@@ -255,6 +261,7 @@ int ili9486_write_rgb565(uint16_t x,
         (size_t)width * height * GIFTUI_ILI9486_BYTES_PER_PIXEL;
     if (byte_count != expected_byte_count ||
         byte_count > GIFTUI_ILI9486_MAX_TRANSFER_BYTES) {
+        giftui_fault_record(GIFTUI_FAULT_CAPACITY, -EMSGSIZE);
         return -EMSGSIZE;
     }
 

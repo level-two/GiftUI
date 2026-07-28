@@ -1,4 +1,5 @@
 #include "ads7846.h"
+#include "giftui_fault.h"
 
 #include <errno.h>
 #include <stddef.h>
@@ -46,6 +47,7 @@ static int read_channel(uint8_t command, uint16_t *value)
         &transmit_buffers,
         &receive_buffers);
     if (result != 0) {
+        giftui_fault_record(GIFTUI_FAULT_TOUCH_SPI, result);
         return result;
     }
 
@@ -78,12 +80,17 @@ int ads7846_initialize(void)
 
 int ads7846_pen_is_down(void)
 {
-    return gpio_pin_get_dt(&touch_penirq);
+    const int result = gpio_pin_get_dt(&touch_penirq);
+    if (result < 0) {
+        giftui_fault_record(GIFTUI_FAULT_TOUCH_CONTROLLER, result);
+    }
+    return result;
 }
 
 int ads7846_read_raw(struct ads7846_raw_sample *sample)
 {
     if (sample == NULL) {
+        giftui_fault_record(GIFTUI_FAULT_CAPACITY, -EINVAL);
         return -EINVAL;
     }
 
@@ -108,6 +115,7 @@ int ads7846_read_raw_values(uint16_t *x,
                             uint16_t *z2)
 {
     if (x == NULL || y == NULL || z1 == NULL || z2 == NULL) {
+        giftui_fault_record(GIFTUI_FAULT_CAPACITY, -EINVAL);
         return -EINVAL;
     }
     struct ads7846_raw_sample sample;

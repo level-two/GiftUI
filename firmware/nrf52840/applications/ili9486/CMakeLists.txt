@@ -12,6 +12,7 @@ project(GiftUIILI9486BringUp LANGUAGES C Swift)
 
 target_sources(app PRIVATE
     src/ads7846.c
+    src/fault.c
     src/heap_disabled.c
     src/ili9486.c
     src/main.c
