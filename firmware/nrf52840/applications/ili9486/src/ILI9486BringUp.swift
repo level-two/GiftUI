@@ -23,6 +23,15 @@ func ili9486WriteRGB565(
     _ byteCount: UInt
 ) -> Int32
 
+@_silgen_name("ili9486_fill_rgb565")
+func ili9486FillRGB565(
+    _ x: UInt16,
+    _ y: UInt16,
+    _ width: UInt16,
+    _ height: UInt16,
+    _ pixel: UInt16
+) -> Int32
+
 @_silgen_name("ads7846_pen_is_down")
 func ads7846PenIsDown() -> Int32
 
@@ -393,18 +402,34 @@ private func renderThermostat(
         return nil
     }
 
-    var renderer = RGB565TileRenderer(configuration: configuration)
-    var transportResult: Int32 = 0
     let startedAt = giftuiDisplayUptimeMilliseconds()
-    let dirtyRegion = previousLayout.map {
-        union($0.rootFrame, layout.rootFrame)
-    } ?? Rect(origin: Point(x: 0, y: 0), size: configuration.logicalSize)
-    renderer.renderTiles(dirtyRegion: dirtyRegion) { tileBackend in
-        tileBackend.clear(Color(red: 24, green: 26, blue: 32))
-        layout.appendRenderOperations(to: &tileBackend)
-    } presenting: { tile, bytes in
-        guard transportResult == 0 else { return }
-        transportResult = present(tile: tile, bytes: bytes)
+    let background = Color(red: 24, green: 26, blue: 32)
+    let transportResult: Int32
+    if let previousLayout {
+        guard let dirtyRegion = layout.changedRenderBounds(
+            comparedTo: previousLayout
+        ) else {
+            return layout
+        }
+        var renderer = RGB565RetainedRenderer(
+            configuration: configuration,
+            clipRegion: dirtyRegion,
+            writer: PiScreenSolidRectWriter()
+        )
+        renderer.clear(background)
+        layout.appendRenderOperations(to: &renderer)
+        transportResult = renderer.writer.result
+    } else {
+        var renderer = RGB565TileRenderer(configuration: configuration)
+        var initialTransportResult: Int32 = 0
+        renderer.renderTiles { tileBackend in
+            tileBackend.clear(background)
+            layout.appendRenderOperations(to: &tileBackend)
+        } presenting: { tile, bytes in
+            guard initialTransportResult == 0 else { return }
+            initialTransportResult = present(tile: tile, bytes: bytes)
+        }
+        transportResult = initialTransportResult
     }
     guard transportResult == 0 else {
         giftuiFaultRecord(displayControllerFault, transportResult)
@@ -418,6 +443,21 @@ private func renderThermostat(
     return layout
 }
 
+private struct PiScreenSolidRectWriter: RGB565SolidRectWriter {
+    private(set) var result: Int32 = 0
+
+    mutating func writeSolidRect(_ rect: Rect, pixel: RGB565Pixel) {
+        guard result == 0 else { return }
+        result = ili9486FillRGB565(
+            UInt16(rect.origin.x),
+            UInt16(rect.origin.y),
+            UInt16(rect.size.width),
+            UInt16(rect.size.height),
+            pixel.rawValue
+        )
+    }
+}
+
 private func present(
     tile: RGB565Tile,
     bytes: UnsafeRawBufferPointer
@@ -429,16 +469,5 @@ private func present(
         UInt16(tile.height),
         bytes.baseAddress,
         UInt(bytes.count)
-    )
-}
-
-private func union(_ lhs: Rect, _ rhs: Rect) -> Rect {
-    let minX = min(lhs.origin.x, rhs.origin.x)
-    let minY = min(lhs.origin.y, rhs.origin.y)
-    let maxX = max(lhs.origin.x + lhs.size.width, rhs.origin.x + rhs.size.width)
-    let maxY = max(lhs.origin.y + lhs.size.height, rhs.origin.y + rhs.size.height)
-    return Rect(
-        origin: Point(x: minX, y: minY),
-        size: Size(width: maxX - minX, height: maxY - minY)
     )
 }

@@ -14,11 +14,12 @@ unperformed checks as `Not run`; a successful build is not endurance evidence.
 | Touch clock maximum | 2 MHz |
 | Renderer tile candidate | 480 × 4 × 2 bytes |
 | SPI pixel segment candidate | 3,840 bytes maximum |
-| Dirty update | Union of previous and updated thermostat layout bounds |
+| Dirty update | Changed static-node bounds rendered into retained panel GRAM |
+| Host update probe | 21→22: 24 × 12 damage, 324 pixels / 648 payload bytes, 23 rectangles |
 | Heap | Zephyr system heap 0; C allocation arena 0; fail-closed Swift ABI shim |
 | Runtime telemetry | Transfer time, release-to-visible latency, stack high-water, one-minute heartbeat |
 | Fault categories | Capacity, display controller, display SPI, touch controller, touch SPI |
-| Hardware-free linked flash | 57,680 bytes |
+| Hardware-free linked flash | 64,320 bytes |
 | Hardware-free linked RAM | 37,504 bytes, including the 32 KiB main stack |
 
 The build must emit ARMv7E-M hard-float ELF, HEX, map, Devicetree, symbol, and
@@ -62,7 +63,7 @@ Calculate latency from every `release to visible update` UART sample.
 
 | Measurement | Acceptance criterion | Result |
 | --- | --- | --- |
-| Linked flash | At most 1 MiB; 896 KiB warning threshold | 57,680 bytes |
+| Linked flash | At most 1 MiB; 896 KiB warning threshold | 64,320 bytes |
 | Linked RAM | At most 192 KiB | 37,504 bytes |
 | Main-stack high-water | At least 25% measured margin after worst case | Not measured |
 | Median release-to-visible latency | Reported from at least 500 taps | Not measured |

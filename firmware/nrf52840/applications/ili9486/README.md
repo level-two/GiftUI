@@ -30,7 +30,7 @@ The Embedded Swift application calls a project-local C transport because the
 pinned Zephyr 4.3.0 tree has no ILI9486 binding or driver. It performs hardware
 reset, uses a conservative 4 MHz SPI clock, selects RGB565 MSB-first and a
 fixed 480 × 320 landscape/BGR orientation, then writes eight color bars in
-bounded 60 × 16 tiles. The initialization profile deliberately uses only
+bounded solid 60 × 320 regions. The initialization profile deliberately uses only
 standard reset, pixel-format, memory-access, sleep-out, and display-on
 commands; controller-specific power and gamma values must come from the
 verified working PiScreen configuration.
@@ -64,10 +64,13 @@ tap ends in the control where it began, then the updated model is rerendered.
 Calibration failure is bounded and leaves the rendered thermostat available
 without enabling uncalibrated input.
 
-Phase 7 redraws only the union of the previous and updated thermostat layout
-bounds after a completed action. The initial frame and calibration screens
-remain full-surface renders; update tiles are packed to the dirty rectangle so
-the SPI transport does not send unchanged columns or rows.
+Phase 7 uses the ILI9486's retained GRAM after a completed action. The static
+runtime compares old and new fixed layout arenas and returns the union of only
+nodes whose rendered pixels changed. The initial frame and calibration screens
+remain full-surface tile renders; updates clear the narrow damage rectangle and
+replay clipped operations as solid RGB565 rectangles without a Swift pixel
+buffer. The host-verified 21→22 update writes 324 pixels (648 payload bytes) in
+23 rectangles instead of rerasterizing the 7,168-byte root region.
 
 The tracked measurement candidate uses a four-row renderer tile and splits
 pixel payloads into at most 3,840-byte SPI transactions. Both values are

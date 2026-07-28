@@ -120,6 +120,7 @@ target_link_libraries(giftui_runtime_static PRIVATE giftui_core)
 add_library(giftui_rgb565 OBJECT
     ${giftui_root}/Sources/GiftUIBackendRGB565/GiftUIBackendRGB565.swift
     ${giftui_root}/Sources/GiftUIBackendRGB565/RGB565Pixel.swift
+    ${giftui_root}/Sources/GiftUIBackendRGB565/RGB565RetainedRenderer.swift
     ${giftui_root}/Sources/GiftUIBackendRGB565/RGB565RendererConfiguration.swift
     ${giftui_root}/Sources/GiftUIBackendRGB565/RGB565TileRenderer.swift
     ${giftui_root}/Sources/GiftUIBackendRGB565/RGB565TileStorage.swift

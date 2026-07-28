@@ -50,6 +50,47 @@ func staticRuntimeProvidesAllocationFreeLayoutResult() {
 }
 
 @Test
+func staticLayoutFindsOnlyChangedTextRenderBounds() throws {
+    let oldLayout = try StaticRuntime().layout(
+        VStack(spacing: 4) {
+            Text("Target")
+            Text(integer: 21, suffix: "°")
+        },
+        in: Size(width: 120, height: 80)
+    )
+    let newLayout = try StaticRuntime().layout(
+        VStack(spacing: 4) {
+            Text("Target")
+            Text(integer: 22, suffix: "°")
+        },
+        in: Size(width: 120, height: 80)
+    )
+
+    #expect(newLayout.changedRenderBounds(comparedTo: oldLayout) == newLayout.frame(at: 2))
+    #expect(newLayout.changedRenderBounds(comparedTo: newLayout) == nil)
+}
+
+@Test
+func staticLayoutFallsBackToRootBoundsForStructuralChanges() throws {
+    let oldLayout = try StaticRuntime().layout(
+        Text("A"),
+        in: Size(width: 120, height: 80)
+    )
+    let newLayout = try StaticRuntime().layout(
+        VStack { Text("A") },
+        in: Size(width: 120, height: 80)
+    )
+
+    #expect(
+        newLayout.changedRenderBounds(comparedTo: oldLayout)
+            == Rect(
+                origin: Point(x: 56, y: 34),
+                size: Size(width: 8, height: 12)
+            )
+    )
+}
+
+@Test
 func staticRuntimeReportsNodeCapacityExhaustion() {
     #expect(throws: StaticRuntimeError.nodeCapacityExceeded(capacity: 64)) {
         _ = try StaticRuntime().layout(

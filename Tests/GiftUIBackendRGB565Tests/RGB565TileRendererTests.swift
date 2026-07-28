@@ -213,6 +213,100 @@ func textRendersASCIIBoundedIntegerAndDegreeGlyphs() throws {
     #expect(pixels[16..<(24 * 12)].contains(0xffff))
 }
 
+@Test
+func retainedRendererMatchesTileRenderingWithoutOwningPixelStorage() throws {
+    let configuration = try RGB565RendererConfiguration(
+        physicalWidth: 32,
+        physicalHeight: 16,
+        tileHeight: 4
+    )
+    let expected = try renderPhysicalPixels(width: 32, height: 16, tileHeight: 4) {
+        backend in
+        backend.clear(Color(red: 24, green: 26, blue: 32))
+        backend.fill(
+            Rect(origin: Point(x: 2, y: 1), size: Size(width: 9, height: 8)),
+            color: Color(red: 255, green: 0, blue: 0)
+        )
+        backend.stroke(
+            Rect(origin: Point(x: 12, y: 1), size: Size(width: 10, height: 10)),
+            color: .white,
+            lineWidth: 2
+        )
+        backend.drawText(TextRun("A", color: .white), at: Point(x: 23, y: 1))
+    }
+    var renderer = RGB565RetainedRenderer(
+        configuration: configuration,
+        writer: RecordingSolidRectWriter(width: 32, height: 16)
+    )
+
+    renderer.clear(Color(red: 24, green: 26, blue: 32))
+    renderer.fill(
+        Rect(origin: Point(x: 2, y: 1), size: Size(width: 9, height: 8)),
+        color: Color(red: 255, green: 0, blue: 0)
+    )
+    renderer.stroke(
+        Rect(origin: Point(x: 12, y: 1), size: Size(width: 10, height: 10)),
+        color: .white,
+        lineWidth: 2
+    )
+    renderer.drawText(TextRun("A", color: .white), at: Point(x: 23, y: 1))
+
+    #expect(renderer.writer.pixels == expected)
+    #expect(renderer.writer.rectangles.count > 1)
+}
+
+@Test
+func retainedRendererClipsAndMapsDamageThroughRotation() throws {
+    let configuration = try RGB565RendererConfiguration(
+        physicalWidth: 3,
+        physicalHeight: 2,
+        tileHeight: 1,
+        rotation: .degrees90
+    )
+    var renderer = RGB565RetainedRenderer(
+        configuration: configuration,
+        clipRegion: Rect(
+            origin: Point(x: 0, y: 1),
+            size: Size(width: 2, height: 2)
+        ),
+        writer: RecordingSolidRectWriter(
+            width: 3,
+            height: 2,
+            initialPixel: 0x1234
+        )
+    )
+
+    renderer.clear(.white)
+
+    #expect(renderer.writer.rectangles == [
+        Rect(origin: Point(x: 0, y: 0), size: Size(width: 2, height: 2))
+    ])
+    #expect(renderer.writer.pixels == [
+        0xffff, 0xffff, 0x1234,
+        0xffff, 0xffff, 0x1234,
+    ])
+}
+
+private struct RecordingSolidRectWriter: RGB565SolidRectWriter {
+    let width: Int
+    var pixels: [UInt16]
+    var rectangles: [Rect] = []
+
+    init(width: Int, height: Int, initialPixel: UInt16 = 0) {
+        self.width = width
+        pixels = [UInt16](repeating: initialPixel, count: width * height)
+    }
+
+    mutating func writeSolidRect(_ rect: Rect, pixel: RGB565Pixel) {
+        rectangles.append(rect)
+        for y in rect.origin.y..<(rect.origin.y + rect.size.height) {
+            for x in rect.origin.x..<(rect.origin.x + rect.size.width) {
+                pixels[y * width + x] = pixel.rawValue
+            }
+        }
+    }
+}
+
 private func renderPhysicalPixels(
     width: Int,
     height: Int,

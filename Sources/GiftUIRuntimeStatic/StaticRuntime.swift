@@ -14,7 +14,7 @@ public enum StaticLayoutResult {
     case failure(StaticRuntimeError)
 }
 
-private enum StaticNodeKind {
+private enum StaticNodeKind: Equatable {
     case group
     case text(TextRun)
     case button(ActionID)
@@ -134,6 +134,47 @@ public struct StaticLayout {
         return nil
     }
 
+    /// Returns the smallest rectangle containing nodes whose rendered pixels
+    /// can differ from `previous`. A structural change falls back to the union
+    /// of both root frames; an identical visual layout returns `nil`.
+    public func changedRenderBounds(comparedTo previous: StaticLayout) -> Rect? {
+        guard nodeCount == previous.nodeCount,
+              rootIndex == previous.rootIndex else {
+            return Self.union(rootFrame, previous.rootFrame)
+        }
+
+        var dirtyBounds: Rect?
+        for index in 0..<nodeCount {
+            let current = nodes[index]
+            let old = previous.nodes[index]
+            guard current.firstChild == old.firstChild,
+                  current.lastChild == old.lastChild,
+                  current.nextSibling == old.nextSibling,
+                  Self.sameRenderRole(current.kind, old.kind) else {
+                return Self.union(rootFrame, previous.rootFrame)
+            }
+
+            let changed: Bool
+            switch (current.kind, old.kind) {
+            case (.text(let currentText), .text(let oldText)):
+                changed = currentText != oldText || current.frame != old.frame
+            case (.button, .button):
+                // Action identity affects hit testing, not button pixels.
+                changed = current.frame != old.frame
+            default:
+                // Container nodes do not draw. Child frame changes are checked
+                // independently, so their bounds need not inflate the damage.
+                changed = false
+            }
+            if changed {
+                let nodeBounds = Self.union(current.frame, old.frame)
+                dirtyBounds = dirtyBounds.map { Self.union($0, nodeBounds) }
+                    ?? nodeBounds
+            }
+        }
+        return dirtyBounds
+    }
+
     /// Emits operations directly from the fixed layout arena. No retained
     /// display-list allocation is required by the static runtime.
     public func appendRenderOperations<Sink: RenderOperationSink>(
@@ -179,6 +220,37 @@ public struct StaticLayout {
             try appendRenderOperations(at: child, to: &sink)
             child = nodes[child].nextSibling
         }
+    }
+
+    private static func sameRenderRole(
+        _ lhs: StaticNodeKind,
+        _ rhs: StaticNodeKind
+    ) -> Bool {
+        switch (lhs, rhs) {
+        case (.group, .group), (.text(_), .text(_)),
+             (.button(_), .button(_)), (.vStack(_), .vStack(_)),
+             (.hStack(_), .hStack(_)):
+            true
+        default:
+            false
+        }
+    }
+
+    private static func union(_ lhs: Rect, _ rhs: Rect) -> Rect {
+        let minX = min(lhs.origin.x, rhs.origin.x)
+        let minY = min(lhs.origin.y, rhs.origin.y)
+        let maxX = max(
+            lhs.origin.x + lhs.size.width,
+            rhs.origin.x + rhs.size.width
+        )
+        let maxY = max(
+            lhs.origin.y + lhs.size.height,
+            rhs.origin.y + rhs.size.height
+        )
+        return Rect(
+            origin: Point(x: minX, y: minY),
+            size: Size(width: maxX - minX, height: maxY - minY)
+        )
     }
 }
 

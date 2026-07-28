@@ -203,9 +203,12 @@ gate and its 100-press-per-control acceptance matrix are tracked in
 [`docs/GiftUI_ADS7846_Bring_Up_Record.md`](docs/GiftUI_ADS7846_Bring_Up_Record.md).
 No board was flashed while implementing this path.
 
-Phase 7 adds dirty-region updates, bounded SPI segmentation, runtime stack and
-latency telemetry, explicit heap exclusion, rate-limited fault counters, and a
-one-minute endurance heartbeat. Connected-board tuning and soak results belong
+Phase 7 adds retained-GRAM dirty updates, bounded SPI segmentation, runtime
+stack and latency telemetry, explicit heap exclusion, rate-limited fault
+counters, and a one-minute endurance heartbeat. Static layout comparison
+narrows a 21→22 thermostat update to 24 × 12 pixels; the solid-rectangle path
+writes 648 RGB565 payload bytes instead of rerasterizing the previous
+7,168-byte root region. Connected-board timing and soak results belong
 in [`docs/GiftUI_PiScreen_Phase_7_Validation_Record.md`](docs/GiftUI_PiScreen_Phase_7_Validation_Record.md);
 the Phase 7 gate remains open until those physical checks pass.
 

@@ -94,7 +94,10 @@ support, application stacks, drivers, GiftUI storage, and display staging.
 Neither full-screen representation is acceptable. The first implementation
 shall use an RGB565 scan-line or tile buffer. The measured implementation uses
 a 480 × 4 tile so one tile fits the 3,840-byte transport segment; the height
-must remain configurable after linker-map and stack measurements.
+must remain configurable after linker-map and stack measurements. Once an
+initial frame exists, the retained ILI9486 GRAM may serve as the backing store:
+the renderer can send clipped solid rectangles without owning another pixel
+buffer.
 
 ### 3.2 Initial resource requirements
 
@@ -504,10 +507,12 @@ The renderer shall:
 Color conversion and byte order must be unit tested. Clipping must prevent all
 buffer overrun when operations partially overlap a tile.
 
-The first correct implementation may redraw every tile. The next optimization
-should track dirty rectangles from invalidation and update only affected
-regions. A thermostat button press should not require a full-screen transfer
-after dirty-region support is accepted.
+The first correct implementation may redraw every tile. The retained-GRAM path
+tracks changed static-node bounds and sends only clipped solid rectangles. A
+host equivalence test verifies that a 21→22 thermostat update touches a 24 × 12
+region and writes 648 pixel payload bytes rather than the previous 7,168-byte
+root region. Connected hardware must still verify that the bridge and panel
+retain untouched pixels across these writes.
 
 ### 6.10 Zephyr application loop
 
@@ -627,7 +632,7 @@ classified, including presses near control edges, with no stuck-touch state.
 endurance validation pending. See
 [`GiftUI_PiScreen_Phase_7_Validation_Record.md`](GiftUI_PiScreen_Phase_7_Validation_Record.md).
 
-1. Add dirty-region rendering.
+1. Add retained-GRAM dirty-region rendering. (Hardware-free complete.)
 2. Tune tile height and SPI transfer segmentation from measurements.
 3. Measure stack high-water marks and worst-case event latency.
 4. Disable accidental heap fallback.

@@ -304,6 +304,47 @@ int ili9486_write_rgb565(uint16_t x,
     return write_pixel_segments(pixels, byte_count);
 }
 
+int ili9486_fill_rgb565(uint16_t x,
+                        uint16_t y,
+                        uint16_t width,
+                        uint16_t height,
+                        uint16_t pixel)
+{
+    if (width == 0U || height == 0U ||
+        x >= GIFTUI_ILI9486_WIDTH || y >= GIFTUI_ILI9486_HEIGHT ||
+        width > GIFTUI_ILI9486_WIDTH - x ||
+        height > GIFTUI_ILI9486_HEIGHT - y) {
+        giftui_fault_record(GIFTUI_FAULT_CAPACITY, -EINVAL);
+        return -EINVAL;
+    }
+
+    for (size_t index = 0U; index < sizeof(pixel_scratch); index += 2U) {
+        pixel_scratch[index] = (uint8_t)(pixel >> 8);
+        pixel_scratch[index + 1U] = (uint8_t)pixel;
+    }
+
+    int result = set_address_window(x, y, width, height);
+    if (result != 0) {
+        return result;
+    }
+    result = gpio_pin_set_dt(&display_dc, 1);
+    if (result != 0) {
+        return result;
+    }
+
+    size_t remaining =
+        (size_t)width * height * GIFTUI_ILI9486_BYTES_PER_PIXEL;
+    while (remaining > 0U) {
+        const size_t byte_count = MIN(remaining, sizeof(pixel_scratch));
+        result = write_pixel_segments(pixel_scratch, byte_count);
+        if (result != 0) {
+            return result;
+        }
+        remaining -= byte_count;
+    }
+    return 0;
+}
+
 int ili9486_render_color_bars(void)
 {
     static const uint16_t colors[] = {
@@ -319,29 +360,14 @@ int ili9486_render_color_bars(void)
     const uint16_t bar_width = GIFTUI_ILI9486_WIDTH / ARRAY_SIZE(colors);
 
     for (uint16_t bar = 0U; bar < ARRAY_SIZE(colors); ++bar) {
-        const uint16_t color = colors[bar];
-        for (size_t index = 0U; index < sizeof(pixel_scratch); index += 2U) {
-            pixel_scratch[index] = (uint8_t)(color >> 8);
-            pixel_scratch[index + 1U] = (uint8_t)color;
-        }
-
-        for (uint16_t y = 0U; y < GIFTUI_ILI9486_HEIGHT;
-             y += GIFTUI_ILI9486_TILE_HEIGHT) {
-            const uint16_t height = MIN(
-                GIFTUI_ILI9486_TILE_HEIGHT,
-                GIFTUI_ILI9486_HEIGHT - y);
-            const size_t byte_count =
-                (size_t)bar_width * height * GIFTUI_ILI9486_BYTES_PER_PIXEL;
-            const int result = ili9486_write_rgb565(
-                bar * bar_width,
-                y,
-                bar_width,
-                height,
-                pixel_scratch,
-                byte_count);
-            if (result != 0) {
-                return result;
-            }
+        const int result = ili9486_fill_rgb565(
+            bar * bar_width,
+            0U,
+            bar_width,
+            GIFTUI_ILI9486_HEIGHT,
+            colors[bar]);
+        if (result != 0) {
+            return result;
         }
     }
 
