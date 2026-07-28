@@ -29,7 +29,6 @@ callback storage used by `GiftUIDynamicConveniences`.
 
 Not yet admitted to this layer:
 
-- class/task-local `@State` binding and string structural keys;
 - rendering backends.
 
 Portable render text retains `StaticString` labels or bounded integer/suffix
@@ -42,6 +41,9 @@ string-path build context, and array/dictionary interaction snapshot now live
 in `GiftUIRuntimeDynamic`. `GiftUIRuntimeStatic` provides their bounded
 replacements. Rendering backends remain separate target-specific layers.
 
+The class-backed `@State` wrapper, task-local binding context, string state
+keys, and `[StateKey: Any]` store also live in `GiftUIRuntimeDynamic`.
+
 ## Static runtime layer
 
 **Status:** Compiles in regular and Embedded Swift.
@@ -51,7 +53,8 @@ capacities:
 
 - 64 layout nodes;
 - 16 nested retained containers;
-- 16 hit regions.
+- 16 hit regions;
+- 16 typed state slots per generated value-type store.
 
 The runtime measures and places groups, horizontal/vertical stacks, static
 text, and identified-action buttons. It reports deterministic errors for node,
@@ -60,10 +63,12 @@ Embedded Swift the arena uses inline fixed-size arrays. The macOS conformance
 harness uses capacity-checked arrays because `InlineArray` has a macOS 26
 availability floor while this package still supports macOS 15.
 
-State slots remain outside this accepted layer. The first
-static application fixture owns typed mutable state and dispatches bounded
-action identifiers explicitly; adapting `@State` to generated/fixed slots is a
-subsequent state-layer step.
+Static state uses stable numeric `StaticStateSlot<Value>` identities and
+homogeneous fixed-capacity `StaticStateStorage<Value>` instances. Generated
+applications use one store per state value type, avoiding strings, `Any`,
+class boxes, and task-local binding. Slot overflow is deterministic, and writes
+set an invalidation bit that is cleared after rendering. The dynamic-only
+`@State` spelling remains available from `GiftUIRuntimeDynamic`.
 
 The same portable thermostat declaration compiles as an ARM Embedded Swift
 module and runs in the host conformance suite through both runtimes. It uses
@@ -75,3 +80,5 @@ The fixed layout arena retains portable text payloads and emits render
 operations directly into a caller-provided sink. This avoids a static
 display-list allocation, propagates sink capacity failures, and produces the
 same ordered operations as the dynamic runtime for the portable thermostat.
+The conformance suite also rebuilds the portable thermostat from a typed
+static slot after mutation and checks both runtimes again.

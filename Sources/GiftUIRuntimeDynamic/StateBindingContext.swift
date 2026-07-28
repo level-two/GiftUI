@@ -1,3 +1,4 @@
+/// Task-local body evaluation context used only by the dynamic runtime.
 package final class StateBindingContext: @unchecked Sendable {
     @TaskLocal package static var current: StateBindingContext?
 

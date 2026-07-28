@@ -39,6 +39,21 @@ func portableThermostatHasEquivalentRenderOperations() throws {
     #expect(fixedOperations.operations == dynamic.operations)
 }
 
+@Test
+func typedStaticStateDrivesPortableThermostatRerenders() throws {
+    let targetSlot = StaticStateSlot<Int>(rawValue: 0)
+    var state = StaticStateStorage<Int>()
+    let initialTarget = try state.value(at: targetSlot, initialValue: 21)
+
+    try assertRuntimeParity(for: ThermostatModel(target: initialTarget))
+    state.markRendered()
+    try state.write(22, at: targetSlot)
+
+    #expect(state.isInvalid)
+    let updatedTarget = try state.value(at: targetSlot, initialValue: 0)
+    try assertRuntimeParity(for: ThermostatModel(target: updatedTarget))
+}
+
 @Test(arguments: [0, -1, Int.min, Int.max])
 func boundedIntegerTextHasEquivalentIntrinsicWidth(_ value: Int) throws {
     let view = Text(integer: value, suffix: "°")

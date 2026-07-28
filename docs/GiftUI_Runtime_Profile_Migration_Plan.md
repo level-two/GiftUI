@@ -141,8 +141,12 @@ remains part of the state-layer work.
 
 **Progress:** Bounded decimal text and an application-typed thermostat state
 model now compile in Embedded Swift. The identical portable thermostat view is
-checked against static and dynamic host layout/action semantics. Generalized
-fixed/generated `@State` slots remain future state-layer work.
+checked against static and dynamic host layout/action semantics. Fixed state
+uses stable numeric `StaticStateSlot<Value>` identities and homogeneous
+`StaticStateStorage<Value>` arenas with deterministic exhaustion and
+invalidation. The class/`Any`/task-local `@State` implementation has moved
+entirely to `GiftUIRuntimeDynamic`; generated static applications bind typed
+slots to view initializer values.
 
 ### Stage E — validate Embedded Swift and hardware integration
 

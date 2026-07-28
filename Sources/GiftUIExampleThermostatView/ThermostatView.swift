@@ -1,5 +1,6 @@
 import GiftUI
 import GiftUIDynamicConveniences
+import GiftUIRuntimeDynamic
 
 public struct ThermostatView: View {
     @State private var target = 21

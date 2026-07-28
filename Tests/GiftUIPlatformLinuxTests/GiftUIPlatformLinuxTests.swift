@@ -2,6 +2,7 @@ import GiftUI
 import GiftUIBackendFramebuffer
 import GiftUIDynamicConveniences
 import GiftUIPlatformLinux
+import GiftUIRuntimeDynamic
 import Testing
 
 @Test

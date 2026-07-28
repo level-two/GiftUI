@@ -111,6 +111,7 @@ giftui_nrf_note "compiling GiftUIRuntimeStatic for ${GIFTUI_NRF_SWIFT_TARGET}"
     -c \
     -o "${runtime_output_dir}/GiftUIRuntimeStatic.o" \
     Sources/GiftUIRuntimeStatic/GiftUIRuntimeStatic.swift \
+    Sources/GiftUIRuntimeStatic/StaticStateStorage.swift \
     Sources/GiftUIRuntimeStatic/StaticRuntime.swift
 
 printf 'MODULE=%s\n' "${runtime_output_dir}/GiftUIRuntimeStatic.swiftmodule"

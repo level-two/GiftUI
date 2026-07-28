@@ -132,6 +132,60 @@ func staticRenderEmissionPropagatesSinkCapacityFailure() throws {
     }
 }
 
+@Test
+func staticTypedStateSlotsPersistAndTrackInvalidation() throws {
+    let targetSlot = StaticStateSlot<Int>(rawValue: 0)
+    let secondarySlot = StaticStateSlot<Int>(rawValue: 1)
+    var storage = StaticStateStorage<Int>()
+    var initializations = 0
+
+    let target = try storage.value(at: targetSlot, initialValue: {
+        initializations += 1
+        return 21
+    }())
+    let sameTarget = try storage.value(at: targetSlot, initialValue: {
+        initializations += 1
+        return 99
+    }())
+    let secondary = try storage.value(at: secondarySlot, initialValue: 7)
+
+    #expect(target == 21)
+    #expect(sameTarget == 21)
+    #expect(secondary == 7)
+    #expect(initializations == 1)
+    #expect(storage.isInvalid)
+
+    storage.markRendered()
+    #expect(!storage.isInvalid)
+
+    _ = try storage.value(
+        at: StaticStateSlot<Int>(rawValue: 2),
+        initialValue: 11
+    )
+    #expect(storage.isInvalid)
+    storage.markRendered()
+
+    try storage.write(22, at: targetSlot)
+    #expect(storage.isInvalid)
+    #expect(try storage.value(at: targetSlot, initialValue: 0) == 22)
+}
+
+@Test
+func staticTypedStateReportsSlotCapacityExhaustion() {
+    var storage = StaticStateStorage<Int>()
+    let firstInvalid = StaticStateSlot<Int>(
+        rawValue: StaticStateStorage<Int>.capacity
+    )
+    let negative = StaticStateSlot<Int>(rawValue: -1)
+
+    #expect(throws: StaticStateStorageError.slotCapacityExceeded(capacity: 16)) {
+        _ = try storage.value(at: firstInvalid, initialValue: 0)
+    }
+    #expect(throws: StaticStateStorageError.slotCapacityExceeded(capacity: 16)) {
+        try storage.write(0, at: negative)
+    }
+}
+
 private struct TooManyTextChildren: View {
     var body: Never {
         fatalError("Custom traversal does not evaluate a body")

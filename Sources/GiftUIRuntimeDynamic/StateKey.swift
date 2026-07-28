@@ -1,3 +1,4 @@
+/// String structural identity used by dynamic state storage.
 public struct StateKey: Hashable, Sendable {
     public let path: String
     public let slot: Int

@@ -264,5 +264,5 @@ Structural identity is intentionally topology-based for PoC A. Reordering or
 inserting siblings can therefore move state between paths. Explicit identity
 and reconciliation remain future static/runtime work. Identified, non-closure
 button actions, bounded decimal text, and the fixed node/action arena now
-provide the first portable runtime path. General fixed/generated `@State`
-slots remain future static-runtime work.
+combine with typed numeric state slots to provide the portable runtime path.
+The class-backed `@State` wrapper remains a dynamic-runtime API.

@@ -95,6 +95,7 @@ let package = Package(
             dependencies: [
                 "GiftUI",
                 "GiftUIDynamicConveniences",
+                "GiftUIRuntimeDynamic",
             ]
         ),
         .target(
@@ -167,6 +168,7 @@ let package = Package(
                 "GiftUIBackendFramebuffer",
                 "GiftUIDynamicConveniences",
                 "GiftUIPlatformLinux",
+                "GiftUIRuntimeDynamic",
             ]
         ),
         .testTarget(

@@ -1,3 +1,4 @@
+/// Heap-backed state binding for the dynamic runtime profile.
 @propertyWrapper
 public struct State<Value> {
     private final class Storage {
