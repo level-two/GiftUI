@@ -90,7 +90,8 @@ public func giftuiSwiftDisplayApplicationRun() -> Int32 {
     var model = ThermostatModel()
     guard var layout = renderThermostat(
             model: model,
-            configuration: configuration
+            configuration: configuration,
+            previousLayout: nil
         ) else {
         return -1
     }
@@ -153,7 +154,8 @@ public func giftuiSwiftDisplayApplicationRun() -> Int32 {
                    model.dispatch(completedAction),
                    let updatedLayout = renderThermostat(
                        model: model,
-                       configuration: configuration
+                       configuration: configuration,
+                       previousLayout: layout
                    ) {
                     layout = updatedLayout
                     giftuiDisplayLog(11, Int32(model.target))
@@ -338,7 +340,8 @@ private func renderCalibrationTarget(
 
 private func renderThermostat(
     model: ThermostatModel,
-    configuration: RGB565RendererConfiguration
+    configuration: RGB565RendererConfiguration,
+    previousLayout: StaticLayout?
 ) -> StaticLayout? {
     let layout: StaticLayout
     switch StaticRuntime().layoutResult(
@@ -355,7 +358,10 @@ private func renderThermostat(
     var renderer = RGB565TileRenderer(configuration: configuration)
     var transportResult: Int32 = 0
     let startedAt = giftuiDisplayUptimeMilliseconds()
-    renderer.renderTiles { tileBackend in
+    let dirtyRegion = previousLayout.map {
+        union($0.rootFrame, layout.rootFrame)
+    } ?? Rect(origin: Point(x: 0, y: 0), size: configuration.logicalSize)
+    renderer.renderTiles(dirtyRegion: dirtyRegion) { tileBackend in
         tileBackend.clear(Color(red: 24, green: 26, blue: 32))
         layout.appendRenderOperations(to: &tileBackend)
     } presenting: { tile, bytes in
@@ -378,11 +384,22 @@ private func present(
     bytes: UnsafeRawBufferPointer
 ) -> Int32 {
     ili9486WriteRGB565(
-        0,
+        UInt16(tile.physicalX),
         UInt16(tile.physicalY),
         UInt16(tile.width),
         UInt16(tile.height),
         bytes.baseAddress,
         UInt(bytes.count)
+    )
+}
+
+private func union(_ lhs: Rect, _ rhs: Rect) -> Rect {
+    let minX = min(lhs.origin.x, rhs.origin.x)
+    let minY = min(lhs.origin.y, rhs.origin.y)
+    let maxX = max(lhs.origin.x + lhs.size.width, rhs.origin.x + rhs.size.width)
+    let maxY = max(lhs.origin.y + lhs.size.height, rhs.origin.y + rhs.size.height)
+    return Rect(
+        origin: Point(x: minX, y: minY),
+        size: Size(width: maxX - minX, height: maxY - minY)
     )
 }

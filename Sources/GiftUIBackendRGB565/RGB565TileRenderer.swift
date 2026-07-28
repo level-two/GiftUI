@@ -2,6 +2,7 @@ import GiftUI
 import GiftUIBuiltinFont
 
 public struct RGB565Tile: Equatable, Sendable {
+    public let physicalX: Int
     public let physicalY: Int
     public let width: Int
     public let height: Int
@@ -22,7 +23,9 @@ public struct RGB565TileRenderer: RenderBackend, RenderOperationSink, Sendable {
 
     public let configuration: RGB565RendererConfiguration
     private var storage: RGB565TileStorage
+    private var activePhysicalX = 0
     private var activePhysicalY = 0
+    private var activePhysicalWidth = 0
     private var activePhysicalHeight = 0
 
     public var surfaceSize: Size {
@@ -47,20 +50,47 @@ public struct RGB565TileRenderer: RenderBackend, RenderOperationSink, Sendable {
             _ bytes: UnsafeRawBufferPointer
         ) throws -> Void
     ) rethrows {
-        var physicalY = 0
-        while physicalY < configuration.physicalHeight {
+        try renderTiles(
+            dirtyRegion: Rect(
+                origin: Point(x: 0, y: 0),
+                size: configuration.logicalSize
+            ),
+            drawing: drawing,
+            presenting: presenting
+        )
+    }
+
+    /// Replays only the clipped logical dirty region into packed physical
+    /// tiles. Presented rows contain no pixels outside the dirty region.
+    public mutating func renderTiles(
+        dirtyRegion: Rect,
+        drawing: (inout Self) throws -> Void,
+        presenting: (
+            _ tile: RGB565Tile,
+            _ bytes: UnsafeRawBufferPointer
+        ) throws -> Void
+    ) rethrows {
+        guard let physicalBounds = physicalBounds(for: dirtyRegion) else {
+            return
+        }
+
+        activePhysicalX = physicalBounds.minX
+        activePhysicalWidth = physicalBounds.maxX - physicalBounds.minX
+        var physicalY = physicalBounds.minY
+        while physicalY < physicalBounds.maxY {
             activePhysicalY = physicalY
             activePhysicalHeight = min(
                 configuration.tileHeight,
-                configuration.physicalHeight - physicalY
+                physicalBounds.maxY - physicalY
             )
             try drawing(&self)
 
             let tile = RGB565Tile(
+                physicalX: activePhysicalX,
                 physicalY: physicalY,
-                width: configuration.physicalWidth,
+                width: activePhysicalWidth,
                 height: activePhysicalHeight,
-                bytesPerRow: configuration.physicalWidth
+                bytesPerRow: activePhysicalWidth
                     * RGB565RendererConfiguration.bytesPerPixel,
                 byteOrder: configuration.byteOrder
             )
@@ -73,6 +103,7 @@ public struct RGB565TileRenderer: RenderBackend, RenderOperationSink, Sendable {
             }
             physicalY += activePhysicalHeight
         }
+        activePhysicalWidth = 0
         activePhysicalHeight = 0
     }
 
@@ -98,8 +129,9 @@ public struct RGB565TileRenderer: RenderBackend, RenderOperationSink, Sendable {
             return
         }
         let pixel = RGB565Pixel(color)
-        let bytesPerRow = configuration.physicalWidth
+        let bytesPerRow = activePhysicalWidth
             * RGB565RendererConfiguration.bytesPerPixel
+        let activePhysicalX = self.activePhysicalX
         let activePhysicalY = self.activePhysicalY
         let byteOrder = configuration.byteOrder
         let configuration = self.configuration
@@ -113,7 +145,8 @@ public struct RGB565TileRenderer: RenderBackend, RenderOperationSink, Sendable {
                         configuration: configuration
                     )
                     let offset = (physical.y - activePhysicalY) * bytesPerRow
-                        + physical.x * RGB565RendererConfiguration.bytesPerPixel
+                        + (physical.x - activePhysicalX)
+                            * RGB565RendererConfiguration.bytesPerPixel
                     bytes[offset] = pixel.byte(at: 0, order: byteOrder)
                     bytes[offset + 1] = pixel.byte(at: 1, order: byteOrder)
                 }
@@ -224,23 +257,84 @@ public struct RGB565TileRenderer: RenderBackend, RenderOperationSink, Sendable {
         var maxX = min(surfaceSize.width, saturatingAdd(rect.origin.x, rect.size.width))
         var maxY = min(surfaceSize.height, saturatingAdd(rect.origin.y, rect.size.height))
 
+        let tileMaxX = activePhysicalX + activePhysicalWidth
         let tileMaxY = activePhysicalY + activePhysicalHeight
         switch configuration.rotation {
         case .degrees0:
+            minX = max(minX, activePhysicalX)
+            maxX = min(maxX, tileMaxX)
             minY = max(minY, activePhysicalY)
             maxY = min(maxY, tileMaxY)
         case .degrees90:
             minX = max(minX, activePhysicalY)
             maxX = min(maxX, tileMaxY)
+            minY = max(minY, configuration.physicalWidth - tileMaxX)
+            maxY = min(maxY, configuration.physicalWidth - activePhysicalX)
         case .degrees180:
+            minX = max(minX, configuration.physicalWidth - tileMaxX)
+            maxX = min(maxX, configuration.physicalWidth - activePhysicalX)
             minY = max(minY, configuration.physicalHeight - tileMaxY)
             maxY = min(maxY, configuration.physicalHeight - activePhysicalY)
         case .degrees270:
             minX = max(minX, configuration.physicalHeight - tileMaxY)
             maxX = min(maxX, configuration.physicalHeight - activePhysicalY)
+            minY = max(minY, activePhysicalX)
+            maxY = min(maxY, tileMaxX)
         }
         guard minX < maxX, minY < maxY else { return nil }
         return LogicalBounds(minX: minX, minY: minY, maxX: maxX, maxY: maxY)
+    }
+
+    private func physicalBounds(for rect: Rect) -> PhysicalBounds? {
+        guard let logicalBounds = clippedSurfaceBounds(for: rect) else {
+            return nil
+        }
+        let corners = (
+            physicalPoint(
+                logicalX: logicalBounds.minX,
+                logicalY: logicalBounds.minY
+            ),
+            physicalPoint(
+                logicalX: logicalBounds.maxX - 1,
+                logicalY: logicalBounds.minY
+            ),
+            physicalPoint(
+                logicalX: logicalBounds.minX,
+                logicalY: logicalBounds.maxY - 1
+            ),
+            physicalPoint(
+                logicalX: logicalBounds.maxX - 1,
+                logicalY: logicalBounds.maxY - 1
+            )
+        )
+        let minimumX = min(min(corners.0.x, corners.1.x), min(corners.2.x, corners.3.x))
+        let minimumY = min(min(corners.0.y, corners.1.y), min(corners.2.y, corners.3.y))
+        let maximumX = max(max(corners.0.x, corners.1.x), max(corners.2.x, corners.3.x))
+        let maximumY = max(max(corners.0.y, corners.1.y), max(corners.2.y, corners.3.y))
+        return PhysicalBounds(
+            minX: minimumX,
+            minY: minimumY,
+            maxX: maximumX + 1,
+            maxY: maximumY + 1
+        )
+    }
+
+    private func clippedSurfaceBounds(for rect: Rect) -> LogicalBounds? {
+        guard rect.size.width > 0, rect.size.height > 0 else { return nil }
+        let minX = max(0, rect.origin.x)
+        let minY = max(0, rect.origin.y)
+        let maxX = min(surfaceSize.width, saturatingAdd(rect.origin.x, rect.size.width))
+        let maxY = min(surfaceSize.height, saturatingAdd(rect.origin.y, rect.size.height))
+        guard minX < maxX, minY < maxY else { return nil }
+        return LogicalBounds(minX: minX, minY: minY, maxX: maxX, maxY: maxY)
+    }
+
+    private func physicalPoint(logicalX: Int, logicalY: Int) -> Point {
+        Self.physicalPoint(
+            logicalX: logicalX,
+            logicalY: logicalY,
+            configuration: configuration
+        )
     }
 
     private static func physicalPoint(
@@ -276,6 +370,13 @@ public struct RGB565TileRenderer: RenderBackend, RenderOperationSink, Sendable {
 }
 
 private struct LogicalBounds {
+    let minX: Int
+    let minY: Int
+    let maxX: Int
+    let maxY: Int
+}
+
+private struct PhysicalBounds {
     let minX: Int
     let minY: Int
     let maxX: Int

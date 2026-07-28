@@ -58,6 +58,11 @@ tap ends in the control where it began, then the updated model is rerendered.
 Calibration failure is bounded and leaves the rendered thermostat available
 without enabling uncalibrated input.
 
+Phase 7 redraws only the union of the previous and updated thermostat layout
+bounds after a completed action. The initial frame and calibration screens
+remain full-surface renders; update tiles are packed to the dirty rectangle so
+the SPI transport does not send unchanged columns or rows.
+
 Do not power the screen or flash this firmware until the exact PiScreen
 revision, supply rail, backlight polarity/transistor stage, and unpowered
 continuity have been recorded. After flashing, verify the red/yellow/green/

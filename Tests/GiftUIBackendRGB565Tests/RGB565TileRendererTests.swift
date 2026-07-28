@@ -22,9 +22,69 @@ func rendererPresentsConsecutiveBoundedTiles() throws {
     }
 
     #expect(tiles.map(\.physicalY) == [0, 2, 4])
+    #expect(tiles.map(\.physicalX) == [0, 0, 0])
     #expect(tiles.map(\.height) == [2, 2, 1])
     #expect(byteCounts == [20, 20, 10])
     #expect(renderer.allocatedByteCapacity == 20)
+}
+
+@Test
+func dirtyRegionPresentsOnlyClippedPackedPixels() throws {
+    let configuration = try RGB565RendererConfiguration(
+        physicalWidth: 5,
+        physicalHeight: 5,
+        tileHeight: 2
+    )
+    var renderer = RGB565TileRenderer(configuration: configuration)
+    var tiles: [RGB565Tile] = []
+    var byteCounts: [Int] = []
+
+    renderer.renderTiles(
+        dirtyRegion: Rect(
+            origin: Point(x: 1, y: 1),
+            size: Size(width: 3, height: 3)
+        )
+    ) { backend in
+        backend.clear(.white)
+    } presenting: { tile, bytes in
+        tiles.append(tile)
+        byteCounts.append(bytes.count)
+        #expect(bytes.allSatisfy { $0 == 0xff })
+    }
+
+    #expect(tiles.map(\.physicalX) == [1, 1])
+    #expect(tiles.map(\.physicalY) == [1, 3])
+    #expect(tiles.map(\.width) == [3, 3])
+    #expect(tiles.map(\.height) == [2, 1])
+    #expect(byteCounts == [12, 6])
+}
+
+@Test
+func dirtyRegionMapsThroughRotation() throws {
+    let configuration = try RGB565RendererConfiguration(
+        physicalWidth: 3,
+        physicalHeight: 2,
+        tileHeight: 1,
+        rotation: .degrees90
+    )
+    var renderer = RGB565TileRenderer(configuration: configuration)
+    var tiles: [RGB565Tile] = []
+
+    renderer.renderTiles(
+        dirtyRegion: Rect(
+            origin: Point(x: 0, y: 1),
+            size: Size(width: 2, height: 2)
+        )
+    ) { backend in
+        backend.clear(.white)
+    } presenting: { tile, bytes in
+        tiles.append(tile)
+        #expect(bytes.allSatisfy { $0 == 0xff })
+    }
+
+    #expect(tiles.map(\.physicalX) == [0, 0])
+    #expect(tiles.map(\.physicalY) == [0, 1])
+    #expect(tiles.map(\.width) == [2, 2])
 }
 
 @Test
@@ -173,7 +233,7 @@ private func renderPhysicalPixels(
         for tileY in 0..<tile.height {
             for x in 0..<tile.width {
                 let byteOffset = tileY * tile.bytesPerRow + x * 2
-                result[(tile.physicalY + tileY) * width + x] =
+                result[(tile.physicalY + tileY) * width + tile.physicalX + x] =
                     UInt16(bytes[byteOffset]) << 8 | UInt16(bytes[byteOffset + 1])
             }
         }
