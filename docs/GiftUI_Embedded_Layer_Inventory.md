@@ -116,9 +116,9 @@ bounds, and replay clipped operations as solid writes into retained panel GRAM.
 
 The build requires ARMv7E-M hard-float attributes, the Swift entry point,
 static runtime and RGB565 symbols, disabled Zephyr heap, and linked RAM below
-the project limit. The current image uses 64,320 bytes of flash and 37,504
-bytes of linked RAM, including a conservative 32 KiB main stack pending a
-hardware high-water measurement.
+the project limit. The current image uses 64,320 bytes of flash and 29,312
+bytes of linked RAM, including a conservative 24 KiB main-stack candidate
+pending a hardware high-water measurement.
 
 No connected-board validation is inferred from these gates. The screen
 revision, power rail, backlight circuit/polarity, continuity, controller-

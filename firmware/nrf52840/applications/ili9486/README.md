@@ -82,6 +82,9 @@ Stack painting and thread stack metadata are enabled for Phase 7. UART reports
 the main-thread high-water mark after the first thermostat frame and after each
 successful dirty update. It also reports release-to-visible latency around
 action dispatch, layout, rasterization, and the final synchronous SPI write.
+The 24 KiB main stack is a hardware-free candidate enabled by reducing the
+inline tile from 15,360 to 3,840 bytes; accept it only after worst-case runs
+retain at least 25% measured stack margin.
 Use a complete connected-board run to calculate median and worst-case latency;
 the instrumentation alone is not a hardware measurement.
 

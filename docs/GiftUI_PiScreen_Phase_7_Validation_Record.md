@@ -20,7 +20,7 @@ unperformed checks as `Not run`; a successful build is not endurance evidence.
 | Runtime telemetry | Transfer time, release-to-visible latency, stack high-water, one-minute heartbeat |
 | Fault categories | Capacity, display controller, display SPI, touch controller, touch SPI |
 | Hardware-free linked flash | 64,320 bytes |
-| Hardware-free linked RAM | 37,504 bytes, including the 32 KiB main stack |
+| Hardware-free linked RAM | 29,312 bytes, including the 24 KiB main-stack candidate |
 
 The build must emit ARMv7E-M hard-float ELF, HEX, map, Devicetree, symbol, and
 memory reports under `.build/nrf52840/ili9486/` without flashing hardware:
@@ -64,7 +64,7 @@ Calculate latency from every `release to visible update` UART sample.
 | Measurement | Acceptance criterion | Result |
 | --- | --- | --- |
 | Linked flash | At most 1 MiB; 896 KiB warning threshold | 64,320 bytes |
-| Linked RAM | At most 192 KiB | 37,504 bytes |
+| Linked RAM | At most 192 KiB | 29,312 bytes |
 | Main-stack high-water | At least 25% measured margin after worst case | Not measured |
 | Median release-to-visible latency | Reported from at least 500 taps | Not measured |
 | Worst release-to-visible latency | At most 150 ms | Not measured |
