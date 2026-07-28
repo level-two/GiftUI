@@ -28,15 +28,22 @@ public enum ADS7846CalibrationError: Error, Equatable, Sendable {
     case inconsistentCenter
 }
 
+public enum ADS7846CalibrationResult {
+    case success(ADS7846Calibration)
+    case failure(ADS7846CalibrationError)
+}
+
 public struct ADS7846Calibration: Equatable, Sendable {
     public let rawXAtLeft: Int
     public let rawXAtRight: Int
     public let rawYAtTop: Int
     public let rawYAtBottom: Int
+    public let targetInset: Int
 
     public init(
         samples: ADS7846CalibrationSamples,
-        minimumSpan: Int = 256
+        minimumSpan: Int = 256,
+        targetInset: Int = 0
     ) throws(ADS7846CalibrationError) {
         let rawXAtLeft = Self.average(
             Int(samples.topLeft.x),
@@ -83,25 +90,47 @@ public struct ADS7846Calibration: Equatable, Sendable {
         self.rawXAtRight = rawXAtRight
         self.rawYAtTop = rawYAtTop
         self.rawYAtBottom = rawYAtBottom
+        self.targetInset = targetInset < 0 ? 0 : targetInset
+    }
+
+    public static func derive(
+        samples: ADS7846CalibrationSamples,
+        minimumSpan: Int = 256,
+        targetInset: Int = 0
+    ) -> ADS7846CalibrationResult {
+        do {
+            return .success(try ADS7846Calibration(
+                samples: samples,
+                minimumSpan: minimumSpan,
+                targetInset: targetInset
+            ))
+        } catch let error {
+            return .failure(error)
+        }
     }
 
     public func map(
         _ sample: ADS7846RawSample,
         to size: Size
     ) -> Point? {
-        guard size.width > 0, size.height > 0 else { return nil }
+        guard size.width > 0,
+              size.height > 0,
+              targetInset <= (size.width - 1) / 2,
+              targetInset <= (size.height - 1) / 2 else { return nil }
         return Point(
             x: Self.mapAxis(
                 Int(sample.x),
                 near: rawXAtLeft,
                 far: rawXAtRight,
-                extent: size.width
+                extent: size.width,
+                targetInset: targetInset
             ),
             y: Self.mapAxis(
                 Int(sample.y),
                 near: rawYAtTop,
                 far: rawYAtBottom,
-                extent: size.height
+                extent: size.height,
+                targetInset: targetInset
             )
         )
     }
@@ -118,9 +147,12 @@ public struct ADS7846Calibration: Equatable, Sendable {
         _ value: Int,
         near: Int,
         far: Int,
-        extent: Int
+        extent: Int,
+        targetInset: Int
     ) -> Int {
-        let mapped = (value - near) * (extent - 1) / (far - near)
+        let targetSpan = extent - 1 - targetInset * 2
+        let mapped = targetInset
+            + (value - near) * targetSpan / (far - near)
         if mapped < 0 { return 0 }
         if mapped >= extent { return extent - 1 }
         return mapped

@@ -31,6 +31,19 @@ func calibrationHandlesInvertedAxesAndClampsOutsideSamples() throws {
 }
 
 @Test
+func calibrationMapsInsetTargetsAndExtrapolatesToDisplayEdges() throws {
+    let calibration = try ADS7846Calibration(
+        samples: samples(),
+        targetInset: 16
+    )
+
+    #expect(calibration.map(raw(x: 202, y: 302), to: displaySize)
+        == Point(x: 16, y: 16))
+    #expect(calibration.map(raw(x: 100, y: 100), to: displaySize)
+        == Point(x: 4, y: 0))
+}
+
+@Test
 func calibrationRejectsWeakHorizontalSpan() {
     #expect(throws: ADS7846CalibrationError.insufficientHorizontalSpan(
         minimum: 256,

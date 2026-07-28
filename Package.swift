@@ -172,7 +172,11 @@ let package = Package(
         ),
         .testTarget(
             name: "GiftUIInputADS7846Tests",
-            dependencies: ["GiftUIInputADS7846"]
+            dependencies: [
+                "GiftUIExampleThermostatPortableView",
+                "GiftUIInputADS7846",
+                "GiftUIRuntimeStatic",
+            ]
         ),
         .testTarget(
             name: "GiftUIIntegrationTests",

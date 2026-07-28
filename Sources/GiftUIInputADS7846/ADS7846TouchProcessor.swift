@@ -91,12 +91,7 @@ public struct ADS7846TouchProcessor: Sendable {
               pressureThreshold.accepts(third) else {
             return nil
         }
-        let filtered = ADS7846RawSample(
-            x: Self.median(first.x, second.x, third.x),
-            y: Self.median(first.y, second.y, third.y),
-            z1: Self.median(first.z1, second.z1, third.z1),
-            z2: Self.median(first.z2, second.z2, third.z2)
-        )
+        let filtered = ADS7846RawSample.median(first, second, third)
         guard let physicalPoint = calibration.map(filtered, to: physicalSize)
         else { return nil }
         let logicalPoint = orientation.logicalPoint(
@@ -111,18 +106,5 @@ public struct ADS7846TouchProcessor: Sendable {
         guard previousPoint != logicalPoint else { return nil }
         lastPoint = logicalPoint
         return .pointerMove(logicalPoint)
-    }
-
-    private static func median(
-        _ first: UInt16,
-        _ second: UInt16,
-        _ third: UInt16
-    ) -> UInt16 {
-        if first < second {
-            if second < third { return second }
-            return first < third ? third : first
-        }
-        if first < third { return first }
-        return second < third ? third : second
     }
 }

@@ -143,6 +143,7 @@ target_link_libraries(giftui_thermostat_view PRIVATE giftui_core)
 add_library(app_swift OBJECT src/ILI9486BringUp.swift)
 giftui_configure_swift_target(app_swift GiftUIILI9486BringUp)
 target_link_libraries(app_swift PRIVATE
+    giftui_ads7846_input
     giftui_core
     giftui_rgb565
     giftui_runtime_static
@@ -151,6 +152,7 @@ target_link_libraries(app_swift PRIVATE
 
 target_link_libraries(app PRIVATE
     app_swift
+    giftui_ads7846_input
     giftui_builtin_font
     giftui_core
     giftui_rgb565

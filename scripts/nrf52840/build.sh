@@ -112,6 +112,8 @@ elif [[ "${application}" == "ili9486" ]]; then
         giftui_nrf_error "ILI9486 ELF does not contain the RGB565 backend"
     grep -Fq 'GiftUIRuntimeStatic' "${build_dir}/reports/symbols.txt" ||
         giftui_nrf_error "ILI9486 ELF does not contain the static runtime"
+    grep -Fq 'GiftUIInputADS7846' "${build_dir}/reports/symbols.txt" ||
+        giftui_nrf_error "ILI9486 ELF does not contain ADS7846 input processing"
     grep -Fqx 'CONFIG_HEAP_MEM_POOL_SIZE=0' "${build_dir}/zephyr/.config" ||
         giftui_nrf_error "ILI9486 firmware must keep the Zephyr heap disabled"
 fi

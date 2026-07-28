@@ -47,6 +47,17 @@ the same checked C rectangular writer, so the firmware cannot construct or
 transfer a full-screen framebuffer. UART output reports the color-bar and
 thermostat transfer times separately.
 
+Phase 6 then presents five 16-pixel-inset calibration targets in top-left,
+top-right, bottom-left, bottom-right, and center order. Each target has a
+15-second timeout, records a pressure-qualified median of three X/Y/Z1/Z2
+samples to UART, and requires release before advancing. After calibration,
+the firmware polls PENIRQ every 10 ms, maps median samples into display
+orientation, and feeds down/move/up events through the static layout's hit
+regions. A typed thermostat action is dispatched once on release only when the
+tap ends in the control where it began, then the updated model is rerendered.
+Calibration failure is bounded and leaves the rendered thermostat available
+without enabling uncalibrated input.
+
 Do not power the screen or flash this firmware until the exact PiScreen
 revision, supply rail, backlight polarity/transistor stage, and unpowered
 continuity have been recorded. After flashing, verify the red/yellow/green/

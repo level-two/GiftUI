@@ -101,3 +101,23 @@ int ads7846_read_raw(struct ads7846_raw_sample *sample)
     }
     return read_channel(ADS7846_COMMAND_Z2, &sample->z2);
 }
+
+int ads7846_read_raw_values(uint16_t *x,
+                            uint16_t *y,
+                            uint16_t *z1,
+                            uint16_t *z2)
+{
+    if (x == NULL || y == NULL || z1 == NULL || z2 == NULL) {
+        return -EINVAL;
+    }
+    struct ads7846_raw_sample sample;
+    const int result = ads7846_read_raw(&sample);
+    if (result != 0) {
+        return result;
+    }
+    *x = sample.x;
+    *y = sample.y;
+    *z1 = sample.z1;
+    *z2 = sample.z2;
+    return 0;
+}

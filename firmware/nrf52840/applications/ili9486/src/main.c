@@ -35,10 +35,35 @@ void giftui_display_log(int32_t event, int32_t value)
     case 6:
         printk("GiftUI static render failed\n");
         break;
+    case 7:
+        printk("GiftUI ADS7846 read failed: %d\n", value);
+        break;
+    case 8:
+        printk("GiftUI ADS7846 touch calibration target %d\n", value);
+        break;
+    case 9:
+        printk("GiftUI ADS7846 calibration failed: %d\n", value);
+        break;
+    case 10:
+        printk("GiftUI ADS7846 calibration ready\n");
+        break;
+    case 11:
+        printk("GiftUI thermostat target changed to %d\n", value);
+        break;
     default:
         printk("GiftUI display event %d: %d\n", event, value);
         break;
     }
+}
+
+void giftui_touch_log_sample(int32_t target,
+                             uint16_t x,
+                             uint16_t y,
+                             uint16_t z1,
+                             uint16_t z2)
+{
+    printk("GiftUI ADS7846 target %d: x=%u y=%u z1=%u z2=%u\n",
+           target, x, y, z1, z2);
 }
 
 extern int32_t giftui_swift_display_application_run(void);
