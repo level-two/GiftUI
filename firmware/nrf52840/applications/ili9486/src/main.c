@@ -3,26 +3,40 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
 
-int32_t giftui_display_bringup_run(void)
+uint32_t giftui_display_uptime_ms(void)
 {
-    int result = ili9486_initialize();
+    return k_uptime_get_32();
+}
 
-    if (result != 0) {
-        printk("GiftUI ILI9486 initialization failed: %d\n", result);
-        return result;
-    }
+void giftui_display_sleep_ms(uint32_t milliseconds)
+{
+    k_msleep(milliseconds);
+}
 
-    const uint32_t started_at = k_uptime_get_32();
-    result = ili9486_render_color_bars();
-    if (result != 0) {
-        printk("GiftUI ILI9486 color bars failed: %d\n", result);
-        return result;
-    }
-    printk("GiftUI ILI9486 color bars transferred in %u ms\n",
-           k_uptime_get_32() - started_at);
-
-    while (true) {
-        k_sleep(K_FOREVER);
+void giftui_display_log(int32_t event, int32_t value)
+{
+    switch (event) {
+    case 1:
+        printk("GiftUI ILI9486 initialization failed: %d\n", value);
+        break;
+    case 2:
+        printk("GiftUI ILI9486 color bars failed: %d\n", value);
+        break;
+    case 3:
+        printk("GiftUI ILI9486 color bars transferred in %d ms\n", value);
+        break;
+    case 4:
+        printk("GiftUI thermostat transferred in %d ms\n", value);
+        break;
+    case 5:
+        printk("GiftUI ILI9486 tile transfer failed: %d\n", value);
+        break;
+    case 6:
+        printk("GiftUI static render failed\n");
+        break;
+    default:
+        printk("GiftUI display event %d: %d\n", event, value);
+        break;
     }
 }
 

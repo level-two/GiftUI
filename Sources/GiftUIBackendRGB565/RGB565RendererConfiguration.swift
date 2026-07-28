@@ -40,6 +40,46 @@ public struct RGB565RendererConfiguration: Equatable, Sendable {
         physicalWidth * tileHeight * Self.bytesPerPixel
     }
 
+    /// Allocation-free validation for Embedded clients that cannot materialize
+    /// an existential `Error` across a module boundary.
+    public init?(
+        validatingPhysicalWidth physicalWidth: Int,
+        physicalHeight: Int,
+        tileHeight: Int = Self.maximumTileHeight,
+        rotation: RGB565Rotation = .degrees0,
+        byteOrder: RGB565ByteOrder = .mostSignificantByteFirst
+    ) {
+        guard physicalWidth > 0,
+              physicalWidth <= Self.maximumPhysicalWidth,
+              physicalHeight > 0,
+              physicalHeight <= Self.maximumPhysicalHeight,
+              tileHeight > 0,
+              tileHeight <= Self.maximumTileHeight else {
+            return nil
+        }
+        self.init(
+            validatedPhysicalWidth: physicalWidth,
+            physicalHeight: physicalHeight,
+            tileHeight: tileHeight,
+            rotation: rotation,
+            byteOrder: byteOrder
+        )
+    }
+
+    private init(
+        validatedPhysicalWidth physicalWidth: Int,
+        physicalHeight: Int,
+        tileHeight: Int,
+        rotation: RGB565Rotation,
+        byteOrder: RGB565ByteOrder
+    ) {
+        self.physicalWidth = physicalWidth
+        self.physicalHeight = physicalHeight
+        self.tileHeight = tileHeight
+        self.rotation = rotation
+        self.byteOrder = byteOrder
+    }
+
     public init(
         physicalWidth: Int,
         physicalHeight: Int,
@@ -59,10 +99,12 @@ public struct RGB565RendererConfiguration: Equatable, Sendable {
               tileHeight <= Self.maximumTileHeight else {
             throw .invalidTileHeight(tileHeight)
         }
-        self.physicalWidth = physicalWidth
-        self.physicalHeight = physicalHeight
-        self.tileHeight = tileHeight
-        self.rotation = rotation
-        self.byteOrder = byteOrder
+        self.init(
+            validatedPhysicalWidth: physicalWidth,
+            physicalHeight: physicalHeight,
+            tileHeight: tileHeight,
+            rotation: rotation,
+            byteOrder: byteOrder
+        )
     }
 }

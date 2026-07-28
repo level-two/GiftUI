@@ -31,6 +31,13 @@ The backlight pin remains unconfigured in the tracked overlay. If the optional
 `backlight-gpios` property is added after hardware verification, the transport
 keeps it inactive through reset and enables it only after initialization.
 
+After the color-bar diagnostic, firmware waits two seconds and uses the real
+Embedded Swift `StaticRuntime`, portable thermostat view, built-in font, and
+`RGB565TileRenderer` to draw the thermostat. Each 480 × 16 tile is handed to
+the same checked C rectangular writer, so the firmware cannot construct or
+transfer a full-screen framebuffer. UART output reports the color-bar and
+thermostat transfer times separately.
+
 Do not power the screen or flash this firmware until the exact PiScreen
 revision, supply rail, backlight polarity/transistor stage, and unpowered
 continuity have been recorded. After flashing, verify the red/yellow/green/

@@ -9,6 +9,11 @@ public enum StaticRuntimeError: Error, Equatable, Sendable {
     case invalidViewTree
 }
 
+public enum StaticLayoutResult {
+    case success(StaticLayout)
+    case failure(StaticRuntimeError)
+}
+
 private enum StaticNodeKind {
     case group
     case text(TextRun)
@@ -181,6 +186,19 @@ public struct StaticRuntime: GiftUIRuntime {
     public typealias Profile = PortableRuntimeProfile
 
     public init() {}
+
+    /// Allocation-free result form for Embedded clients that cannot
+    /// materialize an existential `Error` across a module boundary.
+    public func layoutResult<Content: View>(
+        _ content: Content,
+        in surfaceSize: Size
+    ) -> StaticLayoutResult {
+        do {
+            return .success(try layout(content, in: surfaceSize))
+        } catch let error {
+            return .failure(error)
+        }
+    }
 
     public func layout<Content: View>(
         _ content: Content,

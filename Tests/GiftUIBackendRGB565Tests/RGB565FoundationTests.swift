@@ -46,6 +46,22 @@ func configurationBoundsTheOnlyPixelBuffer() throws {
     #expect(rotated.logicalSize == Size(width: 320, height: 480))
 }
 
+@Test
+func optionalConfigurationValidationAvoidsThrownErrors() {
+    let valid = RGB565RendererConfiguration(
+        validatingPhysicalWidth: 480,
+        physicalHeight: 320,
+        tileHeight: 16
+    )
+    let invalid = RGB565RendererConfiguration(
+        validatingPhysicalWidth: 481,
+        physicalHeight: 320
+    )
+
+    #expect(valid?.tileBufferByteCapacity == 15_360)
+    #expect(invalid == nil)
+}
+
 @Test(arguments: [
     (0, RGB565ConfigurationError.invalidPhysicalWidth(0)),
     (481, RGB565ConfigurationError.invalidPhysicalWidth(481)),

@@ -37,6 +37,19 @@ func staticRuntimeBuildsBoundedStackLayout() throws {
 }
 
 @Test
+func staticRuntimeProvidesAllocationFreeLayoutResult() {
+    switch StaticRuntime().layoutResult(
+        Text("Ready"),
+        in: Size(width: 80, height: 40)
+    ) {
+    case .success(let layout):
+        #expect(layout.nodeCount == 1)
+    case .failure:
+        Issue.record("expected a successful static layout")
+    }
+}
+
+@Test
 func staticRuntimeReportsNodeCapacityExhaustion() {
     #expect(throws: StaticRuntimeError.nodeCapacityExceeded(capacity: 64)) {
         _ = try StaticRuntime().layout(
