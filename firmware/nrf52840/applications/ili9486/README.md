@@ -11,6 +11,8 @@ header. The tracked Devicetree uses the Phase 5 signal assignment:
 | LCD CS | D10 | P1.12 |
 | LCD D/C | D9 | P1.11 |
 | LCD reset | D8 | P1.10 |
+| Touch CS | D7 | P1.08 |
+| Touch PENIRQ | D6 | P1.07 |
 
 Build without changing connected hardware:
 
@@ -26,6 +28,13 @@ bounded 60 × 16 tiles. The initialization profile deliberately uses only
 standard reset, pixel-format, memory-access, sleep-out, and display-on
 commands; controller-specific power and gamma values must come from the
 verified working PiScreen configuration.
+
+The tracked Phase 6 transport declares the ADS7846 as a second device on the
+same SPI controller. Its independent D7 chip select starts inactive, PENIRQ is
+an active-low input with a pull-up, and raw 12-bit X/Y/Z1/Z2 conversions run at
+no more than 2 MHz. Zephyr's synchronous SPI API serializes each touch or
+display transaction and applies the selected device's frequency and chip
+select; touch reads never run from GPIO interrupt context.
 
 The backlight pin remains unconfigured in the tracked overlay. If the optional
 `backlight-gpios` property is added after hardware verification, the transport

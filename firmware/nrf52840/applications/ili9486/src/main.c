@@ -1,3 +1,4 @@
+#include "ads7846.h"
 #include "ili9486.h"
 
 #include <zephyr/kernel.h>
@@ -44,5 +45,11 @@ extern int32_t giftui_swift_display_application_run(void);
 
 int main(void)
 {
+    const int touch_result = ads7846_initialize();
+    if (touch_result != 0) {
+        printk("GiftUI ADS7846 initialization failed: %d\n", touch_result);
+        return touch_result;
+    }
+
     return giftui_swift_display_application_run();
 }

@@ -10,7 +10,7 @@ set(CMAKE_Swift_COMPILATION_MODE wholemodule)
 set(CMAKE_Swift_COMPILER_WORKS TRUE CACHE BOOL "Embedded Swift cross-compiler" FORCE)
 project(GiftUIILI9486BringUp LANGUAGES C Swift)
 
-target_sources(app PRIVATE src/ili9486.c src/main.c src/stubs.c)
+target_sources(app PRIVATE src/ads7846.c src/ili9486.c src/main.c src/stubs.c)
 target_include_directories(app PRIVATE include)
 
 if(CONFIG_FP_HARDABI)
