@@ -6,8 +6,8 @@ systems, inspired by SwiftUI's source-level model.
 This repository contains the operable macOS simulator for PoC A. It includes
 generic view expansion, deterministic stack layout, runtime-owned `@State`,
 full-root invalidation, button hit testing, backend-independent display lists,
-an in-memory RGBA framebuffer, a compiled bitmap font, AppKit presentation,
-and the interactive thermostat example.
+an in-memory RGBA framebuffer, a bounded RGB565 tile renderer, a compiled
+bitmap font, AppKit presentation, and the interactive thermostat example.
 
 ## Requirements
 
@@ -201,6 +201,8 @@ Sources/
 ├── GiftUIDynamicConveniences/    # Opt-in String and callback APIs
 ├── GiftUIRuntimeDynamic/         # Replaceable dynamic PoC runtime
 ├── GiftUIBackendFramebuffer/     # Platform-neutral RGBA framebuffer
+├── GiftUIBackendRGB565/          # Bounded RGB565 scan-line/tile renderer
+├── GiftUIBuiltinFont/            # Shared allocation-free bitmap glyphs
 ├── GiftUISimulatorMac/           # AppKit/CoreGraphics presentation shell
 ├── GiftUIPlatformLinux/           # Linux loop and framebuffer presentation
 ├── GiftUIPlatformRaspberryPi/     # Raspberry Pi defaults/configuration
@@ -213,6 +215,7 @@ Tests/
 ├── GiftUIDynamicConveniencesTests/
 ├── GiftUIRuntimeDynamicTests/
 ├── GiftUIBackendFramebufferTests/
+├── GiftUIBackendRGB565Tests/
 ├── GiftUIIntegrationTests/
 ├── GiftUIPlatformLinuxTests/
 └── GiftUIPlatformRaspberryPiTests/

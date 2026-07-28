@@ -158,7 +158,12 @@ let package = Package(
         ),
         .testTarget(
             name: "GiftUIBackendRGB565Tests",
-            dependencies: ["GiftUIBackendRGB565"]
+            dependencies: [
+                "GiftUIBackendFramebuffer",
+                "GiftUIBackendRGB565",
+                "GiftUIExampleThermostatPortableView",
+                "GiftUIRuntimeStatic",
+            ]
         ),
         .testTarget(
             name: "GiftUIIntegrationTests",

@@ -13,7 +13,7 @@ usage() {
 Usage: scripts/nrf52840/compile-layer.sh [options]
 
 Options:
-  --layer NAME  Compile through NAME. Supported: giftui, runtime.
+  --layer NAME  Compile through NAME. Supported: giftui, runtime, backend.
   -h, --help    Show this help.
 USAGE
 }
@@ -31,7 +31,7 @@ while [[ $# -gt 0 ]]; do
     shift
 done
 
-[[ "${layer}" == "giftui" || "${layer}" == "runtime" ]] ||
+[[ "${layer}" == "giftui" || "${layer}" == "runtime" || "${layer}" == "backend" ]] ||
     giftui_nrf_error "unsupported layer: ${layer}"
 
 giftui_nrf_export_environment
@@ -140,3 +140,58 @@ giftui_nrf_note "compiling portable thermostat fixture for ${GIFTUI_NRF_SWIFT_TA
 
 printf 'MODULE=%s\n' "${fixture_output_dir}/GiftUIExampleThermostatPortableView.swiftmodule"
 printf 'OBJECT=%s\n' "${fixture_output_dir}/GiftUIExampleThermostatPortableView.o"
+
+if [[ "${layer}" == "runtime" ]]; then
+    exit 0
+fi
+
+font_output_dir="${GIFTUI_NRF_BUILD_ROOT}/layers/builtin-font"
+mkdir -p "${font_output_dir}"
+
+giftui_nrf_note "compiling GiftUIBuiltinFont for ${GIFTUI_NRF_SWIFT_TARGET}"
+"${GIFTUI_NRF_SWIFTC}" \
+    -parse-as-library \
+    -Osize \
+    -whole-module-optimization \
+    -enable-experimental-feature Embedded \
+    -target "${GIFTUI_NRF_SWIFT_TARGET}" \
+    -package-name GiftUI \
+    -module-name GiftUIBuiltinFont \
+    -module-cache-path "${GIFTUI_NRF_CLANG_MODULE_CACHE}" \
+    -emit-module \
+    -emit-module-path "${font_output_dir}/GiftUIBuiltinFont.swiftmodule" \
+    -c \
+    -o "${font_output_dir}/GiftUIBuiltinFont.o" \
+    Sources/GiftUIBuiltinFont/BuiltinFont8x12.swift \
+    Sources/GiftUIBuiltinFont/GiftUIBuiltinFont.swift
+
+printf 'MODULE=%s\n' "${font_output_dir}/GiftUIBuiltinFont.swiftmodule"
+printf 'OBJECT=%s\n' "${font_output_dir}/GiftUIBuiltinFont.o"
+
+backend_output_dir="${GIFTUI_NRF_BUILD_ROOT}/layers/rgb565"
+mkdir -p "${backend_output_dir}"
+
+giftui_nrf_note "compiling GiftUIBackendRGB565 for ${GIFTUI_NRF_SWIFT_TARGET}"
+"${GIFTUI_NRF_SWIFTC}" \
+    -parse-as-library \
+    -Osize \
+    -whole-module-optimization \
+    -enable-experimental-feature Embedded \
+    -target "${GIFTUI_NRF_SWIFT_TARGET}" \
+    -package-name GiftUI \
+    -module-name GiftUIBackendRGB565 \
+    -module-cache-path "${GIFTUI_NRF_CLANG_MODULE_CACHE}" \
+    -I "${output_dir}" \
+    -I "${font_output_dir}" \
+    -emit-module \
+    -emit-module-path "${backend_output_dir}/GiftUIBackendRGB565.swiftmodule" \
+    -c \
+    -o "${backend_output_dir}/GiftUIBackendRGB565.o" \
+    Sources/GiftUIBackendRGB565/GiftUIBackendRGB565.swift \
+    Sources/GiftUIBackendRGB565/RGB565Pixel.swift \
+    Sources/GiftUIBackendRGB565/RGB565RendererConfiguration.swift \
+    Sources/GiftUIBackendRGB565/RGB565TileRenderer.swift \
+    Sources/GiftUIBackendRGB565/RGB565TileStorage.swift
+
+printf 'MODULE=%s\n' "${backend_output_dir}/GiftUIBackendRGB565.swiftmodule"
+printf 'OBJECT=%s\n' "${backend_output_dir}/GiftUIBackendRGB565.o"

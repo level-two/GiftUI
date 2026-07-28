@@ -581,6 +581,9 @@ heap use is disabled or instrumented as zero after initialization.
 
 ### Phase 4 — RGB565 backend on the host
 
+**Status:** Complete on the host. The renderer also passes the Embedded Swift
+module-compilation gate; hardware transport integration remains Phase 5.
+
 1. Implement scan-line/tile rasterization.
 2. Add RGBA-to-RGB565 equivalence/golden tests where applicable.
 3. Test clipping, rotation, byte order, and odd rectangle dimensions.

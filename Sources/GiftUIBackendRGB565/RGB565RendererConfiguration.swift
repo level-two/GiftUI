@@ -1,6 +1,6 @@
 import GiftUI
 
-public enum RGB565Rotation: Int, CaseIterable, Sendable {
+public enum RGB565Rotation: Int, Sendable {
     case degrees0 = 0
     case degrees90 = 90
     case degrees180 = 180

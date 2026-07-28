@@ -82,3 +82,19 @@ display-list allocation, propagates sink capacity failures, and produces the
 same ordered operations as the dynamic runtime for the portable thermostat.
 The conformance suite also rebuilds the portable thermostat from a typed
 static slot after mutation and checks both runtimes again.
+
+## RGB565 backend layer
+
+**Status:** Compiles in regular and Embedded Swift.
+
+`GiftUIBackendRGB565` rasterizes directly into reusable physical row tiles.
+The fixed maximum is 480 × 16 × 2 bytes (15,360 bytes), while host builds
+allocate only the configured width and tile height. Logical drawing is clipped
+to the active physical tile before pixel writes and supports 0°, 90°, 180°,
+and 270° rotation plus explicit most- or least-significant-byte-first output.
+
+The shared `GiftUIBuiltinFont` target stores glyph rows without arrays,
+dictionaries, or runtime strings. Host integration tests replay the static
+thermostat into 480 × 320 RGB565 tiles, compare every pixel with the quantized
+RGBA renderer, pin a deterministic golden hash, and assert that no presented
+or allocated tile exceeds 15,360 bytes.
