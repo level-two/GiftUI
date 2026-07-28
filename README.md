@@ -276,6 +276,9 @@ separate portable/static and dynamic profiles is in
 The proposed Embedded Swift/Zephyr port for the Nordic nRF52840-DK and an
 ILI9486/ADS7846 PiScreen is specified separately in
 [`docs/GiftUI_nRF52840_DK_Platform_Spec.md`](docs/GiftUI_nRF52840_DK_Platform_Spec.md).
+Planned support for the separate KMRTM24024-SPI/ILI9341 240 × 320 target,
+including optional GRAM readback and advanced rendering work, is specified in
+[`docs/GiftUI_KMRTM24024_SPI_nRF52840_Spec.md`](docs/GiftUI_KMRTM24024_SPI_nRF52840_Spec.md).
 
 ## PoC runtime constraints
 

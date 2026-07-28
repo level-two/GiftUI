@@ -728,4 +728,5 @@ not by relying on controller-family similarity.
 - [Zephyr XPT2046 binding](https://docs.zephyrproject.org/latest/build/dts/api/bindings/input/xptek%2Cxpt2046.html)
 - [Community ILI9486/ADS7846 PiScreen overlay used as a pinout baseline](https://gist.github.com/alexryndin/4fc940ae344751d7f34a2394d24b51ca)
 - [`GiftUI_Framework_Spec.md`](GiftUI_Framework_Spec.md)
+- [`GiftUI_KMRTM24024_SPI_nRF52840_Spec.md`](GiftUI_KMRTM24024_SPI_nRF52840_Spec.md)
 - [`GiftUI_Raspberry_Pi_Platform.md`](GiftUI_Raspberry_Pi_Platform.md)
