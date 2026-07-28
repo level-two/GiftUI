@@ -1,3 +1,5 @@
+import GiftUI
+
 public struct HitTestMap: Equatable, Sendable {
     public private(set) var regions: [HitRegion]
 

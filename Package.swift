@@ -136,6 +136,7 @@ let package = Package(
             dependencies: [
                 "GiftUI",
                 "GiftUIDynamicConveniences",
+                "GiftUIRuntimeDynamic",
             ]
         ),
         .testTarget(

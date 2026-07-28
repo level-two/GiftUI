@@ -1,3 +1,5 @@
+import GiftUI
+
 public struct LayoutNode: Equatable, Sendable {
     public var frame: Rect
     public var children: [LayoutNode]

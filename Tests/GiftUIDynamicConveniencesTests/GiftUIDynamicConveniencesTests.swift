@@ -1,5 +1,6 @@
 import GiftUI
 import GiftUIDynamicConveniences
+import GiftUIRuntimeDynamic
 import Testing
 
 @Test

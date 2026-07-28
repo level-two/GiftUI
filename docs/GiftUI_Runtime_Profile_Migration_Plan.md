@@ -125,6 +125,12 @@ sink, while heap-backed text and the array-backed `DisplayList` live in the
 dynamic convenience/runtime targets. Static and dynamic thermostat render
 operation order is checked by the host conformance suite.
 
+The retained class/array graph, array-backed layout snapshot, string-path
+builder, and callback dictionary have moved to `GiftUIRuntimeDynamic`.
+`GiftUI` no longer exposes those types, and its host tests now exercise only
+the portable declaration/render contract. Bounded structural state identity
+remains part of the state-layer work.
+
 ### Stage D — provide portable state and text
 
 - Replace the core `@State` class box/task-local dependency with an explicit

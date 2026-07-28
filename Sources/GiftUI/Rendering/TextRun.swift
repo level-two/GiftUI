@@ -1,29 +1,10 @@
 public struct TextRun: Equatable, Sendable {
-    package enum Storage: Equatable, Sendable {
+    package enum Storage: Sendable {
         case staticString(StaticString)
         case boundedInteger(Int, suffix: StaticString)
         #if !hasFeature(Embedded)
         case dynamicString(String)
         #endif
-
-        package static func == (lhs: Self, rhs: Self) -> Bool {
-            switch (lhs, rhs) {
-            case (.staticString(let lhs), .staticString(let rhs)):
-                return TextRun.staticStringsEqual(lhs, rhs)
-            case (
-                .boundedInteger(let lhsValue, let lhsSuffix),
-                .boundedInteger(let rhsValue, let rhsSuffix)
-            ):
-                return lhsValue == rhsValue
-                    && TextRun.staticStringsEqual(lhsSuffix, rhsSuffix)
-            #if !hasFeature(Embedded)
-            case (.dynamicString(let lhs), .dynamicString(let rhs)):
-                return lhs == rhs
-            #endif
-            default:
-                return false
-            }
-        }
     }
 
     package let storage: Storage
@@ -60,6 +41,26 @@ public struct TextRun: Equatable, Sendable {
         }
     }
     #endif
+
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        guard lhs.color == rhs.color else { return false }
+        #if hasFeature(Embedded)
+        switch (lhs.storage, rhs.storage) {
+        case (.staticString(let lhs), .staticString(let rhs)):
+            return Self.staticStringsEqual(lhs, rhs)
+        case (
+            .boundedInteger(let lhsValue, let lhsSuffix),
+            .boundedInteger(let rhsValue, let rhsSuffix)
+        ):
+            return lhsValue == rhsValue
+                && Self.staticStringsEqual(lhsSuffix, rhsSuffix)
+        default:
+            return false
+        }
+        #else
+        return lhs.content == rhs.content
+        #endif
+    }
 
     package var glyphCount: Int {
         switch storage {

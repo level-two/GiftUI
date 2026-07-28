@@ -1,3 +1,5 @@
+import GiftUI
+
 package enum ViewNodeKind {
     case group
     case text(TextRun)

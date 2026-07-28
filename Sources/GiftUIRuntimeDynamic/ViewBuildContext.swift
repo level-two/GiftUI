@@ -1,3 +1,5 @@
+import GiftUI
+
 public struct ViewBuildContext {
     package private(set) var path: String
     package let stateStorage: (any StateStorage)?

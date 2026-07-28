@@ -30,8 +30,6 @@ callback storage used by `GiftUIDynamicConveniences`.
 Not yet admitted to this layer:
 
 - class/task-local `@State` binding and string structural keys;
-- the retained `ViewNode` graph and public array-backed `LayoutNode` snapshot;
-- array/dictionary interaction snapshots;
 - rendering backends.
 
 Portable render text retains `StaticString` labels or bounded integer/suffix
@@ -39,10 +37,10 @@ values and can emit UTF-8 code units without constructing a `String`.
 Heap-backed render text and the array-backed `DisplayList` are available only
 through dynamic targets.
 
-The retained graph, dynamic state, and interaction storage are inputs to the
-dynamic runtime migration. Bounded replacements belong to
-`GiftUIRuntimeStatic`. Rendering backends remain separate target-specific
-layers.
+The retained `ViewNode` graph, public array-backed `LayoutNode` snapshot,
+string-path build context, and array/dictionary interaction snapshot now live
+in `GiftUIRuntimeDynamic`. `GiftUIRuntimeStatic` provides their bounded
+replacements. Rendering backends remain separate target-specific layers.
 
 ## Static runtime layer
 
