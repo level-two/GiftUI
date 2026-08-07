@@ -9,11 +9,13 @@ with the display at a separate 2 MHz SPI configuration. D7/P1.08 is its
 active-low chip select and D6/P1.07 is its active-low PENIRQ input. Firmware
 enables the nRF52840 GPIO pull-up on PENIRQ, polls it every 10 ms outside ISR
 context, and powers the XPT2046 down between conversions so PENIRQ remains
-available.
+available. The KMRTM profile accepts Z1 values from 50 and a bounded integer
+resistance proxy up to 30,000, based on connected-board XPT2046 measurements;
+the portable ADS7846/PiScreen defaults remain unchanged.
 
 At boot the application displays five calibration targets in top-left,
 top-right, bottom-left, bottom-right, and center order. Each target has a
-15-second timeout. Hold the target until a raw X/Y/Z1/Z2 sample is logged over
+30-second timeout. Hold the target until a raw X/Y/Z1/Z2 sample is logged over
 the 115200-baud UART, then fully release before pressing the next target. After
 calibration, completed taps dispatch through GiftUI's static hit regions and
 rerender only the changed thermostat region. A touch initialization or

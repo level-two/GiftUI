@@ -72,9 +72,13 @@ private func xpt2046ReadRawValues(
 
 private let calibrationTargetInset = 16
 private let calibrationTargetSize = 16
-private let calibrationPointTimeoutMilliseconds: UInt32 = 15_000
+private let calibrationPointTimeoutMilliseconds: UInt32 = 30_000
 private let releaseTimeoutMilliseconds: UInt32 = 5_000
 private let touchPollMilliseconds: UInt32 = 10
+private let touchPressureThreshold = XPT2046PressureThreshold(
+    minimumZ1: 50,
+    maximumResistance: 30_000
+)
 
 private struct ZephyrILI9341Transport: ILI9341DisplayTransport {
     mutating func initialize(
@@ -215,7 +219,8 @@ public func giftuiSwiftDisplayApplicationRun() -> Int32 {
             width: displayConfiguration.logicalSize.width,
             height: displayConfiguration.logicalSize.height
         ),
-        orientation: .degrees0
+        orientation: .degrees0,
+        pressureThreshold: touchPressureThreshold
     )
     var pressedAction: ActionID?
 
@@ -398,10 +403,9 @@ private func captureCalibrationPoint(
             )
             loggedFirstSample = true
         }
-        let threshold = XPT2046PressureThreshold()
-        guard threshold.accepts(first),
-              threshold.accepts(second),
-              threshold.accepts(third) else {
+        guard touchPressureThreshold.accepts(first),
+              touchPressureThreshold.accepts(second),
+              touchPressureThreshold.accepts(third) else {
             giftuiDisplaySleep(milliseconds: touchPollMilliseconds)
             continue
         }
