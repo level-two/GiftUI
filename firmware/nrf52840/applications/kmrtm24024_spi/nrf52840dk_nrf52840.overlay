@@ -2,6 +2,10 @@
 #include <zephyr/dt-bindings/gpio/arduino-header-r3.h>
 
 / {
+	aliases {
+		giftui-xpt2046 = &giftui_xpt2046;
+	};
+
 	chosen {
 		zephyr,display = &kmrtm_ili9341;
 	};
@@ -29,5 +33,13 @@
 
 &arduino_spi {
 	status = "okay";
-	cs-gpios = <&arduino_header ARDUINO_HEADER_R3_D10 GPIO_ACTIVE_LOW>;
+	cs-gpios = <&arduino_header ARDUINO_HEADER_R3_D10 GPIO_ACTIVE_LOW>,
+		     <&arduino_header ARDUINO_HEADER_R3_D7 GPIO_ACTIVE_LOW>;
+
+	giftui_xpt2046: touch@1 {
+		compatible = "giftui,xpt2046";
+		reg = <1>;
+		spi-max-frequency = <2000000>;
+		penirq-gpios = <&arduino_header ARDUINO_HEADER_R3_D6 GPIO_ACTIVE_LOW>;
+	};
 };

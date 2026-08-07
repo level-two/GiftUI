@@ -14,6 +14,7 @@ target_sources(app PRIVATE
     src/display.c
     src/heap_disabled.c
     src/main.c
+    src/xpt2046.c
 )
 target_include_directories(app PRIVATE include)
 
@@ -126,6 +127,15 @@ add_library(giftui_rgb565 OBJECT
 giftui_configure_swift_target(giftui_rgb565 GiftUIBackendRGB565)
 target_link_libraries(giftui_rgb565 PRIVATE giftui_core giftui_builtin_font)
 
+add_library(giftui_ads7846_input OBJECT
+    ${giftui_root}/Sources/GiftUIInputADS7846/GiftUIInputADS7846.swift
+    ${giftui_root}/Sources/GiftUIInputADS7846/ADS7846RawSample.swift
+    ${giftui_root}/Sources/GiftUIInputADS7846/ADS7846Calibration.swift
+    ${giftui_root}/Sources/GiftUIInputADS7846/ADS7846TouchProcessor.swift
+)
+giftui_configure_swift_target(giftui_ads7846_input GiftUIInputADS7846)
+target_link_libraries(giftui_ads7846_input PRIVATE giftui_core)
+
 add_library(giftui_ili9341_display OBJECT
     ${giftui_root}/Sources/GiftUIDisplayILI9341/GiftUIDisplayILI9341.swift
     ${giftui_root}/Sources/GiftUIDisplayILI9341/ILI9341Display.swift
@@ -148,6 +158,7 @@ target_link_libraries(giftui_thermostat_view PRIVATE giftui_core)
 add_library(app_swift OBJECT src/KMRTM24024SPIApplication.swift)
 giftui_configure_swift_target(app_swift GiftUIKMRTM24024SPIApplication)
 target_link_libraries(app_swift PRIVATE
+    giftui_ads7846_input
     giftui_core
     giftui_ili9341_display
     giftui_rgb565
@@ -157,6 +168,7 @@ target_link_libraries(app_swift PRIVATE
 
 target_link_libraries(app PRIVATE
     app_swift
+    giftui_ads7846_input
     giftui_builtin_font
     giftui_core
     giftui_ili9341_display
