@@ -1,0 +1,4 @@
+interface:
+  display_name: "Implementation Planner"
+  short_description: "Plan work from an approved GiftUI Spec"
+  default_prompt: "Use $implementation-planner to turn this approved GiftUI Specification into ordered implementation tasks."

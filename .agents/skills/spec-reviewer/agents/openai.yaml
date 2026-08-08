@@ -1,0 +1,4 @@
+interface:
+  display_name: "Specification Reviewer"
+  short_description: "Check GiftUI Specs for contract quality"
+  default_prompt: "Use $spec-reviewer to review this GiftUI Specification for completeness and ADR conformance."

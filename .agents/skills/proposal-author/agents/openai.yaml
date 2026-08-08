@@ -1,0 +1,4 @@
+interface:
+  display_name: "Proposal Author"
+  short_description: "Draft problem-focused GiftUI Proposals"
+  default_prompt: "Use $proposal-author to draft a GiftUI Proposal from this problem statement."

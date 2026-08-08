@@ -1,0 +1,4 @@
+interface:
+  display_name: "Specification Author"
+  short_description: "Turn accepted decisions into precise contracts"
+  default_prompt: "Use $spec-author to draft a GiftUI Specification from these accepted ADRs."

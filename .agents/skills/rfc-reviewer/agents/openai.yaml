@@ -1,0 +1,4 @@
+interface:
+  display_name: "RFC Reviewer"
+  short_description: "Challenge GiftUI RFC architecture and trade-offs"
+  default_prompt: "Use $rfc-reviewer to review this GiftUI RFC and separate blockers from suggestions."

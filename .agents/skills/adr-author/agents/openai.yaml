@@ -1,0 +1,4 @@
+interface:
+  display_name: "ADR Author"
+  short_description: "Extract agreed GiftUI architecture decisions"
+  default_prompt: "Use $adr-author to extract an ADR from this approved GiftUI RFC."

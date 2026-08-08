@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lifecycle Reviewer"
+  short_description: "Audit feature gates, authority, and traceability"
+  default_prompt: "Use $lifecycle-reviewer to audit this GiftUI feature lifecycle for consistency."

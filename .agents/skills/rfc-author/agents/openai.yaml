@@ -1,0 +1,4 @@
+interface:
+  display_name: "RFC Author"
+  short_description: "Explore GiftUI architecture from a Proposal"
+  default_prompt: "Use $rfc-author to draft an RFC for this accepted GiftUI Proposal."

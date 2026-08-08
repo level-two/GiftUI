@@ -1,0 +1,4 @@
+interface:
+  display_name: "Feature Triage"
+  short_description: "Find feature state and the next lifecycle gate"
+  default_prompt: "Use $feature-triage to determine a GiftUI feature lifecycle stage and next artifact."
