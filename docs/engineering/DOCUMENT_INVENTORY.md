@@ -58,11 +58,11 @@ asserting approval:
 Relationships that require architectural interpretation or approval remain
 unknown until lifecycle artifacts are drafted and reviewed.
 
-## Migration recommendation
+## Migration status
 
-Preserve every legacy document in place. Introduce canonical directories and
-IDs alongside them, link new artifacts back to their source material, and use
-conservative statuses. Pilot `layout-system` because its problem, existing
-behavior, implementation surface, and tests are identifiable, while the broad
-post-PoC design still contains choices that must remain open. The pilot can
-exercise every artifact type without claiming that legacy prose was approved.
+Migration is explicitly deferred. This bootstrap installs process
+infrastructure only: it does not create lifecycle artifacts for any existing
+feature, assign legacy documents to the feature manifest, or conduct the
+recommended pilot. When maintainers authorize migration later, preserve every
+legacy document in place, introduce IDs alongside the sources, retain
+conservative statuses, and link new artifacts back to their provenance.
