@@ -10,6 +10,23 @@
 - Do not run the Swift.org installer, install the ARMv6 SDK under `/opt`, or
   mutate Xcode/global Swift selection.
 
+## Engineering governance
+
+Before major feature design or implementation:
+
+1. Read `docs/engineering/FEATURE_LIFECYCLE.md` and
+   `docs/engineering/AI_AGENT_RULES.md`.
+2. Inspect `docs/features.yaml` and determine the feature's lifecycle stage.
+3. Locate authoritative accepted ADRs and approved Specifications.
+4. Treat draft, proposed, review, legacy, rejected, deprecated, and superseded
+   documents as non-authoritative.
+
+Do not infer human approval or change accepted architecture implicitly.
+Preserve lifecycle traceability and update `docs/features.yaml` plus affected
+cross-references when creating or superseding artifacts. Use the role-specific
+skills under `.agents/skills/` for triage, authoring, review, and implementation
+planning; detailed process rules belong there and under `docs/engineering/`.
+
 ## Raspberry Pi skills
 
 - Use `skills/giftui-pi-toolchain/SKILL.md` for toolchain setup, environment
