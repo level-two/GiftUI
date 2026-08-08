@@ -1,0 +1,8 @@
+# Machine-readable navigation index for governed GiftUI features.
+#
+# This manifest intentionally starts empty. Existing feature and system
+# documents have not been migrated into the lifecycle. Add an entry only with
+# an authorized lifecycle artifact change, following
+# docs/engineering/DOCUMENTATION_RULES.md.
+schema_version: 1
+features: {}
