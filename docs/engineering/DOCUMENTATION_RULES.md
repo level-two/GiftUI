@@ -163,6 +163,37 @@ The metadata status and the human-readable content MUST agree. Update
 - Cross-feature dependencies MUST be explicit in the manifest or document
   metadata.
 
+## Feature manifest schema
+
+`docs/features.yaml` has a numeric `schema_version` and a `features` mapping.
+Each feature key is an immutable lowercase kebab-case identifier. A populated
+entry has this navigation-only shape:
+
+```yaml
+feature-id:
+  title: Human-readable Feature Title
+  status: proposal
+  proposal:
+    - PROPOSAL-001
+  rfcs: []
+  adrs: []
+  specs: []
+  dependencies: []
+  milestone: MVP
+```
+
+Required entry fields are `title`, `status`, `proposal`, `rfcs`, `adrs`,
+`specs`, `dependencies`, and `milestone`. Allowed feature statuses are
+`proposal`, `rfc`, `decision`, `specification`, `implementation`,
+`conformance`, `implemented`, and `deferred`. Status summarizes the furthest
+valid lifecycle stage; it does not grant artifact approval. Artifact lists use
+IDs, dependencies use feature keys, and `milestone` may be `null`.
+
+The manifest remains empty until feature registration or migration is
+authorized. Comments may explain repository-wide state, but feature entries
+MUST NOT contain design summaries, decisions, contracts, or open-question
+prose.
+
 ## Normative language
 
 Use `MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, and `MAY` for contractual
