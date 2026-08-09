@@ -25,8 +25,9 @@
   implementation plan, or conformance record stored in the repository.
 
 **Authoritative**
-: Normative for downstream work. Project principles, accepted ADRs, and
-  approved Specifications are authoritative at their respective levels.
+: Normative for downstream work. Project vision/principles, established
+  product scope, accepted ADRs, and approved Specifications are authoritative
+  at their respective levels.
 
 **Capability**
 : An explicit representation of behavior or resources available from a
@@ -77,6 +78,11 @@
 **Major feature work**
 : Work that creates durable public, cross-module, ownership, capability,
   backend, runtime-profile, performance, resource, or compatibility choices.
+
+**MVP scope**
+: The established product boundary in `docs/MVP_SCOPE.md`. It governs what is
+  necessary for the MVP and how MVP completion is judged, but does not select
+  architecture or replace lifecycle approvals.
 
 **Normative**
 : Contractual language defining required behavior, normally expressed with

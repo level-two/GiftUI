@@ -21,6 +21,8 @@ architecture and contract.
 Read canonical governance rules, `docs/features.yaml`, the approved Spec and
 all linked accepted ADRs, approved RFC, Proposal, architecture docs, relevant
 source/tests, and applicable platform/toolchain skills.
+For MVP work, read `docs/MVP_SCOPE.md` and keep task scope traceable to the
+reference application and required stack validation.
 
 ## Allowed Decisions
 

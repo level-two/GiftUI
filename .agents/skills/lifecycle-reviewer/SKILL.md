@@ -19,7 +19,8 @@ feature chain.
 
 Read all files under `docs/engineering/` relevant to governance,
 `docs/features.yaml`, every artifact linked to the feature, affected accepted
-architecture, the proposed changes, and applicable evidence.
+architecture, `docs/MVP_SCOPE.md`, the proposed changes, and applicable
+evidence.
 
 ## Allowed Decisions
 

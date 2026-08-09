@@ -20,6 +20,8 @@ not a hidden design forum.
 Read canonical governance rules, `docs/features.yaml`, the Specification,
 accepted Proposal, approved RFC, all related ADRs and Specs, affected
 architecture docs, and relevant code/tests for feasibility evidence.
+For MVP work, read `docs/MVP_SCOPE.md` and identify contract scope that lacks a
+reference-application or stack-validation requirement.
 
 ## Allowed Decisions
 

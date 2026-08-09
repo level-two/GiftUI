@@ -31,7 +31,8 @@ Describe the current problem without prescribing architecture.
 
 ## Motivation
 
-Explain why GiftUI should address it now.
+Explain why GiftUI should address it now. For MVP work, identify the concrete
+reference-application or stack-validation requirement from `MVP_SCOPE.md`.
 
 ## Users / Use Cases
 
@@ -70,4 +71,5 @@ class design.
 
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
+- [GiftUI MVP Scope](../MVP_SCOPE.md)
 - Relevant legacy source or evidence, if any.

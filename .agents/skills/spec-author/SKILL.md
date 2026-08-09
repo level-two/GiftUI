@@ -20,7 +20,8 @@ changing architecture.
 Read canonical governance rules, `docs/features.yaml`,
 `docs/templates/spec.md`, every upstream lifecycle artifact, related approved
 Specifications, affected architecture docs, vision/principles, code and tests
-needed to make the contract realistic.
+needed to make the contract realistic. For MVP work, read `docs/MVP_SCOPE.md`
+and exclude speculative implementation outside its boundary.
 
 ## Allowed Decisions
 

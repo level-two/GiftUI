@@ -20,7 +20,7 @@ who benefits, desired outcomes, and explicit boundaries.
 
 Read `docs/engineering/FEATURE_LIFECYCLE.md`,
 `docs/engineering/DOCUMENTATION_RULES.md`, `docs/features.yaml`,
-`docs/VISION.md`, `docs/PRINCIPLES.md`, and
+`docs/VISION.md`, `docs/PRINCIPLES.md`, `docs/MVP_SCOPE.md`, and
 `docs/templates/proposal.md`. Read related legacy sources only as provenance.
 
 ## Allowed Decisions
@@ -53,6 +53,8 @@ the explicit human acceptance gate.
 
 - [ ] The problem and beneficiaries are clear.
 - [ ] Value and timing are supported by evidence.
+- [ ] MVP work traces to a concrete scope requirement; otherwise it is marked
+  post-MVP.
 - [ ] Goals, non-goals, constraints, and scope agree.
 - [ ] Success criteria are measurable.
 - [ ] Detailed architecture has not leaked in.

@@ -21,6 +21,8 @@ Read the canonical lifecycle, documentation, and AI rules under
 `docs/engineering/`; `docs/features.yaml`; the accepted Proposal;
 `docs/templates/rfc.md`; applicable accepted ADRs, approved Specifications,
 architecture documents, project vision/principles, and relevant legacy sources.
+For MVP work, also read `docs/MVP_SCOPE.md` and preserve its implementation
+boundary without treating it as an architectural decision.
 
 ## Allowed Decisions
 

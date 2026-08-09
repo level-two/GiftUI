@@ -16,9 +16,11 @@ Before major feature design or implementation:
 
 1. Read `docs/engineering/FEATURE_LIFECYCLE.md` and
    `docs/engineering/AI_AGENT_RULES.md`.
-2. Inspect `docs/features.yaml` and determine the feature's lifecycle stage.
-3. Locate authoritative accepted ADRs and approved Specifications.
-4. Treat draft, proposed, review, legacy, rejected, deprecated, and superseded
+2. Read `docs/MVP_SCOPE.md` and identify the reference-application or stack
+   validation requirement that makes the work necessary now.
+3. Inspect `docs/features.yaml` and determine the feature's lifecycle stage.
+4. Locate authoritative accepted ADRs and approved Specifications.
+5. Treat draft, proposed, review, legacy, rejected, deprecated, and superseded
    documents as non-authoritative.
 
 Do not infer human approval or change accepted architecture implicitly.

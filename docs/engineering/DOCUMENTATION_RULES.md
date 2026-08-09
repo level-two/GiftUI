@@ -54,7 +54,8 @@ architectural questions go back through RFC/ADR work.
 ## Authority and precedence
 
 ```text
-Project vision, principles, and established architecture
+Project vision, principles, established product scope,
+and established architecture
                          ↓
                  Accepted ADRs
                          ↓
@@ -65,6 +66,12 @@ Project vision, principles, and established architecture
 
 Proposal and RFC documents remain important context but are not implementation
 contracts.
+
+`docs/MVP_SCOPE.md` is the established product boundary for MVP prioritization,
+validation configurations, and exit decisions. MVP work MUST trace to a
+reference-application or stack-validation requirement from that scope. The
+scope determines whether work belongs in the MVP; it does not select an
+architecture, approve a lifecycle artifact, or authorize implementation.
 
 1. An accepted ADR overrides conflicting RFC text.
 2. An approved Specification MUST conform to accepted ADRs.
@@ -215,6 +222,10 @@ RFC decides → ADR records → architecture documentation explains
 
 Roadmaps answer when and in what order. They SHOULD reference feature IDs and
 MUST NOT duplicate lifecycle contracts.
+
+Project scope documents answer what product outcome and validation boundary a
+milestone must satisfy. They constrain Proposals, RFCs, ADRs, Specifications,
+roadmaps, and implementation plans without replacing their distinct roles.
 
 ## Legacy and historical documents
 

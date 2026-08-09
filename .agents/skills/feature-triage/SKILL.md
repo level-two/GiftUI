@@ -20,14 +20,16 @@ feature.
 1. `docs/engineering/FEATURE_LIFECYCLE.md`
 2. `docs/engineering/DOCUMENTATION_RULES.md`
 3. `docs/engineering/AI_AGENT_RULES.md`
-4. `docs/features.yaml`
-5. Linked lifecycle artifacts, then `docs/VISION.md`, `docs/PRINCIPLES.md`, and
-   affected architecture documents as needed.
+4. `docs/MVP_SCOPE.md`, `docs/VISION.md`, and `docs/PRINCIPLES.md`
+5. `docs/features.yaml`
+6. Linked lifecycle artifacts and affected architecture documents as needed.
 
 ## Allowed Decisions
 
 - Decide whether work is major or eligible for the lightweight path.
 - Determine the evidenced lifecycle stage and missing gates.
+- Determine whether MVP inclusion traces to the reference application or a
+  required stack validation.
 - Recommend the next artifact or review role.
 
 ## Forbidden Decisions
@@ -46,14 +48,15 @@ feature.
 
 ## Required Output
 
-Report the feature ID or `unregistered`, current stage, authoritative
-artifacts, non-authoritative context, missing prerequisites, conflicts, next
-artifact/role, and approvals needed.
+Report the feature ID or `unregistered`, current stage, MVP justification or
+post-MVP classification, authoritative artifacts, non-authoritative context,
+missing prerequisites, conflicts, next artifact/role, and approvals needed.
 
 ## Review Checklist
 
 - [ ] Manifest and linked artifacts were inspected.
 - [ ] Status was evidenced, not inferred.
+- [ ] MVP necessity traces to concrete scope, or post-MVP status is explicit.
 - [ ] Major versus lightweight routing is justified.
 - [ ] Missing or conflicting information is explicit.
 - [ ] No architecture was designed.

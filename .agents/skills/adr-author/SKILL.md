@@ -19,6 +19,8 @@ Extract an agreed decision; do not create a new one.
 Read the lifecycle/documentation rules, `docs/features.yaml`,
 `docs/templates/adr.md`, the accepted Proposal, approved RFC, related ADRs,
 project principles, and affected architecture documents.
+For MVP decisions, read `docs/MVP_SCOPE.md` to verify product-boundary
+alignment without deriving the decision from scope alone.
 
 ## Allowed Decisions
 

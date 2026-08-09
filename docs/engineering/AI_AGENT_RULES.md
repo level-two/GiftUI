@@ -10,12 +10,14 @@ Before drafting or implementing major feature work:
 
 1. read [Feature Lifecycle](FEATURE_LIFECYCLE.md) and
    [Documentation Rules](DOCUMENTATION_RULES.md);
-2. inspect [the feature manifest](../features.yaml);
-3. locate the feature's linked Proposal, RFCs, accepted ADRs, approved
+2. read [GiftUI MVP Scope](../MVP_SCOPE.md), `docs/VISION.md`, and
+   `docs/PRINCIPLES.md`;
+3. inspect [the feature manifest](../features.yaml);
+4. locate the feature's linked Proposal, RFCs, accepted ADRs, approved
    Specifications, and current conformance evidence;
-4. read `docs/VISION.md`, `docs/PRINCIPLES.md`, affected architecture
-   documentation, and applicable repository skills;
-5. state the current lifecycle stage and any missing gate before proceeding.
+5. read affected architecture documentation and applicable repository skills;
+6. state the current lifecycle stage, MVP justification, and any missing gate
+   before proceeding.
 
 If the manifest or an artifact does not yet exist, report the gap. Do not
 invent a relationship to make the chain appear complete.
@@ -87,6 +89,8 @@ route it through lifecycle triage even if the code diff is small.
 For lifecycle or implementation work, report:
 
 - the feature and lifecycle stage;
+- the reference-application or stack-validation requirement that justifies MVP
+  inclusion, or that the work is post-MVP;
 - authoritative artifacts consulted;
 - artifacts or code changed;
 - validation performed and evidence produced;

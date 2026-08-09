@@ -20,6 +20,8 @@ improvements.
 Read the lifecycle/documentation rules, `docs/features.yaml`, the linked
 accepted Proposal, the RFC, relevant accepted ADRs and approved Specs,
 architecture docs, vision/principles, and evidence cited by the RFC.
+For MVP work, read `docs/MVP_SCOPE.md` and flag speculative implementation that
+does not trace to the reference application or stack validation.
 
 ## Allowed Decisions
 

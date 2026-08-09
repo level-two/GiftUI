@@ -54,6 +54,11 @@ REQUIRED_SKILL_SECTIONS = [
 errors = []
 artifacts = {}
 
+%w[VISION.md PRINCIPLES.md MVP_SCOPE.md].each do |project_document|
+  path = DOCS.join(project_document)
+  errors << "docs/#{project_document}: missing project authority document" unless path.file?
+end
+
 def load_yaml(path, errors)
   YAML.safe_load(
     path.read,
@@ -264,6 +269,7 @@ REQUIRED_SKILLS.each do |skill_name|
 end
 
 link_files = []
+link_files.concat(Dir[DOCS.join("{VISION,PRINCIPLES,MVP_SCOPE}.md")])
 link_files.concat(Dir[DOCS.join("engineering", "*.md")])
 link_files.concat(Dir[DOCS.join("{architecture,proposals,rfcs,adrs,specs,roadmap,templates}", "*.md")])
 link_files.each do |filename|
@@ -280,7 +286,7 @@ end
 agent_contract = ROOT.join("AGENTS.md").read
 %w[
   docs/engineering/FEATURE_LIFECYCLE.md docs/engineering/AI_AGENT_RULES.md
-  docs/features.yaml .agents/skills/
+  docs/MVP_SCOPE.md docs/features.yaml .agents/skills/
 ].each do |route|
   errors << "AGENTS.md: missing governance route #{route}" unless agent_contract.include?(route)
 end

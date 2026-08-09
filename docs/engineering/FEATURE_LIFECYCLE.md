@@ -7,6 +7,7 @@ repository.
 
 Related rules:
 
+- [MVP Scope](../MVP_SCOPE.md)
 - [Documentation Rules](DOCUMENTATION_RULES.md)
 - [AI Agent Rules](AI_AGENT_RULES.md)
 - [Glossary](GLOSSARY.md)
@@ -65,6 +66,13 @@ on the same ADR. Record every relationship in document metadata and in
 `docs/features.yaml`; do not duplicate the documents.
 
 ## Lifecycle gates
+
+### Before accepting an MVP Proposal
+
+- The Proposal MUST identify the concrete reference-application or MVP
+  stack-validation requirement that makes the work necessary now.
+- Work without that traceability SHOULD be classified as post-MVP.
+- MVP relevance does not predetermine architecture or authorize implementation.
 
 ### Before writing an RFC
 

@@ -3,6 +3,13 @@
 GiftUI is an experimental declarative user-interface framework for embedded
 systems, inspired by SwiftUI's source-level model.
 
+## Project direction
+
+Engineering decisions are governed by the project [Vision](docs/VISION.md),
+[Principles](docs/PRINCIPLES.md), and [MVP Scope](docs/MVP_SCOPE.md). Major
+feature work follows the repository's documented lifecycle beginning with
+[feature triage](docs/engineering/FEATURE_LIFECYCLE.md).
+
 This repository contains the operable macOS simulator for PoC A. It includes
 generic view expansion, deterministic stack layout, runtime-owned `@State`,
 full-root invalidation, button hit testing, backend-independent display lists,
