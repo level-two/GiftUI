@@ -6,54 +6,140 @@
 
 ## Purpose
 
-The GiftUI MVP validates that GiftUI can be used to build a real interactive application across desktop, Linux, and constrained embedded environments while preserving a common SwiftUI-inspired client model.
+The GiftUI MVP validates that GiftUI can be used to build a meaningful interactive application across desktop, Linux, and constrained embedded environments while preserving a common SwiftUI-inspired client model.
 
-The MVP is defined by a representative application: a **low-frequency signal analyzer**.
+The MVP is defined by a representative application: a **low-frequency digital signal analyzer**.
 
-The analyzer is not merely a demo. A working implementation of this application across the target stack configurations is the primary MVP outcome and the main constraint on feature, architecture, and infrastructure work.
+The Signal Analyzer is the primary constraint on MVP feature, architecture, backend, and capability work. Functionality that is not required by the analyzer or by validation of the target stack configurations is normally outside MVP scope.
 
 ## MVP Outcome
 
-The MVP is complete when the low-frequency signal analyzer can be implemented with GiftUI and run on the following stack configurations:
+The MVP outcome is a working Signal Analyzer implemented with GiftUI and running on the following stack configurations:
 
 | Platform | Configuration | Role |
 |---|---|---|
-| macOS | Dynamic | Primary development and rapid iteration environment |
+| macOS | Dynamic | Primary development, debugging, and rapid iteration environment |
 | macOS | Static | Early validation of static-build constraints |
-| Linux / Raspberry Pi | Dynamic, framebuffer, PiScreen | Validation of Linux, framebuffer rendering, and real display hardware |
-| Embedded / nRF52840 | Static, TFT display | Validation of constrained embedded operation |
+| Linux / Raspberry Pi | Dynamic, framebuffer, PiScreen | Validation of Linux operation, framebuffer rendering, and real display hardware |
+| Embedded / nRF52840 | Static, TFT display | Validation of constrained embedded execution |
 
-The same application-level UI model should be preserved across these configurations. Platform- and backend-specific implementation details should remain behind GiftUI abstractions.
+The validation progression is:
 
-The macOS configurations exist primarily to make implementation, testing, debugging, and architectural validation fast. Raspberry Pi introduces the real Linux/framebuffer environment. nRF52840 validates that the resulting architecture remains viable under embedded and static-runtime constraints.
+**macOS dynamic → macOS static → Raspberry Pi / Linux → nRF52840 / Embedded**
+
+The same portable Signal Analyzer presentation should be used across these configurations.
+
+Platform-specific hosting and bootstrap code is explicitly allowed at the application boundary. For the reference application, `SignalAnalyzerApp/SignalAnalyzerApp.swift` is considered platform-specific hosting code and is outside the portable GiftUI view scope.
+
+Platform-, backend-, and hardware-specific implementation details must otherwise remain behind GiftUI abstractions.
+
+---
 
 ## Reference Application
 
-The low-frequency signal analyzer defines the practical feature requirements of the MVP.
+The Signal Analyzer defines what "enough GiftUI" means for MVP.
 
-GiftUI must provide enough functionality to implement the analyzer as a useful interactive application rather than as a collection of isolated framework demonstrations.
+It must exercise GiftUI as an application framework rather than as a collection of isolated demonstrations.
 
-The reference application should exercise the framework in areas such as:
+The portable presentation requires:
 
-- composition of non-trivial UI hierarchies;
-- dynamic layout;
-- presentation of changing application state;
-- user interaction and controls;
-- graphical presentation required by the analyzer;
-- state-driven UI updates;
-- operation on displays with significantly different platform and hardware characteristics.
+- composition of non-trivial view hierarchies;
+- reusable custom views;
+- vertical, horizontal, and overlay layout;
+- flexible and constrained sizing;
+- spacing, alignment, and padding;
+- text presentation;
+- opaque foreground and background colors;
+- interactive controls;
+- disabled interaction state;
+- observable state-driven updates;
+- data-driven waveform visualization.
 
-Detailed analyzer functionality belongs to its own application requirements or feature specifications. This document intentionally does not convert those requirements into a GiftUI API checklist.
+The application-level presentation should remain substantially shared across all target configurations.
 
-## Client-Facing Scope
+---
 
-The MVP includes the subset of the GiftUI client API required to implement the reference application cleanly.
+## GiftUI Feature Scope
 
-Features should be introduced because they support the analyzer or establish a necessary foundation for functionality that the analyzer requires.
+The following feature surface defines the GiftUI functionality required by the Signal Analyzer.
 
-SwiftUI similarity is valuable where it improves familiarity and usability, but source compatibility with SwiftUI is not an MVP requirement.
+The ranking represents implementation dependency and priority rather than optionality.
 
-The MVP does not require broad API coverage. A small coherent API capable of implementing the complete reference application is preferable to a large collection of partially implemented SwiftUI-like features.
+Ranks **0–2 form the core GiftUI milestone**.
+
+Waveform drawing is a subsequent milestone required to complete the full Signal Analyzer demo and therefore the overall MVP outcome.
+
+### Rank 0 — Declarative View Model
+
+| Required feature | Required behavior | Signal Analyzer use |
+|---|---|---|
+| `View` and `body: some View` | Declare a view as a value with an opaque body type | All analyzer view types |
+| Result-builder child composition | Compose a fixed number of child views | Screen, header, controls, ruler, and channel rows |
+| Custom views and view-returning properties/functions | Split a hierarchy into reusable components without type erasure | Analyzer, waveform panel, channel row, header, status, and controls |
+| Modifier chaining | Apply ordered layout and rendering transformations to views and containers | All analyzer components |
+
+Rank 0 establishes the fundamental GiftUI client programming model.
+
+---
+
+### Rank 1 — Layout
+
+| Required feature | Required behavior | Signal Analyzer use |
+|---|---|---|
+| `VStack`, `HStack`, `ZStack` | Lay out children vertically, horizontally, and back-to-front | Screen structure, header, controls, waveform panel, ruler, and channel rows |
+| `Spacer` | Consume flexible space along a stack's main axis | Header, controls, and time ruler |
+| Stack spacing | Support zero and explicit point spacing | Screen sections, labels, status, controls, and channel rows |
+| Stack alignment | Support leading and center alignment | Header and channel labels |
+| `padding` | Support uniform, horizontal, and vertical insets | Screen, status, controls, ruler, and channel rows |
+| `frame` | Support fixed, minimum, maximum, infinite, and aligned dimensions | Minimum analyzer size, expanding channel rows, fixed labels, and button widths |
+
+Rank 1 establishes the layout functionality necessary to describe the analyzer without backend-specific positioning.
+
+---
+
+### Rank 2 — Rendering, Interaction, and State
+
+| Required feature | Required behavior | Signal Analyzer use |
+|---|---|---|
+| `Text` | Render static strings and strings derived from application state | Titles, channel names, levels, time values, status, errors, and buttons |
+| Opaque RGB `Color` | Render solid foregrounds and backgrounds without alpha compositing | Screen and panel backgrounds, accents, status, grid, and secondary text |
+| `foregroundStyle` | Apply a solid color to text and other foreground-rendered content | Labels, status, controls, and channel accents |
+| Rectangular `background` | Paint an opaque color behind a view using its resolved layout bounds | Status, controls, ruler, channel rows, and waveform panel |
+| `Button` | Render text content and dispatch an action | Start, Stop, Clear, and visible-window selection |
+| `disabled` | Prevent input according to current application state | Acquisition actions and selected time-window button |
+| `@State` with observable reference state | Preserve the view model and invalidate dependent view descriptions when it changes | Capture data, acquisition status, errors, and visible window |
+
+The MVP intentionally limits rendering to **opaque RGB colors**. Alpha compositing, gradients, shadows, and richer styling are not required unless a later concrete MVP requirement introduces them.
+
+---
+
+## Waveform Drawing Scope
+
+The completed Signal Analyzer requires a minimal custom-drawing API.
+
+This is a **stretch milestone relative to the core GiftUI feature milestone**, but it is part of the **full MVP completion criteria**, because the reference application must ultimately display its captured signals.
+
+Only the drawing functionality required by the analyzer is in scope.
+
+| Required feature | Required behavior |
+|---|---|
+| `Canvas` | Provide a drawing closure with a graphics context and resolved view size |
+| `GraphicsContext.stroke` | Stroke a path with a solid color and either a line width or stroke style |
+| `Path` | Create a mutable path using `move(to:)` and `addLine(to:)` |
+| `StrokeStyle` | Configure line width, round caps, and round joins |
+| Solid color shading | Use an opaque RGB color as a stroke source |
+| Drawing geometry | Provide points, sizes, and scalar arithmetic in canvas coordinate space |
+
+The canvas needs to support only the analyzer's immediate requirements:
+
+- drawing the time grid;
+- drawing four data-driven digital traces.
+
+No general-purpose drawing framework is required for MVP.
+
+In particular, the MVP does not require arbitrary fills, curves, images, text drawing inside a canvas, clipping, transforms, gradients, alpha compositing, or advanced path operations unless they become necessary for the reference application.
+
+---
 
 ## Architecture Scope
 
@@ -61,110 +147,223 @@ The MVP must:
 
 > Establish the layer boundaries and backend abstractions necessary for the MVP; the capability system must fit those boundaries, but only capabilities actually needed by MVP functionality have to be implemented.
 
-The architecture should establish sufficient separation between:
+The architecture must establish sufficient separation between:
 
 - client-facing declarative UI;
-- view/state representation;
+- view/state representation and update propagation;
 - layout;
-- rendering;
-- interaction and event handling;
+- drawing and rendering representation;
+- interaction and event dispatch;
 - backend-independent framework functionality;
-- backend/platform integration;
+- backend contracts;
+- platform integration;
 - hardware-specific implementation.
 
-These boundaries should allow the same client application to operate across the MVP stack configurations without embedding backend-specific decisions into application code.
+The architecture should support future GiftUI growth, but implementation complexity must remain justified by MVP requirements.
 
-The architecture should leave room for GiftUI to grow beyond the MVP, but implementation complexity must be justified by current MVP requirements.
+Future extensibility should primarily influence **boundaries and contracts**, not cause speculative implementation.
+
+---
 
 ## Capability System Scope
 
 The MVP must establish the architectural place and propagation model for capabilities.
 
-Capabilities should allow differences caused by platform, backend, build configuration, runtime environment, or hardware to be represented explicitly.
+Capabilities may originate from differences in:
 
-However, the MVP does **not** require a comprehensive catalogue of future GiftUI capabilities.
+- static versus dynamic configuration;
+- platform;
+- backend;
+- runtime environment;
+- display hardware.
 
-Only capabilities required by the reference application and its target stack configurations need to be implemented.
+The capability model must fit cleanly across the architectural layers established during the MVP.
 
-The capability mechanism should nevertheless demonstrate that unsupported or differently implemented functionality can be represented without compromising layer boundaries or requiring platform-specific application code.
+However, the MVP does **not** require a comprehensive capability catalogue.
+
+Only capabilities exercised by the Signal Analyzer and its target configurations need to be implemented.
+
+Potential future differences—such as hardware scrolling, shadows, alpha compositing, richer graphics, or backend-specific acceleration—may influence the capability architecture but do not require MVP implementation unless the analyzer depends on them.
+
+The MVP should demonstrate that a capability difference can be represented without leaking platform- or backend-specific decisions into portable application code.
+
+---
 
 ## Backend Scope
 
-The MVP requires the backends necessary to run the reference application on the defined validation configurations.
+The MVP requires only the backend functionality necessary to execute the Signal Analyzer on the target configurations.
 
-Backend work should be limited to functionality needed by the analyzer and to architectural mechanisms necessary to keep those implementations properly isolated.
+Required validation environments are:
 
-The MVP does not require implementation of additional speculative backends.
+### macOS
 
-The validation progression is:
+Used as the primary implementation and triage environment.
 
-**macOS → Raspberry Pi / Linux → nRF52840 / Embedded**
+Both dynamic and static configurations must be exercised so that static-build restrictions are discovered before reaching embedded hardware.
 
-Each stage should validate assumptions before additional platform constraints are introduced.
+### Raspberry Pi / Linux
+
+The analyzer must run dynamically on Raspberry Pi using the Linux stack and framebuffer rendering, with PiScreen as the physical display target.
+
+This stage validates:
+
+- Linux execution;
+- framebuffer rendering;
+- real display geometry;
+- input/event integration required by the analyzer;
+- backend abstraction boundaries outside the macOS environment.
+
+### nRF52840 / Embedded
+
+The analyzer must run as a static embedded configuration on nRF52840 with a TFT display.
+
+This stage validates:
+
+- Embedded Swift constraints;
+- static composition;
+- constrained resources;
+- hardware display integration;
+- absence of accidental dependencies on desktop/runtime facilities unavailable in the embedded environment.
+
+Additional speculative backends are outside MVP scope.
+
+---
 
 ## Static and Dynamic Configuration Scope
 
-Support for both static and dynamic configurations is an explicit part of the MVP.
+Support for both static and dynamic configurations is an explicit MVP concern.
 
-The MVP should demonstrate that the architecture and client programming model do not accidentally depend on facilities available only in richer dynamic environments.
+The architecture and client programming model must not accidentally depend on facilities available only in dynamic or desktop environments.
 
-macOS provides an early environment for exercising both configurations before static constraints are encountered on embedded hardware.
+The MVP validates:
 
-The final embedded validation must demonstrate that the relevant GiftUI stack can operate as a static configuration on the nRF52840 target.
+- dynamic configuration on macOS;
+- static configuration on macOS;
+- dynamic configuration on Raspberry Pi/Linux;
+- static configuration on nRF52840.
 
-## Out of Scope
+Static versus dynamic differences may affect internal composition, backend selection, capability resolution, or implementation mechanisms.
+
+They should not require fundamentally different portable Signal Analyzer view code.
+
+---
+
+## State and Data Boundary
+
+GiftUI is responsible for presenting and reacting to application state.
+
+The Signal Analyzer application may obtain changing signal data through its own domain and data layers.
+
+The MVP requires GiftUI to correctly react to observable reference state exposed to the presentation layer.
+
+The design of signal acquisition, hardware sampling, persistence, repositories, and other analyzer-specific domain/data mechanisms is outside the GiftUI feature scope except where they expose requirements on the UI framework.
+
+GiftUI therefore needs to consume changing state correctly; it does not need to define the application's data acquisition architecture.
+
+---
+
+## Explicit Non-Goals
 
 The MVP does not attempt to:
 
-- reproduce the full SwiftUI API;
+- reproduce the complete SwiftUI API;
 - achieve SwiftUI source compatibility;
-- implement features solely because SwiftUI provides them;
-- support every possible GiftUI backend;
-- implement speculative capabilities not exercised by the MVP;
-- solve future framework requirements before they become necessary;
-- provide production completeness for every supported platform;
-- optimize every backend or rendering path beyond what is necessary to demonstrate viable operation.
+- implement features merely because SwiftUI provides them;
+- support an arbitrary number of future backends;
+- implement speculative capabilities;
+- provide a general-purpose graphics framework;
+- provide general alpha compositing;
+- implement gradients, shadows, effects, or advanced styling not required by the analyzer;
+- provide unrestricted dynamic child collections unless the analyzer requires them;
+- provide arbitrary path construction beyond the required waveform operations;
+- optimize every rendering path beyond what is necessary for viable operation;
+- solve future framework requirements before concrete use cases require them;
+- make platform-specific application hosting code portable.
 
-Features valuable to the long-term GiftUI vision may be deliberately deferred when they are not required to complete the reference application.
+Long-term GiftUI features should be deferred when they do not materially contribute to the Signal Analyzer or validation of the MVP architecture.
+
+---
 
 ## Scope Rule
 
-Every significant MVP feature or architectural addition should be answerable by the question:
+Every significant feature, abstraction, capability, or infrastructure addition proposed for MVP should answer:
 
-> **What requirement of the reference application or MVP stack validation makes this necessary now?**
+> **What Signal Analyzer requirement or target-stack validation makes this necessary now?**
 
-If there is no concrete answer, the work should normally be considered post-MVP.
+If there is no concrete answer, the implementation should normally be considered post-MVP.
 
-Architectural decisions may account for foreseeable evolution, but future requirements should influence boundaries and extensibility rather than cause speculative implementation.
+A future requirement may justify shaping an abstraction so that it remains extensible, but it should not normally justify implementing unused functionality.
+
+---
+
+## Milestones
+
+### Core GiftUI Milestone
+
+The core framework milestone is complete when all Rank 0–2 requirements work across the MVP stack configurations relevant to their functionality.
+
+This demonstrates:
+
+- the declarative view model;
+- reusable view composition;
+- layout;
+- basic rendering;
+- interaction;
+- state-driven updates;
+- backend-independent application structure.
+
+At this stage, the analyzer UI may use a placeholder waveform surface.
+
+### Signal Analyzer Demo Milestone
+
+The Signal Analyzer demo milestone additionally requires the waveform drawing scope.
+
+At this point the application must render its actual time grid and digital traces using GiftUI.
+
+### MVP Completion
+
+GiftUI reaches MVP when the complete Signal Analyzer, including waveform visualization, executes successfully on all target stack configurations and satisfies the architectural exit criteria below.
+
+---
 
 ## MVP Exit Criteria
 
-GiftUI reaches MVP when:
+The GiftUI MVP is complete when:
 
-1. The low-frequency signal analyzer is implemented as a coherent, useful GiftUI application.
+1. **The Signal Analyzer is a coherent working application**, not a collection of framework demonstrations.
 
-2. The application runs on:
-   - macOS with the dynamic configuration;
-   - macOS with the static configuration;
-   - Raspberry Pi/Linux using the dynamic configuration, framebuffer rendering, and PiScreen;
-   - nRF52840 using the static embedded configuration and a TFT display.
+2. **All Rank 0–2 features are implemented and validated** on the target configurations where they are required.
 
-3. The application-level GiftUI code remains substantially shared across these configurations, with platform and hardware differences isolated behind framework and backend abstractions.
+3. **The waveform drawing surface is implemented sufficiently to render the analyzer's time grid and four digital traces.**
 
-4. The architecture has clear layer boundaries sufficient to support the implemented functionality and target configurations.
+4. **The complete application runs on:**
+   - macOS dynamic;
+   - macOS static;
+   - Raspberry Pi/Linux dynamic with framebuffer rendering and PiScreen;
+   - nRF52840 static with a TFT display.
 
-5. Backend abstractions allow the required rendering and interaction implementations to vary without leaking backend-specific concerns into client code.
+5. **Portable presentation code is substantially shared** across all configurations.
 
-6. The capability system has an established architectural model and is exercised by the capabilities genuinely required by the MVP stacks.
+6. Platform-specific code is confined to legitimate hosting, backend, platform, or hardware integration boundaries rather than leaking into the portable view hierarchy.
 
-7. Both static and dynamic configurations are demonstrated through real execution rather than only architectural or compile-time assumptions.
+7. **Layer boundaries are explicit** and sufficient to support the implemented MVP functionality.
 
-8. The resulting framework provides enough coherent functionality that the analyzer can be treated as an application built **with GiftUI**, rather than as custom platform code connected by a thin GiftUI façade.
+8. **Backend abstractions are proven by multiple materially different implementations**, including desktop/Linux and constrained embedded rendering environments.
+
+9. **The capability model has an established architectural role** and is exercised by real MVP requirements where platform or backend differences require it.
+
+10. **Static and dynamic configurations are validated through actual builds and execution**, rather than solely through architectural assumptions.
+
+11. The resulting framework is sufficiently coherent that the Signal Analyzer can reasonably be described as an application built **with GiftUI**, rather than custom platform applications connected through a superficial common façade.
+
+---
 
 ## Definition of Success
 
-The MVP succeeds if it demonstrates that the central GiftUI hypothesis is viable:
+The MVP succeeds if it demonstrates the central GiftUI hypothesis:
 
-> **A meaningful interactive application can be expressed through a familiar SwiftUI-inspired model and run across desktop, Linux/framebuffer, and constrained embedded environments without abandoning a common architecture or application-level programming model.**
+> **A meaningful interactive application can be expressed through a familiar SwiftUI-inspired declarative model and run across desktop, Linux/framebuffer, and constrained embedded environments without abandoning a common application-level programming model or architectural foundation.**
 
-Everything beyond what is necessary to prove that hypothesis belongs to subsequent GiftUI development.
+The Signal Analyzer is the proof of that hypothesis.
+
+Everything not required to establish that proof belongs to subsequent GiftUI development.
