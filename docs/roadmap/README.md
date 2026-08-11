@@ -7,4 +7,7 @@ and do not duplicate Proposal, RFC, ADR, or Specification content.
 MVP roadmap decisions must conform to [GiftUI MVP Scope](../MVP_SCOPE.md),
 including its reference application, validation progression, and exit criteria.
 
-No feature roadmap is established by the governance bootstrap.
+Current roadmap:
+
+- [MVP Milestones](MVP_MILESTONES.md) — prioritized delivery sequence for the
+  Signal Analyzer and its target-stack validation.

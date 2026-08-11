@@ -65,9 +65,9 @@ The following feature surface defines the GiftUI functionality required by the S
 
 The ranking represents implementation dependency and priority rather than optionality.
 
-Ranks **0–2 form the core GiftUI milestone**.
+Ranks **0–2 form the core required GiftUI client surface**.
 
-Waveform drawing is a subsequent milestone required to complete the full Signal Analyzer demo and therefore the overall MVP outcome.
+Waveform drawing is also required to complete the full Signal Analyzer demo and therefore the overall MVP outcome.
 
 ### Rank 0 — Declarative View Model
 
@@ -117,7 +117,7 @@ The MVP intentionally limits rendering to **opaque RGB colors**. Alpha compositi
 
 The completed Signal Analyzer requires a minimal custom-drawing API.
 
-This is a **stretch milestone relative to the core GiftUI feature milestone**, but it is part of the **full MVP completion criteria**, because the reference application must ultimately display its captured signals.
+This is part of the **full MVP completion criteria**, because the reference application must ultimately display its captured signals.
 
 Only the drawing functionality required by the analyzer is in scope.
 
@@ -294,35 +294,7 @@ If there is no concrete answer, the implementation should normally be considered
 
 A future requirement may justify shaping an abstraction so that it remains extensible, but it should not normally justify implementing unused functionality.
 
----
-
-## Milestones
-
-### Core GiftUI Milestone
-
-The core framework milestone is complete when all Rank 0–2 requirements work across the MVP stack configurations relevant to their functionality.
-
-This demonstrates:
-
-- the declarative view model;
-- reusable view composition;
-- layout;
-- basic rendering;
-- interaction;
-- state-driven updates;
-- backend-independent application structure.
-
-At this stage, the analyzer UI may use a placeholder waveform surface.
-
-### Signal Analyzer Demo Milestone
-
-The Signal Analyzer demo milestone additionally requires the waveform drawing scope.
-
-At this point the application must render its actual time grid and digital traces using GiftUI.
-
-### MVP Completion
-
-GiftUI reaches MVP when the complete Signal Analyzer, including waveform visualization, executes successfully on all target stack configurations and satisfies the architectural exit criteria below.
+Prioritized delivery sequencing is maintained in the [MVP Milestones](roadmap/MVP_MILESTONES.md) roadmap.
 
 ---
 
