@@ -1,9 +1,9 @@
 # Machine-readable navigation index for governed GiftUI features.
 #
-# The accepted MVP baseline charter is registered here. Existing individual
-# feature and system documents have not otherwise been migrated into the
-# lifecycle. Add entries only through authorized lifecycle artifact changes,
-# following docs/engineering/DOCUMENTATION_RULES.md.
+# The accepted baseline and Signal Analyzer Proposals are registered here.
+# Existing legacy feature and system documents have not otherwise been
+# migrated into the lifecycle. Add entries only through authorized lifecycle
+# artifact changes, following docs/engineering/DOCUMENTATION_RULES.md.
 schema_version: 1
 features:
   giftui-mvp-baseline:
@@ -16,3 +16,13 @@ features:
     specs: []
     dependencies: []
     milestone: MVP
+  signal-analyzer:
+    title: Signal Analyzer Reference Application
+    status: proposal
+    proposal:
+      - PROPOSAL-002
+    rfcs: []
+    adrs: []
+    specs: []
+    dependencies: []
+    milestone: null
