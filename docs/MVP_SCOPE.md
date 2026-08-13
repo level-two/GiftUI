@@ -4,6 +4,8 @@
 
 **Authority:** Maintainer-provided boundary for MVP prioritization and exit decisions
 
+**Baseline charter:** [PROPOSAL-001: GiftUI MVP Baseline Charter](proposals/proposal-001-giftui-mvp-baseline-charter.md)
+
 ## Purpose
 
 The GiftUI MVP validates that GiftUI can be used to build a meaningful interactive application across desktop, Linux, and constrained embedded environments while preserving a common SwiftUI-inspired client model.

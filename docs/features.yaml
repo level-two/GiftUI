@@ -1,8 +1,18 @@
 # Machine-readable navigation index for governed GiftUI features.
 #
-# This manifest intentionally starts empty. Existing feature and system
-# documents have not been migrated into the lifecycle. Add an entry only with
-# an authorized lifecycle artifact change, following
-# docs/engineering/DOCUMENTATION_RULES.md.
+# The accepted MVP baseline charter is registered here. Existing individual
+# feature and system documents have not otherwise been migrated into the
+# lifecycle. Add entries only through authorized lifecycle artifact changes,
+# following docs/engineering/DOCUMENTATION_RULES.md.
 schema_version: 1
-features: {}
+features:
+  giftui-mvp-baseline:
+    title: GiftUI MVP Baseline
+    status: proposal
+    proposal:
+      - PROPOSAL-001
+    rfcs: []
+    adrs: []
+    specs: []
+    dependencies: []
+    milestone: MVP

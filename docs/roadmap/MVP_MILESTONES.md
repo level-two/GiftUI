@@ -14,9 +14,15 @@ The ordering follows one guiding principle:
 
 ## Lifecycle Gate
 
-The MVP feature areas are currently unregistered in [`docs/features.yaml`](../features.yaml), and no lifecycle artifacts are linked for them. Before major design or implementation begins, each independently governed feature area must pass the applicable Proposal, RFC, ADR, and Specification gates from the [Feature Lifecycle](../engineering/FEATURE_LIFECYCLE.md).
+The accepted [GiftUI MVP Baseline Charter](../proposals/proposal-001-giftui-mvp-baseline-charter.md) establishes the Proposal-level rationale and expected outcome for the MVP. The MVP Scope incorporates that accepted direction into the authoritative product boundary, and this roadmap orders its delivery. The baseline charter avoids retroactively requiring a separate Proposal for every existing MVP feature area.
 
-The milestone order below does not infer those approvals. A milestone may begin implementation only when its governing Specifications are approved.
+Each independently governed feature area must still pass its applicable RFC,
+ADR, Specification, and conformance gates from the
+[Feature Lifecycle](../engineering/FEATURE_LIFECYCLE.md). The baseline charter
+does not infer those approvals, and a milestone may begin implementation only
+when its governing Specifications are approved. New work outside the baseline,
+or a material change to its problem, users, outcomes, or boundaries, requires
+explicit lifecycle review and may require a new Proposal.
 
 ## Prioritization Rules
 
