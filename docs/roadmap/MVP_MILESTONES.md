@@ -16,6 +16,10 @@ The ordering follows one guiding principle:
 
 The accepted [GiftUI MVP Baseline Charter](../proposals/proposal-001-giftui-mvp-baseline-charter.md) establishes the Proposal-level rationale and expected outcome for the MVP. The MVP Scope incorporates that accepted direction into the authoritative product boundary, and this roadmap orders its delivery. The baseline charter avoids retroactively requiring a separate Proposal for every existing MVP feature area.
 
+The accepted [GiftUI MVP Architecture Establishment Proposal](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
+authorizes architectural exploration for M1 within that baseline and product
+boundary. It does not approve an architecture or authorize implementation.
+
 Each independently governed feature area must still pass its applicable RFC,
 ADR, Specification, and conformance gates from the
 [Feature Lifecycle](../engineering/FEATURE_LIFECYCLE.md). The baseline charter
@@ -56,6 +60,10 @@ This baseline should be preserved as non-authoritative migration input. Existing
 ## Delivery Sequence
 
 ### M1 — Architecture Establishment
+
+**Feature:** `giftui-mvp-architecture`
+
+**Proposal:** [PROPOSAL-003: GiftUI MVP Architecture Establishment](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
 
 **Outcome:** The MVP architecture is reviewed and made authoritative through the required lifecycle artifacts before framework migration or major feature implementation proceeds.
 

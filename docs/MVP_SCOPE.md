@@ -145,6 +145,8 @@ In particular, the MVP does not require arbitrary fills, curves, images, text dr
 
 ## Architecture Scope
 
+**Lifecycle authorization:** [PROPOSAL-003: GiftUI MVP Architecture Establishment](proposals/proposal-003-giftui-mvp-architecture-establishment.md)
+
 The MVP must:
 
 > Establish the layer boundaries and backend abstractions necessary for the MVP; the capability system must fit those boundaries, but only capabilities actually needed by MVP functionality have to be implemented.
