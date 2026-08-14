@@ -15,7 +15,8 @@ related_adrs:
   - ADR-002
   - ADR-003
   - ADR-004
-related_specs: []
+related_specs:
+  - SPEC-001
 supersedes: []
 superseded_by: []
 target_milestone: MVP

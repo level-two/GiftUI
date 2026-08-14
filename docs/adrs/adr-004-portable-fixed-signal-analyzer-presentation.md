@@ -2,7 +2,7 @@
 id: ADR-004
 feature: signal-analyzer
 title: Portable Fixed Signal Analyzer Presentation
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
@@ -15,7 +15,8 @@ related_adrs:
   - ADR-001
   - ADR-002
   - ADR-003
-related_specs: []
+related_specs:
+  - SPEC-001
 supersedes: []
 superseded_by: []
 target_milestone: MVP
@@ -25,7 +26,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 
@@ -61,9 +62,10 @@ monotonic time and scheduling, GiftUI runtime, renderer, display, input, and
 hardware integration. The portable API MUST exchange `Duration` values but
 MUST NOT obtain time or schedule timers directly.
 
-The required Observation and Canvas/path/stroke contracts MUST be established
-through their own GiftUI feature lifecycles before the analyzer Specification
-depends on them.
+The Signal Analyzer Specification MAY assume that GiftUI provides the complete
+MVP client surface, including observable state invalidation and
+Canvas/path/stroke drawing. Those GiftUI contracts remain governed outside the
+Signal Analyzer feature and MUST NOT be defined by its Specification.
 
 ## Rationale
 
@@ -87,12 +89,14 @@ performance.
 
 - The MVP presentation does not support runtime channel configuration.
 - Target hosts require explicit composition and timing adapters.
-- Observation and Canvas remain prerequisite feature lifecycles.
+- The analyzer depends on the complete MVP GiftUI client surface being
+  available on every claimed target configuration.
 - Exact visual styling may differ across backends even when behavior is shared.
 
 ### Follow-up
 
-- Create and approve separate Observation and Canvas feature lifecycles.
+- Govern and deliver the required GiftUI client features independently of the
+  Signal Analyzer application contract.
 - The Signal Analyzer Specification must define the hierarchy, control states,
   visible-range formula, refresh behavior, and target-host obligations.
 - Conformance tests must compare portable behavior across all MVP profiles and

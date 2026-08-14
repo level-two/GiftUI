@@ -2,7 +2,7 @@
 id: ADR-003
 feature: signal-analyzer
 title: Transition-Based Bounded Capture
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
@@ -15,7 +15,8 @@ related_adrs:
   - ADR-001
   - ADR-002
   - ADR-004
-related_specs: []
+related_specs:
+  - SPEC-001
 supersedes: []
 superseded_by: []
 target_milestone: MVP
@@ -25,7 +26,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 

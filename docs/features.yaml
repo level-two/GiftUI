@@ -19,7 +19,7 @@ features:
     milestone: MVP
   signal-analyzer:
     title: Signal Analyzer Reference Application
-    status: decision
+    status: specification
     proposal:
       - PROPOSAL-002
     rfcs:
@@ -29,7 +29,8 @@ features:
       - ADR-002
       - ADR-003
       - ADR-004
-    specs: []
+    specs:
+      - SPEC-001
     dependencies: []
     milestone: MVP
   giftui-mvp-architecture:
