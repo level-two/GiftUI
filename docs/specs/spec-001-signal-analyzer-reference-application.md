@@ -2,7 +2,7 @@
 id: SPEC-001
 feature: signal-analyzer
 title: Signal Analyzer Reference Application Contract
-status: approved
+status: implementing
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
@@ -896,12 +896,12 @@ behavioral, resource, profile, or connected-hardware evidence.
 
 ## Acceptance Criteria
 
-- [ ] **SA-AC-001:** The feature manifest links accepted ADR-001 through
+- [x] **SA-AC-001:** The feature manifest links accepted ADR-001 through
   ADR-004 and this Specification.
-- [ ] **SA-AC-002:** The analyzer builds with logical Domain, Data,
+- [x] **SA-AC-002:** The analyzer builds with logical Domain, Data,
   Presentation, and target-host responsibilities preserving ADR-001 dependency
   direction.
-- [ ] **SA-AC-003:** Domain imports no UI framework, GiftUI backend, platform,
+- [x] **SA-AC-003:** Domain imports no UI framework, GiftUI backend, platform,
   clock, scheduler, GPIO, display, or hardware API.
 - [ ] **SA-AC-004:** Presentation imports no concrete Data, platform, clock,
   scheduler, GPIO, renderer, display, or hardware API.
@@ -910,7 +910,7 @@ behavioral, resource, profile, or connected-hardware evidence.
   and four traces.
 - [ ] **SA-AC-006:** The portable hierarchy uses fixed explicit channel and
   window composition and is substantially shared by all four configurations.
-- [ ] **SA-AC-007:** Sink registration synchronously delivers current values,
+- [x] **SA-AC-007:** Sink registration synchronously delivers current values,
   replacement detaches the old sink, and stop prevents later callbacks.
 - [ ] **SA-AC-008:** The complete acquisition graph uses serialized synchronous
   delivery without requiring async streams, tasks, queues, locks, or actors in
@@ -931,16 +931,16 @@ behavioral, resource, profile, or connected-hardware evidence.
   fail/drop behavior.
 - [ ] **SA-AC-015:** The deterministic mock produces the specified four channel
   patterns and no stale event after stop, restart, or teardown.
-- [ ] **SA-AC-016:** Initial Presentation state is idle, empty, two seconds,
+- [x] **SA-AC-016:** Initial Presentation state is idle, empty, two seconds,
   and error-free; delivered captures and states invalidate the view.
-- [ ] **SA-AC-017:** Start, Stop, Clear, and window controls match all specified
+- [x] **SA-AC-017:** Start, Stop, Clear, and window controls match all specified
   enabled and disabled states.
-- [ ] **SA-AC-018:** Visible ranges for 1, 2, and 5 seconds follow the exact
+- [x] **SA-AC-018:** Visible ranges for 1, 2, and 5 seconds follow the exact
   formula and always span the selected duration.
 - [ ] **SA-AC-019:** Every channel waveform starts from the correct baseline,
   applies visible transitions, maps time to x coordinates, and extends to the
   right edge.
-- [ ] **SA-AC-020:** The ruler shows lower, midpoint, and upper seconds with two
+- [x] **SA-AC-020:** The ruler shows lower, midpoint, and upper seconds with two
   fractional digits, and the grid contains 11 vertical and one center line.
 - [ ] **SA-AC-021:** At 80 events per second, frames use consistent latest
   state at a 250-millisecond target interval without requiring one frame per
@@ -954,7 +954,7 @@ behavioral, resource, profile, or connected-hardware evidence.
 - [ ] **SA-AC-025:** nRF52840 evidence records binary, RAM, transition storage,
   drawing workspace, and stack measurements where supported and demonstrates
   that the application fits and runs.
-- [ ] **SA-AC-026:** Replacing the mock source with another conforming source
+- [x] **SA-AC-026:** Replacing the mock source with another conforming source
   requires no change to Domain, use cases, ViewModel, or portable hierarchy.
 - [ ] **SA-AC-027:** Missing required GiftUI behavior fails configuration
   conformance explicitly rather than producing a reduced target-specific UI.
@@ -962,6 +962,24 @@ behavioral, resource, profile, or connected-hardware evidence.
 ## Implementation Notes
 
 This section is non-authoritative.
+
+### Current implementation evidence
+
+Implementation began with the import of the macOS investigation into
+[`demo/SignalAnalyzer`](../../demo/SignalAnalyzer/) at commit `4e1b598`. The
+import preserves the investigation's SwiftPM target structure, macOS target,
+dependencies, sources, and tests as the baseline for later GiftUI integration.
+
+The imported package builds on macOS and its eight tests pass with:
+
+```sh
+swift test --package-path demo/SignalAnalyzer
+```
+
+Checked acceptance criteria above are supported by direct source inspection
+and this macOS build/test result. They do not constitute cross-profile,
+resource, performance, or connected-hardware conformance evidence. Unchecked
+criteria remain required.
 
 The existing SignalAnalyzer playground provides useful starting code and
 tests. Migration work can retain its names and object graph while replacing
