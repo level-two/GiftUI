@@ -2,7 +2,7 @@
 id: SPEC-001
 feature: signal-analyzer
 title: Signal Analyzer Reference Application Contract
-status: review
+status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
