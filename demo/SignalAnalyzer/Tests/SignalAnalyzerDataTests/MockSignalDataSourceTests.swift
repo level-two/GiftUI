@@ -42,6 +42,62 @@ final class MockSignalDataSourceTests: XCTestCase {
         XCTAssertGreaterThan(recorder.count, stoppedCount)
     }
 
+    func testEmitsExactBurstAndSeededRandomPatterns() async throws {
+        let source = MockSignalDataSource(configuration: .accelerated)
+        let recorder = TransitionRecorder()
+
+        try source.start(sink: recorder)
+        try await waitUntil {
+            recorder.transitions.filter { $0.channelID.rawValue == 3 }.count >= 5
+                && recorder.transitions.filter { $0.channelID.rawValue == 4 }.count >= 4
+        }
+        source.stop()
+
+        XCTAssertEqual(
+            Array(timestamps(for: 3, in: recorder.transitions).prefix(5)),
+            [.zero, .milliseconds(80), .milliseconds(160), .milliseconds(240), .milliseconds(1_440)]
+        )
+        XCTAssertEqual(
+            Array(timestamps(for: 4, in: recorder.transitions).prefix(4)),
+            expectedRandomTimestamps(seed: 1_234, count: 4)
+        )
+    }
+
+    func testRunningRepositoryAndSourceDeallocateWithoutExplicitStop() async throws {
+        weak var weakRepository: DefaultSignalAcquisitionRepository?
+
+        do {
+            let source = MockSignalDataSource(configuration: .accelerated)
+            let repository = DefaultSignalAcquisitionRepository(dataSource: source)
+            try repository.start()
+            weakRepository = repository
+        }
+
+        try await waitUntil { weakRepository == nil }
+        XCTAssertNil(weakRepository)
+    }
+
+    private func timestamps(
+        for channel: Int,
+        in transitions: [SignalTransition]
+    ) -> [Duration] {
+        transitions
+            .filter { $0.channelID.rawValue == channel }
+            .map(\.timestamp)
+    }
+
+    private func expectedRandomTimestamps(seed: UInt64, count: Int) -> [Duration] {
+        var state = seed
+        var timestamp = Duration.zero
+        var result = [timestamp]
+        for _ in 1..<count {
+            state = state &* 6_364_136_223_846_793_005 &+ 1
+            timestamp += .milliseconds(180 + Int(state % 420))
+            result.append(timestamp)
+        }
+        return result
+    }
+
     private func waitUntil(
         timeout: Duration = .seconds(1),
         condition: @escaping () -> Bool

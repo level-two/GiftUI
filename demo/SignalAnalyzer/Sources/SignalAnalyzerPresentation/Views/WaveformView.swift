@@ -54,6 +54,7 @@ struct WaveformView: View {
             input: ChannelWaveformInput(
                 channel: channel(at: index),
                 transitions: capture.transitions,
+                baselineLevel: baselineLevel(at: index),
                 visibleRange: visibleRange
             ),
             accent: accent
@@ -64,6 +65,11 @@ struct WaveformView: View {
     private func channel(at index: Int) -> SignalChannel? {
         guard capture.channels.indices.contains(index) else { return nil }
         return capture.channels[index]
+    }
+
+    private func baselineLevel(at index: Int) -> DigitalLevel {
+        guard let channel = channel(at: index) else { return .low }
+        return capture.baselineLevel(for: channel.id)
     }
 
     private var midpoint: Duration {

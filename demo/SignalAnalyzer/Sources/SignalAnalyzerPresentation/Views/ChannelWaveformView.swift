@@ -4,15 +4,18 @@ import SwiftUI
 struct ChannelWaveformInput: Sendable {
     let channel: SignalChannel?
     let transitions: [SignalTransition]
+    let baselineLevel: DigitalLevel
     let visibleRange: Range<Duration>
 
     init(
         channel: SignalChannel?,
         transitions: [SignalTransition],
+        baselineLevel: DigitalLevel,
         visibleRange: Range<Duration>
     ) {
         self.channel = channel
         self.transitions = transitions
+        self.baselineLevel = baselineLevel
         self.visibleRange = visibleRange
     }
 }
@@ -60,7 +63,7 @@ struct ChannelWaveformView: View {
     }
 
     private var currentLevel: DigitalLevel {
-        channelTransitions.last?.level ?? .low
+        channelTransitions.last?.level ?? input.baselineLevel
     }
 
     private func waveformPath(size: CGSize) -> Path {
@@ -71,7 +74,7 @@ struct ChannelWaveformView: View {
         let highY = inset
         let lowY = max(inset, size.height - inset)
         let earlierTransitions = channelTransitions.filter { $0.timestamp <= lower }
-        var level = earlierTransitions.last?.level ?? .low
+        var level = earlierTransitions.last?.level ?? input.baselineLevel
         var path = Path()
         var currentY = level == .high ? highY : lowY
         path.move(to: CGPoint(x: 0, y: currentY))

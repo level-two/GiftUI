@@ -47,12 +47,40 @@ package final class MockSignalDataSource: SignalDataSource {
         let currentGeneration = generation
         let offset = activeElapsed
         runStartedAt = clock.now
-        generatorTask = Task { @MainActor [weak self, sink] in
-            await self?.generate(
-                from: offset,
-                generation: currentGeneration,
-                sink: sink
-            )
+        generatorTask = Task { @MainActor [weak self, weak sink] in
+            var conceptualNow = offset
+
+            while !Task.isCancelled {
+                guard let plan = self?.makeEventPlan(
+                    conceptualNow: conceptualNow,
+                    generation: currentGeneration
+                ) else {
+                    return
+                }
+
+                do {
+                    try await Task.sleep(for: plan.realDelay)
+                } catch {
+                    return
+                }
+
+                guard let source = self,
+                      let sink,
+                      source.generation == currentGeneration,
+                      !Task.isCancelled else {
+                    return
+                }
+                source.levels[plan.channelIndex].toggle()
+                sink.receive(
+                    SignalTransition(
+                        channelID: SignalChannelID(rawValue: plan.channelIndex + 1),
+                        timestamp: plan.timestamp,
+                        level: source.levels[plan.channelIndex]
+                    )
+                )
+                source.scheduleNextEvent(for: plan.channelIndex, after: plan.timestamp)
+                conceptualNow = plan.timestamp
+            }
         }
 
         for transition in initialTransitions where generation == currentGeneration {
@@ -77,8 +105,8 @@ package final class MockSignalDataSource: SignalDataSource {
         nextEventTimes = [
             .milliseconds(250),
             .milliseconds(400),
-            .milliseconds(120),
-            .milliseconds(310)
+            nextBurstInterval(),
+            nextRandomInterval()
         ]
         emittedInitialLevels = true
 
@@ -91,39 +119,27 @@ package final class MockSignalDataSource: SignalDataSource {
         }
     }
 
-    private func generate(
-        from offset: Duration,
-        generation expectedGeneration: UInt64,
-        sink: some SignalTransitionSink
-    ) async {
-        var conceptualNow = offset
+    private struct EventPlan {
+        let timestamp: Duration
+        let channelIndex: Int
+        let realDelay: Duration
+    }
 
-        while !Task.isCancelled {
-            guard generation == expectedGeneration,
-                  let nextTimestamp = nextEventTimes.min(),
-                  let channelIndex = nextEventTimes.firstIndex(of: nextTimestamp) else {
-                return
-            }
-            let remaining = max(.zero, nextTimestamp - conceptualNow)
-
-            do {
-                try await Task.sleep(for: realDuration(forConceptualDuration: remaining))
-            } catch {
-                return
-            }
-
-            guard generation == expectedGeneration, !Task.isCancelled else { return }
-            levels[channelIndex].toggle()
-            sink.receive(
-                SignalTransition(
-                    channelID: SignalChannelID(rawValue: channelIndex + 1),
-                    timestamp: nextTimestamp,
-                    level: levels[channelIndex]
-                )
-            )
-            scheduleNextEvent(for: channelIndex, after: nextTimestamp)
-            conceptualNow = nextTimestamp
+    private func makeEventPlan(
+        conceptualNow: Duration,
+        generation expectedGeneration: UInt64
+    ) -> EventPlan? {
+        guard generation == expectedGeneration,
+              let nextTimestamp = nextEventTimes.min(),
+              let channelIndex = nextEventTimes.firstIndex(of: nextTimestamp) else {
+            return nil
         }
+        let remaining = max(.zero, nextTimestamp - conceptualNow)
+        return EventPlan(
+            timestamp: nextTimestamp,
+            channelIndex: channelIndex,
+            realDelay: realDuration(forConceptualDuration: remaining)
+        )
     }
 
     private func scheduleNextEvent(for channelIndex: Int, after timestamp: Duration) {
@@ -134,14 +150,22 @@ package final class MockSignalDataSource: SignalDataSource {
         case 1:
             interval = .milliseconds(400)
         case 2:
-            let burstIntervals = [80, 80, 80, 1_200, 75, 75, 900]
-            interval = .milliseconds(burstIntervals[burstIntervalIndex % burstIntervals.count])
-            burstIntervalIndex += 1
+            interval = nextBurstInterval()
         default:
-            randomState = randomState &* 6_364_136_223_846_793_005 &+ 1
-            interval = .milliseconds(180 + Int(randomState % 420))
+            interval = nextRandomInterval()
         }
         nextEventTimes[channelIndex] = timestamp + interval
+    }
+
+    private func nextBurstInterval() -> Duration {
+        let burstIntervals = [80, 80, 80, 1_200, 75, 75, 900]
+        defer { burstIntervalIndex += 1 }
+        return .milliseconds(burstIntervals[burstIntervalIndex % burstIntervals.count])
+    }
+
+    private func nextRandomInterval() -> Duration {
+        randomState = randomState &* 6_364_136_223_846_793_005 &+ 1
+        return .milliseconds(180 + Int(randomState % 420))
     }
 
     private func realDuration(forConceptualDuration duration: Duration) -> Duration {

@@ -915,7 +915,7 @@ behavioral, resource, profile, or connected-hardware evidence.
 - [ ] **SA-AC-008:** The complete acquisition graph uses serialized synchronous
   delivery without requiring async streams, tasks, queues, locks, or actors in
   portable Domain or Presentation.
-- [ ] **SA-AC-009:** Start, repeated Start, Stop, repeated Stop, restart, and
+- [x] **SA-AC-009:** Start, repeated Start, Stop, repeated Stop, restart, and
   startup failure match the specified state table without duplicate producers.
 - [ ] **SA-AC-010:** Clear resets the capture epoch and retained history,
   preserves current channel levels and acquisition state, rebases later
@@ -924,12 +924,12 @@ behavioral, resource, profile, or connected-hardware evidence.
   events per second and run for 30 seconds without loss or duplication.
 - [ ] **SA-AC-012:** Static storage provides at least 2,404 transition entries
   and four baselines.
-- [ ] **SA-AC-013:** Time trimming and capacity overflow evict oldest entries
+- [x] **SA-AC-013:** Time trimming and capacity overflow evict oldest entries
   while preserving correct levels at the retained lower bound.
-- [ ] **SA-AC-014:** Equal and out-of-order retained timestamps have stable,
+- [x] **SA-AC-014:** Equal and out-of-order retained timestamps have stable,
   deterministic ordering; invalid and out-of-horizon events follow specified
   fail/drop behavior.
-- [ ] **SA-AC-015:** The deterministic mock produces the specified four channel
+- [x] **SA-AC-015:** The deterministic mock produces the specified four channel
   patterns and no stale event after stop, restart, or teardown.
 - [x] **SA-AC-016:** Initial Presentation state is idle, empty, two seconds,
   and error-free; delivered captures and states invalidate the view.
@@ -970,7 +970,13 @@ Implementation began with the import of the macOS investigation into
 import preserves the investigation's SwiftPM target structure, macOS target,
 dependencies, sources, and tests as the baseline for later GiftUI integration.
 
-The imported package builds on macOS and its eight tests pass with:
+The imported package built on macOS with eight passing baseline tests. Current
+repository and mock-source regression coverage expands that suite to 17 tests,
+including startup cleanup, stable ordering, invalid and out-of-horizon event
+handling, time and capacity baseline preservation, stale-event rejection,
+exact deterministic timing patterns, and teardown lifetime.
+
+The current suite passes with:
 
 ```sh
 swift test --package-path demo/SignalAnalyzer

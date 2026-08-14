@@ -1,7 +1,7 @@
 import SignalAnalyzerDomain
 
 @MainActor
-package protocol SignalTransitionSink {
+package protocol SignalTransitionSink: AnyObject {
     func receive(_ transition: SignalTransition)
 }
 
