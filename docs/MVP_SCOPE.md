@@ -111,6 +111,12 @@ Rank 1 establishes the layout functionality necessary to describe the analyzer w
 | `disabled` | Prevent input according to current application state | Acquisition actions and selected time-window button |
 | `@State` with observable reference state | Preserve the view model and invalidate dependent view descriptions when it changes | Capture data, acquisition status, errors, and visible window |
 
+Observable reference-state invalidation is an explicit MVP requirement because
+the Signal Analyzer receives changing capture and acquisition state. Its
+architecture and public contract are not established by this scope document;
+they require a separate feature lifecycle beginning with a Proposal before
+implementation is authorized.
+
 The MVP intentionally limits rendering to **opaque RGB colors**. Alpha compositing, gradients, shadows, and richer styling are not required unless a later concrete MVP requirement introduces them.
 
 ---
@@ -131,6 +137,12 @@ Only the drawing functionality required by the analyzer is in scope.
 | `StrokeStyle` | Configure line width, round caps, and round joins |
 | Solid color shading | Use an opaque RGB color as a stroke source |
 | Drawing geometry | Provide points, sizes, and scalar arithmetic in canvas coordinate space |
+
+Canvas, path, and stroke support are explicit MVP requirements because the
+Signal Analyzer must draw its time grid and digital traces. Their architecture
+and public contracts are not established by this scope document; they require
+a separate feature lifecycle beginning with a Proposal before implementation
+is authorized.
 
 The canvas needs to support only the analyzer's immediate requirements:
 
@@ -259,6 +271,10 @@ GiftUI is responsible for presenting and reacting to application state.
 The Signal Analyzer application may obtain changing signal data through its own domain and data layers.
 
 The MVP requires GiftUI to correctly react to observable reference state exposed to the presentation layer.
+
+That observation mechanism is a separately governed MVP feature. The scope
+requires the outcome but does not select an observation architecture or make
+the macOS investigation's Observation framework an embedded dependency.
 
 The design of signal acquisition, hardware sampling, persistence, repositories, and other analyzer-specific domain/data mechanisms is outside the GiftUI feature scope except where they expose requirements on the UI framework.
 

@@ -6,14 +6,19 @@ status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-13
-updated: 2026-08-13
+updated: 2026-08-14
 proposal: []
-related_rfcs: []
-related_adrs: []
+related_rfcs:
+  - RFC-001
+related_adrs:
+  - ADR-001
+  - ADR-002
+  - ADR-003
+  - ADR-004
 related_specs: []
 supersedes: []
 superseded_by: []
-target_milestone: null
+target_milestone: MVP
 ---
 
 # PROPOSAL-002: Signal Analyzer Reference Application
