@@ -12,6 +12,9 @@ proposal:
 related_rfcs: []
 related_adrs: []
 related_specs: []
+related_future_work: []
+related_explorations: []
+related_spikes: []
 supersedes: []
 superseded_by: []
 target_milestone: null
@@ -100,6 +103,12 @@ Describe unit, conformance, integration, platform, and hardware evidence.
 ## Open Questions
 
 - Unresolved question and the evidence or authority needed to close it.
+
+## Deferred and Follow-up Work
+
+List each linked `FW-NNN`, `EXP-NNN`, or `SPIKE-NNN`, the reason it is outside
+this RFC's current scope, and its revisit trigger. A decision required for this
+RFC's coherence remains an open blocker and cannot be deferred here.
 
 ## Decision Summary
 

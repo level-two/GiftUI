@@ -43,6 +43,8 @@ does not trace to the reference application or stack validation.
 4. Examine embedded constraints, memory/code size, performance, compatibility,
    testing difficulty, and missing alternatives.
 5. Identify choices that must become ADRs and questions that block approval.
+6. Verify that non-blocking postponed work is captured and cross-linked, and
+   that no decision necessary to the RFC has been hidden in deferred work.
 
 ## Required Output
 
@@ -57,6 +59,8 @@ reason, and required resolution; then list suggestions and candidate ADRs.
 - [ ] Embedded, performance, memory, binary-size, compatibility, and test risks
   were assessed.
 - [ ] Missing alternatives and hidden decisions were identified.
+- [ ] Deferred items have source links, scope boundaries, and concrete revisit
+  triggers; Spike evidence is not treated as a decision.
 - [ ] Blockers are separated from suggestions.
 
 ## Completion Criteria

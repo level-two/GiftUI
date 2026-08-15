@@ -30,6 +30,8 @@ reference application and required stack validation.
 - Order dependencies and identify source-module, test, integration, build, and
   validation changes.
 - Propose safe task boundaries and evidence for completion.
+- Capture optional discoveries as Future Work, Exploration, or Spike records
+  without turning them into implementation-plan tasks.
 
 ## Forbidden Decisions
 
@@ -47,6 +49,8 @@ reference application and required stack validation.
 4. Order tasks by prerequisites and identify parallel-safe work only where
    interfaces are fixed.
 5. Report Spec defects or new architectural questions upstream.
+6. Cross-link useful non-blocking optimizations and questions to deferred work;
+   keep the approved delivery scope unchanged.
 
 ## Required Output
 
@@ -60,6 +64,7 @@ tests/evidence, acceptance-criterion mapping, risks, and upstream blockers.
 - [ ] Dynamic/static and relevant backend/platform work is included.
 - [ ] Dependencies and integration points are explicit.
 - [ ] No task silently changes the contract.
+- [ ] Deferred ideas are not scheduled as authorized implementation work.
 
 ## Completion Criteria
 

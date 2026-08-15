@@ -13,6 +13,9 @@ related_rfcs:
   - RFC-NNN
 related_adrs: []
 related_specs: []
+related_future_work: []
+related_explorations: []
+related_spikes: []
 supersedes: []
 superseded_by: []
 target_milestone: null
@@ -55,6 +58,14 @@ principles.
 ### Follow-up
 
 - Specification, architecture documentation, migration, or validation work.
+
+Link non-required ideas or investigations under `Deferred and Follow-up Work`;
+do not hide a consequence required by this decision there.
+
+## Deferred and Follow-up Work
+
+- Linked Future Work, Exploration, or Spike and why it is not required to
+  accept or apply this decision.
 
 ## Rejected Alternatives
 

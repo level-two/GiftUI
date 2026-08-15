@@ -41,6 +41,28 @@ Conformance review against acceptance criteria
 Implemented Specification
 ```
 
+This gated path remains the only route by which an idea becomes authoritative
+architecture or an implementation contract. A lightweight deferred track runs
+beside it:
+
+```text
+Idea / observation
+      ↓
+Future Work ───────→ close / supersede
+      │
+      ├────────────→ Proposal → RFC → ADR → Specification → Implementation
+      │
+      └────────────→ Exploration ──→ re-evaluate
+                              │              │
+                              └─ Spike ──────┘
+                                             ├─ close / pause
+                                             └─ promote to Proposal or RFC
+```
+
+Future Work, Explorations, and Spikes preserve possibilities and evidence;
+they do not grant approval, add work to a milestone, or create architecture.
+They may be created from any lifecycle stage without advancing that stage.
+
 The stages answer different questions:
 
 | Artifact | Question | Effect of approval |
@@ -50,6 +72,39 @@ The stages answer different questions:
 | ADR | Which architecturally significant choice was made? | Becomes authoritative architecture |
 | Specification | What exact contract must implementation satisfy? | Authorizes major implementation work |
 | Conformance review | Does the implementation meet the approved contract? | Allows the Specification to become `implemented` |
+
+The deferred artifacts answer different, deliberately non-authoritative
+questions:
+
+| Artifact | Question | Expected output |
+| --- | --- | --- |
+| Future Work | What idea, opportunity, question, or postponed decision must not be lost? | A cheap, bounded capture with provenance and a revisit trigger |
+| Exploration | What do we need to understand before proposing or choosing a direction? | Findings, evidence, remaining uncertainty, and a recommendation to promote, pause, or close |
+| Spike | What targeted experiment can produce missing evidence? | Reproducible results; any code is disposable unless separately adopted through the main lifecycle |
+
+## Capture without scope expansion
+
+While drafting or implementing any Proposal, RFC, ADR, Specification, or
+implementation plan, capture a valuable out-of-scope item immediately instead
+of expanding the current artifact. Use the smallest adequate form:
+
+1. Create Future Work for a concise idea, optimization opportunity, unanswered
+   question, or intentionally postponed choice.
+2. Create an Exploration when the uncertainty already needs structured
+   research, competing hypotheses, or an evidence plan.
+3. Create a Spike only when a focused implementation or experiment is the
+   efficient way to answer named questions. Link it to its parent Future Work,
+   Exploration, or RFC.
+4. Add the new ID to the source artifact's relationship metadata and
+   `Deferred and Follow-up Work` section. State what is excluded from current
+   scope and why.
+5. Keep the current artifact's requirements, decisions, acceptance criteria,
+   and milestone unchanged unless they pass their normal review and approval
+   gates.
+
+A sentence such as “consider later” is not durable capture. Deferred work must
+have its own ID and revisit trigger before it can be removed from an RFC's
+open questions or decision boundary.
 
 ## Branching and reuse
 
@@ -87,6 +142,11 @@ on the same ADR. Record every relationship in document metadata and in
 - Major architectural questions SHOULD be resolved.
 - Remaining open questions MUST be explicit and MUST NOT invalidate the
   proposed direction.
+- Every intentionally postponed decision MUST either remain an explicit
+  approval blocker or be extracted into linked Future Work or Exploration with
+  a clear current-scope boundary and revisit trigger.
+- A deferred item MUST NOT contain a decision required for the proposed
+  direction to be coherent. If it does, the RFC is not ready for approval.
 - Approval MUST come from a human maintainer unless authority was explicitly
   delegated.
 
@@ -140,13 +200,52 @@ ADR:           proposed → accepted → deprecated
 
 Specification: draft → review → approved → implementing → implemented
                draft/review/approved/implementing/implemented → superseded
+
+Future Work:   captured → promoted
+                    └──→ closed
+               captured/promoted/closed → superseded
+
+Exploration:   draft → active → concluded
+                         ├────→ paused → active
+                         └────→ abandoned
+               draft/active/paused/concluded/abandoned → superseded
+
+Spike:         planned → active → completed
+                         └────→ abandoned
+               planned/active/completed/abandoned → superseded
 ```
+
+`promoted` identifies the Proposal, RFC, or Exploration that took ownership of
+a Future Work item; it is not an approval. `concluded` means an Exploration
+recorded its findings and disposition, not that GiftUI accepted a design.
+`completed` means a Spike answered or attempted its target questions and
+recorded evidence, not that its code is production-ready.
 
 Moving a document backward for revision is allowed before its approval gate.
 Changing accepted architecture requires a new or superseding ADR, not a
 backward status edit that erases history.
 
 ## Change routing
+
+### Deferred decision or idea discovered in an active artifact
+
+Do not solve it merely because it was noticed. Determine whether it blocks the
+current artifact:
+
+```text
+new question / opportunity
+        ↓
+required for current scope or approval coherence?
+        ├─ yes → keep as an explicit blocker in the current lifecycle
+        └─ no  → capture as FW or EXP, cross-link, preserve scope
+```
+
+If an RFC already contains useful analysis for a postponed topic, move or
+summarize that material in the new Exploration and leave a concise boundary
+and link in the RFC. Do not duplicate normative text or imply that an RFC
+candidate became a decision. If the whole RFC is intentionally postponed,
+leave it at `draft` or `review`, record `target_milestone: null` and its linked
+revisit item; GiftUI does not use an approval-like `deferred` RFC status.
 
 ### Architecture issue discovered during implementation
 
@@ -193,6 +292,27 @@ Use the full lifecycle when a change does one or more of the following:
 
 When uncertain, use feature triage or lifecycle review. Process weight should
 match decision risk, not diff size.
+
+The deferred track is also lightweight, but it is not a shortcut around the
+main lifecycle. Promotion rules are:
+
+- Future Work → Exploration when research or evidence is needed to judge the
+  idea.
+- Future Work → Proposal when GiftUI is ready to evaluate investment in a
+  substantial problem or opportunity.
+- Exploration → Proposal when the problem is credible but investment has not
+  been accepted.
+- Exploration → RFC only when an accepted Proposal already covers the problem
+  and the findings make architectural alternatives reviewable.
+- Spike → parent Exploration or RFC as evidence; a Spike never promotes
+  directly to an ADR, Specification, or production implementation.
+- RFC → ADR, and ADR → Specification, only through the existing approval
+  gates.
+
+Re-evaluate an item when its explicit trigger occurs, when an upcoming
+milestone depends on it, when new evidence changes its value or feasibility,
+or when an authoritative artifact would otherwise foreclose it. A calendar
+date alone may be a trigger, but “later” is not.
 
 ## Completion and conformance
 

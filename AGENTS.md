@@ -29,6 +29,12 @@ cross-references when creating or superseding artifacts. Use the role-specific
 skills under `.agents/skills/` for triage, authoring, review, and implementation
 planning; detailed process rules belong there and under `docs/engineering/`.
 
+During any lifecycle or implementation work, capture valuable out-of-scope
+ideas and intentionally postponed decisions through the repository's Future
+Work, Exploration, and Spike track. Use
+`.agents/skills/deferred-work-curator/SKILL.md`; do not expand MVP scope or
+treat deferred artifacts and Spike code as authority.
+
 ## Raspberry Pi skills
 
 - Use `skills/giftui-pi-toolchain/SKILL.md` for toolchain setup, environment

@@ -10,3 +10,7 @@ Specifications govern implementation.
 
 Use filenames of the form `spec-NNN-short-slug.md`. Link every governing ADR,
 define acceptance criteria, and update `docs/features.yaml`.
+
+Optional optimizations or extensions discovered during authoring belong in
+linked [Future Work](../future-work/README.md), not in the approved contract or
+its required acceptance criteria.

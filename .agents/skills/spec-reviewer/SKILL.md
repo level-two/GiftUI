@@ -45,6 +45,8 @@ reference-application or stack-validation requirement.
 4. Check that required tests and acceptance criteria are objective and
    sufficient.
 5. Identify ambiguity, missing behavior, and decisions introduced too late.
+6. Verify that linked deferred work is genuinely optional and that required
+   behavior, accepted-ADR consequences, and correctness are not hidden there.
 
 ## Required Output
 
@@ -59,6 +61,8 @@ upstream architecture issues, and residual risks.
 - [ ] Capability, backend, error, performance, compatibility, and tests agree.
 - [ ] Acceptance criteria are measurable.
 - [ ] Accidental architecture and non-authoritative notes are separated.
+- [ ] Deferred items do not weaken the normative contract or its acceptance
+  criteria.
 
 ## Completion Criteria
 

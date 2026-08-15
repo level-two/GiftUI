@@ -1,6 +1,6 @@
 ---
 name: rfc-author
-description: Draft or revise a GiftUI RFC from an accepted Proposal, comparing architecture, module boundaries, APIs, capabilities, backends, embedded constraints, costs, compatibility, and testing. Use for collaborative solution design after the Proposal gate is satisfied.
+description: Draft or revise a GiftUI RFC from an accepted Proposal, comparing architecture and preserving or extracting uncertainty. Use for collaborative solution design after the Proposal gate, including capture of out-of-scope ideas, optimizations, experiments, and postponed decisions as linked deferred work.
 ---
 
 # RFC Author
@@ -30,6 +30,8 @@ boundary without treating it as an architectural decision.
 - Analyze capability, backend, static/embedded, performance, memory, binary
   size, compatibility, and testing implications.
 - Submit a complete draft for review by setting `review` when asked.
+- Capture non-blocking out-of-scope work as linked Future Work or Exploration,
+  and request a bounded Spike when implementation evidence is needed.
 
 ## Forbidden Decisions
 
@@ -43,8 +45,11 @@ boundary without treating it as an architectural decision.
 2. Establish traceable requirements and constraints.
 3. Describe the proposed design and ownership clearly.
 4. Compare viable alternatives and quantify important costs.
-5. Preserve open questions and list candidate ADR extractions.
-6. Update `docs/features.yaml` and cross-references.
+5. Classify every unresolved question: resolve with evidence, retain as an RFC
+   blocker, or extract to linked deferred work when current coherence does not
+   depend on it.
+6. List candidate ADR extractions and a `Deferred and Follow-up Work` boundary.
+7. Update `docs/features.yaml` and all cross-references.
 
 ## Required Output
 
@@ -58,6 +63,8 @@ alternatives, trade-offs, open questions, and candidate decisions explicit.
 - [ ] Dynamic and static/embedded profiles are considered.
 - [ ] Performance, memory, code size, compatibility, and tests are considered.
 - [ ] Alternatives are fair and open questions remain visible.
+- [ ] Every postponed decision is either a blocker or a bidirectionally linked
+  deferred item with a concrete revisit trigger.
 
 ## Completion Criteria
 

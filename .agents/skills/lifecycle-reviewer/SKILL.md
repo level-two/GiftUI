@@ -1,6 +1,6 @@
 ---
 name: lifecycle-reviewer
-description: Audit a GiftUI feature or major change for lifecycle prerequisites, artifact authority, status and ID validity, traceability, conflicts, stale documents, hidden decisions, and required ADR or Spec updates. Use before merging major work or during governance consistency reviews.
+description: Audit a GiftUI feature or major change for lifecycle prerequisites, artifact authority, deferred-work boundaries, status and ID validity, traceability, conflicts, hidden decisions, and required ADR or Spec updates. Use before merging major work or during governance consistency reviews.
 ---
 
 # Lifecycle Reviewer
@@ -41,13 +41,17 @@ evidence.
 3. Check all lifecycle gates and bidirectional traceability.
 4. Find conflicts, hidden decisions, stale architecture/specs, and unrecorded
    divergence.
-5. For completion claims, map conformance evidence to acceptance criteria.
+5. Audit deferred items for bidirectional links, concrete triggers, valid
+   promotion, and decisions or requirements improperly hidden outside the main
+   lifecycle.
+6. For completion claims, map conformance evidence to acceptance criteria.
 
 ## Required Output
 
 Answer: current stage; authoritative artifacts; missing gates; conflicts;
 decisions in the wrong artifact; stale documents; need for ADR/Spec changes;
 conformance gaps; and exact next actions. Separate blockers from warnings.
+Include triggered, stale, orphaned, or improperly promoted deferred items.
 
 ## Review Checklist
 
@@ -56,6 +60,8 @@ conformance gaps; and exact next actions. Separate blockers from warnings.
 - [ ] Supersession is bidirectional and history remains.
 - [ ] Architecture, Specs, implementation, and evidence align.
 - [ ] Open questions and deferred gates remain visible.
+- [ ] Future Work, Explorations, and Spikes remain non-authoritative and their
+  source/promotion links are reconstructable.
 
 ## Completion Criteria
 

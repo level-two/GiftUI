@@ -51,6 +51,11 @@
   dynamically sized collections, runtime type information, or escaping
   closures.
 
+**Exploration**
+: A non-authoritative investigation of uncertain questions, hypotheses, or
+  candidate directions. It produces findings and a disposition but need not
+  reach or authorize a decision.
+
 **Feature**
 : A stable, manifest-keyed engineering concern that can be tracked through one
   or more lifecycle branches.
@@ -58,6 +63,11 @@
 **Feature manifest**
 : `docs/features.yaml`, the machine-readable navigation index for feature
   state, artifacts, dependencies, and milestones. It is not a design contract.
+
+**Future Work**
+: A cheap, durable capture of one idea, opportunity, unanswered question, or
+  intentionally postponed decision, including provenance and a concrete
+  revisit trigger. It is not a roadmap commitment.
 
 **Implementation contract**
 : An approved Specification defining what implementation and tests must
@@ -92,6 +102,16 @@
 : The “why” artifact: problem, users, value, goals, constraints, scope, and
   success criteria without detailed architecture.
 
+**Promotion**
+: A traceability action by which another artifact takes ownership of deferred
+  work. Promotion does not itself approve a Proposal or RFC, accept an ADR,
+  authorize implementation, or reuse the deferred artifact's ID.
+
+**Revisit trigger**
+: A concrete event, dependency, measurement threshold, milestone need, or new
+  evidence that causes deferred work to be re-evaluated. “Later” is not a
+  revisit trigger.
+
 **RFC (Request for Comments)**
 : The “how” artifact: collaborative architectural design, alternatives,
   trade-offs, costs, and unresolved questions for an accepted Proposal.
@@ -103,6 +123,11 @@
 **Static profile**
 : A GiftUI execution profile designed for bounded or forbidden allocation and
   constrained runtime features, including Embedded Swift targets.
+
+**Spike**
+: A bounded, disposable implementation, prototype, benchmark, or experiment
+  used to answer named questions and produce reproducible evidence. Its code
+  and conclusions are non-authoritative.
 
 **Superseded**
 : Status indicating that a newer artifact replaces current authority. Both

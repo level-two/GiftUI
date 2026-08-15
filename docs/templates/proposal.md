@@ -11,6 +11,9 @@ proposal: []
 related_rfcs: []
 related_adrs: []
 related_specs: []
+related_future_work: []
+related_explorations: []
+related_spikes: []
 supersedes: []
 superseded_by: []
 target_milestone: null
@@ -66,6 +69,11 @@ class design.
 ## Open Questions
 
 - Unresolved product or scope question.
+
+## Deferred and Follow-up Work
+
+Link any Future Work, Exploration, or Spike captured while drafting this
+Proposal. State why each item is outside this Proposal's current scope.
 
 ## References
 

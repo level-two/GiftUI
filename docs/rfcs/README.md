@@ -10,3 +10,8 @@ implementation contracts.
 
 Use filenames of the form `rfc-NNN-short-slug.md`. An RFC requires an accepted
 Proposal and must be added to `docs/features.yaml`.
+
+When review exposes a valuable question or optimization outside current scope,
+capture it under [Future Work](../future-work/README.md) or
+[Explorations](../explorations/README.md) and cross-link it from the RFC.
+Keep any decision required for RFC coherence as an open approval blocker.

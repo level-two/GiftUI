@@ -14,7 +14,7 @@ Before drafting or implementing major feature work:
    `docs/PRINCIPLES.md`;
 3. inspect [the feature manifest](../features.yaml);
 4. locate the feature's linked Proposal, RFCs, accepted ADRs, approved
-   Specifications, and current conformance evidence;
+   Specifications, deferred-track items, and current conformance evidence;
 5. read affected architecture documentation and applicable repository skills;
 6. state the current lifecycle stage, MVP justification, and any missing gate
    before proceeding.
@@ -31,6 +31,9 @@ Without special approval, an agent may:
 - review artifacts and distinguish blockers from suggestions;
 - propose status changes for a human to approve;
 - identify conflicts, missing prerequisites, and apparent consensus;
+- create or update Future Work, Exploration, and Spike artifacts without human
+  approval when doing so preserves supplied observations and does not expand
+  current scope;
 - implement work already authorized by an approved Specification;
 - update traceability and evidence as part of authorized work.
 
@@ -48,6 +51,9 @@ An agent MUST NOT:
   Specification;
 - silently change accepted architecture or rewrite historical reasoning;
 - close open questions arbitrarily to produce a complete-looking document;
+- treat a Future Work item, Exploration finding, Spike result, or experimental
+  code as a decision, contract, roadmap commitment, or implementation
+  authorization;
 - change a Specification merely to make implementation easier;
 - claim hardware validation from a build, simulator, or host test.
 
@@ -62,6 +68,28 @@ references and request human resolution.
 Preserve normative versus exploratory language. A candidate in an RFC remains
 a candidate until a decision is accepted and a contract approved.
 
+## Deferred discovery behavior
+
+During Proposal, RFC, ADR, Specification, planning, implementation, or review
+work, actively notice valuable ideas, optimization opportunities, unanswered
+questions, and intentionally postponed choices. For each item:
+
+1. Determine whether it blocks the current artifact's coherence, correctness,
+   or approval gate. If yes, keep it visible as a blocker and do not defer it.
+2. Otherwise create the smallest adequate artifact: Future Work for capture,
+   Exploration for structured uncertainty, or Spike for a bounded experiment.
+3. Preserve provenance, why it is outside current scope, concrete revisit
+   triggers, and bidirectional links to the source artifact.
+4. Do not add the item to MVP scope, a roadmap, requirements, acceptance
+   criteria, or implementation tasks unless separately authorized.
+5. When a trigger is observed, report it and recommend re-evaluation; do not
+   silently promote or decide the item.
+
+An agent may create a deferred artifact as part of authorized documentation or
+implementation work. It MUST NOT launch a Spike that changes connected
+hardware, external systems, or other scoped resources without the same user
+authorization that experiment would normally require.
+
 ## Artifact creation and updates
 
 When creating or superseding a lifecycle artifact:
@@ -69,6 +97,7 @@ When creating or superseding a lifecycle artifact:
 - allocate an immutable ID and use the matching template;
 - preserve provenance with links to source artifacts and useful legacy text;
 - update both directions of supersession references;
+- update both sides of deferred-track source, parent, and promotion links;
 - add or update `docs/features.yaml` in the same change;
 - check referenced IDs, statuses, and gate prerequisites;
 - avoid copying substantive text into the manifest, roadmap, or agent skills.

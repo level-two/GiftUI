@@ -14,6 +14,9 @@ related_rfcs:
 related_adrs:
   - ADR-NNN
 related_specs: []
+related_future_work: []
+related_explorations: []
+related_spikes: []
 supersedes: []
 superseded_by: []
 target_milestone: null
@@ -116,6 +119,12 @@ techniques but cannot change the contracts above.
 List non-architectural issues that may remain during drafting. If an issue
 requires a new architectural choice, pause Specification work and route it
 through RFC/ADR review.
+
+## Deferred and Follow-up Work
+
+Link optimizations, extensions, questions, or experiments intentionally
+excluded from this contract. A requirement needed for correctness or an
+accepted ADR cannot be deferred to preserve approval readiness.
 
 ## References
 

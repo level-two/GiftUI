@@ -1,6 +1,6 @@
 ---
 name: feature-triage
-description: Determine a GiftUI feature's lifecycle state, authoritative artifacts, missing prerequisites, and next required artifact. Use when a request proposes major feature work, asks what may be changed, or needs routing before design or implementation.
+description: Determine a GiftUI feature's lifecycle state, authoritative artifacts, deferred items, missing prerequisites, and next required artifact. Use when a request proposes major or future work, asks what may be changed, or needs routing before design, exploration, or implementation.
 ---
 
 # Feature Triage
@@ -22,7 +22,8 @@ feature.
 3. `docs/engineering/AI_AGENT_RULES.md`
 4. `docs/MVP_SCOPE.md`, `docs/VISION.md`, and `docs/PRINCIPLES.md`
 5. `docs/features.yaml`
-6. Linked lifecycle artifacts and affected architecture documents as needed.
+6. Linked lifecycle and deferred-track artifacts and affected architecture
+   documents as needed.
 
 ## Allowed Decisions
 
@@ -31,6 +32,8 @@ feature.
 - Determine whether MVP inclusion traces to the reference application or a
   required stack validation.
 - Recommend the next artifact or review role.
+- Route a non-blocking idea to Future Work, Exploration, or Spike without
+  treating it as a feature-stage advancement.
 
 ## Forbidden Decisions
 
@@ -44,13 +47,16 @@ feature.
 2. Verify document status, relationships, supersession, and authority.
 3. Compare the evidence with lifecycle gates.
 4. Identify conflicts and unknowns without resolving architecture.
-5. Recommend the smallest valid next step and applicable role skill.
+5. For post-MVP or non-blocking ideas, distinguish cheap capture from work that
+   needs structured Exploration or a targeted Spike.
+6. Recommend the smallest valid next step and applicable role skill.
 
 ## Required Output
 
 Report the feature ID or `unregistered`, current stage, MVP justification or
 post-MVP classification, authoritative artifacts, non-authoritative context,
-missing prerequisites, conflicts, next artifact/role, and approvals needed.
+linked deferred items and triggers, missing prerequisites, conflicts, next
+artifact/role, and approvals needed.
 
 ## Review Checklist
 

@@ -10,3 +10,6 @@ They do not authorize implementation or prescribe detailed architecture.
 Use filenames of the form `proposal-NNN-short-slug.md`. Allocate the next
 unused `PROPOSAL-NNN` ID and add the artifact to `docs/features.yaml` in the
 same change.
+
+Use [Future Work](../future-work/README.md) for valuable ideas that do not yet
+justify Proposal scope, and cross-link ideas captured while drafting.

@@ -45,7 +45,9 @@ and exclude speculative implementation outside its boundary.
    backends, errors, costs, compatibility, and tests.
 4. Make each acceptance criterion measurable and linkable to evidence.
 5. Route newly discovered architecture back to RFC/ADR work.
-6. Update manifest and cross-references.
+6. Capture optional optimizations, extensions, and experiments as linked
+   deferred work without adding them to the contract or acceptance criteria.
+7. Update manifest and cross-references.
 
 ## Required Output
 
@@ -59,6 +61,8 @@ upstream issues that prevent review or approval.
 - [ ] Both runtime profiles and relevant backends/platforms are addressed.
 - [ ] Failure and resource behavior are testable.
 - [ ] Acceptance criteria cover the full normative scope.
+- [ ] Deferred work is optional to this contract and has a concrete revisit
+  trigger; required correctness is not postponed.
 
 ## Completion Criteria
 

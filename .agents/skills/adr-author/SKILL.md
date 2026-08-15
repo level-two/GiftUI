@@ -41,7 +41,9 @@ alignment without deriving the decision from scope alone.
 2. If consensus is incomplete, report the gap and stop extraction.
 3. Allocate the next ADR ID and copy the template.
 4. Record one normative decision and balanced consequences.
-5. Link source artifacts and update the feature manifest and RFC relationships.
+5. Keep consequences required by the decision in the ADR; capture only
+   optional future extensions or investigations as linked deferred work.
+6. Link source artifacts and update the feature manifest and RFC relationships.
 
 ## Required Output
 
@@ -54,6 +56,7 @@ consensus is insufficient and RFC work must resume.
 - [ ] The ADR contains exactly one supported decision.
 - [ ] Rationale and rejected alternatives match the RFC.
 - [ ] Consequences include costs and follow-up work.
+- [ ] Deferred items do not hide a consequence required to apply the decision.
 - [ ] Status remains proposed without explicit human acceptance.
 
 ## Completion Criteria

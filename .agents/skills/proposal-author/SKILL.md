@@ -29,6 +29,8 @@ Read `docs/engineering/FEATURE_LIFECYCLE.md`,
   success criteria, and open questions.
 - Keep a new document at `draft` or move it to `proposed` when explicitly asked
   to submit it for review.
+- Capture valuable non-goal ideas or unanswered directions as Future Work or
+  Exploration when they do not block a coherent investment proposal.
 
 ## Forbidden Decisions
 
@@ -42,7 +44,9 @@ Read `docs/engineering/FEATURE_LIFECYCLE.md`,
 2. Copy the Proposal template and replace every placeholder.
 3. Separate observed problems from assumptions.
 4. Make success criteria observable and non-goals explicit.
-5. Link provenance and update `docs/features.yaml` atomically.
+5. Extract non-blocking deferred items, add bidirectional links, and keep them
+   out of current goals and success criteria.
+6. Link provenance and update `docs/features.yaml` atomically.
 
 ## Required Output
 
@@ -58,6 +62,8 @@ the explicit human acceptance gate.
 - [ ] Goals, non-goals, constraints, and scope agree.
 - [ ] Success criteria are measurable.
 - [ ] Detailed architecture has not leaked in.
+- [ ] Deferred ideas do not silently expand the Proposal or disappear into a
+  vague non-goal.
 - [ ] Metadata, references, and manifest entry are consistent.
 
 ## Completion Criteria

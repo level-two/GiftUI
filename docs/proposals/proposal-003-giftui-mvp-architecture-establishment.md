@@ -6,10 +6,13 @@ status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-13
-updated: 2026-08-14
+updated: 2026-08-15
 proposal: []
 related_rfcs:
   - RFC-002
+  - RFC-003
+  - RFC-004
+  - RFC-005
 related_adrs: []
 related_specs: []
 supersedes: []
