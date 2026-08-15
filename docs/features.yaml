@@ -45,3 +45,14 @@ features:
     dependencies:
       - giftui-mvp-baseline
     milestone: MVP
+  capability-system:
+    title: GiftUI Capability System
+    status: proposal
+    proposal:
+      - PROPOSAL-004
+    rfcs: []
+    adrs: []
+    specs: []
+    dependencies:
+      - giftui-mvp-architecture
+    milestone: MVP
