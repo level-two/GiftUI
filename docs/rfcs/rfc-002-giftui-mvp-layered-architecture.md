@@ -14,6 +14,8 @@ related_rfcs:
   - RFC-003
   - RFC-004
   - RFC-005
+  - RFC-006
+  - RFC-007
 related_adrs: []
 related_specs: []
 related_future_work:
@@ -208,8 +210,8 @@ evidence.
 
 ### 1. Logical layers and dependency direction
 
-The proposed architecture has seven logical responsibility layers plus a
-separately governed capability-system seam:
+The proposed architecture has seven vertical responsibility layers plus two
+small foundational contract packages governed by focused RFCs:
 
 ```text
 Application and target host
@@ -236,6 +238,15 @@ Display/input driver and transport/OS/HAL
 Dependencies point toward contracts and portable semantics, never from
 portable layers toward concrete integrations. A target host is the composition
 root and is allowed to depend on all selected components.
+
+`GiftUICapabilities`, proposed by RFC-006, sits below the contributors that use
+it. It contains the canonical GiftUI Capability vocabulary and pure resolver;
+the umbrella `GiftUI` facade may re-export client-relevant names but is not the
+physical dependency owner. `GiftUIServices`, proposed by RFC-007, contains
+delegated-Service contracts such as monotonic time and wake scheduling.
+Neither foundation package discovers or imports concrete implementations.
+Trait and Service values flow to the composition root without upward package
+imports.
 
 Each logical ownership boundary is enforced by a distinct Swift package with
 its own SwiftPM manifest, product, and primary module. A family such as
@@ -450,11 +461,12 @@ must not be imported by portable views or GiftUI core modules.
 
 ### 9. Capability-system seam
 
-Capability-system definition is outside this RFC. PROPOSAL-004 owns the
-problem and, after its acceptance gate, a focused capability RFC must define
-the vocabulary, contribution and resolution model, propagation, consumption,
-absence behavior, policy relationship, diagnostics, and minimum typed MVP
-catalogue.
+Capability-system definition is outside this RFC.
+[RFC-006](rfc-006-capability-system-architecture.md) owns the vocabulary,
+Trait contribution and resolution model, propagation, consumption, absence
+behavior, policy relationship, diagnostics, and minimum typed MVP catalogue.
+It places the vocabulary and generic resolver together in the foundational
+`GiftUICapabilities` package described by this coordinated draft.
 
 This RFC supplies only the layering constraints that work must respect:
 
@@ -500,6 +512,8 @@ boundary without imposing a retained display list on the static profile.
 | Logical module or family | Responsibility | Dependency impact |
 | --- | --- | --- |
 | `GiftUI` | Portable declarations and client-facing API facade | Depends only on portable semantic and geometry contracts; imports no concrete runtime, render, backend, platform, driver, OS, RTOS, or HAL implementation |
+| `GiftUICapabilities` | Canonical semantic Capability vocabulary, typed Trait/contribution contracts, pure generic resolution, effective snapshots, and validation identities | Foundational leaf package; imports no higher GiftUI layer or concrete integration; contributors import it downward and the target host supplies their values |
+| `GiftUIServices` | Portable delegated-Service contracts and bounded service-bundle seams | Foundational contract package; imports no platform implementation; runtime and hosts depend on it while concrete adapters implement it |
 | `GiftUIDynamicConveniences` | Heap-backed strings, closure actions, and other opt-in dynamic syntax | Depends only on portable GiftUI contracts and supported dynamic facilities |
 | `GiftUISemanticCore` | Portable semantic traversal, identity, state, invalidation, reconciliation, hit-region, and action-routing contracts | Depends on the public declaration/geometry layer; imports no concrete runtime, layout implementation, renderer, or integration |
 | `GiftUIRuntimeDynamic` / `GiftUIRuntimeStatic` | Profile-specific semantic storage and execution | Each depends on portable semantic contracts and invokes layout/render boundaries; neither imports a concrete backend |
@@ -544,11 +558,11 @@ APIs.
 ## Capabilities Impact
 
 Capability-system definition is not part of this RFC. This architecture only
-requires that its separate modules expose non-inverting seams through which
-the capability-system lifecycle can later define contribution, resolution,
-propagation, and consumption. The minimum typed MVP set and all policy or
-absence behavior belong to PROPOSAL-004 and its future RFC. Until that work
-passes its gates, RFC-002 must not be read as capability authority.
+requires non-inverting seams through which RFC-006 defines Trait contribution,
+resolution, propagation, and consumption. The minimum typed MVP set and all
+policy or absence behavior belong to RFC-006. Delegated environmental
+operations belong to RFC-007. Until those focused RFCs pass their gates,
+RFC-002 must not be read as Capability or Service authority.
 
 ## Backend Impact
 
@@ -872,10 +886,15 @@ postponed work are routed below instead of remaining hidden approval blockers.
   frame, and presentation-transaction semantics.
 - [RFC-005](rfc-005-failure-diagnostics-propagation.md) owns error and
   diagnostic propagation across the layers.
-- [PROPOSAL-004](../proposals/proposal-004-capability-system.md) owns capability
-  system investment. After its acceptance gate, its RFC must define the
-  capability model, resolution, propagation, policy relationship, and minimum
-  typed MVP catalogue; none of those are defined here.
+- [RFC-006](rfc-006-capability-system-architecture.md) owns the capability
+  vocabulary, contribution and resolution model, propagation, policy
+  relationship, diagnostics, absence behavior, and minimum typed MVP
+  catalogue. RFC-002 supplies its candidate layer boundaries but does not
+  define capability semantics.
+- [RFC-007](rfc-007-delegated-services-architecture.md) owns environmental
+  Service contracts such as monotonic time, wake scheduling, and diagnostic
+  delivery. Services are supplied by the target host and are not themselves
+  client-facing Capabilities.
 - Existing proof-of-concept code will be revised and fitted into the accepted
   module graph through later ADRs, Specifications, and migration planning. It
   is not an input to the target architecture.
@@ -921,6 +940,8 @@ extracted from this RFC.
 - [RFC-003: Deterministic Text Rendering Architecture](rfc-003-deterministic-text-rendering-architecture.md)
 - [RFC-004: Run Cycle and Frame Transaction Architecture](rfc-004-run-cycle-and-frame-transaction.md)
 - [RFC-005: Failure and Diagnostics Propagation Architecture](rfc-005-failure-diagnostics-propagation.md)
+- [RFC-006: GiftUI Capability System Architecture](rfc-006-capability-system-architecture.md)
+- [RFC-007: GiftUI Delegated Services Architecture](rfc-007-delegated-services-architecture.md)
 - [FW-004: Retained Render Tree](../future-work/fw-004-retained-render-tree.md)
 - [FW-005: Alternative Geometry Scalar Representations](../future-work/fw-005-alternative-geometry-scalars.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)

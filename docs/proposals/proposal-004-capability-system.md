@@ -2,7 +2,7 @@
 id: PROPOSAL-004
 feature: capability-system
 title: GiftUI Capability System
-status: draft
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
@@ -10,6 +10,7 @@ updated: 2026-08-15
 proposal: []
 related_rfcs:
   - RFC-002
+  - RFC-006
 related_adrs: []
 related_specs: []
 supersedes: []
@@ -257,11 +258,11 @@ and subsequent accepted ADRs and approved Specifications.
 
 ## Impact of Acceptance
 
-Acceptance would authorize focused architecture work for the Capability
-System within the boundaries established by the GiftUI MVP architecture. It
-would not approve the architectural mechanisms proposed in legacy material or
-in the draft layered-architecture RFC, and it would not authorize public APIs,
-package changes, implementation, or claims of configuration conformance.
+Acceptance authorizes focused architecture work for the Capability System
+within the boundaries established by the GiftUI MVP architecture. It does not
+approve the architectural mechanisms proposed in legacy material or in the
+draft layered-architecture RFC, and it does not authorize public APIs, package
+changes, implementation, or claims of configuration conformance.
 
 ## References
 
@@ -269,6 +270,7 @@ package changes, implementation, or claims of configuration conformance.
 - [PROPOSAL-002: Signal Analyzer Reference Application](proposal-002-signal-analyzer-reference-application.md)
 - [PROPOSAL-003: GiftUI MVP Architecture Establishment](proposal-003-giftui-mvp-architecture-establishment.md)
 - [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md) — draft, non-authoritative architectural context
+- [RFC-006: GiftUI Capability System Architecture](../rfcs/rfc-006-capability-system-architecture.md) — draft, non-authoritative architectural exploration
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [MVP Milestones](../roadmap/MVP_MILESTONES.md)
 - [GiftUI Vision](../VISION.md)

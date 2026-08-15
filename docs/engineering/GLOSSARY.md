@@ -1,5 +1,8 @@
 # Engineering Governance Glossary
 
+GiftUI framework and architecture terminology is defined separately in the
+[GiftUI Project Glossary](../GLOSSARY.md).
+
 **Accepted**
 : Human-authorized status for a Proposal or ADR. An accepted Proposal permits
   design exploration; an accepted ADR is authoritative architecture.
@@ -29,11 +32,6 @@
   product scope, accepted ADRs, and approved Specifications are authoritative
   at their respective levels.
 
-**Capability**
-: An explicit representation of behavior or resources available from a
-  runtime profile, platform, backend, or device. Capabilities must not be
-  inferred from unrelated implementation details.
-
 **Conformance review**
 : Evidence-based comparison of implementation behavior with an approved
   Specification's acceptance criteria.
@@ -45,11 +43,6 @@
 **Deprecated**
 : ADR status indicating that use is discouraged while history and any
   remaining applicability are preserved.
-
-**Dynamic profile**
-: A GiftUI execution profile that can use facilities such as heap allocation,
-  dynamically sized collections, runtime type information, or escaping
-  closures.
 
 **Exploration**
 : A non-authoritative investigation of uncertain questions, hypotheses, or
@@ -119,10 +112,6 @@
 **Specification**
 : The “what” artifact: precise, testable behavior and interfaces derived from
   accepted architectural decisions.
-
-**Static profile**
-: A GiftUI execution profile designed for bounded or forbidden allocation and
-  constrained runtime features, including Embedded Swift targets.
 
 **Spike**
 : A bounded, disposable implementation, prototype, benchmark, or experiment

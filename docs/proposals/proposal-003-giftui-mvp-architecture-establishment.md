@@ -10,6 +10,7 @@ updated: 2026-08-15
 proposal: []
 related_rfcs:
   - RFC-002
+  - RFC-007
   - RFC-003
   - RFC-004
   - RFC-005

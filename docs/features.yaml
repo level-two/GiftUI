@@ -43,6 +43,7 @@ features:
       - RFC-003
       - RFC-004
       - RFC-005
+      - RFC-007
     adrs: []
     specs: []
     dependencies:
@@ -50,10 +51,11 @@ features:
     milestone: MVP
   capability-system:
     title: GiftUI Capability System
-    status: proposal
+    status: rfc
     proposal:
       - PROPOSAL-004
-    rfcs: []
+    rfcs:
+      - RFC-006
     adrs: []
     specs: []
     dependencies:

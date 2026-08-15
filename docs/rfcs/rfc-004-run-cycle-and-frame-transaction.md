@@ -12,6 +12,8 @@ proposal:
 related_rfcs:
   - RFC-002
   - RFC-005
+  - RFC-006
+  - RFC-007
 related_adrs: []
 related_specs: []
 related_future_work: []
@@ -544,7 +546,7 @@ the cycle or is derived deterministically from such input.
 | Device/display state | Display capability | Changes enter through explicit status/completion inputs | Semantic transaction |
 | Transport state | Transport capability | Independently versioned; failures carry stable tokens | Render operations |
 | Admission/presentation/failure policy | Target host | Stable for a cycle | Individual leaf layers |
-| Diagnostic storage/sink | Target-host capability | Bounded and optional | Semantic correctness logic |
+| Diagnostic storage/sink | Target-host Service | Bounded and optional | Semantic correctness logic |
 
 ### 12. Deterministic observation boundaries
 
@@ -693,12 +695,13 @@ Frame-policy configuration needs facts such as the following where applicable:
 - presentation boundary and completion-token capacity; and
 - viewport, resource, and backend revision or epoch behavior.
 
-Whether and how these become capability values belongs to PROPOSAL-004 and its
-future RFC, not RFC-002 or this RFC. RFC-002 fixes the MVP stack composition as
-immutable after assembly. For example, asynchronous replayable presentation
-may be configured while the Signal Analyzer still selects one in-flight frame
-and one latest pending frame. Absence of replayable storage disables retry
-rather than silently retaining unbounded work.
+Whether and how these become capability values belongs to
+[RFC-006](rfc-006-capability-system-architecture.md), not RFC-002 or this RFC.
+RFC-002 fixes the MVP stack composition as immutable after assembly. For
+example, asynchronous replayable presentation may be configured while the
+Signal Analyzer still selects one in-flight frame and one latest pending
+frame. Absence of replayable storage disables retry rather than silently
+retaining unbounded work.
 
 Runtime device loss is operational state, sequenced as input through the
 failure and completion contracts. It may advance a backend or resource epoch
@@ -1038,6 +1041,8 @@ architecturally significant choices should be extracted into ADRs:
 - [PROPOSAL-004: GiftUI Capability System](../proposals/proposal-004-capability-system.md)
 - [RFC-002: GiftUI MVP Layered Architecture](rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-005: Failure and Diagnostics Propagation Architecture](rfc-005-failure-diagnostics-propagation.md)
+- [RFC-006: GiftUI Capability System Architecture](rfc-006-capability-system-architecture.md)
+- [RFC-007: GiftUI Delegated Services Architecture](rfc-007-delegated-services-architecture.md)
 - [RFC-001: Signal Analyzer Application Architecture](rfc-001-signal-analyzer-application-architecture.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI Vision](../VISION.md)

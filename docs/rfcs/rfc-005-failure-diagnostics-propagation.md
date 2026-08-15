@@ -12,6 +12,8 @@ proposal:
 related_rfcs:
   - RFC-002
   - RFC-004
+  - RFC-006
+  - RFC-007
 related_adrs: []
 related_specs: []
 related_future_work: []
@@ -107,7 +109,7 @@ constraints, and repository traceability rules.
   a boundary.
 - **Failure policy:** Composition-root logic that maps failure facts and
   transaction position to an action.
-- **Diagnostic sink:** An optional capability that consumes diagnostic records
+- **Diagnostic sink:** An optional Service that consumes diagnostic records
   on a best-effort, bounded basis.
 - **Propagation boundary:** Cycle finalization, where accumulated synchronous
   facts are ordered and policy actions are applied.
@@ -505,15 +507,17 @@ migration, but maintained core boundaries cannot depend exclusively on them.
 
 ## Capabilities Impact
 
-Failure policy and diagnostics are assembled services, not inferred platform
-checks. A diagnostic sink is optional; its absence has defined no-op behavior.
+Failure policy is assembled policy, and diagnostic delivery is an injected
+Service rather than an inferred platform check. A diagnostic sink is optional;
+its absence has defined no-op behavior.
 RFC-002 fixes the selected MVP stack as immutable after assembly; runtime
 device presence and loss are operational inputs handled by this failure model
 and RFC-004 rather than capability mutation.
 
-PROPOSAL-004 and its future RFC own the final capability representation and
-the relationship between capability and policy. This RFC does not add a
-general capability catalogue, resolution rule, or propagation model.
+[RFC-006](rfc-006-capability-system-architecture.md) owns the candidate
+capability representation and the relationship between capability and policy.
+This RFC does not add a general capability catalogue, resolution rule, or
+propagation model.
 
 ## Backend Impact
 
@@ -678,7 +682,7 @@ Changing a code's meaning is prohibited; deprecation reserves its identity.
   formatting, rate limits, and loss accounting independently by profile.
 - **Late callbacks violate runtime isolation.** Require tokenized completion
   queues and test that callbacks cannot reach semantic mutation directly.
-- **RFC-002, RFC-004, or the capability-system lifecycle changes a shared
+- **RFC-002, RFC-004, or RFC-006 changes a shared
   layer, configuration, cycle, policy, or frame boundary.** Review these
   artifacts together and revise this draft before any reaches approval.
 - **Privacy-sensitive values enter diagnostic records.** Make fields numeric
@@ -751,6 +755,8 @@ These are candidate decision extractions, not accepted architecture.
 - [PROPOSAL-004: GiftUI Capability System](../proposals/proposal-004-capability-system.md)
 - [RFC-002: GiftUI MVP Layered Architecture](rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-004: Run Cycle and Frame Transaction Architecture](rfc-004-run-cycle-and-frame-transaction.md)
+- [RFC-006: GiftUI Capability System Architecture](rfc-006-capability-system-architecture.md)
+- [RFC-007: GiftUI Delegated Services Architecture](rfc-007-delegated-services-architecture.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
