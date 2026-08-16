@@ -54,11 +54,12 @@ declarative view
     -> OS, HAL, and hardware
 ```
 
-GiftUI semantics therefore remain owned by GiftUI. Backends own rendering,
-presentation, and input adaptation, but do not interpret `View`, `VStack`,
-`Button`, state, identity, or reconciliation. Hardware drivers own controller
-and transport mechanics, but do not become GiftUI backends merely because
-they can display pixels.
+GiftUI semantics therefore remain owned by GiftUI. Backends own rendering and
+presentation, while sibling platform/input adapters normalize device events
+for runtime admission. Neither interprets `View`, `VStack`, `Button`, state,
+identity, or reconciliation. Hardware drivers own controller and transport
+mechanics, but do not become GiftUI backends merely because they can display
+pixels.
 
 These are candidate architectural choices for review. This draft does not
 approve them, define final public APIs, authorize package restructuring, or
@@ -194,11 +195,12 @@ evidence.
 - Existing source compatibility is desirable but secondary to accepted
   architecture. No public ABI stability is established for the proof of
   concept.
-- Every logical ownership layer MUST be a distinct Swift package boundary with
-  its own SwiftPM manifest, product, and primary module. A layer MAY require
-  multiple implementation targets or packages, but one package MUST NOT span
-  multiple logical layers merely to preserve the current proof-of-concept
-  structure.
+- Logical ownership and prohibited imports MUST be enforced by an acyclic
+  Swift module/target graph and dependency tests. The MVP does not require one
+  SwiftPM package or manifest per logical layer: one distribution package MAY
+  aggregate several targets, and a layer family MAY use several targets. A
+  target MUST NOT combine responsibilities when doing so introduces a
+  prohibited dependency or makes an ownership boundary untestable.
 - The active runtime profile, component graph, and layer implementations are
   immutable for an assembled MVP stack. Runtime device presence and failures
   are operational state handled through the run-cycle and failure contracts,
@@ -242,10 +244,10 @@ root and is allowed to depend on all selected components.
 
 `GiftUICapabilities`, proposed by RFC-006, sits below the contributors that use
 it. It contains the canonical GiftUI Capability vocabulary and pure resolver;
-the umbrella `GiftUI` facade may re-export client-relevant names but is not the
-physical dependency owner. It does not discover or import concrete
-implementations. Trait values flow to the composition root without upward
-package imports.
+the `GiftUI` client module may expose only a separately approved narrow client
+projection and is not the physical capability owner. `GiftUICapabilities` does
+not discover or import concrete implementations. Trait values flow to the
+composition root without upward package imports.
 
 Environmental operations needed by an approved feature or runtime contract
 must be supplied explicitly by the target host through the narrowest owning
@@ -254,16 +256,71 @@ does not establish a universal Service catalogue or require a dedicated
 Service package before a concrete consumer justifies one. RFC-007 and FW-009
 preserve that postponed generalization.
 
-Each logical ownership boundary is enforced by a distinct Swift package with
-its own SwiftPM manifest, product, and primary module. A family such as
-backends, display drivers, or HAL implementations may contain multiple
-concrete packages or targets, but no package may combine responsibilities from
-two logical layers. A workspace or repository may aggregate the packages, and
-the public `GiftUI` facade may re-export selected products for client
-ergonomics. Static specialization may erase runtime call overhead, but none of
-those mechanisms may erase package dependencies or reverse their direction.
+Logical ownership is enforced at the narrowest dependency boundary that needs
+compiler or import-test protection. For the MVP, distinct Swift targets and
+modules inside one distribution package are sufficient; additional SwiftPM
+packages require an external distribution, toolchain, or dependency-cycle
+need and are not created mechanically per layer. Static specialization may
+erase runtime call overhead, but it may not reverse the source-level import
+graph or move responsibilities into a target that requires forbidden imports.
 
-### 2. Cross-layer contract matrix
+`GiftUI` is the physical portable declaration module and the sole import
+required by portable Presentation code, not an umbrella that re-exports
+runtime, layout, render, backend, or integration implementations. Optional
+dynamic conveniences remain a separate explicit import. `GiftUI` owns the
+lowest portable values that must be shared by declarations and their
+consumers: checked geometry/scalars, backend-neutral input values, and public
+semantic declaration vocabulary. These values may use package-scoped
+implementation detail, but they introduce no upward dependency. Hosts import
+additional products explicitly.
+
+### 2. Physical contract ownership and module DAG
+
+The following physical ownership makes the cross-layer contracts acyclic.
+Names other than the stable client module `GiftUI` are candidate maintained
+module names; Specifications may refine a name or split an implementation
+family without changing the listed owner or dependency direction.
+
+| Contract family | Physical contract owner | Allowed dependency direction |
+| --- | --- | --- |
+| Public declarations, checked geometry/scalars, and normalized input values | `GiftUI` portable leaf module | Imports no runtime, layout, render, backend, platform, driver, OS/RTOS, HAL, or concrete capability implementation |
+| Structural/action identity, state binding hooks, invalidation, hit maps, and semantic routing | `GiftUISemanticCore` | Depends on `GiftUI`; exposes no backend or integration type |
+| Layout proposals, semantic-child adapter, measurement/placement results, and hit geometry | `GiftUILayout` | Depends on `GiftUI`; the runtime adapts semantic children to this consumer-owned contract, so layout does not import a runtime implementation |
+| Render operations, resource identities, ordered sinks, and replay storage contracts | `GiftUIRenderCore` | Depends on `GiftUI`; imports no semantic-runtime, backend, platform, or driver implementation |
+| Cycle/frame/attempt identity, frame envelope, admission, and completion records | focused execution contract governed by RFC-004 | Depends on portable values and `GiftUIRenderCore`; both runtimes and backends depend on it rather than on each other |
+| Cross-layer failure facts and composition-policy seam | focused failure contract governed by RFC-005 | Remains below its producers and coordinators; exact target placement follows RFC-005 without importing a concrete runtime or integration |
+| Capability vocabulary and pure resolution | `GiftUICapabilities`, governed by RFC-006 | Foundational leaf relative to contributors; imports no higher or concrete integration layer |
+| Runtime execution | `GiftUIRuntimeDynamic` / `GiftUIRuntimeStatic` | Depend on `GiftUI`, semantic, layout, render, execution, failure, and approved capability contracts; import no concrete backend |
+| Backend frame consumption and surface contracts | `GiftUIBackend` | Depends on render, execution, failure, and portable geometry contracts; imports no semantic runtime |
+| Raster, display-target, driver, and transport contracts | Narrow consumer-owned integration modules | Dependencies continue downward from render/backend to display target, controller, and transport/HAL; no upward semantic imports |
+| Target host or preset | Composition root | May depend on all selected modules; exports no new portable semantics |
+
+The critical import partial order is therefore (an arrow means “depends on”):
+
+```text
+target host
+    |-> runtime profiles
+    |       |-> GiftUISemanticCore -> GiftUI
+    |       |-> GiftUILayout -------> GiftUI
+    |       |-> GiftUIRenderCore ---> GiftUI
+    |       |-> execution ----------> GiftUIRenderCore
+    |       |-> failure contract
+    |       \-> GiftUICapabilities
+    |-> GiftUIBackend
+    |       |-> execution / failure
+    |       \-> GiftUIRenderCore ----> GiftUI
+    |-> input adapter -> execution + GiftUI
+    |-> raster/display -> GiftUIBackend -> driver -> transport/HAL
+    \-> GiftUICapabilities
+```
+
+The diagram omits secondary downward imports for readability. In particular,
+runtime profiles may import layout and render contracts directly, while
+platform input adapters import only `GiftUI` normalized event values plus the
+execution admission contract. No arrow points from a portable contract toward
+a concrete implementation.
+
+### 3. Cross-layer contract matrix
 
 The matrix below makes the proposed boundary obligations reviewable without
 selecting final Swift declarations. It is normative at the architectural
@@ -281,24 +338,23 @@ The visibility classes used here are:
 - **Integration SPI** — implemented by backends, platforms, drivers, or HALs;
 - **Tooling** — build-time or diagnostic consumption only.
 
-Exact access control and package placement remain Specification work after the
-physical dependency graph and shared-contract ownership questions below are
-resolved.
+Exact access control, target names, and representation remain Specification
+work within the physical owners and partial order established above.
 
 #### Contract meaning and authority
 
 | ID | Producer -> consumer | Contract payload or operation | Semantic authority and prohibited knowledge |
 | --- | --- | --- | --- |
-| B1 | Portable application declaration -> semantic runtime | Root `View` declaration, fixed child composition, ordered modifiers, primitive semantic values, and client actions | GiftUI client semantics are authoritative. Declarations expose no runtime profile, backend, platform, driver, OS, RTOS, HAL, or hardware identity. The runtime may evaluate declarations but may not reinterpret target mechanics as client semantics. |
+| B1 | Portable application declaration -> semantic runtime | Root `View` declaration, fixed child composition, ordered modifiers, primitive semantic values, and client actions | `GiftUI` physically owns the declaration vocabulary. GiftUI client semantics are authoritative. Declarations expose no runtime profile, backend, platform, driver, OS, RTOS, HAL, or hardware identity. The runtime may evaluate declarations but may not reinterpret target mechanics as client semantics. |
 | B2 | Target host -> assembled GiftUI runtime | Selected runtime profile, component implementations, capacities, effective capabilities, explicit consumer-owned environmental contracts, and product policy | The host is the sole composition root. Portable views and lower components neither discover implementations nor mutate the assembled graph. |
-| B3 | Semantic runtime -> layout subsystem | Semantic child access, structural identity needed for caches, proposed size, layout-relevant environment, intrinsic-measurement requests, and bounded workspace | The runtime owns semantic identity and staged state; layout owns measurement and placement rules. Layout receives no backend, surface, pixel-format, platform, or device knowledge. |
+| B3 | Semantic runtime -> layout subsystem | Semantic child access through the `GiftUILayout`-owned adapter contract, structural identity needed for caches, proposed size, layout-relevant environment, intrinsic-measurement requests, and bounded workspace | The runtime owns semantic identity and staged state; `GiftUILayout` owns its input/output contract plus measurement and placement rules. Layout receives no backend, surface, pixel-format, platform, or device knowledge and does not import a runtime implementation. |
 | B4 | Layout/text subsystem -> font-resource contracts and glyph workspace | Canonical font identity, metric/shaping view, text input, bounded line/glyph workspace, and positioned glyph results | RFC-003 owns exact text authority. Layout owns text geometry; raster providers and backends may not remeasure, reshape, substitute a face, or change line placement. |
-| B5 | Layout and semantic lowering -> render core | Resolved geometry, portable paint/drawing intent, positioned text, ordered opaque rectangle and line operations, clip/damage geometry where required, stable resource identities, and opaque hit/action correlation where required | Render core owns normalized operation meaning and transport. It receives no `View`, container, state-storage, reconciliation, platform-handle, or concrete backend object. Semantic action resolution remains runtime-owned. |
+| B5 | Layout and semantic lowering -> render core | Resolved geometry, portable paint/drawing intent, positioned text, ordered opaque rectangle and line operations, clip/damage geometry where required, and stable resource identities | `GiftUIRenderCore` owns normalized operation meaning and transport. It receives no `View`, container, state-storage, reconciliation, hit/action map, platform handle, or concrete backend object. Runtime-owned hit geometry is a parallel revision artifact and never enters the render payload. |
 | B6 | Render core/runtime coordinator -> backend SPI | Stable frame identity and provenance, frame offer, ordered render payload, resource references, coordinate/surface facts, and presentation request | RFC-004 owns frame transaction semantics. A backend executes and presents operations; it does not evaluate views, perform GiftUI layout, mutate semantic state, invoke client actions, or request semantic replay. |
 | B7 | Backend -> rasterizer or memory-surface contract | Normalized drawing operations, clip/damage region, target pixel mapping, raster resources, and bounded pixel/tile workspace | Rasterization owns conversion to pixels, not GiftUI semantics or OS/device mechanics. Pixel quantization and storage format must not feed back into semantic measurement. |
 | B8 | Backend/presentation adapter -> display-target contract | Surface geometry, native format, write region/window, pixel payload, submission identity, and presentation request | The backend owns presentation strategy; the display target owns device-facing submission mechanics. Neither side owns semantic commit, action dispatch, or retry policy. |
 | B9 | Display-controller driver -> transport/HAL implementation | Controller commands, address windows, borrowed or transferred byte buffers, timing requirements, GPIO/SPI/DMA operations, and transaction identity | The controller driver owns controller protocol and state. The transport/HAL owns bus, RTOS, interrupt, and vendor mechanics and imports no GiftUI semantic or render-operation types. |
-| B10 | Platform/input driver adapter -> semantic runtime admission | Backend-neutral pointer/touch event, logical coordinates, phase, stable source/event identity where required, and bounded ordering metadata | Drivers own sampling, calibration, interrupts, evdev, or mouse records; the adapter owns normalization; the runtime owns admission, hit testing, disabled-state enforcement, and semantic routing. Input producers never invoke client actions directly. |
+| B10 | Platform/input driver adapter -> semantic runtime admission | `GiftUI`-owned backend-neutral pointer/touch value, logical coordinates, phase, stable source/event identity where required, and bounded ordering metadata | Drivers own sampling, calibration, interrupts, evdev, or mouse records; a sibling input/platform adapter owns normalization and feeds the RFC-004 admission contract. Input does not enter through the render-oriented `GiftUIBackend` SPI. The runtime owns hit testing, disabled-state enforcement, and semantic routing; producers never invoke client actions directly. |
 | B11 | Semantic runtime -> portable client action/state boundary | Hit-test result, semantic action identity, ordered handler invocation, state mutation, invalidation, and resulting semantic revision | The runtime owns action ordering, reentrancy, state lifetime, and invalidation. Backends, drivers, environmental adapters, and diagnostics cannot mutate application state or dispatch handlers. The separate observable-state lifecycle must define the public state contract. |
 | B12 | Selected components -> capability resolver at composition root | Typed Traits describing implementation, profile, resource, surface, input, presentation, approved environmental-contract, and device facts | RFC-006 owns vocabulary and resolution. Contributors report owned facts without importing higher layers; they do not decide product policy or claim semantic support independently. |
 | B13 | Capability resolver/host -> runtime and selected consumers | Validated immutable effective capability snapshot, selected conforming realization, quantitative bounds, provenance, and validation result | Portable features consume semantic support and constraints, never contributor or target identity. Policy may select among conforming realizations but cannot manufacture support or weaken required behavior. |
@@ -314,7 +370,7 @@ resolved.
 | B2 | The host owns selected implementations and long-lived storage. Profile, component graph, capacities, capability snapshot, explicitly supplied environmental contracts, and policy are immutable for the assembled runtime lifetime. | Construction and validation complete before the first cycle. Runtime operational state may change only through admitted inputs and outcomes, not graph mutation. |
 | B3 | Inputs are borrowed from cycle-stable semantic state. Layout results and hit geometry are owned by staged runtime/frame state for at least the lowering and hit-test lifetimes defined by RFC-004. Cache lifetime is explicit and cannot affect results. | Synchronous, deterministic measurement and placement within a cycle. Layout does not call a concrete backend or accept asynchronous mutation. |
 | B4 | Font packages and identities are immutable assembly resources. Text, line, glyph, and shaping workspaces are explicitly borrowed or caller-owned for a declared cycle/frame scope; no implementation may assume heap retention. | Deterministic layout-time resolution and shaping. Raster acquisition may occur later but cannot change positioned geometry. Exact streaming/borrowing rules remain with RFC-003. |
-| B5 | Resolved values are cycle-stable. Replayable operations are frame-owned; streamed operations are valid only during the synchronous sink call. Resource identity cannot depend on either materialization strategy. Runtime-owned hit/action maps outlive any input routed against them. | Ordered emission after layout. Producers cannot concurrently mutate staged semantics or resources while operations are consumed. |
+| B5 | Resolved values are cycle-stable. Replayable operations are frame-owned; streamed operations are valid only during the synchronous sink call. Resource identity cannot depend on either materialization strategy. The separate runtime-owned hit map outlives every input routed against its committed revision. | Ordered emission after layout. Producers cannot concurrently mutate staged semantics or resources while operations are consumed. Hit-map publication follows RFC-004 but is not operation-sink traffic. |
 | B6 | A replayable payload remains valid through its terminal frame disposition. A one-shot payload is valid only during synchronous acceptance/consumption; asynchronous presentation must retain or transfer only backend-owned presentation data. | Frame offer may be synchronous; presentation completion may be synchronous or asynchronous. Every asynchronous outcome re-enters as ordered runtime input and never calls semantic code directly. |
 | B7 | Backend or caller owns bounded raster scratch, tiles, and surfaces. Borrowed operation/resource data is valid only for the declared draw call; caches have explicit assembly/frame lifetime and cannot change output. | Synchronous operation execution for the MVP path unless a later backend contract explicitly transfers ownership. Raster work cannot race semantic or layout mutation. |
 | B8 | Buffer and pixel-payload ownership is explicit per submission: borrowed data must complete synchronously; asynchronous submission requires transferred or independently stable storage until terminal completion. | Submission may complete synchronously or asynchronously. The target reports exactly one terminal fact per accepted attempt through B16. |
@@ -335,7 +391,7 @@ resolved.
 | B2 | Invalid component combinations, missing required capabilities or environmental contracts, or insufficient capacities prevent runtime start with bounded validation output. | Host API | Assembly fixtures for all four MVP configurations, plus negative fixtures proving prohibited or under-capacity graphs fail before cycles begin. |
 | B3 | Layout returns complete geometry or a structured failure; it never exposes partial geometry as complete. Bounds cover traversal depth, nodes, proposals, caches, hit regions, coordinates, and arithmetic overflow. | Framework SPI | Backend-free layout fixtures for all MVP containers/modifiers and Signal Analyzer geometry, including identical cross-profile results and every capacity edge. |
 | B4 | Unsupported input, package mismatch, workspace exhaustion, malformed resources, and numeric overflow follow RFC-003/RFC-005; no fallback may silently change geometry. | Client API for text request; framework/tooling contracts for packages and layout | Golden canonical text geometry, package integrity, dynamic/static workspace exhaustion, and exact-face raster-provider conformance. |
-| B5 | Operation/resource/hit-correlation exhaustion fails explicitly; an ordered stream is never silently truncated. Bounds cover operation payload, clip depth, paths/segments, resources, identifiers, and any replay storage. | Framework SPI | Golden operation sequences through streaming and replay modes, recording sink validation, malformed-resource tests, and deterministic overflow at every sink boundary. |
+| B5 | Operation or resource exhaustion fails explicitly; an ordered stream is never silently truncated. Bounds cover operation payload, clip depth, paths/segments, resources, identifiers, and any replay storage. Hit-map capacity is a B3/B11 runtime obligation, not render storage. | Framework SPI | Golden operation sequences through streaming and replay modes, recording sink validation, malformed-resource tests, and deterministic overflow at every sink boundary. |
 | B6 | Acceptance, execution, and presentation completion remain distinct. Backend or presentation failure never rolls back committed semantic state or causes semantic replay. Outstanding frames/attempts and payload ownership are bounded. | Integration SPI | Recording/checking backend contract suite, synchronous and asynchronous completion fixtures, backpressure/drop/retry tests, and payload-lifetime instrumentation. |
 | B7 | Unsupported operations, invalid resources, clipping/coordinate overflow, tile/surface exhaustion, and pixel conversion failures are explicit frame-attempt outcomes. Scratch, cache, tile, and surface storage are bounded on static targets. | Integration SPI | The same golden operations through recording, host pixel-surface, framebuffer, and RGB565 tile implementations, with bounds and guard-region checks. |
 | B8 | Invalid geometry/format, submission refusal, disconnection, backpressure, and partial/failed presentation produce stable attempt outcomes. Transfer regions, queued submissions, and buffers are bounded. | Integration SPI | Fake display-target fault injection plus Raspberry Pi and nRF52840 connected-display evidence for the claimed presentation boundary. |
@@ -352,7 +408,7 @@ The evidence column identifies the smallest contract fixture for each boundary;
 it does not replace the supported-configuration progression or connected-board
 evidence required by the Testing Strategy.
 
-### 3. Public declarative API
+### 4. Public declarative API
 
 `GiftUI` remains the primary application import and owns portable declarations
 such as `View`, `ViewBuilder`, fixed composition, `Text`, `Button`, stacks,
@@ -370,7 +426,7 @@ portable-profile operations should be absent at compile time or fail through
 an explicitly bounded contract; they should not be placeholder implementations
 that trap only after deployment.
 
-### 4. Semantic runtime and state
+### 5. Semantic runtime and state
 
 The semantic runtime owns expansion of transient view values into a form on
 which identity, state, invalidation, layout, and event routing can operate. The
@@ -401,7 +457,7 @@ reconciliation, transactions beyond what state consistency needs, animation,
 and a retained lifecycle model are extension points, not required
 implementations.
 
-### 5. Layout and geometry
+### 6. Layout and geometry
 
 Layout is a distinct logical subsystem owned above rendering. It receives
 semantic children, a proposed size, environment values relevant to layout,
@@ -430,7 +486,7 @@ color conversion, controller write windows, and physical transfer regions do
 not influence semantic measurement. A backend may clip or damage resolved
 geometry but may not recompute GiftUI layout semantics.
 
-### 6. Backend-neutral render plan
+### 7. Backend-neutral render plan
 
 After layout, GiftUI lowers semantic content and resolved geometry into a
 small vocabulary of render operations. The proposed MVP vocabulary includes
@@ -441,7 +497,6 @@ fill opaque rectangle
 draw text run
 stroke line path with opaque color and bounded stroke style
 push/pop rectangular clip, if required by selected MVP backends
-associate resolved hit regions with semantic action identifiers
 ```
 
 Exact cases, integer widths, ownership, and public visibility belong in a
@@ -469,7 +524,7 @@ size, and dual-representation conformance work. The retained-tree possibility
 and its revisit triggers are captured in
 [FW-004](../future-work/fw-004-retained-render-tree.md).
 
-### 7. Backend SPI and implementations
+### 8. Backend SPI and implementations
 
 The backend SPI consumes resolved frame information and ordered render
 operations, then presents a frame. It should be decomposed by responsibility
@@ -480,8 +535,11 @@ The MVP needs contracts equivalent to:
 - surface size and pixel/coordinate mapping;
 - frame begin, operation consumption, and frame end/presentation;
 - opaque rectangle, text, and line-stroke support;
-- damage or partial-write information only where an MVP backend needs it;
-- input adaptation into backend-neutral pointer/touch events.
+- damage or partial-write information only where an MVP backend needs it.
+
+Input normalization is the sibling B10 integration seam rather than a method
+on the render-oriented backend SPI. A combined platform preset may assemble
+both, but that convenience does not merge their ownership.
 
 Optional backend contracts are defined only when their governing feature and
 capability lifecycles require them. A backend is not forced to provide
@@ -504,7 +562,7 @@ render plan through QPainter or an equivalent rendering surface. Directly
 mapping `Button` to `QPushButton` would introduce a second semantic runtime and
 requires a separate future RFC.
 
-### 8. Display drivers, input drivers, and HAL
+### 9. Display drivers, input drivers, and HAL
 
 An embedded display backend is not the display-controller driver. The backend
 owns the conversion from GiftUI render operations to raster regions and
@@ -529,7 +587,7 @@ backend-neutral events and action routing. Touch-controller calibration,
 sampling, GPIO interrupts, evdev records, and mouse events remain in drivers
 or platform adapters that lower into those events.
 
-### 9. Configuration and composition
+### 10. Configuration and composition
 
 A supported configuration is the combination of:
 
@@ -554,7 +612,7 @@ Raspberry Pi preset may select the dynamic runtime, Linux framebuffer backend,
 evdev input, and Pi-specific GPIO adapter. It does not own their semantics and
 must not be imported by portable views or GiftUI core modules.
 
-### 10. Capability-system seam
+### 11. Capability-system seam
 
 Capability-system definition is outside this RFC.
 [RFC-006](rfc-006-capability-system-architecture.md) owns the vocabulary,
@@ -576,7 +634,7 @@ No statement in this RFC about a component, format, operation, capacity, or
 runtime profile should be interpreted as defining a capability type or
 resolution rule.
 
-### 11. Frame and event flow
+### 12. Frame and event flow
 
 The proposed serialized MVP flow is:
 
@@ -606,26 +664,30 @@ boundary without imposing a retained display list on the static profile.
 
 | Logical module or family | Responsibility | Dependency impact |
 | --- | --- | --- |
-| `GiftUI` | Portable declarations and client-facing API facade | Depends only on portable semantic and geometry contracts; imports no concrete runtime, render, backend, platform, driver, OS, RTOS, or HAL implementation |
-| `GiftUICapabilities` | Canonical semantic Capability vocabulary, typed Trait/contribution contracts, pure generic resolution, effective snapshots, and validation identities | Foundational leaf package; imports no higher GiftUI layer or concrete integration; contributors import it downward and the target host supplies their values |
+| `GiftUI` | Portable declarations, checked geometry/scalars, normalized input values, and sole import required by portable Presentation | Portable leaf module; imports no runtime, layout, render, backend, platform, driver, OS/RTOS, HAL, or concrete capability implementation and does not re-export those implementations |
+| `GiftUICapabilities` | Canonical semantic Capability vocabulary, typed Trait/contribution contracts, pure generic resolution, effective snapshots, and validation identities | Foundational leaf module governed by RFC-006; imports no higher GiftUI layer or concrete integration; contributors and the target host depend downward on it |
 | `GiftUIDynamicConveniences` | Heap-backed strings, closure actions, and other opt-in dynamic syntax | Depends only on portable GiftUI contracts and supported dynamic facilities |
 | `GiftUISemanticCore` | Portable semantic traversal, identity, state, invalidation, reconciliation, hit-region, and action-routing contracts | Depends on the public declaration/geometry layer; imports no concrete runtime, layout implementation, renderer, or integration |
-| `GiftUIRuntimeDynamic` / `GiftUIRuntimeStatic` | Profile-specific semantic storage and execution | Each depends on portable semantic contracts and invokes layout/render boundaries; neither imports a concrete backend |
-| `GiftUILayout` | Proposal-based measurement, placement, checked integer geometry, cache contracts, and resolved geometry | Depends on semantic and geometry contracts; imports no render, backend, or platform implementation |
+| `GiftUILayout` | Proposal-based measurement, placement, semantic-child adapter, cache contracts, resolved geometry, and hit geometry | Depends on `GiftUI`; owns the B3 consumer contract and imports no runtime implementation, render, backend, or platform integration |
 | `GiftUIRenderCore` | Normalized operations, ordered sinks, optional bounded/array storage, resources, and frame metadata | Depends on resolved geometry and portable resource contracts; exposes no semantic view types to backends |
-| `GiftUIBackend` | Frame lifecycle, operation consumption, and surface contracts | Depends on render core; contains no application or semantic-runtime ownership |
+| RFC-004 execution contract module | Cycle/frame/attempt identities, admission, frame envelope, and completion records | Depends on portable/render contracts; both runtimes and backends depend on it without depending on each other |
+| RFC-005 failure contract module | Cross-layer failure facts and composition-policy seam | Sits below producers and coordinators; imports no concrete runtime, backend, platform, or driver implementation |
+| `GiftUIRuntimeDynamic` / `GiftUIRuntimeStatic` | Profile-specific semantic storage and execution | Each coordinates semantic, layout, render, execution, failure, and capability contracts; neither imports a concrete backend |
+| `GiftUIBackend` | Frame acceptance, operation consumption, presentation, and surface contracts | Depends on render/execution/failure and portable geometry contracts; contains no application or semantic-runtime ownership and does not own input normalization |
 | `GiftUIRaster` | Converts normalized operations into pixels or bounded tiles | Depends on backend/render and pixel-surface contracts, not Linux or a controller |
 | Framebuffer backend targets | Present raster output to memory-surface contracts | Depend on render/raster and surface contracts, not a specific OS |
-| Linux integration targets | Own framebuffer mapping, discovery, presentation, evdev, and other Linux mechanics | Depend on backend and OS adapters; never imported by portable GiftUI layers |
+| Platform input adapter targets | Normalize mouse, evdev, or touch-driver records into `GiftUI` input values and RFC-004 admission | Sibling of render backends; depend on portable input/execution contracts, never semantic-runtime implementations |
+| Linux integration targets | Own framebuffer mapping, discovery, presentation, evdev adaptation, and other Linux mechanics | Compose backend and sibling input contracts with OS adapters; never imported by portable GiftUI layers |
 | Embedded display backend targets | Convert operations into bounded raster regions and display-target writes | Depend on render/raster, backend SPI, and display-target contracts |
 | Display/input driver targets | Implement controller operations, calibration, and device input | Depend on device and transport contracts, not semantic GiftUI types |
 | Transport/HAL targets | Own SPI, GPIO, timing, DMA, RTOS, and OS mechanics | Lowest integration boundary; import no GiftUI semantics |
 | Target host/preset targets | Select the immutable runtime, capacities, backend, drivers, and event-loop integration | Composition roots may depend on every selected layer but export no new portable semantics |
 
-The names above are candidate maintained names; the distinct-package rule is
-the architectural choice. Downstream package Specifications may refine names
-or split one family into additional concrete packages or targets, but may not
-merge two ownership rows into one package.
+Except for the stable client module `GiftUI`, the names above are candidate
+maintained names. Downstream Specifications may refine names and target
+grouping, or split an implementation family, while preserving the contract
+owner, import partial order, and independently testable boundaries. A single
+SwiftPM distribution package may contain these targets.
 
 ## Public API Impact
 
@@ -692,9 +754,9 @@ contracts:
 - no assumption that `Task`, `MainActor`, desktop timers, Objective-C, or a
   font/resource loader exists.
 
-The distinct Swift packages may link into one firmware image and generic
+The distinct module targets may link into one firmware image and generic
 specialization may erase abstraction overhead. Link-time flattening does not
-permit package merging, dependency inversion, or source-level ownership leaks.
+permit dependency inversion or source-level ownership leaks.
 
 Large fixed-capacity storage should support caller-owned long-lived
 workspaces. The legacy stack-ownership proposal shows that embedding multiple
@@ -757,13 +819,13 @@ Dynamic configurations may allocate for convenience, diagnostics, and
 retention, but tests should still measure allocation growth and ensure that a
 portable feature does not accidentally require unbounded storage.
 
-The separate-package rule may increase manifest maintenance, dependency
-resolution, module metadata, generic specialization, build graph, and
-cross-module optimization costs. Release and embedded builds must measure
-those costs, enable whole-module and link-time optimization where supported,
-and keep re-export facades from duplicating implementation. A measured cost
-may justify refining a boundary through a new RFC/ADR; it does not authorize
-silently merging ownership in implementation.
+The module graph may increase module metadata, generic specialization, build
+graph, and cross-module optimization costs. Keeping the targets in one SwiftPM
+distribution package avoids a manifest per layer while retaining compiler-
+checked imports. Release and embedded builds must measure the remaining costs
+and enable whole-module and link-time optimization where supported. A measured
+cost may justify refining a boundary through a new RFC/ADR; it does not
+authorize silently moving responsibilities across an ownership boundary.
 
 ## Alternatives
 
@@ -871,13 +933,13 @@ order, input routing, and capacity failure semantics. Pixel output may differ
 by quantization, font rasterization, rotation, or physical format while still
 conforming to one render contract.
 
-### Package compatibility
+### Package and module compatibility
 
 Existing product names are not architectural authority. Migration will split,
-move, adapt, or replace current code so each logical ownership layer has a
-distinct Swift package, product, and primary module. Public facade and
-convenience products may re-export those modules, but they do not collapse
-their dependency boundaries.
+move, adapt, or replace current code so the target/module graph enforces the
+approved partial order. The MVP may retain one SwiftPM distribution package;
+additional products expose host or integration modules explicitly, while
+portable application code continues to import only `GiftUI`.
 
 ### ABI and data compatibility
 
@@ -928,20 +990,21 @@ substitute for connected-board evidence. Raspberry Pi validation must confirm
 
 ### Dependency enforcement
 
-Add package-graph and import-boundary tests that fail when any logical layer is
-merged into another package or imports upward, and when portable layers import
-concrete backends, platforms, drivers, OS/RTOS modules, or HALs. Static builds
-should also prove that omitted optional facilities are not linked.
+Add target-graph and import-boundary tests that fail on an upward import, on a
+target grouping that makes a prohibited import possible, and when portable
+layers import concrete backends, platforms, drivers, OS/RTOS modules, or HALs.
+Static builds should also prove that omitted optional facilities are not
+linked.
 
 ## Risks
 
 - **The render vocabulary becomes a lowest-common-denominator API.** Keep it
   semantic enough to express required output and validate it against both
   framebuffer and embedded display paths before approval.
-- **Separate packages increase maintenance, build, or binary cost.** Measure
-  dependency resolution, incremental builds, release code size, metadata, and
-  cross-module specialization; use a workspace, public facades, and
-  optimization without merging ownership boundaries.
+- **Module boundaries increase build or binary cost.** Measure incremental
+  builds, release code size, metadata, and cross-module specialization; use
+  one distribution package and link-time optimization without reversing the
+  target import graph.
 - **Dynamic and static behavior drifts.** Use shared semantic fixtures and
   compare resolved layout and render operations before backend-specific work.
 - **The separate capability RFC conflicts with these boundaries.** Treat
@@ -959,57 +1022,57 @@ should also prove that omitted optional facilities are not linked.
   identity and invalidation ownership above rendering so later partial
   reconciliation does not change backend semantics.
 
+## RFC Decomposition Assessment
+
+The matrix has been reviewed using the repository's independently reviewable
+decision-cluster criteria. It does not justify another RFC merely for a layer
+or interface:
+
+| Matrix scope | Governing artifact | Why no additional RFC is needed |
+| --- | --- | --- |
+| B1-B3, B5, and B7-B10 | RFC-002 | Declarative-to-layout lowering, normalized rendering, backend/display separation, and sibling input admission are the core dependency-direction decision. Splitting them would make each draft depend on the others to remain coherent. |
+| B4 | RFC-003 | Text geometry and exact resource identity have independent alternatives and evidence, so the existing focused RFC remains justified. |
+| B6 and B16 | RFC-004 | Cycle ordering, frame lifetime, presentation outcome, and completion admission form one independent execution decision cluster. |
+| B15 and the failure aspects of all rows | RFC-005 | Explicit outcomes, policy ownership, and diagnostic independence are independently reviewable across every layer. |
+| B12-B13 | RFC-006 under PROPOSAL-004 | Capability meaning and resolution have a separate accepted problem, alternatives, and evolution path. |
+| B14 | Consumer RFC or Specification; RFC-007/FW-009 preserve generalization | No common Service foundation is justified until multiple approved consumers demonstrate shared semantics or a dependency problem. |
+| B11 public observable state | Separate feature lifecycle required by MVP Scope | RFC-002 fixes runtime ownership and the publication seam but cannot select the public state architecture. |
+| Canvas public drawing semantics used by B5 | Separate feature lifecycle required by MVP Scope | RFC-002 fixes the render-layer placement of resolved drawing intent; the public Canvas/Path contract requires its own accepted Proposal before an RFC. |
+
+Declarative composition, layout, the non-text render vocabulary, backend SPI,
+display/driver separation, and pointer/touch admission now have sufficient
+architectural ownership here for later Specifications to define exact APIs,
+types, capacities, algorithms, and conformance cases without selecting a new
+architecture. If review later exposes a credible alternative that can be
+approved independently, the decomposition may be revisited; document length
+or module count alone is not such evidence.
+
 ## Open Questions
 
-The contract matrix exposes the following questions that block RFC-002
-approval or the coherence of downstream Specifications. They remain in this
-RFC because they determine whether the proposed ownership and dependency
-direction can be implemented without cycles or hidden coupling:
+RFC-002 has no remaining open question about whether to create another layer
+RFC. The following coordinated decisions or evidence still block approval
+readiness:
 
-1. What is the complete acyclic Swift package dependency graph, including the
-   physical owner of public declarations, geometry, semantic traversal
-   contracts, input events, action and resource identities, bounded outcomes,
-   frame identities, and shared checked primitives? In particular, the current
-   candidate statements that `GiftUI` depends on semantic/geometry contracts,
-   `GiftUISemanticCore` depends on the public declaration/geometry layer, and
-   `GiftUILayout` depends on semantic contracts require an explicit split that
-   cannot form package cycles.
-2. Is `GiftUI` both the physical declaration package and the re-export facade,
-   or must those responsibilities be separated so the semantic runtime and
-   layout packages can depend on declarations without the facade importing
-   back upward? The public import should remain `GiftUI` either way.
-3. Which package owns the B10 backend-neutral input event and coordinate
-   contract, and does input adaptation enter through `GiftUIBackend`, a
-   sibling integration contract, or directly through a host adapter? The
-   answer must keep semantic hit testing above backends without forcing input
-   drivers to import semantic-runtime types.
-4. Does B5 carry opaque hit/action correlation alongside render operations,
-   or are runtime-owned hit regions a parallel frame artifact that never enters
-   the backend payload? The choice must preserve recording/debug correlation
-   without giving backends semantic action ownership or imposing unnecessary
-   static storage.
-5. Is one distinct SwiftPM package per logical ownership layer necessary and
-   proportionate, or can some ownership boundaries be enforced by lower shared
-   contracts and import tests without merging responsibilities? Review must
-   settle package-level enforcement, target placement, static specialization,
-   dependency cycles, and build/binary cost together.
-6. Are RFC-003 through RFC-006 the complete set of focused cross-cutting RFCs
-   needed before RFC-002 can advance, or do any declarative, semantic, layout,
-   render, backend, or input matrix rows still contain an independent
-   architectural choice that Specifications would otherwise have to invent?
-   Observable state and Canvas public contracts remain outside PROPOSAL-003's
-   implementation authority because `docs/MVP_SCOPE.md` explicitly requires
-   separate feature lifecycles for them.
-7. Can the replayable and synchronous-stream lifetimes in B5-B6 satisfy every
-   first-party backend without a third ownership mode, and can every backend
-   name exactly one observable terminal presentation boundary? RFC-004 retains
-   the required adapter sketches, static RAM/lifetime audit, and failure-path
-   evidence needed to close this question.
-8. Which minimum fixed-width identities, queue capacities, workspace bounds,
-   and stack/RAM budgets make B3-B16 viable on nRF52840 without changing their
-   observable dynamic-profile behavior? Focused RFCs may own individual
-   numbers, but RFC-002 review needs evidence that the complete boundary set is
-   jointly feasible.
+1. RFC-004 must determine whether replayable ownership and one-shot synchronous
+   streaming cover every first-party MVP backend, and whether every path can
+   state exactly one observable terminal presentation boundary. A required
+   third ownership mode would amend B5-B6 rather than create a layer RFC.
+2. RFC-005 and RFC-006 must place their focused contract modules within the
+   partial order above without an upward import, and RFC-006 must demonstrate
+   that its minimum fixture-backed catalogue actually needs shared resolution.
+   If either focused RFC changes the shared boundary, the drafts must be
+   reconciled before approval.
+3. Review needs bounded aggregate feasibility evidence for B3-B16 on the
+   nRF52840 configuration: identity and queue representation, workspace
+   ownership, stack high-water, and linked RAM/flash must demonstrate that the
+   boundary set is jointly viable. Exact widths and capacity values remain
+   Specification decisions unless the evidence forces a different ownership
+   or lifetime model.
+
+RFC-003 retains its independent text-ownership blockers. Observable state and
+Canvas remain missing separate feature lifecycles; that blocks Specifications
+and implementation for those public features, but it does not require their
+architecture to be folded into or resolved by RFC-002.
 
 ## Deferred and Follow-up Work
 
@@ -1060,9 +1123,10 @@ architecturally significant choices should be extracted into separate ADRs:
    separate ownership with strictly downward dependencies.
 5. Supported platforms are target-host compositions or presets, not owners of
    cross-cutting GiftUI semantics.
-6. Every logical ownership layer is enforced by a distinct Swift package with
-   its own manifest, product, and primary module, even when a workspace or
-   facade aggregates them or link-time optimization removes runtime overhead.
+6. Logical ownership is enforced by the acyclic target/module import graph and
+   dependency tests. One SwiftPM distribution package may aggregate the MVP
+   targets; `GiftUI` remains the portable declaration module rather than an
+   upward-importing umbrella facade.
 7. The active MVP profile and component graph are immutable after stack
    assembly; runtime presence and failure are operational state.
 8. The core layout and Canvas geometry use checked integer scalars; a general
@@ -1070,6 +1134,9 @@ architecturally significant choices should be extracted into separate ADRs:
    optional future facility rather than an MVP dependency.
 9. Existing proof-of-concept code conforms to or migrates toward the new
    boundaries and does not determine them.
+10. Backend-neutral input normalization is a sibling integration seam feeding
+    runtime admission, not part of the render backend SPI; runtime-owned hit
+    maps remain parallel to render payloads.
 
 Text ownership, run-cycle semantics, error propagation, and the capability
 system remain governed by their focused lifecycle artifacts rather than ADRs
