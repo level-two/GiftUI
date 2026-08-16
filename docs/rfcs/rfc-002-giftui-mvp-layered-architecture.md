@@ -21,6 +21,7 @@ related_specs: []
 related_future_work:
   - FW-004
   - FW-005
+  - FW-009
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -210,8 +211,8 @@ evidence.
 
 ### 1. Logical layers and dependency direction
 
-The proposed architecture has seven vertical responsibility layers plus two
-small foundational contract packages governed by focused RFCs:
+The proposed architecture has seven vertical responsibility layers plus the
+focused capability foundation governed by RFC-006:
 
 ```text
 Application and target host
@@ -242,11 +243,16 @@ root and is allowed to depend on all selected components.
 `GiftUICapabilities`, proposed by RFC-006, sits below the contributors that use
 it. It contains the canonical GiftUI Capability vocabulary and pure resolver;
 the umbrella `GiftUI` facade may re-export client-relevant names but is not the
-physical dependency owner. `GiftUIServices`, proposed by RFC-007, contains
-delegated-Service contracts such as monotonic time and wake scheduling.
-Neither foundation package discovers or imports concrete implementations.
-Trait and Service values flow to the composition root without upward package
-imports.
+physical dependency owner. It does not discover or import concrete
+implementations. Trait values flow to the composition root without upward
+package imports.
+
+Environmental operations needed by an approved feature or runtime contract
+must be supplied explicitly by the target host through the narrowest owning
+contract. This RFC rejects ambient platform lookup and upward imports, but it
+does not establish a universal Service catalogue or require a dedicated
+Service package before a concrete consumer justifies one. RFC-007 and FW-009
+preserve that postponed generalization.
 
 Each logical ownership boundary is enforced by a distinct Swift package with
 its own SwiftPM manifest, product, and primary module. A family such as
@@ -284,7 +290,7 @@ resolved.
 | ID | Producer -> consumer | Contract payload or operation | Semantic authority and prohibited knowledge |
 | --- | --- | --- | --- |
 | B1 | Portable application declaration -> semantic runtime | Root `View` declaration, fixed child composition, ordered modifiers, primitive semantic values, and client actions | GiftUI client semantics are authoritative. Declarations expose no runtime profile, backend, platform, driver, OS, RTOS, HAL, or hardware identity. The runtime may evaluate declarations but may not reinterpret target mechanics as client semantics. |
-| B2 | Target host -> assembled GiftUI runtime | Selected runtime profile, component implementations, capacities, effective capabilities, delegated Services, and product policy | The host is the sole composition root. Portable views and lower components neither discover implementations nor mutate the assembled graph. |
+| B2 | Target host -> assembled GiftUI runtime | Selected runtime profile, component implementations, capacities, effective capabilities, explicit consumer-owned environmental contracts, and product policy | The host is the sole composition root. Portable views and lower components neither discover implementations nor mutate the assembled graph. |
 | B3 | Semantic runtime -> layout subsystem | Semantic child access, structural identity needed for caches, proposed size, layout-relevant environment, intrinsic-measurement requests, and bounded workspace | The runtime owns semantic identity and staged state; layout owns measurement and placement rules. Layout receives no backend, surface, pixel-format, platform, or device knowledge. |
 | B4 | Layout/text subsystem -> font-resource contracts and glyph workspace | Canonical font identity, metric/shaping view, text input, bounded line/glyph workspace, and positioned glyph results | RFC-003 owns exact text authority. Layout owns text geometry; raster providers and backends may not remeasure, reshape, substitute a face, or change line placement. |
 | B5 | Layout and semantic lowering -> render core | Resolved geometry, portable paint/drawing intent, positioned text, ordered opaque rectangle and line operations, clip/damage geometry where required, stable resource identities, and opaque hit/action correlation where required | Render core owns normalized operation meaning and transport. It receives no `View`, container, state-storage, reconciliation, platform-handle, or concrete backend object. Semantic action resolution remains runtime-owned. |
@@ -293,10 +299,10 @@ resolved.
 | B8 | Backend/presentation adapter -> display-target contract | Surface geometry, native format, write region/window, pixel payload, submission identity, and presentation request | The backend owns presentation strategy; the display target owns device-facing submission mechanics. Neither side owns semantic commit, action dispatch, or retry policy. |
 | B9 | Display-controller driver -> transport/HAL implementation | Controller commands, address windows, borrowed or transferred byte buffers, timing requirements, GPIO/SPI/DMA operations, and transaction identity | The controller driver owns controller protocol and state. The transport/HAL owns bus, RTOS, interrupt, and vendor mechanics and imports no GiftUI semantic or render-operation types. |
 | B10 | Platform/input driver adapter -> semantic runtime admission | Backend-neutral pointer/touch event, logical coordinates, phase, stable source/event identity where required, and bounded ordering metadata | Drivers own sampling, calibration, interrupts, evdev, or mouse records; the adapter owns normalization; the runtime owns admission, hit testing, disabled-state enforcement, and semantic routing. Input producers never invoke client actions directly. |
-| B11 | Semantic runtime -> portable client action/state boundary | Hit-test result, semantic action identity, ordered handler invocation, state mutation, invalidation, and resulting semantic revision | The runtime owns action ordering, reentrancy, state lifetime, and invalidation. Backends, drivers, Services, and diagnostics cannot mutate application state or dispatch handlers. The separate observable-state lifecycle must define the public state contract. |
-| B12 | Selected components -> capability resolver at composition root | Typed Traits describing implementation, profile, resource, surface, input, presentation, Service, and device facts | RFC-006 owns vocabulary and resolution. Contributors report owned facts without importing higher layers; they do not decide product policy or claim semantic support independently. |
+| B11 | Semantic runtime -> portable client action/state boundary | Hit-test result, semantic action identity, ordered handler invocation, state mutation, invalidation, and resulting semantic revision | The runtime owns action ordering, reentrancy, state lifetime, and invalidation. Backends, drivers, environmental adapters, and diagnostics cannot mutate application state or dispatch handlers. The separate observable-state lifecycle must define the public state contract. |
+| B12 | Selected components -> capability resolver at composition root | Typed Traits describing implementation, profile, resource, surface, input, presentation, approved environmental-contract, and device facts | RFC-006 owns vocabulary and resolution. Contributors report owned facts without importing higher layers; they do not decide product policy or claim semantic support independently. |
 | B13 | Capability resolver/host -> runtime and selected consumers | Validated immutable effective capability snapshot, selected conforming realization, quantitative bounds, provenance, and validation result | Portable features consume semantic support and constraints, never contributor or target identity. Policy may select among conforming realizations but cannot manufacture support or weaken required behavior. |
-| B14 | Semantic runtime -> delegated Service contracts | Monotonic-time query, bounded wake/cancel request, stable token, and best-effort diagnostic submission | RFC-007 owns Service semantics. The runtime receives injected contracts and never discovers platform implementations; a Service cannot mutate semantics, admit input directly, or become a capability or policy authority. |
+| B14 | Framework consumer -> explicit environmental contract | Only the operation required by an approved consumer, such as a host wake request or diagnostic submission | The consumer RFC or Specification owns the operation semantics. The host supplies the implementation; environmental code cannot mutate semantics, admit input directly, or become capability or policy authority. A shared Service abstraction is deferred by FW-009. |
 | B15 | Any operational layer -> runtime failure boundary and diagnostic support | Typed bounded failure fact, originating boundary/phase, stable cycle/frame/attempt/context identities, and optional diagnostic record | RFC-005 owns classification and policy. Failures propagate upward explicitly; diagnostics have no control-flow authority. Layers do not silently trap, retry, ignore, or degrade outside assembled policy. |
 | B16 | Backend/display/transport completion -> runtime admission | Sequenced acceptance, presentation completion, failure, cancellation, drop, or stale-completion record associated with cycle/frame/attempt identity | RFC-004 and RFC-005 own admission and disposition. Completion producers report facts only; they cannot roll back committed state, replay semantic work, or invoke handlers. |
 
@@ -305,7 +311,7 @@ resolved.
 | ID | Ownership and valid lifetime | Invocation and synchronization model |
 | --- | --- | --- |
 | B1 | Application view values are transient. The runtime owns any derived identity and persistent state separately; it must not retain borrowed declaration storage beyond its declared evaluation lifetime. | Runtime-directed synchronous evaluation inside a sealed cycle. Dynamic conveniences may erase syntax mechanically but may not change observable ordering or permit concurrent semantic mutation. |
-| B2 | The host owns selected implementations and long-lived storage. Profile, component graph, capacities, capability snapshot, Service bundle, and policy are immutable for the assembled runtime lifetime. | Construction and validation complete before the first cycle. Runtime operational state may change only through admitted inputs and outcomes, not graph mutation. |
+| B2 | The host owns selected implementations and long-lived storage. Profile, component graph, capacities, capability snapshot, explicitly supplied environmental contracts, and policy are immutable for the assembled runtime lifetime. | Construction and validation complete before the first cycle. Runtime operational state may change only through admitted inputs and outcomes, not graph mutation. |
 | B3 | Inputs are borrowed from cycle-stable semantic state. Layout results and hit geometry are owned by staged runtime/frame state for at least the lowering and hit-test lifetimes defined by RFC-004. Cache lifetime is explicit and cannot affect results. | Synchronous, deterministic measurement and placement within a cycle. Layout does not call a concrete backend or accept asynchronous mutation. |
 | B4 | Font packages and identities are immutable assembly resources. Text, line, glyph, and shaping workspaces are explicitly borrowed or caller-owned for a declared cycle/frame scope; no implementation may assume heap retention. | Deterministic layout-time resolution and shaping. Raster acquisition may occur later but cannot change positioned geometry. Exact streaming/borrowing rules remain with RFC-003. |
 | B5 | Resolved values are cycle-stable. Replayable operations are frame-owned; streamed operations are valid only during the synchronous sink call. Resource identity cannot depend on either materialization strategy. Runtime-owned hit/action maps outlive any input routed against them. | Ordered emission after layout. Producers cannot concurrently mutate staged semantics or resources while operations are consumed. |
@@ -317,7 +323,7 @@ resolved.
 | B11 | Runtime owns action maps and state slots for their declared structural lifetime. Client handlers receive only public values/Bindings whose lifetime cannot expose runtime storage unsafely. | Dispatch is serialized within the active cycle. Reentrant external input is queued for a later cycle; disabled actions are suppressed before handler invocation. |
 | B12 | Trait values are immutable contribution values or assembly-time borrows copied into resolver-owned bounded workspace. Concrete implementation instances are not stored as semantic capability values. | Contribution and resolution occur before runtime start, with deterministic order independent of dynamic discovery. |
 | B13 | The effective snapshot is immutable for the runtime lifetime. A frame observes a stable snapshot identity; the exact revision/provenance retained by a frame is coordinated with RFC-004 and RFC-006. | Consumers read synchronously without probing contributors. Temporary device availability enters as operational state, not snapshot mutation. |
-| B14 | The host owns concrete Services and the immutable bundle for the runtime lifetime. Tokens and pending requests have explicit bounded lifetime; diagnostic payloads are copied or synchronously consumed. | Calls originate at defined cycle boundaries. Scheduler wakes and Service completions re-enter through bounded admission rather than arbitrary callbacks. |
+| B14 | The host owns each concrete environmental adapter for the assembled runtime lifetime. Tokens and pending requests have the bounds and lifetime defined by their consumer contract; diagnostic payloads are copied or synchronously consumed. | Calls originate at the boundary defined by the owning consumer. Wakeups and asynchronous completions re-enter through bounded admission rather than arbitrary callbacks. |
 | B15 | A cycle owns its bounded failure accumulator until disposition. Completion failures retain only stable numeric identity/context needed for later admission. Diagnostic sinks may consume synchronously or copy into their own bounded storage. | Control-flow failure propagation is synchronous within a cycle; asynchronous failures re-enter through B16. Diagnostic delivery is best effort and never blocks correctness. |
 | B16 | The integration that accepts an attempt owns enough stable identity to emit one terminal record. The admission queue owns copied completion facts until a cycle consumes them. | Completions may originate asynchronously but are serialized at cycle admission. Late, duplicate, and stale records receive deterministic non-semantic disposition. |
 
@@ -326,8 +332,8 @@ resolved.
 | ID | Failure and static-bound obligation | Intended visibility | Minimum independent evidence |
 | --- | --- | --- | --- |
 | B1 | Unsupported portable-profile operations are absent at compile time or return an explicit bounded failure; declaration expansion and state/action capacity exhaustion are deterministic. | Client API plus framework SPI for evaluation | Compile the same portable Signal Analyzer hierarchy for dynamic and static profiles; compare expansion order, identity, state lifetime, action results, and overflow fixtures. |
-| B2 | Invalid component combinations, missing required capabilities/Services, or insufficient capacities prevent runtime start with bounded validation output. | Host API | Assembly fixtures for all four MVP configurations, plus negative fixtures proving prohibited or under-capacity graphs fail before cycles begin. |
-| B3 | Layout returns complete geometry or a registered failure; it never exposes partial geometry as complete. Bounds cover traversal depth, nodes, proposals, caches, hit regions, coordinates, and arithmetic overflow. | Framework SPI | Backend-free layout fixtures for all MVP containers/modifiers and Signal Analyzer geometry, including identical cross-profile results and every capacity edge. |
+| B2 | Invalid component combinations, missing required capabilities or environmental contracts, or insufficient capacities prevent runtime start with bounded validation output. | Host API | Assembly fixtures for all four MVP configurations, plus negative fixtures proving prohibited or under-capacity graphs fail before cycles begin. |
+| B3 | Layout returns complete geometry or a structured failure; it never exposes partial geometry as complete. Bounds cover traversal depth, nodes, proposals, caches, hit regions, coordinates, and arithmetic overflow. | Framework SPI | Backend-free layout fixtures for all MVP containers/modifiers and Signal Analyzer geometry, including identical cross-profile results and every capacity edge. |
 | B4 | Unsupported input, package mismatch, workspace exhaustion, malformed resources, and numeric overflow follow RFC-003/RFC-005; no fallback may silently change geometry. | Client API for text request; framework/tooling contracts for packages and layout | Golden canonical text geometry, package integrity, dynamic/static workspace exhaustion, and exact-face raster-provider conformance. |
 | B5 | Operation/resource/hit-correlation exhaustion fails explicitly; an ordered stream is never silently truncated. Bounds cover operation payload, clip depth, paths/segments, resources, identifiers, and any replay storage. | Framework SPI | Golden operation sequences through streaming and replay modes, recording sink validation, malformed-resource tests, and deterministic overflow at every sink boundary. |
 | B6 | Acceptance, execution, and presentation completion remain distinct. Backend or presentation failure never rolls back committed semantic state or causes semantic replay. Outstanding frames/attempts and payload ownership are bounded. | Integration SPI | Recording/checking backend contract suite, synchronous and asynchronous completion fixtures, backpressure/drop/retry tests, and payload-lifetime instrumentation. |
@@ -338,7 +344,7 @@ resolved.
 | B11 | Missing/stale action identity, disabled action, handler failure, state-slot exhaustion, and reentrant input have explicit behavior; action/state slots and queued invalidations are bounded. | Client API plus framework SPI | Cross-profile fixtures for identity change, state preservation/removal, disabled controls, ordered actions, reentrancy, coalescing, and deterministic exhaustion. |
 | B12 | Unknown/duplicate/conflicting Traits and resolver-workspace exhaustion invalidate assembly; contributors cannot silently omit required facts. Family, contribution, provenance, and validation-record counts are bounded. | Host API and Integration SPI; Tooling for reports | Pure resolver tests, contributor fixtures at each layer, order-independence checks, and bounded nRF52840 representation measurements. |
 | B13 | Missing required semantics or unsatisfied constraints invalidate assembly. Optional absence has explicit behavior; operational loss does not mutate the snapshot. Snapshot size and provenance are bounded. | Host API plus read-only framework/client-relevant projection where approved by RFC-006 | Four complete configuration fixtures, negative requirement fixtures, stable reports, and tests separating capability absence from runtime device failure. |
-| B14 | Clock, scheduler, cancellation, token, wake-queue, and diagnostic-capacity failures are explicit and bounded; correctness never depends on diagnostic delivery. | Host API and framework Service SPI | Fake deterministic Clock/Scheduler/Sink contracts, equal-deadline and cancellation tests, queue exhaustion, static polling, and host event-loop adapters. |
+| B14 | Every approved environmental contract defines bounded failures, lifetime, and re-entry behavior; correctness never depends on diagnostic delivery. | Host API and the owning consumer SPI | Consumer-specific deterministic fakes and target adapters; no common Clock/Scheduler/Sink catalogue is required by this RFC. |
 | B15 | Every non-local failure is classified and propagated; context or diagnostic exhaustion cannot replace the primary failure. Record width, context depth, secondary failures, and sink capacity are bounded. | Framework/integration SPI; Tooling for symbolization | Phase-by-phase fault injection across semantic, layout, render, backend, display, and transport boundaries, with and without a diagnostic sink. |
 | B16 | Accepted attempts produce exactly one terminal disposition. Duplicate, late, unknown, or stale completions cannot mutate state; completion queues and stable identifier ranges are bounded. | Integration SPI feeding framework SPI | Completion-state-machine tests covering synchronous completion, delay, reordering, duplication, wraparound, cancellation, drop, and runtime quiescence. |
 
@@ -602,7 +608,6 @@ boundary without imposing a retained display list on the static profile.
 | --- | --- | --- |
 | `GiftUI` | Portable declarations and client-facing API facade | Depends only on portable semantic and geometry contracts; imports no concrete runtime, render, backend, platform, driver, OS, RTOS, or HAL implementation |
 | `GiftUICapabilities` | Canonical semantic Capability vocabulary, typed Trait/contribution contracts, pure generic resolution, effective snapshots, and validation identities | Foundational leaf package; imports no higher GiftUI layer or concrete integration; contributors import it downward and the target host supplies their values |
-| `GiftUIServices` | Portable delegated-Service contracts and bounded service-bundle seams | Foundational contract package; imports no platform implementation; runtime and hosts depend on it while concrete adapters implement it |
 | `GiftUIDynamicConveniences` | Heap-backed strings, closure actions, and other opt-in dynamic syntax | Depends only on portable GiftUI contracts and supported dynamic facilities |
 | `GiftUISemanticCore` | Portable semantic traversal, identity, state, invalidation, reconciliation, hit-region, and action-routing contracts | Depends on the public declaration/geometry layer; imports no concrete runtime, layout implementation, renderer, or integration |
 | `GiftUIRuntimeDynamic` / `GiftUIRuntimeStatic` | Profile-specific semantic storage and execution | Each depends on portable semantic contracts and invokes layout/render boundaries; neither imports a concrete backend |
@@ -650,8 +655,9 @@ Capability-system definition is not part of this RFC. This architecture only
 requires non-inverting seams through which RFC-006 defines Trait contribution,
 resolution, propagation, and consumption. The minimum typed MVP set and all
 policy or absence behavior belong to RFC-006. Delegated environmental
-operations belong to RFC-007. Until those focused RFCs pass their gates,
-RFC-002 must not be read as Capability or Service authority.
+operations remain with their approved consumer contracts. RFC-007 preserves a
+possible shared foundation but is paused through FW-009. Until RFC-006 passes
+its gates, RFC-002 must not be read as Capability authority.
 
 ## Backend Impact
 
@@ -982,17 +988,18 @@ direction can be implemented without cycles or hidden coupling:
    the backend payload? The choice must preserve recording/debug correlation
    without giving backends semantic action ownership or imposing unnecessary
    static storage.
-5. What exact relationship exists between a logical ownership layer and a
-   required SwiftPM package? RFC-002 currently requires one distinct package
-   per layer, while RFC-004 describes its ownership rows as not necessarily
-   SwiftPM targets and permits static fusion. The coordinated drafts must
-   distinguish link-time specialization, target placement, and package-level
-   enforcement consistently.
-6. Which matrix rows require focused architecture RFCs before RFC-002 can
-   advance, and which are sufficiently constrained here for later
-   Specifications? Observable state and Canvas public contracts remain outside
-   PROPOSAL-003's implementation authority because `docs/MVP_SCOPE.md`
-   explicitly requires separate feature lifecycles for them.
+5. Is one distinct SwiftPM package per logical ownership layer necessary and
+   proportionate, or can some ownership boundaries be enforced by lower shared
+   contracts and import tests without merging responsibilities? Review must
+   settle package-level enforcement, target placement, static specialization,
+   dependency cycles, and build/binary cost together.
+6. Are RFC-003 through RFC-006 the complete set of focused cross-cutting RFCs
+   needed before RFC-002 can advance, or do any declarative, semantic, layout,
+   render, backend, or input matrix rows still contain an independent
+   architectural choice that Specifications would otherwise have to invent?
+   Observable state and Canvas public contracts remain outside PROPOSAL-003's
+   implementation authority because `docs/MVP_SCOPE.md` explicitly requires
+   separate feature lifecycles for them.
 7. Can the replayable and synchronous-stream lifetimes in B5-B6 satisfy every
    first-party backend without a third ownership mode, and can every backend
    name exactly one observable terminal presentation boundary? RFC-004 retains
@@ -1026,10 +1033,12 @@ direction can be implemented without cycles or hidden coupling:
   relationship, diagnostics, absence behavior, and minimum typed MVP
   catalogue. RFC-002 supplies its candidate layer boundaries but does not
   define capability semantics.
-- [RFC-007](rfc-007-delegated-services-architecture.md) owns environmental
-  Service contracts such as monotonic time, wake scheduling, and diagnostic
-  delivery. Services are supplied by the target host and are not themselves
-  client-facing Capabilities.
+- [RFC-007](rfc-007-delegated-services-architecture.md) preserves the paused
+  shared delegated-Service design. Current consumer-specific environmental
+  contracts remain with RFC-004, RFC-005, or later approved feature work.
+- [FW-009](../future-work/fw-009-shared-delegated-service-foundation.md)
+  records the concrete triggers for reconsidering a shared Service package and
+  catalogue without adding it to MVP scope.
 - Existing proof-of-concept code will be revised and fitted into the accepted
   module graph through later ADRs, Specifications, and migration planning. It
   is not an input to the target architecture.
@@ -1064,7 +1073,8 @@ architecturally significant choices should be extracted into separate ADRs:
 
 Text ownership, run-cycle semantics, error propagation, and the capability
 system remain governed by their focused lifecycle artifacts rather than ADRs
-extracted from this RFC.
+extracted from this RFC. A shared delegated-Service foundation is not an
+active MVP decision and remains deferred through RFC-007 and FW-009.
 
 ## References
 
