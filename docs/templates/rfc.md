@@ -24,7 +24,9 @@ target_milestone: null
 
 > Replace every placeholder before publication. An RFC requires an accepted
 > Proposal. Approval does not make RFC text an implementation contract;
-> significant decisions must be extracted into ADRs.
+> significant decisions must be extracted into ADRs. Select and explain the
+> RFC boundary using `docs/engineering/FEATURE_LIFECYCLE.md` rather than
+> creating one RFC mechanically per layer, package, module, or protocol.
 
 ## Summary
 
@@ -33,6 +35,13 @@ Summarize the proposed architectural direction.
 ## Context
 
 Link the accepted Proposal and describe relevant existing architecture.
+
+## Scope and Decision Boundary
+
+Explain why the architectural concerns in this RFC form one independently
+reviewable decision cluster. Identify adjacent concerns owned by existing or
+planned RFCs, and explain why they can be reviewed independently without
+making this RFC incoherent or creating circular reliance between drafts.
 
 ## Requirements
 

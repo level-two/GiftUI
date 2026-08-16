@@ -42,14 +42,17 @@ boundary without treating it as an architectural decision.
 ## Workflow
 
 1. Verify the Proposal gate and allocate the next RFC ID.
-2. Establish traceable requirements and constraints.
-3. Describe the proposed design and ownership clearly.
-4. Compare viable alternatives and quantify important costs.
-5. Classify every unresolved question: resolve with evidence, retain as an RFC
+2. Apply the canonical RFC scope and decomposition criteria; state why the RFC
+   is one independently reviewable decision cluster and identify adjacent RFC
+   ownership without circular reliance.
+3. Establish traceable requirements and constraints.
+4. Describe the proposed design and ownership clearly.
+5. Compare viable alternatives and quantify important costs.
+6. Classify every unresolved question: resolve with evidence, retain as an RFC
    blocker, or extract to linked deferred work when current coherence does not
    depend on it.
-6. List candidate ADR extractions and a `Deferred and Follow-up Work` boundary.
-7. Update `docs/features.yaml` and all cross-references.
+7. List candidate ADR extractions and a `Deferred and Follow-up Work` boundary.
+8. Update `docs/features.yaml` and all cross-references.
 
 ## Required Output
 
@@ -59,6 +62,10 @@ alternatives, trade-offs, open questions, and candidate decisions explicit.
 ## Review Checklist
 
 - [ ] Accepted Proposal is linked and requirements trace to it.
+- [ ] The RFC boundary is independently reviewable and is not based only on a
+  layer, package, module, protocol, or document length.
+- [ ] Related RFC scopes are explicit and do not rely circularly on undecided
+  architecture.
 - [ ] Module/API/capability/backend impacts are covered.
 - [ ] Dynamic and static/embedded profiles are considered.
 - [ ] Performance, memory, code size, compatibility, and tests are considered.

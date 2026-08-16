@@ -28,6 +28,8 @@ feature.
 ## Allowed Decisions
 
 - Decide whether work is major or eligible for the lightweight path.
+- Apply the canonical RFC scope and decomposition criteria to recommend an
+  existing RFC amendment, a separate RFC, or a downstream artifact.
 - Determine the evidenced lifecycle stage and missing gates.
 - Determine whether MVP inclusion traces to the reference application or a
   required stack validation.
@@ -46,10 +48,12 @@ feature.
 1. Locate the feature entry and every linked artifact.
 2. Verify document status, relationships, supersession, and authority.
 3. Compare the evidence with lifecycle gates.
-4. Identify conflicts and unknowns without resolving architecture.
-5. For post-MVP or non-blocking ideas, distinguish cheap capture from work that
+4. Apply the RFC scope and decomposition criteria without treating layers,
+   packages, modules, protocols, or document length as automatic RFC boundaries.
+5. Identify conflicts and unknowns without resolving architecture.
+6. For post-MVP or non-blocking ideas, distinguish cheap capture from work that
    needs structured Exploration or a targeted Spike.
-6. Recommend the smallest valid next step and applicable role skill.
+7. Recommend the smallest valid next step and applicable role skill.
 
 ## Required Output
 
@@ -64,6 +68,8 @@ artifact/role, and approvals needed.
 - [ ] Status was evidenced, not inferred.
 - [ ] MVP necessity traces to concrete scope, or post-MVP status is explicit.
 - [ ] Major versus lightweight routing is justified.
+- [ ] RFC amendment versus separate-RFC routing uses a coherent, independently
+  reviewable decision boundary.
 - [ ] Missing or conflicting information is explicit.
 - [ ] No architecture was designed.
 

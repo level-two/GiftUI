@@ -120,6 +120,60 @@ One ADR may govern multiple Specifications, and multiple features may depend
 on the same ADR. Record every relationship in document metadata and in
 `docs/features.yaml`; do not duplicate the documents.
 
+## RFC scope and decomposition
+
+An RFC boundary is an independently reviewable architectural decision cluster,
+not a mirror of a logical layer, package, module, protocol, or source directory.
+One RFC may govern several layers and produce several ADRs or Specifications.
+Conversely, one accepted Proposal may authorize several related RFCs when its
+architectural concerns can be evaluated and changed independently.
+
+Create a separate RFC when the concern:
+
+- has multiple credible architectural alternatives requiring explicit review;
+- establishes independently significant ownership, dependency, lifetime,
+  synchronization, failure, resource, compatibility, or profile semantics;
+- affects multiple modules or a public, backend, platform, or hardware
+  integration boundary;
+- requires distinct reviewers, evidence, feasibility work, or static/embedded
+  analysis;
+- can be approved, rejected, amended, or superseded without making the parent
+  RFC incoherent; or
+- would make an existing RFC too broad for reviewers to understand its
+  alternatives, consequences, and approval blockers as one decision boundary.
+
+Keep the concern in an existing RFC when it:
+
+- is necessary for that RFC's proposed direction to be coherent;
+- cannot be meaningfully approved or rejected independently;
+- shares the same requirements, alternatives, evidence, and consequences;
+- would create circular reliance between draft RFCs if separated; or
+- elaborates an architectural choice already inside the RFC without creating
+  another independently significant choice.
+
+Route the concern to a different artifact when appropriate:
+
+- create or revise a Proposal when the concern introduces a problem, value,
+  scope, or milestone commitment not covered by an accepted Proposal;
+- extract an ADR only after the architectural choice is supported by an
+  approved RFC or other explicit authority;
+- define exact APIs, types, bounds, behavior, errors, tests, and acceptance
+  criteria in a Specification when the governing architecture is settled;
+- use an Exploration or Spike when evidence is needed before architectural
+  alternatives are reviewable;
+- use Future Work when the concern is valuable but unnecessary for current
+  coherence; and
+- amend or supersede the governing RFC and ADR when the concern changes
+  accepted architecture.
+
+Neither document length nor the existence of a new layer, package, module, or
+protocol is sufficient by itself to require a new RFC. Do not split inseparable
+decisions merely to shorten a document, and do not bundle independently
+reviewable decisions merely to reduce artifact count. An integrating RFC may
+own the system-wide dependency graph and cross-layer invariants while focused
+RFCs resolve independent concerns; their scopes and dependencies MUST be
+explicit and MUST NOT create competing sources of authority.
+
 ## Lifecycle gates
 
 ### Before accepting an MVP Proposal

@@ -113,6 +113,12 @@ documentation corrections, and implementation already unambiguously governed
 by an approved Specification. When the change creates a durable design choice,
 route it through lifecycle triage even if the code diff is small.
 
+When routing architecture work, apply the RFC scope and decomposition criteria
+in [Feature Lifecycle](FEATURE_LIFECYCLE.md). Do not infer that a new layer,
+package, module, protocol, or long document automatically requires a separate
+RFC. Recommend the smallest coherent, independently reviewable decision
+boundary and route settled contract detail to Specifications.
+
 ## Completion reporting
 
 For lifecycle or implementation work, report:
