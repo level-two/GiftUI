@@ -5,6 +5,14 @@ architecture terminology. Lifecycle and documentation-process terms are kept
 separately in the
 [Engineering Governance Glossary](engineering/GLOSSARY.md).
 
+**Backend SPI (Service Provider Interface)**
+: The implementation-facing contracts through which a GiftUI backend consumes
+  resolved frame information and ordered render operations, presents the
+  resulting frame, and reports relevant outcomes. Backend implementations
+  conform to this SPI; GiftUI application code does not use it as its
+  client-facing API. In this term, SPI means Service Provider Interface, not
+  the Serial Peripheral Interface hardware bus used by some displays.
+
 **Capability**
 : An externally meaningful promise about which GiftUI semantics a configured
   stack can provide to client code, including constraints that affect those
