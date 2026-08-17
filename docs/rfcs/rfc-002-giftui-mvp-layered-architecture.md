@@ -6,7 +6,7 @@ status: draft
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-08-16
+updated: 2026-08-17
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -619,7 +619,8 @@ Capability-system definition is outside this RFC.
 Trait contribution and resolution model, propagation, consumption, absence
 behavior, policy relationship, diagnostics, and minimum typed MVP catalogue.
 It places the vocabulary and generic resolver together in the foundational
-`GiftUICapabilities` package described by this coordinated draft.
+`GiftUICapabilities` target inside the GiftUI distribution package described
+by this coordinated draft.
 
 This RFC supplies only the layering constraints that work must respect:
 
@@ -1050,18 +1051,22 @@ or module count alone is not such evidence.
 ## Open Questions
 
 RFC-002 has no remaining open question about whether to create another layer
-RFC. The following coordinated decisions or evidence still block approval
-readiness:
+RFC. The following list records the coordinated status; items 1 and 3 still
+block approval readiness, while item 2 is resolved:
 
 1. RFC-004 must determine whether replayable ownership and one-shot synchronous
    streaming cover every first-party MVP backend, and whether every path can
    state exactly one observable terminal presentation boundary. A required
    third ownership mode would amend B5-B6 rather than create a layer RFC.
-2. RFC-005 and RFC-006 must place their focused contract modules within the
-   partial order above without an upward import, and RFC-006 must demonstrate
-   that its minimum fixture-backed catalogue actually needs shared resolution.
-   If either focused RFC changes the shared boundary, the drafts must be
-   reconciled before approval.
+2. **Resolved in the coordinated drafts:** RFC-005 places dependency-free
+   failure facts in `GiftUIFailureCore` and execution correlation in
+   `GiftUIFailureExecution`, which depends only on the core and RFC-004's
+   execution contract. RFC-006 places its single fixture-backed
+   `rasterPresentation` family and pure resolver in the foundational
+   `GiftUICapabilities` leaf. Its four fixtures require an intersection of
+   render-producer, raster/backend, surface/display, and host-resource facts,
+   demonstrating shared resolution without importing those owners upward.
+   Both placements preserve B12-B16 and do not change the shared boundary.
 3. Review needs bounded aggregate feasibility evidence for B3-B16 on the
    nRF52840 configuration: identity and queue representation, workspace
    ownership, stack high-water, and linked RAM/flash must demonstrate that the

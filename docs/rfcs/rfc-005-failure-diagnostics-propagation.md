@@ -6,7 +6,7 @@ status: draft
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-16
+updated: 2026-08-17
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -53,6 +53,13 @@ secondary-failure array, privacy taxonomy, source-location scheme, diagnostic
 transport, exact policy table, or concrete capacities. Those are
 Specifications or separately justified tooling work.
 
+The focused contracts fit RFC-002's import partial order as two narrow targets:
+a dependency-free failure-fact leaf and an execution-correlation adapter above
+that leaf. Neither target imports a runtime, backend, platform, driver, or
+diagnostic implementation, and the execution contract does not import the
+failure adapter. This placement resolves RFC-002 Question 2 for RFC-005 without
+changing the shared boundary.
+
 ## Context
 
 RFC-002 divides semantics, layout, render production, backends, display
@@ -70,6 +77,12 @@ The concern remains separate from RFC-002 because explicit results versus
 exceptions, layer-local versus composition-owned policy, and diagnostics
 versus control flow are independent architectural alternatives with common
 dynamic/static consequences.
+
+RFC-002 owns the physical dependency direction that constrains this RFC. In
+particular, a low-level producer must be able to report a failure fact without
+importing the runtime merely to name a cycle or frame. Correlation with
+RFC-004's execution identities is therefore an adapter responsibility, not a
+property of the foundational fact.
 
 ## Requirements
 
@@ -142,6 +155,13 @@ full hardware matrix.
 - Platform-native details must be normalized before core policy consumes them.
 - This RFC does not define application-domain errors or a general telemetry
   system.
+- The foundational failure-fact target must not import `GiftUI`, execution,
+  runtime, layout, render, backend, platform, driver, OS/RTOS, HAL, capability,
+  or diagnostic implementations. Fixed-width primitive representations may be
+  refined by a Specification without changing that placement.
+- The execution-correlation target may import only the foundational failure
+  facts and RFC-004's focused execution contract. RFC-004's execution contract
+  must not import the correlation target.
 
 ## Proposed Design
 
@@ -191,11 +211,57 @@ A consumer-specific sink may discard, buffer, stream, or symbolize it. No
 shared `GiftUIServices` package or global diagnostic framework is required by
 this RFC; FW-009 preserves that possible generalization.
 
+### Placement in RFC-002's import partial order
+
+The candidate maintained targets are:
+
+- `GiftUIFailureCore`, which owns normalized origin, condition identity,
+  outcome category, affected scope, and the invariant-safety seam; and
+- `GiftUIFailureExecution`, which combines a `GiftUIFailureCore` fact with the
+  applicable RFC-004 cycle, frame, attempt, phase, and publication position.
+
+The names are candidates; the ownership and arrows are architectural. An
+arrow means "depends on":
+
+```text
+target host / composition policy
+    |-> runtime profile -------> GiftUIFailureExecution
+    |                                |-> RFC-004 execution contract
+    |                                \-> GiftUIFailureCore
+    |-> GiftUIBackend ---------> GiftUIFailureExecution
+    |-> integration adapter ---> GiftUIFailureCore
+    \-> optional diagnostics --> GiftUIFailureCore
+
+driver / transport / HAL -----> GiftUIFailureCore
+```
+
+The target that first knows both an execution identity and a lower-layer fact
+creates the correlated envelope. A driver or transport therefore reports a
+core fact to its owning integration adapter; it does not import execution,
+runtime, or backend modules. Runtime profiles and `GiftUIBackend` already sit
+above the RFC-004 execution contract in RFC-002, so importing the correlation
+adapter adds no upward edge. The execution contract remains usable without the
+failure modules and no cycle is created.
+
+Composition-owned policy is an implementation supplied by the target host. A
+narrow policy protocol may live with `GiftUIFailureExecution`, because its
+inputs are correlated outcomes, but that target neither selects nor imports a
+product policy. Optional diagnostic adapters are consumers of core or
+correlated facts. Failure correctness never imports or depends on those
+adapters.
+
+This placement preserves RFC-002 B15 and B16: foundational facts can originate
+at any operational layer, while publication-aware disposition is performed
+only after correlation at the runtime/frame boundary. It also preserves B2:
+the host assembles policy and optional diagnostics without exporting new
+portable semantics.
+
 ## Module Responsibilities
 
 | Owner | Responsibility | Must not own |
 | --- | --- | --- |
-| Shared failure contract | Portable outcome meaning and stable identity seam | Product policy or rich diagnostic formatting |
+| `GiftUIFailureCore` candidate leaf | Portable outcome meaning, origin, affected scope, and stable condition identity | Execution identity, product policy, or rich diagnostic formatting |
+| `GiftUIFailureExecution` candidate adapter | Correlate a core fact with RFC-004 execution and publication context; expose the narrow policy input seam | Runtime/backend implementation or selected product policy |
 | Detecting layer | Validate its contract and report a structured fact | Cross-product retry, fallback, or fatal choice |
 | Runtime/frame coordinator | Attach publication/frame context and route synchronous or admitted asynchronous outcomes | Platform-specific error interpretation |
 | Target composition | Select total bounded product policy and optional diagnostic adapter | Rewrite lower-layer invariants or capability support |
@@ -230,6 +296,8 @@ Static implementations may use tagged values, out-parameters, fixed slots, or
 specialized generic policy. Diagnostic records may be omitted or stored in a
 small ring. The common contract requires deterministic exhaustion and no
 mandatory allocation, strings, exceptions, reflection, or dynamic registry.
+Splitting facts from execution correlation also prevents low-level firmware
+modules from linking execution metadata or diagnostics that they do not use.
 
 ## Performance
 
@@ -298,6 +366,10 @@ telemetry schema.
   interrupt-safe bounded handoff.
 - Saturate every selected outcome/context/diagnostic store and verify its
   deterministic behavior.
+- Add target-graph and import tests proving `GiftUIFailureCore` is a leaf,
+  `GiftUIFailureExecution` imports only the core and execution contracts, the
+  execution contract does not import failure, and drivers do not import the
+  correlation adapter.
 - Keep host, cross-build, simulator, and connected-hardware evidence distinct.
 
 ## Risks
@@ -310,6 +382,9 @@ telemetry schema.
   allowed by the detecting contract and publication position.
 - RFC-004 and RFC-006 may change shared terminology; reconcile the coordinated
   drafts before approval.
+- A monolithic failure target could pull execution context into drivers or
+  diagnostics back into correctness paths; retain the two-target ownership
+  split and enforce it with import tests.
 
 ## Open Questions
 
