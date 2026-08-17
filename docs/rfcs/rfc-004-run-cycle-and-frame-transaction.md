@@ -46,8 +46,11 @@ seal input
     -> admit asynchronous completion as later input
 ```
 
-A frame may carry replayable bounded storage or a one-shot synchronous stream.
-If any required phase fails before the frame commit point, the frame aborts:
+A frame carries a one-shot ordered operation stream that every first-party MVP
+backend consumes synchronously. A backend may complete presentation
+asynchronously only from its own derived presentation data; it may not retain
+or replay the GiftUI operation stream. If any required phase fails before the
+frame commit point, the frame aborts:
 the previous committed logical frame remains authoritative, the failure is
 reported, and no admitted client action is replayed. Semantic publication and
 frame commit are distinct; aborting a frame does not roll back semantic state
@@ -68,10 +71,13 @@ Analyzer may ingest up to 80 transitions per second while presenting about
 four times per second, so input, invalidation, semantic evaluation, and frame
 presentation cannot be treated as one callback or one-to-one event sequence.
 
-The nRF52840 path may need direct operation streaming and cannot be required to
-retain a full display list. Dynamic backends may accept asynchronous work and
-need stable payload ownership. These alternatives make frame lifetime and
-presentation semantics architectural rather than Specification detail.
+The nRF52840 path needs direct operation streaming and cannot be required to
+retain a full display list. All first-party MVP backends can consume the
+ordered GiftUI operation stream synchronously. An integration may still finish
+device presentation asynchronously after that consumption, but it owns any
+derived pixel, transfer, or device data needed for the later completion. These
+lifetime and presentation boundaries are architectural rather than
+Specification detail.
 
 Observable reference-state invalidation requires its own feature lifecycle
 under MVP Scope. This RFC may require an observable publication boundary, but
@@ -115,16 +121,20 @@ Every frame MUST identify the semantic revision and presentation-relevant
 resource state from which it was derived. Asynchronous attempts MUST have
 stable bounded correlation until terminal disposition.
 
-### R6 — Streaming and replayable payloads
+### R6 — One-shot operation consumption
 
-The frame contract MUST support a synchronous one-shot ordered stream and a
-bounded replayable payload. A consumer that retains a payload for asynchronous
-submission MUST own replayable storage for the necessary lifetime.
+The MVP frame contract MUST expose a synchronous one-shot ordered operation
+stream. Every first-party MVP backend MUST consume that stream during the
+`offer` call and MUST NOT retain or replay it after the call returns. An
+integration that completes presentation asynchronously MUST own any derived
+presentation data for the necessary lifetime; that data is not a retained
+GiftUI operation stream.
 
 ### R7 — Bounded work and backpressure
 
-Inputs, completions, frames, retained payloads, in-flight attempts, and pending
-work MUST be bounded with deterministic overflow or backpressure disposition.
+Inputs, completions, frames, backend-owned presentation data, in-flight
+attempts, and pending work MUST be bounded with deterministic overflow or
+backpressure disposition.
 
 ### R8 — Ownership preservation
 
@@ -170,10 +180,11 @@ This RFC separates three mechanisms that must not be conflated:
    terminates the frame without replacing the previous committed logical frame
    or its routing state.
 2. **Backend/transport submission retry is deferred.** A future backend or
-   delegated transport Service may use its device-specific knowledge and
-   backend-owned stable payload to retry a recoverable transient submission
-   failure. GiftUI Core neither performs nor mandates that policy; FW-010 owns
-   its future evaluation.
+   delegated transport Service may use its device-specific knowledge and a
+   future replayable operation representation or backend-owned stable payload
+   to retry a recoverable transient submission failure. GiftUI Core neither
+   performs nor mandates that policy; FW-010 owns both the required retention
+   model and its future evaluation.
 3. **Frame rescheduling is deferred.** A future runtime policy may preserve
    invalidation and produce a new frame during a later run-cycle opportunity.
    That is new semantic/layout/render work, not resubmission of the same
@@ -212,8 +223,7 @@ One cycle has these observation points:
 2. **Admit:** seal the ordered input batch.
 3. **Evaluate:** dispatch admitted semantic actions and invalidations once.
 4. **Reconcile and layout:** derive a complete next hierarchy and geometry.
-5. **Prepare frame:** create replayable payload ownership or a stable
-   synchronous stream source.
+5. **Prepare frame:** create a stable one-shot synchronous stream source.
 6. **Publish semantics:** make the complete resulting semantic revision
    observable while keeping frame-derived routing and hit-test state staged.
 7. **Offer:** submit the prepared frame to the selected backend.
@@ -229,15 +239,16 @@ re-enters through a later sealed input batch.
 
 ### Frame ownership
 
-- A **streaming frame** is borrowed only for the synchronous `offer` call. It
-  cannot be retained after the call returns.
-- A **replayable frame** owns or references stable storage through its terminal
-  disposition so a backend may complete asynchronous submission without
-  borrowing cycle-local storage.
+The MVP frame's ordered operation stream is borrowed only for the synchronous
+`offer` call and cannot be retained or replayed after the call returns. A
+backend that accepts asynchronous presentation must finish consuming the
+operation stream before returning and retain only its own derived pixel,
+transfer, or device data through terminal disposition.
 
-Both forms carry the same ordered render-operation meaning from RFC-002. The
-frame envelope adds provenance, ownership, and disposition rather than a
-second render IR.
+The frame envelope adds provenance and disposition to RFC-002's ordered
+render-operation meaning rather than a second render IR. A replayable
+operation representation is outside MVP scope and preserved by FW-010 only
+when future retry requirements justify its storage and lifetime cost.
 
 ### Outcomes
 
@@ -262,7 +273,7 @@ participate in capability resolution.
 | Observable-state feature | Define state observation and publication implementation contract | Presentation retry policy |
 | Layout/render producer | Produce complete geometry and ordered payload from cycle-stable inputs | Backend completion or semantic replay |
 | Presentation coordinator | Offer frames, correlate completion, and record logical-frame commit or abort | Client action dispatch, state rollback, retry policy, or automatic rescheduling |
-| Backend/display/transport | Consume or retain payload under declared lifetime, define its required commit point, and report outcomes | Cycle admission, semantic publication, or action replay |
+| Backend/display/transport | Consume the operation stream synchronously, own any derived presentation data, define its required commit point, and report outcomes | Retaining or replaying the operation stream, cycle admission, semantic publication, or action replay |
 
 ## Public API Impact
 
@@ -274,25 +285,28 @@ the semantic publication boundary.
 
 ## Capabilities Impact
 
-RFC-006 decides whether streaming support, replayable capacity, completion
-mode, or in-flight limits are Capabilities, Traits, policy, or ordinary
-configuration. Runtime device health and backpressure remain operational
-state, not silent mutation of the capability declaration.
+RFC-006 decides whether completion mode or in-flight limits are Capabilities,
+Traits, policy, or ordinary configuration. One-shot synchronous operation
+consumption is the common MVP contract rather than a selectable capability.
+Runtime device health and backpressure remain operational state, not silent
+mutation of the capability declaration.
 
 ## Backend Impact
 
-A backend must declare whether it consumes synchronously or accepts stable
-replayable ownership, what outcome satisfies the logical-frame commit point,
-and how accepted asynchronous work reaches one terminal disposition. It may
-not retain a streaming payload, invoke semantic code, cause semantic replay,
-or ask GiftUI Core to retry a frame. Backend/transport retry policy is not an
-MVP requirement and is preserved as future work in FW-010.
+A first-party MVP backend must consume the ordered operation stream
+synchronously during `offer`, must not retain or replay it, and must declare
+what outcome satisfies the logical-frame commit point. If presentation remains
+in flight after `offer`, the backend owns the derived presentation data and
+reports exactly one terminal disposition asynchronously. It may not invoke
+semantic code, cause semantic replay, or ask GiftUI Core to retry a frame.
+Backend/transport retry and any replayable operation representation are not
+MVP requirements and are preserved as future work in FW-010.
 
 ## Static / Embedded Impact
 
 Static implementations may use fixed rings, caller-owned workspaces, direct
-phase calls, synchronous operation streaming, and optional fixed frame pools.
-They do not need a retained display list or duplicate semantic graph. Exact
+phase calls, and synchronous operation streaming. They do not need a retained
+display list, replayable frame pool, or duplicate semantic graph. Exact
 publication strategy belongs to the observable-state and runtime
 Specifications and must be measured on nRF52840 before implementation approval.
 
@@ -306,7 +320,7 @@ metadata should remain constant-cost per cycle, frame, and attempt.
 ## Memory / Binary Size
 
 Specifications account for input/completion queues, runtime and layout
-workspace, frame envelopes, replayable payloads where selected, raster tiles,
+workspace, frame envelopes, backend-owned presentation data, raster tiles,
 in-flight slots, stack high-water, and specialization cost. A dynamic queue is
 still configured and bounded; allocation is not permission for unlimited work.
 
@@ -318,16 +332,14 @@ This integrates naturally with native event systems but lets backend timing
 control input membership and semantic execution. It is suitable only when the
 backend intentionally owns the entire semantic framework.
 
-### Retain every frame
+### Retain or replay every operation stream
 
-Universal replay simplifies asynchronous presentation ownership but imposes
-RAM and copy cost on embedded targets. It remains a configuration choice, not
-the common requirement.
-
-### Stream every frame
-
-Universal streaming minimizes storage but cannot support asynchronous
-ownership. It remains a valid realization, not the whole contract.
+Universal replay could simplify asynchronous ownership and later submission
+retry, but it imposes RAM, copying, and a second bounded-capacity obligation on
+every target. The MVP backends can consume operations synchronously and own
+only any derived presentation data they need. Replayable operation storage is
+therefore outside MVP scope and preserved by FW-010 for a future measured
+retry requirement.
 
 ### Automatically run a failed frame again
 
@@ -362,8 +374,9 @@ stable frame ABI or persistent serialized format is proposed.
   failure, drop, and supersession.
 - Compare static and dynamic semantic results, geometry, operation order, and
   frame provenance for the same sealed inputs.
-- Verify streaming payloads are not retained and replayable payloads remain
-  valid through terminal disposition.
+- Verify every backend consumes the operation stream exactly once during
+  `offer`, retains no operation or borrowed resource afterward, and keeps any
+  backend-owned derived presentation data valid through terminal disposition.
 - Inject failure before every frame commit point and verify the new frame
   aborts, unpublished frame-local work is discarded, the previous committed
   logical frame and routing state remain authoritative, and the failure is
@@ -383,16 +396,15 @@ stable frame ABI or persistent serialized format is proposed.
   rescheduling policy.
 - RFC-005 or RFC-006 may classify shared facts differently; reconcile terms
   before any coordinated RFC advances.
-- RFC-002 and RFC-005 still contain draft references to host-selected frame
-  retry policy; reconcile those drafts with FW-010 before coordinated review.
+- Future retry work may accidentally reintroduce universal frame retention;
+  FW-010 must justify its retention scope and bounds before coordinated RFC
+  revision.
 
 ## Open Questions
 
-1. Do the first-party MVP backends require only synchronous streaming and
-   replayable payloads, or is another ownership mode architecturally necessary?
-2. What minimum presentation-success boundary can every first-party path state
+1. What minimum presentation-success boundary can every first-party path state
    without claiming physical display evidence it cannot observe?
-3. Can the future observable-state contract provide complete publication
+2. Can the future observable-state contract provide complete publication
    semantics on both runtime profiles without requiring general reversible
    client state or duplicating the entire graph?
 
@@ -429,8 +441,9 @@ If approved, this RFC is expected to yield candidate ADRs for:
 3. required frame commit-or-abort semantics that preserve the prior committed
    logical frame after pre-commit failure without automatic retry or
    rescheduling;
-4. one frame envelope model supporting bounded replayable ownership and
-   one-shot synchronous streaming with explicit terminal disposition.
+4. one frame-envelope model whose ordered operations are consumed once during
+   a synchronous backend offer, with explicit terminal disposition and no MVP
+   replayable-operation requirement.
 
 ## References
 

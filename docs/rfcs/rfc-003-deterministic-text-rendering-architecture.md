@@ -146,10 +146,12 @@ a Specification.
 
 ### Lifetime
 
-Resolved runs are immutable in meaning. A static producer may borrow bounded
-workspace for the synchronous sink call; a replayable frame must copy or own
-the run for the frame lifetime defined by RFC-004. Backends may cache raster
-images, but cache state and raster dimensions cannot feed back into layout.
+Resolved runs are immutable in meaning. A producer may borrow bounded
+workspace for the synchronous one-shot sink call defined by RFC-004; every MVP
+backend must finish consuming the positioned-glyph operation and its borrowed
+resources before that call returns. Backends may cache derived raster images,
+but they may not retain the operation or resolved run, and cache state and
+raster dimensions cannot feed back into layout.
 
 ### Static and dynamic realizations
 

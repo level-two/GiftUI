@@ -22,6 +22,7 @@ related_future_work:
   - FW-004
   - FW-005
   - FW-009
+  - FW-010
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -286,7 +287,7 @@ family without changing the listed owner or dependency direction.
 | Public declarations, checked geometry/scalars, and normalized input values | `GiftUI` portable leaf module | Imports no runtime, layout, render, backend, platform, driver, OS/RTOS, HAL, or concrete capability implementation |
 | Structural/action identity, state binding hooks, invalidation, hit maps, and semantic routing | `GiftUISemanticCore` | Depends on `GiftUI`; exposes no backend or integration type |
 | Layout proposals, semantic-child adapter, measurement/placement results, and hit geometry | `GiftUILayout` | Depends on `GiftUI`; the runtime adapts semantic children to this consumer-owned contract, so layout does not import a runtime implementation |
-| Render operations, resource identities, ordered sinks, and replay storage contracts | `GiftUIRenderCore` | Depends on `GiftUI`; imports no semantic-runtime, backend, platform, or driver implementation |
+| Render operations, resource identities, and one-shot ordered sink contracts | `GiftUIRenderCore` | Depends on `GiftUI`; imports no semantic-runtime, backend, platform, or driver implementation |
 | Cycle/frame/attempt identity, frame envelope, admission, and completion records | focused execution contract governed by RFC-004 | Depends on portable values and `GiftUIRenderCore`; both runtimes and backends depend on it rather than on each other |
 | Cross-layer failure facts and composition-policy seam | focused failure contract governed by RFC-005 | Remains below its producers and coordinators; exact target placement follows RFC-005 without importing a concrete runtime or integration |
 | Capability vocabulary and pure resolution | `GiftUICapabilities`, governed by RFC-006 | Foundational leaf relative to contributors; imports no higher or concrete integration layer |
@@ -370,8 +371,8 @@ work within the physical owners and partial order established above.
 | B2 | The host owns selected implementations and long-lived storage. Profile, component graph, capacities, capability snapshot, explicitly supplied environmental contracts, and policy are immutable for the assembled runtime lifetime. | Construction and validation complete before the first cycle. Runtime operational state may change only through admitted inputs and outcomes, not graph mutation. |
 | B3 | Inputs are borrowed from cycle-stable semantic state. Layout results and hit geometry are owned by staged runtime/frame state for at least the lowering and hit-test lifetimes defined by RFC-004. Cache lifetime is explicit and cannot affect results. | Synchronous, deterministic measurement and placement within a cycle. Layout does not call a concrete backend or accept asynchronous mutation. |
 | B4 | Font packages and identities are immutable assembly resources. Text, line, glyph, and shaping workspaces are explicitly borrowed or caller-owned for a declared cycle/frame scope; no implementation may assume heap retention. | Deterministic layout-time resolution and shaping. Raster acquisition may occur later but cannot change positioned geometry. Exact streaming/borrowing rules remain with RFC-003. |
-| B5 | Resolved values are cycle-stable. Replayable operations are frame-owned; streamed operations are valid only during the synchronous sink call. Resource identity cannot depend on either materialization strategy. The separate runtime-owned hit map outlives every input routed against its committed revision. | Ordered emission after layout. Producers cannot concurrently mutate staged semantics or resources while operations are consumed. Hit-map publication follows RFC-004 but is not operation-sink traffic. |
-| B6 | A replayable payload remains valid through its terminal frame disposition. A one-shot payload is valid only during synchronous acceptance/consumption; asynchronous presentation must retain or transfer only backend-owned presentation data. | Frame offer may be synchronous; presentation completion may be synchronous or asynchronous. Every asynchronous outcome re-enters as ordered runtime input and never calls semantic code directly. |
+| B5 | Resolved values are cycle-stable. Operations and their borrowed resources are valid only during the synchronous one-shot sink call and cannot be retained or replayed by the backend. The separate runtime-owned hit map outlives every input routed against its committed revision. | Ordered emission after layout. Producers cannot concurrently mutate staged semantics or resources while operations are consumed. Hit-map publication follows RFC-004 but is not operation-sink traffic. |
+| B6 | Every first-party MVP backend consumes the one-shot ordered operation stream synchronously during frame offer. Asynchronous presentation may retain or transfer only backend-owned derived pixel, transfer, or device data until terminal disposition. | Frame offer is synchronous; presentation completion may be synchronous or asynchronous. Every asynchronous outcome re-enters as ordered runtime input and never calls semantic code directly. |
 | B7 | Backend or caller owns bounded raster scratch, tiles, and surfaces. Borrowed operation/resource data is valid only for the declared draw call; caches have explicit assembly/frame lifetime and cannot change output. | Synchronous operation execution for the MVP path unless a later backend contract explicitly transfers ownership. Raster work cannot race semantic or layout mutation. |
 | B8 | Buffer and pixel-payload ownership is explicit per submission: borrowed data must complete synchronously; asynchronous submission requires transferred or independently stable storage until terminal completion. | Submission may complete synchronously or asynchronously. The target reports exactly one terminal fact per accepted attempt through B16. |
 | B9 | Driver owns controller state and transaction metadata. Buffer ownership is borrowed for synchronous transfer or explicitly transferred until completion; interrupt code may retain only declared stable tokens/storage. | Transfers may be synchronous, DMA-driven, interrupt-driven, or polled. All asynchronous effects are normalized into ordered completion facts rather than upward callbacks into semantics. |
@@ -391,8 +392,8 @@ work within the physical owners and partial order established above.
 | B2 | Invalid component combinations, missing required capabilities or environmental contracts, or insufficient capacities prevent runtime start with bounded validation output. | Host API | Assembly fixtures for all four MVP configurations, plus negative fixtures proving prohibited or under-capacity graphs fail before cycles begin. |
 | B3 | Layout returns complete geometry or a structured failure; it never exposes partial geometry as complete. Bounds cover traversal depth, nodes, proposals, caches, hit regions, coordinates, and arithmetic overflow. | Framework SPI | Backend-free layout fixtures for all MVP containers/modifiers and Signal Analyzer geometry, including identical cross-profile results and every capacity edge. |
 | B4 | Unsupported input, package mismatch, workspace exhaustion, malformed resources, and numeric overflow follow RFC-003/RFC-005; no fallback may silently change geometry. | Client API for text request; framework/tooling contracts for packages and layout | Golden canonical text geometry, package integrity, dynamic/static workspace exhaustion, and exact-face raster-provider conformance. |
-| B5 | Operation or resource exhaustion fails explicitly; an ordered stream is never silently truncated. Bounds cover operation payload, clip depth, paths/segments, resources, identifiers, and any replay storage. Hit-map capacity is a B3/B11 runtime obligation, not render storage. | Framework SPI | Golden operation sequences through streaming and replay modes, recording sink validation, malformed-resource tests, and deterministic overflow at every sink boundary. |
-| B6 | Acceptance, execution, and presentation completion remain distinct. Backend or presentation failure never rolls back committed semantic state or causes semantic replay. Outstanding frames/attempts and payload ownership are bounded. | Integration SPI | Recording/checking backend contract suite, synchronous and asynchronous completion fixtures, backpressure/drop/retry tests, and payload-lifetime instrumentation. |
+| B5 | Operation or resource exhaustion fails explicitly; an ordered stream is never silently truncated. Bounds cover operation payload, clip depth, paths/segments, resources, and identifiers. Hit-map capacity is a B3/B11 runtime obligation, not render storage. | Framework SPI | Golden one-shot operation sequences, recording-sink validation, malformed-resource tests, deterministic overflow at every sink boundary, and instrumentation proving no backend retains borrowed operations or resources. |
+| B6 | Acceptance, execution, and presentation completion remain distinct. Backend or presentation failure never rolls back committed semantic state or causes semantic replay. Outstanding frames/attempts and backend-owned presentation data are bounded. | Integration SPI | Recording/checking backend contract suite, synchronous and asynchronous completion fixtures, backpressure/drop/abort tests, and derived-presentation-data lifetime instrumentation. |
 | B7 | Unsupported operations, invalid resources, clipping/coordinate overflow, tile/surface exhaustion, and pixel conversion failures are explicit frame-attempt outcomes. Scratch, cache, tile, and surface storage are bounded on static targets. | Integration SPI | The same golden operations through recording, host pixel-surface, framebuffer, and RGB565 tile implementations, with bounds and guard-region checks. |
 | B8 | Invalid geometry/format, submission refusal, disconnection, backpressure, and partial/failed presentation produce stable attempt outcomes. Transfer regions, queued submissions, and buffers are bounded. | Integration SPI | Fake display-target fault injection plus Raspberry Pi and nRF52840 connected-display evidence for the claimed presentation boundary. |
 | B9 | Bus/controller timeout, invalid state, short transfer, and device failure are reported upward as stable facts; retry occurs only under delegated policy. Command, transfer, DMA, and interrupt queues are bounded. | Integration SPI | Controller fixtures over fake transports, transfer-boundary fault injection, ELF/resource checks, and connected-device evidence without claiming semantics from hardware-free tests. |
@@ -657,9 +658,11 @@ runtime. Backends and drivers may report failures or input but may not mutate
 application state directly.
 
 [RFC-004](rfc-004-run-cycle-and-frame-transaction.md) focuses this flow into a
-sealed run-cycle and frame-transaction model. Its candidate replayable and
-synchronous-stream frame payloads preserve this RFC's ordered render-operation
-boundary without imposing a retained display list on the static profile.
+sealed run-cycle and frame-transaction model. Every first-party MVP backend
+consumes the ordered operation stream once during synchronous frame offer; an
+asynchronous presentation path may retain only backend-owned derived data.
+This preserves the render-operation boundary without imposing a retained
+display list or replay storage on any MVP profile.
 
 ## Module Responsibilities
 
@@ -670,7 +673,7 @@ boundary without imposing a retained display list on the static profile.
 | `GiftUIDynamicConveniences` | Heap-backed strings, closure actions, and other opt-in dynamic syntax | Depends only on portable GiftUI contracts and supported dynamic facilities |
 | `GiftUISemanticCore` | Portable semantic traversal, identity, state, invalidation, reconciliation, hit-region, and action-routing contracts | Depends on the public declaration/geometry layer; imports no concrete runtime, layout implementation, renderer, or integration |
 | `GiftUILayout` | Proposal-based measurement, placement, semantic-child adapter, cache contracts, resolved geometry, and hit geometry | Depends on `GiftUI`; owns the B3 consumer contract and imports no runtime implementation, render, backend, or platform integration |
-| `GiftUIRenderCore` | Normalized operations, ordered sinks, optional bounded/array storage, resources, and frame metadata | Depends on resolved geometry and portable resource contracts; exposes no semantic view types to backends |
+| `GiftUIRenderCore` | Normalized operations, one-shot ordered sinks, bounded producer workspace, resources, and frame metadata | Depends on resolved geometry and portable resource contracts; exposes no semantic view types to backends |
 | RFC-004 execution contract module | Cycle/frame/attempt identities, admission, frame envelope, and completion records | Depends on portable/render contracts; both runtimes and backends depend on it without depending on each other |
 | RFC-005 failure contract module | Cross-layer failure facts and composition-policy seam | Sits below producers and coordinators; imports no concrete runtime, backend, platform, or driver implementation |
 | `GiftUIRuntimeDynamic` / `GiftUIRuntimeStatic` | Profile-specific semantic storage and execution | Each coordinates semantic, layout, render, execution, failure, and capability contracts; neither imports a concrete backend |
@@ -1054,10 +1057,18 @@ RFC-002 has no remaining open question about whether to create another layer
 RFC. The following list records the coordinated status; items 1 and 3 still
 block approval readiness, while item 2 is resolved:
 
-1. RFC-004 must determine whether replayable ownership and one-shot synchronous
-   streaming cover every first-party MVP backend, and whether every path can
-   state exactly one observable terminal presentation boundary. A required
-   third ownership mode would amend B5-B6 rather than create a layer RFC.
+1. **Operation ownership is resolved in the coordinated drafts; the
+   presentation boundary remains open:** RFC-004 now requires every
+   first-party MVP backend to consume the ordered operation stream once during
+   synchronous frame offer without retaining or replaying it. An asynchronous
+   presentation path owns only its derived presentation data. Replayable
+   operation storage and backend/transport submission retry are outside MVP
+   scope and preserved by
+   [FW-010](../future-work/fw-010-backend-transport-submission-retry.md).
+   RFC-004 must still determine what minimum
+   presentation-success boundary each first-party path can observe without
+   overstating physical-display evidence; that question remains a coordinated
+   approval blocker.
 2. **Resolved in the coordinated drafts:** RFC-005 places dependency-free
    failure facts in `GiftUIFailureCore` and execution correlation in
    `GiftUIFailureExecution`, which depends only on the core and RFC-004's
@@ -1107,6 +1118,11 @@ architecture to be folded into or resolved by RFC-002.
 - [FW-009](../future-work/fw-009-shared-delegated-service-foundation.md)
   records the concrete triggers for reconsidering a shared Service package and
   catalogue without adding it to MVP scope.
+- [FW-010](../future-work/fw-010-backend-transport-submission-retry.md)
+  preserves replayable operation or backend-derived payload storage and retry
+  policy as post-MVP work. Revisit only when a supported backend demonstrates
+  recoverable transient submission failures that abort-and-report cannot
+  satisfy.
 - Existing proof-of-concept code will be revised and fitted into the accepted
   module graph through later ADRs, Specifications, and migration planning. It
   is not an input to the target architecture.
@@ -1121,9 +1137,10 @@ architecturally significant choices should be extracted into separate ADRs:
 2. Static and dynamic runtimes are alternative storage and composition
    strategies beneath one portable declarative semantic model.
 3. The MVP render boundary uses one normalized ordered operation vocabulary
-   with direct streaming and optional replay storage; no retained render tree
-   is required. The boundary permits a future retained producer without
-   changing frontend or layout contracts.
+   consumed once through synchronous streaming; no backend retains or replays
+   the operation stream, and no retained render tree or replay storage is
+   required. The boundary permits a future retained producer without changing
+   frontend or layout contracts.
 4. Backends, display/input drivers, and transport/HAL integrations have
    separate ownership with strictly downward dependencies.
 5. Supported platforms are target-host compositions or presets, not owners of
