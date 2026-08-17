@@ -992,6 +992,15 @@ Hardware-free builds, host tests, simulators, and ELF/resource checks do not
 substitute for connected-board evidence. Raspberry Pi validation must confirm
 `armv6l`; nRF52840 firmware must retain the required hard-float ELF attributes.
 
+Implementation and conformance work must collect bounded aggregate evidence
+for B3-B16 on the nRF52840 configuration, including identity and queue
+representation, workspace ownership, stack high-water, and linked RAM/flash.
+Specifications set exact widths and capacity values. This evidence is not an
+RFC approval blocker; if it demonstrates that the proposed ownership,
+lifetime, or dependency boundaries are infeasible, affected implementation
+must stop and return the conflict to RFC/ADR review rather than weakening the
+boundary in a Specification or in code.
+
 ### Dependency enforcement
 
 Add target-graph and import-boundary tests that fail on an upward import, on a
@@ -1054,8 +1063,8 @@ or module count alone is not such evidence.
 ## Open Questions
 
 RFC-002 has no remaining open question about whether to create another layer
-RFC. The following list records the coordinated status; items 1 and 3 still
-block approval readiness, while item 2 is resolved:
+RFC. The following list records the coordinated status; item 1 remains the
+only approval-readiness blocker, while item 2 is resolved:
 
 1. **Operation ownership is resolved in the coordinated drafts; the
    presentation boundary remains open:** RFC-004 now requires every
@@ -1078,13 +1087,6 @@ block approval readiness, while item 2 is resolved:
    render-producer, raster/backend, surface/display, and host-resource facts,
    demonstrating shared resolution without importing those owners upward.
    Both placements preserve B12-B16 and do not change the shared boundary.
-3. Review needs bounded aggregate feasibility evidence for B3-B16 on the
-   nRF52840 configuration: identity and queue representation, workspace
-   ownership, stack high-water, and linked RAM/flash must demonstrate that the
-   boundary set is jointly viable. Exact widths and capacity values remain
-   Specification decisions unless the evidence forces a different ownership
-   or lifetime model.
-
 RFC-003 retains its independent text-ownership blockers. Observable state and
 Canvas remain missing separate feature lifecycles; that blocks Specifications
 and implementation for those public features, but it does not require their
