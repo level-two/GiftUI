@@ -6,7 +6,7 @@ status: draft
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-16
+updated: 2026-08-17
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -16,7 +16,9 @@ related_rfcs:
   - RFC-007
 related_adrs: []
 related_specs: []
-related_future_work: []
+related_future_work:
+  - FW-010
+  - FW-011
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -40,17 +42,23 @@ seal input
     -> prepare frame payload
     -> publish the resulting semantic revision
     -> offer presentation
+    -> commit the logical frame or abort it
     -> admit asynchronous completion as later input
 ```
 
 A frame may carry replayable bounded storage or a one-shot synchronous stream.
-Presentation failure, retry, drop, or supersession never replays an admitted
-client action or rolls back a published semantic revision.
+If any required phase fails before the frame commit point, the frame aborts:
+the previous committed logical frame remains authoritative, the failure is
+reported, and no admitted client action is replayed. Semantic publication and
+frame commit are distinct; aborting a frame does not roll back semantic state
+that was already published.
 
 This RFC defines ordering, observation, and payload lifetime. It does not
 select the public observable-state mechanism, state-slot representation,
-transaction journal, identifier widths, queue capacities, retry counts,
-scheduler API, or backend-specific success point.
+transaction journal, identifier widths, queue capacities, scheduler API,
+backend retry policy, frame-rescheduling policy, or concrete backend commit
+point. Backend/transport retry and future frame rescheduling are deferred by
+FW-010 and FW-011 respectively.
 
 ## Context
 
@@ -80,21 +88,26 @@ seal MUST be deferred to a later admission boundary.
 
 ### R2 — At-most-once semantic effects
 
-An admitted semantic action MUST execute at most once. Frame retry, drop,
+An admitted semantic action MUST execute at most once. Frame abort, drop,
 rejection, supersession, or presentation failure MUST NOT repeat action
 dispatch, client side effects, reconciliation, or layout for that frame.
 
 ### R3 — Complete publication
 
 External runtime observers MUST see only complete published semantic and
-derived results, never a partially updated mixture. The separate observable-
-state lifecycle determines how implementations satisfy this contract.
+derived results, never a partially updated mixture. Semantic publication MAY
+precede frame commit, but presentation-coupled routing and hit-test state MUST
+remain staged until the corresponding logical frame commits. The separate
+observable-state lifecycle determines how implementations satisfy the semantic
+publication contract.
 
 ### R4 — Presentation is a separate outcome
 
 Once a semantic revision is published, later presentation outcomes MUST NOT
-roll it back. A new evaluation after failure creates new work; it is not a
-retry of the prior semantic transaction.
+roll it back. The frame derived from that revision is not committed until its
+required presentation commit point succeeds. Failure before that point MUST
+abort the frame and preserve the previous committed logical frame as
+authoritative.
 
 ### R5 — Explicit frame provenance
 
@@ -105,14 +118,13 @@ stable bounded correlation until terminal disposition.
 ### R6 — Streaming and replayable payloads
 
 The frame contract MUST support a synchronous one-shot ordered stream and a
-bounded replayable payload. A consumer that retains or retries a payload MUST
-own replayable storage for the necessary lifetime.
+bounded replayable payload. A consumer that retains a payload for asynchronous
+submission MUST own replayable storage for the necessary lifetime.
 
 ### R7 — Bounded work and backpressure
 
-Inputs, completions, frames, retained payloads, in-flight attempts, pending
-work, and retries MUST be bounded with deterministic overflow or backpressure
-disposition.
+Inputs, completions, frames, retained payloads, in-flight attempts, and pending
+work MUST be bounded with deterministic overflow or backpressure disposition.
 
 ### R8 — Ownership preservation
 
@@ -126,12 +138,22 @@ Static and dynamic profiles MAY fuse phases and use different storage, but
 MUST preserve input membership, action ordering, publication boundaries,
 frame provenance, payload lifetime, and presentation separation.
 
+### R10 — Required frame abort
+
+Every frame path MUST have a terminal commit or abort disposition. Abort MUST
+discard unpublished frame-local results, retain the previous committed logical
+frame and its presentation-coupled routing state as authoritative, report the
+failure through RFC-005, and leave the runtime in a deterministic state. Core
+MUST NOT automatically retry the frame transaction or require a later frame
+opportunity.
+
 ## Constraints
 
 - A cycle may publish no semantic change and may produce no frame.
 - A cycle does not correspond one-to-one with a hardware refresh.
 - Streaming presentation may make partial physical writes before terminal
-  failure; software state is not a distributed transaction with the display.
+  failure; the committed logical-frame guarantee does not claim physical
+  rollback or atomic display hardware.
 - External client side effects are not assumed reversible.
 - Platform loops and interrupts may wake the runtime but do not decide cycle
   input membership.
@@ -139,6 +161,28 @@ frame provenance, payload lifetime, and presentation separation.
   reflection, unrestricted existentials, `Task`, or thread primitives.
 
 ## Proposed Design
+
+### Failed-frame recovery boundary
+
+This RFC separates three mechanisms that must not be conflated:
+
+1. **Frame abort is required.** Any failure before the selected commit point
+   terminates the frame without replacing the previous committed logical frame
+   or its routing state.
+2. **Backend/transport submission retry is deferred.** A future backend or
+   delegated transport Service may use its device-specific knowledge and
+   backend-owned stable payload to retry a recoverable transient submission
+   failure. GiftUI Core neither performs nor mandates that policy; FW-010 owns
+   its future evaluation.
+3. **Frame rescheduling is deferred.** A future runtime policy may preserve
+   invalidation and produce a new frame during a later run-cycle opportunity.
+   That is new semantic/layout/render work, not resubmission of the same
+   payload; FW-011 owns its future evaluation.
+
+Deterministic semantic evaluation, layout, invalid geometry, unsupported
+capability, and render-generation failures are not candidates for automatic
+retry. Given identical admitted inputs and state, repeating them would normally
+repeat the failure and could create an unbounded loop.
 
 ### Logical phases
 
@@ -150,10 +194,14 @@ One cycle has these observation points:
 4. **Reconcile and layout:** derive a complete next hierarchy and geometry.
 5. **Prepare frame:** create replayable payload ownership or a stable
    synchronous stream source.
-6. **Publish:** make the complete resulting semantic revision and derived
-   routing state observable.
-7. **Offer:** submit the prepared frame under bounded presentation policy.
-8. **Finalize:** release cycle-local storage and record the cycle outcome.
+6. **Publish semantics:** make the complete resulting semantic revision
+   observable while keeping frame-derived routing and hit-test state staged.
+7. **Offer:** submit the prepared frame to the selected backend.
+8. **Commit or abort:** commit the logical frame at the backend contract's
+   required success point together with its routing and hit-test state, or
+   abort it while preserving the prior committed logical frame and routing
+   state as authoritative.
+9. **Finalize:** release cycle-local storage and record the cycle outcome.
 
 Implementations may fuse phases but may not move the admission, publication,
 or payload-lifetime boundaries. Asynchronous completion occurs after offer and
@@ -162,9 +210,10 @@ re-enters through a later sealed input batch.
 ### Frame ownership
 
 - A **streaming frame** is borrowed only for the synchronous `offer` call. It
-  cannot be retained or retried after the call returns.
+  cannot be retained after the call returns.
 - A **replayable frame** owns or references stable storage through its terminal
-  disposition and may support bounded retry without semantic reevaluation.
+  disposition so a backend may complete asynchronous submission without
+  borrowing cycle-local storage.
 
 Both forms carry the same ordered render-operation meaning from RFC-002. The
 frame envelope adds provenance, ownership, and disposition rather than a
@@ -177,7 +226,8 @@ The architecture distinguishes:
 - semantic result: unchanged, published, or failed before publication;
 - frame preparation: not needed, prepared, or failed;
 - presentation: completed, accepted asynchronously, backpressured, rejected,
-  dropped, superseded, or failed.
+  dropped, superseded, or failed;
+- logical frame disposition: committed or aborted.
 
 Exact value types and policy defaults belong in Specifications. RFC-005 owns
 cross-layer failure meaning; RFC-006 owns whether payload and completion facts
@@ -191,8 +241,8 @@ participate in capability resolution.
 | Semantic runtime | Seal input, dispatch actions once, coordinate phases, publish complete results | Concrete backend or platform mechanics |
 | Observable-state feature | Define state observation and publication implementation contract | Presentation retry policy |
 | Layout/render producer | Produce complete geometry and ordered payload from cycle-stable inputs | Backend completion or semantic replay |
-| Presentation coordinator | Offer frames, apply bounded drop/retry policy, correlate completion | Client action dispatch or state rollback |
-| Backend/display/transport | Consume or retain payload under declared lifetime and report outcomes | Cycle admission, semantic publication, or action replay |
+| Presentation coordinator | Offer frames, correlate completion, and record logical-frame commit or abort | Client action dispatch, state rollback, retry policy, or automatic rescheduling |
+| Backend/display/transport | Consume or retain payload under declared lifetime, define its required commit point, and report outcomes | Cycle admission, semantic publication, or action replay |
 
 ## Public API Impact
 
@@ -212,9 +262,11 @@ state, not silent mutation of the capability declaration.
 ## Backend Impact
 
 A backend must declare whether it consumes synchronously or accepts stable
-replayable ownership, what its observable presentation-success boundary is,
+replayable ownership, what outcome satisfies the logical-frame commit point,
 and how accepted asynchronous work reaches one terminal disposition. It may
-not retain a streaming payload, invoke semantic code, or cause semantic replay.
+not retain a streaming payload, invoke semantic code, cause semantic replay,
+or ask GiftUI Core to retry a frame. Backend/transport retry policy is not an
+MVP requirement and is preserved as future work in FW-010.
 
 ## Static / Embedded Impact
 
@@ -248,19 +300,21 @@ backend intentionally owns the entire semantic framework.
 
 ### Retain every frame
 
-Universal replay simplifies asynchronous presentation and retry but imposes
+Universal replay simplifies asynchronous presentation ownership but imposes
 RAM and copy cost on embedded targets. It remains a configuration choice, not
 the common requirement.
 
 ### Stream every frame
 
 Universal streaming minimizes storage but cannot support asynchronous
-ownership or retry. It remains a valid realization, not the whole contract.
+ownership. It remains a valid realization, not the whole contract.
 
-### Retry by running semantics again
+### Automatically run a failed frame again
 
-This reuses the normal path but may repeat client actions and side effects. A
-new cycle may produce a replacement frame; it is not retry of the old frame.
+This reuses the normal path but may repeat client actions and side effects,
+turn deterministic computation failures into loops, and require scheduler
+policy not justified by the MVP. Any later frame rescheduling is separate from
+backend submission retry and is deferred by FW-011.
 
 ### Couple semantic commit to physical presentation
 
@@ -284,12 +338,16 @@ stable frame ABI or persistent serialized format is proposed.
 ## Testing Strategy
 
 - Inject input during every phase and verify later admission.
-- Prove every admitted action executes at most once under presentation retry,
+- Prove every admitted action executes at most once under presentation abort,
   failure, drop, and supersession.
 - Compare static and dynamic semantic results, geometry, operation order, and
   frame provenance for the same sealed inputs.
 - Verify streaming payloads are not retained and replayable payloads remain
   valid through terminal disposition.
+- Inject failure before every frame commit point and verify the new frame
+  aborts, unpublished frame-local work is discarded, the previous committed
+  logical frame and routing state remain authoritative, and the failure is
+  reported once.
 - Stall and fault every backend boundary and verify configured bounds and one
   terminal outcome for accepted work.
 - Keep host, cross-build, simulator, and connected-device evidence distinct.
@@ -301,9 +359,12 @@ stable frame ABI or persistent serialized format is proposed.
 - Dynamic implementations may hide unbounded work behind tasks or references;
   conformance must enforce configured bounds.
 - Streaming may leave a display partially updated; a later full redraw or
-  reset is presentation policy, not semantic rollback.
+  reset is not implied by frame abort and requires separate presentation or
+  rescheduling policy.
 - RFC-005 or RFC-006 may classify shared facts differently; reconcile terms
   before any coordinated RFC advances.
+- RFC-002 and RFC-005 still contain draft references to host-selected frame
+  retry policy; reconcile those drafts with FW-010 before coordinated review.
 
 ## Open Questions
 
@@ -315,17 +376,28 @@ stable frame ABI or persistent serialized format is proposed.
    semantics on both runtime profiles without requiring general reversible
    client state or duplicating the entire graph?
 
-Identifier widths, queue and payload capacities, retry counts, timing budgets,
-and concrete backend success points are Specification inputs once these
-architectural questions are resolved.
+Identifier widths, queue and payload capacities, timing budgets, and concrete
+backend commit points are Specification inputs once these architectural
+questions are resolved.
 
 ## Deferred and Follow-up Work
 
-Animation transactions, lossless presentation, remote acknowledgement,
-persistent frame capture, and a general scheduler remain outside current MVP
-scope. They require a concrete accepted need or deferred artifact before work
-begins. Observable reference-state architecture remains a separate required
-feature lifecycle rather than a hidden sub-decision of this RFC.
+- [FW-010: Backend and Transport Submission Retry](../future-work/fw-010-backend-transport-submission-retry.md)
+  preserves optional retry of an already-produced frame payload at the
+  backend/transport boundary. It is excessive for MVP; revisit when a supported
+  backend demonstrates recoverable transient submission failures that aborting
+  and reporting alone cannot handle acceptably.
+- [FW-011: Failed-Frame Rescheduling](../future-work/fw-011-failed-frame-rescheduling.md)
+  preserves the possibility of keeping invalidation pending and offering a new
+  frame on a later run-cycle iteration. It is not a tight retry loop and is not
+  required by the MVP transaction guarantee; revisit when a supported host or
+  reference flow requires recovery without a new external invalidation.
+
+Animation transactions, lossless presentation, remote acknowledgement, and
+persistent frame capture remain outside current MVP scope. They require a
+concrete accepted need or deferred artifact before work begins. Observable
+reference-state architecture remains a separate required feature lifecycle
+rather than a hidden sub-decision of this RFC.
 
 ## Decision Summary
 
@@ -334,7 +406,10 @@ If approved, this RFC is expected to yield candidate ADRs for:
 1. sealed run-cycle admission with at-most-once semantic action execution and
    complete publication boundaries;
 2. semantic publication independent from presentation outcome;
-3. one frame envelope model supporting bounded replayable ownership and
+3. required frame commit-or-abort semantics that preserve the prior committed
+   logical frame after pre-commit failure without automatic retry or
+   rescheduling;
+4. one frame envelope model supporting bounded replayable ownership and
    one-shot synchronous streaming with explicit terminal disposition.
 
 ## References
@@ -343,6 +418,8 @@ If approved, this RFC is expected to yield candidate ADRs for:
 - [RFC-002](rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-005](rfc-005-failure-diagnostics-propagation.md)
 - [RFC-006](rfc-006-capability-system-architecture.md)
+- [FW-010: Backend and Transport Submission Retry](../future-work/fw-010-backend-transport-submission-retry.md)
+- [FW-011: Failed-Frame Rescheduling](../future-work/fw-011-failed-frame-rescheduling.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
