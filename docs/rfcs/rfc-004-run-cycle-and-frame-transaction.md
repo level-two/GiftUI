@@ -184,6 +184,26 @@ capability, and render-generation failures are not candidates for automatic
 retry. Given identical admitted inputs and state, repeating them would normally
 repeat the failure and could create an unbounded loop.
 
+### Wake scheduling and presentation synchronization
+
+The target host MUST request serialized run cycles in response to pending work
+or scheduled deadlines. Runtime execution MUST NOT require a continuously
+ticking frame loop. Platform event loops, interrupts, and timer facilities may
+request a wake, but they do not decide the membership of the cycle's sealed
+input batch.
+
+Backends MAY synchronize presentation with hardware refresh or transport
+opportunities, but MUST NOT directly control semantic admission or evaluation.
+A timer MAY provide a frame opportunity when no hardware synchronization
+source exists; timer cadence alone does not establish tear-free presentation.
+The Signal Analyzer's nominal 250-millisecond display interval is application
+frame pacing rather than a claim about the physical display refresh rate.
+
+Later Specifications define the concrete host wake API, coalescing and missed-
+deadline policy, and target-specific presentation synchronization. These
+profile-specific mechanisms MUST preserve the admission, ordering,
+publication, and payload-lifetime boundaries defined by this RFC.
+
 ### Logical phases
 
 One cycle has these observation points:
