@@ -1,7 +1,7 @@
 ---
 id: FW-011
 feature: giftui-mvp-architecture
-title: Pre-Handoff Aborted-Frame Rescheduling
+title: Handoff-Refusal Frame Rescheduling
 status: captured
 authors:
   - Yauheni Lychkouski
@@ -19,57 +19,64 @@ superseded_by: []
 target_milestone: null
 ---
 
-# FW-011: Pre-Handoff Aborted-Frame Rescheduling
+# FW-011: Handoff-Refusal Frame Rescheduling
 
 ## Observation / Opportunity
 
-After frame preparation fails or a backend refuses handoff, the runtime could
-keep an invalidation pending and offer a newly evaluated frame on a later run-
-cycle iteration. This is a new frame opportunity, not a tight retry loop and
-not resubmission of the aborted frame's payload. Failures after accepted
-handoff do not abort the logical frame and are outside this item's scope.
+After a semantic revision has been published but a backend refuses the
+synchronous frame handoff, the runtime could mark that revision for another
+presentation attempt on a later run-cycle iteration. This would be a new frame
+opportunity, not a tight retry loop and not resubmission of the refused frame's
+payload. Failures after accepted handoff do not abort the logical frame and
+remain outside this item's scope.
+
+RFC-004 now owns the distinct pre-publication case: when reconciliation,
+layout, or frame preparation fails after mutations were applied, state remains
+dirty and requests a later host-paced recomputation without replaying the
+admitted batch.
 
 ## Why Deferred
 
-Required pre-handoff abort already leaves GiftUI in a deterministic state,
-preserves the previous committed logical frame, and reports failure. The MVP
-does not require an automatic recovery opportunity, and rescheduling would
-introduce host wake behavior, invalidation lifetime, refusal classification,
-pacing, and loop-avoidance policy that are not needed to establish the
-transaction model.
+Handoff refusal already leaves GiftUI in a deterministic state, preserves the
+previous committed logical frame and routing state, and reports failure. The
+MVP does not currently require another presentation opportunity for an
+already-published revision after refusal. Adding one would require refusal
+classification, retained presentation intent, pacing, and loop-avoidance
+policy beyond RFC-004's dirty-state recovery contract.
 
 ## Potential Value
 
-- Recover after transient preparation pressure or handoff refusal without
-  requiring a new external mutation or invalidation.
+- Recover after transient handoff refusal without requiring a new external
+  mutation or invalidation.
 - Coalesce recovery with the host's next natural run-cycle opportunity.
 
 ## Current Non-goals
 
 - No immediate or unbounded retry loop is added.
-- No scheduler, timer, wake service, retained dirty flag, or retry counter is
-  added to MVP scope.
-- No guarantee is made that identical deterministic computation will be run
-  again after failure.
+- No retained frame payload, presentation-pending flag, refusal classifier, or
+  retry counter is added to MVP scope.
+- RFC-004's required dirty flag and wake request after pre-publication
+  derivation failure are not deferred by this item.
 - This item does not authorize backend/transport recovery after accepted
   handoff; FW-010 preserves that separate concern.
 
 ## Revisit Triggers
 
 - A supported host or reference-application flow requires recovery from a
-  preparation failure or refused handoff when no later external invalidation
-  is guaranteed.
-- Connected-target evidence shows that pre-handoff abort leaves the last
+  refused handoff when no later external invalidation is guaranteed.
+- Connected-target evidence shows that handoff refusal leaves the last
   committed logical frame current beyond an accepted product requirement.
-- An approved observable-state or host run-cycle Specification establishes the
-  invalidation and wake contracts needed to reschedule without an unbounded
-  failure loop.
+- An approved host run-cycle or backend Specification establishes refusal
+  classification and retained presentation intent sufficient to reschedule
+  without an unbounded failure loop.
 
 ## Disposition
 
-Captured with pre-handoff scope. Promote through the appropriate feature
-lifecycle only when a trigger occurs and an accepted product need justifies
-scheduler and invalidation policy.
+Captured with scope narrowed to post-publication handoff refusal after RFC-004
+incorporated dirty recovery for pre-publication derivation failures. Promote
+through the appropriate feature lifecycle only when a trigger occurs and an
+accepted product need justifies retained presentation intent and rescheduling
+policy.
 
 ## References
 

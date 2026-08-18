@@ -63,8 +63,9 @@ first-party backends.
   backend retains or replays GiftUI operations for retry.
 - No replayable operation representation or retry payload is added to the MVP
   frame contract.
-- This item does not authorize rescheduling after a pre-handoff frame abort;
-  FW-011 preserves that separate concern.
+- This item does not authorize rescheduling after a synchronous handoff
+  refusal; FW-011 preserves that separate concern. RFC-004 directly owns dirty
+  recovery after a pre-publication derivation failure.
 
 ## Revisit Triggers
 
@@ -89,5 +90,5 @@ item.
 
 - [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-004: Run Cycle and Frame Transaction Architecture](../rfcs/rfc-004-run-cycle-and-frame-transaction.md)
-- [FW-011: Pre-Handoff Aborted-Frame Rescheduling](fw-011-failed-frame-rescheduling.md)
+- [FW-011: Handoff-Refusal Frame Rescheduling](fw-011-failed-frame-rescheduling.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
