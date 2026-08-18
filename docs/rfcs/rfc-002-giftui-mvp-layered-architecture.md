@@ -6,7 +6,7 @@ status: draft
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-08-17
+updated: 2026-08-18
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -61,6 +61,11 @@ for runtime admission. Neither interprets `View`, `VStack`, `Button`, state,
 identity, or reconciliation. Hardware drivers own controller and transport
 mechanics, but do not become GiftUI backends merely because they can display
 pixels.
+
+The target integration coordinates presentation eligibility with its sibling
+physical-input path. It suppresses or defers input known to target a stale,
+unavailable, or not-yet-eligible presentation before that input reaches the
+runtime; device health does not become portable GiftUI semantics.
 
 These are candidate architectural choices for review. This draft does not
 approve them, define final public APIs, authorize package restructuring, or
@@ -288,7 +293,7 @@ family without changing the listed owner or dependency direction.
 | Structural/action identity, state binding hooks, invalidation, hit maps, and semantic routing | `GiftUISemanticCore` | Depends on `GiftUI`; exposes no backend or integration type |
 | Layout proposals, semantic-child adapter, measurement/placement results, and hit geometry | `GiftUILayout` | Depends on `GiftUI`; the runtime adapts semantic children to this consumer-owned contract, so layout does not import a runtime implementation |
 | Render operations, resource identities, and one-shot ordered sink contracts | `GiftUIRenderCore` | Depends on `GiftUI`; imports no semantic-runtime, backend, platform, or driver implementation |
-| Cycle/frame/attempt identity, frame envelope, admission, and completion records | focused execution contract governed by RFC-004 | Depends on portable values and `GiftUIRenderCore`; both runtimes and backends depend on it rather than on each other |
+| Cycle/frame identity, frame envelope, admission, and synchronous handoff results | focused execution contract governed by RFC-004 | Depends on portable values and `GiftUIRenderCore`; both runtimes and backends depend on it rather than on each other |
 | Cross-layer failure facts and composition-policy seam | focused failure contract governed by RFC-005 | Remains below its producers and coordinators; exact target placement follows RFC-005 without importing a concrete runtime or integration |
 | Capability vocabulary and pure resolution | `GiftUICapabilities`, governed by RFC-006 | Foundational leaf relative to contributors; imports no higher or concrete integration layer |
 | Runtime execution | `GiftUIRuntimeDynamic` / `GiftUIRuntimeStatic` | Depend on `GiftUI`, semantic, layout, render, execution, failure, and approved capability contracts; import no concrete backend |
@@ -353,15 +358,15 @@ work within the physical owners and partial order established above.
 | B5 | Layout and semantic lowering -> render core | Resolved geometry, portable paint/drawing intent, positioned text, ordered opaque rectangle and line operations, clip/damage geometry where required, and stable resource identities | `GiftUIRenderCore` owns normalized operation meaning and transport. It receives no `View`, container, state-storage, reconciliation, hit/action map, platform handle, or concrete backend object. Runtime-owned hit geometry is a parallel revision artifact and never enters the render payload. |
 | B6 | Render core/runtime coordinator -> backend SPI | Stable frame identity and provenance, frame offer, ordered render payload, resource references, coordinate/surface facts, and presentation request | RFC-004 owns frame transaction semantics. A backend executes and presents operations; it does not evaluate views, perform GiftUI layout, mutate semantic state, invoke client actions, or request semantic replay. |
 | B7 | Backend -> rasterizer or memory-surface contract | Normalized drawing operations, clip/damage region, target pixel mapping, raster resources, and bounded pixel/tile workspace | Rasterization owns conversion to pixels, not GiftUI semantics or OS/device mechanics. Pixel quantization and storage format must not feed back into semantic measurement. |
-| B8 | Backend/presentation adapter -> display-target contract | Surface geometry, native format, write region/window, pixel payload, submission identity, and presentation request | The backend owns presentation strategy; the display target owns device-facing submission mechanics. Neither side owns semantic commit, action dispatch, or retry policy. |
+| B8 | Backend/presentation adapter -> display-target contract | Surface geometry, native format, write region/window, pixel payload, submission identity, and presentation request | The backend owns presentation strategy and post-handoff recovery; the display target owns device-facing submission mechanics. Neither side owns semantic commit or action dispatch. |
 | B9 | Display-controller driver -> transport/HAL implementation | Controller commands, address windows, borrowed or transferred byte buffers, timing requirements, GPIO/SPI/DMA operations, and transaction identity | The controller driver owns controller protocol and state. The transport/HAL owns bus, RTOS, interrupt, and vendor mechanics and imports no GiftUI semantic or render-operation types. |
-| B10 | Platform/input driver adapter -> semantic runtime admission | `GiftUI`-owned backend-neutral pointer/touch value, logical coordinates, phase, stable source/event identity where required, and bounded ordering metadata | Drivers own sampling, calibration, interrupts, evdev, or mouse records; a sibling input/platform adapter owns normalization and feeds the RFC-004 admission contract. Input does not enter through the render-oriented `GiftUIBackend` SPI. The runtime owns hit testing, disabled-state enforcement, and semantic routing; producers never invoke client actions directly. |
+| B10 | Platform/input driver adapter -> semantic runtime admission | `GiftUI`-owned backend-neutral pointer/touch value, logical coordinates, phase, stable source/event identity where required, and bounded ordering metadata | Drivers own sampling, calibration, interrupts, evdev, or mouse records; a sibling input/platform adapter owns normalization and feeds the RFC-004 admission contract only after B16 presentation eligibility permits it. Input does not enter through the render-oriented `GiftUIBackend` SPI. The runtime owns hit testing, disabled-state enforcement, and semantic routing; producers never invoke client actions directly. |
 | B11 | Semantic runtime -> portable client action/state boundary | Hit-test result, semantic action identity, ordered handler invocation, state mutation, invalidation, and resulting semantic revision | The runtime owns action ordering, reentrancy, state lifetime, and invalidation. Backends, drivers, environmental adapters, and diagnostics cannot mutate application state or dispatch handlers. The separate observable-state lifecycle must define the public state contract. |
 | B12 | Selected components -> capability resolver at composition root | Typed Traits describing implementation, profile, resource, surface, input, presentation, approved environmental-contract, and device facts | RFC-006 owns vocabulary and resolution. Contributors report owned facts without importing higher layers; they do not decide product policy or claim semantic support independently. |
 | B13 | Capability resolver/host -> runtime and selected consumers | Validated immutable effective capability snapshot, selected conforming realization, quantitative bounds, provenance, and validation result | Portable features consume semantic support and constraints, never contributor or target identity. Policy may select among conforming realizations but cannot manufacture support or weaken required behavior. |
 | B14 | Framework consumer -> explicit environmental contract | Only the operation required by an approved consumer, such as a host wake request or diagnostic submission | The consumer RFC or Specification owns the operation semantics. The host supplies the implementation; environmental code cannot mutate semantics, admit input directly, or become capability or policy authority. A shared Service abstraction is deferred by FW-009. |
-| B15 | Any operational layer -> runtime failure boundary and diagnostic support | Typed bounded failure fact, originating boundary/phase, stable cycle/frame/attempt/context identities, and optional diagnostic record | RFC-005 owns classification and policy. Failures propagate upward explicitly; diagnostics have no control-flow authority. Layers do not silently trap, retry, ignore, or degrade outside assembled policy. |
-| B16 | Backend/display/transport completion -> runtime admission | Sequenced acceptance, presentation completion, failure, cancellation, drop, or stale-completion record associated with cycle/frame/attempt identity | RFC-004 and RFC-005 own admission and disposition. Completion producers report facts only; they cannot roll back committed state, replay semantic work, or invoke handlers. |
+| B15 | Any pre-handoff operational layer -> runtime failure boundary; any layer -> diagnostic support | Typed bounded failure fact, originating boundary/phase, stable cycle/frame/context identities, and optional diagnostic record | RFC-005 owns pre-handoff propagation and optional diagnostic observation. Post-handoff presentation facts remain below Core and cannot change logical-frame disposition. Diagnostics have no control-flow authority. |
+| B16 | Presentation integration -> sibling physical-input admission gate | Committed frame provenance, backend-local presentation eligibility/health, and the minimum bounded state needed to suppress or defer input known to target a stale, unavailable, or not-yet-eligible presentation | RFC-004 owns the coherence rule. Target integrations coordinate presentation and physical input without exposing device/transport failure as GiftUI semantics, rolling back committed state, replaying work, or invoking handlers. |
 
 #### Ownership, lifetime, and synchronization
 
@@ -372,17 +377,17 @@ work within the physical owners and partial order established above.
 | B3 | Inputs are borrowed from cycle-stable semantic state. Layout results and hit geometry are owned by staged runtime/frame state for at least the lowering and hit-test lifetimes defined by RFC-004. Cache lifetime is explicit and cannot affect results. | Synchronous, deterministic measurement and placement within a cycle. Layout does not call a concrete backend or accept asynchronous mutation. |
 | B4 | Font packages and identities are immutable assembly resources. Text, line, glyph, and shaping workspaces are explicitly borrowed or caller-owned for a declared cycle/frame scope; no implementation may assume heap retention. | Deterministic layout-time resolution and shaping. Raster acquisition may occur later but cannot change positioned geometry. Exact streaming/borrowing rules remain with RFC-003. |
 | B5 | Resolved values are cycle-stable. Operations and their borrowed resources are valid only during the synchronous one-shot sink call and cannot be retained or replayed by the backend. The separate runtime-owned hit map outlives every input routed against its committed revision. | Ordered emission after layout. Producers cannot concurrently mutate staged semantics or resources while operations are consumed. Hit-map publication follows RFC-004 but is not operation-sink traffic. |
-| B6 | Every first-party MVP backend consumes the one-shot ordered operation stream synchronously during frame offer. Asynchronous presentation may retain or transfer only backend-owned derived pixel, transfer, or device data until terminal disposition. | Frame offer is synchronous; presentation completion may be synchronous or asynchronous. Every asynchronous outcome re-enters as ordered runtime input and never calls semantic code directly. |
+| B6 | Every first-party MVP backend consumes the one-shot ordered operation stream synchronously during frame offer. Before accepting, it reserves bounded capacity and retains or transfers only backend-owned derived pixel, transfer, or device data. Refusal retains nothing. | Frame offer and logical commit-or-abort are synchronous. Presentation may continue asynchronously below the handoff boundary; its outcomes do not re-enter Core to alter frame disposition or call semantic code. |
 | B7 | Backend or caller owns bounded raster scratch, tiles, and surfaces. Borrowed operation/resource data is valid only for the declared draw call; caches have explicit assembly/frame lifetime and cannot change output. | Synchronous operation execution for the MVP path unless a later backend contract explicitly transfers ownership. Raster work cannot race semantic or layout mutation. |
-| B8 | Buffer and pixel-payload ownership is explicit per submission: borrowed data must complete synchronously; asynchronous submission requires transferred or independently stable storage until terminal completion. | Submission may complete synchronously or asynchronously. The target reports exactly one terminal fact per accepted attempt through B16. |
-| B9 | Driver owns controller state and transaction metadata. Buffer ownership is borrowed for synchronous transfer or explicitly transferred until completion; interrupt code may retain only declared stable tokens/storage. | Transfers may be synchronous, DMA-driven, interrupt-driven, or polled. All asynchronous effects are normalized into ordered completion facts rather than upward callbacks into semantics. |
+| B8 | Buffer and pixel-payload ownership is explicit per submission: borrowed data must complete synchronously; asynchronous submission requires transferred or independently stable storage for its backend-local lifetime. | Submission may complete synchronously or asynchronously. Downstream completion and failure remain local to presentation recovery, input gating, and optional diagnostics. |
+| B9 | Driver owns controller state and transaction metadata. Buffer ownership is borrowed for synchronous transfer or explicitly transferred until completion; interrupt code may retain only declared stable tokens/storage. | Transfers may be synchronous, DMA-driven, interrupt-driven, or polled. Asynchronous effects feed only lower-layer state, presentation/input coordination, or optional diagnostics; they never callback into semantics. |
 | B10 | Raw platform records remain below the adapter. Normalized events are copied or moved into a bounded admission queue and then into one sealed cycle batch. Hit regions used for routing belong to a committed semantic/layout revision. | Producers may be asynchronous or interrupt-driven; runtime consumption is serialized at the next admission boundary. Equal-order and coalescing rules must be deterministic. |
 | B11 | Runtime owns action maps and state slots for their declared structural lifetime. Client handlers receive only public values/Bindings whose lifetime cannot expose runtime storage unsafely. | Dispatch is serialized within the active cycle. Reentrant external input is queued for a later cycle; disabled actions are suppressed before handler invocation. |
 | B12 | Trait values are immutable contribution values or assembly-time borrows copied into resolver-owned bounded workspace. Concrete implementation instances are not stored as semantic capability values. | Contribution and resolution occur before runtime start, with deterministic order independent of dynamic discovery. |
 | B13 | The effective snapshot is immutable for the runtime lifetime. A frame observes a stable snapshot identity; the exact revision/provenance retained by a frame is coordinated with RFC-004 and RFC-006. | Consumers read synchronously without probing contributors. Temporary device availability enters as operational state, not snapshot mutation. |
 | B14 | The host owns each concrete environmental adapter for the assembled runtime lifetime. Tokens and pending requests have the bounds and lifetime defined by their consumer contract; diagnostic payloads are copied or synchronously consumed. | Calls originate at the boundary defined by the owning consumer. Wakeups and asynchronous completions re-enter through bounded admission rather than arbitrary callbacks. |
-| B15 | A cycle owns its bounded failure accumulator until disposition. Completion failures retain only stable numeric identity/context needed for later admission. Diagnostic sinks may consume synchronously or copy into their own bounded storage. | Control-flow failure propagation is synchronous within a cycle; asynchronous failures re-enter through B16. Diagnostic delivery is best effort and never blocks correctness. |
-| B16 | The integration that accepts an attempt owns enough stable identity to emit one terminal record. The admission queue owns copied completion facts until a cycle consumes them. | Completions may originate asynchronously but are serialized at cycle admission. Late, duplicate, and stale records receive deterministic non-semantic disposition. |
+| B15 | A cycle owns its bounded pre-handoff failure accumulator until disposition. Diagnostic sinks may consume synchronously or copy bounded records. Backend-local post-handoff health retains only the provenance its local policy needs. | Control-flow failure propagation is synchronous through handoff. Post-handoff diagnostics are best effort and never block correctness or alter committed frame state. |
+| B16 | The target presentation/input integration owns bounded local eligibility and health state for the accepted frames it advances. No Core completion queue is required for that state. | Presentation completion may be asynchronous, but the integration locally sequences it with physical input and suppresses or defers input known not to correspond to an eligible presentation. |
 
 #### Failure, bounds, visibility, and conformance evidence
 
@@ -393,17 +398,17 @@ work within the physical owners and partial order established above.
 | B3 | Layout returns complete geometry or a structured failure; it never exposes partial geometry as complete. Bounds cover traversal depth, nodes, proposals, caches, hit regions, coordinates, and arithmetic overflow. | Framework SPI | Backend-free layout fixtures for all MVP containers/modifiers and Signal Analyzer geometry, including identical cross-profile results and every capacity edge. |
 | B4 | Unsupported input, package mismatch, workspace exhaustion, malformed resources, and numeric overflow follow RFC-003/RFC-005; no fallback may silently change geometry. | Client API for text request; framework/tooling contracts for packages and layout | Golden canonical text geometry, package integrity, dynamic/static workspace exhaustion, and exact-face raster-provider conformance. |
 | B5 | Operation or resource exhaustion fails explicitly; an ordered stream is never silently truncated. Bounds cover operation payload, clip depth, paths/segments, resources, and identifiers. Hit-map capacity is a B3/B11 runtime obligation, not render storage. | Framework SPI | Golden one-shot operation sequences, recording-sink validation, malformed-resource tests, deterministic overflow at every sink boundary, and instrumentation proving no backend retains borrowed operations or resources. |
-| B6 | Acceptance, execution, and presentation completion remain distinct. Backend or presentation failure never rolls back committed semantic state or causes semantic replay. Outstanding frames/attempts and backend-owned presentation data are bounded. | Integration SPI | Recording/checking backend contract suite, synchronous and asynchronous completion fixtures, backpressure/drop/abort tests, and derived-presentation-data lifetime instrumentation. |
+| B6 | Complete accepted handoff commits the logical frame; preparation failure or handoff refusal aborts it. Post-handoff presentation failure never changes that disposition, rolls back semantic state, or causes semantic replay. Backend-owned downstream slots and presentation data are bounded. | Integration SPI | Recording/checking backend contract suite, all-or-nothing offer fixtures, backpressure/refusal tests, post-handoff fault injection, and derived-presentation-data lifetime instrumentation. |
 | B7 | Unsupported operations, invalid resources, clipping/coordinate overflow, tile/surface exhaustion, and pixel conversion failures are explicit frame-attempt outcomes. Scratch, cache, tile, and surface storage are bounded on static targets. | Integration SPI | The same golden operations through recording, host pixel-surface, framebuffer, and RGB565 tile implementations, with bounds and guard-region checks. |
-| B8 | Invalid geometry/format, submission refusal, disconnection, backpressure, and partial/failed presentation produce stable attempt outcomes. Transfer regions, queued submissions, and buffers are bounded. | Integration SPI | Fake display-target fault injection plus Raspberry Pi and nRF52840 connected-display evidence for the claimed presentation boundary. |
-| B9 | Bus/controller timeout, invalid state, short transfer, and device failure are reported upward as stable facts; retry occurs only under delegated policy. Command, transfer, DMA, and interrupt queues are bounded. | Integration SPI | Controller fixtures over fake transports, transfer-boundary fault injection, ELF/resource checks, and connected-device evidence without claiming semantics from hardware-free tests. |
+| B8 | Invalid geometry/format, insufficient reserved capacity, or synchronous submission refusal prevents handoff acceptance. Disconnection, partial presentation, and downstream failure after acceptance remain bounded local health/recovery conditions. | Integration SPI | Fake display-target fault injection plus Raspberry Pi and nRF52840 connected-display evidence for all-or-nothing handoff and local post-handoff behavior. |
+| B9 | Bus/controller timeout, invalid state, short transfer, and device failure update bounded backend-local health/recovery and may emit optional diagnostics; they do not reopen the frame transaction. Command, transfer, DMA, and interrupt queues are bounded. | Integration SPI | Controller fixtures over fake transports, transfer-boundary fault injection, input-gating checks, ELF/resource checks, and connected-device evidence without claiming semantics from hardware-free tests. |
 | B10 | Malformed samples, coordinate overflow, queue exhaustion, and unsupported event forms have deterministic drop/failure/diagnostic behavior. Event queues, batch size, source count, and identifiers are bounded. | Integration SPI feeding framework SPI | Adapter fixtures for mouse/host, evdev, and embedded touch; ordering, calibration, overflow, disabled-hit, and revision-correlation tests independent of a pixel backend. |
 | B11 | Missing/stale action identity, disabled action, handler failure, state-slot exhaustion, and reentrant input have explicit behavior; action/state slots and queued invalidations are bounded. | Client API plus framework SPI | Cross-profile fixtures for identity change, state preservation/removal, disabled controls, ordered actions, reentrancy, coalescing, and deterministic exhaustion. |
 | B12 | Unknown/duplicate/conflicting Traits and resolver-workspace exhaustion invalidate assembly; contributors cannot silently omit required facts. Family, contribution, provenance, and validation-record counts are bounded. | Host API and Integration SPI; Tooling for reports | Pure resolver tests, contributor fixtures at each layer, order-independence checks, and bounded nRF52840 representation measurements. |
 | B13 | Missing required semantics or unsatisfied constraints invalidate assembly. Optional absence has explicit behavior; operational loss does not mutate the snapshot. Snapshot size and provenance are bounded. | Host API plus read-only framework/client-relevant projection where approved by RFC-006 | Four complete configuration fixtures, negative requirement fixtures, stable reports, and tests separating capability absence from runtime device failure. |
 | B14 | Every approved environmental contract defines bounded failures, lifetime, and re-entry behavior; correctness never depends on diagnostic delivery. | Host API and the owning consumer SPI | Consumer-specific deterministic fakes and target adapters; no common Clock/Scheduler/Sink catalogue is required by this RFC. |
 | B15 | Every non-local failure is classified and propagated; context or diagnostic exhaustion cannot replace the primary failure. Record width, context depth, secondary failures, and sink capacity are bounded. | Framework/integration SPI; Tooling for symbolization | Phase-by-phase fault injection across semantic, layout, render, backend, display, and transport boundaries, with and without a diagnostic sink. |
-| B16 | Accepted attempts produce exactly one terminal disposition. Duplicate, late, unknown, or stale completions cannot mutate state; completion queues and stable identifier ranges are bounded. | Integration SPI feeding framework SPI | Completion-state-machine tests covering synchronous completion, delay, reordering, duplication, wraparound, cancellation, drop, and runtime quiescence. |
+| B16 | Input known to target a stale, unavailable, or not-yet-eligible presentation is not admitted as current GiftUI input. Local eligibility state and deferred-input capacity are bounded with deterministic overflow behavior. | Integration SPI below framework admission | Presentation/input fixtures covering delayed completion, failure, recovery, rapid accepted frames, stale physical events, gating saturation, and targets that cannot claim interactive coherence. |
 
 The evidence column identifies the smallest contract fixture for each boundary;
 it does not replace the supported-configuration progression or connected-board
@@ -598,8 +603,9 @@ A supported configuration is the combination of:
 
 The selected profile, implementations, capacities, and dependency graph do not
 change after the MVP stack is assembled. Runtime device presence, disconnects,
-and failures are operational inputs governed by RFC-004 and RFC-005; they do
-not mutate the assembled architecture. What those facts mean as capabilities
+and failures are operational state below RFC-004's accepted handoff and may
+produce optional RFC-005 diagnostics; they do not mutate the assembled
+architecture or Core's committed frame. What those facts mean as capabilities
 belongs to the separate capability-system lifecycle.
 
 The target host is the composition root. Dynamic hosts may use erased runtime
@@ -674,13 +680,13 @@ display list or replay storage on any MVP profile.
 | `GiftUISemanticCore` | Portable semantic traversal, identity, state, invalidation, reconciliation, hit-region, and action-routing contracts | Depends on the public declaration/geometry layer; imports no concrete runtime, layout implementation, renderer, or integration |
 | `GiftUILayout` | Proposal-based measurement, placement, semantic-child adapter, cache contracts, resolved geometry, and hit geometry | Depends on `GiftUI`; owns the B3 consumer contract and imports no runtime implementation, render, backend, or platform integration |
 | `GiftUIRenderCore` | Normalized operations, one-shot ordered sinks, bounded producer workspace, resources, and frame metadata | Depends on resolved geometry and portable resource contracts; exposes no semantic view types to backends |
-| RFC-004 execution contract module | Cycle/frame/attempt identities, admission, frame envelope, and completion records | Depends on portable/render contracts; both runtimes and backends depend on it without depending on each other |
+| RFC-004 execution contract module | Cycle/frame identities, admission, frame envelope, and synchronous handoff results | Depends on portable/render contracts; both runtimes and backends depend on it without depending on each other |
 | RFC-005 failure contract module | Cross-layer failure facts and composition-policy seam | Sits below producers and coordinators; imports no concrete runtime, backend, platform, or driver implementation |
 | `GiftUIRuntimeDynamic` / `GiftUIRuntimeStatic` | Profile-specific semantic storage and execution | Each coordinates semantic, layout, render, execution, failure, and capability contracts; neither imports a concrete backend |
 | `GiftUIBackend` | Frame acceptance, operation consumption, presentation, and surface contracts | Depends on render/execution/failure and portable geometry contracts; contains no application or semantic-runtime ownership and does not own input normalization |
 | `GiftUIRaster` | Converts normalized operations into pixels or bounded tiles | Depends on backend/render and pixel-surface contracts, not Linux or a controller |
 | Framebuffer backend targets | Present raster output to memory-surface contracts | Depend on render/raster and surface contracts, not a specific OS |
-| Platform input adapter targets | Normalize mouse, evdev, or touch-driver records into `GiftUI` input values and RFC-004 admission | Sibling of render backends; depend on portable input/execution contracts, never semantic-runtime implementations |
+| Platform input adapter targets | Normalize mouse, evdev, or touch-driver records into `GiftUI` input values, apply target-local B16 presentation eligibility, and feed RFC-004 admission | Sibling of render backends; depend on portable input/execution contracts and target-local coordination, never semantic-runtime implementations |
 | Linux integration targets | Own framebuffer mapping, discovery, presentation, evdev adaptation, and other Linux mechanics | Compose backend and sibling input contracts with OS adapters; never imported by portable GiftUI layers |
 | Embedded display backend targets | Convert operations into bounded raster regions and display-target writes | Depend on render/raster, backend SPI, and display-target contracts |
 | Display/input driver targets | Implement controller operations, calibration, and device input | Depend on device and transport contracts, not semantic GiftUI types |
@@ -1045,7 +1051,7 @@ or interface:
 | --- | --- | --- |
 | B1-B3, B5, and B7-B10 | RFC-002 | Declarative-to-layout lowering, normalized rendering, backend/display separation, and sibling input admission are the core dependency-direction decision. Splitting them would make each draft depend on the others to remain coherent. |
 | B4 | RFC-003 | Text geometry and exact resource identity have independent alternatives and evidence, so the existing focused RFC remains justified. |
-| B6 and B16 | RFC-004 | Cycle ordering, frame lifetime, presentation outcome, and completion admission form one independent execution decision cluster. |
+| B6 and B16 | RFC-004 | Cycle ordering, synchronous handoff, frame lifetime, logical commit, and lower presentation/input coherence form one independent execution decision cluster. |
 | B15 and the failure aspects of all rows | RFC-005 | Explicit outcomes, policy ownership, and diagnostic independence are independently reviewable across every layer. |
 | B12-B13 | RFC-006 under PROPOSAL-004 | Capability meaning and resolution have a separate accepted problem, alternatives, and evolution path. |
 | B14 | Consumer RFC or Specification; RFC-007/FW-009 preserve generalization | No common Service foundation is justified until multiple approved consumers demonstrate shared semantics or a dependency problem. |
@@ -1063,21 +1069,18 @@ or module count alone is not such evidence.
 ## Open Questions
 
 RFC-002 has no remaining open question about whether to create another layer
-RFC. The following list records the coordinated status; item 1 remains the
-only approval-readiness blocker, while item 2 is resolved:
+RFC. The following list records the coordinated status; both items are
+resolved in the coordinated drafts:
 
-1. **Operation ownership is resolved in the coordinated drafts; the
-   presentation boundary remains open:** RFC-004 now requires every
+1. **Operation ownership and the logical commit boundary are resolved in the
+   coordinated drafts:** RFC-004 now requires every
    first-party MVP backend to consume the ordered operation stream once during
-   synchronous frame offer without retaining or replaying it. An asynchronous
-   presentation path owns only its derived presentation data. Replayable
-   operation storage and backend/transport submission retry are outside MVP
-   scope and preserved by
+   synchronous frame offer without retaining or replaying it. Complete accepted
+   handoff commits the logical frame and routing; later presentation and device
+   health remain in the target integration, which coordinates them with
+   physical input. Replayable operation storage and post-handoff recovery are
+   outside MVP scope and preserved by
    [FW-010](../future-work/fw-010-backend-transport-submission-retry.md).
-   RFC-004 must still determine what minimum
-   presentation-success boundary each first-party path can observe without
-   overstating physical-display evidence; that question remains a coordinated
-   approval blocker.
 2. **Resolved in the coordinated drafts:** RFC-005 places dependency-free
    failure facts in `GiftUIFailureCore` and execution correlation in
    `GiftUIFailureExecution`, which depends only on the core and RFC-004's
@@ -1121,10 +1124,10 @@ architecture to be folded into or resolved by RFC-002.
   records the concrete triggers for reconsidering a shared Service package and
   catalogue without adding it to MVP scope.
 - [FW-010](../future-work/fw-010-backend-transport-submission-retry.md)
-  preserves replayable operation or backend-derived payload storage and retry
-  policy as post-MVP work. Revisit only when a supported backend demonstrates
-  recoverable transient submission failures that abort-and-report cannot
-  satisfy.
+  preserves replayable operation or backend-derived payload storage and post-
+  handoff recovery policy as post-MVP work. Revisit only when a supported
+  backend demonstrates a measured downstream availability or presentation/
+  input-coherence requirement that bounded local handling cannot satisfy.
 - Existing proof-of-concept code will be revised and fitted into the accepted
   module graph through later ADRs, Specifications, and migration planning. It
   is not an input to the target architecture.

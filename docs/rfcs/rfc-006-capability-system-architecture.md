@@ -6,7 +6,7 @@ status: draft
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-17
+updated: 2026-08-18
 proposal:
   - PROPOSAL-004
 related_rfcs:
@@ -114,8 +114,8 @@ selects. Policy MUST NOT manufacture support or weaken required semantics.
 ### R6 — Preserve relevant constraints
 
 Availability MUST NOT be reduced to a Boolean when dimensions, formats,
-capacities, completion mode, alignment, or another bound determines whether a
-use is valid.
+capacities, handoff or payload-lifetime form, alignment, or another bound
+determines whether a use is valid.
 
 ### R7 — Explicit absence
 
@@ -232,7 +232,7 @@ Contributors report only facts they own:
 | --- | --- | --- |
 | Render producer / RFC-004 execution adapter | Required operation-set identity and supported stable stream or replay forms | Pixel format, device identity, or presentation policy |
 | Raster/backend adapter | Operation coverage, accepted delivery forms, producible canonical pixel encodings, extent limits, and required workspace | End-to-end support or display availability |
-| Surface/display adapter | Logical extent, accepted canonical pixel encodings, region/row constraints, buffer borrowing or transfer lifetime, and completion form | GiftUI semantics or raster selection |
+| Surface/display adapter | Logical extent, accepted canonical pixel encodings, region/row constraints, buffer borrowing or transfer lifetime, and handoff form | GiftUI semantics or raster selection |
 | Target host resource policy | Allowed storage budget, in-flight bound, and preference among otherwise conforming paths | Missing support or weakened semantics |
 
 The resolver intersects operation coverage, delivery compatibility, pixel
@@ -245,8 +245,9 @@ RFC-002 owners; local adapters map them to the closed capability vocabulary.
 
 Pixel encoding and delivery form are realization facts, not client-visible
 feature flags. The semantic capability is the complete conforming presentation
-path. Runtime backpressure, device loss, and submission failure remain
-operational outcomes under RFC-004/RFC-005 and do not mutate this result.
+path. Runtime backpressure or synchronous handoff refusal remains an RFC-004/
+RFC-005 outcome; device loss and downstream failure after accepted handoff
+remain backend-local operational health. Neither mutates this result.
 
 ### Normalized MVP fixtures and resolution evidence
 
@@ -454,8 +455,9 @@ proposed for MVP.
 - Policy may hide semantic degradation; it may select only conforming paths.
 - Generic specialization may increase code size; measure the concrete
   catalogue before choosing representation.
-- RFC-004 still owns operation-delivery and completion semantics, and RFC-005
-  owns operational failure; this RFC only resolves their immutable
+- RFC-004 still owns operation-delivery and handoff semantics, and RFC-005
+  owns pre-handoff operational failure plus optional post-handoff diagnostics;
+  this RFC only resolves their immutable
   capability-level compatibility facts. Any change to those meanings requires
   coordinated reconciliation before approval.
 
@@ -466,7 +468,7 @@ resolved in the proposed direction above: one `rasterPresentation` family in a
 foundational leaf target, resolved from four independently owned contribution
 classes. The remaining RFC blockers are:
 
-1. Does RFC-004 approve operation-delivery and completion meanings sufficient
+1. Does RFC-004 approve operation-delivery and handoff meanings sufficient
    to populate the immutable compatibility fields used here, including the
    first-party tiled paths, without adding a third payload-lifetime mode?
 2. Do review fixtures confirm that canonical pixel-encoding identity and

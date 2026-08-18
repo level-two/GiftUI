@@ -6,7 +6,7 @@ status: draft
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-17
+updated: 2026-08-18
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -42,6 +42,10 @@ layer detects a condition
     -> runtime/frame boundary supplies transaction context
     -> composition-owned policy selects an allowed disposition
 
+post-handoff presentation condition
+    -> bounded backend-local health, recovery, and input gating
+    -> no change to committed logical frame
+
 optional diagnostic record
     -> bounded sink or counter
     -> no effect on correctness or disposition
@@ -68,10 +72,11 @@ Embedded Swift cannot rely on exceptions, rich strings, reflection, heap
 allocation, or desktop logging. If every layer traps, retries, logs, or ignores
 locally, product behavior becomes backend-specific and untestable.
 
-RFC-004 owns cycle admission, semantic publication, frame lifetime, and
-asynchronous completion re-entry. This RFC consumes those positions to explain
-whether a failure affects unpublished work, a published semantic revision, or
-only one presentation attempt. It does not duplicate RFC-004's phase machine.
+RFC-004 owns cycle admission, semantic publication, frame lifetime, and the
+synchronous handoff commit boundary. This RFC consumes those positions to
+explain whether a failure aborts unpublished work, refuses frame handoff, or is
+only backend-local health after a logical frame has committed. It does not
+duplicate RFC-004's phase machine.
 
 The concern remains separate from RFC-002 because explicit results versus
 exceptions, layer-local versus composition-owned policy, and diagnostics
@@ -118,19 +123,23 @@ Propagation MUST preserve stable origin and condition identity sufficient for
 policy and tests. Boundary context MAY be added in a bounded form but MUST NOT
 replace the original cause.
 
-### R6 — Sequenced asynchronous outcomes
+### R6 — Callback and interrupt isolation
 
-Backend, display, driver, and transport outcomes arriving outside their
-originating call MUST re-enter through RFC-004's bounded sequenced completion
-admission. They MUST NOT mutate semantic state or invoke client handlers from
-callbacks or interrupts.
+An outcome from an approved asynchronous contract that is allowed to affect
+Core MUST re-enter through its owning bounded sequenced admission contract and
+MUST NOT mutate semantic state or invoke client handlers from a callback or
+interrupt. Device, transport, compositor, and physical-presentation outcomes
+after RFC-004's accepted handoff remain backend/integration-local; they MAY
+feed local health, recovery, input gating, or optional diagnostics but MUST NOT
+reopen the frame transaction.
 
 ### R7 — Publication-aware effects
 
 A failure before complete semantic publication may invalidate that cycle's
 unpublished work. A failure after publication MUST NOT roll back or replay the
-published semantic revision and affects presentation or later operational
-policy only.
+published semantic revision. A failure before accepted frame handoff may abort
+the candidate frame; a failure after accepted handoff affects backend-local
+health, recovery, presentation/input gating, or optional diagnostics only.
 
 ### R8 — Bounded profile-neutral meaning
 
@@ -186,18 +195,21 @@ returns the original outcome toward the owner of the affected cycle, frame, or
 integration operation. A boundary may annotate its own operation and stable
 correlation identity within configured bounds.
 
-Synchronous outcomes are handled within their active RFC-004 boundary.
-Asynchronous outcomes are copied into a bounded completion record and admitted
-later. Neither path grants a diagnostic sink, backend callback, or driver
+Synchronous outcomes through frame handoff are handled within their active
+RFC-004 boundary. An approved asynchronous operation whose outcome can affect
+Core uses its own bounded admission contract. Post-handoff presentation
+outcomes remain in the target integration and may produce optional bounded
+diagnostics. No path grants a diagnostic sink, backend callback, or driver
 interrupt direct semantic authority.
 
 ### Policy
 
-The composition root knows which facilities are required, which frames may be
-dropped, and what fatal action a product supports. It therefore selects policy
-for actions such as aborting unpublished work, dropping or retrying a frame,
-marking an optional facility unavailable, quiescing the runtime, or invoking a
-platform fatal hook.
+The composition root knows which facilities are required and what fatal action
+a product supports. It therefore selects policy for actions such as aborting
+unpublished work, refusing a pre-handoff frame, marking an optional facility
+unavailable, quiescing the runtime, or invoking a platform fatal hook.
+Post-handoff presentation recovery and physical-input gating belong to the
+target integration rather than this Core disposition policy.
 
 Policy cannot manufacture missing semantic support, reinterpret a violated
 invariant as success, or retry unboundedly. RFC-006 owns capability declaration
@@ -218,7 +230,7 @@ The candidate maintained targets are:
 - `GiftUIFailureCore`, which owns normalized origin, condition identity,
   outcome category, affected scope, and the invariant-safety seam; and
 - `GiftUIFailureExecution`, which combines a `GiftUIFailureCore` fact with the
-  applicable RFC-004 cycle, frame, attempt, phase, and publication position.
+  applicable RFC-004 cycle, frame, phase, handoff, and publication position.
 
 The names are candidates; the ownership and arrows are architectural. An
 arrow means "depends on":
@@ -250,11 +262,13 @@ product policy. Optional diagnostic adapters are consumers of core or
 correlated facts. Failure correctness never imports or depends on those
 adapters.
 
-This placement preserves RFC-002 B15 and B16: foundational facts can originate
-at any operational layer, while publication-aware disposition is performed
-only after correlation at the runtime/frame boundary. It also preserves B2:
-the host assembles policy and optional diagnostics without exporting new
-portable semantics.
+This placement preserves RFC-002 B15: foundational facts can originate at any
+operational layer, while publication-aware disposition through handoff is
+performed only after correlation at the runtime/frame boundary. After handoff,
+B16 keeps presentation/input coherence inside the target integration and this
+RFC supplies only optional diagnostic observation. It also preserves B2: the
+host assembles policy and optional diagnostics without exporting new portable
+semantics.
 
 ## Module Responsibilities
 
@@ -263,7 +277,8 @@ portable semantics.
 | `GiftUIFailureCore` candidate leaf | Portable outcome meaning, origin, affected scope, and stable condition identity | Execution identity, product policy, or rich diagnostic formatting |
 | `GiftUIFailureExecution` candidate adapter | Correlate a core fact with RFC-004 execution and publication context; expose the narrow policy input seam | Runtime/backend implementation or selected product policy |
 | Detecting layer | Validate its contract and report a structured fact | Cross-product retry, fallback, or fatal choice |
-| Runtime/frame coordinator | Attach publication/frame context and route synchronous or admitted asynchronous outcomes | Platform-specific error interpretation |
+| Runtime/frame coordinator | Attach publication/frame/handoff context and route synchronous pre-handoff outcomes plus outcomes from separately approved asynchronous Core contracts | Platform-specific error interpretation or post-handoff presentation recovery |
+| Presentation/input integration | Own post-handoff device health, recovery, and physical-input gating; optionally emit diagnostics | Reopen a committed frame, mutate semantics, or invoke client actions |
 | Target composition | Select total bounded product policy and optional diagnostic adapter | Rewrite lower-layer invariants or capability support |
 | Diagnostic adapter/tooling | Consume or symbolize bounded observations | Correctness, semantic mutation, or disposition authority |
 
@@ -285,10 +300,11 @@ validation problem rather than a diagnostic choice.
 
 ## Backend Impact
 
-Backends normalize command, resource, acceptance, and completion outcomes and
-associate them with the relevant frame or attempt. They report facts upward
-and do not retry, degrade, invoke actions, or roll back semantic state outside
-their explicit bounded contract.
+Backends normalize command, resource, and handoff outcomes synchronously. A
+pre-handoff failure propagates toward the frame coordinator. After accepted
+handoff, the backend/integration owns bounded downstream health, recovery, and
+presentation-coupled input gating; it may emit optional diagnostics but does
+not report a Core frame outcome, invoke actions, or roll back semantic state.
 
 ## Static / Embedded Impact
 
@@ -304,14 +320,16 @@ modules from linking execution metadata or diagnostics that they do not use.
 Failure-free paths should pay only bounded outcome checks and correlation
 cost. Diagnostic formatting is not part of the correctness-critical path.
 Specifications must measure outcome propagation, saturation, policy dispatch,
-and asynchronous completion admission for each selected profile.
+approved asynchronous Core admission where present, and backend-local post-
+handoff health/input gating for each selected profile.
 
 ## Memory / Binary Size
 
 Specifications must budget the chosen outcome representation, correlation
-records, completion queue, any bounded context, optional diagnostic storage,
-and policy code. Rich host descriptions and symbolization may live outside
-firmware. This RFC does not require a global registry or universal sidecar.
+records, any approved asynchronous admission queue, bounded context, backend-
+local health/input-gating state, optional diagnostic storage, and policy code.
+Rich host descriptions and symbolization may live outside firmware. This RFC
+does not require a global registry or universal sidecar.
 
 ## Alternatives
 
@@ -362,8 +380,11 @@ telemetry schema.
   semantic and presentation outcomes.
 - Compare static and dynamic policy inputs and dispositions for equivalent
   faults.
-- Test asynchronous completion re-entry, late and duplicate facts, and
-  interrupt-safe bounded handoff.
+- Test every separately approved asynchronous Core contract for interrupt-safe
+  bounded admission, late facts, and duplicate facts.
+- Inject post-handoff display and transport failures and verify they affect
+  only backend-local health/recovery, physical-input gating, and optional
+  diagnostics rather than Core frame disposition.
 - Saturate every selected outcome/context/diagnostic store and verify its
   deterministic behavior.
 - Add target-graph and import tests proving `GiftUIFailureCore` is a leaf,
@@ -415,8 +436,9 @@ If approved, this RFC is expected to yield candidate ADRs for:
 1. explicit bounded cross-layer outcomes with profile-neutral meaning;
 2. composition-owned product disposition constrained by detecting-layer and
    publication invariants;
-3. diagnostics as optional non-authoritative observations and asynchronous
-   outcomes as sequenced runtime input.
+3. diagnostics as optional non-authoritative observations, approved
+   asynchronous Core outcomes as sequenced input, and post-handoff
+   presentation failures as backend-local operational state.
 
 ## References
 
