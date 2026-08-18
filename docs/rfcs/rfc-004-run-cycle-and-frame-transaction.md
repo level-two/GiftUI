@@ -2,7 +2,7 @@
 id: RFC-004
 feature: giftui-mvp-architecture
 title: Run Cycle and Frame Transaction Architecture
-status: draft
+status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
@@ -497,9 +497,17 @@ presentation/input integration that can interpret it.
 
 ## Rejected Approaches
 
-No approach is formally rejected while this RFC remains `draft`. Review must
-choose the admission, publication, and frame-lifetime model before ADR
-extraction.
+The proposed MVP direction rejects backend-owned semantic scheduling,
+universal retention or replay of operation streams, replay of admitted
+mutations or client effects, transactional guarantees for arbitrary mutable
+references, and coupling logical commit to physical presentation completion.
+Those approaches either move semantic authority below the runtime boundary,
+require unbounded or unjustified storage, repeat non-reversible effects, or
+make common progress depend on target-specific presentation evidence.
+
+Optional rescheduling after synchronous handoff refusal and bounded
+post-handoff recovery remain postponed through FW-011 and FW-010 rather than
+being rejected for all future configurations.
 
 ## Compatibility
 

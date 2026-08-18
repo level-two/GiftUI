@@ -2,7 +2,7 @@
 id: RFC-002
 feature: giftui-mvp-architecture
 title: GiftUI MVP Layered Architecture
-status: draft
+status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14

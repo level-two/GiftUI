@@ -19,6 +19,7 @@ related_adrs:
   - ADR-001
 related_specs: []
 related_future_work:
+  - FW-008
   - FW-009
 related_explorations: []
 related_spikes: []
@@ -228,6 +229,10 @@ RFC-007 is paused. The questions preserved for a future revision are:
    those consumers exist?
 
 ## Deferred and Follow-up Work
+
+[FW-008](../future-work/fw-008-generalized-component-traits.md) preserves a
+possible generalized component-Trait system. This paused RFC does not require
+that system or treat environmental operations as Capability Traits.
 
 [FW-009](../future-work/fw-009-shared-delegated-service-foundation.md) preserves
 the shared package and catalogue opportunity, why it is outside current MVP
