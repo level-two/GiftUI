@@ -1,0 +1,7 @@
+fixture_id	expected	actual	stream_traversals	retained_lease	tile_high_water_bytes	image	order_independent
+TILED-PI-POS	available:rgb565	available:rgb565	1	none	7680	match	yes
+TILED-NRF-POS	available:rgb565	available:rgb565	1	none	3840	match	yes
+ENCODING-NEG	unavailable:no-common-canonical-pixel-encoding	unavailable:no-common-canonical-pixel-encoding	0	n/a	0	n/a	yes
+LIFETIME-NEG	unavailable:incompatible-submission-lifetime	unavailable:incompatible-submission-lifetime	0	n/a	0	n/a	yes
+ENCODING-CONTROL	available:rgb565	available:rgb565	0	n/a	0	n/a	yes
+LIFETIME-CONTROL	available:rgb565	available:rgb565	0	n/a	0	n/a	yes

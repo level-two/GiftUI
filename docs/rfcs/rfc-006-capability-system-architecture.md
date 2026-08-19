@@ -619,15 +619,21 @@ listed here. The draft selects:
    reduction as the first remedy if measured cost is excessive rather than a
    build-time-only or target-local replacement.
 
-The following evidence and dependency gates remain open and block advancement:
+SPIKE-001 completed the normalized host-semantic evidence gate: both bounded
+RGB565 tiled fixtures consumed the borrowed stream exactly once with no
+retained lease, matched their reference images, and stayed within their tile
+bounds. The encoding and submission-lifetime negative/control pairs also
+returned independent stable reasons for every contributor permutation. This
+is feasibility evidence only; it does not establish production types or
+replace the remaining target evidence.
+
+The following dependency and target-evidence gates remain open and block
+advancement:
 
 1. RFC-004 must be approved with compatible operation-stream and handoff
    meanings, or the two RFCs must be reconciled before either conflicting
    decision is treated as settled.
-2. Normalized positive and negative fixtures must demonstrate both tiled-path
-   conformance to the common stream contract and independent rejection for
-   pixel-encoding and downstream submission-lifetime incompatibility.
-3. The bounded nRF52840 representation and linked-image evidence must report
+2. The bounded nRF52840 representation and linked-image evidence must report
    incremental resolver/snapshot RAM, worst-case resolver stack, flash, and
    initialization work within the established target budgets, and must prove
    that the capability-system path performs no heap allocation during
@@ -642,9 +648,10 @@ catalogue and resolution need are established.
 ## Deferred and Follow-up Work
 
 - [SPIKE-001](../spikes/spike-001-tiled-one-shot-capability-fixtures.md)
-  specifies the bounded one-shot tiled-path prototype and the independent
-  pixel-encoding and submission-lifetime compatibility fixtures required by
-  evidence gate 2.
+  records positive bounded one-shot tiled-path evidence and independent
+  pixel-encoding and submission-lifetime compatibility rejection. Its
+  disposable host prototype satisfies the normalized semantic gate but does
+  not supply nRF52840 resource or zero-heap evidence.
 - [SPIKE-002](../spikes/spike-002-nrf52840-capability-path-resource-evidence.md)
   specifies the baseline/candidate nRF52840 comparison, complete-path
   zero-heap proof, and RAM, stack, flash, and initialization-work evidence

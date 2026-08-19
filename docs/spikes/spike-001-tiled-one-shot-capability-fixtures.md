@@ -2,13 +2,14 @@
 id: SPIKE-001
 feature: capability-system
 title: Tiled One-Shot Stream and Capability Compatibility Fixtures
-status: planned
+status: completed
 authors:
   - Yauheni Lychkouski
 created: 2026-08-19
 updated: 2026-08-19
 source:
   - RFC-006
+  - RFC-004
 related_future_work:
   - FW-014
   - FW-015
@@ -257,11 +258,66 @@ representation or permission to copy it into production.
 
 ## Results
 
-Not run. This Spike is planned.
+Completed on 2026-08-19 with a positive result for the bounded host-semantic
+gate. The versioned stable table is
+[`evidence/results.tsv`](../../experiments/spike-001-tiled-one-shot-capability-fixtures/evidence/results.tsv):
 
-When executed, record the result table, storage high-water marks, operation
-counts, image comparison, and any failed invariant here or in a versioned
-evidence file linked from this section.
+| Fixture | Expected | Actual | Traversals | Retained lease | Tile high-water | Image | Order-independent |
+| --- | --- | --- | ---: | --- | ---: | --- | --- |
+| `TILED-PI-POS` | available RGB565 | available RGB565 | 1 | none | 7,680 bytes | match | yes |
+| `TILED-NRF-POS` | available RGB565 | available RGB565 | 1 | none | 3,840 bytes | match | yes |
+| `ENCODING-NEG` | no common canonical pixel encoding | same reason | 0 | n/a | 0 | n/a | yes |
+| `LIFETIME-NEG` | incompatible downstream submission lifetime | same reason | 0 | n/a | 0 | n/a | yes |
+| `ENCODING-CONTROL` | available RGB565 | available RGB565 | 0 | n/a | 0 | n/a | yes |
+| `LIFETIME-CONTROL` | available RGB565 | available RGB565 | 0 | n/a | 0 | n/a | yes |
+
+The resolver returned the same complete value or stable reason for all 24
+permutations of each four-owner fixture. Separate order checks also confirmed
+stable rejection of missing, duplicate, and malformed single-owner
+contributions.
+
+The Pi and nRF executions each consumed all seven fixed operations in one
+traversal. The prototype submitted synchronous derived RGB565 spans while the
+offer was active, retained no cursor or lease afterward, and allocated no
+full-surface framebuffer. Separate negative instrumentation confirmed that a
+second traversal and an escaped-cursor access after offer both fail. The
+backend-local tile allocation was the reported high-water mark; it stayed
+below 16 KiB and the nRF fixture reached, but did not exceed, its required
+3,840-byte maximum tile.
+
+The fake surface's complete actual image matched the independent non-tiled
+reference image for both positive fixtures, including pixels on both sides of
+tile boundaries and later opaque overwrite operations. Generated actual and
+reference RGB565 dumps are written under
+`.build/spikes/spike-001/results/`. Their SHA-256 pairs were:
+
+- Pi actual/reference:
+  `4f74ac0ae8410f38a9e102634a542d49b72175398fe3033e9a56c25bcecb5932`
+- nRF actual/reference:
+  `70dec4d5e666c3d21ec87b7cb4c8cc5ebf55d93eb44c62e3c647223acb7f1c41`
+
+### Reproduction record
+
+- Host: arm64 macOS, Darwin 25.3.0
+- Compiler: swift-driver 1.148.6, Apple Swift 6.3.3
+  (`swiftlang-6.3.3.1.3 clang-2100.1.1.101`)
+- Build: optimized with `swiftc -O`; module caches and executable remain under
+  `.build/spikes/spike-001/`
+- Command from repository root:
+  `experiments/spike-001-tiled-one-shot-capability-fixtures/run.sh`
+- Repository baseline: Git commit
+  `c2ca1325d656e976a77a3085ee3172f61577935a`
+- Fixture/source SHA-256:
+  `main.swift` `2c644b24eecc8e96015f3aa4b93e285ba1e9f6e32590b0e2ba67405bd9a162e0`,
+  `fixtures.md` `006e9e5e4893c5b2fccde2762b935581b2fad58a19d0ee8c19b34918f2ab0e80`,
+  and `run.sh` `6c4ac791820beba8131cd5727d09d9fec491109fe92bb67ac3b9aaebe7bbc345`
+- Generated table:
+  `.build/spikes/spike-001/results/results.tsv`; versioned copy linked above
+- Generated pixel dumps:
+  `.build/spikes/spike-001/results/tiled-{pi,nrf}-pos-{actual,reference}.rgb565`
+
+The runner requires no network access and returns nonzero on any resolver,
+stream, lease, bound, order, or image assertion failure.
 
 ## Limitations
 
@@ -273,9 +329,11 @@ evidence file linked from this section.
 
 ## Disposition
 
-Planned. On completion, feed the evidence and limitations into RFC-006 and the
-compatible operation-stream findings into RFC-004 review. Do not promote or
-reuse the experiment code directly.
+Completed with positive host-semantic evidence for RFC-006 evidence gate 2.
+The compatible one-shot operation-stream finding also feeds RFC-004 review.
+This does not approve either RFC, settle exact production representation, or
+authorize reuse of the disposable experiment code. SPIKE-002 remains required
+for nRF52840 resource, linked-image, and zero-heap evidence.
 
 ## References
 

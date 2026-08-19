@@ -21,7 +21,8 @@ related_future_work:
   - FW-011
   - FW-014
 related_explorations: []
-related_spikes: []
+related_spikes:
+  - SPIKE-001
 supersedes: []
 superseded_by: []
 target_milestone: MVP
@@ -554,6 +555,13 @@ migration. No stable frame ABI or persistent serialized format is proposed.
 - Saturate every backend-owned downstream slot and verify `offer` applies
   deterministic backpressure before acceptance.
 - Keep host, cross-build, simulator, and connected-device evidence distinct.
+
+[SPIKE-001](../spikes/spike-001-tiled-one-shot-capability-fixtures.md)
+provides compatible host-fixture evidence for the tiled case: the disposable
+prototype synchronously consumed each seven-operation borrowed stream once,
+retained no lease after `offer`, and produced the reference RGB565 image from
+bounded tile storage. This supports the proposed lifetime meaning but does not
+replace eventual backend conformance tests or approve this RFC.
 
 ## Risks
 
