@@ -6,7 +6,7 @@ status: draft
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-18
+updated: 2026-08-19
 proposal:
   - PROPOSAL-004
 related_rfcs:
@@ -56,6 +56,16 @@ fixtures demonstrate a real need for shared resolution rather than direct
 component-local configuration. The foundational `GiftUICapabilities` target
 owns only capability-specific values and pure resolution and fits RFC-002's
 partial order without an upward import.
+
+The candidate direction uses RFC-004's single synchronous borrowed operation
+stream for every first-party MVP raster path, including tiled paths; it does
+not add a replayable or third GiftUI operation-payload lifetime mode. Canonical
+pixel encoding and downstream submission lifetime remain required resolver
+inputs because either mismatch can invalidate an otherwise plausible
+producer/display pair.
+The one-family resolver runs during bounded target initialization, including
+on nRF52840, and must justify its incremental RAM, stack, and flash cost with
+explicit evidence before this RFC advances.
 
 ## Context
 
@@ -221,33 +231,53 @@ describes the framework-visible promise needed to present the Signal Analyzer:
 - coverage of the required normalized opaque rectangles, positioned text,
   straight-line strokes, clipping, and damage semantics;
 - the required logical surface extent;
-- an operation-delivery form compatible with the selected raster path;
+- conformance to RFC-004's synchronous borrowed one-shot operation-delivery
+  contract;
 - at least one pixel encoding accepted across raster output and display
   submission; and
+- a compatible downstream submission lifetime; and
 - bounded raster, payload, and in-flight storage within host policy.
 
 Contributors report only facts they own:
 
 | Contributor boundary | Owned contribution | Not contributed |
 | --- | --- | --- |
-| Render producer / RFC-004 execution adapter | Required operation-set identity and supported stable stream or replay forms | Pixel format, device identity, or presentation policy |
-| Raster/backend adapter | Operation coverage, accepted delivery forms, producible canonical pixel encodings, extent limits, and required workspace | End-to-end support or display availability |
+| Render producer / RFC-004 execution adapter | Required operation-set identity and conformance to the synchronous borrowed one-shot stream contract | Pixel format, device identity, or presentation policy |
+| Raster/backend adapter | Operation coverage, ability to consume the common stream contract, producible canonical pixel encodings, produced-buffer lifetime forms, extent limits, and required workspace | End-to-end support or display availability |
 | Surface/display adapter | Logical extent, accepted canonical pixel encodings, region/row constraints, buffer borrowing or transfer lifetime, and handoff form | GiftUI semantics or raster selection |
 | Target host resource policy | Allowed storage budget, in-flight bound, and preference among otherwise conforming paths | Missing support or weakened semantics |
 
-The resolver intersects operation coverage, delivery compatibility, pixel
-encoding, extent limits, submission lifetime, and resource bounds. It returns
+The resolver validates the common operation-delivery contract and intersects
+operation coverage, canonical pixel encoding, extent limits, downstream
+submission lifetime, and resource bounds. It returns
 either an unavailable result with a stable reason or one effective
 `rasterPresentation` value naming capability-level realization properties and
 their quantitative bounds. Concrete Swift types such as `RenderOperation`,
 `Size`, backend classes, driver enums, and platform handles remain in their
 RFC-002 owners; local adapters map them to the closed capability vocabulary.
 
-Pixel encoding and delivery form are realization facts, not client-visible
-feature flags. The semantic capability is the complete conforming presentation
-path. Runtime backpressure or synchronous handoff refusal remains an RFC-004/
-RFC-005 outcome; device loss and downstream failure after accepted handoff
-remain backend-local operational health. Neither mutates this result.
+Canonical pixel encoding and downstream submission lifetime are resolver
+inputs as well as properties of the selected realization. Encoding must have a
+non-empty producer/consumer intersection. Submission lifetime must prove that
+the producer's storage remains valid for the surface or transport's accepted
+borrowing, copying, or ownership-transfer contract within the configured
+in-flight bound. Neither may be reduced to output-only metadata because either
+mismatch defines a required negative configuration fixture.
+
+These realization facts are not client-visible feature flags. The semantic
+capability is the complete conforming presentation path. Runtime backpressure
+or synchronous handoff refusal remains an RFC-004/RFC-005 outcome; device loss
+and downstream failure after accepted handoff remain backend-local operational
+health. Neither mutates this result.
+
+Every first-party MVP raster path, including the RGB565 tiled paths, must
+consume RFC-004's borrowed operation stream and complete or reserve all
+backend-owned derived work before the synchronous offer returns. A backend may
+retain only its own derived pixel, tile, transfer, or device data afterward.
+It may not retain or replay the GiftUI operation stream. If fixture work shows
+that a tiled path cannot satisfy this rule, the affected design must return to
+RFC-004/RFC-006 review rather than adding a third payload-lifetime mode inside
+a Specification.
 
 ### Normalized MVP fixtures and resolution evidence
 
@@ -257,10 +287,10 @@ budgets.
 
 | Fixture | Relevant owned facts | Required effective result |
 | --- | --- | --- |
-| macOS dynamic | Dynamic producer; complete MVP operation vocabulary; desktop raster and AppKit surface path; allocation permitted but explicitly bounded | Available desktop full-surface realization with a compatible delivery form and canonical host pixel encoding |
+| macOS dynamic | Dynamic producer; complete MVP operation vocabulary; desktop raster and AppKit surface path; allocation permitted but explicitly bounded | Available desktop full-surface realization using the common stream contract, a compatible downstream submission lifetime, and a canonical host pixel encoding |
 | macOS static | Static producer for the same portable presentation; bounded operation/payload storage; desktop raster and surface path | Same semantic coverage as macOS dynamic, with all static capacities explicit; runtime profile identity is not exposed as a Capability |
-| Raspberry Pi 1/Linux dynamic + PiScreen | Dynamic producer; RGB565 tiled raster candidate within the supported 480 x 320 bound; 240 x 240 PiScreen fixture; Linux framebuffer accepting 16-, 24-, or 32-bit layouts; default 240 x 16 x 2-byte GiftUI tile | Available bounded tiled realization; resolver selects an encoding/conversion and delivery combination shared by renderer and framebuffer rather than probing a concrete display type |
-| nRF52840 static + TFT | Static bounded producer; required MVP operations; RGB565 tile raster; 480 x 320 display path; synchronous borrowed SPI submission; maximum 480 x 4 x 2-byte (3,840-byte) tile; no full framebuffer | Available zero-heap RGB565 tiled realization within the configured storage bound; a full-surface RGBA realization is unavailable |
+| Raspberry Pi 1/Linux dynamic + PiScreen | Dynamic producer; RGB565 tiled raster candidate within the supported 480 x 320 bound; 240 x 240 PiScreen fixture; Linux framebuffer accepting 16-, 24-, or 32-bit layouts; default 240 x 16 x 2-byte GiftUI tile | Available bounded tiled realization using the common stream contract; resolver selects compatible encoding/conversion and downstream submission-lifetime inputs shared by renderer and framebuffer rather than probing a concrete display type |
+| nRF52840 static + TFT | Static bounded producer; required MVP operations; RGB565 tile raster; 480 x 320 display path; synchronous borrowed SPI submission; maximum 480 x 4 x 2-byte (3,840-byte) tile; no full framebuffer | Available zero-heap RGB565 tiled realization using the common stream contract and compatible borrowed submission within the configured storage bound; a full-surface RGBA realization is unavailable |
 
 At least two effective realizations therefore differ materially: desktop may
 use a bounded full surface, while the nRF52840 fixture requires bounded RGB565
@@ -361,14 +391,19 @@ Static composition may specialize tuples, generated switches, fixed tables, or
 direct calls. Correctness cannot depend on optimizer removal of unused code.
 The nRF52840 fixture must demonstrate bounded zero-heap resolution and snapshot
 access, deterministic malformed/duplicate/unsatisfied handling, and absence of
-omitted implementation families from the linked image.
+omitted implementation families from the linked image. Build-time
+specialization may reduce the work, but it does not replace bounded
+initialization-time resolution because selected surface and device facts may
+become known only while the target is initialized.
 
 ## Performance
 
 Resolution occurs during composition or bounded initialization, never in view
 evaluation or per-pixel work. Specifications measure resolution time,
 hot-path effective-value access, validation construction, and specialization
-cost for the actual minimum catalogue.
+cost for the actual minimum catalogue. The nRF52840 evidence must separately
+report the resolver's bounded initialization work and steady-state snapshot
+access; neither may introduce per-frame resolution.
 
 ## Memory / Binary Size
 
@@ -376,7 +411,15 @@ Specifications budget the one family requirement, its four contributor
 classes and bounded records, resolver workspace, one effective result,
 validation result, provenance needed by fixtures, and specialization cost.
 Rich names and reports may live in host tooling. Exact field widths and target
-budgets remain Specification work.
+budgets remain Specification work. Before this RFC advances, a representative
+nRF52840 build or bounded representation fixture must report incremental
+linked RAM and flash plus worst-case resolver stack. The result must preserve
+the established target limits of at most 192 KiB linked RAM, at most 16 KiB
+default display staging, firmware within the 1 MiB device flash with the
+896 KiB warning threshold, and zero heap use after initialization. If the
+first representation is too costly, the first remedy is to reduce record,
+provenance, diagnostic, and adapter representation while preserving the same
+architecture and normalized result.
 
 ## Alternatives
 
@@ -403,6 +446,22 @@ MVP stacks.
 This can reject static combinations early but creates large type surfaces for
 quantitative and initialization-time facts. Selective specialization plus
 typed values is the candidate direction.
+
+### Build-time-only resolution
+
+Precomputing every result could minimize device initialization work, but it
+cannot validate facts learned only while opening the selected surface or
+device. The candidate direction permits specialization of build-known facts
+while retaining one explicit bounded initialization-time resolver and the same
+normalized result across profiles.
+
+### Replayable tiled payload mode
+
+A separate retained or replayable operation payload could simplify some tiled
+implementations, but it would add another lifetime contract, storage shape,
+failure matrix, and static cost. The candidate direction instead requires all
+first-party tiled paths to consume RFC-004's common synchronous borrowed
+stream and retain only backend-owned derived data after handoff.
 
 ### Feature-local probing
 
@@ -438,10 +497,19 @@ proposed for MVP.
   incompatible constraints, duplicates, malformed values, and workspace
   exhaustion.
 - Include negative matrices for operation-set mismatch, no common pixel
-  encoding, incompatible delivery/submission lifetime, extent overflow, and
+  encoding, incompatible downstream submission lifetime, extent overflow, and
   insufficient raster or in-flight storage.
+- Assert independently that no common canonical pixel encoding and an
+  incompatible downstream submission lifetime each resolve to unavailable;
+  neither failure may be hidden as selected-realization metadata.
+- Exercise every first-party tiled fixture through the synchronous borrowed
+  one-shot operation stream and verify that no backend retains or replays that
+  stream after `offer` returns.
 - Enforce dependency direction and absence of target checks in portable views.
 - Verify omitted implementation families are not linked into static firmware.
+- Report incremental resolver/snapshot RAM, worst-case resolver stack, linked
+  flash, initialization work, and steady-state access for nRF52840 against the
+  established device and firmware budgets.
 - Keep host, cross-build, simulator, and connected-hardware claims distinct.
 
 ## Risks
@@ -463,20 +531,29 @@ proposed for MVP.
 
 ## Open Questions
 
-The minimum catalogue, need for shared resolution, and acyclic placement are
-resolved in the proposed direction above: one `rasterPresentation` family in a
-foundational leaf target, resolved from four independently owned contribution
-classes. The remaining RFC blockers are:
+No architectural direction remains open among the alternatives previously
+listed here. The draft selects:
 
-1. Does RFC-004 approve operation-delivery and handoff meanings sufficient
-   to populate the immutable compatibility fields used here, including the
-   first-party tiled paths, without adding a third payload-lifetime mode?
-2. Do review fixtures confirm that canonical pixel-encoding identity and
-   submission lifetime are required resolver inputs, or can either be reduced
-   to realization output without weakening a negative configuration test?
-3. Does the bounded nRF52840 representation and linked-image evidence show
-   that the one-family foundation and its contribution adapters impose an
-   acceptable RAM, stack, and flash cost?
+1. RFC-004's single synchronous borrowed one-shot operation stream for all
+   first-party MVP raster paths, including tiled paths, with no third
+   GiftUI operation-payload lifetime mode;
+2. canonical pixel encoding and downstream submission lifetime as required
+   resolver inputs, not output-only realization metadata; and
+3. one bounded initialization-time resolver on nRF52840, with representation
+   reduction as the first remedy if measured cost is excessive rather than a
+   build-time-only or target-local replacement.
+
+The following evidence and dependency gates remain open and block advancement:
+
+1. RFC-004 must be approved with compatible operation-stream and handoff
+   meanings, or the two RFCs must be reconciled before either conflicting
+   decision is treated as settled.
+2. Normalized positive and negative fixtures must demonstrate both tiled-path
+   conformance to the common stream contract and independent rejection for
+   pixel-encoding and downstream submission-lifetime incompatibility.
+3. The bounded nRF52840 representation and linked-image evidence must report
+   incremental resolver/snapshot RAM, worst-case resolver stack, flash, and
+   initialization work within the established target budgets.
 
 Family counts, contribution counts, storage layouts, provenance representation,
 diagnostic fields, and byte budgets are Specification questions after the
@@ -504,7 +581,13 @@ candidate ADRs for:
    absence behavior rather than target checks or Boolean backend bags;
 3. target-host resolution through an acyclic bounded foundation compatible
    with static and dynamic profiles; the four MVP fixtures demonstrate that
-   the minimum catalogue requires such resolution.
+   the minimum catalogue requires such resolution;
+4. one common synchronous borrowed operation stream across first-party MVP
+   raster paths, with canonical pixel encoding and downstream submission
+   lifetime resolved as compatibility inputs; and
+5. bounded initialization-time capability resolution on constrained targets,
+   subject to explicit incremental RAM, stack, flash, and initialization-work
+   evidence.
 
 ## References
 
