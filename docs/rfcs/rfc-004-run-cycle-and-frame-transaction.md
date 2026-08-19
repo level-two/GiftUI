@@ -6,7 +6,7 @@ status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-18
+updated: 2026-08-19
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -19,6 +19,7 @@ related_specs: []
 related_future_work:
   - FW-010
   - FW-011
+  - FW-014
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -596,6 +597,11 @@ inputs governed by the boundaries above.
   at `offer`. RFC-004 directly owns dirty recovery after pre-publication
   derivation failure. Revisit FW-011 when a supported host must present an
   already-published revision after refusal without a new invalidation.
+- [FW-014: Replayable Operation Delivery for Future Raster Strategies](../future-work/fw-014-replayable-operation-delivery.md)
+  preserves a possible bounded replayable representation for a future
+  multi-pass raster strategy that cannot meet its accepted requirements through
+  the common one-shot stream. It does not add replay to the MVP frame contract
+  or duplicate FW-010's post-handoff recovery scope.
 
 Animation transactions, lossless presentation, upper-layer remote
 acknowledgement, and persistent frame capture remain outside current MVP scope.
@@ -629,6 +635,7 @@ If approved, this RFC is expected to yield candidate ADRs for:
 - [RFC-006](rfc-006-capability-system-architecture.md)
 - [FW-010: Backend and Transport Post-Handoff Recovery](../future-work/fw-010-backend-transport-submission-retry.md)
 - [FW-011: Handoff-Refusal Frame Rescheduling](../future-work/fw-011-failed-frame-rescheduling.md)
+- [FW-014: Replayable Operation Delivery for Future Raster Strategies](../future-work/fw-014-replayable-operation-delivery.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)

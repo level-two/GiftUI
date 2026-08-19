@@ -21,6 +21,8 @@ related_future_work:
   - FW-006
   - FW-007
   - FW-008
+  - FW-014
+  - FW-015
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -567,6 +569,13 @@ catalogue and resolution need are established.
   general measured realization planner.
 - [FW-008](../future-work/fw-008-generalized-component-traits.md) preserves an
   open generalized Trait subsystem.
+- [FW-014](../future-work/fw-014-replayable-operation-delivery.md) preserves a
+  possible replayable operation contract for a future measured raster need;
+  it does not add another MVP payload-lifetime mode.
+- [FW-015](../future-work/fw-015-capability-resolver-input-minimization.md)
+  preserves later simplification of resolver inputs if ownership or
+  measurements prove that compatibility rejection remains enforceable
+  elsewhere without target-specific probing.
 - Rich rendering capabilities require their own accepted feature need; they
   are not placeholder MVP catalogue entries.
 
