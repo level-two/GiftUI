@@ -2,11 +2,11 @@
 id: RFC-003
 feature: giftui-mvp-architecture
 title: Deterministic Text Rendering Architecture
-status: draft
+status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-16
+updated: 2026-08-19
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -65,9 +65,15 @@ cannot be required to carry a desktop font-discovery or outline-rasterization
 stack. Existing fixed-cell bitmap text proves a small static realization is
 feasible, but it is evidence rather than authority.
 
+## Scope and Decision Boundary
+
 This RFC remains separate from RFC-002 because it compares independently
 credible ownership models and may evolve without changing the whole layer
 graph. It remains coordinated with RFC-005 for deterministic resource failure.
+It owns the cross-profile meaning of logical text geometry, the resolved text
+operation at the backend boundary, and the compatibility relationship between
+metrics and raster data. It does not own public API spelling, concrete storage
+formats, resource budgets, or raster-provider selection.
 
 ## Requirements
 
@@ -75,7 +81,9 @@ graph. It remains coordinated with RFC-005 for deterministic resource failure.
 
 For the same admitted text, style, constraints, and exact font resources,
 supported configurations MUST produce the same logical measurement, line
-placement, glyph selection, and positioned geometry.
+placement, glyph selection, and positioned geometry. Backend-specific
+tolerance in logical text geometry is not permitted. Raster coverage and
+antialiasing MAY differ without changing those logical results.
 
 ### R2 — Layout owns text decisions
 
@@ -85,15 +93,19 @@ remeasure text, choose fallback, or change logical placement.
 
 ### R3 — Resolved render payload
 
-Normal GiftUI text MUST cross the render boundary in a form whose font
-identity, glyph selection, and logical positions are complete. It MUST NOT
-require the backend to interpret an authoritative raw string.
+Normal GiftUI text MUST cross the render boundary as a positioned-glyph
+operation whose exact font identity, glyph identities, and logical positions
+are complete. The operation MUST be streamable and MUST NOT require the
+backend to interpret an authoritative raw string, derive successive logical
+positions, or retain a complete run.
 
 ### R4 — Exact resource identity
 
 Measurement data and raster payloads MUST refer to the same immutable font
-resource identity. Missing, mismatched, or unsupported resources MUST have
-deterministic failure behavior and MUST NOT cause ambient substitution.
+resource identity. One identity MAY cover separately stored or generated
+metric, outline, and bitmap assets, but build tooling MUST validate them as one
+compatible resource set. Missing, mismatched, or unsupported resources MUST
+have deterministic failure behavior and MUST NOT cause ambient substitution.
 
 ### R5 — Multiple raster realizations
 
@@ -134,22 +146,27 @@ view. It resolves the admitted content into positioned glyph runs and logical
 bounds. Measurement and rendering use that same resolved result; there is no
 independent backend measurement path.
 
-A font resource exposes two consistent views under one exact identity:
+A font resource exposes two consistent views under one exact identity. The
+identity names the complete compatible resource set rather than requiring one
+physical file:
 
 - canonical character mapping, metrics, and admitted shaping data for layout;
 - outline or bitmap raster payloads for rasterization.
 
 The render operation carries an exact font-instance identity, positioned glyph
 identities, logical positions, opaque paint, and resolved clipping information
-needed by the MVP renderer. Exact fields and storage representation belong in
-a Specification.
+needed by the MVP renderer. It may emit those glyphs directly into the ordered
+sink without first materializing an array. Exact fields, coordinate encoding,
+and storage representation belong in a Specification.
 
 ### Lifetime
 
-Resolved runs are immutable in meaning. A static producer may borrow bounded
-workspace for the synchronous sink call; a replayable frame must copy or own
-the run for the frame lifetime defined by RFC-004. Backends may cache raster
-images, but cache state and raster dimensions cannot feed back into layout.
+Resolved runs are immutable in meaning. A producer may borrow bounded
+workspace for the synchronous one-shot sink call defined by RFC-004; every MVP
+backend must finish consuming the positioned-glyph operation and its borrowed
+resources before that call returns. Backends may cache derived raster images,
+but they may not retain the operation or resolved run, and cache state and
+raster dimensions cannot feed back into layout.
 
 ### Static and dynamic realizations
 
@@ -238,11 +255,45 @@ It remains a valid exact realization, not the universal architecture.
 This preserves resource identity but still places shaping on both sides of the
 layout boundary. It does not guarantee one authoritative geometry result.
 
+### Backend-specific logical geometry tolerance
+
+A documented tolerance could permit native platform measurement and rounding,
+but even a small width or position difference can change wrapping, clipping,
+alignment, and downstream stack placement. It is preferable only if native
+layout variation matters more than one portable Signal Analyzer geometry.
+
+### Resolved glyph IDs with backend-derived positions
+
+A compact run could carry selected glyph IDs, advances, offsets, and a run
+origin while asking each backend to accumulate final positions. This reduces
+payload detail, but duplicates checked positioning arithmetic below the
+geometry authority and makes conformance depend on backend reconstruction.
+
+### Raster-ready masks or spans at the render boundary
+
+GiftUI could rasterize resolved text before the backend boundary and send
+pixel masks or spans. This simplifies backend text work, but increases
+temporary-data and transfer costs and collapses the useful separation between
+resolved logical text and target-selected exact raster realization.
+
+### Separate metric and raster identities with compatibility metadata
+
+Metric and raster assets could retain independent identities joined by a
+manifest or fingerprint. This supports independently versioned packaging, but
+adds a compatibility relationship that every loader and build path must
+validate. One resource-set identity provides the needed packaging flexibility
+with a smaller runtime failure surface.
+
 ## Rejected Approaches
 
-No alternative is formally rejected while this RFC remains `draft`. Review
-must decide whether authoritative text geometry belongs above the backend and
-whether the backend payload is resolved or raw before ADR extraction.
+The proposed direction rejects backend-owned layout, backend-specific logical
+geometry tolerance, raw authoritative text at the render boundary,
+backend-derived glyph positioning, raster-ready text as the only canonical
+boundary, and independently compatible metric and raster identities. Each
+either weakens one geometry authority, duplicates semantic work below the
+boundary, or adds compatibility and resource cost without an MVP requirement.
+These remain proposed conclusions subject to RFC review rather than accepted
+architecture.
 
 ## Compatibility
 
@@ -273,19 +324,14 @@ layout format.
 - Borrowed runs may accidentally outlive workspace; test stream and replay
   lifetimes explicitly.
 - RFC-002 geometry or render-plan decisions may change; reconcile the shared
-  boundary before either RFC advances.
+  boundary before either RFC receives approval.
 
 ## Open Questions
 
-The following questions block this RFC's architectural decision:
-
-1. Must every MVP configuration preserve identical logical text geometry, or
-   is a documented backend-specific tolerance acceptable?
-2. Is a resolved positioned-glyph operation the canonical boundary, or can a
-   different resolved representation preserve the same ownership and testing
-   guarantees without backend shaping?
-3. Must one font resource identity always join metric and raster data, or can
-   review establish another exact compatibility proof between them?
+None at the architectural level. This draft proposes identical logical text
+geometry across MVP configurations, a streamable positioned-glyph operation
+as the canonical backend boundary, and one immutable resource-set identity
+joining metrics with every approved raster realization.
 
 Reference-face selection, admitted corpus, malformed-input and fallback
 behavior, numeric widths, package schema, compression, provider library,
@@ -310,11 +356,13 @@ reference resource and demonstrate bounded static storage and raster viability.
 
 If approved, this RFC is expected to yield candidate ADRs for:
 
-1. layout ownership of canonical text geometry and prohibition of backend
+1. layout ownership of identical canonical text geometry across MVP
+   configurations, with no backend-specific logical tolerance and no backend
    remeasurement or substitution;
-2. a resolved backend-neutral text operation with exact resource identity;
-3. shared logical text semantics with selectable exact outline or bitmap
-   raster realizations and bounded streaming storage.
+2. a streamable positioned-glyph operation as the backend-neutral text
+   boundary, carrying complete glyph selection and logical positions;
+3. one immutable font-resource identity joining canonical metrics with
+   selectable exact outline or bitmap raster realizations.
 
 ## References
 

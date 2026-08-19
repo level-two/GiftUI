@@ -6,7 +6,7 @@ status: draft
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-16
+updated: 2026-08-18
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -19,6 +19,7 @@ related_adrs:
   - ADR-001
 related_specs: []
 related_future_work:
+  - FW-008
   - FW-009
 related_explorations: []
 related_spikes: []
@@ -41,7 +42,7 @@ Review found that most current invariants already have narrower owners:
 
 - RFC-002 owns explicit host composition, dependency direction, and rejection
   of ambient platform lookup;
-- RFC-004 owns runtime wake/completion admission and callback isolation;
+- RFC-004 owns runtime wake, synchronous frame handoff, and callback isolation;
 - RFC-005 owns diagnostic independence and failure propagation;
 - RFC-006 owns the distinction between semantic Capabilities, implementation
   facts, policy, and operational state.
@@ -119,7 +120,7 @@ Consumer-specific work proceeds without this foundation:
 | Current owner | Current responsibility |
 | --- | --- |
 | RFC-002 / target host | Explicit composition and downward dependencies |
-| RFC-004 | Wake and asynchronous completion admission semantics |
+| RFC-004 | Wake, synchronous frame handoff, and post-handoff ownership |
 | RFC-005 | Failure and optional diagnostic observation semantics |
 | Consumer Specification | Exact environmental operation it requires |
 | FW-009 / paused RFC-007 | Preserve possible later shared foundation |
@@ -140,8 +141,9 @@ could later call them Services.
 
 ## Backend Impact
 
-Backends continue to report presentation and operational outcomes through
-RFC-002, RFC-004, and RFC-005 boundaries. They do not become owners of a common
+Backends synchronously report handoff outcomes through RFC-002, RFC-004, and
+RFC-005 boundaries. Post-handoff presentation health remains backend-local and
+may feed optional diagnostics. Backends do not become owners of a common
 Clock, Scheduler, diagnostic system, or semantic event loop.
 
 ## Static / Embedded Impact
@@ -227,6 +229,10 @@ RFC-007 is paused. The questions preserved for a future revision are:
    those consumers exist?
 
 ## Deferred and Follow-up Work
+
+[FW-008](../future-work/fw-008-generalized-component-traits.md) preserves a
+possible generalized component-Trait system. This paused RFC does not require
+that system or treat environmental operations as Capability Traits.
 
 [FW-009](../future-work/fw-009-shared-delegated-service-foundation.md) preserves
 the shared package and catalogue opportunity, why it is outside current MVP

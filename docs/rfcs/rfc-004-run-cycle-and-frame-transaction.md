@@ -2,11 +2,11 @@
 id: RFC-004
 feature: giftui-mvp-architecture
 title: Run Cycle and Frame Transaction Architecture
-status: draft
+status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-16
+updated: 2026-08-19
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -16,7 +16,10 @@ related_rfcs:
   - RFC-007
 related_adrs: []
 related_specs: []
-related_future_work: []
+related_future_work:
+  - FW-010
+  - FW-011
+  - FW-014
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -34,23 +37,42 @@ inputs before semantic work and separates at-most-once semantic effects from
 frame presentation outcomes.
 
 ```text
-seal input
-    -> apply semantic work once
+seal input and state-change facts
+    -> apply the sealed mutation and action batch once
+    -> freeze observable state for derivation
     -> reconcile and layout
     -> prepare frame payload
     -> publish the resulting semantic revision
-    -> offer presentation
-    -> admit asynchronous completion as later input
+    -> offer the frame for synchronous handoff
+    -> commit on complete backend acceptance or abort on refusal
+    -> let the backend advance presentation in its own bounded domain
 ```
 
-A frame may carry replayable bounded storage or a one-shot synchronous stream.
-Presentation failure, retry, drop, or supersession never replays an admitted
-client action or rolls back a published semantic revision.
+A frame carries a one-shot ordered operation stream that every first-party MVP
+backend consumes synchronously. The logical frame commits when the backend has
+consumed the complete stream, reserved bounded downstream capacity, accepted
+responsibility for ordered presentation, and returned success from `offer`.
+The backend may advance presentation asynchronously only from its own derived
+presentation data; it may not retain or replay the GiftUI operation stream.
+Device, transport, compositor, or physical-display outcomes after this handoff
+belong to the backend/integration's operational domain and do not abort or roll
+back the committed logical frame.
+
+If any required phase fails or the backend refuses the handoff, the frame
+aborts: the previous committed logical frame remains authoritative, the
+failure is reported, and no admitted client action is replayed. Semantic
+publication and frame commit are distinct; aborting a frame does not roll back
+semantic state that was already published. A derivation failure before
+semantic publication leaves the already-applied state dirty and requests a
+later host-scheduled cycle, which recomputes from current state without
+replaying the admitted batch.
 
 This RFC defines ordering, observation, and payload lifetime. It does not
 select the public observable-state mechanism, state-slot representation,
-transaction journal, identifier widths, queue capacities, retry counts,
-scheduler API, or backend-specific success point.
+transaction journal, identifier widths, queue capacities, scheduler API,
+backend operational retry policy, or handoff-refusal rescheduling policy.
+Backend/transport recovery after accepted handoff and optional rescheduling
+after handoff refusal are deferred by FW-010 and FW-011 respectively.
 
 ## Context
 
@@ -60,79 +82,148 @@ Analyzer may ingest up to 80 transitions per second while presenting about
 four times per second, so input, invalidation, semantic evaluation, and frame
 presentation cannot be treated as one callback or one-to-one event sequence.
 
-The nRF52840 path may need direct operation streaming and cannot be required to
-retain a full display list. Dynamic backends may accept asynchronous work and
-need stable payload ownership. These alternatives make frame lifetime and
-presentation semantics architectural rather than Specification detail.
+The nRF52840 path needs direct operation streaming and cannot be required to
+retain a full display list. All first-party MVP backends can consume the
+ordered GiftUI operation stream synchronously. An integration may still finish
+device presentation asynchronously after that consumption, but it owns any
+derived pixel, transfer, or device data needed for the later work. It also owns
+coordination with presentation-coupled input: it must not admit physical input
+known to belong to a stale or unavailable presentation. These lifetime,
+handoff, and input-coherence boundaries are architectural rather than
+Specification detail.
 
 Observable reference-state invalidation requires its own feature lifecycle
-under MVP Scope. This RFC may require an observable publication boundary, but
-it MUST NOT select that feature's storage, observation, rollback, or public API
-architecture.
+under MVP Scope. This RFC establishes the run-cycle admission, serialization,
+freeze, dirty-state, and publication boundaries that feature must satisfy, but
+it MUST NOT select its storage, observation API, state-slot representation, or
+public client syntax.
 
 ## Requirements
 
 ### R1 — Sealed deterministic admission
 
-Each run cycle MUST seal an ordered, bounded input batch before semantic
-evaluation. Reentrant input and asynchronous completions arriving after the
-seal MUST be deferred to a later admission boundary.
+Each run cycle MUST seal an ordered, bounded batch of input, externally
+produced state-change facts, and other runtime-relevant work before semantic
+evaluation. Reentrant input and facts arriving after the seal MUST be deferred
+to a later admission boundary.
 
 ### R2 — At-most-once semantic effects
 
-An admitted semantic action MUST execute at most once. Frame retry, drop,
-rejection, supersession, or presentation failure MUST NOT repeat action
-dispatch, client side effects, reconciliation, or layout for that frame.
+An admitted state-change fact or semantic action MUST be applied at most once.
+Frame abort, drop, rejection, supersession, presentation failure, or a later
+dirty-state recovery cycle MUST NOT repeat action dispatch, admitted mutation,
+or client side effects. A later recovery cycle MAY recompute reconciliation,
+layout, and frame preparation from the current already-mutated state.
 
 ### R3 — Complete publication
 
-External runtime observers MUST see only complete published semantic and
-derived results, never a partially updated mixture. The separate observable-
-state lifecycle determines how implementations satisfy this contract.
+GiftUI-managed runtime observers MUST see only complete published semantic
+revisions, never notifications from intermediate mutations in the sealed
+batch or a partially derived mixture. Mutation-driven invalidations MUST be
+coalesced while the batch is applied. After evaluation, observed state MUST
+remain stable until the cycle publishes the complete revision or records a
+derivation failure. Semantic publication MAY precede frame commit, but
+presentation-coupled routing and hit-test state MUST remain staged until the
+corresponding logical frame commits.
 
-### R4 — Presentation is a separate outcome
+This guarantee applies to GiftUI's observation and revision boundary. Direct
+client observation of an underlying mutable reference outside that boundary
+is not transactionally atomic and MUST NOT be presented as covered by this
+guarantee. The separate observable-state lifecycle determines the concrete
+API and storage mechanism while preserving this boundary.
+
+### R4 — Logical commit occurs at accepted handoff
 
 Once a semantic revision is published, later presentation outcomes MUST NOT
-roll it back. A new evaluation after failure creates new work; it is not a
-retry of the prior semantic transaction.
+roll it back. The frame derived from that revision commits when `offer`
+successfully transfers the complete frame into bounded backend-owned state and
+the backend accepts responsibility for ordered downstream presentation.
+Failure or refusal before that handoff MUST abort the frame and preserve the
+previous committed logical frame as authoritative. Operational failure after
+accepted handoff MUST NOT change the frame's committed disposition.
 
 ### R5 — Explicit frame provenance
 
 Every frame MUST identify the semantic revision and presentation-relevant
-resource state from which it was derived. Asynchronous attempts MUST have
-stable bounded correlation until terminal disposition.
+resource state from which it was derived. Backend-owned downstream work MAY
+retain that provenance for local ordering, health, diagnostics, and input
+gating, but Core does not require a post-handoff attempt lifecycle.
 
-### R6 — Streaming and replayable payloads
+### R6 — One-shot operation consumption
 
-The frame contract MUST support a synchronous one-shot ordered stream and a
-bounded replayable payload. A consumer that retains or retries a payload MUST
-own replayable storage for the necessary lifetime.
+The MVP frame contract MUST expose a synchronous one-shot ordered operation
+stream. During `offer`, every first-party MVP backend MUST either consume the
+complete stream, reserve bounded downstream capacity, retain only its own
+derived presentation data, and accept the handoff; or refuse the handoff and
+retain no frame data or borrowed resource. It MUST NOT retain or replay the
+GiftUI operation stream after the call returns.
 
 ### R7 — Bounded work and backpressure
 
-Inputs, completions, frames, retained payloads, in-flight attempts, pending
-work, and retries MUST be bounded with deterministic overflow or backpressure
-disposition.
+Inputs, pending state-change facts, frames, backend-owned presentation data,
+downstream work, and pending work MUST be bounded with deterministic overflow
+or backpressure disposition. Capacity needed to honor an accepted handoff
+MUST be reserved before `offer` returns success.
 
 ### R8 — Ownership preservation
 
 The runtime owns admission and semantic dispatch; layout remains backend-
-neutral; backends consume normalized operations; integrations report facts.
-No backend or callback may invoke client actions or replay semantic input.
+neutral; backends consume normalized operations; integrations own downstream
+presentation health and presentation-coupled input gating. No backend or
+callback may invoke client actions or replay semantic input. Post-handoff
+operational facts MAY feed backend-local recovery or optional diagnostics but
+MUST NOT mutate Core's logical-frame disposition.
 
 ### R9 — Profile-equivalent behavior
 
 Static and dynamic profiles MAY fuse phases and use different storage, but
 MUST preserve input membership, action ordering, publication boundaries,
-frame provenance, payload lifetime, and presentation separation.
+state freeze, dirty-state recovery, frame provenance, payload lifetime, and
+presentation separation.
+
+### R10 — Required handoff disposition
+
+Every frame path MUST synchronously commit or abort at `offer`. Accepted
+handoff MUST atomically commit the logical frame and its presentation-coupled
+routing state. Abort MUST discard unpublished frame-local results, retain the
+previous committed logical frame and routing state as authoritative, report
+the pre-handoff failure through RFC-005, and leave the runtime in a
+deterministic state. Core MUST NOT automatically retry the frame transaction
+or require a later frame opportunity solely because the backend refused
+handoff. FW-011 preserves optional handoff-refusal rescheduling.
+
+### R11 — Dirty recovery after derivation failure
+
+If an admitted mutation batch was applied but reconciliation, layout, or frame
+preparation fails before semantic publication, the affected observable state
+MUST remain dirty and the runtime MUST request a later run-cycle opportunity.
+The later cycle MUST derive from current state without replaying the admitted
+facts, actions, or side effects. Recovery MUST occur as a separately admitted
+cycle and MUST NOT form an immediate, unbounded retry loop.
 
 ## Constraints
 
 - A cycle may publish no semantic change and may produce no frame.
 - A cycle does not correspond one-to-one with a hardware refresh.
-- Streaming presentation may make partial physical writes before terminal
-  failure; software state is not a distributed transaction with the display.
+- An attempted streaming handoff may make partial physical writes before
+  synchronous refusal; abort preserves logical state but cannot physically
+  roll those writes back.
+- After accepted handoff, streaming presentation may be delayed, partially
+  written, or fail; logical commit does not claim physical visibility, physical
+  rollback, or atomic display hardware.
+- A target whose presentation and input share a physical user experience must
+  coordinate them below Core so input known to target a stale, unavailable, or
+  not-yet-eligible presentation is not admitted as current GiftUI input.
 - External client side effects are not assumed reversible.
+- Observable state mutation, cycle evaluation, derivation, and publication
+  share one serialized execution domain. The cycle MUST NOT suspend or permit
+  reentrant mutation between applying its sealed batch and publication or
+  failure disposition.
+- Producers outside that domain submit bounded facts rather than directly
+  mutating GiftUI-observed state. The exact actor, executor, event-loop, or
+  generated static mechanism is profile-specific.
+- Arbitrary direct observation of a mutable client reference is outside the
+  atomic GiftUI publication guarantee.
 - Platform loops and interrupts may wake the runtime but do not decide cycle
   input membership.
 - The common static path cannot require heap allocation, exceptions,
@@ -140,103 +231,219 @@ frame provenance, payload lifetime, and presentation separation.
 
 ## Proposed Design
 
+### Serialized state admission and publication
+
+All GiftUI-observed state mutations execute within the runtime's serialized
+execution domain. External acquisition, interrupt, callback, or worker
+contexts submit bounded state-change facts; they do not mutate observed state
+directly. The next cycle seals those facts together with input and other
+admitted work, then applies each fact and semantic action once.
+
+Writes mark their observable owner dirty, but GiftUI-managed invalidation and
+publication notifications are coalesced until the sealed mutation phase is
+complete. State is then frozen against further mutation while the runtime
+reconciles, lays out, and prepares a frame. Facts arriving during that interval
+remain queued for a later cycle. A successful derivation publishes one
+complete semantic revision. Direct observation of the underlying mutable
+object is ordinary client access and does not acquire transactional guarantees
+from GiftUI.
+
+If derivation fails before publication, already-applied state is not rolled
+back. It remains dirty, the failure is reported through RFC-005, and the
+runtime requests another host-scheduled cycle. That later cycle recomputes
+from current state; it does not re-admit or replay the mutation batch. The host
+owns pacing and coalescing so repeated deterministic failure cannot cause
+synchronous recursion or an unbounded immediate retry loop.
+
+### Handoff and operational-recovery boundary
+
+This RFC separates four mechanisms that must not be conflated:
+
+1. **Pre-handoff abort is required.** Preparation failure, insufficient
+   capacity, unsupported input, or backend refusal terminates the frame without
+   replacing the previous committed logical frame or its routing state.
+2. **Accepted handoff is the logical commit point.** Successful `offer` means
+   the backend consumed the entire stream, owns all later presentation data,
+   reserved bounded capacity, and accepted ordered downstream responsibility.
+   Later operational failure does not reopen the frame transaction.
+3. **Backend/transport recovery is deferred.** A future backend or delegated
+   transport Service may use device-specific knowledge and backend-owned stable
+   data to retry or repair downstream presentation after handoff. GiftUI Core
+   neither observes nor mandates that policy; FW-010 owns its future
+   evaluation. Replaying GiftUI operations remains outside the MVP contract.
+4. **Handoff-refusal rescheduling is deferred.** Semantic publication has
+   already completed when a prepared frame reaches `offer`. A future runtime
+   policy may mark that published revision for a new presentation attempt
+   after backend refusal. That is new layout/render work rather than replay of
+   the refused payload; FW-011 owns its future evaluation.
+
+Dirty recovery after a pre-publication derivation failure is not replay of the
+failed frame or its admitted actions. It is a later, separately admitted
+recomputation from current state. Because invalid geometry, unsupported
+capability, and render-generation failures may be deterministic, the host MUST
+pace requested opportunities and MUST NOT synchronously call the runtime in an
+unbounded retry loop.
+
+### Wake scheduling and presentation synchronization
+
+The runtime MUST request a wake when observed state transitions from clean to
+dirty or remains dirty after derivation failure. The target host MUST provide
+serialized run-cycle opportunities in response to requested wakes, scheduled
+deadlines, or a configured combination of both. Runtime execution MUST NOT
+require a continuously ticking frame loop. The host owns wake coalescing,
+pacing, and missed-deadline policy. Platform event loops, interrupts, and timer
+facilities may implement those opportunities, but they do not decide the
+membership of the cycle's sealed input batch.
+
+Backends MAY synchronize presentation with hardware refresh or transport
+opportunities, but MUST NOT directly control semantic admission or evaluation.
+A timer MAY provide a frame opportunity when no hardware synchronization
+source exists; timer cadence alone does not establish tear-free presentation.
+The Signal Analyzer's nominal 250-millisecond display interval is application
+frame pacing rather than a claim about the physical display refresh rate.
+
+Later Specifications define the concrete host wake API, coalescing and missed-
+deadline policy, and target-specific presentation synchronization. These
+profile-specific mechanisms MUST preserve the admission, ordering,
+publication, and payload-lifetime boundaries defined by this RFC.
+
 ### Logical phases
 
 One cycle has these observation points:
 
 1. **Begin:** select cycle-stable configuration and bounded workspaces.
-2. **Admit:** seal the ordered input batch.
-3. **Evaluate:** dispatch admitted semantic actions and invalidations once.
-4. **Reconcile and layout:** derive a complete next hierarchy and geometry.
-5. **Prepare frame:** create replayable payload ownership or a stable
-   synchronous stream source.
-6. **Publish:** make the complete resulting semantic revision and derived
-   routing state observable.
-7. **Offer:** submit the prepared frame under bounded presentation policy.
-8. **Finalize:** release cycle-local storage and record the cycle outcome.
+2. **Admit:** seal the ordered input, state-change, and completion batch.
+3. **Evaluate:** apply admitted state-change facts and dispatch semantic
+   actions once while coalescing dirty notifications.
+4. **Freeze, reconcile, and layout:** prevent later mutations from entering the
+   cycle and derive a complete next hierarchy and geometry.
+5. **Prepare frame:** create a stable one-shot synchronous stream source.
+6. **Publish semantics:** make the complete resulting semantic revision
+   observable while keeping frame-derived routing and hit-test state staged.
+7. **Offer:** submit the prepared frame to the selected backend.
+8. **Commit or abort:** if `offer` accepted the complete handoff, commit the
+   logical frame together with its routing and hit-test state; otherwise abort
+   it while preserving the prior committed logical frame and routing state as
+   authoritative.
+9. **Finalize:** clear dirtiness represented by a published revision, or retain
+   dirtiness and request a later opportunity after derivation failure; then
+   release cycle-local storage and record the cycle outcome.
 
 Implementations may fuse phases but may not move the admission, publication,
-or payload-lifetime boundaries. Asynchronous completion occurs after offer and
-re-enters through a later sealed input batch.
+state-freeze, handoff, or payload-lifetime boundaries. The cycle is
+non-suspending across mutation, derivation, publication, and handoff
+disposition. Backend-local asynchronous work after accepted handoff does not
+re-enter Core to alter frame disposition.
 
 ### Frame ownership
 
-- A **streaming frame** is borrowed only for the synchronous `offer` call. It
-  cannot be retained or retried after the call returns.
-- A **replayable frame** owns or references stable storage through its terminal
-  disposition and may support bounded retry without semantic reevaluation.
+The MVP frame's ordered operation stream is borrowed only for the synchronous
+`offer` call and cannot be retained or replayed after the call returns. A
+backend that continues asynchronously must finish consuming the operation
+stream and reserve its bounded downstream slot before returning success. It
+retains only its own derived pixel, transfer, or device data for the locally
+required lifetime.
 
-Both forms carry the same ordered render-operation meaning from RFC-002. The
-frame envelope adds provenance, ownership, and disposition rather than a
-second render IR.
+The frame envelope adds provenance and disposition to RFC-002's ordered
+render-operation meaning rather than a second render IR. A replayable
+operation representation is outside MVP scope and preserved by FW-010 only
+when future retry requirements justify its storage and lifetime cost.
 
 ### Outcomes
 
 The architecture distinguishes:
 
-- semantic result: unchanged, published, or failed before publication;
+- semantic result: unchanged, published, or dirty after failed derivation;
 - frame preparation: not needed, prepared, or failed;
-- presentation: completed, accepted asynchronously, backpressured, rejected,
-  dropped, superseded, or failed.
+- handoff: accepted, backpressured, rejected, or failed before acceptance;
+- logical frame disposition: committed or aborted.
+
+Post-handoff presentation progress, transport failure, device health, retry,
+and abandonment are backend/integration operational state rather than further
+GiftUI frame dispositions. Optional diagnostics may preserve frame provenance
+without acquiring control-flow authority.
 
 Exact value types and policy defaults belong in Specifications. RFC-005 owns
-cross-layer failure meaning; RFC-006 owns whether payload and completion facts
-participate in capability resolution.
+pre-handoff cross-layer failure meaning and optional post-handoff diagnostic
+observation; RFC-006 owns whether payload and handoff facts participate in
+capability resolution.
 
 ## Module Responsibilities
 
 | Owner | Responsibility | Must not own |
 | --- | --- | --- |
-| Target host | Invoke cycles and assemble bounded policy and adapters | Semantic input membership after admission begins |
-| Semantic runtime | Seal input, dispatch actions once, coordinate phases, publish complete results | Concrete backend or platform mechanics |
-| Observable-state feature | Define state observation and publication implementation contract | Presentation retry policy |
-| Layout/render producer | Produce complete geometry and ordered payload from cycle-stable inputs | Backend completion or semantic replay |
-| Presentation coordinator | Offer frames, apply bounded drop/retry policy, correlate completion | Client action dispatch or state rollback |
-| Backend/display/transport | Consume or retain payload under declared lifetime and report outcomes | Cycle admission, semantic publication, or action replay |
+| Target host | Provide serialized cycle opportunities from wake requests, deadlines, or both; assemble bounded pacing policy and adapters | Semantic input membership after admission begins or mutation of observed state |
+| Semantic runtime | Seal facts and input, apply admitted mutations and actions once, freeze derivation state, coordinate phases, publish complete revisions, and retain dirty state after derivation failure | Concrete backend, platform, or observable-state storage mechanics |
+| Observable-state feature | Define the public state API and bounded storage mechanism while coalescing mutation notification and preserving the RFC-004 publication boundary | Transactional guarantees for arbitrary direct object observation or presentation retry policy |
+| Layout/render producer | Produce complete geometry and ordered payload from cycle-stable inputs | Backend health or semantic replay |
+| Presentation coordinator | Offer frames and record synchronous handoff commit or abort | Client action dispatch, state rollback, downstream recovery policy, or automatic rescheduling |
+| Backend/display/transport integration | Consume the operation stream synchronously, reserve capacity before acceptance, own derived presentation data and downstream health, preserve presentation/input coherence, and optionally report diagnostics | Retaining or replaying the GiftUI operation stream, cycle admission, semantic publication, or action replay |
 
 ## Public API Impact
 
 Ordinary views do not receive cycle IDs, frame tokens, queues, or presentation
 callbacks. Later Specifications define host-facing cycle invocation, frame
-payload lifetime, outcomes, capacities, and integration SPI. Any public API
-that permits client side effects must state when the effect occurs relative to
-the semantic publication boundary.
+payload lifetime, outcomes, capacities, wake requests, and integration SPI.
+The separate observable-state lifecycle defines how client code is isolated to
+the serialized mutation domain and how external producers submit bounded
+facts. Any public API that permits client side effects must state when the
+effect occurs relative to the semantic publication boundary.
 
 ## Capabilities Impact
 
-RFC-006 decides whether streaming support, replayable capacity, completion
-mode, or in-flight limits are Capabilities, Traits, policy, or ordinary
-configuration. Runtime device health and backpressure remain operational
-state, not silent mutation of the capability declaration.
+RFC-006 decides whether handoff form or backend-owned capacity limits are
+Capabilities, Traits, policy, or ordinary configuration. One-shot synchronous
+operation consumption and synchronous handoff disposition are the common MVP
+contract rather than selectable capabilities. Runtime device health and
+post-handoff recovery remain operational state, not silent mutation of the
+capability declaration.
 
 ## Backend Impact
 
-A backend must declare whether it consumes synchronously or accepts stable
-replayable ownership, what its observable presentation-success boundary is,
-and how accepted asynchronous work reaches one terminal disposition. It may
-not retain a streaming payload, invoke semantic code, or cause semantic replay.
+A first-party MVP backend must consume the ordered operation stream
+synchronously during `offer` and must not retain or replay it. It may return
+success only after consuming the complete stream, validating it, reserving
+bounded downstream capacity, and owning any derived data needed after return.
+Otherwise it returns a synchronous refusal and retains nothing from the frame.
+
+After accepted handoff, the backend/integration owns presentation ordering,
+device and transport health, derived-data lifetime, and coordination with its
+physical input path. It must suppress or defer input known to target a stale,
+unavailable, or not-yet-eligible physical presentation rather than exporting
+that hardware condition into GiftUI semantic routing. It may emit optional
+operational diagnostics, but it may not invoke semantic code, change the
+committed logical-frame disposition, cause semantic replay, or ask GiftUI Core
+to retry a frame. Backend/transport recovery and any replayable operation
+representation are not MVP requirements and are preserved by FW-010.
 
 ## Static / Embedded Impact
 
 Static implementations may use fixed rings, caller-owned workspaces, direct
-phase calls, synchronous operation streaming, and optional fixed frame pools.
-They do not need a retained display list or duplicate semantic graph. Exact
-publication strategy belongs to the observable-state and runtime
-Specifications and must be measured on nRF52840 before implementation approval.
+phase calls, generated mutation slots, cooperative event-loop serialization,
+and synchronous operation streaming. The common contract does not require a
+Swift actor, `Task`, thread, retained display list, replayable frame pool,
+reversible client state, or duplicate semantic graph. Exact observation and
+storage strategy belongs to the observable-state and runtime Specifications
+and must be measured on nRF52840 before implementation approval.
 
 ## Performance
 
-Required measurements include cycle phase duration, input/coalescing counts,
-operation production, presentation latency, backpressure behavior, and the
+Required measurements include cycle phase duration, input and state-change
+fact coalescing, dirty-notification counts, dirty-to-cycle latency,
+recovery-cycle pacing, operation production, handoff latency, backend
+presentation latency, presentation/input gating, backpressure behavior, and the
 80-transition/second plus 250-millisecond presentation workload. Transaction
-metadata should remain constant-cost per cycle, frame, and attempt.
+metadata should remain constant-cost per cycle and frame; backend-local
+downstream metadata should remain constant-cost per accepted slot.
 
 ## Memory / Binary Size
 
-Specifications account for input/completion queues, runtime and layout
-workspace, frame envelopes, replayable payloads where selected, raster tiles,
-in-flight slots, stack high-water, and specialization cost. A dynamic queue is
-still configured and bounded; allocation is not permission for unlimited work.
+Specifications account for input and state-change queues, dirty tracking,
+runtime and layout workspace, frame envelopes, backend-owned presentation
+data, downstream slots, raster tiles, input-gating state, stack high-water,
+and specialization cost. Coalesced publication MUST NOT require a second copy
+of the complete client state or semantic graph. A dynamic queue is still
+configured and bounded; allocation is not permission for unlimited work.
 
 ## Alternatives
 
@@ -246,21 +453,31 @@ This integrates naturally with native event systems but lets backend timing
 control input membership and semantic execution. It is suitable only when the
 backend intentionally owns the entire semantic framework.
 
-### Retain every frame
+### Retain or replay every operation stream
 
-Universal replay simplifies asynchronous presentation and retry but imposes
-RAM and copy cost on embedded targets. It remains a configuration choice, not
-the common requirement.
+Universal replay could simplify asynchronous ownership and later downstream
+recovery, but it imposes RAM, copying, and a second bounded-capacity obligation
+on every target. The MVP backends can consume operations synchronously and own
+only any derived presentation data they need. Replayable operation storage is
+therefore outside MVP scope and preserved by FW-010 for a future measured
+recovery requirement.
 
-### Stream every frame
+### Replay the failed mutation batch or frame
 
-Universal streaming minimizes storage but cannot support asynchronous
-ownership or retry. It remains a valid realization, not the whole contract.
+This reuses the normal path but may repeat client actions and side effects.
+RFC-004 instead keeps already-applied state dirty and recomputes from that
+state on a later host-paced cycle. It never replays the admitted batch or the
+failed frame payload. Optional rescheduling after a later backend handoff
+refusal remains separate and is deferred by FW-011.
 
-### Retry by running semantics again
+### Transactional observation of arbitrary mutable references
 
-This reuses the normal path but may repeat client actions and side effects. A
-new cycle may produce a replacement frame; it is not retry of the old frame.
+Staging every client write, journaling rollback, or copying the complete state
+or semantic graph could make direct object observation atomic. It would impose
+storage, interception, and rollback requirements not justified by the Signal
+Analyzer and especially costly for nRF52840. The proposed contract guarantees
+complete GiftUI revision publication while leaving arbitrary direct object
+observation outside that guarantee.
 
 ### Couple semantic commit to physical presentation
 
@@ -268,74 +485,147 @@ This appears atomic on a reliable synchronous display but blocks application
 progress on unavailable or asynchronous hardware and cannot generally roll
 back external effects.
 
+### Wait for the furthest observable presentation completion
+
+This keeps logical routing aligned with stronger backend evidence when a
+display, transport, compositor, or remote peer reports completion. The
+observable point has materially different strength across framebuffer, UART,
+SPI, remote, and GPU paths, however, and some paths cannot report physical
+visibility at all. Waiting also exports device latency and failure into the
+common frame transaction even though published semantic state cannot be rolled
+back. The proposed handoff boundary instead keeps that coordination inside the
+presentation/input integration that can interpret it.
+
 ## Rejected Approaches
 
-No approach is formally rejected while this RFC remains `draft`. Review must
-choose the admission, publication, and frame-lifetime model before ADR
-extraction.
+The proposed MVP direction rejects backend-owned semantic scheduling,
+universal retention or replay of operation streams, replay of admitted
+mutations or client effects, transactional guarantees for arbitrary mutable
+references, and coupling logical commit to physical presentation completion.
+Those approaches either move semantic authority below the runtime boundary,
+require unbounded or unjustified storage, repeat non-reversible effects, or
+make common progress depend on target-specific presentation evidence.
+
+Optional rescheduling after synchronous handoff refusal and bounded
+post-handoff recovery remain postponed through FW-011 and FW-010 rather than
+being rejected for all future configurations.
 
 ## Compatibility
 
 Ordinary portable view syntax should not change. Host, runtime, and backend
 APIs that conflate invalidation with immediate drawing, retain unbounded work,
-or report submission as physical presentation will require migration. No
-stable frame ABI or persistent serialized format is proposed.
+or describe accepted handoff as proven physical presentation will require
+migration. No stable frame ABI or persistent serialized format is proposed.
 
 ## Testing Strategy
 
 - Inject input during every phase and verify later admission.
-- Prove every admitted action executes at most once under presentation retry,
-  failure, drop, and supersession.
+- Submit state-change facts from outside the serialization domain and verify
+  they are bounded, sealed, applied once, and never mutate observed state
+  directly.
+- Apply multiple related mutations in one sealed batch and verify GiftUI
+  observers receive one complete revision without intermediate notifications.
+- Inject a state-change fact during derivation and verify it remains pending
+  for a later cycle while the current derivation observes stable state.
+- Prove every admitted action executes at most once under preparation failure,
+  handoff refusal, downstream presentation failure, drop, and supersession.
+- Fail reconciliation, layout, and frame preparation after mutation; verify
+  state is not rolled back, remains dirty, requests a later host opportunity,
+  and is recomputed without replaying mutations, actions, or side effects.
+- Reproduce a deterministic derivation failure and verify wake coalescing and
+  host pacing prevent synchronous recursion or an unbounded immediate loop.
+- Exercise wake-only, deadline-only, and combined host scheduling while
+  preserving equivalent sealed-batch and publication behavior.
 - Compare static and dynamic semantic results, geometry, operation order, and
   frame provenance for the same sealed inputs.
-- Verify streaming payloads are not retained and replayable payloads remain
-  valid through terminal disposition.
-- Stall and fault every backend boundary and verify configured bounds and one
-  terminal outcome for accepted work.
+- Verify every backend accepts only after consuming the complete operation
+  stream and reserving bounded downstream capacity, retains no operation or
+  borrowed resource afterward, and keeps backend-owned derived presentation
+  data valid for its local lifetime.
+- Inject failure before and during `offer`; verify refusal retains nothing, the
+  candidate frame aborts, and the previous logical frame and routing state
+  remain authoritative.
+- Inject failure after accepted handoff; verify the logical frame and routing
+  remain committed, Core performs no replay or retry, and optional diagnostics
+  do not acquire control-flow authority.
+- Delay, partially complete, and fail downstream presentation while injecting
+  physical input; verify the target integration does not admit input known to
+  belong to a stale, unavailable, or not-yet-eligible presentation.
+- Saturate every backend-owned downstream slot and verify `offer` applies
+  deterministic backpressure before acceptance.
 - Keep host, cross-build, simulator, and connected-device evidence distinct.
 
 ## Risks
 
-- Publication language may accidentally predetermine observable-state storage;
-  keep its mechanism in that feature lifecycle.
+- Client code may mistake direct observation of a mutable reference for
+  GiftUI's atomic revision guarantee; the observable-state API and
+  documentation must make the boundary explicit.
+- A deterministic derivation failure can keep state dirty indefinitely; host
+  pacing and diagnostics must prevent a hot retry loop while leaving recovery
+  possible after state, resource, or configuration changes.
 - Dynamic implementations may hide unbounded work behind tasks or references;
   conformance must enforce configured bounds.
-- Streaming may leave a display partially updated; a later full redraw or
-  reset is presentation policy, not semantic rollback.
+- Accepted streaming presentation may leave a display delayed or partially
+  updated while Core has committed newer routing; conformance therefore
+  depends on target-local presentation/input gating and explicit bounded
+  recovery behavior.
+- A target unable to determine whether input corresponds to an eligible
+  presentation cannot claim safe presentation-coupled input merely because
+  `offer` succeeded.
 - RFC-005 or RFC-006 may classify shared facts differently; reconcile terms
   before any coordinated RFC advances.
+- Future retry work may accidentally reintroduce universal frame retention;
+  FW-010 must justify its retention scope and bounds before coordinated RFC
+  revision.
 
 ## Open Questions
 
-1. Do the first-party MVP backends require only synchronous streaming and
-   replayable payloads, or is another ownership mode architecturally necessary?
-2. What minimum presentation-success boundary can every first-party path state
-   without claiming physical display evidence it cannot observe?
-3. Can the future observable-state contract provide complete publication
-   semantics on both runtime profiles without requiring general reversible
-   client state or duplicating the entire graph?
-
-Identifier widths, queue and payload capacities, retry counts, timing budgets,
-and concrete backend success points are Specification inputs once these
-architectural questions are resolved.
+None at the RFC level. Identifier widths, queue and payload capacities, timing
+and recovery-pacing budgets, concrete handoff result types, observable-state
+API and storage, and target-local input-gating mechanisms are Specification
+inputs governed by the boundaries above.
 
 ## Deferred and Follow-up Work
 
-Animation transactions, lossless presentation, remote acknowledgement,
-persistent frame capture, and a general scheduler remain outside current MVP
-scope. They require a concrete accepted need or deferred artifact before work
-begins. Observable reference-state architecture remains a separate required
-feature lifecycle rather than a hidden sub-decision of this RFC.
+- [FW-010: Backend and Transport Post-Handoff Recovery](../future-work/fw-010-backend-transport-submission-retry.md)
+  preserves optional backend-local recovery using already-owned derived frame
+  data after accepted handoff. It is excessive for MVP; revisit when a
+  supported backend demonstrates a measured availability requirement that
+  simple bounded abandonment or repair cannot handle acceptably.
+- [FW-011: Handoff-Refusal Frame Rescheduling](../future-work/fw-011-failed-frame-rescheduling.md)
+  now preserves only optional rescheduling after a prepared frame is refused
+  at `offer`. RFC-004 directly owns dirty recovery after pre-publication
+  derivation failure. Revisit FW-011 when a supported host must present an
+  already-published revision after refusal without a new invalidation.
+- [FW-014: Replayable Operation Delivery for Future Raster Strategies](../future-work/fw-014-replayable-operation-delivery.md)
+  preserves a possible bounded replayable representation for a future
+  multi-pass raster strategy that cannot meet its accepted requirements through
+  the common one-shot stream. It does not add replay to the MVP frame contract
+  or duplicate FW-010's post-handoff recovery scope.
+
+Animation transactions, lossless presentation, upper-layer remote
+acknowledgement, and persistent frame capture remain outside current MVP scope.
+Target-local acknowledgement MAY be used to coordinate a remote display with
+its input path without changing the GiftUI handoff boundary. Broader work
+requires a concrete accepted need or deferred artifact. Observable reference-
+state architecture remains a separate required feature lifecycle rather than a
+hidden sub-decision of this RFC.
 
 ## Decision Summary
 
 If approved, this RFC is expected to yield candidate ADRs for:
 
-1. sealed run-cycle admission with at-most-once semantic action execution and
-   complete publication boundaries;
+1. sealed run-cycle admission with at-most-once state-change and semantic
+   action application, non-suspending serialized derivation, dirty recovery,
+   and complete GiftUI revision publication boundaries;
 2. semantic publication independent from presentation outcome;
-3. one frame envelope model supporting bounded replayable ownership and
-   one-shot synchronous streaming with explicit terminal disposition.
+3. synchronous handoff commit-or-abort semantics: complete accepted backend
+   ownership commits the logical frame and routing, while refusal preserves the
+   prior committed frame without automatic retry or required rescheduling;
+4. one frame-envelope model whose ordered operations are consumed once during
+   a synchronous backend offer, with backend-owned post-handoff presentation
+   health and no MVP replayable-operation or asynchronous Core completion
+   requirement.
 
 ## References
 
@@ -343,6 +633,9 @@ If approved, this RFC is expected to yield candidate ADRs for:
 - [RFC-002](rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-005](rfc-005-failure-diagnostics-propagation.md)
 - [RFC-006](rfc-006-capability-system-architecture.md)
+- [FW-010: Backend and Transport Post-Handoff Recovery](../future-work/fw-010-backend-transport-submission-retry.md)
+- [FW-011: Handoff-Refusal Frame Rescheduling](../future-work/fw-011-failed-frame-rescheduling.md)
+- [FW-014: Replayable Operation Delivery for Future Raster Strategies](../future-work/fw-014-replayable-operation-delivery.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)

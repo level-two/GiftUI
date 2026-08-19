@@ -6,7 +6,7 @@ status: captured
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-15
+updated: 2026-08-19
 source:
   - RFC-006
 related_future_work: []
@@ -26,7 +26,9 @@ Static firmware targets could describe their selected runtime, capacities,
 backend, drivers, device parameters, capability requirements, and policy in a
 declarative board or product configuration. A build tool could validate that
 description and generate specialized Swift composition, constants, and
-diagnostic metadata.
+diagnostic metadata. It could also pre-resolve capability facts that are fully
+known at build time while preserving RFC-006's bounded initialization step for
+surface or device facts that become known only on the target.
 
 ## Why Deferred
 
@@ -42,6 +44,9 @@ its cost or failure modes.
   documented target claims.
 - Reject invalid firmware combinations earlier and omit unused implementation
   families through generated specialization.
+- Reduce device initialization work by pre-resolving build-known capability
+  facts without changing normalized results or skipping initialization-known
+  compatibility checks.
 - Make supported board configurations reproducible and inspectable.
 
 ## Current Non-goals
@@ -50,6 +55,9 @@ its cost or failure modes.
   contract is added to the MVP.
 - RFC-006 does not require generated source or replace explicit target-host
   composition.
+- Build-time pre-resolution does not manufacture support, remove required
+  negative configuration checks, or replace bounded initialization for facts
+  that are not knowable from the build description.
 
 ## Revisit Triggers
 
@@ -61,6 +69,9 @@ its cost or failure modes.
 - Measurements show that generated specialization would materially reduce
   firmware RAM, flash, or startup work compared with the maintained explicit
   composition path.
+- Repeated measurements show that RFC-006's bounded on-target resolver spends
+  material startup time or storage on facts already fixed by static target
+  composition.
 
 ## Disposition
 
@@ -70,4 +81,3 @@ does not add configuration generation to the MVP.
 ## References
 
 - [RFC-006: GiftUI Capability System Architecture](../rfcs/rfc-006-capability-system-architecture.md)
-
