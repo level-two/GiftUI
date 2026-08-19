@@ -2,7 +2,7 @@
 id: RFC-003
 feature: giftui-mvp-architecture
 title: Deterministic Text Rendering Architecture
-status: draft
+status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
@@ -292,7 +292,7 @@ backend-derived glyph positioning, raster-ready text as the only canonical
 boundary, and independently compatible metric and raster identities. Each
 either weakens one geometry authority, duplicates semantic work below the
 boundary, or adds compatibility and resource cost without an MVP requirement.
-These remain draft conclusions subject to RFC review rather than accepted
+These remain proposed conclusions subject to RFC review rather than accepted
 architecture.
 
 ## Compatibility
@@ -324,7 +324,7 @@ layout format.
 - Borrowed runs may accidentally outlive workspace; test stream and replay
   lifetimes explicitly.
 - RFC-002 geometry or render-plan decisions may change; reconcile the shared
-  boundary before either RFC advances.
+  boundary before either RFC receives approval.
 
 ## Open Questions
 

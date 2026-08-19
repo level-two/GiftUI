@@ -2,7 +2,7 @@
 id: RFC-005
 feature: giftui-mvp-architecture
 title: Failure and Diagnostics Propagation Architecture
-status: draft
+status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
@@ -498,9 +498,19 @@ storage costs that are not justified as the common static representation.
 
 ## Rejected Approaches
 
-No approach is formally rejected while this RFC remains `draft`. Review must
-validate explicit outcomes, the layered disposition table, and diagnostic
-independence before ADR extraction.
+The proposed MVP direction rejects exceptions as the common failure
+mechanism, one universal product response for every outcome, composition
+policy for every non-success outcome, independent subsystem product policies,
+global error callbacks, diagnostics as control flow, and one mandatory
+diagnostic-volume policy. Those approaches either do not fit the static
+profile, place mechanical containment or transaction invariants under product
+policy, permit cross-profile disposition drift, or make correctness depend on
+optional observation.
+
+A rich universal error object and durable cross-build numeric identity are
+also rejected for MVP because no current consumer justifies their storage and
+compatibility costs. FW-012 preserves durable identity for reconsideration
+when a concrete cross-build consumer exists.
 
 ## Compatibility
 
