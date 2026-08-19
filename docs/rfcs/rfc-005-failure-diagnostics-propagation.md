@@ -6,7 +6,7 @@ status: draft
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-18
+updated: 2026-08-19
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -19,6 +19,7 @@ related_adrs: []
 related_specs: []
 related_future_work:
   - FW-009
+  - FW-012
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -272,15 +273,15 @@ semantics.
 
 ## Module Responsibilities
 
-| Owner | Responsibility | Must not own |
-| --- | --- | --- |
-| `GiftUIFailureCore` candidate leaf | Portable outcome meaning, origin, affected scope, and stable condition identity | Execution identity, product policy, or rich diagnostic formatting |
-| `GiftUIFailureExecution` candidate adapter | Correlate a core fact with RFC-004 execution and publication context; expose the narrow policy input seam | Runtime/backend implementation or selected product policy |
-| Detecting layer | Validate its contract and report a structured fact | Cross-product retry, fallback, or fatal choice |
-| Runtime/frame coordinator | Attach publication/frame/handoff context and route synchronous pre-handoff outcomes plus outcomes from separately approved asynchronous Core contracts | Platform-specific error interpretation or post-handoff presentation recovery |
-| Presentation/input integration | Own post-handoff device health, recovery, and physical-input gating; optionally emit diagnostics | Reopen a committed frame, mutate semantics, or invoke client actions |
-| Target composition | Select total bounded product policy and optional diagnostic adapter | Rewrite lower-layer invariants or capability support |
-| Diagnostic adapter/tooling | Consume or symbolize bounded observations | Correctness, semantic mutation, or disposition authority |
+| Owner                                      | Responsibility                                                                                                                                         | Must not own                                                                 |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| `GiftUIFailureCore` candidate leaf         | Portable outcome meaning, origin, affected scope, and stable condition identity                                                                        | Execution identity, product policy, or rich diagnostic formatting            |
+| `GiftUIFailureExecution` candidate adapter | Correlate a core fact with RFC-004 execution and publication context; expose the narrow policy input seam                                              | Runtime/backend implementation or selected product policy                    |
+| Detecting layer                            | Validate its contract and report a structured fact                                                                                                     | Cross-product retry, fallback, or fatal choice                               |
+| Runtime/frame coordinator                  | Attach publication/frame/handoff context and route synchronous pre-handoff outcomes plus outcomes from separately approved asynchronous Core contracts | Platform-specific error interpretation or post-handoff presentation recovery |
+| Presentation/input integration             | Own post-handoff device health, recovery, and physical-input gating; optionally emit diagnostics                                                       | Reopen a committed frame, mutate semantics, or invoke client actions         |
+| Target composition                         | Select total bounded product policy and optional diagnostic adapter                                                                                    | Rewrite lower-layer invariants or capability support                         |
+| Diagnostic adapter/tooling                 | Consume or symbolize bounded observations                                                                                                              | Correctness, semantic mutation, or disposition authority                     |
 
 ## Public API Impact
 
@@ -368,9 +369,16 @@ ADR extraction.
 ## Compatibility
 
 Existing throwing or callback-based APIs may be adapted at dynamic boundaries.
-Existing static status enums may map to the approved portable meaning. The MVP
-does not establish a serialized error ABI, numeric registry compatibility, or
-telemetry schema.
+Existing static status enums may map to the approved portable meaning. The
+proposed MVP contract preserves typed source-level failure identities and
+their meaning through shared conformance fixtures, but it does not promise
+that a numeric representation keeps the same meaning across different builds
+or software versions. MVP code must not persist, transmit, or externally
+symbolize such a number as though it were a durable identifier. A future
+cross-build consumer would require an explicitly versioned compatibility
+contract; [FW-012](../future-work/fw-012-durable-failure-identity-compatibility.md)
+preserves that post-MVP question. The MVP does not establish a serialized error
+ABI, numeric registry, or telemetry schema.
 
 ## Testing Strategy
 
@@ -409,12 +417,71 @@ telemetry schema.
 
 ## Open Questions
 
-1. What minimum invariant classification must be common across profiles so an
-   unknown or richer dynamic condition cannot be handled less safely?
-2. Which dispositions must be architecture-wide, and which may remain local to
-   a concrete operation without creating product-dependent layer behavior?
-3. Does any MVP boundary require durable cross-build numeric compatibility, or
-   can stable source-level identities and conformance fixtures suffice?
+These two questions remain approval blockers because they determine the
+portable safety meaning and the boundary between local handling and product
+policy. Cross-build numeric stability is no longer an MVP blocker: the
+proposed compatibility contract above does not promise it.
+
+### 1. What safety information must every build understand?
+
+**In simple words:** When something goes wrong, what is the smallest shared
+answer to: "Is it safe to continue, and if so, what work is still valid?"
+
+**Context:** A dynamic build may attach more detail than a small static build
+can afford. Both builds must nevertheless make equally safe decisions for the
+same condition. A condition that one profile does not recognize must never be
+treated as less serious merely because its richer classification is absent.
+
+**Possible alternatives:**
+
+- Use one common safety distinction: continued processing is either safe or
+  unsafe for the reported affected scope. This is the smallest representation,
+  but it may give composition policy too little information.
+- Define a small closed set of portable safety classes, for example: only the
+  current operation failed, the current cycle or frame is invalid, or the
+  runtime cannot safely continue. This supports more precise policy at a
+  higher representation and testing cost.
+- Permit profile-specific classes but require each one to map to a smaller
+  portable class, with unknown values taking the most conservative allowed
+  meaning. This preserves richer host diagnostics but adds mapping and version
+  rules.
+
+**Evidence needed to close it:** Classify representative MVP faults from state,
+layout, render production, backend handoff, and bounded-storage exhaustion.
+Choose the smallest common classification that gives every target composition
+enough information to select a safe disposition without inspecting
+platform-specific detail.
+
+### 2. Which responses are local, and which belong to the whole application?
+
+**In simple words:** What may the code that detects a problem do by itself,
+and what must be decided by the target application's composition policy?
+
+**Context:** Some responses are part of a concrete operation's normal contract,
+such as reporting backpressure or declining work before handoff. Other
+responses affect the whole product, such as abandoning a frame, disabling an
+optional facility, stopping the runtime, or invoking a fatal platform hook.
+Putting every response in the detecting layer makes products behave
+differently inside shared framework code. Sending every small operational
+choice to the composition root can make simple boundaries unnecessarily
+complex.
+
+**Possible alternatives:**
+
+- Route every non-success outcome to one composition-owned policy. This gives
+  one visible decision point but centralizes operation-specific knowledge and
+  increases plumbing.
+- Use a split model: a detecting contract may perform only explicitly listed,
+  bounded local responses; anything that changes cycle, frame, facility, or
+  runtime state goes to composition-owned policy. This preserves local
+  simplicity but requires a precise architecture-wide boundary.
+- Give each subsystem its own policy interface. This offers flexibility, but
+  risks inconsistent product behavior and makes whole-stack review harder.
+
+**Evidence needed to close it:** Build a disposition table for representative
+MVP outcomes. For each row, identify the detecting owner, publication or
+handoff position, allowed local responses, required composition response, and
+the invariant that prevents silent fallback or unbounded retry.
 
 Record widths, packing, context depth, secondary-failure capacity, privacy
 fields, source locations, formatting, sink representation, and target budgets
@@ -426,14 +493,22 @@ No current blocker is hidden in deferred work. A generalized shared diagnostic
 Service is preserved by
 [FW-009](../future-work/fw-009-shared-delegated-service-foundation.md); current
 MVP failure semantics require only an optional consumer-specific observation
-seam. A future durable telemetry or cross-version record format requires its
-own accepted need.
+seam.
+
+[FW-012](../future-work/fw-012-durable-failure-identity-compatibility.md)
+preserves the alternatives for stable numeric identifiers, versioned
+catalogues, and durable registries. They remain outside MVP because no current
+tool, persisted record, or device protocol requires a failure identifier to be
+interpreted across builds. Revisit the item when an accepted post-MVP need
+introduces such a consumer; the future design must then pass the normal
+Proposal, RFC, ADR, and Specification gates as applicable.
 
 ## Decision Summary
 
 If approved, this RFC is expected to yield candidate ADRs for:
 
-1. explicit bounded cross-layer outcomes with profile-neutral meaning;
+1. explicit bounded cross-layer outcomes with profile-neutral, source-stable
+   identity and no MVP promise of cross-build numeric stability;
 2. composition-owned product disposition constrained by detecting-layer and
    publication invariants;
 3. diagnostics as optional non-authoritative observations, approved
@@ -446,6 +521,7 @@ If approved, this RFC is expected to yield candidate ADRs for:
 - [RFC-002](rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-004](rfc-004-run-cycle-and-frame-transaction.md)
 - [RFC-006](rfc-006-capability-system-architecture.md)
+- [FW-012](../future-work/fw-012-durable-failure-identity-compatibility.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
