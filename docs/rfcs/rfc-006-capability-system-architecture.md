@@ -24,7 +24,9 @@ related_future_work:
   - FW-014
   - FW-015
 related_explorations: []
-related_spikes: []
+related_spikes:
+  - SPIKE-001
+  - SPIKE-002
 supersedes: []
 superseded_by: []
 target_milestone: MVP
@@ -639,6 +641,14 @@ catalogue and resolution need are established.
 
 ## Deferred and Follow-up Work
 
+- [SPIKE-001](../spikes/spike-001-tiled-one-shot-capability-fixtures.md)
+  specifies the bounded one-shot tiled-path prototype and the independent
+  pixel-encoding and submission-lifetime compatibility fixtures required by
+  evidence gate 2.
+- [SPIKE-002](../spikes/spike-002-nrf52840-capability-path-resource-evidence.md)
+  specifies the baseline/candidate nRF52840 comparison, complete-path
+  zero-heap proof, and RAM, stack, flash, and initialization-work evidence
+  required by evidence gate 3.
 - [FW-006](../future-work/fw-006-generated-target-configuration.md) preserves
   generated target composition.
 - [FW-007](../future-work/fw-007-cost-aware-capability-planning.md) preserves a

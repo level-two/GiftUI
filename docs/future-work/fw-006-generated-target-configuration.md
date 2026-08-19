@@ -11,7 +11,8 @@ source:
   - RFC-006
 related_future_work: []
 related_explorations: []
-related_spikes: []
+related_spikes:
+  - SPIKE-002
 promoted_to: []
 supersedes: []
 superseded_by: []
@@ -81,3 +82,4 @@ does not add configuration generation to the MVP.
 ## References
 
 - [RFC-006: GiftUI Capability System Architecture](../rfcs/rfc-006-capability-system-architecture.md)
+- [SPIKE-002: nRF52840 Capability-Path Resource and Zero-Heap Evidence](../spikes/spike-002-nrf52840-capability-path-resource-evidence.md)

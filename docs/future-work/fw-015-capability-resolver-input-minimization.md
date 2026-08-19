@@ -11,7 +11,8 @@ source:
   - RFC-006
 related_future_work: []
 related_explorations: []
-related_spikes: []
+related_spikes:
+  - SPIKE-001
 promoted_to: []
 supersedes: []
 superseded_by: []
@@ -82,3 +83,4 @@ or implementation.
 ## References
 
 - [RFC-006: GiftUI Capability System Architecture](../rfcs/rfc-006-capability-system-architecture.md)
+- [SPIKE-001: Tiled One-Shot Stream and Capability Compatibility Fixtures](../spikes/spike-001-tiled-one-shot-capability-fixtures.md)

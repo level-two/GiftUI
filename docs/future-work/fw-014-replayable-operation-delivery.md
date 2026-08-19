@@ -13,7 +13,8 @@ source:
 related_future_work:
   - FW-010
 related_explorations: []
-related_spikes: []
+related_spikes:
+  - SPIKE-001
 promoted_to: []
 supersedes: []
 superseded_by: []
@@ -92,3 +93,4 @@ it.
 - [RFC-004: Run Cycle and Frame Transaction Architecture](../rfcs/rfc-004-run-cycle-and-frame-transaction.md)
 - [RFC-006: GiftUI Capability System Architecture](../rfcs/rfc-006-capability-system-architecture.md)
 - [FW-010: Backend and Transport Post-Handoff Recovery](fw-010-backend-transport-submission-retry.md)
+- [SPIKE-001: Tiled One-Shot Stream and Capability Compatibility Fixtures](../spikes/spike-001-tiled-one-shot-capability-fixtures.md)
