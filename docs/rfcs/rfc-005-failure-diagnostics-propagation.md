@@ -34,22 +34,25 @@ target_milestone: MVP
 
 This RFC is the independently reviewable cross-layer failure decision cluster
 under PROPOSAL-003. It proposes that fallible GiftUI boundaries return
-structured outcomes, that lower layers report facts rather than choose product
-policy, and that diagnostics remain best-effort observations with no
-control-flow authority.
+structured outcomes, that detecting layers perform only contract-mandated
+containment, that coordinators apply required transaction rules, and that
+target composition chooses only the remaining safe product dispositions.
+Diagnostics remain best-effort observations with no control-flow authority.
 
 ```text
 layer detects a condition
+    -> contract-mandated local containment
     -> explicit bounded outcome propagates toward its coordinator
-    -> runtime/frame boundary supplies transaction context
-    -> composition-owned policy selects an allowed disposition
+    -> coordinator applies required publication/handoff disposition
+    -> composition policy selects among any remaining safe product choices
 
 post-handoff presentation condition
     -> bounded backend-local health, recovery, and input gating
     -> no change to committed logical frame
 
 optional diagnostic record
-    -> bounded sink or counter
+    -> optional bounded projection and filtering
+    -> sink, counter, buffer, stream, or omission
     -> no effect on correctness or disposition
 ```
 
@@ -99,19 +102,24 @@ Fallible cross-layer contracts MUST return a structured success, expected
 operational condition, or failure outcome. Dynamic exceptions MAY be adapted
 at an integration boundary but MUST NOT be the common GiftUI mechanism.
 
-### R2 — Fact and policy separation
+### R2 — Fact, containment, and policy separation
 
-A layer MUST describe the condition it detected and the local work it could
-not complete. It MUST NOT independently choose product-level retry, fallback,
-capability disablement, runtime termination, or silent continuation unless its
-contract explicitly grants that bounded local disposition.
+A detecting layer MUST describe the condition and local work it could not
+complete, perform any mechanical containment required by its contract, and
+return the resulting outcome. It MUST NOT independently choose product-level
+retry, fallback, capability disablement, runtime termination, or silent
+continuation. A local response is allowed only when the detecting contract
+lists it explicitly, bounds it, and proves that it preserves the reported
+containment and affected scope.
 
-### R3 — Composition-owned disposition
+### R3 — Layered disposition ownership
 
-The target composition MUST supply total policy for outcomes requiring product
-disposition. Policy may be specialized statically or injected dynamically, but
-must respect invariants established by the detecting contract and RFC-004's
-publication position.
+The owning coordinator MUST apply disposition required by the active operation
+and RFC-004's publication or handoff position. When more than one safe product
+response remains, the target composition MUST supply total bounded policy for
+that choice. Composition policy may be specialized statically or injected
+dynamically, but MUST NOT override detecting-layer containment or mandatory
+coordinator disposition.
 
 ### R4 — Diagnostics are non-authoritative
 
@@ -257,24 +265,66 @@ interrupt direct semantic authority.
 
 ### Policy
 
-The composition root knows which facilities are required and what fatal action
-a product supports. It therefore selects policy for actions such as aborting
-unpublished work, refusing a pre-handoff frame, marking an optional facility
-unavailable, quiescing the runtime, or invoking a platform fatal hook.
-Post-handoff presentation recovery and physical-input gating belong to the
-target integration rather than this Core disposition policy.
+Disposition has three owners, in order:
 
-Policy cannot manufacture missing semantic support, reinterpret a violated
-invariant as success, or retry unboundedly. RFC-006 owns capability declaration
-and operational-state classification.
+1. The detecting layer performs only contract-mandated mechanical containment,
+   such as rejecting partial output, retaining no borrowed resource, and
+   preserving the original failure fact.
+2. The owning coordinator applies mandatory operation and transaction rules,
+   such as keeping state dirty after failed derivation, aborting a candidate
+   frame, or retaining the previous committed frame and routing state.
+3. The target composition selects only among safe product responses that
+   remain, such as marking an optional facility unavailable, quiescing the
+   runtime, or invoking a platform fatal hook.
+
+The first two stages are contract behavior, not configurable product policy.
+Composition may select nothing weaker than the reported containment, affected
+scope, and transaction position allow. It cannot manufacture missing semantic
+support, reinterpret a violated invariant as success, silently fall back, or
+retry unboundedly. Post-handoff presentation recovery and physical-input
+gating belong to the target integration; composition may configure that local
+policy but cannot use it to reopen a committed Core frame. RFC-006 owns
+capability declaration and operational-state classification.
+
+The following representative MVP table fixes the ownership boundary without
+specifying exact Swift cases or policy APIs:
+
+| Outcome | Detecting owner and position | Mandatory local response | Mandatory coordinator response | Remaining composition choice | Safety invariant |
+| --- | --- | --- | --- | --- | --- |
+| Admission storage exhausted | Admission boundary, before cycle membership | Reject the new fact or input and report bounded backpressure; do not overwrite admitted work | Preserve ordering and existing membership | Select only an admission action explicitly allowed by the contract, such as paced resubmission or declared loss | No overwrite, reordering, hidden drop, or immediate unbounded retry |
+| Derivation or layout failure after admitted mutation, before semantic publication | State, reconciliation, or layout producer in the active cycle | Discard partial derived output and preserve the failure fact | Keep affected state dirty and request a later host-paced cycle under RFC-004 | No override of dirty recovery; composition may quiesce only when safety is not proven or continued service is not acceptable | Do not roll back or replay admitted mutations, actions, or side effects |
+| Render storage exhausted after semantic publication, before handoff | Render producer preparing the candidate frame | Discard partial frame-local output | Abort the candidate frame; retain the published semantic revision and previous committed logical frame | Mark an optional presentation facility unavailable, quiesce, or invoke the target fatal hook according to required-facility policy | No partial handoff, silent allocation fallback, or automatic frame retry |
+| Backend refuses or fails synchronous handoff | Backend during `offer`, before acceptance | Retain no frame data or borrowed resource and return the normalized outcome | Abort the candidate frame and retain the previous committed frame and routing state | Apply required-facility policy; any future presentation attempt must be separately admitted and bounded | Refusal cannot commit, retain, replay, or synchronously retry the offered operation stream |
+| Device or transport fails after accepted handoff | Presentation/input integration, after logical commit | Update bounded local health, preserve presentation/input coherence, and gate stale physical input | Do not reopen or change the committed Core frame | Configure bounded integration-local recovery or treat the required facility as unavailable | Post-handoff failure cannot roll back semantics, invoke client actions, or alter Core frame disposition |
+| Failure reports **safety not proven** for runtime scope | Boundary detecting an invariant failure; any phase | Trap immediately if safe propagation is impossible; otherwise preserve and report the failure | Prevent normal processing from continuing for the affected runtime scope | Quiesce or invoke the target fatal hook; continuation is not an allowed choice | Diagnostics or policy cannot upgrade the failure to **contained** |
 
 ### Diagnostics
 
 A diagnostic is a bounded observation derived from an outcome or other event.
-It may carry stable identifiers and limited details for tests or host tooling.
-A consumer-specific sink may discard, buffer, stream, or symbolize it. No
-shared `GiftUIServices` package or global diagnostic framework is required by
-this RFC; FW-009 preserves that possible generalization.
+It is separate from both the outcome path and current operational health:
+
+- every correctness-relevant outcome follows its typed propagation path even
+  when diagnostics are disabled or filtered;
+- integration health is explicit bounded state or counters owned by that
+  integration and is not inferred from a possibly lossy diagnostic history;
+  and
+- diagnostics are an optional projection for logging, debugging, tests, or
+  host tooling and never determine correctness or health.
+
+A dynamic or debug target may project every normalized outcome and selected
+health transition. A static or production target may omit diagnostics or
+select only configured categories before records are created. A sink may then
+apply additional filtering by category, origin, transaction position, or
+severity and may discard, buffer, stream, count, or symbolize the result.
+Severity alone is not the portable disposition model: a low-severity
+operational condition may be important for health analysis, while a serious
+but contained frame failure may still permit safe runtime continuation.
+
+Diagnostic selection, filtering, saturation, or sink failure MUST NOT suppress
+an outcome, change integration health, or alter a disposition. This RFC does
+not require either a critical-only stream or a universal all-event stream, and
+it does not require a shared `GiftUIServices` package or global diagnostic
+framework. FW-009 preserves that possible generalization.
 
 ### Placement in RFC-002's import partial order
 
@@ -328,12 +378,12 @@ semantics.
 | Owner                                      | Responsibility                                                                                                                                         | Must not own                                                                 |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
 | `GiftUIFailureCore` candidate leaf         | Portable outcome meaning, origin, affected scope, and stable condition identity                                                                        | Execution identity, product policy, or rich diagnostic formatting            |
-| `GiftUIFailureExecution` candidate adapter | Correlate a core fact with RFC-004 execution and publication context; expose the narrow policy input seam                                              | Runtime/backend implementation or selected product policy                    |
-| Detecting layer                            | Validate its contract and report a structured fact                                                                                                     | Cross-product retry, fallback, or fatal choice                               |
-| Runtime/frame coordinator                  | Attach publication/frame/handoff context and route synchronous pre-handoff outcomes plus outcomes from separately approved asynchronous Core contracts | Platform-specific error interpretation or post-handoff presentation recovery |
-| Presentation/input integration             | Own post-handoff device health, recovery, and physical-input gating; optionally emit diagnostics                                                       | Reopen a committed frame, mutate semantics, or invoke client actions         |
-| Target composition                         | Select total bounded product policy and optional diagnostic adapter                                                                                    | Rewrite lower-layer invariants or capability support                         |
-| Diagnostic adapter/tooling                 | Consume or symbolize bounded observations                                                                                                              | Correctness, semantic mutation, or disposition authority                     |
+| `GiftUIFailureExecution` candidate adapter | Correlate a core fact with RFC-004 execution and publication context; expose the narrow residual policy input seam                                     | Runtime/backend implementation or selected product policy                    |
+| Detecting layer                            | Validate its contract, perform contract-mandated mechanical containment, and report a structured fact                                                 | Cross-product retry, fallback, capability, quiescence, or fatal choice       |
+| Runtime/frame coordinator                  | Attach publication/frame/handoff context, apply mandatory transaction disposition, and route any remaining product choice                            | Platform-specific error interpretation or post-handoff presentation recovery |
+| Presentation/input integration             | Own explicit bounded post-handoff device health, recovery, and physical-input gating; optionally project diagnostics                                 | Reopen a committed frame, mutate semantics, or invoke client actions         |
+| Target composition                         | Select total bounded policy only for remaining safe product choices and assemble the optional diagnostic projection                                  | Override local containment, mandatory coordinator disposition, or capability support |
+| Diagnostic adapter/tooling                 | Select, filter, consume, count, buffer, stream, or symbolize bounded observations                                                                      | Correctness, health authority, semantic mutation, or disposition authority   |
 
 ## Public API Impact
 
@@ -362,27 +412,32 @@ not report a Core frame outcome, invoke actions, or roll back semantic state.
 ## Static / Embedded Impact
 
 Static implementations may use tagged values, out-parameters, fixed slots, or
-specialized generic policy. Diagnostic records may be omitted or stored in a
-small ring. The common contract requires deterministic exhaustion and no
-mandatory allocation, strings, exceptions, reflection, or dynamic registry.
-Splitting facts from execution correlation also prevents low-level firmware
-modules from linking execution metadata or diagnostics that they do not use.
+specialized generic policy. Diagnostic projection may be removed at build
+time, restricted to configured categories before record creation, or stored in
+a small bounded ring. The common contract requires deterministic exhaustion
+and no mandatory allocation, strings, exceptions, reflection, dynamic
+registry, or all-event stream. Splitting facts from execution correlation also
+prevents low-level firmware modules from linking execution metadata or
+diagnostics that they do not use.
 
 ## Performance
 
 Failure-free paths should pay only bounded outcome checks and correlation
-cost. Diagnostic formatting is not part of the correctness-critical path.
-Specifications must measure outcome propagation, saturation, policy dispatch,
-approved asynchronous Core admission where present, and backend-local post-
-handoff health/input gating for each selected profile.
+cost. Diagnostic selection and formatting are not part of the correctness-
+critical path, and disabled categories should not require full record
+construction. Specifications must measure outcome propagation, mandatory
+coordinator disposition, residual policy dispatch, diagnostic projection and
+saturation, approved asynchronous Core admission where present, and backend-
+local post-handoff health/input gating for each selected profile.
 
 ## Memory / Binary Size
 
 Specifications must budget the chosen outcome representation, correlation
 records, any approved asynchronous admission queue, bounded context, backend-
-local health/input-gating state, optional diagnostic storage, and policy code.
-Rich host descriptions and symbolization may live outside firmware. This RFC
-does not require a global registry or universal sidecar.
+local health/input-gating state and counters, optional diagnostic selection and
+storage, and policy code. Rich host descriptions and symbolization may live
+outside firmware. This RFC does not require a global registry, universal
+sidecar, or storage sized for all events.
 
 ## Alternatives
 
@@ -391,11 +446,25 @@ does not require a global registry or universal sidecar.
 Exceptions provide familiar dynamic ergonomics and unwinding but do not form a
 common Embedded Swift or asynchronous completion contract.
 
-### Layer-local product policy
+### One fixed architecture-wide response per outcome
 
-Local handling can be simple in a closed stack, but reusable layers do not
-know whether a display is mandatory, whether retry storage exists, or which
-fatal behavior a product supports.
+A fixed table is small and deterministic, and this RFC uses fixed responses
+where containment or transaction invariants permit no choice. Extending that
+table to product consequences is too rigid: a reusable layer does not know
+whether a facility is required or which fatal action a target supports.
+
+### Composition policy for every non-success outcome
+
+Routing every outcome directly to one composition policy creates one visible
+decision point. It also forces product policy to understand partial buffers,
+borrowed resources, dirty state, and handoff mechanics that belong to the
+detecting contract or transaction coordinator.
+
+### Independent subsystem policies
+
+Per-subsystem policy interfaces offer local flexibility but allow equivalent
+conditions to receive inconsistent product dispositions. They also spread
+whole-product policy across modules and complicate static/dynamic conformance.
 
 ### Global error callback
 
@@ -407,6 +476,21 @@ thread context, and transaction position ambiguous.
 Using logging success or severity to decide correctness makes behavior depend
 on observability configuration and is invalid for optional diagnostics.
 
+### Critical-only diagnostics as the common contract
+
+Emitting only critical records reduces production cost, but "critical" is a
+consumer and product classification rather than the portable safety model. It
+also removes contained operational evidence useful for debugging and health
+analysis. A target may select such a projection, but it is not the universal
+diagnostic contract.
+
+### Emit every diagnostic record and filter only at the sink
+
+This gives dynamic host tooling maximum visibility, but requires every target
+to construct and transport records that may immediately be discarded. It is a
+valid target configuration, not a portable requirement for constrained static
+builds.
+
 ### One rich universal error object
 
 This maximizes desktop context but imposes allocation, strings, schema, and
@@ -415,8 +499,8 @@ storage costs that are not justified as the common static representation.
 ## Rejected Approaches
 
 No approach is formally rejected while this RFC remains `draft`. Review must
-choose explicit outcomes, policy ownership, and diagnostic independence before
-ADR extraction.
+validate explicit outcomes, the layered disposition table, and diagnostic
+independence before ADR extraction.
 
 ## Compatibility
 
@@ -447,6 +531,15 @@ ABI, numeric registry, or telemetry schema.
   before-effect rejection or deferral.
 - Verify diagnostics enabled, disabled, saturated, or failing produce the same
   semantic and presentation outcomes.
+- Exercise each representative disposition-table row and verify the detecting
+  layer performs only its mandatory containment, the coordinator applies the
+  required transaction effect, and composition sees only any remaining safe
+  product choice.
+- Compare critical-only, all-selected-outcome, and category-filtered diagnostic
+  projections. Verify they produce identical outcome propagation, health
+  state, coordinator disposition, and composition-policy inputs.
+- Drop diagnostic health-transition records and verify an explicit health
+  query or counter still reports the current backend/integration state.
 - Compare static and dynamic policy inputs and dispositions for equivalent
   faults.
 - Test every separately approved asynchronous Core contract for interrupt-safe
@@ -470,6 +563,12 @@ ABI, numeric registry, or telemetry schema.
   and symbolization out of the portable hot path.
 - Product policy may become semantic divergence; restrict it to dispositions
   allowed by the detecting contract and publication position.
+- Diagnostic volume may exceed bounded storage or transport capacity; permit
+  source selection and sink filtering while keeping loss independent from
+  outcomes and explicit health.
+- A severity-only filter may hide useful contained operational evidence; keep
+  category, origin, and transaction position available to configured
+  diagnostic projections.
 - RFC-004 and RFC-006 may change shared terminology; reconcile the coordinated
   drafts before approval.
 - A monolithic failure target could pull execution context into drivers or
@@ -481,42 +580,18 @@ ABI, numeric registry, or telemetry schema.
 
 ## Open Questions
 
-The portable safety meaning is resolved in the proposed direction through the
-conservative containment-plus-scope model above. Cross-build numeric stability
-is also no longer an MVP blocker: the proposed compatibility contract does not
-promise it. One question remains an approval blocker because it determines the
-boundary between local handling and product policy.
+No question remains an approval blocker in the current proposed direction.
+The portable safety meaning uses conservative containment plus affected scope;
+the MVP makes no cross-build numeric-stability promise; and the representative
+disposition table assigns mandatory containment to the detecting contract,
+mandatory transaction effects to the owning coordinator, and only remaining
+safe product choices to target composition.
 
-### 1. Which responses are local, and which belong to the whole application?
-
-**In simple words:** What may the code that detects a problem do by itself,
-and what must be decided by the target application's composition policy?
-
-**Context:** Some responses are part of a concrete operation's normal contract,
-such as reporting backpressure or declining work before handoff. Other
-responses affect the whole product, such as abandoning a frame, disabling an
-optional facility, stopping the runtime, or invoking a fatal platform hook.
-Putting every response in the detecting layer makes products behave
-differently inside shared framework code. Sending every small operational
-choice to the composition root can make simple boundaries unnecessarily
-complex.
-
-**Possible alternatives:**
-
-- Route every non-success outcome to one composition-owned policy. This gives
-  one visible decision point but centralizes operation-specific knowledge and
-  increases plumbing.
-- Use a split model: a detecting contract may perform only explicitly listed,
-  bounded local responses; anything that changes cycle, frame, facility, or
-  runtime state goes to composition-owned policy. This preserves local
-  simplicity but requires a precise architecture-wide boundary.
-- Give each subsystem its own policy interface. This offers flexibility, but
-  risks inconsistent product behavior and makes whole-stack review harder.
-
-**Evidence needed to close it:** Build a disposition table for representative
-MVP outcomes. For each row, identify the detecting owner, publication or
-handoff position, allowed local responses, required composition response, and
-the invariant that prevents silent fallback or unbounded retry.
+Diagnostic projection is also separated from that disposition path. Targets
+may select critical-only, all-selected-outcome, or category-filtered
+observation without changing typed outcome propagation or explicit operational
+health. These remain proposed architectural choices until this RFC receives
+human approval.
 
 Record widths, packing, context depth, secondary-failure capacity, privacy
 fields, source locations, formatting, sink representation, and target budgets
@@ -554,9 +629,11 @@ If approved, this RFC is expected to yield candidate ADRs for:
 1. explicit bounded cross-layer outcomes with profile-neutral conservative
    containment, affected scope, source-stable identity, and no MVP promise of
    cross-build numeric stability;
-2. composition-owned product disposition constrained by detecting-layer and
-   publication invariants;
-3. diagnostics as optional non-authoritative observations, approved
+2. layered disposition: contract-mandated detecting-layer containment,
+   mandatory coordinator transaction effects, and composition-owned selection
+   only among remaining safe product choices;
+3. diagnostics as optional filtered non-authoritative projections distinct
+   from explicit operational health, approved
    asynchronous Core outcomes as sequenced input, and post-handoff
    presentation failures as backend-local operational state.
 
