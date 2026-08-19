@@ -2,7 +2,7 @@
 id: SPIKE-002
 feature: capability-system
 title: nRF52840 Capability-Path Resource and Zero-Heap Evidence
-status: planned
+status: completed
 authors:
   - Yauheni Lychkouski
 created: 2026-08-19
@@ -352,10 +352,40 @@ resource budgets.
 
 ## Results
 
-Not run. This Spike is planned.
+Completed on 2026-08-19. The two pristine builds were byte-for-byte
+reproducible and the candidate passed every established target limit and
+zero-heap check.
 
-When executed, record the required comparison and path-coverage tables here or
-link versioned evidence files from this section.
+| Metric | Baseline | Candidate | Increment | Limit / interpretation |
+| --- | ---: | ---: | ---: | --- |
+| Linked RAM bytes | 8,060 | 8,188 | 128 | 192 KiB total |
+| Linked flash bytes | 25,816 | 26,920 | 1,104 | 1 MiB total; 896 KiB warning |
+| Capability fixed storage bytes | 0 | 80 | 80 | Reported, no invented budget |
+| Worst-case resolver stack bytes | 0 | 72 | 72 | Finite disassembly bound |
+| Success initialization operations | 0 | 14 | 14 | Finite |
+| Worst negative initialization operations | 0 | 14 | 14 | Finite |
+| Steady-state resolver invocations | 0 | 0 | 0 | Pass |
+| Heap allocator entry points | 0 | 0 | 0 | Pass |
+| Display staging bytes | 0 | 3,840 | 3,840 | At most 16 KiB |
+
+The available path and all five required negative paths were retained in the
+target ELF and executed by the exact-source host harness. Construction,
+resolution, validation construction, snapshot storage, and steady-state
+access set the complete `0x1f` path trace. Stable reasons 1 through 5 identify
+malformed input, duplicate owner, incompatible encoding, incompatible
+submission lifetime, and unsatisfied resource bounds respectively.
+
+Both final images use ARMv7E-M with the VFP-register hard-float convention,
+contain both required zero-heap configuration values, and retain none of the
+prohibited allocator entry points. Symbol inspection found no dynamic
+registry, desktop/full-framebuffer backend, unrelated backend, or omitted
+capability-family implementation.
+
+Full reproduction identity, counter categories, stack derivation, hashes,
+path coverage, checks, and interpretation are preserved in the
+[versioned evidence summary](../../experiments/spike-002-nrf52840-capability-path-resource-evidence/evidence/summary.md).
+The one-command runner also retains ELF, map, disassembly, configuration, and
+symbol reports under `.build/nrf52840/`.
 
 ## Limitations
 
@@ -367,12 +397,19 @@ link versioned evidence files from this section.
   preserve maps and explain non-local size changes.
 - The Spike does not prove the tiled one-shot rendering contract; SPIKE-001
   owns that evidence.
+- The candidate image was cross-built and inspected but not executed on target
+  hardware. The exact pure Swift source was executed on the host; on-target
+  observability was proved through retained entry, trace, counter, result, and
+  storage symbols.
+- The 72-byte resolver stack figure is a conservative disassembly call-chain
+  bound, not an on-device high-water measurement.
 
 ## Disposition
 
-Planned. On completion, feed the measurements, reproduction record, and all
-limitations into RFC-006. Do not promote or copy the experiment code directly
-into a production target.
+Completed with positive feasibility evidence for RFC-006's nRF52840 resource
+and allocator-independence gate. Feed the measurements and limitations into
+RFC-006 review. This status does not approve RFC-006 or authorize copying the
+experiment code into a production target.
 
 ## References
 

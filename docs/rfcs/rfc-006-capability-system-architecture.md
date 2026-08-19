@@ -624,22 +624,26 @@ RGB565 tiled fixtures consumed the borrowed stream exactly once with no
 retained lease, matched their reference images, and stayed within their tile
 bounds. The encoding and submission-lifetime negative/control pairs also
 returned independent stable reasons for every contributor permutation. This
-is feasibility evidence only; it does not establish production types or
-replace the remaining target evidence.
+is feasibility evidence only; it does not establish production types and did
+not itself supply the separate target evidence.
 
-The following dependency and target-evidence gates remain open and block
-advancement:
+SPIKE-002 completed the nRF52840 evidence gate with one reproducible bounded
+representation. Relative to its equivalent baseline it added 128 linked RAM
+bytes and 1,104 linked flash bytes; its named fixed capability storage was 80
+bytes, its conservative worst-case resolver stack bound was 72 bytes, and its
+success and worst negative initialization paths each performed 14 counted
+operations. Total linked RAM, flash, and 3,840-byte staging remained within
+the established limits. Both heaps were disabled, no prohibited allocator
+entry point was linked, steady-state access made no resolver invocation, and
+omitted implementation families were absent. This is feasibility evidence,
+not a production representation or resource budget; the image was inspected
+but not executed on target hardware.
+
+The following dependency gate remains open and blocks advancement:
 
 1. RFC-004 must be approved with compatible operation-stream and handoff
    meanings, or the two RFCs must be reconciled before either conflicting
    decision is treated as settled.
-2. The bounded nRF52840 representation and linked-image evidence must report
-   incremental resolver/snapshot RAM, worst-case resolver stack, flash, and
-   initialization work within the established target budgets, and must prove
-   that the capability-system path performs no heap allocation during
-   contribution construction, initialization-time resolution,
-   validation-result construction, effective-result storage, or steady-state
-   access.
 
 Family counts, contribution counts, storage layouts, provenance representation,
 diagnostic fields, and byte budgets are Specification questions after the
@@ -653,9 +657,9 @@ catalogue and resolution need are established.
   disposable host prototype satisfies the normalized semantic gate but does
   not supply nRF52840 resource or zero-heap evidence.
 - [SPIKE-002](../spikes/spike-002-nrf52840-capability-path-resource-evidence.md)
-  specifies the baseline/candidate nRF52840 comparison, complete-path
-  zero-heap proof, and RAM, stack, flash, and initialization-work evidence
-  required by evidence gate 3.
+  records the completed baseline/candidate nRF52840 comparison, complete-path
+  zero-heap proof, and positive RAM, stack, flash, and initialization-work
+  evidence for the target gate.
 - [FW-006](../future-work/fw-006-generated-target-configuration.md) preserves
   generated target composition.
 - [FW-007](../future-work/fw-007-cost-aware-capability-planning.md) preserves a
