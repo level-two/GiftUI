@@ -20,6 +20,7 @@ related_specs: []
 related_future_work:
   - FW-009
   - FW-012
+  - FW-013
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -120,9 +121,10 @@ frame disposition, or failure policy.
 
 ### R5 — Preserve origin and context
 
-Propagation MUST preserve stable origin and condition identity sufficient for
-policy and tests. Boundary context MAY be added in a bounded form but MUST NOT
-replace the original cause.
+Propagation MUST preserve stable origin, condition identity, and the smallest
+affected scope the detecting contract can prove, sufficient for policy and
+tests. Boundary context MAY be added in a bounded form but MUST NOT replace the
+original cause or narrow its affected scope.
 
 ### R6 — Callback and interrupt isolation
 
@@ -145,8 +147,10 @@ health, recovery, presentation/input gating, or optional diagnostics only.
 ### R8 — Bounded profile-neutral meaning
 
 Static and dynamic profiles MUST agree on portable condition identity,
-invariant severity, transaction position, and allowed disposition. The common
-meaning MUST be representable without heap allocation, strings, exceptions,
+containment, affected scope, transaction position, and allowed disposition. A
+profile-specific or unknown containment value MUST map to the conservative
+portable meaning rather than permit less-safe continuation. The common meaning
+MUST be representable without heap allocation, strings, exceptions,
 reflection, or unrestricted dynamic dispatch.
 
 ### R9 — Deterministic testability
@@ -188,6 +192,54 @@ The common architecture distinguishes three semantic roles:
 Exact enum cases, severities, and numeric representation belong in a
 Specification. The architecture requires only enough stable meaning to prevent
 unknown or richer dynamic details from changing policy unpredictably.
+
+### MVP containment and affected scope
+
+The MVP uses one conservative portable containment distinction for failures:
+
+- **contained:** the detecting contract proves that partial work is rejected
+  or invalidated and that normal processing remains safe outside the reported
+  affected scope; or
+- **safety not proven:** the detecting contract cannot provide that guarantee,
+  so normal processing MUST NOT continue for the reported affected scope.
+
+An unknown or richer profile-specific value maps to **safety not proven**.
+Diagnostics, platform detail, and product policy cannot upgrade it to
+**contained**.
+
+Affected scope remains a separate fact. The MVP needs only straightforward
+architectural scopes: the local operation, the active cycle or candidate
+frame, the owning component or integration, and the assembled runtime. A
+Specification may choose compact names and representation, but it MUST NOT
+report a scope narrower than the detecting contract can prove. The execution-
+correlation adapter adds RFC-004 publication, frame, and handoff position; the
+foundational fact does not import those identities.
+
+The conservative MVP mapping covers these representative cases:
+
+- a validated request, arithmetic, or bounded-capacity failure detected before
+  publication is contained to its operation, cycle, or candidate frame when
+  the contract discards all partial output;
+- a synchronous handoff refusal is contained to the candidate frame only when
+  the backend satisfies RFC-004's refusal and retention invariants;
+- a post-handoff device or transport failure is contained from Core and affects
+  the owning presentation/input integration's local health; and
+- broken state identity or lifetime, internal reentrancy, forbidden-phase
+  mutation, or any similar invariant violation is **safety not proven** for the
+  runtime unless its contract already proves before-effect rejection or
+  deferral. If safe propagation itself is impossible, the detecting boundary
+  may trap immediately.
+
+Approved asynchronous facts and reentrant external input that enter through a
+bounded sequenced admission contract are operational work, not invariant
+failures. Exhaustion or corruption of that admission mechanism is reported as
+its own outcome.
+
+The MVP does not add finer severity rankings, recoverable invariant-violation
+subclasses, rollback, nested semantic execution, or condition-specific
+continuation rules. [FW-013](../future-work/fw-013-fine-grained-failure-containment-recovery.md)
+preserves that possible refinement without weakening this RFC's current
+direction.
 
 ### Propagation
 
@@ -384,6 +436,15 @@ ABI, numeric registry, or telemetry schema.
 
 - Fault-inject every first-party boundary and preserve origin, transaction
   position, and correlation through propagation.
+- For representative state, layout, render-production, bounded-capacity, and
+  handoff faults, verify that a **contained** result discards partial work and
+  leaves normal processing valid outside its reported scope.
+- Inject an unknown or richer profile-specific containment value and verify
+  every profile maps it to **safety not proven** for the same affected scope.
+- Verify broken state identity or lifetime and uncontained internal
+  reentrancy or forbidden-phase mutation cannot resume normal runtime
+  processing; a boundary may claim containment only with a fixture proving
+  before-effect rejection or deferral.
 - Verify diagnostics enabled, disabled, saturated, or failing produce the same
   semantic and presentation outcomes.
 - Compare static and dynamic policy inputs and dispositions for equivalent
@@ -414,45 +475,19 @@ ABI, numeric registry, or telemetry schema.
 - A monolithic failure target could pull execution context into drivers or
   diagnostics back into correctness paths; retain the two-target ownership
   split and enforce it with import tests.
+- Conservative containment may stop a component or runtime in a case that
+  future evidence could prove recoverable. This is an accepted MVP simplicity
+  cost; FW-013 preserves finer classification and recovery work.
 
 ## Open Questions
 
-These two questions remain approval blockers because they determine the
-portable safety meaning and the boundary between local handling and product
-policy. Cross-build numeric stability is no longer an MVP blocker: the
-proposed compatibility contract above does not promise it.
+The portable safety meaning is resolved in the proposed direction through the
+conservative containment-plus-scope model above. Cross-build numeric stability
+is also no longer an MVP blocker: the proposed compatibility contract does not
+promise it. One question remains an approval blocker because it determines the
+boundary between local handling and product policy.
 
-### 1. What safety information must every build understand?
-
-**In simple words:** When something goes wrong, what is the smallest shared
-answer to: "Is it safe to continue, and if so, what work is still valid?"
-
-**Context:** A dynamic build may attach more detail than a small static build
-can afford. Both builds must nevertheless make equally safe decisions for the
-same condition. A condition that one profile does not recognize must never be
-treated as less serious merely because its richer classification is absent.
-
-**Possible alternatives:**
-
-- Use one common safety distinction: continued processing is either safe or
-  unsafe for the reported affected scope. This is the smallest representation,
-  but it may give composition policy too little information.
-- Define a small closed set of portable safety classes, for example: only the
-  current operation failed, the current cycle or frame is invalid, or the
-  runtime cannot safely continue. This supports more precise policy at a
-  higher representation and testing cost.
-- Permit profile-specific classes but require each one to map to a smaller
-  portable class, with unknown values taking the most conservative allowed
-  meaning. This preserves richer host diagnostics but adds mapping and version
-  rules.
-
-**Evidence needed to close it:** Classify representative MVP faults from state,
-layout, render production, backend handoff, and bounded-storage exhaustion.
-Choose the smallest common classification that gives every target composition
-enough information to select a safe disposition without inspecting
-platform-specific detail.
-
-### 2. Which responses are local, and which belong to the whole application?
+### 1. Which responses are local, and which belong to the whole application?
 
 **In simple words:** What may the code that detects a problem do by itself,
 and what must be decided by the target application's composition policy?
@@ -503,12 +538,22 @@ interpreted across builds. Revisit the item when an accepted post-MVP need
 introduces such a consumer; the future design must then pass the normal
 Proposal, RFC, ADR, and Specification gates as applicable.
 
+[FW-013](../future-work/fw-013-fine-grained-failure-containment-recovery.md)
+preserves possible relaxation of the conservative MVP safety rule, finer
+affected scopes, recoverable invariant subclasses, before-effect reentrancy
+handling, and specialized recovery. These are outside MVP because the simple
+containment-plus-scope model handles the required faults safely and no current
+Signal Analyzer or target-validation requirement needs more availability.
+Revisit only when concrete evidence shows that the conservative rule prevents
+an accepted behavior or availability requirement.
+
 ## Decision Summary
 
 If approved, this RFC is expected to yield candidate ADRs for:
 
-1. explicit bounded cross-layer outcomes with profile-neutral, source-stable
-   identity and no MVP promise of cross-build numeric stability;
+1. explicit bounded cross-layer outcomes with profile-neutral conservative
+   containment, affected scope, source-stable identity, and no MVP promise of
+   cross-build numeric stability;
 2. composition-owned product disposition constrained by detecting-layer and
    publication invariants;
 3. diagnostics as optional non-authoritative observations, approved
@@ -522,6 +567,7 @@ If approved, this RFC is expected to yield candidate ADRs for:
 - [RFC-004](rfc-004-run-cycle-and-frame-transaction.md)
 - [RFC-006](rfc-006-capability-system-architecture.md)
 - [FW-012](../future-work/fw-012-durable-failure-identity-compatibility.md)
+- [FW-013](../future-work/fw-013-fine-grained-failure-containment-recovery.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
