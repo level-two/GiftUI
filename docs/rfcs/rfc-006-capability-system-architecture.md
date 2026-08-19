@@ -149,10 +149,16 @@ normalized conformance fixtures for equivalent configurations.
 
 ### R10 — Bounded static representation
 
-The static path MUST require no heap allocation, reflection, string lookup,
-exceptions, unrestricted existentials, or unbounded registry. Catalogue,
-contribution, resolver, validation, and snapshot storage MUST be explicit and
-bounded.
+The static capability-system path MUST remain valid when no heap allocator is
+available. Contribution construction, initialization-time resolution,
+validation-result construction, effective-result storage, and steady-state
+access MUST use generated, fixed-capacity, caller-owned, or otherwise
+explicitly bounded storage and MUST NOT perform heap allocation. The static
+path also MUST NOT require reflection, string lookup, exceptions, unrestricted
+existentials, or an unbounded registry.
+
+Dynamic profiles MAY allocate for these operations, but their work, retained
+state, and failure behavior MUST still be explicitly bounded and deterministic.
 
 ## Constraints
 
@@ -290,9 +296,9 @@ budgets.
 | Fixture | Relevant owned facts | Required effective result |
 | --- | --- | --- |
 | macOS dynamic | Dynamic producer; complete MVP operation vocabulary; desktop raster and AppKit surface path; allocation permitted but explicitly bounded | Available desktop full-surface realization using the common stream contract, a compatible downstream submission lifetime, and a canonical host pixel encoding |
-| macOS static | Static producer for the same portable presentation; bounded operation/payload storage; desktop raster and surface path | Same semantic coverage as macOS dynamic, with all static capacities explicit; runtime profile identity is not exposed as a Capability |
+| macOS static | Static producer for the same portable presentation; bounded operation/payload storage; desktop raster and surface path | Same semantic coverage as macOS dynamic, with allocator-independent capability contribution, resolution, validation, and effective-result access plus all static capacities explicit; runtime profile identity is not exposed as a Capability |
 | Raspberry Pi 1/Linux dynamic + PiScreen | Dynamic producer; RGB565 tiled raster candidate within the supported 480 x 320 bound; 240 x 240 PiScreen fixture; Linux framebuffer accepting 16-, 24-, or 32-bit layouts; default 240 x 16 x 2-byte GiftUI tile | Available bounded tiled realization using the common stream contract; resolver selects compatible encoding/conversion and downstream submission-lifetime inputs shared by renderer and framebuffer rather than probing a concrete display type |
-| nRF52840 static + TFT | Static bounded producer; required MVP operations; RGB565 tile raster; 480 x 320 display path; synchronous borrowed SPI submission; maximum 480 x 4 x 2-byte (3,840-byte) tile; no full framebuffer | Available zero-heap RGB565 tiled realization using the common stream contract and compatible borrowed submission within the configured storage bound; a full-surface RGBA realization is unavailable |
+| nRF52840 static + TFT | Static bounded producer; required MVP operations; RGB565 tile raster; 480 x 320 display path; synchronous borrowed SPI submission; maximum 480 x 4 x 2-byte (3,840-byte) tile; no full framebuffer | Available RGB565 tiled realization whose capability contribution, initialization-time resolution, validation result, effective-result storage, and steady-state access require no heap allocator; uses the common stream contract and compatible borrowed submission within the configured storage bound; a full-surface RGBA realization is unavailable |
 
 At least two effective realizations therefore differ materially: desktop may
 use a bounded full surface, while the nRF52840 fixture requires bounded RGB565
@@ -391,12 +397,21 @@ not an approved dependency pattern.
 
 Static composition may specialize tuples, generated switches, fixed tables, or
 direct calls. Correctness cannot depend on optimizer removal of unused code.
-The nRF52840 fixture must demonstrate bounded zero-heap resolution and snapshot
-access, deterministic malformed/duplicate/unsatisfied handling, and absence of
-omitted implementation families from the linked image. Build-time
-specialization may reduce the work, but it does not replace bounded
+The static capability path must remain valid when no heap allocator is
+available. Contribution construction, initialization-time resolution,
+validation-result construction, effective-result storage, and steady-state
+access use generated, fixed-capacity, caller-owned, or otherwise explicitly
+bounded storage and perform no heap allocation. The nRF52840 fixture must
+demonstrate that behavior, deterministic malformed/duplicate/unsatisfied
+handling, and absence of omitted implementation families from the linked
+image.
+
+Build-time specialization may reduce the work, but it does not replace bounded
 initialization-time resolution because selected surface and device facts may
-become known only while the target is initialized.
+become known only while the target is initialized. This constraint does not
+claim that every unrelated platform or device bootstrap implementation lacks
+an allocator; it requires capability-system conformance to remain independent
+of one.
 
 ## Performance
 
@@ -418,8 +433,10 @@ nRF52840 build or bounded representation fixture must report incremental
 linked RAM and flash plus worst-case resolver stack. The result must preserve
 the established target limits of at most 192 KiB linked RAM, at most 16 KiB
 default display staging, firmware within the 1 MiB device flash with the
-896 KiB warning threshold, and zero heap use after initialization. If the
-first representation is too costly, the first remedy is to reduce record,
+896 KiB warning threshold, and zero capability-system heap allocation during
+contribution assembly, initialization-time resolution, validation-result
+construction, effective-result storage, and steady-state access. If the first
+representation is too costly, the first remedy is to reduce record,
 provenance, diagnostic, and adapter representation while preserving the same
 architecture and normalized result.
 
@@ -431,11 +448,19 @@ Compile-time selection is effective for structural impossibility but cannot by
 itself represent initialization-time dimensions, formats, quantitative bounds,
 or one explainable semantic result.
 
+**Rejected for MVP.** Structural build selection remains useful, but build
+flags alone cannot satisfy the required initialization-time validation and
+normalized capability result.
+
 ### Backend Boolean bag
 
 This is small when the backend owns every relevant behavior, but it loses
 cross-component prerequisites, quantitative constraints, and software
 realizations outside the backend.
+
+**Rejected for MVP.** No single backend owns the complete presentation path,
+and Boolean flags cannot preserve the bounds and cross-component compatibility
+needed by `rasterPresentation`.
 
 ### String-keyed runtime registry
 
@@ -443,11 +468,18 @@ This is convenient for dynamic plugins but introduces allocation, casting,
 ordering, identity, and bounded-storage problems unnecessary for the closed
 MVP stacks.
 
+**Rejected for MVP.** Its dynamic discovery and storage costs conflict with
+the closed, bounded static configuration required on nRF52840.
+
 ### Encode everything in generic types
 
 This can reject static combinations early but creates large type surfaces for
 quantitative and initialization-time facts. Selective specialization plus
 typed values is the candidate direction.
+
+**Rejected for MVP.** Encoding every fact in generic types cannot represent
+all initialization-time values proportionately and would impose excessive type
+and specialization surface on the shared architecture.
 
 ### Build-time-only resolution
 
@@ -457,6 +489,10 @@ device. The candidate direction permits specialization of build-known facts
 while retaining one explicit bounded initialization-time resolver and the same
 normalized result across profiles.
 
+**Rejected for MVP.** Some required surface and device facts are not available
+until bounded initialization, so build-time resolution cannot be the sole
+conformance mechanism.
+
 ### Replayable tiled payload mode
 
 A separate retained or replayable operation payload could simplify some tiled
@@ -465,10 +501,19 @@ failure matrix, and static cost. The candidate direction instead requires all
 first-party tiled paths to consume RFC-004's common synchronous borrowed
 stream and retain only backend-owned derived data after handoff.
 
+**Rejected for MVP.** No current fixture justifies a second operation-payload
+lifetime, and its additional retention and failure obligations would conflict
+with the bounded common handoff direction. FW-014 preserves reconsideration
+under a future measured requirement.
+
 ### Feature-local probing
 
 This delays shared machinery but leaks identity, duplicates policy, and allows
 features to interpret the same stack inconsistently.
+
+**Rejected for MVP.** The four target fixtures require one comparable result
+from facts owned across several components; local probing would duplicate that
+resolution and make concrete identity the implicit capability model.
 
 ### Mutable capability registry
 
@@ -476,11 +521,32 @@ This models hot plug directly but conflates promised semantics with temporary
 health and destabilizes cycle behavior. MVP uses immutable declaration plus
 operational outcomes.
 
+**Rejected for MVP.** Runtime health must not silently rewrite the configured
+semantic promise; device loss and backpressure remain explicit operational
+state under RFC-004 and RFC-005.
+
 ## Rejected Approaches
 
-No alternative is formally rejected while this RFC remains `draft`. The
-minimum fixtures must exist before review can judge whether the proposed typed
-resolver and foundation package are proportionate.
+All alternatives above are rejected for the proposed MVP direction:
+
+- build flags alone cannot represent initialization-time facts or one
+  normalized result;
+- a backend Boolean bag loses cross-component ownership and quantitative
+  constraints;
+- a string-keyed registry does not satisfy bounded static requirements;
+- encoding every fact in generic types creates disproportionate type and
+  specialization cost while still not owning initialization-time facts;
+- build-time-only resolution cannot validate facts learned during target
+  initialization;
+- replayable tiled payloads add an unevidenced second lifetime and storage
+  contract;
+- feature-local probing duplicates policy and leaks concrete identity; and
+- a mutable capability registry conflates an immutable semantic promise with
+  operational health.
+
+These rejections select the RFC's proposed architecture but do not close its
+explicit evidence and dependency gates or advance its `draft` lifecycle
+status.
 
 ## Compatibility
 
@@ -509,6 +575,12 @@ proposed for MVP.
   stream after `offer` returns.
 - Enforce dependency direction and absence of target checks in portable views.
 - Verify omitted implementation families are not linked into static firmware.
+- Exercise static capability fixtures with no allocator linked or with
+  allocation instrumentation that fails any allocation attempt from
+  contribution construction through initialization-time resolution,
+  validation-result construction, effective-result storage, and steady-state
+  access. Unrelated platform bootstrap allocation is outside this RFC's
+  evidence boundary.
 - Report incremental resolver/snapshot RAM, worst-case resolver stack, linked
   flash, initialization work, and steady-state access for nRF52840 against the
   established device and firmware budgets.
@@ -555,7 +627,11 @@ The following evidence and dependency gates remain open and block advancement:
    pixel-encoding and downstream submission-lifetime incompatibility.
 3. The bounded nRF52840 representation and linked-image evidence must report
    incremental resolver/snapshot RAM, worst-case resolver stack, flash, and
-   initialization work within the established target budgets.
+   initialization work within the established target budgets, and must prove
+   that the capability-system path performs no heap allocation during
+   contribution construction, initialization-time resolution,
+   validation-result construction, effective-result storage, or steady-state
+   access.
 
 Family counts, contribution counts, storage layouts, provenance representation,
 diagnostic fields, and byte budgets are Specification questions after the
@@ -594,9 +670,10 @@ candidate ADRs for:
 4. one common synchronous borrowed operation stream across first-party MVP
    raster paths, with canonical pixel encoding and downstream submission
    lifetime resolved as compatibility inputs; and
-5. bounded initialization-time capability resolution on constrained targets,
-   subject to explicit incremental RAM, stack, flash, and initialization-work
-   evidence.
+5. allocator-independent bounded initialization-time capability resolution on
+   static and constrained targets, subject to explicit incremental RAM, stack,
+   flash, initialization-work, and zero-allocation evidence across the complete
+   capability-system path.
 
 ## References
 
