@@ -2,7 +2,7 @@
 id: RFC-004
 feature: giftui-mvp-architecture
 title: Run Cycle and Frame Transaction Architecture
-status: review
+status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
@@ -842,7 +842,7 @@ hidden sub-decision of this RFC.
 
 ## Decision Summary
 
-If approved, this RFC is expected to yield candidate ADRs for:
+This approved RFC yields candidate ADRs for:
 
 1. sealed run-cycle admission with at-most-once state-change and semantic
    action application, non-suspending serialized derivation, dirty recovery,

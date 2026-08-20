@@ -260,17 +260,18 @@ and subsequent accepted ADRs and approved Specifications.
 
 Acceptance authorizes focused architecture work for the Capability System
 within the boundaries established by the GiftUI MVP architecture. It does not
-approve the architectural mechanisms proposed in legacy material or in the
-draft layered-architecture RFC, and it does not authorize public APIs, package
-changes, implementation, or claims of configuration conformance.
+approve the architectural mechanisms proposed in legacy material. Those
+mechanisms require their own RFC approval, ADR acceptance, and Specification
+approval gates; this Proposal does not authorize public APIs, package changes,
+implementation, or claims of configuration conformance.
 
 ## References
 
 - [PROPOSAL-001: GiftUI MVP Baseline Charter](proposal-001-giftui-mvp-baseline-charter.md)
 - [PROPOSAL-002: Signal Analyzer Reference Application](proposal-002-signal-analyzer-reference-application.md)
 - [PROPOSAL-003: GiftUI MVP Architecture Establishment](proposal-003-giftui-mvp-architecture-establishment.md)
-- [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md) — draft, non-authoritative architectural context
-- [RFC-006: GiftUI Capability System Architecture](../rfcs/rfc-006-capability-system-architecture.md) — review, non-authoritative architectural exploration
+- [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md) — approved design consensus pending ADR extraction
+- [RFC-006: GiftUI Capability System Architecture](../rfcs/rfc-006-capability-system-architecture.md) — approved design consensus pending ADR extraction
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [MVP Milestones](../roadmap/MVP_MILESTONES.md)
 - [GiftUI Vision](../VISION.md)

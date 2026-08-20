@@ -2,7 +2,7 @@
 id: RFC-002
 feature: giftui-mvp-architecture
 title: GiftUI MVP Layered Architecture
-status: review
+status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
@@ -84,9 +84,9 @@ contracts are accepted, the complete MVP architecture is not established and
 Specifications or implementation that depend on those public features remain
 blocked.
 
-These are candidate architectural choices for review. This draft does not
-approve them, define final public APIs, authorize package restructuring, or
-authorize implementation.
+These architectural choices have approved design consensus. Approval does not
+define final public APIs, authorize package restructuring, or authorize
+implementation; accepted ADRs and approved Specifications remain required.
 
 ## Context
 
@@ -1156,7 +1156,7 @@ or interface:
 
 | Matrix scope | Governing artifact | Why no additional RFC is needed |
 | --- | --- | --- |
-| B1-B3, B5, and B7-B10 | RFC-002 | Declarative-to-layout lowering, normalized rendering, backend/display separation, and sibling input admission are the core dependency-direction decision. Splitting them would make each draft depend on the others to remain coherent. |
+| B1-B3, B5, and B7-B10 | RFC-002 | Declarative-to-layout lowering, normalized rendering, backend/display separation, and sibling input admission are the core dependency-direction decision. Splitting them would make each focused artifact depend on the others to remain coherent. |
 | B4 | RFC-003 | Text geometry, exact resource identity, and the dedicated `GiftUITextResources` physical contract owner have independent alternatives and evidence, so the existing focused RFC remains justified; RFC-002 mirrors its selected dependency arrows in the integrating DAG. |
 | B6 and B16 | RFC-004 | Cycle ordering, synchronous handoff, frame lifetime, logical commit, and lower presentation/input coherence form one independent execution decision cluster. |
 | B15 and the failure aspects of all rows | RFC-005 | Explicit outcomes, policy ownership, and diagnostic independence are independently reviewable across every layer. |
@@ -1177,10 +1177,10 @@ or module count alone is not such evidence.
 
 RFC-002 has no remaining open question about whether to create another layer
 RFC. The following list records the coordinated status; both items are
-resolved in the coordinated drafts:
+resolved in the coordinated RFCs:
 
 1. **Operation ownership and the logical commit boundary are resolved in the
-   coordinated drafts:** RFC-004 now requires every
+   coordinated RFCs:** RFC-004 now requires every
    first-party MVP backend to consume the ordered operation stream once during
    synchronous frame offer without retaining or replaying it. Complete accepted
    handoff commits the logical frame and routing. Refusal is permitted only
@@ -1195,7 +1195,7 @@ resolved in the coordinated drafts:
    storage and generalized post-handoff recovery are outside MVP scope and
    preserved by
    [FW-010](../future-work/fw-010-backend-transport-submission-retry.md).
-2. **Failure placement is resolved in the coordinated drafts:** RFC-005 places
+2. **Failure placement is resolved in the coordinated RFCs:** RFC-005 places
    dependency-free failure facts in `GiftUIFailureCore` and execution
    correlation in `GiftUIFailureExecution`, which depends only on the core and
    RFC-004's execution contract. Capability-system placement and mechanisms are

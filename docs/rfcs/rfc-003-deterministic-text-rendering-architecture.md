@@ -2,7 +2,7 @@
 id: RFC-003
 feature: giftui-mvp-architecture
 title: Deterministic Text Rendering Architecture
-status: review
+status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
@@ -411,12 +411,12 @@ layout format.
 - A dedicated target may add module metadata, specialization, or build cost;
   measure it on static macOS and nRF52840 rather than collapsing ownership
   without architecture review.
-- RFC-002 geometry or render-plan decisions may change; reconcile the shared
-  boundary before either RFC receives approval.
+- A future change to RFC-002 geometry or render-plan decisions must reconcile
+  the shared boundary through the normal amendment or supersession lifecycle.
 
 ## Open Questions
 
-None at the architectural level. This draft proposes identical logical text
+None at the architectural level. This RFC selects identical logical text
 geometry across MVP configurations, a streamable positioned-glyph operation
 as the canonical backend boundary, and one immutable resource-set identity
 joining metrics with every approved raster realization. It also selects the
@@ -446,7 +446,7 @@ reference resource and demonstrate bounded static storage and raster viability.
 
 ## Decision Summary
 
-If approved, this RFC is expected to yield candidate ADRs for:
+This approved RFC yields candidate ADRs for:
 
 1. layout ownership of identical canonical text geometry across MVP
    configurations, with no backend-specific logical tolerance and no backend

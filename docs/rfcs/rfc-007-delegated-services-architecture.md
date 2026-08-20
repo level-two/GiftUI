@@ -190,7 +190,7 @@ cross-cutting timing and semantic responsibilities.
 ## Rejected Approaches
 
 No design is rejected by this paused draft. Ambient lookup and backend semantic
-ownership remain inconsistent with RFC-002's candidate boundaries; the shared
+ownership remain inconsistent with RFC-002's approved boundaries; the shared
 foundation itself is postponed, not rejected.
 
 ## Compatibility
@@ -209,7 +209,7 @@ before proposing shared conformance.
 
 ## Risks
 
-- Consumer contracts may drift; RFC-002's contract matrix and review should
+- Consumer contracts may drift; RFC-002's approved contract matrix should
   detect repeated semantics and trigger FW-009.
 - A later shared package may require migration; keep consumer contracts
   explicit and narrowly adapted.

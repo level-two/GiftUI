@@ -2,7 +2,7 @@
 id: RFC-006
 feature: capability-system
 title: GiftUI Capability System Architecture
-status: review
+status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
@@ -97,7 +97,7 @@ its own accepted Proposal, alternatives, policy model, and future evolution.
 The proof of concept's flags and target checks are evidence to classify, not a
 catalogue to migrate automatically.
 
-RFC-002's module graph is the governing integration constraint for this draft.
+RFC-002's module graph is the governing integration constraint for this RFC.
 This RFC does not require a second distribution package and does not move
 portable geometry, render operations, frame identities, pixel encoders, or
 device types into the capability foundation.
@@ -680,7 +680,7 @@ omitted implementation families were absent. This is feasibility evidence,
 not a production representation or resource budget; the image was inspected
 but not executed on target hardware.
 
-The RFC-004 dependency has been reconciled sufficiently for review entry.
+The RFC-004 dependency was reconciled before approval.
 RFC-004 and this RFC both select synchronous one-shot consumption of the
 borrowed GiftUI operation stream, prohibit retaining or replaying that stream
 after `offer` returns, treat refusal before acceptance as a frame abort, and
@@ -688,10 +688,9 @@ leave only backend-owned derived presentation data and operational health
 after accepted handoff. SPIKE-001 supplies shared feasibility evidence for
 that meaning.
 
-This reconciliation does not approve either RFC or make RFC-004
-authoritative. RFC-006 MUST NOT advance from `review` to `approved` until
-RFC-004 is approved with compatible operation-stream and handoff meanings, or
-any review changes are reconciled explicitly in both RFCs.
+RFC-004 and RFC-006 are now approved with compatible operation-stream and
+handoff meanings. Their decisions still require extraction into accepted ADRs
+before becoming authoritative architecture.
 
 Family counts, contribution counts, storage layouts, provenance representation,
 diagnostic fields, and byte budgets are Specification questions after the
@@ -731,8 +730,8 @@ catalogue and resolution need are established.
 
 ## Decision Summary
 
-If approved after fixture evidence exists, this RFC is expected to yield
-candidate ADRs for:
+With its fixture evidence complete, this approved RFC yields candidate ADRs
+for:
 
 1. separation of structural selection, immutable semantic capability
    declaration, explicit realization policy, and mutable operational state;

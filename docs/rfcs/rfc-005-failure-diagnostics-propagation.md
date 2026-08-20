@@ -2,7 +2,7 @@
 id: RFC-005
 feature: giftui-mvp-architecture
 title: Failure and Diagnostics Propagation Architecture
-status: review
+status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
@@ -602,7 +602,7 @@ ABI, numeric registry, or telemetry schema.
 
 ## Open Questions
 
-No question remains an approval blocker in the current proposed direction.
+No architectural question remains open in the approved direction.
 The portable safety meaning uses conservative containment plus affected scope;
 the MVP makes no cross-build numeric-stability promise; and the representative
 disposition table assigns mandatory containment to the detecting contract,
@@ -612,8 +612,8 @@ safe product choices to target composition.
 Diagnostic projection is also separated from that disposition path. Targets
 may select critical-only, all-selected-outcome, or category-filtered
 observation without changing typed outcome propagation or explicit operational
-health. These remain proposed architectural choices until this RFC receives
-human approval.
+health. These are approved architectural choices pending extraction into
+accepted ADRs.
 
 Record widths, packing, context depth, secondary-failure capacity, privacy
 fields, source locations, formatting, sink representation, and target budgets
@@ -646,7 +646,7 @@ an accepted behavior or availability requirement.
 
 ## Decision Summary
 
-If approved, this RFC is expected to yield candidate ADRs for:
+This approved RFC yields candidate ADRs for:
 
 1. explicit bounded cross-layer outcomes with profile-neutral conservative
    containment, affected scope, source-stable identity, and no MVP promise of
