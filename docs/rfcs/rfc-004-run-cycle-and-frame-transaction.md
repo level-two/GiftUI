@@ -660,8 +660,10 @@ replace eventual backend conformance tests or approve this RFC.
 - A target unable to determine whether input corresponds to an eligible
   presentation cannot claim safe presentation-coupled input merely because
   `offer` succeeded.
-- RFC-005 or RFC-006 may classify shared facts differently; reconcile terms
-  before any coordinated RFC advances.
+- Coordinated comparison with RFC-005 and RFC-006 currently finds compatible
+  pre-handoff, operation-stream-lifetime, and post-handoff ownership meanings.
+  Any review change to those shared meanings must be reconciled before the
+  affected RFC advances to approval.
 - Future retry work may accidentally reintroduce universal frame retention;
   FW-010 must justify its retention scope and bounds before coordinated RFC
   revision.

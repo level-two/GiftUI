@@ -2,11 +2,11 @@
 id: RFC-006
 feature: capability-system
 title: GiftUI Capability System Architecture
-status: draft
+status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-19
+updated: 2026-08-20
 proposal:
   - PROPOSAL-004
 related_rfcs:
@@ -639,11 +639,18 @@ omitted implementation families were absent. This is feasibility evidence,
 not a production representation or resource budget; the image was inspected
 but not executed on target hardware.
 
-The following dependency gate remains open and blocks advancement:
+The RFC-004 dependency has been reconciled sufficiently for review entry.
+RFC-004 and this RFC both select synchronous one-shot consumption of the
+borrowed GiftUI operation stream, prohibit retaining or replaying that stream
+after `offer` returns, treat refusal before acceptance as a frame abort, and
+leave only backend-owned derived presentation data and operational health
+after accepted handoff. SPIKE-001 supplies shared feasibility evidence for
+that meaning.
 
-1. RFC-004 must be approved with compatible operation-stream and handoff
-   meanings, or the two RFCs must be reconciled before either conflicting
-   decision is treated as settled.
+This reconciliation does not approve either RFC or make RFC-004
+authoritative. RFC-006 MUST NOT advance from `review` to `approved` until
+RFC-004 is approved with compatible operation-stream and handoff meanings, or
+any review changes are reconciled explicitly in both RFCs.
 
 Family counts, contribution counts, storage layouts, provenance representation,
 diagnostic fields, and byte budgets are Specification questions after the
