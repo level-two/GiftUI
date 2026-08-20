@@ -16,7 +16,19 @@ related_rfcs:
   - RFC-005
   - RFC-006
   - RFC-007
-related_adrs: []
+related_adrs:
+  - ADR-005
+  - ADR-006
+  - ADR-007
+  - ADR-008
+  - ADR-009
+  - ADR-010
+  - ADR-013
+  - ADR-014
+  - ADR-017
+  - ADR-019
+  - ADR-021
+  - ADR-023
 related_specs: []
 related_future_work:
   - FW-004

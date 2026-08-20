@@ -78,6 +78,30 @@ post-handoff containment. It must not restate those decisions normatively.
 
 Candidate keys are local planning labels, not artifact IDs.
 
+The extraction completed with these allocations:
+
+| Candidate key | Proposed ADR |
+| --- | --- |
+| `ARCH-SEMANTICS` | `ADR-005` |
+| `ARCH-PROFILES` | `ADR-006` |
+| `ARCH-INTEGRATION` | `ADR-007` |
+| `ARCH-MODULE-DAG` | `ADR-008` |
+| `ARCH-GEOMETRY` | `ADR-009` |
+| `FRAME-HANDOFF` | `ADR-010` |
+| `RUN-CYCLE` | `ADR-011` |
+| `FRAME-REFUSAL` | `ADR-012` |
+| `INPUT-ADMISSION` | `ADR-013` |
+| `FAILURE-OUTCOMES` | `ADR-014` |
+| `FAILURE-DISPOSITION` | `ADR-015` |
+| `DIAGNOSTICS` | `ADR-016` |
+| `CAP-STATE-PLANES` | `ADR-017` |
+| `CAP-MODEL` | `ADR-018` |
+| `CAP-RESOLUTION` | `ADR-019` |
+| `CAP-RASTER-PRESENTATION` | `ADR-020` |
+| `TEXT-GEOMETRY` | `ADR-021` |
+| `TEXT-OPERATIONS` | `ADR-022` |
+| `TEXT-RESOURCES` | `ADR-023` |
+
 | Key | Candidate decision boundary | Primary source and Decision Summary coverage | Supporting provenance | Explicitly excluded or delegated |
 | --- | --- | --- | --- | --- |
 | `ARCH-SEMANTICS` | Semantic UI and proposal-based layout remain above a backend-neutral normalized render boundary; backends do not consume the view/runtime graph. | `RFC-002` item 1 | `RFC-002` requirements R1-R4 and design sections 1, 4-8 | Stream lifetime and frame handoff belong to `FRAME-HANDOFF`; text payload specifics belong to the text ADRs. |
@@ -112,7 +136,7 @@ This matrix is the completeness check used before ADR drafting.
 | --- | --- | --- |
 | `RFC-002` | 1 | `ARCH-SEMANTICS` |
 | `RFC-002` | 2 | `ARCH-PROFILES` |
-| `RFC-002` | 3 | `FRAME-HANDOFF` |
+| `RFC-002` | 3 | `ARCH-SEMANTICS` for the normalized boundary and future producer seam; `FRAME-HANDOFF` for one-shot lifetime and replay prohibition |
 | `RFC-002` | 4-5 | `ARCH-INTEGRATION` |
 | `RFC-002` | 6 | `ARCH-MODULE-DAG` |
 | `RFC-002` | 7 | `CAP-STATE-PLANES`, with frame-lifetime consequences in `FRAME-HANDOFF` |

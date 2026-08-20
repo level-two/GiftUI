@@ -10,6 +10,7 @@ updated: 2026-08-19
 source:
   - RFC-002
   - RFC-004
+  - ADR-010
 related_future_work:
   - FW-011
   - FW-014

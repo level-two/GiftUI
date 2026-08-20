@@ -6,9 +6,10 @@ status: captured
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-15
+updated: 2026-08-20
 source:
   - RFC-006
+  - ADR-018
 related_future_work: []
 related_explorations: []
 related_spikes: []
@@ -69,4 +70,3 @@ Proposal gate; it does not expand the MVP capability system.
 ## References
 
 - [RFC-006: GiftUI Capability System Architecture](../rfcs/rfc-006-capability-system-architecture.md)
-

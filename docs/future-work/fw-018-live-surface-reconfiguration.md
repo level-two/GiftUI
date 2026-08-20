@@ -9,6 +9,7 @@ created: 2026-08-20
 updated: 2026-08-20
 source:
   - RFC-006
+  - ADR-017
 related_future_work: []
 related_explorations: []
 related_spikes: []

@@ -11,7 +11,11 @@ proposal: []
 related_rfcs:
   - RFC-002
   - RFC-006
-related_adrs: []
+related_adrs:
+  - ADR-017
+  - ADR-018
+  - ADR-019
+  - ADR-020
 related_specs: []
 supersedes: []
 superseded_by: []

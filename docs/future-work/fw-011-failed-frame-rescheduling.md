@@ -9,6 +9,7 @@ created: 2026-08-17
 updated: 2026-08-20
 source:
   - RFC-004
+  - ADR-012
 related_future_work:
   - FW-010
 related_explorations: []
