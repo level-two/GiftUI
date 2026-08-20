@@ -2,7 +2,7 @@
 id: ADR-008
 feature: giftui-mvp-architecture
 title: Module Dependency Graph and MVP Package Topology
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
@@ -32,7 +32,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 

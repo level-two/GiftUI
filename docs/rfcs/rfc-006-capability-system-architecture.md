@@ -695,9 +695,9 @@ leave only backend-owned derived presentation data and operational health
 after accepted handoff. SPIKE-001 supplies shared feasibility evidence for
 that meaning.
 
-RFC-004 and RFC-006 are now approved with compatible operation-stream and
-handoff meanings. Their decisions still require extraction into accepted ADRs
-before becoming authoritative architecture.
+RFC-004 and RFC-006 are approved with compatible operation-stream and handoff
+meanings. Their decisions are extracted into accepted ADRs and are therefore
+authoritative architecture.
 
 Family counts, contribution counts, storage layouts, provenance representation,
 diagnostic fields, and byte budgets are Specification questions after the
@@ -737,8 +737,8 @@ catalogue and resolution need are established.
 
 ## Decision Summary
 
-With its fixture evidence complete, this approved RFC yields candidate ADRs
-for:
+With its fixture evidence complete, this approved RFC is recorded by accepted
+ADRs for:
 
 1. separation of structural selection, immutable semantic capability
    declaration, explicit realization policy, and mutable operational state;

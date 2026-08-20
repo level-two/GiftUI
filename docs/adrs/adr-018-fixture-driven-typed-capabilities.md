@@ -2,7 +2,7 @@
 id: ADR-018
 feature: capability-system
 title: Fixture-Driven Typed Capability Model
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
@@ -30,7 +30,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 

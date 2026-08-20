@@ -2,7 +2,7 @@
 id: ADR-023
 feature: giftui-mvp-architecture
 title: Exact Font Resource Identity and Ownership
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
@@ -32,7 +32,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 

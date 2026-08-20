@@ -6,7 +6,7 @@ status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-08-20
 proposal:
   - PROPOSAL-002
 related_rfcs: []
@@ -522,7 +522,7 @@ Signal Analyzer Specification can rely on their contracts.
 
 ## Decision Summary
 
-The approved direction is extracted into separate proposed ADRs recording:
+The approved direction is extracted into separate accepted ADRs recording:
 
 1. the analyzer's inward dependency structure and target-host composition
    boundary;

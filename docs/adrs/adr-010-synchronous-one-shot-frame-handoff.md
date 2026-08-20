@@ -2,7 +2,7 @@
 id: ADR-010
 feature: giftui-mvp-architecture
 title: Synchronous One-Shot Frame Handoff
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
@@ -42,7 +42,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 

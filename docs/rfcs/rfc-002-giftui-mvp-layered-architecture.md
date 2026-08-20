@@ -394,8 +394,8 @@ a concrete implementation.
 ### 3. Cross-layer contract matrix
 
 The matrix below records the approved boundary obligations without selecting
-final Swift declarations. It is approved design consensus pending extraction
-and acceptance of the governing ADRs: a downstream Specification may refine
+final Swift declarations. The design consensus has been extracted into
+accepted governing ADRs: a downstream Specification may refine
 names, representations, capacities, and visibility, but may not reverse
 ownership, extend lifetime, introduce an unbounded static obligation, or
 change failure direction without further architecture review.

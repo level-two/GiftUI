@@ -2,7 +2,7 @@
 id: ADR-019
 feature: capability-system
 title: Bounded Target-Host Capability Resolution
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
@@ -35,7 +35,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 

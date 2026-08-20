@@ -618,8 +618,8 @@ safe product choices to target composition.
 Diagnostic projection is also separated from that disposition path. Targets
 may select critical-only, all-selected-outcome, or category-filtered
 observation without changing typed outcome propagation or explicit operational
-health. These are approved architectural choices pending extraction into
-accepted ADRs.
+health. These approved architectural choices are extracted into accepted
+ADRs.
 
 Record widths, packing, context depth, secondary-failure capacity, privacy
 fields, source locations, formatting, sink representation, and target budgets
@@ -652,7 +652,7 @@ an accepted behavior or availability requirement.
 
 ## Decision Summary
 
-This approved RFC yields candidate ADRs for:
+This approved RFC is recorded by accepted ADRs for:
 
 1. explicit bounded cross-layer outcomes with profile-neutral conservative
    containment, affected scope, source-stable identity, and no MVP promise of

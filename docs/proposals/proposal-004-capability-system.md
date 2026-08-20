@@ -274,8 +274,8 @@ implementation, or claims of configuration conformance.
 - [PROPOSAL-001: GiftUI MVP Baseline Charter](proposal-001-giftui-mvp-baseline-charter.md)
 - [PROPOSAL-002: Signal Analyzer Reference Application](proposal-002-signal-analyzer-reference-application.md)
 - [PROPOSAL-003: GiftUI MVP Architecture Establishment](proposal-003-giftui-mvp-architecture-establishment.md)
-- [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md) — approved design consensus pending ADR extraction
-- [RFC-006: GiftUI Capability System Architecture](../rfcs/rfc-006-capability-system-architecture.md) — approved design consensus pending ADR extraction
+- [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md) — approved design consensus extracted into accepted ADRs
+- [RFC-006: GiftUI Capability System Architecture](../rfcs/rfc-006-capability-system-architecture.md) — approved design consensus extracted into accepted ADRs
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [MVP Milestones](../roadmap/MVP_MILESTONES.md)
 - [GiftUI Vision](../VISION.md)

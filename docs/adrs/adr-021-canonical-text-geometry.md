@@ -2,7 +2,7 @@
 id: ADR-021
 feature: giftui-mvp-architecture
 title: Canonical Text Geometry Ownership
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
@@ -32,7 +32,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 

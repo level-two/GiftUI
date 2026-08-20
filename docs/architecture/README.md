@@ -9,8 +9,9 @@ Architecture documents do not approve designs:
 RFC decides → ADR records → architecture documentation explains
 ```
 
-Until accepted ADRs have been migrated or created, legacy architecture sources
-remain in their original locations and no current-system summary is inferred
-here.
+The authoritative architecture is recorded by the
+[accepted ADRs](../adrs/README.md). Legacy architecture sources remain in
+their original locations as historical input and do not override those
+decisions.
 
 See [Documentation Rules](../engineering/DOCUMENTATION_RULES.md).

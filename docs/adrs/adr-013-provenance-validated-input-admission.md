@@ -2,7 +2,7 @@
 id: ADR-013
 feature: giftui-mvp-architecture
 title: Provenance-Validated Presentation-Coupled Input
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
@@ -30,7 +30,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 

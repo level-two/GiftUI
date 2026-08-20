@@ -2,7 +2,7 @@
 id: ADR-007
 feature: giftui-mvp-architecture
 title: Integration Ownership and Host Composition
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
@@ -31,7 +31,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 

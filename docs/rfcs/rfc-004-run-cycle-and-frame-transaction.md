@@ -849,7 +849,7 @@ hidden sub-decision of this RFC.
 
 ## Decision Summary
 
-This approved RFC yields candidate ADRs for:
+This approved RFC is recorded by accepted ADRs for:
 
 1. sealed run-cycle admission with at-most-once state-change and semantic
    action application, non-suspending serialized derivation, dirty recovery,

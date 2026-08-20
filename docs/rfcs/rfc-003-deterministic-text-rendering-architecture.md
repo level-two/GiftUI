@@ -450,7 +450,7 @@ reference resource and demonstrate bounded static storage and raster viability.
 
 ## Decision Summary
 
-This approved RFC yields candidate ADRs for:
+This approved RFC is recorded by accepted ADRs for:
 
 1. layout ownership of identical canonical text geometry across MVP
    configurations, with no backend-specific logical tolerance and no backend
