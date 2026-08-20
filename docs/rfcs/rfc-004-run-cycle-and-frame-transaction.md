@@ -6,7 +6,7 @@ status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-19
+updated: 2026-08-20
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -59,21 +59,31 @@ Device, transport, compositor, or physical-display outcomes after this handoff
 belong to the backend/integration's operational domain and do not abort or roll
 back the committed logical frame.
 
-If any required phase fails or the backend refuses the handoff, the frame
-aborts: the previous committed logical frame remains authoritative, the
-failure is reported, and no admitted client action is replayed. Semantic
-publication and frame commit are distinct; aborting a frame does not roll back
-semantic state that was already published. A derivation failure before
-semantic publication leaves the already-applied state dirty and requests a
+If any required phase fails or the backend refuses the handoff before making
+an irreversible presentation effect, the frame aborts: the previous committed
+logical frame remains authoritative, the failure is reported, and no admitted
+client action is replayed. Once a backend begins irreversible output,
+responsibility has transferred and the handoff outcome MUST be accepted even
+if a later physical operation fails. Semantic publication and frame commit are
+distinct; aborting a frame does not roll back semantic state that was already
+published.
+
+A derivation failure before semantic publication leaves the already-applied
+state semantically dirty. A retryable refusal after publication instead leaves
+the latest published revision presentation-pending. Both states request a
 later host-scheduled cycle, which recomputes from current state without
-replaying the admitted batch.
+replaying the admitted batch or refused frame payload. Presentation-pending
+recovery is paced, coalesces newer revisions, and is governed by a finite
+target policy that either reaches accepted handoff or explicitly makes the
+required presentation facility unavailable and quiesces affected interaction.
 
 This RFC defines ordering, observation, and payload lifetime. It does not
 select the public observable-state mechanism, state-slot representation,
-transaction journal, identifier widths, queue capacities, scheduler API,
-backend operational retry policy, or handoff-refusal rescheduling policy.
-Backend/transport recovery after accepted handoff and optional rescheduling
-after handoff refusal are deferred by FW-010 and FW-011 respectively.
+transaction journal, identifier widths, queue capacities, scheduler API, exact
+recovery pacing and attempt limits, or backend operational retry policy after
+accepted handoff. Backend/transport recovery after accepted handoff remains
+deferred by FW-010. FW-011 records why handoff-refusal rescheduling became a
+required part of this RFC during review.
 
 ## Context
 
@@ -189,9 +199,21 @@ handoff MUST atomically commit the logical frame and its presentation-coupled
 routing state. Abort MUST discard unpublished frame-local results, retain the
 previous committed logical frame and routing state as authoritative, report
 the pre-handoff failure through RFC-005, and leave the runtime in a
-deterministic state. Core MUST NOT automatically retry the frame transaction
-or require a later frame opportunity solely because the backend refused
-handoff. FW-011 preserves optional handoff-refusal rescheduling.
+deterministic state. A backend MAY refuse only before making any irreversible
+presentation effect. Once irreversible output begins, presentation
+responsibility has transferred: the backend MUST consume or safely drain the
+complete one-shot stream, return an accepted handoff disposition, and treat
+any later device or transport condition as post-handoff operational health.
+
+If a retryable refusal follows semantic publication, the runtime MUST retain
+bounded presentation intent for the latest published revision and request a
+later host-paced frame opportunity. That opportunity MUST rederive current
+state without replaying admitted facts, actions, effects, or the refused
+operation payload. Newer published revisions MUST coalesce over older pending
+intent. The target composition MUST provide a finite retry and pacing policy;
+exhaustion or a non-retryable refusal of the required presentation facility
+MUST transition it to explicitly unavailable and quiesce affected interaction
+rather than leave an apparently interactive stale UI.
 
 ### R11 — Dirty recovery after derivation failure
 
@@ -206,9 +228,9 @@ cycle and MUST NOT form an immediate, unbounded retry loop.
 
 - A cycle may publish no semantic change and may produce no frame.
 - A cycle does not correspond one-to-one with a hardware refresh.
-- An attempted streaming handoff may make partial physical writes before
-  synchronous refusal; abort preserves logical state but cannot physically
-  roll those writes back.
+- A refused handoff makes no irreversible presentation effect. A streaming
+  backend that begins physical output has crossed the acceptance boundary and
+  cannot subsequently describe that attempt as refused.
 - After accepted handoff, streaming presentation may be delayed, partially
   written, or fail; logical commit does not claim physical visibility, physical
   rollback, or atomic display hardware.
@@ -272,11 +294,22 @@ This RFC separates four mechanisms that must not be conflated:
    data to retry or repair downstream presentation after handoff. GiftUI Core
    neither observes nor mandates that policy; FW-010 owns its future
    evaluation. Replaying GiftUI operations remains outside the MVP contract.
-4. **Handoff-refusal rescheduling is deferred.** Semantic publication has
-   already completed when a prepared frame reaches `offer`. A future runtime
-   policy may mark that published revision for a new presentation attempt
-   after backend refusal. That is new layout/render work rather than replay of
-   the refused payload; FW-011 owns its future evaluation.
+4. **Handoff-refusal convergence is required.** Semantic publication has
+   already completed when a prepared frame reaches `offer`. A retryable
+   refusal marks the latest published revision presentation-pending and
+   requests a later host-paced opportunity. That opportunity performs new
+   layout/render work from current state rather than replaying the refused
+   payload. Newer revisions replace older pending intent. A finite target
+   policy bounds attempts and pacing; exhaustion or non-retryable refusal
+   makes a required presentation facility explicitly unavailable and quiesces
+   affected interaction. FW-011 records the review-triggered return of this
+   decision to MVP scope.
+
+Semantic dirtiness and presentation-pending intent are distinct. Semantic
+dirtiness means no complete revision was published. Presentation-pending means
+a complete revision was published but no corresponding frame committed. The
+runtime retains at most the latest pending revision/provenance and never the
+refused operation stream.
 
 Dirty recovery after a pre-publication derivation failure is not replay of the
 failed frame or its admitted actions. It is a later, separately admitted
@@ -288,11 +321,13 @@ unbounded retry loop.
 ### Wake scheduling and presentation synchronization
 
 The runtime MUST request a wake when observed state transitions from clean to
-dirty or remains dirty after derivation failure. The target host MUST provide
-serialized run-cycle opportunities in response to requested wakes, scheduled
-deadlines, or a configured combination of both. Runtime execution MUST NOT
-require a continuously ticking frame loop. The host owns wake coalescing,
-pacing, and missed-deadline policy. Platform event loops, interrupts, and timer
+dirty, remains dirty after derivation failure, or becomes presentation-pending
+after a retryable refusal. The target host MUST provide serialized run-cycle
+opportunities in response to requested wakes, scheduled deadlines, or a
+configured combination of both. Runtime execution MUST NOT require a
+continuously ticking frame loop. The host owns wake coalescing, pacing,
+missed-deadline policy, and enforcement of the configured finite retry policy.
+Platform event loops, interrupts, backend-readiness notifications, and timer
 facilities may implement those opportunities, but they do not decide the
 membership of the cycle's sealed input batch.
 
@@ -326,9 +361,13 @@ One cycle has these observation points:
    logical frame together with its routing and hit-test state; otherwise abort
    it while preserving the prior committed logical frame and routing state as
    authoritative.
-9. **Finalize:** clear dirtiness represented by a published revision, or retain
-   dirtiness and request a later opportunity after derivation failure; then
-   release cycle-local storage and record the cycle outcome.
+9. **Finalize:** clear semantic dirtiness represented by a published revision;
+   clear presentation-pending intent on accepted handoff; retain semantic
+   dirtiness after derivation failure; or retain/coalesce presentation-pending
+   intent and request a later opportunity after retryable refusal. Then release
+   cycle-local storage and record the cycle outcome. A non-retryable refusal or
+   exhausted retry policy follows the required-facility unavailable/quiescence
+   disposition instead of requesting another attempt.
 
 Implementations may fuse phases but may not move the admission, publication,
 state-freeze, handoff, or payload-lifetime boundaries. The cycle is
@@ -355,6 +394,8 @@ when future retry requirements justify its storage and lifetime cost.
 The architecture distinguishes:
 
 - semantic result: unchanged, published, or dirty after failed derivation;
+- presentation intent: satisfied, pending for the latest published revision,
+  or unavailable after terminal policy;
 - frame preparation: not needed, prepared, or failed;
 - handoff: accepted, backpressured, rejected, or failed before acceptance;
 - logical frame disposition: committed or aborted.
@@ -377,8 +418,8 @@ capability resolution.
 | Semantic runtime | Seal facts and input, apply admitted mutations and actions once, freeze derivation state, coordinate phases, publish complete revisions, and retain dirty state after derivation failure | Concrete backend, platform, or observable-state storage mechanics |
 | Observable-state feature | Define the public state API and bounded storage mechanism while coalescing mutation notification and preserving the RFC-004 publication boundary | Transactional guarantees for arbitrary direct object observation or presentation retry policy |
 | Layout/render producer | Produce complete geometry and ordered payload from cycle-stable inputs | Backend health or semantic replay |
-| Presentation coordinator | Offer frames and record synchronous handoff commit or abort | Client action dispatch, state rollback, downstream recovery policy, or automatic rescheduling |
-| Backend/display/transport integration | Consume the operation stream synchronously, reserve capacity before acceptance, own derived presentation data and downstream health, preserve presentation/input coherence, and optionally report diagnostics | Retaining or replaying the GiftUI operation stream, cycle admission, semantic publication, or action replay |
+| Presentation coordinator | Offer frames, record synchronous handoff commit or abort, retain only latest-revision presentation-pending intent after retryable refusal, and request a separately paced opportunity | Client action dispatch, state rollback, refused-payload retention or replay, or target-specific attempt limits |
+| Backend/display/transport integration | Consume the operation stream synchronously, refuse only before irreversible output, reserve capacity before acceptance, own derived presentation data and downstream health after acceptance, preserve presentation/input coherence, and optionally report diagnostics | Retaining or replaying the GiftUI operation stream, refusing after irreversible output, cycle admission, semantic publication, or action replay |
 
 ## Public API Impact
 
@@ -405,7 +446,11 @@ A first-party MVP backend must consume the ordered operation stream
 synchronously during `offer` and must not retain or replay it. It may return
 success only after consuming the complete stream, validating it, reserving
 bounded downstream capacity, and owning any derived data needed after return.
-Otherwise it returns a synchronous refusal and retains nothing from the frame.
+It may return a synchronous refusal only if it has made no irreversible
+presentation effect and retains nothing from the frame. If it begins physical
+output while consuming a direct stream, it has accepted responsibility; it
+must finish consuming or safely drain the borrowed stream and return an
+accepted disposition even when a later physical operation fails.
 
 After accepted handoff, the backend/integration owns presentation ordering,
 device and transport health, derived-data lifetime, and coordination with its
@@ -431,20 +476,23 @@ and must be measured on nRF52840 before implementation approval.
 
 Required measurements include cycle phase duration, input and state-change
 fact coalescing, dirty-notification counts, dirty-to-cycle latency,
-recovery-cycle pacing, operation production, handoff latency, backend
-presentation latency, presentation/input gating, backpressure behavior, and the
-80-transition/second plus 250-millisecond presentation workload. Transaction
-metadata should remain constant-cost per cycle and frame; backend-local
-downstream metadata should remain constant-cost per accepted slot.
+presentation-pending duration, recovery-cycle pacing and attempt counts,
+operation production, handoff latency, backend presentation latency,
+presentation/input gating, backpressure behavior, and the 80-transition/second
+plus 250-millisecond presentation workload. Transaction metadata should remain
+constant-cost per cycle and frame; backend-local downstream metadata should
+remain constant-cost per accepted slot.
 
 ## Memory / Binary Size
 
 Specifications account for input and state-change queues, dirty tracking,
+latest-revision presentation-pending state and its finite-policy counters,
 runtime and layout workspace, frame envelopes, backend-owned presentation
 data, downstream slots, raster tiles, input-gating state, stack high-water,
-and specialization cost. Coalesced publication MUST NOT require a second copy
-of the complete client state or semantic graph. A dynamic queue is still
-configured and bounded; allocation is not permission for unlimited work.
+and specialization cost. Pending intent MUST NOT retain the refused operation
+payload or require a second copy of the complete client state or semantic
+graph. A dynamic queue is still configured and bounded; allocation is not
+permission for unlimited work.
 
 ## Alternatives
 
@@ -467,9 +515,25 @@ recovery requirement.
 
 This reuses the normal path but may repeat client actions and side effects.
 RFC-004 instead keeps already-applied state dirty and recomputes from that
-state on a later host-paced cycle. It never replays the admitted batch or the
-failed frame payload. Optional rescheduling after a later backend handoff
-refusal remains separate and is deferred by FW-011.
+state on a later host-paced cycle. After retryable handoff refusal, it retains
+only latest-revision presentation intent and likewise rederives from current
+state. It never replays the admitted batch or the failed frame payload.
+
+### Guarantee periodic rederivation
+
+A mandatory fixed tick would eventually provide another attempt without a
+separate wake path, but it consumes work and power when no presentation is
+pending and does not by itself distinguish retry exhaustion from permanent
+failure. The MVP instead permits deadlines while requiring an explicit wake
+for presentation-pending work and a finite target policy.
+
+### Delay semantic publication until frame acceptance
+
+This would reuse semantic dirtiness for every refusal, but it couples complete
+state publication to backend availability and can stall non-presentation
+observers behind display backpressure. The proposed design preserves semantic
+publication independence and tracks the narrower presentation obligation
+separately.
 
 ### Transactional observation of arbitrary mutable references
 
@@ -507,9 +571,10 @@ Those approaches either move semantic authority below the runtime boundary,
 require unbounded or unjustified storage, repeat non-reversible effects, or
 make common progress depend on target-specific presentation evidence.
 
-Optional rescheduling after synchronous handoff refusal and bounded
-post-handoff recovery remain postponed through FW-011 and FW-010 rather than
-being rejected for all future configurations.
+Universal retained-frame replay and generalized post-handoff recovery remain
+postponed through FW-010 rather than being rejected for all future
+configurations. FW-011's narrower refusal-rescheduling trigger has fired and
+its required MVP behavior is incorporated here.
 
 ## Compatibility
 
@@ -544,8 +609,20 @@ migration. No stable frame ABI or persistent serialized format is proposed.
   borrowed resource afterward, and keeps backend-owned derived presentation
   data valid for its local lifetime.
 - Inject failure before and during `offer`; verify refusal retains nothing, the
-  candidate frame aborts, and the previous logical frame and routing state
-  remain authoritative.
+  candidate frame aborts, no irreversible presentation effect occurred, and
+  the previous logical frame and routing state remain authoritative.
+- After a published revision is refused retryably, verify latest-revision
+  presentation intent remains pending, a separately paced opportunity is
+  requested, current state is rederived, and no mutation, action, effect, or
+  refused operation payload is replayed.
+- Publish newer revisions while presentation is pending and verify they
+  coalesce over the older intent with constant-space state.
+- Exhaust the configured retry policy and inject a non-retryable refusal;
+  verify the required presentation facility becomes explicitly unavailable
+  and affected interaction quiesces instead of remaining apparently usable.
+- Begin irreversible physical output and then inject a failure; verify the
+  backend consumes or safely drains the stream, returns an accepted handoff
+  disposition, and handles the condition as post-handoff operational health.
 - Inject failure after accepted handoff; verify the logical frame and routing
   remain committed, Core performs no replay or retry, and optional diagnostics
   do not acquire control-flow authority.
@@ -571,6 +648,9 @@ replace eventual backend conformance tests or approve this RFC.
 - A deterministic derivation failure can keep state dirty indefinitely; host
   pacing and diagnostics must prevent a hot retry loop while leaving recovery
   possible after state, resource, or configuration changes.
+- A retryable refusal can repeatedly prevent presentation; finite target
+  policy must bound attempts and transition required presentation to explicit
+  unavailability instead of permitting an apparently interactive stale UI.
 - Dynamic implementations may hide unbounded work behind tasks or references;
   conformance must enforce configured bounds.
 - Accepted streaming presentation may leave a display delayed or partially
@@ -601,10 +681,11 @@ inputs governed by the boundaries above.
   supported backend demonstrates a measured availability requirement that
   simple bounded abandonment or repair cannot handle acceptably.
 - [FW-011: Handoff-Refusal Frame Rescheduling](../future-work/fw-011-failed-frame-rescheduling.md)
-  now preserves only optional rescheduling after a prepared frame is refused
-  at `offer`. RFC-004 directly owns dirty recovery after pre-publication
-  derivation failure. Revisit FW-011 when a supported host must present an
-  already-published revision after refusal without a new invalidation.
+  records a review trigger that demonstrated rescheduling is necessary for MVP
+  coherence. The item is closed as resolved into this RFC: retryable refusal
+  retains only latest-revision presentation intent and requests bounded,
+  separately paced rederivation; terminal policy makes a required facility
+  explicitly unavailable and quiesces affected interaction.
 - [FW-014: Replayable Operation Delivery for Future Raster Strategies](../future-work/fw-014-replayable-operation-delivery.md)
   preserves a possible bounded replayable representation for a future
   multi-pass raster strategy that cannot meet its accepted requirements through
@@ -627,13 +708,16 @@ If approved, this RFC is expected to yield candidate ADRs for:
    action application, non-suspending serialized derivation, dirty recovery,
    and complete GiftUI revision publication boundaries;
 2. semantic publication independent from presentation outcome;
-3. synchronous handoff commit-or-abort semantics: complete accepted backend
-   ownership commits the logical frame and routing, while refusal preserves the
-   prior committed frame without automatic retry or required rescheduling;
+3. synchronous handoff commit-or-abort semantics: refusal is permitted only
+   before irreversible presentation output, while beginning output transfers
+   responsibility and requires an accepted disposition;
 4. one frame-envelope model whose ordered operations are consumed once during
    a synchronous backend offer, with backend-owned post-handoff presentation
    health and no MVP replayable-operation or asynchronous Core completion
-   requirement.
+   requirement; and
+5. constant-space latest-revision presentation intent after retryable refusal,
+   with effect-free rederivation, finite target pacing/attempt policy, and an
+   explicit unavailable/quiescent terminal disposition.
 
 ## References
 

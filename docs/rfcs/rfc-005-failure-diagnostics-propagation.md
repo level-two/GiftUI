@@ -6,7 +6,7 @@ status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-19
+updated: 2026-08-20
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -149,8 +149,11 @@ reopen the frame transaction.
 A failure before complete semantic publication may invalidate that cycle's
 unpublished work. A failure after publication MUST NOT roll back or replay the
 published semantic revision. A failure before accepted frame handoff may abort
-the candidate frame; a failure after accepted handoff affects backend-local
-health, recovery, presentation/input gating, or optional diagnostics only.
+the candidate frame only before irreversible presentation output. A retryable
+refusal after publication MUST follow RFC-004's bounded presentation-pending
+recovery. Once irreversible output begins, responsibility has transferred and
+the outcome is accepted; any later failure affects backend-local health,
+recovery, presentation/input gating, or optional diagnostics only.
 
 ### R8 — Bounded profile-neutral meaning
 
@@ -229,7 +232,8 @@ The conservative MVP mapping covers these representative cases:
   publication is contained to its operation, cycle, or candidate frame when
   the contract discards all partial output;
 - a synchronous handoff refusal is contained to the candidate frame only when
-  the backend satisfies RFC-004's refusal and retention invariants;
+  the backend satisfies RFC-004's refusal and retention invariants, including
+  making no irreversible presentation effect;
 - a post-handoff device or transport failure is contained from Core and affects
   the owning presentation/input integration's local health; and
 - broken state identity or lifetime, internal reentrancy, forbidden-phase
@@ -293,9 +297,10 @@ specifying exact Swift cases or policy APIs:
 | --- | --- | --- | --- | --- | --- |
 | Admission storage exhausted | Admission boundary, before cycle membership | Reject the new fact or input and report bounded backpressure; do not overwrite admitted work | Preserve ordering and existing membership | Select only an admission action explicitly allowed by the contract, such as paced resubmission or declared loss | No overwrite, reordering, hidden drop, or immediate unbounded retry |
 | Derivation or layout failure after admitted mutation, before semantic publication | State, reconciliation, or layout producer in the active cycle | Discard partial derived output and preserve the failure fact | Keep affected state dirty and request a later host-paced cycle under RFC-004 | No override of dirty recovery; composition may quiesce only when safety is not proven or continued service is not acceptable | Do not roll back or replay admitted mutations, actions, or side effects |
-| Render storage exhausted after semantic publication, before handoff | Render producer preparing the candidate frame | Discard partial frame-local output | Abort the candidate frame; retain the published semantic revision and previous committed logical frame | Mark an optional presentation facility unavailable, quiesce, or invoke the target fatal hook according to required-facility policy | No partial handoff, silent allocation fallback, or automatic frame retry |
-| Backend refuses or fails synchronous handoff | Backend during `offer`, before acceptance | Retain no frame data or borrowed resource and return the normalized outcome | Abort the candidate frame and retain the previous committed frame and routing state | Apply required-facility policy; any future presentation attempt must be separately admitted and bounded | Refusal cannot commit, retain, replay, or synchronously retry the offered operation stream |
-| Device or transport fails after accepted handoff | Presentation/input integration, after logical commit | Update bounded local health, preserve presentation/input coherence, and gate stale physical input | Do not reopen or change the committed Core frame | Configure bounded integration-local recovery or treat the required facility as unavailable | Post-handoff failure cannot roll back semantics, invoke client actions, or alter Core frame disposition |
+| Render storage exhausted after admitted mutation, before semantic publication | Render producer preparing the candidate frame | Discard partial frame-local output | Keep affected state semantically dirty and request a later host-paced cycle under RFC-004 | No override of dirty recovery; composition may quiesce only when safety is not proven or continued service is not acceptable | No partial handoff, silent allocation fallback, mutation/effect replay, or immediate unbounded retry |
+| Backend retryably refuses synchronous handoff | Backend during `offer`, before acceptance and before irreversible presentation output | Retain no frame data or borrowed resource, make no irreversible presentation effect, and return the normalized outcome | Abort the candidate frame, retain the previous committed frame and routing state, mark the latest published revision presentation-pending, and request a separately paced opportunity | Supply finite pacing and attempt limits; on exhaustion, treat the required facility as unavailable and quiesce affected interaction | Recovery rederives current state; refusal cannot commit, retain, replay, or synchronously retry the offered operation stream |
+| Backend non-retryably refuses synchronous handoff | Backend during `offer`, before acceptance and before irreversible presentation output | Retain no frame data or borrowed resource, make no irreversible presentation effect, and return the normalized outcome | Abort the candidate frame and retain the previous committed frame and routing state | Treat the required facility as unavailable and quiesce affected interaction, or invoke the target fatal hook | Terminal refusal cannot leave an apparently interactive stale UI |
+| Device or transport fails after accepted handoff or after irreversible output begins | Presentation/input integration, after responsibility transfer | Consume or safely drain any active borrowed stream, update bounded local health, preserve presentation/input coherence, and gate stale physical input | Commit or preserve the committed Core frame; do not reopen it | Configure bounded integration-local recovery or treat the required facility as unavailable | Post-handoff failure cannot be reclassified as refusal, roll back semantics, invoke client actions, or alter Core frame disposition |
 | Failure reports **safety not proven** for runtime scope | Boundary detecting an invariant failure; any phase | Trap immediately if safe propagation is impossible; otherwise preserve and report the failure | Prevent normal processing from continuing for the affected runtime scope | Quiesce or invoke the target fatal hook; continuation is not an allowed choice | Diagnostics or policy cannot upgrade the failure to **contained** |
 
 ### Diagnostics
@@ -380,7 +385,7 @@ semantics.
 | `GiftUIFailureCore` candidate leaf         | Portable outcome meaning, origin, affected scope, and stable condition identity                                                                        | Execution identity, product policy, or rich diagnostic formatting            |
 | `GiftUIFailureExecution` candidate adapter | Correlate a core fact with RFC-004 execution and publication context; expose the narrow residual policy input seam                                     | Runtime/backend implementation or selected product policy                    |
 | Detecting layer                            | Validate its contract, perform contract-mandated mechanical containment, and report a structured fact                                                 | Cross-product retry, fallback, capability, quiescence, or fatal choice       |
-| Runtime/frame coordinator                  | Attach publication/frame/handoff context, apply mandatory transaction disposition, and route any remaining product choice                            | Platform-specific error interpretation or post-handoff presentation recovery |
+| Runtime/frame coordinator                  | Attach publication/frame/handoff context, apply mandatory transaction disposition, retain only latest-revision presentation-pending intent after retryable refusal, and route any remaining product choice | Platform-specific error interpretation, refused-payload retention, or post-handoff presentation recovery |
 | Presentation/input integration             | Own explicit bounded post-handoff device health, recovery, and physical-input gating; optionally project diagnostics                                 | Reopen a committed frame, mutate semantics, or invoke client actions         |
 | Target composition                         | Select total bounded policy only for remaining safe product choices and assemble the optional diagnostic projection                                  | Override local containment, mandatory coordinator disposition, or capability support |
 | Diagnostic adapter/tooling                 | Select, filter, consume, count, buffer, stream, or symbolize bounded observations                                                                      | Correctness, health authority, semantic mutation, or disposition authority   |
@@ -545,6 +550,13 @@ ABI, numeric registry, or telemetry schema.
   layer performs only its mandatory containment, the coordinator applies the
   required transaction effect, and composition sees only any remaining safe
   product choice.
+- Verify a refused handoff made no irreversible presentation effect. After a
+  retryable refusal, verify latest-revision presentation intent is coalesced
+  and rederived without effect or payload replay; after exhaustion or terminal
+  refusal, verify required presentation becomes unavailable and affected
+  interaction quiesces.
+- Inject a device or transport failure after irreversible output begins and
+  verify it cannot be reclassified as refusal or reopen the frame transaction.
 - Compare critical-only, all-selected-outcome, and category-filtered diagnostic
   projections. Verify they produce identical outcome propagation, health
   state, coordinator disposition, and composition-policy inputs.
