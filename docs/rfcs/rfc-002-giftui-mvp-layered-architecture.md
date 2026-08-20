@@ -24,6 +24,7 @@ related_future_work:
   - FW-009
   - FW-010
   - FW-016
+  - FW-017
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -339,7 +340,7 @@ family without changing the listed owner or dependency direction.
 | Contract family | Physical contract owner | Allowed dependency direction |
 | --- | --- | --- |
 | Public declarations, checked geometry/scalars, and normalized input values | `GiftUI` portable leaf module | Imports no runtime, layout, render, backend, platform, driver, OS/RTOS, HAL, or concrete capability implementation |
-| Structural/action identity, state binding hooks, invalidation, hit maps, and semantic routing | `GiftUISemanticCore` | Depends on `GiftUI`; exposes no backend or integration type |
+| Structural/action identity, state-slot association, invalidation, hit maps, and semantic routing | `GiftUISemanticCore` | Depends on `GiftUI`; exposes no backend or integration type |
 | Exact font-resource, font-instance, and glyph identities plus the canonical metrics/shaping and raster-resource view contracts | `GiftUITextResources` | Depends only on `GiftUI` portable values; imports no layout, render, runtime, backend, platform, driver, concrete resource package, or font implementation |
 | Layout proposals, semantic-child adapter, measurement/placement results, and hit geometry | `GiftUILayout` | Depends on `GiftUI` and `GiftUITextResources`; the runtime adapts semantic children to this consumer-owned contract, so layout does not import a runtime or render implementation |
 | Render operations, references to text-resource identities, and one-shot ordered sink contracts | `GiftUIRenderCore` | Depends on `GiftUI` and `GiftUITextResources`; imports no layout, semantic-runtime, backend, platform, or driver implementation |
@@ -434,7 +435,7 @@ work within the physical owners and partial order established above.
 | B8 | Buffer and pixel-payload ownership is explicit per submission: borrowed data must complete synchronously; asynchronous submission requires transferred or independently stable storage for its backend-local lifetime. | Submission may complete synchronously or asynchronously. Downstream completion and failure remain local to presentation recovery, input gating, and optional diagnostics. |
 | B9 | Driver owns controller state and transaction metadata. Buffer ownership is borrowed for synchronous transfer or explicitly transferred until completion; interrupt code may retain only declared stable tokens/storage. | Transfers may be synchronous, DMA-driven, interrupt-driven, or polled. Asynchronous effects feed only lower-layer state, presentation/input coordination, or optional diagnostics; they never callback into semantics. |
 | B10 | Raw platform records remain below the adapter. Normalized presentation-coupled events carry eligible physical-presentation provenance and are copied or moved into a bounded admission queue and then into one sealed cycle batch. Hit regions used for routing belong only to the authoritative committed semantic/layout revision; historical hit maps are not retained for stale input. | Producers may be asynchronous or interrupt-driven; runtime consumption is serialized at the next admission boundary. Provenance is revalidated before batch membership. Equal-order, drop/cancel, and coalescing rules must be deterministic. |
-| B11 | Runtime owns action maps, bounded per-source pointer-sequence state, captured stable action identities, and state slots for their declared lifetime. Client handlers receive only public values/Bindings whose lifetime cannot expose runtime storage unsafely. | Dispatch is serialized within the active cycle. Reentrant external input is queued for a later cycle and provenance-validated again; dropped phases cancel their pointer sequence. Down captures only an enabled action; release requires the same current hit identity and enabled state before handler invocation. |
+| B11 | Runtime owns action maps, bounded per-source pointer-sequence state, captured stable action identities, and state slots for their declared lifetime. Client handlers receive only public MVP values whose lifetime cannot expose runtime storage unsafely. RFC-002 defines no public `Binding` type or binding lifetime contract. | Dispatch is serialized within the active cycle. Reentrant external input is queued for a later cycle and provenance-validated again; dropped phases cancel their pointer sequence. Down captures only an enabled action; release requires the same current hit identity and enabled state before handler invocation. |
 | B12 | Ownership and lifetime of any capability-system input are governed by RFC-006. RFC-002 requires only that the seam not retain a concrete higher-layer consumer or create an upward import. | Invocation and synchronization are governed by RFC-006 and must fit the immutable assembled component graph. |
 | B13 | Ownership and lifetime of any capability-system result are governed by RFC-006. | Consumption must not require portable application code to probe concrete contributors or target identity. |
 | B14 | The host owns each concrete environmental adapter for the assembled runtime lifetime. Tokens and pending requests have the bounds and lifetime defined by their consumer contract; diagnostic payloads are copied or synchronously consumed. | Calls originate at the boundary defined by the owning consumer. Wakeups and asynchronous completions re-enter through bounded admission rather than arbitrary callbacks. |
@@ -446,7 +447,7 @@ work within the physical owners and partial order established above.
 | ID | Failure and static-bound obligation | Intended visibility | Minimum independent evidence |
 | --- | --- | --- | --- |
 | B1 | Unsupported portable-profile operations are absent at compile time or return an explicit bounded failure; declaration expansion and state/action capacity exhaustion are deterministic. | Client API plus framework SPI for evaluation | Compile the same portable Signal Analyzer hierarchy for dynamic and static profiles; compare expansion order, identity, state lifetime, action results, and overflow fixtures. |
-| B2 | Invalid component combinations, missing required approved contracts, or insufficient capacities prevent runtime start with bounded validation output. | Host API | Assembly fixtures for all four MVP configurations, plus negative fixtures proving prohibited or under-capacity graphs fail before cycles begin. |
+| B2 | Invalid component combinations, missing required approved contracts, or insufficient capacities prevent runtime start with bounded validation output. Full Signal Analyzer startup additionally requires RFC-006's single `rasterPresentation` family to resolve successfully; B2 structural validation and capability resolution are distinct, conjunctive gates. | Host API | Assembly fixtures for all four MVP configurations, plus negative fixtures proving prohibited or under-capacity graphs fail before cycles begin independently of RFC-006 capability resolution. |
 | B3 | Layout returns complete geometry or a structured failure; it never exposes partial geometry as complete. Bounds cover traversal depth, nodes, proposals, caches, hit regions, coordinates, and arithmetic overflow. | Framework SPI | Backend-free layout fixtures for all MVP containers/modifiers and Signal Analyzer geometry, including identical cross-profile results and every capacity edge. |
 | B4 | Unsupported input, identity or package mismatch, incompatible metrics/raster views, workspace exhaustion, malformed resources, and numeric overflow follow RFC-003/RFC-005; no adapter or fallback may silently translate identity or change geometry. | Client API for text request; `GiftUITextResources` framework/host/tooling SPI for identity, packages, layout, and raster providers | Golden canonical text geometry, package integrity, compile-time dependency checks, dynamic/static workspace exhaustion, and exact-face raster-provider conformance proving the same identity reaches metrics, positioned operations, and raster lookup. |
 | B5 | Operation or resource exhaustion fails explicitly; an ordered stream is never silently truncated. Bounds cover operation payload, clip depth, paths/segments, resources, and identifiers. Hit-map capacity is a B3/B11 runtime obligation, not render storage. | Framework SPI | Golden one-shot operation sequences, recording-sink validation, malformed-resource tests, deterministic overflow at every sink boundary, and instrumentation proving no backend retains borrowed operations or resources. |
@@ -470,8 +471,14 @@ evidence required by the Testing Strategy.
 
 `GiftUI` remains the primary application import and owns portable declarations
 such as `View`, `ViewBuilder`, fixed composition, `Text`, `Button`, stacks,
-`Spacer`, state-facing property wrappers or bindings, modifiers, geometry, and
+`Spacer`, the MVP state-facing property wrapper, modifiers, geometry, and
 the narrow Canvas/path/stroke client surface.
+
+A public `Binding` abstraction and controls or property wrappers that require
+two-way bindings are not part of the Signal Analyzer MVP. RFC-002 neither
+requires nor defines their ownership, lifetime, mutation, or invalidation
+semantics; [FW-017](../future-work/fw-017-public-binding-abstraction.md)
+preserves that post-MVP work.
 
 The portable surface declares semantic intent. It does not declare frame
 buffers, pixel formats, Qt objects, Linux descriptors, SPI transactions,
@@ -493,7 +500,7 @@ logical flow is:
 ```text
 transient view declaration
     -> semantic traversal or graph construction
-    -> structural identity and state binding
+    -> structural identity and state-slot association
     -> persistent runtime state where the selected profile needs it
     -> invalidation and reconciliation
 ```
@@ -785,6 +792,13 @@ belong to RFC-006. Delegated environmental operations remain with their
 approved consumer contracts. RFC-007 preserves a
 possible shared foundation but is paused through FW-009. Until RFC-006 passes
 its gates, RFC-002 must not be read as Capability authority.
+
+For full Signal Analyzer startup, the host must pass both this RFC's B2
+structural assembly validation and RFC-006's resolution of the one admitted
+`rasterPresentation` family. B2 does not become a capability catalogue:
+required input, state, component presence, approved contracts, and capacities
+remain structural validation concerns unless RFC-006's fixture-driven gate
+separately admits a semantic Capability family.
 
 ## Backend Impact
 
@@ -1241,6 +1255,10 @@ require their architecture to be folded into or resolved by RFC-002.
   independent consumption or versioning, incompatible toolchains, dependency
   constraints, or measured build and release costs demonstrate that several
   packages or another topology would be preferable.
+- [FW-017](../future-work/fw-017-public-binding-abstraction.md) preserves a
+  public two-way `Binding` abstraction and binding-dependent controls as
+  post-MVP work. The MVP exposes only the state and action behavior required by
+  the Signal Analyzer and does not establish binding ownership or lifetime.
 - Existing proof-of-concept code will be revised and fitted into the accepted
   module graph through later ADRs, Specifications, and migration planning. It
   is not an input to the target architecture.
@@ -1304,6 +1322,7 @@ active MVP decision and remains deferred through RFC-007 and FW-009.
 - [FW-004: Retained Render Tree](../future-work/fw-004-retained-render-tree.md)
 - [FW-005: Alternative Geometry Scalar Representations](../future-work/fw-005-alternative-geometry-scalars.md)
 - [FW-016: Post-MVP Package and Distribution Topology](../future-work/fw-016-post-mvp-package-distribution-topology.md)
+- [FW-017: Public Binding Abstraction](../future-work/fw-017-public-binding-abstraction.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)

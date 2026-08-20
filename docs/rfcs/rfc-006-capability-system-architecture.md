@@ -23,6 +23,7 @@ related_future_work:
   - FW-008
   - FW-014
   - FW-015
+  - FW-018
 related_explorations: []
 related_spikes:
   - SPIKE-001
@@ -60,6 +61,14 @@ fixtures demonstrate a real need for shared resolution rather than direct
 component-local configuration. The foundational `GiftUICapabilities` target
 owns only capability-specific values and pure resolution and fits RFC-002's
 partial order without an upward import.
+
+Full Signal Analyzer startup validation is the conjunction of two distinct
+checks: RFC-002 B2 validates the assembled component graph, required approved
+contracts, and capacities; RFC-006 resolves the single `rasterPresentation`
+family and rejects an incompatible presentation path. Passing capability
+resolution does not replace B2 structural validation. Input, observable state,
+and every required component do not become additional Capability families
+merely because startup must validate their presence or configuration.
 
 The candidate direction uses RFC-004's single synchronous borrowed operation
 stream for every first-party MVP raster path, including tiled paths; it does
@@ -215,6 +224,26 @@ Facts known only after opening a selected surface or device may be contributed
 during one bounded initialization phase. Materially changing the component
 graph or semantic declaration requires constructing a new runtime.
 
+### Signal Analyzer startup validation boundary
+
+The target host must complete both startup gates before the first runtime
+cycle:
+
+1. RFC-002 B2 structural validation proves that the selected runtime profile,
+   component implementations, required approved contracts, capacities,
+   environmental contracts, and product policy form a valid assembled graph.
+2. This RFC's resolver proves that the same structurally valid graph provides
+   the one admitted semantic capability, `rasterPresentation`, at the required
+   extent and within compatible operation, encoding, submission-lifetime, and
+   resource bounds.
+
+These gates are complementary, not a request to mirror every B2 input as a
+Capability. A downstream Specification must not expand the MVP catalogue with
+separate input, state, component-presence, or other families unless a new
+Signal Analyzer or supported-configuration fixture demonstrates a semantic
+difference or quantitative constraint under R2. Ordinary required-component
+presence and configuration remain B2 validation concerns.
+
 ### Typed domain-specific families
 
 Each admitted family defines only the values and combination rule its fixture
@@ -323,6 +352,14 @@ profile and selected modules are structural composition; surface dimensions
 and rotation alone are ordinary configuration facts used by the family;
 backpressure and device health are operational state; hardware acceleration is
 a realization detail unless a later semantic requirement depends on it.
+
+For MVP, the logical surface extent and orientation are fixed configuration
+facts established before capability resolution and the first cycle. Live
+surface resize or rotation while a runtime is active is a non-goal: this RFC
+defines no event, invalidation, renegotiation, snapshot replacement, or
+component-reassembly lifecycle for it. An extent or orientation change must
+not silently mutate the effective capability snapshot. FW-018 preserves the
+post-MVP work needed to define and validate such a lifecycle.
 
 ### Physical ownership
 
@@ -560,6 +597,10 @@ proposed for MVP.
 ## Testing Strategy
 
 - Define one normalized configuration fixture for each MVP target.
+- For every startup fixture, test RFC-002 B2 structural validation separately
+  from RFC-006 capability resolution, then require both to succeed before the
+  first cycle. A missing input or state contract must fail the structural gate
+  without creating another MVP capability family.
 - Require every `rasterPresentation` field to cite at least one fixture
   assertion, and reject any second family without new accepted fixture need.
 - Compare equivalent static and dynamic resolution results.
@@ -680,6 +721,11 @@ catalogue and resolution need are established.
   preserves later simplification of resolver inputs if ownership or
   measurements prove that compatibility rejection remains enforceable
   elsewhere without target-specific probing.
+- [FW-018](../future-work/fw-018-live-surface-reconfiguration.md) preserves
+  post-MVP live surface resize and rotation, including the missing lifecycle
+  for revalidation, capability snapshot replacement, layout invalidation,
+  input remapping, and component reassembly. MVP extent and orientation remain
+  fixed before the first cycle.
 - Rich rendering capabilities require their own accepted feature need; they
   are not placeholder MVP catalogue entries.
 
@@ -711,6 +757,7 @@ candidate ADRs for:
 - [RFC-004](rfc-004-run-cycle-and-frame-transaction.md)
 - [RFC-005](rfc-005-failure-diagnostics-propagation.md)
 - [ADR-001](../adrs/adr-001-signal-analyzer-application-boundaries.md)
+- [FW-018: Live Surface Reconfiguration](../future-work/fw-018-live-surface-reconfiguration.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
