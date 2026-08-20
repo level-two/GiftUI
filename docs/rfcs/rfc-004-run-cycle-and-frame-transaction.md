@@ -190,7 +190,8 @@ MUST NOT mutate Core's logical-frame disposition.
 Static and dynamic profiles MAY fuse phases and use different storage, but
 MUST preserve input membership, action ordering, publication boundaries,
 state freeze, dirty-state recovery, frame provenance, payload lifetime, and
-presentation separation.
+presentation separation. They MUST also preserve input provenance validation,
+per-source sequence cancellation, and activation revalidation behavior.
 
 ### R10 — Required handoff disposition
 
@@ -224,6 +225,38 @@ The later cycle MUST derive from current state without replaying the admitted
 facts, actions, or side effects. Recovery MUST occur as a separately admitted
 cycle and MUST NOT form an immediate, unbounded retry loop.
 
+### R12 — Provenance-validated presentation-coupled input
+
+Every presentation-coupled normalized input event MUST identify the eligible
+physical-presentation revision against which it was sampled. The target-local
+gate MUST forward the event only while that presentation is known to be
+eligible, and runtime admission MUST validate that the provenance still
+matches the authoritative committed routing revision. Failure of either check
+MUST drop the event rather than retarget it against another revision.
+
+The common MVP gate MUST NOT defer presentation-coupled pointer events. Losing
+eligibility, receiving stale provenance, malformed or out-of-order phases, or
+exhausting any gate, event, or admission capacity MUST cancel the affected
+source's active pointer sequence and invalidate its bounded sequence identity.
+No later move or up from that sequence may be forwarded or invoke an action;
+the integration MAY observe and consume a terminal physical phase only to
+resynchronize the source. Any later down begins a distinct sequence whose
+identity lets Core discard older captured state before considering the new
+press. An implementation MAY instead enqueue an explicit non-activating cancel
+fact when capacity is available, but safety MUST NOT depend on that enqueue
+succeeding. Bounded identity reuse MUST NOT alias a sequence from which a late
+physical phase can still arrive; exhaustion or wrap ambiguity MUST fail closed
+by cancelling and quiescing that source until it is safely resynchronized.
+
+An admitted pointer down MAY capture a stable action identity from its
+validated committed hit map only when that action is enabled in the down
+revision. A later admitted pointer up MAY invoke that action only if the
+captured identity still exists, the release hits the same identity in the
+then-current committed hit map, and the action is enabled in that revision. A
+committed revision MAY change during a press, but each event is independently
+provenance-validated and release is always revalidated. Exact provenance and
+source-identity widths and capacities belong in Specifications.
+
 ## Constraints
 
 - A cycle may publish no semantic change and may produce no frame.
@@ -235,8 +268,9 @@ cycle and MUST NOT form an immediate, unbounded retry loop.
   written, or fail; logical commit does not claim physical visibility, physical
   rollback, or atomic display hardware.
 - A target whose presentation and input share a physical user experience must
-  coordinate them below Core so input known to target a stale, unavailable, or
-  not-yet-eligible presentation is not admitted as current GiftUI input.
+  coordinate them below Core. Presentation-coupled events are provenance-
+  stamped and dropped when eligibility cannot be established; they are never
+  held and later retargeted against another routing revision.
 - External client side effects are not assumed reversible.
 - Observable state mutation, cycle evaluation, derivation, and publication
   share one serialized execution domain. The cycle MUST NOT suspend or permit
@@ -343,12 +377,53 @@ deadline policy, and target-specific presentation synchronization. These
 profile-specific mechanisms MUST preserve the admission, ordering,
 publication, and payload-lifetime boundaries defined by this RFC.
 
+### Presentation-coupled input admission
+
+The target-local presentation/input gate observes physical input and the
+eligibility of the presentation currently available to that user. When it can
+establish eligibility, it lowers a physical sample into a backend-neutral
+event carrying that presentation's provenance and offers it to the bounded
+runtime input queue. When it cannot establish eligibility, it drops the event.
+This fail-closed gate is below semantic admission: it cannot hit test, capture
+an action, invoke a handler, or reinterpret an event after a newer frame.
+
+Queueing after this check does not make provenance timeless. At the next
+admission boundary, Core compares the event provenance with its current
+committed routing revision before the event joins the sealed batch. A mismatch
+drops the event and cancels the source's active sequence. This validation
+closes the race in which a frame commits after target-local gating but before
+runtime admission. The ordinary R1 rule still permits already-valid reentrant
+input to wait for a later admission boundary; it does not permit stale input
+to survive that later validation.
+
+Pointer sequencing is fail-closed per bounded source identity. A validated
+down with a new bounded sequence identity first clears any older capture for
+that source, then hit-tests the committed map and may capture its stable action
+identity only if it is enabled. Each validated move may cancel capture
+according to the gesture rule. A validated up invokes only the same captured
+identity after checking the current committed hit map and disabled state. A
+presentation revision may advance while a pointer remains down, so long as
+each subsequent physical event belongs to the same valid sequence, was
+sampled against an eligible presentation, and passes the current semantic
+checks. Any dropped phase,
+eligibility loss, stale revision, overflow, unavailable presentation facility,
+missing or invalid sequence identity, missing action identity, changed hit, or
+disabled action cancels activation. Orphaned move/up phases are consumed
+without semantic dispatch until the source is physically synchronized.
+
+This contract does not retain historical hit maps and does not ask the target
+integration to understand action identity. Non-spatial controls whose meaning
+is explicitly independent of presentation are not presentation-coupled input;
+their mapping and sequencing remain separately specified.
+
 ### Logical phases
 
 One cycle has these observation points:
 
 1. **Begin:** select cycle-stable configuration and bounded workspaces.
-2. **Admit:** seal the ordered input, state-change, and completion batch.
+2. **Admit:** validate queued input provenance and pointer-sequence state,
+   drop or cancel stale input, and seal the remaining ordered input,
+   state-change, and completion batch.
 3. **Evaluate:** apply admitted state-change facts and dispatch semantic
    actions once while coalescing dirty notifications.
 4. **Freeze, reconcile, and layout:** prevent later mutations from entering the
@@ -415,11 +490,11 @@ capability resolution.
 | Owner | Responsibility | Must not own |
 | --- | --- | --- |
 | Target host | Provide serialized cycle opportunities from wake requests, deadlines, or both; assemble bounded pacing policy and adapters | Semantic input membership after admission begins or mutation of observed state |
-| Semantic runtime | Seal facts and input, apply admitted mutations and actions once, freeze derivation state, coordinate phases, publish complete revisions, and retain dirty state after derivation failure | Concrete backend, platform, or observable-state storage mechanics |
+| Semantic runtime | Validate input provenance, own bounded pointer-sequence state, seal facts and eligible input, apply admitted mutations and actions once, freeze derivation state, coordinate phases, publish complete revisions, and retain dirty state after derivation failure | Concrete backend, platform, physical eligibility mechanics, or observable-state storage mechanics |
 | Observable-state feature | Define the public state API and bounded storage mechanism while coalescing mutation notification and preserving the RFC-004 publication boundary | Transactional guarantees for arbitrary direct object observation or presentation retry policy |
 | Layout/render producer | Produce complete geometry and ordered payload from cycle-stable inputs | Backend health or semantic replay |
 | Presentation coordinator | Offer frames, record synchronous handoff commit or abort, retain only latest-revision presentation-pending intent after retryable refusal, and request a separately paced opportunity | Client action dispatch, state rollback, refused-payload retention or replay, or target-specific attempt limits |
-| Backend/display/transport integration | Consume the operation stream synchronously, refuse only before irreversible output, reserve capacity before acceptance, own derived presentation data and downstream health after acceptance, preserve presentation/input coherence, and optionally report diagnostics | Retaining or replaying the GiftUI operation stream, refusing after irreversible output, cycle admission, semantic publication, or action replay |
+| Backend/display/transport integration | Consume the operation stream synchronously, refuse only before irreversible output, reserve capacity before acceptance, own derived presentation data and downstream health after acceptance, stamp and gate presentation-coupled input against locally established eligibility, and optionally report diagnostics | Retaining or replaying the GiftUI operation stream, deferring input for later retargeting, hit testing, action capture or replay, refusing after irreversible output, cycle admission, or semantic publication |
 
 ## Public API Impact
 
@@ -454,23 +529,28 @@ accepted disposition even when a later physical operation fails.
 
 After accepted handoff, the backend/integration owns presentation ordering,
 device and transport health, derived-data lifetime, and coordination with its
-physical input path. It must suppress or defer input known to target a stale,
-unavailable, or not-yet-eligible physical presentation rather than exporting
-that hardware condition into GiftUI semantic routing. It may emit optional
-operational diagnostics, but it may not invoke semantic code, change the
-committed logical-frame disposition, cause semantic replay, or ask GiftUI Core
-to retry a frame. Backend/transport recovery and any replayable operation
-representation are not MVP requirements and are preserved by FW-010.
+physical input path. It must stamp presentation-coupled events with the locally
+eligible physical-presentation revision and drop them when eligibility is
+stale, unavailable, unknown, or not yet established. It must cancel the local
+pointer sequence on a dropped phase and must not retain an event for later
+retargeting. It may emit optional operational diagnostics, but it may not hit
+test, invoke semantic code, change the committed logical-frame disposition,
+cause semantic or input replay, or ask GiftUI Core to retry a frame.
+Backend/transport recovery and any replayable operation representation are not
+MVP requirements and are preserved by FW-010.
 
 ## Static / Embedded Impact
 
 Static implementations may use fixed rings, caller-owned workspaces, direct
 phase calls, generated mutation slots, cooperative event-loop serialization,
-and synchronous operation streaming. The common contract does not require a
-Swift actor, `Task`, thread, retained display list, replayable frame pool,
-reversible client state, or duplicate semantic graph. Exact observation and
-storage strategy belongs to the observable-state and runtime Specifications
-and must be measured on nRF52840 before implementation approval.
+fixed per-source pointer records, and synchronous operation streaming. Input
+coherence requires event provenance plus bounded source/phase/captured-action
+state, not historical hit maps or a deferred-event queue. The common contract
+does not require a Swift actor, `Task`, thread, retained display list,
+replayable frame pool, reversible client state, or duplicate semantic graph.
+Exact observation and storage strategy belongs to the observable-state and
+runtime Specifications and must be measured on nRF52840 before implementation
+approval.
 
 ## Performance
 
@@ -478,21 +558,24 @@ Required measurements include cycle phase duration, input and state-change
 fact coalescing, dirty-notification counts, dirty-to-cycle latency,
 presentation-pending duration, recovery-cycle pacing and attempt counts,
 operation production, handoff latency, backend presentation latency,
-presentation/input gating, backpressure behavior, and the 80-transition/second
-plus 250-millisecond presentation workload. Transaction metadata should remain
-constant-cost per cycle and frame; backend-local downstream metadata should
-remain constant-cost per accepted slot.
+presentation/input gating, stale-input drops, gesture cancellations,
+backpressure behavior, and the 80-transition/second plus 250-millisecond
+presentation workload. Transaction metadata should remain constant-cost per
+cycle and frame; backend-local downstream metadata should remain constant-cost
+per accepted slot and configured input source.
 
 ## Memory / Binary Size
 
 Specifications account for input and state-change queues, dirty tracking,
 latest-revision presentation-pending state and its finite-policy counters,
 runtime and layout workspace, frame envelopes, backend-owned presentation
-data, downstream slots, raster tiles, input-gating state, stack high-water,
-and specialization cost. Pending intent MUST NOT retain the refused operation
-payload or require a second copy of the complete client state or semantic
-graph. A dynamic queue is still configured and bounded; allocation is not
-permission for unlimited work.
+data, downstream slots, raster tiles, event provenance, per-source pointer
+state, input-gating state, stack high-water, and specialization cost. Input
+gating MUST NOT require historical hit-map retention or a deferred-event
+queue. Pending intent MUST NOT retain the refused operation payload or require
+a second copy of the complete client state or semantic graph. A dynamic queue
+is still configured and bounded; allocation is not permission for unlimited
+work.
 
 ## Alternatives
 
@@ -535,6 +618,32 @@ observers behind display backpressure. The proposed design preserves semantic
 publication independence and tracks the narrower presentation obligation
 separately.
 
+### Defer stale input and route it against the latest revision
+
+This minimizes presentation-gate drops and needs no historical hit map, but it
+can reinterpret an old coordinate against a different layout, action map, or
+disabled state. Even a final enabled-state check cannot prove that the user
+saw or targeted the resulting action. It is therefore unsafe for general
+presentation-coupled activation.
+
+### Retain historical hit maps for provenance routing
+
+Core could retain every referenced committed hit map, route each event against
+its sampled revision, and then revalidate the resulting action against current
+state. This better preserves the originally visible target, but it adds a
+second multi-revision lifetime, reference accounting, capacity policy, and
+stale-action semantics. A bounded queue can still span many revisions, making
+the storage cost especially unattractive on nRF52840. This alternative becomes
+preferable only if measured input loss makes fail-closed cancellation
+unacceptable and a future lifecycle explicitly authorizes the retention cost.
+
+### Pin presentation while a pointer sequence is active
+
+The integration could hold one interactive revision until every active pointer
+reaches a terminal phase. That avoids multi-revision gesture validation, but a
+held or failed pointer can block new presentation and couple user input
+duration to backend progress. It is unsuitable as the common frame contract.
+
 ### Transactional observation of arbitrary mutable references
 
 Staging every client write, journaling rollback, or copying the complete state
@@ -566,10 +675,13 @@ presentation/input integration that can interpret it.
 The proposed MVP direction rejects backend-owned semantic scheduling,
 universal retention or replay of operation streams, replay of admitted
 mutations or client effects, transactional guarantees for arbitrary mutable
-references, and coupling logical commit to physical presentation completion.
-Those approaches either move semantic authority below the runtime boundary,
-require unbounded or unjustified storage, repeat non-reversible effects, or
-make common progress depend on target-specific presentation evidence.
+references, coupling logical commit to physical presentation completion,
+retargeting deferred input against a later revision, retaining historical hit
+maps for the common MVP path, and pinning presentation for an entire pointer
+sequence. Those approaches either move semantic authority below the runtime
+boundary, require unbounded or unjustified storage, repeat non-reversible
+effects, let old input acquire new meaning, or make common progress depend on
+input duration or target-specific presentation evidence.
 
 Universal retained-frame replay and generalized post-handoff recovery remain
 postponed through FW-010 rather than being rejected for all future
@@ -580,12 +692,34 @@ its required MVP behavior is incorporated here.
 
 Ordinary portable view syntax should not change. Host, runtime, and backend
 APIs that conflate invalidation with immediate drawing, retain unbounded work,
-or describe accepted handoff as proven physical presentation will require
-migration. No stable frame ABI or persistent serialized format is proposed.
+describe accepted handoff as proven physical presentation, omit input
+provenance, or forward orphaned pointer phases will require migration. Input
+may now be dropped where the proof of concept would have routed it against the
+latest available hit map. No stable frame ABI or persistent serialized format
+is proposed.
 
 ## Testing Strategy
 
-- Inject input during every phase and verify later admission.
+- Inject input during every phase and verify later admission only while its
+  provenance still matches the committed routing revision.
+- Commit a newer frame between target-local gating and runtime admission;
+  verify the queued event is dropped and cannot be retargeted.
+- Drop down, move, and up independently because of ineligibility, stale
+  provenance, malformed ordering, and every queue boundary; verify the active
+  source sequence is cancelled and orphaned phases cannot invoke an action.
+- Advance committed revisions during a press; verify release invokes only the
+  captured stable identity when the current hit map still resolves the release
+  to that identity and the current action remains enabled.
+- Remove, replace, move, or disable the captured action before release and
+  verify no action is invoked.
+- Begin a press over an action disabled in the down revision, enable it before
+  release, and verify the disabled down never established capture.
+- Saturate presentation/input gating and runtime input admission; verify
+  deterministic drop/cancel behavior without deferred-input storage or
+  historical hit-map retention.
+- Exhaust and wrap the configured sequence-identity space; verify no late phase
+  can alias a newer sequence and ambiguous sources remain quiescent until safe
+  resynchronization.
 - Submit state-change facts from outside the serialization domain and verify
   they are bounded, sealed, applied once, and never mutate observed state
   directly.
@@ -660,6 +794,9 @@ replace eventual backend conformance tests or approve this RFC.
 - A target unable to determine whether input corresponds to an eligible
   presentation cannot claim safe presentation-coupled input merely because
   `offer` succeeded.
+- Conservative provenance validation may cancel presses when frames advance
+  faster than queued input reaches admission; target measurements must expose
+  this loss rather than weakening the safety rule or silently retargeting it.
 - Coordinated comparison with RFC-005 and RFC-006 currently finds compatible
   pre-handoff, operation-stream-lifetime, and post-handoff ownership meanings.
   Any review change to those shared meanings must be reconciled before the
@@ -670,10 +807,11 @@ replace eventual backend conformance tests or approve this RFC.
 
 ## Open Questions
 
-None at the RFC level. Identifier widths, queue and payload capacities, timing
-and recovery-pacing budgets, concrete handoff result types, observable-state
-API and storage, and target-local input-gating mechanisms are Specification
-inputs governed by the boundaries above.
+None at the RFC level. Identifier, source, and provenance widths; queue and
+payload capacities; timing and recovery-pacing budgets; concrete handoff
+result types; observable-state API and storage; gesture-state representation;
+and target-local eligibility mechanisms are Specification inputs governed by
+the boundaries above.
 
 ## Deferred and Follow-up Work
 
@@ -716,10 +854,14 @@ If approved, this RFC is expected to yield candidate ADRs for:
 4. one frame-envelope model whose ordered operations are consumed once during
    a synchronous backend offer, with backend-owned post-handoff presentation
    health and no MVP replayable-operation or asynchronous Core completion
-   requirement; and
+   requirement;
 5. constant-space latest-revision presentation intent after retryable refusal,
    with effect-free rederivation, finite target pacing/attempt policy, and an
-   explicit unavailable/quiescent terminal disposition.
+   explicit unavailable/quiescent terminal disposition; and
+6. provenance-validated, fail-closed presentation-coupled input admission with
+   no stale-event retargeting, no common deferred-input queue or historical hit
+   maps, sequence cancellation on every dropped phase, and current-revision
+   identity, hit, and disabled-state revalidation before activation.
 
 ## References
 
