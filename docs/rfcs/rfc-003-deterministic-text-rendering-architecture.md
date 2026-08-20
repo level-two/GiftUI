@@ -364,7 +364,7 @@ with a smaller runtime failure surface.
 
 ## Rejected Approaches
 
-The proposed direction rejects backend-owned layout, backend-specific logical
+The approved design rejects backend-owned layout, backend-specific logical
 geometry tolerance, raw authoritative text at the render boundary,
 backend-derived glyph positioning, raster-ready text as the only canonical
 boundary, and independently compatible metric and raster identities. Each
@@ -374,8 +374,9 @@ It also rejects placing the complete shared contract in `GiftUI`,
 `GiftUILayout`, or `GiftUIRenderCore`, and rejects distributing the invariant
 across separately owned view protocols. Those placements either overload the
 client leaf, introduce a cross-layer import, or leave the compatibility
-relationship without one physical owner. These remain proposed conclusions
-subject to RFC review rather than accepted architecture.
+relationship without one physical owner. These conclusions are approved RFC
+consensus but remain non-authoritative architecture until their ADRs are
+explicitly accepted.
 
 ## Compatibility
 

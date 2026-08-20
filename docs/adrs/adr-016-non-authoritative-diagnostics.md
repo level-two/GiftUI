@@ -40,6 +40,14 @@ most diagnostics. Correctness cannot depend on whether a record was created,
 filtered, buffered, delivered, or lost, and current operational health cannot
 be reconstructed reliably from a lossy event history.
 
+## Decision Boundary
+
+This record extracts the diagnostic portion of RFC-005 Decision Summary item
+3. It owns optional non-authoritative projection and the prohibition on using
+diagnostic paths for semantic control. It does not define typed outcome
+meaning (ADR-014), failure disposition (ADR-015), capability versus health
+classification (ADR-017), or post-handoff frame responsibility (ADR-010).
+
 ## Decision
 
 Diagnostics MUST be optional bounded projections derived from outcomes and

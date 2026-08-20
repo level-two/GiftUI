@@ -39,6 +39,14 @@ event against whichever hit map is newest can give an old coordinate a new
 meaning, while retaining historical hit maps or deferred events imposes
 multi-revision storage and stale-action semantics on constrained targets.
 
+## Decision Boundary
+
+This record extracts RFC-004 Decision Summary item 6 and RFC-002 Decision
+Summary item 10. It owns normalization placement, presentation provenance,
+fail-closed runtime admission, and bounded pointer sequencing. It does not
+define device sampling or calibration, target-specific eligibility evidence,
+or semantics for input explicitly independent of presentation.
+
 ## Decision
 
 Input normalization MUST be a backend-neutral sibling integration seam feeding

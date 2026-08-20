@@ -39,6 +39,14 @@ presents frames. External callbacks and interrupts cannot safely mutate
 GiftUI-observed state during reconciliation, and frame failure must not replay
 client actions or expose partially derived revisions.
 
+## Decision Boundary
+
+This record extracts RFC-004 Decision Summary items 1 and 2. It owns sealed
+admission, at-most-once semantic effects, dirty rederivation, and complete
+semantic publication independent of presentation. It does not define the
+public observable-reference-state API or storage, and it delegates frame
+handoff and presentation commit to ADR-010.
+
 ## Decision
 
 Each run cycle MUST seal an ordered bounded batch of input, state-change facts,

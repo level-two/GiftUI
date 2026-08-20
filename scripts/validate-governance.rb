@@ -131,7 +131,7 @@ end
 ARTIFACTS.each do |directory, rules|
   Dir[DOCS.join(directory, "*.md")].sort.each do |filename|
     path = Pathname.new(filename)
-    next if path.basename.to_s == "README.md"
+    next if %w[README.md EXTRACTION_MAP.md].include?(path.basename.to_s)
 
     metadata, content = front_matter(path, errors)
     next unless metadata

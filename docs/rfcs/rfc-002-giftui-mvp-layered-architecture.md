@@ -393,12 +393,12 @@ a concrete implementation.
 
 ### 3. Cross-layer contract matrix
 
-The matrix below makes the proposed boundary obligations reviewable without
-selecting final Swift declarations. It is normative at the architectural
-level if this RFC is approved: a downstream Specification may refine names,
-representations, capacities, and visibility, but may not reverse ownership,
-extend lifetime, introduce an unbounded static obligation, or change failure
-direction without further architecture review.
+The matrix below records the approved boundary obligations without selecting
+final Swift declarations. It is approved design consensus pending extraction
+and acceptance of the governing ADRs: a downstream Specification may refine
+names, representations, capacities, and visibility, but may not reverse
+ownership, extend lifetime, introduce an unbounded static obligation, or
+change failure direction without further architecture review.
 
 The visibility classes used here are:
 
@@ -1277,8 +1277,8 @@ require their architecture to be folded into or resolved by RFC-002.
 
 ## Decision Summary
 
-If this RFC is approved in substantially its proposed form, the following
-architecturally significant choices should be extracted into separate ADRs:
+This approved RFC requires the following architecturally significant choices
+to be extracted into separate ADRs:
 
 1. GiftUI owns semantic UI and proposal-based layout above a backend-neutral
    render boundary; backends do not consume the view/runtime graph.

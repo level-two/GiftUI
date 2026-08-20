@@ -42,6 +42,14 @@ whether an optional facility may be disabled or the product must quiesce.
 Giving all decisions to any one of those owners either leaks mechanics upward
 or lets local code choose whole-product policy.
 
+## Decision Boundary
+
+This record extracts RFC-005 Decision Summary item 2. It owns the ordered
+allocation of failure-disposition authority among the detecting contract,
+owning coordinator, and target composition. It inherits outcome meaning from
+ADR-014 and execution effects from ADR-010 through ADR-012; it does not define
+diagnostic projection or capability semantics.
+
 ## Decision
 
 Failure disposition MUST occur in this order:

@@ -15,6 +15,7 @@ related_rfcs:
 related_adrs:
   - ADR-010
   - ADR-011
+  - ADR-014
   - ADR-015
   - ADR-017
 related_specs: []
@@ -40,9 +41,18 @@ before acceptance. Dropping the obligation forever can leave a stale but
 apparently interactive UI, while retaining and replaying the refused payload
 would violate the one-shot contract and repeat work or effects.
 
+## Decision Boundary
+
+This record extracts RFC-004 Decision Summary item 5. It owns recovery after
+a retryable refusal before acceptance and irreversible presentation effects,
+including constant-space intent, finite pacing, and terminal unavailability.
+It does not govern failure after accepted handoff, retain or replay an offered
+payload, or define the general outcome vocabulary in ADR-014.
+
 ## Decision
 
-After a retryable pre-effect handoff refusal, the runtime MUST retain only
+After a retryable handoff refusal before acceptance and before any irreversible
+presentation effect, the runtime MUST retain only
 constant-space presentation intent for the latest published revision and
 request a separately paced host opportunity. Recovery MUST rederive from
 current state without replaying admitted facts, actions, effects, or the

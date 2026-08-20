@@ -76,7 +76,7 @@ resolution does not replace B2 structural validation. Input, observable state,
 and every required component do not become additional Capability families
 merely because startup must validate their presence or configuration.
 
-The candidate direction uses RFC-004's single synchronous borrowed operation
+The approved direction uses RFC-004's single synchronous borrowed operation
 stream for every first-party MVP raster path, including tiled paths; it does
 not add a replayable or third GiftUI operation-payload lifetime mode. Canonical
 pixel encoding and downstream submission lifetime remain required resolver
@@ -520,7 +520,7 @@ the closed, bounded static configuration required on nRF52840.
 
 This can reject static combinations early but creates large type surfaces for
 quantitative and initialization-time facts. Selective specialization plus
-typed values is the candidate direction.
+typed values is the approved direction.
 
 **Rejected for MVP.** Encoding every fact in generic types cannot represent
 all initialization-time values proportionately and would impose excessive type
@@ -530,7 +530,7 @@ and specialization surface on the shared architecture.
 
 Precomputing every result could minimize device initialization work, but it
 cannot validate facts learned only while opening the selected surface or
-device. The candidate direction permits specialization of build-known facts
+device. The approved direction permits specialization of build-known facts
 while retaining one explicit bounded initialization-time resolver and the same
 normalized result across profiles.
 
@@ -542,7 +542,7 @@ conformance mechanism.
 
 A separate retained or replayable operation payload could simplify some tiled
 implementations, but it would add another lifetime contract, storage shape,
-failure matrix, and static cost. The candidate direction instead requires all
+failure matrix, and static cost. The approved direction instead requires all
 first-party tiled paths to consume RFC-004's common synchronous borrowed
 stream and retain only backend-owned derived data after handoff.
 
@@ -572,7 +572,7 @@ state under RFC-004 and RFC-005.
 
 ## Rejected Approaches
 
-All alternatives above are rejected for the proposed MVP direction:
+All alternatives above are rejected for the approved MVP direction:
 
 - build flags alone cannot represent initialization-time facts or one
   normalized result;
@@ -589,9 +589,10 @@ All alternatives above are rejected for the proposed MVP direction:
 - a mutable capability registry conflates an immutable semantic promise with
   operational health.
 
-These rejections select the RFC's proposed architecture but do not close its
-explicit evidence and dependency gates or advance its `draft` lifecycle
-status.
+These rejections are part of the approved RFC consensus. They do not become
+authoritative architecture until their governing ADRs are explicitly
+accepted, and they do not authorize implementation before approved
+Specifications exist.
 
 ## Compatibility
 

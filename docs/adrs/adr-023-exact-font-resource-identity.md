@@ -41,6 +41,14 @@ outline, or bitmap assets. Without one exact identity and contract owner,
 layout and raster providers could silently use incompatible resources or
 require adapters that translate identity across layers.
 
+## Decision Boundary
+
+This record extracts RFC-003 Decision Summary item 3. It owns the one exact
+resource-set identity, compatibility invariant, shared contract owner, and
+host lifetime for selected immutable resources. It does not choose concrete
+font assets, package schemas, shaping/raster implementations, cache policy,
+licensing terms, or resource budgets.
+
 ## Decision
 
 One immutable font-resource-set identity MUST join the canonical character

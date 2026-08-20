@@ -20,6 +20,7 @@ related_adrs:
   - ADR-011
   - ADR-012
   - ADR-013
+  - ADR-014
   - ADR-015
   - ADR-016
   - ADR-017
@@ -50,6 +51,14 @@ framebuffers, and bounded tiled embedded presentation. Core cannot retain a
 universal replayable frame without imposing storage on every target, while
 asynchronous device work still requires an unambiguous transfer of ownership
 and transaction disposition.
+
+## Decision Boundary
+
+This record extracts RFC-004 Decision Summary items 3 and 4 and owns the
+synchronous one-shot frame lifetime, commit/abort point, and transfer of
+post-handoff responsibility. It does not own retryable-refusal rescheduling
+(ADR-012), the general cross-layer outcome model (ADR-014), capability versus
+health classification (ADR-017), or a replayable delivery mode (FW-014).
 
 ## Decision
 

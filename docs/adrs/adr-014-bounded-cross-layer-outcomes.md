@@ -14,8 +14,11 @@ related_rfcs:
   - RFC-005
 related_adrs:
   - ADR-008
+  - ADR-010
+  - ADR-012
   - ADR-015
   - ADR-016
+  - ADR-017
 related_specs: []
 related_future_work:
   - FW-012
@@ -40,6 +43,15 @@ cannot share exceptions, rich allocated errors, or platform-native details.
 Policy still needs enough portable meaning to distinguish expected operating
 conditions from failed contracts and to decide where normal processing is
 safe.
+
+## Decision Boundary
+
+This record extracts RFC-005 Decision Summary item 1 together with its approved
+acyclic physical ownership. It owns bounded outcome meaning, conservative
+containment, affected scope, source-stable condition identity, and the
+foundational/execution-correlation split. It does not own transaction-specific
+frame handling (ADR-010 and ADR-012), product disposition (ADR-015), diagnostics
+(ADR-016), or capability/health classification (ADR-017).
 
 ## Decision
 

@@ -14,6 +14,7 @@ related_rfcs:
   - RFC-006
 related_adrs:
   - ADR-006
+  - ADR-007
   - ADR-008
   - ADR-017
   - ADR-018
@@ -43,6 +44,14 @@ backends, surfaces, and host resource policy. Some facts become known only
 while a selected surface or device is initialized, but constrained static
 targets cannot rely on heap allocation, discovery, reflection, or unbounded
 registries.
+
+## Decision Boundary
+
+This record extracts RFC-006 Decision Summary items 3 and 5. It owns the host
+composition point, deterministic initialization-time resolution, foundational
+module placement, immutable result/failure boundary, and allocator-independent
+static path. It does not define family-specific semantics (ADR-018 and ADR-020),
+exact storage layouts or budgets, or generated composition tooling (FW-006).
 
 ## Decision
 

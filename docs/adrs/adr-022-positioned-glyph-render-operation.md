@@ -14,6 +14,7 @@ related_rfcs:
   - RFC-004
 related_adrs:
   - ADR-005
+  - ADR-009
   - ADR-010
   - ADR-020
   - ADR-021
@@ -39,6 +40,14 @@ The backend-neutral render boundary must carry complete text meaning without
 asking backends to interpret an authoritative raw string or repeat layout. It
 also must remain streamable for the bounded one-shot frame path and avoid a
 mandatory retained run.
+
+## Decision Boundary
+
+This record extracts RFC-003 Decision Summary item 2. It owns the canonical
+text payload crossing the normalized render boundary. It inherits checked
+geometry, the common one-shot stream lifetime, canonical text authority, and
+exact resource identity from ADR-009, ADR-010, ADR-021, and ADR-023; it does not redefine
+any of those decisions or require a retained glyph run.
 
 ## Decision
 

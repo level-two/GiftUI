@@ -39,6 +39,14 @@ affect a semantic promise or a quantitative conformance bound. Platform checks,
 backend Boolean bags, or a speculative registry would either lose important
 constraints or introduce unused dynamic machinery.
 
+## Decision Boundary
+
+This record extracts RFC-006 Decision Summary item 2. It owns the admission
+rule and semantic shape of MVP capability families: fixture justification,
+typed domain-specific values, quantitative constraints, owned contributions,
+and explicit absence behavior. It does not select the host resolution
+mechanism (ADR-019) or the concrete MVP family and its fields (ADR-020).
+
 ## Decision
 
 Every MVP capability family and field MUST be justified by a Signal Analyzer

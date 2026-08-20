@@ -13,6 +13,9 @@ related_rfcs:
   - RFC-002
 related_adrs:
   - ADR-005
+  - ADR-020
+  - ADR-021
+  - ADR-022
 related_specs: []
 related_future_work:
   - FW-005
@@ -36,6 +39,14 @@ Canvas line geometry across desktop, framebuffer, and constrained embedded
 targets. A general constraint solver or multiple scalar models would add
 algorithmic, storage, code-size, and conformance costs not required by that
 fixed presentation.
+
+## Decision Boundary
+
+This record extracts RFC-002 Decision Summary item 8. It owns the common MVP
+geometry scalar and the rejection of a general constraint solver as a core
+layout dependency. It does not authorize or define the separately governed
+public Canvas/Path API, nor does it select concrete widths, rounding, overflow
+APIs, or workspace capacities.
 
 ## Decision
 
@@ -70,8 +81,9 @@ whose capabilities and costs are unused.
 
 ### Follow-up
 
-- Layout and Canvas Specifications must define scalar widths, ranges,
-  rounding, overflow, and invalid-geometry behavior.
+- Layout Specifications, and any Canvas Specification that later passes its
+  separate lifecycle gates, must define scalar widths, ranges, rounding,
+  overflow, and invalid-geometry behavior.
 
 ## Deferred and Follow-up Work
 

@@ -14,6 +14,7 @@ related_rfcs:
   - RFC-003
 related_adrs:
   - ADR-005
+  - ADR-009
   - ADR-022
   - ADR-023
 related_specs: []
@@ -39,6 +40,14 @@ Text affects intrinsic size, line breaking, clipping, alignment, and
 downstream layout. If layout and backends use different metrics, shaping,
 fallback, or rounding, the same portable Signal Analyzer hierarchy can produce
 different logical geometry even when raster output is locally valid.
+
+## Decision Boundary
+
+This record extracts RFC-003 Decision Summary item 1. It owns canonical text
+measurement, shaping, glyph selection, and logical positioning above the
+render boundary. It inherits the common checked geometry from ADR-009 and does
+not select the positioned-glyph payload (ADR-022) or exact resource identity
+and physical ownership (ADR-023).
 
 ## Decision
 

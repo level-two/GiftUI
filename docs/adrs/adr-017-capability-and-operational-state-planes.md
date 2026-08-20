@@ -18,6 +18,7 @@ related_adrs:
   - ADR-008
   - ADR-010
   - ADR-012
+  - ADR-014
   - ADR-015
   - ADR-016
   - ADR-018
@@ -47,6 +48,15 @@ conforming realizations, and health that changes while the runtime operates.
 Conflating those facts would let temporary device loss silently rewrite the
 stack's semantic promise or make ordinary component selection appear as a
 portable Capability.
+
+## Decision Boundary
+
+This record extracts RFC-006 Decision Summary item 1, supported by RFC-002's
+assembly-lifetime rule and RFC-005's explicit-health distinction. It owns the
+classification and lifetime of structural selection, semantic capability,
+policy/configuration, and operational state. It does not redefine frame
+handoff (ADR-010), failure meaning (ADR-014), or diagnostic projection
+(ADR-016).
 
 ## Decision
 

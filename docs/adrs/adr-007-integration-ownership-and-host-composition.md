@@ -16,6 +16,7 @@ related_adrs:
   - ADR-008
   - ADR-010
   - ADR-013
+  - ADR-019
 related_specs: []
 related_future_work:
   - FW-009
@@ -39,6 +40,14 @@ system adapters, display and input drivers, and transport or HAL mechanisms.
 Treating a platform module as the owner of the complete vertical stack would
 make platform identity an architectural boundary and duplicate reusable
 behavior.
+
+## Decision Boundary
+
+This record extracts RFC-002 Decision Summary items 4 and 5 together with the
+approved explicit-environmental-contract rule. It owns component integration
+boundaries and host composition, but not frame disposition (ADR-010), input
+admission semantics (ADR-013), capability resolution (ADR-019), or a shared
+delegated-Service foundation (FW-009).
 
 ## Decision
 

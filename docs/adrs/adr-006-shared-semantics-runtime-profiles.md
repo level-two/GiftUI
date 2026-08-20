@@ -38,6 +38,14 @@ static configurations. Dynamic storage and dispatch conveniences do not fit
 every constrained target, but separate semantic frameworks would undermine
 the MVP portability claim and allow behavioral drift.
 
+## Decision Boundary
+
+This record extracts RFC-002 Decision Summary item 2. It owns the requirement
+for profile-equivalent observable semantics while allowing different storage,
+composition, and dispatch strategies. It does not select capability
+representation or resolution (ADR-017 through ADR-020), nor does it define
+the exact storage and capacity contracts left to Specifications.
+
 ## Decision
 
 Static and dynamic runtimes MUST be alternative storage, composition, and

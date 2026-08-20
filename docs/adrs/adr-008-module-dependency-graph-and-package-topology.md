@@ -41,6 +41,13 @@ runtime, backend, platform, or hardware implementations. GiftUI also needs a
 proportionate MVP distribution model that preserves those boundaries without
 the release and dependency overhead of many independently versioned packages.
 
+## Decision Boundary
+
+This record extracts RFC-002 Decision Summary item 6. It owns compiler-visible
+dependency direction, the one-package MVP distribution boundary, and the
+portable `GiftUI` import surface. It does not fix candidate internal target or
+product names, exact access control, or any post-MVP distribution topology.
+
 ## Decision
 
 GiftUI MUST enforce logical ownership through an acyclic Swift target/module

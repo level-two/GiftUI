@@ -18,6 +18,7 @@ related_adrs:
   - ADR-009
   - ADR-010
   - ADR-013
+  - ADR-020
   - ADR-021
   - ADR-022
   - ADR-023
@@ -44,6 +45,14 @@ dynamic desktop, static macOS, Raspberry Pi/Linux, and nRF52840 stacks. If a
 backend consumes the semantic graph, it acquires knowledge of view expansion,
 identity, state, containers, and layout and must reproduce those semantics for
 each target.
+
+## Decision Boundary
+
+This record extracts RFC-002 Decision Summary items 1 and the render-boundary
+portion of item 3. It owns semantic/layout authority, the normalized operation
+boundary, and compatibility with a possible future retained producer. It does
+not own operation-stream lifetime or frame disposition (ADR-010), concrete
+text payloads (ADR-022), or font-resource identity (ADR-023).
 
 ## Decision
 

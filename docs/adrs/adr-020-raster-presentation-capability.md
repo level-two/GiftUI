@@ -13,6 +13,8 @@ related_rfcs:
   - RFC-004
   - RFC-006
 related_adrs:
+  - ADR-005
+  - ADR-009
   - ADR-010
   - ADR-017
   - ADR-018
@@ -43,6 +45,15 @@ The four MVP stacks use materially different full-surface and tiled raster
 paths. End-to-end presentation support depends on facts owned by the render
 producer, raster/backend, surface/display adapter, and host resource policy;
 no one contributor can establish it independently.
+
+## Decision Boundary
+
+This record extracts the capability-specific portion of RFC-006 Decision
+Summary item 4. It owns the single MVP `rasterPresentation` family's semantic
+promise, contributing fact classes, compatibility inputs, bounds, and absence
+result. It inherits normalized operation meaning, checked geometry, and the
+one-shot lifetime from ADR-005, ADR-009, and ADR-010; it does not create another
+operation payload lifetime or govern runtime health.
 
 ## Decision
 
