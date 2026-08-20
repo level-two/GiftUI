@@ -6,7 +6,7 @@ status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-19
+updated: 2026-08-20
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -72,8 +72,10 @@ credible ownership models and may evolve without changing the whole layer
 graph. It remains coordinated with RFC-005 for deterministic resource failure.
 It owns the cross-profile meaning of logical text geometry, the resolved text
 operation at the backend boundary, and the compatibility relationship between
-metrics and raster data. It does not own public API spelling, concrete storage
-formats, resource budgets, or raster-provider selection.
+metrics and raster data. It also selects `GiftUITextResources` as the dedicated
+physical owner of the shared text-resource contracts used on both sides of
+RFC-002's layout/render boundary. It does not own public API spelling, concrete
+storage formats, resource budgets, or raster-provider selection.
 
 ## Requirements
 
@@ -141,12 +143,23 @@ raster delivery are outside MVP.
 
 ### Ownership
 
-The text layout subsystem consumes semantic text and a font-resource metrics
-view. It resolves the admitted content into positioned glyph runs and logical
-bounds. Measurement and rendering use that same resolved result; there is no
-independent backend measurement path.
+`GiftUITextResources` is a dedicated target/module in the single GiftUI Swift
+package. It is the sole physical owner of exact font-resource,
+font-instance, and glyph identity types; the canonical metrics/shaping resource
+view; the matching raster-resource view; and the compatibility and integrity
+facts that join those views. It depends only on portable checked geometry and
+scalar values from `GiftUI`. It imports no layout, render, runtime, backend,
+platform, driver, concrete font package, outline library, or bitmap
+implementation.
 
-A font resource exposes two consistent views under one exact identity. The
+The text layout subsystem consumes semantic text and a font-resource metrics
+view owned by `GiftUITextResources`. It resolves the admitted content into
+positioned glyph runs and logical bounds. Measurement and rendering use that
+same resolved result; there is no independent backend measurement path.
+
+A concrete font package is an immutable assembly resource supplied by the
+target host or selected composition. Through the `GiftUITextResources`
+contracts it exposes two consistent views under one exact identity. The
 identity names the complete compatible resource set rather than requiring one
 physical file:
 
@@ -158,6 +171,22 @@ identities, logical positions, opaque paint, and resolved clipping information
 needed by the MVP renderer. It may emit those glyphs directly into the ordered
 sink without first materializing an array. Exact fields, coordinate encoding,
 and storage representation belong in a Specification.
+
+The required import graph is:
+
+```text
+GiftUILayout -------> GiftUITextResources -> GiftUI
+GiftUIRenderCore ---> GiftUITextResources -> GiftUI
+raster providers ---> GiftUITextResources -> GiftUI
+concrete packages --> GiftUITextResources
+```
+
+`GiftUILayout` and `GiftUIRenderCore` remain siblings: neither imports the
+other to obtain text identities. A concrete package may satisfy both resource
+views, but it cannot introduce parallel identity types or an adapter that
+translates between layout and raster identities. The target host owns the
+concrete package instance for the assembled runtime lifetime; the shared module
+owns only contracts and portable values, not assets or implementation policy.
 
 ### Lifetime
 
@@ -180,19 +209,22 @@ contract rather than separate text models.
 | Owner | Responsibility | Prohibited dependency or decision |
 | --- | --- | --- |
 | `GiftUI` client surface | Declare text content and semantic style | No platform font handles or backend raster modes |
-| Layout/text subsystem | Resolve identity, shape admitted content, measure, break lines, and position glyphs | No backend, platform text API, display, or raster-cache authority |
-| Render core | Carry resolved text meaning and exact resource identity | No raw semantic reevaluation or font discovery |
-| Raster provider | Produce glyph pixels for the exact requested identity | No measurement, fallback, or line-placement authority |
+| `GiftUITextResources` | Own exact font-resource, font-instance, and glyph identities; metrics/shaping and raster-resource view contracts; shared compatibility and integrity facts | No concrete assets, font discovery, cache policy, layout or raster implementation, platform handles, backend selection, or imports above `GiftUI` |
+| Layout/text subsystem | Consume the shared metrics/shaping view; resolve identity, shape admitted content, measure, break lines, and position glyphs | No independently declared text-resource identity, backend, platform text API, display, or raster-cache authority |
+| Render core | Carry resolved text meaning and `GiftUITextResources`-owned exact identities | No parallel identity type, raw semantic reevaluation, font discovery, or import of the layout implementation |
+| Raster provider | Consume the shared raster-resource view and produce glyph pixels for the exact requested identity | No identity translation, measurement, fallback, or line-placement authority |
 | Backend | Execute ordered operations, clip, composite, cache, and present | No text-layout or substitution authority |
-| Build tooling/resources | Produce and validate exact metric and raster assets | No runtime semantic authority |
+| Target host / concrete font package | Select and own the immutable package that supplies both compatible views for the assembled runtime lifetime | No new portable semantics or target-specific identity types |
+| Build tooling | Produce and validate exact metric and raster assets against the shared identity and integrity contract | No runtime semantic authority |
 
 ## Public API Impact
 
 Portable `Text` remains part of `import GiftUI`. Later Specifications define
 content forms, styles, admitted input behavior, fallback policy, and dynamic
-conveniences. Font package and raster-provider contracts may be host API,
-framework SPI, tooling formats, or internal; this RFC does not decide access
-control.
+conveniences. Portable Presentation does not import `GiftUITextResources`, and
+`GiftUI` does not re-export it as client declaration vocabulary. Its identities
+and resource views are framework, host, raster-provider, and tooling SPI;
+later Specifications define exact access control and package construction APIs.
 
 ## Capabilities Impact
 
@@ -214,6 +246,10 @@ The nRF52840 realization may compile exact bitmap assets and bounded lookup
 tables into firmware. It must declare input, glyph, run, line, workspace,
 raster scratch, and resource bounds and produce deterministic exhaustion. An
 outline parser or runtime font registry is not a common-contract requirement.
+The shared contract target contains no concrete assets or provider code, so a
+static composition links only its selected generated package and raster
+realization. Target/module overhead and specialization must be measured, but
+link-time flattening may not erase the source-level ownership boundary.
 
 ## Performance
 
@@ -226,10 +262,49 @@ continues. Cache state may improve cost but not change results.
 
 Specifications must account for metric tables, raster assets, text and glyph
 workspace, raster scratch, stack high-water, caches if selected, and linked
-provider code. The architecture permits build-time subsetting and alternate
-exact raster realizations so unused general typography machinery is not linked.
+provider code, including the incremental metadata and code-size cost of the
+shared contract target. The architecture permits build-time subsetting and
+alternate exact raster realizations so unused general typography machinery is
+not linked.
 
 ## Alternatives
+
+### Own all shared text-resource contracts in `GiftUI`
+
+Both layout and render core already depend on `GiftUI`, so placing identity and
+both resource views there would preserve the smallest module graph. It would,
+however, make the portable client declaration leaf the physical owner of
+internal metrics, shaping, raster-resource, package-integrity, and tooling
+contracts that portable Presentation must neither see nor use. This becomes
+preferable only if measured target/module cost makes a dedicated contract leaf
+unviable.
+
+### Let render core own the shared contracts
+
+`GiftUIRenderCore` already transports resource references, so it could own the
+identity and ask `GiftUILayout` to import render core. That avoids another
+module but couples backend-neutral measurement to the render-operation module
+and reverses RFC-002's sibling-module rule. It becomes preferable only if text
+resource meaning proves inseparable from the render vocabulary rather than
+shared by layout and rasterization.
+
+### Let layout own the shared contracts
+
+`GiftUILayout` could own metrics and identity while render core imports layout.
+This places measurement resources beside their primary semantic consumer but
+makes the lower render boundary transitively depend on a higher layout module
+and exposes layout contracts to backend consumers. It is inconsistent with the
+selected dependency direction.
+
+### Split consumer-owned views around a `GiftUI` identity
+
+`GiftUI` could own only identity values, while layout owns a metrics protocol
+and the raster side owns a separate payload protocol. This preserves
+consumer-owned interfaces and sibling modules, but the complete invariant—one
+resource with compatible metrics and raster views—would have no single
+compiler-visible contract owner. Assembly adapters and conformance tests would
+have to reconstruct the relationship. A dedicated text-resource module keeps
+that invariant explicit without moving either implementation across layers.
 
 ### Backend-owned text layout
 
@@ -292,8 +367,12 @@ backend-derived glyph positioning, raster-ready text as the only canonical
 boundary, and independently compatible metric and raster identities. Each
 either weakens one geometry authority, duplicates semantic work below the
 boundary, or adds compatibility and resource cost without an MVP requirement.
-These remain proposed conclusions subject to RFC review rather than accepted
-architecture.
+It also rejects placing the complete shared contract in `GiftUI`,
+`GiftUILayout`, or `GiftUIRenderCore`, and rejects distributing the invariant
+across separately owned view protocols. Those placements either overload the
+client leaf, introduce a cross-layer import, or leave the compatibility
+relationship without one physical owner. These remain proposed conclusions
+subject to RFC review rather than accepted architecture.
 
 ## Compatibility
 
@@ -313,6 +392,12 @@ layout format.
   proving that raster variation cannot change layout.
 - Verify dependency boundaries and confirm omitted typography facilities are
   absent from static firmware.
+- Verify that `GiftUITextResources` imports only `GiftUI`, that layout, render
+  core, and raster providers use its exact identity declarations, and that no
+  duplicate or translated identity type crosses the boundary.
+- Compile assembly fixtures in which one concrete package supplies both views,
+  and reject mismatched identities or metrics/raster integrity facts before the
+  first run cycle.
 - Keep host, cross-build, simulator, and connected-display evidence distinct.
 
 ## Risks
@@ -323,6 +408,9 @@ layout format.
   coverage is specified.
 - Borrowed runs may accidentally outlive workspace; test stream and replay
   lifetimes explicitly.
+- A dedicated target may add module metadata, specialization, or build cost;
+  measure it on static macOS and nRF52840 rather than collapsing ownership
+  without architecture review.
 - RFC-002 geometry or render-plan decisions may change; reconcile the shared
   boundary before either RFC receives approval.
 
@@ -331,7 +419,11 @@ layout format.
 None at the architectural level. This draft proposes identical logical text
 geometry across MVP configurations, a streamable positioned-glyph operation
 as the canonical backend boundary, and one immutable resource-set identity
-joining metrics with every approved raster realization.
+joining metrics with every approved raster realization. It also selects the
+dedicated `GiftUITextResources` target/module as the sole physical owner of
+that identity and its metrics/shaping and raster-resource contracts, with
+`GiftUILayout`, `GiftUIRenderCore`, raster providers, concrete packages, and
+tooling depending on that shared owner as applicable.
 
 Reference-face selection, admitted corpus, malformed-input and fallback
 behavior, numeric widths, package schema, compression, provider library,
@@ -362,7 +454,9 @@ If approved, this RFC is expected to yield candidate ADRs for:
 2. a streamable positioned-glyph operation as the backend-neutral text
    boundary, carrying complete glyph selection and logical positions;
 3. one immutable font-resource identity joining canonical metrics with
-   selectable exact outline or bitmap raster realizations.
+   selectable exact outline or bitmap raster realizations, physically owned
+   with the shared metrics/shaping and raster-resource contracts by the
+   dedicated `GiftUITextResources` module.
 
 ## References
 
