@@ -5,6 +5,7 @@ design work. Only an accepted ADR is authoritative architecture.
 
 - Canonical semantics and statuses: [Documentation Rules](../engineering/DOCUMENTATION_RULES.md)
 - Lifecycle gates: [Feature Lifecycle](../engineering/FEATURE_LIFECYCLE.md)
+- Preparation aid: [ADR Extraction Map](EXTRACTION_MAP.md)
 - Starting point: [ADR template](../templates/adr.md)
 
 Use filenames of the form `adr-NNN-short-slug.md`. Keep each record focused on
