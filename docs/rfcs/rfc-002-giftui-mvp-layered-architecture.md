@@ -71,6 +71,18 @@ runtime admission. Core validates provenance again at admission and cancels
 affected pointer sequences rather than retargeting stale input; device health
 does not become portable GiftUI semantics.
 
+This RFC is an integrating layered-architecture decision cluster, not a claim
+that every MVP feature architecture or public contract is complete. It can be
+reviewed and approved independently because it fixes cross-layer ownership,
+dependency direction, and integration seams without selecting the separately
+governed observable reference-state or Canvas/path/stroke architectures.
+[PROPOSAL-005](../proposals/proposal-005-observable-reference-state.md) and
+[PROPOSAL-006](../proposals/proposal-006-canvas-path-stroke-drawing.md) begin
+those required feature lifecycles. Until their required decisions and
+contracts are accepted, the complete MVP architecture is not established and
+Specifications or implementation that depend on those public features remain
+blocked.
+
 These are candidate architectural choices for review. This draft does not
 approve them, define final public APIs, authorize package restructuring, or
 authorize implementation.
@@ -1136,8 +1148,8 @@ or interface:
 | B15 and the failure aspects of all rows | RFC-005 | Explicit outcomes, policy ownership, and diagnostic independence are independently reviewable across every layer. |
 | B12-B13 | RFC-006 under PROPOSAL-004 | Capability physical ownership, vocabulary, inputs, results, resolution, propagation, consumption, policy, and absence behavior have a separate accepted problem, alternatives, and evolution path. RFC-002 retains only dependency-direction and non-inversion constraints. |
 | B14 | Consumer RFC or Specification; RFC-007/FW-009 preserve generalization | No common Service foundation is justified until multiple approved consumers demonstrate shared semantics or a dependency problem. |
-| B11 public observable state | Separate feature lifecycle required by MVP Scope | RFC-002 fixes runtime ownership and the publication seam but cannot select the public state architecture. |
-| Canvas public drawing semantics used by B5 | Separate feature lifecycle required by MVP Scope | RFC-002 fixes the render-layer placement of resolved drawing intent; the public Canvas/Path contract requires its own accepted Proposal before an RFC. |
+| B11 public observable state | [PROPOSAL-005](../proposals/proposal-005-observable-reference-state.md), beginning the separate feature lifecycle required by MVP Scope | RFC-002 fixes runtime ownership and the publication seam but cannot select the public state architecture. |
+| Canvas public drawing semantics used by B5 | [PROPOSAL-006](../proposals/proposal-006-canvas-path-stroke-drawing.md), beginning the separate feature lifecycle required by MVP Scope | RFC-002 fixes the render-layer placement of resolved drawing intent; the public Canvas/Path contract requires its own accepted Proposal before an RFC. |
 
 Declarative composition, layout, the non-text render vocabulary, backend SPI,
 display/driver separation, and pointer/touch admission now have sufficient
@@ -1180,7 +1192,8 @@ resolved in the coordinated drafts:
 RFC-003 reports no remaining architectural open questions. Its licensed
 reference-resource and bounded static text evidence remain downstream
 Specification prerequisites rather than RFC-002 blockers. Observable state
-and Canvas remain missing separate feature lifecycles; that blocks
+and Canvas now have separate draft Proposals, but those lifecycles have not
+passed their acceptance, RFC, ADR, or Specification gates. That blocks
 Specifications and implementation for those public features, but it does not
 require their architecture to be folded into or resolved by RFC-002.
 
@@ -1209,6 +1222,12 @@ require their architecture to be folded into or resolved by RFC-002.
 - [RFC-007](rfc-007-delegated-services-architecture.md) preserves the paused
   shared delegated-Service design. Current consumer-specific environmental
   contracts remain with RFC-004, RFC-005, or later approved feature work.
+- [PROPOSAL-005](../proposals/proposal-005-observable-reference-state.md)
+  begins the separately governed observable reference-state lifecycle. It is
+  a draft and does not yet authorize RFC or downstream contract work.
+- [PROPOSAL-006](../proposals/proposal-006-canvas-path-stroke-drawing.md)
+  begins the separately governed Canvas/path/stroke lifecycle. It is a draft
+  and does not yet authorize RFC or downstream contract work.
 - [FW-009](../future-work/fw-009-shared-delegated-service-foundation.md)
   records the concrete triggers for reconsidering a shared Service package and
   catalogue without adding it to MVP scope.
@@ -1272,6 +1291,8 @@ active MVP decision and remains deferred through RFC-007 and FW-009.
 ## References
 
 - [PROPOSAL-003: GiftUI MVP Architecture Establishment](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
+- [PROPOSAL-005: Observable Reference State](../proposals/proposal-005-observable-reference-state.md)
+- [PROPOSAL-006: Canvas, Path, and Stroke Drawing](../proposals/proposal-006-canvas-path-stroke-drawing.md)
 - [PROPOSAL-001: GiftUI MVP Baseline Charter](../proposals/proposal-001-giftui-mvp-baseline-charter.md)
 - [PROPOSAL-004: GiftUI Capability System](../proposals/proposal-004-capability-system.md)
 - [RFC-001: Signal Analyzer Application Architecture](rfc-001-signal-analyzer-application-architecture.md)

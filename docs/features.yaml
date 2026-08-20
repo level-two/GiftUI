@@ -31,7 +31,9 @@ features:
       - ADR-004
     specs:
       - SPEC-001
-    dependencies: []
+    dependencies:
+      - observable-reference-state
+      - canvas-drawing
     milestone: MVP
   giftui-mvp-architecture:
     title: GiftUI MVP Architecture Establishment
@@ -56,6 +58,28 @@ features:
       - PROPOSAL-004
     rfcs:
       - RFC-006
+    adrs: []
+    specs: []
+    dependencies:
+      - giftui-mvp-architecture
+    milestone: MVP
+  observable-reference-state:
+    title: Observable Reference State
+    status: proposal
+    proposal:
+      - PROPOSAL-005
+    rfcs: []
+    adrs: []
+    specs: []
+    dependencies:
+      - giftui-mvp-architecture
+    milestone: MVP
+  canvas-drawing:
+    title: Canvas, Path, and Stroke Drawing
+    status: proposal
+    proposal:
+      - PROPOSAL-006
+    rfcs: []
     adrs: []
     specs: []
     dependencies:
