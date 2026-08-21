@@ -1,0 +1,10 @@
+metric	count
+materialization	1
+attach	2
+mutation-report-total	23
+coalesced-report	19
+replacement	1
+detach	2
+stale-reject	2
+dirty-transition-wake	2
+digest	144680342690412425

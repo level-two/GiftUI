@@ -77,12 +77,13 @@ locations and one bounded registration per live observable model; it may not
 fall back to heap allocation, reflection, `Any`, task-local binding, or an
 unbounded observer list.
 
-The remaining approval blocker is representational feasibility: one portable
-source-level model and `@State` declaration must compile for Embedded Swift
-while providing stable reference semantics and bounded change signaling.
 [SPIKE-003](../spikes/spike-003-portable-observable-reference-state-feasibility.md)
-will compare the minimum viable generated/static and dynamic realizations,
-record compile and resource evidence, and feed the result back into this RFC.
+has resolved the representational feasibility question with evidence: a
+generated typed handle and explicit generated model-owned setters preserve the
+common semantics, compile and link for Embedded Swift with the same portable
+`@State` source shape, and retain no allocator entry point. The Spike does not
+select that disposable representation as architecture. RFC review must still
+choose or constrain the acceptable representation and instrumentation family.
 
 ## Context
 
@@ -536,12 +537,12 @@ snapshot UI model on static targets. A generated typed handle is acceptable
 only if copying the handle preserves one underlying model identity and if
 client mutation/read semantics remain equivalent to the dynamic model.
 
-SPIKE-003 must demonstrate at least one source-level declaration that compiles
-both normally and for the supported Embedded Swift target. It must establish
-whether an actual Swift reference instance, a generated address-stable handle,
-or another bounded representation can satisfy these requirements without
-profile-specific portable presentation code. This RFC cannot advance to
-approval while every feasible representation remains hypothetical.
+SPIKE-003 demonstrated one source-level declaration that compiles both
+normally and for the supported Embedded Swift target. Its generated address-
+stable typed handle satisfied these requirements without profile-specific
+portable Presentation code; an escaping Swift reference instance retained an
+unavailable allocation path. RFC review must now decide which feasible
+representation family is acceptable.
 
 ### 9. Registration and teardown safety
 
@@ -744,7 +745,7 @@ The design does not require property dependency nodes, observer arrays,
 mutation logs, model snapshots, rollback journals, or a retained semantic
 history.
 
-SPIKE-003 must report, for comparable baseline and candidate fixtures:
+SPIKE-003 reports, for comparable baseline and candidate fixtures:
 
 - linked RAM and flash delta;
 - bytes per configured observable state location;
@@ -968,10 +969,10 @@ hardware claims.
 
 ## Risks
 
-- **The familiar source shape may not compile zero-heap.** A Swift reference
-  instance or wrapper machinery may require allocation or unsupported metadata
-  on Embedded Swift. SPIKE-003 must compare generated/static alternatives
-  before approval.
+- **A production realization may reintroduce unavailable machinery.** The
+  familiar `@State` source shape compiled zero-heap with the generated Spike
+  handle, while an escaping Swift class retained allocation. Maintained
+  declarations and generation must preserve the proven dependency boundary.
 - **A generated handle may only imitate reference semantics partially.** The
   conformance suite must prove aliasing, replacement, and removal behavior, not
   merely that one numeric slot can be changed.
@@ -998,18 +999,20 @@ hardware claims.
 
 ## Open Questions
 
-### Approval blocker: portable zero-heap reference representation
+### Resolved evidence: portable zero-heap reference representation
 
 Can one portable `@State` and observable model declaration compile under the
 supported Embedded Swift toolchain while preserving one stable model identity,
 bounded change signaling, attach/detach safety, and no general heap?
 
-SPIKE-003 must compare the minimum viable candidates and report source shape,
-compiler/runtime dependencies, semantic fixture results, RAM, flash, stack,
-and zero-heap evidence. The RFC must then select or constrain the acceptable
-representation family before review can conclude. This question cannot be
-deferred because the proposed cross-profile direction is incoherent if no
-static realization exists.
+SPIKE-003 compared a direct Swift class with a generated typed handle. The
+escaping class retained an unavailable allocation path. The generated handle
+passed shared semantic fixtures, compiled and linked with the portable
+`@State` source shape, retained no allocator, and added 448 linked flash bytes,
+38 `bss` bytes, and 32 bytes to the conservative fixture stack bound over the
+baseline. Representational feasibility is therefore established. RFC review
+must still select or constrain an acceptable family; the Spike result is
+evidence, not a decision.
 
 ### Approval blocker: exact portable instrumentation boundary
 
@@ -1032,8 +1035,8 @@ bound fits the Signal Analyzer.
 ## Deferred and Follow-up Work
 
 - [SPIKE-003](../spikes/spike-003-portable-observable-reference-state-feasibility.md)
-  is required evidence for the two open approval blockers. It is planned and
-  does not establish production API, storage, or architecture.
+  supplies completed evidence for the representation and instrumentation
+  questions. It does not establish production API, storage, or architecture.
 - [FW-019](../future-work/fw-019-fine-grained-observable-dependency-tracking.md)
   captures property-level dependency tracking and selective subtree
   reevaluation. Revisit if measured complete-root work misses an accepted

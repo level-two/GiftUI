@@ -2,7 +2,7 @@
 id: SPIKE-003
 feature: observable-reference-state
 title: Portable Observable Reference State Feasibility
-status: planned
+status: completed
 authors:
   - Yauheni Lychkouski
 created: 2026-08-21
@@ -198,8 +198,85 @@ evidence.
 
 ## Results
 
-Not yet run. Record measurements and negative or inconclusive compiler results
-here without promoting a candidate by implication.
+The experiment completed on the pinned Swift 6.3.2 / Zephyr 4.3.0 toolchain
+for `nrf52840dk/nrf52840`. The complete reproducible evidence is under
+[`experiments/spike-003-portable-observable-reference-state-feasibility/`](../../experiments/spike-003-portable-observable-reference-state-feasibility/).
+No board was flashed or operated.
+
+### Candidate outcomes
+
+| Candidate                                              | Ordinary Swift                                | Embedded compile/link                                                  | Zero-heap result                                                                                              | Semantic result                                                                                |
+| ------------------------------------------------------ | --------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Direct Swift class with explicit signaling             | Passed through the dynamic-class host fixture | Passed                                                                 | Failed: an escaping class retained `swift_allocObject -> posix_memalign`; the zero-heap shim returns `ENOMEM` | Host semantics passed, but a preserved Embedded instance cannot materialize without allocation |
+| Generated typed handle with explicit generated setters | Passed                                        | Passed with the same `@State var model: ObservableModel` fixture shape | Passed: both configured heaps are zero and no allocator entry point remains linked                            | Dynamic-class and static-handle profiles produced equivalent results for every shared case     |
+
+A non-escaping Swift class was stack-promoted and linked without an allocator,
+but it cannot outlive transient fixture reconstruction and therefore is not a
+valid state-preservation mechanism.
+
+### Semantic evidence
+
+The shared host driver passed preservation, 20-report coalescing, admitted
+external mutation, replacement, published removal, stale report rejection
+after removal and slot reuse, failed derivation without replay, duplicate
+ownership, state-location exhaustion, and registration exhaustion for both
+profiles. The normalized results are in
+[`semantic-results.tsv`](../../experiments/spike-003-portable-observable-reference-state-feasibility/evidence/semantic-results.tsv).
+
+The generated candidate recorded one materialization, two attaches (initial
+and replacement), 20 model reports coalesced to one initial dirty transition,
+one replacement, two detaches, and two stale-report rejections across the
+full fixture. The three additional report calls exercise the old token, fresh
+replacement token, and detached replacement token. See
+[`operation-counts.tsv`](../../experiments/spike-003-portable-observable-reference-state-feasibility/evidence/operation-counts.tsv).
+
+### Embedded resource evidence
+
+| Metric | Baseline | Generated handle | Delta |
+| --- | ---: | ---: | ---: |
+| Linked RAM bytes (ELF LOAD) | 8,060 | 8,060 | 0 |
+| Linked flash bytes (ELF LOAD files) | 26,232 | 26,680 | +448 |
+| `bss` bytes | 1,049 | 1,087 | +38 |
+| Model storage | 24 | 32 | +8 |
+| Of which generated owner-token storage | 0 | 8 | +8 |
+| State location | 0 | 4 | +4 |
+| Registration | 0 | 8 | +8 |
+| Generation / stale protection | 0 | 2 | +2 |
+| Spike-only instrumentation counters | 0 | 16 | +16 |
+| Generated descriptors | 0 | 0 | 0 |
+| Conservative complete fixture stack | 56 | 88 | +32 |
+
+The unchanged LOAD-segment RAM total reflects linker alignment; the symbol-
+and section-level storage increase is the 38-byte `bss` delta. The two model
+records contain 24 bytes of baseline application/identity fields plus eight
+bytes of generated owner tokens. Dirty and live bits are packed into the
+four-byte state-location record. The 88-byte stack
+bound is a conservative complete call-graph result from linked disassembly,
+not a hardware high-water measurement.
+
+The generated image has `CONFIG_HEAP_MEM_POOL_SIZE=0` and
+`CONFIG_COMMON_LIBC_MALLOC_ARENA_SIZE=0`, retains no allocator entry point,
+and introduces no linked reflection, `Any` storage, task-local binding, Apple
+Observation, Objective-C, exception, `Task`, or thread-primitive dependency
+over the baseline. The final ELF reports ARMv7E-M and VFP register arguments.
+
+### Target-question disposition
+
+1. **Pass:** one portable `@State` source shape preserved identity in shared
+   dynamic/static fixtures and compiled for Embedded Swift.
+2. **Pass for a generated handle; fail for an escaping Swift class:** the
+   address-stable typed handle provides bounded reference semantics without a
+   general heap.
+3. **Pass for explicit generated setters:** they provide sufficient
+   synchronous model-owned signaling. Compiler hooks and macros were not
+   needed to reach the stop condition and were not evaluated.
+4. **Pass:** one bounded registration attached, coalesced, detached, and
+   rejected stale generations without closures or an observer list.
+5. **Pass:** shared fixtures agreed on every required positive and negative
+   semantic case.
+6. **Pass for feasibility evidence:** incremental storage, flash, stack, and
+   bounded path counts are reported above. Production capacity and assembled
+   Signal Analyzer budgets remain Specification work.
 
 ## Limitations
 
@@ -211,13 +288,22 @@ here without promoting a candidate by implication.
   generated declarations, field layout, or tooling are maintainable contracts.
 - Resource deltas from the fixture may not scale linearly to the complete
   Signal Analyzer; downstream Specifications must budget the assembled stack.
+- The pinned compiler can emit `R_ARM_GOT_PREL` relocations for repeated
+  imported C accessor calls that GNU BFD rejects without a useful diagnostic.
+  Keeping the generated model boundary in non-inlined typed functions avoided
+  that relocation while leaving portable Presentation source unchanged. This
+  is a toolchain constraint, not evidence for a production annotation choice.
+- Host execution proves the generated candidate logic and shared semantics;
+  the Embedded images were compiled and linked but not executed on hardware.
 
 ## Disposition
 
-Planned. Feed results to RFC-008's two approval blockers. If no candidate
-satisfies the common portable semantics and zero-heap constraints, RFC-008
-must revise its proposed direction rather than weakening ADR-006 or treating a
-dynamic-only solution as sufficient.
+Completed. The evidence establishes that a generated typed handle with
+explicit generated model-owned setters is a feasible representation and
+instrumentation family under the pinned Embedded Swift configuration. It does
+not select that family as architecture, approve the disposable declarations,
+or establish capacities. RFC-008 review must still choose or constrain the
+portable representation and instrumentation boundary before approval.
 
 If complete-root reevaluation proves infeasible while observation storage is
 otherwise viable, record the measurements against FW-019's revisit trigger;
