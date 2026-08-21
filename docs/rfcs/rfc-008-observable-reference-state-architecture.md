@@ -2,7 +2,7 @@
 id: RFC-008
 feature: observable-reference-state
 title: Observable Reference State Architecture
-status: draft
+status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-21
