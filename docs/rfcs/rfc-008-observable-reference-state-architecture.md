@@ -78,12 +78,14 @@ fall back to heap allocation, reflection, `Any`, task-local binding, or an
 unbounded observer list.
 
 [SPIKE-003](../spikes/spike-003-portable-observable-reference-state-feasibility.md)
-has resolved the representational feasibility question with evidence: a
+has resolved the representation and instrumentation feasibility questions: a
 generated typed handle and explicit generated model-owned setters preserve the
 common semantics, compile and link for Embedded Swift with the same portable
 `@State` source shape, and retain no allocator entry point. The Spike does not
-select that disposable representation as architecture. RFC review must still
-choose or constrain the acceptable representation and instrumentation family.
+select its disposable declarations or layout as production architecture. This
+RFC instead constrains the acceptable family to a bounded typed representation
+with synchronous model-owned change signaling; exact declarations, generation
+mechanics, storage layout, and capacities remain Specification work.
 
 ## Context
 
@@ -361,7 +363,9 @@ claim that model destruction is synonymous with structural removal.
 
 An observable model exposes a narrow framework-facing ability to attach and
 detach one change sink for its owning state location. Exact Swift spelling is
-left to the Specification and SPIKE-003, but the semantic contract is:
+left to the Specification. SPIKE-003 established that explicit generated
+setters can realize the required synchronous signaling, but the semantic
+contract is:
 
 ```text
 attach(owner identity, bounded change sink)
@@ -476,14 +480,14 @@ identity so multiple state declarations in one view remain distinct.
 
 The fixed MVP hierarchy requires these cases:
 
-| Case | Required behavior |
-| --- | --- |
-| Same structural and declaration identity appears again | Preserve the existing model and registration; repeated initializer does not replace it |
-| Admitted assignment replaces the state value | Detach the old model, install the new model at the same location, report the location dirty, and publish the replacement through the normal cycle |
-| Location absent from a complete candidate hierarchy | Stage removal; detach and retire the association only when that semantic revision publishes |
-| Derivation fails before publication | Preserve the previously published live set; discard uncommitted association changes and keep current state dirty |
-| Removed location appears in a later revision | Materialize fresh state from the new initializer; do not resurrect the retired association implicitly |
-| Existing identity is encountered with incompatible model type or generated layout | Return an explicit incompatible-association outcome; do not reinterpret bytes or silently initialize a second value |
+| Case                                                                              | Required behavior                                                                                                                                 |
+| --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Same structural and declaration identity appears again                            | Preserve the existing model and registration; repeated initializer does not replace it                                                            |
+| Admitted assignment replaces the state value                                      | Detach the old model, install the new model at the same location, report the location dirty, and publish the replacement through the normal cycle |
+| Location absent from a complete candidate hierarchy                               | Stage removal; detach and retire the association only when that semantic revision publishes                                                       |
+| Derivation fails before publication                                               | Preserve the previously published live set; discard uncommitted association changes and keep current state dirty                                  |
+| Removed location appears in a later revision                                      | Materialize fresh state from the new initializer; do not resurrect the retired association implicitly                                             |
+| Existing identity is encountered with incompatible model type or generated layout | Return an explicit incompatible-association outcome; do not reinterpret bytes or silently initialize a second value                               |
 
 Moving content changes state lifetime only according to the structural
 identity rules established by the semantic runtime. Explicit identity,
@@ -541,8 +545,10 @@ SPIKE-003 demonstrated one source-level declaration that compiles both
 normally and for the supported Embedded Swift target. Its generated address-
 stable typed handle satisfied these requirements without profile-specific
 portable Presentation code; an escaping Swift reference instance retained an
-unavailable allocation path. RFC review must now decide which feasible
-representation family is acceptable.
+unavailable allocation path. The static representation must therefore remain
+within the bounded typed family described above unless later evidence supports
+an equally portable zero-heap realization. Exact generated declarations and
+storage layout remain Specification work.
 
 ### 9. Registration and teardown safety
 
@@ -779,13 +785,17 @@ does not change semantics or become a portable dependency.
 
 The runtime could record every observable property read during body evaluation
 and invalidate only dependent subtrees after a write. This may reduce work for
-large hierarchies and high-frequency models.
+large hierarchies and high-frequency models. It could eventually be realized
+as a transparent optimization for runtime profiles that can afford it or as an
+optional add-on for high-load or UI-rich systems, provided either form
+preserves the common observable-state semantics.
 
 It requires property identities, read scopes, dependency edges, stale-edge
 cleanup, bounded graph capacity, and reconciliation semantics. Those costs and
 choices are not justified by the fixed MVP hierarchy, for which RFC-002
-already permits complete-root reevaluation. FW-019 preserves reconsideration
-when measurements or a later feature provide a concrete need.
+already permits complete-root reevaluation. RFC-008 rejects it as part of the
+MVP architecture. FW-019 preserves it for a later Exploration when measurements
+or a later feature provide a concrete need.
 
 ### Poll or compare complete model snapshots each cycle
 
@@ -849,19 +859,44 @@ Analyzer.
 
 ## Rejected Approaches
 
-No additional candidate is permanently rejected by this draft beyond choices
-already excluded by accepted architecture and Proposal scope:
+RFC-008 rejects the alternative approaches above for its MVP decision boundary:
 
-- backend-, platform-, driver-, or diagnostic-owned semantic mutation;
-- separate observable semantics for dynamic and static profiles;
-- unbounded static observer or state storage;
-- direct external mutation during frozen derivation;
-- rollback or replay of arbitrary client mutation and side effects;
-- Apple Observation as a required portable dependency; and
-- silent fallback from failed runtime binding to wrapper-local state.
+- **Apple Observation or equivalent automatic property tracking as the common
+  contract:** unavailable as a portable dependency across the supported Linux
+  and Embedded Swift profiles and would expose machinery beyond the required
+  coarse invalidation semantics.
+- **Property-level dependency tracking and selective reevaluation:** adds a
+  dependency graph, reconciliation lifecycle, and bounded-resource choices
+  without an MVP workload that needs them. It is preserved by FW-019 for a
+  later evidence-driven Exploration, including possible runtime-specific or
+  optional add-on forms.
+- **Polling or comparing complete model snapshots:** creates clock-driven or
+  copying work, requires equality semantics, and does not establish safe
+  mutation ordering relative to semantic freeze.
+- **Explicit client calls to `invalidate()`:** exposes runtime coordination to
+  portable Presentation and permits model mutation and invalidation to drift
+  apart silently.
+- **Immutable value snapshots in place of a reference model:** does not satisfy
+  Proposal 005's preserved reference-identity requirement and may repeatedly
+  copy bounded capture data.
+- **Runtime-external ownership through an `ObservedObject`-style wrapper:**
+  introduces externally owned and potentially multi-subscriber observation
+  that is not required by the Signal Analyzer. FW-017 preserves that separate
+  future surface.
+- **Different public state APIs for static and dynamic profiles:** violates
+  ADR-006 and the accepted Proposal's single portable client concept.
+- **General multi-observer registration:** adds observer-list capacity,
+  identity, ordering, removal, and partial-delivery semantics without an MVP
+  use case.
 
-The alternatives above remain reviewable candidates until RFC review and
-SPIKE-003 evidence support a final decision summary.
+The RFC also rejects mechanisms already excluded by accepted architecture and
+Proposal scope: backend-, platform-, driver-, or diagnostic-owned semantic
+mutation; unbounded static observer or state storage; direct external mutation
+during frozen derivation; rollback or replay of arbitrary client mutation and
+side effects; and silent fallback from failed runtime binding to wrapper-local
+state. These rejections are scoped to RFC-008 and do not close FW-017 or
+FW-019, whose own revisit and promotion gates remain authoritative for future
+investigation.
 
 ## Compatibility
 
@@ -997,9 +1032,9 @@ hardware claims.
   revisit externally owned or multi-owner observation rather than expanding
   this RFC speculatively.
 
-## Open Questions
+## Resolved Questions
 
-### Resolved evidence: portable zero-heap reference representation
+### Portable zero-heap reference representation
 
 Can one portable `@State` and observable model declaration compile under the
 supported Embedded Swift toolchain while preserving one stable model identity,
@@ -1011,26 +1046,34 @@ passed shared semantic fixtures, compiled and linked with the portable
 `@State` source shape, retained no allocator, and added 448 linked flash bytes,
 38 `bss` bytes, and 32 bytes to the conservative fixture stack bound over the
 baseline. Representational feasibility is therefore established. RFC review
-must still select or constrain an acceptable family; the Spike result is
-evidence, not a decision.
+must still approve or revise the bounded typed family proposed by this RFC;
+the Spike result is evidence, not approval of its disposable representation.
 
-### Approval blocker: exact portable instrumentation boundary
+### Minimum feasible portable instrumentation
 
-Which minimum source-level mechanism reports model changes: generated property
-setters, explicit model-owned signaling, a compiler-supported observation
-hook, or a combination? The selected mechanism must preserve encapsulation,
-compile for all profiles, avoid property dependency tracking, and make
-out-of-domain mutation testable. SPIKE-003 provides feasibility evidence; RFC
-review must settle the architectural boundary even though exact declarations
-remain Specification work.
+SPIKE-003 demonstrated that explicit generated setters provide sufficient
+synchronous model-owned signaling while preserving the portable `@State`
+source shape, compiling for both tested profiles, avoiding property dependency
+tracking, and making mutation reports testable. Compiler hooks and macros were
+not needed to meet the Spike stop condition and were not evaluated. This
+closes the feasibility question without making the Spike's disposable setter
+spelling or generation layout a production contract.
 
-### Specification input: numeric bounds and encodings
+## Open Questions
+
+No evidence questions remain open after SPIKE-003. RFC review must still
+approve or revise the proposed bounded typed representation and synchronous
+model-owned signaling boundary; that review gate is not delegated to the
+Spike.
+
+## Specification Inputs
 
 State-location counts, registration counts, identity widths, stale-token
 protection, external-fact capacities, and exact outcome cases remain
-Specification inputs once the representation family and measured costs are
-known. They are not RFC blockers unless evidence shows that no finite viable
-bound fits the Signal Analyzer.
+Specification inputs. The Spike supplied representative incremental costs but
+did not establish production capacities or encodings. These are not RFC open
+questions unless later evidence shows that no finite viable bound fits the
+Signal Analyzer.
 
 ## Deferred and Follow-up Work
 
@@ -1039,8 +1082,10 @@ bound fits the Signal Analyzer.
   questions. It does not establish production API, storage, or architecture.
 - [FW-019](../future-work/fw-019-fine-grained-observable-dependency-tracking.md)
   captures property-level dependency tracking and selective subtree
-  reevaluation. Revisit if measured complete-root work misses an accepted
-  target requirement or a later accepted feature needs selective observation.
+  reevaluation for a later Exploration, including transparent runtime-specific
+  optimization and optional add-on forms. Revisit if measured complete-root
+  work misses an accepted target requirement or a later accepted high-load or
+  UI-rich feature needs selective observation.
 - [FW-017](../future-work/fw-017-public-binding-abstraction.md) keeps public
   `Binding`, externally owned observation, and binding-dependent controls out
   of this MVP feature. Revisit only through its existing concrete triggers.
@@ -1052,8 +1097,8 @@ gain roadmap or implementation status through this RFC.
 
 ## Decision Summary
 
-If the open blockers are resolved and review supports the proposed direction,
-the approved RFC is expected to produce separate ADR candidates for:
+If review supports the proposed direction, the approved RFC is expected to
+produce separate ADR candidates for:
 
 1. structurally owned observable reference state, including preservation,
    initializer, replacement, publication-committed removal, and one-owner

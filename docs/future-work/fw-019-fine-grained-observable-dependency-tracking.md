@@ -29,6 +29,12 @@ the complete portable root. A future larger hierarchy or higher update rate
 could benefit from recording which model properties affect which semantic
 subtrees and reevaluating only the affected work.
 
+The optimization may make sense only for runtime profiles with enough memory
+and runtime metadata support, or as an optional add-on for high-load or UI-rich
+systems. A future Exploration should determine whether it can remain a
+transparent implementation optimization or whether an opt-in module,
+capability, or public contract is actually necessary.
+
 ## Why Deferred
 
 RFC-002 explicitly permits complete-root reevaluation for MVP, and the fixed
@@ -42,13 +48,19 @@ them.
 
 - Reduce semantic evaluation, layout, or lowering work for large hierarchies
   whose observable models change frequently but locally.
+- Allow capable runtime profiles or high-load applications to pay dependency-
+  tracking costs without imposing them on small static targets.
 - Provide evidence for a future retained or selectively reconciled semantic
   representation without changing backend render semantics.
+- Preserve complete-root reevaluation as a simple fallback when selective
+  tracking is disabled, unavailable, exhausted, or not beneficial.
 
 ## Current Non-goals
 
 - No property token, read-tracking API, dependency graph, partial subtree
   reconciliation, or retained lifecycle is added to RFC-008 or the MVP.
+- No optional module, capability, runtime-profile distinction, or public opt-in
+  is selected by this capture.
 - This item does not authorize Apple Observation, dynamic-only behavior, an
   unbounded graph, or implementation work.
 - Whole-root invalidation remains conforming unless a later accepted artifact
@@ -61,15 +73,29 @@ them.
   requirement on a supported target.
 - An accepted Proposal introduces a substantially larger or dynamic hierarchy
   with a concrete selective-update requirement.
+- Measurements from a high-load or UI-rich application show that complete-root
+  reevaluation dominates an accepted CPU, latency, memory-bandwidth, or power
+  budget while updates affect only a small portion of the hierarchy.
+- A runtime profile or optional-module design can demonstrate bounded metadata
+  costs and identical published semantics with selective tracking both enabled
+  and disabled.
 - FW-004 is promoted and a retained producer requires an independently
   reviewable invalidation/dependency architecture.
 
 ## Disposition
 
 Captured for post-MVP or evidence-triggered reconsideration. If a trigger
-fires, begin with an Exploration that measures invalidation sources, affected
-work, graph cardinality, and bounded static representation before proposing an
-architecture.
+fires, promote this item to an Exploration that measures invalidation sources,
+affected work, graph cardinality, reconciliation cost, and bounded static
+representation. The Exploration should compare at least:
+
+1. a transparent optimization inside capable runtime profiles;
+2. an optional add-on for high-load or UI-rich systems; and
+3. retaining complete-root reevaluation everywhere.
+
+If the preferred direction changes public API, capability semantics, module
+boundaries, or cross-profile guarantees, it must proceed through an accepted
+Proposal and RFC rather than entering implementation directly.
 
 ## References
 
