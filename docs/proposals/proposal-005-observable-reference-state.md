@@ -12,6 +12,7 @@ related_rfcs:
   - RFC-001
   - RFC-002
   - RFC-004
+  - RFC-008
 related_adrs: []
 related_specs:
   - SPEC-001
@@ -206,4 +207,5 @@ lack a concrete MVP requirement.
 - [RFC-001: Signal Analyzer Application Architecture](../rfcs/rfc-001-signal-analyzer-application-architecture.md)
 - [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-004: Run Cycle and Frame Transaction](../rfcs/rfc-004-run-cycle-and-frame-transaction.md)
+- [RFC-008: Observable Reference State Architecture](../rfcs/rfc-008-observable-reference-state-architecture.md)
 - [SPEC-001: Signal Analyzer Reference Application](../specs/spec-001-signal-analyzer-reference-application.md)

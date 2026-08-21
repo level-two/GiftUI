@@ -84,10 +84,11 @@ features:
     milestone: MVP
   observable-reference-state:
     title: Observable Reference State
-    status: proposal
+    status: rfc
     proposal:
       - PROPOSAL-005
-    rfcs: []
+    rfcs:
+      - RFC-008
     adrs: []
     specs: []
     dependencies:

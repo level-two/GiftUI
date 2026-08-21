@@ -6,11 +6,12 @@ status: captured
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-20
+updated: 2026-08-21
 source:
   - RFC-002
   - ADR-005
-related_future_work: []
+related_future_work:
+  - FW-019
 related_explorations: []
 related_spikes: []
 promoted_to: []
@@ -81,3 +82,4 @@ implementation can answer.
 
 - [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [PROPOSAL-003: GiftUI MVP Architecture Establishment](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
+- [FW-019: Fine-Grained Observable Dependency Tracking](fw-019-fine-grained-observable-dependency-tracking.md)

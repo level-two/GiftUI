@@ -6,9 +6,10 @@ status: captured
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
-updated: 2026-08-20
+updated: 2026-08-21
 source:
   - RFC-002
+  - RFC-008
 related_future_work: []
 related_explorations: []
 related_spikes: []
@@ -73,5 +74,6 @@ gates.
 ## References
 
 - [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
+- [RFC-008: Observable Reference State Architecture](../rfcs/rfc-008-observable-reference-state-architecture.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [MVP Milestones](../roadmap/MVP_MILESTONES.md)
