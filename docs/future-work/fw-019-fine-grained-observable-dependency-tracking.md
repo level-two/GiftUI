@@ -24,7 +24,7 @@ target_milestone: null
 
 ## Observation / Opportunity
 
-RFC-008's MVP candidate marks one observable model owner dirty and reevaluates
+RFC-008's approved MVP architecture marks one observable model owner dirty and reevaluates
 the complete portable root. A future larger hierarchy or higher update rate
 could benefit from recording which model properties affect which semantic
 subtrees and reevaluating only the affected work.
@@ -58,7 +58,7 @@ them.
 ## Current Non-goals
 
 - No property token, read-tracking API, dependency graph, partial subtree
-  reconciliation, or retained lifecycle is added to RFC-008 or the MVP.
+  reconciliation, or retained lifecycle is part of RFC-008 or the MVP.
 - No optional module, capability, runtime-profile distinction, or public opt-in
   is selected by this capture.
 - This item does not authorize Apple Observation, dynamic-only behavior, an

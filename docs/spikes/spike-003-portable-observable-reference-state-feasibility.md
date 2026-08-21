@@ -298,12 +298,13 @@ over the baseline. The final ELF reports ARMv7E-M and VFP register arguments.
 
 ## Disposition
 
-Completed. The evidence establishes that a generated typed handle with
+Completed. The evidence established that a generated typed handle with
 explicit generated model-owned setters is a feasible representation and
-instrumentation family under the pinned Embedded Swift configuration. It does
-not select that family as architecture, approve the disposable declarations,
-or establish capacities. RFC-008 review must still choose or constrain the
-portable representation and instrumentation boundary before approval.
+instrumentation family under the pinned Embedded Swift configuration.
+RFC-008 has since approved the bounded typed representation family and
+synchronous model-owned signaling boundary, now extracted into proposed
+ADR-025 and ADR-026. The Spike still does not approve its disposable
+declarations, generation layout, or production capacities.
 
 If complete-root reevaluation proves infeasible while observation storage is
 otherwise viable, record the measurements against FW-019's revisit trigger;
@@ -315,5 +316,7 @@ do not add property-level tracking to the Spike or RFC silently.
 - [PROPOSAL-005: Observable Reference State](../proposals/proposal-005-observable-reference-state.md)
 - [ADR-006: Shared Semantics Across Runtime Profiles](../adrs/adr-006-shared-semantics-runtime-profiles.md)
 - [ADR-011: Serialized Run Cycle and Semantic Publication](../adrs/adr-011-serialized-run-cycle-and-publication.md)
+- [ADR-025: Coarse Model-Owned Observable Invalidation](../adrs/adr-025-coarse-model-owned-observable-invalidation.md)
+- [ADR-026: Profile-Equivalent Bounded Observable State Realization](../adrs/adr-026-profile-equivalent-bounded-observable-state.md)
 - [GiftUI Embedded Layer Inventory](../GiftUI_Embedded_Layer_Inventory.md)
 - [nRF52840 Toolchain Skill](../../skills/giftui-nrf-toolchain/SKILL.md)

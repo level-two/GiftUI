@@ -2,7 +2,7 @@
 id: RFC-008
 feature: observable-reference-state
 title: Observable Reference State Architecture
-status: review
+status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-21
@@ -25,6 +25,10 @@ related_adrs:
   - ADR-014
   - ADR-015
   - ADR-016
+  - ADR-024
+  - ADR-025
+  - ADR-026
+  - ADR-027
 related_specs:
   - SPEC-001
 related_future_work:
@@ -42,10 +46,10 @@ target_milestone: MVP
 
 ## Summary
 
-This RFC proposes one portable observable-reference-state contract for the
+This RFC establishes one portable observable-reference-state contract for the
 Signal Analyzer across GiftUI's dynamic and static runtime profiles.
 
-The proposed contract gives one structurally identified `@State` location
+The approved contract gives one structurally identified `@State` location
 ownership of one identity-bearing presentation model. The state location
 preserves that model while transient view values are recreated, attaches one
 runtime invalidation registration while the location is live, and detaches the
@@ -300,8 +304,8 @@ static profiles.
 
 ### R11 — Representative constrained-cost evidence
 
-Before this RFC is ready for approval, at least one representative static
-realization conforming to the proposed bounded typed family MUST report state
+RFC approval requires at least one representative static realization
+conforming to the bounded typed family to report state
 and registration RAM, incremental flash, stack requirements or a reproducible
 conservative bound, invalidation work, and zero-heap evidence for the supported
 Embedded Swift target. This evidence establishes feasibility of the proposed
@@ -1079,7 +1083,8 @@ migration.
 
 ADR-002 and SPEC-001 currently require Presentation sink callbacks and
 ViewModel state mutation to complete synchronously on the application
-executor. This proposal intentionally changes that behavior: synchronous
+executor. This approved design intentionally changes that behavior:
+synchronous
 application delivery completes when the target-composed adapter returns its
 admission outcome, while observable state changes when the admitted fact is
 later applied in the GiftUI domain. RFC approval alone does not change current
@@ -1238,9 +1243,9 @@ escaping class retained an unavailable allocation path. The generated handle
 passed shared semantic fixtures, compiled and linked with the portable
 `@State` source shape, retained no allocator, and added 448 linked flash bytes,
 38 `bss` bytes, and 32 bytes to the conservative fixture stack bound over the
-baseline. Representational feasibility is therefore established. RFC review
-must still approve or revise the bounded typed family proposed by this RFC;
-the Spike result is evidence, not approval of its disposable representation.
+baseline. Representational feasibility is therefore established. RFC approval
+confirms the bounded typed family established here; the Spike result remains
+evidence, not approval of its disposable representation.
 
 ### Minimum feasible portable instrumentation
 
@@ -1254,18 +1259,17 @@ spelling or generation layout a production contract.
 
 ## Open Questions
 
-No evidence questions remain open after SPIKE-003. RFC review must still
-approve or revise the proposed bounded typed representation and synchronous
-model-owned signaling boundary; that review gate is not delegated to the
-Spike.
+No evidence questions remain open after SPIKE-003. RFC approval confirms the
+bounded typed representation family and synchronous model-owned signaling
+boundary; it does not make the Spike's disposable declarations authoritative.
 
 The distinct-domain choice creates a lifecycle prerequisite rather than an
-open design question. After RFC approval, a proposed ADR must supersede
-ADR-002, preserve its unaffected synchronous application rules, and replace
-its Presentation-mutation rule with delivery through the admission adapter.
-Only after that ADR is accepted may SPEC-001 be revised and returned to human
-review. Current implementation work must continue to treat ADR-002 and
-SPEC-001 as authoritative until those gates complete.
+open design question. ADR-027 proposes to supersede ADR-002, preserve its
+unaffected synchronous application rules, and replace its
+Presentation-mutation rule with delivery through the admission adapter. Only
+after ADR-027 is accepted may SPEC-001 be revised and returned to human review.
+Current implementation work must continue to treat ADR-002 and SPEC-001 as
+authoritative until those gates complete.
 
 ## Specification Inputs
 
@@ -1299,8 +1303,7 @@ gain roadmap or implementation status through this RFC.
 
 ## Decision Summary
 
-If review supports the proposed direction, the approved RFC is expected to
-produce separate ADR candidates for:
+This approved RFC produces separate proposed ADRs for:
 
 1. structurally owned observable reference state, including preservation,
    initializer, replacement, publication-committed removal, and one-owner
@@ -1315,8 +1318,9 @@ produce separate ADR candidates for:
    ADR-002 while preserving synchronous source, repository, use-case, and sink
    work through the target-composed adapter.
 
-These are candidate extractions only. This draft does not accept them,
-authorize implementation, or select exact APIs and capacities.
+These extractions remain proposed until explicit human acceptance. RFC
+approval does not authorize implementation or select exact APIs and
+capacities.
 
 ## References
 

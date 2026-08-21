@@ -29,6 +29,7 @@ features:
       - ADR-002
       - ADR-003
       - ADR-004
+      - ADR-027
     specs:
       - SPEC-001
     dependencies:
@@ -84,12 +85,15 @@ features:
     milestone: MVP
   observable-reference-state:
     title: Observable Reference State
-    status: rfc
+    status: decision
     proposal:
       - PROPOSAL-005
     rfcs:
       - RFC-008
-    adrs: []
+    adrs:
+      - ADR-024
+      - ADR-025
+      - ADR-026
     specs: []
     dependencies:
       - giftui-mvp-architecture
