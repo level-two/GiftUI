@@ -2,11 +2,11 @@
 id: PROPOSAL-005
 feature: observable-reference-state
 title: Observable Reference State
-status: draft
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
-updated: 2026-08-20
+updated: 2026-08-21
 proposal: []
 related_rfcs:
   - RFC-001
