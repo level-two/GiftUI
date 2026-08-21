@@ -15,6 +15,7 @@ related_rfcs:
   - RFC-004
   - RFC-005
 related_adrs:
+  - ADR-002
   - ADR-004
   - ADR-005
   - ADR-006
@@ -62,12 +63,15 @@ one published semantic revision. This is intentionally conservative: it
 satisfies the fixed Signal Analyzer hierarchy without introducing a reactive
 graph, retained subtree lifecycle, or property-level dependency storage.
 
-All model mutation remains inside RFC-004's serialized mutation phase.
-External acquisition producers submit bounded state-change facts; applying an
-admitted fact may mutate the model and report a change, but a producer may not
-mutate the model directly during derivation. Observation never causes
-immediate rendering and never bypasses the run-cycle freeze or publication
-boundary.
+All model mutation remains inside RFC-004's serialized mutation phase. The
+Signal Analyzer application executor and GiftUI mutation domain remain
+logically distinct: synchronous source, repository, use-case, and sink work
+terminates at a presentation admission adapter, which submits bounded
+state-change facts.
+Applying an admitted fact may mutate the model and report a change, but the
+application executor and its producers may not mutate the observable model
+directly. Observation never causes immediate rendering and never bypasses the
+run-cycle freeze or publication boundary.
 
 Dynamic and static profiles may use different model storage, observer
 representation, and binding machinery. They must preserve the same ownership,
@@ -97,12 +101,24 @@ visible-window selection, and errors, and changes to those values must update
 the portable presentation on all four MVP configurations.
 
 [SPEC-001](../specs/spec-001-signal-analyzer-reference-application.md) defines
-the application-facing need without selecting a GiftUI mechanism. The
-`SignalAnalyzerViewModel` owns one view-state value, receives synchronous
-application-domain updates, exposes actions, and must participate in the
-GiftUI observation contract. Acquisition may deliver up to 80 transitions per
-second while presentation runs at approximately four frames per second, so up
-to 20 invalidations may be coalesced into one internally consistent frame.
+the application-facing need without selecting a GiftUI mechanism. Under its
+current contract, the `SignalAnalyzerViewModel` owns one view-state value,
+receives synchronous application-domain updates, exposes actions, and must
+participate in the GiftUI observation contract. Acquisition may deliver up to
+80 transitions per second while presentation runs at approximately four frames
+per second, so up to 20 invalidations may be coalesced into one internally
+consistent frame.
+
+ADR-002 and SPEC-001 currently place Presentation sink delivery and ViewModel
+mutation on the same serialized application executor as source, repository,
+and use-case work. This RFC proposes a narrower boundary: that synchronous
+application chain ends at a presentation admission adapter, and observable
+ViewModel mutation occurs later only after bounded RFC-004 admission. If this
+RFC is approved, a new ADR must supersede ADR-002, preserve its unaffected
+synchronous application rules, and replace its Presentation-mutation rule;
+SPEC-001 must then return to review before implementation may rely on this
+boundary.
+Until those transitions occur, ADR-002 and SPEC-001 remain authoritative.
 
 Accepted architecture already fixes the surrounding ownership:
 
@@ -159,9 +175,13 @@ RFCs rather than independently approvable choices.
 
 Adjacent ownership remains separate:
 
-- RFC-001 and SPEC-001 own Signal Analyzer application-domain state,
-  acquisition use cases, and presentation behavior. This RFC does not define
-  capture storage or acquisition architecture.
+- RFC-001, ADR-002, and SPEC-001 own Signal Analyzer application-domain state,
+  synchronous source/repository/use-case delivery, and presentation behavior.
+  This RFC does not define capture storage or acquisition architecture, but it
+  proposes that their synchronous delivery chain terminate at a presentation
+  admission adapter rather than directly mutating the observable ViewModel.
+  That focused change requires a superseding ADR and reviewed Specification
+  update; it is not an implicit reinterpretation of current authority.
 - RFC-002 and its accepted ADRs own semantic/backend boundaries, structural
   identity authority, runtime-profile equivalence, and the module dependency
   direction. This RFC specializes the B11 public state seam without reopening
@@ -207,6 +227,12 @@ identity plus the declaration's state-slot identity. Removal and replacement
 MUST have deterministic, testable behavior. Failed or partial derivation MUST
 NOT retire state based on an unpublished hierarchy.
 
+An admitted model replacement MUST be atomic at the observable state
+location. It MUST either install the new model with an active registration or
+leave the existing model and registration unchanged. A failed replacement
+MUST NOT leave the location vacant, publish the candidate, or retire the
+existing registration.
+
 ### R4 — Bounded observation
 
 Every static-path model location, registration, live-state mark, and teardown
@@ -220,7 +246,22 @@ All GiftUI-observed model mutation MUST occur inside RFC-004's serialized
 mutation domain. External producers MUST submit bounded facts through the
 approved admission boundary rather than mutate the model directly.
 
+The Signal Analyzer application executor and GiftUI mutation domain MUST be
+logically distinct serialization domains. Source, repository, and use-case
+calls plus repository sink delivery MUST run synchronously to a presentation
+admission adapter on the application executor. The adapter MUST copy or
+construct a bounded immutable fact and submit it through RFC-004 admission;
+only application of that admitted fact MAY mutate the observable model. A host
+MAY schedule both domains on one underlying thread or event loop, but
+co-location MUST NOT permit direct or reentrant application-executor mutation
+of GiftUI-observed state.
+
 ### R6 — Coalesced complete publication
+
+Every admitted mutation that changes observable model state MUST
+synchronously produce at least one model-change report before the mutation
+operation returns. A report MAY be omitted only when the mutation operation
+proves that no observable model state changed.
 
 One or more model-change reports in an admitted mutation batch MUST mark the
 owning state location dirty without triggering reentrant evaluation. The
@@ -257,12 +298,17 @@ replacement, removal, change coalescing, mutation ordering, failed derivation,
 external-fact admission, and deterministic exhaustion across dynamic and
 static profiles.
 
-### R11 — Measured constrained cost
+### R11 — Representative constrained-cost evidence
 
-The selected static realization MUST report state and registration RAM,
-incremental flash, stack requirements, invalidation work, and zero-heap
-evidence for the supported Embedded Swift target before this RFC is ready for
-approval.
+Before this RFC is ready for approval, at least one representative static
+realization conforming to the proposed bounded typed family MUST report state
+and registration RAM, incremental flash, stack requirements or a reproducible
+conservative bound, invalidation work, and zero-heap evidence for the supported
+Embedded Swift target. This evidence establishes feasibility of the proposed
+family; it does not select production declarations, storage layout, or
+capacities. Any production realization selected by a downstream Specification
+MUST preserve the zero-heap and dependency constraints and remeasure its
+assembled application costs.
 
 ## Constraints
 
@@ -283,6 +329,11 @@ approval.
 - Acquisition may publish up to 80 transitions per second while frames are
   paced at 250 milliseconds. Observation must allow at least the resulting 20
   changes to coalesce without dropping the underlying admitted facts.
+- The application-domain pipeline remains synchronous through its presentation
+  admission adapter. Admission buffering, capacity, and later ViewModel
+  application belong to runtime/host integration and MUST NOT introduce a
+  queue, task, lock, or cross-domain mechanism into portable Domain or
+  Presentation contracts.
 - Direct client observation of the mutable model outside GiftUI's published
   revision boundary is not transactionally atomic and must not be described
   as covered by GiftUI publication.
@@ -372,7 +423,8 @@ attach(owner identity, bounded change sink)
     -> active registration or explicit failure
 
 admitted model mutation
-    -> zero or more synchronous change reports
+    -> one or more synchronous change reports when observable state changes
+       (zero only when the mutation proves that observable state did not change)
     -> owning location dirty
     -> at most one pending wake requirement
 
@@ -399,7 +451,10 @@ without changing the MVP's one-owner behavior.
 ### 4. Coarse invalidation and reevaluation
 
 The runtime records a dirty bit or equivalent bounded state for the owning
-location. Every reported semantically visible mutation marks that state dirty.
+location. Every report for a semantically visible mutation marks that state
+dirty. Observable state is the model state covered by its GiftUI observation
+contract; the common contract does not classify visibility from current
+property reads or require property-level published/not-published annotations.
 Reports do not accumulate into an event history and do not count mutations for
 correctness. Twenty capture updates before the next cycle may therefore leave
 one dirty bit and one coalesced wake request while all 20 already-admitted
@@ -431,14 +486,51 @@ There are two supported mutation origins:
    mutation operation synchronously. Model writes report change, mark the
    owner dirty, and return before the next action or fact is applied.
 2. **External application facts.** Acquisition, callbacks, interrupts, or
-   workers submit bounded typed facts to RFC-004 admission. The next cycle
-   seals and applies those facts in order; applying a fact invokes the model's
-   synchronous mutation operation inside the same serialized phase.
+   workers enter the Signal Analyzer application executor and run the
+   synchronous source and repository chain. Repository capture and
+   acquisition-state sink delivery terminates at a target-composed presentation
+   admission adapter installed through the existing observation use cases.
+   That adapter copies or constructs a bounded immutable fact and submits it to
+   RFC-004 admission. The next cycle seals and applies those facts in order;
+   applying a fact invokes the model's synchronous mutation operation inside
+   the GiftUI serialized phase.
 
 The model itself is not the cross-domain queue. An external producer cannot
 retain mutating authority and rely on an observation callback to make an
 already-concurrent write safe. The application/runtime adapter owns fact
 conversion, capacity, sequencing, and admission outcomes.
+
+```text
+Signal Analyzer application executor
+    source -> repository -> capture/state sink (presentation admission adapter)
+                                      |
+                                      | bounded immutable fact
+                                      v
+RFC-004 admission -> GiftUI serialized mutation domain
+                         -> ViewModel mutation
+                         -> synchronous change report
+                         -> owner dirtiness
+                         -> frozen derivation and publication
+```
+
+These are logically distinct domains even when a host realizes them with one
+thread or cooperative event loop. Returning from the synchronous application
+callback means that the adapter has produced an admission outcome; it does not
+mean that the observable ViewModel has already changed. Successful admission
+guarantees only later ordered application according to RFC-004. Saturation or
+rejection returns an explicit bounded outcome and MUST NOT fall back to direct
+ViewModel mutation.
+
+Button actions that invoke Signal Analyzer use cases cross in the opposite
+direction through the target-composed application-executor contract. The use
+case call remains synchronous and non-suspending, but any capture or
+acquisition-state callback it produces terminates at the presentation
+admission adapter and becomes a fact for a later RFC-004 admission boundary;
+it MUST NOT reenter and mutate the ViewModel during the active action. Local
+presentation-only action effects, such as visible-window selection, remain
+ordinary admitted ViewModel mutations inside the GiftUI domain. Exact host
+entry mechanics belong to the revised downstream Specification and MUST
+preserve RFC-004's non-suspending cycle.
 
 One cycle behaves as follows for observable state:
 
@@ -483,7 +575,8 @@ The fixed MVP hierarchy requires these cases:
 | Case                                                                              | Required behavior                                                                                                                                 |
 | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Same structural and declaration identity appears again                            | Preserve the existing model and registration; repeated initializer does not replace it                                                            |
-| Admitted assignment replaces the state value                                      | Detach the old model, install the new model at the same location, report the location dirty, and publish the replacement through the normal cycle |
+| Admitted assignment successfully replaces the state value                         | Atomically install the new model and active registration at the same location, detach the old registration, report the location dirty, and publish the replacement through the normal cycle |
+| Admitted replacement cannot validate, reserve, or attach the candidate             | Undo any partial candidate attachment, leave the existing model and registration unchanged, return the bounded failure outcome, and do not dirty the location solely for the failed attempt |
 | Location absent from a complete candidate hierarchy                               | Stage removal; detach and retire the association only when that semantic revision publishes                                                       |
 | Derivation fails before publication                                               | Preserve the previously published live set; discard uncommitted association changes and keep current state dirty                                  |
 | Removed location appears in a later revision                                      | Materialize fresh state from the new initializer; do not resurrect the retired association implicitly                                             |
@@ -498,6 +591,18 @@ New association creation and removal are transactional only with respect to
 which structural locations become live at semantic publication. This does not
 provide rollback for arbitrary side effects performed by a model initializer,
 which is why such initializers may not rely on candidate publication.
+
+Replacement is an admitted state operation rather than a candidate-hierarchy
+lifetime change. Before retiring the current registration, an implementation
+MUST either reserve and stage every resource required by the candidate or
+prove through preflight that the remaining in-place handoff cannot fail. A
+dynamic or static profile MAY use a bounded temporary registration, a staged
+ownership token, or a preflighted in-place handoff, but the mechanism MUST NOT
+change the atomic failure semantics above.
+
+Once a replacement succeeds, it is an applied mutation under RFC-004. A later
+derivation failure does not restore the old model: the new model remains
+current and dirty for paced rederivation without replaying the assignment.
 
 ### 7. Dynamic runtime realization
 
@@ -557,6 +662,12 @@ registration record are available. A partially attached model must be
 detached before returning failure. The runtime may not publish a state
 location that cannot report later changes.
 
+When attachment is part of replacement, candidate validation, reservation,
+and attachment failure MUST preserve the existing live association. A
+Specification MAY choose bounded staging or a preflighted non-failing handoff,
+but it MUST NOT detach the existing model while a later ordinary failure can
+still leave the candidate unregistered.
+
 Detachment must prevent a later change report from addressing a reused state
 location. Static implementations may use a bounded generation, ownership
 token, or direct teardown ordering; dynamic implementations may invalidate a
@@ -574,8 +685,8 @@ Observable-state operations use the accepted failure architecture:
 | Condition | Minimum meaning and containment |
 | --- | --- |
 | State-location capacity exhausted | Explicit expected operational outcome; candidate association is not installed and no local fallback is created |
-| Registration capacity exhausted | Explicit expected operational outcome; any partial attachment is undone and the candidate association is not published |
-| Same model attached to a second owning location | Deterministic duplicate-ownership outcome; neither location silently acquires ambiguous notification semantics |
+| Registration capacity exhausted | Explicit expected operational outcome; any partial attachment is undone and the candidate association is not published; during replacement the existing association remains active |
+| Same model attached to a second owning location | Deterministic duplicate-ownership outcome; the original owner and any model being replaced remain unchanged, and no location silently acquires ambiguous notification semantics |
 | Existing location has incompatible model type/layout | Explicit failure with the state location as affected scope; stored bytes are not reinterpreted |
 | Stale report targets a detached/reused location | Reject the report; preserve source identity; containment is no narrower than can be proved |
 | Mutation report during the frozen or otherwise prohibited phase | Mark the semantic scope dirty and report a phase violation; if stable state cannot be proved, containment is `safety not proven` |
@@ -600,8 +711,8 @@ belong to Specifications conforming to ADR-014 and ADR-015.
 | `GiftUIRuntimeDynamic` | Dynamic state-location storage, strong ownership where selected, registration implementation, runtime binding, and dynamic failure adaptation | Depends downward on portable/semantic/execution/failure contracts; imports no concrete backend or Apple Observation as a required semantic owner |
 | `GiftUIRuntimeStatic` | Generated or caller-supplied typed locations, fixed registration and live/dirty bookkeeping, deterministic exhaustion, and direct specialized binding | Depends on the same contracts; no heap, reflection, `Any`, task-local binding, or unrestricted existential store |
 | RFC-004 execution coordinator | Seal facts/actions, establish the permitted mutation phase, freeze observation, publish revisions, retain dirty state after derivation failure, and request paced cycles | Does not define model storage or public state syntax |
-| Application/runtime fact adapter | Convert external acquisition delivery into bounded typed facts and submit them to admission | Cannot mutate the model directly, attach semantic observers, or decide cycle membership after sealing |
-| Target host | Construct the application model and dependencies, supply profile storage/capacities and wake integration, and start/stop application-domain observation explicitly | Composition root only; exports no target identity or scheduler to portable views |
+| Target-composed presentation admission adapter | Terminate synchronous application-executor delivery, copy or construct bounded immutable presentation facts, and submit them to RFC-004 admission | Cannot mutate the observable model directly, attach semantic observers, decide cycle membership after sealing, or expose admission machinery to portable views |
+| Target host | Construct the application model and dependencies, supply profile storage/capacities and wake integration, schedule the logically distinct application and GiftUI domains, and start/stop application-domain observation explicitly | Composition root only; may co-locate domains on one thread but cannot erase admission or export target identity or scheduler to portable views |
 | Backend/platform/driver/diagnostics | No observable-state responsibility beyond consuming already published downstream work or optional non-authoritative facts | Cannot own models, register observers, mutate state, wake through diagnostics, or invoke actions |
 
 The exact maintained target names remain Specification work except for the
@@ -632,6 +743,13 @@ This example is illustrative, not an approved declaration. The Specification
 must decide the exact observable-model marker, generated annotation or manual
 conformance, initializer spelling, access control, mutation enforcement, and
 whether replacement assignment is exposed in the MVP API.
+
+The presentation admission adapter and its bounded application facts are
+target-composed application/runtime contracts, not additional types exposed to
+portable views. The revised Signal Analyzer Specification must decide whether
+the ViewModel stops implementing the repository sink protocols directly or
+adapts them through a separate target-supplied object; either form must keep
+direct application-executor mutation out of the observable model.
 
 The public semantic expectations are architectural:
 
@@ -684,6 +802,8 @@ The common static path must prove:
   escaping closures or observer lists;
 - state locations, registrations, touched/live sets, and external-fact
   admission are separately bounded;
+- replacement staging, when used, is separately bounded and does not require
+  permanent duplicate registration capacity per live state location;
 - no string structural paths, `Any` state dictionary, reflection, task-local
   binding, Objective-C runtime, Apple Observation, `Task`, thread, or exception
   dependency reaches the image;
@@ -713,7 +833,9 @@ For the proposed coarse design:
 - applying external facts remains proportional to the sealed fact count under
   RFC-004;
 - live-state reconciliation is proportional to the number of state locations
-  visited by the fixed hierarchy; and
+  visited by the fixed hierarchy;
+- model replacement is bounded validation plus registration handoff work and
+  does not create an unbounded retry or staging queue; and
 - reevaluation cost is proportional to the complete MVP root rather than an
   affected subtree.
 
@@ -744,12 +866,18 @@ model storage owned by the application/profile
     + one registration or direct sink endpoint
     + live/staged/dirty bits
     + bounded stale-registration protection
+    + bounded transient replacement staging, if selected
     + RFC-004 fact admission storage (owned separately)
 ```
 
 The design does not require property dependency nodes, observer arrays,
 mutation logs, model snapshots, rollback journals, or a retained semantic
 history.
+
+A preflighted non-failing handoff may require no additional replacement
+record. If a profile instead stages a candidate registration, its Specification
+MUST state the maximum concurrent staging capacity and include that storage in
+the static budget; replacement MUST NOT acquire unbounded temporary storage.
 
 SPIKE-003 reports, for comparable baseline and candidate fixtures:
 
@@ -767,6 +895,23 @@ but it must still avoid unbounded pending invalidation history and must expose
 equivalent deterministic behavior at configured contract boundaries.
 
 ## Alternatives
+
+### Unify the application executor with the GiftUI mutation domain
+
+The Signal Analyzer application executor could be defined as the same
+serialization domain as RFC-004. Source, repository, use-case, and ViewModel
+work would then run synchronously without an explicit fact-admission seam.
+This minimizes handoff state and lets application callbacks observe ViewModel
+mutation before returning.
+
+It is not proposed because it makes the application's execution model
+identical to GiftUI runtime execution, couples external producers to the
+runtime's mutation phase, and weakens the reusable boundary for callbacks,
+interrupts, timers, and substantially different hosts. Co-location on one
+thread remains permitted as an implementation choice, but authority still
+crosses through bounded admission. The distinct-domain design therefore pays
+one bounded fact handoff and possibly one-cycle presentation latency in
+exchange for explicit mutation ownership and deterministic freeze behavior.
 
 ### Apple Observation or equivalent automatic property tracking
 
@@ -861,6 +1006,9 @@ Analyzer.
 
 RFC-008 rejects the alternative approaches above for its MVP decision boundary:
 
+- **One shared application/GiftUI serialization domain:** removes the explicit
+  fact boundary but couples application execution to GiftUI mutation phases and
+  permits external delivery mechanics to become semantic runtime authority.
 - **Apple Observation or equivalent automatic property tracking as the common
   contract:** unavailable as a portable dependency across the supported Linux
   and Embedded Swift profiles and would expose machinery beyond the required
@@ -915,6 +1063,12 @@ the approved application contract, and then supply it as the root's initial
 state model. This preserves application behavior while avoiding repeated or
 abandoned lifecycle effects.
 
+The target composition must replace direct repository/use-case sink delivery
+to the observable ViewModel with a bounded presentation admission adapter. The
+portable view hierarchy need not name that adapter, executor, or fact queue,
+but Signal Analyzer Presentation types and wiring require a reviewed contract
+update.
+
 ### Behavioral compatibility
 
 The maintained behavior preserves one model across reevaluation, synchronously
@@ -922,6 +1076,15 @@ applies actions and admitted facts, coalesces invalidation, and publishes
 internally consistent revisions. Current code that mutates an observed model
 from an arbitrary task, callback, or thread without admission will require
 migration.
+
+ADR-002 and SPEC-001 currently require Presentation sink callbacks and
+ViewModel state mutation to complete synchronously on the application
+executor. This proposal intentionally changes that behavior: synchronous
+application delivery completes when the target-composed adapter returns its
+admission outcome, while observable state changes when the admitted fact is
+later applied in the GiftUI domain. RFC approval alone does not change current
+authority. A superseding ADR and reviewed SPEC-001 revision are required
+before implementation or conformance claims use the new boundary.
 
 Dynamic property-level suppression or observation ordering that is not
 visible through complete GiftUI revisions is not portable behavior. Static and
@@ -949,6 +1112,12 @@ revisions and normalized downstream results:
 - ignore a repeated initializer while the same location remains live;
 - replace the model through one admitted assignment and detach the old
   registration;
+- fail replacement during candidate validation, registration reservation, and
+  attachment; verify each failure removes partial candidate state, preserves
+  the old model and registration, and does not dirty the location solely for
+  the failed attempt;
+- fail derivation after a successful replacement and verify the new model
+  remains current and dirty without replaying or rolling back the assignment;
 - remove a state-bearing branch, publish, and verify later model changes do
   not invalidate the retired location;
 - reinsert the branch and verify fresh state rather than implicit resurrection;
@@ -957,8 +1126,21 @@ revisions and normalized downstream results:
   without replay;
 - apply several property mutations and up to 20 capture updates in one sealed
   batch and verify one complete published revision with no intermediate view;
+- change observable model state and verify that at least one synchronous report
+  is produced before the mutation returns; then exercise a proven no-op and
+  verify that omitting its report does not change the published result;
 - mutate through a Button action and through an admitted external fact and
   compare ordering;
+- run source and repository delivery synchronously to the admission adapter
+  installed through the observation use cases, and verify the observable model
+  remains unchanged until the resulting fact is admitted in a later GiftUI
+  mutation phase;
+- invoke a use case from an admitted Button action and verify any synchronous
+  application callback becomes a later fact rather than reentrantly mutating
+  the ViewModel in the active cycle;
+- co-locate both logical domains on one thread and verify phase ownership and
+  admission outcomes remain identical to a host fixture with distinct
+  executors;
 - inject a fact during freeze and verify later admission rather than mutation
   of the current derivation;
 - inject a detected out-of-phase report and verify conservative failure
@@ -978,6 +1160,8 @@ Use the governed Signal Analyzer presentation model to verify:
   all derived text, disabled controls, and waveform inputs;
 - acquisition updates enter through bounded fact admission rather than direct
   model mutation;
+- the synchronous application pipeline ends at the target-composed admission
+  adapter, and the next admitted GiftUI cycle applies its facts in order;
 - 80 transitions per second preserve every admitted application update while
   observation coalesces presentation work at 250-millisecond cadence; and
 - one frozen model revision feeds semantic evaluation, layout, render
@@ -996,11 +1180,12 @@ Use the governed Signal Analyzer presentation model to verify:
 
 ### Resource and performance evidence
 
-SPIKE-003 supplies the RFC-level compile, zero-heap, and incremental resource
-evidence. Downstream Specifications must add complete application capacities,
-stress tests, firmware section limits, stack high-water evidence, and the
-required distinction between host, compile-only, simulator, and connected-
-hardware claims.
+SPIKE-003 supplies representative RFC-level compile, zero-heap, and incremental
+resource evidence and satisfies R11's review-level feasibility gate. Downstream
+Specifications MUST add complete application capacities, stress tests,
+firmware section limits, stack high-water evidence, and the required
+distinction between host, compile-only, simulator, and connected-hardware
+claims.
 
 ## Risks
 
@@ -1014,6 +1199,14 @@ hardware claims.
 - **Coarse invalidation may exceed the embedded cadence.** Measure the complete
   Signal Analyzer root under sustained updates; trigger FW-019 if whole-root
   work fails a required target rather than silently adding a dependency graph.
+- **Distinct domains add bounded latency and backpressure.** Size fact
+  admission for the accepted 80-transition-per-second workload, preserve
+  source order, expose saturation explicitly, and verify that one-cycle
+  presentation latency still meets the 250-millisecond cadence.
+- **A Button-triggered use case may synchronously call back while the GiftUI
+  cycle is active.** Terminate that callback at the admission adapter and defer
+  its ViewModel effect to a later cycle; do not permit nested semantic mutation
+  merely because both domains share a thread.
 - **Out-of-domain mutation may already have changed the model before it is
   detected.** Restrict mutating authority, use bounded fact admission, and
   classify detected freeze violations conservatively; observation alone is
@@ -1066,14 +1259,23 @@ approve or revise the proposed bounded typed representation and synchronous
 model-owned signaling boundary; that review gate is not delegated to the
 Spike.
 
+The distinct-domain choice creates a lifecycle prerequisite rather than an
+open design question. After RFC approval, a proposed ADR must supersede
+ADR-002, preserve its unaffected synchronous application rules, and replace
+its Presentation-mutation rule with delivery through the admission adapter.
+Only after that ADR is accepted may SPEC-001 be revised and returned to human
+review. Current implementation work must continue to treat ADR-002 and
+SPEC-001 as authoritative until those gates complete.
+
 ## Specification Inputs
 
 State-location counts, registration counts, identity widths, stale-token
-protection, external-fact capacities, and exact outcome cases remain
-Specification inputs. The Spike supplied representative incremental costs but
-did not establish production capacities or encodings. These are not RFC open
-questions unless later evidence shows that no finite viable bound fits the
-Signal Analyzer.
+protection, external-fact capacities, admission-adapter fact types,
+application-executor entry mechanics, Button-triggered callback ordering, and
+exact outcome cases remain Specification inputs. The Spike supplied
+representative incremental costs but did not establish production capacities
+or encodings. These are not RFC open questions unless later evidence shows
+that no finite viable bound fits the Signal Analyzer.
 
 ## Deferred and Follow-up Work
 
@@ -1104,10 +1306,14 @@ produce separate ADR candidates for:
    initializer, replacement, publication-committed removal, and one-owner
    registration semantics;
 2. model-owned change signaling with coarse owner-level dirtiness,
-   complete-root MVP reevaluation, and RFC-004 serialized publication; and
+   complete-root MVP reevaluation, and RFC-004 serialized publication;
 3. profile-equivalent dynamic and bounded generated/static realization,
    including physical contract placement and deterministic state/registration
-   failure behavior.
+   failure behavior; and
+4. logically distinct application and GiftUI mutation domains connected by
+   bounded presentation-fact admission, supporting an ADR that supersedes
+   ADR-002 while preserving synchronous source, repository, use-case, and sink
+   work through the target-composed adapter.
 
 These are candidate extractions only. This draft does not accept them,
 authorize implementation, or select exact APIs and capacities.
@@ -1122,6 +1328,7 @@ authorize implementation, or select exact APIs and capacities.
 - [RFC-002: GiftUI MVP Layered Architecture](rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-004: Run Cycle and Frame Transaction Architecture](rfc-004-run-cycle-and-frame-transaction.md)
 - [RFC-005: Failure and Diagnostics Propagation Architecture](rfc-005-failure-diagnostics-propagation.md)
+- [ADR-002: Serialized Synchronous Acquisition Delivery](../adrs/adr-002-serialized-synchronous-acquisition-delivery.md)
 - [ADR-004: Portable Fixed Signal Analyzer Presentation](../adrs/adr-004-portable-fixed-signal-analyzer-presentation.md)
 - [ADR-005: Semantic, Layout, and Render Boundary](../adrs/adr-005-semantic-layout-render-boundary.md)
 - [ADR-006: Shared Semantics Across Runtime Profiles](../adrs/adr-006-shared-semantics-runtime-profiles.md)
