@@ -2,11 +2,11 @@
 id: ADR-025
 feature: observable-reference-state
 title: Coarse Model-Owned Observable Invalidation
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-21
-updated: 2026-08-21
+updated: 2026-08-22
 proposal:
   - PROPOSAL-005
 related_rfcs:
@@ -36,7 +36,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 

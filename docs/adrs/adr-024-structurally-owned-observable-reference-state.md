@@ -2,11 +2,11 @@
 id: ADR-024
 feature: observable-reference-state
 title: Structurally Owned Observable Reference State
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-21
-updated: 2026-08-21
+updated: 2026-08-22
 proposal:
   - PROPOSAL-005
 related_rfcs:
@@ -40,7 +40,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 

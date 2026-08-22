@@ -2,11 +2,11 @@
 id: ADR-027
 feature: signal-analyzer
 title: Bounded Presentation-Fact Admission
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-21
-updated: 2026-08-21
+updated: 2026-08-22
 proposal:
   - PROPOSAL-002
   - PROPOSAL-005
@@ -40,8 +40,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed. ADR-002 remains authoritative until this record is explicitly
-accepted.
+Accepted. Supersedes ADR-002.
 
 ## Context
 
@@ -55,8 +54,8 @@ Button-triggered use case synchronously calls back.
 
 ## Decision Boundary
 
-This record extracts RFC-008 Decision Summary item 4 and, when accepted,
-supersedes ADR-002. It preserves ADR-002's synchronous single-consumer
+This record extracts RFC-008 Decision Summary item 4 and supersedes ADR-002.
+It preserves ADR-002's synchronous single-consumer
 application pipeline through a target-composed Presentation adapter while
 replacing direct Presentation-model mutation with bounded immutable fact
 admission. It does not redefine RFC-004 cycle ordering or the observable model
@@ -126,9 +125,8 @@ visible rather than permitting unsafe concurrent mutation.
 
 ### Follow-up
 
-- After this ADR is accepted, ADR-002 must transition to `superseded` and
-  SPEC-001 must be revised and returned to human review before implementation
-  relies on the new boundary.
+- ADR-002 has transitioned to `superseded`. SPEC-001 must be revised and
+  approved again before implementation relies on the new boundary.
 - The revised Specification must define fact types, capacities, admission
   outcomes, ordering, adapter ownership, executor entry, and Button callback
   behavior.

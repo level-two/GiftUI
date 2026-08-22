@@ -2,11 +2,11 @@
 id: ADR-026
 feature: observable-reference-state
 title: Profile-Equivalent Bounded Observable State Realization
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-21
-updated: 2026-08-21
+updated: 2026-08-22
 proposal:
   - PROPOSAL-005
 related_rfcs:
@@ -37,7 +37,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 

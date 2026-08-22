@@ -2,20 +2,23 @@
 id: SPEC-001
 feature: signal-analyzer
 title: Signal Analyzer Reference Application Contract
-status: implementing
+status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-08-22
 proposal:
   - PROPOSAL-002
 related_rfcs:
   - RFC-001
 related_adrs:
   - ADR-001
-  - ADR-002
   - ADR-003
   - ADR-004
+  - ADR-024
+  - ADR-025
+  - ADR-026
+  - ADR-027
 related_specs: []
 supersedes: []
 superseded_by: []
@@ -23,6 +26,10 @@ target_milestone: MVP
 ---
 
 # SPEC-001: Signal Analyzer Reference Application Contract
+
+> **Review status:** ADR-027 superseded ADR-002. This Specification has
+> returned to review and must be revised to conform to ADR-024 through ADR-027
+> before it can be approved again.
 
 ## Summary
 
@@ -112,7 +119,8 @@ contract unless a requirement below states otherwise.
   defines the accepted application problem.
 - [RFC-001](../rfcs/rfc-001-signal-analyzer-application-architecture.md)
   defines the approved design.
-- ADR-001 through ADR-004 are the accepted governing decisions.
+- ADR-001, ADR-003, ADR-004, and ADR-024 through ADR-027 are the accepted
+  governing decisions. ADR-002 is superseded.
 
 ### GiftUI dependencies
 
@@ -147,9 +155,6 @@ NOT read a platform clock or schedule timers directly.
 - [ADR-001](../adrs/adr-001-signal-analyzer-application-boundaries.md)
   governs Domain, Data, Presentation, and target-host ownership plus inward
   dependency direction.
-- [ADR-002](../adrs/adr-002-serialized-synchronous-acquisition-delivery.md)
-  governs synchronous sink delivery, one observer per value, immediate current
-  value delivery, and the serialized executor.
 - [ADR-003](../adrs/adr-003-transition-based-bounded-capture.md)
   governs transition storage, the 80-event-per-second bound, minimum capacity,
   oldest-first eviction, and per-channel baseline preservation.
@@ -157,6 +162,16 @@ NOT read a platform clock or schedule timers directly.
   governs the shared fixed hierarchy, Presentation-owned visible range,
   250-millisecond refresh interval, target-specific host boundary, and assumed
   GiftUI MVP client surface.
+- [ADR-024](../adrs/adr-024-structurally-owned-observable-reference-state.md)
+  governs structural ownership, identity, replacement, and removal of the
+  observable presentation model.
+- [ADR-025](../adrs/adr-025-coarse-model-owned-observable-invalidation.md)
+  governs synchronous model-owned change reporting and coarse invalidation.
+- [ADR-026](../adrs/adr-026-profile-equivalent-bounded-observable-state.md)
+  governs equivalent bounded observable-state realization across profiles.
+- [ADR-027](../adrs/adr-027-bounded-presentation-fact-admission.md)
+  governs synchronous application delivery through bounded immutable fact
+  admission into GiftUI's distinct mutation domain and supersedes ADR-002.
 
 ## Terminology
 

@@ -2,11 +2,11 @@
 id: ADR-002
 feature: signal-analyzer
 title: Serialized Synchronous Acquisition Delivery
-status: accepted
+status: superseded
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-08-21
+updated: 2026-08-22
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -28,7 +28,7 @@ target_milestone: MVP
 
 ## Status
 
-Accepted.
+Superseded by ADR-027.
 
 ## Context
 
