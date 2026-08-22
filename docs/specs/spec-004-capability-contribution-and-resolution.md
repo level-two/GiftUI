@@ -248,84 +248,373 @@ shared boundary require reciprocal review of all three Wave 1 Specifications.
 
 ## Types / APIs
 
-The following are normative semantic type seams. Concrete Swift spelling,
-generic parameters, access-control declarations, and storage layout remain
-open until SPEC-002 and SPEC-003 stabilize their referenced semantics and
-host-side mappings; a draft MUST NOT invent a competing public value or
-failure contract.
+The declarations in this section are the normative source-level surface of
+the `GiftUICapabilities` library product and target. All declarations are
+`public` because target hosts and contributor adapters may live in sibling or
+downstream packages. None is re-exported by `GiftUI`. Stored-property order,
+padding, and source-file placement are not API, but the finite case sets, raw
+widths, initializer validity, and size ceilings below are normative.
 
-### Family-neutral seams
+All records conform to `Equatable` and `Sendable`. Enumerations with raw values
+use the exact unsigned width shown. `OptionSet`'s required raw initializer may
+materialize unknown bits, but every validated record initializer and the
+resolver reject them; unknown bits are not forward-compatible support.
 
-- A typed capability requirement carries its family identity, required versus
-  optional status, and family-specific semantic and quantitative requirements.
-- A contribution carries exactly one contributor role and only that role's
-  family-specific facts.
-- Explicit host policy carries resource limits and preferences among
-  conforming paths; it cannot downgrade a requirement.
-- Resolution consumes immutable requirement, contributions, policy, and
-  caller-owned workspace and returns a capability-domain result containing
-  exactly one of:
-  - an immutable effective family result; or
-  - a stable capability-domain unavailable reason.
-- At the host boundary, an adapter maps an unavailable result into the
-  enclosing outcome vocabulary owned by SPEC-003 without changing the typed
-  reason, containment, or outcome semantics.
-- A capability snapshot stores at most one effective result for each admitted
-  family and permits read-only access without invoking resolution.
+### Common bounded values
 
-### `rasterPresentation` requirement
+```swift
+public struct CapabilityExtent: Equatable, Sendable {
+    public let width: UInt16
+    public let height: UInt16
+    public init?(width: UInt16, height: UInt16)
+}
 
-The requirement contains closed capability-specific values mapped from
-SPEC-002-owned portable values where applicable:
+public struct CapabilityByteCount: Equatable, Comparable, Sendable {
+    public let rawValue: UInt32
+    public init(rawValue: UInt32)
+}
 
-- required normalized operation coverage for opaque rectangles, positioned
-  text, straight-line strokes, clipping, and damage semantics;
-- required logical surface extent;
-- required conformance to ADR-010's synchronous borrowed one-shot stream;
-- canonical pixel-encoding compatibility requirement;
-- acceptable downstream submission-lifetime forms;
-- maximum permitted raster workspace, payload storage, and in-flight storage;
-  and
-- required or optional absence behavior.
+public struct RasterOperationSet: OptionSet, Equatable, Sendable {
+    public let rawValue: UInt8
+    public init(rawValue: UInt8)
+    public static let opaqueRectangles: Self
+    public static let positionedText: Self
+    public static let straightLineStrokes: Self
+    public static let clipping: Self
+    public static let damage: Self
+    public static let signalAnalyzerMVP: Self
+}
 
-### Contributor records
+public enum OperationStreamLifetime: UInt8, Equatable, Sendable {
+    case synchronousBorrowedOneShot = 1
+}
 
-- The render-producer contribution contains the required operation-set
-  identity and one-shot stream conformance, and contains no pixel format,
-  device identity, or presentation policy.
-- The raster/backend contribution contains operation coverage, common-stream
-  consumption support, producible canonical pixel encodings, produced-buffer
-  lifetime forms, supported extent bounds, and required raster/payload
-  workspace.
-- The surface/display contribution contains logical extent, accepted canonical
-  pixel encodings, bounded region/row constraints, accepted submission
-  lifetime and handoff forms, and bounded in-flight requirements.
-- The host resource-policy input contains allowed storage and in-flight bounds
-  plus deterministic preference among otherwise conforming paths; it contains
-  no fabricated support fact.
+public struct CanonicalPixelEncodingSet: OptionSet, Equatable, Sendable {
+    public let rawValue: UInt8
+    public init(rawValue: UInt8)
+    public static let rgb565BigEndian: Self
+    public static let rgba8888: Self
+}
 
-### Effective result and unavailable reasons
+public struct SubmissionLifetimeSet: OptionSet, Equatable, Sendable {
+    public let rawValue: UInt8
+    public init(rawValue: UInt8)
+    public static let synchronousBorrow: Self
+    public static let synchronousCopy: Self
+    public static let ownershipTransfer: Self
+}
 
-The effective result contains the satisfied semantic coverage, resolved
-logical extent, selected canonical pixel encoding, compatible submission
-lifetime, capability-level realization kind (bounded full surface or bounded
-tiled presentation), and all selected raster, payload, and in-flight bounds.
-It MUST NOT contain concrete contributor identities.
+public struct SubmissionHandoffSet: OptionSet, Equatable, Sendable {
+    public let rawValue: UInt8
+    public init(rawValue: UInt8)
+    public static let synchronous: Self
+    public static let queued: Self
+}
+```
 
-The closed unavailable-reason vocabulary MUST distinguish at least:
+`CapabilityExtent.init` returns `nil` for a zero dimension. A SPEC-002 `Size`
+maps to `CapabilityExtent` only when both `Int32` dimensions are in
+`1...UInt16.max`. The owning host adapter maps a negative or zero source
+dimension to `.malformedRequirement(field: .extent)` and an unrepresentable
+positive dimension to `.logicalExtentOverflow`, then encloses that reason in
+the SPEC-003 outcome seam. `CapabilityByteCount` permits zero. Byte-count
+addition and multiplication inside the resolver MUST use checked `UInt32`
+arithmetic and resolve unavailable on overflow.
 
-- missing or duplicate contributor role;
-- malformed or out-of-range contribution;
-- required operation-set or one-shot-stream incompatibility;
-- unsupported or overflowing logical extent;
-- no common canonical pixel encoding;
-- incompatible downstream submission lifetime;
-- insufficient raster, payload, in-flight, or resolver-workspace capacity; and
-- policy with no conforming realization.
+`RasterOperationSet.signalAnalyzerMVP` is exactly the union of the five named
+bits. The two canonical pixel encodings describe byte-level interchange:
+`rgb565BigEndian` is one big-endian 5:6:5 word per pixel and `rgba8888` is four
+bytes per pixel in R, G, B, A order. Native surface formats and conversion
+details remain adapter-local.
 
-Exact case spelling and payload width remain an open contract detail, but
-implementations and tests MUST preserve these distinctions. Diagnostic text is
-non-authoritative and cannot replace the typed reason.
+The option-set bit assignments are fixed for build-local equality and fixture
+comparison:
+
+| Option set | Bit 0 | Bit 1 | Bit 2 | Bit 3 | Bit 4 |
+| --- | --- | --- | --- | --- | --- |
+| `RasterOperationSet` | opaque rectangles | positioned text | straight-line strokes | clipping | damage |
+| `CanonicalPixelEncodingSet` | RGB565 big-endian | RGBA8888 | reserved | reserved | reserved |
+| `SubmissionLifetimeSet` | synchronous borrow | synchronous copy | ownership transfer | reserved | reserved |
+| `SubmissionHandoffSet` | synchronous | queued | reserved | reserved | reserved |
+
+`RasterOperationSet.signalAnalyzerMVP.rawValue` is therefore `0x1f`.
+
+### Requirement and contribution declarations
+
+```swift
+public enum CapabilityAbsence: UInt8, Equatable, Sendable {
+    case required = 1
+    case optional = 2
+}
+
+public struct RasterPresentationRequirement: Equatable, Sendable {
+    public let operations: RasterOperationSet
+    public let extent: CapabilityExtent
+    public let operationStream: OperationStreamLifetime
+    public let acceptedEncodings: CanonicalPixelEncodingSet
+    public let acceptedSubmissionLifetimes: SubmissionLifetimeSet
+    public let maximumRasterBytes: CapabilityByteCount
+    public let maximumPayloadBytes: CapabilityByteCount
+    public let maximumInFlightBytes: CapabilityByteCount
+    public let absence: CapabilityAbsence
+}
+
+public struct RenderProducerContribution: Equatable, Sendable {
+    public let operations: RasterOperationSet
+    public let operationStream: OperationStreamLifetime
+}
+
+public enum RasterRealizationKind: UInt8, Equatable, Sendable {
+    case fullSurface = 1
+    case tiled = 2
+}
+
+public struct RasterRealizationKindSet: OptionSet, Equatable, Sendable {
+    public let rawValue: UInt8
+    public init(rawValue: UInt8)
+    public static let fullSurface: Self
+    public static let tiled: Self
+}
+
+public struct RasterRealizationContribution: Equatable, Sendable {
+    public let kind: RasterRealizationKind
+    public let operations: RasterOperationSet
+    public let operationStream: OperationStreamLifetime
+    public let encodings: CanonicalPixelEncodingSet
+    public let producedSubmissionLifetimes: SubmissionLifetimeSet
+    public let maximumExtent: CapabilityExtent
+    public let maximumRegionWidth: UInt16
+    public let maximumRegionHeight: UInt16
+    public let rowByteAlignment: UInt16
+    public let rasterBytes: CapabilityByteCount
+    public let payloadBytes: CapabilityByteCount
+}
+
+public struct RasterBackendContribution: Equatable, Sendable {
+    public let primary: RasterRealizationContribution
+    public let alternate: RasterRealizationContribution?
+}
+
+public struct SurfaceDisplayContribution: Equatable, Sendable {
+    public let extent: CapabilityExtent
+    public let encodings: CanonicalPixelEncodingSet
+    public let acceptedSubmissionLifetimes: SubmissionLifetimeSet
+    public let handoffs: SubmissionHandoffSet
+    public let maximumRegionWidth: UInt16
+    public let maximumRegionHeight: UInt16
+    public let rowByteAlignment: UInt16
+    public let maximumInFlightCount: UInt8
+    public let maximumInFlightBytes: CapabilityByteCount
+}
+
+public struct RasterPresentationPolicy: Equatable, Sendable {
+    public let maximumRasterBytes: CapabilityByteCount
+    public let maximumPayloadBytes: CapabilityByteCount
+    public let maximumInFlightBytes: CapabilityByteCount
+    public let allowedRealizations: RasterRealizationKindSet
+    public let allowedEncodings: CanonicalPixelEncodingSet
+    public let preferredRealization: RasterRealizationKind
+    public let preferredEncoding: CanonicalPixelEncodingSet
+}
+```
+
+`RasterRealizationKindSet.fullSurface` is bit 0 and `.tiled` is bit 1.
+
+Each record exposes a public initializer whose labels and parameter types
+match its stored properties in declaration order. Initializers are failable,
+return `nil` for the invalid cases below, and MUST NOT trap on caller data.
+The owning adapter maps an invalid requirement to
+`.malformedRequirement(field:)` and an invalid contribution to
+`.malformedContribution(role:field:)` before insertion; the resolver also
+validates the same rules defensively:
+
+- operation and encoding sets are non-empty and contain only declared bits;
+- the requirement operation set is exactly `signalAnalyzerMVP` for MVP hosts;
+- allowed realization and encoding sets are non-empty and contain only
+  declared bits;
+- `preferredRealization` is allowed, and `preferredEncoding` contains exactly
+  one allowed declared encoding bit;
+- every row-byte alignment and `maximumInFlightCount` is nonzero;
+- surface region limits are nonzero and no greater than the surface extent;
+- a backend has one or two realizations, and two realizations have distinct
+  `kind` values;
+- every realization has non-empty encoding and produced-lifetime sets;
+- every realization's region limits are nonzero and no greater than its
+  maximum extent; and
+- a tiled realization's payload describes at least one complete aligned row
+  at `maximumRegionWidth` for each advertised encoding.
+
+The optional `alternate` is the only MVP alternate-realization slot. Thus the
+family has a compile-time maximum of two candidates. Policy may prefer one
+candidate and one encoding, but the resolver evaluates both candidates and
+both encoding bits for conformance before applying that preference.
+
+### Role-addressed contribution buffer
+
+```swift
+public enum RasterPresentationContributorRole: UInt8, Equatable, Sendable {
+    case renderProducer = 1
+    case rasterBackend = 2
+    case surfaceDisplay = 3
+    case hostResourcePolicy = 4
+}
+
+public enum RasterPresentationContribution: Equatable, Sendable {
+    case renderProducer(RenderProducerContribution)
+    case rasterBackend(RasterBackendContribution)
+    case surfaceDisplay(SurfaceDisplayContribution)
+    case hostResourcePolicy(RasterPresentationPolicy)
+}
+
+public struct RasterPresentationContributions: Equatable, Sendable {
+    public static let capacity: UInt8 = 4
+    public init()
+    public mutating func insert(
+        _ contribution: RasterPresentationContribution
+    ) -> RasterPresentationContributionInsertion
+}
+
+public enum RasterPresentationContributionInsertion: Equatable, Sendable {
+    case inserted
+    case rejected(RasterPresentationUnavailable)
+}
+```
+
+`RasterPresentationContributions` owns four inline role-addressed slots, one
+latched insertion rejection, and no collection allocation. Insertion order is
+not observable. A second value for an occupied role returns and latches
+`.duplicateContributor(role:)`, preserves the first value, and leaves the
+buffer otherwise unchanged. An insertion attempted after four successful
+insertions returns and latches `.contributionCapacityExceeded`; it never
+overwrites a slot. The first latched rejection is returned by resolution even
+if the caller ignored the insertion result. Resolution reports the
+lowest-raw-value missing role when fewer than four roles are occupied and no
+earlier insertion rejection was latched.
+
+### Resolution and immutable snapshot
+
+```swift
+public struct RasterPresentationResolverWorkspace: Equatable, Sendable {
+    public static let candidateCapacity: UInt8 = 2
+    public let usableCandidateCapacity: UInt8
+    public init?(usableCandidateCapacity: UInt8 = 2)
+}
+
+public enum CanonicalPixelEncoding: UInt8, Equatable, Sendable {
+    case rgb565BigEndian = 1
+    case rgba8888 = 2
+}
+
+public enum SubmissionLifetime: UInt8, Equatable, Sendable {
+    case synchronousBorrow = 1
+    case synchronousCopy = 2
+    case ownershipTransfer = 3
+}
+
+public enum SubmissionHandoff: UInt8, Equatable, Sendable {
+    case synchronous = 1
+    case queued = 2
+}
+
+public struct EffectiveRasterPresentation: Equatable, Sendable {
+    public let operations: RasterOperationSet
+    public let extent: CapabilityExtent
+    public let operationStream: OperationStreamLifetime
+    public let encoding: CanonicalPixelEncoding
+    public let submissionLifetime: SubmissionLifetime
+    public let handoff: SubmissionHandoff
+    public let realization: RasterRealizationKind
+    public let rasterBytes: CapabilityByteCount
+    public let payloadBytes: CapabilityByteCount
+    public let maximumInFlightCount: UInt8
+    public let maximumInFlightBytes: CapabilityByteCount
+}
+
+public enum RasterPresentationResolution: Equatable, Sendable {
+    case available(EffectiveRasterPresentation)
+    case unavailable(RasterPresentationUnavailable)
+}
+
+public struct CapabilitySnapshot: Equatable, Sendable {
+    public let rasterPresentation: EffectiveRasterPresentation?
+    public init(rasterPresentation: EffectiveRasterPresentation?)
+}
+
+public enum RasterPresentationResolver {
+    public static func resolve(
+        requirement: RasterPresentationRequirement,
+        contributions: borrowing RasterPresentationContributions,
+        workspace: inout RasterPresentationResolverWorkspace
+    ) -> RasterPresentationResolution
+}
+```
+
+The workspace has storage for exactly two normalized candidates and is
+reusable after every return. Its initializer accepts `0...2` and returns `nil`
+for a larger usable capacity; a deliberately smaller usable capacity supports
+bounded-host and exhaustion tests without changing storage layout. Resolution
+performs no allocation and retains no borrow of the requirement,
+contributions, or workspace. The snapshot is constructed only from
+`.available`; an optional unavailable result produces a snapshot whose
+`rasterPresentation` is `nil`, while a required unavailable result prevents
+snapshot construction and runtime start.
+
+### Unavailable vocabulary
+
+```swift
+public enum RasterPresentationMalformedField: UInt8, Equatable, Sendable {
+    case operationSet = 1
+    case encodingSet = 2
+    case submissionLifetimeSet = 3
+    case handoffSet = 4
+    case extent = 5
+    case region = 6
+    case rowByteAlignment = 7
+    case inFlightCount = 8
+    case byteCount = 9
+    case alternateRealization = 10
+    case policyPreference = 11
+}
+
+public enum RasterPresentationCapacity: UInt8, Equatable, Sendable {
+    case resolverWorkspace = 1
+    case raster = 2
+    case payload = 3
+    case inFlight = 4
+}
+
+public enum RasterPresentationUnavailable: Equatable, Sendable {
+    case contributionCapacityExceeded
+    case malformedRequirement(field: RasterPresentationMalformedField)
+    case duplicateContributor(role: RasterPresentationContributorRole)
+    case missingContributor(role: RasterPresentationContributorRole)
+    case malformedContribution(
+        role: RasterPresentationContributorRole,
+        field: RasterPresentationMalformedField
+    )
+    case insufficientCapacity(
+        domain: RasterPresentationCapacity,
+        required: CapabilityByteCount,
+        available: CapabilityByteCount
+    )
+    case operationSetMismatch
+    case operationStreamMismatch
+    case logicalExtentOverflow
+    case unsupportedLogicalExtent
+    case noCommonCanonicalPixelEncoding
+    case incompatibleSubmissionLifetime
+    case incompatibleSubmissionHandoff
+    case policyHasNoConformingRealization
+}
+```
+
+The associated payloads are bounded build-local facts, not stable serialized
+codes. Human-readable text, source names, contributor identities, and richer
+provenance are diagnostic projections outside `GiftUICapabilities`.
+
+At the host boundary, an adapter maps `RasterPresentationUnavailable` into the
+enclosing outcome vocabulary owned by SPEC-003 without changing the reason or
+SPEC-003's containment and disposition semantics.
 
 ## Behavior
 
@@ -335,19 +624,54 @@ it MUST return an equal effective result or equal unavailable reason.
 
 Resolution MUST:
 
-1. validate that every required contributor role is present exactly once and
+1. return any latched contribution-buffer rejection;
+2. validate that every required contributor role is present exactly once and
    every input value is well formed, with extent and capacity mappings
    preserving SPEC-002 checked-value meaning;
-2. validate operation coverage and the ADR-010 one-shot-stream contract;
-3. validate the required logical extent against raster and surface limits;
-4. compute a non-empty intersection of canonical pixel encodings;
-5. prove producer storage and downstream submission-lifetime compatibility
-   within the in-flight bound;
-6. validate raster workspace, payload, in-flight, and resolver-workspace
-   capacities against host policy;
-7. apply deterministic policy only to the remaining conforming realizations;
-   and
-8. construct one immutable effective result or one stable unavailable reason.
+3. validate producer operation coverage and the ADR-010 one-shot-stream
+   contract once for the family;
+4. normalize the backend's one or two candidates into the caller-owned
+   workspace, rejecting insufficient usable workspace before evaluating a
+   partial candidate set;
+5. for each candidate, validate operation coverage, stream lifetime, required
+   extent, surface region and row-alignment compatibility, common canonical
+   pixel encoding, submission lifetime/handoff compatibility, and all byte
+   bounds;
+6. discard only candidates that fail a candidate-specific compatibility
+   check, retaining the typed reason for each rejected candidate;
+7. choose among conforming candidates by the fixed policy order below; and
+8. construct one immutable effective result, or the stable primary reason when
+   no candidate conforms.
+
+Submission compatibility is the following closed matrix:
+
+| Selected lifetime | Permitted handoff | Required property |
+| --- | --- | --- |
+| `synchronousBorrow` | `synchronous` only | Producer storage remains valid until the call returns; the consumer retains no borrow |
+| `synchronousCopy` | `synchronous` or `queued` | The consumer completes a copy into its own bounded storage before the producer borrow ends |
+| `ownershipTransfer` | `synchronous` or `queued` | Ownership of the bounded payload transfers exactly once and is not used again by the producer |
+
+The operation stream itself is always `synchronousBorrowedOneShot`; the table
+governs backend-owned derived pixel payload only. It does not authorize a
+queued or retained GiftUI operation stream.
+
+Policy selection is deterministic and applies only after conformance:
+
+1. prefer the conforming candidate whose kind equals `preferredRealization`;
+2. within that candidate, prefer `preferredEncoding` when it is common;
+3. otherwise choose encoding raw-value order (`rgb565BigEndian`, then
+   `rgba8888`);
+4. choose lifetime raw-value order (`synchronousBorrow`,
+   `synchronousCopy`, then `ownershipTransfer`); and
+5. choose handoff raw-value order (`synchronous`, then `queued`).
+
+If the preferred realization or encoding is unavailable but another allowed
+complete path conforms, selecting that complete path is not semantic
+weakening. If at least one technically conforming candidate exists but every
+candidate or common encoding is excluded by `allowedRealizations` or
+`allowedEncodings`, resolution returns `.policyHasNoConformingRealization`.
+If no technically conforming candidate exists, resolution retains its
+specific primary reason.
 
 The output MUST be independent of input ordering. Implementations MAY
 canonicalize inputs or use role-addressed storage, but ordering cannot be a
@@ -372,8 +696,9 @@ For one assembled runtime, capability state follows this lifecycle:
 
 1. The host selects an immutable component graph and initializes the selected
    components sufficiently to obtain owned facts.
-2. The host constructs the requirement, four role-specific inputs, policy,
-   fixed capacities, caller-owned resolver workspace, and result storage.
+2. The host constructs the requirement, four role-specific contributions
+   (including host resource policy), fixed capacities, caller-owned resolver
+   workspace, and result storage.
 3. RFC-002 B2 structural validation and capability resolution both complete
    before the first run cycle. Their order may be host-defined, but runtime
    start requires both successes and neither result substitutes for the other.
@@ -401,13 +726,28 @@ Every field MUST map to at least one assertion in a Signal Analyzer or one of
 the four supported-configuration fixtures. A field without such evidence MUST
 be removed from the MVP catalogue or routed through deferred work.
 
+The normative fixture-to-field map is:
+
+| Field group | Required fixture assertion |
+| --- | --- |
+| Operation coverage and stream lifetime | All four hosts require the complete Signal Analyzer opaque rectangle, positioned text, straight-line stroke, clipping, and damage vocabulary through ADR-010's one-shot stream |
+| Logical and maximum extent | Each host requirement equals its initialized logical surface; Pi proves 240 x 240, and nRF52840 proves 480 x 320 |
+| Canonical encodings | Desktop proves `rgba8888`; Pi and nRF52840 prove `rgb565BigEndian`; SPIKE-001's encoding negative/control pair proves the intersection is required |
+| Submission lifetime and handoff | Pi and nRF52840 prove synchronous borrow; SPIKE-001's lifetime negative/control pair proves lifetime is an input rather than metadata |
+| Realization kind | Desktop proves bounded full surface; Pi and nRF52840 prove bounded tiled presentation; nRF52840 rejects full-surface `rgba8888` |
+| Region and row alignment | The Pi 240 x 16 RGB565 tile and nRF52840 480 x 4 RGB565 tile prove bounded region height, complete-row width, and two-byte row alignment |
+| Raster and payload bytes | Pi permits a 7,680-byte default tile; nRF52840 permits at most a 3,840-byte tile and no full framebuffer |
+| In-flight count and bytes | Synchronous borrowed Pi and nRF52840 submission requires exactly one active derived payload and storage for that payload |
+| Required/optional absence | Every claimed Signal Analyzer host uses `required`; an optional negative fixture proves absence remains `nil` in the snapshot rather than becoming support |
+| Policy allow/preference fields | Desktop-versus-tiled fixtures prove realization selection, and common-encoding controls prove policy selects only from technically conforming paths |
+
 The macOS dynamic and static fixtures MUST resolve the same semantic coverage,
 although their conforming realization and storage mechanisms may differ. The
 Raspberry Pi fixture MUST support the 240 x 240 PiScreen case through a bounded
 RGB565 tiled realization compatible with its Linux framebuffer path. The
 nRF52840 fixture MUST support the 480 x 320 TFT path using no full framebuffer,
 with a tile no larger than 480 x 4 x 2 bytes (3,840 bytes) and compatible
-synchronous borrowed submission. A full-surface RGBA realization for the
+synchronous borrowed submission. A full-surface `rgba8888` realization for the
 nRF52840 fixture MUST resolve unavailable.
 
 Missing required behavior prevents runtime start. Optional absence, where an
@@ -447,11 +787,36 @@ unbounded recovery structure, select a weakened realization, expose a partial
 snapshot, or depend on diagnostic delivery.
 
 When several incompatibilities exist, the resolver MUST choose one stable
-primary reason by a documented family-specific validation precedence that is
-independent of contribution order. Additional observations may be projected
-only through SPEC-003-owned bounded secondary/diagnostic mechanisms and MUST
-NOT replace or change the primary reason. The precise precedence is an open
-draft detail required before review.
+primary reason by the following precedence, independent of contribution and
+candidate declaration order:
+
+1. malformed requirement, by lowest field raw value;
+2. first latched contribution insertion rejection;
+3. lowest-raw-value missing contributor role;
+4. lowest-role, then lowest-field malformed contribution;
+5. insufficient resolver workspace;
+6. producer operation-set mismatch;
+7. producer operation-stream mismatch;
+8. logical-extent conversion overflow;
+9. unsupported logical extent or region/alignment mismatch;
+10. candidate operation-set mismatch;
+11. candidate operation-stream mismatch;
+12. no common canonical pixel encoding;
+13. incompatible submission lifetime;
+14. incompatible submission handoff;
+15. insufficient raster capacity;
+16. insufficient payload capacity;
+17. insufficient in-flight capacity; and
+18. policy with no conforming realization.
+
+For candidate-specific checks, the resolver evaluates realization kind raw
+value order (`fullSurface`, then `tiled`) only to select the primary reason;
+candidate declaration order remains irrelevant. Within one capacity domain,
+the payload reports the smallest required bound that fails and the effective
+available bound, which is the minimum of requirement, host-policy, and
+surface-owned limits applicable to that domain. Additional observations may
+be projected only through SPEC-003-owned bounded secondary/diagnostic
+mechanisms and MUST NOT replace or change the primary reason.
 
 Runtime refusal, backpressure, disconnection, transport error, and post-handoff
 device failure are operational outcomes. They MUST follow SPEC-003 and their
@@ -463,23 +828,42 @@ own governing contracts without mutating the capability snapshot.
   in view evaluation, per-frame, or per-pixel paths.
 - Resolver work MUST have a statically derivable finite upper bound from the
   closed family, four contributor roles, encoding/lifetime alternatives, and
-  caller-declared capacities. Tests MUST report the measured operation count
-  for success and worst negative paths.
+  caller-declared capacities. One resolver invocation MUST perform no more
+  than 96 counted primitive operations, where a primitive operation is one
+  role visit, bit-set intersection/comparison, checked arithmetic operation,
+  candidate compatibility check, or validation-result construction. Tests
+  MUST report the measured count for success and every negative path.
 - Steady-state effective-result access MUST be bounded direct lookup and MUST
   invoke the resolver zero times.
 - On the static path, contribution construction, resolution,
   validation-result construction, snapshot storage, and steady-state access
   MUST perform zero heap allocations.
+- On supported 32-bit and 64-bit compilers, `RasterPresentationRequirement`
+  MUST occupy at most 32 bytes, `RasterRealizationContribution` at most 40
+  bytes, `RasterBackendContribution` at most 88 bytes,
+  `SurfaceDisplayContribution` at most 40 bytes,
+  `RasterPresentationPolicy` at most 32 bytes,
+  `RasterPresentationContributions` at most 192 bytes,
+  `RasterPresentationResolverWorkspace` at most 96 bytes,
+  `EffectiveRasterPresentation` at most 48 bytes,
+  `RasterPresentationUnavailable` at most 16 bytes, and
+  `CapabilitySnapshot` at most 56 bytes. Size, stride, and alignment MUST be
+  recorded for each production compiler configuration.
 - nRF52840 evidence MUST report incremental linked RAM, worst-case resolver
   stack, linked flash, initialization work, named capability storage, and
   default display staging separately. Total linked RAM MUST remain at or below
   192 KiB, default display staging at or below 16 KiB, and firmware within the
   1 MiB device flash; crossing the 896 KiB warning threshold requires explicit
   review evidence.
-- Exact production record widths and capability-specific incremental resource
-  budgets remain open before review. SPIKE-002's 128-byte linked-RAM,
-  1,104-byte flash, 80-byte named-storage, 72-byte conservative stack, and
-  14-operation measurements are feasibility baselines, not normative maxima.
+- For the nRF52840 `-Osize` image relative to an otherwise equivalent baseline,
+  capability-specific linked RAM MUST add no more than 768 bytes, named fixed
+  capability storage no more than 512 bytes, conservative worst-case resolver
+  stack no more than 256 bytes, and linked flash no more than 8 KiB. These
+  ceilings provide headroom over SPIKE-002's feasibility measurements of 128,
+  80, 72, and 1,104 bytes respectively while remaining small relative to the
+  established device limits. Exceeding a capability-specific ceiling requires
+  a Specification revision and renewed review; it cannot be waived merely
+  because the total device image still fits.
 
 ## Compatibility
 
@@ -516,6 +900,11 @@ The contract suite MUST include:
   bound violation;
 - policy permutations proving policy chooses only among conforming results and
   cannot manufacture support;
+- a table-driven precedence corpus that creates every pair of simultaneous
+  incompatibilities and verifies the documented primary reason;
+- the complete submission-lifetime/handoff matrix, including rejection of a
+  queued synchronous borrow and proof that a synchronous copy owns its queued
+  bytes before the producer borrow ends;
 - cross-profile comparison of normalized static and dynamic results;
 - dependency-graph tests proving the `GiftUICapabilities` import boundary,
   `GiftUI` non-re-export, and absence of concrete identity in portable code;
@@ -533,46 +922,55 @@ evidence.
 
 ## Acceptance Criteria
 
-- [ ] The document and manifest identify SPEC-004 as a `draft` for
+- [ ] **CR-001:** The document and manifest identify SPEC-004 as a `draft` for
   `capability-system`, link PROPOSAL-004, RFC-006, ADR-017 through ADR-020, and
   reciprocally relate SPEC-002 and SPEC-003.
-- [ ] A dependency test proves `GiftUICapabilities` imports none of the
+- [ ] **CR-002:** A dependency test proves `GiftUICapabilities` imports none of the
   prohibited higher or concrete modules, `GiftUI` does not re-export it, and a
   portable Signal Analyzer presentation contains zero target/backend/device
   identity checks.
-- [ ] The implemented MVP catalogue contains exactly one family named
+- [ ] **CR-003:** The implemented MVP catalogue contains exactly one family named
   `rasterPresentation`, and every field maps to at least one named assertion
   in the four normalized fixtures.
-- [ ] All 24 permutations of the four contributor roles produce byte-for-byte
+- [ ] **CR-004:** The public declarations, raw widths, finite cases, failable
+  construction rules, fixed four-role contribution capacity, two-candidate
+  workspace capacity, and record-size ceilings match `Types / APIs`.
+- [ ] **CR-005:** All 24 permutations of the four contributor roles produce byte-for-byte
   or value-equal effective results for each positive fixture and the same
   stable primary unavailable reason for each representative negative fixture.
-- [ ] Missing, duplicate, malformed, optional-absence, required-absence, and
+- [ ] **CR-006:** Missing, duplicate, malformed, optional-absence, required-absence, and
   workspace-exhaustion fixtures complete without traps, partial snapshots, or
   order-dependent results.
-- [ ] No-common-encoding and incompatible-submission-lifetime negative/control
+- [ ] **CR-007:** Every pair in the simultaneous-incompatibility corpus returns
+  the primary reason defined by the 18-step precedence, independent of role
+  and candidate declaration order.
+- [ ] **CR-008:** No-common-encoding and incompatible-submission-lifetime negative/control
   pairs resolve independently to distinct stable unavailable reasons.
-- [ ] The macOS dynamic and static fixtures expose equal semantic coverage;
+- [ ] **CR-009:** The complete lifetime/handoff matrix passes, and no queued or
+  retained GiftUI operation stream is admitted.
+- [ ] **CR-010:** The macOS dynamic and static fixtures expose equal semantic coverage;
   the Raspberry Pi 240 x 240 fixture resolves to a bounded RGB565 tiled path;
   the nRF52840 480 x 320 fixture resolves with a tile no larger than 3,840
-  bytes; and nRF52840 full-surface RGBA resolves unavailable.
-- [ ] Allocation instrumentation reports zero heap allocations for the static
+  bytes; and nRF52840 full-surface `rgba8888` resolves unavailable.
+- [ ] **CR-011:** Allocation instrumentation reports zero heap allocations for the static
   path from contribution construction through resolution, validation-result
   construction, snapshot storage, and repeated steady-state access.
-- [ ] Repeated steady-state snapshot access invokes the resolver zero times,
-  and measured success and worst-negative initialization work remain within
-  the statically documented operation bound.
-- [ ] nRF52840 resource evidence reports incremental and total linked RAM,
+- [ ] **CR-012:** Repeated steady-state snapshot access invokes the resolver zero times,
+  and every measured success and negative path performs at most 96 counted
+  primitive operations.
+- [ ] **CR-013:** nRF52840 resource evidence reports incremental and total linked RAM,
   worst-case resolver stack, linked flash, named capability storage, and
-  display staging; totals satisfy 192 KiB linked RAM, 16 KiB default staging,
-  and 1 MiB flash limits, with explicit review if flash exceeds 896 KiB.
-- [ ] Every first-party tiled fixture consumes the borrowed operation stream
+  display staging; it satisfies every aggregate and capability-specific budget
+  in `Performance Requirements` and records size, stride, and alignment for
+  every named capability record.
+- [ ] **CR-014:** Every first-party tiled fixture consumes the borrowed operation stream
   exactly once synchronously and retains or replays zero GiftUI operations
   after the offer returns.
-- [ ] Fault-injection tests prove runtime backpressure, refusal,
+- [ ] **CR-015:** Fault-injection tests prove runtime backpressure, refusal,
   disconnection, and post-handoff failure leave the effective snapshot
   unchanged and are expressed only through SPEC-003-owned outcome/failure
   seams.
-- [ ] Structural-validation-negative fixtures fail RFC-002 B2 independently
+- [ ] **CR-016:** Structural-validation-negative fixtures fail RFC-002 B2 independently
   of capability resolution, and capability-negative fixtures fail resolution
   independently of an otherwise valid B2 graph; runtime start occurs only
   when both gates succeed.
@@ -591,24 +989,20 @@ semantics and normalized results remain unchanged.
 
 ## Open Issues
 
-- Stabilize the host-side mapping from SPEC-002 checked extents, capacities,
-  and other portable values into the closed capability representation. The
-  mapping must preserve meaning without adding a `GiftUICapabilities ->
-  GiftUI` import or exposing a competing public geometry type.
-- Stabilize the exact SPEC-003 outcome carrier used for initialization
-  validation and operational failures; SPEC-004 must supply only its typed
-  capability-domain reason.
-- Choose exact Swift names, access levels, generic/static representation, and
-  record layouts for the semantic seams listed above without introducing a
-  new architectural choice.
-- Define the complete typed unavailable-reason cases, bounded payloads, and
-  deterministic primary-reason precedence required before review.
-- Set production contribution counts, alternate-value capacities, resolver
-  workspace size, record widths, and capability-specific incremental RAM,
-  stack, flash, and initialization-work budgets using implementation evidence.
-- Identify the later HOST-CONFIGURATION contract that will own the concrete
-  conjunction and sequencing of B2 structural validation and capability
-  resolution.
+The capability-domain contract is closed by this draft. Three coordination
+items remain before SPEC-004 can advance to `review`:
+
+1. SPEC-003 must freeze the exact enclosing initialization-failure carrier and
+   condition identity used by the host adapter. SPEC-004 contributes only
+   `RasterPresentationUnavailable` and does not import that carrier.
+2. SPEC-002 and SPEC-004 must be reviewed together to confirm that the
+   `Int32` `Size` to positive `UInt16` `CapabilityExtent` adapter preserves
+   checked meaning and that no second public geometry model leaks to portable
+   Presentation.
+3. The later HOST-CONFIGURATION Specification must name the assembly API that
+   owns B2 structural validation, capability resolution, snapshot storage, and
+   the first-cycle gate. SPEC-004 already fixes their conjunctive semantics
+   and does not wait on that document to test its pure resolver seam.
 
 If any issue requires a new capability family, mutable snapshot, new
 operation-payload lifetime, target-local resolution, upward import, or changed
