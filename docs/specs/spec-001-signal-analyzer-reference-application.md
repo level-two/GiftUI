@@ -11,15 +11,23 @@ proposal:
   - PROPOSAL-002
 related_rfcs:
   - RFC-001
+  - RFC-008
 related_adrs:
   - ADR-001
   - ADR-003
   - ADR-004
+  - ADR-011
+  - ADR-014
+  - ADR-015
+  - ADR-016
   - ADR-024
   - ADR-025
   - ADR-026
   - ADR-027
 related_specs: []
+related_future_work: []
+related_explorations: []
+related_spikes: []
 supersedes: []
 superseded_by: []
 target_milestone: MVP
@@ -27,9 +35,9 @@ target_milestone: MVP
 
 # SPEC-001: Signal Analyzer Reference Application Contract
 
-> **Review status:** ADR-027 superseded ADR-002. This Specification has
-> returned to review and must be revised to conform to ADR-024 through ADR-027
-> before it can be approved again.
+> **Review status:** Revised for ADR-024 through ADR-027 after ADR-027
+> superseded ADR-002. This Specification remains non-authoritative until a
+> human maintainer explicitly approves it again.
 
 ## Summary
 
@@ -37,8 +45,9 @@ This Specification defines the portable application contract for GiftUI's
 four-channel low-frequency digital Signal Analyzer. It covers the analyzer's
 domain values, acquisition and observation behavior, bounded transition
 capture, presentation state, fixed view hierarchy, waveform semantics,
-target-host obligations, resource bounds, and conformance evidence across the
-four MVP configurations.
+bounded Presentation-fact admission, observable-model ownership, target-host
+obligations, resource bounds, and conformance evidence across the four MVP
+configurations.
 
 The Specification adapts the completed macOS investigation into the governed
 GiftUI lifecycle. The investigation remains implementation evidence, not
@@ -60,6 +69,9 @@ This Specification covers:
 - idle, running, stopped, and failed acquisition states;
 - start, stop, restart, and clear behavior;
 - one capture sink and one acquisition-state sink;
+- one target-composed Presentation admission adapter connecting those sinks to
+  GiftUI's logically distinct mutation domain;
+- bounded immutable capture, acquisition-state, and operational-failure facts;
 - deterministic synthetic signal generation for development and tests;
 - a portable Presentation state model and GiftUI view hierarchy;
 - selectable 1-, 2-, and 5-second visible windows;
@@ -92,6 +104,8 @@ contract unless a requirement below states otherwise.
   facilities.
 - Preserve deterministic, serialized acquisition behavior across dynamic and
   static profiles.
+- Keep observable ViewModel mutation inside GiftUI's sealed mutation phase and
+  make cross-domain capacity and refusal explicit.
 - Bound transition history for embedded execution without losing the level at
   the retained window's lower bound.
 - Make every application behavior and MVP validation claim measurable.
@@ -107,6 +121,9 @@ contract unless a requirement below states otherwise.
   configuration, or input signals above 10 Hz per channel.
 - Support multiple capture or state observers, callback fan-out, background
   domain processing, or general asynchronous streams.
+- Define GiftUI's reusable observable-state API, runtime cycle API, or generic
+  failure API; this contract defines only the Signal Analyzer's required
+  source shape, capacities, facts, adapter, and observable behavior.
 - Require a rendered frame for every acquired transition.
 - Set aggressive RAM, stack, binary-size, or rendering optimization targets
   beyond the explicit capacity and viable-execution requirements below.
@@ -118,9 +135,12 @@ contract unless a requirement below states otherwise.
 - [PROPOSAL-002](../proposals/proposal-002-signal-analyzer-reference-application.md)
   defines the accepted application problem.
 - [RFC-001](../rfcs/rfc-001-signal-analyzer-application-architecture.md)
-  defines the approved design.
-- ADR-001, ADR-003, ADR-004, and ADR-024 through ADR-027 are the accepted
-  governing decisions. ADR-002 is superseded.
+  preserves the approved application design and its post-approval authority
+  update.
+- [RFC-008](../rfcs/rfc-008-observable-reference-state-architecture.md)
+  defines the approved observable-state and Presentation-admission design.
+- ADR-001, ADR-003, ADR-004, ADR-011, ADR-014 through ADR-016, and ADR-024
+  through ADR-027 are the accepted governing decisions. ADR-002 is superseded.
 
 ### GiftUI dependencies
 
@@ -141,6 +161,10 @@ target-specific presentation code or silently omit required behavior.
 Each target host MUST provide:
 
 - one serialized application executor;
+- one GiftUI serialized mutation domain and cycle driver logically distinct
+  from the application executor;
+- the bounded Signal Analyzer fact-admission storage and wake integration
+  specified below;
 - monotonic time and timer-scheduling capabilities;
 - a GiftUI runtime appropriate to the selected dynamic or static profile;
 - a renderer, display surface, and input integration;
@@ -162,6 +186,15 @@ NOT read a platform clock or schedule timers directly.
   governs the shared fixed hierarchy, Presentation-owned visible range,
   250-millisecond refresh interval, target-specific host boundary, and assumed
   GiftUI MVP client surface.
+- [ADR-011](../adrs/adr-011-serialized-run-cycle-and-publication.md)
+  governs sealed ordered admission, at-most-once fact and action application,
+  freeze, dirty rederivation, and complete semantic publication.
+- [ADR-014](../adrs/adr-014-bounded-cross-layer-outcomes.md) and
+  [ADR-015](../adrs/adr-015-layered-failure-disposition.md) govern bounded
+  condition meaning, containment, mandatory coordinator behavior, and the
+  residual target-policy seam.
+- [ADR-016](../adrs/adr-016-non-authoritative-diagnostics.md) keeps diagnostic
+  projection outside mutation, wake, and correctness paths.
 - [ADR-024](../adrs/adr-024-structurally-owned-observable-reference-state.md)
   governs structural ownership, identity, replacement, and removal of the
   observable presentation model.
@@ -175,9 +208,25 @@ NOT read a platform clock or schedule timers directly.
 
 ## Terminology
 
-- **Application executor:** The single serialized execution context on which
-  source delivery, repository mutation, sink callbacks, use cases, and
-  Presentation state mutation run to completion.
+- **Application executor:** The serialized execution context on which source
+  delivery, repository mutation, sink callbacks, and use cases run to
+  completion. It does not own observable ViewModel mutation.
+- **GiftUI mutation domain:** The non-suspending serialized phase that seals
+  admitted work, applies each admitted fact or action at most once, mutates the
+  ViewModel, coalesces change reports, freezes state, and publishes a complete
+  semantic revision.
+- **Presentation admission adapter:** The target-composed object installed as
+  the repository's capture and acquisition-state sinks. It converts each
+  synchronous publication into a bounded immutable Presentation fact and
+  submits it without mutating the ViewModel.
+- **Presentation fact:** A bounded immutable capture snapshot, capture
+  mutation, acquisition-state replacement, or operational-failure value that
+  may mutate the ViewModel only after GiftUI admits and applies it.
+- **Admission outcome:** The bounded result returned synchronously by the
+  adapter: accepted with a sequence number, or rejected with a stable
+  capacity, availability, or sequence-exhaustion condition.
+- **Observable registration:** The single live model-owned change endpoint
+  associated with the root ViewModel's runtime-owned `@State` location.
 - **Acquisition session:** The period beginning with the first successful
   `start` and continuing across stop/restart until the object graph is
   destroyed. Its monotonic source time does not run while a pausable mock
@@ -198,7 +247,8 @@ NOT read a platform clock or schedule timers directly.
 - **Visible range:** The Presentation-selected time interval rendered in the
   waveform panel.
 - **Display refresh interval:** The nominal 250-millisecond interval between
-  analyzer frame computations; state delivery may occur more frequently.
+  analyzer frame computations; application publication and fact admission may
+  occur more frequently.
 
 ## Public Contract
 
@@ -227,7 +277,11 @@ The user-visible behavior MUST satisfy these rules:
 - State and capture changes invalidate the portable Presentation through
   GiftUI's provided observation mechanism.
 - The screen need not render more than once every 250 milliseconds, but the
-  next produced frame MUST reflect the latest completely delivered state.
+  next produced frame MUST reflect every Presentation fact and semantic action
+  applied before that frame's semantic derivation begins.
+- Successful repository delivery means that the admission adapter accepted a
+  fact for later ordered application; it MUST NOT imply that observable
+  Presentation state already changed.
 - Exact styling MAY differ across backends, but required text, controls,
   disabled behavior, grid, and trace semantics MUST remain equivalent.
 
@@ -265,6 +319,8 @@ Presentation MUST own:
 
 - `VisibleTimeWindow`;
 - `SignalAnalyzerViewState` and `SignalAnalyzerViewModel`;
+- `SignalAnalyzerPresentationFact`, capture-mutation values, admission
+  outcomes, and the repository-sink admission adapter declarations;
 - visible-range calculation;
 - the fixed GiftUI hierarchy;
 - time ruler, channel labels, control state, grid, and waveform construction.
@@ -273,12 +329,28 @@ Presentation MAY depend on Domain and the provided GiftUI client surface. It
 MUST NOT depend on concrete Data types, platform hosts, clocks, schedulers,
 GPIO, renderers, or display hardware.
 
+The ViewModel MUST NOT implement either repository sink contract. The
+Presentation admission adapter MUST implement both sink contracts, but it
+MUST NOT own, borrow, observe, or directly mutate the ViewModel. It MAY depend
+only on Domain values and the bounded fact-submission endpoint supplied at
+target composition.
+
 ### Target host
 
 The host MUST be the only composition root. It MUST construct exactly one
-concrete source, repository, use-case set, ViewModel, and root view for an
-analyzer instance. It MUST supply runtime, backend, display, input, executor,
-clock, scheduler, and target-specific hardware integration.
+concrete source, repository, use-case set, Presentation admission adapter,
+ViewModel, observable state location, and root view for an analyzer instance.
+It MUST install the adapter as both repository sinks on the application
+executor before starting acquisition. It MUST supply the application-executor
+entry contract, GiftUI mutation domain, fact admission, runtime, backend,
+display, input, clock, scheduler, wake path, and target-specific hardware
+integration.
+
+The host MUST start and stop repository observation explicitly. View
+construction, `@State` materialization, body evaluation, and structural
+removal MUST NOT call the observation use cases. A host MAY realize both
+logical serialization domains on one thread or cooperative loop, but MUST
+preserve admission, sealing, mutation-phase ownership, and bounded outcomes.
 
 Dynamic implementations MAY realize the logical responsibilities as separate
 SwiftPM targets and use reference/existential wiring. Static implementations
@@ -313,6 +385,10 @@ enum DigitalLevel: Equatable, Sendable {
     case high
 }
 
+struct SignalAnalyzerDiagnostic: Equatable, Sendable {
+    /* Valid UTF-8 payload with a maximum encoded length of 96 bytes. */
+}
+
 struct SignalTransition: Equatable, Sendable {
     let channelID: SignalChannelID
     let timestamp: Duration
@@ -323,9 +399,15 @@ enum AcquisitionState: Equatable, Sendable {
     case idle
     case running
     case stopped
-    case failed(String)
+    case failed(SignalAnalyzerDiagnostic)
 }
 ```
+
+`SignalAnalyzerDiagnostic` MUST preserve at most 96 UTF-8 bytes. A longer
+source diagnostic MUST be truncated at a valid scalar boundary. Dynamic
+profiles MAY use `String` internally; static profiles MUST use inline or
+caller-supplied bounded storage and MUST NOT allocate to construct, copy, or
+transport this value.
 
 `SignalChannel.standard` MUST contain exactly these ordered values:
 
@@ -371,15 +453,83 @@ The capture invariants are:
 - `empty()` has standard channels, no transitions, zero duration, zero retained
   lower bound, and low baseline levels.
 
+### Capture publication values
+
+The repository MUST publish either a complete current snapshot or an exact
+bounded mutation that transforms the preceding published revision into the
+current capture:
+
+```swift
+struct SignalChannelLevels: Equatable, Sendable {
+    let ch1: DigitalLevel
+    let ch2: DigitalLevel
+    let ch3: DigitalLevel
+    let ch4: DigitalLevel
+}
+
+enum SignalCaptureChange: Equatable, Sendable {
+    case insertAndTrim(
+        baseRevision: UInt32,
+        insertionIndex: UInt16,
+        transition: SignalTransition,
+        evictedPrefixCount: UInt16,
+        duration: Duration,
+        retainedLowerBound: Duration,
+        baselines: SignalChannelLevels
+    )
+    case reset(
+        baseRevision: UInt32,
+        baselines: SignalChannelLevels
+    )
+}
+
+enum SignalCapturePublication: Equatable, Sendable {
+    case snapshot(revision: UInt32, capture: SignalCapture)
+    case mutation(revision: UInt32, change: SignalCaptureChange)
+}
+
+enum SignalSinkDeliveryRejection: UInt8, Equatable, Sendable {
+    case snapshotCapacityExhausted
+    case factCapacityExhausted
+    case runtimeUnavailable
+    case sequenceExhausted
+}
+
+enum SignalSinkDeliveryOutcome: Equatable, Sendable {
+    case accepted(sequence: UInt32)
+    case rejected(SignalSinkDeliveryRejection)
+}
+```
+
+Revision zero identifies the initial empty capture. Each accepted transition
+and each Clear MUST increment the revision exactly once. Revision arithmetic
+MUST NOT wrap; attempting to advance `UInt32.max` is a contained application
+failure that stops acquisition and requires a fresh analyzer object graph.
+
+For `insertAndTrim`, `baseRevision` MUST equal the preceding publication's
+revision. Applying the change first inserts `transition` at `insertionIndex`
+in the preceding capture and then removes `evictedPrefixCount` entries from
+the resulting prefix before replacing duration, lower bound, and all four
+baselines. This ordering permits the newly inserted transition itself to be
+evicted under capacity pressure. The result is the repository's current
+capture at the publication revision. Both counts MUST be at most 2,404.
+`reset` replaces the capture with no transitions,
+zero duration and lower bound, and the supplied baselines. `.snapshot`
+publication is required for immediate current-value delivery when observation
+starts or restarts. Ordinary accepted transitions and Clear MUST use
+`.mutation` publication so the static path does not copy a complete
+2,404-entry capture per event.
+
 ### Sink and repository contract
 
 ```swift
 protocol SignalCaptureSink {
-    func receive(_ capture: SignalCapture)
+    func receive(_ publication: SignalCapturePublication)
+        -> SignalSinkDeliveryOutcome
 }
 
 protocol AcquisitionStateSink {
-    func receive(_ state: AcquisitionState)
+    func receive(_ state: AcquisitionState) -> SignalSinkDeliveryOutcome
 }
 
 protocol SignalAcquisitionRepository {
@@ -395,7 +545,10 @@ protocol SignalAcquisitionRepository {
 
 All operations MUST execute on the application executor. The repository MUST
 support exactly one sink of each kind. A new sink replaces the previous sink
-and immediately receives the current value before registration returns.
+and immediately receives the current value before registration returns. The
+capture callback MUST use a `.snapshot` publication. Each callback MUST return
+the admission adapter's bounded outcome before registration or publication
+continues.
 Stopping observation detaches the sink before returning.
 
 An implementation MUST NOT keep a dynamic application graph alive solely
@@ -461,38 +614,224 @@ struct SignalAnalyzerViewState: Equatable, Sendable {
     var acquisitionState: AcquisitionState
     var capture: SignalCapture
     var visibleWindow: VisibleTimeWindow
-    var errorMessage: String?
+    var errorMessage: SignalAnalyzerDiagnostic?
+}
+
+enum SignalAnalyzerPresentationFact: Equatable, Sendable {
+    case captureSnapshot(revision: UInt32, capture: SignalCapture)
+    case captureMutation(revision: UInt32, change: SignalCaptureChange)
+    case acquisitionState(AcquisitionState)
+    case operationalFailure(
+        rejection: SignalSinkDeliveryRejection,
+        diagnostic: SignalAnalyzerDiagnostic
+    )
+}
+
+enum SignalAnalyzerObservationStartOutcome: Equatable, Sendable {
+    case started(captureSequence: UInt32, stateSequence: UInt32)
+    case alreadyStarted
+    case rejected(SignalSinkDeliveryRejection)
+}
+
+protocol SignalAnalyzerFactAdmission {
+    func submit(_ fact: SignalAnalyzerPresentationFact)
+        -> SignalSinkDeliveryOutcome
 }
 ```
 
 The duration mapping MUST be exactly 1, 2, and 5 seconds. Initial view state
 MUST be idle, empty capture, two-second window, and no error.
 
+`SignalAnalyzerPresentationAdmissionAdapter` MUST:
+
+- implement `SignalCaptureSink` and `AcquisitionStateSink`;
+- own the two observation use cases and idempotent `startObserving()` and
+  `stopObserving()` operations;
+- receive one target-supplied `SignalAnalyzerFactAdmission` endpoint;
+- convert `.snapshot` publications to `captureSnapshot`, `.mutation`
+  publications to `captureMutation`, and state callbacks to
+  `acquisitionState`;
+- submit exactly one fact per callback and return the submission outcome;
+- never attach a GiftUI observable registration, retain the ViewModel, mutate
+  Presentation state, or use the model as admission storage; and
+- invoke only the target-composed bounded failure-policy seam after rejection;
+  that seam MUST NOT reinterpret rejection as acceptance or directly mutate
+  the ViewModel.
+
+`startObserving()` MUST return `SignalAnalyzerObservationStartOutcome`. It
+returns `started` only after both immediate publications are accepted. If
+either is rejected, the adapter MUST detach both sinks, preserve any already
+accepted fact for at-most-once application, attempt the reserved operational
+failure fact, and return the original rejection. `alreadyStarted` MUST perform
+no registration or publication. `stopObserving()` MUST detach both sinks before
+returning and be an idempotent no-op when already stopped.
+
 `SignalAnalyzerViewModel` MUST:
 
 - own exactly one `SignalAnalyzerViewState` value;
-- implement or adapt both sink contracts;
-- receive the five use cases at initialization;
-- expose idempotent `startObserving()` and `stopObserving()` operations;
+- receive the Start, Stop, and Clear use cases through the target-composed
+  synchronous application-executor entry contract;
 - expose `startTapped`, `stopTapped`, `clearTapped`, and
   `visibleDurationChanged` intents;
+- expose package-scoped fact application callable only by the GiftUI mutation
+  domain;
 - expose the derived visible range;
 - participate in GiftUI's provided observable invalidation contract without
-  requiring the portable code to own a task or clock.
+  requiring the portable code to own a task, clock, queue, lock, actor, or
+  scheduler; and
+- never implement the repository sinks or accept direct application-executor
+  mutation.
+
+### Observable state and admission configuration
+
+Portable Presentation MUST use this source-level ownership shape in every
+profile:
+
+```swift
+struct SignalAnalyzerView: View {
+    @State private var viewModel: SignalAnalyzerViewModel
+}
+```
+
+The assembled analyzer MUST configure exactly one observable state location,
+one active model registration, one dirty bit, one live bit, and capacity for
+one transient replacement registration. The fixed root MUST use a generated
+or runtime-provided `UInt32` structural identity and declaration-local
+`UInt16` state identity. The registration token MUST contain a `UInt16` slot
+and a nonzero `UInt32` generation. Generation arithmetic MUST NOT wrap; token
+exhaustion MUST reject reuse and require a fresh runtime instance.
+
+The static profile MUST provide one address-stable generated
+`SignalAnalyzerViewModel` storage location. Copying its typed handle MUST
+preserve that storage identity. The location record MUST contain the structural
+and declaration identities, active registration token, live/staged/dirty
+flags, and type/layout discriminator. The registration record MUST contain the
+owning location, generation, and bounded model change endpoint. The transient
+replacement record MUST be separate from the active record so failed
+replacement leaves the active association unchanged.
+
+Static target builds MUST generate this typed storage and direct change-sink
+dispatch from an immutable Signal Analyzer profile descriptor containing the
+model type, structural and declaration identities, and capacities in this
+section. Generation MUST be deterministic and run before Swift compilation;
+the emitted Swift source MUST be inspectable build input and MUST NOT perform
+runtime reflection, platform discovery, or capacity negotiation. The generated
+portable model declarations belong to the `GiftUI` import surface; generated
+runtime storage and dispatch remain package-scoped below that surface. Dynamic
+targets MUST compile the same portable Presentation source without consuming
+the static storage implementation.
+
+The dynamic profile MAY use heap-backed lookup and retained model storage, but
+MUST enforce the same configured capacities, identifier widths, one-owner
+cardinality, generation exhaustion, replacement behavior, and outcomes.
+
+The package-scoped model/runtime integration MUST be semantically equivalent
+to these bounded declarations; a static build MAY generate specialized direct
+calls instead of protocol existentials:
+
+```swift
+struct SignalAnalyzerRegistrationToken: Equatable, Sendable {
+    let slot: UInt16
+    let generation: UInt32
+}
+
+enum SignalAnalyzerAttachOutcome: UInt8, Equatable, Sendable {
+    case attached
+    case stateLocationCapacityExhausted
+    case registrationCapacityExhausted
+    case replacementStagingExhausted
+    case duplicateModelOwner
+    case incompatibleStateAssociation
+    case identityGenerationExhausted
+}
+
+enum SignalAnalyzerChangeReportOutcome: UInt8, Equatable, Sendable {
+    case dirtied
+    case coalesced
+    case staleRegistration
+    case mutationPhaseViolation
+}
+
+protocol SignalAnalyzerModelChangeSink {
+    func reportChange(token: SignalAnalyzerRegistrationToken)
+        -> SignalAnalyzerChangeReportOutcome
+}
+```
+
+Initial attachment and replacement MUST return
+`SignalAnalyzerAttachOutcome`. Detachment MUST require the exact active token
+and be idempotent only for that token; any later report with it returns
+`staleRegistration`. Each observable model mutator MUST hold its installed
+token and synchronously call the model change sink before returning after a
+change. The portable analyzer does not assign a replacement ViewModel after
+initial materialization, but the configured runtime and shared conformance
+fixtures MUST support the accepted atomic replacement behavior.
+
+Fact admission MUST provide these independent fixed capacities per analyzer:
+
+| Storage | Capacity | Contents |
+| --- | ---: | --- |
+| Capture snapshot slot | 1 | One complete capture of at most 2,404 transitions |
+| Ordered compact-fact ring | 32 | Capture mutations and acquisition-state facts |
+| Reserved operational-failure slot | 1 | One failure fact unavailable to ordinary traffic |
+
+The 32 compact slots cover the maximum 20 capture publications in one
+half-open 250-millisecond interval after initialization, four initial channel
+publications, one acquisition-state publication, and seven additional
+action-induced publications. A host MUST request a GiftUI cycle after the
+first accepted fact and MUST demonstrate
+that the ring does not saturate at the accepted 80-event-per-second workload.
+
+Every accepted fact MUST receive a monotonically increasing nonzero `UInt32`
+sequence. Snapshot, compact, and reserved slots MUST be sealed and applied in
+sequence order even if their physical storage is separate. Sequence arithmetic
+MUST NOT wrap. A fact arriving after cycle sealing waits for a later cycle.
+The runtime MUST apply each accepted fact at most once and MUST NOT silently
+replace, coalesce, or discard an accepted fact. Change reports and wake intent
+MAY coalesce; the facts themselves MUST NOT.
+
+The runtime and adapter MUST preserve these source-stable condition names in a
+bounded `UInt8` representation; numeric values are build-local and MUST NOT be
+persisted or treated as protocol identifiers:
+
+```swift
+enum SignalAnalyzerRuntimeCondition: UInt8 {
+    case stateLocationCapacityExhausted
+    case registrationCapacityExhausted
+    case replacementStagingExhausted
+    case duplicateModelOwner
+    case incompatibleStateAssociation
+    case staleRegistrationReport
+    case mutationPhaseViolation
+    case captureRevisionMismatch
+    case factAdmissionRejected
+    case identityGenerationExhausted
+}
+```
 
 ## Behavior
 
 ### Serialized delivery
 
-Every source delivery, repository mutation, sink callback, use-case call, and
-ViewModel state mutation MUST run to completion on the application executor.
-A producer MUST NOT invoke a second sink callback before the current callback
-returns. No portable Domain or Presentation contract may require an async
-stream, task, queue, lock, or cross-actor handoff.
+Every source delivery, repository mutation, sink callback, and use-case call
+MUST run to completion on the application executor. A producer MUST NOT invoke
+a second sink callback before the current callback returns. The callback MUST
+terminate at the Presentation admission adapter and return its admission
+outcome. It MUST NOT directly or reentrantly mutate the ViewModel.
+
+Only the GiftUI mutation domain MAY apply an accepted fact or semantic action
+to the ViewModel. It MUST seal an ordered batch, apply each member at most
+once, coalesce model change reports, freeze observable mutation before
+derivation, and publish only a complete semantic revision. No portable Domain
+or Presentation contract may require an async stream, task, queue, lock,
+actor, scheduler, or cross-actor handoff.
 
 The repository MUST publish a capture synchronously after every accepted
 transition and after every clear. It MUST publish acquisition state whenever a
-state transition occurs. GiftUI MAY coalesce the resulting view invalidations.
+state transition occurs. Publication updates repository state before invoking
+the sink and MUST NOT roll repository state back if fact admission rejects the
+resulting callback. GiftUI MAY coalesce the resulting model change reports and
+view invalidations after facts are applied.
 
 ### Repository transition processing
 
@@ -513,7 +852,8 @@ order:
 7. If capacity still exceeds the concrete limit, evict the oldest transition
    repeatedly, update the relevant baseline, and advance the retained lower
    bound to the last evicted timestamp.
-8. Publish one complete current capture.
+8. Increment the capture revision and publish one `.mutation` value containing
+   the exact `insertAndTrim` change that produces the new current capture.
 
 An out-of-order transition at or after the retained lower bound MUST be
 inserted stably. A transition older than the retained lower bound is outside
@@ -564,7 +904,8 @@ untrimmed transition history would produce.
 - Preserve each channel's current digital level as the new baseline.
 - Preserve the current acquisition state and whether the source is active.
 - Rebase future source timestamps to the new epoch.
-- Publish the cleared capture synchronously before returning.
+- Increment the capture revision and publish one `.mutation` value containing
+  the `reset` change synchronously before returning.
 
 Before any source event has established a current level, the level is low.
 
@@ -591,20 +932,39 @@ NOT appear in Domain or Presentation contracts.
 
 ### ViewModel behavior
 
-- `startObserving` installs both sinks at most once. Because registration
-  immediately delivers current values, state is current when it returns.
-- `stopObserving` detaches both sinks at most once.
-- Receiving a capture replaces `state.capture` synchronously.
-- Receiving an acquisition state replaces `state.acquisitionState`
-  synchronously.
-- Receiving `.failed(message)` also sets `state.errorMessage` to `message`.
-- `startTapped` clears an old error, invokes Start, and maps a thrown failure to
-  error text.
+- Host-started adapter observation installs both sinks at most once. Immediate
+  capture and acquisition-state callbacks submit facts; starting observation
+  MUST NOT claim that the ViewModel is current until those facts are applied
+  and a complete semantic revision publishes.
+- Host-stopped adapter observation detaches both sinks at most once and does
+  not remove the runtime-owned ViewModel state location.
+- Applying `captureSnapshot` replaces `state.capture` and its internal capture
+  revision atomically.
+- Applying `captureMutation` MUST validate `baseRevision`, reproduce the
+  publication algorithm exactly, and replace the internal revision. A mismatch
+  MUST leave the model unchanged and return the bounded incompatible-fact
+  outcome described under Error Handling.
+- Applying `acquisitionState` replaces `state.acquisitionState`. Applying
+  `.failed(message)` also sets `state.errorMessage` to `message`.
+- Applying `operationalFailure` sets acquisition state to failed and exposes
+  its bounded diagnostic without applying any rejected ordinary fact.
+- `startTapped` clears an old error inside the current GiftUI mutation phase,
+  synchronously invokes Start through the application-executor entry contract,
+  and maps a thrown failure to bounded error text. Any synchronous repository
+  callback caused by Start becomes a later admitted fact and MUST NOT reenter
+  the ViewModel.
 - `stopTapped` invokes Stop.
 - `clearTapped` invokes Clear.
-- `visibleDurationChanged` replaces the selected window.
-- Repeated observation or action calls preserve the repository idempotency
-  rules.
+- `visibleDurationChanged` replaces the selected window as an ordinary
+  semantic action in the current GiftUI mutation phase.
+- Repeated action calls preserve the repository idempotency rules.
+
+Every fact or action that changes observable ViewModel state MUST synchronously
+emit at least one model-owned change report before that fact or action returns.
+A proven no-op MAY emit none. Reports MUST contain only owner-dirty meaning,
+MUST NOT identify properties or values, and MUST coalesce to one dirty bit and
+at most one pending wake requirement. Reports MUST NOT trigger reentrant
+evaluation.
 
 ### Visible range
 
@@ -696,10 +1056,12 @@ visible window.
 ### Refresh behavior
 
 The analyzer display refresh interval is 250 milliseconds. Acquisition and
-ViewModel state delivery MAY occur up to 80 times per second. GiftUI MAY
-coalesce up to 20 worst-case transition invalidations into a frame. A rendered
-frame MUST use one internally consistent view-state snapshot and MUST include
-every state mutation completed before that frame begins.
+fact admission MAY occur up to 80 times per second. GiftUI MAY apply and
+coalesce up to 20 worst-case capture-fact change reports before one frame. A
+rendered frame MUST use one internally consistent published model revision and
+MUST include every fact and action applied before derivation for that revision
+begins. An accepted fact not included in the sealed batch waits for a later
+cycle and MUST NOT be reported as already visible.
 
 ## State / Lifecycle
 
@@ -729,6 +1091,31 @@ that no later callback can reach destroyed repository or Presentation state.
 Source generations MUST be unique. A stopped, cancelled, replaced, or
 destroyed generation MUST fail closed and produce no later transition.
 
+The observable ViewModel location lifecycle is:
+
+| Event | Required result |
+| --- | --- |
+| First successful root materialization | Install the provided model and one active registration |
+| Repeated transient initializer at the same live identity | Preserve the installed model and registration; ignore the initializer for replacement |
+| Admitted replacement succeeds | Stage and validate the candidate, atomically activate it, retire the old registration, and dirty the location |
+| Replacement validation, capacity, or attachment fails | Remove partial candidate state and preserve the old model and registration without dirtying solely for the failed attempt |
+| Candidate hierarchy omits the location but derivation fails | Preserve the previously published live location |
+| A complete published hierarchy omits the location | Retire the registration and release or reset the location |
+| Reinsertion after published removal | Materialize fresh state with a new nonaliasing generation |
+
+One model MUST NOT own two locations or two registrations. Descendant reads
+MAY borrow the installed model without registering. A successful replacement
+remains installed and dirty if later derivation fails; retry MUST rederive
+without replaying the replacement.
+
+Application observation and GiftUI observable registration are independent
+lifecycles. Stopping repository observation does not detach the live model's
+GiftUI registration. Published structural removal detaches the GiftUI
+registration but does not call repository observation use cases. Teardown MUST
+explicitly stop repository observation, retire the root state location through
+publication or runtime shutdown, and prove that stale callbacks and stale
+model reports cannot affect a later object graph.
+
 ## Capability Requirements
 
 The portable analyzer assumes every MVP configuration supplies all GiftUI
@@ -752,6 +1139,11 @@ drawing behavior without analyzer-domain knowledge.
 Each target host MUST:
 
 - connect the appropriate dynamic or static GiftUI runtime;
+- configure exactly the observable-state and fact capacities specified above;
+- compose the repository sinks with the Presentation admission adapter rather
+  than the ViewModel;
+- schedule a GiftUI cycle after the first pending fact while coalescing later
+  wake requests;
 - provide a display size on which all four rows and controls are usable;
 - translate input into the required button actions;
 - compute analyzer frames no more frequently than once per 250 milliseconds;
@@ -786,9 +1178,59 @@ requires it.
 - Missing required GiftUI or backend behavior MUST fail target validation
   explicitly; it MUST NOT silently degrade the portable screen.
 - Stale events from a stopped or replaced source generation MUST be ignored.
+- Snapshot-slot, compact-ring, runtime-availability, and sequence exhaustion
+  MUST reject admission synchronously with the corresponding
+  `SignalSinkDeliveryRejection`. Rejection MUST NOT mutate the ViewModel,
+  overwrite an accepted fact, or fall back to direct mutation.
+- The adapter MUST reserve and attempt one `operationalFailure` fact after an
+  ordinary admission rejection. If the reserved slot is unavailable, the host
+  MUST quiesce acquisition and preserve the last complete published semantic
+  revision. At the accepted workload, any admission rejection is a conformance
+  failure.
+- State-location, registration, or replacement-staging exhaustion MUST reject
+  the candidate association, remove partial candidate state, and preserve an
+  existing live association. Initial materialization failure prevents the
+  analyzer root from publishing and requires target policy to quiesce that
+  analyzer instance.
+- Duplicate ownership or incompatible type/layout association MUST reject the
+  new association without reinterpreting storage or adding a second
+  registration.
+- A stale registration report MUST be rejected and MUST NOT dirty either a
+  retired location or a later occupant of the same slot.
+- A capture-revision mismatch MUST leave ViewModel capture state unchanged,
+  mark the analyzer Presentation scope operationally failed, and require a new
+  snapshot through explicit observation restart; it MUST NOT guess or apply a
+  partial delta.
+- A report during freeze or another prohibited phase MUST mark the affected
+  semantic scope dirty and return `mutationPhaseViolation`. If the runtime
+  cannot prove stable state, containment is `safety not proven` and target
+  policy MUST quiesce the analyzer rather than publish potentially torn state.
+- Derivation failure after applied mutations MUST discard partial derived
+  output, retain current state as dirty, request a later host-paced cycle, and
+  MUST NOT replay or roll back facts, actions, or model replacement.
+
+The Signal Analyzer target-composition policy is total:
+
+| Condition | Mandatory product response |
+| --- | --- |
+| Snapshot or compact fact capacity exhausted | Reject the fact, attempt the reserved failure fact, stop further acquisition delivery after the active callback returns, and quiesce the analyzer instance |
+| Runtime unavailable, fact sequence exhausted, or reserved failure slot unavailable | Preserve the last complete revision, quiesce the analyzer instance, and require a fresh runtime/object graph |
+| Initial state-location or registration exhaustion | Publish no analyzer root and quiesce the instance |
+| Replacement staging, duplicate owner, or incompatible association with an existing live model | Preserve the existing model and continue only if containment is proven |
+| Stale registration report | Reject the report, preserve current dirty state, and continue |
+| Capture revision mismatch | Preserve current capture, quiesce acquisition, and require explicit observation restart with a snapshot before a fresh instance may continue |
+| Mutation phase violation | Quiesce whenever stable state is not proven; otherwise retain dirty state for a host-paced retry |
+
+Policy MUST NOT narrow affected scope, reinterpret rejection as success, retry
+without a bound, or bypass the reserved fact and normal admission boundary.
+Quiescence after admission failure MUST prevent later source callbacks without
+publishing an ordinary `.stopped` fact that could overwrite the operational
+failure. After the reserved failure fact publishes, the host MAY destroy and
+recreate the complete analyzer object graph through normal explicit teardown.
 
 Diagnostics MAY use platform-appropriate reporting. User-visible error text
-MUST not expose unstable implementation type names or memory addresses.
+MUST NOT expose unstable implementation type names or memory addresses and
+MUST satisfy the 96-byte bound.
 
 ## Performance Requirements
 
@@ -797,11 +1239,21 @@ MUST not expose unstable implementation type names or memory addresses.
   stale-generation events.
 - The display MUST render a consistent latest state at a target cadence of four
   frames per second under the same workload.
+- Fact admission and GiftUI mutation cycles MUST accept and apply all 80
+  capture publications per second without snapshot-slot, compact-ring, or
+  reserved-slot rejection under that workload.
+- Up to 20 capture-fact model change reports between frames MUST coalesce to
+  one dirty transition and at most one pending wake requirement without
+  dropping the accepted facts.
 - The implementation MUST NOT require one rendered frame per transition.
-- State completed before a frame begins MUST appear no later than the next
-  scheduled analyzer frame, absent a documented platform failure.
+- Facts and actions applied before semantic derivation begins MUST appear no
+  later than the next scheduled analyzer frame, absent a documented platform
+  failure. Merely accepted but not yet sealed facts are not considered applied.
 - Static capture storage MUST hold at least 2,404 transition entries plus four
   baselines.
+- Static Presentation integration MUST additionally provide one 2,404-entry
+  snapshot slot, 32 compact fact slots, one reserved failure slot, one model
+  location, one active registration, and one replacement-staging record.
 - Dynamic storage MAY allocate, but retained logical history MUST remain
   bounded to 30 seconds and equivalent capacity behavior.
 - nRF52840 validation MUST record firmware binary size, static/global RAM,
@@ -812,6 +1264,11 @@ MUST not expose unstable implementation type names or memory addresses.
 - The MVP imposes no smaller numeric memory or binary-size budget, but every
   claimed configuration MUST build, fit, launch, remain responsive, and finish
   the sustained workload without allocation failure or watchdog reset.
+- Evidence MUST separately report model storage, state-location and
+  registration records, stale-generation protection, snapshot storage,
+  compact and reserved fact storage, maximum sealed batch, admission/application
+  time, change-report time, dirty-to-publication latency, and dirty-to-frame
+  latency.
 
 ## Compatibility
 
@@ -819,14 +1276,23 @@ The governed implementation MUST preserve the observable application behavior
 of the macOS investigation except where accepted ADRs replace desktop-specific
 mechanisms or add bounded-baseline behavior.
 
+ADR-027 intentionally changes one timing guarantee from the investigation:
+repository sink return no longer means that ViewModel state changed. It means
+that a bounded fact was accepted or explicitly rejected. Observable state
+changes only when GiftUI later applies an accepted fact. Code in which the
+ViewModel implements repository sinks or relies on immediate sink-to-model
+mutation is incompatible and MUST migrate to the admission adapter.
+
 The portable Presentation migrates from SwiftUI to GiftUI. Exact SwiftUI source
 compatibility, exact pixel output, and identical host code are not required.
 The title, status, controls, channel ordering, visible-range formula, waveform
 semantics, and acquisition behavior are compatibility requirements.
 
-Dynamic and static profiles MAY use different storage, executor, observation,
-dependency-wiring, clock, scheduling, and rendering implementations. They MUST
-produce equivalent Domain values and user-visible behavior.
+Dynamic and static profiles MAY use different physical storage, executor,
+observable-registration, dependency-wiring, clock, scheduling, and rendering
+implementations. They MUST expose the same portable `@State` source shape,
+configured capacities, outcomes, ordering, model identity behavior, Domain
+values, and user-visible behavior.
 
 No ABI stability, persistence format, capture export format, or migration of
 saved data is promised by this Specification.
@@ -840,6 +1306,8 @@ Tests MUST verify:
 - standard channel identifiers, names, order, and initial levels;
 - action use cases delegate exactly once;
 - observation use cases attach and detach the correct sink;
+- capture publication revisions and `.snapshot`, `insertAndTrim`, and `reset`
+  values reproduce the repository's complete current capture;
 - visible `Duration` values and transition invariants;
 - Domain imports no prohibited module.
 
@@ -849,7 +1317,8 @@ Tests MUST verify:
 
 - registration immediately delivers current capture and state;
 - replacement and detachment of each single sink;
-- synchronous, non-reentrant delivery ordering;
+- synchronous, non-reentrant callback ordering and propagation of each bounded
+  sink outcome;
 - stable ordering for equal and out-of-order timestamps;
 - capture duration and retained lower-bound calculation;
 - 30-second time trimming;
@@ -882,9 +1351,17 @@ Tests MUST verify:
 Tests MUST verify:
 
 - initial view state;
-- idempotent observation start and stop;
-- capture and acquisition-state delivery replace view state synchronously;
+- the ViewModel implements neither repository sink;
+- host-owned adapter observation start and stop are idempotent and immediate
+  current values become admitted facts rather than direct mutation;
+- snapshot, capture-mutation, acquisition-state, and operational-failure facts
+  apply only inside the GiftUI mutation phase;
+- capture mutation validates its base revision and exactly reproduces the
+  repository publication;
+- capture-revision mismatch preserves current ViewModel capture;
 - each intent reaches its use case;
+- a Button-triggered synchronous repository callback is admitted for a later
+  cycle and cannot reenter the active ViewModel mutation;
 - thrown and published failures appear as error text;
 - visible-window selection and exact range calculation;
 - the status and disabled-state table for every acquisition state;
@@ -892,6 +1369,36 @@ Tests MUST verify:
 - lower-bound baseline reconstruction and transition-to-path mapping;
 - time-ruler lower, midpoint, and upper labels;
 - grid line count and trace continuity to both canvas edges.
+
+### Observable-state and admission tests
+
+The same semantic fixtures MUST run against dynamic and static profiles and
+verify:
+
+- one root state location preserves one model identity across transient view
+  reconstruction and ignores repeated initializers while live;
+- successful atomic replacement changes the model and registration once;
+- validation, state-location, registration, and staging failures preserve the
+  old model and remove partial candidate state;
+- failed derivation after replacement keeps the replacement dirty without
+  replay or rollback;
+- published removal detaches the registration, failed derivation preserves the
+  old live set, and reinsertion creates fresh state;
+- duplicate ownership and incompatible association fail deterministically;
+- stale reports after detach and slot reuse cannot dirty a later occupant;
+- report generation is synchronous, no-op omission is safe, 20 reports
+  coalesce to one dirty transition and wake, and reports never trigger
+  reentrant evaluation;
+- snapshot capacity one, compact capacity 32, and reserved capacity one reject
+  the next value with the exact bounded outcome and never fall back to direct
+  mutation;
+- sequence and registration generations never wrap or alias;
+- facts from separate physical storage seal and apply in one sequence order,
+  each accepted fact applies at most once, and post-seal facts wait;
+- same-thread and distinct-executor hosts produce equivalent facts, outcomes,
+  semantic revisions, and user-visible state; and
+- freeze-phase reports, derivation failure, and publication clearing follow
+  the specified dirty-state and containment behavior.
 
 ### Cross-profile and platform tests
 
@@ -901,6 +1408,8 @@ Tests MUST verify:
 - equivalent deterministic-source state traces on macOS dynamic, macOS static,
   Raspberry Pi/Linux dynamic, and nRF52840 static;
 - 80 events per second for 30 seconds with four-frame-per-second presentation;
+- all corresponding facts are admitted and applied without capacity rejection,
+  while change reports and wake intent coalesce;
 - required memory and binary evidence;
 - framebuffer display and input on Raspberry Pi/PiScreen;
 - TFT display and input on nRF52840;
@@ -911,8 +1420,10 @@ behavioral, resource, profile, or connected-hardware evidence.
 
 ## Acceptance Criteria
 
-- [x] **SA-AC-001:** The feature manifest links accepted ADR-001 through
-  ADR-004 and this Specification.
+- [x] **SA-AC-001:** The feature manifest links the Signal Analyzer and
+  observable-reference-state feature chain, accepted ADR-001, ADR-003,
+  ADR-004, ADR-011, ADR-014 through ADR-016, ADR-024 through ADR-027,
+  historical ADR-002, and this Specification.
 - [x] **SA-AC-002:** The analyzer builds with logical Domain, Data,
   Presentation, and target-host responsibilities preserving ADR-001 dependency
   direction.
@@ -925,11 +1436,13 @@ behavioral, resource, profile, or connected-hardware evidence.
   and four traces.
 - [ ] **SA-AC-006:** The portable hierarchy uses fixed explicit channel and
   window composition and is substantially shared by all four configurations.
-- [x] **SA-AC-007:** Sink registration synchronously delivers current values,
-  replacement detaches the old sink, and stop prevents later callbacks.
+- [ ] **SA-AC-007:** Sink registration synchronously delivers revisioned
+  current values through the adapter, replacement detaches the old sink, stop
+  prevents later callbacks, and every callback returns its bounded outcome.
 - [ ] **SA-AC-008:** The complete acquisition graph uses serialized synchronous
-  delivery without requiring async streams, tasks, queues, locks, or actors in
-  portable Domain or Presentation.
+  application delivery through the admission adapter, logically distinct
+  GiftUI mutation, and no async stream, task, queue, lock, actor, or scheduler
+  requirement in portable Domain or Presentation.
 - [x] **SA-AC-009:** Start, repeated Start, Stop, repeated Stop, restart, and
   startup failure match the specified state table without duplicate producers.
 - [ ] **SA-AC-010:** Clear resets the capture epoch and retained history,
@@ -946,8 +1459,9 @@ behavioral, resource, profile, or connected-hardware evidence.
   fail/drop behavior.
 - [x] **SA-AC-015:** The deterministic mock produces the specified four channel
   patterns and no stale event after stop, restart, or teardown.
-- [x] **SA-AC-016:** Initial Presentation state is idle, empty, two seconds,
-  and error-free; delivered captures and states invalidate the view.
+- [ ] **SA-AC-016:** Initial Presentation state is idle, empty, two seconds,
+  and error-free; applied facts mutate it only in the GiftUI domain and produce
+  synchronous model-owned change reports.
 - [x] **SA-AC-017:** Start, Stop, Clear, and window controls match all specified
   enabled and disabled states.
 - [x] **SA-AC-018:** Visible ranges for 1, 2, and 5 seconds follow the exact
@@ -969,10 +1483,43 @@ behavioral, resource, profile, or connected-hardware evidence.
 - [ ] **SA-AC-025:** nRF52840 evidence records binary, RAM, transition storage,
   drawing workspace, and stack measurements where supported and demonstrates
   that the application fits and runs.
-- [x] **SA-AC-026:** Replacing the mock source with another conforming source
-  requires no change to Domain, use cases, ViewModel, or portable hierarchy.
+- [ ] **SA-AC-026:** Replacing the mock source with another conforming source
+  requires no change to Domain, use cases, admission adapter, ViewModel, or
+  portable hierarchy.
 - [ ] **SA-AC-027:** Missing required GiftUI behavior fails configuration
   conformance explicitly rather than producing a reduced target-specific UI.
+- [ ] **SA-AC-028:** The host, not View construction or the ViewModel, starts
+  and stops repository observation and installs the adapter as both sinks.
+- [ ] **SA-AC-029:** One capture snapshot slot, 32 compact fact slots, and one
+  reserved failure slot admit all required workload facts without rejection;
+  the next value at each exact capacity returns the specified rejection.
+- [ ] **SA-AC-030:** All accepted facts receive nonzero monotonic `UInt32`
+  sequence numbers, seal across physical storage in sequence order, apply at
+  most once, and are neither dropped nor replaced by invalidation coalescing.
+- [ ] **SA-AC-031:** Capture publications carry exact revisions and bounded
+  change descriptions; applying every change reproduces the complete
+  repository capture, while a revision mismatch leaves ViewModel capture
+  unchanged and fails closed.
+- [ ] **SA-AC-032:** The same portable `@State` declaration preserves one
+  ViewModel identity and registration across transient reconstruction in
+  dynamic and static profiles.
+- [ ] **SA-AC-033:** Atomic replacement, failed replacement, failed derivation,
+  published removal, and reinsertion match the observable-location lifecycle
+  table in both profiles.
+- [ ] **SA-AC-034:** State-location, registration, and staging exhaustion,
+  duplicate ownership, incompatible association, stale reports, generation
+  exhaustion, and phase violations return deterministic bounded outcomes
+  without fallback or aliasing.
+- [ ] **SA-AC-035:** Twenty applied capture updates coalesce to one owner-dirty
+  transition and at most one wake requirement while preserving every accepted
+  fact and producing no intermediate semantic publication.
+- [ ] **SA-AC-036:** A Button-triggered synchronous repository callback becomes
+  a later fact and cannot reenter the active ViewModel mutation; same-thread
+  and distinct-executor fixtures produce equivalent results.
+- [ ] **SA-AC-037:** Embedded evidence shows one address-stable typed model
+  location, the configured bounded records and fact storage, no forbidden
+  heap/reflection/task/runtime dependencies, and measured assembled RAM,
+  flash, stack, admission, mutation, publication, and frame costs.
 
 ## Implementation Notes
 
@@ -1008,6 +1555,14 @@ SwiftUI views with GiftUI and replacing `@MainActor`, Observation,
 `ContinuousClock`, and task-based timing where a profile does not provide
 them.
 
+The current playground ViewModel directly implements both repository sinks,
+starts observation from view construction, and mutates `@Observable` state on
+the main actor. Those behaviors conform to superseded ADR-002, not this
+revision. They provide historical evidence only and must be replaced by
+host-owned observation, the target-composed admission adapter, bounded fact
+storage, and GiftUI-phase model mutation before Presentation criteria may be
+checked again.
+
 The current playground repository does not retain per-channel lower-bound
 baselines and does not rebase future source timestamps after Clear. Those are
 known conformance gaps relative to ADR-003 and this Specification, not reasons
@@ -1020,9 +1575,22 @@ view invalidations without batching or dropping capture events.
 
 ## Open Issues
 
-None for Specification review. Availability and conformance of the required
-GiftUI MVP client features are external delivery dependencies, not unresolved
-Signal Analyzer architecture or contract questions.
+No unresolved Signal Analyzer architecture choice remains. Availability of
+approved, implementable GiftUI contracts for observable reference state,
+RFC-004 fact admission, failure outcomes, and Canvas drawing remains an
+external approval and implementation dependency. This Specification defines
+the analyzer-specific source shape, configuration, adapter, facts, capacities,
+and conformance obligations without defining those reusable GiftUI APIs.
+
+## Deferred and Follow-up Work
+
+No deferred item originates from this Specification. For context, RFC-008
+already keeps public binding/projection in
+[FW-017](../future-work/fw-017-public-binding-abstraction.md) and fine-grained
+property dependency tracking in
+[FW-019](../future-work/fw-019-fine-grained-observable-dependency-tracking.md).
+Neither is needed for correctness or approval of the fixed Signal Analyzer
+contract, and this Specification does not create an additional relationship.
 
 ## References
 
@@ -1030,7 +1598,16 @@ Signal Analyzer architecture or contract questions.
 - [ADR-002: Serialized Synchronous Acquisition Delivery](../adrs/adr-002-serialized-synchronous-acquisition-delivery.md)
 - [ADR-003: Transition-Based Bounded Capture](../adrs/adr-003-transition-based-bounded-capture.md)
 - [ADR-004: Portable Fixed Signal Analyzer Presentation](../adrs/adr-004-portable-fixed-signal-analyzer-presentation.md)
+- [ADR-011: Serialized Run Cycle and Semantic Publication](../adrs/adr-011-serialized-run-cycle-and-publication.md)
+- [ADR-014: Bounded Cross-Layer Outcome Meaning](../adrs/adr-014-bounded-cross-layer-outcomes.md)
+- [ADR-015: Layered Failure Disposition Ownership](../adrs/adr-015-layered-failure-disposition.md)
+- [ADR-016: Non-Authoritative Diagnostic Projection](../adrs/adr-016-non-authoritative-diagnostics.md)
+- [ADR-024: Structurally Owned Observable Reference State](../adrs/adr-024-structurally-owned-observable-reference-state.md)
+- [ADR-025: Coarse Model-Owned Observable Invalidation](../adrs/adr-025-coarse-model-owned-observable-invalidation.md)
+- [ADR-026: Profile-Equivalent Bounded Observable State Realization](../adrs/adr-026-profile-equivalent-bounded-observable-state.md)
+- [ADR-027: Bounded Presentation-Fact Admission](../adrs/adr-027-bounded-presentation-fact-admission.md)
 - [RFC-001: Signal Analyzer Application Architecture](../rfcs/rfc-001-signal-analyzer-application-architecture.md)
+- [RFC-008: Observable Reference State Architecture](../rfcs/rfc-008-observable-reference-state-architecture.md)
 - [PROPOSAL-002: Signal Analyzer Reference Application](../proposals/proposal-002-signal-analyzer-reference-application.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI Vision](../VISION.md)
@@ -1041,3 +1618,4 @@ Signal Analyzer architecture or contract questions.
   SignalAnalyzer playground repository.
 - External implementation evidence: the SignalAnalyzer playground source and
   tests.
+- [SPIKE-003: Portable Observable Reference State Feasibility](../spikes/spike-003-portable-observable-reference-state-feasibility.md)
