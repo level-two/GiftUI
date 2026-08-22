@@ -44,9 +44,8 @@ and containment semantics, capability contribution and resolution semantics,
 and pointer admission behavior to their owning Specifications.
 
 This Specification remains a `draft` and does not authorize implementation.
-The value representations and visibility classes are fixed below for review;
-the cross-layer mapping of local Foundation rejection into SPEC-003 outcomes
-remains a coordinated Wave 1 blocker.
+The value representations, visibility classes, and cross-layer mapping of
+local Foundation rejection into SPEC-003 outcomes are fixed below for review.
 
 ## Scope
 
@@ -413,6 +412,18 @@ Foundation MUST map `nil` to the corresponding SPEC-003-owned failure fact;
 it MUST NOT expose a partial value, trap as its only behavior, or substitute a
 different numeric result.
 
+The owner adapter at that first cross-layer boundary MUST construct exactly
+the following `GiftUIFailureFact`. These names and values are owned by
+SPEC-003; Foundation itself neither imports `GiftUIFailureCore` nor constructs
+the fact.
+
+| Foundation rejection | `condition` | `origin` | `affectedScope` | `containment` |
+| --- | --- | --- | --- | --- |
+| Negative `Size` dimension or negative present `ProposedSize` dimension | `.invalidValue` | `.foundation` | `.operation` | `.contained` |
+| `GeometryArithmetic` addition, subtraction, or multiplication overflow | `.arithmeticOverflow` | `.foundation` | `.operation` | `.contained` |
+| Unrepresentable `Rect` exclusive maximum edge | `.arithmeticOverflow` | `.foundation` | `.operation` | `.contained` |
+| Physical-to-logical input conversion outside `GeometryScalar` | `.arithmeticOverflow` | `.foundation` | `.operation` | `.contained` |
+
 ### Normalized pointer declarations
 
 The following `package` declarations are owned by `GiftUI` and are available
@@ -589,8 +600,10 @@ inadmissible belongs to EXECUTION rather than Foundation construction.
 Foundation reports its local rejection as `nil`. These failures MUST be
 deterministic for identical inputs and MUST NOT produce a partially valid
 value. The first boundary that reports the condition cross-layer MUST map it
-to the exact SPEC-003 condition identity, origin, affected scope, and
-containment. Foundation MUST NOT define containment, recovery, health,
+to the exact `GiftUIFailureFact` row in `Types / APIs`; it MUST NOT collapse
+`.invalidValue` into `.arithmeticOverflow`, change `.foundation` origin,
+widen `.operation` scope, or weaken `.contained` containment. Foundation MUST
+NOT define containment, recovery, health,
 diagnostics, diagnostic delivery, retry, drop/cancel, or host policy.
 Diagnostic exhaustion MUST NOT alter Foundation value behavior; that rule is
 specified by SPEC-003.
@@ -695,8 +708,9 @@ Specification's independent tests.
   visibility match this contract.
 - [ ] **PF-002:** Every invalid dimension, invalid proposal, overflowing edge,
   and overflowing arithmetic operation returns `nil`, produces no partial
-  value, and maps to the agreed SPEC-003 failure fact at the first cross-layer
-  owner boundary.
+  value, and maps at the first cross-layer owner boundary to the exact
+  condition, `.foundation` origin, `.operation` scope, and `.contained`
+  containment fixed in `Types / APIs`.
 - [ ] **PF-003:** Valid rectangles expose exact exclusive edges and half-open
   containment for the complete boundary corpus, including both scalar limits
   and empty rectangles.
@@ -733,26 +747,21 @@ inventoried against the completed contract; `Int`, mutable stored properties,
 precondition-only invalid-dimension handling, the three-case `InputEvent`, and
 the existing package graph are migration evidence rather than authority.
 
-Draft completion should now proceed in three narrow passes: reconcile the
-SPEC-003 owner-adapter mapping; review the fixed-width declarations with the
-future EXECUTION contract boundary; then validate the dependency allow-list
+Draft completion should now proceed in two narrow passes: review the
+fixed-width declarations with the future EXECUTION contract boundary, then
+validate the dependency allow-list
 and measurement method against both host and project-local Embedded Swift
 compilers. Downstream Specifications should consume these declarations rather
 than copy signatures.
 
 ## Open Issues
 
-The following contract coordination must be completed before the Specification
-advances to `review`:
-
-1. SPEC-003 must name the exact failure facts used when negative dimensions,
-   scalar overflow, rectangle-edge overflow, or input normalization cause a
-   local `nil`. SPEC-002 must then cite those names without importing failure
-   disposition into Foundation.
-2. The review evidence must check the exact compiler versions and measurement
-   commands used for the host and project-local Embedded Swift fixtures, and
-   must demonstrate that the checked-in dependency allow-list covers every
-   target present when SPEC-002 enters review.
+Reciprocal terminology coordination with SPEC-003 and the SPEC-004 extent
+adapter is complete in this draft. The remaining evidence gate before the
+Specification advances to `review` is to check the exact compiler versions
+and measurement commands used for the host and project-local Embedded Swift
+fixtures and demonstrate that the checked-in dependency allow-list covers
+every target present when SPEC-002 enters review.
 
 If resolving any item would change ownership, introduce another geometry
 model, expose target identity, reverse the import graph, or define a new

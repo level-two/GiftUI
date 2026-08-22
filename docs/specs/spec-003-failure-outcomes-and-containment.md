@@ -377,14 +377,41 @@ operation has returned `nil` and discarded partial output:
 | Unrepresentable rectangle exclusive edge | `arithmeticOverflow` | `foundation` | `operation` | `contained` |
 | Physical-to-logical input conversion outside `GeometryScalar` | `arithmeticOverflow` | `foundation` | `operation` | `contained` |
 
-The SPEC-004 host adapter MUST assign one nonzero `capability`-origin
-condition constant to every closed `RasterPresentationUnavailable` case so
-the typed reason is preserved one-to-one in shared fixtures. Capability
-validation rejects startup before partial runtime construction; those facts
-therefore use `runtime` affected scope and `contained` containment. The shared
-`requiredFacilityUnavailable` condition is reserved for later operational
-loss of a previously configured required facility and MUST NOT collapse the
-SPEC-004 validation-reason catalogue.
+The SPEC-004 host adapter MUST map every closed
+`RasterPresentationUnavailable` case to the following producer-specific
+condition identity. The names and raw values are fixed for source and shared-
+fixture use within one build; they are not durable serialized identifiers.
+
+| `RasterPresentationUnavailable` case | Capability condition name | Raw value |
+| --- | --- | ---: |
+| `contributionCapacityExceeded` | `rasterContributionCapacityExceeded` | `11` |
+| `malformedRequirement` | `rasterMalformedRequirement` | `12` |
+| `duplicateContributor` | `rasterDuplicateContributor` | `13` |
+| `missingContributor` | `rasterMissingContributor` | `14` |
+| `malformedContribution` | `rasterMalformedContribution` | `15` |
+| `insufficientCapacity` | `rasterInsufficientCapacity` | `16` |
+| `operationSetMismatch` | `rasterOperationSetMismatch` | `17` |
+| `operationStreamMismatch` | `rasterOperationStreamMismatch` | `18` |
+| `logicalExtentOverflow` | `rasterLogicalExtentOverflow` | `19` |
+| `unsupportedLogicalExtent` | `rasterUnsupportedLogicalExtent` | `20` |
+| `noCommonCanonicalPixelEncoding` | `rasterNoCommonCanonicalPixelEncoding` | `21` |
+| `incompatibleSubmissionLifetime` | `rasterIncompatibleSubmissionLifetime` | `22` |
+| `incompatibleSubmissionHandoff` | `rasterIncompatibleSubmissionHandoff` | `23` |
+| `policyHasNoConformingRealization` | `rasterPolicyHasNoConformingRealization` | `24` |
+
+For a required family, the host adapter MUST enclose the mapped fact as the
+`.failure` case of `GiftUIOutcome<CapabilitySnapshot>`. The fact MUST use
+`.capability` origin, `.runtime` affected scope, and `.contained`
+containment. The originating `RasterPresentationUnavailable` remains the
+capability-domain validation result; associated field, role, and capacity
+payloads MAY be projected as bounded annotations or diagnostics but MUST NOT
+change the primary condition identity. `GiftUIFailureCore` does not import
+`GiftUICapabilities`; the generic carrier is instantiated only by the
+downstream host adapter that knows both contracts.
+
+The shared `requiredFacilityUnavailable` condition is reserved for later
+operational loss of a previously configured required facility and MUST NOT
+collapse the SPEC-004 initialization-validation catalogue.
 
 `MemoryLayout<GiftUIConditionID>.size` MUST equal 2 bytes and
 `MemoryLayout<GiftUIFailureFact>.size` MUST be no greater than 8 bytes on every
@@ -991,8 +1018,9 @@ tests. Those are not prerequisites for this contract's pure test seam.
 - [ ] Release evidence satisfies the 64-step correctness-path bound, 8-step
   mapping/selection bounds, default buffer capacities, and every per-profile
   RAM, stack, code, and latency/instruction maximum.
-- [ ] SPEC-002 and SPEC-004 use these exact fact and owner-adapter names at
-  their boundaries, preserve reciprocal links, and define no competing
+- [ ] SPEC-002 uses the exact Foundation fact rows, and SPEC-004 uses the exact
+  capability condition catalogue and `GiftUIOutcome<CapabilitySnapshot>`
+  carrier defined here; both preserve reciprocal links and define no competing
   failure, health, disposition, or diagnostic vocabulary.
 
 ## Implementation Notes
@@ -1015,13 +1043,11 @@ for the macOS static, ARMv6, or Embedded Swift targets.
 
 ## Open Issues
 
-No architectural issue is open. The remaining blocker before this draft can
-enter `review` is coordinated terminology rather than contract invention:
-
-- Reconcile SPEC-002's Foundation owner-adapter mappings and SPEC-004's
-  capability-unavailable adapter with the exact declarations above. Both
-  drafts already have reciprocal metadata and manifest links; their normative
-  prose must use the same names before this draft enters `review`.
+No architectural or reciprocal-terminology issue is open. SPEC-002 now uses
+the exact Foundation fact rows above, and SPEC-004 now uses the exact
+capability condition catalogue and enclosing
+`GiftUIOutcome<CapabilitySnapshot>` carrier. Their reciprocal metadata and
+manifest registration were already present.
 
 The future EXECUTION Specification must provide the concrete `Context` used
 by `GiftUICorrelatedFailure`; the future HOST-CONFIGURATION Specification must

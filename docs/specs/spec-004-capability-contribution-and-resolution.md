@@ -123,7 +123,10 @@ backend, display, runtime, or board integrations that supply those seams.
   without making capability records a competing public geometry contract.
 - SPEC-003 owns the bounded failure/outcome and containment vocabulary through
   which a host reports resolution failure. SPEC-004 owns the capability-domain
-  reason carried by that vocabulary, not the enclosing outcome semantics.
+  reason mapped by that vocabulary, not the enclosing outcome semantics. For
+  a required family, the downstream host adapter uses SPEC-003's exact
+  capability condition catalogue and encloses the resulting fact in
+  `GiftUIOutcome<CapabilitySnapshot>`.
 - RFC-002 B2 structural validation and this Specification's capability
   resolution are distinct, conjunctive startup gates. Neither substitutes for
   the other.
@@ -312,12 +315,16 @@ public struct SubmissionHandoffSet: OptionSet, Equatable, Sendable {
 }
 ```
 
-`CapabilityExtent.init` returns `nil` for a zero dimension. A SPEC-002 `Size`
-maps to `CapabilityExtent` only when both `Int32` dimensions are in
-`1...UInt16.max`. The owning host adapter maps a negative or zero source
-dimension to `.malformedRequirement(field: .extent)` and an unrepresentable
-positive dimension to `.logicalExtentOverflow`, then encloses that reason in
-the SPEC-003 outcome seam. `CapabilityByteCount` permits zero. Byte-count
+`CapabilityExtent.init` returns `nil` for a zero dimension. A valid SPEC-002
+`Size` has non-negative `Int32` dimensions and maps to `CapabilityExtent` only
+when both are in `1...UInt16.max`. The owning host adapter maps a zero source
+dimension to `.malformedRequirement(field: .extent)` and a positive dimension
+greater than `UInt16.max` to `.logicalExtentOverflow`. A negative raw dimension
+is rejected earlier by SPEC-002 as `.invalidValue` with `.foundation` origin
+and therefore never reaches this adapter as a `Size`. This mapping creates no
+second public geometry model: `CapabilityExtent` is capability-domain input
+inside `GiftUICapabilities` and is not re-exported to portable Presentation.
+`CapabilityByteCount` permits zero. Byte-count
 addition and multiplication inside the resolver MUST use checked `UInt32`
 arithmetic and resolve unavailable on overflow.
 
@@ -616,6 +623,35 @@ At the host boundary, an adapter maps `RasterPresentationUnavailable` into the
 enclosing outcome vocabulary owned by SPEC-003 without changing the reason or
 SPEC-003's containment and disposition semantics.
 
+For a required family, that adapter MUST return the failure as
+`GiftUIOutcome<CapabilitySnapshot>.failure` with `.capability` origin,
+`.runtime` affected scope, and `.contained` containment. It MUST use this
+exact one-to-one condition mapping:
+
+| Unavailable case | SPEC-003 capability condition (raw value) |
+| --- | --- |
+| `contributionCapacityExceeded` | `rasterContributionCapacityExceeded` (`11`) |
+| `malformedRequirement` | `rasterMalformedRequirement` (`12`) |
+| `duplicateContributor` | `rasterDuplicateContributor` (`13`) |
+| `missingContributor` | `rasterMissingContributor` (`14`) |
+| `malformedContribution` | `rasterMalformedContribution` (`15`) |
+| `insufficientCapacity` | `rasterInsufficientCapacity` (`16`) |
+| `operationSetMismatch` | `rasterOperationSetMismatch` (`17`) |
+| `operationStreamMismatch` | `rasterOperationStreamMismatch` (`18`) |
+| `logicalExtentOverflow` | `rasterLogicalExtentOverflow` (`19`) |
+| `unsupportedLogicalExtent` | `rasterUnsupportedLogicalExtent` (`20`) |
+| `noCommonCanonicalPixelEncoding` | `rasterNoCommonCanonicalPixelEncoding` (`21`) |
+| `incompatibleSubmissionLifetime` | `rasterIncompatibleSubmissionLifetime` (`22`) |
+| `incompatibleSubmissionHandoff` | `rasterIncompatibleSubmissionHandoff` (`23`) |
+| `policyHasNoConformingRealization` | `rasterPolicyHasNoConformingRealization` (`24`) |
+
+Associated field, role, and capacity payloads remain available in the
+capability-domain result and MAY be projected through SPEC-003's bounded
+annotation or diagnostic seams; they MUST NOT select a different primary
+condition. `GiftUICapabilities` does not import `GiftUIFailureCore`; the host
+adapter is the first downstream boundary that imports and knows both
+vocabularies.
+
 ## Behavior
 
 The resolver MUST be pure with respect to runtime and contributor state. For
@@ -777,9 +813,11 @@ resource/zero-allocation tests for this contract.
 
 Capability incompatibility is a deterministic initialization validation
 failure, not mutable runtime health. SPEC-004 owns the closed capability-domain
-unavailable reason. Outside `GiftUICapabilities`, the target-host adapter maps
-that reason into the enclosing bounded outcome; SPEC-003 owns that outcome,
-propagation, containment, policy-disposition, and diagnostic behavior.
+unavailable reason. Outside `GiftUICapabilities`, the target-host adapter uses
+the exact condition mapping in `Types / APIs` and, for a required family,
+returns `GiftUIOutcome<CapabilitySnapshot>.failure`; SPEC-003 owns that
+outcome, propagation, containment, policy-disposition, and diagnostic
+behavior.
 
 Resolution MUST fail closed for missing, duplicate, malformed, out-of-range,
 incompatible, or capacity-exhausted input. It MUST NOT trap, allocate an
@@ -989,20 +1027,19 @@ semantics and normalized results remain unchanged.
 
 ## Open Issues
 
-The capability-domain contract is closed by this draft. Three coordination
-items remain before SPEC-004 can advance to `review`:
+The capability-domain contract and reciprocal Wave 1 terminology are closed
+by this draft. SPEC-003 now fixes the enclosing required-family carrier and
+the one-to-one capability condition catalogue. The jointly reviewed SPEC-002
+extent adapter accepts only valid non-negative `Size` values, maps zero and
+positive overflow distinctly, and exposes no capability geometry to portable
+Presentation.
 
-1. SPEC-003 must freeze the exact enclosing initialization-failure carrier and
-   condition identity used by the host adapter. SPEC-004 contributes only
-   `RasterPresentationUnavailable` and does not import that carrier.
-2. SPEC-002 and SPEC-004 must be reviewed together to confirm that the
-   `Int32` `Size` to positive `UInt16` `CapabilityExtent` adapter preserves
-   checked meaning and that no second public geometry model leaks to portable
-   Presentation.
-3. The later HOST-CONFIGURATION Specification must name the assembly API that
-   owns B2 structural validation, capability resolution, snapshot storage, and
-   the first-cycle gate. SPEC-004 already fixes their conjunctive semantics
-   and does not wait on that document to test its pure resolver seam.
+The later HOST-CONFIGURATION Specification remains responsible for naming the
+assembly API that owns B2 structural validation, capability resolution,
+snapshot storage, and the first-cycle gate. This is a downstream ownership
+obligation, not a prerequisite for review or approval of SPEC-004's pure
+resolver contract; SPEC-004 already fixes that both gates must succeed before
+runtime start.
 
 If any issue requires a new capability family, mutable snapshot, new
 operation-payload lifetime, target-local resolution, upward import, or changed
