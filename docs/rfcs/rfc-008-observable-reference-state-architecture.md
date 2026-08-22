@@ -6,7 +6,7 @@ status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-21
-updated: 2026-08-21
+updated: 2026-08-22
 proposal:
   - PROPOSAL-005
 related_rfcs:
@@ -43,6 +43,20 @@ target_milestone: MVP
 ---
 
 # RFC-008: Observable Reference State Architecture
+
+## Post-Approval Authority Update
+
+ADR-024 through ADR-027 were accepted on 2026-08-22. ADR-027 completed the
+transition proposed by this RFC: it superseded ADR-002, preserved synchronous
+source, repository, use-case, and sink work through a target-composed
+Presentation admission adapter, and made bounded fact admission the current
+boundary for later observable ViewModel mutation. SPEC-001 has returned to
+review and is non-authoritative until revised and approved again.
+
+Pre-acceptance statements below that describe ADR-027 as proposed, ADR-002 as
+current authority, or SPEC-001 as implementing authority preserve the RFC's
+review-time reasoning and gate sequence; they no longer describe current
+artifact status.
 
 ## Summary
 
@@ -113,16 +127,19 @@ participate in the GiftUI observation contract. Acquisition may deliver up to
 per second, so up to 20 invalidations may be coalesced into one internally
 consistent frame.
 
-ADR-002 and SPEC-001 currently place Presentation sink delivery and ViewModel
-mutation on the same serialized application executor as source, repository,
-and use-case work. This RFC proposes a narrower boundary: that synchronous
-application chain ends at a presentation admission adapter, and observable
-ViewModel mutation occurs later only after bounded RFC-004 admission. If this
+At the time of RFC review, ADR-002 and SPEC-001 placed Presentation sink
+delivery and ViewModel mutation on the same serialized application executor
+as source, repository, and use-case work. This RFC proposes a narrower
+boundary: that synchronous application chain ends at a presentation admission
+adapter, and observable ViewModel mutation occurs later only after bounded
+RFC-004 admission. If this
 RFC is approved, a new ADR must supersede ADR-002, preserve its unaffected
 synchronous application rules, and replace its Presentation-mutation rule;
 SPEC-001 must then return to review before implementation may rely on this
 boundary.
-Until those transitions occur, ADR-002 and SPEC-001 remain authoritative.
+
+Those transitions occurred on 2026-08-22. ADR-027 is now authoritative and
+SPEC-001 is in review.
 
 Accepted architecture already fixes the surrounding ownership:
 
@@ -179,8 +196,9 @@ RFCs rather than independently approvable choices.
 
 Adjacent ownership remains separate:
 
-- RFC-001, ADR-002, and SPEC-001 own Signal Analyzer application-domain state,
-  synchronous source/repository/use-case delivery, and presentation behavior.
+- RFC-001 and its then-current ADR-002 and SPEC-001 owned Signal Analyzer
+  application-domain state, synchronous source/repository/use-case delivery,
+  and presentation behavior.
   This RFC does not define capture storage or acquisition architecture, but it
   proposes that their synchronous delivery chain terminate at a presentation
   admission adapter rather than directly mutating the observable ViewModel.
@@ -1081,15 +1099,16 @@ internally consistent revisions. Current code that mutates an observed model
 from an arbitrary task, callback, or thread without admission will require
 migration.
 
-ADR-002 and SPEC-001 currently require Presentation sink callbacks and
-ViewModel state mutation to complete synchronously on the application
-executor. This approved design intentionally changes that behavior:
-synchronous
+At the time of RFC approval, ADR-002 and SPEC-001 required Presentation sink
+callbacks and ViewModel state mutation to complete synchronously on the
+application executor. This approved design intentionally changes that
+behavior: synchronous
 application delivery completes when the target-composed adapter returns its
 admission outcome, while observable state changes when the admitted fact is
 later applied in the GiftUI domain. RFC approval alone does not change current
-authority. A superseding ADR and reviewed SPEC-001 revision are required
-before implementation or conformance claims use the new boundary.
+authority. Accepted ADR-027 now supplies the superseding decision; a revised
+and reapproved SPEC-001 remains required before implementation or conformance
+claims use the new boundary.
 
 Dynamic property-level suppression or observation ordering that is not
 visible through complete GiftUI revisions is not portable behavior. Static and
@@ -1263,13 +1282,12 @@ No evidence questions remain open after SPIKE-003. RFC approval confirms the
 bounded typed representation family and synchronous model-owned signaling
 boundary; it does not make the Spike's disposable declarations authoritative.
 
-The distinct-domain choice creates a lifecycle prerequisite rather than an
-open design question. ADR-027 proposes to supersede ADR-002, preserve its
-unaffected synchronous application rules, and replace its
-Presentation-mutation rule with delivery through the admission adapter. Only
-after ADR-027 is accepted may SPEC-001 be revised and returned to human review.
-Current implementation work must continue to treat ADR-002 and SPEC-001 as
-authoritative until those gates complete.
+The distinct-domain choice created a lifecycle prerequisite rather than an
+open design question. ADR-027 has superseded ADR-002, preserved its unaffected
+synchronous application rules, and replaced its Presentation-mutation rule
+with delivery through the admission adapter. SPEC-001 has returned to review
+and must be revised and explicitly approved before implementation relies on
+the new boundary.
 
 ## Specification Inputs
 
@@ -1303,7 +1321,7 @@ gain roadmap or implementation status through this RFC.
 
 ## Decision Summary
 
-This approved RFC produces separate proposed ADRs for:
+This approved RFC produced separate ADRs for:
 
 1. structurally owned observable reference state, including preservation,
    initializer, replacement, publication-committed removal, and one-owner
@@ -1318,9 +1336,9 @@ This approved RFC produces separate proposed ADRs for:
    ADR-002 while preserving synchronous source, repository, use-case, and sink
    work through the target-composed adapter.
 
-These extractions remain proposed until explicit human acceptance. RFC
-approval does not authorize implementation or select exact APIs and
-capacities.
+ADR-024 through ADR-027 are accepted. Their acceptance establishes
+architecture but does not authorize implementation or select the exact APIs
+and capacities still required in an approved Specification.
 
 ## References
 
@@ -1342,6 +1360,7 @@ capacities.
 - [ADR-014: Bounded Cross-Layer Outcome Meaning](../adrs/adr-014-bounded-cross-layer-outcomes.md)
 - [ADR-015: Layered Failure Disposition Ownership](../adrs/adr-015-layered-failure-disposition.md)
 - [ADR-016: Non-Authoritative Diagnostic Projection](../adrs/adr-016-non-authoritative-diagnostics.md)
+- [ADR-027: Bounded Presentation-Fact Admission](../adrs/adr-027-bounded-presentation-fact-admission.md)
 - [SPEC-001: Signal Analyzer Reference Application](../specs/spec-001-signal-analyzer-reference-application.md)
 - [GiftUI Embedded Layer Inventory](../GiftUI_Embedded_Layer_Inventory.md)
 - [GiftUI Runtime Profile Migration Plan](../GiftUI_Runtime_Profile_Migration_Plan.md)

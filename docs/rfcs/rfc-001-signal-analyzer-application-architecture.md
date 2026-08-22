@@ -6,10 +6,11 @@ status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-08-21
+updated: 2026-08-22
 proposal:
   - PROPOSAL-002
-related_rfcs: []
+related_rfcs:
+  - RFC-008
 related_adrs:
   - ADR-001
   - ADR-002
@@ -24,6 +25,59 @@ target_milestone: MVP
 ---
 
 # RFC-001: Signal Analyzer Application Architecture
+
+## Post-Approval Authority Update
+
+RFC-001 preserves the architectural reasoning that produced ADR-001 through
+ADR-004. ADR-027, extracted from RFC-008 and accepted on 2026-08-22,
+supersedes ADR-002's single-domain Presentation-mutation decision. Statements
+in this RFC that place repository sink delivery and observable ViewModel
+mutation together on one serialized application executor are therefore
+historical rather than current architecture.
+
+The current accepted boundary preserves synchronous source, repository,
+use-case, and sink work on the application executor, but terminates that work
+at a target-composed Presentation admission adapter:
+
+```text
+Signal Analyzer application executor
+    source -> repository -> capture/state sink (Presentation admission adapter)
+                                      |
+                                      | bounded immutable fact
+                                      v
+RFC-004 admission -> GiftUI serialized mutation domain
+                         -> ViewModel mutation
+                         -> synchronous change report
+                         -> owner dirtiness
+                         -> frozen derivation and publication
+```
+
+Returning from the synchronous application callback means that the adapter
+returned an admission outcome, not that the ViewModel already changed. The
+application executor and GiftUI mutation domain remain logically distinct
+even when one host thread or cooperative event loop realizes both.
+
+This update qualifies the following historical parts of the approved RFC
+without rewriting their original reasoning:
+
+- the Summary and Requirements statements that describe direct propagation
+  into Presentation state on one executor;
+- the Data and Control Flow diagram and its single-executor prose;
+- the Observation and Actions and Presentation State descriptions of direct,
+  synchronous sink-to-ViewModel mutation;
+- the singular executor wording in Module Responsibilities, Static / Embedded
+  Impact, Performance, Compatibility, and Risks; and
+- the synchronous-ordering and Presentation-test expectations in Testing
+  Strategy.
+
+Current testing must additionally cover bounded fact conversion and
+admission, ordering, saturation and rejection, later ordered application,
+same-thread preservation of the logical domain boundary, and reentrant
+Button-triggered callbacks. Current performance and risk analysis must include
+admission capacity, explicit refusal, and up to one admission-cycle of
+Presentation latency. Exact fact types, capacities, outcomes, adapter
+ownership, and executor-entry contracts belong in the reviewed revision of
+SPEC-001.
 
 ## Summary
 
@@ -521,23 +575,33 @@ The Observation and Canvas lifecycle artifacts are downstream dependencies,
 not unresolved decisions owned by this RFC. They must be approved before the
 Signal Analyzer Specification can rely on their contracts.
 
+Post-approval status: the observable-reference-state lifecycle produced
+accepted ADR-024 through ADR-027. ADR-027 superseded ADR-002 and returned
+SPEC-001 to review. The Canvas lifecycle remains a separate dependency.
+
 ## Decision Summary
 
 The approved direction is extracted into separate accepted ADRs recording:
 
 1. the analyzer's inward dependency structure and target-host composition
    boundary;
-2. serialized synchronous sink delivery for acquisition values and state;
+2. serialized synchronous sink delivery for acquisition values and state
+   (historically extracted as ADR-002, later superseded by ADR-027);
 3. transition-based digital capture with bounded repository-owned history;
 4. a substantially shared fixed presentation with target-specific hosting and
    source adapters outside it.
 
-The ADRs remain non-authoritative until a human maintainer explicitly accepts
-them.
+ADR-001, ADR-003, and ADR-004 remain accepted. ADR-002 is superseded by
+accepted ADR-027, which preserves synchronous application delivery while
+placing observable ViewModel mutation behind bounded fact admission into
+GiftUI's distinct mutation domain.
 
 ## References
 
 - [PROPOSAL-002: Signal Analyzer Reference Application](../proposals/proposal-002-signal-analyzer-reference-application.md)
+- [RFC-008: Observable Reference State Architecture](rfc-008-observable-reference-state-architecture.md)
+- [ADR-002: Serialized Synchronous Acquisition Delivery](../adrs/adr-002-serialized-synchronous-acquisition-delivery.md)
+- [ADR-027: Bounded Presentation-Fact Admission](../adrs/adr-027-bounded-presentation-fact-admission.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
