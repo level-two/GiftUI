@@ -41,11 +41,13 @@ health projection, and optional diagnostics. It establishes pure fixtures for
 mapping producer facts into portable outcomes and for proving that policy and
 diagnostic configuration cannot weaken correctness.
 
-This is the `FAILURE` contract in the MVP Specification Portfolio. It is an
-initial coordinated scaffold: the ownership boundaries and independent test
-seam are normative draft intent, while exact Swift declarations, integer
-widths, packing, and target budgets remain approval blockers listed in Open
-Issues.
+This is the `FAILURE` contract in the MVP Specification Portfolio. It freezes
+the common Swift vocabulary, finite representations, conservative mappings,
+policy-validation seam, operational-health snapshot, diagnostic projection,
+and profile budgets needed by downstream Specifications. Concrete producer
+condition catalogues, execution identities, coordinator state machines, and
+target product-policy tables remain owned by their respective downstream
+contracts.
 
 ## Scope
 
@@ -143,8 +145,8 @@ disposition, operational-health-projection, and diagnostic vocabulary.
 
 Wave 1 has no earlier Specification drafting prerequisite. Coordination with
 SPEC-002 and SPEC-004 is nevertheless required before this draft can enter
-review so the three Specifications use identical portable values and do not
-claim the same contract.
+review so the three Specifications use the declarations and owner-adapter
+seams frozen below and do not claim the same contract.
 
 The required physical dependency direction is:
 
@@ -262,28 +264,456 @@ module may import an optional diagnostic implementation.
 
 ## Types / APIs
 
-The final declaration names, visibility, fixed-width storage, and packing are
-not frozen by this scaffold. The implementation contract MUST nevertheless
-provide the following finite semantic surfaces:
+The declarations in this section are normative at the level of names, cases,
+field meaning, raw-value width, visibility, and behavior. They are source
+contracts, not a frozen serialized ABI. Implementations MAY reorder fields or
+specialize generic storage when all `MemoryLayout` maxima and observable
+semantics remain satisfied.
 
-| Surface | Required information | Invariants |
-| --- | --- | --- |
-| Portable outcome | category and either success payload, bounded operational condition, or failure fact | Exactly one category; no exception or diagnostic dependency |
-| Failure fact | condition identity, origin, affected scope, containment | Original identity and origin survive propagation; scope is never narrowed without proof |
-| Containment map | producer value to `contained` or `safety not proven` | Total; unknown and richer values map to `safety not proven` |
-| Execution correlation | core fact plus externally owned execution identity/position | Adds context without replacing the core fact; absent below the execution boundary |
-| Residual policy input | correlated outcome plus only choices left safe by prior mandatory disposition | Cannot include a choice that weakens containment or mandatory coordinator behavior |
-| Operational-health projection | bounded current state and required counters owned by one component/integration | Queryable without diagnostic history; update precedes optional projection |
-| Diagnostic projection | selected bounded category, origin, context, and observation data derived from an outcome or health transition | Optional, lossy, and non-authoritative |
+### Core identifiers and facts
 
-All common portable surfaces MUST be representable without heap allocation,
+`GiftUIFailureCore` MUST export the following `public`, value-semantic,
+`Sendable`, and `Equatable` declarations. Raw-value wrappers MUST reject no
+bit pattern; reserved or producer-unknown values are normalized by the owner
+adapter before a fact reaches a coordinator.
+
+```swift
+public struct GiftUIConditionID: RawRepresentable, Sendable, Equatable {
+    public let rawValue: UInt16
+    public init(rawValue: UInt16)
+    public static let unknownProducerCondition: Self
+    public static let invalidValue: Self
+    public static let arithmeticOverflow: Self
+    public static let capacityExhausted: Self
+    public static let invalidIdentity: Self
+    public static let invalidProvenance: Self
+    public static let invalidPhase: Self
+    public static let reentrancyViolation: Self
+    public static let requiredFacilityUnavailable: Self
+    public static let nonRetryableRefusal: Self
+    public static let invariantViolation: Self
+}
+
+public enum GiftUIFailureOrigin: UInt8, Sendable {
+    case foundation = 0
+    case capability = 1
+    case semantic = 2
+    case layout = 3
+    case rendering = 4
+    case execution = 5
+    case observableState = 6
+    case interaction = 7
+    case backend = 8
+    case presentationIntegration = 9
+    case inputIntegration = 10
+    case hostComposition = 11
+    case displayDriver = 12
+    case inputDriver = 13
+    case transport = 14
+}
+
+public enum GiftUIAffectedScope: UInt8, Sendable {
+    case operation = 0
+    case activeCycle = 1
+    case candidateFrame = 2
+    case component = 3
+    case runtime = 4
+}
+
+public enum GiftUIContainment: UInt8, Sendable {
+    case contained = 0
+    case safetyNotProven = 1
+}
+
+public struct GiftUIFailureFact: Sendable, Equatable {
+    public let condition: GiftUIConditionID
+    public let origin: GiftUIFailureOrigin
+    public let affectedScope: GiftUIAffectedScope
+    public let containment: GiftUIContainment
+
+    public init(
+        condition: GiftUIConditionID,
+        origin: GiftUIFailureOrigin,
+        affectedScope: GiftUIAffectedScope,
+        containment: GiftUIContainment
+    )
+}
+```
+
+The pair `(origin, condition)` is the source-stable condition identity. A
+producer contract MUST declare every condition constant in source and MUST
+keep each raw value unique within its origin for the lifetime of one build and
+its generated conformance fixtures. `0` is reserved for
+`unknownProducerCondition`; raw values `1...10` have the shared meanings below,
+and producer-specific catalogues allocate additional named conditions from
+`11...65535`. Reuse across origins is allowed. No raw value is durable across
+builds or versions.
+
+The shared catalogue below fixes meanings needed by more than one MVP
+producer. A producer MAY define additional origin-local constants when its
+own Specification defines their mapping and fixtures.
+
+| Raw value | Shared source name | Required meaning |
+| ---: | --- | --- |
+| `0` | `unknownProducerCondition` | Native or future producer condition has no approved portable mapping |
+| `1` | `invalidValue` | A normalized or requested value violates the receiving contract |
+| `2` | `arithmeticOverflow` | Checked integer arithmetic could not represent the result |
+| `3` | `capacityExhausted` | A correctness-bearing fixed capacity cannot admit or produce more work |
+| `4` | `invalidIdentity` | A bounded identity is absent, stale, aliased, or otherwise invalid |
+| `5` | `invalidProvenance` | Source, sequence, revision, or frame provenance is not admissible |
+| `6` | `invalidPhase` | The operation is forbidden at the current owning phase |
+| `7` | `reentrancyViolation` | Reentrant work bypassed its required admission boundary |
+| `8` | `requiredFacilityUnavailable` | A required configured facility cannot provide its approved semantics |
+| `9` | `nonRetryableRefusal` | A synchronous owner refused before acceptance and declared no retry path |
+| `10` | `invariantViolation` | A producer invariant failed without a more specific approved condition |
+
+The SPEC-002 owner adapter MUST use these exact mappings after the Foundation
+operation has returned `nil` and discarded partial output:
+
+| Foundation rejection | Condition | Origin | Scope | Containment |
+| --- | --- | --- | --- | --- |
+| Negative dimension or invalid proposed dimension | `invalidValue` | `foundation` | `operation` | `contained` |
+| Scalar arithmetic overflow | `arithmeticOverflow` | `foundation` | `operation` | `contained` |
+| Unrepresentable rectangle exclusive edge | `arithmeticOverflow` | `foundation` | `operation` | `contained` |
+| Physical-to-logical input conversion outside `GeometryScalar` | `arithmeticOverflow` | `foundation` | `operation` | `contained` |
+
+The SPEC-004 host adapter MUST assign one nonzero `capability`-origin
+condition constant to every closed `RasterPresentationUnavailable` case so
+the typed reason is preserved one-to-one in shared fixtures. Capability
+validation rejects startup before partial runtime construction; those facts
+therefore use `runtime` affected scope and `contained` containment. The shared
+`requiredFacilityUnavailable` condition is reserved for later operational
+loss of a previously configured required facility and MUST NOT collapse the
+SPEC-004 validation-reason catalogue.
+
+`MemoryLayout<GiftUIConditionID>.size` MUST equal 2 bytes and
+`MemoryLayout<GiftUIFailureFact>.size` MUST be no greater than 8 bytes on every
+MVP profile. No declaration in `GiftUIFailureCore` may contain a reference,
+existential, closure, string, collection, or platform-native error.
+Affected-scope raw values are tags, not an ordering: `activeCycle` and
+`candidateFrame` are distinct transaction scopes and neither is implicitly
+narrower than the other. Any scope change requires the explicit proof stated
+under Conservative Mapping.
+
+### Operational outcomes
+
+Expected bounded conditions use a closed shared kind rather than a failure
+containment value:
+
+```swift
+public enum GiftUIOperationalKind: UInt8, Sendable {
+    case noChange = 0
+    case cacheMiss = 1
+    case backpressured = 2
+    case superseded = 3
+    case deferredToLaterAdmission = 4
+    case retryableRefusal = 5
+}
+
+public struct GiftUIOperationalFact: Sendable, Equatable {
+    public let kind: GiftUIOperationalKind
+    public let origin: GiftUIFailureOrigin
+    public let affectedScope: GiftUIAffectedScope
+
+    public init(
+        kind: GiftUIOperationalKind,
+        origin: GiftUIFailureOrigin,
+        affectedScope: GiftUIAffectedScope
+    )
+}
+
+public enum GiftUIOutcome<Success> {
+    case success(Success)
+    case operational(GiftUIOperationalFact)
+    case failure(GiftUIFailureFact)
+}
+```
+
+`GiftUIOutcome` MUST be conditionally `Sendable` and `Equatable` when
+`Success` is. It MUST add no allocation of its own. Success payload ownership
+and capacity remain with the producing contract. An adapter receiving an
+unknown native outcome category or an unknown operational kind MUST produce
+`unknownProducerCondition` with `safetyNotProven` for the smallest scope it
+can prove; it MUST NOT guess a known operational case.
+
+`MemoryLayout<GiftUIOperationalFact>.size` MUST be no greater than 4 bytes.
+
+### Bounded annotation and execution correlation
+
+Core facts never acquire execution identity. A boundary that adds portable
+annotation uses at most two entries:
+
+```swift
+public struct GiftUIFailureAnnotation: Sendable, Equatable {
+    public let key: UInt16
+    public let value: UInt32
+    public init(key: UInt16, value: UInt32)
+}
+
+public struct GiftUIFailureAnnotations: Sendable, Equatable {
+    public static let capacity: UInt8 = 2
+    public private(set) var count: UInt8
+    public init()
+    public mutating func append(_ annotation: GiftUIFailureAnnotation) -> Bool
+    public subscript(index: UInt8) -> GiftUIFailureAnnotation? { get }
+}
+```
+
+The storage MUST be inline and allocation-free. `append` returns `false` and
+leaves the existing entries and order unchanged when both slots are occupied.
+Annotation exhaustion never replaces or modifies the failure fact and MAY
+increment an optional diagnostic counter only after propagation continues.
+Keys are producer-contract-local and are not a global or durable registry.
+`MemoryLayout<GiftUIFailureAnnotations>.size` MUST be no greater than 20
+bytes.
+
+`GiftUIFailureExecution` MUST export an allocation-free generic correlation
+envelope whose `Context` is supplied by the focused execution contract:
+
+```swift
+public struct GiftUICorrelatedFailure<Context> {
+    public let fact: GiftUIFailureFact
+    public let context: Context
+    public let annotations: GiftUIFailureAnnotations
+    public init(
+        fact: GiftUIFailureFact,
+        context: Context,
+        annotations: GiftUIFailureAnnotations = .init()
+    )
+}
+```
+
+It is conditionally `Sendable` and `Equatable` when `Context` is. Constructing
+the envelope preserves every field of `fact` unchanged. The future EXECUTION
+Specification owns `Context`, cycle/revision/frame widths, and transaction
+position; this Specification owns only the one-way correlation behavior.
+
+### Residual policy seam
+
+```swift
+public enum GiftUIResidualDisposition: UInt8, Sendable {
+    case continueOperation = 0
+    case requestPacedRetry = 1
+    case markFacilityUnavailable = 2
+    case quiesceAffectedScope = 3
+    case invokeFatalHook = 4
+}
+
+public struct GiftUIAllowedDispositions: OptionSet, Sendable, Equatable {
+    public let rawValue: UInt8
+    public init(rawValue: UInt8)
+    public static let continueOperation: Self
+    public static let requestPacedRetry: Self
+    public static let markFacilityUnavailable: Self
+    public static let quiesceAffectedScope: Self
+    public static let invokeFatalHook: Self
+}
+
+public struct GiftUIResidualPolicyInput<Context> {
+    public let outcome: GiftUIOutcome<Void>
+    public let context: Context
+    public let allowed: GiftUIAllowedDispositions
+    public let attemptOrdinal: UInt8
+    public let attemptLimit: UInt8
+    public init(
+        outcome: GiftUIOutcome<Void>,
+        context: Context,
+        allowed: GiftUIAllowedDispositions,
+        attemptOrdinal: UInt8,
+        attemptLimit: UInt8
+    )
+}
+
+public protocol GiftUIResidualFailurePolicy {
+    associatedtype Context
+    mutating func disposition(
+        for input: GiftUIResidualPolicyInput<Context>
+    ) -> GiftUIResidualDisposition
+}
+```
+
+`allowed` MUST be non-empty and contain only choices left after mechanical
+containment and mandatory coordinator effects. `attemptLimit` MUST be in
+`1...255`; `attemptOrdinal` is zero for a first choice and MUST be strictly
+less than `attemptLimit` whenever paced retry is allowed. The returned value
+MUST belong to `allowed`. Returning an unlisted value is a runtime-scope
+`invariantViolation` with `safetyNotProven`; the coordinator MUST prevent
+normal continuation and MAY trap if it cannot safely propagate that fact.
+The five declared option bits are `1 << disposition.rawValue`; bits 5 through
+7 are reserved and make an input invalid. A policy input MUST contain a
+non-success outcome. `Context` in each concrete policy MUST have a finite,
+fixture-enumerable domain and MUST use value storage on a static profile.
+
+`continueOperation` MUST NOT be allowed for a failure whose containment is
+`safetyNotProven`. Runtime-scoped safety-not-proven input may allow only
+`quiesceAffectedScope` and `invokeFatalHook`. `requestPacedRetry` may be
+allowed only for `backpressured` or `retryableRefusal` and never once
+`attemptOrdinal + 1 == attemptLimit`. A concrete target table and pacing
+interval are HOST-CONFIGURATION responsibilities.
+
+### Operational health
+
+```swift
+public enum GiftUIOperationalHealthState: UInt8, Sendable {
+    case available = 0
+    case degraded = 1
+    case unavailable = 2
+    case quiesced = 3
+}
+
+public struct GiftUIOperationalHealth: Sendable, Equatable {
+    public private(set) var state: GiftUIOperationalHealthState
+    public private(set) var transitionCount: UInt32
+    public private(set) var operationalCount: UInt32
+    public private(set) var failureCount: UInt32
+    public private(set) var countersSaturated: Bool
+
+    public init(state: GiftUIOperationalHealthState = .available)
+
+    public mutating func recordOperational(
+        _ fact: GiftUIOperationalFact,
+        resultingState: GiftUIOperationalHealthState
+    )
+    public mutating func recordFailure(
+        _ fact: GiftUIFailureFact,
+        resultingState: GiftUIOperationalHealthState
+    )
+}
+```
+
+Each call increments the matching outcome counter. It increments
+`transitionCount` only when `state` changes, and commits the new state before
+returning. Counters saturate at `UInt32.max`; the first saturation sets
+`countersSaturated` permanently. Counter saturation never wraps and never
+prevents the state update. `MemoryLayout<GiftUIOperationalHealth>.size` MUST
+be no greater than 20 bytes. An owner MAY maintain additional typed counters
+under its own Specification, but diagnostics cannot be their authority.
+
+An owner contract may permit transitions among `available`, `degraded`, and
+`unavailable` as its bounded recovery mechanics require. Any of those states
+may enter `quiesced` after mandatory disposition or valid residual policy.
+`quiesced` is terminal for the assembled runtime lifetime: restoring service
+requires teardown and construction of a new runtime. A runtime-scoped failure
+with `safetyNotProven` MUST result in `quiesced` before normal processing can
+return. Re-recording the current state is legal, updates the matching outcome
+counter, and does not increment `transitionCount`.
+
+### Diagnostic projection
+
+```swift
+public enum GiftUIDiagnosticKind: UInt8, Sendable {
+    case operationalOutcome = 0
+    case failureOutcome = 1
+    case healthTransition = 2
+    case residualDisposition = 3
+}
+
+public enum GiftUIDiagnosticSeverity: UInt8, Sendable {
+    case debug = 0
+    case information = 1
+    case notice = 2
+    case warning = 3
+    case error = 4
+    case critical = 5
+}
+
+public struct GiftUIDiagnosticSelection: Sendable, Equatable {
+    public let kindMask: UInt8
+    public let originMask: UInt16
+    public let minimumSeverity: GiftUIDiagnosticSeverity
+
+    public init(
+        kindMask: UInt8,
+        originMask: UInt16,
+        minimumSeverity: GiftUIDiagnosticSeverity
+    )
+
+    public func includes(
+        kind: GiftUIDiagnosticKind,
+        origin: GiftUIFailureOrigin,
+        severity: GiftUIDiagnosticSeverity
+    ) -> Bool
+}
+
+public struct GiftUIDiagnosticRecord: Sendable, Equatable {
+    public let kind: GiftUIDiagnosticKind
+    public let severity: GiftUIDiagnosticSeverity
+    public let flags: UInt16
+    public let origin: GiftUIFailureOrigin
+    public let affectedScope: GiftUIAffectedScope
+    public let condition: UInt16
+    public let correlation0: UInt32
+    public let correlation1: UInt32
+    public let observation0: UInt32
+    public let observation1: UInt32
+
+    public init(
+        kind: GiftUIDiagnosticKind,
+        severity: GiftUIDiagnosticSeverity,
+        flags: UInt16,
+        origin: GiftUIFailureOrigin,
+        affectedScope: GiftUIAffectedScope,
+        condition: UInt16,
+        correlation0: UInt32 = 0,
+        correlation1: UInt32 = 0,
+        observation0: UInt32 = 0,
+        observation1: UInt32 = 0
+    )
+}
+
+public enum GiftUIDiagnosticSinkResult: UInt8, Sendable {
+    case accepted = 0
+    case dropped = 1
+    case saturated = 2
+    case failed = 3
+}
+
+public protocol GiftUIDiagnosticSink {
+    mutating func consume(
+        _ record: GiftUIDiagnosticRecord
+    ) -> GiftUIDiagnosticSinkResult
+}
+```
+
+`flags` uses bit 0 for `contained`, bit 1 for `safetyNotProven`, bit 2 for
+`countersSaturated`, and bit 3 for `contextTruncated`; all other bits are zero
+in MVP. Unused condition, correlation, and observation words are zero.
+Execution and owner adapters define the meaning of nonzero correlation and
+observation words in source and fixtures; the record itself is not serialized
+or stable across builds.
+
+For `operationalOutcome`, `condition` is the operational-kind raw value. For
+`failureOutcome`, it is the failure-condition raw value. For
+`healthTransition`, it is the resulting health-state raw value and
+`observation0` contains the prior state. For `residualDisposition`, it is the
+selected disposition raw value. The projecting adapter assigns severity from
+an immutable source-defined table; changing that table may change only which
+diagnostic records are selected, never outcome, health, allowed dispositions,
+or chosen policy.
+
+`MemoryLayout<GiftUIDiagnosticRecord>.size` MUST be no greater than 24 bytes.
+A selection bit `1 << kind.rawValue` or `1 << origin.rawValue` admits that
+value; zero masks select nothing. Selection is a pure constant-time operation
+and MUST occur before constructing a full record.
+A selected sink call occurs only after the originating outcome has propagated
+or the authoritative health state has committed. Sink result is recorded only
+in optional saturating `UInt32` diagnostic counters and is otherwise ignored.
+
+An optional first-party fixed diagnostic buffer MUST use drop-new saturation:
+it preserves admitted record order, never overwrites an admitted record, and
+increments a saturating dropped-record counter when full. The default record
+capacities are 64 for macOS dynamic, 16 for macOS static, 16 for Raspberry
+Pi/Linux dynamic, and 8 for nRF52840 static. A target MAY select capacity zero
+to compile out record storage while retaining identical outcome and health
+behavior.
+
+All common surfaces above MUST be representable without heap allocation,
 strings, exceptions, reflection, unrestricted dynamic dispatch, or a dynamic
-registry. Dynamic conveniences MAY adapt these surfaces at integration
-boundaries but MUST preserve their portable meaning.
-
-Every bounded context, record store, diagnostic buffer, counter, and policy
-table MUST declare a finite capacity or finite case set. The final draft MUST
-name each capacity and its deterministic exhaustion behavior before review.
+registry. A dynamic convenience MAY adapt them at an integration boundary but
+MUST preserve the portable meaning and bounds.
+The policy and sink protocols MUST be consumed through generic specialization
+or static composition on static profiles; existential storage is not part of
+the common contract.
 
 ## Behavior
 
@@ -420,20 +850,42 @@ its configured fatal hook, but continuation is not allowed.
 
 ## Performance Requirements
 
-- The static-profile construction, normalization, propagation, and pure
-  policy path MUST require zero heap allocations.
-- Failure-free execution MUST perform only bounded outcome checks and any
-  correlation required at an owning boundary; diagnostic formatting MUST NOT
-  be part of the correctness-critical path.
-- Disabled diagnostic categories MUST NOT require construction of a complete
-  diagnostic record.
-- Every policy lookup, containment mapping, health query/update, diagnostic
-  selection, and diagnostic saturation path MUST have an input-independent
-  finite upper bound stated by the implementing target.
-- Before this Specification enters review, the draft MUST add numeric RAM,
-  stack, code-size, record-size, context-depth, and latency budgets for each
-  selected profile or explicitly assign those budgets to a named dependent
-  Specification with a conformance interface.
+- Static-profile construction, normalization, propagation, health update, and
+  pure policy dispatch MUST perform zero heap allocations. The measurement
+  excludes a caller-owned generic success payload but includes every common
+  failure value and adapter named by this Specification.
+- The correctness path from a normalized non-success outcome through allowed-
+  disposition validation MUST execute at most 64 fixture-counted branch,
+  comparison, increment, and store steps, excluding coordinator work owned by
+  a downstream Specification. Containment normalization and diagnostic
+  selection each MUST execute at most 8 such steps.
+- Failure-free execution MUST perform only the outcome tag check and any
+  correlation required at the first owning boundary. Diagnostic formatting
+  and sink dispatch MUST NOT be part of that path.
+- A disabled diagnostic category MUST construct zero
+  `GiftUIDiagnosticRecord` values and invoke the sink zero times.
+- The common outcome/policy path, compiled with optimization and diagnostics
+  disabled, MUST meet these incremental maxima. Writable RAM includes one
+  health value, diagnostic counters, and the default buffer when its capacity
+  is nonzero; it excludes owner-specific state and the caller's success
+  payload.
+
+| Profile fixture | Writable RAM | Worst stack | Linked code | Outcome/policy latency |
+| --- | ---: | ---: | ---: | ---: |
+| macOS dynamic | 2,048 B | 512 B | 32 KiB | p99 <= 100 us |
+| macOS static | 512 B | 384 B | 24 KiB | p99 <= 100 us |
+| Raspberry Pi/Linux dynamic | 512 B | 384 B | 24 KiB | p99 <= 150 us |
+| nRF52840 static | 320 B | 256 B | 16 KiB | <= 4,096 target instructions |
+
+The macOS figures are measured over at least 10,000 iterations on the project
+CI reference runner after 1,000 warm-up iterations. Raspberry Pi latency is
+measured over the same corpus on the required `armv6l` target when connected-
+target conformance is run; the pure host fixture and the 64-step bound remain
+the pre-hardware gate. nRF52840 instruction and stack evidence comes from the
+optimized board-probe ELF and disassembly and requires no flash operation.
+Linked-code evidence is the incremental text contribution relative to the
+same empty fixture. Debug, symbolization, and dynamic-only formatting code is
+reported separately and is not part of these maxima.
 
 ## Compatibility
 
@@ -459,26 +911,37 @@ driver, simulator, or connected hardware.
 
 Required tests are:
 
-- exhaustive category and containment mapping, including every unknown or
-  richer input representation;
+- exhaustive outcome-category, operational-kind, origin, affected-scope, and
+  containment mapping, including every unknown or richer input
+  representation;
+- raw-value and `MemoryLayout` tests for every common declaration, including
+  the 8-byte failure-fact, 4-byte operational-fact, 20-byte health, and
+  24-byte diagnostic-record maxima;
 - propagation fixtures proving identity and origin preservation, non-narrowing
   affected scope, and non-upgrading containment;
+- annotation fixtures proving exact two-entry order, non-overwrite, and an
+  unchanged core fact when a third append is refused;
 - table-driven policy-totality tests that enumerate every declared residual
   policy input and verify exactly one allowed bounded result;
 - fixtures proving detecting-layer, coordinator, and composition stages cannot
   perform one another's responsibilities;
 - an operational-health fixture proving current state and counters remain
-  accurate when every diagnostic record is dropped;
+  accurate when every diagnostic record is dropped, counters saturate without
+  wrapping, and a state transition still commits after saturation;
 - a diagnostic matrix covering disabled, source-filtered, sink-filtered,
   saturated, dropping, counting, and failing sinks and comparing all
   correctness-relevant outputs against diagnostics omitted;
+- selector tests covering every diagnostic kind, origin, and severity
+  threshold and proving an excluded record is never constructed;
 - callback and interrupt fixtures proving diagnostic paths cannot mutate
   semantic state or invoke client actions;
 - deterministic exhaustion tests for every selected correctness-bearing and
   diagnostic capacity;
 - static/dynamic parity fixtures for equivalent facts and policy inputs;
 - allocation instrumentation proving the static outcome and policy path makes
-  zero heap allocations; and
+  zero heap allocations;
+- optimized resource evidence for every profile fixture against the RAM,
+  stack, code, step, latency, record, context, and buffer limits above; and
 - target-graph/import tests proving the module dependency rules in this
   Specification.
 
@@ -497,18 +960,24 @@ tests. Those are not prerequisites for this contract's pure test seam.
 - [ ] One exhaustive containment fixture maps `contained` to `contained` and
   every safety-not-proven, unknown, and richer test value to `safety not
   proven` in both runtime profiles.
+- [ ] Raw-value and layout fixtures cover every declared case and prove the
+  specified 2-, 4-, 8-, 20-, and 24-byte equalities or maxima on every
+  available MVP compiler target.
 - [ ] Propagation fixtures prove the original condition identity and origin
   are unchanged, affected scope is never narrowed without fixture-backed
   proof, and containment is never upgraded.
+- [ ] Two annotations retain insertion order; a third append returns `false`,
+  overwrites no entry, and leaves every correlated core-fact field unchanged.
 - [ ] Every value in every declared residual-policy input domain is exercised
   exactly once by a table-driven test and produces one allowed finite result;
   no test exposes a mandatory local or coordinator action as a policy choice.
-- [ ] The diagnostic configuration matrix produces byte-for-byte equivalent
-  normalized outcomes, health snapshots, coordinator inputs, residual policy
-  inputs, and policy results for diagnostics omitted, enabled, filtered,
-  saturated, dropping, and failing.
+- [ ] The diagnostic configuration matrix produces value-equal normalized
+  outcomes, health snapshots, coordinator inputs, residual policy inputs, and
+  policy results for diagnostics omitted, enabled, filtered, saturated,
+  dropping, and failing.
 - [ ] Dropping every projected health-transition record leaves the explicit
-  health query and counters equal to the diagnostics-enabled baseline.
+  health query and counters equal to the diagnostics-enabled baseline; forced
+  `UInt32.max` saturation wraps no counter and blocks no state transition.
 - [ ] Diagnostic callback and interrupt fixtures record zero semantic
   mutations and zero client-action invocations.
 - [ ] Every declared store, context, counter, and policy capacity has one
@@ -519,9 +988,12 @@ tests. Those are not prerequisites for this contract's pure test seam.
   policy dispatch with diagnostics disabled.
 - [ ] Static and dynamic fixtures produce identical portable facts and
   dispositions for the complete shared fault corpus.
-- [ ] Exact declarations, visibility, widths, packing, capacities, and
-  per-profile budgets are resolved in this document before its status changes
-  from `draft` to `review`.
+- [ ] Release evidence satisfies the 64-step correctness-path bound, 8-step
+  mapping/selection bounds, default buffer capacities, and every per-profile
+  RAM, stack, code, and latency/instruction maximum.
+- [ ] SPEC-002 and SPEC-004 use these exact fact and owner-adapter names at
+  their boundaries, preserve reciprocal links, and define no competing
+  failure, health, disposition, or diagnostic vocabulary.
 
 ## Implementation Notes
 
@@ -534,28 +1006,32 @@ errors are migration evidence, not contract authority.
 The same pure fixtures should be reusable by later execution, runtime-profile,
 backend-integration, and host-configuration Specifications.
 
+A host-only feasibility layout compiled with Apple Swift 6.3.3 on arm64 macOS
+measured: `GiftUIConditionID` 2 bytes, `GiftUIFailureFact` 5 bytes,
+`GiftUIOperationalFact` 3 bytes, `GiftUIFailureAnnotations` 20 bytes,
+`GiftUIOperationalHealth` 17 bytes, and `GiftUIDiagnosticRecord` 24 bytes.
+These measurements support the frozen maxima but are not acceptance evidence
+for the macOS static, ARMv6, or Embedded Swift targets.
+
 ## Open Issues
 
-These are contract-detail blockers for review, not unresolved architecture:
+No architectural issue is open. The remaining blocker before this draft can
+enter `review` is coordinated terminology rather than contract invention:
 
-- Choose exact Swift declaration names, generic or non-generic outcome shape,
-  access levels, and construction APIs without changing the three approved
-  outcome meanings.
-- Select fixed integer widths and packing for condition identity, origin,
-  affected scope, correlation, health counters, and diagnostic records.
-- Define the complete bounded operational-condition catalogue required by the
-  MVP producer contracts.
-- Define exact bounded context depth and behavior when additional context
-  cannot be recorded.
-- Define exact operational-health state/counter surfaces shared with SPEC-004
-  without redefining capability contribution or resolution.
-- Define diagnostic categories, record fields, source-selection mechanism,
-  sink interface, buffering capacities, and saturation counters.
-- Assign concrete RAM, stack, binary-size, and latency budgets for all four
-  MVP configurations.
-- Reconcile final names and imports reciprocally with SPEC-002 and SPEC-004,
-  then update all three relationship links and the feature manifest in the
-  coordinated Wave 1 change.
+- Reconcile SPEC-002's Foundation owner-adapter mappings and SPEC-004's
+  capability-unavailable adapter with the exact declarations above. Both
+  drafts already have reciprocal metadata and manifest links; their normative
+  prose must use the same names before this draft enters `review`.
+
+The future EXECUTION Specification must provide the concrete `Context` used
+by `GiftUICorrelatedFailure`; the future HOST-CONFIGURATION Specification must
+instantiate the total policy table, pacing, and fatal-hook choices for each
+MVP composition. Those are downstream obligations, not prerequisites for
+review or approval of this independent Wave 1 contract. Implementation and
+conformance must later produce the required cross-target allocation,
+operation-count, and optimized resource evidence. Failing a frozen bound
+requires representation reduction or an explicit Specification revision; it
+does not permit an implementation exception.
 
 Any resolution that changes ownership, adds a new containment or recovery
 class, makes diagnostics authoritative, or changes the accepted dependency
