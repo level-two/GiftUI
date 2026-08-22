@@ -38,7 +38,7 @@ features:
     milestone: MVP
   giftui-mvp-architecture:
     title: GiftUI MVP Architecture Establishment
-    status: decision
+    status: specification
     proposal:
       - PROPOSAL-003
     rfcs:
@@ -63,13 +63,15 @@ features:
       - ADR-021
       - ADR-022
       - ADR-023
-    specs: []
+    specs:
+      - SPEC-002
+      - SPEC-003
     dependencies:
       - giftui-mvp-baseline
     milestone: MVP
   capability-system:
     title: GiftUI Capability System
-    status: decision
+    status: specification
     proposal:
       - PROPOSAL-004
     rfcs:
@@ -79,7 +81,8 @@ features:
       - ADR-018
       - ADR-019
       - ADR-020
-    specs: []
+    specs:
+      - SPEC-004
     dependencies:
       - giftui-mvp-architecture
     milestone: MVP

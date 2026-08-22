@@ -52,6 +52,20 @@ Each candidate Specification in this portfolio MUST:
 
 ## Candidate Contracts
 
+Wave 1 has entered coordinated drafting with these immutable identities:
+
+| Candidate key | Allocated Specification | Lifecycle status |
+| --- | --- | --- |
+| `FOUNDATION` | `SPEC-002` | `draft` |
+| `FAILURE` | `SPEC-003` | `draft` |
+| `CAPABILITY` | `SPEC-004` | `draft` |
+
+The three drafts share one ownership rule: SPEC-002 owns portable values and
+import boundaries; SPEC-003 owns outcome, containment, disposition, health,
+and diagnostic vocabulary; SPEC-004 owns capability contribution, resolution,
+and the `rasterPresentation` catalogue while referencing the first two
+contracts instead of redefining them.
+
 Candidate keys are planning labels, not reserved Specification IDs.
 
 | Key                   | Candidate contract                                                                                                                                                                                   | Governing decisions                                                                           | Draft prerequisites                                                   | Independent acceptance seam                                                                                                                                                                                                  |

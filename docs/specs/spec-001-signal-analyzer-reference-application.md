@@ -24,7 +24,8 @@ related_adrs:
   - ADR-025
   - ADR-026
   - ADR-027
-related_specs: []
+related_specs:
+  - SPEC-003
 related_future_work: []
 related_explorations: []
 related_spikes: []

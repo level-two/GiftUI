@@ -21,6 +21,7 @@ related_adrs:
   - ADR-017
 related_specs:
   - SPEC-001
+  - SPEC-003
 related_future_work:
   - FW-012
   - FW-013
