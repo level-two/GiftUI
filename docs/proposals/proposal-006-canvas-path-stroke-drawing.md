@@ -2,11 +2,11 @@
 id: PROPOSAL-006
 feature: canvas-drawing
 title: Canvas, Path, and Stroke Drawing
-status: draft
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
-updated: 2026-08-20
+updated: 2026-08-22
 proposal: []
 related_rfcs:
   - RFC-001
