@@ -11,12 +11,14 @@ proposal:
   - PROPOSAL-003
 related_rfcs:
   - RFC-002
+  - RFC-004
 related_adrs:
   - ADR-005
   - ADR-006
   - ADR-007
   - ADR-008
   - ADR-009
+  - ADR-013
 related_specs:
   - SPEC-003
   - SPEC-004
@@ -34,18 +36,17 @@ target_milestone: MVP
 
 ## Summary
 
-This initial Wave 1 scaffold defines the ownership boundary for GiftUI's
-portable foundation: shared portable values, checked integer geometry,
-normalized input values, and the package, module, visibility, and import rules
-that keep those values below their consumers. It deliberately leaves
-declarative semantics, failure and containment semantics, and capability
-contribution and resolution semantics to their owning Specifications.
+This Specification defines GiftUI's portable foundation: shared portable
+values, checked 32-bit integer geometry, bounded normalized pointer values,
+and the package, module, visibility, and import rules that keep those values
+below their consumers. It deliberately leaves declarative semantics, failure
+and containment semantics, capability contribution and resolution semantics,
+and pointer admission behavior to their owning Specifications.
 
-This Specification is a `draft`. Its current acceptance criteria measure
-whether the scaffold is complete and semantically coordinated; they do not
-authorize implementation. Exact declarations, integer widths, capacities,
-and access levels remain open until they can be specified without inventing
-architecture.
+This Specification remains a `draft` and does not authorize implementation.
+The value representations and visibility classes are fixed below for review;
+the cross-layer mapping of local Foundation rejection into SPEC-003 outcomes
+remains a coordinated Wave 1 blocker.
 
 ## Scope
 
@@ -119,8 +120,12 @@ meaning MUST hold in all four configurations.
 - [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
   is accepted.
 - [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md) is approved.
+- [RFC-004](../rfcs/rfc-004-run-cycle-and-frame-transaction.md) is approved
+  and constrains the normalized input value carried across its admission seam.
 - [ADR-005](../adrs/adr-005-semantic-layout-render-boundary.md) through
-  [ADR-009](../adrs/adr-009-checked-integer-geometry.md) are accepted.
+  [ADR-009](../adrs/adr-009-checked-integer-geometry.md), plus
+  [ADR-013](../adrs/adr-013-provenance-validated-input-admission.md), are
+  accepted.
 - The [MVP Scope](../MVP_SCOPE.md) requires one substantially shared portable
   Signal Analyzer presentation across the four supported configurations. This
   foundation is necessary now because those configurations must share values
@@ -176,6 +181,11 @@ portable values or claim a module/import relationship.
   coordinates, dimensions, and scalar arithmetic, with explicit deterministic
   handling of overflow and invalid dimensions. It leaves concrete widths,
   ranges, rounding, and API spellings to this drafting process.
+- **ADR-013 — Provenance-Validated Presentation-Coupled Input:** requires the
+  normalized pointer value to carry bounded source and sequence identity plus
+  the eligible physical-presentation revision. This Specification owns only
+  those value representations; the later EXECUTION contract owns admission,
+  ordering, wrap ambiguity, cancellation, hit testing, and activation.
 
 ## Terminology
 
@@ -188,7 +198,7 @@ portable values or claim a module/import relationship.
 **Geometry scalar**
 : The one signed integer scalar model used for MVP logical coordinates,
   dimensions, proposals, layout results, hit geometry, and Canvas geometry.
-  Its exact Swift representation and range remain an open issue in this draft.
+  It is `Int32`, with the inclusive range `-2_147_483_648...2_147_483_647`.
 
 **Coordinate**
 : A checked geometry scalar locating a point in backend-neutral logical
@@ -218,11 +228,16 @@ portable values or claim a module/import relationship.
   sequence. This Specification owns only its value representation and
   comparability; execution owns sequence behavior.
 
+**Input ordinal**
+: A bounded opaque value supplied with a normalized pointer phase so the
+  execution owner can detect duplicates and out-of-order delivery. Foundation
+  owns only its `UInt32` representation and comparability.
+
 **Presentation provenance**
 : A bounded opaque value allowing execution to correlate presentation-coupled
-  input with eligible physical presentation. Foundation owns the value form;
-  execution and target integration own stamping, validation, cancellation,
-  and fail-closed behavior.
+  input with eligible physical presentation. For MVP the value form is the
+  `UInt32`-backed `PresentationRevision`; execution and target integration own
+  stamping, validation, cancellation, and fail-closed behavior.
 
 **Import partial order**
 : The acyclic dependency relation in which portable contracts may be imported
@@ -233,9 +248,10 @@ portable values or claim a module/import relationship.
 
 Portable Presentation code MUST require only `import GiftUI`. The `GiftUI`
 product and module MUST expose the public portable values that client
-declarations need, including approved public geometry. Foundation-owned
-normalized input values MUST reside in `GiftUI`, but their exact Client API or
-SPI visibility remains an open issue. `GiftUI` MUST NOT re-export runtime,
+declarations need, including the geometry declarations specified below.
+Foundation-owned normalized pointer values MUST reside in `GiftUI` with
+`package` visibility: they are Framework and Integration SPI, not Client API.
+`GiftUI` MUST NOT re-export runtime,
 layout, render, failure, capability implementation, backend, platform, driver,
 OS/RTOS, HAL, or hardware modules.
 
@@ -297,36 +313,174 @@ construct a foundation value.
 
 MVP distribution MUST use one Swift package containing multiple targets and
 products. `GiftUI` MUST remain both the stable portable declaration target and
-the stable client-facing library product. Exact names for other targets and
-products and exact `public`/`package`/`internal` assignments are unresolved
-contract details, but their eventual selection MUST preserve the ownership
-and dependency rules above and keep each boundary independently testable.
+the stable client-facing library product.
+
+This Specification fixes the following visibility rule:
+
+- geometry values used in portable Presentation are `public` Client API;
+- normalized pointer values and their correlation fields are `package`
+  Framework/Integration SPI;
+- checked scalar helpers and Foundation-to-outcome adapters are `package` SPI;
+  and
+- implementation helpers that are not shared across targets remain
+  `internal` or `private`.
+
+Every later Specification that introduces a contract owner MUST assign that
+owner a distinct target/module when combining it with another owner would
+permit a prohibited import or make the boundary untestable. That owner’s
+Specification fixes its non-`GiftUI` target and product names; SPEC-002 does
+not pre-allocate names for contracts that do not yet have an approved
+Specification. The package manifest and a checked-in dependency allow-list
+MUST be the machine-readable source for the assembled DAG.
 
 ## Types / APIs
 
-This scaffold fixes API seams, not final Swift spellings.
+The declaration names, raw widths, visibility, and construction semantics in
+this section are normative. Conformance does not require the exact source-file
+layout shown by the proof of concept.
 
-| Owned value family | Required semantic surface | Explicitly not owned here |
-| --- | --- | --- |
-| Geometry scalar and checked arithmetic | One integer scalar model; checked addition, subtraction, multiplication, coordinate translation, and extent calculations; deterministic detection of overflow | Failure/outcome case names, layout algorithms, rounding for future non-integer models |
-| Point | Two logical coordinates with value semantics | Pixel mapping, calibration, hit testing |
-| Size | Two non-negative dimensions with value semantics | Measurement policy, surface allocation |
-| Rectangle | Origin plus size; overflow-safe containment and derived-edge operations | Clipping policy, damage policy, hit precedence |
-| Proposed size | Independently present or absent non-negative proposed dimensions | Parent/child proposal algorithms and infinity semantics |
-| Normalized input event | Phase and logical position, plus the bounded correlation fields required by its owning execution boundary | Admission, coalescing, dropping, cancellation, routing, dispatch |
-| Source, sequence, ordering, and provenance identities | Opaque, bounded, copyable, equality-comparable value forms | Identity allocation policy, ordering policy, lifecycle state machine |
+### Geometry declarations
+
+`Int32` gives the 32-bit and 64-bit MVP targets the same arithmetic range,
+comfortably covers every required 480 x 320-or-smaller surface and its checked
+layout intermediates, and avoids making host word size observable. The unit is
+one backend-neutral logical integer step; this contract does not define a
+fractional scale or pixel conversion.
+
+```swift
+public typealias GeometryScalar = Int32
+
+public struct Point: Equatable, Hashable, Sendable {
+    public let x: GeometryScalar
+    public let y: GeometryScalar
+    public init(x: GeometryScalar, y: GeometryScalar)
+}
+
+public struct Size: Equatable, Hashable, Sendable {
+    public let width: GeometryScalar
+    public let height: GeometryScalar
+    public init?(width: GeometryScalar, height: GeometryScalar)
+}
+
+public struct Rect: Equatable, Hashable, Sendable {
+    public let origin: Point
+    public let size: Size
+    public init?(origin: Point, size: Size)
+    public var minX: GeometryScalar { get }
+    public var minY: GeometryScalar { get }
+    public var maxX: GeometryScalar { get }
+    public var maxY: GeometryScalar { get }
+    public func contains(_ point: Point) -> Bool
+}
+
+public struct ProposedSize: Equatable, Hashable, Sendable {
+    public let width: GeometryScalar?
+    public let height: GeometryScalar?
+    public init?(width: GeometryScalar? = nil, height: GeometryScalar? = nil)
+}
+```
+
+`Size.init` returns `nil` when either dimension is negative. `Rect.init`
+returns `nil` when either exclusive maximum edge cannot be represented as a
+`GeometryScalar`; therefore all four published edges are total after valid
+construction. `ProposedSize.init` returns `nil` when a present dimension is
+negative. Zero dimensions are valid. An absent proposal is represented only
+by `nil`; no scalar value is reserved as infinity or absence.
+
+The following package SPI is required. Each function returns `nil` on
+overflow and returns no partial arithmetic result:
+
+```swift
+package enum GeometryArithmetic {
+    package static func add(
+        _ lhs: GeometryScalar,
+        _ rhs: GeometryScalar
+    ) -> GeometryScalar?
+    package static func subtract(
+        _ lhs: GeometryScalar,
+        _ rhs: GeometryScalar
+    ) -> GeometryScalar?
+    package static func multiply(
+        _ lhs: GeometryScalar,
+        _ rhs: GeometryScalar
+    ) -> GeometryScalar?
+}
+```
+
+Local optional failure is not a competing cross-layer outcome taxonomy. The
+first producer or coordinator boundary that must report the rejection outside
+Foundation MUST map `nil` to the corresponding SPEC-003-owned failure fact;
+it MUST NOT expose a partial value, trap as its only behavior, or substitute a
+different numeric result.
+
+### Normalized pointer declarations
+
+The following `package` declarations are owned by `GiftUI` and are available
+only as Framework and Integration SPI:
+
+```swift
+package enum PointerPhase: UInt8, Equatable, Sendable {
+    case down = 0
+    case move = 1
+    case up = 2
+}
+
+package struct InputSourceID: Equatable, Hashable, Sendable {
+    package let rawValue: UInt16
+    package init(rawValue: UInt16)
+}
+
+package struct PointerSequenceID: Equatable, Hashable, Sendable {
+    package let rawValue: UInt32
+    package init(rawValue: UInt32)
+}
+
+package struct InputOrdinal: Equatable, Hashable, Sendable {
+    package let rawValue: UInt32
+    package init(rawValue: UInt32)
+}
+
+package struct PresentationRevision: Equatable, Hashable, Sendable {
+    package let rawValue: UInt32
+    package init(rawValue: UInt32)
+}
+
+package struct NormalizedPointerEvent: Equatable, Sendable {
+    package let phase: PointerPhase
+    package let position: Point
+    package let source: InputSourceID
+    package let sequence: PointerSequenceID
+    package let ordinal: InputOrdinal
+    package let presentationRevision: PresentationRevision
+    package init(
+        phase: PointerPhase,
+        position: Point,
+        source: InputSourceID,
+        sequence: PointerSequenceID,
+        ordinal: InputOrdinal,
+        presentationRevision: PresentationRevision
+    )
+}
+```
+
+Every raw identity bit pattern is a valid opaque value at the Foundation
+boundary. The producing integration owns allocation; the later EXECUTION
+contract owns phase order, ordinal progression, identity reuse, wrap
+ambiguity, admission, cancellation, and resynchronization. No raw value is a
+sentinel for absence or invalidity. `NormalizedPointerEvent` is always a
+presentation-coupled pointer event; any future presentation-independent input
+family requires its own approved contract rather than an absent-provenance
+sentinel. `UInt16` bounds the source namespace to 65,536 representable values;
+actual active-source capacity is a smaller host/runtime contract. The `UInt32`
+sequence, ordinal, and revision namespaces are finite; ADR-013 governs the
+consumer's fail-closed behavior when reuse or wrap cannot be proven safe. A
+non-activating cancellation fact, if used by EXECUTION, is not a fourth
+`PointerPhase` and does not change this event representation.
 
 All owned values MUST be value-semantic and usable in caller-owned or inline
 static storage. Their correctness MUST NOT depend on reference identity,
 allocation, reflection, unrestricted existential storage, or runtime target
 discovery.
-
-Final declarations MUST specify visibility, initializer validity, scalar and
-identity widths/ranges, and every checked operation before this Specification
-can advance to `review`. Checked operations that can fail MUST use SPEC-003's
-canonical outcome vocabulary rather than introduce a Foundation-owned error
-domain. This cross-reference does not allow SPEC-003 to redefine the values or
-arithmetic invariants above.
 
 ## Behavior
 
@@ -335,12 +489,12 @@ arithmetic invariants above.
 - Geometry arithmetic MUST detect overflow and MUST NOT silently wrap,
   saturate, trap as the only specified behavior, or expose partial geometry as
   complete.
-- Construction or derivation of a negative dimension MUST be rejected
-  deterministically through the SPEC-003-owned outcome seam selected during
-  completion of this draft.
-- Rectangle containment and derived-edge operations MUST remain correct when
-  origins or dimensions approach the selected scalar limits; implementations
-  MUST NOT rely on an unchecked `origin + dimension` intermediate.
+- Construction or derivation of a negative dimension MUST return `nil`.
+- Rectangle construction MUST calculate both exclusive maximum edges through
+  checked addition and return `nil` on either overflow. After successful
+  construction, `maxX` and `maxY` MUST return those mathematically exact
+  exclusive edges and `contains` MUST implement the half-open region
+  `[minX, maxX) x [minY, maxY)` without unchecked arithmetic.
 - An absent proposed dimension MUST remain distinguishable from every concrete
   integer dimension.
 - Geometry behavior MUST be independent of pixel format, display rotation,
@@ -357,8 +511,8 @@ arithmetic invariants above.
   without deciding whether the event is admitted, stale, malformed, ordered,
   dropped, cancelled, hit tested, or dispatched.
 - Conversion that exceeds the geometry scalar range MUST fail explicitly via
-  the SPEC-003-owned outcome seam; it MUST NOT clamp or wrap unless a later
-  accepted architecture decision explicitly authorizes such behavior.
+  a local `nil` result that the producing adapter maps into the SPEC-003-owned
+  outcome seam; it MUST NOT clamp or wrap.
 
 ### Dependency enforcement
 
@@ -425,13 +579,19 @@ through SPEC-003's bounded outcome seam:
 
 - scalar arithmetic overflow;
 - negative or otherwise invalid dimensions;
-- physical-to-logical input conversion outside the scalar range;
-- malformed or unrepresentable bounded identity/provenance fields; and
-- any explicit Foundation construction bound selected during drafting.
+- a rectangle whose exclusive maximum edge is unrepresentable; and
+- physical-to-logical input conversion outside the scalar range.
 
-These failures MUST be deterministic for identical inputs and MUST NOT produce
-a partially valid value. Foundation MUST NOT define containment, recovery,
-health, diagnostics, diagnostic delivery, retry, drop/cancel, or host policy.
+Every raw source, sequence, ordinal, and revision bit pattern is representable;
+whether a value is stale, out of order, ambiguously reused, or otherwise
+inadmissible belongs to EXECUTION rather than Foundation construction.
+
+Foundation reports its local rejection as `nil`. These failures MUST be
+deterministic for identical inputs and MUST NOT produce a partially valid
+value. The first boundary that reports the condition cross-layer MUST map it
+to the exact SPEC-003 condition identity, origin, affected scope, and
+containment. Foundation MUST NOT define containment, recovery, health,
+diagnostics, diagnostic delivery, retry, drop/cancel, or host policy.
 Diagnostic exhaustion MUST NOT alter Foundation value behavior; that rule is
 specified by SPEC-003.
 
@@ -445,11 +605,18 @@ specified by SPEC-003.
   Objective-C, `Task`, or `MainActor`.
 - Foundation values MUST NOT own dynamically growing collections or large
   inline arenas.
-- The completed draft MUST state concrete byte widths/ranges for scalar and
-  identity fields and identify the build or test evidence that verifies them.
-- Release and embedded evidence MUST report the linked-code and value-size
-  impact of the final target split; this draft sets no universal byte budget
-  before those declarations are chosen.
+- `GeometryScalar` MUST occupy 4 bytes; `InputSourceID` MUST occupy 2 bytes;
+  `PointerSequenceID`, `InputOrdinal`, and `PresentationRevision` MUST each
+  occupy 4 bytes.
+- `Point` and `Size` MUST each occupy no more than 8 bytes, `Rect` no more than
+  16 bytes, `ProposedSize` no more than 16 bytes, and
+  `NormalizedPointerEvent` no more than 32 bytes under the supported host and
+  Embedded Swift compilers.
+- Release and Embedded Swift evidence MUST report `MemoryLayout<T>.size`,
+  `stride`, and `alignment` for every owned value, the `GiftUI` object size
+  before and after migration, and evidence that construction and arithmetic
+  introduce no allocation. A size regression above any limit is
+  non-conforming even when source behavior is unchanged.
 
 ## Compatibility
 
@@ -471,22 +638,26 @@ specified by SPEC-003.
 
 ### Value and arithmetic tests
 
-- Table-driven tests MUST cover zero, ordinary, minimum, and maximum valid
-  scalar values plus every overflow edge for each published checked operation.
+- Table-driven tests MUST cover zero, ordinary, `Int32.min`, and `Int32.max`
+  plus every overflow edge for `GeometryArithmetic.add`, `subtract`, and
+  `multiply`.
 - Construction tests MUST cover valid zero dimensions, invalid negative
   dimensions, independently absent proposed dimensions, and maximum valid
   extents.
-- Rectangle tests MUST exercise containment and derived edges near both scalar
-  limits without unchecked intermediate overflow.
+- Rectangle tests MUST exercise successful and rejected construction near both
+  scalar limits, exact exclusive edges, empty rectangles, and half-open
+  containment without unchecked intermediate overflow.
 - Copy and equality tests MUST demonstrate value semantics and absence of
   shared mutable state.
 
 ### Normalized input tests
 
-- Fixtures MUST construct every admitted normalized phase with minimum and
+- Fixtures MUST construct every normalized phase with minimum and
   maximum valid coordinates and bounded correlation values.
-- Negative fixtures MUST prove that out-of-range conversion and malformed
-  bounded fields yield the SPEC-003-owned outcome without partial values.
+- Raw-field fixtures MUST cover minimum and maximum values for every identity,
+  ordinal, and revision wrapper. Negative conversion fixtures MUST prove that
+  out-of-range physical coordinates produce local `nil` and the owner adapter
+  maps that rejection to the SPEC-003-owned outcome without a partial event.
 - Compile and type-inspection fixtures MUST prove that normalized values expose
   no concrete backend, platform, OS, driver, transport, HAL, or hardware type.
 - These tests MUST NOT assert admission, stale-event, cancellation, hit-test,
@@ -508,6 +679,10 @@ specified by SPEC-003.
   dynamic and static configurations.
 - Static evidence MUST verify that required Foundation operations perform no
   heap allocation and do not link omitted optional dynamic conveniences.
+- The Embedded Swift compile fixture MUST use the project-local nRF toolchain,
+  `armv7em-none-none-eabi`, `-enable-experimental-feature Embedded`, `-Osize`,
+  and whole-module optimization. It MUST compile only the Foundation source
+  set and its measurement fixture; it does not require a connected board.
 
 The complete runtime, backend, host, and connected-hardware suites are
 downstream conformance evidence and MUST NOT be required to execute this
@@ -515,39 +690,37 @@ Specification's independent tests.
 
 ## Acceptance Criteria
 
-The following are scaffold acceptance criteria. They MUST all be satisfied
-before this draft is considered structurally ready for completion into a
-review contract; they do not claim implementation conformance.
-
-- [ ] **PF-SCAF-001:** Every accepted governing decision in ADR-005 through
-  ADR-009 is mapped in `Related ADRs` to an owned Foundation obligation or an
-  explicit exclusion.
-- [ ] **PF-SCAF-002:** Every owned value family in `Types / APIs` names its
-  producer/consumer seam, invariant category, visibility decision still
-  required, and non-owned semantics; no family is defined by SPEC-003 or
-  SPEC-004 with conflicting meaning.
-- [ ] **PF-SCAF-003:** SPEC-002, SPEC-003, and SPEC-004 contain reciprocal
-  `related_specs` metadata and use the same ownership rule: FOUNDATION owns
-  portable values/import boundaries, FAILURE owns outcome/containment
-  vocabulary, and CAPABILITY owns contribution/resolution vocabulary.
-- [ ] **PF-SCAF-004:** The dependency section names all Wave 2 and later
-  consumer families from the portfolio and gives Foundation an independent
-  compile/value-test seam that imports no downstream implementation.
-- [ ] **PF-SCAF-005:** The completed API table replaces every unresolved
-  scalar, identity, event-field, visibility, and construction-outcome item
-  listed in `Open Issues` with one exact declaration or an explicit upstream
-  architecture blocker.
-- [ ] **PF-SCAF-006:** The completed test matrix contains at least one positive
-  and one boundary/negative case for each published constructor and checked
-  operation, plus one positive and one forbidden-import fixture for every
-  protected dependency boundary.
-- [ ] **PF-SCAF-007:** No normative clause in this Specification defines
-  declarative behavior, failure disposition, diagnostics, capability
-  contribution/resolution, layout policy, frame/input admission, backend
-  policy, or host composition behavior.
-- [ ] **PF-SCAF-008:** Review evidence identifies the exact Foundation
-  declarations used unchanged by both a dynamic and a static compile fixture
-  and records their selected representation sizes and allocation behavior.
+- [ ] **PF-001:** `GeometryScalar` is `Int32` in all four MVP configurations,
+  and the public `Point`, `Size`, `Rect`, and `ProposedSize` declarations and
+  visibility match this contract.
+- [ ] **PF-002:** Every invalid dimension, invalid proposal, overflowing edge,
+  and overflowing arithmetic operation returns `nil`, produces no partial
+  value, and maps to the agreed SPEC-003 failure fact at the first cross-layer
+  owner boundary.
+- [ ] **PF-003:** Valid rectangles expose exact exclusive edges and half-open
+  containment for the complete boundary corpus, including both scalar limits
+  and empty rectangles.
+- [ ] **PF-004:** `NormalizedPointerEvent` and its phase, source, sequence,
+  ordinal, and revision values have the exact package-SPI declarations and raw
+  widths in this contract and expose no concrete integration type or absent-
+  provenance sentinel.
+- [ ] **PF-005:** A checked-in package dependency allow-list proves the graph
+  acyclic, `GiftUI` re-exports no prohibited module, and every protected owner
+  has both a positive-import and forbidden-import fixture.
+- [ ] **PF-006:** The same Foundation declarations compile in macOS dynamic,
+  macOS static, Raspberry Pi ARMv6, and nRF52840 Embedded Swift configurations;
+  host and Embedded Swift value-semantic fixtures produce equal results.
+- [ ] **PF-007:** Recorded size, stride, alignment, allocation, and object-size
+  evidence satisfies every Performance Requirement and identifies the exact
+  compiler and optimization configuration.
+- [ ] **PF-008:** Migration evidence enumerates every proof-of-concept `Int`,
+  precondition, mutable field, source location, and input case that changed,
+  and no compatibility shim weakens the checked or bounded contract.
+- [ ] **PF-009:** SPEC-002, SPEC-003, and SPEC-004 preserve their reciprocal
+  ownership rule, and RFC-004/ADR-013 traceability remains bidirectional.
+- [ ] **PF-010:** Review finds no declarative behavior, failure disposition,
+  diagnostics, capability resolution, layout policy, input admission,
+  backend policy, or host product policy defined normatively by SPEC-002.
 
 ## Implementation Notes
 
@@ -556,37 +729,30 @@ This section is non-authoritative guidance. The current proof of concept has
 checked layout arithmetic in `Sources/GiftUI/`. Existing unit tests already
 provide evidence for integer retention, arithmetic overflow detection, and
 overflow-safe rectangle containment. These names and behaviors should be
-inventoried against the completed contract; they are not ratified by this
-scaffold.
+inventoried against the completed contract; `Int`, mutable stored properties,
+precondition-only invalid-dimension handling, the three-case `InputEvent`, and
+the existing package graph are migration evidence rather than authority.
 
-Draft completion can proceed in two narrow passes: first settle value
-representations and the SPEC-003 outcome seam; then finalize target names,
-visibility, and dependency fixtures. Downstream Specifications should consume
-the resulting declarations rather than copy provisional signatures from this
-draft.
+Draft completion should now proceed in three narrow passes: reconcile the
+SPEC-003 owner-adapter mapping; review the fixed-width declarations with the
+future EXECUTION contract boundary; then validate the dependency allow-list
+and measurement method against both host and project-local Embedded Swift
+compilers. Downstream Specifications should consume these declarations rather
+than copy signatures.
 
 ## Open Issues
 
-These are non-architectural contract details that must be resolved before the
-Specification advances to `review`:
+The following contract coordination must be completed before the Specification
+advances to `review`:
 
-1. Select the concrete geometry scalar Swift type, width, range, and public or
-   SPI spelling while preserving one checked integer model.
-2. Specify the exact checked arithmetic surface, including which operations
-   are public versus package SPI and how derived edges and translations expose
-   SPEC-003 outcomes.
-3. Specify constructor behavior for negative dimensions and invalid proposed
-   dimensions; the current proof-of-concept preconditions are not authority.
-4. Specify exact normalized input phases and the concrete bounded widths and
-   representations of source, sequence, ordering, and presentation-provenance
-   fields required by the accepted execution boundary.
-5. Decide which normalized input values are Client API versus Framework or
-   Integration SPI without exposing execution semantics in Foundation.
-6. Finalize non-`GiftUI` target/product names and access levels necessary to
-   enforce the accepted partial order. Candidate names in RFC-002 are not yet
-   fixed.
-7. Define the reproducible static no-allocation and value-size measurement
-   procedure used as review and conformance evidence.
+1. SPEC-003 must name the exact failure facts used when negative dimensions,
+   scalar overflow, rectangle-edge overflow, or input normalization cause a
+   local `nil`. SPEC-002 must then cite those names without importing failure
+   disposition into Foundation.
+2. The review evidence must check the exact compiler versions and measurement
+   commands used for the host and project-local Embedded Swift fixtures, and
+   must demonstrate that the checked-in dependency allow-list covers every
+   target present when SPEC-002 enters review.
 
 If resolving any item would change ownership, introduce another geometry
 model, expose target identity, reverse the import graph, or define a new
@@ -611,11 +777,13 @@ MUST return to RFC/ADR review.
 
 - [PROPOSAL-003: GiftUI MVP Architecture Establishment](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
 - [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
+- [RFC-004: Run Cycle and Frame Transaction Architecture](../rfcs/rfc-004-run-cycle-and-frame-transaction.md)
 - [ADR-005: Semantic, Layout, and Render Boundary](../adrs/adr-005-semantic-layout-render-boundary.md)
 - [ADR-006: Shared Semantics Across Runtime Profiles](../adrs/adr-006-shared-semantics-runtime-profiles.md)
 - [ADR-007: Integration Ownership and Host Composition](../adrs/adr-007-integration-ownership-and-host-composition.md)
 - [ADR-008: Module Dependency Graph and MVP Package Topology](../adrs/adr-008-module-dependency-graph-and-package-topology.md)
 - [ADR-009: Checked Integer Geometry for MVP](../adrs/adr-009-checked-integer-geometry.md)
+- [ADR-013: Provenance-Validated Presentation-Coupled Input](../adrs/adr-013-provenance-validated-input-admission.md)
 - [SPEC-003: Failure Outcomes and Containment](spec-003-failure-outcomes-and-containment.md)
 - [SPEC-004: Capability Contribution and Resolution](spec-004-capability-contribution-and-resolution.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
