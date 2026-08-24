@@ -921,11 +921,14 @@ its configured fatal hook, but continuation is not allowed.
   and sink dispatch MUST NOT be part of that path.
 - A disabled diagnostic category MUST construct zero
   `GiftUIDiagnosticRecord` values and invoke the sink zero times.
-- The common outcome/policy path, compiled with optimization and diagnostics
-  disabled, MUST meet these incremental maxima. Writable RAM includes one
-  health value, diagnostic counters, and the default buffer when its capacity
-  is nonzero; it excludes owner-specific state and the caller's success
-  payload.
+- The common outcome/policy path, compiled with the profile-specific
+  optimization below and diagnostic projection and sink dispatch disabled,
+  MUST meet these resource maxima. Writable RAM is the candidate-minus-
+  baseline linked-storage delta defined below. It includes one production
+  health value, diagnostic counters, and the default buffer at that profile's
+  nonzero default capacity; it excludes owner-specific state and the caller's
+  success payload. Worst stack is the absolute candidate production-path bound,
+  not a baseline delta. Linked code is a candidate-minus-baseline delta.
 
 | Profile fixture | Writable RAM | Worst stack | Linked code | Outcome/policy latency |
 | --- | ---: | ---: | ---: | ---: |
@@ -934,46 +937,122 @@ its configured fatal hook, but continuation is not allowed.
 | Raspberry Pi/Linux dynamic | 512 B | 384 B | 24 KiB | p99 <= 150 us |
 | nRF52840 static | 320 B | 256 B | 16 KiB | <= 4,096 target instructions |
 
+### Reproducible resource evidence
+
+The supported compiler and optimization configurations are fixed for this
+review baseline:
+
+| Profile fixture | Compiler and target | Optimization |
+| --- | --- | --- |
+| macOS dynamic/static | Apple Swift 6.3.3 (`swiftlang-6.3.3.1.3`), `arm64-apple-macosx26.0` | release `-O`, whole-module optimization |
+| Raspberry Pi 1/Linux dynamic | Swift 6.3.2, `armv6-unknown-linux-gnueabihf`, Raspios Bookworm SDK pinned by `scripts/raspberry-pi/toolchain.env` | release `-O`, whole-module optimization |
+| nRF52840 static | Swift 6.3.2, `armv7em-none-none-eabi`, Zephyr 4.3.0 and SDK 0.17.4 pinned by `scripts/nrf52840/toolchain.env` | `-Osize`, whole-module optimization, Embedded Swift enabled with Cortex-M4F hard-float flags |
+
+The implementation MUST provide one checked-in driver at
+`scripts/contracts/run-spec-003.sh`. Its reproducible resource commands are
+exactly:
+
+```text
+scripts/contracts/run-spec-003.sh --profile macos-dynamic
+scripts/contracts/run-spec-003.sh --profile macos-static
+scripts/contracts/run-spec-003.sh --profile raspberry-pi-armv6
+scripts/contracts/run-spec-003.sh --profile nrf52840-embedded
+```
+
+The driver MUST fail when compiler identity, target, SDK, or optimization
+differs from the table. It MUST record the repository revision and dirty state,
+complete compiler and linker commands, `swiftc --version`, compiler executable
+hash, target and SDK identities, source lists and SHA-256 hashes, final-image
+hashes, section reports, link maps, disassembly, and normalized call graph.
+macOS dynamic and static use distinct fixture profile configuration but the
+same compiler and optimization row. ARMv6 and nRF52840 resource commands are
+cross-build/inspection seams and require neither connected hardware nor a
+flash operation.
+
+Every resource command builds pristine baseline and candidate images from one
+repository revision. The baseline and candidate import and link the same Swift
+runtime and test support, contain identical corpus inputs and an observable
+fixed-width harness sink, and call `@inline(never)` entry points with identical
+signatures. The baseline entry point performs a retained no-op and does not
+import or link the production failure modules. The candidate imports the
+production `GiftUIFailureCore` and `GiftUIFailureExecution` objects and
+observably executes the complete normalized outcome, mapping, health,
+annotation, and residual-policy corpus. Only the candidate contains the
+production health value, diagnostic counters, and default fixed diagnostic
+buffer. Neither image includes diagnostic formatting, symbolization, or a
+dynamic-only diagnostic sink. Two pristine rebuilds MUST produce identical
+normalized section totals, call graph, stack bound, and final-image hashes.
+
+Writable RAM is the signed `candidate - baseline` delta of allocatable writable
+storage in the final images. For Mach-O this is the sum of initialized and
+zero-fill sections in writable segments, including `__DATA` and `__DATA_CONST`
+only where the section is mapped writable; for ELF it is the writable
+`PT_LOAD` memory size, decomposed into initialized data, zero-initialized BSS,
+and no-init storage. The report MUST list both absolute image totals, every
+included section, named production health/counter/buffer symbols, and the
+signed delta. Stack, heap or allocator arenas, read-only data, code, debug and
+symbol tables, loader metadata, and non-allocatable sections are excluded.
+Statically linked Swift runtime and test-support storage plus corpus-input and
+harness-sink storage is included in each absolute image and cancels through
+the like-for-like baseline. Writable segments owned by external shared
+libraries are excluded from both image totals; the driver MUST record the
+exact library paths and hashes and prove that baseline and candidate load the
+same set. Candidate-only test instrumentation is forbidden. A negative delta
+MUST be reported as measured and MUST NOT be clamped.
+
+Worst stack is a conservative static bound from the candidate's first
+`@inline(never)` production entry through its return, over every required
+success and negative path. It excludes the caller and harness-driver frames but
+includes the entry frame, all non-inlined production callees, compiler-emitted
+thunks, retain/release or value-witness helpers, and other runtime frames
+reachable inside that boundary. The driver MUST derive each frame's stack
+adjustment and saved-register bytes from final-image disassembly, construct a
+symbol-resolved call graph, and report the maximum sum of simultaneously live
+frames. For a reachable helper in a shared runtime library, the driver MUST
+hash and disassemble the exact pinned library image, resolve the called symbol,
+and include that frame and its reachable callee path in the same bound. A
+shared callee is counted once each time it is simultaneously active on a path;
+sequential sibling calls contribute their maximum, not their sum. A tail call
+removes the caller frame only when final disassembly proves frame reuse.
+
+Recursion reachable from the production entry is non-conforming. Every
+indirect call MUST have a fixture-finite target set proved from final link/map
+and relocation evidence; the bound uses the largest target frame and callee
+path. An unresolved indirect target, missing body for a reachable runtime
+helper, dynamic stack adjustment without a proven finite maximum, or call-graph
+cycle fails the stack criterion. Runtime watermarks MAY be recorded only as
+corroborating evidence and MUST NOT replace this static bound. The pinned
+compiler, fixed fixture, ASLR-independent disassembly method, and two identical
+pristine rebuilds are the repeatability rule for macOS and ARMv6 as well as
+nRF52840.
+
+Linked code is the signed `candidate - baseline` delta over executable code
+and allocatable read-only-data sections from the final image. Writable and
+zero-fill sections are counted only as RAM. Debug, symbol/string tables,
+loader metadata, and other non-allocatable sections are excluded. The report
+MUST show both absolute totals, every included section, and the signed delta;
+a negative delta is not clamped.
+
+### Reproducible latency and instruction evidence
+
 The reproducible macOS reference runner is an arm64 `Mac15,7` with an Apple M3
-Pro (12 cores), 36 GB RAM, macOS 26.3 build 25D125, and Apple Swift 6.3.3
-(`swiftlang-6.3.3.1.3`), using `swift test -c release --filter
-GiftUIFailureContractTests`. Latency uses at least 10,000 iterations after
-1,000 warm-up iterations with no other repository job running. Evidence MUST
-record the model identifier, OS build, complete `swift --version`, command,
-commit, and raw samples; results from another runner are informative only
-until this reference is deliberately revised with the Specification.
+Pro (12 cores), 36 GB RAM, macOS 26.3 build 25D125, and the Apple Swift 6.3.3
+compiler above, using:
 
-Raspberry Pi latency is measured over the same corpus on a connected machine
-that reports `armv6l`. nRF52840 instruction and stack evidence comes from the
-optimized board-probe ELF and disassembly and requires no flash operation.
+```text
+swift test -c release -Xswiftc -whole-module-optimization --filter GiftUIFailureContractTests
+```
 
-Every linked-code measurement MUST build a baseline and candidate from one
-repository revision. The baseline imports and links the same Swift runtime and
-test support as the candidate, owns the same observable fixed-width sink, and
-calls an `@inline(never)` no-op having the same signature as the candidate
-entry point. The candidate differs only by importing the production
-`GiftUIFailureCore` and `GiftUIFailureExecution` objects and replacing that
-no-op with observable execution of the complete normalized outcome, mapping,
-health, annotation, and residual-policy corpus. Neither fixture includes
-diagnostic formatting, symbolization, or a dynamic-only sink. Evidence MUST
-record the complete baseline and candidate source lists and SHA-256 hashes;
-there is no unspecified "empty fixture."
+SwiftPM release mode MUST compile these fixtures with `-O`, not `-Osize`.
+Latency uses at least 10,000 iterations after 1,000 warm-up iterations with no
+other repository job running. Evidence MUST record the model identifier, OS
+build, complete `swift --version`, command, commit, and raw samples; results
+from another runner are informative only until this reference is deliberately
+revised with the Specification.
 
-The macOS rows use the Apple Swift 6.3.3 compiler identified by the reference
-runner above. The Raspberry Pi row uses the repository-pinned Swift 6.3.2
-compiler and `armv6-unknown-linux-gnueabihf` SDK from
-`scripts/raspberry-pi/toolchain.env`. The nRF52840 row uses the repository-
-pinned Swift 6.3.2 compiler, Zephyr 4.3.0, Zephyr SDK 0.17.4, board
-`nrf52840dk/nrf52840`, and hard-float `armv7em-none-none-eabi` configuration
-from `scripts/nrf52840/toolchain.env`. Baseline and candidate MUST use the
-same compiler executable, target triple, SDK, `-Osize` and whole-module mode,
-Embedded Swift and Cortex/ABI flags where applicable, runtime libraries,
-linker script, section settings, and dead-section elimination. Evidence MUST
-record complete compiler/link commands, tool versions, ELF or executable
-hashes, and maps. Linked code is `candidate - baseline` over executable text
-and read-only-data sections from the final image; writable and zero-fill
-sections are reported only in the RAM column. Debug and non-loadable sections
-are excluded. A negative delta is reported as measured and MUST NOT be clamped.
+Raspberry Pi latency uses the `-O` ARMv6 candidate and the same corpus on a
+connected machine that reports `armv6l`. nRF52840 instruction evidence uses
+the `-Osize` candidate ELF and disassembly and requires no flash operation.
 
 ## Compatibility
 
@@ -1046,7 +1125,10 @@ Required tests are:
 - allocation instrumentation proving the static outcome and policy path makes
   zero heap allocations;
 - optimized resource evidence for every profile fixture against the RAM,
-  stack, code, step, latency, record, context, and buffer limits above; and
+  stack, code, step, latency, record, context, and buffer limits above,
+  produced by the four exact `run-spec-003.sh` commands and including both
+  pristine baseline/candidate builds, section accounting, disassembly, and
+  resolved call graph; and
 - target-graph/import tests proving the module dependency rules in this
   Specification.
 
@@ -1113,11 +1195,16 @@ connected-board execution.
   policy dispatch with diagnostics disabled.
 - [ ] Static and dynamic fixtures produce identical portable facts and
   dispositions for the complete shared fault corpus.
+- [ ] The four exact contract-driver commands use `-O` whole-module builds for
+  macOS and ARMv6 and an `-Osize` whole-module Embedded Swift build only for
+  nRF52840; their two pristine builds have identical normalized evidence.
 - [ ] Hardware-free release evidence satisfies the 64-step correctness-path
-  bound, 8-step mapping/selection bounds, default buffer capacities, macOS
-  reference-runner limits, normalized static-profile bounds, and nRF52840
-  cross-built instruction/stack limits. Raspberry Pi `armv6l` latency is
-  explicitly tracked as post-approval target-integration evidence.
+  bound, 8-step mapping/selection bounds, default buffer capacities, signed
+  candidate-minus-baseline writable-RAM and linked-code limits, and absolute
+  conservative call-graph stack limits under the specified section, indirect-
+  call, recursion, runtime-frame, and repeatability rules. Raspberry Pi
+  `armv6l` latency is explicitly tracked as post-approval target-integration
+  evidence.
 - [ ] SPEC-002 uses the exact Foundation fact rows, and SPEC-004 uses the exact
   capability condition catalogue and `GiftUIOutcome<CapabilitySnapshot>`
   carrier defined here; both preserve reciprocal links and define no competing
