@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-08-22
+updated: 2026-08-24
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -626,10 +626,48 @@ specified by SPEC-003.
   `NormalizedPointerEvent` no more than 32 bytes under the supported host and
   Embedded Swift compilers.
 - Release and Embedded Swift evidence MUST report `MemoryLayout<T>.size`,
-  `stride`, and `alignment` for every owned value, the `GiftUI` object size
-  before and after migration, and evidence that construction and arithmetic
-  introduce no allocation. A size regression above any limit is
-  non-conforming even when source behavior is unchanged.
+  `stride`, and `alignment` for every owned value, the incremental linked
+  section contribution defined below, and evidence that construction and
+  arithmetic introduce no allocation. A value-size regression above any limit
+  is non-conforming even when source behavior is unchanged.
+
+### Reproducible evidence configuration
+
+The supported measurement compilers are fixed for this review baseline:
+
+| Fixture | Compiler and target | Optimization |
+| --- | --- | --- |
+| macOS dynamic/static | Apple Swift 6.3.3 (`swiftlang-6.3.3.1.3`), `arm64-apple-macosx26.0` | release `-O`, whole-module optimization |
+| Raspberry Pi 1 | Swift 6.3.2, `armv6-unknown-linux-gnueabihf`, Raspios Bookworm SDK pinned by `scripts/raspberry-pi/toolchain.env` | release `-O`, whole-module optimization |
+| nRF52840 | Swift 6.3.2, `armv7em-none-none-eabi`, Zephyr 4.3.0 and SDK 0.17.4 pinned by `scripts/nrf52840/toolchain.env` | `-Osize`, whole-module optimization, Embedded Swift enabled |
+
+The implementation MUST provide one checked-in driver at
+`scripts/contracts/run-spec-002.sh`. The reproducible commands are exactly:
+
+```text
+scripts/contracts/run-spec-002.sh --profile macos-dynamic
+scripts/contracts/run-spec-002.sh --profile macos-static
+scripts/contracts/run-spec-002.sh --profile raspberry-pi-armv6
+scripts/contracts/run-spec-002.sh --profile nrf52840-embedded
+```
+
+The driver MUST fail when the active compiler identity differs from the table
+or pinned environment, and MUST record the complete compiler version, target,
+SDK identity, optimization flags, command line, and repository revision. The
+ARMv6 and nRF invocations are cross-build/inspection seams and require no
+connected hardware or flash operation.
+
+“Incremental linked section contribution” replaces the ambiguous phrase
+“GiftUI object size.” For each profile, the driver builds two minimal
+executables from the same source template and link inputs. The baseline has an
+empty entry point; the candidate additionally references every SPEC-002-owned
+public or SPI value and checked operation so dead stripping cannot omit them.
+The evidence reports candidate minus baseline bytes for executable code,
+read-only data, initialized writable data, zero-initialized data, and total
+file size using the toolchain's section-size utility. It also preserves both
+link maps. This delta is descriptive evidence; the normative pass/fail limits
+remain the per-value layout maxima and zero-allocation rules above unless a
+later approved revision adds linked-section ceilings.
 
 ## Compatibility
 
@@ -678,9 +716,18 @@ specified by SPEC-003.
 
 ### Dependency and profile tests
 
-- A machine-checked target graph MUST prove that the package is acyclic and
-  that `GiftUI` does not depend on or re-export prohibited higher or concrete
-  modules.
+- `Tests/ContractFixtures/SPEC002/target-dependencies.yaml` MUST be the
+  checked-in direct-dependency allow-list. It MUST contain one entry for every
+  library, executable, system, and test target returned by
+  `swift package dump-package`, including targets with an empty dependency
+  list. The contract driver compares the two target-name sets for exact
+  equality, compares every declared direct target dependency, rejects an
+  omitted or unknown target or edge, and performs an independent cycle check.
+  This exact-set rule makes newly added targets fail closed until reviewed.
+- The same driver MUST inspect exported declarations and compiled module
+  dependencies to prove that `GiftUI` does not depend on or re-export
+  prohibited higher or concrete modules; the manifest allow-list alone is not
+  evidence of non-re-export.
 - Dependency fixtures MUST prove that neither `GiftUIFailureCore` nor
   `GiftUICapabilities` imports `GiftUI`; their producer-side owner adapters are
   the only locations that map Foundation conditions or values into those
@@ -719,14 +766,16 @@ Specification's independent tests.
   widths in this contract and expose no concrete integration type or absent-
   provenance sentinel.
 - [ ] **PF-005:** A checked-in package dependency allow-list proves the graph
-  acyclic, `GiftUI` re-exports no prohibited module, and every protected owner
-  has both a positive-import and forbidden-import fixture.
+  acyclic, covers exactly every current package target and direct target edge,
+  `GiftUI` re-exports no prohibited module, and every protected owner has both
+  a positive-import and forbidden-import fixture.
 - [ ] **PF-006:** The same Foundation declarations compile in macOS dynamic,
   macOS static, Raspberry Pi ARMv6, and nRF52840 Embedded Swift configurations;
   host and Embedded Swift value-semantic fixtures produce equal results.
-- [ ] **PF-007:** Recorded size, stride, alignment, allocation, and object-size
-  evidence satisfies every Performance Requirement and identifies the exact
-  compiler and optimization configuration.
+- [ ] **PF-007:** Recorded size, stride, alignment, allocation, and linked-section
+  evidence satisfies every Performance Requirement, uses the four exact
+  contract-driver commands and compiler identities, and reports the defined
+  baseline/candidate linked-section deltas and link maps.
 - [ ] **PF-008:** Migration evidence enumerates every proof-of-concept `Int`,
   precondition, mutable field, source location, and input case that changed,
   and no compatibility shim weakens the checked or bounded contract.
@@ -747,21 +796,19 @@ inventoried against the completed contract; `Int`, mutable stored properties,
 precondition-only invalid-dimension handling, the three-case `InputEvent`, and
 the existing package graph are migration evidence rather than authority.
 
-Draft completion should now proceed in two narrow passes: review the
-fixed-width declarations with the future EXECUTION contract boundary, then
-validate the dependency allow-list
-and measurement method against both host and project-local Embedded Swift
-compilers. Downstream Specifications should consume these declarations rather
-than copy signatures.
+Implementation should encode the fixed compiler checks, exact-set dependency
+comparison, link-map capture, and layout/allocation probes behind the single
+contract driver named above. Downstream Specifications should consume these
+declarations rather than copy signatures.
 
 ## Open Issues
 
-Reciprocal terminology coordination with SPEC-003 and the SPEC-004 extent
-adapter is complete in this draft. The remaining evidence gate before the
-Specification advances to `review` is to check the exact compiler versions
-and measurement commands used for the host and project-local Embedded Swift
-fixtures and demonstrate that the checked-in dependency allow-list covers
-every target present when SPEC-002 enters review.
+No contract issue remains open. Reciprocal terminology coordination with
+SPEC-003 and the SPEC-004 extent adapter is complete, and this draft now fixes
+the compiler identities, commands, linked-size baseline, and exact dependency
+allow-list coverage needed to produce PF-005/PF-007 evidence. Producing that
+evidence is implementation/conformance work, not an unresolved pre-review
+contract choice.
 
 If resolving any item would change ownership, introduce another geometry
 model, expose target identity, reverse the import graph, or define a new

@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-08-22
+updated: 2026-08-24
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -384,7 +384,6 @@ fixture use within one build; they are not durable serialized identifiers.
 
 | `RasterPresentationUnavailable` case | Capability condition name | Raw value |
 | --- | --- | ---: |
-| `contributionCapacityExceeded` | `rasterContributionCapacityExceeded` | `11` |
 | `malformedRequirement` | `rasterMalformedRequirement` | `12` |
 | `duplicateContributor` | `rasterDuplicateContributor` | `13` |
 | `missingContributor` | `rasterMissingContributor` | `14` |
@@ -398,6 +397,11 @@ fixture use within one build; they are not durable serialized identifiers.
 | `incompatibleSubmissionLifetime` | `rasterIncompatibleSubmissionLifetime` | `22` |
 | `incompatibleSubmissionHandoff` | `rasterIncompatibleSubmissionHandoff` | `23` |
 | `policyHasNoConformingRealization` | `rasterPolicyHasNoConformingRealization` | `24` |
+| `byteCountOverflow` | `rasterByteCountOverflow` | `25` |
+
+Raw value `11` is intentionally unassigned. The closed four-role typed buffer
+cannot produce a distinct contribution-capacity condition: every insertion
+after all four roles are occupied is necessarily a duplicate role.
 
 For a required family, the host adapter MUST enclose the mapped fact as the
 `.failure` case of `GiftUIOutcome<CapabilitySnapshot>`. The fact MUST use
@@ -542,7 +546,7 @@ public struct GiftUIResidualPolicyInput<Context> {
     public let allowed: GiftUIAllowedDispositions
     public let attemptOrdinal: UInt8
     public let attemptLimit: UInt8
-    public init(
+    public init?(
         outcome: GiftUIOutcome<Void>,
         context: Context,
         allowed: GiftUIAllowedDispositions,
@@ -559,11 +563,23 @@ public protocol GiftUIResidualFailurePolicy {
 }
 ```
 
-`allowed` MUST be non-empty and contain only choices left after mechanical
-containment and mandatory coordinator effects. `attemptLimit` MUST be in
-`1...255`; `attemptOrdinal` is zero for a first choice and MUST be strictly
-less than `attemptLimit` whenever paced retry is allowed. The returned value
-MUST belong to `allowed`. Returning an unlisted value is a runtime-scope
+The initializer is the only public construction seam and returns `nil`, with
+no partial value, unless all of the following are true:
+
+- `outcome` is `.operational` or `.failure`, never `.success`;
+- `allowed` is non-empty and contains only the five declared bits;
+- `attemptLimit` is in `1...255` and `attemptOrdinal < attemptLimit`;
+- `continueOperation` is absent for a safety-not-proven failure;
+- a runtime-scoped safety-not-proven failure allows no value other than
+  `quiesceAffectedScope` or `invokeFatalHook`; and
+- `requestPacedRetry`, when present, applies only to `backpressured` or
+  `retryableRefusal` and satisfies `attemptOrdinal + 1 < attemptLimit`.
+
+Thus empty or unknown disposition bits, success outcomes, zero attempt limits,
+out-of-range ordinals, exhausted retry ordinals, and semantically forbidden
+choices have one deterministic disposition: construction failure. They never
+reach a policy. The returned policy value MUST belong to `allowed`. Returning
+an unlisted value is a runtime-scope
 `invariantViolation` with `safetyNotProven`; the coordinator MUST prevent
 normal continuation and MAY trap if it cannot safely propagate that fact.
 The five declared option bits are `1 << disposition.rawValue`; bits 5 through
@@ -571,12 +587,12 @@ The five declared option bits are `1 << disposition.rawValue`; bits 5 through
 non-success outcome. `Context` in each concrete policy MUST have a finite,
 fixture-enumerable domain and MUST use value storage on a static profile.
 
-`continueOperation` MUST NOT be allowed for a failure whose containment is
-`safetyNotProven`. Runtime-scoped safety-not-proven input may allow only
-`quiesceAffectedScope` and `invokeFatalHook`. `requestPacedRetry` may be
-allowed only for `backpressured` or `retryableRefusal` and never once
-`attemptOrdinal + 1 == attemptLimit`. A concrete target table and pacing
-interval are HOST-CONFIGURATION responsibilities.
+A concrete target table and pacing interval are HOST-CONFIGURATION
+responsibilities. That owner MUST treat unexpected `nil` from construction as
+its own invariant violation; it MUST NOT repair or broaden invalid input before
+calling policy. It also MUST derive `allowed` only after mechanical containment
+and mandatory coordinator effects; the generic initializer cannot rediscover
+owner-specific actions from the bit set alone.
 
 ### Operational health
 
@@ -608,11 +624,14 @@ public struct GiftUIOperationalHealth: Sendable, Equatable {
 }
 ```
 
-Each call increments the matching outcome counter. It increments
-`transitionCount` only when `state` changes, and commits the new state before
-returning. Counters saturate at `UInt32.max`; the first saturation sets
+Each call increments the matching outcome counter. When the current state is
+not `quiesced`, it increments `transitionCount` only when `state` changes and
+commits `resultingState` before returning. When the current state is
+`quiesced`, the requested resulting state is ignored: the matching outcome
+counter still increments, `state` remains `quiesced`, and `transitionCount`
+does not increment. Counters saturate at `UInt32.max`; the first saturation sets
 `countersSaturated` permanently. Counter saturation never wraps and never
-prevents the state update. `MemoryLayout<GiftUIOperationalHealth>.size` MUST
+prevents a permitted state update. `MemoryLayout<GiftUIOperationalHealth>.size` MUST
 be no greater than 20 bytes. An owner MAY maintain additional typed counters
 under its own Specification, but diagnostics cannot be their authority.
 
@@ -904,11 +923,17 @@ its configured fatal hook, but continuation is not allowed.
 | Raspberry Pi/Linux dynamic | 512 B | 384 B | 24 KiB | p99 <= 150 us |
 | nRF52840 static | 320 B | 256 B | 16 KiB | <= 4,096 target instructions |
 
-The macOS figures are measured over at least 10,000 iterations on the project
-CI reference runner after 1,000 warm-up iterations. Raspberry Pi latency is
-measured over the same corpus on the required `armv6l` target when connected-
-target conformance is run; the pure host fixture and the 64-step bound remain
-the pre-hardware gate. nRF52840 instruction and stack evidence comes from the
+The reproducible macOS reference runner is an arm64 `Mac15,7` with an Apple M3
+Pro (12 cores), 36 GB RAM, macOS 26.3 build 25D125, and Apple Swift 6.3.3
+(`swiftlang-6.3.3.1.3`), using `swift test -c release --filter
+GiftUIFailureContractTests`. Latency uses at least 10,000 iterations after
+1,000 warm-up iterations with no other repository job running. Evidence MUST
+record the model identifier, OS build, complete `swift --version`, command,
+commit, and raw samples; results from another runner are informative only
+until this reference is deliberately revised with the Specification.
+
+Raspberry Pi latency is measured over the same corpus on a connected machine
+that reports `armv6l`. nRF52840 instruction and stack evidence comes from the
 optimized board-probe ELF and disassembly and requires no flash operation.
 Linked-code evidence is the incremental text contribution relative to the
 same empty fixture. Debug, symbolization, and dynamic-only formatting code is
@@ -936,6 +961,12 @@ coordinators, policy fixtures, health stores, and diagnostic sinks. It MUST
 require no renderer, runtime implementation, concrete backend, platform
 driver, simulator, or connected hardware.
 
+This hardware-free harness is the Specification-approval seam. It runs on the
+macOS reference runner above and includes normalized fixtures for all four
+profiles, host execution of shared semantics, static allocation checks, and
+cross-built nRF52840 ELF inspection. It does not claim Raspberry Pi target
+latency or connected-target behavior.
+
 Required tests are:
 
 - exhaustive outcome-category, operational-kind, origin, affected-scope, and
@@ -950,11 +981,17 @@ Required tests are:
   unchanged core fact when a third append is refused;
 - table-driven policy-totality tests that enumerate every declared residual
   policy input and verify exactly one allowed bounded result;
+- invalid-policy-input construction tests covering success outcomes, empty
+  and unknown disposition bits, zero limits, ordinals at and above the limit,
+  exhausted retry ordinals, forbidden retry kinds, and forbidden
+  safety-not-proven choices, each returning `nil` without policy invocation;
 - fixtures proving detecting-layer, coordinator, and composition stages cannot
   perform one another's responsibilities;
 - an operational-health fixture proving current state and counters remain
   accurate when every diagnostic record is dropped, counters saturate without
-  wrapping, and a state transition still commits after saturation;
+  wrapping, a permitted state transition still commits after saturation, and
+  both record methods leave `quiesced` latched when passed every other
+  `resultingState`;
 - a diagnostic matrix covering disabled, source-filtered, sink-filtered,
   saturated, dropping, counting, and failing sinks and comparing all
   correctness-relevant outputs against diagnostics omitted;
@@ -976,7 +1013,20 @@ Downstream execution, backend, platform, and hardware Specifications MUST add
 their own transaction-position, handoff, device-health, and connected-target
 tests. Those are not prerequisites for this contract's pure test seam.
 
+### Post-approval target-integration evidence
+
+The Raspberry Pi `armv6l` latency row and any connected-target behavior are
+implementation/conformance evidence collected after Specification approval,
+when the owning target integration exists. They remain required before the
+relevant integration is conforming and before SPEC-003 may become
+`implemented`, but they are not inputs to approval of this hardware-free
+contract. The nRF52840 row is satisfied by reproducible cross-built ELF and
+disassembly evidence unless a later owning Specification separately requires
+connected-board execution.
+
 ## Acceptance Criteria
+
+### Specification-approval seam
 
 - [ ] A compile fixture imports `GiftUIFailureCore` without importing GiftUI,
   execution, runtime, backend, platform, capability, or diagnostic modules.
@@ -997,7 +1047,8 @@ tests. Those are not prerequisites for this contract's pure test seam.
   overwrites no entry, and leaves every correlated core-fact field unchanged.
 - [ ] Every value in every declared residual-policy input domain is exercised
   exactly once by a table-driven test and produces one allowed finite result;
-  no test exposes a mandatory local or coordinator action as a policy choice.
+  every forbidden input returns `nil` without invoking policy, and no test
+  exposes a mandatory local or coordinator action as a policy choice.
 - [ ] The diagnostic configuration matrix produces value-equal normalized
   outcomes, health snapshots, coordinator inputs, residual policy inputs, and
   policy results for diagnostics omitted, enabled, filtered, saturated,
@@ -1005,6 +1056,9 @@ tests. Those are not prerequisites for this contract's pure test seam.
 - [ ] Dropping every projected health-transition record leaves the explicit
   health query and counters equal to the diagnostics-enabled baseline; forced
   `UInt32.max` saturation wraps no counter and blocks no state transition.
+- [ ] Once health reaches `quiesced`, both record methods preserve `quiesced`
+  for every requested resulting state, increment only the matching
+  non-saturated outcome counter, and add no transition.
 - [ ] Diagnostic callback and interrupt fixtures record zero semantic
   mutations and zero client-action invocations.
 - [ ] Every declared store, context, counter, and policy capacity has one
@@ -1015,13 +1069,26 @@ tests. Those are not prerequisites for this contract's pure test seam.
   policy dispatch with diagnostics disabled.
 - [ ] Static and dynamic fixtures produce identical portable facts and
   dispositions for the complete shared fault corpus.
-- [ ] Release evidence satisfies the 64-step correctness-path bound, 8-step
-  mapping/selection bounds, default buffer capacities, and every per-profile
-  RAM, stack, code, and latency/instruction maximum.
+- [ ] Hardware-free release evidence satisfies the 64-step correctness-path
+  bound, 8-step mapping/selection bounds, default buffer capacities, macOS
+  reference-runner limits, normalized static-profile bounds, and nRF52840
+  cross-built instruction/stack limits. Raspberry Pi `armv6l` latency is
+  explicitly tracked as post-approval target-integration evidence.
 - [ ] SPEC-002 uses the exact Foundation fact rows, and SPEC-004 uses the exact
   capability condition catalogue and `GiftUIOutcome<CapabilitySnapshot>`
   carrier defined here; both preserve reciprocal links and define no competing
   failure, health, disposition, or diagnostic vocabulary.
+
+### Implemented-transition target evidence
+
+The following criterion is deliberately not a Specification-approval gate. It
+becomes mandatory when the Raspberry Pi integration exists and before
+SPEC-003 may transition to `implemented`:
+
+- [ ] The connected Raspberry Pi reference target reports `armv6l` and the
+  release contract corpus satisfies the Raspberry Pi RAM, stack, linked-code,
+  and p99 latency row under the recorded compiler, OS, command, revision, and
+  raw-sample conditions.
 
 ## Implementation Notes
 

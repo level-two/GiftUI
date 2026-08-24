@@ -6,14 +6,16 @@ status: draft
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-08-22
+updated: 2026-08-24
 proposal:
   - PROPOSAL-004
 related_rfcs:
   - RFC-002
+  - RFC-004
   - RFC-005
   - RFC-006
 related_adrs:
+  - ADR-010
   - ADR-017
   - ADR-018
   - ADR-019
@@ -114,8 +116,9 @@ backend, display, runtime, or board integrations that supply those seams.
 
 ## Dependencies
 
-- PROPOSAL-004 is accepted, RFC-006 is approved, and ADR-017 through ADR-020
-  are accepted.
+- PROPOSAL-004 is accepted; RFC-004 and RFC-006 are approved; and ADR-010 and
+  ADR-017 through ADR-020 are accepted. RFC-004 and ADR-010 directly govern
+  the one-shot operation stream consumed by this capability family.
 - SPEC-002 owns portable values and import rules. Because ADR-019 forbids
   `GiftUICapabilities` from importing `GiftUI`, component-local adapters map
   SPEC-002-owned concrete values into the closed capability-specific
@@ -139,6 +142,10 @@ backend, display, runtime, or board integrations that supply those seams.
 
 ## Related ADRs
 
+- ADR-010 requires synchronous one-shot frame handoff and forbids retaining or
+  replaying the borrowed GiftUI operation stream. This Specification therefore
+  treats that lifetime as a compatibility input and permits persistence only
+  for backend-owned derived payload after synchronous consumption.
 - ADR-017 requires separate structural-selection, immutable semantic
   capability, explicit policy/configuration, and mutable operational-state
   planes. This Specification therefore freezes the effective snapshot before
@@ -393,8 +400,8 @@ public struct RasterRealizationContribution: Equatable, Sendable {
     public let maximumRegionWidth: UInt16
     public let maximumRegionHeight: UInt16
     public let rowByteAlignment: UInt16
-    public let rasterBytes: CapabilityByteCount
-    public let payloadBytes: CapabilityByteCount
+    public let maximumRasterBytes: CapabilityByteCount
+    public let maximumPayloadBytes: CapabilityByteCount
 }
 
 public struct RasterBackendContribution: Equatable, Sendable {
@@ -432,8 +439,9 @@ match its stored properties in declaration order. Initializers are failable,
 return `nil` for the invalid cases below, and MUST NOT trap on caller data.
 The owning adapter maps an invalid requirement to
 `.malformedRequirement(field:)` and an invalid contribution to
-`.malformedContribution(role:field:)` before insertion; the resolver also
-validates the same rules defensively:
+`.malformedContribution(role:field:)` before insertion. Successful
+construction proves these invariants; the typed resolver cannot receive a
+record that failed them and does not recreate malformed records for testing:
 
 - operation and encoding sets are non-empty and contain only declared bits;
 - the requirement operation set is exactly `signalAnalyzerMVP` for MVP hosts;
@@ -455,6 +463,58 @@ The optional `alternate` is the only MVP alternate-realization slot. Thus the
 family has a compile-time maximum of two candidates. Policy may prefer one
 candidate and one encoding, but the resolver evaluates both candidates and
 both encoding bits for conformance before applying that preference.
+
+#### Byte-bound and region arithmetic
+
+Every field whose name begins with `maximum` is an available-capacity ceiling;
+zero is a valid ceiling and provides no capacity. The two renamed fields on
+`RasterRealizationContribution` are backend-owned available ceilings.
+`regionExtent`, `rowBytes`, and the four `required...`/`inFlightCount` fields
+on `EffectiveRasterPresentation` are the exact geometry and usage selected by
+the resolver, not spare capacity. No byte field includes the
+inline capability records, resolver workspace, operation-stream storage, or
+diagnostic storage.
+
+For each candidate encoding the resolver performs the following checked
+`UInt32` arithmetic. RGB565 has `bytesPerPixel = 2`; RGBA8888 has
+`bytesPerPixel = 4`.
+
+1. The effective row alignment is the least common multiple of the candidate
+   and surface row alignments. The LCM and every following operation are
+   checked.
+2. `unalignedRowBytes = extent.width * bytesPerPixel` and `rowBytes` is the
+   least multiple of the effective alignment greater than or equal to
+   `unalignedRowBytes`.
+3. The region width is always the full logical extent width. A candidate is
+   incompatible when either contributor's `maximumRegionWidth` is smaller.
+   For `fullSurface`, region height is the full logical extent height and both
+   maximum-region heights must admit it. For `tiled`, region height is the
+   minimum of logical height and the two nonzero maximum-region heights. This
+   chooses the tallest admissible complete-row tile deterministically; the
+   resolver does not search smaller tiles to evade an explicit byte ceiling.
+   The result is stored as `regionExtent`, and the aligned row size from step
+   2 is stored as `rowBytes`.
+4. `requiredRasterBytes = rowBytes * regionHeight` and
+   `requiredPayloadBytes = rowBytes * regionHeight`. They are separate usage
+   domains because raster working storage and the derived submitted payload
+   have different owners even when their MVP byte counts are equal.
+5. MVP resolution selects exactly one derived payload in flight, so
+   `inFlightCount = 1` and `requiredInFlightBytes = requiredPayloadBytes`.
+   `SurfaceDisplayContribution.maximumInFlightCount` must admit that count.
+
+The available ceiling for raster bytes is the minimum of the requirement,
+candidate, and host-policy maximum-raster fields. Payload uses the analogous
+three maximum-payload fields. In-flight bytes use the minimum of requirement,
+surface, and host-policy maximum-in-flight fields. Required usage greater than
+its available ceiling returns `insufficientCapacity` for that domain with the
+exact computed usage and minimum ceiling. A checked LCM, alignment, addition,
+or multiplication that cannot be represented as `UInt32` returns
+`byteCountOverflow(domain:)`; it is never treated as zero, saturation, or
+wrapping arithmetic.
+
+Consequently, the nRF52840 fixture's width `480`, height limit `4`, RGB565
+encoding, and alignment `2` yield a 960-byte row and exactly 3,840 required
+raster, payload, and in-flight bytes. A zero ceiling fails that positive usage.
 
 ### Role-addressed contribution buffer
 
@@ -487,16 +547,22 @@ public enum RasterPresentationContributionInsertion: Equatable, Sendable {
 }
 ```
 
-`RasterPresentationContributions` owns four inline role-addressed slots, one
-latched insertion rejection, and no collection allocation. Insertion order is
-not observable. A second value for an occupied role returns and latches
-`.duplicateContributor(role:)`, preserves the first value, and leaves the
-buffer otherwise unchanged. An insertion attempted after four successful
-insertions returns and latches `.contributionCapacityExceeded`; it never
-overwrites a slot. The first latched rejection is returned by resolution even
-if the caller ignored the insertion result. Resolution reports the
-lowest-raw-value missing role when fewer than four roles are occupied and no
-earlier insertion rejection was latched.
+`RasterPresentationContributions` owns four inline role-addressed slots, a
+four-bit duplicate-role mask, and no collection allocation. Insertion order is
+not observable. A second value for an occupied role returns
+`.duplicateContributor(role:)`, sets that role's bit, preserves the first
+value, and leaves every other slot unchanged. Because the contribution enum is
+closed over exactly four roles, a fifth insertion is necessarily a duplicate;
+there is no separately constructible contribution-capacity failure. Resolution
+reports the lowest-raw-value duplicated role whenever any duplicate bit is set,
+even if the caller ignored insertion results. It otherwise reports the
+lowest-raw-value missing role when fewer than four roles are occupied. The
+preserved value in a duplicated slot is never examined because duplicate
+validation precedes semantic resolution, so differing duplicate values cannot
+make the final result order-dependent. For the declared `Equatable`
+conformance, two buffers with duplicates compare their duplicate masks and
+nonduplicated slots; values in duplicated slots are ignored. This makes buffer
+comparison consistent with the resolver's invalid-input semantics.
 
 ### Resolution and immutable snapshot
 
@@ -526,15 +592,17 @@ public enum SubmissionHandoff: UInt8, Equatable, Sendable {
 public struct EffectiveRasterPresentation: Equatable, Sendable {
     public let operations: RasterOperationSet
     public let extent: CapabilityExtent
+    public let regionExtent: CapabilityExtent
+    public let rowBytes: CapabilityByteCount
     public let operationStream: OperationStreamLifetime
     public let encoding: CanonicalPixelEncoding
     public let submissionLifetime: SubmissionLifetime
     public let handoff: SubmissionHandoff
     public let realization: RasterRealizationKind
-    public let rasterBytes: CapabilityByteCount
-    public let payloadBytes: CapabilityByteCount
-    public let maximumInFlightCount: UInt8
-    public let maximumInFlightBytes: CapabilityByteCount
+    public let requiredRasterBytes: CapabilityByteCount
+    public let requiredPayloadBytes: CapabilityByteCount
+    public let inFlightCount: UInt8
+    public let requiredInFlightBytes: CapabilityByteCount
 }
 
 public enum RasterPresentationResolution: Equatable, Sendable {
@@ -591,7 +659,6 @@ public enum RasterPresentationCapacity: UInt8, Equatable, Sendable {
 }
 
 public enum RasterPresentationUnavailable: Equatable, Sendable {
-    case contributionCapacityExceeded
     case malformedRequirement(field: RasterPresentationMalformedField)
     case duplicateContributor(role: RasterPresentationContributorRole)
     case missingContributor(role: RasterPresentationContributorRole)
@@ -611,6 +678,7 @@ public enum RasterPresentationUnavailable: Equatable, Sendable {
     case noCommonCanonicalPixelEncoding
     case incompatibleSubmissionLifetime
     case incompatibleSubmissionHandoff
+    case byteCountOverflow(domain: RasterPresentationCapacity)
     case policyHasNoConformingRealization
 }
 ```
@@ -630,7 +698,6 @@ exact one-to-one condition mapping:
 
 | Unavailable case | SPEC-003 capability condition (raw value) |
 | --- | --- |
-| `contributionCapacityExceeded` | `rasterContributionCapacityExceeded` (`11`) |
 | `malformedRequirement` | `rasterMalformedRequirement` (`12`) |
 | `duplicateContributor` | `rasterDuplicateContributor` (`13`) |
 | `missingContributor` | `rasterMissingContributor` (`14`) |
@@ -644,6 +711,7 @@ exact one-to-one condition mapping:
 | `incompatibleSubmissionLifetime` | `rasterIncompatibleSubmissionLifetime` (`22`) |
 | `incompatibleSubmissionHandoff` | `rasterIncompatibleSubmissionHandoff` (`23`) |
 | `policyHasNoConformingRealization` | `rasterPolicyHasNoConformingRealization` (`24`) |
+| `byteCountOverflow` | `rasterByteCountOverflow` (`25`) |
 
 Associated field, role, and capacity payloads remain available in the
 capability-domain result and MAY be projected through SPEC-003's bounded
@@ -660,10 +728,8 @@ it MUST return an equal effective result or equal unavailable reason.
 
 Resolution MUST:
 
-1. return any latched contribution-buffer rejection;
-2. validate that every required contributor role is present exactly once and
-   every input value is well formed, with extent and capacity mappings
-   preserving SPEC-002 checked-value meaning;
+1. return the lowest-role duplicate recorded by the contribution buffer;
+2. validate that every required contributor role is present exactly once;
 3. validate producer operation coverage and the ADR-010 one-shot-stream
    contract once for the family;
 4. normalize the backend's one or two candidates into the caller-owned
@@ -819,40 +885,43 @@ returns `GiftUIOutcome<CapabilitySnapshot>.failure`; SPEC-003 owns that
 outcome, propagation, containment, policy-disposition, and diagnostic
 behavior.
 
-Resolution MUST fail closed for missing, duplicate, malformed, out-of-range,
-incompatible, or capacity-exhausted input. It MUST NOT trap, allocate an
+The host validation pipeline MUST fail closed for missing, duplicate,
+malformed, out-of-range, incompatible, overflowing, or capacity-exhausted
+input. It MUST NOT trap, allocate an
 unbounded recovery structure, select a weakened realization, expose a partial
 snapshot, or depend on diagnostic delivery.
 
-When several incompatibilities exist, the resolver MUST choose one stable
-primary reason by the following precedence, independent of contribution and
-candidate declaration order:
+Validation is staged at constructible API boundaries. Raw host adapters first
+map an invalid requirement (lowest field), then a SPEC-002 extent conversion
+overflow, then malformed contributions (lowest role, then field). These stages
+short-circuit before typed insertion and resolution; their fixtures invoke the
+adapter boundary and MUST NOT claim that `resolve` received an unconstructible
+value. Among values the typed resolver can actually receive, simultaneous
+conditions use this precedence, independent of insertion and candidate order:
 
-1. malformed requirement, by lowest field raw value;
-2. first latched contribution insertion rejection;
-3. lowest-raw-value missing contributor role;
-4. lowest-role, then lowest-field malformed contribution;
-5. insufficient resolver workspace;
-6. producer operation-set mismatch;
-7. producer operation-stream mismatch;
-8. logical-extent conversion overflow;
-9. unsupported logical extent or region/alignment mismatch;
-10. candidate operation-set mismatch;
-11. candidate operation-stream mismatch;
-12. no common canonical pixel encoding;
-13. incompatible submission lifetime;
-14. incompatible submission handoff;
-15. insufficient raster capacity;
-16. insufficient payload capacity;
-17. insufficient in-flight capacity; and
-18. policy with no conforming realization.
+1. lowest-raw-value duplicated contributor role;
+2. lowest-raw-value missing contributor role;
+3. insufficient resolver workspace;
+4. producer operation-set mismatch;
+5. producer operation-stream mismatch;
+6. unsupported logical extent or region/alignment mismatch;
+7. candidate operation-set mismatch;
+8. candidate operation-stream mismatch;
+9. no common canonical pixel encoding;
+10. incompatible submission lifetime;
+11. incompatible submission handoff;
+12. byte-count overflow, by capacity-domain raw value;
+13. insufficient raster capacity;
+14. insufficient payload capacity;
+15. insufficient in-flight capacity; and
+16. policy with no conforming realization.
 
 For candidate-specific checks, the resolver evaluates realization kind raw
 value order (`fullSurface`, then `tiled`) only to select the primary reason;
 candidate declaration order remains irrelevant. Within one capacity domain,
-the payload reports the smallest required bound that fails and the effective
-available bound, which is the minimum of requirement, host-policy, and
-surface-owned limits applicable to that domain. Additional observations may
+the payload reports the exact required usage and the effective available
+ceiling defined by `Byte-bound and region arithmetic`. Additional observations
+may
 be projected only through SPEC-003-owned bounded secondary/diagnostic
 mechanisms and MUST NOT replace or change the primary reason.
 
@@ -930,16 +999,19 @@ The contract suite MUST include:
 - every permutation of the four contributor-role inputs for each positive and
   representative negative fixture, proving equal results independent of
   order;
-- missing, duplicate, malformed, out-of-range, optional-absence, required-
-  absence, and resolver-workspace exhaustion cases;
+- missing and duplicate typed-input cases, plus adapter-level malformed,
+  out-of-range, and logical-extent-overflow cases, optional absence, required
+  absence, and resolver-workspace exhaustion;
 - independent negative/control pairs for operation-set mismatch, one-shot
   incompatibility, extent overflow, no common pixel encoding, incompatible
   submission lifetime, insufficient raster/payload storage, and in-flight
   bound violation;
 - policy permutations proving policy chooses only among conforming results and
   cannot manufacture support;
-- a table-driven precedence corpus that creates every pair of simultaneous
-  incompatibilities and verifies the documented primary reason;
+- a table-driven resolver precedence corpus that creates every constructible
+  pair of simultaneous typed-input incompatibilities and verifies the
+  documented primary reason, plus separate raw-adapter tests for every earlier
+  short-circuit stage;
 - the complete submission-lifetime/handoff matrix, including rejection of a
   queued synchronous borrow and proof that a synchronous copy owns its queued
   bytes before the producer borrow ends;
@@ -961,8 +1033,9 @@ evidence.
 ## Acceptance Criteria
 
 - [ ] **CR-001:** The document and manifest identify SPEC-004 as a `draft` for
-  `capability-system`, link PROPOSAL-004, RFC-006, ADR-017 through ADR-020, and
-  reciprocally relate SPEC-002 and SPEC-003.
+  `capability-system`; the document directly links PROPOSAL-004, RFC-004,
+  RFC-006, ADR-010, and ADR-017 through ADR-020 and reciprocally relates
+  SPEC-002 and SPEC-003.
 - [ ] **CR-002:** A dependency test proves `GiftUICapabilities` imports none of the
   prohibited higher or concrete modules, `GiftUI` does not re-export it, and a
   portable Signal Analyzer presentation contains zero target/backend/device
@@ -976,12 +1049,14 @@ evidence.
 - [ ] **CR-005:** All 24 permutations of the four contributor roles produce byte-for-byte
   or value-equal effective results for each positive fixture and the same
   stable primary unavailable reason for each representative negative fixture.
-- [ ] **CR-006:** Missing, duplicate, malformed, optional-absence, required-absence, and
-  workspace-exhaustion fixtures complete without traps, partial snapshots, or
-  order-dependent results.
-- [ ] **CR-007:** Every pair in the simultaneous-incompatibility corpus returns
-  the primary reason defined by the 18-step precedence, independent of role
-  and candidate declaration order.
+- [ ] **CR-006:** Missing, duplicate, adapter-malformed, optional-absence,
+  required-absence, and workspace-exhaustion fixtures complete without traps,
+  partial snapshots, or order-dependent results; every fifth typed insertion
+  reports a duplicate role rather than a distinct capacity outcome.
+- [ ] **CR-007:** Every constructible pair in the typed resolver's
+  simultaneous-incompatibility corpus returns the primary reason defined by
+  the 16-step precedence, independent of role and candidate declaration order;
+  raw-adapter fixtures separately cover every pre-resolution validation stage.
 - [ ] **CR-008:** No-common-encoding and incompatible-submission-lifetime negative/control
   pairs resolve independently to distinct stable unavailable reasons.
 - [ ] **CR-009:** The complete lifetime/handoff matrix passes, and no queued or
@@ -990,6 +1065,10 @@ evidence.
   the Raspberry Pi 240 x 240 fixture resolves to a bounded RGB565 tiled path;
   the nRF52840 480 x 320 fixture resolves with a tile no larger than 3,840
   bytes; and nRF52840 full-surface `rgba8888` resolves unavailable.
+- [ ] **CR-010A:** Formula fixtures cover both encodings, full-surface and
+  tiled geometry, unequal alignments, all three capacity minima, zero
+  ceilings, every checked-overflow site, and the exact nRF52840 result of one
+  3,840-byte in-flight payload.
 - [ ] **CR-011:** Allocation instrumentation reports zero heap allocations for the static
   path from contribution construction through resolution, validation-result
   construction, snapshot storage, and repeated steady-state access.
@@ -1068,8 +1147,10 @@ criteria.
 
 - [PROPOSAL-004: GiftUI Capability System](../proposals/proposal-004-capability-system.md)
 - [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
+- [RFC-004: Run Cycle and Frame Transaction Architecture](../rfcs/rfc-004-run-cycle-and-frame-transaction.md)
 - [RFC-005: Failure and Diagnostics Propagation Architecture](../rfcs/rfc-005-failure-diagnostics-propagation.md)
 - [RFC-006: GiftUI Capability System Architecture](../rfcs/rfc-006-capability-system-architecture.md)
+- [ADR-010: Synchronous One-Shot Frame Handoff](../adrs/adr-010-synchronous-one-shot-frame-handoff.md)
 - [ADR-017: Capability and Operational-State Decision Planes](../adrs/adr-017-capability-and-operational-state-planes.md)
 - [ADR-018: Fixture-Driven Typed Capability Model](../adrs/adr-018-fixture-driven-typed-capabilities.md)
 - [ADR-019: Bounded Target-Host Capability Resolution](../adrs/adr-019-bounded-host-capability-resolution.md)
