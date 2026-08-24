@@ -578,20 +578,31 @@ no partial value, unless all of the following are true:
 Thus empty or unknown disposition bits, success outcomes, zero attempt limits,
 out-of-range ordinals, exhausted retry ordinals, and semantically forbidden
 choices have one deterministic disposition: construction failure. They never
-reach a policy. The returned policy value MUST belong to `allowed`. Returning
-an unlisted value is a runtime-scope
-`invariantViolation` with `safetyNotProven`; the coordinator MUST prevent
-normal continuation and MAY trap if it cannot safely propagate that fact.
+reach a policy. The returned policy value MUST belong to `allowed`.
+
+An unexpected `nil` observed by the HOST-CONFIGURATION owner and a policy
+return not contained in `allowed` have the same exact invariant mapping. The
+owner MUST construct a `GiftUIFailureFact` whose condition is
+`.invariantViolation`, origin is `.hostComposition`, affected scope is
+`.runtime`, and containment is `.safetyNotProven`. It MUST NOT invoke or
+reinvoke residual policy for that fact. The mandatory disposition is
+`quiesceAffectedScope`: the owning coordinator MUST prevent another normal run
+cycle, transition runtime operational health to `quiesced`, and propagate the
+fact through its ordinary failure seam. An already configured fatal hook MAY
+run only after quiescence and MUST NOT replace that mandatory disposition.
+This mapping is part of SPEC-003's approval seam and is not left to a later
+HOST-CONFIGURATION contract.
+
 The five declared option bits are `1 << disposition.rawValue`; bits 5 through
 7 are reserved and make an input invalid. A policy input MUST contain a
 non-success outcome. `Context` in each concrete policy MUST have a finite,
 fixture-enumerable domain and MUST use value storage on a static profile.
 
 A concrete target table and pacing interval are HOST-CONFIGURATION
-responsibilities. That owner MUST treat unexpected `nil` from construction as
-its own invariant violation; it MUST NOT repair or broaden invalid input before
-calling policy. It also MUST derive `allowed` only after mechanical containment
-and mandatory coordinator effects; the generic initializer cannot rediscover
+responsibilities. That owner MUST apply the exact invariant mapping above to
+unexpected `nil`; it MUST NOT repair or broaden invalid input before calling
+policy. It also MUST derive `allowed` only after mechanical containment and
+mandatory coordinator effects; the generic initializer cannot rediscover
 owner-specific actions from the bit set alone.
 
 ### Operational health
@@ -935,9 +946,34 @@ until this reference is deliberately revised with the Specification.
 Raspberry Pi latency is measured over the same corpus on a connected machine
 that reports `armv6l`. nRF52840 instruction and stack evidence comes from the
 optimized board-probe ELF and disassembly and requires no flash operation.
-Linked-code evidence is the incremental text contribution relative to the
-same empty fixture. Debug, symbolization, and dynamic-only formatting code is
-reported separately and is not part of these maxima.
+
+Every linked-code measurement MUST build a baseline and candidate from one
+repository revision. The baseline imports and links the same Swift runtime and
+test support as the candidate, owns the same observable fixed-width sink, and
+calls an `@inline(never)` no-op having the same signature as the candidate
+entry point. The candidate differs only by importing the production
+`GiftUIFailureCore` and `GiftUIFailureExecution` objects and replacing that
+no-op with observable execution of the complete normalized outcome, mapping,
+health, annotation, and residual-policy corpus. Neither fixture includes
+diagnostic formatting, symbolization, or a dynamic-only sink. Evidence MUST
+record the complete baseline and candidate source lists and SHA-256 hashes;
+there is no unspecified "empty fixture."
+
+The macOS rows use the Apple Swift 6.3.3 compiler identified by the reference
+runner above. The Raspberry Pi row uses the repository-pinned Swift 6.3.2
+compiler and `armv6-unknown-linux-gnueabihf` SDK from
+`scripts/raspberry-pi/toolchain.env`. The nRF52840 row uses the repository-
+pinned Swift 6.3.2 compiler, Zephyr 4.3.0, Zephyr SDK 0.17.4, board
+`nrf52840dk/nrf52840`, and hard-float `armv7em-none-none-eabi` configuration
+from `scripts/nrf52840/toolchain.env`. Baseline and candidate MUST use the
+same compiler executable, target triple, SDK, `-Osize` and whole-module mode,
+Embedded Swift and Cortex/ABI flags where applicable, runtime libraries,
+linker script, section settings, and dead-section elimination. Evidence MUST
+record complete compiler/link commands, tool versions, ELF or executable
+hashes, and maps. Linked code is `candidate - baseline` over executable text
+and read-only-data sections from the final image; writable and zero-fill
+sections are reported only in the RAM column. Debug and non-loadable sections
+are excluded. A negative delta is reported as measured and MUST NOT be clamped.
 
 ## Compatibility
 
@@ -985,6 +1021,11 @@ Required tests are:
   and unknown disposition bits, zero limits, ordinals at and above the limit,
   exhausted retry ordinals, forbidden retry kinds, and forbidden
   safety-not-proven choices, each returning `nil` without policy invocation;
+- owner-adapter tests proving both unexpected policy-input `nil` and an
+  unlisted policy return produce exactly `.invariantViolation`,
+  `.hostComposition`, `.runtime`, and `.safetyNotProven`, invoke policy no
+  further, quiesce runtime health before any fatal hook, and admit no later
+  normal run cycle;
 - fixtures proving detecting-layer, coordinator, and composition stages cannot
   perform one another's responsibilities;
 - an operational-health fixture proving current state and counters remain
@@ -1049,6 +1090,9 @@ connected-board execution.
   exactly once by a table-driven test and produces one allowed finite result;
   every forbidden input returns `nil` without invoking policy, and no test
   exposes a mandatory local or coordinator action as a policy choice.
+- [ ] Unexpected policy-input `nil` and an unlisted policy return each map to
+  the exact host-composition invariant fact, obligatorily quiesce runtime
+  health, invoke no further policy, and prevent every later normal run cycle.
 - [ ] The diagnostic configuration matrix produces value-equal normalized
   outcomes, health snapshots, coordinator inputs, residual policy inputs, and
   policy results for diagnostics omitted, enabled, filtered, saturated,

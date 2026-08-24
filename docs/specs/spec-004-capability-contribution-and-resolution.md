@@ -466,9 +466,15 @@ both encoding bits for conformance before applying that preference.
 
 #### Byte-bound and region arithmetic
 
-Every field whose name begins with `maximum` is an available-capacity ceiling;
-zero is a valid ceiling and provides no capacity. The two renamed fields on
-`RasterRealizationContribution` are backend-owned available ceilings.
+Only fields of type `CapabilityByteCount` whose name begins with `maximum` are
+available byte-capacity ceilings; zero is valid and provides no byte capacity.
+The two byte-count fields on `RasterRealizationContribution` are backend-owned
+available byte ceilings. All other `maximum...` fields are structural bounds:
+`maximumExtent` is a valid nonzero `CapabilityExtent`, both contributor roles'
+`maximumRegionWidth` and `maximumRegionHeight` values are nonzero, and
+`maximumInFlightCount` is nonzero, as required by their failable initializers
+above. Zero for one of those structural bounds is malformed input, not an
+available result with no capacity.
 `regionExtent`, `rowBytes`, and the four `required...`/`inFlightCount` fields
 on `EffectiveRasterPresentation` are the exact geometry and usage selected by
 the resolver, not spare capacity. No byte field includes the
@@ -507,10 +513,20 @@ candidate, and host-policy maximum-raster fields. Payload uses the analogous
 three maximum-payload fields. In-flight bytes use the minimum of requirement,
 surface, and host-policy maximum-in-flight fields. Required usage greater than
 its available ceiling returns `insufficientCapacity` for that domain with the
-exact computed usage and minimum ceiling. A checked LCM, alignment, addition,
-or multiplication that cannot be represented as `UInt32` returns
-`byteCountOverflow(domain:)`; it is never treated as zero, saturation, or
-wrapping arithmetic.
+exact computed usage and minimum ceiling.
+
+Overflow domain assignment is deterministic. The shared effective-alignment
+LCM, `unalignedRowBytes` multiplication, and aligned-row round-up are required
+by raster, payload, and in-flight accounting; an overflow at any of those
+sites returns `byteCountOverflow(domain: .raster)`, the lowest-raw-value
+affected `RasterPresentationCapacity`. After `rowBytes` exists, the resolver
+performs and checks the raster multiplication first, then the payload
+multiplication; an overflow unique to one of those steps uses `.raster` or
+`.payload` respectively. MVP `requiredInFlightBytes` is an exact copy of the
+already representable `requiredPayloadBytes`, so it performs no further
+arithmetic and cannot independently produce `.inFlight` overflow. The resolver
+never reports `.resolverWorkspace` for byte arithmetic and never treats
+overflow as zero, saturation, or wrapping.
 
 Consequently, the nRF52840 fixture's width `480`, height limit `4`, RGB565
 encoding, and alignment `2` yield a 960-byte row and exactly 3,840 required
@@ -549,7 +565,9 @@ public enum RasterPresentationContributionInsertion: Equatable, Sendable {
 
 `RasterPresentationContributions` owns four inline role-addressed slots, a
 four-bit duplicate-role mask, and no collection allocation. Insertion order is
-not observable. A second value for an occupied role returns
+not observable in final buffer equality or resolution. Individual `insert`
+return values still identify the call that encountered a duplicate. A second
+value for an occupied role returns
 `.duplicateContributor(role:)`, sets that role's bit, preserves the first
 value, and leaves every other slot unchanged. Because the contribution enum is
 closed over exactly four roles, a fifth insertion is necessarily a duplicate;
@@ -910,7 +928,8 @@ conditions use this precedence, independent of insertion and candidate order:
 9. no common canonical pixel encoding;
 10. incompatible submission lifetime;
 11. incompatible submission handoff;
-12. byte-count overflow, by capacity-domain raw value;
+12. byte-count overflow, by the assigned capacity-domain raw value, with a
+    shared row-arithmetic overflow assigned to `raster`;
 13. insufficient raster capacity;
 14. insufficient payload capacity;
 15. insufficient in-flight capacity; and
@@ -962,7 +981,7 @@ own governing contracts without mutating the capability snapshot.
   192 KiB, default display staging at or below 16 KiB, and firmware within the
   1 MiB device flash; crossing the 896 KiB warning threshold requires explicit
   review evidence.
-- For the nRF52840 `-Osize` image relative to an otherwise equivalent baseline,
+- For the nRF52840 `-Osize` image relative to the baseline defined below,
   capability-specific linked RAM MUST add no more than 768 bytes, named fixed
   capability storage no more than 512 bytes, conservative worst-case resolver
   stack no more than 256 bytes, and linked flash no more than 8 KiB. These
@@ -971,6 +990,48 @@ own governing contracts without mutating the capability snapshot.
   established device limits. Exceeding a capability-specific ceiling requires
   a Specification revision and renewed review; it cannot be waived merely
   because the total device image still fits.
+
+The nRF52840 resource comparison MUST use the repository-pinned Swift 6.3.2
+compiler, Zephyr 4.3.0 revision, Zephyr SDK 0.17.4, board
+`nrf52840dk/nrf52840`, and hard-float `armv7em-none-none-eabi` configuration in
+`scripts/nrf52840/toolchain.env`. Both images MUST use whole-module `-Osize`,
+Embedded Swift, function sections, the same Cortex-M4F and VFP ABI flags,
+Zephyr configuration, Swift runtime and C library, linker script, section
+layout, and linker garbage collection. Evidence MUST record the compiler
+executable hash and complete `swiftc --version`, every compiler and linker
+argument, repository revision and dirty state, and baseline/candidate source
+lists, source hashes, map files, and ELF hashes.
+
+The baseline and candidate are separate pristine firmware fixtures with the
+same Swift entry path, fixed-width observable sink, Zephyr bootstrap, and
+no-op initialization and steady-state-read call sites. The baseline MUST NOT
+import or link `GiftUICapabilities`. The candidate MUST differ only by linking
+the production `GiftUICapabilities` objects and observably executing
+contribution construction, every resolver success and required negative path,
+validation-result construction, snapshot storage, and steady-state access.
+Both heaps remain disabled. Measurement-only stack instrumentation MUST use a
+separate like-for-like pair and MUST NOT be subtracted from the resource pair.
+
+Linked RAM is the sum of final ELF `PT_LOAD` memory sizes mapped to RAM;
+`.data`, `.bss`, no-init storage, and named capability symbols MUST also be
+reported separately. Linked flash is the sum of final ELF `PT_LOAD` file
+sizes mapped to nonvolatile storage, including executable text and read-only
+data; debug, symbol-table, string-table, and other non-loadable sections are
+excluded. Capability-specific linked RAM and flash are the signed
+`candidate - baseline` deltas and MUST NOT be clamped. Named fixed capability
+storage is the sum of the candidate's requirement, contributions, workspace,
+validation result, snapshot, and fixed trace/sink symbols absent from the
+baseline; display staging is reported separately and is not counted as named
+capability storage.
+
+Worst-case resolver stack MUST use conservative disassembly and complete
+call-graph summation over every success and negative resolver path. The report
+MUST list each function's stack adjustment and saved-register bytes, every
+callee edge, the maximum acyclic path sum, and any indirect call. An indirect
+call without a finite enumerated target set fails the stack criterion. The
+256-byte ceiling applies to the resolver entry-through-return path only; the
+complete fixture-driver stack is reported separately. Two pristine rebuilds
+MUST produce identical normalized metrics and ELF hashes.
 
 ## Compatibility
 
@@ -1012,6 +1073,9 @@ The contract suite MUST include:
   pair of simultaneous typed-input incompatibilities and verifies the
   documented primary reason, plus separate raw-adapter tests for every earlier
   short-circuit stage;
+- shared-arithmetic overflow fixtures proving LCM, unaligned-row, and aligned-
+  row overflow each returns `byteCountOverflow(domain: .raster)`, plus domain-
+  specific overflow fixtures for every later checked usage site;
 - the complete submission-lifetime/handoff matrix, including rejection of a
   queued synchronous borrow and proof that a synchronous copy owns its queued
   bytes before the producer borrow ends;
@@ -1067,7 +1131,8 @@ evidence.
   bytes; and nRF52840 full-surface `rgba8888` resolves unavailable.
 - [ ] **CR-010A:** Formula fixtures cover both encodings, full-surface and
   tiled geometry, unequal alignments, all three capacity minima, zero
-  ceilings, every checked-overflow site, and the exact nRF52840 result of one
+  byte-count ceilings, malformed zero structural maximums, every checked-
+  overflow site and its assigned domain, and the exact nRF52840 result of one
   3,840-byte in-flight payload.
 - [ ] **CR-011:** Allocation instrumentation reports zero heap allocations for the static
   path from contribution construction through resolution, validation-result
@@ -1078,8 +1143,9 @@ evidence.
 - [ ] **CR-013:** nRF52840 resource evidence reports incremental and total linked RAM,
   worst-case resolver stack, linked flash, named capability storage, and
   display staging; it satisfies every aggregate and capability-specific budget
-  in `Performance Requirements` and records size, stride, and alignment for
-  every named capability record.
+  under the fixed baseline/candidate, toolchain, section-accounting, and stack
+  method in `Performance Requirements` and records size, stride, and alignment
+  for every named capability record.
 - [ ] **CR-014:** Every first-party tiled fixture consumes the borrowed operation stream
   exactly once synchronously and retains or replays zero GiftUI operations
   after the offer returns.
