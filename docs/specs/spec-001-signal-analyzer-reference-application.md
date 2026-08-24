@@ -6,7 +6,7 @@ status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-08-22
+updated: 2026-08-24
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -47,8 +47,8 @@ four-channel low-frequency digital Signal Analyzer. It covers the analyzer's
 domain values, acquisition and observation behavior, bounded transition
 capture, presentation state, fixed view hierarchy, waveform semantics,
 bounded Presentation-fact admission, observable-model ownership, target-host
-obligations, resource bounds, and conformance evidence across the four MVP
-configurations.
+obligations, SPEC-003-normalized failure handling, resource bounds, and
+conformance evidence across the four MVP configurations.
 
 The Specification adapts the completed macOS investigation into the governed
 GiftUI lifecycle. The investigation remains implementation evidence, not
@@ -73,6 +73,8 @@ This Specification covers:
 - one target-composed Presentation admission adapter connecting those sinks to
   GiftUI's logically distinct mutation domain;
 - bounded immutable capture, acquisition-state, and operational-failure facts;
+- total normalization of analyzer producer conditions into SPEC-003 outcomes
+  before any target-composition policy decision;
 - deterministic synthetic signal generation for development and tests;
 - a portable Presentation state model and GiftUI view hierarchy;
 - selectable 1-, 2-, and 5-second visible windows;
@@ -172,6 +174,11 @@ Each target host MUST provide:
 - a concrete signal data source;
 - the composition wiring needed to construct one analyzer object graph.
 
+The host integration that consumes analyzer failures MUST import
+`GiftUIFailureCore`. Analyzer-local producer results remain owned by this
+Specification, but no local rejection or runtime-condition enum is a policy
+input or a competing failure vocabulary.
+
 The portable Domain and Presentation use `Swift.Duration` values. They MUST
 NOT read a platform clock or schedule timers directly.
 
@@ -226,6 +233,16 @@ NOT read a platform clock or schedule timers directly.
 - **Admission outcome:** The bounded result returned synchronously by the
   adapter: accepted with a sequence number, or rejected with a stable
   capacity, availability, or sequence-exhaustion condition.
+- **Normalized analyzer outcome:** The `GiftUIOutcome<Void>` constructed from
+  an analyzer-local rejection or runtime condition according to the total
+  tables in Error Handling. It is the only outcome form a coordinator or
+  target-composition policy may consume.
+- **Semantic analyzer diagnostic:** `SignalAnalyzerDiagnostic`, a bounded
+  correctness-bearing Domain value used for acquisition failure and visible
+  error state. It is not a SPEC-003 diagnostic projection.
+- **Diagnostic projection:** An optional, non-authoritative
+  `GiftUIDiagnosticRecord` derived only after the normalized outcome has
+  propagated or authoritative health/semantic state has committed.
 - **Observable registration:** The single live model-owned change endpoint
   associated with the root ViewModel's runtime-owned `@State` location.
 - **Acquisition session:** The period beginning with the first successful
@@ -326,9 +343,12 @@ Presentation MUST own:
 - the fixed GiftUI hierarchy;
 - time ruler, channel labels, control state, grid, and waveform construction.
 
-Presentation MAY depend on Domain and the provided GiftUI client surface. It
-MUST NOT depend on concrete Data types, platform hosts, clocks, schedulers,
-GPIO, renderers, or display hardware.
+Presentation MAY depend on Domain, `GiftUIFailureCore`, and the provided GiftUI
+client surface. It MUST NOT depend on concrete Data types, platform hosts,
+clocks, schedulers, GPIO, renderers, or display hardware. The dependency on
+`GiftUIFailureCore` carries normalized outcome values only; policy
+implementation and optional diagnostic projection remain downstream at the
+target host.
 
 The ViewModel MUST NOT implement either repository sink contract. The
 Presentation admission adapter MUST implement both sink contracts, but it
@@ -409,6 +429,15 @@ source diagnostic MUST be truncated at a valid scalar boundary. Dynamic
 profiles MAY use `String` internally; static profiles MUST use inline or
 caller-supplied bounded storage and MUST NOT allocate to construct, copy, or
 transport this value.
+
+`SignalAnalyzerDiagnostic` is semantic application data. Its presence may set
+`AcquisitionState.failed`, populate `SignalAnalyzerViewState.errorMessage`, and
+therefore change published UI state. It MUST be admitted, ordered, retained,
+and tested independently of SPEC-003 diagnostic selection, buffering, or sink
+delivery. It MUST NOT be represented by, reconstructed from, or conditionally
+omitted with `GiftUIDiagnosticRecord`. A target MAY optionally project a
+normalized analyzer outcome after correctness-relevant propagation, but that
+projection MUST NOT create, remove, or alter this value or any policy input.
 
 `SignalChannel.standard` MUST contain exactly these ordered values:
 
@@ -623,7 +652,7 @@ enum SignalAnalyzerPresentationFact: Equatable, Sendable {
     case captureMutation(revision: UInt32, change: SignalCaptureChange)
     case acquisitionState(AcquisitionState)
     case operationalFailure(
-        rejection: SignalSinkDeliveryRejection,
+        outcome: GiftUIOutcome<Void>,
         diagnostic: SignalAnalyzerDiagnostic
     )
 }
@@ -634,6 +663,15 @@ enum SignalAnalyzerObservationStartOutcome: Equatable, Sendable {
     case rejected(SignalSinkDeliveryRejection)
 }
 
+enum SignalAnalyzerResidualPolicyContext: UInt8, Equatable, Sendable {
+    case observationStart
+    case activeDelivery
+    case initialModelAttachment
+    case modelReplacement
+    case modelChangeReport
+    case captureFactApplication
+}
+
 protocol SignalAnalyzerFactAdmission {
     func submit(_ fact: SignalAnalyzerPresentationFact)
         -> SignalSinkDeliveryOutcome
@@ -642,6 +680,9 @@ protocol SignalAnalyzerFactAdmission {
 
 The duration mapping MUST be exactly 1, 2, and 5 seconds. Initial view state
 MUST be idle, empty capture, two-second window, and no error.
+An `operationalFailure` fact MUST contain the `.failure` case produced by the
+normalization table below; `.success` and `.operational` are invalid for that
+fact and MUST be rejected before admission.
 
 `SignalAnalyzerPresentationAdmissionAdapter` MUST:
 
@@ -655,9 +696,17 @@ MUST be idle, empty capture, two-second window, and no error.
 - submit exactly one fact per callback and return the submission outcome;
 - never attach a GiftUI observable registration, retain the ViewModel, mutate
   Presentation state, or use the model as admission storage; and
-- invoke only the target-composed bounded failure-policy seam after rejection;
-  that seam MUST NOT reinterpret rejection as acceptance or directly mutate
-  the ViewModel.
+- report a rejection to the target-composed owner adapter, which MUST preserve
+  the local rejection, normalize it to `GiftUIOutcome<Void>`, apply mandatory
+  coordinator effects, and only then invoke residual policy when the tables in
+  Error Handling leave a product choice.
+
+The adapter MUST NOT send `SignalSinkDeliveryRejection` directly to a policy.
+Every concrete analyzer residual policy MUST conform to
+`GiftUIResidualFailurePolicy` with
+`Context == SignalAnalyzerResidualPolicyContext` and MUST receive only a
+successfully constructed `GiftUIResidualPolicyInput`. A policy seam MUST NOT
+reinterpret rejection as acceptance or directly mutate the ViewModel.
 
 `startObserving()` MUST return `SignalAnalyzerObservationStartOutcome`. It
 returns `started` only after both immediate publications are accepted. If
@@ -805,10 +854,15 @@ enum SignalAnalyzerRuntimeCondition: UInt8 {
     case staleRegistrationReport
     case mutationPhaseViolation
     case captureRevisionMismatch
-    case factAdmissionRejected
+    case reservedFailureCapacityExhausted
     case identityGenerationExhausted
 }
 ```
+
+`SignalAnalyzerRuntimeCondition` is a producer catalogue, not a policy or
+diagnostic vocabulary. An admission rejection retains its specific
+`SignalSinkDeliveryRejection`; it MUST NOT be collapsed into a generic
+`factAdmissionRejected` identity.
 
 ## Behavior
 
@@ -1183,11 +1237,11 @@ requires it.
   MUST reject admission synchronously with the corresponding
   `SignalSinkDeliveryRejection`. Rejection MUST NOT mutate the ViewModel,
   overwrite an accepted fact, or fall back to direct mutation.
-- The adapter MUST reserve and attempt one `operationalFailure` fact after an
-  ordinary admission rejection. If the reserved slot is unavailable, the host
-  MUST quiesce acquisition and preserve the last complete published semantic
-  revision. At the accepted workload, any admission rejection is a conformance
-  failure.
+- The adapter MUST reserve and attempt one `operationalFailure` fact containing
+  the normalized non-success `GiftUIOutcome<Void>` after an ordinary admission
+  rejection. If the reserved slot is unavailable, the host MUST quiesce
+  acquisition and preserve the last complete published semantic revision. At
+  the accepted workload, any admission rejection is a conformance failure.
 - State-location, registration, or replacement-staging exhaustion MUST reject
   the candidate association, remove partial candidate state, and preserve an
   existing live association. Initial materialization failure prevents the
@@ -1210,28 +1264,89 @@ requires it.
   output, retain current state as dirty, request a later host-paced cycle, and
   MUST NOT replay or roll back facts, actions, or model replacement.
 
-The Signal Analyzer target-composition policy is total:
+### Failure normalization and disposition
 
-| Condition | Mandatory product response |
-| --- | --- |
-| Snapshot or compact fact capacity exhausted | Reject the fact, attempt the reserved failure fact, stop further acquisition delivery after the active callback returns, and quiesce the analyzer instance |
-| Runtime unavailable, fact sequence exhausted, or reserved failure slot unavailable | Preserve the last complete revision, quiesce the analyzer instance, and require a fresh runtime/object graph |
-| Initial state-location or registration exhaustion | Publish no analyzer root and quiesce the instance |
-| Replacement staging, duplicate owner, or incompatible association with an existing live model | Preserve the existing model and continue only if containment is proven |
-| Stale registration report | Reject the report, preserve current dirty state, and continue |
-| Capture revision mismatch | Preserve current capture, quiesce acquisition, and require explicit observation restart with a snapshot before a fresh instance may continue |
-| Mutation phase violation | Quiesce whenever stable state is not proven; otherwise retain dirty state for a host-paced retry |
+The owner adapter MUST normalize every analyzer condition that can reach a
+coordinator or composition policy with the following total mapping. The
+`Outcome` column supplies the exact SPEC-003 category and condition identity;
+each failure row is enclosed as `GiftUIOutcome<Void>.failure`. The two phase
+rows are selected by the detecting runtime's proof of stable state, not by
+policy or diagnostics.
 
-Policy MUST NOT narrow affected scope, reinterpret rejection as success, retry
-without a bound, or bypass the reserved fact and normal admission boundary.
+| Producer condition | Outcome | Origin | Affected scope | Containment |
+| --- | --- | --- | --- | --- |
+| `snapshotCapacityExhausted` | failure / `capacityExhausted` | `presentationIntegration` | `component` | `contained` |
+| `factCapacityExhausted` | failure / `capacityExhausted` | `presentationIntegration` | `component` | `contained` |
+| `runtimeUnavailable` | failure / `requiredFacilityUnavailable` | `execution` | `runtime` | `safetyNotProven` |
+| `sequenceExhausted` | failure / `invalidProvenance` | `presentationIntegration` | `runtime` | `safetyNotProven` |
+| `stateLocationCapacityExhausted` | failure / `capacityExhausted` | `observableState` | `component` | `contained` |
+| `registrationCapacityExhausted` | failure / `capacityExhausted` | `observableState` | `component` | `contained` |
+| `replacementStagingExhausted` | failure / `capacityExhausted` | `observableState` | `operation` | `contained` |
+| `duplicateModelOwner` | failure / `invalidIdentity` | `observableState` | `component` | `contained` |
+| `incompatibleStateAssociation` | failure / `invalidIdentity` | `observableState` | `component` | `contained` |
+| `staleRegistrationReport` | failure / `invalidIdentity` | `observableState` | `operation` | `contained` |
+| `identityGenerationExhausted` | failure / `invalidIdentity` | `observableState` | `runtime` | `safetyNotProven` |
+| `captureRevisionMismatch` | failure / `invalidProvenance` | `presentationIntegration` | `component` | `contained` |
+| `reservedFailureCapacityExhausted` | failure / `capacityExhausted` | `presentationIntegration` | `runtime` | `safetyNotProven` |
+| `mutationPhaseViolation`, stable state proven | failure / `invalidPhase` | `execution` | `activeCycle` | `contained` |
+| `mutationPhaseViolation`, stable state not proven | failure / `invalidPhase` | `execution` | `activeCycle` | `safetyNotProven` |
+
+Unknown analyzer rejection or runtime-condition values MUST normalize to
+`unknownProducerCondition`, preserve the known producer origin, use the
+smallest scope the adapter can prove, and use `safetyNotProven`. Wrapping,
+correlation, semantic diagnostics, and optional diagnostic projection MUST
+preserve the normalized condition, origin, scope, and containment.
+
+Disposition MUST then proceed in the SPEC-003 order below. A dash in
+`Allowed residual dispositions` means mandatory detecting/coordinator work
+leaves no product choice, so no `GiftUIResidualPolicyInput` is constructed and
+policy is not invoked.
+
+| Normalized condition and owning operation | Residual context | Mandatory mechanical and coordinator effects | Allowed residual dispositions | Signal Analyzer target selection |
+| --- | --- | --- | --- | --- |
+| Admission capacity failure during observation start | `observationStart` | Reject without overwrite, attempt the reserved normalized failure fact, and detach both observers | `quiesceAffectedScope` | `quiesceAffectedScope` |
+| Admission capacity failure during active delivery | `activeDelivery` | Reject without overwrite, attempt the reserved normalized failure fact, and stop further acquisition delivery after the active callback | `quiesceAffectedScope` | `quiesceAffectedScope` |
+| Runtime unavailable, sequence exhausted, or reserved failure slot unavailable | `observationStart` or `activeDelivery`, matching the rejected operation | Reject without wrap or alias, preserve the last complete revision, prevent another normal cycle, and require a fresh runtime/object graph | `quiesceAffectedScope`, `invokeFatalHook` | `quiesceAffectedScope` |
+| Identity generation exhausted | `initialModelAttachment` or `modelReplacement`, matching the rejected operation | Reject without alias, preserve any existing live model and the last complete revision, prevent another normal cycle, and require a fresh runtime/object graph | `quiesceAffectedScope`, `invokeFatalHook` | `quiesceAffectedScope` |
+| Initial state-location or registration capacity failure | `initialModelAttachment` | Remove partial candidate state and publish no analyzer root | `quiesceAffectedScope`, `invokeFatalHook` | `quiesceAffectedScope` |
+| Replacement staging, duplicate owner, incompatible association, or state/registration capacity failure with an existing live model | `modelReplacement` | Remove partial candidate state and preserve the existing model and registration | `continueOperation`, `quiesceAffectedScope` | `continueOperation` |
+| Stale registration report | `modelChangeReport` | Reject the report and preserve current dirty state without dirtying a retired or later slot occupant | `continueOperation` | `continueOperation` |
+| Capture revision mismatch | `captureFactApplication` | Preserve current capture, mark the analyzer Presentation component failed, detach observation, and require explicit restart with a snapshot | `quiesceAffectedScope` | `quiesceAffectedScope` |
+| Contained mutation phase violation | — | Preserve the last complete publication, retain dirty state, and schedule exactly one coordinator-owned retry no earlier than the next 250-millisecond host pace | — | — |
+| Mutation phase violation with safety not proven | `modelChangeReport` | Discard partial publication and prevent another normal cycle | `quiesceAffectedScope`, `invokeFatalHook` | `quiesceAffectedScope` |
+
+Every row with residual choices MUST construct
+`GiftUIResidualPolicyInput<SignalAnalyzerResidualPolicyContext>` through its
+only public initializer after the mandatory effects complete. Because this
+target table has no residual retry choice, `attemptOrdinal` MUST be `0` and
+`attemptLimit` MUST be `1`. The contained phase retry is coordinator-owned,
+is attempted at most once, and does not enter policy. If it again encounters a
+phase violation, the detecting runtime MUST report the safety-not-proven row.
+The concrete policy MUST return a member of `allowed` and MUST produce the
+target selection shown above for every enumerated input.
+
+Unexpected policy-input construction failure or a policy result outside
+`allowed` MUST use SPEC-003's exact host-composition invariant mapping: create
+`.invariantViolation` from `.hostComposition` for `.runtime` with
+`.safetyNotProven`, invoke no further policy, quiesce runtime health before any
+configured fatal hook, and admit no later normal run cycle.
+
+Policy MUST NOT consume `SignalSinkDeliveryRejection` or
+`SignalAnalyzerRuntimeCondition`, narrow affected scope, reinterpret rejection
+as success, retry without a bound, or bypass the reserved fact and normal
+admission boundary.
 Quiescence after admission failure MUST prevent later source callbacks without
 publishing an ordinary `.stopped` fact that could overwrite the operational
 failure. After the reserved failure fact publishes, the host MAY destroy and
 recreate the complete analyzer object graph through normal explicit teardown.
 
-Diagnostics MAY use platform-appropriate reporting. User-visible error text
-MUST NOT expose unstable implementation type names or memory addresses and
-MUST satisfy the 96-byte bound.
+Optional SPEC-003 diagnostic projection MAY use platform-appropriate reporting
+only after normalized propagation or authoritative state commit. Projection
+configuration and sink results MUST NOT affect normalization, mandatory
+effects, residual input, policy selection, `SignalAnalyzerDiagnostic`, or
+user-visible state. User-visible error text MUST NOT expose unstable
+implementation type names or memory addresses and MUST satisfy the 96-byte
+bound.
 
 ## Performance Requirements
 
@@ -1399,7 +1514,26 @@ verify:
 - same-thread and distinct-executor hosts produce equivalent facts, outcomes,
   semantic revisions, and user-visible state; and
 - freeze-phase reports, derivation failure, and publication clearing follow
-  the specified dirty-state and containment behavior.
+  the specified dirty-state and containment behavior;
+- every `SignalSinkDeliveryRejection` and
+  `SignalAnalyzerRuntimeCondition` maps to the exact SPEC-003 outcome,
+  condition identity, origin, affected scope, and containment row, while an
+  unknown value maps conservatively without invoking policy;
+- mandatory detecting and coordinator effects complete before any residual
+  policy call, and conditions with no residual choice never invoke policy;
+- every residual row constructs a valid
+  `GiftUIResidualPolicyInput<SignalAnalyzerResidualPolicyContext>` with
+  ordinal zero, limit one, and the exact allowed set, and the concrete target
+  policy returns the specified allowed selection; and
+- unexpected policy-input failure and an out-of-set policy result use
+  SPEC-003's host-composition invariant mapping and prevent later normal
+  cycles.
+
+The diagnostic fixture matrix MUST also run with SPEC-003 projection omitted,
+enabled, filtered, saturated, dropped, and failing. Every run MUST produce
+value-equal normalized outcomes, mandatory effects, residual inputs, policy
+results, `SignalAnalyzerDiagnostic` values, semantic revisions, and visible
+error state.
 
 ### Cross-profile and platform tests
 
@@ -1521,6 +1655,13 @@ behavioral, resource, profile, or connected-hardware evidence.
   location, the configured bounded records and fact storage, no forbidden
   heap/reflection/task/runtime dependencies, and measured assembled RAM,
   flash, stack, admission, mutation, publication, and frame costs.
+- [ ] **SA-AC-038:** Exhaustive fixtures normalize every analyzer capacity,
+  availability, sequence, identity, revision, and phase condition into the
+  exact SPEC-003 outcome fields before composition policy; apply all mandatory
+  coordinator effects first; construct only valid
+  `GiftUIResidualPolicyInput<SignalAnalyzerResidualPolicyContext>` values for
+  remaining choices; and prove optional diagnostic projection cannot change
+  `SignalAnalyzerDiagnostic`, semantic state, policy inputs, or dispositions.
 
 ## Implementation Notes
 
@@ -1607,6 +1748,7 @@ contract, and this Specification does not create an additional relationship.
 - [ADR-025: Coarse Model-Owned Observable Invalidation](../adrs/adr-025-coarse-model-owned-observable-invalidation.md)
 - [ADR-026: Profile-Equivalent Bounded Observable State Realization](../adrs/adr-026-profile-equivalent-bounded-observable-state.md)
 - [ADR-027: Bounded Presentation-Fact Admission](../adrs/adr-027-bounded-presentation-fact-admission.md)
+- [SPEC-003: Failure Outcomes and Containment](spec-003-failure-outcomes-and-containment.md)
 - [RFC-001: Signal Analyzer Application Architecture](../rfcs/rfc-001-signal-analyzer-application-architecture.md)
 - [RFC-008: Observable Reference State Architecture](../rfcs/rfc-008-observable-reference-state-architecture.md)
 - [PROPOSAL-002: Signal Analyzer Reference Application](../proposals/proposal-002-signal-analyzer-reference-application.md)

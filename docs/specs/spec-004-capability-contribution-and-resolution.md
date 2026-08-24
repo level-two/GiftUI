@@ -2,7 +2,7 @@
 id: SPEC-004
 feature: capability-system
 title: Capability Contribution and Resolution
-status: draft
+status: review
 authors:
   - codex
 created: 2026-08-22
@@ -1096,10 +1096,10 @@ evidence.
 
 ## Acceptance Criteria
 
-- [ ] **CR-001:** The document and manifest identify SPEC-004 as a `draft` for
-  `capability-system`; the document directly links PROPOSAL-004, RFC-004,
-  RFC-006, ADR-010, and ADR-017 through ADR-020 and reciprocally relates
-  SPEC-002 and SPEC-003.
+- [ ] **CR-001:** The document identifies SPEC-004 as in `review` and the
+  manifest registers it for `capability-system`; the document directly links
+  PROPOSAL-004, RFC-004, RFC-006, ADR-010, and ADR-017 through ADR-020 and
+  reciprocally relates SPEC-002 and SPEC-003.
 - [ ] **CR-002:** A dependency test proves `GiftUICapabilities` imports none of the
   prohibited higher or concrete modules, `GiftUI` does not re-export it, and a
   portable Signal Analyzer presentation contains zero target/backend/device
@@ -1173,7 +1173,7 @@ semantics and normalized results remain unchanged.
 ## Open Issues
 
 The capability-domain contract and reciprocal Wave 1 terminology are closed
-by this draft. SPEC-003 now fixes the enclosing required-family carrier and
+in this review text. SPEC-003 now fixes the enclosing required-family carrier and
 the one-to-one capability condition catalogue. The jointly reviewed SPEC-002
 extent adapter accepts only valid non-negative `Size` values, maps zero and
 positive overflow distinctly, and exposes no capability geometry to portable

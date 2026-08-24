@@ -52,15 +52,15 @@ Each candidate Specification in this portfolio MUST:
 
 ## Candidate Contracts
 
-Wave 1 has entered coordinated drafting with these immutable identities:
+Wave 1 has entered coordinated review with these immutable identities:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `FOUNDATION` | `SPEC-002` | `draft` |
-| `FAILURE` | `SPEC-003` | `draft` |
-| `CAPABILITY` | `SPEC-004` | `draft` |
+| `FOUNDATION` | `SPEC-002` | `review` |
+| `FAILURE` | `SPEC-003` | `review` |
+| `CAPABILITY` | `SPEC-004` | `review` |
 
-The three drafts share one ownership rule: SPEC-002 owns portable values and
+The three Specifications share one ownership rule: SPEC-002 owns portable values and
 import boundaries; SPEC-003 owns outcome, containment, disposition, health,
 and diagnostic vocabulary; SPEC-004 owns capability contribution, resolution,
 and the `rasterPresentation` catalogue while referencing the first two

@@ -2,7 +2,7 @@
 id: SPEC-003
 feature: giftui-mvp-architecture
 title: Failure Outcomes and Containment
-status: draft
+status: review
 authors:
   - codex
 created: 2026-08-22
@@ -144,9 +144,9 @@ disposition, operational-health-projection, and diagnostic vocabulary.
 ### Specification and module dependencies
 
 Wave 1 has no earlier Specification drafting prerequisite. Coordination with
-SPEC-002 and SPEC-004 is nevertheless required before this draft can enter
-review so the three Specifications use the declarations and owner-adapter
-seams frozen below and do not claim the same contract.
+SPEC-002 and SPEC-004 was completed before this Specification entered review,
+so the three Specifications use the declarations and owner-adapter seams
+frozen below and do not claim the same contract.
 
 The required physical dependency direction is:
 
