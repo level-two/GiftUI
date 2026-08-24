@@ -292,7 +292,6 @@ public struct RasterOperationSet: OptionSet, Equatable, Sendable {
     public static let straightLineStrokes: Self
     public static let clipping: Self
     public static let damage: Self
-    public static let signalAnalyzerMVP: Self
 }
 
 public enum OperationStreamLifetime: UInt8, Equatable, Sendable {
@@ -335,8 +334,7 @@ inside `GiftUICapabilities` and is not re-exported to portable Presentation.
 addition and multiplication inside the resolver MUST use checked `UInt32`
 arithmetic and resolve unavailable on overflow.
 
-`RasterOperationSet.signalAnalyzerMVP` is exactly the union of the five named
-bits. The two canonical pixel encodings describe byte-level interchange:
+The two canonical pixel encodings describe byte-level interchange:
 `rgb565BigEndian` is one big-endian 5:6:5 word per pixel and `rgba8888` is four
 bytes per pixel in R, G, B, A order. Native surface formats and conversion
 details remain adapter-local.
@@ -351,7 +349,8 @@ comparison:
 | `SubmissionLifetimeSet` | synchronous borrow | synchronous copy | ownership transfer | reserved | reserved |
 | `SubmissionHandoffSet` | synchronous | queued | reserved | reserved | reserved |
 
-`RasterOperationSet.signalAnalyzerMVP.rawValue` is therefore `0x1f`.
+The union of all five declared `RasterOperationSet` bits therefore has raw
+value `0x1f`.
 
 ### Requirement and contribution declarations
 
@@ -444,7 +443,9 @@ construction proves these invariants; the typed resolver cannot receive a
 record that failed them and does not recreate malformed records for testing:
 
 - operation and encoding sets are non-empty and contain only declared bits;
-- the requirement operation set is exactly `signalAnalyzerMVP` for MVP hosts;
+- the requirement operation set contains exactly `.opaqueRectangles`,
+  `.positionedText`, `.straightLineStrokes`, `.clipping`, and `.damage` for
+  every supported host;
 - allowed realization and encoding sets are non-empty and contain only
   declared bits;
 - `preferredRealization` is allowed, and `preferredEncoding` contains exactly
