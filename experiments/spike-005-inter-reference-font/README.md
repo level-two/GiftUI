@@ -30,11 +30,11 @@ The runner installs hash-pinned fontTools and Pillow wheels into a temporary
 environment, generates the complete result twice, rejects any byte-level
 nondeterminism, and either refreshes or verifies the checked-in outputs.
 
-## Spike-specific outline format
+## Reference-fixture outline format
 
-`GiftUIReferenceSans-Regular-16px.outline-v1` is a feasibility payload, not an
-accepted provider format. Each gap-free glyph record begins with version,
-units-per-em, and fixed pixel size, followed by decomposed move, line,
-quadratic, cubic, close, or end commands with big-endian signed Int16 source
-coordinates. SPEC-005 review must confirm or replace this format before any
-production adoption.
+`GiftUIReferenceSans-Regular-16px.outline-v1` is adopted by SPEC-005 as an
+outline-capable reference fixture, not as a required production provider
+format. Each gap-free glyph record begins with version, units-per-em, and fixed
+pixel size, followed by decomposed move, line, quadratic, cubic, close, or end
+commands with big-endian signed Int16 source coordinates. No MVP configuration
+is required to select it or provide a production outline rasterizer.

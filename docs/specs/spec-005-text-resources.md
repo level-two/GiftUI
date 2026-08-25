@@ -42,9 +42,9 @@ target_milestone: MVP
 
 > **Draft gate:** The architecture and prerequisite Foundation contract are
 > authoritative, but this Specification does not authorize implementation.
-> Approval is blocked until the licensed reference resource and its generated
-> integrity evidence are checked in and the SPEC-003 failure-origin ownership
-> proof described under Open Issues is resolved.
+> SPIKE-005 supplies the adopted licensed reference package, reproducible
+> integrity evidence, and measured static-resource calibration. The exact
+> SPEC-003 owner-adapter mappings are fixed under Error Handling.
 
 ## Summary
 
@@ -146,13 +146,14 @@ dynamic, and nRF52840/Zephyr static configurations.
 - SPEC-006 is a parallel sibling. It owns declarative expansion and identity;
   neither sibling imports or redefines the other.
 
-### Approval evidence prerequisite
+### Reference-package evidence
 
-A complete reference package MUST be checked in before this Specification can
-advance to `review`. Its source and every derived asset MUST have recorded
-redistribution and derivation permission. The current proof-of-concept bitmap
-table does not satisfy this prerequisite because no provenance or compatible
-license record is presently linked to it.
+The checked-in SPIKE-005 Inter 4.1 Regular source and its derived
+`GiftUI Reference Sans` assets are the adopted reference package for this
+contract. The exact source, license, derivation, identity, and measurement
+requirements are fixed under Behavior and Performance Requirements. The
+existing proof-of-concept bitmap table remains non-authoritative and is not
+part of the package.
 
 ## Related ADRs
 
@@ -459,11 +460,21 @@ non-overlapping, gap-free partition of `0..<payloadByteCount`. Validation
 hashes the exact record payloads in that order, so a consumer never requires a
 second whole-payload borrowing API.
 
-For `.packagedOutline`, bytes are an immutable exact provider payload. This
-Specification fixes only its digest, bounds, and borrowing contract; the
-provider and concrete package Specification MUST name and validate the format
-before that realization is used. No MVP configuration is required to select
-an outline realization.
+For `.packagedOutline`, bytes are an immutable exact provider payload. The
+reference package uses the evidence identifier `giftui-spike-outline-v1`:
+each glyph payload begins with a `UInt8` version equal to `1`, a big-endian
+`UInt16` units-per-em value, and a big-endian `UInt16` fixed pixel size. It is
+followed by zero or more
+commands and their operands: `moveTo = 1`, `lineTo = 2`, `qCurveTo = 3`,
+`curveTo = 4`, `closePath = 5`, and `endPath = 6`. A point-bearing command
+stores a `UInt8` operand count followed by big-endian signed `Int16` x/y pairs;
+the implied quadratic point is encoded as the reserved pair
+`(0x7FFF, 0x7FFF)`. Close and end commands have no operand-count byte. Every
+coordinate MUST be representable as `Int16`, every command and operand count
+MUST be structurally complete, and no bytes may remain after the final
+command. This format is required only for the outline-capable reference
+fixture; no MVP configuration is required to select it or provide a production
+outline rasterizer.
 
 ### Package validation
 
@@ -499,16 +510,37 @@ declared instance, mapping, glyph metric, realization, raster record, payload
 range, payload digest, and cross-view identity before returning `.valid`.
 There is no partially valid package.
 
-The canonical manifest is a tooling artifact, not a runtime parser format. It
-uses schema version 1; fixed-width unsigned integers encoded big-endian;
-instances, scalar mappings, glyphs, and realizations in ascending raw-value
-order; and raw raster bytes in realization order. `FontResourceID` is SHA-256
-over the version tag `GiftUITextResources/v1`, all canonical metrics and
-mapping records, all realization descriptors, and each realization payload
-digest. `payloadDigest` is SHA-256 over the exact borrowed realization bytes.
+The canonical manifest is a tooling artifact, not a runtime parser format. Its
+schema-version-1 byte serialization is exactly the following concatenation;
+all multi-byte fields are big-endian, geometry fields are signed `Int32`, and
+all other integer fields use the unsigned width named below:
+
+1. the exact UTF-8 bytes `GiftUITextResources/v1`, then `schemaVersion: UInt16`
+   and `instanceCount: UInt16`;
+2. for each instance in ascending index order: `instanceIndex: UInt16`,
+   `ascent: Int32`, `descent: Int32`, `lineGap: Int32`,
+   `replacementGlyph: UInt16`, `glyphCount: UInt16`, and
+   `mappingCount: UInt16`;
+3. for each instance mapping in ascending scalar order:
+   `scalarValue: UInt32` and `glyph: UInt16`;
+4. for each glyph in ascending ID order: `glyph: UInt16`, followed by
+   `advanceX`, `offsetX`, `offsetY`, `inkSize.width`, and `inkSize.height` as
+   five signed `Int32` values;
+5. `realizationCount: UInt16`, then each realization in ascending ID order as
+   `realizationID: UInt16`, `instanceIndex: UInt16`, `kind: UInt8`,
+   `glyphCount: UInt16`, `payloadByteCount: UInt32`, and the exact 32 payload-
+   digest bytes; and
+6. each realization's records in ascending glyph order as `glyph: UInt16`,
+   `offset: UInt32`, `byteCount: UInt32`, `rowByteCount: UInt16`,
+   `pixelWidth: UInt16`, and `pixelHeight: UInt16`.
+
+Thus signed geometry and every raster record participate in the resource
+identity. `FontResourceID` is SHA-256 over those exact canonical-manifest
+bytes. `payloadDigest` is SHA-256 over the exact borrowed realization bytes.
 Generated Swift tables MUST embed both digests. Build tooling and host
 validation MUST reproduce and compare them; there is no filename, timestamp,
-locale, platform, or table-address input to identity.
+locale, platform, table address, raw raster payload, or outline-format display
+name directly in the manifest. Payload bytes are bound through their digest.
 
 ### Positioned-glyph resource borrowing
 
@@ -577,6 +609,33 @@ A host selects exactly one resource package for the MVP runtime. Every
 positioned glyph in one candidate frame MUST refer to an instance in that
 validated package. Live package replacement is outside MVP.
 
+### Adopted reference package
+
+The reference package is derived from official Inter 4.1
+`extras/ttf/Inter-Regular.ttf`, whose SHA-256 is
+`40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82`,
+under the checked-in SIL Open Font License 1.1. The derivative name is
+`GiftUI Reference Sans`, and generated assets MUST use that exact derived
+family identity. The source, license, exact pinned tools, and reproduction
+command are recorded in SPIKE-005
+[`PROVENANCE.json`](../../experiments/spike-005-inter-reference-font/generated/PROVENANCE.json)
+and
+[`SHA256SUMS`](../../experiments/spike-005-inter-reference-font/evidence/SHA256SUMS).
+
+The adopted package contains one Regular instance at 16 pixels, glyph zero as
+both `.notdef` and the replacement glyph, exactly 96 scalar mappings for
+U+0020...U+007E and U+00B0, 102 glyphs including five unencoded component
+glyphs, one `.monochromeBitmap1` realization, and one reference-fixture
+`.packagedOutline` realization. The canonical manifest is exactly 6,218 bytes
+with SHA-256 and `FontResourceID`
+`bd14de9ff2baaaf464c130d5e2d0554004a4055cc57a8c16a65fe2cc39394910`.
+The bitmap payload is 1,911 bytes with SHA-256
+`69cf6841d1ecd25079a63f3dcc6866c119cd11ca4c62115185af99781d13af68`;
+the outline payload is 13,195 bytes with SHA-256
+`3d05ced8a32b17a45569b6650ea4fe88b1f2f0dc93493e79631a628d56df4c5f`.
+Any change to these inputs or derived bytes creates a different package and
+MUST receive a new `FontResourceID`.
+
 ## State / Lifecycle
 
 A generated concrete package transitions only through:
@@ -636,33 +695,38 @@ Resource-view accessors report invalid identity, range, or record input as
 are not cross-layer outcome, containment, health, or diagnostic vocabularies.
 They produce no partial value and do not trap.
 
-`GiftUIFailureOrigin` intentionally has no text-resource case. A rejection is
-therefore mapped only by the existing owner that detects it in context, never
-by relabeling `GiftUITextResources` itself as another layer. Subject to the
-ownership proof required under Open Issues, the first assembly or consumer
-boundary that reports a rejection outside `GiftUITextResources` MUST map it
-to SPEC-003 exactly:
+`GiftUIFailureOrigin` intentionally has no text-resource case. In alignment
+with SPEC-003's detecting-owner seam, `GiftUITextResources` returns only its
+local validation result or `nil`; it never constructs `GiftUIFailureFact` or
+imports failure vocabulary. The first owner adapter that knows both contracts
+MUST perform the exact mapping below:
 
-| Local condition | Condition | Origin | Scope | Containment |
-| --- | --- | --- | --- | --- |
-| `unsupportedSchema`, `invalidCount`, `malformedMetrics`, `malformedMapping`, or `malformedRasterRecord` | `invalidValue` | `hostComposition` | `runtime` | `contained` |
-| `invalidIdentity`, `incompatibleViews`, or `integrityMismatch` | `invalidIdentity` | `hostComposition` | `runtime` | `contained` |
-| `capacityExceeded` | `capacityExhausted` | `hostComposition` | `runtime` | `contained` |
-| Validated-package lookup unexpectedly returns `nil` | `invariantViolation` | owning consumer (`layout` or `rendering`) | `candidateFrame` | `safetyNotProven` |
-| Checked metric or positioned-geometry arithmetic overflows | `arithmeticOverflow` | `layout` | `candidateFrame` | `contained` |
-| Required exact raster realization is unavailable after otherwise valid assembly | `requiredFacilityUnavailable` | `rendering` | `runtime` | `contained` |
+| Detecting owner adapter | Local condition | Condition | Origin | Scope | Containment |
+| --- | --- | --- | --- | --- | --- |
+| Target host's text-resource assembly adapter | `unsupportedSchema`, `invalidCount`, `malformedMetrics`, `malformedMapping`, or `malformedRasterRecord` returned while admitting the selected package | `invalidValue` | `hostComposition` | `runtime` | `contained` |
+| Target host's text-resource assembly adapter | `invalidIdentity`, `incompatibleViews`, or `integrityMismatch` returned while admitting the selected package | `invalidIdentity` | `hostComposition` | `runtime` | `contained` |
+| Target host's text-resource assembly adapter | `capacityExceeded` returned while admitting the selected package | `capacityExhausted` | `hostComposition` | `runtime` | `contained` |
+| Layout's validated-resource adapter | A lookup in the already validated package unexpectedly returns `nil` during candidate-frame construction | `invariantViolation` | `layout` | `candidateFrame` | `safetyNotProven` |
+| Render core's validated-resource adapter | A lookup in the already validated package unexpectedly returns `nil` during candidate-frame construction | `invariantViolation` | `rendering` | `candidateFrame` | `safetyNotProven` |
+| Layout's text-geometry adapter | Checked metric or positioned-geometry arithmetic overflows | `arithmeticOverflow` | `layout` | `candidateFrame` | `contained` |
+| Render core's exact-raster adapter | A required exact raster realization becomes unavailable after otherwise valid assembly | `requiredFacilityUnavailable` | `rendering` | `runtime` | `contained` |
+
+The target-host adapter is the truthful `hostComposition` producer because it
+owns structural admission of the selected package before runtime start. The
+shared resource module only computes a pure local validation result. After
+successful admission, layout and rendering are truthful producers for failures
+inside their respective consuming operations; neither may relabel an
+assembly-time validation rejection.
 
 The adapter encloses the fact in `GiftUIOutcome` as specified by SPEC-003.
 Policy disposition, retry, runtime health, diagnostics, wake behavior, and
 failed-frame rescheduling remain outside this contract. Diagnostic delivery
 failure MUST NOT change resource validation or lookup behavior.
 
-Before this Specification can advance to `review`, each row MUST have a
-fixture naming the concrete detecting adapter and proving that its existing
-SPEC-003 origin is truthful. If package validation must originate inside the
-shared resource module or no existing owner can report a row truthfully,
-SPEC-005 MUST NOT invent an origin or silently mislabel it; SPEC-003 must be
-revised and re-approved first.
+The independent contract suite MUST fixture every row against the named owner
+adapter and prove that the adapter imports `GiftUIFailureCore` while
+`GiftUITextResources` does not. No SPEC-003 origin extension is required by
+this contract.
 
 ## Performance Requirements
 
@@ -688,10 +752,13 @@ revised and re-approved first.
 - The reference nRF52840 composition MUST use a precompiled
   `.monochromeBitmap1` realization. Text-resource-specific linked flash,
   fixed RAM, worst-case validation stack, and per-frame text workspace MUST be
-  measured separately. This draft fixes ceilings of 96 KiB linked flash,
-  512 bytes fixed writable RAM, and 1 KiB worst-case validation stack; the
-  later LAYOUT and RENDERING contracts own text and operation workspace
-  ceilings.
+  measured separately. The adopted SPIKE-005 hardware-free fixture measured
+  9,224 bytes of incremental linked flash, zero incremental fixed writable
+  RAM, and a conservative 568-byte validation call-chain stack. The contract
+  ceilings remain 96 KiB linked flash, 512 bytes fixed writable RAM, and 1 KiB
+  worst-case validation stack so later Swift implementation and type overhead
+  remain bounded; the later LAYOUT and RENDERING contracts own text and
+  operation workspace ceilings.
 - Representative and maximum admitted Signal Analyzer text processing and
   raster consumption MUST fit inside the established 250-millisecond
   presentation interval while capture continues. Evidence MUST report layout,
@@ -820,46 +887,24 @@ host implementation can perform digest validation in build tooling and retain
 a generated validation certificate, but the assembly fixture must still prove
 that the embedded descriptors and digests match the certified package.
 
-The existing 5x7-in-8x12 bitmap code is useful for estimating table and raster
-cost. It should not be migrated as the reference package until its glyph
-provenance and license are resolved or it is replaced by a clean,
-documented resource.
+The existing 5x7-in-8x12 bitmap code remains useful only for historical cost
+comparison. It is not the adopted reference package and creates no migration
+or compatibility requirement.
 
 ## Open Issues
 
-1. **Approval blocker — licensed reference resource adoption.**
-   [SPIKE-005](../spikes/spike-005-inter-reference-font-resource.md) now
-   preserves a checked-in Inter 4.1 source and OFL license, renamed derived
-   assets, reproducible commands, exact hashes, coverage, and hardware-free
-   resource measurements. The Spike is evidence rather than authority. Before
-   moving this Specification to `review`, maintainers must review the license
-   obligations and decide whether to adopt or replace the Spike's candidate
-   canonical serialization and outline format in the complete reference
-   package. Replace this issue with authoritative package links and hashes
-   only after that review; do not treat completion of the Spike as approval.
-2. **Approval blocker — failure-origin ownership proof.** SPEC-003 has no
-   text-resource origin. Before review, every Error Handling row must name and
-   test an existing `hostComposition`, `layout`, or `rendering` adapter that
-   genuinely detects the condition. If validation necessarily originates in
-   `GiftUITextResources`, route the missing origin or mapping through a
-   SPEC-003 revision and approval rather than silently assigning another
-   layer's identity.
-3. **Review calibration — concrete nRF52840 ceilings.** The 96 KiB flash,
-   512-byte writable-RAM, and 1 KiB validation-stack ceilings are conservative
-   draft bounds, not measured evidence. If the licensed reference package
-   cannot meet them, revise the representation or submit measured evidence for
-   a contract revision; do not waive a ceiling because the total image fits.
-
-Neither issue permits identity substitution, geometry tolerance, an upward
-import, or backend-owned layout. Such a proposal would require RFC/ADR review.
+None. SPIKE-005's package and measurements are adopted above, and the exact
+SPEC-003 detecting-owner alignment is fixed under Error Handling. This
+resolution does not itself advance the Specification from `draft` to `review`
+or authorize implementation.
 
 ## Deferred and Follow-up Work
 
 - [SPIKE-005](../spikes/spike-005-inter-reference-font-resource.md) preserves
   the licensed Inter 4.1 source, derived reference assets, integrity evidence,
-  and hardware-free resource measurements needed to prepare this draft for
-  review. Its generator and formats remain disposable evidence until adopted
-  through this Specification.
+  and hardware-free resource measurements adopted as the reference-package
+  evidence for this contract. Its generator and firmware fixtures remain
+  disposable evidence and do not authorize production implementation.
 
 - [FW-001](../future-work/fw-001-international-and-rich-text-layout.md)
   preserves complex scripts, bidirectional/vertical layout, rich text,

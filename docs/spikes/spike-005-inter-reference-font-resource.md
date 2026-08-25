@@ -27,15 +27,17 @@ target_milestone: MVP
 
 ## Parent Gate
 
-SPEC-005 cannot advance to `review` until a licensed reference resource and
-derived assets are checked in with provenance, reproducible generation,
-integrity evidence, and measured static-resource bounds. This Spike tests
-whether the official Inter 4.1 Regular release can provide that evidence
-within SPEC-005's draft ceilings.
+At the start of this Spike, SPEC-005 could not advance to `review` until a
+licensed reference resource and derived assets were checked in with
+provenance, reproducible generation, integrity evidence, and measured static-
+resource bounds. This Spike tested whether the official Inter 4.1 Regular
+release could provide that evidence within SPEC-005's draft ceilings.
 
-The Spike does not approve SPEC-005, resolve its separate SPEC-003
-failure-origin blocker, select a production outline provider, or adopt its
-disposable generated tables into a production target.
+SPEC-005 now adopts the resulting package identity, canonical serialization,
+reference-fixture outline encoding, and measured calibration as contract
+inputs. The Spike still does not approve SPEC-005, select a production outline
+provider, or adopt its disposable generator or firmware fixtures into a
+production target.
 
 ## Target Questions
 
@@ -173,14 +175,14 @@ No board was flashed or run.
 
 ## Limitations
 
-- The legal findings are engineering evidence, not legal advice. A human must
-  review the OFL obligations and checked-in notices before SPEC-005 review.
-- The candidate canonical byte encoding resolves enough detail for the Spike,
-  but SPEC-005 must explicitly confirm signed geometry encoding and raster-
-  record inclusion before adopting its resource identity.
-- `giftui-spike-outline-v1` proves a bounded per-glyph outline payload is
-  possible. It is not an accepted provider format and was not rasterized by a
-  production GiftUI outline provider.
+- The legal findings are engineering evidence, not legal advice. SPEC-005's
+  adoption retains the checked-in OFL text, derivative naming, attribution,
+  and redistribution evidence as contract requirements.
+- SPEC-005 now explicitly adopts the candidate canonical bytes, including
+  signed geometry and raster-record serialization, for the reference package.
+- The Spike outline payload is adopted only as the contract's outline-capable
+  reference fixture. It was not rasterized by a production GiftUI provider and
+  does not require an MVP production outline provider.
 - The 16-pixel instance is a proportional reference fixture, not a public
   typography or layout-style decision.
 - The firmware fixture links C data and a disposable C validator rather than
@@ -197,12 +199,12 @@ SPEC-005 reference package, and the source, license, derivation commands,
 candidate derived assets, hashes, and resource measurements are now preserved
 in the repository.
 
-The evidence feeds SPEC-005 review preparation. Before that Specification can
-advance to `review`, maintainers must review licensing, decide whether to
-adopt or replace the candidate manifest and outline encodings, integrate the
-selected generated package through the authoritative contract, and resolve
-the separate SPEC-003 failure-origin blocker. None of those gates is bypassed
-by this completed Spike.
+The evidence now feeds SPEC-005 through its adopted reference-package hashes,
+exact canonical serialization, reference-fixture outline encoding, and
+measured nRF52840 calibration. SPEC-005 separately fixes its detecting-owner
+adapters using the existing SPEC-003 origins. The Specification remains a
+`draft`; this completed Spike neither advances its status nor authorizes
+implementation.
 
 ## References
 
