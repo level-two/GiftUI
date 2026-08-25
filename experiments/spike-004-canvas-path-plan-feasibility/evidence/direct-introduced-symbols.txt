@@ -1,0 +1,15 @@
+$e9app_swift11spike004Runys6UInt64Vs6UInt32VF
+digest
+failure
+path_point_count
+path_points
+path_subpath_count
+path_subpaths
+record_point.part.0
+spike004_candidate_run
+spike004_finish
+spike004_line
+spike004_move
+spike004_storage_reset
+spike004_stroke
+stroke_count

@@ -1,0 +1,5 @@
+candidate	flash_bytes	flash_delta	ram_bytes	ram_delta	bss_bytes
+baseline	25912	0	16636	0	9665
+copy-plan	26792	880	30204	13568	23143
+seal-plan	26712	800	23676	7040	16647
+direct	26472	560	23292	6656	16201

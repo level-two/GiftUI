@@ -776,12 +776,16 @@ each still requires lifecycle authority.
 
 ## Open Questions
 
-1. **Approval blocker — bounded plan feasibility:** Can the proposed
-   cycle-local snapshot plan satisfy the representative Signal Analyzer
-   workload on the supported Embedded Swift/nRF52840 build with acceptable
-   RAM, stack, flash, operation count, and no allocator dependency, and how
-   does it compare with direct emission? [SPIKE-004](../spikes/spike-004-canvas-path-plan-feasibility.md)
-   must provide reproducible evidence before this RFC moves to review.
+1. **Resolved evidence — bounded plan feasibility:**
+   [SPIKE-004](../spikes/spike-004-canvas-path-plan-feasibility.md) demonstrates
+   that both copy-to-plan and unique-range-seal candidates represent the full
+   836-point, 16-subpath, five-stroke Signal Analyzer workload in finite
+   zero-heap nRF52840 images. The candidates add 13,568 and 7,040 linked RAM
+   bytes and 880 and 800 linked flash bytes respectively, with conservative
+   complete fixture stack bounds of 104 and 92 bytes. Direct emission is
+   smaller but fails the no-partial-output fixture after late sink exhaustion.
+   This evidence resolves feasibility without choosing a storage strategy or
+   production capacity.
 2. **Approval blocker — implicit Canvas clip:** Do Canvas bounds contribute an
    implicit clip in addition to inherited clipping, or may drawing extend
    outside the Canvas bounds until an ancestor clip applies? Review must choose
@@ -797,17 +801,17 @@ each still requires lifecycle authority.
    remain to be defined by the drawing Specification under one deterministic
    cross-backend meaning.
 
-Questions 1 and 2 block advancement to `review`. Questions 3 and 4 do not
+Question 2 blocks advancement to `review`. Questions 3 and 4 do not
 change the proposed ownership, lifetime, or backend boundary and therefore may
 remain downstream contract work after the RFC settles their architectural
 constraints.
 
 ## Deferred and Follow-up Work
 
-- [SPIKE-004](../spikes/spike-004-canvas-path-plan-feasibility.md) is a bounded
-  implementation experiment required to answer the current static-feasibility
-  approval blocker. It does not defer the decision or authorize production
-  code. Its evidence must return to this RFC before review.
+- [SPIKE-004](../spikes/spike-004-canvas-path-plan-feasibility.md) completed the
+  bounded static-feasibility comparison. Its results are evidence for the
+  proposed cycle-local plan and do not select production code, capacities, or
+  architecture.
 
 Richer fills, curves, images, Canvas text, public clipping controls,
 transforms, effects, retained rendering, and animation remain outside the

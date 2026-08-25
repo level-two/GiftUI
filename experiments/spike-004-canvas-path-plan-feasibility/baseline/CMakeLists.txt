@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.29)
+find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+set(CMAKE_Swift_COMPILER_TARGET "${GIFTUI_SWIFT_TARGET}")
+set(CMAKE_Swift_COMPILER_WORKS TRUE CACHE BOOL "Embedded Swift cross-compiler" FORCE)
+project(Spike004Baseline LANGUAGES C Swift)
+set(SPIKE004_SWIFT_SOURCE "${CMAKE_CURRENT_LIST_DIR}/../Baseline.swift")
+set(SPIKE004_VARIANT SPIKE004_BASELINE)
+include("${CMAKE_CURRENT_LIST_DIR}/../common.cmake")

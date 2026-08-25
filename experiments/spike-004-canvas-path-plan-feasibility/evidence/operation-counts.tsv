@@ -1,0 +1,4 @@
+candidate	constructed_points	subpaths	strokes	operations	point_copies	range_seals	sink_rows	closure_runs
+copy-to-plan	836	16	5	5	836	0	5	1
+unique-range-seal	836	16	5	5	0	5	5	1
+direct-emission	836	16	5	5	0	0	5	1

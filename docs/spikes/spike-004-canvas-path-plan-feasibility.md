@@ -2,7 +2,7 @@
 id: SPIKE-004
 feature: canvas-drawing
 title: Canvas Path Plan Feasibility
-status: planned
+status: completed
 authors:
   - Yauheni Lychkouski
 created: 2026-08-25
@@ -200,7 +200,70 @@ connected hardware, or claim hardware validation.
 
 ## Results
 
-Not run. This Spike is `planned`.
+Completed on 2026-08-25 with the repository-managed Swift 6.3.2 compiler,
+Zephyr 4.3.0, Zephyr SDK 0.17.4, board `nrf52840dk/nrf52840`, Swift target
+`armv7em-none-none-eabi`, Cortex-M4F hard-float flags, and `-Osize`. The
+repository-root reproduction command is:
+
+```text
+experiments/spike-004-canvas-path-plan-feasibility/run.sh
+```
+
+The matched workload contains 400 visible transitions concentrated in one
+channel to exercise the maximum current-Path bound, 808 trace segments, 12
+grid segments, 836 points, 16 subpaths, and five ordered strokes/operations.
+All shared semantic, boundary, and exhaustion fixtures produced their expected
+outcomes for all three candidates. The complete workload produced the same
+canonical recording digest for copy-to-plan, unique-range seal, and successful
+direct emission.
+
+### Linked nRF52840 Evidence
+
+| Candidate | Linked flash | Delta | Linked RAM | Delta | `bss` |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Placeholder baseline | 25,912 B | 0 B | 16,636 B | 0 B | 9,665 B |
+| Copy-to-plan | 26,792 B | +880 B | 30,204 B | +13,568 B | 23,143 B |
+| Unique-range seal | 26,712 B | +800 B | 23,676 B | +7,040 B | 16,647 B |
+| Direct emission | 26,472 B | +560 B | 23,292 B | +6,656 B | 16,201 B |
+
+The producer workspace model accounts for 13,456 bytes for copy-to-plan,
+6,960 bytes for unique-range seal, and 6,520 bytes for direct emission. Every
+image also contains matched backend-owned storage: a 3,840-byte RGB565 tile,
+a 960-byte span, and a 3,840-byte transfer buffer. The point, subpath, and
+stroke-record costs are 8, 8, and 24 bytes respectively, including alignment.
+
+Complete disassembly call-graph analysis gives conservative fixture stack
+bounds of 36 bytes for the baseline, 104 bytes for copy-to-plan, 92 bytes for
+unique-range seal, and 84 bytes for direct emission. These bounds exclude
+Zephyr boot and scheduler frames and are not connected-board high-water
+measurements.
+
+Every image has a zero-sized Zephyr heap and libc arena, retains no allocator
+entry point, introduces no linked reflection, Objective-C, task, exception, or
+allocation dependency relative to the baseline, reports ARMv7E-M, and reports
+VFP-register argument passing. No board was flashed or operated.
+
+### Semantic and Transaction Results
+
+- Both plan candidates preserve later-mutation independence, multiple
+  subpaths, empty and one-point subpaths, repeated endpoints, zero-length
+  segments, painter order, checked translation, exact workload bounds,
+  deterministic exhaustion, and a single client-fixture invocation.
+- Both plans validate complete producer and sink capacity before offer. The
+  late sink-exhaustion fixture leaves the recording sink empty.
+- Direct emission produces equivalent successful rows and has the lowest
+  measured resource cost, but a sink exhaustion after one successful stroke
+  leaves partial output. It therefore fails the required no-partial-output
+  boundary unless it adds retained pre-recording or reinvokes the client
+  closure, both excluded by this Spike.
+- The bounded RGB565 consumer consumes each borrowed row synchronously and
+  retains no Core storage or borrowed address after offer.
+
+Stable generated evidence is under
+`experiments/spike-004-canvas-path-plan-feasibility/evidence/`, including
+`summary.md`, `semantic-results.tsv`, `operation-counts.tsv`,
+`resources.tsv`, symbol comparisons, and stack analysis. Generated firmware
+and detailed ELF reports remain under `.build/nrf52840/spike-004-*`.
 
 ## Limitations
 
@@ -217,11 +280,18 @@ Not run. This Spike is `planned`.
 
 ## Disposition
 
-Planned. When completed, feed the semantic and resource matrix back into
-RFC-009 Open Question 1. If no snapshot-plan candidate satisfies the gate,
-RFC-009 must remain draft and reconsider its ownership/lifetime proposal; the
-Spike must not silently promote direct emission or change accepted
-architecture.
+Completed. Target Questions 1, 2, 3, 5, and 6 pass for both cycle-local plan
+candidates. Target Question 4 passes for both plans and fails for direct
+emission. The measured plan candidates fit the supported hardware-free
+nRF52840 build with finite RAM, flash, stack, operations, and no allocator or
+forbidden runtime dependency, so RFC-009's bounded-plan feasibility blocker is
+resolved by evidence.
+
+This result feeds RFC-009 only. It does not choose copy versus sealed ranges,
+set production capacities, approve the RFC, establish an operation encoding or
+raster algorithm, or authorize reuse of the disposable code. RFC-009 remains
+`draft`; its separate implicit-Canvas-clip blocker still requires resolution
+before review.
 
 ## References
 
