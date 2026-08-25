@@ -66,11 +66,12 @@ and diagnostic vocabulary; SPEC-004 owns capability contribution, resolution,
 and the `rasterPresentation` catalogue while referencing the first two
 contracts instead of redefining them.
 
-Wave 2 has entered coordinated drafting with these immutable identities:
+Wave 2 has entered coordinated drafting and review with these immutable
+identities:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `TEXT` | `SPEC-005` | `draft` |
+| `TEXT` | `SPEC-005` | `review` |
 | `DECLARATIVE` | `SPEC-006` | `draft` |
 
 SPEC-005 and SPEC-006 are parallel sibling contracts. SPEC-005 owns exact text

@@ -202,8 +202,9 @@ in the repository.
 The evidence now feeds SPEC-005 through its adopted reference-package hashes,
 exact canonical serialization, reference-fixture outline encoding, and
 measured nRF52840 calibration. SPEC-005 separately fixes its detecting-owner
-adapters using the existing SPEC-003 origins. The Specification remains a
-`draft`; this completed Spike neither advances its status nor authorizes
+adapters using the existing SPEC-002 and SPEC-003 contracts. This Spike left
+the Specification at `draft`; subsequent Specification review advanced it to
+`review`. The completed Spike neither caused that transition nor authorizes
 implementation.
 
 ## References

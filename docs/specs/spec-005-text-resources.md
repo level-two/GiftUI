@@ -2,7 +2,7 @@
 id: SPEC-005
 feature: giftui-mvp-architecture
 title: Deterministic Text Resource Contract
-status: draft
+status: review
 authors:
   - codex
 created: 2026-08-25
@@ -40,11 +40,11 @@ target_milestone: MVP
 
 # SPEC-005: Deterministic Text Resource Contract
 
-> **Draft gate:** The architecture and prerequisite Foundation contract are
-> authoritative, but this Specification does not authorize implementation.
-> SPIKE-005 supplies the adopted licensed reference package, reproducible
-> integrity evidence, and measured static-resource calibration. The exact
-> SPEC-003 owner-adapter mappings are fixed under Error Handling.
+> **Review status:** The architecture and prerequisite Foundation contract are
+> authoritative, and SPIKE-005 supplies the adopted licensed reference
+> package, reproducible integrity evidence, and measured static-resource
+> calibration. This Specification is ready for human approval consideration;
+> review status does not authorize implementation.
 
 ## Summary
 
@@ -109,6 +109,9 @@ dynamic, and nRF52840/Zephyr static configurations.
 - Support complex-script shaping, bidirectional or vertical layout, locale
   segmentation, rich text, variable fonts, color glyphs, editing, selection,
   runtime font discovery, or arbitrary runtime registration.
+- Package multiple font sizes, weights, or styles. The MVP uses the one exact
+  reference instance required by the Signal Analyzer; additional instances
+  require a later contract revision justified by a concrete client need.
 - Define a stable ABI, persistent run format, independently versioned font
   package, or general-purpose font-container format.
 - Ratify `GiftUIBuiltinFont`, `BuiltinFont8x12`, `TextRun`, or the existing raw
@@ -198,13 +201,21 @@ part of the package.
   scalar values and obtain line and glyph metrics.
 
 **Raster-resource view**
-: An immutable view used by an exact raster provider to borrow the payload for
-  a selected glyph and raster realization.
+: An immutable catalogue of exact raster-realization descriptors and records,
+  plus the payloads linked by the assembled target. Every target sees the same
+  catalogue identity, but a constrained target need not link an unselected
+  payload.
 
 **Exact raster realization**
 : A raster data set generated and integrity-bound to the same resource set and
   instance as the canonical metrics. It may be a monochrome bitmap strike or
   packaged outline payload.
+
+**Available realization**
+: A catalogued exact raster realization whose payload bytes are present in the
+  concrete target package. Availability does not change the resource-set
+  identity. A realization is usable only after assembly validation requires
+  and validates that available payload.
 
 **Reference package**
 : The licensed concrete package used by contract fixtures and required by all
@@ -247,6 +258,12 @@ portable values and checked geometry. It MUST NOT import layout, render core,
 runtime, failure, capability, backend, raster provider, concrete resource,
 platform, driver, OS/RTOS, HAL, or hardware modules.
 
+The MVP package MUST NOT expose a standalone `GiftUITextResources` library
+product. Package-internal targets backing host, tooling, resource, layout,
+render, and raster products depend on the target directly, which preserves its
+`package` SPI. Adding an externally consumable text-resource product or public
+resource SPI requires a later contract and compatibility review.
+
 The required direct dependency direction is:
 
 ```text
@@ -287,6 +304,16 @@ package struct TextResourceDigest: Equatable, Hashable, Sendable {
     package let word5: UInt32
     package let word6: UInt32
     package let word7: UInt32
+    package init(
+        word0: UInt32,
+        word1: UInt32,
+        word2: UInt32,
+        word3: UInt32,
+        word4: UInt32,
+        word5: UInt32,
+        word6: UInt32,
+        word7: UInt32
+    )
 }
 
 package struct FontResourceID: RawRepresentable, Equatable, Hashable, Sendable {
@@ -297,6 +324,7 @@ package struct FontResourceID: RawRepresentable, Equatable, Hashable, Sendable {
 package struct FontInstanceID: Equatable, Hashable, Sendable {
     package let resource: FontResourceID
     package let instanceIndex: UInt16
+    package init(resource: FontResourceID, instanceIndex: UInt16)
 }
 
 package struct GlyphID: RawRepresentable, Equatable, Hashable, Sendable {
@@ -318,6 +346,12 @@ after range validation against the exact package descriptor. Identity values
 MUST NOT contain a pointer, reference, string, existential, closure, or
 platform-native handle.
 
+The 32 SHA-256 output bytes map to `TextResourceDigest.word0...word7` in that
+order, four bytes per word, with each word decoded big-endian. Re-encoding a
+digest emits each word big-endian in the same order. Host endianness and the
+in-memory byte representation of the struct MUST NOT affect equality,
+hashing, canonical serialization, or fixture output.
+
 ### Descriptors and metrics
 
 ```swift
@@ -330,6 +364,11 @@ package struct FontLineMetrics: Equatable, Sendable {
     package let ascent: GeometryScalar
     package let descent: GeometryScalar
     package let lineGap: GeometryScalar
+    package init(
+        ascent: GeometryScalar,
+        descent: GeometryScalar,
+        lineGap: GeometryScalar
+    )
 }
 
 package struct GlyphMetrics: Equatable, Sendable {
@@ -337,6 +376,12 @@ package struct GlyphMetrics: Equatable, Sendable {
     package let offsetX: GeometryScalar
     package let offsetY: GeometryScalar
     package let inkSize: Size
+    package init(
+        advanceX: GeometryScalar,
+        offsetX: GeometryScalar,
+        offsetY: GeometryScalar,
+        inkSize: Size
+    )
 }
 
 package struct FontInstanceDescriptor: Equatable, Sendable {
@@ -345,6 +390,13 @@ package struct FontInstanceDescriptor: Equatable, Sendable {
     package let replacementGlyph: GlyphID
     package let glyphCount: UInt16
     package let mappingCount: UInt16
+    package init(
+        id: FontInstanceID,
+        lineMetrics: FontLineMetrics,
+        replacementGlyph: GlyphID,
+        glyphCount: UInt16,
+        mappingCount: UInt16
+    )
 }
 
 package struct RasterRealizationDescriptor: Equatable, Sendable {
@@ -354,6 +406,14 @@ package struct RasterRealizationDescriptor: Equatable, Sendable {
     package let glyphCount: UInt16
     package let payloadByteCount: UInt32
     package let payloadDigest: TextResourceDigest
+    package init(
+        id: RasterRealizationID,
+        instance: FontInstanceID,
+        kind: TextRasterKind,
+        glyphCount: UInt16,
+        payloadByteCount: UInt32,
+        payloadDigest: TextResourceDigest
+    )
 }
 
 package struct TextResourceDescriptor: Equatable, Sendable {
@@ -362,20 +422,43 @@ package struct TextResourceDescriptor: Equatable, Sendable {
     package let instanceCount: UInt16
     package let realizationCount: UInt16
     package let canonicalManifestByteCount: UInt32
+    package init(
+        schemaVersion: UInt16,
+        resource: FontResourceID,
+        instanceCount: UInt16,
+        realizationCount: UInt16,
+        canonicalManifestByteCount: UInt32
+    )
 }
 ```
 
-`schemaVersion` MUST equal `1`. A valid resource contains `1...4` instances,
-each instance contains `1...256` glyphs and `1...256` scalar mappings, and the
-package contains `1...2` raster realizations. Each realization contains the
-same `glyphCount` as its referenced instance and at most 65,536 payload bytes.
-The canonical manifest is at most 16,384 bytes.
+`schemaVersion` MUST equal `1`. An MVP resource contains exactly one font
+instance, whose `instanceIndex` is `0`, with `1...256` glyphs and `1...256`
+scalar mappings. The resource catalogue contains `1...2` raster realizations.
+Realization IDs and glyph IDs MUST be the contiguous ranges beginning at zero
+implied by their declared counts, and every realization MUST reference the
+sole instance. Each realization contains the same `glyphCount` as that
+instance and at most 65,536 payload bytes. The canonical manifest is at most
+16,384 bytes. A concrete package MUST make at least one catalogued realization
+payload available, but it MAY omit payloads that its target composition does
+not select.
 
 `ascent` MUST be positive. `descent` and `lineGap` MUST be non-negative. Their
 checked sum MUST be positive and representable. `advanceX` and both ink
 dimensions MUST be non-negative. Offsets may be negative. Every checked ink
 edge and advance accumulation required by a consumer MUST be representable in
 SPEC-002 geometry or the consumer rejects the operation.
+
+Text geometry uses the SPEC-002 coordinate convention with positive x to the
+right and positive y downward. A glyph origin is its baseline point.
+`ascent` is the positive distance from the baseline to the line box's top,
+`descent` is the non-negative distance from the baseline to its bottom, and
+the next unconstrained baseline is exactly
+`ascent + descent + lineGap` logical units below the current baseline. A
+glyph's ink rectangle begins at
+`baseline + Point(x: offsetX, y: offsetY)` and has `inkSize`. These meanings
+define resource geometry only; the later LAYOUT contract still owns line
+origins, wrapping, constraints, and placement.
 
 ### Compatible resource views
 
@@ -388,6 +471,7 @@ package enum GlyphMapping: Equatable, Sendable {
 package struct ScalarGlyphMappingRecord: Equatable, Sendable {
     package let scalarValue: UInt32
     package let glyph: GlyphID
+    package init(scalarValue: UInt32, glyph: GlyphID)
 }
 
 package struct GlyphRasterRecord: Equatable, Sendable {
@@ -397,6 +481,14 @@ package struct GlyphRasterRecord: Equatable, Sendable {
     package let rowByteCount: UInt16
     package let pixelWidth: UInt16
     package let pixelHeight: UInt16
+    package init(
+        glyph: GlyphID,
+        offset: UInt32,
+        byteCount: UInt32,
+        rowByteCount: UInt16,
+        pixelWidth: UInt16,
+        pixelHeight: UInt16
+    )
 }
 
 package protocol CanonicalTextMetricsView {
@@ -415,6 +507,7 @@ package protocol TextRasterResourceView {
     func realization(at index: UInt16) -> RasterRealizationDescriptor?
     func record(for glyph: GlyphID, realization: RasterRealizationID)
         -> GlyphRasterRecord?
+    func isPayloadAvailable(for realization: RasterRealizationID) -> Bool
     func withPayload<Result>(
         for record: GlyphRasterRecord,
         realization: RasterRealizationID,
@@ -426,27 +519,37 @@ package struct TextResourcePackage<Metrics, Raster>
 where Metrics: CanonicalTextMetricsView, Raster: TextRasterResourceView {
     package let metrics: Metrics
     package let raster: Raster
+    package init(metrics: Metrics, raster: Raster)
 }
 ```
 
-Every indexed accessor MUST return `nil` for an out-of-range index, mismatched
+Every optional-returning accessor MUST return `nil` for an out-of-range index, mismatched
 resource or instance identity, invalid scalar value, invalid glyph, or invalid
 realization. It MUST NOT trap, clamp, wrap, substitute another instance, or
 perform ambient lookup. A valid Unicode scalar value is `0...0x10_FFFF`
 excluding `0xD800...0xDFFF`.
 
-Every record struct in this section MUST provide a `package` initializer whose
-parameter labels and order match its stored properties. Initializers perform
-no repair; `TextResourceValidator` is the authority that admits or rejects a
-complete package. Mapping records MUST be strictly ascending by scalar value,
+`isPayloadAvailable` returns `false` for an invalid realization and otherwise
+reports only whether that exact catalogued payload is linked into the concrete
+package. It performs no discovery or fallback. `record` remains available for
+every catalogued realization because record metadata participates in the
+common resource identity even when that target omits the payload bytes.
+
+Initializers perform no repair; `TextResourceValidator` is the authority that
+admits or rejects a complete package. Mapping records MUST be strictly
+ascending by scalar value,
 contain valid Unicode scalar values other than U+000A and U+000D, contain no
 duplicate scalar, and reference a valid glyph in the named instance.
 
-`withPayload` calls `body` exactly once for a valid record and realization and
-returns its result. The buffer is read-only, has exactly `record.byteCount`
-bytes, and is valid only during `body`. It returns `nil` and does not invoke
-`body` for invalid input. The implementation MUST NOT allocate merely to
-produce the borrow.
+`withPayload` calls `body` exactly once for a valid record in an available
+realization and returns its result. The buffer is read-only, has exactly
+`record.byteCount` bytes, and is valid only during `body`. It returns `nil`
+and does not invoke `body` for invalid input or an unavailable realization.
+The implementation MUST NOT allocate merely to produce the borrow. A valid
+zero-byte record still invokes `body` exactly once with an empty buffer. The
+method never throws for its own validation or availability result; `rethrows`
+only preserves an error produced by `body`, and static conformance MUST use a
+non-throwing body.
 
 For `.monochromeBitmap1`, bits are row-major, most-significant bit first,
 `rowByteCount == ceil(pixelWidth / 8)`, unused low bits in the final byte of a
@@ -472,23 +575,25 @@ the implied quadratic point is encoded as the reserved pair
 `(0x7FFF, 0x7FFF)`. Close and end commands have no operand-count byte. Every
 coordinate MUST be representable as `Int16`, every command and operand count
 MUST be structurally complete, and no bytes may remain after the final
-command. This format is required only for the outline-capable reference
-fixture; no MVP configuration is required to select it or provide a production
-outline rasterizer.
+command. Every outline record MUST have `rowByteCount == 0`; its
+`pixelWidth` and `pixelHeight` MUST equal the canonical `inkSize`. This format
+is required only for the outline-capable reference fixture; no MVP
+configuration is required to select it or provide a production outline
+rasterizer.
 
 ### Package validation
 
 ```swift
 package enum TextResourceValidationError: UInt8, Equatable, Sendable {
     case unsupportedSchema = 0
-    case invalidCount = 1
-    case invalidIdentity = 2
-    case incompatibleViews = 3
-    case malformedMetrics = 4
-    case malformedMapping = 5
-    case malformedRasterRecord = 6
-    case integrityMismatch = 7
-    case capacityExceeded = 8
+    case capacityExceeded = 1
+    case invalidCount = 2
+    case invalidIdentity = 3
+    case incompatibleViews = 4
+    case malformedMetrics = 5
+    case malformedMapping = 6
+    case malformedRasterRecord = 7
+    case integrityMismatch = 8
 }
 
 package enum TextResourceValidationResult: Equatable, Sendable {
@@ -498,17 +603,54 @@ package enum TextResourceValidationResult: Equatable, Sendable {
 
 package enum TextResourceValidator {
     package static func validate<M, R>(
-        _ resourcePackage: borrowing TextResourcePackage<M, R>
+        _ resourcePackage: borrowing TextResourcePackage<M, R>,
+        requiring realization: RasterRealizationID
     ) -> TextResourceValidationResult
     where M: CanonicalTextMetricsView, R: TextRasterResourceView
 }
 ```
 
-Validation MUST be total and deterministic. It MUST evaluate in enum raw-value
-precedence and return the first applicable error. It MUST validate every
-declared instance, mapping, glyph metric, realization, raster record, payload
-range, payload digest, and cross-view identity before returning `.valid`.
-There is no partially valid package.
+Validation MUST be total and deterministic. It MUST evaluate the predicates
+below in enum raw-value precedence and return the first applicable error,
+independent of table declaration or traversal order:
+
+1. `unsupportedSchema`: either view declares a schema other than `1`;
+2. `capacityExceeded`: any declared or reconstructed instance, glyph, mapping,
+   realization, manifest-byte, or payload-byte count exceeds its maximum in
+   this contract;
+3. `invalidCount`: `instanceCount`, `glyphCount`, `mappingCount`,
+   `realizationCount`, or the manifest byte count is zero, two views disagree
+   on a count, or an accessor cannot enumerate exactly the declared number of
+   instances, mappings, metrics, realizations, or records; a zero payload byte
+   count remains valid when its records form a valid empty partition;
+4. `invalidIdentity`: an instance, glyph, or realization ID is outside or does
+   not equal its required contiguous index, an identity references the wrong
+   resource or instance, or an identity is duplicated;
+5. `incompatibleViews`: the two `TextResourceDescriptor` values are unequal,
+   the required realization is not catalogued, its payload is unavailable, or
+   metric and raster metadata do not describe the same instances and glyphs,
+   or availability claims a payload that cannot be borrowed completely;
+6. `malformedMetrics`: line or glyph metrics violate their sign, checked-sum,
+   size, replacement-glyph, or representability invariant;
+7. `malformedMapping`: a mapping contains an invalid or line-break scalar, is
+   not strictly scalar-ascending, is duplicated, references an invalid glyph,
+   or otherwise violates the canonical table shape;
+8. `malformedRasterRecord`: records overlap, leave a gap, exceed their payload
+   range, disagree with glyph order or canonical ink size, violate the bitmap
+   encoding, or violate the reference outline encoding; and
+9. `integrityMismatch`: reconstructed canonical bytes do not equal the
+   declared byte count or resource identity, or any available payload does not
+   equal its declared byte count and digest.
+
+Validation MUST validate every catalogued descriptor and record, every metric
+and mapping, the reconstructed canonical manifest, and every available payload
+before returning `.valid`. The `requiring` argument makes absence of the
+target-selected realization an `incompatibleViews` failure; absence of an
+unselected payload is valid and does not change `FontResourceID`. Build
+tooling MUST make every catalogued payload available and call validation for
+each realization. Host assembly MUST call it for the one realization selected
+by that immutable composition. There is no partially valid metrics catalogue
+or selected realization.
 
 The canonical manifest is a tooling artifact, not a runtime parser format. Its
 schema-version-1 byte serialization is exactly the following concatenation;
@@ -542,6 +684,13 @@ validation MUST reproduce and compare them; there is no filename, timestamp,
 locale, platform, table address, raw raster payload, or outline-format display
 name directly in the manifest. Payload bytes are bound through their digest.
 
+The canonical manifest is the complete resource-set catalogue and is
+identical across target compositions. A target MAY omit unselected payload
+bytes and their provider implementation, but it MUST retain the catalogued
+descriptor, records, and digest. That omission changes availability, not the
+manifest or `FontResourceID`. A target MUST NOT claim or select an omitted
+realization.
+
 ### Positioned-glyph resource borrowing
 
 This Specification does not declare the positioned-glyph operation, its
@@ -571,6 +720,8 @@ U+000A is a mandatory line-break control and is not a glyph mapping. A
 U+000D immediately followed by U+000A is one line break; an isolated U+000D is
 also one line break. The later LAYOUT contract owns constraint-based wrapping
 and placement, but MUST use these explicit breaks and the exact metrics here.
+`mapScalar` returns `nil` for U+000A and U+000D; the sequence consumer MUST
+classify those controls before treating `nil` as an invalid lookup.
 
 Every other valid scalar absent from the mapping table returns
 `.replacement(instance.replacementGlyph)`. An invalid scalar value returns
@@ -605,9 +756,12 @@ target host MUST validate the selected immutable package during structural
 assembly and before the first run cycle. Layout, render, raster, and backend
 consumers MUST receive no package reference until validation succeeds.
 
-A host selects exactly one resource package for the MVP runtime. Every
-positioned glyph in one candidate frame MUST refer to an instance in that
-validated package. Live package replacement is outside MVP.
+A host selects exactly one resource package and one available raster
+realization for the MVP runtime. Every positioned glyph in one candidate
+frame MUST refer to an instance in that validated package. Every raster
+payload lookup MUST use the assembly-selected realization; another catalogued
+realization is unusable unless it was also linked and validated. Live package
+or realization replacement is outside MVP.
 
 ### Adopted reference package
 
@@ -636,17 +790,29 @@ the outline payload is 13,195 bytes with SHA-256
 Any change to these inputs or derived bytes creates a different package and
 MUST receive a new `FontResourceID`.
 
+All four host fixtures MUST use that complete catalogue and identity. The
+nRF52840 fixture MUST link the generated metrics, records, digests, and bitmap
+payload needed to reconstruct or certify the canonical manifest, and MUST omit
+the raw outline payload and any outline provider. It need not store a second
+copy of the canonical-manifest bytes. An outline-capable fixture MUST link and
+validate both payloads. The different linked payload sets MUST preserve the
+same `FontResourceID` because the catalogue already binds both exact payload
+digests.
+
 ## State / Lifecycle
 
 A generated concrete package transitions only through:
 
 ```text
-generated -> build-validated -> assembly-validated -> borrowed by runtime
-          -> all consumers torn down -> released with host
+generated catalogue and payloads -> build-validated complete package
+    -> target payload subset linked -> selected payload assembly-validated
+    -> borrowed by runtime -> all consumers torn down -> released with host
 ```
 
-Failure at either validation step leaves the package inadmissible. Validation
-does not repair, substitute, truncate, or partially expose it.
+Failure at either validation step leaves the catalogue and selected payload
+inadmissible. Validation does not repair, substitute, truncate, or partially
+expose them. An omitted unselected payload is not partial validity: it remains
+catalogued but unavailable and cannot be selected or borrowed.
 
 Resource descriptors, metrics, mappings, records, and payload bytes are
 immutable for the complete host-owned lifetime. Dynamic caches are derived
@@ -668,9 +834,11 @@ is structural assembly validation, not capability resolution.
 
 A later host or backend contract MAY require one of the exact raster kinds,
 but a capability result MUST NOT select an identity other than the package
-validated for layout, claim support for a missing realization, weaken an
-integrity failure, or change logical metrics. Runtime loss after successful
-assembly is an operational failure and does not mutate a capability snapshot.
+validated for layout, claim support for an unavailable realization, weaken an
+integrity failure, or change logical metrics. Structural assembly MUST verify
+the selected realization's availability before capability resolution can
+claim a conforming raster path. Runtime loss after successful assembly is an
+operational failure and does not mutate a capability snapshot.
 
 ## Backend Requirements
 
@@ -708,7 +876,7 @@ MUST perform the exact mapping below:
 | Target host's text-resource assembly adapter | `capacityExceeded` returned while admitting the selected package | `capacityExhausted` | `hostComposition` | `runtime` | `contained` |
 | Layout's validated-resource adapter | A lookup in the already validated package unexpectedly returns `nil` during candidate-frame construction | `invariantViolation` | `layout` | `candidateFrame` | `safetyNotProven` |
 | Render core's validated-resource adapter | A lookup in the already validated package unexpectedly returns `nil` during candidate-frame construction | `invariantViolation` | `rendering` | `candidateFrame` | `safetyNotProven` |
-| Layout's text-geometry adapter | Checked metric or positioned-geometry arithmetic overflows | `arithmeticOverflow` | `layout` | `candidateFrame` | `contained` |
+| Layout's Foundation adapter | SPEC-002 `GeometryArithmetic` returns `nil` while calculating text metric, ink, advance, or positioned geometry | `arithmeticOverflow` | `foundation` | `operation` | `contained` |
 | Render core's exact-raster adapter | A required exact raster realization becomes unavailable after otherwise valid assembly | `requiredFacilityUnavailable` | `rendering` | `runtime` | `contained` |
 
 The target-host adapter is the truthful `hostComposition` producer because it
@@ -717,6 +885,13 @@ shared resource module only computes a pure local validation result. After
 successful admission, layout and rendering are truthful producers for failures
 inside their respective consuming operations; neither may relabel an
 assembly-time validation rejection.
+
+U+000A and U+000D intentionally produce no glyph mapping, and invalid caller
+input is rejected before validated lookup. Those expected `nil` results MUST
+NOT be mapped as invariant failures. The Foundation arithmetic row exactly
+preserves SPEC-002's required first-boundary fact; a later execution adapter
+MAY correlate that unchanged fact with its candidate frame but MUST NOT
+replace `.foundation` with `.layout` or widen `.operation` inside the fact.
 
 The adapter encloses the fact in `GiftUIOutcome` as specified by SPEC-003.
 Policy disposition, retry, runtime health, diagnostics, wake behavior, and
@@ -738,19 +913,22 @@ this contract.
 - Lookup work MUST be bounded by 256 mapping or glyph records and two raster
   realizations. Generated direct tables MAY provide constant lookup; a linear
   implementation MUST perform no more than 256 record comparisons per lookup.
-- Full validation MUST visit each declared record and payload byte at most
-  once per digest pass and MUST execute only during build validation or host
-  assembly, never per frame or per glyph.
+- Full validation MUST visit each declared record and each available payload
+  byte at most once per digest pass and MUST execute only during build
+  validation or host assembly, never per frame or per glyph. Build validation
+  visits every catalogued payload; a target host visits only payloads linked
+  by that target and requires its selected one.
 - `TextResourceDigest` and `FontResourceID` MUST each occupy 32 bytes,
   `GlyphID` and
   `RasterRealizationID` 2 bytes each, `FontInstanceID` at most 36 bytes,
   `FontLineMetrics` at most 12 bytes, `GlyphMetrics` at most 24 bytes, and each
   descriptor or raster record at most 80 bytes on every supported compiler.
-- The complete reference package MUST contain at most four instances, 256
-  glyphs per instance, 256 mappings per instance, two realizations, 65,536
-  payload bytes per realization, and 16,384 canonical-manifest bytes.
+- Every MVP package MUST contain exactly one instance, at most 256 glyphs, at
+  most 256 mappings, at most two realizations, 65,536 payload bytes per
+  realization, and 16,384 canonical-manifest bytes.
 - The reference nRF52840 composition MUST use a precompiled
-  `.monochromeBitmap1` realization. Text-resource-specific linked flash,
+  `.monochromeBitmap1` realization and MUST NOT link the reference outline
+  payload or an outline provider. Text-resource-specific linked flash,
   fixed RAM, worst-case validation stack, and per-frame text workspace MUST be
   measured separately. The adopted SPIKE-005 hardware-free fixture measured
   9,224 bytes of incremental linked flash, zero incremental fixed writable
@@ -778,17 +956,21 @@ scripts/contracts/run-spec-005.sh --profile nrf52840-embedded
 Each run records compiler identity, target, flags, repository revision and
 dirty state, generated-manifest hash, source-resource hash, generated-table
 hash, linked section sizes, owned-value size/stride/alignment, allocation
-count, maximum lookup comparisons, and validation stack method. Cross-build
-evidence is not connected-hardware evidence.
+count, maximum lookup comparisons, validation stack method, selected and
+available realization IDs, and symbol/section evidence that target-omitted
+payloads and providers are not linked. Cross-build evidence is not
+connected-hardware evidence.
 
 ## Compatibility
 
 - Static and dynamic profiles MAY use generated or allocation-backed storage,
   but MUST expose equal identities, validation results, mappings, metrics,
-  resource lookups, and failures.
+  catalogued resource lookups, and failures for equal inputs. Payload
+  availability MAY differ only according to the immutable target composition.
 - All four MVP configurations MUST use one compatible reference resource-set
-  identity for the shared Signal Analyzer fixtures. They MAY select different
-  raster realizations under that identity.
+  identity and catalogue for the shared Signal Analyzer fixtures. They MAY
+  link and select different raster realizations under that identity; absence
+  of an unselected payload MUST NOT change logical results or identity.
 - Portable Presentation gains no resource, backend, platform, or device
   imports or conditional branches.
 - The proof-of-concept 8x12 metrics, lowercase folding, fallback behavior,
@@ -805,9 +987,12 @@ The independent contract suite MUST include:
 
 - canonical-manifest golden vectors proving stable SHA-256 resource and
   payload identities across host and cross-built tooling;
-- valid packages with bitmap-only and bitmap-plus-outline descriptors;
+- a one-realization package, the complete reference catalogue with both
+  payloads available, and target packages that retain that catalogue while
+  making only the bitmap or only the outline payload available;
 - one isolated fixture for every validation error and a pairwise corpus
-  proving raw-value precedence is independent of table declaration order;
+  proving the exact error predicates and raw-value precedence are independent
+  of table declaration and traversal order;
 - every boundary count: zero, one, maximum, and maximum plus one for instances,
   mappings, glyphs, realizations, manifest bytes, and payload bytes;
 - every scalar boundary, surrogate, U+000A, U+000D, CRLF, ASCII printable
@@ -818,14 +1003,18 @@ The independent contract suite MUST include:
   payload range, payload digest, and manifest digest fixtures;
 - bitmap bit order, padding bits, row width, dimensions, and byte-count tests;
 - `withPayload` tests proving exactly-once invocation for valid input, zero
-  invocation for invalid input, exact buffer count, and no retained borrow;
-- a minimal recording-operation adapter fixture supplied by the later
-  RENDERING contract proving nominal identities resolve only during the offer
-  and no package or payload borrow survives return;
+  invocation for invalid or unavailable input, exact buffer count, and no
+  retained borrow;
+- a contract-local test-only synchronous-offer adapter carrying only the
+  nominal instance and glyph identities needed to prove that resource lookup
+  occurs during the offer and no package or payload borrow survives return;
+  this fixture MUST NOT define the production positioned-glyph operation,
+  paint, clip, capacity, or ordering owned by the later RENDERING contract;
 - cross-profile value equality for all normalized results and rejection maps;
 - dependency tests proving `GiftUITextResources` imports only `GiftUI`,
-  `GiftUI` does not re-export it, every consumer uses its nominal identities,
-  and no concrete resource target is imported upward;
+  `GiftUI` does not re-export it, no standalone text-resource product is
+  exposed, every consumer uses its nominal identities, and no concrete
+  resource target is imported upward;
 - static allocation traps covering validation, mapping, lookup, payload
   borrowing, and positioned-glyph resource lookup; and
 - licensed-resource evidence tying source, license, derivation command,
@@ -836,48 +1025,58 @@ conformance evidence and MUST be labeled separately.
 
 ## Acceptance Criteria
 
-- [ ] **TR-001:** The document and manifest register SPEC-005 as `draft`, link
-  PROPOSAL-003, RFC-002/003, ADR-021/022/023, approved SPEC-002, and the three
-  text Future Work items without treating any non-authoritative artifact as a
-  decision.
+- [ ] **TR-001:** The document registers SPEC-005 as `review`, the manifest
+  registers it under `giftui-mvp-architecture`, and traceability links
+  PROPOSAL-003, all four related approved RFCs, all eight accepted ADRs,
+  approved SPEC-002/SPEC-003, SPIKE-005, and the three text Future Work items
+  without treating non-authoritative evidence as a decision.
 - [ ] **TR-002:** Dependency fixtures prove the exact module graph and show
   zero parallel or translated resource, instance, glyph, or realization
   identity types in layout, render, raster, backend, platform, and concrete
   package boundaries.
-- [ ] **TR-003:** Identity declarations, widths, descriptors, count limits,
-  canonical serialization, SHA-256 inputs, and identity-change rule match
-  `Types / APIs`, with identical golden digests in all four profile fixtures.
+- [ ] **TR-003:** Identity declarations, widths, digest word/byte order,
+  contiguous-index rules, descriptors, count limits, canonical serialization,
+  SHA-256 inputs, and identity-change rule match `Types / APIs`, with identical
+  golden digests in all four profile fixtures.
 - [ ] **TR-004:** The checked-in reference package has reviewed source and
   derived-asset licensing, maps U+0020...U+007E and U+00B0 exactly, contains a
-  replacement glyph, passes every integrity check, and is assembly-valid.
+  replacement glyph, passes complete build validation, and is assembly-valid
+  when each target requires its selected available payload.
 - [ ] **TR-005:** Every scalar and explicit-line-break fixture produces the
   exact mapping behavior in this contract; unsupported valid scalars use only
   the package replacement glyph and no ambient fallback.
 - [ ] **TR-006:** Golden fixtures prove equal line metrics, glyph metrics,
   glyph selection, advances, ink geometry, and explicit positioned points in
   macOS dynamic, macOS static, ARMv6, and nRF52840 builds.
-- [ ] **TR-007:** Every malformed, mismatched, unsupported-schema, integrity,
-  overflow, and capacity fixture returns the exact deterministic local result
-  and SPEC-003 mapping without trap, partial package, substitution, or
-  diagnostic dependence.
-- [ ] **TR-008:** Bitmap and outline-capable fixtures share one exact resource
-  identity and canonical geometry; raster coverage may differ but no raster
-  result changes a metric, selection, advance, line, or position.
-- [ ] **TR-009:** Payload and positioned-glyph lifetime instrumentation proves
-  exact-once synchronous traversal and zero retained pointers, sources,
-  operations, or borrowed bytes after their supplying call returns.
+- [ ] **TR-007:** Every malformed, mismatched, unavailable-selected,
+  unsupported-schema, integrity, overflow, and capacity fixture returns the
+  exact deterministic local result and SPEC-002/SPEC-003 mapping without trap,
+  partial selected realization, substitution, or diagnostic dependence.
+- [ ] **TR-008:** Bitmap-only-linked and outline-capable target fixtures retain
+  one exact catalogue and resource identity; each rejects selection of an
+  unavailable payload, and raster coverage changes no metric, selection,
+  advance, line, or position.
+- [ ] **TR-009:** Payload and contract-local offer lifetime instrumentation
+  proves exact-once synchronous traversal and zero retained pointers, sources,
+  test operations, or borrowed bytes after their supplying call returns,
+  without requiring the later RENDERING contract.
 - [ ] **TR-010:** All static-path operations allocate zero heap bytes, every
   type meets its layout ceiling, every table/payload meets its finite count,
-  and the nRF52840 reference composition meets the flash, fixed-RAM, and stack
-  ceilings under the recorded SPEC-002 toolchain configuration.
+  and the nRF52840 bitmap-only-linked reference composition omits outline bytes
+  and meets the flash, fixed-RAM, and stack ceilings under the recorded
+  SPEC-002 toolchain configuration.
 - [ ] **TR-011:** The four exact contract-driver commands reproduce hashes,
-  validation results, layout values, allocation evidence, and resource
-  measurements from a clean checkout; cross-build results make no hardware
-  claim.
+  validation results, canonical geometry values, allocation evidence, linked
+  payload availability/omission evidence, and resource measurements from a
+  clean checkout; cross-build results make no hardware claim.
 - [ ] **TR-012:** Review finds no public `Text` semantics, layout constraint or
   wrapping policy, render-operation order, backend raster algorithm, cache
   policy, capability family, host product policy, or deferred typography
   feature introduced by this Specification.
+- [ ] **TR-013:** Baseline, ascent/descent, line-gap, ink-rectangle, explicit
+  line-break, unavailable-payload, and post-validation lookup fixtures prove
+  that an implementer needs no unstated geometry, availability, or failure
+  rule and that SPEC-002 facts are preserved unchanged when correlated later.
 
 ## Implementation Notes
 
@@ -893,10 +1092,10 @@ or compatibility requirement.
 
 ## Open Issues
 
-None. SPIKE-005's package and measurements are adopted above, and the exact
-SPEC-003 detecting-owner alignment is fixed under Error Handling. This
-resolution does not itself advance the Specification from `draft` to `review`
-or authorize implementation.
+None. Review resolved target-specific payload availability under the common
+resource identity, validation precedence, digest byte order, baseline geometry,
+and the exact SPEC-002/SPEC-003 detecting-owner alignment. Human approval is
+still required before implementation.
 
 ## Deferred and Follow-up Work
 
@@ -913,8 +1112,9 @@ or authorize implementation.
   preserves selection, editing, carets, text hit testing, and accessibility
   geometry.
 - [FW-003](../future-work/fw-003-advanced-font-delivery-and-glyph-rasterization.md)
-  preserves runtime registration, resampling, distance fields, compression,
-  generalized outline delivery, and shared caches.
+  preserves additional packaged instances, runtime registration, resampling,
+  distance fields, compression, generalized outline delivery, and shared
+  caches.
 
 These items are optional to this contract and do not change MVP scope or its
 acceptance criteria.

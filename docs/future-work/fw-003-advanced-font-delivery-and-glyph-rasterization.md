@@ -25,16 +25,18 @@ target_milestone: null
 ## Observation / Opportunity
 
 RFC-003's exact-identity raster-provider boundary could later admit runtime
-font registration, deterministic strike resampling, signed-distance-field or
-vector glyphs, compressed atlases, smarter corpus extraction, and incremental
-shared glyph caches.
+font registration, multiple exact packaged sizes/weights/styles,
+deterministic strike resampling, signed-distance-field or vector glyphs,
+compressed atlases, smarter corpus extraction, and incremental shared glyph
+caches.
 
 ## Why Deferred
 
-The MVP can validate the boundary with packaged outlines on a capable target
-and exact precompiled bitmap strikes on embedded. The additional delivery,
-transform, compression, and caching mechanisms are not required by the Signal
-Analyzer and would add unmeasured code, memory, and toolchain cost.
+The MVP can validate the boundary with one exact font instance, packaged
+outlines in a capable fixture, and exact precompiled bitmap strikes on
+embedded. Additional instances, delivery, transform, compression, and caching
+mechanisms are not required by the Signal Analyzer and would add unmeasured
+API, flash, memory, and toolchain cost.
 
 ## Potential Value
 
@@ -45,15 +47,18 @@ Analyzer and would add unmeasured code, memory, and toolchain cost.
 
 ## Current Non-goals
 
-- No runtime font discovery, arbitrary strike scaling, distance fields,
-  vector-glyph render operation, shared atlas, or speculative compression
-  system is added to RFC-003 or the MVP roadmap.
+- No additional packaged size, weight, or style; runtime font discovery;
+  arbitrary strike scaling; distance field; vector-glyph render operation;
+  shared atlas; or speculative compression system is added to SPEC-005 or the
+  MVP roadmap.
 - This item does not authorize a particular font library or cache policy.
 
 ## Revisit Triggers
 
 - An accepted Proposal requires runtime font registration or a transform/scale
   not representable by exact MVP strikes.
+- An accepted client contract requires two exact font sizes, weights, or
+  styles in one assembled resource set.
 - Measured package flash, raster time, or repeated glyph work exceeds an
   approved target budget and a bounded advanced mechanism could address it.
 - A new backend cannot conform to RFC-003's raster contract without one of
@@ -67,3 +72,5 @@ need evidence; use a bounded Spike only after target questions are named.
 ## References
 
 - [RFC-003: Deterministic Text Rendering Architecture](../rfcs/rfc-003-deterministic-text-rendering-architecture.md)
+- [ADR-023: Exact Font Resource Identity and Ownership](../adrs/adr-023-exact-font-resource-identity.md)
+- [SPEC-005: Deterministic Text Resource Contract](../specs/spec-005-text-resources.md)
