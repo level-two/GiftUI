@@ -2,7 +2,7 @@
 id: RFC-009
 feature: canvas-drawing
 title: Canvas, Path, and Stroke Drawing Architecture
-status: review
+status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-25
@@ -33,6 +33,10 @@ related_adrs:
   - ADR-019
   - ADR-020
   - ADR-022
+  - ADR-028
+  - ADR-029
+  - ADR-030
+  - ADR-031
 related_specs:
   - SPEC-001
   - SPEC-002
@@ -792,8 +796,8 @@ that it cannot preserve the required no-partial-output boundary after late sink
 exhaustion without retained pre-recording or observable closure reinvocation.
 Alternatives C through H conflict with accepted architecture, exceed the
 accepted MVP scope, or add an unused lifetime and cost model, so they remain
-outside the proposed direction. The RFC is in `review`; these choices do not
-constitute RFC approval or accepted architecture.
+outside the approved direction. RFC approval rejects these approaches for this
+decision cluster; authoritative architecture still requires accepted ADRs.
 
 ## Compatibility
 
@@ -932,12 +936,12 @@ each still requires lifecycle authority.
 
 ## Open Questions
 
-No approval-blocking architecture question remains for review. SPIKE-004
+No architecture question remained open at approval. SPIKE-004
 resolves bounded plan-storage feasibility but not the final Swift public API,
 which is an explicit downstream Specification gate. The cycle-local plan and
-non-clipping Canvas-bounds behavior remain explicit proposed choices subject to
-human RFC approval; their presence in this RFC or in the Spike does not make
-them accepted architecture.
+non-clipping Canvas-bounds behavior are approved RFC choices extracted into the
+proposed ADRs below; they do not become authoritative architecture until those
+ADRs are explicitly accepted.
 
 The following exact contract details are intentionally owned by the downstream
 drawing Specification rather than left as RFC questions:
@@ -966,31 +970,29 @@ non-goals and deferred client priorities.
 
 ## Decision Summary
 
-If this RFC is later approved, its significant choices are expected to be
-extracted into separate proposed ADRs covering:
+This RFC's significant choices are extracted into separate proposed ADRs:
 
-1. **Canvas derivation and scoped drawing-plan ownership:** Canvas is a laid-out
+1. **[ADR-028: Post-Layout Canvas Derivation and Cycle-Local Plan](../adrs/adr-028-post-layout-canvas-derivation-and-cycle-local-plan.md):** Canvas is a laid-out
    semantic leaf whose stored client closure is synchronously invoked during
    cycle-stable post-layout derivation; its scoped context and workspace borrows
    cannot escape, and the bounded cycle-local immutable plan is released after
    one frame offer.
-2. **Transient Path snapshot semantics:** mutable straight-line Paths use
+2. **[ADR-029: Scoped Transient Path Snapshot Semantics](../adrs/adr-029-scoped-transient-path-snapshot-semantics.md):** mutable straight-line Paths use
    unique scoped construction ownership with profile-specific bounded storage
    beneath one client meaning, and every stroke snapshots ordered subpaths so
    later mutation cannot affect submitted intent.
-3. **Canonical normalized straight-line-stroke operation:** GiftUI resolves
+3. **[ADR-030: Canonical Normalized Straight-Line Stroke Operation](../adrs/adr-030-canonical-normalized-straight-line-stroke-operation.md):** GiftUI resolves
    checked local geometry, paint, style, order, origin, and clip above the
    backend boundary; backends synchronously consume borrowed immutable payload
    and own only derived post-acceptance data.
-4. **Bounded Canvas failure and startup-gate integration:** construction and
+4. **[ADR-031: Bounded Canvas Failure and Startup-Gate Integration](../adrs/adr-031-bounded-canvas-failure-and-startup-gate-integration.md):** construction and
    plan failures abort incomplete derivation before offer; B2 owns Canvas,
    Path, plan, and producer-operation capacities, while the immutable composite
    `rasterPresentation` capability owns operation, extent, encoding, raster,
    payload, in-flight, and lifetime compatibility.
 
-These are proposed decisions, not accepted architecture. ADR extraction may
-combine or separate them according to the independently significant decision
-boundaries reviewers confirm after RFC approval.
+These ADRs remain proposed and are not authoritative architecture until a human
+maintainer explicitly accepts them.
 
 ## References
 
