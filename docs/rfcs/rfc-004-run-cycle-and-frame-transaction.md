@@ -26,6 +26,7 @@ related_specs:
   - SPEC-002
   - SPEC-004
   - SPEC-005
+  - SPEC-006
 related_future_work:
   - FW-010
   - FW-011
@@ -260,12 +261,35 @@ by cancelling and quiescing that source until it is safely resynchronized.
 
 An admitted pointer down MAY capture a stable action identity from its
 validated committed hit map only when that action is enabled in the down
-revision. A later admitted pointer up MAY invoke that action only if the
-captured identity still exists, the release hits the same identity in the
-then-current committed hit map, and the action is enabled in that revision. A
-committed revision MAY change during a press, but each event is independently
-provenance-validated and release is always revalidated. Exact provenance and
-source-identity widths and capacities belong in Specifications.
+revision. The capture MUST contain the action's stable semantic identity and
+its committed action generation, and MUST NOT retain the callable payload.
+
+Each committed action record consists of a stable semantic action identity, a
+finite non-aliasing action generation, enabled state, and the currently
+committed callable payload. Installing a newly derived callable payload at an
+otherwise equal semantic action identity is action replacement and MUST
+install a new generation. A runtime MUST NOT compare closures or infer payload
+equivalence. It MAY preserve the generation only when it preserves the exact
+previously committed payload rather than substituting the newly derived one.
+An aborted or refused candidate frame MUST NOT change the committed action
+record or generation.
+
+A later admitted pointer up MAY invoke the current callable payload only if
+the captured identity and generation both equal the then-current committed
+action record, the release hits that same identity, and the action is enabled
+in that revision. A generation mismatch cancels activation and MUST NOT invoke
+either the former or replacement payload. The former payload need not remain
+alive for pointer capture and MAY be released as soon as no separately
+admitted action owns it. A committed revision MAY change during a press
+without cancelling activation when that action record remains unchanged, but
+each event is independently provenance-validated and release is always
+revalidated.
+
+Action-generation reuse MUST NOT alias any pair that can remain captured or
+admitted. Exhaustion or ambiguous wrap MUST fail closed by cancelling affected
+capture and quiescing the source until safe resynchronization. Exact
+provenance, source-identity, and action-generation widths and capacities belong
+in Specifications.
 
 ## Constraints
 
@@ -409,17 +433,19 @@ to survive that later validation.
 Pointer sequencing is fail-closed per bounded source identity. A validated
 down with a new bounded sequence identity first clears any older capture for
 that source, then hit-tests the committed map and may capture its stable action
-identity only if it is enabled. Each validated move may cancel capture
-according to the gesture rule. A validated up invokes only the same captured
-identity after checking the current committed hit map and disabled state. A
+identity and committed action generation only if it is enabled. Each validated
+move may cancel capture according to the gesture rule. A validated up invokes
+only the current payload associated with the same captured identity-generation
+pair after checking the current committed hit map and disabled state. A
 presentation revision may advance while a pointer remains down, so long as
-each subsequent physical event belongs to the same valid sequence, was
-sampled against an eligible presentation, and passes the current semantic
-checks. Any dropped phase,
+the action record remains unchanged and each subsequent physical event belongs
+to the same valid sequence, was sampled against an eligible presentation, and
+passes the current semantic checks. Any dropped phase,
 eligibility loss, stale revision, overflow, unavailable presentation facility,
-missing or invalid sequence identity, missing action identity, changed hit, or
-disabled action cancels activation. Orphaned move/up phases are consumed
-without semantic dispatch until the source is physically synchronized.
+missing or invalid sequence identity, missing action identity, action-
+generation mismatch, changed hit, or disabled action cancels activation.
+Orphaned move/up phases are consumed without semantic dispatch until the
+source is physically synchronized.
 
 This contract does not retain historical hit maps and does not ask the target
 integration to understand action identity. Non-spatial controls whose meaning
@@ -500,7 +526,7 @@ capability resolution.
 | Owner | Responsibility | Must not own |
 | --- | --- | --- |
 | Target host | Provide serialized cycle opportunities from wake requests, deadlines, or both; assemble bounded pacing policy and adapters | Semantic input membership after admission begins or mutation of observed state |
-| Semantic runtime | Validate input provenance, own bounded pointer-sequence state, seal facts and eligible input, apply admitted mutations and actions once, freeze derivation state, coordinate phases, publish complete revisions, and retain dirty state after derivation failure | Concrete backend, platform, physical eligibility mechanics, or observable-state storage mechanics |
+| Semantic runtime | Validate input provenance, own bounded pointer-sequence and identity-generation capture state, commit bounded action records, seal facts and eligible input, apply admitted mutations and actions once, freeze derivation state, coordinate phases, publish complete revisions, and retain dirty state after derivation failure | Concrete backend, platform, physical eligibility mechanics, closure comparison, or observable-state storage mechanics |
 | Observable-state feature | Define the public state API and bounded storage mechanism while coalescing mutation notification and preserving the RFC-004 publication boundary | Transactional guarantees for arbitrary direct object observation or presentation retry policy |
 | Layout/render producer | Produce complete geometry and ordered payload from cycle-stable inputs | Backend health or semantic replay |
 | Presentation coordinator | Offer frames, record synchronous handoff commit or abort, retain only latest-revision presentation-pending intent after retryable refusal, and request a separately paced opportunity | Client action dispatch, state rollback, refused-payload retention or replay, or target-specific attempt limits |
@@ -509,8 +535,10 @@ capability resolution.
 ## Public API Impact
 
 Ordinary views do not receive cycle IDs, frame tokens, queues, or presentation
-callbacks. Later Specifications define host-facing cycle invocation, frame
-payload lifetime, outcomes, capacities, wake requests, and integration SPI.
+callbacks. Semantic action generations and captured identity-generation pairs
+remain package SPI and MUST NOT become client-visible identity. Later
+Specifications define host-facing cycle invocation, frame payload lifetime,
+outcomes, capacities, wake requests, and integration SPI.
 The separate observable-state lifecycle defines how client code is isolated to
 the serialized mutation domain and how external producers submit bounded
 facts. Any public API that permits client side effects must state when the
@@ -554,9 +582,10 @@ MVP requirements and are preserved by FW-010.
 Static implementations may use fixed rings, caller-owned workspaces, direct
 phase calls, generated mutation slots, cooperative event-loop serialization,
 fixed per-source pointer records, and synchronous operation streaming. Input
-coherence requires event provenance plus bounded source/phase/captured-action
-state, not historical hit maps or a deferred-event queue. The common contract
-does not require a Swift actor, `Task`, thread, retained display list,
+coherence requires event provenance plus bounded source, phase, and captured
+identity-generation state, not historical hit maps, retained former action
+payloads, or a deferred-event queue. The common contract does not require a
+Swift actor, `Task`, thread, retained display list,
 replayable frame pool, reversible client state, or duplicate semantic graph.
 Exact observation and storage strategy belongs to the observable-state and
 runtime Specifications and must be measured on nRF52840 before implementation
@@ -569,10 +598,11 @@ fact coalescing, dirty-notification counts, dirty-to-cycle latency,
 presentation-pending duration, recovery-cycle pacing and attempt counts,
 operation production, handoff latency, backend presentation latency,
 presentation/input gating, stale-input drops, gesture cancellations,
-backpressure behavior, and the 80-transition/second plus 250-millisecond
-presentation workload. Transaction metadata should remain constant-cost per
-cycle and frame; backend-local downstream metadata should remain constant-cost
-per accepted slot and configured input source.
+action-replacement cancellations, generation exhaustion, backpressure
+behavior, and the 80-transition/second plus 250-millisecond presentation
+workload. Transaction metadata should remain constant-cost per cycle and
+frame; backend-local downstream metadata should remain constant-cost per
+accepted slot and configured input source.
 
 ## Memory / Binary Size
 
@@ -580,12 +610,13 @@ Specifications account for input and state-change queues, dirty tracking,
 latest-revision presentation-pending state and its finite-policy counters,
 runtime and layout workspace, frame envelopes, backend-owned presentation
 data, downstream slots, raster tiles, event provenance, per-source pointer
-state, input-gating state, stack high-water, and specialization cost. Input
-gating MUST NOT require historical hit-map retention or a deferred-event
-queue. Pending intent MUST NOT retain the refused operation payload or require
-a second copy of the complete client state or semantic graph. A dynamic queue
-is still configured and bounded; allocation is not permission for unlimited
-work.
+state including one captured action generation, committed action-record
+generations, input-gating state, stack high-water, and specialization cost.
+Input gating MUST NOT require historical hit-map or former callable-payload
+retention or a deferred-event queue. Pending intent MUST NOT retain the refused
+operation payload or require a second copy of the complete client state or
+semantic graph. A dynamic queue is still configured and bounded; allocation is
+not permission for unlimited work.
 
 ## Alternatives
 
@@ -717,11 +748,21 @@ is proposed.
 - Drop down, move, and up independently because of ineligibility, stale
   provenance, malformed ordering, and every queue boundary; verify the active
   source sequence is cancelled and orphaned phases cannot invoke an action.
-- Advance committed revisions during a press; verify release invokes only the
-  captured stable identity when the current hit map still resolves the release
-  to that identity and the current action remains enabled.
+- Advance committed revisions during a press without changing the committed
+  action record; verify release invokes the current payload only when the hit
+  map still resolves the captured identity-generation pair and the action
+  remains enabled.
+- Install a newly derived callable payload at the same semantic action identity;
+  verify its generation changes and a capture of the former generation invokes
+  neither payload on release.
+- Abort a candidate containing a replacement payload; verify the committed
+  generation and payload remain unchanged and a valid existing capture can
+  still activate normally.
 - Remove, replace, move, or disable the captured action before release and
-  verify no action is invoked.
+  verify no action is invoked and pointer capture retains no former payload.
+- Exhaust and wrap the action-generation space; verify no captured or admitted
+  pair aliases a replacement and the affected source fails closed until safe
+  resynchronization.
 - Begin a press over an action disabled in the down revision, enable it before
   release, and verify the disabled down never established capture.
 - Saturate presentation/input gating and runtime input admission; verify
@@ -807,6 +848,10 @@ replace eventual backend conformance tests or approve this RFC.
 - Conservative provenance validation may cancel presses when frames advance
   faster than queued input reaches admission; target measurements must expose
   this loss rather than weakening the safety rule or silently retargeting it.
+- Declarative re-evaluation may produce a newly derived callable at an
+  otherwise stable action identity. Installing it is replacement and cancels
+  a press that captured the former generation; Interaction conformance must
+  measure this conservative behavior rather than infer closure equivalence.
 - Coordinated comparison with RFC-005 and RFC-006 currently finds compatible
   pre-handoff, operation-stream-lifetime, and post-handoff ownership meanings.
   Any review change to those shared meanings must be reconciled before the
@@ -820,8 +865,9 @@ replace eventual backend conformance tests or approve this RFC.
 None at the RFC level. Identifier, source, and provenance widths; queue and
 payload capacities; timing and recovery-pacing budgets; concrete handoff
 result types; observable-state API and storage; gesture-state representation;
-and target-local eligibility mechanisms are Specification inputs governed by
-the boundaries above.
+action-generation width and exhaustion representation; and target-local
+eligibility mechanisms are Specification inputs governed by the boundaries
+above.
 
 ## Deferred and Follow-up Work
 
@@ -870,8 +916,10 @@ This approved RFC is recorded by accepted ADRs for:
    explicit unavailable/quiescent terminal disposition; and
 6. provenance-validated, fail-closed presentation-coupled input admission with
    no stale-event retargeting, no common deferred-input queue or historical hit
-   maps, sequence cancellation on every dropped phase, and current-revision
-   identity, hit, and disabled-state revalidation before activation.
+   maps, sequence cancellation on every dropped phase, identity-generation
+   capture without callable retention, generation change on committed payload
+   replacement, and current-revision pair, hit, and disabled-state
+   revalidation before activation.
 
 ## References
 
@@ -879,6 +927,8 @@ This approved RFC is recorded by accepted ADRs for:
 - [RFC-002](rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-005](rfc-005-failure-diagnostics-propagation.md)
 - [RFC-006](rfc-006-capability-system-architecture.md)
+- [ADR-013: Provenance-Validated Presentation-Coupled Input](../adrs/adr-013-provenance-validated-input-admission.md)
+- [SPEC-006: Declarative View Semantics Specification](../specs/spec-006-declarative-view-semantics.md)
 - [FW-010: Backend and Transport Post-Handoff Recovery](../future-work/fw-010-backend-transport-submission-retry.md)
 - [FW-011: Handoff-Refusal Frame Rescheduling](../future-work/fw-011-failed-frame-rescheduling.md)
 - [FW-014: Replayable Operation Delivery for Future Raster Strategies](../future-work/fw-014-replayable-operation-delivery.md)

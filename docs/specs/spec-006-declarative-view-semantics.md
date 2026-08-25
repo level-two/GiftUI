@@ -11,10 +11,12 @@ proposal:
   - PROPOSAL-003
 related_rfcs:
   - RFC-002
+  - RFC-004
 related_adrs:
   - ADR-005
   - ADR-006
   - ADR-008
+  - ADR-013
 related_specs:
   - SPEC-002
   - SPEC-003
@@ -99,10 +101,12 @@ dynamic, and nRF52840/Zephyr static configurations.
 - [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
   is accepted.
 - [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md) is approved.
+- [RFC-004](../rfcs/rfc-004-run-cycle-and-frame-transaction.md) is approved.
 - [ADR-005](../adrs/adr-005-semantic-layout-render-boundary.md),
-  [ADR-006](../adrs/adr-006-shared-semantics-runtime-profiles.md), and
-  [ADR-008](../adrs/adr-008-module-dependency-graph-and-package-topology.md)
-  are accepted.
+  [ADR-006](../adrs/adr-006-shared-semantics-runtime-profiles.md),
+  [ADR-008](../adrs/adr-008-module-dependency-graph-and-package-topology.md), and
+  [ADR-013](../adrs/adr-013-provenance-validated-input-admission.md) are
+  accepted.
 - [SPEC-002](spec-002-portable-foundation.md) and
   [SPEC-003](spec-003-failure-outcomes-and-containment.md) are approved.
 
@@ -120,6 +124,10 @@ the reason this contract is required now.
 - Later LAYOUT, RENDERING, EXECUTION, OBSERVABLE, INTERACTION, and
   RUNTIME-PROFILES Specifications consume this contract and MUST NOT redefine
   its expansion, identity, ordering, or failure semantics.
+- EXECUTION and INTERACTION own committed action records and generations under
+  ADR-013. They consume the stable semantic action identity defined here as
+  one component of the captured identity-generation pair; this Specification
+  does not allocate generations or retain callable payloads.
 
 ## Related ADRs
 
@@ -132,6 +140,10 @@ the reason this contract is required now.
 - **ADR-008 — Module Dependency Graph and MVP Package Topology:** places the
   public declarations in `GiftUI`, runtime-owned expansion in
   `GiftUISemanticCore`, and prohibits upward or concrete integration imports.
+- **ADR-013 — Provenance-Validated Presentation-Coupled Input:** requires
+  pointer capture to pair this Specification's stable semantic action identity
+  with a downstream committed action generation, without retaining a callable
+  payload, and requires exact pair revalidation before activation.
 
 ## Terminology
 
@@ -159,7 +171,8 @@ the reason this contract is required now.
 **Semantic action identity**
 : The package-SPI runtime identity of one action-bearing occurrence, derived
   from that occurrence's structural identity and action-bearing role. It does
-  not define a public action payload, capture rule, or activation lifetime.
+  not contain the downstream committed action generation and does not retain a
+  public action payload.
 
 **Modifier order**
 : The source-call order of a modifier chain. In `base.a().b()`, `a` precedes
@@ -412,9 +425,17 @@ relation.
 
 Expansion MUST NOT invoke an action. Client action payload, capture,
 replacement, committed lifetime, and activation belong to INTERACTION and
-EXECUTION. This Specification neither makes an expansion-time identity
-dispatchable nor decides whether a changed payload replaces a captured
-action. A backend or declaration visitor MUST NOT call client behavior.
+EXECUTION under ADR-013. This Specification neither makes an expansion-time
+identity dispatchable nor allocates, advances, captures, or compares a
+committed action generation. A backend or declaration visitor MUST NOT call
+client behavior.
+
+The identity defined here is the stable identity component of ADR-013's
+captured identity-generation pair. Downstream committed-action lowering MUST
+treat installation of a newly derived callable payload at the same identity as
+replacement and install a new generation. Preserving, replacing, releasing,
+and activating that payload remain downstream obligations and MUST NOT cause a
+second semantic identity or expansion engine here.
 
 ### Modifier order
 
@@ -448,7 +469,9 @@ Structural and semantic action identities belong to runtime-owned staged or
 committed semantic structure, never to the transient declaration value. This
 Specification defines their equality and expansion lifetime; OBSERVABLE and
 EXECUTION own state-slot lifetime, invalidation, publication, reconciliation,
-and revision lifetime.
+and revision lifetime. Pointer capture MUST NOT extend a declaration or
+callable payload lifetime through this identity; ADR-013's downstream capture
+stores the identity-generation pair only.
 
 An attempt moves only forward:
 
@@ -588,7 +611,8 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
   different branch, endpoint-role changes, and prefix/descendant paths.
 - Prove action-bearing declarations at different occurrences have distinct
   package-SPI semantic action identities and equivalent re-expansions preserve
-  their identity relation across profiles.
+  their identity relation across profiles. Prove expansion itself neither
+  creates an action generation nor retains or invokes a callable payload.
 - Record modifier chains of length zero, one, repeated same-kind, and mixed
   kinds; prove exact source order, custom-view nesting order, and no sibling
   interleaving without asserting concrete layout or render meaning.
@@ -648,7 +672,8 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
 - [ ] **DV-006:** Action-bearing declarations at different structural
   occurrences have distinct package-SPI semantic action identities;
   equivalent re-expansions preserve their identity relation, and expansion
-  invokes no action.
+  allocates no committed action generation, retains no callable payload for
+  pointer capture, and invokes no action.
 - [ ] **DV-007:** Every expansion/workspace capacity succeeds exactly at its
   limit and fails one over with `.capacityExhausted`, no truncation, partial
   publication, overwrite, allocation fallback, or action invocation; the
@@ -687,23 +712,23 @@ for later layout adapters.
 
 ## Open Issues
 
-No accepted-architecture blocker was found while drafting this initial
-contract. Human review should confirm two contract-level choices before this
-Specification advances to `review`:
+No accepted-architecture blocker remains in this draft. Human review should
+confirm one contract-level choice before this Specification advances to
+`review`:
 
-1. whether five direct builder expressions remains sufficient for the final
+1. whether five direct builder expressions remain sufficient for the final
    portable Signal Analyzer hierarchy, or whether a larger fixed arity is
-   required; and
-2. the downstream lifetime and replacement relationship between this
-   expansion-time package identity and a committed or captured interaction
-   action; ADR-005/006 do not authorize this draft to decide it.
+   required.
 
-The second item is an explicit downstream architecture blocker: INTERACTION or
-EXECUTION MUST NOT infer capture or replacement lifetime from this draft. If
-its resolution is not already entailed by the governing execution ADRs, it
-MUST return through RFC/ADR review. Likewise, keyed/dynamic child identity,
-client-visible identity, or public custom-modifier architecture requires
-lifecycle triage rather than expansion of this contract.
+The former action lifetime and replacement issue is resolved by RFC-004 and
+ADR-013: pointer down captures the stable semantic identity together with the
+committed action generation and no callable payload; replacement installs a
+new generation; release activates only after the exact current pair, hit, and
+enabled state match. EXECUTION and INTERACTION must specify the finite
+representation and ownership details without redefining the identity contract
+here. Keyed/dynamic child identity, client-visible identity, or public custom-
+modifier architecture still requires lifecycle triage rather than expansion
+of this contract.
 
 ## Deferred and Follow-up Work
 
@@ -720,9 +745,11 @@ lifecycle triage rather than expansion of this contract.
 
 - [PROPOSAL-003: GiftUI MVP Architecture Establishment](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
 - [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
+- [RFC-004: Run Cycle and Frame Transaction Architecture](../rfcs/rfc-004-run-cycle-and-frame-transaction.md)
 - [ADR-005: Semantic, Layout, and Render Boundary](../adrs/adr-005-semantic-layout-render-boundary.md)
 - [ADR-006: Shared Semantics Across Runtime Profiles](../adrs/adr-006-shared-semantics-runtime-profiles.md)
 - [ADR-008: Module Dependency Graph and MVP Package Topology](../adrs/adr-008-module-dependency-graph-and-package-topology.md)
+- [ADR-013: Provenance-Validated Presentation-Coupled Input](../adrs/adr-013-provenance-validated-input-admission.md)
 - [SPEC-002: Portable Foundation](spec-002-portable-foundation.md)
 - [SPEC-003: Failure Outcomes and Containment](spec-003-failure-outcomes-and-containment.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
