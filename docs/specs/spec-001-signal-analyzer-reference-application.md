@@ -1727,8 +1727,8 @@ Specification-approval blockers are open:
 - The approved reusable contracts required by the MVP Specification Portfolio
   do not yet exist for execution/fact admission, observable reference state,
   interaction, drawing, runtime profiles, backend integration, and host
-  configuration. The Canvas feature now has draft RFC-009, but no approved RFC,
-  accepted ADRs, or approved Specification. This Specification MUST be
+  configuration. The Canvas feature now has RFC-009 in review, but no approved
+  RFC, accepted ADRs, or approved Specification. This Specification MUST be
   reconciled against those approved contracts before it can be approved.
 - The target-composed application-executor entry contract named by the
   ViewModel requirements has no exact operation, outcome, availability,
