@@ -2,11 +2,11 @@
 id: SPEC-004
 feature: capability-system
 title: Capability Contribution and Resolution
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-08-24
+updated: 2026-08-25
 proposal:
   - PROPOSAL-004
 related_rfcs:
@@ -1097,7 +1097,7 @@ evidence.
 
 ## Acceptance Criteria
 
-- [ ] **CR-001:** The document identifies SPEC-004 as in `review` and the
+- [ ] **CR-001:** The document identifies SPEC-004 as `approved` and the
   manifest registers it for `capability-system`; the document directly links
   PROPOSAL-004, RFC-004, RFC-006, ADR-010, and ADR-017 through ADR-020 and
   reciprocally relates SPEC-002 and SPEC-003.
@@ -1174,8 +1174,8 @@ semantics and normalized results remain unchanged.
 ## Open Issues
 
 The capability-domain contract and reciprocal Wave 1 terminology are closed
-in this review text. SPEC-003 now fixes the enclosing required-family carrier and
-the one-to-one capability condition catalogue. The jointly reviewed SPEC-002
+in this approved contract. SPEC-003 fixes the enclosing required-family carrier and
+the one-to-one capability condition catalogue. The approved SPEC-002
 extent adapter accepts only valid non-negative `Size` values, maps zero and
 positive overflow distinctly, and exposes no capability geometry to portable
 Presentation.

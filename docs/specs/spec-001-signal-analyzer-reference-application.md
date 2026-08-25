@@ -6,7 +6,7 @@ status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-08-24
+updated: 2026-08-25
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -37,8 +37,10 @@ target_milestone: MVP
 # SPEC-001: Signal Analyzer Reference Application Contract
 
 > **Review status:** Revised for ADR-024 through ADR-027 after ADR-027
-> superseded ADR-002. This Specification remains non-authoritative until a
-> human maintainer explicitly approves it again.
+> superseded ADR-002. Approval remains blocked by the prerequisite reusable
+> GiftUI contracts and unresolved application-contract details listed under
+> Open Issues. This Specification remains non-authoritative until those
+> blockers are resolved and a human maintainer explicitly approves it again.
 
 ## Summary
 
@@ -1705,10 +1707,11 @@ host-owned observation, the target-composed admission adapter, bounded fact
 storage, and GiftUI-phase model mutation before Presentation criteria may be
 checked again.
 
-The current playground repository does not retain per-channel lower-bound
-baselines and does not rebase future source timestamps after Clear. Those are
-known conformance gaps relative to ADR-003 and this Specification, not reasons
-to weaken the governed contract.
+The current dynamic repository retains per-channel lower-bound baselines and
+rebases future source timestamps after Clear, and the macOS regression suite
+exercises those behaviors. It still publishes unrevisioned complete snapshots
+through direct sinks rather than the revisioned snapshot/mutation and bounded
+admission contract required by this revision.
 
 A ring buffer plus a four-element baseline array is a natural static storage
 strategy. Dynamic profiles may keep array-backed values if measurements remain
@@ -1717,12 +1720,42 @@ view invalidations without batching or dropping capture events.
 
 ## Open Issues
 
-No unresolved Signal Analyzer architecture choice remains. Availability of
-approved, implementable GiftUI contracts for observable reference state,
-RFC-004 fact admission, failure outcomes, and Canvas drawing remains an
-external approval and implementation dependency. This Specification defines
-the analyzer-specific source shape, configuration, adapter, facts, capacities,
-and conformance obligations without defining those reusable GiftUI APIs.
+No unresolved Signal Analyzer architecture choice remains, but the following
+Specification-approval blockers are open:
+
+- The approved reusable contracts required by the MVP Specification Portfolio
+  do not yet exist for execution/fact admission, observable reference state,
+  interaction, drawing, runtime profiles, backend integration, and host
+  configuration. The Canvas feature is still at Proposal stage. This
+  Specification MUST be reconciled against those approved contracts before it
+  can be approved.
+- The target-composed application-executor entry contract named by the
+  ViewModel requirements has no exact operation, outcome, availability,
+  ordering, or Button-callback contract here. That contract MUST either be
+  defined by an approved prerequisite Specification and referenced here or be
+  completed as an analyzer-owned contract without introducing architecture.
+- Capture-revision exhaustion requires acquisition to stop and a fresh object
+  graph, but it has no producer condition, normalization row, coordinator
+  effects, residual-policy context, or acceptance fixture in the otherwise
+  total failure contract.
+- An `operationalFailure` fact containing `.success` or `.operational` MUST be
+  rejected before admission, but the contract does not make those values
+  unrepresentable or define the bounded rejection and normalization outcome.
+- Cross-profile deterministic mock traces require an exact CH4 pseudo-random
+  sequence contract, seed transformation, or normative golden vectors; the
+  inclusive interval range alone is insufficient to guarantee equivalent
+  traces.
+- `SignalAnalyzerDiagnostic` lacks the construction, truncation-result,
+  bounded byte-access, and text-projection operations needed to implement and
+  test the stated 96-byte dynamic/static contract without guessing.
+- The compact-ring capacity rationale assumes seven additional action-induced
+  publications without defining that bound or a maximum admission service
+  delay. The final capacity MUST be derived from approved execution and host
+  pacing contracts and tested at every allowed boundary burst.
+
+These are current-scope blockers, not deferred work. This Specification
+defines the analyzer-specific source shape, configuration, adapter, facts,
+capacities, and conformance obligations without defining reusable GiftUI APIs.
 
 ## Deferred and Follow-up Work
 

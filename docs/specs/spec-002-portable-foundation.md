@@ -2,11 +2,11 @@
 id: SPEC-002
 feature: giftui-mvp-architecture
 title: Portable Foundation Specification
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-08-24
+updated: 2026-08-25
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -22,6 +22,8 @@ related_adrs:
 related_specs:
   - SPEC-003
   - SPEC-004
+  - SPEC-005
+  - SPEC-006
 related_future_work:
   - FW-005
   - FW-016
@@ -43,9 +45,9 @@ below their consumers. It deliberately leaves declarative semantics, failure
 and containment semantics, capability contribution and resolution semantics,
 and pointer admission behavior to their owning Specifications.
 
-This Specification is in `review` and does not authorize implementation. The
-value representations, visibility classes, and cross-layer mapping of local
-Foundation rejection into SPEC-003 outcomes are fixed below for review.
+This Specification is `approved` and authorizes implementation under this
+contract. The value representations, visibility classes, and cross-layer
+mapping of local Foundation rejection into SPEC-003 outcomes are fixed here.
 
 ## Scope
 
@@ -804,7 +806,7 @@ declarations rather than copy signatures.
 ## Open Issues
 
 No contract issue remains open. Reciprocal terminology coordination with
-SPEC-003 and the SPEC-004 extent adapter is complete, and this review text fixes
+SPEC-003 and the SPEC-004 extent adapter is complete, and this approved contract fixes
 the compiler identities, commands, linked-size baseline, and exact dependency
 allow-list coverage needed to produce PF-005/PF-007 evidence. Producing that
 evidence is implementation/conformance work, not an unresolved pre-review

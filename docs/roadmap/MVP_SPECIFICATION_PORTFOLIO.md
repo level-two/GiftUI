@@ -52,19 +52,31 @@ Each candidate Specification in this portfolio MUST:
 
 ## Candidate Contracts
 
-Wave 1 has entered coordinated review with these immutable identities:
+Wave 1 has completed coordinated approval with these immutable identities:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `FOUNDATION` | `SPEC-002` | `review` |
-| `FAILURE` | `SPEC-003` | `review` |
-| `CAPABILITY` | `SPEC-004` | `review` |
+| `FOUNDATION` | `SPEC-002` | `approved` |
+| `FAILURE` | `SPEC-003` | `approved` |
+| `CAPABILITY` | `SPEC-004` | `approved` |
 
 The three Specifications share one ownership rule: SPEC-002 owns portable values and
 import boundaries; SPEC-003 owns outcome, containment, disposition, health,
 and diagnostic vocabulary; SPEC-004 owns capability contribution, resolution,
 and the `rasterPresentation` catalogue while referencing the first two
 contracts instead of redefining them.
+
+Wave 2 has entered coordinated drafting with these immutable identities:
+
+| Candidate key | Allocated Specification | Lifecycle status |
+| --- | --- | --- |
+| `TEXT` | `SPEC-005` | `draft` |
+| `DECLARATIVE` | `SPEC-006` | `draft` |
+
+SPEC-005 and SPEC-006 are parallel sibling contracts. SPEC-005 owns exact text
+resource identities, compatible resource views, and resource lifetimes;
+SPEC-006 owns declarative expansion, ordered modifiers, structural identity,
+and action identity. Neither Specification depends on or redefines the other.
 
 Candidate keys are planning labels, not reserved Specification IDs.
 

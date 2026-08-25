@@ -6,7 +6,7 @@ status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-24
+updated: 2026-08-25
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -25,6 +25,7 @@ related_adrs:
 related_specs:
   - SPEC-002
   - SPEC-004
+  - SPEC-005
 related_future_work:
   - FW-010
   - FW-011
