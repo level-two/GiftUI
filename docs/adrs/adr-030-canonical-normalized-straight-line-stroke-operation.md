@@ -2,7 +2,7 @@
 id: ADR-030
 feature: canvas-drawing
 title: Canonical Normalized Straight-Line Stroke Operation
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-25
@@ -39,7 +39,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 

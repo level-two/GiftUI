@@ -22,8 +22,8 @@ immutable ID, and registered in [the feature manifest](../features.yaml).
 
 The current authoritative inputs are:
 
-- approved RFC-001 through RFC-006 and RFC-008;
-- accepted ADR-001, ADR-003 through ADR-027;
+- approved RFC-001 through RFC-006, RFC-008, and RFC-009;
+- accepted ADR-001 and ADR-003 through ADR-031;
 - SPEC-001, the Signal Analyzer application contract, currently in `review`;
 - the established [MVP Scope](../MVP_SCOPE.md), including the four supported
   configurations and the Signal Analyzer validation progression.
@@ -32,8 +32,9 @@ ADR-002 is superseded by ADR-027 and is not current authority. RFC-007 remains
 `draft`; its delegated-service direction and FW-009 MUST NOT become a required
 MVP Specification dependency.
 
-The `canvas-drawing` feature remains at Proposal stage. Its RFC and accepted
-ADRs are a missing gate for the drawing contract described below.
+The `canvas-drawing` feature is at the decision stage with approved RFC-009 and
+accepted ADR-028 through ADR-031. An approved drawing Specification is its next
+missing gate.
 
 ## Boundary Rules
 

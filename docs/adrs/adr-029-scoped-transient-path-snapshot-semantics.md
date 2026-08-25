@@ -2,7 +2,7 @@
 id: ADR-029
 feature: canvas-drawing
 title: Scoped Transient Path Snapshot Semantics
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-25
@@ -35,7 +35,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 

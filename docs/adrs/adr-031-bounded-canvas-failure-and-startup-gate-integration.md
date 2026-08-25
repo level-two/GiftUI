@@ -2,7 +2,7 @@
 id: ADR-031
 feature: canvas-drawing
 title: Bounded Canvas Failure and Startup-Gate Integration
-status: proposed
+status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-25
@@ -43,7 +43,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 

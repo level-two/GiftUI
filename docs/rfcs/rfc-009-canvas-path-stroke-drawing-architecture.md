@@ -940,8 +940,7 @@ No architecture question remained open at approval. SPIKE-004
 resolves bounded plan-storage feasibility but not the final Swift public API,
 which is an explicit downstream Specification gate. The cycle-local plan and
 non-clipping Canvas-bounds behavior are approved RFC choices extracted into the
-proposed ADRs below; they do not become authoritative architecture until those
-ADRs are explicitly accepted.
+accepted ADRs below and are now authoritative architecture.
 
 The following exact contract details are intentionally owned by the downstream
 drawing Specification rather than left as RFC questions:
@@ -958,7 +957,7 @@ drawing Specification rather than left as RFC questions:
 
 - [SPIKE-004](../spikes/spike-004-canvas-path-plan-feasibility.md) completed the
   bounded static-feasibility comparison. Its results are evidence for the
-  proposed cycle-local plan and do not select production code, capacities, or
+  cycle-local plan and do not select production code, capacities, or
   architecture.
 
 Richer fills, curves, images, Canvas text, public clipping controls,
@@ -970,7 +969,7 @@ non-goals and deferred client priorities.
 
 ## Decision Summary
 
-This RFC's significant choices are extracted into separate proposed ADRs:
+This RFC's significant choices are extracted into separate accepted ADRs:
 
 1. **[ADR-028: Post-Layout Canvas Derivation and Cycle-Local Plan](../adrs/adr-028-post-layout-canvas-derivation-and-cycle-local-plan.md):** Canvas is a laid-out
    semantic leaf whose stored client closure is synchronously invoked during
@@ -991,8 +990,9 @@ This RFC's significant choices are extracted into separate proposed ADRs:
    `rasterPresentation` capability owns operation, extent, encoding, raster,
    payload, in-flight, and lifetime compatibility.
 
-These ADRs remain proposed and are not authoritative architecture until a human
-maintainer explicitly accepts them.
+ADR-028 through ADR-031 were accepted on 2026-08-25 and are authoritative
+architecture. Exact declarations and implementation contracts remain subject
+to an approved downstream drawing Specification.
 
 ## References
 
