@@ -22,6 +22,7 @@ related_specs:
   - SPEC-003
 related_future_work:
   - FW-017
+  - FW-020
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -41,10 +42,11 @@ source order. The semantic runtime expands those declarations synchronously
 into runtime-owned semantic structure with deterministic structural and action
 identity.
 
-This contract is deliberately complete before layout: its recording fixtures
-observe declaration order, structural paths, branch selection, custom-body
-boundaries, modifier order, action identity, and bounded refusal, but no size,
-placement, hit region, render operation, state slot, or backend output.
+This contract is deliberately complete before layout: its canonical expansion
+transcript observes declaration order, structural paths, branch selection,
+custom-body boundaries, modifier order, action identity, exact counts, and
+bounded refusal, but no size, placement, hit region, render operation, state
+slot, or backend output.
 
 ## Scope
 
@@ -159,6 +161,22 @@ the reason this contract is required now.
 : A compile-time generic composition of zero through five ordered children.
   It is structural syntax and does not itself become a semantic node.
 
+**Framework primitive**
+: A GiftUI-owned declaration whose semantic meaning is supplied through the
+  underscored framework traversal surface instead of by evaluating `body`.
+  Its `Body` is `Never`.
+
+**Structural occurrence**
+: A custom or framework declaration reached at one structural path. A custom
+  occurrence can own identity and modifiers without itself adding a semantic
+  node; a framework occurrence adds one semantic node unless its wrapper rule
+  explicitly says otherwise.
+
+**Semantic occurrence**
+: A framework declaration occurrence that stages one semantic node. Empty,
+  fixed-group, conditional, optional, and modifier wrappers are structural
+  syntax and are not semantic occurrences.
+
 **Structural path**
 : The exact ordered sequence of root, custom-body, fixed-child, conditional-
   branch, optional-presence, and declaration-role components by which an
@@ -167,6 +185,11 @@ the reason this contract is required now.
 **Structural identity**
 : Runtime-owned identity determined by structural path and declaration role.
   Its equality is normative; its stored representation is profile-specific.
+
+**Modifier scope**
+: The exact structural occurrence or structural wrapper path to which one
+  modifier application is attached. A modifier scope may describe a custom
+  view or group and therefore need not itself be a semantic node.
 
 **Semantic action identity**
 : The package-SPI runtime identity of one action-bearing occurrence, derived
@@ -183,6 +206,12 @@ the reason this contract is required now.
 : One synchronous, bounded evaluation of a root declaration into staged
   semantic structure or a recording sink.
 
+**Canonical expansion transcript**
+: The profile-independent ordered fixture record of structural-path entry,
+  body evaluation, semantic occurrence, modifier application, and action
+  occurrence events. It compares role and path equality, not profile-private
+  identity bytes.
+
 ## Public Contract
 
 Portable Presentation MUST need only `import GiftUI`. A custom declaration
@@ -190,10 +219,12 @@ MUST be expressible as a value conforming to `View` with an opaque
 `body: some View`. The declaration surface MUST be identical in static and
 dynamic configurations.
 
-Clients MUST NOT be required or permitted to implement a public traversal
-method, manufacture structural identity, name a runtime profile, retain a
-semantic node, or import layout, render, runtime, backend, platform, driver,
-OS/RTOS, HAL, or hardware modules.
+Clients MUST NOT be required to implement or call a traversal method,
+manufacture structural identity, name a runtime profile, retain a semantic
+node, or import layout, render, runtime, backend, platform, driver, OS/RTOS,
+HAL, or hardware modules. The underscored traversal surface is public only so
+external `View` conformances can receive its default witness; direct use or
+override by application code is unsupported and non-conforming.
 
 View-returning properties and functions MAY return `some View` and MAY use
 `@ViewBuilder`. They MUST expand with the same rules as an equivalent inline
@@ -207,9 +238,14 @@ absent from the portable API.
 
 ## Module Contract
 
-`GiftUI` MUST own the public declarations and package-only declaration hooks.
-It MUST import no semantic-runtime implementation and MUST expose no runtime,
-layout, render, backend, platform, or hardware type through this API.
+`GiftUI` MUST own the public declarations and the underscored framework
+traversal surface. Swift protocol requirements cannot have `package` access,
+and an SPI-hidden default witness is unavailable to an ordinary external
+conformance. The traversal requirement, its visitor/payload types, and its
+default witness therefore MUST be public underscored declarations. They are
+not supported client API and carry no source-compatibility promise. `GiftUI`
+MUST import no semantic-runtime implementation and MUST expose no runtime,
+layout, render, backend, platform, or hardware type through this surface.
 
 `GiftUISemanticCore` MUST own expansion, structural paths, structural/action-
 occurrence identity, staged semantic structure, and the recording conformance
@@ -225,15 +261,17 @@ normative SPEC-003 fact in `Error Handling`. Neither failure module may import
 `GiftUI` or `GiftUISemanticCore` to perform that mapping.
 
 Dynamic and static runtime implementations MAY depend on
-`GiftUISemanticCore`; it MUST NOT depend on either implementation. Concrete
-declarations introduced by later Specifications MUST enter expansion through
-package SPI owned jointly by their declaration module and
-`GiftUISemanticCore`; they MUST NOT add public traversal requirements to
-`View` or create a second expansion engine.
+`GiftUISemanticCore`; it MUST NOT depend on either implementation. Within the
+package, only `GiftUISemanticCore`, `GiftUI` declaration implementations, and
+checked-in conformance fixtures MAY reference the underscored traversal names.
+Concrete declarations introduced by later Specifications MUST enter expansion
+through that one surface; they MUST NOT add another `View` requirement or
+create a second expansion engine.
 
-Declaration traversal SPI MUST be package-scoped. A dynamic convenience MAY
-adapt callback-backed or erased syntax in a separately imported module, but
-it MUST lower to the same fixed declaration and expansion semantics.
+A dynamic convenience MAY adapt callback-backed or erased syntax in a
+separately imported module, but it MUST lower to the same fixed declaration
+and expansion semantics. The underscored traversal surface is a framework
+dispatch mechanism, not a compatibility promise or a plug-in interface.
 
 ## Types / APIs
 
@@ -247,6 +285,15 @@ public protocol View {
 
     @ViewBuilder
     var body: Body { get }
+
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    )
+}
+
+extension Never: View {
+    public typealias Body = Never
+    public var body: Never { get }
 }
 
 @resultBuilder
@@ -277,17 +324,150 @@ public enum ViewBuilder {
 }
 ```
 
-`EmptyView`, `TupleView`, `TupleView3`, `TupleView4`, `TupleView5`,
-`ConditionalContent`, and `OptionalContent` MUST be public value types so
-builder-generated public opaque results are representable. Their stored
-children, branch storage, and construction initializers MUST be package SPI;
-clients construct them through `ViewBuilder`. Each wrapper MUST be usable
-without allocation, reflection, an existential, or runtime discovery.
+The traversal requirement is part of the protocol witness table only because
+Swift requires a public protocol requirement to share the protocol's access.
+Its name, visitor/payload types, and every visitor operation MUST remain
+underscored. The public default implementation MUST call `visitCustomView`
+with the declaration and one nonescaping body accessor; therefore an ordinary
+external conformance supplies only `Body` and `body`.
 
-Framework primitive declarations use `Body == Never` through package SPI.
-Evaluating `body` on such a declaration is an invariant violation; normal
-expansion MUST dispatch its package primitive hook and MUST NOT evaluate
-`Never`. Client custom views MUST NOT declare themselves framework primitives.
+The builder wrapper source shape is also normative:
+
+```swift
+public struct EmptyView: View {
+    public typealias Body = Never
+    package init()
+    public var body: Never { get }
+}
+
+public struct TupleView<A: View, B: View>: View {
+    public typealias Body = Never
+    package init(_ a: A, _ b: B)
+    public var body: Never { get }
+}
+
+public struct TupleView3<A: View, B: View, C: View>: View {
+    public typealias Body = Never
+    package init(_ a: A, _ b: B, _ c: C)
+    public var body: Never { get }
+}
+
+public struct TupleView4<A: View, B: View, C: View, D: View>: View {
+    public typealias Body = Never
+    package init(_ a: A, _ b: B, _ c: C, _ d: D)
+    public var body: Never { get }
+}
+
+public struct TupleView5<
+    A: View, B: View, C: View, D: View, E: View
+>: View {
+    public typealias Body = Never
+    package init(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E)
+    public var body: Never { get }
+}
+
+public struct ConditionalContent<First: View, Second: View>: View {
+    public typealias Body = Never
+    package init(first: First)
+    package init(second: Second)
+    public var body: Never { get }
+}
+
+public struct OptionalContent<Content: View>: View {
+    public typealias Body = Never
+    package init(_ content: Content?)
+    public var body: Never { get }
+}
+```
+
+Stored children and branch storage MUST be package implementation detail.
+`EmptyView` and the wrapper construction initializers are intentionally not
+ordinary client API; clients obtain wrappers through `ViewBuilder`. No wrapper
+may publish a child tuple, branch-storage enum, or optional payload. Every
+wrapper MUST be usable without allocation, reflection, an existential, or
+runtime discovery.
+
+`Never` conformance exists only to satisfy `Body: View`. Reading any
+framework primitive or wrapper `body`, or attempting to traverse `Never`, is
+an invariant violation. Normal expansion MUST dispatch the underscored
+framework override and MUST NOT evaluate `Never`. Client custom views inherit
+the custom-body default and MUST NOT substitute a primitive override.
+
+### Underscored declaration traversal
+
+The underscored traversal source shape is normative. Method bodies and payload
+fields are owned by the declaration contracts that use it.
+
+```swift
+public protocol _GiftUISemanticPrimitivePayload {}
+
+public protocol _GiftUISemanticActionPayload {}
+
+public protocol _GiftUISemanticModifierPayload {}
+
+public protocol _GiftUISemanticTraversalVisitor {
+    mutating func visitCustomView<Declaration: View>(
+        _ declaration: borrowing Declaration,
+        body: () -> Declaration.Body
+    )
+    mutating func visitEmpty()
+    mutating func visitFixed<A: View, B: View>(
+        _ a: borrowing A, _ b: borrowing B
+    )
+    mutating func visitFixed<A: View, B: View, C: View>(
+        _ a: borrowing A, _ b: borrowing B, _ c: borrowing C
+    )
+    mutating func visitFixed<A: View, B: View, C: View, D: View>(
+        _ a: borrowing A, _ b: borrowing B, _ c: borrowing C,
+        _ d: borrowing D
+    )
+    mutating func visitFixed<
+        A: View, B: View, C: View, D: View, E: View
+    >(
+        _ a: borrowing A, _ b: borrowing B, _ c: borrowing C,
+        _ d: borrowing D, _ e: borrowing E
+    )
+    mutating func visitConditionalFirst<First: View, Second: View>(
+        _ content: borrowing First, second: Second.Type
+    )
+    mutating func visitConditionalSecond<First: View, Second: View>(
+        first: First.Type, _ content: borrowing Second
+    )
+    mutating func visitOptionalAbsent<Content: View>(_: Content.Type)
+    mutating func visitOptionalPresent<Content: View>(
+        _ content: borrowing Content
+    )
+    mutating func visitPrimitive<Payload: _GiftUISemanticPrimitivePayload>(
+        _ payload: borrowing Payload
+    )
+    mutating func visitActionPrimitive<Payload: _GiftUISemanticActionPayload>(
+        _ payload: borrowing Payload
+    )
+    mutating func visitModifier<
+        Content: View, Payload: _GiftUISemanticModifierPayload
+    >(
+        content: borrowing Content,
+        payload: borrowing Payload
+    )
+}
+```
+
+The zero-child and one-child builder results lower as `EmptyView` and the
+child itself, respectively. Each visitor operation receives borrowed or
+nonescaping values and MUST NOT require `Any`, an existential payload,
+reflection, a string key, a closure retained past the call, or a runtime
+registry. Metatype arguments select an inactive generic branch only; expansion
+MUST NOT instantiate, evaluate, retain, address-compare, or emit an event for
+that branch.
+
+`GiftUI` MUST supply the custom-view default. Each wrapper above MUST override
+the requirement and call exactly its matching visitor operation. Each later
+concrete primitive or modifier contract MUST define its typed payload and its
+single matching override through this SPI. An action-bearing primitive MUST
+use the action-bearing operation exactly once; it MUST NOT separately use the
+non-action primitive operation for the same occurrence. These rules are the
+closed dispatch contract; adding a later declaration category requires a
+reviewed revision of this Specification rather than an unregistered hook.
 
 ### Expansion limits and summary
 
@@ -339,22 +519,109 @@ selected by the later RUNTIME-PROFILES/HOST-CONFIGURATION contracts; this
 Specification's independent fixtures MUST inject small values and exercise
 every edge.
 
-The expansion entry point MUST be generic over `Root: View`, accept caller-
-owned limits and workspace/sink storage, and return
-`SemanticExpansionResult`. The local result MUST add no allocation and MUST
-not contain a SPEC-003 fact, operational outcome, disposition, health, or
-diagnostic value. Exact workspace representation is profile-owned, but it
-MUST report its finite capacity before traversal and MUST NOT make declaration
-semantics depend on storage strategy.
+The fields and counts have these exact meanings:
+
+- `maximumDepth` bounds the number of simultaneously active structural-path
+  components. The root component has depth one. A custom-body, fixed-child,
+  selected conditional-branch, optional-presence, or declaration-role
+  component increases depth by one while active. Modifier applications do not
+  increase depth.
+- `maximumSemanticNodes` bounds framework semantic occurrences. Empty, group,
+  conditional, optional, modifier, and custom-view wrappers do not increment
+  it.
+- `maximumBodyEvaluations` bounds custom-view `body` evaluations. Builder and
+  framework wrapper traversal and framework primitive dispatch do not
+  increment it.
+- `maximumModifierApplications` bounds individual typed modifier payloads,
+  including repeated modifiers of the same kind.
+- `maximumActionOccurrences` bounds action-bearing semantic occurrences. Each
+  is also one semantic node, so an action reservation never replaces the node
+  reservation.
+- `maximumObservedDepth` is the greatest permitted depth actually entered on
+  a successful attempt, including the root-position and endpoint-role
+  components. It is two for an `EmptyView` root and never zero on success.
+
+Counts reserve the next unit before the corresponding body evaluation,
+semantic-node stage, modifier stage, or action stage. A count equal to its
+limit is permitted; the next reservation fails before the operation occurs.
+Path depth is checked before entering the next component. Counters MUST NOT
+include inactive branches, absent optionals, rejected reservations, or work
+after the first failure.
+
+The expansion entry point MUST be the sole generic package operation over
+`Root: View`, a profile-owned `SemanticExpansionWorkspace`, and a
+`SemanticExpansionSink`. It accepts the root by nonescaping borrow, immutable
+limits, and `inout` caller-owned workspace and sink, and returns
+`SemanticExpansionResult`. Both protocols are package SPI owned by
+`GiftUISemanticCore`; their exact associated identity and storage types MAY be
+profile-specific, but they MUST provide these operations:
+
+1. report all finite path, identity, staging, and sink capacities before the
+   attempt;
+2. reject begin while the same workspace is active;
+3. stage a structural occurrence, semantic occurrence, modifier application,
+   and action occurrence without publishing it;
+4. publish the staged result exactly once on success;
+5. discard the complete staged result on failure; and
+6. reset to an idle, reusable state without retaining the borrowed root or
+   payloads.
+
+A sink refusal caused by any reported finite capacity maps locally to
+`.capacityExhausted`. A sink or workspace that reports sufficient capacity and
+then cannot honor it maps to `.invariantViolation`; it MUST NOT be reclassified
+as ordinary backpressure. The local result MUST add no allocation and MUST not
+contain a SPEC-003 fact, operational outcome, disposition, health, or
+diagnostic value.
+
+### Canonical recording seam
+
+The package recording sink MUST expose a canonical transcript for contract
+fixtures. Each transcript event contains an exact structural path plus one of
+these closed event kinds:
+
+```text
+enterStructuralOccurrence(declarationRole)
+evaluateCustomBody(declarationRole)
+stageSemanticOccurrence(declarationRole)
+applyModifier(modifierRole, zeroBasedChainIndex)
+associateAction(actionRole)
+```
+
+Canonical paths use the component algebra `root`, `customBody`,
+`fixedChild(0...4)`, `conditionalBranch(0|1)`, `optionalPresence`, and
+`declarationRole`. Fixture declaration, modifier, and action roles are
+source-declared symbolic tokens local to the checked-in corpus. Tests compare
+token equality and component sequences; they MUST NOT compare strings,
+metatype addresses, hashes, object identity, or profile-private raw identity
+bytes. Production identities MAY use another bounded representation but MUST
+produce the same transcript and equality relation.
+
+Optional absence produces only its wrapper's structural-entry event; it emits
+no presence-child event. Structural wrappers emit no semantic event.
+`evaluateCustomBody` is recorded immediately before the one body access.
+Modifier chain indices start at zero for each modifier scope.
+`associateAction` follows the semantic occurrence at the same path and
+precedes that occurrence's modifiers. The published successful transcript's
+body, semantic, modifier, and action event counts plus its greatest path depth
+MUST equal `SemanticExpansionSummary`; structural-entry events are not a
+separate summary counter. A discarded attempt is not a current semantic
+result, although a test-only attempted-event probe MAY verify the detecting
+point.
+
+`SemanticExpansionLimits` and `SemanticExpansionSummary` MUST each occupy no
+more than 10 bytes, `SemanticExpansionError` exactly 1 byte, and
+`SemanticExpansionResult` no more than 12 bytes on every supported compiler.
+Workspace, sink, and identity storage budgets remain profile-owned and MUST be
+reported by the later RUNTIME-PROFILES contract rather than inferred here.
 
 ### Modifier declaration seam
 
 This Specification defines no public concrete modifier. Every concrete
 modifier introduced by a later approved Specification MUST use the one
-package modifier-declaration seam in `GiftUI`. The seam MUST carry its typed
-payload without `Any`, reflection, strings, or a global runtime registry and
-MUST associate the modifier with its content while preserving the content's
-structural identity.
+underscored modifier operation in `_GiftUISemanticTraversalVisitor`. The seam MUST
+carry its typed payload without `Any`, reflection, strings, or a global
+runtime registry and MUST associate the modifier with its exact modifier scope
+while preserving all content structural identities.
 
 A public modifier method MUST return a value conforming to `View` and append
 exactly one modifier application to the source-order chain. A later contract
@@ -369,9 +636,10 @@ An expansion attempt MUST be synchronous, depth-first, and left-to-right.
 For identical declarations, limits, and admitted external state, its trace
 and result MUST be deterministic.
 
-1. Start at the root structural component.
-2. For a custom view, enter its custom-body component, evaluate `body` exactly
-   once for that occurrence in the attempt, then expand the returned value.
+1. Enter the root-position component and the root declaration-role component.
+2. For a custom view, record its structural occurrence, enter its custom-body
+   component, reserve one body evaluation, record `evaluateCustomBody`,
+   evaluate `body` exactly once, then expand the returned value.
 3. For a fixed group, expand present children in increasing zero-based source
    index. The group itself emits no semantic node.
 4. For conditional content, enter branch `0` for `first` or branch `1` for
@@ -380,11 +648,13 @@ and result MUST be deterministic.
 5. For optional content, absence emits no semantic node, body evaluation,
    modifier, or action. Presence enters the optional-presence component and
    expands its sole child at child index `0`.
-6. For a framework declaration, stage one semantic occurrence and then expand
-   any declared fixed semantic children in their source order.
-7. Apply modifiers associated with an occurrence in source-call order after
-   the modified content has been structurally identified and before a later
-   consumer observes the completed occurrence.
+6. For a framework declaration, record its structural occurrence, validate
+   unique structural identity, reserve and stage one semantic occurrence,
+   associate one action occurrence when action-bearing, and then expand any
+   declared fixed semantic children in source order.
+7. Apply modifiers for one modifier scope in increasing zero-based source-call
+   index after the modified content has been structurally identified and
+   before a later consumer observes the completed scope.
 
 An expansion implementation MUST NOT evaluate an inactive branch, reorder
 siblings, invoke a custom body more than once, traverse layout/render output,
@@ -395,12 +665,14 @@ or permit asynchronous or concurrent semantic mutation during the attempt.
 Structural identity equality MUST follow these rules:
 
 - roots with the same concrete declaration role begin at the same root;
-- each custom-body boundary, fixed-child index, conditional branch, optional-
-  presence boundary, and framework declaration role contributes to the exact
-  structural path;
+- each custom declaration role and body boundary, fixed-child index,
+  conditional branch, optional-presence boundary, and framework declaration
+  role contributes to the exact structural path;
 - equal identities require equal complete paths and equal endpoint roles;
 - different sibling indices or conditional branches MUST never compare equal;
-- group wrappers and modifiers MUST NOT create semantic-node identity;
+- group wrappers and modifiers MUST NOT create a semantic node or replace any
+  descendant structural identity; their exact paths still distinguish group
+  children and modifier scopes;
 - changing modifier payload MUST NOT by itself replace the underlying
   occurrence identity;
 - removing an optional occurrence removes its identity; restoring the same
@@ -440,8 +712,10 @@ second semantic identity or expansion engine here.
 ### Modifier order
 
 Modifier applications are ordered and non-commutative by default. For
-`base.a().b().c()`, the semantic chain is exactly `[a, b, c]`. A custom view's
-outer modifiers follow the complete modifier chain produced inside its body.
+`base.a().b().c()`, the semantic chain for that scope is exactly
+`[(a, 0), (b, 1), (c, 2)]`. A custom view's outer modifiers follow the complete
+modifier events produced inside its body. A modifier applied to a fixed group
+is attached to the group scope after every present child has expanded.
 Sibling modifier chains do not interleave.
 
 Expansion MUST preserve an otherwise unknown modifier as a typed application
@@ -452,11 +726,11 @@ layout/render meaning.
 ### Atomicity
 
 All semantic output is staged. Success publishes one complete expansion
-summary and makes the staged result available to its next consumer. An
-operational or failure result publishes no staged semantic tree, identity
-map, action map, or modifier chain as current. Caller-owned scratch may retain
-unspecified bytes after failure but MUST be reset before reuse and MUST NOT be
-observable as committed semantic state.
+summary and makes the staged result available to its next consumer. A failure
+publishes no staged semantic tree, transcript, identity map, action map, or
+modifier chain as current. Caller-owned scratch may retain unspecified bytes
+after failure but MUST be reset before reuse and MUST NOT be observable as
+committed semantic state.
 
 ## State / Lifecycle
 
@@ -498,9 +772,9 @@ builder shape, branch choice, modifier order, or action identity.
 
 ## Backend Requirements
 
-No backend participates in declaration expansion. A backend MUST NOT import
-the declaration traversal SPI, evaluate `body`, inspect custom views,
-reinterpret modifiers, assign identity, retain declarations, or invoke
+No backend participates in declaration expansion. A backend MUST NOT reference
+the underscored declaration traversal surface, evaluate `body`, inspect custom
+views, reinterpret modifiers, assign identity, retain declarations, or invoke
 actions. Recording semantic fixtures MUST run without layout, render core, a
 backend, a platform adapter, or connected hardware.
 
@@ -517,6 +791,19 @@ both contracts MUST map the local error through SPEC-003 exactly as follows:
 | A structural path or semantic/action identity cannot be represented uniquely or an identity alias is detected | `.invalidIdentity` | `.invalidIdentity` | `.semantic` | `.activeCycle` | `.contained` |
 | Expansion re-enters the active semantic workspace | `.reentrancyViolation` | `.reentrancyViolation` | `.semantic` | `.activeCycle` | `.contained` |
 | Framework-owned declaration traversal violates the sealed declaration protocol and safe continuation cannot be proven | `.invariantViolation` | `.invariantViolation` | `.semantic` | `.activeCycle` | `.safetyNotProven` |
+
+Detection order is normative when more than one condition is possible at one
+step: reject same-workspace reentrancy at entry; check and reserve the next
+path depth; validate the resulting path and identity representation; reserve
+the operation-specific declared count; reserve workspace/sink storage; then
+call the declaration hook or body.
+For an action-bearing primitive, semantic-node reservation precedes action
+reservation. For a modifier scope, reservations follow increasing chain index.
+The first failed check returns its local error. A framework hook that invokes
+the wrong visitor category, invokes more than one primitive category, reports
+sufficient storage that it cannot honor, or reaches `Never.body` returns
+`.invariantViolation` when safe detection is possible; an unavoidable client
+trap is outside GiftUI's recoverable outcome contract.
 
 Invalid `SemanticExpansionLimits` construction returns local `nil`. The first
 host/runtime owner adapter that reports it cross-layer MUST map it to
@@ -562,9 +849,11 @@ scripts/contracts/run-spec-006.sh --profile nrf52840-embedded
 The driver MUST use the compiler/target/optimization identities fixed by
 SPEC-002 for the corresponding profile, record the repository revision and
 complete commands, compile the shared declaration corpus, report allocation
-counts and maximum observed expansion depth, and inspect the nRF52840 ELF for
-the required hard-float calling convention. ARMv6 and nRF52840 invocations
-are cross-build/inspection seams and require no connected hardware.
+counts, every owned value's size/stride/alignment, every summary counter,
+maximum observed expansion depth, and underscored traversal references. It
+MUST inspect the nRF52840 ELF for the required hard-float calling convention.
+ARMv6 and nRF52840 invocations are cross-build/inspection seams and require no
+connected hardware.
 
 This Specification deliberately sets no standalone latency, linked-code, or
 total semantic-workspace ceiling. Production node/action/workspace capacities
@@ -584,9 +873,10 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
   persistent semantic-tree format, or compatibility for proof-of-concept
   public traversal hooks.
 - Migration MUST remove the requirement for clients to implement `_visit` or
-  `ViewVisitor` and document any source adjustment. Existing tuple names and
-  five-child builder evidence may be retained only when they satisfy this
-  contract. Public client-action representation remains INTERACTION work.
+  `ViewVisitor`, restrict public wrapper storage and construction to the
+  access fixed here, and document every source adjustment. Existing tuple
+  names and five-child builder evidence may be retained only when they satisfy
+  this contract. Public client-action representation remains INTERACTION work.
 
 ## Testing Requirements
 
@@ -598,14 +888,21 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
   six-expression block unless the client explicitly nests composition.
 - Compile both branches and optional presence/absence without evaluating the
   inactive declaration.
-- Prove that `buildArray`, unrestricted dynamic collections, public traversal
-  hooks, and runtime/backend types are absent from the portable surface.
+- Prove `Never` satisfies `Body: View`, every framework wrapper dispatches its
+  matching underscored visitor operation without reading `body`, and custom
+  views receive the one default custom-body implementation.
+- Prove that `buildArray`, unrestricted dynamic collections, supported client
+  traversal API, wrapper storage/initializers, and runtime/backend types are
+  absent from the normal portable surface. Prove an external custom `View`
+  conformance compiles without declaring `_giftUITraverse`.
 
 ### Recording semantic fixtures
 
 - Record exact depth-first, left-to-right traces for nested custom views,
   every fixed arity, both conditional branches, present/absent optional
   content, empty content, and nested combinations.
+- Compare the complete canonical transcript event-by-event and prove its four
+  counted event classes and greatest path depth equal the returned summary.
 - Compare canonical structural-identity equality across repeated expansion,
   branch changes, optional removal/restoration, sibling insertion within a
   different branch, endpoint-role changes, and prefix/descendant paths.
@@ -624,6 +921,9 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
 - Exercise exactly-at-limit success and one-over-limit failure independently
   for depth, semantic nodes, body evaluations, modifier applications, action
   occurrences, and caller-owned workspace.
+- Exercise simultaneous candidate failures and prove the mandated detection
+  order, including a sink/workspace capacity refusal versus a falsely reported
+  sufficient capacity.
 - Prove each condition first returns the exact closed local error, stops
   traversal, publishes no partial semantic result, invokes no action, and
   allows clean workspace reuse by a later valid attempt.
@@ -643,12 +943,19 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
   bytes.
 - Prove static expansion makes zero heap allocations and links no dynamic
   convenience module.
+- Prove the limits, summary, local error, and local result values meet their
+  exact memory-layout bounds on every contract-driver compiler.
 - Prove `GiftUI` imports no `GiftUISemanticCore` implementation and
   `GiftUISemanticCore` imports `GiftUI` but neither `GiftUIFailureCore` nor
   `GiftUIFailureExecution`; prove the runtime owner adapter is the first
   target allowed to import both semantic Core and failure Core.
-- Prove a backend, platform, driver, and portable client cannot import package
-  traversal SPI.
+- Prove package source references the underscored traversal surface only from
+  GiftUI declaration implementations, Semantic Core, and named conformance
+  fixtures; backend, platform, driver, and portable client sources MUST NOT
+  reference or override it.
+- Check in a migration inventory covering every proof-of-concept `_visit`,
+  `ViewVisitor`, public wrapper initializer/storage member, string path, and
+  runtime-specific traversal entry affected by this contract.
 - Produce all four contract-driver reports; connected-board execution is
   downstream conformance evidence, not this independent approval seam.
 
@@ -656,13 +963,14 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
 
 - [ ] **DV-001:** The exact Rank 0 `View`, `ViewBuilder`, and fixed-wrapper
   public source contract compiles for all four MVP configurations
-  with only `import GiftUI` in portable Presentation.
+  with only `import GiftUI` in portable Presentation; `Never` satisfies the
+  recursive `Body: View` constraint without being evaluated.
 - [ ] **DV-002:** Builder fixtures accept direct arities zero through five,
   conditionals, and optionals; direct six-expression and dynamic-array
   composition are absent unless explicitly nested into the supported surface.
 - [ ] **DV-003:** Custom bodies and view-returning properties/functions expand
   synchronously, once per active occurrence, never for inactive branches, and
-  with the exact depth-first left-to-right trace.
+  with the exact depth-first left-to-right canonical transcript and summary.
 - [ ] **DV-004:** Repeated, branch-changing, and optional-removal/restoration
   fixtures satisfy every structural-identity equality and inequality rule,
   with no collision or client-visible raw representation.
@@ -677,7 +985,8 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
 - [ ] **DV-007:** Every expansion/workspace capacity succeeds exactly at its
   limit and fails one over with `.capacityExhausted`, no truncation, partial
   publication, overwrite, allocation fallback, or action invocation; the
-  first runtime-owner adapter maps that local error to the exact SPEC-003 fact.
+  mandated detection order is stable when conditions coincide, and the first
+  runtime-owner adapter maps that local error to the exact SPEC-003 fact.
 - [ ] **DV-008:** Identity alias, reentrancy, invalid limits, and sealed-
   protocol violations produce the exact local error or `nil` specified here,
   and the first runtime-owner adapter maps each to the exact SPEC-003 fact;
@@ -686,25 +995,35 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
   traces, identity relations, modifier order, action associations, summaries,
   and failure facts for the complete shared corpus.
 - [ ] **DV-010:** Static conformance records zero heap allocations, bounded
-  depth, fixed-width nonwrapping counters, and the required
-  nRF52840 hard-float ELF attributes through the four exact driver commands.
+  depth, fixed-width nonwrapping counters, every owned value's required memory
+  layout, and the nRF52840 hard-float ELF attributes through the four exact
+  driver commands.
 - [ ] **DV-011:** Dependency tests prove `GiftUI` remains a portable leaf with
-  no semantic-runtime implementation import, Semantic Core imports no failure
-  module, only the runtime owner adapter imports both semantic and failure
-  contracts, and all remaining imports follow the approved partial order.
+  no semantic-runtime implementation import, only Semantic Core and named
+  fixtures plus GiftUI declaration implementations reference the underscored
+  traversal surface, Semantic Core imports no failure module, only the runtime
+  owner adapter imports both semantic and failure contracts, and all remaining
+  imports follow the approved partial order.
 - [ ] **DV-012:** Review finds no layout, render, state/invalidation,
   activation/input, capability, backend, frame, or host policy defined by this
   Specification.
+- [ ] **DV-013:** Migration evidence inventories and resolves every public
+  proof-of-concept traversal hook, wrapper initializer/storage exposure,
+  string structural path, and dynamic/static traversal entry without adding a
+  compatibility shim that creates a second expansion engine.
+- [ ] **DV-014:** `FW-017` and `FW-020` remain optional, post-MVP captures with
+  reciprocal links and concrete revisit triggers; no required product behavior
+  or implementation criterion depends on pursuing either item.
 
 ## Implementation Notes
 
 This section is non-authoritative guidance. The proof of concept already has
 `View`, `ViewBuilder`, fixed tuple wrappers, conditional/optional wrappers, a
 visitor, and dynamic/static traversal tests. Those are useful fixture inputs.
-The maintained implementation should hide traversal behind package SPI and
-replace string structural paths with bounded profile-appropriate
-representations while comparing canonical identity relations rather than raw
-bytes.
+The maintained implementation should confine the underscored traversal
+surface to its allowed framework owners and replace string structural paths
+with bounded profile-appropriate representations while comparing canonical
+identity relations rather than raw bytes.
 
 A recording semantic sink should be implemented before retained runtime
 storage. It can then serve as the common oracle for both runtime profiles and
@@ -723,19 +1042,17 @@ committed action generation and no callable payload; replacement installs a
 new generation; release activates only after the exact current pair, hit, and
 enabled state match. EXECUTION and INTERACTION must specify the finite
 representation and ownership details without redefining the identity contract
-here. Keyed/dynamic child identity, client-visible identity, or public custom-
-modifier architecture still requires lifecycle triage rather than expansion
-of this contract.
+here. [FW-020](../future-work/fw-020-declarative-extensibility.md) preserves
+the separately gated post-MVP declarative-extensibility cluster.
 
 ## Deferred and Follow-up Work
 
 - [FW-017](../future-work/fw-017-public-binding-abstraction.md) preserves a
   public two-way binding abstraction. It is not required by Rank 0.
-- Unrestricted dynamic collections, keyed collection identity, public type
-  erasure, public custom modifiers, and client-visible explicit view identity
-  are outside the MVP contract. They require lifecycle triage if a concrete
-  use case makes them necessary; this Specification does not silently commit
-  them.
+- [FW-020](../future-work/fw-020-declarative-extensibility.md) preserves
+  unrestricted dynamic collections, keyed collection identity, public type
+  erasure, public custom modifiers, and client-visible explicit view identity.
+  None is required by the Signal Analyzer or this contract.
 - Concrete layout, rendering, interaction, observable-state, and drawing
   modifier vocabularies remain with their owning downstream Specifications.
 
@@ -750,6 +1067,8 @@ of this contract.
 - [ADR-013: Provenance-Validated Presentation-Coupled Input](../adrs/adr-013-provenance-validated-input-admission.md)
 - [SPEC-002: Portable Foundation](spec-002-portable-foundation.md)
 - [SPEC-003: Failure Outcomes and Containment](spec-003-failure-outcomes-and-containment.md)
+- [FW-017: Public Binding Abstraction](../future-work/fw-017-public-binding-abstraction.md)
+- [FW-020: Declarative Extensibility](../future-work/fw-020-declarative-extensibility.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
 - [GiftUI Principles](../PRINCIPLES.md)
