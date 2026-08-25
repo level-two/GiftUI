@@ -92,11 +92,12 @@ Candidate keys are planning labels, not reserved Specification IDs.
 | `LAYOUT`              | Proposal-based stacks, spacer, spacing, alignment, padding, frame constraints, checked placement, hit geometry, and canonical text layout                                                            | ADR-005, ADR-006, ADR-009, ADR-021, ADR-023                                                   | `FOUNDATION`, `TEXT`, `DECLARATIVE`                                   | Table-driven measurement and placement fixtures use a semantic-child adapter and canonical metric provider; no pixel backend is needed                                                                                       |
 | `RENDERING`           | Rank 2 text/color/foreground/background semantics, normalized ordered render operations, positioned glyphs, clipping/damage, line operations, streamability, and semantic-to-render lowering         | ADR-005, ADR-006, ADR-021 through ADR-023                                                     | `FOUNDATION`, `TEXT`, `DECLARATIVE`, `LAYOUT`, `FAILURE`              | A recording operation sink verifies golden ordered operations, bounds, clips, exact resource identities, overflow, and profile equivalence without rasterization                                                             |
 | `EXECUTION`           | Sealed run-cycle admission, mutation/publication phases, frame identity and provenance, synchronous one-shot handoff, refusal recovery, pointer sequencing, identity-generation capture, and presentation-coupled input admission | ADR-010 through ADR-016                                                                       | `FOUNDATION`, `FAILURE`, `DECLARATIVE`, `LAYOUT`, `RENDERING`         | A scripted runtime coordinator, recording backend, and fake wake/input endpoints verify at-most-once effects, commit/refusal, dirty rederivation, stale-input cancellation, replacement-generation mismatch, and finite retry policy                          |
+| `DRAWING`             | Laid-out Canvas declaration and invocation, scoped graphics context and uniquely owned transient Path construction, cycle-local immutable plans, canonical straight-line stroke lowering, structural capacities, and pre-offer failure | ADR-028 through ADR-031                                                                       | `FOUNDATION`, `FAILURE`, `CAPABILITY`, `DECLARATIVE`, `LAYOUT`, `RENDERING`, `EXECUTION` | Recording plan and operation sinks verify resolved-size invocation, scoped lifetime, snapshot isolation, painter order, checked local-to-surface geometry, inherited clipping, canonical caps and joins, exhaustion, whole-plan discard, and dynamic/static source equivalence without pixels or hardware |
 | `OBSERVABLE`          | Portable observable `@State`, structural ownership, registration, replacement/removal, coarse invalidation, bounded dynamic/static realization, and Signal Analyzer Presentation-fact admission      | ADR-024 through ADR-027, plus ADR-011 and ADR-014 through ADR-016                             | `FOUNDATION`, `FAILURE`, `DECLARATIVE`, `EXECUTION`                   | Shared model/location fixtures and a fake bounded admission endpoint verify identity, teardown, coalescing, phase violations, exhaustion, stale reports, and application-to-mutation-domain ordering without a backend       |
 | `INTERACTION`         | Public `Button` and `disabled` declarations, enabled-state lowering, committed action records and generations, identity-generation capture without callable retention, normalized-event behavior, and activation semantics                                                      | ADR-005, ADR-006, ADR-011, ADR-013                                                            | `FOUNDATION`, `DECLARATIVE`, `LAYOUT`, `EXECUTION`                    | Normalized pointer fixtures drive recording hit maps and action sinks to verify disabled behavior, exact down/up identity-generation matching, replacement cancellation, stale or cancelled sequences, ordering, and dynamic/static source equivalence without a platform driver |
-| `RUNTIME-PROFILES`    | Dynamic and static runtime storage/composition, semantic-to-layout-to-render coordination, declared capacities, workspace ownership, and shared conformance suite                                    | ADR-005 through ADR-016 and ADR-024 through ADR-026                                           | `LAYOUT`, `RENDERING`, `EXECUTION`, `OBSERVABLE`, `INTERACTION`       | The same small hierarchies execute through both profiles into recording sinks; tests compare semantics, failures, operation order, bounds, allocation behavior, and omitted facilities                                       |
-| `BACKEND-INTEGRATION` | Backend SPI, raster/surface contracts, synchronous reservation and consumption, canonical pixel encoding, payload lifetime, display-target boundary, and backend-local health                        | ADR-005 through ADR-007, ADR-010, ADR-014 through ADR-016, ADR-020 through ADR-023            | `FAILURE`, `CAPABILITY`, `TEXT`, `RENDERING`, `EXECUTION`             | Golden operation streams run through recording, framebuffer, and bounded RGB565/tile fixtures; fake display targets verify reservation, transfer lifetime, refusal, clipping, quantization, and post-handoff isolation       |
-| `HOST-CONFIGURATION`  | Immutable target-host assembly, structural validation, capability resolution, environmental contracts, input/display coordination, finite pacing policy, and the four MVP configuration obligations  | ADR-006 through ADR-008, ADR-012, ADR-013, ADR-015 through ADR-020, ADR-023, ADR-026, ADR-027 | `CAPABILITY`, `OBSERVABLE`, `RUNTIME-PROFILES`, `BACKEND-INTEGRATION` | Hardware-free host fixtures prove graph validation, policy completeness, capability compatibility, profile selection, and dependency direction; connected-target evidence remains a later conformance gate                   |
+| `RUNTIME-PROFILES`    | Dynamic and static runtime storage/composition, semantic-to-layout-to-render coordination, declared capacities, Canvas/Path/plan workspace ownership, and shared conformance suite                    | ADR-005 through ADR-016, ADR-024 through ADR-026, ADR-028, ADR-029, ADR-031                    | `LAYOUT`, `RENDERING`, `EXECUTION`, `DRAWING`, `OBSERVABLE`, `INTERACTION` | The same small hierarchies and Canvas fixtures execute through both profiles into recording sinks; tests compare semantics, failures, operation order, bounds, snapshot behavior, allocation behavior, and omitted facilities |
+| `BACKEND-INTEGRATION` | Backend SPI, raster/surface contracts, synchronous reservation and consumption, canonical pixel encoding, canonical straight-line stroke realization, payload lifetime, display-target boundary, and backend-local health | ADR-005 through ADR-007, ADR-010, ADR-014 through ADR-016, ADR-020 through ADR-023, ADR-030, ADR-031 | `FAILURE`, `CAPABILITY`, `TEXT`, `RENDERING`, `EXECUTION`, `DRAWING` | Golden operation streams run through recording, framebuffer, and bounded RGB565/tile fixtures; fake display targets verify reservation, transfer lifetime, stroke rasterization, refusal, clipping, quantization, borrowed-address isolation, and post-handoff isolation |
+| `HOST-CONFIGURATION`  | Immutable target-host assembly, structural validation, capability resolution, Canvas producer capacities, environmental contracts, input/display coordination, finite pacing policy, and the four MVP configuration obligations | ADR-006 through ADR-008, ADR-012, ADR-013, ADR-015 through ADR-020, ADR-023, ADR-026, ADR-027, ADR-031 | `CAPABILITY`, `DRAWING`, `OBSERVABLE`, `RUNTIME-PROFILES`, `BACKEND-INTEGRATION` | Hardware-free host fixtures prove graph validation, independent conjunctive Canvas structural-capacity and `rasterPresentation` capability gates, policy completeness, profile selection, and dependency direction; connected-target evidence remains a later conformance gate |
 
 `FOUNDATION` defines only portable values and ownership boundaries. It MUST NOT
 absorb declarative semantics merely because those declarations reside in the
@@ -123,13 +124,16 @@ Wave 5:  FOUNDATION + FAILURE + DECLARATIVE
                     + EXECUTION -------------------> OBSERVABLE
          FOUNDATION + DECLARATIVE + LAYOUT
                     + EXECUTION -------------------> INTERACTION
-         FAILURE + CAPABILITY + TEXT + RENDERING
-                    + EXECUTION -------------------> BACKEND-INTEGRATION
+         FOUNDATION + FAILURE + CAPABILITY
+                    + DECLARATIVE + LAYOUT
+                    + RENDERING + EXECUTION --------> DRAWING
 
-Wave 6:  LAYOUT + RENDERING + EXECUTION
+Wave 6:  LAYOUT + RENDERING + EXECUTION + DRAWING
                     + OBSERVABLE + INTERACTION ----> RUNTIME-PROFILES
+         FAILURE + CAPABILITY + TEXT + RENDERING
+                    + EXECUTION + DRAWING ----------> BACKEND-INTEGRATION
 
-Wave 7:  CAPABILITY + OBSERVABLE + RUNTIME-PROFILES
+Wave 7:  CAPABILITY + DRAWING + OBSERVABLE + RUNTIME-PROFILES
                     + BACKEND-INTEGRATION ---------> HOST-CONFIGURATION
 ```
 
@@ -140,27 +144,44 @@ semantics are stable enough for downstream use. Approval remains independent:
 a downstream draft may explore integration, but it MUST NOT be approved before
 all of its authoritative prerequisite Specifications are approved.
 
-## Drawing and Application Branch
+## Drawing and Application Integration
 
-The Canvas branch has completed its architecture gates and may enter
-Specification drafting once its framework prerequisites are stable:
+The Canvas branch has completed its architecture gates and is now part of the
+main drafting graph. It may enter Specification drafting in Wave 5 once the
+contracts it extends are stable:
 
 ```text
 PROPOSAL-006 accepted
         |
         v
 RFC-009 approved -> ADR-028...ADR-031 accepted -> `DRAWING` Specification
-                                      |
-FOUNDATION + LAYOUT + RENDERING -------'
-                                      |
-OBSERVABLE + HOST-CONFIGURATION -------+--> SPEC-001 approval and full MVP
+                                      ^                 |
+FOUNDATION + FAILURE + CAPABILITY -----|                 v
+DECLARATIVE + LAYOUT + RENDERING ------|        RUNTIME-PROFILES
+EXECUTION -----------------------------'        BACKEND-INTEGRATION
+                                                       |
+CAPABILITY + DRAWING + OBSERVABLE ---------------------|
+RUNTIME-PROFILES + BACKEND-INTEGRATION ----------------+--> HOST-CONFIGURATION
+                                                              |
+DRAWING + OBSERVABLE + INTERACTION + HOST-CONFIGURATION ------+--> SPEC-001 approval
 ```
 
 The future `DRAWING` Specification should define only the MVP Canvas, graphics
-context, path, stroke, solid shading, and drawing-geometry contract required by
-the Signal Analyzer. Its tests should lower deterministic paths into recording
-render-operation sinks and validate geometry, clipping, stroke semantics,
-capacity errors, and static bounds without requiring pixels or hardware.
+context, path, stroke, solid shading, cycle-local plan, normalized stroke, and
+drawing-geometry contract required by the Signal Analyzer. It must also define
+the producer side of the independent B2 structural-capacity gate without
+adding Canvas construction capacity to SPEC-004's closed capability
+vocabulary. Its tests should lower deterministic paths into recording plans
+and render-operation sinks and validate geometry, clipping, stroke semantics,
+scoped lifetimes, capacity errors, whole-plan discard, and profile-equivalent
+bounds without requiring pixels or hardware.
+
+`DRAWING` owns portable drawing meaning, plan construction, normalized stroke
+payload, and producer obligations. `RUNTIME-PROFILES` owns concrete dynamic
+and static storage realization; `BACKEND-INTEGRATION` owns raster realization
+and synchronous consumption; `HOST-CONFIGURATION` owns assembled startup
+validation. Those downstream contracts reference `DRAWING` rather than
+redefining it.
 
 SPEC-001 remains the application-level integration contract. Its Domain, Data,
 capture, and portable Presentation behavior can be reviewed independently,
@@ -176,12 +197,14 @@ integration, and host configuration exist.
 3. Draft `LAYOUT`, then `RENDERING`; keep their recording fixtures reusable by
    later runtime and backend conformance suites.
 4. Draft `EXECUTION` after the layout and rendering contracts stabilize.
-5. Draft `OBSERVABLE`, `INTERACTION`, and `BACKEND-INTEGRATION` in parallel
-   once their distinct prerequisites are stable.
-6. Draft `RUNTIME-PROFILES`, followed by `HOST-CONFIGURATION`.
-7. In parallel with Steps 1 through 6, draft `DRAWING` from approved RFC-009
-   and accepted ADR-028 through ADR-031 once its framework prerequisites are
-   stable.
+5. Draft `OBSERVABLE`, `INTERACTION`, and `DRAWING` in parallel once their
+   distinct prerequisites are stable. `DRAWING` must use approved RFC-009 and
+   accepted ADR-028 through ADR-031 without allocating an implementation plan
+   before its Specification is approved.
+6. Draft `RUNTIME-PROFILES` and `BACKEND-INTEGRATION` once `DRAWING` supplies
+   stable plan, operation, capacity, and lifetime contracts.
+7. Draft `HOST-CONFIGURATION`, including the independent conjunctive Canvas
+   structural-capacity and `rasterPresentation` capability startup gates.
 8. Reconcile SPEC-001 against the approved reusable contracts, then request
    human approval. Implementation planning starts only from approved Specs.
 
