@@ -16,6 +16,7 @@ related_rfcs:
   - RFC-005
   - RFC-006
   - RFC-007
+  - RFC-009
 related_adrs:
   - ADR-005
   - ADR-006
@@ -29,6 +30,10 @@ related_adrs:
   - ADR-019
   - ADR-021
   - ADR-023
+  - ADR-028
+  - ADR-029
+  - ADR-030
+  - ADR-031
 related_specs:
   - SPEC-002
   - SPEC-003
@@ -96,10 +101,13 @@ dependency direction, and integration seams without selecting the separately
 governed observable reference-state or Canvas/path/stroke architectures.
 [PROPOSAL-005](../proposals/proposal-005-observable-reference-state.md) and
 [PROPOSAL-006](../proposals/proposal-006-canvas-path-stroke-drawing.md) begin
-those required feature lifecycles. Until their required decisions and
-contracts are accepted, the complete MVP architecture is not established and
-Specifications or implementation that depend on those public features remain
-blocked.
+those required feature lifecycles. The Canvas lifecycle has since produced
+approved [RFC-009](rfc-009-canvas-path-stroke-drawing-architecture.md) and
+accepted [ADR-028](../adrs/adr-028-post-layout-canvas-derivation-and-cycle-local-plan.md)
+through [ADR-031](../adrs/adr-031-bounded-canvas-failure-and-startup-gate-integration.md),
+which establish its architecture. Specifications or implementation that depend
+on its exact public contract remain blocked only on an approved drawing
+Specification.
 
 These architectural choices have approved design consensus. Approval does not
 define final public APIs, authorize package restructuring, or authorize
@@ -1180,7 +1188,7 @@ or interface:
 | B12-B13 | RFC-006 under PROPOSAL-004 | Capability physical ownership, vocabulary, inputs, results, resolution, propagation, consumption, policy, and absence behavior have a separate accepted problem, alternatives, and evolution path. RFC-002 retains only dependency-direction and non-inversion constraints. |
 | B14 | Consumer RFC or Specification; RFC-007/FW-009 preserve generalization | No common Service foundation is justified until multiple approved consumers demonstrate shared semantics or a dependency problem. |
 | B11 public observable state | [PROPOSAL-005](../proposals/proposal-005-observable-reference-state.md), beginning the separate feature lifecycle required by MVP Scope | RFC-002 fixes runtime ownership and the publication seam but cannot select the public state architecture. |
-| Canvas public drawing semantics used by B5 | [PROPOSAL-006](../proposals/proposal-006-canvas-path-stroke-drawing.md), beginning the separate feature lifecycle required by MVP Scope | RFC-002 fixes the render-layer placement of resolved drawing intent; the public Canvas/Path contract requires its own accepted Proposal before an RFC. |
+| Canvas public drawing semantics used by B5 | Accepted [PROPOSAL-006](../proposals/proposal-006-canvas-path-stroke-drawing.md), approved [RFC-009](rfc-009-canvas-path-stroke-drawing-architecture.md), and accepted [ADR-028](../adrs/adr-028-post-layout-canvas-derivation-and-cycle-local-plan.md) through [ADR-031](../adrs/adr-031-bounded-canvas-failure-and-startup-gate-integration.md) | RFC-002 fixes the render-layer placement of resolved drawing intent; the accepted Canvas decisions establish its architecture, while an approved drawing Specification must still define the exact public contract. |
 
 Declarative composition, layout, the non-text render vocabulary, backend SPI,
 display/driver separation, and pointer/touch admission now have sufficient
@@ -1223,10 +1231,10 @@ resolved in the coordinated RFCs:
 RFC-003 reports no remaining architectural open questions. Its licensed
 reference-resource and bounded static text evidence remain downstream
 Specification prerequisites rather than RFC-002 blockers. Observable state
-and Canvas now have separate draft Proposals, but those lifecycles have not
-passed their acceptance, RFC, ADR, or Specification gates. That blocks
-Specifications and implementation for those public features, but it does not
-require their architecture to be folded into or resolved by RFC-002.
+and Canvas now have accepted Proposals, approved RFCs, and accepted ADRs. Their
+architectures are established outside RFC-002; approved downstream
+Specifications remain required before implementation of their public
+contracts.
 
 ## Deferred and Follow-up Work
 
@@ -1257,8 +1265,12 @@ require their architecture to be folded into or resolved by RFC-002.
   begins the separately governed observable reference-state lifecycle. It is
   a draft and does not yet authorize RFC or downstream contract work.
 - [PROPOSAL-006](../proposals/proposal-006-canvas-path-stroke-drawing.md)
-  begins the separately governed Canvas/path/stroke lifecycle. It is a draft
-  and does not yet authorize RFC or downstream contract work.
+  is the accepted basis for the separately governed Canvas/path/stroke
+  lifecycle. Approved [RFC-009](rfc-009-canvas-path-stroke-drawing-architecture.md)
+  and accepted [ADR-028](../adrs/adr-028-post-layout-canvas-derivation-and-cycle-local-plan.md)
+  through [ADR-031](../adrs/adr-031-bounded-canvas-failure-and-startup-gate-integration.md)
+  establish the architecture; an approved drawing Specification remains the
+  next gate.
 - [FW-009](../future-work/fw-009-shared-delegated-service-foundation.md)
   records the concrete triggers for reconsidering a shared Service package and
   catalogue without adding it to MVP scope.

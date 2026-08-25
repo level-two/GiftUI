@@ -142,13 +142,14 @@ all of its authoritative prerequisite Specifications are approved.
 
 ## Drawing and Application Branch
 
-The Canvas branch cannot yet enter Specification drafting:
+The Canvas branch has completed its architecture gates and may enter
+Specification drafting once its framework prerequisites are stable:
 
 ```text
 PROPOSAL-006 accepted
         |
         v
-Canvas RFC -> accepted Canvas ADRs -> `DRAWING` Specification
+RFC-009 approved -> ADR-028...ADR-031 accepted -> `DRAWING` Specification
                                       |
 FOUNDATION + LAYOUT + RENDERING -------'
                                       |
@@ -178,9 +179,9 @@ integration, and host configuration exist.
 5. Draft `OBSERVABLE`, `INTERACTION`, and `BACKEND-INTEGRATION` in parallel
    once their distinct prerequisites are stable.
 6. Draft `RUNTIME-PROFILES`, followed by `HOST-CONFIGURATION`.
-7. In parallel with Steps 1 through 6, complete the Canvas RFC and ADR gates;
-   draft `DRAWING` only after those decisions are accepted and its framework
-   prerequisites are stable.
+7. In parallel with Steps 1 through 6, draft `DRAWING` from approved RFC-009
+   and accepted ADR-028 through ADR-031 once its framework prerequisites are
+   stable.
 8. Reconcile SPEC-001 against the approved reusable contracts, then request
    human approval. Implementation planning starts only from approved Specs.
 

@@ -6,17 +6,22 @@ status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-08-22
+updated: 2026-08-25
 proposal:
   - PROPOSAL-002
 related_rfcs:
   - RFC-008
+  - RFC-009
 related_adrs:
   - ADR-001
   - ADR-002
   - ADR-003
   - ADR-004
   - ADR-027
+  - ADR-028
+  - ADR-029
+  - ADR-030
+  - ADR-031
 related_specs:
   - SPEC-001
 supersedes: []
@@ -331,9 +336,14 @@ layout, styling, interaction, observation, or drawing API requires its own
 governed GiftUI contract rather than definition in this application RFC.
 
 Observable reference-state invalidation and Canvas/path/stroke drawing are
-separate major GiftUI features. Their Proposals and downstream lifecycle
-artifacts will be created independently before the Signal Analyzer
-Specification relies on their public contracts.
+separate major GiftUI features. The Canvas lifecycle now has accepted
+[PROPOSAL-006](../proposals/proposal-006-canvas-path-stroke-drawing.md), approved
+[RFC-009](rfc-009-canvas-path-stroke-drawing-architecture.md), and accepted
+[ADR-028](../adrs/adr-028-post-layout-canvas-derivation-and-cycle-local-plan.md)
+through [ADR-031](../adrs/adr-031-bounded-canvas-failure-and-startup-gate-integration.md).
+The Signal Analyzer Specification may rely on that accepted architecture, but
+its exact public Canvas contract remains blocked on an approved drawing
+Specification.
 
 Analyzer types may initially remain package-scoped. If the reference
 application is later distributed as a reusable library, its visibility and
@@ -562,8 +572,10 @@ original questions as follows:
    behavior through static mechanisms.
 3. Observable reference-state invalidation remains an MVP requirement but will
    begin a separate feature lifecycle with its own Proposal.
-4. Canvas/path/stroke drawing remains an MVP requirement but will begin a
-   separate feature lifecycle with its own Proposal.
+4. Canvas/path/stroke drawing remains an MVP requirement and is governed by
+   accepted PROPOSAL-006, approved RFC-009, and accepted ADR-028 through
+   ADR-031. Its exact public contract still requires an approved drawing
+   Specification.
 5. The display uses a 250-millisecond refresh interval. MVP validation records
    RAM, stack, binary size, and latency and proves that the application fits;
    this iteration imposes no stronger optimization budget.
@@ -572,12 +584,14 @@ original questions as follows:
    provide monotonic time acquisition and timer scheduling capabilities.
 
 The Observation and Canvas lifecycle artifacts are downstream dependencies,
-not unresolved decisions owned by this RFC. They must be approved before the
-Signal Analyzer Specification can rely on their contracts.
+not unresolved decisions owned by this RFC. Their accepted architecture may
+govern the Signal Analyzer Specification, but their exact public contracts
+must be approved in downstream Specifications before implementation.
 
 Post-approval status: the observable-reference-state lifecycle produced
 accepted ADR-024 through ADR-027. ADR-027 superseded ADR-002 and returned
-SPEC-001 to review. The Canvas lifecycle remains a separate dependency.
+SPEC-001 to review. The Canvas lifecycle produced approved RFC-009 and accepted
+ADR-028 through ADR-031; its missing gate is an approved drawing Specification.
 
 ## Decision Summary
 

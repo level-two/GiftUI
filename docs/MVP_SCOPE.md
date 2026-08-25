@@ -139,10 +139,17 @@ Only the drawing functionality required by the analyzer is in scope.
 | Drawing geometry | Provide points, sizes, and scalar arithmetic in canvas coordinate space |
 
 Canvas, path, and stroke support are explicit MVP requirements because the
-Signal Analyzer must draw its time grid and digital traces. Their architecture
-and public contracts are not established by this scope document; they require
-a separate feature lifecycle beginning with a Proposal before implementation
-is authorized.
+Signal Analyzer must draw its time grid and digital traces. Their separately
+governed lifecycle has an accepted
+[PROPOSAL-006](proposals/proposal-006-canvas-path-stroke-drawing.md), approved
+[RFC-009](rfcs/rfc-009-canvas-path-stroke-drawing-architecture.md), and
+accepted [ADR-028](adrs/adr-028-post-layout-canvas-derivation-and-cycle-local-plan.md),
+[ADR-029](adrs/adr-029-scoped-transient-path-snapshot-semantics.md),
+[ADR-030](adrs/adr-030-canonical-normalized-straight-line-stroke-operation.md),
+and [ADR-031](adrs/adr-031-bounded-canvas-failure-and-startup-gate-integration.md).
+Those ADRs establish the Canvas architecture; exact public declarations and
+implementation contracts still require an approved drawing Specification
+before implementation is authorized.
 
 The canvas needs to support only the analyzer's immediate requirements:
 
