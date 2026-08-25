@@ -6,11 +6,12 @@ status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
-updated: 2026-08-22
+updated: 2026-08-25
 proposal: []
 related_rfcs:
   - RFC-001
   - RFC-002
+  - RFC-009
 related_adrs: []
 related_specs:
   - SPEC-001

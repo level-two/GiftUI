@@ -105,10 +105,11 @@ features:
     milestone: MVP
   canvas-drawing:
     title: Canvas, Path, and Stroke Drawing
-    status: proposal
+    status: rfc
     proposal:
       - PROPOSAL-006
-    rfcs: []
+    rfcs:
+      - RFC-009
     adrs: []
     specs: []
     dependencies:

@@ -1,0 +1,874 @@
+---
+id: RFC-009
+feature: canvas-drawing
+title: Canvas, Path, and Stroke Drawing Architecture
+status: draft
+authors:
+  - Yauheni Lychkouski
+created: 2026-08-25
+updated: 2026-08-25
+proposal:
+  - PROPOSAL-006
+related_rfcs:
+  - RFC-001
+  - RFC-002
+  - RFC-004
+  - RFC-005
+  - RFC-006
+related_adrs:
+  - ADR-005
+  - ADR-006
+  - ADR-007
+  - ADR-008
+  - ADR-009
+  - ADR-010
+  - ADR-011
+  - ADR-014
+  - ADR-015
+  - ADR-016
+  - ADR-017
+  - ADR-020
+  - ADR-022
+related_specs:
+  - SPEC-001
+  - SPEC-002
+  - SPEC-003
+  - SPEC-004
+  - SPEC-006
+related_future_work: []
+related_explorations: []
+related_spikes:
+  - SPIKE-004
+supersedes: []
+superseded_by: []
+target_milestone: MVP
+---
+
+# RFC-009: Canvas, Path, and Stroke Drawing Architecture
+
+## Summary
+
+This RFC proposes the minimal portable custom-drawing architecture required by
+the Signal Analyzer: a laid-out `Canvas` invokes a synchronous non-escaping
+drawing closure with a graphics context and the Canvas's resolved local size;
+the closure constructs transient straight-line `Path` values and submits solid
+opaque strokes in painter's order; GiftUI snapshots those strokes into bounded
+cycle-local drawing workspace and lowers them to backend-neutral ordered render
+operations.
+
+Canvas is a semantic leaf and a render producer, not a backend escape hatch.
+GiftUI owns closure invocation, checked geometry, path validation, drawing
+order, stroke meaning, local-to-surface coordinate resolution, clip propagation,
+and pre-handoff failure. A backend receives only validated resolved stroke
+operations during ADR-010's synchronous one-shot frame offer. It never receives
+the client closure, a mutable `Path`, a semantic view, captured application
+state, or analyzer-domain values.
+
+The static profile uses caller-owned fixed-capacity path and drawing-plan
+workspace. The dynamic profile may use dynamically sized storage, but both
+profiles preserve the same public concepts, operation order, geometry, stroke
+semantics, and explicit failure categories. A Canvas plan lives only from its
+cycle-stable derivation through that revision's synchronous frame offer; it is
+discarded after accepted or refused handoff and is never a retained display
+list or replay payload.
+
+The proposed direction is intentionally narrow: straight subpaths created by
+`move(to:)` and `addLine(to:)`, opaque RGB stroke shading, line width, and the
+round caps and joins required by the analyzer. Fills, curves, images, text in
+Canvas, public clipping controls, transforms, alpha, effects, animation, and a
+general-purpose graphics state remain outside this RFC.
+
+## Context
+
+[PROPOSAL-006](../proposals/proposal-006-canvas-path-stroke-drawing.md)
+is accepted and authorizes this RFC. The feature is required by the established
+MVP scope: the portable Signal Analyzer must draw an eleven-line vertical grid,
+one horizontal center line, and four data-driven digital traces on macOS
+dynamic, macOS static, Raspberry Pi/Linux dynamic, and nRF52840 static stacks.
+
+[SPEC-001](../specs/spec-001-signal-analyzer-reference-application.md) is in
+review and provides the application-facing workload without defining a GiftUI
+drawing contract. For each channel, the presentation begins at the retained
+baseline, emits horizontal and vertical line segments for transitions in the
+visible range, and extends the final level to the right edge. The maximum
+five-second window receives at most 400 aggregate transitions under the
+specified 80-transition-per-second input bound. That produces at most 808
+trace segments across four channels, plus the grid's 12 segments, before any
+backend-specific raster work. Exact production capacities remain Specification
+work and must account for boundary cases and configured safety margin.
+
+Accepted architecture already fixes the surrounding boundaries:
+
+- ADR-005 keeps semantic evaluation and layout above one normalized ordered
+  render-operation boundary; backends do not evaluate views or own layout.
+- ADR-006 requires profile-equivalent semantics while allowing different
+  storage, specialization, and dispatch strategies.
+- ADR-007 keeps concrete platform, backend, display, transport, and hardware
+  knowledge in target composition and integration.
+- ADR-008 keeps portable Presentation on the `GiftUI` import surface and
+  requires an acyclic compiler-enforced module graph.
+- ADR-009 requires checked integer coordinates, dimensions, and scalar
+  arithmetic for MVP layout and Canvas geometry.
+- ADR-010 requires one borrowed ordered operation stream consumed exactly once
+  during synchronous frame offer; a backend may retain only derived data that
+  it owns after acceptance.
+- ADR-011 freezes observed state during derivation, publishes only complete
+  semantic revisions, and discards partial derived work after pre-publication
+  failure without replaying client mutations or actions.
+- ADR-014 through ADR-016 require bounded explicit outcomes, layered failure
+  disposition, and non-authoritative diagnostics.
+- ADR-017 separates immutable semantic capability from mutable runtime health.
+- ADR-020 requires the composite `rasterPresentation` capability to cover
+  straight-line strokes, clipping, extent, one-shot lifetime, raster bounds,
+  and downstream storage compatibility.
+- ADR-022 provides a sibling precedent: another resolved payload crosses the
+  render boundary with complete logical geometry and borrowed one-shot
+  lifetime rather than giving a backend semantic authority.
+
+Current source code proves only partial feasibility. It has checked integer
+geometry, opaque colors, ordered rectangle/text operations, dynamic display
+lists, direct static emission, framebuffer realization, and bounded RGB565 tile
+workspaces. It has rectangle stroking but no governed client Canvas, arbitrary
+straight-line Path, canonical stroke operation, or cross-profile path storage.
+Legacy framework documents and current code are evidence, not authority.
+
+## Scope and Decision Boundary
+
+This RFC owns one independently reviewable client-to-render decision cluster:
+
+- when a Canvas drawing closure executes relative to layout, state freeze,
+  semantic publication, and frame offer;
+- which owner supplies the closure's resolved local geometry;
+- the ownership and lifetime of mutable Path construction and immutable stroke
+  snapshots;
+- how client-local path geometry becomes validated, ordered, surface-resolved
+  stroke intent without exposing semantic values to a backend;
+- the portable meaning of the MVP stroke subset;
+- the bounded static workspace model and pre-handoff failure boundary; and
+- integration with the existing normalized operation, capability, failure,
+  and one-shot handoff architecture.
+
+These concerns cannot be approved independently. Closure timing determines
+which state and size are valid; path lifetime determines whether stroke
+submission can be borrowed and bounded; stroke lowering determines the
+backend boundary; and the storage strategy determines whether failure can be
+detected before a backend acquires irreversible presentation responsibility.
+Splitting those choices would create circular RFCs in which each depends on
+the others for basic coherence.
+
+Adjacent concerns remain independently owned:
+
+- RFC-001 and SPEC-001 own analyzer waveform calculation and presentation
+  requirements, not GiftUI drawing semantics.
+- RFC-002 and its ADRs own the integrating layer graph, render-operation
+  boundary, geometry model, and backend isolation; this RFC specializes the
+  separately reserved Canvas producer at that boundary.
+- RFC-004 owns cycle, publication, one-shot frame lifetime, refusal, and
+  rederivation; this RFC does not create another transaction.
+- RFC-005 owns shared outcome meaning, containment, policy, and diagnostics;
+  this RFC identifies Canvas-specific detection points and affected scopes.
+- RFC-006 and SPEC-004 own capability vocabulary and resolution; this RFC
+  identifies drawing facts that the existing `rasterPresentation` family must
+  cover and does not add a client-probed capability.
+- Downstream Specifications own exact Swift declarations, numeric capacities,
+  storage layouts, operation fields, raster algorithms, default style values,
+  quantization rules consistent with this RFC, and conformance vectors.
+
+A separate raster-algorithm RFC is not currently justified. Multiple raster
+implementations may realize the same normalized stroke semantics beneath the
+existing backend boundary. If evidence later shows that an independently
+significant raster ownership or payload-lifetime choice cannot fit this
+boundary, it must return through lifecycle triage rather than being selected
+inside a Specification.
+
+## Requirements
+
+1. Portable Presentation MUST express the Signal Analyzer grid and four
+   traces using one Canvas/path/stroke concept across all four MVP profiles.
+2. A Canvas drawing closure MUST receive its resolved local size and a
+   backend-independent drawing context only after layout has resolved the
+   Canvas bounds for the cycle-stable revision.
+3. Closure invocation MUST be synchronous, non-suspending, non-escaping, and
+   isolated from concrete backend, surface, platform, display, transport,
+   driver, OS/RTOS, HAL, and hardware identity.
+4. The drawing closure MUST observe the same frozen application and
+   environment revision as the enclosing semantic derivation. It MUST NOT be
+   a mutation, action, reentrant cycle, or asynchronous-work boundary.
+5. Path construction MUST support a current point, multiple open straight
+   subpaths, `move(to:)`, and `addLine(to:)`. Curves and closed-fill semantics
+   are not admitted by this RFC.
+6. Stroke submission MUST snapshot the submitted Path's geometry. Later
+   mutation or destruction of the client Path MUST NOT change an earlier
+   submitted stroke.
+7. Stroke submission MUST support opaque RGB shading, positive checked integer
+   line width, and the round cap and round join semantics required by the
+   Signal Analyzer. A line-width shorthand and an explicit stroke-style form
+   MUST lower to the same canonical style meaning when their values agree.
+8. Stroke calls MUST preserve painter's order relative to one another and to
+   surrounding normalized render operations.
+9. GiftUI MUST resolve Canvas-local coordinates, inherited clip, and drawing
+   order before the operation reaches a concrete backend. A backend MUST NOT
+   receive a client closure, mutable Path, semantic node, or application value.
+10. A normalized stroke operation MUST carry or synchronously expose every
+    validated point, subpath boundary, opaque paint value, canonical style
+    value, resolved origin, and resolved clip needed to realize the portable
+    stroke without reconstructing semantic or layout decisions.
+11. Dynamic and static realizations MUST produce equivalent normalized stroke
+    records for the same accepted client input, including order, checked
+    geometry, subpaths, style, clip, and failure category.
+12. Static realization MUST use finite caller-owned or generated workspace and
+    MUST NOT require heap allocation, reflection, `Any`, unrestricted
+    existentials, exceptions, tasks, threads, or a full-frame pixel buffer.
+13. Ordinary invalid geometry, invalid path state, unsupported admitted style,
+    arithmetic overflow, path exhaustion, drawing-plan exhaustion, and
+    operation exhaustion MUST produce explicit bounded outcomes. They MUST NOT
+    silently wrap, truncate, drop a stroke, substitute a style, or publish a
+    partial Canvas result.
+14. A pre-handoff Canvas failure MUST discard the incomplete cycle-local
+    drawing plan and follow ADR-011 dirty-rederivation behavior. It MUST occur
+    before the frame is offered and MUST NOT replay admitted mutations or
+    client actions.
+15. A backend MUST consume the complete borrowed normalized stroke payload
+    during ADR-010's synchronous offer and MUST NOT retain the operation or its
+    borrowed path storage after the call returns.
+16. Required drawing support MUST be represented inside the existing composite
+    `rasterPresentation` capability. Portable Canvas code MUST NOT probe
+    concrete implementations or silently omit required strokes when support is
+    absent.
+17. The feature MUST remain sufficient for the current Signal Analyzer without
+    establishing a general-purpose graphics framework.
+
+## Constraints
+
+- The client and normalized geometry scalar is the checked integer model
+  established by ADR-009 and specified by SPEC-002.
+- Colors are opaque RGB values. Alpha and blend behavior are outside scope.
+- All Canvas work occurs inside RFC-004's non-suspending serialized cycle.
+- The normalized stroke payload is part of ADR-010's one-shot frame stream,
+  not a replayable display list or asynchronous client callback.
+- A static runtime must be able to reserve all Canvas, path, operation, raster,
+  payload, and downstream capacity before the corresponding irreversible
+  presentation effect.
+- Concrete backends may use different raster algorithms and storage, but they
+  may not change accepted logical geometry, operation order, clip, width,
+  cap/join meaning, or opaque color.
+- Canvas does not introduce analyzer-domain knowledge into GiftUI and does not
+  expose GiftUI internals to the analyzer.
+- Exact declarations and capacities must remain implementable by the supported
+  Embedded Swift toolchain and `nrf52840dk/nrf52840` configuration.
+
+## Proposed Design
+
+### 1. Canvas is a laid-out semantic leaf
+
+`Canvas` participates in the ordinary declarative hierarchy and layout
+proposal process. It has no semantic children and does not expose its drawing
+closure to layout. Layout resolves the Canvas bounds using the same frame,
+padding, stack, and alignment contracts as other views.
+
+The semantic node preserves only the client drawing declaration and captured
+cycle-stable values needed for later derivation. It does not contain backend
+or device identity. A Canvas contributes no hit region by itself; interaction
+continues to use separately declared controls and hit-test semantics.
+
+After layout resolves the Canvas bounds, the render producer invokes the
+drawing closure synchronously with:
+
+- a scoped graphics context owned by GiftUI; and
+- a local size whose origin is conceptually `(0, 0)` and whose dimensions are
+  the checked resolved Canvas dimensions.
+
+The closure is part of derivation. It is not an event callback. It may read
+the same frozen values captured by the enclosing view declaration, but it may
+not suspend, escape the context, initiate another cycle, dispatch an action,
+or mutate observed state. Exact enforcement and misuse diagnostics belong to
+the public-contract Specification.
+
+### 2. Scoped construction and snapshot ownership
+
+The graphics context owns access to one cycle-local drawing workspace. A
+mutable Path is a transient client construction value containing ordered
+subpath boundaries and checked local points. Its representation is not part of
+portable semantics:
+
+- a dynamic profile may use uniquely owned expandable storage; and
+- a static profile uses fixed-capacity storage leased from, embedded in, or
+  generated for the active drawing workspace.
+
+Both representations expose the same accepted operations and failure meaning.
+The public Path does not own a backend resource, pixel buffer, platform path,
+or indefinitely retained allocation.
+
+Calling `move(to:)` establishes a current point and starts a new open subpath.
+Calling `addLine(to:)` appends one straight segment from the current point and
+makes the supplied point current. A line addition without a current point is
+invalid. Empty and one-point subpaths produce no line segment; the exact
+accepted behavior of zero-length segments and endpoint coincidence is a
+Specification question constrained by deterministic cross-backend semantics.
+
+When the client calls `stroke`, GiftUI snapshots the Path's then-current
+subpaths, paint, and canonical style into the Canvas plan. The snapshot is
+immutable. The client may subsequently mutate or reuse its Path without
+changing previously submitted strokes. The snapshot step is the ownership
+boundary that prevents a backend or later frame phase from borrowing mutable
+client storage.
+
+The selected architecture permits an implementation to transfer uniquely
+owned storage into the plan or copy into a plan arena, provided the public
+snapshot semantics and failure ordering are identical. Static code must not
+hide allocation behind copy-on-write or existential storage.
+
+### 3. Cycle-local Canvas plan
+
+Each successfully derived Canvas produces a finite ordered plan of immutable
+stroke snapshots. The plan is cycle-local derived work, not semantic state and
+not a general retained render tree. Its lifetime is:
+
+```text
+state freeze and layout
+    -> synchronous Canvas closure
+    -> validated immutable stroke snapshots
+    -> complete semantic revision / prepared frame
+    -> one synchronous frame offer
+    -> release after accepted or refused disposition
+```
+
+If the frame is refused, Core may retain only RFC-004's constant-space intent
+that the latest published revision still needs presentation. It must discard
+the Canvas plan and rederive it during a later separately paced opportunity;
+it must not retain or replay the refused payload.
+
+The plan exists because client drawing must finish and capacity failure must be
+known before a backend may begin irreversible output. It also separates
+client-closure execution from backend consumption. The plan is scoped only to
+custom drawing payload; this RFC does not require ordinary views or complete
+frames to materialize a universal display list.
+
+### 4. Canonical stroke meaning
+
+The canonical MVP stroke is an ordered set of open straight subpaths plus:
+
+- a positive checked integer line width;
+- an opaque RGB paint value;
+- a supported endpoint cap value including `round`;
+- a supported segment join value including `round`;
+- a resolved surface origin for the Canvas local coordinate space; and
+- the resolved clip inherited from the render pipeline.
+
+Stroke geometry is defined in logical checked integer coordinates. Width,
+cap, and join are logical semantics, not hints. A backend may quantize to its
+pixel format only according to the downstream conformance contract and must
+not replace round caps or joins with another style merely because its native
+API lacks them.
+
+No new public clipping operation is introduced. The Canvas operation inherits
+the clip established by the existing render/layout pipeline. The downstream
+Specification must state whether the Canvas bounds themselves contribute an
+implicit clip and provide cross-backend vectors for points on and outside each
+edge; this choice remains an RFC review blocker because it changes visible
+portable behavior.
+
+### 5. Lowering to the normalized operation stream
+
+After a Canvas plan is complete, the render producer visits its stroke
+snapshots in painter's order at the Canvas's position in the enclosing render
+order. Each snapshot lowers to one normalized straight-line-stroke operation
+or an equivalent bounded sequence whose grouping preserves canonical cap and
+join semantics.
+
+The normalized operation may synchronously expose a borrowed point/subpath
+view instead of embedding a fixed maximum array in every operation value. That
+view is valid only for the containing append/visit during ADR-010's offer. The
+consumer must finish validation and raster derivation before returning and may
+retain only backend-owned pixels, spans, tile work, or transfer data after
+accepted handoff.
+
+Splitting one path into independent segment operations is not conforming when
+doing so changes join or endpoint behavior. Likewise, a backend cannot infer
+subpath boundaries from duplicate points. The normalized payload must carry
+the boundaries required for exact meaning.
+
+### 6. Capacity and failure sequencing
+
+The target host supplies or selects bounded capacities during construction.
+Capability resolution proves that the assembled producer, operation stream,
+backend, raster workspace, pixel encoding, downstream lifetime, and surface
+extent can realize the required drawing workload together. A target that
+cannot satisfy the required Canvas workload fails startup capability
+resolution; the portable application does not receive an optional feature flag
+and does not omit waveforms.
+
+Within a cycle, Canvas construction uses checked operations in this order:
+
+1. validate each local geometry and style value;
+2. reserve or validate Path construction capacity;
+3. snapshot a submitted stroke into drawing-plan capacity;
+4. resolve local geometry and inherited clip using checked arithmetic;
+5. validate normalized-operation capacity and payload bounds; and
+6. expose the complete borrowed operation during frame offer.
+
+A failure in steps 1 through 5 occurs before frame offer. The detecting layer
+invalidates partial local work, reports a SPEC-003-compatible bounded outcome,
+and marks the derived Canvas/frame scope incomplete. The runtime discards the
+whole incomplete derived plan and retains dirtiness as required by ADR-011.
+Target policy may quiesce a required facility after repeated or structural
+failure, but may not publish partial drawing, narrow an unproven affected
+scope, reinterpret failure as success, or choose an unadvertised fallback.
+
+Failure after accepted handoff is backend operational state under ADR-010 and
+ADR-017. Optional diagnostics may project either phase but cannot alter the
+typed outcome or frame disposition.
+
+### 7. Static and dynamic profiles
+
+The two profiles may differ beneath the common semantics:
+
+| Concern | Dynamic candidate | Static candidate | Required invariant |
+| --- | --- | --- | --- |
+| Path construction | uniquely owned growable buffer | fixed-capacity workspace range or generated inline storage | same points, subpaths, validation, and failure category for admitted workloads |
+| Stroke snapshot | move or copy into cycle plan | seal or copy into caller-owned plan arena | later Path mutation cannot affect an earlier stroke |
+| Plan records | array-like cycle storage | fixed record table plus point/subpath arenas | identical painter's order and payload meaning |
+| Lowering | iterate borrowed records | index/range iteration without existential allocation | same normalized operation fixtures |
+| Failure | explicit allocation/capacity outcome | explicit deterministic exhaustion | no silent drop, truncation, trap for ordinary exhaustion, or partial publication |
+
+Profile equivalence does not require equal internal capacities or byte layout.
+Every supported target must declare and validate enough capacity for the
+normative Signal Analyzer workload, and shared boundary fixtures must fail in
+the same semantic category when configured to the same artificial limits.
+
+## Module Responsibilities
+
+| Logical owner | Responsibility | Dependency impact |
+| --- | --- | --- |
+| `GiftUI` portable declaration surface | Canvas declaration, scoped graphics-context concept, Path construction concept, stroke-style and opaque-shading concepts | Remains the sole import for portable Presentation; imports no runtime, renderer, backend, platform, or hardware implementation |
+| Portable foundation | Checked point, size, rectangle, scalar, and opaque color meanings | Reused by drawing without acquiring Canvas, backend, or capability policy |
+| Declarative semantic runtime | Preserve Canvas declaration identity and cycle-stable captured values; treat Canvas as a semantic leaf | Does not invoke concrete raster or backend code |
+| Layout | Resolve Canvas bounds through ordinary proposals and placement | Does not inspect the drawing closure or path contents |
+| Render producer / Canvas lowering owner | Invoke the closure after layout, own bounded construction and plan workspace, validate and snapshot paths, resolve origin/clip, preserve order, and emit normalized strokes | Imports portable declarations, foundation, and approved failure/render contracts; imports no concrete backend |
+| Frame/presentation coordinator | Include drawing operations in the one-shot offer and apply existing commit/refusal rules | Does not retain the Canvas plan after disposition or execute client code |
+| Capability system | Validate composite straight-line-stroke coverage and compatible resource bounds before cycles begin | Does not expose concrete implementation identity to Canvas code |
+| Backend/raster integration | Consume validated normalized strokes synchronously and realize canonical semantics using target-selected raster/storage mechanics | Does not import or evaluate Canvas declarations, Path mutation, semantic views, or analyzer state |
+| Target host | Assemble capacities, policy, producer, backend, surface, and diagnostics | Remains the only concrete composition root |
+
+This RFC does not require a new independently distributed package. A
+Specification may place focused drawing-lowering contracts in an internal
+target if that preserves ADR-008's approved acyclic graph; the existence or
+name of that target is not itself an RFC decision.
+
+## Public API Impact
+
+The portable `GiftUI` surface gains concepts equivalent to:
+
+- a `Canvas` view initialized with a synchronous drawing closure;
+- a scoped graphics context capable of stroking a Path;
+- a resolved local `Size` passed to the closure;
+- a mutable straight-line Path with `move(to:)` and `addLine(to:)`;
+- opaque solid shading;
+- a line-width shorthand; and
+- a `StrokeStyle` subset containing line width plus the required round cap and
+  join choices.
+
+These are semantic concepts, not exact declarations. A downstream
+Specification must define generic constraints, closure type, mutability,
+visibility, construction and failure surface, default values, equality or
+sendability where relevant, and unavailable operations. It must preserve one
+substantially shared Signal Analyzer source shape across profiles and must not
+expose profile capacity parameters, backend handles, unsafe borrowed pointers,
+or platform types to ordinary client code.
+
+This RFC does not promise SwiftUI source compatibility. Familiar naming and
+call shape are desirable only where they preserve bounded explicit behavior.
+
+## Capabilities Impact
+
+Canvas does not create a new optional public Capability family. The existing
+`rasterPresentation` family must continue to mean that the complete Signal
+Analyzer presentation path is available. Its operation-coverage and resource
+facts must include:
+
+- the normalized straight-line-stroke payload and one-shot lifetime;
+- opaque RGB paint;
+- the admitted line widths, round caps, and round joins;
+- checked logical extent and resolved clipping;
+- maximum points, subpaths, strokes, and operation payload required by the
+  configured producer;
+- raster workspace and downstream retained-data bounds; and
+- compatible canonical pixel encoding and submission lifetime.
+
+The exact contribution fields and absence reasons remain owned by SPEC-004 or
+its approved successor. Runtime path exhaustion, backend backpressure, device
+loss, and transport failure are operational outcomes or health, not mutable
+Capabilities.
+
+## Backend Impact
+
+Every first-party MVP backend must add conformance for the canonical normalized
+straight-line-stroke operation. A backend may use a native line primitive,
+scan conversion, tile-local rasterization, or another bounded algorithm, but
+it must match the shared logical and pixel conformance vectors for order,
+width, endpoints, joins, color, and clipping.
+
+A full-surface framebuffer backend may raster directly into its surface during
+accepted offer. A tiled RGB565 backend may visit affected tiles or produce
+bounded backend-owned spans/transfer data, provided it consumes the borrowed
+path payload synchronously and reserves all post-offer capacity before
+acceptance. Neither backend may retain the Path snapshot or ask Core to replay
+it after offer.
+
+Unsupported native cap/join features are implementation details, not an
+absence of portable semantics. The backend must realize the canonical result
+in software or fail composite capability resolution before runtime.
+
+## Static / Embedded Impact
+
+- Path and Canvas-plan storage is finite, caller-owned or generated, and
+  independent of heap allocation.
+- The static plan uses bounded record, point, and subpath storage. Exact
+  packing, widths, and alignment are Specification work supported by
+  SPIKE-004 evidence.
+- The Canvas closure is synchronous and non-escaping; it requires no task,
+  executor hop, closure retention beyond the semantic revision, or Objective-C
+  runtime.
+- Checked local-to-surface translation must report overflow before operation
+  exposure.
+- The nRF52840 realization must measure linked flash, global/static RAM,
+  cycle-workspace RAM, maximum stack, per-point and per-stroke cost, operation
+  count, and raster workspace separately.
+- Host-only compilation is not connected-hardware validation. This RFC's
+  feasibility gate may use hardware-free Embedded Swift compile/link evidence;
+  final conformance still requires the MVP's connected nRF52840/TFT evidence.
+- No complete frame pixel buffer or replayable render list is required by this
+  architecture. Backend-owned tile or transfer buffers remain governed by the
+  existing presentation contracts.
+
+## Performance
+
+Path construction, snapshotting, lowering, and backend consumption should be
+linear in the number of accepted points and strokes. No operation should scan
+the complete capture history after Presentation has already selected visible
+transitions. The canonical producer should require constant work per point,
+subpath boundary, and stroke record, excluding backend raster coverage
+proportional to affected pixels or tiles.
+
+The normative Signal Analyzer workload is small in stroke count but not in
+segment count. Under SPEC-001's current rate and five-second window, the
+representative maximum is:
+
+| Item | Representative count |
+| --- | ---: |
+| Grid strokes | 12 one-segment paths, or an equivalent smaller stroke grouping |
+| Visible transitions | 400 aggregate |
+| Trace segments | 808 across four channels |
+| Total segments | 820 before safety margin and boundary fixtures |
+
+Specifications must derive production bounds from approved application and
+execution contracts rather than treating this table as the final capacity.
+Performance evidence must record closure invocation, construction, snapshot,
+lowering, and raster time independently on representative dynamic, Pi, and
+embedded configurations. It must also demonstrate that drawing remains within
+the target frame cadence without requiring a frame for every acquisition fact.
+
+## Memory / Binary Size
+
+The principal RAM costs are:
+
+- current mutable Path points and subpath markers;
+- sealed stroke records and their immutable point/subpath payloads;
+- normalized operation iteration state;
+- backend raster/tile workspace; and
+- any backend-owned post-acceptance pixel or transfer data.
+
+The architecture permits unique-storage transfer or arena sealing to avoid a
+second point copy, but it does not require that optimization. A conforming
+implementation must report both peak simultaneous storage and steady
+cycle-workspace storage. It must not hide duplicate point buffers, allocator
+metadata, or large inline values on the stack.
+
+The static build must compare a drawing-enabled Signal Analyzer fixture with a
+matched placeholder-waveform baseline and report flash, RAM, and stack deltas.
+It must inspect linked symbols for allocator, reflection, task, thread,
+exception, and unavailable runtime dependencies. Binary-size regressions must
+be attributed to public declarations, path planning, normalized payload,
+raster support, or test-only instrumentation where possible.
+
+## Alternatives
+
+### A. Cycle-local immutable Canvas plan (proposed)
+
+Run the closure after layout, snapshot strokes into bounded derived workspace,
+then expose only normalized immutable payload during frame offer.
+
+This cleanly separates client execution from backend consumption, detects
+ordinary capacity failure before irreversible output, permits shared recording
+fixtures, and gives static profiles an explicit workspace. Its cost is
+cycle-local point/stroke storage and potentially one copy from a mutable Path
+into a sealed snapshot.
+
+This alternative is preferred if SPIKE-004 demonstrates viable nRF52840 RAM,
+stack, flash, and operation costs.
+
+### B. Execute the client closure while a backend consumes the frame stream
+
+Core could invoke the Canvas closure during ADR-010 offer and emit segments
+directly to the backend, minimizing Core path-plan storage.
+
+This can be attractive for extremely constrained streams, but it couples
+client code execution to backend transaction timing, makes ordinary path or
+operation exhaustion difficult to discover before irreversible output, and
+risks exposing partial Canvas output. Preflighting by invoking the closure a
+second time would make invocation count observable unless the API imposed a
+stronger purity model than other GiftUI declarations.
+
+This remains a measured comparison in SPIKE-004 rather than a selected
+fallback.
+
+### C. Retain a complete frame display list
+
+A complete retained list simplifies replay and lets every operation be
+validated before offer. It also imposes universal operation storage, resource
+lifetime, copy, and replay semantics already rejected for MVP by ADR-005 and
+ADR-010. Canvas does not justify reopening that system-wide decision.
+
+### D. Give the backend the Canvas closure or mutable Path
+
+A backend-native Canvas could minimize translation and use platform graphics
+APIs directly. It would make backends evaluate client behavior, acquire
+semantic and application lifetimes, reproduce checked geometry and stroke
+meaning, and diverge between static and dynamic profiles. It conflicts with
+ADR-005 and the accepted Proposal.
+
+### E. Expose only immediate `move` / `line` context commands
+
+An immediate context could avoid a Path type and stream each segment as it is
+declared. It does not meet the accepted MVP Path surface, makes stroke style a
+per-segment concern, loses explicit subpath ownership, and makes round joins or
+reusing one path for another stroke harder to define.
+
+### F. Tessellate or rasterize strokes in Core
+
+Core could convert lines to polygons, spans, masks, or pixels before the
+backend boundary. That would make Core own pixel quantization and raster
+format, increase transient data volume, duplicate tile/full-surface strategy,
+and weaken backend independence. It may be suitable only if later evidence
+establishes a new independently reviewed raster boundary.
+
+### G. Adopt a general-purpose Path and graphics-state model now
+
+A richer model would make curves, fills, transforms, images, alpha, and effects
+easier to add later. None is required by the Signal Analyzer, and each adds
+operation vocabulary, storage, failure, backend, and conformance obligations.
+Future extensibility is preserved through the path/operation boundary without
+implementing those features speculatively.
+
+## Rejected Approaches
+
+No additional approach has been rejected by RFC review while this document is
+in `draft`. Alternatives C through G conflict with accepted MVP architecture
+or scope and are not proposed; Alternative B remains a feasibility comparator
+until SPIKE-004 reports evidence.
+
+## Compatibility
+
+There is no approved public GiftUI Canvas API to preserve, so this RFC creates
+no promised source or ABI migration. Current and legacy rectangle-stroke APIs,
+dynamic display lists, and proof-of-concept renderer methods are
+non-authoritative and may require migration.
+
+The new public concepts must coexist with existing `View`, checked geometry,
+opaque Color, layout, and modifier declarations without adding another import
+to portable Presentation. Existing ordinary views and backends that do not
+claim the complete MVP `rasterPresentation` capability need not gain Canvas
+behavior silently; first-party MVP configurations must implement the complete
+approved operation set before claiming conformance.
+
+Operation encoding is an internal contract unless a later Specification says
+otherwise. It should permit additive future operation cases without changing
+the meaning or lifetime of the MVP straight-line-stroke payload. Adding curves,
+fills, alpha, or retained paths is not a compatible extension by implication;
+each still requires lifecycle authority.
+
+## Testing Strategy
+
+### Public semantic fixtures
+
+- Verify Canvas receives the checked resolved local size after layout.
+- Verify closure invocation is synchronous, non-escaping, and ordered within
+  cycle-stable derivation.
+- Record straight paths with multiple subpaths, empty subpaths, boundary
+  points, repeated points, and invalid `addLine` ordering.
+- Verify a stroke snapshots its Path and later mutation does not alter the
+  earlier record.
+- Verify line-width shorthand and equivalent StrokeStyle produce identical
+  canonical records.
+- Verify multiple strokes and surrounding ordinary views preserve painter's
+  order.
+
+### Cross-profile normalized-operation fixtures
+
+- Run the same portable Canvas source through dynamic and static producers and
+  compare exact normalized points, subpath boundaries, surface origin, clip,
+  color, style, and order.
+- Inject identical artificial limits for path points, subpaths, stroke records,
+  and operations and compare explicit failure categories and affected scope.
+- Verify checked overflow and invalid geometry never wrap or publish a partial
+  plan.
+- Verify failed derivation retains dirtiness and does not replay mutations or
+  actions on the next opportunity.
+
+### Backend and raster fixtures
+
+- Use shared golden vectors for horizontal, vertical, corner, zero-length,
+  boundary, odd/even width, round-cap, round-join, clip-edge, and overlapping
+  painter-order cases.
+- Compare framebuffer and RGB565/tiled realization under canonical pixel
+  tolerances defined by the drawing Specification.
+- Verify a backend consumes every borrowed point before returning from offer
+  and retains no Canvas-plan address or borrowed resource afterward.
+- Verify unsupported style, extent, lifetime, or workspace combinations fail
+  startup capability resolution instead of failing as a hidden runtime
+  fallback.
+
+### Application and platform evidence
+
+- Render the SPEC-001 grid and all four trace patterns from deterministic
+  capture fixtures, including lower-bound baseline reconstruction and the
+  five-second maximum visible window.
+- Validate macOS dynamic and static source equivalence before Raspberry Pi and
+  embedded integration.
+- Record Raspberry Pi framebuffer output and PiScreen connected evidence.
+- Record nRF52840/TFT connected output plus flash, RAM, workspace, and stack
+  evidence. Host builds and screenshots do not substitute for connected
+  hardware at final conformance.
+
+### Dependency and negative fixtures
+
+- Fail builds if portable Canvas declarations import a concrete backend,
+  platform, driver, OS/RTOS, HAL, or hardware module.
+- Fail builds if a backend imports semantic Canvas or analyzer modules.
+- Prove omitted optional diagnostics do not change drawing outcomes.
+- Prove the embedded closure and Path dependency closure links no allocator,
+  reflection, task, thread, or exception runtime.
+
+## Risks
+
+- **The cycle-local plan consumes too much nRF52840 RAM.** SPIKE-004 compares
+  the proposed ownership with direct emission and measures point, record,
+  stack, flash, and allocator costs before review.
+- **Snapshot copying doubles peak path storage.** Permit unique transfer or
+  arena sealing beneath identical snapshot semantics and measure peak
+  simultaneous storage rather than only final plan size.
+- **Backend rasterization drifts.** Define canonical golden vectors and keep
+  width, cap, join, order, and clip in the normalized operation meaning.
+- **A client closure performs side effects.** Specify Canvas as derivation,
+  reject reentrant or escaping use where enforceable, and never use closure
+  reinvocation as an implicit preflight mechanism.
+- **Capacity differs across profiles.** Require every supported target to fit
+  the normative analyzer workload and compare semantics at identical
+  artificial limits; expose no target identity or silent feature reduction.
+- **Nested borrowed payloads complicate the backend SPI.** Keep the borrow
+  synchronous and scoped to one operation visit, and require retention tests
+  at the boundary.
+- **Canvas expands into a general graphics framework.** Keep the operation and
+  test catalogue limited to the accepted straight-line opaque-stroke scope.
+- **Implicit Canvas-bounds clipping is left ambiguous.** Resolve the open
+  question before review with explicit edge vectors; do not let each backend
+  choose.
+
+## Open Questions
+
+1. **Approval blocker — bounded plan feasibility:** Can the proposed
+   cycle-local snapshot plan satisfy the representative Signal Analyzer
+   workload on the supported Embedded Swift/nRF52840 build with acceptable
+   RAM, stack, flash, operation count, and no allocator dependency, and how
+   does it compare with direct emission? [SPIKE-004](../spikes/spike-004-canvas-path-plan-feasibility.md)
+   must provide reproducible evidence before this RFC moves to review.
+2. **Approval blocker — implicit Canvas clip:** Do Canvas bounds contribute an
+   implicit clip in addition to inherited clipping, or may drawing extend
+   outside the Canvas bounds until an ancestor clip applies? Review must choose
+   one portable behavior using the Signal Analyzer edge requirements and
+   shared raster vectors; a Specification or backend must not decide it first.
+3. **Specification detail — exact public failure surface:** Which exact
+   construction or stroke operations return typed outcomes, and which invalid
+   state is accumulated until submission? The answer may be selected in the
+   drawing Specification only if it preserves this RFC's explicit pre-offer,
+   no-partial-plan semantics and one common source shape.
+4. **Specification detail — degenerate geometry:** Exact zero-length segment,
+   coincident endpoint, default cap/join, and odd/even line-width pixel vectors
+   remain to be defined by the drawing Specification under one deterministic
+   cross-backend meaning.
+
+Questions 1 and 2 block advancement to `review`. Questions 3 and 4 do not
+change the proposed ownership, lifetime, or backend boundary and therefore may
+remain downstream contract work after the RFC settles their architectural
+constraints.
+
+## Deferred and Follow-up Work
+
+- [SPIKE-004](../spikes/spike-004-canvas-path-plan-feasibility.md) is a bounded
+  implementation experiment required to answer the current static-feasibility
+  approval blocker. It does not defer the decision or authorize production
+  code. Its evidence must return to this RFC before review.
+
+Richer fills, curves, images, Canvas text, public clipping controls,
+transforms, effects, retained rendering, and animation remain outside the
+accepted Proposal. They are not silently added to MVP scope by this RFC. No
+separate Future Work item is created because the repository currently has no
+concrete requirement or revisit trigger beyond those already recorded as
+non-goals and deferred client priorities.
+
+## Decision Summary
+
+If this RFC is later approved, its significant choices are expected to be
+extracted into separate proposed ADRs covering:
+
+1. **Canvas derivation and scoped drawing-plan ownership:** Canvas is a laid-out
+   semantic leaf whose synchronous non-escaping closure runs during
+   cycle-stable derivation and produces a bounded cycle-local immutable plan
+   released after one frame offer.
+2. **Transient Path snapshot semantics:** mutable straight-line Paths use
+   profile-specific bounded storage beneath one client meaning, and every
+   stroke snapshots ordered subpaths so later mutation cannot affect submitted
+   intent.
+3. **Canonical normalized straight-line-stroke operation:** GiftUI resolves
+   checked local geometry, paint, style, order, origin, and clip above the
+   backend boundary; backends synchronously consume borrowed immutable payload
+   and own only derived post-acceptance data.
+4. **Bounded Canvas failure and capability integration:** construction and plan
+   failures abort incomplete derivation before offer, while required drawing
+   coverage and compatible bounds remain part of the immutable composite
+   `rasterPresentation` capability.
+
+These are proposed decisions, not accepted architecture. ADR extraction may
+combine or separate them according to the independently significant decision
+boundaries reviewers confirm after RFC approval.
+
+## References
+
+- [PROPOSAL-006: Canvas, Path, and Stroke Drawing](../proposals/proposal-006-canvas-path-stroke-drawing.md)
+- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI Vision](../VISION.md)
+- [GiftUI Principles](../PRINCIPLES.md)
+- [RFC-001: Signal Analyzer Application Architecture](rfc-001-signal-analyzer-application-architecture.md)
+- [RFC-002: GiftUI MVP Layered Architecture](rfc-002-giftui-mvp-layered-architecture.md)
+- [RFC-004: Run Cycle and Frame Transaction Architecture](rfc-004-run-cycle-and-frame-transaction.md)
+- [RFC-005: Failure and Diagnostics Propagation Architecture](rfc-005-failure-diagnostics-propagation.md)
+- [RFC-006: GiftUI Capability System Architecture](rfc-006-capability-system-architecture.md)
+- [ADR-005: Semantic, Layout, and Render Boundary](../adrs/adr-005-semantic-layout-render-boundary.md)
+- [ADR-006: Shared Semantics Across Runtime Profiles](../adrs/adr-006-shared-semantics-runtime-profiles.md)
+- [ADR-008: Module Dependency Graph and MVP Package Topology](../adrs/adr-008-module-dependency-graph-and-package-topology.md)
+- [ADR-009: Checked Integer Geometry for MVP](../adrs/adr-009-checked-integer-geometry.md)
+- [ADR-010: Synchronous One-Shot Frame Handoff](../adrs/adr-010-synchronous-one-shot-frame-handoff.md)
+- [ADR-011: Serialized Run Cycle and Semantic Publication](../adrs/adr-011-serialized-run-cycle-and-publication.md)
+- [ADR-014: Bounded Cross-Layer Outcome Meaning](../adrs/adr-014-bounded-cross-layer-outcomes.md)
+- [ADR-015: Layered Failure Disposition Ownership](../adrs/adr-015-layered-failure-disposition.md)
+- [ADR-016: Non-Authoritative Diagnostic Projection](../adrs/adr-016-non-authoritative-diagnostics.md)
+- [ADR-017: Capability and Operational-State Decision Planes](../adrs/adr-017-capability-and-operational-state-planes.md)
+- [ADR-020: Composite Raster Presentation Capability](../adrs/adr-020-raster-presentation-capability.md)
+- [ADR-022: Positioned-Glyph Render Operation](../adrs/adr-022-positioned-glyph-render-operation.md)
+- [SPEC-001: Signal Analyzer Reference Application Contract](../specs/spec-001-signal-analyzer-reference-application.md)
+- [SPEC-002: Portable Foundation Specification](../specs/spec-002-portable-foundation.md)
+- [SPEC-003: Failure Outcomes and Containment Specification](../specs/spec-003-failure-outcomes-and-containment.md)
+- [SPEC-004: Capability Contribution and Resolution Specification](../specs/spec-004-capability-contribution-and-resolution.md)
+- [SPEC-006: Declarative View Semantics Specification](../specs/spec-006-declarative-view-semantics.md)
+- [SPIKE-004: Canvas Path Plan Feasibility](../spikes/spike-004-canvas-path-plan-feasibility.md)
+- [GiftUI Framework Proof-of-Concept Specification](../GiftUI_Framework_Spec.md)
