@@ -2,7 +2,7 @@
 id: SPEC-005
 feature: giftui-mvp-architecture
 title: Deterministic Text Resource Contract
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-25
@@ -40,11 +40,10 @@ target_milestone: MVP
 
 # SPEC-005: Deterministic Text Resource Contract
 
-> **Review status:** The architecture and prerequisite Foundation contract are
-> authoritative, and SPIKE-005 supplies the adopted licensed reference
-> package, reproducible integrity evidence, and measured static-resource
-> calibration. This Specification is ready for human approval consideration;
-> review status does not authorize implementation.
+> **Approval status:** Approved by explicit maintainer authorization. The
+> architecture and prerequisite Foundation contract are authoritative, and
+> SPIKE-005 supplies the adopted licensed reference package, reproducible
+> integrity evidence, and measured static-resource calibration.
 
 ## Summary
 
@@ -1025,7 +1024,7 @@ conformance evidence and MUST be labeled separately.
 
 ## Acceptance Criteria
 
-- [ ] **TR-001:** The document registers SPEC-005 as `review`, the manifest
+- [ ] **TR-001:** The document registers SPEC-005 as `approved`, the manifest
   registers it under `giftui-mvp-architecture`, and traceability links
   PROPOSAL-003, all four related approved RFCs, all eight accepted ADRs,
   approved SPEC-002/SPEC-003, SPIKE-005, and the three text Future Work items
@@ -1094,8 +1093,7 @@ or compatibility requirement.
 
 None. Review resolved target-specific payload availability under the common
 resource identity, validation precedence, digest byte order, baseline geometry,
-and the exact SPEC-002/SPEC-003 detecting-owner alignment. Human approval is
-still required before implementation.
+and the exact SPEC-002/SPEC-003 detecting-owner alignment.
 
 ## Deferred and Follow-up Work
 
