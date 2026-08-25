@@ -58,11 +58,13 @@ operations.
 
 Canvas is a semantic leaf and a render producer, not a backend escape hatch.
 GiftUI owns closure invocation, checked geometry, path validation, drawing
-order, stroke meaning, local-to-surface coordinate resolution, clip propagation,
-and pre-handoff failure. A backend receives only validated resolved stroke
-operations during ADR-010's synchronous one-shot frame offer. It never receives
-the client closure, a mutable `Path`, a semantic view, captured application
-state, or analyzer-domain values.
+order, stroke meaning, local-to-surface coordinate resolution, inherited clip
+propagation, and pre-handoff failure. Canvas bounds do not add an implicit
+clip: drawing may extend outside those bounds until an inherited ancestor clip
+applies. A backend receives only validated resolved stroke operations during
+ADR-010's synchronous one-shot frame offer. It never receives the client
+closure, a mutable `Path`, a semantic view, captured application state, or
+analyzer-domain values.
 
 The static profile uses caller-owned fixed-capacity path and drawing-plan
 workspace. The dynamic profile may use dynamically sized storage, but both
@@ -361,12 +363,12 @@ pixel format only according to the downstream conformance contract and must
 not replace round caps or joins with another style merely because its native
 API lacks them.
 
-No new public clipping operation is introduced. The Canvas operation inherits
-the clip established by the existing render/layout pipeline. The downstream
-Specification must state whether the Canvas bounds themselves contribute an
-implicit clip and provide cross-backend vectors for points on and outside each
-edge; this choice remains an RFC review blocker because it changes visible
-portable behavior.
+No new public clipping operation is introduced. Canvas bounds do not
+contribute an implicit clip. Drawing may extend outside those bounds until the
+clip inherited from an ancestor in the existing render/layout pipeline applies.
+The downstream Specification must encode this behavior and provide
+cross-backend vectors for points on and outside each Canvas edge, both with and
+without an intersecting inherited clip.
 
 ### 5. Lowering to the normalized operation stream
 
@@ -593,7 +595,7 @@ raster support, or test-only instrumentation where possible.
 
 ## Alternatives
 
-### A. Cycle-local immutable Canvas plan (proposed)
+### A. Cycle-local immutable Canvas plan (proposed direction)
 
 Run the closure after layout, snapshot strokes into bounded derived workspace,
 then expose only normalized immutable payload during frame offer.
@@ -604,8 +606,17 @@ fixtures, and gives static profiles an explicit workspace. Its cost is
 cycle-local point/stroke storage and potentially one copy from a mutable Path
 into a sealed snapshot.
 
-This alternative is preferred if SPIKE-004 demonstrates viable nRF52840 RAM,
-stack, flash, and operation costs.
+[SPIKE-004](../spikes/spike-004-canvas-path-plan-feasibility.md) demonstrates
+viable nRF52840 RAM, stack, flash, and operation costs for both measured plan
+implementations, while direct emission fails the required no-partial-output
+boundary after late sink exhaustion. This RFC therefore proceeds with the
+cycle-local immutable Canvas plan as its proposed direction.
+
+Selecting this architecture does not select copy-to-plan or unique-range
+sealing as a production storage layout. Both preserve the required snapshot
+and failure semantics; their exact representation remains downstream
+Specification and implementation work. SPIKE-004's lower measured RAM cost for
+unique-range sealing is useful evidence, not architectural authority.
 
 ### B. Execute the client closure while a backend consumes the frame stream
 
@@ -619,8 +630,9 @@ risks exposing partial Canvas output. Preflighting by invoking the closure a
 second time would make invocation count observable unless the API imposed a
 stronger purity model than other GiftUI declarations.
 
-This remains a measured comparison in SPIKE-004 rather than a selected
-fallback.
+SPIKE-004 confirms the resource advantage but also demonstrates that direct
+emission can expose partial output after late sink exhaustion. It is therefore
+not part of the proposed direction.
 
 ### C. Retain a complete frame display list
 
@@ -662,10 +674,12 @@ implementing those features speculatively.
 
 ## Rejected Approaches
 
-No additional approach has been rejected by RFC review while this document is
-in `draft`. Alternatives C through G conflict with accepted MVP architecture
-or scope and are not proposed; Alternative B remains a feasibility comparator
-until SPIKE-004 reports evidence.
+Alternative B is rejected from the proposed direction because SPIKE-004 shows
+that it cannot preserve the required no-partial-output boundary after late sink
+exhaustion without retained pre-recording or observable closure reinvocation.
+Alternatives C through G conflict with accepted MVP architecture or scope and
+remain outside the proposed direction. The RFC is still in `draft`; these
+choices do not constitute RFC approval or accepted architecture.
 
 ## Compatibility
 
@@ -718,8 +732,11 @@ each still requires lifecycle authority.
 ### Backend and raster fixtures
 
 - Use shared golden vectors for horizontal, vertical, corner, zero-length,
-  boundary, odd/even width, round-cap, round-join, clip-edge, and overlapping
-  painter-order cases.
+  boundary, odd/even width, round-cap, round-join, Canvas-edge, inherited-clip
+  edge, and overlapping painter-order cases.
+- Verify that geometry outside Canvas bounds remains visible when no inherited
+  ancestor clip excludes it, and is clipped only where the inherited clip
+  applies.
 - Compare framebuffer and RGB565/tiled realization under canonical pixel
   tolerances defined by the drawing Specification.
 - Verify a backend consumes every borrowed point before returning from offer
@@ -751,9 +768,10 @@ each still requires lifecycle authority.
 
 ## Risks
 
-- **The cycle-local plan consumes too much nRF52840 RAM.** SPIKE-004 compares
-  the proposed ownership with direct emission and measures point, record,
-  stack, flash, and allocator costs before review.
+- **The cycle-local plan consumes too much nRF52840 RAM.** SPIKE-004 resolves
+  feasibility for the bounded analyzer workload. Production Specifications
+  must still derive capacities from approved workload bounds and preserve the
+  measured resource headroom.
 - **Snapshot copying doubles peak path storage.** Permit unique transfer or
   arena sealing beneath identical snapshot semantics and measure peak
   simultaneous storage rather than only final plan size.
@@ -770,41 +788,25 @@ each still requires lifecycle authority.
   at the boundary.
 - **Canvas expands into a general graphics framework.** Keep the operation and
   test catalogue limited to the accepted straight-line opaque-stroke scope.
-- **Implicit Canvas-bounds clipping is left ambiguous.** Resolve the open
-  question before review with explicit edge vectors; do not let each backend
-  choose.
+- **Canvas-edge behavior drifts between backends.** Encode the selected
+  non-clipping semantics in the drawing Specification and test geometry beyond
+  every Canvas edge with and without an inherited ancestor clip.
 
 ## Open Questions
 
-1. **Resolved evidence — bounded plan feasibility:**
-   [SPIKE-004](../spikes/spike-004-canvas-path-plan-feasibility.md) demonstrates
-   that both copy-to-plan and unique-range-seal candidates represent the full
-   836-point, 16-subpath, five-stroke Signal Analyzer workload in finite
-   zero-heap nRF52840 images. The candidates add 13,568 and 7,040 linked RAM
-   bytes and 880 and 800 linked flash bytes respectively, with conservative
-   complete fixture stack bounds of 104 and 92 bytes. Direct emission is
-   smaller but fails the no-partial-output fixture after late sink exhaustion.
-   This evidence resolves feasibility without choosing a storage strategy or
-   production capacity.
-2. **Approval blocker — implicit Canvas clip:** Do Canvas bounds contribute an
-   implicit clip in addition to inherited clipping, or may drawing extend
-   outside the Canvas bounds until an ancestor clip applies? Review must choose
-   one portable behavior using the Signal Analyzer edge requirements and
-   shared raster vectors; a Specification or backend must not decide it first.
-3. **Specification detail — exact public failure surface:** Which exact
-   construction or stroke operations return typed outcomes, and which invalid
-   state is accumulated until submission? The answer may be selected in the
-   drawing Specification only if it preserves this RFC's explicit pre-offer,
-   no-partial-plan semantics and one common source shape.
-4. **Specification detail — degenerate geometry:** Exact zero-length segment,
-   coincident endpoint, default cap/join, and odd/even line-width pixel vectors
-   remain to be defined by the drawing Specification under one deterministic
-   cross-backend meaning.
+None. SPIKE-004 resolves bounded-plan feasibility, and maintainer direction
+selects the proposed cycle-local plan and non-clipping Canvas-bounds behavior.
 
-Question 2 blocks advancement to `review`. Questions 3 and 4 do not
-change the proposed ownership, lifetime, or backend boundary and therefore may
-remain downstream contract work after the RFC settles their architectural
-constraints.
+The following exact contract details are intentionally owned by the downstream
+drawing Specification rather than left as RFC questions:
+
+- **Exact public failure surface:** which construction or stroke operations
+  return typed outcomes, and which invalid state is accumulated until
+  submission. The contract must preserve this RFC's explicit pre-offer,
+  no-partial-plan semantics and one common source shape.
+- **Degenerate geometry and raster vectors:** exact zero-length segment,
+  coincident endpoint, default cap/join, and odd/even line-width behavior under
+  one deterministic cross-backend meaning.
 
 ## Deferred and Follow-up Work
 

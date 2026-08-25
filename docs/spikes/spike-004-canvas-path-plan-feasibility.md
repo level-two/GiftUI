@@ -290,8 +290,9 @@ resolved by evidence.
 This result feeds RFC-009 only. It does not choose copy versus sealed ranges,
 set production capacities, approve the RFC, establish an operation encoding or
 raster algorithm, or authorize reuse of the disposable code. RFC-009 remains
-`draft`; its separate implicit-Canvas-clip blocker still requires resolution
-before review.
+`draft`. Its formerly separate implicit-Canvas-clip blocker was subsequently
+resolved by maintainer direction in RFC-009; that decision does not change this
+Spike's evidence-only role.
 
 ## References
 
