@@ -2,7 +2,7 @@
 id: SPEC-006
 feature: giftui-mvp-architecture
 title: Declarative View Semantics Specification
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-25
@@ -31,6 +31,10 @@ target_milestone: MVP
 ---
 
 # SPEC-006: Declarative View Semantics Specification
+
+> **Approval status:** Approved by explicit maintainer authorization. The
+> governing Proposal and RFCs, accepted architectural decisions, and approved
+> Foundation and Failure contracts are authoritative prerequisites.
 
 ## Summary
 
