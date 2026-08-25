@@ -2,7 +2,7 @@
 id: SPEC-006
 feature: giftui-mvp-architecture
 title: Declarative View Semantics Specification
-status: draft
+status: review
 authors:
   - codex
 created: 2026-08-25
@@ -566,9 +566,9 @@ counts and maximum observed expansion depth, and inspect the nRF52840 ELF for
 the required hard-float calling convention. ARMv6 and nRF52840 invocations
 are cross-build/inspection seams and require no connected hardware.
 
-This draft deliberately sets no standalone latency, linked-code, or total
-semantic-workspace ceiling. Production node/action/workspace capacities and
-aggregate runtime budgets belong to RUNTIME-PROFILES and HOST-CONFIGURATION.
+This Specification deliberately sets no standalone latency, linked-code, or
+total semantic-workspace ceiling. Production node/action/workspace capacities
+and aggregate runtime budgets belong to RUNTIME-PROFILES and HOST-CONFIGURATION.
 Any measured inability to implement the exact semantics within those later
 bounds is an upstream contract conflict, not permission to weaken this Spec.
 
@@ -712,7 +712,7 @@ for later layout adapters.
 
 ## Open Issues
 
-No open issue remains in this draft. The contract-level builder-arity choice
+No open issue remains. The contract-level builder-arity choice
 is resolved in favor of five direct expressions. The maintained Rank 0
 surface therefore remains fixed at arities zero through five; clients compose
 larger hierarchies by nesting fixed groups or custom views.
@@ -734,7 +734,8 @@ of this contract.
 - Unrestricted dynamic collections, keyed collection identity, public type
   erasure, public custom modifiers, and client-visible explicit view identity
   are outside the MVP contract. They require lifecycle triage if a concrete
-  use case makes them necessary; this draft does not silently commit them.
+  use case makes them necessary; this Specification does not silently commit
+  them.
 - Concrete layout, rendering, interaction, observable-state, and drawing
   modifier vocabularies remain with their owning downstream Specifications.
 

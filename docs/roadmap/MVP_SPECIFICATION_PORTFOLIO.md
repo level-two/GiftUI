@@ -73,7 +73,7 @@ identities:
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
 | `TEXT` | `SPEC-005` | `review` |
-| `DECLARATIVE` | `SPEC-006` | `draft` |
+| `DECLARATIVE` | `SPEC-006` | `review` |
 
 SPEC-005 and SPEC-006 are parallel sibling contracts. SPEC-005 owns exact text
 resource identities, compatible resource views, and resource lifetimes;
