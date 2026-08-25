@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.29)
+find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+project(Spike005Baseline LANGUAGES C)
+target_sources(app PRIVATE main.c)
+target_compile_options(app PRIVATE -fstack-usage)

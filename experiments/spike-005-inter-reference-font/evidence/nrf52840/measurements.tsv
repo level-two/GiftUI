@@ -1,0 +1,6 @@
+metric	baseline	candidate	delta	ceiling
+linked_flash_bytes	22836	32060	9224	98304
+linked_ram_bytes	4988	4988	0	512
+bss_bytes	1013	1013	0	512
+data_bytes	28	28	0	512
+validation_stack_bytes	0	568	568	1024

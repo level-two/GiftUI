@@ -1,0 +1,3078 @@
+{
+  "canonicalManifestByteCount": 6218,
+  "glyphMetrics": [
+    {
+      "advanceX": 11,
+      "glyph": 0,
+      "offsetX": 0,
+      "offsetY": -15,
+      "pixelHeight": 19,
+      "pixelWidth": 11,
+      "scalarValue": null,
+      "sourceGlyphName": ".notdef"
+    },
+    {
+      "advanceX": 11,
+      "glyph": 1,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 11,
+      "scalarValue": 65,
+      "sourceGlyphName": "A"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 2,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 66,
+      "sourceGlyphName": "B"
+    },
+    {
+      "advanceX": 12,
+      "glyph": 3,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 12,
+      "scalarValue": 67,
+      "sourceGlyphName": "C"
+    },
+    {
+      "advanceX": 12,
+      "glyph": 4,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 12,
+      "scalarValue": 68,
+      "sourceGlyphName": "D"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 5,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 69,
+      "sourceGlyphName": "E"
+    },
+    {
+      "advanceX": 9,
+      "glyph": 6,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 9,
+      "scalarValue": 70,
+      "sourceGlyphName": "F"
+    },
+    {
+      "advanceX": 12,
+      "glyph": 7,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 12,
+      "scalarValue": 71,
+      "sourceGlyphName": "G"
+    },
+    {
+      "advanceX": 12,
+      "glyph": 8,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 12,
+      "scalarValue": 72,
+      "sourceGlyphName": "H"
+    },
+    {
+      "advanceX": 4,
+      "glyph": 9,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 4,
+      "scalarValue": 73,
+      "sourceGlyphName": "I"
+    },
+    {
+      "advanceX": 9,
+      "glyph": 10,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 9,
+      "scalarValue": 74,
+      "sourceGlyphName": "J"
+    },
+    {
+      "advanceX": 11,
+      "glyph": 11,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 11,
+      "scalarValue": 75,
+      "sourceGlyphName": "K"
+    },
+    {
+      "advanceX": 9,
+      "glyph": 12,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 9,
+      "scalarValue": 76,
+      "sourceGlyphName": "L"
+    },
+    {
+      "advanceX": 14,
+      "glyph": 13,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 14,
+      "scalarValue": 77,
+      "sourceGlyphName": "M"
+    },
+    {
+      "advanceX": 12,
+      "glyph": 14,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 12,
+      "scalarValue": 78,
+      "sourceGlyphName": "N"
+    },
+    {
+      "advanceX": 12,
+      "glyph": 15,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 12,
+      "scalarValue": 79,
+      "sourceGlyphName": "O"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 16,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 80,
+      "sourceGlyphName": "P"
+    },
+    {
+      "advanceX": 12,
+      "glyph": 17,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 13,
+      "pixelWidth": 12,
+      "scalarValue": 81,
+      "sourceGlyphName": "Q"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 18,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 82,
+      "sourceGlyphName": "R"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 19,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 83,
+      "sourceGlyphName": "S"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 20,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 84,
+      "sourceGlyphName": "T"
+    },
+    {
+      "advanceX": 12,
+      "glyph": 21,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 12,
+      "scalarValue": 85,
+      "sourceGlyphName": "U"
+    },
+    {
+      "advanceX": 11,
+      "glyph": 22,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 11,
+      "scalarValue": 86,
+      "sourceGlyphName": "V"
+    },
+    {
+      "advanceX": 16,
+      "glyph": 23,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 16,
+      "scalarValue": 87,
+      "sourceGlyphName": "W"
+    },
+    {
+      "advanceX": 11,
+      "glyph": 24,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 11,
+      "scalarValue": 88,
+      "sourceGlyphName": "X"
+    },
+    {
+      "advanceX": 11,
+      "glyph": 25,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 11,
+      "scalarValue": 89,
+      "sourceGlyphName": "Y"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 26,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 90,
+      "sourceGlyphName": "Z"
+    },
+    {
+      "advanceX": 9,
+      "glyph": 27,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 9,
+      "scalarValue": 97,
+      "sourceGlyphName": "a"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 28,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 98,
+      "sourceGlyphName": "b"
+    },
+    {
+      "advanceX": 9,
+      "glyph": 29,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 9,
+      "scalarValue": 99,
+      "sourceGlyphName": "c"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 30,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 100,
+      "sourceGlyphName": "d"
+    },
+    {
+      "advanceX": 9,
+      "glyph": 31,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 9,
+      "scalarValue": 101,
+      "sourceGlyphName": "e"
+    },
+    {
+      "advanceX": 6,
+      "glyph": 32,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 6,
+      "scalarValue": 102,
+      "sourceGlyphName": "f"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 33,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 103,
+      "sourceGlyphName": "g"
+    },
+    {
+      "advanceX": 9,
+      "glyph": 34,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 9,
+      "scalarValue": 104,
+      "sourceGlyphName": "h"
+    },
+    {
+      "advanceX": 4,
+      "glyph": 35,
+      "offsetX": 0,
+      "offsetY": -13,
+      "pixelHeight": 13,
+      "pixelWidth": 4,
+      "scalarValue": 105,
+      "sourceGlyphName": "i"
+    },
+    {
+      "advanceX": 4,
+      "glyph": 36,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 4,
+      "scalarValue": null,
+      "sourceGlyphName": "dotlessi"
+    },
+    {
+      "advanceX": 4,
+      "glyph": 37,
+      "offsetX": -1,
+      "offsetY": -9,
+      "pixelHeight": 12,
+      "pixelWidth": 5,
+      "scalarValue": null,
+      "sourceGlyphName": "uni0237"
+    },
+    {
+      "advanceX": 4,
+      "glyph": 38,
+      "offsetX": -1,
+      "offsetY": -13,
+      "pixelHeight": 16,
+      "pixelWidth": 5,
+      "scalarValue": 106,
+      "sourceGlyphName": "j"
+    },
+    {
+      "advanceX": 9,
+      "glyph": 39,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 9,
+      "scalarValue": 107,
+      "sourceGlyphName": "k"
+    },
+    {
+      "advanceX": 4,
+      "glyph": 40,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 4,
+      "scalarValue": 108,
+      "sourceGlyphName": "l"
+    },
+    {
+      "advanceX": 14,
+      "glyph": 41,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 14,
+      "scalarValue": 109,
+      "sourceGlyphName": "m"
+    },
+    {
+      "advanceX": 9,
+      "glyph": 42,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 9,
+      "scalarValue": 110,
+      "sourceGlyphName": "n"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 43,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 10,
+      "scalarValue": 111,
+      "sourceGlyphName": "o"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 44,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 112,
+      "sourceGlyphName": "p"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 45,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 113,
+      "sourceGlyphName": "q"
+    },
+    {
+      "advanceX": 6,
+      "glyph": 46,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 6,
+      "scalarValue": 114,
+      "sourceGlyphName": "r"
+    },
+    {
+      "advanceX": 8,
+      "glyph": 47,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 8,
+      "scalarValue": 115,
+      "sourceGlyphName": "s"
+    },
+    {
+      "advanceX": 5,
+      "glyph": 48,
+      "offsetX": 0,
+      "offsetY": -11,
+      "pixelHeight": 11,
+      "pixelWidth": 5,
+      "scalarValue": 116,
+      "sourceGlyphName": "t"
+    },
+    {
+      "advanceX": 9,
+      "glyph": 49,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 9,
+      "scalarValue": 117,
+      "sourceGlyphName": "u"
+    },
+    {
+      "advanceX": 9,
+      "glyph": 50,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 9,
+      "scalarValue": 118,
+      "sourceGlyphName": "v"
+    },
+    {
+      "advanceX": 13,
+      "glyph": 51,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 13,
+      "scalarValue": 119,
+      "sourceGlyphName": "w"
+    },
+    {
+      "advanceX": 9,
+      "glyph": 52,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 9,
+      "scalarValue": 120,
+      "sourceGlyphName": "x"
+    },
+    {
+      "advanceX": 9,
+      "glyph": 53,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 12,
+      "pixelWidth": 9,
+      "scalarValue": 121,
+      "sourceGlyphName": "y"
+    },
+    {
+      "advanceX": 9,
+      "glyph": 54,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 9,
+      "scalarValue": 122,
+      "sourceGlyphName": "z"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 55,
+      "offsetX": 0,
+      "offsetY": -14,
+      "pixelHeight": 16,
+      "pixelWidth": 10,
+      "scalarValue": 36,
+      "sourceGlyphName": "dollar"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 56,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 48,
+      "sourceGlyphName": "zero"
+    },
+    {
+      "advanceX": 7,
+      "glyph": 57,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 7,
+      "scalarValue": 49,
+      "sourceGlyphName": "one"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 58,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 50,
+      "sourceGlyphName": "two"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 59,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 51,
+      "sourceGlyphName": "three"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 60,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 52,
+      "sourceGlyphName": "four"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 61,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 53,
+      "sourceGlyphName": "five"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 62,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 54,
+      "sourceGlyphName": "six"
+    },
+    {
+      "advanceX": 9,
+      "glyph": 63,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 9,
+      "scalarValue": 55,
+      "sourceGlyphName": "seven"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 64,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 56,
+      "sourceGlyphName": "eight"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 65,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 57,
+      "sourceGlyphName": "nine"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 66,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 11,
+      "scalarValue": 38,
+      "sourceGlyphName": "ampersand"
+    },
+    {
+      "advanceX": 5,
+      "glyph": 67,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 5,
+      "scalarValue": 33,
+      "sourceGlyphName": "exclam"
+    },
+    {
+      "advanceX": 8,
+      "glyph": 68,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 8,
+      "scalarValue": 63,
+      "sourceGlyphName": "question"
+    },
+    {
+      "advanceX": 6,
+      "glyph": 69,
+      "offsetX": 0,
+      "offsetY": -13,
+      "pixelHeight": 15,
+      "pixelWidth": 6,
+      "scalarValue": 40,
+      "sourceGlyphName": "parenleft"
+    },
+    {
+      "advanceX": 6,
+      "glyph": 70,
+      "offsetX": 0,
+      "offsetY": -13,
+      "pixelHeight": 15,
+      "pixelWidth": 6,
+      "scalarValue": 41,
+      "sourceGlyphName": "parenright"
+    },
+    {
+      "advanceX": 6,
+      "glyph": 71,
+      "offsetX": 0,
+      "offsetY": -14,
+      "pixelHeight": 17,
+      "pixelWidth": 6,
+      "scalarValue": 91,
+      "sourceGlyphName": "bracketleft"
+    },
+    {
+      "advanceX": 6,
+      "glyph": 72,
+      "offsetX": 0,
+      "offsetY": -14,
+      "pixelHeight": 17,
+      "pixelWidth": 6,
+      "scalarValue": 93,
+      "sourceGlyphName": "bracketright"
+    },
+    {
+      "advanceX": 7,
+      "glyph": 73,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 16,
+      "pixelWidth": 7,
+      "scalarValue": 123,
+      "sourceGlyphName": "braceleft"
+    },
+    {
+      "advanceX": 7,
+      "glyph": 74,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 16,
+      "pixelWidth": 7,
+      "scalarValue": 125,
+      "sourceGlyphName": "braceright"
+    },
+    {
+      "advanceX": 15,
+      "glyph": 75,
+      "offsetX": 0,
+      "offsetY": -13,
+      "pixelHeight": 16,
+      "pixelWidth": 15,
+      "scalarValue": 64,
+      "sourceGlyphName": "at"
+    },
+    {
+      "advanceX": 10,
+      "glyph": 76,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 10,
+      "scalarValue": 35,
+      "sourceGlyphName": "numbersign"
+    },
+    {
+      "advanceX": 6,
+      "glyph": 77,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 14,
+      "pixelWidth": 6,
+      "scalarValue": 47,
+      "sourceGlyphName": "slash"
+    },
+    {
+      "advanceX": 5,
+      "glyph": 78,
+      "offsetX": 0,
+      "offsetY": -16,
+      "pixelHeight": 20,
+      "pixelWidth": 5,
+      "scalarValue": 124,
+      "sourceGlyphName": "bar"
+    },
+    {
+      "advanceX": 6,
+      "glyph": 79,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 14,
+      "pixelWidth": 6,
+      "scalarValue": 92,
+      "sourceGlyphName": "backslash"
+    },
+    {
+      "advanceX": 7,
+      "glyph": 80,
+      "offsetX": 0,
+      "offsetY": -7,
+      "pixelHeight": 7,
+      "pixelWidth": 7,
+      "scalarValue": 45,
+      "sourceGlyphName": "hyphen"
+    },
+    {
+      "advanceX": 4,
+      "glyph": 81,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 4,
+      "scalarValue": null,
+      "sourceGlyphName": "quoteright"
+    },
+    {
+      "advanceX": 5,
+      "glyph": 82,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 5,
+      "scalarValue": 39,
+      "sourceGlyphName": "quotesingle"
+    },
+    {
+      "advanceX": 7,
+      "glyph": 83,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 7,
+      "scalarValue": 34,
+      "sourceGlyphName": "quotedbl"
+    },
+    {
+      "advanceX": 5,
+      "glyph": 84,
+      "offsetX": 0,
+      "offsetY": -2,
+      "pixelHeight": 5,
+      "pixelWidth": 5,
+      "scalarValue": 44,
+      "sourceGlyphName": "comma"
+    },
+    {
+      "advanceX": 5,
+      "glyph": 85,
+      "offsetX": 0,
+      "offsetY": -3,
+      "pixelHeight": 3,
+      "pixelWidth": 5,
+      "scalarValue": 46,
+      "sourceGlyphName": "period"
+    },
+    {
+      "advanceX": 5,
+      "glyph": 86,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 5,
+      "scalarValue": 58,
+      "sourceGlyphName": "colon"
+    },
+    {
+      "advanceX": 5,
+      "glyph": 87,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 12,
+      "pixelWidth": 5,
+      "scalarValue": 59,
+      "sourceGlyphName": "semicolon"
+    },
+    {
+      "advanceX": 11,
+      "glyph": 88,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 11,
+      "scalarValue": 60,
+      "sourceGlyphName": "less"
+    },
+    {
+      "advanceX": 11,
+      "glyph": 89,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 11,
+      "scalarValue": 62,
+      "sourceGlyphName": "greater"
+    },
+    {
+      "advanceX": 11,
+      "glyph": 90,
+      "offsetX": 0,
+      "offsetY": -8,
+      "pixelHeight": 8,
+      "pixelWidth": 11,
+      "scalarValue": 61,
+      "sourceGlyphName": "equal"
+    },
+    {
+      "advanceX": 11,
+      "glyph": 91,
+      "offsetX": 0,
+      "offsetY": -9,
+      "pixelHeight": 9,
+      "pixelWidth": 11,
+      "scalarValue": 43,
+      "sourceGlyphName": "plus"
+    },
+    {
+      "advanceX": 11,
+      "glyph": 92,
+      "offsetX": 0,
+      "offsetY": -7,
+      "pixelHeight": 7,
+      "pixelWidth": 11,
+      "scalarValue": 126,
+      "sourceGlyphName": "asciitilde"
+    },
+    {
+      "advanceX": 7,
+      "glyph": 93,
+      "offsetX": 0,
+      "offsetY": -1,
+      "pixelHeight": 3,
+      "pixelWidth": 8,
+      "scalarValue": 95,
+      "sourceGlyphName": "underscore"
+    },
+    {
+      "advanceX": 8,
+      "glyph": 94,
+      "offsetX": 0,
+      "offsetY": -11,
+      "pixelHeight": 11,
+      "pixelWidth": 8,
+      "scalarValue": 94,
+      "sourceGlyphName": "asciicircum"
+    },
+    {
+      "advanceX": 8,
+      "glyph": 95,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 8,
+      "scalarValue": 42,
+      "sourceGlyphName": "asterisk"
+    },
+    {
+      "advanceX": 7,
+      "glyph": 96,
+      "offsetX": 0,
+      "offsetY": -13,
+      "pixelHeight": 13,
+      "pixelWidth": 7,
+      "scalarValue": 176,
+      "sourceGlyphName": "degree"
+    },
+    {
+      "advanceX": 16,
+      "glyph": 97,
+      "offsetX": 0,
+      "offsetY": -12,
+      "pixelHeight": 12,
+      "pixelWidth": 16,
+      "scalarValue": 37,
+      "sourceGlyphName": "percent"
+    },
+    {
+      "advanceX": 5,
+      "glyph": 98,
+      "offsetX": 0,
+      "offsetY": -13,
+      "pixelHeight": 13,
+      "pixelWidth": 5,
+      "scalarValue": 96,
+      "sourceGlyphName": "grave"
+    },
+    {
+      "advanceX": 0,
+      "glyph": 99,
+      "offsetX": 0,
+      "offsetY": -13,
+      "pixelHeight": 13,
+      "pixelWidth": 4,
+      "scalarValue": null,
+      "sourceGlyphName": "gravecomb"
+    },
+    {
+      "advanceX": 5,
+      "glyph": 100,
+      "offsetX": 0,
+      "offsetY": 0,
+      "pixelHeight": 0,
+      "pixelWidth": 5,
+      "scalarValue": 32,
+      "sourceGlyphName": "space"
+    },
+    {
+      "advanceX": 0,
+      "glyph": 101,
+      "offsetX": 0,
+      "offsetY": -13,
+      "pixelHeight": 13,
+      "pixelWidth": 3,
+      "scalarValue": null,
+      "sourceGlyphName": "uni0307"
+    }
+  ],
+  "instance": {
+    "ascent": 16,
+    "descent": 4,
+    "family": "GiftUI Reference Sans",
+    "glyphCount": 102,
+    "instanceIndex": 0,
+    "lineGap": 0,
+    "mappingCount": 96,
+    "pixelSize": 16,
+    "replacementGlyph": 0,
+    "style": "Regular"
+  },
+  "mappings": [
+    {
+      "glyph": 100,
+      "scalarValue": 32
+    },
+    {
+      "glyph": 67,
+      "scalarValue": 33
+    },
+    {
+      "glyph": 83,
+      "scalarValue": 34
+    },
+    {
+      "glyph": 76,
+      "scalarValue": 35
+    },
+    {
+      "glyph": 55,
+      "scalarValue": 36
+    },
+    {
+      "glyph": 97,
+      "scalarValue": 37
+    },
+    {
+      "glyph": 66,
+      "scalarValue": 38
+    },
+    {
+      "glyph": 82,
+      "scalarValue": 39
+    },
+    {
+      "glyph": 69,
+      "scalarValue": 40
+    },
+    {
+      "glyph": 70,
+      "scalarValue": 41
+    },
+    {
+      "glyph": 95,
+      "scalarValue": 42
+    },
+    {
+      "glyph": 91,
+      "scalarValue": 43
+    },
+    {
+      "glyph": 84,
+      "scalarValue": 44
+    },
+    {
+      "glyph": 80,
+      "scalarValue": 45
+    },
+    {
+      "glyph": 85,
+      "scalarValue": 46
+    },
+    {
+      "glyph": 77,
+      "scalarValue": 47
+    },
+    {
+      "glyph": 56,
+      "scalarValue": 48
+    },
+    {
+      "glyph": 57,
+      "scalarValue": 49
+    },
+    {
+      "glyph": 58,
+      "scalarValue": 50
+    },
+    {
+      "glyph": 59,
+      "scalarValue": 51
+    },
+    {
+      "glyph": 60,
+      "scalarValue": 52
+    },
+    {
+      "glyph": 61,
+      "scalarValue": 53
+    },
+    {
+      "glyph": 62,
+      "scalarValue": 54
+    },
+    {
+      "glyph": 63,
+      "scalarValue": 55
+    },
+    {
+      "glyph": 64,
+      "scalarValue": 56
+    },
+    {
+      "glyph": 65,
+      "scalarValue": 57
+    },
+    {
+      "glyph": 86,
+      "scalarValue": 58
+    },
+    {
+      "glyph": 87,
+      "scalarValue": 59
+    },
+    {
+      "glyph": 88,
+      "scalarValue": 60
+    },
+    {
+      "glyph": 90,
+      "scalarValue": 61
+    },
+    {
+      "glyph": 89,
+      "scalarValue": 62
+    },
+    {
+      "glyph": 68,
+      "scalarValue": 63
+    },
+    {
+      "glyph": 75,
+      "scalarValue": 64
+    },
+    {
+      "glyph": 1,
+      "scalarValue": 65
+    },
+    {
+      "glyph": 2,
+      "scalarValue": 66
+    },
+    {
+      "glyph": 3,
+      "scalarValue": 67
+    },
+    {
+      "glyph": 4,
+      "scalarValue": 68
+    },
+    {
+      "glyph": 5,
+      "scalarValue": 69
+    },
+    {
+      "glyph": 6,
+      "scalarValue": 70
+    },
+    {
+      "glyph": 7,
+      "scalarValue": 71
+    },
+    {
+      "glyph": 8,
+      "scalarValue": 72
+    },
+    {
+      "glyph": 9,
+      "scalarValue": 73
+    },
+    {
+      "glyph": 10,
+      "scalarValue": 74
+    },
+    {
+      "glyph": 11,
+      "scalarValue": 75
+    },
+    {
+      "glyph": 12,
+      "scalarValue": 76
+    },
+    {
+      "glyph": 13,
+      "scalarValue": 77
+    },
+    {
+      "glyph": 14,
+      "scalarValue": 78
+    },
+    {
+      "glyph": 15,
+      "scalarValue": 79
+    },
+    {
+      "glyph": 16,
+      "scalarValue": 80
+    },
+    {
+      "glyph": 17,
+      "scalarValue": 81
+    },
+    {
+      "glyph": 18,
+      "scalarValue": 82
+    },
+    {
+      "glyph": 19,
+      "scalarValue": 83
+    },
+    {
+      "glyph": 20,
+      "scalarValue": 84
+    },
+    {
+      "glyph": 21,
+      "scalarValue": 85
+    },
+    {
+      "glyph": 22,
+      "scalarValue": 86
+    },
+    {
+      "glyph": 23,
+      "scalarValue": 87
+    },
+    {
+      "glyph": 24,
+      "scalarValue": 88
+    },
+    {
+      "glyph": 25,
+      "scalarValue": 89
+    },
+    {
+      "glyph": 26,
+      "scalarValue": 90
+    },
+    {
+      "glyph": 71,
+      "scalarValue": 91
+    },
+    {
+      "glyph": 79,
+      "scalarValue": 92
+    },
+    {
+      "glyph": 72,
+      "scalarValue": 93
+    },
+    {
+      "glyph": 94,
+      "scalarValue": 94
+    },
+    {
+      "glyph": 93,
+      "scalarValue": 95
+    },
+    {
+      "glyph": 98,
+      "scalarValue": 96
+    },
+    {
+      "glyph": 27,
+      "scalarValue": 97
+    },
+    {
+      "glyph": 28,
+      "scalarValue": 98
+    },
+    {
+      "glyph": 29,
+      "scalarValue": 99
+    },
+    {
+      "glyph": 30,
+      "scalarValue": 100
+    },
+    {
+      "glyph": 31,
+      "scalarValue": 101
+    },
+    {
+      "glyph": 32,
+      "scalarValue": 102
+    },
+    {
+      "glyph": 33,
+      "scalarValue": 103
+    },
+    {
+      "glyph": 34,
+      "scalarValue": 104
+    },
+    {
+      "glyph": 35,
+      "scalarValue": 105
+    },
+    {
+      "glyph": 38,
+      "scalarValue": 106
+    },
+    {
+      "glyph": 39,
+      "scalarValue": 107
+    },
+    {
+      "glyph": 40,
+      "scalarValue": 108
+    },
+    {
+      "glyph": 41,
+      "scalarValue": 109
+    },
+    {
+      "glyph": 42,
+      "scalarValue": 110
+    },
+    {
+      "glyph": 43,
+      "scalarValue": 111
+    },
+    {
+      "glyph": 44,
+      "scalarValue": 112
+    },
+    {
+      "glyph": 45,
+      "scalarValue": 113
+    },
+    {
+      "glyph": 46,
+      "scalarValue": 114
+    },
+    {
+      "glyph": 47,
+      "scalarValue": 115
+    },
+    {
+      "glyph": 48,
+      "scalarValue": 116
+    },
+    {
+      "glyph": 49,
+      "scalarValue": 117
+    },
+    {
+      "glyph": 50,
+      "scalarValue": 118
+    },
+    {
+      "glyph": 51,
+      "scalarValue": 119
+    },
+    {
+      "glyph": 52,
+      "scalarValue": 120
+    },
+    {
+      "glyph": 53,
+      "scalarValue": 121
+    },
+    {
+      "glyph": 54,
+      "scalarValue": 122
+    },
+    {
+      "glyph": 73,
+      "scalarValue": 123
+    },
+    {
+      "glyph": 78,
+      "scalarValue": 124
+    },
+    {
+      "glyph": 74,
+      "scalarValue": 125
+    },
+    {
+      "glyph": 92,
+      "scalarValue": 126
+    },
+    {
+      "glyph": 96,
+      "scalarValue": 176
+    }
+  ],
+  "realizations": [
+    {
+      "format": "monochromeBitmap1",
+      "id": 0,
+      "kind": 0,
+      "payloadByteCount": 1911,
+      "payloadDigest": "69cf6841d1ecd25079a63f3dcc6866c119cd11ca4c62115185af99781d13af68",
+      "records": [
+        {
+          "byteCount": 38,
+          "glyph": 0,
+          "offset": 0,
+          "pixelHeight": 19,
+          "pixelWidth": 11,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 1,
+          "offset": 38,
+          "pixelHeight": 12,
+          "pixelWidth": 11,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 2,
+          "offset": 62,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 3,
+          "offset": 86,
+          "pixelHeight": 12,
+          "pixelWidth": 12,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 4,
+          "offset": 110,
+          "pixelHeight": 12,
+          "pixelWidth": 12,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 5,
+          "offset": 134,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 6,
+          "offset": 158,
+          "pixelHeight": 12,
+          "pixelWidth": 9,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 7,
+          "offset": 182,
+          "pixelHeight": 12,
+          "pixelWidth": 12,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 8,
+          "offset": 206,
+          "pixelHeight": 12,
+          "pixelWidth": 12,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 12,
+          "glyph": 9,
+          "offset": 230,
+          "pixelHeight": 12,
+          "pixelWidth": 4,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 24,
+          "glyph": 10,
+          "offset": 242,
+          "pixelHeight": 12,
+          "pixelWidth": 9,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 11,
+          "offset": 266,
+          "pixelHeight": 12,
+          "pixelWidth": 11,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 12,
+          "offset": 290,
+          "pixelHeight": 12,
+          "pixelWidth": 9,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 13,
+          "offset": 314,
+          "pixelHeight": 12,
+          "pixelWidth": 14,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 14,
+          "offset": 338,
+          "pixelHeight": 12,
+          "pixelWidth": 12,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 15,
+          "offset": 362,
+          "pixelHeight": 12,
+          "pixelWidth": 12,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 16,
+          "offset": 386,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 26,
+          "glyph": 17,
+          "offset": 410,
+          "pixelHeight": 13,
+          "pixelWidth": 12,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 18,
+          "offset": 436,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 19,
+          "offset": 460,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 20,
+          "offset": 484,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 21,
+          "offset": 508,
+          "pixelHeight": 12,
+          "pixelWidth": 12,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 22,
+          "offset": 532,
+          "pixelHeight": 12,
+          "pixelWidth": 11,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 23,
+          "offset": 556,
+          "pixelHeight": 12,
+          "pixelWidth": 16,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 24,
+          "offset": 580,
+          "pixelHeight": 12,
+          "pixelWidth": 11,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 25,
+          "offset": 604,
+          "pixelHeight": 12,
+          "pixelWidth": 11,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 26,
+          "offset": 628,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 18,
+          "glyph": 27,
+          "offset": 652,
+          "pixelHeight": 9,
+          "pixelWidth": 9,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 28,
+          "offset": 670,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 18,
+          "glyph": 29,
+          "offset": 694,
+          "pixelHeight": 9,
+          "pixelWidth": 9,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 30,
+          "offset": 712,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 18,
+          "glyph": 31,
+          "offset": 736,
+          "pixelHeight": 9,
+          "pixelWidth": 9,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 12,
+          "glyph": 32,
+          "offset": 754,
+          "pixelHeight": 12,
+          "pixelWidth": 6,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 24,
+          "glyph": 33,
+          "offset": 766,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 34,
+          "offset": 790,
+          "pixelHeight": 12,
+          "pixelWidth": 9,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 13,
+          "glyph": 35,
+          "offset": 814,
+          "pixelHeight": 13,
+          "pixelWidth": 4,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 9,
+          "glyph": 36,
+          "offset": 827,
+          "pixelHeight": 9,
+          "pixelWidth": 4,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 12,
+          "glyph": 37,
+          "offset": 836,
+          "pixelHeight": 12,
+          "pixelWidth": 5,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 16,
+          "glyph": 38,
+          "offset": 848,
+          "pixelHeight": 16,
+          "pixelWidth": 5,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 24,
+          "glyph": 39,
+          "offset": 864,
+          "pixelHeight": 12,
+          "pixelWidth": 9,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 12,
+          "glyph": 40,
+          "offset": 888,
+          "pixelHeight": 12,
+          "pixelWidth": 4,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 18,
+          "glyph": 41,
+          "offset": 900,
+          "pixelHeight": 9,
+          "pixelWidth": 14,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 18,
+          "glyph": 42,
+          "offset": 918,
+          "pixelHeight": 9,
+          "pixelWidth": 9,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 18,
+          "glyph": 43,
+          "offset": 936,
+          "pixelHeight": 9,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 44,
+          "offset": 954,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 45,
+          "offset": 978,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 9,
+          "glyph": 46,
+          "offset": 1002,
+          "pixelHeight": 9,
+          "pixelWidth": 6,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 9,
+          "glyph": 47,
+          "offset": 1011,
+          "pixelHeight": 9,
+          "pixelWidth": 8,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 11,
+          "glyph": 48,
+          "offset": 1020,
+          "pixelHeight": 11,
+          "pixelWidth": 5,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 18,
+          "glyph": 49,
+          "offset": 1031,
+          "pixelHeight": 9,
+          "pixelWidth": 9,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 18,
+          "glyph": 50,
+          "offset": 1049,
+          "pixelHeight": 9,
+          "pixelWidth": 9,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 18,
+          "glyph": 51,
+          "offset": 1067,
+          "pixelHeight": 9,
+          "pixelWidth": 13,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 18,
+          "glyph": 52,
+          "offset": 1085,
+          "pixelHeight": 9,
+          "pixelWidth": 9,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 53,
+          "offset": 1103,
+          "pixelHeight": 12,
+          "pixelWidth": 9,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 18,
+          "glyph": 54,
+          "offset": 1127,
+          "pixelHeight": 9,
+          "pixelWidth": 9,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 32,
+          "glyph": 55,
+          "offset": 1145,
+          "pixelHeight": 16,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 56,
+          "offset": 1177,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 12,
+          "glyph": 57,
+          "offset": 1201,
+          "pixelHeight": 12,
+          "pixelWidth": 7,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 24,
+          "glyph": 58,
+          "offset": 1213,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 59,
+          "offset": 1237,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 60,
+          "offset": 1261,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 61,
+          "offset": 1285,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 62,
+          "offset": 1309,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 63,
+          "offset": 1333,
+          "pixelHeight": 12,
+          "pixelWidth": 9,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 64,
+          "offset": 1357,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 65,
+          "offset": 1381,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 66,
+          "offset": 1405,
+          "pixelHeight": 12,
+          "pixelWidth": 11,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 12,
+          "glyph": 67,
+          "offset": 1429,
+          "pixelHeight": 12,
+          "pixelWidth": 5,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 12,
+          "glyph": 68,
+          "offset": 1441,
+          "pixelHeight": 12,
+          "pixelWidth": 8,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 15,
+          "glyph": 69,
+          "offset": 1453,
+          "pixelHeight": 15,
+          "pixelWidth": 6,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 15,
+          "glyph": 70,
+          "offset": 1468,
+          "pixelHeight": 15,
+          "pixelWidth": 6,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 17,
+          "glyph": 71,
+          "offset": 1483,
+          "pixelHeight": 17,
+          "pixelWidth": 6,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 17,
+          "glyph": 72,
+          "offset": 1500,
+          "pixelHeight": 17,
+          "pixelWidth": 6,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 16,
+          "glyph": 73,
+          "offset": 1517,
+          "pixelHeight": 16,
+          "pixelWidth": 7,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 16,
+          "glyph": 74,
+          "offset": 1533,
+          "pixelHeight": 16,
+          "pixelWidth": 7,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 32,
+          "glyph": 75,
+          "offset": 1549,
+          "pixelHeight": 16,
+          "pixelWidth": 15,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 24,
+          "glyph": 76,
+          "offset": 1581,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 14,
+          "glyph": 77,
+          "offset": 1605,
+          "pixelHeight": 14,
+          "pixelWidth": 6,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 20,
+          "glyph": 78,
+          "offset": 1619,
+          "pixelHeight": 20,
+          "pixelWidth": 5,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 14,
+          "glyph": 79,
+          "offset": 1639,
+          "pixelHeight": 14,
+          "pixelWidth": 6,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 7,
+          "glyph": 80,
+          "offset": 1653,
+          "pixelHeight": 7,
+          "pixelWidth": 7,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 12,
+          "glyph": 81,
+          "offset": 1660,
+          "pixelHeight": 12,
+          "pixelWidth": 4,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 12,
+          "glyph": 82,
+          "offset": 1672,
+          "pixelHeight": 12,
+          "pixelWidth": 5,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 12,
+          "glyph": 83,
+          "offset": 1684,
+          "pixelHeight": 12,
+          "pixelWidth": 7,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 5,
+          "glyph": 84,
+          "offset": 1696,
+          "pixelHeight": 5,
+          "pixelWidth": 5,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 3,
+          "glyph": 85,
+          "offset": 1701,
+          "pixelHeight": 3,
+          "pixelWidth": 5,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 9,
+          "glyph": 86,
+          "offset": 1704,
+          "pixelHeight": 9,
+          "pixelWidth": 5,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 12,
+          "glyph": 87,
+          "offset": 1713,
+          "pixelHeight": 12,
+          "pixelWidth": 5,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 18,
+          "glyph": 88,
+          "offset": 1725,
+          "pixelHeight": 9,
+          "pixelWidth": 11,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 18,
+          "glyph": 89,
+          "offset": 1743,
+          "pixelHeight": 9,
+          "pixelWidth": 11,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 16,
+          "glyph": 90,
+          "offset": 1761,
+          "pixelHeight": 8,
+          "pixelWidth": 11,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 18,
+          "glyph": 91,
+          "offset": 1777,
+          "pixelHeight": 9,
+          "pixelWidth": 11,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 14,
+          "glyph": 92,
+          "offset": 1795,
+          "pixelHeight": 7,
+          "pixelWidth": 11,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 3,
+          "glyph": 93,
+          "offset": 1809,
+          "pixelHeight": 3,
+          "pixelWidth": 8,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 11,
+          "glyph": 94,
+          "offset": 1812,
+          "pixelHeight": 11,
+          "pixelWidth": 8,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 12,
+          "glyph": 95,
+          "offset": 1823,
+          "pixelHeight": 12,
+          "pixelWidth": 8,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 13,
+          "glyph": 96,
+          "offset": 1835,
+          "pixelHeight": 13,
+          "pixelWidth": 7,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 24,
+          "glyph": 97,
+          "offset": 1848,
+          "pixelHeight": 12,
+          "pixelWidth": 16,
+          "rowByteCount": 2
+        },
+        {
+          "byteCount": 13,
+          "glyph": 98,
+          "offset": 1872,
+          "pixelHeight": 13,
+          "pixelWidth": 5,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 13,
+          "glyph": 99,
+          "offset": 1885,
+          "pixelHeight": 13,
+          "pixelWidth": 4,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 0,
+          "glyph": 100,
+          "offset": 1898,
+          "pixelHeight": 0,
+          "pixelWidth": 5,
+          "rowByteCount": 1
+        },
+        {
+          "byteCount": 13,
+          "glyph": 101,
+          "offset": 1898,
+          "pixelHeight": 13,
+          "pixelWidth": 3,
+          "rowByteCount": 1
+        }
+      ]
+    },
+    {
+      "format": "giftui-spike-outline-v1",
+      "id": 1,
+      "kind": 1,
+      "payloadByteCount": 13195,
+      "payloadDigest": "3d05ced8a32b17a45569b6650ea4fe88b1f2f0dc93493e79631a628d56df4c5f",
+      "records": [
+        {
+          "byteCount": 447,
+          "glyph": 0,
+          "offset": 0,
+          "pixelHeight": 19,
+          "pixelWidth": 11,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 101,
+          "glyph": 1,
+          "offset": 447,
+          "pixelHeight": 12,
+          "pixelWidth": 11,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 200,
+          "glyph": 2,
+          "offset": 548,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 168,
+          "glyph": 3,
+          "offset": 748,
+          "pixelHeight": 12,
+          "pixelWidth": 12,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 113,
+          "glyph": 4,
+          "offset": 916,
+          "pixelHeight": 12,
+          "pixelWidth": 12,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 78,
+          "glyph": 5,
+          "offset": 1029,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 66,
+          "glyph": 6,
+          "offset": 1107,
+          "pixelHeight": 12,
+          "pixelWidth": 9,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 182,
+          "glyph": 7,
+          "offset": 1173,
+          "pixelHeight": 12,
+          "pixelWidth": 12,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 78,
+          "glyph": 8,
+          "offset": 1355,
+          "pixelHeight": 12,
+          "pixelWidth": 12,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 30,
+          "glyph": 9,
+          "offset": 1433,
+          "pixelHeight": 12,
+          "pixelWidth": 4,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 104,
+          "glyph": 10,
+          "offset": 1463,
+          "pixelHeight": 12,
+          "pixelWidth": 9,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 98,
+          "glyph": 11,
+          "offset": 1567,
+          "pixelHeight": 12,
+          "pixelWidth": 11,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 42,
+          "glyph": 12,
+          "offset": 1665,
+          "pixelHeight": 12,
+          "pixelWidth": 9,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 168,
+          "glyph": 13,
+          "offset": 1707,
+          "pixelHeight": 12,
+          "pixelWidth": 14,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 126,
+          "glyph": 14,
+          "offset": 1875,
+          "pixelHeight": 12,
+          "pixelWidth": 12,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 163,
+          "glyph": 15,
+          "offset": 2001,
+          "pixelHeight": 12,
+          "pixelWidth": 12,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 119,
+          "glyph": 16,
+          "offset": 2164,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 205,
+          "glyph": 17,
+          "offset": 2283,
+          "pixelHeight": 13,
+          "pixelWidth": 12,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 143,
+          "glyph": 18,
+          "offset": 2488,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 240,
+          "glyph": 19,
+          "offset": 2631,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 54,
+          "glyph": 20,
+          "offset": 2871,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 120,
+          "glyph": 21,
+          "offset": 2925,
+          "pixelHeight": 12,
+          "pixelWidth": 12,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 76,
+          "glyph": 22,
+          "offset": 3045,
+          "pixelHeight": 12,
+          "pixelWidth": 11,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 164,
+          "glyph": 23,
+          "offset": 3121,
+          "pixelHeight": 12,
+          "pixelWidth": 16,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 142,
+          "glyph": 24,
+          "offset": 3285,
+          "pixelHeight": 12,
+          "pixelWidth": 11,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 88,
+          "glyph": 25,
+          "offset": 3427,
+          "pixelHeight": 12,
+          "pixelWidth": 11,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 122,
+          "glyph": 26,
+          "offset": 3515,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 277,
+          "glyph": 27,
+          "offset": 3637,
+          "pixelHeight": 9,
+          "pixelWidth": 9,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 197,
+          "glyph": 28,
+          "offset": 3914,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 152,
+          "glyph": 29,
+          "offset": 4111,
+          "pixelHeight": 9,
+          "pixelWidth": 9,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 197,
+          "glyph": 30,
+          "offset": 4263,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 175,
+          "glyph": 31,
+          "offset": 4460,
+          "pixelHeight": 9,
+          "pixelWidth": 9,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 138,
+          "glyph": 32,
+          "offset": 4635,
+          "pixelHeight": 12,
+          "pixelWidth": 6,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 257,
+          "glyph": 33,
+          "offset": 4773,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 116,
+          "glyph": 34,
+          "offset": 5030,
+          "pixelHeight": 12,
+          "pixelWidth": 9,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 93,
+          "glyph": 35,
+          "offset": 5146,
+          "pixelHeight": 13,
+          "pixelWidth": 4,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 30,
+          "glyph": 36,
+          "offset": 5239,
+          "pixelHeight": 9,
+          "pixelWidth": 4,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 66,
+          "glyph": 37,
+          "offset": 5269,
+          "pixelHeight": 12,
+          "pixelWidth": 5,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 129,
+          "glyph": 38,
+          "offset": 5335,
+          "pixelHeight": 16,
+          "pixelWidth": 5,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 84,
+          "glyph": 39,
+          "offset": 5464,
+          "pixelHeight": 12,
+          "pixelWidth": 9,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 30,
+          "glyph": 40,
+          "offset": 5548,
+          "pixelHeight": 12,
+          "pixelWidth": 4,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 188,
+          "glyph": 41,
+          "offset": 5578,
+          "pixelHeight": 9,
+          "pixelWidth": 14,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 116,
+          "glyph": 42,
+          "offset": 5766,
+          "pixelHeight": 9,
+          "pixelWidth": 9,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 163,
+          "glyph": 43,
+          "offset": 5882,
+          "pixelHeight": 9,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 191,
+          "glyph": 44,
+          "offset": 6045,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 191,
+          "glyph": 45,
+          "offset": 6236,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 104,
+          "glyph": 46,
+          "offset": 6427,
+          "pixelHeight": 9,
+          "pixelWidth": 6,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 204,
+          "glyph": 47,
+          "offset": 6531,
+          "pixelHeight": 9,
+          "pixelWidth": 8,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 134,
+          "glyph": 48,
+          "offset": 6735,
+          "pixelHeight": 11,
+          "pixelWidth": 5,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 116,
+          "glyph": 49,
+          "offset": 6869,
+          "pixelHeight": 9,
+          "pixelWidth": 9,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 76,
+          "glyph": 50,
+          "offset": 6985,
+          "pixelHeight": 9,
+          "pixelWidth": 9,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 168,
+          "glyph": 51,
+          "offset": 7061,
+          "pixelHeight": 9,
+          "pixelWidth": 13,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 134,
+          "glyph": 52,
+          "offset": 7229,
+          "pixelHeight": 9,
+          "pixelWidth": 9,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 136,
+          "glyph": 53,
+          "offset": 7363,
+          "pixelHeight": 12,
+          "pixelWidth": 9,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 78,
+          "glyph": 54,
+          "offset": 7499,
+          "pixelHeight": 9,
+          "pixelWidth": 9,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 300,
+          "glyph": 55,
+          "offset": 7577,
+          "pixelHeight": 16,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 131,
+          "glyph": 56,
+          "offset": 7877,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 54,
+          "glyph": 57,
+          "offset": 8008,
+          "pixelHeight": 12,
+          "pixelWidth": 7,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 154,
+          "glyph": 58,
+          "offset": 8062,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 236,
+          "glyph": 59,
+          "offset": 8216,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 103,
+          "glyph": 60,
+          "offset": 8452,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 192,
+          "glyph": 61,
+          "offset": 8555,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 235,
+          "glyph": 62,
+          "offset": 8747,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 54,
+          "glyph": 63,
+          "offset": 8982,
+          "pixelHeight": 12,
+          "pixelWidth": 9,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 290,
+          "glyph": 64,
+          "offset": 9036,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 235,
+          "glyph": 65,
+          "offset": 9326,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 316,
+          "glyph": 66,
+          "offset": 9561,
+          "pixelHeight": 12,
+          "pixelWidth": 11,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 93,
+          "glyph": 67,
+          "offset": 9877,
+          "pixelHeight": 12,
+          "pixelWidth": 5,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 221,
+          "glyph": 68,
+          "offset": 9970,
+          "pixelHeight": 12,
+          "pixelWidth": 8,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 88,
+          "glyph": 69,
+          "offset": 10191,
+          "pixelHeight": 15,
+          "pixelWidth": 6,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 82,
+          "glyph": 70,
+          "offset": 10279,
+          "pixelHeight": 15,
+          "pixelWidth": 6,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 54,
+          "glyph": 71,
+          "offset": 10361,
+          "pixelHeight": 17,
+          "pixelWidth": 6,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 54,
+          "glyph": 72,
+          "offset": 10415,
+          "pixelHeight": 17,
+          "pixelWidth": 6,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 178,
+          "glyph": 73,
+          "offset": 10469,
+          "pixelHeight": 16,
+          "pixelWidth": 7,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 178,
+          "glyph": 74,
+          "offset": 10647,
+          "pixelHeight": 16,
+          "pixelWidth": 7,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 395,
+          "glyph": 75,
+          "offset": 10825,
+          "pixelHeight": 16,
+          "pixelWidth": 15,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 199,
+          "glyph": 76,
+          "offset": 11220,
+          "pixelHeight": 12,
+          "pixelWidth": 10,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 30,
+          "glyph": 77,
+          "offset": 11419,
+          "pixelHeight": 14,
+          "pixelWidth": 6,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 30,
+          "glyph": 78,
+          "offset": 11449,
+          "pixelHeight": 20,
+          "pixelWidth": 5,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 30,
+          "glyph": 79,
+          "offset": 11479,
+          "pixelHeight": 14,
+          "pixelWidth": 6,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 30,
+          "glyph": 80,
+          "offset": 11509,
+          "pixelHeight": 7,
+          "pixelWidth": 7,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 30,
+          "glyph": 81,
+          "offset": 11539,
+          "pixelHeight": 12,
+          "pixelWidth": 4,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 30,
+          "glyph": 82,
+          "offset": 11569,
+          "pixelHeight": 12,
+          "pixelWidth": 5,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 55,
+          "glyph": 83,
+          "offset": 11599,
+          "pixelHeight": 12,
+          "pixelWidth": 7,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 30,
+          "glyph": 84,
+          "offset": 11654,
+          "pixelHeight": 5,
+          "pixelWidth": 5,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 68,
+          "glyph": 85,
+          "offset": 11684,
+          "pixelHeight": 3,
+          "pixelWidth": 5,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 131,
+          "glyph": 86,
+          "offset": 11752,
+          "pixelHeight": 9,
+          "pixelWidth": 5,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 93,
+          "glyph": 87,
+          "offset": 11883,
+          "pixelHeight": 12,
+          "pixelWidth": 5,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 54,
+          "glyph": 88,
+          "offset": 11976,
+          "pixelHeight": 9,
+          "pixelWidth": 11,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 54,
+          "glyph": 89,
+          "offset": 12030,
+          "pixelHeight": 9,
+          "pixelWidth": 11,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 55,
+          "glyph": 90,
+          "offset": 12084,
+          "pixelHeight": 8,
+          "pixelWidth": 11,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 78,
+          "glyph": 91,
+          "offset": 12139,
+          "pixelHeight": 9,
+          "pixelWidth": 11,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 138,
+          "glyph": 92,
+          "offset": 12217,
+          "pixelHeight": 7,
+          "pixelWidth": 11,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 30,
+          "glyph": 93,
+          "offset": 12355,
+          "pixelHeight": 3,
+          "pixelWidth": 8,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 54,
+          "glyph": 94,
+          "offset": 12385,
+          "pixelHeight": 11,
+          "pixelWidth": 8,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 114,
+          "glyph": 95,
+          "offset": 12439,
+          "pixelHeight": 12,
+          "pixelWidth": 8,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 147,
+          "glyph": 96,
+          "offset": 12553,
+          "pixelHeight": 13,
+          "pixelWidth": 7,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 362,
+          "glyph": 97,
+          "offset": 12700,
+          "pixelHeight": 12,
+          "pixelWidth": 16,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 30,
+          "glyph": 98,
+          "offset": 13062,
+          "pixelHeight": 13,
+          "pixelWidth": 5,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 30,
+          "glyph": 99,
+          "offset": 13092,
+          "pixelHeight": 13,
+          "pixelWidth": 4,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 5,
+          "glyph": 100,
+          "offset": 13122,
+          "pixelHeight": 0,
+          "pixelWidth": 5,
+          "rowByteCount": 0
+        },
+        {
+          "byteCount": 68,
+          "glyph": 101,
+          "offset": 13127,
+          "pixelHeight": 13,
+          "pixelWidth": 3,
+          "rowByteCount": 0
+        }
+      ]
+    }
+  ],
+  "resourceID": "bd14de9ff2baaaf464c130d5e2d0554004a4055cc57a8c16a65fe2cc39394910",
+  "schemaVersion": 1,
+  "serializationNote": "SPIKE-005 candidate encoding; SPEC-005 review must confirm signed geometry and outline-record serialization."
+}

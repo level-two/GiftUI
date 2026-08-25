@@ -31,7 +31,8 @@ related_future_work:
   - FW-002
   - FW-003
 related_explorations: []
-related_spikes: []
+related_spikes:
+  - SPIKE-005
 supersedes: []
 superseded_by: []
 target_milestone: MVP
@@ -826,13 +827,16 @@ documented resource.
 
 ## Open Issues
 
-1. **Approval blocker — licensed reference resource.** No checked-in artifact
-   currently identifies a reference face/resource source, copyright holder,
-   redistribution terms, derivation permission, generation command, and exact
-   derived outputs. RFC-003 explicitly requires this evidence before a text
-   Specification can authorize implementation. Supply or create that resource,
-   then replace this issue with links and measured hashes before moving the
-   Specification to `review`.
+1. **Approval blocker — licensed reference resource adoption.**
+   [SPIKE-005](../spikes/spike-005-inter-reference-font-resource.md) now
+   preserves a checked-in Inter 4.1 source and OFL license, renamed derived
+   assets, reproducible commands, exact hashes, coverage, and hardware-free
+   resource measurements. The Spike is evidence rather than authority. Before
+   moving this Specification to `review`, maintainers must review the license
+   obligations and decide whether to adopt or replace the Spike's candidate
+   canonical serialization and outline format in the complete reference
+   package. Replace this issue with authoritative package links and hashes
+   only after that review; do not treat completion of the Spike as approval.
 2. **Approval blocker — failure-origin ownership proof.** SPEC-003 has no
    text-resource origin. Before review, every Error Handling row must name and
    test an existing `hostComposition`, `layout`, or `rendering` adapter that
@@ -850,6 +854,12 @@ Neither issue permits identity substitution, geometry tolerance, an upward
 import, or backend-owned layout. Such a proposal would require RFC/ADR review.
 
 ## Deferred and Follow-up Work
+
+- [SPIKE-005](../spikes/spike-005-inter-reference-font-resource.md) preserves
+  the licensed Inter 4.1 source, derived reference assets, integrity evidence,
+  and hardware-free resource measurements needed to prepare this draft for
+  review. Its generator and formats remain disposable evidence until adopted
+  through this Specification.
 
 - [FW-001](../future-work/fw-001-international-and-rich-text-layout.md)
   preserves complex scripts, bidirectional/vertical layout, rich text,

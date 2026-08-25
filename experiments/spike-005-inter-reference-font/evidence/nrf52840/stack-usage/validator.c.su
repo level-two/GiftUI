@@ -1,0 +1,4 @@
+/Users/eugene/work/GiftUI/experiments/spike-005-inter-reference-font/nrf/candidate/validator.c:107:13:update	344	static
+/Users/eugene/work/GiftUI/experiments/spike-005-inter-reference-font/nrf/candidate/validator.c:151:12:validate_digest	184	static
+/Users/eugene/work/GiftUI/experiments/spike-005-inter-reference-font/nrf/candidate/validator.c:160:5:spike005_validate_inputs	16	static
+/Users/eugene/work/GiftUI/experiments/spike-005-inter-reference-font/nrf/candidate/validator.c:180:5:spike005_validate	16	static

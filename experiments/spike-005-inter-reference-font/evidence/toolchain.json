@@ -1,0 +1,8 @@
+{
+  "FreeType": "2.13.3",
+  "Pillow": "11.3.0",
+  "fontTools": "4.60.2",
+  "platform": "macOS-26.3-arm64-arm-64bit",
+  "python": "3.9.6",
+  "pythonImplementation": "CPython"
+}

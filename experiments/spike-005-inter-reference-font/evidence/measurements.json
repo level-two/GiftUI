@@ -1,0 +1,15 @@
+{
+  "bitmapCeilingBytes": 65536,
+  "bitmapPayloadBytes": 1911,
+  "canonicalManifestBytes": 6218,
+  "glyphCeiling": 256,
+  "glyphCount": 102,
+  "manifestCeilingBytes": 16384,
+  "mappingCount": 96,
+  "outlineCeilingBytes": 65536,
+  "outlinePayloadBytes": 13195,
+  "resourceID": "bd14de9ff2baaaf464c130d5e2d0554004a4055cc57a8c16a65fe2cc39394910",
+  "result": "pass",
+  "sourceFontBytes": 411640,
+  "subsetFontBytes": 20752
+}

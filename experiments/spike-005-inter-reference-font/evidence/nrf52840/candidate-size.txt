@@ -1,0 +1,29 @@
+/Users/eugene/work/GiftUI/.build/nrf52840/spike-005-font-candidate/zephyr/zephyr.elf  :
+section                           size        addr
+rom_start                          256           0
+text                             21096         256
+.ARM.exidx                           8       21352
+initlevel                           56       21360
+device_area                        128       21416
+sw_isr_table                       384       21544
+gpio_driver_api_area                36       21928
+clock_control_driver_api_area       28       21964
+uart_driver_api_area                12       21992
+rodata                           10004       22016
+.ramfunc                             0   536870912
+datas                               28   536870912
+device_states                        8   536870940
+.comment                            32           0
+.debug_aranges                    4704           0
+.debug_info                     238608           0
+.debug_abbrev                    40937           0
+.debug_line                     125734           0
+.debug_frame                     10412           0
+.debug_str                       47764           0
+.debug_loc                      118366           0
+.debug_ranges                    19320           0
+.ARM.attributes                     52           0
+.last_section                        4       32056
+bss                               1013   536870952
+noinit                            3840   536872064
+Total                           642830

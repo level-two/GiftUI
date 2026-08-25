@@ -1,0 +1,20 @@
+
+Elf file type is EXEC (Executable file)
+Entry point 0x1b49
+There are 5 program headers, starting at offset 52
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  EXIDX          0x005448 0x00005368 0x00005368 0x00008 0x00008 R   0x4
+  LOAD           0x0000e0 0x00000000 0x00000000 0x07d14 0x07d14 R E 0x10
+  LOAD           0x007df4 0x20000000 0x00007d14 0x00024 0x00024 RW  0x4
+  LOAD           0x007e18 0x00007d38 0x00007d38 0x00004 0x00004 RW  0x4
+  LOAD           0x000000 0x20000028 0x20000028 0x00000 0x01358 RW  0x80
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     .ARM.exidx
+   01     rom_start text .ARM.exidx initlevel device_area sw_isr_table gpio_driver_api_area clock_control_driver_api_area uart_driver_api_area rodata
+   02     datas device_states
+   03     .last_section
+   04     bss noinit

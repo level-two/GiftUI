@@ -1,0 +1,1 @@
+nominal=0 manifest_tamper=2 bitmap_tamper=3
