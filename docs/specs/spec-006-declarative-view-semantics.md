@@ -712,13 +712,10 @@ for later layout adapters.
 
 ## Open Issues
 
-No accepted-architecture blocker remains in this draft. Human review should
-confirm one contract-level choice before this Specification advances to
-`review`:
-
-1. whether five direct builder expressions remain sufficient for the final
-   portable Signal Analyzer hierarchy, or whether a larger fixed arity is
-   required.
+No open issue remains in this draft. The contract-level builder-arity choice
+is resolved in favor of five direct expressions. The maintained Rank 0
+surface therefore remains fixed at arities zero through five; clients compose
+larger hierarchies by nesting fixed groups or custom views.
 
 The former action lifetime and replacement issue is resolved by RFC-004 and
 ADR-013: pointer down captures the stable semantic identity together with the
