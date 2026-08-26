@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-08-26
+updated: 2026-08-27
 proposal:
   - PROPOSAL-006
 related_rfcs:
@@ -30,6 +30,7 @@ related_explorations: []
 related_spikes:
   - SPIKE-004
   - SPIKE-007
+  - SPIKE-008
 supersedes: []
 superseded_by: []
 target_milestone: MVP
@@ -37,8 +38,9 @@ target_milestone: MVP
 
 # SPEC-012: Canvas, Path, and Stroke Drawing Contract
 
-> **Draft status:** This contract is ready for review but remains
-> non-authoritative until explicit maintainer approval.
+> **Draft status:** SPIKE-008 found blocking source-composition and Embedded
+> error-model failures. This contract requires revision before review and
+> remains non-authoritative until explicit maintainer approval.
 
 ## Summary
 
@@ -435,20 +437,49 @@ finite tagged callable with bounded typed captures compiles and links without
 that allocator path. The Spike's zero-argument action callable is not evidence
 that Canvas's exact throwing, scoped `inout` signature compiles.
 
+### SPIKE-008 evidence
+
+SPIKE-008 compiled the exact declaration shapes and a generated bounded
+callable's throwing `(inout GraphicsContext, Size)` signature on macOS and in a
+hardware-free Embedded Swift declaration image when concrete thrown values
+were disabled. Illegal borrowed-Path consumption and Path escape failed
+compilation on both compilers as required. The macOS runtime fixture exercised
+normal and throwing `withPath` cleanup successfully.
+
+The declaration-only nRF52840 image retained ARMv7E-M hard-float attributes,
+zero configured heaps, and no candidate-introduced reflection, Objective-C,
+task, thread, or allocator symbols. Whole-module elimination made its linked
+flash and RAM equal to the configuration-equivalent baseline (25,780 and 6,016
+bytes respectively); those values are declaration evidence, not production
+capacity or cost measurements. No board was flashed or operated.
+
+The experiment did not validate the intended supported source composition or
+Embedded throwing behavior. Those exact forms failed as recorded below, so the
+qualified passes do not satisfy DR-001 or DR-008 and do not authorize
+implementation.
+
 ## Open Issues
 
-- SPIKE-007 resolves the shared direct-retained-closure question and requires
-  generated static callable storage, but does not close SPEC-012's approval
-  gate. Review must still compile and inspect the exact Canvas callable
-  specialization, `~Copyable` `GraphicsContext` and `Path` declarations,
-  nonescaping `withPath` scope, borrowed `stroke` argument, and throwing cleanup
-  with the supported macOS and Embedded Swift compilers.
+- SPIKE-008 completed the exact declaration experiment and found two approval
+  blockers. First, `context.stroke(path, ...)` inside
+  `context.withPath { ... }` is rejected by both supported compilers as an
+  overlapping modifying access to `context`, while the noncopyable Path cannot
+  escape for submission afterward. Second, concrete `throw DrawingError...`
+  expressions are rejected by the supported Embedded Swift compiler because
+  it cannot use the required `any Error` protocol value. The supported
+  Path-submission source form and Embedded error model require Specification
+  review; an architectural correction must return through RFC/ADR governance.
 - Pixel quantization and raster tolerance vectors are intentionally owned by
   the Wave 6 backend-integration Specification, not this portable contract.
 
 ## Deferred and Follow-up Work
 
-None. Richer drawing and retained paths are outside the accepted MVP scope.
+- [SPIKE-008](../spikes/spike-008-spec-012-exact-canvas-declarations.md)
+  records the exact declaration and callable evidence required for review. Its
+  negative results block approval but do not change current scope or establish
+  a replacement contract.
+
+Richer drawing and retained paths remain outside the accepted MVP scope.
 
 ## References
 
@@ -461,3 +492,4 @@ None. Richer drawing and retained paths are outside the accepted MVP scope.
 - [SPEC-009](spec-009-execution-cycle-and-frame-handoff.md)
 - [SPIKE-004](../spikes/spike-004-canvas-path-plan-feasibility.md)
 - [SPIKE-007](../spikes/spike-007-static-action-storage-feasibility.md)
+- [SPIKE-008](../spikes/spike-008-spec-012-exact-canvas-declarations.md)

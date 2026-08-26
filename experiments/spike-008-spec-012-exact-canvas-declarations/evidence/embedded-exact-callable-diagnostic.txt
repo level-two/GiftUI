@@ -1,0 +1,20 @@
+45-[10/154] Generating include/generated/zephyr/offsets.h
+46-[11/154] Building Swift Module 'app_swift' with 1 source
+47-FAILED: [code=1] app_swift.swiftmodule CMakeFiles/app_swift.dir/Candidate.swift.obj
+48-/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -target armv7em-none-none-eabi -j 12 -num-threads 12 -c  -parse-as-library -module-name app_swift -module-link-name app_swift -wmo -parse-as-library -Osize -enable-experimental-feature Embedded -Xfrontend -function-sections -Xfrontend -disable-stack-protector -Xcc -mfloat-abi=hard -Xcc -fshort-enums -Xcc -fno-pic -Xcc -fno-pie -Xcc -I -Xcc /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include -DSPIKE008_EXACT_CALLABLE -DSPIKE008_NO_THROW_VALUES -Xcc -mcpu=cortex-m4 -Xcc -mthumb -Xcc -mabi=aapcs -Xcc -mfpu=fpv4-sp-d16 -Xcc -mtp=soft -Xcc -DKERNEL -Xcc -D__ZEPHYR__=1 -Xcc -D__LINUX_ERRNO_EXTENSIONS__ -Xcc -DPICOLIBC_DOUBLE_PRINTF_SCANF -Xcc -D_POSIX_THREAD_SAFE_FUNCTIONS=200809L -Xcc -DZVFS_OPEN_SIZE=0 -Xcc -D__PROGRAM_START -Xcc -DNRF52840_XXAA -Xcc -DNRF54L_CONFIGURATION_56_ENABLE=0 -Xcc -DK_HEAP_MEM_POOL_SIZE=0 -output-file-map CMakeFiles/app_swift.dir//output-file-map.json -emit-module -emit-module-path app_swift.swiftmodule -I /Users/eugene/work/GiftUI/.build/nrf52840/spike-008-exact-callable/zephyr/include/generated/zephyr -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/include -I /Users/eugene/work/GiftUI/.build/nrf52840/spike-008-exact-callable/zephyr/include/generated -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/soc/nordic -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/lib/libc/picolibc/include -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/lib/libc/common/include -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/lib/posix/c_lib_ext/getopt -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/lib/midi2/. -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/soc/nordic/nrf52/. -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/soc/nordic/common/. -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/cmsis_6/CMSIS/Core/Include -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/modules/cmsis_6/. -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/include -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/mdk -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/modules/hal_nordic/nrfx/. /Users/eugene/work/GiftUI/experiments/spike-008-spec-012-exact-canvas-declarations/Candidate.swift
+49:/Users/eugene/work/GiftUI/experiments/spike-008-spec-012-exact-canvas-declarations/Candidate.swift:223:13: error: overlapping accesses to 'context', but modification requires exclusive access [#ExclusivityViolation]
+50-221 |     ) throws {
+51-222 | #if SPIKE008_EXACT_CALLABLE
+52-223 |         try context.withPath { path in
+53:    |             `- error: overlapping accesses to 'context', but modification requires exclusive access [#ExclusivityViolation]
+54-224 |             try path.move(to: origin)
+55-225 |             if tag == .throwingTrace {
+56-    :
+57-231 |             }
+58-232 |             try path.addLine(to: Point(x: size.width, y: size.height))
+59-233 |             try context.stroke(
+60:    |                 `- note: conflicting access is here
+61-234 |                 path,
+62-235 |                 with: .color(color),
+63-
+64-[#ExclusivityViolation]: <https://docs.swift.org/compiler/documentation/diagnostics/exclusivity-violation>

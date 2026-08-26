@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/experiments/spike-008-spec-012-exact-canvas-declarations/IllegalPathEscape.swift:2:17: error: instance method 'withPath' requires that 'Path' conform to 'Copyable'
+1 | func illegalPathEscape(_ context: inout GraphicsContext) throws -> Path {
+2 |     try context.withPath { path in
+  |                 `- error: instance method 'withPath' requires that 'Path' conform to 'Copyable'
+3 |         path
+4 |     }
+
+/Users/eugene/work/GiftUI/experiments/spike-008-spec-012-exact-canvas-declarations/Candidate.swift:146:26: note: 'where Result: Copyable' is implicit here
+144 |     }
+145 |
+146 |     public mutating func withPath<Result>(
+    |                          `- note: 'where Result: Copyable' is implicit here
+147 |         _ body: (inout Path) throws -> Result
+148 |     ) throws -> Result {

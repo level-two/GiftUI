@@ -1,0 +1,7 @@
+/Users/eugene/work/GiftUI/experiments/spike-008-spec-012-exact-canvas-declarations/IllegalPathCopy.swift:1:24: error: 'path' is borrowed and cannot be consumed
+1 | func illegalPathCopy(_ path: borrowing Path) {
+  |                        `- error: 'path' is borrowed and cannot be consumed
+2 |     let copy = path
+  |                `- note: consumed here
+3 |     _ = consume copy
+4 | }

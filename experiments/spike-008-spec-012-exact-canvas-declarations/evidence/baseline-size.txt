@@ -1,0 +1,31 @@
+/Users/eugene/work/GiftUI/.build/nrf52840/spike-008-baseline/zephyr/zephyr.elf  :
+section                           size        addr
+rom_start                          256           0
+text                             22412         256
+.ARM.exidx                           8       22668
+initlevel                           56       22676
+device_area                        128       22732
+sw_isr_table                       384       22860
+gpio_driver_api_area                36       23244
+clock_control_driver_api_area       28       23280
+uart_driver_api_area                12       23308
+tbss                                 4       23320
+rodata                            2384       23328
+.swift_modhash                      16       25712
+.ramfunc                             0   536870912
+datas                               40   536870912
+device_states                        8   536870952
+.comment                            32           0
+.debug_aranges                    4376           0
+.debug_info                     230543           0
+.debug_abbrev                    39091           0
+.debug_line                     124685           0
+.debug_frame                     10252           0
+.debug_str                       45118           0
+.debug_loc                      101924           0
+.debug_ranges                    18064           0
+.ARM.attributes                     60           0
+.last_section                        4       25776
+bss                               1021   536870960
+noinit                            4864   536872064
+Total                           605806

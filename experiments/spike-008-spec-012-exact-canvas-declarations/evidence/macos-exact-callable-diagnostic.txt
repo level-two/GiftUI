@@ -1,0 +1,16 @@
+/Users/eugene/work/GiftUI/experiments/spike-008-spec-012-exact-canvas-declarations/Candidate.swift:223:13: error: overlapping accesses to 'context', but modification requires exclusive access [#ExclusivityViolation]
+221 |     ) throws {
+222 | #if SPIKE008_EXACT_CALLABLE
+223 |         try context.withPath { path in
+    |             `- error: overlapping accesses to 'context', but modification requires exclusive access [#ExclusivityViolation]
+224 |             try path.move(to: origin)
+225 |             if tag == .throwingTrace {
+    :
+231 |             }
+232 |             try path.addLine(to: Point(x: size.width, y: size.height))
+233 |             try context.stroke(
+    |                 `- note: conflicting access is here
+234 |                 path,
+235 |                 with: .color(color),
+
+[#ExclusivityViolation]: <https://docs.swift.org/compiler/documentation/diagnostics/exclusivity-violation>
