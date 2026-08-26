@@ -14,6 +14,7 @@ related_rfcs:
 related_adrs:
   - ADR-005
   - ADR-008
+  - ADR-032
 related_specs:
   - SPEC-006
   - SPEC-007

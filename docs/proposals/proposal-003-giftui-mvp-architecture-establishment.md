@@ -31,6 +31,7 @@ related_adrs:
   - ADR-021
   - ADR-022
   - ADR-023
+  - ADR-032
 related_specs:
   - SPEC-002
   - SPEC-003
