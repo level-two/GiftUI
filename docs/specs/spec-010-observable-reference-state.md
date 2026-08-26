@@ -2,7 +2,7 @@
 id: SPEC-010
 feature: observable-reference-state
 title: Observable Reference State Contract
-status: draft
+status: review
 authors:
   - codex
 created: 2026-08-26
@@ -31,6 +31,7 @@ related_future_work:
 related_explorations: []
 related_spikes:
   - SPIKE-003
+  - SPIKE-006
 supersedes: []
 superseded_by: []
 target_milestone: MVP
@@ -38,7 +39,8 @@ target_milestone: MVP
 
 # SPEC-010: Observable Reference State Contract
 
-> **Draft status:** This contract is ready for review but remains
+> **Review status:** The governing Proposal, approved RFC, and accepted ADRs
+> are authoritative prerequisites. This Specification remains
 > non-authoritative until explicit maintainer approval.
 
 ## Summary
@@ -379,12 +381,21 @@ equivalence. Connected hardware is not required for Specification approval.
 SPIKE-003 is feasibility evidence only. Generated typed slots or a dynamic
 table are both suitable when they preserve this contract.
 
+SPIKE-006 provides hardware-free compile/link evidence for the exact public
+declaration spellings in this review. Against a configuration-equivalent
+nRF52840 baseline, its exercised fixture added 16 linked flash bytes and zero
+linked RAM bytes, retained no allocator entry point with both configured heaps
+at zero, and preserved the ARMv7E-M VFP calling convention. Its model, sink
+route, attachment value, and optimized resource delta remain disposable
+evidence rather than a selected production representation or capacity.
+
 ## Open Issues
 
-The Embedded Swift compile/link evidence for the exact declarations above must
-be checked in before review closes. SPEC-001 remains responsible for its exact
-application fact cases and production capacities; those facts instantiate this
-generic admission contract without blocking its independent fixtures.
+No open Specification issue blocks review. SPIKE-006 resolves the Embedded
+Swift compile/link question for the exact declarations above. SPEC-001 remains
+responsible for its exact application fact cases and production capacities;
+those facts instantiate this generic admission contract without blocking its
+independent fixtures or review.
 
 ## Deferred and Follow-up Work
 
@@ -401,3 +412,4 @@ generic admission contract without blocking its independent fixtures.
 - [ADR-027](../adrs/adr-027-bounded-presentation-fact-admission.md)
 - [SPEC-009](spec-009-execution-cycle-and-frame-handoff.md)
 - [SPIKE-003](../spikes/spike-003-portable-observable-reference-state-feasibility.md)
+- [SPIKE-006](../spikes/spike-006-spec-010-embedded-declarations.md)
