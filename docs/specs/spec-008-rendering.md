@@ -243,10 +243,10 @@ but MUST NOT duplicate, replace, or profile-specialize lowering behavior.
 `GiftUIRenderLowering` MUST NOT own run-cycle state, frame identity,
 publication, backend handoff, or runtime-profile selection.
 
-This dependency is independent of RFC-010's unresolved layout-input edge:
+This dependency is independent of ADR-032's accepted layout-input edge:
 `GiftUIRenderLowering` consumes successful semantic and layout results but does
-not decide whether `GiftUILayout` imports `GiftUISemanticCore` or consumes a
-layout-owned adapter.
+not alter the one-way `GiftUILayout -> GiftUISemanticCore` dependency or either
+module's authority.
 
 The rendering-owned edges are:
 

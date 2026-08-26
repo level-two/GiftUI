@@ -18,6 +18,7 @@ related_adrs:
   - ADR-006
   - ADR-008
   - ADR-013
+  - ADR-032
 related_specs:
   - SPEC-002
   - SPEC-003
@@ -113,9 +114,9 @@ dynamic, and nRF52840/Zephyr static configurations.
 - [RFC-004](../rfcs/rfc-004-run-cycle-and-frame-transaction.md) is approved.
 - [ADR-005](../adrs/adr-005-semantic-layout-render-boundary.md),
   [ADR-006](../adrs/adr-006-shared-semantics-runtime-profiles.md),
-  [ADR-008](../adrs/adr-008-module-dependency-graph-and-package-topology.md), and
-  [ADR-013](../adrs/adr-013-provenance-validated-input-admission.md) are
-  accepted.
+  [ADR-008](../adrs/adr-008-module-dependency-graph-and-package-topology.md),
+  [ADR-013](../adrs/adr-013-provenance-validated-input-admission.md), and
+  [ADR-032](../adrs/adr-032-semantic-core-owned-layout-input.md) are accepted.
 - [SPEC-002](spec-002-portable-foundation.md) and
   [SPEC-003](spec-003-failure-outcomes-and-containment.md) are approved.
 
@@ -153,6 +154,10 @@ the reason this contract is required now.
   pointer capture to pair this Specification's stable semantic action identity
   with a downstream committed action generation, without retaining a callable
   payload, and requires exact pair revalidation before activation.
+- **ADR-032 — Semantic-Core-Owned Borrowed Layout Input:** permits
+  `GiftUILayout` to import Semantic Core's narrow read-only layout-facing view
+  while leaving expansion, identity, ordering, and semantic-result ownership
+  in `GiftUISemanticCore`. SPEC-007 owns the exact view declarations.
 
 ## Terminology
 
@@ -261,8 +266,12 @@ seam. It MAY depend on `GiftUI`. It MUST NOT import `GiftUIFailureCore`,
 backend, platform, driver, OS/RTOS, HAL, hardware, or optional diagnostic
 implementation.
 
-`GiftUISemanticCore` MUST expose only the closed local expansion result and
-error vocabulary below. The first runtime/owner adapter that imports both
+`GiftUISemanticCore` MUST expose only the closed local expansion result, the
+error vocabulary below, and ADR-032's package-scoped read-only layout-facing
+view over a complete successful result. That view MUST NOT add another
+expansion result, identity relation, ordering rule, mutable semantic operation,
+or retained layout-owned representation; SPEC-007 defines its exact borrowed
+surface. The first runtime/owner adapter that imports both
 `GiftUISemanticCore` and `GiftUIFailureCore` MUST map a local error to the
 normative SPEC-003 fact in `Error Handling`. Neither failure module may import
 `GiftUI` or `GiftUISemanticCore` to perform that mapping.
@@ -1072,6 +1081,7 @@ the separately gated post-MVP declarative-extensibility cluster.
 - [ADR-006: Shared Semantics Across Runtime Profiles](../adrs/adr-006-shared-semantics-runtime-profiles.md)
 - [ADR-008: Module Dependency Graph and MVP Package Topology](../adrs/adr-008-module-dependency-graph-and-package-topology.md)
 - [ADR-013: Provenance-Validated Presentation-Coupled Input](../adrs/adr-013-provenance-validated-input-admission.md)
+- [ADR-032: Semantic-Core-Owned Borrowed Layout Input](../adrs/adr-032-semantic-core-owned-layout-input.md)
 - [SPEC-002: Portable Foundation](spec-002-portable-foundation.md)
 - [SPEC-003: Failure Outcomes and Containment](spec-003-failure-outcomes-and-containment.md)
 - [FW-017: Public Binding Abstraction](../future-work/fw-017-public-binding-abstraction.md)

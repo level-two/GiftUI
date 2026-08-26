@@ -16,6 +16,7 @@ related_rfcs:
 related_adrs:
   - ADR-005
   - ADR-006
+  - ADR-032
   - ADR-009
   - ADR-021
   - ADR-023
@@ -56,7 +57,8 @@ This contract applies to macOS dynamic, macOS static, Raspberry Pi 1/Linux
 dynamic, and nRF52840/Zephyr static configurations. It owns:
 
 - Rank 1 client declarations and modifiers required by MVP Scope;
-- deterministic measurement and placement from a semantic-child adapter;
+- deterministic measurement and placement from Semantic Core's borrowed
+  layout-facing view;
 - canonical left-to-right text measurement and positioned glyph production;
 - finite layout limits, atomic failure, and a recording-layout seam; and
 - logical bounds used later by rendering and hit-map production.
@@ -86,7 +88,7 @@ dynamic, and nRF52840/Zephyr static configurations. It owns:
 ### Lifecycle prerequisites
 
 - PROPOSAL-003 is accepted; RFC-002 and RFC-003 are approved.
-- ADR-005, ADR-006, ADR-009, ADR-021, and ADR-023 are accepted.
+- ADR-005, ADR-006, ADR-009, ADR-021, ADR-023, and ADR-032 are accepted.
 - MVP Scope requires stacks, spacer, spacing, alignment, padding, frame, text,
   and shared logical behavior across all four configurations.
 
@@ -110,6 +112,10 @@ defined here. Approval of SPEC-008 MUST NOT precede approval of this contract.
   GiftUI above a backend-neutral render boundary.
 - **ADR-006** requires profile-equivalent layout, operation order, identity,
   and deterministic failure meaning.
+- **ADR-032** makes `GiftUISemanticCore` the owner of one narrow borrowed
+  layout-facing view and requires the direct one-way
+  `GiftUILayout -> GiftUISemanticCore` dependency without transferring
+  semantic or layout authority.
 - **ADR-009** fixes checked integer geometry and excludes a general solver.
 - **ADR-021** makes layout the sole text geometry, line-breaking, glyph-choice,
   measurement, and logical-position authority.
@@ -237,27 +243,50 @@ invalid. Fixed `width` or `height` is both the minimum and maximum on that axis.
 
 `GiftUI` owns only the public declarations and typed semantic payloads.
 `GiftUILayout` owns measurement, placement, canonical text layout, layout
-limits/results, and recording fixtures. [RFC-010](../rfcs/rfc-010-layout-semantic-core-adapter-boundary.md)
-evaluates whether it may depend directly on `GiftUISemanticCore` or must retain
-RFC-002's layout-owned semantic-child adapter. Until an accepted ADR resolves
-that choice, this draft MUST NOT establish either dependency as authoritative
-and cannot pass its Specification approval gate. In either direction,
-`GiftUILayout` MUST depend on `GiftUI` and `GiftUITextResources` and MUST NOT
-import render, runtime-profile, backend, capability, platform, driver,
-OS/RTOS, HAL, or hardware modules.
+limits/results, and recording fixtures. Under
+[ADR-032](../adrs/adr-032-semantic-core-owned-layout-input.md),
+`GiftUISemanticCore` owns one package-scoped, read-only layout-facing view over
+a complete successful semantic result, and `GiftUILayout` MUST import and
+synchronously borrow that view. `GiftUISemanticCore` MUST NOT import
+`GiftUILayout`. `GiftUILayout` MUST also depend on `GiftUI` and
+`GiftUITextResources` and MUST NOT import render, runtime-profile, backend,
+capability, platform, driver, OS/RTOS, HAL, or hardware modules.
+
+The borrowed view MUST expose only exact structural or modifier-scope
+identity, semantic occurrence kind, typed layout-relevant payloads, canonical
+ordered children, ordered layout modifier scopes and payloads, ordinary
+semantic identity for action-bearing occurrences without callable payloads or
+committed generations, and borrowed text content associated with its semantic
+occurrence. Its concrete storage MAY differ across recording, static, and
+dynamic producers, but identity equality, ordering, and payload meaning MUST
+be equal. Layout MUST NOT retain any view, node, payload, identity, declaration
+value, text source, or action after the layout entry point returns.
 
 `GiftUILayout` MUST NOT import `GiftUIFailureCore`. The first owner adapter that
 knows both layout errors and SPEC-003 facts performs the mapping under Error
 Handling. `GiftUIRenderCore` is a sibling and MUST NOT be imported by layout.
 `GiftUIRenderLowering` may consume successful semantic and layout results as
 SPEC-008's shared higher lowering owner, but may not grant rendering authority
-to layout or layout authority to rendering. That consumer edge does not resolve
-RFC-010's separate question about the input edge into `GiftUILayout`.
+to layout or layout authority to rendering. That independent consumer edge
+does not alter ADR-032's input edge into `GiftUILayout`.
 
 ## Types / APIs
 
 The package SPI below is normative in meaning. Concrete workspace and sink
 storage may differ by profile.
+
+`GiftUISemanticCore` MUST own the package-SPI semantic layout-view protocol and
+its closed layout primitive/modifier payload vocabulary. The protocol MUST use
+one associated `Equatable & Sendable` identity type and bounded `UInt16`
+counts/indices to provide: one root identity; optional semantic occurrence kind
+and typed payload for an identity; canonical ordered child count and lookup;
+canonical ordered layout-modifier count, modifier-scope identity, and typed
+payload lookup; and borrowed text scalar count and indexed scalar lookup for a
+text occurrence. Invalid identities or indices MUST return `nil`; they MUST NOT
+trap, clamp, or alias another occurrence. Exact Swift spellings may change
+while this Specification is a draft, but no conforming surface may omit one of
+these operations or expose runtime storage, actions, rendering state, backend
+objects, capabilities, target identity, or mutable semantic behavior.
 
 ```swift
 package struct LayoutLimits: Equatable, Sendable {
@@ -489,7 +518,12 @@ contract's results for the admitted MVP surface.
 - The same corpus through dynamic and static workspaces MUST produce byte-for-
   byte equal canonical recording transcripts and summaries.
 - Dependency tests MUST reject layout imports of render/runtime/backend/platform
-  modules and backend attempts to import semantic/layout authority.
+  modules and backend attempts to import semantic/layout authority. They MUST
+  prove the exact one-way `GiftUILayout -> GiftUISemanticCore -> GiftUI` edge
+  and reject the reverse edge.
+- Borrow and allocation fixtures MUST prove layout retains no semantic view,
+  node, payload, identity, text source, or declaration storage; static
+  traversal adds no heap allocation or second complete semantic graph.
 
 ## Acceptance Criteria
 
@@ -502,8 +536,14 @@ contract's results for the admitted MVP surface.
   reentrancy path returns the specified error and publishes no partial result.
 - [ ] Dynamic and static fixtures produce identical recording output and
   failure mappings; static attempts allocate zero heap bytes after assembly.
-- [ ] Import-graph tests enforce `GiftUILayout` ownership and sibling separation
-  from `GiftUIRenderCore`.
+- [ ] Import-graph tests enforce the exact one-way
+  `GiftUILayout -> GiftUISemanticCore -> GiftUI` dependency, preserve sibling
+  separation from `GiftUIRenderCore`, and reject reverse, runtime, backend, and
+  platform imports.
+- [ ] Recording, static, and dynamic semantic layout-view fixtures expose equal
+  identity relations, child/modifier order, typed payload meaning, and text
+  content; borrow instrumentation proves no retained semantic input, and the
+  static path adds no heap allocation or second complete semantic graph.
 - [ ] The Signal Analyzer layout fixture fits declared limits and exercises
   vertical, horizontal, overlay, spacer, spacing, leading/center alignment,
   padding, fixed/min/max/infinite frames, and canonical text.
@@ -516,10 +556,10 @@ canonical text metrics, ZStack/spacer/modifiers, and caller-owned bounds.
 
 ## Open Issues
 
-- [RFC-010](../rfcs/rfc-010-layout-semantic-core-adapter-boundary.md) must be
-  approved and its selected dependency direction extracted into an accepted
-  ADR before this Specification can normatively define its semantic-child
-  adapter, layout entry point, or final `GiftUILayout` imports.
+No architecture issue remains for the semantic-to-layout input edge. RFC-010
+is approved and ADR-032 is accepted. Review must still finalize the exact Swift
+spellings of the borrowed protocol and closed payload cases while preserving
+the complete normative surface and dependency constraints above.
 
 A request for priority-based compression, baseline alignment, or a new
 geometry model is architectural or post-MVP work and must not be decided here.
@@ -538,6 +578,8 @@ geometry model is architectural or post-MVP work and must not be decided here.
 - [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
 - [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-003](../rfcs/rfc-003-deterministic-text-rendering-architecture.md)
+- [RFC-010](../rfcs/rfc-010-layout-semantic-core-adapter-boundary.md)
+- [ADR-032](../adrs/adr-032-semantic-core-owned-layout-input.md)
 - [MVP Scope](../MVP_SCOPE.md)
 - [MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
 - [Legacy GiftUI Framework Specification](../GiftUI_Framework_Spec.md)
