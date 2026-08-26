@@ -14,3 +14,14 @@ define acceptance criteria, and update `docs/features.yaml`.
 Optional optimizations or extensions discovered during authoring belong in
 linked [Future Work](../future-work/README.md), not in the approved contract or
 its required acceptance criteria.
+
+## Current portfolio
+
+- SPEC-001 — Signal Analyzer Reference Application Contract (`review`)
+- SPEC-002 through SPEC-009 — approved Wave 1–4 contracts
+- [SPEC-010](spec-010-observable-reference-state.md) — Observable Reference
+  State Contract (`draft`)
+- [SPEC-011](spec-011-interaction.md) — Button Interaction and Activation
+  Contract (`draft`)
+- [SPEC-012](spec-012-canvas-path-stroke-drawing.md) — Canvas, Path, and Stroke
+  Drawing Contract (`draft`)

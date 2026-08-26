@@ -32,9 +32,9 @@ ADR-002 is superseded by ADR-027 and is not current authority. RFC-007 remains
 `draft`; its delegated-service direction and FW-009 MUST NOT become a required
 MVP Specification dependency.
 
-The `canvas-drawing` feature is at the decision stage with approved RFC-009 and
-accepted ADR-028 through ADR-031. An approved drawing Specification is its next
-missing gate.
+The `canvas-drawing` feature completed its decision stage with approved RFC-009
+and accepted ADR-028 through ADR-031. Wave 5 drafts SPEC-010 through SPEC-012
+now exist; each remains non-authoritative until review and explicit approval.
 
 ## Boundary Rules
 
@@ -105,6 +105,17 @@ handoff, refusal convergence, and presentation-coupled input admission
 machinery. It leaves observable-state storage, public interaction declarations
 and action lowering, concrete runtime-profile storage, backend realization,
 and host policy values to their downstream portfolio contracts.
+
+Wave 5 has entered drafting with these immutable identities:
+
+| Candidate key | Allocated Specification | Lifecycle status |
+| --- | --- | --- |
+| `OBSERVABLE` | `SPEC-010` | `draft` |
+| `INTERACTION` | `SPEC-011` | `draft` |
+| `DRAWING` | `SPEC-012` | `draft` |
+
+The three drafts may be reviewed independently. None may be treated as an
+implementation contract until its own approval gate closes.
 
 Candidate keys are planning labels, not reserved Specification IDs.
 

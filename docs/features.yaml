@@ -73,6 +73,7 @@ features:
       - SPEC-007
       - SPEC-008
       - SPEC-009
+      - SPEC-011
     dependencies:
       - giftui-mvp-baseline
     milestone: MVP
@@ -95,7 +96,7 @@ features:
     milestone: MVP
   observable-reference-state:
     title: Observable Reference State
-    status: decision
+    status: specification
     proposal:
       - PROPOSAL-005
     rfcs:
@@ -104,13 +105,14 @@ features:
       - ADR-024
       - ADR-025
       - ADR-026
-    specs: []
+    specs:
+      - SPEC-010
     dependencies:
       - giftui-mvp-architecture
     milestone: MVP
   canvas-drawing:
     title: Canvas, Path, and Stroke Drawing
-    status: decision
+    status: specification
     proposal:
       - PROPOSAL-006
     rfcs:
@@ -120,7 +122,8 @@ features:
       - ADR-029
       - ADR-030
       - ADR-031
-    specs: []
+    specs:
+      - SPEC-012
     dependencies:
       - giftui-mvp-architecture
     milestone: MVP

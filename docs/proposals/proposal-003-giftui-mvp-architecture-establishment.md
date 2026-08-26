@@ -40,6 +40,7 @@ related_specs:
   - SPEC-007
   - SPEC-008
   - SPEC-009
+  - SPEC-011
 supersedes: []
 superseded_by: []
 target_milestone: MVP
