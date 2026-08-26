@@ -2,7 +2,7 @@
 id: SPEC-008
 feature: giftui-mvp-architecture
 title: Normalized Rendering Contract
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-25
@@ -42,6 +42,11 @@ target_milestone: MVP
 
 # SPEC-008: Normalized Rendering Contract
 
+> **Approval status:** Approved by explicit maintainer authorization. The
+> governing Proposal and RFCs, accepted architectural decisions, and approved
+> Foundation, Failure, Text Resource, Declarative, and Layout contracts are
+> authoritative prerequisites.
+
 ## Summary
 
 This Specification defines the Wave 3 rendering contract: portable bounded
@@ -52,9 +57,7 @@ operations.
 It also defines clipping, whole-root damage, bounded production, and the
 recording sink used to verify rendering without rasterization.
 
-This document is in `review`. It remains non-authoritative and does not
-authorize implementation until explicit human approval completes the
-Specification gate.
+This document is `approved` and authorizes implementation under this contract.
 
 ## Scope
 

@@ -2,7 +2,7 @@
 id: SPEC-007
 feature: giftui-mvp-architecture
 title: Proposal-Based Layout Contract
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-25
@@ -40,6 +40,11 @@ target_milestone: MVP
 
 # SPEC-007: Proposal-Based Layout Contract
 
+> **Approval status:** Approved by explicit maintainer authorization. The
+> governing Proposal and RFCs, accepted architectural decisions, and approved
+> Foundation, Failure, Text Resource, and Declarative contracts are
+> authoritative prerequisites.
+
 ## Summary
 
 This Specification defines the Wave 3 layout contract for the Signal Analyzer:
@@ -49,8 +54,7 @@ constraints, canonical text measurement, resolved hit geometry, and bounded
 checked layout production. It defines one profile-neutral result and recording
 seam; it does not define rendering, input dispatch, or runtime storage.
 
-This document is in `review`. It remains non-authoritative until explicit
-human approval completes the Specification gate.
+This document is `approved` and authorizes implementation under this contract.
 
 ## Scope
 

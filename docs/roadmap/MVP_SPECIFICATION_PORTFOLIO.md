@@ -79,12 +79,12 @@ resource identities, compatible resource views, and resource lifetimes;
 SPEC-006 owns declarative expansion, ordered modifiers, structural identity,
 and action identity. Neither Specification depends on or redefines the other.
 
-Wave 3 contract drafting and review are active with these immutable identities:
+Wave 3 has completed coordinated approval with these immutable identities:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `LAYOUT` | `SPEC-007` | `review` |
-| `RENDERING` | `SPEC-008` | `review` |
+| `LAYOUT` | `SPEC-007` | `approved` |
+| `RENDERING` | `SPEC-008` | `approved` |
 
 SPEC-007 owns proposal-based measurement, placement, canonical text geometry,
 and resolved occurrence bounds. SPEC-008 owns public text/color/style meaning,
