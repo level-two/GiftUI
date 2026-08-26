@@ -6,12 +6,13 @@ status: draft
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-08-25
+updated: 2026-08-26
 proposal:
   - PROPOSAL-003
 related_rfcs:
   - RFC-002
   - RFC-003
+  - RFC-010
 related_adrs:
   - ADR-005
   - ADR-006
@@ -236,10 +237,14 @@ invalid. Fixed `width` or `height` is both the minimum and maximum on that axis.
 
 `GiftUI` owns only the public declarations and typed semantic payloads.
 `GiftUILayout` owns measurement, placement, canonical text layout, layout
-limits/results, and recording fixtures. It MUST depend on `GiftUI`,
-`GiftUISemanticCore`, and `GiftUITextResources`; it MUST NOT import render,
-runtime-profile, backend, capability, platform, driver, OS/RTOS, HAL, or
-hardware modules.
+limits/results, and recording fixtures. [RFC-010](../rfcs/rfc-010-layout-semantic-core-adapter-boundary.md)
+evaluates whether it may depend directly on `GiftUISemanticCore` or must retain
+RFC-002's layout-owned semantic-child adapter. Until an accepted ADR resolves
+that choice, this draft MUST NOT establish either dependency as authoritative
+and cannot pass its Specification approval gate. In either direction,
+`GiftUILayout` MUST depend on `GiftUI` and `GiftUITextResources` and MUST NOT
+import render, runtime-profile, backend, capability, platform, driver,
+OS/RTOS, HAL, or hardware modules.
 
 `GiftUILayout` MUST NOT import `GiftUIFailureCore`. The first owner adapter that
 knows both layout errors and SPEC-003 facts performs the mapping under Error
@@ -509,7 +514,12 @@ canonical text metrics, ZStack/spacer/modifiers, and caller-owned bounds.
 
 ## Open Issues
 
-None. A request for priority-based compression, baseline alignment, or a new
+- [RFC-010](../rfcs/rfc-010-layout-semantic-core-adapter-boundary.md) must be
+  approved and its selected dependency direction extracted into an accepted
+  ADR before this Specification can normatively define its semantic-child
+  adapter, layout entry point, or final `GiftUILayout` imports.
+
+A request for priority-based compression, baseline alignment, or a new
 geometry model is architectural or post-MVP work and must not be decided here.
 
 ## Deferred and Follow-up Work
