@@ -2,7 +2,7 @@
 id: ADR-032
 feature: giftui-mvp-architecture
 title: Semantic-Core-Owned Borrowed Layout Input
-status: proposed
+status: accepted
 authors:
   - codex
 created: 2026-08-26
@@ -31,7 +31,7 @@ target_milestone: MVP
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 
