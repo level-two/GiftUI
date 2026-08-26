@@ -84,7 +84,7 @@ Wave 3 contract drafting and review are active with these immutable identities:
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
 | `LAYOUT` | `SPEC-007` | `review` |
-| `RENDERING` | `SPEC-008` | `draft` |
+| `RENDERING` | `SPEC-008` | `review` |
 
 SPEC-007 owns proposal-based measurement, placement, canonical text geometry,
 and resolved occurrence bounds. SPEC-008 owns public text/color/style meaning,

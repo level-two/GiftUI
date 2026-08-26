@@ -2,7 +2,7 @@
 id: SPEC-008
 feature: giftui-mvp-architecture
 title: Normalized Rendering Contract
-status: draft
+status: review
 authors:
   - codex
 created: 2026-08-25
@@ -52,8 +52,9 @@ operations.
 It also defines clipping, whole-root damage, bounded production, and the
 recording sink used to verify rendering without rasterization.
 
-This document is a `draft`. It does not authorize implementation until it has
-completed human review and approval.
+This document is in `review`. It remains non-authoritative and does not
+authorize implementation until explicit human approval completes the
+Specification gate.
 
 ## Scope
 
