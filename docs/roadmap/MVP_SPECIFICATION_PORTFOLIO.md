@@ -79,6 +79,18 @@ resource identities, compatible resource views, and resource lifetimes;
 SPEC-006 owns declarative expansion, ordered modifiers, structural identity,
 and action identity. Neither Specification depends on or redefines the other.
 
+Wave 3 has entered drafting with these immutable identities:
+
+| Candidate key | Allocated Specification | Lifecycle status |
+| --- | --- | --- |
+| `LAYOUT` | `SPEC-007` | `draft` |
+| `RENDERING` | `SPEC-008` | `draft` |
+
+SPEC-007 owns proposal-based measurement, placement, canonical text geometry,
+and resolved occurrence bounds. SPEC-008 owns public text/color/style meaning
+and normalized ordered render operations. The physical layout and render-core
+modules remain siblings; a coordinator-owned adapter joins their contracts.
+
 Candidate keys are planning labels, not reserved Specification IDs.
 
 | Key                   | Candidate contract                                                                                                                                                                                   | Governing decisions                                                                           | Draft prerequisites                                                   | Independent acceptance seam                                                                                                                                                                                                  |

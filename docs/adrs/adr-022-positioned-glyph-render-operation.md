@@ -21,6 +21,7 @@ related_adrs:
   - ADR-023
 related_specs:
   - SPEC-005
+  - SPEC-008
 related_future_work: []
 related_explorations: []
 related_spikes: []

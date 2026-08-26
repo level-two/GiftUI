@@ -6,10 +6,11 @@ status: captured
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-21
+updated: 2026-08-25
 source:
   - RFC-002
   - ADR-005
+  - SPEC-008
 related_future_work:
   - FW-019
 related_explorations: []

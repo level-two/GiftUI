@@ -11,6 +11,7 @@ source:
   - RFC-003
   - ADR-023
   - SPEC-005
+  - SPEC-008
 related_future_work: []
 related_explorations: []
 related_spikes: []
