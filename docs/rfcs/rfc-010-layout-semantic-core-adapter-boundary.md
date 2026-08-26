@@ -18,6 +18,7 @@ related_adrs:
 related_specs:
   - SPEC-006
   - SPEC-007
+  - SPEC-008
 related_future_work: []
 related_explorations: []
 related_spikes: []

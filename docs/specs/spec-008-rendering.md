@@ -313,6 +313,7 @@ package SPI owned by `GiftUIRenderCore`.
 ```swift
 package enum SemanticRenderScope: Equatable, Sendable {
     case structural
+    case clipBoundary
     case text
     case foregroundStyle(Color)
     case background(Color)
@@ -322,8 +323,9 @@ package protocol SemanticRenderView {
     associatedtype Identity: Equatable, Sendable
 
     var rootIdentity: Identity { get }
-    var scopeCount: UInt16 { get }
+    var semanticScopeCount: UInt16 { get }
     func scope(at identity: Identity) -> SemanticRenderScope?
+    func layoutIdentity(for identity: Identity) -> Identity?
     func childCount(of identity: Identity) -> UInt16?
     func child(of identity: Identity, at index: UInt16) -> Identity?
 }
@@ -349,11 +351,10 @@ package protocol ResolvedRenderLayoutView {
     associatedtype Identity: Equatable, Sendable
 
     var rootIdentity: Identity { get }
-    var scopeCount: UInt16 { get }
+    var layoutScopeCount: UInt16 { get }
     var rootBounds: Rect { get }
     func bounds(of identity: Identity) -> Rect?
     func clip(of identity: Identity) -> Rect?
-    func clipDepth(of identity: Identity) -> UInt16?
     func textLineCount(of identity: Identity) -> UInt16?
     func textLine(of identity: Identity, at index: UInt16)
         -> ResolvedRenderTextLine?
@@ -388,6 +389,11 @@ package struct RenderPlanHeader: Equatable, Sendable {
     package let operationCount: UInt16
     package let positionedGlyphCount: UInt16
     package let maximumObservedClipDepth: UInt16
+    package init(surfaceBounds: Rect,
+                 damageBounds: Rect,
+                 operationCount: UInt16,
+                 positionedGlyphCount: UInt16,
+                 maximumObservedClipDepth: UInt16)
 }
 
 package struct PositionedGlyph: Equatable, Sendable {
@@ -400,6 +406,7 @@ package struct FillRectOperation: Equatable, Sendable {
     package let bounds: Rect
     package let clip: Rect
     package let color: Color
+    package init(bounds: Rect, clip: Rect, color: Color)
 }
 
 package struct PositionedGlyphOperationHeader: Equatable, Sendable {
@@ -407,6 +414,10 @@ package struct PositionedGlyphOperationHeader: Equatable, Sendable {
     package let clip: Rect
     package let color: Color
     package let glyphCount: UInt16
+    package init(instance: FontInstanceID,
+                 clip: Rect,
+                 color: Color,
+                 glyphCount: UInt16)
 }
 
 package enum RenderProductionError: UInt8, Equatable, Sendable {
@@ -475,15 +486,30 @@ above. These consumer views are package SPI; their concrete storage MAY differ
 by profile, but their identity equality, lookup results, and ordering MUST be
 identical.
 
-Every identity and index below its declared count MUST resolve. The semantic
-and layout root identities and scope counts MUST be equal. `bounds`, `clip`,
-and `clipDepth` MUST resolve for every semantic scope. For a transparent or
-render-only scope, they are exactly the bounds, clip, and depth of its one
-flattened layout content scope. A text scope provides lines in increasing
-`lineIndex`; its glyph lookup uses increasing occurrence-wide `glyphIndex`.
-Missing in-range data, unequal roots or counts, duplicate identity, a render
-modifier with other than one child, children on a text scope, or disagreement
-between line and glyph indices is `.invariantViolation`.
+Every identity and index below its declared count MUST resolve. An index at or
+above its declared count and a lookup for an identity not reachable from
+`rootIdentity` MUST return `nil` and MUST NOT inspect unowned storage.
+`layoutIdentity(for:)` returns the exact SPEC-006 identity of the resolved
+layout scope that supplies geometry for a semantic scope. A primitive or
+layout-modifier scope maps to itself; a transparent or render-only scope maps
+to its one flattened layout content scope. This is identity selection from the
+corresponding successful SPEC-006/SPEC-007 results, not translation or a new
+identity domain. The semantic root's mapping MUST equal `layout.rootIdentity`.
+Every returned mapping MUST resolve within `layoutScopeCount`, including
+`bounds` and `clip`. The traversal MUST visit exactly `semanticScopeCount`
+semantic identities. The number of distinct reachable layout identities MUST
+equal `layoutScopeCount`; repeated mappings from render-only or transparent
+scopes do not increase that number.
+
+A text scope provides lines in increasing `lineIndex`; its glyph lookup uses
+increasing occurrence-wide `glyphIndex`. Line `i` consumes the next
+`glyphCount` entries from that occurrence-wide sequence; each entry MUST name
+that line and its `glyphIndex` MUST equal the current occurrence-wide cursor.
+The sum of line glyph counts defines the occurrence's exact total glyph count.
+Missing in-range data, a missing layout mapping in a corresponding successful
+pair, duplicate identity, a render modifier with other than one child,
+children on a text scope, or disagreement between line and glyph indices is
+`.invariantViolation`.
 
 All three render limits MUST be nonzero. The totals are global to one attempt:
 
@@ -494,6 +520,13 @@ All three render limits MUST be nonzero. The totals are global to one attempt:
   with the surface/root boundary at depth one and each nested finite frame or
   text-line boundary adding one even when its intersection is unchanged or
   empty.
+
+The producer starts the semantic root at depth one, increments depth when it
+enters a `clipBoundary` scope, and counts each text line at one greater than
+its text scope's active depth. `clipBoundary` is used exactly for every
+SPEC-007 frame scope and for no padding, stack, transparent, style, background,
+or text scope. Depth is structural and MUST NOT be inferred from equal or empty
+clip rectangles.
 
 A count equal to its limit is valid; reserving the next unit fails before
 `begin` as `.capacityExhausted`. Each non-empty text line emits exactly one
@@ -525,7 +558,7 @@ Nested foreground modifiers use the innermost value. Sibling style does not
 leak. Color is an ordinary value; no capability or backend may reinterpret it.
 
 For `content.background(color)`, `FillRectOperation.bounds` is the exact
-unclipped resolved bounds returned for that background scope, and
+unclipped resolved bounds returned for that scope's `layoutIdentity`, and
 `FillRectOperation.clip` is the checked intersection of its resolved logical
 clip with `surfaceBounds`. The fill occurs immediately before every operation
 belonging to that content subtree. Nested backgrounds follow source modifier
@@ -603,7 +636,8 @@ closed value events; this notation defines event order, not a string or byte
 serialization:
 
 ```text
-begin(surfaceBounds, damageBounds, operationCount, glyphCount)
+begin(surfaceBounds, damageBounds, operationCount, glyphCount,
+      maximumObservedClipDepth)
 fill(bounds, clip, rgb)
 beginGlyphs(instance, clip, rgb, count)
 glyph(id, baseline) ...
@@ -674,8 +708,8 @@ SPEC-003 facts:
 | reentrancy violation | `reentrancyViolation` | `rendering` | `activeCycle` | `safetyNotProven` |
 | invariant violation | `invariantViolation` | `rendering` | `runtime` | `safetyNotProven` |
 
-`invalidInput` is limited to a nonzero surface origin or a semantic/layout
-root, scope-count, or identity relation that was never a corresponding pair.
+`invalidInput` is limited to a nonzero surface origin or supplied semantic and
+layout results whose semantic-root mapping does not equal the layout root.
 Failure of an in-range lookup or mutation of an allegedly successful borrowed
 result is an invariant violation. Missing or invalid text resources are
 rejected during SPEC-005 host validation or SPEC-007 layout and cannot enter
@@ -761,9 +795,10 @@ client, semantic, layout, or backend contracts.
   NUL, ASCII, degree sign, replacement scalar, `Int32.min`, `-1`, `0`, `1`, and
   `Int32.max`. They prove `Text(StaticString)` preserves an invalid marker and
   that SPEC-007 rejects it before rendering without trap, repair, or truncation.
-- Semantic/layout correlation fixtures cover unequal roots and counts, missing
-  and duplicate identities, transparent/render-only scope bounds, invalid child
-  arity, every out-of-range index, and every prohibited in-range `nil` lookup.
+- Semantic/layout correlation fixtures cover unequal roots, independent
+  semantic and layout counts, declared-count mismatches, missing and duplicate
+  identities, transparent/render-only mappings, invalid child arity, every
+  out-of-range index, and every prohibited in-range `nil` lookup.
 - Golden operation events cover nested foreground/background modifiers,
   siblings, ZStack painter order, empty/zero bounds, partial/off-surface clips,
   empty clips, unchanged nested clip intersections, whole-root damage, explicit
