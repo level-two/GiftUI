@@ -6,12 +6,13 @@ status: captured
 authors:
   - Yauheni Lychkouski
 created: 2026-08-19
-updated: 2026-08-20
+updated: 2026-08-26
 source:
   - RFC-004
   - RFC-006
   - ADR-010
   - ADR-020
+  - SPEC-009
 related_future_work:
   - FW-010
 related_explorations: []
@@ -94,5 +95,6 @@ it.
 
 - [RFC-004: Run Cycle and Frame Transaction Architecture](../rfcs/rfc-004-run-cycle-and-frame-transaction.md)
 - [RFC-006: GiftUI Capability System Architecture](../rfcs/rfc-006-capability-system-architecture.md)
+- [SPEC-009: Execution Cycle and Frame Handoff Contract](../specs/spec-009-execution-cycle-and-frame-handoff.md)
 - [FW-010: Backend and Transport Post-Handoff Recovery](fw-010-backend-transport-submission-retry.md)
 - [SPIKE-001: Tiled One-Shot Stream and Capability Compatibility Fixtures](../spikes/spike-001-tiled-one-shot-capability-fixtures.md)

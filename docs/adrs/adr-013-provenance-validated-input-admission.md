@@ -6,7 +6,7 @@ status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
-updated: 2026-08-22
+updated: 2026-08-26
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -20,6 +20,7 @@ related_adrs:
 related_specs:
   - SPEC-002
   - SPEC-006
+  - SPEC-009
 related_future_work: []
 related_explorations: []
 related_spikes: []

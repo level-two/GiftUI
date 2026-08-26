@@ -22,8 +22,8 @@ immutable ID, and registered in [the feature manifest](../features.yaml).
 
 The current authoritative inputs are:
 
-- approved RFC-001 through RFC-006, RFC-008, and RFC-009;
-- accepted ADR-001 and ADR-003 through ADR-031;
+- approved RFC-001 through RFC-006 and RFC-008 through RFC-010;
+- accepted ADR-001 and ADR-003 through ADR-032;
 - SPEC-001, the Signal Analyzer application contract, currently in `review`;
 - the established [MVP Scope](../MVP_SCOPE.md), including the four supported
   configurations and the Signal Analyzer validation progression.
@@ -92,6 +92,20 @@ shared runtime-neutral lowering, and normalized ordered render operations. The
 physical semantic, layout, and backend-facing render-core modules remain
 separate; `GiftUIRenderLowering` joins semantic and layout results above
 `GiftUIRenderCore` without exposing either authority to backends.
+
+Wave 4 has entered coordinated Specification review with this immutable
+identity:
+
+| Candidate key | Allocated Specification | Lifecycle status |
+| --- | --- | --- |
+| `EXECUTION` | `SPEC-009` | `review` |
+
+SPEC-009 owns the serialized run cycle, sealed admission, publication and
+dirty-recovery boundaries, execution provenance, synchronous one-shot frame
+handoff, refusal convergence, and presentation-coupled input admission
+machinery. It leaves observable-state storage, public interaction declarations
+and action lowering, concrete runtime-profile storage, backend realization,
+and host policy values to their downstream portfolio contracts.
 
 Candidate keys are planning labels, not reserved Specification IDs.
 

@@ -6,11 +6,12 @@ status: captured
 authors:
   - Yauheni Lychkouski
 created: 2026-08-17
-updated: 2026-08-19
+updated: 2026-08-26
 source:
   - RFC-002
   - RFC-004
   - ADR-010
+  - SPEC-009
 related_future_work:
   - FW-011
   - FW-014
@@ -92,6 +93,7 @@ item.
 
 - [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-004: Run Cycle and Frame Transaction Architecture](../rfcs/rfc-004-run-cycle-and-frame-transaction.md)
+- [SPEC-009: Execution Cycle and Frame Handoff Contract](../specs/spec-009-execution-cycle-and-frame-handoff.md)
 - [FW-011: Handoff-Refusal Frame Rescheduling](fw-011-failed-frame-rescheduling.md)
 - [FW-014: Replayable Operation Delivery for Future Raster Strategies](fw-014-replayable-operation-delivery.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
