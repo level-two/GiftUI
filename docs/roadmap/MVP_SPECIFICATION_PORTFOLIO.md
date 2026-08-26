@@ -87,9 +87,11 @@ Wave 3 has entered drafting with these immutable identities:
 | `RENDERING` | `SPEC-008` | `draft` |
 
 SPEC-007 owns proposal-based measurement, placement, canonical text geometry,
-and resolved occurrence bounds. SPEC-008 owns public text/color/style meaning
-and normalized ordered render operations. The physical layout and render-core
-modules remain siblings; a coordinator-owned adapter joins their contracts.
+and resolved occurrence bounds. SPEC-008 owns public text/color/style meaning,
+shared runtime-neutral lowering, and normalized ordered render operations. The
+physical semantic, layout, and backend-facing render-core modules remain
+separate; `GiftUIRenderLowering` joins semantic and layout results above
+`GiftUIRenderCore` without exposing either authority to backends.
 
 Candidate keys are planning labels, not reserved Specification IDs.
 

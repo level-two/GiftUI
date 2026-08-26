@@ -249,8 +249,10 @@ OS/RTOS, HAL, or hardware modules.
 `GiftUILayout` MUST NOT import `GiftUIFailureCore`. The first owner adapter that
 knows both layout errors and SPEC-003 facts performs the mapping under Error
 Handling. `GiftUIRenderCore` is a sibling and MUST NOT be imported by layout.
-A later coordinator may consume both contracts but may not grant rendering
-authority to layout or layout authority to rendering.
+`GiftUIRenderLowering` may consume successful semantic and layout results as
+SPEC-008's shared higher lowering owner, but may not grant rendering authority
+to layout or layout authority to rendering. That consumer edge does not resolve
+RFC-010's separate question about the input edge into `GiftUILayout`.
 
 ## Types / APIs
 
