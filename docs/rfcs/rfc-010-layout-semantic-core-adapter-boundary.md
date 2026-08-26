@@ -2,7 +2,7 @@
 id: RFC-010
 feature: giftui-mvp-architecture
 title: Layout and Semantic Core Adapter Boundary
-status: draft
+status: approved
 authors:
   - codex
 created: 2026-08-26
@@ -29,7 +29,7 @@ target_milestone: MVP
 
 ## Summary
 
-This RFC proposes one narrow source-level dependency from `GiftUILayout` to
+This RFC selects one narrow source-level dependency from `GiftUILayout` to
 `GiftUISemanticCore`. Semantic Core would own a borrowed, immutable layout
 input view over the complete successful semantic result, including structural
 and modifier-scope identity, typed layout payloads, and ordered children.
@@ -43,8 +43,10 @@ and `GiftUITextResources`. SPEC-007 cannot introduce the alternative direct
 dependency without this RFC, a later accepted ADR, and a corresponding
 Specification revision.
 
-This RFC is a `draft`. Its proposed dependency is non-authoritative and does
-not authorize an implementation or a change to SPEC-007's approval gate.
+Alternative B is the approved direction. Approval establishes reviewed design
+consensus but does not itself authorize implementation. The dependency still
+requires an accepted ADR and a corresponding approved SPEC-007 revision before
+implementation may rely on it.
 
 ## Context
 
@@ -266,9 +268,11 @@ The cost is a second contract representation for structural and modifier-scope
 identity, plus adapter code in every producer. The adapter must either expose
 Semantic Core's identities through a type parameter or reconstruct equivalent
 scope identity and traversal meaning without introducing parallel identity.
-This alternative remains preferable if review shows that a narrow layout-owned
-protocol can express the complete contract without identity translation or
-profile duplication.
+This alternative would remain preferable if a narrow layout-owned protocol
+could express the complete contract without identity translation or profile
+duplication. Review did not select it because the adapter would duplicate the
+Semantic Core-owned identity and traversal contract across recording, static,
+and dynamic producers without satisfying a distinct MVP ownership need.
 
 ### Alternative B — Direct `GiftUISemanticCore` dependency
 
@@ -278,9 +282,9 @@ the exact semantic meanings rather than requiring each runtime to reproduce an
 adapter. It adds a source dependency from layout to Semantic Core and therefore
 must keep the view narrower than runtime storage or behavior.
 
-This alternative is preferable if one sealed borrowed view avoids identity
-translation, duplicated adapters, and profile drift while meeting Embedded
-Swift cost constraints.
+This alternative is selected because one sealed borrowed view avoids identity
+translation, duplicated adapters, and profile drift while preserving the
+accepted semantic/layout authority split and the Embedded Swift constraints.
 
 ### Alternative C — Add a neutral semantic-layout contract target
 
@@ -302,15 +306,20 @@ with ADR-006's shared-semantics requirement and is not proposed.
 
 ## Rejected Approaches
 
-No alternative is architecturally rejected while this RFC remains a draft.
-Approval review must explicitly select the direct Semantic Core dependency or
-retain RFC-002's existing layout-owned adapter. A proposed ADR cannot be
-extracted until that selection is explicit.
+- **Alternative A, the layout-owned adapter, is not selected.** It preserves
+  RFC-002's original physical edge but requires every semantic producer to
+  adapt or reproduce identity, scope, payload, and traversal meaning already
+  owned by Semantic Core.
+- **Alternative C, a neutral contract target, is not selected.** No current
+  requirement justifies moving structural identity out of Semantic Core or
+  paying for another target and compatibility surface.
+- **Alternative D, runtime-owned adapters, is rejected.** It makes runtime
+  profiles own or duplicate a shared semantic-to-layout contract and conflicts
+  with ADR-006's profile-equivalent semantics.
 
-Runtime-owned layout semantics, duplicated identity types, string or hash-only
-scope identity, backend access to semantic input, and bidirectional imports are
-outside the acceptable option set because they conflict with existing accepted
-decisions.
+Duplicated identity types, string or hash-only scope identity, backend access
+to semantic input, and bidirectional imports remain outside the acceptable
+option set because they conflict with existing accepted decisions.
 
 ## Compatibility
 
@@ -358,13 +367,16 @@ the selected contract is implemented.
 
 ## Open Questions
 
-- Review must select Alternative A or Alternative B. The existing accepted
-  architecture remains Alternative A until this RFC is approved and a new ADR
-  is accepted.
-- If Alternative B is selected, review must confirm whether its ADR refines
-  ADR-008 without superseding it or whether the maintained architecture treats
-  the exact RFC-002 module graph as requiring a superseding ADR. No ADR status
-  may be inferred from this draft.
+None remained at approval. Alternative B is the approved direction.
+
+The resulting ADR should refine ADR-008 without superseding it. ADR-008 owns
+the acyclic compiler-enforced multi-target topology, one-package MVP
+distribution, and narrow portable `GiftUI` import surface; it does not freeze
+every internal target edge. The selected one-way
+`GiftUILayout -> GiftUISemanticCore` dependency preserves that decision while
+refining RFC-002's more specific physical module graph. RFC approval establishes
+the selected direction; the refinement becomes authoritative architecture only
+when the resulting ADR is accepted.
 
 ## Deferred and Follow-up Work
 
@@ -373,10 +385,11 @@ SPEC-007 work after the architecture gate and are not deferred architecture.
 
 ## Decision Summary
 
-If review selects the proposed direction, one ADR should record that
+This approved RFC requires one ADR to record that
 `GiftUISemanticCore` owns a narrow borrowed layout-facing semantic view and
 that `GiftUILayout` may depend directly on it while semantic, layout, runtime,
-rendering, and backend authorities remain unchanged.
+rendering, and backend authorities remain unchanged. That ADR should refine
+ADR-008 without superseding it.
 
 ## References
 
