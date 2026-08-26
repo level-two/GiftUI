@@ -93,12 +93,11 @@ physical semantic, layout, and backend-facing render-core modules remain
 separate; `GiftUIRenderLowering` joins semantic and layout results above
 `GiftUIRenderCore` without exposing either authority to backends.
 
-Wave 4 has entered coordinated Specification review with this immutable
-identity:
+Wave 4 has completed Specification approval with this immutable identity:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `EXECUTION` | `SPEC-009` | `review` |
+| `EXECUTION` | `SPEC-009` | `approved` |
 
 SPEC-009 owns the serialized run cycle, sealed admission, publication and
 dirty-recovery boundaries, execution provenance, synchronous one-shot frame

@@ -2,7 +2,7 @@
 id: SPEC-009
 feature: giftui-mvp-architecture
 title: Execution Cycle and Frame Handoff Contract
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-26
@@ -40,10 +40,10 @@ target_milestone: MVP
 
 # SPEC-009: Execution Cycle and Frame Handoff Contract
 
-> **Approval status:** Review draft. The governing Proposal and RFCs, accepted
+> **Approval status:** Approved. The governing Proposal and RFCs, accepted
 > architectural decisions, and approved Foundation, Failure, Declarative,
-> Layout, and Rendering contracts are authoritative prerequisites. This draft
-> does not authorize implementation until a maintainer explicitly approves it.
+> Layout, and Rendering contracts are authoritative prerequisites. This
+> Specification authorizes implementation of the contract defined below.
 
 ## Summary
 
