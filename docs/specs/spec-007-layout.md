@@ -2,7 +2,7 @@
 id: SPEC-007
 feature: giftui-mvp-architecture
 title: Proposal-Based Layout Contract
-status: draft
+status: review
 authors:
   - codex
 created: 2026-08-25
@@ -49,8 +49,8 @@ constraints, canonical text measurement, resolved hit geometry, and bounded
 checked layout production. It defines one profile-neutral result and recording
 seam; it does not define rendering, input dispatch, or runtime storage.
 
-This document is a `draft`. It is non-authoritative until human review and
-approval complete the Specification gate.
+This document is in `review`. It remains non-authoritative until explicit
+human approval completes the Specification gate.
 
 ## Scope
 
@@ -808,8 +808,9 @@ canonical text metrics, ZStack/spacer/modifiers, and caller-owned bounds.
 ## Open Issues
 
 No contract or architecture issue remains open. RFC-010 is approved, ADR-032
-is accepted, and this draft now fixes the borrowed protocol, closed payload
-cases, result shape, algorithms, failure mapping, and approval evidence.
+is accepted, and this review revision fixes the borrowed protocol, closed
+payload cases, result shape, algorithms, failure mapping, and approval
+evidence.
 
 A request for priority-based compression, baseline alignment, or a new
 geometry model is architectural or post-MVP work and must not be decided here.
