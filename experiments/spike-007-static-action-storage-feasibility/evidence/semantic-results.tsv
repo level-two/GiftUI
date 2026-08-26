@@ -1,0 +1,7 @@
+append-first	pass	first record admitted
+exact-once	pass	start:7
+stale-generation	pass	old generation rejected
+replacement	pass	start:7,start:8
+disabled	pass	disabled record rejected
+exact-capacity	pass	count=32
+overflow	pass	count=32

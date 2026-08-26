@@ -1,0 +1,4 @@
+variant	flash_bytes	ram_bytes	datas_bytes	bss_bytes	fixed_delta	allocator_symbols	forbidden_introduced
+baseline	25780	6016	40	1021	0	none	none
+direct	26220	6016	48	1049	36	posix_memalign	none
+tagged	26064	6012	68	1029	36	none	none

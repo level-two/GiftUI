@@ -29,6 +29,7 @@ related_future_work: []
 related_explorations: []
 related_spikes:
   - SPIKE-004
+  - SPIKE-007
 supersedes: []
 superseded_by: []
 target_milestone: MVP
@@ -167,6 +168,15 @@ public enum DrawingError: Error, Equatable, Sendable {
 nonescaping `withPath` body and is noncopyable. Neither has a public
 initializer. Their borrows MUST NOT escape, cross an asynchronous boundary, or
 survive the Canvas invocation. The closure is synchronous and non-suspending.
+
+The public `Canvas` initializer remains one portable closure-based source
+surface. A dynamic profile MAY retain that closure in a bounded profile-owned
+wrapper until post-layout invocation. A static profile MUST instead lower each
+statically known Canvas body to a generated finite callable with bounded typed
+captures before persistent semantic retention; it MUST NOT retain the captured
+escaping closure directly. The generated callable MUST preserve the exact
+scoped `inout GraphicsContext`, `Size`, throwing, ordering, and release
+semantics specified here without existential storage or heap allocation.
 
 `StrokeStyle` construction with nonpositive width creates an invalid style
 marker; the next stroke throws `.invalidValue` before snapshotting. The
@@ -418,10 +428,21 @@ refusal rederivation, borrowed-address nonretention, and cross-profile equality.
 SPIKE-004's copy-to-plan and unique-range sealing strategies are both viable.
 Its C arena is evidence, not the production Swift contract.
 
+SPIKE-007 proves the shared storage premise relevant to Canvas: retaining a
+captured escaping Swift closure across a committed-record lifetime preserves an
+allocator path even when the enclosing record is noncopyable, while a generated
+finite tagged callable with bounded typed captures compiles and links without
+that allocator path. The Spike's zero-argument action callable is not evidence
+that Canvas's exact throwing, scoped `inout` signature compiles.
+
 ## Open Issues
 
-- Review must check the exact `~Copyable` and scoped closure declarations with
-  the supported macOS and Embedded Swift compilers.
+- SPIKE-007 resolves the shared direct-retained-closure question and requires
+  generated static callable storage, but does not close SPEC-012's approval
+  gate. Review must still compile and inspect the exact Canvas callable
+  specialization, `~Copyable` `GraphicsContext` and `Path` declarations,
+  nonescaping `withPath` scope, borrowed `stroke` argument, and throwing cleanup
+  with the supported macOS and Embedded Swift compilers.
 - Pixel quantization and raster tolerance vectors are intentionally owned by
   the Wave 6 backend-integration Specification, not this portable contract.
 
@@ -439,3 +460,4 @@ None. Richer drawing and retained paths are outside the accepted MVP scope.
 - [ADR-031](../adrs/adr-031-bounded-canvas-failure-and-startup-gate-integration.md)
 - [SPEC-009](spec-009-execution-cycle-and-frame-handoff.md)
 - [SPIKE-004](../spikes/spike-004-canvas-path-plan-feasibility.md)
+- [SPIKE-007](../spikes/spike-007-static-action-storage-feasibility.md)

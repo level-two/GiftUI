@@ -26,7 +26,8 @@ related_specs:
   - SPEC-009
 related_future_work: []
 related_explorations: []
-related_spikes: []
+related_spikes:
+  - SPIKE-007
 supersedes: []
 superseded_by: []
 target_milestone: MVP
@@ -157,12 +158,19 @@ package struct InteractionLimits: Equatable, Sendable {
                   maximumActiveSources: UInt16)
 }
 
-package struct ActionRecord<Identity> where Identity: Equatable & Sendable {
+package protocol InteractionCallable: ~Copyable {
+    borrowing func invoke()
+}
+
+package struct ActionRecord<
+    Identity: Equatable & Sendable,
+    Callable: ~Copyable & InteractionCallable
+>: ~Copyable {
     package let identity: Identity
     package let generation: ActionGeneration
     package let isEnabled: Bool
     package let hitBounds: Rect
-    package let action: () -> Void
+    package let callable: Callable
 }
 
 package enum InteractionError: UInt8, Equatable, Sendable {
@@ -206,9 +214,11 @@ package protocol InteractionDispatcher {
 All limits MUST be nonzero and MUST be no greater than the corresponding
 SPEC-009 configured limits. A count equal to its limit succeeds. `ActionRecord`
 is runtime-owned and MUST NOT cross into a backend or pointer-capture record.
-The closure's exact storage is profile-owned; static realization MUST
-specialize or generate bounded callable storage without `Any`, reflection, or
-heap allocation.
+`Callable` is always statically known at the table realization; code MUST NOT
+store it as an existential. Dynamic realization MAY wrap a closure in a
+bounded dynamic callable type. Static realization MUST specialize or generate
+a finite tagged callable type with bounded typed payloads and no `Any`,
+reflection, or heap allocation.
 
 ## Behavior
 
@@ -352,16 +362,27 @@ at-most-once invocation, and cross-profile transcript equivalence.
 
 A generated callable union and a bounded dynamic closure table are both
 possible profile realizations. Neither changes the callable replacement rule.
+SPIKE-007 proves the exact `Callable: ~Copyable & InteractionCallable` generic
+constraint compiles and links with the supported Embedded Swift toolchain. It
+also proves that storing a captured escaping closure across the committed-
+record lifetime retains an allocator path and is therefore not a valid static
+realization, even when the enclosing record is noncopyable.
 
 ## Open Issues
 
-- Review must confirm the exact noncopyable/static closure representation
-  compiles with the supported Embedded Swift toolchain.
+No evidence questions remain open. SPIKE-007 resolves the Embedded Swift
+callable-storage feasibility gate; Specification review must still assess the
+full contract and acceptance criteria.
 
 ## Deferred and Follow-up Work
 
-None. Richer gestures, focus, keyboard, accessibility, and styling require a
-future concrete use case and normal lifecycle work.
+[SPIKE-007](../spikes/spike-007-static-action-storage-feasibility.md) tests the
+exact public declaration shape, direct stored-closure feasibility, and a
+generated bounded static callable representation. It supplies evidence only;
+it does not select production storage or authorize implementation.
+
+Richer gestures, focus, keyboard, accessibility, and styling require a future
+concrete use case and normal lifecycle work.
 
 ## References
 
@@ -371,3 +392,4 @@ future concrete use case and normal lifecycle work.
 - [SPEC-006](spec-006-declarative-view-semantics.md)
 - [SPEC-007](spec-007-layout.md)
 - [SPEC-009](spec-009-execution-cycle-and-frame-handoff.md)
+- [SPIKE-007](../spikes/spike-007-static-action-storage-feasibility.md)
