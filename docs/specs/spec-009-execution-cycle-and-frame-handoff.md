@@ -279,13 +279,25 @@ package enum ExecutionPhase: UInt8, Equatable, Sendable {
 }
 ```
 
-All raw bit patterns are valid opaque values. No value is a sentinel. Each
-identity namespace is local to one assembled runtime lifetime and is neither a
-persistent format nor stable across builds. Allocation MUST advance without
-aliasing any value that remains queued, admitted, staged, committed, captured,
-or pending. Exhaustion or ambiguous wrap returns `identityExhausted`, admits no
-new work in that namespace, cancels affected pointer captures when applicable,
-and requests target disposition; it MUST NOT silently wrap.
+Every raw bit pattern of the four execution-owned identity structs is a valid
+opaque value; no identity value is a sentinel. Each execution-owned namespace
+is local to one assembled runtime lifetime and is neither a persistent format
+nor stable across builds. `RunCycleID`,
+`SemanticRevision`, `CandidateFrameID`, SPEC-002's `PresentationRevision`, and
+the runtime-wide `ActionGeneration` namespace each allocate raw value `0`
+first and then the exact checked successor. No execution-owned raw value is
+reused during that runtime lifetime. Failure to form the successor returns
+`identityExhausted`, admits or commits no new work in that namespace, cancels
+affected pointer captures when applicable, and requests target disposition;
+it MUST NOT silently wrap.
+
+An identity needed before an irreversible boundary MUST be reserved before
+that boundary. In particular, the candidate's presentation revision and every
+new action generation are reserved before `offer`. Reservation makes the raw
+value unavailable to later allocations but does not publish or commit it; an
+aborted candidate permanently retires the reservation. This bounded monotonic
+rule avoids live-alias discovery and makes exhaustion equivalent in dynamic
+and static profiles.
 
 `RunCycleID`, `SemanticRevision`, `CandidateFrameID`, `ActionGeneration`, and
 SPEC-002's `PresentationRevision` MUST each occupy exactly four bytes.
@@ -313,11 +325,11 @@ package struct ExecutionLimits: Equatable, Sendable {
 }
 
 package struct ExecutionContext: Equatable, Sendable {
-    package let cycle: RunCycleID
+    package let cycle: RunCycleID?
     package let semanticRevision: SemanticRevision?
     package let candidateFrame: CandidateFrameID?
     package let phase: ExecutionPhase
-    package init(cycle: RunCycleID,
+    package init(cycle: RunCycleID?,
                  semanticRevision: SemanticRevision?,
                  candidateFrame: CandidateFrameID?,
                  phase: ExecutionPhase)
@@ -329,15 +341,19 @@ interactive runtime. `maximumCompletionFacts` MAY be zero when the assembled
 configuration declares no completion producer. An invalid set returns `nil`
 and produces no partial value. Production values are selected and validated by
 later runtime-profile and host-configuration contracts. A count equal to a
-limit is valid; the next reservation is refused before changing ownership or
-phase state.
+limit is valid. Queue or committed-storage reservation beyond its configured
+capacity is refused before changing ownership or phase state; pending work
+beyond a per-cycle selection limit is deferred by the prefix rule under
+Opportunity and sealing.
 
-`ExecutionContext` is SPEC-003's focused correlation `Context`. Before the
-first complete publication, `semanticRevision` is `nil`; afterward it names
-the latest complete revision visible to that cycle. Before a candidate exists,
-`candidateFrame` is `nil`; after allocation it retains that identity through
-offer and finalization. A failure adapter MUST preserve the detecting phase
-and identities exactly.
+`ExecutionContext` is SPEC-003's focused correlation `Context`. `cycle` is
+`nil` whenever no cycle is active, including an ordinary idle admission result
+and an idle opportunity that cannot allocate a non-aliased cycle ID; reentrant
+entry names the already-active cycle. Before the first complete publication,
+`semanticRevision` is `nil`; afterward it names the latest complete revision
+visible at detection. Before a candidate exists, `candidateFrame` is `nil`;
+after allocation it retains that identity through offer and finalization. A
+failure adapter MUST preserve the detecting phase and identities exactly.
 
 ### Wake requests and pending presentation
 
@@ -357,23 +373,45 @@ package protocol ExecutionWakeRequester {
 
 package struct PresentationPendingIntent: Equatable, Sendable {
     package let semanticRevision: SemanticRevision
-    package let attemptOrdinal: UInt8
-    package init(semanticRevision: SemanticRevision, attemptOrdinal: UInt8)
+    package let retryableRefusalCount: UInt8
+    package init(semanticRevision: SemanticRevision,
+                 retryableRefusalCount: UInt8)
 }
 ```
 
-Only the low three reason bits are valid. The runtime coalesces reasons into at
-most one outstanding wake requirement. Calling `requestWake` is non-suspending
-and may be repeated after a new clean-to-dirty or not-pending-to-pending
-transition; it MUST NOT synchronously invoke the runtime, decide cycle
-membership, mutate state, or report successful scheduling back into semantic
-control flow. A host may coalesce duplicate requests.
+`admittedWork`, `semanticDirty`, and `presentationPending` have raw values
+`0x01`, `0x02`, and `0x04` respectively.
+`ExecutionWakeReasons.init(rawValue:)` MUST mask its input with `0x07`; only the
+normalized low three bits are stored, compared, or forwarded. The runtime owns
+one accumulated reason set and one `wakeOutstanding` bit. On the empty-to-
+nonempty transition it sets the bit and calls `requestWake` exactly once. Entry
+to an idle opportunity acknowledges the preceding request by atomically taking
+the accumulated reasons, clearing them, and clearing `wakeOutstanding` before
+`.admitting`. A new reason arising after that take, including during an active
+cycle or finalization, performs a new empty-to-nonempty transition and cannot
+be lost behind the acknowledged request. A redundant host opportunity is
+permitted and produces the ordinary no-change result.
 
-`PresentationPendingIntent` is the complete retained state after retryable
-refusal. It MUST NOT retain a root declaration, semantic/layout result, render
-workspace, operation, sink, frame envelope, callable, or borrowed resource.
-`attemptOrdinal` is zero for the first refused attempt and advances only when a
-later separately paced recovery opportunity is itself refused retryably.
+Calling `requestWake` is non-suspending and MUST NOT synchronously invoke the
+runtime, decide cycle membership, mutate state, or report successful scheduling
+back into semantic control flow. A host may coalesce duplicate requests but
+MUST eventually provide an opportunity for each observed empty-to-nonempty
+transition unless the runtime has become quiescent.
+
+`PresentationPendingIntent` is the complete retained state after backpressure
+or retryable refusal. It MUST NOT retain a root declaration, semantic/layout
+result, render workspace, operation, sink, frame envelope, callable, or
+borrowed resource.
+`retryableRefusalCount` is `0` when pending intent was created only by
+backpressure and otherwise equals the number of retryable refusals recorded
+for this semantic revision. The first retryable refusal stores `1`. A host
+configuration MUST choose a maximum in `1...255`. After incrementing for a
+retryable refusal, a count equal to the configured maximum is exhausted and is
+not retained; the coordinator performs the terminal unavailable/quiescent
+transition. Checked increment failure is treated identically and never wraps.
+Backpressure neither increments nor resets this counter. A newer published
+semantic revision replaces the complete intent and starts again at `0` or `1`
+according to the outcome of its first offer.
 
 ### Frame provenance and disposition
 
@@ -424,6 +462,11 @@ package enum FrameOfferFailure: UInt8, Equatable, Sendable {
     case producerFailed = 2
     case contractViolation = 3
 }
+
+package enum FrameRefusalOrigin: UInt8, Equatable, Sendable {
+    case renderProducer = 0
+    case endpoint = 1
+}
 ```
 
 `failure` MUST be non-`nil` exactly when disposition is `.failed`. Operational
@@ -434,9 +477,10 @@ because the endpoint preserved the refusal contract and retained nothing.
 producer call and this focused contract; it does not erase the producer's
 separately retained local error before failure correlation.
 
-Every accepted candidate receives a fresh `PresentationRevision` at commit.
-That revision atomically identifies the committed logical frame, committed hit
-map, committed action records, and presentation-coupled routing state. A
+Every candidate reserves a fresh `PresentationRevision` before `offer`; only
+acceptance commits it. That revision atomically identifies the committed
+logical frame, committed hit map, committed action records, and presentation-
+coupled routing state. An aborted reservation is retired and never reused. A
 candidate frame ID never becomes input provenance and a semantic revision does
 not substitute for a presentation revision.
 
@@ -454,13 +498,20 @@ package protocol SynchronousFrameEndpoint {
 ```
 
 The execution coordinator calls `offer` at most once for a candidate. An
-endpoint MAY return `.backpressured` or `.retryableRefusal` without calling
-`body` when it can prove before consumption that no downstream slot is
-available. Otherwise it calls `body` exactly once before returning. The body
-synchronously produces SPEC-008's complete atomic stream into the endpoint-
-owned sink. The endpoint MUST NOT escape the closure, sink borrow, operation,
-glyph, font-resource borrow, provenance borrow, or any other producer-owned
-value.
+endpoint returns `.backpressured` without calling `body` only when its
+currently configured bounded downstream slots are full. It returns
+`.retryableRefusal` without calling `body` only for another explicitly
+retryable pre-consumption condition whose retry budget is owned by the host.
+It returns `.nonRetryableRefusal` without calling `body` only when it can
+deterministically reject the valid envelope while preserving the refusal
+contract. These meanings are mutually exclusive; lack of a slot is always
+`.backpressured`, never `.retryableRefusal`.
+
+After accepting the envelope for consumption, the endpoint calls `body`
+exactly once before returning. The body synchronously produces SPEC-008's
+complete atomic stream into the endpoint-owned sink. The endpoint MUST NOT
+escape the closure, sink borrow, operation, glyph, font-resource borrow,
+provenance borrow, or any other producer-owned value.
 
 Before returning `.accepted`, the endpoint MUST have consumed the complete
 stream, verified its supported vocabulary, reserved all bounded downstream
@@ -474,15 +525,22 @@ pre-begin producer error to `.producerFailed`, a reported sink-capacity
 shortfall to `.insufficientCapacity`, an idle-sink `begin` refusal to
 `.endpointRefused`, and a post-begin sink refusal or stream-protocol breach to
 `.contractViolation`. It preserves the exact SPEC-008 local error separately
-for owner failure mapping. The endpoint maps each non-complete body result
-exactly and MUST NOT return `.accepted` for it:
+for owner failure mapping. The endpoint maps every body result exactly:
 
 | Body result | Required offer result |
 | --- | --- |
+| `complete` | `.accepted` |
 | `producerFailed` | `.failed(.producerFailed)` |
 | `insufficientCapacity` | `.failed(.insufficientCapacity)` |
 | `endpointRefused` | `.nonRetryableRefusal` with no failure payload |
 | `contractViolation` | `.failed(.contractViolation)` |
+
+`.failed(.invalidEnvelope)` and a direct
+`.failed(.contractViolation)` are permitted only before `body`. The remaining
+`.failed` payloads are legal only as the matching body-result mapping above.
+Any other call/result combination is itself an endpoint contract violation and
+is normalized by the coordinator to `.failed(.contractViolation)`. In
+particular, a complete body cannot later become backpressure or refusal.
 
 If irreversible output begins while `body` is active, responsibility has
 transferred. The endpoint MUST consume or safely drain the complete stream and
@@ -502,6 +560,37 @@ package enum AdmissionKind: UInt8, Equatable, Sendable {
     case presentationRecovery = 5
 }
 
+package enum ExecutionAdmissionResult: UInt8, Equatable, Sendable {
+    case queued = 0
+    case capacityRefused = 1
+    case unavailable = 2
+    case invalidValue = 3
+    case invalidProvenance = 4
+}
+
+package struct ExecutionAdmissionOutcome: Equatable, Sendable {
+    package let result: ExecutionAdmissionResult
+    package let context: ExecutionContext
+    package init(result: ExecutionAdmissionResult,
+                 context: ExecutionContext)
+}
+
+package protocol ExecutionAdmissionSink {
+    associatedtype StateChangeFact: Sendable
+    associatedtype CompletionFact: Sendable
+
+    mutating func submit(pointer: NormalizedPointerEvent)
+        -> ExecutionAdmissionOutcome
+    mutating func submit(stateChange: StateChangeFact)
+        -> ExecutionAdmissionOutcome
+    mutating func submit(completion: CompletionFact)
+        -> ExecutionAdmissionOutcome
+}
+
+package protocol ExecutionOpportunityRunner {
+    mutating func runOpportunity() -> RunCycleResult
+}
+
 package struct AdmissionSummary: Equatable, Sendable {
     package let inputEventCount: UInt16
     package let stateChangeFactCount: UInt16
@@ -509,12 +598,13 @@ package struct AdmissionSummary: Equatable, Sendable {
     package let semanticActionCount: UInt16
     package let includesDirtyRederivation: Bool
     package let includesPresentationRecovery: Bool
-    package init(inputEventCount: UInt16,
-                 stateChangeFactCount: UInt16,
-                 completionFactCount: UInt16,
-                 semanticActionCount: UInt16,
-                 includesDirtyRederivation: Bool,
-                 includesPresentationRecovery: Bool)
+    package init?(inputEventCount: UInt16,
+                  stateChangeFactCount: UInt16,
+                  completionFactCount: UInt16,
+                  semanticActionCount: UInt16,
+                  includesDirtyRederivation: Bool,
+                  includesPresentationRecovery: Bool,
+                  limits: ExecutionLimits)
 }
 
 package protocol ExecutionActionView {
@@ -539,12 +629,76 @@ borrowed from the currently committed routing state and exposes no callable.
 `CapturedAction` contains exactly the identity-generation pair and MUST NOT
 retain a callable payload, declaration, view, hit map, or committed revision.
 
+`ExecutionAdmissionSink` is the complete profile-neutral producer seam. Every
+return carries an `ExecutionContext` snapshot: it names the active cycle and
+phase when one exists, or uses `cycle == nil`, `candidateFrame == nil`, and
+`.idle` otherwise; its semantic revision is the latest complete published
+revision, or `nil` before the first publication. A `.queued` result means the
+runtime copied or moved the complete value into its bounded pending storage,
+owns that queued copy, accumulates `.admittedWork` using the wake reason-set
+empty-to-nonempty rule, and will consider it only at a later seal. It does not
+promise membership in the currently active cycle. A `.capacityRefused` result
+changes no state-change or completion ownership and applies no semantic
+effect; the runtime retains no copy and the caller may retry only as permitted
+by the payload owner's at-most-once contract. For pointer input it additionally
+performs the mandatory source-sequence cancellation before returning.
+`.unavailable` means the runtime or presentation-coupled input facility is
+quiescent; it queues nothing and pointer submission cancels the source.
+`.invalidValue` means the submission family is disabled by the cycle-stable
+configuration or the supplied owner value failed its owning value contract; it
+queues nothing, requests no wake, and applies no effect.
+`.invalidProvenance` is returned only for pointer submission whose presentation
+revision does not match the then-current committed routing revision or whose
+source, sequence, or ordinal is inadmissible against the bounded producer-order
+state. It queues nothing and performs complete source-sequence cancellation.
+
+Complete source-sequence cancellation removes every already queued phase of
+that sequence, clears any staged or active capture and activation, retains no
+former callable, and advances only sequence state whose validity was already
+proven. Later phases cannot dispatch semantically. A numerically invalid
+sequence never becomes a trusted resynchronization baseline.
+
+Pointer submission performs that immediate runtime validation before queue
+reservation. A queued pointer is independently revalidated when selected for
+a later seal because a newer frame may have committed in the meantime.
+
+When `maximumCompletionFacts == 0`, `submit(completion:)` always returns
+`.invalidValue` and does not request a wake. A quiescent runtime returns
+`.unavailable` for every submission. Otherwise queue saturation returns
+`.capacityRefused`; the result does not depend on whether a host opportunity
+is already pending.
+
+Concrete state-change and completion payload declarations and storage belong
+to their owning downstream Specifications. They MUST be finite `Sendable`
+values with owner-defined application seams; this protocol neither stores an
+existential nor invokes them at submission time. `ExecutionOpportunityRunner`
+is the complete host entry seam. Hosts invoke it only as a serialized
+opportunity; wake callbacks never invoke it synchronously. Dynamic and static
+coordinators MUST conform to these same protocols, and the recording fixture
+MUST drive them through these protocols rather than profile-private entry
+points.
+
+`AdmissionSummary.init?` rejects a count above its corresponding supplied
+limit, a nonzero completion count when completions are disabled, or a semantic
+action count greater than the admitted pointer-event count. The stored value
+does not retain `limits`. The two Boolean fields are true exactly when the
+corresponding one-bit intent joined the sealed batch; a dropped or deferred
+intent is false.
+
 The later Interaction contract owns the committed action table and exact
 action invocation seam. It MUST install a new `ActionGeneration` whenever a
 newly derived callable replaces the payload at an otherwise stable identity.
 It MAY preserve the generation only by preserving the exact already committed
 payload. Candidate publication or frame refusal MUST NOT replace the committed
 record. Execution never compares closures.
+
+`ActionGeneration` is allocated from the one runtime-wide monotonic namespace
+defined above, not from an independent per-action counter. A staged candidate
+reserves generations for all replacements before publication and offer.
+Exhaustion discards the staged action table, prevents publication of that
+candidate, cancels every capture whose non-aliasing can no longer be proven,
+and reports `identityExhausted`; it never preserves a replacement under the
+former generation.
 
 ### Local results
 
@@ -575,6 +729,30 @@ package enum ExecutionOperational: UInt8, Equatable, Sendable {
     case deferredToLaterAdmission = 4
 }
 
+package struct ExecutionOperationalEvents: OptionSet, Equatable, Sendable {
+    package let rawValue: UInt8
+    package init(rawValue: UInt8)
+
+    package static let noChange: Self
+    package static let backpressured: Self
+    package static let retryableRefusal: Self
+    package static let superseded: Self
+    package static let deferredToLaterAdmission: Self
+}
+
+package enum PresentationIntentState: UInt8, Equatable, Sendable {
+    case satisfied = 0
+    case pending = 1
+    case unavailable = 2
+}
+
+package enum RunCycleFailure: Equatable, Sendable {
+    case execution(ExecutionError)
+    case renderProduction(RenderProductionError)
+    case frameOffer(FrameOfferFailure)
+    case nonRetryableRefusal(FrameRefusalOrigin)
+}
+
 package struct RunCycleSummary: Equatable, Sendable {
     package let cycle: RunCycleID
     package let admission: AdmissionSummary
@@ -582,69 +760,163 @@ package struct RunCycleSummary: Equatable, Sendable {
     package let semanticDisposition: SemanticCycleDisposition
     package let logicalFrameDisposition: LogicalFrameDisposition
     package let committedPresentationRevision: PresentationRevision?
+    package let presentationIntentState: PresentationIntentState
     package let presentationPending: PresentationPendingIntent?
-    package init(cycle: RunCycleID,
-                 admission: AdmissionSummary,
-                 semanticRevision: SemanticRevision?,
-                 semanticDisposition: SemanticCycleDisposition,
-                 logicalFrameDisposition: LogicalFrameDisposition,
-                 committedPresentationRevision: PresentationRevision?,
-                 presentationPending: PresentationPendingIntent?)
+    package let operationalEvents: ExecutionOperationalEvents
+    package init?(cycle: RunCycleID,
+                  admission: AdmissionSummary,
+                  semanticRevision: SemanticRevision?,
+                  semanticDisposition: SemanticCycleDisposition,
+                  logicalFrameDisposition: LogicalFrameDisposition,
+                  committedPresentationRevision: PresentationRevision?,
+                  presentationIntentState: PresentationIntentState,
+                  presentationPending: PresentationPendingIntent?,
+                  operationalEvents: ExecutionOperationalEvents)
 }
 
 package enum RunCycleResult: Equatable, Sendable {
     case success(RunCycleSummary)
     case operational(ExecutionOperational, RunCycleSummary)
-    case failure(ExecutionContext, ExecutionError)
+    case failure(ExecutionContext, RunCycleFailure, RunCycleSummary?)
 }
 ```
 
-`.operational` is used only when the cycle completed its mandatory mechanical
-effects but ended in its named expected SPEC-003 operational condition. The
-owner adapter maps that closed value exactly; the local result does not import
-the failure module. `semanticRevision` is `nil` only before any complete
-revision has been published. A `.failure` contains the detecting context and
-publishes no partial summary.
+`noChange`, `backpressured`, `retryableRefusal`, `superseded`, and
+`deferredToLaterAdmission` have raw values `0x01`, `0x02`, `0x04`, `0x08`, and
+`0x10` respectively. `ExecutionOperationalEvents.init(rawValue:)` masks its
+input with `0x1f`. Every event observed by the cycle is retained in
+`operationalEvents`.
+
+A failure always selects `.failure` even when its complete summary records
+operational events observed earlier in the cycle. Otherwise a nonempty set
+selects `.operational`, with its primary value chosen in this precedence order:
+`retryableRefusal`, `backpressured`, `superseded`,
+`deferredToLaterAdmission`, `noChange`. The owner adapter maps only that
+primary value to the one SPEC-003 operational outcome; the complete set remains
+deterministic transcript evidence and MAY be projected diagnostically.
+`.success` is used exactly when there is no failure and the set is empty.
+
+`semanticRevision` names the latest complete published revision after the
+cycle and is `nil` only before any publication. `committedPresentationRevision`
+names the authoritative committed routing revision after the cycle, including
+the unchanged previous revision after an abort; it is `nil` only before any
+frame commit. `presentationPending` is non-`nil` exactly when
+`presentationIntentState == .pending`, and its semantic revision MUST equal
+`semanticRevision`. It is `nil` for `.satisfied` and `.unavailable`.
+
+The failable `RunCycleSummary` initializer rejects any intrinsic violation of
+those rules, `.published` with no semantic revision, `.committed` with no
+committed presentation revision, `.committed` with pending or unavailable
+intent, any pending intent whose revision is not the latest semantic revision,
+simultaneous backpressure and retryable-refusal events, or a `noChange` event
+combined with backpressure, retryable refusal, or supersession. Admission
+counts are validated against the cycle-stable limits before construction.
+`noChange` additionally requires unchanged semantics, no produced frame, and
+satisfied intent; backpressure requires an aborted frame and pending intent;
+retryable refusal requires an aborted frame and pending or unavailable intent;
+and supersession requires a newly published semantic revision. The coordinator
+additionally compares the entry state, reserved identities, local result, and
+completed summary and MUST reject any transition not present in the exhaustive
+lifecycle matrix below; those historical facts are intentionally not
+duplicated in the summary value.
+
+A started cycle always returns a complete summary after mandatory mechanical
+effects, including a `.dirty` summary for pre-publication failure and an
+`.aborted` summary for post-publication offer failure. The summary is `nil`
+only when entry was rejected before a new cycle started: reentrant entry uses
+the active context, while cycle-identity exhaustion uses an idle context with
+`cycle == nil`. A failure summary is completed state evidence, not a partial
+success, and cannot weaken or replace its failure.
 
 ## Behavior
 
 ### Opportunity and sealing
 
 An opportunity starts a cycle only while the coordinator is idle. Reentrant
-entry returns `.reentrancyViolation` before inspecting or removing queued
-work. A started cycle allocates one non-aliased `RunCycleID`, snapshots the
-cycle-stable limits and configuration, enters `.admitting`, and seals one
-ordered batch.
+entry returns `.failure(activeContext,
+.execution(.reentrancyViolation), nil)` before acknowledging a wake or
+inspecting or removing queued work. Idle entry acknowledges wake state as
+specified above and allocates one non-aliased `RunCycleID`. Allocation failure
+returns `.failure(idleContextWithNilCycle,
+.execution(.identityExhausted), nil)`, queues no new work, and routes the
+runtime-scoped terminal disposition. That context has `cycle == nil`, the
+latest published semantic revision, `candidateFrame == nil`, and
+`phase == .idle`. A started cycle snapshots the cycle-
+stable limits and configuration, enters `.admitting`, and seals one ordered
+batch.
 
 Admission order is:
 
-1. validate queued pointer provenance and per-source sequence state;
-2. select eligible normalized pointer events in queue order;
+1. select a prefix of queued pointer events and validate provenance and
+   per-source sequence state in queue order;
+2. stage the resulting source/capture transitions and same-cycle activation
+   candidates in pointer order;
 3. select state-change facts in producer admission order;
 4. select completion facts in producer admission order;
-5. include already-admitted semantic actions in their pointer-dispatch order;
+5. include the staged activation candidates as semantic actions in their
+   pointer-dispatch order;
 6. include at most one dirty-rederivation intent; and
 7. include at most one presentation-recovery intent for the latest published
    semantic revision.
 
-Work admitted after the seal stays queued for a later cycle. A producer may
-request a wake, but cannot change membership. Each selected count MUST fit its
-limit before the item leaves producer-owned pending state. Failure to seal the
-complete selected batch returns `.capacityExhausted`; no selected item may be
-partly applied or lost.
+For each queued category, the cycle selects at most its cycle-stable limit; a
+valid suffix beyond that limit stays queued, records
+`.deferredToLaterAdmission`, and requests the next admitted-work wake. Work
+submitted after the seal likewise stays queued and records that event. A
+producer may request a wake but cannot change current membership.
+
+Seal-time pointer validation is staged until the complete seal succeeds. On
+the first stale, malformed, or invalid selected pointer, the coordinator
+removes every queued phase of that source sequence, commits mandatory
+cancellation, leaves all other selected work queued in original order,
+requests another admitted-work wake when any remains, and returns
+`.failure(context, .execution(.invalidProvenance), summary)`, where the
+complete summary has zero admission counts and preserves the authoritative
+entry state. The rejected sequence contributes nothing to `inputEventCount`.
+If a valid pointer would create a semantic action beyond
+`maximumSemanticActions`, the same all-sequence removal and other-work
+preservation applies, but the failure is
+`.execution(.capacityExhausted)`. A new source beyond
+`maximumActiveInputSources` is rejected synchronously by pointer submission as
+`.capacityRefused`. No callable is invoked in `.admitting`.
+
+The coordinator verifies before removal that its batch storage can represent
+all selected counts and staged pointer transitions. Storage shortfall returns
+`.capacityExhausted` and leaves every otherwise valid selected pointer or fact
+queued and unapplied. Pointer validation or action-capacity refusal has already
+returned through the exact earlier path, so storage failure manufactures no
+additional cancellation. A count equal to its limit succeeds. Queue capacity
+at `submit` and per-cycle selection capacity are distinct: queue refusal is
+reported synchronously by `ExecutionAdmissionResult`, while a per-cycle
+suffix is deferred rather than failed.
 
 ### Mutation, freeze, derivation, and publication
 
-After sealing, the coordinator enters `.mutating` and applies each admitted
-state-change fact and semantic action exactly once in sealed order. A later
-failure, refusal, retry, or supersession MUST NOT replay them. Their client
-side effects are not assumed reversible.
+After sealing, the coordinator commits the staged pointer state, enters
+`.mutating`, and applies each admitted state-change fact, completion fact, and
+semantic action exactly once in that category order and in producer or pointer
+order within its category. A completion fact may dirty semantics only when its
+owning downstream contract says so. Each activation invokes the current
+callable only through the later Interaction-owned dispatcher after the
+identity-generation and enabled-state checks completed during admission. A
+later failure, refusal, retry, or supersession MUST NOT replay any fact,
+action, or effect. Their client side effects are not assumed reversible.
 
 Mutation-driven invalidations coalesce while the batch is applied. The
 coordinator then freezes admission to the active cycle, enters `.deriving`,
-and performs semantic expansion, layout, and render preparation from stable
-observed state. It MUST NOT suspend or permit reentrant mutation before
-publication or failure disposition. Newly arriving work remains pending.
+and performs semantic expansion, layout, hit/routing derivation, action-table
+staging, and validation of the immutable inputs required by SPEC-008 from
+stable observed state. It does not call `RenderProducer.produce` or inspect an
+endpoint sink in this phase. It MUST NOT suspend or permit reentrant mutation
+before publication or failure disposition. Newly arriving work remains
+pending.
+
+The staged action table may contain at most `maximumCommittedActions` records.
+The first record beyond that bound returns
+`.execution(.capacityExhausted)` before publication and leaves the prior
+committed table unchanged. Replacement-generation reservation follows the
+identity rule above and precedes the capacity-successful staged table's
+publication.
 
 If derivation produces no semantic change and there is no dirty or pending
 presentation obligation, the cycle is `.unchanged` and produces no frame. A
@@ -653,23 +925,43 @@ is published atomically in `.publishing`. Publication makes the semantic
 revision observable, but keeps candidate hit geometry, action records, and
 routing state staged.
 
-A semantic, layout, or render failure before publication discards every
-partial downstream result, leaves already-applied observable state dirty,
-requests one coalesced `.semanticDirty` wake, and returns failure. Recovery is
-a later separately admitted cycle from current state. It MUST NOT replay the
-sealed batch or recursively invoke another cycle.
+A semantic, layout, action-table, routing, or pre-offer input-validation
+failure before publication discards every partial downstream result, leaves
+already-applied observable state dirty, requests one coalesced
+`.semanticDirty` wake, and returns a failure summary with
+`.semanticDisposition == .dirty`. Recovery is a later separately admitted
+cycle from current state. It MUST NOT replay the sealed batch or recursively
+invoke another cycle. SPEC-008 render production begins only after
+publication, inside `offer`; its failures therefore follow the post-publication
+rules below and never roll back or dirty the published revision.
 
 ### Candidate frame and handoff
 
-After publication, or when a pending latest revision is rederived, the
-coordinator allocates a fresh `CandidateFrameID`, constructs `FrameProvenance`,
-and enters `.offering`. Rendering is produced atomically into the endpoint's
-sink during the single synchronous `offer` call.
+Action-generation reservations are part of pre-publication action-table
+staging. After publication, or when a pending latest revision is rederived
+without a semantic change, the coordinator allocates a fresh
+`CandidateFrameID` and then reserves the next `PresentationRevision`.
+Allocation occurs at the end of `.publishing` for a new revision and at the
+end of `.deriving` for unchanged presentation recovery; the detecting context
+preserves that phase. Candidate-ID failure produces no candidate, while
+presentation-revision failure aborts the allocated candidate. Both occur
+before `offer`, make no endpoint call, and return the exact identity failure
+while preserving an already completed publication. The coordinator then constructs
+`FrameProvenance` and enters `.offering`. SPEC-008 rendering is produced
+atomically into the endpoint's sink during the single synchronous `offer`
+call.
+
+Loss of the required presentation facility after publication or unchanged
+recovery sets intent unavailable and makes no endpoint call. If detected
+before candidate allocation it produces no candidate; if detected after
+candidate allocation it aborts that candidate. In both cases it preserves the
+published semantic revision and prior committed routing revision and returns
+`.execution(.requiredFacilityUnavailable)` with the detecting context.
 
 An accepted result atomically:
 
 - commits the logical frame;
-- allocates the next non-aliased `PresentationRevision`;
+- commits the already-reserved non-aliased `PresentationRevision`;
 - commits candidate hit geometry, action records, and routing state under that
   revision;
 - clears presentation-pending intent for the represented semantic revision;
@@ -681,26 +973,53 @@ action change, retains the previous committed logical frame and presentation
 revision unchanged, and releases all cycle-local storage. No non-accepted
 result may be reported after an irreversible presentation effect.
 
+An offer-time `renderProduction` or `frameOffer` failure occurs after any new
+semantic revision has been completely published. It aborts the candidate,
+preserves that publication, clears presentation-pending intent for the failed
+attempt, requests no automatic presentation retry, and routes the exact
+failure through layered disposition. Only explicit backpressure or retryable
+refusal creates presentation-pending intent. Non-retryable refusal performs
+the terminal behavior below.
+
 ### Refusal recovery
 
-`.backpressured` and `.retryableRefusal` after semantic publication preserve
-only `PresentationPendingIntent` for the latest published revision and request
-one coalesced `.presentationPending` wake. A newer published semantic revision
-replaces the older pending revision and resets its attempt ordinal to zero.
-The refused payload is never retained.
+`.backpressured` after semantic publication preserves only
+`PresentationPendingIntent` for the latest published revision and requests one
+coalesced `.presentationPending` wake. It preserves the existing
+`retryableRefusalCount` for the same revision or starts at `0` for a newer
+revision. Backpressure recovery is paced by endpoint readiness or the host and
+does not consume the finite retryable-refusal budget.
 
-Each recovery opportunity rederives semantic/layout/render output from current
-state and creates a fresh candidate frame. It does not apply an old mutation,
-invoke an old action, repeat an effect, or replay an operation. A finite host
-policy decides pacing and the maximum attempts through SPEC-003's residual
-policy seam.
+`.retryableRefusal` checked-increments the count for the latest revision. If
+the new count is below the configured maximum, the coordinator retains only
+that intent and requests one coalesced `.presentationPending` wake. If it
+equals the maximum or cannot be represented, the coordinator retains no
+pending intent and performs terminal exhaustion; the subsequent residual-
+policy input MUST NOT allow `requestPacedRetry`. A newer published semantic
+revision records `.superseded`, replaces the older intent, and starts its own
+count as defined above. No path retains the refused payload.
 
-Policy exhaustion, `.nonRetryableRefusal`, or loss of a required presentation
-facility marks that facility explicitly unavailable, clears pending retry
-intent, cancels active captures, and quiesces affected presentation-coupled
-interaction. Mandatory coordinator effects occur before residual policy. A
-policy cannot reinterpret refusal as success or preserve an apparently active
-stale UI.
+Each recovery opportunity rederives semantic, layout, routing, and render
+inputs from current state and creates a fresh candidate frame. It does not
+apply an old mutation, invoke an old action, repeat an effect, or replay an
+operation. The finite host policy supplies pacing and the configured maximum
+when assembling the runtime; the maximum is immutable for that runtime
+lifetime and is snapshotted with cycle-stable configuration. Pacing controls
+when the requested opportunity occurs but cannot alter the counter or the
+checked terminal transition. For a retryable refusal whose prior stored count
+is `c`, any SPEC-003 residual-policy input uses `attemptOrdinal == c` and
+`attemptLimit == configuredMaximum`; after terminal exhaustion its allowed set
+MUST exclude `requestPacedRetry`.
+
+Retryable-policy exhaustion, `.nonRetryableRefusal`, or loss of a required
+presentation facility sets `presentationIntentState` to `.unavailable`, clears
+pending intent, cancels active captures, and quiesces affected presentation-
+coupled interaction. A non-retryable refusal caused by SPEC-008's idle-sink
+`begin` refusal returns
+`.nonRetryableRefusal(.renderProducer)`; a refusal returned without calling
+the body returns `.nonRetryableRefusal(.endpoint)`. Mandatory coordinator
+effects occur before residual policy. A policy cannot reinterpret refusal as
+success or preserve an apparently active stale UI.
 
 ### Presentation-coupled pointer admission
 
@@ -709,24 +1028,47 @@ The target-local integration first stamps an event with a locally eligible
 yet established, it drops the event and cancels the source sequence without
 requiring a queue insertion.
 
-At runtime admission, Execution validates the revision again against the
+At pointer submission, Execution validates the revision again against the
 currently committed routing revision. This closes the race between target
-gating and admission. A mismatch is dropped, never deferred or retargeted, and
-cancels the source sequence.
+gating and queue ownership; mismatch returns `.invalidProvenance`. Seal-time
+revalidation closes a later commit race; mismatch returns the complete cycle
+failure defined above. Both paths drop rather than defer or retarget the event
+and perform complete source-sequence cancellation.
 
-For each bounded `InputSourceID`:
+For each bounded `InputSourceID`, the target gate allocates a runtime-visible
+sequence only for a down it submits. A wholly target-local physical sequence
+from which no phase is submitted consumes no runtime-visible sequence value;
+the gate MUST abandon all of its phases before reusing the still-unsubmitted
+value. Once any phase of a sequence has been submitted, that value is consumed
+even if runtime admission later refuses or drops it. Subject to that rule:
 
-- a valid `down` must begin a fresh non-aliased sequence, clear older capture,
-  and have the first valid ordinal for that sequence;
-- repeated/down-without-resynchronization, missing, duplicate, decreasing, or
-  wrapped/ambiguous ordinals are invalid;
-- `move` and `up` must match the active sequence and strictly advance ordinal;
+- the first submitted sequence in one runtime lifetime has raw value `0`; each
+  later submitted sequence is the exact checked successor of the last
+  submitted sequence for that source;
+- a valid `down` has ordinal raw value `0`, begins that fresh sequence, and
+  clears older capture before hit resolution;
+- `move` and `up` must match the active sequence and use the exact checked
+  successor of the last admitted ordinal; gaps, duplicates, decreases, and
+  wrap are invalid;
+- a new down may replace an active or cancelled non-exhausted prior sequence
+  and resynchronize the source only when its target-local gate has completed
+  or abandoned the prior physical sequence, can prove that no older phase
+  remains submit-able, and supplies the exact successor sequence with ordinal
+  zero; runtime admission then retires the prior sequence and clears its
+  capture before hit resolution;
 - a dropped, malformed, out-of-order, or capacity-refused phase cancels the
   complete source sequence;
 - orphaned later phases are consumed without semantic dispatch until a safe
   terminal phase or new unambiguous down resynchronizes the source; and
-- sequence or ordinal exhaustion that could alias a late phase quiesces the
-  source until resynchronization can be proven.
+- ordinal exhaustion cancels the current sequence and permits only the safe
+  successor-down resynchronization above; sequence exhaustion quiesces the
+  source for the remainder of the runtime lifetime and requires runtime
+  reassembly before another sequence can be admitted.
+
+The target gate MUST enforce its resynchronization proof before submission;
+runtime admission independently enforces the numeric sequence and ordinal
+rules. A target that cannot prove the gate condition drops the down and keeps
+the source cancelled. No sequence or ordinal raw value wraps or aliases.
 
 A validated down may capture the hit action only when the committed action
 view reports one exact identity, a current generation, and enabled state. Move
@@ -735,6 +1077,11 @@ callable itself; it yields an activation candidate only if provenance remains
 valid, the release resolves the same identity, the current generation equals
 the captured generation, and the action remains enabled. Any failed check
 cancels activation and retains no former payload.
+
+That activation candidate joins the semantic-action segment of the same cycle
+before the seal closes. It is invoked once in `.mutating` after the admitted
+state-change and completion facts. It is never queued as a new external action
+and never deferred independently from the pointer event that produced it.
 
 A committed revision may advance during a press without cancelling it when
 the exact committed identity-generation record remains unchanged and every
@@ -779,6 +1126,40 @@ The authoritative state axes are independent:
 
 No transition on the physical-presentation axis may roll back another axis.
 
+The following matrix is exhaustive for every started cycle. “Prior” means the
+authoritative value on entry; “derived” is `.published` when the cycle
+published a new revision and `.unchanged` when it reused the latest complete
+revision during presentation recovery.
+
+| Terminal condition | Semantic disposition | Logical frame | Committed presentation revision | Presentation intent |
+| --- | --- | --- | --- | --- |
+| no semantic change and no presentation obligation | `unchanged` | `notProduced` | prior | `satisfied` |
+| pre-publication failure before any dirty work exists | `unchanged` | `notProduced` | prior | prior intent |
+| pre-publication failure after mutation or during dirty recovery | `dirty` | `notProduced` | prior | prior intent |
+| derived candidate accepted | derived | `committed` | reserved new revision | `satisfied` |
+| derived candidate backpressured | derived | `aborted` | prior | `pending`, count preserved or zero |
+| derived candidate retryably refused below limit | derived | `aborted` | prior | `pending`, checked increment |
+| retryable-refusal limit reached | derived | `aborted` | prior | `unavailable` |
+| non-retryable refusal | derived | `aborted` | prior | `unavailable` |
+| post-publication render/offer failure | derived | `aborted` | prior | `satisfied`, unless residual policy separately marks the facility unavailable |
+| pre-offer candidate-ID failure after publication/recovery | derived | `notProduced` | prior | `satisfied`, unless residual policy separately marks the facility unavailable |
+| pre-offer presentation-identity failure after candidate allocation | derived | `aborted` | prior | `satisfied`, unless residual policy separately marks the facility unavailable |
+| required presentation facility lost before candidate allocation | derived | `notProduced` | prior | `unavailable` |
+| required presentation facility lost after candidate allocation and before acceptance | derived | `aborted` | prior | `unavailable` |
+
+“Satisfied” in this matrix means that Core retains no automatic presentation-
+recovery obligation; it does not claim that the latest semantic revision was
+physically displayed. A later admitted semantic change may create another
+candidate when the facility remains available. `.unavailable` prevents such a
+candidate until later host configuration reassembles a healthy facility.
+
+Within a row, `superseded` is recorded when a new publication replaces older
+pending intent, and `deferredToLaterAdmission` is recorded whenever valid work
+remains after the seal. Backpressure or retryable refusal adds its own event;
+`noChange` is recorded only for the first row. These event combinations use the
+primary precedence defined with `RunCycleResult` and never depend on profile-
+private scheduling.
+
 ## Capability Requirements
 
 This Specification declares no capability and performs no capability
@@ -806,31 +1187,96 @@ contracts remain downstream.
 
 ## Error Handling
 
-Execution detects local errors in this precedence order when multiple
-conditions are visible at one boundary: reentrancy, phase, identity/provenance,
-value/arithmetic, capacity, required-facility state, then invariant failure.
-It stops at the first failure, performs mandatory mechanical containment, and
-returns no partial successful summary.
+Execution detects local errors in this exact precedence order when multiple
+conditions are visible at one boundary: `reentrancyViolation`, `invalidPhase`,
+`identityExhausted`, `invalidProvenance`, `invalidValue`,
+`arithmeticOverflow`, `capacityExhausted`,
+`requiredFacilityUnavailable`, then `invariantViolation`. It stops at the first
+failure, performs mandatory mechanical containment, and returns no partial
+successful summary. A lower producer's already-selected local error is not
+re-ranked by this list; its owning Specification's precedence remains exact.
 
-The `GiftUIFailureExecution` adapter MUST map local failures exactly:
+Admission outcomes map independently of `RunCycleResult`:
+
+| Admission result | SPEC-003 outcome | origin | affected scope | containment |
+| --- | --- | --- | --- | --- |
+| `queued` | success | — | — | — |
+| `capacityRefused` | failure `capacityExhausted` | `execution` | `operation` | `contained` |
+| `unavailable` | failure `requiredFacilityUnavailable` | `execution` | `runtime` | `contained` |
+| `invalidValue` | failure `invalidValue` | `execution` | `operation` | `contained` |
+| `invalidProvenance` | failure `invalidProvenance` | `execution` | `operation` | `contained` |
+
+The admission adapter correlates each failure with the outcome's exact context
+after mandatory pointer cancellation. It does not create a run-cycle summary
+or allocate a new cycle merely to report submission failure.
+
+The `GiftUIFailureExecution` adapter MUST map
+`.execution(error)` failures exactly:
 
 | Execution error | condition | origin | affected scope | containment |
 | --- | --- | --- | --- | --- |
 | invalid value | `invalidValue` | `execution` | `operation` | `contained` |
 | arithmetic overflow | `arithmeticOverflow` | `foundation` | `operation` | `contained` |
 | capacity exhausted before publication | `capacityExhausted` | `execution` | `activeCycle` | `contained` |
-| capacity exhausted during candidate preparation/offer | `capacityExhausted` | detecting producer or `backend` | `candidateFrame` | `contained` |
+| capacity exhausted during execution-owned candidate staging | `capacityExhausted` | `execution` | `candidateFrame` | `contained` |
 | identity exhausted | `invalidIdentity` | `execution` | smallest affected scope | `contained` unless safe reuse cannot be proven |
 | invalid provenance | `invalidProvenance` | `execution` | `operation` | `contained` |
 | invalid phase | `invalidPhase` | `execution` | `activeCycle` | `contained` |
 | reentrancy violation | `reentrancyViolation` | `execution` | `activeCycle` | `safetyNotProven` |
-| required facility unavailable | `requiredFacilityUnavailable` | detecting integration or `execution` | `runtime` | `contained` |
+| required facility unavailable | `requiredFacilityUnavailable` | `execution` | `runtime` | `contained` |
 | invariant violation | `invariantViolation` | `execution` | `runtime` | `safetyNotProven` |
 
 `smallest affected scope` is `.operation` for one rejected new allocation,
 `.activeCycle` when the active cycle cannot continue, and `.runtime` when
 alias-free future allocation cannot be proven. An adapter MUST NOT narrow the
 scope or improve containment without contract evidence.
+
+`.renderProduction(error)` preserves the exact SPEC-008 local error and uses
+SPEC-008's approved mapping without reinterpretation:
+
+| Render error | condition | origin | affected scope | containment |
+| --- | --- | --- | --- | --- |
+| `invalidInput` | `invalidValue` | `rendering` | `candidateFrame` | `contained` |
+| `arithmeticOverflow` | `arithmeticOverflow` | `foundation` | `operation` | `contained` |
+| `capacityExhausted` | `capacityExhausted` | `rendering` | `candidateFrame` | `contained` |
+| `incompatibleTextResource` | `invalidValue` | `rendering` | `candidateFrame` | `contained` |
+| `reentrancyViolation` | `reentrancyViolation` | `rendering` | `activeCycle` | `safetyNotProven` |
+| `invariantViolation` | `invariantViolation` | `rendering` | `runtime` | `safetyNotProven` |
+
+SPEC-008's `sinkRefused` is represented by
+`.nonRetryableRefusal(.renderProducer)`, which implicitly and uniquely
+preserves that local error and maps to `nonRetryableRefusal`, origin
+`rendering`, scope `candidateFrame`, containment `contained`.
+
+`.frameOffer(.invalidEnvelope)` maps to `invalidValue`, origin `backend`, scope
+`candidateFrame`, containment `contained`. `.frameOffer(.contractViolation)`
+maps to `invariantViolation`, origin `backend`, scope `runtime`, containment
+`safetyNotProven`. `.frameOffer(.insufficientCapacity)` and
+`.frameOffer(.producerFailed)` are not legal coordinator failures: a matching
+body result must instead preserve the exact `.renderProduction` error, and an
+unmatched endpoint payload normalizes to
+`.frameOffer(.contractViolation)`.
+
+`.nonRetryableRefusal(.endpoint)` maps to `nonRetryableRefusal`, origin
+`backend`, scope `candidateFrame`, containment `contained`. The
+`.renderProducer` case uses the distinct rendering mapping above. Both perform
+the same mandatory abort and unavailable/quiescent transition before mapping.
+
+The coordinator's exhaustive offer normalization is:
+
+| Body observation | Endpoint result | Local cycle result |
+| --- | --- | --- |
+| not called | `backpressured` | operational `backpressured` |
+| not called | `retryableRefusal` | operational `retryableRefusal`, or the same primary event plus terminal exhaustion |
+| not called | `nonRetryableRefusal` | failure `nonRetryableRefusal(.endpoint)` |
+| not called | `failed(.invalidEnvelope)` | failure `frameOffer(.invalidEnvelope)` |
+| not called | `failed(.contractViolation)` | failure `frameOffer(.contractViolation)` |
+| `complete` | `accepted` | success or another recorded operational event with a committed summary |
+| `producerFailed` with retained error | `failed(.producerFailed)` | failure `renderProduction(retainedError)` |
+| `insufficientCapacity` with retained `.capacityExhausted` | `failed(.insufficientCapacity)` | failure `renderProduction(.capacityExhausted)` |
+| `endpointRefused` with retained `.sinkRefused` | `nonRetryableRefusal` | failure `nonRetryableRefusal(.renderProducer)` |
+| `contractViolation` with retained `.invariantViolation` | `failed(.contractViolation)` | failure `renderProduction(.invariantViolation)` |
+| any other pairing | any | failure `frameOffer(.contractViolation)` |
 
 Expected outcomes map as follows:
 
@@ -842,10 +1288,13 @@ Expected outcomes map as follows:
 | newer pending revision replaces older intent | `superseded` | `execution` | `candidateFrame` |
 | valid work arrived after the seal | `deferredToLaterAdmission` | `execution` | `activeCycle` |
 
-After mapping, the adapter wraps the exact fact and `ExecutionContext` in
-`GiftUICorrelatedFailure`. Optional annotations or diagnostics cannot replace
-or alter either. Mechanical containment and mandatory cycle/frame effects run
-before residual target policy.
+After failure mapping, the adapter wraps the exact fact and
+`ExecutionContext` in `GiftUICorrelatedFailure`. For an operational result it
+constructs the exact `GiftUIOperationalFact` and carries the same context to
+the owning coordinator/policy seam without manufacturing a failure envelope.
+Optional annotations or diagnostics cannot replace or alter either path.
+Mechanical containment and mandatory cycle/frame effects run before residual
+target policy.
 
 Diagnostics MAY observe outcomes and health transitions, but diagnostic
 selection, saturation, loss, or sink failure MUST NOT change admission,
@@ -877,8 +1326,20 @@ The following value ceilings apply on every supported compiler:
 - `ExecutionLimits` exactly 12 bytes;
 - `ExecutionContext` no greater than 24 bytes;
 - `FrameProvenance` exactly 12 bytes;
-- `PresentationPendingIntent` no greater than 8 bytes; and
-- `FrameOfferResult` no greater than 2 bytes.
+- `PresentationPendingIntent` no greater than 8 bytes;
+- `FrameOfferResult` no greater than 2 bytes;
+- `ExecutionAdmissionOutcome` no greater than 28 bytes;
+- `AdmissionSummary` no greater than 12 bytes;
+- `RunCycleSummary` no greater than 40 bytes;
+- `RunCycleResult` no greater than 64 bytes;
+- `ExecutionPhase`, `AdmissionKind`, `FrameOfferDisposition`,
+  `LogicalFrameDisposition`, `FrameStreamResult`, `FrameOfferFailure`,
+  `ExecutionAdmissionResult`, `FrameRefusalOrigin`, `PresentationIntentState`,
+  `ExecutionError`, `SemanticCycleDisposition`, and `ExecutionOperational`
+  exactly 1 byte each;
+- `ExecutionWakeReasons` and `ExecutionOperationalEvents` exactly 1 byte each;
+  and
+- `RunCycleFailure` no greater than 2 bytes.
 
 Static fixtures MUST allocate zero heap bytes in admission, sequencing, cycle
 coordination, refusal recovery, wake coalescing, correlation construction, and
@@ -906,6 +1367,28 @@ is identical.
 
 ## Testing Requirements
 
+### Reproducible evidence configuration
+
+The compilers, target triples, SDKs, and optimization modes are exactly those
+fixed by SPEC-002's current `Reproducible evidence configuration`.
+Implementation MUST provide one checked-in driver at
+`scripts/contracts/run-spec-009.sh` with these exact invocations:
+
+```text
+scripts/contracts/run-spec-009.sh --profile macos-dynamic
+scripts/contracts/run-spec-009.sh --profile macos-static
+scripts/contracts/run-spec-009.sh --profile raspberry-pi-armv6
+scripts/contracts/run-spec-009.sh --profile nrf52840-embedded
+```
+
+The driver MUST fail on an unavailable compiler or SDK, unknown or duplicate
+fixture case, missing required field, unreferenced fixture data, transcript or
+result mismatch, value-layout violation, allocation violation, dependency-
+graph violation, or target-inspection failure. It records the complete command
+line, compiler identity, repository revision, fixture-manifest digest, value
+layouts, queue/workspace and stack high-water values, allocation count, timing
+method and samples, section deltas, and link maps.
+
 ### Required fixtures
 
 `Tests/ContractFixtures/SPEC009/` MUST contain:
@@ -920,33 +1403,71 @@ is identical.
   finite attempts, non-retryable refusal, unavailability, and quiescence; and
 - `signal-analyzer.yaml` for the 80-facts/second and 250-millisecond workload.
 
+Every case has the shared fields `name`, `initialState`, `limits`,
+`preOpportunityAdmissions`, `phaseInjections`, `endpointScript`,
+`expectedPhaseTranscript`, `expectedAdmissionSummary`, `expectedResult`,
+`expectedAuthoritativeState`, `expectedWakeTransitions`, and
+`expectedFailureOrOperationalMapping`. A file may add domain-specific fields,
+but none of the shared fields may be omitted; a domain-inapplicable field uses
+an explicit `none` value. `endpointScript` records whether
+the body is called, its exact `FrameStreamResult` and retained SPEC-008 local
+error when applicable, the returned `FrameOfferResult`, and whether
+irreversible output began. Input cases additionally record initial and final
+per-source sequence, ordinal, capture, cancellation, and quiescence state.
+Recovery cases record the configured maximum, count before and after, pacing
+opportunity, supersession, and terminal availability. Signal Analyzer cases
+record fact timestamps, opportunity timestamps, publications, offers, wakes,
+and high-water values.
+
 Fixtures compare exact numeric fields and symbolic stable identity tokens;
 they MUST NOT compare pointers, closure identity, strings, metatype addresses,
 hash collisions, enum memory bytes, or profile-private raw semantic identity.
+The canonical loader rejects a case whose declared primary operational result
+does not match the required precedence or whose summary violates the legal
+state matrix.
 
 ### Contract tests
 
 Tests MUST:
 
+- drive pointer, state-change, and completion submission plus host opportunity
+  entry only through `ExecutionAdmissionSink` and
+  `ExecutionOpportunityRunner`;
+- exercise every admission result for every submission family and prove exact
+  ownership, wake, pointer-cancellation, context, and SPEC-003 mapping;
+- race pointer submission and sealing against separate frame commits and prove
+  the exact synchronous admission rejection and seal-time cycle-failure paths;
+- exercise every legal and rejected `RunCycleSummary` combination, every
+  simultaneous operational-event combination, and exact primary precedence;
+- acknowledge a wake at opportunity entry, inject a new wake reason during
+  every later phase and finalization, and prove no request is lost or emitted
+  more than once per empty-to-nonempty transition;
 - inject work before sealing, during every active phase, during offer, and
   during finalization and verify exact current/later admission membership;
 - apply mutations and actions, fail each later phase, refuse offers, supersede
   pending work, and inject post-handoff failure while proving at-most-once
   effects;
-- verify complete publication and that no partial semantic/layout/render or
-  routing result becomes current;
+- admit an activating up with state-change and completion facts, prove its
+  activation joins the same seal after both fact categories, and prove no
+  callable is invoked during submission or admission;
+- verify complete publication and that no partial semantic, layout,
+  action-table, routing, or immutable-render-input result becomes current;
 - fail derivation after mutation and prove dirty wake/rederivation without
   replay or synchronous recursion;
 - verify semantic publication survives every presentation outcome;
-- script every endpoint disposition and prove exact commit/abort state,
-  operation/body call counts, complete reservation, no retention, and accepted
-  responsibility after irreversible output;
+- script every legal and illegal endpoint/body pairing and prove exact local
+  result, commit/abort state, operation/body call counts, complete reservation,
+  no retention, and accepted responsibility after irreversible output;
 - publish newer revisions while pending and prove constant-space latest-only
   coalescing and finite terminal policy;
 - race target-local input gating with a newer commit and prove the stale event
   drops at runtime admission;
 - drop each pointer phase at every capacity and validation boundary and prove
   complete sequence cancellation and no orphan activation;
+- drop a complete physical sequence only at the target gate, prove it consumes
+  no runtime-visible sequence identity, then replace both active and cancelled
+  runtime-visible sequences with the exact successor down and prove capture is
+  cleared before hit resolution;
 - preserve one capture over an unrelated committed revision, then remove,
   move, disable, or replace the action and prove release behavior;
 - exhaust every identity and capacity at exactly the bound and one over;
@@ -971,48 +1492,60 @@ for Specification approval.
 ## Acceptance Criteria
 
 - [ ] **EX-001:** All execution identities, phase values, limits, contexts,
-  wake reasons, pending intent, frame provenance/results, and local results
-  match the exact declarations, raw widths, construction, and value-layout
-  bounds in this contract.
+  wake reasons, pending intent/count, frame provenance/results, admission and
+  opportunity protocols, operational-event set, presentation-intent state,
+  and local failures/results match the exact declarations, construction,
+  normalization, raw widths, and value-layout bounds in this contract.
 - [ ] **EX-002:** Scripted cycles seal exact ordered membership, defer all
   after-seal work, apply every mutation/action at most once, freeze derivation,
   publish only complete revisions, and always finalize to idle.
-- [ ] **EX-003:** Every semantic/layout/render failure after mutation leaves
-  state dirty, requests one paced wake, publishes no partial result, and
-  rederives from current state without replay or immediate recursion.
-- [ ] **EX-004:** Every frame is offered at most once; acceptance occurs only
-  after complete stream consumption and reservation, atomically commits frame
-  plus routing state, and retains no borrowed operation or resource.
+- [ ] **EX-003:** Every pre-publication semantic, layout, action-table, routing,
+  or immutable-render-input failure after mutation leaves state dirty,
+  requests one paced wake, publishes no partial result, and rederives from
+  current state without replay or immediate recursion; every offer-time render
+  failure preserves an already complete publication and follows the exhaustive
+  abort/failure table.
+- [ ] **EX-004:** Every candidate reserves its presentation revision and action
+  generations before offer, every frame is offered at most once, and
+  acceptance occurs only after complete stream consumption and downstream
+  reservation, atomically commits frame plus routing state, and retains no
+  borrowed operation or resource.
 - [ ] **EX-005:** Every pre-acceptance refusal has no irreversible effect,
   aborts the candidate, preserves the previous committed frame/routing state,
-  and retains no payload; every post-output condition remains accepted
-  endpoint health and cannot reopen Core disposition.
+  retains no payload, and produces the exact call/result/failure mapping;
+  every post-output condition remains accepted endpoint health and cannot
+  reopen Core disposition.
 - [ ] **EX-006:** Retryable refusal retains only the latest constant-space
-  presentation intent, coalesces newer revisions, requests separately paced
-  recovery, and reaches accepted handoff or explicit unavailable/quiescent
-  terminal state under finite policy.
+  presentation intent, checked-increments its count without wrap, coalesces
+  newer revisions, requests separately paced recovery, and reaches accepted
+  handoff or explicit unavailable/quiescent terminal state at the configured
+  `1...255` bound; backpressure remains distinct and does not consume that
+  count.
 - [ ] **EX-007:** Target and runtime provenance checks, pointer phase/ordinal
-  sequencing, drop cancellation, resynchronization, and identity exhaustion
-  pass the complete `input.yaml` corpus without deferred input or historical
-  hit-map storage.
+  zero/start and exact-successor sequencing, drop cancellation, proven
+  resynchronization, and no-wrap exhaustion pass the complete `input.yaml`
+  corpus without deferred input or historical hit-map storage.
 - [ ] **EX-008:** Captures contain only the exact SPEC-006 identity-generation
   pair; stable records survive unrelated revision changes, while removal,
   movement, disabled state, payload replacement, generation mismatch, or
   ambiguous reuse invokes neither former nor replacement payload.
-- [ ] **EX-009:** Every local error and operational event maps to the exact
-  SPEC-003 fact, scope, containment, and `ExecutionContext`; mandatory
+- [ ] **EX-009:** Every admission outcome, `RunCycleFailure`, legal offer/body
+  pairing, illegal pairing, and primary operational event maps to the exact
+  SPEC-003 fact, origin, scope, containment, and `ExecutionContext`; mandatory
   containment precedes total residual policy and diagnostics never affect
   correctness.
 - [ ] **EX-010:** Recording, dynamic, and static fixtures produce equal sealed
   membership, phase order, identities, results, frame dispositions, input
-  cancellations, and failure mappings for the same inputs and limits.
+  cancellations, operational-event sets, and failure mappings for the same
+  inputs and limits through the common admission and opportunity protocols.
 - [ ] **EX-011:** The Signal Analyzer fixture sustains its required admission
   and presentation workload within the declared fixture limits, with
   coalesced wakes/publications and at most one pending presentation intent.
-- [ ] **EX-012:** Static paths allocate zero heap bytes, all value-layout and
-  high-water requirements pass, package dependency tests preserve the focused
-  execution boundary, and both cross-build configurations produce the required
-  non-hardware evidence.
+- [ ] **EX-012:** All four exact `run-spec-009.sh` commands pass the canonical
+  schema and complete corpus; static paths allocate zero heap bytes, all value-
+  layout and high-water requirements pass, package dependency tests preserve
+  the focused execution boundary, and both cross-build configurations produce
+  the required non-hardware evidence.
 - [ ] **EX-013:** Review finds no public observable-state syntax/storage,
   Button/disabled or callable-lowering contract, concrete runtime-profile
   storage, capability catalogue, rasterization/backend realization, host
