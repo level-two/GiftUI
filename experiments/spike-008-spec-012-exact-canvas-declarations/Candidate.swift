@@ -2,6 +2,10 @@
 
 public protocol View {}
 
+public protocol _GiftUISemanticTraversalVisitor {
+    mutating func visitPrimitive<Primitive>(_ primitive: borrowing Primitive)
+}
+
 public typealias GeometryScalar = Int32
 
 public struct Point: Equatable, Sendable {
@@ -96,30 +100,22 @@ public struct Path: ~Copyable {
         pointCount = 0
     }
 
-    public mutating func move(to point: Point) throws {
+    public mutating func move(to point: Point) throws(DrawingError) {
         current = point
         first = point
         hasCurrent = true
         pointCount = 1
     }
 
-    public mutating func addLine(to point: Point) throws {
-#if SPIKE008_NO_THROW_VALUES
-        guard hasCurrent, pointCount < UInt8.max else { return }
-#else
+    public mutating func addLine(to point: Point) throws(DrawingError) {
         guard hasCurrent else { throw DrawingError.invalidPathState }
         guard pointCount < UInt8.max else { throw DrawingError.capacityExhausted }
-#endif
         current = point
         pointCount &+= 1
     }
 
-    fileprivate borrowing func fixtureDigest() throws -> UInt32 {
-#if SPIKE008_NO_THROW_VALUES
-        guard hasCurrent else { return 0 }
-#else
+    fileprivate borrowing func fixtureDigest() throws(DrawingError) -> UInt32 {
         guard hasCurrent else { throw DrawingError.invalidPathState }
-#endif
         return UInt32(bitPattern: first.x) ^
             (UInt32(bitPattern: first.y) &* 3) ^
             (UInt32(bitPattern: current.x) &* 5) ^
@@ -144,18 +140,21 @@ public struct GraphicsContext: ~Copyable {
     }
 
     public mutating func withPath<Result>(
-        _ body: (inout Path) throws -> Result
-    ) throws -> Result {
+        _ body: (
+            inout GraphicsContext,
+            inout Path
+        ) throws(DrawingError) -> Result
+    ) throws(DrawingError) -> Result {
         var path = Path()
         defer { path.reset() }
-        return try body(&path)
+        return try body(&self, &path)
     }
 
     public mutating func stroke(
         _ path: borrowing Path,
         with shading: Shading,
         lineWidth: GeometryScalar
-    ) throws {
+    ) throws(DrawingError) {
         try stroke(
             path,
             with: shading,
@@ -167,12 +166,8 @@ public struct GraphicsContext: ~Copyable {
         _ path: borrowing Path,
         with shading: Shading,
         style: StrokeStyle
-    ) throws {
-#if SPIKE008_NO_THROW_VALUES
-        guard style.lineWidth > 0 else { return }
-#else
+    ) throws(DrawingError) {
         guard style.lineWidth > 0 else { throw DrawingError.invalidValue }
-#endif
         transcript ^= try path.fixtureDigest()
         transcript ^= UInt32(shading.value.red) << 16
         transcript ^= UInt32(shading.value.green) << 8
@@ -189,11 +184,26 @@ public struct GraphicsContext: ~Copyable {
 }
 
 public struct Canvas: View {
+    public typealias Body = Never
+
     public init(
-        _ draw: @escaping (inout GraphicsContext, Size) throws -> Void
+        _ draw: @escaping (
+            inout GraphicsContext,
+            Size
+        ) throws(DrawingError) -> Void
     ) {
         // Static lowering consumes the source closure before semantic retention.
         // This declaration fixture intentionally stores no escaping closure.
+    }
+
+    public var body: Never {
+        fatalError("Canvas is a semantic primitive")
+    }
+
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    ) {
+        visitor.visitPrimitive(self)
     }
 }
 
@@ -206,7 +216,7 @@ private protocol StaticCanvasCallable: ~Copyable {
     borrowing func invoke(
         _ context: inout GraphicsContext,
         _ size: Size
-    ) throws
+    ) throws(DrawingError)
 }
 
 private struct GeneratedCanvasCallable: StaticCanvasCallable, ~Copyable {
@@ -218,16 +228,11 @@ private struct GeneratedCanvasCallable: StaticCanvasCallable, ~Copyable {
     borrowing func invoke(
         _ context: inout GraphicsContext,
         _ size: Size
-    ) throws {
-#if SPIKE008_EXACT_CALLABLE
-        try context.withPath { path in
+    ) throws(DrawingError) {
+        try context.withPath { (context, path) throws(DrawingError) in
             try path.move(to: origin)
             if tag == .throwingTrace {
-#if SPIKE008_NO_THROW_VALUES
-                return
-#else
                 throw DrawingError.invalidValue
-#endif
             }
             try path.addLine(to: Point(x: size.width, y: size.height))
             try context.stroke(
@@ -235,31 +240,10 @@ private struct GeneratedCanvasCallable: StaticCanvasCallable, ~Copyable {
                 with: .color(color),
                 style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round)
             )
+
+            try path.addLine(to: Point(x: size.width, y: origin.y))
+            try context.stroke(path, with: .color(color), lineWidth: 1)
         }
-#else
-        // Compile and exercise each exact declaration independently. Enabling
-        // SPIKE008_EXACT_CALLABLE above tests their intended composition and is
-        // expected to fail until the exclusivity conflict is resolved.
-        try context.withPath { path in
-            try path.move(to: origin)
-            if tag == .throwingTrace {
-#if SPIKE008_NO_THROW_VALUES
-                return
-#else
-                throw DrawingError.invalidValue
-#endif
-            }
-            try path.addLine(to: Point(x: size.width, y: size.height))
-        }
-        var fixturePath = Path()
-        try fixturePath.move(to: origin)
-        try fixturePath.addLine(to: Point(x: size.width, y: size.height))
-        try context.stroke(
-            fixturePath,
-            with: .color(color),
-            style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round)
-        )
-#endif
     }
 }
 
@@ -268,15 +252,12 @@ private func invokeGenerated(
     _ callable: borrowing GeneratedCanvasCallable,
     _ context: inout GraphicsContext,
     _ size: Size
-) throws {
+) throws(DrawingError) {
     try callable.invoke(&context, size)
 }
 
 @_cdecl("spike008_swift_run")
 public func spike008SwiftRun(_ seed: UInt32) -> UInt32 {
-#if SPIKE008_NO_THROW_VALUES
-    return seed ^ 0x0080_0000
-#else
     cleanupCount = 0
     var context = GraphicsContext(seed: seed ^ 0x0080_0000)
     let size = Size(width: 320, height: 120)
@@ -299,5 +280,4 @@ public func spike008SwiftRun(_ seed: UInt32) -> UInt32 {
     } catch {
         return 0
     }
-#endif
 }

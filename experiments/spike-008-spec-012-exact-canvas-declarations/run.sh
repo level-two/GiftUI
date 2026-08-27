@@ -91,23 +91,21 @@ expect_host_failure() {
     rg -q "${expected_pattern}" "${log}"
 }
 
-expect_host_failure exact-callable 'overlapping accesses.*context' \
-    -D SPIKE008_EXACT_CALLABLE "${script_dir}/Candidate.swift"
+expect_host_failure outer-context-access 'overlapping accesses.*context' \
+    "${script_dir}/Candidate.swift" \
+    "${script_dir}/IllegalOuterContextAccess.swift"
 expect_host_failure path-copy 'borrowed and cannot be consumed' \
     "${script_dir}/Candidate.swift" "${script_dir}/IllegalPathCopy.swift"
 expect_host_failure path-escape 'requires that.*Path.*conform to.*Copyable' \
     "${script_dir}/Candidate.swift" "${script_dir}/IllegalPathEscape.swift"
 
 build_fixture baseline Baseline.swift
-build_fixture candidate Candidate.swift -DSPIKE008_NO_THROW_VALUES=ON
-expect_embedded_failure exact-throwing 'cannot use a value of protocol type.*any Error'
-expect_embedded_failure exact-callable 'overlapping accesses.*context' \
-    -DSPIKE008_EXACT_CALLABLE=ON -DSPIKE008_NO_THROW_VALUES=ON
+build_fixture candidate Candidate.swift
+expect_embedded_failure outer-context-access 'overlapping accesses.*context' \
+    "-DSPIKE008_EXTRA_SWIFT_SOURCES=${script_dir}/IllegalOuterContextAccess.swift"
 expect_embedded_failure path-copy 'borrowed and cannot be consumed' \
-    -DSPIKE008_NO_THROW_VALUES=ON \
     "-DSPIKE008_EXTRA_SWIFT_SOURCES=${script_dir}/IllegalPathCopy.swift"
 expect_embedded_failure path-escape 'requires that.*Path.*conform to.*Copyable' \
-    -DSPIKE008_NO_THROW_VALUES=ON \
     "-DSPIKE008_EXTRA_SWIFT_SOURCES=${script_dir}/IllegalPathEscape.swift"
 
 baseline_dir="${build_root}/spike-008-baseline"
@@ -133,7 +131,7 @@ grep -Fqx 'CONFIG_COMMON_LIBC_MALLOC_ARENA_SIZE=0' "${report_dir}/zephyr.config"
 grep -Fq 'Machine:                           ARM' "${evidence_dir}/elf-header.txt"
 grep -Fq 'Tag_CPU_arch: v7E-M' "${evidence_dir}/arm-attributes.txt"
 grep -Fq 'Tag_ABI_VFP_args: VFP registers' "${evidence_dir}/arm-attributes.txt"
-if rg -i 'reflection|objc|task|thread|malloc|calloc|realloc|posix_memalign|swift_allocObject|swift_slowAlloc' "${evidence_dir}/candidate-introduced-symbols.txt"; then
+if rg -i 'reflection|objc|task|thread|malloc|calloc|realloc|posix_memalign|swift_allocObject|swift_slowAlloc|swift_(allocError|deallocError|getErrorValue|willThrow|unexpectedError)|__cxa_|ErrorExistential' "${evidence_dir}/candidate-introduced-symbols.txt"; then
     printf 'error: forbidden candidate-introduced linked dependency found\n' >&2
     exit 1
 fi
@@ -161,24 +159,15 @@ cat >"${evidence_dir}/summary.md" <<EOF
 
 ## Result
 
-The individual SPEC-012 declarations, including the generated bounded
-callable's exact throwing \`inout GraphicsContext\` / \`Size\` signature,
-noncopyable values, and borrowed stroke argument, compile and link on macOS
-and Embedded Swift when concrete thrown values are disabled. The macOS runtime
-fixture passes both normal and throwing \`withPath\` cleanup paths.
+The corrected SPEC-012 declarations and generated bounded callable compile and
+link on macOS and Embedded Swift. The callable exercises concrete typed
+\`DrawingError\` throws and the two-\`inout\` \`withPath\` source form, including
+stroke-mutate-stroke reuse of one scoped Path. The macOS runtime fixture passes
+both normal and throwing \`withPath\` cleanup paths.
 
-The exact throwing implementation does **not** compile in Embedded Swift.
-Every concrete \`throw DrawingError...\` expression is rejected because the
-compiler cannot use the required \`any Error\` protocol value.
-
-The intended supported composition does **not** compile on either compiler.
-Calling \`context.stroke(path, ...)\` inside \`context.withPath { ... }\`
-overlaps the modifying access held by \`withPath\`. Moving the stroke outside
-the closure is unavailable because \`Path\` is noncopyable and cannot escape.
-The exact diagnostics are retained beside this summary.
-
-Illegal borrowed-Path consumption and \`withPath\` Path escape fixtures fail
-compilation on both compilers as intended.
+Illegal outer-context access, borrowed-Path consumption, and \`withPath\` Path
+escape fixtures fail compilation on both compilers as intended. The exact
+diagnostics are retained beside this summary.
 
 | Metric | Baseline | Declaration fixture | Delta |
 | --- | ---: | ---: | ---: |
@@ -186,10 +175,10 @@ compilation on both compilers as intended.
 | Linked RAM bytes | ${baseline_ram} | ${candidate_ram} | $((candidate_ram-baseline_ram)) |
 
 The candidate ELF reports ARMv7E-M and VFP register arguments. Both configured
-heaps are zero. The candidate introduces no linked reflection, Objective-C,
-task, thread, or allocator symbol relative to the configuration-equivalent
-baseline. No board was flashed or operated.
+heaps are zero. The candidate introduces no linked \`any Error\`, reflection,
+Objective-C, task, thread, exception-runtime, or allocator symbol relative to
+the configuration-equivalent baseline. No board was flashed or operated.
 EOF
 
-printf 'SPIKE-008 completed with negative exact-composition evidence\n'
+printf 'SPIKE-008 completed with corrected exact-composition evidence\n'
 printf 'Evidence: %s\n' "${evidence_dir}/summary.md"

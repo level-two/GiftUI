@@ -1,20 +1,21 @@
 44-[9/154] Building C object zephyr/CMakeFiles/offsets.dir/arch/arm/core/offsets/offsets.c.obj
 45-[10/154] Building Swift Module 'app_swift' with 2 sources
 46-FAILED: [code=1] app_swift.swiftmodule CMakeFiles/app_swift.dir/Candidate.swift.obj CMakeFiles/app_swift.dir/IllegalPathEscape.swift.obj
-47-/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -target armv7em-none-none-eabi -j 12 -num-threads 12 -c  -parse-as-library -module-name app_swift -module-link-name app_swift -wmo -parse-as-library -Osize -enable-experimental-feature Embedded -Xfrontend -function-sections -Xfrontend -disable-stack-protector -Xcc -mfloat-abi=hard -Xcc -fshort-enums -Xcc -fno-pic -Xcc -fno-pie -Xcc -I -Xcc /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include -DSPIKE008_NO_THROW_VALUES -Xcc -mcpu=cortex-m4 -Xcc -mthumb -Xcc -mabi=aapcs -Xcc -mfpu=fpv4-sp-d16 -Xcc -mtp=soft -Xcc -DKERNEL -Xcc -D__ZEPHYR__=1 -Xcc -D__LINUX_ERRNO_EXTENSIONS__ -Xcc -DPICOLIBC_DOUBLE_PRINTF_SCANF -Xcc -D_POSIX_THREAD_SAFE_FUNCTIONS=200809L -Xcc -DZVFS_OPEN_SIZE=0 -Xcc -D__PROGRAM_START -Xcc -DNRF52840_XXAA -Xcc -DNRF54L_CONFIGURATION_56_ENABLE=0 -Xcc -DK_HEAP_MEM_POOL_SIZE=0 -output-file-map CMakeFiles/app_swift.dir//output-file-map.json -emit-module -emit-module-path app_swift.swiftmodule -I /Users/eugene/work/GiftUI/.build/nrf52840/spike-008-path-escape/zephyr/include/generated/zephyr -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/include -I /Users/eugene/work/GiftUI/.build/nrf52840/spike-008-path-escape/zephyr/include/generated -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/soc/nordic -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/lib/libc/picolibc/include -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/lib/libc/common/include -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/lib/posix/c_lib_ext/getopt -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/lib/midi2/. -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/soc/nordic/nrf52/. -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/soc/nordic/common/. -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/cmsis_6/CMSIS/Core/Include -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/modules/cmsis_6/. -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/include -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/mdk -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/modules/hal_nordic/nrfx/. /Users/eugene/work/GiftUI/experiments/spike-008-spec-012-exact-canvas-declarations/Candidate.swift /Users/eugene/work/GiftUI/experiments/spike-008-spec-012-exact-canvas-declarations/IllegalPathEscape.swift
-48:/Users/eugene/work/GiftUI/experiments/spike-008-spec-012-exact-canvas-declarations/IllegalPathEscape.swift:2:17: error: instance method 'withPath' requires that 'Path' conform to 'Copyable'
-49-1 | func illegalPathEscape(_ context: inout GraphicsContext) throws -> Path {
-50-2 |     try context.withPath { path in
-51:  |                 `- error: instance method 'withPath' requires that 'Path' conform to 'Copyable'
-52-3 |         path
-53-4 |     }
-54-
-55:/Users/eugene/work/GiftUI/experiments/spike-008-spec-012-exact-canvas-declarations/Candidate.swift:146:26: note: 'where Result: Copyable' is implicit here
-56-144 |     }
-57-145 |
-58-146 |     public mutating func withPath<Result>(
-59:    |                          `- note: 'where Result: Copyable' is implicit here
-60-147 |         _ body: (inout Path) throws -> Result
-61-148 |     ) throws -> Result {
-62-[11/154] Generating include/generated/zephyr/offsets.h
-63-ninja: build stopped: subcommand failed.
+47-/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -target armv7em-none-none-eabi -j 12 -num-threads 12 -c  -parse-as-library -module-name app_swift -module-link-name app_swift -wmo -parse-as-library -Osize -enable-experimental-feature Embedded -Xfrontend -function-sections -Xfrontend -disable-stack-protector -Xcc -mfloat-abi=hard -Xcc -fshort-enums -Xcc -fno-pic -Xcc -fno-pie -Xcc -I -Xcc /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include -Xcc -mcpu=cortex-m4 -Xcc -mthumb -Xcc -mabi=aapcs -Xcc -mfpu=fpv4-sp-d16 -Xcc -mtp=soft -Xcc -DKERNEL -Xcc -D__ZEPHYR__=1 -Xcc -D__LINUX_ERRNO_EXTENSIONS__ -Xcc -DPICOLIBC_DOUBLE_PRINTF_SCANF -Xcc -D_POSIX_THREAD_SAFE_FUNCTIONS=200809L -Xcc -DZVFS_OPEN_SIZE=0 -Xcc -D__PROGRAM_START -Xcc -DNRF52840_XXAA -Xcc -DNRF54L_CONFIGURATION_56_ENABLE=0 -Xcc -DK_HEAP_MEM_POOL_SIZE=0 -output-file-map CMakeFiles/app_swift.dir//output-file-map.json -emit-module -emit-module-path app_swift.swiftmodule -I /Users/eugene/work/GiftUI/.build/nrf52840/spike-008-path-escape/zephyr/include/generated/zephyr -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/include -I /Users/eugene/work/GiftUI/.build/nrf52840/spike-008-path-escape/zephyr/include/generated -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/soc/nordic -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/lib/libc/picolibc/include -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/lib/libc/common/include -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/lib/posix/c_lib_ext/getopt -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/lib/midi2/. -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/soc/nordic/nrf52/. -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/soc/nordic/common/. -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/cmsis_6/CMSIS/Core/Include -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/modules/cmsis_6/. -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/include -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/mdk -I /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/modules/hal_nordic/nrfx/. /Users/eugene/work/GiftUI/experiments/spike-008-spec-012-exact-canvas-declarations/Candidate.swift /Users/eugene/work/GiftUI/experiments/spike-008-spec-012-exact-canvas-declarations/IllegalPathEscape.swift
+48:/Users/eugene/work/GiftUI/experiments/spike-008-spec-012-exact-canvas-declarations/IllegalPathEscape.swift:4:17: error: instance method 'withPath' requires that 'Path' conform to 'Copyable'
+49-2 |     _ context: inout GraphicsContext
+50-3 | ) throws(DrawingError) -> Path {
+51-4 |     try context.withPath { (_, path) throws(DrawingError) in
+52:  |                 `- error: instance method 'withPath' requires that 'Path' conform to 'Copyable'
+53-5 |         path
+54-6 |     }
+55-
+56:/Users/eugene/work/GiftUI/experiments/spike-008-spec-012-exact-canvas-declarations/Candidate.swift:142:26: note: 'where Result: Copyable' is implicit here
+57-140 |     }
+58-141 |
+59-142 |     public mutating func withPath<Result>(
+60:    |                          `- note: 'where Result: Copyable' is implicit here
+61-143 |         _ body: (
+62-144 |             inout GraphicsContext,
+63-[11/154] Generating include/generated/zephyr/offsets.h
+64-ninja: build stopped: subcommand failed.

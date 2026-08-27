@@ -41,9 +41,9 @@ target_milestone: MVP
 > **Draft status:** This revision corrects the source-composition and Embedded
 > error-model failures found by SPIKE-008 and completes the semantic, layout,
 > render, execution, capacity, raster, and static-lowering contracts identified
-> during completeness review. The corrected contract still requires tracked
-> cross-profile evidence before review and remains non-authoritative until
-> explicit maintainer approval.
+> during completeness review. SPIKE-008 now records corrected macOS and
+> hardware-free nRF52840 declaration evidence. This Specification remains
+> non-authoritative until review and explicit maintainer approval.
 
 ## Summary
 
@@ -923,43 +923,40 @@ compiles.
 
 ### SPIKE-008 evidence
 
-SPIKE-008 compiled the exact declaration shapes and a generated bounded
-callable's throwing `(inout GraphicsContext, Size)` signature on macOS and in a
-hardware-free Embedded Swift declaration image when concrete thrown values
-were disabled. Illegal borrowed-Path consumption and Path escape failed
-compilation on both compilers as required. The macOS runtime fixture exercised
-normal and throwing `withPath` cleanup successfully.
+SPIKE-008's first run found that the original captured-outer-context source
+form overlapped the modifying `withPath` access and that untyped throws required
+unsupported `any Error` storage in Embedded Swift. This revision responds by
+passing the active context into the `withPath` body and using typed
+`throws(DrawingError)` throughout the public surface.
 
-The declaration-only nRF52840 image retained ARMv7E-M hard-float attributes,
-zero configured heaps, and no candidate-introduced reflection, Objective-C,
-task, thread, or allocator symbols. Whole-module elimination made its linked
-flash and RAM equal to the configuration-equivalent baseline (25,780 and 6,016
-bytes respectively); those values are declaration evidence, not production
-capacity or cost measurements. No board was flashed or operated.
+The tracked rerun compiles the corrected declarations and generated bounded
+callable on macOS and in the hardware-free nRF52840 Embedded Swift image. It
+exercises stroke-mutate-stroke reuse of one scoped Path, concrete typed throws,
+and normal/throwing cleanup on macOS. Captured outer-context access, borrowed-
+Path consumption, and Path escape fail compilation on both compilers.
 
-The original experiment did not validate the intended supported source
-composition or Embedded throwing behavior. This revision responds to both
-negative results by passing the active context into the `withPath` body and
-using typed `throws(DrawingError)` throughout the public surface. A follow-up
-local declaration fixture compiled and linked those corrected forms on macOS
-and the supported hardware-free nRF52840 configuration, including concrete
-typed throws and normal/throwing cleanup, without an `any Error` dependency.
-That local result motivates this contract correction but does not replace the
-tracked cross-profile evidence required by DR-001 and DR-011.
+The executable nRF52840 image retains ARMv7E-M hard-float attributes, zero
+configured heaps, and no candidate-introduced `any Error`, reflection,
+Objective-C, task, thread, exception-runtime, or allocator symbols. Relative
+to the configuration-equivalent baseline it adds 400 linked flash bytes and 0
+linked RAM bytes (26,180 and 6,016 bytes total respectively). Those values are
+bounded fixture evidence, not production capacity or cost measurements. No
+board was flashed or operated.
 
 ## Open Issues
 
-No unresolved contract or architectural issue remains in this draft. The
-tracked SPIKE-008 fixtures still describe the superseded untyped-throws,
-captured-outer-context source shape; updating and rerunning them is required
-conformance evidence for DR-001 and DR-011, not authority for this contract.
+No unresolved contract or architectural issue remains in this draft.
+SPIKE-008 records corrected macOS and hardware-free nRF52840 evidence for the
+declaration, ownership, typed-throws, ABI, heap, and linked-symbol portions of
+DR-001 and DR-011. Full cross-profile conformance remains an implementation-
+stage obligation under the Testing Requirements and Acceptance Criteria.
 
 ## Deferred and Follow-up Work
 
 - [SPIKE-008](../spikes/spike-008-spec-012-exact-canvas-declarations.md)
-  records the negative evidence that caused this source-contract correction.
-  Its fixtures must be revised and rerun before review; its original candidate
-  does not define the corrected contract or any remaining design choice.
+  records both the negative evidence that caused this source-contract
+  correction and the successful corrected-fixture rerun. It remains evidence
+  only and does not define this contract or authorize implementation.
 
 Richer drawing and retained paths remain outside the accepted MVP scope.
 

@@ -1,0 +1,13 @@
+/Users/eugene/work/GiftUI/experiments/spike-008-spec-012-exact-canvas-declarations/IllegalOuterContextAccess.swift:4:9: error: overlapping accesses to 'context', but modification requires exclusive access [#ExclusivityViolation]
+ 2 |     _ context: inout GraphicsContext
+ 3 | ) throws(DrawingError) {
+ 4 |     try context.withPath { (_, path) throws(DrawingError) in
+   |         `- error: overlapping accesses to 'context', but modification requires exclusive access [#ExclusivityViolation]
+ 5 |         try path.move(to: Point(x: 0, y: 0))
+ 6 |         try path.addLine(to: Point(x: 1, y: 1))
+ 7 |         try context.stroke(
+   |             `- note: conflicting access is here
+ 8 |             path,
+ 9 |             with: .color(Color(red: 255, green: 255, blue: 255)),
+
+[#ExclusivityViolation]: <https://docs.swift.org/compiler/documentation/diagnostics/exclusivity-violation>

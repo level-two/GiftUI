@@ -41,14 +41,6 @@ target_compile_options(app_swift PRIVATE
     "SHELL:-Xcc -I -Xcc ${ZEPHYR_SDK_INSTALL_DIR}/arm-zephyr-eabi/picolibc/include"
 )
 
-if(SPIKE008_EXACT_CALLABLE)
-    target_compile_options(app_swift PRIVATE -DSPIKE008_EXACT_CALLABLE)
-endif()
-
-if(SPIKE008_NO_THROW_VALUES)
-    target_compile_options(app_swift PRIVATE -DSPIKE008_NO_THROW_VALUES)
-endif()
-
 foreach(flag ${TOOLCHAIN_C_FLAGS})
     string(FIND "${flag}" "-imacro" is_imacro)
     string(FIND "${flag}" "-mfp16-format" is_mfp16)
