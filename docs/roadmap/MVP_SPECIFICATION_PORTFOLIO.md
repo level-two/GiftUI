@@ -22,15 +22,15 @@ immutable ID, and registered in [the feature manifest](../features.yaml).
 
 The current authoritative inputs are:
 
-- approved RFC-001 through RFC-006 and RFC-008 through RFC-010;
-- accepted ADR-001 and ADR-003 through ADR-032;
+- approved RFC-001 through RFC-006 and RFC-008 through RFC-011;
+- accepted ADR-001 and ADR-003 through ADR-012, ADR-014 through ADR-033;
 - SPEC-001, the Signal Analyzer application contract, currently in `review`;
 - the established [MVP Scope](../MVP_SCOPE.md), including the four supported
   configurations and the Signal Analyzer validation progression.
 
-ADR-002 is superseded by ADR-027 and is not current authority. RFC-007 remains
-`draft`; its delegated-service direction and FW-009 MUST NOT become a required
-MVP Specification dependency.
+ADR-002 is superseded by ADR-027 and ADR-013 is superseded by ADR-033; neither
+is current authority. RFC-007 remains `draft`; its delegated-service direction
+and FW-009 MUST NOT become a required MVP Specification dependency.
 
 The `canvas-drawing` feature completed its decision stage with approved RFC-009
 and accepted ADR-028 through ADR-031. Wave 5 drafts SPEC-010 through SPEC-012
@@ -67,17 +67,19 @@ and diagnostic vocabulary; SPEC-004 owns capability contribution, resolution,
 and the `rasterPresentation` catalogue while referencing the first two
 contracts instead of redefining them.
 
-Wave 2 has completed coordinated approval with these immutable identities:
+Wave 2 retains these immutable identities; SPEC-006 has returned to review for
+ADR-033 alignment:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
 | `TEXT` | `SPEC-005` | `approved` |
-| `DECLARATIVE` | `SPEC-006` | `approved` |
+| `DECLARATIVE` | `SPEC-006` | `review` |
 
 SPEC-005 and SPEC-006 are parallel sibling contracts. SPEC-005 owns exact text
 resource identities, compatible resource views, and resource lifetimes;
 SPEC-006 owns declarative expansion, ordered modifiers, structural identity,
-and action identity. Neither Specification depends on or redefines the other.
+the bounded public action-value protocol, and action identity. Neither
+Specification depends on or redefines the other.
 
 Wave 3 has completed coordinated approval with these immutable identities:
 
@@ -93,11 +95,12 @@ physical semantic, layout, and backend-facing render-core modules remain
 separate; `GiftUIRenderLowering` joins semantic and layout results above
 `GiftUIRenderCore` without exposing either authority to backends.
 
-Wave 4 has completed Specification approval with this immutable identity:
+Wave 4 retains this immutable identity; SPEC-009 has returned to review for
+ADR-033 alignment:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `EXECUTION` | `SPEC-009` | `approved` |
+| `EXECUTION` | `SPEC-009` | `review` |
 
 SPEC-009 owns the serialized run cycle, sealed admission, publication and
 dirty-recovery boundaries, execution provenance, synchronous one-shot frame
@@ -106,15 +109,16 @@ machinery. It leaves observable-state storage, public interaction declarations
 and action lowering, concrete runtime-profile storage, backend realization,
 and host policy values to their downstream portfolio contracts.
 
-Wave 5 has entered drafting with these immutable identities:
+Wave 5 has produced these immutable artifacts and advanced the first two to
+review:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `OBSERVABLE` | `SPEC-010` | `draft` |
-| `INTERACTION` | `SPEC-011` | `draft` |
+| `OBSERVABLE` | `SPEC-010` | `review` |
+| `INTERACTION` | `SPEC-011` | `review` |
 | `DRAWING` | `SPEC-012` | `draft` |
 
-The three drafts may be reviewed independently. None may be treated as an
+The three artifacts may be reviewed independently. None may be treated as an
 implementation contract until its own approval gate closes.
 
 Candidate keys are planning labels, not reserved Specification IDs.
@@ -128,13 +132,13 @@ Candidate keys are planning labels, not reserved Specification IDs.
 | `DECLARATIVE`         | Rank 0 client declarations, fixed builder composition, custom views, ordered modifier semantics, semantic identity, action identity, and structural expansion                                        | ADR-005, ADR-006, ADR-008                                                                     | `FOUNDATION`, `FAILURE`                                               | Recording semantic-tree fixtures compare identity, expansion, modifier order, capacity failure, and dynamic/static source equivalence without layout                                                                         |
 | `LAYOUT`              | Proposal-based stacks, spacer, spacing, alignment, padding, frame constraints, checked placement, hit geometry, and canonical text layout                                                            | ADR-005, ADR-006, ADR-009, ADR-021, ADR-023                                                   | `FOUNDATION`, `TEXT`, `DECLARATIVE`                                   | Table-driven measurement and placement fixtures use a semantic-child adapter and canonical metric provider; no pixel backend is needed                                                                                       |
 | `RENDERING`           | Rank 2 text/color/foreground/background semantics, normalized ordered render operations, positioned glyphs, clipping/damage, line operations, streamability, and semantic-to-render lowering         | ADR-005, ADR-006, ADR-021 through ADR-023                                                     | `FOUNDATION`, `TEXT`, `DECLARATIVE`, `LAYOUT`, `FAILURE`              | A recording operation sink verifies golden ordered operations, bounds, clips, exact resource identities, overflow, and profile equivalence without rasterization                                                             |
-| `EXECUTION`           | Sealed run-cycle admission, mutation/publication phases, frame identity and provenance, synchronous one-shot handoff, refusal recovery, pointer sequencing, identity-generation capture, and presentation-coupled input admission | ADR-010 through ADR-016                                                                       | `FOUNDATION`, `FAILURE`, `DECLARATIVE`, `LAYOUT`, `RENDERING`         | A scripted runtime coordinator, recording backend, and fake wake/input endpoints verify at-most-once effects, commit/refusal, dirty rederivation, stale-input cancellation, replacement-generation mismatch, and finite retry policy                          |
+| `EXECUTION`           | Sealed run-cycle admission, mutation/publication phases, frame identity and provenance, synchronous one-shot handoff, refusal recovery, pointer sequencing, identity-generation capture, and presentation-coupled input admission | ADR-010 through ADR-012, ADR-014 through ADR-016, ADR-033 | `FOUNDATION`, `FAILURE`, `DECLARATIVE`, `LAYOUT`, `RENDERING` | A scripted runtime coordinator, recording backend, and fake wake/input endpoints verify at-most-once effects, commit/refusal, dirty rederivation, stale-input cancellation, action/model-target generation mismatch, and finite retry policy |
 | `DRAWING`             | Laid-out Canvas declaration and invocation, scoped graphics context and uniquely owned transient Path construction, cycle-local immutable plans, canonical straight-line stroke lowering, structural capacities, and pre-offer failure | ADR-028 through ADR-031                                                                       | `FOUNDATION`, `FAILURE`, `CAPABILITY`, `DECLARATIVE`, `LAYOUT`, `RENDERING`, `EXECUTION` | Recording plan and operation sinks verify resolved-size invocation, scoped lifetime, snapshot isolation, painter order, checked local-to-surface geometry, inherited clipping, canonical caps and joins, exhaustion, whole-plan discard, and dynamic/static source equivalence without pixels or hardware |
 | `OBSERVABLE`          | Portable observable `@State`, structural ownership, registration, replacement/removal, coarse invalidation, bounded dynamic/static realization, and Signal Analyzer Presentation-fact admission      | ADR-024 through ADR-027, plus ADR-011 and ADR-014 through ADR-016                             | `FOUNDATION`, `FAILURE`, `DECLARATIVE`, `EXECUTION`                   | Shared model/location fixtures and a fake bounded admission endpoint verify identity, teardown, coalescing, phase violations, exhaustion, stale reports, and application-to-mutation-domain ordering without a backend       |
-| `INTERACTION`         | Public `Button` and `disabled` declarations, enabled-state lowering, committed action records and generations, identity-generation capture without callable retention, normalized-event behavior, and activation semantics                                                      | ADR-005, ADR-006, ADR-011, ADR-013                                                            | `FOUNDATION`, `DECLARATIVE`, `LAYOUT`, `EXECUTION`                    | Normalized pointer fixtures drive recording hit maps and action sinks to verify disabled behavior, exact down/up identity-generation matching, replacement cancellation, stale or cancelled sequences, ordering, and dynamic/static source equivalence without a platform driver |
+| `INTERACTION`         | Finite typed `Button` actions, `disabled`, bounded action/model-target records and generations, identity-generation capture without action/model retention, normalized-event behavior, and current-model handler dispatch | ADR-005, ADR-006, ADR-011, ADR-033 | `FOUNDATION`, `DECLARATIVE`, `LAYOUT`, `EXECUTION`, `OBSERVABLE` | Normalized pointer fixtures verify disabled behavior, exact identity-generation matching, model-replacement cancellation, final target revalidation, ordering, and dynamic/static source equivalence without a platform driver |
 | `RUNTIME-PROFILES`    | Dynamic and static runtime storage/composition, semantic-to-layout-to-render coordination, declared capacities, Canvas/Path/plan workspace ownership, and shared conformance suite                    | ADR-005 through ADR-016, ADR-024 through ADR-026, ADR-028, ADR-029, ADR-031                    | `LAYOUT`, `RENDERING`, `EXECUTION`, `DRAWING`, `OBSERVABLE`, `INTERACTION` | The same small hierarchies and Canvas fixtures execute through both profiles into recording sinks; tests compare semantics, failures, operation order, bounds, snapshot behavior, allocation behavior, and omitted facilities |
 | `BACKEND-INTEGRATION` | Backend SPI, raster/surface contracts, synchronous reservation and consumption, canonical pixel encoding, canonical straight-line stroke realization, payload lifetime, display-target boundary, and backend-local health | ADR-005 through ADR-007, ADR-010, ADR-014 through ADR-016, ADR-020 through ADR-023, ADR-030, ADR-031 | `FAILURE`, `CAPABILITY`, `TEXT`, `RENDERING`, `EXECUTION`, `DRAWING` | Golden operation streams run through recording, framebuffer, and bounded RGB565/tile fixtures; fake display targets verify reservation, transfer lifetime, stroke rasterization, refusal, clipping, quantization, borrowed-address isolation, and post-handoff isolation |
-| `HOST-CONFIGURATION`  | Immutable target-host assembly, structural validation, capability resolution, Canvas producer capacities, environmental contracts, input/display coordination, finite pacing policy, and the four MVP configuration obligations | ADR-006 through ADR-008, ADR-012, ADR-013, ADR-015 through ADR-020, ADR-023, ADR-026, ADR-027, ADR-031 | `CAPABILITY`, `DRAWING`, `OBSERVABLE`, `RUNTIME-PROFILES`, `BACKEND-INTEGRATION` | Hardware-free host fixtures prove graph validation, independent conjunctive Canvas structural-capacity and `rasterPresentation` capability gates, policy completeness, profile selection, and dependency direction; connected-target evidence remains a later conformance gate |
+| `HOST-CONFIGURATION`  | Immutable target-host assembly, structural validation, action-domain/handler/root-model binding, capability resolution, Canvas producer capacities, environmental contracts, input/display coordination, finite pacing policy, and the four MVP configuration obligations | ADR-006 through ADR-008, ADR-012, ADR-015 through ADR-020, ADR-023, ADR-026, ADR-027, ADR-031, ADR-033 | `CAPABILITY`, `DRAWING`, `OBSERVABLE`, `RUNTIME-PROFILES`, `BACKEND-INTEGRATION` | Hardware-free host fixtures prove graph validation, bounded action wiring, independent conjunctive Canvas structural-capacity and `rasterPresentation` gates, policy completeness, profile selection, and dependency direction; connected-target evidence remains a later conformance gate |
 
 `FOUNDATION` defines only portable values and ownership boundaries. It MUST NOT
 absorb declarative semantics merely because those declarations reside in the

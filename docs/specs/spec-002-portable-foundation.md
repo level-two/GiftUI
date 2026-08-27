@@ -6,19 +6,20 @@ status: approved
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-08-26
+updated: 2026-08-27
 proposal:
   - PROPOSAL-003
 related_rfcs:
   - RFC-002
   - RFC-004
+  - RFC-011
 related_adrs:
   - ADR-005
   - ADR-006
   - ADR-007
   - ADR-008
   - ADR-009
-  - ADR-013
+  - ADR-033
 related_specs:
   - SPEC-003
   - SPEC-004
@@ -131,7 +132,7 @@ meaning MUST hold in all four configurations.
   and constrains the normalized input value carried across its admission seam.
 - [ADR-005](../adrs/adr-005-semantic-layout-render-boundary.md) through
   [ADR-009](../adrs/adr-009-checked-integer-geometry.md), plus
-  [ADR-013](../adrs/adr-013-provenance-validated-input-admission.md), are
+  [ADR-033](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md), are
   accepted.
 - The [MVP Scope](../MVP_SCOPE.md) requires one substantially shared portable
   Signal Analyzer presentation across the four supported configurations. This
@@ -188,7 +189,8 @@ portable values or claim a module/import relationship.
   coordinates, dimensions, and scalar arithmetic, with explicit deterministic
   handling of overflow and invalid dimensions. It leaves concrete widths,
   ranges, rounding, and API spellings to this drafting process.
-- **ADR-013 — Provenance-Validated Presentation-Coupled Input:** requires the
+- **ADR-033 — Bounded Application Actions and Model-Target Dispatch:**
+  preserves the requirement that the
   normalized pointer value to carry bounded source and sequence identity plus
   the eligible physical-presentation revision. This Specification owns only
   those value representations; the later EXECUTION contract owns admission,
@@ -491,7 +493,7 @@ presentation-coupled pointer event; any future presentation-independent input
 family requires its own approved contract rather than an absent-provenance
 sentinel. `UInt16` bounds the source namespace to 65,536 representable values;
 actual active-source capacity is a smaller host/runtime contract. The `UInt32`
-sequence, ordinal, and revision namespaces are finite; ADR-013 governs the
+sequence, ordinal, and revision namespaces are finite; ADR-033 governs the
 consumer's fail-closed behavior when reuse or wrap cannot be proven safe. A
 non-activating cancellation fact, if used by EXECUTION, is not a fourth
 `PointerPhase` and does not change this event representation.
@@ -788,7 +790,8 @@ Specification's independent tests.
   precondition, mutable field, source location, and input case that changed,
   and no compatibility shim weakens the checked or bounded contract.
 - [ ] **PF-009:** SPEC-002, SPEC-003, and SPEC-004 preserve their reciprocal
-  ownership rule, and RFC-004/ADR-013 traceability remains bidirectional.
+  ownership rule, and RFC-004/RFC-011/ADR-033 traceability remains
+  bidirectional.
 - [ ] **PF-010:** Review finds no declarative behavior, failure disposition,
   diagnostics, capability resolution, layout policy, input admission,
   backend policy, or host product policy defined normatively by SPEC-002.
@@ -847,7 +850,7 @@ MUST return to RFC/ADR review.
 - [ADR-007: Integration Ownership and Host Composition](../adrs/adr-007-integration-ownership-and-host-composition.md)
 - [ADR-008: Module Dependency Graph and MVP Package Topology](../adrs/adr-008-module-dependency-graph-and-package-topology.md)
 - [ADR-009: Checked Integer Geometry for MVP](../adrs/adr-009-checked-integer-geometry.md)
-- [ADR-013: Provenance-Validated Presentation-Coupled Input](../adrs/adr-013-provenance-validated-input-admission.md)
+- [ADR-033: Bounded Application Actions and Model-Target Dispatch](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md)
 - [SPEC-003: Failure Outcomes and Containment](spec-003-failure-outcomes-and-containment.md)
 - [SPEC-004: Capability Contribution and Resolution](spec-004-capability-contribution-and-resolution.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)

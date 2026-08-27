@@ -155,7 +155,8 @@ contract unless a requirement below states otherwise.
 - [RFC-008](../rfcs/rfc-008-observable-reference-state-architecture.md)
   defines the approved observable-state and Presentation-admission design.
 - ADR-001, ADR-003, ADR-004, ADR-011, ADR-014 through ADR-016, and ADR-024
-  through ADR-027 are the accepted governing decisions. ADR-002 is superseded.
+  through ADR-027, plus ADR-033, are the accepted governing decisions. ADR-002
+  and ADR-013 are superseded.
 
 ### GiftUI dependencies
 
@@ -225,6 +226,10 @@ NOT read a platform clock or schedule timers directly.
 - [ADR-027](../adrs/adr-027-bounded-presentation-fact-admission.md)
   governs synchronous application delivery through bounded immutable fact
   admission into GiftUI's distinct mutation domain and supersedes ADR-002.
+- [ADR-033](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md)
+  governs the finite typed Button action domain, target-composed handler,
+  current-model borrowing, and cancellation when model replacement changes an
+  in-flight action's target generation.
 
 ## Terminology
 
@@ -659,6 +664,25 @@ struct SignalAnalyzerViewState: Equatable, Sendable {
     var errorMessage: SignalAnalyzerDiagnostic?
 }
 
+enum SignalAnalyzerAction: UInt16, GiftUIAction {
+    case start = 0
+    case stop = 1
+    case clear = 2
+    case selectOneSecond = 3
+    case selectTwoSeconds = 4
+    case selectFiveSeconds = 5
+}
+
+struct SignalAnalyzerActionHandler: GiftUIActionHandler {
+    typealias Action = SignalAnalyzerAction
+    typealias Model = SignalAnalyzerViewModel
+
+    mutating func handle(
+        _ action: SignalAnalyzerAction,
+        model: borrowing SignalAnalyzerViewModel
+    )
+}
+
 enum SignalAnalyzerPresentationFact: Equatable, Sendable {
     case captureSnapshot(revision: UInt32, capture: SignalCapture)
     case captureMutation(revision: UInt32, change: SignalCaptureChange)
@@ -692,6 +716,11 @@ protocol SignalAnalyzerFactAdmission {
 
 The duration mapping MUST be exactly 1, 2, and 5 seconds. Initial view state
 MUST be idle, empty capture, two-second window, and no error.
+The action handler MUST use one total switch: `.start`, `.stop`, and `.clear`
+call the corresponding ViewModel intent; the three selection cases call
+`visibleDurationChanged` with their exact `VisibleTimeWindow`. It MUST perform
+no other mutation, retain no model, and provide no default or unknown-action
+fallback.
 An `operationalFailure` fact MUST contain the `.failure` case produced by the
 normalization table below; `.success` and `.operational` are invalid for that
 fact and MUST be rejected before admission.
@@ -754,6 +783,22 @@ struct SignalAnalyzerView: View {
     @State private var viewModel: SignalAnalyzerViewModel
 }
 ```
+
+Its portable controls MUST use qualified finite actions, including these exact
+action mappings:
+
+```swift
+Button("Start", action: SignalAnalyzerAction.start)
+Button("Stop", action: SignalAnalyzerAction.stop)
+Button("Clear", action: SignalAnalyzerAction.clear)
+Button("1 s", action: SignalAnalyzerAction.selectOneSecond)
+Button("2 s", action: SignalAnalyzerAction.selectTwoSeconds)
+Button("5 s", action: SignalAnalyzerAction.selectFiveSeconds)
+```
+
+No portable Button may capture `viewModel`, a use case, repository, adapter,
+or closure. Target assembly MUST install exactly one
+`SignalAnalyzerActionHandler` and bind it to this one root state location.
 
 The assembled analyzer MUST configure exactly one observable state location,
 one active model registration, one dirty bit, one live bit, and capacity for
@@ -1488,6 +1533,10 @@ Tests MUST verify:
   repository publication;
 - capture-revision mismatch preserves current ViewModel capture;
 - each intent reaches its use case;
+- every finite action case reaches exactly its specified ViewModel intent
+  through `SignalAnalyzerActionHandler`, with no default or closure path;
+- replacement after pointer down and after admission invokes neither former
+  nor replacement ViewModel, while failed replacement preserves the old target;
 - a Button-triggered synchronous repository callback is admitted for a later
   cycle and cannot reenter the active ViewModel mutation;
 - thrown and published failures appear as error text;
@@ -1663,6 +1712,12 @@ behavioral, resource, profile, or connected-hardware evidence.
 - [ ] **SA-AC-036:** A Button-triggered synchronous repository callback becomes
   a later fact and cannot reenter the active ViewModel mutation; same-thread
   and distinct-executor fixtures produce equivalent results.
+- [ ] **SA-AC-037:** The six qualified Button actions compile in every profile
+  and the total handler maps each exact case to its required ViewModel intent
+  without closure capture, fallback, or retained model.
+- [ ] **SA-AC-038:** Model replacement after down or after action admission
+  cancels dispatch and invokes neither model; failed replacement preserves the
+  former binding and permits only a newly valid interaction.
 - [ ] **SA-AC-037:** Embedded evidence shows one address-stable typed model
   location, the configured bounded records and fact storage, no forbidden
   heap/reflection/task/runtime dependencies, and measured assembled RAM,
@@ -1740,11 +1795,6 @@ Specification-approval blockers are open:
   ADR-028 through ADR-031, but no approved drawing Specification. This
   Specification MUST be reconciled against the eventual approved drawing
   contract before it can be approved.
-- The target-composed application-executor entry contract named by the
-  ViewModel requirements has no exact operation, outcome, availability,
-  ordering, or Button-callback contract here. That contract MUST either be
-  defined by an approved prerequisite Specification and referenced here or be
-  completed as an analyzer-owned contract without introducing architecture.
 - Capture-revision exhaustion requires acquisition to stop and a fresh object
   graph, but it has no producer condition, normalization row, coordinator
   effects, residual-policy context, or acceptance fixture in the otherwise
@@ -1792,9 +1842,12 @@ contract, and this Specification does not create an additional relationship.
 - [ADR-025: Coarse Model-Owned Observable Invalidation](../adrs/adr-025-coarse-model-owned-observable-invalidation.md)
 - [ADR-026: Profile-Equivalent Bounded Observable State Realization](../adrs/adr-026-profile-equivalent-bounded-observable-state.md)
 - [ADR-027: Bounded Presentation-Fact Admission](../adrs/adr-027-bounded-presentation-fact-admission.md)
+- [ADR-033: Bounded Application Actions and Model-Target Dispatch](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md)
 - [SPEC-003: Failure Outcomes and Containment](spec-003-failure-outcomes-and-containment.md)
 - [RFC-001: Signal Analyzer Application Architecture](../rfcs/rfc-001-signal-analyzer-application-architecture.md)
 - [RFC-008: Observable Reference State Architecture](../rfcs/rfc-008-observable-reference-state-architecture.md)
+- [RFC-011: Bounded Application Actions and Model-Target Dispatch](../rfcs/rfc-011-bounded-application-actions.md)
+- [SPEC-011: Button Interaction and Activation Contract](spec-011-interaction.md)
 - [PROPOSAL-002: Signal Analyzer Reference Application](../proposals/proposal-002-signal-analyzer-reference-application.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI Vision](../VISION.md)

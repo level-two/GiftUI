@@ -2,7 +2,7 @@
 id: ADR-033
 feature: giftui-mvp-architecture
 title: Bounded Application Actions and Model-Target Dispatch
-status: proposed
+status: accepted
 authors:
   - codex
 created: 2026-08-27
@@ -12,8 +12,11 @@ proposal:
 related_rfcs:
   - RFC-011
 related_adrs:
+  - ADR-005
   - ADR-006
+  - ADR-007
   - ADR-008
+  - ADR-010
   - ADR-011
   - ADR-013
   - ADR-024
@@ -21,6 +24,7 @@ related_adrs:
   - ADR-026
 related_specs:
   - SPEC-001
+  - SPEC-002
   - SPEC-006
   - SPEC-009
   - SPEC-010
@@ -30,21 +34,21 @@ related_future_work:
 related_explorations: []
 related_spikes:
   - SPIKE-007
-supersedes: []
+supersedes:
+  - ADR-013
 superseded_by: []
 target_milestone: MVP
 ---
 
 # ADR-033: Bounded Application Actions and Model-Target Dispatch
 
-> **Proposed successor:** If accepted, this ADR supersedes ADR-013 in full.
-> ADR-013 remains authoritative while this record is proposed. The complete
-> input-provenance and pointer-sequencing rules are restated here so that
-> accepting this successor will not leave partially superseded authority.
+> **Accepted successor:** This ADR supersedes ADR-013 in full. The complete
+> input-provenance and pointer-sequencing rules are restated here so current
+> authority does not depend on combining active and superseded records.
 
 ## Status
 
-Proposed.
+Accepted.
 
 ## Context
 
@@ -71,8 +75,8 @@ target.
 
 ## Decision Boundary
 
-This record extracts RFC-011's single decision cluster and is intended to
-supersede ADR-013 as one complete authority when accepted. It owns:
+This record extracts RFC-011's single decision cluster and supersedes ADR-013
+as one complete authority. It owns:
 
 - normalized presentation-coupled input admission and bounded pointer
   sequencing inherited from ADR-013;
@@ -217,16 +221,15 @@ unable to invoke application behavior.
 
 ### Follow-up
 
-- On acceptance, mark ADR-013 superseded by ADR-033 and update architecture
-  summaries and authoritative Specification relationships.
-- Revise SPEC-011 to replace callable declarations and storage with exact
-  bounded action, target-binding, replacement, dispatch, failure, and test
-  contracts before it advances to review.
-- Reconcile approved SPEC-006 and SPEC-009 clauses that still name callable
-  payloads through renewed Specification review before implementation relies
-  on ADR-033.
-- Update SPEC-001 and SPEC-010 action/model integration once their prerequisite
-  contracts are authoritative.
+- Keep ADR-013 preserved as superseded history and use ADR-033 for current
+  architecture summaries and authoritative Specification relationships.
+- Review and explicitly approve revised SPEC-011's bounded action,
+  target-binding, replacement, dispatch, failure, and test contracts after its
+  prerequisite Specifications are authoritative.
+- Complete renewed review and approval of SPEC-006 and SPEC-009 after their
+  callable-payload clauses were replaced with ADR-033 semantics.
+- Complete review of the updated SPEC-001 and SPEC-010 action/model integration
+  contracts through their normal approval gates.
 - Measure static fixed storage, stack, flash, RAM, direct dispatch, and
   forbidden-symbol absence on nRF52840 and ARMv6; connected interaction
   evidence remains an implementation-conformance gate.

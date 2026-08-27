@@ -2,7 +2,7 @@
 id: SPEC-009
 feature: giftui-mvp-architecture
 title: Execution Cycle and Frame Handoff Contract
-status: approved
+status: review
 authors:
   - codex
 created: 2026-08-26
@@ -18,7 +18,7 @@ related_adrs:
   - ADR-010
   - ADR-011
   - ADR-012
-  - ADR-013
+  - ADR-033
   - ADR-014
   - ADR-015
   - ADR-016
@@ -44,10 +44,10 @@ target_milestone: MVP
 
 # SPEC-009: Execution Cycle and Frame Handoff Contract
 
-> **Approval status:** Approved. The governing Proposal and RFCs, accepted
-> architectural decisions, and approved Foundation, Failure, Declarative,
-> Layout, and Rendering contracts are authoritative prerequisites. This
-> Specification authorizes implementation of the contract defined below.
+> **Revision status:** Returned to review after ADR-033 superseded ADR-013.
+> The prior approval does not authorize implementation of this revised bound-
+> action and target-revalidation contract; renewed explicit approval is
+> required after SPEC-006 and SPEC-011 are review-ready.
 
 ## Summary
 
@@ -123,7 +123,8 @@ All declarations below are package SPI unless explicitly stated otherwise.
 
 - PROPOSAL-003 is accepted.
 - RFC-002, RFC-004, and RFC-005 are approved.
-- ADR-010 through ADR-016 are accepted.
+- ADR-010 through ADR-012 and ADR-014 through ADR-016 are accepted; ADR-033 is
+  accepted and supersedes ADR-013.
 - MVP Scope requires shared state-driven presentation, interaction, and
   bounded execution across all four target configurations.
 
@@ -142,8 +143,10 @@ All declarations below are package SPI unless explicitly stated otherwise.
 - [SPEC-008](spec-008-rendering.md) owns atomic normalized render production
   and the one-attempt operation-sink lifetime.
 
-All five prerequisites are approved. This Specification MUST NOT redefine
-their types, local errors, atomicity, or ownership.
+SPEC-002, SPEC-003, SPEC-007, and SPEC-008 are approved. SPEC-006 has returned
+to review for the same ADR-033 alignment and is a reapproval prerequisite.
+This Specification MUST NOT redefine their types, local errors, atomicity, or
+ownership.
 
 ## Related ADRs
 
@@ -156,9 +159,10 @@ their types, local errors, atomicity, or ownership.
 - **ADR-012** requires constant-space latest-revision presentation intent,
   separately paced finite refusal recovery, and explicit unavailable/quiescent
   terminal behavior.
-- **ADR-013** requires two-stage provenance validation, bounded source
+- **ADR-033** requires two-stage provenance validation, bounded source
   sequencing, fail-closed cancellation, stable identity-generation capture,
-  no callable retention in capture, and release-time revalidation.
+  no action/callable/model retention in capture, release-time revalidation,
+  and final model-target generation validation before dispatch.
 - **ADR-014** requires bounded outcomes, conservative containment, exact
   affected scopes, and one-way execution correlation above the failure core.
 - **ADR-015** orders mechanical containment, mandatory coordinator effects,
@@ -193,13 +197,15 @@ input may be eligible.
 semantic revision still requires a new frame opportunity. It is not a retained
 frame, operation stream, semantic graph, or mutation batch.
 
-**Committed action record**: A stable semantic action identity, a finite
-generation, enabled state, and current callable payload owned by the later
-Interaction contract. Execution owns generation and capture rules, not the
-public control or lowering that creates the record.
+**Committed bound action record**: A stable semantic action identity, finite
+action generation, enabled state, bounded application-action value, and opaque
+observable-model target generation owned by the later Interaction contract.
+Execution owns action-generation and capture rules, not the public control,
+target binding, or dispatch that creates and consumes the record.
 
 **Captured action reference**: Only a stable identity-generation pair. It does
-not own or retain a callable payload.
+not own or retain an action value, target generation, callable, handler, or
+model.
 
 ## Public Contract
 
@@ -209,9 +215,9 @@ queue, wake, action-generation, or backend-offer identities.
 
 The host, runtime profiles, Interaction, Observable State, backends, and
 integration targets consume the package SPI below. A public application action
-continues to be ordinary synchronous client behavior when invoked by the later
-Interaction contract; this Specification does not expose a scheduler or
-transaction object to client code.
+is a bounded typed value dispatched synchronously by the later Interaction
+contract; this Specification does not expose a scheduler or transaction object
+to client code.
 
 ## Module Contract
 
@@ -238,8 +244,9 @@ implementation. Platform input adapters import `GiftUI` and `GiftUIExecution`
 but MUST NOT import semantic-runtime storage.
 
 The later `GiftUIInteraction` owner may import `GiftUIExecution` to supply
-committed action records, hit resolution, enabled-state checks, and callable
-invocation. The later observable-state owner may import `GiftUIExecution` to
+committed bound action records, hit resolution, enabled-state checks, and the
+dispatch admission seam. The later observable-state owner may import
+`GiftUIExecution` to
 submit and apply bounded facts. Neither relationship permits Execution to
 import those downstream implementations.
 
@@ -272,6 +279,11 @@ package struct ActionGeneration: Equatable, Hashable, Sendable {
     package init(rawValue: UInt32)
 }
 
+package struct ObservableTargetGeneration: Equatable, Hashable, Sendable {
+    package let rawValue: UInt32
+    package init(rawValue: UInt32)
+}
+
 package enum ExecutionPhase: UInt8, Equatable, Sendable {
     case idle = 0
     case admitting = 1
@@ -283,10 +295,14 @@ package enum ExecutionPhase: UInt8, Equatable, Sendable {
 }
 ```
 
-Every raw bit pattern of the four execution-owned identity structs is a valid
-opaque value; no identity value is a sentinel. Each execution-owned namespace
-is local to one assembled runtime lifetime and is neither a persistent format
-nor stable across builds. `RunCycleID`,
+Every raw bit pattern of these five four-byte identity structs is a valid
+opaque value; no identity value is a sentinel. Each identity namespace is
+local to one assembled runtime lifetime and is neither a persistent format nor
+stable across builds. `GiftUIExecution` owns only the opaque
+`ObservableTargetGeneration` value declaration so downstream focused modules
+can exchange it through their existing Execution dependency; SPEC-010 owns its
+allocation, semantic meaning, replacement, retirement, and lookup rules.
+`RunCycleID`,
 `SemanticRevision`, `CandidateFrameID`, SPEC-002's `PresentationRevision`, and
 the runtime-wide `ActionGeneration` namespace each allocate raw value `0`
 first and then the exact checked successor. No execution-owned raw value is
@@ -404,8 +420,8 @@ transition unless the runtime has become quiescent.
 
 `PresentationPendingIntent` is the complete retained state after backpressure
 or retryable refusal. It MUST NOT retain a root declaration, semantic/layout
-result, render workspace, operation, sink, frame envelope, callable, or
-borrowed resource.
+result, render workspace, operation, sink, frame envelope, action value, target
+generation, callable, handler, model, or borrowed resource.
 `retryableRefusalCount` is `0` when pending intent was created only by
 backpressure and otherwise equals the number of retryable refusals recorded
 for this semantic revision. The first retryable refusal stores `1`. A host
@@ -483,7 +499,7 @@ separately retained local error before failure correlation.
 
 Every candidate reserves a fresh `PresentationRevision` before `offer`; only
 acceptance commits it. That revision atomically identifies the committed
-logical frame, committed hit map, committed action records, and presentation-
+logical frame, committed hit map, committed bound action records, and presentation-
 coupled routing state. An aborted reservation is retired and never reused. A
 candidate frame ID never becomes input provenance and a semantic revision does
 not substitute for a presentation revision.
@@ -629,9 +645,10 @@ where Identity: Equatable & Sendable {
 
 The action-view identity MUST be the exact SPEC-006 semantic action identity;
 it MUST NOT be translated, hashed, stringified, or reconstructed. The view is
-borrowed from the currently committed routing state and exposes no callable.
-`CapturedAction` contains exactly the identity-generation pair and MUST NOT
-retain a callable payload, declaration, view, hit map, or committed revision.
+borrowed from the currently committed routing state and exposes no action
+value, target generation, callable, handler, or model. `CapturedAction`
+contains exactly the identity-generation pair and MUST NOT retain any of those
+values, a declaration, view, hit map, or committed revision.
 
 `ExecutionAdmissionSink` is the complete profile-neutral producer seam. Every
 return carries an `ExecutionContext` snapshot: it names the active cycle and
@@ -658,7 +675,8 @@ state. It queues nothing and performs complete source-sequence cancellation.
 
 Complete source-sequence cancellation removes every already queued phase of
 that sequence, clears any staged or active capture and activation, retains no
-former callable, and advances only sequence state whose validity was already
+former action value, target generation, callable, handler, or model, and
+advances only sequence state whose validity was already
 proven. Later phases cannot dispatch semantically. A numerically invalid
 sequence never becomes a trusted resynchronization baseline.
 
@@ -689,12 +707,13 @@ does not retain `limits`. The two Boolean fields are true exactly when the
 corresponding one-bit intent joined the sealed batch; a dropped or deferred
 intent is false.
 
-The later Interaction contract owns the committed action table and exact
-action invocation seam. It MUST install a new `ActionGeneration` whenever a
-newly derived callable replaces the payload at an otherwise stable identity.
-It MAY preserve the generation only by preserving the exact already committed
-payload. Candidate publication or frame refusal MUST NOT replace the committed
-record. Execution never compares closures.
+The later Interaction contract owns the committed bound action table and exact
+dispatch seam. It MUST install a new `ActionGeneration` whenever the bounded
+action value, observable-model target generation, or any other binding field
+changes at an otherwise stable identity. It MAY preserve the generation only
+by preserving the exact already committed complete bound record. Candidate
+publication or frame refusal MUST NOT replace the committed record. Execution
+never compares action behavior, handlers, models, or closures.
 
 `ActionGeneration` is allocated from the one runtime-wide monotonic namespace
 defined above, not from an independent per-action counter. A staged candidate
@@ -882,7 +901,7 @@ If a valid pointer would create a semantic action beyond
 preservation applies, but the failure is
 `.execution(.capacityExhausted)`. A new source beyond
 `maximumActiveInputSources` is rejected synchronously by pointer submission as
-`.capacityRefused`. No callable is invoked in `.admitting`.
+`.capacityRefused`. No application action is dispatched in `.admitting`.
 
 The coordinator verifies before removal that its batch storage can represent
 all selected counts and staged pointer transitions. Storage shortfall returns
@@ -900,9 +919,10 @@ After sealing, the coordinator commits the staged pointer state, enters
 `.mutating`, and applies each admitted state-change fact, completion fact, and
 semantic action exactly once in that category order and in producer or pointer
 order within its category. A completion fact may dirty semantics only when its
-owning downstream contract says so. Each activation invokes the current
-callable only through the later Interaction-owned dispatcher after the
-identity-generation and enabled-state checks completed during admission. A
+owning downstream contract says so. Each activation dispatches the current
+bounded action only through the later coordinator-owned dispatcher after it
+revalidates identity, action generation, enabled state, and observable-model
+target generation immediately before borrowing the current model. A
 later failure, refusal, retry, or supersession MUST NOT replay any fact,
 action, or effect. Their client side effects are not assumed reversible.
 
@@ -1076,11 +1096,11 @@ the source cancelled. No sequence or ordinal raw value wraps or aliases.
 
 A validated down may capture the hit action only when the committed action
 view reports one exact identity, a current generation, and enabled state. Move
-may cancel according to the later Interaction gesture rule. Up invokes no
-callable itself; it yields an activation candidate only if provenance remains
+may cancel according to the later Interaction gesture rule. Up dispatches no
+action itself; it yields an activation candidate only if provenance remains
 valid, the release resolves the same identity, the current generation equals
 the captured generation, and the action remains enabled. Any failed check
-cancels activation and retains no former payload.
+cancels activation and retains no former bound action or model target.
 
 That activation candidate joins the semantic-action segment of the same cycle
 before the seal closes. It is invoked once in `.mutating` after the admitted
@@ -1453,7 +1473,7 @@ Tests MUST:
   effects;
 - admit an activating up with state-change and completion facts, prove its
   activation joins the same seal after both fact categories, and prove no
-  callable is invoked during submission or admission;
+  application action is dispatched during submission or admission;
 - verify complete publication and that no partial semantic, layout,
   action-table, routing, or immutable-render-input result becomes current;
 - fail derivation after mutation and prove dirty wake/rederivation without
@@ -1531,8 +1551,9 @@ for Specification approval.
   corpus without deferred input or historical hit-map storage.
 - [ ] **EX-008:** Captures contain only the exact SPEC-006 identity-generation
   pair; stable records survive unrelated revision changes, while removal,
-  movement, disabled state, payload replacement, generation mismatch, or
-  ambiguous reuse invokes neither former nor replacement payload.
+  movement, disabled state, bound-record replacement, generation mismatch, or
+  ambiguous reuse dispatches neither the former nor replacement action/model
+  binding.
 - [ ] **EX-009:** Every admission outcome, `RunCycleFailure`, legal offer/body
   pairing, illegal pairing, and primary operational event maps to the exact
   SPEC-003 fact, origin, scope, containment, and `ExecutionContext`; mandatory
@@ -1551,7 +1572,7 @@ for Specification approval.
   the focused execution boundary, and both cross-build configurations produce
   the required non-hardware evidence.
 - [ ] **EX-013:** Review finds no public observable-state syntax/storage,
-  Button/disabled or callable-lowering contract, concrete runtime-profile
+  Button/disabled or action-lowering/handler contract, concrete runtime-profile
   storage, capability catalogue, rasterization/backend realization, host
   production capacity/pacing choice, platform driver, or connected-hardware
   requirement in this Specification.
@@ -1572,7 +1593,7 @@ GiftUI operation borrow ends when `offer` returns.
 ## Open Issues
 
 None. Production capacities, concrete retry pacing, observable-state fact
-payloads/storage, committed action-table storage and callable invocation,
+payloads/storage, committed bound-action-table storage and handler dispatch,
 runtime-profile workspace ownership, backend raster realization, and target
 eligibility evidence are deliberately owned by later portfolio Specifications.
 If any of those requires changing this phase, identity, ownership, or handoff
@@ -1596,10 +1617,11 @@ Current MVP scope is unchanged.
 - [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-004](../rfcs/rfc-004-run-cycle-and-frame-transaction.md)
 - [RFC-005](../rfcs/rfc-005-failure-diagnostics-propagation.md)
+- [RFC-011](../rfcs/rfc-011-bounded-application-actions.md)
 - [ADR-010](../adrs/adr-010-synchronous-one-shot-frame-handoff.md)
 - [ADR-011](../adrs/adr-011-serialized-run-cycle-and-publication.md)
 - [ADR-012](../adrs/adr-012-bounded-handoff-refusal-recovery.md)
-- [ADR-013](../adrs/adr-013-provenance-validated-input-admission.md)
+- [ADR-033](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md)
 - [ADR-014](../adrs/adr-014-bounded-cross-layer-outcomes.md)
 - [ADR-015](../adrs/adr-015-layered-failure-disposition.md)
 - [ADR-016](../adrs/adr-016-non-authoritative-diagnostics.md)

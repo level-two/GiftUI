@@ -42,8 +42,9 @@ target_milestone: MVP
 
 > **Approval status:** Approved by explicit maintainer authorization. This RFC
 > establishes design consensus but does not itself change ADR-013, authorize
-> implementation, or make SPEC-011 authoritative. ADR-033 extracts the agreed
-> decision and remains proposed until separately accepted.
+> implementation, or make SPEC-011 authoritative. Accepted ADR-033 extracts
+> the agreed decision; revised dependent Specifications require their own
+> approval gates.
 
 ## Summary
 

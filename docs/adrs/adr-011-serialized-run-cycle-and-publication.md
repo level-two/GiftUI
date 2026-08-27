@@ -16,7 +16,6 @@ related_adrs:
   - ADR-006
   - ADR-010
   - ADR-012
-  - ADR-013
   - ADR-015
   - ADR-033
 related_specs:

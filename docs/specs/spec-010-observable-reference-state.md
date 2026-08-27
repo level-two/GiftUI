@@ -28,6 +28,7 @@ related_specs:
   - SPEC-003
   - SPEC-006
   - SPEC-009
+  - SPEC-011
 related_future_work:
   - FW-019
 related_explorations: []
@@ -58,8 +59,9 @@ its serialized cycle, publication, or failure semantics.
 
 This contract covers the `@State` reference-model case in the portable
 `GiftUI` surface; the observation SPI; state-location reconciliation;
-registration, replacement, removal, dirtiness, and stale-report behavior;
-dynamic and static storage obligations; and the application-executor adapter
+registration, replacement, removal, dirtiness, stale-report behavior, and
+non-aliasing target-registration generation for action binding; dynamic and
+static storage obligations; and the application-executor adapter
 that creates finite immutable presentation facts.
 
 ## Goals
@@ -69,6 +71,8 @@ that creates finite immutable presentation facts.
 - Coalesce model reports into complete-root reevaluation and one wake intent.
 - Preserve identical source and observable behavior across runtime profiles.
 - Bound state locations, registrations, reports, staging, and fact admission.
+- Expose opaque current-target generation to the runtime coordinator without
+  exposing or transferring model ownership to Interaction.
 
 ## Non-goals
 
@@ -96,6 +100,9 @@ fact families and 80-facts-per-second workload.
   realizations and zero-heap static operation.
 - ADR-027 requires bounded immutable presentation facts between the logically
   distinct application executor and GiftUI mutation domain.
+- ADR-033 requires every committed Button action to bind to the exact current
+  observable-model registration generation and requires replacement/removal to
+  invalidate that binding without retaining the model in Interaction.
 - ADR-011 and ADR-014 through ADR-016 govern publication, failure mapping,
   disposition, health, and non-authoritative diagnostics.
 
@@ -106,6 +113,10 @@ identity plus a declaration-local ordinal with one preserved model and active
 registration. **Change report** means only that values derived from the owning
 model may have changed. **Presentation fact** is a finite immutable value
 copied by the target-composed adapter and queued through SPEC-009.
+
+**Observable target generation** is the runtime-local non-aliasing generation
+of one live model registration. It proves which installed model a bound action
+was derived to address and is neither a model reference nor public identity.
 
 ## Public Contract
 
@@ -216,6 +227,14 @@ package protocol ObservableStateMutationOwner {
     ) -> ObservableStateError?
 }
 
+package protocol ObservableStateTargetView {
+    associatedtype StructuralIdentity: Equatable & Sendable
+    borrowing func targetGeneration(
+        structuralIdentity: StructuralIdentity,
+        declarationOrdinal: UInt16
+    ) -> ObservableTargetGeneration?
+}
+
 package protocol PresentationFactAdmissionAdapter {
     associatedtype Fact: Sendable
     mutating func submit(_ fact: Fact)
@@ -233,6 +252,17 @@ All four observable limits MUST be nonzero. A count equal to its limit is
 valid. No raw attachment value is a sentinel; attachments are unique during
 one assembled runtime lifetime and MUST fail closed rather than wrap into a
 live or retired registration.
+
+SPEC-009 owns the four-byte opaque `ObservableTargetGeneration` declaration so
+Interaction and Observable State can exchange it through their existing
+Execution dependency without importing one another. This Specification owns
+its allocation and meaning. Raw value `0` is the first generation allocated by
+one assembled runtime, followed by exact checked successors. A value is never
+reused during that runtime lifetime and is not public API, ABI, persisted data,
+or a cross-runtime identifier.
+`ObservableStateTargetView` is a synchronous borrowed view over current live
+state. It exposes no model, attachment, change sink, state value, handler, or
+mutation operation. Absence or a retired location returns `nil`.
 
 ## Behavior
 
@@ -258,6 +288,15 @@ the candidate. It then atomically installs the candidate, makes its
 registration active, detaches the former registration, retires the former
 model association, and marks the location dirty. Failure before commit undoes
 the candidate attachment and leaves the former association unchanged.
+
+The first successful model registration allocates a fresh
+`ObservableTargetGeneration`. Every successful replacement allocates another
+fresh generation before commit and retires the former generation atomically
+with the former registration. Published removal retires the live generation.
+A staged or failed replacement preserves the former generation. Exhaustion
+fails closed, preserves any formerly live model/registration/generation, and
+requires a fresh assembled runtime before another target generation can be
+installed.
 
 ### Reports and publication
 
@@ -343,6 +382,10 @@ task-local state, or target discovery. Both profiles report location,
 registration, staging, pending-fact, stack, heap, and linked-size high-water
 evidence.
 
+Target-generation lookup and equality MUST be constant-space and bounded by
+the configured location representation. They MUST allocate zero heap bytes in
+the static profile.
+
 ## Compatibility
 
 The same `@State` source and model mutation behavior MUST compile in dynamic
@@ -356,8 +399,10 @@ Raspberry Pi ARMv6 compile/link, and nRF52840 hardware-free compile/link modes.
 Shared fixtures cover initialization preservation, multiple declarations,
 replacement success/failure, removal/reinsertion, failed derivation,
 duplicate ownership, stale reports, phase violations, exhaustion, coalescing,
-fact order/refusal, action callback non-reentrancy, and profile transcript
-equivalence. Connected hardware is not required for Specification approval.
+fact order/refusal, action-triggered repository non-reentrancy, and profile transcript
+equivalence. Fixtures also cover initial target generation, successful and
+failed replacement, published removal, no-wrap exhaustion, and borrowed target
+lookup. Connected hardware is not required for Specification approval.
 
 ## Acceptance Criteria
 
@@ -377,6 +422,10 @@ equivalence. Connected hardware is not required for Specification approval.
 - [ ] **OS-008:** Dependency and symbol checks find no backend/platform import,
   reflection, unrestricted existential registry, task, or allocator dependency
   in the static observable-state path.
+- [ ] **OS-009:** Target-generation fixtures prove fresh non-aliasing initial
+  and replacement values, preservation on failed replacement, retirement on
+  published removal, fail-closed exhaustion, and equal dynamic/static lookup
+  transcripts without exposing or retaining a model.
 
 ## Implementation Notes
 
@@ -412,6 +461,8 @@ independent fixtures or review.
 - [ADR-025](../adrs/adr-025-coarse-model-owned-observable-invalidation.md)
 - [ADR-026](../adrs/adr-026-profile-equivalent-bounded-observable-state.md)
 - [ADR-027](../adrs/adr-027-bounded-presentation-fact-admission.md)
+- [RFC-011](../rfcs/rfc-011-bounded-application-actions.md)
+- [ADR-033](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md)
 - [SPEC-009](spec-009-execution-cycle-and-frame-handoff.md)
 - [SPIKE-003](../spikes/spike-003-portable-observable-reference-state-feasibility.md)
 - [SPIKE-006](../spikes/spike-006-spec-010-embedded-declarations.md)

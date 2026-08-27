@@ -2,7 +2,7 @@
 id: ADR-013
 feature: giftui-mvp-architecture
 title: Provenance-Validated Presentation-Coupled Input
-status: accepted
+status: superseded
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
@@ -28,15 +28,21 @@ related_future_work: []
 related_explorations: []
 related_spikes: []
 supersedes: []
-superseded_by: []
+superseded_by:
+  - ADR-033
 target_milestone: MVP
 ---
 
 # ADR-013: Provenance-Validated Presentation-Coupled Input
 
+> **Superseded:** ADR-033 preserves this record's presentation provenance,
+> bounded sequencing, identity-generation capture, and current-state checks
+> while replacing its callable-payload architecture with bounded typed actions
+> and model-target generation validation.
+
 ## Status
 
-Accepted.
+Superseded by ADR-033.
 
 ## Context
 

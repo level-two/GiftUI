@@ -24,7 +24,7 @@ target_milestone: MVP
 # SPIKE-007: Static Action Storage Feasibility
 
 > This Spike produced compile, link, runtime-shape, and dependency evidence
-> used by RFC-011 and proposed ADR-033, and supplies reusable retained-closure
+> used by RFC-011 and accepted ADR-033, and supplies reusable retained-closure
 > evidence to SPEC-012. Its declarations, callable encodings, capacities,
 > fixtures, and code are disposable and do not establish production contracts
 > or authorize implementation.
@@ -33,9 +33,9 @@ target_milestone: MVP
 
 RFC-011 used this Spike's negative retained-closure evidence and positive
 finite tagged-action evidence to select bounded typed application actions for
-the portable path. Proposed ADR-033 extracts that architecture. SPEC-011 still
-cannot advance until ADR-033 is accepted and the callable-based draft contract
-is revised to exact bounded-action declarations and storage rules.
+the portable path. Accepted ADR-033 extracts that architecture. Revised
+SPEC-011 uses exact bounded-action declarations and storage rules and remains
+non-authoritative in `review` pending its prerequisite and approval gates.
 
 This Spike's primary gate is SPEC-011. SPEC-012 may reuse its result only for
 the common question of directly retaining a captured escaping closure versus a
@@ -180,9 +180,9 @@ escaping-closure record noncopyable does not remove allocation. The finite
 tagged candidate demonstrates that a bounded typed representation and direct
 dispatch are feasible without an allocator, but it does not establish a
 production generator or require a callable abstraction. RFC-011 used those
-results to approve bounded typed application actions, and proposed ADR-033
-extracts that decision. SPEC-011 remains `draft` pending ADR acceptance and a
-contract rewrite; this Spike does not approve declarations or authorize
+results to approve bounded typed application actions, and accepted ADR-033
+extracts that decision. SPEC-011 is now in `review` with a rewritten bounded-
+action contract; this Spike does not approve declarations or authorize
 implementation.
 
 SPEC-012 reuses the negative direct-retention result and the positive generated

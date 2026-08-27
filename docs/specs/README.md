@@ -18,10 +18,14 @@ its required acceptance criteria.
 ## Current portfolio
 
 - SPEC-001 — Signal Analyzer Reference Application Contract (`review`)
-- SPEC-002 through SPEC-009 — approved Wave 1–4 contracts
+- SPEC-002 through SPEC-005 and SPEC-007 through SPEC-008 — approved contracts
+- [SPEC-006](spec-006-declarative-view-semantics.md) — Declarative View
+  Semantics Specification (`review`, returned after ADR-033)
+- [SPEC-009](spec-009-execution-cycle-and-frame-handoff.md) — Execution Cycle
+  and Frame Handoff Contract (`review`, returned after ADR-033)
 - [SPEC-010](spec-010-observable-reference-state.md) — Observable Reference
-  State Contract (`draft`)
+  State Contract (`review`)
 - [SPEC-011](spec-011-interaction.md) — Button Interaction and Activation
-  Contract (`draft`)
+  Contract (`review`)
 - [SPEC-012](spec-012-canvas-path-stroke-drawing.md) — Canvas, Path, and Stroke
   Drawing Contract (`draft`)

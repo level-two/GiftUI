@@ -6,7 +6,7 @@ status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
-updated: 2026-08-22
+updated: 2026-08-27
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -15,7 +15,7 @@ related_adrs:
   - ADR-005
   - ADR-008
   - ADR-010
-  - ADR-013
+  - ADR-033
   - ADR-019
 related_specs:
   - SPEC-002
@@ -47,7 +47,8 @@ behavior.
 This record extracts RFC-002 Decision Summary items 4 and 5 together with the
 approved explicit-environmental-contract rule. It owns component integration
 boundaries and host composition, but not frame disposition (ADR-010), input
-admission semantics (ADR-013), capability resolution (ADR-019), or a shared
+admission/action-target semantics (ADR-033), capability resolution (ADR-019),
+or a shared
 delegated-Service foundation (FW-009).
 
 ## Decision

@@ -2,7 +2,7 @@
 id: SPEC-006
 feature: giftui-mvp-architecture
 title: Declarative View Semantics Specification
-status: approved
+status: review
 authors:
   - codex
 created: 2026-08-25
@@ -18,7 +18,7 @@ related_adrs:
   - ADR-005
   - ADR-006
   - ADR-008
-  - ADR-013
+  - ADR-033
   - ADR-032
 related_specs:
   - SPEC-002
@@ -41,9 +41,9 @@ target_milestone: MVP
 
 # SPEC-006: Declarative View Semantics Specification
 
-> **Approval status:** Approved by explicit maintainer authorization. The
-> governing Proposal and RFCs, accepted architectural decisions, and approved
-> Foundation and Failure contracts are authoritative prerequisites.
+> **Revision status:** Returned to review after ADR-033 superseded ADR-013.
+> The prior approval does not authorize implementation of this revised action-
+> payload contract; renewed explicit approval is required.
 
 ## Summary
 
@@ -72,6 +72,7 @@ This Specification owns:
   type erasure;
 - the semantic meaning and ordering of modifier chains, while later
   Specifications own concrete modifier vocabularies and payloads;
+- the public bounded action-value protocol used by action-bearing declarations;
 - runtime-owned structural identity and semantic action-occurrence identity;
 - deterministic synchronous expansion of transient declarations;
 - caller-supplied expansion limits and all-or-nothing failure behavior; and
@@ -120,7 +121,7 @@ dynamic, and nRF52840/Zephyr static configurations.
 - [ADR-005](../adrs/adr-005-semantic-layout-render-boundary.md),
   [ADR-006](../adrs/adr-006-shared-semantics-runtime-profiles.md),
   [ADR-008](../adrs/adr-008-module-dependency-graph-and-package-topology.md),
-  [ADR-013](../adrs/adr-013-provenance-validated-input-admission.md), and
+  [ADR-033](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md), and
   [ADR-032](../adrs/adr-032-semantic-core-owned-layout-input.md) are accepted.
 - [SPEC-002](spec-002-portable-foundation.md) and
   [SPEC-003](spec-003-failure-outcomes-and-containment.md) are approved.
@@ -139,10 +140,11 @@ the reason this contract is required now.
 - Later LAYOUT, RENDERING, EXECUTION, OBSERVABLE, INTERACTION, and
   RUNTIME-PROFILES Specifications consume this contract and MUST NOT redefine
   its expansion, identity, ordering, or failure semantics.
-- EXECUTION and INTERACTION own committed action records and generations under
-  ADR-013. They consume the stable semantic action identity defined here as
-  one component of the captured identity-generation pair; this Specification
-  does not allocate generations or retain callable payloads.
+- EXECUTION and INTERACTION own committed bound action records and generations
+  under ADR-033. They consume the stable semantic action identity and borrowed
+  typed action value defined here; this Specification does not bind a model
+  target, allocate a committed generation, retain a callable or model, or
+  dispatch an action.
 
 ## Related ADRs
 
@@ -155,10 +157,11 @@ the reason this contract is required now.
 - **ADR-008 — Module Dependency Graph and MVP Package Topology:** places the
   public declarations in `GiftUI`, runtime-owned expansion in
   `GiftUISemanticCore`, and prohibits upward or concrete integration imports.
-- **ADR-013 — Provenance-Validated Presentation-Coupled Input:** requires
+- **ADR-033 — Bounded Application Actions and Model-Target Dispatch:** requires
   pointer capture to pair this Specification's stable semantic action identity
-  with a downstream committed action generation, without retaining a callable
-  payload, and requires exact pair revalidation before activation.
+  with a downstream committed action generation, without retaining an action
+  value, callable, handler, or model, and requires exact pair revalidation
+  before activation.
 - **ADR-032 — Semantic-Core-Owned Borrowed Layout Input:** permits
   `GiftUILayout` to import Semantic Core's narrow read-only layout-facing view
   while leaving expansion, identity, ordering, and semantic-result ownership
@@ -211,8 +214,8 @@ the reason this contract is required now.
 **Semantic action identity**
 : The package-SPI runtime identity of one action-bearing occurrence, derived
   from that occurrence's structural identity and action-bearing role. It does
-  not contain the downstream committed action generation and does not retain a
-  public action payload.
+  not contain the downstream committed action generation or the bounded
+  application-action value carried by the occurrence.
 
 **Modifier order**
 : The source-call order of a modifier chain. In `base.a().b()`, `a` precedes
@@ -252,6 +255,13 @@ The maintained Rank 0 surface supports at most five direct expressions in one
 builder block. A client MAY compose more content by nesting fixed groups or
 custom views. `buildArray` and unrestricted runtime child iteration MUST be
 absent from the portable API.
+
+`GiftUIAction` is the portable, finite action-value boundary needed by semantic
+payload traversal. Conforming cases MUST have no associated value, and every
+valid action code is its `UInt16` raw value. The concrete conforming type is the
+action domain; GiftUI exposes no public numeric domain identifier. Raw values
+are not public ABI, persistence, or a wire format. Later control and
+Interaction contracts own action-bearing syntax, target binding, and dispatch.
 
 ## Module Contract
 
@@ -301,6 +311,9 @@ dispatch mechanism, not a compatibility promise or a plug-in interface.
 The following public source contract is normative:
 
 ```swift
+public protocol GiftUIAction: RawRepresentable, Equatable, Sendable
+where RawValue == UInt16 {}
+
 public protocol View {
     associatedtype Body: View
 
@@ -422,7 +435,10 @@ fields are owned by the declaration contracts that use it.
 ```swift
 public protocol _GiftUISemanticPrimitivePayload {}
 
-public protocol _GiftUISemanticActionPayload {}
+public protocol _GiftUISemanticActionPayload {
+    associatedtype Action: GiftUIAction
+    var _giftUIAction: Action { get }
+}
 
 public protocol _GiftUISemanticModifierPayload {}
 
@@ -716,19 +732,23 @@ distinct identities even when their later interaction payloads compare equal.
 Equivalent re-expansions in both profiles MUST preserve the same identity
 relation.
 
-Expansion MUST NOT invoke an action. Client action payload, capture,
-replacement, committed lifetime, and activation belong to INTERACTION and
-EXECUTION under ADR-013. This Specification neither makes an expansion-time
-identity dispatchable nor allocates, advances, captures, or compares a
-committed action generation. A backend or declaration visitor MUST NOT call
-client behavior.
+Expansion MUST borrow the payload's typed `GiftUIAction` value and stage it
+with the action occurrence in the complete semantic result for synchronous
+downstream candidate construction. It MUST NOT invoke the action, decode it
+through a handler, bind it to a model target, or retain a callable, handler, or
+model reference. Capture, replacement, committed lifetime, target binding, and
+dispatch belong to INTERACTION and EXECUTION under ADR-033. This Specification
+neither makes an expansion-time identity dispatchable nor allocates, advances,
+captures, or compares a committed action generation. A backend or declaration
+visitor MUST NOT call client behavior.
 
-The identity defined here is the stable identity component of ADR-013's
+The identity defined here is the stable identity component of ADR-033's
 captured identity-generation pair. Downstream committed-action lowering MUST
-treat installation of a newly derived callable payload at the same identity as
-replacement and install a new generation. Preserving, replacing, releasing,
-and activating that payload remain downstream obligations and MUST NOT cause a
-second semantic identity or expansion engine here.
+treat a changed bounded action value, changed target generation, or other
+changed binding at the same identity as replacement and install a new
+generation. Preserving, replacing, releasing, and dispatching the bound record
+remain downstream obligations and MUST NOT cause a second semantic identity or
+expansion engine here.
 
 ### Modifier order
 
@@ -764,9 +784,9 @@ Structural and semantic action identities belong to runtime-owned staged or
 committed semantic structure, never to the transient declaration value. This
 Specification defines their equality and expansion lifetime; OBSERVABLE and
 EXECUTION own state-slot lifetime, invalidation, publication, reconciliation,
-and revision lifetime. Pointer capture MUST NOT extend a declaration or
-callable payload lifetime through this identity; ADR-013's downstream capture
-stores the identity-generation pair only.
+and revision lifetime. Pointer capture MUST NOT extend a declaration, action
+value, callable, handler, or model lifetime through this identity; ADR-033's
+downstream capture stores the identity-generation pair only.
 
 An attempt moves only forward:
 
@@ -897,12 +917,17 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
   `ViewVisitor`, restrict public wrapper storage and construction to the
   access fixed here, and document every source adjustment. Existing tuple
   names and five-child builder evidence may be retained only when they satisfy
-  this contract. Public client-action representation remains INTERACTION work.
+  this contract. This Specification owns only the bounded `GiftUIAction` value
+  protocol; public action-bearing controls and dispatch remain INTERACTION
+  work.
 
 ## Testing Requirements
 
 ### Declaration and compile fixtures
 
+- Compile a no-associated-value `UInt16` action enum conforming to
+  `GiftUIAction`; reject a different raw-value width and treat associated-value
+  action shapes as non-conforming during framework review/generation.
 - Compile custom views with `body: some View`, nested custom views, and
   view-returning properties/functions, with and without `@ViewBuilder`.
 - Compile builder blocks of arity zero through five and reject a direct
@@ -930,7 +955,8 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
 - Prove action-bearing declarations at different occurrences have distinct
   package-SPI semantic action identities and equivalent re-expansions preserve
   their identity relation across profiles. Prove expansion itself neither
-  creates an action generation nor retains or invokes a callable payload.
+  creates an action generation, binds a target generation, or retains or
+  invokes a callable, handler, or model.
 - Record modifier chains of length zero, one, repeated same-kind, and mixed
   kinds; prove exact source order, custom-view nesting order, and no sibling
   interleaving without asserting concrete layout or render meaning.
@@ -982,8 +1008,8 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
 
 ## Acceptance Criteria
 
-- [ ] **DV-001:** The exact Rank 0 `View`, `ViewBuilder`, and fixed-wrapper
-  public source contract compiles for all four MVP configurations
+- [ ] **DV-001:** The exact `GiftUIAction`, Rank 0 `View`, `ViewBuilder`, and
+  fixed-wrapper public source contract compiles for all four MVP configurations
   with only `import GiftUI` in portable Presentation; `Never` satisfies the
   recursive `Body: View` constraint without being evaluated.
 - [ ] **DV-002:** Builder fixtures accept direct arities zero through five,
@@ -1001,8 +1027,9 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
 - [ ] **DV-006:** Action-bearing declarations at different structural
   occurrences have distinct package-SPI semantic action identities;
   equivalent re-expansions preserve their identity relation, and expansion
-  allocates no committed action generation, retains no callable payload for
-  pointer capture, and invokes no action.
+  allocates no committed action generation, binds no model target, retains no
+  action value/callable/handler/model for pointer capture, and invokes no
+  action.
 - [ ] **DV-007:** Every expansion/workspace capacity succeeds exactly at its
   limit and fails one over with `.capacityExhausted`, no truncation, partial
   publication, overwrite, allocation fallback, or action invocation; the
@@ -1057,13 +1084,14 @@ is resolved in favor of five direct expressions. The maintained Rank 0
 surface therefore remains fixed at arities zero through five; clients compose
 larger hierarchies by nesting fixed groups or custom views.
 
-The former action lifetime and replacement issue is resolved by RFC-004 and
-ADR-013: pointer down captures the stable semantic identity together with the
-committed action generation and no callable payload; replacement installs a
-new generation; release activates only after the exact current pair, hit, and
-enabled state match. EXECUTION and INTERACTION must specify the finite
-representation and ownership details without redefining the identity contract
-here. [FW-020](../future-work/fw-020-declarative-extensibility.md) preserves
+Action lifetime and replacement are governed by RFC-011 and ADR-033: pointer
+down captures the stable semantic identity together with the committed action
+generation and no action value, target generation, callable, handler, or model;
+changing the bounded action or model-target binding installs a new generation;
+release activates only after the exact current pair, hit, and enabled state
+match. EXECUTION and INTERACTION specify finite representation, target
+revalidation, and dispatch without redefining the identity contract here.
+[FW-020](../future-work/fw-020-declarative-extensibility.md) preserves
 the separately gated post-MVP declarative-extensibility cluster.
 
 ## Deferred and Follow-up Work
@@ -1085,7 +1113,8 @@ the separately gated post-MVP declarative-extensibility cluster.
 - [ADR-005: Semantic, Layout, and Render Boundary](../adrs/adr-005-semantic-layout-render-boundary.md)
 - [ADR-006: Shared Semantics Across Runtime Profiles](../adrs/adr-006-shared-semantics-runtime-profiles.md)
 - [ADR-008: Module Dependency Graph and MVP Package Topology](../adrs/adr-008-module-dependency-graph-and-package-topology.md)
-- [ADR-013: Provenance-Validated Presentation-Coupled Input](../adrs/adr-013-provenance-validated-input-admission.md)
+- [RFC-011: Bounded Application Actions and Model-Target Dispatch](../rfcs/rfc-011-bounded-application-actions.md)
+- [ADR-033: Bounded Application Actions and Model-Target Dispatch](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md)
 - [ADR-032: Semantic-Core-Owned Borrowed Layout Input](../adrs/adr-032-semantic-core-owned-layout-input.md)
 - [SPEC-002: Portable Foundation](spec-002-portable-foundation.md)
 - [SPEC-003: Failure Outcomes and Containment](spec-003-failure-outcomes-and-containment.md)
