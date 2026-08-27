@@ -11,6 +11,7 @@ source:
   - SPEC-011
   - SPEC-012
   - RFC-011
+  - ADR-033
 related_future_work: []
 related_explorations: []
 related_spikes: []
@@ -22,19 +23,19 @@ target_milestone: MVP
 
 # SPIKE-007: Static Action Storage Feasibility
 
-> This Spike produces compile, link, runtime-shape, and dependency evidence
-> primarily for SPEC-011 and supplies reusable retained-closure evidence to
-> SPEC-012. Its declarations, callable encodings, capacities, fixtures,
-> and code are disposable and do not establish production architecture or
-> authorize implementation.
+> This Spike produced compile, link, runtime-shape, and dependency evidence
+> used by RFC-011 and proposed ADR-033, and supplies reusable retained-closure
+> evidence to SPEC-012. Its declarations, callable encodings, capacities,
+> fixtures, and code are disposable and do not establish production contracts
+> or authorize implementation.
 
 ## Parent Gate
 
-SPEC-011 cannot advance from draft to review while its exact Embedded Swift
-callable-storage feasibility remains an open issue. The Specification requires
-one portable `Button` source surface, bounded static storage, no heap allocation,
-and at-most-once synchronous invocation, but deliberately leaves the static
-representation profile-owned.
+RFC-011 used this Spike's negative retained-closure evidence and positive
+finite tagged-action evidence to select bounded typed application actions for
+the portable path. Proposed ADR-033 extracts that architecture. SPEC-011 still
+cannot advance until ADR-033 is accepted and the callable-based draft contract
+is revised to exact bounded-action declarations and storage rules.
 
 This Spike's primary gate is SPEC-011. SPEC-012 may reuse its result only for
 the common question of directly retaining a captured escaping closure versus a
@@ -174,13 +175,14 @@ path. Target Questions 3 and 4 pass for a generated finite tagged callable:
 the exact noncopyable generic constraint compiles, persistent dispatch is
 bounded and zero-heap, and resource evidence is recorded.
 
-For Target Question 5, the evidence supports a noncopyable generic
-`ActionRecord<Identity, Callable>` whose `Callable` explicitly conforms to a
-noncopyable callable protocol. It supports a generated finite tagged callable
-for the static profile and a separately bounded closure wrapper for the dynamic
-profile. It rejects any suggestion that making an escaping-closure record
-noncopyable by itself removes allocation. SPEC-011 now records that narrower
-contract while remaining `draft`; this Spike does not approve it or authorize
+For Target Question 5, the evidence establishes that making an
+escaping-closure record noncopyable does not remove allocation. The finite
+tagged candidate demonstrates that a bounded typed representation and direct
+dispatch are feasible without an allocator, but it does not establish a
+production generator or require a callable abstraction. RFC-011 used those
+results to approve bounded typed application actions, and proposed ADR-033
+extracts that decision. SPEC-011 remains `draft` pending ADR acceptance and a
+contract rewrite; this Spike does not approve declarations or authorize
 implementation.
 
 SPEC-012 reuses the negative direct-retention result and the positive generated
@@ -193,6 +195,8 @@ compiler-evidence gate; this Spike does not resolve them.
 
 - [SPEC-011: Button Interaction and Activation Contract](../specs/spec-011-interaction.md)
 - [SPEC-012: Canvas, Path, and Stroke Drawing Contract](../specs/spec-012-canvas-path-stroke-drawing.md)
+- [RFC-011: Bounded Application Actions and Model-Target Dispatch](../rfcs/rfc-011-bounded-application-actions.md)
+- [ADR-033: Bounded Application Actions and Model-Target Dispatch](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md)
 - [ADR-006: Shared Semantics Across Runtime Profiles](../adrs/adr-006-shared-semantics-runtime-profiles.md)
 - [ADR-011: Serialized Run Cycle and Semantic Publication](../adrs/adr-011-serialized-run-cycle-and-publication.md)
 - [ADR-013: Provenance-Validated Input Admission](../adrs/adr-013-provenance-validated-input-admission.md)

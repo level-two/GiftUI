@@ -9,6 +9,7 @@ created: 2026-08-27
 updated: 2026-08-27
 source:
   - RFC-011
+  - ADR-033
 related_future_work:
   - FW-017
   - FW-020
@@ -79,6 +80,7 @@ binding as preapproval for a generalized action architecture.
 ## References
 
 - [RFC-011: Bounded Application Actions and Model-Target Dispatch](../rfcs/rfc-011-bounded-application-actions.md)
+- [ADR-033: Bounded Application Actions and Model-Target Dispatch](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md)
 - [FW-017: Public Binding Abstraction](fw-017-public-binding-abstraction.md)
 - [FW-020: Declarative Extensibility](fw-020-declarative-extensibility.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)

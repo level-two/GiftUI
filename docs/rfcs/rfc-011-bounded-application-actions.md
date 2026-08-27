@@ -2,7 +2,7 @@
 id: RFC-011
 feature: giftui-mvp-architecture
 title: Bounded Application Actions and Model-Target Dispatch
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-27
@@ -21,6 +21,7 @@ related_adrs:
   - ADR-024
   - ADR-025
   - ADR-026
+  - ADR-033
 related_specs:
   - SPEC-001
   - SPEC-006
@@ -39,9 +40,10 @@ target_milestone: MVP
 
 # RFC-011: Bounded Application Actions and Model-Target Dispatch
 
-> **Review status:** This RFC records a reviewable candidate architecture. It
-> does not change ADR-013, authorize implementation, or make the corresponding
-> SPEC-011 contract authoritative. Approval must be followed by ADR extraction.
+> **Approval status:** Approved by explicit maintainer authorization. This RFC
+> establishes design consensus but does not itself change ADR-013, authorize
+> implementation, or make SPEC-011 authoritative. ADR-033 extracts the agreed
+> decision and remains proposed until separately accepted.
 
 ## Summary
 
@@ -497,11 +499,9 @@ input/display evidence remains an implementation-conformance gate.
 
 ## Open Questions
 
-No known question blocks architectural review. Exact public declarations,
+No open architectural question remains. Exact public declarations,
 fixed widths, capacities, error values, and migration spellings remain
-downstream Specification work. Review must still confirm that the focused
-module boundary and target-generation cancellation are acceptable before this
-RFC may be approved.
+downstream Specification work.
 
 ## Deferred and Follow-up Work
 
@@ -514,7 +514,7 @@ RFC may be approved.
 
 ## Decision Summary
 
-If approved, this RFC is expected to produce one focused ADR that:
+This approved RFC produces one focused ADR that:
 
 1. replaces ADR-013's committed callable payload with a bounded application
    action value bound to an opaque observable-model target generation;

@@ -18,6 +18,7 @@ related_adrs:
   - ADR-006
   - ADR-011
   - ADR-013
+  - ADR-033
 related_specs:
   - SPEC-002
   - SPEC-003
@@ -36,11 +37,11 @@ target_milestone: MVP
 
 # SPEC-011: Button Interaction and Activation Contract
 
-> **Architecture gate:** RFC-011 is in review and proposes replacing this
-> draft's callable payload with a bounded application-action value bound to an
-> observable-model target generation. The normative callable sections below
-> preserve the pre-RFC draft for review history; they MUST NOT advance until
-> RFC-011 is approved, its decision is extracted into an accepted ADR, and this
+> **Architecture gate:** Approved RFC-011 replaces this draft's proposed
+> callable payload with a bounded application-action value bound to an
+> observable-model target generation. Proposed ADR-033 extracts that decision.
+> The normative callable sections below preserve the pre-RFC draft for review
+> history; they MUST NOT advance until ADR-033 is accepted and this
 > Specification is revised against that authority.
 
 ## Summary
