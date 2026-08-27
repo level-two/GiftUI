@@ -6,10 +6,11 @@ status: captured
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-08-25
+updated: 2026-08-27
 source:
   - SPEC-006
-related_future_work: []
+related_future_work:
+  - FW-021
 related_explorations: []
 related_spikes: []
 promoted_to: []

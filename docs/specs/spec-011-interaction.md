@@ -6,12 +6,13 @@ status: draft
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-08-26
+updated: 2026-08-27
 proposal:
   - PROPOSAL-003
 related_rfcs:
   - RFC-002
   - RFC-004
+  - RFC-011
 related_adrs:
   - ADR-005
   - ADR-006
@@ -35,8 +36,12 @@ target_milestone: MVP
 
 # SPEC-011: Button Interaction and Activation Contract
 
-> **Draft status:** This contract is ready for review but remains
-> non-authoritative until explicit maintainer approval.
+> **Architecture gate:** RFC-011 is in review and proposes replacing this
+> draft's callable payload with a bounded application-action value bound to an
+> observable-model target generation. The normative callable sections below
+> preserve the pre-RFC draft for review history; they MUST NOT advance until
+> RFC-011 is approved, its decision is extracted into an accepted ADR, and this
+> Specification is revised against that authority.
 
 ## Summary
 
@@ -370,9 +375,15 @@ realization, even when the enclosing record is noncopyable.
 
 ## Open Issues
 
-No evidence questions remain open. SPIKE-007 resolves the Embedded Swift
-callable-storage feasibility gate; Specification review must still assess the
-full contract and acceptance criteria.
+The portable action representation and model-target dispatch boundary are an
+upstream architecture blocker. RFC-011 proposes a bounded application-action
+value, an assembled typed handler, and cancellation when model replacement
+changes the target registration generation. This Specification must not choose
+or implement that direction before RFC approval and accepted ADR extraction.
+
+SPIKE-007 remains evidence that persisting an arbitrary captured closure is not
+a valid zero-heap static realization. It does not prove closure-to-tag lowering
+and does not authorize retaining the callable contract in this draft.
 
 ## Deferred and Follow-up Work
 
@@ -388,8 +399,10 @@ concrete use case and normal lifecycle work.
 
 - [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
 - [RFC-004](../rfcs/rfc-004-run-cycle-and-frame-transaction.md)
+- [RFC-011](../rfcs/rfc-011-bounded-application-actions.md)
 - [ADR-013](../adrs/adr-013-provenance-validated-input-admission.md)
 - [SPEC-006](spec-006-declarative-view-semantics.md)
 - [SPEC-007](spec-007-layout.md)
 - [SPEC-009](spec-009-execution-cycle-and-frame-handoff.md)
 - [SPIKE-007](../spikes/spike-007-static-action-storage-feasibility.md)
+- [FW-021](../future-work/fw-021-scoped-action-domains.md)

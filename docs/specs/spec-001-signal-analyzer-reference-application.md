@@ -6,13 +6,14 @@ status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-08-26
+updated: 2026-08-27
 proposal:
   - PROPOSAL-002
 related_rfcs:
   - RFC-001
   - RFC-008
   - RFC-009
+  - RFC-011
 related_adrs:
   - ADR-001
   - ADR-003

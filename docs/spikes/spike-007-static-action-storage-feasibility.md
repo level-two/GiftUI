@@ -6,10 +6,11 @@ status: completed
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-08-26
+updated: 2026-08-27
 source:
   - SPEC-011
   - SPEC-012
+  - RFC-011
 related_future_work: []
 related_explorations: []
 related_spikes: []

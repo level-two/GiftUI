@@ -6,13 +6,14 @@ status: approved
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-08-26
+updated: 2026-08-27
 proposal:
   - PROPOSAL-003
 related_rfcs:
   - RFC-002
   - RFC-004
   - RFC-005
+  - RFC-011
 related_adrs:
   - ADR-010
   - ADR-011

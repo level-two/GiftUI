@@ -6,11 +6,12 @@ status: review
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-08-26
+updated: 2026-08-27
 proposal:
   - PROPOSAL-005
 related_rfcs:
   - RFC-008
+  - RFC-011
 related_adrs:
   - ADR-011
   - ADR-014

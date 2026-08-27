@@ -48,6 +48,7 @@ features:
       - RFC-005
       - RFC-007
       - RFC-010
+      - RFC-011
     adrs:
       - ADR-005
       - ADR-006
