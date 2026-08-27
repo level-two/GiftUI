@@ -38,9 +38,11 @@ target_milestone: MVP
 
 # SPEC-012: Canvas, Path, and Stroke Drawing Contract
 
-> **Draft status:** SPIKE-008 found blocking source-composition and Embedded
-> error-model failures. This contract requires revision before review and
-> remains non-authoritative until explicit maintainer approval.
+> **Draft status:** This revision corrects the source-composition and Embedded
+> error-model failures found by SPIKE-008. The corrected declarations still
+> require tracked cross-profile evidence and resolution of the remaining Open
+> Issues before review. This contract remains non-authoritative until explicit
+> maintainer approval.
 
 ## Summary
 
@@ -104,29 +106,35 @@ SPEC-008 logical clip; Canvas bounds add no implicit clip.
 ```swift
 public struct Canvas: View {
     public init(
-        _ draw: @escaping (inout GraphicsContext, Size) throws -> Void
+        _ draw: @escaping (
+            inout GraphicsContext,
+            Size
+        ) throws(DrawingError) -> Void
     )
 }
 
 public struct GraphicsContext: ~Copyable {
     public mutating func withPath<Result>(
-        _ body: (inout Path) throws -> Result
-    ) throws -> Result
+        _ body: (
+            inout GraphicsContext,
+            inout Path
+        ) throws(DrawingError) -> Result
+    ) throws(DrawingError) -> Result
     public mutating func stroke(
         _ path: borrowing Path,
         with shading: Shading,
         lineWidth: GeometryScalar
-    ) throws
+    ) throws(DrawingError)
     public mutating func stroke(
         _ path: borrowing Path,
         with shading: Shading,
         style: StrokeStyle
-    ) throws
+    ) throws(DrawingError)
 }
 
 public struct Path: ~Copyable {
-    public mutating func move(to point: Point) throws
-    public mutating func addLine(to point: Point) throws
+    public mutating func move(to point: Point) throws(DrawingError)
+    public mutating func addLine(to point: Point) throws(DrawingError)
 }
 
 public struct Shading: Equatable, Sendable {
@@ -169,7 +177,35 @@ public enum DrawingError: Error, Equatable, Sendable {
 `GraphicsContext` is supplied only by Canvas. `Path` is supplied only to the
 nonescaping `withPath` body and is noncopyable. Neither has a public
 initializer. Their borrows MUST NOT escape, cross an asynchronous boundary, or
-survive the Canvas invocation. The closure is synchronous and non-suspending.
+survive the Canvas invocation. Every closure is synchronous and non-suspending.
+
+`withPath` passes its active `GraphicsContext` and one new `Path` as the
+body's two exclusive `inout` parameters. Client source MUST perform stroke
+submission through that supplied context parameter; it MUST NOT capture or
+access the outer context while `withPath` is active. This shape permits stroke
+submission followed by further mutation and another submission of the same
+scoped Path without overlapping access to the outer context.
+
+Every public throwing declaration uses typed `throws(DrawingError)`. A Canvas
+or `withPath` body therefore cannot introduce an arbitrary `any Error` value.
+Portable trailing-closure source MUST state `throws(DrawingError)` explicitly
+where the supported compiler does not infer the typed thrown value.
+
+The following is the normative supported composition shape:
+
+```swift
+Canvas { (context, size) throws(DrawingError) in
+    let shading = Shading.color(Color(red: 255, green: 255, blue: 255))
+    try context.withPath { (context, path) throws(DrawingError) in
+        try path.move(to: Point(x: 0, y: 0))
+        try path.addLine(to: Point(x: size.width, y: size.height))
+        try context.stroke(path, with: shading, lineWidth: 2)
+
+        try path.addLine(to: Point(x: size.width, y: 0))
+        try context.stroke(path, with: shading, lineWidth: 2)
+    }
+}
+```
 
 The public `Canvas` initializer remains one portable closure-based source
 surface. A dynamic profile MAY retain that closure in a bounded profile-owned
@@ -177,8 +213,9 @@ wrapper until post-layout invocation. A static profile MUST instead lower each
 statically known Canvas body to a generated finite callable with bounded typed
 captures before persistent semantic retention; it MUST NOT retain the captured
 escaping closure directly. The generated callable MUST preserve the exact
-scoped `inout GraphicsContext`, `Size`, throwing, ordering, and release
-semantics specified here without existential storage or heap allocation.
+scoped `inout GraphicsContext`, `Size`, typed `throws(DrawingError)`,
+ordering, and release semantics specified here without existential storage or
+heap allocation.
 
 `StrokeStyle` construction with nonpositive width creates an invalid style
 marker; the next stroke throws `.invalidValue` before snapshotting. The
@@ -281,12 +318,14 @@ resolved render order and calls each closure at most once with its exact local
 `Size`. A closure is not called during semantic expansion, measurement,
 backend offer, retry, or capability resolution.
 
-Each `withPath` begins with no current point and no subpath. `move(to:)` starts
-a new open subpath and makes the point current. Consecutive moves preserve only
-the latest one-point subpath as a valid explicit subpath. `addLine(to:)`
-without a current point throws `.invalidPathState` and changes nothing.
-Zero-length segments are preserved; a one-point or empty subpath contributes
-no raster segment but remains an explicit boundary for deterministic snapshots.
+Each `withPath` supplies the body with the same active context on which
+`withPath` was invoked and a new Path with no current point and no subpath.
+`move(to:)` starts a new open subpath and makes the point current. Consecutive
+moves preserve only the latest one-point subpath as a valid explicit subpath.
+`addLine(to:)` without a current point throws `.invalidPathState` and changes
+nothing. Zero-length segments are preserved; a one-point or empty subpath
+contributes no raster segment but remains an explicit boundary for
+deterministic snapshots.
 
 Every successful mutating call is atomic. Capacity exhaustion appends no point
 or boundary and preserves the prior path. `withPath` resets and releases all
@@ -303,8 +342,8 @@ it. Each call appends one plan record in painter order.
 
 If the closure throws `DrawingError`, or GiftUI detects any local failure, the
 entire Canvas result and whole cycle-local drawing plan are invalid. No stroke
-from that plan reaches an operation sink. Arbitrary non-`DrawingError` client
-errors normalize to `.invariantViolation` after cleanup.
+from that plan reaches an operation sink. The public source surface admits no
+other thrown error type.
 
 ### Coordinate resolution and lowering
 
@@ -400,16 +439,21 @@ and borrowing implementation are not ABI or persistent formats.
 
 Provide `scripts/contracts/run-spec-012.sh` for macOS dynamic/static and
 hardware-free Raspberry Pi ARMv6/nRF52840 compile/link modes. Recording tests
-cover closure count/size, scope escape rejection, move/line state, multiple
+cover closure count/size, the exact typed-throws Canvas and `withPath` source
+shape, context/path scope escape rejection, outer-context overlapping-access
+rejection, move/line state, stroke-mutate-stroke reuse of one Path, multiple
 subpaths, zero-length geometry, snapshot isolation, both overloads, round and
 default styles, painter order, local-to-surface overflow, outside-Canvas
 geometry, inherited clips, every capacity boundary, whole-plan discard,
-refusal rederivation, borrowed-address nonretention, and cross-profile equality.
+throwing-exit cleanup, refusal rederivation, borrowed-address nonretention, and
+cross-profile equality.
 
 ## Acceptance Criteria
 
-- [ ] **DR-001:** Exact public declarations compile for all MVP profiles and
-  illegal Path copy/escape examples fail compilation.
+- [ ] **DR-001:** Exact public declarations and the typed-throws
+  `withPath { context, path in ... }` stroke-mutate-stroke source form compile
+  for all MVP profiles; illegal outer-context access, Path copy, and Path
+  escape examples fail compilation.
 - [ ] **DR-002:** Each occurrence is called once after layout with exact size
   and observes the same frozen revision as its enclosing derivation.
 - [ ] **DR-003:** Snapshot fixtures prove later Path mutation cannot alter an
@@ -422,8 +466,10 @@ refusal rederivation, borrowed-address nonretention, and cross-profile equality.
   capacity and SPEC-004 semantic capability gates.
 - [ ] **DR-007:** The sink retains no borrowed address after return and refusal
   retains no plan or closure.
-- [ ] **DR-008:** Static fixtures allocate zero heap bytes and symbol checks
-  exclude forbidden runtime facilities.
+- [ ] **DR-008:** Static fixtures exercise concrete typed `DrawingError`
+  throwing and cleanup, allocate zero heap bytes, and exclude `any Error`,
+  allocator, reflection, task, thread, exception-runtime, and Objective-C
+  symbols.
 
 ## Implementation Notes
 
@@ -435,7 +481,8 @@ captured escaping Swift closure across a committed-record lifetime preserves an
 allocator path even when the enclosing record is noncopyable, while a generated
 finite tagged callable with bounded typed captures compiles and links without
 that allocator path. The Spike's zero-argument action callable is not evidence
-that Canvas's exact throwing, scoped `inout` signature compiles.
+that Canvas's corrected typed-throws, two-`inout` `withPath` signature
+compiles.
 
 ### SPIKE-008 evidence
 
@@ -453,31 +500,30 @@ flash and RAM equal to the configuration-equivalent baseline (25,780 and 6,016
 bytes respectively); those values are declaration evidence, not production
 capacity or cost measurements. No board was flashed or operated.
 
-The experiment did not validate the intended supported source composition or
-Embedded throwing behavior. Those exact forms failed as recorded below, so the
-qualified passes do not satisfy DR-001 or DR-008 and do not authorize
-implementation.
+The original experiment did not validate the intended supported source
+composition or Embedded throwing behavior. This revision responds to both
+negative results by passing the active context into the `withPath` body and
+using typed `throws(DrawingError)` throughout the public surface. A follow-up
+local declaration fixture compiled and linked those corrected forms on macOS
+and the supported hardware-free nRF52840 configuration, including concrete
+typed throws and normal/throwing cleanup, without an `any Error` dependency.
+That local result motivates this contract correction but does not replace the
+tracked cross-profile evidence required by DR-001 and DR-008.
 
 ## Open Issues
 
-- SPIKE-008 completed the exact declaration experiment and found two approval
-  blockers. First, `context.stroke(path, ...)` inside
-  `context.withPath { ... }` is rejected by both supported compilers as an
-  overlapping modifying access to `context`, while the noncopyable Path cannot
-  escape for submission afterward. Second, concrete `throw DrawingError...`
-  expressions are rejected by the supported Embedded Swift compiler because
-  it cannot use the required `any Error` protocol value. The supported
-  Path-submission source form and Embedded error model require Specification
-  review; an architectural correction must return through RFC/ADR governance.
+- The tracked SPIKE-008 fixtures and evidence still describe the superseded
+  untyped-throws, captured-outer-context source shape. They must be updated and
+  rerun against this corrected exact contract before DR-001 or DR-008 can pass.
 - Pixel quantization and raster tolerance vectors are intentionally owned by
   the Wave 6 backend-integration Specification, not this portable contract.
 
 ## Deferred and Follow-up Work
 
 - [SPIKE-008](../spikes/spike-008-spec-012-exact-canvas-declarations.md)
-  records the exact declaration and callable evidence required for review. Its
-  negative results block approval but do not change current scope or establish
-  a replacement contract.
+  records the negative evidence that caused this source-contract correction.
+  Its fixtures must be revised and rerun before review; its original candidate
+  does not define the corrected contract.
 
 Richer drawing and retained paths remain outside the accepted MVP scope.
 
