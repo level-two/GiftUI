@@ -2,7 +2,7 @@
 id: SPEC-006
 feature: giftui-mvp-architecture
 title: Declarative View Semantics Specification
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-25
@@ -41,9 +41,9 @@ target_milestone: MVP
 
 # SPEC-006: Declarative View Semantics Specification
 
-> **Revision status:** Returned to review after ADR-033 superseded ADR-013.
-> The prior approval does not authorize implementation of this revised action-
-> payload contract; renewed explicit approval is required.
+> **Approval status:** Explicitly reapproved by the maintainer after ADR-033
+> superseded ADR-013. This revised action-payload and state-host traversal
+> contract is authoritative for implementation.
 
 ## Summary
 
@@ -51,9 +51,10 @@ This Specification defines the Rank 0 GiftUI client model and its profile-
 neutral structural expansion contract. Portable clients declare transient
 `View` values, compose zero through five fixed children with `ViewBuilder`,
 factor declarations into custom views, and apply modifier declarations in
-source order. The semantic runtime expands those declarations synchronously
-into runtime-owned semantic structure with deterministic structural and action
-identity.
+source order. A SPEC-010-generated state-host witness may bind direct
+observable-state declarations before a custom body runs. The semantic runtime
+expands the resulting declarations synchronously into runtime-owned semantic
+structure with deterministic structural and action identity.
 
 This contract is deliberately complete before layout: its canonical expansion
 transcript observes declaration order, structural paths, branch selection,
@@ -75,6 +76,9 @@ This Specification owns:
 - the public bounded action-value protocol used by action-bearing declarations;
 - runtime-owned structural identity and semantic action-occurrence identity;
 - deterministic synchronous expansion of transient declarations;
+- one stateful-custom-view traversal operation that permits SPEC-010 to bind a
+  mutable transient copy before body evaluation without moving state ownership
+  into Semantic Core;
 - caller-supplied expansion limits and all-or-nothing failure behavior; and
 - a backend-free recording seam and shared dynamic/static conformance corpus.
 
@@ -99,7 +103,8 @@ dynamic, and nRF52840/Zephyr static configurations.
 - Define `Text`, `Color`, foreground/background painting, `Button`,
   `disabled`, hit testing, pointer sequencing, or action activation behavior.
 - Define state storage, observable-state registration, invalidation,
-  reconciliation, run-cycle publication, or frame handoff.
+  reconciliation, or run-cycle publication; SPEC-010 owns all such behavior
+  while this contract owns only the pre-body traversal position.
 - Define concrete layout, rendering, interaction, state, or drawing modifier
   payloads.
 - Support unrestricted dynamic child collections, `ForEach`, `buildArray`,
@@ -145,6 +150,11 @@ the reason this contract is required now.
   typed action value defined here; this Specification does not bind a model
   target, allocate a committed generation, retain a callable or model, or
   dispatch an action.
+- The approved SPEC-010 contract owns `_GiftUIObservableStateHost`, its
+  declaration visitor, macro-generated witness, binding results, and all state
+  failure behavior. This Specification owns the single traversal operation
+  that calls that witness before `body`; the coordinated approval of both
+  contracts establishes this seam.
 
 ## Related ADRs
 
@@ -363,7 +373,10 @@ Swift requires a public protocol requirement to share the protocol's access.
 Its name, visitor/payload types, and every visitor operation MUST remain
 underscored. The public default implementation MUST call `visitCustomView`
 with the declaration and one nonescaping body accessor; therefore an ordinary
-external conformance supplies only `Body` and `body`.
+external conformance supplies only `Body` and `body`. A declaration annotated
+with SPEC-010's `@ObservableStateHost` receives a generated witness that calls
+`visitStatefulCustomView`; the client still does not hand-author or call the
+traversal method.
 
 The builder wrapper source shape is also normative:
 
@@ -447,6 +460,12 @@ public protocol _GiftUISemanticTraversalVisitor {
         _ declaration: borrowing Declaration,
         body: () -> Declaration.Body
     )
+    mutating func visitStatefulCustomView<
+        Declaration: View & _GiftUIObservableStateHost
+    >(
+        _ declaration: borrowing Declaration,
+        body: (borrowing Declaration) -> Declaration.Body
+    )
     mutating func visitEmpty()
     mutating func visitFixed<A: View, B: View>(
         _ a: borrowing A, _ b: borrowing B
@@ -497,14 +516,28 @@ registry. Metatype arguments select an inactive generic branch only; expansion
 MUST NOT instantiate, evaluate, retain, address-compare, or emit an event for
 that branch.
 
-`GiftUI` MUST supply the custom-view default. Each wrapper above MUST override
+`GiftUI` MUST supply the ordinary custom-view default. A declaration without
+direct observable state calls `visitCustomView`. SPEC-010's
+`@ObservableStateHost` macro MUST synthesize the only supported client override
+and call `visitStatefulCustomView`; direct handwritten overrides remain
+unsupported. The stateful operation makes one mutable transient copy, invokes
+the generated declaration witness through the SPEC-010 state-binding
+decorator, and evaluates the supplied body accessor only if every binding
+succeeds. Binding failure evaluates no body and is returned by the combined
+runtime coordinator as the exact SPEC-010 error rather than a semantic-
+expansion error. Semantic Core neither stores nor interprets a state value,
+attachment, registration, dirty bit, or target generation.
+
+Each wrapper above MUST override
 the requirement and call exactly its matching visitor operation. Each later
 concrete primitive or modifier contract MUST define its typed payload and its
 single matching override through this SPI. An action-bearing primitive MUST
 use the action-bearing operation exactly once; it MUST NOT separately use the
 non-action primitive operation for the same occurrence. These rules are the
 closed dispatch contract; adding a later declaration category requires a
-reviewed revision of this Specification rather than an unregistered hook.
+reviewed revision of this Specification rather than an unregistered hook. The
+stateful-custom-view operation is a custom-body boundary, not a semantic
+occurrence or new node category.
 
 ### Expansion limits and summary
 
@@ -674,9 +707,14 @@ For identical declarations, limits, and admitted external state, its trace
 and result MUST be deterministic.
 
 1. Enter the root-position component and the root declaration-role component.
-2. For a custom view, record its structural occurrence, enter its custom-body
-   component, reserve one body evaluation, record `evaluateCustomBody`,
-   evaluate `body` exactly once, then expand the returned value.
+2. For an ordinary custom view, record its structural occurrence, enter its
+   custom-body component, reserve one body evaluation, record
+   `evaluateCustomBody`, evaluate `body` exactly once, then expand the returned
+   value. For a stateful custom view, perform the same steps but first let the
+   SPEC-010 decorator bind every generated direct state declaration on one
+   mutable transient copy. Binding emits no semantic node or body count. The
+   body accessor receives that bound copy and runs exactly once only after all
+   bindings succeed; failure records no `evaluateCustomBody` event.
 3. For a fixed group, expand present children in increasing zero-based source
    index. The group itself emits no semantic node.
 4. For conditional content, enter branch `0` for `first` or branch `1` for
@@ -937,6 +975,10 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
 - Prove `Never` satisfies `Body: View`, every framework wrapper dispatches its
   matching underscored visitor operation without reading `body`, and custom
   views receive the one default custom-body implementation.
+- Compile an `@ObservableStateHost` view through the exact SPEC-010 macro
+  expansion and prove its generated traversal witness calls
+  `visitStatefulCustomView`, while an ordinary custom view continues to call
+  `visitCustomView` without a handwritten witness.
 - Prove that `buildArray`, unrestricted dynamic collections, supported client
   traversal API, wrapper storage/initializers, and runtime/backend types are
   absent from the normal portable surface. Prove an external custom `View`
@@ -962,6 +1004,10 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
   interleaving without asserting concrete layout or render meaning.
 - Prove each active custom body is evaluated exactly once and each inactive
   body zero times per attempt.
+- With the SPEC-010 decorator, prove direct state declarations are visited in
+  lexical ordinal order before the stateful body event, the body accessor
+  receives the bound transient copy, and any binding failure produces no body
+  event or partial semantic transcript.
 
 ### Bounds and failure fixtures
 
@@ -1062,6 +1108,10 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
 - [ ] **DV-014:** `FW-017` and `FW-020` remain optional, post-MVP captures with
   reciprocal links and concrete revisit triggers; no required product behavior
   or implementation criterion depends on pursuing either item.
+- [ ] **DV-015:** Stateful custom-view fixtures call the generated SPEC-010
+  declaration witness before body evaluation, preserve ordinary expansion
+  counts and identity on success, and emit no body event or partial semantic
+  result when state binding fails.
 
 ## Implementation Notes
 
@@ -1118,6 +1168,7 @@ the separately gated post-MVP declarative-extensibility cluster.
 - [ADR-032: Semantic-Core-Owned Borrowed Layout Input](../adrs/adr-032-semantic-core-owned-layout-input.md)
 - [SPEC-002: Portable Foundation](spec-002-portable-foundation.md)
 - [SPEC-003: Failure Outcomes and Containment](spec-003-failure-outcomes-and-containment.md)
+- [SPEC-010: Observable Reference State Contract](spec-010-observable-reference-state.md)
 - [FW-017: Public Binding Abstraction](../future-work/fw-017-public-binding-abstraction.md)
 - [FW-020: Declarative Extensibility](../future-work/fw-020-declarative-extensibility.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)

@@ -6,7 +6,7 @@ status: completed
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-08-26
+updated: 2026-08-27
 source:
   - SPEC-010
 related_future_work: []
@@ -21,13 +21,14 @@ target_milestone: MVP
 
 # SPIKE-006: SPEC-010 Embedded Declaration Compile and Link Evidence
 
-> This Spike provides compile/link evidence for SPEC-010. Its fixture model,
+> This Spike provides compile/link evidence for the 2026-08-26 SPEC-010
+> declaration revision. Its fixture model,
 > sink route, storage, executable entry point, and measured code shape are
 > disposable and do not define production implementation or capacities.
 
 ## Parent Gate
 
-Draft SPEC-010 could not close review while its exact `State`,
+The 2026-08-26 draft SPEC-010 could not close review while its exact `State`,
 `_GiftUIObservableChangeSink`, `_GiftUIObservableReference`, and
 `_GiftUIObservationAttachment` declarations lacked checked-in Embedded Swift
 compile/link evidence. Completed SPIKE-003 established the representation
@@ -131,12 +132,13 @@ and the introduced-symbol result are recorded in the experiment's
 
 ## Disposition
 
-Completed. The missing Embedded Swift compile/link evidence for SPEC-010's
-exact public declarations is now checked in and reproducible, so that specific
-review issue is resolved. SPEC-010 remains `draft`; this Spike neither approves
-the Specification nor authorizes implementation. The broader acceptance
-criteria and requested multi-profile `scripts/contracts/run-spec-010.sh`
-remain Specification conformance work.
+Completed for the 2026-08-26 declarations. The 2026-08-27 SPEC-010 review
+replaced the `Void` report result and forgeable raw attachment and added
+`@ObservableStateHost` generation plus the state-host traversal witnesses.
+Those revised exact declarations require their own OS-001 compile evidence;
+this completed Spike remains valid family-level feasibility evidence but no
+longer closes that current review gate. The Spike neither approves the
+Specification nor authorizes implementation.
 
 ## References
 

@@ -2,7 +2,7 @@
 id: SPEC-011
 feature: giftui-mvp-architecture
 title: Button Interaction and Activation Contract
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-26
@@ -46,11 +46,9 @@ target_milestone: MVP
 
 # SPEC-011: Button Interaction and Activation Contract
 
-> **Review status:** Revised against accepted ADR-033. This Specification is
-> non-authoritative until explicit maintainer approval. Reapproval of revised
-> SPEC-006 and SPEC-009 and approval of SPEC-010 are prerequisites because
-> they own the semantic action payload, execution phase, and observable target
-> generation consumed here.
+> **Approval status:** Explicitly approved by the maintainer after reapproval
+> of revised SPEC-006 and SPEC-009 and approval of SPEC-010. This revised
+> ADR-033-aligned interaction contract is authoritative for implementation.
 
 ## Summary
 
@@ -714,10 +712,10 @@ production declarations.
 
 ## Open Issues
 
-No open contract issue blocks review. Revised prerequisite Specifications must
-complete their approval gates before this Specification can be approved.
-Production capacities and profile storage belong to later runtime-profile and
-host-configuration contracts.
+No open contract issue remains. Revised prerequisite Specifications completed
+their approval gates before this Specification was approved. Production
+capacities and profile storage belong to later runtime-profile and host-
+configuration contracts.
 
 ## Deferred and Follow-up Work
 

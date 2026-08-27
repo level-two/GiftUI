@@ -779,6 +779,7 @@ Portable Presentation MUST use this source-level ownership shape in every
 profile:
 
 ```swift
+@ObservableStateHost
 struct SignalAnalyzerView: View {
     @State private var viewModel: SignalAnalyzerViewModel
 }
@@ -805,7 +806,8 @@ one active model registration, one dirty bit, one live bit, and capacity for
 one transient replacement registration. The fixed root MUST use a generated
 or runtime-provided `UInt32` structural identity and declaration-local
 `UInt16` state identity. The registration token MUST contain a `UInt16` slot
-and a nonzero `UInt32` generation. Generation arithmetic MUST NOT wrap; token
+and a `UInt32` generation allocated from zero upward. Generation arithmetic
+MUST NOT wrap; token
 exhaustion MUST reject reuse and require a fresh runtime instance.
 
 The static profile MUST provide one address-stable generated
@@ -856,7 +858,10 @@ enum SignalAnalyzerChangeReportOutcome: UInt8, Equatable, Sendable {
     case dirtied
     case coalesced
     case staleRegistration
-    case mutationPhaseViolation
+    case mutationPhaseViolationContained
+    case mutationPhaseViolationSafetyNotProven
+    case reentrancyViolation
+    case invariantViolation
 }
 
 protocol SignalAnalyzerModelChangeSink {
@@ -910,6 +915,8 @@ enum SignalAnalyzerRuntimeCondition: UInt8 {
     case incompatibleStateAssociation
     case staleRegistrationReport
     case mutationPhaseViolation
+    case observableStateReentrancyViolation
+    case observableStateInvariantViolation
     case captureRevisionMismatch
     case reservedFailureCapacityExhausted
     case identityGenerationExhausted
@@ -1314,9 +1321,12 @@ requires it.
   snapshot through explicit observation restart; it MUST NOT guess or apply a
   partial delta.
 - A report during freeze or another prohibited phase MUST mark the affected
-  semantic scope dirty and return `mutationPhaseViolation`. If the runtime
-  cannot prove stable state, containment is `safety not proven` and target
-  policy MUST quiesce the analyzer rather than publish potentially torn state.
+  semantic scope dirty and return `mutationPhaseViolationContained` only when
+  stable state is proven; otherwise it returns
+  `mutationPhaseViolationSafetyNotProven` and target policy MUST quiesce the
+  analyzer rather than publish potentially torn state. Reentrancy and
+  invariant report outcomes use the corresponding SPEC-010 failure rows and
+  never become ordinary mutation success.
 - Derivation failure after applied mutations MUST discard partial derived
   output, retain current state as dirty, request a later host-paced cycle, and
   MUST NOT replay or roll back facts, actions, or model replacement.
@@ -1345,8 +1355,10 @@ policy or diagnostics.
 | `identityGenerationExhausted` | failure / `invalidIdentity` | `observableState` | `runtime` | `safetyNotProven` |
 | `captureRevisionMismatch` | failure / `invalidProvenance` | `presentationIntegration` | `component` | `contained` |
 | `reservedFailureCapacityExhausted` | failure / `capacityExhausted` | `presentationIntegration` | `runtime` | `safetyNotProven` |
-| `mutationPhaseViolation`, stable state proven | failure / `invalidPhase` | `execution` | `activeCycle` | `contained` |
-| `mutationPhaseViolation`, stable state not proven | failure / `invalidPhase` | `execution` | `activeCycle` | `safetyNotProven` |
+| `mutationPhaseViolation`, stable state proven | failure / `invalidPhase` | `observableState` | `activeCycle` | `contained` |
+| `mutationPhaseViolation`, stable state not proven | failure / `invalidPhase` | `observableState` | `activeCycle` | `safetyNotProven` |
+| `observableStateReentrancyViolation` | failure / `reentrancyViolation` | `observableState` | `activeCycle` | `safetyNotProven` |
+| `observableStateInvariantViolation` | failure / `invariantViolation` | `observableState` | `runtime` | `safetyNotProven` |
 
 Unknown analyzer rejection or runtime-condition values MUST normalize to
 `unknownProducerCondition`, preserve the known producer origin, use the
@@ -1371,6 +1383,7 @@ policy is not invoked.
 | Capture revision mismatch | `captureFactApplication` | Preserve current capture, mark the analyzer Presentation component failed, detach observation, and require explicit restart with a snapshot | `quiesceAffectedScope` | `quiesceAffectedScope` |
 | Contained mutation phase violation | — | Preserve the last complete publication, retain dirty state, and schedule exactly one coordinator-owned retry no earlier than the next 250-millisecond host pace | — | — |
 | Mutation phase violation with safety not proven | `modelChangeReport` | Discard partial publication and prevent another normal cycle | `quiesceAffectedScope`, `invokeFatalHook` | `quiesceAffectedScope` |
+| Observable-state reentrancy or invariant violation | `modelChangeReport` | Discard partial publication, quiesce runtime health, and prevent another normal cycle | `quiesceAffectedScope`, `invokeFatalHook` | `quiesceAffectedScope` |
 
 Every row with residual choices MUST construct
 `GiftUIResidualPolicyInput<SignalAnalyzerResidualPolicyContext>` through its

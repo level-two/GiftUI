@@ -33,8 +33,9 @@ is current authority. RFC-007 remains `draft`; its delegated-service direction
 and FW-009 MUST NOT become a required MVP Specification dependency.
 
 The `canvas-drawing` feature completed its decision stage with approved RFC-009
-and accepted ADR-028 through ADR-031. Wave 5 drafts SPEC-010 through SPEC-012
-now exist; each remains non-authoritative until review and explicit approval.
+and accepted ADR-028 through ADR-031. Wave 5 artifacts SPEC-010 through
+SPEC-012 now exist; SPEC-010 and SPEC-011 are approved, while SPEC-012 remains
+non-authoritative until review and explicit approval.
 
 ## Boundary Rules
 
@@ -67,13 +68,13 @@ and diagnostic vocabulary; SPEC-004 owns capability contribution, resolution,
 and the `rasterPresentation` catalogue while referencing the first two
 contracts instead of redefining them.
 
-Wave 2 retains these immutable identities; SPEC-006 has returned to review for
-ADR-033 alignment:
+Wave 2 retains these immutable identities; SPEC-006 was explicitly reapproved
+after ADR-033 alignment:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
 | `TEXT` | `SPEC-005` | `approved` |
-| `DECLARATIVE` | `SPEC-006` | `review` |
+| `DECLARATIVE` | `SPEC-006` | `approved` |
 
 SPEC-005 and SPEC-006 are parallel sibling contracts. SPEC-005 owns exact text
 resource identities, compatible resource views, and resource lifetimes;
@@ -95,12 +96,12 @@ physical semantic, layout, and backend-facing render-core modules remain
 separate; `GiftUIRenderLowering` joins semantic and layout results above
 `GiftUIRenderCore` without exposing either authority to backends.
 
-Wave 4 retains this immutable identity; SPEC-009 has returned to review for
-ADR-033 alignment:
+Wave 4 retains this immutable identity; SPEC-009 was explicitly reapproved
+after ADR-033 alignment:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `EXECUTION` | `SPEC-009` | `review` |
+| `EXECUTION` | `SPEC-009` | `approved` |
 
 SPEC-009 owns the serialized run cycle, sealed admission, publication and
 dirty-recovery boundaries, execution provenance, synchronous one-shot frame
@@ -109,17 +110,18 @@ machinery. It leaves observable-state storage, public interaction declarations
 and action lowering, concrete runtime-profile storage, backend realization,
 and host policy values to their downstream portfolio contracts.
 
-Wave 5 has produced these immutable artifacts and advanced the first two to
-review:
+Wave 5 has produced these immutable artifacts and advanced the first two
+through approval:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `OBSERVABLE` | `SPEC-010` | `review` |
-| `INTERACTION` | `SPEC-011` | `review` |
+| `OBSERVABLE` | `SPEC-010` | `approved` |
+| `INTERACTION` | `SPEC-011` | `approved` |
 | `DRAWING` | `SPEC-012` | `draft` |
 
-The three artifacts may be reviewed independently. None may be treated as an
-implementation contract until its own approval gate closes.
+The three artifacts have independent approval gates. SPEC-010 and SPEC-011
+are implementation contracts; SPEC-012 is not authoritative until its own
+approval gate closes.
 
 Candidate keys are planning labels, not reserved Specification IDs.
 

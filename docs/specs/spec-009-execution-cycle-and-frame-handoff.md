@@ -2,7 +2,7 @@
 id: SPEC-009
 feature: giftui-mvp-architecture
 title: Execution Cycle and Frame Handoff Contract
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-26
@@ -44,10 +44,9 @@ target_milestone: MVP
 
 # SPEC-009: Execution Cycle and Frame Handoff Contract
 
-> **Revision status:** Returned to review after ADR-033 superseded ADR-013.
-> The prior approval does not authorize implementation of this revised bound-
-> action and target-revalidation contract; renewed explicit approval is
-> required after SPEC-006 and SPEC-011 are review-ready.
+> **Approval status:** Explicitly reapproved by the maintainer after ADR-033
+> superseded ADR-013 and after SPEC-006 reapproval. This revised bound-action
+> and target-revalidation contract is authoritative for implementation.
 
 ## Summary
 
@@ -143,9 +142,8 @@ All declarations below are package SPI unless explicitly stated otherwise.
 - [SPEC-008](spec-008-rendering.md) owns atomic normalized render production
   and the one-attempt operation-sink lifetime.
 
-SPEC-002, SPEC-003, SPEC-007, and SPEC-008 are approved. SPEC-006 has returned
-to review for the same ADR-033 alignment and is a reapproval prerequisite.
-This Specification MUST NOT redefine their types, local errors, atomicity, or
+SPEC-002, SPEC-003, SPEC-006, SPEC-007, and SPEC-008 are approved. This
+Specification MUST NOT redefine their types, local errors, atomicity, or
 ownership.
 
 ## Related ADRs
