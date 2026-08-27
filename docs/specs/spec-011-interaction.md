@@ -16,7 +16,15 @@ related_rfcs:
 related_adrs:
   - ADR-005
   - ADR-006
+  - ADR-008
+  - ADR-010
   - ADR-011
+  - ADR-014
+  - ADR-015
+  - ADR-016
+  - ADR-024
+  - ADR-025
+  - ADR-026
   - ADR-033
 related_specs:
   - SPEC-002
@@ -113,8 +121,17 @@ module. It is not part of `GiftUI`, this contract, or static semantics.
 
 - ADR-005 keeps semantic interaction and application dispatch above backends.
 - ADR-006 requires equal portable behavior across dynamic and static profiles.
+- ADR-008 requires the focused Interaction owner, portable `GiftUI` leaf, and
+  runtime-coordinator join to remain compiler-enforced module boundaries.
+- ADR-010 requires candidate routing state to commit only with accepted
+  one-shot frame handoff and to remain unchanged on refusal.
 - ADR-011 makes action application a serialized, at-most-once mutation-phase
   effect that is never replayed after failure or refusal.
+- ADR-014 through ADR-016 require bounded outcome meaning, layered mandatory
+  containment before residual policy, and diagnostics with no control-flow
+  authority.
+- ADR-024 through ADR-026 govern root-model ownership, replacement lifetime,
+  and equivalent bounded observable-state behavior across profiles.
 - ADR-033 requires bounded typed actions, coordinator-owned model-target
   binding, identity-generation capture, final target revalidation, and
   cancellation when model replacement or removal changes the binding.
@@ -172,10 +189,11 @@ exact `Action` type and domain. A qualified case such as
 `SignalAnalyzerAction.start` is guaranteed. Contextual shorthand such as
 `.start` is conforming only where ordinary Swift inference accepts it.
 
-The label builder is evaluated once when its button declaration is expanded.
-The button contributes one action-bearing semantic occurrence and its label as
-its fixed semantic child. Title initializers lower exactly as equivalent
-`Button(action:) { Text(...) }` declarations.
+The `Button` initializer evaluates `label` exactly once before the initialized
+declaration value becomes available and stores the resulting `Label` value.
+Semantic expansion borrows that stored label exactly once as the Button's fixed
+semantic child; it MUST NOT invoke the source builder again. Title initializers
+lower exactly as equivalent `Button(action:) { Text(...) }` declarations.
 
 `disabled(true)` disables every descendant action. `disabled(false)` does not
 override an ancestor. Effective enabled state is the conjunction of all
@@ -235,10 +253,8 @@ package struct DisabledSemanticPayload: _GiftUISemanticModifierPayload,
 package struct InteractionLimits: Equatable, Sendable {
     package let maximumActions: UInt16
     package let maximumHitRegions: UInt16
-    package let maximumActiveSources: UInt16
     package init?(maximumActions: UInt16,
-                  maximumHitRegions: UInt16,
-                  maximumActiveSources: UInt16)
+                  maximumHitRegions: UInt16)
 }
 
 package struct BoundActionRecord<Identity>: Equatable, Sendable
@@ -256,31 +272,45 @@ package enum InteractionError: UInt8, Equatable, Sendable {
     case capacityExhausted = 0
     case invalidIdentity = 1
     case invalidGeometry = 2
-    case generationExhausted = 3
-    case invalidPhase = 4
-    case reentrancyViolation = 5
-    case invariantViolation = 6
-    case incompatibleActionDomain = 7
-    case invalidActionValue = 8
-    case missingModelTarget = 9
+    case invalidPhase = 3
+    case reentrancyViolation = 4
+    case invariantViolation = 5
+    case incompatibleActionDomain = 6
+    case invalidActionValue = 7
+    case missingModelTarget = 8
 }
 
-package enum PointerGestureResult: UInt8, Equatable, Sendable {
-    case captured = 0
-    case continued = 1
-    case activationAdmitted = 2
-    case cancelled = 3
-    case ignored = 4
+package enum InteractionCandidateDisposition: Equatable, Sendable {
+    case commit(PresentationRevision)
+    case discard
 }
 
-package enum InteractionDispatchResult: UInt8, Equatable, Sendable {
-    case dispatched = 0
-    case cancelled = 1
+package enum InteractionCandidateAppendResult: Equatable, Sendable {
+    case preserved
+    case requiresGeneration
+    case failure(InteractionError)
+}
+
+package enum PointerGestureOutcome<Identity>: Equatable, Sendable
+where Identity: Equatable & Sendable {
+    case captured(CapturedAction<Identity>)
+    case continued(CapturedAction<Identity>)
+    case activationAdmitted(CapturedAction<Identity>)
+    case cancelled
+    case ignored
+}
+
+package enum InteractionDispatchResult: Equatable, Sendable {
+    case dispatched
+    case cancelled
+    case failure(InteractionError)
 }
 
 package protocol InteractionCandidateBuilder {
     associatedtype Identity: Equatable & Sendable
-    mutating func begin(limits: InteractionLimits) -> InteractionError?
+    mutating func beginCandidate(
+        limits: InteractionLimits
+    ) -> InteractionError?
     mutating func append(
         identity: Identity,
         isEnabled: Bool,
@@ -289,8 +319,27 @@ package protocol InteractionCandidateBuilder {
         paintOrder: UInt16,
         action: BoundedApplicationAction,
         targetGeneration: ObservableTargetGeneration
+    ) -> InteractionCandidateAppendResult
+    mutating func assignGeneration(
+        _ generation: ActionGeneration,
+        to identity: Identity
     ) -> InteractionError?
-    mutating func finish() -> InteractionError?
+    mutating func finishCandidate() -> InteractionError?
+    mutating func resolveCandidate(
+        _ disposition: InteractionCandidateDisposition
+    )
+}
+
+package protocol InteractionGestureResolver {
+    associatedtype Identity: Equatable & Sendable
+    borrowing func resolveDown(at point: Point)
+        -> PointerGestureOutcome<Identity>
+    borrowing func resolveMove(
+        _ captured: CapturedAction<Identity>, at point: Point
+    ) -> PointerGestureOutcome<Identity>
+    borrowing func resolveUp(
+        _ captured: CapturedAction<Identity>, at point: Point
+    ) -> PointerGestureOutcome<Identity>
 }
 
 package protocol ActionModelTargetAccess {
@@ -314,9 +363,48 @@ stores the exact value and has no validity authority; dispatch performs total
 `Action(rawValue:)` decode. `BoundActionRecord` uses inline bounded
 storage and MUST NOT persist an existential or generic declaration value.
 
-All limits MUST be nonzero and no greater than corresponding SPEC-009 limits.
-A count equal to its limit succeeds. `paintOrder` is zero-based and unique per
-candidate. Overflow is candidate failure.
+Both Interaction limits MUST be nonzero. `maximumActions` MUST be no greater
+than SPEC-009's configured `maximumCommittedActions`.
+`maximumHitRegions` is independently owned by Interaction and MUST be no
+greater than `maximumActions`, because one Button occurrence contributes at
+most one clipped rectangular region. SPEC-009's
+`maximumActiveInputSources` separately bounds per-source sequence/capture
+storage; Interaction owns no duplicate source limit. A count equal to its
+limit succeeds. `paintOrder` is zero-based and unique per candidate. Overflow
+is candidate failure.
+
+`beginCandidate` starts one empty staging transaction. Every successful
+candidate calls `finishCandidate` exactly once before frame offer and then
+`resolveCandidate` exactly once: `.commit(revision)` only for the accepted
+handoff's reserved `PresentationRevision`, otherwise `.discard`. Any failure
+after begin calls `.discard` exactly once. Successful finish proves that either
+resolution can complete without allocation or further fallible work;
+resolution itself is non-failing. Reentry returns `.reentrancyViolation`;
+append/assignment before begin, duplicate identity or paint order, and finish
+twice return `.invalidPhase` or `.invariantViolation` before offer as specified
+under Error Handling. A conforming coordinator never requests resolution
+outside the legal ready state. Candidate storage retains no borrowed semantic,
+layout, observable-state, or handler value after resolution.
+
+`append` validates identity, geometry, capacity, and paint order and computes
+the exact clipped hit bounds before comparing the coordinator-validated action
+code and target generation with the same identity's committed record. It returns
+`.preserved` only after copying that exact record and generation into candidate
+storage. Absence or any changed field stages a generation-pending replacement
+and returns `.requiresGeneration`. The coordinator then reserves one fresh
+SPEC-009 generation and calls `assignGeneration` exactly once for that identity.
+A `.failure` stages nothing for that occurrence and requires complete candidate
+discard. `finishCandidate` rejects any unresolved replacement as
+`.invalidIdentity`. Interaction never allocates a generation, and the
+coordinator never reproduces Interaction's geometry or record comparison.
+
+`InteractionGestureResolver` is a stateless borrowed view over the committed
+records and hit map. Execution owns every per-source capture and applies the
+returned transition. `.captured`, `.continued`, and
+`.activationAdmitted` carry exactly the captured identity-generation pair;
+`.cancelled` and `.ignored` carry none. Down can return only `.captured` or
+`.ignored`, move only `.continued` or `.cancelled`, and up only
+`.activationAdmitted` or `.cancelled`.
 
 `ActionModelTargetAccess` belongs to the target-composed coordinator adapter,
 not `GiftUIObservableState` or `GiftUIInteraction`. Its body is nonescaping and
@@ -331,8 +419,11 @@ returns `false` and invokes nothing.
 Expansion visits each Button once, associates the exact SPEC-006 action
 identity, validates its concrete action type against the assembled handler's
 `Action`, and normalizes it to `BoundedApplicationAction(code:
-action.rawValue)`. It does not invoke or retain a handler. The label expands in
-source order. `disabled` creates no semantic identity.
+action.rawValue)`. Before append, the coordinator requires
+`Handler.Action(rawValue: action.rawValue) == action`; failure is
+`invalidActionValue` and discards the candidate. It does not invoke or retain a
+handler. The stored label expands in source order. `disabled` creates no
+semantic identity.
 
 The candidate builder traverses actions in deterministic semantic order. The
 hit region is exactly the SPEC-007 Button bounds intersected with its published
@@ -351,10 +442,11 @@ or compile-time graph validation without reflection or a stored type token.
 ### Candidate and generation behavior
 
 Complete bound-record equality includes identity, enabled state, exact hit
-bounds, paint order, action code, and target generation. A candidate MAY
-preserve an existing `ActionGeneration` only by preserving the exact formerly
-committed complete record. Any changed field or newly substituted record is
-replacement and requires a freshly reserved runtime-wide generation.
+bounds, paint order, action code, and target generation. `append` MAY preserve
+the committed `ActionGeneration` only when every one of those fields is equal.
+Any changed field, missing record, or newly substituted record returns
+`.requiresGeneration`; the coordinator reserves a fresh runtime-wide
+generation and supplies it through `assignGeneration`.
 
 Capacity, geometry, action-domain, action-value, target, or generation failure
 discards the whole candidate. The committed table, hit map, action values,
@@ -363,21 +455,27 @@ likewise preserves former committed interaction state. Accepted handoff
 atomically commits records and hit regions under its `PresentationRevision`.
 
 Removed records release no captured resource because records contain no
-callable or model. Generation exhaustion follows SPEC-009 fail-closed runtime
-disposition and never aliases a captured pair.
+callable or model. Generation exhaustion is SPEC-009
+`ExecutionError.identityExhausted`, not an `InteractionError`. The coordinator
+discards the Interaction candidate after SPEC-009 performs its required
+capture cancellation and fail-closed runtime disposition; no generation or
+captured pair is aliased.
 
 ### Pointer gesture
 
-SPEC-009 owns provenance, source, sequence, ordinal, and phase admission. A
-valid down resolves the topmost hit and captures only its semantic identity and
-action generation when it is enabled. A down with no hit or with a disabled
-topmost hit is `.ignored`.
+SPEC-009 owns provenance, source, sequence, ordinal, phase admission, and the
+per-source capture table. For an admitted down, Execution calls
+`resolveDown(at:)`; a topmost enabled hit returns `.captured` with only its
+semantic identity and action generation. No hit or a disabled topmost hit
+returns `.ignored`.
 
-Move preserves capture while the pointer remains inside the captured action's
-current hit region. Leaving cancels activation permanently; re-entry does not
-restore it. Up is eligible only inside the same current region when identity,
-action generation, and enabled state still match. Success emits one captured
-pair into the same sealed cycle and clears capture. Every other up cancels.
+For move, Execution passes its current capture to `resolveMove`; `.continued`
+returns that same pair while the pointer remains inside the captured action's
+current hit region. `.cancelled` clears it permanently, and re-entry does not
+restore it. For up, `resolveUp` returns `.activationAdmitted` only inside the
+same current region when identity, action generation, and enabled state still
+match. Execution emits that pair into the same sealed cycle and clears capture.
+Every other up returns `.cancelled` and clears capture.
 
 A removed, disabled, moved, rebound, model-replaced, stale, malformed, dropped,
 out-of-order, or capacity-refused sequence dispatches nothing. A committed
@@ -393,8 +491,10 @@ mismatched record returns `.cancelled` and invokes no handler.
 
 The dispatcher decodes `Handler.Action(rawValue: code)` against the statically
 known action type. An invalid code is a pre-publication error during candidate
-build; if detected in committed state it is an invariant failure and invokes
-nothing.
+build. If detected in committed state, dispatch returns
+`.failure(.invariantViolation)` and invokes nothing. A missing record, changed
+identity/generation/enabled state, or target mismatch is ordinary
+`.cancelled`; a complete successful handler call returns `.dispatched`.
 
 Finally, `ActionModelTargetAccess.withCurrentModel(matching:)` compares the
 record target generation to the current live generation. Mismatch or absence
@@ -418,6 +518,25 @@ Published removal behaves the same. Failed or staged replacement preserves the
 former generation and records.
 
 ## State / Lifecycle
+
+Candidate storage follows this exact transaction:
+
+```text
+idle --beginCandidate--> staging --finishCandidate--> ready-for-offer
+  ^            | failure/discard              | discard/non-accepted
+  |            +------------------------------+
+  +---- resolveCandidate(commit(revision)) <-- accepted handoff
+```
+
+Only `staging` accepts `append` and `assignGeneration`. `finishCandidate`
+requires every replacement to have a generation and performs every capacity
+and commit-storage preflight. `ready-for-offer` is immutable until resolution.
+Commit installs the complete table, hit map, and revision by an infallible
+bounded state swap; discard releases the complete candidate. Both return to
+`idle`. A conforming coordinator MUST call only the transitions shown and MUST
+resolve every begun candidate exactly once.
+
+Per-source gesture state follows:
 
 ```text
 idle --down hit/enabled--> captured --move inside--> captured
@@ -457,17 +576,38 @@ not authorize an Interaction import of Observable State or application code.
 | `capacityExhausted` | `.capacityExhausted` | `.interaction` | `.candidateFrame` | `.contained` |
 | `invalidIdentity` | `.invalidIdentity` | `.interaction` | `.candidateFrame` | `.contained` |
 | `invalidGeometry` | `.invalidValue` | `.interaction` | `.candidateFrame` | `.contained` |
-| `generationExhausted` | `.invalidIdentity` | `.execution` | `.runtime` | `.safetyNotProven` |
-| `incompatibleActionDomain` | `.invalidIdentity` | `.interaction` | `.candidateFrame` | `.contained` |
+| `incompatibleActionDomain` | `.invalidValue` | `.interaction` | `.candidateFrame` | `.contained` |
 | `invalidActionValue` | `.invalidValue` | `.interaction` | `.candidateFrame` | `.contained` |
 | `missingModelTarget` | `.invalidIdentity` | `.observableState` | `.candidateFrame` | `.contained` |
 | `invalidPhase` | `.invalidPhase` | `.interaction` | `.activeCycle` | `.safetyNotProven` |
 | `reentrancyViolation` | `.reentrancyViolation` | `.interaction` | `.activeCycle` | `.safetyNotProven` |
-| `invariantViolation` | `.invariantViolation` | `.interaction` | narrowest proven scope | `.safetyNotProven` |
+| `invariantViolation` | `.invariantViolation` | `.interaction` | `.runtime` | `.safetyNotProven` |
 
 Ordinary cancellation due to changed target generation is not a failure fact.
 Errors never dispatch a fallback, retarget an event, publish a partial table,
 preserve an invalid binding, or trap as their only behavior.
+SPEC-009 generation exhaustion remains its exact
+`ExecutionError.identityExhausted` mapping and MUST NOT be translated into the
+Interaction vocabulary.
+
+When multiple local conditions are simultaneously visible at one boundary,
+Interaction selects in this order: `reentrancyViolation`, `invalidPhase`,
+`incompatibleActionDomain`, `missingModelTarget`, `invalidIdentity`,
+`invalidGeometry`, `invalidActionValue`, `capacityExhausted`, then
+`invariantViolation`. An already-selected SPEC-009 or SPEC-010 error retains
+its owning contract's precedence and is not re-ranked here.
+
+Every candidate-frame contained failure discards the complete candidate,
+preserves the prior committed record/hit-map/revision state, and follows
+SPEC-009's exact dirty/wake rule when mutation has already occurred. No
+residual policy call may reinterpret it as a partial success. An active-cycle
+or runtime safety-not-proven failure cancels affected captures, discards
+candidate state, admits no later normal cycle, and permits only
+`quiesceAffectedScope` or an already configured `invokeFatalHook` after
+quiescence. The first adapter importing both the producer contract and
+`GiftUIFailureCore` performs mapping only after these mandatory effects and
+preserves the exact local error and execution context. Diagnostic selection,
+delivery, loss, or saturation cannot change any of these effects or results.
 
 ## Performance Requirements
 
@@ -491,15 +631,44 @@ separately bounded dynamic domain and cannot affect portable/static semantics.
 
 ## Testing Requirements
 
-Provide `scripts/contracts/run-spec-011.sh` for macOS dynamic, macOS static,
-Raspberry Pi ARMv6 compile/link, and nRF52840 hardware-free compile/link modes.
-The canonical corpus covers exact qualified source and all six actions; total
-normalization/decode; wrong action type/code/target/capacity; disabled and clipped
-overlaps; complete pointer sequencing; every record replacement field; model
-replacement after down and after admission; failed replacement and frame
-refusal; published removal; exact-once order; synchronous change reporting;
-later fact admission; equal cross-profile transcripts; and forbidden static
-dependencies. Connected input/display evidence remains a conformance gate.
+Provide one checked-in driver with these exact repository-root invocations:
+
+```text
+scripts/contracts/run-spec-011.sh --profile macos-dynamic
+scripts/contracts/run-spec-011.sh --profile macos-static
+scripts/contracts/run-spec-011.sh --profile raspberry-pi-armv6
+scripts/contracts/run-spec-011.sh --profile nrf52840-embedded
+```
+
+`Tests/ContractFixtures/SPEC011/` MUST contain:
+
+- `declarations.yaml` for exact qualified source, initializer-time label
+  evaluation, all six actions, and rejected domains/codes;
+- `candidates.yaml` for limits, paint order, every replacement field,
+  generation preservation/reservation, finish, commit, discard, and refusal;
+- `gestures.yaml` for clipped/disabled overlap plus every legal and cancelled
+  down/move/up transition through `InteractionGestureResolver`;
+- `dispatch.yaml` for model replacement/removal before release and after
+  admission, exact-once order, synchronous reporting, and later fact admission;
+  and
+- `failures.yaml` for every local error, SPEC-009 generation exhaustion,
+  mandatory containment, and no fallback, retarget, partial publication, or
+  diagnostic control-flow effect.
+
+Recording, dynamic, and static fixtures MUST compare exact symbolic identity,
+action token, generation, target generation, enabled state, geometry,
+paint-order, candidate transition, gesture outcome, dispatch result, failure,
+and publication fields. They MUST NOT compare pointers, type metadata, hashes,
+or profile-private storage bytes except in explicit value-layout evidence.
+
+The driver MUST fail on unavailable toolchains/SDKs, unknown or duplicate
+fixture cases, unreferenced fixture data, transcript mismatch, missing edge
+coverage, allocation, dependency, ABI, value-layout, stack, flash, or RAM
+violations, or target-inspection failure. It records compiler identity,
+repository revision, full command lines, fixture-manifest digest, value
+layouts, capacity/workspace/stack high-water values, heap allocation count,
+timing samples, section deltas, forbidden-symbol inspection, and link maps.
+Connected input/display evidence remains an implemented-conformance gate.
 
 ## Acceptance Criteria
 
@@ -518,10 +687,12 @@ dependencies. Connected input/display evidence remains a conformance gate.
   model; failed replacement preserves the former binding.
 - [ ] **IN-007:** Valid activation dispatches once in SPEC-009 order to a
   borrowed current model and synchronously reports observable changes.
-- [ ] **IN-008:** Candidate failure/refusal preserves complete committed state
-  with no partial publication.
-- [ ] **IN-009:** Every error/cancellation maps exactly and never falls back,
-  retargets, traps alone, or aliases.
+- [ ] **IN-008:** Every candidate follows begin, append, required generation
+  assignment, finish, and exactly one commit/discard resolution; failure or
+  refusal preserves complete committed state with no partial publication.
+- [ ] **IN-009:** Every simultaneous and individual error/cancellation follows
+  the exact precedence, mapping, mandatory effects, and residual-policy bounds
+  and never falls back, retargets, traps alone, or aliases.
 - [ ] **IN-010:** Equal-limit dynamic/static fixtures match and the static path
   allocates zero heap bytes.
 - [ ] **IN-011:** Dependency checks prove no Interaction-to-Observable-State,
@@ -559,11 +730,26 @@ host-configuration contracts.
 ## References
 
 - [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
+- [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-004](../rfcs/rfc-004-run-cycle-and-frame-transaction.md)
 - [RFC-011](../rfcs/rfc-011-bounded-application-actions.md)
+- [ADR-005](../adrs/adr-005-semantic-layout-render-boundary.md)
+- [ADR-006](../adrs/adr-006-shared-semantics-runtime-profiles.md)
+- [ADR-008](../adrs/adr-008-module-dependency-graph-and-package-topology.md)
+- [ADR-010](../adrs/adr-010-synchronous-one-shot-frame-handoff.md)
+- [ADR-011](../adrs/adr-011-serialized-run-cycle-and-publication.md)
+- [ADR-014](../adrs/adr-014-bounded-cross-layer-outcomes.md)
+- [ADR-015](../adrs/adr-015-layered-failure-disposition.md)
+- [ADR-016](../adrs/adr-016-non-authoritative-diagnostics.md)
+- [ADR-024](../adrs/adr-024-structurally-owned-observable-reference-state.md)
+- [ADR-025](../adrs/adr-025-coarse-model-owned-observable-invalidation.md)
+- [ADR-026](../adrs/adr-026-profile-equivalent-bounded-observable-state.md)
 - [ADR-033](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md)
+- [SPEC-002](spec-002-portable-foundation.md)
+- [SPEC-003](spec-003-failure-outcomes-and-containment.md)
 - [SPEC-006](spec-006-declarative-view-semantics.md)
 - [SPEC-007](spec-007-layout.md)
+- [SPEC-008](spec-008-rendering.md)
 - [SPEC-009](spec-009-execution-cycle-and-frame-handoff.md)
 - [SPEC-010](spec-010-observable-reference-state.md)
 - [SPIKE-007](../spikes/spike-007-static-action-storage-feasibility.md)

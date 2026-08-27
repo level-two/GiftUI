@@ -29,6 +29,7 @@ related_adrs:
 related_specs:
   - SPEC-001
   - SPEC-010
+  - SPEC-011
 related_future_work:
   - FW-017
 related_explorations: []
