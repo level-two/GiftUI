@@ -151,7 +151,7 @@ the reason this contract is required now.
   typed action value defined here; this Specification does not bind a model
   target, allocate a committed generation, retain a callable or model, or
   dispatch an action.
-- SPEC-010 (currently in coordinated amendment review) owns
+- SPEC-010 (approved after coordinated amendment review) owns
   `_GiftUIObservableStateHost`, its
   declaration visitor, macro-generated witness, binding results, and all state
   failure behavior. This Specification owns the single traversal operation

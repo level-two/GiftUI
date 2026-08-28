@@ -2,7 +2,7 @@
 id: SPEC-011
 feature: giftui-mvp-architecture
 title: Button Interaction and Activation Contract
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-26
@@ -47,9 +47,10 @@ target_milestone: MVP
 
 # SPEC-011: Button Interaction and Activation Contract
 
-> **Review status:** The previously approved contract was amended on
-> 2026-08-28 to bind candidate actions to SPEC-010's exact publishable target
-> generation. The amendment is not authoritative until renewed human approval.
+> **Approval status:** Explicitly reapproved by the maintainer after the
+> 2026-08-28 amendment binding candidate actions to SPEC-010's exact
+> publishable target generation. The amended contract is authoritative for
+> implementation.
 
 ## Summary
 
@@ -723,9 +724,7 @@ production declarations.
 ## Open Issues
 
 No unresolved contract or architectural choice remains in this amendment.
-The coordinated SPEC-009 and SPEC-010 amendments are also in `review`; all
-three revised contracts require renewed human approval before implementation
-may rely on them. Production
+The coordinated SPEC-009 and SPEC-010 amendments are approved. Production
 capacities and profile storage belong to later runtime-profile and host-
 configuration contracts.
 

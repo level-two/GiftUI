@@ -2,7 +2,7 @@
 id: SPEC-013
 feature: giftui-mvp-architecture
 title: Dynamic and Static Runtime Profile Contract
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-27
@@ -66,6 +66,10 @@ target_milestone: MVP
 
 # SPEC-013: Dynamic and Static Runtime Profile Contract
 
+> **Approval status:** Explicitly approved by the maintainer after coordinated
+> approval of the SPEC-009, SPEC-010, and SPEC-011 amendments. This contract is
+> authoritative for implementation.
+
 ## Summary
 
 This Specification defines the two MVP runtime profiles beneath GiftUI's one
@@ -80,7 +84,7 @@ limit in both profiles, validates concrete storage before the first cycle,
 gives each attempt exclusive profile-owned workspaces, and defines one shared
 recording conformance suite. It is reconciled with SPEC-012's generated Canvas
 callable and inline-capture contract and with the coordinated SPEC-009 through
-SPEC-011 review amendments. It does not select a backend, target host,
+SPEC-011 approved amendments. It does not select a backend, target host,
 production capacity values, or retry policy.
 
 ## Scope
@@ -138,11 +142,8 @@ static nRF52840 configurations. Connected-target assembly is downstream.
 ## Dependencies
 
 The governing Proposals are accepted, the related RFCs are approved, and all
-listed ADRs are accepted. SPEC-002 through SPEC-008 and SPEC-012 are approved.
-SPEC-009 through SPEC-011 contain coordinated contract clarifications and are
-in `review`; this Specification cannot be approved until those amendments
-receive renewed human approval. SPEC-014 remains a downstream review artifact
-and supplies no authority here.
+listed ADRs are accepted. SPEC-002 through SPEC-012 are approved. SPEC-014 is
+a downstream sibling contract and supplies no authority here.
 
 The runtime receives a validated exact text-resource package from SPEC-005, a
 resolved capability snapshot from SPEC-004, and a synchronous frame endpoint
@@ -770,9 +771,8 @@ assertions.
 
 ## Open Issues
 
-No unresolved contract or architectural issue remains in this review draft.
-Renewed human approval of the coordinated SPEC-009, SPEC-010, and SPEC-011
-amendments is a lifecycle gate, not an omitted decision. Production limits,
+No unresolved contract or architectural issue remains. The coordinated
+SPEC-009, SPEC-010, and SPEC-011 amendments are approved. Production limits,
 audit totals, fact/action types, and retry policy remain intentionally owned by
 Wave 7 HOST-CONFIGURATION.
 
@@ -809,7 +809,7 @@ existing lifecycle or deferred tracks and are not required by this contract.
 - [SPEC-010](spec-010-observable-reference-state.md)
 - [SPEC-011](spec-011-interaction.md)
 - [SPEC-012](spec-012-canvas-path-stroke-drawing.md)
-- [SPEC-014](spec-014-backend-integration.md) — downstream review input only
+- [SPEC-014](spec-014-backend-integration.md) — downstream sibling contract
 - [SPIKE-003](../spikes/spike-003-portable-observable-reference-state-feasibility.md)
 - [SPIKE-004](../spikes/spike-004-canvas-path-plan-feasibility.md)
 - [SPIKE-007](../spikes/spike-007-static-action-storage-feasibility.md)

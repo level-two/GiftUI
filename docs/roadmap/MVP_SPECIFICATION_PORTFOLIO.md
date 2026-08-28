@@ -34,8 +34,8 @@ and FW-009 MUST NOT become a required MVP Specification dependency.
 
 The `canvas-drawing` feature completed its decision stage with approved RFC-009
 and accepted ADR-028 through ADR-031. Wave 5 artifacts SPEC-010 through
-SPEC-012 now exist; SPEC-012 is approved, while SPEC-010 and SPEC-011 are in
-coordinated amendment review.
+SPEC-012 are approved, including the coordinated SPEC-010 and SPEC-011
+amendments.
 
 ## Boundary Rules
 
@@ -96,12 +96,12 @@ physical semantic, layout, and backend-facing render-core modules remain
 separate; `GiftUIRenderLowering` joins semantic and layout results above
 `GiftUIRenderCore` without exposing either authority to backends.
 
-Wave 4 retains this immutable identity. SPEC-009's previously approved
-contract now has a focused-owner failure-carrier amendment in renewed review:
+Wave 4 retains this immutable identity. SPEC-009's focused-owner
+failure-carrier amendment has received renewed approval:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `EXECUTION` | `SPEC-009` | `review` |
+| `EXECUTION` | `SPEC-009` | `approved` |
 
 SPEC-009 owns the serialized run cycle, sealed admission, publication and
 dirty-recovery boundaries, execution provenance, synchronous one-shot frame
@@ -110,29 +110,27 @@ machinery. It leaves observable-state storage, public interaction declarations
 and action lowering, concrete runtime-profile storage, backend realization,
 and host policy values to their downstream portfolio contracts.
 
-Wave 5 retains these immutable artifacts. SPEC-010 and SPEC-011 have
-coordinated candidate-target amendments in renewed review:
+Wave 5 retains these immutable artifacts. SPEC-010 and SPEC-011 include the
+approved coordinated candidate-target amendments:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `OBSERVABLE` | `SPEC-010` | `review` |
-| `INTERACTION` | `SPEC-011` | `review` |
+| `OBSERVABLE` | `SPEC-010` | `approved` |
+| `INTERACTION` | `SPEC-011` | `approved` |
 | `DRAWING` | `SPEC-012` | `approved` |
 
-SPEC-012 remains approved. The amended SPEC-009 through SPEC-011 contracts are
-not authoritative again until explicit renewed human approval.
+SPEC-009 through SPEC-012 are approved and authoritative for implementation.
 
 Wave 6 has produced these immutable artifacts:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `RUNTIME-PROFILES` | `SPEC-013` | `review` |
-| `BACKEND-INTEGRATION` | `SPEC-014` | `review` |
+| `RUNTIME-PROFILES` | `SPEC-013` | `approved` |
+| `BACKEND-INTEGRATION` | `SPEC-014` | `approved` |
 
 Both artifacts are reconciled to approved SPEC-012. SPEC-013's completeness
-review produced the coordinated SPEC-009 through SPEC-011 amendments; all four
-must receive their next explicit human approval before SPEC-013 can govern
-implementation. SPEC-014 is in `review` and also observes the SPEC-009 gate.
+review produced the coordinated SPEC-009 through SPEC-011 amendments; the
+maintainer has explicitly approved all five contracts.
 
 Candidate keys are planning labels, not reserved Specification IDs.
 
@@ -238,11 +236,10 @@ validation. Those downstream contracts reference `DRAWING` rather than
 redefining it.
 
 SPEC-001 remains the application-level integration contract. Its Domain, Data,
-capture, and portable Presentation behavior can be reviewed independently,
-but its framework-facing acceptance criteria cannot be closed until the
-approved reusable contracts for declarative composition, layout, rendering,
-execution, observable state, interaction, drawing, runtime profiles, backend
-integration, and host configuration exist.
+capture, and portable Presentation behavior can be reviewed independently.
+The reusable contracts through backend integration are approved, but its
+framework-facing acceptance criteria cannot be closed until the
+host-configuration contract exists and is approved.
 
 ## Recommended Drafting Sequence
 

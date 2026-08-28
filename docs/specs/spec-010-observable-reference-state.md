@@ -2,7 +2,7 @@
 id: SPEC-010
 feature: observable-reference-state
 title: Observable Reference State Contract
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-26
@@ -44,10 +44,10 @@ target_milestone: MVP
 
 # SPEC-010: Observable Reference State Contract
 
-> **Review status:** The previously approved contract was amended on
-> 2026-08-28 to expose the exact publishable candidate target generation needed
-> by SPEC-011 and SPEC-013. The amendment is not authoritative until renewed
-> human approval.
+> **Approval status:** Explicitly reapproved by the maintainer after the
+> 2026-08-28 amendment exposing the exact publishable candidate target
+> generation needed by SPEC-011 and SPEC-013. The amended contract is
+> authoritative for implementation.
 
 ## Summary
 
@@ -752,9 +752,7 @@ OS-011 for the revised declarations.
 ## Open Issues
 
 No unresolved contract or architectural choice remains in this amendment.
-SPEC-006 remains approved; SPEC-009's coordinated owner-failure amendment is
-also in `review` and both revised contracts require renewed human approval
-before implementation may rely on them. OS-001 compile
+SPEC-006 and SPEC-009 remain approved. OS-001 compile
 evidence is an implementation-conformance requirement, not authority for the
 declaration contract. SPEC-001 remains responsible for its own fact cases,
 application-executor entry contract, and production capacities; because this

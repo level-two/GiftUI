@@ -2,7 +2,7 @@
 id: SPEC-014
 feature: giftui-mvp-architecture
 title: Raster Backend and Display Integration Contract
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-27
@@ -61,6 +61,10 @@ target_milestone: MVP
 ---
 
 # SPEC-014: Raster Backend and Display Integration Contract
+
+> **Approval status:** Explicitly approved by the maintainer after renewed
+> approval of SPEC-009's focused-owner failure-carrier amendment. This
+> contract is authoritative for implementation.
 
 ## Summary
 
@@ -138,16 +142,14 @@ portable presentation.
 ## Dependencies
 
 The governing Proposals are accepted, RFCs approved, and ADRs accepted.
-SPEC-002 through SPEC-005, SPEC-008, and SPEC-012 are approved. SPEC-009's
-focused-owner carrier amendment is in `review`; its existing handoff and
-disposition rules consumed here are unchanged, but renewed approval remains a
-gate before this Specification may be approved. This revision is reconciled to
+SPEC-002 through SPEC-005, SPEC-008, SPEC-009, and SPEC-012 are approved. This
+revision is reconciled to
 SPEC-012's approved one-operation-
 per-stroke, borrowed `StraightLineStrokeView`, checked surface-coordinate,
 inherited-clip, canonical coverage, encoding, capacity, and failure contract.
 
-SPEC-001 and SPEC-013 remain in `review`; they are related
-coordination inputs, not authority for this contract. Production Signal
+SPEC-001 remains in `review`; approved SPEC-013 is a related coordination
+input, not authority for this contract. Production Signal
 Analyzer capacities and host assembly remain downstream gates.
 
 SPEC-004 owns capability vocabulary and resolution. SPEC-005 owns exact text
@@ -1205,10 +1207,9 @@ No new deferred artifact was needed and current MVP scope is unchanged.
 - [SPEC-004](spec-004-capability-contribution-and-resolution.md)
 - [SPEC-005](spec-005-text-resources.md)
 - [SPEC-008](spec-008-rendering.md)
-- [SPEC-009](spec-009-execution-cycle-and-frame-handoff.md) (`review`;
-  prerequisite amendment)
+- [SPEC-009](spec-009-execution-cycle-and-frame-handoff.md)
 - [SPEC-012](spec-012-canvas-path-stroke-drawing.md)
-- [SPEC-013](spec-013-runtime-profiles.md) (`review`; coordination only)
+- [SPEC-013](spec-013-runtime-profiles.md) (coordination only)
 - [SPIKE-001](../spikes/spike-001-tiled-one-shot-capability-fixtures.md)
 - [SPIKE-002](../spikes/spike-002-nrf52840-capability-path-resource-evidence.md)
 - [SPIKE-004](../spikes/spike-004-canvas-path-plan-feasibility.md)

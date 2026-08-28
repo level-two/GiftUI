@@ -49,10 +49,10 @@ target_milestone: MVP
 # SPEC-001: Signal Analyzer Reference Application Contract
 
 > **Review status:** Revised for ADR-024 through ADR-027 after ADR-027
-> superseded ADR-002. Approval remains blocked by the prerequisite reusable
-> GiftUI contracts and unresolved application-contract details listed under
-> Open Issues. This Specification remains non-authoritative until those
-> blockers are resolved and a human maintainer explicitly approves it again.
+> superseded ADR-002. Approval remains blocked by the missing host-configuration
+> contract and unresolved application-contract details listed under Open
+> Issues. This Specification remains non-authoritative until those blockers are
+> resolved and a human maintainer explicitly approves it again.
 
 ## Summary
 
@@ -1803,12 +1803,10 @@ view invalidations without batching or dropping capture events.
 No unresolved Signal Analyzer architecture choice remains, but the following
 Specification-approval blockers are open:
 
-- The approved reusable contracts required by the MVP Specification Portfolio
-  do not yet exist for execution/fact admission, observable reference state,
-  interaction, drawing, runtime profiles, backend integration, and host
-  configuration. The Canvas feature now has approved RFC-009 and accepted
-  ADR-028 through ADR-031, but no approved drawing Specification. This
-  Specification MUST be reconciled against the eventual approved drawing
+- The approved reusable contracts now exist for execution/fact admission,
+  observable reference state, interaction, drawing, runtime profiles, and
+  backend integration, but the required host-configuration Specification does
+  not. This Specification MUST be reconciled against that eventual approved
   contract before it can be approved.
 - Capture-revision exhaustion requires acquisition to stop and a fresh object
   graph, but it has no producer condition, normalization row, coordinator

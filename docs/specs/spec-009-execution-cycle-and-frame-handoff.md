@@ -2,7 +2,7 @@
 id: SPEC-009
 feature: giftui-mvp-architecture
 title: Execution Cycle and Frame Handoff Contract
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-26
@@ -46,9 +46,9 @@ target_milestone: MVP
 
 # SPEC-009: Execution Cycle and Frame Handoff Contract
 
-> **Review status:** The previously approved contract was amended on
-> 2026-08-28 with a bounded generic focused-owner failure carrier required by
-> SPEC-013. The amendment is not authoritative until renewed human approval.
+> **Approval status:** Explicitly reapproved by the maintainer after the
+> 2026-08-28 bounded generic focused-owner failure-carrier amendment required
+> by SPEC-013. The amended contract is authoritative for implementation.
 
 ## Summary
 
