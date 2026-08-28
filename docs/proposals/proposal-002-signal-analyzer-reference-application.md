@@ -6,7 +6,7 @@ status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-13
-updated: 2026-08-21
+updated: 2026-08-28
 proposal: []
 related_rfcs:
   - RFC-001
@@ -18,6 +18,7 @@ related_adrs:
   - ADR-027
 related_specs:
   - SPEC-001
+  - SPEC-015
 supersedes: []
 superseded_by: []
 target_milestone: MVP

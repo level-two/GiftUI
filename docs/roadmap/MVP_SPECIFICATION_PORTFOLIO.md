@@ -132,6 +132,17 @@ Both artifacts are reconciled to approved SPEC-012. SPEC-013's completeness
 review produced the coordinated SPEC-009 through SPEC-011 amendments; the
 maintainer has explicitly approved all five contracts.
 
+Wave 7 has produced this immutable artifact:
+
+| Candidate key | Allocated Specification | Lifecycle status |
+| --- | --- | --- |
+| `HOST-CONFIGURATION` | `SPEC-015` | `review` |
+
+SPEC-015 owns immutable target-host assembly, structural and capability startup
+gates, action/model/fact wiring, input/wake integration, finite pacing and
+policy, and the four MVP configuration obligations. It remains
+non-authoritative until explicit human approval.
+
 Candidate keys are planning labels, not reserved Specification IDs.
 
 | Key                   | Candidate contract                                                                                                                                                                                   | Governing decisions                                                                           | Draft prerequisites                                                   | Independent acceptance seam                                                                                                                                                                                                  |
@@ -238,8 +249,8 @@ redefining it.
 SPEC-001 remains the application-level integration contract. Its Domain, Data,
 capture, and portable Presentation behavior can be reviewed independently.
 The reusable contracts through backend integration are approved, but its
-framework-facing acceptance criteria cannot be closed until the
-host-configuration contract exists and is approved.
+framework-facing acceptance criteria cannot be closed until review-stage
+SPEC-015 is approved.
 
 ## Recommended Drafting Sequence
 
@@ -255,8 +266,9 @@ host-configuration contract exists and is approved.
 6. Reconcile and review `RUNTIME-PROFILES` (SPEC-013) and
    `BACKEND-INTEGRATION` (SPEC-014) against approved SPEC-012's plan,
    operation, capacity, and lifetime contracts before advancing either draft.
-7. Draft `HOST-CONFIGURATION`, including the independent conjunctive Canvas
-   structural-capacity and `rasterPresentation` capability startup gates.
+7. Review `HOST-CONFIGURATION` (SPEC-015), including the independent
+   conjunctive Canvas structural-capacity and `rasterPresentation` capability
+   startup gates.
 8. Reconcile SPEC-001 against the approved reusable contracts, then request
    human approval. Implementation planning starts only from approved Specs.
 

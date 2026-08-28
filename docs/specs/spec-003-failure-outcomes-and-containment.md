@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-08-27
+updated: 2026-08-28
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -30,6 +30,7 @@ related_specs:
   - SPEC-012
   - SPEC-013
   - SPEC-014
+  - SPEC-015
 related_future_work:
   - FW-009
   - FW-012
@@ -1257,12 +1258,12 @@ capability condition catalogue and enclosing
 `GiftUIOutcome<CapabilitySnapshot>` carrier. Their reciprocal metadata and
 manifest registration were already present.
 
-The future EXECUTION Specification must provide the concrete `Context` used
-by `GiftUICorrelatedFailure`; the future HOST-CONFIGURATION Specification must
-instantiate the total policy table, pacing, and fatal-hook choices for each
-MVP composition. Those are downstream obligations, not prerequisites for
-review or approval of this independent Wave 1 contract. Implementation and
-conformance must later produce the required cross-target allocation,
+SPEC-009 provides the concrete `ExecutionContext` used by
+`GiftUICorrelatedFailure`. Review-stage SPEC-015 instantiates the total policy
+table and pacing choices for each MVP composition and permits a fatal hook only
+after mandatory quiescence. Those remain downstream obligations, not
+prerequisites for approval of this independent Wave 1 contract. Implementation
+and conformance must later produce the required cross-target allocation,
 operation-count, and optimized resource evidence. Failing a frozen bound
 requires representation reduction or an explicit Specification revision; it
 does not permit an implementation exception.

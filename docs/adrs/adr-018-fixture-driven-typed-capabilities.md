@@ -18,6 +18,7 @@ related_adrs:
 related_specs:
   - SPEC-004
   - SPEC-014
+  - SPEC-015
 related_future_work:
   - FW-007
   - FW-008

@@ -78,6 +78,7 @@ features:
       - SPEC-011
       - SPEC-013
       - SPEC-014
+      - SPEC-015
     dependencies:
       - giftui-mvp-baseline
     milestone: MVP

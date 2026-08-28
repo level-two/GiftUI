@@ -27,6 +27,7 @@ related_specs:
   - SPEC-009
   - SPEC-013
   - SPEC-014
+  - SPEC-015
 related_future_work: []
 related_explorations: []
 related_spikes:
