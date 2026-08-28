@@ -136,12 +136,12 @@ Wave 7 has produced this immutable artifact:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `HOST-CONFIGURATION` | `SPEC-015` | `review` |
+| `HOST-CONFIGURATION` | `SPEC-015` | `approved` |
 
 SPEC-015 owns immutable target-host assembly, structural and capability startup
 gates, action/model/fact wiring, input/wake integration, finite pacing and
-policy, and the four MVP configuration obligations. It remains
-non-authoritative until explicit human approval.
+policy, and the four MVP configuration obligations. It is authoritative for
+implementation after explicit human approval.
 
 Candidate keys are planning labels, not reserved Specification IDs.
 
@@ -248,9 +248,8 @@ redefining it.
 
 SPEC-001 remains the application-level integration contract. Its Domain, Data,
 capture, and portable Presentation behavior can be reviewed independently.
-The reusable contracts through backend integration are approved, but its
-framework-facing acceptance criteria cannot be closed until review-stage
-SPEC-015 is approved.
+All reusable contracts through host configuration are approved. SPEC-001 must
+still resolve its own application-contract blockers before approval.
 
 ## Recommended Drafting Sequence
 

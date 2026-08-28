@@ -2,7 +2,7 @@
 id: SPEC-015
 feature: giftui-mvp-architecture
 title: MVP Target-Host Configuration Contract
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-28
@@ -63,11 +63,11 @@ target_milestone: MVP
 
 # SPEC-015: MVP Target-Host Configuration Contract
 
-> **Review status:** This is the Wave 7 `HOST-CONFIGURATION` contract from the
-> MVP Specification Portfolio. Its reusable prerequisites are approved.
-> SPEC-001 remains in review and is related application context, not authority
-> for this Specification. SPEC-001 must be reconciled against this contract
-> before the application Specification can be approved.
+> **Approval status:** This is the approved Wave 7 `HOST-CONFIGURATION`
+> contract from the MVP Specification Portfolio. Its reusable prerequisites
+> are approved. SPEC-001 remains in review and is related application context,
+> not authority for this Specification. SPEC-001 must be reconciled against
+> this contract before the application Specification can be approved.
 
 ## Summary
 
@@ -147,7 +147,7 @@ SPEC-001 is a review-stage downstream integration contract. Its current fixed
 four-channel workload, six-action domain, 250-millisecond cadence, fact-storage
 shape, 240 x 240 Pi fixture, and 480 x 320 nRF52840 fixture are useful review
 inputs. This Specification does not approve SPEC-001 or depend on any of its
-unresolved contract details. Approval of SPEC-015 authorizes only the reusable
+unresolved contract details. SPEC-015 approval authorizes only the reusable
 host-assembly contract and the four configuration obligations defined here.
 
 ## Related ADRs
@@ -1229,12 +1229,12 @@ validation.
 
 ## Open Issues
 
-No architectural issue blocks review of this host-configuration contract.
+No architectural issue blocks this approved host-configuration contract.
 SPEC-001 still has application-contract blockers recorded in its own Open
-Issues section. Its fact-burst rationale is now aligned with this review-stage
-contract; after SPEC-015 approval, SPEC-001 must preserve that alignment and
-resolve its remaining failure normalization, deterministic mock trace,
-diagnostic, and exact host-fixture blockers without weakening this contract.
+Issues section. Its fact-burst rationale is now aligned with this approved
+contract; SPEC-001 must preserve that alignment and resolve its remaining
+failure normalization, deterministic mock trace, diagnostic, and exact
+host-fixture blockers without weakening this contract.
 
 ## Deferred and Follow-up Work
 

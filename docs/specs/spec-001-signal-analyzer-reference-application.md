@@ -50,11 +50,11 @@ target_milestone: MVP
 # SPEC-001: Signal Analyzer Reference Application Contract
 
 > **Review status:** Revised for ADR-024 through ADR-027 after ADR-027
-> superseded ADR-002. SPEC-015 now supplies the review-stage host-configuration
-> contract, but it is not yet approved. Approval remains blocked by that gate
-> and the unresolved application-contract details listed under Open Issues.
-> This Specification remains non-authoritative until those blockers are
-> resolved and a human maintainer explicitly approves it again.
+> superseded ADR-002. Approved SPEC-015 now supplies the host-configuration
+> contract. Approval remains blocked by the unresolved application-contract
+> details listed under Open Issues. This Specification remains
+> non-authoritative until those blockers are resolved and a human maintainer
+> explicitly approves it again.
 
 ## Summary
 
@@ -1812,12 +1812,6 @@ view invalidations without batching or dropping capture events.
 No unresolved Signal Analyzer architecture choice remains, but the following
 Specification-approval blockers are open:
 
-- The approved reusable contracts now exist for execution/fact admission,
-  observable reference state, interaction, drawing, runtime profiles, and
-  backend integration. SPEC-015 now defines host configuration at `review`.
-  The compact-fact service-window contract is reconciled, but this
-  Specification remains blocked until SPEC-015 is explicitly approved and any
-  later approved change is rechecked here.
 - Capture-revision exhaustion requires acquisition to stop and a fresh object
   graph, but it has no producer condition, normalization row, coordinator
   effects, residual-policy context, or acceptance fixture in the otherwise

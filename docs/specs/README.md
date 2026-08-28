@@ -18,10 +18,10 @@ its required acceptance criteria.
 ## Current portfolio
 
 - SPEC-001 — Signal Analyzer Reference Application Contract (`review`, blocked
-  by unresolved application-contract details and review-stage SPEC-015)
-- SPEC-002 through SPEC-014 — approved contracts
+  by unresolved application-contract details)
+- SPEC-002 through SPEC-015 — approved contracts
 - [SPEC-015](spec-015-host-configuration.md) — MVP Target-Host
-  Configuration Contract (`review`)
+  Configuration Contract (`approved`)
 - [SPEC-006](spec-006-declarative-view-semantics.md) — Declarative View
   Semantics Specification (`approved`, reapproved after ADR-033)
 - [SPEC-009](spec-009-execution-cycle-and-frame-handoff.md) — Execution Cycle
