@@ -32,7 +32,14 @@ related_adrs:
   - ADR-031
   - ADR-033
 related_specs:
+  - SPEC-002
   - SPEC-003
+  - SPEC-004
+  - SPEC-005
+  - SPEC-006
+  - SPEC-007
+  - SPEC-008
+  - SPEC-009
   - SPEC-010
   - SPEC-011
   - SPEC-012
@@ -49,12 +56,11 @@ target_milestone: MVP
 
 # SPEC-001: Signal Analyzer Reference Application Contract
 
-> **Review status:** Revised for ADR-024 through ADR-027 after ADR-027
-> superseded ADR-002. Approved SPEC-015 now supplies the host-configuration
-> contract. Approval remains blocked by the unresolved application-contract
-> details listed under Open Issues. This Specification remains
-> non-authoritative until those blockers are resolved and a human maintainer
-> explicitly approves it again.
+> **Review status:** Reconciled against approved SPEC-002 through SPEC-015,
+> including the SPEC-015 host-configuration contract. The application-level
+> contract blockers from the preceding review have been resolved below. This
+> Specification remains non-authoritative until a human maintainer explicitly
+> approves it.
 
 ## Summary
 
@@ -158,9 +164,15 @@ contract unless a requirement below states otherwise.
   update.
 - [RFC-008](../rfcs/rfc-008-observable-reference-state-architecture.md)
   defines the approved observable-state and Presentation-admission design.
-- ADR-001, ADR-003, ADR-004, ADR-011, ADR-014 through ADR-016, and ADR-024
-  through ADR-027, plus ADR-033, are the accepted governing decisions. ADR-002
-  and ADR-013 are superseded.
+- ADR-001, ADR-003, ADR-004, ADR-011, ADR-014 through ADR-016, ADR-024 through
+  ADR-031, and ADR-033 are the accepted governing decisions. ADR-002 and
+  ADR-013 are superseded.
+- Approved SPEC-002 through SPEC-015 own the reusable Foundation, failure,
+  capability, text, declarative, layout, rendering, execution, observable,
+  interaction, Drawing, profile, backend, and host-configuration contracts.
+  This Specification consumes those contracts and owns only the fixed Signal
+  Analyzer application values, workload, behavior, wiring requirements, and
+  end-to-end evidence.
 
 ### GiftUI dependencies
 
@@ -230,6 +242,13 @@ NOT read a platform clock or schedule timers directly.
 - [ADR-027](../adrs/adr-027-bounded-presentation-fact-admission.md)
   governs synchronous application delivery through bounded immutable fact
   admission into GiftUI's distinct mutation domain and supersedes ADR-002.
+- [ADR-028](../adrs/adr-028-post-layout-canvas-derivation-and-cycle-local-plan.md),
+  [ADR-029](../adrs/adr-029-scoped-transient-path-snapshot-semantics.md),
+  [ADR-030](../adrs/adr-030-canonical-normalized-straight-line-stroke-operation.md),
+  and [ADR-031](../adrs/adr-031-bounded-canvas-failure-and-startup-gate-integration.md)
+  govern post-layout waveform derivation, scoped Path snapshotting, canonical
+  stroke lowering, bounded failure, and the independent Drawing and
+  `rasterPresentation` startup gates.
 - [ADR-033](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md)
   governs the finite typed Button action domain, target-composed handler,
   current-model borrowing, and cancellation when model replacement changes an
@@ -428,7 +447,25 @@ enum DigitalLevel: Equatable, Sendable {
 }
 
 struct SignalAnalyzerDiagnostic: Equatable, Sendable {
-    /* Valid UTF-8 payload with a maximum encoded length of 96 bytes. */
+    static let maximumUTF8ByteCount: UInt16
+    var utf8ByteCount: UInt16 { get }
+
+    init?<Source: Collection>(exactUTF8 source: Source)
+        where Source.Element == UInt8
+
+    static func truncating<Source: Collection>(utf8 source: Source)
+        -> SignalAnalyzerDiagnosticConstruction
+        where Source.Element == UInt8
+
+    func withUTF8<Result>(
+        _ body: (UnsafeBufferPointer<UInt8>) throws -> Result
+    ) rethrows -> Result
+}
+
+enum SignalAnalyzerDiagnosticConstruction: Equatable, Sendable {
+    case exact(SignalAnalyzerDiagnostic)
+    case truncated(SignalAnalyzerDiagnostic)
+    case invalidUTF8
 }
 
 struct SignalTransition: Equatable, Sendable {
@@ -443,13 +480,27 @@ enum AcquisitionState: Equatable, Sendable {
     case stopped
     case failed(SignalAnalyzerDiagnostic)
 }
+
+enum SignalAnalyzerRepositoryCondition: UInt8, Equatable, Sendable {
+    case captureRevisionExhausted
+}
 ```
 
-`SignalAnalyzerDiagnostic` MUST preserve at most 96 UTF-8 bytes. A longer
-source diagnostic MUST be truncated at a valid scalar boundary. Dynamic
-profiles MAY use `String` internally; static profiles MUST use inline or
-caller-supplied bounded storage and MUST NOT allocate to construct, copy, or
-transport this value.
+`maximumUTF8ByteCount` is exactly `96`. `init(exactUTF8:)` succeeds only for
+well-formed UTF-8 of at most 96 bytes. `truncating(utf8:)` returns `.exact` for
+well-formed input at or below the bound, `.truncated` with the longest prefix
+of at most 96 bytes ending at a Unicode-scalar boundary for longer well-formed
+input, and `.invalidUTF8` for malformed input. It MUST NOT repair or normalize
+the scalar sequence. `withUTF8` calls its body exactly once with the retained
+bytes, and the borrow ends on return. Empty input is representable, but every
+failure path that requires visible error text MUST construct a nonempty value.
+
+Dynamic profiles MAY use bounded retained storage internally. Static profiles
+MUST use inline or caller-supplied bounded storage. Neither profile may
+allocate as a correctness requirement to construct, copy, transport, borrow,
+or compare this value. Exact and truncating fixtures MUST cover empty, 96-byte,
+97-byte, one- through four-byte scalar boundaries, malformed UTF-8, and input
+whose next scalar would straddle the 96-byte limit.
 
 `SignalAnalyzerDiagnostic` is semantic application data. Its presence may set
 `AcquisitionState.failed`, populate `SignalAnalyzerViewState.errorMessage`, and
@@ -459,6 +510,21 @@ delivery. It MUST NOT be represented by, reconstructed from, or conditionally
 omitted with `GiftUIDiagnosticRecord`. A target MAY optionally project a
 normalized analyzer outcome after correctness-relevant propagation, but that
 projection MUST NOT create, remove, or alter this value or any policy input.
+
+`SignalAnalyzerPresentation` MUST provide this total projection without adding
+a dependency from Domain to GiftUI:
+
+```swift
+extension SignalAnalyzerDiagnostic {
+    var boundedText: BoundedText { get }
+}
+```
+
+`boundedText` MUST preserve exactly the diagnostic's UTF-8 bytes. Its
+construction is total because both values have the same 96-byte bound and the
+diagnostic invariant proves well-formed UTF-8; a failed internal conversion is
+an `invariantViolation`, not permission to omit, replace, or truncate visible
+error text.
 
 `SignalChannel.standard` MUST contain exactly these ordered values:
 
@@ -506,9 +572,9 @@ The capture invariants are:
 
 ### Capture publication values
 
-The repository MUST publish either a complete current snapshot or an exact
-bounded mutation that transforms the preceding published revision into the
-current capture:
+The repository MUST publish a complete current snapshot, an exact bounded
+mutation that transforms the preceding published revision into the current
+capture, or the one terminal capture-path failure defined below:
 
 ```swift
 struct SignalChannelLevels: Equatable, Sendable {
@@ -537,6 +603,10 @@ enum SignalCaptureChange: Equatable, Sendable {
 enum SignalCapturePublication: Equatable, Sendable {
     case snapshot(revision: UInt32, capture: SignalCapture)
     case mutation(revision: UInt32, change: SignalCaptureChange)
+    case terminalFailure(
+        condition: SignalAnalyzerRepositoryCondition,
+        diagnostic: SignalAnalyzerDiagnostic
+    )
 }
 
 enum SignalSinkDeliveryRejection: UInt8, Equatable, Sendable {
@@ -554,8 +624,21 @@ enum SignalSinkDeliveryOutcome: Equatable, Sendable {
 
 Revision zero identifies the initial empty capture. Each accepted transition
 and each Clear MUST increment the revision exactly once. Revision arithmetic
-MUST NOT wrap; attempting to advance `UInt32.max` is a contained application
+MUST NOT wrap; attempting to advance `UInt32.max` is a terminal application
 failure that stops acquisition and requires a fresh analyzer object graph.
+Before any capture mutation at `UInt32.max`, the repository MUST reject the
+transition or Clear without changing the capture, stop the source if active,
+set its current acquisition state to failed with a nonempty bounded
+diagnostic, and synchronously deliver `captureRevisionExhausted` to the
+capture sink as one `.terminalFailure` publication. That case carries no new
+capture revision, is admitted only through the reserved operational-failure
+slot, and MUST occur for no other producer condition. That one callback is the
+publication of the failure transition; the repository MUST NOT additionally
+invoke the ordinary acquisition-state sink for the same transition. A later
+observation start may replay the current failed acquisition state, but Start,
+Clear, and source delivery MUST remain unavailable on that object graph. The
+host MUST quiesce and reconstruct the complete analyzer graph before
+acquisition can resume.
 
 For `insertAndTrim`, `baseRevision` MUST equal the preceding publication's
 revision. Applying the change first inserts `transition` at `insertionIndex`
@@ -691,10 +774,12 @@ enum SignalAnalyzerPresentationFact: Equatable, Sendable {
     case captureSnapshot(revision: UInt32, capture: SignalCapture)
     case captureMutation(revision: UInt32, change: SignalCaptureChange)
     case acquisitionState(AcquisitionState)
-    case operationalFailure(
-        outcome: GiftUIOutcome<Void>,
-        diagnostic: SignalAnalyzerDiagnostic
-    )
+    case operationalFailure(SignalAnalyzerOperationalFailure)
+}
+
+struct SignalAnalyzerOperationalFailure: Equatable, Sendable {
+    let failure: GiftUIFailureFact
+    let diagnostic: SignalAnalyzerDiagnostic
 }
 
 enum SignalAnalyzerObservationStartOutcome: Equatable, Sendable {
@@ -725,9 +810,12 @@ call the corresponding ViewModel intent; the three selection cases call
 `visibleDurationChanged` with their exact `VisibleTimeWindow`. It MUST perform
 no other mutation, retain no model, and provide no default or unknown-action
 fallback.
-An `operationalFailure` fact MUST contain the `.failure` case produced by the
-normalization table below; `.success` and `.operational` are invalid for that
-fact and MUST be rejected before admission.
+`SignalAnalyzerOperationalFailure` stores the normalized
+`GiftUIFailureFact`, not a `GiftUIOutcome<Void>`, so `.success` and
+`.operational` are structurally unrepresentable. Applying the Presentation
+fact is equivalent to consuming `GiftUIOutcome<Void>.failure(failure)` with
+the same diagnostic. No initializer, decoder, or generated specialization may
+construct this value without both fields.
 
 `SignalAnalyzerPresentationAdmissionAdapter` MUST:
 
@@ -738,6 +826,8 @@ fact and MUST be rejected before admission.
 - convert `.snapshot` publications to `captureSnapshot`, `.mutation`
   publications to `captureMutation`, and state callbacks to
   `acquisitionState`;
+- normalize `.terminalFailure` through the exact table below and submit one
+  reserved `operationalFailure` fact;
 - submit exactly one fact per callback and return the submission outcome;
 - never attach a GiftUI observable registration, retain the ViewModel, mutate
   Presentation state, or use the model as admission storage; and
@@ -756,10 +846,10 @@ reinterpret rejection as acceptance or directly mutate the ViewModel.
 `startObserving()` MUST return `SignalAnalyzerObservationStartOutcome`. It
 returns `started` only after both immediate publications are accepted. If
 either is rejected, the adapter MUST detach both sinks, preserve any already
-accepted fact for at-most-once application, attempt the reserved operational
+accepted fact for at-most-once application, attempt the reserved operational-
 failure fact, and return the original rejection. `alreadyStarted` MUST perform
-no registration or publication. `stopObserving()` MUST detach both sinks before
-returning and be an idempotent no-op when already stopped.
+no registration or publication. `stopObserving()` MUST detach both sinks
+before returning and be an idempotent no-op when already stopped.
 
 `SignalAnalyzerViewModel` MUST:
 
@@ -934,10 +1024,10 @@ enum SignalAnalyzerRuntimeCondition: UInt8 {
 }
 ```
 
-`SignalAnalyzerRuntimeCondition` is a producer catalogue, not a policy or
-diagnostic vocabulary. An admission rejection retains its specific
-`SignalSinkDeliveryRejection`; it MUST NOT be collapsed into a generic
-`factAdmissionRejected` identity.
+`SignalAnalyzerRepositoryCondition` and `SignalAnalyzerRuntimeCondition` are
+producer catalogues, not policy or diagnostic vocabularies. An admission
+rejection retains its specific `SignalSinkDeliveryRejection`; it MUST NOT be
+collapsed into a generic `factAdmissionRejected` identity.
 
 ## Behavior
 
@@ -1049,8 +1139,20 @@ start. It MUST model these patterns:
 - CH2 toggles every 400 milliseconds.
 - CH3 repeats the interval sequence 80 ms, 80 ms, 80 ms, 1,200 ms, 75 ms,
   75 ms, and 900 ms.
-- CH4 uses a seeded deterministic pseudo-random interval from 180 through
-  599 milliseconds inclusive.
+- CH4 uses the 64-bit linear-congruential recurrence
+  `state = state &* 6_364_136_223_846_793_005 &+ 1`, where both operations
+  wrap modulo `2^64`, followed by
+  `intervalMilliseconds = 180 + (state % 420)`. The supplied seed is the
+  initial state; the recurrence advances once before each interval, producing
+  values from 180 through 599 milliseconds inclusive.
+
+CH4 MUST emit the initial low baseline at zero before applying its first
+interval. For seed `1_234`, its first eight timestamps in milliseconds MUST be
+`[0, 251, 791, 1380, 1674, 2069, 2477, 2946]`. For the default live seed
+`0x5EED`, they MUST be
+`[0, 438, 909, 1189, 1370, 1964, 2555, 2815]`. These are normative golden
+vectors for every profile; a target-native random-number generator is not a
+conforming substitute.
 
 The source MUST provide live timing and an accelerated deterministic test
 configuration. Stop MUST cancel or invalidate the active generation so it
@@ -1133,6 +1235,11 @@ SignalAnalyzerView
 │   └── 1 s, 2 s, and 5 s window buttons
 └── error text
 ```
+
+The waveform area MUST lower as exactly five Canvas occurrences: one grid
+Canvas and one trace Canvas for each of the four explicit channels. This is the
+application-side workload consumed by SPEC-012 and SPEC-015; it does not let
+the application select producer storage or backend realization.
 
 The four channel rows and three window controls MUST be declared explicitly.
 The portable hierarchy MUST NOT require dynamic collections, scrolling,
@@ -1283,6 +1390,19 @@ Each target host MUST:
 - confine platform, display, input, executor, timing, and hardware code outside
   the portable hierarchy.
 
+Each host MUST validate the exact approved SPEC-015 preset rather than an
+application-local approximation. In particular, the portable workload must
+produce six action cases, capacities `1/32/1` for snapshot/compact/reserved
+fact storage, the exact `20 + 2 + 6 == 28` conforming compact-fact burst, five
+Canvas occurrences, five submitted strokes, at least 202 simultaneously live
+Path points, 12 live subpaths, 832 snapshotted points, and 16 snapshotted
+subpaths. Raspberry Pi fixtures use the approved 240 x 240 extent and 240 x 16
+RGB565 region. nRF52840 fixtures use the approved 480 x 320 extent, 480 x 4
+RGB565 region, 960-byte rows, and 3,840-byte raster, payload, and in-flight
+bounds without a full framebuffer. The checked-in hierarchy descriptor,
+generated workload manifest, `RuntimeProfileLimits`, and assembly report MUST
+agree exactly for each preset.
+
 The Raspberry Pi/Linux claim requires execution with framebuffer rendering and
 PiScreen display/input evidence. The nRF52840 claim requires static execution
 with the supported TFT display. A host simulator does not substitute for those
@@ -1308,13 +1428,16 @@ requires it.
 - Missing required GiftUI or backend behavior MUST fail target validation
   explicitly; it MUST NOT silently degrade the portable screen.
 - Stale events from a stopped or replaced source generation MUST be ignored.
+- Capture-revision exhaustion MUST follow the terminal repository procedure in
+  Capture Publication Values, preserve the last capture without wrap or
+  mutation, and prevent reuse of the exhausted analyzer graph.
 - Snapshot-slot, compact-ring, runtime-availability, and sequence exhaustion
   MUST reject admission synchronously with the corresponding
   `SignalSinkDeliveryRejection`. Rejection MUST NOT mutate the ViewModel,
   overwrite an accepted fact, or fall back to direct mutation.
 - The adapter MUST reserve and attempt one `operationalFailure` fact containing
-  the normalized non-success `GiftUIOutcome<Void>` after an ordinary admission
-  rejection. If the reserved slot is unavailable, the host MUST quiesce
+  the normalized `GiftUIFailureFact` after an ordinary admission rejection or
+  repository operational condition. If the reserved slot is unavailable, the host MUST quiesce
   acquisition and preserve the last complete published semantic revision. At
   the accepted workload, any admission rejection is a conformance failure.
 - State-location, registration, or replacement-staging exhaustion MUST reject
@@ -1353,6 +1476,7 @@ policy or diagnostics.
 
 | Producer condition | Outcome | Origin | Affected scope | Containment |
 | --- | --- | --- | --- | --- |
+| `captureRevisionExhausted` | failure / `invalidProvenance` | `semantic` | `component` | `safetyNotProven` |
 | `snapshotCapacityExhausted` | failure / `capacityExhausted` | `presentationIntegration` | `component` | `contained` |
 | `factCapacityExhausted` | failure / `capacityExhausted` | `presentationIntegration` | `component` | `contained` |
 | `runtimeUnavailable` | failure / `requiredFacilityUnavailable` | `execution` | `runtime` | `safetyNotProven` |
@@ -1384,7 +1508,8 @@ policy is not invoked.
 
 | Normalized condition and owning operation | Residual context | Mandatory mechanical and coordinator effects | Allowed residual dispositions | Signal Analyzer target selection |
 | --- | --- | --- | --- | --- |
-| Admission capacity failure during observation start | `observationStart` | Reject without overwrite, attempt the reserved normalized failure fact, and detach both observers | `quiesceAffectedScope` | `quiesceAffectedScope` |
+| Capture revision exhausted during transition processing or Clear | — | Reject without mutation or wrap, stop source delivery, retain failed repository state, attempt the reserved normalized failure fact, detach all observation, quiesce the analyzer component, and require a fresh complete analyzer graph | — | — |
+| Admission capacity failure during observation start | `observationStart` | Reject without overwrite, attempt the reserved normalized failure fact, and detach both sinks | `quiesceAffectedScope` | `quiesceAffectedScope` |
 | Admission capacity failure during active delivery | `activeDelivery` | Reject without overwrite, attempt the reserved normalized failure fact, and stop further acquisition delivery after the active callback | `quiesceAffectedScope` | `quiesceAffectedScope` |
 | Runtime unavailable, sequence exhausted, or reserved failure slot unavailable | `observationStart` or `activeDelivery`, matching the rejected operation | Reject without wrap or alias, preserve the last complete revision, prevent another normal cycle, and require a fresh runtime/object graph | `quiesceAffectedScope`, `invokeFatalHook` | `quiesceAffectedScope` |
 | Identity generation exhausted | `initialModelAttachment` or `modelReplacement`, matching the rejected operation | Reject without alias, preserve any existing live model and the last complete revision, prevent another normal cycle, and require a fresh runtime/object graph | `quiesceAffectedScope`, `invokeFatalHook` | `quiesceAffectedScope` |
@@ -1412,10 +1537,10 @@ Unexpected policy-input construction failure or a policy result outside
 `.safetyNotProven`, invoke no further policy, quiesce runtime health before any
 configured fatal hook, and admit no later normal run cycle.
 
-Policy MUST NOT consume `SignalSinkDeliveryRejection` or
-`SignalAnalyzerRuntimeCondition`, narrow affected scope, reinterpret rejection
-as success, retry without a bound, or bypass the reserved fact and normal
-admission boundary.
+Policy MUST NOT consume `SignalSinkDeliveryRejection`,
+`SignalAnalyzerRepositoryCondition`, or `SignalAnalyzerRuntimeCondition`,
+narrow affected scope, reinterpret rejection as success, retry without a
+bound, or bypass the reserved fact and normal admission boundary.
 Quiescence after admission failure MUST prevent later source callbacks without
 publishing an ordinary `.stopped` fact that could overwrite the operational
 failure. After the reserved failure fact publishes, the host MAY destroy and
@@ -1506,6 +1631,8 @@ Tests MUST verify:
 - capture publication revisions and `.snapshot`, `insertAndTrim`, and `reset`
   values reproduce the repository's complete current capture;
 - visible `Duration` values and transition invariants;
+- exact, truncated, and invalid diagnostic construction, byte borrowing, and
+  byte-identical `BoundedText` projection at every UTF-8 boundary;
 - Domain imports no prohibited module.
 
 ### Repository tests
@@ -1528,6 +1655,10 @@ Tests MUST verify:
 - clear while idle, running, stopped, and failed;
 - clear rebases future timestamps and preserves current levels;
 - stopped or replaced source generations cannot publish stale events.
+- capture revision succeeds at `UInt32.max - 1`, rejects before mutation at
+  `UInt32.max`, stops source delivery, records failed state, emits exactly one
+  `captureRevisionExhausted` terminal capture publication, and rejects later Start,
+  Clear, and source delivery until graph reconstruction.
 
 ### Mock-source tests
 
@@ -1535,6 +1666,8 @@ Tests MUST verify:
 
 - four initial low baselines at time zero;
 - each channel's documented deterministic timing pattern;
+- exact CH4 golden vectors for seeds `1_234` and `0x5EED`, including wrapping
+  arithmetic and advancement before each interval;
 - repeatability for a fixed seed and time scale;
 - monotonically nondecreasing timestamps;
 - idempotent repeated start;
@@ -1600,8 +1733,8 @@ verify:
   semantic revisions, and user-visible state; and
 - freeze-phase reports, derivation failure, and publication clearing follow
   the specified dirty-state and containment behavior;
-- every `SignalSinkDeliveryRejection` and
-  `SignalAnalyzerRuntimeCondition` maps to the exact SPEC-003 outcome,
+- every `SignalSinkDeliveryRejection`, `SignalAnalyzerRepositoryCondition`,
+  and `SignalAnalyzerRuntimeCondition` maps to the exact SPEC-003 outcome,
   condition identity, origin, affected scope, and containment row, while an
   unknown value maps conservatively without invoking policy;
 - mandatory detecting and coordinator effects complete before any residual
@@ -1627,6 +1760,9 @@ Tests MUST verify:
 - one portable hierarchy builds for dynamic and static profiles;
 - equivalent deterministic-source state traces on macOS dynamic, macOS static,
   Raspberry Pi/Linux dynamic, and nRF52840 static;
+- exact equality between the application hierarchy descriptor, all four
+  generated SPEC-015 workload manifests, profile limits, Canvas minima,
+  approved Pi/nRF fixture extents, and assembly reports;
 - 80 events per second for 30 seconds with four-frame-per-second presentation;
 - all corresponding facts are admitted and applied without capacity rejection,
   while change reports and wake intent coalesce;
@@ -1742,17 +1878,35 @@ behavioral, resource, profile, or connected-hardware evidence.
 - [ ] **SA-AC-038:** Model replacement after down or after action admission
   cancels dispatch and invokes neither model; failed replacement preserves the
   former binding and permits only a newly valid interaction.
-- [ ] **SA-AC-037:** Embedded evidence shows one address-stable typed model
+- [ ] **SA-AC-039:** Embedded evidence shows one address-stable typed model
   location, the configured bounded records and fact storage, no forbidden
   heap/reflection/task/runtime dependencies, and measured assembled RAM,
   flash, stack, admission, mutation, publication, and frame costs.
-- [ ] **SA-AC-038:** Exhaustive fixtures normalize every analyzer capacity,
+- [ ] **SA-AC-040:** Exhaustive fixtures normalize every analyzer capacity,
   availability, sequence, identity, revision, and phase condition into the
   exact SPEC-003 outcome fields before composition policy; apply all mandatory
   coordinator effects first; construct only valid
   `GiftUIResidualPolicyInput<SignalAnalyzerResidualPolicyContext>` values for
   remaining choices; and prove optional diagnostic projection cannot change
   `SignalAnalyzerDiagnostic`, semantic state, policy inputs, or dispositions.
+- [ ] **SA-AC-041:** Diagnostic fixtures prove exact and truncating
+  construction, malformed rejection, byte borrowing, nonempty failure text,
+  and byte-identical `BoundedText` projection for the complete 96-byte UTF-8
+  boundary matrix in dynamic and static profiles without required allocation.
+- [ ] **SA-AC-042:** CH4 produces the specified wrapping LCG sequence and both
+  normative timestamp vectors identically in every profile and host fixture.
+- [ ] **SA-AC-043:** Capture revision at `UInt32.max` rejects before mutation
+  or wrap, stops acquisition, preserves failed current state and the last
+  capture, emits the exact normalized reserved failure fact, invokes no
+  residual policy, and requires a fresh complete analyzer graph.
+- [ ] **SA-AC-044:** `SignalAnalyzerOperationalFailure` can represent only a
+  normalized `GiftUIFailureFact` plus bounded semantic diagnostic; success and
+  operational outcomes are unrepresentable in source and generated static
+  storage.
+- [ ] **SA-AC-045:** Every host fixture proves exact equality with SPEC-015's
+  workload manifest, runtime limits, `1/32/1` fact stores, 28-fact production
+  burst, five-Canvas Drawing minima, Pi extent/region, nRF52840 extent/region
+  and 3,840-byte bounds, and assembly report.
 
 ## Implementation Notes
 
@@ -1809,27 +1963,10 @@ view invalidations without batching or dropping capture events.
 
 ## Open Issues
 
-No unresolved Signal Analyzer architecture choice remains, but the following
-Specification-approval blockers are open:
-
-- Capture-revision exhaustion requires acquisition to stop and a fresh object
-  graph, but it has no producer condition, normalization row, coordinator
-  effects, residual-policy context, or acceptance fixture in the otherwise
-  total failure contract.
-- An `operationalFailure` fact containing `.success` or `.operational` MUST be
-  rejected before admission, but the contract does not make those values
-  unrepresentable or define the bounded rejection and normalization outcome.
-- Cross-profile deterministic mock traces require an exact CH4 pseudo-random
-  sequence contract, seed transformation, or normative golden vectors; the
-  inclusive interval range alone is insufficient to guarantee equivalent
-  traces.
-- `SignalAnalyzerDiagnostic` lacks the construction, truncation-result,
-  bounded byte-access, and text-projection operations needed to implement and
-  test the stated 96-byte dynamic/static contract without guessing.
-
-These are current-scope blockers, not deferred work. This Specification
-defines the analyzer-specific source shape, configuration, adapter, facts,
-capacities, and conformance obligations without defining reusable GiftUI APIs.
+No unresolved architecture choice or application-contract blocker is known.
+Human review may still identify corrections, and explicit maintainer approval
+remains required before this Specification becomes authoritative or major
+implementation planning begins.
 
 ## Deferred and Follow-up Work
 
@@ -1855,12 +1992,29 @@ contract, and this Specification does not create an additional relationship.
 - [ADR-025: Coarse Model-Owned Observable Invalidation](../adrs/adr-025-coarse-model-owned-observable-invalidation.md)
 - [ADR-026: Profile-Equivalent Bounded Observable State Realization](../adrs/adr-026-profile-equivalent-bounded-observable-state.md)
 - [ADR-027: Bounded Presentation-Fact Admission](../adrs/adr-027-bounded-presentation-fact-admission.md)
+- [ADR-028: Post-Layout Canvas Derivation and Cycle-Local Plan](../adrs/adr-028-post-layout-canvas-derivation-and-cycle-local-plan.md)
+- [ADR-029: Scoped Transient Path Snapshot Semantics](../adrs/adr-029-scoped-transient-path-snapshot-semantics.md)
+- [ADR-030: Canonical Normalized Straight-Line Stroke Operation](../adrs/adr-030-canonical-normalized-straight-line-stroke-operation.md)
+- [ADR-031: Bounded Canvas Failure and Startup-Gate Integration](../adrs/adr-031-bounded-canvas-failure-and-startup-gate-integration.md)
 - [ADR-033: Bounded Application Actions and Model-Target Dispatch](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md)
+- [SPEC-002: Portable Foundation](spec-002-portable-foundation.md)
 - [SPEC-003: Failure Outcomes and Containment](spec-003-failure-outcomes-and-containment.md)
+- [SPEC-004: Capability Contribution and Resolution](spec-004-capability-contribution-and-resolution.md)
+- [SPEC-005: Deterministic Text Resources](spec-005-text-resources.md)
+- [SPEC-006: Declarative View Semantics](spec-006-declarative-view-semantics.md)
+- [SPEC-007: Proposal-Based Layout](spec-007-layout.md)
+- [SPEC-008: Normalized Rendering](spec-008-rendering.md)
+- [SPEC-009: Execution Cycle and Frame Handoff](spec-009-execution-cycle-and-frame-handoff.md)
+- [SPEC-010: Observable Reference State](spec-010-observable-reference-state.md)
+- [SPEC-011: Button Interaction and Activation Contract](spec-011-interaction.md)
+- [SPEC-012: Canvas, Path, and Stroke Drawing](spec-012-canvas-path-stroke-drawing.md)
+- [SPEC-013: Dynamic and Static Runtime Profiles](spec-013-runtime-profiles.md)
+- [SPEC-014: Raster Backend and Display Integration](spec-014-backend-integration.md)
+- [SPEC-015: MVP Target-Host Configuration](spec-015-host-configuration.md)
 - [RFC-001: Signal Analyzer Application Architecture](../rfcs/rfc-001-signal-analyzer-application-architecture.md)
 - [RFC-008: Observable Reference State Architecture](../rfcs/rfc-008-observable-reference-state-architecture.md)
+- [RFC-009: Canvas, Path, and Stroke Drawing Architecture](../rfcs/rfc-009-canvas-path-stroke-drawing-architecture.md)
 - [RFC-011: Bounded Application Actions and Model-Target Dispatch](../rfcs/rfc-011-bounded-application-actions.md)
-- [SPEC-011: Button Interaction and Activation Contract](spec-011-interaction.md)
 - [PROPOSAL-002: Signal Analyzer Reference Application](../proposals/proposal-002-signal-analyzer-reference-application.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI Vision](../VISION.md)
