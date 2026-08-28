@@ -141,8 +141,8 @@ The governing Proposals are accepted, the related RFCs are approved, and all
 listed ADRs are accepted. SPEC-002 through SPEC-008 and SPEC-012 are approved.
 SPEC-009 through SPEC-011 contain coordinated contract clarifications and are
 in `review`; this Specification cannot be approved until those amendments
-receive renewed human approval. SPEC-014 remains a downstream draft and
-supplies no authority here.
+receive renewed human approval. SPEC-014 remains a downstream review artifact
+and supplies no authority here.
 
 The runtime receives a validated exact text-resource package from SPEC-005, a
 resolved capability snapshot from SPEC-004, and a synchronous frame endpoint

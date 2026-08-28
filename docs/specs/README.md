@@ -34,5 +34,5 @@ its required acceptance criteria.
   Contract (`review`, coordinated approval of SPEC-009 through SPEC-011
   amendments required)
 - [SPEC-014](spec-014-backend-integration.md) — Raster Backend and Display
-  Integration Contract (`draft`, reconciliation with approved SPEC-012
-  required)
+  Integration Contract (`review`, SPEC-009 renewed approval required before
+  approval)

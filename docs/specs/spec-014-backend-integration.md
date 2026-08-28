@@ -2,7 +2,7 @@
 id: SPEC-014
 feature: giftui-mvp-architecture
 title: Raster Backend and Display Integration Contract
-status: draft
+status: review
 authors:
   - codex
 created: 2026-08-27
@@ -141,7 +141,7 @@ The governing Proposals are accepted, RFCs approved, and ADRs accepted.
 SPEC-002 through SPEC-005, SPEC-008, and SPEC-012 are approved. SPEC-009's
 focused-owner carrier amendment is in `review`; its existing handoff and
 disposition rules consumed here are unchanged, but renewed approval remains a
-gate before this draft may be approved. This revision is reconciled to
+gate before this Specification may be approved. This revision is reconciled to
 SPEC-012's approved one-operation-
 per-stroke, borrowed `StraightLineStrokeView`, checked surface-coordinate,
 inherited-clip, canonical coverage, encoding, capacity, and failure contract.
@@ -1152,7 +1152,7 @@ compare final encoded surfaces.
 
 ## Open Issues
 
-No unresolved contract or architectural issue remains in this draft.
+No unresolved contract or architectural issue remains in this Specification.
 Production surface, region, payload, per-frame work, and in-flight values are
 Wave 7 HOST-CONFIGURATION inputs and are intentionally not selected here.
 

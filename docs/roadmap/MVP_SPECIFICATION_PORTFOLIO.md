@@ -127,12 +127,12 @@ Wave 6 has produced these immutable artifacts:
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
 | `RUNTIME-PROFILES` | `SPEC-013` | `review` |
-| `BACKEND-INTEGRATION` | `SPEC-014` | `draft` |
+| `BACKEND-INTEGRATION` | `SPEC-014` | `review` |
 
 Both artifacts are reconciled to approved SPEC-012. SPEC-013's completeness
 review produced the coordinated SPEC-009 through SPEC-011 amendments; all four
 must receive their next explicit human approval before SPEC-013 can govern
-implementation. SPEC-014 remains `draft` and also observes the SPEC-009 gate.
+implementation. SPEC-014 is in `review` and also observes the SPEC-009 gate.
 
 Candidate keys are planning labels, not reserved Specification IDs.
 
