@@ -34,8 +34,8 @@ and FW-009 MUST NOT become a required MVP Specification dependency.
 
 The `canvas-drawing` feature completed its decision stage with approved RFC-009
 and accepted ADR-028 through ADR-031. Wave 5 artifacts SPEC-010 through
-SPEC-012 now exist; SPEC-010 and SPEC-011 are approved, while SPEC-012 remains
-non-authoritative until review and explicit approval.
+SPEC-012 now exist; SPEC-010 and SPEC-011 are approved, while SPEC-012 is in
+review and remains non-authoritative until explicit approval.
 
 ## Boundary Rules
 
@@ -117,7 +117,7 @@ through approval:
 | --- | --- | --- |
 | `OBSERVABLE` | `SPEC-010` | `approved` |
 | `INTERACTION` | `SPEC-011` | `approved` |
-| `DRAWING` | `SPEC-012` | `draft` |
+| `DRAWING` | `SPEC-012` | `review` |
 
 The three artifacts have independent approval gates. SPEC-010 and SPEC-011
 are implementation contracts; SPEC-012 is not authoritative until its own
