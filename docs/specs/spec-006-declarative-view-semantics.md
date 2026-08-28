@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-08-27
+updated: 2026-08-28
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -151,7 +151,8 @@ the reason this contract is required now.
   typed action value defined here; this Specification does not bind a model
   target, allocate a committed generation, retain a callable or model, or
   dispatch an action.
-- The approved SPEC-010 contract owns `_GiftUIObservableStateHost`, its
+- SPEC-010 (currently in coordinated amendment review) owns
+  `_GiftUIObservableStateHost`, its
   declaration visitor, macro-generated witness, binding results, and all state
   failure behavior. This Specification owns the single traversal operation
   that calls that witness before `body`; the coordinated approval of both

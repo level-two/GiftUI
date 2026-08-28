@@ -2,11 +2,11 @@
 id: SPEC-011
 feature: giftui-mvp-architecture
 title: Button Interaction and Activation Contract
-status: approved
+status: review
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-08-27
+updated: 2026-08-28
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -47,9 +47,9 @@ target_milestone: MVP
 
 # SPEC-011: Button Interaction and Activation Contract
 
-> **Approval status:** Explicitly approved by the maintainer after reapproval
-> of revised SPEC-006 and SPEC-009 and approval of SPEC-010. This revised
-> ADR-033-aligned interaction contract is authoritative for implementation.
+> **Review status:** The previously approved contract was amended on
+> 2026-08-28 to bind candidate actions to SPEC-010's exact publishable target
+> generation. The amendment is not authoritative until renewed human approval.
 
 ## Summary
 
@@ -431,9 +431,12 @@ region. Overlapping regions resolve by greatest `paintOrder`; if that topmost
 occurrence is disabled, the down is ignored. A disabled painted occurrence
 therefore blocks retargeting through itself to an obscured action beneath.
 
-The coordinator obtains the current target generation from SPEC-010 before
-appending any action. No live generation returns `missingModelTarget` and
-discards the complete candidate. Every action occurrence must have the exact
+After the owning state location has been encountered successfully, the
+coordinator obtains its `publishableTargetGeneration` from SPEC-010 before
+appending any action. It MUST NOT substitute the previous live generation for
+a first-materialized or otherwise changed candidate target. No publishable
+generation returns `missingModelTarget` and discards the complete Interaction
+and Observable State candidates. Every action occurrence must have the exact
 configured `Handler.Action` type. Dynamic validation may reject a mismatch as
 `incompatibleActionDomain`; static composition MUST reject it during generated
 or compile-time graph validation without reflection or a stored type token.
@@ -644,7 +647,8 @@ scripts/contracts/run-spec-011.sh --profile nrf52840-embedded
 - `declarations.yaml` for exact qualified source, initializer-time label
   evaluation, all six actions, and rejected domains/codes;
 - `candidates.yaml` for limits, paint order, every replacement field,
-  generation preservation/reservation, finish, commit, discard, and refusal;
+  generation preservation/reservation, first target materialization,
+  publishable-target replacement, finish, commit, discard, and refusal;
 - `gestures.yaml` for clipped/disabled overlap plus every legal and cancelled
   down/move/up transition through `InteractionGestureResolver`;
 - `dispatch.yaml` for model replacement/removal before release and after
@@ -699,6 +703,11 @@ Connected input/display evidence remains an implemented-conformance gate.
   allocator dependency.
 - [ ] **IN-012:** nRF52840 and ARMv6 evidence records ABI, fixed storage, stack,
   flash, RAM, direct dispatch, and forbidden symbols.
+- [ ] **IN-013:** Initial-materialization, preservation, replacement, and
+  discard fixtures bind every staged record to SPEC-010's exact publishable
+  target generation before finish; no fixture substitutes a prior live value,
+  and observable non-publication discards the Interaction candidate exactly
+  once.
 
 ## Implementation Notes
 
@@ -713,8 +722,10 @@ production declarations.
 
 ## Open Issues
 
-No open contract issue remains. Revised prerequisite Specifications completed
-their approval gates before this Specification was approved. Production
+No unresolved contract or architectural choice remains in this amendment.
+The coordinated SPEC-009 and SPEC-010 amendments are also in `review`; all
+three revised contracts require renewed human approval before implementation
+may rely on them. Production
 capacities and profile storage belong to later runtime-profile and host-
 configuration contracts.
 

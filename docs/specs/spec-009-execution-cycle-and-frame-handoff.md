@@ -2,11 +2,11 @@
 id: SPEC-009
 feature: giftui-mvp-architecture
 title: Execution Cycle and Frame Handoff Contract
-status: approved
+status: review
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-08-27
+updated: 2026-08-28
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -46,9 +46,9 @@ target_milestone: MVP
 
 # SPEC-009: Execution Cycle and Frame Handoff Contract
 
-> **Approval status:** Explicitly reapproved by the maintainer after ADR-033
-> superseded ADR-013 and after SPEC-006 reapproval. This revised bound-action
-> and target-revalidation contract is authoritative for implementation.
+> **Review status:** The previously approved contract was amended on
+> 2026-08-28 with a bounded generic focused-owner failure carrier required by
+> SPEC-013. The amendment is not authoritative until renewed human approval.
 
 ## Summary
 
@@ -608,7 +608,8 @@ package protocol ExecutionAdmissionSink {
 }
 
 package protocol ExecutionOpportunityRunner {
-    mutating func runOpportunity() -> RunCycleResult
+    associatedtype OwnerFailure: Equatable & Sendable
+    mutating func runOpportunity() -> RunCycleResult<OwnerFailure>
 }
 
 package struct AdmissionSummary: Equatable, Sendable {
@@ -769,11 +770,14 @@ package enum PresentationIntentState: UInt8, Equatable, Sendable {
     case unavailable = 2
 }
 
-package enum RunCycleFailure: Equatable, Sendable {
+package enum RunCycleFailure<OwnerFailure: Equatable & Sendable>:
+    Equatable, Sendable
+{
     case execution(ExecutionError)
     case renderProduction(RenderProductionError)
     case frameOffer(FrameOfferFailure)
     case nonRetryableRefusal(FrameRefusalOrigin)
+    case focusedOwner(OwnerFailure)
 }
 
 package struct RunCycleSummary: Equatable, Sendable {
@@ -797,12 +801,34 @@ package struct RunCycleSummary: Equatable, Sendable {
                   operationalEvents: ExecutionOperationalEvents)
 }
 
-package enum RunCycleResult: Equatable, Sendable {
+package enum RunCycleResult<OwnerFailure: Equatable & Sendable>:
+    Equatable, Sendable
+{
     case success(RunCycleSummary)
     case operational(ExecutionOperational, RunCycleSummary)
-    case failure(ExecutionContext, RunCycleFailure, RunCycleSummary?)
+    case failure(
+        ExecutionContext,
+        RunCycleFailure<OwnerFailure>,
+        RunCycleSummary?
+    )
 }
 ```
+
+`OwnerFailure` is the coordinator's finite, statically known sum of exact
+focused errors from owners that participate in the assembled run cycle but do
+not belong to `GiftUIExecution`. It MUST be an inline value with no existential,
+reference, closure, string, or diagnostic payload. A runtime-profile
+coordinator uses the exact sum declared by its approved Specification; a
+focused standalone Execution fixture uses an uninhabited or one-case fixture
+value. `GiftUIExecution` stores and returns the value without inspecting,
+mapping, re-ranking, or translating it.
+
+`.focusedOwner(error)` is selected when such an owner has already chosen its
+exact local failure. The accompanying `ExecutionContext` is captured at that
+owner boundary after mandatory mechanical containment and before SPEC-003
+mapping. The first adapter that imports the focused owner and failure modules
+maps the retained value; diagnostics are never the carrier. Later cleanup
+cannot replace the selected focused error.
 
 `noChange`, `backpressured`, `retryableRefusal`, `superseded`, and
 `deferredToLaterAdmission` have raw values `0x01`, `0x02`, `0x04`, `0x08`, and
@@ -1181,7 +1207,7 @@ Within a row, `superseded` is recorded when a new publication replaces older
 pending intent, and `deferredToLaterAdmission` is recorded whenever valid work
 remains after the seal. Backpressure or retryable refusal adds its own event;
 `noChange` is recorded only for the first row. These event combinations use the
-primary precedence defined with `RunCycleResult` and never depend on profile-
+primary precedence defined with `RunCycleResult<OwnerFailure>` and never depend on profile-
 private scheduling.
 
 ## Capability Requirements
@@ -1220,7 +1246,7 @@ failure, performs mandatory mechanical containment, and returns no partial
 successful summary. A lower producer's already-selected local error is not
 re-ranked by this list; its owning Specification's precedence remains exact.
 
-Admission outcomes map independently of `RunCycleResult`:
+Admission outcomes map independently of `RunCycleResult<OwnerFailure>`:
 
 | Admission result | SPEC-003 outcome | origin | affected scope | containment |
 | --- | --- | --- | --- | --- |
@@ -1285,6 +1311,13 @@ unmatched endpoint payload normalizes to
 `backend`, scope `candidateFrame`, containment `contained`. The
 `.renderProducer` case uses the distinct rendering mapping above. Both perform
 the same mandatory abort and unavailable/quiescent transition before mapping.
+
+`.focusedOwner(error)` preserves `error` without reinterpretation. The owning
+adapter MUST switch exhaustively over the concrete `OwnerFailure` sum and use
+the mapping, affected scope, containment, and mandatory effects fixed by that
+focused owner's approved Specification. `GiftUIFailureExecution` neither owns
+nor provides a fallback mapping for this case. A generic invalid-value,
+invariant, or diagnostic translation is nonconforming.
 
 The coordinator's exhaustive offer normalization is:
 
@@ -1355,7 +1388,9 @@ The following value ceilings apply on every supported compiler:
 - `ExecutionAdmissionOutcome` no greater than 28 bytes;
 - `AdmissionSummary` no greater than 12 bytes;
 - `RunCycleSummary` no greater than 40 bytes;
-- `RunCycleResult` no greater than 64 bytes;
+- every conforming `OwnerFailure` no greater than 4 bytes;
+- `RunCycleFailure<OwnerFailure>` no greater than 8 bytes;
+- `RunCycleResult<OwnerFailure>` no greater than 72 bytes;
 - `ExecutionPhase`, `AdmissionKind`, `FrameOfferDisposition`,
   `LogicalFrameDisposition`, `FrameStreamResult`, `FrameOfferFailure`,
   `ExecutionAdmissionResult`, `FrameRefusalOrigin`, `PresentationIntentState`,
@@ -1363,7 +1398,8 @@ The following value ceilings apply on every supported compiler:
   exactly 1 byte each;
 - `ExecutionWakeReasons` and `ExecutionOperationalEvents` exactly 1 byte each;
   and
-- `RunCycleFailure` no greater than 2 bytes.
+- the non-generic raw-value and option-set ceilings remain unchanged by the
+  owner-failure specialization.
 
 Static fixtures MUST allocate zero heap bytes in admission, sequencing, cycle
 coordination, refusal recovery, wake coalescing, correlation construction, and
@@ -1424,7 +1460,10 @@ method and samples, section deltas, and link maps.
 - `input.yaml` for every phase, ordinal, stale provenance, race, cancellation,
   replacement, movement, disabled, exhaustion, and resynchronization case;
 - `recovery.yaml` for pending-intent coalescing, newer-revision supersession,
-  finite attempts, non-retryable refusal, unavailability, and quiescence; and
+  finite attempts, non-retryable refusal, unavailability, and quiescence;
+- `owner-failures.yaml` for a finite fixture `OwnerFailure`, every case,
+  first-failure precedence, exact context, cleanup, mapping, and static layout;
+  and
 - `signal-analyzer.yaml` for the 80-facts/second and 250-millisecond workload.
 
 Every case has the shared fields `name`, `initialState`, `limits`,
@@ -1463,6 +1502,9 @@ Tests MUST:
   the exact synchronous admission rejection and seal-time cycle-failure paths;
 - exercise every legal and rejected `RunCycleSummary` combination, every
   simultaneous operational-event combination, and exact primary precedence;
+- inject every fixture `OwnerFailure` at its focused boundary and prove the
+  specialized result preserves the exact value/context without an existential,
+  diagnostic carrier, generic translation, or replacement by cleanup failure;
 - acknowledge a wake at opportunity entry, inject a new wake reason during
   every later phase and finalization, and prove no request is lost or emitted
   more than once per empty-to-nonempty transition;
@@ -1554,7 +1596,7 @@ for Specification approval.
   movement, disabled state, bound-record replacement, generation mismatch, or
   ambiguous reuse dispatches neither the former nor replacement action/model
   binding.
-- [ ] **EX-009:** Every admission outcome, `RunCycleFailure`, legal offer/body
+- [ ] **EX-009:** Every admission outcome, specialized `RunCycleFailure`, legal offer/body
   pairing, illegal pairing, and primary operational event maps to the exact
   SPEC-003 fact, origin, scope, containment, and `ExecutionContext`; mandatory
   containment precedes total residual policy and diagnostics never affect
@@ -1576,6 +1618,10 @@ for Specification approval.
   storage, capability catalogue, rasterization/backend realization, host
   production capacity/pacing choice, platform driver, or connected-hardware
   requirement in this Specification.
+- [ ] **EX-014:** A focused-owner fixture returns each case of a finite
+  coordinator-supplied `OwnerFailure` through the common opportunity seam,
+  preserves its exact value and context through owner mapping, selects the
+  first failure despite later cleanup, and allocates zero heap bytes statically.
 
 ## Implementation Notes
 
@@ -1592,7 +1638,8 @@ GiftUI operation borrow ends when `offer` returns.
 
 ## Open Issues
 
-None. Production capacities, concrete retry pacing, observable-state fact
+No unresolved contract or architectural choice remains in this amendment.
+Production capacities, concrete retry pacing, observable-state fact
 payloads/storage, committed bound-action-table storage and handler dispatch,
 runtime-profile workspace ownership, backend raster realization, and target
 eligibility evidence are deliberately owned by later portfolio Specifications.

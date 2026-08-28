@@ -34,7 +34,8 @@ and FW-009 MUST NOT become a required MVP Specification dependency.
 
 The `canvas-drawing` feature completed its decision stage with approved RFC-009
 and accepted ADR-028 through ADR-031. Wave 5 artifacts SPEC-010 through
-SPEC-012 now exist and are approved implementation contracts.
+SPEC-012 now exist; SPEC-012 is approved, while SPEC-010 and SPEC-011 are in
+coordinated amendment review.
 
 ## Boundary Rules
 
@@ -95,12 +96,12 @@ physical semantic, layout, and backend-facing render-core modules remain
 separate; `GiftUIRenderLowering` joins semantic and layout results above
 `GiftUIRenderCore` without exposing either authority to backends.
 
-Wave 4 retains this immutable identity; SPEC-009 was explicitly reapproved
-after ADR-033 alignment:
+Wave 4 retains this immutable identity. SPEC-009's previously approved
+contract now has a focused-owner failure-carrier amendment in renewed review:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `EXECUTION` | `SPEC-009` | `approved` |
+| `EXECUTION` | `SPEC-009` | `review` |
 
 SPEC-009 owns the serialized run cycle, sealed admission, publication and
 dirty-recovery boundaries, execution provenance, synchronous one-shot frame
@@ -109,29 +110,29 @@ machinery. It leaves observable-state storage, public interaction declarations
 and action lowering, concrete runtime-profile storage, backend realization,
 and host policy values to their downstream portfolio contracts.
 
-Wave 5 has produced these immutable artifacts and advanced the first two
-through approval:
+Wave 5 retains these immutable artifacts. SPEC-010 and SPEC-011 have
+coordinated candidate-target amendments in renewed review:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `OBSERVABLE` | `SPEC-010` | `approved` |
-| `INTERACTION` | `SPEC-011` | `approved` |
+| `OBSERVABLE` | `SPEC-010` | `review` |
+| `INTERACTION` | `SPEC-011` | `review` |
 | `DRAWING` | `SPEC-012` | `approved` |
 
-The three artifacts passed their independent approval gates and are
-authoritative implementation contracts.
+SPEC-012 remains approved. The amended SPEC-009 through SPEC-011 contracts are
+not authoritative again until explicit renewed human approval.
 
-Wave 6 has produced these immutable draft artifacts:
+Wave 6 has produced these immutable artifacts:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `RUNTIME-PROFILES` | `SPEC-013` | `draft` |
+| `RUNTIME-PROFILES` | `SPEC-013` | `review` |
 | `BACKEND-INTEGRATION` | `SPEC-014` | `draft` |
 
-Both artifacts were drafted against SPEC-012's coordinated draft. SPEC-012 is
-now approved. SPEC-014 has been reconciled to that approved contract and
-remains `draft`; SPEC-013 must still be reconciled before its review and
-approval gates can close.
+Both artifacts are reconciled to approved SPEC-012. SPEC-013's completeness
+review produced the coordinated SPEC-009 through SPEC-011 amendments; all four
+must receive their next explicit human approval before SPEC-013 can govern
+implementation. SPEC-014 remains `draft` and also observes the SPEC-009 gate.
 
 Candidate keys are planning labels, not reserved Specification IDs.
 

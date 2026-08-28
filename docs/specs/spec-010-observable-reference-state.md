@@ -2,11 +2,11 @@
 id: SPEC-010
 feature: observable-reference-state
 title: Observable Reference State Contract
-status: approved
+status: review
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-08-27
+updated: 2026-08-28
 proposal:
   - PROPOSAL-005
 related_rfcs:
@@ -44,9 +44,10 @@ target_milestone: MVP
 
 # SPEC-010: Observable Reference State Contract
 
-> **Approval status:** Explicitly approved by the maintainer after reapproval
-> of revised SPEC-006 and SPEC-009. This observable-reference-state contract
-> is authoritative for implementation.
+> **Review status:** The previously approved contract was amended on
+> 2026-08-28 to expose the exact publishable candidate target generation needed
+> by SPEC-011 and SPEC-013. The amendment is not authoritative until renewed
+> human approval.
 
 ## Summary
 
@@ -77,8 +78,9 @@ that creates finite immutable presentation facts.
 - Preserve identical source and observable behavior across runtime profiles.
 - Bound state locations, registrations, staging, and fact admission while
   retaining no correctness-relevant report history.
-- Expose opaque current-target generation to the runtime coordinator without
-  exposing or transferring model ownership to Interaction.
+- Expose opaque live and publishable-candidate target generations to the
+  runtime coordinator without exposing or transferring model ownership to
+  Interaction.
 
 ## Non-goals
 
@@ -355,6 +357,10 @@ package protocol ObservableStateTargetView {
         structuralIdentity: StructuralIdentity,
         declarationOrdinal: UInt16
     ) -> ObservableTargetGeneration?
+    borrowing func publishableTargetGeneration(
+        structuralIdentity: StructuralIdentity,
+        declarationOrdinal: UInt16
+    ) -> ObservableTargetGeneration?
 }
 
 package protocol PresentationFactAdmissionAdapter {
@@ -405,9 +411,26 @@ Execution dependency without importing one another. This Specification owns
 its allocation and meaning. Its raw value is exactly the current attachment's
 `generation`; no second target-generation counter exists. A value is not
 public API, ABI, persisted data, or a cross-runtime identifier.
-`ObservableStateTargetView` is a synchronous borrowed view over current live
-state. It exposes no model, attachment, change sink, state value, handler, or
-mutation operation. Absence or a retired location returns `nil`.
+`ObservableStateTargetView` is a synchronous borrowed view. `targetGeneration`
+observes only the current published live set and returns `nil` for absence or a
+retired location. `publishableTargetGeneration` is legal only after
+`beginCandidate`, after the named location's successful `encounter`, and before
+`finishCandidate`. It returns the exact registration generation that the
+current complete candidate will own if published: the existing live generation
+for a preserved association, or the already-reserved candidate generation for
+first materialization. A key not yet encountered, absent from the candidate,
+or queried outside that interval returns `nil`; the method performs no lazy
+materialization and cannot fail after a successful encounter.
+
+Both methods expose no model, attachment, change sink, state value, handler,
+or mutation operation. The publishable view is borrowed from staged storage
+and MUST NOT escape Interaction candidate construction. On
+`finishCandidate(.publish)`, every returned candidate generation becomes the
+corresponding live generation atomically with semantic publication. On
+`.discard`, candidate-only registrations detach and every generation exposed
+only through the publishable view is retired permanently; it is never reused,
+and the prior live view remains unchanged. Interaction candidate discard is
+mandatory whenever observable candidate publication does not occur.
 
 The package representation of a transient `State` is exactly one logical
 two-case storage: `initial(Value)` before encounter, or `bound` with one
@@ -640,9 +663,9 @@ task-local state, runtime source scanning, or target discovery. Both profiles
 report location, registration, staging, SPEC-009 pending-fact, macro-expanded
 code, stack, heap, and linked-size high-water evidence.
 
-Target-generation lookup and equality MUST be constant-space and bounded by
-the configured location representation. They MUST allocate zero heap bytes in
-the static profile.
+Live and publishable target-generation lookup and equality MUST be constant-
+space and bounded by the configured location/staging representation. They MUST
+allocate zero heap bytes in the static profile.
 
 ## Compatibility
 
@@ -668,8 +691,11 @@ local fallback; a proven no-op; report attempts during attach, candidate state,
 detach, freeze, and shutdown; distinct capacity mappings; initial and
 replacement attachment-generation exhaustion; exact mandatory-effects and
 policy-call rows; initial target generation; successful and failed replacement;
-published removal; borrowed target lookup; and stale-report rejection after
-slot reuse. Connected hardware is not required for Specification approval.
+published removal; live and publishable borrowed target lookup; first-
+materialization publish/discard; query before encounter and after finish;
+Interaction candidate discard when observable publication does not occur; and
+stale-report rejection after slot reuse. Connected hardware is not required
+for Specification approval.
 
 ## Acceptance Criteria
 
@@ -703,6 +729,11 @@ slot reuse. Connected hardware is not required for Specification approval.
   contained-phase, safety-not-proven, reentrancy, or invariant result; no-op,
   attach/detach, freeze, slot-reuse, and shutdown cases produce the specified
   dirty/wake and mandatory-disposition transcripts.
+- [ ] **OS-012:** During one active candidate, publishable lookup returns the
+  exact preserved or already-reserved generation only after successful
+  encounter; publication makes it live, discard retires candidate-only values
+  without reuse, invalid timing returns `nil`, and dynamic/static transcripts
+  remain identical without exposing or retaining a model.
 
 ## Implementation Notes
 
@@ -720,13 +751,15 @@ OS-011 for the revised declarations.
 
 ## Open Issues
 
-No unresolved contract or architectural choice remains in this Specification.
-Revised SPEC-006 and SPEC-009 are approved prerequisites. OS-001 compile
+No unresolved contract or architectural choice remains in this amendment.
+SPEC-006 remains approved; SPEC-009's coordinated owner-failure amendment is
+also in `review` and both revised contracts require renewed human approval
+before implementation may rely on them. OS-001 compile
 evidence is an implementation-conformance requirement, not authority for the
 declaration contract. SPEC-001 remains responsible for its own fact cases,
 application-executor entry contract, and production capacities; because this
-contract is generic over `Fact` and delegates all fact storage to approved
-SPEC-009, that downstream work does not define or weaken SPEC-010.
+contract is generic over `Fact` and delegates all fact storage to SPEC-009,
+that downstream work does not define or weaken SPEC-010.
 
 ## Deferred and Follow-up Work
 
