@@ -26,8 +26,9 @@ Before major feature design or implementation:
 Do not infer human approval or change accepted architecture implicitly.
 Preserve lifecycle traceability and update `docs/features.yaml` plus affected
 cross-references when creating or superseding artifacts. Use the role-specific
-skills under `.agents/skills/` for triage, authoring, review, and implementation
-planning; detailed process rules belong there and under `docs/engineering/`.
+skills under `.agents/skills/` for triage, authoring, review, implementation
+planning, implementation design, execution, and conformance; detailed process
+rules belong there and under `docs/engineering/`.
 
 During any lifecycle or implementation work, capture valuable out-of-scope
 ideas and intentionally postponed decisions through the repository's Future

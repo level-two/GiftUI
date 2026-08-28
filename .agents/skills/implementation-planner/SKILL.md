@@ -18,9 +18,11 @@ architecture and contract.
 
 ## Documents To Read
 
-Read canonical governance rules, `docs/features.yaml`, the approved Spec and
-all linked accepted ADRs, approved RFC, Proposal, architecture docs, relevant
-source/tests, and applicable platform/toolchain skills.
+Read canonical governance rules including
+`docs/engineering/IMPLEMENTATION_DOCUMENTATION.md`, `docs/features.yaml`, the
+approved Spec and all linked accepted ADRs, approved RFC, Proposal,
+architecture docs, relevant source/tests, and applicable platform/toolchain
+skills.
 For MVP work, read `docs/MVP_SCOPE.md` and keep task scope traceable to the
 reference application and required stack validation.
 
@@ -54,8 +56,12 @@ reference application and required stack validation.
 
 ## Required Output
 
-Produce ordered milestones/tasks with dependencies, affected modules, required
-tests/evidence, acceptance-criterion mapping, risks, and upstream blockers.
+Create or revise the governing Spec's
+`docs/implementation-plans/spec-NNN-implementation-plan.md` from
+`docs/templates/implementation-plan.md`. Produce ordered milestones/tasks with
+dependencies, affected modules, required tests/evidence, acceptance-criterion
+mapping, design-note triggers, risks, and upstream blockers. Link the plan from
+the Specification.
 
 ## Review Checklist
 
@@ -65,6 +71,8 @@ tests/evidence, acceptance-criterion mapping, risks, and upstream blockers.
 - [ ] Dependencies and integration points are explicit.
 - [ ] No task silently changes the contract.
 - [ ] Deferred ideas are not scheduled as authorized implementation work.
+- [ ] Design notes are requested only for mechanisms whose complexity warrants
+      maintained explanation.
 
 ## Completion Criteria
 

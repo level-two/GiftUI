@@ -9,6 +9,7 @@ Related rules:
 
 - [MVP Scope](../MVP_SCOPE.md)
 - [Documentation Rules](DOCUMENTATION_RULES.md)
+- [Implementation Documentation](IMPLEMENTATION_DOCUMENTATION.md)
 - [AI Agent Rules](AI_AGENT_RULES.md)
 - [Glossary](GLOSSARY.md)
 - [Feature Manifest](../features.yaml)
@@ -34,9 +35,11 @@ Specification (draft → review)
       ↓ explicit human approval
 Approved Specification
       ↓
-Implementation (Spec status: implementing)
+Implementation Plan (derived, non-authoritative)
       ↓
-Conformance review against acceptance criteria
+Implementation and focused Design Notes (Spec status: implementing)
+      ↓
+Conformance Report and review against acceptance criteria
       ↓
 Implemented Specification
 ```
@@ -71,6 +74,8 @@ The stages answer different questions:
 | RFC | How should the accepted problem be solved? | Establishes reviewed design consensus and enables decision extraction |
 | ADR | Which architecturally significant choice was made? | Becomes authoritative architecture |
 | Specification | What exact contract must implementation satisfy? | Authorizes major implementation work |
+| Implementation plan | In what order will the contract be realized and evidenced? | Makes authorized work executable; creates no new authority |
+| Implementation design note | How does one complex internal mechanism realize the contract? | Explains a replaceable implementation choice; creates no new authority |
 | Conformance review | Does the implementation meet the approved contract? | Allows the Specification to become `implemented` |
 
 The deferred artifacts answer different, deliberately non-authoritative
@@ -223,7 +228,10 @@ explicit and MUST NOT create competing sources of authority.
 ### Before major implementation
 
 - An approved Specification MUST exist.
-- The implementation plan MUST follow the Specification rather than amend it.
+- A ready Implementation Plan MUST exist and map every acceptance criterion to
+  work and expected evidence.
+- The Implementation Plan and any Design Notes MUST follow the Specification
+  rather than amend it.
 - Mark the Specification `implementing` when implementation actually begins;
   this is a progress transition, not architectural approval.
 
@@ -232,7 +240,8 @@ explicit and MUST NOT create competing sources of authority.
 - Implementation MUST be checked against every acceptance criterion.
 - Required tests and relevant platform checks MUST pass, or documented
   exceptions MUST receive human approval.
-- Conformance evidence MUST be linked from the Specification.
+- A Conformance Report MUST record and link the evidence from the
+  Specification.
 - A human maintainer MUST explicitly authorize the `implemented` transition.
 
 ## Status transitions
@@ -375,3 +384,8 @@ must identify the governing Specification, map evidence to acceptance
 criteria, record deviations, and update the feature manifest. Open hardware
 or platform gates remain open; a successful host build is not connected-board
 evidence.
+
+Implementation Plans, Design Notes, and Conformance Reports follow
+[Implementation Documentation](IMPLEMENTATION_DOCUMENTATION.md). They preserve
+traceability between contract and code but do not add authority or approval
+gates.

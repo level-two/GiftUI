@@ -87,6 +87,18 @@ Allowed statuses: `draft`, `review`, `approved`, `implementing`,
 A Specification MUST NOT introduce or contradict architecture. New
 architectural questions go back through RFC/ADR work.
 
+### Implementation records — realize and prove
+
+Implementation Plans translate approved Specifications into ordered tasks and
+expected evidence. Implementation Design Notes explain selected internal
+realizations for complex mechanisms. Conformance Reports map completed work
+and evidence back to every acceptance criterion.
+
+All three are derived, non-authoritative records governed by
+[Implementation Documentation](IMPLEMENTATION_DOCUMENTATION.md). They MUST NOT
+introduce architecture, amend a Specification, or make code divergence
+authoritative.
+
 ## Authority and precedence
 
 ```text
@@ -338,5 +350,10 @@ changes current authority; it does not erase history.
 - `docs/explorations/`: structured, non-decisional investigations
 - `docs/spikes/`: experiment records and evidence; disposable code belongs
   under `experiments/` and links back to its Spike
+- `docs/implementation-plans/`: one ordered implementation plan per governing
+  Specification
+- `docs/implementation-designs/`: focused, non-authoritative explanations of
+  complex internal realizations
+- `docs/conformance/`: evidence-based Specification conformance reports
 - `docs/templates/`: non-authoritative artifact templates
 - `docs/engineering/`: canonical process and engineering-operation rules

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Implementation Designer"
+  short_description: "Explain complex internal GiftUI realizations"
+  default_prompt: "Use $implementation-designer to design this complex GiftUI implementation mechanism within its approved contract."

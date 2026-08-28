@@ -14,7 +14,8 @@ Before drafting or implementing major feature work:
    `docs/PRINCIPLES.md`;
 3. inspect [the feature manifest](../features.yaml);
 4. locate the feature's linked Proposal, RFCs, accepted ADRs, approved
-   Specifications, deferred-track items, and current conformance evidence;
+   Specifications, implementation records, deferred-track items, and current
+   conformance evidence;
 5. read affected architecture documentation and applicable repository skills;
 6. state the current lifecycle stage, MVP justification, and any missing gate
    before proceeding.
@@ -35,6 +36,8 @@ Without special approval, an agent may:
   approval when doing so preserves supplied observations and does not expand
   current scope;
 - implement work already authorized by an approved Specification;
+- create and maintain derived Implementation Plans, Design Notes, and
+  Conformance Reports within their authority boundary;
 - update traceability and evidence as part of authorized work.
 
 ## Forbidden actions
@@ -54,6 +57,8 @@ An agent MUST NOT:
 - treat a Future Work item, Exploration finding, Spike result, or experimental
   code as a decision, contract, roadmap commitment, or implementation
   authorization;
+- treat an Implementation Plan, Design Note, or Conformance Report as
+  architecture or a contract amendment;
 - change a Specification merely to make implementation easier;
 - claim hardware validation from a build, simulator, or host test.
 

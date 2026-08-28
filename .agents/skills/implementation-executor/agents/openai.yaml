@@ -1,0 +1,4 @@
+interface:
+  display_name: "Implementation Executor"
+  short_description: "Implement an approved GiftUI Spec traceably"
+  default_prompt: "Use $implementation-executor to implement the next ready tasks from this GiftUI Specification plan."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Conformance Reviewer"
+  short_description: "Check implementation against every Spec criterion"
+  default_prompt: "Use $conformance-reviewer to review this GiftUI implementation against its approved Specification."

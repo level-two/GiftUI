@@ -25,7 +25,8 @@ GiftUI framework and architecture terminology is defined separately in the
 
 **Artifact**
 : A Proposal, RFC, ADR, Specification, architecture document, roadmap entry,
-  implementation plan, or conformance record stored in the repository.
+  implementation plan, implementation design note, or conformance record
+  stored in the repository.
 
 **Authoritative**
 : Normative for downstream work. Project vision/principles, established
@@ -35,6 +36,11 @@ GiftUI framework and architecture terminology is defined separately in the
 **Conformance review**
 : Evidence-based comparison of implementation behavior with an approved
   Specification's acceptance criteria.
+
+**Conformance Report**
+: A non-authoritative evidence record mapping every Specification acceptance
+  criterion to results, tests, measurements, deviations, and exceptions. It
+  supports but does not authorize the `implemented` transition.
 
 **Decision**
 : An architectural choice made authoritative by an accepted ADR. Candidate
@@ -65,6 +71,15 @@ GiftUI framework and architecture terminology is defined separately in the
 **Implementation contract**
 : An approved Specification defining what implementation and tests must
   satisfy.
+
+**Implementation Design Note**
+: A focused, non-authoritative explanation of a replaceable internal
+  realization of an approved Specification.
+
+**Implementation Plan**
+: A derived, non-authoritative mapping from an approved Specification's
+  acceptance criteria to ordered tasks, dependencies, affected modules, and
+  expected evidence.
 
 **Implemented**
 : Specification status granted after conformance review and explicit human
