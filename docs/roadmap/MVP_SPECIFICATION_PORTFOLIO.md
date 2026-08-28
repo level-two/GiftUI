@@ -129,8 +129,9 @@ Wave 6 has produced these immutable draft artifacts:
 | `BACKEND-INTEGRATION` | `SPEC-014` | `draft` |
 
 Both artifacts were drafted against SPEC-012's coordinated draft. SPEC-012 is
-now approved; each Wave 6 draft must be reconciled to that approved contract
-before its own review and approval gates can close.
+now approved. SPEC-014 has been reconciled to that approved contract and
+remains `draft`; SPEC-013 must still be reconciled before its review and
+approval gates can close.
 
 Candidate keys are planning labels, not reserved Specification IDs.
 
