@@ -891,12 +891,19 @@ Fact admission MUST provide these independent fixed capacities per analyzer:
 | Ordered compact-fact ring | 32 | Capture mutations and acquisition-state facts |
 | Reserved operational-failure slot | 1 | One failure fact unavailable to ordinary traffic |
 
-The 32 compact slots cover the maximum 20 capture publications in one
-half-open 250-millisecond interval after initialization, four initial channel
-publications, one acquisition-state publication, and seven additional
-action-induced publications. A host MUST request a GiftUI cycle after the
-first accepted fact and MUST demonstrate
-that the ring does not saturate at the accepted 80-event-per-second workload.
+The conforming production burst is the checked `20 + 2 + 6 == 28` bound
+required by SPEC-015: at most 20 transition-derived facts, the two exact
+observation-start current-value facts, and at most one non-transition
+repository publication per each of six admitted semantic actions in one
+admission service window. The 32-slot ring therefore has four slots of fixed
+margin that producers may not treat as permission to exceed their bounds. The
+first accepted fact after a seal starts that half-open window. The host MUST
+request a wake without synchronous runtime entry and begin the next runtime
+opportunity no later than 250,000 microseconds after that fact was accepted.
+Fixtures MUST admit the complete 28-fact production burst, independently admit
+all 32 physical slots, reject physical fact 33 through the approved bounded
+admission outcome, and reject each category excess as an incompatible host
+workload; neither facts nor effects are coalesced or replayed.
 
 Every accepted fact MUST receive a monotonically increasing nonzero `UInt32`
 sequence. Snapshot, compact, and reserved slots MUST be sealed and applied in
@@ -1808,8 +1815,9 @@ Specification-approval blockers are open:
 - The approved reusable contracts now exist for execution/fact admission,
   observable reference state, interaction, drawing, runtime profiles, and
   backend integration. SPEC-015 now defines host configuration at `review`.
-  This Specification MUST be reconciled against SPEC-015 after that contract
-  is approved and before this Specification can be approved.
+  The compact-fact service-window contract is reconciled, but this
+  Specification remains blocked until SPEC-015 is explicitly approved and any
+  later approved change is rechecked here.
 - Capture-revision exhaustion requires acquisition to stop and a fresh object
   graph, but it has no producer condition, normalization row, coordinator
   effects, residual-policy context, or acceptance fixture in the otherwise
@@ -1824,10 +1832,6 @@ Specification-approval blockers are open:
 - `SignalAnalyzerDiagnostic` lacks the construction, truncation-result,
   bounded byte-access, and text-projection operations needed to implement and
   test the stated 96-byte dynamic/static contract without guessing.
-- The compact-ring capacity rationale assumes seven additional action-induced
-  publications without defining that bound or a maximum admission service
-  delay. The final capacity MUST be derived from approved execution and host
-  pacing contracts and tested at every allowed boundary burst.
 
 These are current-scope blockers, not deferred work. This Specification
 defines the analyzer-specific source shape, configuration, adapter, facts,

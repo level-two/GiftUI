@@ -24,6 +24,9 @@ related_rfcs:
   - RFC-009
   - RFC-011
 related_adrs:
+  - ADR-001
+  - ADR-003
+  - ADR-004
   - ADR-006
   - ADR-007
   - ADR-008
@@ -149,6 +152,12 @@ host-assembly contract and the four configuration obligations defined here.
 
 ## Related ADRs
 
+- ADR-001 places the Signal Analyzer's Domain, Data, Presentation, and concrete
+  target composition in their inward dependency order.
+- ADR-003 supplies the four-channel, 10-Hz-per-channel, 80-transition-per-
+  second workload bound used by the admission-service proof.
+- ADR-004 supplies the fixed portable hierarchy, six controls, and
+  250-millisecond presentation cadence used by the host workload manifest.
 - ADR-006 requires profile-equivalent semantics below different storage and
   dispatch strategies.
 - ADR-007 and ADR-008 place complete-stack knowledge in an acyclic target-host
@@ -196,6 +205,16 @@ host-assembly contract and the four configuration obligations defined here.
 **Runtime opportunity**
 : A serialized call to SPEC-013's `runOpportunity()` after a wake request and
   host pacing permit it. Wake callbacks never call it synchronously.
+
+**Admission service window**
+: The half-open interval beginning when the first compact fact becomes pending
+  after the preceding seal and ending when the host begins the next runtime
+  opportunity. It is bounded independently from the minimum frame interval.
+
+**Workload manifest**
+: The immutable, inspectable value that records every application-derived
+  semantic, layout, render, Drawing, action, fact, and input count used to prove
+  one preset's production limits before owner construction.
 
 ## Public Contract
 
@@ -277,10 +296,36 @@ package enum HostComponentRole: UInt8, Equatable, Sendable {
     case residualPolicy = 17
 }
 
+package struct HostComponentRoleSet: OptionSet, Equatable, Sendable {
+    package let rawValue: UInt32
+    package init(rawValue: UInt32)
+    package init(_ role: HostComponentRole)
+}
+
+package struct HostComponentRecord: Equatable, Sendable {
+    package let role: HostComponentRole
+    package let dependencies: HostComponentRoleSet
+}
+
+package protocol HostComponentGraphView: ~Copyable {
+    borrowing var count: UInt8 { get }
+    borrowing func record(at index: UInt8) -> HostComponentRecord?
+}
+
 package struct HostPacingPolicy: Equatable, Sendable {
     package let minimumFrameIntervalMicroseconds: UInt32
+    package let maximumFactServiceLatencyMicroseconds: UInt32
+    package let minimumAcceptedTransitionSpacingMicroseconds: UInt32
+    package let maximumTransitionFactsPerServiceWindow: UInt16
+    package let maximumBootstrapFactsPerServiceWindow: UInt8
+    package let maximumActionInducedFactsPerServiceWindow: UInt8
     package let maximumRetryableRefusals: UInt8
     package init?(minimumFrameIntervalMicroseconds: UInt32,
+                  maximumFactServiceLatencyMicroseconds: UInt32,
+                  minimumAcceptedTransitionSpacingMicroseconds: UInt32,
+                  maximumTransitionFactsPerServiceWindow: UInt16,
+                  maximumBootstrapFactsPerServiceWindow: UInt8,
+                  maximumActionInducedFactsPerServiceWindow: UInt8,
                   maximumRetryableRefusals: UInt8)
 }
 
@@ -314,11 +359,23 @@ package struct SignalAnalyzerDrawingWorkload: Equatable, Sendable {
     package let submittedStrokes: UInt16
     package let snapshottedPoints: UInt16
     package let snapshottedSubpaths: UInt16
-    package let ordinaryRenderOperations: UInt16
     package let normalizedStrokeOperations: UInt16
     package let greatestLineWidth: GeometryScalar
     package let staticCallableCases: UInt16?
     package let maximumStaticCaptureBytes: UInt16?
+}
+
+package struct SignalAnalyzerHostWorkload: Equatable, Sendable {
+    package let schemaVersion: UInt16
+    package let requiredRuntimeLimits: RuntimeProfileLimits
+    package let semanticNodeOccurrences: UInt16
+    package let layoutScopeOccurrences: UInt16
+    package let positionedGlyphCount: UInt16
+    package let ordinaryRenderOperations: UInt16
+    package let inputEventsPerOpportunity: UInt16
+    package let semanticActionsPerOpportunity: UInt16
+    package let completionFactsPerOpportunity: UInt16
+    package let drawing: SignalAnalyzerDrawingWorkload
 }
 
 package struct HostStructuralConfiguration: Equatable, Sendable {
@@ -327,15 +384,55 @@ package struct HostStructuralConfiguration: Equatable, Sendable {
     package let runtimeLimits: RuntimeProfileLimits
     package let runtimeAudit: RuntimeStorageAudit
     package let cardinality: SignalAnalyzerHostCardinality
-    package let drawingWorkload: SignalAnalyzerDrawingWorkload
+    package let workload: SignalAnalyzerHostWorkload
     package let pacing: HostPacingPolicy
+}
+
+package struct HostActionModelConfiguration: Equatable, Sendable {
+    package let firstActionCode: UInt16
+    package let lastActionCode: UInt16
+    package let handlerCount: UInt8
+    package let rootModelTargetCount: UInt8
+    package let maximumNonTransitionPublicationsPerAction: UInt8
+}
+
+package struct HostInputWakeConfiguration: Equatable, Sendable {
+    package let normalizedInputSourceCount: UInt16
+    package let targetLocalPresentationGateCount: UInt8
+    package let wakeRequesterCount: UInt8
+    package let applicationAndMutationDomainsAreDistinct: Bool
+    package let wakeRequesterIsNonReentrant: Bool
+}
+
+package struct HostEndpointConfiguration: Equatable, Sendable {
+    package let effectivePresentation: EffectiveRasterPresentation
+    package let descriptor: RasterSurfaceDescriptor
+    package let payloadLimits: RasterPayloadLimits
+    package let surfaceWritableCapacityBytes: UInt32
+    package let displaySubmissionLifetime: SubmissionLifetime
+    package let displayHandoff: SubmissionHandoff
+    package let displayMaximumInFlightPayloads: UInt8
+    package let displayMaximumInFlightBytes: UInt32
+    package let textRasterRealization: RasterRealizationID
+    package let healthOwnerCount: UInt8
+    package let endpointAndDisplayShareHealthOwner: Bool
+}
+
+package protocol MVPHostResidualPolicyTable: ~Copyable {
+    borrowing var fatalHookIsAvailable: Bool { get }
+    borrowing func allowed(
+        for context: HostResidualPolicyContext
+    ) -> GiftUIAllowedDispositions
+    borrowing func selection(
+        for context: HostResidualPolicyContext
+    ) -> GiftUIResidualDisposition
 }
 
 package enum HostValidationStage: UInt8, Equatable, Sendable {
     case graph = 0
     case runtimeProfile = 1
     case textResources = 2
-    case drawingWorkload = 3
+    case workload = 3
     case capability = 4
     case endpoint = 5
     case actionAndModel = 6
@@ -349,11 +446,11 @@ package enum HostConfigurationError: Equatable, Sendable {
     case invalidGraph
     case profileMismatch
     case invalidRuntimeProfile(RuntimeProfileValidationError)
-    case incompatibleTextResources
-    case invalidDrawingWorkload
-    case insufficientDrawingCapacity
+    case invalidTextResources(TextResourceValidationError)
+    case invalidWorkload
+    case insufficientWorkloadCapacity
     case capabilityUnavailable(RasterPresentationUnavailable)
-    case endpointMismatch
+    case invalidEndpointDescriptor
     case invalidActionDomain
     case invalidModelTarget
     case invalidInputIntegration
@@ -374,6 +471,9 @@ package struct HostAssemblyReport: Equatable, Sendable {
     package let minimumSinkOperationCapacity: UInt16
     package let cardinality: SignalAnalyzerHostCardinality
     package let minimumFrameIntervalMicroseconds: UInt32
+    package let maximumFactServiceLatencyMicroseconds: UInt32
+    package let minimumAcceptedTransitionSpacingMicroseconds: UInt32
+    package let maximumCompactFactsPerServiceWindow: UInt16
     package let maximumRetryableRefusals: UInt8
 }
 
@@ -382,8 +482,49 @@ package enum HostValidationResult: Equatable, Sendable {
     case invalid(stage: HostValidationStage, error: HostConfigurationError)
 }
 
+package enum MVPHostLifecycleState: UInt8, Equatable, Sendable {
+    case valid = 0
+    case activating = 1
+    case active = 2
+    case failed = 3
+    case quiescing = 4
+    case quiescent = 5
+}
+
+package enum HostActivationResult<Failure: Equatable & Sendable>:
+    Equatable, Sendable
+{
+    case active
+    case failure(Failure)
+}
+
+package enum HostOpportunityResult: Equatable, Sendable {
+    case cycle(RunCycleResult<RuntimeOwnerFailure>)
+    case invalidLifecycle
+}
+
+package protocol MVPHostInstance: ~Copyable {
+    associatedtype ActivationFailure: Equatable & Sendable
+    borrowing var lifecycleState: MVPHostLifecycleState { get }
+    borrowing var assemblyReport: HostAssemblyReport { get }
+    mutating func activate() -> HostActivationResult<ActivationFailure>
+    mutating func runOpportunity() -> HostOpportunityResult
+    mutating func teardown()
+}
+
 package protocol MVPHostConfigurationValidator: ~Copyable {
+    associatedtype ComponentGraph: HostComponentGraphView
+    associatedtype ResidualPolicyTable: MVPHostResidualPolicyTable
     borrowing var structuralConfiguration: HostStructuralConfiguration { get }
+    borrowing var componentGraph: ComponentGraph { get }
+    borrowing var textResourceValidation: TextResourceValidationResult { get }
+    borrowing var capabilityRequirement: RasterPresentationRequirement { get }
+    borrowing var capabilityContributions: RasterPresentationContributions { get }
+    var capabilityWorkspace: RasterPresentationResolverWorkspace { get set }
+    borrowing var endpoint: HostEndpointConfiguration { get }
+    borrowing var actionAndModel: HostActionModelConfiguration { get }
+    borrowing var inputAndWake: HostInputWakeConfiguration { get }
+    borrowing var residualPolicyTable: ResidualPolicyTable { get }
     mutating func validate() -> HostValidationResult
 }
 
@@ -391,15 +532,61 @@ package protocol MVPHostResidualPolicy: GiftUIResidualFailurePolicy
 where Context == HostResidualPolicyContext {}
 ```
 
+Each first-party preset exposes one concrete construction function with two
+phases: it constructs its concrete validator from the exact inputs in the
+following table, calls `validate()` once, and, only for `.valid(report)`,
+constructs one concrete `MVPHostInstance` whose `assemblyReport` equals that
+report. The function returns the first `HostValidationResult` on failure and
+does not expose an instance. `ActivationFailure` is the preset's finite inline
+sum of exact focused activation errors; it preserves the originating payload
+until SPEC-003 mapping and contains no existential, reference, closure, string,
+or diagnostic payload. A host instance is the only API that may activate,
+enter `runOpportunity()`, or tear down the assembled owners.
+
 Every role in `HostComponentRole` is required exactly once. A diagnostic
 projector is optional, is not a component role, and cannot participate in
-validation or correctness. A concrete validator receives its selected owners
-through an initializer or generated construction function owned by its host;
-that construction surface MUST require one value for every role and MUST make
-duplicate roles representable only in negative fixtures. `validate()` is the
-single pure validation entry point and is callable exactly once per validator
-lifetime. A second call returns `.invalid(stage: .graph,
-error: .invariantViolation)` without invoking any owner.
+validation or correctness. `HostComponentRoleSet` uses bit
+`1 << role.rawValue`; bits `18...31` are invalid. `HostComponentGraphView`
+enumerates the exact compiler-visible direct dependency records of one preset.
+Production views return exactly eighteen records. They are ordered by role raw
+value, contain no self-edge or unknown bit, contain no dependency prohibited by
+the approved package/module contracts, and form an acyclic graph. A missing,
+duplicate, out-of-order, truncated, cyclic, upward, or unknown record is a
+graph-stage failure before any later accessor is evaluated.
+
+A concrete validator receives immutable descriptors and inert factories
+through one initializer or generated construction function owned by its host.
+That surface MUST require the following inputs and MUST retain them without
+constructing or starting the corresponding live owner:
+
+| Input | Required validation projection |
+| --- | --- |
+| component factories | one `HostComponentGraphView` record per required role |
+| runtime profile storage factory | selected profile, limits, and one exact audit |
+| text package factory | package, selected realization, descriptor, and exact `TextResourceValidationResult` |
+| four capability contributor factories | exact requirement, role-addressed contributions, and two-candidate workspace |
+| endpoint factory | effective value, surface descriptor, payload limits, text realization, and health-owner identity |
+| application factories | source minimum transition spacing, maximum callbacks per action, repository/use-case callback bounds, executor limits, admission adapter, action domain/handler, and root-model descriptors |
+| input and wake factories | one normalized source, one target-local gate, one non-reentrant requester, and distinct logical domains |
+| policy factory | one finite table enumerating every `HostResidualPolicyContext` plus fatal-hook availability |
+
+`HostEndpointConfiguration` is the complete inert endpoint-factory projection.
+Its effective value equals the resolver result. Its descriptor, writable
+capacity, payload limits, display lifetime/handoff, in-flight count/bytes, and
+text realization satisfy every exact SPEC-014 construction relation. Its text
+realization is the realization accepted by the stage-2 resource validation.
+`healthOwnerCount == 1` and `endpointAndDisplayShareHealthOwner == true`; no
+second mutable health record is permitted. The live endpoint constructed after
+validation MUST expose values equal to this projection before its first offer;
+any difference is SPEC-014's construction invariant.
+
+Only negative graph fixtures may pass a graph view containing missing,
+duplicate, out-of-order, cyclic, upward, or unknown records. No production
+initializer accepts an untyped collection, service locator, ambient lookup, or
+already started owner. `validate()` is the single pure validation entry point
+and is callable exactly once per validator lifetime. A second call returns
+`.invalid(stage: .graph, error: .invariantViolation)` without reading a later
+projection or invoking any owner.
 
 The selected `signalSource` constructor MUST receive its monotonic clock,
 scheduling, transport, or interrupt dependencies explicitly through
@@ -408,13 +595,53 @@ source-owned concrete contracts. Those contracts remain below
 role. Validation proves their presence from the generated or compiler-visible
 construction graph and performs no ambient lookup or clock/scheduler call.
 
-`HostPacingPolicy` is valid only when the interval is nonzero and the refusal
-limit is in `1...255`. Every first-party Signal Analyzer preset MUST use
-`minimumFrameIntervalMicroseconds == 250_000` and
-`maximumRetryableRefusals == 3`. The interval bounds semantic derivation and
-frame offers, not physical scan-out or source delivery. The third retryable
-refusal exhausts the policy; no fourth offer is scheduled for that pending
-intent.
+`HostPacingPolicy` is valid only when all three time values are nonzero, every
+fact bound is nonzero, the checked sum of its three per-window fact bounds is
+representable as `UInt16` and no greater than
+`cardinality.compactFactCapacity`, and the refusal limit is in `1...255`.
+Every first-party Signal Analyzer preset MUST use these exact values:
+
+| Pacing field | Value |
+| --- | ---: |
+| minimum frame interval | 250,000 microseconds |
+| maximum compact-fact service latency | 250,000 microseconds |
+| minimum accepted transition spacing per channel | 50,000 microseconds |
+| transition-derived facts per service window | 20 |
+| activation/bootstrap facts per service window | 2 |
+| action-induced facts per service window | 6 |
+| maximum retryable refusals | 3 |
+
+The maximum conforming production burst is therefore the checked sum
+`20 + 2 + 6 == 28`, leaving four slots of fixed storage margin without relying
+on that margin for correctness. Twenty is the maximum produced by four
+channels whose accepted transitions are at least 50 milliseconds apart per
+channel. Bootstrap consists of exactly the capture snapshot and acquisition-
+state current-value callbacks required when observation starts. Execution
+admits at most six semantic actions per opportunity; each action may
+synchronously cause at most one non-transition repository publication, while
+any source transition caused by Start remains in the 20-fact transition
+bucket. A first-party source, repository, or use-case adapter that can exceed a
+category bound is incompatible with the preset and its declared factory
+projection is rejected before activation; the host does not resize storage or
+spend the four-slot margin to legitimize an unbounded producer. A producer that
+violates its successfully validated projection after activation causes a
+runtime-scoped invariant with safety not proven.
+
+The first accepted compact fact after a seal starts one admission service
+window. The wake requester returns without synchronous runtime entry, and the
+host MUST begin the next `runOpportunity()` no later than 250,000 microseconds
+after that fact was accepted. The opportunity seals every fact accepted before
+its seal; a fact arriving after the seal begins a later window. The minimum
+frame interval may delay derivation until the same deadline but MUST NOT extend
+the fact-service deadline. Thus every conforming 28-fact boundary burst fits
+the 32-slot ring. Separate admission fixtures prove all 32 physical compact
+slots accept and physical fact 33 receives SPEC-009's explicit bounded
+rejection; producer fixtures prove a category excess is rejected as an
+incompatible host workload. The interval bounds semantic derivation and frame
+offers, not physical scan-out. The third retryable refusal exhausts the policy;
+no fourth offer is scheduled for that pending intent.
+`HostAssemblyReport.maximumCompactFactsPerServiceWindow` is exactly `28`; the
+separate `cardinality.compactFactCapacity` remains exactly `32`.
 
 Every first-party cardinality MUST contain exactly these values:
 
@@ -445,6 +672,31 @@ code is invalid. The root target is the one structurally owned
 `SignalAnalyzerActionHandler`; neither the record nor pointer capture retains
 the handler or model.
 
+Every first-party preset carries a `SignalAnalyzerHostWorkload` with
+`schemaVersion == 1`. Its `requiredRuntimeLimits` is the exact, complete
+`RuntimeProfileLimits` value derived before Swift compilation from one checked-
+in descriptor of the fixed portable hierarchy and application workload. The
+descriptor, generated manifest, and generated preset values are conformance
+inputs and MUST be reviewable. Validation requires
+`structuralConfiguration.runtimeLimits == workload.requiredRuntimeLimits`;
+there is no independently chosen headroom and no omitted or defaulted
+`RuntimeProfileLimits` leaf.
+
+The generator counts every semantic occurrence, layout scope, positioned
+glyph, ordinary render operation, input event, semantic action, completion
+fact, Canvas occurrence, live Path element, snapshotted Drawing element, and
+static callable/capture requirement using the owning approved Specification's
+counting rules. It then constructs every nested semantic, layout, render,
+render-sink, execution, observable-state, interaction, Drawing, and optional
+static-Canvas limit from those counts. Hierarchy- and application-derived
+counts MUST be value-equal across all four manifests. A limit may differ only
+when its owning counting rule consumes a preset's immutable extent, payload
+bound, or runtime profile; `staticCanvas` is non-`nil` only for static presets.
+The paired macOS manifests use the same extent, so every common-profile leaf is
+equal. A generated value at the required limit succeeds; the same fixture with
+any independently varied leaf below its requirement fails at `.workload` with
+`.insufficientWorkloadCapacity`.
+
 The contained runtime limits MUST additionally satisfy these production
 relations:
 
@@ -453,19 +705,22 @@ relations:
 - Interaction action and hit-region capacities each equal six;
 - Execution committed-action capacity is at least six and active input-source
   capacity equals one;
+- `workload.semanticActionsPerOpportunity` equals six;
+- `actionAndModel.maximumNonTransitionPublicationsPerAction` equals one;
 - Execution state-change-fact capacity is at least 34, covering the physically
   separate 1/32/1 fact stores in one sealed sequence namespace;
 - every fact store has concrete storage for its exact cardinality and no
   ordinary fact may consume the reserved failure slot; and
-- all other Execution, semantic, layout, render, Drawing, and static-Canvas
-  limit values are explicit non-placeholder numbers in the immutable preset
-  and the assembly report evidence.
+- every remaining Execution, semantic, layout, render, Drawing, and static-
+  Canvas limit equals the corresponding generated
+  `workload.requiredRuntimeLimits` value.
 
 Per-cycle input-event and semantic-action limits do not claim that a user can
-generate only six events. Submission at the configured finite bound succeeds;
-the first excess follows SPEC-009's exact capacity refusal and source-
-sequence cancellation behavior. Presets MUST test their exact values and may
-not increase them dynamically after startup.
+generate only six events. Their exact nonzero values are recorded in the
+manifest. Submission at the configured finite bound succeeds; the first excess
+follows SPEC-009's exact capacity refusal and source-sequence cancellation
+behavior. Presets MUST test each exact value and may not increase one
+dynamically after startup.
 
 Every first-party preset MUST provision at least five Canvas occurrences and
 five submitted strokes. The canonical capacity fixture uses one grid Canvas
@@ -490,7 +745,7 @@ into each preset fixture. It MUST be nonzero and identical across all four
 presets. `ordinaryRenderOperations + 5` MUST use checked arithmetic and fit
 the runtime render limit, drawing limit, render-sink limit, and endpoint's
 reported lower bound. A different value between profiles or hosts is
-`invalidDrawingWorkload`, not a target customization.
+`invalidWorkload`, not a target customization.
 
 Static presets require nonzero callable-case and capture-byte values and exact
 equality with the generated table metadata. Dynamic presets require both
@@ -518,15 +773,18 @@ in `HostValidationStage` raw-value order:
    acyclic import/dependency direction;
 2. require the preset's profile to equal the selected storage profile, consume
    one successful SPEC-013 audit, and compare every immutable limit;
-3. validate one exact compatible SPEC-005 resource package and retain it for
-   the host lifetime;
-4. validate the complete SPEC-012 B2 workload against producer, plan, runtime,
-   render, and sink structural capacities;
+3. consume one exact `TextResourceValidationResult` for the selected SPEC-005
+   package and realization, reject its precise local error, and retain the
+   successfully validated package for the host lifetime;
+4. validate the complete workload manifest and every
+   `requiredRuntimeLimits` leaf against producer, plan, runtime, render, sink,
+   observable, interaction, input, action, fact, and Drawing capacities;
 5. collect exactly four SPEC-004 contributions, resolve once, and require
    `rasterPresentation` with all five operation bits;
 6. require exact equality between the resolved effective presentation and the
-   SPEC-014 endpoint, surface descriptor, payload limits, display lifetime,
-   handoff, text raster realization, and health owner;
+   inert SPEC-014 endpoint-factory projection: surface descriptor, payload
+   limits, display lifetime, handoff, text raster realization, and health-owner
+   identity;
 7. validate the six-case action domain, one total handler, one root target,
    publishable target-generation join, and all fact/observable capacities;
 8. validate one normalized pointer integration, its target-local presentation
@@ -538,9 +796,14 @@ in `HostValidationStage` raw-value order:
 No client body, Canvas closure, model attachment, repository observation,
 source start, pointer callback, wake request, run opportunity, backend offer,
 policy hook, fatal hook, or diagnostic sink is invoked during validation.
+The validator may read every `MVPHostResidualPolicyTable` accessor; those are
+pure immutable configuration projections, not a
+`GiftUIResidualFailurePolicy.decide` invocation, and MUST have no side effect.
 Failure retains no partial host and no borrow. Success retains the immutable
 configuration, audit, resource package, snapshot, effective presentation, and
-report for the complete host lifetime.
+report for the complete host lifetime. No live runtime, endpoint, application,
+input, wake, policy, diagnostic, source, repository, handler, or model owner is
+constructed until all nine stages succeed.
 
 The Drawing structural gate and capability gate are conjunctive. Capability
 success cannot repair insufficient Canvas, Path, plan, ordinary-operation, or
@@ -550,7 +813,9 @@ MUST NOT be added to SPEC-004's capability vocabulary.
 
 ### Activation
 
-After validation, activation occurs in this order:
+After `.valid(report)`, the preset construction function creates one
+`MVPHostInstance` in `.valid`. Its first and only `activate()` call performs
+these steps in order:
 
 1. construct but do not start the runtime coordinator and endpoint;
 2. construct the application executor, source, repository, use cases,
@@ -564,16 +829,24 @@ After validation, activation occurs in this order:
 
 Failure at any step performs mandatory containment, stops observation if it
 was installed, prevents input eligibility, quiesces the runtime when it was
-constructed, and returns the original correlated outcome to total policy.
-Activation never substitutes a smaller UI or alternate target graph.
+constructed, enters `.failed`, and returns the original finite
+`ActivationFailure` payload to total policy. Success enters `.active` and
+returns `.active`. Calling `activate()` in any state other than `.valid` is a
+reentrancy invariant, performs no owner call, and returns that exact invariant
+in the preset's activation-failure sum. Activation never substitutes a smaller
+UI or alternate target graph.
 
 ### Opportunity and pacing
 
 An empty-to-nonempty SPEC-009 wake-reason transition requests one host wake.
 The wake integration records pending work and returns without entering the
 runtime. The host provides a serialized runtime opportunity at or after the
-next permitted 250-millisecond frame boundary. Facts remain ordered and are
-not coalesced; only wake requests and dirty intent may coalesce.
+next permitted 250-millisecond frame boundary and no later than the active
+admission service-window deadline. `runOpportunity()` is legal only in
+`.active`, where it wraps the coordinator result in `.cycle`. Every other-state
+call returns `.invalidLifecycle`, maps as a host reentrancy invariant, and
+invokes no runtime owner. Facts remain ordered and are not coalesced; only wake
+requests and dirty intent may coalesce.
 
 The host does not begin a runtime opportunity before the next permitted frame
 boundary. At that boundary the runtime seals and applies all selected admitted
@@ -631,15 +904,18 @@ host. It does not reactivate the old runtime.
 ## State / Lifecycle
 
 ```text
-unvalidated -> validating -> valid -> activating -> active -> quiescing
-       |            |          |          |             |          |
-       +----------> invalid    +--------> failed        +--------> quiescent
+validator: unvalidated -> validating -> invalid
+                              |
+                              +-> valid report -> instance: valid -> activating -> active -> quiescing
+                                                                  |             |          |
+                                                                  +-> failed    +----------> quiescent
 ```
 
-`invalid`, `failed`, and `quiescent` are terminal for that host instance.
-Validation and activation are non-reentrant. An active host has exactly one
-runtime, endpoint, resource package, capability snapshot, root model target,
-handler, application executor, wake integration, and policy table.
+`invalid` is terminal for the validator and exposes no host instance. `failed`
+and `quiescent` are terminal for an instance. Validation and activation are
+non-reentrant. An active host has exactly one runtime, endpoint, resource
+package, capability snapshot, root model target, handler, application executor,
+wake integration, and policy table.
 
 ## Capability Requirements
 
@@ -670,30 +946,48 @@ this contract and requires a separate explicit user request.
 
 ## Error Handling
 
-Every `HostConfigurationError` is preserved through owner mapping. Validation
-errors map to a SPEC-003 failure with `.hostComposition` origin, `.runtime`
-scope, and `.contained` containment, except `invariantViolation`, reentrancy,
-an impossible post-validation mismatch, or a policy-table defect, which use
-`.safetyNotProven`. Focused unavailable/error payloads retain their owning
-SPEC-003 mappings and are not collapsed to a generic host error.
+Every `HostConfigurationError` retains its associated local payload through
+owner mapping. Host-owned validation errors map to a SPEC-003 failure with
+`.hostComposition` origin and `.runtime` scope. Focused unavailable/error
+payloads retain their owning mappings and are not collapsed to a generic host
+error.
 
 Host-owned validation errors use this exact shared-condition mapping:
 
 | Host error | SPEC-003 condition | Containment |
 | --- | --- | --- |
 | `duplicateRole`, `missingRole`, `invalidGraph`, `profileMismatch` | `invalidValue` | `contained` |
-| `incompatibleTextResources`, `invalidDrawingWorkload`, `endpointMismatch` | `invalidValue` | `contained` |
+| `invalidWorkload` | `invalidValue` | `contained` |
 | `invalidActionDomain`, `invalidModelTarget`, `invalidInputIntegration`, `invalidWakeIntegration`, `invalidPacingPolicy` | `invalidValue` | `contained` |
-| `insufficientDrawingCapacity` | `capacityExhausted` | `contained` |
+| `insufficientWorkloadCapacity` | `capacityExhausted` | `contained` |
 | `arithmeticOverflow` | `arithmeticOverflow` | `contained` |
-| `incompleteFailurePolicy`, `invariantViolation`, repeated validation | `invariantViolation` | `safetyNotProven` |
+| `invalidEndpointDescriptor`, `incompleteFailurePolicy`, `invariantViolation`, repeated validation | `invariantViolation` | `safetyNotProven` |
 
 `invalidRuntimeProfile` preserves SPEC-013's exact mapping.
 `capabilityUnavailable` preserves SPEC-004's producer-specific mapping with
-`.capability` origin. A focused text, endpoint, observable, interaction,
-drawing, input, or backend error preserves its approved owner mapping. Host
-mapping never changes an owner-selected condition merely because validation
-observed it.
+`.capability` origin. `invalidEndpointDescriptor` is the pure descriptor form
+of SPEC-014's effective-value/component construction mismatch and therefore
+uses its exact `.invariantViolation`, `.hostComposition`, `.runtime`,
+`.safetyNotProven` mapping even though validation detects it before a live
+endpoint is constructed. A mismatch returned by an already constructed
+endpoint is the same SPEC-014 invariant, never a host `invalidValue`.
+
+`invalidTextResources(error)` uses SPEC-005's exact target-host adapter mapping:
+
+| `TextResourceValidationError` | SPEC-003 condition | Origin | Scope | Containment |
+| --- | --- | --- | --- | --- |
+| `unsupportedSchema`, `invalidCount`, `malformedMetrics`, `malformedMapping`, `malformedRasterRecord` | `invalidValue` | `hostComposition` | `runtime` | `contained` |
+| `invalidIdentity`, `incompatibleViews`, `integrityMismatch` | `invalidIdentity` | `hostComposition` | `runtime` | `contained` |
+| `capacityExceeded` | `capacityExhausted` | `hostComposition` | `runtime` | `contained` |
+
+A focused observable, interaction, Drawing, input, or backend error preserves
+its approved owner mapping. Host mapping never changes an owner-selected
+condition merely because validation observed it.
+
+`HostOpportunityResult.invalidLifecycle` and repeated `activate()` map to
+`.reentrancyViolation`, `.hostComposition`, `.runtime`, and
+`.safetyNotProven`. They invoke no assembled owner before mechanical
+quiescence and the `safetyNotProven` policy route.
 
 The detecting owner performs mechanical containment, the runtime coordinator
 applies mandatory cycle/frame effects, and only then may the host invoke a
@@ -701,6 +995,39 @@ total residual policy with a valid allowed set. Policy cannot repair startup,
 weaken containment, reinterpret failure as success, retry without the fixed
 bound, or mutate capability. A result outside `allowed` or incomplete policy
 table is an invariant failure; the host quiesces before an optional fatal hook.
+
+The validator itself never invokes policy. Each first-party policy table is a
+generated, exhaustively switched value whose construction proves all nine
+contexts before it is supplied to the validator. After `validate()` returns
+any ordinary failure other than a policy-table defect, the outer bootstrap
+adapter discards all validation projections, constructs the correlated
+SPEC-003 outcome, and invokes the already complete table exactly once with
+`startupValidation`. A policy-table defect or out-of-allowed result is not
+routed through that defective table: the adapter records `.safetyNotProven`,
+mechanically quiesces, and invokes the separately configured fatal hook only
+when its availability was proven independently.
+
+Host routing is exhaustive at the composition boundary:
+
+| Observed outcome | Host context or no call | Additional precondition |
+| --- | --- | --- |
+| successful validation, activation, opportunity, offer, or teardown | no policy call | success remains success |
+| ordinary validation failure other than a policy-table defect | `startupValidation` | validator has returned and projections are discarded |
+| policy-stage defect or invalid policy result | no call through the defective table | mechanical safety quiescence precedes an optional proven fatal hook |
+| activation failure | `activation` | activation containment has completed |
+| endpoint backpressure | `presentationBackpressure` | latest intent remains pending and refusal count is unchanged |
+| retryable refusal with retained count below three | `presentationRetryableRefusal` | latest intent remains pending |
+| third retryable refusal, non-retryable refusal, or required presentation loss | `presentationUnavailable` | pending intent is cleared and presentation-coupled input is quiesced |
+| candidate failure for which its owning approved contract permits a choice and a prior complete root exists | `containedCandidateFailure` | complete candidate is discarded and prior root is preserved |
+| stale observable attachment or stale registration for which its owning contract permits a choice | `staleInputOrRegistration` | stale work is rejected without addressing reused identity |
+| post-acceptance backend/display fault | `backendOperationalFailure` | one-shot drain and health update have completed |
+| runtime-scoped reentrancy, invariant, or other safety-not-proven failure | `safetyNotProven` | partial work is discarded and no later normal cycle is admitted |
+| target-local stale/unknown input gate drop, ordinary pointer cancellation, SPEC-010 contained phase violation, or any focused contract row that says no residual policy call | no policy call | the owning mandatory cancellation or dirty-rederivation effect is final |
+
+An owning approved contract's explicit no-policy row takes precedence over a
+host context that could otherwise appear similar. No outcome may route to more
+than one row, and a downstream application context may not replace one of
+these host-owned routes.
 
 The concrete `MVPHostResidualPolicy` is total over the following table. The
 host constructs inputs only after the listed mandatory effects and with the
@@ -778,28 +1105,48 @@ only below `.build/spec-015/`.
 
 Required tests include:
 
-- every validation stage success and each missing, duplicate, malformed,
-  mismatched, overflowing, and insufficient input at exact bound and one over;
+- every validation stage success and each missing, duplicate, out-of-order,
+  truncated, cyclic, upward, unknown-bit, malformed, mismatched, overflowing,
+  and insufficient input, including a proof that no later projection is read;
+- generation of all four schema-1 workload manifests from the checked-in
+  hierarchy descriptor, exact equality for every `RuntimeProfileLimits` leaf,
+  success at each requirement, and failure when each leaf is independently
+  lowered or made unequal; a leaf whose lower value is not constructible must
+  instead prove that its owning initializer rejects that value;
 - all permutations of capability contribution order and exact effective-value
   equality with the selected endpoint;
 - independent failure of the Drawing and capability gates;
-- exact text-resource identity and lifetime mismatch;
+- every `TextResourceValidationError` with its exact three-way SPEC-005
+  condition mapping, plus resource-identity and lifetime mismatch;
+- inert endpoint-descriptor mismatch and already-constructed endpoint mismatch,
+  both with SPEC-014's exact safety-not-proven mapping and no live-owner call
+  during validation;
 - dynamic/static graph, limit, action, fact, and transcript equivalence;
 - six total action decodes, invalid codes, model replacement, stale target
   generations, pointer cancellation, and reentrant application callbacks;
 - same-thread and distinct-executor application/mutation-domain fixtures;
-- wake coalescing, 250-millisecond pacing, backpressure, refusal counts one
-  through three, supersession, terminal unavailability, and no replay;
-- complete residual-policy input/output matrices with diagnostic omission and
-  fault injection;
-- activation failure at every step and idempotent teardown from every state;
+- wake coalescing, 250-millisecond minimum frame pacing, service-window
+  deadlines just before, at, and just after 250 milliseconds, accepted 28-fact
+  production bursts, independent acceptance of all 32 physical compact slots,
+  explicit rejection of physical fact 33 and of each producer-category excess,
+  backpressure, refusal counts one through three, supersession, terminal
+  unavailability, and no replay;
+- every residual-policy routing row, every explicit no-policy row,
+  startup-policy timing after validator return, all allowed/selected pairs,
+  diagnostic omission, and fault injection;
+- construction-function failure without an instance, activation failure at
+  every step, illegal-state API calls, and idempotent teardown from every
+  instance state;
 - exact Pi 240 x 240 and nRF52840 480 x 320 capability/backend joins;
 - forbidden-import and portable-source scans; and
 - zero-allocation/static-runtime and resource-accounting evidence.
 
-Hardware-free fixtures are required for approval. Connected PiScreen and
-nRF52840 TFT display/input checks are later conformance evidence and must name
-the hardware, software, transport, and observed architecture separately.
+Human approval requires this complete fixture contract, not pre-approval
+implementation. The runner, fixture implementations, and passing evidence are
+required before the feature may transition to `implemented`, and implementation
+work starts only after Spec approval. Connected PiScreen and nRF52840 TFT
+display/input checks are later conformance evidence and must name the hardware,
+software, transport, and observed architecture separately.
 
 ## Acceptance Criteria
 
@@ -807,12 +1154,15 @@ the hardware, software, transport, and observed architecture separately.
   artifact link SPEC-015 without granting approval to SPEC-001.
 - [ ] **HC-002:** Pure validation processes the nine stages in fixed order,
   stops at the first failure, invokes no runtime/client/external behavior, and
-  retains no partial assembly.
+  retains no partial assembly; the preset construction function exposes an
+  instance only after a valid report.
 - [ ] **HC-003:** Graph fixtures prove exactly one owner per role, an acyclic
   dependency graph, `GiftUI` as the sole portable import, and no platform-owned
   semantic stack or ambient lookup.
-- [ ] **HC-004:** Each preset consumes one exact successful SPEC-013 audit and
-  rejects profile, limit, storage, static Canvas table, or byte-total mismatch.
+- [ ] **HC-004:** Each preset consumes one exact successful SPEC-013 audit,
+  requires equality with its complete schema-1 workload-derived limits, and
+  rejects every independently mismatched profile, limit leaf, storage, static
+  Canvas table, or byte total.
 - [ ] **HC-005:** The five-Canvas workload proves the 202 live-point, 12 live-
   subpath, five-stroke, 832 plan-point, and 16 plan-subpath minima; generated
   ordinary operation counts are equal across all hosts and fit every producer,
@@ -824,21 +1174,26 @@ the hardware, software, transport, and observed architecture separately.
   all five operation bits, immutable required absence behavior, one resolver
   call, and an endpoint exactly equal to the effective value.
 - [ ] **HC-008:** One exact compatible text package, metrics view, raster view,
-  and realization remain immutable and borrowed only within approved lifetime.
+  and realization remain immutable and borrowed only within approved lifetime;
+  all nine validation errors preserve SPEC-005's exact mapping.
 - [ ] **HC-009:** All presets configure six action cases, one handler, one root
   location/registration/staging record, fact capacities 1/32/1, and one input
   source; every invalid code, stale generation, and replacement race fails
-  closed without retaining a model or handler.
+  closed, and no action record or pointer capture retains the host-owned model
+  or immutable handler.
 - [ ] **HC-010:** Same-thread and distinct-executor fixtures preserve bounded
   fact admission, later mutation, no reentrant model mutation, ordered
   application, and equivalent transcripts.
-- [ ] **HC-011:** Wake requests never enter the runtime synchronously; pacing is
-  250,000 microseconds, retryable-refusal attempts terminate on count three,
-  backpressure does not increment the count, and no semantic or payload replay
-  occurs.
+- [ ] **HC-011:** Wake requests never enter the runtime synchronously; the frame
+  interval and maximum fact-service latency are both 250,000 microseconds; the
+  exact 20/2/6 production burst fits 32 slots with four-slot margin, all 32
+  physical slots accept, and physical fact 33 and each category excess are
+  rejected; retryable-refusal attempts terminate on count three, backpressure
+  does not increment the count, and no semantic or payload replay occurs.
 - [ ] **HC-012:** The total policy matrix runs only after mandatory effects,
-  selects only allowed dispositions, quiesces on invariant policy behavior,
-  and is unchanged by every diagnostic configuration and fault.
+  routes each host outcome exactly once, performs every owning no-policy row,
+  selects only allowed dispositions, quiesces without consulting a defective
+  table, and is unchanged by every diagnostic configuration and fault.
 - [ ] **HC-013:** macOS dynamic/static fixtures share extent and effective
   semantics; Pi resolves 240 x 240 with a 240 x 16 RGB565 region; nRF52840
   resolves 480 x 320 with a 480 x 4 region, 960-byte rows, and 3,840-byte
@@ -855,6 +1210,9 @@ the hardware, software, transport, and observed architecture separately.
 - [ ] **HC-017:** Connected-target requirements remain separately labeled
   downstream conformance evidence and no simulator/build result is presented
   as Raspberry Pi or nRF52840 hardware validation.
+- [ ] **HC-018:** `MVPHostInstance` activation, opportunity, and teardown calls
+  follow the finite lifecycle, reject illegal-state entry without owner calls,
+  preserve exact local failure payloads, and expose the validated report.
 
 ## Implementation Notes
 
@@ -864,17 +1222,19 @@ and Canvas tables, provided generated Swift and its input descriptor are
 checked and inspectable. Dynamic presets can instantiate the same logical
 records with bounded retained owners.
 
-The exact ordinary render-operation count should be emitted by a deterministic
-fixture from the fixed hierarchy and checked into the four preset expectations;
-it is not discovered by executing a client body during host validation.
+The exact ordinary render-operation count is emitted by the deterministic
+manifest generator from the fixed hierarchy and checked into the four preset
+expectations; it is not discovered by executing a client body during host
+validation.
 
 ## Open Issues
 
 No architectural issue blocks review of this host-configuration contract.
 SPEC-001 still has application-contract blockers recorded in its own Open
-Issues section. After SPEC-015 approval, SPEC-001 must reconcile its fact-burst
-rationale, failure normalization, deterministic mock trace, and exact host
-fixtures without weakening this contract.
+Issues section. Its fact-burst rationale is now aligned with this review-stage
+contract; after SPEC-015 approval, SPEC-001 must preserve that alignment and
+resolve its remaining failure normalization, deterministic mock trace,
+diagnostic, and exact host-fixture blockers without weakening this contract.
 
 ## Deferred and Follow-up Work
 
@@ -904,6 +1264,9 @@ and are not newly related to this Specification:
 - [SPEC-012](spec-012-canvas-path-stroke-drawing.md)
 - [SPEC-013](spec-013-runtime-profiles.md)
 - [SPEC-014](spec-014-backend-integration.md)
+- [ADR-001](../adrs/adr-001-signal-analyzer-application-boundaries.md)
+- [ADR-003](../adrs/adr-003-transition-based-bounded-capture.md)
+- [ADR-004](../adrs/adr-004-portable-fixed-signal-analyzer-presentation.md)
 - [ADR-006](../adrs/adr-006-shared-semantics-runtime-profiles.md)
 - [ADR-007](../adrs/adr-007-integration-ownership-and-host-composition.md)
 - [ADR-008](../adrs/adr-008-module-dependency-graph-and-package-topology.md)
