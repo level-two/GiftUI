@@ -121,10 +121,10 @@ SPI, DMA, GPIO, touch, transport, or HAL implementation.
 ## Dependencies
 
 The governing Proposals are accepted, RFCs approved, and ADRs accepted.
-SPEC-002 through SPEC-005 and SPEC-008 through SPEC-009 are approved.
-SPEC-012 is a coordinated drawing draft. This Specification may be drafted
-against its stable declarations but MUST NOT advance to `approved` until
-SPEC-012 is approved and reconciliation is recorded.
+SPEC-002 through SPEC-005, SPEC-008 through SPEC-009, and SPEC-012 are
+approved. This Specification was drafted against SPEC-012 before its approval
+and MUST be reconciled to the approved drawing contract before this draft
+advances.
 
 SPEC-004 owns capability vocabulary and resolution. SPEC-005 owns exact text
 resource identity and compatible raster-resource views. SPEC-008 and SPEC-012
@@ -759,8 +759,8 @@ compare final encoded surfaces.
 
 ## Open Issues
 
-- SPEC-012 remains `draft`; approval is blocked until its normalized stroke
-  contract is approved and this draft is reconciled.
+- SPEC-012 is approved; reconciliation of this draft to its approved normalized
+  stroke contract remains required before review.
 - Production surface, tile, payload, and in-flight values are Wave 7
   HOST-CONFIGURATION inputs and are intentionally not selected here.
 

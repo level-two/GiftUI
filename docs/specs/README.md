@@ -29,8 +29,9 @@ its required acceptance criteria.
 - [SPEC-011](spec-011-interaction.md) — Button Interaction and Activation
   Contract (`approved`)
 - [SPEC-012](spec-012-canvas-path-stroke-drawing.md) — Canvas, Path, and Stroke
-  Drawing Contract (`review`)
+  Drawing Contract (`approved`)
 - [SPEC-013](spec-013-runtime-profiles.md) — Dynamic and Static Runtime Profile
-  Contract (`draft`, approval blocked on SPEC-012)
+  Contract (`draft`, reconciliation with approved SPEC-012 required)
 - [SPEC-014](spec-014-backend-integration.md) — Raster Backend and Display
-  Integration Contract (`draft`, approval blocked on SPEC-012)
+  Integration Contract (`draft`, reconciliation with approved SPEC-012
+  required)

@@ -34,8 +34,7 @@ and FW-009 MUST NOT become a required MVP Specification dependency.
 
 The `canvas-drawing` feature completed its decision stage with approved RFC-009
 and accepted ADR-028 through ADR-031. Wave 5 artifacts SPEC-010 through
-SPEC-012 now exist; SPEC-010 and SPEC-011 are approved, while SPEC-012 is in
-review and remains non-authoritative until explicit approval.
+SPEC-012 now exist and are approved implementation contracts.
 
 ## Boundary Rules
 
@@ -117,11 +116,10 @@ through approval:
 | --- | --- | --- |
 | `OBSERVABLE` | `SPEC-010` | `approved` |
 | `INTERACTION` | `SPEC-011` | `approved` |
-| `DRAWING` | `SPEC-012` | `review` |
+| `DRAWING` | `SPEC-012` | `approved` |
 
-The three artifacts have independent approval gates. SPEC-010 and SPEC-011
-are implementation contracts; SPEC-012 is not authoritative until its own
-approval gate closes.
+The three artifacts passed their independent approval gates and are
+authoritative implementation contracts.
 
 Wave 6 has produced these immutable draft artifacts:
 
@@ -130,9 +128,9 @@ Wave 6 has produced these immutable draft artifacts:
 | `RUNTIME-PROFILES` | `SPEC-013` | `draft` |
 | `BACKEND-INTEGRATION` | `SPEC-014` | `draft` |
 
-Both artifacts may be drafted against SPEC-012's stable coordinated draft,
-but neither may be approved before SPEC-012 is approved and reconciliation is
-recorded. They have independent review and approval gates.
+Both artifacts were drafted against SPEC-012's coordinated draft. SPEC-012 is
+now approved; each Wave 6 draft must be reconciled to that approved contract
+before its own review and approval gates can close.
 
 Candidate keys are planning labels, not reserved Specification IDs.
 
@@ -255,10 +253,9 @@ integration, and host configuration exist.
    distinct prerequisites are stable. `DRAWING` must use approved RFC-009 and
    accepted ADR-028 through ADR-031 without allocating an implementation plan
    before its Specification is approved.
-6. Review `RUNTIME-PROFILES` (SPEC-013) and `BACKEND-INTEGRATION` (SPEC-014),
-   drafted after `DRAWING` supplied stable plan, operation, capacity, and
-   lifetime contracts; do not approve either until SPEC-012 is approved and
-   reconciliation is recorded.
+6. Reconcile and review `RUNTIME-PROFILES` (SPEC-013) and
+   `BACKEND-INTEGRATION` (SPEC-014) against approved SPEC-012's plan,
+   operation, capacity, and lifetime contracts before advancing either draft.
 7. Draft `HOST-CONFIGURATION`, including the independent conjunctive Canvas
    structural-capacity and `rasterPresentation` capability startup gates.
 8. Reconcile SPEC-001 against the approved reusable contracts, then request

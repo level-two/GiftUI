@@ -2,7 +2,7 @@
 id: SPEC-012
 feature: canvas-drawing
 title: Canvas, Path, and Stroke Drawing Contract
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-26
@@ -40,12 +40,13 @@ target_milestone: MVP
 
 # SPEC-012: Canvas, Path, and Stroke Drawing Contract
 
-> **Draft status:** This revision corrects the source-composition and Embedded
+> **Approved contract:** This revision corrects the source-composition and
+> Embedded
 > error-model failures found by SPIKE-008 and completes the semantic, layout,
 > render, execution, capacity, raster, and static-lowering contracts identified
 > during completeness review. SPIKE-008 now records corrected macOS and
-> hardware-free nRF52840 declaration evidence. This Specification is ready for
-> human review and remains non-authoritative until explicit maintainer approval.
+> hardware-free nRF52840 declaration evidence. It is the authoritative drawing
+> implementation contract for the MVP profiles and backends.
 
 ## Summary
 

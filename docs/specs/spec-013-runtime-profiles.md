@@ -121,11 +121,10 @@ static nRF52840 configurations. Connected-target assembly is downstream.
 ## Dependencies
 
 The governing Proposals are accepted, the related RFCs are approved, and all
-listed ADRs are accepted. SPEC-002, SPEC-003, and SPEC-006 through SPEC-011 are
-approved. SPEC-012 is a complete draft whose declarations are used only as a
-coordinated drafting prerequisite. This Specification MUST NOT advance to
-`approved` until SPEC-012 is approved and this draft is reconciled to its
-approved text.
+listed ADRs are accepted. SPEC-002, SPEC-003, and SPEC-006 through SPEC-012 are
+approved. This Specification was drafted against SPEC-012 before its approval
+and MUST be reconciled to the approved drawing contract before this draft
+advances.
 
 The runtime receives a validated exact text-resource package from SPEC-005, a
 resolved capability snapshot from SPEC-004, and a synchronous frame endpoint
@@ -567,8 +566,8 @@ assertions.
 
 ## Open Issues
 
-- SPEC-012 remains `draft`; this Specification cannot pass its approval gate
-  until the drawing contract is approved and reconciliation is recorded.
+- SPEC-012 is approved; reconciliation of this draft to the approved drawing
+  contract remains required before review.
 - Production `RuntimeProfileLimits`, audit totals, and retry policy are owned
   by Wave 7 HOST-CONFIGURATION and are intentionally absent here.
 
