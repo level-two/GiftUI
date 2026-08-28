@@ -29,6 +29,7 @@ related_specs:
   - SPEC-010
   - SPEC-011
   - SPEC-012
+  - SPEC-013
 related_future_work:
   - FW-017
   - FW-020

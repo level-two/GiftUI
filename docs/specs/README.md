@@ -30,3 +30,7 @@ its required acceptance criteria.
   Contract (`approved`)
 - [SPEC-012](spec-012-canvas-path-stroke-drawing.md) — Canvas, Path, and Stroke
   Drawing Contract (`draft`)
+- [SPEC-013](spec-013-runtime-profiles.md) — Dynamic and Static Runtime Profile
+  Contract (`draft`, approval blocked on SPEC-012)
+- [SPEC-014](spec-014-backend-integration.md) — Raster Backend and Display
+  Integration Contract (`draft`, approval blocked on SPEC-012)

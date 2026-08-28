@@ -6,7 +6,7 @@ status: review
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-08-27
+updated: 2026-08-28
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -36,6 +36,8 @@ related_specs:
   - SPEC-010
   - SPEC-011
   - SPEC-012
+  - SPEC-013
+  - SPEC-014
 related_future_work: []
 related_explorations: []
 related_spikes: []

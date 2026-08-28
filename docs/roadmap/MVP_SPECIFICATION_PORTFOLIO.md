@@ -123,6 +123,17 @@ The three artifacts have independent approval gates. SPEC-010 and SPEC-011
 are implementation contracts; SPEC-012 is not authoritative until its own
 approval gate closes.
 
+Wave 6 has produced these immutable draft artifacts:
+
+| Candidate key | Allocated Specification | Lifecycle status |
+| --- | --- | --- |
+| `RUNTIME-PROFILES` | `SPEC-013` | `draft` |
+| `BACKEND-INTEGRATION` | `SPEC-014` | `draft` |
+
+Both artifacts may be drafted against SPEC-012's stable coordinated draft,
+but neither may be approved before SPEC-012 is approved and reconciliation is
+recorded. They have independent review and approval gates.
+
 Candidate keys are planning labels, not reserved Specification IDs.
 
 | Key                   | Candidate contract                                                                                                                                                                                   | Governing decisions                                                                           | Draft prerequisites                                                   | Independent acceptance seam                                                                                                                                                                                                  |
@@ -244,8 +255,10 @@ integration, and host configuration exist.
    distinct prerequisites are stable. `DRAWING` must use approved RFC-009 and
    accepted ADR-028 through ADR-031 without allocating an implementation plan
    before its Specification is approved.
-6. Draft `RUNTIME-PROFILES` and `BACKEND-INTEGRATION` once `DRAWING` supplies
-   stable plan, operation, capacity, and lifetime contracts.
+6. Review `RUNTIME-PROFILES` (SPEC-013) and `BACKEND-INTEGRATION` (SPEC-014),
+   drafted after `DRAWING` supplied stable plan, operation, capacity, and
+   lifetime contracts; do not approve either until SPEC-012 is approved and
+   reconciliation is recorded.
 7. Draft `HOST-CONFIGURATION`, including the independent conjunctive Canvas
    structural-capacity and `rasterPresentation` capability startup gates.
 8. Reconcile SPEC-001 against the approved reusable contracts, then request

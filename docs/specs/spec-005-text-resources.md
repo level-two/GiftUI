@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-08-25
+updated: 2026-08-27
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -28,6 +28,7 @@ related_specs:
   - SPEC-003
   - SPEC-007
   - SPEC-008
+  - SPEC-014
 related_future_work:
   - FW-001
   - FW-002

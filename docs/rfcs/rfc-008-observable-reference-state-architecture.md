@@ -33,6 +33,7 @@ related_adrs:
 related_specs:
   - SPEC-001
   - SPEC-010
+  - SPEC-013
 related_future_work:
   - FW-017
   - FW-019

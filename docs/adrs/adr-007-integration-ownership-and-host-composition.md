@@ -19,6 +19,7 @@ related_adrs:
   - ADR-019
 related_specs:
   - SPEC-002
+  - SPEC-014
 related_future_work:
   - FW-009
 related_explorations: []

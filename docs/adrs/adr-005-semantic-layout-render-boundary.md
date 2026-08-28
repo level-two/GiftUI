@@ -29,6 +29,8 @@ related_specs:
   - SPEC-007
   - SPEC-008
   - SPEC-011
+  - SPEC-013
+  - SPEC-014
 related_future_work:
   - FW-004
 related_explorations: []
