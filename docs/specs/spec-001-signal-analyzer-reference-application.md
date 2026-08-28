@@ -2,7 +2,7 @@
 id: SPEC-001
 feature: signal-analyzer
 title: Signal Analyzer Reference Application Contract
-status: review
+status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
@@ -56,11 +56,10 @@ target_milestone: MVP
 
 # SPEC-001: Signal Analyzer Reference Application Contract
 
-> **Review status:** Reconciled against approved SPEC-002 through SPEC-015,
-> including the SPEC-015 host-configuration contract. The application-level
-> contract blockers from the preceding review have been resolved below. This
-> Specification remains non-authoritative until a human maintainer explicitly
-> approves it.
+> **Approval status:** Explicitly approved by the maintainer after
+> reconciliation against approved SPEC-002 through SPEC-015, including the
+> SPEC-015 host-configuration contract. This Specification is authoritative
+> for implementation planning and implementation.
 
 ## Summary
 
@@ -1964,9 +1963,7 @@ view invalidations without batching or dropping capture events.
 ## Open Issues
 
 No unresolved architecture choice or application-contract blocker is known.
-Human review may still identify corrections, and explicit maintainer approval
-remains required before this Specification becomes authoritative or major
-implementation planning begins.
+Later contract changes require renewed review and explicit maintainer approval.
 
 ## Deferred and Follow-up Work
 

@@ -17,9 +17,9 @@ its required acceptance criteria.
 
 ## Current portfolio
 
-- SPEC-001 — Signal Analyzer Reference Application Contract (`review`, blocked
-  by unresolved application-contract details)
-- SPEC-002 through SPEC-015 — approved contracts
+- SPEC-001 through SPEC-015 — approved contracts
+- [SPEC-001](spec-001-signal-analyzer-reference-application.md) — Signal
+  Analyzer Reference Application Contract (`approved`)
 - [SPEC-015](spec-015-host-configuration.md) — MVP Target-Host
   Configuration Contract (`approved`)
 - [SPEC-006](spec-006-declarative-view-semantics.md) — Declarative View

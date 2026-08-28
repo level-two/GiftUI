@@ -523,11 +523,10 @@ The two profiles may differ beneath the common semantics:
 
 Profile equivalence does not require equal internal capacities or byte layout.
 Every supported target must declare and validate enough capacity for the
-approved downstream Signal Analyzer workload. Until SPEC-001 is approved, its
-current 816-segment logical case and SPIKE-004's conservative 820-segment
-fixture remain feasibility evidence rather than a normative production bound.
-Shared boundary fixtures must fail in the same semantic category when
-configured to the same artificial limits.
+approved downstream Signal Analyzer workload. Approved SPEC-001 fixes the
+816-segment logical case, while SPIKE-004's conservative 820-segment fixture
+remains independent feasibility evidence. Shared boundary fixtures must fail
+in the same semantic category when configured to the same artificial limits.
 
 ## Module Responsibilities
 
@@ -657,8 +656,8 @@ transitions. The canonical producer should require constant work per point,
 subpath boundary, and stroke record, excluding backend raster coverage
 proportional to affected pixels or tiles.
 
-The current Signal Analyzer review workload is small in stroke count but not
-in segment count. Under SPEC-001's current candidate drawing behavior and the
+The approved Signal Analyzer workload is small in stroke count but not in
+segment count. Under SPEC-001's approved drawing behavior and the
 accepted 80-transition-per-second/five-second bound, the representative maximum
 is:
 

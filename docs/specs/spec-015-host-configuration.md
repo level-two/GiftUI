@@ -65,9 +65,8 @@ target_milestone: MVP
 
 > **Approval status:** This is the approved Wave 7 `HOST-CONFIGURATION`
 > contract from the MVP Specification Portfolio. Its reusable prerequisites
-> are approved. SPEC-001 remains in review and is related application context,
-> not authority for this Specification. SPEC-001 must be reconciled against
-> this contract before the application Specification can be approved.
+> are approved. SPEC-001 was subsequently reconciled against this contract and
+> explicitly approved; neither Specification redefines the other's ownership.
 
 ## Summary
 
@@ -143,12 +142,12 @@ failure, resource, execution, observable, and interaction values joined here.
 All ADRs listed in metadata are accepted. ADR-002 and ADR-013 are superseded
 and are not authority.
 
-SPEC-001 is a review-stage downstream integration contract. Its current fixed
+SPEC-001 is the approved downstream application integration contract. Its fixed
 four-channel workload, six-action domain, 250-millisecond cadence, fact-storage
-shape, 240 x 240 Pi fixture, and 480 x 320 nRF52840 fixture are useful review
-inputs. This Specification does not approve SPEC-001 or depend on any of its
-unresolved contract details. SPEC-015 approval authorizes only the reusable
-host-assembly contract and the four configuration obligations defined here.
+shape, 240 x 240 Pi fixture, and 480 x 320 nRF52840 fixture are authoritative
+application inputs. SPEC-015 approval authorizes only the reusable host-
+assembly contract and the four configuration obligations defined here;
+SPEC-001 approval authorizes the application contract that consumes them.
 
 ## Related ADRs
 
@@ -1230,11 +1229,8 @@ validation.
 ## Open Issues
 
 No architectural issue blocks this approved host-configuration contract.
-SPEC-001 still has application-contract blockers recorded in its own Open
-Issues section. Its fact-burst rationale is now aligned with this approved
-contract; SPEC-001 must preserve that alignment and resolve its remaining
-failure normalization, deterministic mock trace, diagnostic, and exact
-host-fixture blockers without weakening this contract.
+Approved SPEC-001 preserves this contract's fact-burst, failure normalization,
+deterministic mock trace, diagnostic, and exact host-fixture alignment.
 
 ## Deferred and Follow-up Work
 
@@ -1254,7 +1250,7 @@ and are not newly related to this Specification:
 - [Feature Lifecycle](../engineering/FEATURE_LIFECYCLE.md)
 - [Documentation Rules](../engineering/DOCUMENTATION_RULES.md)
 - [AI Agent Rules](../engineering/AI_AGENT_RULES.md)
-- [SPEC-001](spec-001-signal-analyzer-reference-application.md) (review-stage context)
+- [SPEC-001](spec-001-signal-analyzer-reference-application.md) (approved downstream application contract)
 - [SPEC-003](spec-003-failure-outcomes-and-containment.md)
 - [SPEC-004](spec-004-capability-contribution-and-resolution.md)
 - [SPEC-005](spec-005-text-resources.md)

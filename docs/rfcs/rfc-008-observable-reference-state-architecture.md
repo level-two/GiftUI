@@ -55,7 +55,8 @@ transition proposed by this RFC: it superseded ADR-002, preserved synchronous
 source, repository, use-case, and sink work through a target-composed
 Presentation admission adapter, and made bounded fact admission the current
 boundary for later observable ViewModel mutation. SPEC-001 has returned to
-review and is non-authoritative until revised and approved again.
+review, was reconciled against the approved reusable contracts, and was
+subsequently explicitly approved.
 
 Pre-acceptance statements below that describe ADR-027 as proposed, ADR-002 as
 current authority, or SPEC-001 as implementing authority preserve the RFC's
@@ -142,8 +143,8 @@ synchronous application rules, and replace its Presentation-mutation rule;
 SPEC-001 must then return to review before implementation may rely on this
 boundary.
 
-Those transitions occurred on 2026-08-22. ADR-027 is now authoritative and
-SPEC-001 is in review.
+Those architecture transitions occurred on 2026-08-22. ADR-027 is now
+authoritative, and reconciled SPEC-001 is approved.
 
 Accepted architecture already fixes the surrounding ownership:
 
@@ -1111,8 +1112,8 @@ application delivery completes when the target-composed adapter returns its
 admission outcome, while observable state changes when the admitted fact is
 later applied in the GiftUI domain. RFC approval alone does not change current
 authority. Accepted ADR-027 now supplies the superseding decision; a revised
-and reapproved SPEC-001 remains required before implementation or conformance
-claims use the new boundary.
+and reapproved SPEC-001 was required before implementation or conformance
+claims could use the new boundary. That gate is now satisfied.
 
 Dynamic property-level suppression or observation ordering that is not
 visible through complete GiftUI revisions is not portable behavior. Static and
@@ -1290,8 +1291,9 @@ The distinct-domain choice created a lifecycle prerequisite rather than an
 open design question. ADR-027 has superseded ADR-002, preserved its unaffected
 synchronous application rules, and replaced its Presentation-mutation rule
 with delivery through the admission adapter. SPEC-001 has returned to review
-and must be revised and explicitly approved before implementation relies on
-the new boundary.
+and was subsequently revised and explicitly approved; implementation may rely
+on its application contract together with ADR-027 and the reusable approved
+Specifications.
 
 ## Specification Inputs
 

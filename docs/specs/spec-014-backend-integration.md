@@ -149,9 +149,9 @@ SPEC-012's approved one-operation-
 per-stroke, borrowed `StraightLineStrokeView`, checked surface-coordinate,
 inherited-clip, canonical coverage, encoding, capacity, and failure contract.
 
-SPEC-001 remains in `review`; approved SPEC-013 is a related coordination
-input, not authority for this contract. Production Signal
-Analyzer capacities and host assembly remain downstream gates.
+SPEC-001 and SPEC-013 are approved downstream coordination contracts. Their
+production Signal Analyzer capacities and host assembly do not redefine this
+backend contract.
 
 SPEC-004 owns capability vocabulary and resolution. SPEC-005 owns exact text
 resource identity and compatible raster-resource views. SPEC-008 and SPEC-012
@@ -1201,8 +1201,8 @@ No new deferred artifact was needed and current MVP scope is unchanged.
 - [ADR-023](../adrs/adr-023-exact-font-resource-identity.md)
 - [ADR-030](../adrs/adr-030-canonical-normalized-straight-line-stroke-operation.md)
 - [ADR-031](../adrs/adr-031-bounded-canvas-failure-and-startup-gate-integration.md)
-- [SPEC-001](spec-001-signal-analyzer-reference-application.md) (`review`;
-  coordination only)
+- [SPEC-001](spec-001-signal-analyzer-reference-application.md) (`approved`;
+  downstream coordination)
 - [SPEC-002](spec-002-portable-foundation.md)
 - [SPEC-003](spec-003-failure-outcomes-and-containment.md)
 - [SPEC-004](spec-004-capability-contribution-and-resolution.md)

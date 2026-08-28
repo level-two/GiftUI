@@ -591,8 +591,9 @@ must be approved in downstream Specifications before implementation.
 
 Post-approval status: the observable-reference-state lifecycle produced
 accepted ADR-024 through ADR-027. ADR-027 superseded ADR-002 and returned
-SPEC-001 to review. The Canvas lifecycle produced approved RFC-009 and accepted
-ADR-028 through ADR-031; its missing gate is an approved drawing Specification.
+SPEC-001 to review. The Canvas lifecycle produced approved RFC-009, accepted
+ADR-028 through ADR-031, and approved SPEC-012. SPEC-001 was reconciled against
+the complete approved reusable portfolio and subsequently explicitly approved.
 
 ## Decision Summary
 

@@ -24,8 +24,8 @@ The current authoritative inputs are:
 
 - approved RFC-001 through RFC-006 and RFC-008 through RFC-011;
 - accepted ADR-001 and ADR-003 through ADR-012, ADR-014 through ADR-033;
-- SPEC-001, the Signal Analyzer application contract, reconciled against the
-  approved reusable portfolio and currently in `review` pending human approval;
+- SPEC-001, the approved Signal Analyzer application contract reconciled
+  against the approved reusable portfolio;
 - the established [MVP Scope](../MVP_SCOPE.md), including the four supported
   configurations and the Signal Analyzer validation progression.
 
@@ -249,9 +249,9 @@ redefining it.
 
 SPEC-001 remains the application-level integration contract. Its Domain, Data,
 capture, and portable Presentation behavior can be reviewed independently.
-All reusable contracts through host configuration are approved. SPEC-001 has
-resolved its previously recorded application-contract blockers and is ready
-for approval-readiness review and explicit human approval consideration.
+All reusable contracts through host configuration and SPEC-001 are approved.
+Implementation planning may now derive work from the complete authoritative
+MVP Specification portfolio.
 
 ## Recommended Drafting Sequence
 
@@ -270,9 +270,9 @@ for approval-readiness review and explicit human approval consideration.
 7. Review `HOST-CONFIGURATION` (SPEC-015), including the independent
    conjunctive Canvas structural-capacity and `rasterPresentation` capability
    startup gates.
-8. SPEC-001 has been reconciled against the approved reusable contracts; next,
-   request human approval. Implementation planning starts only from approved
-   Specs.
+8. SPEC-001 was reconciled against the approved reusable contracts and
+   explicitly approved. Implementation planning may now begin from the
+   approved portfolio.
 
 ## Portfolio-Level Verification
 

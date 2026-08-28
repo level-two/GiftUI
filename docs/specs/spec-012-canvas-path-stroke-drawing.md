@@ -681,10 +681,10 @@ limits. Any missing, overflowing, zero, or insufficient fact rejects startup.
 
 The first-party workload declaration MUST be derived from the approved
 SPEC-001 Signal Analyzer configuration before that application may claim
-drawing conformance. SPEC-001's current candidate 816-segment maximum and
-SPIKE-004's conservative 820-segment fixture remain independent feasibility
-evidence until SPEC-001 approval; artificial contract fixtures use smaller
-limits to exercise every equality and first-excess boundary.
+drawing conformance. Approved SPEC-001 and SPEC-015 now supply the normative
+application and host workload; SPIKE-004's conservative 820-segment fixture
+remains independent feasibility evidence. Artificial contract fixtures use
+smaller limits to exercise every equality and first-excess boundary.
 
 Separately SPEC-004 must resolve `rasterPresentation` with straight-line-stroke
 operation coverage, extent, clip, encoding, derived payload, in-flight storage,
@@ -807,8 +807,8 @@ published semantic revision.
 
 Construction, snapshot, validation, and lowering are linear in admitted
 points, subpaths, and strokes. The independent fixture supports at least 820
-segments as feasibility evidence, but production capacity is derived later
-from approved SPEC-001 and host configuration. Evidence reports closure,
+segments as feasibility evidence, while production capacity is derived from
+approved SPEC-001 and SPEC-015. Evidence reports closure,
 construction, snapshot, lowering, operation, raster, point/stroke bytes, peak
 simultaneous workspace, stack, heap, flash, and linked-size deltas separately.
 
