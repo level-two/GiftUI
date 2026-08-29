@@ -7,7 +7,8 @@ owners:
   - codex
 created: 2026-08-29
 updated: 2026-08-29
-related_design_notes: []
+related_design_notes:
+  - ../implementation-designs/spec-003-bounded-diagnostic-buffer.md
 conformance_report: null
 related_future_work:
   - FW-009
