@@ -1213,6 +1213,10 @@ review.
 None of these items changes MVP scope, this contract, or its acceptance
 criteria.
 
+## Implementation Records
+
+- [SPEC-004 Implementation Plan](../implementation-plans/spec-004-implementation-plan.md)
+
 ## References
 
 - [PROPOSAL-004: GiftUI Capability System](../proposals/proposal-004-capability-system.md)
