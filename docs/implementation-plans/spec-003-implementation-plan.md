@@ -211,7 +211,7 @@ finite correctness-bearing snapshot independent of diagnostics.
       policy corpus. Enumerate every declared input exactly once, require one
       listed result, and prove no mechanical containment or mandatory
       coordinator action is exposed as residual choice.
-- [ ] `T2.3` — Add a pure owner-adapter fixture for unexpected input `nil` and
+- [x] `T2.3` — Add a pure owner-adapter fixture for unexpected input `nil` and
       unlisted policy return. It must construct exactly the host-composition
       runtime-scoped safety-not-proven invariant fact, stop policy invocation,
       quiesce health before any optional fatal-hook observation, and reject all
@@ -538,3 +538,12 @@ count, and the Swift fixture matches the checked-in corpus byte-for-byte. The
 fixture contains only post-containment residual choices; no local rejection,
 drain, frame abort, dirty-state, publication, or other mandatory coordinator
 action is represented as policy. `T2.3` is next.
+
+`T2.3` is complete: the pure owner-adapter fixture covers both an unexpected
+failable-input `nil` and a policy return outside `allowed`. Each path produces
+exactly the host-composition/runtime/safety-not-proven invariant fact,
+quiesces before propagation and optional fatal-hook observation, invokes no
+policy for `nil`, invokes policy exactly once for the unlisted result, never
+reinvokes policy for the invariant, and rejects every later normal-cycle
+attempt. The checked-in corpus records both paths. Production host integration
+remains SPEC-015 work. `T2.4` is next.

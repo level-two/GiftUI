@@ -501,9 +501,98 @@ final class GiftUIFailureCoreTests: XCTestCase {
             .split(separator: "\n")
             .filter { !$0.hasPrefix("#") && !$0.isEmpty }
             .map(String.init)
+            .filter { $0.contains("\tresidual-policy\t") }
         let expectedRows = fixturePolicyRows.map(\.corpusRow)
 
         XCTAssertEqual(checkedInRows, expectedRows)
+    }
+
+    func testUnexpectedPolicyInputNilMapsInvariantWithoutPolicyCall() throws {
+        let invalidInput = GiftUIResidualPolicyInput<FixturePolicyContext>(
+            outcome: .success(()),
+            context: .continueAfterNoChange,
+            allowed: .continueOperation,
+            attemptOrdinal: 0,
+            attemptLimit: 1
+        )
+        XCTAssertNil(invalidInput)
+
+        var policy = CountingInvalidPolicy(result: .continueOperation)
+        var owner = FixtureOwnerAdapter()
+        XCTAssertNil(owner.evaluate(
+            input: invalidInput,
+            policy: &policy,
+            fatalHookConfigured: true
+        ))
+
+        try assertInvariantContainment(owner, expectedPolicyInvocations: 0)
+        XCTAssertEqual(policy.invocationCount, 0)
+    }
+
+    func testUnlistedPolicyReturnMapsInvariantWithoutReinvocation() throws {
+        let input = try XCTUnwrap(GiftUIResidualPolicyInput(
+            outcome: GiftUIOutcome<Void>.failure(failureFact(containment: .contained)),
+            context: FixturePolicyContext.markContainedFacilityUnavailable,
+            allowed: GiftUIAllowedDispositions.markFacilityUnavailable,
+            attemptOrdinal: 0,
+            attemptLimit: 1
+        ))
+        var policy = CountingInvalidPolicy(result: .continueOperation)
+        var owner = FixtureOwnerAdapter()
+
+        XCTAssertNil(owner.evaluate(
+            input: input,
+            policy: &policy,
+            fatalHookConfigured: true
+        ))
+
+        try assertInvariantContainment(owner, expectedPolicyInvocations: 1)
+        XCTAssertEqual(policy.invocationCount, 1)
+    }
+
+    func testOwnerInvariantCorpusMatchesCheckedInRows() throws {
+        let fixtureRoot = URL(fileURLWithPath: #filePath)
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .appendingPathComponent("ContractFixtures/SPEC003/SemanticCorpus/cases.tsv")
+        let checkedInRows = try String(contentsOf: fixtureRoot, encoding: .utf8)
+            .split(separator: "\n")
+            .map(String.init)
+            .filter { $0.contains("\towner-invariant\t") }
+
+        XCTAssertEqual(checkedInRows, [
+            "owner-invalid-nil\towner-invariant\t0\t10,11,4,1,3,0",
+            "owner-unlisted-return\towner-invariant\t1\t10,11,4,1,3,1",
+        ])
+    }
+
+    private func assertInvariantContainment(
+        _ owner: FixtureOwnerAdapter,
+        expectedPolicyInvocations: Int,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) throws {
+        let fact = try XCTUnwrap(owner.propagatedFacts.first, file: file, line: line)
+        XCTAssertEqual(owner.propagatedFacts.count, 1, file: file, line: line)
+        XCTAssertEqual(fact.condition, .invariantViolation, file: file, line: line)
+        XCTAssertEqual(fact.origin, .hostComposition, file: file, line: line)
+        XCTAssertEqual(fact.affectedScope, .runtime, file: file, line: line)
+        XCTAssertEqual(fact.containment, .safetyNotProven, file: file, line: line)
+        XCTAssertEqual(owner.health, .quiesced, file: file, line: line)
+        XCTAssertEqual(owner.healthTransitions, [.quiesced], file: file, line: line)
+        XCTAssertEqual(owner.fatalHookObservedHealth, .quiesced, file: file, line: line)
+        XCTAssertEqual(
+            owner.policyInvocationCountAtContainment,
+            expectedPolicyInvocations,
+            file: file,
+            line: line
+        )
+
+        var owner = owner
+        for _ in 0 ..< 3 {
+            XCTAssertFalse(owner.attemptNormalCycle(), file: file, line: line)
+        }
+        XCTAssertEqual(owner.admittedNormalCycles, 0, file: file, line: line)
     }
 
     private var allOrigins: [GiftUIFailureOrigin] {
@@ -700,6 +789,83 @@ private struct FixturePolicy: GiftUIResidualFailurePolicy {
             return .quiesceAffectedScope
         case .invokeFatalAfterContainedComponent:
             return .invokeFatalHook
+        }
+    }
+}
+
+private enum FixtureRuntimeHealth: UInt8 {
+    case available = 0
+    case quiesced = 3
+}
+
+private struct CountingInvalidPolicy: GiftUIResidualFailurePolicy {
+    let result: GiftUIResidualDisposition
+    private(set) var invocationCount = 0
+
+    mutating func disposition(
+        for input: GiftUIResidualPolicyInput<FixturePolicyContext>
+    ) -> GiftUIResidualDisposition {
+        invocationCount += 1
+        return result
+    }
+}
+
+private struct FixtureOwnerAdapter {
+    private(set) var health = FixtureRuntimeHealth.available
+    private(set) var healthTransitions: [FixtureRuntimeHealth] = []
+    private(set) var propagatedFacts: [GiftUIFailureFact] = []
+    private(set) var fatalHookObservedHealth: FixtureRuntimeHealth?
+    private(set) var admittedNormalCycles = 0
+    private(set) var policyInvocationCountAtContainment = 0
+
+    mutating func evaluate<Policy: GiftUIResidualFailurePolicy>(
+        input: GiftUIResidualPolicyInput<Policy.Context>?,
+        policy: inout Policy,
+        fatalHookConfigured: Bool
+    ) -> GiftUIResidualDisposition? {
+        guard let input else {
+            containInvariant(
+                policyInvocationCount: 0,
+                fatalHookConfigured: fatalHookConfigured
+            )
+            return nil
+        }
+
+        let result = policy.disposition(for: input)
+        let option = GiftUIAllowedDispositions(rawValue: 1 << result.rawValue)
+        guard input.allowed.contains(option) else {
+            containInvariant(
+                policyInvocationCount: 1,
+                fatalHookConfigured: fatalHookConfigured
+            )
+            return nil
+        }
+        return result
+    }
+
+    mutating func attemptNormalCycle() -> Bool {
+        guard health != .quiesced else {
+            return false
+        }
+        admittedNormalCycles += 1
+        return true
+    }
+
+    private mutating func containInvariant(
+        policyInvocationCount: Int,
+        fatalHookConfigured: Bool
+    ) {
+        health = .quiesced
+        healthTransitions.append(.quiesced)
+        policyInvocationCountAtContainment = policyInvocationCount
+        propagatedFacts.append(GiftUIFailureFact(
+            condition: .invariantViolation,
+            origin: .hostComposition,
+            affectedScope: .runtime,
+            containment: .safetyNotProven
+        ))
+        if fatalHookConfigured {
+            fatalHookObservedHealth = health
         }
     }
 }

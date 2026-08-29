@@ -23,3 +23,10 @@ value, containment raw value (zero for operational rows), allowed-disposition
 bits, attempt ordinal, and attempt limit. Its one expected word is the selected
 residual-disposition raw value. These rows describe only choices remaining
 after mechanical containment and mandatory coordinator effects.
+
+The `owner-invariant` domain uses one input word: `0` for an unexpected
+failable-input `nil` and `1` for a policy return outside `allowed`. Its expected
+words are condition, origin, affected scope, containment, resulting health,
+and total policy invocation count. Both rows require the exact host-composition
+runtime invariant fact and quiesced health; only the valid-input/unlisted-return
+row permits the original single policy call.
