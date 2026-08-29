@@ -207,7 +207,7 @@ finite correctness-bearing snapshot independent of diagnostics.
       protocol. Reject success, empty/unknown bits, zero limits, invalid or
       exhausted ordinals, forbidden retry kinds, and forbidden
       safety-not-proven choices with no partial input and no policy call.
-- [ ] `T2.2` — Build a fixture-finite context and table-driven exhaustive
+- [x] `T2.2` — Build a fixture-finite context and table-driven exhaustive
       policy corpus. Enumerate every declared input exactly once, require one
       listed result, and prove no mechanical containment or mandatory
       coordinator action is exposed as residual choice.
@@ -529,3 +529,12 @@ limit, exhausted or forbidden retry, continued safety-not-proven failures,
 and non-terminal choices for runtime-scoped safety-not-proven failures. Valid
 inputs preserve every field, and option bits match disposition raw values.
 `T2.2` is next.
+
+`T2.2` is complete: the checked-in shared semantic corpus defines five finite
+policy contexts and covers every residual disposition exactly once. The
+table-driven test proves every context appears once, every input constructs,
+each selected result belongs to its allowed set, invocation count equals row
+count, and the Swift fixture matches the checked-in corpus byte-for-byte. The
+fixture contains only post-containment residual choices; no local rejection,
+drain, frame abort, dirty-state, publication, or other mandatory coordinator
+action is represented as policy. `T2.3` is next.

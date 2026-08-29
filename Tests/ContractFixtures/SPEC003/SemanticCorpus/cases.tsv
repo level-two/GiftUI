@@ -1,1 +1,6 @@
 # id	domain	input_words	expected_words
+policy-continue	residual-policy	0,1,0,2,0,0,0x09,0,1	0
+policy-retry	residual-policy	1,1,2,10,0,0,0x06,0,3	1
+policy-unavailable	residual-policy	2,2,8,11,3,0,0x0c,0,1	2
+policy-quiesce	residual-policy	3,2,10,11,3,0,0x18,0,1	3
+policy-fatal	residual-policy	4,2,10,11,3,0,0x18,0,1	4

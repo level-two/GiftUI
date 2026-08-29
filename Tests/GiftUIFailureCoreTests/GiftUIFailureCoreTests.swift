@@ -1,3 +1,4 @@
+import Foundation
 import XCTest
 @testable import GiftUIFailureCore
 
@@ -464,6 +465,47 @@ final class GiftUIFailureCoreTests: XCTestCase {
         XCTAssertNotNil(policyInput(outcome: outcome, allowed: allowed))
     }
 
+    func testFixturePolicyEnumeratesEveryDeclaredInputExactlyOnce() throws {
+        let rows = fixturePolicyRows
+        XCTAssertEqual(rows.count, FixturePolicyContext.allCases.count)
+        XCTAssertEqual(Set(rows.map(\.context.rawValue)).count, rows.count)
+        XCTAssertEqual(
+            Set(rows.map(\.context.rawValue)),
+            Set(FixturePolicyContext.allCases.map(\.rawValue))
+        )
+
+        var policy = FixturePolicy()
+        for row in rows {
+            let input = try XCTUnwrap(GiftUIResidualPolicyInput(
+                outcome: row.outcome,
+                context: row.context,
+                allowed: row.allowed,
+                attemptOrdinal: row.attemptOrdinal,
+                attemptLimit: row.attemptLimit
+            ))
+            let result = policy.disposition(for: input)
+
+            XCTAssertEqual(result, row.expected)
+            XCTAssertTrue(row.allowed.contains(option(for: result)))
+        }
+        XCTAssertEqual(policy.invocationCount, rows.count)
+        XCTAssertEqual(Set(rows.map(\.expected.rawValue)), Set(UInt8(0) ... UInt8(4)))
+    }
+
+    func testFixturePolicyCorpusMatchesCheckedInSharedRows() throws {
+        let fixtureRoot = URL(fileURLWithPath: #filePath)
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .appendingPathComponent("ContractFixtures/SPEC003/SemanticCorpus/cases.tsv")
+        let checkedInRows = try String(contentsOf: fixtureRoot, encoding: .utf8)
+            .split(separator: "\n")
+            .filter { !$0.hasPrefix("#") && !$0.isEmpty }
+            .map(String.init)
+        let expectedRows = fixturePolicyRows.map(\.corpusRow)
+
+        XCTAssertEqual(checkedInRows, expectedRows)
+    }
+
     private var allOrigins: [GiftUIFailureOrigin] {
         [
             .foundation,
@@ -530,9 +572,134 @@ final class GiftUIFailureCoreTests: XCTestCase {
         )
     }
 
+    private var fixturePolicyRows: [FixturePolicyRow] {
+        [
+            FixturePolicyRow(
+                id: "policy-continue",
+                context: .continueAfterNoChange,
+                outcome: .operational(GiftUIOperationalFact(
+                    kind: .noChange,
+                    origin: .semantic,
+                    affectedScope: .operation
+                )),
+                allowed: [.continueOperation, .quiesceAffectedScope],
+                attemptOrdinal: 0,
+                attemptLimit: 1,
+                expected: .continueOperation,
+                corpusInput: "0,1,0,2,0,0,0x09,0,1"
+            ),
+            FixturePolicyRow(
+                id: "policy-retry",
+                context: .retryBackpressure,
+                outcome: .operational(GiftUIOperationalFact(
+                    kind: .backpressured,
+                    origin: .inputIntegration,
+                    affectedScope: .operation
+                )),
+                allowed: [.requestPacedRetry, .markFacilityUnavailable],
+                attemptOrdinal: 0,
+                attemptLimit: 3,
+                expected: .requestPacedRetry,
+                corpusInput: "1,1,2,10,0,0,0x06,0,3"
+            ),
+            FixturePolicyRow(
+                id: "policy-unavailable",
+                context: .markContainedFacilityUnavailable,
+                outcome: .failure(GiftUIFailureFact(
+                    condition: .requiredFacilityUnavailable,
+                    origin: .hostComposition,
+                    affectedScope: .component,
+                    containment: .contained
+                )),
+                allowed: [.markFacilityUnavailable, .quiesceAffectedScope],
+                attemptOrdinal: 0,
+                attemptLimit: 1,
+                expected: .markFacilityUnavailable,
+                corpusInput: "2,2,8,11,3,0,0x0c,0,1"
+            ),
+            FixturePolicyRow(
+                id: "policy-quiesce",
+                context: .quiesceContainedComponent,
+                outcome: .failure(failureFact(
+                    scope: .component,
+                    containment: .contained
+                )),
+                allowed: [.quiesceAffectedScope, .invokeFatalHook],
+                attemptOrdinal: 0,
+                attemptLimit: 1,
+                expected: .quiesceAffectedScope,
+                corpusInput: "3,2,10,11,3,0,0x18,0,1"
+            ),
+            FixturePolicyRow(
+                id: "policy-fatal",
+                context: .invokeFatalAfterContainedComponent,
+                outcome: .failure(failureFact(
+                    scope: .component,
+                    containment: .contained
+                )),
+                allowed: [.quiesceAffectedScope, .invokeFatalHook],
+                attemptOrdinal: 0,
+                attemptLimit: 1,
+                expected: .invokeFatalHook,
+                corpusInput: "4,2,10,11,3,0,0x18,0,1"
+            ),
+        ]
+    }
+
+    private func option(
+        for disposition: GiftUIResidualDisposition
+    ) -> GiftUIAllowedDispositions {
+        GiftUIAllowedDispositions(rawValue: 1 << disposition.rawValue)
+    }
+
     private func requireSendable<T: Sendable>(_: T.Type) {
     }
 
     private func requireEquatable<T: Equatable>(_: T.Type) {
+    }
+}
+
+private enum FixturePolicyContext: UInt8, CaseIterable {
+    case continueAfterNoChange = 0
+    case retryBackpressure = 1
+    case markContainedFacilityUnavailable = 2
+    case quiesceContainedComponent = 3
+    case invokeFatalAfterContainedComponent = 4
+}
+
+private struct FixturePolicyRow {
+    let id: String
+    let context: FixturePolicyContext
+    let outcome: GiftUIOutcome<Void>
+    let allowed: GiftUIAllowedDispositions
+    let attemptOrdinal: UInt8
+    let attemptLimit: UInt8
+    let expected: GiftUIResidualDisposition
+    let corpusInput: String
+
+    var corpusRow: String {
+        "\(id)\tresidual-policy\t\(corpusInput)\t\(expected.rawValue)"
+    }
+}
+
+private struct FixturePolicy: GiftUIResidualFailurePolicy {
+    private(set) var invocationCount = 0
+
+    mutating func disposition(
+        for input: GiftUIResidualPolicyInput<FixturePolicyContext>
+    ) -> GiftUIResidualDisposition {
+        invocationCount += 1
+        switch input.context {
+        case .continueAfterNoChange:
+            return .continueOperation
+        case .retryBackpressure:
+            return .requestPacedRetry
+        case .markContainedFacilityUnavailable:
+            return .markFacilityUnavailable
+        case .quiesceContainedComponent:
+            return .quiesceAffectedScope
+        case .invokeFatalAfterContainedComponent:
+            return .invokeFatalHook
+        }
     }
 }
