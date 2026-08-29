@@ -225,7 +225,7 @@ recoverable and dispositioned against tag `PoC`.
       and no speculative targets owned by later Specifications. Establish the
       initial exact target allow-list from this clean manifest and make newly
       introduced targets fail closed until their owning plan updates it.
-- [ ] `T0.8` — Rewrite the root README for the MVP and add the minimal approved
+- [x] `T0.8` — Rewrite the root README for the MVP and add the minimal approved
       historical-baseline pointer required by the governance change. Run the
       governance/link validator and an active-tree audit proving that removed
       products, modules, applications, and local legacy-document paths occur
@@ -533,12 +533,16 @@ maintainer confirmed the exact removal set on 2026-08-29. `T0.5` and `T0.7`
 land atomically: the old implementation is absent, the stable `GiftUI` product
 and target plus one Foundation smoke-test target form the complete root package,
 and the [cut record](../../Tests/ContractFixtures/SPEC002/clean-baseline-cut-record.md)
-preserves the disposition and verification evidence. `T0.8` README work
-remains. `T0.6` is complete: Raspberry Pi build/deploy now
+preserves the disposition and verification evidence. `T0.8` completes the
+README and active-tree audit. `T0.6` is complete: Raspberry Pi build/deploy now
 require an explicit product, the nRF build default is only the retained
 hardware-free probe, flashing requires an explicit application, and the
 [sanitization record](../../Tests/ContractFixtures/SPEC002/environment-sanitization.md)
-captures the retained-path audit. No design note or conformance report exists.
+captures the retained-path audit. The
+[Milestone 0 audit](../../Tests/ContractFixtures/SPEC002/milestone-0-audit.md)
+records the final package, link, governance, retired-path, and environment-
+entry-point evidence. Milestone 0 is complete. No design note or conformance
+report exists.
 Milestone 4 remains dependency-blocked until SPEC-003/004 supply their owner
 targets. No design note is required before Milestone 0; create one only if a
 listed trigger is reached. Plan completion will not by itself mark SPEC-002
