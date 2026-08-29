@@ -263,7 +263,7 @@ implementation begins.
       `scripts/contracts/run-spec-002.sh`, shared report locations, deterministic
       exits, and compiler/target/SDK/flags/command/revision metadata capture.
       Missing pins or mismatched compilers must fail rather than fall back.
-- [ ] `T1.5` — Create `scripts/test.sh` as the single repository-level test and
+- [x] `T1.5` — Create `scripts/test.sh` as the single repository-level test and
       check entry point. With no arguments it runs the fast macOS-dynamic path:
       governance validation, root package/unit tests, and every registered
       macOS-dynamic contract driver. It also accepts the explicit profiles
@@ -565,6 +565,12 @@ compiler identity, target, SDK/pins, optimization/profile flags, commands,
 repository revision, log, fixtures, and deterministic exit code. Compiler,
 target, SDK, and checkout pin mismatches fail before fallback is possible; no
 profile performs deployment, remote access, or flashing.
+`T1.5` adds the ordered
+[contract-driver registry](../../scripts/contracts/driver-registry.tsv) and
+the stable [`scripts/test.sh`](../../scripts/test.sh) entry point. The default
+gate runs governance, registry validation, root tests, and all registered
+macOS-dynamic drivers; explicit profiles and `all-hardware-free` preserve every
+driver invocation while aggregating deterministic results and diagnostics.
 Milestone 4 remains dependency-blocked until SPEC-003/004 supply their owner
 targets. No design note is required before Milestone 0; create one only if a
 listed trigger is reached. Plan completion will not by itself mark SPEC-002

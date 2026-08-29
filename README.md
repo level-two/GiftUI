@@ -28,9 +28,24 @@ Run from the repository root:
 ```sh
 swift package dump-package
 swift build --product GiftUI
-swift test
-scripts/validate-governance.rb
+scripts/test.sh
 ```
+
+`scripts/test.sh` is the single repository-level check entry point. With no
+argument it runs the fast macOS-dynamic gate, including governance, root unit
+tests, and every registered contract driver. Select another hardware-free
+profile explicitly, or run all four while preserving per-profile results:
+
+```sh
+scripts/test.sh macos-static
+scripts/test.sh raspberry-pi-armv6
+scripts/test.sh nrf52840-embedded
+scripts/test.sh all-hardware-free
+```
+
+The aggregate runner never deploys, contacts a Raspberry Pi, or flashes a
+connected nRF board. A missing local cross-toolchain is reported as a failed
+profile rather than skipped.
 
 Generated SwiftPM state remains under `.build/`. If a restricted environment
 cannot use the user-level compiler cache, point `CLANG_MODULE_CACHE_PATH` and
