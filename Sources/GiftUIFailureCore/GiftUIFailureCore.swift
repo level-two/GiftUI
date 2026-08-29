@@ -285,3 +285,78 @@ public protocol GiftUIResidualFailurePolicy {
         for input: GiftUIResidualPolicyInput<Context>
     ) -> GiftUIResidualDisposition
 }
+
+public enum GiftUIOperationalHealthState: UInt8, Sendable {
+    case available = 0
+    case degraded = 1
+    case unavailable = 2
+    case quiesced = 3
+}
+
+public struct GiftUIOperationalHealth: Sendable, Equatable {
+    public private(set) var state: GiftUIOperationalHealthState
+    public private(set) var transitionCount: UInt32
+    public private(set) var operationalCount: UInt32
+    public private(set) var failureCount: UInt32
+    public private(set) var countersSaturated: Bool
+
+    public init(state: GiftUIOperationalHealthState = .available) {
+        self.state = state
+        transitionCount = 0
+        operationalCount = 0
+        failureCount = 0
+        countersSaturated = false
+    }
+
+    init(
+        state: GiftUIOperationalHealthState,
+        transitionCount: UInt32,
+        operationalCount: UInt32,
+        failureCount: UInt32,
+        countersSaturated: Bool
+    ) {
+        self.state = state
+        self.transitionCount = transitionCount
+        self.operationalCount = operationalCount
+        self.failureCount = failureCount
+        self.countersSaturated = countersSaturated
+    }
+
+    public mutating func recordOperational(
+        _ fact: GiftUIOperationalFact,
+        resultingState: GiftUIOperationalHealthState
+    ) {
+        _ = fact
+        let increment = Self.incremented(operationalCount)
+        operationalCount = increment.value
+        countersSaturated = countersSaturated || increment.saturated
+        transition(to: resultingState)
+    }
+
+    public mutating func recordFailure(
+        _ fact: GiftUIFailureFact,
+        resultingState: GiftUIOperationalHealthState
+    ) {
+        _ = fact
+        let increment = Self.incremented(failureCount)
+        failureCount = increment.value
+        countersSaturated = countersSaturated || increment.saturated
+        transition(to: resultingState)
+    }
+
+    private static func incremented(_ counter: UInt32) -> (value: UInt32, saturated: Bool) {
+        counter == .max ? (.max, true) : (counter + 1, false)
+    }
+
+    private mutating func transition(to resultingState: GiftUIOperationalHealthState) {
+        guard state != .quiesced else {
+            return
+        }
+        if state != resultingState {
+            let increment = Self.incremented(transitionCount)
+            transitionCount = increment.value
+            countersSaturated = countersSaturated || increment.saturated
+            state = resultingState
+        }
+    }
+}

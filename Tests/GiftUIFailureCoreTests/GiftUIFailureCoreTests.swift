@@ -566,6 +566,116 @@ final class GiftUIFailureCoreTests: XCTestCase {
         ])
     }
 
+    func testOperationalHealthStatesHaveExactRawValuesAndLayout() {
+        XCTAssertEqual(GiftUIOperationalHealthState.available.rawValue, 0)
+        XCTAssertEqual(GiftUIOperationalHealthState.degraded.rawValue, 1)
+        XCTAssertEqual(GiftUIOperationalHealthState.unavailable.rawValue, 2)
+        XCTAssertEqual(GiftUIOperationalHealthState.quiesced.rawValue, 3)
+        XCTAssertLessThanOrEqual(MemoryLayout<GiftUIOperationalHealth>.size, 20)
+        XCTAssertLessThanOrEqual(MemoryLayout<GiftUIOperationalHealth>.stride, 20)
+        requireSendable(GiftUIOperationalHealthState.self)
+        requireSendable(GiftUIOperationalHealth.self)
+    }
+
+    func testOperationalRecordExhaustsEveryResultingState() {
+        for initialState in allHealthStates {
+            for resultingState in allHealthStates {
+                var health = GiftUIOperationalHealth(state: initialState)
+                health.recordOperational(operationalFact, resultingState: resultingState)
+
+                XCTAssertEqual(health.operationalCount, 1)
+                XCTAssertEqual(health.failureCount, 0)
+                XCTAssertFalse(health.countersSaturated)
+                if initialState == .quiesced {
+                    XCTAssertEqual(health.state, .quiesced)
+                    XCTAssertEqual(health.transitionCount, 0)
+                } else {
+                    XCTAssertEqual(health.state, resultingState)
+                    XCTAssertEqual(
+                        health.transitionCount,
+                        initialState == resultingState ? 0 : 1
+                    )
+                }
+            }
+        }
+    }
+
+    func testFailureRecordExhaustsEveryResultingState() {
+        for initialState in allHealthStates {
+            for resultingState in allHealthStates {
+                var health = GiftUIOperationalHealth(state: initialState)
+                health.recordFailure(
+                    failureFact(containment: .contained),
+                    resultingState: resultingState
+                )
+
+                XCTAssertEqual(health.operationalCount, 0)
+                XCTAssertEqual(health.failureCount, 1)
+                XCTAssertFalse(health.countersSaturated)
+                if initialState == .quiesced {
+                    XCTAssertEqual(health.state, .quiesced)
+                    XCTAssertEqual(health.transitionCount, 0)
+                } else {
+                    XCTAssertEqual(health.state, resultingState)
+                    XCTAssertEqual(
+                        health.transitionCount,
+                        initialState == resultingState ? 0 : 1
+                    )
+                }
+            }
+        }
+    }
+
+    func testHealthCountersSaturateWithoutBlockingStateUpdates() {
+        var health = GiftUIOperationalHealth(
+            state: .available,
+            transitionCount: .max,
+            operationalCount: .max,
+            failureCount: .max,
+            countersSaturated: false
+        )
+
+        health.recordOperational(operationalFact, resultingState: .degraded)
+        XCTAssertEqual(health.state, .degraded)
+        XCTAssertEqual(health.transitionCount, .max)
+        XCTAssertEqual(health.operationalCount, .max)
+        XCTAssertEqual(health.failureCount, .max)
+        XCTAssertTrue(health.countersSaturated)
+
+        health.recordFailure(
+            failureFact(containment: .contained),
+            resultingState: .unavailable
+        )
+        XCTAssertEqual(health.state, .unavailable)
+        XCTAssertEqual(health.transitionCount, .max)
+        XCTAssertEqual(health.operationalCount, .max)
+        XCTAssertEqual(health.failureCount, .max)
+        XCTAssertTrue(health.countersSaturated)
+    }
+
+    func testQuiescedHealthRemainsTerminalAfterCounterSaturation() {
+        var health = GiftUIOperationalHealth(
+            state: .quiesced,
+            transitionCount: .max,
+            operationalCount: .max,
+            failureCount: .max,
+            countersSaturated: true
+        )
+
+        for resultingState in allHealthStates {
+            health.recordOperational(operationalFact, resultingState: resultingState)
+            health.recordFailure(
+                failureFact(containment: .safetyNotProven),
+                resultingState: resultingState
+            )
+            XCTAssertEqual(health.state, .quiesced)
+            XCTAssertEqual(health.transitionCount, .max)
+            XCTAssertEqual(health.operationalCount, .max)
+            XCTAssertEqual(health.failureCount, .max)
+            XCTAssertTrue(health.countersSaturated)
+        }
+    }
+
     private func assertInvariantContainment(
         _ owner: FixtureOwnerAdapter,
         expectedPolicyInvocations: Int,
@@ -632,6 +742,18 @@ final class GiftUIFailureCoreTests: XCTestCase {
             .deferredToLaterAdmission,
             .retryableRefusal,
         ]
+    }
+
+    private var allHealthStates: [GiftUIOperationalHealthState] {
+        [.available, .degraded, .unavailable, .quiesced]
+    }
+
+    private var operationalFact: GiftUIOperationalFact {
+        GiftUIOperationalFact(
+            kind: .noChange,
+            origin: .hostComposition,
+            affectedScope: .component
+        )
     }
 
     private func failureFact(

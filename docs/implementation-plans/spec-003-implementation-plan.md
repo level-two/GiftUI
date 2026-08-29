@@ -217,7 +217,7 @@ finite correctness-bearing snapshot independent of diagnostics.
       quiesce health before any optional fatal-hook observation, and reject all
       later normal-cycle attempts. This fixture proves the approved seam; the
       production host realization remains SPEC-015 work.
-- [ ] `T2.4` — Implement `GiftUIOperationalHealth` with saturating counters,
+- [x] `T2.4` — Implement `GiftUIOperationalHealth` with saturating counters,
       transition-before-return behavior, unchanged-state counting, terminal
       quiescence, and state updates that remain permitted after saturation.
       Exhaust every requested resulting state through both record methods.
@@ -547,3 +547,11 @@ policy for `nil`, invokes policy exactly once for the unlisted result, never
 reinvokes policy for the invariant, and rejects every later normal-cycle
 attempt. The checked-in corpus records both paths. Production host integration
 remains SPEC-015 work. `T2.4` is next.
+
+`T2.4` is complete: Core exports the exact four-state operational health
+snapshot, three saturating counters, permanent saturation flag, and both
+record methods. Tests exhaust every initial/resulting-state pair through both
+methods, distinguish unchanged-state records from transitions, prove
+quiescence is terminal, force every counter to `UInt32.max` without wrapping,
+and prove permitted state updates still commit after saturation while the
+snapshot remains within 20 bytes. `T2.5` is next.
