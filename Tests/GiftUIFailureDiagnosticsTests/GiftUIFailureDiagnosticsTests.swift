@@ -151,6 +151,46 @@ final class GiftUIFailureDiagnosticsTests: XCTestCase {
         XCTAssertTrue(counters.countersSaturated)
     }
 
+    func testCallbackAndInterruptSinksCannotGainSemanticAuthority() throws {
+        let correctnessBefore = try correctnessSnapshot()
+
+        for context in [DiagnosticDeliveryContext.callback, .interrupt] {
+            let attackSurface = DiagnosticAttackSurface()
+            attackSurface.commitOutcomeAndEnterDiagnostics()
+            let selection = GiftUIDiagnosticSelection(
+                kindMask: 1 << GiftUIDiagnosticKind.failureOutcome.rawValue,
+                originMask: 1 << GiftUIFailureOrigin.backend.rawValue,
+                minimumSeverity: .debug
+            )
+
+            switch context {
+            case .callback:
+                var projector = GiftUIDiagnosticProjector(
+                    selection: selection,
+                    sink: CallbackAttemptingSink(attackSurface: attackSurface)
+                )
+                projector.projectFailure(counter: ConstructionCounter())
+                XCTAssertEqual(projector.counters.accepted, 1)
+            case .interrupt:
+                var projector = GiftUIDiagnosticProjector(
+                    selection: selection,
+                    sink: InterruptAttemptingSink(attackSurface: attackSurface)
+                )
+                projector.projectFailure(counter: ConstructionCounter())
+                XCTAssertEqual(projector.counters.accepted, 1)
+            }
+
+            XCTAssertEqual(attackSurface.stage, .diagnostic)
+            XCTAssertEqual(attackSurface.semanticValue, 41)
+            XCTAssertEqual(attackSurface.semanticMutationCount, 0)
+            XCTAssertEqual(attackSurface.clientActionInvocationCount, 0)
+            XCTAssertEqual(attackSurface.outcomeStageEntryCount, 1)
+            XCTAssertEqual(attackSurface.rejectedAttemptCount, 3)
+            XCTAssertEqual(attackSurface.deliveryContexts, [context, context, context])
+            XCTAssertEqual(try correctnessSnapshot(), correctnessBefore)
+        }
+    }
+
     private func record(_ index: UInt8) -> GiftUIDiagnosticRecord {
         GiftUIDiagnosticRecord(
             kind: .failureOutcome,

@@ -250,7 +250,7 @@ identical correctness outputs.
       normalized outcomes, health snapshots, coordinator inputs, residual
       inputs, and policy results for value equality; prove excluded records are
       never constructed and sink results affect only optional counters.
-- [ ] `T3.4` — Add callback and interrupt fixtures whose diagnostic sinks
+- [x] `T3.4` — Add callback and interrupt fixtures whose diagnostic sinks
       attempt semantic mutation and client-action invocation through only the
       allowed test seams. Prove zero mutation/invocation and no re-entry into an
       earlier outcome stage.
@@ -470,6 +470,12 @@ The configuration matrix compares all correctness-bearing values against the
 omitted-diagnostics baseline for enabled, source-filtered, sink-filtered,
 saturated, dropped, counted, and failed observation paths; see the
 [diagnostic-isolation evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-3/diagnostic-isolation.md).
+`T3.4` is complete: callback and interrupt sinks attempt semantic mutation,
+client-action invocation, and outcome-stage re-entry through guarded test
+seams after diagnostic delivery begins. Both fixtures record three rejected
+attempts, zero semantic mutations/actions, and one unchanged original outcome
+entry; see the
+[callback/interrupt evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-3/callback-interrupt-isolation.md).
 That fixture contract prepares the failure-core leaf needed by the
 failure-owned portion of active SPEC-002 Milestone 4 without waiting for later
 execution, capability, host, or connected-target integrations.
