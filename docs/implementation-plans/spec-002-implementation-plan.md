@@ -191,7 +191,7 @@ recoverable and dispositioned against tag `PoC`.
       throwing/trapping path, source location, consumer, and package edge.
       Record `removed`, `recreated by SPEC-002`, or `owned by SPEC-NNN`; do not
       use “unchanged” or “retained from PoC” as a disposition.
-- [ ] `T0.3` — Produce an exact keep/rewrite/remove manifest for the paths in
+- [x] `T0.3` — Produce an exact keep/rewrite/remove manifest for the paths in
       `Clean-Baseline Disposition`. For each retained script or fixture, prove
       that its purpose is toolchain setup, environment diagnosis, hardware-free
       probing, generic build/artifact inspection, or governance validation and
@@ -521,8 +521,12 @@ commands, and required-path reproduction checks are recorded in the
 precondition, throwing/trapping paths, consumers, input cases, and package
 edges are dispositioned in the
 [PF-008 migration ledger](../../Tests/ContractFixtures/SPEC002/migration-ledger.md).
-No design note or conformance report exists. The explicit path-manifest
-confirmation before `T0.5` remains an execution safety gate, and Milestone 4
-remains dependency-blocked until SPEC-003/004 supply their owner targets. No
-design note is required before Milestone 0; create one only if a listed trigger
-is reached. Plan completion will not by itself mark SPEC-002 `implemented`.
+`T0.3` is complete: the exact 175-path removal set, rewrite set, preservation
+rules, and retained environment audit are recorded in the
+[clean-baseline path manifest](../../Tests/ContractFixtures/SPEC002/clean-baseline-path-manifest.md).
+No design note or conformance report exists. `T0.4` must add cross-Spec
+ownership, repair active legacy-document links, and obtain maintainer
+confirmation before `T0.5`. Milestone 4 remains dependency-blocked until
+SPEC-003/004 supply their owner targets. No design note is required before
+Milestone 0; create one only if a listed trigger is reached. Plan completion
+will not by itself mark SPEC-002 `implemented`.
