@@ -340,7 +340,7 @@ concrete integration type or admission semantics.
       `InputSourceID`, `PointerSequenceID`, `InputOrdinal`,
       `PresentationRevision`, and `NormalizedPointerEvent`. Preserve every raw
       bit pattern and require provenance without a sentinel.
-- [ ] `T3.2` — Add package compile/value fixtures for every phase, min/max
+- [x] `T3.2` — Add package compile/value fixtures for every phase, min/max
       coordinates, min/max wrapper values, copying/equality, exact raw widths,
       and absence of backend/platform/OS/driver/transport/HAL/hardware fields.
       Do not test admission, ordering, cancellation, hit testing, or dispatch.
@@ -592,6 +592,10 @@ declarations; no downstream target or PoC compatibility helper was added.
 three-case `UInt8` phase, bounded `UInt16`/`UInt32` wrappers, and an immutable
 event initializer that requires every provenance/correlation field. It adds no
 sentinel, admission, ordering, cancellation, hit-test, or dispatch behavior.
+`T3.2` adds an explicitly package-scoped compile fixture plus host value tests
+for every phase, minimum/maximum coordinates and raw wrappers, exact raw
+widths, event size, copying, equality, and hashing. Public fixtures remain
+external-client compilations, and no test asserts execution-owned behavior.
 Milestone 4 remains dependency-blocked until SPEC-003/004 supply their owner
 targets. No design note is required before Milestone 0; create one only if a
 listed trigger is reached. Plan completion will not by itself mark SPEC-002

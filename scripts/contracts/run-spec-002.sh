@@ -111,9 +111,9 @@ run_fixture_set() {
     local module_dir="$2"
     shift 2
     local -a common_flags=("$@")
-    local id expectation entry patterns fixture_dir diagnostic output_path result pattern
+    local id expectation access entry patterns fixture_dir diagnostic output_path result pattern
 
-    while IFS=$'\t' read -r id expectation entry patterns; do
+    while IFS=$'\t' read -r id expectation access entry patterns; do
         [[ -n "${id}" && "${id}" != \#* ]] || continue
         fixture_dir="${report_dir}/fixtures/${id}"
         mkdir -p "${fixture_dir}"
@@ -121,8 +121,11 @@ run_fixture_set() {
         diagnostic="${fixture_dir}/stderr.txt"
         local -a command=(
             "${compiler}" "${common_flags[@]}" -I "${module_dir}"
-            -typecheck "${FIXTURE_ROOT}/${entry}"
         )
+        if [[ "${access}" == "package" ]]; then
+            command+=(-package-name GiftUI)
+        fi
+        command+=(-typecheck "${FIXTURE_ROOT}/${entry}")
         record_command "${command[@]}"
         set +e
         "${command[@]}" >"${output_path}" 2>"${diagnostic}"

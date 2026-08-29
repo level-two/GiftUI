@@ -17,16 +17,18 @@ manifest_path.each_line.with_index(1) do |line, line_number|
   next if line.start_with?("#") || line.strip.empty?
 
   fields = line.chomp.split("\t", -1)
-  fail_check("line #{line_number} must have four tab-separated fields") unless fields.length == 4
+  fail_check("line #{line_number} must have five tab-separated fields") unless fields.length == 5
   rows << fields
 end
 
 ids = rows.map(&:first)
 fail_check("fixture identifiers must be unique") unless ids.uniq.length == ids.length
 
-registered_directories = rows.map do |id, expectation, entry_path, patterns_path|
+registered_directories = rows.map do |id, expectation, access, entry_path, patterns_path|
   fail_check("invalid fixture identifier #{id.inspect}") unless id.match?(/\A[a-z0-9]+(?:-[a-z0-9]+)*\z/)
   fail_check("#{id} has unknown expectation #{expectation.inspect}") unless %w[pass fail].include?(expectation)
+  fail_check("#{id} has unknown access #{access.inspect}") unless %w[public package].include?(access)
+  fail_check("#{id} negative fixture must use public access") if expectation == "fail" && access != "public"
 
   expected_family = expectation == "pass" ? "Positive" : "Negative"
   expected_entry = "Fixtures/#{expected_family}/#{id}/main.swift"

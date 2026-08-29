@@ -16,8 +16,9 @@ DependencyGraphCases/
 ```
 
 `fixture-manifest.tsv` is the checked-in, ordered fixture registry. Every row
-has a stable identifier, an expectation (`pass` or `fail`), an entry-point
-path, and an optional diagnostic-pattern path. Drivers must execute rows in
+has a stable identifier, an expectation (`pass` or `fail`), an access context
+(`public` or `package`), an entry-point path, and an optional
+diagnostic-pattern path. Drivers must execute rows in
 file order and must reject duplicate identifiers, unknown expectations,
 missing entry points, and unregistered fixture directories.
 
@@ -34,6 +35,11 @@ compiled by the profile-specific command selected by
 `scripts/contracts/run-spec-002.sh`. Fixtures may import only declarations
 needed by their stated contract. Test-only shims, PoC compatibility helpers,
 and fallback implementations are forbidden.
+
+Public fixtures compile as external clients. Package fixtures compile with the
+same checked-in package identity as `GiftUI`, solely to exercise package SPI;
+negative fixtures are always public so package access cannot mask a forbidden
+boundary.
 
 Generated output has one deterministic root:
 

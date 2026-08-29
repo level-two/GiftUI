@@ -197,4 +197,84 @@ final class GiftUITests: XCTestCase {
         XCTAssertEqual(event.ordinal.rawValue, 3)
         XCTAssertEqual(event.presentationRevision.rawValue, 4)
     }
+
+    func testNormalizedPointerRawWidthsAndEventLayoutAreBounded() {
+        XCTAssertEqual(MemoryLayout<PointerPhase>.size, 1)
+        XCTAssertEqual(MemoryLayout<InputSourceID>.size, 2)
+        XCTAssertEqual(MemoryLayout<PointerSequenceID>.size, 4)
+        XCTAssertEqual(MemoryLayout<InputOrdinal>.size, 4)
+        XCTAssertEqual(MemoryLayout<PresentationRevision>.size, 4)
+        XCTAssertLessThanOrEqual(MemoryLayout<NormalizedPointerEvent>.size, 32)
+    }
+
+    func testEveryPointerPhasePreservesMinAndMaxValues() {
+        let minimum = normalizedEvent(
+            phase: .down,
+            coordinate: .min,
+            source: .min,
+            correlation: .min
+        )
+        let middle = normalizedEvent(
+            phase: .move,
+            coordinate: 0,
+            source: 1,
+            correlation: 1
+        )
+        let maximum = normalizedEvent(
+            phase: .up,
+            coordinate: .max,
+            source: .max,
+            correlation: .max
+        )
+
+        XCTAssertEqual(PointerPhase.down.rawValue, 0)
+        XCTAssertEqual(PointerPhase.move.rawValue, 1)
+        XCTAssertEqual(PointerPhase.up.rawValue, 2)
+        XCTAssertEqual(minimum.position, Point(x: .min, y: .min))
+        XCTAssertEqual(minimum.source.rawValue, .min)
+        XCTAssertEqual(minimum.sequence.rawValue, .min)
+        XCTAssertEqual(minimum.ordinal.rawValue, .min)
+        XCTAssertEqual(minimum.presentationRevision.rawValue, .min)
+        XCTAssertEqual(middle.phase, .move)
+        XCTAssertEqual(maximum.position, Point(x: .max, y: .max))
+        XCTAssertEqual(maximum.source.rawValue, .max)
+        XCTAssertEqual(maximum.sequence.rawValue, .max)
+        XCTAssertEqual(maximum.ordinal.rawValue, .max)
+        XCTAssertEqual(maximum.presentationRevision.rawValue, .max)
+    }
+
+    func testNormalizedPointerValuesCopyWithoutSharedIdentity() {
+        let original = normalizedEvent(
+            phase: .up,
+            coordinate: 42,
+            source: 7,
+            correlation: 99
+        )
+        let copy = original
+
+        XCTAssertEqual(copy, original)
+        XCTAssertEqual(Set([original.source, copy.source]).count, 1)
+        XCTAssertEqual(Set([original.sequence, copy.sequence]).count, 1)
+        XCTAssertEqual(Set([original.ordinal, copy.ordinal]).count, 1)
+        XCTAssertEqual(
+            Set([original.presentationRevision, copy.presentationRevision]).count,
+            1
+        )
+    }
+
+    private func normalizedEvent(
+        phase: PointerPhase,
+        coordinate: GeometryScalar,
+        source: UInt16,
+        correlation: UInt32
+    ) -> NormalizedPointerEvent {
+        NormalizedPointerEvent(
+            phase: phase,
+            position: Point(x: coordinate, y: coordinate),
+            source: InputSourceID(rawValue: source),
+            sequence: PointerSequenceID(rawValue: correlation),
+            ordinal: InputOrdinal(rawValue: correlation),
+            presentationRevision: PresentationRevision(rawValue: correlation)
+        )
+    }
 }
