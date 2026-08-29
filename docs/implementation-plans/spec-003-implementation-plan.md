@@ -157,7 +157,7 @@ are reproducible before semantic implementation starts.
       detection, and compiled-module/product-link inspection. Reserve the
       approved future `GiftUIFailureExecution` edge without adding that target
       until SPEC-009 supplies its focused execution contract.
-- [ ] `T0.5` — Record a clean-checkout harness-readiness transcript proving the
+- [x] `T0.5` — Record a clean-checkout harness-readiness transcript proving the
       package graph, Core import, negative fixtures, root tests, standalone
       macOS-dynamic driver, and no-argument top-level gate all execute before
       Milestone 1.
@@ -482,3 +482,10 @@ acyclicity are checked against the fail-closed graph; synthetic unknown-edge
 and cycle regressions prove the checker fails. The future
 `GiftUIFailureExecution` edge is recorded as reserved and remains absent until
 SPEC-009 creates its focused execution contract. `T0.5` is next.
+
+`T0.5` is complete at clean revision `63fc738e949293874838c3c63acd0371a7002d28`.
+The checked-in [Milestone 0 readiness transcript](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-0/harness-readiness.md)
+records the exact package graph, Core boundary, positive and negative imports,
+17 passing root tests, standalone macOS-dynamic driver, and no-argument
+top-level gate. Milestone 0 is complete; `T1.1` is the next dependency-complete
+task.
