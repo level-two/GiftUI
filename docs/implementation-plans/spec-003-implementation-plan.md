@@ -178,7 +178,7 @@ has entered the core fact.
       `GiftUIContainment`, and `GiftUIFailureFact`. Test every raw value,
       unrestricted wrapper bit pattern, `(origin, condition)` identity, and
       the exact/maximal layouts.
-- [ ] `T1.2` — Implement `GiftUIOperationalKind`,
+- [x] `T1.2` — Implement `GiftUIOperationalKind`,
       `GiftUIOperationalFact`, conditionally `Sendable`/`Equatable`
       `GiftUIOutcome<Success>`, `GiftUIFailureAnnotation`, and the inline
       two-entry `GiftUIFailureAnnotations`. Prove that the generic carrier adds
@@ -496,3 +496,11 @@ failure fact. Focused tests exhaust every `UInt16` condition bit pattern,
 verify every frozen raw value and unique shared identity, preserve every fact
 field and `(origin, condition)` identity, enforce `Sendable`/value semantics,
 and check the exact or maximal layouts. `T1.2` is next.
+
+`T1.2` is complete: the Core leaf now owns the exact operational kind/fact,
+conditionally `Sendable`/`Equatable` three-category outcome, annotation value,
+and inline two-entry annotation store. Focused tests cover every tag, all
+outcome categories, conditional value semantics, ordered insertion and reads,
+out-of-range reads, and byte-for-byte unchanged storage after a refused third
+append while enforcing the 4-byte operational-fact and 20-byte annotation-
+store maxima. `T1.3` is next.
