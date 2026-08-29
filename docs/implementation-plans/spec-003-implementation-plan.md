@@ -202,7 +202,7 @@ has entered the core fact.
 invocation, every policy result is bounded, and operational health remains a
 finite correctness-bearing snapshot independent of diagnostics.
 
-- [ ] `T2.1` — Implement the exact disposition enum, option bits,
+- [x] `T2.1` — Implement the exact disposition enum, option bits,
       `GiftUIResidualPolicyInput<Context>` initializer, and residual policy
       protocol. Reject success, empty/unknown bits, zero limits, invalid or
       exhausted ordinals, forbidden retry kinds, and forbidden
@@ -521,3 +521,11 @@ imports/re-exports, and instance-allocation entry points. It separately
 requires `GiftUIOutcome<Success>` to retain its caller-owned generic success
 payload; generic metadata/retain support is not misreported as per-outcome
 allocation. Milestone 1 is complete and `T2.1` is next.
+
+`T2.1` is complete: Core exports the exact residual disposition, option set,
+failable policy input, and generic policy protocol. Exhaustive tests reject
+success, empty/unknown bits, zero limits, every ordinal at or beyond its
+limit, exhausted or forbidden retry, continued safety-not-proven failures,
+and non-terminal choices for runtime-scoped safety-not-proven failures. Valid
+inputs preserve every field, and option bits match disposition raw values.
+`T2.2` is next.

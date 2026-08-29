@@ -193,3 +193,95 @@ enum GiftUIFailureNormalization {
         )
     }
 }
+
+public enum GiftUIResidualDisposition: UInt8, Sendable {
+    case continueOperation = 0
+    case requestPacedRetry = 1
+    case markFacilityUnavailable = 2
+    case quiesceAffectedScope = 3
+    case invokeFatalHook = 4
+}
+
+public struct GiftUIAllowedDispositions: OptionSet, Sendable, Equatable {
+    public let rawValue: UInt8
+
+    public init(rawValue: UInt8) {
+        self.rawValue = rawValue
+    }
+
+    public static let continueOperation = Self(rawValue: 1 << GiftUIResidualDisposition.continueOperation.rawValue)
+    public static let requestPacedRetry = Self(rawValue: 1 << GiftUIResidualDisposition.requestPacedRetry.rawValue)
+    public static let markFacilityUnavailable = Self(rawValue: 1 << GiftUIResidualDisposition.markFacilityUnavailable.rawValue)
+    public static let quiesceAffectedScope = Self(rawValue: 1 << GiftUIResidualDisposition.quiesceAffectedScope.rawValue)
+    public static let invokeFatalHook = Self(rawValue: 1 << GiftUIResidualDisposition.invokeFatalHook.rawValue)
+}
+
+public struct GiftUIResidualPolicyInput<Context> {
+    public let outcome: GiftUIOutcome<Void>
+    public let context: Context
+    public let allowed: GiftUIAllowedDispositions
+    public let attemptOrdinal: UInt8
+    public let attemptLimit: UInt8
+
+    public init?(
+        outcome: GiftUIOutcome<Void>,
+        context: Context,
+        allowed: GiftUIAllowedDispositions,
+        attemptOrdinal: UInt8,
+        attemptLimit: UInt8
+    ) {
+        let allDeclared = GiftUIAllowedDispositions(rawValue: (1 << 5) - 1)
+        guard !allowed.isEmpty, allowed.subtracting(allDeclared).isEmpty else {
+            return nil
+        }
+        guard attemptLimit > 0, attemptOrdinal < attemptLimit else {
+            return nil
+        }
+
+        switch outcome {
+        case .success:
+            return nil
+        case let .operational(fact):
+            if allowed.contains(.requestPacedRetry) {
+                guard fact.kind == .backpressured || fact.kind == .retryableRefusal else {
+                    return nil
+                }
+                guard attemptOrdinal < attemptLimit - 1 else {
+                    return nil
+                }
+            }
+        case let .failure(fact):
+            guard !allowed.contains(.requestPacedRetry) else {
+                return nil
+            }
+            if fact.containment == .safetyNotProven {
+                guard !allowed.contains(.continueOperation) else {
+                    return nil
+                }
+                if fact.affectedScope == .runtime {
+                    let terminal: GiftUIAllowedDispositions = [
+                        .quiesceAffectedScope,
+                        .invokeFatalHook,
+                    ]
+                    guard allowed.subtracting(terminal).isEmpty else {
+                        return nil
+                    }
+                }
+            }
+        }
+
+        self.outcome = outcome
+        self.context = context
+        self.allowed = allowed
+        self.attemptOrdinal = attemptOrdinal
+        self.attemptLimit = attemptLimit
+    }
+}
+
+public protocol GiftUIResidualFailurePolicy {
+    associatedtype Context
+
+    mutating func disposition(
+        for input: GiftUIResidualPolicyInput<Context>
+    ) -> GiftUIResidualDisposition
+}
