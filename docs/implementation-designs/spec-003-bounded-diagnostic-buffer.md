@@ -137,5 +137,8 @@ buffer behavior.
 
 ## Code and Evidence Links
 
-The target, generator, generated source, tests, and capacity reports will be
-linked here when T3.2 lands.
+- [Generated inline buffer](../../Sources/GiftUIFailureDiagnostics/GiftUIFixedDiagnosticBuffer.swift)
+- [Deterministic generator](../../scripts/contracts/generate-spec-003-diagnostic-buffer.rb)
+- [Four-branch contract check](../../scripts/contracts/check-spec-003-diagnostic-buffer.sh)
+- [Focused tests](../../Tests/GiftUIFailureDiagnosticsTests/GiftUIFailureDiagnosticsTests.swift)
+- [Milestone 3 evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-3/diagnostic-buffer.md)

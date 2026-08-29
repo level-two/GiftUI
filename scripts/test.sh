@@ -105,6 +105,8 @@ export CLANG_MODULE_CACHE_PATH="${report_dir}/clang-cache"
 export SWIFTPM_MODULECACHE_OVERRIDE="${report_dir}/swiftpm-cache"
 run_check root-tests swift test --package-path "${PROJECT_ROOT}" \
     --scratch-path "${report_dir}/swiftpm"
+run_check spec-003-diagnostic-buffer \
+    "${PROJECT_ROOT}/scripts/contracts/check-spec-003-diagnostic-buffer.sh"
 
 for selected_profile in "${selected_profiles[@]}"; do
     matched=0

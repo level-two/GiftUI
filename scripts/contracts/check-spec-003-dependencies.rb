@@ -49,4 +49,11 @@ product = products["GiftUIFailureCore"] || fail_check("GiftUIFailureCore product
 fail_check("GiftUIFailureCore product must be a library") unless product["type"].key?("library")
 fail_check("GiftUIFailureCore product target differs") unless product["targets"] == ["GiftUIFailureCore"]
 
+diagnostics_product = products["GiftUIFailureDiagnostics"] ||
+  fail_check("GiftUIFailureDiagnostics product is missing")
+fail_check("GiftUIFailureDiagnostics product must be a library") unless
+  diagnostics_product["type"].key?("library")
+fail_check("GiftUIFailureDiagnostics product target differs") unless
+  diagnostics_product["targets"] == ["GiftUIFailureDiagnostics"]
+
 puts "SPEC-003 dependency check passed: #{active.length} active and #{reserved.length} reserved targets."

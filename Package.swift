@@ -10,10 +10,18 @@ let package = Package(
     products: [
         .library(name: "GiftUI", targets: ["GiftUI"]),
         .library(name: "GiftUIFailureCore", targets: ["GiftUIFailureCore"]),
+        .library(
+            name: "GiftUIFailureDiagnostics",
+            targets: ["GiftUIFailureDiagnostics"]
+        ),
     ],
     targets: [
         .target(name: "GiftUI"),
         .target(name: "GiftUIFailureCore"),
+        .target(
+            name: "GiftUIFailureDiagnostics",
+            dependencies: ["GiftUIFailureCore"]
+        ),
         .testTarget(
             name: "GiftUITests",
             dependencies: ["GiftUI"]
@@ -21,6 +29,10 @@ let package = Package(
         .testTarget(
             name: "GiftUIFailureCoreTests",
             dependencies: ["GiftUIFailureCore"]
+        ),
+        .testTarget(
+            name: "GiftUIFailureDiagnosticsTests",
+            dependencies: ["GiftUIFailureDiagnostics"]
         ),
     ],
     swiftLanguageModes: [.v6]

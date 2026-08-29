@@ -240,7 +240,7 @@ identical correctness outputs.
       record, sink-result, and sink declarations with specified masks, flags,
       zero defaults, projection fields, and 24-byte record maximum. Prove
       constant-time selection before full record construction.
-- [ ] `T3.2` — Add the optional first-party fixed diagnostic buffer in a
+- [x] `T3.2` — Add the optional first-party fixed diagnostic buffer in a
       downstream adapter target that imports `GiftUIFailureCore` and is never
       imported by a correctness-bearing target. Implement capacity zero and
       profile defaults 64/16/16/8, admitted-order preservation, drop-new
@@ -458,6 +458,12 @@ Draft created on 2026-08-29 and accepted by the maintainer as `ready` on
 defines the ordered compile-fixture registry, shared semantic-corpus schema,
 matched resource-harness inputs, deterministic generated/report roots, and
 the boundary between hardware-free, cross-built, and connected-target claims.
+`T3.2` is complete: `GiftUIFailureDiagnostics` is an optional downstream
+consumer with generated inline capacity branches for 0, 8, 16, and 64 records.
+The checked-in branch matrix proves drop-new saturation, admitted-order
+preservation, saturating loss accounting, stale-generation rejection, and
+fail-closed conflicting configuration; see the
+[Milestone 3 evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-3/diagnostic-buffer.md).
 That fixture contract prepares the failure-core leaf needed by the
 failure-owned portion of active SPEC-002 Milestone 4 without waiting for later
 execution, capability, host, or connected-target integrations.

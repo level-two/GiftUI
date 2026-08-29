@@ -7,6 +7,14 @@ active:
     type: test
     dependencies:
       - GiftUIFailureCore
+  GiftUIFailureDiagnostics:
+    type: regular
+    dependencies:
+      - GiftUIFailureCore
+  GiftUIFailureDiagnosticsTests:
+    type: test
+    dependencies:
+      - GiftUIFailureDiagnostics
 reserved:
   GiftUIFailureExecution:
     prerequisite: SPEC-009
