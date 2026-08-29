@@ -2,7 +2,7 @@
 spec: SPEC-002
 feature: giftui-mvp-architecture
 title: SPEC-002 Implementation Plan
-status: draft
+status: ready
 owners:
   - codex
 created: 2026-08-28
@@ -51,24 +51,28 @@ capability vocabulary by approved
 input admission, dispatch, layout, backend, and host policy by their contracts.
 
 Implementation begins from a clean MVP baseline rather than by incrementally
-reshaping the proof-of-concept package. The immutable `PoC` Git tag at commit
-`2b2837a` is the sole implementation baseline for migration evidence. No source,
-test, product, target, firmware application, or compatibility shim is retained
-merely because it worked in the proof of concept.
+reshaping the proof-of-concept package. The immutable annotated `PoC` Git tag
+object is `2b2837a66b94df38c7b74ead33ebbb54aa08a06d` and dereferences to commit
+`d5d6330432caa7c983d8dba35cf9f23c3800860b`; that commit is the sole
+implementation baseline for migration evidence. No source, test, product,
+target, firmware application, or compatibility shim is retained merely
+because it worked in the proof of concept.
 
 The clean-baseline cut is a repository-wide coordination operation. This plan
 owns the SPEC-002 portion: disposition evidence for Foundation declarations,
 replacement of the package/Foundation baseline, contract fixtures, and proof
 that no legacy Foundation surface survives. Removal of code or tests governed
 by another Specification requires a ready owning plan or an explicit
-maintainer-approved removal disposition. Removal of legacy documents requires
-the separately reviewed governance change described in Milestone 0; this plan
-does not amend documentation-preservation policy.
+maintainer-approved removal disposition. Removal of legacy documents follows
+the tagged-history retirement policy in
+[Documentation Rules](../engineering/DOCUMENTATION_RULES.md#legacy-and-historical-documents)
+and requires link repair plus the exact path-level gate in Milestone 0.
 
 ## Current Repository State
 
-- The immutable `PoC` tag at commit `2b2837a` contains the old root
-  `Package.swift`, `Sources/`, `Tests/`, PoC firmware applications, legacy
+- The immutable annotated `PoC` tag object `2b2837a66b94df38c7b74ead33ebbb54aa08a06d`
+  dereferences to commit `d5d6330432caa7c983d8dba35cf9f23c3800860b`,
+  which contains the old root `Package.swift`, `Sources/`, `Tests/`, PoC firmware applications, legacy
   `docs/GiftUI_*.md` documents, and the original cross-target scripts. These
   paths are historical evidence, not the starting structure of the MVP
   implementation.
@@ -122,6 +126,29 @@ Retention does not adopt an implementation technique. Any preserved script or
 fixture that imports an old GiftUI module, names a removed product, embeds an
 old source list, or asserts an obsolete contract must be rewritten or removed.
 
+## Cross-Spec Removal Disposition
+
+The clean cut removes the PoC realizations below; it does not claim that their
+approved replacement contracts are implemented. `T0.3` expands these groups
+into exact paths and `T0.4` verifies that every path has exactly one row. A
+later owning plan may recreate only what its approved Specification requires.
+
+| PoC area | Replacement owner | Clean-baseline disposition |
+| --- | --- | --- |
+| Geometry, portable scalar/arithmetic, normalized pointer values, and their tests | SPEC-002 | Remove and recreate only the SPEC-002 declarations and evidence in this plan |
+| Ad hoc failure and capability behavior embedded in runtime/backend/platform code | SPEC-003 and SPEC-004 | Remove; retain no implementation until the owning plans create their foundational targets and adapters |
+| View composition, primitives, stacks, layout, rendering declarations, interaction declarations, and related tests | SPEC-006, SPEC-007, SPEC-008, SPEC-011, and SPEC-012 as applicable | Remove; recreate only through the owning ready plans |
+| Built-in font and text-resource implementation | SPEC-005, with downstream use governed by SPEC-007, SPEC-008, SPEC-014, and SPEC-015 | Remove; do not treat PoC font tables or raster behavior as the approved resource contract |
+| Dynamic/static runtimes, state stores, execution machinery, and related tests | SPEC-009, SPEC-010, and SPEC-013 | Remove; recreate only through the owning ready plans |
+| Framebuffer/RGB565 raster backends and their tests | SPEC-014 | Remove; retain only generic environment and artifact-inspection mechanics |
+| Linux C shim, macOS simulator, Linux/Raspberry Pi platform, display/touch integrations, and their tests | SPEC-011, SPEC-014, and SPEC-015 at their respective seams | Remove; retain no platform or driver implementation, only audited toolchain/doctor/probe infrastructure |
+| Thermostat products, portable views, examples, defaults, and documentation | No MVP replacement owner | Remove without replacement; the Signal Analyzer is the MVP reference application |
+| nRF52840 PoC firmware applications and hard-coded layer compilation | SPEC-014 and SPEC-015 for future production assembly | Remove; retain only the hardware-free environment probe application |
+
+This table is the coordinated removal-only disposition for the listed PoC
+areas. It does not authorize an unenumerated deletion: the maintainer must
+confirm the exact `T0.3` path manifest before `T0.5` executes.
+
 ## Acceptance-Criterion Matrix
 
 | Criterion | Implementation tasks | Evidence | Status |
@@ -141,18 +168,20 @@ old source list, or asserts an obsolete contract must be rewritten or removed.
 
 ### Milestone 0: Re-baseline the Repository for MVP
 
-**Entry conditions:** SPEC-002 remains `approved`; tag `PoC` resolves to the
-maintainer-confirmed final PoC commit; the tag is available in the repository's
-durable remote; and the maintainer has approved the exact reset boundary.
+**Entry conditions:** SPEC-002 remains `approved`; annotated tag `PoC` resolves
+to commit `d5d6330432caa7c983d8dba35cf9f23c3800860b`; and both the tag object
+and dereferenced commit are available in the repository's durable remote.
 
 **Exit evidence:** The PoC implementation is absent from the active tree, the
 repository has a minimal buildable SPEC-002 package baseline, reusable
 environment probes remain operational, and every removed Foundation item is
 recoverable and dispositioned against tag `PoC`.
 
-- [ ] `T0.1` — Verify and record the immutable PoC baseline: tag name, commit
-      `2b2837a`, remote availability, tree checksum or complete tracked-path
-      inventory, and retrieval commands. Fail the reset if the durable tag
+- [ ] `T0.1` — Verify and record the immutable PoC baseline: annotated tag
+      object `2b2837a66b94df38c7b74ead33ebbb54aa08a06d`, dereferenced commit
+      `d5d6330432caa7c983d8dba35cf9f23c3800860b`, remote availability, tree
+      checksum or complete tracked-path inventory, and retrieval commands.
+      Fail the reset if the durable tag
       cannot reproduce `Package.swift`, `Sources/`, `Tests/`, firmware, scripts,
       and legacy documents selected for removal.
 - [ ] `T0.2` — Before deletion, create the PF-008 migration ledger under
@@ -168,12 +197,14 @@ recoverable and dispositioned against tag `PoC`.
       probing, generic build/artifact inspection, or governance validation and
       that it does not encode an old GiftUI API, target graph, product, sample,
       or architecture.
-- [ ] `T0.4` — Obtain coordinated dispositions before the cut. Every non-
-      Foundation source/test/firmware path must be covered by its owning
-      Specification plan or explicit maintainer-approved removal-only record.
-      Amend the documentation-preservation rule and repair lifecycle links
-      before removing legacy `docs/GiftUI_*.md`; SPEC-002 does not authorize
-      either action by itself.
+- [ ] `T0.4` — Apply the `Cross-Spec Removal Disposition` to the exact `T0.3`
+      manifest. Give every non-Foundation source/test/firmware path one owning
+      Specification or the explicit no-replacement disposition; record that no
+      implementation is retained and that later recreation belongs to an
+      owning ready plan. Repair every active link to legacy `docs/GiftUI_*.md`
+      using current authority or the historical-baseline pointer. Obtain
+      maintainer confirmation of the complete exact-path manifest before
+      `T0.5`; additions or ambiguous paths stop the cut.
 - [ ] `T0.5` — Execute one reviewable clean-baseline cut: remove the old root
       manifest, PoC source and test targets, Thermostat material, PoC
       implementation firmware, hard-coded layer compilation, and all approved
@@ -241,8 +272,10 @@ implementation begins.
       contract driver across all four profiles. Use a checked-in ordered driver
       registry, common report roots, deterministic exit aggregation, and clear
       missing-toolchain/SDK/driver diagnostics. Register
-      `scripts/contracts/run-spec-002.sh` first; every later implementation plan
-      must register its driver without changing the top-level invocation.
+      `scripts/contracts/run-spec-002.sh` first; follow the repository-wide
+      registration rule in
+      [Implementation Documentation](../engineering/IMPLEMENTATION_DOCUMENTATION.md#traceability)
+      without changing the top-level invocation.
       Preserve each contract driver's exact command, compiler checks, metadata,
       and evidence output rather than hiding or weakening them. Do not deploy,
       access a remote Raspberry Pi, run connected-board tests, or flash an nRF
@@ -429,13 +462,12 @@ evidence, or nRF flashing. Those claims remain downstream conformance work.
 
 ### Upstream blockers
 
-- The tagged-history preservation amendment and exact repository-wide removal
-  scope require explicit maintainer approval. Legacy documents cannot be
-  deleted while the current preservation rule and active lifecycle links still
-  require them.
-- Non-Foundation PoC code and tests cannot be removed under SPEC-002 authority
-  alone. Each affected owner needs a ready plan or an explicit coordinated
-  removal-only disposition before `T0.5`.
+- The tagged-history preservation amendment is now recorded. Legacy documents
+  still cannot be deleted until `T0.4` repairs their active links and the
+  maintainer confirms the exact `T0.3` removal manifest.
+- The cross-Spec table records the coordinated removal-only disposition for
+  non-Foundation PoC code and tests. Any path not covered unambiguously by the
+  exact `T0.3` manifest remains a blocker before `T0.5`.
 - The approved SPEC-003/004 owner targets do not yet exist. `T4.1`/`T4.2`, and
   complete PF-002/PF-005/PF-009 evidence, cannot finish until their own plans
   produce those targets. SPEC-002 must not create substitute vocabularies.
@@ -482,6 +514,10 @@ evidence, or nRF flashing. Those claims remain downstream conformance work.
 ## Completion Record
 
 No task has started. All tasks are pending, no design note or conformance
-report exists, and this plan remains `draft` until the SPEC-003/004 coordination
-path and task boundaries are reviewed as executable. Plan completion will not
-by itself mark SPEC-002 `implemented`.
+report exists, and this plan is `ready`: Milestones 0 through 3 can proceed in
+order without inventing architectural or contractual intent. The explicit
+path-manifest confirmation before `T0.5` is an execution safety gate, and
+Milestone 4 remains dependency-blocked until SPEC-003/004 supply their owner
+targets. No design note is required before Milestone 0; create one only if a
+listed trigger is reached. Plan completion will not by itself mark SPEC-002
+`implemented`.

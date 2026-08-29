@@ -109,6 +109,17 @@ Tasks, commits, source files, tests, build logs, and measurements MAY be linked
 from implementation records. Evidence links MUST be stable enough for a later
 reviewer to reproduce or inspect the claimed result.
 
+When the repository provides a single top-level test/check runner, every
+Implementation Plan that introduces a contract driver MUST register that
+driver with the top-level runner while preserving the driver's exact
+standalone invocation. Registration MUST be explicit and checked in; the
+top-level runner MUST NOT silently discover, skip, weaken, or reinterpret a
+required driver, profile, compiler check, failure, or evidence output. Its
+default invocation SHOULD remain the fast local gate, with slower and cross-
+profile checks selected explicitly. Hardware-free aggregation MUST NOT imply
+connected-hardware conformance or perform deployment, remote access, or
+flashing.
+
 ## Decision routing
 
 Use this test whenever planning or implementation exposes a choice:

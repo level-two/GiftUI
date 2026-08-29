@@ -331,9 +331,30 @@ roadmaps, and implementation plans without replacing their distinct roles.
 
 ## Legacy and historical documents
 
-Preserve mixed legacy documents as source material. Do not silently rewrite
-their reasoning or assign modern approval states by inference. New lifecycle
-artifacts SHOULD link to useful legacy sources and state what was reused.
+Preserve the reasoning and provenance of mixed legacy documents as source
+material. Do not silently rewrite their reasoning or assign modern approval
+states by inference. New lifecycle artifacts SHOULD link to useful legacy
+sources and state what was reused.
+
+Legacy material MAY be retired from the active tree when keeping it beside
+current documentation would materially mislead implementation, provided that
+all of the following are true:
+
+- an immutable annotated Git tag and its dereferenced commit are recorded and
+  available from the repository's durable remote;
+- a tracked-path inventory or equivalent reproducible record identifies the
+  retired material and how to retrieve it;
+- no current authority or required operational instruction exists only in the
+  retired material;
+- active links are replaced with current authority or a minimal historical-
+  baseline pointer before removal; and
+- the retirement change records the exact paths removed and does not copy the
+  legacy tree into an active archive directory.
+
+Availability through that durable tagged history satisfies preservation for
+retired mixed legacy material. This exception does not permit deletion of
+Proposal, RFC, ADR, Specification, Future Work, Exploration, Spike, or
+implementation-record artifacts governed by this lifecycle.
 
 Rejected, deprecated, and superseded artifacts remain available. A successor
 changes current authority; it does not erase history.
