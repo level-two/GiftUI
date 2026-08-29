@@ -210,8 +210,9 @@ runtime, backend, platform, driver, or Signal Analyzer conformance.
 and its RFCs remain `approved`.
 
 **Exit evidence:** The clean package has a contract-fixture skeleton, exact
-dependency baseline, and four-profile driver surface before substantive
-Foundation implementation begins.
+dependency baseline, four-profile SPEC-002 driver surface, and one stable
+repository-level test entry point before substantive Foundation implementation
+begins.
 
 - [ ] `T1.1` — Create the checked-in SPEC-002 fixture layout, deterministic
       report locations, positive/negative compile-fixture conventions, and
@@ -230,6 +231,21 @@ Foundation implementation begins.
       `scripts/contracts/run-spec-002.sh`, shared report locations, deterministic
       exits, and compiler/target/SDK/flags/command/revision metadata capture.
       Missing pins or mismatched compilers must fail rather than fall back.
+- [ ] `T1.5` — Create `scripts/test.sh` as the single repository-level test and
+      check entry point. With no arguments it runs the fast macOS-dynamic path:
+      governance validation, root package/unit tests, and every registered
+      macOS-dynamic contract driver. It also accepts the explicit profiles
+      `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, and
+      `nrf52840-embedded`, plus `all-hardware-free` to run every registered
+      contract driver across all four profiles. Use a checked-in ordered driver
+      registry, common report roots, deterministic exit aggregation, and clear
+      missing-toolchain/SDK/driver diagnostics. Register
+      `scripts/contracts/run-spec-002.sh` first; every later implementation plan
+      must register its driver without changing the top-level invocation.
+      Preserve each contract driver's exact command, compiler checks, metadata,
+      and evidence output rather than hiding or weakening them. Do not deploy,
+      access a remote Raspberry Pi, run connected-board tests, or flash an nRF
+      target from this runner.
 
 ### Milestone 2: Implement Checked Portable Geometry
 
@@ -373,15 +389,21 @@ SPEC-002 conformance report can be reviewed.
 
 ## Integration and Validation Order
 
-1. Run host Foundation unit and package-SPI compile fixtures.
-2. Run the clean Foundation suite and prove the PoC public surfaces are absent.
-3. Integrate SPEC-003 adapters/SPEC-004 import fixtures and rerun the exact
+1. Run `scripts/test.sh` with no arguments after the clean bootstrap and after
+   every milestone; it is the stable fast local gate.
+2. Run host Foundation unit and package-SPI compile fixtures through the
+   registered SPEC-002 driver.
+3. Run the clean Foundation suite and prove the PoC public surfaces are absent.
+4. Integrate SPEC-003 adapters/SPEC-004 import fixtures and rerun the exact
    graph check whenever `Package.swift` changes.
-4. Run macOS dynamic, then macOS static.
-5. Run Raspberry Pi ARMv6 cross-build/inspection after its doctor/probe.
-6. Run nRF Embedded cross-build/inspection after its doctor/probe, including
+5. Run macOS dynamic, then macOS static through `scripts/test.sh` profile
+   selection.
+6. Run Raspberry Pi ARMv6 cross-build/inspection after its doctor/probe.
+7. Run nRF Embedded cross-build/inspection after its doctor/probe, including
    VFP ABI inspection where the fixture links an ELF.
-7. Compare transcripts, layouts, allocations, section reports, and link maps.
+8. Run `scripts/test.sh --profile all-hardware-free` and compare transcripts,
+   layouts, allocations, section reports, and link maps before conformance
+   review.
 
 No task requires deployment, a remote `armv6l` host, connected Pi display/input
 evidence, or nRF flashing. Those claims remain downstream conformance work.
@@ -419,6 +441,10 @@ evidence, or nRF flashing. Those claims remain downstream conformance work.
 - Removing old tests eliminates a convenient regression net. Contract tests
   must be created from approved requirements rather than copied expectations
   before new implementation claims begin.
+- A top-level runner can conceal skipped suites or weaken exact per-Spec
+  commands if it relies on implicit discovery or normalizes failures. Use the
+  checked-in registry, fail closed for requested profiles, and retain each
+  driver's exact metadata and report output.
 - Package input values must be visible to sibling targets without becoming
   Client API; compile both sides under every supported compiler.
 - Source allow-lists miss re-exports; PF-005 requires compiled evidence.
