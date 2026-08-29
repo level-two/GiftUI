@@ -230,6 +230,110 @@ final class GiftUIFailureCoreTests: XCTestCase {
         requireSendable(GiftUIFailureAnnotations.self)
     }
 
+    func testContainmentNormalizationIsExhaustivelyConservative() {
+        for rawValue in UInt8.min ... UInt8.max {
+            let fact = GiftUIFailureNormalization.normalizeFailure(
+                condition: .invalidValue,
+                origin: .backend,
+                affectedScope: .candidateFrame,
+                producerContainmentRawValue: rawValue
+            )
+
+            XCTAssertEqual(fact.condition, .invalidValue)
+            XCTAssertEqual(fact.origin, .backend)
+            XCTAssertEqual(fact.affectedScope, .candidateFrame)
+            XCTAssertEqual(
+                fact.containment,
+                rawValue == GiftUIContainment.contained.rawValue
+                    ? .contained
+                    : .safetyNotProven
+            )
+        }
+    }
+
+    func testUnknownProducerFailureIsAlwaysSafetyNotProven() {
+        for origin in allOrigins {
+            for affectedScope in allAffectedScopes {
+                let fact = GiftUIFailureNormalization.unknownProducerFailure(
+                    origin: origin,
+                    affectedScope: affectedScope
+                )
+
+                XCTAssertEqual(fact.condition, .unknownProducerCondition)
+                XCTAssertEqual(fact.origin, origin)
+                XCTAssertEqual(fact.affectedScope, affectedScope)
+                XCTAssertEqual(fact.containment, .safetyNotProven)
+            }
+        }
+    }
+
+    func testPropagationWithoutProofPreservesEveryFactField() {
+        for origin in allOrigins {
+            for affectedScope in allAffectedScopes {
+                for containment in allContainments {
+                    let fact = GiftUIFailureFact(
+                        condition: .invalidProvenance,
+                        origin: origin,
+                        affectedScope: affectedScope,
+                        containment: containment
+                    )
+
+                    XCTAssertEqual(GiftUIFailureNormalization.propagate(fact), fact)
+                }
+            }
+        }
+    }
+
+    func testExplicitProvenScopeMappingPreservesIdentityAndContainment() {
+        for originalScope in allAffectedScopes {
+            for provenScope in allAffectedScopes {
+                let fact = GiftUIFailureFact(
+                    condition: .capacityExhausted,
+                    origin: .rendering,
+                    affectedScope: originalScope,
+                    containment: .safetyNotProven
+                )
+                let propagated = GiftUIFailureNormalization.propagate(
+                    fact,
+                    provenAffectedScope: provenScope
+                )
+
+                XCTAssertEqual(propagated.condition, fact.condition)
+                XCTAssertEqual(propagated.origin, fact.origin)
+                XCTAssertEqual(propagated.affectedScope, provenScope)
+                XCTAssertEqual(propagated.containment, .safetyNotProven)
+            }
+        }
+    }
+
+    private var allOrigins: [GiftUIFailureOrigin] {
+        [
+            .foundation,
+            .capability,
+            .semantic,
+            .layout,
+            .rendering,
+            .execution,
+            .observableState,
+            .interaction,
+            .backend,
+            .presentationIntegration,
+            .inputIntegration,
+            .hostComposition,
+            .displayDriver,
+            .inputDriver,
+            .transport,
+        ]
+    }
+
+    private var allAffectedScopes: [GiftUIAffectedScope] {
+        [.operation, .activeCycle, .candidateFrame, .component, .runtime]
+    }
+
+    private var allContainments: [GiftUIContainment] {
+        [.contained, .safetyNotProven]
+    }
+
     private func requireSendable<T: Sendable>(_: T.Type) {
     }
 

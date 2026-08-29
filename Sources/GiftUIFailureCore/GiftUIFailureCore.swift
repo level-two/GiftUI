@@ -151,3 +151,45 @@ public struct GiftUIFailureAnnotations: Sendable, Equatable {
         }
     }
 }
+
+enum GiftUIFailureNormalization {
+    static func normalizeFailure(
+        condition: GiftUIConditionID,
+        origin: GiftUIFailureOrigin,
+        affectedScope: GiftUIAffectedScope,
+        producerContainmentRawValue: UInt8
+    ) -> GiftUIFailureFact {
+        GiftUIFailureFact(
+            condition: condition,
+            origin: origin,
+            affectedScope: affectedScope,
+            containment: producerContainmentRawValue == GiftUIContainment.contained.rawValue
+                ? .contained
+                : .safetyNotProven
+        )
+    }
+
+    static func propagate(
+        _ fact: GiftUIFailureFact,
+        provenAffectedScope: GiftUIAffectedScope? = nil
+    ) -> GiftUIFailureFact {
+        GiftUIFailureFact(
+            condition: fact.condition,
+            origin: fact.origin,
+            affectedScope: provenAffectedScope ?? fact.affectedScope,
+            containment: fact.containment
+        )
+    }
+
+    static func unknownProducerFailure(
+        origin: GiftUIFailureOrigin,
+        affectedScope: GiftUIAffectedScope
+    ) -> GiftUIFailureFact {
+        GiftUIFailureFact(
+            condition: .unknownProducerCondition,
+            origin: origin,
+            affectedScope: affectedScope,
+            containment: .safetyNotProven
+        )
+    }
+}

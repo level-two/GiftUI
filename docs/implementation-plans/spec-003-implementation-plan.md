@@ -184,7 +184,7 @@ has entered the core fact.
       two-entry `GiftUIFailureAnnotations`. Prove that the generic carrier adds
       no allocation and that annotation refusal preserves order, storage, and
       every core-fact field.
-- [ ] `T1.3` — Implement pure conservative normalization and propagation test
+- [x] `T1.3` — Implement pure conservative normalization and propagation test
       seams. Exhaustively map contained, safety-not-proven, unknown, and richer
       fixture values; prove origin/condition preservation, no scope narrowing
       without fixture-backed proof, and no containment upgrade.
@@ -504,3 +504,11 @@ outcome categories, conditional value semantics, ordered insertion and reads,
 out-of-range reads, and byte-for-byte unchanged storage after a refused third
 append while enforcing the 4-byte operational-fact and 20-byte annotation-
 store maxima. `T1.3` is next.
+
+`T1.3` is complete: an internal pure fixture seam normalizes the complete
+`UInt8` producer-containment domain, maps only raw `contained` to portable
+`contained`, and maps safety-not-proven, unknown, and richer values
+conservatively. Exhaustive tests preserve condition/origin/scope during
+normalization, preserve every fact field during ordinary propagation, permit
+scope replacement only through the explicitly proof-labeled seam, and never
+upgrade safety-not-proven containment. `T1.4` is next.
