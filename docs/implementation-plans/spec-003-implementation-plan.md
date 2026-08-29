@@ -172,7 +172,7 @@ visibility, raw values, finite representation, conditional conformance, and
 conservative propagation semantics; no execution identity or product policy
 has entered the core fact.
 
-- [ ] `T1.1` — Implement the exact public, value-semantic, `Sendable`, and
+- [x] `T1.1` — Implement the exact public, value-semantic, `Sendable`, and
       `Equatable` core declarations: `GiftUIConditionID`, shared condition
       constants, `GiftUIFailureOrigin`, `GiftUIAffectedScope`,
       `GiftUIContainment`, and `GiftUIFailureFact`. Test every raw value,
@@ -489,3 +489,10 @@ records the exact package graph, Core boundary, positive and negative imports,
 17 passing root tests, standalone macOS-dynamic driver, and no-argument
 top-level gate. Milestone 0 is complete; `T1.1` is the next dependency-complete
 task.
+
+`T1.1` is complete: `GiftUIFailureCore` now exports the exact condition-ID
+wrapper and shared constants, origin/scope/containment tags, and immutable
+failure fact. Focused tests exhaust every `UInt16` condition bit pattern,
+verify every frozen raw value and unique shared identity, preserve every fact
+field and `(origin, condition)` identity, enforce `Sendable`/value semantics,
+and check the exact or maximal layouts. `T1.2` is next.
