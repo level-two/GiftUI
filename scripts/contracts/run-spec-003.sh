@@ -275,12 +275,16 @@ run_macos() {
     record_image candidate-library "${image}"
     record_command otool -L "${image}"
     otool -L "${image}" >"${report_dir}/build/product-links.txt"
+    record_command nm -u "${image}"
+    nm -u "${image}" >"${report_dir}/build/undefined-symbols.txt"
     record_command "${SCRIPT_DIR}/check-spec-003-core-boundary.rb" \
         "${report_dir}/build/GiftUIFailureCore.swiftinterface" \
-        "${report_dir}/build/product-links.txt"
+        "${report_dir}/build/product-links.txt" \
+        "${report_dir}/build/undefined-symbols.txt"
     "${SCRIPT_DIR}/check-spec-003-core-boundary.rb" \
         "${report_dir}/build/GiftUIFailureCore.swiftinterface" \
-        "${report_dir}/build/product-links.txt" >>"${log_path}" 2>&1
+        "${report_dir}/build/product-links.txt" \
+        "${report_dir}/build/undefined-symbols.txt" >>"${log_path}" 2>&1
     run_fixture_set "${compiler}" "${report_dir}/build" \
         -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
         -O -whole-module-optimization "${profile_flag}"

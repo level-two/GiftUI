@@ -21,13 +21,14 @@ def fail_check(message)
   exit 1
 end
 
-fail_check("expected interface and product-link paths") unless ARGV.length == 2
-interface_path, links_path = ARGV
+fail_check("expected interface, product-link, and undefined-symbol paths") unless ARGV.length == 3
+interface_path, links_path, symbols_path = ARGV
 
 begin
   sources = Dir.glob(File.join(SOURCE_ROOT, "**/*.swift")).sort.map { |path| File.read(path) }.join("\n")
   interface = File.read(interface_path)
   links = File.read(links_path)
+  symbols = File.read(symbols_path)
 rescue Errno::ENOENT => error
   fail_check(error.message)
 end
@@ -48,4 +49,37 @@ forbidden_links = FORBIDDEN_MODULES.select do |name|
 end
 fail_check("forbidden product links: #{forbidden_links.sort.inspect}") unless forbidden_links.empty?
 
-puts "SPEC-003 Core boundary check passed: no re-export, upward import, or forbidden product link."
+forbidden_value_tokens = {
+  "string" => /\b(?:Swift\.)?String\b/,
+  "array" => /\b(?:Swift\.)?Array\s*</,
+  "dictionary" => /\b(?:Swift\.)?Dictionary\s*</,
+  "set" => /\b(?:Swift\.)?Set\s*</,
+  "existential" => /\bany\s+[A-Za-z_]/,
+  "platform-native error" => /\b(?:NSError|CFError|Error)\b/,
+  "reflection" => /\b(?:Mirror|_typeByName)\b/,
+  "exception" => /\b(?:throw|throws|rethrows|catch)\b/,
+}.freeze
+found_tokens = forbidden_value_tokens.keys.select { |name| combined.match?(forbidden_value_tokens.fetch(name)) }
+fail_check("forbidden common-value facilities: #{found_tokens.inspect}") unless found_tokens.empty?
+
+closure_storage = sources.each_line.select do |line|
+  line.match?(/\b(?:let|var)\b.*:\s*(?:@escaping\s*)?\([^)]*\)\s*->/)
+end
+fail_check("closure storage is forbidden") unless closure_storage.empty?
+
+forbidden_binary_symbols = %w[
+  _malloc
+  _calloc
+  _realloc
+  _swift_slowAlloc
+  _swift_allocObject
+  _swift_bridgeObjectRetain
+].select { |symbol| symbols.include?(symbol) }
+fail_check("forbidden instance-allocation symbols: #{forbidden_binary_symbols.inspect}") unless forbidden_binary_symbols.empty?
+
+outcome_contract = interface.include?("public enum GiftUIOutcome<Success>") &&
+  interface.include?("case success(Success)")
+fail_check("generic success payload is not retained as caller-owned Success") unless outcome_contract
+
+puts "SPEC-003 Core boundary check passed: no re-export, upward import, forbidden product link, " \
+     "common reference facility, closure storage, or instance-allocation symbol; generic Success remains caller-owned."

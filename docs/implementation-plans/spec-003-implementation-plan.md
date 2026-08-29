@@ -188,7 +188,7 @@ has entered the core fact.
       seams. Exhaustively map contained, safety-not-proven, unknown, and richer
       fixture values; prove origin/condition preservation, no scope narrowing
       without fixture-backed proof, and no containment upgrade.
-- [ ] `T1.4` — Add source/interface/binary audits excluding strings,
+- [x] `T1.4` — Add source/interface/binary audits excluding strings,
       collections, closures, existentials, platform-native errors, reflection,
       exceptions, dynamic registries, and upward imports from the common
       values. Retain a generic success payload as caller-owned and outside the
@@ -512,3 +512,12 @@ conservatively. Exhaustive tests preserve condition/origin/scope during
 normalization, preserve every fact field during ordinary propagation, permit
 scope replacement only through the explicitly proof-labeled seam, and never
 upgrade safety-not-proven containment. `T1.4` is next.
+
+`T1.4` is complete: every optimized macOS profile now audits Core source,
+the emitted public interface, linked products, and undefined binary symbols.
+The audit rejects strings, collections, closure storage, existentials,
+platform-native errors, reflection, exceptions, dynamic registries, upward
+imports/re-exports, and instance-allocation entry points. It separately
+requires `GiftUIOutcome<Success>` to retain its caller-owned generic success
+payload; generic metadata/retain support is not misreported as per-outcome
+allocation. Milestone 1 is complete and `T2.1` is next.
