@@ -259,7 +259,7 @@ implementation begins.
       `swift package dump-package` target set, including empty dependency lists,
       plus exact-set/direct-edge comparison and an independent cycle check.
       Newly added targets must fail closed until reviewed.
-- [ ] `T1.4` — Create the exact four-profile command surface at
+- [x] `T1.4` — Create the exact four-profile command surface at
       `scripts/contracts/run-spec-002.sh`, shared report locations, deterministic
       exits, and compiler/target/SDK/flags/command/revision metadata capture.
       Missing pins or mismatched compilers must fail rather than fall back.
@@ -558,6 +558,13 @@ test failures.
 and a fail-closed checker that compares target names, target types, and direct
 target edges from `swift package dump-package` before independently checking
 both the allow-list and actual graphs for cycles.
+`T1.4` adds the exact four-profile
+[`run-spec-002.sh`](../../scripts/contracts/run-spec-002.sh) surface. Each
+profile owns a replace-on-rerun report directory and records its complete
+compiler identity, target, SDK/pins, optimization/profile flags, commands,
+repository revision, log, fixtures, and deterministic exit code. Compiler,
+target, SDK, and checkout pin mismatches fail before fallback is possible; no
+profile performs deployment, remote access, or flashing.
 Milestone 4 remains dependency-blocked until SPEC-003/004 supply their owner
 targets. No design note is required before Milestone 0; create one only if a
 listed trigger is reached. Plan completion will not by itself mark SPEC-002
