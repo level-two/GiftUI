@@ -158,6 +158,75 @@ record_image() {
     printf '%s\t%s\t%s\n' "${label}" "${path#"${PROJECT_ROOT}/"}" "$(hash_file "${path}")" >>"${images_path}"
 }
 
+run_fixture_set() {
+    local compiler="$1"
+    local module_dir="$2"
+    shift 2
+    local -a common_flags=("$@")
+    local id expectation access entry patterns fixture_dir diagnostic output_path result pattern
+
+    while IFS=$'\t' read -r id expectation access entry patterns; do
+        [[ -n "${id}" && "${id}" != \#* ]] || continue
+        fixture_dir="${report_dir}/fixtures/${id}"
+        mkdir -p "${fixture_dir}"
+        output_path="${fixture_dir}/stdout.txt"
+        diagnostic="${fixture_dir}/stderr.txt"
+        local -a command=("${compiler}" "${common_flags[@]}" -I "${module_dir}")
+        if [[ "${access}" == "package" ]]; then
+            command+=(-package-name GiftUI)
+        fi
+        command+=(-typecheck "${FIXTURE_ROOT}/${entry}")
+        record_command "${command[@]}"
+        set +e
+        "${command[@]}" >"${output_path}" 2>"${diagnostic}"
+        result=$?
+        set -e
+
+        if [[ "${expectation}" == "pass" ]]; then
+            [[ "${result}" -eq 0 ]] || fail "positive fixture ${id} failed"
+            continue
+        fi
+        [[ "${result}" -ne 0 ]] || fail "negative fixture ${id} unexpectedly compiled"
+        while IFS= read -r pattern; do
+            [[ -n "${pattern}" && "${pattern}" != \#* ]] || continue
+            grep -Fq "${pattern}" "${diagnostic}" ||
+                fail "negative fixture ${id} lacked diagnostic pattern: ${pattern}"
+        done <"${FIXTURE_ROOT}/${patterns}"
+    done <"${FIXTURE_ROOT}/fixture-manifest.tsv"
+}
+
+run_dependency_checks() {
+    command -v swift >/dev/null || fail 'swift is missing'
+    local package_json="${report_dir}/package.json"
+    record_command swift package dump-package
+    swift package dump-package >"${package_json}" 2>>"${log_path}"
+
+    record_command "${SCRIPT_DIR}/check-target-dependencies.rb"
+    "${SCRIPT_DIR}/check-target-dependencies.rb" <"${package_json}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-003-dependencies.rb"
+    "${SCRIPT_DIR}/check-spec-003-dependencies.rb" <"${package_json}" >>"${log_path}" 2>&1
+
+    local regression_log="${report_dir}/dependency-regressions.log"
+    set +e
+    "${SCRIPT_DIR}/check-target-dependencies.rb" \
+        "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/DependencyGraphCases/unknown-edge.yaml" \
+        <"${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/DependencyGraphCases/two-target-package.json" \
+        >"${regression_log}" 2>&1
+    local unknown_result=$?
+    "${SCRIPT_DIR}/check-target-dependencies.rb" \
+        "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/DependencyGraphCases/cycle.yaml" \
+        <"${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/DependencyGraphCases/cyclic-package.json" \
+        >>"${regression_log}" 2>&1
+    local cycle_result=$?
+    set -e
+    [[ "${unknown_result}" -ne 0 ]] || fail 'unknown dependency regression unexpectedly passed'
+    [[ "${cycle_result}" -ne 0 ]] || fail 'dependency cycle regression unexpectedly passed'
+    grep -Fq 'unknown dependencies' "${regression_log}" ||
+        fail 'unknown dependency regression lacked its expected failure'
+    grep -Fq 'cycle detected' "${regression_log}" ||
+        fail 'dependency cycle regression lacked its expected failure'
+}
+
 run_macos() {
     [[ "$(uname -s)" == "Darwin" ]] || fail 'macOS profile requires macOS'
     [[ "$(uname -m)" == "arm64" ]] || fail 'macOS evidence requires an arm64 host'
@@ -184,8 +253,10 @@ run_macos() {
         "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
         -O -whole-module-optimization "${profile_flag}"
         -language-mode 6 -parse-as-library -module-name GiftUIFailureCore
+        -enable-library-evolution
         -emit-library -emit-module
         -emit-module-path "${report_dir}/build/GiftUIFailureCore.swiftmodule"
+        -emit-module-interface-path "${report_dir}/build/GiftUIFailureCore.swiftinterface"
     )
     if [[ "${profile}" == "macos-static" ]]; then
         command+=(-static)
@@ -202,6 +273,17 @@ run_macos() {
     "${command[@]}" >>"${log_path}" 2>&1
     record_image candidate-module "${report_dir}/build/GiftUIFailureCore.swiftmodule"
     record_image candidate-library "${image}"
+    record_command otool -L "${image}"
+    otool -L "${image}" >"${report_dir}/build/product-links.txt"
+    record_command "${SCRIPT_DIR}/check-spec-003-core-boundary.rb" \
+        "${report_dir}/build/GiftUIFailureCore.swiftinterface" \
+        "${report_dir}/build/product-links.txt"
+    "${SCRIPT_DIR}/check-spec-003-core-boundary.rb" \
+        "${report_dir}/build/GiftUIFailureCore.swiftinterface" \
+        "${report_dir}/build/product-links.txt" >>"${log_path}" 2>&1
+    run_fixture_set "${compiler}" "${report_dir}/build" \
+        -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
+        -O -whole-module-optimization "${profile_flag}"
 }
 
 run_raspberry_pi() {
@@ -287,6 +369,7 @@ run_nrf52840() {
 record_input_hashes
 record_command "${SCRIPT_DIR}/check-spec-003-fixture-manifest.rb"
 "${SCRIPT_DIR}/check-spec-003-fixture-manifest.rb" >>"${log_path}" 2>&1
+run_dependency_checks
 
 case "${profile}" in
     macos-dynamic | macos-static) run_macos ;;

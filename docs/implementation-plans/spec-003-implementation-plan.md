@@ -152,7 +152,7 @@ are reproducible before semantic implementation starts.
       image hashes, and deterministic exits. Register it in the checked-in
       driver registry so the top-level runner preserves the standalone
       invocation and performs no remote access, deployment, or flashing.
-- [ ] `T0.4` — Add positive Core-only imports, forbidden higher imports,
+- [x] `T0.4` — Add positive Core-only imports, forbidden higher imports,
       prohibited re-export checks, exact target/direct-edge comparison, cycle
       detection, and compiled-module/product-link inspection. Reserve the
       approved future `GiftUIFailureExecution` edge without adding that target
@@ -473,3 +473,12 @@ complete commands, checked-in input hashes, produced module or library image
 hashes, pinned profile identity, optimization mode, and deterministic exit.
 ARMv6 and nRF paths remain hardware-free and perform no remote access,
 deployment, service restart, or flashing. `T0.4` is next.
+
+`T0.4` is complete: ordered compile fixtures prove the Core-only import and
+reject GiftUI, execution-correlation, and diagnostic imports. The boundary
+audit rejects source or compiled-interface re-exports/upward imports and
+forbidden product linkage. Exact package targets, direct edges, products, and
+acyclicity are checked against the fail-closed graph; synthetic unknown-edge
+and cycle regressions prove the checker fails. The future
+`GiftUIFailureExecution` edge is recorded as reserved and remains absent until
+SPEC-009 creates its focused execution contract. `T0.5` is next.

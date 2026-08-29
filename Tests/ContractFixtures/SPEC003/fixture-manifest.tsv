@@ -1,1 +1,5 @@
 # id	expectation	access	entry_point	diagnostic_patterns
+import-failure-core	pass	public	Fixtures/Positive/import-failure-core/main.swift	-
+forbidden-giftui-import	fail	public	Fixtures/Negative/forbidden-giftui-import/main.swift	Fixtures/Negative/forbidden-giftui-import/expected-diagnostic-patterns.txt
+forbidden-execution-import	fail	public	Fixtures/Negative/forbidden-execution-import/main.swift	Fixtures/Negative/forbidden-execution-import/expected-diagnostic-patterns.txt
+forbidden-diagnostics-import	fail	public	Fixtures/Negative/forbidden-diagnostics-import/main.swift	Fixtures/Negative/forbidden-diagnostics-import/expected-diagnostic-patterns.txt

@@ -1,0 +1,15 @@
+schema_version: 1
+active:
+  GiftUIFailureCore:
+    type: regular
+    dependencies: []
+  GiftUIFailureCoreTests:
+    type: test
+    dependencies:
+      - GiftUIFailureCore
+reserved:
+  GiftUIFailureExecution:
+    prerequisite: SPEC-009
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUIExecutionContract
