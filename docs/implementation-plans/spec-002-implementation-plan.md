@@ -2,7 +2,7 @@
 spec: SPEC-002
 feature: giftui-mvp-architecture
 title: SPEC-002 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-08-28
@@ -177,7 +177,7 @@ repository has a minimal buildable SPEC-002 package baseline, reusable
 environment probes remain operational, and every removed Foundation item is
 recoverable and dispositioned against tag `PoC`.
 
-- [ ] `T0.1` — Verify and record the immutable PoC baseline: annotated tag
+- [x] `T0.1` — Verify and record the immutable PoC baseline: annotated tag
       object `2b2837a66b94df38c7b74ead33ebbb54aa08a06d`, dereferenced commit
       `d5d6330432caa7c983d8dba35cf9f23c3800860b`, remote availability, tree
       checksum or complete tracked-path inventory, and retrieval commands.
@@ -513,11 +513,12 @@ evidence, or nRF flashing. Those claims remain downstream conformance work.
 
 ## Completion Record
 
-No task has started. All tasks are pending, no design note or conformance
-report exists, and this plan is `ready`: Milestones 0 through 3 can proceed in
-order without inventing architectural or contractual intent. The explicit
-path-manifest confirmation before `T0.5` is an execution safety gate, and
-Milestone 4 remains dependency-blocked until SPEC-003/004 supply their owner
-targets. No design note is required before Milestone 0; create one only if a
-listed trigger is reached. Plan completion will not by itself mark SPEC-002
-`implemented`.
+Implementation began on 2026-08-29. `T0.1` is complete: the local and durable
+remote tag identities, dereferenced commit, complete tree checksum, retrieval
+commands, and required-path reproduction checks are recorded in the
+[PoC baseline record](../../Tests/ContractFixtures/SPEC002/poc-baseline.md).
+No design note or conformance report exists. The explicit path-manifest
+confirmation before `T0.5` remains an execution safety gate, and Milestone 4
+remains dependency-blocked until SPEC-003/004 supply their owner targets. No
+design note is required before Milestone 0; create one only if a listed trigger
+is reached. Plan completion will not by itself mark SPEC-002 `implemented`.

@@ -38,7 +38,7 @@ features:
     milestone: MVP
   giftui-mvp-architecture:
     title: GiftUI MVP Architecture Establishment
-    status: specification
+    status: implementation
     proposal:
       - PROPOSAL-003
     rfcs:
