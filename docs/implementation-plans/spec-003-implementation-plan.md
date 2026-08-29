@@ -143,7 +143,7 @@ are reproducible before semantic implementation starts.
       implementation. Update the SPEC-002 exact target allow-list and graph
       fixtures atomically so the new leaf is reviewed rather than bypassing the
       fail-closed package gate.
-- [ ] `T0.3` — Create the exact
+- [x] `T0.3` — Create the exact
       `scripts/contracts/run-spec-003.sh --profile <profile>` surface for
       `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, and
       `nrf52840-embedded`. Fail closed on every compiler, target, SDK, board,
@@ -465,3 +465,11 @@ execution, capability, host, or connected-target integrations.
 `GiftUIFailureCore` library leaf and a focused import test target. The
 SPEC-002 exact target graph now admits those two targets with only the test-to-
 leaf edge; the failure core itself has no dependency. `T0.3` is next.
+
+`T0.3` is complete: the fail-closed standalone SPEC-003 driver exposes all
+four exact profile commands and is registered with the repository aggregate.
+Each run records the revision and dirty state, compiler identity and hash,
+complete commands, checked-in input hashes, produced module or library image
+hashes, pinned profile identity, optimization mode, and deterministic exit.
+ARMv6 and nRF paths remain hardware-free and perform no remote access,
+deployment, service restart, or flashing. `T0.4` is next.
