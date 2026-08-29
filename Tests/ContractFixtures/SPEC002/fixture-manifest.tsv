@@ -1,0 +1,3 @@
+# id	expectation	entry_point	diagnostic_patterns
+import-giftui	pass	Fixtures/Positive/import-giftui/main.swift	-
+forbidden-runtime-import	fail	Fixtures/Negative/forbidden-runtime-import/main.swift	Fixtures/Negative/forbidden-runtime-import/expected-diagnostic-patterns.txt

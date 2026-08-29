@@ -246,7 +246,7 @@ repository-level test entry point. A clean-checkout skeleton-readiness
 transcript proves those seams work together before substantive Foundation
 implementation begins.
 
-- [ ] `T1.1` — Create the checked-in SPEC-002 fixture layout, deterministic
+- [x] `T1.1` — Create the checked-in SPEC-002 fixture layout, deterministic
       report locations, positive/negative compile-fixture conventions, and
       test entry points. The tag-derived ledger from `T0.2` remains evidence;
       no PoC test file or helper is copied into the new suite.
@@ -542,7 +542,12 @@ captures the retained-path audit. The
 [Milestone 0 audit](../../Tests/ContractFixtures/SPEC002/milestone-0-audit.md)
 records the final package, link, governance, retired-path, and environment-
 entry-point evidence. Milestone 0 is complete. No design note or conformance
-report exists.
+report exists. `T1.1` establishes the ordered
+[fixture registry](../../Tests/ContractFixtures/SPEC002/fixture-manifest.tsv),
+positive and negative single-entry-point conventions, and deterministic
+generated and review-evidence locations documented in the
+[SPEC-002 fixture README](../../Tests/ContractFixtures/SPEC002/README.md). No
+PoC test source or helper was copied.
 Milestone 4 remains dependency-blocked until SPEC-003/004 supply their owner
 targets. No design note is required before Milestone 0; create one only if a
 listed trigger is reached. Plan completion will not by itself mark SPEC-002
