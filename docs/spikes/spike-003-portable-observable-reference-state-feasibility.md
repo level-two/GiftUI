@@ -6,7 +6,7 @@ status: completed
 authors:
   - Yauheni Lychkouski
 created: 2026-08-21
-updated: 2026-08-21
+updated: 2026-08-29
 source:
   - RFC-008
 related_future_work:
@@ -318,5 +318,5 @@ do not add property-level tracking to the Spike or RFC silently.
 - [ADR-011: Serialized Run Cycle and Semantic Publication](../adrs/adr-011-serialized-run-cycle-and-publication.md)
 - [ADR-025: Coarse Model-Owned Observable Invalidation](../adrs/adr-025-coarse-model-owned-observable-invalidation.md)
 - [ADR-026: Profile-Equivalent Bounded Observable State Realization](../adrs/adr-026-profile-equivalent-bounded-observable-state.md)
-- [GiftUI Embedded Layer Inventory](../GiftUI_Embedded_Layer_Inventory.md)
+- [GiftUI Embedded Layer Inventory](../engineering/POC_HISTORICAL_BASELINE.md)
 - [nRF52840 Toolchain Skill](../../skills/giftui-nrf-toolchain/SKILL.md)

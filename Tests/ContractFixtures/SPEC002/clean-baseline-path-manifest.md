@@ -4,8 +4,11 @@ This is the implementation-plan `T0.3` keep/rewrite/remove manifest. It is a
 review record only; it does not execute or authorize the clean cut.
 
 The manifest was prepared from the active index on 2026-08-29 after commits
-`08548bf` and `150edba`. Any added, missing, renamed, or multiply classified
-path stops `T0.4`/`T0.5` until this record is refreshed and confirmed.
+`08548bf` and `150edba`. The maintainer confirmed its exact removal set on
+2026-08-29. `T0.4` adds only the preserved historical pointer and removal-
+ownership evidence; neither changes the confirmed removal set. Any other
+added, missing, renamed, or multiply classified path stops `T0.5` until this
+record is refreshed and confirmed.
 
 ## Disposition rules
 
@@ -101,6 +104,10 @@ Spikes and `experiments/`, repository skills not listed for rewrite, `AGENTS.md`
 environment paths above are `keep`. They are current authority, current
 process infrastructure, post-PoC MVP application work, governed evidence, or
 reusable environment capability. They are not removal candidates.
+
+`docs/engineering/POC_HISTORICAL_BASELINE.md` and
+`Tests/ContractFixtures/SPEC002/clean-baseline-removal-ownership.md` are the two
+planned `T0.4` additions and are explicitly `keep`.
 
 ## Required verification before the cut
 

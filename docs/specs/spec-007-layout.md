@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-08-27
+updated: 2026-08-29
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -842,4 +842,4 @@ geometry model is architectural or post-MVP work and must not be decided here.
 - [ADR-008](../adrs/adr-008-module-dependency-graph-and-package-topology.md)
 - [MVP Scope](../MVP_SCOPE.md)
 - [MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
-- [Legacy GiftUI Framework Specification](../GiftUI_Framework_Spec.md)
+- [Legacy GiftUI Framework Specification](../engineering/POC_HISTORICAL_BASELINE.md)

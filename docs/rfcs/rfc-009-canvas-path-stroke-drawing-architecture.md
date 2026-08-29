@@ -6,7 +6,7 @@ status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-25
-updated: 2026-08-28
+updated: 2026-08-29
 proposal:
   - PROPOSAL-006
 related_rfcs:
@@ -1031,4 +1031,4 @@ to an approved downstream drawing Specification.
 - [SPEC-004: Capability Contribution and Resolution Specification](../specs/spec-004-capability-contribution-and-resolution.md)
 - [SPEC-006: Declarative View Semantics Specification](../specs/spec-006-declarative-view-semantics.md)
 - [SPIKE-004: Canvas Path Plan Feasibility](../spikes/spike-004-canvas-path-plan-feasibility.md)
-- [GiftUI Framework Proof-of-Concept Specification](../GiftUI_Framework_Spec.md)
+- [GiftUI Framework Proof-of-Concept Specification](../engineering/POC_HISTORICAL_BASELINE.md)

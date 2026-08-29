@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-08-28
+updated: 2026-08-29
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -1681,4 +1681,4 @@ Current MVP scope is unchanged.
 - [SPIKE-001](../spikes/spike-001-tiled-one-shot-capability-fixtures.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
-- [Legacy GiftUI Framework Specification](../GiftUI_Framework_Spec.md)
+- [Legacy GiftUI Framework Specification](../engineering/POC_HISTORICAL_BASELINE.md)

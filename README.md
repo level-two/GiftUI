@@ -126,7 +126,7 @@ The adapter accepts 16-, 24-, or 32-bit framebuffer formats, honors device
 stride, converts RGB565 tiles to the reported device bitfields, and aspect-fits
 with nearest-neighbor scaling. Logical dimensions outside the bounded RGB565
 renderer's 480×320 limits retain the RGBA8888 compatibility path. See
-[`docs/GiftUI_Raspberry_Pi_Platform.md`](docs/GiftUI_Raspberry_Pi_Platform.md)
+[`docs/GiftUI_Raspberry_Pi_Platform.md`](docs/engineering/POC_HISTORICAL_BASELINE.md)
 for PiScreen setup and runtime details.
 
 Agent workflows are defined in `skills/giftui-pi-toolchain` and
@@ -178,7 +178,7 @@ The included probe proves Zephyr can call an Embedded Swift function for the
 nRF52840 target and exercises the DK's first LED/button when flashed. It is a
 toolchain milestone, not the completed thermostat, ILI9486 display, or ADS7846
 touch port. Those later phases remain governed by
-[`docs/GiftUI_nRF52840_DK_Platform_Spec.md`](docs/GiftUI_nRF52840_DK_Platform_Spec.md).
+[`docs/GiftUI_nRF52840_DK_Platform_Spec.md`](docs/engineering/POC_HISTORICAL_BASELINE.md).
 
 The `skeleton` application is the first application-shaped Swift firmware.
 Swift owns its persistent event loop and calls a narrow Zephyr bridge for time,
@@ -198,7 +198,7 @@ scripts/nrf52840/build.sh --application ili9486
 The tracked overlay intentionally omits backlight control until the exact
 PiScreen polarity and transistor stage are verified. Hardware provenance,
 continuity, power, flashing, visual checks, and measurements are tracked in
-[`docs/GiftUI_ILI9486_Bring_Up_Record.md`](docs/GiftUI_ILI9486_Bring_Up_Record.md).
+[`docs/GiftUI_ILI9486_Bring_Up_Record.md`](docs/engineering/POC_HISTORICAL_BASELINE.md).
 The Phase 5 hardware gate remains open; successful compilation is not a claim
 of tested board support.
 
@@ -207,7 +207,7 @@ separate 2 MHz touch device on the shared SPI bus, bounded five-point
 calibration, median and pressure filtering, rotation-aware pointer events, and
 static thermostat hit testing with typed action dispatch. The physical touch
 gate and its 100-press-per-control acceptance matrix are tracked in
-[`docs/GiftUI_ADS7846_Bring_Up_Record.md`](docs/GiftUI_ADS7846_Bring_Up_Record.md).
+[`docs/GiftUI_ADS7846_Bring_Up_Record.md`](docs/engineering/POC_HISTORICAL_BASELINE.md).
 No board was flashed while implementing this path.
 
 Phase 7 adds retained-GRAM dirty updates, bounded SPI segmentation, runtime
@@ -216,7 +216,7 @@ counters, and a one-minute endurance heartbeat. Static layout comparison
 narrows a 21→22 thermostat update to 24 × 12 pixels; the solid-rectangle path
 writes 648 RGB565 payload bytes instead of rerasterizing the previous
 7,168-byte root region. Connected-board timing and soak results belong
-in [`docs/GiftUI_PiScreen_Phase_7_Validation_Record.md`](docs/GiftUI_PiScreen_Phase_7_Validation_Record.md);
+in [`docs/GiftUI_PiScreen_Phase_7_Validation_Record.md`](docs/engineering/POC_HISTORICAL_BASELINE.md);
 the Phase 7 gate remains open until those physical checks pass.
 
 Swift 6.3.2 names its bundled ARMv7E-M standard module
@@ -275,19 +275,19 @@ and escaping button callbacks. AppKit and CoreGraphics are isolated to
 are isolated to their platform modules.
 
 The implementation specifications are in
-[`docs/GiftUI_Framework_Spec.md`](docs/GiftUI_Framework_Spec.md) and
-[`docs/GiftUI_PoC_A_macOS_Simulator_Spec.md`](docs/GiftUI_PoC_A_macOS_Simulator_Spec.md).
+[`docs/GiftUI_Framework_Spec.md`](docs/engineering/POC_HISTORICAL_BASELINE.md) and
+[`docs/GiftUI_PoC_A_macOS_Simulator_Spec.md`](docs/engineering/POC_HISTORICAL_BASELINE.md).
 The reviewed, staged implementation path from the current dynamic PoC to
 separate portable/static and dynamic profiles is in
-[`docs/GiftUI_Runtime_Profile_Migration_Plan.md`](docs/GiftUI_Runtime_Profile_Migration_Plan.md).
+[`docs/GiftUI_Runtime_Profile_Migration_Plan.md`](docs/engineering/POC_HISTORICAL_BASELINE.md).
 The proposed Embedded Swift/Zephyr port for the Nordic nRF52840-DK and an
 ILI9486/ADS7846 PiScreen is specified separately in
-[`docs/GiftUI_nRF52840_DK_Platform_Spec.md`](docs/GiftUI_nRF52840_DK_Platform_Spec.md).
+[`docs/GiftUI_nRF52840_DK_Platform_Spec.md`](docs/engineering/POC_HISTORICAL_BASELINE.md).
 The separate KMRTM24024-SPI/ILI9341 240 × 320 firmware now includes an
 XPT2046-compatible 2 MHz shared-SPI transport, five-point calibration, and
 static thermostat touch dispatch. Optional GRAM readback and advanced rendering
 work remain specified in
-[`docs/GiftUI_KMRTM24024_SPI_nRF52840_Spec.md`](docs/GiftUI_KMRTM24024_SPI_nRF52840_Spec.md).
+[`docs/GiftUI_KMRTM24024_SPI_nRF52840_Spec.md`](docs/engineering/POC_HISTORICAL_BASELINE.md).
 
 ## PoC runtime constraints
 

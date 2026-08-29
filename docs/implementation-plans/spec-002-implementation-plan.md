@@ -197,7 +197,7 @@ recoverable and dispositioned against tag `PoC`.
       probing, generic build/artifact inspection, or governance validation and
       that it does not encode an old GiftUI API, target graph, product, sample,
       or architecture.
-- [ ] `T0.4` — Apply the `Cross-Spec Removal Disposition` to the exact `T0.3`
+- [x] `T0.4` — Apply the `Cross-Spec Removal Disposition` to the exact `T0.3`
       manifest. Give every non-Foundation source/test/firmware path one owning
       Specification or the explicit no-replacement disposition; record that no
       implementation is retained and that later recreation belongs to an
@@ -524,9 +524,13 @@ edges are dispositioned in the
 `T0.3` is complete: the exact 175-path removal set, rewrite set, preservation
 rules, and retained environment audit are recorded in the
 [clean-baseline path manifest](../../Tests/ContractFixtures/SPEC002/clean-baseline-path-manifest.md).
-No design note or conformance report exists. `T0.4` must add cross-Spec
-ownership, repair active legacy-document links, and obtain maintainer
-confirmation before `T0.5`. Milestone 4 remains dependency-blocked until
+`T0.4` is complete: every confirmed removal path has one replacement owner or
+explicit no-replacement disposition in the
+[removal-ownership record](../../Tests/ContractFixtures/SPEC002/clean-baseline-removal-ownership.md),
+active legacy links resolve through the
+[PoC historical baseline](../engineering/POC_HISTORICAL_BASELINE.md), and the
+maintainer confirmed the exact removal set on 2026-08-29. No design note or
+conformance report exists. Milestone 4 remains dependency-blocked until
 SPEC-003/004 supply their owner targets. No design note is required before
 Milestone 0; create one only if a listed trigger is reached. Plan completion
 will not by itself mark SPEC-002 `implemented`.

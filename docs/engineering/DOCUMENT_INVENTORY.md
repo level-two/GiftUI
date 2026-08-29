@@ -4,6 +4,12 @@
 **Scope:** Documentation present before the engineering-governance bootstrap  
 **Method:** Classification records what each document currently is; it does not grant lifecycle approval.
 
+> **Historical inventory:** The `GiftUI_*.md` entries below describe the
+> pre-governance tree as inventoried on 2026-08-08. Their active copies were
+> retired during SPEC-002 implementation after current authority and links
+> were established. Retrieve them from immutable tag `PoC` through the
+> [proof-of-concept historical baseline](POC_HISTORICAL_BASELINE.md).
+
 ## Repository-level findings
 
 - `docs/VISION.md` and `docs/PRINCIPLES.md` are the project-level direction and
@@ -60,9 +66,9 @@ unknown until lifecycle artifacts are drafted and reviewed.
 
 ## Migration status
 
-Migration is explicitly deferred. This bootstrap installs process
-infrastructure only: it does not create lifecycle artifacts for any existing
-feature, assign legacy documents to the feature manifest, or conduct the
-recommended pilot. When maintainers authorize migration later, preserve every
-legacy document in place, introduce IDs alongside the sources, retain
-conservative statuses, and link new artifacts back to their provenance.
+At the time of this inventory, migration was explicitly deferred. The later
+governed lifecycle created current Proposal, RFC, ADR, and Specification
+artifacts. During SPEC-002 implementation, the maintainer confirmed retirement
+of the mixed legacy active copies under the tagged-history policy. Their
+reasoning remains available from immutable tag `PoC`; this inventory remains a
+historical classification and does not grant any retired document authority.

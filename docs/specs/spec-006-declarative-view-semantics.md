@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-08-28
+updated: 2026-08-29
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -1176,7 +1176,7 @@ the separately gated post-MVP declarative-extensibility cluster.
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
 - [GiftUI Principles](../PRINCIPLES.md)
-- [GiftUI Framework Proof-of-Concept Specification](../GiftUI_Framework_Spec.md) — legacy evidence only
+- [GiftUI Framework Proof-of-Concept Specification](../engineering/POC_HISTORICAL_BASELINE.md) — legacy evidence only
 - `Sources/GiftUI/View/`, `Sources/GiftUI/Composition/`, and current runtime
   conformance tests —
   proof-of-concept evidence only

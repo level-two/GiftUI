@@ -6,7 +6,7 @@ status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-15
-updated: 2026-08-28
+updated: 2026-08-29
 proposal:
   - PROPOSAL-004
 related_rfcs:
@@ -770,8 +770,8 @@ ADRs for:
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
-- [GiftUI Framework Proof-of-Concept Specification](../GiftUI_Framework_Spec.md) — legacy evidence only
-- [GiftUI Runtime Profile Migration Plan](../GiftUI_Runtime_Profile_Migration_Plan.md) — legacy static/dynamic feasibility evidence only
-- [GiftUI Raspberry Pi Platform](../GiftUI_Raspberry_Pi_Platform.md) — legacy PiScreen, framebuffer-format, and RGB565 tile evidence only
-- [GiftUI Embedded Layer Inventory](../GiftUI_Embedded_Layer_Inventory.md) — legacy bounded RGB565 and linked-resource evidence only
-- [GiftUI nRF52840-DK Platform Specification](../GiftUI_nRF52840_DK_Platform_Spec.md) — legacy embedded-stack feasibility evidence only
+- [GiftUI Framework Proof-of-Concept Specification](../engineering/POC_HISTORICAL_BASELINE.md) — legacy evidence only
+- [GiftUI Runtime Profile Migration Plan](../engineering/POC_HISTORICAL_BASELINE.md) — legacy static/dynamic feasibility evidence only
+- [GiftUI Raspberry Pi Platform](../engineering/POC_HISTORICAL_BASELINE.md) — legacy PiScreen, framebuffer-format, and RGB565 tile evidence only
+- [GiftUI Embedded Layer Inventory](../engineering/POC_HISTORICAL_BASELINE.md) — legacy bounded RGB565 and linked-resource evidence only
+- [GiftUI nRF52840-DK Platform Specification](../engineering/POC_HISTORICAL_BASELINE.md) — legacy embedded-stack feasibility evidence only

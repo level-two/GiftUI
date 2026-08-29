@@ -6,7 +6,7 @@ status: completed
 authors:
   - Yauheni Lychkouski
 created: 2026-08-19
-updated: 2026-08-20
+updated: 2026-08-29
 source:
   - RFC-006
   - ADR-019
@@ -418,4 +418,4 @@ experiment code into a production target.
 - [RFC-006: GiftUI Capability System Architecture](../rfcs/rfc-006-capability-system-architecture.md)
 - [FW-006: Generated Target Configuration](../future-work/fw-006-generated-target-configuration.md)
 - [SPIKE-001: Tiled One-Shot Stream and Capability Compatibility Fixtures](spike-001-tiled-one-shot-capability-fixtures.md)
-- [GiftUI nRF52840-DK Platform Specification](../GiftUI_nRF52840_DK_Platform_Spec.md) — legacy feasibility context only
+- [GiftUI nRF52840-DK Platform Specification](../engineering/POC_HISTORICAL_BASELINE.md) — legacy feasibility context only

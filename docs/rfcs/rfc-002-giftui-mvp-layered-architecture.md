@@ -6,7 +6,7 @@ status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-08-28
+updated: 2026-08-29
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -1364,11 +1364,11 @@ active MVP decision and remains deferred through RFC-007 and FW-009.
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
-- [GiftUI Framework Proof-of-Concept Specification](../GiftUI_Framework_Spec.md)
-- [GiftUI Runtime Profile Migration Plan](../GiftUI_Runtime_Profile_Migration_Plan.md)
-- [GiftUI Embedded Layer Inventory](../GiftUI_Embedded_Layer_Inventory.md)
-- [GiftUI Raspberry Pi Platform](../GiftUI_Raspberry_Pi_Platform.md)
-- [GiftUI nRF52840-DK Platform Specification](../GiftUI_nRF52840_DK_Platform_Spec.md)
-- [GiftUI KMRTM24024 Stack Ownership Proposal](../GiftUI_KMRTM24024_Stack_Ownership_Proposal.md)
+- [GiftUI Framework Proof-of-Concept Specification](../engineering/POC_HISTORICAL_BASELINE.md)
+- [GiftUI Runtime Profile Migration Plan](../engineering/POC_HISTORICAL_BASELINE.md)
+- [GiftUI Embedded Layer Inventory](../engineering/POC_HISTORICAL_BASELINE.md)
+- [GiftUI Raspberry Pi Platform](../engineering/POC_HISTORICAL_BASELINE.md)
+- [GiftUI nRF52840-DK Platform Specification](../engineering/POC_HISTORICAL_BASELINE.md)
+- [GiftUI KMRTM24024 Stack Ownership Proposal](../engineering/POC_HISTORICAL_BASELINE.md)
 - Maintainer-provided architecture layers and boundaries attached to the RFC
   authoring request on 2026-08-14.

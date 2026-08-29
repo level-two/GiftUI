@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-08-27
+updated: 2026-08-29
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -915,4 +915,4 @@ DRAWING contract and its accepted ADRs; they are not silently added here.
 - [ADR-032](../adrs/adr-032-semantic-core-owned-layout-input.md)
 - [MVP Scope](../MVP_SCOPE.md)
 - [MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
-- [Legacy GiftUI Framework Specification](../GiftUI_Framework_Spec.md)
+- [Legacy GiftUI Framework Specification](../engineering/POC_HISTORICAL_BASELINE.md)

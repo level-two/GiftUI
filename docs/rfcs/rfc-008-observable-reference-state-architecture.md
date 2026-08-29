@@ -6,7 +6,7 @@ status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-21
-updated: 2026-08-28
+updated: 2026-08-29
 proposal:
   - PROPOSAL-005
 related_rfcs:
@@ -1368,6 +1368,6 @@ and capacities still required in an approved Specification.
 - [ADR-016: Non-Authoritative Diagnostic Projection](../adrs/adr-016-non-authoritative-diagnostics.md)
 - [ADR-027: Bounded Presentation-Fact Admission](../adrs/adr-027-bounded-presentation-fact-admission.md)
 - [SPEC-001: Signal Analyzer Reference Application](../specs/spec-001-signal-analyzer-reference-application.md)
-- [GiftUI Embedded Layer Inventory](../GiftUI_Embedded_Layer_Inventory.md)
-- [GiftUI Runtime Profile Migration Plan](../GiftUI_Runtime_Profile_Migration_Plan.md)
-- [Legacy GiftUI Framework Specification](../GiftUI_Framework_Spec.md)
+- [GiftUI Embedded Layer Inventory](../engineering/POC_HISTORICAL_BASELINE.md)
+- [GiftUI Runtime Profile Migration Plan](../engineering/POC_HISTORICAL_BASELINE.md)
+- [Legacy GiftUI Framework Specification](../engineering/POC_HISTORICAL_BASELINE.md)

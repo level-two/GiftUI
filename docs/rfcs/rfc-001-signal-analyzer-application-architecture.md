@@ -6,7 +6,7 @@ status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-08-28
+updated: 2026-08-29
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -623,7 +623,7 @@ GiftUI's distinct mutation domain.
 - [GiftUI Principles](../PRINCIPLES.md)
 - [Feature Lifecycle](../engineering/FEATURE_LIFECYCLE.md)
 - [Documentation Rules](../engineering/DOCUMENTATION_RULES.md)
-- [GiftUI Framework Proof-of-Concept Specification](../GiftUI_Framework_Spec.md)
+- [GiftUI Framework Proof-of-Concept Specification](../engineering/POC_HISTORICAL_BASELINE.md)
 - External investigation source: `GIFTUI_SIGNAL_ANALYZER_SPEC.md` in the
   SignalAnalyzer playground repository.
 - External investigation source: `GIFTUI_VIEW_FEATURE_PRIORITIES.md` in the

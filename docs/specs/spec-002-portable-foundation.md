@@ -866,4 +866,4 @@ MUST return to RFC/ADR review.
 - [GiftUI MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
 - [GiftUI Principles](../PRINCIPLES.md)
 - [GiftUI Project Glossary](../GLOSSARY.md)
-- [GiftUI Framework Proof-of-Concept Specification](../GiftUI_Framework_Spec.md)
+- [GiftUI Framework Proof-of-Concept Specification](../engineering/POC_HISTORICAL_BASELINE.md)
