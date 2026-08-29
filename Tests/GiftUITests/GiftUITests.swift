@@ -179,4 +179,22 @@ final class GiftUITests: XCTestCase {
         XCTAssertFalse(emptyWidth.contains(Point(x: 4, y: 5)))
         XCTAssertFalse(emptyHeight.contains(Point(x: 4, y: 5)))
     }
+
+    func testNormalizedPointerEventRequiresBoundedProvenance() {
+        let event = NormalizedPointerEvent(
+            phase: .down,
+            position: Point(x: -12, y: 34),
+            source: InputSourceID(rawValue: 1),
+            sequence: PointerSequenceID(rawValue: 2),
+            ordinal: InputOrdinal(rawValue: 3),
+            presentationRevision: PresentationRevision(rawValue: 4)
+        )
+
+        XCTAssertEqual(event.phase, .down)
+        XCTAssertEqual(event.position, Point(x: -12, y: 34))
+        XCTAssertEqual(event.source.rawValue, 1)
+        XCTAssertEqual(event.sequence.rawValue, 2)
+        XCTAssertEqual(event.ordinal.rawValue, 3)
+        XCTAssertEqual(event.presentationRevision.rawValue, 4)
+    }
 }

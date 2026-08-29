@@ -336,7 +336,7 @@ the migration ledger and `T2.1` fixes the `Point` contract.
 **Exit evidence:** The bounded package-SPI family exists and exposes no
 concrete integration type or admission semantics.
 
-- [ ] `T3.1` — Add exact package declarations for `PointerPhase`,
+- [x] `T3.1` — Add exact package declarations for `PointerPhase`,
       `InputSourceID`, `PointerSequenceID`, `InputOrdinal`,
       `PresentationRevision`, and `NormalizedPointerEvent`. Preserve every raw
       bit pattern and require provenance without a sentinel.
@@ -588,6 +588,10 @@ proposals, scalar limits, every arithmetic overflow direction, checked
 rectangle construction, total exclusive edges, empty rectangles, and
 half-open containment. The public compile fixture consumes only the approved
 declarations; no downstream target or PoC compatibility helper was added.
+`T3.1` adds the exact package-SPI normalized pointer value family: the
+three-case `UInt8` phase, bounded `UInt16`/`UInt32` wrappers, and an immutable
+event initializer that requires every provenance/correlation field. It adds no
+sentinel, admission, ordering, cancellation, hit-test, or dispatch behavior.
 Milestone 4 remains dependency-blocked until SPEC-003/004 supply their owner
 targets. No design note is required before Milestone 0; create one only if a
 listed trigger is reached. Plan completion will not by itself mark SPEC-002

@@ -99,3 +99,66 @@ package enum GeometryArithmetic {
         return result.overflow ? nil : result.partialValue
     }
 }
+
+package enum PointerPhase: UInt8, Equatable, Sendable {
+    case down = 0
+    case move = 1
+    case up = 2
+}
+
+package struct InputSourceID: Equatable, Hashable, Sendable {
+    package let rawValue: UInt16
+
+    package init(rawValue: UInt16) {
+        self.rawValue = rawValue
+    }
+}
+
+package struct PointerSequenceID: Equatable, Hashable, Sendable {
+    package let rawValue: UInt32
+
+    package init(rawValue: UInt32) {
+        self.rawValue = rawValue
+    }
+}
+
+package struct InputOrdinal: Equatable, Hashable, Sendable {
+    package let rawValue: UInt32
+
+    package init(rawValue: UInt32) {
+        self.rawValue = rawValue
+    }
+}
+
+package struct PresentationRevision: Equatable, Hashable, Sendable {
+    package let rawValue: UInt32
+
+    package init(rawValue: UInt32) {
+        self.rawValue = rawValue
+    }
+}
+
+package struct NormalizedPointerEvent: Equatable, Sendable {
+    package let phase: PointerPhase
+    package let position: Point
+    package let source: InputSourceID
+    package let sequence: PointerSequenceID
+    package let ordinal: InputOrdinal
+    package let presentationRevision: PresentationRevision
+
+    package init(
+        phase: PointerPhase,
+        position: Point,
+        source: InputSourceID,
+        sequence: PointerSequenceID,
+        ordinal: InputOrdinal,
+        presentationRevision: PresentationRevision
+    ) {
+        self.phase = phase
+        self.position = position
+        self.source = source
+        self.sequence = sequence
+        self.ordinal = ordinal
+        self.presentationRevision = presentationRevision
+    }
+}
