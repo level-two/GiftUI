@@ -40,21 +40,11 @@ Set machine-local defaults in `scripts/raspberry-pi/local.env`, copied from
 
 ## Physical input
 
-Only run hardware-changing commands when the user requested device work. Read
-`docs/GiftUI_Raspberry_Pi_Platform.md` before choosing GPIO lines. Require the
-Pi to provide `libgpiod.so.2`, `/dev/gpiochip0`, and unprivileged GPIO access.
-
-Use the default active-low buttons only after verifying BCM GPIO 17, 27, and
-22 do not conflict with the PiScreen overlay:
-
-```bash
-giftui/bin/GiftUIExampleThermostatRaspberryPi \
-    --device /dev/fb1 \
-    --gpio-buttons
-```
-
-Use `--gpio-previous`, `--gpio-next`, and `--gpio-activate` to select different
-GPIO chip offsets. Do not treat physical header pin numbers as GPIO offsets.
+Only run hardware-changing commands when the user requested device work and a
+current owning implementation plan supplies the exact application command and
+pin mapping. Require the Pi to provide the libraries, device nodes, and
+unprivileged access named by that plan. Do not infer GPIO offsets from physical
+header pin numbers or from the retired proof-of-concept baseline.
 
 ## Constraints
 

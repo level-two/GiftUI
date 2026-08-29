@@ -37,4 +37,4 @@ and HEX. Keep the J-Link runner; do not substitute an implicit build runner.
   build, tests, or another host-only workflow.
 - Keep generated output under `.build/nrf52840/<application>/`.
 - Treat the current probe as environment validation, not completed display,
-  touch, or thermostat board support.
+  touch, or application board support.

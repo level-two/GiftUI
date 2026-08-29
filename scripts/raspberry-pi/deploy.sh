@@ -12,7 +12,7 @@ source "${SCRIPT_DIR}/common.sh"
 host="${GIFTUI_PI_HOST}"
 user="${GIFTUI_PI_USER}"
 remote_dir="${GIFTUI_PI_REMOTE_DIR}"
-product="${GIFTUI_PI_PRODUCT}"
+product=""
 artifact=""
 identity="${GIFTUI_PI_SSH_IDENTITY:-}"
 configuration="release"
@@ -104,6 +104,8 @@ while [[ $# -gt 0 ]]; do
     shift
 done
 
+[[ -n "${product}" ]] ||
+    giftui_pi_error "--product is required for every deployment"
 [[ "${host}" =~ ^[A-Za-z0-9._-]+$ ]] || giftui_pi_error "invalid host: ${host}"
 [[ "${user}" =~ ^[A-Za-z0-9._-]+$ ]] || giftui_pi_error "invalid user: ${user}"
 [[ "${product}" =~ ^[A-Za-z0-9._-]+$ ]] || giftui_pi_error "invalid product: ${product}"

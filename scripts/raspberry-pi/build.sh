@@ -10,7 +10,7 @@ SCRIPT_DIR="$(
 source "${SCRIPT_DIR}/common.sh"
 
 package_path="${GIFTUI_PI_PROJECT_ROOT}"
-product="${GIFTUI_PI_PRODUCT}"
+product=""
 configuration="release"
 link_static=1
 probe=0
@@ -70,13 +70,16 @@ done
 
 [[ "${configuration}" == "release" || "${configuration}" == "debug" ]] ||
     giftui_pi_error "configuration must be release or debug"
-[[ "${product}" =~ ^[A-Za-z0-9._-]+$ ]] ||
-    giftui_pi_error "invalid product name: ${product}"
 
 if [[ "${probe}" -eq 1 ]]; then
     package_path="${GIFTUI_PI_PROBE_PACKAGE}"
     product="${GIFTUI_PI_PROBE_PRODUCT}"
+else
+    [[ -n "${product}" ]] ||
+        giftui_pi_error "--product is required unless --probe is used"
 fi
+[[ "${product}" =~ ^[A-Za-z0-9._-]+$ ]] ||
+    giftui_pi_error "invalid product name: ${product}"
 
 if [[ "${package_path}" != /* ]]; then
     package_path="${GIFTUI_PI_PROJECT_ROOT}/${package_path}"

@@ -3,7 +3,7 @@
 set -euo pipefail
 
 if ! command -v sw_vers >/dev/null 2>&1; then
-    echo "error: GiftUI PoC A requires macOS" >&2
+    echo "error: GiftUI development requires macOS" >&2
     exit 1
 fi
 

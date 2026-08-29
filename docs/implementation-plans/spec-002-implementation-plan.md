@@ -212,7 +212,7 @@ recoverable and dispositioned against tag `PoC`.
       fixtures plus post-tag Signal Analyzer, lifecycle, Spike, experiment,
       governance, and environment material. Record deleted paths against tag
       `PoC`; do not copy them into an active `archive/` directory.
-- [ ] `T0.6` — Sanitize retained environment infrastructure. Generalize
+- [x] `T0.6` — Sanitize retained environment infrastructure. Generalize
       `scripts/check-environment.sh`; remove the Raspberry Pi Thermostat default
       and example; retain the Raspberry Pi probe; retain only the nRF52840
       `probe` application; and prove every retained build/deploy/flash command
@@ -533,8 +533,12 @@ maintainer confirmed the exact removal set on 2026-08-29. `T0.5` and `T0.7`
 land atomically: the old implementation is absent, the stable `GiftUI` product
 and target plus one Foundation smoke-test target form the complete root package,
 and the [cut record](../../Tests/ContractFixtures/SPEC002/clean-baseline-cut-record.md)
-preserves the disposition and verification evidence. `T0.6` sanitation and
-`T0.8` README work remain. No design note or conformance report exists.
+preserves the disposition and verification evidence. `T0.8` README work
+remains. `T0.6` is complete: Raspberry Pi build/deploy now
+require an explicit product, the nRF build default is only the retained
+hardware-free probe, flashing requires an explicit application, and the
+[sanitization record](../../Tests/ContractFixtures/SPEC002/environment-sanitization.md)
+captures the retained-path audit. No design note or conformance report exists.
 Milestone 4 remains dependency-blocked until SPEC-003/004 supply their owner
 targets. No design note is required before Milestone 0; create one only if a
 listed trigger is reached. Plan completion will not by itself mark SPEC-002
