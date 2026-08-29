@@ -306,20 +306,20 @@ implementation begins.
 the clean `GiftUI` target compiles, and downstream consumers remain absent or
 have a named owning-plan dependency.
 
-- [ ] `T2.1` — Implement the exact public,
+- [x] `T2.1` — Implement the exact public,
       immutable `Int32` API: `GeometryScalar`, `Point`, failable `Size`,
       failable `Rect` with total exclusive edges, and failable `ProposedSize`.
       Test declarations, access, conformances, zero dimensions, and independently
       absent proposals.
-- [ ] `T2.2` — Implement the exact package
+- [x] `T2.2` — Implement the exact package
       `GeometryArithmetic` optional-result API. Test ordinary values, zero,
       `Int32.min`, `Int32.max`, and every add/subtract/multiply overflow edge;
       add no trapping compatibility helper or second arithmetic seam.
-- [ ] `T2.3` — Construct rectangles through checked exclusive-edge addition and
+- [x] `T2.3` — Construct rectangles through checked exclusive-edge addition and
       implement `contains` from total edges without unchecked intermediates.
       Test maximum valid extents, both scalar limits, rejected edges, empty
       rectangles, exact edges, and half-open containment.
-- [ ] `T2.4` — Compile the clean public declarations, package SPI, and
+- [x] `T2.4` — Compile the clean public declarations, package SPI, and
       Foundation tests without any PoC compatibility declaration. Downstream
       consumers are implemented later by their owning Specifications and must
       import these values directly; any consumer need that requires layout,
@@ -578,6 +578,16 @@ records the exact graph, build, import, negative-fixture, unit-test,
 standalone-driver, top-level-gate, active-tree, and retained-environment pin
 evidence. Milestone 1 is complete; Raspberry Pi compiler/probe execution
 remains a Milestone 5 requirement rather than a host skeleton blocker.
+`T2.1`–`T2.4` land atomically as the exact public geometry values and package
+checked-arithmetic seam. The
+[geometry contract evidence](../../Tests/ContractFixtures/SPEC002/Evidence/milestone-2/geometry-contract.md)
+records the passing host, static, and Embedded compile/test gates. The
+Foundation tests cover layouts, conformances,
+copy/equality behavior, zero and negative dimensions, independently absent
+proposals, scalar limits, every arithmetic overflow direction, checked
+rectangle construction, total exclusive edges, empty rectangles, and
+half-open containment. The public compile fixture consumes only the approved
+declarations; no downstream target or PoC compatibility helper was added.
 Milestone 4 remains dependency-blocked until SPEC-003/004 supply their owner
 targets. No design note is required before Milestone 0; create one only if a
 listed trigger is reached. Plan completion will not by itself mark SPEC-002

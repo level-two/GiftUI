@@ -177,7 +177,7 @@ run_macos() {
     printf 'profile_flag=%s\n' "${profile_flag}" >>"${metadata_path}"
 
     local -a module_command=(
-        swiftc "${flags[@]}" -parse-as-library -emit-module
+        swiftc "${flags[@]}" -package-name GiftUI -parse-as-library -emit-module
         -module-name GiftUI "${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
         -emit-module-path "${module_dir}/GiftUI.swiftmodule"
     )
@@ -261,7 +261,8 @@ run_nrf52840() {
         -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
     )
     local -a command=(
-        "${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -parse-as-library -emit-module
+        "${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -package-name GiftUI
+        -parse-as-library -emit-module
         -module-name GiftUI "${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
         -emit-module-path "${module_dir}/GiftUI.swiftmodule"
     )
