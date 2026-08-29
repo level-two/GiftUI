@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-08-27
+updated: 2026-08-28
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -813,6 +813,12 @@ Implementation should encode the fixed compiler checks, exact-set dependency
 comparison, link-map capture, and layout/allocation probes behind the single
 contract driver named above. Downstream Specifications should consume these
 declarations rather than copy signatures.
+
+## Implementation Records
+
+- [SPEC-002 Implementation Plan](../implementation-plans/spec-002-implementation-plan.md)
+  is the derived, non-authoritative ordering and evidence strategy for this
+  approved contract.
 
 ## Open Issues
 
