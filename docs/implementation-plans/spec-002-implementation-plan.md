@@ -184,7 +184,7 @@ recoverable and dispositioned against tag `PoC`.
       Fail the reset if the durable tag
       cannot reproduce `Package.swift`, `Sources/`, `Tests/`, firmware, scripts,
       and legacy documents selected for removal.
-- [ ] `T0.2` — Before deletion, create the PF-008 migration ledger under
+- [x] `T0.2` — Before deletion, create the PF-008 migration ledger under
       `Tests/ContractFixtures/SPEC002/` directly from tag `PoC`. Enumerate every
       PoC `Point`, `Size`, `Rect`, `ProposedSize`, `LayoutArithmetic`,
       `InputEvent`, scalar representation, mutable field, precondition,
@@ -517,6 +517,10 @@ Implementation began on 2026-08-29. `T0.1` is complete: the local and durable
 remote tag identities, dereferenced commit, complete tree checksum, retrieval
 commands, and required-path reproduction checks are recorded in the
 [PoC baseline record](../../Tests/ContractFixtures/SPEC002/poc-baseline.md).
+`T0.2` is complete: the tag-derived declarations, representations, mutation,
+precondition, throwing/trapping paths, consumers, input cases, and package
+edges are dispositioned in the
+[PF-008 migration ledger](../../Tests/ContractFixtures/SPEC002/migration-ledger.md).
 No design note or conformance report exists. The explicit path-manifest
 confirmation before `T0.5` remains an execution safety gate, and Milestone 4
 remains dependency-blocked until SPEC-003/004 supply their owner targets. No

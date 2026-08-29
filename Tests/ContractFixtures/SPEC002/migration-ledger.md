@@ -1,0 +1,260 @@
+# SPEC-002 PF-008 Migration Ledger
+
+This ledger is derived only from annotated tag `PoC`, tag object
+`2b2837a66b94df38c7b74ead33ebbb54aa08a06d`, and dereferenced commit
+`d5d6330432caa7c983d8dba35cf9f23c3800860b`. Line numbers below refer to that
+commit. The PoC declarations and consumers are evidence, not authority.
+
+Every disposition is `removed`, `recreated by SPEC-002`, or `owned by
+SPEC-NNN`. No row authorizes preservation of a PoC implementation.
+
+## Foundation declarations and behavior
+
+| ID | PoC source | PoC evidence | Consumer / risk | Disposition |
+| --- | --- | --- | --- | --- |
+| `PF008-GS-001` | `Sources/GiftUI/Geometry/Point.swift:2` | `x` is a public mutable host-width `Int` | Every point producer and consumer observes host width and permits mutation | recreated by SPEC-002 as public immutable `GeometryScalar` (`Int32`) |
+| `PF008-GS-002` | `Sources/GiftUI/Geometry/Point.swift:3` | `y` is a public mutable host-width `Int` | Every point producer and consumer observes host width and permits mutation | recreated by SPEC-002 as public immutable `GeometryScalar` (`Int32`) |
+| `PF008-GS-003` | `Sources/GiftUI/Geometry/Point.swift:5-8` | public non-failable `Int` initializer | No fixed-width declaration or explicit conversion seam | recreated by SPEC-002 with exact immutable `Int32` fields |
+| `PF008-GS-004` | `Sources/GiftUI/Geometry/Size.swift:2` | `width` is a public mutable host-width `Int` | Geometry, layout, rendering, integration, and tests | recreated by SPEC-002 as immutable `GeometryScalar` |
+| `PF008-GS-005` | `Sources/GiftUI/Geometry/Size.swift:3` | `height` is a public mutable host-width `Int` | Geometry, layout, rendering, integration, and tests | recreated by SPEC-002 as immutable `GeometryScalar` |
+| `PF008-GS-006` | `Sources/GiftUI/Geometry/Size.swift:5-9` | negative dimensions trigger `precondition`; initializer cannot report rejection | Trapping-only invalid-dimension path | recreated by SPEC-002 as `init?` returning `nil` |
+| `PF008-GS-007` | `Sources/GiftUI/Geometry/Rect.swift:2` | `origin` is public mutable | All rectangle consumers can mutate a formerly constructed rectangle | recreated by SPEC-002 as immutable |
+| `PF008-GS-008` | `Sources/GiftUI/Geometry/Rect.swift:3` | `size` is public mutable | Mutation bypasses construction-time edge validation | recreated by SPEC-002 as immutable |
+| `PF008-GS-009` | `Sources/GiftUI/Geometry/Rect.swift:5-8` | initializer is non-failable and computes no exclusive edges | Overflow may remain latent until a consumer derives an edge | recreated by SPEC-002 as failable checked construction with total edges |
+| `PF008-GS-010` | `Sources/GiftUI/Geometry/Rect.swift:10-22` | containment catches throwing subtraction and treats overflow as `false` | Rejection is collapsed into a hit-test result; no total `maxX`/`maxY` API | recreated by SPEC-002 with checked construction and half-open total-edge containment |
+| `PF008-GS-011` | `Sources/GiftUI/Geometry/ProposedSize.swift:2` | `width` is public mutable `Int?` | Mutation can install a negative proposal after initialization | recreated by SPEC-002 as immutable `GeometryScalar?` |
+| `PF008-GS-012` | `Sources/GiftUI/Geometry/ProposedSize.swift:3` | `height` is public mutable `Int?` | Mutation can install a negative proposal after initialization | recreated by SPEC-002 as immutable `GeometryScalar?` |
+| `PF008-GS-013` | `Sources/GiftUI/Geometry/ProposedSize.swift:5-16` | two negative-value `precondition` paths; initializer cannot report rejection | Trapping-only invalid-proposal paths | recreated by SPEC-002 as failable construction preserving `nil` absence |
+| `PF008-GS-014` | `Sources/GiftUI/Layout/LayoutArithmetic.swift:1-3` | package `LayoutArithmeticError.overflow` taxonomy | Competes with SPEC-002's local optional seam and SPEC-003's cross-layer owner | removed |
+| `PF008-GS-015` | `Sources/GiftUI/Layout/LayoutArithmetic.swift:5-16` | package `add(Int, Int) throws -> Int` | Host-width throwing arithmetic | recreated by SPEC-002 as optional `GeometryScalar` result |
+| `PF008-GS-016` | `Sources/GiftUI/Layout/LayoutArithmetic.swift:18-29` | package `subtract(Int, Int) throws -> Int` | Host-width throwing arithmetic | recreated by SPEC-002 as optional `GeometryScalar` result |
+| `PF008-GS-017` | `Sources/GiftUI/Layout/LayoutArithmetic.swift:31-42` | package `multiply(Int, Int) throws -> Int` | Host-width throwing arithmetic | recreated by SPEC-002 as optional `GeometryScalar` result |
+| `PF008-GS-018` | `Sources/GiftUI/Layout/LayoutArithmetic.swift:44-62` | `requireAdd`, `requireSubtract`, and `requireMultiply` erase optional/throwing rejection | Layout consumers receive trapping-only helpers | removed; later layout behavior is owned by SPEC-007 |
+| `PF008-GS-019` | `Sources/GiftUI/Layout/LayoutArithmetic.swift:64-72` | private `require` calls `preconditionFailure` on overflow | Deterministic rejection becomes a process trap | removed |
+| `PF008-IN-001` | `Sources/GiftUI/Input/InputEvent.swift:1` | public three-case `InputEvent` | Client API exposes integration traffic and has no bounded correlation/provenance | removed |
+| `PF008-IN-002` | `Sources/GiftUI/Input/InputEvent.swift:2` | `pointerDown(Point)` | No source, sequence, ordinal, or presentation revision | recreated by SPEC-002 as package-SPI `PointerPhase.down` plus bounded event fields |
+| `PF008-IN-003` | `Sources/GiftUI/Input/InputEvent.swift:3` | `pointerMove(Point)` | No source, sequence, ordinal, or presentation revision | recreated by SPEC-002 as package-SPI `PointerPhase.move` plus bounded event fields |
+| `PF008-IN-004` | `Sources/GiftUI/Input/InputEvent.swift:4` | `pointerUp(Point)` | No source, sequence, ordinal, or presentation revision | recreated by SPEC-002 as package-SPI `PointerPhase.up` plus bounded event fields |
+| `PF008-IN-005` | no PoC declaration | no source identity, sequence identity, ordinal, or presentation-revision wrapper exists | Absence permitted unbounded/uncorrelated producers | recreated by SPEC-002 as exact bounded package-SPI wrappers |
+
+## Exact consumer inventory
+
+The following lists are the complete files returned by `git grep -l` against
+tag `PoC` for the governed names. A path can appear in more than one list.
+
+### `Point`
+
+```text
+Sources/GiftUI/Geometry/Point.swift
+Sources/GiftUI/Geometry/Rect.swift
+Sources/GiftUI/Input/InputEvent.swift
+Sources/GiftUI/Rendering/RenderBackend.swift
+Sources/GiftUI/Rendering/RenderOperation.swift
+Sources/GiftUI/Rendering/TextRun.swift
+Sources/GiftUIBackendFramebuffer/BitmapTextRasterizer.swift
+Sources/GiftUIBackendFramebuffer/FramebufferBackend.swift
+Sources/GiftUIBackendFramebuffer/FramebufferSurface.swift
+Sources/GiftUIBackendFramebuffer/MemoryFramebufferSurface.swift
+Sources/GiftUIBackendRGB565/RGB565RetainedRenderer.swift
+Sources/GiftUIBackendRGB565/RGB565TileRenderer.swift
+Sources/GiftUIBackendRGB565/RGB565TileStorage.swift
+Sources/GiftUIBuiltinFont/BuiltinFont8x12.swift
+Sources/GiftUIDisplayILI9341/ILI9341Display.swift
+Sources/GiftUIDisplayILI9341/ILI9341DisplayTransport.swift
+Sources/GiftUIInputADS7846/ADS7846Calibration.swift
+Sources/GiftUIInputADS7846/ADS7846TouchProcessor.swift
+Sources/GiftUIPlatformLinux/DisplaySurface.swift
+Sources/GiftUIPlatformLinux/FocusInputAdapter.swift
+Sources/GiftUIPlatformLinux/GiftUILinuxApplication.swift
+Sources/GiftUIPlatformLinux/LinuxFramebufferDisplaySurface.swift
+Sources/GiftUIPlatformRaspberryPi/GPIOInputSource.swift
+Sources/GiftUIPlatformRaspberryPi/TouchCoordinateMapper.swift
+Sources/GiftUIPlatformRaspberryPi/TouchInputSource.swift
+Sources/GiftUIRuntimeDynamic/DynamicLayoutSnapshot.swift
+Sources/GiftUIRuntimeDynamic/GiftUIApplication.swift
+Sources/GiftUIRuntimeDynamic/HitTestMap.swift
+Sources/GiftUIRuntimeDynamic/ViewGraph.swift
+Sources/GiftUIRuntimeDynamic/ViewNode.swift
+Sources/GiftUIRuntimeStatic/StaticRuntime.swift
+Sources/GiftUISimulatorMac/FramebufferView.swift
+Sources/GiftUISimulatorMac/MouseInputAdapter.swift
+Tests/GiftUIBackendFramebufferTests/GiftUIBackendFramebufferTests.swift
+Tests/GiftUIBackendRGB565Tests/RGB565TileRendererTests.swift
+Tests/GiftUIDisplayILI9341Tests/ILI9341DisplayTests.swift
+Tests/GiftUIInputADS7846Tests/ADS7846CalibrationTests.swift
+Tests/GiftUIInputADS7846Tests/ADS7846StaticDispatchTests.swift
+Tests/GiftUIInputADS7846Tests/ADS7846TouchProcessorTests.swift
+Tests/GiftUIInputADS7846Tests/XPT2046CompatibilityTests.swift
+Tests/GiftUIIntegrationTests/GiftUIIntegrationTests.swift
+Tests/GiftUIPlatformLinuxTests/GiftUIPlatformLinuxTests.swift
+Tests/GiftUIPlatformRaspberryPiTests/GiftUIPlatformRaspberryPiTests.swift
+Tests/GiftUIRuntimeDynamicTests/DynamicGraphTests.swift
+Tests/GiftUIRuntimeDynamicTests/GiftUIRuntimeDynamicTests.swift
+Tests/GiftUIRuntimeStaticTests/GiftUIRuntimeStaticTests.swift
+Tests/GiftUITests/GiftUITests.swift
+firmware/nrf52840/applications/ili9486/CMakeLists.txt
+firmware/nrf52840/applications/ili9486/src/ILI9486BringUp.swift
+firmware/nrf52840/applications/kmrtm24024_spi/CMakeLists.txt
+firmware/nrf52840/applications/kmrtm24024_spi/src/KMRTM24024SPIApplication.swift
+scripts/nrf52840/compile-layer.sh
+scripts/raspberry-pi/probe/Sources/GiftUIToolchainProbe/main.swift
+```
+
+### `Size`, `Rect`, and `ProposedSize`
+
+```text
+Sources/GiftUI/Geometry/ProposedSize.swift
+Sources/GiftUI/Geometry/Rect.swift
+Sources/GiftUI/Geometry/Size.swift
+Sources/GiftUI/Input/HitRegion.swift
+Sources/GiftUI/Rendering/RenderBackend.swift
+Sources/GiftUI/Rendering/RenderOperation.swift
+Sources/GiftUIBackendFramebuffer/FramebufferBackend.swift
+Sources/GiftUIBackendRGB565/RGB565RendererConfiguration.swift
+Sources/GiftUIBackendRGB565/RGB565RetainedRenderer.swift
+Sources/GiftUIBackendRGB565/RGB565TileRenderer.swift
+Sources/GiftUIDisplayILI9341/ILI9341Display.swift
+Sources/GiftUIDisplayILI9341/ILI9341DisplayConfiguration.swift
+Sources/GiftUIDisplayILI9341/ILI9341DisplayTransport.swift
+Sources/GiftUIExampleThermostat/main.swift
+Sources/GiftUIInputADS7846/ADS7846Calibration.swift
+Sources/GiftUIInputADS7846/ADS7846TouchProcessor.swift
+Sources/GiftUIPlatformLinux/DisplaySurface.swift
+Sources/GiftUIPlatformLinux/GiftUILinuxApplication.swift
+Sources/GiftUIPlatformLinux/LinuxFramebufferDisplaySurface.swift
+Sources/GiftUIPlatformRaspberryPi/RaspberryPiConfiguration.swift
+Sources/GiftUIPlatformRaspberryPi/RaspberryPiPlatform.swift
+Sources/GiftUIPlatformRaspberryPi/TouchCoordinateMapper.swift
+Sources/GiftUIPlatformRaspberryPi/TouchInputSource.swift
+Sources/GiftUIRuntimeDynamic/DynamicRuntime.swift
+Sources/GiftUIRuntimeDynamic/GiftUIApplication.swift
+Sources/GiftUIRuntimeDynamic/LayoutEngine.swift
+Sources/GiftUIRuntimeDynamic/LayoutNode.swift
+Sources/GiftUIRuntimeDynamic/ViewGraph.swift
+Sources/GiftUIRuntimeDynamic/ViewNode.swift
+Sources/GiftUIRuntimeStatic/StaticRuntime.swift
+Sources/GiftUISimulatorMac/FramebufferView.swift
+Sources/GiftUISimulatorMac/SimulatorApplication.swift
+Sources/GiftUISimulatorMac/SimulatorWindow.swift
+Tests/GiftUIBackendFramebufferTests/GiftUIBackendFramebufferTests.swift
+Tests/GiftUIBackendRGB565Tests/RGB565FoundationTests.swift
+Tests/GiftUIBackendRGB565Tests/RGB565StaticIntegrationTests.swift
+Tests/GiftUIBackendRGB565Tests/RGB565TileRendererTests.swift
+Tests/GiftUIDisplayILI9341Tests/ILI9341DisplayTests.swift
+Tests/GiftUIDynamicConveniencesTests/GiftUIDynamicConveniencesTests.swift
+Tests/GiftUIInputADS7846Tests/ADS7846CalibrationTests.swift
+Tests/GiftUIInputADS7846Tests/ADS7846StaticDispatchTests.swift
+Tests/GiftUIInputADS7846Tests/ADS7846TouchProcessorTests.swift
+Tests/GiftUIInputADS7846Tests/XPT2046CompatibilityTests.swift
+Tests/GiftUIIntegrationTests/GiftUIIntegrationTests.swift
+Tests/GiftUIPlatformLinuxTests/GiftUIPlatformLinuxTests.swift
+Tests/GiftUIPlatformRaspberryPiTests/GiftUIPlatformRaspberryPiTests.swift
+Tests/GiftUIRuntimeConformanceTests/GiftUIRuntimeConformanceTests.swift
+Tests/GiftUIRuntimeDynamicTests/DynamicGraphTests.swift
+Tests/GiftUIRuntimeDynamicTests/GiftUIRuntimeDynamicTests.swift
+Tests/GiftUIRuntimeStaticTests/GiftUIRuntimeStaticTests.swift
+Tests/GiftUITests/GiftUITests.swift
+firmware/nrf52840/applications/ili9486/CMakeLists.txt
+firmware/nrf52840/applications/ili9486/src/ILI9486BringUp.swift
+firmware/nrf52840/applications/kmrtm24024_spi/CMakeLists.txt
+firmware/nrf52840/applications/kmrtm24024_spi/src/KMRTM24024SPIApplication.swift
+scripts/nrf52840/compile-layer.sh
+```
+
+### `LayoutArithmetic`
+
+```text
+Sources/GiftUI/Geometry/Rect.swift
+Sources/GiftUI/Layout/LayoutArithmetic.swift
+Sources/GiftUIRuntimeDynamic/ViewGraph.swift
+Sources/GiftUIRuntimeDynamic/ViewNode.swift
+Tests/GiftUITests/GiftUITests.swift
+firmware/nrf52840/applications/ili9486/CMakeLists.txt
+firmware/nrf52840/applications/kmrtm24024_spi/CMakeLists.txt
+scripts/nrf52840/compile-layer.sh
+```
+
+### `InputEvent`
+
+```text
+Sources/GiftUI/Input/InputEvent.swift
+Sources/GiftUIInputADS7846/ADS7846TouchProcessor.swift
+Sources/GiftUIPlatformLinux/FocusInputAdapter.swift
+Sources/GiftUIPlatformLinux/GiftUILinuxApplication.swift
+Sources/GiftUIPlatformLinux/LinuxInputSource.swift
+Sources/GiftUIPlatformRaspberryPi/TouchInputSource.swift
+Sources/GiftUIRuntimeDynamic/GiftUIApplication.swift
+Sources/GiftUISimulatorMac/FramebufferView.swift
+Sources/GiftUISimulatorMac/SimulatorApplication.swift
+firmware/nrf52840/applications/ili9486/CMakeLists.txt
+firmware/nrf52840/applications/ili9486/src/ILI9486BringUp.swift
+firmware/nrf52840/applications/kmrtm24024_spi/CMakeLists.txt
+firmware/nrf52840/applications/kmrtm24024_spi/src/KMRTM24024SPIApplication.swift
+scripts/nrf52840/compile-layer.sh
+```
+
+## Consumer ownership disposition
+
+| PoC consumer family | Exact PoC paths | Disposition |
+| --- | --- | --- |
+| Foundation geometry and normalized input declarations | `Sources/GiftUI/Geometry/`, `Sources/GiftUI/Layout/LayoutArithmetic.swift`, `Sources/GiftUI/Input/InputEvent.swift` | removed, then recreated by SPEC-002 only from its exact declarations |
+| Declarative composition and primitive consumers | remaining `Sources/GiftUI/Composition/`, `Containers/`, `PrimitiveViews/`, `View/`, and `Runtime/` paths | owned by SPEC-006 and SPEC-013; removed |
+| Hit/action declarations | `Sources/GiftUI/Input/ActionID.swift`, `Sources/GiftUI/Input/HitRegion.swift` | owned by SPEC-011; removed |
+| Render declarations and consumers | `Sources/GiftUI/Rendering/` | owned by SPEC-005, SPEC-008, and SPEC-012 as applicable; removed |
+| Dynamic/static runtime consumers | `Sources/GiftUIRuntimeDynamic/`, `Sources/GiftUIRuntimeStatic/` | owned by SPEC-009, SPEC-010, and SPEC-013; removed |
+| Backend/raster consumers | `Sources/GiftUIBackendFramebuffer/`, `Sources/GiftUIBackendRGB565/` | owned by SPEC-014; removed |
+| Font consumers | `Sources/GiftUIBuiltinFont/` | owned by SPEC-005 and downstream SPEC-008/SPEC-014 contracts; removed |
+| Input, display, simulator, Linux, and Raspberry Pi consumers | `Sources/GiftUIInputADS7846/`, `Sources/GiftUIDisplayILI9341/`, `Sources/GiftUISimulatorMac/`, `Sources/GiftUIPlatformLinux/`, `Sources/GiftUIPlatformRaspberryPi/`, `Sources/CGiftUILinux/` | owned by SPEC-011, SPEC-014, and SPEC-015 at their respective seams; removed |
+| Thermostat consumers | every `Sources/GiftUIExampleThermostat*/` path | no MVP replacement owner; removed |
+| PoC tests | every tracked `Tests/*Tests/` path present in tag `PoC` | owned by the same Specification as the exercised implementation; removed; no test helper is copied |
+| PoC firmware consumers | `firmware/nrf52840/applications/ili9486/`, `firmware/nrf52840/applications/kmrtm24024_spi/`, and `firmware/nrf52840/applications/skeleton/` | owned by future SPEC-014/SPEC-015 production assembly or no replacement where sample-only; removed |
+| Hard-coded compilation | `scripts/nrf52840/compile-layer.sh` | no reusable environment purpose; removed |
+
+## Package-edge inventory
+
+The PoC root manifest places Foundation in target `GiftUI`. These are every
+direct target dependency edge to `GiftUI` in that manifest:
+
+```text
+GiftUIDynamicConveniences -> GiftUI
+GiftUIRuntimeDynamic -> GiftUI
+GiftUIRuntimeStatic -> GiftUI
+GiftUIBackendFramebuffer -> GiftUI
+GiftUIBackendRGB565 -> GiftUI
+GiftUIInputADS7846 -> GiftUI
+GiftUIDisplayILI9341 -> GiftUI
+GiftUISimulatorMac -> GiftUI
+GiftUIPlatformLinux -> GiftUI
+GiftUIPlatformRaspberryPi -> GiftUI
+GiftUIExampleThermostatView -> GiftUI
+GiftUIExampleThermostatPortableView -> GiftUI
+GiftUIExampleThermostat -> GiftUI
+GiftUITests -> GiftUI
+GiftUIDynamicConveniencesTests -> GiftUI
+GiftUIDisplayILI9341Tests -> GiftUI
+GiftUIIntegrationTests -> GiftUI
+GiftUIPlatformLinuxTests -> GiftUI
+```
+
+The old manifest and all of its edges are removed. SPEC-002 later recreates a
+minimal one-package manifest containing only the stable `GiftUI` product,
+`GiftUI` target, and its contract tests. Downstream edges are introduced only
+by their owning ready plans and must enter the exact dependency allow-list.
+
+## Reproduction
+
+The governed-name inventory is reproduced with:
+
+```sh
+git grep -l Point PoC -- Sources Tests firmware scripts
+git grep -l Size PoC -- Sources Tests firmware scripts
+git grep -l Rect PoC -- Sources Tests firmware scripts
+git grep -l ProposedSize PoC -- Sources Tests firmware scripts
+git grep -l LayoutArithmetic PoC -- Sources Tests firmware scripts
+git grep -l InputEvent PoC -- Sources Tests firmware scripts
+```
+
+The declaration table is reproduced with `git show PoC:<path>` for each
+Foundation source named above. Any newly discovered PoC declaration, mutable
+field, precondition, throwing/trapping path, input case, consumer file, or
+direct `GiftUI` edge must receive a ledger row before the clean cut.
