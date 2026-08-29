@@ -360,3 +360,97 @@ public struct GiftUIOperationalHealth: Sendable, Equatable {
         }
     }
 }
+
+public enum GiftUIDiagnosticKind: UInt8, Sendable {
+    case operationalOutcome = 0
+    case failureOutcome = 1
+    case healthTransition = 2
+    case residualDisposition = 3
+}
+
+public enum GiftUIDiagnosticSeverity: UInt8, Sendable {
+    case debug = 0
+    case information = 1
+    case notice = 2
+    case warning = 3
+    case error = 4
+    case critical = 5
+}
+
+public struct GiftUIDiagnosticSelection: Sendable, Equatable {
+    public let kindMask: UInt8
+    public let originMask: UInt16
+    public let minimumSeverity: GiftUIDiagnosticSeverity
+
+    public init(
+        kindMask: UInt8,
+        originMask: UInt16,
+        minimumSeverity: GiftUIDiagnosticSeverity
+    ) {
+        self.kindMask = kindMask
+        self.originMask = originMask
+        self.minimumSeverity = minimumSeverity
+    }
+
+    public func includes(
+        kind: GiftUIDiagnosticKind,
+        origin: GiftUIFailureOrigin,
+        severity: GiftUIDiagnosticSeverity
+    ) -> Bool {
+        let kindBit: UInt8 = 1 << kind.rawValue
+        let originBit: UInt16 = 1 << origin.rawValue
+        return kindMask & kindBit != 0
+            && originMask & originBit != 0
+            && severity.rawValue >= minimumSeverity.rawValue
+    }
+}
+
+public struct GiftUIDiagnosticRecord: Sendable, Equatable {
+    public let kind: GiftUIDiagnosticKind
+    public let severity: GiftUIDiagnosticSeverity
+    public let flags: UInt16
+    public let origin: GiftUIFailureOrigin
+    public let affectedScope: GiftUIAffectedScope
+    public let condition: UInt16
+    public let correlation0: UInt32
+    public let correlation1: UInt32
+    public let observation0: UInt32
+    public let observation1: UInt32
+
+    public init(
+        kind: GiftUIDiagnosticKind,
+        severity: GiftUIDiagnosticSeverity,
+        flags: UInt16,
+        origin: GiftUIFailureOrigin,
+        affectedScope: GiftUIAffectedScope,
+        condition: UInt16,
+        correlation0: UInt32 = 0,
+        correlation1: UInt32 = 0,
+        observation0: UInt32 = 0,
+        observation1: UInt32 = 0
+    ) {
+        self.kind = kind
+        self.severity = severity
+        self.flags = flags & 0x000F
+        self.origin = origin
+        self.affectedScope = affectedScope
+        self.condition = condition
+        self.correlation0 = correlation0
+        self.correlation1 = correlation1
+        self.observation0 = observation0
+        self.observation1 = observation1
+    }
+}
+
+public enum GiftUIDiagnosticSinkResult: UInt8, Sendable {
+    case accepted = 0
+    case dropped = 1
+    case saturated = 2
+    case failed = 3
+}
+
+public protocol GiftUIDiagnosticSink {
+    mutating func consume(
+        _ record: GiftUIDiagnosticRecord
+    ) -> GiftUIDiagnosticSinkResult
+}

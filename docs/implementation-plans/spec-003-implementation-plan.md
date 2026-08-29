@@ -235,7 +235,7 @@ correctness-bearing tests that run with no diagnostic implementation linked.
 bounded storage are downstream observations; every configuration yields
 identical correctness outputs.
 
-- [ ] `T3.1` — Implement the exact diagnostic kind, severity, selection,
+- [x] `T3.1` — Implement the exact diagnostic kind, severity, selection,
       record, sink-result, and sink declarations with specified masks, flags,
       zero defaults, projection fields, and 24-byte record maximum. Prove
       constant-time selection before full record construction.
@@ -565,3 +565,10 @@ iterations with diagnostics absent. The checked-in probe fails on any
 steps, records its checksum and generated image hashes, and leaves final-image
 compiler/runtime call-graph resolution to Milestone 5. Milestone 2 is complete;
 `T3.1` is next.
+
+`T3.1` is complete: Core exports the exact diagnostic kind/severity,
+constant-time selection, 24-byte record, sink result, and generic sink
+protocol. Tests exhaust every kind/origin/severity-threshold combination,
+prove zero masks select nothing, verify every frozen raw value, default unused
+words to zero, constrain flags to the four MVP bits, preserve every record
+field, and enforce the record layout maximum. `T3.2` is next.

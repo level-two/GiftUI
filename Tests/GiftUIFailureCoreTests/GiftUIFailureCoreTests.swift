@@ -676,6 +676,127 @@ final class GiftUIFailureCoreTests: XCTestCase {
         }
     }
 
+    func testDiagnosticKindsSeveritiesAndSinkResultsHaveExactRawValues() {
+        XCTAssertEqual([
+            GiftUIDiagnosticKind.operationalOutcome.rawValue,
+            GiftUIDiagnosticKind.failureOutcome.rawValue,
+            GiftUIDiagnosticKind.healthTransition.rawValue,
+            GiftUIDiagnosticKind.residualDisposition.rawValue,
+        ], [0, 1, 2, 3])
+        XCTAssertEqual([
+            GiftUIDiagnosticSeverity.debug.rawValue,
+            GiftUIDiagnosticSeverity.information.rawValue,
+            GiftUIDiagnosticSeverity.notice.rawValue,
+            GiftUIDiagnosticSeverity.warning.rawValue,
+            GiftUIDiagnosticSeverity.error.rawValue,
+            GiftUIDiagnosticSeverity.critical.rawValue,
+        ], [0, 1, 2, 3, 4, 5])
+        XCTAssertEqual([
+            GiftUIDiagnosticSinkResult.accepted.rawValue,
+            GiftUIDiagnosticSinkResult.dropped.rawValue,
+            GiftUIDiagnosticSinkResult.saturated.rawValue,
+            GiftUIDiagnosticSinkResult.failed.rawValue,
+        ], [0, 1, 2, 3])
+    }
+
+    func testDiagnosticSelectionExhaustsEveryKindOriginAndThreshold() {
+        for kind in allDiagnosticKinds {
+            for origin in allOrigins {
+                for minimum in allDiagnosticSeverities {
+                    let selection = GiftUIDiagnosticSelection(
+                        kindMask: 1 << kind.rawValue,
+                        originMask: 1 << origin.rawValue,
+                        minimumSeverity: minimum
+                    )
+                    for candidateKind in allDiagnosticKinds {
+                        for candidateOrigin in allOrigins {
+                            for severity in allDiagnosticSeverities {
+                                XCTAssertEqual(
+                                    selection.includes(
+                                        kind: candidateKind,
+                                        origin: candidateOrigin,
+                                        severity: severity
+                                    ),
+                                    candidateKind == kind
+                                        && candidateOrigin == origin
+                                        && severity.rawValue >= minimum.rawValue
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    func testZeroDiagnosticMasksSelectNothing() {
+        for severity in allDiagnosticSeverities {
+            let selection = GiftUIDiagnosticSelection(
+                kindMask: 0,
+                originMask: 0,
+                minimumSeverity: severity
+            )
+            for kind in allDiagnosticKinds {
+                for origin in allOrigins {
+                    XCTAssertFalse(selection.includes(
+                        kind: kind,
+                        origin: origin,
+                        severity: .critical
+                    ))
+                }
+            }
+        }
+    }
+
+    func testDiagnosticRecordPreservesFieldsAndZerosReservedFlags() {
+        let record = GiftUIDiagnosticRecord(
+            kind: .failureOutcome,
+            severity: .critical,
+            flags: .max,
+            origin: .transport,
+            affectedScope: .runtime,
+            condition: .max,
+            correlation0: 1,
+            correlation1: 2,
+            observation0: 3,
+            observation1: 4
+        )
+
+        XCTAssertEqual(record.kind, .failureOutcome)
+        XCTAssertEqual(record.severity, .critical)
+        XCTAssertEqual(record.flags, 0x000F)
+        XCTAssertEqual(record.origin, .transport)
+        XCTAssertEqual(record.affectedScope, .runtime)
+        XCTAssertEqual(record.condition, .max)
+        XCTAssertEqual(record.correlation0, 1)
+        XCTAssertEqual(record.correlation1, 2)
+        XCTAssertEqual(record.observation0, 3)
+        XCTAssertEqual(record.observation1, 4)
+        XCTAssertLessThanOrEqual(MemoryLayout<GiftUIDiagnosticRecord>.size, 24)
+        XCTAssertLessThanOrEqual(MemoryLayout<GiftUIDiagnosticRecord>.stride, 24)
+    }
+
+    func testDiagnosticRecordDefaultsUnusedWordsToZero() {
+        let record = GiftUIDiagnosticRecord(
+            kind: .operationalOutcome,
+            severity: .debug,
+            flags: 0,
+            origin: .foundation,
+            affectedScope: .operation,
+            condition: 0
+        )
+
+        XCTAssertEqual(record.correlation0, 0)
+        XCTAssertEqual(record.correlation1, 0)
+        XCTAssertEqual(record.observation0, 0)
+        XCTAssertEqual(record.observation1, 0)
+        requireSendable(GiftUIDiagnosticKind.self)
+        requireSendable(GiftUIDiagnosticSeverity.self)
+        requireSendable(GiftUIDiagnosticSelection.self)
+        requireSendable(GiftUIDiagnosticRecord.self)
+        requireSendable(GiftUIDiagnosticSinkResult.self)
+    }
+
     private func assertInvariantContainment(
         _ owner: FixtureOwnerAdapter,
         expectedPolicyInvocations: Int,
@@ -746,6 +867,14 @@ final class GiftUIFailureCoreTests: XCTestCase {
 
     private var allHealthStates: [GiftUIOperationalHealthState] {
         [.available, .degraded, .unavailable, .quiesced]
+    }
+
+    private var allDiagnosticKinds: [GiftUIDiagnosticKind] {
+        [.operationalOutcome, .failureOutcome, .healthTransition, .residualDisposition]
+    }
+
+    private var allDiagnosticSeverities: [GiftUIDiagnosticSeverity] {
+        [.debug, .information, .notice, .warning, .error, .critical]
     }
 
     private var operationalFact: GiftUIOperationalFact {
