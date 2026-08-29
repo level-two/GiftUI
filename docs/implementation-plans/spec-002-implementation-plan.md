@@ -344,7 +344,7 @@ concrete integration type or admission semantics.
       coordinates, min/max wrapper values, copying/equality, exact raw widths,
       and absence of backend/platform/OS/driver/transport/HAL/hardware fields.
       Do not test admission, ordering, cancellation, hit testing, or dispatch.
-- [ ] `T3.3` — Prove that public PoC `InputEvent` is absent and that the clean
+- [x] `T3.3` — Prove that public PoC `InputEvent` is absent and that the clean
       package exports only the required package-SPI value family. Future
       simulator, Linux, Raspberry Pi, device-input, and runtime callers are
       created by their owning Specifications; they must keep physical-to-logical
@@ -596,6 +596,12 @@ sentinel, admission, ordering, cancellation, hit-test, or dispatch behavior.
 for every phase, minimum/maximum coordinates and raw wrappers, exact raw
 widths, event size, copying, equality, and hashing. Public fixtures remain
 external-client compilations, and no test asserts execution-owned behavior.
+`T3.3` adds a generated public/package interface audit and closes all five
+tagged input ledger rows. The
+[normalized pointer evidence](../../Tests/ContractFixtures/SPEC002/Evidence/milestone-3/normalized-pointer-contract.md)
+records the exact surface, fixture, width, boundary, and absence checks.
+Milestone 3 is complete without recreating an input integration or defining
+execution-owned semantics.
 Milestone 4 remains dependency-blocked until SPEC-003/004 supply their owner
 targets. No design note is required before Milestone 0; create one only if a
 listed trigger is reached. Plan completion will not by itself mark SPEC-002

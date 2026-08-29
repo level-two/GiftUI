@@ -65,7 +65,7 @@ named evidence seam must demonstrate the disposition.
 | `PF008-GS-017` | `GeometryArithmetic.multiply(_:_:) -> GeometryScalar?` as package SPI | `T2.2`; exhaustive multiply boundary/overflow tests |
 | `PF008-GS-018` | None; no `requireAdd`, `requireSubtract`, or `requireMultiply` helper | `T2.4`; source and compiled-interface compatibility audit |
 | `PF008-GS-019` | None; no overflow `preconditionFailure` path | `T2.4`; source audit plus overflow tests proving optional rejection |
-| `PF008-IN-001` | None; no public `InputEvent` declaration or alias | `T3.4`; public-interface and forbidden-compatibility audit |
+| `PF008-IN-001` | None; no public `InputEvent` declaration or alias | `T3.3`; public-interface and forbidden-compatibility audit |
 | `PF008-IN-002` | `PointerPhase.down = 0` and package-SPI `NormalizedPointerEvent` correlation fields | `T3.1`; package fixture and normalized-event value tests |
 | `PF008-IN-003` | `PointerPhase.move = 1` and the same bounded event representation | `T3.1`; package fixture and normalized-event value tests |
 | `PF008-IN-004` | `PointerPhase.up = 2` and the same bounded event representation | `T3.1`; package fixture and normalized-event value tests |
@@ -80,8 +80,18 @@ PoC failure modes:
 - mutable stored properties in an owned Foundation value; or
 - absent or sentinel provenance in a normalized pointer event.
 
-The `T2.4` and `T3.4` compatibility audits must fail if any such shim exists,
+The `T2.4` and `T3.3` compatibility audits must fail if any such shim exists,
 even when the exact replacement declarations also compile.
+
+### Normalized-input closure
+
+| Ledger ID | Closure evidence | Status |
+| --- | --- | --- |
+| `PF008-IN-001` | Generated public interface contains only the five approved geometry owners; `check-foundation-surface.rb` rejects `InputEvent` and every public normalized-input owner | closed by `T3.3` |
+| `PF008-IN-002` | Package interface fixes `PointerPhase.down`; min-coordinate/down-phase package fixture and value test pass | closed by `T3.1`/`T3.2` |
+| `PF008-IN-003` | Package interface fixes `PointerPhase.move`; ordinary-coordinate/move-phase package fixture and value test pass | closed by `T3.1`/`T3.2` |
+| `PF008-IN-004` | Package interface fixes `PointerPhase.up`; max-coordinate/up-phase package fixture and value test pass | closed by `T3.1`/`T3.2` |
+| `PF008-IN-005` | Package interface and raw-width tests prove required non-optional `UInt16`/`UInt32` provenance and correlation fields; concrete/sentinel vocabulary is rejected | closed by `T3.2`/`T3.3` |
 
 ## Exact consumer inventory
 

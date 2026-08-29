@@ -180,12 +180,22 @@ run_macos() {
     printf 'profile_flag=%s\n' "${profile_flag}" >>"${metadata_path}"
 
     local -a module_command=(
-        swiftc "${flags[@]}" -package-name GiftUI -parse-as-library -emit-module
+        swiftc "${flags[@]}" -language-mode 6 -package-name GiftUI
+        -enable-library-evolution -parse-as-library -emit-module
+        -emit-module-interface-path "${module_dir}/GiftUI.swiftinterface"
+        -emit-package-module-interface-path "${module_dir}/GiftUI.package.swiftinterface"
         -module-name GiftUI "${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
         -emit-module-path "${module_dir}/GiftUI.swiftmodule"
     )
     record_command "${module_command[@]}"
     "${module_command[@]}" >>"${log_path}" 2>&1
+
+    record_command "${SCRIPT_DIR}/check-foundation-surface.rb" \
+        "${module_dir}/GiftUI.swiftinterface" \
+        "${module_dir}/GiftUI.package.swiftinterface"
+    "${SCRIPT_DIR}/check-foundation-surface.rb" \
+        "${module_dir}/GiftUI.swiftinterface" \
+        "${module_dir}/GiftUI.package.swiftinterface" >>"${log_path}" 2>&1
 
     record_command swift package dump-package
     CLANG_MODULE_CACHE_PATH="${report_dir}/build/clang-cache" \
