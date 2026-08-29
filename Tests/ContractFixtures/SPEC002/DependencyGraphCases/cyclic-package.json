@@ -1,0 +1,18 @@
+{
+  "targets": [
+    {
+      "name": "OwnerA",
+      "type": "regular",
+      "dependencies": [
+        { "byName": ["OwnerB", null] }
+      ]
+    },
+    {
+      "name": "OwnerB",
+      "type": "regular",
+      "dependencies": [
+        { "byName": ["OwnerA", null] }
+      ]
+    }
+  ]
+}

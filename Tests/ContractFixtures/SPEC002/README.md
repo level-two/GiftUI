@@ -12,6 +12,7 @@ Fixtures/
   Negative/<fixture-id>/expected-diagnostic-patterns.txt
 Evidence/<milestone>/
 fixture-manifest.tsv
+DependencyGraphCases/
 ```
 
 `fixture-manifest.tsv` is the checked-in, ordered fixture registry. Every row
@@ -45,6 +46,11 @@ profile metadata belongs in `metadata.txt`. Re-running a profile replaces its
 own report directory and must not modify another profile. Stable milestone
 transcripts selected for review are copied deliberately to
 `Evidence/<milestone>/`; generated report trees are never committed.
+
+`DependencyGraphCases/` contains synthetic checker regressions, not Swift
+compile fixtures. Its unknown-edge case must reject an undeclared owner, and
+its cycle case must fail the independent cycle check even when the declared
+and actual edges match.
 
 The standalone SPEC-002 entry points are the four commands required by the
 Specification:

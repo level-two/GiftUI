@@ -1,0 +1,16 @@
+{
+  "targets": [
+    {
+      "name": "FoundationOwner",
+      "type": "regular",
+      "dependencies": []
+    },
+    {
+      "name": "FoundationOwnerTests",
+      "type": "test",
+      "dependencies": [
+        { "byName": ["FoundationOwner", null] }
+      ]
+    }
+  ]
+}

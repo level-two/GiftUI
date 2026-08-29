@@ -254,7 +254,7 @@ implementation begins.
       explicit expected replacement declarations and evidence owners for each
       SPEC-002 row. Reject shims that preserve trapping-only, unbounded,
       public-input, mutable-field, or absent-provenance behavior.
-- [ ] `T1.3` — Add
+- [x] `T1.3` — Add
       `Tests/ContractFixtures/SPEC002/target-dependencies.yaml` from the clean
       `swift package dump-package` target set, including empty dependency lists,
       plus exact-set/direct-edge comparison and an independent cycle check.
@@ -553,6 +553,11 @@ assigns each an exact replacement or intentional absence, an implementation
 task, and an evidence owner. The ledger now makes trapping-only, unbounded,
 public-input, mutable-field, and absent-provenance compatibility shims explicit
 test failures.
+`T1.3` adds the exact two-target
+[dependency allow-list](../../Tests/ContractFixtures/SPEC002/target-dependencies.yaml)
+and a fail-closed checker that compares target names, target types, and direct
+target edges from `swift package dump-package` before independently checking
+both the allow-list and actual graphs for cycles.
 Milestone 4 remains dependency-blocked until SPEC-003/004 supply their owner
 targets. No design note is required before Milestone 0; create one only if a
 listed trigger is reached. Plan completion will not by itself mark SPEC-002
