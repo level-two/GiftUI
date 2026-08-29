@@ -2,7 +2,7 @@
 id: SPEC-004
 feature: capability-system
 title: Capability Contribution and Resolution
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-22

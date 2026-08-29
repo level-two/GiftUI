@@ -14,6 +14,7 @@ let package = Package(
             name: "GiftUIFailureDiagnostics",
             targets: ["GiftUIFailureDiagnostics"]
         ),
+        .library(name: "GiftUICapabilities", targets: ["GiftUICapabilities"]),
     ],
     targets: [
         .target(name: "GiftUI"),
@@ -22,6 +23,7 @@ let package = Package(
             name: "GiftUIFailureDiagnostics",
             dependencies: ["GiftUIFailureCore"]
         ),
+        .target(name: "GiftUICapabilities"),
         .testTarget(
             name: "GiftUITests",
             dependencies: ["GiftUI"]
@@ -33,6 +35,10 @@ let package = Package(
         .testTarget(
             name: "GiftUIFailureDiagnosticsTests",
             dependencies: ["GiftUIFailureDiagnostics"]
+        ),
+        .testTarget(
+            name: "GiftUICapabilitiesTests",
+            dependencies: ["GiftUICapabilities"]
         ),
     ],
     swiftLanguageModes: [.v6]

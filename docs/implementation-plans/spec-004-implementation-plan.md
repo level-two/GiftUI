@@ -2,7 +2,7 @@
 spec: SPEC-004
 feature: capability-system
 title: SPEC-004 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-08-29
@@ -139,7 +139,7 @@ has reproducible fixture and report conventions before semantic code lands.
       normalized semantic-corpus schema, adapter-versus-typed-input boundary,
       matched resource-harness layout, deterministic generated/report roots,
       and explicit host/cross-build/connected-target evidence labels.
-- [ ] `T0.2` — Add the `GiftUICapabilities` library product/target and focused
+- [x] `T0.2` — Add the `GiftUICapabilities` library product/target and focused
       unit-test target. It must import no `GiftUI`, semantic, layout, render,
       execution, failure, runtime, backend, platform, driver, OS/RTOS, HAL, or
       concrete integration module. Update SPEC-002's exact target allow-list
@@ -488,3 +488,10 @@ the ordered compile registry, normalized corpus and raw-adapter boundary,
 matched resource roots, deterministic generated/report paths, and precise
 host/cross-build/connected-target evidence labels without starting production
 implementation.
+`T0.2` is complete: implementation began with an empty importable
+`GiftUICapabilities` leaf and focused test target, transitioning SPEC-004 to
+`implementing`, this plan to `active`, and the manifest feature to
+`implementation`. The SPEC-002 exact target graph and the SPEC-004 boundary
+fixture record the new dependency-free leaf without changing any existing
+failure or diagnostic edge; see the
+[leaf evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-0/capability-leaf.md).

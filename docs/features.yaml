@@ -84,7 +84,7 @@ features:
     milestone: MVP
   capability-system:
     title: GiftUI Capability System
-    status: specification
+    status: implementation
     proposal:
       - PROPOSAL-004
     rfcs:

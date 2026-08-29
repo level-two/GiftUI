@@ -22,3 +22,10 @@ targets:
     type: test
     dependencies:
       - GiftUI
+  GiftUICapabilities:
+    type: regular
+    dependencies: []
+  GiftUICapabilitiesTests:
+    type: test
+    dependencies:
+      - GiftUICapabilities

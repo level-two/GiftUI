@@ -1,0 +1,24 @@
+schema_version: 1
+active:
+  GiftUICapabilities:
+    type: regular
+    dependencies: []
+  GiftUICapabilitiesTests:
+    type: test
+    dependencies:
+      - GiftUICapabilities
+forbidden_capability_imports:
+  - GiftUI
+  - GiftUIFailureCore
+  - GiftUIFailureDiagnostics
+  - GiftUIFailureExecution
+  - GiftUIExecutionContract
+  - GiftUISemantic
+  - GiftUILayout
+  - GiftUIRender
+  - GiftUIRuntimeDynamic
+  - GiftUIRuntimeStatic
+  - GiftUIBackend
+  - GiftUIPlatform
+  - GiftUIDriver
+  - GiftUIHost
