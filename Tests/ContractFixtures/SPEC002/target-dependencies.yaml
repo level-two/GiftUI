@@ -3,6 +3,13 @@ targets:
   GiftUI:
     type: regular
     dependencies: []
+  GiftUIFailureCore:
+    type: regular
+    dependencies: []
+  GiftUIFailureCoreTests:
+    type: test
+    dependencies:
+      - GiftUIFailureCore
   GiftUITests:
     type: test
     dependencies:

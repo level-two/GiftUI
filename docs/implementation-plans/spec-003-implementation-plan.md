@@ -137,7 +137,7 @@ are reproducible before semantic implementation starts.
       shared semantic-corpus format, baseline/candidate resource-harness
       layout, deterministic generated/report paths, and a README that
       distinguishes hardware-free, cross-built, and connected-target claims.
-- [ ] `T0.2` — Add the `GiftUIFailureCore` library product/target and focused
+- [x] `T0.2` — Add the `GiftUIFailureCore` library product/target and focused
       unit-test target without importing `GiftUI` or any execution, runtime,
       backend, platform, capability, host, driver, HAL, or diagnostic
       implementation. Update the SPEC-002 exact target allow-list and graph
@@ -457,7 +457,11 @@ Draft created on 2026-08-29 and accepted by the maintainer as `ready` on
 defines the ordered compile-fixture registry, shared semantic-corpus schema,
 matched resource-harness inputs, deterministic generated/report roots, and
 the boundary between hardware-free, cross-built, and connected-target claims.
-The next executable task is `T0.2`, which creates the failure-core leaf and
-unblocks the failure-owned portion of active SPEC-002 Milestone 4 without
-waiting for later execution, capability, host, or connected-target
-integrations.
+That fixture contract prepares the failure-core leaf needed by the
+failure-owned portion of active SPEC-002 Milestone 4 without waiting for later
+execution, capability, host, or connected-target integrations.
+
+`T0.2` is complete: the package exposes an empty, importable
+`GiftUIFailureCore` library leaf and a focused import test target. The
+SPEC-002 exact target graph now admits those two targets with only the test-to-
+leaf edge; the failure core itself has no dependency. `T0.3` is next.
