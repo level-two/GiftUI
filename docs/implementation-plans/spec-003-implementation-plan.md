@@ -245,7 +245,7 @@ identical correctness outputs.
       imported by a correctness-bearing target. Implement capacity zero and
       profile defaults 64/16/16/8, admitted-order preservation, drop-new
       saturation, and saturating dropped-record count.
-- [ ] `T3.3` — Build the complete omitted, enabled, source-filtered,
+- [x] `T3.3` — Build the complete omitted, enabled, source-filtered,
       sink-filtered, saturated, dropping, counting, and failing matrix. Compare
       normalized outcomes, health snapshots, coordinator inputs, residual
       inputs, and policy results for value equality; prove excluded records are
@@ -464,6 +464,12 @@ The checked-in branch matrix proves drop-new saturation, admitted-order
 preservation, saturating loss accounting, stale-generation rejection, and
 fail-closed conflicting configuration; see the
 [Milestone 3 evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-3/diagnostic-buffer.md).
+`T3.3` is complete: the lazy downstream projector filters before record
+construction and reduces every sink result to optional saturating counters.
+The configuration matrix compares all correctness-bearing values against the
+omitted-diagnostics baseline for enabled, source-filtered, sink-filtered,
+saturated, dropped, counted, and failed observation paths; see the
+[diagnostic-isolation evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-3/diagnostic-isolation.md).
 That fixture contract prepares the failure-core leaf needed by the
 failure-owned portion of active SPEC-002 Milestone 4 without waiting for later
 execution, capability, host, or connected-target integrations.
