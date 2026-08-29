@@ -1,4 +1,2 @@
-/// Namespace used to expose package metadata while the public API is scaffolded.
-public enum GiftUIModule {
-    public static let name = "GiftUI"
-}
+// The SPEC-002 portable Foundation declarations are introduced by Milestone 2.
+// This file intentionally establishes only the stable GiftUI module boundary.

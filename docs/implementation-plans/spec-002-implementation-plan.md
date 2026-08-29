@@ -205,7 +205,7 @@ recoverable and dispositioned against tag `PoC`.
       using current authority or the historical-baseline pointer. Obtain
       maintainer confirmation of the complete exact-path manifest before
       `T0.5`; additions or ambiguous paths stop the cut.
-- [ ] `T0.5` — Execute one reviewable clean-baseline cut: remove the old root
+- [x] `T0.5` — Execute one reviewable clean-baseline cut: remove the old root
       manifest, PoC source and test targets, Thermostat material, PoC
       implementation firmware, hard-coded layer compilation, and all approved
       for-removal legacy-document paths. Preserve the new SPEC-002 ledger and
@@ -219,7 +219,7 @@ recoverable and dispositioned against tag `PoC`.
       requires an explicit current product/application where no MVP default
       exists. Keep downloads and generated environments under `.toolchains/`
       and generated artifacts under the existing `.build/` roots.
-- [ ] `T0.7` — Recreate a minimal buildable root Swift package from SPEC-002:
+- [x] `T0.7` — Recreate a minimal buildable root Swift package from SPEC-002:
       one SwiftPM distribution package, the stable `GiftUI` library
       product/target, only SPEC-002-owned Foundation source and test targets,
       and no speculative targets owned by later Specifications. Establish the
@@ -529,8 +529,13 @@ explicit no-replacement disposition in the
 [removal-ownership record](../../Tests/ContractFixtures/SPEC002/clean-baseline-removal-ownership.md),
 active legacy links resolve through the
 [PoC historical baseline](../engineering/POC_HISTORICAL_BASELINE.md), and the
-maintainer confirmed the exact removal set on 2026-08-29. No design note or
-conformance report exists. Milestone 4 remains dependency-blocked until
-SPEC-003/004 supply their owner targets. No design note is required before
-Milestone 0; create one only if a listed trigger is reached. Plan completion
-will not by itself mark SPEC-002 `implemented`.
+maintainer confirmed the exact removal set on 2026-08-29. `T0.5` and `T0.7`
+land atomically: the old implementation is absent, the stable `GiftUI` product
+and target plus one Foundation smoke-test target form the complete root package,
+and the [cut record](../../Tests/ContractFixtures/SPEC002/clean-baseline-cut-record.md)
+preserves the disposition and verification evidence. `T0.6` sanitation and
+`T0.8` README work remain. No design note or conformance report exists.
+Milestone 4 remains dependency-blocked until SPEC-003/004 supply their owner
+targets. No design note is required before Milestone 0; create one only if a
+listed trigger is reached. Plan completion will not by itself mark SPEC-002
+`implemented`.
