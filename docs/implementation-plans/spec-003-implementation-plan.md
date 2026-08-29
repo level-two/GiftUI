@@ -2,7 +2,7 @@
 spec: SPEC-003
 feature: giftui-mvp-architecture
 title: SPEC-003 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-08-29
@@ -21,7 +21,7 @@ superseded_by: null
 
 # SPEC-003 Implementation Plan
 
-> This ready plan derives work from the approved Failure Outcomes and Containment
+> This active plan derives work from the approved Failure Outcomes and Containment
 > Specification. It orders implementation and evidence but does not amend the
 > contract or authorize work owned by another Specification.
 
@@ -132,7 +132,7 @@ leaf, the target graph has been updated deliberately, the standalone
 four-profile SPEC-003 driver is registered, and its fixture/report conventions
 are reproducible before semantic implementation starts.
 
-- [ ] `T0.1` — Create `Tests/ContractFixtures/SPEC003/` with an ordered fixture
+- [x] `T0.1` — Create `Tests/ContractFixtures/SPEC003/` with an ordered fixture
       manifest, positive/negative single-entry-point compile conventions,
       shared semantic-corpus format, baseline/candidate resource-harness
       layout, deterministic generated/report paths, and a README that
@@ -451,8 +451,13 @@ SPEC-003 conformance report is ready for independent review.
 ## Completion Record
 
 Draft created on 2026-08-29 and accepted by the maintainer as `ready` on
-2026-08-29. No implementation task has started and no SPEC-003 status
-transition is implied. The first executable slice is Milestone 0 followed by
-Milestone 1; it creates the failure-core leaf and unblocks the failure-owned
-portion of active SPEC-002 Milestone 4 without waiting for the later execution,
-capability, host, or connected-target integrations.
+2026-08-29. Implementation began on 2026-08-29, transitioning SPEC-003 to
+`implementing` and this plan to `active`. `T0.1` is complete: the checked-in
+[SPEC-003 fixture contract](../../Tests/ContractFixtures/SPEC003/README.md)
+defines the ordered compile-fixture registry, shared semantic-corpus schema,
+matched resource-harness inputs, deterministic generated/report roots, and
+the boundary between hardware-free, cross-built, and connected-target claims.
+The next executable task is `T0.2`, which creates the failure-core leaf and
+unblocks the failure-owned portion of active SPEC-002 Milestone 4 without
+waiting for later execution, capability, host, or connected-target
+integrations.

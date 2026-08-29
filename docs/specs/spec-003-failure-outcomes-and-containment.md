@@ -2,7 +2,7 @@
 id: SPEC-003
 feature: giftui-mvp-architecture
 title: Failure Outcomes and Containment
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-22
