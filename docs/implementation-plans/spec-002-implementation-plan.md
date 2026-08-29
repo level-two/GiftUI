@@ -130,7 +130,7 @@ old source list, or asserts an obsolete contract must be rewritten or removed.
 | `PF-002` | `T2.2`, `T2.4`, `T4.2` | Rejection corpus and exact SPEC-003 owner-adapter mapping fixtures | pending |
 | `PF-003` | `T2.3` | Complete rectangle boundary and half-open containment corpus | pending |
 | `PF-004` | `T3.1`, `T3.2`, `T3.3` | Package-SPI inspection, raw-boundary fixtures, concrete-type exclusions | pending |
-| `PF-005` | `T0.7`, `T1.3`, `T4.1`, `T4.3` | Clean package bootstrap, exact graph/cycle check, import fixtures, compiled re-export inspection | pending |
+| `PF-005` | `T0.7`, `T1.3`, `T1.6`, `T4.1`, `T4.3` | Clean package bootstrap, skeleton-readiness transcript, exact graph/cycle check, import fixtures, compiled re-export inspection | pending |
 | `PF-006` | `T5.1`, `T5.2` | Four exact driver commands and equal host/Embedded transcripts | pending |
 | `PF-007` | `T5.3`, `T5.4` | Layout, allocation, section-delta, compiler, command, revision, and link-map reports | pending |
 | `PF-008` | `T0.2`, `T0.5`, `T2.4`, `T3.3`, `T6.1` | Tag-derived migration ledger, clean-baseline removal record, and forbidden-shim audit | pending |
@@ -211,8 +211,9 @@ and its RFCs remain `approved`.
 
 **Exit evidence:** The clean package has a contract-fixture skeleton, exact
 dependency baseline, four-profile SPEC-002 driver surface, and one stable
-repository-level test entry point before substantive Foundation implementation
-begins.
+repository-level test entry point. A clean-checkout skeleton-readiness
+transcript proves those seams work together before substantive Foundation
+implementation begins.
 
 - [ ] `T1.1` — Create the checked-in SPEC-002 fixture layout, deterministic
       report locations, positive/negative compile-fixture conventions, and
@@ -246,11 +247,27 @@ begins.
       and evidence output rather than hiding or weakening them. Do not deploy,
       access a remote Raspberry Pi, run connected-board tests, or flash an nRF
       target from this runner.
+- [ ] `T1.6` — Establish the explicit framework-skeleton readiness gate from a
+      clean checkout. Record one reproducible transcript proving that
+      `swift package dump-package` matches the initial dependency allow-list,
+      `swift build --product GiftUI` succeeds, a client fixture can
+      `import GiftUI`, the root unit-test target passes, positive and
+      forbidden-import fixture mechanics execute, the macOS-dynamic
+      `scripts/contracts/run-spec-002.sh` entry point is callable, and the
+      no-argument `scripts/test.sh` fast gate passes. Audit the manifest and
+      active tree to prove that no PoC compatibility surface or speculative
+      target owned by a later Specification exists. Verify the retained
+      Raspberry Pi and nRF setup/doctor/probe entry points structurally and
+      record their pinned targets; missing ignored toolchain state does not
+      block this host skeleton gate, while actual cross-profile probe and
+      compiler evidence remains required by Milestone 5. Do not begin
+      Milestone 2 until this gate passes.
 
 ### Milestone 2: Implement Checked Portable Geometry
 
-**Entry conditions:** Milestone 0 produced the clean `GiftUI` target and
-`T1.1`/`T1.2` fixed the contract-fixture and migration-evidence seams.
+**Entry conditions:** Milestone 0 produced the clean `GiftUI` target,
+`T1.1`/`T1.2` fixed the contract-fixture and migration-evidence seams, and the
+`T1.6` framework-skeleton readiness gate passed.
 
 **Exit evidence:** The exact geometry contract passes the host boundary corpus,
 the clean `GiftUI` target compiles, and downstream consumers remain absent or
