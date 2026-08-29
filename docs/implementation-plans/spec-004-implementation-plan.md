@@ -132,7 +132,7 @@ SPEC-002/003 package graph is available without weakening its checks.
 dependency boundary is enforced, and a registered four-profile SPEC-004 driver
 has reproducible fixture and report conventions before semantic code lands.
 
-- [ ] `T0.1` — Verify the complete authority chain, manifest entry, reciprocal
+- [x] `T0.1` — Verify the complete authority chain, manifest entry, reciprocal
       SPEC-002/003 relationships, and all 17 acceptance-criterion labels
       (`CR-001` through `CR-016`, including `CR-010A`). Create
       `Tests/ContractFixtures/SPEC004/` with an ordered fixture manifest,
@@ -479,3 +479,12 @@ unblocks both active SPEC-002 and later SPEC-003 integration. The maintainer
 marked this plan `ready` on 2026-08-29. This derived-plan transition makes the
 ordered work executable but does not change SPEC-004 from `approved`, start
 implementation, or authorize work owned by another Specification.
+`T0.1` is complete: the checked-in
+[authority audit](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-0/authority-audit.md)
+verifies the complete accepted/approved chain, reciprocal SPEC-002/003 and
+manifest relationships, and all 17 acceptance labels. The
+[fixture contract](../../Tests/ContractFixtures/SPEC004/README.md) establishes
+the ordered compile registry, normalized corpus and raw-adapter boundary,
+matched resource roots, deterministic generated/report paths, and precise
+host/cross-build/connected-target evidence labels without starting production
+implementation.
