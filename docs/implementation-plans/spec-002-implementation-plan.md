@@ -250,7 +250,7 @@ implementation begins.
       report locations, positive/negative compile-fixture conventions, and
       test entry points. The tag-derived ledger from `T0.2` remains evidence;
       no PoC test file or helper is copied into the new suite.
-- [ ] `T1.2` — Review the migration ledger for complete tag coverage and add
+- [x] `T1.2` — Review the migration ledger for complete tag coverage and add
       explicit expected replacement declarations and evidence owners for each
       SPEC-002 row. Reject shims that preserve trapping-only, unbounded,
       public-input, mutable-field, or absent-provenance behavior.
@@ -548,6 +548,11 @@ positive and negative single-entry-point conventions, and deterministic
 generated and review-evidence locations documented in the
 [SPEC-002 fixture README](../../Tests/ContractFixtures/SPEC002/README.md). No
 PoC test source or helper was copied.
+`T1.2` reviews all 24 declaration/behavior rows in the migration ledger and
+assigns each an exact replacement or intentional absence, an implementation
+task, and an evidence owner. The ledger now makes trapping-only, unbounded,
+public-input, mutable-field, and absent-provenance compatibility shims explicit
+test failures.
 Milestone 4 remains dependency-blocked until SPEC-003/004 supply their owner
 targets. No design note is required before Milestone 0; create one only if a
 listed trigger is reached. Plan completion will not by itself mark SPEC-002

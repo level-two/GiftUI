@@ -37,6 +37,52 @@ SPEC-NNN`. No row authorizes preservation of a PoC implementation.
 | `PF008-IN-004` | `Sources/GiftUI/Input/InputEvent.swift:4` | `pointerUp(Point)` | No source, sequence, ordinal, or presentation revision | recreated by SPEC-002 as package-SPI `PointerPhase.up` plus bounded event fields |
 | `PF008-IN-005` | no PoC declaration | no source identity, sequence identity, ordinal, or presentation-revision wrapper exists | Absence permitted unbounded/uncorrelated producers | recreated by SPEC-002 as exact bounded package-SPI wrappers |
 
+## Expected replacements and evidence owners
+
+The following accountability table is exhaustive over the 24 declaration and
+behavior rows above. “None” is an intentional absence, not permission for a
+compatibility alias or shim. The named plan task owns implementation; the
+named evidence seam must demonstrate the disposition.
+
+| Ledger ID | Expected replacement declaration or absence | Implementation and evidence owner |
+| --- | --- | --- |
+| `PF008-GS-001` | `Point.x: GeometryScalar` as public immutable `Int32` storage | `T2.1`; `GiftUITests` declaration, copy, equality, and boundary tests |
+| `PF008-GS-002` | `Point.y: GeometryScalar` as public immutable `Int32` storage | `T2.1`; `GiftUITests` declaration, copy, equality, and boundary tests |
+| `PF008-GS-003` | `Point.init(x:y:)` accepting only `GeometryScalar` | `T2.1`; public positive compile fixture and `GiftUITests` |
+| `PF008-GS-004` | `Size.width: GeometryScalar` as public immutable storage | `T2.1`; `GiftUITests` declaration and value-semantic tests |
+| `PF008-GS-005` | `Size.height: GeometryScalar` as public immutable storage | `T2.1`; `GiftUITests` declaration and value-semantic tests |
+| `PF008-GS-006` | `Size.init?(width:height:)` returning `nil` for either negative dimension | `T2.1`; table-driven valid, zero, and negative `GiftUITests` |
+| `PF008-GS-007` | `Rect.origin: Point` as public immutable storage | `T2.1`; `GiftUITests` declaration and copy tests |
+| `PF008-GS-008` | `Rect.size: Size` as public immutable storage | `T2.1`; `GiftUITests` declaration and copy tests |
+| `PF008-GS-009` | `Rect.init?(origin:size:)` with checked exclusive-edge construction | `T2.1`/`T2.3`; rectangle boundary and rejected-construction tests |
+| `PF008-GS-010` | Total `minX`, `minY`, `maxX`, `maxY` and half-open `contains(_:)` | `T2.3`; complete rectangle edge/containment corpus |
+| `PF008-GS-011` | `ProposedSize.width: GeometryScalar?` as public immutable storage | `T2.1`; independent-absence and declaration tests |
+| `PF008-GS-012` | `ProposedSize.height: GeometryScalar?` as public immutable storage | `T2.1`; independent-absence and declaration tests |
+| `PF008-GS-013` | `ProposedSize.init?(width:height:)` returning `nil` for a negative present dimension | `T2.1`; absent, zero, ordinary, and negative proposal tests |
+| `PF008-GS-014` | None; no Foundation arithmetic error taxonomy | `T2.4`; exported-declaration and forbidden-compatibility audit |
+| `PF008-GS-015` | `GeometryArithmetic.add(_:_:) -> GeometryScalar?` as package SPI | `T2.2`; exhaustive add boundary/overflow tests |
+| `PF008-GS-016` | `GeometryArithmetic.subtract(_:_:) -> GeometryScalar?` as package SPI | `T2.2`; exhaustive subtract boundary/overflow tests |
+| `PF008-GS-017` | `GeometryArithmetic.multiply(_:_:) -> GeometryScalar?` as package SPI | `T2.2`; exhaustive multiply boundary/overflow tests |
+| `PF008-GS-018` | None; no `requireAdd`, `requireSubtract`, or `requireMultiply` helper | `T2.4`; source and compiled-interface compatibility audit |
+| `PF008-GS-019` | None; no overflow `preconditionFailure` path | `T2.4`; source audit plus overflow tests proving optional rejection |
+| `PF008-IN-001` | None; no public `InputEvent` declaration or alias | `T3.4`; public-interface and forbidden-compatibility audit |
+| `PF008-IN-002` | `PointerPhase.down = 0` and package-SPI `NormalizedPointerEvent` correlation fields | `T3.1`; package fixture and normalized-event value tests |
+| `PF008-IN-003` | `PointerPhase.move = 1` and the same bounded event representation | `T3.1`; package fixture and normalized-event value tests |
+| `PF008-IN-004` | `PointerPhase.up = 2` and the same bounded event representation | `T3.1`; package fixture and normalized-event value tests |
+| `PF008-IN-005` | Package-SPI `InputSourceID(UInt16)`, `PointerSequenceID(UInt32)`, `InputOrdinal(UInt32)`, `PresentationRevision(UInt32)`, and `NormalizedPointerEvent` | `T3.1`/`T3.2`; raw-min/max, layout, copy, equality, and package compile fixtures |
+
+The review rejects any replacement that preserves or introduces one of these
+PoC failure modes:
+
+- trapping-only construction or arithmetic;
+- host-width or otherwise unbounded scalar/correlation representation;
+- a public raw input family instead of the package-SPI normalized family;
+- mutable stored properties in an owned Foundation value; or
+- absent or sentinel provenance in a normalized pointer event.
+
+The `T2.4` and `T3.4` compatibility audits must fail if any such shim exists,
+even when the exact replacement declarations also compile.
+
 ## Exact consumer inventory
 
 The following lists are the complete files returned by `git grep -l` against
