@@ -34,13 +34,14 @@ scripts/test.sh
 `scripts/test.sh` is the single repository-level check entry point. With no
 argument it runs the fast macOS-dynamic gate, including governance, root unit
 tests, and every registered contract driver. Select another hardware-free
-profile explicitly, or run all four while preserving per-profile results:
+profile explicitly (positionally or with `--profile`), or run all four while
+preserving per-profile results:
 
 ```sh
-scripts/test.sh macos-static
-scripts/test.sh raspberry-pi-armv6
-scripts/test.sh nrf52840-embedded
-scripts/test.sh all-hardware-free
+scripts/test.sh --profile macos-static
+scripts/test.sh --profile raspberry-pi-armv6
+scripts/test.sh --profile nrf52840-embedded
+scripts/test.sh --profile all-hardware-free
 ```
 
 The aggregate runner never deploys, contacts a Raspberry Pi, or flashes a

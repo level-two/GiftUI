@@ -16,6 +16,7 @@ ALL_PROFILES=(
 usage() {
     printf '%s\n' \
         'Usage: scripts/test.sh [profile]' \
+        '       scripts/test.sh --profile <profile>' \
         '' \
         'With no argument, runs the fast macos-dynamic gate.' \
         'Profiles:' \
@@ -26,11 +27,22 @@ usage() {
         '  all-hardware-free'
 }
 
-selection="${1:-macos-dynamic}"
-if [[ $# -gt 1 ]]; then
-    usage >&2
-    exit 2
-fi
+selection="macos-dynamic"
+case $# in
+    0) ;;
+    1) selection="$1" ;;
+    2)
+        if [[ "$1" != "--profile" ]]; then
+            usage >&2
+            exit 2
+        fi
+        selection="$2"
+        ;;
+    *)
+        usage >&2
+        exit 2
+        ;;
+esac
 case "${selection}" in
     -h | --help)
         usage
