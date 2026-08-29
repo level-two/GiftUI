@@ -280,7 +280,7 @@ implementation begins.
       and evidence output rather than hiding or weakening them. Do not deploy,
       access a remote Raspberry Pi, run connected-board tests, or flash an nRF
       target from this runner.
-- [ ] `T1.6` — Establish the explicit framework-skeleton readiness gate from a
+- [x] `T1.6` — Establish the explicit framework-skeleton readiness gate from a
       clean checkout. Record one reproducible transcript proving that
       `swift package dump-package` matches the initial dependency allow-list,
       `swift build --product GiftUI` succeeds, a client fixture can
@@ -571,6 +571,13 @@ the stable [`scripts/test.sh`](../../scripts/test.sh) entry point. The default
 gate runs governance, registry validation, root tests, and all registered
 macOS-dynamic drivers; explicit profiles and `all-hardware-free` preserve every
 driver invocation while aggregating deterministic results and diagnostics.
+`T1.6` passes at clean revision
+`ed0c43fdd7ea51d09d77fb70e240e6162162188b`. The
+[framework-skeleton readiness transcript](../../Tests/ContractFixtures/SPEC002/Evidence/milestone-1/framework-skeleton-readiness.md)
+records the exact graph, build, import, negative-fixture, unit-test,
+standalone-driver, top-level-gate, active-tree, and retained-environment pin
+evidence. Milestone 1 is complete; Raspberry Pi compiler/probe execution
+remains a Milestone 5 requirement rather than a host skeleton blocker.
 Milestone 4 remains dependency-blocked until SPEC-003/004 supply their owner
 targets. No design note is required before Milestone 0; create one only if a
 listed trigger is reached. Plan completion will not by itself mark SPEC-002
