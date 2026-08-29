@@ -221,7 +221,7 @@ finite correctness-bearing snapshot independent of diagnostics.
       transition-before-return behavior, unchanged-state counting, terminal
       quiescence, and state updates that remain permitted after saturation.
       Exhaust every requested resulting state through both record methods.
-- [ ] `T2.5` — Instrument construction, normalization, propagation, health
+- [x] `T2.5` — Instrument construction, normalization, propagation, health
       update/query, and generic residual-policy dispatch with diagnostics
       disabled. Record zero heap allocation and the fixture-counted correctness
       path without hiding compiler/runtime calls.
@@ -555,3 +555,13 @@ methods, distinguish unchanged-state records from transitions, prove
 quiescence is terminal, force every counter to `UInt32.max` without wrapping,
 and prove permitted state updates still commit after saturation while the
 snapshot remains within 20 bytes. `T2.5` is next.
+
+`T2.5` is complete for the Milestone 2 host seam: both optimized macOS
+profiles build a Darwin allocation interposer, warm metadata/runtime support,
+reset the counters, and execute 10,000 production construction,
+normalization, propagation, health update/query, and generic policy-dispatch
+iterations with diagnostics absent. The checked-in probe fails on any
+`malloc`/`calloc`/`realloc` call or more than 64 fixture-counted correctness
+steps, records its checksum and generated image hashes, and leaves final-image
+compiler/runtime call-graph resolution to Milestone 5. Milestone 2 is complete;
+`T3.1` is next.

@@ -227,6 +227,70 @@ run_dependency_checks() {
         fail 'dependency cycle regression lacked its expected failure'
 }
 
+run_allocation_probe() {
+    local compiler="$1"
+    local sdk_path="$2"
+    local profile_flag="$3"
+    local probe_dir="${report_dir}/build/allocation-probe"
+    local clang interposer core_library probe output
+    mkdir -p "${probe_dir}"
+    clang="$(xcrun --find clang)"
+    [[ -x "${clang}" ]] || fail 'clang is missing for allocation instrumentation'
+    interposer="${probe_dir}/libGiftUIAllocationInterposer.dylib"
+    if [[ "${profile}" == "macos-static" ]]; then
+        core_library="${probe_dir}/libGiftUIFailureCore.a"
+    else
+        core_library="${probe_dir}/libGiftUIFailureCore.dylib"
+    fi
+    probe="${probe_dir}/allocation-probe"
+    output="${report_dir}/semantics/allocation-probe.txt"
+
+    local -a interposer_command=(
+        "${clang}" -target arm64-apple-macosx26.0 -isysroot "${sdk_path}"
+        -O2 -dynamiclib
+        "${FIXTURE_ROOT}/Instrumentation/AllocationInterposer.c"
+        -install_name @rpath/libGiftUIAllocationInterposer.dylib
+        -o "${interposer}"
+    )
+    record_command "${interposer_command[@]}"
+    "${interposer_command[@]}" >>"${log_path}" 2>&1
+
+    local -a core_command=(
+        "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
+        -O -whole-module-optimization "${profile_flag}"
+        -language-mode 6 -parse-as-library -enable-testing
+        -module-name GiftUIFailureCore -emit-library -emit-module
+        -emit-module-path "${probe_dir}/GiftUIFailureCore.swiftmodule"
+    )
+    if [[ "${profile}" == "macos-static" ]]; then
+        core_command+=(-static)
+    fi
+    core_command+=("${SOURCE_ROOT}/GiftUIFailureCore.swift" -o "${core_library}")
+    record_command "${core_command[@]}"
+    "${core_command[@]}" >>"${log_path}" 2>&1
+
+    local -a probe_command=(
+        "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
+        -O -whole-module-optimization "${profile_flag}" -language-mode 6
+        -I "${probe_dir}" -L "${probe_dir}"
+        -lGiftUIFailureCore -lGiftUIAllocationInterposer
+        -Xlinker -rpath -Xlinker "${probe_dir}"
+        "${FIXTURE_ROOT}/Instrumentation/AllocationProbe/main.swift"
+        -o "${probe}"
+    )
+    record_command "${probe_command[@]}"
+    "${probe_command[@]}" >>"${log_path}" 2>&1
+    record_command env "DYLD_LIBRARY_PATH=${probe_dir}" "${probe}"
+    env "DYLD_LIBRARY_PATH=${probe_dir}" "${probe}" >"${output}" 2>>"${log_path}"
+    record_command nm -u "${probe}"
+    nm -u "${probe}" >"${report_dir}/semantics/allocation-probe-symbols.txt"
+    grep -Fxq 'allocation_count=0' "${output}" || fail 'allocation probe reported heap activity'
+    grep -Eq '^maximum_counted_steps=([0-9]|[1-5][0-9]|6[0-4])$' "${output}" ||
+        fail 'correctness-path step count exceeds 64'
+    record_image allocation-probe "${probe}"
+    record_image allocation-interposer "${interposer}"
+}
+
 run_macos() {
     [[ "$(uname -s)" == "Darwin" ]] || fail 'macOS profile requires macOS'
     [[ "$(uname -m)" == "arm64" ]] || fail 'macOS evidence requires an arm64 host'
@@ -288,6 +352,7 @@ run_macos() {
     run_fixture_set "${compiler}" "${report_dir}/build" \
         -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
         -O -whole-module-optimization "${profile_flag}"
+    run_allocation_probe "${compiler}" "${sdk_path}" "${profile_flag}"
 }
 
 run_raspberry_pi() {
