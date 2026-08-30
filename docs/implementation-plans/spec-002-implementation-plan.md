@@ -364,7 +364,7 @@ Milestones 2/3 expose final Foundation declarations.
 **Exit evidence:** The final package DAG, adapters, and compile fixtures prove
 reciprocal ownership without making Foundation import either owner.
 
-- [ ] `T4.1` — Refresh the exact allow-list after owner targets exist. Add
+- [x] `T4.1` — Refresh the exact allow-list after owner targets exist. Add
       positive and forbidden-import fixtures for every protected owner and
       prove `GiftUIFailureCore` and `GiftUICapabilities` do not import `GiftUI`.
 - [ ] `T4.2` — At each first boundary knowing both concepts, implement exact
@@ -468,9 +468,10 @@ evidence, or nRF flashing. Those claims remain downstream conformance work.
 - The cross-Spec table records the coordinated removal-only disposition for
   non-Foundation PoC code and tests. Any path not covered unambiguously by the
   exact `T0.3` manifest remains a blocker before `T0.5`.
-- The approved SPEC-003/004 owner targets do not yet exist. `T4.1`/`T4.2`, and
-  complete PF-002/PF-005/PF-009 evidence, cannot finish until their own plans
-  produce those targets. SPEC-002 must not create substitute vocabularies.
+- The approved SPEC-003/004 owner targets now exist and `T4.1` records their
+  exact graph and protected-owner fixtures. Cross-owner mappings and complete
+  PF-002/PF-005/PF-009 evidence still require `T4.2`/`T4.3`; SPEC-002 must not
+  create substitute vocabularies.
 - Recreating any input producer or consumer crosses into execution,
   interaction, integration, or host ownership. If its approved contract and
   plan do not give an unambiguous seam, leave it absent rather than recreate a
@@ -602,7 +603,12 @@ tagged input ledger rows. The
 records the exact surface, fixture, width, boundary, and absence checks.
 Milestone 3 is complete without recreating an input integration or defining
 execution-owned semantics.
-Milestone 4 remains dependency-blocked until SPEC-003/004 supply their owner
-targets. No design note is required before Milestone 0; create one only if a
-listed trigger is reached. Plan completion will not by itself mark SPEC-002
-`implemented`.
+`T4.1` refreshes the exact allow-list to the 12 current targets and 14 direct
+edges, and verifies the protected `GiftUI`, `GiftUIFailureCore`, and
+`GiftUICapabilities` owner fixtures and leaf import boundaries. The
+[owner-boundary evidence](../../Tests/ContractFixtures/SPEC002/Evidence/milestone-4/owner-boundaries.md)
+records the passing graph and macOS contract-driver commands. `T4.2` is the
+next dependency-complete task; later production-owner additions must refresh
+the allow-list again through `T4.3`. No design note is required before
+Milestone 0; create one only if a listed trigger is reached. Plan completion
+will not by itself mark SPEC-002 `implemented`.
