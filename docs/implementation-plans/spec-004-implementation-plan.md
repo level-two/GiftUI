@@ -55,13 +55,13 @@ stack-validation work, not a post-MVP general capability framework.
 
 This is the active implementation plan for the next dependency-complete Wave 1
 work. SPEC-003 has completed its independent Core, policy, health, diagnostic,
-and Foundation-adapter tasks; its remaining cross-owner integration now waits
-in part for SPEC-004. SPEC-004 has completed its contract harness and closed,
-bounded capability vocabulary. The next implementation iteration therefore
-remains inside SPEC-004 and begins Milestone 2 with its checked byte-bound and
-region arithmetic rather than opening a plan for another Specification, but
-that slice is blocked until the approved contract's unreachable-overflow
-requirements are corrected and re-approved.
+and Foundation-adapter tasks; its `T4.2` capability/failure adapter is now a
+separately ready parallel-safe slice. SPEC-004 has completed its contract
+harness and closed, bounded capability vocabulary. Its corrected arithmetic
+contract has been explicitly reapproved, so the selected critical-path next
+iteration remains inside SPEC-004 and begins Milestone 2 with checked
+byte-bound and region arithmetic rather than opening a plan for another
+Specification.
 Production failure mapping, operation-stream integration, backend behavior,
 and startup composition retain dependencies on SPEC-003, SPEC-009, SPEC-014,
 and SPEC-015.
@@ -105,16 +105,17 @@ and SPEC-015.
   shapes, but their types, layouts, and code are non-authoritative and cannot
   be promoted directly into production.
 - SPEC-003 is implementing and has completed its independent Milestones 0-3
-  plus the Foundation owner-adapter task. Its capability outcome adapter still
-  waits for SPEC-004 declarations. SPEC-009, SPEC-014, and SPEC-015 are
-  approved but unimplemented, so first-party one-shot tiled integration,
-  operational fault injection, and the conjunctive startup gate remain
-  downstream integration tasks.
+  plus the Foundation owner-adapter task. Its `T4.2` capability outcome adapter
+  now has the stable SPEC-004 declarations it needs and may proceed separately
+  without blocking or being absorbed into this iteration. SPEC-009, SPEC-014,
+  and SPEC-015 are approved but unimplemented, so first-party one-shot tiled
+  integration, operational fault injection, and the conjunctive startup gate
+  remain downstream integration tasks.
 
-## Next Implementation Iteration — Authorized
+## Next Implementation Iteration — Ready
 
-**Iteration disposition:** The maintainer explicitly reapproved the corrected
-Specification and authorized implementation to resume. The linked
+**Iteration disposition:** Ready. The maintainer explicitly reapproved the
+corrected Specification and authorized implementation to resume. The linked
 [checked raster-arithmetic design note](../implementation-designs/spec-004-raster-arithmetic.md)
 proves why the fixed input widths make shared LCM/row overflow and a
 payload-only usage overflow unconstructible. SPEC-004 now preserves those
@@ -139,7 +140,9 @@ correction preserves the approved fixed public widths and checked operations
 while requiring overflow fixtures only for sites reachable from constructible
 typed inputs.
 
-**Explicitly excluded:** operation/lifetime/handoff compatibility and policy
+**Explicitly excluded:** the separately ready SPEC-003 `T4.2`
+capability/failure adapter, which may proceed in parallel under its own plan;
+operation/lifetime/handoff compatibility and policy
 selection (`T2.2`); complete resolver orchestration, role permutations,
 snapshot construction, and absence behavior (`T2.3`); simultaneous-condition
 precedence (`T2.4`); operation-count instrumentation (`T2.5`); normalized
@@ -167,43 +170,62 @@ service restart, and flashing.
 
 **Ordered work and evidence:**
 
-1. Define a replaceable internal arithmetic result/seam that consumes already
-   validated typed values and uses checked `UInt32` operations only. Keep the
-   public declarations exactly as approved and keep `GiftUICapabilities` a
-   dependency-free leaf.
+1. In `Sources/GiftUICapabilities/`, define a replaceable internal arithmetic
+   result/seam that consumes already validated typed values and uses checked
+   `UInt32` operations only. It returns either a complete fixed geometry/usage
+   value or one exact unavailable reason, retains no input, and exposes no
+   partial result. Keep the public declarations exactly as approved and keep
+   `GiftUICapabilities` a dependency-free leaf.
 2. Compute the effective row alignment as checked LCM; then compute checked
-   unaligned and aligned row bytes. Prove their maximum typed inputs remain
-   representable; no operation may wrap, saturate, substitute zero, or trap,
-   and no wider private value may be presented as resolver input.
+   unaligned and aligned row bytes. Prove the `UInt16.max` alignment product,
+   `UInt16.max * 4` RGBA row, and maximum aligned-row boundaries remain within
+   `UInt32`; include unequal and coprime alignments. No operation may wrap,
+   saturate, substitute zero, or trap, and no wider private value may be
+   presented as resolver input.
 3. Apply exact region selection: full logical width; full logical height for
    `.fullSurface`; and the tallest admissible complete-row height for `.tiled`
-   from logical, candidate, and surface limits. Do not search a smaller tile to
-   evade a byte ceiling.
-4. Compute raster usage before payload usage; copy the representable payload
-   usage to one in-flight payload. Preserve every domain assignment retained
-   by the corrected contract; do not manufacture unreachable payload or
-   `.inFlight` arithmetic overflow.
+   from logical, candidate, and surface limits. Cover each limit as the selected
+   minimum plus width/full-height rejection and exact-limit controls. Do not
+   search a smaller tile to evade a byte ceiling.
+4. Check `rowBytes * regionHeight` exactly once. On overflow return
+   `.byteCountOverflow(domain: .raster)`; on success copy the same value to
+   raster, payload, and one in-flight payload. Prove no `.payload` or
+   `.inFlight` arithmetic overflow can be emitted and do not manufacture
+   different operands.
 5. Compute each available ceiling as the exact minimum of its three approved
-   owners and report exact required/available values for insufficient raster,
-   payload, and in-flight capacity in that order.
-6. Add focused table-driven unit cases for RGB565 and RGBA8888, equal and
+   owners: requirement/candidate/policy for raster and payload, and
+   requirement/surface/policy for in-flight. For all nine owner positions,
+   cover equality success and first-excess failure with exact
+   required/available payloads, preserving raster → payload → in-flight
+   precedence.
+6. In `Tests/GiftUICapabilitiesTests/` and the checked-in SPEC-004 semantic
+   corpus, add focused table-driven cases for RGB565 and RGBA8888, equal and
    unequal alignments, full-surface and tiled regions, zero and limiting
-   ceilings, every constructible checked-overflow site required by the
-   corrected contract, all three capacity minima, and the exact nRF
+   ceilings, the maximum typed representability proofs, the constructible
+   shared-usage overflow, all nine capacity-minimum owners, and the exact nRF
    calculation: 960 row bytes and 3,840 raster, payload, and in-flight bytes
-   for `480 x 4 x 2`.
-7. Extend the SPEC-004 semantic corpus and driver evidence with deterministic
-   arithmetic case IDs and expected normalized results. Run focused tests,
-   the standalone `macos-dynamic` SPEC-004 driver, and the no-argument fast
-   gate; retain ARMv6/nRF execution and linked-resource claims for Milestone 5.
+   for `480 x 4 x 2`. Case IDs and expected normalized results must be stable
+   and fail closed when unknown or omitted.
+7. Extend the existing allocation probe to execute the complete new arithmetic
+   seam repeatedly and fail on any allocation, without claiming the full
+   resolver allocation or operation-count criteria assigned to `T2.5`/`T5.2`.
+   Re-run source/interface/binary boundary audits so no collection, closure,
+   diagnostic, platform identity, or upward import enters the capability leaf.
+8. Record deterministic Milestone 2 arithmetic evidence. Run focused tests and
+   both macOS profile semantics, then run the exact standalone SPEC-004 driver
+   for `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, and
+   `nrf52840-embedded`, followed by the no-argument top-level gate. Pi and nRF
+   results remain hardware-free cross-build/inspection evidence; retain linked
+   resource, full-corpus, and connected-target claims for later milestones.
 
 **Iteration exit:** `T2.1` is complete only when every corrected arithmetic,
 overflow-domain, region-selection, and minimum-ceiling case has reproducible
 passing evidence; the dependency/import and allocation boundaries still pass;
 and the checked-in report makes no claim that the complete resolver or
-Milestone 2 is finished. `T2.2` is then the next plan task. Update the existing
-checked raster-arithmetic design note to `current` only after it accurately
-describes the approved correction and resulting implementation.
+Milestone 2 is finished. `T2.2` is then the next plan task. The existing
+checked raster-arithmetic design note is `current`; update it in the same
+change if implementation makes its described data flow, bounds, or test seams
+stale.
 
 ## Acceptance-Criterion Matrix
 
@@ -330,8 +352,10 @@ and no runtime side effect.
       assignment. Cover both encodings, unequal alignments, zero ceilings,
       full and tiled regions, maximum typed non-overflowing LCM/row boundaries,
       the constructible shared-usage overflow assigned to `.raster`, the proof
-      excluding payload-only/in-flight arithmetic overflow, all three capacity
-      minima, and exact `480 x 4 x 2 = 3,840` nRF usage.
+      excluding payload-only/in-flight arithmetic overflow, equality and first
+      excess for every owner of all three capacity minima, exact
+      `480 x 4 x 2 = 3,840` nRF usage, allocation-free helper execution, and
+      compilation through all four hardware-free profile commands.
 - [ ] `T2.2` — Implement operation/one-shot compatibility, canonical-encoding
       intersection, the complete submission lifetime/handoff matrix,
       realization/encoding allow rules, and deterministic preference order.
@@ -677,3 +701,9 @@ SPEC-004 now requires maximum-bound non-overflow proofs, assigns the one
 constructible shared-usage overflow to `.raster`, and excludes manufactured
 payload-only/in-flight arithmetic overflow. The maintainer explicitly
 reapproved that correction; `T2.1` is now the next executable task.
+The 2026-08-30 planning review marked the `T2.1` iteration `ready` after adding
+explicit coverage for all nine capacity-ceiling owners, maximum typed
+representability, single shared-usage overflow, allocation-free helper
+execution, all four hardware-free profile commands, stable corpus IDs, and
+parallel-safe coordination with SPEC-003 `T4.2`. This readiness record does not
+complete `T2.1` or accept implementation evidence.

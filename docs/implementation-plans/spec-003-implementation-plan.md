@@ -51,10 +51,11 @@ exclusively owns the failure, containment, residual-disposition,
 operational-health, and diagnostic vocabulary; it is not another SPEC-002 or
 SPEC-004 milestone. Milestones 0-3 and the Foundation owner-adapter fixture are
 complete. SPEC-004 Milestone 1 has now produced the stable capability types
-needed by `T4.2`, making that cross-owner adapter the next dependency-complete
-implementation slice while SPEC-004's arithmetic task undergoes Specification
-review. Later execution and production-host tasks retain explicit dependencies
-on SPEC-009 and SPEC-015 rather than creating substitute contracts here.
+needed by `T4.2`, making that cross-owner adapter a parallel-safe ready slice.
+The explicitly reapproved SPEC-004 `T2.1` arithmetic iteration is the selected
+critical-path next work; `T4.2` may proceed independently when capacity allows.
+Later execution and production-host tasks retain explicit dependencies on
+SPEC-009 and SPEC-015 rather than creating substitute contracts here.
 
 ## Current Repository State
 
@@ -89,25 +90,26 @@ on SPEC-009 and SPEC-015 rather than creating substitute contracts here.
   reports, disassembly, and resolved call graph.
 - SPEC-009 is approved but has no execution-contract target; therefore
   `GiftUIFailureExecution` cannot yet be created conformingly. SPEC-004 is
-  implementing and has produced the stable declarations required by `T4.2`;
-  its separate arithmetic conflict does not prevent exhaustive value-level
-  mapping of the closed unavailable enum. SPEC-015 remains approved but
-  unimplemented, so production host placement remains an integration
+  implementing, its arithmetic correction is reapproved, and its `T2.1`
+  iteration is ready. The stable declarations required by `T4.2` remain
+  available independently of resolver completion. SPEC-015 remains approved
+  but unimplemented, so production host placement remains an integration
   dependency rather than work to absorb into `GiftUIFailureCore`.
 - No SPEC-003 implementation design note or conformance report exists.
 
-## Next Implementation Iteration — Draft
+## Parallel-Safe Cross-Owner Iteration — Ready
 
 **Iteration objective:** Complete `T4.2` by establishing the exact reciprocal
-capability-to-failure mapping at a test-only downstream owner boundary. This is
-the next executable cross-spec slice: it uses stable declarations already
-produced by SPEC-004 Milestone 1, unblocks shared SPEC-003/004 evidence, and
-does not depend on the blocked SPEC-004 resolver arithmetic or invent a
-production host API.
+capability-to-failure mapping at a test-only downstream owner boundary. This
+ready slice uses stable declarations already produced by SPEC-004 Milestone 1,
+unblocks shared SPEC-003/004 evidence, and may run independently beside the
+selected SPEC-004 `T2.1` iteration without waiting for resolver completion or
+inventing a production host API.
 
 **Included task:** `T4.2` only.
 
-**Explicitly excluded:** SPEC-004 arithmetic correction or resolver work;
+**Explicitly excluded:** the separately owned SPEC-004 `T2.1` arithmetic and
+later resolver work;
 production host composition; SPEC-003 execution correlation (`T4.3`), host
 policy integration (`T4.4`), full graph refresh after future owner targets
 (`T4.5`), cross-profile/resource evidence, conformance review, connected
@@ -146,9 +148,14 @@ Raspberry Pi execution, deployment, service restart, and nRF flashing.
    compile fixtures, compiled-import inspection, and product-link checks
    atomically. The new adapter may depend on both leaves; neither leaf may
    depend on the adapter or the other leaf.
-6. Record deterministic Milestone 4 capability-adapter evidence, run the
-   focused unit/adapter tests, both standalone `macos-dynamic` contract
-   drivers for SPEC-003 and SPEC-004, and the no-argument top-level gate.
+6. Add a collection-free pure compile fixture for the adapter mapping so the
+   same source is host-executed in both macOS profiles and hardware-free
+   cross-built for ARMv6 and nRF. This does not claim full SPEC-003 resource,
+   latency, or connected-target evidence.
+7. Record deterministic Milestone 4 capability-adapter evidence, run the
+   focused unit/adapter tests, the exact four-profile SPEC-003 and SPEC-004
+   standalone contract commands, the SPEC-002 `macos-dynamic` graph gate, and
+   the no-argument top-level gate.
 
 **Iteration exit:** `T4.2` is complete only when all fourteen unavailable case
 families map to raw values `12...25`, every failure envelope has the exact
@@ -665,3 +672,8 @@ protocol. Tests exhaust every kind/origin/severity-threshold combination,
 prove zero masks select nothing, verify every frozen raw value, default unused
 words to zero, constrain flags to the four MVP bits, preserve every record
 field, and enforce the record layout maximum. `T3.2` is next.
+The 2026-08-30 planning review marked `T4.2` as a parallel-safe ready
+cross-owner iteration because SPEC-004's closed unavailable vocabulary is
+stable. It may proceed beside the selected SPEC-004 `T2.1` iteration and must
+use the exact four-profile compile fixture and reciprocal graph gates recorded
+above; this readiness record does not complete `T4.2`.

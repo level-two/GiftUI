@@ -49,7 +49,7 @@ from reaching the future resolver.
 
 The current internal workspace owns two fixed candidate slots. No public
 resolver exists yet, so T2.1 can add this helper without compatibility or
-migration cost after the corrected Specification is explicitly re-approved.
+migration cost. The corrected Specification has been explicitly reapproved.
 
 ## Proposed Internal Organization
 
@@ -159,8 +159,8 @@ The tests must not manufacture invalid or widened typed records.
 
 ## Open Implementation Questions
 
-None. Implementation remains gated on explicit maintainer re-approval of the
-corrected Specification, not on an unresolved internal design choice.
+None. The corrected Specification is explicitly reapproved and the governing
+implementation-plan iteration is ready.
 
 ## Code and Evidence Links
 
