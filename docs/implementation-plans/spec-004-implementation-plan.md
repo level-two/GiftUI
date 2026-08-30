@@ -398,7 +398,7 @@ connected target.
 meaning across all four profiles, exact Pi/nRF bounds, complete field
 justification, and a one-shot tiled seam without promoting Spike code.
 
-- [ ] `T3.1` — Encode the macOS dynamic, macOS static, PiScreen `240 x 240`,
+- [x] `T3.1` — Encode the macOS dynamic, macOS static, PiScreen `240 x 240`,
       and nRF52840 TFT `480 x 320` fixtures from SPEC-004. Produce a
       fixture-to-field assertion report for every admitted field, equal macOS
       semantic coverage, bounded Pi RGB565 tiling, one nRF RGB565 `3,840`-byte
@@ -770,3 +770,12 @@ and nRF production modules compile without the instrumentation flag. The
 29-row normalized transcript, zero-allocation macOS probes, and all four
 hardware-free SPEC-004 drivers pass. Milestone 2 is complete and `T3.1` is
 next.
+`T3.1` is complete: pure normalized fixtures assert every admitted field for
+macOS dynamic, macOS static, PiScreen, and nRF52840 TFT. The two macOS fixtures
+are value-identical full-surface RGBA8888 results; Pi resolves a 240-by-16
+RGB565 tile using 7,680 bytes; nRF resolves a 480-by-4 RGB565 tile using
+exactly 3,840 raster, payload, and in-flight bytes; and the nRF full-surface
+RGBA8888 control is unavailable with the exact raster-capacity reason. The
+fixture-to-field report records each requirement, contribution, policy, and
+effective-result assertion. The 34-row normalized transcript and all four
+hardware-free SPEC-004 drivers pass. `T3.2` is next.

@@ -612,6 +612,175 @@ guard snapshotChecksum != 0,
 print("instrumentation-repeated-snapshot-access\tinstrumentation\t10000\t0,0")
 #endif
 
+private func normalizedConfiguration(
+    width: UInt16,
+    height: UInt16,
+    kind: RasterRealizationKind,
+    encoding: CanonicalPixelEncoding,
+    regionHeight: UInt16,
+    maximumBytes: UInt32
+) -> RasterPresentationResolution {
+    let encodingSet: CanonicalPixelEncodingSet = encoding == .rgb565BigEndian
+        ? .rgb565BigEndian
+        : .rgba8888
+    let realizationSet: RasterRealizationKindSet = kind == .fullSurface
+        ? .fullSurface
+        : .tiled
+    guard let extent = CapabilityExtent(width: width, height: height),
+          let requirement = RasterPresentationRequirement(
+              operations: allOperations,
+              extent: extent,
+              operationStream: .synchronousBorrowedOneShot,
+              acceptedEncodings: encodingSet,
+              acceptedSubmissionLifetimes: .synchronousBorrow,
+              maximumRasterBytes: .init(rawValue: maximumBytes),
+              maximumPayloadBytes: .init(rawValue: maximumBytes),
+              maximumInFlightBytes: .init(rawValue: maximumBytes),
+              absence: .required
+          ),
+          let producer = RenderProducerContribution(
+              operations: allOperations,
+              operationStream: .synchronousBorrowedOneShot
+          ),
+          let realization = RasterRealizationContribution(
+              kind: kind,
+              operations: allOperations,
+              operationStream: .synchronousBorrowedOneShot,
+              encodings: encodingSet,
+              producedSubmissionLifetimes: .synchronousBorrow,
+              maximumExtent: extent,
+              maximumRegionWidth: width,
+              maximumRegionHeight: regionHeight,
+              rowByteAlignment: 2,
+              maximumRasterBytes: .init(rawValue: maximumBytes),
+              maximumPayloadBytes: .init(rawValue: maximumBytes)
+          ),
+          let backend = RasterBackendContribution(
+              primary: realization,
+              alternate: nil
+          ),
+          let surface = SurfaceDisplayContribution(
+              extent: extent,
+              encodings: encodingSet,
+              acceptedSubmissionLifetimes: .synchronousBorrow,
+              handoffs: .synchronous,
+              maximumRegionWidth: width,
+              maximumRegionHeight: regionHeight,
+              rowByteAlignment: 2,
+              maximumInFlightCount: 1,
+              maximumInFlightBytes: .init(rawValue: maximumBytes)
+          ),
+          let policy = RasterPresentationPolicy(
+              maximumRasterBytes: .init(rawValue: maximumBytes),
+              maximumPayloadBytes: .init(rawValue: maximumBytes),
+              maximumInFlightBytes: .init(rawValue: maximumBytes),
+              allowedRealizations: realizationSet,
+              allowedEncodings: encodingSet,
+              preferredRealization: kind,
+              preferredEncoding: encodingSet
+          ) else {
+        fatalError("invalid normalized configuration fixture")
+    }
+    var contributions = RasterPresentationContributions()
+    guard contributions.insert(.renderProducer(producer)) == .inserted,
+          contributions.insert(.rasterBackend(backend)) == .inserted,
+          contributions.insert(.surfaceDisplay(surface)) == .inserted,
+          contributions.insert(.hostResourcePolicy(policy)) == .inserted else {
+        fatalError("normalized configuration insertion failed")
+    }
+    var workspace = RasterPresentationResolverWorkspace()!
+    return RasterPresentationResolver.resolve(
+        requirement: requirement,
+        contributions: contributions,
+        workspace: &workspace
+    )
+}
+
+let desktopDynamic = normalizedConfiguration(
+    width: 640, height: 480, kind: .fullSurface, encoding: .rgba8888,
+    regionHeight: 480, maximumBytes: 1_228_800
+)
+let desktopStatic = normalizedConfiguration(
+    width: 640, height: 480, kind: .fullSurface, encoding: .rgba8888,
+    regionHeight: 480, maximumBytes: 1_228_800
+)
+guard desktopDynamic == desktopStatic,
+      case let .available(desktopEffective) = desktopDynamic,
+      desktopEffective.operations == allOperations,
+      desktopEffective.extent == CapabilityExtent(width: 640, height: 480),
+      desktopEffective.regionExtent == CapabilityExtent(width: 640, height: 480),
+      desktopEffective.rowBytes == .init(rawValue: 2_560),
+      desktopEffective.operationStream == .synchronousBorrowedOneShot,
+      desktopEffective.encoding == .rgba8888,
+      desktopEffective.submissionLifetime == .synchronousBorrow,
+      desktopEffective.handoff == .synchronous,
+      desktopEffective.realization == .fullSurface,
+      desktopEffective.requiredRasterBytes == .init(rawValue: 1_228_800),
+      desktopEffective.requiredPayloadBytes == .init(rawValue: 1_228_800),
+      desktopEffective.inFlightCount == 1,
+      desktopEffective.requiredInFlightBytes == .init(rawValue: 1_228_800) else {
+    fatalError("desktop normalized configuration mismatch")
+}
+print("configuration-macos-dynamic\tconfiguration\t640,480,1,2\tavailable,31,640,480,640,480,2560,1,2,1,1,1,1228800,1228800,1,1228800")
+print("configuration-macos-static\tconfiguration\t640,480,1,2\tavailable,31,640,480,640,480,2560,1,2,1,1,1,1228800,1228800,1,1228800")
+
+let piConfiguration = normalizedConfiguration(
+    width: 240, height: 240, kind: .tiled, encoding: .rgb565BigEndian,
+    regionHeight: 16, maximumBytes: 7_680
+)
+guard case let .available(piEffective) = piConfiguration,
+      piEffective.operations == allOperations,
+      piEffective.extent == CapabilityExtent(width: 240, height: 240),
+      piEffective.regionExtent == CapabilityExtent(width: 240, height: 16),
+      piEffective.rowBytes == .init(rawValue: 480),
+      piEffective.operationStream == .synchronousBorrowedOneShot,
+      piEffective.encoding == .rgb565BigEndian,
+      piEffective.submissionLifetime == .synchronousBorrow,
+      piEffective.handoff == .synchronous,
+      piEffective.realization == .tiled,
+      piEffective.requiredRasterBytes == .init(rawValue: 7_680),
+      piEffective.requiredPayloadBytes == .init(rawValue: 7_680),
+      piEffective.inFlightCount == 1,
+      piEffective.requiredInFlightBytes == .init(rawValue: 7_680) else {
+    fatalError("Pi normalized configuration mismatch")
+}
+print("configuration-pi-screen\tconfiguration\t240,240,2,1\tavailable,31,240,240,240,16,480,1,1,1,1,2,7680,7680,1,7680")
+
+let nrfConfiguration = normalizedConfiguration(
+    width: 480, height: 320, kind: .tiled, encoding: .rgb565BigEndian,
+    regionHeight: 4, maximumBytes: 3_840
+)
+guard case let .available(nrfEffective) = nrfConfiguration,
+      nrfEffective.operations == allOperations,
+      nrfEffective.extent == CapabilityExtent(width: 480, height: 320),
+      nrfEffective.regionExtent == CapabilityExtent(width: 480, height: 4),
+      nrfEffective.rowBytes == .init(rawValue: 960),
+      nrfEffective.operationStream == .synchronousBorrowedOneShot,
+      nrfEffective.encoding == .rgb565BigEndian,
+      nrfEffective.submissionLifetime == .synchronousBorrow,
+      nrfEffective.handoff == .synchronous,
+      nrfEffective.realization == .tiled,
+      nrfEffective.requiredRasterBytes == .init(rawValue: 3_840),
+      nrfEffective.requiredPayloadBytes == .init(rawValue: 3_840),
+      nrfEffective.inFlightCount == 1,
+      nrfEffective.requiredInFlightBytes == .init(rawValue: 3_840) else {
+    fatalError("nRF normalized configuration mismatch")
+}
+print("configuration-nrf52840-tft\tconfiguration\t480,320,2,1\tavailable,31,480,320,480,4,960,1,1,1,1,2,3840,3840,1,3840")
+
+let nrfFullRGBA = normalizedConfiguration(
+    width: 480, height: 320, kind: .fullSurface, encoding: .rgba8888,
+    regionHeight: 320, maximumBytes: 3_840
+)
+guard nrfFullRGBA == .unavailable(.insufficientCapacity(
+    domain: .raster,
+    required: .init(rawValue: 614_400),
+    available: .init(rawValue: 3_840)
+)) else {
+    fatalError("nRF full-surface RGBA negative mismatch")
+}
+print("configuration-nrf52840-full-rgba-negative\tconfiguration\t480,320,1,2,3840\tunavailable,insufficient-capacity,2,614400,3840")
+
 let precedenceCount = CapabilityByteCount(rawValue: 16)
 let precedenceAvailable = CapabilityByteCount(rawValue: 15)
 let precedenceReasons: [RasterPresentationUnavailable] = [

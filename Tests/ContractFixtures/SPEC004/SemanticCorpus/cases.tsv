@@ -26,5 +26,10 @@ resolver-stream-mismatch-role-permutations	resolver	24,2	unavailable,operation-s
 instrumentation-widest-resolver-path	instrumentation	2,2,96	44,4,20,16,2,1,1
 instrumentation-early-negative-path	instrumentation	5,96	8,4,2,0,0,1,1
 instrumentation-repeated-snapshot-access	instrumentation	10000	0,0
+configuration-macos-dynamic	configuration	640,480,1,2	available,31,640,480,640,480,2560,1,2,1,1,1,1228800,1228800,1,1228800
+configuration-macos-static	configuration	640,480,1,2	available,31,640,480,640,480,2560,1,2,1,1,1,1228800,1228800,1,1228800
+configuration-pi-screen	configuration	240,240,2,1	available,31,240,240,240,16,480,1,1,1,1,2,7680,7680,1,7680
+configuration-nrf52840-tft	configuration	480,320,2,1	available,31,480,320,480,4,960,1,1,1,1,2,3840,3840,1,3840
+configuration-nrf52840-full-rgba-negative	configuration	480,320,1,2,3840	unavailable,insufficient-capacity,2,614400,3840
 precedence-candidate-pairs	precedence	11,2	55,all-pass
 precedence-all-stage-pairs	precedence	16,2	120,all-pass
