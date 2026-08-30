@@ -530,3 +530,104 @@ verifyResolverPermutations(
     expected: .unavailable(.operationStreamMismatch)
 )
 print("resolver-stream-mismatch-role-permutations\tresolver\t24,2\tunavailable,operation-stream-mismatch")
+
+let precedenceCount = CapabilityByteCount(rawValue: 16)
+let precedenceAvailable = CapabilityByteCount(rawValue: 15)
+let precedenceReasons: [RasterPresentationUnavailable] = [
+    .unsupportedLogicalExtent,
+    .operationSetMismatch,
+    .operationStreamMismatch,
+    .noCommonCanonicalPixelEncoding,
+    .incompatibleSubmissionLifetime,
+    .incompatibleSubmissionHandoff,
+    .byteCountOverflow(domain: .raster),
+    .insufficientCapacity(
+        domain: .raster, required: precedenceCount, available: precedenceAvailable
+    ),
+    .insufficientCapacity(
+        domain: .payload, required: precedenceCount, available: precedenceAvailable
+    ),
+    .insufficientCapacity(
+        domain: .inFlight, required: precedenceCount, available: precedenceAvailable
+    ),
+    .policyHasNoConformingRealization,
+]
+var precedencePairCount = 0
+for first in precedenceReasons.indices {
+    for second in precedenceReasons.indices where second > first {
+        guard RasterPresentationResolver.primaryReason(
+            precedenceReasons[first], precedenceReasons[second]
+        ) == precedenceReasons[first],
+        RasterPresentationResolver.primaryReason(
+            precedenceReasons[second], precedenceReasons[first]
+        ) == precedenceReasons[first] else {
+            fatalError("candidate precedence pair mismatch")
+        }
+        precedencePairCount += 1
+    }
+}
+guard precedencePairCount == 55 else {
+    fatalError("candidate precedence pair count mismatch")
+}
+print("precedence-candidate-pairs\tprecedence\t11,2\t55,all-pass")
+
+let precedenceStages: [(UInt8, RasterPresentationUnavailable)] = [
+    (1, .duplicateContributor(role: .renderProducer)),
+    (2, .missingContributor(role: .hostResourcePolicy)),
+    (3, .insufficientCapacity(
+        domain: .resolverWorkspace,
+        required: .init(rawValue: 2),
+        available: .init(rawValue: 1)
+    )),
+    (4, .operationSetMismatch),
+    (5, .operationStreamMismatch),
+    (6, .unsupportedLogicalExtent),
+    (7, .operationSetMismatch),
+    (8, .operationStreamMismatch),
+    (9, .noCommonCanonicalPixelEncoding),
+    (10, .incompatibleSubmissionLifetime),
+    (11, .incompatibleSubmissionHandoff),
+    (12, .byteCountOverflow(domain: .raster)),
+    (13, .insufficientCapacity(
+        domain: .raster,
+        required: precedenceCount,
+        available: precedenceAvailable
+    )),
+    (14, .insufficientCapacity(
+        domain: .payload,
+        required: precedenceCount,
+        available: precedenceAvailable
+    )),
+    (15, .insufficientCapacity(
+        domain: .inFlight,
+        required: precedenceCount,
+        available: precedenceAvailable
+    )),
+    (16, .policyHasNoConformingRealization),
+]
+var allStagePairCount = 0
+for first in precedenceStages.indices {
+    for second in precedenceStages.indices where second > first {
+        let firstEntry = precedenceStages[first]
+        let secondEntry = precedenceStages[second]
+        guard RasterPresentationResolver.primaryReason(
+            firstEntry.1,
+            stage: firstEntry.0,
+            secondEntry.1,
+            stage: secondEntry.0
+        ) == firstEntry.1,
+        RasterPresentationResolver.primaryReason(
+            secondEntry.1,
+            stage: secondEntry.0,
+            firstEntry.1,
+            stage: firstEntry.0
+        ) == firstEntry.1 else {
+            fatalError("sixteen-stage precedence pair mismatch")
+        }
+        allStagePairCount += 1
+    }
+}
+guard allStagePairCount == 120 else {
+    fatalError("sixteen-stage precedence pair count mismatch")
+}
+print("precedence-all-stage-pairs\tprecedence\t16,2\t120,all-pass")

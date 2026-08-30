@@ -376,7 +376,7 @@ and no runtime side effect.
       failure. Run all 24 role permutations for every positive and
       representative negative fixture and compare results by value and stable
       transcript.
-- [ ] `T2.4` — Build the table-driven primary-reason corpus for every
+- [x] `T2.4` — Build the table-driven primary-reason corpus for every
       constructible pair of typed incompatibilities in the exact 16-step
       precedence. Permute contribution and candidate declaration order,
       exercise the constructible shared-usage overflow and its interactions
@@ -748,3 +748,13 @@ workspace failures short-circuit; and optional absence produces a nil snapshot
 while required failure blocks snapshot construction. All 105 package tests,
 the 24-row normalized semantic transcript, zero-allocation macOS probes, and
 all four hardware-free SPEC-004 drivers pass. `T2.4` is next.
+`T2.4` is complete: the fixed selector covers all 120 unordered pairs across
+the exact 16 precedence stages in both argument orders, including the distinct
+producer/candidate operation and stream positions, and separately covers all
+55 candidate-specific reason pairs in both orders. Concrete resolver fixtures
+prove duplicate/missing and producer operation/stream short-circuiting,
+primary/alternate order independence, the corrected shared overflow over zero
+capacity, and raster before payload/in-flight capacity. Raw malformed adapter
+coverage remains separate in the T1.3 corpus. Thirty-seven focused capability
+tests, the 26-row normalized transcript, and all four hardware-free SPEC-004
+drivers pass. `T2.5` is next.

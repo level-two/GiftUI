@@ -913,6 +913,211 @@ final class GiftUICapabilitiesTests: XCTestCase {
         XCTAssertNil(snapshot(from: unavailable, absence: .required))
     }
 
+    func testEveryCandidateReasonPairUsesExactPrecedenceInBothOrders() {
+        let count = CapabilityByteCount(rawValue: 16)
+        let available = CapabilityByteCount(rawValue: 15)
+        let reasons: [RasterPresentationUnavailable] = [
+            .unsupportedLogicalExtent,
+            .operationSetMismatch,
+            .operationStreamMismatch,
+            .noCommonCanonicalPixelEncoding,
+            .incompatibleSubmissionLifetime,
+            .incompatibleSubmissionHandoff,
+            .byteCountOverflow(domain: .raster),
+            .insufficientCapacity(domain: .raster, required: count, available: available),
+            .insufficientCapacity(domain: .payload, required: count, available: available),
+            .insufficientCapacity(domain: .inFlight, required: count, available: available),
+            .policyHasNoConformingRealization,
+        ]
+        var pairCount = 0
+        for first in reasons.indices {
+            for second in reasons.indices where second > first {
+                XCTAssertEqual(
+                    RasterPresentationResolver.primaryReason(
+                        reasons[first], reasons[second]
+                    ),
+                    reasons[first]
+                )
+                XCTAssertEqual(
+                    RasterPresentationResolver.primaryReason(
+                        reasons[second], reasons[first]
+                    ),
+                    reasons[first]
+                )
+                pairCount += 1
+            }
+        }
+        XCTAssertEqual(pairCount, 55)
+    }
+
+    func testEverySixteenStagePrecedencePairUsesEarlierStageInBothOrders() {
+        let count = CapabilityByteCount(rawValue: 16)
+        let available = CapabilityByteCount(rawValue: 15)
+        let entries: [(UInt8, RasterPresentationUnavailable)] = [
+            (1, .duplicateContributor(role: .renderProducer)),
+            (2, .missingContributor(role: .hostResourcePolicy)),
+            (3, .insufficientCapacity(
+                domain: .resolverWorkspace,
+                required: .init(rawValue: 2),
+                available: .init(rawValue: 1)
+            )),
+            (4, .operationSetMismatch),
+            (5, .operationStreamMismatch),
+            (6, .unsupportedLogicalExtent),
+            (7, .operationSetMismatch),
+            (8, .operationStreamMismatch),
+            (9, .noCommonCanonicalPixelEncoding),
+            (10, .incompatibleSubmissionLifetime),
+            (11, .incompatibleSubmissionHandoff),
+            (12, .byteCountOverflow(domain: .raster)),
+            (13, .insufficientCapacity(
+                domain: .raster, required: count, available: available
+            )),
+            (14, .insufficientCapacity(
+                domain: .payload, required: count, available: available
+            )),
+            (15, .insufficientCapacity(
+                domain: .inFlight, required: count, available: available
+            )),
+            (16, .policyHasNoConformingRealization),
+        ]
+        var pairCount = 0
+        for first in entries.indices {
+            for second in entries.indices where second > first {
+                XCTAssertEqual(
+                    RasterPresentationResolver.primaryReason(
+                        entries[first].1,
+                        stage: entries[first].0,
+                        entries[second].1,
+                        stage: entries[second].0
+                    ),
+                    entries[first].1
+                )
+                XCTAssertEqual(
+                    RasterPresentationResolver.primaryReason(
+                        entries[second].1,
+                        stage: entries[second].0,
+                        entries[first].1,
+                        stage: entries[first].0
+                    ),
+                    entries[first].1
+                )
+                pairCount += 1
+            }
+        }
+        XCTAssertEqual(pairCount, 120)
+    }
+
+    func testTopLevelPrecedenceStagesShortCircuitLaterConditions() throws {
+        let requirement = try XCTUnwrap(makeRequirement(byteCeiling: 3_840))
+        var duplicateAndMissing = try makeResolverContributions()
+        duplicateAndMissing.hostResourcePolicy = nil
+        _ = duplicateAndMissing.insert(.renderProducer(try makeProducer()))
+        var workspace = try XCTUnwrap(RasterPresentationResolverWorkspace())
+        XCTAssertEqual(
+            RasterPresentationResolver.resolve(
+                requirement: requirement,
+                contributions: duplicateAndMissing,
+                workspace: &workspace
+            ),
+            .unavailable(.duplicateContributor(role: .renderProducer))
+        )
+
+        var producerMismatch = try makeResolverContributions()
+        producerMismatch.renderProducer = try XCTUnwrap(RenderProducerContribution(
+            operations: .opaqueRectangles,
+            operationStream: .incompatibleWithSynchronousBorrowedOneShot
+        ))
+        XCTAssertEqual(
+            RasterPresentationResolver.resolve(
+                requirement: requirement,
+                contributions: producerMismatch,
+                workspace: &workspace
+            ),
+            .unavailable(.operationSetMismatch)
+        )
+    }
+
+    func testOverflowAndCapacityInteractionsPreserveCorrectedPrecedence() throws {
+        XCTAssertEqual(
+            try evaluateArithmetic(
+                width: .max,
+                height: 2,
+                kind: .fullSurface,
+                encoding: .rgb565BigEndian,
+                realizationRegionHeight: 2,
+                surfaceRegionHeight: 2,
+                realizationAlignment: .max,
+                surfaceAlignment: .max - 1,
+                ceiling: 0
+            ),
+            .unavailable(.byteCountOverflow(domain: .raster))
+        )
+
+        let required = CapabilityByteCount(rawValue: 16)
+        XCTAssertEqual(
+            RasterPresentationResolver.primaryReason(
+                .insufficientCapacity(
+                    domain: .inFlight,
+                    required: required,
+                    available: .init(rawValue: 0)
+                ),
+                .insufficientCapacity(
+                    domain: .raster,
+                    required: required,
+                    available: .init(rawValue: 0)
+                )
+            ),
+            .insufficientCapacity(
+                domain: .raster,
+                required: required,
+                available: .init(rawValue: 0)
+            )
+        )
+    }
+
+    func testCandidateReasonSelectionIgnoresPrimaryAlternateOrder() throws {
+        let full = try XCTUnwrap(makeRealization(
+            kind: .fullSurface,
+            regionHeight: 320,
+            rasterBytes: 307_199,
+            payloadBytes: 307_200
+        ))
+        let tiled = try XCTUnwrap(makeRealization(
+            kind: .tiled,
+            rasterBytes: 307_200,
+            payloadBytes: 307_200
+        ))
+        let policy = try XCTUnwrap(makePolicy(
+            realizations: .fullSurface,
+            preferredRealization: .fullSurface,
+            byteCeiling: 307_200
+        ))
+        let requirement = try XCTUnwrap(makeRequirement(byteCeiling: 307_200))
+        let expected = RasterPresentationResolution.unavailable(
+            .insufficientCapacity(
+                domain: .raster,
+                required: .init(rawValue: 307_200),
+                available: .init(rawValue: 307_199)
+            )
+        )
+        for backend in [
+            try XCTUnwrap(RasterBackendContribution(primary: full, alternate: tiled)),
+            try XCTUnwrap(RasterBackendContribution(primary: tiled, alternate: full)),
+        ] {
+            XCTAssertEqual(
+                try resolve(
+                    requirement: requirement,
+                    values: makeResolverContributionValues(
+                        backend: backend, policy: policy
+                    ),
+                    permutation: [0, 1, 2, 3]
+                ),
+                expected
+            )
+        }
+    }
+
     func testUnavailableVocabularyRetainsBoundedPayloads() {
         let count = CapabilityByteCount(rawValue: 7)
         let reasons: [RasterPresentationUnavailable] = [

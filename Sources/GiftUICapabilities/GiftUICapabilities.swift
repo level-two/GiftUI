@@ -988,14 +988,41 @@ public enum RasterPresentationResolver {
             return .available(effective(requirement: requirement, path: path))
         }
         if let firstReason, let secondReason {
-            let selected = reasonRank(secondReason) < reasonRank(firstReason)
-                ? secondReason
-                : firstReason
-            return .unavailable(selected)
+            return .unavailable(primaryReason(firstReason, secondReason))
         }
         return .unavailable(
             firstReason ?? secondReason ?? .policyHasNoConformingRealization
         )
+    }
+
+    static func primaryReason(
+        _ first: RasterPresentationUnavailable,
+        _ second: RasterPresentationUnavailable
+    ) -> RasterPresentationUnavailable {
+        primaryReason(
+            first,
+            stage: reasonRank(first),
+            second,
+            stage: reasonRank(second)
+        )
+    }
+
+    static func primaryReason(
+        _ first: RasterPresentationUnavailable,
+        stage firstStage: UInt8,
+        _ second: RasterPresentationUnavailable,
+        stage secondStage: UInt8
+    ) -> RasterPresentationUnavailable {
+        if secondStage < firstStage { return second }
+        if firstStage < secondStage { return first }
+        switch (first, second) {
+        case let (.duplicateContributor(firstRole), .duplicateContributor(secondRole)):
+            return firstRole.rawValue <= secondRole.rawValue ? first : second
+        case let (.missingContributor(firstRole), .missingContributor(secondRole)):
+            return firstRole.rawValue <= secondRole.rawValue ? first : second
+        default:
+            return first
+        }
     }
 
     private static func effective(
@@ -1021,6 +1048,8 @@ public enum RasterPresentationResolver {
 
     private static func reasonRank(_ reason: RasterPresentationUnavailable) -> UInt8 {
         switch reason {
+        case .duplicateContributor: 1
+        case .missingContributor: 2
         case .unsupportedLogicalExtent: 6
         case .operationSetMismatch: 7
         case .operationStreamMismatch: 8
