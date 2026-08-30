@@ -386,3 +386,147 @@ require(
     input: "4,2,1,1,2,2,1,1,20,0,18",
     result: "unavailable,insufficient-capacity,4,16,0"
 )
+
+private func resolverValues(
+    producerStream: OperationStreamLifetime
+) -> (RasterPresentationRequirement, [RasterPresentationContribution]) {
+    guard let extent = CapabilityExtent(width: 480, height: 320),
+          let requirement = RasterPresentationRequirement(
+              operations: allOperations,
+              extent: extent,
+              operationStream: .synchronousBorrowedOneShot,
+              acceptedEncodings: .rgb565BigEndian,
+              acceptedSubmissionLifetimes: .synchronousBorrow,
+              maximumRasterBytes: .init(rawValue: 3_840),
+              maximumPayloadBytes: .init(rawValue: 3_840),
+              maximumInFlightBytes: .init(rawValue: 3_840),
+              absence: .required
+          ),
+          let producer = RenderProducerContribution(
+              operations: allOperations,
+              operationStream: producerStream
+          ),
+          let full = RasterRealizationContribution(
+              kind: .fullSurface,
+              operations: allOperations,
+              operationStream: .synchronousBorrowedOneShot,
+              encodings: .rgb565BigEndian,
+              producedSubmissionLifetimes: .synchronousBorrow,
+              maximumExtent: extent,
+              maximumRegionWidth: 480,
+              maximumRegionHeight: 4,
+              rowByteAlignment: 2,
+              maximumRasterBytes: .init(rawValue: 3_840),
+              maximumPayloadBytes: .init(rawValue: 3_840)
+          ),
+          let tiled = RasterRealizationContribution(
+              kind: .tiled,
+              operations: allOperations,
+              operationStream: .synchronousBorrowedOneShot,
+              encodings: .rgb565BigEndian,
+              producedSubmissionLifetimes: .synchronousBorrow,
+              maximumExtent: extent,
+              maximumRegionWidth: 480,
+              maximumRegionHeight: 4,
+              rowByteAlignment: 2,
+              maximumRasterBytes: .init(rawValue: 3_840),
+              maximumPayloadBytes: .init(rawValue: 3_840)
+          ),
+          let backend = RasterBackendContribution(primary: full, alternate: tiled),
+          let surface = SurfaceDisplayContribution(
+              extent: extent,
+              encodings: .rgb565BigEndian,
+              acceptedSubmissionLifetimes: .synchronousBorrow,
+              handoffs: .synchronous,
+              maximumRegionWidth: 480,
+              maximumRegionHeight: 320,
+              rowByteAlignment: 2,
+              maximumInFlightCount: 1,
+              maximumInFlightBytes: .init(rawValue: 3_840)
+          ),
+          let policy = RasterPresentationPolicy(
+              maximumRasterBytes: .init(rawValue: 3_840),
+              maximumPayloadBytes: .init(rawValue: 3_840),
+              maximumInFlightBytes: .init(rawValue: 3_840),
+              allowedRealizations: .tiled,
+              allowedEncodings: .rgb565BigEndian,
+              preferredRealization: .tiled,
+              preferredEncoding: .rgb565BigEndian
+          ) else {
+        fatalError("invalid checked-in resolver fixture")
+    }
+    return (requirement, [
+        .renderProducer(producer),
+        .rasterBackend(backend),
+        .surfaceDisplay(surface),
+        .hostResourcePolicy(policy),
+    ])
+}
+
+private func verifyResolverPermutations(
+    producerStream: OperationStreamLifetime,
+    expected: RasterPresentationResolution
+) {
+    let (requirement, values) = resolverValues(producerStream: producerStream)
+    var count = 0
+    for first in 0 ..< 4 {
+        for second in 0 ..< 4 where second != first {
+            for third in 0 ..< 4 where third != first && third != second {
+                for fourth in 0 ..< 4
+                where fourth != first && fourth != second && fourth != third {
+                    var contributions = RasterPresentationContributions()
+                    _ = contributions.insert(values[first])
+                    _ = contributions.insert(values[second])
+                    _ = contributions.insert(values[third])
+                    _ = contributions.insert(values[fourth])
+                    var workspace = RasterPresentationResolverWorkspace()!
+                    let result = RasterPresentationResolver.resolve(
+                        requirement: requirement,
+                        contributions: contributions,
+                        workspace: &workspace
+                    )
+                    guard result == expected else {
+                        fatalError("resolver role permutation mismatch")
+                    }
+                    count += 1
+                }
+            }
+        }
+    }
+    guard count == 24 else { fatalError("resolver permutation count mismatch") }
+}
+
+let (positiveRequirement, _) = resolverValues(
+    producerStream: .synchronousBorrowedOneShot
+)
+let positiveArithmetic = value(
+    alignment: 2, width: 480, height: 4, rowBytes: 960, usage: 3_840
+)
+guard case let .available(arithmeticValue) = positiveArithmetic else {
+    fatalError("invalid resolver arithmetic fixture")
+}
+let positiveEffective = EffectiveRasterPresentation(
+    operations: allOperations,
+    extent: positiveRequirement.extent,
+    regionExtent: arithmeticValue.regionExtent,
+    rowBytes: arithmeticValue.rowBytes,
+    operationStream: .synchronousBorrowedOneShot,
+    encoding: .rgb565BigEndian,
+    submissionLifetime: .synchronousBorrow,
+    handoff: .synchronous,
+    realization: .tiled,
+    requiredRasterBytes: arithmeticValue.requiredRasterBytes,
+    requiredPayloadBytes: arithmeticValue.requiredPayloadBytes,
+    inFlightCount: 1,
+    requiredInFlightBytes: arithmeticValue.requiredInFlightBytes
+)
+verifyResolverPermutations(
+    producerStream: .synchronousBorrowedOneShot,
+    expected: .available(positiveEffective)
+)
+print("resolver-positive-role-permutations\tresolver\t24,1\tavailable,2,1,1,1,480,4,960,3840")
+verifyResolverPermutations(
+    producerStream: .incompatibleWithSynchronousBorrowedOneShot,
+    expected: .unavailable(.operationStreamMismatch)
+)
+print("resolver-stream-mismatch-role-permutations\tresolver\t24,2\tunavailable,operation-stream-mismatch")

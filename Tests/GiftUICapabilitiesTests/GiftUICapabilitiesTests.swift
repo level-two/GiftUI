@@ -750,6 +750,169 @@ final class GiftUICapabilitiesTests: XCTestCase {
         ))
     }
 
+    func testPublicResolverBuildsExactEffectiveResultAndResetsWorkspace() throws {
+        let requirement = try XCTUnwrap(makeRequirement(byteCeiling: 3_840))
+        let contributions = try makeResolverContributions()
+        var workspace = try XCTUnwrap(RasterPresentationResolverWorkspace())
+        let resolution = RasterPresentationResolver.resolve(
+            requirement: requirement,
+            contributions: contributions,
+            workspace: &workspace
+        )
+        guard case let .available(value) = resolution else {
+            return XCTFail("complete nRF-style fixture must resolve")
+        }
+        XCTAssertEqual(value.operations, allOperations)
+        XCTAssertEqual(value.extent, try makeExtent())
+        XCTAssertEqual(value.regionExtent, CapabilityExtent(width: 480, height: 4))
+        XCTAssertEqual(value.rowBytes.rawValue, 960)
+        XCTAssertEqual(value.operationStream, .synchronousBorrowedOneShot)
+        XCTAssertEqual(value.encoding, .rgb565BigEndian)
+        XCTAssertEqual(value.submissionLifetime, .synchronousBorrow)
+        XCTAssertEqual(value.handoff, .synchronous)
+        XCTAssertEqual(value.realization, .tiled)
+        XCTAssertEqual(value.requiredRasterBytes.rawValue, 3_840)
+        XCTAssertEqual(value.requiredPayloadBytes.rawValue, 3_840)
+        XCTAssertEqual(value.inFlightCount, 1)
+        XCTAssertEqual(value.requiredInFlightBytes.rawValue, 3_840)
+        XCTAssertNil(workspace.firstCandidate)
+        XCTAssertNil(workspace.secondCandidate)
+    }
+
+    func testResolverIsEqualAcrossAllTwentyFourRolePermutations() throws {
+        let requirement = try XCTUnwrap(makeRequirement(byteCeiling: 3_840))
+        let positiveValues = try makeResolverContributionValues()
+        let negativeValues = try makeResolverContributionValues(
+            producerStream: .incompatibleWithSynchronousBorrowedOneShot
+        )
+        let permutations = permutationsOfFour()
+        XCTAssertEqual(permutations.count, 24)
+
+        var positiveExpected: RasterPresentationResolution?
+        var negativeExpected: RasterPresentationResolution?
+        for permutation in permutations {
+            let positive = try resolve(
+                requirement: requirement,
+                values: positiveValues,
+                permutation: permutation
+            )
+            let negative = try resolve(
+                requirement: requirement,
+                values: negativeValues,
+                permutation: permutation
+            )
+            if let positiveExpected {
+                XCTAssertEqual(positive, positiveExpected)
+            } else {
+                positiveExpected = positive
+            }
+            if let negativeExpected {
+                XCTAssertEqual(negative, negativeExpected)
+            } else {
+                negativeExpected = negative
+            }
+        }
+        XCTAssertEqual(
+            negativeExpected,
+            .unavailable(.operationStreamMismatch)
+        )
+    }
+
+    func testResolverCanonicalizesCandidateOrderBeforePreference() throws {
+        let full = try XCTUnwrap(makeRealization(
+            kind: .fullSurface,
+            regionHeight: 320,
+            rasterBytes: 307_200,
+            payloadBytes: 307_200
+        ))
+        let tiled = try XCTUnwrap(makeRealization(
+            kind: .tiled,
+            rasterBytes: 307_200,
+            payloadBytes: 307_200
+        ))
+        let forward = try XCTUnwrap(RasterBackendContribution(
+            primary: full, alternate: tiled
+        ))
+        let reverse = try XCTUnwrap(RasterBackendContribution(
+            primary: tiled, alternate: full
+        ))
+        let requirement = try XCTUnwrap(makeRequirement(byteCeiling: 307_200))
+        let policy = try XCTUnwrap(makePolicy(
+            realizations: [.fullSurface, .tiled],
+            preferredRealization: .tiled,
+            byteCeiling: 307_200
+        ))
+        let first = try resolve(
+            requirement: requirement,
+            values: makeResolverContributionValues(backend: forward, policy: policy),
+            permutation: [0, 1, 2, 3]
+        )
+        let second = try resolve(
+            requirement: requirement,
+            values: makeResolverContributionValues(backend: reverse, policy: policy),
+            permutation: [3, 2, 1, 0]
+        )
+        XCTAssertEqual(first, second)
+        guard case let .available(value) = first else {
+            return XCTFail("preferred tiled candidate must resolve")
+        }
+        XCTAssertEqual(value.realization, .tiled)
+    }
+
+    func testResolverRejectsInputAndWorkspaceBeforeCandidateEvaluation() throws {
+        let requirement = try XCTUnwrap(makeRequirement(byteCeiling: 3_840))
+        var missing = RasterPresentationContributions()
+        var workspace = try XCTUnwrap(RasterPresentationResolverWorkspace())
+        XCTAssertEqual(
+            RasterPresentationResolver.resolve(
+                requirement: requirement, contributions: missing, workspace: &workspace
+            ),
+            .unavailable(.missingContributor(role: .renderProducer))
+        )
+
+        _ = missing.insert(.renderProducer(try makeProducer()))
+        _ = missing.insert(.rasterBackend(try makeBackend()))
+        _ = missing.insert(.surfaceDisplay(try makeSurfaceValue()))
+        _ = missing.insert(.hostResourcePolicy(try makePolicyValue()))
+        _ = missing.insert(.renderProducer(try makeProducer()))
+        XCTAssertEqual(
+            RasterPresentationResolver.resolve(
+                requirement: requirement, contributions: missing, workspace: &workspace
+            ),
+            .unavailable(.duplicateContributor(role: .renderProducer))
+        )
+
+        let complete = try makeResolverContributions(
+            producerStream: .incompatibleWithSynchronousBorrowedOneShot
+        )
+        var oneSlot = try XCTUnwrap(RasterPresentationResolverWorkspace(
+            usableCandidateCapacity: 1
+        ))
+        XCTAssertEqual(
+            RasterPresentationResolver.resolve(
+                requirement: requirement, contributions: complete, workspace: &oneSlot
+            ),
+            .unavailable(.insufficientCapacity(
+                domain: .resolverWorkspace,
+                required: .init(rawValue: 2),
+                available: .init(rawValue: 1)
+            ))
+        )
+        XCTAssertNil(oneSlot.firstCandidate)
+        XCTAssertNil(oneSlot.secondCandidate)
+    }
+
+    func testOptionalAbsenceProducesNilSnapshotWhileRequiredFailureBlocksIt() throws {
+        let unavailable = RasterPresentationResolution.unavailable(
+            .missingContributor(role: .renderProducer)
+        )
+        XCTAssertEqual(
+            snapshot(from: unavailable, absence: .optional),
+            CapabilitySnapshot(rasterPresentation: nil)
+        )
+        XCTAssertNil(snapshot(from: unavailable, absence: .required))
+    }
+
     func testUnavailableVocabularyRetainsBoundedPayloads() {
         let count = CapabilityByteCount(rawValue: 7)
         let reasons: [RasterPresentationUnavailable] = [
@@ -1073,6 +1236,79 @@ final class GiftUICapabilitiesTests: XCTestCase {
 
     private func makePolicyValue() throws -> RasterPresentationPolicy {
         try XCTUnwrap(makePolicy())
+    }
+
+    private func makeResolverContributionValues(
+        producerStream: OperationStreamLifetime = .synchronousBorrowedOneShot,
+        backend: RasterBackendContribution? = nil,
+        policy: RasterPresentationPolicy? = nil
+    ) throws -> [RasterPresentationContribution] {
+        let producer = try XCTUnwrap(RenderProducerContribution(
+            operations: allOperations,
+            operationStream: producerStream
+        ))
+        return [
+            .renderProducer(producer),
+            .rasterBackend(try backend ?? makeBackend()),
+            .surfaceDisplay(try makeSurfaceValue()),
+            .hostResourcePolicy(try policy ?? makePolicyValue()),
+        ]
+    }
+
+    private func makeResolverContributions(
+        producerStream: OperationStreamLifetime = .synchronousBorrowedOneShot
+    ) throws -> RasterPresentationContributions {
+        var contributions = RasterPresentationContributions()
+        for value in try makeResolverContributionValues(producerStream: producerStream) {
+            XCTAssertEqual(contributions.insert(value), .inserted)
+        }
+        return contributions
+    }
+
+    private func resolve(
+        requirement: RasterPresentationRequirement,
+        values: [RasterPresentationContribution],
+        permutation: [Int]
+    ) throws -> RasterPresentationResolution {
+        var contributions = RasterPresentationContributions()
+        for index in permutation {
+            XCTAssertEqual(contributions.insert(values[index]), .inserted)
+        }
+        var workspace = try XCTUnwrap(RasterPresentationResolverWorkspace())
+        return RasterPresentationResolver.resolve(
+            requirement: requirement,
+            contributions: contributions,
+            workspace: &workspace
+        )
+    }
+
+    private func permutationsOfFour() -> [[Int]] {
+        var result: [[Int]] = []
+        for first in 0 ..< 4 {
+            for second in 0 ..< 4 where second != first {
+                for third in 0 ..< 4 where third != first && third != second {
+                    for fourth in 0 ..< 4
+                    where fourth != first && fourth != second && fourth != third {
+                        result.append([first, second, third, fourth])
+                    }
+                }
+            }
+        }
+        return result
+    }
+
+    private func snapshot(
+        from resolution: RasterPresentationResolution,
+        absence: CapabilityAbsence
+    ) -> CapabilitySnapshot? {
+        switch resolution {
+        case let .available(value):
+            return CapabilitySnapshot(rasterPresentation: value)
+        case .unavailable:
+            return absence == .optional
+                ? CapabilitySnapshot(rasterPresentation: nil)
+                : nil
+        }
     }
 
     private func insertRemainingContributions(

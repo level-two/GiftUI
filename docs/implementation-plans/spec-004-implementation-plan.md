@@ -370,7 +370,7 @@ and no runtime side effect.
       Prove that policy selects only complete conforming paths and that
       encoding, lifetime, handoff, and policy exclusion retain distinct
       reasons.
-- [ ] `T2.3` — Implement role validation, normalization of at most two
+- [x] `T2.3` — Implement role validation, normalization of at most two
       candidates into caller-owned workspace, candidate evaluation, result
       construction, optional-absence snapshot behavior, and required-absence
       failure. Run all 24 role permutations for every positive and
@@ -737,3 +737,14 @@ lifetime, handoff, and realization preferences deterministically; and applies
 policy only after technical conformance. Twenty-seven focused capability tests
 and all four hardware-free SPEC-004 drivers pass, with zero allocations while
 the optimized probe executes compatibility. `T2.3` is next.
+`T2.3` is complete: the exact public `RasterPresentationResolver.resolve`
+entry point validates duplicate/missing roles and workspace before semantic
+evaluation, canonicalizes one or two candidates by realization raw value,
+selects by complete-path preference, constructs the immutable effective value
+only on success, and resets caller-owned workspace on every return. Positive
+and stream-mismatch fixtures are value-equal across all 24 role permutations;
+reversed candidate declarations resolve identically; missing, duplicate, and
+workspace failures short-circuit; and optional absence produces a nil snapshot
+while required failure blocks snapshot construction. All 105 package tests,
+the 24-row normalized semantic transcript, zero-allocation macOS probes, and
+all four hardware-free SPEC-004 drivers pass. `T2.4` is next.

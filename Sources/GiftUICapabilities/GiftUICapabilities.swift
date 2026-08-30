@@ -856,6 +856,191 @@ public enum RasterPresentationResolution: Equatable, Sendable {
     case unavailable(RasterPresentationUnavailable)
 }
 
+public enum RasterPresentationResolver {
+    public static func resolve(
+        requirement: RasterPresentationRequirement,
+        contributions: borrowing RasterPresentationContributions,
+        workspace: inout RasterPresentationResolverWorkspace
+    ) -> RasterPresentationResolution {
+        workspace.reset()
+        defer { workspace.reset() }
+
+        if let issue = contributions.firstInputIssue {
+            return .unavailable(issue)
+        }
+        guard let producer = contributions.renderProducer,
+              let backend = contributions.rasterBackend,
+              let surface = contributions.surfaceDisplay,
+              let policy = contributions.hostResourcePolicy else {
+            return .unavailable(.missingContributor(role: .renderProducer))
+        }
+
+        let candidateCount: UInt32 = backend.alternate == nil ? 1 : 2
+        guard UInt32(workspace.usableCandidateCapacity) >= candidateCount else {
+            return .unavailable(.insufficientCapacity(
+                domain: .resolverWorkspace,
+                required: CapabilityByteCount(rawValue: candidateCount),
+                available: CapabilityByteCount(
+                    rawValue: UInt32(workspace.usableCandidateCapacity)
+                )
+            ))
+        }
+        if let producerIssue = RasterPresentationCompatibility.producerIssue(
+            requirement: requirement,
+            producer: producer
+        ) {
+            return .unavailable(producerIssue)
+        }
+
+        if let alternate = backend.alternate {
+            if backend.primary.kind.rawValue < alternate.kind.rawValue {
+                _ = workspace.append(NormalizedRasterPresentationCandidate(
+                    realization: backend.primary
+                ))
+                _ = workspace.append(NormalizedRasterPresentationCandidate(
+                    realization: alternate
+                ))
+            } else {
+                _ = workspace.append(NormalizedRasterPresentationCandidate(
+                    realization: alternate
+                ))
+                _ = workspace.append(NormalizedRasterPresentationCandidate(
+                    realization: backend.primary
+                ))
+            }
+        } else {
+            _ = workspace.append(NormalizedRasterPresentationCandidate(
+                realization: backend.primary
+            ))
+        }
+
+        let firstOutcome: RasterPresentationCandidateOutcome?
+        if let firstCandidate = workspace.firstCandidate {
+            firstOutcome = RasterPresentationCompatibility.evaluateCandidate(
+                requirement: requirement,
+                realization: firstCandidate.realization,
+                surface: surface,
+                policy: policy
+            )
+        } else {
+            firstOutcome = nil
+        }
+        let secondOutcome: RasterPresentationCandidateOutcome?
+        if let secondCandidate = workspace.secondCandidate {
+            secondOutcome = RasterPresentationCompatibility.evaluateCandidate(
+                requirement: requirement,
+                realization: secondCandidate.realization,
+                surface: surface,
+                policy: policy
+            )
+        } else {
+            secondOutcome = nil
+        }
+        return resolution(
+            first: firstOutcome,
+            second: secondOutcome,
+            requirement: requirement,
+            policy: policy
+        )
+    }
+
+    private static func resolution(
+        first: RasterPresentationCandidateOutcome?,
+        second: RasterPresentationCandidateOutcome?,
+        requirement: RasterPresentationRequirement,
+        policy: RasterPresentationPolicy
+    ) -> RasterPresentationResolution {
+        let firstPath: RasterPresentationCandidatePath?
+        let firstReason: RasterPresentationUnavailable?
+        switch first {
+        case let .available(path):
+            firstPath = path
+            firstReason = nil
+        case let .unavailable(reason):
+            firstPath = nil
+            firstReason = reason
+        case nil:
+            firstPath = nil
+            firstReason = nil
+        }
+
+        let secondPath: RasterPresentationCandidatePath?
+        let secondReason: RasterPresentationUnavailable?
+        switch second {
+        case let .available(path):
+            secondPath = path
+            secondReason = nil
+        case let .unavailable(reason):
+            secondPath = nil
+            secondReason = reason
+        case nil:
+            secondPath = nil
+            secondReason = nil
+        }
+
+        if let firstPath, let secondPath {
+            let selected = RasterPresentationCompatibility.prefers(
+                secondPath, over: firstPath, policy: policy
+            ) ? secondPath : firstPath
+            return .available(effective(requirement: requirement, path: selected))
+        }
+        if let path = firstPath ?? secondPath {
+            return .available(effective(requirement: requirement, path: path))
+        }
+        if let firstReason, let secondReason {
+            let selected = reasonRank(secondReason) < reasonRank(firstReason)
+                ? secondReason
+                : firstReason
+            return .unavailable(selected)
+        }
+        return .unavailable(
+            firstReason ?? secondReason ?? .policyHasNoConformingRealization
+        )
+    }
+
+    private static func effective(
+        requirement: RasterPresentationRequirement,
+        path: RasterPresentationCandidatePath
+    ) -> EffectiveRasterPresentation {
+        EffectiveRasterPresentation(
+            operations: requirement.operations,
+            extent: requirement.extent,
+            regionExtent: path.arithmetic.regionExtent,
+            rowBytes: path.arithmetic.rowBytes,
+            operationStream: .synchronousBorrowedOneShot,
+            encoding: path.encoding,
+            submissionLifetime: path.submissionLifetime,
+            handoff: path.handoff,
+            realization: path.realization,
+            requiredRasterBytes: path.arithmetic.requiredRasterBytes,
+            requiredPayloadBytes: path.arithmetic.requiredPayloadBytes,
+            inFlightCount: 1,
+            requiredInFlightBytes: path.arithmetic.requiredInFlightBytes
+        )
+    }
+
+    private static func reasonRank(_ reason: RasterPresentationUnavailable) -> UInt8 {
+        switch reason {
+        case .unsupportedLogicalExtent: 6
+        case .operationSetMismatch: 7
+        case .operationStreamMismatch: 8
+        case .noCommonCanonicalPixelEncoding: 9
+        case .incompatibleSubmissionLifetime: 10
+        case .incompatibleSubmissionHandoff: 11
+        case .byteCountOverflow: 12
+        case let .insufficientCapacity(domain, _, _):
+            switch domain {
+            case .resolverWorkspace: 3
+            case .raster: 13
+            case .payload: 14
+            case .inFlight: 15
+            }
+        case .policyHasNoConformingRealization: 16
+        default: .max
+        }
+    }
+}
+
 public struct CapabilitySnapshot: Equatable, Sendable {
     public let rasterPresentation: EffectiveRasterPresentation?
     public init(rasterPresentation: EffectiveRasterPresentation?) {

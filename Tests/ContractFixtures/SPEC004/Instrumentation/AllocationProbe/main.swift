@@ -91,9 +91,14 @@ private func exercise(seed: UInt32) -> UInt32 {
     _ = contributions.insert(.rasterBackend(backend))
     _ = contributions.insert(.renderProducer(producer))
     let duplicate = contributions.insert(.renderProducer(producer))
-    let workspace = RasterPresentationResolverWorkspace(
+    var workspace = RasterPresentationResolverWorkspace(
         usableCandidateCapacity: UInt8(seed % 3)
     )!
+    let resolution = RasterPresentationResolver.resolve(
+        requirement: requirement,
+        contributions: contributions,
+        workspace: &workspace
+    )
 
     var checksum = requirement.maximumRasterBytes.rawValue
     checksum &+= UInt32(producer.operations.rawValue)
@@ -109,6 +114,9 @@ private func exercise(seed: UInt32) -> UInt32 {
         checksum &+= UInt32(path.encoding.rawValue)
         checksum &+= UInt32(path.submissionLifetime.rawValue)
         checksum &+= UInt32(path.handoff.rawValue)
+    }
+    if case let .available(value) = resolution {
+        checksum &+= value.requiredRasterBytes.rawValue
     }
     return checksum
 }

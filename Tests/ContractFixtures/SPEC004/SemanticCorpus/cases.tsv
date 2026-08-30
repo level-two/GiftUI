@@ -21,3 +21,5 @@ arithmetic-in-flight-requirement-boundary	arithmetic	4,1,16,15	equality-availabl
 arithmetic-in-flight-surface-boundary	arithmetic	4,2,16,15	equality-available,16,first-excess,4,16,15
 arithmetic-in-flight-policy-boundary	arithmetic	4,3,16,15	equality-available,16,first-excess,4,16,15
 arithmetic-in-flight-zero-minimum	arithmetic	4,2,1,1,2,2,1,1,20,0,18	unavailable,insufficient-capacity,4,16,0
+resolver-positive-role-permutations	resolver	24,1	available,2,1,1,1,480,4,960,3840
+resolver-stream-mismatch-role-permutations	resolver	24,2	unavailable,operation-stream-mismatch

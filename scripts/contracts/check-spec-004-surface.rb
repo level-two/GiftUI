@@ -21,6 +21,7 @@ EXPECTED_PUBLIC_TYPES = %w[
   RasterPresentationPolicy
   RasterPresentationRequirement
   RasterPresentationResolution
+  RasterPresentationResolver
   RasterPresentationResolverWorkspace
   RasterPresentationUnavailable
   RasterRealizationContribution
@@ -71,6 +72,8 @@ required_t12_fragments = [
   "public static let candidateCapacity: Swift.UInt8",
   "public let usableCandidateCapacity: Swift.UInt8",
   "public init?(usableCandidateCapacity: Swift.UInt8 = 2)",
+  "public enum RasterPresentationResolver",
+  "public static func resolve(requirement: GiftUICapabilities.RasterPresentationRequirement, contributions: borrowing GiftUICapabilities.RasterPresentationContributions, workspace: inout GiftUICapabilities.RasterPresentationResolverWorkspace) -> GiftUICapabilities.RasterPresentationResolution",
 ]
 missing_t12_fragments = required_t12_fragments.reject { |fragment| interface.include?(fragment) }
 fail_check("T1.2 declarations differ: #{missing_t12_fragments.inspect}") unless missing_t12_fragments.empty?
