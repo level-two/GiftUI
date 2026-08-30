@@ -1,0 +1,4 @@
+_malloc
+_swift_allocObject
+_$sSS
+_$sSa

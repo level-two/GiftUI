@@ -163,6 +163,8 @@ record_input_hashes() {
     done < <(
         {
             find "${SOURCE_ROOT}" "${FIXTURE_ROOT}" -type f -print
+            find "${SCRIPT_DIR}" -maxdepth 1 -type f \
+                -name 'check-spec-004-*.rb' -print
             printf '%s\n' \
                 "${PROJECT_ROOT}/Package.swift" \
                 "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
@@ -268,13 +270,102 @@ run_portable_source_checks() {
         fail 'portable identity regression lacked its expected failure'
 }
 
+run_value_boundary_regression() {
+    local regression_source="${FIXTURE_ROOT}/ValueBoundaryRegression/forbidden-values.swift"
+    local regression_log="${report_dir}/value-boundary-regression.log"
+    set +e
+    "${SCRIPT_DIR}/check-spec-004-value-boundary.rb" \
+        --source-only "${regression_source}" >"${regression_log}" 2>&1
+    local result=$?
+    set -e
+    [[ "${result}" -ne 0 ]] || fail 'value-boundary regression unexpectedly passed'
+    grep -Fq 'forbidden value facilities' "${regression_log}" ||
+        fail 'value-boundary regression lacked its expected failure'
+    for token in string array existential reflection exception registry \
+        'reference storage' 'platform identity' 'closure storage'; do
+        grep -Fq "${token}" "${regression_log}" ||
+            fail "value-boundary regression did not detect ${token}"
+    done
+
+    local symbol_source="${FIXTURE_ROOT}/ValueBoundaryRegression/forbidden-symbols.txt"
+    local symbol_log="${report_dir}/binary-boundary-regression.log"
+    set +e
+    "${SCRIPT_DIR}/check-spec-004-value-boundary.rb" \
+        --binary-only "${symbol_source}" >"${symbol_log}" 2>&1
+    result=$?
+    set -e
+    [[ "${result}" -ne 0 ]] || fail 'binary-boundary regression unexpectedly passed'
+    grep -Fq 'forbidden binary facilities' "${symbol_log}" ||
+        fail 'binary-boundary regression lacked its expected failure'
+    for token in malloc 'Swift object allocation' 'String metadata' 'Array metadata'; do
+        grep -Fq "${token}" "${symbol_log}" ||
+            fail "binary-boundary regression did not detect ${token}"
+    done
+
+    local layout_source="${FIXTURE_ROOT}/LayoutRegression/over-ceiling.txt"
+    local layout_log="${report_dir}/layout-regression.log"
+    set +e
+    "${SCRIPT_DIR}/check-spec-004-layout.rb" \
+        "${layout_source}" >"${layout_log}" 2>&1
+    result=$?
+    set -e
+    [[ "${result}" -ne 0 ]] || fail 'layout regression unexpectedly passed'
+    grep -Fq 'RasterPresentationContributions size 193 exceeds 192' "${layout_log}" ||
+        fail 'layout regression lacked its expected ceiling failure'
+}
+
+run_allocation_probe() {
+    local compiler="$1"
+    local sdk_path="$2"
+    local profile_flag="$3"
+    local probe_dir="${report_dir}/build/allocation-probe"
+    local candidate_dir="${report_dir}/resources/candidate"
+    local clang interposer probe output
+    mkdir -p "${probe_dir}"
+    clang="$(xcrun --find clang)"
+    [[ -x "${clang}" ]] || fail 'clang is missing for allocation instrumentation'
+    interposer="${probe_dir}/libGiftUIAllocationInterposer.dylib"
+    probe="${probe_dir}/allocation-probe"
+    output="${report_dir}/semantics/allocation-layout-probe.txt"
+
+    local -a interposer_command=(
+        "${clang}" -target arm64-apple-macosx26.0 -isysroot "${sdk_path}"
+        -O2 -dynamiclib
+        "${FIXTURE_ROOT}/Instrumentation/AllocationInterposer.c"
+        -install_name @rpath/libGiftUIAllocationInterposer.dylib
+        -o "${interposer}"
+    )
+    record_command "${interposer_command[@]}"
+    "${interposer_command[@]}" >>"${log_path}" 2>&1
+
+    local -a probe_command=(
+        "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
+        -O -whole-module-optimization "${profile_flag}" -language-mode 6
+        -I "${report_dir}/build" -L "${candidate_dir}" -L "${probe_dir}"
+        -lGiftUICapabilities -lGiftUIAllocationInterposer
+        -Xlinker -rpath -Xlinker "${candidate_dir}"
+        -Xlinker -rpath -Xlinker "${probe_dir}"
+        "${FIXTURE_ROOT}/Instrumentation/AllocationProbe/main.swift"
+        -o "${probe}"
+    )
+    record_command "${probe_command[@]}"
+    "${probe_command[@]}" >>"${log_path}" 2>&1
+    record_command env "DYLD_LIBRARY_PATH=${probe_dir}:${candidate_dir}" "${probe}"
+    env "DYLD_LIBRARY_PATH=${probe_dir}:${candidate_dir}" "${probe}" \
+        >"${output}" 2>>"${log_path}"
+    record_command "${SCRIPT_DIR}/check-spec-004-layout.rb" "${output}"
+    "${SCRIPT_DIR}/check-spec-004-layout.rb" "${output}" >>"${log_path}" 2>&1
+    record_image allocation-probe "${probe}"
+    record_image allocation-interposer "${interposer}"
+}
+
 run_macos() {
     [[ "$(uname -s)" == "Darwin" ]] || fail 'macOS profile requires macOS'
     [[ "$(uname -m)" == "arm64" ]] || fail 'macOS evidence requires an arm64 host'
     command -v xcrun >/dev/null || fail 'xcrun is missing'
 
     local compiler compiler_version sdk_path sdk_version profile_flag extension image
-    local giftui_dir giftui_module dependency_scan product_links
+    local giftui_dir giftui_module dependency_scan product_links undefined_symbols
     compiler="$(xcrun --find swiftc)"
     compiler_version="$("${compiler}" --version 2>&1)"
     require_exact_fragment "${compiler_version}" 'Apple Swift version 6.3.3' 'macOS compiler'
@@ -362,6 +453,16 @@ run_macos() {
     "${SCRIPT_DIR}/check-spec-004-surface.rb" \
         "${report_dir}/build/GiftUICapabilities.swiftinterface" \
         >>"${log_path}" 2>&1
+    undefined_symbols="${report_dir}/build/undefined-symbols.txt"
+    record_command nm -u "${image}"
+    nm -u "${image}" >"${undefined_symbols}"
+    record_command "${SCRIPT_DIR}/check-spec-004-value-boundary.rb" \
+        "${report_dir}/build/GiftUICapabilities.swiftinterface" \
+        "${undefined_symbols}"
+    "${SCRIPT_DIR}/check-spec-004-value-boundary.rb" \
+        "${report_dir}/build/GiftUICapabilities.swiftinterface" \
+        "${undefined_symbols}" >>"${log_path}" 2>&1
+    run_allocation_probe "${compiler}" "${sdk_path}" "${profile_flag}"
     run_fixture_set "${compiler}" "${report_dir}/build" \
         -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
         -O -whole-module-optimization "${profile_flag}"
@@ -458,6 +559,7 @@ record_command "${SCRIPT_DIR}/check-spec-004-fixture-manifest.rb"
 "${SCRIPT_DIR}/check-spec-004-fixture-manifest.rb" >>"${log_path}" 2>&1
 run_dependency_checks
 run_portable_source_checks
+run_value_boundary_regression
 
 case "${profile}" in
     macos-dynamic | macos-static) run_macos ;;

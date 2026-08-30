@@ -1,0 +1,11 @@
+allocation_count=0
+layout.RasterPresentationRequirement=21,24,4
+layout.RasterRealizationContribution=24,24,4
+layout.RasterBackendContribution=48,48,4
+layout.SurfaceDisplayContribution=20,20,4
+layout.RasterPresentationPolicy=16,16,4
+layout.RasterPresentationContributions=193,196,4
+layout.RasterPresentationResolverWorkspace=52,52,4
+layout.EffectiveRasterPresentation=36,36,4
+layout.RasterPresentationUnavailable=12,12,4
+layout.CapabilitySnapshot=36,36,4

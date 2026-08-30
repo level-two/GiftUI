@@ -539,14 +539,12 @@ private extension RasterPresentationContributorRole {
 }
 
 private extension RasterOperationSet {
-    static let allDeclared: Self = [
-        .opaqueRectangles, .positionedText, .straightLineStrokes, .clipping, .damage,
-    ]
+    static let allDeclared = Self(rawValue: 0x1f)
     var isValidNonempty: Bool { !isEmpty && subtracting(.allDeclared).isEmpty }
 }
 
 private extension CanonicalPixelEncodingSet {
-    static let allDeclared: Self = [.rgb565BigEndian, .rgba8888]
+    static let allDeclared = Self(rawValue: 0x03)
     var isValidNonempty: Bool { !isEmpty && subtracting(.allDeclared).isEmpty }
     var isSingleDeclared: Bool {
         isValidNonempty && (rawValue & (rawValue &- 1)) == 0
@@ -554,17 +552,17 @@ private extension CanonicalPixelEncodingSet {
 }
 
 private extension SubmissionLifetimeSet {
-    static let allDeclared: Self = [.synchronousBorrow, .synchronousCopy, .ownershipTransfer]
+    static let allDeclared = Self(rawValue: 0x07)
     var isValidNonempty: Bool { !isEmpty && subtracting(.allDeclared).isEmpty }
 }
 
 private extension SubmissionHandoffSet {
-    static let allDeclared: Self = [.synchronous, .queued]
+    static let allDeclared = Self(rawValue: 0x03)
     var isValidNonempty: Bool { !isEmpty && subtracting(.allDeclared).isEmpty }
 }
 
 private extension RasterRealizationKindSet {
-    static let allDeclared: Self = [.fullSurface, .tiled]
+    static let allDeclared = Self(rawValue: 0x03)
     var isValidNonempty: Bool { !isEmpty && subtracting(.allDeclared).isEmpty }
 }
 

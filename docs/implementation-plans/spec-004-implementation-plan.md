@@ -241,7 +241,7 @@ bounded representation without importing another owner.
       Keep raw SPEC-002 extent conversion and role/field precedence in a
       downstream fixture adapter so unconstructible values are never claimed
       as resolver inputs.
-- [ ] `T1.4` — Add source/interface/binary audits excluding strings,
+- [x] `T1.4` — Add source/interface/binary audits excluding strings,
       collections, closures, existentials, reflection, exceptions, registries,
       platform identities, and heap-backed provenance from the capability
       path. Instrument construction and fixed storage early so a layout or
@@ -587,3 +587,11 @@ It distinguishes zero extent from positive `UInt16` overflow, applies raw
 requirement stages and contributor role/field precedence, preserves all eleven
 malformed fields for all four roles, and leaves the production capability leaf
 dependency-free. `T1.4` is next.
+`T1.4` is complete: the
+[bounded value-audit evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-1/bounded-value-audits.md)
+records source/interface/binary exclusions, checked failing audit fixtures,
+zero measured allocations across 10,000 optimized construction iterations,
+and all ten early 64-bit layout ceilings in both macOS profiles. The same
+fixed-value source cross-builds for ARMv6 and nRF52840; complete 32-bit and
+linked-resource reports remain assigned to `T5.3`. Milestone 1 is complete;
+`T2.1` is next.
