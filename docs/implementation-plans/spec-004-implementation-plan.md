@@ -206,7 +206,7 @@ has reproducible fixture and report conventions before semantic code lands.
       inspection; target-cycle detection; and a portable Signal Analyzer
       source scan for platform, backend, board, driver, controller, transport,
       or device identity branches.
-- [ ] `T0.5` — Record a clean-checkout harness-readiness transcript covering
+- [x] `T0.5` — Record a clean-checkout harness-readiness transcript covering
       governance, exact package graph, Core import, negative fixtures, root
       tests, the standalone macOS-dynamic driver, and the no-argument top-level
       gate before Milestone 1.
@@ -558,3 +558,10 @@ forbidden module. Source, emitted interfaces, compiler dependency scans,
 product links, exact package edges, cycle regressions, `GiftUI` non-re-export,
 and the portable Signal Analyzer identity scan all fail closed. `T0.5` is
 next.
+`T0.5` is complete at clean revision
+`66921422be8f97aad2de47f3b03fb6b0045a0630`. The checked-in
+[Milestone 0 readiness transcript](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-0/harness-readiness.md)
+records the exact graph and boundary checks, 15 compile fixtures, four clean
+portable presentation sources, one focused capability test, 70 root tests,
+the standalone macOS-dynamic driver, and every registered no-argument gate.
+Milestone 0 is complete; `T1.1` is next.
