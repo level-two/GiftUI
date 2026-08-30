@@ -436,7 +436,7 @@ for structural validation.
       requirement extent, positive overflow maps to logical extent overflow,
       and negative values remain earlier SPEC-002 failures. Preserve reciprocal
       import and condition evidence without moving geometry into capabilities.
-- [ ] `T4.2` — After SPEC-003 supplies `GiftUIFailureCore`, implement the
+- [x] `T4.2` — After SPEC-003 supplies `GiftUIFailureCore`, implement the
       downstream required-family adapter from every
       `RasterPresentationUnavailable` case to the exact condition raw value
       `12...25` and `GiftUIOutcome<CapabilitySnapshot>.failure`. Prove
@@ -819,3 +819,14 @@ extent. The exact package graph keeps both production leaves dependency-free,
 and compile/binary checks preserve reciprocal non-import and non-re-export
 evidence without moving geometry. Four focused adapter tests and the SPEC-002
 macOS dynamic graph gate pass. `T4.2` is next.
+`T4.2` is complete through the shared SPEC-003/004 downstream fixture target.
+All fourteen unavailable families map one-to-one to condition raw values 12
+through 25 and produce only `.failure` with capability origin, runtime scope,
+and contained containment; raw value 11 stays unnamed and
+`requiredFacilityUnavailable` is never substituted. Exhaustive field, role,
+capacity, and byte payload variants cannot alter the primary condition. An
+available effective snapshot remains byte-for-byte unchanged under injected
+refusal, disconnection, and post-handoff fault facts. Exact graph checks keep
+`GiftUICapabilities` free of failure imports and diagnostics. Focused tests and
+the four-profile adapter module builds pass. `T4.3` is next but awaits the
+SPEC-009/SPEC-014 production owner targets.

@@ -16,6 +16,21 @@ public struct GiftUIConditionID: RawRepresentable, Sendable, Equatable {
     public static let requiredFacilityUnavailable = Self(rawValue: 8)
     public static let nonRetryableRefusal = Self(rawValue: 9)
     public static let invariantViolation = Self(rawValue: 10)
+
+    public static let rasterMalformedRequirement = Self(rawValue: 12)
+    public static let rasterDuplicateContributor = Self(rawValue: 13)
+    public static let rasterMissingContributor = Self(rawValue: 14)
+    public static let rasterMalformedContribution = Self(rawValue: 15)
+    public static let rasterInsufficientCapacity = Self(rawValue: 16)
+    public static let rasterOperationSetMismatch = Self(rawValue: 17)
+    public static let rasterOperationStreamMismatch = Self(rawValue: 18)
+    public static let rasterLogicalExtentOverflow = Self(rawValue: 19)
+    public static let rasterUnsupportedLogicalExtent = Self(rawValue: 20)
+    public static let rasterNoCommonCanonicalPixelEncoding = Self(rawValue: 21)
+    public static let rasterIncompatibleSubmissionLifetime = Self(rawValue: 22)
+    public static let rasterIncompatibleSubmissionHandoff = Self(rawValue: 23)
+    public static let rasterPolicyHasNoConformingRealization = Self(rawValue: 24)
+    public static let rasterByteCountOverflow = Self(rawValue: 25)
 }
 
 public enum GiftUIFailureOrigin: UInt8, Sendable {

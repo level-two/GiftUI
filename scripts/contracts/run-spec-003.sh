@@ -6,6 +6,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
 FIXTURE_ROOT="${PROJECT_ROOT}/Tests/ContractFixtures/SPEC003"
 SOURCE_ROOT="${PROJECT_ROOT}/Sources/GiftUIFailureCore"
+CAPABILITY_SOURCE="${PROJECT_ROOT}/Sources/GiftUICapabilities/GiftUICapabilities.swift"
+CAPABILITY_ADAPTER_SOURCE="${PROJECT_ROOT}/Sources/GiftUICapabilityFailureAdapterFixture/CapabilityFailureAdapter.swift"
 GENERATED_ROOT="${PROJECT_ROOT}/.build/contract-generated/spec-003"
 REPORT_ROOT="${PROJECT_ROOT}/.build/contract-reports/spec-003"
 
@@ -138,7 +140,43 @@ record_input_hashes() {
     while IFS= read -r path; do
         relative="${path#"${PROJECT_ROOT}/"}"
         printf '%s\t%s\n' "${relative}" "$(hash_file "${path}")" >>"${inputs_path}"
-    done < <(find "${SOURCE_ROOT}" "${FIXTURE_ROOT}" -type f -print | LC_ALL=C sort)
+    done < <(
+        {
+            find "${SOURCE_ROOT}" "${FIXTURE_ROOT}" -type f -print
+            printf '%s\n' "${CAPABILITY_SOURCE}" "${CAPABILITY_ADAPTER_SOURCE}"
+        } | LC_ALL=C sort
+    )
+}
+
+compile_macos_capability_adapter() {
+    local compiler="$1"
+    local sdk_path="$2"
+    local profile_flag="$3"
+    local adapter_dir="${report_dir}/build/capability-adapter"
+    local capability_module="${adapter_dir}/GiftUICapabilities.swiftmodule"
+    local adapter_module="${adapter_dir}/GiftUICapabilityFailureAdapterFixture.swiftmodule"
+    mkdir -p "${adapter_dir}"
+
+    local -a capability_command=(
+        "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
+        -O -whole-module-optimization "${profile_flag}" -language-mode 6
+        -parse-as-library -emit-module -module-name GiftUICapabilities
+        "${CAPABILITY_SOURCE}" -emit-module-path "${capability_module}"
+    )
+    record_command "${capability_command[@]}"
+    "${capability_command[@]}" >>"${log_path}" 2>&1
+
+    local -a adapter_command=(
+        "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
+        -O -whole-module-optimization "${profile_flag}" -language-mode 6
+        -I "${report_dir}/build" -I "${adapter_dir}"
+        -parse-as-library -emit-module
+        -module-name GiftUICapabilityFailureAdapterFixture
+        "${CAPABILITY_ADAPTER_SOURCE}" -emit-module-path "${adapter_module}"
+    )
+    record_command "${adapter_command[@]}"
+    "${adapter_command[@]}" >>"${log_path}" 2>&1
+    record_image capability-adapter-module "${adapter_module}"
 }
 
 record_compiler() {
@@ -349,6 +387,7 @@ run_macos() {
         "${report_dir}/build/GiftUIFailureCore.swiftinterface" \
         "${report_dir}/build/product-links.txt" \
         "${report_dir}/build/undefined-symbols.txt" >>"${log_path}" 2>&1
+    compile_macos_capability_adapter "${compiler}" "${sdk_path}" "${profile_flag}"
     run_fixture_set "${compiler}" "${report_dir}/build" \
         -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
         -O -whole-module-optimization "${profile_flag}"
@@ -384,7 +423,8 @@ run_raspberry_pi() {
         "${swift_driver}" build --package-path "${PROJECT_ROOT}"
         --scratch-path "${report_dir}/build/swiftpm"
         --destination "${GIFTUI_PI_STATIC_DESTINATION}"
-        --configuration release --product GiftUIFailureCore --static-swift-stdlib
+        --configuration release --target GiftUICapabilityFailureAdapterFixture
+        --static-swift-stdlib
         -Xswiftc -whole-module-optimization
     )
     record_command "${command[@]}"
@@ -396,6 +436,14 @@ run_raspberry_pi() {
     [[ "${#modules[@]}" -eq 1 ]] || fail "expected one ARMv6 module image, found ${#modules[@]}"
     module="${modules[0]}"
     record_image candidate-module "${module}"
+    modules=()
+    while IFS= read -r module; do
+        modules+=("${module}")
+    done < <(find "${report_dir}/build/swiftpm" -type f \
+        -name 'GiftUICapabilityFailureAdapterFixture.swiftmodule' -print)
+    [[ "${#modules[@]}" -eq 1 ]] ||
+        fail "expected one ARMv6 capability adapter module, found ${#modules[@]}"
+    record_image capability-adapter-module "${modules[0]}"
 }
 
 run_nrf52840() {
@@ -433,6 +481,34 @@ run_nrf52840() {
     record_command "${command[@]}"
     "${command[@]}" >>"${log_path}" 2>&1
     record_image candidate-module "${module}"
+
+    local adapter_dir="${report_dir}/build/capability-adapter"
+    local capability_module="${adapter_dir}/GiftUICapabilities.swiftmodule"
+    local adapter_module="${adapter_dir}/GiftUICapabilityFailureAdapterFixture.swiftmodule"
+    mkdir -p "${adapter_dir}"
+    local -a capability_command=(
+        "${GIFTUI_NRF_SWIFTC}" -target "${GIFTUI_NRF_SWIFT_TARGET}"
+        -enable-experimental-feature Embedded
+        -Osize -whole-module-optimization
+        -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
+        -parse-as-library -emit-module -module-name GiftUICapabilities
+        "${CAPABILITY_SOURCE}" -emit-module-path "${capability_module}"
+    )
+    record_command "${capability_command[@]}"
+    "${capability_command[@]}" >>"${log_path}" 2>&1
+    local -a adapter_command=(
+        "${GIFTUI_NRF_SWIFTC}" -target "${GIFTUI_NRF_SWIFT_TARGET}"
+        -enable-experimental-feature Embedded
+        -Osize -whole-module-optimization
+        -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
+        -I "${report_dir}/build" -I "${adapter_dir}"
+        -parse-as-library -emit-module
+        -module-name GiftUICapabilityFailureAdapterFixture
+        "${CAPABILITY_ADAPTER_SOURCE}" -emit-module-path "${adapter_module}"
+    )
+    record_command "${adapter_command[@]}"
+    "${adapter_command[@]}" >>"${log_path}" 2>&1
+    record_image capability-adapter-module "${adapter_module}"
 }
 
 record_input_hashes

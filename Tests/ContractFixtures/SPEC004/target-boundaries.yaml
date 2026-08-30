@@ -7,6 +7,17 @@ active:
     type: test
     dependencies:
       - GiftUICapabilities
+  GiftUICapabilityFailureAdapterTests:
+    type: test
+    dependencies:
+      - GiftUICapabilityFailureAdapterFixture
+      - GiftUICapabilities
+      - GiftUIFailureCore
+  GiftUICapabilityFailureAdapterFixture:
+    type: regular
+    dependencies:
+      - GiftUICapabilities
+      - GiftUIFailureCore
 forbidden_capability_imports:
   - GiftUI
   - GiftUIFailureCore

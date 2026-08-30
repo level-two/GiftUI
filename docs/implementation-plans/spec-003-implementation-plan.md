@@ -342,7 +342,7 @@ duplicated to remove a dependency blocker.
       four Foundation mappings, discarded partial output, and the absence of a
       `GiftUI` import from `GiftUIFailureCore`; do not move Foundation
       arithmetic into the failure target.
-- [ ] `T4.2` — After SPEC-004 produces `GiftUICapabilities`, add or verify the
+- [x] `T4.2` — After SPEC-004 produces `GiftUICapabilities`, add or verify the
       downstream host adapter for every frozen `RasterPresentationUnavailable`
       condition raw value and the
       `GiftUIOutcome<CapabilitySnapshot>.failure` envelope. The capability leaf
@@ -677,3 +677,14 @@ cross-owner iteration because SPEC-004's closed unavailable vocabulary is
 stable. It may proceed beside the selected SPEC-004 `T2.1` iteration and must
 use the exact four-profile compile fixture and reciprocal graph gates recorded
 above; this readiness record does not complete `T4.2`.
+`T4.2` is complete: Core exports the exact fourteen capability-local condition
+constants at raw values 12 through 25 while raw value 11 remains unnamed and
+the shared 0-through-10 catalogue is unchanged. The unpublished downstream
+fixture target imports exactly `GiftUICapabilities` and `GiftUIFailureCore`,
+maps every unavailable family and all associated payload variants without
+changing identity, and constructs only capability/runtime/contained
+`GiftUIOutcome<CapabilitySnapshot>.failure` envelopes. Focused tests prove no
+required-facility substitution or snapshot mutation under refusal,
+disconnection, and post-handoff fault facts. Both production leaves remain
+independent; the adapter module compiles in both macOS profiles and for ARMv6
+and nRF52840. `T4.3` remains blocked on SPEC-009's production target.

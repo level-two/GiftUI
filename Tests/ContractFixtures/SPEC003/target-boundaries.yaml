@@ -20,6 +20,17 @@ active:
     type: test
     dependencies:
       - GiftUIFailureDiagnostics
+  GiftUICapabilityFailureAdapterTests:
+    type: test
+    dependencies:
+      - GiftUICapabilityFailureAdapterFixture
+      - GiftUICapabilities
+      - GiftUIFailureCore
+  GiftUICapabilityFailureAdapterFixture:
+    type: regular
+    dependencies:
+      - GiftUICapabilities
+      - GiftUIFailureCore
 reserved:
   GiftUIFailureExecution:
     prerequisite: SPEC-009
