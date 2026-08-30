@@ -56,29 +56,41 @@ stack-validation work, not a post-MVP general capability framework.
 This is the active implementation plan for the next dependency-complete Wave 1
 work. SPEC-003 has completed its independent Core, policy, health, diagnostic,
 and Foundation-adapter tasks; its remaining cross-owner integration now waits
-in part for SPEC-004. SPEC-004 has established its fixture contract and empty
-`GiftUICapabilities` leaf. The next implementation iteration therefore remains
-inside SPEC-004 and completes its Milestone 0 harness rather than opening a
-plan for another Specification. Production failure mapping, operation-stream
-integration, backend behavior, and startup composition retain dependencies on
-SPEC-003, SPEC-009, SPEC-014, and SPEC-015.
+in part for SPEC-004. SPEC-004 has completed its contract harness and closed,
+bounded capability vocabulary. The next implementation iteration therefore
+remains inside SPEC-004 and begins Milestone 2 with its checked byte-bound and
+region arithmetic rather than opening a plan for another Specification, but
+that slice is blocked until the approved contract's unreachable-overflow
+requirements are corrected and re-approved.
+Production failure mapping, operation-stream integration, backend behavior,
+and startup composition retain dependencies on SPEC-003, SPEC-009, SPEC-014,
+and SPEC-015.
 
 ## Current Repository State
 
 - The package exposes `GiftUI`, `GiftUIFailureCore`, the optional downstream
   `GiftUIFailureDiagnostics`, and the dependency-free `GiftUICapabilities`
   product/target with focused tests. The exact-set graph also includes the
-  test-only Foundation/failure owner-adapter boundary. All existing nodes and
-  edges must be preserved when the SPEC-004 harness begins enforcing its own
-  compiled boundary.
+  test-only Foundation/failure and Foundation/capability owner-adapter
+  boundaries. All existing nodes and edges remain subject to the checked
+  source, compiled-import, product-link, cycle, and non-re-export controls.
 - `GiftUI` contains SPEC-002 checked geometry, arithmetic, and normalized
   pointer values. No capability declaration may be added there or re-exported
   from it. The approved SPEC-002 extent-to-capability adapter belongs at the
   first downstream boundary that imports both vocabularies.
-- The SPEC-004 fixture tree, ordered manifest, normalized-corpus boundary,
-  matched resource-harness roots, authority audit, and capability-leaf evidence
-  exist. No SPEC-004 contract driver, compile fixtures, semantic declarations,
-  resource image, or conformance report exists yet.
+- The registered four-profile SPEC-004 contract driver, ordered compile
+  fixtures, normalized-corpus boundary, matched resource-harness roots,
+  authority audit, and Milestone 0 readiness evidence exist. The driver builds
+  the same production source in all four hardware-free profiles and the
+  boundary suite rejects prohibited imports, graph changes, re-export, and
+  portable target identity. No resolver semantic corpus, matched resource
+  image, or conformance report exists yet.
+- Milestone 1 supplies the complete approved value vocabulary, four
+  role-addressed inline contribution slots, the reusable two-candidate
+  workspace, failable validation seams, and bounded layout/allocation audits.
+  `RasterPresentationResolver.resolve` is not implemented; the existing
+  workspace normalization helpers are internal storage seams, not resolution
+  behavior.
 - SPEC-002 established fail-closed target dependency checks, positive and
   negative compile-fixture conventions, deterministic contract reports, and
   `scripts/contracts/driver-registry.tsv`. The capability target and driver
@@ -101,48 +113,97 @@ SPEC-003, SPEC-009, SPEC-014, and SPEC-015.
 
 ## Next Implementation Iteration — Draft
 
-**Iteration objective:** Complete SPEC-004 Milestone 0 by adding the
-standalone fail-closed contract driver, proving the foundational import and
-portable-source boundaries, and recording clean-checkout harness readiness.
-This is the smallest dependency-complete slice that advances the active
-contract and unblocks the closed-vocabulary work.
+**Iteration disposition:** Blocked pending SPEC-004 review. The linked
+[checked raster-arithmetic design note](../implementation-designs/spec-004-raster-arithmetic.md)
+proves that the approved input widths cannot construct the mandated shared
+LCM/row-arithmetic overflow cases and that identical raster/payload
+multiplication operands cannot produce a payload-only overflow after raster
+succeeds. The plan cannot choose a correction or claim those fixtures pass.
 
-**Included tasks:** `T0.3`, `T0.4`, and `T0.5`, in that order.
+**Post-gate iteration objective:** Complete `T2.1`, the checked byte-bound and
+region arithmetic slice of SPEC-004 Milestone 2, after the Specification has
+been corrected and explicitly re-approved. Add the pure internal arithmetic
+and candidate-evaluation seam needed to derive exact row, region, raster,
+payload, and in-flight usage or the corrected Specification-assigned
+overflow/capacity reason. This remains the smallest implementation slice after
+Milestone 1 and gives `T2.2` through `T2.5` a tested numeric foundation without
+prematurely claiming a complete public resolver.
 
-**Explicitly excluded:** `T1.1` and all semantic capability declarations;
-SPEC-002/SPEC-003 production adapters; SPEC-009/SPEC-014 one-shot integration;
-SPEC-015 startup composition; cross-built resource evidence; connected-target
-execution, deployment, service restart, and flashing.
+**Included task:** `T2.1` only.
+
+**Required upstream gate:** Review and amend SPEC-004's `Byte-bound and region
+arithmetic`, `Testing Requirements`, and `CR-010A` consistently. The smallest
+correction appears to preserve the approved fixed public widths and checked
+operations while requiring fixtures only for overflow sites reachable from
+constructible typed inputs. Widening public input domains or defining different
+raster/payload operands would change more of the contract and requires broader
+impact review. Only a maintainer can approve the corrected Specification.
+
+**Explicitly excluded:** operation/lifetime/handoff compatibility and policy
+selection (`T2.2`); complete resolver orchestration, role permutations,
+snapshot construction, and absence behavior (`T2.3`); simultaneous-condition
+precedence (`T2.4`); operation-count instrumentation (`T2.5`); normalized
+four-host fixtures and one-shot lease evidence (Milestone 3); production
+SPEC-002/SPEC-003 adapters and SPEC-009/SPEC-014/SPEC-015 integration; matched
+resource images; conformance review; connected-target execution, deployment,
+service restart, and flashing.
 
 **Entry conditions:**
 
 - SPEC-004 remains `implementing`, this plan remains `active`, and the
   Proposal/RFC/ADR authority chain remains accepted or approved.
-- The checked-in `T0.1` fixture contract and `T0.2` dependency-free leaf remain
-  intact.
+- The SPEC-004 arithmetic conflict has been resolved in the normative contract
+  and the corrected Specification has received explicit maintainer approval.
+- Milestones 0 and 1 remain complete, including the registered fail-closed
+  driver, exact import boundary, complete closed vocabulary, fixed
+  contribution/workspace storage, malformed adapter boundary, and bounded
+  value audits.
 - The active package graph, including SPEC-003 diagnostic and
   Foundation-adapter work, is treated as the baseline; the iteration must not
   discard or weaken those edges or their exact-set checks.
+- No arithmetic helper may widen the public contract, import another owner,
+  allocate, trap on caller-derived values, or choose among unresolved
+  operation, encoding, lifetime, handoff, realization, or policy alternatives.
 
 **Ordered work and evidence:**
 
-1. `T0.3` creates and registers the four-profile driver. First prove registry
-   validation, deterministic report replacement, fail-closed tool/profile
-   identity, and a passing standalone `macos-dynamic` run. ARMv6 and nRF
-   commands remain hardware-free cross-build/inspection surfaces.
-2. `T0.4` adds the ordered positive and negative compile fixtures, source and
-   compiled dependency inspection, cycle and non-re-export checks, and the
-   portable Signal Analyzer identity scan. Include synthetic regressions that
-   prove unknown imports, graph edges, and concrete identity checks fail.
-3. `T0.5` records one clean-checkout readiness transcript containing the exact
-   package graph, capability-only positive import, prohibited-import failures,
-   `GiftUI` non-re-export evidence, portable-source scan, focused unit tests,
-   standalone `macos-dynamic` driver result, and no-argument top-level gate.
+1. Define a replaceable internal arithmetic result/seam that consumes already
+   validated typed values and uses checked `UInt32` operations only. Keep the
+   public declarations exactly as approved and keep `GiftUICapabilities` a
+   dependency-free leaf.
+2. Compute the effective row alignment as checked LCM; then compute checked
+   unaligned and aligned row bytes. Every corrected, reachable shared-overflow
+   case must return its exact approved domain; no operation may wrap, saturate,
+   substitute zero, or trap.
+3. Apply exact region selection: full logical width; full logical height for
+   `.fullSurface`; and the tallest admissible complete-row height for `.tiled`
+   from logical, candidate, and surface limits. Do not search a smaller tile to
+   evade a byte ceiling.
+4. Compute raster usage before payload usage; copy the representable payload
+   usage to one in-flight payload. Preserve every domain assignment retained
+   by the corrected contract; do not manufacture unreachable payload or
+   `.inFlight` arithmetic overflow.
+5. Compute each available ceiling as the exact minimum of its three approved
+   owners and report exact required/available values for insufficient raster,
+   payload, and in-flight capacity in that order.
+6. Add focused table-driven unit cases for RGB565 and RGBA8888, equal and
+   unequal alignments, full-surface and tiled regions, zero and limiting
+   ceilings, every constructible checked-overflow site required by the
+   corrected contract, all three capacity minima, and the exact nRF
+   calculation: 960 row bytes and 3,840 raster, payload, and in-flight bytes
+   for `480 x 4 x 2`.
+7. Extend the SPEC-004 semantic corpus and driver evidence with deterministic
+   arithmetic case IDs and expected normalized results. Run focused tests,
+   the standalone `macos-dynamic` SPEC-004 driver, and the no-argument fast
+   gate; retain ARMv6/nRF execution and linked-resource claims for Milestone 5.
 
-**Iteration exit:** Milestone 0 is complete only when the checked-in readiness
-record points to reproducible passing evidence from one clean revision. The
-next plan task is then `T1.1`; beginning it is a separate implementation
-iteration and must preserve the harness boundary established here.
+**Iteration exit:** `T2.1` is complete only when every corrected arithmetic,
+overflow-domain, region-selection, and minimum-ceiling case has reproducible
+passing evidence; the dependency/import and allocation boundaries still pass;
+and the checked-in report makes no claim that the complete resolver or
+Milestone 2 is finished. `T2.2` is then the next plan task. Update the existing
+checked raster-arithmetic design note to `current` only after it accurately
+describes the approved correction and resulting implementation.
 
 ## Acceptance-Criterion Matrix
 
@@ -161,7 +222,7 @@ criterion to implementation work and checkable evidence.
 | `CR-008` — Encoding and submission-lifetime failures remain distinct | `T2.2`, `T3.2` | Independent negative/control fixture pairs | pending |
 | `CR-009` — Complete lifetime/handoff matrix and no retained operation stream | `T2.2`, `T3.2`, `T4.3` | Closed compatibility matrix and one-shot lease fixtures | pending |
 | `CR-010` — Four normalized host results and exact Pi/nRF outcomes | `T3.1`, `T5.1` | Cross-profile semantic transcripts and exact target builds | pending |
-| `CR-010A` — Complete formula, capacity, malformed-bound, and overflow coverage | `T2.1`, `T2.4`, `T3.1` | Table-driven arithmetic and exact 3,840-byte nRF result corpus | pending |
+| `CR-010A` — Complete formula, capacity, malformed-bound, and overflow coverage | `T2.1`, `T2.4`, `T3.1` | Table-driven arithmetic and exact 3,840-byte nRF result corpus | blocked — Specification conflict |
 | `CR-011` — Zero static-path heap allocation | `T1.4`, `T5.2` | Allocation-instrumented host fixture and allocator-free linked target | pending |
 | `CR-012` — Zero steady-state resolution and at most 96 initialization operations | `T2.5`, `T5.2` | Invocation and primitive-operation reports for every path | pending |
 | `CR-013` — nRF resource, layout, repeatability, and toolchain evidence | `T5.3`, `T5.4` | Matched ELF/map/disassembly reports and two pristine rebuilds | pending |
@@ -252,6 +313,11 @@ bounded representation without importing another owner.
 
 **Entry conditions:** Milestone 1 fixes the complete valid input domain and
 unavailable vocabulary.
+
+**Current gate:** `T2.1` is blocked until SPEC-004 resolves and a maintainer
+approves the unreachable-overflow conflict recorded in the checked
+raster-arithmetic design note. Tasks `T2.2` through `T2.5` must not bypass the
+numeric foundation or reinterpret its reasons.
 
 **Exit evidence:** The pure resolver produces one immutable effective result
 or exact stable reason, independent of role/candidate order, with checked
@@ -429,18 +495,23 @@ independent review.
 - Create a focused one-shot tiled-consumption note only if SPEC-014 integration
   requires non-obvious ownership or lifetime machinery. It must not introduce
   replayable GiftUI operations or another stream lifetime.
-- Do not create a note merely to catalogue finite enums, fixed records,
-  arithmetic formulas, or local failable initializers; SPEC-004 and focused
-  tests should remain sufficient for those mechanisms.
+- The existing
+  [checked raster-arithmetic design note](../implementation-designs/spec-004-raster-arithmetic.md)
+  records the non-local testability conflict discovered at `T2.1`. Keep it
+  `draft` until the normative contract is corrected; then update it only if
+  focused code/tests do not make the approved arithmetic realization clear.
+- Do not create another note merely to catalogue finite enums, fixed records,
+  arithmetic formulas, or local failable initializers.
 
 ## Integration and Validation Order
 
-1. Complete the draft next iteration above: add the standalone driver, enforce
-   the exact capability boundary, and record clean-checkout Milestone 0
-   readiness before adding declarations.
+1. Resolve the documented SPEC-004 arithmetic conflict through Specification
+   review and explicit maintainer approval; then complete the draft
+   implementation iteration above without claiming the complete resolver.
 2. Preserve completed SPEC-003 work and leave its capability, execution, and
    host adapters dependency-blocked until their owning declarations exist.
-3. Implement and exhaustively test the closed vocabulary and resolver with no
+3. Continue Milestone 2 in dependency order through compatibility, resolver
+   orchestration, precedence, and bounded-work instrumentation, with no
    runtime, backend, failure, host, or connected-hardware dependency.
 4. Prove all normalized profiles, formula/precedence corpora, one-shot lease
    behavior, zero allocation, and bounded operation counts through pure seams.
@@ -459,6 +530,14 @@ independent review.
 
 ### Upstream blockers
 
+- SPEC-004 requires shared `UInt32` LCM, unaligned-row, and aligned-row
+  overflow fixtures even though its nonzero `UInt16` dimensions/alignments
+  cannot overflow those sites. It also requires a payload-domain multiplication
+  overflow after the identical raster multiplication has succeeded. This is a
+  contract/testability blocker for `T2.1`, `T2.4`, `T3.1`, and `CR-010A`.
+  Resolve it through Specification review and explicit renewed approval; do
+  not widen private test inputs, invent different operands, or omit required
+  fixtures in the implementation plan.
 - The exact SPEC-003 required-family outcome carrier and operational fault
   seam depend on the active failure implementation. The pure
   `GiftUICapabilities` resolver must not import failure or wait for it.

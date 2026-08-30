@@ -46,28 +46,29 @@ platform-native error types, or correctness dependence on diagnostics.
 SPEC-003 is therefore MVP infrastructure rather than post-MVP observability
 work.
 
-This is the next governing implementation plan after the current SPEC-002
-Foundation iteration. It is not another SPEC-002 milestone: SPEC-002 owns
-portable values and checked operations, while SPEC-003 exclusively owns the
-failure, containment, residual-disposition, operational-health, and diagnostic
-vocabulary. It is also not a new Specification: the complete approved contract
-and its independent hardware-free acceptance seam already exist.
-
-The first implementation slice creates `GiftUIFailureCore`, its pure fixtures,
-and the registered contract driver. This slice can proceed while SPEC-002
-remains `implementing` and will unblock the failure-owned portion of SPEC-002
-Milestone 4. Later correlation and owner-adapter tasks retain explicit
-dependencies on SPEC-009, SPEC-004, and SPEC-015 rather than creating substitute
-execution, capability, or host contracts here.
+This is the active governing plan for SPEC-003's failure-owned work. SPEC-003
+exclusively owns the failure, containment, residual-disposition,
+operational-health, and diagnostic vocabulary; it is not another SPEC-002 or
+SPEC-004 milestone. Milestones 0-3 and the Foundation owner-adapter fixture are
+complete. SPEC-004 Milestone 1 has now produced the stable capability types
+needed by `T4.2`, making that cross-owner adapter the next dependency-complete
+implementation slice while SPEC-004's arithmetic task undergoes Specification
+review. Later execution and production-host tasks retain explicit dependencies
+on SPEC-009 and SPEC-015 rather than creating substitute contracts here.
 
 ## Current Repository State
 
-- The clean MVP package currently exposes only the `GiftUI` product/target and
-  `GiftUITests`. It contains the implemented SPEC-002 geometry, checked
-  arithmetic, and package-scoped normalized pointer values.
-- No `GiftUIFailureCore`, `GiftUIFailureExecution`, optional diagnostic-adapter
-  target, failure unit-test target, SPEC-003 fixture tree, or SPEC-003 contract
-  driver exists.
+- The package exposes `GiftUIFailureCore`, its focused tests, the optional
+  downstream `GiftUIFailureDiagnostics` target/tests, and the test-only
+  Foundation/failure owner adapter. Milestones 1-3 have completed the bounded
+  correctness vocabulary, residual policy, operational health, diagnostic
+  projection/buffer, isolation fixtures, and their macOS allocation seams.
+- `GiftUICapabilities` now exports the complete closed
+  `RasterPresentationUnavailable` and `CapabilitySnapshot` declarations.
+  `GiftUIFailureCore` still exposes only shared condition constants `0...10`;
+  raw value `11` is representable but intentionally unassigned, and the exact
+  capability-local constants `12...25` plus downstream capability/failure
+  adapter have not been implemented.
 - SPEC-002 established a fail-closed target dependency allow-list, positive and
   negative compile-fixture conventions, deterministic report roots, and the
   checked-in `scripts/contracts/driver-registry.tsv`. Any SPEC-003 target must
@@ -87,11 +88,75 @@ execution, capability, or host contracts here.
   corpus, allocation instrumentation, operation-count accounting, section
   reports, disassembly, and resolved call graph.
 - SPEC-009 is approved but has no execution-contract target; therefore
-  `GiftUIFailureExecution` cannot yet be created conformingly. SPEC-004 and
-  SPEC-015 are also approved but unimplemented, so their production owner
-  adapters remain integration dependencies rather than work to absorb into
-  `GiftUIFailureCore`.
+  `GiftUIFailureExecution` cannot yet be created conformingly. SPEC-004 is
+  implementing and has produced the stable declarations required by `T4.2`;
+  its separate arithmetic conflict does not prevent exhaustive value-level
+  mapping of the closed unavailable enum. SPEC-015 remains approved but
+  unimplemented, so production host placement remains an integration
+  dependency rather than work to absorb into `GiftUIFailureCore`.
 - No SPEC-003 implementation design note or conformance report exists.
+
+## Next Implementation Iteration — Draft
+
+**Iteration objective:** Complete `T4.2` by establishing the exact reciprocal
+capability-to-failure mapping at a test-only downstream owner boundary. This is
+the next executable cross-spec slice: it uses stable declarations already
+produced by SPEC-004 Milestone 1, unblocks shared SPEC-003/004 evidence, and
+does not depend on the blocked SPEC-004 resolver arithmetic or invent a
+production host API.
+
+**Included task:** `T4.2` only.
+
+**Explicitly excluded:** SPEC-004 arithmetic correction or resolver work;
+production host composition; SPEC-003 execution correlation (`T4.3`), host
+policy integration (`T4.4`), full graph refresh after future owner targets
+(`T4.5`), cross-profile/resource evidence, conformance review, connected
+Raspberry Pi execution, deployment, service restart, and nRF flashing.
+
+**Entry conditions:**
+
+- SPEC-003 and SPEC-004 remain `implementing`; their approved reciprocal
+  condition mapping remains unchanged.
+- `GiftUIFailureCore` remains independent of `GiftUICapabilities`, and
+  `GiftUICapabilities` remains independent of all failure modules.
+- The current package graph, exact-set controls, registered contract drivers,
+  and completed Foundation/failure and Foundation/capability adapters remain
+  intact.
+
+**Ordered work and evidence:**
+
+1. Add the exact capability-local `GiftUIConditionID` constants
+   `rasterMalformedRequirement` through `rasterByteCountOverflow` at raw values
+   `12...25`. Prove uniqueness, exact names/values, shared constants `0...10`
+   unchanged, and raw value `11` still deliberately has no named constant.
+2. Add a test-only downstream capability/failure adapter target importing
+   exactly `GiftUICapabilities` and `GiftUIFailureCore`. Do not add either
+   cross-import to the production leaves and do not invent a production host
+   or execution target.
+3. Map every `RasterPresentationUnavailable` case one-to-one to its exact
+   condition. Exercise associated field, contributor-role, capacity-domain,
+   and required/available payload variants sufficiently to prove payloads
+   cannot change the primary condition identity.
+4. For every mapping, construct
+   `GiftUIOutcome<CapabilitySnapshot>.failure` with `.capability` origin,
+   `.runtime` affected scope, and `.contained` containment. Prove no success,
+   operational result, partial snapshot, diagnostic dependency, or use of
+   `.requiredFacilityUnavailable` occurs.
+5. Update SPEC-002/003/004 exact package-graph expectations, positive/negative
+   compile fixtures, compiled-import inspection, and product-link checks
+   atomically. The new adapter may depend on both leaves; neither leaf may
+   depend on the adapter or the other leaf.
+6. Record deterministic Milestone 4 capability-adapter evidence, run the
+   focused unit/adapter tests, both standalone `macos-dynamic` contract
+   drivers for SPEC-003 and SPEC-004, and the no-argument top-level gate.
+
+**Iteration exit:** `T4.2` is complete only when all fourteen unavailable case
+families map to raw values `12...25`, every failure envelope has the exact
+origin/scope/containment, value `11` remains unnamed, reciprocal dependency
+boundaries pass, and checked-in evidence is reproducible. This does not claim
+that the SPEC-004 resolver, a production host adapter, Milestone 4, or either
+Specification is complete. The next executable task must be selected again
+from then-current owner dependencies.
 
 ## Acceptance-Criterion Matrix
 
@@ -377,9 +442,9 @@ SPEC-003 conformance report is ready for independent review.
    health, with diagnostics absent.
 4. Add the optional diagnostic consumer and compare every correctness output
    against the no-diagnostics baseline.
-5. Coordinate the SPEC-002 Foundation adapter first because it unblocks the
-   active Foundation plan; integrate capability, execution correlation, and
-   production host policy only when their owner targets exist.
+5. Preserve the completed SPEC-002 Foundation adapter, complete the draft
+   capability/failure adapter iteration above, and integrate execution
+   correlation and production host policy only when their owner targets exist.
 6. Run macOS dynamic and static semantic/resource fixtures, then Raspberry Pi
    ARMv6 and nRF hardware-free cross-build/inspection. Keep the exact
    standalone driver commands visible through the top-level aggregate.
@@ -397,8 +462,10 @@ SPEC-003 conformance report is ready for independent review.
 - `GiftUIFailureExecution` is blocked until SPEC-009 creates the focused
   execution-contract target. Creating an execution identity or placeholder
   target under SPEC-003 would violate ownership.
-- The reciprocal capability catalogue evidence is blocked until the SPEC-004
-  plan creates `GiftUICapabilities` and its downstream host adapter seam.
+- The reciprocal capability catalogue adapter is now dependency-complete
+  because SPEC-004 Milestone 1 created `GiftUICapabilities` and its closed
+  unavailable vocabulary. End-to-end resolver-produced outcome evidence still
+  waits for SPEC-004 to resolve its separate arithmetic contract blocker.
 - Production invariant-policy integration and prevention of later normal
   cycles are blocked until SPEC-015 creates the host configuration/runtime
   gate. The pure SPEC-003 fixture remains independently implementable.
