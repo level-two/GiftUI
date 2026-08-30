@@ -427,6 +427,59 @@ enum RasterPresentationRegionOutcome: Equatable, Sendable {
     case unavailable(RasterPresentationUnavailable)
 }
 
+#if GIFTUI_CAPABILITY_INSTRUMENTATION
+struct RasterPresentationResolverOperationCounts: Equatable, Sendable {
+    var roleVisits: UInt16 = 0
+    var setIntersectionsAndComparisons: UInt16 = 0
+    var checkedArithmetic: UInt16 = 0
+    var candidateChecks: UInt16 = 0
+    var validationResultConstructions: UInt16 = 0
+    var resolverInvocations: UInt16 = 0
+
+    var primitiveOperations: UInt16 {
+        roleVisits
+            &+ setIntersectionsAndComparisons
+            &+ checkedArithmetic
+            &+ candidateChecks
+            &+ validationResultConstructions
+            &+ resolverInvocations
+    }
+}
+
+enum RasterPresentationResolverInstrumentation {
+    nonisolated(unsafe) private(set) static var counts =
+        RasterPresentationResolverOperationCounts()
+
+    static func reset() {
+        counts = RasterPresentationResolverOperationCounts()
+    }
+
+    static func recordRoleVisits(_ count: UInt16) {
+        counts.roleVisits &+= count
+    }
+
+    static func recordSetOperations(_ count: UInt16) {
+        counts.setIntersectionsAndComparisons &+= count
+    }
+
+    static func recordCheckedArithmetic(_ count: UInt16) {
+        counts.checkedArithmetic &+= count
+    }
+
+    static func recordCandidateChecks(_ count: UInt16) {
+        counts.candidateChecks &+= count
+    }
+
+    static func recordValidationResultConstruction() {
+        counts.validationResultConstructions &+= 1
+    }
+
+    static func recordResolverInvocation() {
+        counts.resolverInvocations &+= 1
+    }
+}
+#endif
+
 enum RasterPresentationArithmetic {
     static func evaluate(
         requirement: RasterPresentationRequirement,
@@ -435,6 +488,9 @@ enum RasterPresentationArithmetic {
         policy: RasterPresentationPolicy,
         encoding: CanonicalPixelEncoding
     ) -> RasterPresentationArithmeticOutcome {
+#if GIFTUI_CAPABILITY_INSTRUMENTATION
+        RasterPresentationResolverInstrumentation.recordCheckedArithmetic(4)
+#endif
         let regionExtent: CapabilityExtent
         switch region(
             requirement: requirement,
@@ -594,6 +650,9 @@ enum RasterPresentationCompatibility {
         requirement: RasterPresentationRequirement,
         producer: RenderProducerContribution
     ) -> RasterPresentationUnavailable? {
+#if GIFTUI_CAPABILITY_INSTRUMENTATION
+        RasterPresentationResolverInstrumentation.recordSetOperations(2)
+#endif
         guard producer.operations.isSuperset(of: requirement.operations) else {
             return .operationSetMismatch
         }
@@ -609,6 +668,10 @@ enum RasterPresentationCompatibility {
         surface: SurfaceDisplayContribution,
         policy: RasterPresentationPolicy
     ) -> RasterPresentationCandidateOutcome {
+#if GIFTUI_CAPABILITY_INSTRUMENTATION
+        RasterPresentationResolverInstrumentation.recordCandidateChecks(1)
+        RasterPresentationResolverInstrumentation.recordSetOperations(9)
+#endif
         if case let .unavailable(reason) = RasterPresentationArithmetic.region(
             requirement: requirement,
             realization: realization,
@@ -862,6 +925,14 @@ public enum RasterPresentationResolver {
         contributions: borrowing RasterPresentationContributions,
         workspace: inout RasterPresentationResolverWorkspace
     ) -> RasterPresentationResolution {
+#if GIFTUI_CAPABILITY_INSTRUMENTATION
+        RasterPresentationResolverInstrumentation.recordResolverInvocation()
+        RasterPresentationResolverInstrumentation.recordRoleVisits(4)
+        defer {
+            RasterPresentationResolverInstrumentation
+                .recordValidationResultConstruction()
+        }
+#endif
         workspace.reset()
         defer { workspace.reset() }
 

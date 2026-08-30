@@ -370,7 +370,8 @@ run_semantic_probe() {
 
     local -a command=(
         "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
-        -O -whole-module-optimization "${profile_flag}" -language-mode 6
+        -O -whole-module-optimization "${profile_flag}"
+        -DGIFTUI_CAPABILITY_INSTRUMENTATION -language-mode 6
         -module-name GiftUICapabilitiesSemanticProbe
         "${EXPECTED_SOURCE}"
         "${FIXTURE_ROOT}/SemanticProbe/main.swift"
@@ -396,6 +397,7 @@ run_macos() {
 
     local compiler compiler_version sdk_path sdk_version profile_flag extension image
     local giftui_dir giftui_module dependency_scan product_links undefined_symbols
+    local defined_symbols instrumentation_symbols
     compiler="$(xcrun --find swiftc)"
     compiler_version="$("${compiler}" --version 2>&1)"
     require_exact_fragment "${compiler_version}" 'Apple Swift version 6.3.3' 'macOS compiler'
@@ -435,6 +437,14 @@ run_macos() {
     "${command[@]}" >>"${log_path}" 2>&1
     record_image candidate-module "${report_dir}/build/GiftUICapabilities.swiftmodule"
     record_image candidate-library "${image}"
+    defined_symbols="${report_dir}/build/defined-symbols.txt"
+    instrumentation_symbols="${report_dir}/build/instrumentation-symbols.txt"
+    record_command nm -gj "${image}"
+    nm -gj "${image}" >"${defined_symbols}"
+    if grep -Ei 'instrumentation|operationcounts' \
+        "${defined_symbols}" >"${instrumentation_symbols}"; then
+        fail 'production capability image retains resolver instrumentation'
+    fi
 
     dependency_scan="${report_dir}/build/GiftUICapabilities.dependencies.json"
     local -a scan_command=(

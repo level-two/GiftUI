@@ -388,14 +388,16 @@ require(
 )
 
 private func resolverValues(
-    producerStream: OperationStreamLifetime
+    producerStream: OperationStreamLifetime,
+    encodings: CanonicalPixelEncodingSet = .rgb565BigEndian,
+    fullRegionHeight: UInt16 = 4
 ) -> (RasterPresentationRequirement, [RasterPresentationContribution]) {
     guard let extent = CapabilityExtent(width: 480, height: 320),
           let requirement = RasterPresentationRequirement(
               operations: allOperations,
               extent: extent,
               operationStream: .synchronousBorrowedOneShot,
-              acceptedEncodings: .rgb565BigEndian,
+              acceptedEncodings: encodings,
               acceptedSubmissionLifetimes: .synchronousBorrow,
               maximumRasterBytes: .init(rawValue: 3_840),
               maximumPayloadBytes: .init(rawValue: 3_840),
@@ -410,11 +412,11 @@ private func resolverValues(
               kind: .fullSurface,
               operations: allOperations,
               operationStream: .synchronousBorrowedOneShot,
-              encodings: .rgb565BigEndian,
+              encodings: encodings,
               producedSubmissionLifetimes: .synchronousBorrow,
               maximumExtent: extent,
               maximumRegionWidth: 480,
-              maximumRegionHeight: 4,
+              maximumRegionHeight: fullRegionHeight,
               rowByteAlignment: 2,
               maximumRasterBytes: .init(rawValue: 3_840),
               maximumPayloadBytes: .init(rawValue: 3_840)
@@ -423,7 +425,7 @@ private func resolverValues(
               kind: .tiled,
               operations: allOperations,
               operationStream: .synchronousBorrowedOneShot,
-              encodings: .rgb565BigEndian,
+              encodings: encodings,
               producedSubmissionLifetimes: .synchronousBorrow,
               maximumExtent: extent,
               maximumRegionWidth: 480,
@@ -435,7 +437,7 @@ private func resolverValues(
           let backend = RasterBackendContribution(primary: full, alternate: tiled),
           let surface = SurfaceDisplayContribution(
               extent: extent,
-              encodings: .rgb565BigEndian,
+              encodings: encodings,
               acceptedSubmissionLifetimes: .synchronousBorrow,
               handoffs: .synchronous,
               maximumRegionWidth: 480,
@@ -449,7 +451,7 @@ private func resolverValues(
               maximumPayloadBytes: .init(rawValue: 3_840),
               maximumInFlightBytes: .init(rawValue: 3_840),
               allowedRealizations: .tiled,
-              allowedEncodings: .rgb565BigEndian,
+              allowedEncodings: encodings,
               preferredRealization: .tiled,
               preferredEncoding: .rgb565BigEndian
           ) else {
@@ -530,6 +532,85 @@ verifyResolverPermutations(
     expected: .unavailable(.operationStreamMismatch)
 )
 print("resolver-stream-mismatch-role-permutations\tresolver\t24,2\tunavailable,operation-stream-mismatch")
+
+#if GIFTUI_CAPABILITY_INSTRUMENTATION
+private func instrumentedResolution(
+    producerStream: OperationStreamLifetime,
+    encodings: CanonicalPixelEncodingSet = .rgb565BigEndian,
+    fullRegionHeight: UInt16 = 4
+) -> (RasterPresentationResolution, RasterPresentationResolverOperationCounts) {
+    let (requirement, values) = resolverValues(
+        producerStream: producerStream,
+        encodings: encodings,
+        fullRegionHeight: fullRegionHeight
+    )
+    var contributions = RasterPresentationContributions()
+    for value in values {
+        guard contributions.insert(value) == .inserted else {
+            fatalError("instrumentation contribution insertion failed")
+        }
+    }
+    var workspace = RasterPresentationResolverWorkspace()!
+    RasterPresentationResolverInstrumentation.reset()
+    let result = RasterPresentationResolver.resolve(
+        requirement: requirement,
+        contributions: contributions,
+        workspace: &workspace
+    )
+    return (result, RasterPresentationResolverInstrumentation.counts)
+}
+
+let (widestResult, widestCounts) = instrumentedResolution(
+    producerStream: .synchronousBorrowedOneShot,
+    encodings: CanonicalPixelEncodingSet(rawValue: 3),
+    fullRegionHeight: 320
+)
+guard case .available = widestResult,
+      widestCounts.roleVisits == 4,
+      widestCounts.setIntersectionsAndComparisons == 20,
+      widestCounts.checkedArithmetic == 16,
+      widestCounts.candidateChecks == 2,
+      widestCounts.validationResultConstructions == 1,
+      widestCounts.resolverInvocations == 1,
+      widestCounts.primitiveOperations == 44,
+      widestCounts.primitiveOperations <= 96 else {
+    fatalError("widest resolver operation bound mismatch")
+}
+print("instrumentation-widest-resolver-path\tinstrumentation\t2,2,96\t44,4,20,16,2,1,1")
+
+let (earlyResult, earlyCounts) = instrumentedResolution(
+    producerStream: .incompatibleWithSynchronousBorrowedOneShot
+)
+guard earlyResult == .unavailable(.operationStreamMismatch),
+      earlyCounts.roleVisits == 4,
+      earlyCounts.setIntersectionsAndComparisons == 2,
+      earlyCounts.checkedArithmetic == 0,
+      earlyCounts.candidateChecks == 0,
+      earlyCounts.validationResultConstructions == 1,
+      earlyCounts.resolverInvocations == 1,
+      earlyCounts.primitiveOperations == 8,
+      earlyCounts.primitiveOperations <= 96 else {
+    fatalError("early resolver operation bound mismatch")
+}
+print("instrumentation-early-negative-path\tinstrumentation\t5,96\t8,4,2,0,0,1,1")
+
+guard case let .available(effective) = widestResult else {
+    fatalError("instrumentation snapshot fixture unavailable")
+}
+let snapshot = CapabilitySnapshot(rasterPresentation: effective)
+RasterPresentationResolverInstrumentation.reset()
+var snapshotChecksum: UInt32 = 0
+for _ in 0 ..< 10_000 {
+    snapshotChecksum &+= snapshot.rasterPresentation?.rowBytes.rawValue ?? 0
+}
+let snapshotCounts = RasterPresentationResolverInstrumentation.counts
+guard snapshotChecksum != 0,
+      snapshotCounts.resolverInvocations == 0,
+      snapshotCounts.primitiveOperations == 0 else {
+    fatalError("snapshot access unexpectedly invoked resolver")
+}
+print("instrumentation-repeated-snapshot-access\tinstrumentation\t10000\t0,0")
+#endif
 
 let precedenceCount = CapabilityByteCount(rawValue: 16)
 let precedenceAvailable = CapabilityByteCount(rawValue: 15)

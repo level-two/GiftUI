@@ -382,7 +382,7 @@ and no runtime side effect.
       exercise the constructible shared-usage overflow and its interactions
       with capacity failures, and keep raw-adapter short-circuit tests separate
       from the typed resolver corpus.
-- [ ] `T2.5` — Add fixed-width instrumentation for role visits, set
+- [x] `T2.5` — Add fixed-width instrumentation for role visits, set
       intersections/comparisons, checked arithmetic, candidate checks,
       validation-result construction, and resolver invocation. Enforce at most
       96 primitive operations on every success/negative path and zero resolver
@@ -758,3 +758,15 @@ capacity, and raster before payload/in-flight capacity. Raw malformed adapter
 coverage remains separate in the T1.3 corpus. Thirty-seven focused capability
 tests, the 26-row normalized transcript, and all four hardware-free SPEC-004
 drivers pass. `T2.5` is next.
+`T2.5` is complete: compile-conditional fixed-width counters cover resolver
+invocations, four role visits, set operations, checked arithmetic, candidate
+checks, and validation-result construction at their actual decision points.
+The widest two-candidate/two-encoding path records 44 primitive operations,
+which bounds every success and later negative exit below the 96-operation
+ceiling; the early producer-stream negative records 8. Ten thousand repeated
+snapshot reads record zero resolver invocations and zero primitive operations.
+The production macOS image check rejects instrumentation symbols, while the Pi
+and nRF production modules compile without the instrumentation flag. The
+29-row normalized transcript, zero-allocation macOS probes, and all four
+hardware-free SPEC-004 drivers pass. Milestone 2 is complete and `T3.1` is
+next.

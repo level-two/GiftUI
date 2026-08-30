@@ -23,5 +23,8 @@ arithmetic-in-flight-policy-boundary	arithmetic	4,3,16,15	equality-available,16,
 arithmetic-in-flight-zero-minimum	arithmetic	4,2,1,1,2,2,1,1,20,0,18	unavailable,insufficient-capacity,4,16,0
 resolver-positive-role-permutations	resolver	24,1	available,2,1,1,1,480,4,960,3840
 resolver-stream-mismatch-role-permutations	resolver	24,2	unavailable,operation-stream-mismatch
+instrumentation-widest-resolver-path	instrumentation	2,2,96	44,4,20,16,2,1,1
+instrumentation-early-negative-path	instrumentation	5,96	8,4,2,0,0,1,1
+instrumentation-repeated-snapshot-access	instrumentation	10000	0,0
 precedence-candidate-pairs	precedence	11,2	55,all-pass
 precedence-all-stage-pairs	precedence	16,2	120,all-pass
