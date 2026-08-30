@@ -430,7 +430,7 @@ join the capability leaf through one-way adapters without duplicating
 vocabulary, mutating the snapshot, or making capability resolution substitute
 for structural validation.
 
-- [ ] `T4.1` — At the first downstream boundary importing SPEC-002 and
+- [x] `T4.1` — At the first downstream boundary importing SPEC-002 and
       `GiftUICapabilities`, implement the exact `Size` adapter: valid positive
       `UInt16` dimensions map to `CapabilityExtent`, zero maps to malformed
       requirement extent, positive overflow maps to logical extent overflow,
@@ -810,3 +810,12 @@ reports 96-byte contribution stride, 52-byte workspace, 40-byte effective
 value, and 40-byte snapshot; the production image contains no instrumentation.
 All four hardware-free SPEC-004 drivers pass. Milestone 3 is complete; `T4.1`
 is next, subject to its owning Specification entry conditions.
+`T4.1` is complete at the approved test-only downstream owner boundary. Its
+exact adapter accepts positive `UInt16`-representable `Size` dimensions,
+classifies zero as malformed requirement extent, classifies positive overflow
+as logical extent overflow, and cannot receive negative dimensions because
+SPEC-002 rejects them before adapter entry. Valid controls preserve the whole
+extent. The exact package graph keeps both production leaves dependency-free,
+and compile/binary checks preserve reciprocal non-import and non-re-export
+evidence without moving geometry. Four focused adapter tests and the SPEC-002
+macOS dynamic graph gate pass. `T4.2` is next.
