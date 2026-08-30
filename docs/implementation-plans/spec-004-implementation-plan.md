@@ -409,7 +409,7 @@ justification, and a one-shot tiled seam without promoting Spike code.
       synchronous-copy ownership before borrow end, no queued synchronous
       borrow, no retained/replayed GiftUI operation, and independent
       encoding/lifetime negative-control pairs.
-- [ ] `T3.3` — Complete missing, duplicate, malformed raw adapter, extent
+- [x] `T3.3` — Complete missing, duplicate, malformed raw adapter, extent
       overflow, optional absence, required absence, workspace exhaustion,
       unsupported extent, policy, and every capacity negative/control case.
       Assert no traps, partial snapshots, last-writer substitution, weakened
@@ -790,3 +790,14 @@ Independent encoding and lifetime negative/control pairs retain distinct
 stable reasons. The fixture is contract-only and copies no SPIKE-001 or
 unimplemented SPEC-009/SPEC-014 production shape. The 37-row normalized
 transcript and all four hardware-free SPEC-004 drivers pass. `T3.3` is next.
+`T3.3` is complete: the consolidated negative/control evidence covers missing
+and duplicate roles, all raw malformed fields and role/field precedence,
+SPEC-002 extent overflow, optional and required absence, resolver workspace,
+unsupported geometry, policy exclusion, shared arithmetic overflow, and every
+owner of every capacity minimum. Normalized rows prove required failures
+produce no snapshot, optional absence produces only a nil family, duplicate
+insertion preserves the first value, and policy cannot weaken the result.
+Typed values and dependency/binary checks keep results independent of
+diagnostics. All 110 package tests, the 42-row normalized transcript,
+zero-allocation macOS probes, and all four hardware-free SPEC-004 drivers pass.
+`T3.4` is next.

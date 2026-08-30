@@ -533,6 +533,93 @@ verifyResolverPermutations(
 )
 print("resolver-stream-mismatch-role-permutations\tresolver\t24,2\tunavailable,operation-stream-mismatch")
 
+private func resolveBoundary(
+    _ contributions: RasterPresentationContributions,
+    workspaceCapacity: UInt8 = 2
+) -> RasterPresentationResolution {
+    let (requirement, _) = resolverValues(
+        producerStream: .synchronousBorrowedOneShot
+    )
+    var workspace = RasterPresentationResolverWorkspace(
+        usableCandidateCapacity: workspaceCapacity
+    )!
+    return RasterPresentationResolver.resolve(
+        requirement: requirement,
+        contributions: contributions,
+        workspace: &workspace
+    )
+}
+
+let missingBoundary = resolveBoundary(RasterPresentationContributions())
+guard missingBoundary == .unavailable(
+    .missingContributor(role: .renderProducer)
+) else {
+    fatalError("missing boundary mismatch")
+}
+print("negative-missing-required-role\tnegative\t0,4\tunavailable,missing,1,no-snapshot")
+
+let (_, boundaryValues) = resolverValues(
+    producerStream: .synchronousBorrowedOneShot
+)
+var duplicateBoundary = RasterPresentationContributions()
+for value in boundaryValues {
+    guard duplicateBoundary.insert(value) == .inserted else {
+        fatalError("duplicate boundary setup failed")
+    }
+}
+let firstProducer = duplicateBoundary.renderProducer
+let incompatibleProducer = RenderProducerContribution(
+    operations: allOperations,
+    operationStream: .incompatibleWithSynchronousBorrowedOneShot
+)!
+guard duplicateBoundary.insert(.renderProducer(incompatibleProducer))
+        == .rejected(.duplicateContributor(role: .renderProducer)),
+      duplicateBoundary.renderProducer == firstProducer,
+      resolveBoundary(duplicateBoundary) == .unavailable(
+          .duplicateContributor(role: .renderProducer)
+      ) else {
+    fatalError("duplicate boundary substituted the last writer")
+}
+print("negative-duplicate-preserves-first\tnegative\t1,2\tunavailable,duplicate,1,first-preserved,no-snapshot")
+
+var completeBoundary = RasterPresentationContributions()
+for value in boundaryValues {
+    guard completeBoundary.insert(value) == .inserted else {
+        fatalError("workspace boundary setup failed")
+    }
+}
+guard resolveBoundary(completeBoundary, workspaceCapacity: 1) == .unavailable(
+    .insufficientCapacity(
+        domain: .resolverWorkspace,
+        required: .init(rawValue: 2),
+        available: .init(rawValue: 1)
+    )
+) else {
+    fatalError("workspace boundary mismatch")
+}
+print("negative-resolver-workspace\tnegative\t2,1\tunavailable,insufficient-capacity,1,2,1,no-snapshot")
+
+private func boundarySnapshot(
+    resolution: RasterPresentationResolution,
+    absence: CapabilityAbsence
+) -> CapabilitySnapshot? {
+    switch resolution {
+    case let .available(value):
+        return CapabilitySnapshot(rasterPresentation: value)
+    case .unavailable:
+        return absence == .optional
+            ? CapabilitySnapshot(rasterPresentation: nil)
+            : nil
+    }
+}
+
+guard boundarySnapshot(resolution: missingBoundary, absence: .optional)
+        == CapabilitySnapshot(rasterPresentation: nil),
+      boundarySnapshot(resolution: missingBoundary, absence: .required) == nil else {
+    fatalError("absence snapshot boundary mismatch")
+}
+print("negative-optional-required-absence\tnegative\t2,3\toptional,nil-snapshot,required,no-snapshot")
+
 #if GIFTUI_CAPABILITY_INSTRUMENTATION
 private func instrumentedResolution(
     producerStream: OperationStreamLifetime,
@@ -936,9 +1023,13 @@ private func compatibilityControl(
     requirementEncoding: CanonicalPixelEncodingSet,
     realizationEncoding: CanonicalPixelEncodingSet,
     requirementLifetime: SubmissionLifetimeSet,
-    realizationLifetime: SubmissionLifetimeSet
+    realizationLifetime: SubmissionLifetimeSet,
+    policyEncodings: CanonicalPixelEncodingSet = CanonicalPixelEncodingSet(rawValue: 3)
 ) -> RasterPresentationCandidateOutcome {
     let extent = CapabilityExtent(width: 4, height: 4)!
+    let policyPreferred: CanonicalPixelEncodingSet = policyEncodings.contains(
+        .rgb565BigEndian
+    ) ? .rgb565BigEndian : .rgba8888
     let requirement = RasterPresentationRequirement(
         operations: allOperations,
         extent: extent,
@@ -979,9 +1070,9 @@ private func compatibilityControl(
         maximumPayloadBytes: .init(rawValue: 64),
         maximumInFlightBytes: .init(rawValue: 64),
         allowedRealizations: .tiled,
-        allowedEncodings: CanonicalPixelEncodingSet(rawValue: 3),
+        allowedEncodings: policyEncodings,
         preferredRealization: .tiled,
-        preferredEncoding: .rgb565BigEndian
+        preferredEncoding: policyPreferred
     )!
     return RasterPresentationCompatibility.evaluateCandidate(
         requirement: requirement,
@@ -1022,6 +1113,24 @@ compatibilityControl(
     fatalError("one-shot lifetime negative/control mismatch")
 }
 print("one-shot-lifetime-negative-control\tone-shot\t1,1,1,2\tnegative,10,control,available")
+
+guard compatibilityControl(
+    requirementEncoding: .rgb565BigEndian,
+    realizationEncoding: .rgb565BigEndian,
+    requirementLifetime: .synchronousBorrow,
+    realizationLifetime: .synchronousBorrow,
+    policyEncodings: .rgba8888
+) == .unavailable(.policyHasNoConformingRealization),
+compatibilityControl(
+    requirementEncoding: .rgb565BigEndian,
+    realizationEncoding: .rgb565BigEndian,
+    requirementLifetime: .synchronousBorrow,
+    realizationLifetime: .synchronousBorrow,
+    policyEncodings: .rgb565BigEndian
+) != .unavailable(.policyHasNoConformingRealization) else {
+    fatalError("policy negative/control mismatch")
+}
+print("negative-policy-control\tnegative\t1,2\tunavailable,policy,control,available,no-weakened-result")
 
 let precedenceCount = CapabilityByteCount(rawValue: 16)
 let precedenceAvailable = CapabilityByteCount(rawValue: 15)
