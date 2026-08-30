@@ -113,6 +113,24 @@ contracts.
   must preserve unrelated in-progress changes and update exact-set controls
   atomically when its own targets are introduced.
 
+## Readiness Review
+
+**Reviewed:** 2026-08-30
+
+**Disposition:** Ready. The approved authority chain is intact, every
+acceptance criterion maps to ordered implementation and evidence, all
+contract-local work can begin without inventing architecture, and downstream
+layout/render/backend/host dependencies are explicit. No RFC, ADR, or
+Specification amendment is required by this review.
+
+The review made previously implicit requirements executable by adding the
+complete count/byte boundary matrix, canonical-manifest exclusion invariants,
+throwing-body `withPayload` behavior, exact bitmap and outline encoding
+coverage, and validated-package assembly/teardown lifetime evidence. FW-001
+through FW-003 remain captured and untriggered; SPIKE-005 remains completed
+non-authoritative evidence. The plan remains `ready`, while SPEC-005 remains
+`approved` until implementation actually starts.
+
 ## Acceptance-Criterion Matrix
 
 The criterion text remains authoritative in SPEC-005. Every criterion appears
@@ -121,18 +139,18 @@ once below and maps to implementation tasks and reproducible evidence.
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
 | `TR-001` — Approval, manifest, authority, reciprocal Specification/Spike/Future Work traceability | `T0.1`, `T6.1` | Governance and reciprocal-link audit | pending |
-| `TR-002` — Exact module graph and zero parallel or translated text-resource identities | `T0.2`, `T0.4`, `T4.3`, `T6.2` | Package graph, source/interface/binary scans, compile fixtures, downstream integration audit | pending |
+| `TR-002` — Exact module graph and zero parallel or translated text-resource identities | `T0.2`, `T0.4`, `T4.4`, `T6.2` | Package graph, source/interface/binary scans, compile fixtures, downstream integration audit | pending |
 | `TR-003` — Exact identity declarations, widths, serialization, SHA-256 inputs, counts, and identity-change behavior | `T1.1`, `T1.2`, `T1.5`, `T3.1`, `T5.1` | API/layout tests, canonical golden vectors, mutation corpus, four-profile digest transcripts | pending |
-| `TR-004` — Licensed reference package, exact coverage, replacement glyph, build validation, and target-selected assembly validity | `T0.5`, `T3.1`, `T3.2`, `T3.3`, `T5.1` | Provenance/hash audit, deterministic generation, complete-package and target-subset validation | pending |
+| `TR-004` — Licensed reference package, exact coverage, replacement glyph, build validation, and target-selected assembly validity | `T0.5`, `T3.1`, `T3.2`, `T3.3`, `T3.4`, `T4.3`, `T5.1` | Provenance/hash audit, deterministic generation, complete-package and target-subset validation | pending |
 | `TR-005` — Exact scalar and line-break mapping with package-only replacement and no ambient fallback | `T1.3`, `T2.4`, `T5.1` | Exhaustive scalar/control corpus and cross-profile normalized output | pending |
 | `TR-006` — Equal metrics, selection, advances, ink geometry, and explicit points in all four profiles | `T1.3`, `T2.4`, `T4.2`, `T5.1` | Golden geometry corpus and value-for-value profile comparison | pending |
 | `TR-007` — Exact deterministic local errors and SPEC-002/SPEC-003 owner mappings without partial results or diagnostics | `T2.1`, `T2.2`, `T4.1`, `T4.2`, `T5.1` | Independent/pairwise validation corpus, overflow fixtures, owner-adapter transcripts | pending |
-| `TR-008` — Common catalogue/identity with target-specific payload availability and raster-independent logical results | `T2.3`, `T3.3`, `T5.1`, `T5.3` | Complete, bitmap-only, and outline-only package transcripts plus link-map omission evidence | pending |
-| `TR-009` — Exactly-once synchronous payload/offer traversal and no retained borrows | `T1.4`, `T4.2`, `T5.2` | Invocation counters, poisoned-lifetime probes, allocation instrumentation | pending |
+| `TR-008` — Common catalogue/identity with target-specific payload availability and raster-independent logical results | `T2.3`, `T3.3`, `T4.3`, `T5.1`, `T5.3` | Complete, bitmap-only, and outline-only package transcripts plus link-map omission evidence | pending |
+| `TR-009` — Exactly-once synchronous payload/offer traversal and no retained borrows | `T1.4`, `T4.2`, `T4.3`, `T5.2` | Invocation counters, poisoned-lifetime probes, allocation instrumentation | pending |
 | `TR-010` — Zero static-path allocation, type/table limits, and bounded nRF bitmap-only resources | `T1.5`, `T2.5`, `T3.3`, `T5.2`, `T5.3` | Allocation traps, size/stride/alignment report, boundary corpus, ELF/map/stack and symbol reports | pending |
-| `TR-011` — Four exact contract-driver commands reproduce required clean-checkout evidence without hardware claims | `T0.3`, `T5.1`, `T5.3`, `T5.4` | Registered standalone driver reports and two pristine normalized rebuilds | pending |
+| `TR-011` — Four exact contract-driver commands reproduce required clean-checkout evidence without hardware claims | `T0.3`, `T5.1`, `T5.3`, `T5.4`, `T5.5`, `T6.3` | Registered standalone driver reports, resource timing, and two pristine normalized rebuilds | pending |
 | `TR-012` — No out-of-scope text, layout, rendering, backend, cache, capability, host-policy, or deferred typography semantics | `T0.1`, `T6.2` | Public/package surface and non-goal audit | pending |
-| `TR-013` — Complete baseline, line, ink, break, availability, and post-validation lookup rules with unchanged Foundation facts | `T1.3`, `T2.4`, `T4.1`, `T4.2`, `T6.1` | Focused geometry/availability/failure corpus and contract-coverage audit | pending |
+| `TR-013` — Complete baseline, line, ink, break, availability, and post-validation lookup rules with unchanged Foundation facts | `T1.3`, `T2.4`, `T4.1`, `T4.2`, `T4.3`, `T6.1` | Focused geometry/availability/failure corpus and contract-coverage audit | pending |
 
 ## Milestones and Tasks
 
@@ -177,7 +195,9 @@ four-profile driver can fail closed before semantic implementation begins.
       and scans rejecting parallel or translated resource, instance, glyph,
       and realization identities. Reserve downstream fixture rows for layout,
       render, raster, backend, platform, and concrete-package consumers so
-      later targets fail closed rather than silently escaping the audit.
+      later targets fail closed rather than silently escaping the audit. Scan
+      portable Presentation fixtures for text-resource, raster, backend,
+      platform, device imports or target-conditional branches.
 - [ ] `T0.5` — Freeze the adopted SPIKE-005 inputs as a baseline evidence
       inventory: source and license, derivation pins, canonical manifest,
       bitmap and outline payloads, record tables, provenance, all SHA-256
@@ -207,23 +227,35 @@ until Milestone 2's validator is complete.
       unsigned fields, signed `Int32` geometry, digest word order, and exact
       SHA-256 byte interpretation. The seam must support build tooling and host
       validation without parsing a runtime file format or depending on host
-      endianness or struct memory layout. Add official SHA-256 vectors plus
-      byte-for-byte SPEC-005 manifest vectors.
+      endianness or struct memory layout. Add official SHA-256 vectors,
+      byte-for-byte SPEC-005 manifest vectors, and invariance fixtures proving
+      filenames, timestamps, locale, table addresses, host byte order, display
+      names, and raw payload bytes do not enter the manifest directly while
+      every canonical field and payload digest does.
 - [ ] `T1.3` — Implement total metrics/mapping/raster accessor behavior:
       contiguous range and identity checks, valid-scalar classification,
       package replacement mapping, U+000A/U+000D `nil`, exact metrics, record
       lookup, availability, bitmap MSB-first interpretation, outline-record
       structural rules, and checked ink/advance geometry seams. Cover every
       scalar boundary, surrogate, printable ASCII scalar, U+00B0, unsupported
-      valid scalar, CR, LF, and CRLF sequence behavior.
+      valid scalar, CR, LF, and CRLF sequence behavior. Cover exact bitmap row
+      width, padding bits, dimensions, checked byte count, and gap-free record
+      partitioning, plus the `giftui-spike-outline-v1` version/header,
+      big-endian operands, command arities, implied-point sentinel,
+      close/end encoding, `Int16` coordinates, and no-trailing-byte rules.
 - [ ] `T1.4` — Implement `withPayload` with exact-zero/exact-once body
       invocation, exact buffer count, unavailable/invalid zero-invocation,
       body-only `rethrows`, a non-throwing static conformance path, and no
       allocation or retained borrow. Add lifetime instrumentation that poisons
       or invalidates test storage immediately after return and proves no
-      escaped pointer or source remains usable.
+      escaped pointer or source remains usable. Prove a body-thrown sentinel is
+      propagated unchanged after exactly one invocation and is never produced
+      by validation or availability handling itself.
 - [ ] `T1.5` — Add compile-time/runtime size, stride, alignment, count, and
-      maximum-plus-one checks for every normative value and table ceiling.
+      boundary checks for every normative value and table ceiling. Exercise
+      zero, one, maximum, and maximum plus one independently for instances,
+      mappings, glyphs, realizations, canonical-manifest bytes, and payload
+      bytes, including the valid zero-byte payload/empty partition case.
       Instrument mapping, metric, record, payload, and canonical-byte paths for
       zero static allocation and at most 256 comparisons per lookup. Record
       maximum comparison counts without selecting a cache or speculative index.
@@ -251,7 +283,9 @@ allocates zero heap bytes on the static path.
       partial package/realization, no repair or substitution, and no diagnostic
       dependency. Include all mismatched identities, descriptors, ranges,
       digests, metrics, mappings, raster records, and malformed outline/bitmap
-      encodings.
+      encodings. Include controls proving a zero-byte payload with a valid
+      empty record partition is admitted, while zero required counts and zero
+      manifest bytes retain their exact `.invalidCount` meaning.
 - [ ] `T2.3` — Validate the complete common catalogue while admitting one
       required available realization: every catalogued record and descriptor,
       every metric/mapping, the reconstructed manifest, and every available
@@ -319,10 +353,18 @@ integration tasks have explicit downstream prerequisites.
 
 - [ ] `T4.1` — Add test-only downstream owner adapters importing exactly the
       contracts each mapping needs. Fixture the three target-host assembly
-      error families with `.hostComposition`/`.runtime`/`.contained`, the
+      error families with `.hostComposition`/`.runtime`/`.contained`:
+      schema/count/metrics/mapping/raster-record errors map to `.invalidValue`,
+      identity/view/integrity errors map to `.invalidIdentity`, and capacity
+      errors map to `.capacityExhausted`. Fixture the
       layout and render unexpected post-validation lookup failures with their
-      exact `.invariantViolation` origins/scopes/containment, layout's unchanged
-      SPEC-002 arithmetic fact, and render's required-realization loss fact.
+      exact `.invariantViolation` facts:
+      `.layout`/`.candidateFrame`/`.safetyNotProven` and
+      `.rendering`/`.candidateFrame`/`.safetyNotProven`. Preserve layout's
+      SPEC-002 arithmetic fact exactly as
+      `.arithmeticOverflow`/`.foundation`/`.operation`/`.contained`, and map
+      render's required-realization loss exactly as
+      `.requiredFacilityUnavailable`/`.rendering`/`.runtime`/`.contained`.
       Prove `GiftUITextResources` imports no failure vocabulary and diagnostics
       cannot change any result.
 - [ ] `T4.2` — Add the required contract-local synchronous-offer adapter using
@@ -332,7 +374,18 @@ integration tasks have explicit downstream prerequisites.
       retained package pointer, payload pointer, test operation, or source
       after return. Do not define paint, clip, ordering, capacity, or the
       production positioned-glyph operation owned by SPEC-008.
-- [ ] `T4.3` — When SPEC-007, SPEC-008, SPEC-014, and SPEC-015 create their
+- [ ] `T4.3` — Add a contract-local assembly/lifecycle fixture proving build
+      validation sees both reference payloads and requires each realization in
+      turn; target assembly sees its immutable linked subset and requires its
+      one selected available realization before the first run cycle; no layout,
+      render, raster, backend, or runtime consumer receives a package reference
+      before success; descriptors, tables, records, and payloads remain
+      immutable; nested borrows end synchronously; and host ownership lasts
+      until the last simulated consumer tears down. Failed validation exposes
+      no partial metrics or selected realization, while omission of an
+      unselected payload remains valid catalogue unavailability rather than a
+      partial package.
+- [ ] `T4.4` — When SPEC-007, SPEC-008, SPEC-014, and SPEC-015 create their
       approved owner targets, integrate the exact nominal types and validated
       package without aliases or translation. Add the production host assembly
       validation/lifetime adapter, layout and render lookup adapters, exact
@@ -367,7 +420,8 @@ repeatability without deployment, flashing, or connected-hardware claims.
       storage, or desktop concurrency.
 - [ ] `T5.3` — Produce matched baseline/candidate optimized resource images and
       link maps. For nRF, record text-resource-specific incremental flash,
-      fixed writable RAM, conservative validation stack, section/symbol data,
+      fixed writable RAM, conservative validation stack and its measurement
+      method, section/symbol data,
       ARMv7E-M and VFP hard-float evidence, and proof that outline bytes/provider
       are absent while the bitmap package meets the 96 KiB flash, 512-byte
       fixed-RAM, and 1 KiB stack ceilings. For ARMv6, retain the exact
@@ -462,7 +516,7 @@ review without asserting the `implemented` transition.
   Foundation evidence blocks final four-profile and reciprocal conformance; it
   does not authorize a duplicate geometry or arithmetic implementation.
 - SPEC-007, SPEC-008, SPEC-014, and SPEC-015 have not created production
-  layout, render, backend, or host targets. `T4.3`, the final downstream part
+  layout, render, backend, or host targets. `T4.4`, the final downstream part
   of the module-graph criterion, and production-adapter evidence remain
   blocked on those governed implementations. Test-only adapters may prove
   mappings but may not become substitute architecture.
