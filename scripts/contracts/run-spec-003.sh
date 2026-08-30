@@ -8,6 +8,7 @@ FIXTURE_ROOT="${PROJECT_ROOT}/Tests/ContractFixtures/SPEC003"
 SOURCE_ROOT="${PROJECT_ROOT}/Sources/GiftUIFailureCore"
 CAPABILITY_SOURCE="${PROJECT_ROOT}/Sources/GiftUICapabilities/GiftUICapabilities.swift"
 CAPABILITY_ADAPTER_SOURCE="${PROJECT_ROOT}/Sources/GiftUICapabilityFailureAdapterFixture/CapabilityFailureAdapter.swift"
+PROFILE_PROBE_ROOT="${FIXTURE_ROOT}/ProfileCorpusProbe"
 GENERATED_ROOT="${PROJECT_ROOT}/.build/contract-generated/spec-003"
 REPORT_ROOT="${PROJECT_ROOT}/.build/contract-reports/spec-003"
 
@@ -177,6 +178,36 @@ compile_macos_capability_adapter() {
     record_command "${adapter_command[@]}"
     "${adapter_command[@]}" >>"${log_path}" 2>&1
     record_image capability-adapter-module "${adapter_module}"
+}
+
+run_profile_corpus_probe_macos() {
+    local compiler="$1"
+    local sdk_path="$2"
+    local profile_flag="$3"
+    local image="$4"
+    local probe_dir="${report_dir}/build/profile-corpus-probe"
+    local probe="${probe_dir}/profile-corpus-probe"
+    local output="${report_dir}/semantics/profile-corpus.txt"
+    mkdir -p "${probe_dir}"
+
+    local -a command=(
+        "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
+        -O -whole-module-optimization "${profile_flag}" -language-mode 6
+        -module-name GiftUIFailureProfileCorpusProbe
+        -I "${report_dir}/build"
+        -L "$(dirname "${image}")" -lGiftUIFailureCore
+        -Xlinker -rpath -Xlinker "$(dirname "${image}")"
+        "${PROFILE_PROBE_ROOT}/ProfileCorpusProbe.swift"
+        "${PROFILE_PROBE_ROOT}/main.swift"
+        -o "${probe}"
+    )
+    record_command "${command[@]}"
+    "${command[@]}" >>"${log_path}" 2>&1
+    record_command "${probe}"
+    "${probe}" >"${output}" 2>>"${log_path}"
+    grep -Fxq 'profile_corpus_checksum=69' "${output}" ||
+        fail 'profile corpus probe did not produce its expected checksum'
+    record_image profile-corpus-probe "${probe}"
 }
 
 record_compiler() {
@@ -391,13 +422,17 @@ run_macos() {
     run_fixture_set "${compiler}" "${report_dir}/build" \
         -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
         -O -whole-module-optimization "${profile_flag}"
+    run_profile_corpus_probe_macos \
+        "${compiler}" "${sdk_path}" "${profile_flag}" "${image}"
     run_allocation_probe "${compiler}" "${sdk_path}" "${profile_flag}"
 }
 
 run_raspberry_pi() {
     # shellcheck source=../raspberry-pi/common.sh
     source "${PROJECT_ROOT}/scripts/raspberry-pi/common.sh"
-    local swift_driver compiler compiler_version sdk_identity module
+    local swift_driver compiler compiler_version sdk_identity module core_module
+    local core_object object_attributes file_description attributes_hex llvm_objdump
+    local probe_module sdk_root
     swift_driver="$(giftui_pi_host_swift)"
     compiler="$(dirname "${swift_driver}")/swiftc"
     [[ -x "${swift_driver}" && -x "${compiler}" ]] ||
@@ -435,6 +470,7 @@ run_raspberry_pi() {
     done < <(find "${report_dir}/build/swiftpm" -type f -name 'GiftUIFailureCore.swiftmodule' -print)
     [[ "${#modules[@]}" -eq 1 ]] || fail "expected one ARMv6 module image, found ${#modules[@]}"
     module="${modules[0]}"
+    core_module="${module}"
     record_image candidate-module "${module}"
     modules=()
     while IFS= read -r module; do
@@ -444,6 +480,56 @@ run_raspberry_pi() {
     [[ "${#modules[@]}" -eq 1 ]] ||
         fail "expected one ARMv6 capability adapter module, found ${#modules[@]}"
     record_image capability-adapter-module "${modules[0]}"
+
+    core_object="${report_dir}/build/swiftpm/${GIFTUI_PI_TARGET}/release/GiftUIFailureCore.build/GiftUIFailureCore.swift.o"
+    object_attributes="${report_dir}/resources/build-1/candidate/arm-attributes.txt"
+    file_description="$(file "${core_object}")"
+    [[ "${file_description}" == *'ELF 32-bit LSB relocatable, ARM, EABI5'* ]] ||
+        fail "expected an ARM EABI5 Core object: ${file_description}"
+    llvm_objdump="${GIFTUI_PI_HOST_BIN_DIR}/llvm-objdump"
+    record_command file "${core_object}"
+    record_command "${llvm_objdump}" -s -j .ARM.attributes "${core_object}"
+    {
+        printf '%s\n' "${file_description}"
+        "${llvm_objdump}" -s -j .ARM.attributes "${core_object}"
+    } >"${object_attributes}"
+    attributes_hex="$(
+        "${llvm_objdump}" -s -j .ARM.attributes "${core_object}" |
+            awk '
+                /^[[:space:]]+[[:xdigit:]]+[[:space:]]/ {
+                    for (i = 2; i <= NF; i++) {
+                        if ($i ~ /^[0-9A-Fa-f]+$/ && length($i) <= 8) {
+                            printf "%s", $i
+                        }
+                    }
+                }
+                END { print "" }
+            '
+    )"
+    [[ "${attributes_hex}" == *'61726d313133366a662d7300'* ]] ||
+        fail 'ARMv6 Core object does not declare the arm1136jf-s CPU'
+    [[ "${attributes_hex}" == *'1c01'* ]] ||
+        fail 'ARMv6 Core object does not declare the hard-float calling convention'
+    record_image candidate-object "${core_object}"
+
+    sdk_root="${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}"
+    probe_module="${report_dir}/build/GiftUIFailureProfileCorpusProbe.swiftmodule"
+    local -a probe_command=(
+        "${compiler}" -target "${GIFTUI_PI_TARGET}"
+        -use-ld=lld
+        -Xcc "--gcc-toolchain=${sdk_root}/usr"
+        -resource-dir "${sdk_root}/usr/lib/swift_static"
+        -sdk "${sdk_root}" -latomic
+        -O -whole-module-optimization -language-mode 6
+        -I "$(dirname "${core_module}")"
+        -parse-as-library -emit-module
+        -module-name GiftUIFailureProfileCorpusProbe
+        "${PROFILE_PROBE_ROOT}/ProfileCorpusProbe.swift"
+        -emit-module-path "${probe_module}"
+    )
+    record_command "${probe_command[@]}"
+    "${probe_command[@]}" >>"${log_path}" 2>&1
+    record_image profile-corpus-module "${probe_module}"
 }
 
 run_nrf52840() {
@@ -452,7 +538,7 @@ run_nrf52840() {
     giftui_nrf_require_environment
     record_command "${PROJECT_ROOT}/scripts/nrf52840/doctor.sh"
     "${PROJECT_ROOT}/scripts/nrf52840/doctor.sh" >>"${log_path}" 2>&1
-    local compiler_version module
+    local compiler_version module core_object object_attributes probe_module readelf
     compiler_version="$("${GIFTUI_NRF_SWIFTC}" --version 2>&1)"
     require_exact_fragment "${compiler_version}" "Swift version ${GIFTUI_NRF_SWIFT_VERSION}" 'nRF compiler'
     [[ "$(giftui_nrf_git_revision "${GIFTUI_NRF_ZEPHYR_BASE}")" == "${GIFTUI_NRF_ZEPHYR_REVISION}" ]] ||
@@ -481,6 +567,47 @@ run_nrf52840() {
     record_command "${command[@]}"
     "${command[@]}" >>"${log_path}" 2>&1
     record_image candidate-module "${module}"
+
+    core_object="${report_dir}/build/GiftUIFailureCore.swift.o"
+    local -a object_command=(
+        "${GIFTUI_NRF_SWIFTC}" -target "${GIFTUI_NRF_SWIFT_TARGET}"
+        -enable-experimental-feature Embedded
+        -Osize -whole-module-optimization
+        -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
+        -parse-as-library -emit-object -module-name GiftUIFailureCore
+        "${SOURCE_ROOT}/GiftUIFailureCore.swift" -o "${core_object}"
+    )
+    record_command "${object_command[@]}"
+    "${object_command[@]}" >>"${log_path}" 2>&1
+    readelf="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf"
+    object_attributes="${report_dir}/resources/build-1/candidate/arm-attributes.txt"
+    record_command "${readelf}" -A "${core_object}"
+    "${readelf}" -A "${core_object}" >"${object_attributes}"
+    grep -Fq 'Tag_CPU_name: "cortex-m4"' "${object_attributes}" ||
+        fail 'nRF Core object does not declare cortex-m4'
+    grep -Fq 'Tag_CPU_arch: v7E-M' "${object_attributes}" ||
+        fail 'nRF Core object does not declare ARMv7E-M'
+    grep -Fq 'Tag_FP_arch: VFPv4-D16' "${object_attributes}" ||
+        fail 'nRF Core object does not declare VFPv4-D16'
+    grep -Fq 'Tag_ABI_VFP_args: VFP registers' "${object_attributes}" ||
+        fail 'nRF Core object does not declare the hard-float calling convention'
+    record_image candidate-object "${core_object}"
+
+    probe_module="${report_dir}/build/GiftUIFailureProfileCorpusProbe.swiftmodule"
+    local -a probe_command=(
+        "${GIFTUI_NRF_SWIFTC}" -target "${GIFTUI_NRF_SWIFT_TARGET}"
+        -enable-experimental-feature Embedded
+        -Osize -whole-module-optimization
+        -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
+        -I "${report_dir}/build"
+        -parse-as-library -emit-module
+        -module-name GiftUIFailureProfileCorpusProbe
+        "${PROFILE_PROBE_ROOT}/ProfileCorpusProbe.swift"
+        -emit-module-path "${probe_module}"
+    )
+    record_command "${probe_command[@]}"
+    "${probe_command[@]}" >>"${log_path}" 2>&1
+    record_image profile-corpus-module "${probe_module}"
 
     local adapter_dir="${report_dir}/build/capability-adapter"
     local capability_module="${adapter_dir}/GiftUICapabilities.swiftmodule"
@@ -514,6 +641,8 @@ run_nrf52840() {
 record_input_hashes
 record_command "${SCRIPT_DIR}/check-spec-003-fixture-manifest.rb"
 "${SCRIPT_DIR}/check-spec-003-fixture-manifest.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-003-profile-corpus.rb"
+"${SCRIPT_DIR}/check-spec-003-profile-corpus.rb" >>"${log_path}" 2>&1
 run_dependency_checks
 
 case "${profile}" in

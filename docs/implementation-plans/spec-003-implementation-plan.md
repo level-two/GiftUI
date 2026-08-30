@@ -372,7 +372,7 @@ and the project-local Pi/nRF doctor and hardware-free probes pass.
 allocation, operation-count, layout, section, code, and stack reports clearly
 labeled as host or hardware-free cross-build evidence.
 
-- [ ] `T5.1` — Compile the same deterministic failure corpus with the exact
+- [x] `T5.1` — Compile the same deterministic failure corpus with the exact
       profile compilers and optimization modes: Apple Swift 6.3.3 `-O` WMO for
       both macOS fixtures, Swift 6.3.2 ARMv6 `-O` WMO, and Swift 6.3.2 nRF
       Embedded Swift `-Osize` WMO with Cortex-M4F hard-float flags. Verify the
@@ -688,3 +688,15 @@ required-facility substitution or snapshot mutation under refusal,
 disconnection, and post-handoff fault facts. Both production leaves remain
 independent; the adapter module compiles in both macOS profiles and for ARMv6
 and nRF52840. `T4.3` remains blocked on SPEC-009's production target.
+
+`T5.1` is complete: the driver compiles one collection-free, seven-case
+profile corpus probe against `GiftUIFailureCore` in all four exact profiles.
+The corpus checker locks probe case order to the checked-in semantic registry
+and derives checksum 69 from its expected words. Both optimized macOS profiles
+execute the probe; the ARMv6 and nRF profiles cross-compile the same source.
+The ARMv6 Core object is an ARM EABI5 relocatable object declaring
+`arm1136jf-s` and hard-float calling convention, while the nRF Core object
+declares Cortex-M4, ARMv7E-M, VFPv4-D16, and VFP-register arguments. See the
+[four-profile compilation evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-5/four-profile-compilation.md).
+`T5.2` is the next dependency-complete evidence task; `T4.3` remains blocked
+on SPEC-009.

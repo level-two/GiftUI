@@ -14,6 +14,9 @@ Fixtures/
   Negative/<fixture-id>/expected-diagnostic-patterns.txt
 SemanticCorpus/
   cases.tsv
+ProfileCorpusProbe/
+  ProfileCorpusProbe.swift
+  main.swift
 ResourceHarness/
   Baseline/
   Candidate/
@@ -42,6 +45,11 @@ documented beside the registry. A driver must hash the checked-in corpus and
 feed the same ordered rows to every profile. Profile adapters may encode the
 rows for their compiler target but may not omit, add, reorder, or reinterpret
 them.
+
+`ProfileCorpusProbe/ProfileCorpusProbe.swift` is the collection-free compiled
+form of the ordered corpus cases used by every T5.1 profile. macOS profiles
+execute it through `main.swift`; ARMv6 and nRF profiles compile the same probe
+source against their pinned target module without claiming target execution.
 
 `ResourceHarness/Baseline` and `ResourceHarness/Candidate` hold the matched
 checked-in source inputs for resource evidence. Both sides must use identical
