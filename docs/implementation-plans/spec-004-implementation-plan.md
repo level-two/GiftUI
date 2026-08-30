@@ -111,20 +111,19 @@ and SPEC-015.
   operational fault injection, and the conjunctive startup gate remain
   downstream integration tasks.
 
-## Next Implementation Iteration — Draft
+## Next Implementation Iteration — Authorized
 
-**Iteration disposition:** Specification correction drafted; implementation
-remains gated on explicit maintainer re-approval. The linked
+**Iteration disposition:** The maintainer explicitly reapproved the corrected
+Specification and authorized implementation to resume. The linked
 [checked raster-arithmetic design note](../implementation-designs/spec-004-raster-arithmetic.md)
 proves why the fixed input widths make shared LCM/row overflow and a
 payload-only usage overflow unconstructible. SPEC-004 now preserves those
 widths, requires maximum-bound representability proofs, assigns the one
 constructible shared-usage overflow to `.raster`, and forbids manufactured
-wider fixtures. The plan cannot treat that revision as approved implicitly.
+wider fixtures.
 
-**Post-gate iteration objective:** Complete `T2.1`, the checked byte-bound and
-region arithmetic slice of SPEC-004 Milestone 2, after the Specification has
-been corrected and explicitly re-approved. Add the pure internal arithmetic
+**Iteration objective:** Complete `T2.1`, the checked byte-bound and region
+arithmetic slice of SPEC-004 Milestone 2. Add the pure internal arithmetic
 and candidate-evaluation seam needed to derive exact row, region, raster,
 payload, and in-flight usage or the corrected Specification-assigned
 overflow/capacity reason. This remains the smallest implementation slice after
@@ -133,12 +132,12 @@ prematurely claiming a complete public resolver.
 
 **Included task:** `T2.1` only.
 
-**Required upstream gate:** Explicit maintainer re-approval of the consistent
-2026-08-30 corrections to SPEC-004's `Byte-bound and region arithmetic`,
-`Error Handling`, `Testing Requirements`, and `CR-010A`. The correction
-preserves the approved fixed public widths and checked operations while
-requiring overflow fixtures only for sites reachable from constructible typed
-inputs. Only a maintainer can approve the corrected Specification.
+**Satisfied upstream gate:** The maintainer explicitly reapproved the
+consistent 2026-08-30 corrections to SPEC-004's `Byte-bound and region
+arithmetic`, `Error Handling`, `Testing Requirements`, and `CR-010A`. The
+correction preserves the approved fixed public widths and checked operations
+while requiring overflow fixtures only for sites reachable from constructible
+typed inputs.
 
 **Explicitly excluded:** operation/lifetime/handoff compatibility and policy
 selection (`T2.2`); complete resolver orchestration, role permutations,
@@ -223,7 +222,7 @@ criterion to implementation work and checkable evidence.
 | `CR-008` — Encoding and submission-lifetime failures remain distinct | `T2.2`, `T3.2` | Independent negative/control fixture pairs | pending |
 | `CR-009` — Complete lifetime/handoff matrix and no retained operation stream | `T2.2`, `T3.2`, `T4.3` | Closed compatibility matrix and one-shot lease fixtures | pending |
 | `CR-010` — Four normalized host results and exact Pi/nRF outcomes | `T3.1`, `T5.1` | Cross-profile semantic transcripts and exact target builds | pending |
-| `CR-010A` — Complete formula, capacity, malformed-bound, and overflow coverage | `T2.1`, `T2.4`, `T3.1` | Table-driven arithmetic and exact 3,840-byte nRF result corpus | blocked — corrected Specification awaiting approval |
+| `CR-010A` — Complete formula, capacity, malformed-bound, and overflow coverage | `T2.1`, `T2.4`, `T3.1` | Table-driven arithmetic and exact 3,840-byte nRF result corpus | pending |
 | `CR-011` — Zero static-path heap allocation | `T1.4`, `T5.2` | Allocation-instrumented host fixture and allocator-free linked target | pending |
 | `CR-012` — Zero steady-state resolution and at most 96 initialization operations | `T2.5`, `T5.2` | Invocation and primitive-operation reports for every path | pending |
 | `CR-013` — nRF resource, layout, repeatability, and toolchain evidence | `T5.3`, `T5.4` | Matched ELF/map/disassembly reports and two pristine rebuilds | pending |
@@ -315,11 +314,10 @@ bounded representation without importing another owner.
 **Entry conditions:** Milestone 1 fixes the complete valid input domain and
 unavailable vocabulary.
 
-**Current gate:** SPEC-004 now resolves the unreachable-overflow conflict
-recorded in the checked raster-arithmetic design note, but `T2.1` remains
-blocked until a maintainer explicitly re-approves that correction. Tasks
-`T2.2` through `T2.5` must not bypass the numeric foundation or reinterpret
-its reasons.
+**Current gate:** The maintainer explicitly reapproved the SPEC-004 correction
+that resolves the unreachable-overflow conflict recorded in the checked
+raster-arithmetic design note. `T2.1` may proceed; tasks `T2.2` through `T2.5`
+must not bypass the numeric foundation or reinterpret its reasons.
 
 **Exit evidence:** The pure resolver produces one immutable effective result
 or exact stable reason, independent of role/candidate order, with checked
@@ -509,9 +507,9 @@ independent review.
 
 ## Integration and Validation Order
 
-1. Obtain explicit maintainer approval of the corrected SPEC-004 arithmetic
-   contract; then complete the draft
-   implementation iteration above without claiming the complete resolver.
+1. Preserve the maintainer's explicit approval of the corrected SPEC-004
+   arithmetic contract and complete the authorized implementation iteration
+   above without claiming the complete resolver.
 2. Preserve completed SPEC-003 work and leave its capability, execution, and
    host adapters dependency-blocked until their owning declarations exist.
 3. Continue Milestone 2 in dependency order through compatibility, resolver
@@ -534,10 +532,6 @@ independent review.
 
 ### Upstream blockers
 
-- The corrected SPEC-004 arithmetic contract awaits explicit maintainer
-  re-approval. Until then, `T2.1`, `T2.4`, `T3.1`, and `CR-010A` remain gated;
-  do not widen private test inputs, invent different operands, or treat the
-  correction as implicitly approved.
 - The exact SPEC-003 required-family outcome carrier and operational fault
   seam depend on the active failure implementation. The pure
   `GiftUICapabilities` resolver must not import failure or wait for it.
@@ -681,5 +675,5 @@ The [checked raster-arithmetic design note](../implementation-designs/spec-004-r
 records the fixed-width proof that resolved the `T2.1` contract conflict.
 SPEC-004 now requires maximum-bound non-overflow proofs, assigns the one
 constructible shared-usage overflow to `.raster`, and excludes manufactured
-payload-only/in-flight arithmetic overflow. `T2.1` remains unchecked pending
-explicit maintainer re-approval of that correction.
+payload-only/in-flight arithmetic overflow. The maintainer explicitly
+reapproved that correction; `T2.1` is now the next executable task.

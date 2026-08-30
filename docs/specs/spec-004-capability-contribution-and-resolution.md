@@ -44,6 +44,10 @@ target_milestone: MVP
 
 # SPEC-004: Capability Contribution and Resolution
 
+> **Approval status:** Explicitly reapproved by the maintainer after the
+> 2026-08-30 fixed-width raster-arithmetic correction. The corrected contract
+> is authoritative for continued implementation.
+
 ## Summary
 
 This Specification defines the Wave 1 contract for typed capability
@@ -1192,9 +1196,9 @@ semantics and normalized results remain unchanged.
 
 The 2026-08-30 arithmetic correction preserves the accepted architecture,
 public widths, checked-operation requirement, and failure vocabulary while
-limiting overflow fixtures to constructible typed inputs. Explicit maintainer
-re-approval of that correction is required before `T2.1` implementation
-resumes.
+limiting overflow fixtures to constructible typed inputs. The maintainer
+explicitly reapproved the corrected contract before `T2.1` implementation
+resumed.
 
 The remaining capability-domain contract and reciprocal Wave 1 terminology
 are closed. SPEC-003 fixes the enclosing required-family carrier and
