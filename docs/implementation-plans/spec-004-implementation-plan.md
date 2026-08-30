@@ -7,7 +7,8 @@ owners:
   - codex
 created: 2026-08-29
 updated: 2026-08-30
-related_design_notes: []
+related_design_notes:
+  - ../implementation-designs/spec-004-raster-arithmetic.md
 conformance_report: null
 related_future_work:
   - FW-006
@@ -595,3 +596,10 @@ and all ten early 64-bit layout ceilings in both macOS profiles. The same
 fixed-value source cross-builds for ARMv6 and nRF52840; complete 32-bit and
 linked-resource reports remain assigned to `T5.3`. Milestone 1 is complete;
 `T2.1` is next.
+The [checked raster-arithmetic design note](../implementation-designs/spec-004-raster-arithmetic.md)
+records a blocking contract conflict discovered before `T2.1`: `UInt16`
+extent/alignment inputs cannot overflow the mandated shared `UInt32`
+LCM/row-arithmetic sites, and identical raster/payload multiplication operands
+make a payload-only overflow unreachable after raster succeeds. `T2.1`
+remains unchecked pending Specification direction; no widened private fixture
+or invented payload arithmetic is treated as conformance.

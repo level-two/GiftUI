@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-08-28
+updated: 2026-08-30
 proposal:
   - PROPOSAL-004
 related_rfcs:
@@ -1216,6 +1216,7 @@ criteria.
 ## Implementation Records
 
 - [SPEC-004 Implementation Plan](../implementation-plans/spec-004-implementation-plan.md)
+- [Checked Raster Arithmetic Implementation Design](../implementation-designs/spec-004-raster-arithmetic.md)
 
 ## References
 
