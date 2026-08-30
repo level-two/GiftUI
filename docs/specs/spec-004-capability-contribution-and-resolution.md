@@ -45,8 +45,9 @@ target_milestone: MVP
 # SPEC-004: Capability Contribution and Resolution
 
 > **Approval status:** Explicitly reapproved by the maintainer after the
-> 2026-08-30 fixed-width raster-arithmetic correction. The corrected contract
-> is authoritative for continued implementation.
+> 2026-08-30 fixed-width raster-arithmetic and validation-only
+> operation-stream corrections. The corrected contract is authoritative for
+> continued implementation.
 
 ## Summary
 
@@ -1213,9 +1214,9 @@ Implementation of `T2.2` exposed that the previously single-case
 `OperationStreamLifetime` made `.operationStreamMismatch`, its two typed
 precedence positions, and the required one-shot incompatibility fixture
 unconstructible. The 2026-08-30 correction adds one validation-only negative
-fact without admitting another stream mode or changing ADR-010. Explicit
-maintainer reapproval is required before the corrected public vocabulary and
-`T2.2` implementation proceed.
+fact without admitting another stream mode or changing ADR-010. The maintainer
+explicitly reapproved the corrected public vocabulary before `T2.2`
+implementation resumed.
 
 The 2026-08-30 arithmetic correction preserves the accepted architecture,
 public widths, checked-operation requirement, and failure vocabulary while
