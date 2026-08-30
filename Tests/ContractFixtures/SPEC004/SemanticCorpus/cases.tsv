@@ -31,5 +31,8 @@ configuration-macos-static	configuration	640,480,1,2	available,31,640,480,640,48
 configuration-pi-screen	configuration	240,240,2,1	available,31,240,240,240,16,480,1,1,1,1,2,7680,7680,1,7680
 configuration-nrf52840-tft	configuration	480,320,2,1	available,31,480,320,480,4,960,1,1,1,1,2,3840,3840,1,3840
 configuration-nrf52840-full-rgba-negative	configuration	480,320,1,2,3840	unavailable,insufficient-capacity,2,614400,3840
+one-shot-lifetime-handoff-matrix	one-shot	3,2,6	5-available,1-rejected,3-operations,1-traversal,0-retained
+one-shot-encoding-negative-control	one-shot	1,2,1,1	negative,9,control,available
+one-shot-lifetime-negative-control	one-shot	1,1,1,2	negative,10,control,available
 precedence-candidate-pairs	precedence	11,2	55,all-pass
 precedence-all-stage-pairs	precedence	16,2	120,all-pass

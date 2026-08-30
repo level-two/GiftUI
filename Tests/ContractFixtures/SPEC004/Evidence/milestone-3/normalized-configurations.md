@@ -37,6 +37,7 @@ profile identity.
 | Effective geometry and usage fields | Every result asserts extent, region extent, row bytes, encoding, lifetime, handoff, realization, raster bytes, payload bytes, count, and in-flight bytes individually |
 
 Validated on 2026-08-30 with all four
-`scripts/contracts/run-spec-004.sh --profile ...` commands. The same 34-row
-semantic transcript passed under macOS dynamic/static, ARMv6, and nRF52840
-profiles. Cross-target results are hardware-free evidence only.
+`scripts/contracts/run-spec-004.sh --profile ...` commands. The 34-row
+semantic transcript passed under both executable macOS profiles; the unchanged
+production declarations also cross-compiled for ARMv6 and nRF52840. The
+cross-target results are hardware-free evidence only.

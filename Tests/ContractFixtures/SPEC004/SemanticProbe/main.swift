@@ -781,6 +781,248 @@ guard nrfFullRGBA == .unavailable(.insufficientCapacity(
 }
 print("configuration-nrf52840-full-rgba-negative\tconfiguration\t480,320,1,2,3840\tunavailable,insufficient-capacity,2,614400,3840")
 
+private struct OneShotBorrowState {
+    var active = true
+    var postEndAccesses: UInt8 = 0
+}
+
+private struct OneShotOperationStream {
+    private(set) var traversalCount: UInt8 = 0
+    private(set) var operationCount: UInt8 = 0
+    private var cursor: UInt8 = 0
+
+    mutating func beginTraversal() -> Bool {
+        guard traversalCount == 0 else { return false }
+        traversalCount = 1
+        return true
+    }
+
+    mutating func next(borrow: inout OneShotBorrowState) -> UInt8? {
+        guard borrow.active else {
+            borrow.postEndAccesses &+= 1
+            return nil
+        }
+        let operation: UInt8
+        switch cursor {
+        case 0: operation = 3
+        case 1: operation = 5
+        case 2: operation = 7
+        default: return nil
+        }
+        cursor &+= 1
+        operationCount &+= 1
+        return operation
+    }
+}
+
+private struct FixedDerivedPayload: Equatable {
+    let first: UInt8
+    let second: UInt8
+    let third: UInt8
+}
+
+private struct OneShotDerivedEndpoint {
+    private(set) var synchronousChecksum: UInt8 = 0
+    private(set) var ownedPayload: FixedDerivedPayload?
+    private(set) var copyCompletedBeforeBorrowEnd = false
+    private(set) var transferCompletedBeforeBorrowEnd = false
+    private(set) var retainedOperationCount: UInt8 = 0
+
+    mutating func offer(
+        stream: inout OneShotOperationStream,
+        borrow: inout OneShotBorrowState,
+        lifetime: SubmissionLifetime,
+        handoff: SubmissionHandoff
+    ) -> Bool {
+        if lifetime == .synchronousBorrow, handoff == .queued { return false }
+        guard borrow.active, stream.beginTraversal(),
+              let first = stream.next(borrow: &borrow),
+              let second = stream.next(borrow: &borrow),
+              let third = stream.next(borrow: &borrow),
+              stream.next(borrow: &borrow) == nil else {
+            return false
+        }
+        let derived = FixedDerivedPayload(
+            first: first &* 2,
+            second: second &* 2,
+            third: third &* 2
+        )
+        switch lifetime {
+        case .synchronousBorrow:
+            synchronousChecksum = derived.first &+ derived.second &+ derived.third
+        case .synchronousCopy:
+            ownedPayload = derived
+            copyCompletedBeforeBorrowEnd = borrow.active
+        case .ownershipTransfer:
+            ownedPayload = derived
+            transferCompletedBeforeBorrowEnd = borrow.active
+        }
+        return true
+    }
+}
+
+private func verifyOneShotPair(
+    lifetime: SubmissionLifetime,
+    handoff: SubmissionHandoff,
+    expectedAvailable: Bool
+) {
+    var borrow = OneShotBorrowState()
+    var stream = OneShotOperationStream()
+    var endpoint = OneShotDerivedEndpoint()
+    let available = endpoint.offer(
+        stream: &stream,
+        borrow: &borrow,
+        lifetime: lifetime,
+        handoff: handoff
+    )
+    guard available == expectedAvailable else {
+        fatalError("one-shot lifetime/handoff result mismatch")
+    }
+    if expectedAvailable {
+        guard stream.traversalCount == 1,
+              stream.operationCount == 3,
+              endpoint.retainedOperationCount == 0 else {
+            fatalError("one-shot stream was not consumed exactly once")
+        }
+        switch lifetime {
+        case .synchronousBorrow:
+            guard endpoint.synchronousChecksum == 30,
+                  endpoint.ownedPayload == nil else {
+                fatalError("synchronous borrow retained derived payload")
+            }
+        case .synchronousCopy:
+            guard endpoint.ownedPayload == FixedDerivedPayload(
+                first: 6, second: 10, third: 14
+            ), endpoint.copyCompletedBeforeBorrowEnd else {
+                fatalError("synchronous copy did not own bytes before borrow end")
+            }
+        case .ownershipTransfer:
+            guard endpoint.ownedPayload == FixedDerivedPayload(
+                first: 6, second: 10, third: 14
+            ), endpoint.transferCompletedBeforeBorrowEnd else {
+                fatalError("ownership transfer did not complete before borrow end")
+            }
+        }
+    } else {
+        guard stream.traversalCount == 0,
+              stream.operationCount == 0,
+              endpoint.ownedPayload == nil else {
+            fatalError("rejected one-shot pair consumed candidate data")
+        }
+    }
+
+    borrow.active = false
+    guard stream.next(borrow: &borrow) == nil,
+          borrow.postEndAccesses == 1,
+          stream.beginTraversal() == !expectedAvailable else {
+        fatalError("one-shot post-return poison or replay mismatch")
+    }
+}
+
+let oneShotPairs: [(SubmissionLifetime, SubmissionHandoff, Bool)] = [
+    (.synchronousBorrow, .synchronous, true),
+    (.synchronousBorrow, .queued, false),
+    (.synchronousCopy, .synchronous, true),
+    (.synchronousCopy, .queued, true),
+    (.ownershipTransfer, .synchronous, true),
+    (.ownershipTransfer, .queued, true),
+]
+for pair in oneShotPairs {
+    verifyOneShotPair(lifetime: pair.0, handoff: pair.1, expectedAvailable: pair.2)
+}
+print("one-shot-lifetime-handoff-matrix\tone-shot\t3,2,6\t5-available,1-rejected,3-operations,1-traversal,0-retained")
+
+private func compatibilityControl(
+    requirementEncoding: CanonicalPixelEncodingSet,
+    realizationEncoding: CanonicalPixelEncodingSet,
+    requirementLifetime: SubmissionLifetimeSet,
+    realizationLifetime: SubmissionLifetimeSet
+) -> RasterPresentationCandidateOutcome {
+    let extent = CapabilityExtent(width: 4, height: 4)!
+    let requirement = RasterPresentationRequirement(
+        operations: allOperations,
+        extent: extent,
+        operationStream: .synchronousBorrowedOneShot,
+        acceptedEncodings: requirementEncoding,
+        acceptedSubmissionLifetimes: requirementLifetime,
+        maximumRasterBytes: .init(rawValue: 64),
+        maximumPayloadBytes: .init(rawValue: 64),
+        maximumInFlightBytes: .init(rawValue: 64),
+        absence: .required
+    )!
+    let realization = RasterRealizationContribution(
+        kind: .tiled,
+        operations: allOperations,
+        operationStream: .synchronousBorrowedOneShot,
+        encodings: realizationEncoding,
+        producedSubmissionLifetimes: realizationLifetime,
+        maximumExtent: extent,
+        maximumRegionWidth: 4,
+        maximumRegionHeight: 2,
+        rowByteAlignment: 2,
+        maximumRasterBytes: .init(rawValue: 64),
+        maximumPayloadBytes: .init(rawValue: 64)
+    )!
+    let surface = SurfaceDisplayContribution(
+        extent: extent,
+        encodings: realizationEncoding,
+        acceptedSubmissionLifetimes: realizationLifetime,
+        handoffs: .synchronous,
+        maximumRegionWidth: 4,
+        maximumRegionHeight: 2,
+        rowByteAlignment: 2,
+        maximumInFlightCount: 1,
+        maximumInFlightBytes: .init(rawValue: 64)
+    )!
+    let policy = RasterPresentationPolicy(
+        maximumRasterBytes: .init(rawValue: 64),
+        maximumPayloadBytes: .init(rawValue: 64),
+        maximumInFlightBytes: .init(rawValue: 64),
+        allowedRealizations: .tiled,
+        allowedEncodings: CanonicalPixelEncodingSet(rawValue: 3),
+        preferredRealization: .tiled,
+        preferredEncoding: .rgb565BigEndian
+    )!
+    return RasterPresentationCompatibility.evaluateCandidate(
+        requirement: requirement,
+        realization: realization,
+        surface: surface,
+        policy: policy
+    )
+}
+
+guard compatibilityControl(
+    requirementEncoding: .rgb565BigEndian,
+    realizationEncoding: .rgba8888,
+    requirementLifetime: .synchronousBorrow,
+    realizationLifetime: .synchronousBorrow
+) == .unavailable(.noCommonCanonicalPixelEncoding),
+compatibilityControl(
+    requirementEncoding: .rgb565BigEndian,
+    realizationEncoding: .rgb565BigEndian,
+    requirementLifetime: .synchronousBorrow,
+    realizationLifetime: .synchronousBorrow
+) != .unavailable(.noCommonCanonicalPixelEncoding) else {
+    fatalError("one-shot encoding negative/control mismatch")
+}
+print("one-shot-encoding-negative-control\tone-shot\t1,2,1,1\tnegative,9,control,available")
+
+guard compatibilityControl(
+    requirementEncoding: .rgb565BigEndian,
+    realizationEncoding: .rgb565BigEndian,
+    requirementLifetime: .synchronousBorrow,
+    realizationLifetime: .synchronousCopy
+) == .unavailable(.incompatibleSubmissionLifetime),
+compatibilityControl(
+    requirementEncoding: .rgb565BigEndian,
+    realizationEncoding: .rgb565BigEndian,
+    requirementLifetime: .synchronousBorrow,
+    realizationLifetime: .synchronousBorrow
+) != .unavailable(.incompatibleSubmissionLifetime) else {
+    fatalError("one-shot lifetime negative/control mismatch")
+}
+print("one-shot-lifetime-negative-control\tone-shot\t1,1,1,2\tnegative,10,control,available")
+
 let precedenceCount = CapabilityByteCount(rawValue: 16)
 let precedenceAvailable = CapabilityByteCount(rawValue: 15)
 let precedenceReasons: [RasterPresentationUnavailable] = [

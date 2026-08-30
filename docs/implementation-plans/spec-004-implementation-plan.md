@@ -403,7 +403,7 @@ justification, and a one-shot tiled seam without promoting Spike code.
       fixture-to-field assertion report for every admitted field, equal macOS
       semantic coverage, bounded Pi RGB565 tiling, one nRF RGB565 `3,840`-byte
       in-flight payload, and unavailable nRF full-surface RGBA8888.
-- [ ] `T3.2` — Rebuild the authoritative one-shot lease and derived-payload
+- [x] `T3.2` — Rebuild the authoritative one-shot lease and derived-payload
       fixtures rather than copying SPIKE-001 production shapes. Cover every
       lifetime/handoff pair, exact-once synchronous stream consumption,
       synchronous-copy ownership before borrow end, no queued synchronous
@@ -779,3 +779,14 @@ RGBA8888 control is unavailable with the exact raster-capacity reason. The
 fixture-to-field report records each requirement, contribution, policy, and
 effective-result assertion. The 34-row normalized transcript and all four
 hardware-free SPEC-004 drivers pass. `T3.2` is next.
+`T3.2` is complete: an independently rebuilt, fixed three-operation lease
+fixture covers all six submission-lifetime/handoff pairs. Five conforming
+pairs traverse the stream exactly once and derive three bounded bytes; queued
+synchronous borrow is rejected before traversal. Synchronous copy and
+ownership transfer complete into endpoint-owned fixed payload storage while
+the borrow remains active, synchronous borrow retains no payload, post-return
+poisoning rejects access, replay is rejected, and no operation is retained.
+Independent encoding and lifetime negative/control pairs retain distinct
+stable reasons. The fixture is contract-only and copies no SPIKE-001 or
+unimplemented SPEC-009/SPEC-014 production shape. The 37-row normalized
+transcript and all four hardware-free SPEC-004 drivers pass. `T3.3` is next.
