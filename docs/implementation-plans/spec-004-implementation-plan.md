@@ -201,7 +201,7 @@ has reproducible fixture and report conventions before semantic code lands.
       outputs/hashes, and deterministic exits. Register the standalone driver
       in `scripts/contracts/driver-registry.tsv` without adding remote access,
       deployment, or flashing to `scripts/test.sh`.
-- [ ] `T0.4` — Add positive capability-only imports; forbidden upward imports;
+- [x] `T0.4` — Add positive capability-only imports; forbidden upward imports;
       `GiftUI` non-re-export tests; exact source and compiled dependency
       inspection; target-cycle detection; and a portable Signal Analyzer
       source scan for platform, backend, board, driver, controller, transport,
@@ -551,3 +551,10 @@ source-list, package-graph, and emitted-image mismatches. Each standalone run
 records revision/dirty state, complete commands, compiler identity and hash,
 input/image hashes, deterministic roots and exit, and an explicit absence of
 remote access, deployment, service restart, and flashing. `T0.4` is next.
+`T0.4` is complete: the ordered
+[capability boundary evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-0/capability-boundary.md)
+contains one positive capability import and negative fixtures for every
+forbidden module. Source, emitted interfaces, compiler dependency scans,
+product links, exact package edges, cycle regressions, `GiftUI` non-re-export,
+and the portable Signal Analyzer identity scan all fail closed. `T0.5` is
+next.

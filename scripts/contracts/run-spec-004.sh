@@ -182,6 +182,43 @@ record_compiler() {
     record_block compiler_version "${version}"
 }
 
+run_fixture_set() {
+    local compiler="$1"
+    local module_dir="$2"
+    shift 2
+    local -a common_flags=("$@")
+    local id expectation access entry patterns fixture_dir diagnostic output_path result pattern
+
+    while IFS=$'\t' read -r id expectation access entry patterns; do
+        [[ -n "${id}" && "${id}" != \#* ]] || continue
+        fixture_dir="${report_dir}/fixtures/${id}"
+        mkdir -p "${fixture_dir}"
+        output_path="${fixture_dir}/stdout.txt"
+        diagnostic="${fixture_dir}/stderr.txt"
+        local -a command=("${compiler}" "${common_flags[@]}" -I "${module_dir}")
+        if [[ "${access}" == "package" ]]; then
+            command+=(-package-name GiftUI)
+        fi
+        command+=(-typecheck "${FIXTURE_ROOT}/${entry}")
+        record_command "${command[@]}"
+        set +e
+        "${command[@]}" >"${output_path}" 2>"${diagnostic}"
+        result=$?
+        set -e
+
+        if [[ "${expectation}" == "pass" ]]; then
+            [[ "${result}" -eq 0 ]] || fail "positive fixture ${id} failed"
+            continue
+        fi
+        [[ "${result}" -ne 0 ]] || fail "negative fixture ${id} unexpectedly compiled"
+        while IFS= read -r pattern; do
+            [[ -n "${pattern}" && "${pattern}" != \#* ]] || continue
+            grep -Fq "${pattern}" "${diagnostic}" ||
+                fail "negative fixture ${id} lacked diagnostic pattern: ${pattern}"
+        done <"${FIXTURE_ROOT}/${patterns}"
+    done <"${FIXTURE_ROOT}/fixture-manifest.tsv"
+}
+
 run_dependency_checks() {
     command -v swift >/dev/null || fail 'swift is missing'
     local package_json="${report_dir}/package.json"
@@ -190,6 +227,45 @@ run_dependency_checks() {
     record_command "${SCRIPT_DIR}/check-target-dependencies.rb"
     "${SCRIPT_DIR}/check-target-dependencies.rb" \
         <"${package_json}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-004-dependencies.rb"
+    "${SCRIPT_DIR}/check-spec-004-dependencies.rb" \
+        <"${package_json}" >>"${log_path}" 2>&1
+
+    local regression_log="${report_dir}/dependency-regressions.log"
+    set +e
+    "${SCRIPT_DIR}/check-target-dependencies.rb" \
+        "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/DependencyGraphCases/unknown-edge.yaml" \
+        <"${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/DependencyGraphCases/two-target-package.json" \
+        >"${regression_log}" 2>&1
+    local unknown_result=$?
+    "${SCRIPT_DIR}/check-target-dependencies.rb" \
+        "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/DependencyGraphCases/cycle.yaml" \
+        <"${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/DependencyGraphCases/cyclic-package.json" \
+        >>"${regression_log}" 2>&1
+    local cycle_result=$?
+    set -e
+    [[ "${unknown_result}" -ne 0 ]] || fail 'unknown dependency regression unexpectedly passed'
+    [[ "${cycle_result}" -ne 0 ]] || fail 'dependency cycle regression unexpectedly passed'
+    grep -Fq 'unknown dependencies' "${regression_log}" ||
+        fail 'unknown dependency regression lacked its expected failure'
+    grep -Fq 'cycle detected' "${regression_log}" ||
+        fail 'dependency cycle regression lacked its expected failure'
+}
+
+run_portable_source_checks() {
+    record_command "${SCRIPT_DIR}/check-spec-004-portable-source.rb"
+    "${SCRIPT_DIR}/check-spec-004-portable-source.rb" >>"${log_path}" 2>&1
+
+    local regression_log="${report_dir}/portable-source-regression.log"
+    local regression_source="${FIXTURE_ROOT}/PortableSourceCases/forbidden-device-identity.swift"
+    set +e
+    "${SCRIPT_DIR}/check-spec-004-portable-source.rb" \
+        "${regression_source}" >"${regression_log}" 2>&1
+    local result=$?
+    set -e
+    [[ "${result}" -ne 0 ]] || fail 'portable identity regression unexpectedly passed'
+    grep -Fq 'concrete identity token device' "${regression_log}" ||
+        fail 'portable identity regression lacked its expected failure'
 }
 
 run_macos() {
@@ -198,6 +274,7 @@ run_macos() {
     command -v xcrun >/dev/null || fail 'xcrun is missing'
 
     local compiler compiler_version sdk_path sdk_version profile_flag extension image
+    local giftui_dir giftui_module dependency_scan product_links
     compiler="$(xcrun --find swiftc)"
     compiler_version="$("${compiler}" --version 2>&1)"
     require_exact_fragment "${compiler_version}" 'Apple Swift version 6.3.3' 'macOS compiler'
@@ -237,6 +314,52 @@ run_macos() {
     "${command[@]}" >>"${log_path}" 2>&1
     record_image candidate-module "${report_dir}/build/GiftUICapabilities.swiftmodule"
     record_image candidate-library "${image}"
+
+    dependency_scan="${report_dir}/build/GiftUICapabilities.dependencies.json"
+    local -a scan_command=(
+        "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
+        -O -whole-module-optimization "${profile_flag}"
+        -language-mode 6 -module-name GiftUICapabilities
+        -module-cache-path "${report_dir}/build/clang-cache"
+        -scan-dependencies "${EXPECTED_SOURCE}"
+    )
+    record_command "${scan_command[@]}"
+    "${scan_command[@]}" >"${dependency_scan}" 2>>"${log_path}"
+
+    giftui_dir="${report_dir}/build/giftui"
+    mkdir -p "${giftui_dir}"
+    giftui_module="${giftui_dir}/GiftUI.swiftmodule"
+    local -a giftui_command=(
+        "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
+        -O -whole-module-optimization "${profile_flag}"
+        -language-mode 6 -package-name GiftUI -enable-library-evolution
+        -parse-as-library -emit-module -module-name GiftUI
+        "${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
+        -emit-module-path "${giftui_module}"
+        -emit-module-interface-path "${giftui_dir}/GiftUI.swiftinterface"
+        -emit-package-module-interface-path "${giftui_dir}/GiftUI.package.swiftinterface"
+    )
+    record_command "${giftui_command[@]}"
+    "${giftui_command[@]}" >>"${log_path}" 2>&1
+    record_image giftui-module "${giftui_module}"
+
+    product_links="${report_dir}/build/product-links.txt"
+    record_command otool -L "${image}"
+    otool -L "${image}" >"${product_links}"
+    record_command "${SCRIPT_DIR}/check-spec-004-boundary.rb" \
+        "${report_dir}/build/GiftUICapabilities.swiftinterface" \
+        "${product_links}" "${dependency_scan}" \
+        "${giftui_dir}/GiftUI.swiftinterface" \
+        "${giftui_dir}/GiftUI.package.swiftinterface"
+    "${SCRIPT_DIR}/check-spec-004-boundary.rb" \
+        "${report_dir}/build/GiftUICapabilities.swiftinterface" \
+        "${product_links}" "${dependency_scan}" \
+        "${giftui_dir}/GiftUI.swiftinterface" \
+        "${giftui_dir}/GiftUI.package.swiftinterface" \
+        >>"${log_path}" 2>&1
+    run_fixture_set "${compiler}" "${report_dir}/build" \
+        -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
+        -O -whole-module-optimization "${profile_flag}"
 }
 
 run_raspberry_pi() {
@@ -317,11 +440,19 @@ run_nrf52840() {
     record_command "${command[@]}"
     "${command[@]}" >>"${log_path}" 2>&1
     record_image candidate-module "${module}"
+    run_fixture_set "${GIFTUI_NRF_SWIFTC}" "${report_dir}/build" \
+        -target "${GIFTUI_NRF_SWIFT_TARGET}" \
+        -enable-experimental-feature Embedded \
+        -Osize -whole-module-optimization \
+        -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
 }
 
 verify_source_list
 record_input_hashes
+record_command "${SCRIPT_DIR}/check-spec-004-fixture-manifest.rb"
+"${SCRIPT_DIR}/check-spec-004-fixture-manifest.rb" >>"${log_path}" 2>&1
 run_dependency_checks
+run_portable_source_checks
 
 case "${profile}" in
     macos-dynamic | macos-static) run_macos ;;
