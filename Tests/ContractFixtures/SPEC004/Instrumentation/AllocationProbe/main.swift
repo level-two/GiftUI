@@ -99,6 +99,13 @@ private func exercise(seed: UInt32) -> UInt32 {
         contributions: contributions,
         workspace: &workspace
     )
+    let snapshot: CapabilitySnapshot?
+    switch resolution {
+    case let .available(value):
+        snapshot = CapabilitySnapshot(rasterPresentation: value)
+    case .unavailable:
+        snapshot = nil
+    }
 
     var checksum = requirement.maximumRasterBytes.rawValue
     checksum &+= UInt32(producer.operations.rawValue)
@@ -118,6 +125,7 @@ private func exercise(seed: UInt32) -> UInt32 {
     if case let .available(value) = resolution {
         checksum &+= value.requiredRasterBytes.rawValue
     }
+    checksum &+= snapshot?.rasterPresentation?.rowBytes.rawValue ?? 0
     return checksum
 }
 

@@ -390,6 +390,28 @@ run_semantic_probe() {
     record_image semantic-probe "${probe}"
 }
 
+compare_macos_semantic_transcripts() {
+    local counterpart_profile counterpart transcript comparison
+    if [[ "${profile}" == 'macos-dynamic' ]]; then
+        counterpart_profile='macos-static'
+    else
+        counterpart_profile='macos-dynamic'
+    fi
+    counterpart="${REPORT_ROOT}/${counterpart_profile}/semantics/arithmetic.tsv"
+    transcript="${report_dir}/semantics/arithmetic.tsv"
+    comparison="${report_dir}/semantics/macos-profile-equivalence.txt"
+    if [[ ! -f "${counterpart}" ]]; then
+        printf 'counterpart=%s\nstatus=not-yet-generated\n' \
+            "${counterpart_profile}" >"${comparison}"
+        return
+    fi
+    record_command cmp "${counterpart}" "${transcript}"
+    cmp "${counterpart}" "${transcript}" ||
+        fail "${profile} semantic transcript differs from ${counterpart_profile}"
+    printf 'counterpart=%s\nstatus=byte-for-byte-equal\n' \
+        "${counterpart_profile}" >"${comparison}"
+}
+
 run_macos() {
     [[ "$(uname -s)" == "Darwin" ]] || fail 'macOS profile requires macOS'
     [[ "$(uname -m)" == "arm64" ]] || fail 'macOS evidence requires an arm64 host'
@@ -503,6 +525,7 @@ run_macos() {
         "${report_dir}/build/GiftUICapabilities.swiftinterface" \
         "${undefined_symbols}" >>"${log_path}" 2>&1
     run_semantic_probe "${compiler}" "${sdk_path}" "${profile_flag}"
+    compare_macos_semantic_transcripts
     run_allocation_probe "${compiler}" "${sdk_path}" "${profile_flag}"
     run_fixture_set "${compiler}" "${report_dir}/build" \
         -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \

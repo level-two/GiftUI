@@ -414,7 +414,7 @@ justification, and a one-shot tiled seam without promoting Spike code.
       unsupported extent, policy, and every capacity negative/control case.
       Assert no traps, partial snapshots, last-writer substitution, weakened
       result, or diagnostic dependence.
-- [ ] `T3.4` — Compare normalized dynamic/static transcripts and prove the
+- [x] `T3.4` — Compare normalized dynamic/static transcripts and prove the
       static fixture uses fixed/caller-owned storage throughout contribution,
       resolution, validation-result construction, snapshot storage, and
       steady-state access.
@@ -801,3 +801,12 @@ Typed values and dependency/binary checks keep results independent of
 diagnostics. All 110 package tests, the 42-row normalized transcript,
 zero-allocation macOS probes, and all four hardware-free SPEC-004 drivers pass.
 `T3.4` is next.
+`T3.4` is complete: both macOS profile reports record byte-for-byte equality
+of the 42-row normalized transcript. The static zero-allocation loop now spans
+fixed contribution insertion, caller-owned workspace resolution,
+validation-result handling, snapshot construction/storage, and repeated
+snapshot access. It records zero allocations while bounded layout evidence
+reports 96-byte contribution stride, 52-byte workspace, 40-byte effective
+value, and 40-byte snapshot; the production image contains no instrumentation.
+All four hardware-free SPEC-004 drivers pass. Milestone 3 is complete; `T4.1`
+is next, subject to its owning Specification entry conditions.
