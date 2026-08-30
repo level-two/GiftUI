@@ -360,7 +360,7 @@ and no runtime side effect.
       excess for every owner of all three capacity minima, exact
       `480 x 4 x 2 = 3,840` nRF usage, allocation-free helper execution, and
       compilation through all four hardware-free profile commands.
-- [ ] `T2.2` — Implement operation/one-shot compatibility, canonical-encoding
+- [x] `T2.2` — Implement operation/one-shot compatibility, canonical-encoding
       intersection, the complete submission lifetime/handoff matrix,
       realization/encoding allow rules, and deterministic preference order.
       Add the reapproved validation-only incompatible operation-stream case
@@ -727,3 +727,13 @@ equality and first excess. The allocation probe reports zero allocations while
 executing the seam; both macOS profiles and the hardware-free ARMv6 and nRF
 drivers pass. The maintainer explicitly reapproved the validation-only
 operation-stream correction; `T2.2` is the next executable task.
+`T2.2` is complete: the validation-only operation-stream fact has exact raw
+value `2`, requirements reject it, producer/candidate compatibility maps it to
+`.operationStreamMismatch`, and no available path can contain it. The bounded
+candidate evaluator preserves geometry, operation, stream, encoding,
+lifetime, handoff, arithmetic/capacity, and policy separation; covers the
+complete five-admitted/one-rejected lifetime-handoff matrix; selects encoding,
+lifetime, handoff, and realization preferences deterministically; and applies
+policy only after technical conformance. Twenty-seven focused capability tests
+and all four hardware-free SPEC-004 drivers pass, with zero allocations while
+the optimized probe executes compatibility. `T2.3` is next.

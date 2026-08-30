@@ -57,6 +57,8 @@ fail_check("snapshot initializer is missing") unless
   snapshot.include?("public init(rasterPresentation: GiftUICapabilities.EffectiveRasterPresentation?)")
 
 required_t12_fragments = [
+  "case synchronousBorrowedOneShot",
+  "case incompatibleWithSynchronousBorrowedOneShot",
   "case renderProducer(GiftUICapabilities.RenderProducerContribution)",
   "case rasterBackend(GiftUICapabilities.RasterBackendContribution)",
   "case surfaceDisplay(GiftUICapabilities.SurfaceDisplayContribution)",

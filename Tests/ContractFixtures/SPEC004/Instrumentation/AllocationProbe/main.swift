@@ -79,6 +79,12 @@ private func exercise(seed: UInt32) -> UInt32 {
         policy: policy,
         encoding: .rgb565BigEndian
     )
+    let compatibility = RasterPresentationCompatibility.evaluateCandidate(
+        requirement: requirement,
+        realization: tiled,
+        surface: surface,
+        policy: policy
+    )
     var contributions = RasterPresentationContributions()
     _ = contributions.insert(.hostResourcePolicy(policy))
     _ = contributions.insert(.surfaceDisplay(surface))
@@ -98,6 +104,11 @@ private func exercise(seed: UInt32) -> UInt32 {
     checksum &+= duplicate == .rejected(.duplicateContributor(role: .renderProducer)) ? 1 : 0
     if case let .available(value) = arithmetic {
         checksum &+= value.requiredRasterBytes.rawValue
+    }
+    if case let .available(path) = compatibility {
+        checksum &+= UInt32(path.encoding.rawValue)
+        checksum &+= UInt32(path.submissionLifetime.rawValue)
+        checksum &+= UInt32(path.handoff.rawValue)
     }
     return checksum
 }

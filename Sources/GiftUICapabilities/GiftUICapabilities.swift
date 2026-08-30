@@ -29,6 +29,7 @@ public struct RasterOperationSet: OptionSet, Equatable, Sendable {
 
 public enum OperationStreamLifetime: UInt8, Equatable, Sendable {
     case synchronousBorrowedOneShot = 1
+    case incompatibleWithSynchronousBorrowedOneShot = 2
 }
 
 public struct CanonicalPixelEncodingSet: OptionSet, Equatable, Sendable {
@@ -81,6 +82,7 @@ public struct RasterPresentationRequirement: Equatable, Sendable {
         absence: CapabilityAbsence
     ) {
         guard operations == .allDeclared,
+              operationStream == .synchronousBorrowedOneShot,
               acceptedEncodings.isValidNonempty,
               acceptedSubmissionLifetimes.isValidNonempty else { return nil }
         self.operations = operations
@@ -420,6 +422,11 @@ enum RasterPresentationArithmeticOutcome: Equatable, Sendable {
     case unavailable(RasterPresentationUnavailable)
 }
 
+enum RasterPresentationRegionOutcome: Equatable, Sendable {
+    case available(CapabilityExtent)
+    case unavailable(RasterPresentationUnavailable)
+}
+
 enum RasterPresentationArithmetic {
     static func evaluate(
         requirement: RasterPresentationRequirement,
@@ -428,31 +435,16 @@ enum RasterPresentationArithmetic {
         policy: RasterPresentationPolicy,
         encoding: CanonicalPixelEncoding
     ) -> RasterPresentationArithmeticOutcome {
+        let regionExtent: CapabilityExtent
+        switch region(
+            requirement: requirement,
+            realization: realization,
+            surface: surface
+        ) {
+        case let .available(value): regionExtent = value
+        case let .unavailable(reason): return .unavailable(reason)
+        }
         let extent = requirement.extent
-        guard extent.width <= realization.maximumExtent.width,
-              extent.height <= realization.maximumExtent.height,
-              extent.width <= surface.extent.width,
-              extent.height <= surface.extent.height,
-              extent.width <= realization.maximumRegionWidth,
-              extent.width <= surface.maximumRegionWidth else {
-            return .unavailable(.unsupportedLogicalExtent)
-        }
-
-        let regionHeight: UInt16
-        switch realization.kind {
-        case .fullSurface:
-            guard extent.height <= realization.maximumRegionHeight,
-                  extent.height <= surface.maximumRegionHeight else {
-                return .unavailable(.unsupportedLogicalExtent)
-            }
-            regionHeight = extent.height
-        case .tiled:
-            regionHeight = minimum(
-                extent.height,
-                realization.maximumRegionHeight,
-                surface.maximumRegionHeight
-            )
-        }
 
         let candidateAlignment = UInt32(realization.rowByteAlignment)
         let surfaceAlignment = UInt32(surface.rowByteAlignment)
@@ -477,7 +469,7 @@ enum RasterPresentationArithmetic {
         }
 
         let usage = alignedRow.partialValue
-            .multipliedReportingOverflow(by: UInt32(regionHeight))
+            .multipliedReportingOverflow(by: UInt32(regionExtent.height))
         guard !usage.overflow else {
             return .unavailable(.byteCountOverflow(domain: .raster))
         }
@@ -522,12 +514,6 @@ enum RasterPresentationArithmetic {
             ))
         }
 
-        guard let regionExtent = CapabilityExtent(
-            width: extent.width,
-            height: regionHeight
-        ) else {
-            return .unavailable(.unsupportedLogicalExtent)
-        }
         return .available(RasterPresentationArithmeticValue(
             effectiveRowAlignment: effectiveAlignment,
             regionExtent: regionExtent,
@@ -536,6 +522,42 @@ enum RasterPresentationArithmetic {
             requiredPayloadBytes: required,
             requiredInFlightBytes: required
         ))
+    }
+
+    static func region(
+        requirement: RasterPresentationRequirement,
+        realization: RasterRealizationContribution,
+        surface: SurfaceDisplayContribution
+    ) -> RasterPresentationRegionOutcome {
+        let extent = requirement.extent
+        guard extent.width <= realization.maximumExtent.width,
+              extent.height <= realization.maximumExtent.height,
+              extent.width <= surface.extent.width,
+              extent.height <= surface.extent.height,
+              extent.width <= realization.maximumRegionWidth,
+              extent.width <= surface.maximumRegionWidth else {
+            return .unavailable(.unsupportedLogicalExtent)
+        }
+
+        let regionHeight: UInt16
+        switch realization.kind {
+        case .fullSurface:
+            guard extent.height <= realization.maximumRegionHeight,
+                  extent.height <= surface.maximumRegionHeight else {
+                return .unavailable(.unsupportedLogicalExtent)
+            }
+            regionHeight = extent.height
+        case .tiled:
+            regionHeight = minimum(
+                extent.height,
+                realization.maximumRegionHeight,
+                surface.maximumRegionHeight
+            )
+        }
+        guard let value = CapabilityExtent(width: extent.width, height: regionHeight) else {
+            return .unavailable(.unsupportedLogicalExtent)
+        }
+        return .available(value)
     }
 
     private static func greatestCommonDivisor(_ lhs: UInt32, _ rhs: UInt32) -> UInt32 {
@@ -551,6 +573,208 @@ enum RasterPresentationArithmetic {
 
     private static func minimum<T: Comparable>(_ first: T, _ second: T, _ third: T) -> T {
         min(first, min(second, third))
+    }
+}
+
+struct RasterPresentationCandidatePath: Equatable, Sendable {
+    let realization: RasterRealizationKind
+    let encoding: CanonicalPixelEncoding
+    let submissionLifetime: SubmissionLifetime
+    let handoff: SubmissionHandoff
+    let arithmetic: RasterPresentationArithmeticValue
+}
+
+enum RasterPresentationCandidateOutcome: Equatable, Sendable {
+    case available(RasterPresentationCandidatePath)
+    case unavailable(RasterPresentationUnavailable)
+}
+
+enum RasterPresentationCompatibility {
+    static func producerIssue(
+        requirement: RasterPresentationRequirement,
+        producer: RenderProducerContribution
+    ) -> RasterPresentationUnavailable? {
+        guard producer.operations.isSuperset(of: requirement.operations) else {
+            return .operationSetMismatch
+        }
+        guard producer.operationStream == requirement.operationStream else {
+            return .operationStreamMismatch
+        }
+        return nil
+    }
+
+    static func evaluateCandidate(
+        requirement: RasterPresentationRequirement,
+        realization: RasterRealizationContribution,
+        surface: SurfaceDisplayContribution,
+        policy: RasterPresentationPolicy
+    ) -> RasterPresentationCandidateOutcome {
+        if case let .unavailable(reason) = RasterPresentationArithmetic.region(
+            requirement: requirement,
+            realization: realization,
+            surface: surface
+        ) {
+            return .unavailable(reason)
+        }
+        guard realization.operations.isSuperset(of: requirement.operations) else {
+            return .unavailable(.operationSetMismatch)
+        }
+        guard realization.operationStream == requirement.operationStream else {
+            return .unavailable(.operationStreamMismatch)
+        }
+
+        let encodings = requirement.acceptedEncodings
+            .intersection(realization.encodings)
+            .intersection(surface.encodings)
+        guard !encodings.isEmpty else {
+            return .unavailable(.noCommonCanonicalPixelEncoding)
+        }
+
+        let lifetimes = requirement.acceptedSubmissionLifetimes
+            .intersection(realization.producedSubmissionLifetimes)
+            .intersection(surface.acceptedSubmissionLifetimes)
+        guard !lifetimes.isEmpty else {
+            return .unavailable(.incompatibleSubmissionLifetime)
+        }
+        guard let lifetimeAndHandoff = firstCompatibleLifetimeAndHandoff(
+            lifetimes: lifetimes,
+            handoffs: surface.handoffs
+        ) else {
+            return .unavailable(.incompatibleSubmissionHandoff)
+        }
+
+        var firstArithmeticReason: RasterPresentationUnavailable?
+        var rgbPath: RasterPresentationCandidatePath?
+        var rgbaPath: RasterPresentationCandidatePath?
+        if encodings.contains(.rgb565BigEndian) {
+            switch makePath(
+                requirement: requirement,
+                realization: realization,
+                surface: surface,
+                policy: policy,
+                encoding: .rgb565BigEndian,
+                lifetimeAndHandoff: lifetimeAndHandoff
+            ) {
+            case let .available(path): rgbPath = path
+            case let .unavailable(reason): firstArithmeticReason = reason
+            }
+        }
+        if encodings.contains(.rgba8888) {
+            switch makePath(
+                requirement: requirement,
+                realization: realization,
+                surface: surface,
+                policy: policy,
+                encoding: .rgba8888,
+                lifetimeAndHandoff: lifetimeAndHandoff
+            ) {
+            case let .available(path): rgbaPath = path
+            case let .unavailable(reason):
+                if let existing = firstArithmeticReason {
+                    if arithmeticReasonPrecedes(reason, existing) {
+                        firstArithmeticReason = reason
+                    }
+                } else {
+                    firstArithmeticReason = reason
+                }
+            }
+        }
+
+        guard rgbPath != nil || rgbaPath != nil else {
+            return .unavailable(firstArithmeticReason ?? .policyHasNoConformingRealization)
+        }
+        guard policy.allowedRealizations.contains(realization.kind.option) else {
+            return .unavailable(.policyHasNoConformingRealization)
+        }
+
+        if policy.preferredEncoding == .rgb565BigEndian,
+           policy.allowedEncodings.contains(.rgb565BigEndian),
+           let rgbPath {
+            return .available(rgbPath)
+        }
+        if policy.preferredEncoding == .rgba8888,
+           policy.allowedEncodings.contains(.rgba8888),
+           let rgbaPath {
+            return .available(rgbaPath)
+        }
+        if policy.allowedEncodings.contains(.rgb565BigEndian), let rgbPath {
+            return .available(rgbPath)
+        }
+        if policy.allowedEncodings.contains(.rgba8888), let rgbaPath {
+            return .available(rgbaPath)
+        }
+        return .unavailable(.policyHasNoConformingRealization)
+    }
+
+    static func prefers(
+        _ lhs: RasterPresentationCandidatePath,
+        over rhs: RasterPresentationCandidatePath,
+        policy: RasterPresentationPolicy
+    ) -> Bool {
+        let lhsPreferred = lhs.realization == policy.preferredRealization
+        let rhsPreferred = rhs.realization == policy.preferredRealization
+        if lhsPreferred != rhsPreferred { return lhsPreferred }
+        return lhs.realization.rawValue < rhs.realization.rawValue
+    }
+
+    private static func makePath(
+        requirement: RasterPresentationRequirement,
+        realization: RasterRealizationContribution,
+        surface: SurfaceDisplayContribution,
+        policy: RasterPresentationPolicy,
+        encoding: CanonicalPixelEncoding,
+        lifetimeAndHandoff: (SubmissionLifetime, SubmissionHandoff)
+    ) -> RasterPresentationCandidateOutcome {
+        switch RasterPresentationArithmetic.evaluate(
+            requirement: requirement,
+            realization: realization,
+            surface: surface,
+            policy: policy,
+            encoding: encoding
+        ) {
+        case let .available(arithmetic):
+            return .available(RasterPresentationCandidatePath(
+                realization: realization.kind,
+                encoding: encoding,
+                submissionLifetime: lifetimeAndHandoff.0,
+                handoff: lifetimeAndHandoff.1,
+                arithmetic: arithmetic
+            ))
+        case let .unavailable(reason): return .unavailable(reason)
+        }
+    }
+
+    private static func firstCompatibleLifetimeAndHandoff(
+        lifetimes: SubmissionLifetimeSet,
+        handoffs: SubmissionHandoffSet
+    ) -> (SubmissionLifetime, SubmissionHandoff)? {
+        if lifetimes.contains(.synchronousBorrow), handoffs.contains(.synchronous) {
+            return (.synchronousBorrow, .synchronous)
+        }
+        if lifetimes.contains(.synchronousCopy) {
+            if handoffs.contains(.synchronous) { return (.synchronousCopy, .synchronous) }
+            if handoffs.contains(.queued) { return (.synchronousCopy, .queued) }
+        }
+        if lifetimes.contains(.ownershipTransfer) {
+            if handoffs.contains(.synchronous) { return (.ownershipTransfer, .synchronous) }
+            if handoffs.contains(.queued) { return (.ownershipTransfer, .queued) }
+        }
+        return nil
+    }
+
+    private static func arithmeticReasonPrecedes(
+        _ lhs: RasterPresentationUnavailable,
+        _ rhs: RasterPresentationUnavailable
+    ) -> Bool {
+        arithmeticRank(lhs) < arithmeticRank(rhs)
+    }
+
+    private static func arithmeticRank(_ reason: RasterPresentationUnavailable) -> UInt8 {
+        switch reason {
+        case .byteCountOverflow: 1
+        case let .insufficientCapacity(domain, _, _): domain.rawValue
+        default: .max
+        }
     }
 }
 
