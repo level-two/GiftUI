@@ -504,10 +504,11 @@ For each candidate encoding the resolver performs the following checked
    resolver does not search smaller tiles to evade an explicit byte ceiling.
    The result is stored as `regionExtent`, and the aligned row size from step
    2 is stored as `rowBytes`.
-4. `requiredRasterBytes = rowBytes * regionHeight` and
-   `requiredPayloadBytes = rowBytes * regionHeight`. They are separate usage
-   domains because raster working storage and the derived submitted payload
-   have different owners even when their MVP byte counts are equal.
+4. The resolver checks `rowBytes * regionHeight` once. On success it stores
+   that same representable value as both `requiredRasterBytes` and
+   `requiredPayloadBytes`. They remain separate usage domains because raster
+   working storage and the derived submitted payload have different owners
+   even though their MVP byte counts are equal.
 5. MVP resolution selects exactly one derived payload in flight, so
    `inFlightCount = 1` and `requiredInFlightBytes = requiredPayloadBytes`.
    `SurfaceDisplayContribution.maximumInFlightCount` must admit that count.
@@ -519,18 +520,26 @@ surface, and host-policy maximum-in-flight fields. Required usage greater than
 its available ceiling returns `insufficientCapacity` for that domain with the
 exact computed usage and minimum ceiling.
 
-Overflow domain assignment is deterministic. The shared effective-alignment
-LCM, `unalignedRowBytes` multiplication, and aligned-row round-up are required
-by raster, payload, and in-flight accounting; an overflow at any of those
-sites returns `byteCountOverflow(domain: .raster)`, the lowest-raw-value
-affected `RasterPresentationCapacity`. After `rowBytes` exists, the resolver
-performs and checks the raster multiplication first, then the payload
-multiplication; an overflow unique to one of those steps uses `.raster` or
-`.payload` respectively. MVP `requiredInFlightBytes` is an exact copy of the
+All arithmetic remains checked even where the closed typed domain proves the
+result representable. For nonzero `UInt16` alignments,
+`lcm(a, b) <= a * b <= UInt16.max * UInt16.max < UInt32.max`. The largest
+unaligned row is `UInt16.max * 4 = 262,140` bytes. If the LCM exceeds that row,
+round-up produces the representable LCM; otherwise the rounded row is less
+than twice the unaligned row. Therefore effective-alignment LCM,
+`unalignedRowBytes`, and aligned-row round-up cannot overflow for a
+constructible typed input. Boundary tests MUST prove those maxima and MUST NOT
+manufacture wider private inputs as resolver fixtures.
+
+The checked `rowBytes * regionHeight` usage multiplication can overflow. It
+is shared by the raster and payload usage values and is assigned
+`byteCountOverflow(domain: .raster)`, the lowest-raw-value affected capacity
+domain. Once that multiplication succeeds, the resolver copies its exact
+representable value to both usage fields; a payload-only arithmetic overflow
+is not constructible. MVP `requiredInFlightBytes` is an exact copy of the
 already representable `requiredPayloadBytes`, so it performs no further
 arithmetic and cannot independently produce `.inFlight` overflow. The resolver
-never reports `.resolverWorkspace` for byte arithmetic and never treats
-overflow as zero, saturation, or wrapping.
+never reports `.resolverWorkspace`, `.payload`, or `.inFlight` for byte
+arithmetic and never treats overflow as zero, saturation, or wrapping.
 
 Consequently, the nRF52840 fixture's width `480`, height limit `4`, RGB565
 encoding, and alignment `2` yield a 960-byte row and exactly 3,840 required
@@ -932,8 +941,9 @@ conditions use this precedence, independent of insertion and candidate order:
 9. no common canonical pixel encoding;
 10. incompatible submission lifetime;
 11. incompatible submission handoff;
-12. byte-count overflow, by the assigned capacity-domain raw value, with a
-    shared row-arithmetic overflow assigned to `raster`;
+12. shared raster/payload usage multiplication overflow, assigned to
+    `raster`; the earlier row computations are proven representable by their
+    typed widths and no payload-only or in-flight arithmetic overflow exists;
 13. insufficient raster capacity;
 14. insufficient payload capacity;
 15. insufficient in-flight capacity; and
@@ -1077,9 +1087,11 @@ The contract suite MUST include:
   pair of simultaneous typed-input incompatibilities and verifies the
   documented primary reason, plus separate raw-adapter tests for every earlier
   short-circuit stage;
-- shared-arithmetic overflow fixtures proving LCM, unaligned-row, and aligned-
-  row overflow each returns `byteCountOverflow(domain: .raster)`, plus domain-
-  specific overflow fixtures for every later checked usage site;
+- boundary fixtures proving maximum typed LCM, unaligned-row, and aligned-row
+  values remain representable without wrapping, plus a constructible usage-
+  multiplication overflow fixture returning
+  `byteCountOverflow(domain: .raster)` and a fixed-domain proof that no
+  payload-only or in-flight arithmetic overflow is constructible;
 - the complete submission-lifetime/handoff matrix, including rejection of a
   queued synchronous borrow and proof that a synchronous copy owns its queued
   bytes before the producer borrow ends;
@@ -1135,9 +1147,11 @@ evidence.
   bytes; and nRF52840 full-surface `rgba8888` resolves unavailable.
 - [ ] **CR-010A:** Formula fixtures cover both encodings, full-surface and
   tiled geometry, unequal alignments, all three capacity minima, zero
-  byte-count ceilings, malformed zero structural maximums, every checked-
-  overflow site and its assigned domain, and the exact nRF52840 result of one
-  3,840-byte in-flight payload.
+  byte-count ceilings, malformed zero structural maximums, maximum typed
+  LCM/row boundary values, the constructible shared-usage overflow assigned to
+  `.raster`, the fixed-domain proof excluding payload-only/in-flight
+  arithmetic overflow, and the exact nRF52840 result of one 3,840-byte
+  in-flight payload.
 - [ ] **CR-011:** Allocation instrumentation reports zero heap allocations for the static
   path from contribution construction through resolution, validation-result
   construction, snapshot storage, and repeated steady-state access.
@@ -1176,8 +1190,14 @@ semantics and normalized results remain unchanged.
 
 ## Open Issues
 
-The capability-domain contract and reciprocal Wave 1 terminology are closed
-in this approved contract. SPEC-003 fixes the enclosing required-family carrier and
+The 2026-08-30 arithmetic correction preserves the accepted architecture,
+public widths, checked-operation requirement, and failure vocabulary while
+limiting overflow fixtures to constructible typed inputs. Explicit maintainer
+re-approval of that correction is required before `T2.1` implementation
+resumes.
+
+The remaining capability-domain contract and reciprocal Wave 1 terminology
+are closed. SPEC-003 fixes the enclosing required-family carrier and
 the one-to-one capability condition catalogue. The approved SPEC-002
 extent adapter accepts only valid non-negative `Size` values, maps zero and
 positive overflow distinctly, and exposes no capability geometry to portable

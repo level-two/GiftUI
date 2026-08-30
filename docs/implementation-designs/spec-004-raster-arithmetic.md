@@ -2,7 +2,7 @@
 spec: SPEC-004
 feature: capability-system
 title: Implementation Design — Checked Raster Arithmetic
-status: draft
+status: current
 authors:
   - codex
 created: 2026-08-30
@@ -28,10 +28,8 @@ and capacity-minimum mechanism assigned to SPEC-004 plan task `T2.1`. It does
 not select encoding/lifetime policy, assemble the public resolver, change any
 public width, or reinterpret an unavailable reason.
 
-The note remains `draft` because the governing contract currently requires
-overflow results that cannot be produced from its own constructible typed
-inputs. No production arithmetic implementation should claim T2.1 conformance
-until that conflict is resolved upstream.
+The corrected contract preserves those fixed widths and makes their
+representability proof part of the required implementation and evidence.
 
 ## Governing Contract
 
@@ -50,13 +48,13 @@ arithmetic outputs are `UInt32`. Typed construction prevents malformed values
 from reaching the future resolver.
 
 The current internal workspace owns two fixed candidate slots. No public
-resolver exists yet, so T2.1 can still be corrected without compatibility or
-migration cost.
+resolver exists yet, so T2.1 can add this helper without compatibility or
+migration cost after the corrected Specification is explicitly re-approved.
 
 ## Proposed Internal Organization
 
-Once the contract conflict is resolved, keep arithmetic in one internal,
-value-only helper used by candidate evaluation. It should accept one typed
+Keep arithmetic in one internal, value-only helper used by candidate
+evaluation. It should accept one typed
 requirement, realization, surface contribution, policy, and selected encoding;
 return either a fixed geometry/usage record or the exact capability-domain
 reason; use no collection or closure; and expose a package-internal test seam
@@ -75,7 +73,8 @@ For one candidate and encoding, the intended control flow is:
 3. checked-multiply width by bytes per pixel;
 4. checked-round the row upward without a wrapping `value + alignment - 1`;
 5. select full-surface height or the deterministic tallest tiled height;
-6. checked-multiply row bytes by region height for raster, then payload;
+6. checked-multiply row bytes by region height once, assigning overflow to
+   `.raster`, and copy the representable value to raster and payload usage;
 7. copy the representable payload usage to in-flight usage; and
 8. compare each usage with the three-owner minimum ceiling in raster,
    payload, then in-flight order.
@@ -91,7 +90,7 @@ addition. Capacity minima are direct comparisons among exactly three fixed
 values. Full-surface and tiled height selection require no search or
 collection.
 
-However, the approved widths prove these required overflow sites unreachable:
+The fixed widths prove the preliminary overflow sites unreachable:
 
 - For two `UInt16` alignments, `lcm(a, b) <= a * b <= 65_535² =
   4_294_836_225`, which is below `UInt32.max` (`4_294_967_295`). The checked
@@ -103,13 +102,15 @@ However, the approved widths prove these required overflow sites unreachable:
   `262_140 + 262_140`, also representable. Aligned-row round-up therefore
   cannot overflow.
 - Raster and payload usage are both specified as the same
-  `rowBytes * regionHeight`. Raster multiplication is checked first. If it
-  succeeds, repeating the same multiplication for payload must also succeed;
-  a payload-only arithmetic overflow cannot occur.
+  `rowBytes * regionHeight`, so the helper checks that multiplication once.
+  Failure is the shared usage overflow assigned to `.raster`; success supplies
+  the same exact value to both domains, making payload-only overflow
+  impossible.
 
 Raster usage overflow remains reachable when a large representable row is
-multiplied by a nonzero `UInt16` region height. That single reachable case does
-not satisfy the mandated shared-site and payload-domain overflow fixtures.
+multiplied by a nonzero `UInt16` region height. The corrected contract requires
+that constructible case plus maximum-bound proofs for the preliminary checked
+operations; it does not manufacture wider resolver inputs.
 
 ## Lifecycle and State
 
@@ -132,17 +133,16 @@ small fixed count of Euclid iterations and checked operations. It must return
 the assigned `RasterPresentationUnavailable` value without trapping,
 saturating, wrapping, or weakening the candidate.
 
-Implementing wider private test inputs would not repair the conflict: such
-fixtures would no longer be constructible resolver inputs and would falsely
-claim conformance with the typed resolver requirements.
+Wider private test inputs remain forbidden as resolver fixtures because they
+are not constructible typed inputs and would falsely claim conformance.
 
 ## Test and Diagnostic Seams
 
-After upstream resolution, table-driven tests should cover both encodings,
-unequal alignments, full/tiled regions, zero ceilings, each three-owner
-minimum, exact 3,840-byte nRF usage, and every genuinely reachable overflow
-site. The tests must distinguish site-local arithmetic helpers from public
-resolver fixtures and must not manufacture invalid typed records.
+Table-driven tests cover both encodings, unequal alignments, full/tiled
+regions, zero ceilings, each three-owner minimum, exact 3,840-byte nRF usage,
+maximum typed LCM/row boundaries, and the constructible shared-usage overflow.
+They also assert that no payload-only/in-flight arithmetic overflow is exposed.
+The tests must not manufacture invalid or widened typed records.
 
 ## Rejected Implementation Alternatives
 
@@ -153,17 +153,14 @@ resolver fixtures and must not manufacture invalid typed records.
   the same formula.
 - Use wrapping or saturating arithmetic to manufacture a reason: rejected by
   SPEC-004's fail-closed checked-arithmetic rules.
-- Silently omit unreachable fixtures: rejected because `CR-010A` and the plan
-  explicitly require them.
+- Silently omit the representability proof: rejected because corrected
+  `CR-010A` requires maximum-bound evidence even though those operations cannot
+  overflow for typed inputs.
 
 ## Open Implementation Questions
 
-One blocking Specification decision is required. The authoritative contract
-must either widen/change the input domains so the mandated overflow cases are
-constructible, remove or revise unreachable overflow outcomes and fixtures
-using the fixed-width proof, or define genuinely different raster/payload
-usage operands. Choosing among those options changes public or normative
-behavior and is outside implementation authority.
+None. Implementation remains gated on explicit maintainer re-approval of the
+corrected Specification, not on an unresolved internal design choice.
 
 ## Code and Evidence Links
 
