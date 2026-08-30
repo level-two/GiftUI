@@ -1,3 +1,4 @@
 # id	driver	profiles
 SPEC-002	scripts/contracts/run-spec-002.sh	macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
 SPEC-003	scripts/contracts/run-spec-003.sh	macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
+SPEC-004	scripts/contracts/run-spec-004.sh	macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded

@@ -193,7 +193,7 @@ has reproducible fixture and report conventions before semantic code lands.
       concrete integration module. Update SPEC-002's exact target allow-list
       and graph fixtures atomically while preserving the in-progress
       `GiftUIFailureCore` leaf and every existing edge.
-- [ ] `T0.3` — Create
+- [x] `T0.3` — Create
       `scripts/contracts/run-spec-004.sh --profile <profile>` for the exact four
       supported profile names. Fail closed on compiler, target, SDK, board,
       optimization, pin, source-list, and evidence mismatches; record revision
@@ -544,3 +544,10 @@ implementation.
 fixture record the new dependency-free leaf without changing any existing
 failure or diagnostic edge; see the
 [leaf evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-0/capability-leaf.md).
+`T0.3` is complete: the registered
+[four-profile contract driver](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-0/contract-driver.md)
+fails closed on profile, compiler, target, SDK, board, optimization, pin,
+source-list, package-graph, and emitted-image mismatches. Each standalone run
+records revision/dirty state, complete commands, compiler identity and hash,
+input/image hashes, deterministic roots and exit, and an explicit absence of
+remote access, deployment, service restart, and flashing. `T0.4` is next.
