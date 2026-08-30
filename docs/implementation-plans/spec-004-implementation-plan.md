@@ -221,7 +221,7 @@ workspace, resolution, snapshot, and unavailable declaration has its exact
 visibility, finite cases, raw widths, failable construction behavior, and
 bounded representation without importing another owner.
 
-- [ ] `T1.1` — Implement the exact common values, option sets, raw enums,
+- [x] `T1.1` — Implement the exact common values, option sets, raw enums,
       `RasterPresentationRequirement`, four contributor records, policy,
       effective result, resolution, snapshot, malformed/capacity vocabulary,
       and `RasterPresentationUnavailable`. Test declared bits and raw values,
@@ -565,3 +565,10 @@ records the exact graph and boundary checks, 15 compile fixtures, four clean
 portable presentation sources, one focused capability test, 70 root tests,
 the standalone macOS-dynamic driver, and every registered no-argument gate.
 Milestone 0 is complete; `T1.1` is next.
+`T1.1` is complete: the
+[closed-vocabulary evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-1/closed-vocabulary.md)
+records 26 exact public types, the single `rasterPresentation` catalogue field,
+all raw bits/tags, failable structural invariants, zero-valid byte ceilings,
+bounded unavailable payloads, record ceilings, and value/Sendable behavior.
+The same production source compiles in all four exact hardware-free profiles;
+`T1.2` is next.

@@ -357,6 +357,11 @@ run_macos() {
         "${giftui_dir}/GiftUI.swiftinterface" \
         "${giftui_dir}/GiftUI.package.swiftinterface" \
         >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-004-surface.rb" \
+        "${report_dir}/build/GiftUICapabilities.swiftinterface"
+    "${SCRIPT_DIR}/check-spec-004-surface.rb" \
+        "${report_dir}/build/GiftUICapabilities.swiftinterface" \
+        >>"${log_path}" 2>&1
     run_fixture_set "${compiler}" "${report_dir}/build" \
         -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
         -O -whole-module-optimization "${profile_flag}"
