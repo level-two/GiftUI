@@ -235,7 +235,7 @@ bounded representation without importing another owner.
       duplicate/missing selection, fifth-insert duplicate behavior, workspace
       capacities `0...2`, rejection above two, reuse after return, and no
       order-bearing storage semantics.
-- [ ] `T1.3` — Implement failable initializers and adapter-facing validation
+- [x] `T1.3` — Implement failable initializers and adapter-facing validation
       seams for every malformed field, unknown/empty option-set case, invalid
       preference, region/alignment/count bound, and alternate-realization rule.
       Keep raw SPEC-002 extent conversion and role/field precedence in a
@@ -579,3 +579,11 @@ equality rules, deterministic lowest-role duplicate/missing selection, exact
 two-slot workspace with usable capacities `0...2`, reset/reuse behavior, and
 the 192-byte/96-byte layout ceilings. The emitted-interface audit now covers
 all 30 public types and the exact T1.2 signatures; `T1.3` is next.
+`T1.3` is complete: the
+[malformed adapter-boundary evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-1/malformed-adapter-boundary.md)
+records exhaustive failable-constructor cases and a test-only downstream
+adapter importing both SPEC-002 portable geometry and SPEC-004 capabilities.
+It distinguishes zero extent from positive `UInt16` overflow, applies raw
+requirement stages and contributor role/field precedence, preserves all eleven
+malformed fields for all four roles, and leaves the production capability leaf
+dependency-free. `T1.4` is next.

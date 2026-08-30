@@ -34,3 +34,8 @@ targets:
     type: test
     dependencies:
       - GiftUICapabilities
+  GiftUICapabilityAdapterTests:
+    type: test
+    dependencies:
+      - GiftUI
+      - GiftUICapabilities

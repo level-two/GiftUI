@@ -81,6 +81,7 @@ final class GiftUICapabilitiesTests: XCTestCase {
         XCTAssertEqual(value.extent, extent)
         XCTAssertEqual(value.maximumRasterBytes.rawValue, 0)
         XCTAssertNil(makeRequirement(operations: [.opaqueRectangles]))
+        XCTAssertNil(makeRequirement(operations: .init(rawValue: 0xff)))
         XCTAssertNil(makeRequirement(encodings: []))
         XCTAssertNil(makeRequirement(encodings: .init(rawValue: 0x80)))
         XCTAssertNil(makeRequirement(lifetimes: []))
@@ -105,6 +106,54 @@ final class GiftUICapabilitiesTests: XCTestCase {
         XCTAssertNil(makeRealization(kind: .tiled, regionWidth: 481))
         XCTAssertNil(makeRealization(kind: .tiled, payloadBytes: 959))
         XCTAssertNotNil(makeRealization(kind: .tiled, payloadBytes: 960))
+    }
+
+    func testEveryContributorOptionSetRejectsEmptyAndUnknownBits() throws {
+        XCTAssertNil(makeRealization(kind: .fullSurface, operations: []))
+        XCTAssertNil(makeRealization(
+            kind: .fullSurface, operations: .init(rawValue: 0x80)
+        ))
+        XCTAssertNil(makeRealization(kind: .fullSurface, encodings: []))
+        XCTAssertNil(makeRealization(
+            kind: .fullSurface, encodings: .init(rawValue: 0x80)
+        ))
+        XCTAssertNil(makeRealization(kind: .fullSurface, lifetimes: []))
+        XCTAssertNil(makeRealization(
+            kind: .fullSurface, lifetimes: .init(rawValue: 0x80)
+        ))
+
+        let extent = try makeExtent()
+        XCTAssertNil(makeSurface(extent: extent, encodings: .init(rawValue: 0x80)))
+        XCTAssertNil(makeSurface(extent: extent, lifetimes: []))
+        XCTAssertNil(makeSurface(
+            extent: extent, lifetimes: .init(rawValue: 0x80)
+        ))
+        XCTAssertNil(makeSurface(extent: extent, handoffs: []))
+        XCTAssertNil(makeSurface(
+            extent: extent, handoffs: .init(rawValue: 0x80)
+        ))
+
+        XCTAssertNil(makePolicy(realizations: .init(rawValue: 0x80)))
+        XCTAssertNil(makePolicy(encodings: .init(rawValue: 0x80)))
+    }
+
+    func testTiledRealizationRequiresACompleteAlignedRowForEveryEncoding() {
+        XCTAssertNil(makeRealization(
+            kind: .tiled,
+            encodings: [.rgb565BigEndian, .rgba8888],
+            payloadBytes: 960
+        ))
+        XCTAssertNotNil(makeRealization(
+            kind: .tiled,
+            encodings: [.rgb565BigEndian, .rgba8888],
+            payloadBytes: 1_920
+        ))
+        XCTAssertNil(makeRealization(
+            kind: .tiled,
+            encodings: .rgba8888,
+            alignment: .max,
+            payloadBytes: 65_534
+        ))
     }
 
     func testSurfaceAndPolicyRejectMalformedStructuralValuesAndPreferences() throws {
@@ -308,6 +357,9 @@ final class GiftUICapabilitiesTests: XCTestCase {
 
     private func makeRealization(
         kind: RasterRealizationKind,
+        operations: RasterOperationSet? = nil,
+        encodings: CanonicalPixelEncodingSet = .rgb565BigEndian,
+        lifetimes: SubmissionLifetimeSet = .synchronousBorrow,
         regionWidth: UInt16 = 480,
         regionHeight: UInt16 = 4,
         alignment: UInt16 = 2,
@@ -315,10 +367,10 @@ final class GiftUICapabilitiesTests: XCTestCase {
     ) -> RasterRealizationContribution? {
         guard let extent = CapabilityExtent(width: 480, height: 320) else { return nil }
         return RasterRealizationContribution(
-            kind: kind, operations: allOperations,
+            kind: kind, operations: operations ?? allOperations,
             operationStream: .synchronousBorrowedOneShot,
-            encodings: .rgb565BigEndian,
-            producedSubmissionLifetimes: .synchronousBorrow,
+            encodings: encodings,
+            producedSubmissionLifetimes: lifetimes,
             maximumExtent: extent,
             maximumRegionWidth: regionWidth,
             maximumRegionHeight: regionHeight,
@@ -334,12 +386,14 @@ final class GiftUICapabilitiesTests: XCTestCase {
         regionHeight: UInt16 = 320,
         alignment: UInt16 = 2,
         inFlightCount: UInt8 = 1,
-        encodings: CanonicalPixelEncodingSet = .rgb565BigEndian
+        encodings: CanonicalPixelEncodingSet = .rgb565BigEndian,
+        lifetimes: SubmissionLifetimeSet = .synchronousBorrow,
+        handoffs: SubmissionHandoffSet = .synchronous
     ) -> SurfaceDisplayContribution? {
         SurfaceDisplayContribution(
             extent: extent, encodings: encodings,
-            acceptedSubmissionLifetimes: .synchronousBorrow,
-            handoffs: .synchronous,
+            acceptedSubmissionLifetimes: lifetimes,
+            handoffs: handoffs,
             maximumRegionWidth: regionWidth,
             maximumRegionHeight: regionHeight,
             rowByteAlignment: alignment,

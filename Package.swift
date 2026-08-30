@@ -44,6 +44,10 @@ let package = Package(
             name: "GiftUICapabilitiesTests",
             dependencies: ["GiftUICapabilities"]
         ),
+        .testTarget(
+            name: "GiftUICapabilityAdapterTests",
+            dependencies: ["GiftUI", "GiftUICapabilities"]
+        ),
     ],
     swiftLanguageModes: [.v6]
 )
