@@ -303,6 +303,7 @@ public struct RasterOperationSet: OptionSet, Equatable, Sendable {
 
 public enum OperationStreamLifetime: UInt8, Equatable, Sendable {
     case synchronousBorrowedOneShot = 1
+    case incompatibleWithSynchronousBorrowedOneShot = 2
 }
 
 public struct CanonicalPixelEncodingSet: OptionSet, Equatable, Sendable {
@@ -327,6 +328,16 @@ public struct SubmissionHandoffSet: OptionSet, Equatable, Sendable {
     public static let queued: Self
 }
 ```
+
+`OperationStreamLifetime.incompatibleWithSynchronousBorrowedOneShot` is a
+validation-only negative fact, not an admitted operation-stream mode. It lets
+a producer or raster candidate report that it cannot satisfy ADR-010 without
+naming, retaining, or authorizing another lifetime. A requirement initializer
+accepts only `.synchronousBorrowedOneShot`; contribution initializers accept
+the negative fact so the typed resolver can return `.operationStreamMismatch`
+and exercise its documented precedence. An available effective result always
+contains `.synchronousBorrowedOneShot`. The negative case MUST NOT be selected,
+forwarded as support, or interpreted as approval of FW-014 replayable delivery.
 
 `CapabilityExtent.init` returns `nil` for a zero dimension. A valid SPEC-002
 `Size` has non-negative `Int32` dimensions and maps to `CapabilityExtent` only
@@ -450,6 +461,9 @@ construction proves these invariants; the typed resolver cannot receive a
 record that failed them and does not recreate malformed records for testing:
 
 - operation and encoding sets are non-empty and contain only declared bits;
+- the requirement operation-stream lifetime is exactly
+  `.synchronousBorrowedOneShot`; producer and realization contributions may
+  carry the validation-only incompatible case for deterministic rejection;
 - the requirement operation set contains exactly `.opaqueRectangles`,
   `.positionedText`, `.straightLineStrokes`, `.clipping`, and `.damage` for
   every supported host;
@@ -1127,7 +1141,8 @@ evidence.
 - [ ] **CR-003:** The implemented MVP catalogue contains exactly one family named
   `rasterPresentation`, and every field maps to at least one named assertion
   in the four normalized fixtures.
-- [ ] **CR-004:** The public declarations, raw widths, finite cases, failable
+- [ ] **CR-004:** The public declarations, raw widths, finite cases including
+  the validation-only incompatible operation-stream fact, failable
   construction rules, fixed four-role contribution capacity, two-candidate
   workspace capacity, and record-size ceilings match `Types / APIs`.
 - [ ] **CR-005:** All 24 permutations of the four contributor roles produce byte-for-byte
@@ -1193,6 +1208,14 @@ the first remedy if measurements are too costly, provided all normative
 semantics and normalized results remain unchanged.
 
 ## Open Issues
+
+Implementation of `T2.2` exposed that the previously single-case
+`OperationStreamLifetime` made `.operationStreamMismatch`, its two typed
+precedence positions, and the required one-shot incompatibility fixture
+unconstructible. The 2026-08-30 correction adds one validation-only negative
+fact without admitting another stream mode or changing ADR-010. Explicit
+maintainer reapproval is required before the corrected public vocabulary and
+`T2.2` implementation proceed.
 
 The 2026-08-30 arithmetic correction preserves the accepted architecture,
 public widths, checked-operation requirement, and failure vocabulary while

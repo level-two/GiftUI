@@ -338,8 +338,12 @@ unavailable vocabulary.
 
 **Current gate:** The maintainer explicitly reapproved the SPEC-004 correction
 that resolves the unreachable-overflow conflict recorded in the checked
-raster-arithmetic design note. `T2.1` is complete; tasks `T2.2` through `T2.5`
-must use the checked numeric foundation without reinterpreting its reasons.
+raster-arithmetic design note. `T2.1` is complete. `T2.2` exposed that the
+single-case operation-stream enum made its required mismatch path
+unconstructible; the Specification now drafts a validation-only negative fact
+and requires explicit maintainer reapproval before `T2.2` proceeds. Tasks
+`T2.2` through `T2.5` must use the checked numeric foundation without
+reinterpreting its reasons.
 
 **Exit evidence:** The pure resolver produces one immutable effective result
 or exact stable reason, independent of role/candidate order, with checked
@@ -359,6 +363,10 @@ and no runtime side effect.
 - [ ] `T2.2` — Implement operation/one-shot compatibility, canonical-encoding
       intersection, the complete submission lifetime/handoff matrix,
       realization/encoding allow rules, and deterministic preference order.
+      After explicit reapproval, add the validation-only incompatible
+      operation-stream case with raw value `2`; admit it only in producer and
+      realization contributions, reject it as `.operationStreamMismatch`, and
+      prove it can never appear in an available effective result.
       Prove that policy selects only complete conforming paths and that
       encoding, lifetime, handoff, and policy exclusion retain distinct
       reasons.
@@ -556,6 +564,10 @@ independent review.
 
 ### Upstream blockers
 
+- The corrected operation-stream vocabulary in SPEC-004 awaits explicit
+  maintainer reapproval. Until then `T2.2` and dependent resolver work remain
+  gated; do not manufacture an unknown enum value, omit the mismatch fixture,
+  or interpret the validation-only negative fact as an admitted stream mode.
 - The exact SPEC-003 required-family outcome carrier and operational fault
   seam depend on the active failure implementation. The pure
   `GiftUICapabilities` resolver must not import failure or wait for it.
@@ -717,4 +729,5 @@ encodings, full/tiled geometry, exact nRF usage, maximum typed boundaries,
 shared `.raster` overflow, every region limit, and all nine capacity owners at
 equality and first excess. The allocation probe reports zero allocations while
 executing the seam; both macOS profiles and the hardware-free ARMv6 and nRF
-drivers pass. `T2.2` is next.
+drivers pass. `T2.2` is next but remains gated on explicit maintainer
+reapproval of the validation-only operation-stream correction described above.
