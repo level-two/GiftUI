@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-08-29
-updated: 2026-08-29
+updated: 2026-08-30
 related_design_notes: []
 conformance_report: null
 related_future_work:
@@ -52,31 +52,32 @@ host must prove the complete `rasterPresentation` semantic promise without
 portable target/backend/device checks. SPEC-004 is therefore required MVP
 stack-validation work, not a post-MVP general capability framework.
 
-This is the next distinct implementation plan after the active SPEC-003 plan,
-not a replacement for its remaining work. The next executable implementation
-iteration remains SPEC-003 Milestone 0. This SPEC-004 draft prepares the next
-approved contract on the Wave 1 dependency path: its foundational
-`GiftUICapabilities` target unblocks the capability-owned portions of active
-SPEC-002 Milestone 4 and later SPEC-003 integration. The pure capability leaf,
-closed vocabulary, resolver, and normalized fixtures may proceed independently
-once this plan is ready. Production failure mapping, operation-stream
+This is the active implementation plan for the next dependency-complete Wave 1
+work. SPEC-003 has completed its independent Core, policy, health, diagnostic,
+and Foundation-adapter tasks; its remaining cross-owner integration now waits
+in part for SPEC-004. SPEC-004 has established its fixture contract and empty
+`GiftUICapabilities` leaf. The next implementation iteration therefore remains
+inside SPEC-004 and completes its Milestone 0 harness rather than opening a
+plan for another Specification. Production failure mapping, operation-stream
 integration, backend behavior, and startup composition retain dependencies on
 SPEC-003, SPEC-009, SPEC-014, and SPEC-015.
 
 ## Current Repository State
 
-- The package currently exposes `GiftUI` and an in-progress
-  `GiftUIFailureCore` leaf with their focused test targets. The active
-  SPEC-003 worktree has added the failure leaf and updated SPEC-002's exact
-  dependency graph; those changes must be preserved and treated as the graph
-  baseline when capability targets are added.
+- The package exposes `GiftUI`, `GiftUIFailureCore`, the optional downstream
+  `GiftUIFailureDiagnostics`, and the dependency-free `GiftUICapabilities`
+  product/target with focused tests. The exact-set graph also includes the
+  test-only Foundation/failure owner-adapter boundary. All existing nodes and
+  edges must be preserved when the SPEC-004 harness begins enforcing its own
+  compiled boundary.
 - `GiftUI` contains SPEC-002 checked geometry, arithmetic, and normalized
   pointer values. No capability declaration may be added there or re-exported
   from it. The approved SPEC-002 extent-to-capability adapter belongs at the
   first downstream boundary that imports both vocabularies.
-- No `GiftUICapabilities` product/target, capability unit-test target,
-  SPEC-004 fixture tree, contract driver, resource image, or conformance report
-  exists.
+- The SPEC-004 fixture tree, ordered manifest, normalized-corpus boundary,
+  matched resource-harness roots, authority audit, and capability-leaf evidence
+  exist. No SPEC-004 contract driver, compile fixtures, semantic declarations,
+  resource image, or conformance report exists yet.
 - SPEC-002 established fail-closed target dependency checks, positive and
   negative compile-fixture conventions, deterministic contract reports, and
   `scripts/contracts/driver-registry.tsv`. The capability target and driver
@@ -90,10 +91,57 @@ SPEC-003, SPEC-009, SPEC-014, and SPEC-015.
   SPIKE-001 and SPIKE-002 contain useful feasibility fixtures and measurement
   shapes, but their types, layouts, and code are non-authoritative and cannot
   be promoted directly into production.
-- SPEC-003 is implementing but has not yet produced its capability outcome
-  adapter. SPEC-009, SPEC-014, and SPEC-015 are approved but unimplemented, so
-  first-party one-shot tiled integration, operational fault injection, and the
-  conjunctive startup gate remain downstream integration tasks.
+- SPEC-003 is implementing and has completed its independent Milestones 0-3
+  plus the Foundation owner-adapter task. Its capability outcome adapter still
+  waits for SPEC-004 declarations. SPEC-009, SPEC-014, and SPEC-015 are
+  approved but unimplemented, so first-party one-shot tiled integration,
+  operational fault injection, and the conjunctive startup gate remain
+  downstream integration tasks.
+
+## Next Implementation Iteration — Draft
+
+**Iteration objective:** Complete SPEC-004 Milestone 0 by adding the
+standalone fail-closed contract driver, proving the foundational import and
+portable-source boundaries, and recording clean-checkout harness readiness.
+This is the smallest dependency-complete slice that advances the active
+contract and unblocks the closed-vocabulary work.
+
+**Included tasks:** `T0.3`, `T0.4`, and `T0.5`, in that order.
+
+**Explicitly excluded:** `T1.1` and all semantic capability declarations;
+SPEC-002/SPEC-003 production adapters; SPEC-009/SPEC-014 one-shot integration;
+SPEC-015 startup composition; cross-built resource evidence; connected-target
+execution, deployment, service restart, and flashing.
+
+**Entry conditions:**
+
+- SPEC-004 remains `implementing`, this plan remains `active`, and the
+  Proposal/RFC/ADR authority chain remains accepted or approved.
+- The checked-in `T0.1` fixture contract and `T0.2` dependency-free leaf remain
+  intact.
+- The active package graph, including SPEC-003 diagnostic and
+  Foundation-adapter work, is treated as the baseline; the iteration must not
+  discard or weaken those edges or their exact-set checks.
+
+**Ordered work and evidence:**
+
+1. `T0.3` creates and registers the four-profile driver. First prove registry
+   validation, deterministic report replacement, fail-closed tool/profile
+   identity, and a passing standalone `macos-dynamic` run. ARMv6 and nRF
+   commands remain hardware-free cross-build/inspection surfaces.
+2. `T0.4` adds the ordered positive and negative compile fixtures, source and
+   compiled dependency inspection, cycle and non-re-export checks, and the
+   portable Signal Analyzer identity scan. Include synthetic regressions that
+   prove unknown imports, graph edges, and concrete identity checks fail.
+3. `T0.5` records one clean-checkout readiness transcript containing the exact
+   package graph, capability-only positive import, prohibited-import failures,
+   `GiftUI` non-re-export evidence, portable-source scan, focused unit tests,
+   standalone `macos-dynamic` driver result, and no-argument top-level gate.
+
+**Iteration exit:** Milestone 0 is complete only when the checked-in readiness
+record points to reproducible passing evidence from one clean revision. The
+next plan task is then `T1.1`; beginning it is a separate implementation
+iteration and must preserve the harness boundary established here.
 
 ## Acceptance-Criterion Matrix
 
@@ -124,7 +172,7 @@ criterion to implementation work and checkable evidence.
 
 ### Milestone 0: Establish the Capability Contract Harness and Leaf
 
-**Entry conditions:** SPEC-004 remains `approved`; RFC-004/RFC-006 remain
+**Entry conditions:** SPEC-004 remains `implementing`; RFC-004/RFC-006 remain
 `approved`; ADR-010 and ADR-017 through ADR-020 remain `accepted`; the active
 SPEC-002/003 package graph is available without weakening its checks.
 
@@ -386,10 +434,11 @@ independent review.
 
 ## Integration and Validation Order
 
-1. Finish the currently active SPEC-003 iteration independently; preparing
-   this draft does not replace SPEC-003 `T0.3` or its later core work.
-2. When this plan becomes `ready`, establish the capability leaf, exact graph,
-   fixture contract, and standalone driver before adding declarations.
+1. Complete the draft next iteration above: add the standalone driver, enforce
+   the exact capability boundary, and record clean-checkout Milestone 0
+   readiness before adding declarations.
+2. Preserve completed SPEC-003 work and leave its capability, execution, and
+   host adapters dependency-blocked until their owning declarations exist.
 3. Implement and exhaustively test the closed vocabulary and resolver with no
    runtime, backend, failure, host, or connected-hardware dependency.
 4. Prove all normalized profiles, formula/precedence corpora, one-shot lease
