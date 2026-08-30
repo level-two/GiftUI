@@ -406,6 +406,154 @@ struct NormalizedRasterPresentationCandidate: Equatable, Sendable {
     let realization: RasterRealizationContribution
 }
 
+struct RasterPresentationArithmeticValue: Equatable, Sendable {
+    let effectiveRowAlignment: UInt32
+    let regionExtent: CapabilityExtent
+    let rowBytes: CapabilityByteCount
+    let requiredRasterBytes: CapabilityByteCount
+    let requiredPayloadBytes: CapabilityByteCount
+    let requiredInFlightBytes: CapabilityByteCount
+}
+
+enum RasterPresentationArithmeticOutcome: Equatable, Sendable {
+    case available(RasterPresentationArithmeticValue)
+    case unavailable(RasterPresentationUnavailable)
+}
+
+enum RasterPresentationArithmetic {
+    static func evaluate(
+        requirement: RasterPresentationRequirement,
+        realization: RasterRealizationContribution,
+        surface: SurfaceDisplayContribution,
+        policy: RasterPresentationPolicy,
+        encoding: CanonicalPixelEncoding
+    ) -> RasterPresentationArithmeticOutcome {
+        let extent = requirement.extent
+        guard extent.width <= realization.maximumExtent.width,
+              extent.height <= realization.maximumExtent.height,
+              extent.width <= surface.extent.width,
+              extent.height <= surface.extent.height,
+              extent.width <= realization.maximumRegionWidth,
+              extent.width <= surface.maximumRegionWidth else {
+            return .unavailable(.unsupportedLogicalExtent)
+        }
+
+        let regionHeight: UInt16
+        switch realization.kind {
+        case .fullSurface:
+            guard extent.height <= realization.maximumRegionHeight,
+                  extent.height <= surface.maximumRegionHeight else {
+                return .unavailable(.unsupportedLogicalExtent)
+            }
+            regionHeight = extent.height
+        case .tiled:
+            regionHeight = minimum(
+                extent.height,
+                realization.maximumRegionHeight,
+                surface.maximumRegionHeight
+            )
+        }
+
+        let candidateAlignment = UInt32(realization.rowByteAlignment)
+        let surfaceAlignment = UInt32(surface.rowByteAlignment)
+        let divisor = greatestCommonDivisor(candidateAlignment, surfaceAlignment)
+        let alignmentProduct = (candidateAlignment / divisor)
+            .multipliedReportingOverflow(by: surfaceAlignment)
+        guard !alignmentProduct.overflow else {
+            return .unavailable(.byteCountOverflow(domain: .raster))
+        }
+        let effectiveAlignment = alignmentProduct.partialValue
+
+        let unalignedRow = UInt32(extent.width)
+            .multipliedReportingOverflow(by: encoding.bytesPerPixel)
+        guard !unalignedRow.overflow else {
+            return .unavailable(.byteCountOverflow(domain: .raster))
+        }
+        let remainder = unalignedRow.partialValue % effectiveAlignment
+        let padding = remainder == 0 ? 0 : effectiveAlignment - remainder
+        let alignedRow = unalignedRow.partialValue.addingReportingOverflow(padding)
+        guard !alignedRow.overflow else {
+            return .unavailable(.byteCountOverflow(domain: .raster))
+        }
+
+        let usage = alignedRow.partialValue
+            .multipliedReportingOverflow(by: UInt32(regionHeight))
+        guard !usage.overflow else {
+            return .unavailable(.byteCountOverflow(domain: .raster))
+        }
+
+        let required = CapabilityByteCount(rawValue: usage.partialValue)
+        let rasterAvailable = minimum(
+            requirement.maximumRasterBytes,
+            realization.maximumRasterBytes,
+            policy.maximumRasterBytes
+        )
+        guard required <= rasterAvailable else {
+            return .unavailable(.insufficientCapacity(
+                domain: .raster,
+                required: required,
+                available: rasterAvailable
+            ))
+        }
+
+        let payloadAvailable = minimum(
+            requirement.maximumPayloadBytes,
+            realization.maximumPayloadBytes,
+            policy.maximumPayloadBytes
+        )
+        guard required <= payloadAvailable else {
+            return .unavailable(.insufficientCapacity(
+                domain: .payload,
+                required: required,
+                available: payloadAvailable
+            ))
+        }
+
+        let inFlightAvailable = minimum(
+            requirement.maximumInFlightBytes,
+            surface.maximumInFlightBytes,
+            policy.maximumInFlightBytes
+        )
+        guard required <= inFlightAvailable else {
+            return .unavailable(.insufficientCapacity(
+                domain: .inFlight,
+                required: required,
+                available: inFlightAvailable
+            ))
+        }
+
+        guard let regionExtent = CapabilityExtent(
+            width: extent.width,
+            height: regionHeight
+        ) else {
+            return .unavailable(.unsupportedLogicalExtent)
+        }
+        return .available(RasterPresentationArithmeticValue(
+            effectiveRowAlignment: effectiveAlignment,
+            regionExtent: regionExtent,
+            rowBytes: CapabilityByteCount(rawValue: alignedRow.partialValue),
+            requiredRasterBytes: required,
+            requiredPayloadBytes: required,
+            requiredInFlightBytes: required
+        ))
+    }
+
+    private static func greatestCommonDivisor(_ lhs: UInt32, _ rhs: UInt32) -> UInt32 {
+        var first = lhs
+        var second = rhs
+        while second != 0 {
+            let remainder = first % second
+            first = second
+            second = remainder
+        }
+        return first
+    }
+
+    private static func minimum<T: Comparable>(_ first: T, _ second: T, _ third: T) -> T {
+        min(first, min(second, third))
+    }
+}
+
 public struct RasterPresentationResolverWorkspace: Equatable, Sendable {
     public static let candidateCapacity: UInt8 = 2
     public let usableCandidateCapacity: UInt8
@@ -441,6 +589,15 @@ public struct RasterPresentationResolverWorkspace: Equatable, Sendable {
 public enum CanonicalPixelEncoding: UInt8, Equatable, Sendable {
     case rgb565BigEndian = 1
     case rgba8888 = 2
+}
+
+private extension CanonicalPixelEncoding {
+    var bytesPerPixel: UInt32 {
+        switch self {
+        case .rgb565BigEndian: 2
+        case .rgba8888: 4
+        }
+    }
 }
 
 public enum SubmissionLifetime: UInt8, Equatable, Sendable {

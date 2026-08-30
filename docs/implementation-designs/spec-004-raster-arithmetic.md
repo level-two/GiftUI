@@ -47,18 +47,18 @@ and surface region maxima are also `UInt16`. Byte counts and all required
 arithmetic outputs are `UInt32`. Typed construction prevents malformed values
 from reaching the future resolver.
 
-The current internal workspace owns two fixed candidate slots. No public
-resolver exists yet, so T2.1 can add this helper without compatibility or
-migration cost. The corrected Specification has been explicitly reapproved.
+The internal workspace owns two fixed candidate slots. T2.1 adds one internal
+`RasterPresentationArithmetic.evaluate` seam and a fixed value/outcome record;
+no public resolver exists yet, and the public contract remains unchanged.
 
-## Proposed Internal Organization
+## Internal Organization
 
-Keep arithmetic in one internal, value-only helper used by candidate
-evaluation. It should accept one typed
+Arithmetic stays in one internal, value-only helper used by candidate
+evaluation. It accepts one typed
 requirement, realization, surface contribution, policy, and selected encoding;
-return either a fixed geometry/usage record or the exact capability-domain
-reason; use no collection or closure; and expose a package-internal test seam
-for every checked operation.
+returns either a fixed geometry/usage record or the exact capability-domain
+reason; uses no collection or closure; and exposes an internal test seam for
+every checked operation.
 
 The public resolver remains the only future public entry point. Arithmetic
 helpers and their intermediate records remain replaceable implementation
@@ -159,11 +159,13 @@ The tests must not manufacture invalid or widened typed records.
 
 ## Open Implementation Questions
 
-None. The corrected Specification is explicitly reapproved and the governing
-implementation-plan iteration is ready.
+None. The corrected Specification is explicitly reapproved, and T2.1
+implements this mechanism without an unresolved internal design choice.
 
 ## Code and Evidence Links
 
 - [Capability values and fixed storage](../../Sources/GiftUICapabilities/GiftUICapabilities.swift)
 - [Focused capability tests](../../Tests/GiftUICapabilitiesTests/GiftUICapabilitiesTests.swift)
+- [Normalized arithmetic corpus](../../Tests/ContractFixtures/SPEC004/SemanticCorpus/cases.tsv)
+- [Arithmetic semantic probe](../../Tests/ContractFixtures/SPEC004/SemanticProbe/main.swift)
 - [SPEC-004 contract driver](../../scripts/contracts/run-spec-004.sh)

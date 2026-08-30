@@ -112,10 +112,10 @@ and SPEC-015.
   integration, operational fault injection, and the conjunctive startup gate
   remain downstream integration tasks.
 
-## Next Implementation Iteration — Ready
+## T2.1 Implementation Iteration — Completed
 
-**Iteration disposition:** Ready. The maintainer explicitly reapproved the
-corrected Specification and authorized implementation to resume. The linked
+**Iteration disposition:** Completed after the maintainer explicitly
+reapproved the corrected Specification. The linked
 [checked raster-arithmetic design note](../implementation-designs/spec-004-raster-arithmetic.md)
 proves why the fixed input widths make shared LCM/row overflow and a
 payload-only usage overflow unconstructible. SPEC-004 now preserves those
@@ -123,7 +123,7 @@ widths, requires maximum-bound representability proofs, assigns the one
 constructible shared-usage overflow to `.raster`, and forbids manufactured
 wider fixtures.
 
-**Iteration objective:** Complete `T2.1`, the checked byte-bound and region
+**Completed objective:** Complete `T2.1`, the checked byte-bound and region
 arithmetic slice of SPEC-004 Milestone 2. Add the pure internal arithmetic
 and candidate-evaluation seam needed to derive exact row, region, raster,
 payload, and in-flight usage or the corrected Specification-assigned
@@ -338,15 +338,15 @@ unavailable vocabulary.
 
 **Current gate:** The maintainer explicitly reapproved the SPEC-004 correction
 that resolves the unreachable-overflow conflict recorded in the checked
-raster-arithmetic design note. `T2.1` may proceed; tasks `T2.2` through `T2.5`
-must not bypass the numeric foundation or reinterpret its reasons.
+raster-arithmetic design note. `T2.1` is complete; tasks `T2.2` through `T2.5`
+must use the checked numeric foundation without reinterpreting its reasons.
 
 **Exit evidence:** The pure resolver produces one immutable effective result
 or exact stable reason, independent of role/candidate order, with checked
 arithmetic, complete compatibility rules, bounded work, no partial snapshot,
 and no runtime side effect.
 
-- [ ] `T2.1` — Implement checked effective-alignment LCM, unaligned/aligned row
+- [x] `T2.1` — Implement checked effective-alignment LCM, unaligned/aligned row
       arithmetic, full-surface/tiled region selection, raster/payload/in-flight
       usage, minimum available ceilings, and deterministic overflow-domain
       assignment. Cover both encodings, unequal alignments, zero ceilings,
@@ -700,10 +700,21 @@ records the fixed-width proof that resolved the `T2.1` contract conflict.
 SPEC-004 now requires maximum-bound non-overflow proofs, assigns the one
 constructible shared-usage overflow to `.raster`, and excludes manufactured
 payload-only/in-flight arithmetic overflow. The maintainer explicitly
-reapproved that correction; `T2.1` is now the next executable task.
+reapproved that correction.
 The 2026-08-30 planning review marked the `T2.1` iteration `ready` after adding
 explicit coverage for all nine capacity-ceiling owners, maximum typed
 representability, single shared-usage overflow, allocation-free helper
 execution, all four hardware-free profile commands, stable corpus IDs, and
 parallel-safe coordination with SPEC-003 `T4.2`. This readiness record does not
-complete `T2.1` or accept implementation evidence.
+by itself accept implementation evidence.
+`T2.1` is complete: the internal fixed-width arithmetic seam performs checked
+LCM, row round-up, deterministic region selection, one shared usage
+multiplication, and ordered three-owner capacity minima without allocation or
+public-surface changes. Twenty-one focused capability tests pass, and both
+macOS drivers record the 22-case normalized transcript in
+`Tests/ContractFixtures/SPEC004/SemanticCorpus/cases.tsv`, including both
+encodings, full/tiled geometry, exact nRF usage, maximum typed boundaries,
+shared `.raster` overflow, every region limit, and all nine capacity owners at
+equality and first excess. The allocation probe reports zero allocations while
+executing the seam; both macOS profiles and the hardware-free ARMv6 and nRF
+drivers pass. `T2.2` is next.

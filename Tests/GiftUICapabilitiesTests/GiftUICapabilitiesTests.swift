@@ -286,6 +286,255 @@ final class GiftUICapabilitiesTests: XCTestCase {
         XCTAssertLessThanOrEqual(MemoryLayout<RasterPresentationResolverWorkspace>.size, 96)
     }
 
+    func testRasterArithmeticCoversBothEncodingsAndRegionKinds() throws {
+        let tiled = try evaluateArithmetic(
+            width: 5,
+            height: 9,
+            kind: .tiled,
+            encoding: .rgb565BigEndian,
+            realizationRegionHeight: 3,
+            surfaceRegionHeight: 4,
+            realizationAlignment: 6,
+            surfaceAlignment: 8
+        )
+        XCTAssertEqual(tiled, .available(RasterPresentationArithmeticValue(
+            effectiveRowAlignment: 24,
+            regionExtent: try XCTUnwrap(CapabilityExtent(width: 5, height: 3)),
+            rowBytes: .init(rawValue: 24),
+            requiredRasterBytes: .init(rawValue: 72),
+            requiredPayloadBytes: .init(rawValue: 72),
+            requiredInFlightBytes: .init(rawValue: 72)
+        )))
+
+        let fullSurface = try evaluateArithmetic(
+            width: 5,
+            height: 7,
+            kind: .fullSurface,
+            encoding: .rgba8888,
+            realizationRegionHeight: 7,
+            surfaceRegionHeight: 7,
+            realizationAlignment: 4,
+            surfaceAlignment: 8
+        )
+        XCTAssertEqual(fullSurface, .available(RasterPresentationArithmeticValue(
+            effectiveRowAlignment: 8,
+            regionExtent: try XCTUnwrap(CapabilityExtent(width: 5, height: 7)),
+            rowBytes: .init(rawValue: 24),
+            requiredRasterBytes: .init(rawValue: 168),
+            requiredPayloadBytes: .init(rawValue: 168),
+            requiredInFlightBytes: .init(rawValue: 168)
+        )))
+    }
+
+    func testRasterArithmeticProducesExactNRFUsage() throws {
+        let outcome = try evaluateArithmetic(
+            width: 480,
+            height: 320,
+            kind: .tiled,
+            encoding: .rgb565BigEndian,
+            realizationRegionHeight: 4,
+            surfaceRegionHeight: 320,
+            realizationAlignment: 2,
+            surfaceAlignment: 2,
+            ceiling: 3_840
+        )
+        XCTAssertEqual(outcome, .available(RasterPresentationArithmeticValue(
+            effectiveRowAlignment: 2,
+            regionExtent: try XCTUnwrap(CapabilityExtent(width: 480, height: 4)),
+            rowBytes: .init(rawValue: 960),
+            requiredRasterBytes: .init(rawValue: 3_840),
+            requiredPayloadBytes: .init(rawValue: 3_840),
+            requiredInFlightBytes: .init(rawValue: 3_840)
+        )))
+    }
+
+    func testRasterArithmeticSelectsEveryRegionLimitAndRejectsNarrowOrShortFullSurface() throws {
+        guard case let .available(logicalMinimum) = try evaluateArithmetic(
+            width: 5, height: 2, kind: .tiled, encoding: .rgb565BigEndian,
+            realizationExtentHeight: 4, surfaceExtentHeight: 4,
+            realizationRegionHeight: 3, surfaceRegionHeight: 4,
+            realizationAlignment: 1, surfaceAlignment: 1
+        ) else { return XCTFail("logical height must be selectable") }
+        XCTAssertEqual(logicalMinimum.regionExtent.height, 2)
+
+        guard case let .available(surfaceMinimum) = try evaluateArithmetic(
+            width: 5, height: 9, kind: .tiled, encoding: .rgb565BigEndian,
+            realizationRegionHeight: 4, surfaceRegionHeight: 3,
+            realizationAlignment: 1, surfaceAlignment: 1
+        ) else { return XCTFail("surface height must be selectable") }
+        XCTAssertEqual(surfaceMinimum.regionExtent.height, 3)
+
+        XCTAssertEqual(
+            try evaluateArithmetic(
+                width: 5, height: 2, kind: .fullSurface,
+                encoding: .rgb565BigEndian,
+                realizationRegionWidth: 4,
+                realizationRegionHeight: 2, surfaceRegionHeight: 2,
+                realizationAlignment: 1, surfaceAlignment: 1
+            ),
+            .unavailable(.unsupportedLogicalExtent)
+        )
+        XCTAssertEqual(
+            try evaluateArithmetic(
+                width: 5, height: 2, kind: .fullSurface,
+                encoding: .rgb565BigEndian,
+                surfaceRegionWidth: 4,
+                realizationRegionHeight: 2, surfaceRegionHeight: 2,
+                realizationAlignment: 1, surfaceAlignment: 1
+            ),
+            .unavailable(.unsupportedLogicalExtent)
+        )
+        XCTAssertEqual(
+            try evaluateArithmetic(
+                width: 5, height: 3, kind: .fullSurface,
+                encoding: .rgb565BigEndian,
+                realizationRegionHeight: 2, surfaceRegionHeight: 3,
+                realizationAlignment: 1, surfaceAlignment: 1
+            ),
+            .unavailable(.unsupportedLogicalExtent)
+        )
+        XCTAssertEqual(
+            try evaluateArithmetic(
+                width: 5, height: 3, kind: .fullSurface,
+                encoding: .rgb565BigEndian,
+                realizationRegionHeight: 3, surfaceRegionHeight: 2,
+                realizationAlignment: 1, surfaceAlignment: 1
+            ),
+            .unavailable(.unsupportedLogicalExtent)
+        )
+    }
+
+    func testRasterArithmeticMaximumTypedRowsRemainRepresentable() throws {
+        let maximumLCM = try evaluateArithmetic(
+            width: .max,
+            height: 1,
+            kind: .fullSurface,
+            encoding: .rgb565BigEndian,
+            realizationRegionHeight: 1,
+            surfaceRegionHeight: 1,
+            realizationAlignment: .max,
+            surfaceAlignment: .max - 1,
+            ceiling: .max
+        )
+        guard case let .available(lcmValue) = maximumLCM else {
+            return XCTFail("maximum typed LCM must remain representable")
+        }
+        XCTAssertEqual(lcmValue.effectiveRowAlignment, 4_294_770_690)
+        XCTAssertEqual(lcmValue.rowBytes.rawValue, 4_294_770_690)
+
+        let maximumUnalignedRow = try evaluateArithmetic(
+            width: .max,
+            height: 1,
+            kind: .fullSurface,
+            encoding: .rgba8888,
+            realizationRegionHeight: 1,
+            surfaceRegionHeight: 1,
+            realizationAlignment: 1,
+            surfaceAlignment: 1,
+            ceiling: .max
+        )
+        guard case let .available(rowValue) = maximumUnalignedRow else {
+            return XCTFail("maximum typed unaligned row must remain representable")
+        }
+        XCTAssertEqual(rowValue.rowBytes.rawValue, 262_140)
+    }
+
+    func testRasterArithmeticSharedUsageOverflowIsAssignedToRaster() throws {
+        let outcome = try evaluateArithmetic(
+            width: .max,
+            height: 2,
+            kind: .fullSurface,
+            encoding: .rgb565BigEndian,
+            realizationRegionHeight: 2,
+            surfaceRegionHeight: 2,
+            realizationAlignment: .max,
+            surfaceAlignment: .max - 1,
+            ceiling: .max
+        )
+        XCTAssertEqual(outcome, .unavailable(.byteCountOverflow(domain: .raster)))
+    }
+
+    func testRasterArithmeticReportsEveryExactMinimumCapacity() throws {
+        let required = CapabilityByteCount(rawValue: 16)
+        XCTAssertEqual(
+            try evaluateArithmetic(
+                width: 4, height: 2, kind: .fullSurface,
+                encoding: .rgb565BigEndian,
+                realizationRegionHeight: 2, surfaceRegionHeight: 2,
+                realizationAlignment: 1, surfaceAlignment: 1,
+                rasterCeilings: (20, 15, 18)
+            ),
+            .unavailable(.insufficientCapacity(
+                domain: .raster, required: required, available: .init(rawValue: 15)
+            ))
+        )
+        XCTAssertEqual(
+            try evaluateArithmetic(
+                width: 4, height: 2, kind: .fullSurface,
+                encoding: .rgb565BigEndian,
+                realizationRegionHeight: 2, surfaceRegionHeight: 2,
+                realizationAlignment: 1, surfaceAlignment: 1,
+                payloadCeilings: (20, 18, 15)
+            ),
+            .unavailable(.insufficientCapacity(
+                domain: .payload, required: required, available: .init(rawValue: 15)
+            ))
+        )
+        XCTAssertEqual(
+            try evaluateArithmetic(
+                width: 4, height: 2, kind: .fullSurface,
+                encoding: .rgb565BigEndian,
+                realizationRegionHeight: 2, surfaceRegionHeight: 2,
+                realizationAlignment: 1, surfaceAlignment: 1,
+                inFlightCeilings: (20, 0, 18)
+            ),
+            .unavailable(.insufficientCapacity(
+                domain: .inFlight, required: required, available: .init(rawValue: 0)
+            ))
+        )
+    }
+
+    func testRasterArithmeticCoversAllNineCapacityOwnersAtTheirBoundary() throws {
+        let equalityOwnerPositions: [(UInt32, UInt32, UInt32)] = [
+            (16, 20, 20), (20, 16, 20), (20, 20, 16),
+        ]
+        let firstExcessOwnerPositions: [(UInt32, UInt32, UInt32)] = [
+            (15, 20, 20), (20, 15, 20), (20, 20, 15),
+        ]
+
+        for ceilings in equalityOwnerPositions {
+            try assertArithmeticUsageAvailable(rasterCeilings: ceilings)
+            try assertArithmeticUsageAvailable(payloadCeilings: ceilings)
+            try assertArithmeticUsageAvailable(inFlightCeilings: ceilings)
+        }
+        for ceilings in firstExcessOwnerPositions {
+            XCTAssertEqual(
+                try boundaryArithmetic(rasterCeilings: ceilings),
+                .unavailable(.insufficientCapacity(
+                    domain: .raster,
+                    required: .init(rawValue: 16),
+                    available: .init(rawValue: 15)
+                ))
+            )
+            XCTAssertEqual(
+                try boundaryArithmetic(payloadCeilings: ceilings),
+                .unavailable(.insufficientCapacity(
+                    domain: .payload,
+                    required: .init(rawValue: 16),
+                    available: .init(rawValue: 15)
+                ))
+            )
+            XCTAssertEqual(
+                try boundaryArithmetic(inFlightCeilings: ceilings),
+                .unavailable(.insufficientCapacity(
+                    domain: .inFlight,
+                    required: .init(rawValue: 16),
+                    available: .init(rawValue: 15)
+                ))
+            )
+        }
+    }
+
     func testUnavailableVocabularyRetainsBoundedPayloads() {
         let count = CapabilityByteCount(rawValue: 7)
         let reasons: [RasterPresentationUnavailable] = [
@@ -330,6 +579,129 @@ final class GiftUICapabilitiesTests: XCTestCase {
 
     private var allOperations: RasterOperationSet {
         [.opaqueRectangles, .positionedText, .straightLineStrokes, .clipping, .damage]
+    }
+
+    private func evaluateArithmetic(
+        width: UInt16,
+        height: UInt16,
+        kind: RasterRealizationKind,
+        encoding: CanonicalPixelEncoding,
+        realizationExtentHeight: UInt16? = nil,
+        surfaceExtentHeight: UInt16? = nil,
+        realizationRegionWidth: UInt16? = nil,
+        surfaceRegionWidth: UInt16? = nil,
+        realizationRegionHeight: UInt16,
+        surfaceRegionHeight: UInt16,
+        realizationAlignment: UInt16,
+        surfaceAlignment: UInt16,
+        ceiling: UInt32 = 1_000_000,
+        rasterCeilings: (UInt32, UInt32, UInt32)? = nil,
+        payloadCeilings: (UInt32, UInt32, UInt32)? = nil,
+        inFlightCeilings: (UInt32, UInt32, UInt32)? = nil
+    ) throws -> RasterPresentationArithmeticOutcome {
+        let extent = try XCTUnwrap(CapabilityExtent(width: width, height: height))
+        let realizationExtent = try XCTUnwrap(CapabilityExtent(
+            width: width,
+            height: realizationExtentHeight ?? height
+        ))
+        let surfaceExtent = try XCTUnwrap(CapabilityExtent(
+            width: width,
+            height: surfaceExtentHeight ?? height
+        ))
+        let encodingSet: CanonicalPixelEncodingSet = encoding == .rgb565BigEndian
+            ? .rgb565BigEndian
+            : .rgba8888
+        let raster = rasterCeilings ?? (ceiling, ceiling, ceiling)
+        let payload = payloadCeilings ?? (ceiling, ceiling, ceiling)
+        let inFlight = inFlightCeilings ?? (ceiling, ceiling, ceiling)
+        let requirement = try XCTUnwrap(RasterPresentationRequirement(
+            operations: allOperations,
+            extent: extent,
+            operationStream: .synchronousBorrowedOneShot,
+            acceptedEncodings: encodingSet,
+            acceptedSubmissionLifetimes: .synchronousBorrow,
+            maximumRasterBytes: .init(rawValue: raster.0),
+            maximumPayloadBytes: .init(rawValue: payload.0),
+            maximumInFlightBytes: .init(rawValue: inFlight.0),
+            absence: .required
+        ))
+        let realization = try XCTUnwrap(RasterRealizationContribution(
+            kind: kind,
+            operations: allOperations,
+            operationStream: .synchronousBorrowedOneShot,
+            encodings: encodingSet,
+            producedSubmissionLifetimes: .synchronousBorrow,
+            maximumExtent: realizationExtent,
+            maximumRegionWidth: realizationRegionWidth ?? width,
+            maximumRegionHeight: realizationRegionHeight,
+            rowByteAlignment: realizationAlignment,
+            maximumRasterBytes: .init(rawValue: raster.1),
+            maximumPayloadBytes: .init(rawValue: payload.1)
+        ))
+        let surface = try XCTUnwrap(SurfaceDisplayContribution(
+            extent: surfaceExtent,
+            encodings: encodingSet,
+            acceptedSubmissionLifetimes: .synchronousBorrow,
+            handoffs: .synchronous,
+            maximumRegionWidth: surfaceRegionWidth ?? width,
+            maximumRegionHeight: surfaceRegionHeight,
+            rowByteAlignment: surfaceAlignment,
+            maximumInFlightCount: 1,
+            maximumInFlightBytes: .init(rawValue: inFlight.1)
+        ))
+        let policy = try XCTUnwrap(RasterPresentationPolicy(
+            maximumRasterBytes: .init(rawValue: raster.2),
+            maximumPayloadBytes: .init(rawValue: payload.2),
+            maximumInFlightBytes: .init(rawValue: inFlight.2),
+            allowedRealizations: kind == .fullSurface ? .fullSurface : .tiled,
+            allowedEncodings: encodingSet,
+            preferredRealization: kind,
+            preferredEncoding: encodingSet
+        ))
+        return RasterPresentationArithmetic.evaluate(
+            requirement: requirement,
+            realization: realization,
+            surface: surface,
+            policy: policy,
+            encoding: encoding
+        )
+    }
+
+    private func boundaryArithmetic(
+        rasterCeilings: (UInt32, UInt32, UInt32)? = nil,
+        payloadCeilings: (UInt32, UInt32, UInt32)? = nil,
+        inFlightCeilings: (UInt32, UInt32, UInt32)? = nil
+    ) throws -> RasterPresentationArithmeticOutcome {
+        try evaluateArithmetic(
+            width: 4,
+            height: 2,
+            kind: .fullSurface,
+            encoding: .rgb565BigEndian,
+            realizationRegionHeight: 2,
+            surfaceRegionHeight: 2,
+            realizationAlignment: 1,
+            surfaceAlignment: 1,
+            rasterCeilings: rasterCeilings,
+            payloadCeilings: payloadCeilings,
+            inFlightCeilings: inFlightCeilings
+        )
+    }
+
+    private func assertArithmeticUsageAvailable(
+        rasterCeilings: (UInt32, UInt32, UInt32)? = nil,
+        payloadCeilings: (UInt32, UInt32, UInt32)? = nil,
+        inFlightCeilings: (UInt32, UInt32, UInt32)? = nil,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) throws {
+        guard case let .available(value) = try boundaryArithmetic(
+            rasterCeilings: rasterCeilings,
+            payloadCeilings: payloadCeilings,
+            inFlightCeilings: inFlightCeilings
+        ) else {
+            return XCTFail("boundary equality must remain available", file: file, line: line)
+        }
+        XCTAssertEqual(value.requiredRasterBytes.rawValue, 16, file: file, line: line)
     }
 
     private func makeExtent() throws -> CapabilityExtent {

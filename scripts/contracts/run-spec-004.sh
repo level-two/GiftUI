@@ -319,7 +319,6 @@ run_allocation_probe() {
     local sdk_path="$2"
     local profile_flag="$3"
     local probe_dir="${report_dir}/build/allocation-probe"
-    local candidate_dir="${report_dir}/resources/candidate"
     local clang interposer probe output
     mkdir -p "${probe_dir}"
     clang="$(xcrun --find clang)"
@@ -341,22 +340,53 @@ run_allocation_probe() {
     local -a probe_command=(
         "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
         -O -whole-module-optimization "${profile_flag}" -language-mode 6
-        -I "${report_dir}/build" -L "${candidate_dir}" -L "${probe_dir}"
-        -lGiftUICapabilities -lGiftUIAllocationInterposer
-        -Xlinker -rpath -Xlinker "${candidate_dir}"
+        -module-name GiftUICapabilitiesAllocationProbe
+        -L "${probe_dir}" -lGiftUIAllocationInterposer
         -Xlinker -rpath -Xlinker "${probe_dir}"
+        "${EXPECTED_SOURCE}"
         "${FIXTURE_ROOT}/Instrumentation/AllocationProbe/main.swift"
         -o "${probe}"
     )
     record_command "${probe_command[@]}"
     "${probe_command[@]}" >>"${log_path}" 2>&1
-    record_command env "DYLD_LIBRARY_PATH=${probe_dir}:${candidate_dir}" "${probe}"
-    env "DYLD_LIBRARY_PATH=${probe_dir}:${candidate_dir}" "${probe}" \
+    record_command env "DYLD_LIBRARY_PATH=${probe_dir}" "${probe}"
+    env "DYLD_LIBRARY_PATH=${probe_dir}" "${probe}" \
         >"${output}" 2>>"${log_path}"
     record_command "${SCRIPT_DIR}/check-spec-004-layout.rb" "${output}"
     "${SCRIPT_DIR}/check-spec-004-layout.rb" "${output}" >>"${log_path}" 2>&1
     record_image allocation-probe "${probe}"
     record_image allocation-interposer "${interposer}"
+}
+
+run_semantic_probe() {
+    local compiler="$1"
+    local sdk_path="$2"
+    local profile_flag="$3"
+    local probe_dir="${report_dir}/build/semantic-probe"
+    local probe="${probe_dir}/semantic-probe"
+    local actual="${report_dir}/semantics/arithmetic.tsv"
+    local expected="${probe_dir}/expected-arithmetic.tsv"
+    mkdir -p "${probe_dir}"
+
+    local -a command=(
+        "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
+        -O -whole-module-optimization "${profile_flag}" -language-mode 6
+        -module-name GiftUICapabilitiesSemanticProbe
+        "${EXPECTED_SOURCE}"
+        "${FIXTURE_ROOT}/SemanticProbe/main.swift"
+        -o "${probe}"
+    )
+    record_command "${command[@]}"
+    "${command[@]}" >>"${log_path}" 2>&1
+    record_command "${probe}"
+    "${probe}" >"${actual}" 2>>"${log_path}"
+    awk 'NF && $0 !~ /^#/' \
+        "${FIXTURE_ROOT}/SemanticCorpus/cases.tsv" >"${expected}"
+    if ! cmp -s "${expected}" "${actual}"; then
+        diff -u "${expected}" "${actual}" >>"${log_path}" 2>&1 || true
+        fail 'arithmetic semantic transcript differs from the normalized corpus'
+    fi
+    record_image semantic-probe "${probe}"
 }
 
 run_macos() {
@@ -462,6 +492,7 @@ run_macos() {
     "${SCRIPT_DIR}/check-spec-004-value-boundary.rb" \
         "${report_dir}/build/GiftUICapabilities.swiftinterface" \
         "${undefined_symbols}" >>"${log_path}" 2>&1
+    run_semantic_probe "${compiler}" "${sdk_path}" "${profile_flag}"
     run_allocation_probe "${compiler}" "${sdk_path}" "${profile_flag}"
     run_fixture_set "${compiler}" "${report_dir}/build" \
         -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \

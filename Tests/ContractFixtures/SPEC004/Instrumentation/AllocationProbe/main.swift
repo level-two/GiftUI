@@ -1,5 +1,3 @@
-import GiftUICapabilities
-
 @_silgen_name("giftui_allocation_probe_reset")
 private func resetAllocationCount()
 
@@ -74,6 +72,13 @@ private func exercise(seed: UInt32) -> UInt32 {
         preferredRealization: .tiled,
         preferredEncoding: CanonicalPixelEncodingSet(rawValue: 0x01)
     )!
+    let arithmetic = RasterPresentationArithmetic.evaluate(
+        requirement: requirement,
+        realization: tiled,
+        surface: surface,
+        policy: policy,
+        encoding: .rgb565BigEndian
+    )
     var contributions = RasterPresentationContributions()
     _ = contributions.insert(.hostResourcePolicy(policy))
     _ = contributions.insert(.surfaceDisplay(surface))
@@ -91,6 +96,9 @@ private func exercise(seed: UInt32) -> UInt32 {
     checksum &+= UInt32(policy.preferredRealization.rawValue)
     checksum &+= UInt32(workspace.usableCandidateCapacity)
     checksum &+= duplicate == .rejected(.duplicateContributor(role: .renderProducer)) ? 1 : 0
+    if case let .available(value) = arithmetic {
+        checksum &+= value.requiredRasterBytes.rawValue
+    }
     return checksum
 }
 
