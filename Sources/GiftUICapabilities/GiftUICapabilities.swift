@@ -298,6 +298,146 @@ public struct RasterPresentationPolicy: Equatable, Sendable {
     }
 }
 
+public enum RasterPresentationContribution: Equatable, Sendable {
+    case renderProducer(RenderProducerContribution)
+    case rasterBackend(RasterBackendContribution)
+    case surfaceDisplay(SurfaceDisplayContribution)
+    case hostResourcePolicy(RasterPresentationPolicy)
+}
+
+public struct RasterPresentationContributions: Equatable, Sendable {
+    public static let capacity: UInt8 = 4
+
+    var renderProducer: RenderProducerContribution?
+    var rasterBackend: RasterBackendContribution?
+    var surfaceDisplay: SurfaceDisplayContribution?
+    var hostResourcePolicy: RasterPresentationPolicy?
+    var duplicateMask: UInt8
+
+    public init() {
+        renderProducer = nil
+        rasterBackend = nil
+        surfaceDisplay = nil
+        hostResourcePolicy = nil
+        duplicateMask = 0
+    }
+
+    public mutating func insert(
+        _ contribution: RasterPresentationContribution
+    ) -> RasterPresentationContributionInsertion {
+        switch contribution {
+        case let .renderProducer(value):
+            guard renderProducer == nil else {
+                return rejectDuplicate(.renderProducer)
+            }
+            renderProducer = value
+        case let .rasterBackend(value):
+            guard rasterBackend == nil else {
+                return rejectDuplicate(.rasterBackend)
+            }
+            rasterBackend = value
+        case let .surfaceDisplay(value):
+            guard surfaceDisplay == nil else {
+                return rejectDuplicate(.surfaceDisplay)
+            }
+            surfaceDisplay = value
+        case let .hostResourcePolicy(value):
+            guard hostResourcePolicy == nil else {
+                return rejectDuplicate(.hostResourcePolicy)
+            }
+            hostResourcePolicy = value
+        }
+        return .inserted
+    }
+
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        guard lhs.duplicateMask == rhs.duplicateMask else { return false }
+        return (lhs.hasDuplicate(.renderProducer) || lhs.renderProducer == rhs.renderProducer) &&
+            (lhs.hasDuplicate(.rasterBackend) || lhs.rasterBackend == rhs.rasterBackend) &&
+            (lhs.hasDuplicate(.surfaceDisplay) || lhs.surfaceDisplay == rhs.surfaceDisplay) &&
+            (lhs.hasDuplicate(.hostResourcePolicy) ||
+                lhs.hostResourcePolicy == rhs.hostResourcePolicy)
+    }
+
+    var firstInputIssue: RasterPresentationUnavailable? {
+        if let duplicate = lowestDuplicateRole {
+            return .duplicateContributor(role: duplicate)
+        }
+        if let missing = lowestMissingRole {
+            return .missingContributor(role: missing)
+        }
+        return nil
+    }
+
+    private mutating func rejectDuplicate(
+        _ role: RasterPresentationContributorRole
+    ) -> RasterPresentationContributionInsertion {
+        duplicateMask |= role.mask
+        return .rejected(.duplicateContributor(role: role))
+    }
+
+    private func hasDuplicate(_ role: RasterPresentationContributorRole) -> Bool {
+        duplicateMask & role.mask != 0
+    }
+
+    private var lowestDuplicateRole: RasterPresentationContributorRole? {
+        if hasDuplicate(.renderProducer) { return .renderProducer }
+        if hasDuplicate(.rasterBackend) { return .rasterBackend }
+        if hasDuplicate(.surfaceDisplay) { return .surfaceDisplay }
+        if hasDuplicate(.hostResourcePolicy) { return .hostResourcePolicy }
+        return nil
+    }
+
+    private var lowestMissingRole: RasterPresentationContributorRole? {
+        if renderProducer == nil { return .renderProducer }
+        if rasterBackend == nil { return .rasterBackend }
+        if surfaceDisplay == nil { return .surfaceDisplay }
+        if hostResourcePolicy == nil { return .hostResourcePolicy }
+        return nil
+    }
+}
+
+public enum RasterPresentationContributionInsertion: Equatable, Sendable {
+    case inserted
+    case rejected(RasterPresentationUnavailable)
+}
+
+struct NormalizedRasterPresentationCandidate: Equatable, Sendable {
+    let realization: RasterRealizationContribution
+}
+
+public struct RasterPresentationResolverWorkspace: Equatable, Sendable {
+    public static let candidateCapacity: UInt8 = 2
+    public let usableCandidateCapacity: UInt8
+
+    var firstCandidate: NormalizedRasterPresentationCandidate?
+    var secondCandidate: NormalizedRasterPresentationCandidate?
+
+    public init?(usableCandidateCapacity: UInt8 = 2) {
+        guard usableCandidateCapacity <= Self.candidateCapacity else { return nil }
+        self.usableCandidateCapacity = usableCandidateCapacity
+        firstCandidate = nil
+        secondCandidate = nil
+    }
+
+    mutating func append(_ candidate: NormalizedRasterPresentationCandidate) -> Bool {
+        if firstCandidate == nil, usableCandidateCapacity >= 1 {
+            firstCandidate = candidate
+            return true
+        }
+        if secondCandidate == nil, usableCandidateCapacity >= 2 {
+            secondCandidate = candidate
+            return true
+        }
+        return false
+    }
+
+    mutating func reset() {
+        firstCandidate = nil
+        secondCandidate = nil
+    }
+}
+
 public enum CanonicalPixelEncoding: UInt8, Equatable, Sendable {
     case rgb565BigEndian = 1
     case rgba8888 = 2
@@ -392,6 +532,10 @@ public enum RasterPresentationUnavailable: Equatable, Sendable {
     case incompatibleSubmissionHandoff
     case byteCountOverflow(domain: RasterPresentationCapacity)
     case policyHasNoConformingRealization
+}
+
+private extension RasterPresentationContributorRole {
+    var mask: UInt8 { 1 << (rawValue - 1) }
 }
 
 private extension RasterOperationSet {

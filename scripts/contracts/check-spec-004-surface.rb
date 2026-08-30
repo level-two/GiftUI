@@ -12,12 +12,16 @@ EXPECTED_PUBLIC_TYPES = %w[
   OperationStreamLifetime
   RasterBackendContribution
   RasterOperationSet
+  RasterPresentationContribution
+  RasterPresentationContributionInsertion
+  RasterPresentationContributions
   RasterPresentationCapacity
   RasterPresentationContributorRole
   RasterPresentationMalformedField
   RasterPresentationPolicy
   RasterPresentationRequirement
   RasterPresentationResolution
+  RasterPresentationResolverWorkspace
   RasterPresentationUnavailable
   RasterRealizationContribution
   RasterRealizationKind
@@ -51,6 +55,23 @@ snapshot_fields = snapshot.scan(/^  public let ([A-Za-z0-9_]+):/).flatten
 fail_check("public catalogue differs: #{snapshot_fields.inspect}") unless snapshot_fields == ["rasterPresentation"]
 fail_check("snapshot initializer is missing") unless
   snapshot.include?("public init(rasterPresentation: GiftUICapabilities.EffectiveRasterPresentation?)")
+
+required_t12_fragments = [
+  "case renderProducer(GiftUICapabilities.RenderProducerContribution)",
+  "case rasterBackend(GiftUICapabilities.RasterBackendContribution)",
+  "case surfaceDisplay(GiftUICapabilities.SurfaceDisplayContribution)",
+  "case hostResourcePolicy(GiftUICapabilities.RasterPresentationPolicy)",
+  "public static let capacity: Swift.UInt8",
+  "public init()",
+  "public mutating func insert(_ contribution: GiftUICapabilities.RasterPresentationContribution) -> GiftUICapabilities.RasterPresentationContributionInsertion",
+  "case inserted",
+  "case rejected(GiftUICapabilities.RasterPresentationUnavailable)",
+  "public static let candidateCapacity: Swift.UInt8",
+  "public let usableCandidateCapacity: Swift.UInt8",
+  "public init?(usableCandidateCapacity: Swift.UInt8 = 2)",
+]
+missing_t12_fragments = required_t12_fragments.reject { |fragment| interface.include?(fragment) }
+fail_check("T1.2 declarations differ: #{missing_t12_fragments.inspect}") unless missing_t12_fragments.empty?
 
 fail_check("public interface contains an exported import") if interface.match?(/@_exported\s+import/)
 

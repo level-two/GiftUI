@@ -123,6 +123,120 @@ final class GiftUICapabilitiesTests: XCTestCase {
         XCTAssertNil(makePolicy(preferredEncoding: .rgba8888))
     }
 
+    func testContributionBufferPreservesFirstValuesAndRejectsEveryLaterRoleValue() throws {
+        let first = try XCTUnwrap(RenderProducerContribution(
+            operations: .opaqueRectangles,
+            operationStream: .synchronousBorrowedOneShot
+        ))
+        let second = try XCTUnwrap(RenderProducerContribution(
+            operations: allOperations,
+            operationStream: .synchronousBorrowedOneShot
+        ))
+        var contributions = RasterPresentationContributions()
+        XCTAssertEqual(RasterPresentationContributions.capacity, 4)
+        XCTAssertEqual(contributions.insert(.renderProducer(first)), .inserted)
+        XCTAssertEqual(
+            contributions.insert(.renderProducer(second)),
+            .rejected(.duplicateContributor(role: .renderProducer))
+        )
+        XCTAssertEqual(contributions.renderProducer, first)
+
+        try insertRemainingContributions(into: &contributions)
+        XCTAssertEqual(
+            contributions.insert(.hostResourcePolicy(try XCTUnwrap(makePolicy()))),
+            .rejected(.duplicateContributor(role: .hostResourcePolicy))
+        )
+        XCTAssertEqual(contributions.duplicateMask, 0b1001)
+        XCTAssertEqual(
+            contributions.firstInputIssue,
+            .duplicateContributor(role: .renderProducer)
+        )
+    }
+
+    func testContributionEqualityIgnoresDuplicatedSlotsAndNotInsertionOrder() throws {
+        var first = try makeCompleteContributions(reverseOrder: false)
+        var reordered = try makeCompleteContributions(reverseOrder: true)
+        XCTAssertEqual(first, reordered)
+
+        let narrow = try XCTUnwrap(RenderProducerContribution(
+            operations: .opaqueRectangles,
+            operationStream: .synchronousBorrowedOneShot
+        ))
+        XCTAssertEqual(first.insert(.renderProducer(narrow)),
+                       .rejected(.duplicateContributor(role: .renderProducer)))
+        XCTAssertEqual(reordered.insert(.renderProducer(narrow)),
+                       .rejected(.duplicateContributor(role: .renderProducer)))
+        reordered.renderProducer = narrow
+        XCTAssertEqual(first, reordered)
+
+        reordered.surfaceDisplay = try XCTUnwrap(makeSurface(
+            extent: try makeExtent(), regionHeight: 4
+        ))
+        XCTAssertNotEqual(first, reordered)
+    }
+
+    func testContributionIssueSelectionUsesLowestRoleThenLowestMissingRole() throws {
+        var contributions = RasterPresentationContributions()
+        XCTAssertEqual(contributions.firstInputIssue, .missingContributor(role: .renderProducer))
+        XCTAssertEqual(
+            contributions.insert(.renderProducer(try makeProducer())), .inserted
+        )
+        XCTAssertEqual(
+            contributions.insert(.surfaceDisplay(try makeSurfaceValue())), .inserted
+        )
+        XCTAssertEqual(
+            contributions.insert(.hostResourcePolicy(try makePolicyValue())), .inserted
+        )
+        XCTAssertEqual(contributions.firstInputIssue, .missingContributor(role: .rasterBackend))
+
+        XCTAssertEqual(
+            contributions.insert(.surfaceDisplay(try makeSurfaceValue())),
+            .rejected(.duplicateContributor(role: .surfaceDisplay))
+        )
+        XCTAssertEqual(
+            contributions.insert(.renderProducer(try makeProducer())),
+            .rejected(.duplicateContributor(role: .renderProducer))
+        )
+        XCTAssertEqual(
+            contributions.firstInputIssue,
+            .duplicateContributor(role: .renderProducer)
+        )
+    }
+
+    func testResolverWorkspaceHasExactUsableCapacitiesAndReusableTwoSlots() throws {
+        XCTAssertEqual(RasterPresentationResolverWorkspace.candidateCapacity, 2)
+        XCTAssertNotNil(RasterPresentationResolverWorkspace(usableCandidateCapacity: 0))
+        XCTAssertNotNil(RasterPresentationResolverWorkspace(usableCandidateCapacity: 1))
+        XCTAssertNotNil(RasterPresentationResolverWorkspace())
+        XCTAssertNil(RasterPresentationResolverWorkspace(usableCandidateCapacity: 3))
+
+        let full = NormalizedRasterPresentationCandidate(
+            realization: try XCTUnwrap(makeRealization(kind: .fullSurface))
+        )
+        let tiled = NormalizedRasterPresentationCandidate(
+            realization: try XCTUnwrap(makeRealization(kind: .tiled))
+        )
+        var zero = try XCTUnwrap(RasterPresentationResolverWorkspace(
+            usableCandidateCapacity: 0
+        ))
+        XCTAssertFalse(zero.append(full))
+
+        var one = try XCTUnwrap(RasterPresentationResolverWorkspace(
+            usableCandidateCapacity: 1
+        ))
+        XCTAssertTrue(one.append(full))
+        XCTAssertFalse(one.append(tiled))
+
+        var two = try XCTUnwrap(RasterPresentationResolverWorkspace())
+        XCTAssertTrue(two.append(full))
+        XCTAssertTrue(two.append(tiled))
+        XCTAssertFalse(two.append(full))
+        two.reset()
+        XCTAssertTrue(two.append(tiled))
+        XCTAssertTrue(two.append(full))
+        XCTAssertLessThanOrEqual(MemoryLayout<RasterPresentationResolverWorkspace>.size, 96)
+    }
+
     func testUnavailableVocabularyRetainsBoundedPayloads() {
         let count = CapabilityByteCount(rawValue: 7)
         let reasons: [RasterPresentationUnavailable] = [
@@ -147,6 +261,8 @@ final class GiftUICapabilitiesTests: XCTestCase {
         XCTAssertLessThanOrEqual(MemoryLayout<RasterBackendContribution>.size, 88)
         XCTAssertLessThanOrEqual(MemoryLayout<SurfaceDisplayContribution>.size, 40)
         XCTAssertLessThanOrEqual(MemoryLayout<RasterPresentationPolicy>.size, 32)
+        XCTAssertLessThanOrEqual(MemoryLayout<RasterPresentationContributions>.size, 192)
+        XCTAssertLessThanOrEqual(MemoryLayout<RasterPresentationResolverWorkspace>.size, 96)
         XCTAssertLessThanOrEqual(MemoryLayout<EffectiveRasterPresentation>.size, 48)
         XCTAssertLessThanOrEqual(MemoryLayout<CapabilitySnapshot>.size, 56)
         requireSendable(CapabilityExtent.self)
@@ -157,6 +273,10 @@ final class GiftUICapabilitiesTests: XCTestCase {
         requireSendable(RasterPresentationResolution.self)
         requireSendable(CapabilitySnapshot.self)
         requireSendable(RasterPresentationUnavailable.self)
+        requireSendable(RasterPresentationContribution.self)
+        requireSendable(RasterPresentationContributions.self)
+        requireSendable(RasterPresentationContributionInsertion.self)
+        requireSendable(RasterPresentationResolverWorkspace.self)
     }
 
     private var allOperations: RasterOperationSet {
@@ -243,6 +363,62 @@ final class GiftUICapabilitiesTests: XCTestCase {
             preferredRealization: preferredRealization,
             preferredEncoding: preferredEncoding
         )
+    }
+
+    private func makeProducer() throws -> RenderProducerContribution {
+        try XCTUnwrap(RenderProducerContribution(
+            operations: allOperations,
+            operationStream: .synchronousBorrowedOneShot
+        ))
+    }
+
+    private func makeBackend() throws -> RasterBackendContribution {
+        try XCTUnwrap(RasterBackendContribution(
+            primary: try XCTUnwrap(makeRealization(kind: .fullSurface)),
+            alternate: try XCTUnwrap(makeRealization(kind: .tiled))
+        ))
+    }
+
+    private func makeSurfaceValue() throws -> SurfaceDisplayContribution {
+        try XCTUnwrap(makeSurface(extent: try makeExtent()))
+    }
+
+    private func makePolicyValue() throws -> RasterPresentationPolicy {
+        try XCTUnwrap(makePolicy())
+    }
+
+    private func insertRemainingContributions(
+        into contributions: inout RasterPresentationContributions
+    ) throws {
+        XCTAssertEqual(contributions.insert(.rasterBackend(try makeBackend())), .inserted)
+        XCTAssertEqual(contributions.insert(.surfaceDisplay(try makeSurfaceValue())), .inserted)
+        XCTAssertEqual(contributions.insert(.hostResourcePolicy(try makePolicyValue())), .inserted)
+    }
+
+    private func makeCompleteContributions(
+        reverseOrder: Bool
+    ) throws -> RasterPresentationContributions {
+        var contributions = RasterPresentationContributions()
+        if reverseOrder {
+            XCTAssertEqual(
+                contributions.insert(.hostResourcePolicy(try makePolicyValue())), .inserted
+            )
+            XCTAssertEqual(
+                contributions.insert(.surfaceDisplay(try makeSurfaceValue())), .inserted
+            )
+            XCTAssertEqual(
+                contributions.insert(.rasterBackend(try makeBackend())), .inserted
+            )
+            XCTAssertEqual(
+                contributions.insert(.renderProducer(try makeProducer())), .inserted
+            )
+        } else {
+            XCTAssertEqual(
+                contributions.insert(.renderProducer(try makeProducer())), .inserted
+            )
+            try insertRemainingContributions(into: &contributions)
+        }
+        return contributions
     }
 }
 

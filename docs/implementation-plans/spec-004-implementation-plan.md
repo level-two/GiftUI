@@ -228,7 +228,7 @@ bounded representation without importing another owner.
       public labels/types, `Equatable`/`Sendable` conformance, zero-valid byte
       ceilings, nonzero structural bounds, and the rule that the public
       catalogue contains exactly `rasterPresentation`.
-- [ ] `T1.2` — Implement the role-addressed four-slot
+- [x] `T1.2` — Implement the role-addressed four-slot
       `RasterPresentationContributions`, duplicate mask, insertion result, and
       two-candidate `RasterPresentationResolverWorkspace`. Prove first-value
       preservation, duplicate-slot equality rules, deterministic lowest-role
@@ -572,3 +572,10 @@ all raw bits/tags, failable structural invariants, zero-valid byte ceilings,
 bounded unavailable payloads, record ceilings, and value/Sendable behavior.
 The same production source compiles in all four exact hardware-free profiles;
 `T1.2` is next.
+`T1.2` is complete: the
+[fixed contribution-storage evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-1/fixed-contribution-storage.md)
+records the four inline role slots, duplicate-mask and order-independent
+equality rules, deterministic lowest-role duplicate/missing selection, exact
+two-slot workspace with usable capacities `0...2`, reset/reuse behavior, and
+the 192-byte/96-byte layout ceilings. The emitted-interface audit now covers
+all 30 public types and the exact T1.2 signatures; `T1.3` is next.
