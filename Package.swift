@@ -33,6 +33,10 @@ let package = Package(
             dependencies: ["GiftUIFailureCore"]
         ),
         .testTarget(
+            name: "GiftUIFoundationFailureAdapterTests",
+            dependencies: ["GiftUI", "GiftUIFailureCore"]
+        ),
+        .testTarget(
             name: "GiftUIFailureDiagnosticsTests",
             dependencies: ["GiftUIFailureDiagnostics"]
         ),

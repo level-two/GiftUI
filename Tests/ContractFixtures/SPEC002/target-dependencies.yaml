@@ -10,6 +10,11 @@ targets:
     type: test
     dependencies:
       - GiftUIFailureCore
+  GiftUIFoundationFailureAdapterTests:
+    type: test
+    dependencies:
+      - GiftUI
+      - GiftUIFailureCore
   GiftUIFailureDiagnostics:
     type: regular
     dependencies:

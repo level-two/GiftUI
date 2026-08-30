@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-08-29
-updated: 2026-08-29
+updated: 2026-08-30
 related_design_notes:
   - ../implementation-designs/spec-003-bounded-diagnostic-buffer.md
 conformance_report: null
@@ -265,7 +265,7 @@ the corresponding target and stable declarations.
 SPEC-003 vocabulary through one-way adapters; no vocabulary or state machine is
 duplicated to remove a dependency blocker.
 
-- [ ] `T4.1` — Coordinate with the active SPEC-002 plan at the first boundary
+- [x] `T4.1` — Coordinate with the active SPEC-002 plan at the first boundary
       that knows both Foundation rejection and failure facts. Verify the exact
       four Foundation mappings, discarded partial output, and the absence of a
       `GiftUI` import from `GiftUIFailureCore`; do not move Foundation
@@ -476,6 +476,13 @@ seams after diagnostic delivery begins. Both fixtures record three rejected
 attempts, zero semantic mutations/actions, and one unchanged original outcome
 entry; see the
 [callback/interrupt evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-3/callback-interrupt-isolation.md).
+`T4.1` is complete through the test-only producer-side boundary in
+`GiftUIFoundationFailureAdapterTests`. The focused corpus proves the exact
+invalid-value and arithmetic-overflow mappings, discarded partial output,
+complete positive controls, and the dependency-free failure leaf; see the
+[Foundation owner-adapter evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-4/foundation-owner-adapter.md).
+No production integration target was invented, so SPEC-002 `T4.2` remains open
+until its owning production boundaries exist.
 That fixture contract prepares the failure-core leaf needed by the
 failure-owned portion of active SPEC-002 Milestone 4 without waiting for later
 execution, capability, host, or connected-target integrations.
