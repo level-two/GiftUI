@@ -9,6 +9,7 @@ created: 2026-08-29
 updated: 2026-08-31
 related_design_notes:
   - ../implementation-designs/spec-004-raster-arithmetic.md
+  - ../implementation-designs/spec-004-resource-evidence-driver.md
 conformance_report: null
 related_future_work:
   - FW-006
@@ -855,3 +856,13 @@ rejects instrumentation symbols; see the
 [static-path evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-5/static-path-and-semantic-equivalence.md).
 `T5.3` is the next dependency-complete task while `T4.3` and `T4.4` remain
 blocked on their owning Specifications.
+
+The first `T5.3` matched nRF inspection is recorded in the
+[nRF resource-boundary evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-5/nrf-resource-boundary.md).
+It passes linked RAM (+252 bytes), linked flash (+4,864 bytes), named storage
+(202 bytes), default staging (3,840 bytes), and initialization work (44), but
+the final-image production resolver has a 360-byte entry frame and a
+conservative 540-byte reachable path against the approved 256-byte ceiling.
+The driver now fails closed on that breach. `T5.3` remains open pending a
+conforming internal stack reduction or renewed Specification review; `T5.4`
+cannot use the nonconforming candidate as completion evidence.

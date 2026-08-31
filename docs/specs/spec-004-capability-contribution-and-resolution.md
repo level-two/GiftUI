@@ -1264,6 +1264,7 @@ criteria.
 ## Implementation Records
 
 - [SPEC-004 Implementation Plan](../implementation-plans/spec-004-implementation-plan.md)
+- [nRF Resource Evidence Driver Design](../implementation-designs/spec-004-resource-evidence-driver.md)
 - [Checked Raster Arithmetic Implementation Design](../implementation-designs/spec-004-raster-arithmetic.md)
 
 ## References

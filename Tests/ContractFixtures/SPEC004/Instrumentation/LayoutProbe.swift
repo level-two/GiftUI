@@ -1,0 +1,32 @@
+public enum GiftUICapabilityLayoutProbe {
+    @inline(never) public static func requirementSize() -> UInt32 { UInt32(MemoryLayout<RasterPresentationRequirement>.size) }
+    @inline(never) public static func requirementStride() -> UInt32 { UInt32(MemoryLayout<RasterPresentationRequirement>.stride) }
+    @inline(never) public static func requirementAlignment() -> UInt32 { UInt32(MemoryLayout<RasterPresentationRequirement>.alignment) }
+    @inline(never) public static func realizationSize() -> UInt32 { UInt32(MemoryLayout<RasterRealizationContribution>.size) }
+    @inline(never) public static func realizationStride() -> UInt32 { UInt32(MemoryLayout<RasterRealizationContribution>.stride) }
+    @inline(never) public static func realizationAlignment() -> UInt32 { UInt32(MemoryLayout<RasterRealizationContribution>.alignment) }
+    @inline(never) public static func backendSize() -> UInt32 { UInt32(MemoryLayout<RasterBackendContribution>.size) }
+    @inline(never) public static func backendStride() -> UInt32 { UInt32(MemoryLayout<RasterBackendContribution>.stride) }
+    @inline(never) public static func backendAlignment() -> UInt32 { UInt32(MemoryLayout<RasterBackendContribution>.alignment) }
+    @inline(never) public static func surfaceSize() -> UInt32 { UInt32(MemoryLayout<SurfaceDisplayContribution>.size) }
+    @inline(never) public static func surfaceStride() -> UInt32 { UInt32(MemoryLayout<SurfaceDisplayContribution>.stride) }
+    @inline(never) public static func surfaceAlignment() -> UInt32 { UInt32(MemoryLayout<SurfaceDisplayContribution>.alignment) }
+    @inline(never) public static func policySize() -> UInt32 { UInt32(MemoryLayout<RasterPresentationPolicy>.size) }
+    @inline(never) public static func policyStride() -> UInt32 { UInt32(MemoryLayout<RasterPresentationPolicy>.stride) }
+    @inline(never) public static func policyAlignment() -> UInt32 { UInt32(MemoryLayout<RasterPresentationPolicy>.alignment) }
+    @inline(never) public static func contributionsSize() -> UInt32 { UInt32(MemoryLayout<RasterPresentationContributions>.size) }
+    @inline(never) public static func contributionsStride() -> UInt32 { UInt32(MemoryLayout<RasterPresentationContributions>.stride) }
+    @inline(never) public static func contributionsAlignment() -> UInt32 { UInt32(MemoryLayout<RasterPresentationContributions>.alignment) }
+    @inline(never) public static func workspaceSize() -> UInt32 { UInt32(MemoryLayout<RasterPresentationResolverWorkspace>.size) }
+    @inline(never) public static func workspaceStride() -> UInt32 { UInt32(MemoryLayout<RasterPresentationResolverWorkspace>.stride) }
+    @inline(never) public static func workspaceAlignment() -> UInt32 { UInt32(MemoryLayout<RasterPresentationResolverWorkspace>.alignment) }
+    @inline(never) public static func effectiveSize() -> UInt32 { UInt32(MemoryLayout<EffectiveRasterPresentation>.size) }
+    @inline(never) public static func effectiveStride() -> UInt32 { UInt32(MemoryLayout<EffectiveRasterPresentation>.stride) }
+    @inline(never) public static func effectiveAlignment() -> UInt32 { UInt32(MemoryLayout<EffectiveRasterPresentation>.alignment) }
+    @inline(never) public static func unavailableSize() -> UInt32 { UInt32(MemoryLayout<RasterPresentationUnavailable>.size) }
+    @inline(never) public static func unavailableStride() -> UInt32 { UInt32(MemoryLayout<RasterPresentationUnavailable>.stride) }
+    @inline(never) public static func unavailableAlignment() -> UInt32 { UInt32(MemoryLayout<RasterPresentationUnavailable>.alignment) }
+    @inline(never) public static func snapshotSize() -> UInt32 { UInt32(MemoryLayout<CapabilitySnapshot>.size) }
+    @inline(never) public static func snapshotStride() -> UInt32 { UInt32(MemoryLayout<CapabilitySnapshot>.stride) }
+    @inline(never) public static func snapshotAlignment() -> UInt32 { UInt32(MemoryLayout<CapabilitySnapshot>.alignment) }
+}

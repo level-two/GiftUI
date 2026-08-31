@@ -163,6 +163,8 @@ record_input_hashes() {
     done < <(
         {
             find "${SOURCE_ROOT}" "${FIXTURE_ROOT}" -type f -print
+            find "${PROJECT_ROOT}/firmware/nrf52840/applications/spec004-resource-probe" \
+                -type f -print
             find "${SCRIPT_DIR}" -maxdepth 1 -type f \
                 -name 'check-spec-004-*.rb' -print
             printf '%s\n' \
@@ -369,6 +371,74 @@ run_static_path_check() {
         "${report_dir}/build/defined-symbols.txt" >>"${log_path}" 2>&1
 }
 
+run_target_layout_probe() {
+    local compiler="$1"
+    shift
+    local layout_ir="${report_dir}/semantics/capability-layout.ll"
+    local layout_report="${report_dir}/semantics/capability-layout.tsv"
+    local -a command=(
+        "${compiler}" "$@" -parse-as-library -emit-ir
+        -module-name GiftUICapabilityLayoutProbe
+        "${EXPECTED_SOURCE}"
+        "${FIXTURE_ROOT}/Instrumentation/LayoutProbe.swift"
+        -o "${layout_ir}"
+    )
+    record_command "${command[@]}"
+    "${command[@]}" >>"${log_path}" 2>&1
+    record_command ruby "${SCRIPT_DIR}/check-spec-004-target-layout.rb" \
+        "${layout_ir}" "${layout_report}"
+    ruby "${SCRIPT_DIR}/check-spec-004-target-layout.rb" \
+        "${layout_ir}" "${layout_report}" >>"${log_path}" 2>&1
+}
+
+run_nrf_resource_pair() {
+    local application_dir="${PROJECT_ROOT}/firmware/nrf52840/applications/spec004-resource-probe"
+    local pair_root="${generated_dir}/resource-pair"
+    local kind build_dir candidate_flag elf
+    giftui_nrf_export_environment
+    for kind in baseline candidate; do
+        build_dir="${pair_root}/${kind}"
+        if [[ "${kind}" == candidate ]]; then
+            candidate_flag=ON
+        else
+            candidate_flag=OFF
+        fi
+        local -a build_command=(
+            "${GIFTUI_NRF_WEST}" build -p always -b "${GIFTUI_NRF_BOARD}"
+            -d "${build_dir}" "${application_dir}" --
+            "-DCMAKE_MAKE_PROGRAM=$(giftui_nrf_ninja)"
+            "-DCMAKE_Swift_COMPILER=${GIFTUI_NRF_SWIFTC}"
+            "-DGIFTUI_SWIFT_TARGET=${GIFTUI_NRF_SWIFT_TARGET}"
+            "-DGIFTUI_SPEC004_CANDIDATE=${candidate_flag}"
+            "-DDTC=$(giftui_nrf_dtc)" -DUSE_CCACHE=0
+        )
+        record_command "${build_command[@]}"
+        "${build_command[@]}" >>"${log_path}" 2>&1
+        elf="${build_dir}/zephyr/zephyr.elf"
+        [[ -f "${elf}" ]] || fail "missing SPEC-004 ${kind} resource ELF"
+        local destination="${report_dir}/resources/${kind}"
+        local readelf="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf"
+        local objdump="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump"
+        local nm="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm"
+        record_command "${readelf}" -lWS "${elf}"
+        "${readelf}" -lW "${elf}" >"${destination}/program-headers.txt"
+        "${readelf}" -SW "${elf}" >"${destination}/sections.txt"
+        "${readelf}" -sW "${elf}" >"${destination}/symbols.txt"
+        record_command "${objdump}" -d "${elf}"
+        "${objdump}" -d "${elf}" >"${destination}/disassembly.txt"
+        record_command "${nm}" -S --size-sort "${elf}"
+        "${nm}" -S --size-sort "${elf}" >"${destination}/named-symbols.txt"
+        cp "${build_dir}/zephyr/zephyr.map" "${destination}/zephyr.map"
+        record_image "resource-${kind}-elf" "${elf}"
+    done
+    record_command ruby "${SCRIPT_DIR}/check-spec-004-nrf-resources.rb" \
+        "${report_dir}/resources/baseline" "${report_dir}/resources/candidate" \
+        "${report_dir}/resources/nrf-resource-summary.tsv"
+    ruby "${SCRIPT_DIR}/check-spec-004-nrf-resources.rb" \
+        "${report_dir}/resources/baseline" "${report_dir}/resources/candidate" \
+        "${report_dir}/resources/nrf-resource-summary.tsv" >>"${log_path}" 2>&1
+}
+
 run_semantic_probe() {
     local compiler="$1"
     local sdk_path="$2"
@@ -571,6 +641,9 @@ run_macos() {
         "${compiler}" "${sdk_path}" "${profile_flag}" "${image}"
     run_allocation_probe "${compiler}" "${sdk_path}" "${profile_flag}"
     run_static_path_check
+    run_target_layout_probe "${compiler}" \
+        -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
+        -O -whole-module-optimization "${profile_flag}" -language-mode 6
     run_fixture_set "${compiler}" "${report_dir}/build" \
         -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
         -O -whole-module-optimization "${profile_flag}"
@@ -669,6 +742,12 @@ run_raspberry_pi() {
     record_command "${probe_command[@]}"
     "${probe_command[@]}" >>"${log_path}" 2>&1
     record_image normalized-profile-module "${probe_module}"
+    run_target_layout_probe "${compiler}" \
+        -target "${GIFTUI_PI_TARGET}" -use-ld=lld \
+        -Xcc "--gcc-toolchain=${sdk_root}/usr" \
+        -resource-dir "${sdk_root}/usr/lib/swift_static" \
+        -sdk "${sdk_root}" -latomic \
+        -O -whole-module-optimization -language-mode 6
 }
 
 run_nrf52840() {
@@ -748,6 +827,11 @@ run_nrf52840() {
     record_command "${probe_command[@]}"
     "${probe_command[@]}" >>"${log_path}" 2>&1
     record_image normalized-profile-module "${probe_module}"
+    run_target_layout_probe "${GIFTUI_NRF_SWIFTC}" \
+        -target "${GIFTUI_NRF_SWIFT_TARGET}" \
+        -enable-experimental-feature Embedded -Osize -whole-module-optimization \
+        -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
+    run_nrf_resource_pair
     run_fixture_set "${GIFTUI_NRF_SWIFTC}" "${report_dir}/build" \
         -target "${GIFTUI_NRF_SWIFT_TARGET}" \
         -enable-experimental-feature Embedded \
