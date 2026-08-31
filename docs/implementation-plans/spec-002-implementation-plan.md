@@ -385,7 +385,7 @@ SPEC-002; project-local Pi/nRF doctor and hardware-free probes pass.
 **Exit evidence:** All four exact commands produce reproducible reports and
 link maps, clearly labeled as host or hardware-free cross-build evidence.
 
-- [ ] `T5.1` — Complete the driver profiles: macOS dynamic/static use Apple
+- [x] `T5.1` — Complete the driver profiles: macOS dynamic/static use Apple
       Swift 6.3.3, `arm64-apple-macosx26.0`, release `-O`, and WMO; Raspberry Pi
       uses project-local Swift 6.3.2/Bookworm and
       `armv6-unknown-linux-gnueabihf`; nRF uses project-local Swift 6.3.2,
@@ -623,3 +623,11 @@ Milestone 4 is complete for the current package graph; any later target or edge
 must fail closed until this audit and allow-list are refreshed. No design note
 was required for Milestone 4; create one only if a listed trigger is reached.
 Plan completion will not by itself mark SPEC-002 `implemented`.
+`T5.1` executes the four exact hardware-free profile surfaces after both
+project-local toolchain doctors and probes pass. The
+[four-profile command evidence](../../Tests/ContractFixtures/SPEC002/Evidence/milestone-5/four-profile-commands.md)
+records compiler and SDK pins, target triples, optimization modes, board/ABI
+constraints, probe artifacts, and successful standalone driver invocations.
+The Raspberry Pi SwiftPM command now passes whole-module optimization
+explicitly rather than relying on a release-build default. No deployment,
+remote access, or flashing occurred.

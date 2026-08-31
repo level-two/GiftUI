@@ -267,6 +267,7 @@ run_raspberry_pi() {
         --scratch-path "${report_dir}/build/swiftpm"
         --destination "${GIFTUI_PI_STATIC_DESTINATION}"
         --configuration release --product GiftUI --static-swift-stdlib
+        -Xswiftc -whole-module-optimization
     )
     record_command "${command[@]}"
     "${command[@]}" >>"${log_path}" 2>&1
