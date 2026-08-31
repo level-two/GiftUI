@@ -10,6 +10,9 @@ Fixtures/
   Positive/<fixture-id>/main.swift
   Negative/<fixture-id>/main.swift
   Negative/<fixture-id>/expected-diagnostic-patterns.txt
+SemanticCorpus/cases.tsv
+ProfileCorpusProbe/ProfileCorpusProbe.swift
+ProfileCorpusProbe/main.swift
 Evidence/<milestone>/
 fixture-manifest.tsv
 DependencyGraphCases/
@@ -63,6 +66,14 @@ every current package target source tree, requires package-module source
 imports to have direct manifest edges, inspects `GiftUI` public/package
 interfaces, compiled dependencies, and product links, and verifies the
 positive/forbidden import fixture pair for each protected foundational owner.
+
+`SemanticCorpus/cases.tsv` is the ordered fixed-width semantic registry for
+values, construction/rejection, arithmetic, rectangles, pointer phases, raw
+wrappers, and normalized events. `ProfileCorpusProbe.swift` is its
+collection-free executable form. Both macOS profiles execute the probe; ARMv6
+and nRF profiles compile that same probe together with the exact Foundation
+source and label their reports as cross-build-only. The corpus checker rejects
+missing, duplicate, reordered, or checksum-divergent cases.
 
 The standalone SPEC-002 entry points are the four commands required by the
 Specification:

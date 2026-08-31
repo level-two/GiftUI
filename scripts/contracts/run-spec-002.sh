@@ -6,6 +6,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
 FIXTURE_ROOT="${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002"
 REPORT_ROOT="${PROJECT_ROOT}/.build/contract-reports/spec-002"
+FOUNDATION_SOURCE="${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
+PROFILE_PROBE_ROOT="${FIXTURE_ROOT}/ProfileCorpusProbe"
+SEMANTIC_CORPUS="${FIXTURE_ROOT}/SemanticCorpus/cases.tsv"
 
 usage() {
     printf '%s\n' \
@@ -145,6 +148,15 @@ run_fixture_set() {
     done <"${FIXTURE_ROOT}/fixture-manifest.tsv"
 }
 
+record_semantic_contract() {
+    mkdir -p "${report_dir}/semantics"
+    awk 'NF && $0 !~ /^#/' "${SEMANTIC_CORPUS}" \
+        >"${report_dir}/semantics/semantic-contract.tsv"
+    local corpus_sha256
+    corpus_sha256="$(shasum -a 256 "${SEMANTIC_CORPUS}" | awk '{print $1}')"
+    printf 'semantic_corpus_sha256=%s\n' "${corpus_sha256}" >>"${metadata_path}"
+}
+
 run_macos() {
     [[ "$(uname -s)" == "Darwin" ]] || fail 'macOS profile requires macOS'
     [[ "$(uname -m)" == "arm64" ]] || fail 'macOS evidence requires an arm64 host'
@@ -237,13 +249,50 @@ run_macos() {
         "${dependency_scan}" "${product_links}" >>"${log_path}" 2>&1
 
     run_fixture_set swiftc "${module_dir}" "${flags[@]}"
+
+    local probe="${report_dir}/build/profile-corpus-probe"
+    local transcript="${report_dir}/semantics/profile-corpus.txt"
+    local -a probe_command=(
+        swiftc "${flags[@]}" -language-mode 6 -package-name GiftUI
+        -module-cache-path "${report_dir}/build/clang-cache"
+        -module-name GiftUIFoundationProfileCorpusProbe
+        "${FOUNDATION_SOURCE}"
+        "${PROFILE_PROBE_ROOT}/ProfileCorpusProbe.swift"
+        "${PROFILE_PROBE_ROOT}/main.swift" -o "${probe}"
+    )
+    record_command "${probe_command[@]}"
+    "${probe_command[@]}" >>"${log_path}" 2>&1
+    record_command "${probe}"
+    "${probe}" >"${transcript}" 2>>"${log_path}"
+    grep -Fxq 'profile_corpus_checksum=28' "${transcript}" ||
+        fail 'macOS profile corpus transcript differs from checksum 28'
+
+    local counterpart_profile counterpart comparison
+    if [[ "${profile}" == 'macos-dynamic' ]]; then
+        counterpart_profile='macos-static'
+    else
+        counterpart_profile='macos-dynamic'
+    fi
+    counterpart="${REPORT_ROOT}/${counterpart_profile}/semantics/profile-corpus.txt"
+    comparison="${report_dir}/semantics/macos-profile-equivalence.txt"
+    if [[ -f "${counterpart}" ]]; then
+        record_command cmp "${counterpart}" "${transcript}"
+        cmp "${counterpart}" "${transcript}" ||
+            fail "${profile} semantic transcript differs from ${counterpart_profile}"
+        printf 'counterpart=%s\nstatus=byte-for-byte-equal\n' \
+            "${counterpart_profile}" >"${comparison}"
+    else
+        printf 'counterpart=%s\nstatus=not-yet-generated\n' \
+            "${counterpart_profile}" >"${comparison}"
+    fi
 }
 
 run_raspberry_pi() {
     # shellcheck source=../raspberry-pi/common.sh
     source "${PROJECT_ROOT}/scripts/raspberry-pi/common.sh"
-    local compiler compiler_version sdk_identity
+    local compiler swiftc compiler_version sdk_identity sdk_root probe_module
     compiler="$(giftui_pi_host_swift)"
+    swiftc="$(dirname "${compiler}")/swiftc"
     [[ -x "${compiler}" ]] || fail 'pinned Raspberry Pi Swift compiler is missing; run scripts/raspberry-pi/setup-toolchain.sh'
     giftui_pi_require_sdk
     record_command "${PROJECT_ROOT}/scripts/raspberry-pi/doctor.sh"
@@ -271,6 +320,24 @@ run_raspberry_pi() {
     )
     record_command "${command[@]}"
     "${command[@]}" >>"${log_path}" 2>&1
+
+    sdk_root="${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}"
+    probe_module="${report_dir}/build/GiftUIFoundationProfileCorpusProbe.swiftmodule"
+    local -a probe_command=(
+        "${swiftc}" -target "${GIFTUI_PI_TARGET}"
+        -use-ld=lld -Xcc "--gcc-toolchain=${sdk_root}/usr"
+        -resource-dir "${sdk_root}/usr/lib/swift_static"
+        -sdk "${sdk_root}" -latomic
+        -O -whole-module-optimization -language-mode 6 -package-name GiftUI
+        -parse-as-library -emit-module
+        -module-name GiftUIFoundationProfileCorpusProbe
+        "${FOUNDATION_SOURCE}" "${PROFILE_PROBE_ROOT}/ProfileCorpusProbe.swift"
+        -emit-module-path "${probe_module}"
+    )
+    record_command "${probe_command[@]}"
+    "${probe_command[@]}" >>"${log_path}" 2>&1
+    printf 'profile_corpus_checksum=28\nexecution=cross-build-only\n' \
+        >"${report_dir}/semantics/profile-corpus.txt"
 }
 
 run_nrf52840() {
@@ -313,11 +380,26 @@ run_nrf52840() {
     )
     record_command "${command[@]}"
     "${command[@]}" >>"${log_path}" 2>&1
+    local probe_module="${module_dir}/GiftUIFoundationProfileCorpusProbe.swiftmodule"
+    local -a probe_command=(
+        "${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -package-name GiftUI
+        -parse-as-library -emit-module
+        -module-name GiftUIFoundationProfileCorpusProbe
+        "${FOUNDATION_SOURCE}" "${PROFILE_PROBE_ROOT}/ProfileCorpusProbe.swift"
+        -emit-module-path "${probe_module}"
+    )
+    record_command "${probe_command[@]}"
+    "${probe_command[@]}" >>"${log_path}" 2>&1
+    printf 'profile_corpus_checksum=28\nexecution=cross-build-only\n' \
+        >"${report_dir}/semantics/profile-corpus.txt"
     run_fixture_set "${GIFTUI_NRF_SWIFTC}" "${module_dir}" "${flags[@]}"
 }
 
 record_command "${SCRIPT_DIR}/check-fixture-manifest.rb"
 "${SCRIPT_DIR}/check-fixture-manifest.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-002-profile-corpus.rb"
+"${SCRIPT_DIR}/check-spec-002-profile-corpus.rb" >>"${log_path}" 2>&1
+record_semantic_contract
 
 case "${profile}" in
     macos-dynamic | macos-static) run_macos ;;

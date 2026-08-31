@@ -1,0 +1,8 @@
+# id	domain	inputs	expected_words
+public-values	values	int32-min,int32-max	1
+construction-rejection	construction	zero,ordinary,negative,absent	2
+checked-arithmetic	arithmetic	ordinary,overflow-edges	3
+rectangle-behavior	rectangle	limits,empty,half-open,overflow	4
+pointer-phases	input	0,1,2	5
+raw-wrappers	input	uint16-min-max,uint32-min-max	6
+normalized-events	input	all-phases,min-max-provenance	7

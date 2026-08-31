@@ -392,7 +392,7 @@ link maps, clearly labeled as host or hardware-free cross-build evidence.
       `armv7em-none-none-eabi`, Embedded Swift, `-Osize`, WMO, Zephyr 4.3.0,
       and SDK 0.17.4. Do not substitute architectures, install globally,
       deploy, or flash.
-- [ ] `T5.2` — Compile the same Foundation source and deterministic semantic
+- [x] `T5.2` — Compile the same Foundation source and deterministic semantic
       corpus in all profiles. Compare host and Embedded transcripts for values,
       arithmetic, rejection, rectangle behavior, phases, and raw wrappers.
 - [ ] `T5.3` — Report size/stride/alignment for every owned value and fail every
@@ -631,3 +631,10 @@ constraints, probe artifacts, and successful standalone driver invocations.
 The Raspberry Pi SwiftPM command now passes whole-module optimization
 explicitly rather than relying on a release-build default. No deployment,
 remote access, or flashing occurred.
+`T5.2` adds one seven-row fixed-width semantic registry and one collection-free
+probe compiled together with the exact Foundation source in every profile.
+The
+[shared semantic-corpus evidence](../../Tests/ContractFixtures/SPEC002/Evidence/milestone-5/shared-semantic-corpus.md)
+records the byte-identical contract transcript, checksum `28`, equal executed
+macOS dynamic/static transcripts, and explicitly labeled ARMv6/nRF cross-build
+transcripts. Cross-build reports do not claim connected-target execution.
