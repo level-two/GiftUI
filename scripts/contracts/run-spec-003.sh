@@ -144,7 +144,11 @@ record_input_hashes() {
     done < <(
         {
             find "${SOURCE_ROOT}" "${FIXTURE_ROOT}" -type f -print
-            printf '%s\n' "${CAPABILITY_SOURCE}" "${CAPABILITY_ADAPTER_SOURCE}"
+            printf '%s\n' \
+                "${CAPABILITY_SOURCE}" \
+                "${CAPABILITY_ADAPTER_SOURCE}" \
+                "${SCRIPT_DIR}/run-spec-003.sh" \
+                "${SCRIPT_DIR}/normalize-spec-003-semantic-suite.rb"
         } | LC_ALL=C sort
     )
 }
@@ -208,6 +212,53 @@ run_profile_corpus_probe_macos() {
     grep -Fxq 'profile_corpus_checksum=69' "${output}" ||
         fail 'profile corpus probe did not produce its expected checksum'
     record_image profile-corpus-probe "${probe}"
+}
+
+run_complete_semantic_suite_macos() {
+    local compiler="$1"
+    local profile_flag="$2"
+    local swift_driver
+    local suite_dir="${report_dir}/build/complete-semantic-suite"
+    local raw_output="${report_dir}/semantics/complete-suite.raw.txt"
+    local transcript="${report_dir}/semantics/complete-suite.tsv"
+    local comparison="${report_dir}/semantics/static-dynamic-comparison.txt"
+    local counterpart_profile counterpart_dir
+    swift_driver="$(dirname "${compiler}")/swift"
+    [[ -x "${swift_driver}" ]] || fail "Swift package driver is missing: ${swift_driver}"
+
+    local filter='GiftUIFailureCoreTests|GiftUIFailureDiagnosticsTests|GiftUIFoundationFailureAdapterTests|GiftUICapabilityFailureAdapterTests'
+    local -a command=(
+        "${swift_driver}" test --package-path "${PROJECT_ROOT}"
+        --scratch-path "${suite_dir}"
+        --configuration release
+        -Xswiftc -whole-module-optimization
+        -Xswiftc "${profile_flag}"
+        --filter "${filter}"
+    )
+    record_command "${command[@]}"
+    "${command[@]}" >"${raw_output}" 2>&1
+    record_command "${SCRIPT_DIR}/normalize-spec-003-semantic-suite.rb" \
+        "${raw_output}" "${transcript}"
+    "${SCRIPT_DIR}/normalize-spec-003-semantic-suite.rb" \
+        "${raw_output}" "${transcript}" >>"${log_path}" 2>&1
+
+    if [[ "${profile}" == "macos-dynamic" ]]; then
+        counterpart_profile='macos-static'
+    else
+        counterpart_profile='macos-dynamic'
+    fi
+    counterpart_dir="${REPORT_ROOT}/${counterpart_profile}"
+    if [[ -f "${counterpart_dir}/semantics/complete-suite.tsv" ]] && \
+        cmp -s "${inputs_path}" "${counterpart_dir}/input-hashes.tsv"; then
+        record_command cmp "${transcript}" \
+            "${counterpart_dir}/semantics/complete-suite.tsv"
+        cmp "${transcript}" "${counterpart_dir}/semantics/complete-suite.tsv" ||
+            fail "portable semantic transcript differs from ${counterpart_profile}"
+        printf 'result=passed\ncounterpart=%s\n' "${counterpart_profile}" >"${comparison}"
+    else
+        printf 'result=awaiting-matched-counterpart\ncounterpart=%s\n' \
+            "${counterpart_profile}" >"${comparison}"
+    fi
 }
 
 record_compiler() {
@@ -424,6 +475,7 @@ run_macos() {
         -O -whole-module-optimization "${profile_flag}"
     run_profile_corpus_probe_macos \
         "${compiler}" "${sdk_path}" "${profile_flag}" "${image}"
+    run_complete_semantic_suite_macos "${compiler}" "${profile_flag}"
     run_allocation_probe "${compiler}" "${sdk_path}" "${profile_flag}"
 }
 

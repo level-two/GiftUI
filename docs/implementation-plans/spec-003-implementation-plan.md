@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-08-29
-updated: 2026-08-30
+updated: 2026-08-31
 related_design_notes:
   - ../implementation-designs/spec-003-bounded-diagnostic-buffer.md
 conformance_report: null
@@ -378,7 +378,7 @@ labeled as host or hardware-free cross-build evidence.
       Embedded Swift `-Osize` WMO with Cortex-M4F hard-float flags. Verify the
       nRF candidate ELF VFP calling convention. Do not substitute ARMv7/AArch64,
       install globally, access a remote, deploy, or flash.
-- [ ] `T5.2` — Compare complete static/dynamic transcripts for facts,
+- [x] `T5.2` — Compare complete static/dynamic transcripts for facts,
       containment, annotations, policy validation/results, health, diagnostic
       isolation, exhaustion, and owner-fixture mappings. Fail any portable
       semantic difference.
@@ -699,4 +699,15 @@ The ARMv6 Core object is an ARM EABI5 relocatable object declaring
 declares Cortex-M4, ARMv7E-M, VFPv4-D16, and VFP-register arguments. See the
 [four-profile compilation evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-5/four-profile-compilation.md).
 `T5.2` is the next dependency-complete evidence task; `T4.3` remains blocked
+on SPEC-009.
+
+`T5.2` is complete: both optimized macOS profile drivers run the same focused
+Core, diagnostics, Foundation-owner, and capability-owner XCTest suites. A
+fail-closed normalizer requires coverage of facts, containment, annotations,
+policy validation/results, health, diagnostic isolation, exhaustion, and both
+owner mappings, then removes timing noise and sorts all passing test
+identifiers. The matched static and dynamic transcripts contain 57 tests and
+are byte-identical; see the
+[static/dynamic semantic evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-5/static-dynamic-semantics.md).
+`T5.3` is the next dependency-complete evidence task; `T4.3` remains blocked
 on SPEC-009.
