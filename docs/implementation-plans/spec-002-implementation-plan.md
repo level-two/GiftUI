@@ -681,3 +681,9 @@ policy, input-admission, backend-policy, or host-policy definition and no need
 for upstream or deferred work. The permanent checker rejects downstream
 vocabulary or dependencies in the Foundation boundary and unjustified design
 notes. `T6.4` is next.
+The `T6.4` conformance pre-review strengthened `T5.2` without changing its
+corpus or contract: ARMv6 and nRF52840 now emit optimized target IR for the
+complete seven-case probe, and a fail-closed checker requires the target-
+compiled checksum function to reduce to `ret i32 28`. Generated transcripts
+remain labeled cross-build-only and make no connected-hardware execution
+claim.

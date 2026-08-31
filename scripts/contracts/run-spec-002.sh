@@ -426,7 +426,7 @@ run_macos() {
 run_raspberry_pi() {
     # shellcheck source=../raspberry-pi/common.sh
     source "${PROJECT_ROOT}/scripts/raspberry-pi/common.sh"
-    local compiler swiftc compiler_version sdk_identity sdk_root probe_module
+    local compiler swiftc compiler_version sdk_identity sdk_root probe_ir
     compiler="$(giftui_pi_host_swift)"
     swiftc="$(dirname "${compiler}")/swiftc"
     [[ -x "${compiler}" ]] || fail 'pinned Raspberry Pi Swift compiler is missing; run scripts/raspberry-pi/setup-toolchain.sh'
@@ -458,21 +458,24 @@ run_raspberry_pi() {
     "${command[@]}" >>"${log_path}" 2>&1
 
     sdk_root="${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}"
-    probe_module="${report_dir}/build/GiftUIFoundationProfileCorpusProbe.swiftmodule"
+    probe_ir="${report_dir}/build/GiftUIFoundationProfileCorpusProbe.ll"
     local -a probe_command=(
         "${swiftc}" -target "${GIFTUI_PI_TARGET}"
         -use-ld=lld -Xcc "--gcc-toolchain=${sdk_root}/usr"
         -resource-dir "${sdk_root}/usr/lib/swift_static"
         -sdk "${sdk_root}" -latomic
         -O -whole-module-optimization -language-mode 6 -package-name GiftUI
-        -parse-as-library -emit-module
+        -parse-as-library -emit-ir
         -module-name GiftUIFoundationProfileCorpusProbe
         "${FOUNDATION_SOURCE}" "${PROFILE_PROBE_ROOT}/ProfileCorpusProbe.swift"
-        -emit-module-path "${probe_module}"
+        -o "${probe_ir}"
     )
     record_command "${probe_command[@]}"
     "${probe_command[@]}" >>"${log_path}" 2>&1
-    printf 'profile_corpus_checksum=28\nexecution=cross-build-only\n' \
+    record_command "${SCRIPT_DIR}/check-spec-002-cross-profile-semantics.rb" "${probe_ir}"
+    "${SCRIPT_DIR}/check-spec-002-cross-profile-semantics.rb" "${probe_ir}" \
+        >>"${log_path}" 2>&1
+    printf 'profile_corpus_checksum=28\nevidence=optimized-target-ir\nexecution=cross-build-only\n' \
         >"${report_dir}/semantics/profile-corpus.txt"
 
     local layout_ir="${report_dir}/build/foundation-layout.ll"
@@ -591,17 +594,20 @@ run_nrf52840() {
     )
     record_command "${command[@]}"
     "${command[@]}" >>"${log_path}" 2>&1
-    local probe_module="${module_dir}/GiftUIFoundationProfileCorpusProbe.swiftmodule"
+    local probe_ir="${report_dir}/build/GiftUIFoundationProfileCorpusProbe.ll"
     local -a probe_command=(
         "${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -package-name GiftUI
-        -parse-as-library -emit-module
+        -parse-as-library -emit-ir
         -module-name GiftUIFoundationProfileCorpusProbe
         "${FOUNDATION_SOURCE}" "${PROFILE_PROBE_ROOT}/ProfileCorpusProbe.swift"
-        -emit-module-path "${probe_module}"
+        -o "${probe_ir}"
     )
     record_command "${probe_command[@]}"
     "${probe_command[@]}" >>"${log_path}" 2>&1
-    printf 'profile_corpus_checksum=28\nexecution=cross-build-only\n' \
+    record_command "${SCRIPT_DIR}/check-spec-002-cross-profile-semantics.rb" "${probe_ir}"
+    "${SCRIPT_DIR}/check-spec-002-cross-profile-semantics.rb" "${probe_ir}" \
+        >>"${log_path}" 2>&1
+    printf 'profile_corpus_checksum=28\nevidence=optimized-target-ir\nexecution=cross-build-only\n' \
         >"${report_dir}/semantics/profile-corpus.txt"
 
     local layout_ir="${report_dir}/build/foundation-layout.ll"
