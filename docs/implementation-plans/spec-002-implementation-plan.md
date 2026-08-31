@@ -395,7 +395,7 @@ link maps, clearly labeled as host or hardware-free cross-build evidence.
 - [x] `T5.2` — Compile the same Foundation source and deterministic semantic
       corpus in all profiles. Compare host and Embedded transcripts for values,
       arithmetic, rejection, rectangle behavior, phases, and raw wrappers.
-- [ ] `T5.3` — Report size/stride/alignment for every owned value and fail every
+- [x] `T5.3` — Report size/stride/alignment for every owned value and fail every
       normative maximum. Prove construction/arithmetic add no heap allocation,
       reflection, runtime discovery, Objective-C, `Task`, or `MainActor`.
 - [ ] `T5.4` — Build matched baseline/candidate executables from one template
@@ -638,3 +638,10 @@ The
 records the byte-identical contract transcript, checksum `28`, equal executed
 macOS dynamic/static transcripts, and explicitly labeled ARMv6/nRF cross-build
 transcripts. Cross-build reports do not claim connected-target execution.
+`T5.3` emits and checks target-compiler layout IR for all 11 owned values in
+every profile. The
+[layout and allocation evidence](../../Tests/ContractFixtures/SPEC002/Evidence/milestone-5/layout-and-allocation.md)
+records byte-identical layout reports, every normative maximum, equal dynamic
+and static allocation checksums, zero post-warmup allocations, and source plus
+optimized operation-path exclusions for reflection, runtime discovery,
+Objective-C, `Task`, `MainActor`, and allocator calls.

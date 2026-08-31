@@ -13,6 +13,10 @@ Fixtures/
 SemanticCorpus/cases.tsv
 ProfileCorpusProbe/ProfileCorpusProbe.swift
 ProfileCorpusProbe/main.swift
+Instrumentation/LayoutProbe.swift
+Instrumentation/OperationProbe.swift
+Instrumentation/AllocationProbe/main.swift
+Instrumentation/AllocationInterposer.c
 Evidence/<milestone>/
 fixture-manifest.tsv
 DependencyGraphCases/
@@ -74,6 +78,15 @@ collection-free executable form. Both macOS profiles execute the probe; ARMv6
 and nRF profiles compile that same probe together with the exact Foundation
 source and label their reports as cross-build-only. The corpus checker rejects
 missing, duplicate, reordered, or checksum-divergent cases.
+
+The instrumentation probes emit target-compiler LLVM IR for every owned
+value's size/stride/alignment and for the bounded construction/arithmetic path.
+The layout checker fails normative size ceilings. The resource checker rejects
+reflection, runtime discovery, Objective-C, task/actor, and allocator
+facilities in Foundation source and in the optimized operation path. macOS
+also executes 10,000 post-warmup operations under a malloc/calloc/realloc
+interposer; cross profiles inspect optimized target IR without claiming target
+execution.
 
 The standalone SPEC-002 entry points are the four commands required by the
 Specification:

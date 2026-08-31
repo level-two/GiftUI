@@ -285,6 +285,74 @@ run_macos() {
         printf 'counterpart=%s\nstatus=not-yet-generated\n' \
             "${counterpart_profile}" >"${comparison}"
     fi
+
+    local layout_ir="${report_dir}/build/foundation-layout.ll"
+    local layout_report="${report_dir}/semantics/layout.tsv"
+    local -a layout_command=(
+        swiftc "${flags[@]}" -language-mode 6 -package-name GiftUI
+        -module-cache-path "${report_dir}/build/clang-cache"
+        -module-name GiftUIFoundationLayoutProbe -emit-ir
+        "${FOUNDATION_SOURCE}" "${FIXTURE_ROOT}/Instrumentation/LayoutProbe.swift"
+        -o "${layout_ir}"
+    )
+    record_command "${layout_command[@]}"
+    "${layout_command[@]}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-002-layout.rb" \
+        "${layout_ir}" "${layout_report}"
+    "${SCRIPT_DIR}/check-spec-002-layout.rb" \
+        "${layout_ir}" "${layout_report}" >>"${log_path}" 2>&1
+
+    local resource_dir="${report_dir}/build/resource-probe"
+    local clang interposer operation_object undefined_symbols allocation_probe
+    mkdir -p "${resource_dir}"
+    clang="$(xcrun --find clang)"
+    interposer="${resource_dir}/libGiftUIAllocationInterposer.dylib"
+    operation_object="${resource_dir}/GiftUIFoundationOperationProbe.o"
+    undefined_symbols="${report_dir}/semantics/operation-undefined-symbols.txt"
+    allocation_probe="${resource_dir}/allocation-probe"
+    local -a interposer_command=(
+        "${clang}" -target arm64-apple-macosx26.0 -isysroot "${sdk_path}"
+        -O2 -dynamiclib "${FIXTURE_ROOT}/Instrumentation/AllocationInterposer.c"
+        -install_name @rpath/libGiftUIAllocationInterposer.dylib
+        -o "${interposer}"
+    )
+    record_command "${interposer_command[@]}"
+    "${interposer_command[@]}" >>"${log_path}" 2>&1
+    local -a object_command=(
+        swiftc "${flags[@]}" -language-mode 6 -package-name GiftUI
+        -module-cache-path "${report_dir}/build/clang-cache"
+        -module-name GiftUIFoundationOperationProbe -parse-as-library
+        -I "${module_dir}" -emit-object
+        "${FIXTURE_ROOT}/Instrumentation/OperationProbe.swift"
+        -o "${operation_object}"
+    )
+    record_command "${object_command[@]}"
+    "${object_command[@]}" >>"${log_path}" 2>&1
+    record_command nm -u "${operation_object}"
+    nm -u "${operation_object}" >"${undefined_symbols}"
+    record_command "${SCRIPT_DIR}/check-spec-002-resource-boundary.rb" \
+        "${undefined_symbols}"
+    "${SCRIPT_DIR}/check-spec-002-resource-boundary.rb" \
+        "${undefined_symbols}" >>"${log_path}" 2>&1
+    local -a allocation_command=(
+        swiftc "${flags[@]}" -language-mode 6 -package-name GiftUI
+        -module-cache-path "${report_dir}/build/clang-cache"
+        -module-name GiftUIFoundationAllocationProbe
+        -L "${resource_dir}" -lGiftUIAllocationInterposer
+        -Xlinker -rpath -Xlinker "${resource_dir}"
+        "${FOUNDATION_SOURCE}"
+        "${FIXTURE_ROOT}/Instrumentation/OperationProbe.swift"
+        "${FIXTURE_ROOT}/Instrumentation/AllocationProbe/main.swift"
+        -o "${allocation_probe}"
+    )
+    record_command "${allocation_command[@]}"
+    "${allocation_command[@]}" >>"${log_path}" 2>&1
+    record_command env "DYLD_LIBRARY_PATH=${resource_dir}" "${allocation_probe}"
+    env "DYLD_LIBRARY_PATH=${resource_dir}" "${allocation_probe}" \
+        >"${report_dir}/semantics/allocation-probe.txt" 2>>"${log_path}"
+    grep -Fxq 'allocation_count=0' \
+        "${report_dir}/semantics/allocation-probe.txt" ||
+        fail 'Foundation construction/arithmetic allocation probe reported heap activity'
 }
 
 run_raspberry_pi() {
@@ -338,6 +406,42 @@ run_raspberry_pi() {
     "${probe_command[@]}" >>"${log_path}" 2>&1
     printf 'profile_corpus_checksum=28\nexecution=cross-build-only\n' \
         >"${report_dir}/semantics/profile-corpus.txt"
+
+    local layout_ir="${report_dir}/build/foundation-layout.ll"
+    local -a layout_command=(
+        "${swiftc}" -target "${GIFTUI_PI_TARGET}"
+        -use-ld=lld -Xcc "--gcc-toolchain=${sdk_root}/usr"
+        -resource-dir "${sdk_root}/usr/lib/swift_static"
+        -sdk "${sdk_root}" -latomic
+        -O -whole-module-optimization -language-mode 6 -package-name GiftUI
+        -module-name GiftUIFoundationLayoutProbe -emit-ir
+        "${FOUNDATION_SOURCE}" "${FIXTURE_ROOT}/Instrumentation/LayoutProbe.swift"
+        -o "${layout_ir}"
+    )
+    record_command "${layout_command[@]}"
+    "${layout_command[@]}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-002-layout.rb" \
+        "${layout_ir}" "${report_dir}/semantics/layout.tsv"
+    "${SCRIPT_DIR}/check-spec-002-layout.rb" \
+        "${layout_ir}" "${report_dir}/semantics/layout.tsv" >>"${log_path}" 2>&1
+
+    local operation_ir="${report_dir}/build/foundation-operation.ll"
+    local -a object_command=(
+        "${swiftc}" -target "${GIFTUI_PI_TARGET}"
+        -use-ld=lld -Xcc "--gcc-toolchain=${sdk_root}/usr"
+        -resource-dir "${sdk_root}/usr/lib/swift_static"
+        -sdk "${sdk_root}" -latomic
+        -O -whole-module-optimization -language-mode 6 -package-name GiftUI
+        -module-name GiftUIFoundationOperationProbe -emit-ir
+        "${FOUNDATION_SOURCE}" "${FIXTURE_ROOT}/Instrumentation/OperationProbe.swift"
+        -o "${operation_ir}"
+    )
+    record_command "${object_command[@]}"
+    "${object_command[@]}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-002-resource-boundary.rb" \
+        --ir "${operation_ir}"
+    "${SCRIPT_DIR}/check-spec-002-resource-boundary.rb" \
+        --ir "${operation_ir}" >>"${log_path}" 2>&1
 }
 
 run_nrf52840() {
@@ -392,6 +496,34 @@ run_nrf52840() {
     "${probe_command[@]}" >>"${log_path}" 2>&1
     printf 'profile_corpus_checksum=28\nexecution=cross-build-only\n' \
         >"${report_dir}/semantics/profile-corpus.txt"
+
+    local layout_ir="${report_dir}/build/foundation-layout.ll"
+    local -a layout_command=(
+        "${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -package-name GiftUI
+        -module-name GiftUIFoundationLayoutProbe -emit-ir
+        "${FOUNDATION_SOURCE}" "${FIXTURE_ROOT}/Instrumentation/LayoutProbe.swift"
+        -o "${layout_ir}"
+    )
+    record_command "${layout_command[@]}"
+    "${layout_command[@]}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-002-layout.rb" \
+        "${layout_ir}" "${report_dir}/semantics/layout.tsv"
+    "${SCRIPT_DIR}/check-spec-002-layout.rb" \
+        "${layout_ir}" "${report_dir}/semantics/layout.tsv" >>"${log_path}" 2>&1
+
+    local operation_ir="${report_dir}/build/foundation-operation.ll"
+    local -a object_command=(
+        "${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -package-name GiftUI
+        -module-name GiftUIFoundationOperationProbe -emit-ir
+        "${FOUNDATION_SOURCE}" "${FIXTURE_ROOT}/Instrumentation/OperationProbe.swift"
+        -o "${operation_ir}"
+    )
+    record_command "${object_command[@]}"
+    "${object_command[@]}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-002-resource-boundary.rb" \
+        --ir "${operation_ir}"
+    "${SCRIPT_DIR}/check-spec-002-resource-boundary.rb" \
+        --ir "${operation_ir}" >>"${log_path}" 2>&1
     run_fixture_set "${GIFTUI_NRF_SWIFTC}" "${module_dir}" "${flags[@]}"
 }
 
