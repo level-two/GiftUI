@@ -412,7 +412,7 @@ from a clean checkout.
 **Exit evidence:** Migration, traceability, and scope audits are complete and a
 SPEC-002 conformance report can be reviewed.
 
-- [ ] `T6.1` — Re-run the migration inventory and close every ledger row with a
+- [x] `T6.1` — Re-run the migration inventory and close every ledger row with a
       code location, removal, explicit owner blocker, or approved exception.
       Prove no shim weakens checked geometry, failable construction, bounded
       fields, mandatory provenance, or package visibility.
@@ -655,3 +655,12 @@ raw section listings, final images, toolchain metadata, and both link maps.
 The ARMv6 and nRF images pass their required architecture and hard-float
 checks. No deployment, remote access, or flashing occurred. Milestone 5 is
 complete; `T6.1` is the next dependency-complete task.
+`T6.1` re-runs and pins all six ordered PoC governed-name inventories, adds a
+fail-closed migration checker to the standalone SPEC-002 driver, and assigns
+every one of the 24 PF-008 rows an exact current code location or intentional-
+absence check in the
+[migration ledger](../../Tests/ContractFixtures/SPEC002/migration-ledger.md).
+The [migration closure evidence](../../Tests/ContractFixtures/SPEC002/Evidence/milestone-6/migration-closure.md)
+records counts and SHA-256 values and confirms there are no approved exceptions
+or remaining SPEC-002 owner blockers. The checker rejects mutable, trapping,
+legacy arithmetic, and public-input compatibility shims. `T6.2` is next.

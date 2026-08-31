@@ -671,6 +671,8 @@ record_command "${SCRIPT_DIR}/check-fixture-manifest.rb"
 "${SCRIPT_DIR}/check-fixture-manifest.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-002-profile-corpus.rb"
 "${SCRIPT_DIR}/check-spec-002-profile-corpus.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-002-migration.rb"
+"${SCRIPT_DIR}/check-spec-002-migration.rb" >>"${log_path}" 2>&1
 record_semantic_contract
 
 case "${profile}" in

@@ -266,6 +266,46 @@ scripts/nrf52840/compile-layer.sh
 | PoC firmware consumers | `firmware/nrf52840/applications/ili9486/`, `firmware/nrf52840/applications/kmrtm24024_spi/`, and `firmware/nrf52840/applications/skeleton/` | owned by future SPEC-014/SPEC-015 production assembly or no replacement where sample-only; removed |
 | Hard-coded compilation | `scripts/nrf52840/compile-layer.sh` | no reusable environment purpose; removed |
 
+## Final row closure audit
+
+This 2026-08-31 audit re-runs the immutable PoC inventories and assigns every
+declaration/behavior row a current implementation location or an exact
+intentional-absence check. There are no approved exceptions and no remaining
+owner blockers for these 24 SPEC-002 rows. Downstream consumer families remain
+removed until their separately approved owning Specifications implement them.
+
+| Ledger ID | Final code, removal, or absence evidence | Status |
+| --- | --- | --- |
+| `PF008-GS-001` | `Sources/GiftUI/GiftUI.swift:1-5`; exact `Int32` alias and immutable `Point.x` | closed |
+| `PF008-GS-002` | `Sources/GiftUI/GiftUI.swift:1-5`; exact `Int32` alias and immutable `Point.y` | closed |
+| `PF008-GS-003` | `Sources/GiftUI/GiftUI.swift:7-10`; exact public fixed-width initializer | closed |
+| `PF008-GS-004` | `Sources/GiftUI/GiftUI.swift:13-15`; immutable `Size.width` | closed |
+| `PF008-GS-005` | `Sources/GiftUI/GiftUI.swift:13-15`; immutable `Size.height` | closed |
+| `PF008-GS-006` | `Sources/GiftUI/GiftUI.swift:17-23`; failable negative-dimension rejection | closed |
+| `PF008-GS-007` | `Sources/GiftUI/GiftUI.swift:26-28`; immutable `Rect.origin` | closed |
+| `PF008-GS-008` | `Sources/GiftUI/GiftUI.swift:26-28`; immutable `Rect.size` | closed |
+| `PF008-GS-009` | `Sources/GiftUI/GiftUI.swift:30-37`; failable checked-edge construction | closed |
+| `PF008-GS-010` | `Sources/GiftUI/GiftUI.swift:39-55`; total edges and half-open containment | closed |
+| `PF008-GS-011` | `Sources/GiftUI/GiftUI.swift:58-60`; immutable optional proposal width | closed |
+| `PF008-GS-012` | `Sources/GiftUI/GiftUI.swift:58-60`; immutable optional proposal height | closed |
+| `PF008-GS-013` | `Sources/GiftUI/GiftUI.swift:62-74`; failable present-negative rejection and independent absence | closed |
+| `PF008-GS-014` | `check-spec-002-migration.rb` and compiled-surface audit reject legacy arithmetic error vocabulary | closed |
+| `PF008-GS-015` | `Sources/GiftUI/GiftUI.swift:77-84`; package optional checked add | closed |
+| `PF008-GS-016` | `Sources/GiftUI/GiftUI.swift:86-92`; package optional checked subtract | closed |
+| `PF008-GS-017` | `Sources/GiftUI/GiftUI.swift:94-100`; package optional checked multiply | closed |
+| `PF008-GS-018` | `check-spec-002-migration.rb` rejects all three legacy trapping helper names | closed |
+| `PF008-GS-019` | `check-spec-002-migration.rb` rejects Foundation preconditions and fatal traps | closed |
+| `PF008-IN-001` | Public-interface audit and `check-spec-002-migration.rb` reject a public `InputEvent` shim | closed |
+| `PF008-IN-002` | `Sources/GiftUI/GiftUI.swift:103-107,141-163`; package down phase and mandatory event fields | closed |
+| `PF008-IN-003` | `Sources/GiftUI/GiftUI.swift:103-107,141-163`; package move phase and mandatory event fields | closed |
+| `PF008-IN-004` | `Sources/GiftUI/GiftUI.swift:103-107,141-163`; package up phase and mandatory event fields | closed |
+| `PF008-IN-005` | `Sources/GiftUI/GiftUI.swift:109-163`; exact `UInt16`/`UInt32` wrappers and non-optional provenance | closed |
+
+`scripts/contracts/check-spec-002-migration.rb` fails if the annotated tag or
+peeled commit changes, any governed-name inventory count/hash changes, closure
+rows are missing or reordered, the exact Foundation source inventory changes,
+or a mutable, trapping, host-compatibility, or public-input shim appears.
+
 ## Package-edge inventory
 
 The PoC root manifest places Foundation in target `GiftUI`. These are every
