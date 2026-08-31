@@ -17,6 +17,8 @@ Instrumentation/LayoutProbe.swift
 Instrumentation/OperationProbe.swift
 Instrumentation/AllocationProbe/main.swift
 Instrumentation/AllocationInterposer.c
+ResourceProbe/ResourceProbe.swift
+ResourceProbe/main.c
 Evidence/<milestone>/
 fixture-manifest.tsv
 DependencyGraphCases/
@@ -87,6 +89,18 @@ facilities in Foundation source and in the optimized operation path. macOS
 also executes 10,000 post-warmup operations under a malloc/calloc/realloc
 interposer; cross profiles inspect optimized target IR without claiming target
 execution.
+
+`ResourceProbe/` is the shared matched-image template. Both variants compile
+the same Foundation source, Swift probe, C entry point, optimization flags,
+and link inputs. The candidate alone defines
+`GIFTUI_SPEC002_CANDIDATE`, causing the probe to reference every public and
+package-owned SPEC-002 value and checked operation. Each profile preserves
+both link maps, raw section reports, source hashes, and normalized signed
+candidate-minus-baseline deltas for executable code, read-only data,
+initialized writable data, zero-initialized data, and file size. The nRF
+profile realizes the same template inside the checked-in
+`spec002-resource-probe` Zephyr wrapper; it builds and inspects firmware but
+never flashes it.
 
 The standalone SPEC-002 entry points are the four commands required by the
 Specification:

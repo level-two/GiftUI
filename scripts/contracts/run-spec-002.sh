@@ -9,6 +9,7 @@ REPORT_ROOT="${PROJECT_ROOT}/.build/contract-reports/spec-002"
 FOUNDATION_SOURCE="${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
 PROFILE_PROBE_ROOT="${FIXTURE_ROOT}/ProfileCorpusProbe"
 SEMANTIC_CORPUS="${FIXTURE_ROOT}/SemanticCorpus/cases.tsv"
+RESOURCE_PROBE_ROOT="${FIXTURE_ROOT}/ResourceProbe"
 
 usage() {
     printf '%s\n' \
@@ -155,6 +156,43 @@ record_semantic_contract() {
     local corpus_sha256
     corpus_sha256="$(shasum -a 256 "${SEMANTIC_CORPUS}" | awk '{print $1}')"
     printf 'semantic_corpus_sha256=%s\n' "${corpus_sha256}" >>"${metadata_path}"
+}
+
+record_resource_inputs() {
+    local output_dir="$1"
+    mkdir -p "${output_dir}"
+    shasum -a 256 \
+        "${FOUNDATION_SOURCE}" \
+        "${RESOURCE_PROBE_ROOT}/ResourceProbe.swift" \
+        "${RESOURCE_PROBE_ROOT}/main.c" \
+        "${PROJECT_ROOT}/firmware/nrf52840/applications/spec002-resource-probe/CMakeLists.txt" \
+        "${PROJECT_ROOT}/firmware/nrf52840/applications/spec002-resource-probe/prj.conf" \
+        "${PROJECT_ROOT}/firmware/nrf52840/applications/spec002-resource-probe/src/stubs.c" \
+        >"${output_dir}/source-hashes.txt"
+}
+
+report_linked_sections() {
+    local format="$1"
+    local inspector="$2"
+    local resource_dir="$3"
+    local inspector_version
+    if [[ "${format}" == macho ]]; then
+        inspector_version="$(xcodebuild -version 2>&1 | tr '\n' ';' || true)"
+    else
+        inspector_version="$("${inspector}" --version 2>&1 | head -1 || true)"
+    fi
+    [[ -n "${inspector_version}" ]] || inspector_version='version-not-reported'
+    record_block linked_section_inspector "${inspector}: ${inspector_version}"
+    record_command "${SCRIPT_DIR}/report-spec-002-linked-sections.rb" \
+        "${format}" "${inspector}" \
+        "${resource_dir}/baseline/image" "${resource_dir}/candidate/image" \
+        "${resource_dir}/baseline/link.map" "${resource_dir}/candidate/link.map" \
+        "${resource_dir}/linked-section-deltas.tsv"
+    "${SCRIPT_DIR}/report-spec-002-linked-sections.rb" \
+        "${format}" "${inspector}" \
+        "${resource_dir}/baseline/image" "${resource_dir}/candidate/image" \
+        "${resource_dir}/baseline/link.map" "${resource_dir}/candidate/link.map" \
+        "${resource_dir}/linked-section-deltas.tsv" >>"${log_path}" 2>&1
 }
 
 run_macos() {
@@ -353,6 +391,36 @@ run_macos() {
     grep -Fxq 'allocation_count=0' \
         "${report_dir}/semantics/allocation-probe.txt" ||
         fail 'Foundation construction/arithmetic allocation probe reported heap activity'
+
+    local matched_dir="${report_dir}/resources"
+    local resource_main="${matched_dir}/main.o"
+    mkdir -p "${matched_dir}/baseline" "${matched_dir}/candidate"
+    record_resource_inputs "${matched_dir}"
+    local -a resource_c_command=(
+        "${clang}" -target arm64-apple-macosx26.0 -isysroot "${sdk_path}"
+        -O2 -c "${RESOURCE_PROBE_ROOT}/main.c" -o "${resource_main}"
+    )
+    record_command "${resource_c_command[@]}"
+    "${resource_c_command[@]}" >>"${log_path}" 2>&1
+    local variant
+    for variant in baseline candidate; do
+        local -a resource_command=(
+            swiftc "${flags[@]}" -language-mode 6 -package-name GiftUI
+            -module-cache-path "${report_dir}/build/clang-cache"
+        )
+        if [[ "${variant}" == candidate ]]; then
+            resource_command+=(-DGIFTUI_SPEC002_CANDIDATE)
+        fi
+        resource_command+=(
+            "${FOUNDATION_SOURCE}" "${RESOURCE_PROBE_ROOT}/ResourceProbe.swift"
+            "${resource_main}"
+            -Xlinker -map -Xlinker "${matched_dir}/${variant}/link.map"
+            -o "${matched_dir}/${variant}/image"
+        )
+        record_command "${resource_command[@]}"
+        "${resource_command[@]}" >>"${log_path}" 2>&1
+    done
+    report_linked_sections macho "$(xcrun --find size)" "${matched_dir}"
 }
 
 run_raspberry_pi() {
@@ -442,6 +510,45 @@ run_raspberry_pi() {
         --ir "${operation_ir}"
     "${SCRIPT_DIR}/check-spec-002-resource-boundary.rb" \
         --ir "${operation_ir}" >>"${log_path}" 2>&1
+
+    local matched_dir="${report_dir}/resources"
+    local resource_main="${matched_dir}/main.o"
+    local clang="${GIFTUI_PI_HOST_BIN_DIR}/clang"
+    local inspector="${GIFTUI_PI_HOST_BIN_DIR}/llvm-objdump"
+    mkdir -p "${matched_dir}/baseline" "${matched_dir}/candidate"
+    record_resource_inputs "${matched_dir}"
+    local -a resource_c_command=(
+        "${clang}" -target "${GIFTUI_PI_TARGET}"
+        "--gcc-toolchain=${sdk_root}/usr" --sysroot="${sdk_root}"
+        -O2 -c "${RESOURCE_PROBE_ROOT}/main.c" -o "${resource_main}"
+    )
+    record_command "${resource_c_command[@]}"
+    "${resource_c_command[@]}" >>"${log_path}" 2>&1
+    local variant
+    for variant in baseline candidate; do
+        local -a resource_command=(
+            "${swiftc}" -target "${GIFTUI_PI_TARGET}"
+            -use-ld=lld -Xcc "--gcc-toolchain=${sdk_root}/usr"
+            -resource-dir "${sdk_root}/usr/lib/swift_static"
+            -sdk "${sdk_root}" -latomic
+            -O -whole-module-optimization -language-mode 6 -package-name GiftUI
+            -static-executable
+        )
+        if [[ "${variant}" == candidate ]]; then
+            resource_command+=(-DGIFTUI_SPEC002_CANDIDATE)
+        fi
+        resource_command+=(
+            "${FOUNDATION_SOURCE}" "${RESOURCE_PROBE_ROOT}/ResourceProbe.swift"
+            "${resource_main}"
+            -Xlinker "-Map=${matched_dir}/${variant}/link.map"
+            -o "${matched_dir}/${variant}/image"
+        )
+        record_command "${resource_command[@]}"
+        "${resource_command[@]}" >>"${log_path}" 2>&1
+        giftui_pi_verify_armv6_binary "${matched_dir}/${variant}/image" \
+            >>"${log_path}" 2>&1
+    done
+    report_linked_sections elf "${inspector}" "${matched_dir}"
 }
 
 run_nrf52840() {
@@ -525,6 +632,39 @@ run_nrf52840() {
     "${SCRIPT_DIR}/check-spec-002-resource-boundary.rb" \
         --ir "${operation_ir}" >>"${log_path}" 2>&1
     run_fixture_set "${GIFTUI_NRF_SWIFTC}" "${module_dir}" "${flags[@]}"
+
+    giftui_nrf_export_environment
+    local matched_dir="${report_dir}/resources"
+    local application_dir="${GIFTUI_NRF_APPLICATIONS_DIR}/spec002-resource-probe"
+    local readelf="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf"
+    local inspector="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump"
+    mkdir -p "${matched_dir}/baseline" "${matched_dir}/candidate"
+    record_resource_inputs "${matched_dir}"
+    local variant candidate_flag variant_build
+    for variant in baseline candidate; do
+        candidate_flag=OFF
+        [[ "${variant}" == candidate ]] && candidate_flag=ON
+        variant_build="${GIFTUI_NRF_BUILD_ROOT}/spec002-resource-${variant}"
+        local -a resource_command=(
+            "${GIFTUI_NRF_WEST}" build -p always -b "${GIFTUI_NRF_BOARD}"
+            -d "${variant_build}" "${application_dir}" --
+            "-DCMAKE_MAKE_PROGRAM=$(giftui_nrf_ninja)"
+            "-DCMAKE_Swift_COMPILER=${GIFTUI_NRF_SWIFTC}"
+            "-DGIFTUI_SWIFT_TARGET=${GIFTUI_NRF_SWIFT_TARGET}"
+            "-DGIFTUI_SPEC002_CANDIDATE=${candidate_flag}"
+            "-DDTC=$(giftui_nrf_dtc)" -DUSE_CCACHE=0
+        )
+        record_command "${resource_command[@]}"
+        "${resource_command[@]}" >>"${log_path}" 2>&1
+        cp "${variant_build}/zephyr/zephyr.elf" "${matched_dir}/${variant}/image"
+        cp "${variant_build}/zephyr/zephyr.map" "${matched_dir}/${variant}/link.map"
+        "${readelf}" -A "${matched_dir}/${variant}/image" \
+            >"${matched_dir}/${variant}/arm-attributes.txt"
+        grep -Fq 'Tag_ABI_VFP_args: VFP registers' \
+            "${matched_dir}/${variant}/arm-attributes.txt" ||
+            fail "${variant} nRF resource image lacks the VFP calling convention"
+    done
+    report_linked_sections elf "${inspector}" "${matched_dir}"
 }
 
 record_command "${SCRIPT_DIR}/check-fixture-manifest.rb"

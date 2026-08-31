@@ -398,7 +398,7 @@ link maps, clearly labeled as host or hardware-free cross-build evidence.
 - [x] `T5.3` — Report size/stride/alignment for every owned value and fail every
       normative maximum. Prove construction/arithmetic add no heap allocation,
       reflection, runtime discovery, Objective-C, `Task`, or `MainActor`.
-- [ ] `T5.4` — Build matched baseline/candidate executables from one template
+- [x] `T5.4` — Build matched baseline/candidate executables from one template
       and equal link inputs; candidate references every SPEC-002 value/operation.
       Preserve link maps and report candidate-minus-baseline code, read-only,
       initialized, zero-initialized, and file-size deltas plus full toolchain
@@ -645,3 +645,13 @@ records byte-identical layout reports, every normative maximum, equal dynamic
 and static allocation checksums, zero post-warmup allocations, and source plus
 optimized operation-path exclusions for reflection, runtime discovery,
 Objective-C, `Task`, `MainActor`, and allocator calls.
+`T5.4` builds one matched Swift/C template twice in every profile with equal
+source and link inputs; only the candidate branch references every owned value
+and checked operation. The
+[linked-section contribution evidence](../../Tests/ContractFixtures/SPEC002/Evidence/milestone-5/linked-section-contribution.md)
+records signed code, read-only, initialized, zero-initialized, and file-size
+deltas, while generated reports preserve source hashes, complete commands,
+raw section listings, final images, toolchain metadata, and both link maps.
+The ARMv6 and nRF images pass their required architecture and hard-float
+checks. No deployment, remote access, or flashing occurred. Milestone 5 is
+complete; `T6.1` is the next dependency-complete task.
