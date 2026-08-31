@@ -152,7 +152,7 @@ run_macos() {
     command -v swift >/dev/null || fail 'swift is missing'
     command -v xcrun >/dev/null || fail 'xcrun is missing'
 
-    local compiler_version sdk_path sdk_version profile_flag module_dir
+    local compiler_version sdk_path sdk_version profile_flag module_dir extension image
     compiler_version="$(swiftc --version 2>&1)"
     require_exact_fragment "${compiler_version}" 'Apple Swift version 6.3.3' 'macOS compiler'
     require_exact_fragment "${compiler_version}" 'swiftlang-6.3.3.1.3' 'macOS compiler build'
@@ -162,8 +162,10 @@ run_macos() {
 
     if [[ "${profile}" == "macos-dynamic" ]]; then
         profile_flag='-DGIFTUI_DYNAMIC_PROFILE'
+        extension='dylib'
     else
         profile_flag='-DGIFTUI_STATIC_PROFILE'
+        extension='a'
     fi
     local -a flags=(
         -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
@@ -171,6 +173,7 @@ run_macos() {
     )
     module_dir="${report_dir}/build/modules"
     mkdir -p "${module_dir}"
+    image="${report_dir}/build/libGiftUI.${extension}"
 
     record_block compiler_version "${compiler_version}"
     printf 'target=arm64-apple-macosx26.0\n' >>"${metadata_path}"
@@ -182,11 +185,16 @@ run_macos() {
     local -a module_command=(
         swiftc "${flags[@]}" -language-mode 6 -package-name GiftUI
         -enable-library-evolution -parse-as-library -emit-module
+        -emit-library
         -emit-module-interface-path "${module_dir}/GiftUI.swiftinterface"
         -emit-package-module-interface-path "${module_dir}/GiftUI.package.swiftinterface"
         -module-name GiftUI "${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
         -emit-module-path "${module_dir}/GiftUI.swiftmodule"
     )
+    if [[ "${profile}" == "macos-static" ]]; then
+        module_command+=(-static)
+    fi
+    module_command+=(-o "${image}")
     record_command "${module_command[@]}"
     "${module_command[@]}" >>"${log_path}" 2>&1
 
@@ -204,6 +212,29 @@ run_macos() {
     record_command "${SCRIPT_DIR}/check-target-dependencies.rb"
     "${SCRIPT_DIR}/check-target-dependencies.rb" \
         <"${report_dir}/package.json" >>"${log_path}" 2>&1
+
+    local dependency_scan="${report_dir}/build/GiftUI.dependencies.json"
+    local -a scan_command=(
+        swiftc "${flags[@]}" -language-mode 6 -package-name GiftUI
+        -module-name GiftUI -module-cache-path "${report_dir}/build/clang-cache"
+        -scan-dependencies "${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
+    )
+    record_command "${scan_command[@]}"
+    "${scan_command[@]}" >"${dependency_scan}" 2>>"${log_path}"
+
+    local product_links="${report_dir}/build/product-links.txt"
+    record_command otool -L "${image}"
+    otool -L "${image}" >"${product_links}"
+    record_command "${SCRIPT_DIR}/check-spec-002-boundaries.rb" \
+        "${report_dir}/package.json" \
+        "${module_dir}/GiftUI.swiftinterface" \
+        "${module_dir}/GiftUI.package.swiftinterface" \
+        "${dependency_scan}" "${product_links}"
+    "${SCRIPT_DIR}/check-spec-002-boundaries.rb" \
+        "${report_dir}/package.json" \
+        "${module_dir}/GiftUI.swiftinterface" \
+        "${module_dir}/GiftUI.package.swiftinterface" \
+        "${dependency_scan}" "${product_links}" >>"${log_path}" 2>&1
 
     run_fixture_set swiftc "${module_dir}" "${flags[@]}"
 }

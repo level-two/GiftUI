@@ -19,6 +19,7 @@ active:
   GiftUIFailureDiagnosticsTests:
     type: test
     dependencies:
+      - GiftUIFailureCore
       - GiftUIFailureDiagnostics
   GiftUICapabilityFailureAdapterTests:
     type: test

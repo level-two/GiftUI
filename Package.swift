@@ -42,7 +42,7 @@ let package = Package(
         ),
         .testTarget(
             name: "GiftUIFailureDiagnosticsTests",
-            dependencies: ["GiftUIFailureDiagnostics"]
+            dependencies: ["GiftUIFailureCore", "GiftUIFailureDiagnostics"]
         ),
         .testTarget(
             name: "GiftUICapabilitiesTests",

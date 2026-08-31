@@ -372,7 +372,7 @@ reciprocal ownership without making Foundation import either owner.
       unrepresentable rectangle edges, and out-of-range input conversion.
       Prove exact condition, `.foundation` origin, `.operation` scope,
       `.contained` containment, and absence of partial values.
-- [ ] `T4.3` — Inspect source imports, exported declarations, compiled module
+- [x] `T4.3` — Inspect source imports, exported declarations, compiled module
       dependencies, and product linkage to prove `GiftUI` neither imports nor
       re-exports prohibited higher/concrete modules. Cover every package target
       and require positive plus forbidden-import evidence for protected owners.
@@ -470,8 +470,9 @@ evidence, or nRF flashing. Those claims remain downstream conformance work.
   exact `T0.3` manifest remains a blocker before `T0.5`.
 - The approved SPEC-003/004 owner targets now exist, `T4.1` records their exact
   graph and protected-owner fixtures, and `T4.2` records the exact Foundation
-  failure mappings. Complete PF-005/PF-009 evidence still requires `T4.3` and
-  `T6.2`; SPEC-002 must not create substitute vocabularies.
+  failure mappings. `T4.3` closes the current package/source/interface/link
+  boundary audit; complete PF-009 evidence still requires `T6.2`. SPEC-002
+  must not create substitute vocabularies.
 - Recreating any input producer or consumer crosses into execution,
   interaction, integration, or host ownership. If its approved contract and
   plan do not give an unambiguous seam, leave it absent rather than recreate a
@@ -612,8 +613,13 @@ the shared test-only Foundation/failure adapter at the first boundary knowing
 both contracts. The
 [Foundation failure-mapping evidence](../../Tests/ContractFixtures/SPEC002/Evidence/milestone-4/foundation-failure-mappings.md)
 records all four exact mappings, complete fact fields, discarded partial
-values, positive controls, and reciprocal leaf ownership. Later
-production-owner additions must refresh the allow-list again through `T4.3`.
-No design note is required before
-Milestone 0; create one only if a listed trigger is reached. Plan completion
-will not by itself mark SPEC-002 `implemented`.
+values, positive controls, and reciprocal leaf ownership. `T4.3` audits all 12
+current target source trees against their declared direct edges and corrects
+the missing direct `GiftUIFailureCore` test dependency. The
+[complete boundary evidence](../../Tests/ContractFixtures/SPEC002/Evidence/milestone-4/complete-boundary-audit.md)
+records source imports, exact package edges, exported interfaces, compiled
+dependencies, product links, and all three protected-owner fixture pairs.
+Milestone 4 is complete for the current package graph; any later target or edge
+must fail closed until this audit and allow-list are refreshed. No design note
+was required for Milestone 4; create one only if a listed trigger is reached.
+Plan completion will not by itself mark SPEC-002 `implemented`.

@@ -58,6 +58,12 @@ compile fixtures. Its unknown-edge case must reject an undeclared owner, and
 its cycle case must fail the independent cycle check even when the declared
 and actual edges match.
 
+The macOS driver also runs `check-spec-002-boundaries.rb`. That audit covers
+every current package target source tree, requires package-module source
+imports to have direct manifest edges, inspects `GiftUI` public/package
+interfaces, compiled dependencies, and product links, and verifies the
+positive/forbidden import fixture pair for each protected foundational owner.
+
 The standalone SPEC-002 entry points are the four commands required by the
 Specification:
 
