@@ -675,6 +675,8 @@ record_command "${SCRIPT_DIR}/check-spec-002-migration.rb"
 "${SCRIPT_DIR}/check-spec-002-migration.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-002-traceability.rb"
 "${SCRIPT_DIR}/check-spec-002-traceability.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-002-scope.rb"
+"${SCRIPT_DIR}/check-spec-002-scope.rb" >>"${log_path}" 2>&1
 record_semantic_contract
 
 case "${profile}" in

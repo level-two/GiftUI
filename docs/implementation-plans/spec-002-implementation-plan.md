@@ -419,7 +419,7 @@ SPEC-002 conformance report can be reviewed.
 - [x] `T6.2` — Audit reciprocal references among SPEC-002/003/004 and between
       SPEC-002 and RFC-004/RFC-011/ADR-033; audit package edges and adapter
       locations against them. Update navigation only, never contract text.
-- [ ] `T6.3` — Confirm code, fixtures, and notes define no declarative behavior,
+- [x] `T6.3` — Confirm code, fixtures, and notes define no declarative behavior,
       failure disposition/diagnostics, capability resolution, layout policy,
       input admission, backend policy, or host policy. Route new needs upstream.
 - [ ] `T6.4` — Create `docs/conformance/spec-002-conformance.md`, link stable
@@ -673,3 +673,11 @@ meaning. The
 records no lifecycle blocker or ownership conflict. A fail-closed checker now
 guards these relations, exact target edges/imports, absence of a monolithic
 three-owner target, and the unpublished adapter fixture. `T6.3` is next.
+`T6.3` audits the Foundation leaf, all SPEC-002-owned Swift/C fixtures, derived
+records, exact target dependency, and split adapter locations against PF-010.
+The [scope-boundary evidence](../../Tests/ContractFixtures/SPEC002/Evidence/milestone-6/scope-boundary.md)
+finds no declarative, failure-policy/diagnostic, capability-resolution, layout-
+policy, input-admission, backend-policy, or host-policy definition and no need
+for upstream or deferred work. The permanent checker rejects downstream
+vocabulary or dependencies in the Foundation boundary and unjustified design
+notes. `T6.4` is next.
