@@ -24,6 +24,7 @@ related_adrs:
   - ADR-033
 related_specs:
   - SPEC-001
+  - SPEC-002
   - SPEC-006
   - SPEC-009
   - SPEC-010
@@ -541,6 +542,7 @@ validation decisions.
 - [RFC-008: Observable Reference State Architecture](rfc-008-observable-reference-state-architecture.md)
 - [ADR-013: Provenance-Validated Presentation-Coupled Input](../adrs/adr-013-provenance-validated-input-admission.md)
 - [SPEC-001: Signal Analyzer Reference Application](../specs/spec-001-signal-analyzer-reference-application.md)
+- [SPEC-002: Portable Foundation Specification](../specs/spec-002-portable-foundation.md)
 - [SPEC-009: Execution Cycle and Frame Handoff Contract](../specs/spec-009-execution-cycle-and-frame-handoff.md)
 - [SPEC-010: Observable Reference State Contract](../specs/spec-010-observable-reference-state.md)
 - [SPEC-011: Button Interaction and Activation Contract](../specs/spec-011-interaction.md)

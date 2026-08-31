@@ -416,7 +416,7 @@ SPEC-002 conformance report can be reviewed.
       code location, removal, explicit owner blocker, or approved exception.
       Prove no shim weakens checked geometry, failable construction, bounded
       fields, mandatory provenance, or package visibility.
-- [ ] `T6.2` — Audit reciprocal references among SPEC-002/003/004 and between
+- [x] `T6.2` — Audit reciprocal references among SPEC-002/003/004 and between
       SPEC-002 and RFC-004/RFC-011/ADR-033; audit package edges and adapter
       locations against them. Update navigation only, never contract text.
 - [ ] `T6.3` — Confirm code, fixtures, and notes define no declarative behavior,
@@ -664,3 +664,12 @@ The [migration closure evidence](../../Tests/ContractFixtures/SPEC002/Evidence/m
 records counts and SHA-256 values and confirms there are no approved exceptions
 or remaining SPEC-002 owner blockers. The checker rejects mutable, trapping,
 legacy arithmetic, and public-input compatibility shims. `T6.2` is next.
+`T6.2` verifies pairwise SPEC-002/003/004 relationships, RFC-004/RFC-011/
+ADR-033 provenance, ADR-013 supersession, manifest navigation, and the three
+split first-owner adapter boundaries. The audit adds RFC-011's missing
+reciprocal SPEC-002 navigation link without changing authority or contract
+meaning. The
+[traceability and adapter-ownership evidence](../../Tests/ContractFixtures/SPEC002/Evidence/milestone-6/traceability-and-adapter-ownership.md)
+records no lifecycle blocker or ownership conflict. A fail-closed checker now
+guards these relations, exact target edges/imports, absence of a monolithic
+three-owner target, and the unpublished adapter fixture. `T6.3` is next.
