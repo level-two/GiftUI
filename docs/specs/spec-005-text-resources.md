@@ -2,11 +2,11 @@
 id: SPEC-005
 feature: giftui-mvp-architecture
 title: Deterministic Text Resource Contract
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-08-28
+updated: 2026-08-31
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -44,10 +44,10 @@ target_milestone: MVP
 
 # SPEC-005: Deterministic Text Resource Contract
 
-> **Approval status:** Approved by explicit maintainer authorization. The
-> architecture and prerequisite Foundation contract are authoritative, and
-> SPIKE-005 supplies the adopted licensed reference package, reproducible
-> integrity evidence, and measured static-resource calibration.
+> **Implementation status:** Implementation is active under the linked active
+> plan. The approved contract remains authoritative; SPIKE-005 supplies only
+> the adopted licensed reference-package inputs, reproducible integrity
+> evidence, and measured static-resource calibration.
 
 ## Summary
 

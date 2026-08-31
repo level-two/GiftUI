@@ -2,11 +2,11 @@
 spec: SPEC-005
 feature: giftui-mvp-architecture
 title: SPEC-005 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-08-30
-updated: 2026-08-30
+updated: 2026-08-31
 related_design_notes: []
 conformance_report: null
 related_future_work:
@@ -167,7 +167,7 @@ exact dependency boundary and focused test harness exists; no standalone
 text-resource product or `GiftUI` re-export exists; and a registered
 four-profile driver can fail closed before semantic implementation begins.
 
-- [ ] `T0.1` — Audit SPEC-005's status, manifest registration, Proposal/RFC/ADR/
+- [x] `T0.1` — Audit SPEC-005's status, manifest registration, Proposal/RFC/ADR/
       Specification relationships, SPIKE-005 and FW-001 through FW-003 links,
       thirteen acceptance criteria, and non-goals. Create
       `Tests/ContractFixtures/SPEC005/` with an ordered fixture manifest,
@@ -566,10 +566,16 @@ No new deferred item was discovered while preparing this plan.
 
 ## Completion Record
 
-No implementation task has started under this plan. Mark the plan `active`
-and SPEC-005 `implementing` only when authorized implementation actually
-begins. Record every completed, changed, removed, and blocked task disposition
-here or in a clearly linked iteration record; update any current design note
-in the same change that invalidates it. Plan completion requires a disposition
-for every task and a linked conformance report, but it does not mark SPEC-005
+Implementation began on 2026-08-31. The plan is `active` and SPEC-005 is
+`implementing`; these are progress transitions and do not change the approved
+contract or authorize the eventual `implemented` transition.
+
+| Task | Disposition | Evidence |
+| --- | --- | --- |
+| `T0.1` | completed | [Authority and fixture audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/authority-audit.md), fixture README, ordered manifest, normalized-corpus schema, matched resource-harness roots, and evidence labels |
+
+Record every completed, changed, removed, and blocked task disposition here or
+in a clearly linked iteration record; update any current design note in the
+same change that invalidates it. Plan completion requires a disposition for
+every task and a linked conformance report, but it does not mark SPEC-005
 `implemented`.
