@@ -486,7 +486,7 @@ as host or hardware-free cross-build evidence.
       storage, default display staging, worst-case resolver stack, linked
       flash, initialization work, and aggregate/device warning thresholds
       separately.
-- [ ] `T5.4` — Build two pristine matched nRF baseline/candidate pairs from one
+- [x] `T5.4` — Build two pristine matched nRF baseline/candidate pairs from one
       revision using the exact SPEC-004 source-list and configuration rules.
       Record compiler/linker arguments, hashes, load-segment accounting, maps,
       named symbols, disassembly, and a complete resolved call graph. Enforce
@@ -857,7 +857,7 @@ rejects instrumentation symbols; see the
 `T5.3` is the next dependency-complete task while `T4.3` and `T4.4` remain
 blocked on their owning Specifications.
 
-`T5.3` is complete. The
+`T5.3` is complete. The results are recorded in the
 [nRF resource-boundary evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-5/nrf-resource-boundary.md).
 It passes linked RAM (+252 bytes), linked flash (+4,768 bytes), named storage
 (202 bytes), default staging (3,840 bytes), initialization work (44), and an
@@ -867,3 +867,16 @@ preference/precedence semantics, workspace reset, zero allocation, and the
 44-operation maximum while avoiding simultaneous live candidate outcomes. All
 ten records pass on 32-bit ARMv6/nRF and 64-bit macOS. `T5.4` is next; it still
 owns two-pristine-build repeatability and complete matched-image evidence.
+
+`T5.4` is complete: two pristine baseline/candidate rebuilds use the same
+fixed paths, exact source/configuration, pinned compiler/Zephyr/SDK, WMO
+`-Osize`, hard-float ABI, runtime, linker script, and garbage collection. Both
+baseline ELFs are byte-identical with SHA-256
+`c3e798a5340891d63d4e9b8a3f1727ab4089bd730fcfe2bff379883b6b8f4212`;
+both candidate ELFs are byte-identical with SHA-256
+`24f21d8a3c0eac988f2a0b4891a37bc48f0a71aab5bce6dea900e3768b53841f`.
+Normalized load-segment metrics and the complete seven-node reachable
+resolver call graph are byte-identical. The graph contains no indirect call,
+dynamic stack adjustment, recursion, or missing reachable body. Milestone 5
+is complete; Milestone 6 remains gated by the SPEC-009/SPEC-014/SPEC-015 owner
+integrations required by T4.3/T4.4.

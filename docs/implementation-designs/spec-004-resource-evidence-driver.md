@@ -125,8 +125,8 @@ metrics.
 
 ## Open Implementation Questions
 
-None for T5.3. T5.4 still owns two-build repeatability and the complete matched
-image/call-graph evidence required before conformance.
+None for T5.3/T5.4. The remaining integration/conformance tasks retain their
+own upstream owner dependencies.
 
 ## Code and Evidence Links
 

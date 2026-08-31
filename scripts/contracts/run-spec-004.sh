@@ -394,49 +394,67 @@ run_target_layout_probe() {
 run_nrf_resource_pair() {
     local application_dir="${PROJECT_ROOT}/firmware/nrf52840/applications/spec004-resource-probe"
     local pair_root="${generated_dir}/resource-pair"
-    local kind build_dir candidate_flag elf
+    local build_index kind build_dir candidate_flag elf
     giftui_nrf_export_environment
-    for kind in baseline candidate; do
-        build_dir="${pair_root}/${kind}"
-        if [[ "${kind}" == candidate ]]; then
-            candidate_flag=ON
-        else
-            candidate_flag=OFF
-        fi
-        local -a build_command=(
-            "${GIFTUI_NRF_WEST}" build -p always -b "${GIFTUI_NRF_BOARD}"
-            -d "${build_dir}" "${application_dir}" --
-            "-DCMAKE_MAKE_PROGRAM=$(giftui_nrf_ninja)"
-            "-DCMAKE_Swift_COMPILER=${GIFTUI_NRF_SWIFTC}"
-            "-DGIFTUI_SWIFT_TARGET=${GIFTUI_NRF_SWIFT_TARGET}"
-            "-DGIFTUI_SPEC004_CANDIDATE=${candidate_flag}"
-            "-DDTC=$(giftui_nrf_dtc)" -DUSE_CCACHE=0
-        )
-        record_command "${build_command[@]}"
-        "${build_command[@]}" >>"${log_path}" 2>&1
-        elf="${build_dir}/zephyr/zephyr.elf"
-        [[ -f "${elf}" ]] || fail "missing SPEC-004 ${kind} resource ELF"
-        local destination="${report_dir}/resources/${kind}"
-        local readelf="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf"
-        local objdump="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump"
-        local nm="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm"
-        record_command "${readelf}" -lWS "${elf}"
-        "${readelf}" -lW "${elf}" >"${destination}/program-headers.txt"
-        "${readelf}" -SW "${elf}" >"${destination}/sections.txt"
-        "${readelf}" -sW "${elf}" >"${destination}/symbols.txt"
-        record_command "${objdump}" -d "${elf}"
-        "${objdump}" -d "${elf}" >"${destination}/disassembly.txt"
-        record_command "${nm}" -S --size-sort "${elf}"
-        "${nm}" -S --size-sort "${elf}" >"${destination}/named-symbols.txt"
-        cp "${build_dir}/zephyr/zephyr.map" "${destination}/zephyr.map"
-        record_image "resource-${kind}-elf" "${elf}"
+    for build_index in 1 2; do
+        for kind in baseline candidate; do
+            build_dir="${pair_root}/${kind}"
+            if [[ "${kind}" == candidate ]]; then
+                candidate_flag=ON
+            else
+                candidate_flag=OFF
+            fi
+            local -a build_command=(
+                "${GIFTUI_NRF_WEST}" build -p always -b "${GIFTUI_NRF_BOARD}"
+                -d "${build_dir}" "${application_dir}" --
+                "-DCMAKE_MAKE_PROGRAM=$(giftui_nrf_ninja)"
+                "-DCMAKE_Swift_COMPILER=${GIFTUI_NRF_SWIFTC}"
+                "-DGIFTUI_SWIFT_TARGET=${GIFTUI_NRF_SWIFT_TARGET}"
+                "-DGIFTUI_SPEC004_CANDIDATE=${candidate_flag}"
+                "-DDTC=$(giftui_nrf_dtc)" -DUSE_CCACHE=0
+            )
+            record_command "${build_command[@]}"
+            "${build_command[@]}" >>"${log_path}" 2>&1
+            elf="${build_dir}/zephyr/zephyr.elf"
+            [[ -f "${elf}" ]] || fail "missing SPEC-004 ${kind} resource ELF"
+            local destination="${report_dir}/resources/build-${build_index}/${kind}"
+            local readelf="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf"
+            local objdump="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump"
+            local nm="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm"
+            mkdir -p "${destination}"
+            record_command "${readelf}" -lWS "${elf}"
+            "${readelf}" -lW "${elf}" >"${destination}/program-headers.txt"
+            "${readelf}" -SW "${elf}" >"${destination}/sections.txt"
+            "${readelf}" -sW "${elf}" >"${destination}/symbols.txt"
+            record_command "${objdump}" -d "${elf}"
+            "${objdump}" -d "${elf}" >"${destination}/disassembly.txt"
+            record_command "${nm}" -S --size-sort "${elf}"
+            "${nm}" -S --size-sort "${elf}" >"${destination}/named-symbols.txt"
+            cp "${build_dir}/zephyr/zephyr.map" "${destination}/zephyr.map"
+            cp "${elf}" "${destination}/zephyr.elf"
+            record_image "resource-build-${build_index}-${kind}-elf" \
+                "${destination}/zephyr.elf"
+        done
+        local summary="${report_dir}/resources/build-${build_index}/nrf-resource-summary.tsv"
+        record_command ruby "${SCRIPT_DIR}/check-spec-004-nrf-resources.rb" \
+            "${report_dir}/resources/build-${build_index}/baseline" \
+            "${report_dir}/resources/build-${build_index}/candidate" "${summary}"
+        ruby "${SCRIPT_DIR}/check-spec-004-nrf-resources.rb" \
+            "${report_dir}/resources/build-${build_index}/baseline" \
+            "${report_dir}/resources/build-${build_index}/candidate" \
+            "${summary}" >>"${log_path}" 2>&1
     done
-    record_command ruby "${SCRIPT_DIR}/check-spec-004-nrf-resources.rb" \
-        "${report_dir}/resources/baseline" "${report_dir}/resources/candidate" \
-        "${report_dir}/resources/nrf-resource-summary.tsv"
-    ruby "${SCRIPT_DIR}/check-spec-004-nrf-resources.rb" \
-        "${report_dir}/resources/baseline" "${report_dir}/resources/candidate" \
-        "${report_dir}/resources/nrf-resource-summary.tsv" >>"${log_path}" 2>&1
+    for kind in baseline candidate; do
+        cmp "${report_dir}/resources/build-1/${kind}/zephyr.elf" \
+            "${report_dir}/resources/build-2/${kind}/zephyr.elf" ||
+            fail "SPEC-004 ${kind} ELF is not repeatable"
+    done
+    cmp "${report_dir}/resources/build-1/nrf-resource-summary.tsv" \
+        "${report_dir}/resources/build-2/nrf-resource-summary.tsv" ||
+        fail 'SPEC-004 normalized nRF resource metrics are not repeatable'
+    cmp "${report_dir}/resources/build-1/nrf-resolver-call-graph.tsv" \
+        "${report_dir}/resources/build-2/nrf-resolver-call-graph.tsv" ||
+        fail 'SPEC-004 normalized resolver call graph is not repeatable'
 }
 
 run_semantic_probe() {

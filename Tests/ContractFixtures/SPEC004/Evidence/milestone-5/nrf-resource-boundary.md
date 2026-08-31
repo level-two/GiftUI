@@ -1,6 +1,6 @@
 # SPEC-004 nRF Resource Boundary Evidence
 
-**Task:** T5.3 (complete)
+**Tasks:** T5.3 and T5.4 (complete)
 
 **Evidence class:** hardware-free cross-build and final-image inspection
 
@@ -50,8 +50,16 @@ scripts/nrf52840/doctor.sh --probe
 scripts/contracts/run-spec-004.sh --profile nrf52840-embedded
 ```
 
-Both commands pass. Generated ELFs, maps, load segments, symbol
-tables, disassembly, hashes, and the TSV summary remain under
+Both commands pass. The driver performs two pristine rebuilds from the same
+fixed baseline and candidate build paths. The baseline ELF hash is
+`c3e798a5340891d63d4e9b8a3f1727ab4089bd730fcfe2bff379883b6b8f4212`
+in both builds; the candidate ELF hash is
+`24f21d8a3c0eac988f2a0b4891a37bc48f0a71aab5bce6dea900e3768b53841f`
+in both builds. Normalized metrics and the seven-node reachable resolver call
+graph are byte-identical across builds. Generated ELFs, maps, load segments,
+symbol tables, disassembly, hashes, and the TSV summary remain under
 `.build/contract-reports/spec-004/nrf52840-embedded/` and are not committed.
-T5.4 still requires two pristine repeatable pairs and its complete evidence;
-this preliminary pair does not claim T5.4.
+The driver records complete compiler/linker commands, source and tool hashes,
+ELF/map/section/symbol/disassembly inputs, and the resolved call graph. No
+reachable indirect call, dynamic stack adjustment, recursion, or unresolved
+body remains.

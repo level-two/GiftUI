@@ -94,16 +94,18 @@ def resolver_stack(path, symbols_path)
   root = functions.keys.find { |name| name.include?("RasterPresentationResolverO7resolve") }
   root ||= functions.keys.find { |name| name.include?("giftuiSpec004Resolve") }
   fail_check("resolver or retained resource entry is missing from candidate disassembly") unless root
+  visited = {}
   visit = lambda do |name, active|
     fail_check("call-graph cycle at #{name}") if active.include?(name)
     function = functions[name]
     return 0 unless function
+    visited[name] = true
     fail_check("unresolved indirect call in #{name}") if function[:indirect]
 
     child = function[:calls].map { |callee| visit.call(callee, active + [name]) }.max || 0
     function[:frame] + child
   end
-  visit.call(root, [])
+  [visit.call(root, []), root, functions, visited.keys.sort]
 end
 
 fail_check("expected baseline, candidate, and output paths") unless ARGV.length == 3
@@ -120,7 +122,7 @@ fail_check("named display staging symbol is missing") unless display_staging
 named_storage = candidate_symbols.sum do |name, size|
   name.include?("giftuiSpec004Capability") || name == "giftui_spec004_resource_sink" ? size : 0
 end
-resolver_stack_bytes = resolver_stack(
+resolver_stack_bytes, resolver_root, text_functions, reachable_functions = resolver_stack(
   File.join(candidate_root, "disassembly.txt"),
   File.join(candidate_root, "named-symbols.txt")
 )
@@ -143,5 +145,14 @@ File.open(output_path, "w") do |output|
   output.puts("display_staging_bytes\t-\t#{display_staging}\t#{display_staging}\t#{DISPLAY_STAGING_LIMIT}\tpass")
   output.puts("resolver_stack_bytes\t-\t#{resolver_stack_bytes}\t#{resolver_stack_bytes}\t#{RESOLVER_STACK_LIMIT}\tpass")
   output.puts("initialization_operations\t-\t#{INITIALIZATION_OPERATIONS}\t#{INITIALIZATION_OPERATIONS}\t96\tpass")
+end
+call_graph_path = File.join(File.dirname(output_path), "nrf-resolver-call-graph.tsv")
+File.open(call_graph_path, "w") do |output|
+  output.puts("function\tframe_bytes\treachable_direct_callees\troot")
+  reachable_functions.each do |name|
+    function = text_functions.fetch(name)
+    callees = function[:calls].select { |callee| reachable_functions.include?(callee) }
+    output.puts([name, function[:frame], callees.join(","), name == resolver_root].join("\t"))
+  end
 end
 puts "SPEC-004 nRF resource check passed: RAM delta #{ram_delta}, flash delta #{flash_delta}, stack #{resolver_stack_bytes}."
