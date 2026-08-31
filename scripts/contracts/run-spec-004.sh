@@ -358,6 +358,17 @@ run_allocation_probe() {
     record_image allocation-interposer "${interposer}"
 }
 
+run_static_path_check() {
+    record_command "${SCRIPT_DIR}/check-spec-004-static-path.rb" \
+        "${report_dir}/semantics/allocation-layout-probe.txt" \
+        "${report_dir}/semantics/arithmetic.tsv" \
+        "${report_dir}/build/defined-symbols.txt"
+    "${SCRIPT_DIR}/check-spec-004-static-path.rb" \
+        "${report_dir}/semantics/allocation-layout-probe.txt" \
+        "${report_dir}/semantics/arithmetic.tsv" \
+        "${report_dir}/build/defined-symbols.txt" >>"${log_path}" 2>&1
+}
+
 run_semantic_probe() {
     local compiler="$1"
     local sdk_path="$2"
@@ -559,6 +570,7 @@ run_macos() {
     run_normalized_profile_probe_macos \
         "${compiler}" "${sdk_path}" "${profile_flag}" "${image}"
     run_allocation_probe "${compiler}" "${sdk_path}" "${profile_flag}"
+    run_static_path_check
     run_fixture_set "${compiler}" "${report_dir}/build" \
         -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
         -O -whole-module-optimization "${profile_flag}"

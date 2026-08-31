@@ -475,7 +475,7 @@ as host or hardware-free cross-build evidence.
       `armv6-unknown-linux-gnueabihf` and nRF52840 Cortex-M4F hard-float/VFP
       ABI. Do not substitute architectures, mutate global toolchains, access a
       remote, deploy, or flash.
-- [ ] `T5.2` — Instrument the static path for zero heap allocation from
+- [x] `T5.2` — Instrument the static path for zero heap allocation from
       contribution construction through repeated snapshot access. Record
       operation/invocation counts for every success and negative path and
       compare complete static/dynamic semantic transcripts.
@@ -841,4 +841,17 @@ calling convention attributes. All four hardware-free commands pass without
 remote access, deployment, service restart, or flashing; see the
 [four-profile compilation evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-5/four-profile-compilation.md).
 `T5.2` is the next dependency-complete task while `T4.3` and `T4.4` remain
+blocked on their owning Specifications.
+
+`T5.2` is complete: the optimized static probe measures the complete path from
+four-contributor construction and insertion through workspace resolution,
+validation-result and immutable-snapshot storage, and repeated access with
+zero heap allocations. Instrumented semantic rows record 44 primitive
+operations for the widest success, eight for the early negative, exactly one
+resolver invocation/result construction for each, and zero operations or
+resolver invocations for 10,000 snapshot reads. Both macOS profiles produce
+byte-identical complete 42-row semantic transcripts, and the production image
+rejects instrumentation symbols; see the
+[static-path evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-5/static-path-and-semantic-equivalence.md).
+`T5.3` is the next dependency-complete task while `T4.3` and `T4.4` remain
 blocked on their owning Specifications.
