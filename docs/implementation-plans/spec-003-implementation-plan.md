@@ -721,5 +721,10 @@ macOS profiles record zero allocations, 37 correctness-path steps, five
 containment-normalization steps, eight diagnostic-selection steps, and the
 same checksum across 10,000 measured iterations; see the
 [layout, allocation, and RAM evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-5/layout-allocation-and-ram.md).
-Final-image writable/code deltas and stack/call-graph proof remain `T5.4`, the
-next dependency-complete evidence task; `T4.3` remains blocked on SPEC-009.
+Final-image writable/code deltas and stack/call-graph proof remain `T5.4`.
+That matched candidate is not dependency-complete because the governing
+resource contract requires `GiftUIFailureExecution`, whose focused execution
+contract and production target remain owned by and blocked on SPEC-009.
+`T4.3`-`T4.5`, `T5.4`, and the later integration/conformance tasks therefore
+cannot proceed without inventing forbidden authority; execution returns to the
+next dependency-complete SPEC-004 task.
