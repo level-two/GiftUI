@@ -480,7 +480,7 @@ as host or hardware-free cross-build evidence.
       contribution construction through repeated snapshot access. Record
       operation/invocation counts for every success and negative path and
       compare complete static/dynamic semantic transcripts.
-- [ ] `T5.3` — Report size/stride/alignment for every named capability record
+- [x] `T5.3` — Report size/stride/alignment for every named capability record
       on supported 32-bit and 64-bit compilers; enforce all per-record ceilings.
       Report total and incremental nRF linked RAM, named fixed capability
       storage, default display staging, worst-case resolver stack, linked
@@ -857,12 +857,13 @@ rejects instrumentation symbols; see the
 `T5.3` is the next dependency-complete task while `T4.3` and `T4.4` remain
 blocked on their owning Specifications.
 
-The first `T5.3` matched nRF inspection is recorded in the
+`T5.3` is complete. The
 [nRF resource-boundary evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-5/nrf-resource-boundary.md).
-It passes linked RAM (+252 bytes), linked flash (+4,864 bytes), named storage
-(202 bytes), default staging (3,840 bytes), and initialization work (44), but
-the final-image production resolver has a 360-byte entry frame and a
-conservative 540-byte reachable path against the approved 256-byte ceiling.
-The driver now fails closed on that breach. `T5.3` remains open pending a
-conforming internal stack reduction or renewed Specification review; `T5.4`
-cannot use the nonconforming candidate as completion evidence.
+It passes linked RAM (+252 bytes), linked flash (+4,768 bytes), named storage
+(202 bytes), default staging (3,840 bytes), initialization work (44), and an
+80-byte conservative resolver path against the approved 256-byte ceiling. The
+conforming internal split preserves validation, canonical ordering,
+preference/precedence semantics, workspace reset, zero allocation, and the
+44-operation maximum while avoiding simultaneous live candidate outcomes. All
+ten records pass on 32-bit ARMv6/nRF and 64-bit macOS. `T5.4` is next; it still
+owns two-pristine-build repeatability and complete matched-image evidence.

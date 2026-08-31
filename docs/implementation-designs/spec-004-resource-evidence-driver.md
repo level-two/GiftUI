@@ -2,7 +2,7 @@
 spec: SPEC-004
 feature: capability-system
 title: Implementation Design — nRF Resource Evidence Driver
-status: draft
+status: current
 authors:
   - codex
 created: 2026-08-31
@@ -101,17 +101,16 @@ does not reinterpret cross-built images as connected-target execution.
 ## Resource and Failure Behavior
 
 The checker reports totals, signed deltas, named storage, staging, work, and
-stack independently. Current evidence passes RAM, flash, storage, staging, and
-work bounds but fails the resolver stack at 540 bytes versus 256 bytes. This
-is an implementation blocker, not an allowed evidence exception.
+stack independently. Current evidence passes every T5.3 bound, including an
+80-byte conservative resolver path against the 256-byte ceiling.
 
 ## Test and Diagnostic Seams
 
 The four profile drivers exercise layout extraction. The nRF driver builds and
-inspects the pair and intentionally exits nonzero on the current stack breach.
-The checker itself is syntax checked and its result is preserved in the stable
-T5.3 evidence record; T5.4 must later add pristine repeatability and complete
-normalized metrics.
+inspects the pair and fails closed on any resource breach. The checker itself
+is syntax checked and its result is preserved in the stable T5.3 evidence
+record; T5.4 must later add pristine repeatability and complete normalized
+metrics.
 
 ## Rejected Implementation Alternatives
 
@@ -121,19 +120,17 @@ normalized metrics.
   the approved bound begins at the production resolver entry.
 - Ignore reachable callees or accept a runtime watermark: rejected by the
   conservative final-image contract.
-- Treat the 540-byte result as an exception: forbidden without renewed Spec
-  review.
+- Treat the original 540-byte result as an exception: rejected because the
+  approved bound requires a conforming internal realization or renewed review.
 
 ## Open Implementation Questions
 
-The production resolver needs a conforming internal stack reduction. That
-work must preserve its public signature, deterministic precedence, fixed
-workspace, zero-allocation behavior, and operation bounds. If no such
-realization fits, the mismatch must be routed to Specification review.
+None for T5.3. T5.4 still owns two-build repeatability and the complete matched
+image/call-graph evidence required before conformance.
 
 ## Code and Evidence Links
 
 - [SPEC-004 contract driver](../../scripts/contracts/run-spec-004.sh)
 - [nRF resource checker](../../scripts/contracts/check-spec-004-nrf-resources.rb)
 - [resource fixture](../../Tests/ContractFixtures/SPEC004/ResourceHarness/README.md)
-- [T5.3 blocker evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-5/nrf-resource-boundary.md)
+- [T5.3 resource evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-5/nrf-resource-boundary.md)

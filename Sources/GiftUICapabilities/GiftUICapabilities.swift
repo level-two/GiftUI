@@ -934,8 +934,20 @@ public enum RasterPresentationResolver {
         }
 #endif
         workspace.reset()
-        defer { workspace.reset() }
+        let result = resolvePrepared(
+            requirement: requirement,
+            contributions: contributions,
+            workspace: &workspace
+        )
+        workspace.reset()
+        return result
+    }
 
+    private static func resolvePrepared(
+        requirement: RasterPresentationRequirement,
+        contributions: borrowing RasterPresentationContributions,
+        workspace: inout RasterPresentationResolverWorkspace
+    ) -> RasterPresentationResolution {
         if let issue = contributions.firstInputIssue {
             return .unavailable(issue)
         }
@@ -985,85 +997,70 @@ public enum RasterPresentationResolver {
             ))
         }
 
-        let firstOutcome: RasterPresentationCandidateOutcome?
-        if let firstCandidate = workspace.firstCandidate {
-            firstOutcome = RasterPresentationCompatibility.evaluateCandidate(
-                requirement: requirement,
-                realization: firstCandidate.realization,
-                surface: surface,
-                policy: policy
-            )
-        } else {
-            firstOutcome = nil
-        }
-        let secondOutcome: RasterPresentationCandidateOutcome?
-        if let secondCandidate = workspace.secondCandidate {
-            secondOutcome = RasterPresentationCompatibility.evaluateCandidate(
-                requirement: requirement,
-                realization: secondCandidate.realization,
-                surface: surface,
-                policy: policy
-            )
-        } else {
-            secondOutcome = nil
-        }
-        return resolution(
-            first: firstOutcome,
-            second: secondOutcome,
+        return resolveCandidates(
             requirement: requirement,
-            policy: policy
+            surface: surface,
+            policy: policy,
+            workspace: workspace
         )
     }
 
-    private static func resolution(
-        first: RasterPresentationCandidateOutcome?,
-        second: RasterPresentationCandidateOutcome?,
+    private static func resolveCandidates(
         requirement: RasterPresentationRequirement,
-        policy: RasterPresentationPolicy
+        surface: SurfaceDisplayContribution,
+        policy: RasterPresentationPolicy,
+        workspace: borrowing RasterPresentationResolverWorkspace
     ) -> RasterPresentationResolution {
         let firstPath: RasterPresentationCandidatePath?
         let firstReason: RasterPresentationUnavailable?
-        switch first {
-        case let .available(path):
-            firstPath = path
-            firstReason = nil
-        case let .unavailable(reason):
-            firstPath = nil
-            firstReason = reason
-        case nil:
+        if let candidate = workspace.firstCandidate {
+            switch RasterPresentationCompatibility.evaluateCandidate(
+                requirement: requirement,
+                realization: candidate.realization,
+                surface: surface,
+                policy: policy
+            ) {
+            case let .available(path):
+                firstPath = path
+                firstReason = nil
+            case let .unavailable(reason):
+                firstPath = nil
+                firstReason = reason
+            }
+        } else {
             firstPath = nil
             firstReason = nil
         }
 
-        let secondPath: RasterPresentationCandidatePath?
-        let secondReason: RasterPresentationUnavailable?
-        switch second {
+        guard let candidate = workspace.secondCandidate else {
+            if let firstPath {
+                return .available(effective(requirement: requirement, path: firstPath))
+            }
+            return .unavailable(firstReason ?? .policyHasNoConformingRealization)
+        }
+        switch RasterPresentationCompatibility.evaluateCandidate(
+            requirement: requirement,
+            realization: candidate.realization,
+            surface: surface,
+            policy: policy
+        ) {
         case let .available(path):
-            secondPath = path
-            secondReason = nil
-        case let .unavailable(reason):
-            secondPath = nil
-            secondReason = reason
-        case nil:
-            secondPath = nil
-            secondReason = nil
-        }
-
-        if let firstPath, let secondPath {
-            let selected = RasterPresentationCompatibility.prefers(
-                secondPath, over: firstPath, policy: policy
-            ) ? secondPath : firstPath
-            return .available(effective(requirement: requirement, path: selected))
-        }
-        if let path = firstPath ?? secondPath {
+            if let firstPath {
+                let selected = RasterPresentationCompatibility.prefers(
+                    path, over: firstPath, policy: policy
+                ) ? path : firstPath
+                return .available(effective(requirement: requirement, path: selected))
+            }
             return .available(effective(requirement: requirement, path: path))
+        case let .unavailable(reason):
+            if let firstPath {
+                return .available(effective(requirement: requirement, path: firstPath))
+            }
+            if let firstReason {
+                return .unavailable(primaryReason(firstReason, reason))
+            }
+            return .unavailable(reason)
         }
-        if let firstReason, let secondReason {
-            return .unavailable(primaryReason(firstReason, secondReason))
-        }
-        return .unavailable(
-            firstReason ?? secondReason ?? .policyHasNoConformingRealization
-        )
     }
 
     static func primaryReason(
