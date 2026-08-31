@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-08-29
-updated: 2026-08-30
+updated: 2026-08-31
 related_design_notes:
   - ../implementation-designs/spec-004-raster-arithmetic.md
 conformance_report: null
@@ -470,7 +470,7 @@ hardware-free probes pass.
 allocation, operation-count, layout, section, stack, and code reports labeled
 as host or hardware-free cross-build evidence.
 
-- [ ] `T5.1` — Compile and run/cross-build the same normalized corpus with the
+- [x] `T5.1` — Compile and run/cross-build the same normalized corpus with the
       exact profile compilers and optimization modes. Verify Raspberry Pi
       `armv6-unknown-linux-gnueabihf` and nRF52840 Cortex-M4F hard-float/VFP
       ABI. Do not substitute architectures, mutate global toolchains, access a
@@ -830,3 +830,15 @@ refusal, disconnection, and post-handoff fault facts. Exact graph checks keep
 `GiftUICapabilities` free of failure imports and diagnostics. Focused tests and
 the four-profile adapter module builds pass. `T4.3` is next but awaits the
 SPEC-009/SPEC-014 production owner targets.
+`T5.1` is complete: a fail-closed profile-corpus checker binds the five ordered
+normalized configuration rows and checksum to `SemanticCorpus/cases.tsv`.
+Both exact macOS profiles compile and execute the shared probe with checksum
+12. Raspberry Pi cross-builds the same source for
+`armv6-unknown-linux-gnueabihf` and verifies an ARM EABI5 `arm1136jf-s`
+hard-float object; nRF52840 cross-builds it for `armv7em-none-none-eabi` with
+Embedded Swift and verifies Cortex-M4, ARMv7E-M, VFPv4-D16, and VFP-register
+calling convention attributes. All four hardware-free commands pass without
+remote access, deployment, service restart, or flashing; see the
+[four-profile compilation evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-5/four-profile-compilation.md).
+`T5.2` is the next dependency-complete task while `T4.3` and `T4.4` remain
+blocked on their owning Specifications.

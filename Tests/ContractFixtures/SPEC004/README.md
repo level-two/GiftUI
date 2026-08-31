@@ -15,6 +15,9 @@ Fixtures/
 SemanticCorpus/
   cases.tsv
   adapter-boundary.md
+NormalizedProfileProbe/
+  NormalizedProfileProbe.swift
+  main.swift
 ResourceHarness/
   Baseline/
   Candidate/
@@ -30,9 +33,18 @@ tokens, missing files, unregistered fixture directories, unexpected success,
 and missing diagnostic patterns.
 
 `SemanticCorpus/cases.tsv` is the ordered normalized input registry. Drivers
-must hash and execute the same rows in the same order for every profile.
-Typed-resolver rows and raw-adapter rows remain distinct as described beside
-the corpus; malformed raw inputs are never manufactured as valid typed values.
+must hash the same rows in the same order. The executable macOS semantic probes
+execute the complete registry; hardware-free cross-build profiles compile the
+five normalized configuration rows through the shared profile probe without
+claiming target execution. Typed-resolver rows and raw-adapter rows remain
+distinct as described beside the corpus; malformed raw inputs are never
+manufactured as valid typed values.
+
+`NormalizedProfileProbe/NormalizedProfileProbe.swift` is the collection-free
+compiled form of the five `configuration` rows. The profile-corpus checker
+requires its ordered row markers and checksum to match `cases.tsv`. Both macOS
+profiles execute it; ARMv6 and nRF52840 compile the same source as target
+modules without claiming target execution.
 
 Matched resource inputs live under `ResourceHarness/Baseline` and
 `ResourceHarness/Candidate`. Generated inputs use exactly:
