@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-08-29
+updated: 2026-08-31
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -820,6 +820,9 @@ declarations rather than copy signatures.
 - [SPEC-002 Implementation Plan](../implementation-plans/spec-002-implementation-plan.md)
   is the derived, non-authoritative ordering and evidence strategy for this
   approved contract.
+- [SPEC-002 Conformance Report](../conformance/spec-002-conformance.md) is in
+  review with a disposition and evidence mapping for every acceptance
+  criterion. It does not authorize the `implemented` transition.
 
 ## Open Issues
 

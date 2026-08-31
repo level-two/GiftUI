@@ -2,13 +2,13 @@
 spec: SPEC-002
 feature: giftui-mvp-architecture
 title: SPEC-002 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-08-28
 updated: 2026-08-31
 related_design_notes: []
-conformance_report: null
+conformance_report: ../conformance/spec-002-conformance.md
 related_future_work:
   - FW-005
   - FW-016
@@ -422,7 +422,7 @@ SPEC-002 conformance report can be reviewed.
 - [x] `T6.3` — Confirm code, fixtures, and notes define no declarative behavior,
       failure disposition/diagnostics, capability resolution, layout policy,
       input admission, backend policy, or host policy. Route new needs upstream.
-- [ ] `T6.4` — Create `docs/conformance/spec-002-conformance.md`, link stable
+- [x] `T6.4` — Create `docs/conformance/spec-002-conformance.md`, link stable
       evidence, and hand every PF criterion to conformance review. Do not mark
       SPEC-002 implemented without complete evidence and maintainer approval.
 
@@ -687,3 +687,10 @@ complete seven-case probe, and a fail-closed checker requires the target-
 compiled checksum function to reduce to `ret i32 28`. Generated transcripts
 remain labeled cross-build-only and make no connected-hardware execution
 claim.
+`T6.4` creates and links the
+[SPEC-002 conformance report](../conformance/spec-002-conformance.md), freezes
+reviewed implementation revision `3e5b227`, maps all ten PF criteria to stable
+evidence, and records the exact four-profile plus repository-level validation.
+Every criterion is dispositioned `pass` with no deviation or exception. This
+plan is complete, but SPEC-002 remains `implementing`; only a maintainer may
+authorize its `implemented` transition after reviewing the report.
