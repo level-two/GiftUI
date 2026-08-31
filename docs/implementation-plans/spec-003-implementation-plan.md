@@ -382,7 +382,7 @@ labeled as host or hardware-free cross-build evidence.
       containment, annotations, policy validation/results, health, diagnostic
       isolation, exhaustion, and owner-fixture mappings. Fail any portable
       semantic difference.
-- [ ] `T5.3` — Report size/stride/alignment for every declaration, allocation
+- [x] `T5.3` — Report size/stride/alignment for every declaration, allocation
       counts, fixture-counted correctness and selection steps, default buffer
       capacity, and named production health/counter/buffer symbols. Enforce all
       exact layout and RAM limits.
@@ -711,3 +711,15 @@ are byte-identical; see the
 [static/dynamic semantic evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-5/static-dynamic-semantics.md).
 `T5.3` is the next dependency-complete evidence task; `T4.3` remains blocked
 on SPEC-009.
+
+`T5.3` is complete: optimized target IR reports constant size, stride, and
+alignment for all 23 concrete Core/diagnostics values in every profile and
+fails the exact 2-byte and maximum 4/8/20/24-byte requirements. The selected
+64/16/16/8-record defaults produce named owned-state totals of 1,578, 426,
+426, and 234 bytes against limits of 2,048, 512, 512, and 320 bytes. Both
+macOS profiles record zero allocations, 37 correctness-path steps, five
+containment-normalization steps, eight diagnostic-selection steps, and the
+same checksum across 10,000 measured iterations; see the
+[layout, allocation, and RAM evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-5/layout-allocation-and-ram.md).
+Final-image writable/code deltas and stack/call-graph proof remain `T5.4`, the
+next dependency-complete evidence task; `T4.3` remains blocked on SPEC-009.

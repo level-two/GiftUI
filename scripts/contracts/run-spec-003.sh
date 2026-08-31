@@ -6,6 +6,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
 FIXTURE_ROOT="${PROJECT_ROOT}/Tests/ContractFixtures/SPEC003"
 SOURCE_ROOT="${PROJECT_ROOT}/Sources/GiftUIFailureCore"
+DIAGNOSTICS_ROOT="${PROJECT_ROOT}/Sources/GiftUIFailureDiagnostics"
 CAPABILITY_SOURCE="${PROJECT_ROOT}/Sources/GiftUICapabilities/GiftUICapabilities.swift"
 CAPABILITY_ADAPTER_SOURCE="${PROJECT_ROOT}/Sources/GiftUICapabilityFailureAdapterFixture/CapabilityFailureAdapter.swift"
 PROFILE_PROBE_ROOT="${FIXTURE_ROOT}/ProfileCorpusProbe"
@@ -148,7 +149,8 @@ record_input_hashes() {
                 "${CAPABILITY_SOURCE}" \
                 "${CAPABILITY_ADAPTER_SOURCE}" \
                 "${SCRIPT_DIR}/run-spec-003.sh" \
-                "${SCRIPT_DIR}/normalize-spec-003-semantic-suite.rb"
+                "${SCRIPT_DIR}/normalize-spec-003-semantic-suite.rb" \
+                "${SCRIPT_DIR}/check-spec-003-layout.rb"
         } | LC_ALL=C sort
     )
 }
@@ -217,6 +219,7 @@ run_profile_corpus_probe_macos() {
 run_complete_semantic_suite_macos() {
     local compiler="$1"
     local profile_flag="$2"
+    local capacity_flag="$3"
     local swift_driver
     local suite_dir="${report_dir}/build/complete-semantic-suite"
     local raw_output="${report_dir}/semantics/complete-suite.raw.txt"
@@ -233,6 +236,7 @@ run_complete_semantic_suite_macos() {
         --configuration release
         -Xswiftc -whole-module-optimization
         -Xswiftc "${profile_flag}"
+        -Xswiftc "${capacity_flag}"
         --filter "${filter}"
     )
     record_command "${command[@]}"
@@ -259,6 +263,53 @@ run_complete_semantic_suite_macos() {
         printf 'result=awaiting-matched-counterpart\ncounterpart=%s\n' \
             "${counterpart_profile}" >"${comparison}"
     fi
+}
+
+run_layout_probe() {
+    local compiler="$1"
+    local _existing_core_module_dir="$2"
+    local capacity_flag="$3"
+    shift 3
+    local -a common_flags=("$@")
+    local core_ir="${report_dir}/semantics/core-layout.ll"
+    local diagnostics_ir="${report_dir}/semantics/diagnostics-layout.ll"
+    local layout_report="${report_dir}/semantics/layout.tsv"
+    local layout_module_dir="${report_dir}/build/layout-probe"
+    local core_module="${layout_module_dir}/GiftUIFailureCore.swiftmodule"
+    mkdir -p "${layout_module_dir}"
+    local -a core_module_command=(
+        "${compiler}" "${common_flags[@]}" -package-name GiftUI
+        -parse-as-library -emit-module -module-name GiftUIFailureCore
+        "${SOURCE_ROOT}/GiftUIFailureCore.swift" -emit-module-path "${core_module}"
+    )
+    record_command "${core_module_command[@]}"
+    "${core_module_command[@]}" >>"${log_path}" 2>&1
+    local -a core_command=(
+        "${compiler}" "${common_flags[@]}" -package-name GiftUI
+        -parse-as-library -emit-ir -module-name GiftUIFailureCoreLayoutProbe
+        "${SOURCE_ROOT}/GiftUIFailureCore.swift"
+        "${FIXTURE_ROOT}/Instrumentation/CoreLayoutProbe.swift"
+        -o "${core_ir}"
+    )
+    record_command "${core_command[@]}"
+    "${core_command[@]}" >>"${log_path}" 2>&1
+
+    local -a diagnostics_command=(
+        "${compiler}" "${common_flags[@]}" "${capacity_flag}"
+        -I "${layout_module_dir}" -package-name GiftUI
+        -parse-as-library -emit-ir -module-name GiftUIFailureDiagnosticsLayoutProbe
+        "${DIAGNOSTICS_ROOT}/GiftUIDiagnosticProjector.swift"
+        "${DIAGNOSTICS_ROOT}/GiftUIFixedDiagnosticBuffer.swift"
+        "${FIXTURE_ROOT}/Instrumentation/DiagnosticsLayoutProbe.swift"
+        -o "${diagnostics_ir}"
+    )
+    record_command "${diagnostics_command[@]}"
+    "${diagnostics_command[@]}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-003-layout.rb" \
+        "${core_ir}" "${diagnostics_ir}" "${layout_report}" "${profile}"
+    "${SCRIPT_DIR}/check-spec-003-layout.rb" \
+        "${core_ir}" "${diagnostics_ir}" "${layout_report}" "${profile}" \
+        >>"${log_path}" 2>&1
 }
 
 record_compiler() {
@@ -407,6 +458,10 @@ run_allocation_probe() {
     grep -Fxq 'allocation_count=0' "${output}" || fail 'allocation probe reported heap activity'
     grep -Eq '^maximum_counted_steps=([0-9]|[1-5][0-9]|6[0-4])$' "${output}" ||
         fail 'correctness-path step count exceeds 64'
+    grep -Eq '^maximum_normalization_counted_steps=([0-8])$' "${output}" ||
+        fail 'containment-normalization step count exceeds 8'
+    grep -Eq '^maximum_diagnostic_selection_counted_steps=([0-8])$' "${output}" ||
+        fail 'diagnostic-selection step count exceeds 8'
     record_image allocation-probe "${probe}"
     record_image allocation-interposer "${interposer}"
 }
@@ -416,7 +471,7 @@ run_macos() {
     [[ "$(uname -m)" == "arm64" ]] || fail 'macOS evidence requires an arm64 host'
     command -v xcrun >/dev/null || fail 'xcrun is missing'
 
-    local compiler compiler_version sdk_path sdk_version profile_flag image extension
+    local compiler compiler_version sdk_path sdk_version profile_flag capacity_flag image extension
     compiler="$(xcrun --find swiftc)"
     compiler_version="$("${compiler}" --version 2>&1)"
     require_exact_fragment "${compiler_version}" 'Apple Swift version 6.3.3' 'macOS compiler'
@@ -427,9 +482,11 @@ run_macos() {
 
     if [[ "${profile}" == "macos-dynamic" ]]; then
         profile_flag='-DGIFTUI_DYNAMIC_PROFILE'
+        capacity_flag='-DGIFTUI_DIAGNOSTICS_CAPACITY_64'
         extension='dylib'
     else
         profile_flag='-DGIFTUI_STATIC_PROFILE'
+        capacity_flag='-DGIFTUI_DIAGNOSTICS_CAPACITY_16'
         extension='a'
     fi
     image="${report_dir}/resources/build-1/candidate/libGiftUIFailureCore.${extension}"
@@ -475,7 +532,10 @@ run_macos() {
         -O -whole-module-optimization "${profile_flag}"
     run_profile_corpus_probe_macos \
         "${compiler}" "${sdk_path}" "${profile_flag}" "${image}"
-    run_complete_semantic_suite_macos "${compiler}" "${profile_flag}"
+    run_complete_semantic_suite_macos "${compiler}" "${profile_flag}" "${capacity_flag}"
+    run_layout_probe "${compiler}" "${report_dir}/build" "${capacity_flag}" \
+        -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
+        -O -whole-module-optimization "${profile_flag}" -language-mode 6
     run_allocation_probe "${compiler}" "${sdk_path}" "${profile_flag}"
 }
 
@@ -582,6 +642,12 @@ run_raspberry_pi() {
     record_command "${probe_command[@]}"
     "${probe_command[@]}" >>"${log_path}" 2>&1
     record_image profile-corpus-module "${probe_module}"
+    run_layout_probe "${compiler}" "$(dirname "${core_module}")" \
+        -DGIFTUI_DIAGNOSTICS_CAPACITY_16 \
+        -target "${GIFTUI_PI_TARGET}" -use-ld=lld \
+        -Xcc "--gcc-toolchain=${sdk_root}/usr" \
+        -resource-dir "${sdk_root}/usr/lib/swift_static" \
+        -sdk "${sdk_root}" -latomic -O -whole-module-optimization -language-mode 6
 }
 
 run_nrf52840() {
@@ -688,6 +754,11 @@ run_nrf52840() {
     record_command "${adapter_command[@]}"
     "${adapter_command[@]}" >>"${log_path}" 2>&1
     record_image capability-adapter-module "${adapter_module}"
+    run_layout_probe "${GIFTUI_NRF_SWIFTC}" "${report_dir}/build" \
+        -DGIFTUI_DIAGNOSTICS_CAPACITY_8 \
+        -target "${GIFTUI_NRF_SWIFT_TARGET}" \
+        -enable-experimental-feature Embedded -Osize -whole-module-optimization \
+        -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
 }
 
 record_input_hashes
