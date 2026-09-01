@@ -166,7 +166,7 @@ final class GiftUITextResourcesTests: XCTestCase {
         requireSendable(raster)
     }
 
-    func testGenericPackageAndValidatorSeamArePresentButFailClosed() {
+    func testGenericPackageAndValidatorSeamRejectsIncompletePackage() {
         let descriptor = TextResourceDescriptor(
             schemaVersion: 1,
             resource: FontResourceID(rawValue: makeDigest()),
@@ -185,7 +185,7 @@ final class GiftUITextResourcesTests: XCTestCase {
                 resourcePackage,
                 requiring: RasterRealizationID(rawValue: 0)
             ),
-            .invalid(.integrityMismatch)
+            .invalid(.invalidCount)
         )
     }
 }

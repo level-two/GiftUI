@@ -234,6 +234,7 @@ record_input_hashes() {
                 "${SCRIPT_DIR}/check-spec-005-payload-borrow.rb" \
                 "${SCRIPT_DIR}/check-spec-005-target-layout.rb" \
                 "${SCRIPT_DIR}/check-spec-005-bounds.rb" \
+                "${SCRIPT_DIR}/check-spec-005-validator.rb" \
                 "${SCRIPT_DIR}/check-spec-005-portable-source.rb" \
                 "${SCRIPT_DIR}/run-spec-005.sh"
         } | LC_ALL=C sort -u
@@ -279,6 +280,10 @@ run_preflight() {
         "${TEXT_RESOURCE_SOURCE}" \
         "${UNIT_TEST_ROOT}/BoundaryAndLayoutTests.swift" \
         >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-005-validator.rb" \
+        "${TEXT_RESOURCE_SOURCE}"
+    "${SCRIPT_DIR}/check-spec-005-validator.rb" \
+        "${TEXT_RESOURCE_SOURCE}" >>"${log_path}" 2>&1
 }
 
 run_target_layout_probe() {

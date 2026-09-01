@@ -279,12 +279,407 @@ package enum TextResourceValidationResult: Equatable, Sendable {
 package enum TextResourceValidator {
     package static func validate<M, R>(
         _ resourcePackage: borrowing TextResourcePackage<M, R>,
-        requiring realization: RasterRealizationID
+        requiring requiredRealization: RasterRealizationID
     ) -> TextResourceValidationResult
     where M: CanonicalTextMetricsView, R: TextRasterResourceView {
-        // Milestone 1 exposes the exact admission seam but admits no package.
-        // Milestone 2 replaces this fail-closed result with complete validation.
-        .invalid(.integrityMismatch)
+        let metricsDescriptor = resourcePackage.metrics.descriptor
+        let rasterDescriptor = resourcePackage.raster.descriptor
+        var predicates = _TextResourceValidationPredicates()
+
+        predicates.unsupportedSchema = metricsDescriptor.schemaVersion != 1
+            || rasterDescriptor.schemaVersion != 1
+        predicates.capacityExceeded = !isWithinCapacity(
+            instanceCount: metricsDescriptor.instanceCount,
+            glyphCount: 0,
+            mappingCount: 0,
+            realizationCount: metricsDescriptor.realizationCount,
+            canonicalManifestByteCount:
+                metricsDescriptor.canonicalManifestByteCount,
+            payloadByteCount: 0
+        ) || !isWithinCapacity(
+            instanceCount: rasterDescriptor.instanceCount,
+            glyphCount: 0,
+            mappingCount: 0,
+            realizationCount: rasterDescriptor.realizationCount,
+            canonicalManifestByteCount:
+                rasterDescriptor.canonicalManifestByteCount,
+            payloadByteCount: 0
+        )
+        predicates.invalidCount = metricsDescriptor.instanceCount == 0
+            || metricsDescriptor.realizationCount == 0
+            || metricsDescriptor.canonicalManifestByteCount == 0
+            || rasterDescriptor.instanceCount == 0
+            || rasterDescriptor.realizationCount == 0
+            || rasterDescriptor.canonicalManifestByteCount == 0
+            || metricsDescriptor.instanceCount != rasterDescriptor.instanceCount
+            || metricsDescriptor.realizationCount
+                != rasterDescriptor.realizationCount
+            || metricsDescriptor.canonicalManifestByteCount
+                != rasterDescriptor.canonicalManifestByteCount
+        predicates.incompatibleViews = metricsDescriptor != rasterDescriptor
+
+        var canonicalInstance: FontInstanceDescriptor?
+        let instanceTraversalCount = metricsDescriptor.instanceCount > 1
+            ? UInt16(1) : metricsDescriptor.instanceCount
+        var instanceOrdinal: UInt16 = 0
+        while instanceOrdinal < instanceTraversalCount {
+            guard let instance = resourcePackage.metrics.instance(
+                at: instanceOrdinal
+            ) else {
+                predicates.invalidCount = true
+                instanceOrdinal += 1
+                continue
+            }
+            if canonicalInstance != nil {
+                predicates.invalidIdentity = true
+            } else {
+                canonicalInstance = instance
+            }
+            predicates.capacityExceeded = predicates.capacityExceeded
+                || !isWithinCapacity(
+                    instanceCount: 1,
+                    glyphCount: instance.glyphCount,
+                    mappingCount: instance.mappingCount,
+                    realizationCount: 1,
+                    canonicalManifestByteCount: 1,
+                    payloadByteCount: 0
+                )
+            predicates.invalidCount = predicates.invalidCount
+                || instance.glyphCount == 0
+                || instance.mappingCount == 0
+            predicates.invalidIdentity = predicates.invalidIdentity
+                || instance.id.resource != metricsDescriptor.resource
+                || instance.id.instanceIndex != instanceOrdinal
+                || instance.replacementGlyph.rawValue >= instance.glyphCount
+
+            let line = instance.lineMetrics
+            var lineSum = GeometryArithmetic.add(line.ascent, line.descent)
+            if let partial = lineSum {
+                lineSum = GeometryArithmetic.add(partial, line.lineGap)
+            }
+            predicates.malformedMetrics = predicates.malformedMetrics
+                || line.ascent <= 0
+                || line.descent < 0
+                || line.lineGap < 0
+                || lineSum == nil
+                || lineSum == 0
+
+            let mappingTraversalCount = instance.mappingCount > 256
+                ? UInt16(256) : instance.mappingCount
+            var mappingOrdinal: UInt16 = 0
+            var precedingScalar: UInt32?
+            while mappingOrdinal < mappingTraversalCount {
+                guard let mapping = resourcePackage.metrics.mapping(
+                    at: mappingOrdinal,
+                    in: instance.id
+                ) else {
+                    predicates.invalidCount = true
+                    mappingOrdinal += 1
+                    continue
+                }
+                predicates.malformedMapping = predicates.malformedMapping
+                    || !isValidUnicodeScalar(mapping.scalarValue)
+                    || mapping.scalarValue == 0x0a
+                    || mapping.scalarValue == 0x0d
+                    || mapping.glyph.rawValue >= instance.glyphCount
+                if let precedingScalar,
+                   mapping.scalarValue <= precedingScalar {
+                    predicates.malformedMapping = true
+                }
+                precedingScalar = mapping.scalarValue
+                mappingOrdinal += 1
+            }
+            if instance.mappingCount <= 256,
+               resourcePackage.metrics.mapping(
+                   at: instance.mappingCount,
+                   in: instance.id
+               ) != nil {
+                predicates.invalidCount = true
+            }
+
+            let glyphTraversalCount = instance.glyphCount > 256
+                ? UInt16(256) : instance.glyphCount
+            var glyphOrdinal: UInt16 = 0
+            while glyphOrdinal < glyphTraversalCount {
+                let glyph = GlyphID(rawValue: glyphOrdinal)
+                guard let glyphMetrics = resourcePackage.metrics.metrics(
+                    for: glyph,
+                    in: instance.id
+                ) else {
+                    predicates.invalidCount = true
+                    glyphOrdinal += 1
+                    continue
+                }
+                predicates.malformedMetrics = predicates.malformedMetrics
+                    || glyphMetrics.advanceX < 0
+                    || GeometryArithmetic.add(
+                        glyphMetrics.offsetX,
+                        glyphMetrics.inkSize.width
+                    ) == nil
+                    || GeometryArithmetic.add(
+                        glyphMetrics.offsetY,
+                        glyphMetrics.inkSize.height
+                    ) == nil
+                glyphOrdinal += 1
+            }
+            if instance.glyphCount <= 256,
+               resourcePackage.metrics.metrics(
+                   for: GlyphID(rawValue: instance.glyphCount),
+                   in: instance.id
+               ) != nil {
+                predicates.invalidCount = true
+            }
+            instanceOrdinal += 1
+        }
+        if metricsDescriptor.instanceCount <= 1,
+           resourcePackage.metrics.instance(
+               at: metricsDescriptor.instanceCount
+           ) != nil {
+            predicates.invalidCount = true
+        }
+
+        let realizationTraversalCount = metricsDescriptor.realizationCount > 2
+            ? UInt16(2) : metricsDescriptor.realizationCount
+        var realizationOrdinal: UInt16 = 0
+        var anyAvailablePayload = false
+        var requiredIsCatalogued = false
+        var requiredIsAvailable = false
+        while realizationOrdinal < realizationTraversalCount {
+            guard let realization = resourcePackage.raster.realization(
+                at: realizationOrdinal
+            ) else {
+                predicates.invalidCount = true
+                realizationOrdinal += 1
+                continue
+            }
+            if realization.id == requiredRealization {
+                requiredIsCatalogued = true
+            }
+            if realization.id == requiredRealization {
+                requiredIsAvailable = resourcePackage.raster
+                    .isPayloadAvailable(for: realization.id)
+            }
+            let isAvailable = resourcePackage.raster.isPayloadAvailable(
+                for: realization.id
+            )
+            anyAvailablePayload = anyAvailablePayload || isAvailable
+            predicates.capacityExceeded = predicates.capacityExceeded
+                || !isWithinCapacity(
+                    instanceCount: 1,
+                    glyphCount: realization.glyphCount,
+                    mappingCount: 0,
+                    realizationCount: 1,
+                    canonicalManifestByteCount: 1,
+                    payloadByteCount: realization.payloadByteCount
+                )
+            predicates.invalidCount = predicates.invalidCount
+                || realization.glyphCount == 0
+            predicates.invalidIdentity = predicates.invalidIdentity
+                || realization.id.rawValue != realizationOrdinal
+                || realization.instance.resource != rasterDescriptor.resource
+                || realization.instance.instanceIndex != 0
+            if let canonicalInstance {
+                predicates.incompatibleViews = predicates.incompatibleViews
+                    || realization.instance != canonicalInstance.id
+                    || realization.glyphCount != canonicalInstance.glyphCount
+            } else {
+                predicates.incompatibleViews = true
+            }
+
+            let recordTraversalCount = realization.glyphCount > 256
+                ? UInt16(256) : realization.glyphCount
+            var recordOrdinal: UInt16 = 0
+            var expectedOffset: UInt32 = 0
+            var payloadSHA256 = _TextResourceSHA256()
+            var payloadBytesBorrowed: UInt32 = 0
+            while recordOrdinal < recordTraversalCount {
+                let glyph = GlyphID(rawValue: recordOrdinal)
+                guard let record = resourcePackage.raster.record(
+                    for: glyph,
+                    realization: realization.id
+                ) else {
+                    predicates.invalidCount = true
+                    recordOrdinal += 1
+                    continue
+                }
+                predicates.invalidIdentity = predicates.invalidIdentity
+                    || record.glyph != glyph
+                let end = record.offset.addingReportingOverflow(record.byteCount)
+                predicates.malformedRasterRecord =
+                    predicates.malformedRasterRecord
+                    || record.offset != expectedOffset
+                    || end.overflow
+                    || (!end.overflow
+                        && end.partialValue > realization.payloadByteCount)
+                if !end.overflow {
+                    expectedOffset = end.partialValue
+                }
+
+                let glyphMetrics: GlyphMetrics?
+                if let canonicalInstance {
+                    glyphMetrics = resourcePackage.metrics.metrics(
+                        for: glyph,
+                        in: canonicalInstance.id
+                    )
+                } else {
+                    glyphMetrics = nil
+                }
+                if glyphMetrics == nil {
+                    predicates.incompatibleViews = true
+                }
+                if let glyphMetrics {
+                    let dimensionsMatch = glyphMetrics.inkSize.width
+                        == Int32(record.pixelWidth)
+                        && glyphMetrics.inkSize.height
+                            == Int32(record.pixelHeight)
+                    switch realization.kind {
+                    case .monochromeBitmap1:
+                        let expectedRowBytes =
+                            (UInt32(record.pixelWidth) + 7) / 8
+                        let expectedByteCount = expectedRowBytes
+                            .multipliedReportingOverflow(
+                                by: UInt32(record.pixelHeight)
+                            )
+                        predicates.malformedRasterRecord =
+                            predicates.malformedRasterRecord
+                            || !dimensionsMatch
+                            || UInt32(record.rowByteCount) != expectedRowBytes
+                            || expectedByteCount.overflow
+                            || (!expectedByteCount.overflow
+                                && expectedByteCount.partialValue
+                                    != record.byteCount)
+                    case .packagedOutline:
+                        predicates.malformedRasterRecord =
+                            predicates.malformedRasterRecord
+                            || !dimensionsMatch
+                            || record.rowByteCount != 0
+                    }
+                }
+
+                if isAvailable {
+                    var invocationCount: UInt8 = 0
+                    let borrowed: Bool? = resourcePackage.raster.withPayload(
+                        for: record,
+                        realization: realization.id
+                    ) { bytes in
+                        invocationCount &+= 1
+                        if UInt32(exactly: bytes.count) != record.byteCount {
+                            predicates.incompatibleViews = true
+                        }
+                        if let count = UInt32(exactly: bytes.count) {
+                            let total = payloadBytesBorrowed
+                                .addingReportingOverflow(count)
+                            if total.overflow {
+                                predicates.capacityExceeded = true
+                            } else {
+                                payloadBytesBorrowed = total.partialValue
+                            }
+                        } else {
+                            predicates.capacityExceeded = true
+                        }
+                        for byte in bytes {
+                            payloadSHA256.update(with: byte)
+                        }
+                        if let glyphMetrics {
+                            switch realization.kind {
+                            case .monochromeBitmap1:
+                                if !isStructurallyValidMonochromeBitmap(
+                                    record: record,
+                                    metrics: glyphMetrics,
+                                    bytes: bytes
+                                ) {
+                                    predicates.malformedRasterRecord = true
+                                }
+                            case .packagedOutline:
+                                if !isStructurallyValidPackagedOutline(
+                                    record: record,
+                                    metrics: glyphMetrics,
+                                    bytes: bytes
+                                ) {
+                                    predicates.malformedRasterRecord = true
+                                }
+                            }
+                        }
+                        return true
+                    }
+                    if borrowed != true || invocationCount != 1 {
+                        predicates.incompatibleViews = true
+                    }
+                }
+                recordOrdinal += 1
+            }
+            if realization.glyphCount <= 256,
+               resourcePackage.raster.record(
+                   for: GlyphID(rawValue: realization.glyphCount),
+                   realization: realization.id
+               ) != nil {
+                predicates.invalidCount = true
+            }
+            predicates.malformedRasterRecord = predicates.malformedRasterRecord
+                || expectedOffset != realization.payloadByteCount
+            if isAvailable {
+                predicates.incompatibleViews = predicates.incompatibleViews
+                    || payloadBytesBorrowed != realization.payloadByteCount
+                predicates.integrityMismatch = predicates.integrityMismatch
+                    || payloadSHA256.finalize() != realization.payloadDigest
+            }
+            realizationOrdinal += 1
+        }
+        if metricsDescriptor.realizationCount <= 2,
+           resourcePackage.raster.realization(
+               at: metricsDescriptor.realizationCount
+           ) != nil {
+            predicates.invalidCount = true
+        }
+        if resourcePackage.raster.isPayloadAvailable(
+            for: RasterRealizationID(
+                rawValue: metricsDescriptor.realizationCount
+            )
+        ) {
+            predicates.invalidIdentity = true
+        }
+        predicates.incompatibleViews = predicates.incompatibleViews
+            || !anyAvailablePayload
+            || !requiredIsCatalogued
+            || !requiredIsAvailable
+
+        if let manifest = canonicalManifestDigest(of: resourcePackage) {
+            predicates.capacityExceeded = predicates.capacityExceeded
+                || manifest.byteCount > 16_384
+            predicates.integrityMismatch = predicates.integrityMismatch
+                || manifest.byteCount
+                    != metricsDescriptor.canonicalManifestByteCount
+                || manifest.digest != metricsDescriptor.resource.rawValue
+        } else {
+            predicates.invalidCount = true
+        }
+
+        return predicates.result
+    }
+}
+
+private struct _TextResourceValidationPredicates {
+    var unsupportedSchema = false
+    var capacityExceeded = false
+    var invalidCount = false
+    var invalidIdentity = false
+    var incompatibleViews = false
+    var malformedMetrics = false
+    var malformedMapping = false
+    var malformedRasterRecord = false
+    var integrityMismatch = false
+
+    var result: TextResourceValidationResult {
+        if unsupportedSchema { return .invalid(.unsupportedSchema) }
+        if capacityExceeded { return .invalid(.capacityExceeded) }
+        if invalidCount { return .invalid(.invalidCount) }
+        if invalidIdentity { return .invalid(.invalidIdentity) }
+        if incompatibleViews { return .invalid(.incompatibleViews) }
+        if malformedMetrics { return .invalid(.malformedMetrics) }
+        if malformedMapping { return .invalid(.malformedMapping) }
+        if malformedRasterRecord { return .invalid(.malformedRasterRecord) }
+        if integrityMismatch { return .invalid(.integrityMismatch) }
+        return .valid
     }
 }
 

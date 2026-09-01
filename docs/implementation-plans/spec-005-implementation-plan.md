@@ -271,7 +271,7 @@ order-independent, validates the entire available package, returns the first
 raw-value-precedence error, exposes no partial selected realization, and
 allocates zero heap bytes on the static path.
 
-- [ ] `T2.1` — Implement validation as an explicit nine-class predicate pass in
+- [x] `T2.1` — Implement validation as an explicit nine-class predicate pass in
       `TextResourceValidationError` raw-value precedence. It must enumerate
       declared instances, mappings, metrics, realizations, and records exactly;
       validate every applicable predicate; and choose the same first error
@@ -582,6 +582,7 @@ contract or authorize the eventual `implemented` transition.
 | `T1.3` | completed | [Total accessor and resource-format behavior](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/accessor-behavior.md), full reference scalar coverage, explicit-break classification, checked geometry, total identity/range lookups, exact bitmap interpretation, gap-free partitions, and outline-v1 grammar fixtures |
 | `T1.4` | completed | [Exact payload borrowing](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/payload-borrowing.md), exact-zero/exact-once invocation fixtures, catalogue/range/availability rejection, body-sentinel propagation, nonthrowing conformance, and immediately poisoned test storage |
 | `T1.5` | completed | [Layouts, ceilings, work, and allocation bounds](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/layout-capacity-and-work-bounds.md), 16-value target IR reports, independent zero/one/max/max-plus-one fixtures, empty partition, 256-comparison maximum, exact visit counters, and zero-allocation macOS dynamic/static probes |
+| `T2.1` | completed | [Nine-class complete validator](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validator-predicate-pass.md), valid synthetic package, raw-precedence conflict fixture, non-short-circuit traversal counters, complete catalogue/payload/manifest passes, and ordered predicate audit |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the
