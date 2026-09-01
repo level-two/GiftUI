@@ -68,6 +68,7 @@ let package = Package(
         .testTarget(
             name: "GiftUIReferenceTextResourcesTests",
             dependencies: [
+                "GiftUI",
                 "GiftUIReferenceTextResources",
                 "GiftUITextResources",
             ]

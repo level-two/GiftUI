@@ -368,7 +368,7 @@ integration tasks have explicit downstream prerequisites.
       `.requiredFacilityUnavailable`/`.rendering`/`.runtime`/`.contained`.
       Prove `GiftUITextResources` imports no failure vocabulary and diagnostics
       cannot change any result.
-- [ ] `T4.2` — Add the required contract-local synchronous-offer adapter using
+- [x] `T4.2` — Add the required contract-local synchronous-offer adapter using
       only nominal `FontInstanceID`, `GlyphID`, and explicit `Point` data.
       Exercise nested resource/payload lookup during the offer; exact-once
       traversal; empty payload; invalid/unavailable zero invocation; and zero
@@ -593,6 +593,7 @@ contract or authorize the eventual `implemented` transition.
 | `T3.3` | completed | [Matched payload-subset compositions](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/payload-subset-compositions.md), one common catalogue/identity, explicit complete/bitmap-only/outline-only source lists, exact availability and selection transcripts, nRF bitmap-only mapping, omitted-provider source evidence, and retained one-realization synthetic validation |
 | `T3.4` | completed | [Provenance and build validation](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/provenance-and-build-validation.md), [machine-checked inventory](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-provenance.tsv), source-side attribution, exact derivative naming and reproduction command, input/output hashes and sizes, and scoped engineering/license evidence |
 | `T4.1` | completed | [Exact owner-adapter mappings](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/owner-adapter-mappings.md), test-only failure adapter with exact imports, all nine local error mappings, layout/render/Foundation facts, required-realization loss, and diagnostic-independence coverage |
+| `T4.2` | completed | [Contract-local synchronous offer](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/synchronous-offer.md), nominal instance/glyph identities and explicit point only, nested exact-once resource/payload lookup, empty/invalid/unavailable cases, ended-borrow instrumentation, and no production rendering policy |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the

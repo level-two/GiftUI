@@ -17,6 +17,7 @@ active:
   GiftUIReferenceTextResourcesTests:
     type: test
     dependencies:
+      - GiftUI
       - GiftUIReferenceTextResources
       - GiftUITextResources
   GiftUITextResourceFailureAdapterFixture:
