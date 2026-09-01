@@ -231,6 +231,7 @@ record_input_hashes() {
                 "${SCRIPT_DIR}/check-spec-005-generated-assets.rb" \
                 "${SCRIPT_DIR}/check-spec-005-adopted-inputs.rb" \
                 "${SCRIPT_DIR}/check-spec-005-reference-generation.rb" \
+                "${SCRIPT_DIR}/check-spec-005-reference-compositions.sh" \
                 "${SCRIPT_DIR}/check-spec-005-dependencies.rb" \
                 "${SCRIPT_DIR}/check-spec-005-boundaries.rb" \
                 "${SCRIPT_DIR}/check-spec-005-surface.rb" \
@@ -424,6 +425,33 @@ run_allocation_probe() {
     record_image allocation-text-library "${text_library}"
 }
 
+run_reference_composition_probe() {
+    local compiler="$1"
+    local sdk_path="$2"
+    local composition_root="${report_dir}/resources/candidate/compositions"
+    record_command env \
+        "GIFTUI_SPEC005_SWIFTC=${compiler}" \
+        "GIFTUI_SPEC005_SDK=${sdk_path}" \
+        'GIFTUI_SPEC005_TARGET=arm64-apple-macosx26.0' \
+        "${SCRIPT_DIR}/check-spec-005-reference-compositions.sh" \
+        "${composition_root}"
+    env \
+        GIFTUI_SPEC005_SWIFTC="${compiler}" \
+        GIFTUI_SPEC005_SDK="${sdk_path}" \
+        GIFTUI_SPEC005_TARGET=arm64-apple-macosx26.0 \
+        "${SCRIPT_DIR}/check-spec-005-reference-compositions.sh" \
+        "${composition_root}" >>"${log_path}" 2>&1
+    local composition
+    for composition in complete bitmap-only outline-only; do
+        record_image \
+            "reference-${composition}-library" \
+            "${composition_root}/${composition}/libraries/libGiftUIReferenceTextResources.dylib"
+        record_image \
+            "reference-${composition}-probe" \
+            "${composition_root}/${composition}/probe"
+    done
+}
+
 run_macos() {
     [[ "$(uname -s)" == "Darwin" ]] || fail 'macOS profile requires macOS'
     [[ "$(uname -m)" == "arm64" ]] || fail 'macOS evidence requires an arm64 host'
@@ -524,6 +552,7 @@ run_macos() {
         -O -whole-module-optimization "${profile_flag}" -language-mode 6 \
         -module-cache-path "${report_dir}/build/clang-cache"
     run_allocation_probe "${compiler}" "${sdk_path}" "${profile_flag}"
+    run_reference_composition_probe "${compiler}" "${sdk_path}"
 }
 
 run_raspberry_pi() {

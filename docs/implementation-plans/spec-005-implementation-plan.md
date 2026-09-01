@@ -328,7 +328,7 @@ and derivation provenance intact.
       parallel identities or importing upward modules. Build tooling must make
       both payloads available and validate the package once for each required
       realization before generated changes may pass the repository gate.
-- [ ] `T3.3` — Produce matched complete-catalogue, bitmap-only-linked, and
+- [x] `T3.3` — Produce matched complete-catalogue, bitmap-only-linked, and
       outline-only-linked target compositions plus a one-realization synthetic
       package. All reference compositions retain identical descriptor/record/
       digest tables and `FontResourceID`; only payload availability and linked
@@ -590,6 +590,7 @@ contract or authorize the eventual `implemented` transition.
 | `T2.5` | completed | [Validator work and allocation instrumentation](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validator-instrumentation.md), zero-allocation optimized dynamic/static validator probes, exact comparison and full-table counters, once-per-digest payload-byte visits, and one assembly-time validator call across 256 frame lookups |
 | `T3.1` | completed | [Deterministic production reference generation](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-generation.md), [current generation design](../implementation-designs/spec-005-reference-package-generation.md), exact Inter/OFL inputs, hash-pinned tools, two fresh-root generation comparison, checked-in Swift catalogue/payloads, adopted identity reproduction, and registered fail-closed drift audit |
 | `T3.2` | completed | [Concrete reference package](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/concrete-reference-package.md), exact package graph, immutable complete-catalogue views, record-local static payload borrowing, all-record grammar checks, and build validation returning `.valid` once for each required realization |
+| `T3.3` | completed | [Matched payload-subset compositions](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/payload-subset-compositions.md), one common catalogue/identity, explicit complete/bitmap-only/outline-only source lists, exact availability and selection transcripts, nRF bitmap-only mapping, omitted-provider source evidence, and retained one-realization synthetic validation |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the

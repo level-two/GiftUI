@@ -50,3 +50,27 @@ identity_owners:
   - FontInstanceID
   - GlyphID
   - RasterRealizationID
+reference_compositions:
+  common_sources:
+    - Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift
+    - Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift
+  complete:
+    payload_sources:
+      - Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift
+      - Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift
+    available_realizations: [0, 1]
+    required_realizations: [0, 1]
+  bitmap-only:
+    compilation_condition: GIFTUI_REFERENCE_BITMAP_ONLY
+    payload_sources:
+      - Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift
+    available_realizations: [0]
+    required_realizations: [0]
+    target_profile: nrf52840-embedded
+  outline-only:
+    compilation_condition: GIFTUI_REFERENCE_OUTLINE_ONLY
+    payload_sources:
+      - Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift
+    available_realizations: [1]
+    required_realizations: [1]
+    target_profile: contract-fixture-only

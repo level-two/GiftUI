@@ -1,5 +1,9 @@
 import GiftUITextResources
 
+#if GIFTUI_REFERENCE_BITMAP_ONLY && GIFTUI_REFERENCE_OUTLINE_ONLY
+#error("reference text-resource composition must select at most one payload subset")
+#endif
+
 package struct GiftUIReferenceTextMetricsView: CanonicalTextMetricsView {
     package init() {}
 
@@ -67,7 +71,22 @@ package struct GiftUIReferenceTextRasterView: TextRasterResourceView {
     package func isPayloadAvailable(
         for realization: RasterRealizationID
     ) -> Bool {
-        realization.rawValue < descriptor.realizationCount
+        switch realization.rawValue {
+        case 0:
+            #if GIFTUI_REFERENCE_OUTLINE_ONLY
+            false
+            #else
+            true
+            #endif
+        case 1:
+            #if GIFTUI_REFERENCE_BITMAP_ONLY
+            false
+            #else
+            true
+            #endif
+        default:
+            false
+        }
     }
 
     package func withPayload<Result>(
@@ -82,6 +101,9 @@ package struct GiftUIReferenceTextRasterView: TextRasterResourceView {
         )
         switch realization.rawValue {
         case 0:
+            #if GIFTUI_REFERENCE_OUTLINE_ONLY
+            return nil
+            #else
             guard record == cataloguedRecord,
                   realization == cataloguedRealization?.id else { return nil }
             return try _GiftUIReferenceGeneratedBitmapPayload.withRecordBytes(
@@ -89,7 +111,11 @@ package struct GiftUIReferenceTextRasterView: TextRasterResourceView {
                 expectedByteCount: record.byteCount,
                 body
             )
+            #endif
         case 1:
+            #if GIFTUI_REFERENCE_BITMAP_ONLY
+            return nil
+            #else
             guard record == cataloguedRecord,
                   realization == cataloguedRealization?.id else { return nil }
             return try _GiftUIReferenceGeneratedOutlinePayload.withRecordBytes(
@@ -97,6 +123,7 @@ package struct GiftUIReferenceTextRasterView: TextRasterResourceView {
                 expectedByteCount: record.byteCount,
                 body
             )
+            #endif
         default:
             return nil
         }
@@ -104,7 +131,7 @@ package struct GiftUIReferenceTextRasterView: TextRasterResourceView {
 }
 
 package enum GiftUIReferenceTextResources {
-    package static var completePackage: TextResourcePackage<
+    package static var targetPackage: TextResourcePackage<
         GiftUIReferenceTextMetricsView,
         GiftUIReferenceTextRasterView
     > {
@@ -112,6 +139,14 @@ package enum GiftUIReferenceTextResources {
             metrics: GiftUIReferenceTextMetricsView(),
             raster: GiftUIReferenceTextRasterView()
         )
+    }
+
+    #if !GIFTUI_REFERENCE_BITMAP_ONLY && !GIFTUI_REFERENCE_OUTLINE_ONLY
+    package static var completePackage: TextResourcePackage<
+        GiftUIReferenceTextMetricsView,
+        GiftUIReferenceTextRasterView
+    > {
+        targetPackage
     }
 
     package static func validateCompletePackage() -> (
@@ -130,4 +165,5 @@ package enum GiftUIReferenceTextResources {
             )
         )
     }
+    #endif
 }

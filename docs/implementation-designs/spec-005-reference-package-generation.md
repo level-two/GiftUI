@@ -93,6 +93,14 @@ contains one common catalogue plus separable bitmap and outline provider
 sources so later target composition can omit an unselected provider without
 changing the catalogue or `FontResourceID`.
 
+The concrete Swift source uses mutually exclusive
+`GIFTUI_REFERENCE_BITMAP_ONLY` and `GIFTUI_REFERENCE_OUTLINE_ONLY` compilation
+conditions only to remove unavailable provider references. With neither set,
+build validation links both payloads. Every composition compiles the same
+catalogue and nominal views; the nRF profile is pinned to bitmap-only. The
+conditions do not alter descriptors, records, digests, mappings, metrics, or
+resource identity.
+
 ## Resource and Failure Behavior
 
 Every mismatch fails closed before checked-in output is accepted. Generation
