@@ -8,16 +8,16 @@
   "license": "SIL Open Font License 1.1",
   "outputs": {
     "ReferenceBitmapPayload.generated.swift": {
-      "bytes": 29692,
-      "sha256": "66d36307d52d7de0080093cd764299dbb014b4cbf25292743d46a6b860307a0e"
+      "bytes": 60627,
+      "sha256": "5c0e5726f559ee9c43815219f7278b6dd75090e86a20b31e02428a53c396a6ef"
     },
     "ReferenceCatalogue.generated.swift": {
       "bytes": 52228,
       "sha256": "7a4085655de8b4738aeb9e27956922684c2d56235679b4775a7bd4f6de7ff70b"
     },
     "ReferenceOutlinePayload.generated.swift": {
-      "bytes": 202484,
-      "sha256": "4c24624376688ece755625463c9057a382494ae9050df56deaf096bf2b9a30a6"
+      "bytes": 235522,
+      "sha256": "acc9dab1fb43cb20cfcb460dfbb2e902d6dc9096c5b2ecbc15d19f4c42d84551"
     }
   },
   "resource": {

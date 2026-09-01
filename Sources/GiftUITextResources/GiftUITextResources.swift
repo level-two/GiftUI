@@ -903,11 +903,14 @@ package extension TextResourceValidator {
               Int(record.byteCount) == bytes.count,
               metrics.inkSize.width == Int32(record.pixelWidth),
               metrics.inkSize.height == Int32(record.pixelHeight),
-              bytes.count >= 6,
+              bytes.count >= 5,
               bytes[0] == 1,
               readUInt16(bytes, at: 1) != 0,
               readUInt16(bytes, at: 3) != 0 else {
             return false
+        }
+        if bytes.count == 5 {
+            return true
         }
 
         var index = 5

@@ -69,11 +69,14 @@ compares them byte for byte, and compares the result with checked-in output.
 ## Algorithms and Data Structures
 
 Mappings, metrics, realization descriptors, and raster records are emitted as
-bounded switch tables. Payloads are emitted as nested tuples of explicit
-`UInt8` literals in 32-byte groups. This keeps the bytes compiler-visible and
-avoids collection initialization; T3.2 and T5.2 must prove exact layout and
-zero-allocation borrowing on every selected profile. The grouping is an
-internal source-size choice and does not affect payload identity.
+bounded switch tables. Each glyph record's payload is emitted as one static
+tuple of explicit `UInt8` literals, and a generated switch borrows that tuple
+for the matching nominal `GlyphID`. The largest adopted record is 447 bytes.
+Record-local storage matches the contract's only payload API, avoids a large
+compiler-inferred whole-payload tuple and collection initialization, and still
+feeds validation bytes in exact gap-free record order. T3.2 and T5.2 must
+prove exact byte counts and zero-allocation borrowing on every selected
+profile. Record grouping is replaceable and does not affect payload identity.
 
 ## Lifecycle and State
 

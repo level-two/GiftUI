@@ -323,7 +323,7 @@ and derivation provenance intact.
       digests. Generate twice in clean temporary roots and fail on any byte,
       ordering, name, count, hash, tool-pin, source, or license drift. Do not
       copy the spike's disposable implementation without production review.
-- [ ] `T3.2` — Add one package-internal concrete reference-resource target
+- [x] `T3.2` — Add one package-internal concrete reference-resource target
       whose immutable views conform to the contract without introducing
       parallel identities or importing upward modules. Build tooling must make
       both payloads available and validate the package once for each required
@@ -589,6 +589,7 @@ contract or authorize the eventual `implemented` transition.
 | `T2.4` | completed | [Validated behavior goldens](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validated-behavior.md), checked baseline/ascent/descent/line-gap geometry, explicit points and ink rectangles, advances, exact/replacement mappings, explicit break classification, post-validation lookup distinction, and every consumer geometry overflow site |
 | `T2.5` | completed | [Validator work and allocation instrumentation](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validator-instrumentation.md), zero-allocation optimized dynamic/static validator probes, exact comparison and full-table counters, once-per-digest payload-byte visits, and one assembly-time validator call across 256 frame lookups |
 | `T3.1` | completed | [Deterministic production reference generation](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-generation.md), [current generation design](../implementation-designs/spec-005-reference-package-generation.md), exact Inter/OFL inputs, hash-pinned tools, two fresh-root generation comparison, checked-in Swift catalogue/payloads, adopted identity reproduction, and registered fail-closed drift audit |
+| `T3.2` | completed | [Concrete reference package](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/concrete-reference-package.md), exact package graph, immutable complete-catalogue views, record-local static payload borrowing, all-record grammar checks, and build validation returning `.valid` once for each required realization |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the

@@ -44,6 +44,16 @@ targets:
     dependencies:
       - GiftUI
       - GiftUITextResources
+  GiftUIReferenceTextResources:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUITextResources
+  GiftUIReferenceTextResourcesTests:
+    type: test
+    dependencies:
+      - GiftUIReferenceTextResources
+      - GiftUITextResources
   GiftUICapabilityAdapterTests:
     type: test
     dependencies:

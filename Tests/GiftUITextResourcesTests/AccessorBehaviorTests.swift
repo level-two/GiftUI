@@ -270,6 +270,18 @@ final class AccessorBehaviorTests: XCTestCase {
     }
 
     func testPackagedOutlineAcceptsExactGrammarAndBigEndianHeader() {
+        let emptyOutline: [UInt8] = [1, 0x08, 0x00, 0x00, 0x10]
+        emptyOutline.withUnsafeBytes { buffer in
+            XCTAssertTrue(
+                TextResourceValidator.isStructurallyValidPackagedOutline(
+                    record: outlineRecord(
+                        byteCount: UInt32(emptyOutline.count)
+                    ),
+                    metrics: outlineMetrics(),
+                    bytes: buffer
+                )
+            )
+        }
         let bytes = validOutlineBytes()
         let record = outlineRecord(byteCount: UInt32(bytes.count))
         bytes.withUnsafeBytes { buffer in
@@ -298,7 +310,6 @@ final class AccessorBehaviorTests: XCTestCase {
         let valid = validOutlineBytes()
         var cases: [[UInt8]] = [
             [],
-            [1, 0x08, 0x00, 0x00, 0x10],
             [2] + Array(valid.dropFirst()),
             [1, 0, 0, 0, 16, 1, 1, 0, 0, 0, 0, 5],
             [1, 8, 0, 0, 0, 1, 1, 0, 0, 0, 0, 5],

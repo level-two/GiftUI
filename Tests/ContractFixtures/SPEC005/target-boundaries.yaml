@@ -9,6 +9,16 @@ active:
     dependencies:
       - GiftUI
       - GiftUITextResources
+  GiftUIReferenceTextResources:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUITextResources
+  GiftUIReferenceTextResourcesTests:
+    type: test
+    dependencies:
+      - GiftUIReferenceTextResources
+      - GiftUITextResources
 forbidden_text_resource_imports:
   - GiftUIFailureCore
   - GiftUIFailureDiagnostics
@@ -34,7 +44,6 @@ reserved_consumers:
   GiftUITextRasterProvider: pending
   GiftUIBackend: pending
   GiftUIPlatform: pending
-  GiftUIReferenceTextResources: pending
   GiftUIHost: pending
 identity_owners:
   - FontResourceID
