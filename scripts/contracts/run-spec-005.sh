@@ -232,6 +232,7 @@ record_input_hashes() {
                 "${SCRIPT_DIR}/check-spec-005-adopted-inputs.rb" \
                 "${SCRIPT_DIR}/check-spec-005-reference-generation.rb" \
                 "${SCRIPT_DIR}/check-spec-005-reference-compositions.sh" \
+                "${SCRIPT_DIR}/check-spec-005-owner-adapters.rb" \
                 "${SCRIPT_DIR}/check-spec-005-dependencies.rb" \
                 "${SCRIPT_DIR}/check-spec-005-boundaries.rb" \
                 "${SCRIPT_DIR}/check-spec-005-surface.rb" \
@@ -265,6 +266,8 @@ run_preflight() {
     "${SCRIPT_DIR}/check-spec-005-adopted-inputs.rb" >>"${log_path}" 2>&1
     record_command "${SCRIPT_DIR}/check-spec-005-reference-generation.rb"
     "${SCRIPT_DIR}/check-spec-005-reference-generation.rb" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-005-owner-adapters.rb"
+    "${SCRIPT_DIR}/check-spec-005-owner-adapters.rb" >>"${log_path}" 2>&1
     command -v swift >/dev/null || fail 'swift is missing'
     record_command swift package dump-package
     swift package dump-package >"${package_json}" 2>>"${log_path}"

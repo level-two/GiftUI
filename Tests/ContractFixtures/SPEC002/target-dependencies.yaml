@@ -54,6 +54,18 @@ targets:
     dependencies:
       - GiftUIReferenceTextResources
       - GiftUITextResources
+  GiftUITextResourceFailureAdapterFixture:
+    type: regular
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUITextResources
+  GiftUITextResourceOwnerAdapterTests:
+    type: test
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUIFailureDiagnostics
+      - GiftUITextResourceFailureAdapterFixture
+      - GiftUITextResources
   GiftUICapabilityAdapterTests:
     type: test
     dependencies:

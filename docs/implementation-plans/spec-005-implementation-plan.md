@@ -352,7 +352,7 @@ Foundation facts remain unchanged, and synchronous payload/offer borrowing is
 fully exercised without defining production render operations. Production
 integration tasks have explicit downstream prerequisites.
 
-- [ ] `T4.1` — Add test-only downstream owner adapters importing exactly the
+- [x] `T4.1` — Add test-only downstream owner adapters importing exactly the
       contracts each mapping needs. Fixture the three target-host assembly
       error families with `.hostComposition`/`.runtime`/`.contained`:
       schema/count/metrics/mapping/raster-record errors map to `.invalidValue`,
@@ -592,6 +592,7 @@ contract or authorize the eventual `implemented` transition.
 | `T3.2` | completed | [Concrete reference package](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/concrete-reference-package.md), exact package graph, immutable complete-catalogue views, record-local static payload borrowing, all-record grammar checks, and build validation returning `.valid` once for each required realization |
 | `T3.3` | completed | [Matched payload-subset compositions](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/payload-subset-compositions.md), one common catalogue/identity, explicit complete/bitmap-only/outline-only source lists, exact availability and selection transcripts, nRF bitmap-only mapping, omitted-provider source evidence, and retained one-realization synthetic validation |
 | `T3.4` | completed | [Provenance and build validation](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/provenance-and-build-validation.md), [machine-checked inventory](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-provenance.tsv), source-side attribution, exact derivative naming and reproduction command, input/output hashes and sizes, and scoped engineering/license evidence |
+| `T4.1` | completed | [Exact owner-adapter mappings](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/owner-adapter-mappings.md), test-only failure adapter with exact imports, all nine local error mappings, layout/render/Foundation facts, required-realization loss, and diagnostic-independence coverage |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the

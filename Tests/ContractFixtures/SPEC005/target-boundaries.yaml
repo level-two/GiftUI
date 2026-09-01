@@ -19,6 +19,18 @@ active:
     dependencies:
       - GiftUIReferenceTextResources
       - GiftUITextResources
+  GiftUITextResourceFailureAdapterFixture:
+    type: regular
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUITextResources
+  GiftUITextResourceOwnerAdapterTests:
+    type: test
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUIFailureDiagnostics
+      - GiftUITextResourceFailureAdapterFixture
+      - GiftUITextResources
 forbidden_text_resource_imports:
   - GiftUIFailureCore
   - GiftUIFailureDiagnostics

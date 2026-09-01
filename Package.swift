@@ -34,6 +34,10 @@ let package = Package(
             exclude: ["Generated/generation-manifest.json"]
         ),
         .target(
+            name: "GiftUITextResourceFailureAdapterFixture",
+            dependencies: ["GiftUIFailureCore", "GiftUITextResources"]
+        ),
+        .target(
             name: "GiftUICapabilityFailureAdapterFixture",
             dependencies: ["GiftUICapabilities", "GiftUIFailureCore"]
         ),
@@ -65,6 +69,15 @@ let package = Package(
             name: "GiftUIReferenceTextResourcesTests",
             dependencies: [
                 "GiftUIReferenceTextResources",
+                "GiftUITextResources",
+            ]
+        ),
+        .testTarget(
+            name: "GiftUITextResourceOwnerAdapterTests",
+            dependencies: [
+                "GiftUIFailureCore",
+                "GiftUIFailureDiagnostics",
+                "GiftUITextResourceFailureAdapterFixture",
                 "GiftUITextResources",
             ]
         ),
