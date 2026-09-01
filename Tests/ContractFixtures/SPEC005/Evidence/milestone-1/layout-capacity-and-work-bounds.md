@@ -33,7 +33,8 @@ No cache, speculative index, or collection was added to production. Optimized
 macOS dynamic and static probes warm the runtime, reset malloc/calloc/realloc
 interposition, then repeatedly exercise maximum mapping lookup, metric and
 record access, empty and nonempty payload borrowing, canonical byte emission,
-and SHA-256. Both reports contain `allocation_count=0` and the identical
-checksum `856487783`. ARMv6 and nRF52840 compile the same collection-free paths
+and SHA-256. T2.5 subsequently extended the same measured path through complete
+package validation. Both reports contain `allocation_count=0` and the identical
+checksum `4004008340`. ARMv6 and nRF52840 compile the same collection-free paths
 and layout probe; their hardware-free evidence makes no runtime-allocation,
 deployment, flashing, or connected-target claim.

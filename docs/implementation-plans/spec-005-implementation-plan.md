@@ -298,7 +298,7 @@ allocates zero heap bytes on the static path.
       every checked-overflow site. Expected line-break `nil` and prevalidated
       invalid input must remain distinct from unexpected post-validation
       lookup failure.
-- [ ] `T2.5` — Run allocation traps, comparison counters, full-table visit
+- [x] `T2.5` — Run allocation traps, comparison counters, full-table visit
       counters, payload-byte visit counters, and validator call-frequency
       instrumentation. Prove validation visits every record and each available
       payload byte at most once per digest pass and is called only in build or
@@ -586,6 +586,7 @@ contract or authorize the eventual `implemented` transition.
 | `T2.2` | completed | [Isolated and pairwise validation corpus](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validation-predicate-corpus.md), nine isolated classes, all 36 class pairs in both fault orders, complete identity/count/metric/mapping/raster/integrity subfixtures, malformed bitmap/outline cases, and zero-payload positive control |
 | `T2.3` | completed | [Common catalogue and payload-subset admission](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/common-catalogue-admission.md), complete dual-payload validation, bitmap-only and outline-only linkage with identical identity/tables, unavailable-selected rejection, false availability rejection, omitted-record validation, and linked-unselected integrity enforcement |
 | `T2.4` | completed | [Validated behavior goldens](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validated-behavior.md), checked baseline/ascent/descent/line-gap geometry, explicit points and ink rectangles, advances, exact/replacement mappings, explicit break classification, post-validation lookup distinction, and every consumer geometry overflow site |
+| `T2.5` | completed | [Validator work and allocation instrumentation](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validator-instrumentation.md), zero-allocation optimized dynamic/static validator probes, exact comparison and full-table counters, once-per-digest payload-byte visits, and one assembly-time validator call across 256 frame lookups |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the

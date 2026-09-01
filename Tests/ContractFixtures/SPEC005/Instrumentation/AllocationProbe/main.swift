@@ -96,13 +96,11 @@ private struct StaticRasterView: TextRasterResourceView {
     }
 }
 
-@inline(never)
-private func exercise(seed: UInt32) -> UInt32 {
-    let digest = TextResourceDigest(
-        word0: seed, word1: seed, word2: seed, word3: seed,
-        word4: seed, word5: seed, word6: seed, word7: seed
-    )
-    let resource = FontResourceID(rawValue: digest)
+@inline(__always)
+private func makeStaticPackage(
+    resource: FontResourceID,
+    payloadDigest: TextResourceDigest
+) -> TextResourcePackage<StaticMetricsView, StaticRasterView> {
     let descriptor = TextResourceDescriptor(
         schemaVersion: 1,
         resource: resource,
@@ -124,17 +122,50 @@ private func exercise(seed: UInt32) -> UInt32 {
         kind: .monochromeBitmap1,
         glyphCount: 256,
         payloadByteCount: 0,
-        payloadDigest: digest
+        payloadDigest: payloadDigest
     )
-    let metrics = StaticMetricsView(
-        descriptor: descriptor,
-        instanceDescriptor: instance
+    return TextResourcePackage(
+        metrics: StaticMetricsView(
+            descriptor: descriptor,
+            instanceDescriptor: instance
+        ),
+        raster: StaticRasterView(
+            descriptor: descriptor,
+            realizationDescriptor: realization
+        )
     )
-    let raster = StaticRasterView(
-        descriptor: descriptor,
-        realizationDescriptor: realization
+}
+
+@inline(never)
+private func exercise(seed: UInt32) -> UInt32 {
+    let digest = TextResourceDigest(
+        word0: seed, word1: seed, word2: seed, word3: seed,
+        word4: seed, word5: seed, word6: seed, word7: seed
     )
-    let resourcePackage = TextResourcePackage(metrics: metrics, raster: raster)
+    let emptyPayload: () = ()
+    let emptyPayloadDigest = withUnsafeBytes(of: emptyPayload) {
+        TextResourceValidator.sha256(of: $0)
+    }
+    let provisional = makeStaticPackage(
+        resource: FontResourceID(rawValue: TextResourceDigest(
+            word0: 0, word1: 0, word2: 0, word3: 0,
+            word4: 0, word5: 0, word6: 0, word7: 0
+        )),
+        payloadDigest: emptyPayloadDigest
+    )
+    let certifiedResource = FontResourceID(
+        rawValue: TextResourceValidator.canonicalManifestDigest(
+            of: provisional
+        )!.digest
+    )
+    let resourcePackage = makeStaticPackage(
+        resource: certifiedResource,
+        payloadDigest: emptyPayloadDigest
+    )
+    let metrics = resourcePackage.metrics
+    let raster = resourcePackage.raster
+    let instanceID = metrics.instanceDescriptor.id
+    let realization = raster.realizationDescriptor
     var checksum = seed
     if case let .exact(glyph) = metrics.mapScalar(0x20ff, in: instanceID) {
         checksum &+= UInt32(glyph.rawValue)
@@ -165,6 +196,15 @@ private func exercise(seed: UInt32) -> UInt32 {
     ) {
         checksum &+= manifest.byteCount
         checksum &+= manifest.digest.word0
+    }
+    switch TextResourceValidator.validate(
+        resourcePackage,
+        requiring: realization.id
+    ) {
+    case .valid:
+        checksum &+= 0x500
+    case let .invalid(error):
+        checksum &+= UInt32(error.rawValue)
     }
 
     let payload = (UInt8(0x10), UInt8(0x20), UInt8(0x30), UInt8(0x40))

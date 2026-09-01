@@ -51,6 +51,56 @@ final class ValidatorCoreTests: XCTestCase {
         XCTAssertEqual(raster.payloadByteVisits, 1)
     }
 
+    func testValidatorVisitsCompleteTablesAndEachPayloadByteOncePerDigestPass() {
+        let base = makeValidValidationFixture()
+        let metrics = CountingValidationMetrics(base: base.metrics)
+        let raster = CountingValidationRaster(base: base.raster)
+        let fixture = TextResourcePackage(metrics: metrics, raster: raster)
+        XCTAssertEqual(
+            TextResourceValidator.validate(
+                fixture,
+                requiring: RasterRealizationID(rawValue: 0)
+            ),
+            .valid
+        )
+
+        // One validation traversal, one out-of-range completeness probe, and
+        // one canonical digest traversal account for these exact totals.
+        XCTAssertEqual(metrics.instanceVisits, 3)
+        XCTAssertEqual(metrics.mappingVisits, 3)
+        XCTAssertEqual(metrics.metricVisits, 4)
+        XCTAssertEqual(raster.realizationVisits, 3)
+        XCTAssertEqual(raster.recordVisits, 3)
+        XCTAssertEqual(raster.payloadVisits, 1)
+        XCTAssertEqual(raster.payloadByteVisits, base.raster.payload.count)
+    }
+
+    func testValidatorRunsOnlyAtAssemblyNotPerGlyphOrFrame() {
+        let fixture = makeValidValidationFixture()
+        let assembly = CountingAssemblyValidator()
+        XCTAssertEqual(
+            assembly.admit(
+                fixture,
+                requiring: RasterRealizationID(rawValue: 0)
+            ),
+            .valid
+        )
+
+        let instance = fixture.metrics.instanceDescriptor.id
+        var glyphLookups = 0
+        for _ in 0 ..< 4 {
+            for _ in 0 ..< 64 {
+                XCTAssertEqual(
+                    fixture.metrics.mapScalar(0x41, in: instance),
+                    .exact(GiftUITextResources.GlyphID(rawValue: 0))
+                )
+                glyphLookups += 1
+            }
+        }
+        XCTAssertEqual(glyphLookups, 256)
+        XCTAssertEqual(assembly.validationCalls, 1)
+    }
+
     func testEachValidationClassHasAnIsolatedFixture() {
         for fault in ValidationPairFault.allCases {
             XCTAssertEqual(
@@ -85,6 +135,22 @@ final class ValidatorCoreTests: XCTestCase {
             }
         }
         XCTAssertEqual(pairCount, 36)
+    }
+}
+
+private final class CountingAssemblyValidator {
+    private(set) var validationCalls = 0
+
+    func admit<M, R>(
+        _ resourcePackage: borrowing TextResourcePackage<M, R>,
+        requiring realization: RasterRealizationID
+    ) -> TextResourceValidationResult
+    where M: CanonicalTextMetricsView, R: TextRasterResourceView {
+        validationCalls += 1
+        return TextResourceValidator.validate(
+            resourcePackage,
+            requiring: realization
+        )
     }
 }
 
