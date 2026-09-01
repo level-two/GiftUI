@@ -232,7 +232,7 @@ until Milestone 2's validator is complete.
       filenames, timestamps, locale, table addresses, host byte order, display
       names, and raw payload bytes do not enter the manifest directly while
       every canonical field and payload digest does.
-- [ ] `T1.3` — Implement total metrics/mapping/raster accessor behavior:
+- [x] `T1.3` — Implement total metrics/mapping/raster accessor behavior:
       contiguous range and identity checks, valid-scalar classification,
       package replacement mapping, U+000A/U+000D `nil`, exact metrics, record
       lookup, availability, bitmap MSB-first interpretation, outline-record
@@ -579,6 +579,7 @@ contract or authorize the eventual `implemented` transition.
 | `T0.5` | completed | [Adopted SPIKE-005 input baseline](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/adopted-input-baseline.md), machine-checked inventory, exact hashes/counts/provenance, and nRF calibration |
 | `T1.1` | completed | [Exact declarations and raw surface](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/exact-declarations.md), focused value/protocol tests, package-interface audit, and fail-closed validator seam |
 | `T1.2` | completed | [Canonical serialization and SHA-256 seam](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/canonical-serialization.md), official hash vectors, exact schema-v1 byte vector, canonical-field mutation checks, exclusion invariants, and four-profile fixed-state compile evidence |
+| `T1.3` | completed | [Total accessor and resource-format behavior](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/accessor-behavior.md), full reference scalar coverage, explicit-break classification, checked geometry, total identity/range lookups, exact bitmap interpretation, gap-free partitions, and outline-v1 grammar fixtures |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the

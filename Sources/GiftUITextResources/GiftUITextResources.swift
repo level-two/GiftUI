@@ -288,6 +288,242 @@ package enum TextResourceValidator {
     }
 }
 
+package extension CanonicalTextMetricsView {
+    func mapScalar(
+        _ scalarValue: UInt32,
+        in instance: FontInstanceID
+    ) -> GlyphMapping? {
+        guard TextResourceValidator.isValidUnicodeScalar(scalarValue),
+              scalarValue != 0x0a,
+              scalarValue != 0x0d,
+              instance.resource == descriptor.resource,
+              instance.instanceIndex < descriptor.instanceCount,
+              let instanceDescriptor = self.instance(
+                  at: instance.instanceIndex
+              ),
+              instanceDescriptor.id == instance,
+              instanceDescriptor.glyphCount > 0,
+              instanceDescriptor.glyphCount <= 256,
+              instanceDescriptor.mappingCount <= 256,
+              instanceDescriptor.replacementGlyph.rawValue
+                  < instanceDescriptor.glyphCount else {
+            return nil
+        }
+
+        var ordinal: UInt16 = 0
+        while ordinal < instanceDescriptor.mappingCount {
+            guard let record = mapping(at: ordinal, in: instance) else {
+                return nil
+            }
+            if record.scalarValue == scalarValue {
+                guard record.glyph.rawValue < instanceDescriptor.glyphCount else {
+                    return nil
+                }
+                return .exact(record.glyph)
+            }
+            if record.scalarValue > scalarValue {
+                break
+            }
+            ordinal += 1
+        }
+        return .replacement(instanceDescriptor.replacementGlyph)
+    }
+}
+
+package extension GlyphMetrics {
+    func checkedInkRectangle(at logicalOrigin: Point) -> Rect? {
+        guard let x = GeometryArithmetic.add(logicalOrigin.x, offsetX),
+              let y = GeometryArithmetic.add(logicalOrigin.y, offsetY) else {
+            return nil
+        }
+        return Rect(origin: Point(x: x, y: y), size: inkSize)
+    }
+
+    func checkedAdvancedOrigin(from logicalOrigin: Point) -> Point? {
+        guard let x = GeometryArithmetic.add(logicalOrigin.x, advanceX) else {
+            return nil
+        }
+        return Point(x: x, y: logicalOrigin.y)
+    }
+}
+
+package extension TextResourceValidator {
+    static func isValidUnicodeScalar(_ scalarValue: UInt32) -> Bool {
+        scalarValue <= 0x10_ffff
+            && !(0xd800 ... 0xdfff).contains(scalarValue)
+    }
+
+    static func isValid(
+        _ glyph: GlyphID,
+        in instance: FontInstanceDescriptor
+    ) -> Bool {
+        glyph.rawValue < instance.glyphCount
+    }
+
+    static func isValid(
+        _ realization: RasterRealizationID,
+        in descriptor: TextResourceDescriptor
+    ) -> Bool {
+        realization.rawValue < descriptor.realizationCount
+    }
+
+    static func recordsFormGapFreePartition<R>(
+        for realization: RasterRealizationDescriptor,
+        in raster: borrowing R
+    ) -> Bool where R: TextRasterResourceView {
+        var expectedOffset: UInt32 = 0
+        var glyphOrdinal: UInt32 = 0
+        while glyphOrdinal < UInt32(realization.glyphCount) {
+            let glyph = GlyphID(rawValue: UInt16(glyphOrdinal))
+            guard let record = raster.record(
+                for: glyph,
+                realization: realization.id
+            ),
+            record.glyph == glyph,
+            record.offset == expectedOffset else {
+                return false
+            }
+            let nextOffset = expectedOffset.addingReportingOverflow(
+                record.byteCount
+            )
+            guard !nextOffset.overflow,
+                  nextOffset.partialValue <= realization.payloadByteCount else {
+                return false
+            }
+            expectedOffset = nextOffset.partialValue
+            glyphOrdinal += 1
+        }
+        return expectedOffset == realization.payloadByteCount
+    }
+
+    static func isStructurallyValidMonochromeBitmap(
+        record: GlyphRasterRecord,
+        metrics: GlyphMetrics,
+        bytes: UnsafeRawBufferPointer
+    ) -> Bool {
+        guard Int(record.byteCount) == bytes.count,
+              metrics.inkSize.width == Int32(record.pixelWidth),
+              metrics.inkSize.height == Int32(record.pixelHeight) else {
+            return false
+        }
+        let expectedRowBytes = (UInt32(record.pixelWidth) + 7) / 8
+        guard UInt32(record.rowByteCount) == expectedRowBytes else {
+            return false
+        }
+        let expectedByteCount = expectedRowBytes.multipliedReportingOverflow(
+            by: UInt32(record.pixelHeight)
+        )
+        guard !expectedByteCount.overflow,
+              expectedByteCount.partialValue == record.byteCount else {
+            return false
+        }
+
+        let usedBits = record.pixelWidth & 7
+        guard usedBits != 0 else { return true }
+        let unusedBits = UInt8(8 - usedBits)
+        let unusedMask = UInt8((UInt16(1) << unusedBits) - 1)
+        var row: UInt32 = 0
+        while row < UInt32(record.pixelHeight) {
+            let lastByte = Int(row * expectedRowBytes + expectedRowBytes - 1)
+            guard bytes[lastByte] & unusedMask == 0 else { return false }
+            row += 1
+        }
+        return true
+    }
+
+    static func monochromeBitmapCoverage(
+        x: UInt16,
+        y: UInt16,
+        record: GlyphRasterRecord,
+        bytes: UnsafeRawBufferPointer
+    ) -> Bool? {
+        guard x < record.pixelWidth,
+              y < record.pixelHeight,
+              UInt32(record.rowByteCount) * UInt32(record.pixelHeight)
+                  == record.byteCount,
+              Int(record.byteCount) == bytes.count else {
+            return nil
+        }
+        let byteIndex = UInt32(y) * UInt32(record.rowByteCount)
+            + UInt32(x / 8)
+        let mask = UInt8(0x80 >> UInt8(x & 7))
+        return bytes[Int(byteIndex)] & mask != 0
+    }
+
+    static func isStructurallyValidPackagedOutline(
+        record: GlyphRasterRecord,
+        metrics: GlyphMetrics,
+        bytes: UnsafeRawBufferPointer
+    ) -> Bool {
+        guard record.rowByteCount == 0,
+              Int(record.byteCount) == bytes.count,
+              metrics.inkSize.width == Int32(record.pixelWidth),
+              metrics.inkSize.height == Int32(record.pixelHeight),
+              bytes.count >= 6,
+              bytes[0] == 1,
+              readUInt16(bytes, at: 1) != 0,
+              readUInt16(bytes, at: 3) != 0 else {
+            return false
+        }
+
+        var index = 5
+        var expectsMove = true
+        var sawTerminator = false
+        while index < bytes.count {
+            let opcode = bytes[index]
+            index += 1
+            if opcode == 5 || opcode == 6 {
+                guard !expectsMove else { return false }
+                expectsMove = true
+                sawTerminator = true
+                continue
+            }
+            guard opcode >= 1, opcode <= 4,
+                  index < bytes.count else {
+                return false
+            }
+            let operandCount = Int(bytes[index])
+            index += 1
+            switch opcode {
+            case 1:
+                guard expectsMove, operandCount == 1 else { return false }
+                expectsMove = false
+            case 2:
+                guard !expectsMove, operandCount == 1 else { return false }
+            case 3:
+                guard !expectsMove, operandCount > 0 else { return false }
+            default:
+                guard !expectsMove, operandCount == 3 else { return false }
+            }
+            let operandBytes = operandCount.multipliedReportingOverflow(by: 4)
+            guard !operandBytes.overflow,
+                  operandBytes.partialValue <= bytes.count - index else {
+                return false
+            }
+            var operand = 0
+            while operand < operandCount {
+                let x = readUInt16(bytes, at: index)
+                let y = readUInt16(bytes, at: index + 2)
+                let isImpliedPoint = x == 0x7fff && y == 0x7fff
+                if isImpliedPoint && opcode != 3 {
+                    return false
+                }
+                index += 4
+                operand += 1
+            }
+            sawTerminator = false
+        }
+        return expectsMove && sawTerminator
+    }
+
+    private static func readUInt16(
+        _ bytes: UnsafeRawBufferPointer,
+        at index: Int
+    ) -> UInt16 {
+        (UInt16(bytes[index]) << 8) | UInt16(bytes[index + 1])
+    }
+}
+
 package extension TextResourceValidator {
     /// Visits the schema-version-1 canonical manifest without materializing it.
     ///
