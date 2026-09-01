@@ -236,6 +236,7 @@ record_input_hashes() {
                 "${SCRIPT_DIR}/check-spec-005-bounds.rb" \
                 "${SCRIPT_DIR}/check-spec-005-validator.rb" \
                 "${SCRIPT_DIR}/check-spec-005-validation-corpus.rb" \
+                "${SCRIPT_DIR}/check-spec-005-common-catalogue.rb" \
                 "${SCRIPT_DIR}/check-spec-005-portable-source.rb" \
                 "${SCRIPT_DIR}/run-spec-005.sh"
         } | LC_ALL=C sort -u
@@ -291,6 +292,11 @@ run_preflight() {
     "${SCRIPT_DIR}/check-spec-005-validation-corpus.rb" \
         "${FIXTURE_ROOT}/SemanticCorpus/cases.tsv" \
         "${UNIT_TEST_ROOT}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-005-common-catalogue.rb" \
+        "${UNIT_TEST_ROOT}/CommonCatalogueValidationTests.swift"
+    "${SCRIPT_DIR}/check-spec-005-common-catalogue.rb" \
+        "${UNIT_TEST_ROOT}/CommonCatalogueValidationTests.swift" \
+        >>"${log_path}" 2>&1
 }
 
 run_target_layout_probe() {

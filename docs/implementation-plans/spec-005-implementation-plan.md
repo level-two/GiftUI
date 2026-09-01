@@ -286,7 +286,7 @@ allocates zero heap bytes on the static path.
       encodings. Include controls proving a zero-byte payload with a valid
       empty record partition is admitted, while zero required counts and zero
       manifest bytes retain their exact `.invalidCount` meaning.
-- [ ] `T2.3` — Validate the complete common catalogue while admitting one
+- [x] `T2.3` — Validate the complete common catalogue while admitting one
       required available realization: every catalogued record and descriptor,
       every metric/mapping, the reconstructed manifest, and every available
       payload must validate; an omitted unselected payload remains valid; an
@@ -584,6 +584,7 @@ contract or authorize the eventual `implemented` transition.
 | `T1.5` | completed | [Layouts, ceilings, work, and allocation bounds](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/layout-capacity-and-work-bounds.md), 16-value target IR reports, independent zero/one/max/max-plus-one fixtures, empty partition, 256-comparison maximum, exact visit counters, and zero-allocation macOS dynamic/static probes |
 | `T2.1` | completed | [Nine-class complete validator](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validator-predicate-pass.md), valid synthetic package, raw-precedence conflict fixture, non-short-circuit traversal counters, complete catalogue/payload/manifest passes, and ordered predicate audit |
 | `T2.2` | completed | [Isolated and pairwise validation corpus](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validation-predicate-corpus.md), nine isolated classes, all 36 class pairs in both fault orders, complete identity/count/metric/mapping/raster/integrity subfixtures, malformed bitmap/outline cases, and zero-payload positive control |
+| `T2.3` | completed | [Common catalogue and payload-subset admission](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/common-catalogue-admission.md), complete dual-payload validation, bitmap-only and outline-only linkage with identical identity/tables, unavailable-selected rejection, false availability rejection, omitted-record validation, and linked-unselected integrity enforcement |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the
