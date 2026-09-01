@@ -50,6 +50,215 @@ final class ValidatorCoreTests: XCTestCase {
         XCTAssertEqual(raster.payloadVisits, 1)
         XCTAssertEqual(raster.payloadByteVisits, 1)
     }
+
+    func testEachValidationClassHasAnIsolatedFixture() {
+        for fault in ValidationPairFault.allCases {
+            XCTAssertEqual(
+                validate(makePairwiseValidationFixture([fault])),
+                .invalid(fault.expectedError),
+                "isolated fault \(fault)"
+            )
+        }
+    }
+
+    func testEveryPairUsesRawValuePrecedenceInBothFaultOrders() {
+        let faults = ValidationPairFault.allCases
+        var pairCount = 0
+        for firstIndex in faults.indices {
+            for secondIndex in faults.indices where secondIndex > firstIndex {
+                let first = faults[firstIndex]
+                let second = faults[secondIndex]
+                let expected = first.expectedError.rawValue
+                    < second.expectedError.rawValue
+                    ? first.expectedError : second.expectedError
+                XCTAssertEqual(
+                    validate(makePairwiseValidationFixture([first, second])),
+                    .invalid(expected),
+                    "pair \(first), \(second)"
+                )
+                XCTAssertEqual(
+                    validate(makePairwiseValidationFixture([second, first])),
+                    .invalid(expected),
+                    "reversed pair \(second), \(first)"
+                )
+                pairCount += 1
+            }
+        }
+        XCTAssertEqual(pairCount, 36)
+    }
+}
+
+private enum ValidationPairFault: CaseIterable, Hashable {
+    case unsupportedSchema
+    case capacityExceeded
+    case invalidCount
+    case invalidIdentity
+    case incompatibleViews
+    case malformedMetrics
+    case malformedMapping
+    case malformedRasterRecord
+    case integrityMismatch
+
+    var expectedError: TextResourceValidationError {
+        switch self {
+        case .unsupportedSchema: .unsupportedSchema
+        case .capacityExceeded: .capacityExceeded
+        case .invalidCount: .invalidCount
+        case .invalidIdentity: .invalidIdentity
+        case .incompatibleViews: .incompatibleViews
+        case .malformedMetrics: .malformedMetrics
+        case .malformedMapping: .malformedMapping
+        case .malformedRasterRecord: .malformedRasterRecord
+        case .integrityMismatch: .integrityMismatch
+        }
+    }
+}
+
+private func validate(
+    _ fixture: TextResourcePackage<ValidationMetrics, ValidationRaster>
+) -> TextResourceValidationResult {
+    TextResourceValidator.validate(
+        fixture,
+        requiring: RasterRealizationID(rawValue: 0)
+    )
+}
+
+private func makePairwiseValidationFixture(
+    _ orderedFaults: [ValidationPairFault]
+) -> TextResourcePackage<ValidationMetrics, ValidationRaster> {
+    let faults = Set(orderedFaults)
+    let schemaVersion: UInt16 = faults.contains(.unsupportedSchema) ? 2 : 1
+    let instanceCount: UInt16 = faults.contains(.capacityExceeded) ? 2 : 1
+    let manifestByteCount: UInt32 = faults.contains(.invalidCount) ? 0 : 135
+    let instanceIndex: UInt16 = faults.contains(.invalidIdentity) ? 1 : 0
+    let lineAscent: Int32 = faults.contains(.malformedMetrics) ? 0 : 1
+    let mappingScalar: UInt32 = faults.contains(.malformedMapping) ? 0x0a : 0x41
+    let payload: [UInt8] = [
+        faults.contains(.malformedRasterRecord) ? 0x81 : 0x80,
+    ]
+    let payloadDigest = payload.withUnsafeBytes {
+        TextResourceValidator.sha256(of: $0)
+    }
+    let zero = zeroValidationDigest()
+    let zeroResource = FontResourceID(rawValue: zero)
+    let provisional = makePairwiseValidationFixture(
+        metricsResource: zeroResource,
+        rasterResource: zeroResource,
+        payloadDigest: payloadDigest,
+        payload: payload,
+        schemaVersion: schemaVersion,
+        instanceCount: instanceCount,
+        manifestByteCount: manifestByteCount,
+        instanceIndex: instanceIndex,
+        lineAscent: lineAscent,
+        mappingScalar: mappingScalar
+    )
+    let computedIdentity = TextResourceValidator.canonicalManifestDigest(
+        of: provisional
+    )?.digest ?? zero
+    let metricsIdentity = faults.contains(.integrityMismatch)
+        ? zero : computedIdentity
+    let metricsResource = FontResourceID(rawValue: metricsIdentity)
+    let rasterResource = faults.contains(.incompatibleViews)
+        ? FontResourceID(rawValue: TextResourceDigest(
+            word0: 1, word1: 1, word2: 1, word3: 1,
+            word4: 1, word5: 1, word6: 1, word7: 1
+        ))
+        : metricsResource
+    return makePairwiseValidationFixture(
+        metricsResource: metricsResource,
+        rasterResource: rasterResource,
+        payloadDigest: payloadDigest,
+        payload: payload,
+        schemaVersion: schemaVersion,
+        instanceCount: instanceCount,
+        manifestByteCount: manifestByteCount,
+        instanceIndex: instanceIndex,
+        lineAscent: lineAscent,
+        mappingScalar: mappingScalar
+    )
+}
+
+private func makePairwiseValidationFixture(
+    metricsResource: FontResourceID,
+    rasterResource: FontResourceID,
+    payloadDigest: TextResourceDigest,
+    payload: [UInt8],
+    schemaVersion: UInt16,
+    instanceCount: UInt16,
+    manifestByteCount: UInt32,
+    instanceIndex: UInt16,
+    lineAscent: Int32,
+    mappingScalar: UInt32
+) -> TextResourcePackage<ValidationMetrics, ValidationRaster> {
+    let metricsDescriptor = TextResourceDescriptor(
+        schemaVersion: schemaVersion,
+        resource: metricsResource,
+        instanceCount: instanceCount,
+        realizationCount: 1,
+        canonicalManifestByteCount: manifestByteCount
+    )
+    let rasterDescriptor = TextResourceDescriptor(
+        schemaVersion: schemaVersion,
+        resource: rasterResource,
+        instanceCount: instanceCount,
+        realizationCount: 1,
+        canonicalManifestByteCount: manifestByteCount
+    )
+    let metricsInstanceID = FontInstanceID(
+        resource: metricsResource,
+        instanceIndex: instanceIndex
+    )
+    let rasterInstanceID = FontInstanceID(
+        resource: rasterResource,
+        instanceIndex: instanceIndex
+    )
+    let metrics = ValidationMetrics(
+        descriptor: metricsDescriptor,
+        instanceDescriptor: FontInstanceDescriptor(
+            id: metricsInstanceID,
+            lineMetrics: FontLineMetrics(
+                ascent: lineAscent,
+                descent: 0,
+                lineGap: 0
+            ),
+            replacementGlyph: GiftUITextResources.GlyphID(rawValue: 0),
+            glyphCount: 1,
+            mappingCount: 1
+        ),
+        mappingRecord: ScalarGlyphMappingRecord(
+            scalarValue: mappingScalar,
+            glyph: GiftUITextResources.GlyphID(rawValue: 0)
+        ),
+        glyphMetrics: GlyphMetrics(
+            advanceX: 1,
+            offsetX: 0,
+            offsetY: 0,
+            inkSize: Size(width: 1, height: 1)!
+        )
+    )
+    let realization = RasterRealizationDescriptor(
+        id: RasterRealizationID(rawValue: 0),
+        instance: rasterInstanceID,
+        kind: .monochromeBitmap1,
+        glyphCount: 1,
+        payloadByteCount: 1,
+        payloadDigest: payloadDigest
+    )
+    let raster = ValidationRaster(
+        descriptor: rasterDescriptor,
+        realizationDescriptor: realization,
+        recordValue: GlyphRasterRecord(
+            glyph: GiftUITextResources.GlyphID(rawValue: 0),
+            offset: 0,
+            byteCount: 1,
+            rowByteCount: 1,
+            pixelWidth: 1,
+            pixelHeight: 1
+        ),
+        payload: payload
+    )
+    return TextResourcePackage(metrics: metrics, raster: raster)
 }
 
 private final class CountingValidationMetrics: CanonicalTextMetricsView {
@@ -125,7 +334,7 @@ private final class CountingValidationRaster: TextRasterResourceView {
     }
 }
 
-private struct ValidationMetrics: CanonicalTextMetricsView {
+struct ValidationMetrics: CanonicalTextMetricsView {
     let descriptor: TextResourceDescriptor
     let instanceDescriptor: FontInstanceDescriptor
     let mappingRecord: ScalarGlyphMappingRecord
@@ -152,7 +361,7 @@ private struct ValidationMetrics: CanonicalTextMetricsView {
     }
 }
 
-private struct ValidationRaster: TextRasterResourceView {
+struct ValidationRaster: TextRasterResourceView {
     let descriptor: TextResourceDescriptor
     let realizationDescriptor: RasterRealizationDescriptor
     let recordValue: GlyphRasterRecord
@@ -200,7 +409,7 @@ private struct ValidationRaster: TextRasterResourceView {
     }
 }
 
-private func makeValidValidationFixture(
+func makeValidValidationFixture(
     schemaVersion: UInt16 = 1,
     instanceCount: UInt16 = 1,
     realizationCount: UInt16 = 1,
@@ -234,7 +443,7 @@ private func makeValidValidationFixture(
     )
 }
 
-private func makeValidationFixture(
+func makeValidationFixture(
     resource: FontResourceID,
     payloadDigest: TextResourceDigest,
     payload: [UInt8],
@@ -296,7 +505,7 @@ private func makeValidationFixture(
     return TextResourcePackage(metrics: metrics, raster: raster)
 }
 
-private func zeroValidationDigest() -> TextResourceDigest {
+func zeroValidationDigest() -> TextResourceDigest {
     TextResourceDigest(
         word0: 0, word1: 0, word2: 0, word3: 0,
         word4: 0, word5: 0, word6: 0, word7: 0

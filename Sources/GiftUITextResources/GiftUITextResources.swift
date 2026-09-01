@@ -618,8 +618,6 @@ package enum TextResourceValidator {
             predicates.malformedRasterRecord = predicates.malformedRasterRecord
                 || expectedOffset != realization.payloadByteCount
             if isAvailable {
-                predicates.incompatibleViews = predicates.incompatibleViews
-                    || payloadBytesBorrowed != realization.payloadByteCount
                 predicates.integrityMismatch = predicates.integrityMismatch
                     || payloadSHA256.finalize() != realization.payloadDigest
             }

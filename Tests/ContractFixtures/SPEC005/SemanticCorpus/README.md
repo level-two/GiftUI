@@ -23,3 +23,9 @@ The shared logical corpus uses `host` for executable host semantics and
 `connected-target` rows remain absent unless a later owning integration and
 the required authorization exist; their schema presence does not claim that
 evidence.
+
+The `validation-isolated` domain contains one input raw value and the same
+expected `TextResourceValidationError` raw value. The `validation-pair` domain
+contains two distinct ascending raw values and expects the lower value; the
+focused host fixture executes both declaration orders for every registered
+pair.
