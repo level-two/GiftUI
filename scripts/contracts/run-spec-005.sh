@@ -226,6 +226,7 @@ record_input_hashes() {
                 "${SCRIPT_DIR}/check-spec-005-dependencies.rb" \
                 "${SCRIPT_DIR}/check-spec-005-boundaries.rb" \
                 "${SCRIPT_DIR}/check-spec-005-surface.rb" \
+                "${SCRIPT_DIR}/check-spec-005-canonical.rb" \
                 "${SCRIPT_DIR}/check-spec-005-portable-source.rb" \
                 "${SCRIPT_DIR}/run-spec-005.sh"
         } | LC_ALL=C sort -u
@@ -255,6 +256,9 @@ run_preflight() {
         <"${package_json}" >>"${log_path}" 2>&1
     record_command "${SCRIPT_DIR}/check-spec-005-portable-source.rb"
     "${SCRIPT_DIR}/check-spec-005-portable-source.rb" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-005-canonical.rb" "${TEXT_RESOURCE_SOURCE}"
+    "${SCRIPT_DIR}/check-spec-005-canonical.rb" \
+        "${TEXT_RESOURCE_SOURCE}" >>"${log_path}" 2>&1
 }
 
 run_macos() {

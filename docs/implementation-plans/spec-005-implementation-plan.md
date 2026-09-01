@@ -222,7 +222,7 @@ until Milestone 2's validator is complete.
       values, initializer and field meaning, `Equatable`/`Hashable`/`Sendable`
       conformances, absence-as-optional semantics, and pointer/reference-free
       identity storage. Add declaration and raw-value surface checks.
-- [ ] `T1.2` — Implement one collection-free canonical serialization and
+- [x] `T1.2` — Implement one collection-free canonical serialization and
       digest seam using the exact schema-version-1 concatenation, big-endian
       unsigned fields, signed `Int32` geometry, digest word order, and exact
       SHA-256 byte interpretation. The seam must support build tooling and host
@@ -578,6 +578,7 @@ contract or authorize the eventual `implemented` transition.
 | `T0.4` | completed | [Compiler-visible boundary evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/compiler-boundaries.md), positive/negative compile fixtures, exact dependency/interface scans, reserved consumer rows, identity-owner scan, and portable Presentation scan |
 | `T0.5` | completed | [Adopted SPIKE-005 input baseline](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/adopted-input-baseline.md), machine-checked inventory, exact hashes/counts/provenance, and nRF calibration |
 | `T1.1` | completed | [Exact declarations and raw surface](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/exact-declarations.md), focused value/protocol tests, package-interface audit, and fail-closed validator seam |
+| `T1.2` | completed | [Canonical serialization and SHA-256 seam](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/canonical-serialization.md), official hash vectors, exact schema-v1 byte vector, canonical-field mutation checks, exclusion invariants, and four-profile fixed-state compile evidence |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the
