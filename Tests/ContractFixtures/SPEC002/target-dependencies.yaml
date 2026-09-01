@@ -35,6 +35,14 @@ targets:
     type: test
     dependencies:
       - GiftUICapabilities
+  GiftUITextResources:
+    type: regular
+    dependencies:
+      - GiftUI
+  GiftUITextResourcesTests:
+    type: test
+    dependencies:
+      - GiftUITextResources
   GiftUICapabilityAdapterTests:
     type: test
     dependencies:

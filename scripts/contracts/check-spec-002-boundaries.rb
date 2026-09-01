@@ -31,6 +31,7 @@ FORBIDDEN_GIFTUI_MODULES = %w[
   GiftUIFailureDiagnostics
   GiftUIFailureExecution
   GiftUICapabilities
+  GiftUITextResources
   GiftUIExecutionContract
   GiftUISemantics
   GiftUILayout

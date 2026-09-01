@@ -25,6 +25,10 @@ let package = Package(
         ),
         .target(name: "GiftUICapabilities"),
         .target(
+            name: "GiftUITextResources",
+            dependencies: ["GiftUI"]
+        ),
+        .target(
             name: "GiftUICapabilityFailureAdapterFixture",
             dependencies: ["GiftUICapabilities", "GiftUIFailureCore"]
         ),
@@ -47,6 +51,10 @@ let package = Package(
         .testTarget(
             name: "GiftUICapabilitiesTests",
             dependencies: ["GiftUICapabilities"]
+        ),
+        .testTarget(
+            name: "GiftUITextResourcesTests",
+            dependencies: ["GiftUITextResources"]
         ),
         .testTarget(
             name: "GiftUICapabilityAdapterTests",

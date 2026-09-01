@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-08-30
-updated: 2026-08-31
+updated: 2026-09-01
 related_design_notes: []
 conformance_report: null
 related_future_work:
@@ -174,7 +174,7 @@ four-profile driver can fail closed before semantic implementation begins.
       stable normalized-corpus schema, matched resource-harness roots,
       deterministic generated/report paths, and explicit host, cross-build,
       simulator, and connected-hardware evidence labels.
-- [ ] `T0.2` — Add the package-internal `GiftUITextResources` target and a
+- [x] `T0.2` — Add the package-internal `GiftUITextResources` target and a
       focused unit-test target. The production target depends only on `GiftUI`;
       it exposes no standalone library product and imports no failure,
       capability, layout, render, runtime, backend, resource implementation,
@@ -573,6 +573,7 @@ contract or authorize the eventual `implemented` transition.
 | Task | Disposition | Evidence |
 | --- | --- | --- |
 | `T0.1` | completed | [Authority and fixture audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/authority-audit.md), fixture README, ordered manifest, normalized-corpus schema, matched resource-harness roots, and evidence labels |
+| `T0.2` | completed | [Text-resource contract leaf](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/contract-leaf.md), focused unit test, and updated exact package graph |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the
