@@ -225,6 +225,7 @@ record_input_hashes() {
                 "${SCRIPT_DIR}/check-spec-005-adopted-inputs.rb" \
                 "${SCRIPT_DIR}/check-spec-005-dependencies.rb" \
                 "${SCRIPT_DIR}/check-spec-005-boundaries.rb" \
+                "${SCRIPT_DIR}/check-spec-005-surface.rb" \
                 "${SCRIPT_DIR}/check-spec-005-portable-source.rb" \
                 "${SCRIPT_DIR}/run-spec-005.sh"
         } | LC_ALL=C sort -u
@@ -341,6 +342,13 @@ run_macos() {
         "${module_dir}/GiftUI.swiftinterface" \
         "${module_dir}/GiftUI.package.swiftinterface" \
         "${text_scan}" "${giftui_scan}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-005-surface.rb" \
+        "${module_dir}/GiftUITextResources.swiftinterface" \
+        "${module_dir}/GiftUITextResources.package.swiftinterface"
+    "${SCRIPT_DIR}/check-spec-005-surface.rb" \
+        "${module_dir}/GiftUITextResources.swiftinterface" \
+        "${module_dir}/GiftUITextResources.package.swiftinterface" \
+        >>"${log_path}" 2>&1
     run_fixture_set "${compiler}" "${module_dir}" \
         -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
         -O -whole-module-optimization "${profile_flag}" -language-mode 6

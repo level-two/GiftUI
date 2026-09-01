@@ -7,6 +7,7 @@ active:
   GiftUITextResourcesTests:
     type: test
     dependencies:
+      - GiftUI
       - GiftUITextResources
 forbidden_text_resource_imports:
   - GiftUIFailureCore

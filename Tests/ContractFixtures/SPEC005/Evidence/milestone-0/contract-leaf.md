@@ -7,9 +7,10 @@ Date: 2026-09-01
 ## Package graph
 
 The root package contains one regular target named exactly
-`GiftUITextResources`. It depends only on `GiftUI`, contains no semantic
-declarations yet, and has one focused `GiftUITextResourcesTests` target that
-depends only on the contract leaf.
+`GiftUITextResources`. It depends only on `GiftUI` and has one focused
+`GiftUITextResourcesTests` target. The test target depends on the contract leaf
+and `GiftUI` so it can construct the SPEC-002 geometry values named by the
+text-resource contract without a re-export.
 
 The package products remain exactly `GiftUI`, `GiftUIFailureCore`,
 `GiftUIFailureDiagnostics`, and `GiftUICapabilities`. There is no standalone

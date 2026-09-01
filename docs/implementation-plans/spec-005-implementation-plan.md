@@ -216,7 +216,7 @@ with exact visibility, raw widths, optional-access semantics, canonical byte
 order, finite bounds, and layout evidence, but no concrete package is admitted
 until Milestone 2's validator is complete.
 
-- [ ] `T1.1` — Implement the exact package-visible identity, descriptor,
+- [x] `T1.1` — Implement the exact package-visible identity, descriptor,
       metric, mapping, raster-record, validation-error/result, view-protocol,
       package, and validator declarations named by SPEC-005. Preserve raw
       values, initializer and field meaning, `Equatable`/`Hashable`/`Sendable`
@@ -577,6 +577,7 @@ contract or authorize the eventual `implemented` transition.
 | `T0.3` | completed | [Four-profile contract driver](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/contract-driver.md), registry entry, fail-closed fixture/corpus/generated-asset checks, and deterministic reports |
 | `T0.4` | completed | [Compiler-visible boundary evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/compiler-boundaries.md), positive/negative compile fixtures, exact dependency/interface scans, reserved consumer rows, identity-owner scan, and portable Presentation scan |
 | `T0.5` | completed | [Adopted SPIKE-005 input baseline](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/adopted-input-baseline.md), machine-checked inventory, exact hashes/counts/provenance, and nRF calibration |
+| `T1.1` | completed | [Exact declarations and raw surface](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/exact-declarations.md), focused value/protocol tests, package-interface audit, and fail-closed validator seam |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the
