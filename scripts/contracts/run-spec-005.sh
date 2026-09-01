@@ -155,6 +155,43 @@ record_image() {
         >>"${images_path}"
 }
 
+run_fixture_set() {
+    local compiler="$1"
+    local module_dir="$2"
+    shift 2
+    local -a common_flags=("$@")
+    local id expectation access entry patterns fixture_dir diagnostic output_path result pattern
+
+    while IFS=$'\t' read -r id expectation access entry patterns; do
+        [[ -n "${id}" && "${id}" != \#* ]] || continue
+        fixture_dir="${report_dir}/fixtures/${id}"
+        mkdir -p "${fixture_dir}"
+        output_path="${fixture_dir}/stdout.txt"
+        diagnostic="${fixture_dir}/stderr.txt"
+        local -a command=("${compiler}" "${common_flags[@]}" -I "${module_dir}")
+        if [[ "${access}" == "package" ]]; then
+            command+=(-package-name GiftUI)
+        fi
+        command+=(-typecheck "${FIXTURE_ROOT}/${entry}")
+        record_command "${command[@]}"
+        set +e
+        "${command[@]}" >"${output_path}" 2>"${diagnostic}"
+        result=$?
+        set -e
+
+        if [[ "${expectation}" == "pass" ]]; then
+            [[ "${result}" -eq 0 ]] || fail "positive fixture ${id} failed"
+            continue
+        fi
+        [[ "${result}" -ne 0 ]] || fail "negative fixture ${id} unexpectedly compiled"
+        while IFS= read -r pattern; do
+            [[ -n "${pattern}" && "${pattern}" != \#* ]] || continue
+            grep -Fq "${pattern}" "${diagnostic}" ||
+                fail "negative fixture ${id} lacked diagnostic pattern: ${pattern}"
+        done <"${FIXTURE_ROOT}/${patterns}"
+    done <"${FIXTURE_ROOT}/fixture-manifest.tsv"
+}
+
 verify_source_list() {
     local -a sources=()
     local source
@@ -185,6 +222,9 @@ record_input_hashes() {
                 "${SCRIPT_DIR}/check-spec-005-fixture-manifest.rb" \
                 "${SCRIPT_DIR}/check-spec-005-corpus.rb" \
                 "${SCRIPT_DIR}/check-spec-005-generated-assets.rb" \
+                "${SCRIPT_DIR}/check-spec-005-dependencies.rb" \
+                "${SCRIPT_DIR}/check-spec-005-boundaries.rb" \
+                "${SCRIPT_DIR}/check-spec-005-portable-source.rb" \
                 "${SCRIPT_DIR}/run-spec-005.sh"
         } | LC_ALL=C sort -u
     )
@@ -206,6 +246,11 @@ run_preflight() {
     record_command "${SCRIPT_DIR}/check-target-dependencies.rb"
     "${SCRIPT_DIR}/check-target-dependencies.rb" \
         <"${package_json}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-005-dependencies.rb"
+    "${SCRIPT_DIR}/check-spec-005-dependencies.rb" \
+        <"${package_json}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-005-portable-source.rb"
+    "${SCRIPT_DIR}/check-spec-005-portable-source.rb" >>"${log_path}" 2>&1
 }
 
 run_macos() {
@@ -214,6 +259,7 @@ run_macos() {
     command -v xcrun >/dev/null || fail 'xcrun is missing'
 
     local compiler compiler_version sdk_path sdk_version profile_flag module_dir
+    local text_scan giftui_scan
     compiler="$(xcrun --find swiftc)"
     compiler_version="$("${compiler}" --version 2>&1)"
     require_exact_fragment "${compiler_version}" 'Apple Swift version 6.3.3' 'macOS compiler'
@@ -236,32 +282,71 @@ run_macos() {
 
     module_dir="${report_dir}/build/modules"
     mkdir -p "${module_dir}"
-    local -a flags=(
+    local -a compile_flags=(
         -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
         -O -whole-module-optimization "${profile_flag}"
-        -language-mode 6 -package-name GiftUI -parse-as-library -emit-module
+        -language-mode 6 -package-name GiftUI -parse-as-library
     )
     local -a foundation_command=(
-        "${compiler}" "${flags[@]}" -module-name GiftUI "${FOUNDATION_SOURCE}"
+        "${compiler}" "${compile_flags[@]}" -enable-library-evolution
+        -emit-module -module-name GiftUI "${FOUNDATION_SOURCE}"
         -emit-module-path "${module_dir}/GiftUI.swiftmodule"
+        -emit-module-interface-path "${module_dir}/GiftUI.swiftinterface"
+        -emit-package-module-interface-path "${module_dir}/GiftUI.package.swiftinterface"
     )
     record_command "${foundation_command[@]}"
     "${foundation_command[@]}" >>"${log_path}" 2>&1
     local -a text_command=(
-        "${compiler}" "${flags[@]}" -I "${module_dir}"
+        "${compiler}" "${compile_flags[@]}" -enable-library-evolution
+        -emit-module -I "${module_dir}"
         -module-name GiftUITextResources "${TEXT_RESOURCE_SOURCE}"
         -emit-module-path "${module_dir}/GiftUITextResources.swiftmodule"
+        -emit-module-interface-path "${module_dir}/GiftUITextResources.swiftinterface"
+        -emit-package-module-interface-path "${module_dir}/GiftUITextResources.package.swiftinterface"
     )
     record_command "${text_command[@]}"
     "${text_command[@]}" >>"${log_path}" 2>&1
     record_image giftui-module "${module_dir}/GiftUI.swiftmodule"
     record_image text-resource-module "${module_dir}/GiftUITextResources.swiftmodule"
+
+    giftui_scan="${report_dir}/build/GiftUI.dependencies.json"
+    local -a giftui_scan_command=(
+        "${compiler}" "${compile_flags[@]}" -module-name GiftUI
+        -module-cache-path "${report_dir}/build/clang-cache"
+        -scan-dependencies "${FOUNDATION_SOURCE}"
+    )
+    record_command "${giftui_scan_command[@]}"
+    "${giftui_scan_command[@]}" >"${giftui_scan}" 2>>"${log_path}"
+    text_scan="${report_dir}/build/GiftUITextResources.dependencies.json"
+    local -a text_scan_command=(
+        "${compiler}" "${compile_flags[@]}" -I "${module_dir}"
+        -module-name GiftUITextResources
+        -module-cache-path "${report_dir}/build/clang-cache"
+        -scan-dependencies "${TEXT_RESOURCE_SOURCE}"
+    )
+    record_command "${text_scan_command[@]}"
+    "${text_scan_command[@]}" >"${text_scan}" 2>>"${log_path}"
+    record_command "${SCRIPT_DIR}/check-spec-005-boundaries.rb" \
+        "${module_dir}/GiftUITextResources.swiftinterface" \
+        "${module_dir}/GiftUITextResources.package.swiftinterface" \
+        "${module_dir}/GiftUI.swiftinterface" \
+        "${module_dir}/GiftUI.package.swiftinterface" \
+        "${text_scan}" "${giftui_scan}"
+    "${SCRIPT_DIR}/check-spec-005-boundaries.rb" \
+        "${module_dir}/GiftUITextResources.swiftinterface" \
+        "${module_dir}/GiftUITextResources.package.swiftinterface" \
+        "${module_dir}/GiftUI.swiftinterface" \
+        "${module_dir}/GiftUI.package.swiftinterface" \
+        "${text_scan}" "${giftui_scan}" >>"${log_path}" 2>&1
+    run_fixture_set "${compiler}" "${module_dir}" \
+        -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
+        -O -whole-module-optimization "${profile_flag}" -language-mode 6
 }
 
 run_raspberry_pi() {
     # shellcheck source=../raspberry-pi/common.sh
     source "${PROJECT_ROOT}/scripts/raspberry-pi/common.sh"
-    local swift_driver compiler compiler_version sdk_identity module
+    local swift_driver compiler compiler_version sdk_identity module sdk_root module_dir
     swift_driver="$(giftui_pi_host_swift)"
     compiler="$(dirname "${swift_driver}")/swiftc"
     [[ -x "${swift_driver}" && -x "${compiler}" ]] ||
@@ -299,6 +384,14 @@ run_raspberry_pi() {
     [[ "${#modules[@]}" -eq 1 ]] ||
         fail "expected one ARMv6 text-resource module, found ${#modules[@]}"
     record_image text-resource-module "${modules[0]}"
+    sdk_root="${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}"
+    module_dir="$(dirname "${modules[0]}")"
+    run_fixture_set "${compiler}" "${module_dir}" \
+        -target "${GIFTUI_PI_TARGET}" -use-ld=lld \
+        -Xcc "--gcc-toolchain=${sdk_root}/usr" \
+        -resource-dir "${sdk_root}/usr/lib/swift_static" \
+        -sdk "${sdk_root}" -latomic \
+        -O -whole-module-optimization -language-mode 6
 }
 
 run_nrf52840() {
@@ -326,22 +419,22 @@ run_nrf52840() {
 
     module_dir="${report_dir}/build/modules"
     mkdir -p "${module_dir}"
-    local -a flags=(
+    local -a compile_flags=(
         -target "${GIFTUI_NRF_SWIFT_TARGET}"
         -enable-experimental-feature Embedded
         -Osize -whole-module-optimization
         -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
-        -package-name GiftUI -parse-as-library -emit-module
+        -package-name GiftUI -parse-as-library
     )
     local -a foundation_command=(
-        "${GIFTUI_NRF_SWIFTC}" "${flags[@]}"
+        "${GIFTUI_NRF_SWIFTC}" "${compile_flags[@]}" -emit-module
         -module-name GiftUI "${FOUNDATION_SOURCE}"
         -emit-module-path "${module_dir}/GiftUI.swiftmodule"
     )
     record_command "${foundation_command[@]}"
     "${foundation_command[@]}" >>"${log_path}" 2>&1
     local -a text_command=(
-        "${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -I "${module_dir}"
+        "${GIFTUI_NRF_SWIFTC}" "${compile_flags[@]}" -emit-module -I "${module_dir}"
         -module-name GiftUITextResources "${TEXT_RESOURCE_SOURCE}"
         -emit-module-path "${module_dir}/GiftUITextResources.swiftmodule"
     )
@@ -349,6 +442,10 @@ run_nrf52840() {
     "${text_command[@]}" >>"${log_path}" 2>&1
     record_image giftui-module "${module_dir}/GiftUI.swiftmodule"
     record_image text-resource-module "${module_dir}/GiftUITextResources.swiftmodule"
+    run_fixture_set "${GIFTUI_NRF_SWIFTC}" "${module_dir}" \
+        -target "${GIFTUI_NRF_SWIFT_TARGET}" \
+        -enable-experimental-feature Embedded -Osize -whole-module-optimization \
+        -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
 }
 
 verify_report() {

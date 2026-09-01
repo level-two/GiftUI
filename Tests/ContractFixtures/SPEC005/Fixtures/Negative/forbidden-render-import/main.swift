@@ -1,0 +1,2 @@
+import GiftUITextResources
+import GiftUIRenderCore

@@ -1,0 +1,42 @@
+schema_version: 1
+active:
+  GiftUITextResources:
+    type: regular
+    dependencies:
+      - GiftUI
+  GiftUITextResourcesTests:
+    type: test
+    dependencies:
+      - GiftUITextResources
+forbidden_text_resource_imports:
+  - GiftUIFailureCore
+  - GiftUIFailureDiagnostics
+  - GiftUIFailureExecution
+  - GiftUICapabilities
+  - GiftUIExecutionContract
+  - GiftUISemantics
+  - GiftUILayout
+  - GiftUIRenderCore
+  - GiftUIRuntimeDynamic
+  - GiftUIRuntimeStatic
+  - GiftUIBackend
+  - GiftUIReferenceTextResources
+  - GiftUIPlatform
+  - GiftUIDriver
+  - GiftUIHost
+  - GiftUIOSRTOS
+  - GiftUIHAL
+  - GiftUIHardware
+reserved_consumers:
+  GiftUILayout: pending
+  GiftUIRenderCore: pending
+  GiftUITextRasterProvider: pending
+  GiftUIBackend: pending
+  GiftUIPlatform: pending
+  GiftUIReferenceTextResources: pending
+  GiftUIHost: pending
+identity_owners:
+  - FontResourceID
+  - FontInstanceID
+  - GlyphID
+  - RasterRealizationID

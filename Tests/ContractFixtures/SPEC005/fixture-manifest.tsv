@@ -1,1 +1,18 @@
 # id	expectation	access	entry_point	diagnostic_patterns
+import-text-resources	pass	package	Fixtures/Positive/import-text-resources/main.swift	-
+forbidden-failure-core-import	fail	public	Fixtures/Negative/forbidden-failure-core-import/main.swift	Fixtures/Negative/forbidden-failure-core-import/expected-diagnostic-patterns.txt
+forbidden-failure-diagnostics-import	fail	public	Fixtures/Negative/forbidden-failure-diagnostics-import/main.swift	Fixtures/Negative/forbidden-failure-diagnostics-import/expected-diagnostic-patterns.txt
+forbidden-failure-execution-import	fail	public	Fixtures/Negative/forbidden-failure-execution-import/main.swift	Fixtures/Negative/forbidden-failure-execution-import/expected-diagnostic-patterns.txt
+forbidden-capability-import	fail	public	Fixtures/Negative/forbidden-capability-import/main.swift	Fixtures/Negative/forbidden-capability-import/expected-diagnostic-patterns.txt
+forbidden-layout-import	fail	public	Fixtures/Negative/forbidden-layout-import/main.swift	Fixtures/Negative/forbidden-layout-import/expected-diagnostic-patterns.txt
+forbidden-render-import	fail	public	Fixtures/Negative/forbidden-render-import/main.swift	Fixtures/Negative/forbidden-render-import/expected-diagnostic-patterns.txt
+forbidden-runtime-dynamic-import	fail	public	Fixtures/Negative/forbidden-runtime-dynamic-import/main.swift	Fixtures/Negative/forbidden-runtime-dynamic-import/expected-diagnostic-patterns.txt
+forbidden-runtime-static-import	fail	public	Fixtures/Negative/forbidden-runtime-static-import/main.swift	Fixtures/Negative/forbidden-runtime-static-import/expected-diagnostic-patterns.txt
+forbidden-backend-import	fail	public	Fixtures/Negative/forbidden-backend-import/main.swift	Fixtures/Negative/forbidden-backend-import/expected-diagnostic-patterns.txt
+forbidden-resource-implementation-import	fail	public	Fixtures/Negative/forbidden-resource-implementation-import/main.swift	Fixtures/Negative/forbidden-resource-implementation-import/expected-diagnostic-patterns.txt
+forbidden-platform-import	fail	public	Fixtures/Negative/forbidden-platform-import/main.swift	Fixtures/Negative/forbidden-platform-import/expected-diagnostic-patterns.txt
+forbidden-driver-import	fail	public	Fixtures/Negative/forbidden-driver-import/main.swift	Fixtures/Negative/forbidden-driver-import/expected-diagnostic-patterns.txt
+forbidden-host-import	fail	public	Fixtures/Negative/forbidden-host-import/main.swift	Fixtures/Negative/forbidden-host-import/expected-diagnostic-patterns.txt
+forbidden-os-rtos-import	fail	public	Fixtures/Negative/forbidden-os-rtos-import/main.swift	Fixtures/Negative/forbidden-os-rtos-import/expected-diagnostic-patterns.txt
+forbidden-hal-import	fail	public	Fixtures/Negative/forbidden-hal-import/main.swift	Fixtures/Negative/forbidden-hal-import/expected-diagnostic-patterns.txt
+forbidden-hardware-import	fail	public	Fixtures/Negative/forbidden-hardware-import/main.swift	Fixtures/Negative/forbidden-hardware-import/expected-diagnostic-patterns.txt

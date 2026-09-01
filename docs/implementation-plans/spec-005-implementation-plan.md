@@ -189,7 +189,7 @@ four-profile driver can fail closed before semantic implementation begins.
       stale generated assets, and incomplete reports; preserve the standalone
       invocations when adding the driver to `scripts/test.sh` through the
       registry.
-- [ ] `T0.4` — Add positive package-SPI imports and negative fixtures for every
+- [x] `T0.4` — Add positive package-SPI imports and negative fixtures for every
       prohibited upward import, a `GiftUI` non-re-export check, no-product
       inspection, exact source/compiled dependency checks, cycle detection,
       and scans rejecting parallel or translated resource, instance, glyph,
@@ -575,6 +575,7 @@ contract or authorize the eventual `implemented` transition.
 | `T0.1` | completed | [Authority and fixture audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/authority-audit.md), fixture README, ordered manifest, normalized-corpus schema, matched resource-harness roots, and evidence labels |
 | `T0.2` | completed | [Text-resource contract leaf](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/contract-leaf.md), focused unit test, and updated exact package graph |
 | `T0.3` | completed | [Four-profile contract driver](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/contract-driver.md), registry entry, fail-closed fixture/corpus/generated-asset checks, and deterministic reports |
+| `T0.4` | completed | [Compiler-visible boundary evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/compiler-boundaries.md), positive/negative compile fixtures, exact dependency/interface scans, reserved consumer rows, identity-owner scan, and portable Presentation scan |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the
