@@ -6,6 +6,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
 FIXTURE_ROOT="${PROJECT_ROOT}/Tests/ContractFixtures/SPEC005"
 SOURCE_ROOT="${PROJECT_ROOT}/Sources/GiftUITextResources"
+UNIT_TEST_ROOT="${PROJECT_ROOT}/Tests/GiftUITextResourcesTests"
 FOUNDATION_SOURCE="${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
 TEXT_RESOURCE_SOURCE="${SOURCE_ROOT}/GiftUITextResources.swift"
 GENERATED_ROOT="${PROJECT_ROOT}/.build/contract-generated/spec-005"
@@ -213,10 +214,12 @@ record_input_hashes() {
         printf '%s\t%s\n' "${relative}" "$(hash_file "${path}")" >>"${inputs_path}"
     done < <(
         {
-            find "${SOURCE_ROOT}" "${FIXTURE_ROOT}" -type f -print
+            find "${SOURCE_ROOT}" "${UNIT_TEST_ROOT}" "${FIXTURE_ROOT}" \
+                -type f -print
             printf '%s\n' \
                 "${FOUNDATION_SOURCE}" \
                 "${PROJECT_ROOT}/Package.swift" \
+                "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/Instrumentation/AllocationInterposer.c" \
                 "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
                 "${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv" \
                 "${SCRIPT_DIR}/check-spec-005-fixture-manifest.rb" \
@@ -229,6 +232,8 @@ record_input_hashes() {
                 "${SCRIPT_DIR}/check-spec-005-canonical.rb" \
                 "${SCRIPT_DIR}/check-spec-005-accessors.rb" \
                 "${SCRIPT_DIR}/check-spec-005-payload-borrow.rb" \
+                "${SCRIPT_DIR}/check-spec-005-target-layout.rb" \
+                "${SCRIPT_DIR}/check-spec-005-bounds.rb" \
                 "${SCRIPT_DIR}/check-spec-005-portable-source.rb" \
                 "${SCRIPT_DIR}/run-spec-005.sh"
         } | LC_ALL=C sort -u
@@ -267,6 +272,115 @@ run_preflight() {
     record_command "${SCRIPT_DIR}/check-spec-005-payload-borrow.rb" "${TEXT_RESOURCE_SOURCE}"
     "${SCRIPT_DIR}/check-spec-005-payload-borrow.rb" \
         "${TEXT_RESOURCE_SOURCE}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-005-bounds.rb" \
+        "${TEXT_RESOURCE_SOURCE}" \
+        "${UNIT_TEST_ROOT}/BoundaryAndLayoutTests.swift"
+    "${SCRIPT_DIR}/check-spec-005-bounds.rb" \
+        "${TEXT_RESOURCE_SOURCE}" \
+        "${UNIT_TEST_ROOT}/BoundaryAndLayoutTests.swift" \
+        >>"${log_path}" 2>&1
+}
+
+run_target_layout_probe() {
+    local compiler="$1"
+    shift
+    local probe_dir="${report_dir}/build/layout-probe"
+    local module_dir="${probe_dir}/modules"
+    local layout_ir="${report_dir}/semantics/type-layout.ll"
+    local layout_report="${report_dir}/semantics/type-layout.tsv"
+    mkdir -p "${module_dir}"
+    local -a foundation_command=(
+        "${compiler}" "$@" -parse-as-library -package-name GiftUI
+        -emit-module -module-name GiftUI "${FOUNDATION_SOURCE}"
+        -emit-module-path "${module_dir}/GiftUI.swiftmodule"
+    )
+    record_command "${foundation_command[@]}"
+    "${foundation_command[@]}" >>"${log_path}" 2>&1
+    local -a layout_command=(
+        "${compiler}" "$@" -parse-as-library -package-name GiftUI
+        -DGIFTUI_LAYOUT_PROBE_LOCAL -I "${module_dir}" -emit-ir
+        -module-name GiftUITextResources
+        "${TEXT_RESOURCE_SOURCE}"
+        "${FIXTURE_ROOT}/Instrumentation/LayoutProbe.swift"
+        -o "${layout_ir}"
+    )
+    record_command "${layout_command[@]}"
+    "${layout_command[@]}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-005-target-layout.rb" \
+        "${layout_ir}" "${layout_report}"
+    "${SCRIPT_DIR}/check-spec-005-target-layout.rb" \
+        "${layout_ir}" "${layout_report}" >>"${log_path}" 2>&1
+    record_image layout-ir "${layout_ir}"
+}
+
+run_allocation_probe() {
+    local compiler="$1"
+    local sdk_path="$2"
+    local profile_flag="$3"
+    local probe_dir="${report_dir}/build/allocation-probe"
+    local module_dir="${probe_dir}/modules"
+    local clang interposer foundation_library text_library probe output
+    mkdir -p "${module_dir}"
+    clang="$(xcrun --find clang)"
+    [[ -x "${clang}" ]] || fail 'clang is missing for allocation instrumentation'
+    interposer="${probe_dir}/libGiftUIAllocationInterposer.dylib"
+    foundation_library="${probe_dir}/libGiftUI.dylib"
+    text_library="${probe_dir}/libGiftUITextResources.dylib"
+    probe="${probe_dir}/allocation-probe"
+    output="${report_dir}/semantics/allocation-probe.txt"
+
+    local -a foundation_command=(
+        "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
+        -module-cache-path "${report_dir}/build/clang-cache"
+        -O -whole-module-optimization "${profile_flag}" -language-mode 6
+        -package-name GiftUI -emit-library -emit-module -module-name GiftUI
+        "${FOUNDATION_SOURCE}"
+        -emit-module-path "${module_dir}/GiftUI.swiftmodule"
+        -o "${foundation_library}"
+    )
+    record_command "${foundation_command[@]}"
+    "${foundation_command[@]}" >>"${log_path}" 2>&1
+    local -a text_command=(
+        "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
+        -module-cache-path "${report_dir}/build/clang-cache"
+        -O -whole-module-optimization "${profile_flag}" -language-mode 6
+        -package-name GiftUI -I "${module_dir}" -L "${probe_dir}" -lGiftUI
+        -emit-library -emit-module -module-name GiftUITextResources
+        "${TEXT_RESOURCE_SOURCE}"
+        -emit-module-path "${module_dir}/GiftUITextResources.swiftmodule"
+        -o "${text_library}"
+    )
+    record_command "${text_command[@]}"
+    "${text_command[@]}" >>"${log_path}" 2>&1
+    local -a interposer_command=(
+        "${clang}" -target arm64-apple-macosx26.0 -isysroot "${sdk_path}"
+        -O2 -dynamiclib
+        "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/Instrumentation/AllocationInterposer.c"
+        -install_name @rpath/libGiftUIAllocationInterposer.dylib
+        -o "${interposer}"
+    )
+    record_command "${interposer_command[@]}"
+    "${interposer_command[@]}" >>"${log_path}" 2>&1
+    local -a probe_command=(
+        "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
+        -module-cache-path "${report_dir}/build/clang-cache"
+        -O -whole-module-optimization "${profile_flag}" -language-mode 6
+        -package-name GiftUI -I "${module_dir}" -L "${probe_dir}"
+        -lGiftUI -lGiftUITextResources -lGiftUIAllocationInterposer
+        -Xlinker -rpath -Xlinker "${probe_dir}"
+        "${FIXTURE_ROOT}/Instrumentation/AllocationProbe/main.swift"
+        -o "${probe}"
+    )
+    record_command "${probe_command[@]}"
+    "${probe_command[@]}" >>"${log_path}" 2>&1
+    record_command env "DYLD_LIBRARY_PATH=${probe_dir}" "${probe}"
+    env "DYLD_LIBRARY_PATH=${probe_dir}" "${probe}" \
+        >"${output}" 2>>"${log_path}"
+    grep -Fxq 'allocation_count=0' "${output}" ||
+        fail 'text-resource hot-path allocation probe reported heap activity'
+    record_image allocation-probe "${probe}"
+    record_image allocation-interposer "${interposer}"
+    record_image allocation-text-library "${text_library}"
 }
 
 run_macos() {
@@ -364,6 +478,11 @@ run_macos() {
     run_fixture_set "${compiler}" "${module_dir}" \
         -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
         -O -whole-module-optimization "${profile_flag}" -language-mode 6
+    run_target_layout_probe "${compiler}" \
+        -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
+        -O -whole-module-optimization "${profile_flag}" -language-mode 6 \
+        -module-cache-path "${report_dir}/build/clang-cache"
+    run_allocation_probe "${compiler}" "${sdk_path}" "${profile_flag}"
 }
 
 run_raspberry_pi() {
@@ -415,6 +534,13 @@ run_raspberry_pi() {
         -resource-dir "${sdk_root}/usr/lib/swift_static" \
         -sdk "${sdk_root}" -latomic \
         -O -whole-module-optimization -language-mode 6
+    run_target_layout_probe "${compiler}" \
+        -target "${GIFTUI_PI_TARGET}" -use-ld=lld \
+        -Xcc "--gcc-toolchain=${sdk_root}/usr" \
+        -resource-dir "${sdk_root}/usr/lib/swift_static" \
+        -sdk "${sdk_root}" -latomic \
+        -O -whole-module-optimization -language-mode 6 \
+        -module-cache-path "${report_dir}/build/clang-cache"
 }
 
 run_nrf52840() {
@@ -469,6 +595,11 @@ run_nrf52840() {
         -target "${GIFTUI_NRF_SWIFT_TARGET}" \
         -enable-experimental-feature Embedded -Osize -whole-module-optimization \
         -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
+    run_target_layout_probe "${GIFTUI_NRF_SWIFTC}" \
+        -target "${GIFTUI_NRF_SWIFT_TARGET}" \
+        -enable-experimental-feature Embedded -Osize -whole-module-optimization \
+        -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16 \
+        -module-cache-path "${report_dir}/build/clang-cache"
 }
 
 verify_report() {

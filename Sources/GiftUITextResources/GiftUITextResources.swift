@@ -348,6 +348,22 @@ package extension GlyphMetrics {
 }
 
 package extension TextResourceValidator {
+    static func isWithinCapacity(
+        instanceCount: UInt16,
+        glyphCount: UInt16,
+        mappingCount: UInt16,
+        realizationCount: UInt16,
+        canonicalManifestByteCount: UInt32,
+        payloadByteCount: UInt32
+    ) -> Bool {
+        instanceCount <= 1
+            && glyphCount <= 256
+            && mappingCount <= 256
+            && realizationCount <= 2
+            && canonicalManifestByteCount <= 16_384
+            && payloadByteCount <= 65_536
+    }
+
     static func withPayloadSlice<Result>(
         for record: GlyphRasterRecord,
         cataloguedRecord: GlyphRasterRecord?,

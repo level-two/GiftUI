@@ -251,7 +251,7 @@ until Milestone 2's validator is complete.
       escaped pointer or source remains usable. Prove a body-thrown sentinel is
       propagated unchanged after exactly one invocation and is never produced
       by validation or availability handling itself.
-- [ ] `T1.5` — Add compile-time/runtime size, stride, alignment, count, and
+- [x] `T1.5` — Add compile-time/runtime size, stride, alignment, count, and
       boundary checks for every normative value and table ceiling. Exercise
       zero, one, maximum, and maximum plus one independently for instances,
       mappings, glyphs, realizations, canonical-manifest bytes, and payload
@@ -581,6 +581,7 @@ contract or authorize the eventual `implemented` transition.
 | `T1.2` | completed | [Canonical serialization and SHA-256 seam](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/canonical-serialization.md), official hash vectors, exact schema-v1 byte vector, canonical-field mutation checks, exclusion invariants, and four-profile fixed-state compile evidence |
 | `T1.3` | completed | [Total accessor and resource-format behavior](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/accessor-behavior.md), full reference scalar coverage, explicit-break classification, checked geometry, total identity/range lookups, exact bitmap interpretation, gap-free partitions, and outline-v1 grammar fixtures |
 | `T1.4` | completed | [Exact payload borrowing](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/payload-borrowing.md), exact-zero/exact-once invocation fixtures, catalogue/range/availability rejection, body-sentinel propagation, nonthrowing conformance, and immediately poisoned test storage |
+| `T1.5` | completed | [Layouts, ceilings, work, and allocation bounds](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/layout-capacity-and-work-bounds.md), 16-value target IR reports, independent zero/one/max/max-plus-one fixtures, empty partition, 256-comparison maximum, exact visit counters, and zero-allocation macOS dynamic/static probes |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the
