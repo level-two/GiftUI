@@ -375,7 +375,7 @@ integration tasks have explicit downstream prerequisites.
       retained package pointer, payload pointer, test operation, or source
       after return. Do not define paint, clip, ordering, capacity, or the
       production positioned-glyph operation owned by SPEC-008.
-- [ ] `T4.3` — Add a contract-local assembly/lifecycle fixture proving build
+- [x] `T4.3` — Add a contract-local assembly/lifecycle fixture proving build
       validation sees both reference payloads and requires each realization in
       turn; target assembly sees its immutable linked subset and requires its
       one selected available realization before the first run cycle; no layout,
@@ -594,6 +594,7 @@ contract or authorize the eventual `implemented` transition.
 | `T3.4` | completed | [Provenance and build validation](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/provenance-and-build-validation.md), [machine-checked inventory](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-provenance.tsv), source-side attribution, exact derivative naming and reproduction command, input/output hashes and sizes, and scoped engineering/license evidence |
 | `T4.1` | completed | [Exact owner-adapter mappings](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/owner-adapter-mappings.md), test-only failure adapter with exact imports, all nine local error mappings, layout/render/Foundation facts, required-realization loss, and diagnostic-independence coverage |
 | `T4.2` | completed | [Contract-local synchronous offer](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/synchronous-offer.md), nominal instance/glyph identities and explicit point only, nested exact-once resource/payload lookup, empty/invalid/unavailable cases, ended-borrow instrumentation, and no production rendering policy |
+| `T4.3` | completed | [Contract-local assembly and lifecycle](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/assembly-lifecycle.md), complete-package validation for both realizations, exactly-once selected-subset validation before publication, immutable nested borrows, last-consumer teardown ownership, unselected-payload catalogue unavailability, and zero partial exposure on failure |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the
