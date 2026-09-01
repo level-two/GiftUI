@@ -243,7 +243,7 @@ until Milestone 2's validator is complete.
       partitioning, plus the `giftui-spike-outline-v1` version/header,
       big-endian operands, command arities, implied-point sentinel,
       close/end encoding, `Int16` coordinates, and no-trailing-byte rules.
-- [ ] `T1.4` — Implement `withPayload` with exact-zero/exact-once body
+- [x] `T1.4` — Implement `withPayload` with exact-zero/exact-once body
       invocation, exact buffer count, unavailable/invalid zero-invocation,
       body-only `rethrows`, a non-throwing static conformance path, and no
       allocation or retained borrow. Add lifetime instrumentation that poisons
@@ -580,6 +580,7 @@ contract or authorize the eventual `implemented` transition.
 | `T1.1` | completed | [Exact declarations and raw surface](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/exact-declarations.md), focused value/protocol tests, package-interface audit, and fail-closed validator seam |
 | `T1.2` | completed | [Canonical serialization and SHA-256 seam](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/canonical-serialization.md), official hash vectors, exact schema-v1 byte vector, canonical-field mutation checks, exclusion invariants, and four-profile fixed-state compile evidence |
 | `T1.3` | completed | [Total accessor and resource-format behavior](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/accessor-behavior.md), full reference scalar coverage, explicit-break classification, checked geometry, total identity/range lookups, exact bitmap interpretation, gap-free partitions, and outline-v1 grammar fixtures |
+| `T1.4` | completed | [Exact payload borrowing](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/payload-borrowing.md), exact-zero/exact-once invocation fixtures, catalogue/range/availability rejection, body-sentinel propagation, nonthrowing conformance, and immediately poisoned test storage |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the

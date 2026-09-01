@@ -348,6 +348,41 @@ package extension GlyphMetrics {
 }
 
 package extension TextResourceValidator {
+    static func withPayloadSlice<Result>(
+        for record: GlyphRasterRecord,
+        cataloguedRecord: GlyphRasterRecord?,
+        realization: RasterRealizationID,
+        cataloguedRealization: RasterRealizationDescriptor?,
+        isAvailable: Bool,
+        payload: UnsafeRawBufferPointer?,
+        _ body: (UnsafeRawBufferPointer) throws -> Result
+    ) rethrows -> Result? {
+        guard let cataloguedRecord,
+              let cataloguedRealization,
+              let payload,
+              isAvailable,
+              record == cataloguedRecord,
+              realization == cataloguedRealization.id,
+              record.glyph.rawValue < cataloguedRealization.glyphCount,
+              cataloguedRealization.payloadByteCount <= 65_536,
+              let payloadCount = UInt32(exactly: payload.count),
+              payloadCount == cataloguedRealization.payloadByteCount,
+              record.offset <= cataloguedRealization.payloadByteCount else {
+            return nil
+        }
+        let end = record.offset.addingReportingOverflow(record.byteCount)
+        guard !end.overflow,
+              end.partialValue <= cataloguedRealization.payloadByteCount else {
+            return nil
+        }
+        let startIndex = Int(record.offset)
+        let endIndex = Int(end.partialValue)
+        let slice = UnsafeRawBufferPointer(
+            rebasing: payload[startIndex ..< endIndex]
+        )
+        return try body(slice)
+    }
+
     static func isValidUnicodeScalar(_ scalarValue: UInt32) -> Bool {
         scalarValue <= 0x10_ffff
             && !(0xd800 ... 0xdfff).contains(scalarValue)
