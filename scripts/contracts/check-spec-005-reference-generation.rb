@@ -8,6 +8,9 @@ require "pathname"
 ROOT = Pathname.new(File.expand_path("../..", __dir__))
 PINS_PATH = ROOT.join("scripts/text-resources/reference-generation-pins.json")
 GENERATED_ROOT = ROOT.join("Sources/GiftUIReferenceTextResources/Generated")
+PROVENANCE_INVENTORY = ROOT.join(
+  "Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-provenance.tsv"
+)
 
 def fail_check(message)
   warn "SPEC-005 reference generation check failed: #{message}"
@@ -60,6 +63,39 @@ fail_check("checked-in OFL text is missing") unless license.file?
 fail_check("checked-in Inter source hash differs") unless sha256(source) == expected_inputs["sourceFontSHA256"]
 fail_check("checked-in OFL hash differs") unless sha256(license) == expected_inputs["licenseSHA256"]
 
+provenance_readme = ROOT.join("ThirdParty/Inter-4.1/README.md")
+fail_check("production provenance README is missing") unless provenance_readme.file?
+provenance_text = provenance_readme.read
+[
+  "Inter Project Authors",
+  "extras/ttf/Inter-Regular.ttf",
+  expected_inputs["sourceFontSHA256"],
+  expected_inputs["licenseSHA256"],
+  "GiftUI Reference Sans",
+  "scripts/text-resources/verify-reference-generation.sh --verify",
+  "not legal advice"
+].each do |fragment|
+  fail_check("production provenance lacks #{fragment.inspect}") unless provenance_text.include?(fragment)
+end
+
+inventory_rows = PROVENANCE_INVENTORY.each_line.with_index(1).each_with_object([]) do |(line, line_number), rows|
+  next if line.start_with?("#") || line.strip.empty?
+  fields = line.chomp.split("\t", -1)
+  fail_check("provenance inventory line #{line_number} must have four fields") unless fields.length == 4
+  rows << fields
+end
+fail_check("provenance inventory must contain eleven rows") unless inventory_rows.length == 11
+paths = inventory_rows.map { |row| row[1] }
+fail_check("provenance inventory paths must be unique") unless paths.uniq.length == paths.length
+inventory_rows.each do |classification, relative, expected_bytes, expected_hash|
+  fail_check("unknown provenance classification #{classification.inspect}") unless
+    %w[source license generator pin workflow generated manifest].include?(classification)
+  path = ROOT.join(relative)
+  fail_check("provenance inventory path is missing: #{relative}") unless path.file?
+  fail_check("provenance byte count differs: #{relative}") unless path.size == Integer(expected_bytes, 10)
+  fail_check("provenance SHA-256 differs: #{relative}") unless sha256(path) == expected_hash
+end
+
 expected_outputs = %w[
   ReferenceBitmapPayload.generated.swift
   ReferenceCatalogue.generated.swift
@@ -95,4 +131,4 @@ fail_check("generated raster-record row count differs") unless catalogue.scan(/c
     payload_source.scan(/0x[0-9a-f]{2} as UInt8/).length == byte_count
 end
 
-puts "SPEC-005 reference generation check passed: exact source, license, pins, tables, payloads, and identity."
+puts "SPEC-005 reference generation check passed: exact source, license, provenance, pins, tables, payloads, and identity."

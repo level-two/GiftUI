@@ -335,7 +335,7 @@ and derivation provenance intact.
       provider bytes may differ. The nRF composition selects bitmap, omits the
       outline payload and provider, and stores no unnecessary second manifest
       copy.
-- [ ] `T3.4` — Record source, license, derivative naming, attribution,
+- [x] `T3.4` — Record source, license, derivative naming, attribution,
       derivation command, generated-file inventory, input/output hashes, and
       build-validation results in stable contract evidence. Keep legal claims
       scoped to reviewed engineering provenance rather than asserting legal
@@ -591,6 +591,7 @@ contract or authorize the eventual `implemented` transition.
 | `T3.1` | completed | [Deterministic production reference generation](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-generation.md), [current generation design](../implementation-designs/spec-005-reference-package-generation.md), exact Inter/OFL inputs, hash-pinned tools, two fresh-root generation comparison, checked-in Swift catalogue/payloads, adopted identity reproduction, and registered fail-closed drift audit |
 | `T3.2` | completed | [Concrete reference package](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/concrete-reference-package.md), exact package graph, immutable complete-catalogue views, record-local static payload borrowing, all-record grammar checks, and build validation returning `.valid` once for each required realization |
 | `T3.3` | completed | [Matched payload-subset compositions](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/payload-subset-compositions.md), one common catalogue/identity, explicit complete/bitmap-only/outline-only source lists, exact availability and selection transcripts, nRF bitmap-only mapping, omitted-provider source evidence, and retained one-realization synthetic validation |
+| `T3.4` | completed | [Provenance and build validation](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/provenance-and-build-validation.md), [machine-checked inventory](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-provenance.tsv), source-side attribution, exact derivative naming and reproduction command, input/output hashes and sizes, and scoped engineering/license evidence |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the
