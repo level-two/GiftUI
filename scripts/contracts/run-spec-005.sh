@@ -237,6 +237,7 @@ record_input_hashes() {
                 "${SCRIPT_DIR}/check-spec-005-validator.rb" \
                 "${SCRIPT_DIR}/check-spec-005-validation-corpus.rb" \
                 "${SCRIPT_DIR}/check-spec-005-common-catalogue.rb" \
+                "${SCRIPT_DIR}/check-spec-005-validated-behavior.rb" \
                 "${SCRIPT_DIR}/check-spec-005-portable-source.rb" \
                 "${SCRIPT_DIR}/run-spec-005.sh"
         } | LC_ALL=C sort -u
@@ -296,6 +297,11 @@ run_preflight() {
         "${UNIT_TEST_ROOT}/CommonCatalogueValidationTests.swift"
     "${SCRIPT_DIR}/check-spec-005-common-catalogue.rb" \
         "${UNIT_TEST_ROOT}/CommonCatalogueValidationTests.swift" \
+        >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-005-validated-behavior.rb" \
+        "${UNIT_TEST_ROOT}/ValidatedBehaviorTests.swift"
+    "${SCRIPT_DIR}/check-spec-005-validated-behavior.rb" \
+        "${UNIT_TEST_ROOT}/ValidatedBehaviorTests.swift" \
         >>"${log_path}" 2>&1
 }
 

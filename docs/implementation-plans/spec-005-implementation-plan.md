@@ -292,7 +292,7 @@ allocates zero heap bytes on the static path.
       payload must validate; an omitted unselected payload remains valid; an
       unavailable selected payload is exactly `.incompatibleViews`; and an
       availability claim whose bytes cannot be borrowed completely fails.
-- [ ] `T2.4` — Add golden behavior fixtures for baseline/ascent/descent/line
+- [x] `T2.4` — Add golden behavior fixtures for baseline/ascent/descent/line
       gap, glyph offsets and ink rectangles, advances, explicit points,
       explicit line breaks, replacement mapping, post-validation lookups, and
       every checked-overflow site. Expected line-break `nil` and prevalidated
@@ -585,6 +585,7 @@ contract or authorize the eventual `implemented` transition.
 | `T2.1` | completed | [Nine-class complete validator](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validator-predicate-pass.md), valid synthetic package, raw-precedence conflict fixture, non-short-circuit traversal counters, complete catalogue/payload/manifest passes, and ordered predicate audit |
 | `T2.2` | completed | [Isolated and pairwise validation corpus](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validation-predicate-corpus.md), nine isolated classes, all 36 class pairs in both fault orders, complete identity/count/metric/mapping/raster/integrity subfixtures, malformed bitmap/outline cases, and zero-payload positive control |
 | `T2.3` | completed | [Common catalogue and payload-subset admission](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/common-catalogue-admission.md), complete dual-payload validation, bitmap-only and outline-only linkage with identical identity/tables, unavailable-selected rejection, false availability rejection, omitted-record validation, and linked-unselected integrity enforcement |
+| `T2.4` | completed | [Validated behavior goldens](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validated-behavior.md), checked baseline/ascent/descent/line-gap geometry, explicit points and ink rectangles, advances, exact/replacement mappings, explicit break classification, post-validation lookup distinction, and every consumer geometry overflow site |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the
