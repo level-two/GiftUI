@@ -7,7 +7,8 @@ owners:
   - codex
 created: 2026-08-30
 updated: 2026-09-01
-related_design_notes: []
+related_design_notes:
+  - ../implementation-designs/spec-005-reference-package-generation.md
 conformance_report: null
 related_future_work:
   - FW-001
@@ -315,7 +316,7 @@ package variants expose the exact adopted catalogue and target-specific
 availability, validate against every exact adopted hash, and keep licensing
 and derivation provenance intact.
 
-- [ ] `T3.1` — Implement a checked-in deterministic resource-generation/build-
+- [x] `T3.1` — Implement a checked-in deterministic resource-generation/build-
       validation workflow from the adopted Inter 4.1 source and OFL evidence.
       Generate package-owned Swift metrics, mappings, descriptors, raster
       records, bitmap bytes, outline-fixture bytes, canonical byte count, and
@@ -587,6 +588,7 @@ contract or authorize the eventual `implemented` transition.
 | `T2.3` | completed | [Common catalogue and payload-subset admission](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/common-catalogue-admission.md), complete dual-payload validation, bitmap-only and outline-only linkage with identical identity/tables, unavailable-selected rejection, false availability rejection, omitted-record validation, and linked-unselected integrity enforcement |
 | `T2.4` | completed | [Validated behavior goldens](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validated-behavior.md), checked baseline/ascent/descent/line-gap geometry, explicit points and ink rectangles, advances, exact/replacement mappings, explicit break classification, post-validation lookup distinction, and every consumer geometry overflow site |
 | `T2.5` | completed | [Validator work and allocation instrumentation](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validator-instrumentation.md), zero-allocation optimized dynamic/static validator probes, exact comparison and full-table counters, once-per-digest payload-byte visits, and one assembly-time validator call across 256 frame lookups |
+| `T3.1` | completed | [Deterministic production reference generation](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-generation.md), [current generation design](../implementation-designs/spec-005-reference-package-generation.md), exact Inter/OFL inputs, hash-pinned tools, two fresh-root generation comparison, checked-in Swift catalogue/payloads, adopted identity reproduction, and registered fail-closed drift audit |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the

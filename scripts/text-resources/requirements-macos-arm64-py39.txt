@@ -1,0 +1,4 @@
+fonttools==4.60.2 \
+    --hash=sha256:a3c75b8b42f7f93906bdba9eb1197bb76aecbe9a0a7cf6feec75f7605b5e8008
+Pillow==11.3.0 \
+    --hash=sha256:7aee118e30a4cf54fdd873bd3a29de51e29105ab11f9aad8c32123f58c8f8081

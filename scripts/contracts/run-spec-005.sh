@@ -6,6 +6,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
 FIXTURE_ROOT="${PROJECT_ROOT}/Tests/ContractFixtures/SPEC005"
 SOURCE_ROOT="${PROJECT_ROOT}/Sources/GiftUITextResources"
+REFERENCE_SOURCE_ROOT="${PROJECT_ROOT}/Sources/GiftUIReferenceTextResources"
 UNIT_TEST_ROOT="${PROJECT_ROOT}/Tests/GiftUITextResourcesTests"
 FOUNDATION_SOURCE="${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
 TEXT_RESOURCE_SOURCE="${SOURCE_ROOT}/GiftUITextResources.swift"
@@ -214,8 +215,11 @@ record_input_hashes() {
         printf '%s\t%s\n' "${relative}" "$(hash_file "${path}")" >>"${inputs_path}"
     done < <(
         {
-            find "${SOURCE_ROOT}" "${UNIT_TEST_ROOT}" "${FIXTURE_ROOT}" \
+            find "${SOURCE_ROOT}" "${REFERENCE_SOURCE_ROOT}" \
+                "${UNIT_TEST_ROOT}" "${FIXTURE_ROOT}" \
                 -type f -print
+            find "${PROJECT_ROOT}/ThirdParty/Inter-4.1" \
+                "${PROJECT_ROOT}/scripts/text-resources" -type f -print
             printf '%s\n' \
                 "${FOUNDATION_SOURCE}" \
                 "${PROJECT_ROOT}/Package.swift" \
@@ -226,6 +230,7 @@ record_input_hashes() {
                 "${SCRIPT_DIR}/check-spec-005-corpus.rb" \
                 "${SCRIPT_DIR}/check-spec-005-generated-assets.rb" \
                 "${SCRIPT_DIR}/check-spec-005-adopted-inputs.rb" \
+                "${SCRIPT_DIR}/check-spec-005-reference-generation.rb" \
                 "${SCRIPT_DIR}/check-spec-005-dependencies.rb" \
                 "${SCRIPT_DIR}/check-spec-005-boundaries.rb" \
                 "${SCRIPT_DIR}/check-spec-005-surface.rb" \
@@ -257,6 +262,8 @@ run_preflight() {
     "${SCRIPT_DIR}/check-spec-005-generated-assets.rb" >>"${log_path}" 2>&1
     record_command "${SCRIPT_DIR}/check-spec-005-adopted-inputs.rb"
     "${SCRIPT_DIR}/check-spec-005-adopted-inputs.rb" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-005-reference-generation.rb"
+    "${SCRIPT_DIR}/check-spec-005-reference-generation.rb" >>"${log_path}" 2>&1
     command -v swift >/dev/null || fail 'swift is missing'
     record_command swift package dump-package
     swift package dump-package >"${package_json}" 2>>"${log_path}"

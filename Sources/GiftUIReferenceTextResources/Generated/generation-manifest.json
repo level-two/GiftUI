@@ -1,0 +1,41 @@
+{
+  "derivedName": "GiftUI Reference Sans",
+  "generator": "scripts/text-resources/generate-reference-resources.py",
+  "inputs": {
+    "licenseSHA256": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+    "sourceFontSHA256": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82"
+  },
+  "license": "SIL Open Font License 1.1",
+  "outputs": {
+    "ReferenceBitmapPayload.generated.swift": {
+      "bytes": 29692,
+      "sha256": "66d36307d52d7de0080093cd764299dbb014b4cbf25292743d46a6b860307a0e"
+    },
+    "ReferenceCatalogue.generated.swift": {
+      "bytes": 52228,
+      "sha256": "7a4085655de8b4738aeb9e27956922684c2d56235679b4775a7bd4f6de7ff70b"
+    },
+    "ReferenceOutlinePayload.generated.swift": {
+      "bytes": 202484,
+      "sha256": "4c24624376688ece755625463c9057a382494ae9050df56deaf096bf2b9a30a6"
+    }
+  },
+  "resource": {
+    "bitmapPayloadSHA256": "69cf6841d1ecd25079a63f3dcc6866c119cd11ca4c62115185af99781d13af68",
+    "canonicalManifestByteCount": 6218,
+    "glyphCount": 102,
+    "mappingCount": 96,
+    "outlinePayloadSHA256": "3d05ced8a32b17a45569b6650ea4fe88b1f2f0dc93493e79631a628d56df4c5f",
+    "resourceID": "bd14de9ff2baaaf464c130d5e2d0554004a4055cc57a8c16a65fe2cc39394910"
+  },
+  "tools": {
+    "FreeType": "2.13.3",
+    "Pillow": "11.3.0",
+    "fontTools": "4.60.2",
+    "python": "3.9.6"
+  },
+  "upstream": {
+    "project": "Inter",
+    "version": "4.1"
+  }
+}
