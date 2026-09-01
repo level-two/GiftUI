@@ -198,7 +198,7 @@ four-profile driver can fail closed before semantic implementation begins.
       later targets fail closed rather than silently escaping the audit. Scan
       portable Presentation fixtures for text-resource, raster, backend,
       platform, device imports or target-conditional branches.
-- [ ] `T0.5` — Freeze the adopted SPIKE-005 inputs as a baseline evidence
+- [x] `T0.5` — Freeze the adopted SPIKE-005 inputs as a baseline evidence
       inventory: source and license, derivation pins, canonical manifest,
       bitmap and outline payloads, record tables, provenance, all SHA-256
       values, counts, and measured nRF calibration. Record which bytes and
@@ -576,6 +576,7 @@ contract or authorize the eventual `implemented` transition.
 | `T0.2` | completed | [Text-resource contract leaf](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/contract-leaf.md), focused unit test, and updated exact package graph |
 | `T0.3` | completed | [Four-profile contract driver](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/contract-driver.md), registry entry, fail-closed fixture/corpus/generated-asset checks, and deterministic reports |
 | `T0.4` | completed | [Compiler-visible boundary evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/compiler-boundaries.md), positive/negative compile fixtures, exact dependency/interface scans, reserved consumer rows, identity-owner scan, and portable Presentation scan |
+| `T0.5` | completed | [Adopted SPIKE-005 input baseline](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/adopted-input-baseline.md), machine-checked inventory, exact hashes/counts/provenance, and nRF calibration |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the
