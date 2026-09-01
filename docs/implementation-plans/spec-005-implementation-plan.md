@@ -180,7 +180,7 @@ four-profile driver can fail closed before semantic implementation begins.
       capability, layout, render, runtime, backend, resource implementation,
       platform, driver, OS/RTOS, HAL, or hardware module. Update SPEC-002's
       exact target/dependency allow-list and graph fixtures atomically.
-- [ ] `T0.3` — Add
+- [x] `T0.3` — Add
       `scripts/contracts/run-spec-005.sh --profile <profile>` for exactly
       `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, and
       `nrf52840-embedded`. Register it in
@@ -574,6 +574,7 @@ contract or authorize the eventual `implemented` transition.
 | --- | --- | --- |
 | `T0.1` | completed | [Authority and fixture audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/authority-audit.md), fixture README, ordered manifest, normalized-corpus schema, matched resource-harness roots, and evidence labels |
 | `T0.2` | completed | [Text-resource contract leaf](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/contract-leaf.md), focused unit test, and updated exact package graph |
+| `T0.3` | completed | [Four-profile contract driver](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/contract-driver.md), registry entry, fail-closed fixture/corpus/generated-asset checks, and deterministic reports |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the
