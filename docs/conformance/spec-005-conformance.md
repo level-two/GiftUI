@@ -49,16 +49,16 @@ the MVP Signal Analyzer's deterministic text across all four configurations.
 | `TR-008` | pass | [Common catalogue](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/common-catalogue-admission.md), [payload subsets](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/payload-subset-compositions.md), [resource images](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-resource-images.md) | One identity/catalogue and target-specific availability/omission are proved. |
 | `TR-009` | pass | [Payload borrowing](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/payload-borrowing.md), [synchronous offer](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/synchronous-offer.md), [allocation](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-path-allocation.md) | Exact-once synchronous traversal and ended borrows pass with zero measured allocation. |
 | `TR-010` | pass | [Bounds](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/layout-capacity-and-work-bounds.md), [resource images](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-resource-images.md) | Type/table limits, zero allocation, omission, flash, RAM, and conservative stack ceilings pass. |
-| `TR-011` | blocked | [Pristine rebuilds](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/pristine-rebuilds.md), [resource timing](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/resource-only-timing.md) | Standalone commands and registered gates pass; T6.3's final clean-checkout gate remains to be recorded. No exception exists. |
+| `TR-011` | pass | [Pristine rebuilds](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/pristine-rebuilds.md), [resource timing](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/resource-only-timing.md), [final gate](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-6/final-hardware-free-gate.md) | Standalone commands, two pristine rebuilds, timing, and the final clean registered gate pass without hardware claims. |
 | `TR-012` | pass | [Authority audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/authority-audit.md), [final boundary audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-6/final-boundary-audit.md) | Source, interface, product, concrete-package, portable Presentation, and non-goal audits pass. |
 | `TR-013` | pass | [Validated behavior](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validated-behavior.md), [owner mappings](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/owner-adapter-mappings.md) | Geometry, breaks, availability, lookup failure, and unchanged Foundation facts are complete. |
 
 ## Required-Test Results
 
 All four standalone drivers, two pristine four-profile rebuilds, the default
-top-level gate, and `scripts/test.sh all-hardware-free` have passed. T6.3 will
-repeat the complete registered gate from a final clean checkout after the
-remaining audit changes land.
+top-level gate, and `scripts/test.sh all-hardware-free` have passed. T6.3's
+final clean-checkout run passed all common checks and all 16 registered
+Spec/profile driver combinations with zero failures.
 
 ## Profile, Backend, and Platform Evidence
 
@@ -79,8 +79,7 @@ not claimed here.
 ## Deviations and Exceptions
 
 No implementation divergence, failed requirement, or approved exception is
-known. TR-002 is blocked by absent downstream production consumers. TR-011
-remains open only for the final clean-checkout gate.
+known. TR-002 is blocked by absent downstream production consumers.
 
 ## Deferred Work Audit
 
@@ -90,7 +89,7 @@ implementation authority. No deferred item conceals required current work.
 
 ## Review Conclusion
 
-Eleven criteria pass and two are currently blocked. The report does not yet
-support requesting the human `implemented` transition. T6.3 must close its
-evidence, while TR-002/T4.4 remains blocked until the downstream
+Twelve criteria pass and one is blocked. The report does not yet support
+requesting the human `implemented` transition because TR-002/T4.4 remains
+blocked until the downstream
 governing Specifications create and integrate their production consumers.

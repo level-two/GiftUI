@@ -299,10 +299,11 @@ tasks:
       - Tests/ContractFixtures/SPEC005/Evidence/milestone-6/final-boundary-audit.md
     blockers: []
   T6.3:
-    disposition: pending
+    disposition: completed
     requirements: [TR-011]
-    implementation: []
-    checks: []
-    profiles: []
-    evidence: []
+    implementation: [scripts/test.sh]
+    checks: [scripts/test.sh]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-6/final-hardware-free-gate.md
     blockers: []

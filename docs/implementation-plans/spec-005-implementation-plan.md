@@ -2,7 +2,7 @@
 spec: SPEC-005
 feature: giftui-mvp-architecture
 title: SPEC-005 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-08-30
@@ -140,19 +140,19 @@ once below and maps to implementation tasks and reproducible evidence.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `TR-001` — Approval, manifest, authority, reciprocal Specification/Spike/Future Work traceability | `T0.1`, `T6.1` | Governance and reciprocal-link audit | pending |
-| `TR-002` — Exact module graph and zero parallel or translated text-resource identities | `T0.2`, `T0.4`, `T4.4`, `T6.2` | Package graph, source/interface/binary scans, compile fixtures, downstream integration audit | pending |
-| `TR-003` — Exact identity declarations, widths, serialization, SHA-256 inputs, counts, and identity-change behavior | `T1.1`, `T1.2`, `T1.5`, `T3.1`, `T5.1` | API/layout tests, canonical golden vectors, mutation corpus, four-profile digest transcripts | pending |
-| `TR-004` — Licensed reference package, exact coverage, replacement glyph, build validation, and target-selected assembly validity | `T0.5`, `T3.1`, `T3.2`, `T3.3`, `T3.4`, `T4.3`, `T5.1` | Provenance/hash audit, deterministic generation, complete-package and target-subset validation | pending |
-| `TR-005` — Exact scalar and line-break mapping with package-only replacement and no ambient fallback | `T1.3`, `T2.4`, `T5.1` | Exhaustive scalar/control corpus and cross-profile normalized output | pending |
-| `TR-006` — Equal metrics, selection, advances, ink geometry, and explicit points in all four profiles | `T1.3`, `T2.4`, `T4.2`, `T5.1` | Golden geometry corpus and value-for-value profile comparison | pending |
-| `TR-007` — Exact deterministic local errors and SPEC-002/SPEC-003 owner mappings without partial results or diagnostics | `T2.1`, `T2.2`, `T4.1`, `T4.2`, `T5.1` | Independent/pairwise validation corpus, overflow fixtures, owner-adapter transcripts | pending |
-| `TR-008` — Common catalogue/identity with target-specific payload availability and raster-independent logical results | `T2.3`, `T3.3`, `T4.3`, `T5.1`, `T5.3` | Complete, bitmap-only, and outline-only package transcripts plus link-map omission evidence | pending |
-| `TR-009` — Exactly-once synchronous payload/offer traversal and no retained borrows | `T1.4`, `T4.2`, `T4.3`, `T5.2` | Invocation counters, poisoned-lifetime probes, allocation instrumentation | pending |
-| `TR-010` — Zero static-path allocation, type/table limits, and bounded nRF bitmap-only resources | `T1.5`, `T2.5`, `T3.3`, `T5.2`, `T5.3` | Allocation traps, size/stride/alignment report, boundary corpus, ELF/map/stack and symbol reports | pending |
-| `TR-011` — Four exact contract-driver commands reproduce required clean-checkout evidence without hardware claims | `T0.3`, `T5.1`, `T5.3`, `T5.4`, `T5.5`, `T6.3` | Registered standalone driver reports, resource timing, and two pristine normalized rebuilds | pending |
-| `TR-012` — No out-of-scope text, layout, rendering, backend, cache, capability, host-policy, or deferred typography semantics | `T0.1`, `T6.2` | Public/package surface and non-goal audit | pending |
-| `TR-013` — Complete baseline, line, ink, break, availability, and post-validation lookup rules with unchanged Foundation facts | `T1.3`, `T2.4`, `T4.1`, `T4.2`, `T4.3`, `T6.1` | Focused geometry/availability/failure corpus and contract-coverage audit | pending |
+| `TR-001` — Approval, manifest, authority, reciprocal Specification/Spike/Future Work traceability | `T0.1`, `T6.1` | Governance and reciprocal-link audit | pass |
+| `TR-002` — Exact module graph and zero parallel or translated text-resource identities | `T0.2`, `T0.4`, `T4.4`, `T6.2` | Package graph, source/interface/binary scans, compile fixtures, downstream integration audit | blocked |
+| `TR-003` — Exact identity declarations, widths, serialization, SHA-256 inputs, counts, and identity-change behavior | `T1.1`, `T1.2`, `T1.5`, `T3.1`, `T5.1` | API/layout tests, canonical golden vectors, mutation corpus, four-profile digest transcripts | pass |
+| `TR-004` — Licensed reference package, exact coverage, replacement glyph, build validation, and target-selected assembly validity | `T0.5`, `T3.1`, `T3.2`, `T3.3`, `T3.4`, `T4.3`, `T5.1` | Provenance/hash audit, deterministic generation, complete-package and target-subset validation | pass |
+| `TR-005` — Exact scalar and line-break mapping with package-only replacement and no ambient fallback | `T1.3`, `T2.4`, `T5.1` | Exhaustive scalar/control corpus and cross-profile normalized output | pass |
+| `TR-006` — Equal metrics, selection, advances, ink geometry, and explicit points in all four profiles | `T1.3`, `T2.4`, `T4.2`, `T5.1` | Golden geometry corpus and value-for-value profile comparison | pass |
+| `TR-007` — Exact deterministic local errors and SPEC-002/SPEC-003 owner mappings without partial results or diagnostics | `T2.1`, `T2.2`, `T4.1`, `T4.2`, `T5.1` | Independent/pairwise validation corpus, overflow fixtures, owner-adapter transcripts | pass |
+| `TR-008` — Common catalogue/identity with target-specific payload availability and raster-independent logical results | `T2.3`, `T3.3`, `T4.3`, `T5.1`, `T5.3` | Complete, bitmap-only, and outline-only package transcripts plus link-map omission evidence | pass |
+| `TR-009` — Exactly-once synchronous payload/offer traversal and no retained borrows | `T1.4`, `T4.2`, `T4.3`, `T5.2` | Invocation counters, poisoned-lifetime probes, allocation instrumentation | pass |
+| `TR-010` — Zero static-path allocation, type/table limits, and bounded nRF bitmap-only resources | `T1.5`, `T2.5`, `T3.3`, `T5.2`, `T5.3` | Allocation traps, size/stride/alignment report, boundary corpus, ELF/map/stack and symbol reports | pass |
+| `TR-011` — Four exact contract-driver commands reproduce required clean-checkout evidence without hardware claims | `T0.3`, `T5.1`, `T5.3`, `T5.4`, `T5.5`, `T6.3` | Registered standalone driver reports, resource timing, and two pristine normalized rebuilds | pass |
+| `TR-012` — No out-of-scope text, layout, rendering, backend, cache, capability, host-policy, or deferred typography semantics | `T0.1`, `T6.2` | Public/package surface and non-goal audit | pass |
+| `TR-013` — Complete baseline, line, ink, break, availability, and post-validation lookup rules with unchanged Foundation facts | `T1.3`, `T2.4`, `T4.1`, `T4.2`, `T4.3`, `T6.1` | Focused geometry/availability/failure corpus and contract-coverage audit | pass |
 
 ## Milestones and Tasks
 
@@ -464,7 +464,7 @@ review without asserting the `implemented` transition.
       render-order, backend-raster, cache, capability, host-policy, or deferred
       typography additions. Route any contract or architecture mismatch
       upstream instead of normalizing it in this plan.
-- [ ] `T6.3` — Run the complete registered hardware-free gate from a clean
+- [x] `T6.3` — Run the complete registered hardware-free gate from a clean
       checkout and record any required platform exceptions separately.
       Conformance review, not plan completion, determines whether the evidence
       satisfies SPEC-005; a human maintainer still controls the
@@ -604,6 +604,11 @@ contract or authorize the eventual `implemented` transition.
 | `T5.5` | completed | [Resource-only timing evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/resource-only-timing.md), optimized host-executed dynamic/static measurements for 103 representative and 4,096 maximum admitted glyph lookups and payload borrows, both below 2.5 milliseconds against the 250-millisecond interval, with downstream timing claims explicitly excluded |
 | `T6.1` | completed | [Collecting conformance report](../conformance/spec-005-conformance.md), complete thirteen-criterion re-audit, current authority/status and manifest verification, exact evidence links, unchanged Foundation facts, and explicit open gates for downstream integration plus T6.2/T6.3 |
 | `T6.2` | completed with downstream blocker retained | [Final boundary audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-6/final-boundary-audit.md), exact source/interface/compiled dependency and product checks, concrete-package identity audit, complete non-goal scan, and explicit preservation of T4.4/TR-002 until governed production consumers exist |
+| `T6.3` | completed | [Final hardware-free gate](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-6/final-hardware-free-gate.md), clean revision, zero failures in common checks and all 16 registered Spec/profile driver combinations, explicit cross-build-only classification, and no platform exception |
+
+Every task now has a disposition. The plan is `completed`; T4.4 and TR-002
+remain blocked on governed downstream production consumers, so the linked
+conformance report remains `collecting` and SPEC-005 remains `implementing`.
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the
