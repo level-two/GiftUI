@@ -14,9 +14,7 @@ def profile_directory(report_root, profile)
     abort "run pointer target is missing: #{path}" unless File.directory?(path)
     return [path, run_id]
   end
-  legacy = File.join(report_root, profile)
-  abort "missing report for #{profile}: no immutable pointer or legacy report" unless File.directory?(legacy)
-  [legacy, nil]
+  abort "missing immutable report pointer for #{profile}: #{pointer}"
 end
 
 def read_rows(path)
@@ -25,10 +23,7 @@ end
 
 directories = profiles.to_h { |profile| [profile, profile_directory(report_root, profile)] }
 immutable_ids = directories.values.map(&:last)
-if immutable_ids.any?
-  abort "mixed immutable and legacy SPEC-005 reports" if immutable_ids.any?(&:nil?)
-  abort "profile reports use mixed run identities" unless immutable_ids.uniq.length == 1
-end
+abort "profile reports use mixed run identities" unless immutable_ids.uniq.length == 1
 
 rows = profiles.to_h do |profile|
   path = File.join(directories.fetch(profile).first, "semantics/profile-semantics.tsv")
@@ -57,9 +52,7 @@ input_set_hashes = profiles.map do |profile|
   metadata = File.read(File.join(directories.fetch(profile).first, "metadata.txt"))
   metadata[/^input_set_sha256=(.+)$/, 1]
 end
-if immutable_ids.any?
-  abort "profile reports use different input-set hashes" if input_set_hashes.any?(&:nil?) || input_set_hashes.uniq.length != 1
-end
+abort "profile reports use different input-set hashes" if input_set_hashes.any?(&:nil?) || input_set_hashes.uniq.length != 1
 
 baseline = rows.fetch("macos-dynamic").select { |row| row.start_with?("logical\t") }
 profiles.each do |profile|

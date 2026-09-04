@@ -39,6 +39,17 @@ and committed before the next step begins.
 
 ## Completion Record
 
-Record each step's commit and validation result here as it lands. Final review
-must account for all GT-001 through GT-016 criteria and any deliberately
-deferred work.
+| Step | Commit(s) | Validation result |
+| --- | --- | --- |
+| Plan | `b788af7` | Seven independently reviewable migrations recorded before implementation |
+| 1 | `6286a08` | Authority graph fixtures and integrated governance validation pass |
+| 2 | `106d2eb` | SPEC-005 manifest and task-evidence validator pass |
+| 3 | `ee00227` | Deterministic Markdown/JSON context-pack tests pass for completed and blocked tasks |
+| 4 | `67c9d1c` | SPEC-005 immutable publication and mixed-identity tests pass across four profiles |
+| 5 | `c2d858d` | Fixture-local module allowlists pass in forward and reverse build order |
+| 6 | `b80520d` | Focused/profile/Specification/repository gates and SwiftPM wrapper tests pass |
+| 7 | `b110793`, `ccb28b9`, `47e9f2b`, plus the final transition-removal change | SPEC-002, SPEC-003, and SPEC-004 manifests validate and stable macOS profile commands publish immutable reports |
+
+Final validation must account for GT-001 through GT-016 from a clean checkout.
+Connected-target execution remains governed by the relevant product
+Specifications and is not part of this tooling initiative.

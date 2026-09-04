@@ -16,6 +16,5 @@ giftui_contract_profile_report() {
         printf '%s\n' "${report_root}/${run_id}/${profile}"
         return 0
     fi
-    [[ -d "${report_root}/${profile}" ]] || return 1
-    printf '%s\n' "${report_root}/${profile}"
+    return 1
 }

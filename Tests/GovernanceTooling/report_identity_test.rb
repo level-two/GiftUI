@@ -10,6 +10,7 @@ IDENTITY = File.join(ROOT, "scripts/contracts/report-input-identity.rb")
 PUBLISH = File.join(ROOT, "scripts/contracts/publish-contract-report.rb")
 VERIFY = File.join(ROOT, "scripts/contracts/verify-contract-report.rb")
 COMPARE = File.join(ROOT, "scripts/contracts/compare-spec-005-profile-semantics.rb")
+REPORT_PATH = File.join(ROOT, "scripts/contracts/report-path.sh")
 REVISION = "a" * 40
 
 class ReportIdentityTest < Minitest::Test
@@ -69,6 +70,37 @@ class ReportIdentityTest < Minitest::Test
       refute status.success?
       assert_includes error, "mixed run identities"
       refute_includes error, "missing semantic transcript"
+    end
+  end
+
+  def test_report_lookup_rejects_legacy_profile_only_directories
+    Dir.mktmpdir("giftui-report-path-") do |root|
+      FileUtils.mkdir_p(File.join(root, "macos-dynamic"))
+      command = 'source "$1"; giftui_contract_profile_report "$2" macos-dynamic'
+      _output, _error, status = Open3.capture3("bash", "-c", command, "_", REPORT_PATH, root)
+      refute status.success?
+
+      run_id = "#{REVISION}-#{'1' * 16}"
+      FileUtils.mkdir_p(File.join(root, run_id, "macos-dynamic"))
+      File.write(File.join(root, "latest-macos-dynamic.txt"), "#{run_id}\n")
+      output, error, status = Open3.capture3("bash", "-c", command, "_", REPORT_PATH, root)
+      assert status.success?, error
+      assert_equal "#{File.join(root, run_id, 'macos-dynamic')}\n", output
+    end
+  end
+
+  def test_every_registered_driver_uses_immutable_publication
+    registry = File.join(ROOT, "scripts/contracts/driver-registry.tsv")
+    File.foreach(registry) do |line|
+      next if line.start_with?("#") || line.strip.empty?
+      _spec, relative_driver, = line.chomp.split("\t")
+      driver = File.read(File.join(ROOT, relative_driver))
+      generic_wrapper = driver.include?("run-immutable-contract-driver.sh") &&
+                        driver.include?("GIFTUI_CONTRACT_REPORT_DIR")
+      native_publication = driver.include?("canonical_report_dir=") &&
+                           driver.include?("publish-contract-report.rb")
+      assert generic_wrapper || native_publication,
+             "#{relative_driver} does not use an immutable report publication path"
     end
   end
 end
