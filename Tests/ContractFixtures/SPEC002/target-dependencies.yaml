@@ -35,6 +35,14 @@ targets:
     type: test
     dependencies:
       - GiftUICapabilities
+  GiftUISemanticCore:
+    type: regular
+    dependencies:
+      - GiftUI
+  GiftUISemanticCoreTests:
+    type: test
+    dependencies:
+      - GiftUISemanticCore
   GiftUITextResources:
     type: regular
     dependencies:
@@ -83,3 +91,14 @@ targets:
     dependencies:
       - GiftUICapabilities
       - GiftUIFailureCore
+  GiftUISemanticFailureAdapterFixture:
+    type: regular
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUISemanticCore
+  GiftUISemanticFailureAdapterTests:
+    type: test
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUISemanticCore
+      - GiftUISemanticFailureAdapterFixture

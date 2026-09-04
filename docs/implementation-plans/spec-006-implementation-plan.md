@@ -160,7 +160,7 @@ implemented.
       ordered fixture manifest, canonical transcript schema, normalized
       result schema, evidence directories, and explicit host, cross-build,
       simulator, and connected-hardware evidence labels.
-- [ ] `T0.2` — Add package-internal `GiftUISemanticCore` and focused unit-test
+- [x] `T0.2` — Add package-internal `GiftUISemanticCore` and focused unit-test
       targets. The production target depends only on `GiftUI`; `GiftUI` gains
       no dependency on Semantic Core. Add a test-only semantic/failure owner
       adapter target that imports exactly `GiftUISemanticCore` and
@@ -571,3 +571,12 @@ establishes the ordered compile registry, canonical transcript and normalized
 result schemas, deterministic generated/report roots, and precise host,
 cross-build, simulator, and connected-target labels without starting semantic
 implementation. `T0.2` is next.
+
+`T0.2` is complete: the package now contains the unpublished
+`GiftUISemanticCore` leaf with the sole production edge to `GiftUI`, plus the
+unpublished test-only semantic/failure owner adapter importing exactly
+Semantic Core and Failure Core. Focused import tests, reverse-import negative
+fixtures, SPEC-002's exact target/dependency allowlist, product checks, and
+cycle checks preserve the required direction; see the
+[Semantic Core leaf evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-0/semantic-core-leaf.md).
+`T0.3` is next.

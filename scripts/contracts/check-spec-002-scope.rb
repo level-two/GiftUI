@@ -52,6 +52,7 @@ adapter_paths = %w[
   Tests/GiftUIFoundationFailureAdapterTests/GiftUIFoundationFailureAdapterTests.swift
   Tests/GiftUICapabilityAdapterTests/GiftUICapabilityAdapterTests.swift
   Sources/GiftUICapabilityFailureAdapterFixture/CapabilityFailureAdapter.swift
+  Sources/GiftUISemanticFailureAdapterFixture/SemanticFailureAdapter.swift
 ]
 adapter_paths.each do |relative_path|
   fail!("owner adapter moved into SPEC-002 fixtures") if relative_path.start_with?("Tests/ContractFixtures/SPEC002/")

@@ -66,7 +66,10 @@ expected_edges = {
   "GiftUIFoundationFailureAdapterTests" => %w[GiftUI GiftUIFailureCore],
   "GiftUICapabilityAdapterTests" => %w[GiftUI GiftUICapabilities],
   "GiftUICapabilityFailureAdapterFixture" => %w[GiftUICapabilities GiftUIFailureCore],
-  "GiftUICapabilityFailureAdapterTests" => %w[GiftUICapabilityFailureAdapterFixture GiftUICapabilities GiftUIFailureCore]
+  "GiftUICapabilityFailureAdapterTests" => %w[GiftUICapabilityFailureAdapterFixture GiftUICapabilities GiftUIFailureCore],
+  "GiftUISemanticCore" => %w[GiftUI],
+  "GiftUISemanticFailureAdapterFixture" => %w[GiftUIFailureCore GiftUISemanticCore],
+  "GiftUISemanticFailureAdapterTests" => %w[GiftUIFailureCore GiftUISemanticCore GiftUISemanticFailureAdapterFixture]
 }
 expected_edges.each do |target, edges|
   fail!("#{target} edge set differs") unless graph.fetch(target).fetch("dependencies") == edges
@@ -81,7 +84,9 @@ end
 source_imports = {
   "Tests/GiftUIFoundationFailureAdapterTests/GiftUIFoundationFailureAdapterTests.swift" => %w[GiftUI GiftUIFailureCore XCTest],
   "Tests/GiftUICapabilityAdapterTests/GiftUICapabilityAdapterTests.swift" => %w[GiftUI GiftUICapabilities XCTest],
-  "Sources/GiftUICapabilityFailureAdapterFixture/CapabilityFailureAdapter.swift" => %w[GiftUICapabilities GiftUIFailureCore]
+  "Sources/GiftUICapabilityFailureAdapterFixture/CapabilityFailureAdapter.swift" => %w[GiftUICapabilities GiftUIFailureCore],
+  "Sources/GiftUISemanticCore/GiftUISemanticCore.swift" => %w[GiftUI],
+  "Sources/GiftUISemanticFailureAdapterFixture/SemanticFailureAdapter.swift" => %w[GiftUIFailureCore GiftUISemanticCore]
 }
 source_imports.each do |path, expected|
   actual = File.readlines(File.join(ROOT, path)).each_with_object([]) do |line, imports|
@@ -95,6 +100,9 @@ products = package[/products:\s*\[(.*?)\n\s*\],\n\s*targets:/m, 1]
 fail!("Package products block is unreadable") unless products
 if products.include?("GiftUICapabilityFailureAdapterFixture")
   fail!("test-only capability/failure adapter is published as a product")
+end
+if products.include?("GiftUISemanticCore") || products.include?("GiftUISemanticFailureAdapterFixture")
+  fail!("package-internal semantic targets are published as products")
 end
 
 puts "SPEC-002 traceability passed: reciprocal authority links, supersession, manifest navigation, and split adapter ownership."

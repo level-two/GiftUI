@@ -25,12 +25,18 @@ PROTECTED_FIXTURES = {
     "import-capabilities",
     "forbidden-giftui-import",
   ],
+  "GiftUISemanticCore" => [
+    "Tests/ContractFixtures/SPEC006/fixture-manifest.tsv",
+    "import-semantic-core",
+    "forbidden-failure-core-import",
+  ],
 }.freeze
 FORBIDDEN_GIFTUI_MODULES = %w[
   GiftUIFailureCore
   GiftUIFailureDiagnostics
   GiftUIFailureExecution
   GiftUICapabilities
+  GiftUISemanticCore
   GiftUITextResources
   GiftUIExecutionContract
   GiftUISemantics

@@ -1,1 +1,4 @@
 # id	expectation	access	entry_point	diagnostic_patterns	allowed_modules
+import-semantic-core	pass	package	Fixtures/Positive/import-semantic-core/main.swift	-	GiftUI,GiftUISemanticCore
+forbidden-failure-core-import	fail	package	Fixtures/Negative/forbidden-failure-core-import/main.swift	Fixtures/Negative/forbidden-failure-core-import/expected-diagnostic-patterns.txt	GiftUI,GiftUISemanticCore
+forbidden-failure-execution-import	fail	package	Fixtures/Negative/forbidden-failure-execution-import/main.swift	Fixtures/Negative/forbidden-failure-execution-import/expected-diagnostic-patterns.txt	GiftUI,GiftUISemanticCore
