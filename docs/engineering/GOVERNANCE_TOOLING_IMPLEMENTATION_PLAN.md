@@ -48,7 +48,7 @@ and committed before the next step begins.
 | 4 | `67c9d1c` | SPEC-005 immutable publication and mixed-identity tests pass across four profiles |
 | 5 | `c2d858d` | Fixture-local module allowlists pass in forward and reverse build order |
 | 6 | `b80520d` | Focused/profile/Specification/repository gates and SwiftPM wrapper tests pass |
-| 7 | `b110793`, `ccb28b9`, `47e9f2b`, plus the final transition-removal change | SPEC-002, SPEC-003, and SPEC-004 manifests validate and stable macOS profile commands publish immutable reports |
+| 7 | `b110793`, `ccb28b9`, `47e9f2b`, `37d8349` | SPEC-002, SPEC-003, and SPEC-004 manifests validate; all drivers publish immutable reports; legacy readers are removed; user workflows are documented |
 
 Final validation must account for GT-001 through GT-016 from a clean checkout.
 Connected-target execution remains governed by the relevant product
