@@ -352,15 +352,19 @@ duplicated to remove a dependency blocker.
       `GiftUIFailureCore`. Implement the generic
       `GiftUICorrelatedFailure<Context>`, preserve every fact field, and prove
       that low-level/driver fixtures cannot import correlation and the
-      execution contract does not import it.
+      execution contract does not import it. **Blocked:** SPEC-009 is approved
+      but has no implementation plan or production execution-contract target.
 - [ ] `T4.4` — After SPEC-015 supplies the production host policy and runtime
       gate, integrate the invariant mapping and terminal quiescence sequence
       proven by `T2.3`. A configured fatal hook may observe only after
-      quiescence and cannot replace it.
+      quiescence and cannot replace it. **Blocked:** SPEC-015 is approved but
+      has no implementation plan or production host/runtime gate.
 - [ ] `T4.5` — Refresh the exact package allow-list, positive/negative imports,
       compiled module dependencies, and product linkage after every owner
       target lands. Fail any upward edge, re-export, monolithic target, or
-      optional diagnostic dependency on a correctness path.
+      optional diagnostic dependency on a correctness path. **Blocked:** the
+      SPEC-009 and SPEC-015 owner targets required by `T4.3` and `T4.4` have
+      not landed, so the final exact-set refresh would be premature.
 
 ### Milestone 5: Produce Hardware-Free Four-Profile and Resource Evidence
 
@@ -392,11 +396,15 @@ labeled as host or hardware-free cross-build evidence.
       section totals, signed writable/code deltas, link maps, disassembly, and
       a symbol-resolved conservative call graph. Fail recursion, unresolved
       indirect calls, missing runtime bodies, dynamic unbounded stack, unequal
-      shared-library sets, or non-repeatable evidence.
+      shared-library sets, or non-repeatable evidence. **Blocked:** the
+      candidate must include the SPEC-009-owned execution-correlation path,
+      whose production target does not yet exist.
 - [ ] `T5.5` — On the exact macOS reference runner, execute at least 1,000
       warm-up and 10,000 measured iterations with no other repository job;
       preserve raw samples and enforce the p99 latency row. Treat results from
-      another Mac as informative only.
+      another Mac as informative only. **Blocked:** the integration order
+      requires the complete matched candidate and call-graph proof from
+      `T5.4` before the latency row can be conformance evidence.
 
 ### Milestone 6: Complete Target Evidence and Prepare Conformance Review
 
@@ -411,18 +419,24 @@ SPEC-003 conformance report is ready for independent review.
 - [ ] `T6.1` — Audit reciprocal links and exact shared declarations among
       SPEC-002/003/004 plus execution/host integrations; audit package edges,
       adapter ownership, diagnostic direction, and all deferred-work
-      boundaries. Update navigation only, never contract meaning.
+      boundaries. Update navigation only, never contract meaning. **Blocked:**
+      the execution and host integrations under audit do not exist until
+      `T4.3` and `T4.4` complete.
 - [ ] `T6.2` — On an explicitly selected connected Raspberry Pi reference
       target, require `armv6l` before executing the release corpus. Record the
       pinned compiler, OS, command, revision, raw latency samples, RAM, stack,
       and linked-code evidence and enforce p99 <= 150 us. This task performs no
       deployment or service restart unless separately requested and
-      authorized.
+      authorized. **Blocked:** the owning backend/host plans have not produced
+      a runnable release corpus, and no connected Raspberry Pi target has been
+      selected for this task.
 - [ ] `T6.3` — Create `docs/conformance/spec-003-conformance.md`, link stable
       evidence, distinguish host/cross-build/connected-target claims, and hand
       every `FAIL-AC` row to conformance review. Do not mark SPEC-003
       `implemented` without complete evidence and explicit maintainer
-      authorization.
+      authorization. **Blocked:** the report cannot receive a complete
+      criterion disposition until `T4.3` through `T6.2` supply their required
+      integration, resource, latency, and connected-target evidence.
 
 ## Design-Note Triggers
 
