@@ -12,6 +12,8 @@ FOUNDATION_SOURCE="${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
 TEXT_RESOURCE_SOURCE="${SOURCE_ROOT}/GiftUITextResources.swift"
 GENERATED_ROOT="${PROJECT_ROOT}/.build/contract-generated/spec-005"
 REPORT_ROOT="${PROJECT_ROOT}/.build/contract-reports/spec-005"
+# shellcheck source=../lib/swiftpm.sh
+source "${PROJECT_ROOT}/scripts/lib/swiftpm.sh"
 
 usage() {
     printf '%s\n' \
@@ -65,6 +67,7 @@ declared_inputs() {
             "${PROJECT_ROOT}/docs/implementation-plans/spec-005-implementation-plan.md" \
             "${PROJECT_ROOT}/scripts/governance/task-evidence-schema.yaml" \
             "${PROJECT_ROOT}/scripts/governance/check-task-evidence.rb" \
+            "${PROJECT_ROOT}/scripts/lib/swiftpm.sh" \
             "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/Instrumentation/AllocationInterposer.c" \
             "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
             "${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv" \
@@ -347,8 +350,11 @@ run_preflight() {
     record_command "${SCRIPT_DIR}/check-spec-005-assembly-lifecycle.rb"
     "${SCRIPT_DIR}/check-spec-005-assembly-lifecycle.rb" >>"${log_path}" 2>&1
     command -v swift >/dev/null || fail 'swift is missing'
-    record_command swift package dump-package
-    swift package dump-package >"${package_json}" 2>>"${log_path}"
+    record_command giftui_swiftpm --package-path "${PROJECT_ROOT}" \
+        --cache-root "${report_dir}/build" -- package dump-package
+    giftui_swiftpm --package-path "${PROJECT_ROOT}" \
+        --cache-root "${report_dir}/build" -- package dump-package \
+        >"${package_json}" 2>>"${log_path}"
     record_command "${SCRIPT_DIR}/check-target-dependencies.rb"
     "${SCRIPT_DIR}/check-target-dependencies.rb" \
         <"${package_json}" >>"${log_path}" 2>&1

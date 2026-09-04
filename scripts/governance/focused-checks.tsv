@@ -1,0 +1,26 @@
+# check	mode	arguments
+scripts/validate-governance.rb	direct
+scripts/contracts/check-spec-005-dependencies.rb	profile
+scripts/contracts/check-spec-005-fixture-manifest.rb	direct
+scripts/contracts/check-spec-005-boundaries.rb	profile
+scripts/contracts/check-spec-005-portable-source.rb	direct
+scripts/contracts/check-spec-005-surface.rb	profile
+scripts/contracts/check-spec-005-adopted-inputs.rb	direct
+scripts/contracts/check-spec-005-canonical.rb	direct	Sources/GiftUITextResources/GiftUITextResources.swift
+scripts/contracts/check-spec-005-accessors.rb	direct	Sources/GiftUITextResources/GiftUITextResources.swift
+scripts/contracts/check-spec-005-payload-borrow.rb	direct	Sources/GiftUITextResources/GiftUITextResources.swift
+scripts/contracts/check-spec-005-bounds.rb	direct	Sources/GiftUITextResources/GiftUITextResources.swift	Tests/GiftUITextResourcesTests/BoundaryAndLayoutTests.swift
+scripts/contracts/check-spec-005-target-layout.rb	profile
+scripts/contracts/check-spec-005-validator.rb	direct	Sources/GiftUITextResources/GiftUITextResources.swift
+scripts/contracts/check-spec-005-validation-corpus.rb	direct	Tests/ContractFixtures/SPEC005/SemanticCorpus/cases.tsv	Tests/GiftUITextResourcesTests
+scripts/contracts/check-spec-005-common-catalogue.rb	direct	Tests/GiftUITextResourcesTests/CommonCatalogueValidationTests.swift
+scripts/contracts/check-spec-005-validated-behavior.rb	direct	Tests/GiftUITextResourcesTests/ValidatedBehaviorTests.swift
+scripts/contracts/check-spec-005-validator-instrumentation.rb	direct	Tests/ContractFixtures/SPEC005/Instrumentation/AllocationProbe/main.swift	Tests/GiftUITextResourcesTests/ValidatorCoreTests.swift	Tests/GiftUITextResourcesTests/WorkBoundTests.swift
+scripts/contracts/check-spec-005-reference-generation.rb	direct
+scripts/contracts/check-spec-005-generated-assets.rb	direct
+scripts/contracts/check-spec-005-reference-compositions.sh	profile
+scripts/contracts/check-spec-005-owner-adapters.rb	direct
+scripts/contracts/check-spec-005-synchronous-offer.rb	direct
+scripts/contracts/check-spec-005-assembly-lifecycle.rb	direct
+scripts/contracts/check-spec-005-corpus.rb	direct
+scripts/contracts/compare-spec-005-profile-semantics.rb	specification

@@ -4,6 +4,8 @@ set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd -P)"
+# shellcheck source=lib/swiftpm.sh
+source "${PROJECT_ROOT}/scripts/lib/swiftpm.sh"
 REGISTRY="${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv"
 REPORT_ROOT="${PROJECT_ROOT}/.build/test-reports"
 ALL_PROFILES=(
@@ -99,13 +101,15 @@ run_check() {
 }
 
 run_check governance "${PROJECT_ROOT}/scripts/validate-governance.rb"
+run_check governance-tooling "${PROJECT_ROOT}/scripts/governance/test.sh"
 run_check swift-format "${PROJECT_ROOT}/scripts/format-swift.sh" --lint
 run_check driver-registry "${PROJECT_ROOT}/scripts/contracts/check-driver-registry.rb"
 
-export CLANG_MODULE_CACHE_PATH="${report_dir}/clang-cache"
-export SWIFTPM_MODULECACHE_OVERRIDE="${report_dir}/swiftpm-cache"
-run_check root-tests swift test --package-path "${PROJECT_ROOT}" \
-    --scratch-path "${report_dir}/swiftpm"
+run_check root-tests giftui_swiftpm \
+    --package-path "${PROJECT_ROOT}" \
+    --scratch-path "${report_dir}/swiftpm" \
+    --cache-root "${report_dir}" \
+    -- test
 run_check spec-003-diagnostic-buffer \
     "${PROJECT_ROOT}/scripts/contracts/check-spec-003-diagnostic-buffer.sh"
 
