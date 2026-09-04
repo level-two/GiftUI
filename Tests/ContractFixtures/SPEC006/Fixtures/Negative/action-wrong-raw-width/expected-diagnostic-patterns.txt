@@ -1,0 +1,1 @@
+'GiftUIAction' requires the types 'UInt8' and 'UInt16' be equivalent

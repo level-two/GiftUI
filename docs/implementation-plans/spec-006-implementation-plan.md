@@ -193,7 +193,7 @@ declaration is introduced by this milestone.
 views with only `import GiftUI`; wrappers and framework traversal dispatch have
 the exact approved source/access shape and add no client traversal burden.
 
-- [ ] `T1.1` — Implement the exact public `GiftUIAction` and `View` source
+- [x] `T1.1` — Implement the exact public `GiftUIAction` and `View` source
       contracts, the `Never: View` recursive-body conformance, and the ordinary
       custom-view default `_giftUITraverse` witness. Compile an external-module
       custom conformance without a handwritten witness; prove every valid
@@ -599,3 +599,13 @@ row is assigned remove, replace-through-the-sealed-surface, or already-absent,
 and the registered check rejects the old API names, string identity, a
 compatibility shim, or a second expansion engine. Milestone 0 is complete;
 `T1.1` is next.
+
+`T1.1` is complete: `GiftUI` now exposes the exact `GiftUIAction`, Rank 0
+`View`, recursive `Never`, and ordinary default custom-view traversal witness.
+Focused tests and the four-profile registry prove exact `UInt16` action codes,
+reject wrong-width and associated-value shapes, compile an external custom
+conformance without a handwritten witness, and keep `Never.body` unevaluated;
+see the
+[action/custom-view evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-1/action-and-custom-view.md).
+The remaining builder/wrapper and sealed visitor categories stay assigned to
+`T1.2` through `T1.4`; `T1.2` is next.

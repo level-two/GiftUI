@@ -6,6 +6,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
 FIXTURE_ROOT="${PROJECT_ROOT}/Tests/ContractFixtures/SPEC006"
 FOUNDATION_SOURCE="${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
+DECLARATION_SOURCE="${PROJECT_ROOT}/Sources/GiftUI/DeclarativeView.swift"
 SEMANTIC_SOURCE="${PROJECT_ROOT}/Sources/GiftUISemanticCore/GiftUISemanticCore.swift"
 GENERATED_ROOT="${PROJECT_ROOT}/.build/contract-generated/spec-006"
 REPORT_ROOT="${PROJECT_ROOT}/.build/contract-reports/spec-006"
@@ -53,11 +54,13 @@ declared_inputs() {
         find "${FIXTURE_ROOT}" -type f -print
         printf '%s\n' \
             "${FOUNDATION_SOURCE}" \
+            "${DECLARATION_SOURCE}" \
             "${SEMANTIC_SOURCE}" \
             "${PROJECT_ROOT}/Package.swift" \
             "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
             "${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv" \
             "${SCRIPT_DIR}/check-spec-006-harness.rb" \
+            "${SCRIPT_DIR}/check-spec-006-action-surface.rb" \
             "${SCRIPT_DIR}/check-spec-006-migration.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
             "${SCRIPT_DIR}/publish-contract-report.rb" \
@@ -262,7 +265,7 @@ run_macos() {
     printf 'sdk_path=%s\n' "${sdk}" >>"${metadata_path}"
     printf 'optimization=-O -whole-module-optimization\n' >>"${metadata_path}"
     local -a flags=(-target arm64-apple-macosx26.0 -sdk "${sdk}" -O -whole-module-optimization "${profile_flag}" -language-mode 6 -package-name GiftUI)
-    local -a foundation=("${compiler}" "${flags[@]}" -parse-as-library -emit-module -module-name GiftUI "${FOUNDATION_SOURCE}" -emit-module-path "${module_dir}/GiftUI.swiftmodule")
+    local -a foundation=("${compiler}" "${flags[@]}" -parse-as-library -emit-module -module-name GiftUI "${FOUNDATION_SOURCE}" "${DECLARATION_SOURCE}" -emit-module-path "${module_dir}/GiftUI.swiftmodule")
     record_command "${foundation[@]}"
     "${foundation[@]}" >>"${log_path}" 2>&1
     local -a semantic=("${compiler}" "${flags[@]}" -parse-as-library -emit-module -emit-library -module-name GiftUISemanticCore -I "${module_dir}" "${SEMANTIC_SOURCE}" -emit-module-path "${module_dir}/GiftUISemanticCore.swiftmodule")
@@ -318,7 +321,7 @@ run_nrf52840() {
     module_dir="${report_dir}/build/modules"
     mkdir -p "${module_dir}"
     local -a flags=(-target "${GIFTUI_NRF_SWIFT_TARGET}" -enable-experimental-feature Embedded -Osize -whole-module-optimization -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16 -package-name GiftUI)
-    local -a foundation=("${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -parse-as-library -emit-module -module-name GiftUI "${FOUNDATION_SOURCE}" -emit-module-path "${module_dir}/GiftUI.swiftmodule")
+    local -a foundation=("${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -parse-as-library -emit-module -module-name GiftUI "${FOUNDATION_SOURCE}" "${DECLARATION_SOURCE}" -emit-module-path "${module_dir}/GiftUI.swiftmodule")
     record_command "${foundation[@]}"
     "${foundation[@]}" >>"${log_path}" 2>&1
     local -a semantic=("${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -parse-as-library -emit-module -module-name GiftUISemanticCore -I "${module_dir}" "${SEMANTIC_SOURCE}" -emit-module-path "${module_dir}/GiftUISemanticCore.swiftmodule")
@@ -332,6 +335,8 @@ record_command "${SCRIPT_DIR}/check-spec-006-harness.rb"
 "${SCRIPT_DIR}/check-spec-006-harness.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-006-migration.rb"
 "${SCRIPT_DIR}/check-spec-006-migration.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-006-action-surface.rb"
+"${SCRIPT_DIR}/check-spec-006-action-surface.rb" >>"${log_path}" 2>&1
 
 case "${profile}" in
     macos-dynamic | macos-static) run_macos ;;

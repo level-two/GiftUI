@@ -81,6 +81,7 @@ forbidden_patterns.each do |pattern, label|
 end
 
 swift_sources = Dir.glob(File.join(ROOT, "Sources/GiftUI/**/*.swift")).sort
-fail!("GiftUI Foundation source inventory is not exact") unless swift_sources == [FOUNDATION]
+expected_sources = [FOUNDATION, File.join(ROOT, "Sources/GiftUI/DeclarativeView.swift")].sort
+fail!("GiftUI owned source inventory is not exact") unless swift_sources == expected_sources
 
-puts "SPEC-002 migration closure passed: 24 rows, 6 immutable PoC inventories, exact bounded Foundation source."
+puts "SPEC-002 migration closure passed: 24 rows, 6 immutable PoC inventories, exact bounded Foundation source plus approved SPEC-006 declarations."

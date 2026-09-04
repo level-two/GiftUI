@@ -2,3 +2,7 @@
 import-semantic-core	pass	package	Fixtures/Positive/import-semantic-core/main.swift	-	GiftUI,GiftUISemanticCore
 forbidden-failure-core-import	fail	package	Fixtures/Negative/forbidden-failure-core-import/main.swift	Fixtures/Negative/forbidden-failure-core-import/expected-diagnostic-patterns.txt	GiftUI,GiftUISemanticCore
 forbidden-failure-execution-import	fail	package	Fixtures/Negative/forbidden-failure-execution-import/main.swift	Fixtures/Negative/forbidden-failure-execution-import/expected-diagnostic-patterns.txt	GiftUI,GiftUISemanticCore
+external-custom-view	pass	public	Fixtures/Positive/external-custom-view/main.swift	-	GiftUI
+action-uint16-domain	pass	public	Fixtures/Positive/action-uint16-domain/main.swift	-	GiftUI
+action-wrong-raw-width	fail	public	Fixtures/Negative/action-wrong-raw-width/main.swift	Fixtures/Negative/action-wrong-raw-width/expected-diagnostic-patterns.txt	GiftUI
+action-associated-value	fail	public	Fixtures/Negative/action-associated-value/main.swift	Fixtures/Negative/action-associated-value/expected-diagnostic-patterns.txt	GiftUI
