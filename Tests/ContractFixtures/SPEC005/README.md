@@ -26,10 +26,12 @@ fixture-manifest.tsv
 ```
 
 `fixture-manifest.tsv` is the ordered compile-fixture registry. Every data row
-has five tab-separated fields: a stable lowercase kebab-case identifier,
+has six tab-separated fields: a stable lowercase kebab-case identifier,
 `pass` or `fail`, `public` or `package`, one Swift entry point, and either `-`
-or the negative fixture's fixed-string diagnostic-pattern file. Drivers must
-execute rows in file order and reject duplicate identifiers, unknown tokens,
+or the negative fixture's fixed-string diagnostic-pattern file, followed by a
+sorted comma-separated module allowlist. Drivers build a fixture-local import
+root containing only those modules and their declared dependencies, execute
+both file and reverse order, and reject duplicate identifiers, unknown tokens,
 missing files, unregistered fixture directories, unexpected compilation
 success, and missing diagnostic patterns. Negative fixtures are always public.
 

@@ -229,15 +229,55 @@ run_fixture_set() {
     local module_dir="$2"
     shift 2
     local -a common_flags=("$@")
-    local id expectation access entry patterns fixture_dir diagnostic output_path result pattern
+    local id expectation access entry patterns allowed_modules fixture_dir
+    local diagnostic output_path result pattern order line module source copied
+    local -a rows=()
+    while IFS= read -r line; do
+        [[ -n "${line}" && "${line}" != \#* ]] || continue
+        rows+=("${line}")
+    done <"${FIXTURE_ROOT}/fixture-manifest.tsv"
 
-    while IFS=$'\t' read -r id expectation access entry patterns; do
-        [[ -n "${id}" && "${id}" != \#* ]] || continue
-        fixture_dir="${report_dir}/fixtures/${id}"
-        mkdir -p "${fixture_dir}"
+    for order in forward reverse; do
+      local results="${report_dir}/fixtures/${order}-results.tsv"
+      : >"${results}"
+      local start end increment index
+      if [[ "${order}" == forward ]]; then
+          start=0; end=${#rows[@]}; increment=1
+      else
+          start=$((${#rows[@]} - 1)); end=-1; increment=-1
+      fi
+      for ((index = start; index != end; index += increment)); do
+        IFS=$'\t' read -r id expectation access entry patterns allowed_modules <<<"${rows[index]}"
+        fixture_dir="${report_dir}/fixtures/${order}/${id}"
+        local fixture_module_dir="${fixture_dir}/modules"
+        mkdir -p "${fixture_module_dir}"
+        printf '%s\n' "${allowed_modules}" >"${fixture_dir}/allowed-modules.txt"
+        : >"${fixture_dir}/module-hashes.tsv"
+        IFS=',' read -ra fixture_modules <<<"${allowed_modules}"
+        for module in "${fixture_modules[@]}"; do
+            copied=0
+            while IFS= read -r source; do
+                cp -R "${source}" "${fixture_module_dir}/"
+                if [[ -f "${source}" ]]; then
+                    printf '%s\t%s\n' "$(basename "${source}")" "$(hash_file "${source}")" \
+                        >>"${fixture_dir}/module-hashes.tsv"
+                else
+                    while IFS= read -r copied_file; do
+                        printf '%s\t%s\n' \
+                            "${copied_file#"${source}/"}" "$(hash_file "${copied_file}")" \
+                            >>"${fixture_dir}/module-hashes.tsv"
+                    done < <(find "${source}" -type f -print | LC_ALL=C sort)
+                fi
+                copied=$((copied + 1))
+            done < <(find "${module_dir}" -maxdepth 1 \
+                \( -name "${module}.swiftmodule" -o -name "${module}.swiftinterface" \
+                   -o -name "${module}.package.swiftinterface" -o -name "${module}.swiftdoc" \
+                   -o -name "${module}.swiftsourceinfo" \) -print | LC_ALL=C sort)
+            [[ "${copied}" -gt 0 ]] || fail "fixture ${id} allowed module is unavailable: ${module}"
+        done
         output_path="${fixture_dir}/stdout.txt"
         diagnostic="${fixture_dir}/stderr.txt"
-        local -a command=("${compiler}" "${common_flags[@]}" -I "${module_dir}")
+        local -a command=("${compiler}" "${common_flags[@]}" -I "${fixture_module_dir}")
         if [[ "${access}" == "package" ]]; then
             command+=(-package-name GiftUI)
         fi
@@ -250,6 +290,7 @@ run_fixture_set() {
 
         if [[ "${expectation}" == "pass" ]]; then
             [[ "${result}" -eq 0 ]] || fail "positive fixture ${id} failed"
+            printf '%s\t%s\t%s\n' "${id}" "${expectation}" "${result}" >>"${results}"
             continue
         fi
         [[ "${result}" -ne 0 ]] || fail "negative fixture ${id} unexpectedly compiled"
@@ -258,7 +299,13 @@ run_fixture_set() {
             grep -Fq "${pattern}" "${diagnostic}" ||
                 fail "negative fixture ${id} lacked diagnostic pattern: ${pattern}"
         done <"${FIXTURE_ROOT}/${patterns}"
-    done <"${FIXTURE_ROOT}/fixture-manifest.tsv"
+        printf '%s\t%s\t%s\n' "${id}" "${expectation}" "${result}" >>"${results}"
+      done
+      LC_ALL=C sort -o "${results}" "${results}"
+    done
+    cmp -s "${report_dir}/fixtures/forward-results.tsv" \
+        "${report_dir}/fixtures/reverse-results.tsv" ||
+        fail 'fixture results changed when build order was reversed'
 }
 
 verify_source_list() {
