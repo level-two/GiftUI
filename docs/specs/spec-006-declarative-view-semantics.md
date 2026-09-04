@@ -2,11 +2,11 @@
 id: SPEC-006
 feature: giftui-mvp-architecture
 title: Declarative View Semantics Specification
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-08-29
+updated: 2026-09-04
 proposal:
   - PROPOSAL-003
 related_rfcs:

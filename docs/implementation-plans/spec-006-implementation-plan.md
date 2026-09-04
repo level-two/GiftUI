@@ -2,11 +2,11 @@
 spec: SPEC-006
 feature: giftui-mvp-architecture
 title: SPEC-006 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-01
-updated: 2026-09-01
+updated: 2026-09-04
 related_design_notes: []
 conformance_report: null
 related_future_work:
@@ -154,7 +154,7 @@ SPEC-002/SPEC-003 remain approved authority.
 and registered fail-closed driver skeleton exist before semantic behavior is
 implemented.
 
-- [ ] `T0.1` — Audit SPEC-006 status, its fifteen criteria, Proposal/RFC/ADR/
+- [x] `T0.1` — Audit SPEC-006 status, its fifteen criteria, Proposal/RFC/ADR/
       Specification relationships, MVP traceability, non-goals, and reciprocal
       FW-017/FW-020 links. Create `Tests/ContractFixtures/SPEC006/` with an
       ordered fixture manifest, canonical transcript schema, normalized
@@ -558,8 +558,16 @@ their normalized comparison and final evidence audit remain a join step.
 
 ## Completion Record
 
-No implementation task has started. Update each checkbox and the criterion
-matrix only with stable, reproducible evidence. Record changed, removed, and
-blocked tasks explicitly; do not silently relax the Specification. Plan
-completion will mean every task has a disposition and a conformance report is
-collecting evidence, not that SPEC-006 is implemented.
+Implementation began on 2026-09-04. The plan is `active` and SPEC-006 is
+`implementing`; these progress transitions do not change the approved contract
+or authorize the eventual `implemented` transition.
+
+`T0.1` is complete: the checked-in
+[authority audit](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-0/authority-audit.md)
+verifies the accepted/approved authority chain, all fifteen acceptance labels,
+MVP traceability, downstream non-goals, and reciprocal FW-017/FW-020 links.
+The [fixture contract](../../Tests/ContractFixtures/SPEC006/README.md)
+establishes the ordered compile registry, canonical transcript and normalized
+result schemas, deterministic generated/report roots, and precise host,
+cross-build, simulator, and connected-target labels without starting semantic
+implementation. `T0.2` is next.
