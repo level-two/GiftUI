@@ -59,6 +59,8 @@ declared_inputs() {
             "${UNIT_TEST_ROOT}" "${FIXTURE_ROOT}" -type f -print
         find "${PROJECT_ROOT}/ThirdParty/Inter-4.1" \
             "${PROJECT_ROOT}/scripts/text-resources" -type f -print
+        find "${PROJECT_ROOT}/firmware/nrf52840/applications/spec005-resource-probe" \
+            -type f -print
         printf '%s\n' \
             "${FOUNDATION_SOURCE}" \
             "${PROJECT_ROOT}/Package.swift" \
@@ -96,6 +98,8 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-005-validated-behavior.rb" \
             "${SCRIPT_DIR}/check-spec-005-validator-instrumentation.rb" \
             "${SCRIPT_DIR}/check-spec-005-static-path.rb" \
+            "${SCRIPT_DIR}/check-spec-005-nrf-resources.rb" \
+            "${SCRIPT_DIR}/check-spec-005-armv6-resources.rb" \
             "${SCRIPT_DIR}/check-spec-005-portable-source.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
             "${SCRIPT_DIR}/publish-contract-report.rb" \
@@ -736,6 +740,89 @@ run_raspberry_pi() {
     [[ "${#reference_modules[@]}" -eq 1 ]] ||
         fail "expected one ARMv6 reference-resource module, found ${#reference_modules[@]}"
     record_image reference-resource-module "${reference_modules[0]}"
+    run_armv6_resource_pair "${compiler}" "${sdk_root}"
+}
+
+run_armv6_resource_pair() {
+    local compiler="$1"
+    local sdk_root="$2"
+    local pair_root="${generated_dir}/armv6-resource-pair"
+    local kind source image map destination candidate_flag file_description attributes_hex
+    local objdump="${GIFTUI_PI_HOST_BIN_DIR}/llvm-objdump"
+    local nm="${GIFTUI_PI_HOST_BIN_DIR}/llvm-nm"
+    mkdir -p "${pair_root}"
+    for kind in baseline candidate; do
+        source="${pair_root}/${kind}.swift"
+        cp "${FOUNDATION_SOURCE}" "${source}"
+        if [[ "${kind}" == candidate ]]; then
+            for input in \
+                "${TEXT_RESOURCE_SOURCE}" \
+                "${REFERENCE_SOURCE_ROOT}/Generated/ReferenceCatalogue.generated.swift" \
+                "${REFERENCE_SOURCE_ROOT}/Generated/ReferenceBitmapPayload.generated.swift" \
+                "${REFERENCE_SOURCE_ROOT}/GiftUIReferenceTextResources.swift"; do
+                sed -e '/^import GiftUI$/d' -e '/^import GiftUITextResources$/d' \
+                    "${input}" >>"${source}"
+            done
+            candidate_flag=-DGIFTUI_SPEC005_CANDIDATE
+        else
+            candidate_flag=-DGIFTUI_SPEC005_BASELINE
+        fi
+        sed -e '/^import GiftUI$/d' -e '/^import GiftUITextResources$/d' \
+            "${FIXTURE_ROOT}/ResourceHarness/ResourceProbe.swift" >>"${source}"
+        image="${pair_root}/${kind}"
+        map="${pair_root}/${kind}.map"
+        local -a command=(
+            "${compiler}" -target "${GIFTUI_PI_TARGET}" -use-ld=lld
+            -Xcc "--gcc-toolchain=${sdk_root}/usr"
+            -resource-dir "${sdk_root}/usr/lib/swift_static"
+            -sdk "${sdk_root}" -latomic -static-stdlib
+            -O -whole-module-optimization -language-mode 6 -package-name GiftUI
+            "${candidate_flag}" -DGIFTUI_REFERENCE_BITMAP_ONLY
+            "${source}" "${FIXTURE_ROOT}/ResourceHarness/ARMv6Main.swift"
+            -Xlinker -Map -Xlinker "${map}" -o "${image}"
+        )
+        record_command "${command[@]}"
+        "${command[@]}" >>"${log_path}" 2>&1
+        destination="${report_dir}/resources/armv6/${kind}"
+        mkdir -p "${destination}"
+        record_command file "${image}"
+        file_description="$(file "${image}")"
+        printf '%s\n' "${file_description}" >"${destination}/file.txt"
+        [[ "${file_description}" == *'ELF 32-bit LSB'*ARM*EABI5* ]] ||
+            fail "SPEC-005 ${kind} ARMv6 resource image has the wrong ELF identity: ${file_description}"
+        record_command "${objdump}" -h "${image}"
+        "${objdump}" -h "${image}" >"${destination}/sections.txt"
+        "${objdump}" -s -j .ARM.attributes "${image}" >"${destination}/arm-attributes.txt"
+        attributes_hex="$(
+            "${objdump}" -s -j .ARM.attributes "${image}" |
+                awk '
+                    /^[[:space:]]+[[:xdigit:]]+[[:space:]]/ {
+                        for (i = 2; i <= NF; i++) {
+                            if ($i ~ /^[0-9A-Fa-f]+$/ && length($i) <= 8) {
+                                printf "%s", $i
+                            }
+                        }
+                    }
+                    END { print "" }
+                '
+        )"
+        [[ "${attributes_hex}" == *'0536000606'* ]] ||
+            fail "SPEC-005 ${kind} ARMv6 resource image does not declare ARMv6 architecture"
+        [[ "${attributes_hex}" == *'1c01'* ]] ||
+            fail "SPEC-005 ${kind} ARMv6 resource image does not declare hard-float ABI"
+        "${nm}" -S --size-sort "${image}" >"${destination}/named-symbols.txt"
+        cp "${map}" "${destination}/link.map"
+        cp "${image}" "${destination}/resource-probe"
+        record_image "armv6-resource-${kind}" "${destination}/resource-probe"
+    done
+    local summary="${report_dir}/resources/armv6/armv6-resource-summary.tsv"
+    record_command "${SCRIPT_DIR}/check-spec-005-armv6-resources.rb" \
+        "${report_dir}/resources/armv6/baseline" \
+        "${report_dir}/resources/armv6/candidate" "${summary}"
+    "${SCRIPT_DIR}/check-spec-005-armv6-resources.rb" \
+        "${report_dir}/resources/armv6/baseline" \
+        "${report_dir}/resources/armv6/candidate" "${summary}" \
+        >>"${log_path}" 2>&1
 }
 
 run_nrf52840() {
@@ -808,6 +895,80 @@ run_nrf52840() {
     "${reference_command[@]}" >>"${log_path}" 2>&1
     record_image reference-resource-module \
         "${module_dir}/GiftUIReferenceTextResources.swiftmodule"
+
+    run_nrf_resource_pair
+}
+
+run_nrf_resource_pair() {
+    local application_dir="${PROJECT_ROOT}/firmware/nrf52840/applications/spec005-resource-probe"
+    local pair_root="${generated_dir}/resource-pair"
+    local build_index kind build_dir candidate_flag elf destination
+    local readelf="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf"
+    local objdump="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump"
+    local nm="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm"
+    giftui_nrf_export_environment
+    for build_index in 1 2; do
+        for kind in baseline candidate; do
+            build_dir="${pair_root}/${kind}"
+            if [[ "${kind}" == candidate ]]; then
+                candidate_flag=ON
+            else
+                candidate_flag=OFF
+            fi
+            local -a build_command=(
+                "${GIFTUI_NRF_WEST}" build -p always -b "${GIFTUI_NRF_BOARD}"
+                -d "${build_dir}" "${application_dir}" --
+                "-DCMAKE_MAKE_PROGRAM=$(giftui_nrf_ninja)"
+                "-DCMAKE_Swift_COMPILER=${GIFTUI_NRF_SWIFTC}"
+                "-DGIFTUI_SWIFT_TARGET=${GIFTUI_NRF_SWIFT_TARGET}"
+                "-DGIFTUI_SPEC005_CANDIDATE=${candidate_flag}"
+                "-DDTC=$(giftui_nrf_dtc)" -DUSE_CCACHE=0
+            )
+            record_command "${build_command[@]}"
+            "${build_command[@]}" >>"${log_path}" 2>&1
+            elf="${build_dir}/zephyr/zephyr.elf"
+            [[ -f "${elf}" ]] || fail "missing SPEC-005 ${kind} resource ELF"
+            destination="${report_dir}/resources/build-${build_index}/${kind}"
+            mkdir -p "${destination}"
+            record_command "${readelf}" -lWSA "${elf}"
+            "${readelf}" -lW "${elf}" >"${destination}/program-headers.txt"
+            "${readelf}" -SW "${elf}" >"${destination}/sections.txt"
+            "${readelf}" -A "${elf}" >"${destination}/arm-attributes.txt"
+            "${readelf}" -sW "${elf}" >"${destination}/symbols.txt"
+            record_command "${objdump}" -d "${elf}"
+            "${objdump}" -d "${elf}" >"${destination}/disassembly.txt"
+            record_command "${nm}" -S --size-sort "${elf}"
+            "${nm}" -S --size-sort "${elf}" >"${destination}/named-symbols.txt"
+            cp "${build_dir}/zephyr/zephyr.map" "${destination}/zephyr.map"
+            cp "${elf}" "${destination}/zephyr.elf"
+            grep -Fq 'Tag_CPU_arch: v7E-M' "${destination}/arm-attributes.txt" ||
+                fail 'SPEC-005 resource ELF does not declare ARMv7E-M'
+            grep -Fq 'Tag_FP_arch: VFPv4-D16' "${destination}/arm-attributes.txt" ||
+                fail 'SPEC-005 resource ELF does not declare VFPv4-D16'
+            grep -Fq 'Tag_ABI_VFP_args: VFP registers' "${destination}/arm-attributes.txt" ||
+                fail 'SPEC-005 resource ELF does not declare VFP-register calling convention'
+            record_image "resource-build-${build_index}-${kind}-elf" "${destination}/zephyr.elf"
+        done
+        local summary="${report_dir}/resources/build-${build_index}/nrf-resource-summary.tsv"
+        record_command "${SCRIPT_DIR}/check-spec-005-nrf-resources.rb" \
+            "${report_dir}/resources/build-${build_index}/baseline" \
+            "${report_dir}/resources/build-${build_index}/candidate" "${summary}"
+        "${SCRIPT_DIR}/check-spec-005-nrf-resources.rb" \
+            "${report_dir}/resources/build-${build_index}/baseline" \
+            "${report_dir}/resources/build-${build_index}/candidate" \
+            "${summary}" >>"${log_path}" 2>&1
+    done
+    for kind in baseline candidate; do
+        cmp "${report_dir}/resources/build-1/${kind}/zephyr.elf" \
+            "${report_dir}/resources/build-2/${kind}/zephyr.elf" ||
+            fail "SPEC-005 ${kind} resource ELF is not repeatable"
+    done
+    cmp "${report_dir}/resources/build-1/nrf-resource-summary.tsv" \
+        "${report_dir}/resources/build-2/nrf-resource-summary.tsv" ||
+        fail 'SPEC-005 normalized nRF resource metrics are not repeatable'
+    cmp "${report_dir}/resources/build-1/nrf-validation-call-graph.tsv" \
+        "${report_dir}/resources/build-2/nrf-validation-call-graph.tsv" ||
+        fail 'SPEC-005 normalized validation call graph is not repeatable'
 }
 
 verify_report() {

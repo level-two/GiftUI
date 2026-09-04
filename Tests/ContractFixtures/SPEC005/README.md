@@ -54,12 +54,14 @@ Generated inputs have exactly one deterministic root:
 Reports have exactly one deterministic root:
 
 ```text
-.build/contract-reports/spec-005/<profile>/
+.build/contract-reports/spec-005/<revision>-<input-set>/<profile>/
 ```
 
-Re-running one profile replaces only that profile's generated and report
-directories. Stable review evidence may be copied deliberately into
-`Evidence/<milestone>/`; generated trees are never committed.
+Each successful profile run publishes an immutable report and updates the
+ignored `.build/contract-reports/spec-005/latest/<profile>` pointer. A failed
+run remains under a `.tmp-<profile>-*` directory for diagnosis. Stable review
+evidence may be copied deliberately into `Evidence/<milestone>/`; generated
+trees are never committed.
 
 ## Evidence labels
 

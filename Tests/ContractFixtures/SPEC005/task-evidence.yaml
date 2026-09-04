@@ -239,12 +239,18 @@ tasks:
       - Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-path-allocation.md
     blockers: []
   T5.3:
-    disposition: pending
+    disposition: completed
     requirements: [TR-008, TR-010, TR-011]
-    implementation: []
-    checks: []
-    profiles: []
-    evidence: []
+    implementation:
+      - firmware/nrf52840/applications/spec005-resource-probe
+      - Tests/ContractFixtures/SPEC005/ResourceHarness
+    checks:
+      - scripts/contracts/check-spec-005-nrf-resources.rb
+      - scripts/contracts/check-spec-005-armv6-resources.rb
+    profiles: [nrf52840-embedded, raspberry-pi-armv6]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-resource-images.md
+      - docs/implementation-designs/spec-005-static-resource-layout.md
     blockers: []
   T5.4:
     disposition: pending

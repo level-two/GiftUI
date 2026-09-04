@@ -9,6 +9,7 @@ created: 2026-08-30
 updated: 2026-09-04
 related_design_notes:
   - ../implementation-designs/spec-005-reference-package-generation.md
+  - ../implementation-designs/spec-005-static-resource-layout.md
 conformance_report: null
 related_future_work:
   - FW-001
@@ -419,7 +420,7 @@ repeatability without deployment, flashing, or connected-hardware claims.
       by the text-resource implementation and must use no reflection, runtime
       discovery, Objective-C, `Task`, `MainActor`, unrestricted existential
       storage, or desktop concurrency.
-- [ ] `T5.3` — Produce matched baseline/candidate optimized resource images and
+- [x] `T5.3` — Produce matched baseline/candidate optimized resource images and
       link maps. For nRF, record text-resource-specific incremental flash,
       fixed writable RAM, conservative validation stack and its measurement
       method, section/symbol data,
@@ -598,6 +599,7 @@ contract or authorize the eventual `implemented` transition.
 | `T4.4` | blocked | [Downstream integration disposition](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/downstream-integration-blocker.md): SPEC-007, SPEC-008, SPEC-014, and SPEC-015 have no active implementation plans or production layout, render, raster-provider, backend, platform, or host targets; reserved consumer rows remain pending and no substitute module was created |
 | `T5.1` | completed | [Four-profile semantic corpus](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/four-profile-semantic-corpus.md), concrete complete reference cross-build on ARMv6, bitmap-only reference cross-build on nRF52840, 66 equal logical transcript rows, exact validation and owner mappings, declared realization availability, toolchain/target/flag/revision/hash metadata, and 256-comparison maximum |
 | `T5.2` | completed | [Static-path allocation evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-path-allocation.md), one monotonic measured transaction covering validation, mapping, metric/raster lookup, payload borrow, synchronous offer, and combined work with zero allocation contribution in macOS dynamic/static, plus prohibited-runtime-facility source checks and the existing four-profile 16-value layout reports |
+| `T5.3` | completed | [Static resource image evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-resource-images.md), [maintained measurement design](../implementation-designs/spec-005-static-resource-layout.md), matched optimized nRF and ARMv6 baseline/candidate images, deterministic double nRF build, 23,024-byte flash and zero-byte fixed-RAM deltas, conservative 1,004-byte validation stack, exact target/ABI evidence, and bitmap-only link-map omission proof |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the
