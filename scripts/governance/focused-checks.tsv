@@ -1,4 +1,5 @@
 # check	mode	arguments
+scripts/contracts/run-spec-002.sh	profile
 scripts/validate-governance.rb	direct
 scripts/contracts/check-spec-005-dependencies.rb	profile
 scripts/contracts/check-spec-005-fixture-manifest.rb	direct

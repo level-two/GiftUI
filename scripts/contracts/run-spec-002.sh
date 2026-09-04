@@ -6,6 +6,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
 FIXTURE_ROOT="${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002"
 REPORT_ROOT="${PROJECT_ROOT}/.build/contract-reports/spec-002"
+# shellcheck source=report-path.sh
+source "${SCRIPT_DIR}/report-path.sh"
 FOUNDATION_SOURCE="${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
 PROFILE_PROBE_ROOT="${FIXTURE_ROOT}/ProfileCorpusProbe"
 SEMANTIC_CORPUS="${FIXTURE_ROOT}/SemanticCorpus/cases.tsv"
@@ -51,7 +53,11 @@ case "${profile}" in
     *) fail "unknown profile: ${profile}" ;;
 esac
 
-report_dir="${REPORT_ROOT}/${profile}"
+if [[ "${GIFTUI_IMMUTABLE_REPORT_INNER:-false}" != true ]]; then
+    exec "${SCRIPT_DIR}/run-immutable-contract-driver.sh" \
+        --spec SPEC-002 --profile "${profile}" --driver "$0"
+fi
+report_dir="${GIFTUI_CONTRACT_REPORT_DIR:-"${REPORT_ROOT}/${profile}"}"
 rm -rf "${report_dir}"
 mkdir -p \
     "${report_dir}/build/clang-cache" \
@@ -305,13 +311,14 @@ run_macos() {
     grep -Fxq 'profile_corpus_checksum=28' "${transcript}" ||
         fail 'macOS profile corpus transcript differs from checksum 28'
 
-    local counterpart_profile counterpart comparison
+    local counterpart_profile counterpart_dir counterpart comparison
     if [[ "${profile}" == 'macos-dynamic' ]]; then
         counterpart_profile='macos-static'
     else
         counterpart_profile='macos-dynamic'
     fi
-    counterpart="${REPORT_ROOT}/${counterpart_profile}/semantics/profile-corpus.txt"
+    counterpart_dir="$(giftui_contract_profile_report "${REPORT_ROOT}" "${counterpart_profile}" || true)"
+    counterpart="${counterpart_dir}/semantics/profile-corpus.txt"
     comparison="${report_dir}/semantics/macos-profile-equivalence.txt"
     if [[ -f "${counterpart}" ]]; then
         record_command cmp "${counterpart}" "${transcript}"
