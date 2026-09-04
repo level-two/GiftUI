@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-08-30
-updated: 2026-09-01
+updated: 2026-09-04
 related_design_notes:
   - ../implementation-designs/spec-005-reference-package-generation.md
 conformance_report: null
@@ -413,7 +413,7 @@ repeatability without deployment, flashing, or connected-hardware claims.
       coverage differences. Record compiler identity, target, flags, revision,
       dirty state, source/generator/table/manifest/payload hashes, required and
       available realization IDs, and maximum comparisons.
-- [ ] `T5.2` — Measure every owned type's size/stride/alignment and allocation
+- [x] `T5.2` — Measure every owned type's size/stride/alignment and allocation
       count for validation, mapping, metric/raster lookup, `withPayload`, and
       the contract-local offer. Static paths must link no allocator use caused
       by the text-resource implementation and must use no reflection, runtime
@@ -597,6 +597,7 @@ contract or authorize the eventual `implemented` transition.
 | `T4.3` | completed | [Contract-local assembly and lifecycle](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/assembly-lifecycle.md), complete-package validation for both realizations, exactly-once selected-subset validation before publication, immutable nested borrows, last-consumer teardown ownership, unselected-payload catalogue unavailability, and zero partial exposure on failure |
 | `T4.4` | blocked | [Downstream integration disposition](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/downstream-integration-blocker.md): SPEC-007, SPEC-008, SPEC-014, and SPEC-015 have no active implementation plans or production layout, render, raster-provider, backend, platform, or host targets; reserved consumer rows remain pending and no substitute module was created |
 | `T5.1` | completed | [Four-profile semantic corpus](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/four-profile-semantic-corpus.md), concrete complete reference cross-build on ARMv6, bitmap-only reference cross-build on nRF52840, 66 equal logical transcript rows, exact validation and owner mappings, declared realization availability, toolchain/target/flag/revision/hash metadata, and 256-comparison maximum |
+| `T5.2` | completed | [Static-path allocation evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-path-allocation.md), one monotonic measured transaction covering validation, mapping, metric/raster lookup, payload borrow, synchronous offer, and combined work with zero allocation contribution in macOS dynamic/static, plus prohibited-runtime-facility source checks and the existing four-profile 16-value layout reports |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the

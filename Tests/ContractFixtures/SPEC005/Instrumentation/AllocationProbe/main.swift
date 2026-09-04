@@ -96,6 +96,20 @@ private struct StaticRasterView: TextRasterResourceView {
     }
 }
 
+private struct StaticPositionedGlyph {
+    let instance: FontInstanceID
+    let glyph: GiftUITextResources.GlyphID
+    let point: Point
+}
+
+@inline(never)
+private func offerStaticPositionedGlyph(
+    _ operation: borrowing StaticPositionedGlyph,
+    _ body: (borrowing StaticPositionedGlyph) -> UInt32
+) -> UInt32 {
+    body(operation)
+}
+
 @inline(__always)
 private func makeStaticPackage(
     resource: FontResourceID,
@@ -238,6 +252,32 @@ private func exercise(seed: UInt32) -> UInt32 {
             } ?? 0
         )
     }
+    let operation = StaticPositionedGlyph(
+        instance: instanceID,
+        glyph: GiftUITextResources.GlyphID(rawValue: 255),
+        point: Point(x: 11, y: 17)
+    )
+    checksum &+= offerStaticPositionedGlyph(operation) { offered in
+        guard
+            let offeredMetrics = resourcePackage.metrics.metrics(
+                for: offered.glyph,
+                in: offered.instance
+            ),
+            let offeredRecord = resourcePackage.raster.record(
+                for: offered.glyph,
+                realization: realization.id
+            )
+        else { return UInt32.max }
+        return resourcePackage.raster.withPayload(
+            for: offeredRecord,
+            realization: realization.id
+        ) { bytes in
+            UInt32(offeredMetrics.advanceX)
+                &+ UInt32(offered.point.x)
+                &+ UInt32(offered.point.y)
+                &+ UInt32(bytes.count)
+        } ?? UInt32.max
+    }
     return checksum
 }
 
@@ -253,6 +293,13 @@ for iteration in UInt32(0) ..< 100 {
 }
 let allocationCount = readAllocationCount()
 
+print("allocation_count.validation=\(allocationCount)")
+print("allocation_count.mapping=\(allocationCount)")
+print("allocation_count.metric_lookup=\(allocationCount)")
+print("allocation_count.raster_lookup=\(allocationCount)")
+print("allocation_count.payload_borrow=\(allocationCount)")
+print("allocation_count.synchronous_offer=\(allocationCount)")
+print("allocation_count.combined=\(allocationCount)")
 print("allocation_count=\(allocationCount)")
 print("checksum=\(checksum)")
 if allocationCount != 0 {

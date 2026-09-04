@@ -230,12 +230,13 @@ tasks:
       - Tests/ContractFixtures/SPEC005/Evidence/milestone-5/four-profile-semantic-corpus.md
     blockers: []
   T5.2:
-    disposition: pending
+    disposition: completed
     requirements: [TR-009, TR-010]
-    implementation: []
-    checks: []
-    profiles: []
-    evidence: []
+    implementation: [Tests/ContractFixtures/SPEC005/Instrumentation/AllocationProbe/main.swift]
+    checks: [scripts/contracts/check-spec-005-static-path.rb]
+    profiles: [macos-dynamic, macos-static]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-path-allocation.md
     blockers: []
   T5.3:
     disposition: pending

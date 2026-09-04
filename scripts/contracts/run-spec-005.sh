@@ -95,6 +95,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-005-common-catalogue.rb" \
             "${SCRIPT_DIR}/check-spec-005-validated-behavior.rb" \
             "${SCRIPT_DIR}/check-spec-005-validator-instrumentation.rb" \
+            "${SCRIPT_DIR}/check-spec-005-static-path.rb" \
             "${SCRIPT_DIR}/check-spec-005-portable-source.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
             "${SCRIPT_DIR}/publish-contract-report.rb" \
@@ -507,6 +508,13 @@ run_allocation_probe() {
         >"${output}" 2>>"${log_path}"
     grep -Fxq 'allocation_count=0' "${output}" ||
         fail 'text-resource hot-path allocation probe reported heap activity'
+    record_command "${SCRIPT_DIR}/check-spec-005-static-path.rb" \
+        "${output}" "${TEXT_RESOURCE_SOURCE}" \
+        "${FIXTURE_ROOT}/Instrumentation/AllocationProbe/main.swift"
+    "${SCRIPT_DIR}/check-spec-005-static-path.rb" \
+        "${output}" "${TEXT_RESOURCE_SOURCE}" \
+        "${FIXTURE_ROOT}/Instrumentation/AllocationProbe/main.swift" \
+        >>"${log_path}" 2>&1
     record_image allocation-probe "${probe}"
     record_image allocation-interposer "${interposer}"
     record_image allocation-text-library "${text_library}"

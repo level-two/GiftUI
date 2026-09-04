@@ -14,6 +14,12 @@ work_tests = File.read(ARGV.fetch(2) { fail_check("expected work-bound tests") }
   "TextResourceValidator.validate(",
   "resetAllocationCount()",
   "allocation_count=",
+  "allocation_count.validation",
+  "allocation_count.mapping",
+  "allocation_count.metric_lookup",
+  "allocation_count.raster_lookup",
+  "allocation_count.payload_borrow",
+  "allocation_count.synchronous_offer",
 ].each do |fragment|
   fail_check("allocation probe lacks #{fragment}") unless allocation.include?(fragment)
 end
