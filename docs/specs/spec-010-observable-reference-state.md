@@ -767,6 +767,7 @@ that downstream work does not define or weaken SPEC-010.
 
 ## References
 
+- [SPEC-010 Implementation Plan](../implementation-plans/spec-010-implementation-plan.md)
 - [PROPOSAL-005](../proposals/proposal-005-observable-reference-state.md)
 - [RFC-008](../rfcs/rfc-008-observable-reference-state-architecture.md)
 - [ADR-008](../adrs/adr-008-module-dependency-graph-and-package-topology.md)
