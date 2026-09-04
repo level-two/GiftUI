@@ -406,7 +406,7 @@ values and exact local errors, target-specific linked payload availability,
 zero static allocation, bounded type/table/resource measurements, and clean
 repeatability without deployment, flashing, or connected-hardware claims.
 
-- [ ] `T5.1` — Run the identical normalized identity, digest, validation,
+- [x] `T5.1` — Run the identical normalized identity, digest, validation,
       mapping, metrics, geometry, owner-mapping, and availability corpus through
       macOS dynamic, macOS static, ARMv6, and nRF builds. Compare value-for-
       value outputs; permit only declared payload availability and raster
@@ -596,6 +596,7 @@ contract or authorize the eventual `implemented` transition.
 | `T4.2` | completed | [Contract-local synchronous offer](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/synchronous-offer.md), nominal instance/glyph identities and explicit point only, nested exact-once resource/payload lookup, empty/invalid/unavailable cases, ended-borrow instrumentation, and no production rendering policy |
 | `T4.3` | completed | [Contract-local assembly and lifecycle](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/assembly-lifecycle.md), complete-package validation for both realizations, exactly-once selected-subset validation before publication, immutable nested borrows, last-consumer teardown ownership, unselected-payload catalogue unavailability, and zero partial exposure on failure |
 | `T4.4` | blocked | [Downstream integration disposition](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/downstream-integration-blocker.md): SPEC-007, SPEC-008, SPEC-014, and SPEC-015 have no active implementation plans or production layout, render, raster-provider, backend, platform, or host targets; reserved consumer rows remain pending and no substitute module was created |
+| `T5.1` | completed | [Four-profile semantic corpus](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/four-profile-semantic-corpus.md), concrete complete reference cross-build on ARMv6, bitmap-only reference cross-build on nRF52840, 66 equal logical transcript rows, exact validation and owner mappings, declared realization availability, toolchain/target/flag/revision/hash metadata, and 256-comparison maximum |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the

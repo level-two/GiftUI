@@ -235,6 +235,8 @@ record_input_hashes() {
                 "${SCRIPT_DIR}/check-spec-005-owner-adapters.rb" \
                 "${SCRIPT_DIR}/check-spec-005-synchronous-offer.rb" \
                 "${SCRIPT_DIR}/check-spec-005-assembly-lifecycle.rb" \
+                "${SCRIPT_DIR}/generate-spec-005-profile-semantics.rb" \
+                "${SCRIPT_DIR}/compare-spec-005-profile-semantics.rb" \
                 "${SCRIPT_DIR}/check-spec-005-dependencies.rb" \
                 "${SCRIPT_DIR}/check-spec-005-boundaries.rb" \
                 "${SCRIPT_DIR}/check-spec-005-surface.rb" \
@@ -461,6 +463,20 @@ run_reference_composition_probe() {
     done
 }
 
+run_profile_semantic_report() {
+    local output="${report_dir}/semantics/profile-semantics.tsv"
+    record_command "${SCRIPT_DIR}/generate-spec-005-profile-semantics.rb" \
+        "${profile}" "${output}"
+    "${SCRIPT_DIR}/generate-spec-005-profile-semantics.rb" \
+        "${profile}" "${output}" >>"${log_path}" 2>&1
+    printf 'required_realization_ids=%s\n' \
+        "$(awk -F '\t' '$2 == "availability" && $3 == "required-realizations" { print $4 }' "${output}")" \
+        >>"${metadata_path}"
+    printf 'available_realization_ids=%s\n' \
+        "$(awk -F '\t' '$2 == "availability" && $3 == "available-realizations" { print $4 }' "${output}")" \
+        >>"${metadata_path}"
+}
+
 run_macos() {
     [[ "$(uname -s)" == "Darwin" ]] || fail 'macOS profile requires macOS'
     [[ "$(uname -m)" == "arm64" ]] || fail 'macOS evidence requires an arm64 host'
@@ -620,6 +636,22 @@ run_raspberry_pi() {
         -sdk "${sdk_root}" -latomic \
         -O -whole-module-optimization -language-mode 6 \
         -module-cache-path "${report_dir}/build/clang-cache"
+    local -a reference_command=(
+        "${swift_driver}" build --package-path "${PROJECT_ROOT}"
+        --scratch-path "${report_dir}/build/swiftpm"
+        --destination "${GIFTUI_PI_STATIC_DESTINATION}"
+        --configuration release --target GiftUIReferenceTextResources
+        --static-swift-stdlib -Xswiftc -whole-module-optimization
+    )
+    record_command "${reference_command[@]}"
+    "${reference_command[@]}" >>"${log_path}" 2>&1
+    local -a reference_modules=()
+    while IFS= read -r module; do
+        reference_modules+=("${module}")
+    done < <(find "${report_dir}/build/swiftpm" -type f -name 'GiftUIReferenceTextResources.swiftmodule' -print)
+    [[ "${#reference_modules[@]}" -eq 1 ]] ||
+        fail "expected one ARMv6 reference-resource module, found ${#reference_modules[@]}"
+    record_image reference-resource-module "${reference_modules[0]}"
 }
 
 run_nrf52840() {
@@ -679,6 +711,19 @@ run_nrf52840() {
         -enable-experimental-feature Embedded -Osize -whole-module-optimization \
         -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16 \
         -module-cache-path "${report_dir}/build/clang-cache"
+    local -a reference_command=(
+        "${GIFTUI_NRF_SWIFTC}" "${compile_flags[@]}"
+        -DGIFTUI_REFERENCE_BITMAP_ONLY -emit-module -I "${module_dir}"
+        -module-name GiftUIReferenceTextResources
+        "${REFERENCE_SOURCE_ROOT}/Generated/ReferenceCatalogue.generated.swift"
+        "${REFERENCE_SOURCE_ROOT}/Generated/ReferenceBitmapPayload.generated.swift"
+        "${REFERENCE_SOURCE_ROOT}/GiftUIReferenceTextResources.swift"
+        -emit-module-path "${module_dir}/GiftUIReferenceTextResources.swiftmodule"
+    )
+    record_command "${reference_command[@]}"
+    "${reference_command[@]}" >>"${log_path}" 2>&1
+    record_image reference-resource-module \
+        "${module_dir}/GiftUIReferenceTextResources.swiftmodule"
 }
 
 verify_report() {
@@ -705,4 +750,5 @@ case "${profile}" in
     raspberry-pi-armv6) run_raspberry_pi ;;
     nrf52840-embedded) run_nrf52840 ;;
 esac
+run_profile_semantic_report
 verify_report
