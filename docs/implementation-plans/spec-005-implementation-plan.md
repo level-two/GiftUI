@@ -10,7 +10,7 @@ updated: 2026-09-04
 related_design_notes:
   - ../implementation-designs/spec-005-reference-package-generation.md
   - ../implementation-designs/spec-005-static-resource-layout.md
-conformance_report: null
+conformance_report: ../conformance/spec-005-conformance.md
 related_future_work:
   - FW-001
   - FW-002
@@ -452,7 +452,7 @@ explicit upstream blocker, downstream nominal identities are audited, non-
 goals remain absent, and the plan is ready to hand to SPEC-005 conformance
 review without asserting the `implemented` transition.
 
-- [ ] `T6.1` — Re-audit the thirteen criteria, authority/status chain,
+- [x] `T6.1` — Re-audit the thirteen criteria, authority/status chain,
       manifest, reciprocal Specification links, SPIKE-005/Future Work
       boundaries, exact hashes, owner mappings, and unchanged Foundation facts.
       Update task dispositions and evidence links; create the collecting
@@ -602,6 +602,7 @@ contract or authorize the eventual `implemented` transition.
 | `T5.3` | completed | [Static resource image evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-resource-images.md), [maintained measurement design](../implementation-designs/spec-005-static-resource-layout.md), matched optimized nRF and ARMv6 baseline/candidate images, deterministic double nRF build, 23,024-byte flash and zero-byte fixed-RAM deltas, conservative 1,004-byte validation stack, exact target/ABI evidence, and bitmap-only link-map omission proof |
 | `T5.4` | completed | [Pristine rebuild evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/pristine-rebuilds.md), two detached clean checkouts, eight exact standalone driver runs, 27 matching normalized artifacts, and passing registered default and `all-hardware-free` gates with cross-build-only labels |
 | `T5.5` | completed | [Resource-only timing evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/resource-only-timing.md), optimized host-executed dynamic/static measurements for 103 representative and 4,096 maximum admitted glyph lookups and payload borrows, both below 2.5 milliseconds against the 250-millisecond interval, with downstream timing claims explicitly excluded |
+| `T6.1` | completed | [Collecting conformance report](../conformance/spec-005-conformance.md), complete thirteen-criterion re-audit, current authority/status and manifest verification, exact evidence links, unchanged Foundation facts, and explicit open gates for downstream integration plus T6.2/T6.3 |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the

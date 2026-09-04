@@ -1124,6 +1124,7 @@ acceptance criteria.
 ## References
 
 - [SPEC-005 Implementation Plan](../implementation-plans/spec-005-implementation-plan.md)
+- [SPEC-005 Conformance Report](../conformance/spec-005-conformance.md)
 - [PROPOSAL-003: GiftUI MVP Architecture Establishment](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
 - [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-003: Deterministic Text Rendering Architecture](../rfcs/rfc-003-deterministic-text-rendering-architecture.md)

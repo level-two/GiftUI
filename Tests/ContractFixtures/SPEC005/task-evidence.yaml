@@ -275,12 +275,12 @@ tasks:
       - Tests/ContractFixtures/SPEC005/Evidence/milestone-5/resource-only-timing.md
     blockers: []
   T6.1:
-    disposition: pending
+    disposition: completed
     requirements: [TR-001, TR-013]
-    implementation: []
-    checks: []
-    profiles: []
-    evidence: []
+    implementation: [docs/conformance/spec-005-conformance.md]
+    checks: [scripts/validate-governance.rb]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    evidence: [docs/conformance/spec-005-conformance.md]
     blockers: []
   T6.2:
     disposition: pending
