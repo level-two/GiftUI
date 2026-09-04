@@ -100,6 +100,8 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-005-static-path.rb" \
             "${SCRIPT_DIR}/check-spec-005-nrf-resources.rb" \
             "${SCRIPT_DIR}/check-spec-005-armv6-resources.rb" \
+            "${SCRIPT_DIR}/check-spec-005-pristine-rebuilds.sh" \
+            "${SCRIPT_DIR}/compare-spec-005-pristine-rebuilds.rb" \
             "${SCRIPT_DIR}/check-spec-005-portable-source.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
             "${SCRIPT_DIR}/publish-contract-report.rb" \

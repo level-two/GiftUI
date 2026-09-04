@@ -22,6 +22,7 @@ scripts/contracts/check-spec-005-validator-instrumentation.rb	direct	Tests/Contr
 scripts/contracts/check-spec-005-static-path.rb	profile
 scripts/contracts/check-spec-005-nrf-resources.rb	profile
 scripts/contracts/check-spec-005-armv6-resources.rb	profile
+scripts/contracts/check-spec-005-pristine-rebuilds.sh	specification
 scripts/contracts/check-spec-005-reference-generation.rb	direct
 scripts/contracts/check-spec-005-generated-assets.rb	direct
 scripts/contracts/check-spec-005-reference-compositions.sh	profile
