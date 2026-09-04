@@ -9,6 +9,8 @@ SOURCE_ROOT="${PROJECT_ROOT}/Sources/GiftUICapabilities"
 GENERATED_ROOT="${PROJECT_ROOT}/.build/contract-generated/spec-004"
 REPORT_ROOT="${PROJECT_ROOT}/.build/contract-reports/spec-004"
 EXPECTED_SOURCE="${SOURCE_ROOT}/GiftUICapabilities.swift"
+# shellcheck source=report-path.sh
+source "${SCRIPT_DIR}/report-path.sh"
 
 usage() {
     printf '%s\n' \
@@ -48,8 +50,12 @@ case "${profile}" in
     *) fail "unknown profile: ${profile}" ;;
 esac
 
+if [[ "${GIFTUI_IMMUTABLE_REPORT_INNER:-false}" != true ]]; then
+    exec "${SCRIPT_DIR}/run-immutable-contract-driver.sh" \
+        --spec SPEC-004 --profile "${profile}" --driver "$0"
+fi
 generated_dir="${GENERATED_ROOT}/${profile}"
-report_dir="${REPORT_ROOT}/${profile}"
+report_dir="${GIFTUI_CONTRACT_REPORT_DIR:-"${REPORT_ROOT}/${profile}"}"
 rm -rf "${generated_dir}" "${report_dir}"
 mkdir -p \
     "${generated_dir}" \
@@ -490,13 +496,14 @@ run_semantic_probe() {
 }
 
 compare_macos_semantic_transcripts() {
-    local counterpart_profile counterpart transcript comparison
+    local counterpart_profile counterpart_dir counterpart transcript comparison
     if [[ "${profile}" == 'macos-dynamic' ]]; then
         counterpart_profile='macos-static'
     else
         counterpart_profile='macos-dynamic'
     fi
-    counterpart="${REPORT_ROOT}/${counterpart_profile}/semantics/arithmetic.tsv"
+    counterpart_dir="$(giftui_contract_profile_report "${REPORT_ROOT}" "${counterpart_profile}" || true)"
+    counterpart="${counterpart_dir}/semantics/arithmetic.tsv"
     transcript="${report_dir}/semantics/arithmetic.tsv"
     comparison="${report_dir}/semantics/macos-profile-equivalence.txt"
     if [[ ! -f "${counterpart}" ]]; then
