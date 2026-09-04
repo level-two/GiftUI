@@ -22,6 +22,30 @@ cleanup() {
 }
 trap cleanup EXIT
 
+link_project_toolchains() {
+    local checkout="$1"
+    local toolchain_path sdk_path sdk_entry destination
+
+    mkdir -p "${checkout}/.toolchains" "${checkout}/.toolchains/sdk"
+    for toolchain_path in "${PROJECT_ROOT}"/.toolchains/*; do
+        [[ "$(basename "${toolchain_path}")" == "sdk" ]] && continue
+        ln -s "${toolchain_path}" "${checkout}/.toolchains/$(basename "${toolchain_path}")"
+    done
+    for sdk_path in "${PROJECT_ROOT}"/.toolchains/sdk/*; do
+        destination="${checkout}/.toolchains/sdk/$(basename "${sdk_path}")"
+        mkdir -p "${destination}"
+        for sdk_entry in "${sdk_path}"/* "${sdk_path}"/.[!.]*; do
+            [[ -e "${sdk_entry}" ]] || continue
+            if [[ "${sdk_entry}" == *.json ]]; then
+                sed "s|${PROJECT_ROOT}|${checkout}|g" "${sdk_entry}" \
+                    >"${destination}/$(basename "${sdk_entry}")"
+            else
+                ln -s "${sdk_entry}" "${destination}/$(basename "${sdk_entry}")"
+            fi
+        done
+    done
+}
+
 rm -rf "${OUTPUT_ROOT}"
 mkdir -p "${OUTPUT_ROOT}/logs"
 for index in 1 2; do
@@ -32,10 +56,7 @@ for index in 1 2; do
         printf 'error: temporary checkout %s is not pristine\n' "${index}" >&2
         exit 1
     }
-    mkdir -p "${checkout}/.toolchains"
-    for toolchain_path in "${PROJECT_ROOT}"/.toolchains/*; do
-        ln -s "${toolchain_path}" "${checkout}/.toolchains/$(basename "${toolchain_path}")"
-    done
+    link_project_toolchains "${checkout}"
     for local_environment in \
         scripts/raspberry-pi/local.env \
         scripts/nrf52840/local.env; do
