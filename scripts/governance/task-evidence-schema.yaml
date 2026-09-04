@@ -1,0 +1,23 @@
+schema_version: 1
+document: GiftUI task evidence manifest
+required_root_fields:
+  - schema_version
+  - spec
+  - plan
+  - tasks
+allowed_dispositions:
+  - pending
+  - in_progress
+  - completed
+  - blocked
+  - changed
+  - removed
+  - not_applicable
+required_task_fields:
+  - disposition
+  - requirements
+  - implementation
+  - checks
+  - profiles
+  - evidence
+  - blockers

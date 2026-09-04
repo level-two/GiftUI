@@ -1,0 +1,287 @@
+schema_version: 1
+spec: SPEC-005
+plan: docs/implementation-plans/spec-005-implementation-plan.md
+tasks:
+  T0.1:
+    disposition: completed
+    requirements: [TR-001, TR-012]
+    implementation: [docs/specs/spec-005-text-resources.md]
+    checks: [scripts/validate-governance.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-0/authority-audit.md
+    blockers: []
+  T0.2:
+    disposition: completed
+    requirements: [TR-002]
+    implementation: [Package.swift]
+    checks: [scripts/contracts/check-spec-005-dependencies.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-0/contract-leaf.md
+    blockers: []
+  T0.3:
+    disposition: completed
+    requirements: [TR-011]
+    implementation: [scripts/contracts/run-spec-005.sh]
+    checks: [scripts/contracts/check-spec-005-fixture-manifest.rb]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-0/contract-driver.md
+    blockers: []
+  T0.4:
+    disposition: completed
+    requirements: [TR-002]
+    implementation: [Tests/ContractFixtures/SPEC005/fixture-manifest.tsv]
+    checks:
+      - scripts/contracts/check-spec-005-boundaries.rb
+      - scripts/contracts/check-spec-005-portable-source.rb
+      - scripts/contracts/check-spec-005-surface.rb
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-0/compiler-boundaries.md
+    blockers: []
+  T0.5:
+    disposition: completed
+    requirements: [TR-004]
+    implementation: [Tests/ContractFixtures/SPEC005/generated-assets.tsv]
+    checks: [scripts/contracts/check-spec-005-adopted-inputs.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-0/adopted-input-baseline.md
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-0/baseline-input-inventory.tsv
+    blockers: []
+  T1.1:
+    disposition: completed
+    requirements: [TR-003]
+    implementation: [Sources/GiftUITextResources/GiftUITextResources.swift]
+    checks: [scripts/contracts/check-spec-005-surface.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-1/exact-declarations.md
+    blockers: []
+  T1.2:
+    disposition: completed
+    requirements: [TR-003]
+    implementation: [Sources/GiftUITextResources/GiftUITextResources.swift]
+    checks: [scripts/contracts/check-spec-005-canonical.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-1/canonical-serialization.md
+    blockers: []
+  T1.3:
+    disposition: completed
+    requirements: [TR-005, TR-006, TR-013]
+    implementation: [Sources/GiftUITextResources/GiftUITextResources.swift]
+    checks: [scripts/contracts/check-spec-005-accessors.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-1/accessor-behavior.md
+    blockers: []
+  T1.4:
+    disposition: completed
+    requirements: [TR-009]
+    implementation: [Sources/GiftUITextResources/GiftUITextResources.swift]
+    checks: [scripts/contracts/check-spec-005-payload-borrow.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-1/payload-borrowing.md
+    blockers: []
+  T1.5:
+    disposition: completed
+    requirements: [TR-003, TR-010]
+    implementation: [Sources/GiftUITextResources/GiftUITextResources.swift]
+    checks:
+      - scripts/contracts/check-spec-005-bounds.rb
+      - scripts/contracts/check-spec-005-target-layout.rb
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-1/layout-capacity-and-work-bounds.md
+    blockers: []
+  T2.1:
+    disposition: completed
+    requirements: [TR-007]
+    implementation: [Sources/GiftUITextResources/GiftUITextResources.swift]
+    checks: [scripts/contracts/check-spec-005-validator.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validator-predicate-pass.md
+    blockers: []
+  T2.2:
+    disposition: completed
+    requirements: [TR-007]
+    implementation: [Tests/GiftUITextResourcesTests/ValidatorCoreTests.swift]
+    checks: [scripts/contracts/check-spec-005-validation-corpus.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validation-predicate-corpus.md
+    blockers: []
+  T2.3:
+    disposition: completed
+    requirements: [TR-008]
+    implementation: [Tests/GiftUITextResourcesTests/CommonCatalogueValidationTests.swift]
+    checks: [scripts/contracts/check-spec-005-common-catalogue.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-2/common-catalogue-admission.md
+    blockers: []
+  T2.4:
+    disposition: completed
+    requirements: [TR-005, TR-006, TR-013]
+    implementation: [Tests/GiftUITextResourcesTests/ValidatedBehaviorTests.swift]
+    checks: [scripts/contracts/check-spec-005-validated-behavior.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validated-behavior.md
+    blockers: []
+  T2.5:
+    disposition: completed
+    requirements: [TR-010]
+    implementation: [Tests/GiftUITextResourcesTests/WorkBoundTests.swift]
+    checks: [scripts/contracts/check-spec-005-validator-instrumentation.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validator-instrumentation.md
+    blockers: []
+  T3.1:
+    disposition: completed
+    requirements: [TR-003, TR-004]
+    implementation: [scripts/text-resources/generate-reference-resources.py]
+    checks:
+      - scripts/contracts/check-spec-005-reference-generation.rb
+      - scripts/contracts/check-spec-005-generated-assets.rb
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-generation.md
+    blockers: []
+  T3.2:
+    disposition: completed
+    requirements: [TR-004]
+    implementation: [Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift]
+    checks: [scripts/contracts/check-spec-005-reference-generation.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-3/concrete-reference-package.md
+    blockers: []
+  T3.3:
+    disposition: completed
+    requirements: [TR-004, TR-008, TR-010]
+    implementation: [Tests/ContractFixtures/SPEC005/ResourceHarness/README.md]
+    checks: [scripts/contracts/check-spec-005-reference-compositions.sh]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-3/payload-subset-compositions.md
+    blockers: []
+  T3.4:
+    disposition: completed
+    requirements: [TR-004]
+    implementation: [experiments/spike-005-inter-reference-font/generated/LICENSE-Inter-OFL-1.1.txt]
+    checks: [scripts/contracts/check-spec-005-adopted-inputs.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-3/provenance-and-build-validation.md
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-provenance.tsv
+    blockers: []
+  T4.1:
+    disposition: completed
+    requirements: [TR-007, TR-013]
+    implementation: [Tests/GiftUITextResourceOwnerAdapterTests/GiftUITextResourceOwnerAdapterTests.swift]
+    checks: [scripts/contracts/check-spec-005-owner-adapters.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-4/owner-adapter-mappings.md
+    blockers: []
+  T4.2:
+    disposition: completed
+    requirements: [TR-006, TR-007, TR-009, TR-013]
+    implementation: [Tests/GiftUIReferenceTextResourcesTests/SynchronousOfferTests.swift]
+    checks: [scripts/contracts/check-spec-005-synchronous-offer.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-4/synchronous-offer.md
+    blockers: []
+  T4.3:
+    disposition: completed
+    requirements: [TR-004, TR-008, TR-009, TR-013]
+    implementation: [Tests/ContractFixtures/SPEC005/CompositionProbe/main.swift]
+    checks: [scripts/contracts/check-spec-005-assembly-lifecycle.rb]
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-4/assembly-lifecycle.md
+    blockers: []
+  T4.4:
+    disposition: blocked
+    requirements: [TR-002]
+    implementation: []
+    checks: []
+    profiles: []
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-4/downstream-integration-blocker.md
+    blockers: [SPEC-007, SPEC-008, SPEC-014, SPEC-015]
+  T5.1:
+    disposition: completed
+    requirements: [TR-003, TR-004, TR-005, TR-006, TR-007, TR-008, TR-011]
+    implementation: [scripts/contracts/generate-spec-005-profile-semantics.rb]
+    checks:
+      - scripts/contracts/check-spec-005-corpus.rb
+      - scripts/contracts/compare-spec-005-profile-semantics.rb
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-5/four-profile-semantic-corpus.md
+    blockers: []
+  T5.2:
+    disposition: pending
+    requirements: [TR-009, TR-010]
+    implementation: []
+    checks: []
+    profiles: []
+    evidence: []
+    blockers: []
+  T5.3:
+    disposition: pending
+    requirements: [TR-008, TR-010, TR-011]
+    implementation: []
+    checks: []
+    profiles: []
+    evidence: []
+    blockers: []
+  T5.4:
+    disposition: pending
+    requirements: [TR-011]
+    implementation: []
+    checks: []
+    profiles: []
+    evidence: []
+    blockers: []
+  T5.5:
+    disposition: pending
+    requirements: [TR-011]
+    implementation: []
+    checks: []
+    profiles: []
+    evidence: []
+    blockers: []
+  T6.1:
+    disposition: pending
+    requirements: [TR-001, TR-013]
+    implementation: []
+    checks: []
+    profiles: []
+    evidence: []
+    blockers: []
+  T6.2:
+    disposition: pending
+    requirements: [TR-002, TR-012]
+    implementation: []
+    checks: []
+    profiles: []
+    evidence: []
+    blockers: []
+  T6.3:
+    disposition: pending
+    requirements: [TR-011]
+    implementation: []
+    checks: []
+    profiles: []
+    evidence: []
+    blockers: []

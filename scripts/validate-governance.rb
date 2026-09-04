@@ -297,6 +297,15 @@ if errors.empty?
     warn "Governance validation failed: authority graph validation failed."
     exit 1
   end
+  task_evidence_check = ROOT.join("scripts", "governance", "check-task-evidence.rb")
+  Dir[ROOT.join("Tests", "ContractFixtures", "SPEC*", "task-evidence.yaml")].sort.each do |manifest_path|
+    compact_spec = Pathname.new(manifest_path).dirname.basename.to_s
+    spec_id = compact_spec.sub(/\ASPEC/, "SPEC-")
+    unless system(task_evidence_check.to_s, "--spec", spec_id)
+      warn "Governance validation failed: #{spec_id} task evidence validation failed."
+      exit 1
+    end
+  end
   puts "Governance validation passed: #{features.length} feature(s), #{artifacts.length} lifecycle artifact(s), #{REQUIRED_SKILLS.length} skill(s)."
   exit 0
 end
