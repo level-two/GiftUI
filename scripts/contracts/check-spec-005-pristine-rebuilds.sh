@@ -6,7 +6,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
 OUTPUT_ROOT="${1:-${PROJECT_ROOT}/.build/contract-reports/spec-005/pristine-rebuilds}"
 REVISION="$(git -C "${PROJECT_ROOT}" rev-parse HEAD)"
-TEMP_ROOT="$(mktemp -d /tmp/giftui-spec005-pristine.XXXXXX)"
+TEMP_PARENT="${PROJECT_ROOT}/.build/contract-temp"
+mkdir -p "${TEMP_PARENT}"
+TEMP_ROOT="$(mktemp -d "${TEMP_PARENT}/spec-005-pristine.XXXXXX")"
 PROFILES=(macos-dynamic macos-static raspberry-pi-armv6 nrf52840-embedded)
 
 cleanup() {
