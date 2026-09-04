@@ -435,7 +435,7 @@ repeatability without deployment, flashing, or connected-hardware claims.
       top-level default and `all-hardware-free` gates. Label every Pi/nRF result
       as cross-built hardware-free evidence; perform no remote access,
       deployment, service restart, or flashing.
-- [ ] `T5.5` — Measure representative and maximum admitted resource lookup and
+- [x] `T5.5` — Measure representative and maximum admitted resource lookup and
       borrow work independently from layout, rasterization, cache, and transfer
       timing. Record that the measured resource-only work fits within the
       250-millisecond presentation interval without claiming the downstream
@@ -601,6 +601,7 @@ contract or authorize the eventual `implemented` transition.
 | `T5.2` | completed | [Static-path allocation evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-path-allocation.md), one monotonic measured transaction covering validation, mapping, metric/raster lookup, payload borrow, synchronous offer, and combined work with zero allocation contribution in macOS dynamic/static, plus prohibited-runtime-facility source checks and the existing four-profile 16-value layout reports |
 | `T5.3` | completed | [Static resource image evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-resource-images.md), [maintained measurement design](../implementation-designs/spec-005-static-resource-layout.md), matched optimized nRF and ARMv6 baseline/candidate images, deterministic double nRF build, 23,024-byte flash and zero-byte fixed-RAM deltas, conservative 1,004-byte validation stack, exact target/ABI evidence, and bitmap-only link-map omission proof |
 | `T5.4` | completed | [Pristine rebuild evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/pristine-rebuilds.md), two detached clean checkouts, eight exact standalone driver runs, 27 matching normalized artifacts, and passing registered default and `all-hardware-free` gates with cross-build-only labels |
+| `T5.5` | completed | [Resource-only timing evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/resource-only-timing.md), optimized host-executed dynamic/static measurements for 103 representative and 4,096 maximum admitted glyph lookups and payload borrows, both below 2.5 milliseconds against the 250-millisecond interval, with downstream timing claims explicitly excluded |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the

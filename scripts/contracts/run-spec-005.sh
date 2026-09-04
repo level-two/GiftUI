@@ -98,6 +98,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-005-validated-behavior.rb" \
             "${SCRIPT_DIR}/check-spec-005-validator-instrumentation.rb" \
             "${SCRIPT_DIR}/check-spec-005-static-path.rb" \
+            "${SCRIPT_DIR}/check-spec-005-timing.rb" \
             "${SCRIPT_DIR}/check-spec-005-nrf-resources.rb" \
             "${SCRIPT_DIR}/check-spec-005-armv6-resources.rb" \
             "${SCRIPT_DIR}/check-spec-005-pristine-rebuilds.sh" \
@@ -553,6 +554,35 @@ run_reference_composition_probe() {
     done
 }
 
+run_resource_timing_probe() {
+    local compiler="$1"
+    local sdk_path="$2"
+    local composition_root="${report_dir}/resources/candidate/compositions"
+    local probe="${report_dir}/build/resource-timing-probe"
+    local output="${report_dir}/semantics/resource-timing.txt"
+    local -a command=(
+        "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
+        -O -whole-module-optimization -language-mode 6 -package-name GiftUI
+        -module-cache-path "${report_dir}/build/clang-cache"
+        -I "${composition_root}/base/modules" -I "${composition_root}/complete/modules"
+        -L "${composition_root}/base/libraries" -L "${composition_root}/complete/libraries"
+        -lGiftUI -lGiftUITextResources -lGiftUIReferenceTextResources
+        -Xlinker -rpath -Xlinker "${composition_root}/base/libraries"
+        -Xlinker -rpath -Xlinker "${composition_root}/complete/libraries"
+        "${FIXTURE_ROOT}/Instrumentation/TimingProbe.swift" -o "${probe}"
+    )
+    record_command "${command[@]}"
+    "${command[@]}" >>"${log_path}" 2>&1
+    record_command env "DYLD_LIBRARY_PATH=${composition_root}/base/libraries:${composition_root}/complete/libraries" "${probe}"
+    env "DYLD_LIBRARY_PATH=${composition_root}/base/libraries:${composition_root}/complete/libraries" \
+        "${probe}" >"${output}" 2>>"${log_path}"
+    record_command "${SCRIPT_DIR}/check-spec-005-timing.rb" "${output}" \
+        "${FIXTURE_ROOT}/Instrumentation/TimingProbe.swift"
+    "${SCRIPT_DIR}/check-spec-005-timing.rb" "${output}" \
+        "${FIXTURE_ROOT}/Instrumentation/TimingProbe.swift" >>"${log_path}" 2>&1
+    record_image resource-timing-probe "${probe}"
+}
+
 run_profile_semantic_report() {
     local output="${report_dir}/semantics/profile-semantics.tsv"
     record_command "${SCRIPT_DIR}/generate-spec-005-profile-semantics.rb" \
@@ -668,6 +698,7 @@ run_macos() {
         -module-cache-path "${report_dir}/build/clang-cache"
     run_allocation_probe "${compiler}" "${sdk_path}" "${profile_flag}"
     run_reference_composition_probe "${compiler}" "${sdk_path}"
+    run_resource_timing_probe "${compiler}" "${sdk_path}"
 }
 
 run_raspberry_pi() {

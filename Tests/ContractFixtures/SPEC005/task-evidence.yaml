@@ -266,12 +266,13 @@ tasks:
       - Tests/ContractFixtures/SPEC005/Evidence/milestone-5/pristine-rebuilds.md
     blockers: []
   T5.5:
-    disposition: pending
+    disposition: completed
     requirements: [TR-011]
-    implementation: []
-    checks: []
-    profiles: []
-    evidence: []
+    implementation: [Tests/ContractFixtures/SPEC005/Instrumentation/TimingProbe.swift]
+    checks: [scripts/contracts/check-spec-005-timing.rb]
+    profiles: [macos-dynamic, macos-static]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-5/resource-only-timing.md
     blockers: []
   T6.1:
     disposition: pending
