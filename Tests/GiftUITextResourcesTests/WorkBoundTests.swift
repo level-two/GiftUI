@@ -1,6 +1,7 @@
-@testable import GiftUITextResources
 import GiftUI
 import XCTest
+
+@testable import GiftUITextResources
 
 final class WorkBoundTests: XCTestCase {
     func testMaximumLinearMappingLookupUsesExactly256Comparisons() {
@@ -209,8 +210,9 @@ private final class CountingRaster: TextRasterResourceView {
         _ body: (UnsafeRawBufferPointer) throws -> Result
     ) rethrows -> Result? {
         guard realization == realizationDescriptor.id,
-              record.glyph.rawValue < 256,
-              record.byteCount == 0 else { return nil }
+            record.glyph.rawValue < 256,
+            record.byteCount == 0
+        else { return nil }
         payloadVisits += 1
         return try body(UnsafeRawBufferPointer(start: nil, count: 0))
     }

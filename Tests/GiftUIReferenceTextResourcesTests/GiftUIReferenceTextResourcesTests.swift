@@ -1,4 +1,5 @@
 import Testing
+
 @testable import GiftUIReferenceTextResources
 @testable import GiftUITextResources
 
@@ -38,14 +39,16 @@ func everyGeneratedRecordBorrowsItsExactStructurallyValidBytes() {
                 }
                 switch realization.kind {
                 case .monochromeBitmap1:
-                    return TextResourceValidator
+                    return
+                        TextResourceValidator
                         .isStructurallyValidMonochromeBitmap(
                             record: record,
                             metrics: metrics,
                             bytes: bytes
                         )
                 case .packagedOutline:
-                    return TextResourceValidator
+                    return
+                        TextResourceValidator
                         .isStructurallyValidPackagedOutline(
                             record: record,
                             metrics: metrics,

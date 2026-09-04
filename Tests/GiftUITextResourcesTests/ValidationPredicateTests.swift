@@ -1,6 +1,7 @@
-@testable import GiftUITextResources
 import GiftUI
 import XCTest
+
+@testable import GiftUITextResources
 
 final class ValidationPredicateTests: XCTestCase {
     func testSchemaCapacityAndCountPredicatesAreIsolated() {
@@ -234,10 +235,12 @@ final class ValidationPredicateTests: XCTestCase {
             assertResult(
                 replacingMetrics(
                     base,
-                    mappings: [ScalarGlyphMappingRecord(
-                        scalarValue: scalar,
-                        glyph: GiftUITextResources.GlyphID(rawValue: 0)
-                    )]
+                    mappings: [
+                        ScalarGlyphMappingRecord(
+                            scalarValue: scalar,
+                            glyph: GiftUITextResources.GlyphID(rawValue: 0)
+                        )
+                    ]
                 ),
                 .malformedMapping
             )
@@ -245,10 +248,12 @@ final class ValidationPredicateTests: XCTestCase {
         assertResult(
             replacingMetrics(
                 base,
-                mappings: [ScalarGlyphMappingRecord(
-                    scalarValue: 0x41,
-                    glyph: GiftUITextResources.GlyphID(rawValue: 1)
-                )]
+                mappings: [
+                    ScalarGlyphMappingRecord(
+                        scalarValue: 0x41,
+                        glyph: GiftUITextResources.GlyphID(rawValue: 1)
+                    )
+                ]
             ),
             .malformedMapping
         )
@@ -466,8 +471,9 @@ private struct PredicateRaster: TextRasterResourceView {
         _ body: (UnsafeRawBufferPointer) throws -> Result
     ) rethrows -> Result? {
         guard !refusesBorrow,
-              Int(realization.rawValue) < payloads.count,
-              isPayloadAvailable(for: realization) else { return nil }
+            Int(realization.rawValue) < payloads.count,
+            isPayloadAvailable(for: realization)
+        else { return nil }
         return try payloads[Int(realization.rawValue)].withUnsafeBytes { bytes in
             let start = Int(record.offset)
             let end = start + Int(record.byteCount)
@@ -795,29 +801,35 @@ private func makeCertifiedZeroPayloadFixture() -> PredicatePackage {
                     mappingCount: 1
                 ),
                 mappings: [mapping(0x41)],
-                glyphMetrics: [GlyphMetrics(
-                    advanceX: 0, offsetX: 0, offsetY: 0,
-                    inkSize: Size(width: 0, height: 0)!
-                )],
+                glyphMetrics: [
+                    GlyphMetrics(
+                        advanceX: 0, offsetX: 0, offsetY: 0,
+                        inkSize: Size(width: 0, height: 0)!
+                    )
+                ],
                 returnsExtraInstance: false,
                 returnsExtraMapping: false,
                 returnsExtraMetric: false
             ),
             raster: PredicateRaster(
                 descriptor: descriptor,
-                realizationValues: [RasterRealizationDescriptor(
-                    id: RasterRealizationID(rawValue: 0),
-                    instance: instanceID,
-                    kind: .monochromeBitmap1,
-                    glyphCount: 1,
-                    payloadByteCount: 0,
-                    payloadDigest: emptyDigest
-                )],
-                records: [GlyphRasterRecord(
-                    glyph: GiftUITextResources.GlyphID(rawValue: 0),
-                    offset: 0, byteCount: 0, rowByteCount: 0,
-                    pixelWidth: 0, pixelHeight: 0
-                )],
+                realizationValues: [
+                    RasterRealizationDescriptor(
+                        id: RasterRealizationID(rawValue: 0),
+                        instance: instanceID,
+                        kind: .monochromeBitmap1,
+                        glyphCount: 1,
+                        payloadByteCount: 0,
+                        payloadDigest: emptyDigest
+                    )
+                ],
+                records: [
+                    GlyphRasterRecord(
+                        glyph: GiftUITextResources.GlyphID(rawValue: 0),
+                        offset: 0, byteCount: 0, rowByteCount: 0,
+                        pixelWidth: 0, pixelHeight: 0
+                    )
+                ],
                 payloads: [[]],
                 availability: [true],
                 returnsExtraRealization: false,

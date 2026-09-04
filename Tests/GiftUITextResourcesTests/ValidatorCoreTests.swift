@@ -1,6 +1,7 @@
-@testable import GiftUITextResources
 import GiftUI
 import XCTest
+
+@testable import GiftUITextResources
 
 final class ValidatorCoreTests: XCTestCase {
     func testCompleteSyntheticPackageValidates() {
@@ -118,8 +119,9 @@ final class ValidatorCoreTests: XCTestCase {
             for secondIndex in faults.indices where secondIndex > firstIndex {
                 let first = faults[firstIndex]
                 let second = faults[secondIndex]
-                let expected = first.expectedError.rawValue
-                    < second.expectedError.rawValue
+                let expected =
+                    first.expectedError.rawValue
+                        < second.expectedError.rawValue
                     ? first.expectedError : second.expectedError
                 XCTAssertEqual(
                     validate(makePairwiseValidationFixture([first, second])),
@@ -200,7 +202,7 @@ private func makePairwiseValidationFixture(
     let lineAscent: Int32 = faults.contains(.malformedMetrics) ? 0 : 1
     let mappingScalar: UInt32 = faults.contains(.malformedMapping) ? 0x0a : 0x41
     let payload: [UInt8] = [
-        faults.contains(.malformedRasterRecord) ? 0x81 : 0x80,
+        faults.contains(.malformedRasterRecord) ? 0x81 : 0x80
     ]
     let payloadDigest = payload.withUnsafeBytes {
         TextResourceValidator.sha256(of: $0)
@@ -219,17 +221,21 @@ private func makePairwiseValidationFixture(
         lineAscent: lineAscent,
         mappingScalar: mappingScalar
     )
-    let computedIdentity = TextResourceValidator.canonicalManifestDigest(
-        of: provisional
-    )?.digest ?? zero
-    let metricsIdentity = faults.contains(.integrityMismatch)
+    let computedIdentity =
+        TextResourceValidator.canonicalManifestDigest(
+            of: provisional
+        )?.digest ?? zero
+    let metricsIdentity =
+        faults.contains(.integrityMismatch)
         ? zero : computedIdentity
     let metricsResource = FontResourceID(rawValue: metricsIdentity)
-    let rasterResource = faults.contains(.incompatibleViews)
-        ? FontResourceID(rawValue: TextResourceDigest(
-            word0: 1, word1: 1, word2: 1, word3: 1,
-            word4: 1, word5: 1, word6: 1, word7: 1
-        ))
+    let rasterResource =
+        faults.contains(.incompatibleViews)
+        ? FontResourceID(
+            rawValue: TextResourceDigest(
+                word0: 1, word1: 1, word2: 1, word3: 1,
+                word4: 1, word5: 1, word6: 1, word7: 1
+            ))
         : metricsResource
     return makePairwiseValidationFixture(
         metricsResource: metricsResource,
@@ -495,9 +501,10 @@ func makeValidValidationFixture(
         realizationCount: realizationCount,
         canonicalManifestByteCount: canonicalManifestByteCount
     )
-    let identity = TextResourceValidator.canonicalManifestDigest(
-        of: provisional
-    )?.digest ?? zeroValidationDigest()
+    let identity =
+        TextResourceValidator.canonicalManifestDigest(
+            of: provisional
+        )?.digest ?? zeroValidationDigest()
     return makeValidationFixture(
         resource: FontResourceID(rawValue: identity),
         payloadDigest: payloadDigest,

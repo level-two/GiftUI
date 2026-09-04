@@ -224,11 +224,16 @@ public struct GiftUIAllowedDispositions: OptionSet, Sendable, Equatable {
         self.rawValue = rawValue
     }
 
-    public static let continueOperation = Self(rawValue: 1 << GiftUIResidualDisposition.continueOperation.rawValue)
-    public static let requestPacedRetry = Self(rawValue: 1 << GiftUIResidualDisposition.requestPacedRetry.rawValue)
-    public static let markFacilityUnavailable = Self(rawValue: 1 << GiftUIResidualDisposition.markFacilityUnavailable.rawValue)
-    public static let quiesceAffectedScope = Self(rawValue: 1 << GiftUIResidualDisposition.quiesceAffectedScope.rawValue)
-    public static let invokeFatalHook = Self(rawValue: 1 << GiftUIResidualDisposition.invokeFatalHook.rawValue)
+    public static let continueOperation = Self(
+        rawValue: 1 << GiftUIResidualDisposition.continueOperation.rawValue)
+    public static let requestPacedRetry = Self(
+        rawValue: 1 << GiftUIResidualDisposition.requestPacedRetry.rawValue)
+    public static let markFacilityUnavailable = Self(
+        rawValue: 1 << GiftUIResidualDisposition.markFacilityUnavailable.rawValue)
+    public static let quiesceAffectedScope = Self(
+        rawValue: 1 << GiftUIResidualDisposition.quiesceAffectedScope.rawValue)
+    public static let invokeFatalHook = Self(
+        rawValue: 1 << GiftUIResidualDisposition.invokeFatalHook.rawValue)
 }
 
 public struct GiftUIResidualPolicyInput<Context> {
@@ -256,7 +261,7 @@ public struct GiftUIResidualPolicyInput<Context> {
         switch outcome {
         case .success:
             return nil
-        case let .operational(fact):
+        case .operational(let fact):
             if allowed.contains(.requestPacedRetry) {
                 guard fact.kind == .backpressured || fact.kind == .retryableRefusal else {
                     return nil
@@ -265,7 +270,7 @@ public struct GiftUIResidualPolicyInput<Context> {
                     return nil
                 }
             }
-        case let .failure(fact):
+        case .failure(let fact):
             guard !allowed.contains(.requestPacedRetry) else {
                 return nil
             }

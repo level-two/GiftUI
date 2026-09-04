@@ -99,6 +99,7 @@ run_check() {
 }
 
 run_check governance "${PROJECT_ROOT}/scripts/validate-governance.rb"
+run_check swift-format "${PROJECT_ROOT}/scripts/format-swift.sh" --lint
 run_check driver-registry "${PROJECT_ROOT}/scripts/contracts/check-driver-registry.rb"
 
 export CLANG_MODULE_CACHE_PATH="${report_dir}/clang-cache"

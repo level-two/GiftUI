@@ -32,7 +32,7 @@ unless emitted_prefix.take(prefix.length) == prefix
   fail_check("schema prefix is not emitted as the exact 22 literal UTF-8 bytes")
 end
 
-constants = source.scan(/^\s*(?:case [0-9]+|default): 0x[0-9a-f]{8}$/)
+constants = source.scan(/^\s*(?:case [0-9]+|default): 0x[0-9a-f]{4}_?[0-9a-f]{4}$/)
 fail_check("expected all 64 SHA-256 round constants") unless constants.length == 64
 
 forbidden = {

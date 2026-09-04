@@ -1,7 +1,8 @@
 import GiftUICapabilities
 import GiftUIFailureCore
-@testable import GiftUICapabilityFailureAdapterFixture
 import XCTest
+
+@testable import GiftUICapabilityFailureAdapterFixture
 
 final class CapabilityFailureAdapterTests: XCTestCase {
     func testCapabilityConditionNamesUseExactRawValuesAndLeaveElevenUnnamed() {
@@ -30,12 +31,13 @@ final class CapabilityFailureAdapterTests: XCTestCase {
         for (unavailable, condition) in cases {
             XCTAssertEqual(
                 CapabilityFailureAdapter.requiredFamilyFailure(unavailable),
-                .failure(GiftUIFailureFact(
-                    condition: condition,
-                    origin: .capability,
-                    affectedScope: .runtime,
-                    containment: .contained
-                ))
+                .failure(
+                    GiftUIFailureFact(
+                        condition: condition,
+                        origin: .capability,
+                        affectedScope: .runtime,
+                        containment: .contained
+                    ))
             )
             XCTAssertNotEqual(condition, .requiredFacilityUnavailable)
         }
@@ -53,10 +55,11 @@ final class CapabilityFailureAdapterTests: XCTestCase {
             )
             for role in roles {
                 XCTAssertEqual(
-                    CapabilityFailureAdapter.condition(for: .malformedContribution(
-                        role: role,
-                        field: field
-                    )),
+                    CapabilityFailureAdapter.condition(
+                        for: .malformedContribution(
+                            role: role,
+                            field: field
+                        )),
                     .rasterMalformedContribution
                 )
             }
@@ -73,11 +76,12 @@ final class CapabilityFailureAdapterTests: XCTestCase {
         }
         for capacity in capacities {
             XCTAssertEqual(
-                CapabilityFailureAdapter.condition(for: .insufficientCapacity(
-                    domain: capacity,
-                    required: count,
-                    available: available
-                )),
+                CapabilityFailureAdapter.condition(
+                    for: .insufficientCapacity(
+                        domain: capacity,
+                        required: count,
+                        available: available
+                    )),
                 .rasterInsufficientCapacity
             )
             XCTAssertEqual(
@@ -126,15 +130,19 @@ final class CapabilityFailureAdapterTests: XCTestCase {
             (.malformedRequirement(field: .extent), .rasterMalformedRequirement),
             (.duplicateContributor(role: .renderProducer), .rasterDuplicateContributor),
             (.missingContributor(role: .rasterBackend), .rasterMissingContributor),
-            (.malformedContribution(
-                role: .surfaceDisplay,
-                field: .rowByteAlignment
-            ), .rasterMalformedContribution),
-            (.insufficientCapacity(
-                domain: .payload,
-                required: required,
-                available: available
-            ), .rasterInsufficientCapacity),
+            (
+                .malformedContribution(
+                    role: .surfaceDisplay,
+                    field: .rowByteAlignment
+                ), .rasterMalformedContribution
+            ),
+            (
+                .insufficientCapacity(
+                    domain: .payload,
+                    required: required,
+                    available: available
+                ), .rasterInsufficientCapacity
+            ),
             (.operationSetMismatch, .rasterOperationSetMismatch),
             (.operationStreamMismatch, .rasterOperationStreamMismatch),
             (.logicalExtentOverflow, .rasterLogicalExtentOverflow),
@@ -148,9 +156,11 @@ final class CapabilityFailureAdapterTests: XCTestCase {
     }
 
     private var malformedFields: [RasterPresentationMalformedField] {
-        [.operationSet, .encodingSet, .submissionLifetimeSet, .handoffSet,
-         .extent, .region, .rowByteAlignment, .inFlightCount, .byteCount,
-         .alternateRealization, .policyPreference]
+        [
+            .operationSet, .encodingSet, .submissionLifetimeSet, .handoffSet,
+            .extent, .region, .rowByteAlignment, .inFlightCount, .byteCount,
+            .alternateRealization, .policyPreference,
+        ]
     }
 
     private var roles: [RasterPresentationContributorRole] {
@@ -167,58 +177,64 @@ final class CapabilityFailureAdapterTests: XCTestCase {
             .clipping, .damage,
         ]
         let extent = try XCTUnwrap(CapabilityExtent(width: 4, height: 4))
-        let requirement = try XCTUnwrap(RasterPresentationRequirement(
-            operations: operations,
-            extent: extent,
-            operationStream: .synchronousBorrowedOneShot,
-            acceptedEncodings: .rgb565BigEndian,
-            acceptedSubmissionLifetimes: .synchronousBorrow,
-            maximumRasterBytes: .init(rawValue: 16),
-            maximumPayloadBytes: .init(rawValue: 16),
-            maximumInFlightBytes: .init(rawValue: 16),
-            absence: .required
-        ))
-        let producer = try XCTUnwrap(RenderProducerContribution(
-            operations: operations,
-            operationStream: .synchronousBorrowedOneShot
-        ))
-        let realization = try XCTUnwrap(RasterRealizationContribution(
-            kind: .tiled,
-            operations: operations,
-            operationStream: .synchronousBorrowedOneShot,
-            encodings: .rgb565BigEndian,
-            producedSubmissionLifetimes: .synchronousBorrow,
-            maximumExtent: extent,
-            maximumRegionWidth: 4,
-            maximumRegionHeight: 2,
-            rowByteAlignment: 2,
-            maximumRasterBytes: .init(rawValue: 16),
-            maximumPayloadBytes: .init(rawValue: 16)
-        ))
-        let backend = try XCTUnwrap(RasterBackendContribution(
-            primary: realization,
-            alternate: nil
-        ))
-        let surface = try XCTUnwrap(SurfaceDisplayContribution(
-            extent: extent,
-            encodings: .rgb565BigEndian,
-            acceptedSubmissionLifetimes: .synchronousBorrow,
-            handoffs: .synchronous,
-            maximumRegionWidth: 4,
-            maximumRegionHeight: 2,
-            rowByteAlignment: 2,
-            maximumInFlightCount: 1,
-            maximumInFlightBytes: .init(rawValue: 16)
-        ))
-        let policy = try XCTUnwrap(RasterPresentationPolicy(
-            maximumRasterBytes: .init(rawValue: 16),
-            maximumPayloadBytes: .init(rawValue: 16),
-            maximumInFlightBytes: .init(rawValue: 16),
-            allowedRealizations: .tiled,
-            allowedEncodings: .rgb565BigEndian,
-            preferredRealization: .tiled,
-            preferredEncoding: .rgb565BigEndian
-        ))
+        let requirement = try XCTUnwrap(
+            RasterPresentationRequirement(
+                operations: operations,
+                extent: extent,
+                operationStream: .synchronousBorrowedOneShot,
+                acceptedEncodings: .rgb565BigEndian,
+                acceptedSubmissionLifetimes: .synchronousBorrow,
+                maximumRasterBytes: .init(rawValue: 16),
+                maximumPayloadBytes: .init(rawValue: 16),
+                maximumInFlightBytes: .init(rawValue: 16),
+                absence: .required
+            ))
+        let producer = try XCTUnwrap(
+            RenderProducerContribution(
+                operations: operations,
+                operationStream: .synchronousBorrowedOneShot
+            ))
+        let realization = try XCTUnwrap(
+            RasterRealizationContribution(
+                kind: .tiled,
+                operations: operations,
+                operationStream: .synchronousBorrowedOneShot,
+                encodings: .rgb565BigEndian,
+                producedSubmissionLifetimes: .synchronousBorrow,
+                maximumExtent: extent,
+                maximumRegionWidth: 4,
+                maximumRegionHeight: 2,
+                rowByteAlignment: 2,
+                maximumRasterBytes: .init(rawValue: 16),
+                maximumPayloadBytes: .init(rawValue: 16)
+            ))
+        let backend = try XCTUnwrap(
+            RasterBackendContribution(
+                primary: realization,
+                alternate: nil
+            ))
+        let surface = try XCTUnwrap(
+            SurfaceDisplayContribution(
+                extent: extent,
+                encodings: .rgb565BigEndian,
+                acceptedSubmissionLifetimes: .synchronousBorrow,
+                handoffs: .synchronous,
+                maximumRegionWidth: 4,
+                maximumRegionHeight: 2,
+                rowByteAlignment: 2,
+                maximumInFlightCount: 1,
+                maximumInFlightBytes: .init(rawValue: 16)
+            ))
+        let policy = try XCTUnwrap(
+            RasterPresentationPolicy(
+                maximumRasterBytes: .init(rawValue: 16),
+                maximumPayloadBytes: .init(rawValue: 16),
+                maximumInFlightBytes: .init(rawValue: 16),
+                allowedRealizations: .tiled,
+                allowedEncodings: .rgb565BigEndian,
+                preferredRealization: .tiled,
+                preferredEncoding: .rgb565BigEndian
+            ))
         var contributions = RasterPresentationContributions()
         XCTAssertEqual(contributions.insert(.renderProducer(producer)), .inserted)
         XCTAssertEqual(contributions.insert(.rasterBackend(backend)), .inserted)
@@ -233,7 +249,7 @@ final class CapabilityFailureAdapterTests: XCTestCase {
             contributions: contributions,
             workspace: &workspace
         )
-        guard case let .available(effective) = resolution else {
+        guard case .available(let effective) = resolution else {
             throw SnapshotFixtureError.unavailable
         }
         return CapabilitySnapshot(rasterPresentation: effective)

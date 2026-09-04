@@ -171,7 +171,7 @@ final class GiftUIFoundationFailureAdapterTests: XCTestCase {
         file: StaticString = #filePath,
         line: UInt = #line
     ) {
-        guard case let .failure(fact) = outcome else {
+        guard case .failure(let fact) = outcome else {
             return XCTFail("expected failure with no partial value", file: file, line: line)
         }
         XCTAssertEqual(fact.condition, condition, file: file, line: line)
@@ -185,7 +185,7 @@ final class GiftUIFoundationFailureAdapterTests: XCTestCase {
         file: StaticString = #filePath,
         line: UInt = #line
     ) throws -> Success {
-        guard case let .success(value) = outcome else {
+        guard case .success(let value) = outcome else {
             XCTFail("expected complete success value", file: file, line: line)
             throw AdapterTestError.expectedSuccess
         }

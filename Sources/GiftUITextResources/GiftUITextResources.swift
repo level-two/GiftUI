@@ -286,26 +286,30 @@ package enum TextResourceValidator {
         let rasterDescriptor = resourcePackage.raster.descriptor
         var predicates = _TextResourceValidationPredicates()
 
-        predicates.unsupportedSchema = metricsDescriptor.schemaVersion != 1
+        predicates.unsupportedSchema =
+            metricsDescriptor.schemaVersion != 1
             || rasterDescriptor.schemaVersion != 1
-        predicates.capacityExceeded = !isWithinCapacity(
-            instanceCount: metricsDescriptor.instanceCount,
-            glyphCount: 0,
-            mappingCount: 0,
-            realizationCount: metricsDescriptor.realizationCount,
-            canonicalManifestByteCount:
-                metricsDescriptor.canonicalManifestByteCount,
-            payloadByteCount: 0
-        ) || !isWithinCapacity(
-            instanceCount: rasterDescriptor.instanceCount,
-            glyphCount: 0,
-            mappingCount: 0,
-            realizationCount: rasterDescriptor.realizationCount,
-            canonicalManifestByteCount:
-                rasterDescriptor.canonicalManifestByteCount,
-            payloadByteCount: 0
-        )
-        predicates.invalidCount = metricsDescriptor.instanceCount == 0
+        predicates.capacityExceeded =
+            !isWithinCapacity(
+                instanceCount: metricsDescriptor.instanceCount,
+                glyphCount: 0,
+                mappingCount: 0,
+                realizationCount: metricsDescriptor.realizationCount,
+                canonicalManifestByteCount:
+                    metricsDescriptor.canonicalManifestByteCount,
+                payloadByteCount: 0
+            )
+            || !isWithinCapacity(
+                instanceCount: rasterDescriptor.instanceCount,
+                glyphCount: 0,
+                mappingCount: 0,
+                realizationCount: rasterDescriptor.realizationCount,
+                canonicalManifestByteCount:
+                    rasterDescriptor.canonicalManifestByteCount,
+                payloadByteCount: 0
+            )
+        predicates.invalidCount =
+            metricsDescriptor.instanceCount == 0
             || metricsDescriptor.realizationCount == 0
             || metricsDescriptor.canonicalManifestByteCount == 0
             || rasterDescriptor.instanceCount == 0
@@ -319,13 +323,16 @@ package enum TextResourceValidator {
         predicates.incompatibleViews = metricsDescriptor != rasterDescriptor
 
         var canonicalInstance: FontInstanceDescriptor?
-        let instanceTraversalCount = metricsDescriptor.instanceCount > 1
+        let instanceTraversalCount =
+            metricsDescriptor.instanceCount > 1
             ? UInt16(1) : metricsDescriptor.instanceCount
         var instanceOrdinal: UInt16 = 0
         while instanceOrdinal < instanceTraversalCount {
-            guard let instance = resourcePackage.metrics.instance(
-                at: instanceOrdinal
-            ) else {
+            guard
+                let instance = resourcePackage.metrics.instance(
+                    at: instanceOrdinal
+                )
+            else {
                 predicates.invalidCount = true
                 instanceOrdinal += 1
                 continue
@@ -335,7 +342,8 @@ package enum TextResourceValidator {
             } else {
                 canonicalInstance = instance
             }
-            predicates.capacityExceeded = predicates.capacityExceeded
+            predicates.capacityExceeded =
+                predicates.capacityExceeded
                 || !isWithinCapacity(
                     instanceCount: 1,
                     glyphCount: instance.glyphCount,
@@ -344,10 +352,12 @@ package enum TextResourceValidator {
                     canonicalManifestByteCount: 1,
                     payloadByteCount: 0
                 )
-            predicates.invalidCount = predicates.invalidCount
+            predicates.invalidCount =
+                predicates.invalidCount
                 || instance.glyphCount == 0
                 || instance.mappingCount == 0
-            predicates.invalidIdentity = predicates.invalidIdentity
+            predicates.invalidIdentity =
+                predicates.invalidIdentity
                 || instance.id.resource != metricsDescriptor.resource
                 || instance.id.instanceIndex != instanceOrdinal
                 || instance.replacementGlyph.rawValue >= instance.glyphCount
@@ -357,60 +367,71 @@ package enum TextResourceValidator {
             if let partial = lineSum {
                 lineSum = GeometryArithmetic.add(partial, line.lineGap)
             }
-            predicates.malformedMetrics = predicates.malformedMetrics
+            predicates.malformedMetrics =
+                predicates.malformedMetrics
                 || line.ascent <= 0
                 || line.descent < 0
                 || line.lineGap < 0
                 || lineSum == nil
                 || lineSum == 0
 
-            let mappingTraversalCount = instance.mappingCount > 256
+            let mappingTraversalCount =
+                instance.mappingCount > 256
                 ? UInt16(256) : instance.mappingCount
             var mappingOrdinal: UInt16 = 0
             var precedingScalar: UInt32?
             while mappingOrdinal < mappingTraversalCount {
-                guard let mapping = resourcePackage.metrics.mapping(
-                    at: mappingOrdinal,
-                    in: instance.id
-                ) else {
+                guard
+                    let mapping = resourcePackage.metrics.mapping(
+                        at: mappingOrdinal,
+                        in: instance.id
+                    )
+                else {
                     predicates.invalidCount = true
                     mappingOrdinal += 1
                     continue
                 }
-                predicates.malformedMapping = predicates.malformedMapping
+                predicates.malformedMapping =
+                    predicates.malformedMapping
                     || !isValidUnicodeScalar(mapping.scalarValue)
                     || mapping.scalarValue == 0x0a
                     || mapping.scalarValue == 0x0d
                     || mapping.glyph.rawValue >= instance.glyphCount
                 if let precedingScalar,
-                   mapping.scalarValue <= precedingScalar {
+                    mapping.scalarValue <= precedingScalar
+                {
                     predicates.malformedMapping = true
                 }
                 precedingScalar = mapping.scalarValue
                 mappingOrdinal += 1
             }
             if instance.mappingCount <= 256,
-               resourcePackage.metrics.mapping(
-                   at: instance.mappingCount,
-                   in: instance.id
-               ) != nil {
+                resourcePackage.metrics.mapping(
+                    at: instance.mappingCount,
+                    in: instance.id
+                ) != nil
+            {
                 predicates.invalidCount = true
             }
 
-            let glyphTraversalCount = instance.glyphCount > 256
+            let glyphTraversalCount =
+                instance.glyphCount > 256
                 ? UInt16(256) : instance.glyphCount
             var glyphOrdinal: UInt16 = 0
             while glyphOrdinal < glyphTraversalCount {
                 let glyph = GlyphID(rawValue: glyphOrdinal)
-                guard let glyphMetrics = resourcePackage.metrics.metrics(
-                    for: glyph,
-                    in: instance.id
-                ) else {
+                guard
+                    let glyphMetrics = resourcePackage.metrics.metrics(
+                        for: glyph,
+                        in: instance.id
+                    )
+                else {
                     predicates.invalidCount = true
                     glyphOrdinal += 1
                     continue
                 }
-                predicates.malformedMetrics = predicates.malformedMetrics
+                predicates.malformedMetrics =
+                    predicates.malformedMetrics
                     || glyphMetrics.advanceX < 0
                     || GeometryArithmetic.add(
                         glyphMetrics.offsetX,
@@ -423,31 +444,36 @@ package enum TextResourceValidator {
                 glyphOrdinal += 1
             }
             if instance.glyphCount <= 256,
-               resourcePackage.metrics.metrics(
-                   for: GlyphID(rawValue: instance.glyphCount),
-                   in: instance.id
-               ) != nil {
+                resourcePackage.metrics.metrics(
+                    for: GlyphID(rawValue: instance.glyphCount),
+                    in: instance.id
+                ) != nil
+            {
                 predicates.invalidCount = true
             }
             instanceOrdinal += 1
         }
         if metricsDescriptor.instanceCount <= 1,
-           resourcePackage.metrics.instance(
-               at: metricsDescriptor.instanceCount
-           ) != nil {
+            resourcePackage.metrics.instance(
+                at: metricsDescriptor.instanceCount
+            ) != nil
+        {
             predicates.invalidCount = true
         }
 
-        let realizationTraversalCount = metricsDescriptor.realizationCount > 2
+        let realizationTraversalCount =
+            metricsDescriptor.realizationCount > 2
             ? UInt16(2) : metricsDescriptor.realizationCount
         var realizationOrdinal: UInt16 = 0
         var anyAvailablePayload = false
         var requiredIsCatalogued = false
         var requiredIsAvailable = false
         while realizationOrdinal < realizationTraversalCount {
-            guard let realization = resourcePackage.raster.realization(
-                at: realizationOrdinal
-            ) else {
+            guard
+                let realization = resourcePackage.raster.realization(
+                    at: realizationOrdinal
+                )
+            else {
                 predicates.invalidCount = true
                 realizationOrdinal += 1
                 continue
@@ -463,7 +489,8 @@ package enum TextResourceValidator {
                 for: realization.id
             )
             anyAvailablePayload = anyAvailablePayload || isAvailable
-            predicates.capacityExceeded = predicates.capacityExceeded
+            predicates.capacityExceeded =
+                predicates.capacityExceeded
                 || !isWithinCapacity(
                     instanceCount: 1,
                     glyphCount: realization.glyphCount,
@@ -472,21 +499,25 @@ package enum TextResourceValidator {
                     canonicalManifestByteCount: 1,
                     payloadByteCount: realization.payloadByteCount
                 )
-            predicates.invalidCount = predicates.invalidCount
+            predicates.invalidCount =
+                predicates.invalidCount
                 || realization.glyphCount == 0
-            predicates.invalidIdentity = predicates.invalidIdentity
+            predicates.invalidIdentity =
+                predicates.invalidIdentity
                 || realization.id.rawValue != realizationOrdinal
                 || realization.instance.resource != rasterDescriptor.resource
                 || realization.instance.instanceIndex != 0
             if let canonicalInstance {
-                predicates.incompatibleViews = predicates.incompatibleViews
+                predicates.incompatibleViews =
+                    predicates.incompatibleViews
                     || realization.instance != canonicalInstance.id
                     || realization.glyphCount != canonicalInstance.glyphCount
             } else {
                 predicates.incompatibleViews = true
             }
 
-            let recordTraversalCount = realization.glyphCount > 256
+            let recordTraversalCount =
+                realization.glyphCount > 256
                 ? UInt16(256) : realization.glyphCount
             var recordOrdinal: UInt16 = 0
             var expectedOffset: UInt32 = 0
@@ -494,15 +525,18 @@ package enum TextResourceValidator {
             var payloadBytesBorrowed: UInt32 = 0
             while recordOrdinal < recordTraversalCount {
                 let glyph = GlyphID(rawValue: recordOrdinal)
-                guard let record = resourcePackage.raster.record(
-                    for: glyph,
-                    realization: realization.id
-                ) else {
+                guard
+                    let record = resourcePackage.raster.record(
+                        for: glyph,
+                        realization: realization.id
+                    )
+                else {
                     predicates.invalidCount = true
                     recordOrdinal += 1
                     continue
                 }
-                predicates.invalidIdentity = predicates.invalidIdentity
+                predicates.invalidIdentity =
+                    predicates.invalidIdentity
                     || record.glyph != glyph
                 let end = record.offset.addingReportingOverflow(record.byteCount)
                 predicates.malformedRasterRecord =
@@ -528,7 +562,8 @@ package enum TextResourceValidator {
                     predicates.incompatibleViews = true
                 }
                 if let glyphMetrics {
-                    let dimensionsMatch = glyphMetrics.inkSize.width
+                    let dimensionsMatch =
+                        glyphMetrics.inkSize.width
                         == Int32(record.pixelWidth)
                         && glyphMetrics.inkSize.height
                             == Int32(record.pixelHeight)
@@ -536,7 +571,8 @@ package enum TextResourceValidator {
                     case .monochromeBitmap1:
                         let expectedRowBytes =
                             (UInt32(record.pixelWidth) + 7) / 8
-                        let expectedByteCount = expectedRowBytes
+                        let expectedByteCount =
+                            expectedRowBytes
                             .multipliedReportingOverflow(
                                 by: UInt32(record.pixelHeight)
                             )
@@ -567,7 +603,8 @@ package enum TextResourceValidator {
                             predicates.incompatibleViews = true
                         }
                         if let count = UInt32(exactly: bytes.count) {
-                            let total = payloadBytesBorrowed
+                            let total =
+                                payloadBytesBorrowed
                                 .addingReportingOverflow(count)
                             if total.overflow {
                                 predicates.capacityExceeded = true
@@ -609,24 +646,28 @@ package enum TextResourceValidator {
                 recordOrdinal += 1
             }
             if realization.glyphCount <= 256,
-               resourcePackage.raster.record(
-                   for: GlyphID(rawValue: realization.glyphCount),
-                   realization: realization.id
-               ) != nil {
+                resourcePackage.raster.record(
+                    for: GlyphID(rawValue: realization.glyphCount),
+                    realization: realization.id
+                ) != nil
+            {
                 predicates.invalidCount = true
             }
-            predicates.malformedRasterRecord = predicates.malformedRasterRecord
+            predicates.malformedRasterRecord =
+                predicates.malformedRasterRecord
                 || expectedOffset != realization.payloadByteCount
             if isAvailable {
-                predicates.integrityMismatch = predicates.integrityMismatch
+                predicates.integrityMismatch =
+                    predicates.integrityMismatch
                     || payloadSHA256.finalize() != realization.payloadDigest
             }
             realizationOrdinal += 1
         }
         if metricsDescriptor.realizationCount <= 2,
-           resourcePackage.raster.realization(
-               at: metricsDescriptor.realizationCount
-           ) != nil {
+            resourcePackage.raster.realization(
+                at: metricsDescriptor.realizationCount
+            ) != nil
+        {
             predicates.invalidCount = true
         }
         if resourcePackage.raster.isPayloadAvailable(
@@ -636,15 +677,18 @@ package enum TextResourceValidator {
         ) {
             predicates.invalidIdentity = true
         }
-        predicates.incompatibleViews = predicates.incompatibleViews
+        predicates.incompatibleViews =
+            predicates.incompatibleViews
             || !anyAvailablePayload
             || !requiredIsCatalogued
             || !requiredIsAvailable
 
         if let manifest = canonicalManifestDigest(of: resourcePackage) {
-            predicates.capacityExceeded = predicates.capacityExceeded
+            predicates.capacityExceeded =
+                predicates.capacityExceeded
                 || manifest.byteCount > 16_384
-            predicates.integrityMismatch = predicates.integrityMismatch
+            predicates.integrityMismatch =
+                predicates.integrityMismatch
                 || manifest.byteCount
                     != metricsDescriptor.canonicalManifestByteCount
                 || manifest.digest != metricsDescriptor.resource.rawValue
@@ -687,19 +731,20 @@ package extension CanonicalTextMetricsView {
         in instance: FontInstanceID
     ) -> GlyphMapping? {
         guard TextResourceValidator.isValidUnicodeScalar(scalarValue),
-              scalarValue != 0x0a,
-              scalarValue != 0x0d,
-              instance.resource == descriptor.resource,
-              instance.instanceIndex < descriptor.instanceCount,
-              let instanceDescriptor = self.instance(
-                  at: instance.instanceIndex
-              ),
-              instanceDescriptor.id == instance,
-              instanceDescriptor.glyphCount > 0,
-              instanceDescriptor.glyphCount <= 256,
-              instanceDescriptor.mappingCount <= 256,
-              instanceDescriptor.replacementGlyph.rawValue
-                  < instanceDescriptor.glyphCount else {
+            scalarValue != 0x0a,
+            scalarValue != 0x0d,
+            instance.resource == descriptor.resource,
+            instance.instanceIndex < descriptor.instanceCount,
+            let instanceDescriptor = self.instance(
+                at: instance.instanceIndex
+            ),
+            instanceDescriptor.id == instance,
+            instanceDescriptor.glyphCount > 0,
+            instanceDescriptor.glyphCount <= 256,
+            instanceDescriptor.mappingCount <= 256,
+            instanceDescriptor.replacementGlyph.rawValue
+                < instanceDescriptor.glyphCount
+        else {
             return nil
         }
 
@@ -726,7 +771,8 @@ package extension CanonicalTextMetricsView {
 package extension GlyphMetrics {
     func checkedInkRectangle(at logicalOrigin: Point) -> Rect? {
         guard let x = GeometryArithmetic.add(logicalOrigin.x, offsetX),
-              let y = GeometryArithmetic.add(logicalOrigin.y, offsetY) else {
+            let y = GeometryArithmetic.add(logicalOrigin.y, offsetY)
+        else {
             return nil
         }
         return Rect(origin: Point(x: x, y: y), size: inkSize)
@@ -767,21 +813,23 @@ package extension TextResourceValidator {
         _ body: (UnsafeRawBufferPointer) throws -> Result
     ) rethrows -> Result? {
         guard let cataloguedRecord,
-              let cataloguedRealization,
-              let payload,
-              isAvailable,
-              record == cataloguedRecord,
-              realization == cataloguedRealization.id,
-              record.glyph.rawValue < cataloguedRealization.glyphCount,
-              cataloguedRealization.payloadByteCount <= 65_536,
-              let payloadCount = UInt32(exactly: payload.count),
-              payloadCount == cataloguedRealization.payloadByteCount,
-              record.offset <= cataloguedRealization.payloadByteCount else {
+            let cataloguedRealization,
+            let payload,
+            isAvailable,
+            record == cataloguedRecord,
+            realization == cataloguedRealization.id,
+            record.glyph.rawValue < cataloguedRealization.glyphCount,
+            cataloguedRealization.payloadByteCount <= 65_536,
+            let payloadCount = UInt32(exactly: payload.count),
+            payloadCount == cataloguedRealization.payloadByteCount,
+            record.offset <= cataloguedRealization.payloadByteCount
+        else {
             return nil
         }
         let end = record.offset.addingReportingOverflow(record.byteCount)
         guard !end.overflow,
-              end.partialValue <= cataloguedRealization.payloadByteCount else {
+            end.partialValue <= cataloguedRealization.payloadByteCount
+        else {
             return nil
         }
         let startIndex = Int(record.offset)
@@ -819,19 +867,22 @@ package extension TextResourceValidator {
         var glyphOrdinal: UInt32 = 0
         while glyphOrdinal < UInt32(realization.glyphCount) {
             let glyph = GlyphID(rawValue: UInt16(glyphOrdinal))
-            guard let record = raster.record(
-                for: glyph,
-                realization: realization.id
-            ),
-            record.glyph == glyph,
-            record.offset == expectedOffset else {
+            guard
+                let record = raster.record(
+                    for: glyph,
+                    realization: realization.id
+                ),
+                record.glyph == glyph,
+                record.offset == expectedOffset
+            else {
                 return false
             }
             let nextOffset = expectedOffset.addingReportingOverflow(
                 record.byteCount
             )
             guard !nextOffset.overflow,
-                  nextOffset.partialValue <= realization.payloadByteCount else {
+                nextOffset.partialValue <= realization.payloadByteCount
+            else {
                 return false
             }
             expectedOffset = nextOffset.partialValue
@@ -846,8 +897,9 @@ package extension TextResourceValidator {
         bytes: UnsafeRawBufferPointer
     ) -> Bool {
         guard Int(record.byteCount) == bytes.count,
-              metrics.inkSize.width == Int32(record.pixelWidth),
-              metrics.inkSize.height == Int32(record.pixelHeight) else {
+            metrics.inkSize.width == Int32(record.pixelWidth),
+            metrics.inkSize.height == Int32(record.pixelHeight)
+        else {
             return false
         }
         let expectedRowBytes = (UInt32(record.pixelWidth) + 7) / 8
@@ -858,7 +910,8 @@ package extension TextResourceValidator {
             by: UInt32(record.pixelHeight)
         )
         guard !expectedByteCount.overflow,
-              expectedByteCount.partialValue == record.byteCount else {
+            expectedByteCount.partialValue == record.byteCount
+        else {
             return false
         }
 
@@ -882,13 +935,15 @@ package extension TextResourceValidator {
         bytes: UnsafeRawBufferPointer
     ) -> Bool? {
         guard x < record.pixelWidth,
-              y < record.pixelHeight,
-              UInt32(record.rowByteCount) * UInt32(record.pixelHeight)
-                  == record.byteCount,
-              Int(record.byteCount) == bytes.count else {
+            y < record.pixelHeight,
+            UInt32(record.rowByteCount) * UInt32(record.pixelHeight)
+                == record.byteCount,
+            Int(record.byteCount) == bytes.count
+        else {
             return nil
         }
-        let byteIndex = UInt32(y) * UInt32(record.rowByteCount)
+        let byteIndex =
+            UInt32(y) * UInt32(record.rowByteCount)
             + UInt32(x / 8)
         let mask = UInt8(0x80 >> UInt8(x & 7))
         return bytes[Int(byteIndex)] & mask != 0
@@ -900,13 +955,14 @@ package extension TextResourceValidator {
         bytes: UnsafeRawBufferPointer
     ) -> Bool {
         guard record.rowByteCount == 0,
-              Int(record.byteCount) == bytes.count,
-              metrics.inkSize.width == Int32(record.pixelWidth),
-              metrics.inkSize.height == Int32(record.pixelHeight),
-              bytes.count >= 5,
-              bytes[0] == 1,
-              readUInt16(bytes, at: 1) != 0,
-              readUInt16(bytes, at: 3) != 0 else {
+            Int(record.byteCount) == bytes.count,
+            metrics.inkSize.width == Int32(record.pixelWidth),
+            metrics.inkSize.height == Int32(record.pixelHeight),
+            bytes.count >= 5,
+            bytes[0] == 1,
+            readUInt16(bytes, at: 1) != 0,
+            readUInt16(bytes, at: 3) != 0
+        else {
             return false
         }
         if bytes.count == 5 {
@@ -926,7 +982,8 @@ package extension TextResourceValidator {
                 continue
             }
             guard opcode >= 1, opcode <= 4,
-                  index < bytes.count else {
+                index < bytes.count
+            else {
                 return false
             }
             let operandCount = Int(bytes[index])
@@ -944,7 +1001,8 @@ package extension TextResourceValidator {
             }
             let operandBytes = operandCount.multipliedReportingOverflow(by: 4)
             guard !operandBytes.overflow,
-                  operandBytes.partialValue <= bytes.count - index else {
+                operandBytes.partialValue <= bytes.count - index
+            else {
                 return false
             }
             var operand = 0
@@ -1064,10 +1122,12 @@ package extension TextResourceValidator {
 
             var mappingOrdinal: UInt32 = 0
             while mappingOrdinal < UInt32(instance.mappingCount) {
-                guard let mapping = resourcePackage.metrics.mapping(
-                    at: UInt16(mappingOrdinal),
-                    in: instance.id
-                ) else {
+                guard
+                    let mapping = resourcePackage.metrics.mapping(
+                        at: UInt16(mappingOrdinal),
+                        in: instance.id
+                    )
+                else {
                     return nil
                 }
                 emitUInt32(mapping.scalarValue)
@@ -1078,10 +1138,12 @@ package extension TextResourceValidator {
             var glyphOrdinal: UInt32 = 0
             while glyphOrdinal < UInt32(instance.glyphCount) {
                 let glyph = GlyphID(rawValue: UInt16(glyphOrdinal))
-                guard let metrics = resourcePackage.metrics.metrics(
-                    for: glyph,
-                    in: instance.id
-                ) else {
+                guard
+                    let metrics = resourcePackage.metrics.metrics(
+                        for: glyph,
+                        in: instance.id
+                    )
+                else {
                     return nil
                 }
                 emitUInt16(glyph.rawValue)
@@ -1098,9 +1160,11 @@ package extension TextResourceValidator {
         emitUInt16(descriptor.realizationCount)
         var realizationOrdinal: UInt32 = 0
         while realizationOrdinal < UInt32(descriptor.realizationCount) {
-            guard let realization = resourcePackage.raster.realization(
-                at: UInt16(realizationOrdinal)
-            ) else {
+            guard
+                let realization = resourcePackage.raster.realization(
+                    at: UInt16(realizationOrdinal)
+                )
+            else {
                 return nil
             }
             emitUInt16(realization.id.rawValue)
@@ -1113,10 +1177,12 @@ package extension TextResourceValidator {
             var glyphOrdinal: UInt32 = 0
             while glyphOrdinal < UInt32(realization.glyphCount) {
                 let glyph = GlyphID(rawValue: UInt16(glyphOrdinal))
-                guard let record = resourcePackage.raster.record(
-                    for: glyph,
-                    realization: realization.id
-                ) else {
+                guard
+                    let record = resourcePackage.raster.record(
+                        for: glyph,
+                        realization: realization.id
+                    )
+                else {
                     return nil
                 }
                 emitUInt16(record.glyph.rawValue)
@@ -1138,10 +1204,12 @@ package extension TextResourceValidator {
     ) -> (byteCount: UInt32, digest: TextResourceDigest)?
     where M: CanonicalTextMetricsView, R: TextRasterResourceView {
         var sha256 = _TextResourceSHA256()
-        guard let byteCount = forEachCanonicalManifestByte(
-            in: resourcePackage,
-            { sha256.update(with: $0) }
-        ) else {
+        guard
+            let byteCount = forEachCanonicalManifestByte(
+                in: resourcePackage,
+                { sha256.update(with: $0) }
+            )
+        else {
             return nil
         }
         return (byteCount, sha256.finalize())
@@ -1161,14 +1229,14 @@ package extension TextResourceValidator {
 }
 
 private struct _TextResourceSHA256 {
-    private var h0: UInt32 = 0x6a09e667
-    private var h1: UInt32 = 0xbb67ae85
-    private var h2: UInt32 = 0x3c6ef372
-    private var h3: UInt32 = 0xa54ff53a
-    private var h4: UInt32 = 0x510e527f
-    private var h5: UInt32 = 0x9b05688c
-    private var h6: UInt32 = 0x1f83d9ab
-    private var h7: UInt32 = 0x5be0cd19
+    private var h0: UInt32 = 0x6a09_e667
+    private var h1: UInt32 = 0xbb67_ae85
+    private var h2: UInt32 = 0x3c6e_f372
+    private var h3: UInt32 = 0xa54f_f53a
+    private var h4: UInt32 = 0x510e_527f
+    private var h5: UInt32 = 0x9b05_688c
+    private var h6: UInt32 = 0x1f83_d9ab
+    private var h7: UInt32 = 0x5be0_cd19
 
     private var w0: UInt32 = 0
     private var w1: UInt32 = 0
@@ -1247,22 +1315,28 @@ private struct _TextResourceSHA256 {
             if round < 16 {
                 schedule = word(round)
             } else {
-                let s0 = rotateRight(word((round - 15) & 15), by: 7)
+                let s0 =
+                    rotateRight(word((round - 15) & 15), by: 7)
                     ^ rotateRight(word((round - 15) & 15), by: 18)
                     ^ (word((round - 15) & 15) >> 3)
-                let s1 = rotateRight(word((round - 2) & 15), by: 17)
+                let s1 =
+                    rotateRight(word((round - 2) & 15), by: 17)
                     ^ rotateRight(word((round - 2) & 15), by: 19)
                     ^ (word((round - 2) & 15) >> 10)
-                schedule = word((round - 16) & 15) &+ s0
+                schedule =
+                    word((round - 16) & 15) &+ s0
                     &+ word((round - 7) & 15) &+ s1
                 setWord(round & 15, schedule)
             }
-            let upperSigma1 = rotateRight(e, by: 6)
+            let upperSigma1 =
+                rotateRight(e, by: 6)
                 ^ rotateRight(e, by: 11) ^ rotateRight(e, by: 25)
             let choose = (e & f) ^ ((~e) & g)
-            let temporary1 = h &+ upperSigma1 &+ choose
+            let temporary1 =
+                h &+ upperSigma1 &+ choose
                 &+ Self.roundConstant(round) &+ schedule
-            let upperSigma0 = rotateRight(a, by: 2)
+            let upperSigma0 =
+                rotateRight(a, by: 2)
                 ^ rotateRight(a, by: 13) ^ rotateRight(a, by: 22)
             let majority = (a & b) ^ (a & c) ^ (b & c)
             let temporary2 = upperSigma0 &+ majority
@@ -1335,70 +1409,70 @@ private struct _TextResourceSHA256 {
 
     private static func roundConstant(_ index: Int) -> UInt32 {
         switch index {
-        case 0: 0x428a2f98
-        case 1: 0x71374491
-        case 2: 0xb5c0fbcf
-        case 3: 0xe9b5dba5
-        case 4: 0x3956c25b
-        case 5: 0x59f111f1
-        case 6: 0x923f82a4
-        case 7: 0xab1c5ed5
-        case 8: 0xd807aa98
-        case 9: 0x12835b01
-        case 10: 0x243185be
-        case 11: 0x550c7dc3
-        case 12: 0x72be5d74
-        case 13: 0x80deb1fe
-        case 14: 0x9bdc06a7
-        case 15: 0xc19bf174
-        case 16: 0xe49b69c1
-        case 17: 0xefbe4786
-        case 18: 0x0fc19dc6
-        case 19: 0x240ca1cc
-        case 20: 0x2de92c6f
-        case 21: 0x4a7484aa
-        case 22: 0x5cb0a9dc
-        case 23: 0x76f988da
-        case 24: 0x983e5152
-        case 25: 0xa831c66d
-        case 26: 0xb00327c8
-        case 27: 0xbf597fc7
-        case 28: 0xc6e00bf3
-        case 29: 0xd5a79147
-        case 30: 0x06ca6351
-        case 31: 0x14292967
-        case 32: 0x27b70a85
-        case 33: 0x2e1b2138
-        case 34: 0x4d2c6dfc
-        case 35: 0x53380d13
-        case 36: 0x650a7354
-        case 37: 0x766a0abb
-        case 38: 0x81c2c92e
-        case 39: 0x92722c85
-        case 40: 0xa2bfe8a1
-        case 41: 0xa81a664b
-        case 42: 0xc24b8b70
-        case 43: 0xc76c51a3
-        case 44: 0xd192e819
-        case 45: 0xd6990624
-        case 46: 0xf40e3585
-        case 47: 0x106aa070
-        case 48: 0x19a4c116
-        case 49: 0x1e376c08
-        case 50: 0x2748774c
-        case 51: 0x34b0bcb5
-        case 52: 0x391c0cb3
-        case 53: 0x4ed8aa4a
-        case 54: 0x5b9cca4f
-        case 55: 0x682e6ff3
-        case 56: 0x748f82ee
-        case 57: 0x78a5636f
-        case 58: 0x84c87814
-        case 59: 0x8cc70208
-        case 60: 0x90befffa
-        case 61: 0xa4506ceb
-        case 62: 0xbef9a3f7
-        default: 0xc67178f2
+        case 0: 0x428a_2f98
+        case 1: 0x7137_4491
+        case 2: 0xb5c0_fbcf
+        case 3: 0xe9b5_dba5
+        case 4: 0x3956_c25b
+        case 5: 0x59f1_11f1
+        case 6: 0x923f_82a4
+        case 7: 0xab1c_5ed5
+        case 8: 0xd807_aa98
+        case 9: 0x1283_5b01
+        case 10: 0x2431_85be
+        case 11: 0x550c_7dc3
+        case 12: 0x72be_5d74
+        case 13: 0x80de_b1fe
+        case 14: 0x9bdc_06a7
+        case 15: 0xc19b_f174
+        case 16: 0xe49b_69c1
+        case 17: 0xefbe_4786
+        case 18: 0x0fc1_9dc6
+        case 19: 0x240c_a1cc
+        case 20: 0x2de9_2c6f
+        case 21: 0x4a74_84aa
+        case 22: 0x5cb0_a9dc
+        case 23: 0x76f9_88da
+        case 24: 0x983e_5152
+        case 25: 0xa831_c66d
+        case 26: 0xb003_27c8
+        case 27: 0xbf59_7fc7
+        case 28: 0xc6e0_0bf3
+        case 29: 0xd5a7_9147
+        case 30: 0x06ca_6351
+        case 31: 0x1429_2967
+        case 32: 0x27b7_0a85
+        case 33: 0x2e1b_2138
+        case 34: 0x4d2c_6dfc
+        case 35: 0x5338_0d13
+        case 36: 0x650a_7354
+        case 37: 0x766a_0abb
+        case 38: 0x81c2_c92e
+        case 39: 0x9272_2c85
+        case 40: 0xa2bf_e8a1
+        case 41: 0xa81a_664b
+        case 42: 0xc24b_8b70
+        case 43: 0xc76c_51a3
+        case 44: 0xd192_e819
+        case 45: 0xd699_0624
+        case 46: 0xf40e_3585
+        case 47: 0x106a_a070
+        case 48: 0x19a4_c116
+        case 49: 0x1e37_6c08
+        case 50: 0x2748_774c
+        case 51: 0x34b0_bcb5
+        case 52: 0x391c_0cb3
+        case 53: 0x4ed8_aa4a
+        case 54: 0x5b9c_ca4f
+        case 55: 0x682e_6ff3
+        case 56: 0x748f_82ee
+        case 57: 0x78a5_636f
+        case 58: 0x84c8_7814
+        case 59: 0x8cc7_0208
+        case 60: 0x90be_fffa
+        case 61: 0xa450_6ceb
+        case 62: 0xbef9_a3f7
+        default: 0xc671_78f2
         }
     }
 }

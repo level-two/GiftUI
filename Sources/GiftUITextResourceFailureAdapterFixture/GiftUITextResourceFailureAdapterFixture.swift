@@ -8,14 +8,14 @@ package enum GiftUITextResourceFailureAdapterFixture {
         let condition: GiftUIConditionID
         switch error {
         case .unsupportedSchema,
-             .invalidCount,
-             .malformedMetrics,
-             .malformedMapping,
-             .malformedRasterRecord:
+            .invalidCount,
+            .malformedMetrics,
+            .malformedMapping,
+            .malformedRasterRecord:
             condition = .invalidValue
         case .invalidIdentity,
-             .incompatibleViews,
-             .integrityMismatch:
+            .incompatibleViews,
+            .integrityMismatch:
             condition = .invalidIdentity
         case .capacityExceeded:
             condition = .capacityExhausted

@@ -9,7 +9,7 @@ struct WaveformView: View {
         Color(red: 0.27, green: 0.92, blue: 0.73),
         Color(red: 0.35, green: 0.69, blue: 1.0),
         Color(red: 0.77, green: 0.53, blue: 1.0),
-        Color(red: 1.0, green: 0.61, blue: 0.31)
+        Color(red: 1.0, green: 0.61, blue: 0.31),
     ]
 
     init(capture: SignalCapture, visibleRange: Range<Duration>) {

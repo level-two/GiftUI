@@ -1,5 +1,6 @@
-@testable import GiftUITextResources
 import XCTest
+
+@testable import GiftUITextResources
 
 final class PayloadBorrowingTests: XCTestCase {
     func testValidRecordInvokesBodyExactlyOnceWithExactSlice() {
@@ -294,10 +295,11 @@ private func makeBorrowingRaster(
     isAvailable: Bool = true,
     declaredPayloadByteCount: UInt32? = nil
 ) -> BorrowingRaster {
-    let resource = FontResourceID(rawValue: TextResourceDigest(
-        word0: 0, word1: 0, word2: 0, word3: 0,
-        word4: 0, word5: 0, word6: 0, word7: 0
-    ))
+    let resource = FontResourceID(
+        rawValue: TextResourceDigest(
+            word0: 0, word1: 0, word2: 0, word3: 0,
+            word4: 0, word5: 0, word6: 0, word7: 0
+        ))
     let instance = FontInstanceID(resource: resource, instanceIndex: 0)
     let descriptor = TextResourceDescriptor(
         schemaVersion: 1,

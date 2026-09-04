@@ -1,5 +1,6 @@
-@testable import GiftUITextResources
 import XCTest
+
+@testable import GiftUITextResources
 
 final class BoundaryAndLayoutTests: XCTestCase {
     func testEveryNormativeValueHasBoundedSizeStrideAndAlignment() {
@@ -127,7 +128,8 @@ private struct EmptyPartitionRaster: TextRasterResourceView {
         _ body: (UnsafeRawBufferPointer) throws -> Result
     ) rethrows -> Result? {
         guard record == recordValue,
-              realization == realizationDescriptor.id else { return nil }
+            realization == realizationDescriptor.id
+        else { return nil }
         return try body(UnsafeRawBufferPointer(start: nil, count: 0))
     }
 }

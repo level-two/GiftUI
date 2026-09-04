@@ -32,100 +32,108 @@ final class GiftUICapabilityAdapterTests: XCTestCase {
         let overflowSize = try XCTUnwrap(Size(width: 65_536, height: 320))
 
         XCTAssertEqual(
-            FixtureCapabilityAdapter.requirement(.init(
-                operationBits: 0,
-                encodingBits: 0,
-                lifetimeBits: 0,
-                size: overflowSize,
-                maximumRasterBytes: -1,
-                maximumPayloadBytes: -1,
-                maximumInFlightBytes: -1
-            )),
+            FixtureCapabilityAdapter.requirement(
+                .init(
+                    operationBits: 0,
+                    encodingBits: 0,
+                    lifetimeBits: 0,
+                    size: overflowSize,
+                    maximumRasterBytes: -1,
+                    maximumPayloadBytes: -1,
+                    maximumInFlightBytes: -1
+                )),
             .unavailable(.malformedRequirement(field: .operationSet))
         )
         XCTAssertEqual(
-            FixtureCapabilityAdapter.requirement(.init(
-                operationBits: 0x1f,
-                encodingBits: 0,
-                lifetimeBits: 0,
-                size: zeroSize,
-                maximumRasterBytes: -1,
-                maximumPayloadBytes: -1,
-                maximumInFlightBytes: -1
-            )),
+            FixtureCapabilityAdapter.requirement(
+                .init(
+                    operationBits: 0x1f,
+                    encodingBits: 0,
+                    lifetimeBits: 0,
+                    size: zeroSize,
+                    maximumRasterBytes: -1,
+                    maximumPayloadBytes: -1,
+                    maximumInFlightBytes: -1
+                )),
             .unavailable(.malformedRequirement(field: .encodingSet))
         )
         XCTAssertEqual(
-            FixtureCapabilityAdapter.requirement(.init(
-                operationBits: 0x1f,
-                encodingBits: 1,
-                lifetimeBits: 0,
-                size: zeroSize,
-                maximumRasterBytes: -1,
-                maximumPayloadBytes: -1,
-                maximumInFlightBytes: -1
-            )),
+            FixtureCapabilityAdapter.requirement(
+                .init(
+                    operationBits: 0x1f,
+                    encodingBits: 1,
+                    lifetimeBits: 0,
+                    size: zeroSize,
+                    maximumRasterBytes: -1,
+                    maximumPayloadBytes: -1,
+                    maximumInFlightBytes: -1
+                )),
             .unavailable(.malformedRequirement(field: .submissionLifetimeSet))
         )
         XCTAssertEqual(
-            FixtureCapabilityAdapter.requirement(.init(
-                operationBits: 0x1f,
-                encodingBits: 1,
-                lifetimeBits: 1,
-                size: zeroSize,
-                maximumRasterBytes: -1,
-                maximumPayloadBytes: -1,
-                maximumInFlightBytes: -1
-            )),
+            FixtureCapabilityAdapter.requirement(
+                .init(
+                    operationBits: 0x1f,
+                    encodingBits: 1,
+                    lifetimeBits: 1,
+                    size: zeroSize,
+                    maximumRasterBytes: -1,
+                    maximumPayloadBytes: -1,
+                    maximumInFlightBytes: -1
+                )),
             .unavailable(.malformedRequirement(field: .extent))
         )
         XCTAssertEqual(
-            FixtureCapabilityAdapter.requirement(.init(
-                operationBits: 0x1f,
-                encodingBits: 1,
-                lifetimeBits: 1,
-                size: overflowSize,
-                maximumRasterBytes: -1,
-                maximumPayloadBytes: -1,
-                maximumInFlightBytes: -1
-            )),
+            FixtureCapabilityAdapter.requirement(
+                .init(
+                    operationBits: 0x1f,
+                    encodingBits: 1,
+                    lifetimeBits: 1,
+                    size: overflowSize,
+                    maximumRasterBytes: -1,
+                    maximumPayloadBytes: -1,
+                    maximumInFlightBytes: -1
+                )),
             .unavailable(.logicalExtentOverflow)
         )
         XCTAssertEqual(
-            FixtureCapabilityAdapter.requirement(.init(
-                operationBits: 0x1f,
-                encodingBits: 1,
-                lifetimeBits: 1,
-                size: validSize,
-                maximumRasterBytes: -1,
-                maximumPayloadBytes: 1,
-                maximumInFlightBytes: 1
-            )),
+            FixtureCapabilityAdapter.requirement(
+                .init(
+                    operationBits: 0x1f,
+                    encodingBits: 1,
+                    lifetimeBits: 1,
+                    size: validSize,
+                    maximumRasterBytes: -1,
+                    maximumPayloadBytes: 1,
+                    maximumInFlightBytes: 1
+                )),
             .unavailable(.malformedRequirement(field: .byteCount))
         )
         XCTAssertEqual(
-            FixtureCapabilityAdapter.requirement(.init(
-                operationBits: 0x1f,
-                encodingBits: 1,
-                lifetimeBits: 1,
-                size: validSize,
-                maximumRasterBytes: Int64(UInt32.max) + 1,
-                maximumPayloadBytes: 1,
-                maximumInFlightBytes: 1
-            )),
+            FixtureCapabilityAdapter.requirement(
+                .init(
+                    operationBits: 0x1f,
+                    encodingBits: 1,
+                    lifetimeBits: 1,
+                    size: validSize,
+                    maximumRasterBytes: Int64(UInt32.max) + 1,
+                    maximumPayloadBytes: 1,
+                    maximumInFlightBytes: 1
+                )),
             .unavailable(.malformedRequirement(field: .byteCount))
         )
 
-        let valid = FixtureCapabilityAdapter.requirement(.init(
-            operationBits: 0x1f,
-            encodingBits: 3,
-            lifetimeBits: 7,
-            size: validSize,
-            maximumRasterBytes: 0,
-            maximumPayloadBytes: 0,
-            maximumInFlightBytes: 0
-        ))
-        guard case let .value(requirement) = valid else {
+        let valid = FixtureCapabilityAdapter.requirement(
+            .init(
+                operationBits: 0x1f,
+                encodingBits: 3,
+                lifetimeBits: 7,
+                size: validSize,
+                maximumRasterBytes: 0,
+                maximumPayloadBytes: 0,
+                maximumInFlightBytes: 0
+            ))
+        guard case .value(let requirement) = valid else {
             return XCTFail("valid raw requirement was rejected: \(valid)")
         }
         XCTAssertEqual(requirement.extent, CapabilityExtent(width: 480, height: 320))
@@ -144,12 +152,13 @@ final class GiftUICapabilityAdapterTests: XCTestCase {
             .malformedContribution(role: .renderProducer, field: .operationSet)
         )
         XCTAssertEqual(
-            FixtureCapabilityAdapter.firstMalformedContribution(.init(
-                renderProducer: [],
-                rasterBackend: [.rowByteAlignment, .region],
-                surfaceDisplay: [.encodingSet],
-                hostResourcePolicy: [.policyPreference]
-            )),
+            FixtureCapabilityAdapter.firstMalformedContribution(
+                .init(
+                    renderProducer: [],
+                    rasterBackend: [.rowByteAlignment, .region],
+                    surfaceDisplay: [.encodingSet],
+                    hostResourcePolicy: [.policyPreference]
+                )),
             .malformedContribution(role: .rasterBackend, field: .region)
         )
         XCTAssertNil(FixtureCapabilityAdapter.firstMalformedContribution(.init()))
@@ -164,27 +173,31 @@ final class GiftUICapabilityAdapterTests: XCTestCase {
         for field in fields {
             let mask = MalformedFieldMask(arrayLiteral: field)
             XCTAssertEqual(
-                FixtureCapabilityAdapter.firstMalformedContribution(.init(
-                    renderProducer: mask
-                )),
+                FixtureCapabilityAdapter.firstMalformedContribution(
+                    .init(
+                        renderProducer: mask
+                    )),
                 .malformedContribution(role: .renderProducer, field: field)
             )
             XCTAssertEqual(
-                FixtureCapabilityAdapter.firstMalformedContribution(.init(
-                    rasterBackend: mask
-                )),
+                FixtureCapabilityAdapter.firstMalformedContribution(
+                    .init(
+                        rasterBackend: mask
+                    )),
                 .malformedContribution(role: .rasterBackend, field: field)
             )
             XCTAssertEqual(
-                FixtureCapabilityAdapter.firstMalformedContribution(.init(
-                    surfaceDisplay: mask
-                )),
+                FixtureCapabilityAdapter.firstMalformedContribution(
+                    .init(
+                        surfaceDisplay: mask
+                    )),
                 .malformedContribution(role: .surfaceDisplay, field: field)
             )
             XCTAssertEqual(
-                FixtureCapabilityAdapter.firstMalformedContribution(.init(
-                    hostResourcePolicy: mask
-                )),
+                FixtureCapabilityAdapter.firstMalformedContribution(
+                    .init(
+                        hostResourcePolicy: mask
+                    )),
                 .malformedContribution(role: .hostResourcePolicy, field: field)
             )
         }
@@ -250,9 +263,11 @@ private enum FixtureCapabilityAdapter {
         guard size.width <= UInt16.max, size.height <= UInt16.max else {
             return .unavailable(.logicalExtentOverflow)
         }
-        guard let extent = CapabilityExtent(
-            width: UInt16(size.width), height: UInt16(size.height)
-        ) else {
+        guard
+            let extent = CapabilityExtent(
+                width: UInt16(size.width), height: UInt16(size.height)
+            )
+        else {
             return .unavailable(.malformedRequirement(field: .extent))
         }
         return .value(extent)
@@ -275,25 +290,28 @@ private enum FixtureCapabilityAdapter {
         }
         let extent: CapabilityExtent
         switch self.extent(raw.size) {
-        case let .value(value): extent = value
-        case let .unavailable(reason): return .unavailable(reason)
+        case .value(let value): extent = value
+        case .unavailable(let reason): return .unavailable(reason)
         }
         guard let rasterBytes = byteCount(raw.maximumRasterBytes),
-              let payloadBytes = byteCount(raw.maximumPayloadBytes),
-              let inFlightBytes = byteCount(raw.maximumInFlightBytes) else {
+            let payloadBytes = byteCount(raw.maximumPayloadBytes),
+            let inFlightBytes = byteCount(raw.maximumInFlightBytes)
+        else {
             return .unavailable(.malformedRequirement(field: .byteCount))
         }
-        guard let requirement = RasterPresentationRequirement(
-            operations: operations,
-            extent: extent,
-            operationStream: .synchronousBorrowedOneShot,
-            acceptedEncodings: encodings,
-            acceptedSubmissionLifetimes: lifetimes,
-            maximumRasterBytes: rasterBytes,
-            maximumPayloadBytes: payloadBytes,
-            maximumInFlightBytes: inFlightBytes,
-            absence: .required
-        ) else {
+        guard
+            let requirement = RasterPresentationRequirement(
+                operations: operations,
+                extent: extent,
+                operationStream: .synchronousBorrowedOneShot,
+                acceptedEncodings: encodings,
+                acceptedSubmissionLifetimes: lifetimes,
+                maximumRasterBytes: rasterBytes,
+                maximumPayloadBytes: payloadBytes,
+                maximumInFlightBytes: inFlightBytes,
+                absence: .required
+            )
+        else {
             return .unavailable(.malformedRequirement(field: .operationSet))
         }
         return .value(requirement)

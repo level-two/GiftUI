@@ -51,10 +51,12 @@ package final class MockSignalDataSource: SignalDataSource {
             var conceptualNow = offset
 
             while !Task.isCancelled {
-                guard let plan = self?.makeEventPlan(
-                    conceptualNow: conceptualNow,
-                    generation: currentGeneration
-                ) else {
+                guard
+                    let plan = self?.makeEventPlan(
+                        conceptualNow: conceptualNow,
+                        generation: currentGeneration
+                    )
+                else {
                     return
                 }
 
@@ -65,9 +67,10 @@ package final class MockSignalDataSource: SignalDataSource {
                 }
 
                 guard let source = self,
-                      let sink,
-                      source.generation == currentGeneration,
-                      !Task.isCancelled else {
+                    let sink,
+                    source.generation == currentGeneration,
+                    !Task.isCancelled
+                else {
                     return
                 }
                 source.levels[plan.channelIndex].toggle()
@@ -106,7 +109,7 @@ package final class MockSignalDataSource: SignalDataSource {
             .milliseconds(250),
             .milliseconds(400),
             nextBurstInterval(),
-            nextRandomInterval()
+            nextRandomInterval(),
         ]
         emittedInitialLevels = true
 
@@ -130,8 +133,9 @@ package final class MockSignalDataSource: SignalDataSource {
         generation expectedGeneration: UInt64
     ) -> EventPlan? {
         guard generation == expectedGeneration,
-              let nextTimestamp = nextEventTimes.min(),
-              let channelIndex = nextEventTimes.firstIndex(of: nextTimestamp) else {
+            let nextTimestamp = nextEventTimes.min(),
+            let channelIndex = nextEventTimes.firstIndex(of: nextTimestamp)
+        else {
             return nil
         }
         let remaining = max(.zero, nextTimestamp - conceptualNow)

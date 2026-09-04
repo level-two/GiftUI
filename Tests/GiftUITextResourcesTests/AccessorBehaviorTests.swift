@@ -1,6 +1,7 @@
-@testable import GiftUITextResources
 import GiftUI
 import XCTest
+
+@testable import GiftUITextResources
 
 final class AccessorBehaviorTests: XCTestCase {
     func testUnicodeScalarClassificationCoversEveryBoundary() {
@@ -373,7 +374,8 @@ private struct AccessorMetrics: CanonicalTextMetricsView {
         in instance: FontInstanceID
     ) -> ScalarGlyphMappingRecord? {
         guard instance == instanceDescriptor.id,
-              Int(index) < mappings.count else { return nil }
+            Int(index) < mappings.count
+        else { return nil }
         return mappings[Int(index)]
     }
 
@@ -382,7 +384,8 @@ private struct AccessorMetrics: CanonicalTextMetricsView {
         in instance: FontInstanceID
     ) -> GlyphMetrics? {
         guard instance == instanceDescriptor.id,
-              Int(glyph.rawValue) < glyphMetrics.count else { return nil }
+            Int(glyph.rawValue) < glyphMetrics.count
+        else { return nil }
         return glyphMetrics[Int(glyph.rawValue)]
     }
 }
@@ -402,8 +405,9 @@ private struct AccessorRaster: TextRasterResourceView {
         realization: RasterRealizationID
     ) -> GlyphRasterRecord? {
         guard Int(realization.rawValue) < realizations.count,
-              realizations[Int(realization.rawValue)].id == realization,
-              Int(glyph.rawValue) < records[Int(realization.rawValue)].count else {
+            realizations[Int(realization.rawValue)].id == realization,
+            Int(glyph.rawValue) < records[Int(realization.rawValue)].count
+        else {
             return nil
         }
         return records[Int(realization.rawValue)][Int(glyph.rawValue)]
@@ -423,7 +427,8 @@ private struct AccessorRaster: TextRasterResourceView {
 }
 
 private func makeAccessorFixture()
-    -> TextResourcePackage<AccessorMetrics, AccessorRaster> {
+    -> TextResourcePackage<AccessorMetrics, AccessorRaster>
+{
     let resource = digestResource(0)
     let instanceID = FontInstanceID(resource: resource, instanceIndex: 0)
     var mappings: [ScalarGlyphMappingRecord] = []
@@ -496,7 +501,8 @@ private func makeAccessorFixture()
 }
 
 private func makePartitionFixture(offsets: [UInt32], counts: [UInt32])
-    -> TextResourcePackage<AccessorMetrics, AccessorRaster> {
+    -> TextResourcePackage<AccessorMetrics, AccessorRaster>
+{
     let base = makeAccessorFixture()
     let realization = RasterRealizationDescriptor(
         id: RasterRealizationID(rawValue: 0),
@@ -538,7 +544,8 @@ private func classifySequence(
     while index < scalars.count {
         if scalars[index] == 0x0d {
             lineBreaks += 1
-            index += index + 1 < scalars.count && scalars[index + 1] == 0x0a
+            index +=
+                index + 1 < scalars.count && scalars[index + 1] == 0x0a
                 ? 2 : 1
             continue
         }

@@ -1,5 +1,6 @@
-@testable import GiftUICapabilities
 import XCTest
+
+@testable import GiftUICapabilities
 
 final class GiftUICapabilitiesTests: XCTestCase {
     func testCommonRawValuesAndBitsAreExact() {
@@ -71,17 +72,18 @@ final class GiftUICapabilitiesTests: XCTestCase {
 
     func testRequirementRequiresExactOperationsAndValidSetsButAllowsZeroCeilings() throws {
         let extent = try makeExtent()
-        let value = try XCTUnwrap(RasterPresentationRequirement(
-            operations: allOperations,
-            extent: extent,
-            operationStream: .synchronousBorrowedOneShot,
-            acceptedEncodings: [.rgb565BigEndian, .rgba8888],
-            acceptedSubmissionLifetimes: [.synchronousBorrow, .synchronousCopy],
-            maximumRasterBytes: .init(rawValue: 0),
-            maximumPayloadBytes: .init(rawValue: 0),
-            maximumInFlightBytes: .init(rawValue: 0),
-            absence: .required
-        ))
+        let value = try XCTUnwrap(
+            RasterPresentationRequirement(
+                operations: allOperations,
+                extent: extent,
+                operationStream: .synchronousBorrowedOneShot,
+                acceptedEncodings: [.rgb565BigEndian, .rgba8888],
+                acceptedSubmissionLifetimes: [.synchronousBorrow, .synchronousCopy],
+                maximumRasterBytes: .init(rawValue: 0),
+                maximumPayloadBytes: .init(rawValue: 0),
+                maximumInFlightBytes: .init(rawValue: 0),
+                absence: .required
+            ))
         XCTAssertEqual(value.extent, extent)
         XCTAssertEqual(value.maximumRasterBytes.rawValue, 0)
         XCTAssertNil(makeRequirement(operations: [.opaqueRectangles]))
@@ -93,13 +95,15 @@ final class GiftUICapabilitiesTests: XCTestCase {
     }
 
     func testContributorStructuralBoundsAndAlternateRules() throws {
-        XCTAssertNil(RenderProducerContribution(
-            operations: [], operationStream: .synchronousBorrowedOneShot
-        ))
-        XCTAssertNil(RenderProducerContribution(
-            operations: .init(rawValue: 0x80),
-            operationStream: .synchronousBorrowedOneShot
-        ))
+        XCTAssertNil(
+            RenderProducerContribution(
+                operations: [], operationStream: .synchronousBorrowedOneShot
+            ))
+        XCTAssertNil(
+            RenderProducerContribution(
+                operations: .init(rawValue: 0x80),
+                operationStream: .synchronousBorrowedOneShot
+            ))
         let full = try XCTUnwrap(makeRealization(kind: .fullSurface))
         let tiled = try XCTUnwrap(makeRealization(kind: .tiled))
         XCTAssertNotNil(RasterBackendContribution(primary: full, alternate: tiled))
@@ -114,50 +118,58 @@ final class GiftUICapabilitiesTests: XCTestCase {
 
     func testEveryContributorOptionSetRejectsEmptyAndUnknownBits() throws {
         XCTAssertNil(makeRealization(kind: .fullSurface, operations: []))
-        XCTAssertNil(makeRealization(
-            kind: .fullSurface, operations: .init(rawValue: 0x80)
-        ))
+        XCTAssertNil(
+            makeRealization(
+                kind: .fullSurface, operations: .init(rawValue: 0x80)
+            ))
         XCTAssertNil(makeRealization(kind: .fullSurface, encodings: []))
-        XCTAssertNil(makeRealization(
-            kind: .fullSurface, encodings: .init(rawValue: 0x80)
-        ))
+        XCTAssertNil(
+            makeRealization(
+                kind: .fullSurface, encodings: .init(rawValue: 0x80)
+            ))
         XCTAssertNil(makeRealization(kind: .fullSurface, lifetimes: []))
-        XCTAssertNil(makeRealization(
-            kind: .fullSurface, lifetimes: .init(rawValue: 0x80)
-        ))
+        XCTAssertNil(
+            makeRealization(
+                kind: .fullSurface, lifetimes: .init(rawValue: 0x80)
+            ))
 
         let extent = try makeExtent()
         XCTAssertNil(makeSurface(extent: extent, encodings: .init(rawValue: 0x80)))
         XCTAssertNil(makeSurface(extent: extent, lifetimes: []))
-        XCTAssertNil(makeSurface(
-            extent: extent, lifetimes: .init(rawValue: 0x80)
-        ))
+        XCTAssertNil(
+            makeSurface(
+                extent: extent, lifetimes: .init(rawValue: 0x80)
+            ))
         XCTAssertNil(makeSurface(extent: extent, handoffs: []))
-        XCTAssertNil(makeSurface(
-            extent: extent, handoffs: .init(rawValue: 0x80)
-        ))
+        XCTAssertNil(
+            makeSurface(
+                extent: extent, handoffs: .init(rawValue: 0x80)
+            ))
 
         XCTAssertNil(makePolicy(realizations: .init(rawValue: 0x80)))
         XCTAssertNil(makePolicy(encodings: .init(rawValue: 0x80)))
     }
 
     func testTiledRealizationRequiresACompleteAlignedRowForEveryEncoding() {
-        XCTAssertNil(makeRealization(
-            kind: .tiled,
-            encodings: [.rgb565BigEndian, .rgba8888],
-            payloadBytes: 960
-        ))
-        XCTAssertNotNil(makeRealization(
-            kind: .tiled,
-            encodings: [.rgb565BigEndian, .rgba8888],
-            payloadBytes: 1_920
-        ))
-        XCTAssertNil(makeRealization(
-            kind: .tiled,
-            encodings: .rgba8888,
-            alignment: .max,
-            payloadBytes: 65_534
-        ))
+        XCTAssertNil(
+            makeRealization(
+                kind: .tiled,
+                encodings: [.rgb565BigEndian, .rgba8888],
+                payloadBytes: 960
+            ))
+        XCTAssertNotNil(
+            makeRealization(
+                kind: .tiled,
+                encodings: [.rgb565BigEndian, .rgba8888],
+                payloadBytes: 1_920
+            ))
+        XCTAssertNil(
+            makeRealization(
+                kind: .tiled,
+                encodings: .rgba8888,
+                alignment: .max,
+                payloadBytes: 65_534
+            ))
     }
 
     func testSurfaceAndPolicyRejectMalformedStructuralValuesAndPreferences() throws {
@@ -177,14 +189,16 @@ final class GiftUICapabilitiesTests: XCTestCase {
     }
 
     func testContributionBufferPreservesFirstValuesAndRejectsEveryLaterRoleValue() throws {
-        let first = try XCTUnwrap(RenderProducerContribution(
-            operations: .opaqueRectangles,
-            operationStream: .synchronousBorrowedOneShot
-        ))
-        let second = try XCTUnwrap(RenderProducerContribution(
-            operations: allOperations,
-            operationStream: .synchronousBorrowedOneShot
-        ))
+        let first = try XCTUnwrap(
+            RenderProducerContribution(
+                operations: .opaqueRectangles,
+                operationStream: .synchronousBorrowedOneShot
+            ))
+        let second = try XCTUnwrap(
+            RenderProducerContribution(
+                operations: allOperations,
+                operationStream: .synchronousBorrowedOneShot
+            ))
         var contributions = RasterPresentationContributions()
         XCTAssertEqual(RasterPresentationContributions.capacity, 4)
         XCTAssertEqual(contributions.insert(.renderProducer(first)), .inserted)
@@ -211,20 +225,24 @@ final class GiftUICapabilitiesTests: XCTestCase {
         var reordered = try makeCompleteContributions(reverseOrder: true)
         XCTAssertEqual(first, reordered)
 
-        let narrow = try XCTUnwrap(RenderProducerContribution(
-            operations: .opaqueRectangles,
-            operationStream: .synchronousBorrowedOneShot
-        ))
-        XCTAssertEqual(first.insert(.renderProducer(narrow)),
-                       .rejected(.duplicateContributor(role: .renderProducer)))
-        XCTAssertEqual(reordered.insert(.renderProducer(narrow)),
-                       .rejected(.duplicateContributor(role: .renderProducer)))
+        let narrow = try XCTUnwrap(
+            RenderProducerContribution(
+                operations: .opaqueRectangles,
+                operationStream: .synchronousBorrowedOneShot
+            ))
+        XCTAssertEqual(
+            first.insert(.renderProducer(narrow)),
+            .rejected(.duplicateContributor(role: .renderProducer)))
+        XCTAssertEqual(
+            reordered.insert(.renderProducer(narrow)),
+            .rejected(.duplicateContributor(role: .renderProducer)))
         reordered.renderProducer = narrow
         XCTAssertEqual(first, reordered)
 
-        reordered.surfaceDisplay = try XCTUnwrap(makeSurface(
-            extent: try makeExtent(), regionHeight: 4
-        ))
+        reordered.surfaceDisplay = try XCTUnwrap(
+            makeSurface(
+                extent: try makeExtent(), regionHeight: 4
+            ))
         XCTAssertNotEqual(first, reordered)
     }
 
@@ -269,14 +287,16 @@ final class GiftUICapabilitiesTests: XCTestCase {
         let tiled = NormalizedRasterPresentationCandidate(
             realization: try XCTUnwrap(makeRealization(kind: .tiled))
         )
-        var zero = try XCTUnwrap(RasterPresentationResolverWorkspace(
-            usableCandidateCapacity: 0
-        ))
+        var zero = try XCTUnwrap(
+            RasterPresentationResolverWorkspace(
+                usableCandidateCapacity: 0
+            ))
         XCTAssertFalse(zero.append(full))
 
-        var one = try XCTUnwrap(RasterPresentationResolverWorkspace(
-            usableCandidateCapacity: 1
-        ))
+        var one = try XCTUnwrap(
+            RasterPresentationResolverWorkspace(
+                usableCandidateCapacity: 1
+            ))
         XCTAssertTrue(one.append(full))
         XCTAssertFalse(one.append(tiled))
 
@@ -301,14 +321,17 @@ final class GiftUICapabilitiesTests: XCTestCase {
             realizationAlignment: 6,
             surfaceAlignment: 8
         )
-        XCTAssertEqual(tiled, .available(RasterPresentationArithmeticValue(
-            effectiveRowAlignment: 24,
-            regionExtent: try XCTUnwrap(CapabilityExtent(width: 5, height: 3)),
-            rowBytes: .init(rawValue: 24),
-            requiredRasterBytes: .init(rawValue: 72),
-            requiredPayloadBytes: .init(rawValue: 72),
-            requiredInFlightBytes: .init(rawValue: 72)
-        )))
+        XCTAssertEqual(
+            tiled,
+            .available(
+                RasterPresentationArithmeticValue(
+                    effectiveRowAlignment: 24,
+                    regionExtent: try XCTUnwrap(CapabilityExtent(width: 5, height: 3)),
+                    rowBytes: .init(rawValue: 24),
+                    requiredRasterBytes: .init(rawValue: 72),
+                    requiredPayloadBytes: .init(rawValue: 72),
+                    requiredInFlightBytes: .init(rawValue: 72)
+                )))
 
         let fullSurface = try evaluateArithmetic(
             width: 5,
@@ -320,14 +343,17 @@ final class GiftUICapabilitiesTests: XCTestCase {
             realizationAlignment: 4,
             surfaceAlignment: 8
         )
-        XCTAssertEqual(fullSurface, .available(RasterPresentationArithmeticValue(
-            effectiveRowAlignment: 8,
-            regionExtent: try XCTUnwrap(CapabilityExtent(width: 5, height: 7)),
-            rowBytes: .init(rawValue: 24),
-            requiredRasterBytes: .init(rawValue: 168),
-            requiredPayloadBytes: .init(rawValue: 168),
-            requiredInFlightBytes: .init(rawValue: 168)
-        )))
+        XCTAssertEqual(
+            fullSurface,
+            .available(
+                RasterPresentationArithmeticValue(
+                    effectiveRowAlignment: 8,
+                    regionExtent: try XCTUnwrap(CapabilityExtent(width: 5, height: 7)),
+                    rowBytes: .init(rawValue: 24),
+                    requiredRasterBytes: .init(rawValue: 168),
+                    requiredPayloadBytes: .init(rawValue: 168),
+                    requiredInFlightBytes: .init(rawValue: 168)
+                )))
     }
 
     func testRasterArithmeticProducesExactNRFUsage() throws {
@@ -342,30 +368,37 @@ final class GiftUICapabilitiesTests: XCTestCase {
             surfaceAlignment: 2,
             ceiling: 3_840
         )
-        XCTAssertEqual(outcome, .available(RasterPresentationArithmeticValue(
-            effectiveRowAlignment: 2,
-            regionExtent: try XCTUnwrap(CapabilityExtent(width: 480, height: 4)),
-            rowBytes: .init(rawValue: 960),
-            requiredRasterBytes: .init(rawValue: 3_840),
-            requiredPayloadBytes: .init(rawValue: 3_840),
-            requiredInFlightBytes: .init(rawValue: 3_840)
-        )))
+        XCTAssertEqual(
+            outcome,
+            .available(
+                RasterPresentationArithmeticValue(
+                    effectiveRowAlignment: 2,
+                    regionExtent: try XCTUnwrap(CapabilityExtent(width: 480, height: 4)),
+                    rowBytes: .init(rawValue: 960),
+                    requiredRasterBytes: .init(rawValue: 3_840),
+                    requiredPayloadBytes: .init(rawValue: 3_840),
+                    requiredInFlightBytes: .init(rawValue: 3_840)
+                )))
     }
 
     func testRasterArithmeticSelectsEveryRegionLimitAndRejectsNarrowOrShortFullSurface() throws {
-        guard case let .available(logicalMinimum) = try evaluateArithmetic(
-            width: 5, height: 2, kind: .tiled, encoding: .rgb565BigEndian,
-            realizationExtentHeight: 4, surfaceExtentHeight: 4,
-            realizationRegionHeight: 3, surfaceRegionHeight: 4,
-            realizationAlignment: 1, surfaceAlignment: 1
-        ) else { return XCTFail("logical height must be selectable") }
+        guard
+            case .available(let logicalMinimum) = try evaluateArithmetic(
+                width: 5, height: 2, kind: .tiled, encoding: .rgb565BigEndian,
+                realizationExtentHeight: 4, surfaceExtentHeight: 4,
+                realizationRegionHeight: 3, surfaceRegionHeight: 4,
+                realizationAlignment: 1, surfaceAlignment: 1
+            )
+        else { return XCTFail("logical height must be selectable") }
         XCTAssertEqual(logicalMinimum.regionExtent.height, 2)
 
-        guard case let .available(surfaceMinimum) = try evaluateArithmetic(
-            width: 5, height: 9, kind: .tiled, encoding: .rgb565BigEndian,
-            realizationRegionHeight: 4, surfaceRegionHeight: 3,
-            realizationAlignment: 1, surfaceAlignment: 1
-        ) else { return XCTFail("surface height must be selectable") }
+        guard
+            case .available(let surfaceMinimum) = try evaluateArithmetic(
+                width: 5, height: 9, kind: .tiled, encoding: .rgb565BigEndian,
+                realizationRegionHeight: 4, surfaceRegionHeight: 3,
+                realizationAlignment: 1, surfaceAlignment: 1
+            )
+        else { return XCTFail("surface height must be selectable") }
         XCTAssertEqual(surfaceMinimum.regionExtent.height, 3)
 
         XCTAssertEqual(
@@ -420,7 +453,7 @@ final class GiftUICapabilitiesTests: XCTestCase {
             surfaceAlignment: .max - 1,
             ceiling: .max
         )
-        guard case let .available(lcmValue) = maximumLCM else {
+        guard case .available(let lcmValue) = maximumLCM else {
             return XCTFail("maximum typed LCM must remain representable")
         }
         XCTAssertEqual(lcmValue.effectiveRowAlignment, 4_294_770_690)
@@ -437,7 +470,7 @@ final class GiftUICapabilitiesTests: XCTestCase {
             surfaceAlignment: 1,
             ceiling: .max
         )
-        guard case let .available(rowValue) = maximumUnalignedRow else {
+        guard case .available(let rowValue) = maximumUnalignedRow else {
             return XCTFail("maximum typed unaligned row must remain representable")
         }
         XCTAssertEqual(rowValue.rowBytes.rawValue, 262_140)
@@ -468,9 +501,10 @@ final class GiftUICapabilitiesTests: XCTestCase {
                 realizationAlignment: 1, surfaceAlignment: 1,
                 rasterCeilings: (20, 15, 18)
             ),
-            .unavailable(.insufficientCapacity(
-                domain: .raster, required: required, available: .init(rawValue: 15)
-            ))
+            .unavailable(
+                .insufficientCapacity(
+                    domain: .raster, required: required, available: .init(rawValue: 15)
+                ))
         )
         XCTAssertEqual(
             try evaluateArithmetic(
@@ -480,9 +514,10 @@ final class GiftUICapabilitiesTests: XCTestCase {
                 realizationAlignment: 1, surfaceAlignment: 1,
                 payloadCeilings: (20, 18, 15)
             ),
-            .unavailable(.insufficientCapacity(
-                domain: .payload, required: required, available: .init(rawValue: 15)
-            ))
+            .unavailable(
+                .insufficientCapacity(
+                    domain: .payload, required: required, available: .init(rawValue: 15)
+                ))
         )
         XCTAssertEqual(
             try evaluateArithmetic(
@@ -492,9 +527,10 @@ final class GiftUICapabilitiesTests: XCTestCase {
                 realizationAlignment: 1, surfaceAlignment: 1,
                 inFlightCeilings: (20, 0, 18)
             ),
-            .unavailable(.insufficientCapacity(
-                domain: .inFlight, required: required, available: .init(rawValue: 0)
-            ))
+            .unavailable(
+                .insufficientCapacity(
+                    domain: .inFlight, required: required, available: .init(rawValue: 0)
+                ))
         )
     }
 
@@ -514,49 +550,55 @@ final class GiftUICapabilitiesTests: XCTestCase {
         for ceilings in firstExcessOwnerPositions {
             XCTAssertEqual(
                 try boundaryArithmetic(rasterCeilings: ceilings),
-                .unavailable(.insufficientCapacity(
-                    domain: .raster,
-                    required: .init(rawValue: 16),
-                    available: .init(rawValue: 15)
-                ))
+                .unavailable(
+                    .insufficientCapacity(
+                        domain: .raster,
+                        required: .init(rawValue: 16),
+                        available: .init(rawValue: 15)
+                    ))
             )
             XCTAssertEqual(
                 try boundaryArithmetic(payloadCeilings: ceilings),
-                .unavailable(.insufficientCapacity(
-                    domain: .payload,
-                    required: .init(rawValue: 16),
-                    available: .init(rawValue: 15)
-                ))
+                .unavailable(
+                    .insufficientCapacity(
+                        domain: .payload,
+                        required: .init(rawValue: 16),
+                        available: .init(rawValue: 15)
+                    ))
             )
             XCTAssertEqual(
                 try boundaryArithmetic(inFlightCeilings: ceilings),
-                .unavailable(.insufficientCapacity(
-                    domain: .inFlight,
-                    required: .init(rawValue: 16),
-                    available: .init(rawValue: 15)
-                ))
+                .unavailable(
+                    .insufficientCapacity(
+                        domain: .inFlight,
+                        required: .init(rawValue: 16),
+                        available: .init(rawValue: 15)
+                    ))
             )
         }
     }
 
     func testOperationStreamNegativeFactIsConstructibleOnlyForContributions() throws {
-        XCTAssertNil(makeRequirement(
-            operationStream: .incompatibleWithSynchronousBorrowedOneShot
-        ))
-        let producer = try XCTUnwrap(RenderProducerContribution(
-            operations: allOperations,
-            operationStream: .incompatibleWithSynchronousBorrowedOneShot
-        ))
+        XCTAssertNil(
+            makeRequirement(
+                operationStream: .incompatibleWithSynchronousBorrowedOneShot
+            ))
+        let producer = try XCTUnwrap(
+            RenderProducerContribution(
+                operations: allOperations,
+                operationStream: .incompatibleWithSynchronousBorrowedOneShot
+            ))
         XCTAssertEqual(
             RasterPresentationCompatibility.producerIssue(
                 requirement: try XCTUnwrap(makeRequirement()), producer: producer
             ),
             .operationStreamMismatch
         )
-        let realization = try XCTUnwrap(makeRealization(
-            kind: .tiled,
-            operationStream: .incompatibleWithSynchronousBorrowedOneShot
-        ))
+        let realization = try XCTUnwrap(
+            makeRealization(
+                kind: .tiled,
+                operationStream: .incompatibleWithSynchronousBorrowedOneShot
+            ))
         XCTAssertEqual(
             try evaluateCompatibility(realization: realization),
             .unavailable(.operationStreamMismatch)
@@ -565,10 +607,11 @@ final class GiftUICapabilitiesTests: XCTestCase {
 
     func testProducerAndCandidateOperationMismatchRemainDistinctFromStreamMismatch() throws {
         let requirement = try XCTUnwrap(makeRequirement(byteCeiling: 3_840))
-        let narrowProducer = try XCTUnwrap(RenderProducerContribution(
-            operations: .opaqueRectangles,
-            operationStream: .synchronousBorrowedOneShot
-        ))
+        let narrowProducer = try XCTUnwrap(
+            RenderProducerContribution(
+                operations: .opaqueRectangles,
+                operationStream: .synchronousBorrowedOneShot
+            ))
         XCTAssertEqual(
             RasterPresentationCompatibility.producerIssue(
                 requirement: requirement, producer: narrowProducer
@@ -576,9 +619,11 @@ final class GiftUICapabilitiesTests: XCTestCase {
             .operationSetMismatch
         )
         XCTAssertEqual(
-            try evaluateCompatibility(realization: try XCTUnwrap(makeRealization(
-                kind: .tiled, operations: .opaqueRectangles
-            ))),
+            try evaluateCompatibility(
+                realization: try XCTUnwrap(
+                    makeRealization(
+                        kind: .tiled, operations: .opaqueRectangles
+                    ))),
             .unavailable(.operationSetMismatch)
         )
     }
@@ -586,18 +631,20 @@ final class GiftUICapabilitiesTests: XCTestCase {
     func testEncodingLifetimeAndHandoffFailuresAreIndependent() throws {
         XCTAssertEqual(
             try evaluateCompatibility(
-                realization: try XCTUnwrap(makeRealization(
-                    kind: .tiled, encodings: .rgb565BigEndian
-                )),
+                realization: try XCTUnwrap(
+                    makeRealization(
+                        kind: .tiled, encodings: .rgb565BigEndian
+                    )),
                 surface: try makeSurfaceValue(encodings: .rgba8888)
             ),
             .unavailable(.noCommonCanonicalPixelEncoding)
         )
         XCTAssertEqual(
             try evaluateCompatibility(
-                realization: try XCTUnwrap(makeRealization(
-                    kind: .tiled, lifetimes: .synchronousCopy
-                )),
+                realization: try XCTUnwrap(
+                    makeRealization(
+                        kind: .tiled, lifetimes: .synchronousCopy
+                    )),
                 requirementLifetimes: .synchronousBorrow
             ),
             .unavailable(.incompatibleSubmissionLifetime)
@@ -612,26 +659,32 @@ final class GiftUICapabilitiesTests: XCTestCase {
     }
 
     func testCompleteSubmissionLifetimeHandoffMatrixAndRawOrder() throws {
-        let cases: [(SubmissionLifetimeSet, SubmissionHandoffSet, SubmissionLifetime, SubmissionHandoff, Bool)] = [
-            (.synchronousBorrow, .synchronous, .synchronousBorrow, .synchronous, true),
-            (.synchronousBorrow, .queued, .synchronousBorrow, .queued, false),
-            (.synchronousCopy, .synchronous, .synchronousCopy, .synchronous, true),
-            (.synchronousCopy, .queued, .synchronousCopy, .queued, true),
-            (.ownershipTransfer, .synchronous, .ownershipTransfer, .synchronous, true),
-            (.ownershipTransfer, .queued, .ownershipTransfer, .queued, true),
-        ]
+        let cases:
+            [(
+                SubmissionLifetimeSet, SubmissionHandoffSet, SubmissionLifetime, SubmissionHandoff,
+                Bool
+            )] =
+                [
+                    (.synchronousBorrow, .synchronous, .synchronousBorrow, .synchronous, true),
+                    (.synchronousBorrow, .queued, .synchronousBorrow, .queued, false),
+                    (.synchronousCopy, .synchronous, .synchronousCopy, .synchronous, true),
+                    (.synchronousCopy, .queued, .synchronousCopy, .queued, true),
+                    (.ownershipTransfer, .synchronous, .ownershipTransfer, .synchronous, true),
+                    (.ownershipTransfer, .queued, .ownershipTransfer, .queued, true),
+                ]
         for (lifetimeSet, handoffSet, expectedLifetime, expectedHandoff, available) in cases {
             let outcome = try evaluateCompatibility(
-                realization: try XCTUnwrap(makeRealization(
-                    kind: .tiled, lifetimes: lifetimeSet
-                )),
+                realization: try XCTUnwrap(
+                    makeRealization(
+                        kind: .tiled, lifetimes: lifetimeSet
+                    )),
                 surface: try makeSurfaceValue(
                     lifetimes: lifetimeSet, handoffs: handoffSet
                 ),
                 requirementLifetimes: lifetimeSet
             )
             if available {
-                guard case let .available(path) = outcome else {
+                guard case .available(let path) = outcome else {
                     return XCTFail("matrix-compatible path must be available")
                 }
                 XCTAssertEqual(path.submissionLifetime, expectedLifetime)
@@ -641,75 +694,87 @@ final class GiftUICapabilitiesTests: XCTestCase {
             }
         }
 
-        guard case let .available(rawOrdered) = try evaluateCompatibility(
-            realization: try XCTUnwrap(makeRealization(
-                kind: .tiled,
-                lifetimes: [.synchronousBorrow, .synchronousCopy, .ownershipTransfer]
-            )),
-            surface: try makeSurfaceValue(
-                lifetimes: [.synchronousBorrow, .synchronousCopy, .ownershipTransfer],
-                handoffs: [.synchronous, .queued]
-            ),
-            requirementLifetimes: [.synchronousBorrow, .synchronousCopy, .ownershipTransfer]
-        ) else { return XCTFail("raw-ordered path must be available") }
+        guard
+            case .available(let rawOrdered) = try evaluateCompatibility(
+                realization: try XCTUnwrap(
+                    makeRealization(
+                        kind: .tiled,
+                        lifetimes: [.synchronousBorrow, .synchronousCopy, .ownershipTransfer]
+                    )),
+                surface: try makeSurfaceValue(
+                    lifetimes: [.synchronousBorrow, .synchronousCopy, .ownershipTransfer],
+                    handoffs: [.synchronous, .queued]
+                ),
+                requirementLifetimes: [.synchronousBorrow, .synchronousCopy, .ownershipTransfer]
+            )
+        else { return XCTFail("raw-ordered path must be available") }
         XCTAssertEqual(rawOrdered.submissionLifetime, .synchronousBorrow)
         XCTAssertEqual(rawOrdered.handoff, .synchronous)
     }
 
     func testPolicyFiltersOnlyAfterTechnicalConformanceAndUsesPreferences() throws {
-        let both = try XCTUnwrap(makeRealization(
-            kind: .tiled,
-            encodings: [.rgb565BigEndian, .rgba8888],
-            rasterBytes: 7_680,
-            payloadBytes: 7_680
-        ))
+        let both = try XCTUnwrap(
+            makeRealization(
+                kind: .tiled,
+                encodings: [.rgb565BigEndian, .rgba8888],
+                rasterBytes: 7_680,
+                payloadBytes: 7_680
+            ))
         let bothSurface = try makeSurfaceValue(
             encodings: [.rgb565BigEndian, .rgba8888], inFlightBytes: 7_680
         )
-        let rgbaPolicy = try XCTUnwrap(makePolicy(
-            encodings: [.rgb565BigEndian, .rgba8888],
-            preferredEncoding: .rgba8888,
-            byteCeiling: 7_680
-        ))
-        guard case let .available(preferred) = try evaluateCompatibility(
-            realization: both,
-            surface: bothSurface,
-            requirementEncodings: [.rgb565BigEndian, .rgba8888],
-            requirementByteCeiling: 7_680,
-            policy: rgbaPolicy
-        ) else { return XCTFail("preferred encoding must be selected") }
+        let rgbaPolicy = try XCTUnwrap(
+            makePolicy(
+                encodings: [.rgb565BigEndian, .rgba8888],
+                preferredEncoding: .rgba8888,
+                byteCeiling: 7_680
+            ))
+        guard
+            case .available(let preferred) = try evaluateCompatibility(
+                realization: both,
+                surface: bothSurface,
+                requirementEncodings: [.rgb565BigEndian, .rgba8888],
+                requirementByteCeiling: 7_680,
+                policy: rgbaPolicy
+            )
+        else { return XCTFail("preferred encoding must be selected") }
         XCTAssertEqual(preferred.encoding, .rgba8888)
 
-        let constrainedPolicy = try XCTUnwrap(makePolicy(
-            encodings: [.rgb565BigEndian, .rgba8888],
-            preferredEncoding: .rgba8888,
-            byteCeiling: 3_840
-        ))
-        guard case let .available(fallback) = try evaluateCompatibility(
-            realization: both,
-            surface: bothSurface,
-            requirementEncodings: [.rgb565BigEndian, .rgba8888],
-            policy: constrainedPolicy
-        ) else { return XCTFail("conforming fallback must be selected") }
+        let constrainedPolicy = try XCTUnwrap(
+            makePolicy(
+                encodings: [.rgb565BigEndian, .rgba8888],
+                preferredEncoding: .rgba8888,
+                byteCeiling: 3_840
+            ))
+        guard
+            case .available(let fallback) = try evaluateCompatibility(
+                realization: both,
+                surface: bothSurface,
+                requirementEncodings: [.rgb565BigEndian, .rgba8888],
+                policy: constrainedPolicy
+            )
+        else { return XCTFail("conforming fallback must be selected") }
         XCTAssertEqual(fallback.encoding, .rgb565BigEndian)
 
         XCTAssertEqual(
             try evaluateCompatibility(
                 realization: try XCTUnwrap(makeRealization(kind: .tiled)),
-                policy: try XCTUnwrap(makePolicy(
-                    realizations: .fullSurface,
-                    preferredRealization: .fullSurface
-                ))
+                policy: try XCTUnwrap(
+                    makePolicy(
+                        realizations: .fullSurface,
+                        preferredRealization: .fullSurface
+                    ))
             ),
             .unavailable(.policyHasNoConformingRealization)
         )
         XCTAssertEqual(
             try evaluateCompatibility(
                 realization: try XCTUnwrap(makeRealization(kind: .tiled)),
-                policy: try XCTUnwrap(makePolicy(
-                    encodings: .rgba8888,
-                    preferredEncoding: .rgba8888
-                ))
+                policy: try XCTUnwrap(
+                    makePolicy(
+                        encodings: .rgba8888,
+                        preferredEncoding: .rgba8888
+                    ))
             ),
             .unavailable(.policyHasNoConformingRealization)
         )
@@ -738,16 +803,19 @@ final class GiftUICapabilitiesTests: XCTestCase {
             handoff: .synchronous,
             arithmetic: arithmetic
         )
-        let policy = try XCTUnwrap(makePolicy(
-            realizations: [.fullSurface, .tiled],
-            preferredRealization: .tiled
-        ))
-        XCTAssertTrue(RasterPresentationCompatibility.prefers(
-            tiled, over: full, policy: policy
-        ))
-        XCTAssertFalse(RasterPresentationCompatibility.prefers(
-            full, over: tiled, policy: policy
-        ))
+        let policy = try XCTUnwrap(
+            makePolicy(
+                realizations: [.fullSurface, .tiled],
+                preferredRealization: .tiled
+            ))
+        XCTAssertTrue(
+            RasterPresentationCompatibility.prefers(
+                tiled, over: full, policy: policy
+            ))
+        XCTAssertFalse(
+            RasterPresentationCompatibility.prefers(
+                full, over: tiled, policy: policy
+            ))
     }
 
     func testPublicResolverBuildsExactEffectiveResultAndResetsWorkspace() throws {
@@ -759,7 +827,7 @@ final class GiftUICapabilitiesTests: XCTestCase {
             contributions: contributions,
             workspace: &workspace
         )
-        guard case let .available(value) = resolution else {
+        guard case .available(let value) = resolution else {
             return XCTFail("complete nRF-style fixture must resolve")
         }
         XCTAssertEqual(value.operations, allOperations)
@@ -819,29 +887,34 @@ final class GiftUICapabilitiesTests: XCTestCase {
     }
 
     func testResolverCanonicalizesCandidateOrderBeforePreference() throws {
-        let full = try XCTUnwrap(makeRealization(
-            kind: .fullSurface,
-            regionHeight: 320,
-            rasterBytes: 307_200,
-            payloadBytes: 307_200
-        ))
-        let tiled = try XCTUnwrap(makeRealization(
-            kind: .tiled,
-            rasterBytes: 307_200,
-            payloadBytes: 307_200
-        ))
-        let forward = try XCTUnwrap(RasterBackendContribution(
-            primary: full, alternate: tiled
-        ))
-        let reverse = try XCTUnwrap(RasterBackendContribution(
-            primary: tiled, alternate: full
-        ))
+        let full = try XCTUnwrap(
+            makeRealization(
+                kind: .fullSurface,
+                regionHeight: 320,
+                rasterBytes: 307_200,
+                payloadBytes: 307_200
+            ))
+        let tiled = try XCTUnwrap(
+            makeRealization(
+                kind: .tiled,
+                rasterBytes: 307_200,
+                payloadBytes: 307_200
+            ))
+        let forward = try XCTUnwrap(
+            RasterBackendContribution(
+                primary: full, alternate: tiled
+            ))
+        let reverse = try XCTUnwrap(
+            RasterBackendContribution(
+                primary: tiled, alternate: full
+            ))
         let requirement = try XCTUnwrap(makeRequirement(byteCeiling: 307_200))
-        let policy = try XCTUnwrap(makePolicy(
-            realizations: [.fullSurface, .tiled],
-            preferredRealization: .tiled,
-            byteCeiling: 307_200
-        ))
+        let policy = try XCTUnwrap(
+            makePolicy(
+                realizations: [.fullSurface, .tiled],
+                preferredRealization: .tiled,
+                byteCeiling: 307_200
+            ))
         let first = try resolve(
             requirement: requirement,
             values: makeResolverContributionValues(backend: forward, policy: policy),
@@ -853,7 +926,7 @@ final class GiftUICapabilitiesTests: XCTestCase {
             permutation: [3, 2, 1, 0]
         )
         XCTAssertEqual(first, second)
-        guard case let .available(value) = first else {
+        guard case .available(let value) = first else {
             return XCTFail("preferred tiled candidate must resolve")
         }
         XCTAssertEqual(value.realization, .tiled)
@@ -885,18 +958,20 @@ final class GiftUICapabilitiesTests: XCTestCase {
         let complete = try makeResolverContributions(
             producerStream: .incompatibleWithSynchronousBorrowedOneShot
         )
-        var oneSlot = try XCTUnwrap(RasterPresentationResolverWorkspace(
-            usableCandidateCapacity: 1
-        ))
+        var oneSlot = try XCTUnwrap(
+            RasterPresentationResolverWorkspace(
+                usableCandidateCapacity: 1
+            ))
         XCTAssertEqual(
             RasterPresentationResolver.resolve(
                 requirement: requirement, contributions: complete, workspace: &oneSlot
             ),
-            .unavailable(.insufficientCapacity(
-                domain: .resolverWorkspace,
-                required: .init(rawValue: 2),
-                available: .init(rawValue: 1)
-            ))
+            .unavailable(
+                .insufficientCapacity(
+                    domain: .resolverWorkspace,
+                    required: .init(rawValue: 2),
+                    available: .init(rawValue: 1)
+                ))
         )
         XCTAssertNil(oneSlot.firstCandidate)
         XCTAssertNil(oneSlot.secondCandidate)
@@ -956,11 +1031,14 @@ final class GiftUICapabilitiesTests: XCTestCase {
         let entries: [(UInt8, RasterPresentationUnavailable)] = [
             (1, .duplicateContributor(role: .renderProducer)),
             (2, .missingContributor(role: .hostResourcePolicy)),
-            (3, .insufficientCapacity(
-                domain: .resolverWorkspace,
-                required: .init(rawValue: 2),
-                available: .init(rawValue: 1)
-            )),
+            (
+                3,
+                .insufficientCapacity(
+                    domain: .resolverWorkspace,
+                    required: .init(rawValue: 2),
+                    available: .init(rawValue: 1)
+                )
+            ),
             (4, .operationSetMismatch),
             (5, .operationStreamMismatch),
             (6, .unsupportedLogicalExtent),
@@ -970,15 +1048,24 @@ final class GiftUICapabilitiesTests: XCTestCase {
             (10, .incompatibleSubmissionLifetime),
             (11, .incompatibleSubmissionHandoff),
             (12, .byteCountOverflow(domain: .raster)),
-            (13, .insufficientCapacity(
-                domain: .raster, required: count, available: available
-            )),
-            (14, .insufficientCapacity(
-                domain: .payload, required: count, available: available
-            )),
-            (15, .insufficientCapacity(
-                domain: .inFlight, required: count, available: available
-            )),
+            (
+                13,
+                .insufficientCapacity(
+                    domain: .raster, required: count, available: available
+                )
+            ),
+            (
+                14,
+                .insufficientCapacity(
+                    domain: .payload, required: count, available: available
+                )
+            ),
+            (
+                15,
+                .insufficientCapacity(
+                    domain: .inFlight, required: count, available: available
+                )
+            ),
             (16, .policyHasNoConformingRealization),
         ]
         var pairCount = 0
@@ -1024,10 +1111,11 @@ final class GiftUICapabilitiesTests: XCTestCase {
         )
 
         var producerMismatch = try makeResolverContributions()
-        producerMismatch.renderProducer = try XCTUnwrap(RenderProducerContribution(
-            operations: .opaqueRectangles,
-            operationStream: .incompatibleWithSynchronousBorrowedOneShot
-        ))
+        producerMismatch.renderProducer = try XCTUnwrap(
+            RenderProducerContribution(
+                operations: .opaqueRectangles,
+                operationStream: .incompatibleWithSynchronousBorrowedOneShot
+            ))
         XCTAssertEqual(
             RasterPresentationResolver.resolve(
                 requirement: requirement,
@@ -1077,22 +1165,25 @@ final class GiftUICapabilitiesTests: XCTestCase {
     }
 
     func testCandidateReasonSelectionIgnoresPrimaryAlternateOrder() throws {
-        let full = try XCTUnwrap(makeRealization(
-            kind: .fullSurface,
-            regionHeight: 320,
-            rasterBytes: 307_199,
-            payloadBytes: 307_200
-        ))
-        let tiled = try XCTUnwrap(makeRealization(
-            kind: .tiled,
-            rasterBytes: 307_200,
-            payloadBytes: 307_200
-        ))
-        let policy = try XCTUnwrap(makePolicy(
-            realizations: .fullSurface,
-            preferredRealization: .fullSurface,
-            byteCeiling: 307_200
-        ))
+        let full = try XCTUnwrap(
+            makeRealization(
+                kind: .fullSurface,
+                regionHeight: 320,
+                rasterBytes: 307_199,
+                payloadBytes: 307_200
+            ))
+        let tiled = try XCTUnwrap(
+            makeRealization(
+                kind: .tiled,
+                rasterBytes: 307_200,
+                payloadBytes: 307_200
+            ))
+        let policy = try XCTUnwrap(
+            makePolicy(
+                realizations: .fullSurface,
+                preferredRealization: .fullSurface,
+                byteCeiling: 307_200
+            ))
         let requirement = try XCTUnwrap(makeRequirement(byteCeiling: 307_200))
         let expected = RasterPresentationResolution.unavailable(
             .insufficientCapacity(
@@ -1183,64 +1274,71 @@ final class GiftUICapabilitiesTests: XCTestCase {
         inFlightCeilings: (UInt32, UInt32, UInt32)? = nil
     ) throws -> RasterPresentationArithmeticOutcome {
         let extent = try XCTUnwrap(CapabilityExtent(width: width, height: height))
-        let realizationExtent = try XCTUnwrap(CapabilityExtent(
-            width: width,
-            height: realizationExtentHeight ?? height
-        ))
-        let surfaceExtent = try XCTUnwrap(CapabilityExtent(
-            width: width,
-            height: surfaceExtentHeight ?? height
-        ))
-        let encodingSet: CanonicalPixelEncodingSet = encoding == .rgb565BigEndian
+        let realizationExtent = try XCTUnwrap(
+            CapabilityExtent(
+                width: width,
+                height: realizationExtentHeight ?? height
+            ))
+        let surfaceExtent = try XCTUnwrap(
+            CapabilityExtent(
+                width: width,
+                height: surfaceExtentHeight ?? height
+            ))
+        let encodingSet: CanonicalPixelEncodingSet =
+            encoding == .rgb565BigEndian
             ? .rgb565BigEndian
             : .rgba8888
         let raster = rasterCeilings ?? (ceiling, ceiling, ceiling)
         let payload = payloadCeilings ?? (ceiling, ceiling, ceiling)
         let inFlight = inFlightCeilings ?? (ceiling, ceiling, ceiling)
-        let requirement = try XCTUnwrap(RasterPresentationRequirement(
-            operations: allOperations,
-            extent: extent,
-            operationStream: .synchronousBorrowedOneShot,
-            acceptedEncodings: encodingSet,
-            acceptedSubmissionLifetimes: .synchronousBorrow,
-            maximumRasterBytes: .init(rawValue: raster.0),
-            maximumPayloadBytes: .init(rawValue: payload.0),
-            maximumInFlightBytes: .init(rawValue: inFlight.0),
-            absence: .required
-        ))
-        let realization = try XCTUnwrap(RasterRealizationContribution(
-            kind: kind,
-            operations: allOperations,
-            operationStream: .synchronousBorrowedOneShot,
-            encodings: encodingSet,
-            producedSubmissionLifetimes: .synchronousBorrow,
-            maximumExtent: realizationExtent,
-            maximumRegionWidth: realizationRegionWidth ?? width,
-            maximumRegionHeight: realizationRegionHeight,
-            rowByteAlignment: realizationAlignment,
-            maximumRasterBytes: .init(rawValue: raster.1),
-            maximumPayloadBytes: .init(rawValue: payload.1)
-        ))
-        let surface = try XCTUnwrap(SurfaceDisplayContribution(
-            extent: surfaceExtent,
-            encodings: encodingSet,
-            acceptedSubmissionLifetimes: .synchronousBorrow,
-            handoffs: .synchronous,
-            maximumRegionWidth: surfaceRegionWidth ?? width,
-            maximumRegionHeight: surfaceRegionHeight,
-            rowByteAlignment: surfaceAlignment,
-            maximumInFlightCount: 1,
-            maximumInFlightBytes: .init(rawValue: inFlight.1)
-        ))
-        let policy = try XCTUnwrap(RasterPresentationPolicy(
-            maximumRasterBytes: .init(rawValue: raster.2),
-            maximumPayloadBytes: .init(rawValue: payload.2),
-            maximumInFlightBytes: .init(rawValue: inFlight.2),
-            allowedRealizations: kind == .fullSurface ? .fullSurface : .tiled,
-            allowedEncodings: encodingSet,
-            preferredRealization: kind,
-            preferredEncoding: encodingSet
-        ))
+        let requirement = try XCTUnwrap(
+            RasterPresentationRequirement(
+                operations: allOperations,
+                extent: extent,
+                operationStream: .synchronousBorrowedOneShot,
+                acceptedEncodings: encodingSet,
+                acceptedSubmissionLifetimes: .synchronousBorrow,
+                maximumRasterBytes: .init(rawValue: raster.0),
+                maximumPayloadBytes: .init(rawValue: payload.0),
+                maximumInFlightBytes: .init(rawValue: inFlight.0),
+                absence: .required
+            ))
+        let realization = try XCTUnwrap(
+            RasterRealizationContribution(
+                kind: kind,
+                operations: allOperations,
+                operationStream: .synchronousBorrowedOneShot,
+                encodings: encodingSet,
+                producedSubmissionLifetimes: .synchronousBorrow,
+                maximumExtent: realizationExtent,
+                maximumRegionWidth: realizationRegionWidth ?? width,
+                maximumRegionHeight: realizationRegionHeight,
+                rowByteAlignment: realizationAlignment,
+                maximumRasterBytes: .init(rawValue: raster.1),
+                maximumPayloadBytes: .init(rawValue: payload.1)
+            ))
+        let surface = try XCTUnwrap(
+            SurfaceDisplayContribution(
+                extent: surfaceExtent,
+                encodings: encodingSet,
+                acceptedSubmissionLifetimes: .synchronousBorrow,
+                handoffs: .synchronous,
+                maximumRegionWidth: surfaceRegionWidth ?? width,
+                maximumRegionHeight: surfaceRegionHeight,
+                rowByteAlignment: surfaceAlignment,
+                maximumInFlightCount: 1,
+                maximumInFlightBytes: .init(rawValue: inFlight.1)
+            ))
+        let policy = try XCTUnwrap(
+            RasterPresentationPolicy(
+                maximumRasterBytes: .init(rawValue: raster.2),
+                maximumPayloadBytes: .init(rawValue: payload.2),
+                maximumInFlightBytes: .init(rawValue: inFlight.2),
+                allowedRealizations: kind == .fullSurface ? .fullSurface : .tiled,
+                allowedEncodings: encodingSet,
+                preferredRealization: kind,
+                preferredEncoding: encodingSet
+            ))
         return RasterPresentationArithmetic.evaluate(
             requirement: requirement,
             realization: realization,
@@ -1277,11 +1375,13 @@ final class GiftUICapabilitiesTests: XCTestCase {
         file: StaticString = #filePath,
         line: UInt = #line
     ) throws {
-        guard case let .available(value) = try boundaryArithmetic(
-            rasterCeilings: rasterCeilings,
-            payloadCeilings: payloadCeilings,
-            inFlightCeilings: inFlightCeilings
-        ) else {
+        guard
+            case .available(let value) = try boundaryArithmetic(
+                rasterCeilings: rasterCeilings,
+                payloadCeilings: payloadCeilings,
+                inFlightCeilings: inFlightCeilings
+            )
+        else {
             return XCTFail("boundary equality must remain available", file: file, line: line)
         }
         XCTAssertEqual(value.requiredRasterBytes.rawValue, 16, file: file, line: line)
@@ -1381,17 +1481,19 @@ final class GiftUICapabilitiesTests: XCTestCase {
     }
 
     private func makeProducer() throws -> RenderProducerContribution {
-        try XCTUnwrap(RenderProducerContribution(
-            operations: allOperations,
-            operationStream: .synchronousBorrowedOneShot
-        ))
+        try XCTUnwrap(
+            RenderProducerContribution(
+                operations: allOperations,
+                operationStream: .synchronousBorrowedOneShot
+            ))
     }
 
     private func makeBackend() throws -> RasterBackendContribution {
-        try XCTUnwrap(RasterBackendContribution(
-            primary: try XCTUnwrap(makeRealization(kind: .fullSurface)),
-            alternate: try XCTUnwrap(makeRealization(kind: .tiled))
-        ))
+        try XCTUnwrap(
+            RasterBackendContribution(
+                primary: try XCTUnwrap(makeRealization(kind: .fullSurface)),
+                alternate: try XCTUnwrap(makeRealization(kind: .tiled))
+            ))
     }
 
     private func makeSurfaceValue(
@@ -1400,13 +1502,14 @@ final class GiftUICapabilitiesTests: XCTestCase {
         handoffs: SubmissionHandoffSet = .synchronous,
         inFlightBytes: UInt32 = 3_840
     ) throws -> SurfaceDisplayContribution {
-        try XCTUnwrap(makeSurface(
-            extent: try makeExtent(),
-            encodings: encodings,
-            lifetimes: lifetimes,
-            handoffs: handoffs,
-            inFlightBytes: inFlightBytes
-        ))
+        try XCTUnwrap(
+            makeSurface(
+                extent: try makeExtent(),
+                encodings: encodings,
+                lifetimes: lifetimes,
+                handoffs: handoffs,
+                inFlightBytes: inFlightBytes
+            ))
     }
 
     private func evaluateCompatibility(
@@ -1418,24 +1521,28 @@ final class GiftUICapabilitiesTests: XCTestCase {
         policy: RasterPresentationPolicy? = nil
     ) throws -> RasterPresentationCandidateOutcome {
         RasterPresentationCompatibility.evaluateCandidate(
-            requirement: try XCTUnwrap(makeRequirement(
-                encodings: requirementEncodings,
-                lifetimes: requirementLifetimes,
-                byteCeiling: requirementByteCeiling
-            )),
+            requirement: try XCTUnwrap(
+                makeRequirement(
+                    encodings: requirementEncodings,
+                    lifetimes: requirementLifetimes,
+                    byteCeiling: requirementByteCeiling
+                )),
             realization: realization,
-            surface: try surface ?? makeSurfaceValue(
-                encodings: requirementEncodings,
-                lifetimes: requirementLifetimes,
-                inFlightBytes: requirementByteCeiling
-            ),
-            policy: try policy ?? XCTUnwrap(makePolicy(
-                encodings: requirementEncodings,
-                preferredEncoding: requirementEncodings == .rgba8888
-                    ? .rgba8888
-                    : .rgb565BigEndian,
-                byteCeiling: requirementByteCeiling
-            ))
+            surface: try surface
+                ?? makeSurfaceValue(
+                    encodings: requirementEncodings,
+                    lifetimes: requirementLifetimes,
+                    inFlightBytes: requirementByteCeiling
+                ),
+            policy: try policy
+                ?? XCTUnwrap(
+                    makePolicy(
+                        encodings: requirementEncodings,
+                        preferredEncoding: requirementEncodings == .rgba8888
+                            ? .rgba8888
+                            : .rgb565BigEndian,
+                        byteCeiling: requirementByteCeiling
+                    ))
         )
     }
 
@@ -1448,10 +1555,11 @@ final class GiftUICapabilitiesTests: XCTestCase {
         backend: RasterBackendContribution? = nil,
         policy: RasterPresentationPolicy? = nil
     ) throws -> [RasterPresentationContribution] {
-        let producer = try XCTUnwrap(RenderProducerContribution(
-            operations: allOperations,
-            operationStream: producerStream
-        ))
+        let producer = try XCTUnwrap(
+            RenderProducerContribution(
+                operations: allOperations,
+                operationStream: producerStream
+            ))
         return [
             .renderProducer(producer),
             .rasterBackend(try backend ?? makeBackend()),
@@ -1507,7 +1615,7 @@ final class GiftUICapabilitiesTests: XCTestCase {
         absence: CapabilityAbsence
     ) -> CapabilitySnapshot? {
         switch resolution {
-        case let .available(value):
+        case .available(let value):
             return CapabilitySnapshot(rasterPresentation: value)
         case .unavailable:
             return absence == .optional

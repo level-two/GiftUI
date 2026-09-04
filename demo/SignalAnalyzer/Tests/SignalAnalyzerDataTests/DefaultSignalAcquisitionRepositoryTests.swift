@@ -19,7 +19,8 @@ final class DefaultSignalAcquisitionRepositoryTests: XCTestCase {
         XCTAssertEqual(captures.latest?.duration, .milliseconds(700))
 
         source.emit(transition(channel: 1, at: 0.4, level: .high))
-        XCTAssertEqual(captures.latest?.transitions.map(\.timestamp), [.milliseconds(400), .milliseconds(700)])
+        XCTAssertEqual(
+            captures.latest?.transitions.map(\.timestamp), [.milliseconds(400), .milliseconds(700)])
 
         source.emit(transition(channel: 1, at: 2.0, level: .low))
         XCTAssertEqual(captures.latest?.transitions.map(\.timestamp), [.seconds(2)])
@@ -98,7 +99,7 @@ final class DefaultSignalAcquisitionRepositoryTests: XCTestCase {
 
         XCTAssertEqual(source.stopCount, 1)
         XCTAssertEqual(captures.values.count, captureCount)
-        guard case let .failed(message) = states.latest else {
+        guard case .failed(let message) = states.latest else {
             return XCTFail("Expected a failed acquisition state")
         }
         XCTAssertFalse(message.isEmpty)
@@ -192,7 +193,7 @@ final class DefaultSignalAcquisitionRepositoryTests: XCTestCase {
         XCTAssertThrowsError(try repository.start())
         XCTAssertFalse(source.isRunning)
         XCTAssertEqual(source.stopCount, 1)
-        guard case let .failed(message) = states.latest else {
+        guard case .failed(let message) = states.latest else {
             return XCTFail("Expected a failed acquisition state")
         }
         XCTAssertEqual(message, "Start failed")

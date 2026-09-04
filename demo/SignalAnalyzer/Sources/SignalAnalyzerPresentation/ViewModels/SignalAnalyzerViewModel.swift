@@ -59,7 +59,7 @@ package final class SignalAnalyzerViewModel: SignalCaptureSink, AcquisitionState
     var visibleRange: Range<Duration> {
         let window = state.visibleWindow.duration
         let end = max(window, state.capture.duration)
-        return max(.zero, end - window)..<end
+        return max(.zero, end - window) ..< end
     }
 
     package func startObserving() {
@@ -107,7 +107,7 @@ package final class SignalAnalyzerViewModel: SignalCaptureSink, AcquisitionState
 
     package func receive(_ acquisitionState: AcquisitionState) {
         state.acquisitionState = acquisitionState
-        if case let .failed(message) = acquisitionState {
+        if case .failed(let message) = acquisitionState {
             state.errorMessage = message
         }
     }

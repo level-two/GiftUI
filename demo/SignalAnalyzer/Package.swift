@@ -23,7 +23,7 @@ let package = Package(
             dependencies: [
                 "SignalAnalyzerDomain",
                 "SignalAnalyzerData",
-                "SignalAnalyzerPresentation"
+                "SignalAnalyzerPresentation",
             ]
         ),
         .testTarget(
@@ -37,6 +37,6 @@ let package = Package(
         .testTarget(
             name: "SignalAnalyzerPresentationTests",
             dependencies: ["SignalAnalyzerDomain", "SignalAnalyzerPresentation"]
-        )
+        ),
     ]
 )

@@ -8,9 +8,9 @@ let package = Package(
         .executable(
             name: "GiftUIToolchainProbe",
             targets: ["GiftUIToolchainProbe"]
-        ),
+        )
     ],
     targets: [
-        .executableTarget(name: "GiftUIToolchainProbe"),
+        .executableTarget(name: "GiftUIToolchainProbe")
     ]
 )

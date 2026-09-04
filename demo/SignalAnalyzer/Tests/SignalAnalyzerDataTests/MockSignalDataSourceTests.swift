@@ -18,10 +18,12 @@ final class MockSignalDataSourceTests: XCTestCase {
         XCTAssertEqual(Set(events.map(\.channelID)), Set(SignalChannel.standard.map(\.id)))
         XCTAssertEqual(events.map(\.timestamp), events.map(\.timestamp).sorted())
 
-        let uniqueEvents = Set(events.map {
-            "\($0.channelID.rawValue)-\($0.timestamp.components.seconds)-\($0.timestamp.components.attoseconds)"
-        })
-        XCTAssertEqual(uniqueEvents.count, events.count, "Repeated start must not create duplicate generators")
+        let uniqueEvents = Set(
+            events.map {
+                "\($0.channelID.rawValue)-\($0.timestamp.components.seconds)-\($0.timestamp.components.attoseconds)"
+            })
+        XCTAssertEqual(
+            uniqueEvents.count, events.count, "Repeated start must not create duplicate generators")
     }
 
     func testStopPreventsAdditionalEventsAndRestartResumes() async throws {
@@ -55,7 +57,10 @@ final class MockSignalDataSourceTests: XCTestCase {
 
         XCTAssertEqual(
             Array(timestamps(for: 3, in: recorder.transitions).prefix(5)),
-            [.zero, .milliseconds(80), .milliseconds(160), .milliseconds(240), .milliseconds(1_440)]
+            [
+                .zero, .milliseconds(80), .milliseconds(160), .milliseconds(240),
+                .milliseconds(1_440),
+            ]
         )
         XCTAssertEqual(
             Array(timestamps(for: 4, in: recorder.transitions).prefix(4)),
@@ -90,7 +95,7 @@ final class MockSignalDataSourceTests: XCTestCase {
         var state = seed
         var timestamp = Duration.zero
         var result = [timestamp]
-        for _ in 1..<count {
+        for _ in 1 ..< count {
             state = state &* 6_364_136_223_846_793_005 &+ 1
             timestamp += .milliseconds(180 + Int(state % 420))
             result.append(timestamp)

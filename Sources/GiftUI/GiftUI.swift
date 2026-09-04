@@ -29,7 +29,8 @@ public struct Rect: Equatable, Hashable, Sendable {
 
     public init?(origin: Point, size: Size) {
         guard GeometryArithmetic.add(origin.x, size.width) != nil,
-              GeometryArithmetic.add(origin.y, size.height) != nil else {
+            GeometryArithmetic.add(origin.y, size.height) != nil
+        else {
             return nil
         }
         self.origin = origin
@@ -50,8 +51,7 @@ public struct Rect: Equatable, Hashable, Sendable {
     }
 
     public func contains(_ point: Point) -> Bool {
-        point.x >= minX && point.x < maxX &&
-            point.y >= minY && point.y < maxY
+        point.x >= minX && point.x < maxX && point.y >= minY && point.y < maxY
     }
 }
 

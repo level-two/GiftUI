@@ -79,7 +79,8 @@ struct ChannelWaveformView: View {
         var currentY = level == .high ? highY : lowY
         path.move(to: CGPoint(x: 0, y: currentY))
 
-        for transition in channelTransitions where transition.timestamp > lower && transition.timestamp <= upper {
+        for transition in channelTransitions
+        where transition.timestamp > lower && transition.timestamp <= upper {
             let progress = (transition.timestamp - lower).secondsValue / span
             let x = size.width * CGFloat(min(1, max(0, progress)))
             path.addLine(to: CGPoint(x: x, y: currentY))
@@ -93,12 +94,13 @@ struct ChannelWaveformView: View {
     }
 
     private func drawGrid(in context: inout GraphicsContext, size: CGSize) {
-        for index in 0...10 {
+        for index in 0 ... 10 {
             let x = size.width * CGFloat(index) / 10
             var line = Path()
             line.move(to: CGPoint(x: x, y: 0))
             line.addLine(to: CGPoint(x: x, y: size.height))
-            let color = index % 5 == 0
+            let color =
+                index % 5 == 0
                 ? Color(red: 0.171, green: 0.182, blue: 0.202)
                 : Color(red: 0.120, green: 0.132, blue: 0.153)
             context.stroke(line, with: .color(color), lineWidth: 1)

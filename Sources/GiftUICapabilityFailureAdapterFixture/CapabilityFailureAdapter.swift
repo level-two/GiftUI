@@ -40,11 +40,12 @@ enum CapabilityFailureAdapter {
     static func requiredFamilyFailure(
         _ unavailable: RasterPresentationUnavailable
     ) -> GiftUIOutcome<CapabilitySnapshot> {
-        .failure(GiftUIFailureFact(
-            condition: condition(for: unavailable),
-            origin: .capability,
-            affectedScope: .runtime,
-            containment: .contained
-        ))
+        .failure(
+            GiftUIFailureFact(
+                condition: condition(for: unavailable),
+                origin: .capability,
+                affectedScope: .runtime,
+                containment: .contained
+            ))
     }
 }

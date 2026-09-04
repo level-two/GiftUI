@@ -1,6 +1,7 @@
-@testable import GiftUITextResources
-@testable import GiftUI
 import XCTest
+
+@testable import GiftUI
+@testable import GiftUITextResources
 
 final class ValidatedBehaviorTests: XCTestCase {
     func testGoldenBaselineMetricsAndExplicitPoints() {
@@ -203,7 +204,8 @@ private struct GatedGoldenMetrics: CanonicalTextMetricsView {
 }
 
 private func makeGoldenBehaviorFixture()
-    -> TextResourcePackage<ValidationMetrics, ValidationRaster> {
+    -> TextResourcePackage<ValidationMetrics, ValidationRaster>
+{
     let payload: [UInt8] = Array(repeating: 0x80, count: 9)
     let payloadDigest = payload.withUnsafeBytes {
         TextResourceValidator.sha256(of: $0)

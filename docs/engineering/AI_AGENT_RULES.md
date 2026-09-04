@@ -4,6 +4,10 @@ These rules apply to repository-aware AI agents working on GiftUI. Root
 instructions route agents here; role-specific procedures live in
 `.agents/skills/`.
 
+Maintained Swift code also follows [GiftUI Code Style](CODE_STYLE.md). Run its
+formatter before repository validation, while preserving exact declarations
+and constraints from authoritative ADRs and Specifications.
+
 ## Required orientation
 
 Before drafting or implementing major feature work:

@@ -1,8 +1,9 @@
 import GiftUIFailureCore
 import GiftUIFailureDiagnostics
+import XCTest
+
 @testable import GiftUITextResourceFailureAdapterFixture
 @testable import GiftUITextResources
-import XCTest
 
 final class GiftUITextResourceOwnerAdapterTests: XCTestCase {
     func testEveryLocalValidationErrorMapsToItsExactHostAssemblyFact() {
@@ -112,8 +113,8 @@ final class GiftUITextResourceOwnerAdapterTests: XCTestCase {
     }
 }
 
-private extension TextResourceValidationError {
-    static let allCasesForFixture: [Self] = [
+extension TextResourceValidationError {
+    fileprivate static let allCasesForFixture: [Self] = [
         .unsupportedSchema,
         .capacityExceeded,
         .invalidCount,

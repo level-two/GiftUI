@@ -1,7 +1,8 @@
 import GiftUI
+import Testing
+
 @testable import GiftUIReferenceTextResources
 @testable import GiftUITextResources
-import Testing
 
 private struct ContractLocalGlyphRequest {
     let instance: FontInstanceID
@@ -23,14 +24,16 @@ private enum ContractLocalSynchronousOffer {
         ) throws -> Result
     ) rethrows -> Result?
     where M: CanonicalTextMetricsView, R: TextRasterResourceView {
-        guard let metrics = resourcePackage.metrics.metrics(
-            for: request.glyph,
-            in: request.instance
-        ),
-        let record = resourcePackage.raster.record(
-            for: request.glyph,
-            realization: realization
-        ) else {
+        guard
+            let metrics = resourcePackage.metrics.metrics(
+                for: request.glyph,
+                in: request.instance
+            ),
+            let record = resourcePackage.raster.record(
+                for: request.glyph,
+                realization: realization
+            )
+        else {
             return nil
         }
         let offeredInstance = request.instance
@@ -222,7 +225,7 @@ private struct EmptyOfferRaster: TextRasterResourceView {
         _ body: (UnsafeRawBufferPointer) throws -> Result
     ) rethrows -> Result? {
         guard available,
-              record == self.record(for: record.glyph, realization: realization)
+            record == self.record(for: record.glyph, realization: realization)
         else { return nil }
         state.payloadInvocationCount += 1
         state.borrowIsActive = true

@@ -1,7 +1,7 @@
 import GiftUITextResources
 
 #if GIFTUI_REFERENCE_BITMAP_ONLY && GIFTUI_REFERENCE_OUTLINE_ONLY
-#error("reference text-resource composition must select at most one payload subset")
+    #error("reference text-resource composition must select at most one payload subset")
 #endif
 
 package struct GiftUIReferenceTextMetricsView: CanonicalTextMetricsView {
@@ -31,7 +31,8 @@ package struct GiftUIReferenceTextMetricsView: CanonicalTextMetricsView {
         in instance: FontInstanceID
     ) -> GlyphMetrics? {
         guard instance == _GiftUIReferenceGeneratedCatalogue.instanceID,
-              glyph.rawValue < _GiftUIReferenceGeneratedCatalogue.glyphCount else {
+            glyph.rawValue < _GiftUIReferenceGeneratedCatalogue.glyphCount
+        else {
             return nil
         }
         return _GiftUIReferenceGeneratedCatalogue.metrics(for: glyph)
@@ -59,7 +60,8 @@ package struct GiftUIReferenceTextRasterView: TextRasterResourceView {
         realization: RasterRealizationID
     ) -> GlyphRasterRecord? {
         guard realization.rawValue < descriptor.realizationCount,
-              glyph.rawValue < _GiftUIReferenceGeneratedCatalogue.glyphCount else {
+            glyph.rawValue < _GiftUIReferenceGeneratedCatalogue.glyphCount
+        else {
             return nil
         }
         return _GiftUIReferenceGeneratedCatalogue.record(
@@ -74,15 +76,15 @@ package struct GiftUIReferenceTextRasterView: TextRasterResourceView {
         switch realization.rawValue {
         case 0:
             #if GIFTUI_REFERENCE_OUTLINE_ONLY
-            false
+                false
             #else
-            true
+                true
             #endif
         case 1:
             #if GIFTUI_REFERENCE_BITMAP_ONLY
-            false
+                false
             #else
-            true
+                true
             #endif
         default:
             false
@@ -102,27 +104,29 @@ package struct GiftUIReferenceTextRasterView: TextRasterResourceView {
         switch realization.rawValue {
         case 0:
             #if GIFTUI_REFERENCE_OUTLINE_ONLY
-            return nil
+                return nil
             #else
-            guard record == cataloguedRecord,
-                  realization == cataloguedRealization?.id else { return nil }
-            return try _GiftUIReferenceGeneratedBitmapPayload.withRecordBytes(
-                for: record.glyph,
-                expectedByteCount: record.byteCount,
-                body
-            )
+                guard record == cataloguedRecord,
+                    realization == cataloguedRealization?.id
+                else { return nil }
+                return try _GiftUIReferenceGeneratedBitmapPayload.withRecordBytes(
+                    for: record.glyph,
+                    expectedByteCount: record.byteCount,
+                    body
+                )
             #endif
         case 1:
             #if GIFTUI_REFERENCE_BITMAP_ONLY
-            return nil
+                return nil
             #else
-            guard record == cataloguedRecord,
-                  realization == cataloguedRealization?.id else { return nil }
-            return try _GiftUIReferenceGeneratedOutlinePayload.withRecordBytes(
-                for: record.glyph,
-                expectedByteCount: record.byteCount,
-                body
-            )
+                guard record == cataloguedRecord,
+                    realization == cataloguedRealization?.id
+                else { return nil }
+                return try _GiftUIReferenceGeneratedOutlinePayload.withRecordBytes(
+                    for: record.glyph,
+                    expectedByteCount: record.byteCount,
+                    body
+                )
             #endif
         default:
             return nil
@@ -131,10 +135,12 @@ package struct GiftUIReferenceTextRasterView: TextRasterResourceView {
 }
 
 package enum GiftUIReferenceTextResources {
-    package static var targetPackage: TextResourcePackage<
-        GiftUIReferenceTextMetricsView,
-        GiftUIReferenceTextRasterView
-    > {
+    package static var targetPackage:
+        TextResourcePackage<
+            GiftUIReferenceTextMetricsView,
+            GiftUIReferenceTextRasterView
+        >
+    {
         TextResourcePackage(
             metrics: GiftUIReferenceTextMetricsView(),
             raster: GiftUIReferenceTextRasterView()
@@ -142,28 +148,30 @@ package enum GiftUIReferenceTextResources {
     }
 
     #if !GIFTUI_REFERENCE_BITMAP_ONLY && !GIFTUI_REFERENCE_OUTLINE_ONLY
-    package static var completePackage: TextResourcePackage<
-        GiftUIReferenceTextMetricsView,
-        GiftUIReferenceTextRasterView
-    > {
-        targetPackage
-    }
+        package static var completePackage:
+            TextResourcePackage<
+                GiftUIReferenceTextMetricsView,
+                GiftUIReferenceTextRasterView
+            >
+        {
+            targetPackage
+        }
 
-    package static func validateCompletePackage() -> (
-        bitmap: TextResourceValidationResult,
-        outline: TextResourceValidationResult
-    ) {
-        let resourcePackage = completePackage
-        return (
-            bitmap: TextResourceValidator.validate(
-                resourcePackage,
-                requiring: RasterRealizationID(rawValue: 0)
-            ),
-            outline: TextResourceValidator.validate(
-                resourcePackage,
-                requiring: RasterRealizationID(rawValue: 1)
+        package static func validateCompletePackage() -> (
+            bitmap: TextResourceValidationResult,
+            outline: TextResourceValidationResult
+        ) {
+            let resourcePackage = completePackage
+            return (
+                bitmap: TextResourceValidator.validate(
+                    resourcePackage,
+                    requiring: RasterRealizationID(rawValue: 0)
+                ),
+                outline: TextResourceValidator.validate(
+                    resourcePackage,
+                    requiring: RasterRealizationID(rawValue: 1)
+                )
             )
-        )
-    }
+        }
     #endif
 }

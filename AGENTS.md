@@ -3,6 +3,8 @@
 ## Repository workflow
 
 - Run commands from the repository root.
+- Follow `docs/engineering/CODE_STYLE.md` for maintained Swift code and run
+  `scripts/format-swift.sh` before the repository test gate.
 - Keep the downloaded macOS compiler and cross-compilation SDK under
   `.toolchains/`.
 - Keep generated Raspberry Pi builds and deployable artifacts under

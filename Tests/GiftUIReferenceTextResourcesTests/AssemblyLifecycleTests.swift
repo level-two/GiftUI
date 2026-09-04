@@ -1,6 +1,7 @@
+import Testing
+
 @testable import GiftUIReferenceTextResources
 @testable import GiftUITextResources
-import Testing
 
 private struct ContractLocalAssembly<M, R>
 where M: CanonicalTextMetricsView, R: TextRasterResourceView {
@@ -123,10 +124,13 @@ func targetAssemblyPublishesOnlyAfterSelectedRealizationValidation() {
             realization: RasterRealizationID(rawValue: 0)
         ) { bytes in bytes.count }
     }
-    #expect(borrowedByteCount!! == Int(candidate.raster.record(
-        for: GlyphID(rawValue: 0),
-        realization: RasterRealizationID(rawValue: 0)
-    )!.byteCount))
+    #expect(
+        borrowedByteCount!!
+            == Int(
+                candidate.raster.record(
+                    for: GlyphID(rawValue: 0),
+                    realization: RasterRealizationID(rawValue: 0)
+                )!.byteCount))
     #expect(consumerInvocationCount == 1)
 
     assembly.requestTearDown()
@@ -144,17 +148,20 @@ func omittedUnselectedPayloadIsCatalogueUnavailabilityNotPartialAssembly() {
         metrics: complete.metrics,
         raster: BitmapOnlyLinkedRaster(base: complete.raster)
     )
-    #expect(TextResourceValidator.validate(
-        bitmapOnly,
-        requiring: RasterRealizationID(rawValue: 0)
-    ) == .valid)
-    #expect(!bitmapOnly.raster.isPayloadAvailable(
-        for: RasterRealizationID(rawValue: 1)
-    ))
-    #expect(bitmapOnly.raster.record(
-        for: GlyphID(rawValue: 0),
-        realization: RasterRealizationID(rawValue: 1)
-    ) != nil)
+    #expect(
+        TextResourceValidator.validate(
+            bitmapOnly,
+            requiring: RasterRealizationID(rawValue: 0)
+        ) == .valid)
+    #expect(
+        !bitmapOnly.raster.isPayloadAvailable(
+            for: RasterRealizationID(rawValue: 1)
+        ))
+    #expect(
+        bitmapOnly.raster.record(
+            for: GlyphID(rawValue: 0),
+            realization: RasterRealizationID(rawValue: 1)
+        ) != nil)
     let outlineRecord = bitmapOnly.raster.record(
         for: GlyphID(rawValue: 0),
         realization: RasterRealizationID(rawValue: 1)

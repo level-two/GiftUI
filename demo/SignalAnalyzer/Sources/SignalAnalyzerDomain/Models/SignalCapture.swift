@@ -17,9 +17,11 @@ package struct SignalCapture: Equatable, Sendable {
         self.transitions = transitions
         self.duration = duration
         self.retainedLowerBound = retainedLowerBound
-        self.baselineLevels = baselineLevels ?? Dictionary(
-            uniqueKeysWithValues: channels.map { ($0.id, .low) }
-        )
+        self.baselineLevels =
+            baselineLevels
+            ?? Dictionary(
+                uniqueKeysWithValues: channels.map { ($0.id, .low) }
+            )
     }
 
     package func baselineLevel(for channelID: SignalChannelID) -> DigitalLevel {

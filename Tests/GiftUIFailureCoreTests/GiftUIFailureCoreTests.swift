@@ -1,5 +1,6 @@
 import Foundation
 import XCTest
+
 @testable import GiftUIFailureCore
 
 final class GiftUIFailureCoreTests: XCTestCase {
@@ -145,11 +146,12 @@ final class GiftUIFailureCoreTests: XCTestCase {
 
     func testOutcomePreservesAllThreeCategories() {
         let success = GiftUIOutcome<UInt32>.success(42)
-        let operational = GiftUIOutcome<UInt32>.operational(GiftUIOperationalFact(
-            kind: .noChange,
-            origin: .semantic,
-            affectedScope: .activeCycle
-        ))
+        let operational = GiftUIOutcome<UInt32>.operational(
+            GiftUIOperationalFact(
+                kind: .noChange,
+                origin: .semantic,
+                affectedScope: .activeCycle
+            ))
         let failureFact = GiftUIFailureFact(
             condition: .invariantViolation,
             origin: .semantic,
@@ -158,17 +160,17 @@ final class GiftUIFailureCoreTests: XCTestCase {
         )
         let failure = GiftUIOutcome<UInt32>.failure(failureFact)
 
-        guard case let .success(value) = success else {
+        guard case .success(let value) = success else {
             return XCTFail("expected success")
         }
         XCTAssertEqual(value, 42)
 
-        guard case let .operational(fact) = operational else {
+        guard case .operational(let fact) = operational else {
             return XCTFail("expected operational")
         }
         XCTAssertEqual(fact.kind, .noChange)
 
-        guard case let .failure(fact) = failure else {
+        guard case .failure(let fact) = failure else {
             return XCTFail("expected failure")
         }
         XCTAssertEqual(fact, failureFact)
@@ -335,15 +337,16 @@ final class GiftUIFailureCoreTests: XCTestCase {
             .requestPacedRetry,
             .markFacilityUnavailable,
         ]
-        let input = try XCTUnwrap(GiftUIResidualPolicyInput(
-            outcome: outcome,
-            context: UInt8(7),
-            allowed: allowed,
-            attemptOrdinal: 1,
-            attemptLimit: 3
-        ))
+        let input = try XCTUnwrap(
+            GiftUIResidualPolicyInput(
+                outcome: outcome,
+                context: UInt8(7),
+                allowed: allowed,
+                attemptOrdinal: 1,
+                attemptLimit: 3
+            ))
 
-        guard case let .operational(preservedFact) = input.outcome else {
+        guard case .operational(let preservedFact) = input.outcome else {
             return XCTFail("expected preserved operational outcome")
         }
         XCTAssertEqual(preservedFact, fact)
@@ -354,45 +357,50 @@ final class GiftUIFailureCoreTests: XCTestCase {
     }
 
     func testResidualInputRejectsSuccessEmptyAndUnknownBits() {
-        let operational = GiftUIOutcome<Void>.operational(GiftUIOperationalFact(
-            kind: .noChange,
-            origin: .semantic,
-            affectedScope: .operation
-        ))
+        let operational = GiftUIOutcome<Void>.operational(
+            GiftUIOperationalFact(
+                kind: .noChange,
+                origin: .semantic,
+                affectedScope: .operation
+            ))
 
         XCTAssertNil(policyInput(outcome: .success(()), allowed: .continueOperation))
         XCTAssertNil(policyInput(outcome: operational, allowed: []))
         for rawValue in UInt8(32) ... UInt8.max {
-            XCTAssertNil(policyInput(
-                outcome: operational,
-                allowed: GiftUIAllowedDispositions(rawValue: rawValue)
-            ))
+            XCTAssertNil(
+                policyInput(
+                    outcome: operational,
+                    allowed: GiftUIAllowedDispositions(rawValue: rawValue)
+                ))
         }
     }
 
     func testResidualInputRejectsEveryInvalidAttemptRange() {
-        let outcome = GiftUIOutcome<Void>.operational(GiftUIOperationalFact(
-            kind: .noChange,
-            origin: .semantic,
-            affectedScope: .operation
-        ))
+        let outcome = GiftUIOutcome<Void>.operational(
+            GiftUIOperationalFact(
+                kind: .noChange,
+                origin: .semantic,
+                affectedScope: .operation
+            ))
 
         for ordinal in UInt8.min ... UInt8.max {
-            XCTAssertNil(policyInput(
-                outcome: outcome,
-                allowed: .continueOperation,
-                ordinal: ordinal,
-                limit: 0
-            ))
-        }
-        for limit in UInt8(1) ... UInt8.max {
-            for ordinal in limit ... UInt8.max {
-                XCTAssertNil(policyInput(
+            XCTAssertNil(
+                policyInput(
                     outcome: outcome,
                     allowed: .continueOperation,
                     ordinal: ordinal,
-                    limit: limit
+                    limit: 0
                 ))
+        }
+        for limit in UInt8(1) ... UInt8.max {
+            for ordinal in limit ... UInt8.max {
+                XCTAssertNil(
+                    policyInput(
+                        outcome: outcome,
+                        allowed: .continueOperation,
+                        ordinal: ordinal,
+                        limit: limit
+                    ))
             }
         }
     }
@@ -401,11 +409,12 @@ final class GiftUIFailureCoreTests: XCTestCase {
         for kind in allOperationalKinds {
             for limit in UInt8(1) ... UInt8.max {
                 for ordinal in UInt8.min ..< limit {
-                    let outcome = GiftUIOutcome<Void>.operational(GiftUIOperationalFact(
-                        kind: kind,
-                        origin: .backend,
-                        affectedScope: .candidateFrame
-                    ))
+                    let outcome = GiftUIOutcome<Void>.operational(
+                        GiftUIOperationalFact(
+                            kind: kind,
+                            origin: .backend,
+                            affectedScope: .candidateFrame
+                        ))
                     let input = policyInput(
                         outcome: outcome,
                         allowed: .requestPacedRetry,
@@ -419,38 +428,43 @@ final class GiftUIFailureCoreTests: XCTestCase {
             }
         }
 
-        XCTAssertNil(policyInput(
-            outcome: .failure(failureFact(containment: .contained)),
-            allowed: .requestPacedRetry
-        ))
+        XCTAssertNil(
+            policyInput(
+                outcome: .failure(failureFact(containment: .contained)),
+                allowed: .requestPacedRetry
+            ))
     }
 
     func testSafetyNotProvenRejectsContinuation() {
         for scope in allAffectedScopes {
-            XCTAssertNil(policyInput(
-                outcome: .failure(failureFact(scope: scope, containment: .safetyNotProven)),
-                allowed: [.continueOperation, .quiesceAffectedScope]
-            ))
+            XCTAssertNil(
+                policyInput(
+                    outcome: .failure(failureFact(scope: scope, containment: .safetyNotProven)),
+                    allowed: [.continueOperation, .quiesceAffectedScope]
+                ))
         }
     }
 
     func testRuntimeSafetyNotProvenAllowsOnlyTerminalChoices() {
-        let outcome = GiftUIOutcome<Void>.failure(failureFact(
-            scope: .runtime,
-            containment: .safetyNotProven
-        ))
+        let outcome = GiftUIOutcome<Void>.failure(
+            failureFact(
+                scope: .runtime,
+                containment: .safetyNotProven
+            ))
 
         XCTAssertNotNil(policyInput(outcome: outcome, allowed: .quiesceAffectedScope))
         XCTAssertNotNil(policyInput(outcome: outcome, allowed: .invokeFatalHook))
-        XCTAssertNotNil(policyInput(
-            outcome: outcome,
-            allowed: [.quiesceAffectedScope, .invokeFatalHook]
-        ))
+        XCTAssertNotNil(
+            policyInput(
+                outcome: outcome,
+                allowed: [.quiesceAffectedScope, .invokeFatalHook]
+            ))
         XCTAssertNil(policyInput(outcome: outcome, allowed: .markFacilityUnavailable))
-        XCTAssertNil(policyInput(
-            outcome: outcome,
-            allowed: [.quiesceAffectedScope, .markFacilityUnavailable]
-        ))
+        XCTAssertNil(
+            policyInput(
+                outcome: outcome,
+                allowed: [.quiesceAffectedScope, .markFacilityUnavailable]
+            ))
     }
 
     func testContainedFailurePermitsDeclaredNonRetryChoices() {
@@ -476,13 +490,14 @@ final class GiftUIFailureCoreTests: XCTestCase {
 
         var policy = FixturePolicy()
         for row in rows {
-            let input = try XCTUnwrap(GiftUIResidualPolicyInput(
-                outcome: row.outcome,
-                context: row.context,
-                allowed: row.allowed,
-                attemptOrdinal: row.attemptOrdinal,
-                attemptLimit: row.attemptLimit
-            ))
+            let input = try XCTUnwrap(
+                GiftUIResidualPolicyInput(
+                    outcome: row.outcome,
+                    context: row.context,
+                    allowed: row.allowed,
+                    attemptOrdinal: row.attemptOrdinal,
+                    attemptLimit: row.attemptLimit
+                ))
             let result = policy.disposition(for: input)
 
             XCTAssertEqual(result, row.expected)
@@ -519,32 +534,35 @@ final class GiftUIFailureCoreTests: XCTestCase {
 
         var policy = CountingInvalidPolicy(result: .continueOperation)
         var owner = FixtureOwnerAdapter()
-        XCTAssertNil(owner.evaluate(
-            input: invalidInput,
-            policy: &policy,
-            fatalHookConfigured: true
-        ))
+        XCTAssertNil(
+            owner.evaluate(
+                input: invalidInput,
+                policy: &policy,
+                fatalHookConfigured: true
+            ))
 
         try assertInvariantContainment(owner, expectedPolicyInvocations: 0)
         XCTAssertEqual(policy.invocationCount, 0)
     }
 
     func testUnlistedPolicyReturnMapsInvariantWithoutReinvocation() throws {
-        let input = try XCTUnwrap(GiftUIResidualPolicyInput(
-            outcome: GiftUIOutcome<Void>.failure(failureFact(containment: .contained)),
-            context: FixturePolicyContext.markContainedFacilityUnavailable,
-            allowed: GiftUIAllowedDispositions.markFacilityUnavailable,
-            attemptOrdinal: 0,
-            attemptLimit: 1
-        ))
+        let input = try XCTUnwrap(
+            GiftUIResidualPolicyInput(
+                outcome: GiftUIOutcome<Void>.failure(failureFact(containment: .contained)),
+                context: FixturePolicyContext.markContainedFacilityUnavailable,
+                allowed: GiftUIAllowedDispositions.markFacilityUnavailable,
+                attemptOrdinal: 0,
+                attemptLimit: 1
+            ))
         var policy = CountingInvalidPolicy(result: .continueOperation)
         var owner = FixtureOwnerAdapter()
 
-        XCTAssertNil(owner.evaluate(
-            input: input,
-            policy: &policy,
-            fatalHookConfigured: true
-        ))
+        XCTAssertNil(
+            owner.evaluate(
+                input: input,
+                policy: &policy,
+                fatalHookConfigured: true
+            ))
 
         try assertInvariantContainment(owner, expectedPolicyInvocations: 1)
         XCTAssertEqual(policy.invocationCount, 1)
@@ -560,10 +578,12 @@ final class GiftUIFailureCoreTests: XCTestCase {
             .map(String.init)
             .filter { $0.contains("\towner-invariant\t") }
 
-        XCTAssertEqual(checkedInRows, [
-            "owner-invalid-nil\towner-invariant\t0\t10,11,4,1,3,0",
-            "owner-unlisted-return\towner-invariant\t1\t10,11,4,1,3,1",
-        ])
+        XCTAssertEqual(
+            checkedInRows,
+            [
+                "owner-invalid-nil\towner-invariant\t0\t10,11,4,1,3,0",
+                "owner-unlisted-return\towner-invariant\t1\t10,11,4,1,3,1",
+            ])
     }
 
     func testOperationalHealthStatesHaveExactRawValuesAndLayout() {
@@ -677,26 +697,29 @@ final class GiftUIFailureCoreTests: XCTestCase {
     }
 
     func testDiagnosticKindsSeveritiesAndSinkResultsHaveExactRawValues() {
-        XCTAssertEqual([
-            GiftUIDiagnosticKind.operationalOutcome.rawValue,
-            GiftUIDiagnosticKind.failureOutcome.rawValue,
-            GiftUIDiagnosticKind.healthTransition.rawValue,
-            GiftUIDiagnosticKind.residualDisposition.rawValue,
-        ], [0, 1, 2, 3])
-        XCTAssertEqual([
-            GiftUIDiagnosticSeverity.debug.rawValue,
-            GiftUIDiagnosticSeverity.information.rawValue,
-            GiftUIDiagnosticSeverity.notice.rawValue,
-            GiftUIDiagnosticSeverity.warning.rawValue,
-            GiftUIDiagnosticSeverity.error.rawValue,
-            GiftUIDiagnosticSeverity.critical.rawValue,
-        ], [0, 1, 2, 3, 4, 5])
-        XCTAssertEqual([
-            GiftUIDiagnosticSinkResult.accepted.rawValue,
-            GiftUIDiagnosticSinkResult.dropped.rawValue,
-            GiftUIDiagnosticSinkResult.saturated.rawValue,
-            GiftUIDiagnosticSinkResult.failed.rawValue,
-        ], [0, 1, 2, 3])
+        XCTAssertEqual(
+            [
+                GiftUIDiagnosticKind.operationalOutcome.rawValue,
+                GiftUIDiagnosticKind.failureOutcome.rawValue,
+                GiftUIDiagnosticKind.healthTransition.rawValue,
+                GiftUIDiagnosticKind.residualDisposition.rawValue,
+            ], [0, 1, 2, 3])
+        XCTAssertEqual(
+            [
+                GiftUIDiagnosticSeverity.debug.rawValue,
+                GiftUIDiagnosticSeverity.information.rawValue,
+                GiftUIDiagnosticSeverity.notice.rawValue,
+                GiftUIDiagnosticSeverity.warning.rawValue,
+                GiftUIDiagnosticSeverity.error.rawValue,
+                GiftUIDiagnosticSeverity.critical.rawValue,
+            ], [0, 1, 2, 3, 4, 5])
+        XCTAssertEqual(
+            [
+                GiftUIDiagnosticSinkResult.accepted.rawValue,
+                GiftUIDiagnosticSinkResult.dropped.rawValue,
+                GiftUIDiagnosticSinkResult.saturated.rawValue,
+                GiftUIDiagnosticSinkResult.failed.rawValue,
+            ], [0, 1, 2, 3])
     }
 
     func testDiagnosticSelectionExhaustsEveryKindOriginAndThreshold() {
@@ -738,11 +761,12 @@ final class GiftUIFailureCoreTests: XCTestCase {
             )
             for kind in allDiagnosticKinds {
                 for origin in allOrigins {
-                    XCTAssertFalse(selection.includes(
-                        kind: kind,
-                        origin: origin,
-                        severity: .critical
-                    ))
+                    XCTAssertFalse(
+                        selection.includes(
+                            kind: kind,
+                            origin: origin,
+                            severity: .critical
+                        ))
                 }
             }
         }
@@ -917,11 +941,12 @@ final class GiftUIFailureCoreTests: XCTestCase {
             FixturePolicyRow(
                 id: "policy-continue",
                 context: .continueAfterNoChange,
-                outcome: .operational(GiftUIOperationalFact(
-                    kind: .noChange,
-                    origin: .semantic,
-                    affectedScope: .operation
-                )),
+                outcome: .operational(
+                    GiftUIOperationalFact(
+                        kind: .noChange,
+                        origin: .semantic,
+                        affectedScope: .operation
+                    )),
                 allowed: [.continueOperation, .quiesceAffectedScope],
                 attemptOrdinal: 0,
                 attemptLimit: 1,
@@ -931,11 +956,12 @@ final class GiftUIFailureCoreTests: XCTestCase {
             FixturePolicyRow(
                 id: "policy-retry",
                 context: .retryBackpressure,
-                outcome: .operational(GiftUIOperationalFact(
-                    kind: .backpressured,
-                    origin: .inputIntegration,
-                    affectedScope: .operation
-                )),
+                outcome: .operational(
+                    GiftUIOperationalFact(
+                        kind: .backpressured,
+                        origin: .inputIntegration,
+                        affectedScope: .operation
+                    )),
                 allowed: [.requestPacedRetry, .markFacilityUnavailable],
                 attemptOrdinal: 0,
                 attemptLimit: 3,
@@ -945,12 +971,13 @@ final class GiftUIFailureCoreTests: XCTestCase {
             FixturePolicyRow(
                 id: "policy-unavailable",
                 context: .markContainedFacilityUnavailable,
-                outcome: .failure(GiftUIFailureFact(
-                    condition: .requiredFacilityUnavailable,
-                    origin: .hostComposition,
-                    affectedScope: .component,
-                    containment: .contained
-                )),
+                outcome: .failure(
+                    GiftUIFailureFact(
+                        condition: .requiredFacilityUnavailable,
+                        origin: .hostComposition,
+                        affectedScope: .component,
+                        containment: .contained
+                    )),
                 allowed: [.markFacilityUnavailable, .quiesceAffectedScope],
                 attemptOrdinal: 0,
                 attemptLimit: 1,
@@ -960,10 +987,11 @@ final class GiftUIFailureCoreTests: XCTestCase {
             FixturePolicyRow(
                 id: "policy-quiesce",
                 context: .quiesceContainedComponent,
-                outcome: .failure(failureFact(
-                    scope: .component,
-                    containment: .contained
-                )),
+                outcome: .failure(
+                    failureFact(
+                        scope: .component,
+                        containment: .contained
+                    )),
                 allowed: [.quiesceAffectedScope, .invokeFatalHook],
                 attemptOrdinal: 0,
                 attemptLimit: 1,
@@ -973,10 +1001,11 @@ final class GiftUIFailureCoreTests: XCTestCase {
             FixturePolicyRow(
                 id: "policy-fatal",
                 context: .invokeFatalAfterContainedComponent,
-                outcome: .failure(failureFact(
-                    scope: .component,
-                    containment: .contained
-                )),
+                outcome: .failure(
+                    failureFact(
+                        scope: .component,
+                        containment: .contained
+                    )),
                 allowed: [.quiesceAffectedScope, .invokeFatalHook],
                 attemptOrdinal: 0,
                 attemptLimit: 1,
@@ -1109,12 +1138,13 @@ private struct FixtureOwnerAdapter {
         health = .quiesced
         healthTransitions.append(.quiesced)
         policyInvocationCountAtContainment = policyInvocationCount
-        propagatedFacts.append(GiftUIFailureFact(
-            condition: .invariantViolation,
-            origin: .hostComposition,
-            affectedScope: .runtime,
-            containment: .safetyNotProven
-        ))
+        propagatedFacts.append(
+            GiftUIFailureFact(
+                condition: .invariantViolation,
+                origin: .hostComposition,
+                affectedScope: .runtime,
+                containment: .safetyNotProven
+            ))
         if fatalHookConfigured {
             fatalHookObservedHealth = health
         }

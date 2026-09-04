@@ -107,7 +107,8 @@ package final class DefaultSignalAcquisitionRepository:
         }
 
         guard channels.contains(where: { $0.id == transition.channelID }) else {
-            failSourceContract("Received transition for invalid channel \(transition.channelID.rawValue).")
+            failSourceContract(
+                "Received transition for invalid channel \(transition.channelID.rawValue).")
             return
         }
         guard transition.timestamp >= .zero else {
@@ -126,9 +127,10 @@ package final class DefaultSignalAcquisitionRepository:
             timestamp: epochTimestamp,
             level: transition.level
         )
-        let insertionIndex = transitions.firstIndex {
-            $0.timestamp > retainedTransition.timestamp
-        } ?? transitions.endIndex
+        let insertionIndex =
+            transitions.firstIndex {
+                $0.timestamp > retainedTransition.timestamp
+            } ?? transitions.endIndex
         transitions.insert(retainedTransition, at: insertionIndex)
 
         latestAcceptedSourceTimestamp = max(latestAcceptedSourceTimestamp, transition.timestamp)

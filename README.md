@@ -33,9 +33,9 @@ scripts/test.sh
 
 `scripts/test.sh` is the single repository-level check entry point. With no
 argument it runs the fast macOS-dynamic gate, including governance, root unit
-tests, and every registered contract driver. Select another hardware-free
-profile explicitly (positionally or with `--profile`), or run all four while
-preserving per-profile results:
+tests, Swift formatting, and every registered contract driver. Select another
+hardware-free profile explicitly (positionally or with `--profile`), or run
+all four while preserving per-profile results:
 
 ```sh
 scripts/test.sh --profile macos-static
@@ -108,6 +108,7 @@ Implementation Plan → Conformance lifecycle. Start with:
 - [MVP scope](docs/MVP_SCOPE.md)
 - [feature lifecycle](docs/engineering/FEATURE_LIFECYCLE.md)
 - [AI agent rules](docs/engineering/AI_AGENT_RULES.md)
+- [code style](docs/engineering/CODE_STYLE.md)
 - [feature manifest](docs/features.yaml)
 - [SPEC-002 implementation plan](docs/implementation-plans/spec-002-implementation-plan.md)
 

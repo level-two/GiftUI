@@ -1,4 +1,5 @@
 import XCTest
+
 @testable import GiftUI
 
 final class GiftUITests: XCTestCase {
@@ -117,24 +118,27 @@ final class GiftUITests: XCTestCase {
     }
 
     func testRectAcceptsMaximumValidExtentsAndBothScalarLimits() throws {
-        let maximum = try XCTUnwrap(Rect(
-            origin: Point(x: 0, y: 0),
-            size: try XCTUnwrap(Size(width: .max, height: .max))
-        ))
+        let maximum = try XCTUnwrap(
+            Rect(
+                origin: Point(x: 0, y: 0),
+                size: try XCTUnwrap(Size(width: .max, height: .max))
+            ))
         XCTAssertEqual(maximum.maxX, .max)
         XCTAssertEqual(maximum.maxY, .max)
 
-        let fromMinimum = try XCTUnwrap(Rect(
-            origin: Point(x: .min, y: .min),
-            size: try XCTUnwrap(Size(width: .max, height: .max))
-        ))
+        let fromMinimum = try XCTUnwrap(
+            Rect(
+                origin: Point(x: .min, y: .min),
+                size: try XCTUnwrap(Size(width: .max, height: .max))
+            ))
         XCTAssertEqual(fromMinimum.maxX, -1)
         XCTAssertEqual(fromMinimum.maxY, -1)
 
-        let zeroAtMaximum = try XCTUnwrap(Rect(
-            origin: Point(x: .max, y: .max),
-            size: try XCTUnwrap(Size(width: 0, height: 0))
-        ))
+        let zeroAtMaximum = try XCTUnwrap(
+            Rect(
+                origin: Point(x: .max, y: .max),
+                size: try XCTUnwrap(Size(width: 0, height: 0))
+            ))
         XCTAssertEqual(zeroAtMaximum.maxX, .max)
         XCTAssertEqual(zeroAtMaximum.maxY, .max)
     }
@@ -154,10 +158,11 @@ final class GiftUITests: XCTestCase {
     }
 
     func testRectContainsUsesHalfOpenEdges() throws {
-        let rect = try XCTUnwrap(Rect(
-            origin: Point(x: -2, y: -3),
-            size: try XCTUnwrap(Size(width: 4, height: 6))
-        ))
+        let rect = try XCTUnwrap(
+            Rect(
+                origin: Point(x: -2, y: -3),
+                size: try XCTUnwrap(Size(width: 4, height: 6))
+            ))
 
         XCTAssertTrue(rect.contains(Point(x: -2, y: -3)))
         XCTAssertTrue(rect.contains(Point(x: 1, y: 2)))
@@ -167,14 +172,16 @@ final class GiftUITests: XCTestCase {
     }
 
     func testEmptyRectContainsNoPoint() throws {
-        let emptyWidth = try XCTUnwrap(Rect(
-            origin: Point(x: 4, y: 5),
-            size: try XCTUnwrap(Size(width: 0, height: 10))
-        ))
-        let emptyHeight = try XCTUnwrap(Rect(
-            origin: Point(x: 4, y: 5),
-            size: try XCTUnwrap(Size(width: 10, height: 0))
-        ))
+        let emptyWidth = try XCTUnwrap(
+            Rect(
+                origin: Point(x: 4, y: 5),
+                size: try XCTUnwrap(Size(width: 0, height: 10))
+            ))
+        let emptyHeight = try XCTUnwrap(
+            Rect(
+                origin: Point(x: 4, y: 5),
+                size: try XCTUnwrap(Size(width: 10, height: 0))
+            ))
 
         XCTAssertFalse(emptyWidth.contains(Point(x: 4, y: 5)))
         XCTAssertFalse(emptyHeight.contains(Point(x: 4, y: 5)))

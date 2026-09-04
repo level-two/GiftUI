@@ -1,6 +1,7 @@
-@testable import GiftUITextResources
 import GiftUI
 import XCTest
+
+@testable import GiftUITextResources
 
 final class GiftUITextResourcesTests: XCTestCase {
     func testExactIdentityDeclarationsPreserveEveryRawWord() {

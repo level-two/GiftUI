@@ -1,6 +1,7 @@
-@testable import GiftUITextResources
 import GiftUI
 import XCTest
+
+@testable import GiftUITextResources
 
 final class CommonCatalogueValidationTests: XCTestCase {
     func testCompleteCatalogueValidatesForEachRequiredRealization() {
@@ -151,7 +152,8 @@ private struct CommonCatalogueRaster: TextRasterResourceView {
         realization: RasterRealizationID
     ) -> GlyphRasterRecord? {
         guard glyph.rawValue == 0,
-              Int(realization.rawValue) < recordValues.count else { return nil }
+            Int(realization.rawValue) < recordValues.count
+        else { return nil }
         return recordValues[Int(realization.rawValue)]
     }
 
@@ -166,8 +168,9 @@ private struct CommonCatalogueRaster: TextRasterResourceView {
         _ body: (UnsafeRawBufferPointer) throws -> Result
     ) rethrows -> Result? {
         guard isPayloadAvailable(for: realization),
-              refusedBorrowRealization != realization.rawValue,
-              let payload = payloadValues[Int(realization.rawValue)] else {
+            refusedBorrowRealization != realization.rawValue,
+            let payload = payloadValues[Int(realization.rawValue)]
+        else {
             return nil
         }
         return try payload.withUnsafeBytes { bytes in

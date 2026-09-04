@@ -7,7 +7,7 @@ package struct SignalChannel: Identifiable, Equatable, Sendable {
         self.name = name
     }
 
-    package static let standard: [SignalChannel] = (1...4).map {
+    package static let standard: [SignalChannel] = (1 ... 4).map {
         SignalChannel(id: SignalChannelID(rawValue: $0), name: "CH\($0)")
     }
 }

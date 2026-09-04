@@ -1,21 +1,22 @@
-@testable import GiftUITextResources
 import GiftUI
 import XCTest
+
+@testable import GiftUITextResources
 
 final class CanonicalSerializationTests: XCTestCase {
     func testSHA256OfficialVectors() {
         assertSHA256(
             [],
             equals: digest(
-                0xe3b0c442, 0x98fc1c14, 0x9afbf4c8, 0x996fb924,
-                0x27ae41e4, 0x649b934c, 0xa495991b, 0x7852b855
+                0xe3b0_c442, 0x98fc_1c14, 0x9afb_f4c8, 0x996f_b924,
+                0x27ae_41e4, 0x649b_934c, 0xa495_991b, 0x7852_b855
             )
         )
         assertSHA256(
             Array("abc".utf8),
             equals: digest(
-                0xba7816bf, 0x8f01cfea, 0x414140de, 0x5dae2223,
-                0xb00361a3, 0x96177a9c, 0xb410ff61, 0xf20015ad
+                0xba78_16bf, 0x8f01_cfea, 0x4141_40de, 0x5dae_2223,
+                0xb003_61a3, 0x9617_7a9c, 0xb410_ff61, 0xf200_15ad
             )
         )
         assertSHA256(
@@ -23,8 +24,8 @@ final class CanonicalSerializationTests: XCTestCase {
                 "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq".utf8
             ),
             equals: digest(
-                0x248d6a61, 0xd20638b8, 0xe5c02693, 0x0c3e6039,
-                0xa33ce459, 0x64ff2167, 0xf6ecedd4, 0x19db06c1
+                0x248d_6a61, 0xd206_38b8, 0xe5c0_2693, 0x0c3e_6039,
+                0xa33c_e459, 0x64ff_2167, 0xf6ec_edd4, 0x19db_06c1
             )
         )
     }
@@ -36,13 +37,14 @@ final class CanonicalSerializationTests: XCTestCase {
             in: resourcePackage,
             { actualBytes.append($0) }
         )
-        let expectedBytes = bytes(fromHex: """
-            476966745549546578745265736f75726365732f76310001000100000000000c
-            fffffffd0000000200000001000100000041000000000000000bfffffffeffff
-            fff4000000090000000c00010000000000000100000003000102030405060708
-            090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000000000000
-            0003000100010003
-            """)
+        let expectedBytes = bytes(
+            fromHex: """
+                476966745549546578745265736f75726365732f76310001000100000000000c
+                fffffffd0000000200000001000100000041000000000000000bfffffffeffff
+                fff4000000090000000c00010000000000000100000003000102030405060708
+                090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f0000000000000000
+                0003000100010003
+                """)
 
         XCTAssertEqual(byteCount, 135)
         XCTAssertEqual(actualBytes, expectedBytes)
@@ -53,8 +55,8 @@ final class CanonicalSerializationTests: XCTestCase {
         XCTAssertEqual(
             result?.digest,
             digest(
-                0x4f0dc73a, 0x27f76ffb, 0x2c38ea43, 0x348ac24f,
-                0xca3fceec, 0x87e9694f, 0x6f4cef78, 0x453a2ebe
+                0x4f0d_c73a, 0x27f7_6ffb, 0x2c38_ea43, 0x348a_c24f,
+                0xca3f_ceec, 0x87e9_694f, 0x6f4c_ef78, 0x453a_2ebe
             )
         )
     }
@@ -114,8 +116,8 @@ final class CanonicalSerializationTests: XCTestCase {
 
         let changedPayloadDigest = makeManifestPackage(
             payloadDigest: digest(
-                0x01010203, 0x04050607, 0x08090a0b, 0x0c0d0e0f,
-                0x10111213, 0x14151617, 0x18191a1b, 0x1c1d1e1f
+                0x0101_0203, 0x0405_0607, 0x0809_0a0b, 0x0c0d_0e0f,
+                0x1011_1213, 0x1415_1617, 0x1819_1a1b, 0x1c1d_1e1f
             )
         )
         XCTAssertNotEqual(
@@ -138,8 +140,8 @@ final class CanonicalSerializationTests: XCTestCase {
         XCTAssertEqual(
             hash,
             digest(
-                0x054edec1, 0xd0211f62, 0x4fed0cbc, 0xa9d4f940,
-                0x0b0e491c, 0x43742af2, 0xc5b0abeb, 0xf0c990d8
+                0x054e_dec1, 0xd021_1f62, 0x4fed_0cbc, 0xa9d4_f940,
+                0x0b0e_491c, 0x4374_2af2, 0xc5b0_abeb, 0xf0c9_90d8
             )
         )
     }
@@ -267,8 +269,8 @@ private func makeManifestPackage(
     metadata: FixtureMetadata = .baseline,
     rawPayload: [UInt8] = [0xaa, 0xbb, 0xcc],
     payloadDigest: TextResourceDigest = digest(
-        0x00010203, 0x04050607, 0x08090a0b, 0x0c0d0e0f,
-        0x10111213, 0x14151617, 0x18191a1b, 0x1c1d1e1f
+        0x0001_0203, 0x0405_0607, 0x0809_0a0b, 0x0c0d_0e0f,
+        0x1011_1213, 0x1415_1617, 0x1819_1a1b, 0x1c1d_1e1f
     )
 ) -> TextResourcePackage<ManifestMetrics, ManifestRaster> {
     let zeroDigest = digest(0, 0, 0, 0, 0, 0, 0, 0)

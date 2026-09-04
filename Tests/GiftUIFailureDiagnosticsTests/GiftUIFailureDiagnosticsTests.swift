@@ -1,6 +1,7 @@
 import GiftUIFailureCore
-@testable import GiftUIFailureDiagnostics
 import XCTest
+
+@testable import GiftUIFailureDiagnostics
 
 final class GiftUIFailureDiagnosticsTests: XCTestCase {
     func testDefaultDeveloperCapacityIsMacOSDynamicDefault() {
@@ -213,21 +214,23 @@ final class GiftUIFailureDiagnosticsTests: XCTestCase {
         let outcome = GiftUIOutcome<UInt8>.failure(fact)
         var health = GiftUIOperationalHealth()
         health.recordFailure(fact, resultingState: .quiesced)
-        let residualOutcome = GiftUIOutcome<Void>.failure(GiftUIFailureFact(
-            condition: .capacityExhausted,
-            origin: .backend,
-            affectedScope: .component,
-            containment: .contained
-        ))
-        let input = try XCTUnwrap(GiftUIResidualPolicyInput(
-            outcome: residualOutcome,
-            context: UInt8(7),
-            allowed: [.markFacilityUnavailable, .quiesceAffectedScope],
-            attemptOrdinal: 0,
-            attemptLimit: 1
-        ))
+        let residualOutcome = GiftUIOutcome<Void>.failure(
+            GiftUIFailureFact(
+                condition: .capacityExhausted,
+                origin: .backend,
+                affectedScope: .component,
+                containment: .contained
+            ))
+        let input = try XCTUnwrap(
+            GiftUIResidualPolicyInput(
+                outcome: residualOutcome,
+                context: UInt8(7),
+                allowed: [.markFacilityUnavailable, .quiesceAffectedScope],
+                attemptOrdinal: 0,
+                attemptLimit: 1
+            ))
 
-        guard case let .failure(residualFailure) = input.outcome else {
+        guard case .failure(let residualFailure) = input.outcome else {
             throw SnapshotError.unexpectedResidualOutcome
         }
 
@@ -246,13 +249,13 @@ final class GiftUIFailureDiagnosticsTests: XCTestCase {
 
     private var expectedCapacity: UInt8 {
         #if GIFTUI_DIAGNOSTICS_CAPACITY_ZERO
-        0
+            0
         #elseif GIFTUI_DIAGNOSTICS_CAPACITY_8
-        8
+            8
         #elseif GIFTUI_DIAGNOSTICS_CAPACITY_16
-        16
+            16
         #else
-        64
+            64
         #endif
     }
 }
@@ -298,8 +301,8 @@ private final class ConstructionCounter {
     var value: UInt32 = 0
 }
 
-private extension GiftUIDiagnosticProjector {
-    mutating func projectFailure(counter: ConstructionCounter) {
+extension GiftUIDiagnosticProjector {
+    fileprivate mutating func projectFailure(counter: ConstructionCounter) {
         project(
             kind: .failureOutcome,
             origin: .backend,
