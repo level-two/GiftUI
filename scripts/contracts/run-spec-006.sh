@@ -62,6 +62,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-006-harness.rb" \
             "${SCRIPT_DIR}/check-spec-006-action-surface.rb" \
             "${SCRIPT_DIR}/check-spec-006-builder-surface.rb" \
+            "${SCRIPT_DIR}/check-spec-006-wrapper-sil.rb" \
             "${SCRIPT_DIR}/check-spec-006-migration.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
             "${SCRIPT_DIR}/publish-contract-report.rb" \
@@ -213,7 +214,16 @@ run_fixture_set() {
     local compiler="$1"
     local module_dir="$2"
     shift 2
-    local -a common_flags=("$@")
+    local -a common_flags=()
+    while [[ $# -gt 0 ]]; do
+        if [[ "$1" == "-package-name" ]]; then
+            [[ $# -ge 2 ]] || fail 'fixture compiler flags end at -package-name'
+            shift 2
+        else
+            common_flags+=("$1")
+            shift
+        fi
+    done
     local id expectation access entry patterns allowed_modules result pattern
     while IFS=$'\t' read -r id expectation access entry patterns allowed_modules; do
         [[ -n "${id}" && "${id}" != \#* ]] || continue
@@ -278,6 +288,16 @@ run_macos() {
     "${semantic[@]}" >>"${log_path}" 2>&1
     record_image semantic-module "${module_dir}/GiftUISemanticCore.swiftmodule"
     record_image semantic-library "${image}"
+    local wrapper_sil="${report_dir}/build/giftui-wrappers.sil"
+    local wrapper_sil_report="${report_dir}/semantics/wrapper-sil-audit.txt"
+    mkdir -p "${report_dir}/semantics"
+    local -a wrapper_sil_command=("${compiler}" "${flags[@]}" -parse-as-library -emit-sil -module-name GiftUI "${FOUNDATION_SOURCE}" "${DECLARATION_SOURCE}" -o "${wrapper_sil}")
+    record_command "${wrapper_sil_command[@]}"
+    "${wrapper_sil_command[@]}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-006-wrapper-sil.rb" "${wrapper_sil}" "${wrapper_sil_report}"
+    "${SCRIPT_DIR}/check-spec-006-wrapper-sil.rb" \
+        "${wrapper_sil}" "${wrapper_sil_report}" >>"${log_path}" 2>&1
+    record_image wrapper-sil-audit "${wrapper_sil_report}"
     run_fixture_set "${compiler}" "${module_dir}" "${flags[@]}"
 }
 

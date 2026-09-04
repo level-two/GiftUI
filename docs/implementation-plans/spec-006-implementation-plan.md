@@ -206,7 +206,7 @@ the exact approved source/access shape and add no client traversal burden.
       zero-through-five, nested-six, conditional, optional, property/function,
       and `@ViewBuilder` compile fixtures, plus direct-six and dynamic-array
       negative fixtures.
-- [ ] `T1.3` — Prove builder lowering and storage boundaries independently:
+- [x] `T1.3` — Prove builder lowering and storage boundaries independently:
       zero children become `EmptyView`, one child remains itself, inactive
       generic branches are never instantiated, evaluated, retained, address-
       compared, or recorded, `buildArray` is absent, wrapper initializers/
@@ -618,3 +618,14 @@ functions, while direct six-child and loop lowering fail as required; see the
 [builder/wrapper evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-1/builder-and-wrappers.md).
 The stronger lowering, inactive-branch, storage, and representation proofs
 remain assigned to `T1.3`, which is next.
+
+`T1.3` is complete: compile-time assignments prove exact zero/one lowering;
+selected-branch tests use an inactive type whose initialization and body trap;
+ordinary-client fixtures reject wrapper construction and child storage; and
+optimized SIL audits find no heap allocation, existential, reflection, or
+runtime-discovery operations in the declaration module. The driver now strips
+package identity from `public` fixture rows, correcting the external-client
+boundary for the complete T1.1–T1.3 corpus. See the
+[builder lowering evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-1/builder-lowering-boundaries.md).
+`T1.4` is next, subject to the SPEC-010-owned state-host declarations required
+by its complete normative visitor surface.

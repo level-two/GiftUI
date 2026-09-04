@@ -13,3 +13,5 @@ builder-optional	pass	public	Fixtures/Positive/builder-optional/main.swift	-	Gif
 builder-property-function	pass	public	Fixtures/Positive/builder-property-function/main.swift	-	GiftUI
 builder-direct-six	fail	public	Fixtures/Negative/builder-direct-six/main.swift	Fixtures/Negative/builder-direct-six/expected-diagnostic-patterns.txt	GiftUI
 builder-dynamic-array	fail	public	Fixtures/Negative/builder-dynamic-array/main.swift	Fixtures/Negative/builder-dynamic-array/expected-diagnostic-patterns.txt	GiftUI
+wrapper-initializer-access	fail	public	Fixtures/Negative/wrapper-initializer-access/main.swift	Fixtures/Negative/wrapper-initializer-access/expected-diagnostic-patterns.txt	GiftUI
+wrapper-storage-access	fail	public	Fixtures/Negative/wrapper-storage-access/main.swift	Fixtures/Negative/wrapper-storage-access/expected-diagnostic-patterns.txt	GiftUI
