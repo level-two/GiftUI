@@ -5,18 +5,39 @@ root = File.expand_path("../..", __dir__)
 report_root = ARGV.fetch(0, File.join(root, ".build/contract-reports/spec-005"))
 profiles = %w[macos-dynamic macos-static raspberry-pi-armv6 nrf52840-embedded]
 
+def profile_directory(report_root, profile)
+  pointer = File.join(report_root, "latest-#{profile}.txt")
+  if File.file?(pointer)
+    run_id = File.read(pointer).strip
+    abort "invalid run pointer: #{pointer}" unless run_id.match?(/\A[0-9a-f]{40,64}-[0-9a-f]{16}\z/)
+    path = File.join(report_root, run_id, profile)
+    abort "run pointer target is missing: #{path}" unless File.directory?(path)
+    return [path, run_id]
+  end
+  legacy = File.join(report_root, profile)
+  abort "missing report for #{profile}: no immutable pointer or legacy report" unless File.directory?(legacy)
+  [legacy, nil]
+end
+
 def read_rows(path)
   File.readlines(path, chomp: true).drop(1)
 end
 
+directories = profiles.to_h { |profile| [profile, profile_directory(report_root, profile)] }
+immutable_ids = directories.values.map(&:last)
+if immutable_ids.any?
+  abort "mixed immutable and legacy SPEC-005 reports" if immutable_ids.any?(&:nil?)
+  abort "profile reports use mixed run identities" unless immutable_ids.uniq.length == 1
+end
+
 rows = profiles.to_h do |profile|
-  path = File.join(report_root, profile, "semantics/profile-semantics.tsv")
+  path = File.join(directories.fetch(profile).first, "semantics/profile-semantics.tsv")
   abort "missing semantic transcript: #{path}" unless File.file?(path)
   [profile, read_rows(path)]
 end
 
 input_hashes = profiles.to_h do |profile|
-  path = File.join(report_root, profile, "input-hashes.tsv")
+  path = File.join(directories.fetch(profile).first, "input-hashes.tsv")
   abort "missing input hash inventory: #{path}" unless File.file?(path)
   [profile, File.readlines(path, chomp: true)]
 end
@@ -27,10 +48,18 @@ profiles.each do |profile|
 end
 
 revisions = profiles.map do |profile|
-  metadata = File.read(File.join(report_root, profile, "metadata.txt"))
+  metadata = File.read(File.join(directories.fetch(profile).first, "metadata.txt"))
   metadata[/^repository_revision=(.+)$/, 1]
 end
 abort "profile reports use different repository revisions" unless revisions.uniq.length == 1
+
+input_set_hashes = profiles.map do |profile|
+  metadata = File.read(File.join(directories.fetch(profile).first, "metadata.txt"))
+  metadata[/^input_set_sha256=(.+)$/, 1]
+end
+if immutable_ids.any?
+  abort "profile reports use different input-set hashes" if input_set_hashes.any?(&:nil?) || input_set_hashes.uniq.length != 1
+end
 
 baseline = rows.fetch("macos-dynamic").select { |row| row.start_with?("logical\t") }
 profiles.each do |profile|

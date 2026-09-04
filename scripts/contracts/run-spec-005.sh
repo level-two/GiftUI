@@ -51,9 +51,84 @@ case "${profile}" in
     *) fail "unknown profile: ${profile}" ;;
 esac
 
+declared_inputs() {
+    {
+        find "${SOURCE_ROOT}" "${REFERENCE_SOURCE_ROOT}" \
+            "${UNIT_TEST_ROOT}" "${FIXTURE_ROOT}" -type f -print
+        find "${PROJECT_ROOT}/ThirdParty/Inter-4.1" \
+            "${PROJECT_ROOT}/scripts/text-resources" -type f -print
+        printf '%s\n' \
+            "${FOUNDATION_SOURCE}" \
+            "${PROJECT_ROOT}/Package.swift" \
+            "${PROJECT_ROOT}/docs/engineering/GOVERNANCE_TOOLING_IMPROVEMENTS.md" \
+            "${PROJECT_ROOT}/docs/specs/spec-005-text-resources.md" \
+            "${PROJECT_ROOT}/docs/implementation-plans/spec-005-implementation-plan.md" \
+            "${PROJECT_ROOT}/scripts/governance/task-evidence-schema.yaml" \
+            "${PROJECT_ROOT}/scripts/governance/check-task-evidence.rb" \
+            "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/Instrumentation/AllocationInterposer.c" \
+            "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
+            "${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv" \
+            "${SCRIPT_DIR}/check-spec-005-fixture-manifest.rb" \
+            "${SCRIPT_DIR}/check-spec-005-corpus.rb" \
+            "${SCRIPT_DIR}/check-spec-005-generated-assets.rb" \
+            "${SCRIPT_DIR}/check-spec-005-adopted-inputs.rb" \
+            "${SCRIPT_DIR}/check-spec-005-reference-generation.rb" \
+            "${SCRIPT_DIR}/check-spec-005-reference-compositions.sh" \
+            "${SCRIPT_DIR}/check-spec-005-owner-adapters.rb" \
+            "${SCRIPT_DIR}/check-spec-005-synchronous-offer.rb" \
+            "${SCRIPT_DIR}/check-spec-005-assembly-lifecycle.rb" \
+            "${SCRIPT_DIR}/generate-spec-005-profile-semantics.rb" \
+            "${SCRIPT_DIR}/compare-spec-005-profile-semantics.rb" \
+            "${SCRIPT_DIR}/check-spec-005-dependencies.rb" \
+            "${SCRIPT_DIR}/check-spec-005-boundaries.rb" \
+            "${SCRIPT_DIR}/check-spec-005-surface.rb" \
+            "${SCRIPT_DIR}/check-spec-005-canonical.rb" \
+            "${SCRIPT_DIR}/check-spec-005-accessors.rb" \
+            "${SCRIPT_DIR}/check-spec-005-payload-borrow.rb" \
+            "${SCRIPT_DIR}/check-spec-005-target-layout.rb" \
+            "${SCRIPT_DIR}/check-spec-005-bounds.rb" \
+            "${SCRIPT_DIR}/check-spec-005-validator.rb" \
+            "${SCRIPT_DIR}/check-spec-005-validation-corpus.rb" \
+            "${SCRIPT_DIR}/check-spec-005-common-catalogue.rb" \
+            "${SCRIPT_DIR}/check-spec-005-validated-behavior.rb" \
+            "${SCRIPT_DIR}/check-spec-005-validator-instrumentation.rb" \
+            "${SCRIPT_DIR}/check-spec-005-portable-source.rb" \
+            "${SCRIPT_DIR}/report-input-identity.rb" \
+            "${SCRIPT_DIR}/publish-contract-report.rb" \
+            "${SCRIPT_DIR}/verify-contract-report.rb" \
+            "${SCRIPT_DIR}/run-spec-005.sh"
+    } | LC_ALL=C sort -u
+}
+
+revision="$(git -C "${PROJECT_ROOT}" rev-parse HEAD)"
+if [[ -n "$(git -C "${PROJECT_ROOT}" status --porcelain --untracked-files=normal)" ]]; then
+    dirty=true
+else
+    dirty=false
+fi
+mkdir -p "${REPORT_ROOT}"
+report_dir="${REPORT_ROOT}/.tmp-${profile}-$$"
+[[ ! -e "${report_dir}" ]] || fail "temporary report directory already exists: ${report_dir}"
+mkdir -p "${report_dir}"
+inputs_path="${report_dir}/input-hashes.tsv"
+identity_metadata="$(declared_inputs | "${SCRIPT_DIR}/report-input-identity.rb" \
+    --root "${PROJECT_ROOT}" --revision "${revision}" --inventory "${inputs_path}")"
+input_set_sha256="$(printf '%s\n' "${identity_metadata}" | awk -F= '$1 == "input_set_sha256" { print $2 }')"
+run_id="$(printf '%s\n' "${identity_metadata}" | awk -F= '$1 == "run_id" { print $2 }')"
+[[ -n "${input_set_sha256}" && -n "${run_id}" ]] || fail 'input identity calculation failed'
+canonical_report_dir="${REPORT_ROOT}/${run_id}/${profile}"
+latest_pointer="${REPORT_ROOT}/latest-${profile}.txt"
+if [[ -d "${canonical_report_dir}" ]]; then
+    "${SCRIPT_DIR}/verify-contract-report.rb" "${canonical_report_dir}"
+    temporary_pointer="${REPORT_ROOT}/.latest-${profile}.tmp-$$"
+    printf '%s\n' "${run_id}" >"${temporary_pointer}"
+    mv "${temporary_pointer}" "${latest_pointer}"
+    printf 'SPEC-005 %s contract harness idempotent match; run ID: %s\n' \
+        "${profile}" "${run_id}"
+    exit 0
+fi
 generated_dir="${GENERATED_ROOT}/${profile}"
-report_dir="${REPORT_ROOT}/${profile}"
-rm -rf "${generated_dir}" "${report_dir}"
+rm -rf "${generated_dir}"
 mkdir -p \
     "${generated_dir}" \
     "${report_dir}/build/clang-cache" \
@@ -67,28 +142,22 @@ export CLANG_MODULE_CACHE_PATH="${report_dir}/build/clang-cache"
 export SWIFTPM_MODULECACHE_OVERRIDE="${report_dir}/build/swiftpm-cache"
 metadata_path="${report_dir}/metadata.txt"
 commands_path="${report_dir}/commands.txt"
-inputs_path="${report_dir}/input-hashes.tsv"
 images_path="${report_dir}/image-hashes.tsv"
 log_path="${report_dir}/run.log"
 : >"${commands_path}"
-: >"${inputs_path}"
 : >"${images_path}"
 : >"${log_path}"
 
-revision="$(git -C "${PROJECT_ROOT}" rev-parse HEAD)"
-if [[ -n "$(git -C "${PROJECT_ROOT}" status --porcelain --untracked-files=normal)" ]]; then
-    dirty=true
-else
-    dirty=false
-fi
 {
-    printf 'schema_version=1\n'
+    printf 'schema_version=2\n'
     printf 'spec=SPEC-005\n'
     printf 'profile=%s\n' "${profile}"
     printf 'repository_revision=%s\n' "${revision}"
     printf 'repository_dirty=%s\n' "${dirty}"
+    printf 'input_set_sha256=%s\n' "${input_set_sha256}"
+    printf 'run_id=%s\n' "${run_id}"
     printf 'generated_directory=.build/contract-generated/spec-005/%s\n' "${profile}"
-    printf 'report_directory=.build/contract-reports/spec-005/%s\n' "${profile}"
+    printf 'report_directory=.build/contract-reports/spec-005/%s/%s\n' "${run_id}" "${profile}"
     printf 'invocation=scripts/contracts/run-spec-005.sh --profile %s\n' "${profile}"
     printf 'evidence=hardware-free\n'
     printf 'remote_access=false\n'
@@ -102,9 +171,7 @@ fi
 finish() {
     local result=$?
     printf 'exit_code=%s\n' "${result}" >>"${metadata_path}"
-    if [[ "${result}" -eq 0 ]]; then
-        printf 'SPEC-005 %s contract harness passed\n' "${profile}"
-    else
+    if [[ "${result}" -ne 0 ]]; then
         printf 'SPEC-005 %s contract harness failed; see %s\n' \
             "${profile}" "${report_dir}" >&2
     fi
@@ -209,51 +276,7 @@ verify_source_list() {
 }
 
 record_input_hashes() {
-    local path relative
-    while IFS= read -r path; do
-        relative="${path#"${PROJECT_ROOT}/"}"
-        printf '%s\t%s\n' "${relative}" "$(hash_file "${path}")" >>"${inputs_path}"
-    done < <(
-        {
-            find "${SOURCE_ROOT}" "${REFERENCE_SOURCE_ROOT}" \
-                "${UNIT_TEST_ROOT}" "${FIXTURE_ROOT}" \
-                -type f -print
-            find "${PROJECT_ROOT}/ThirdParty/Inter-4.1" \
-                "${PROJECT_ROOT}/scripts/text-resources" -type f -print
-            printf '%s\n' \
-                "${FOUNDATION_SOURCE}" \
-                "${PROJECT_ROOT}/Package.swift" \
-                "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/Instrumentation/AllocationInterposer.c" \
-                "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
-                "${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv" \
-                "${SCRIPT_DIR}/check-spec-005-fixture-manifest.rb" \
-                "${SCRIPT_DIR}/check-spec-005-corpus.rb" \
-                "${SCRIPT_DIR}/check-spec-005-generated-assets.rb" \
-                "${SCRIPT_DIR}/check-spec-005-adopted-inputs.rb" \
-                "${SCRIPT_DIR}/check-spec-005-reference-generation.rb" \
-                "${SCRIPT_DIR}/check-spec-005-reference-compositions.sh" \
-                "${SCRIPT_DIR}/check-spec-005-owner-adapters.rb" \
-                "${SCRIPT_DIR}/check-spec-005-synchronous-offer.rb" \
-                "${SCRIPT_DIR}/check-spec-005-assembly-lifecycle.rb" \
-                "${SCRIPT_DIR}/generate-spec-005-profile-semantics.rb" \
-                "${SCRIPT_DIR}/compare-spec-005-profile-semantics.rb" \
-                "${SCRIPT_DIR}/check-spec-005-dependencies.rb" \
-                "${SCRIPT_DIR}/check-spec-005-boundaries.rb" \
-                "${SCRIPT_DIR}/check-spec-005-surface.rb" \
-                "${SCRIPT_DIR}/check-spec-005-canonical.rb" \
-                "${SCRIPT_DIR}/check-spec-005-accessors.rb" \
-                "${SCRIPT_DIR}/check-spec-005-payload-borrow.rb" \
-                "${SCRIPT_DIR}/check-spec-005-target-layout.rb" \
-                "${SCRIPT_DIR}/check-spec-005-bounds.rb" \
-                "${SCRIPT_DIR}/check-spec-005-validator.rb" \
-                "${SCRIPT_DIR}/check-spec-005-validation-corpus.rb" \
-                "${SCRIPT_DIR}/check-spec-005-common-catalogue.rb" \
-                "${SCRIPT_DIR}/check-spec-005-validated-behavior.rb" \
-                "${SCRIPT_DIR}/check-spec-005-validator-instrumentation.rb" \
-                "${SCRIPT_DIR}/check-spec-005-portable-source.rb" \
-                "${SCRIPT_DIR}/run-spec-005.sh"
-        } | LC_ALL=C sort -u
-    )
+    [[ -s "${inputs_path}" ]] || fail 'input hash inventory is empty'
 }
 
 run_preflight() {
@@ -736,7 +759,7 @@ verify_report() {
     [[ -s "${inputs_path}" ]] || fail 'incomplete report: input hashes are empty'
     [[ -s "${images_path}" ]] || fail 'incomplete report: image hashes are empty'
     for key in schema_version spec profile repository_revision repository_dirty \
-        generated_directory report_directory invocation evidence remote_access \
+        input_set_sha256 run_id generated_directory report_directory invocation evidence remote_access \
         deployment service_restart simulator_execution connected_target_execution \
         flashing source_list compiler_path compiler_sha256 target optimization; do
         grep -q "^${key}=" "${metadata_path}" ||
@@ -752,3 +775,12 @@ case "${profile}" in
 esac
 run_profile_semantic_report
 verify_report
+printf 'exit_code=0\n' >>"${metadata_path}"
+trap - EXIT
+"${SCRIPT_DIR}/publish-contract-report.rb" \
+    --report-root "${REPORT_ROOT}" \
+    --staging "${report_dir}" \
+    --destination "${canonical_report_dir}" \
+    --latest "${latest_pointer}" \
+    --run-id "${run_id}"
+printf 'SPEC-005 %s contract harness passed; run ID: %s\n' "${profile}" "${run_id}"
