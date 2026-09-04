@@ -166,7 +166,7 @@ implemented.
       adapter target that imports exactly `GiftUISemanticCore` and
       `GiftUIFailureCore`. Update SPEC-002's exact target/dependency allow-list
       and graph fixtures atomically, including reverse-import negatives.
-- [ ] `T0.3` — Add `scripts/contracts/run-spec-006.sh --profile <profile>` for
+- [x] `T0.3` — Add `scripts/contracts/run-spec-006.sh --profile <profile>` for
       exactly `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, and
       `nrf52840-embedded`; register it explicitly in
       `scripts/contracts/driver-registry.tsv`. Initially fail closed for every
@@ -580,3 +580,12 @@ fixtures, SPEC-002's exact target/dependency allowlist, product checks, and
 cycle checks preserve the required direction; see the
 [Semantic Core leaf evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-0/semantic-core-leaf.md).
 `T0.3` is next.
+
+`T0.3` is complete: the explicitly registered
+[four-profile contract driver](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-0/contract-driver.md)
+validates the fixture schemas and pinned compiler/target/optimization identity,
+compiles the current portable modules and import fixtures, hashes inputs and
+images, and records the repository revision plus complete commands. Every
+not-yet-produced semantic, allocation, layout, summary, depth, traversal-
+reference, and nRF ELF record is present as `missing`, forcing
+`evidence_complete=false` instead of premature conformance. `T0.4` is next.
