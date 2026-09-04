@@ -49,6 +49,37 @@ final class DeclarativeViewTests: XCTestCase {
         XCTAssertEqual(visitor.firstBranchVisits, 1)
         XCTAssertEqual(visitor.secondBranchVisits, 1)
     }
+
+    func testEveryStructuralWrapperUsesItsVisitorCategory() {
+        var visitor = CustomViewProbeVisitor(evaluateBody: false)
+
+        ViewBuilder.buildBlock()._giftUITraverse(&visitor)
+        ViewBuilder.buildBlock(LeafView(), LeafView())._giftUITraverse(&visitor)
+        ViewBuilder.buildBlock(LeafView(), LeafView(), LeafView())._giftUITraverse(&visitor)
+        ViewBuilder.buildBlock(LeafView(), LeafView(), LeafView(), LeafView())
+            ._giftUITraverse(&visitor)
+        ViewBuilder.buildBlock(LeafView(), LeafView(), LeafView(), LeafView(), LeafView())
+            ._giftUITraverse(&visitor)
+        ViewBuilder.buildOptional(Optional<LeafView>.none)._giftUITraverse(&visitor)
+        ViewBuilder.buildOptional(LeafView())._giftUITraverse(&visitor)
+
+        XCTAssertEqual(visitor.emptyVisits, 1)
+        XCTAssertEqual(visitor.fixedArities, [2, 3, 4, 5])
+        XCTAssertEqual(visitor.optionalAbsentVisits, 1)
+        XCTAssertEqual(visitor.optionalPresentVisits, 1)
+    }
+
+    func testTypedPayloadCategoriesRemainGeneric() {
+        var visitor = CustomViewProbeVisitor(evaluateBody: false)
+
+        visitor.visitPrimitive(TestPrimitivePayload())
+        visitor.visitActionPrimitive(TestActionPayload(_giftUIAction: .ordinary))
+        visitor.visitModifier(content: LeafView(), payload: TestModifierPayload())
+
+        XCTAssertEqual(visitor.primitiveVisits, 1)
+        XCTAssertEqual(visitor.actionPrimitiveVisits, 1)
+        XCTAssertEqual(visitor.modifierVisits, 1)
+    }
 }
 
 private enum TestAction: UInt16, GiftUIAction {
@@ -79,12 +110,27 @@ private struct InactiveLeaf: View {
     }
 }
 
+private struct TestPrimitivePayload: _GiftUISemanticPrimitivePayload {}
+
+private struct TestActionPayload: _GiftUISemanticActionPayload {
+    let _giftUIAction: TestAction
+}
+
+private struct TestModifierPayload: _GiftUISemanticModifierPayload {}
+
 private struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
     let evaluateBody: Bool
     var customViewVisits = 0
     var bodyEvaluations = 0
     var firstBranchVisits = 0
     var secondBranchVisits = 0
+    var emptyVisits = 0
+    var fixedArities: [Int] = []
+    var optionalAbsentVisits = 0
+    var optionalPresentVisits = 0
+    var primitiveVisits = 0
+    var actionPrimitiveVisits = 0
+    var modifierVisits = 0
 
     mutating func visitCustomView<Declaration: View>(
         _ declaration: borrowing Declaration,
@@ -97,25 +143,33 @@ private struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
         }
     }
 
-    mutating func visitEmpty() {}
+    mutating func visitEmpty() {
+        emptyVisits += 1
+    }
 
     mutating func visitFixed<A: View, B: View>(
         _ a: borrowing A,
         _ b: borrowing B
-    ) {}
+    ) {
+        fixedArities.append(2)
+    }
 
     mutating func visitFixed<A: View, B: View, C: View>(
         _ a: borrowing A,
         _ b: borrowing B,
         _ c: borrowing C
-    ) {}
+    ) {
+        fixedArities.append(3)
+    }
 
     mutating func visitFixed<A: View, B: View, C: View, D: View>(
         _ a: borrowing A,
         _ b: borrowing B,
         _ c: borrowing C,
         _ d: borrowing D
-    ) {}
+    ) {
+        fixedArities.append(4)
+    }
 
     mutating func visitFixed<A: View, B: View, C: View, D: View, E: View>(
         _ a: borrowing A,
@@ -123,7 +177,9 @@ private struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
         _ c: borrowing C,
         _ d: borrowing D,
         _ e: borrowing E
-    ) {}
+    ) {
+        fixedArities.append(5)
+    }
 
     mutating func visitConditionalFirst<First: View, Second: View>(
         _ content: borrowing First,
@@ -139,9 +195,35 @@ private struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
         secondBranchVisits += 1
     }
 
-    mutating func visitOptionalAbsent<Content: View>(_ content: Content.Type) {}
+    mutating func visitOptionalAbsent<Content: View>(_ content: Content.Type) {
+        optionalAbsentVisits += 1
+    }
 
     mutating func visitOptionalPresent<Content: View>(
         _ content: borrowing Content
-    ) {}
+    ) {
+        optionalPresentVisits += 1
+    }
+
+    mutating func visitPrimitive<Payload: _GiftUISemanticPrimitivePayload>(
+        _ payload: borrowing Payload
+    ) {
+        primitiveVisits += 1
+    }
+
+    mutating func visitActionPrimitive<Payload: _GiftUISemanticActionPayload>(
+        _ payload: borrowing Payload
+    ) {
+        actionPrimitiveVisits += 1
+    }
+
+    mutating func visitModifier<
+        Content: View,
+        Payload: _GiftUISemanticModifierPayload
+    >(
+        content: borrowing Content,
+        payload: borrowing Payload
+    ) {
+        modifierVisits += 1
+    }
 }

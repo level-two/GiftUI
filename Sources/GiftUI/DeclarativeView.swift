@@ -1,6 +1,16 @@
 public protocol GiftUIAction: RawRepresentable, Equatable, Sendable
 where RawValue == UInt16 {}
 
+public protocol _GiftUISemanticPrimitivePayload {}
+
+public protocol _GiftUISemanticActionPayload {
+    associatedtype Action: GiftUIAction
+
+    var _giftUIAction: Action { get }
+}
+
+public protocol _GiftUISemanticModifierPayload {}
+
 public protocol _GiftUISemanticTraversalVisitor {
     mutating func visitCustomView<Declaration: View>(
         _ declaration: borrowing Declaration,
@@ -49,6 +59,22 @@ public protocol _GiftUISemanticTraversalVisitor {
 
     mutating func visitOptionalPresent<Content: View>(
         _ content: borrowing Content
+    )
+
+    mutating func visitPrimitive<Payload: _GiftUISemanticPrimitivePayload>(
+        _ payload: borrowing Payload
+    )
+
+    mutating func visitActionPrimitive<Payload: _GiftUISemanticActionPayload>(
+        _ payload: borrowing Payload
+    )
+
+    mutating func visitModifier<
+        Content: View,
+        Payload: _GiftUISemanticModifierPayload
+    >(
+        content: borrowing Content,
+        payload: borrowing Payload
     )
 }
 
