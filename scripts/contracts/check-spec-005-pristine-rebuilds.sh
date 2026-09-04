@@ -12,6 +12,12 @@ TEMP_ROOT="$(mktemp -d "${TEMP_PARENT}/spec-005-pristine.XXXXXX")"
 PROFILES=(macos-dynamic macos-static raspberry-pi-armv6 nrf52840-embedded)
 
 cleanup() {
+    local result=$?
+    if [[ "${result}" -ne 0 ]]; then
+        printf 'SPEC-005 pristine rebuild failure preserved at %s\n' \
+            "${TEMP_ROOT}" >&2
+        return
+    fi
     rm -rf "${TEMP_ROOT}"
 }
 trap cleanup EXIT
