@@ -25,11 +25,10 @@ def report_directory(checkout_root, profile)
 end
 
 def normalized_content(path, checkout_root, profile)
-  content = File.binread(path)
+  content = File.binread(path).gsub(checkout_root, "<CHECKOUT>")
   return content unless %w[commands.txt metadata.txt image-hashes.tsv].include?(File.basename(path))
 
-  content.gsub(checkout_root, "<CHECKOUT>")
-         .gsub(/\.tmp-#{Regexp.escape(profile)}-\d+/, ".tmp-#{profile}-<PID>")
+  content.gsub(/\.tmp-#{Regexp.escape(profile)}-\d+/, ".tmp-#{profile}-<PID>")
 end
 
 common_files = [
