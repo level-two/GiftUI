@@ -175,7 +175,7 @@ implemented.
       counter, maximum-observed-depth value, underscored-reference inventory,
       repository revision, complete command transcript, or ELF inspection
       rather than reporting premature conformance.
-- [ ] `T0.4` — Create the migration inventory from SPEC-002's historical
+- [x] `T0.4` — Create the migration inventory from SPEC-002's historical
       removal ledger and repository-wide scans. Enumerate every former
       `_visit`, `ViewVisitor`, wrapper initializer/storage exposure, string
       structural path, client traversal witness, and dynamic/static traversal
@@ -589,3 +589,13 @@ images, and records the repository revision plus complete commands. Every
 not-yet-produced semantic, allocation, layout, summary, depth, traversal-
 reference, and nRF ELF record is present as `missing`, forcing
 `evidence_complete=false` instead of premature conformance. `T0.4` is next.
+
+`T0.4` is complete: the checked-in
+[migration baseline](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-0/migration-baseline.md)
+pins SPEC-002's immutable PoC revision and inventories every old traversal
+surface, wrapper initializer/storage exposure, string path, client witness,
+and dynamic/static traversal entry by exact path and occurrence count. Every
+row is assigned remove, replace-through-the-sealed-surface, or already-absent,
+and the registered check rejects the old API names, string identity, a
+compatibility shim, or a second expansion engine. Milestone 0 is complete;
+`T1.1` is next.

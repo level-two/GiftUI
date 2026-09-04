@@ -58,6 +58,7 @@ declared_inputs() {
             "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
             "${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv" \
             "${SCRIPT_DIR}/check-spec-006-harness.rb" \
+            "${SCRIPT_DIR}/check-spec-006-migration.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
             "${SCRIPT_DIR}/publish-contract-report.rb" \
             "${SCRIPT_DIR}/verify-contract-report.rb" \
@@ -329,6 +330,8 @@ run_nrf52840() {
 
 record_command "${SCRIPT_DIR}/check-spec-006-harness.rb"
 "${SCRIPT_DIR}/check-spec-006-harness.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-006-migration.rb"
+"${SCRIPT_DIR}/check-spec-006-migration.rb" >>"${log_path}" 2>&1
 
 case "${profile}" in
     macos-dynamic | macos-static) run_macos ;;

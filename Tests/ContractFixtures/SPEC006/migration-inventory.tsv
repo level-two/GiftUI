@@ -1,0 +1,24 @@
+# family	poc_path	occurrences	disposition	replacement_owner
+traversal	Sources/GiftUI/Composition/ConditionalContent.swift	1	replace-through-the-sealed-surface	SPEC-006-T1.2/T1.4
+traversal	Sources/GiftUI/Composition/EmptyView.swift	1	replace-through-the-sealed-surface	SPEC-006-T1.2/T1.4
+traversal	Sources/GiftUI/Composition/OptionalContent.swift	1	replace-through-the-sealed-surface	SPEC-006-T1.2/T1.4
+traversal	Sources/GiftUI/Composition/TupleView.swift	4	replace-through-the-sealed-surface	SPEC-006-T1.2/T1.4
+traversal	Sources/GiftUI/Containers/HStack.swift	1	remove	SPEC-007
+traversal	Sources/GiftUI/Containers/VStack.swift	1	remove	SPEC-007
+traversal	Sources/GiftUI/PrimitiveViews/Button.swift	1	remove	SPEC-011
+traversal	Sources/GiftUI/PrimitiveViews/Text.swift	1	remove	SPEC-005/downstream-declaration-owner
+traversal	Sources/GiftUI/View/View.swift	3	replace-through-the-sealed-surface	SPEC-006-T1.1/T1.4
+traversal	Sources/GiftUI/View/ViewVisitor.swift	1	replace-through-the-sealed-surface	SPEC-006-T1.4
+traversal	Sources/GiftUIRuntimeDynamic/ViewBuildContext.swift	7	already-absent	SPEC-013-future-owner
+traversal	Sources/GiftUIRuntimeDynamic/ViewGraph.swift	1	already-absent	SPEC-013-future-owner
+traversal	Sources/GiftUIRuntimeStatic/StaticRuntime.swift	21	already-absent	SPEC-013-future-owner
+traversal	Tests/GiftUIRuntimeStaticTests/GiftUIRuntimeStaticTests.swift	5	remove	SPEC-006-negative-client-witness-fixture
+string-identity	Sources/GiftUIRuntimeDynamic/StateBindingContext.swift	4	remove	SPEC-010
+string-identity	Sources/GiftUIRuntimeDynamic/StateKey.swift	2	remove	SPEC-010
+string-identity	Sources/GiftUIRuntimeDynamic/ViewBuildContext.swift	13	remove	SPEC-006-T2/T3
+string-identity	Tests/GiftUIRuntimeDynamicTests/GiftUIRuntimeDynamicTests.swift	1	remove	SPEC-010
+wrapper-exposure	Sources/GiftUI/Composition/ConditionalContent.swift	3	replace-through-the-sealed-surface	SPEC-006-T1.2
+wrapper-exposure	Sources/GiftUI/Composition/EmptyView.swift	1	replace-through-the-sealed-surface	SPEC-006-T1.2
+wrapper-exposure	Sources/GiftUI/Composition/OptionalContent.swift	2	replace-through-the-sealed-surface	SPEC-006-T1.2
+wrapper-exposure	Sources/GiftUI/Composition/TupleView.swift	8	replace-through-the-sealed-surface	SPEC-006-T1.2
+builder-surface	Sources/GiftUI/View/ViewBuilder.swift	9	replace-through-the-sealed-surface	SPEC-006-T1.2/T1.3
