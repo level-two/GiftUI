@@ -253,12 +253,17 @@ tasks:
       - docs/implementation-designs/spec-005-static-resource-layout.md
     blockers: []
   T5.4:
-    disposition: pending
+    disposition: completed
     requirements: [TR-011]
-    implementation: []
-    checks: []
-    profiles: []
-    evidence: []
+    implementation:
+      - scripts/contracts/check-spec-005-pristine-rebuilds.sh
+      - scripts/contracts/compare-spec-005-pristine-rebuilds.rb
+    checks:
+      - scripts/contracts/check-spec-005-pristine-rebuilds.sh
+      - scripts/test.sh
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-5/pristine-rebuilds.md
     blockers: []
   T5.5:
     disposition: pending

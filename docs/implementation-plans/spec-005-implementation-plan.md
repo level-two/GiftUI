@@ -428,7 +428,7 @@ repeatability without deployment, flashing, or connected-hardware claims.
       are absent while the bitmap package meets the 96 KiB flash, 512-byte
       fixed-RAM, and 1 KiB stack ceilings. For ARMv6, retain the exact
       `armv6-unknown-linux-gnueabihf` identity and payload-omission evidence.
-- [ ] `T5.4` — From two pristine temporary checkouts/build roots, run each exact
+- [x] `T5.4` — From two pristine temporary checkouts/build roots, run each exact
       standalone driver and compare normalized commands, hashes, semantic
       transcripts, allocation results, selected/available realizations,
       section measurements, and omission evidence. Then run the registered
@@ -600,6 +600,7 @@ contract or authorize the eventual `implemented` transition.
 | `T5.1` | completed | [Four-profile semantic corpus](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/four-profile-semantic-corpus.md), concrete complete reference cross-build on ARMv6, bitmap-only reference cross-build on nRF52840, 66 equal logical transcript rows, exact validation and owner mappings, declared realization availability, toolchain/target/flag/revision/hash metadata, and 256-comparison maximum |
 | `T5.2` | completed | [Static-path allocation evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-path-allocation.md), one monotonic measured transaction covering validation, mapping, metric/raster lookup, payload borrow, synchronous offer, and combined work with zero allocation contribution in macOS dynamic/static, plus prohibited-runtime-facility source checks and the existing four-profile 16-value layout reports |
 | `T5.3` | completed | [Static resource image evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-resource-images.md), [maintained measurement design](../implementation-designs/spec-005-static-resource-layout.md), matched optimized nRF and ARMv6 baseline/candidate images, deterministic double nRF build, 23,024-byte flash and zero-byte fixed-RAM deltas, conservative 1,004-byte validation stack, exact target/ABI evidence, and bitmap-only link-map omission proof |
+| `T5.4` | completed | [Pristine rebuild evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/pristine-rebuilds.md), two detached clean checkouts, eight exact standalone driver runs, 27 matching normalized artifacts, and passing registered default and `all-hardware-free` gates with cross-build-only labels |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the
