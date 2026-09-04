@@ -200,7 +200,7 @@ the exact approved source/access shape and add no client traversal burden.
       action code is exactly its `UInt16` raw value, no public numeric domain
       identifier exists, and associated-value or non-`UInt16` action shapes
       are outside the supported contract.
-- [ ] `T1.2` — Implement `ViewBuilder`, `EmptyView`, `TupleView` through
+- [x] `T1.2` — Implement `ViewBuilder`, `EmptyView`, `TupleView` through
       `TupleView5`, `ConditionalContent`, and `OptionalContent` with exact
       public/package access and package-private stored children/branches. Add
       zero-through-five, nested-six, conditional, optional, property/function,
@@ -609,3 +609,12 @@ see the
 [action/custom-view evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-1/action-and-custom-view.md).
 The remaining builder/wrapper and sealed visitor categories stay assigned to
 `T1.2` through `T1.4`; `T1.2` is next.
+
+`T1.2` is complete: the exact bounded builder overloads, structural wrappers,
+package-only construction/storage, and wrapper self-dispatch now compile in
+all four profiles. External fixtures cover zero through five children, a
+nested six-child declaration, conditionals, optionals, builder properties and
+functions, while direct six-child and loop lowering fail as required; see the
+[builder/wrapper evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-1/builder-and-wrappers.md).
+The stronger lowering, inactive-branch, storage, and representation proofs
+remain assigned to `T1.3`, which is next.

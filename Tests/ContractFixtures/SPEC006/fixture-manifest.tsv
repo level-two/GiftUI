@@ -6,3 +6,10 @@ external-custom-view	pass	public	Fixtures/Positive/external-custom-view/main.swi
 action-uint16-domain	pass	public	Fixtures/Positive/action-uint16-domain/main.swift	-	GiftUI
 action-wrong-raw-width	fail	public	Fixtures/Negative/action-wrong-raw-width/main.swift	Fixtures/Negative/action-wrong-raw-width/expected-diagnostic-patterns.txt	GiftUI
 action-associated-value	fail	public	Fixtures/Negative/action-associated-value/main.swift	Fixtures/Negative/action-associated-value/expected-diagnostic-patterns.txt	GiftUI
+builder-zero-through-five	pass	public	Fixtures/Positive/builder-zero-through-five/main.swift	-	GiftUI
+builder-nested-six	pass	public	Fixtures/Positive/builder-nested-six/main.swift	-	GiftUI
+builder-conditional	pass	public	Fixtures/Positive/builder-conditional/main.swift	-	GiftUI
+builder-optional	pass	public	Fixtures/Positive/builder-optional/main.swift	-	GiftUI
+builder-property-function	pass	public	Fixtures/Positive/builder-property-function/main.swift	-	GiftUI
+builder-direct-six	fail	public	Fixtures/Negative/builder-direct-six/main.swift	Fixtures/Negative/builder-direct-six/expected-diagnostic-patterns.txt	GiftUI
+builder-dynamic-array	fail	public	Fixtures/Negative/builder-dynamic-array/main.swift	Fixtures/Negative/builder-dynamic-array/expected-diagnostic-patterns.txt	GiftUI

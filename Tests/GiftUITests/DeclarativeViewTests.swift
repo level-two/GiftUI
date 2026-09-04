@@ -61,4 +61,48 @@ private struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
             bodyEvaluations += 1
         }
     }
+
+    mutating func visitEmpty() {}
+
+    mutating func visitFixed<A: View, B: View>(
+        _ a: borrowing A,
+        _ b: borrowing B
+    ) {}
+
+    mutating func visitFixed<A: View, B: View, C: View>(
+        _ a: borrowing A,
+        _ b: borrowing B,
+        _ c: borrowing C
+    ) {}
+
+    mutating func visitFixed<A: View, B: View, C: View, D: View>(
+        _ a: borrowing A,
+        _ b: borrowing B,
+        _ c: borrowing C,
+        _ d: borrowing D
+    ) {}
+
+    mutating func visitFixed<A: View, B: View, C: View, D: View, E: View>(
+        _ a: borrowing A,
+        _ b: borrowing B,
+        _ c: borrowing C,
+        _ d: borrowing D,
+        _ e: borrowing E
+    ) {}
+
+    mutating func visitConditionalFirst<First: View, Second: View>(
+        _ content: borrowing First,
+        second: Second.Type
+    ) {}
+
+    mutating func visitConditionalSecond<First: View, Second: View>(
+        first: First.Type,
+        _ content: borrowing Second
+    ) {}
+
+    mutating func visitOptionalAbsent<Content: View>(_ content: Content.Type) {}
+
+    mutating func visitOptionalPresent<Content: View>(
+        _ content: borrowing Content
+    ) {}
 }

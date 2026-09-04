@@ -61,6 +61,7 @@ declared_inputs() {
             "${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv" \
             "${SCRIPT_DIR}/check-spec-006-harness.rb" \
             "${SCRIPT_DIR}/check-spec-006-action-surface.rb" \
+            "${SCRIPT_DIR}/check-spec-006-builder-surface.rb" \
             "${SCRIPT_DIR}/check-spec-006-migration.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
             "${SCRIPT_DIR}/publish-contract-report.rb" \
@@ -337,6 +338,8 @@ record_command "${SCRIPT_DIR}/check-spec-006-migration.rb"
 "${SCRIPT_DIR}/check-spec-006-migration.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-006-action-surface.rb"
 "${SCRIPT_DIR}/check-spec-006-action-surface.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-006-builder-surface.rb"
+"${SCRIPT_DIR}/check-spec-006-builder-surface.rb" >>"${log_path}" 2>&1
 
 case "${profile}" in
     macos-dynamic | macos-static) run_macos ;;
