@@ -100,7 +100,7 @@ Dir.mktmpdir("giftui-context-graph-") do |temporary_root|
   Array(task["requirements"]).sort.each do |requirement|
     spec_path = root.join(spec_node.fetch("path"))
     item = item_section(spec_path, /^- \[[ x]\] \*\*#{Regexp.escape(requirement)}:\*\*/,
-                        /^- \[[ x]\] \*\*[A-Z]+-\d+[A-Z]?:\*\*|^## /,
+                        /^- \[[ x]\] \*\*[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+:\*\*|^## /,
                         "Acceptance criterion #{requirement}", root)
     abort "error: #{requirement} is not present in #{spec_node['path']}" unless item
     sources << item

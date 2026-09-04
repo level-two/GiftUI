@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-08-29
+updated: 2026-09-04
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -1162,61 +1162,61 @@ connected-board execution.
 
 ### Specification-approval seam
 
-- [ ] A compile fixture imports `GiftUIFailureCore` without importing GiftUI,
+- [ ] **FAIL-AC-01:** A compile fixture imports `GiftUIFailureCore` without importing GiftUI,
   execution, runtime, backend, platform, capability, or diagnostic modules.
-- [ ] Import-graph checks prove `GiftUIFailureExecution` imports only the core
+- [ ] **FAIL-AC-02:** Import-graph checks prove `GiftUIFailureExecution` imports only the core
   failure and focused execution contracts, the execution contract does not
   import failure execution correlation, and a driver fixture cannot import
   the correlation adapter.
-- [ ] One exhaustive containment fixture maps `contained` to `contained` and
+- [ ] **FAIL-AC-03:** One exhaustive containment fixture maps `contained` to `contained` and
   every safety-not-proven, unknown, and richer test value to `safety not
   proven` in both runtime profiles.
-- [ ] Raw-value and layout fixtures cover every declared case and prove the
+- [ ] **FAIL-AC-04:** Raw-value and layout fixtures cover every declared case and prove the
   specified 2-, 4-, 8-, 20-, and 24-byte equalities or maxima on every
   available MVP compiler target.
-- [ ] Propagation fixtures prove the original condition identity and origin
+- [ ] **FAIL-AC-05:** Propagation fixtures prove the original condition identity and origin
   are unchanged, affected scope is never narrowed without fixture-backed
   proof, and containment is never upgraded.
-- [ ] Two annotations retain insertion order; a third append returns `false`,
+- [ ] **FAIL-AC-06:** Two annotations retain insertion order; a third append returns `false`,
   overwrites no entry, and leaves every correlated core-fact field unchanged.
-- [ ] Every value in every declared residual-policy input domain is exercised
+- [ ] **FAIL-AC-07:** Every value in every declared residual-policy input domain is exercised
   exactly once by a table-driven test and produces one allowed finite result;
   every forbidden input returns `nil` without invoking policy, and no test
   exposes a mandatory local or coordinator action as a policy choice.
-- [ ] Unexpected policy-input `nil` and an unlisted policy return each map to
+- [ ] **FAIL-AC-08:** Unexpected policy-input `nil` and an unlisted policy return each map to
   the exact host-composition invariant fact, obligatorily quiesce runtime
   health, invoke no further policy, and prevent every later normal run cycle.
-- [ ] The diagnostic configuration matrix produces value-equal normalized
+- [ ] **FAIL-AC-09:** The diagnostic configuration matrix produces value-equal normalized
   outcomes, health snapshots, coordinator inputs, residual policy inputs, and
   policy results for diagnostics omitted, enabled, filtered, saturated,
   dropping, and failing.
-- [ ] Dropping every projected health-transition record leaves the explicit
+- [ ] **FAIL-AC-10:** Dropping every projected health-transition record leaves the explicit
   health query and counters equal to the diagnostics-enabled baseline; forced
   `UInt32.max` saturation wraps no counter and blocks no state transition.
-- [ ] Once health reaches `quiesced`, both record methods preserve `quiesced`
+- [ ] **FAIL-AC-11:** Once health reaches `quiesced`, both record methods preserve `quiesced`
   for every requested resulting state, increment only the matching
   non-saturated outcome counter, and add no transition.
-- [ ] Diagnostic callback and interrupt fixtures record zero semantic
+- [ ] **FAIL-AC-12:** Diagnostic callback and interrupt fixtures record zero semantic
   mutations and zero client-action invocations.
-- [ ] Every declared store, context, counter, and policy capacity has one
+- [ ] **FAIL-AC-13:** Every declared store, context, counter, and policy capacity has one
   deterministic exhaustion test, and no such test overwrites, silently drops,
   reorders, or immediately retries correctness-relevant work.
-- [ ] Allocation instrumentation records zero heap allocations for static
+- [ ] **FAIL-AC-14:** Allocation instrumentation records zero heap allocations for static
   construction, normalization, propagation, health update/query, and residual
   policy dispatch with diagnostics disabled.
-- [ ] Static and dynamic fixtures produce identical portable facts and
+- [ ] **FAIL-AC-15:** Static and dynamic fixtures produce identical portable facts and
   dispositions for the complete shared fault corpus.
-- [ ] The four exact contract-driver commands use `-O` whole-module builds for
+- [ ] **FAIL-AC-16:** The four exact contract-driver commands use `-O` whole-module builds for
   macOS and ARMv6 and an `-Osize` whole-module Embedded Swift build only for
   nRF52840; their two pristine builds have identical normalized evidence.
-- [ ] Hardware-free release evidence satisfies the 64-step correctness-path
+- [ ] **FAIL-AC-17:** Hardware-free release evidence satisfies the 64-step correctness-path
   bound, 8-step mapping/selection bounds, default buffer capacities, signed
   candidate-minus-baseline writable-RAM and linked-code limits, and absolute
   conservative call-graph stack limits under the specified section, indirect-
   call, recursion, runtime-frame, and repeatability rules. Raspberry Pi
   `armv6l` latency is explicitly tracked as post-approval target-integration
   evidence.
-- [ ] SPEC-002 uses the exact Foundation fact rows, and SPEC-004 uses the exact
+- [ ] **FAIL-AC-18:** SPEC-002 uses the exact Foundation fact rows, and SPEC-004 uses the exact
   capability condition catalogue and `GiftUIOutcome<CapabilitySnapshot>`
   carrier defined here; both preserve reciprocal links and define no competing
   failure, health, disposition, or diagnostic vocabulary.
@@ -1227,7 +1227,7 @@ The following criterion is deliberately not a Specification-approval gate. It
 becomes mandatory when the Raspberry Pi integration exists and before
 SPEC-003 may transition to `implemented`:
 
-- [ ] The connected Raspberry Pi reference target reports `armv6l` and the
+- [ ] **FAIL-AC-19:** The connected Raspberry Pi reference target reports `armv6l` and the
   release contract corpus satisfies the Raspberry Pi RAM, stack, linked-code,
   and p99 latency row under the recorded compiler, OS, command, revision, and
   raw-sample conditions.

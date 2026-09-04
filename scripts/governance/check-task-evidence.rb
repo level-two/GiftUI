@@ -58,7 +58,7 @@ end
 
 matrix = Hash.new { |hash, key| hash[key] = [] }
 plan_content.each_line do |line|
-  match = line.match(/^\| `([A-Z]+-\d+[A-Z]?)` /)
+  match = line.match(/^\| `([A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+)` /)
   next unless match
   requirement = match[1]
   cells = line.split("|")
@@ -77,7 +77,7 @@ if feature_manifest.is_a?(Hash)
   end
 end
 errors << "#{options[:spec]}: governing Specification not found" unless spec_path
-requirements = spec_path ? spec_path.read.scan(/^\s*- \[[ x]\] \*\*([A-Z]+-\d+[A-Z]?):\*\*/).flatten.uniq : []
+requirements = spec_path ? spec_path.read.scan(/^\s*- \[[ x]\] \*\*([A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+):\*\*/).flatten.uniq : []
 
 registry = root.join("scripts/contracts/driver-registry.tsv")
 registered_profiles = {}

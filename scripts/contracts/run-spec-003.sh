@@ -12,6 +12,8 @@ CAPABILITY_ADAPTER_SOURCE="${PROJECT_ROOT}/Sources/GiftUICapabilityFailureAdapte
 PROFILE_PROBE_ROOT="${FIXTURE_ROOT}/ProfileCorpusProbe"
 GENERATED_ROOT="${PROJECT_ROOT}/.build/contract-generated/spec-003"
 REPORT_ROOT="${PROJECT_ROOT}/.build/contract-reports/spec-003"
+# shellcheck source=report-path.sh
+source "${SCRIPT_DIR}/report-path.sh"
 
 usage() {
     printf '%s\n' \
@@ -51,8 +53,12 @@ case "${profile}" in
     *) fail "unknown profile: ${profile}" ;;
 esac
 
+if [[ "${GIFTUI_IMMUTABLE_REPORT_INNER:-false}" != true ]]; then
+    exec "${SCRIPT_DIR}/run-immutable-contract-driver.sh" \
+        --spec SPEC-003 --profile "${profile}" --driver "$0"
+fi
 generated_dir="${GENERATED_ROOT}/${profile}"
-report_dir="${REPORT_ROOT}/${profile}"
+report_dir="${GIFTUI_CONTRACT_REPORT_DIR:-"${REPORT_ROOT}/${profile}"}"
 rm -rf "${generated_dir}" "${report_dir}"
 mkdir -p \
     "${generated_dir}" \
@@ -251,7 +257,7 @@ run_complete_semantic_suite_macos() {
     else
         counterpart_profile='macos-dynamic'
     fi
-    counterpart_dir="${REPORT_ROOT}/${counterpart_profile}"
+    counterpart_dir="$(giftui_contract_profile_report "${REPORT_ROOT}" "${counterpart_profile}" || true)"
     if [[ -f "${counterpart_dir}/semantics/complete-suite.tsv" ]] && \
         cmp -s "${inputs_path}" "${counterpart_dir}/input-hashes.tsv"; then
         record_command cmp "${transcript}" \
