@@ -292,6 +292,11 @@ agent_contract = ROOT.join("AGENTS.md").read
 end
 
 if errors.empty?
+  graph_check = ROOT.join("scripts", "governance", "build-authority-graph.rb")
+  unless system(graph_check.to_s, "--check")
+    warn "Governance validation failed: authority graph validation failed."
+    exit 1
+  end
   puts "Governance validation passed: #{features.length} feature(s), #{artifacts.length} lifecycle artifact(s), #{REQUIRED_SKILLS.length} skill(s)."
   exit 0
 end

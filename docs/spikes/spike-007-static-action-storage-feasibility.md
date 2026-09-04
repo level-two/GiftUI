@@ -6,7 +6,7 @@ status: completed
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-08-27
+updated: 2026-09-04
 source:
   - SPEC-011
   - SPEC-012
@@ -14,7 +14,8 @@ source:
   - ADR-033
 related_future_work: []
 related_explorations: []
-related_spikes: []
+related_spikes:
+  - SPIKE-008
 promoted_to: []
 supersedes: []
 superseded_by: []

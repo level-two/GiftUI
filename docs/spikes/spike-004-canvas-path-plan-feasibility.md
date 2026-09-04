@@ -6,12 +6,13 @@ status: completed
 authors:
   - Yauheni Lychkouski
 created: 2026-08-25
-updated: 2026-08-25
+updated: 2026-09-04
 source:
   - RFC-009
 related_future_work: []
 related_explorations: []
-related_spikes: []
+related_spikes:
+  - SPIKE-008
 promoted_to: []
 supersedes: []
 superseded_by: []
