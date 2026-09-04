@@ -457,7 +457,7 @@ review without asserting the `implemented` transition.
       boundaries, exact hashes, owner mappings, and unchanged Foundation facts.
       Update task dispositions and evidence links; create the collecting
       conformance report only when implementation evidence exists.
-- [ ] `T6.2` — Audit source, package interfaces, compiled modules, linked
+- [x] `T6.2` — Audit source, package interfaces, compiled modules, linked
       products, concrete packages, and every implemented downstream consumer
       for the exact dependency graph, nominal text-resource identities, no
       re-export/standalone product, and absence of public `Text`, layout,
@@ -603,6 +603,7 @@ contract or authorize the eventual `implemented` transition.
 | `T5.4` | completed | [Pristine rebuild evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/pristine-rebuilds.md), two detached clean checkouts, eight exact standalone driver runs, 27 matching normalized artifacts, and passing registered default and `all-hardware-free` gates with cross-build-only labels |
 | `T5.5` | completed | [Resource-only timing evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/resource-only-timing.md), optimized host-executed dynamic/static measurements for 103 representative and 4,096 maximum admitted glyph lookups and payload borrows, both below 2.5 milliseconds against the 250-millisecond interval, with downstream timing claims explicitly excluded |
 | `T6.1` | completed | [Collecting conformance report](../conformance/spec-005-conformance.md), complete thirteen-criterion re-audit, current authority/status and manifest verification, exact evidence links, unchanged Foundation facts, and explicit open gates for downstream integration plus T6.2/T6.3 |
+| `T6.2` | completed with downstream blocker retained | [Final boundary audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-6/final-boundary-audit.md), exact source/interface/compiled dependency and product checks, concrete-package identity audit, complete non-goal scan, and explicit preservation of T4.4/TR-002 until governed production consumers exist |
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the

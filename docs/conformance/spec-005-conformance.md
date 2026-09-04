@@ -50,7 +50,7 @@ the MVP Signal Analyzer's deterministic text across all four configurations.
 | `TR-009` | pass | [Payload borrowing](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/payload-borrowing.md), [synchronous offer](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/synchronous-offer.md), [allocation](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-path-allocation.md) | Exact-once synchronous traversal and ended borrows pass with zero measured allocation. |
 | `TR-010` | pass | [Bounds](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/layout-capacity-and-work-bounds.md), [resource images](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-resource-images.md) | Type/table limits, zero allocation, omission, flash, RAM, and conservative stack ceilings pass. |
 | `TR-011` | blocked | [Pristine rebuilds](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/pristine-rebuilds.md), [resource timing](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/resource-only-timing.md) | Standalone commands and registered gates pass; T6.3's final clean-checkout gate remains to be recorded. No exception exists. |
-| `TR-012` | blocked | [Authority audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/authority-audit.md) | Earlier scope evidence passes; T6.2's final complete source/interface/consumer audit remains open. No exception exists. |
+| `TR-012` | pass | [Authority audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/authority-audit.md), [final boundary audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-6/final-boundary-audit.md) | Source, interface, product, concrete-package, portable Presentation, and non-goal audits pass. |
 | `TR-013` | pass | [Validated behavior](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validated-behavior.md), [owner mappings](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/owner-adapter-mappings.md) | Geometry, breaks, availability, lookup failure, and unchanged Foundation facts are complete. |
 
 ## Required-Test Results
@@ -80,7 +80,7 @@ not claimed here.
 
 No implementation divergence, failed requirement, or approved exception is
 known. TR-002 is blocked by absent downstream production consumers. TR-011
-and TR-012 remain open only for the final plan audits described above.
+remains open only for the final clean-checkout gate.
 
 ## Deferred Work Audit
 
@@ -90,7 +90,7 @@ implementation authority. No deferred item conceals required current work.
 
 ## Review Conclusion
 
-Ten criteria pass and three are currently blocked. The report does not yet
-support requesting the human `implemented` transition. T6.2 and T6.3 must
-close their evidence, while TR-002/T4.4 remains blocked until the downstream
+Eleven criteria pass and two are currently blocked. The report does not yet
+support requesting the human `implemented` transition. T6.3 must close its
+evidence, while TR-002/T4.4 remains blocked until the downstream
 governing Specifications create and integrate their production consumers.

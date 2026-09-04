@@ -283,12 +283,20 @@ tasks:
     evidence: [docs/conformance/spec-005-conformance.md]
     blockers: []
   T6.2:
-    disposition: pending
+    disposition: completed
     requirements: [TR-002, TR-012]
-    implementation: []
-    checks: []
-    profiles: []
-    evidence: []
+    implementation:
+      - Package.swift
+      - Tests/ContractFixtures/SPEC005/target-boundaries.yaml
+    checks:
+      - scripts/contracts/check-spec-005-dependencies.rb
+      - scripts/contracts/check-spec-005-boundaries.rb
+      - scripts/contracts/check-spec-005-surface.rb
+      - scripts/contracts/check-spec-005-portable-source.rb
+      - scripts/contracts/check-spec-005-reference-generation.rb
+    profiles: [macos-dynamic]
+    evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-6/final-boundary-audit.md
     blockers: []
   T6.3:
     disposition: pending
