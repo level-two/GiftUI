@@ -7,7 +7,8 @@ owners:
   - codex
 created: 2026-09-01
 updated: 2026-09-05
-related_design_notes: []
+related_design_notes:
+  - ../implementation-designs/spec-006-bounded-semantic-expansion.md
 conformance_report: null
 related_future_work:
   - FW-017
@@ -259,7 +260,7 @@ local values, lifecycle, detection order, and publish/discard behavior.
       depth-first left-to-right order, exactly-once active body evaluation,
       structural-only wrappers, node-before-action reservation, and modifiers
       after content in increasing scope-local chain order.
-- [ ] `T2.4` — After the exact API compiles, decide whether the bounded path,
+- [x] `T2.4` — After the exact API compiles, decide whether the bounded path,
       identity, staged-record, and workspace realization is difficult to
       reconstruct from local code. If so, create
       `docs/implementation-designs/spec-006-bounded-semantic-expansion.md`
@@ -672,4 +673,12 @@ action ordering, increasing scope-local modifier indices, first-failure stop,
 discard, and idle reset; see the
 [atomic traversal evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-2/atomic-traversal.md).
 The stateful category remains fail-closed without body access until the
-SPEC-010-owned decorator is integrated in Milestone 5. `T2.4` is next.
+SPEC-010-owned decorator is integrated in Milestone 5.
+
+`T2.4` is complete: the bounded coordinator, caller-owned profile seams,
+parent-identity restoration, category validation, scope-local modifier index,
+and rollback lifecycle warrant maintained explanation. The current
+[bounded semantic expansion design](../implementation-designs/spec-006-bounded-semantic-expansion.md)
+documents only that replaceable internal realization and introduces no new
+identity, public/package API, capacity, failure, profile, or module contract.
+Milestone 2 is complete; `T3.1` is next.

@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-09-04
+updated: 2026-09-05
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -1160,6 +1160,7 @@ the separately gated post-MVP declarative-extensibility cluster.
 ## References
 
 - [SPEC-006 Implementation Plan](../implementation-plans/spec-006-implementation-plan.md)
+- [Bounded Semantic Expansion Implementation Design](../implementation-designs/spec-006-bounded-semantic-expansion.md)
 - [PROPOSAL-003: GiftUI MVP Architecture Establishment](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
 - [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-004: Run Cycle and Frame Transaction Architecture](../rfcs/rfc-004-run-cycle-and-frame-transaction.md)
