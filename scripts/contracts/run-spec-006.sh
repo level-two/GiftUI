@@ -7,6 +7,7 @@ PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
 FIXTURE_ROOT="${PROJECT_ROOT}/Tests/ContractFixtures/SPEC006"
 FOUNDATION_SOURCE="${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
 DECLARATION_SOURCE="${PROJECT_ROOT}/Sources/GiftUI/DeclarativeView.swift"
+OBSERVABLE_SOURCE="${PROJECT_ROOT}/Sources/GiftUI/ObservableState.swift"
 SEMANTIC_SOURCE="${PROJECT_ROOT}/Sources/GiftUISemanticCore/GiftUISemanticCore.swift"
 GENERATED_ROOT="${PROJECT_ROOT}/.build/contract-generated/spec-006"
 REPORT_ROOT="${PROJECT_ROOT}/.build/contract-reports/spec-006"
@@ -55,6 +56,7 @@ declared_inputs() {
         printf '%s\n' \
             "${FOUNDATION_SOURCE}" \
             "${DECLARATION_SOURCE}" \
+            "${OBSERVABLE_SOURCE}" \
             "${SEMANTIC_SOURCE}" \
             "${PROJECT_ROOT}/Package.swift" \
             "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
@@ -277,7 +279,7 @@ run_macos() {
     printf 'sdk_path=%s\n' "${sdk}" >>"${metadata_path}"
     printf 'optimization=-O -whole-module-optimization\n' >>"${metadata_path}"
     local -a flags=(-target arm64-apple-macosx26.0 -sdk "${sdk}" -O -whole-module-optimization "${profile_flag}" -language-mode 6 -package-name GiftUI)
-    local -a foundation=("${compiler}" "${flags[@]}" -parse-as-library -emit-module -module-name GiftUI "${FOUNDATION_SOURCE}" "${DECLARATION_SOURCE}" -emit-module-path "${module_dir}/GiftUI.swiftmodule")
+    local -a foundation=("${compiler}" "${flags[@]}" -parse-as-library -emit-module -module-name GiftUI "${FOUNDATION_SOURCE}" "${DECLARATION_SOURCE}" "${OBSERVABLE_SOURCE}" -emit-module-path "${module_dir}/GiftUI.swiftmodule")
     record_command "${foundation[@]}"
     "${foundation[@]}" >>"${log_path}" 2>&1
     local -a semantic=("${compiler}" "${flags[@]}" -parse-as-library -emit-module -emit-library -module-name GiftUISemanticCore -I "${module_dir}" "${SEMANTIC_SOURCE}" -emit-module-path "${module_dir}/GiftUISemanticCore.swiftmodule")
@@ -292,7 +294,7 @@ run_macos() {
     local wrapper_sil="${report_dir}/build/giftui-wrappers.sil"
     local wrapper_sil_report="${report_dir}/semantics/wrapper-sil-audit.txt"
     mkdir -p "${report_dir}/semantics"
-    local -a wrapper_sil_command=("${compiler}" "${flags[@]}" -parse-as-library -emit-sil -module-name GiftUI "${FOUNDATION_SOURCE}" "${DECLARATION_SOURCE}" -o "${wrapper_sil}")
+    local -a wrapper_sil_command=("${compiler}" "${flags[@]}" -parse-as-library -emit-sil -module-name GiftUI "${FOUNDATION_SOURCE}" "${DECLARATION_SOURCE}" "${OBSERVABLE_SOURCE}" -o "${wrapper_sil}")
     record_command "${wrapper_sil_command[@]}"
     "${wrapper_sil_command[@]}" >>"${log_path}" 2>&1
     record_command "${SCRIPT_DIR}/check-spec-006-wrapper-sil.rb" "${wrapper_sil}" "${wrapper_sil_report}"
@@ -343,7 +345,7 @@ run_nrf52840() {
     module_dir="${report_dir}/build/modules"
     mkdir -p "${module_dir}"
     local -a flags=(-target "${GIFTUI_NRF_SWIFT_TARGET}" -enable-experimental-feature Embedded -Osize -whole-module-optimization -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16 -package-name GiftUI)
-    local -a foundation=("${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -parse-as-library -emit-module -module-name GiftUI "${FOUNDATION_SOURCE}" "${DECLARATION_SOURCE}" -emit-module-path "${module_dir}/GiftUI.swiftmodule")
+    local -a foundation=("${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -parse-as-library -emit-module -module-name GiftUI "${FOUNDATION_SOURCE}" "${DECLARATION_SOURCE}" "${OBSERVABLE_SOURCE}" -emit-module-path "${module_dir}/GiftUI.swiftmodule")
     record_command "${foundation[@]}"
     "${foundation[@]}" >>"${log_path}" 2>&1
     local -a semantic=("${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -parse-as-library -emit-module -module-name GiftUISemanticCore -I "${module_dir}" "${SEMANTIC_SOURCE}" -emit-module-path "${module_dir}/GiftUISemanticCore.swiftmodule")
