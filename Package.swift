@@ -71,7 +71,7 @@ let package = Package(
         ),
         .testTarget(
             name: "GiftUISemanticCoreTests",
-            dependencies: ["GiftUISemanticCore"]
+            dependencies: ["GiftUI", "GiftUISemanticCore"]
         ),
         .testTarget(
             name: "GiftUITextResourcesTests",

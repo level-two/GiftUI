@@ -42,6 +42,7 @@ targets:
   GiftUISemanticCoreTests:
     type: test
     dependencies:
+      - GiftUI
       - GiftUISemanticCore
   GiftUITextResources:
     type: regular
