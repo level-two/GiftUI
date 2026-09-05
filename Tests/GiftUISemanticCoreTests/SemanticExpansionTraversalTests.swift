@@ -410,6 +410,7 @@ private struct TraversalEvent: Equatable {
 
 private struct TraversalSink: SemanticExpansionSink {
     let maximumStructuralOccurrences: UInt16 = 64
+    let maximumBodyEvaluations: UInt16 = 64
     let maximumSemanticOccurrences: UInt16 = 64
     let maximumModifierApplications: UInt16 = 64
     let maximumActionOccurrences: UInt16 = 64
@@ -431,6 +432,12 @@ private struct TraversalSink: SemanticExpansionSink {
         stagedEvents.append(
             TraversalEvent(identity: storedIdentity, kind: .structural, modifierIndex: nil)
         )
+        return true
+    }
+
+    mutating func stageBodyEvaluation(
+        identity: borrowing TraversalIdentity
+    ) -> Bool {
         return true
     }
 

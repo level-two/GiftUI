@@ -108,6 +108,7 @@ package protocol SemanticExpansionSink {
     associatedtype Identity: Equatable
 
     var maximumStructuralOccurrences: UInt16 { get }
+    var maximumBodyEvaluations: UInt16 { get }
     var maximumSemanticOccurrences: UInt16 { get }
     var maximumModifierApplications: UInt16 { get }
     var maximumActionOccurrences: UInt16 { get }
@@ -115,6 +116,10 @@ package protocol SemanticExpansionSink {
     mutating func beginExpansion() -> Bool
 
     mutating func stageStructuralOccurrence(
+        identity: borrowing Identity
+    ) -> Bool
+
+    mutating func stageBodyEvaluation(
         identity: borrowing Identity
     ) -> Bool
 
@@ -143,6 +148,246 @@ package protocol SemanticExpansionSink {
     mutating func resetExpansion()
 }
 
+package struct SemanticRecordingRole: RawRepresentable, Equatable, Sendable {
+    package let rawValue: UInt16
+
+    package init(rawValue: UInt16) {
+        self.rawValue = rawValue
+    }
+}
+
+package enum SemanticRecordingPathComponent: Equatable, Sendable {
+    case root
+    case customBody
+    case fixedChild(UInt8)
+    case conditionalBranch(UInt8)
+    case optionalPresence
+    case declarationRole(SemanticRecordingRole)
+}
+
+package protocol SemanticRecordingIdentity: Equatable, Sendable {
+    var componentCount: UInt16 { get }
+    var declarationRole: SemanticRecordingRole { get }
+
+    func component(at index: UInt16) -> SemanticRecordingPathComponent?
+}
+
+package enum SemanticRecordingEvent<Identity>: Equatable, Sendable
+where Identity: SemanticRecordingIdentity {
+    case enterStructuralOccurrence(
+        path: Identity,
+        declarationRole: SemanticRecordingRole
+    )
+    case evaluateCustomBody(
+        path: Identity,
+        declarationRole: SemanticRecordingRole
+    )
+    case stageSemanticOccurrence(
+        path: Identity,
+        declarationRole: SemanticRecordingRole
+    )
+    case applyModifier(
+        path: Identity,
+        modifierRole: SemanticRecordingRole,
+        chainIndex: UInt16
+    )
+    case associateAction(
+        path: Identity,
+        actionRole: SemanticRecordingRole
+    )
+}
+
+package protocol SemanticRecordingStorage {
+    associatedtype Identity: SemanticRecordingIdentity
+
+    var maximumStructuralOccurrences: UInt16 { get }
+    var maximumBodyEvaluations: UInt16 { get }
+    var maximumSemanticOccurrences: UInt16 { get }
+    var maximumModifierApplications: UInt16 { get }
+    var maximumActionOccurrences: UInt16 { get }
+
+    mutating func beginRecording() -> Bool
+    mutating func stage(_ event: borrowing SemanticRecordingEvent<Identity>) -> Bool
+    mutating func publishRecording(_ summary: SemanticExpansionSummary) -> Bool
+    mutating func discardRecording()
+    mutating func resetRecording()
+}
+
+package struct SemanticRecordingSink<Storage>: SemanticExpansionSink
+where Storage: SemanticRecordingStorage {
+    package var storage: Storage
+
+    private var bodyEvaluationCount: UInt16 = 0
+    private var semanticNodeCount: UInt16 = 0
+    private var modifierApplicationCount: UInt16 = 0
+    private var actionOccurrenceCount: UInt16 = 0
+    private var maximumObservedDepth: UInt16 = 0
+
+    package init(storage: Storage) {
+        self.storage = storage
+    }
+
+    package var maximumStructuralOccurrences: UInt16 {
+        storage.maximumStructuralOccurrences
+    }
+
+    package var maximumBodyEvaluations: UInt16 {
+        storage.maximumBodyEvaluations
+    }
+
+    package var maximumSemanticOccurrences: UInt16 {
+        storage.maximumSemanticOccurrences
+    }
+
+    package var maximumModifierApplications: UInt16 {
+        storage.maximumModifierApplications
+    }
+
+    package var maximumActionOccurrences: UInt16 {
+        storage.maximumActionOccurrences
+    }
+
+    package mutating func beginExpansion() -> Bool {
+        bodyEvaluationCount = 0
+        semanticNodeCount = 0
+        modifierApplicationCount = 0
+        actionOccurrenceCount = 0
+        maximumObservedDepth = 0
+        return storage.beginRecording()
+    }
+
+    package mutating func stageStructuralOccurrence(
+        identity: borrowing Storage.Identity
+    ) -> Bool {
+        guard observeDepth(identity.componentCount) else { return false }
+        let event = SemanticRecordingEvent.enterStructuralOccurrence(
+            path: copy identity,
+            declarationRole: identity.declarationRole
+        )
+        return storage.stage(event)
+    }
+
+    package mutating func stageBodyEvaluation(
+        identity: borrowing Storage.Identity
+    ) -> Bool {
+        guard
+            let next = incremented(bodyEvaluationCount),
+            observeDepth(identity.componentCount)
+        else { return false }
+        let event = SemanticRecordingEvent.evaluateCustomBody(
+            path: copy identity,
+            declarationRole: identity.declarationRole
+        )
+        guard storage.stage(event) else { return false }
+        bodyEvaluationCount = next
+        return true
+    }
+
+    package mutating func stageSemanticOccurrence<
+        Payload: _GiftUISemanticPrimitivePayload
+    >(
+        identity: borrowing Storage.Identity,
+        payload: borrowing Payload
+    ) -> Bool {
+        guard
+            let next = incremented(semanticNodeCount),
+            observeDepth(identity.componentCount)
+        else { return false }
+        let event = SemanticRecordingEvent.stageSemanticOccurrence(
+            path: copy identity,
+            declarationRole: identity.declarationRole
+        )
+        guard storage.stage(event) else { return false }
+        semanticNodeCount = next
+        return true
+    }
+
+    package mutating func stageModifierApplication<
+        Payload: _GiftUISemanticModifierPayload
+    >(
+        identity: borrowing Storage.Identity,
+        payload: borrowing Payload,
+        chainIndex: UInt16
+    ) -> Bool {
+        guard
+            let next = incremented(modifierApplicationCount),
+            observeDepth(identity.componentCount)
+        else { return false }
+        let event = SemanticRecordingEvent.applyModifier(
+            path: copy identity,
+            modifierRole: identity.declarationRole,
+            chainIndex: chainIndex
+        )
+        guard storage.stage(event) else { return false }
+        modifierApplicationCount = next
+        return true
+    }
+
+    package mutating func stageActionOccurrence<Action: GiftUIAction>(
+        identity: borrowing Storage.Identity,
+        action: borrowing Action
+    ) -> Bool {
+        guard
+            let nextSemanticNode = incremented(semanticNodeCount),
+            let nextAction = incremented(actionOccurrenceCount),
+            observeDepth(identity.componentCount)
+        else { return false }
+
+        let semanticEvent = SemanticRecordingEvent.stageSemanticOccurrence(
+            path: copy identity,
+            declarationRole: identity.declarationRole
+        )
+        guard storage.stage(semanticEvent) else { return false }
+        semanticNodeCount = nextSemanticNode
+
+        let actionEvent = SemanticRecordingEvent.associateAction(
+            path: copy identity,
+            actionRole: identity.declarationRole
+        )
+        guard storage.stage(actionEvent) else { return false }
+        actionOccurrenceCount = nextAction
+        return true
+    }
+
+    package mutating func publishExpansion(_ summary: SemanticExpansionSummary) -> Bool {
+        guard
+            summary.semanticNodeCount == semanticNodeCount,
+            summary.bodyEvaluationCount == bodyEvaluationCount,
+            summary.modifierApplicationCount == modifierApplicationCount,
+            summary.actionOccurrenceCount == actionOccurrenceCount,
+            summary.maximumObservedDepth == maximumObservedDepth
+        else { return false }
+        return storage.publishRecording(summary)
+    }
+
+    package mutating func discardExpansion() {
+        storage.discardRecording()
+    }
+
+    package mutating func resetExpansion() {
+        storage.resetRecording()
+        bodyEvaluationCount = 0
+        semanticNodeCount = 0
+        modifierApplicationCount = 0
+        actionOccurrenceCount = 0
+        maximumObservedDepth = 0
+    }
+
+    private mutating func observeDepth(_ depth: UInt16) -> Bool {
+        guard depth > 0 else { return false }
+        if depth > maximumObservedDepth {
+            maximumObservedDepth = depth
+        }
+        return true
+    }
+
+    private func incremented(_ value: UInt16) -> UInt16? {
+        let next = value.addingReportingOverflow(1)
+        guard !next.overflow else { return nil }
+        return next.partialValue
+    }
+}
+
 struct SemanticExpansionAttempt {
     let limits: SemanticExpansionLimits
 
@@ -158,6 +403,7 @@ struct SemanticExpansionAttempt {
     private var workspacePathCapacity: UInt16 = 0
     private var workspaceIdentityCapacity: UInt16 = 0
     private var sinkStructuralCapacity: UInt16 = 0
+    private var sinkBodyCapacity: UInt16 = 0
     private var sinkSemanticCapacity: UInt16 = 0
     private var sinkModifierCapacity: UInt16 = 0
     private var sinkActionCapacity: UInt16 = 0
@@ -183,6 +429,7 @@ struct SemanticExpansionAttempt {
         workspacePathCapacity = workspace.maximumPathComponents
         workspaceIdentityCapacity = workspace.maximumIdentities
         sinkStructuralCapacity = sink.maximumStructuralOccurrences
+        sinkBodyCapacity = sink.maximumBodyEvaluations
         sinkSemanticCapacity = sink.maximumSemanticOccurrences
         sinkModifierCapacity = sink.maximumModifierApplications
         sinkActionCapacity = sink.maximumActionOccurrences
@@ -279,6 +526,28 @@ struct SemanticExpansionAttempt {
             return record(.capacityExhausted)
         }
         bodyEvaluationCount = next
+        return nil
+    }
+
+    mutating func stageBodyEvaluation<Workspace, Sink>(
+        identity: borrowing Workspace.Identity,
+        workspace: inout Workspace,
+        sink: inout Sink
+    ) -> SemanticExpansionError?
+    where
+        Workspace: SemanticExpansionWorkspace,
+        Sink: SemanticExpansionSink,
+        Workspace.Identity == Sink.Identity
+    {
+        if let error = reserveBodyEvaluation() {
+            return error
+        }
+        guard bodyEvaluationCount <= sinkBodyCapacity else {
+            return record(.capacityExhausted)
+        }
+        guard sink.stageBodyEvaluation(identity: identity) else {
+            return record(.invariantViolation)
+        }
         return nil
     }
 
@@ -609,7 +878,11 @@ where
         }
         currentIdentity = bodyIdentity
 
-        if let error = attempt.reserveBodyEvaluation() {
+        if let error = attempt.stageBodyEvaluation(
+            identity: bodyIdentity,
+            workspace: &workspace,
+            sink: &sink
+        ) {
             stop(error)
             return
         }

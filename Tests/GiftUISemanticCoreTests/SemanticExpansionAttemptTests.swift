@@ -521,6 +521,7 @@ private struct AttemptProbeWorkspace: SemanticExpansionWorkspace {
 
 private struct AttemptProbeSink: SemanticExpansionSink {
     let maximumStructuralOccurrences: UInt16
+    let maximumBodyEvaluations: UInt16
     let maximumSemanticOccurrences: UInt16
     let maximumModifierApplications: UInt16
     let maximumActionOccurrences: UInt16
@@ -532,6 +533,7 @@ private struct AttemptProbeSink: SemanticExpansionSink {
 
     init(
         maximumStructuralOccurrences: UInt16 = 8,
+        maximumBodyEvaluations: UInt16 = 8,
         maximumSemanticOccurrences: UInt16 = 8,
         maximumModifierApplications: UInt16 = 8,
         maximumActionOccurrences: UInt16 = 8,
@@ -540,6 +542,7 @@ private struct AttemptProbeSink: SemanticExpansionSink {
         acceptPublish: Bool = true
     ) {
         self.maximumStructuralOccurrences = maximumStructuralOccurrences
+        self.maximumBodyEvaluations = maximumBodyEvaluations
         self.maximumSemanticOccurrences = maximumSemanticOccurrences
         self.maximumModifierApplications = maximumModifierApplications
         self.maximumActionOccurrences = maximumActionOccurrences
@@ -557,6 +560,12 @@ private struct AttemptProbeSink: SemanticExpansionSink {
         identity: borrowing AttemptProbeIdentity
     ) -> Bool {
         events.append(.structural)
+        return true
+    }
+
+    mutating func stageBodyEvaluation(
+        identity: borrowing AttemptProbeIdentity
+    ) -> Bool {
         return true
     }
 

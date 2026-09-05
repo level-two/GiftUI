@@ -134,8 +134,8 @@ Each `View` witness must call exactly one visitor category. A per-declaration
 flag detects zero or multiple category calls before success; this is a
 framework invariant check, not a client extension mechanism.
 
-Custom views enter `customBody`, reserve one body evaluation, and call the
-nonescaping accessor once. Fixed groups visit children by increasing `UInt8`
+Custom views enter `customBody`, reserve and stage one body-evaluation event,
+and call the nonescaping accessor once. Fixed groups visit children by increasing `UInt8`
 index. Conditional and optional wrappers enter only selected or present paths.
 Primitives stage their typed payload. Action primitives stage their borrowed
 bounded action value after semantic-node admission.
@@ -204,9 +204,11 @@ reporting, first-failure stability, and reuse.
 `SemanticExpansionTraversalTests` use symbolic fixture identities and an
 attempted-versus-committed sink to observe order, counters, maximum depth,
 active/inactive body access, action staging, modifier indices, and atomic
-failure. The canonical recording vocabulary, identity-relation corpus,
-cross-profile comparison, allocation instrumentation, and owner failure
-mapping remain assigned to Milestones 3, 4, and 6.
+failure. `SemanticRecordingSinkTests` exercise the package-only canonical event
+vocabulary, component-addressable paths, summary cross-check, and atomic
+recording publication. The complete declaration and identity-relation corpora,
+cross-profile comparison, allocation instrumentation, and owner failure mapping
+remain assigned to later Milestones 3, 4, and 6 tasks.
 
 Diagnostics do not participate in this mechanism. The later test-only owner
 adapter may observe the closed result only after Semantic Core returns.

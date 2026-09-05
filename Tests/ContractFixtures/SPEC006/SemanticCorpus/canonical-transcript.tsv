@@ -1,1 +1,2 @@
 # case_id	event_index	path	event_kind	role	chain_index
+empty-root	0	root/declaration-role(empty)	enter-structural-occurrence	empty	-

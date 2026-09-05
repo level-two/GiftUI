@@ -146,6 +146,7 @@ private struct EntryProbeWorkspace: SemanticExpansionWorkspace {
 
 private struct EntryProbeSink: SemanticExpansionSink {
     let maximumStructuralOccurrences: UInt16 = 1
+    let maximumBodyEvaluations: UInt16 = 1
     let maximumSemanticOccurrences: UInt16 = 1
     let maximumModifierApplications: UInt16 = 1
     let maximumActionOccurrences: UInt16 = 1
@@ -157,6 +158,10 @@ private struct EntryProbeSink: SemanticExpansionSink {
     }
 
     mutating func stageStructuralOccurrence(
+        identity: borrowing EntryProbeIdentity
+    ) -> Bool { true }
+
+    mutating func stageBodyEvaluation(
         identity: borrowing EntryProbeIdentity
     ) -> Bool { true }
 

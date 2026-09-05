@@ -1,1 +1,2 @@
 # id	declaration_shape	inputs	expected_result	evidence_class
+empty-root	empty	-	success	host

@@ -279,7 +279,7 @@ production strings or metatype-address identities.
 canonical transcript, summaries, identity relations, modifiers, and action
 associations without layout, rendering, a backend, or connected hardware.
 
-- [ ] `T3.1` — Implement the package recording sink and exact closed event
+- [x] `T3.1` — Implement the package recording sink and exact closed event
       vocabulary with canonical path components. Publish transcript events
       only on success, keep an explicitly test-only attempted-event probe for
       failure detection points, and cross-check all summary counts and maximum
@@ -682,3 +682,13 @@ and rollback lifecycle warrant maintained explanation. The current
 documents only that replaceable internal realization and introduces no new
 identity, public/package API, capacity, failure, profile, or module contract.
 Milestone 2 is complete; `T3.1` is next.
+
+`T3.1` is complete: the generic package recording sink stages the exact closed
+event vocabulary over component-addressable canonical identities, cross-checks
+all counted event classes and maximum depth before publication, and delegates
+atomic commit/discard/reset to caller-owned storage. Focused tests preserve a
+test-only attempted-event log without exposing failed staging as current,
+reject summary mismatch, and prove the checked-in `empty-root` corpus row has
+one structural event, zero counted events, and depth two; see the
+[recording oracle evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-3/recording-oracle.md).
+`T3.2` is next.
