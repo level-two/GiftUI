@@ -369,7 +369,7 @@ pause this milestone for Specification review.
 path, binds one mutable transient copy before its sole body access, and leaves
 no semantic publication when binding fails.
 
-- [ ] `T5.1` — Compile an ordinary external custom view and a macro-expanded
+- [x] `T5.1` — Compile an ordinary external custom view and a macro-expanded
       `@ObservableStateHost` view side by side. Prove only the generated witness
       calls `visitStatefulCustomView`, the ordinary default still calls
       `visitCustomView`, and application code hand-authors neither witness.
@@ -769,5 +769,13 @@ saturated, dropped, and failed diagnostic variants leave the local result,
 transcript, counts, and primary fact unchanged. The harness also rejects any
 Failure Core import from Semantic Core; see the
 [owner mapping evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-4/owner-mapping.md).
-Milestone 4 is complete. Milestone 5 remains gated by the SPEC-010 macro-owned
-witness; `T6.1` is the next currently unblocked task.
+Milestone 4 is complete.
+
+`T5.1` is complete: the separate `GiftUITests` client module imports only
+`GiftUI` and compiles an ordinary custom view beside an
+`@ObservableStateHost` view. Focused execution proves the ordinary default
+witness selects `visitCustomView`, the generated witness selects only
+`visitStatefulCustomView` with its borrowed declaration, and neither fixture
+hand-authors a traversal witness; see the
+[generated stateful routing evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-5/generated-stateful-routing.md).
+`T5.2` remains gated on the SPEC-010-owned state-aware binding decorator.

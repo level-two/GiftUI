@@ -1,6 +1,5 @@
+import GiftUI
 import XCTest
-
-@testable import GiftUI
 
 final class DeclarativeViewTests: XCTestCase {
     func testActionCasesUseTheirExactUInt16Codes() {
