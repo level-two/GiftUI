@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-01
-updated: 2026-09-04
+updated: 2026-09-05
 related_design_notes: []
 conformance_report: null
 related_future_work:
@@ -247,7 +247,7 @@ local values, lifecycle, detection order, and publish/discard behavior.
       operations required by SPEC-006, including complete finite-capacity
       reporting before the attempt, without importing failure or runtime
       implementations.
-- [ ] `T2.2` — Implement checked fixed-width counters, active-workspace guard,
+- [x] `T2.2` — Implement checked fixed-width counters, active-workspace guard,
       path-depth reservation, identity validation, declared-operation
       reservation, storage reservation, and first-failure propagation in the
       exact normative order. Ensure begin, stage, publish-once, discard-all,
@@ -652,4 +652,13 @@ workspace/sink protocols, complete finite-capacity reporting, and the sole
 generic borrowed-root expansion entry. The entry rejects same-workspace
 reentrancy and otherwise remains fail-closed until T2.2 installs its lifecycle
 and T2.3 installs traversal; no partial behavior is reported as success.
-`T2.2` is next.
+
+`T2.2` is complete: the fixed-width attempt coordinator snapshots finite
+capacities, enforces depth/path/identity/count/storage/hook ordering, preserves
+the first local failure, publishes once only after staged completion, and
+discards and resets caller-owned collaborators on every failure path. Focused
+tests cover overflow-before-wrap, falsely advertised capacity, begin/publish
+failure, later-work suppression, atomicity, and clean workspace reuse; see the
+[attempt lifecycle evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-2/attempt-lifecycle.md).
+The generic entry remains deliberately fail-closed after this lifecycle until
+`T2.3` installs the traversal visitor; `T2.3` is next.

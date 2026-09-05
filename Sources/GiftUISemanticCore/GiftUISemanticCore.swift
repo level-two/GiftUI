@@ -143,6 +143,390 @@ package protocol SemanticExpansionSink {
     mutating func resetExpansion()
 }
 
+struct SemanticExpansionAttempt {
+    let limits: SemanticExpansionLimits
+
+    private(set) var semanticNodeCount: UInt16 = 0
+    private(set) var bodyEvaluationCount: UInt16 = 0
+    private(set) var modifierApplicationCount: UInt16 = 0
+    private(set) var actionOccurrenceCount: UInt16 = 0
+    private(set) var maximumObservedDepth: UInt16 = 0
+
+    private var currentDepth: UInt16 = 0
+    private var identityCount: UInt16 = 0
+    private var structuralOccurrenceCount: UInt16 = 0
+    private var workspacePathCapacity: UInt16 = 0
+    private var workspaceIdentityCapacity: UInt16 = 0
+    private var sinkStructuralCapacity: UInt16 = 0
+    private var sinkSemanticCapacity: UInt16 = 0
+    private var sinkModifierCapacity: UInt16 = 0
+    private var sinkActionCapacity: UInt16 = 0
+    private var workspaceBegan = false
+    private var sinkBegan = false
+    private var firstFailure: SemanticExpansionError?
+
+    init(limits: SemanticExpansionLimits) {
+        self.limits = limits
+    }
+
+    mutating func begin<Workspace: SemanticExpansionWorkspace, Sink: SemanticExpansionSink>(
+        workspace: inout Workspace,
+        sink: inout Sink
+    ) -> SemanticExpansionError? where Workspace.Identity == Sink.Identity {
+        guard firstFailure == nil, !workspaceBegan, !sinkBegan else {
+            return record(.invariantViolation)
+        }
+        guard !workspace.isExpanding else {
+            return record(.reentrancyViolation)
+        }
+
+        workspacePathCapacity = workspace.maximumPathComponents
+        workspaceIdentityCapacity = workspace.maximumIdentities
+        sinkStructuralCapacity = sink.maximumStructuralOccurrences
+        sinkSemanticCapacity = sink.maximumSemanticOccurrences
+        sinkModifierCapacity = sink.maximumModifierApplications
+        sinkActionCapacity = sink.maximumActionOccurrences
+
+        guard workspace.beginExpansion() else {
+            return record(.invariantViolation)
+        }
+        workspaceBegan = true
+
+        guard sink.beginExpansion() else {
+            return fail(.invariantViolation, workspace: &workspace, sink: &sink)
+        }
+        sinkBegan = true
+        return nil
+    }
+
+    mutating func enterRoot<Declaration: View, Workspace: SemanticExpansionWorkspace>(
+        _ declaration: Declaration.Type,
+        workspace: inout Workspace,
+        identity: inout Workspace.Identity?
+    ) -> SemanticExpansionError? {
+        enterPath(workspace: &workspace, identity: &identity) {
+            $0.enterRoot(declaration, identity: &$1)
+        }
+    }
+
+    mutating func enterCustomBody<Declaration: View, Workspace: SemanticExpansionWorkspace>(
+        _ declaration: Declaration.Type,
+        workspace: inout Workspace,
+        identity: inout Workspace.Identity?
+    ) -> SemanticExpansionError? {
+        enterPath(workspace: &workspace, identity: &identity) {
+            $0.enterCustomBody(declaration, identity: &$1)
+        }
+    }
+
+    mutating func enterFixedChild<Workspace: SemanticExpansionWorkspace>(
+        _ index: UInt8,
+        workspace: inout Workspace,
+        identity: inout Workspace.Identity?
+    ) -> SemanticExpansionError? {
+        enterPath(workspace: &workspace, identity: &identity) {
+            $0.enterFixedChild(index, identity: &$1)
+        }
+    }
+
+    mutating func enterConditionalBranch<Workspace: SemanticExpansionWorkspace>(
+        _ index: UInt8,
+        workspace: inout Workspace,
+        identity: inout Workspace.Identity?
+    ) -> SemanticExpansionError? {
+        enterPath(workspace: &workspace, identity: &identity) {
+            $0.enterConditionalBranch(index, identity: &$1)
+        }
+    }
+
+    mutating func enterOptionalPresence<Workspace: SemanticExpansionWorkspace>(
+        workspace: inout Workspace,
+        identity: inout Workspace.Identity?
+    ) -> SemanticExpansionError? {
+        enterPath(workspace: &workspace, identity: &identity) {
+            $0.enterOptionalPresence(identity: &$1)
+        }
+    }
+
+    mutating func enterDeclarationRole<Declaration, Workspace: SemanticExpansionWorkspace>(
+        _ declaration: Declaration.Type,
+        workspace: inout Workspace,
+        identity: inout Workspace.Identity?
+    ) -> SemanticExpansionError? {
+        enterPath(workspace: &workspace, identity: &identity) {
+            $0.enterDeclarationRole(declaration, identity: &$1)
+        }
+    }
+
+    mutating func leavePathComponent<Workspace: SemanticExpansionWorkspace>(
+        workspace: inout Workspace
+    ) -> SemanticExpansionError? {
+        guard firstFailure == nil else { return firstFailure }
+        guard currentDepth > 0 else { return record(.invariantViolation) }
+        workspace.leavePathComponent()
+        currentDepth -= 1
+        return nil
+    }
+
+    mutating func reserveBodyEvaluation() -> SemanticExpansionError? {
+        guard firstFailure == nil else { return firstFailure }
+        guard
+            let next = reservedValue(
+                after: bodyEvaluationCount,
+                limit: limits.maximumBodyEvaluations
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        bodyEvaluationCount = next
+        return nil
+    }
+
+    mutating func stageStructuralOccurrence<Workspace, Sink>(
+        identity: borrowing Workspace.Identity,
+        workspace: inout Workspace,
+        sink: inout Sink
+    ) -> SemanticExpansionError?
+    where
+        Workspace: SemanticExpansionWorkspace,
+        Sink: SemanticExpansionSink,
+        Workspace.Identity == Sink.Identity
+    {
+        guard firstFailure == nil else { return firstFailure }
+        guard
+            let next = reservedValue(
+                after: structuralOccurrenceCount,
+                limit: sinkStructuralCapacity
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        structuralOccurrenceCount = next
+        guard sink.stageStructuralOccurrence(identity: identity) else {
+            return record(.invariantViolation)
+        }
+        return nil
+    }
+
+    mutating func stageSemanticOccurrence<Payload, Workspace, Sink>(
+        identity: borrowing Workspace.Identity,
+        payload: borrowing Payload,
+        workspace: inout Workspace,
+        sink: inout Sink
+    ) -> SemanticExpansionError?
+    where
+        Payload: _GiftUISemanticPrimitivePayload,
+        Workspace: SemanticExpansionWorkspace,
+        Sink: SemanticExpansionSink,
+        Workspace.Identity == Sink.Identity
+    {
+        guard firstFailure == nil else { return firstFailure }
+        guard
+            let next = reservedValue(
+                after: semanticNodeCount,
+                limit: limits.maximumSemanticNodes
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        semanticNodeCount = next
+        guard semanticNodeCount <= sinkSemanticCapacity else {
+            return record(.capacityExhausted)
+        }
+        guard sink.stageSemanticOccurrence(identity: identity, payload: payload) else {
+            return record(.invariantViolation)
+        }
+        return nil
+    }
+
+    mutating func stageModifierApplication<Payload, Workspace, Sink>(
+        identity: borrowing Workspace.Identity,
+        payload: borrowing Payload,
+        chainIndex: UInt16,
+        workspace: inout Workspace,
+        sink: inout Sink
+    ) -> SemanticExpansionError?
+    where
+        Payload: _GiftUISemanticModifierPayload,
+        Workspace: SemanticExpansionWorkspace,
+        Sink: SemanticExpansionSink,
+        Workspace.Identity == Sink.Identity
+    {
+        guard firstFailure == nil else { return firstFailure }
+        guard
+            let next = reservedValue(
+                after: modifierApplicationCount,
+                limit: limits.maximumModifierApplications
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        modifierApplicationCount = next
+        guard modifierApplicationCount <= sinkModifierCapacity else {
+            return record(.capacityExhausted)
+        }
+        guard
+            sink.stageModifierApplication(
+                identity: identity,
+                payload: payload,
+                chainIndex: chainIndex
+            )
+        else {
+            return record(.invariantViolation)
+        }
+        return nil
+    }
+
+    mutating func stageActionOccurrence<Action, Workspace, Sink>(
+        identity: borrowing Workspace.Identity,
+        action: borrowing Action,
+        workspace: inout Workspace,
+        sink: inout Sink
+    ) -> SemanticExpansionError?
+    where
+        Action: GiftUIAction,
+        Workspace: SemanticExpansionWorkspace,
+        Sink: SemanticExpansionSink,
+        Workspace.Identity == Sink.Identity
+    {
+        guard firstFailure == nil else { return firstFailure }
+        guard
+            let next = reservedValue(
+                after: actionOccurrenceCount,
+                limit: limits.maximumActionOccurrences
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        actionOccurrenceCount = next
+        guard actionOccurrenceCount <= sinkActionCapacity else {
+            return record(.capacityExhausted)
+        }
+        guard sink.stageActionOccurrence(identity: identity, action: action) else {
+            return record(.invariantViolation)
+        }
+        return nil
+    }
+
+    mutating func succeed<Workspace, Sink>(
+        workspace: inout Workspace,
+        sink: inout Sink
+    ) -> SemanticExpansionResult
+    where
+        Workspace: SemanticExpansionWorkspace,
+        Sink: SemanticExpansionSink,
+        Workspace.Identity == Sink.Identity
+    {
+        if let firstFailure {
+            return .failure(fail(firstFailure, workspace: &workspace, sink: &sink))
+        }
+        guard workspaceBegan, sinkBegan, currentDepth == 0, maximumObservedDepth > 0 else {
+            return .failure(
+                fail(.invariantViolation, workspace: &workspace, sink: &sink)
+            )
+        }
+
+        let summary = SemanticExpansionSummary(
+            semanticNodeCount: semanticNodeCount,
+            bodyEvaluationCount: bodyEvaluationCount,
+            modifierApplicationCount: modifierApplicationCount,
+            actionOccurrenceCount: actionOccurrenceCount,
+            maximumObservedDepth: maximumObservedDepth
+        )
+        workspace.completeExpansion()
+        guard sink.publishExpansion(summary) else {
+            return .failure(
+                fail(.invariantViolation, workspace: &workspace, sink: &sink)
+            )
+        }
+        workspace.resetExpansion()
+        sink.resetExpansion()
+        workspaceBegan = false
+        sinkBegan = false
+        return .success(summary)
+    }
+
+    mutating func fail<Workspace, Sink>(
+        _ error: SemanticExpansionError,
+        workspace: inout Workspace,
+        sink: inout Sink
+    ) -> SemanticExpansionError
+    where
+        Workspace: SemanticExpansionWorkspace,
+        Sink: SemanticExpansionSink,
+        Workspace.Identity == Sink.Identity
+    {
+        let error = record(error)
+        if workspaceBegan {
+            workspace.discardExpansion()
+        }
+        if sinkBegan {
+            sink.discardExpansion()
+        }
+        if workspaceBegan {
+            workspace.resetExpansion()
+        }
+        if sinkBegan {
+            sink.resetExpansion()
+        }
+        workspaceBegan = false
+        sinkBegan = false
+        return error
+    }
+
+    private mutating func enterPath<Workspace: SemanticExpansionWorkspace>(
+        workspace: inout Workspace,
+        identity: inout Workspace.Identity?,
+        enter: (inout Workspace, inout Workspace.Identity?) -> SemanticExpansionError?
+    ) -> SemanticExpansionError? {
+        guard firstFailure == nil else { return firstFailure }
+        let nextDepth = currentDepth.addingReportingOverflow(1)
+        guard !nextDepth.overflow,
+            nextDepth.partialValue <= limits.maximumDepth,
+            nextDepth.partialValue <= workspacePathCapacity
+        else {
+            return record(.capacityExhausted)
+        }
+
+        identity = nil
+        if let error = enter(&workspace, &identity) {
+            return record(error)
+        }
+        guard identity != nil else { return record(.invalidIdentity) }
+        guard
+            let nextIdentityCount = reservedValue(
+                after: identityCount,
+                limit: workspaceIdentityCapacity
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        identityCount = nextIdentityCount
+
+        currentDepth = nextDepth.partialValue
+        if currentDepth > maximumObservedDepth {
+            maximumObservedDepth = currentDepth
+        }
+        return nil
+    }
+
+    private func reservedValue(
+        after count: UInt16,
+        limit: UInt16
+    ) -> UInt16? {
+        let next = count.addingReportingOverflow(1)
+        guard !next.overflow, next.partialValue <= limit else { return nil }
+        return next.partialValue
+    }
+
+    private mutating func record(_ error: SemanticExpansionError) -> SemanticExpansionError {
+        if firstFailure == nil {
+            firstFailure = error
+        }
+        return firstFailure ?? error
+    }
+}
+
 package func expandSemanticTree<
     Root: View,
     Workspace: SemanticExpansionWorkspace,
@@ -153,12 +537,15 @@ package func expandSemanticTree<
     workspace: inout Workspace,
     sink: inout Sink
 ) -> SemanticExpansionResult where Workspace.Identity == Sink.Identity {
-    if workspace.isExpanding {
-        return .failure(.reentrancyViolation)
+    var attempt = SemanticExpansionAttempt(limits: limits)
+    if let error = attempt.begin(workspace: &workspace, sink: &sink) {
+        return .failure(error)
     }
 
-    // T2.2 installs the bounded lifecycle and T2.3 installs traversal. Until
-    // both are present, the entry point fails closed without starting either
-    // caller-owned collaborator or publishing output.
-    return .failure(.invariantViolation)
+    // T2.3 installs traversal through the bounded attempt coordinator. Until
+    // then, fail atomically after exercising the complete caller-owned begin,
+    // discard, and idle-reset lifecycle.
+    return .failure(
+        attempt.fail(.invariantViolation, workspace: &workspace, sink: &sink)
+    )
 }
