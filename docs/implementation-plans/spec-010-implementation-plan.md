@@ -152,6 +152,13 @@ enumerate direct state lexically and enter SPEC-006's stateful category.
       positive model/host conformances and access-negative clients on all four
       profiles. This task supplies the owner declaration that unblocks the
       SPEC-006 T1.4 visitor signature.
+
+  **Blocked by an approved source-contract compiler error.** Apple Swift
+  6.3.3 rejects SPEC-010's exact `public borrowing var attachment` spelling
+  because `borrowing` may only modify a function declaration. The reproducible
+  fixture and [Specification review](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-1/borrowing-property-specification-blocker.md)
+  require an amended, human-approved source contract before this declaration
+  family or the dependent SPEC-006 visitor method can proceed.
 - [ ] `T1.2` — Add the host-only `GiftUIMacros` target and exact
       `@ObservableStateHost` macro declaration. Generate only the two named
       members plus state-host conformance; enumerate direct observable
@@ -471,3 +478,10 @@ MVP need, upstream ownership, and the non-authoritative status of both Spikes.
 The fixture README, ordered compile and macro schemas, semantic transcript and
 normalized-result schemas, and exact pending evidence registry form a
 fail-closed baseline validated by the new harness check. `T0.2` is next.
+
+The first T1.1 compile attempt exposed an approval blocker in the normative
+public source rather than an implementation defect. The speculative
+declarations were removed, the exact failure is preserved by
+`check-spec-010-borrowing-property.sh`, and T1.1 remains unchecked pending a
+human-approved Specification amendment. T0.3 and T0.4 remain independent of
+that source correction and may proceed.

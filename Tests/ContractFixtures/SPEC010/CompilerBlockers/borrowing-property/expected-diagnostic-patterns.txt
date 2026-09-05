@@ -1,0 +1,1 @@
+'borrowing' may only be used on 'func' declarations
