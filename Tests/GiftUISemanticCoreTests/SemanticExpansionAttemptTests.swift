@@ -63,7 +63,7 @@ final class SemanticExpansionAttemptTests: XCTestCase {
         XCTAssertNil(attempt.leavePathComponent(workspace: &workspace))
 
         let expectedSummary = SemanticExpansionSummary(
-            semanticNodeCount: 1,
+            semanticNodeCount: 2,
             bodyEvaluationCount: 1,
             modifierApplicationCount: 1,
             actionOccurrenceCount: 1,
@@ -347,7 +347,7 @@ final class SemanticExpansionAttemptTests: XCTestCase {
 
     private func makeAttempt(
         maximumDepth: UInt16 = 2,
-        maximumSemanticNodes: UInt16 = 1,
+        maximumSemanticNodes: UInt16 = 2,
         maximumBodyEvaluations: UInt16 = 1,
         maximumModifierApplications: UInt16 = 1,
         maximumActionOccurrences: UInt16 = 1

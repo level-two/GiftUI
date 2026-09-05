@@ -391,14 +391,26 @@ struct SemanticExpansionAttempt {
     {
         guard firstFailure == nil else { return firstFailure }
         guard
-            let next = reservedValue(
+            let nextSemanticNode = reservedValue(
+                after: semanticNodeCount,
+                limit: limits.maximumSemanticNodes
+            )
+        else {
+            return record(.capacityExhausted)
+        }
+        semanticNodeCount = nextSemanticNode
+        guard semanticNodeCount <= sinkSemanticCapacity else {
+            return record(.capacityExhausted)
+        }
+        guard
+            let nextAction = reservedValue(
                 after: actionOccurrenceCount,
                 limit: limits.maximumActionOccurrences
             )
         else {
             return record(.capacityExhausted)
         }
-        actionOccurrenceCount = next
+        actionOccurrenceCount = nextAction
         guard actionOccurrenceCount <= sinkActionCapacity else {
             return record(.capacityExhausted)
         }
