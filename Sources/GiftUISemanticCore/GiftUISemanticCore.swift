@@ -59,3 +59,106 @@ package enum SemanticExpansionResult: Equatable, Sendable {
     case success(SemanticExpansionSummary)
     case failure(SemanticExpansionError)
 }
+
+package protocol SemanticExpansionWorkspace {
+    associatedtype Identity: Equatable
+
+    var maximumPathComponents: UInt16 { get }
+    var maximumIdentities: UInt16 { get }
+    var isExpanding: Bool { get }
+
+    mutating func beginExpansion() -> Bool
+
+    mutating func enterRoot<Declaration: View>(
+        _ declaration: Declaration.Type,
+        identity: inout Identity?
+    ) -> SemanticExpansionError?
+
+    mutating func enterCustomBody<Declaration: View>(
+        _ declaration: Declaration.Type,
+        identity: inout Identity?
+    ) -> SemanticExpansionError?
+
+    mutating func enterFixedChild(
+        _ index: UInt8,
+        identity: inout Identity?
+    ) -> SemanticExpansionError?
+
+    mutating func enterConditionalBranch(
+        _ index: UInt8,
+        identity: inout Identity?
+    ) -> SemanticExpansionError?
+
+    mutating func enterOptionalPresence(
+        identity: inout Identity?
+    ) -> SemanticExpansionError?
+
+    mutating func enterDeclarationRole<Declaration>(
+        _ declaration: Declaration.Type,
+        identity: inout Identity?
+    ) -> SemanticExpansionError?
+
+    mutating func leavePathComponent()
+    mutating func completeExpansion()
+    mutating func discardExpansion()
+    mutating func resetExpansion()
+}
+
+package protocol SemanticExpansionSink {
+    associatedtype Identity: Equatable
+
+    var maximumStructuralOccurrences: UInt16 { get }
+    var maximumSemanticOccurrences: UInt16 { get }
+    var maximumModifierApplications: UInt16 { get }
+    var maximumActionOccurrences: UInt16 { get }
+
+    mutating func beginExpansion() -> Bool
+
+    mutating func stageStructuralOccurrence(
+        identity: borrowing Identity
+    ) -> Bool
+
+    mutating func stageSemanticOccurrence<
+        Payload: _GiftUISemanticPrimitivePayload
+    >(
+        identity: borrowing Identity,
+        payload: borrowing Payload
+    ) -> Bool
+
+    mutating func stageModifierApplication<
+        Payload: _GiftUISemanticModifierPayload
+    >(
+        identity: borrowing Identity,
+        payload: borrowing Payload,
+        chainIndex: UInt16
+    ) -> Bool
+
+    mutating func stageActionOccurrence<Action: GiftUIAction>(
+        identity: borrowing Identity,
+        action: borrowing Action
+    ) -> Bool
+
+    mutating func publishExpansion(_ summary: SemanticExpansionSummary) -> Bool
+    mutating func discardExpansion()
+    mutating func resetExpansion()
+}
+
+package func expandSemanticTree<
+    Root: View,
+    Workspace: SemanticExpansionWorkspace,
+    Sink: SemanticExpansionSink
+>(
+    _ root: borrowing Root,
+    limits: SemanticExpansionLimits,
+    workspace: inout Workspace,
+    sink: inout Sink
+) -> SemanticExpansionResult where Workspace.Identity == Sink.Identity {
+    if workspace.isExpanding {
+        return .failure(.reentrancyViolation)
+    }
+
+    // T2.2 installs the bounded lifecycle and T2.3 installs traversal. Until
+    // both are present, the entry point fails closed without starting either
+    // caller-owned collaborator or publishing output.
+    return .failure(.invariantViolation)
+}

@@ -238,7 +238,7 @@ compiles through the host compiler and its external-conformance fixtures.
 bounded attempt against caller-owned workspace and sink protocols, with exact
 local values, lifecycle, detection order, and publish/discard behavior.
 
-- [ ] `T2.1` — Implement package-visible `SemanticExpansionLimits`,
+- [x] `T2.1` — Implement package-visible `SemanticExpansionLimits`,
       `SemanticExpansionSummary`, `SemanticExpansionError`, and
       `SemanticExpansionResult` with exact initialization, raw values,
       `Equatable`/`Sendable` behavior, limits/summary at no more than 10 bytes,
@@ -646,8 +646,10 @@ exclusively owned `_GiftUIObservableStateHost`, and the exact stateful visitor
 operation compiles against it. The generated witness seam remains unavailable
 until SPEC-010 T1.2.
 
-`T2.1` has begun with the exact closed limits, summary, local-error, and result
-values plus focused host layout and initialization tests. The caller-owned
-workspace/sink protocols and sole generic expansion entry remain in T2.1 and
-must land before the task is checked complete; traversal behavior remains
-assigned to T2.2 and T2.3.
+`T2.1` is complete with the exact closed limits, summary, local-error, and
+result values, focused host layout and initialization tests, caller-owned
+workspace/sink protocols, complete finite-capacity reporting, and the sole
+generic borrowed-root expansion entry. The entry rejects same-workspace
+reentrancy and otherwise remains fail-closed until T2.2 installs its lifecycle
+and T2.3 installs traversal; no partial behavior is reported as success.
+`T2.2` is next.

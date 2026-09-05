@@ -7,7 +7,14 @@ SPEC-006. Focused tests prove that the three required limits reject zero while
 zero modifier and action limits remain valid, and that all five summary fields
 are preserved.
 
+The caller-owned workspace and sink protocols now report every finite path,
+identity, and staging capacity and expose begin, stage, publish, discard, and
+reset operations without importing a runtime profile or failure module. The
+sole generic `expandSemanticTree` entry accepts a borrowed root, immutable
+limits, and `inout` collaborators. Its same-workspace active check already
+fails before touching the sink; the remaining lifecycle and traversal body is
+deliberately fail-closed until T2.2 and T2.3 implement those assigned rules.
+
 The host compiler reports limits and summary sizes within 10 bytes, the local
 error at exactly 1 byte, and the result within 12 bytes. Cross-profile layout
-evidence remains assigned to T6.4. T2.1 remains open until the caller-owned
-workspace/sink protocols and sole generic entry point are present.
+evidence remains assigned to T6.4.
