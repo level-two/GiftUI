@@ -87,11 +87,11 @@ activation, capabilities, backends, host policy, or connected-hardware work.
   inventory; they are not current source or authority. The maintained
   implementation therefore begins from the clean SPEC-002 baseline and uses
   that inventory only to prove migration closure.
-- SPEC-010's portable declaration protocol is present, but its 2026-09-05
-  completeness amendment is in review and its macro is not present in the
-  current package. Contract-local ordinary traversal can proceed, but the
-  generated state-host integration milestone cannot complete until SPEC-010 is
-  reapproved and its owner supplies the macro and test seam.
+- SPEC-010's 2026-09-05 completeness amendment is explicitly reapproved and its
+  portable declaration protocol is present, but its macro is not present in
+  the current package. Contract-local ordinary traversal can proceed, but the
+  generated state-host integration milestone cannot complete until the
+  SPEC-010 owner supplies the macro and test seam.
 
 ## Readiness Review
 
@@ -356,7 +356,7 @@ mapping required by SPEC-006.
 
 ### Milestone 5: Integrate the SPEC-010 Stateful Custom-View Seam
 
-**Entry conditions:** SPEC-010 is reapproved and its owning implementation
+**Entry conditions:** SPEC-010 remains approved and its owning implementation
 has supplied `_GiftUIObservableStateHost`, the declaration visitor and binding
 decorator, the `@ObservableStateHost` macro target, generated witness shape,
 and fixture-accessible binding results. Ordinary SPEC-006 traversal is already
@@ -537,10 +537,10 @@ their normalized comparison and final evidence audit remain a join step.
 - If unique bounded structural/action identity requires changing the approved
   equality rules, path contributions, failure vocabulary, or profile-neutral
   transcript, pause for RFC/ADR or Specification review as applicable.
-- Milestone 5 waits for renewed SPEC-010 approval and its owner-provided
-  protocol, macro-generated witness, decorator, and binding-result seam.
-  SPEC-006 must not implement a parallel observable-state abstraction to
-  bypass that dependency.
+- Milestone 5 waits for the approved SPEC-010 owner's protocol,
+  macro-generated witness, decorator, and binding-result seam. SPEC-006 must
+  not implement a parallel observable-state abstraction to bypass that
+  dependency.
 - Production runtime workspaces, node/action capacities, and aggregate RAM,
   stack, flash, or linked-code ceilings belong to SPEC-013 and host
   configuration. This plan uses finite conformance workspaces and reports
@@ -646,7 +646,7 @@ in the
 T1.4 remains unchecked and Milestone 1 remains open. SPEC-010 now supplies its
 exclusively owned `_GiftUIObservableStateHost`, and the exact stateful visitor
 operation compiles against it. The generated witness seam remains unavailable
-until SPEC-010 is reapproved and T1.2 resumes.
+until SPEC-010 T1.2 is implemented.
 
 `T2.1` is complete with the exact closed limits, summary, local-error, and
 result values, focused host layout and initialization tests, caller-owned

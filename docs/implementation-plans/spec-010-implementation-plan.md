@@ -2,7 +2,7 @@
 spec: SPEC-010
 feature: observable-reference-state
 title: SPEC-010 Implementation Plan
-status: draft
+status: ready
 owners:
   - codex
 created: 2026-09-04
@@ -21,11 +21,9 @@ superseded_by: null
 
 # SPEC-010 Implementation Plan
 
-> This plan derived work from the previously approved Observable Reference
-> State Contract. SPEC-010 returned to `review` on 2026-09-05 for a completeness
-> amendment, so further execution is paused and this plan is `draft` pending
-> renewed approval and reconciliation. It orders implementation and evidence
-> but does not amend the
+> This ready plan derives work from the approved Observable Reference State
+> Contract, including its explicitly reapproved 2026-09-05 completeness
+> amendment. It orders implementation and evidence but does not amend the
 > declaration, generation, ownership, mutation, publication, failure, action-
 > target, or profile contracts owned by that Specification and its accepted
 > dependencies.
@@ -33,7 +31,7 @@ superseded_by: null
 ## Authority and Scope
 
 The governing [SPEC-010](../specs/spec-010-observable-reference-state.md)
-contract is in review for renewed approval, under accepted
+contract is approved, under accepted
 [PROPOSAL-005](../proposals/proposal-005-observable-reference-state.md),
 approved [RFC-008](../rfcs/rfc-008-observable-reference-state-architecture.md)
 and [RFC-011](../rfcs/rfc-011-bounded-application-actions.md), and accepted
@@ -472,9 +470,10 @@ from SPEC-009/013/015 blockers, and no Spike mechanism or downstream contract
 was treated as production authority.
 
 Implementation began on 2026-09-04 under the then-approved contract. The
-2026-09-05 completeness amendment returned the feature to `specification`, the
-Specification to `review`, and this plan to `draft`; further implementation is
-paused pending renewed approval and plan reconciliation.
+2026-09-05 completeness amendment temporarily returned the feature to
+`specification`, the Specification to `review`, and this plan to `draft`.
+The maintainer explicitly reapproved the amendment the same day; the
+Specification is now `approved` and this reconciled plan is `ready`.
 
 `T0.1` is complete: the checked-in
 [authority audit](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-0/authority-audit.md)
@@ -494,9 +493,9 @@ the complete declaration family and its profile evidence land.
 The subsequent completeness review found missing exact success-result routing,
 logical storage fields, attach-time report disposition, focused-owner failure
 precedence, and a contradiction over replacement commit timing. SPEC-010 now
-closes those gaps without changing accepted architecture and is ready for human
-approval consideration. Until renewed approval, no further implementation task
-may proceed from the amendment.
+closes those gaps without changing accepted architecture. The maintainer
+explicitly reapproved the contract on 2026-09-05. The plan is executable again
+but does not become `active` until implementation resumes.
 
 `T0.3` is complete: the
 [registered contract driver](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-0/contract-driver.md)

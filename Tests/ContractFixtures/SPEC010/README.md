@@ -1,9 +1,9 @@
 # SPEC-010 Contract Fixtures
 
-This directory contains fixtures and evidence derived from the previously
-approved SPEC-010 contract. The 2026-09-05 completeness amendment is in review;
-new implementation work remains paused until renewed approval. The fixtures
-establish the deterministic, profile-neutral seam for portable
+This directory contains fixtures and evidence derived from approved SPEC-010.
+The 2026-09-05 completeness amendment is explicitly reapproved; implementation
+remains separately governed by the ready plan. The fixtures establish the
+deterministic, profile-neutral seam for portable
 observable reference state, generated host discovery, owner reconciliation,
 reporting, and target-generation lifetime. It does not define application
 models, Interaction, runtime-profile capacities, host policy, backends,

@@ -34,10 +34,10 @@ is current authority. RFC-007 remains `draft`; its delegated-service direction
 and FW-009 MUST NOT become a required MVP Specification dependency.
 
 The `canvas-drawing` feature completed its decision stage with approved RFC-009
-and accepted ADR-028 through ADR-031. SPEC-011 and SPEC-012 remain approved.
-SPEC-010 returned to review on 2026-09-05 for a completeness amendment after
-implementation exposed underspecified result, storage, lifecycle, and failure-
-precedence rules.
+and accepted ADR-028 through ADR-031. Wave 5 artifacts SPEC-010 through
+SPEC-012 are approved. SPEC-010 was explicitly reapproved on 2026-09-05 after
+its completeness amendment closed underspecified result, storage, lifecycle,
+and failure-precedence rules.
 
 ## Boundary Rules
 
@@ -112,19 +112,16 @@ machinery. It leaves observable-state storage, public interaction declarations
 and action lowering, concrete runtime-profile storage, backend realization,
 and host policy values to their downstream portfolio contracts.
 
-Wave 5 retains these immutable artifacts. SPEC-011 includes the approved
-coordinated candidate-target amendment; SPEC-010's immutable identity remains
-in review for its completeness amendment:
+Wave 5 retains these immutable approved artifacts. SPEC-010 includes its
+reapproved completeness amendment:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `OBSERVABLE` | `SPEC-010` | `review` |
+| `OBSERVABLE` | `SPEC-010` | `approved` |
 | `INTERACTION` | `SPEC-011` | `approved` |
 | `DRAWING` | `SPEC-012` | `approved` |
 
-SPEC-009, SPEC-011, and SPEC-012 are approved and authoritative for
-implementation. SPEC-010 requires explicit renewed approval before its
-observable-state implementation resumes.
+SPEC-009 through SPEC-012 are approved and authoritative for implementation.
 
 Wave 6 has produced these immutable artifacts:
 
