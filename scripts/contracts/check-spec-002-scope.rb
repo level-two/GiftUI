@@ -46,7 +46,12 @@ graph = YAML.safe_load(
   File.read(File.join(FIXTURES, "target-dependencies.yaml")),
   permitted_classes: [Date], aliases: false
 ).fetch("targets")
-fail!("GiftUI Foundation acquired a dependency") unless graph.fetch("GiftUI").fetch("dependencies") == []
+giftui_dependencies = graph.fetch("GiftUI").fetch("dependencies")
+fail!("GiftUI Foundation dependencies differ from the host-only macro edge") unless
+  giftui_dependencies == ["GiftUIMacros"]
+macro_target = graph.fetch("GiftUIMacros")
+fail!("GiftUIMacros is not a host-only macro target") unless
+  macro_target.fetch("type") == "macro" && macro_target.fetch("dependencies") == []
 
 adapter_paths = %w[
   Tests/GiftUIFoundationFailureAdapterTests/GiftUIFoundationFailureAdapterTests.swift
