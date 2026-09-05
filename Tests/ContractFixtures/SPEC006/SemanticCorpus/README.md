@@ -60,3 +60,11 @@ Successful counts and greatest path depth must equal the canonical transcript.
 Structural-entry events do not add a summary counter. Normalized results never
 contain profile-private identity bytes, addresses, timing noise, paths to
 generated files, or connected-hardware claims inferred from a cross-build.
+
+## Registered declaration shapes
+
+T3.1 introduces `empty`. T3.2 adds `fixed-arity-1` through
+`fixed-arity-5`, `nested-custom`, `property-function`, `conditional`,
+`optional`, `nested-combination`, and `conditional-inactive-shape`. These are
+closed fixture tokens for the checked-in corpus, not production declaration
+names or a runtime registry.

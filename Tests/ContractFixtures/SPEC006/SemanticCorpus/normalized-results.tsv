@@ -1,2 +1,16 @@
 # case_id	result	semantic_nodes	body_evaluations	modifier_applications	action_occurrences	maximum_observed_depth	transcript_rows	identity_relation_set	evidence_class
 empty-root	success	0	0	0	0	2	1	empty-root-identities	host
+fixed-arity-one	success	1	0	0	0	2	2	fixed-arity-one-identities	host
+fixed-arity-two	success	2	0	0	0	4	5	fixed-arity-two-identities	host
+fixed-arity-three	success	3	0	0	0	4	7	fixed-arity-three-identities	host
+fixed-arity-four	success	4	0	0	0	4	9	fixed-arity-four-identities	host
+fixed-arity-five	success	5	0	0	0	4	11	fixed-arity-five-identities	host
+nested-custom	success	1	2	0	0	6	6	nested-custom-identities	host
+property-function	success	2	1	0	0	6	7	property-function-identities	host
+conditional-first	success	1	0	0	0	5	3	conditional-first-identities	host
+conditional-second	success	1	0	0	0	5	3	conditional-second-identities	host
+optional-present	success	1	0	0	0	5	3	optional-present-identities	host
+optional-absent	success	0	0	0	0	2	1	optional-absent-identities	host
+nested-combination	success	2	1	0	0	9	9	nested-combination-identities	host
+inactive-branch-base	success	1	0	0	0	5	3	inactive-branch-equivalence	host
+inactive-branch-varied	success	1	0	0	0	5	3	inactive-branch-equivalence	host

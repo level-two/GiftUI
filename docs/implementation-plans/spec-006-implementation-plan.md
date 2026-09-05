@@ -286,7 +286,7 @@ associations without layout, rendering, a backend, or connected hardware.
       observed depth against the published events. Prove structural-entry
       events do not increment a summary counter and an `EmptyView` root
       succeeds with `maximumObservedDepth == 2`.
-- [ ] `T3.2` — Build the shared declaration corpus for empty, every fixed
+- [x] `T3.2` — Build the shared declaration corpus for empty, every fixed
       arity, nested custom views, properties/functions, both conditional
       branches, optional presence/absence, nested combinations, and sibling
       insertion in another branch. Check complete depth-first left-to-right
@@ -691,4 +691,12 @@ test-only attempted-event log without exposing failed staging as current,
 reject summary mismatch, and prove the checked-in `empty-root` corpus row has
 one structural event, zero counted events, and depth two; see the
 [recording oracle evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-3/recording-oracle.md).
-`T3.2` is next.
+
+`T3.2` is complete: the checked-in corpus and focused recording tests cover
+empty and every fixed arity, nested custom bodies, view-returning properties
+and functions, both conditional branches, optional presence/absence, nested
+combinations, and inactive-branch sibling insertion. Exact component paths,
+event order, counts, maximum depth, and body invocation counts are asserted;
+see the
+[declaration corpus evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-3/declaration-corpus.md).
+`T3.3` is next.

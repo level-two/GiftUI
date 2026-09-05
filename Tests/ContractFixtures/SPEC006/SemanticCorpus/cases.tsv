@@ -1,2 +1,16 @@
 # id	declaration_shape	inputs	expected_result	evidence_class
 empty-root	empty	-	success	host
+fixed-arity-one	fixed-arity-1	-	success	host
+fixed-arity-two	fixed-arity-2	-	success	host
+fixed-arity-three	fixed-arity-3	-	success	host
+fixed-arity-four	fixed-arity-4	-	success	host
+fixed-arity-five	fixed-arity-5	-	success	host
+nested-custom	nested-custom	-	success	host
+property-function	property-function	-	success	host
+conditional-first	conditional	first	success	host
+conditional-second	conditional	second	success	host
+optional-present	optional	present	success	host
+optional-absent	optional	absent	success	host
+nested-combination	nested-combination	first,present	success	host
+inactive-branch-base	conditional-inactive-shape	one-inactive-child	success	host
+inactive-branch-varied	conditional-inactive-shape	two-inactive-children	success	host

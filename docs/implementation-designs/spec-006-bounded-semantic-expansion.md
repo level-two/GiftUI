@@ -206,9 +206,11 @@ attempted-versus-committed sink to observe order, counters, maximum depth,
 active/inactive body access, action staging, modifier indices, and atomic
 failure. `SemanticRecordingSinkTests` exercise the package-only canonical event
 vocabulary, component-addressable paths, summary cross-check, and atomic
-recording publication. The complete declaration and identity-relation corpora,
-cross-profile comparison, allocation instrumentation, and owner failure mapping
-remain assigned to later Milestones 3, 4, and 6 tasks.
+recording publication. `SemanticDeclarationCorpusTests` adds source-declared
+symbolic fixture roles and exact path/event comparisons for the complete T3.2
+declaration-shape matrix. The wider identity-relation corpus, cross-profile
+comparison, allocation instrumentation, and owner failure mapping remain
+assigned to later Milestones 3, 4, and 6 tasks.
 
 Diagnostics do not participate in this mechanism. The later test-only owner
 adapter may observe the closed result only after Semantic Core returns.
