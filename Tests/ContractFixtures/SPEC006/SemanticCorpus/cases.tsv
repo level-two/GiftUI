@@ -22,3 +22,8 @@ modifier-custom	modifier-custom	inset(5)	success	host
 modifier-fixed-group	modifier-fixed-group	inset(1)	success	host
 modifier-nested	modifier-nested	inset(5),tone(3)	success	host
 modifier-siblings	modifier-siblings	inset(1),tone(2)	success	host
+action-primary	action-one	primary	success	host
+action-secondary	action-one	secondary	success	host
+action-siblings	action-siblings	primary,secondary	success	host
+action-modified	action-modified	primary,inset(8)	success	host
+action-lifetime	action-lifetime	secondary,poison-after-return	success	host

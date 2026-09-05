@@ -75,6 +75,11 @@ T3.4 adds `modifier-zero`, `modifier-one`, `modifier-repeated`,
 test values consumed only by the owning fixture sink; they assign no layout or
 rendering meaning.
 
+T3.5 adds `action-one`, `action-siblings`, `action-modified`, and
+`action-lifetime`. Action inputs are members of one finite `UInt16` fixture
+enum. The poison token is a declaration-lifetime probe only; it is not part of
+the staged action value or recorded identity.
+
 ## Structural-identity relations
 
 `identity-relations.tsv` has eight fields: a unique relation ID, the left

@@ -315,8 +315,8 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
         )
 
         var workspace = CorpusWorkspace()
-        let payloadProbe = CorpusModifierPayloadProbe()
-        var sink = CorpusModifierInspectingSink(probe: payloadProbe)
+        let payloadProbe = CorpusPayloadProbe()
+        var sink = CorpusInspectingSink(probe: payloadProbe)
         let result = expandSemanticTree(
             mixed,
             limits: corpusLimits,
@@ -325,6 +325,83 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
         )
         XCTAssertEqual(result, .success(summary(nodes: 1, modifiers: 2, depth: 4)))
         XCTAssertEqual(payloadProbe.values, [31, 42])
+    }
+
+    func testActionIdentitiesAndOrderingAreStableAndValueIndependent() {
+        let first = CorpusActionPrimitive(action: .primary)
+        let second = CorpusActionPrimitive(action: .secondary)
+        let firstExpansion = expand(first)
+        let repeatedExpansion = expand(first)
+        XCTAssertEqual(
+            actionIdentities(in: firstExpansion.events),
+            actionIdentities(in: repeatedExpansion.events))
+        XCTAssertEqual(
+            actionIdentities(in: firstExpansion.events), actionIdentities(in: expand(second).events)
+        )
+
+        let siblings = ViewBuilder.buildBlock(first, second)
+        let tuplePath: [SemanticRecordingPathComponent] = [.root, .role(.tuple2)]
+        let firstPath = tuplePath + [.fixedChild(0), .role(.actionPrimitive)]
+        let secondPath = tuplePath + [.fixedChild(1), .role(.actionPrimitive)]
+        assertExpansion(
+            siblings,
+            expectedEvents: [
+                .structural(path(tuplePath), .tuple2),
+                .structural(path(firstPath), .actionPrimitive),
+                .semantic(path(firstPath), .actionPrimitive),
+                .action(path(firstPath), .actionPrimitive),
+                .structural(path(secondPath), .actionPrimitive),
+                .semantic(path(secondPath), .actionPrimitive),
+                .action(path(secondPath), .actionPrimitive),
+            ],
+            expectedSummary: summary(nodes: 2, actions: 2, depth: 4)
+        )
+        let siblingActions = actionIdentities(in: expand(siblings).events)
+        XCTAssertEqual(siblingActions.count, 2)
+        XCTAssertNotEqual(siblingActions[0], siblingActions[1])
+
+        let modified = CorpusInset(content: first, value: 8)
+        let modifierPath: [SemanticRecordingPathComponent] = [.root, .role(.inset)]
+        let actionPath = modifierPath + [.role(.actionPrimitive)]
+        assertExpansion(
+            modified,
+            expectedEvents: [
+                .structural(path(modifierPath), .inset),
+                .structural(path(actionPath), .actionPrimitive),
+                .semantic(path(actionPath), .actionPrimitive),
+                .action(path(actionPath), .actionPrimitive),
+                .modifier(path(modifierPath), .inset, index: 0),
+            ],
+            expectedSummary: summary(nodes: 1, modifiers: 1, actions: 1, depth: 3)
+        )
+    }
+
+    func testActionValueIsConsumedSynchronouslyWithoutRetainingDeclarationLifetime() {
+        let lifetimeState = CorpusLifetimeState()
+        let payloadProbe = CorpusPayloadProbe()
+        var sink = CorpusInspectingSink(probe: payloadProbe)
+        var workspace = CorpusWorkspace()
+        var result: SemanticExpansionResult?
+
+        do {
+            let lifetime = CorpusLifetimeToken(state: lifetimeState)
+            var declaration: CorpusActionPrimitive? = CorpusActionPrimitive(
+                action: .secondary,
+                lifetime: lifetime
+            )
+            result = expandSemanticTree(
+                declaration!,
+                limits: corpusLimits,
+                workspace: &workspace,
+                sink: &sink
+            )
+            declaration = nil
+        }
+
+        XCTAssertFalse(lifetimeState.isAlive)
+        XCTAssertEqual(result, .success(summary(nodes: 1, actions: 1, depth: 2)))
+        XCTAssertEqual(payloadProbe.actions, [.secondary])
+        XCTAssertEqual(sink.recording.storage.committedEvents.count, 3)
     }
 
     func testModifierPayloadChangesDoNotReplaceDescendantIdentity() {
@@ -500,17 +577,24 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
         }
     }
 
+    private func actionIdentities(in events: [CorpusEvent]) -> [CorpusIdentity] {
+        events.compactMap { event in
+            event.kind == .action ? event.path : nil
+        }
+    }
+
     private func summary(
         nodes: UInt16,
         bodies: UInt16 = 0,
         modifiers: UInt16 = 0,
+        actions: UInt16 = 0,
         depth: UInt16
     ) -> SemanticExpansionSummary {
         SemanticExpansionSummary(
             semanticNodeCount: nodes,
             bodyEvaluationCount: bodies,
             modifierApplicationCount: modifiers,
-            actionOccurrenceCount: 0,
+            actionOccurrenceCount: actions,
             maximumObservedDepth: depth
         )
     }
@@ -531,6 +615,7 @@ private enum CorpusRole: UInt16, Sendable {
     case modifiedCustom = 24
     case inset = 30
     case tone = 31
+    case actionPrimitive = 40
     case a = 100
     case b = 101
     case c = 102
@@ -709,6 +794,40 @@ private struct CorpusModifiedCustom: View, CorpusRoleProviding {
     var body: some View { CorpusInset(content: CorpusA(), value: 5) }
 }
 
+private enum CorpusAction: UInt16, GiftUIAction {
+    case primary = 1
+    case secondary = 2
+}
+
+private final class CorpusLifetimeState {
+    var isAlive = true
+}
+
+private final class CorpusLifetimeToken {
+    let state: CorpusLifetimeState
+    init(state: CorpusLifetimeState) { self.state = state }
+    deinit { state.isAlive = false }
+}
+
+private struct CorpusActionPrimitive: View, _GiftUISemanticActionPayload, CorpusRoleProviding {
+    static let corpusRole = CorpusRole.actionPrimitive
+    let action: CorpusAction
+    let lifetime: CorpusLifetimeToken?
+
+    init(action: CorpusAction, lifetime: CorpusLifetimeToken? = nil) {
+        self.action = action
+        self.lifetime = lifetime
+    }
+
+    var _giftUIAction: CorpusAction { action }
+    var body: Never { fatalError("action primitive body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    ) {
+        visitor.visitActionPrimitive(self)
+    }
+}
+
 private struct CorpusIdentity: SemanticRecordingIdentity {
     let components: [SemanticRecordingPathComponent]
     let declarationRole: SemanticRecordingRole
@@ -803,6 +922,7 @@ private enum CorpusEventKind: Equatable {
     case body
     case semantic
     case modifier
+    case action
 }
 
 private struct CorpusEvent: Equatable {
@@ -833,8 +953,8 @@ private struct CorpusEvent: Equatable {
             self.init(path: path, kind: .semantic, role: role)
         case .applyModifier(let path, let role, let index):
             self.init(path: path, kind: .modifier, role: role, chainIndex: index)
-        case .associateAction:
-            preconditionFailure("T3.4 declaration corpus contains no actions")
+        case .associateAction(let path, let role):
+            self.init(path: path, kind: .action, role: role)
         }
     }
 
@@ -854,6 +974,9 @@ private struct CorpusEvent: Equatable {
             role: role.recordingRole,
             chainIndex: index
         )
+    }
+    static func action(_ path: CorpusIdentity, _ role: CorpusRole) -> Self {
+        Self(path: path, kind: .action, role: role.recordingRole)
     }
 }
 
@@ -879,7 +1002,7 @@ private struct CorpusStorage: SemanticRecordingStorage {
     let maximumBodyEvaluations: UInt16 = 32
     let maximumSemanticOccurrences: UInt16 = 64
     let maximumModifierApplications: UInt16 = 64
-    let maximumActionOccurrences: UInt16 = 0
+    let maximumActionOccurrences: UInt16 = 64
     var stagedEvents: [SemanticRecordingEvent<CorpusIdentity>] = []
     var committedEvents: [SemanticRecordingEvent<CorpusIdentity>] = []
     mutating func beginRecording() -> Bool {
@@ -899,13 +1022,14 @@ private struct CorpusStorage: SemanticRecordingStorage {
     mutating func resetRecording() {}
 }
 
-private final class CorpusModifierPayloadProbe {
+private final class CorpusPayloadProbe {
     var values: [Int] = []
+    var actions: [CorpusAction] = []
 }
 
-private struct CorpusModifierInspectingSink: SemanticExpansionSink {
+private struct CorpusInspectingSink: SemanticExpansionSink {
     var recording = SemanticRecordingSink(storage: CorpusStorage())
-    let probe: CorpusModifierPayloadProbe
+    let probe: CorpusPayloadProbe
 
     var maximumStructuralOccurrences: UInt16 { recording.maximumStructuralOccurrences }
     var maximumBodyEvaluations: UInt16 { recording.maximumBodyEvaluations }
@@ -944,7 +1068,10 @@ private struct CorpusModifierInspectingSink: SemanticExpansionSink {
         identity: borrowing CorpusIdentity,
         action: borrowing Action
     ) -> Bool {
-        recording.stageActionOccurrence(identity: identity, action: action)
+        let actionCopy = copy action
+        guard let fixtureAction = actionCopy as? CorpusAction else { return false }
+        probe.actions.append(fixtureAction)
+        return recording.stageActionOccurrence(identity: identity, action: action)
     }
     mutating func publishExpansion(_ summary: SemanticExpansionSummary) -> Bool {
         recording.publishExpansion(summary)

@@ -304,7 +304,7 @@ associations without layout, rendering, a backend, or connected hardware.
       descendant semantic identities, no sibling interleaving, preservation of
       an otherwise unknown typed payload for its owning fixture consumer, and
       no layout or rendering assertions.
-- [ ] `T3.5` — Add test-only action-bearing primitives using a finite action
+- [x] `T3.5` — Add test-only action-bearing primitives using a finite action
       enum. Prove distinct path identities, equivalent re-expansion relations,
       unchanged semantic identity when only the bounded action value changes,
       semantic-node-before-action-before-modifier ordering at one path,
@@ -718,3 +718,13 @@ also consumes the borrowed payload markers without assigning layout or render
 meaning. See the
 [modifier corpus evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-3/modifier-corpus.md).
 `T3.5` is next.
+
+`T3.5` is complete: finite-enum action fixtures prove sibling distinctness,
+re-expansion equality, action-value-independent identity, and semantic then
+action then modifier order. The fixture-owned sink consumes borrowed action
+values synchronously, and a declaration-only poison token expires after
+return without affecting the committed identity/action-role recording. The
+fixture has no generation, target, callable, handler, model, decoding, or
+invocation surface; see the
+[action corpus evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-3/action-corpus.md).
+Milestone 3 is complete; `T4.1` is next.

@@ -213,8 +213,10 @@ components and endpoint roles only; the forced-alias workspace is a negative
 test seam, not a production representation or collision strategy.
 T3.4 adds typed modifier fixtures and a fixture-owned payload inspector; the
 generic recording oracle retains only the scope identity, role, and chain
-index. Cross-profile comparison, allocation instrumentation, and owner failure
-mapping remain assigned to later Milestones 4 and 6 tasks.
+index. T3.5 extends that synchronous inspector with a finite action enum and a
+declaration-lifetime poison token, without introducing generation, target, or
+invocation state. Cross-profile comparison, allocation instrumentation, and
+owner failure mapping remain assigned to later Milestones 4 and 6 tasks.
 
 Diagnostics do not participate in this mechanism. The later test-only owner
 adapter may observe the closed result only after Semantic Core returns.
