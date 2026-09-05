@@ -68,9 +68,9 @@ and generated code are not implementation authority.
 - SPEC-006 T1.4 is partially implemented and blocked specifically on the
   SPEC-010-owned `_GiftUIObservableStateHost`; its later stateful integration
   milestone also waits for the generated witness and binding seam.
-- There is no `GiftUIMacros`, `GiftUIObservableState`, dynamic/static state
-  profile, observable-state failure adapter, test target, fixture corpus, or
-  `run-spec-010.sh` driver in the package.
+- `GiftUIMacros` is the pinned host-only macro target and has deterministic
+  expansion fixtures. There is no `GiftUIObservableState`, dynamic/static
+  state profile, or observable-state failure adapter in the package.
 - Approved SPEC-009 owns `GiftUIExecution`, `ObservableTargetGeneration`, and
   `ExecutionAdmissionOutcome`, but that target and its implementation plan are
   not present. Work requiring those declarations is blocked until its owner
@@ -160,7 +160,7 @@ enumerate direct state lexically and enter SPEC-006's stateful category.
   The positive compiler witness and
   [Specification review](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-1/borrowing-property-specification-blocker.md)
   unblock this declaration family and the dependent SPEC-006 visitor method.
-- [ ] `T1.2` — Add the host-only `GiftUIMacros` target and exact
+- [x] `T1.2` — Add the host-only `GiftUIMacros` target and exact
       `@ObservableStateHost` macro declaration. Generate only the two named
       members plus state-host conformance; enumerate direct observable
       wrappers once in lexical order, assign `UInt16` ordinals from zero, and
@@ -513,6 +513,17 @@ and exact inventory classify every obsolete PoC state mechanism, direct
 thermostat mutation site, absent Apple Observation dependency, and disposable
 SPIKE-003/SPIKE-006 spelling. The registered check pins the PoC revision,
 reproduces every path/count map, and rejects a legacy compatibility path in
-maintained source. `T0.2` remains intentionally open until the first buildable
-macro target and SPEC-009-owned execution target make its atomic graph changes
-valid.
+maintained source. `T0.2` now includes the first buildable macro target and
+remains intentionally open until the SPEC-009-owned execution target makes the
+remaining owner graph changes valid.
+
+`T1.2` is complete: the pinned host-only `GiftUIMacros` target implements the
+exact attached declaration, state-host conformance, lexical direct-wrapper
+enumeration, zero-based `UInt16` ordinals, accessible witnesses, and the
+65,535-declaration boundary. Checked-in macro snapshots cover zero, one,
+several, private, nested/non-direct, inherited/non-direct, malformed, and
+overflow-shaped cases. Package graph and source audits prove the macro is not a
+product and imports only its pinned compiler-support dependencies; see the
+[macro generation evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-1/deterministic-host-generation.md).
+The macro also emits the already-authorized SPEC-006 stateful traversal witness;
+its category behavior remains assigned to dependent T1.4. T1.3 is next.

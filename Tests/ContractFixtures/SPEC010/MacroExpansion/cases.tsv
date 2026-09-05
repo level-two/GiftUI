@@ -1,1 +1,9 @@
 # id	source	expected_expansion	expected_diagnostics	evidence_class
+zero	MacroExpansion/Sources/zero.swift	MacroExpansion/Expected/zero.swift	-	host-snapshot
+one	MacroExpansion/Sources/inherited.swift	MacroExpansion/Expected/inherited.swift	-	host-snapshot
+several	MacroExpansion/Sources/several.swift	MacroExpansion/Expected/several.swift	-	host-snapshot
+private	MacroExpansion/Sources/private.swift	MacroExpansion/Expected/private.swift	-	host-snapshot
+nested-non-direct	MacroExpansion/Sources/several.swift	MacroExpansion/Expected/several.swift	-	host-snapshot
+inherited-non-direct	MacroExpansion/Sources/inherited.swift	MacroExpansion/Expected/inherited.swift	-	host-snapshot
+malformed	MacroExpansion/Sources/malformed.swift	MacroExpansion/Expected/malformed.swift	MacroExpansion/Diagnostics/malformed.txt	host-diagnostic
+overflow-shaped	MacroExpansion/Sources/overflow-shaped.txt	-	MacroExpansion/Diagnostics/overflow-shaped.txt	host-boundary

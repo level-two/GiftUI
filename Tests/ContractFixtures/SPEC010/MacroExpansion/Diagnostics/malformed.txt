@@ -1,0 +1,1 @@
+@State must decorate one direct stored property

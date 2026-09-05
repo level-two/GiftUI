@@ -1,5 +1,6 @@
 // swift-tools-version: 6.2
 
+import CompilerPluginSupport
 import PackageDescription
 
 let package = Package(
@@ -16,8 +17,24 @@ let package = Package(
         ),
         .library(name: "GiftUICapabilities", targets: ["GiftUICapabilities"]),
     ],
+    dependencies: [
+        .package(
+            url: "https://github.com/swiftlang/swift-syntax.git",
+            exact: "603.0.2"
+        )
+    ],
     targets: [
-        .target(name: "GiftUI"),
+        .macro(
+            name: "GiftUIMacros",
+            dependencies: [
+                .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
+                .product(name: "SwiftDiagnostics", package: "swift-syntax"),
+                .product(name: "SwiftSyntax", package: "swift-syntax"),
+                .product(name: "SwiftSyntaxBuilder", package: "swift-syntax"),
+                .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
+            ]
+        ),
+        .target(name: "GiftUI", dependencies: ["GiftUIMacros"]),
         .target(name: "GiftUIFailureCore"),
         .target(
             name: "GiftUIFailureDiagnostics",
@@ -52,6 +69,16 @@ let package = Package(
         .testTarget(
             name: "GiftUITests",
             dependencies: ["GiftUI"]
+        ),
+        .testTarget(
+            name: "GiftUIMacrosTests",
+            dependencies: [
+                "GiftUIMacros",
+                .product(
+                    name: "SwiftSyntaxMacrosTestSupport",
+                    package: "swift-syntax"
+                ),
+            ]
         ),
         .testTarget(
             name: "GiftUIFailureCoreTests",

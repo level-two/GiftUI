@@ -1,0 +1,1 @@
+@ObservableStateHost supports at most 65,535 direct @State declarations

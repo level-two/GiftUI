@@ -49,14 +49,17 @@ declared_inputs() {
     {
         find "${FIXTURE_ROOT}" -type f -print
         find "${PROJECT_ROOT}/Sources/GiftUI" -type f -name '*.swift' -print
+        find "${PROJECT_ROOT}/Sources/GiftUIMacros" -type f -name '*.swift' -print
         printf '%s\n' \
             "${PROJECT_ROOT}/Package.swift" \
+            "${PROJECT_ROOT}/Package.resolved" \
             "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
             "${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv" \
             "${SCRIPT_DIR}/check-spec-010-attachment-property.sh" \
             "${SCRIPT_DIR}/check-spec-010-declaration-surface.rb" \
             "${SCRIPT_DIR}/check-spec-010-harness.rb" \
             "${SCRIPT_DIR}/check-spec-010-migration.rb" \
+            "${SCRIPT_DIR}/check-spec-010-macro-boundary.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
             "${SCRIPT_DIR}/publish-contract-report.rb" \
             "${SCRIPT_DIR}/verify-contract-report.rb" \
@@ -274,6 +277,8 @@ record_command "${SCRIPT_DIR}/check-spec-010-migration.rb"
 "${SCRIPT_DIR}/check-spec-010-migration.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-declaration-surface.rb"
 "${SCRIPT_DIR}/check-spec-010-declaration-surface.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-010-macro-boundary.rb"
+"${SCRIPT_DIR}/check-spec-010-macro-boundary.rb" >>"${log_path}" 2>&1
 if [[ "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ]]; then
     record_command "${SCRIPT_DIR}/check-spec-010-attachment-property.sh"
     "${SCRIPT_DIR}/check-spec-010-attachment-property.sh" >>"${log_path}" 2>&1

@@ -2,7 +2,23 @@ schema_version: 1
 targets:
   GiftUI:
     type: regular
+    dependencies:
+      - GiftUIMacros
+  GiftUIMacros:
+    type: macro
     dependencies: []
+    external_dependencies:
+      - SwiftCompilerPlugin@swift-syntax
+      - SwiftDiagnostics@swift-syntax
+      - SwiftSyntax@swift-syntax
+      - SwiftSyntaxBuilder@swift-syntax
+      - SwiftSyntaxMacros@swift-syntax
+  GiftUIMacrosTests:
+    type: test
+    dependencies:
+      - GiftUIMacros
+    external_dependencies:
+      - SwiftSyntaxMacrosTestSupport@swift-syntax
   GiftUIFailureCore:
     type: regular
     dependencies: []

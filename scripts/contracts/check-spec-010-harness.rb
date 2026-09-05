@@ -43,6 +43,11 @@ macro_rows = fixtures.join("MacroExpansion/cases.tsv").each_line.each_with_objec
   rows << fields
 end
 fail_check("macro fixture identifiers are duplicated") unless macro_rows.map(&:first).uniq.length == macro_rows.length
+macro_rows.each do |id, source, expansion, diagnostics, _evidence_class|
+  fail_check("macro source is missing for #{id}") unless fixtures.join(source).file?
+  fail_check("macro expansion is missing for #{id}") unless expansion == "-" || fixtures.join(expansion).file?
+  fail_check("macro diagnostics are missing for #{id}") unless diagnostics == "-" || fixtures.join(diagnostics).file?
+end
 
 evidence_rows = fixtures.join("required-evidence.tsv").each_line.each_with_object([]) do |line, rows|
   next if line.start_with?("#") || line.strip.empty?

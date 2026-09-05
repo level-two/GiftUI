@@ -1,3 +1,14 @@
+@attached(
+    member,
+    names: named(_giftUIVisitObservableStateDeclarations), named(_giftUITraverse)
+)
+@attached(extension, conformances: _GiftUIObservableStateHost)
+public macro ObservableStateHost() =
+    #externalMacro(
+        module: "GiftUIMacros",
+        type: "ObservableStateHostMacro"
+    )
+
 @propertyWrapper
 public struct State<Value: _GiftUIObservableReference> {
     private enum Storage {

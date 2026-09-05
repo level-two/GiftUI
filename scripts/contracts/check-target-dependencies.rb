@@ -15,15 +15,22 @@ def fail_check(message)
   exit 1
 end
 
-def target_dependency_name(dependency)
-  keys = dependency.keys & %w[byName target]
+def target_dependency(dependency)
+  keys = dependency.keys & %w[byName product target]
   fail_check("unsupported dependency declaration #{dependency.inspect}") unless keys.length == 1
 
-  value = dependency.fetch(keys.first)
+  kind = keys.first
+  value = dependency.fetch(kind)
   name = value.is_a?(Array) ? value.first : value
-  fail_check("dependency has no target name: #{dependency.inspect}") unless name.is_a?(String)
+  fail_check("dependency has no target or product name: #{dependency.inspect}") unless name.is_a?(String)
 
-  name
+  if kind == "product"
+    package = value[1]
+    fail_check("external product dependency has no package: #{dependency.inspect}") unless package.is_a?(String)
+    [:external, "#{name}@#{package}"]
+  else
+    [:internal, name]
+  end
 end
 
 def find_cycle(edges)
@@ -77,10 +84,21 @@ fail_check("dump-package JSON has no targets array") unless actual_targets.is_a?
 actual = actual_targets.to_h do |target|
   name = target["name"]
   fail_check("target name must be a string") unless name.is_a?(String)
-  dependencies = target.fetch("dependencies", []).map do |dependency|
-    target_dependency_name(dependency)
+  dependencies = target.fetch("dependencies", []).map { |dependency| target_dependency(dependency) }
+  internal_dependencies = dependencies.each_with_object([]) do |(kind, dependency), values|
+    values << dependency if kind == :internal
   end
-  [name, { "type" => target["type"], "dependencies" => dependencies }]
+  external_dependencies = dependencies.each_with_object([]) do |(kind, dependency), values|
+    values << dependency if kind == :external
+  end
+  [
+    name,
+    {
+      "type" => target["type"],
+      "dependencies" => internal_dependencies,
+      "external_dependencies" => external_dependencies
+    }
+  ]
 end
 
 fail_check("dump-package contains duplicate target names") unless actual.length == actual_targets.length
@@ -97,20 +115,26 @@ actual_edges = {}
 expected_names.each do |name|
   declaration = expected[name]
   fail_check("#{name} declaration must be a mapping") unless declaration.is_a?(Hash)
-  fail_check("#{name} has unknown keys") unless (declaration.keys - %w[type dependencies]).empty?
+  fail_check("#{name} has unknown keys") unless
+    (declaration.keys - %w[type dependencies external_dependencies]).empty?
 
   expected_type = declaration["type"]
   expected_dependencies = declaration["dependencies"]
+  expected_external_dependencies = declaration.fetch("external_dependencies", [])
   fail_check("#{name} type must be a string") unless expected_type.is_a?(String)
   fail_check("#{name} dependencies must be an array") unless expected_dependencies.is_a?(Array)
   fail_check("#{name} dependencies must be unique strings") unless
     expected_dependencies.all? { |dependency| dependency.is_a?(String) } &&
       expected_dependencies.uniq.length == expected_dependencies.length
+  fail_check("#{name} external dependencies must be unique strings") unless
+    expected_external_dependencies.all? { |dependency| dependency.is_a?(String) } &&
+      expected_external_dependencies.uniq.length == expected_external_dependencies.length
 
   unknown_expected = expected_dependencies - expected_names
   fail_check("#{name} names unknown dependencies #{unknown_expected.inspect}") unless unknown_expected.empty?
 
   actual_dependencies = actual.fetch(name).fetch("dependencies")
+  actual_external_dependencies = actual.fetch(name).fetch("external_dependencies")
   unknown_actual = actual_dependencies - actual_names
   fail_check("#{name} has unknown direct dependencies #{unknown_actual.inspect}") unless unknown_actual.empty?
 
@@ -119,6 +143,13 @@ expected_names.each do |name|
   end
   unless expected_dependencies.sort == actual_dependencies.sort
     fail_check("#{name} direct dependencies differ: expected #{expected_dependencies.sort.inspect}, got #{actual_dependencies.sort.inspect}")
+  end
+  unless expected_external_dependencies.sort == actual_external_dependencies.sort
+    fail_check(
+      "#{name} external dependencies differ: expected " \
+      "#{expected_external_dependencies.sort.inspect}, got " \
+      "#{actual_external_dependencies.sort.inspect}"
+    )
   end
 
   expected_edges[name] = expected_dependencies
