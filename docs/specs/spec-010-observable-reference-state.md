@@ -2,7 +2,7 @@
 id: SPEC-010
 feature: observable-reference-state
 title: Observable Reference State Contract
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-26

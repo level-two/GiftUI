@@ -2,7 +2,7 @@
 spec: SPEC-010
 feature: observable-reference-state
 title: SPEC-010 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-04
@@ -108,7 +108,7 @@ authoritative. No runtime or macro implementation is inferred from a Spike.
 **Exit evidence:** Every acceptance label, dependency owner, existing gap,
 fixture schema, and migration surface is explicit before declarations land.
 
-- [ ] `T0.1` — Create `Tests/ContractFixtures/SPEC010/` with an ordered compile
+- [x] `T0.1` — Create `Tests/ContractFixtures/SPEC010/` with an ordered compile
       registry, macro-expansion snapshot schema, semantic transcript schema,
       normalized result schema, required-evidence registry, and README that
       separates host execution, cross-build, simulator, and connected-target
@@ -452,3 +452,15 @@ the planning artifact. The plan is ready because every OS criterion maps to
 ordered code and evidence, independent declaration work is separated from
 SPEC-009/013/015 blockers, and no Spike mechanism or downstream contract is
 treated as production authority.
+
+Implementation began on 2026-09-04. The feature is now `implementation`, the
+approved Specification is `implementing`, and this plan is `active`; these
+progress transitions do not change the approved contract.
+
+`T0.1` is complete: the checked-in
+[authority audit](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-0/authority-audit.md)
+verifies the accepted/approved lifecycle chain, all twelve acceptance labels,
+MVP need, upstream ownership, and the non-authoritative status of both Spikes.
+The fixture README, ordered compile and macro schemas, semantic transcript and
+normalized-result schemas, and exact pending evidence registry form a
+fail-closed baseline validated by the new harness check. `T0.2` is next.
