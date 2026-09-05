@@ -2,7 +2,7 @@
 id: SPEC-010
 feature: observable-reference-state
 title: Observable Reference State Contract
-status: implementing
+status: review
 authors:
   - codex
 created: 2026-08-26
@@ -45,13 +45,11 @@ target_milestone: MVP
 
 # SPEC-010: Observable Reference State Contract
 
-> **Approval status:** Explicitly reapproved by the maintainer after the
-> 2026-08-28 amendment exposing the exact publishable candidate target
-> generation needed by SPEC-011 and SPEC-013. On 2026-09-05, the maintainer
-> directed the source-level correction of the attachment getter after the
-> pinned compiler rejected a declaration-level ownership modifier. The
-> corrected contract is authoritative for implementation; its ownership
-> semantics are unchanged.
+> **Review status:** The previously approved contract entered implementation
+> after the 2026-08-28 candidate-target amendment and the maintainer-directed
+> 2026-09-05 attachment-getter correction. This completeness amendment returns
+> the Specification to `review`. It is ready for human approval consideration
+> but is not implementation authority until explicitly reapproved.
 
 ## Summary
 
@@ -105,8 +103,9 @@ freeze, publication, wake, and dirty-rederivation behavior. RFC-008 supplies
 the MVP 80-facts-per-second / 250-millisecond workload. SPEC-001 is a
 non-authoritative downstream instantiation until separately approved;
 SPEC-010 neither imports its types nor relies on its numeric capacities for
-completeness. SPEC-011 consumes only the borrowed target-generation and model-
-access seams defined here.
+completeness. SPEC-011 consumes the borrowed target-generation view defined
+here and owns the target-composed `ActionModelTargetAccess` seam that borrows
+the current model without introducing an import between the focused owners.
 
 ## Related ADRs
 
@@ -401,6 +400,25 @@ conforming substitutes. `.preserved` means an existing compatible association
 was bound; `.materialized` means a candidate association was created;
 `.dirtied` and `.coalesced` are the exact successful report outcomes.
 
+Successful operations return exactly these values:
+
+| Operation | Successful result |
+| --- | --- |
+| `beginCandidate()` | `.success(.candidateStarted)` |
+| `encounter`, new compatible location | `.success(.materialized)` |
+| `encounter`, compatible live location | `.success(.preserved)` |
+| `finishCandidate(.discard)` | `.success(.candidateDiscarded)` |
+| `finishCandidate(.publish)`, any addition or removal | `.success(.associationsCommitted)` |
+| `finishCandidate(.publish)`, live association set unchanged | `.success(.unchanged)` |
+| `replace`, committed candidate | `.success(.replaced)` |
+| `acceptReport`, clean live owner | `.success(.dirtied)` |
+| `acceptReport`, already-dirty live owner | `.success(.coalesced)` |
+
+No operation may return a success case assigned to another row. Candidate
+discard reports `.candidateDiscarded` even when it staged no association;
+publication reports `.unchanged` only when keys, models, registrations,
+generations, and removal state are all unchanged.
+
 Each registration receives one `_GiftUIObservationAttachment`. `slot` indexes
 the bounded registration record. `generation` is allocated from the same
 runtime-wide checked `UInt32` namespace exposed to SPEC-011 as
@@ -450,6 +468,28 @@ existential registry. Dynamic profiles may realize the binding through a
 bounded runtime-owned box; static profiles MUST use generated typed direct
 access. The binding cannot escape the traversal call or become persisted
 client state.
+
+### Logical storage contract
+
+Every profile MUST represent the following complete logical field sets. A
+profile may pack, specialize, or statically generate them, but may not omit a
+field, merge identities from different namespaces, or count the same storage
+as two simultaneously live capacities:
+
+| Storage family | Required logical fields | Capacity owner |
+| --- | --- | --- |
+| Live location | structural identity, declaration ordinal, compatible model type/layout discriminator, owned model storage or identity-preserving typed handle, attachment slot and generation, dirty bit, and live/removal-staged state | `maximumLocations` |
+| Registration | occupied state, slot, generation, owning location key, and inactive/active/retired report-route state | `maximumRegistrations` |
+| Candidate association | location key, encountered mark, preserved-or-candidate-only classification, publishable generation, and pending addition/removal state | `maximumStagedAssociations` |
+| Replacement staging | location key, candidate model storage or typed handle, candidate attachment, and attach-verification/activation state while the former live association remains intact | one record from `maximumStagedAssociations` |
+| Runtime bookkeeping | checked next registration generation or exhausted state, candidate lifecycle state, and the optional first cycle-local mutation failure | one fixed record per assembled runtime |
+
+The model owns the one transferred sink while its registration is installed;
+the runtime registration retains only the bounded route state needed to
+validate the complete attachment and deliver a report. Candidate and
+replacement records release all candidate-owned model and route state on
+discard or precommit failure. SPEC-013 owns physical profile storage and audit
+totals, but it MUST realize these exact logical fields and capacities.
 
 ## Behavior
 
@@ -506,7 +546,11 @@ another registration can be installed.
 The candidate sink is not active until the candidate attachment has been
 verified. A report attempted during attach, before activation, during detach,
 or after retirement returns `.staleAttachment`; it cannot dirty the candidate,
-former location, or a reused slot. Detach is idempotent only for the exact
+former location, or a reused slot. A report during candidate attachment makes
+that encounter fail and discard the complete candidate; a report during
+replacement attachment makes replacement fail and preserves the former live
+association. A later matching attachment return does not erase the first
+failure or activate that route. Detach is idempotent only for the exact
 currently installed attachment. A mismatched detach is
 `.invariantViolation`; it does not retire another registration.
 
@@ -592,15 +636,17 @@ vacant -> candidate-reserved -> candidate-attached -> live
                                                     \-> removal-staged -> retired
 ```
 
-Only semantic publication performs `candidate-attached -> live`, commits a
-replacement, or performs `removal-staged -> retired`. Candidate discard and
-failed replacement invalidate candidate routes before releasing their staging
-records. Detachment MUST make every later report bearing the retired
-attachment stale, including after slot reuse. Runtime shutdown invalidates all
-live and staged routes, detaches every installed sink once, releases all
-profile-owned model storage, and admits no later report, fact, action, or
-candidate. Removal and shutdown do not call application `startObserving` or
-`stopObserving`; the host owns those effects explicitly.
+Semantic publication performs `candidate-attached -> live` and
+`removal-staged -> retired`. Replacement commits atomically during `.mutating`
+and remains applied and dirty if later derivation or publication fails, as
+required by ADR-024; it is not candidate-association publication. Candidate
+discard and failed replacement invalidate candidate routes before releasing
+their staging records. Detachment MUST make every later report bearing the
+retired attachment stale, including after slot reuse. Runtime shutdown
+invalidates all live and staged routes, detaches every installed sink once,
+releases all profile-owned model storage, and admits no later report, fact,
+action, or candidate. Removal and shutdown do not call application
+`startObserving` or `stopObserving`; the host owns those effects explicitly.
 
 ## Capability Requirements
 
@@ -628,7 +674,8 @@ Owner adapters map local errors to SPEC-003 facts as follows:
 | `duplicateOwner`, replacement | `.invalidIdentity` | `.observableState` | `.operation` | `.contained` |
 | `incompatibleAssociation`, candidate binding | `.invalidIdentity` | `.observableState` | `.component` | `.contained` |
 | `incompatibleAssociation`, replacement | `.invalidIdentity` | `.observableState` | `.operation` | `.contained` |
-| `staleAttachment` | `.invalidIdentity` | `.observableState` | `.operation` | `.contained` |
+| `staleAttachment`, candidate attachment | `.invalidIdentity` | `.observableState` | `.component` | `.contained` |
+| `staleAttachment`, replacement attachment or retired report | `.invalidIdentity` | `.observableState` | `.operation` | `.contained` |
 | `invalidPhaseContained` | `.invalidPhase` | `.observableState` | `.activeCycle` | `.contained` |
 | `invalidPhaseSafetyNotProven` | `.invalidPhase` | `.observableState` | `.activeCycle` | `.safetyNotProven` |
 | `reentrancyViolation` | `.reentrancyViolation` | `.observableState` | `.activeCycle` | `.safetyNotProven` |
@@ -637,13 +684,26 @@ Owner adapters map local errors to SPEC-003 facts as follows:
 Ordinary exhaustion MUST NOT trap, allocate an unbounded fallback, publish a
 partial association set, or detach a working replacement target.
 
+When multiple local conditions are visible at one observable-state operation
+boundary, the owner selects the first applicable case in this order:
+`reentrancyViolation`, `invalidPhaseSafetyNotProven`,
+`invalidPhaseContained`, `incompatibleAssociation`, `duplicateOwner`,
+`registrationGenerationExhausted`, `locationCapacityExhausted`,
+`registrationCapacityExhausted`, `associationStagingCapacityExhausted`,
+`replacementStagingCapacityExhausted`, `staleAttachment`, then
+`invariantViolation`. Cases that cannot arise for that operation are skipped.
+Validation stops at the selected failure except for mandatory cleanup, and a
+later cleanup failure is secondary. The cycle-local mutation-result slot
+preserves the first selected failure. SPEC-009 and SPEC-013 must retain this
+focused-owner precedence rather than re-rank it.
+
 Mandatory containment and remaining policy choices are exact:
 
 | Condition context | Mandatory owner/coordinator effects | Allowed residual response |
 | --- | --- | --- |
-| Initial/candidate capacity, duplicate-owner, or incompatible-association failure | Skip the affected body, discard the complete candidate, detach candidate-only registrations, and preserve the prior publication | `quiesceAffectedScope` or `invokeFatalHook` when no prior root exists; otherwise `continueOperation` or `quiesceAffectedScope` |
-| Replacement capacity, duplicate-owner, or incompatible-association failure | Detach candidate-only state and preserve the former model, attachment, target generation, dirtiness, and publication | `continueOperation` or `quiesceAffectedScope` |
-| Stale attachment | Reject the report and preserve current dirtiness without addressing a reused slot | `continueOperation` |
+| Initial/candidate capacity, duplicate-owner, incompatible-association, or attach-time stale failure | Skip the affected body, discard the complete candidate, detach candidate-only registrations, and preserve the prior publication | `quiesceAffectedScope` or `invokeFatalHook` when no prior root exists; otherwise `continueOperation` or `quiesceAffectedScope` |
+| Replacement capacity, duplicate-owner, incompatible-association, or attach-time stale failure | Detach candidate-only state and preserve the former model, attachment, target generation, dirtiness, and publication | `continueOperation` or `quiesceAffectedScope` |
+| Retired or otherwise stale attachment report | Reject the report and preserve current dirtiness without addressing a reused slot | `continueOperation` |
 | Contained phase violation | Preserve the last complete publication, mark the live owner dirty, and schedule exactly one retry no earlier than the next host pace | no residual policy call |
 | Registration-generation exhaustion | Preserve any former live association and publication; admit no new registration and require a fresh runtime | `quiesceAffectedScope` or `invokeFatalHook` |
 | Safety-not-proven phase, reentrancy, or invariant failure | Discard partial candidate/publication work and admit no later normal cycle | `quiesceAffectedScope` or `invokeFatalHook` |
@@ -714,8 +774,9 @@ for Specification approval.
   publication behavior with no stale report alias.
 - [ ] **OS-004:** Twenty admitted changes before one opportunity yield one
   dirty owner, one wake, one complete reevaluation, and no replay.
-- [ ] **OS-005:** Every local condition produces the exact outcome mapping and
-  no partial association publication.
+- [ ] **OS-005:** Every individual or simultaneous local condition follows the
+  exact focused-owner precedence and outcome mapping with no partial
+  association publication.
 - [ ] **OS-006:** Dynamic and static transcripts are identical at equal limits;
   the static run records zero heap allocation.
 - [ ] **OS-007:** Presentation-fact fixtures prove ordered later application,
@@ -734,7 +795,8 @@ for Specification approval.
 - [ ] **OS-011:** Every report returns the exact dirtied, coalesced, stale,
   contained-phase, safety-not-proven, reentrancy, or invariant result; no-op,
   attach/detach, freeze, slot-reuse, and shutdown cases produce the specified
-  dirty/wake and mandatory-disposition transcripts.
+  dirty/wake and mandatory-disposition transcripts, including candidate or
+  replacement rejection after an attach-time report.
 - [ ] **OS-012:** During one active candidate, publishable lookup returns the
   exact preserved or already-reserved generation only after successful
   encounter; publication makes it live, discard retires candidate-only values
@@ -758,7 +820,9 @@ OS-011 for the revised declarations.
 ## Open Issues
 
 No unresolved contract or architectural choice remains in this amendment.
-SPEC-006 and SPEC-009 remain approved. OS-001 compile
+The result, storage, replacement-lifecycle, attach-time-report, and focused-
+owner precedence gaps found during implementation review are closed. SPEC-006
+and SPEC-009 remain approved. OS-001 compile
 evidence is an implementation-conformance requirement, not authority for the
 declaration contract. SPEC-001 remains responsible for its own fact cases,
 application-executor entry contract, and production capacities; because this

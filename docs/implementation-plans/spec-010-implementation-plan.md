@@ -2,7 +2,7 @@
 spec: SPEC-010
 feature: observable-reference-state
 title: SPEC-010 Implementation Plan
-status: active
+status: draft
 owners:
   - codex
 created: 2026-09-04
@@ -21,16 +21,19 @@ superseded_by: null
 
 # SPEC-010 Implementation Plan
 
-> This ready plan derives work from the approved Observable Reference State
-> Contract. It orders implementation and evidence but does not amend the
+> This plan derived work from the previously approved Observable Reference
+> State Contract. SPEC-010 returned to `review` on 2026-09-05 for a completeness
+> amendment, so further execution is paused and this plan is `draft` pending
+> renewed approval and reconciliation. It orders implementation and evidence
+> but does not amend the
 > declaration, generation, ownership, mutation, publication, failure, action-
 > target, or profile contracts owned by that Specification and its accepted
 > dependencies.
 
 ## Authority and Scope
 
-The governing contract is approved
-[SPEC-010](../specs/spec-010-observable-reference-state.md), under accepted
+The governing [SPEC-010](../specs/spec-010-observable-reference-state.md)
+contract is in review for renewed approval, under accepted
 [PROPOSAL-005](../proposals/proposal-005-observable-reference-state.md),
 approved [RFC-008](../rfcs/rfc-008-observable-reference-state-architecture.md)
 and [RFC-011](../rfcs/rfc-011-bounded-application-actions.md), and accepted
@@ -198,9 +201,10 @@ with exact local values, protocols, module direction, and no profile storage.
       disposition values; exhaust raw values, initializer validation, equal-
       to-limit behavior, `Equatable`/`Sendable`, and owned layouts.
 - [ ] `T2.2` — Implement the exact reconciler, mutation-owner, and target-view
-      package protocols without concrete runtime storage. Add fixture-only
-      bounded structural identity and prove live/publishable target views
-      expose no model, attachment, sink, handler, or mutating operation.
+      package protocols plus every logical storage field fixed by SPEC-010,
+      without selecting concrete runtime packing. Add fixture-only bounded
+      structural identity and prove live/publishable target views expose no
+      model, attachment, sink, handler, or mutating operation.
 - [ ] `T2.3` — Implement `PresentationFactAdmissionAdapter` as the typed façade
       over SPEC-009 admission. Prove only finite immutable `Sendable` facts
       pass, no second queue/limit/sequence/result exists, and refusal never
@@ -321,9 +325,10 @@ scope, containment, mandatory effects, and allowed residual policy rows.
       `GiftUIObservableState` and `GiftUIFailureCore`; map every candidate,
       replacement, stale, phase, generation, reentrancy, and invariant context
       to the exact SPEC-003 fact after mandatory effects complete.
-- [ ] `T7.2` — Exhaust the residual-policy table, including rows with no policy
-      call. Prove policy cannot weaken containment, narrow scope, skip cleanup,
-      retry without a bound, or reinterpret failure as success.
+- [ ] `T7.2` — Exhaust individual and simultaneous failures in SPEC-010's exact
+      focused-owner precedence plus the residual-policy table, including rows
+      with no policy call. Prove policy cannot weaken containment, narrow scope,
+      skip cleanup, retry without a bound, or reinterpret failure as success.
 - [ ] `T7.3` — Run correctness with diagnostics absent and with permitted
       projections enabled/disabled/lost/saturated. Compare identical typed
       results, live sets, generations, dirtiness, wake, and publication state.
@@ -461,15 +466,15 @@ profiles, but `T6.1` production claims wait for SPEC-013 and SPEC-015 owners.
 
 ## Completion Record
 
-Plan drafted on 2026-09-04. No implementation task is credited complete by
-the planning artifact. The plan is ready because every OS criterion maps to
-ordered code and evidence, independent declaration work is separated from
-SPEC-009/013/015 blockers, and no Spike mechanism or downstream contract is
-treated as production authority.
+Plan drafted and marked ready on 2026-09-04. At that gate every OS criterion
+mapped to ordered code and evidence, independent declaration work was separated
+from SPEC-009/013/015 blockers, and no Spike mechanism or downstream contract
+was treated as production authority.
 
-Implementation began on 2026-09-04. The feature is now `implementation`, the
-approved Specification is `implementing`, and this plan is `active`; these
-progress transitions do not change the approved contract.
+Implementation began on 2026-09-04 under the then-approved contract. The
+2026-09-05 completeness amendment returned the feature to `specification`, the
+Specification to `review`, and this plan to `draft`; further implementation is
+paused pending renewed approval and plan reconciliation.
 
 `T0.1` is complete: the checked-in
 [authority audit](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-0/authority-audit.md)
@@ -485,6 +490,13 @@ the maintainer directed its correction to a compiler-valid read-only getter.
 `check-spec-010-attachment-property.sh` proves that the getter borrows without
 consuming the noncopyable sink. T1.1 is unblocked and remains unchecked until
 the complete declaration family and its profile evidence land.
+
+The subsequent completeness review found missing exact success-result routing,
+logical storage fields, attach-time report disposition, focused-owner failure
+precedence, and a contradiction over replacement commit timing. SPEC-010 now
+closes those gaps without changing accepted architecture and is ready for human
+approval consideration. Until renewed approval, no further implementation task
+may proceed from the amendment.
 
 `T0.3` is complete: the
 [registered contract driver](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-0/contract-driver.md)
