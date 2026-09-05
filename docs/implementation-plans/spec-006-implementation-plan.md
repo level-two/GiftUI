@@ -253,7 +253,7 @@ local values, lifecycle, detection order, and publish/discard behavior.
       exact normative order. Ensure begin, stage, publish-once, discard-all,
       idle reset, overflow-before-wrap, and clean workspace reuse are
       independently observable by fixtures.
-- [ ] `T2.3` — Implement the traversal visitor over custom bodies, fixed
+- [x] `T2.3` — Implement the traversal visitor over custom bodies, fixed
       children, conditionals, optionals, typed primitives, action primitives,
       and typed modifier scopes. Preserve borrowed/nonescaping lifetimes,
       depth-first left-to-right order, exactly-once active body evaluation,
@@ -660,5 +660,16 @@ discards and resets caller-owned collaborators on every failure path. Focused
 tests cover overflow-before-wrap, falsely advertised capacity, begin/publish
 failure, later-work suppression, atomicity, and clean workspace reuse; see the
 [attempt lifecycle evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-2/attempt-lifecycle.md).
-The generic entry remains deliberately fail-closed after this lifecycle until
-`T2.3` installs the traversal visitor; `T2.3` is next.
+At that task boundary the generic entry remained deliberately fail-closed
+until `T2.3` installed the traversal visitor.
+
+`T2.3` is complete for the ordinary declaration surface: the sole visitor now
+expands custom bodies, fixed groups, selected conditional branches, optional
+presence/absence, typed primitives, action-bearing primitives, and modifier
+scopes through T2.2's atomic coordinator. Focused tests prove depth-first
+left-to-right traversal, exactly-once active body access, action node-before-
+action ordering, increasing scope-local modifier indices, first-failure stop,
+discard, and idle reset; see the
+[atomic traversal evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-2/atomic-traversal.md).
+The stateful category remains fail-closed without body access until the
+SPEC-010-owned decorator is integrated in Milestone 5. `T2.4` is next.

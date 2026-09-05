@@ -258,7 +258,7 @@ run_fixture_set() {
 run_macos() {
     [[ "$(uname -s)" == "Darwin" && "$(uname -m)" == "arm64" ]] ||
         fail 'macOS profiles require an arm64 macOS host'
-    local compiler version sdk profile_flag extension module_dir image
+    local compiler version sdk profile_flag extension module_dir foundation_image image
     compiler="$(xcrun --find swiftc)"
     version="$("${compiler}" --version 2>&1)"
     [[ "${version}" == *'Apple Swift version 6.3.3'* && "${version}" == *'swiftlang-6.3.3.1.3'* ]] ||
@@ -272,6 +272,7 @@ run_macos() {
         extension=a
     fi
     module_dir="${report_dir}/build/modules"
+    foundation_image="${report_dir}/build/libGiftUI.${extension}"
     image="${report_dir}/build/libGiftUISemanticCore.${extension}"
     mkdir -p "${module_dir}"
     record_compiler "${compiler}"
@@ -279,10 +280,15 @@ run_macos() {
     printf 'sdk_path=%s\n' "${sdk}" >>"${metadata_path}"
     printf 'optimization=-O -whole-module-optimization\n' >>"${metadata_path}"
     local -a flags=(-target arm64-apple-macosx26.0 -sdk "${sdk}" -O -whole-module-optimization "${profile_flag}" -language-mode 6 -package-name GiftUI)
-    local -a foundation=("${compiler}" "${flags[@]}" -parse-as-library -emit-module -module-name GiftUI "${FOUNDATION_SOURCE}" "${DECLARATION_SOURCE}" "${OBSERVABLE_SOURCE}" -emit-module-path "${module_dir}/GiftUI.swiftmodule")
+    local -a foundation=("${compiler}" "${flags[@]}" -parse-as-library -emit-module -emit-library -module-name GiftUI "${FOUNDATION_SOURCE}" "${DECLARATION_SOURCE}" "${OBSERVABLE_SOURCE}" -emit-module-path "${module_dir}/GiftUI.swiftmodule")
+    if [[ "${profile}" == "macos-static" ]]; then
+        foundation+=(-static)
+    fi
+    foundation+=(-o "${foundation_image}")
     record_command "${foundation[@]}"
     "${foundation[@]}" >>"${log_path}" 2>&1
-    local -a semantic=("${compiler}" "${flags[@]}" -parse-as-library -emit-module -emit-library -module-name GiftUISemanticCore -I "${module_dir}" "${SEMANTIC_SOURCE}" -emit-module-path "${module_dir}/GiftUISemanticCore.swiftmodule")
+    record_image foundation-library "${foundation_image}"
+    local -a semantic=("${compiler}" "${flags[@]}" -parse-as-library -emit-module -emit-library -module-name GiftUISemanticCore -I "${module_dir}" -L "${report_dir}/build" -lGiftUI "${SEMANTIC_SOURCE}" -emit-module-path "${module_dir}/GiftUISemanticCore.swiftmodule")
     if [[ "${profile}" == "macos-static" ]]; then
         semantic+=(-static)
     fi

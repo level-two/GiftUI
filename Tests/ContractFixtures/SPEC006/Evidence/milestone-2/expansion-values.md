@@ -12,10 +12,8 @@ identity, and staging capacity and expose begin, stage, publish, discard, and
 reset operations without importing a runtime profile or failure module. The
 sole generic `expandSemanticTree` entry accepts a borrowed root, immutable
 limits, and `inout` collaborators. Its same-workspace active check already
-fails before touching the sink. T2.2 now supplies the bounded lifecycle beneath
-that entry; until T2.3 installs traversal, an otherwise valid entry begins both
-collaborators and then atomically discards and resets with
-`.invariantViolation` rather than reporting partial success.
+fails before touching the sink. T2.2 supplies the bounded lifecycle beneath
+that entry, and T2.3 now supplies its sealed traversal visitor.
 
 The host compiler reports limits and summary sizes within 10 bytes, the local
 error at exactly 1 byte, and the result within 12 bytes. Cross-profile layout

@@ -18,9 +18,10 @@ Focused `SemanticExpansionAttemptTests` exercise independently:
 - no later operation after the first error, no partial publication on begin,
   stage, or publish failure, complete discard/reset, and clean reuse of the
   same caller-owned collaborators; and
-- the temporary fail-closed generic entry lifecycle pending T2.3 traversal.
+- the generic entry's empty-root success path through the installed T2.3
+  traversal.
 
 The coordinator carries only value counters, capacity snapshots, and local
 lifecycle state. It retains no declaration or payload, allocates no fallback,
-imports no failure or runtime-profile module, and leaves canonical traversal
-order to T2.3.
+imports no failure or runtime-profile module. T2.3 supplies traversal order
+through this lifecycle without changing its bounds or rollback behavior.

@@ -539,6 +539,397 @@ struct SemanticExpansionAttempt {
     }
 }
 
+private struct SemanticExpansionTraversal<Workspace, Sink>:
+    _GiftUISemanticTraversalVisitor
+where
+    Workspace: SemanticExpansionWorkspace,
+    Sink: SemanticExpansionSink,
+    Workspace.Identity == Sink.Identity
+{
+    private(set) var attempt: SemanticExpansionAttempt
+    private(set) var workspace: Workspace
+    private(set) var sink: Sink
+
+    private(set) var failure: SemanticExpansionError?
+    private var currentIdentity: Workspace.Identity?
+    private var currentCategoryWasVisited = false
+    private var nextModifierChainIndex: UInt16 = 0
+
+    init(
+        attempt: SemanticExpansionAttempt,
+        workspace: Workspace,
+        sink: Sink
+    ) {
+        self.attempt = attempt
+        self.workspace = workspace
+        self.sink = sink
+    }
+
+    mutating func expandRoot<Root: View>(_ root: borrowing Root) {
+        guard failure == nil else { return }
+        var rootIdentity: Workspace.Identity?
+        if let error = attempt.enterRoot(
+            Root.self,
+            workspace: &workspace,
+            identity: &rootIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let rootIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+
+        currentIdentity = rootIdentity
+        expandDeclaration(root)
+        guard failure == nil else { return }
+        if let error = attempt.leavePathComponent(workspace: &workspace) {
+            stop(error)
+        }
+    }
+
+    mutating func visitCustomView<Declaration: View>(
+        _ declaration: borrowing Declaration,
+        body: () -> Declaration.Body
+    ) {
+        guard beginCategory() else { return }
+        var bodyIdentity: Workspace.Identity?
+        if let error = attempt.enterCustomBody(
+            Declaration.self,
+            workspace: &workspace,
+            identity: &bodyIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let bodyIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+        currentIdentity = bodyIdentity
+
+        if let error = attempt.reserveBodyEvaluation() {
+            stop(error)
+            return
+        }
+        let evaluatedBody = body()
+        expandDeclaration(evaluatedBody)
+        guard failure == nil else { return }
+        if let error = attempt.leavePathComponent(workspace: &workspace) {
+            stop(error)
+        }
+    }
+
+    mutating func visitStatefulCustomView<
+        Declaration: View & _GiftUIObservableStateHost
+    >(
+        _ declaration: borrowing Declaration,
+        body: (borrowing Declaration) -> Declaration.Body
+    ) {
+        guard beginCategory() else { return }
+
+        // SPEC-010's binding decorator owns this category. Milestone 5 installs
+        // that combined coordinator; Semantic Core must not evaluate the body
+        // or invent state binding before then.
+        stop(.invariantViolation)
+    }
+
+    mutating func visitEmpty() {
+        _ = beginCategory()
+    }
+
+    mutating func visitFixed<A: View, B: View>(
+        _ a: borrowing A,
+        _ b: borrowing B
+    ) {
+        guard beginCategory() else { return }
+        expandFixedChild(a, index: 0)
+        expandFixedChild(b, index: 1)
+    }
+
+    mutating func visitFixed<A: View, B: View, C: View>(
+        _ a: borrowing A,
+        _ b: borrowing B,
+        _ c: borrowing C
+    ) {
+        guard beginCategory() else { return }
+        expandFixedChild(a, index: 0)
+        expandFixedChild(b, index: 1)
+        expandFixedChild(c, index: 2)
+    }
+
+    mutating func visitFixed<A: View, B: View, C: View, D: View>(
+        _ a: borrowing A,
+        _ b: borrowing B,
+        _ c: borrowing C,
+        _ d: borrowing D
+    ) {
+        guard beginCategory() else { return }
+        expandFixedChild(a, index: 0)
+        expandFixedChild(b, index: 1)
+        expandFixedChild(c, index: 2)
+        expandFixedChild(d, index: 3)
+    }
+
+    mutating func visitFixed<A: View, B: View, C: View, D: View, E: View>(
+        _ a: borrowing A,
+        _ b: borrowing B,
+        _ c: borrowing C,
+        _ d: borrowing D,
+        _ e: borrowing E
+    ) {
+        guard beginCategory() else { return }
+        expandFixedChild(a, index: 0)
+        expandFixedChild(b, index: 1)
+        expandFixedChild(c, index: 2)
+        expandFixedChild(d, index: 3)
+        expandFixedChild(e, index: 4)
+    }
+
+    mutating func visitConditionalFirst<First: View, Second: View>(
+        _ content: borrowing First,
+        second: Second.Type
+    ) {
+        guard beginCategory() else { return }
+        expandConditionalChild(content, branch: 0)
+    }
+
+    mutating func visitConditionalSecond<First: View, Second: View>(
+        first: First.Type,
+        _ content: borrowing Second
+    ) {
+        guard beginCategory() else { return }
+        expandConditionalChild(content, branch: 1)
+    }
+
+    mutating func visitOptionalAbsent<Content: View>(_ content: Content.Type) {
+        _ = beginCategory()
+    }
+
+    mutating func visitOptionalPresent<Content: View>(
+        _ content: borrowing Content
+    ) {
+        guard beginCategory() else { return }
+        var presenceIdentity: Workspace.Identity?
+        if let error = attempt.enterOptionalPresence(
+            workspace: &workspace,
+            identity: &presenceIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let presenceIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+        currentIdentity = presenceIdentity
+
+        expandFixedChild(content, index: 0)
+        guard failure == nil else { return }
+        if let error = attempt.leavePathComponent(workspace: &workspace) {
+            stop(error)
+        }
+    }
+
+    mutating func visitPrimitive<Payload: _GiftUISemanticPrimitivePayload>(
+        _ payload: borrowing Payload
+    ) {
+        guard beginCategory(), let currentIdentity else {
+            if failure == nil {
+                stop(.invalidIdentity)
+            }
+            return
+        }
+        if let error = attempt.stageSemanticOccurrence(
+            identity: currentIdentity,
+            payload: payload,
+            workspace: &workspace,
+            sink: &sink
+        ) {
+            stop(error)
+        }
+    }
+
+    mutating func visitActionPrimitive<Payload: _GiftUISemanticActionPayload>(
+        _ payload: borrowing Payload
+    ) {
+        guard beginCategory(), let currentIdentity else {
+            if failure == nil {
+                stop(.invalidIdentity)
+            }
+            return
+        }
+        if let error = attempt.stageActionOccurrence(
+            identity: currentIdentity,
+            action: payload._giftUIAction,
+            workspace: &workspace,
+            sink: &sink
+        ) {
+            stop(error)
+        }
+    }
+
+    mutating func visitModifier<
+        Content: View,
+        Payload: _GiftUISemanticModifierPayload
+    >(
+        content: borrowing Content,
+        payload: borrowing Payload
+    ) {
+        guard beginCategory(), let modifierIdentity = currentIdentity else {
+            if failure == nil {
+                stop(.invalidIdentity)
+            }
+            return
+        }
+
+        expandDeclaration(content, continuingModifierChain: true)
+        guard failure == nil else { return }
+        let chainIndex = nextModifierChainIndex
+        if let error = attempt.stageModifierApplication(
+            identity: modifierIdentity,
+            payload: payload,
+            chainIndex: chainIndex,
+            workspace: &workspace,
+            sink: &sink
+        ) {
+            stop(error)
+            return
+        }
+        nextModifierChainIndex += 1
+    }
+
+    private mutating func expandDeclaration<Declaration: View>(
+        _ declaration: borrowing Declaration,
+        continuingModifierChain: Bool = false
+    ) {
+        guard failure == nil else { return }
+        let parentIdentity = currentIdentity
+        let parentCategoryWasVisited = currentCategoryWasVisited
+        let parentModifierChainIndex = nextModifierChainIndex
+        currentCategoryWasVisited = false
+        if !continuingModifierChain {
+            nextModifierChainIndex = 0
+        }
+
+        var declarationIdentity: Workspace.Identity?
+        if let error = attempt.enterDeclarationRole(
+            Declaration.self,
+            workspace: &workspace,
+            identity: &declarationIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let declarationIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+        currentIdentity = declarationIdentity
+        if let error = attempt.stageStructuralOccurrence(
+            identity: declarationIdentity,
+            workspace: &workspace,
+            sink: &sink
+        ) {
+            stop(error)
+            return
+        }
+
+        declaration._giftUITraverse(&self)
+        if failure == nil, !currentCategoryWasVisited {
+            stop(.invariantViolation)
+        }
+        guard failure == nil else { return }
+        if let error = attempt.leavePathComponent(workspace: &workspace) {
+            stop(error)
+            return
+        }
+
+        currentIdentity = parentIdentity
+        currentCategoryWasVisited = parentCategoryWasVisited
+        if !continuingModifierChain {
+            nextModifierChainIndex = parentModifierChainIndex
+        }
+    }
+
+    private mutating func expandFixedChild<Content: View>(
+        _ content: borrowing Content,
+        index: UInt8
+    ) {
+        guard failure == nil else { return }
+        let parentIdentity = currentIdentity
+        var childIdentity: Workspace.Identity?
+        if let error = attempt.enterFixedChild(
+            index,
+            workspace: &workspace,
+            identity: &childIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let childIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+        currentIdentity = childIdentity
+
+        expandDeclaration(content)
+        guard failure == nil else { return }
+        if let error = attempt.leavePathComponent(workspace: &workspace) {
+            stop(error)
+            return
+        }
+        currentIdentity = parentIdentity
+    }
+
+    private mutating func expandConditionalChild<Content: View>(
+        _ content: borrowing Content,
+        branch: UInt8
+    ) {
+        guard failure == nil else { return }
+        let parentIdentity = currentIdentity
+        var branchIdentity: Workspace.Identity?
+        if let error = attempt.enterConditionalBranch(
+            branch,
+            workspace: &workspace,
+            identity: &branchIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let branchIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+        currentIdentity = branchIdentity
+
+        expandFixedChild(content, index: 0)
+        guard failure == nil else { return }
+        if let error = attempt.leavePathComponent(workspace: &workspace) {
+            stop(error)
+            return
+        }
+        currentIdentity = parentIdentity
+    }
+
+    private mutating func beginCategory() -> Bool {
+        guard failure == nil else { return false }
+        guard !currentCategoryWasVisited else {
+            stop(.invariantViolation)
+            return false
+        }
+        currentCategoryWasVisited = true
+        return true
+    }
+
+    private mutating func stop(_ error: SemanticExpansionError) {
+        if failure == nil {
+            failure = error
+        }
+    }
+}
+
 package func expandSemanticTree<
     Root: View,
     Workspace: SemanticExpansionWorkspace,
@@ -554,10 +945,20 @@ package func expandSemanticTree<
         return .failure(error)
     }
 
-    // T2.3 installs traversal through the bounded attempt coordinator. Until
-    // then, fail atomically after exercising the complete caller-owned begin,
-    // discard, and idle-reset lifecycle.
-    return .failure(
-        attempt.fail(.invariantViolation, workspace: &workspace, sink: &sink)
+    var traversal = SemanticExpansionTraversal(
+        attempt: attempt,
+        workspace: workspace,
+        sink: sink
     )
+    traversal.expandRoot(root)
+    attempt = traversal.attempt
+    workspace = traversal.workspace
+    sink = traversal.sink
+
+    if let traversalFailure = traversal.failure {
+        return .failure(
+            attempt.fail(traversalFailure, workspace: &workspace, sink: &sink)
+        )
+    }
+    return attempt.succeed(workspace: &workspace, sink: &sink)
 }

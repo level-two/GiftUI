@@ -323,7 +323,7 @@ final class SemanticExpansionAttemptTests: XCTestCase {
         XCTAssertEqual(sink.events, [.begin, .publish, .reset])
     }
 
-    func testGenericEntryRunsAtomicFailClosedLifecycleUntilTraversalLands() {
+    func testGenericEntryExpandsAnEmptyRootAndPublishesOnce() {
         guard let limits = makeLimits() else {
             return XCTFail("valid limits must construct")
         }
@@ -332,17 +332,28 @@ final class SemanticExpansionAttemptTests: XCTestCase {
 
         XCTAssertEqual(
             expandSemanticTree(
-                AttemptProbeView(),
+                ViewBuilder.buildBlock(),
                 limits: limits,
                 workspace: &workspace,
                 sink: &sink
             ),
-            .failure(.invariantViolation)
+            .success(
+                SemanticExpansionSummary(
+                    semanticNodeCount: 0,
+                    bodyEvaluationCount: 0,
+                    modifierApplicationCount: 0,
+                    actionOccurrenceCount: 0,
+                    maximumObservedDepth: 2
+                )
+            )
         )
-        XCTAssertEqual(workspace.events, [.begin, .discard, .reset])
-        XCTAssertEqual(sink.events, [.begin, .discard, .reset])
+        XCTAssertEqual(
+            workspace.events,
+            [.begin, .enter, .enter, .leave, .leave, .complete, .reset]
+        )
+        XCTAssertEqual(sink.events, [.begin, .structural, .publish, .reset])
         XCTAssertFalse(workspace.isExpanding)
-        XCTAssertTrue(sink.publishedSummaries.isEmpty)
+        XCTAssertEqual(sink.publishedSummaries.count, 1)
     }
 
     private func makeAttempt(
