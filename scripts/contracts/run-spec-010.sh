@@ -60,6 +60,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-010-harness.rb" \
             "${SCRIPT_DIR}/check-spec-010-migration.rb" \
             "${SCRIPT_DIR}/check-spec-010-macro-boundary.rb" \
+            "${SCRIPT_DIR}/check-spec-010-profile-host.rb" \
             "${SCRIPT_DIR}/check-spec-010-state-wrapper.rb" \
             "${SCRIPT_DIR}/check-spec-010-sink-ownership.sh" \
             "${SCRIPT_DIR}/check-spec-010-generated-traversal.rb" \
@@ -117,6 +118,7 @@ log_path="${report_dir}/run.log"
     printf 'run_id=%s\n' "${run_id}"
     printf 'invocation=scripts/contracts/run-spec-010.sh --profile %s\n' "${profile}"
     printf 'public_contract_compile=pending\n'
+    printf 'portable_host_compile=pending\n'
     printf 'evidence_complete=false\n'
     printf 'remote_access=false\n'
     printf 'deployment=false\n'
@@ -164,6 +166,35 @@ record_image() {
     printf '%s\t%s\t%s\n' \
         "${label}" "${artifact#"${PROJECT_ROOT}/"}" "$(hash_file "${artifact}")" \
         >>"${images_path}"
+}
+
+compile_portable_host() {
+    local compiler="$1"
+    local module_dir="$2"
+    local nm_tool="$3"
+    shift 3
+    local object="${report_dir}/build/portable-profile-host.o"
+    local symbols="${report_dir}/image-closure-symbols.txt"
+    local generated="${FIXTURE_ROOT}/MacroExpansion/Expected/portable-profile.swift"
+    local generated_hashes="${report_dir}/generated-declaration.tsv"
+    local module_cache="${report_dir}/build/profile-host-module-cache"
+    mkdir -p "${module_cache}"
+    local -a command=(
+        "${compiler}" "$@" -module-cache-path "${module_cache}" -I "${module_dir}"
+        -parse-as-library -emit-object
+        -module-name SPEC010PortableProfile "${generated}" -o "${object}"
+    )
+    record_command "${command[@]}"
+    "${command[@]}" >>"${log_path}" 2>&1
+    record_command "${nm_tool}" -a "${object}"
+    "${nm_tool}" -a "${object}" >"${symbols}"
+    record_command "${SCRIPT_DIR}/check-spec-010-profile-host.rb" "${symbols}"
+    "${SCRIPT_DIR}/check-spec-010-profile-host.rb" "${symbols}" >>"${log_path}" 2>&1
+    printf '# source\tsha256\n%s\t%s\n' \
+        'MacroExpansion/Expected/portable-profile.swift' "$(hash_file "${generated}")" \
+        >"${generated_hashes}"
+    record_image portable-profile-host "${object}"
+    printf 'portable_host_compile=complete\n' >>"${metadata_path}"
 }
 
 record_required_evidence() {
@@ -236,11 +267,14 @@ compile_macos() {
     "${command[@]}" >>"${log_path}" 2>&1
     record_image portable-module "${module}"
     run_fixture_set "${compiler}" "${report_dir}/build" -target arm64-apple-macosx26.0 -sdk "${sdk}" "${profile_flag}" -language-mode 6
+    compile_portable_host "${compiler}" "${report_dir}/build" nm \
+        -target arm64-apple-macosx26.0 -sdk "${sdk}" "${profile_flag}" \
+        -language-mode 6 -O -whole-module-optimization
 }
 
 compile_raspberry_pi() {
     source "${PROJECT_ROOT}/scripts/raspberry-pi/common.sh"
-    local swift_driver compiler module
+    local swift_driver compiler module sdk_root
     swift_driver="$(giftui_pi_host_swift)"
     compiler="$(dirname "${swift_driver}")/swiftc"
     giftui_pi_require_sdk
@@ -249,13 +283,28 @@ compile_raspberry_pi() {
     printf 'destination=%s\n' "${GIFTUI_PI_STATIC_DESTINATION}" >>"${metadata_path}"
     printf 'optimization=-O -whole-module-optimization\n' >>"${metadata_path}"
     giftui_pi_prepare_build_environment
-    local -a command=("${swift_driver}" build --disable-sandbox --package-path "${PROJECT_ROOT}" --scratch-path "${report_dir}/build/swiftpm" --destination "${GIFTUI_PI_STATIC_DESTINATION}" --configuration release --target GiftUI --static-swift-stdlib -Xswiftc -whole-module-optimization)
+    sdk_root="${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}"
+    module="${report_dir}/build/GiftUI.swiftmodule"
+    local -a sources=("${PROJECT_ROOT}"/Sources/GiftUI/*.swift)
+    local -a command=(
+        "${compiler}" -target "${GIFTUI_PI_TARGET}" -sdk "${sdk_root}"
+        -resource-dir "${sdk_root}/usr/lib/swift_static"
+        -Xcc "--gcc-toolchain=${sdk_root}/usr"
+        -O -whole-module-optimization -language-mode 6 -package-name GiftUI
+        -module-cache-path "${report_dir}/build/module-cache"
+        -parse-as-library -emit-module -module-name GiftUI "${sources[@]}"
+        -emit-module-path "${module}"
+    )
     record_command "${command[@]}"
     "${command[@]}" >>"${log_path}" 2>&1
-    module="$(find "${report_dir}/build/swiftpm" -type f -name 'GiftUI.swiftmodule' -print -quit)"
-    [[ -n "${module}" ]] || fail 'ARMv6 GiftUI module is missing'
     record_image portable-module "${module}"
-    run_fixture_set "${compiler}" "$(dirname "${module}")" -target "${GIFTUI_PI_TARGET}" -sdk "${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}" -resource-dir "${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr/lib/swift_static" -Xcc "--gcc-toolchain=${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr"
+    run_fixture_set "${compiler}" "$(dirname "${module}")" -target "${GIFTUI_PI_TARGET}" -sdk "${sdk_root}" -resource-dir "${sdk_root}/usr/lib/swift_static" -Xcc "--gcc-toolchain=${sdk_root}/usr"
+    compile_portable_host "${compiler}" "$(dirname "${module}")" \
+        "${GIFTUI_PI_HOST_BIN_DIR}/llvm-nm" \
+        -target "${GIFTUI_PI_TARGET}" \
+        -sdk "${sdk_root}" -resource-dir "${sdk_root}/usr/lib/swift_static" \
+        -Xcc "--gcc-toolchain=${sdk_root}/usr" \
+        -O -whole-module-optimization
 }
 
 compile_nrf52840() {
@@ -272,6 +321,11 @@ compile_nrf52840() {
     "${command[@]}" >>"${log_path}" 2>&1
     record_image portable-module "${module}"
     run_fixture_set "${GIFTUI_NRF_SWIFTC}" "${report_dir}/build" -target "${GIFTUI_NRF_SWIFT_TARGET}" -enable-experimental-feature Embedded -Osize -whole-module-optimization -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
+    compile_portable_host "${GIFTUI_NRF_SWIFTC}" "${report_dir}/build" \
+        "${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm" \
+        -target "${GIFTUI_NRF_SWIFT_TARGET}" -enable-experimental-feature Embedded \
+        -Osize -whole-module-optimization -Xcc -mfloat-abi=hard \
+        -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
 }
 
 record_command "${SCRIPT_DIR}/check-spec-010-harness.rb"
@@ -282,6 +336,8 @@ record_command "${SCRIPT_DIR}/check-spec-010-declaration-surface.rb"
 "${SCRIPT_DIR}/check-spec-010-declaration-surface.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-macro-boundary.rb"
 "${SCRIPT_DIR}/check-spec-010-macro-boundary.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-010-profile-host.rb"
+"${SCRIPT_DIR}/check-spec-010-profile-host.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-state-wrapper.rb"
 "${SCRIPT_DIR}/check-spec-010-state-wrapper.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-generated-traversal.rb"

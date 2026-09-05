@@ -21,6 +21,10 @@ final class ObservableStateHostMacroTests: XCTestCase {
         try assertFixture("several")
     }
 
+    func testPortableProfileExpansionIsDeterministic() throws {
+        try assertFixture("portable-profile")
+    }
+
     func testPrivateHostUsesAccessibleProtocolWitnesses() throws {
         try assertFixture("private")
     }

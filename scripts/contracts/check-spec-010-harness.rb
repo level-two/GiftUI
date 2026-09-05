@@ -69,7 +69,8 @@ exit 0 if ARGV.empty?
 fail_check("expected one report directory") unless ARGV.length == 1
 
 report = Pathname.new(ARGV.first)
-%w[metadata.txt commands.txt input-hashes.tsv image-hashes.tsv required-evidence.tsv].each do |relative|
+%w[metadata.txt commands.txt generated-declaration.tsv image-closure-symbols.txt
+   input-hashes.tsv image-hashes.tsv required-evidence.tsv].each do |relative|
   path = report.join(relative)
   fail_check("report lacks #{relative}") unless path.file? && !path.empty?
 end
@@ -80,11 +81,12 @@ metadata = report.join("metadata.txt").each_line.each_with_object({}) do |line, 
 end
 %w[spec profile repository_revision repository_dirty target optimization compiler_path
    compiler_sha256 evidence_complete public_contract_compile connected_target_execution
-   deployment service_restart flashing].each do |key|
+   portable_host_compile deployment service_restart flashing].each do |key|
   fail_check("metadata lacks #{key}") if metadata.fetch(key, "").empty?
 end
 fail_check("wrong report spec") unless metadata["spec"] == "SPEC-010"
 fail_check("public contract status must remain pending") unless metadata["public_contract_compile"] == "pending"
+fail_check("portable host compile did not complete") unless metadata["portable_host_compile"] == "complete"
 %w[connected_target_execution deployment service_restart flashing].each do |key|
   fail_check("driver must not claim #{key}") unless metadata[key] == "false"
 end

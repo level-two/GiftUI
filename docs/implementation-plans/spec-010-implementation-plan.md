@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-04
-updated: 2026-09-05
+updated: 2026-09-06
 related_design_notes: []
 conformance_report: null
 related_future_work:
@@ -179,10 +179,18 @@ enumerate direct state lexically and enter SPEC-006's stateful category.
       an ordinary custom view remains in `visitCustomView`, a generated host
       enters the stateful category, and handwritten application traversal
       overrides remain unsupported and absent from maintained source.
-- [ ] `T1.5` — Compile the same portable model, `@State`, and generated host
+- [x] `T1.5` — Compile the same portable model, `@State`, and generated host
       source under macOS dynamic/static, ARMv6, and nRF52840 modes. Inspect the
       generated declaration output for deterministic bytes at equal inputs and
       the embedded image closure for no macro/compiler-support linkage.
+
+  **Completed 2026-09-06.** The canonical annotated source and checked-in
+  expansion compile as the same optimized target object on all four profiles.
+  Each report records generated-source SHA-256
+  `02831ec5318c786ef899dcae52c0f82910981af79658f4e81bdb45e8645c862b`;
+  target symbol-closure audits reject macro, SwiftSyntax, diagnostic, and
+  compiler-plugin linkage. See the
+  [four-profile generated-host evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-1/four-profile-generated-host.md).
 
 ### Milestone 2: Establish Owner Values and Execution Seams
 

@@ -45,6 +45,12 @@ addresses, metatype addresses, callable identity, string structural paths, or
 profile-private storage bytes. Dynamic and static implementations normalize to
 the same rows.
 
+`portable-profile` is the canonical T1.5 source pair. The host macro test
+expands the annotated input to the checked-in generated source. Every profile
+then compiles that exact generated source to a target object, records its
+SHA-256 input identity, and audits the object symbol closure for absence of
+`GiftUIMacros`, SwiftSyntax, compiler-plugin, and macro implementation linkage.
+
 `required-evidence.tsv` contains exactly `OS-001` through `OS-012`. Every row
 starts `pending`; a task may change a row only when all named evidence exists.
 Drivers must report incomplete conformance while any row remains pending.
