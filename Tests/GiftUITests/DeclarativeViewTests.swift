@@ -27,13 +27,12 @@ final class DeclarativeViewTests: XCTestCase {
         XCTAssertEqual(visitor.bodyEvaluations, 0)
     }
 
-    func testStatefulVisitorCategoryEvaluatesBodyFromTheBorrowedDeclaration() {
+    func testGeneratedStatefulHostUsesStatefulCategoryAndBorrowedBody() {
         var visitor = CustomViewProbeVisitor(evaluateBody: true)
 
-        visitor.visitStatefulCustomView(StatefulRootView()) { declaration in
-            declaration.body
-        }
+        StatefulRootView()._giftUITraverse(&visitor)
 
+        XCTAssertEqual(visitor.customViewVisits, 0)
         XCTAssertEqual(visitor.statefulCustomViewVisits, 1)
         XCTAssertEqual(visitor.bodyEvaluations, 1)
     }
@@ -111,14 +110,25 @@ private struct RootView: View {
     }
 }
 
-private struct StatefulRootView: View, _GiftUIObservableStateHost {
+@ObservableStateHost
+private struct StatefulRootView: View {
+    @State private var model = StatefulTestModel()
+
     var body: some View {
         LeafView()
     }
+}
 
-    mutating func _giftUIVisitObservableStateDeclarations<
-        Visitor: _GiftUIObservableStateDeclarationVisitor
-    >(_ visitor: inout Visitor) {}
+private final class StatefulTestModel: _GiftUIObservableReference {
+    func _giftUIAttachChangeSink(
+        _ sink: consuming _GiftUIObservableChangeSink
+    ) -> _GiftUIObservationAttachment? {
+        sink.attachment
+    }
+
+    func _giftUIDetachChangeSink(
+        _ attachment: _GiftUIObservationAttachment
+    ) {}
 }
 
 private struct InactiveLeaf: View {

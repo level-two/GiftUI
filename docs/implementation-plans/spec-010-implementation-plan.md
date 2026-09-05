@@ -173,7 +173,7 @@ enumerate direct state lexically and enter SPEC-006's stateful category.
       consumes rather than retains a repeated initializer after binding, has
       no task-local/global fallback, and preserves the first setter failure in
       the coordinator-owned cycle-local result route.
-- [ ] `T1.4` — Coordinate with SPEC-006 to add the exact
+- [x] `T1.4` — Coordinate with SPEC-006 to add the exact
       `visitStatefulCustomView` visitor operation after T1.1 exists, then make
       the macro synthesize the only supported client traversal override. Prove
       an ordinary custom view remains in `visitCustomView`, a generated host
@@ -539,5 +539,14 @@ registered source audit rejects task-local/global fallback, strings, `Any`,
 reflection, and legacy state registries; see the
 [state and sink ownership evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-1/state-and-sink-ownership.md).
 Exact `ObservableStateResult` creation and the production coordinator slot
-remain with T2.1/T5.4 after SPEC-009 supplies `GiftUIExecution`; T1.4 is the
-next dependency needed by SPEC-006.
+remain with T2.1/T5.4 after SPEC-009 supplies `GiftUIExecution`.
+
+`T1.4` is complete: SPEC-006's exact borrowed-declaration stateful visitor
+operation is present, and `ObservableStateHostMacro` synthesizes the sole
+supported client `_giftUITraverse` override. A real annotated view with direct
+private state selects `visitStatefulCustomView`, never selects the ordinary
+custom category, and evaluates its body through the borrowed declaration.
+The registered traversal audit rejects manual application witnesses and a
+second traversal requirement; see the
+[generated stateful traversal evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-1/generated-stateful-traversal.md).
+This closes the SPEC-006 T1.4 dependency. T1.5 remains the next SPEC-010 task.

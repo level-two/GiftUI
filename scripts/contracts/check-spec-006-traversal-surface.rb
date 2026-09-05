@@ -42,6 +42,7 @@ end
 allowed_source_paths = [
   "Sources/GiftUI/DeclarativeView.swift",
   "Sources/GiftUI/ObservableState.swift",
+  "Sources/GiftUIMacros/ObservableStateHostMacro.swift",
   "Sources/GiftUISemanticCore/GiftUISemanticCore.swift"
 ]
 Dir.glob(File.join(root, "Sources/**/*.swift")).sort.each do |absolute|

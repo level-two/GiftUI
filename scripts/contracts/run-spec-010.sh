@@ -62,6 +62,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-010-macro-boundary.rb" \
             "${SCRIPT_DIR}/check-spec-010-state-wrapper.rb" \
             "${SCRIPT_DIR}/check-spec-010-sink-ownership.sh" \
+            "${SCRIPT_DIR}/check-spec-010-generated-traversal.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
             "${SCRIPT_DIR}/publish-contract-report.rb" \
             "${SCRIPT_DIR}/verify-contract-report.rb" \
@@ -283,6 +284,8 @@ record_command "${SCRIPT_DIR}/check-spec-010-macro-boundary.rb"
 "${SCRIPT_DIR}/check-spec-010-macro-boundary.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-state-wrapper.rb"
 "${SCRIPT_DIR}/check-spec-010-state-wrapper.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-010-generated-traversal.rb"
+"${SCRIPT_DIR}/check-spec-010-generated-traversal.rb" >>"${log_path}" 2>&1
 if [[ "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ]]; then
     record_command "${SCRIPT_DIR}/check-spec-010-attachment-property.sh"
     "${SCRIPT_DIR}/check-spec-010-attachment-property.sh" >>"${log_path}" 2>&1

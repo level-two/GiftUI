@@ -214,7 +214,7 @@ the exact approved source/access shape and add no client traversal burden.
       compared, or recorded, `buildArray` is absent, wrapper initializers/
       storage are unavailable to ordinary clients, and wrappers require no
       allocation, reflection, existential, or runtime discovery.
-- [ ] `T1.4` — Implement the exact underscored primitive, action, modifier, and
+- [x] `T1.4` — Implement the exact underscored primitive, action, modifier, and
       traversal protocols plus every fixed-wrapper override. Add package
       reference allow-list checks proving only GiftUI declaration
       implementations, Semantic Core, and named fixtures use the surface;
@@ -223,13 +223,15 @@ the exact approved source/access shape and add no client traversal burden.
       application overrides and any second `View` traversal requirement while
       permitting only SPEC-010's generated state-host witness.
 
-  **Partially implemented; generated witness remains pending.** The
+  **Completed with the SPEC-010 generated witness.** The
   primitive/action/modifier payload protocols, every
   non-stateful visitor category, all fixed-wrapper overrides, focused dispatch
   tests, and the registered production-reference allow-list check are in
   place. SPEC-010 now supplies `_GiftUIObservableStateHost`, and the exact
   `visitStatefulCustomView` requirement plus focused conformer coverage are in
-  place. Generated-witness evidence still waits for its macro.
+  place. SPEC-010's host-only macro now emits the sole supported stateful
+  traversal witness, and focused execution proves it selects the stateful
+  category through the borrowed declaration.
 
 ### Milestone 2: Implement Bounded Expansion State and Atomic Traversal
 
@@ -643,10 +645,14 @@ by its complete normative visitor surface.
 The SPEC-006-owned, non-stateful portion of `T1.4` is implemented and recorded
 in the
 [non-stateful traversal evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-1/non-stateful-traversal-surface.md).
-T1.4 remains unchecked and Milestone 1 remains open. SPEC-010 now supplies its
-exclusively owned `_GiftUIObservableStateHost`, and the exact stateful visitor
-operation compiles against it. The generated witness seam remains unavailable
-until SPEC-010 T1.2 is implemented.
+`T1.4` is complete and closes Milestone 1. SPEC-010 supplies the exclusively
+owned `_GiftUIObservableStateHost` and generated traversal witness; the exact
+stateful visitor operation compiles against that owner and focused execution
+selects the stateful category without a handwritten application override. See
+the updated
+[traversal evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-1/non-stateful-traversal-surface.md)
+and SPEC-010's
+[generated witness evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-1/generated-stateful-traversal.md).
 
 `T2.1` is complete with the exact closed limits, summary, local-error, and
 result values, focused host layout and initialization tests, caller-owned

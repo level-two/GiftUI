@@ -1,4 +1,4 @@
-# SPEC-006 T1.4 Non-Stateful Traversal Slice
+# SPEC-006 T1.4 Traversal Surface
 
 ## Implemented slice
 
@@ -12,19 +12,21 @@ ordinary custom bodies, and all three typed payload categories.
 The registered traversal-surface audit rejects `Any`, view existentials,
 reflection, the retired `_visit`/`ViewVisitor` surface, a second traversal
 spelling, underscored production references outside the declaration/Semantic
-Core allow-list, and any attempt for SPEC-006 to define the SPEC-010-owned
-state-host protocol.
+Core/SPEC-010 macro-generator allow-list, and any attempt for SPEC-006 to
+define the SPEC-010-owned state-host protocol.
 
-## Remaining completion dependency
+## Generated stateful completion
 
-T1.4 is not complete. SPEC-010 now supplies `_GiftUIObservableStateHost` and
+SPEC-010 supplies `_GiftUIObservableStateHost` and
 its declaration visitor, unblocking the normative
 `visitStatefulCustomView<Declaration: View & _GiftUIObservableStateHost>`.
 The exact stateful visitor operation now compiles against that owned protocol,
-including its borrowed declaration body accessor, and focused framework tests
-exercise the category. Macro-generated witness evidence still waits for
-SPEC-010 T1.2; no handwritten application substitute is authorized.
+including its borrowed declaration body accessor. The host-only macro now
+synthesizes the sole supported `_giftUITraverse` client witness. Focused
+framework execution proves an annotated host selects the stateful category,
+does not select the ordinary custom category, and evaluates `body` through the
+borrowed declaration. The registered SPEC-010 audit rejects handwritten
+application substitutes.
 
-The non-stateful slice is independently usable and tested, but Milestone 1
-remains open until the generated witness seam lands. No later task is credited
-with macro-generated traversal evidence.
+T1.4 and Milestone 1 are complete. Runtime binding before body remains owned by
+SPEC-010 T3.2 and is not claimed by this declaration-surface task.
