@@ -17,6 +17,7 @@ expected_headers = {
   "SemanticCorpus/canonical-transcript.tsv" => "# case_id\tevent_index\tpath\tevent_kind\trole\tchain_index",
   "SemanticCorpus/normalized-results.tsv" => "# case_id\tresult\tsemantic_nodes\tbody_evaluations\tmodifier_applications\taction_occurrences\tmaximum_observed_depth\ttranscript_rows\tidentity_relation_set\tevidence_class",
   "SemanticCorpus/identity-relations.tsv" => "# id\tlhs_path\tlhs_endpoint_role\trhs_path\trhs_endpoint_role\texpected_relation\texpected_result\tevidence_class",
+  "BoundaryCorpus/cases.tsv" => "# id\tboundary_owner\tbelow\texact\tone_over\texpected_one_over\tevidence_class",
 }
 expected_headers.each do |relative, expected|
   path = FIXTURES.join(relative)
@@ -52,6 +53,29 @@ identity_rows.each do |id, lhs_path, lhs_role, rhs_path, rhs_role, relation, exp
   fail_check("invalid identity result for #{id}") unless %w[success invalid-identity].include?(expected_result)
   fail_check("invalid identity evidence class for #{id}") unless %w[host cross-built simulator connected-target].include?(evidence)
   fail_check("alias rejection must fail invalid-identity for #{id}") if relation == "alias-rejected" && expected_result != "invalid-identity"
+end
+
+boundary_rows = FIXTURES.join("BoundaryCorpus/cases.tsv").each_line.each_with_object([]) do |line, result|
+  next if line.start_with?("#") || line.strip.empty?
+
+  fields = line.chomp.split("\t", -1)
+  fail_check("boundary row must have seven fields") unless fields.length == 7
+  result << fields
+end
+fail_check("boundary identifiers are duplicated") unless boundary_rows.map(&:first).uniq.length == boundary_rows.length
+fail_check("boundary corpus must not be empty") if boundary_rows.empty?
+boundary_rows.each do |id, owner, below, exact, one_over, expected, evidence|
+  fail_check("invalid boundary identifier #{id}") unless id.match?(/\A[a-z0-9]+(?:-[a-z0-9]+)*\z/)
+  fail_check("invalid boundary owner for #{id}") unless %w[limits workspace sink counter].include?(owner)
+  fail_check("invalid boundary values for #{id}") unless below.match?(/\A\d+\z/) && exact.match?(/\A\d+\z/) && (one_over == "overflow" || one_over.match?(/\A\d+\z/))
+  fail_check("nonconsecutive boundary for #{id}") unless exact.to_i == below.to_i + 1
+  if one_over == "overflow"
+    fail_check("invalid overflow edge for #{id}") unless exact.to_i == 65_535
+  else
+    fail_check("nonconsecutive one-over value for #{id}") unless one_over.to_i == exact.to_i + 1
+  end
+  fail_check("invalid boundary result for #{id}") unless expected == "capacity-exhausted"
+  fail_check("invalid boundary evidence class for #{id}") unless %w[host cross-built simulator connected-target].include?(evidence)
 end
 
 rows.each do |id, expectation, access, entry, patterns, modules|

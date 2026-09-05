@@ -324,7 +324,7 @@ from current published output and can reuse the same workspace after failure.
 local result, detecting point, atomicity, reuse behavior, and SPEC-003 owner
 mapping required by SPEC-006.
 
-- [ ] `T4.1` — Exercise exact-at-limit success and one-over failure separately
+- [x] `T4.1` — Exercise exact-at-limit success and one-over failure separately
       for path depth, semantic nodes, body evaluations, modifiers, action
       occurrences, and every caller-owned workspace/sink capacity. Include
       invalid zero depth/node/body limits, permitted zero modifier/action
@@ -728,3 +728,12 @@ fixture has no generation, target, callable, handler, model, decoding, or
 invocation surface; see the
 [action corpus evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-3/action-corpus.md).
 Milestone 3 is complete; `T4.1` is next.
+
+`T4.1` is complete: the checked-in boundary matrix covers every declared
+limit, workspace capacity, sink capacity, and `UInt16` overflow edge at below,
+exact, and one-over values. Focused tests preserve nonzero successful depth,
+permit zero modifier/action limits, reject required zero limits, discard all
+one-over work, release rejected declaration state, and reset for reuse without
+fallback or retry; see the
+[boundary matrix evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-4/boundary-matrix.md).
+`T4.2` is next.

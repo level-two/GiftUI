@@ -404,6 +404,59 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
         XCTAssertEqual(sink.recording.storage.committedEvents.count, 3)
     }
 
+    func testPermittedZeroActionAndModifierLimitsFailAtomicallyWithoutRetention() {
+        let lifetimeState = CorpusLifetimeState()
+        var workspace = CorpusWorkspace()
+        var sink = SemanticRecordingSink(storage: CorpusStorage())
+        let zeroActionLimits = SemanticExpansionLimits(
+            maximumDepth: 4,
+            maximumSemanticNodes: 1,
+            maximumBodyEvaluations: 1,
+            maximumModifierApplications: 1,
+            maximumActionOccurrences: 0
+        )!
+
+        do {
+            let lifetime = CorpusLifetimeToken(state: lifetimeState)
+            var declaration: CorpusActionPrimitive? = CorpusActionPrimitive(
+                action: .primary,
+                lifetime: lifetime
+            )
+            XCTAssertEqual(
+                expandSemanticTree(
+                    declaration!,
+                    limits: zeroActionLimits,
+                    workspace: &workspace,
+                    sink: &sink
+                ),
+                .failure(.capacityExhausted)
+            )
+            declaration = nil
+        }
+        XCTAssertFalse(lifetimeState.isAlive)
+        XCTAssertTrue(sink.storage.committedEvents.isEmpty)
+        XCTAssertFalse(workspace.isExpanding)
+
+        let zeroModifierLimits = SemanticExpansionLimits(
+            maximumDepth: 4,
+            maximumSemanticNodes: 1,
+            maximumBodyEvaluations: 1,
+            maximumModifierApplications: 0,
+            maximumActionOccurrences: 0
+        )!
+        XCTAssertEqual(
+            expandSemanticTree(
+                CorpusInset(content: CorpusA(), value: 1),
+                limits: zeroModifierLimits,
+                workspace: &workspace,
+                sink: &sink
+            ),
+            .failure(.capacityExhausted)
+        )
+        XCTAssertTrue(sink.storage.committedEvents.isEmpty)
+        XCTAssertFalse(workspace.isExpanding)
+    }
+
     func testModifierPayloadChangesDoNotReplaceDescendantIdentity() {
         let first = CorpusInset(content: CorpusA(), value: 1)
         let second = CorpusInset(content: CorpusA(), value: 999)

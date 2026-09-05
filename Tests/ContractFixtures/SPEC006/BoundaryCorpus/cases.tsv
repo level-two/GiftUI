@@ -1,0 +1,18 @@
+# id	boundary_owner	below	exact	one_over	expected_one_over	evidence_class
+declared-depth	limits	0	1	2	capacity-exhausted	host
+declared-semantic-nodes	limits	0	1	2	capacity-exhausted	host
+declared-body-evaluations	limits	0	1	2	capacity-exhausted	host
+declared-modifiers	limits	0	1	2	capacity-exhausted	host
+declared-actions	limits	0	1	2	capacity-exhausted	host
+workspace-path-components	workspace	0	1	2	capacity-exhausted	host
+workspace-identities	workspace	0	1	2	capacity-exhausted	host
+sink-structural-occurrences	sink	0	1	2	capacity-exhausted	host
+sink-body-evaluations	sink	0	1	2	capacity-exhausted	host
+sink-semantic-occurrences	sink	0	1	2	capacity-exhausted	host
+sink-modifier-applications	sink	0	1	2	capacity-exhausted	host
+sink-action-occurrences	sink	0	1	2	capacity-exhausted	host
+uint16-path-depth	counter	65534	65535	overflow	capacity-exhausted	host
+uint16-semantic-nodes	counter	65534	65535	overflow	capacity-exhausted	host
+uint16-body-evaluations	counter	65534	65535	overflow	capacity-exhausted	host
+uint16-modifier-applications	counter	65534	65535	overflow	capacity-exhausted	host
+uint16-action-occurrences	counter	65534	65535	overflow	capacity-exhausted	host
