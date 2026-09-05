@@ -645,3 +645,9 @@ T1.4 remains unchecked and Milestone 1 remains open. SPEC-010 now supplies its
 exclusively owned `_GiftUIObservableStateHost`, and the exact stateful visitor
 operation compiles against it. The generated witness seam remains unavailable
 until SPEC-010 T1.2.
+
+`T2.1` has begun with the exact closed limits, summary, local-error, and result
+values plus focused host layout and initialization tests. The caller-owned
+workspace/sink protocols and sole generic expansion entry remain in T2.1 and
+must land before the task is checked complete; traversal behavior remains
+assigned to T2.2 and T2.3.
