@@ -24,6 +24,7 @@ Instrumentation/
 Evidence/<milestone>/
 fixture-manifest.tsv
 required-evidence.tsv
+migration-inventory.tsv
 ```
 
 `fixture-manifest.tsv` is the ordered compile registry. Every row has six
@@ -45,6 +46,11 @@ the same rows.
 `required-evidence.tsv` contains exactly `OS-001` through `OS-012`. Every row
 starts `pending`; a task may change a row only when all named evidence exists.
 Drivers must report incomplete conformance while any row remains pending.
+
+`migration-inventory.tsv` pins each obsolete PoC state mechanism or disposable
+Spike spelling to an explicit disposition and owner. The registered migration
+check reproduces the immutable baseline and prevents legacy compatibility
+paths or Apple Observation from returning to maintained source.
 
 Generated inputs use `.build/contract-generated/spec-010/<profile>/`. Reports
 use `.build/contract-reports/spec-010/<revision>-<input-set>/<profile>/` and

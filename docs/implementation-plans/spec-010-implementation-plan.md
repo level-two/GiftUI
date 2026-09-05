@@ -129,7 +129,7 @@ fixture schema, and migration surface is explicit before declarations land.
       and explicit `missing` evidence rows. The initial driver must compile
       only dependencies that exist and must not claim semantic or hardware
       conformance early.
-- [ ] `T0.4` — Inventory every removed PoC `@State`, task-local binding,
+- [x] `T0.4` — Inventory every removed PoC `@State`, task-local binding,
       string key, `Any` store, runtime-specific state path, direct model
       mutation, Apple Observation use, and disposable Spike spelling. Assign
       remove, replace-through-owner, downstream-owned, or evidence-only

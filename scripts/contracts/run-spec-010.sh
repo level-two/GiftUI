@@ -55,6 +55,7 @@ declared_inputs() {
             "${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv" \
             "${SCRIPT_DIR}/check-spec-010-borrowing-property.sh" \
             "${SCRIPT_DIR}/check-spec-010-harness.rb" \
+            "${SCRIPT_DIR}/check-spec-010-migration.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
             "${SCRIPT_DIR}/publish-contract-report.rb" \
             "${SCRIPT_DIR}/verify-contract-report.rb" \
@@ -223,6 +224,8 @@ compile_nrf52840() {
 
 record_command "${SCRIPT_DIR}/check-spec-010-harness.rb"
 "${SCRIPT_DIR}/check-spec-010-harness.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-010-migration.rb"
+"${SCRIPT_DIR}/check-spec-010-migration.rb" >>"${log_path}" 2>&1
 if [[ "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ]]; then
     record_command "${SCRIPT_DIR}/check-spec-010-borrowing-property.sh"
     "${SCRIPT_DIR}/check-spec-010-borrowing-property.sh" >>"${log_path}" 2>&1
