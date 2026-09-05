@@ -1,0 +1,9 @@
+# id	lhs_path	lhs_endpoint_role	rhs_path	rhs_endpoint_role	expected_relation	expected_result	evidence_class
+repeated-expansion	root/declaration-role(a)	a	root/declaration-role(a)	a	equal	success	host
+conditional-branch-change	root/declaration-role(conditional)/conditional-branch(0)/fixed-child(0)/declaration-role(a)	a	root/declaration-role(conditional)/conditional-branch(1)/fixed-child(0)/declaration-role(b)	b	not-equal	success	host
+optional-restoration	root/declaration-role(optional)/optional-presence/fixed-child(0)/declaration-role(a)	a	root/declaration-role(optional)/optional-presence/fixed-child(0)/declaration-role(a)	a	equal	success	host
+sibling-index	root/declaration-role(tuple2)/fixed-child(0)/declaration-role(a)	a	root/declaration-role(tuple2)/fixed-child(1)/declaration-role(a)	a	not-equal	success	host
+endpoint-role	root/declaration-role(a)	a	root/declaration-role(a)	b	not-equal	success	host
+declaration-role	root/declaration-role(a)	a	root/declaration-role(b)	b	not-equal	success	host
+prefix-descendant	root/declaration-role(outer)	outer	root/declaration-role(outer)/custom-body/declaration-role(inner)/custom-body/declaration-role(a)	a	not-equal	success	host
+forced-alias	root	root	root	root	alias-rejected	invalid-identity	host

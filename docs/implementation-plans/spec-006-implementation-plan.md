@@ -293,7 +293,7 @@ associations without layout, rendering, a backend, or connected hardware.
       output and exactly-once/zero-times body access. Prove optional absence
       records only its wrapper structural entry, emits no presence child or
       counted event, and never observes the inactive conditional metatype.
-- [ ] `T3.3` — Build the structural-identity relation corpus for repeated
+- [x] `T3.3` — Build the structural-identity relation corpus for repeated
       expansion, branch changes, optional removal/restoration, sibling index,
       endpoint role, declaration role, prefix/descendant paths, and forced
       alias detection. Compare equality relations and canonical paths, never
@@ -700,3 +700,12 @@ event order, counts, maximum depth, and body invocation counts are asserted;
 see the
 [declaration corpus evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-3/declaration-corpus.md).
 `T3.3` is next.
+
+`T3.3` is complete: the checked-in identity-relation oracle and focused tests
+compare complete canonical paths plus endpoint roles for repeated expansion,
+branch changes, optional removal/restoration, sibling indices, endpoint and
+declaration roles, and prefix/descendant paths. A fixture-only alias injection
+fails with `invalidIdentity`, resets the workspace, and publishes no events;
+see the
+[identity-relation evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-3/identity-relations.md).
+`T3.4` is next.

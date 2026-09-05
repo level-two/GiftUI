@@ -177,6 +177,88 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
         )
     }
 
+    func testStructuralIdentityRelationsUseCompleteCanonicalPathsAndEndpointRoles() {
+        let repeatedFirst = semanticIdentities(in: expand(CorpusA()).events)
+        let repeatedSecond = semanticIdentities(in: expand(CorpusA()).events)
+        XCTAssertEqual(repeatedFirst, repeatedSecond)
+
+        let firstBranch: ConditionalContent<CorpusA, CorpusB> = ViewBuilder.buildEither(
+            first: CorpusA()
+        )
+        let secondBranch: ConditionalContent<CorpusA, CorpusB> = ViewBuilder.buildEither(
+            second: CorpusB()
+        )
+        XCTAssertNotEqual(
+            semanticIdentities(in: expand(firstBranch).events),
+            semanticIdentities(in: expand(secondBranch).events)
+        )
+
+        let present = ViewBuilder.buildOptional(CorpusA())
+        let absent = ViewBuilder.buildOptional(nil as CorpusA?)
+        let originalOptionalIdentity = semanticIdentities(in: expand(present).events)
+        XCTAssertTrue(semanticIdentities(in: expand(absent).events).isEmpty)
+        XCTAssertEqual(
+            originalOptionalIdentity,
+            semanticIdentities(in: expand(present).events)
+        )
+
+        let siblings = semanticIdentities(
+            in: expand(ViewBuilder.buildBlock(CorpusA(), CorpusA())).events
+        )
+        XCTAssertEqual(siblings.count, 2)
+        XCTAssertNotEqual(siblings[0], siblings[1])
+
+        let sameComponents: [SemanticRecordingPathComponent] = [.root, .role(.a)]
+        XCTAssertNotEqual(
+            CorpusIdentity(
+                components: sameComponents,
+                declarationRole: CorpusRole.a.recordingRole
+            ),
+            CorpusIdentity(
+                components: sameComponents,
+                declarationRole: CorpusRole.b.recordingRole
+            )
+        )
+
+        XCTAssertNotEqual(
+            semanticIdentities(in: expand(CorpusA()).events),
+            semanticIdentities(in: expand(CorpusB()).events)
+        )
+
+        let nestedEvents = expand(CorpusOuter(counters: CorpusCounters())).events
+        let prefix = nestedEvents[0].path
+        let descendant = try! XCTUnwrap(
+            nestedEvents.first(where: { $0.kind == .semantic })?.path
+        )
+        XCTAssertTrue(
+            Array(descendant.components.prefix(prefix.components.count)) == prefix.components)
+        XCTAssertNotEqual(prefix, descendant)
+    }
+
+    func testForcedIdentityAliasFailsAtomically() {
+        var workspace = CorpusWorkspace(forceIdentityAlias: true)
+        var sink = SemanticRecordingSink(storage: CorpusStorage())
+        let limits = SemanticExpansionLimits(
+            maximumDepth: 16,
+            maximumSemanticNodes: 16,
+            maximumBodyEvaluations: 16,
+            maximumModifierApplications: 16,
+            maximumActionOccurrences: 16
+        )!
+
+        XCTAssertEqual(
+            expandSemanticTree(
+                CorpusA(),
+                limits: limits,
+                workspace: &workspace,
+                sink: &sink
+            ),
+            .failure(.invalidIdentity)
+        )
+        XCTAssertTrue(sink.storage.committedEvents.isEmpty)
+        XCTAssertFalse(workspace.isExpanding)
+    }
+
     private func assertFixedExpansion<Content: View>(
         _ content: Content,
         tupleRole: CorpusRole,
@@ -252,6 +334,12 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
             .structural(path(childPath), child),
             .semantic(path(childPath), child),
         ]
+    }
+
+    private func semanticIdentities(in events: [CorpusEvent]) -> [CorpusIdentity] {
+        events.compactMap { event in
+            event.kind == .semantic ? event.path : nil
+        }
     }
 
     private func summary(
@@ -434,12 +522,19 @@ private struct CorpusWorkspace: SemanticExpansionWorkspace {
     let maximumPathComponents: UInt16 = 32
     let maximumIdentities: UInt16 = 128
     var isExpanding = false
+    private let forceIdentityAlias: Bool
     private var path: [SemanticRecordingPathComponent] = []
+    private var identities: [CorpusIdentity] = []
+
+    init(forceIdentityAlias: Bool = false) {
+        self.forceIdentityAlias = forceIdentityAlias
+    }
 
     mutating func beginExpansion() -> Bool {
         guard !isExpanding else { return false }
         isExpanding = true
         path.removeAll(keepingCapacity: true)
+        identities.removeAll(keepingCapacity: true)
         return true
     }
     mutating func enterRoot<Declaration: View>(
@@ -476,6 +571,7 @@ private struct CorpusWorkspace: SemanticExpansionWorkspace {
     mutating func resetExpansion() {
         isExpanding = false
         path.removeAll(keepingCapacity: true)
+        identities.removeAll(keepingCapacity: true)
     }
     private mutating func enter(
         _ component: SemanticRecordingPathComponent,
@@ -487,7 +583,16 @@ private struct CorpusWorkspace: SemanticExpansionWorkspace {
                 if case .declarationRole(let role) = component { return role }
                 return nil
             }.first ?? SemanticRecordingRole(rawValue: 0)
-        identity = CorpusIdentity(components: path, declarationRole: role)
+        let candidate =
+            forceIdentityAlias
+            ? CorpusIdentity(
+                components: [.root],
+                declarationRole: SemanticRecordingRole(rawValue: 0)
+            )
+            : CorpusIdentity(components: path, declarationRole: role)
+        guard !identities.contains(candidate) else { return .invalidIdentity }
+        identities.append(candidate)
+        identity = candidate
         return nil
     }
 }

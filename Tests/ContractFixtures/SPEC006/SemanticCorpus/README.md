@@ -68,3 +68,17 @@ T3.1 introduces `empty`. T3.2 adds `fixed-arity-1` through
 `optional`, `nested-combination`, and `conditional-inactive-shape`. These are
 closed fixture tokens for the checked-in corpus, not production declaration
 names or a runtime registry.
+
+## Structural-identity relations
+
+`identity-relations.tsv` has eight fields: a unique relation ID, the left
+canonical path and endpoint role, the right canonical path and endpoint role,
+the expected `equal`, `not-equal`, or `alias-rejected` relation, the expected
+result, and the evidence class. `optional-restoration` compares the identities
+before removal and after restoration; the corresponding test also proves the
+absent expansion contains no optional child identity. `forced-alias` is an
+invalid candidate relation and therefore requires `invalid-identity` with no
+published transcript.
+
+The paths and symbolic endpoint roles are the complete comparison oracle.
+Profile-private raw identity values are neither recorded nor compared.

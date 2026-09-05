@@ -16,6 +16,7 @@ expected_headers = {
   "SemanticCorpus/cases.tsv" => "# id\tdeclaration_shape\tinputs\texpected_result\tevidence_class",
   "SemanticCorpus/canonical-transcript.tsv" => "# case_id\tevent_index\tpath\tevent_kind\trole\tchain_index",
   "SemanticCorpus/normalized-results.tsv" => "# case_id\tresult\tsemantic_nodes\tbody_evaluations\tmodifier_applications\taction_occurrences\tmaximum_observed_depth\ttranscript_rows\tidentity_relation_set\tevidence_class",
+  "SemanticCorpus/identity-relations.tsv" => "# id\tlhs_path\tlhs_endpoint_role\trhs_path\trhs_endpoint_role\texpected_relation\texpected_result\tevidence_class",
 }
 expected_headers.each do |relative, expected|
   path = FIXTURES.join(relative)
@@ -33,6 +34,25 @@ rows = FIXTURES.join("fixture-manifest.tsv").each_line.each_with_object([]) do |
 end
 fail_check("fixture identifiers are duplicated") unless rows.map(&:first).uniq.length == rows.length
 fail_check("fixture baseline must not be empty") if rows.empty?
+
+identity_rows = FIXTURES.join("SemanticCorpus/identity-relations.tsv").each_line.each_with_object([]) do |line, result|
+  next if line.start_with?("#") || line.strip.empty?
+
+  fields = line.chomp.split("\t", -1)
+  fail_check("identity relation row must have eight fields") unless fields.length == 8
+  result << fields
+end
+fail_check("identity relation identifiers are duplicated") unless identity_rows.map(&:first).uniq.length == identity_rows.length
+fail_check("identity relation corpus must not be empty") if identity_rows.empty?
+identity_rows.each do |id, lhs_path, lhs_role, rhs_path, rhs_role, relation, expected_result, evidence|
+  fail_check("invalid identity relation identifier #{id}") unless id.match?(/\A[a-z0-9]+(?:-[a-z0-9]+)*\z/)
+  fail_check("missing identity relation path for #{id}") if lhs_path.empty? || rhs_path.empty?
+  fail_check("missing identity endpoint role for #{id}") if lhs_role.empty? || rhs_role.empty?
+  fail_check("invalid identity relation for #{id}") unless %w[equal not-equal alias-rejected].include?(relation)
+  fail_check("invalid identity result for #{id}") unless %w[success invalid-identity].include?(expected_result)
+  fail_check("invalid identity evidence class for #{id}") unless %w[host cross-built simulator connected-target].include?(evidence)
+  fail_check("alias rejection must fail invalid-identity for #{id}") if relation == "alias-rejected" && expected_result != "invalid-identity"
+end
 
 rows.each do |id, expectation, access, entry, patterns, modules|
   fail_check("invalid fixture identifier #{id}") unless id.match?(/\A[a-z0-9]+(?:-[a-z0-9]+)*\z/)
