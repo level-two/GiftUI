@@ -144,7 +144,7 @@ macro implementation dependencies are pinned and do not enter target images.
 **Exit evidence:** Portable clients use only `import GiftUI`; generated hosts
 enumerate direct state lexically and enter SPEC-006's stateful category.
 
-- [ ] `T1.1` — Implement in `GiftUI` the exact
+- [x] `T1.1` — Implement in `GiftUI` the exact
       `_GiftUIObservableChangeReportOutcome`, `_GiftUIObservableReference`,
       `_GiftUIObservationAttachment`, `_GiftUIObservableStateDeclarationVisitor`,
       and `_GiftUIObservableStateHost` source contracts. Preserve the

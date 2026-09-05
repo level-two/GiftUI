@@ -1,1 +1,5 @@
 # id	expectation	access	entry_point	diagnostic_patterns	allowed_modules
+portable-observable-declarations	pass	public	Fixtures/Positive/portable-observable-declarations/main.swift	-	GiftUI
+attachment-initializer-access	fail	public	Fixtures/Negative/attachment-initializer-access/main.swift	Fixtures/Negative/attachment-initializer-access/expected-diagnostic-patterns.txt	GiftUI
+sink-initializer-access	fail	public	Fixtures/Negative/sink-initializer-access/main.swift	Fixtures/Negative/sink-initializer-access/expected-diagnostic-patterns.txt	GiftUI
+wrapper-binding-access	fail	public	Fixtures/Negative/wrapper-binding-access/main.swift	Fixtures/Negative/wrapper-binding-access/expected-diagnostic-patterns.txt	GiftUI

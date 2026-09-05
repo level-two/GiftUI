@@ -54,6 +54,7 @@ declared_inputs() {
             "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
             "${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv" \
             "${SCRIPT_DIR}/check-spec-010-attachment-property.sh" \
+            "${SCRIPT_DIR}/check-spec-010-declaration-surface.rb" \
             "${SCRIPT_DIR}/check-spec-010-harness.rb" \
             "${SCRIPT_DIR}/check-spec-010-migration.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
@@ -167,6 +168,48 @@ record_required_evidence() {
     } >"${evidence_path}"
 }
 
+run_fixture_set() {
+    local compiler="$1"
+    local module_dir="$2"
+    shift 2
+    local -a common_flags=()
+    while [[ $# -gt 0 ]]; do
+        if [[ "$1" == "-package-name" ]]; then
+            [[ $# -ge 2 ]] || fail 'fixture compiler flags end at -package-name'
+            shift 2
+        else
+            common_flags+=("$1")
+            shift
+        fi
+    done
+    local id expectation access entry patterns allowed_modules result pattern
+    while IFS=$'\t' read -r id expectation access entry patterns allowed_modules; do
+        [[ -n "${id}" && "${id}" != \#* ]] || continue
+        local fixture_dir="${report_dir}/fixtures/${id}"
+        mkdir -p "${fixture_dir}/module-cache"
+        local -a command=("${compiler}" "${common_flags[@]}" -module-cache-path "${fixture_dir}/module-cache" -I "${module_dir}")
+        if [[ "${access}" == "package" ]]; then
+            command+=(-package-name GiftUI)
+        fi
+        command+=(-typecheck "${FIXTURE_ROOT}/${entry}")
+        record_command "${command[@]}"
+        set +e
+        "${command[@]}" >"${fixture_dir}/stdout.txt" 2>"${fixture_dir}/stderr.txt"
+        result=$?
+        set -e
+        if [[ "${expectation}" == "pass" ]]; then
+            [[ "${result}" -eq 0 ]] || fail "positive fixture ${id} failed"
+        else
+            [[ "${result}" -ne 0 ]] || fail "negative fixture ${id} unexpectedly compiled"
+            while IFS= read -r pattern; do
+                [[ -n "${pattern}" && "${pattern}" != \#* ]] || continue
+                grep -Fq "${pattern}" "${fixture_dir}/stderr.txt" ||
+                    fail "negative fixture ${id} lacked diagnostic pattern: ${pattern}"
+            done <"${FIXTURE_ROOT}/${patterns}"
+        fi
+    done <"${FIXTURE_ROOT}/fixture-manifest.tsv"
+}
+
 compile_macos() {
     local compiler sdk profile_flag module
     compiler="$(xcrun --find swiftc)"
@@ -186,6 +229,7 @@ compile_macos() {
     record_command "${command[@]}"
     "${command[@]}" >>"${log_path}" 2>&1
     record_image portable-module "${module}"
+    run_fixture_set "${compiler}" "${report_dir}/build" -target arm64-apple-macosx26.0 -sdk "${sdk}" "${profile_flag}" -language-mode 6
 }
 
 compile_raspberry_pi() {
@@ -205,6 +249,7 @@ compile_raspberry_pi() {
     module="$(find "${report_dir}/build/swiftpm" -type f -name 'GiftUI.swiftmodule' -print -quit)"
     [[ -n "${module}" ]] || fail 'ARMv6 GiftUI module is missing'
     record_image portable-module "${module}"
+    run_fixture_set "${compiler}" "$(dirname "${module}")" -target "${GIFTUI_PI_TARGET}" -sdk "${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}" -resource-dir "${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr/lib/swift_static" -Xcc "--gcc-toolchain=${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr"
 }
 
 compile_nrf52840() {
@@ -220,12 +265,15 @@ compile_nrf52840() {
     record_command "${command[@]}"
     "${command[@]}" >>"${log_path}" 2>&1
     record_image portable-module "${module}"
+    run_fixture_set "${GIFTUI_NRF_SWIFTC}" "${report_dir}/build" -target "${GIFTUI_NRF_SWIFT_TARGET}" -enable-experimental-feature Embedded -Osize -whole-module-optimization -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
 }
 
 record_command "${SCRIPT_DIR}/check-spec-010-harness.rb"
 "${SCRIPT_DIR}/check-spec-010-harness.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-migration.rb"
 "${SCRIPT_DIR}/check-spec-010-migration.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-010-declaration-surface.rb"
+"${SCRIPT_DIR}/check-spec-010-declaration-surface.rb" >>"${log_path}" 2>&1
 if [[ "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ]]; then
     record_command "${SCRIPT_DIR}/check-spec-010-attachment-property.sh"
     "${SCRIPT_DIR}/check-spec-010-attachment-property.sh" >>"${log_path}" 2>&1
