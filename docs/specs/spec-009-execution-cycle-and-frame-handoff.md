@@ -1661,6 +1661,7 @@ Current MVP scope is unchanged.
 
 ## References
 
+- [SPEC-009 Implementation Plan](../implementation-plans/spec-009-implementation-plan.md)
 - [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
 - [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-004](../rfcs/rfc-004-run-cycle-and-frame-transaction.md)
