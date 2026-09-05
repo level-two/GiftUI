@@ -15,16 +15,16 @@ spelling, underscored production references outside the declaration/Semantic
 Core allow-list, and any attempt for SPEC-006 to define the SPEC-010-owned
 state-host protocol.
 
-## Completion blocker
+## Remaining completion dependency
 
-T1.4 is not complete. Its normative visitor protocol also requires
+T1.4 is not complete. SPEC-010 now supplies `_GiftUIObservableStateHost` and
+its declaration visitor, unblocking the normative
 `visitStatefulCustomView<Declaration: View & _GiftUIObservableStateHost>`.
-Approved SPEC-010 exclusively owns `_GiftUIObservableStateHost`, but its
-implementation plan, declaration target, macro target, and generated-witness
-fixture do not yet exist in the package. Defining a placeholder in SPEC-006
-would violate that ownership boundary and make a non-authoritative contract
-look executable.
+The exact stateful visitor operation now compiles against that owned protocol,
+including its borrowed declaration body accessor, and focused framework tests
+exercise the category. Macro-generated witness evidence still waits for
+SPEC-010 T1.2; no handwritten application substitute is authorized.
 
 The non-stateful slice is independently usable and tested, but Milestone 1
-remains open until the SPEC-010 owner supplies the declaration and generated
-witness seam. No later task is credited with stateful traversal evidence.
+remains open until the generated witness seam lands. No later task is credited
+with macro-generated traversal evidence.

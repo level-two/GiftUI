@@ -221,13 +221,13 @@ the exact approved source/access shape and add no client traversal burden.
       application overrides and any second `View` traversal requirement while
       permitting only SPEC-010's generated state-host witness.
 
-  **Partially implemented; completion blocked by missing SPEC-010-owned
-  declarations.** The primitive/action/modifier payload protocols, every
+  **Partially implemented; generated witness remains pending.** The
+  primitive/action/modifier payload protocols, every
   non-stateful visitor category, all fixed-wrapper overrides, focused dispatch
   tests, and the registered production-reference allow-list check are in
-  place. The exact `visitStatefulCustomView` requirement cannot compile until
-  SPEC-010 supplies `_GiftUIObservableStateHost`; SPEC-006 is prohibited from
-  defining a placeholder or parallel state abstraction.
+  place. SPEC-010 now supplies `_GiftUIObservableStateHost`, and the exact
+  `visitStatefulCustomView` requirement plus focused conformer coverage are in
+  place. Generated-witness evidence still waits for its macro.
 
 ### Milestone 2: Implement Bounded Expansion State and Atomic Traversal
 
@@ -641,6 +641,7 @@ by its complete normative visitor surface.
 The SPEC-006-owned, non-stateful portion of `T1.4` is implemented and recorded
 in the
 [non-stateful traversal evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-1/non-stateful-traversal-surface.md).
-T1.4 remains unchecked and Milestone 1 remains open because approved SPEC-010
-has no implementation plan or package declarations yet, so its exclusively
-owned `_GiftUIObservableStateHost` and generated witness seam are unavailable.
+T1.4 remains unchecked and Milestone 1 remains open. SPEC-010 now supplies its
+exclusively owned `_GiftUIObservableStateHost`, and the exact stateful visitor
+operation compiles against it. The generated witness seam remains unavailable
+until SPEC-010 T1.2.

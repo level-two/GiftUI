@@ -27,6 +27,17 @@ final class DeclarativeViewTests: XCTestCase {
         XCTAssertEqual(visitor.bodyEvaluations, 0)
     }
 
+    func testStatefulVisitorCategoryEvaluatesBodyFromTheBorrowedDeclaration() {
+        var visitor = CustomViewProbeVisitor(evaluateBody: true)
+
+        visitor.visitStatefulCustomView(StatefulRootView()) { declaration in
+            declaration.body
+        }
+
+        XCTAssertEqual(visitor.statefulCustomViewVisits, 1)
+        XCTAssertEqual(visitor.bodyEvaluations, 1)
+    }
+
     func testBuilderLowersZeroAndOneChildWithoutAWrapperForOne() {
         let empty: EmptyView = ViewBuilder.buildBlock()
         let leaf = LeafView()
@@ -100,6 +111,16 @@ private struct RootView: View {
     }
 }
 
+private struct StatefulRootView: View, _GiftUIObservableStateHost {
+    var body: some View {
+        LeafView()
+    }
+
+    mutating func _giftUIVisitObservableStateDeclarations<
+        Visitor: _GiftUIObservableStateDeclarationVisitor
+    >(_ visitor: inout Visitor) {}
+}
+
 private struct InactiveLeaf: View {
     init() {
         fatalError("an inactive generic branch must not be instantiated")
@@ -121,6 +142,7 @@ private struct TestModifierPayload: _GiftUISemanticModifierPayload {}
 private struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
     let evaluateBody: Bool
     var customViewVisits = 0
+    var statefulCustomViewVisits = 0
     var bodyEvaluations = 0
     var firstBranchVisits = 0
     var secondBranchVisits = 0
@@ -139,6 +161,19 @@ private struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
         customViewVisits += 1
         if evaluateBody {
             _ = body()
+            bodyEvaluations += 1
+        }
+    }
+
+    mutating func visitStatefulCustomView<
+        Declaration: View & _GiftUIObservableStateHost
+    >(
+        _ declaration: borrowing Declaration,
+        body: (borrowing Declaration) -> Declaration.Body
+    ) {
+        statefulCustomViewVisits += 1
+        if evaluateBody {
+            _ = body(declaration)
             bodyEvaluations += 1
         }
     }

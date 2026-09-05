@@ -17,6 +17,13 @@ public protocol _GiftUISemanticTraversalVisitor {
         body: () -> Declaration.Body
     )
 
+    mutating func visitStatefulCustomView<
+        Declaration: View & _GiftUIObservableStateHost
+    >(
+        _ declaration: borrowing Declaration,
+        body: (borrowing Declaration) -> Declaration.Body
+    )
+
     mutating func visitEmpty()
 
     mutating func visitFixed<A: View, B: View>(

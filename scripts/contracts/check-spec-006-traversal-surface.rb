@@ -13,6 +13,9 @@ required_fragments = [
   "var _giftUIAction: Action { get }",
   "public protocol _GiftUISemanticModifierPayload {}",
   "mutating func visitCustomView<Declaration: View>(",
+  "mutating func visitStatefulCustomView<",
+  "Declaration: View & _GiftUIObservableStateHost",
+  "body: (borrowing Declaration) -> Declaration.Body",
   "mutating func visitEmpty()",
   "mutating func visitFixed<A: View, B: View>(",
   "mutating func visitConditionalFirst<First: View, Second: View>(",
@@ -38,6 +41,7 @@ end
 
 allowed_source_paths = [
   "Sources/GiftUI/DeclarativeView.swift",
+  "Sources/GiftUI/ObservableState.swift",
   "Sources/GiftUISemanticCore/GiftUISemanticCore.swift"
 ]
 Dir.glob(File.join(root, "Sources/**/*.swift")).sort.each do |absolute|
@@ -60,12 +64,15 @@ forbidden_patterns.each do |pattern, message|
   failures << message if source.match?(pattern)
 end
 
-if source.include?("public protocol _GiftUIObservableStateHost")
-  failures << "SPEC-010-owned state-host declarations were introduced by SPEC-006"
+if failures.empty?
+  state_source = File.read(File.join(root, "Sources/GiftUI/ObservableState.swift"))
+  unless state_source.include?("public protocol _GiftUIObservableStateHost")
+    failures << "SPEC-010 state-host owner declaration is missing"
+  end
 end
 
 if failures.empty?
-  puts "SPEC-006 non-stateful traversal surface check passed; SPEC-010 state-host seam remains pending"
+  puts "SPEC-006 traversal surface check passed, including the SPEC-010-owned state-host category"
   exit 0
 end
 
