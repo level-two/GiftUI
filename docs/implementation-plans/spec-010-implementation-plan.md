@@ -167,7 +167,7 @@ enumerate direct state lexically and enter SPEC-006's stateful category.
       diagnose more than 65,535 declarations. Snapshot deterministic expansion
       for zero, one, several, private, nested, inherited/non-direct, malformed,
       and overflow-shaped fixtures.
-- [ ] `T1.3` — Implement `State<Value>` and the noncopyable change sink with
+- [x] `T1.3` — Implement `State<Value>` and the noncopyable change sink with
       their exact public source shapes and package-only construction/binding
       facilities. Prove the wrapper has one logical `initial` or bound case,
       consumes rather than retains a repeated initializer after binding, has
@@ -526,4 +526,18 @@ overflow-shaped cases. Package graph and source audits prove the macro is not a
 product and imports only its pinned compiler-support dependencies; see the
 [macro generation evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-1/deterministic-host-generation.md).
 The macro also emits the already-authorized SPEC-006 stateful traversal witness;
-its category behavior remains assigned to dependent T1.4. T1.3 is next.
+its category behavior remains assigned to dependent T1.4.
+
+`T1.3` is complete: `State<Value>` has exactly one logical `initial(Value)` or
+fixed-route `bound` case, and successful package binding replaces and returns
+the initializer without retaining both cases. Focused tests prove live reads,
+replacement forwarding, repeated-binding refusal, repeated-initializer release,
+and first-failure preservation until synchronous coordinator-style consumption.
+The noncopyable sink owns exactly one attachment and one report route; an
+SIL-generating compiler-negative fixture rejects a second consuming use. The
+registered source audit rejects task-local/global fallback, strings, `Any`,
+reflection, and legacy state registries; see the
+[state and sink ownership evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-1/state-and-sink-ownership.md).
+Exact `ObservableStateResult` creation and the production coordinator slot
+remain with T2.1/T5.4 after SPEC-009 supplies `GiftUIExecution`; T1.4 is the
+next dependency needed by SPEC-006.

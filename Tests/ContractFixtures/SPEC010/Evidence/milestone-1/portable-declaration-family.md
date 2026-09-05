@@ -8,14 +8,16 @@ Date: 2026-09-05
 family owned by SPEC-010: the seven closed report outcomes, noncopyable change
 sink, observable-reference attach/detach protocol, non-forgeable attachment,
 state-declaration visitor, state-host protocol, and the `State` source shape
-required by the visitor signature.
+required by the visitor signature. T1.3 now supplies the separately recorded
+portable wrapper and sink ownership evidence.
 
 Attachment and sink construction are package-only. The sink exposes only its
 read-only attachment and synchronous report operation. The wrapper contains
 one logical initial or bound case; successful package binding replaces the
 initializer with fixed read/replacement routes and returns the former
-initializer to its owner. Full owner binding, mutation-result routing, and
-profile-specific storage remain T1.3 work and are not claimed complete here.
+initializer to its owner. Runtime reconciliation, exact
+`ObservableStateResult` production, coordinator integration, and
+profile-specific storage remain later owner tasks and are not claimed here.
 
 The registered declaration audit fixes names, types, raw values, ownership
 modifiers, and the non-forgeable boundary while rejecting Foundation,

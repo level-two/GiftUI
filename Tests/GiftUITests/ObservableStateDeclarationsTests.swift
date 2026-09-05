@@ -53,6 +53,72 @@ final class ObservableStateDeclarationsTests: XCTestCase {
         XCTAssertEqual(replacement?.value, 13)
         XCTAssertNil(state._giftUIBind(read: { live }, replace: { _ in }))
     }
+
+    func testPreservedBindingReleasesTheRepeatedInitializer() {
+        var repeated: TestObservableModel? = TestObservableModel(value: 7)
+        weak let released = repeated
+        let live = TestObservableModel(value: 11)
+        var state = State(wrappedValue: repeated!)
+
+        var consumedInitial = state._giftUIBind(
+            read: { live },
+            replace: { _ in }
+        )
+        XCTAssertTrue(consumedInitial === repeated)
+        repeated = nil
+        XCTAssertNotNil(released)
+
+        consumedInitial = nil
+
+        XCTAssertNil(released)
+        XCTAssertTrue(state.wrappedValue === live)
+    }
+
+    func testSetterRoutePreservesTheFirstFailureUntilCoordinatorConsumption() {
+        let initial = TestObservableModel(value: 1)
+        let live = TestObservableModel(value: 2)
+        var slot = TestMutationResultSlot()
+        var nextResult = TestMutationResult.failure(.replacementRejected)
+        var state = State(wrappedValue: initial)
+        _ = state._giftUIBind(
+            read: { live },
+            replace: { _ in
+                slot.record(nextResult)
+            }
+        )
+
+        state.wrappedValue = TestObservableModel(value: 3)
+        nextResult = .success
+        state.wrappedValue = TestObservableModel(value: 4)
+
+        XCTAssertEqual(slot.consume(), .failure(.replacementRejected))
+        XCTAssertNil(slot.consume())
+    }
+}
+
+private enum TestMutationError: Equatable {
+    case replacementRejected
+}
+
+private enum TestMutationResult: Equatable {
+    case success
+    case failure(TestMutationError)
+}
+
+private struct TestMutationResultSlot {
+    private var firstFailure: TestMutationResult?
+
+    mutating func record(_ result: TestMutationResult) {
+        guard firstFailure == nil, case .failure = result else {
+            return
+        }
+        firstFailure = result
+    }
+
+    mutating func consume() -> TestMutationResult? {
+        defer { firstFailure = nil }
+        return firstFailure
+    }
 }
 
 private final class TestObservableModel: _GiftUIObservableReference {
