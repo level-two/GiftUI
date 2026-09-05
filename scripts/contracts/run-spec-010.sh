@@ -53,7 +53,7 @@ declared_inputs() {
             "${PROJECT_ROOT}/Package.swift" \
             "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
             "${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv" \
-            "${SCRIPT_DIR}/check-spec-010-borrowing-property.sh" \
+            "${SCRIPT_DIR}/check-spec-010-attachment-property.sh" \
             "${SCRIPT_DIR}/check-spec-010-harness.rb" \
             "${SCRIPT_DIR}/check-spec-010-migration.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
@@ -109,7 +109,7 @@ log_path="${report_dir}/run.log"
     printf 'input_set_sha256=%s\n' "${input_set_sha256}"
     printf 'run_id=%s\n' "${run_id}"
     printf 'invocation=scripts/contracts/run-spec-010.sh --profile %s\n' "${profile}"
-    printf 'public_contract_compile=blocked\n'
+    printf 'public_contract_compile=pending\n'
     printf 'evidence_complete=false\n'
     printf 'remote_access=false\n'
     printf 'deployment=false\n'
@@ -227,8 +227,8 @@ record_command "${SCRIPT_DIR}/check-spec-010-harness.rb"
 record_command "${SCRIPT_DIR}/check-spec-010-migration.rb"
 "${SCRIPT_DIR}/check-spec-010-migration.rb" >>"${log_path}" 2>&1
 if [[ "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ]]; then
-    record_command "${SCRIPT_DIR}/check-spec-010-borrowing-property.sh"
-    "${SCRIPT_DIR}/check-spec-010-borrowing-property.sh" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-010-attachment-property.sh"
+    "${SCRIPT_DIR}/check-spec-010-attachment-property.sh" >>"${log_path}" 2>&1
 fi
 
 case "${profile}" in
@@ -248,5 +248,5 @@ trap - EXIT
     --destination "${canonical_report_dir}" \
     --latest "${latest_pointer}" \
     --run-id "${run_id}"
-printf 'SPEC-010 %s harness passed; public contract remains blocked; run ID: %s\n' \
+printf 'SPEC-010 %s harness passed; public contract implementation pending; run ID: %s\n' \
     "${profile}" "${run_id}"

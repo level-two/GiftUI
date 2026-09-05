@@ -153,12 +153,12 @@ enumerate direct state lexically and enter SPEC-006's stateful category.
       profiles. This task supplies the owner declaration that unblocks the
       SPEC-006 T1.4 visitor signature.
 
-  **Blocked by an approved source-contract compiler error.** Apple Swift
-  6.3.3 rejects SPEC-010's exact `public borrowing var attachment` spelling
-  because `borrowing` may only modify a function declaration. The reproducible
-  fixture and [Specification review](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-1/borrowing-property-specification-blocker.md)
-  require an amended, human-approved source contract before this declaration
-  family or the dependent SPEC-006 visitor method can proceed.
+  **Source-contract blocker resolved.** The 2026-09-05 maintainer-directed
+  amendment replaces the invalid declaration-level ownership modifier with a
+  read-only property whose nonmutating getter borrows the noncopyable sink.
+  The positive compiler witness and
+  [Specification review](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-1/borrowing-property-specification-blocker.md)
+  unblock this declaration family and the dependent SPEC-006 visitor method.
 - [ ] `T1.2` — Add the host-only `GiftUIMacros` target and exact
       `@ObservableStateHost` macro declaration. Generate only the two named
       members plus state-host conformance; enumerate direct observable
@@ -479,20 +479,22 @@ The fixture README, ordered compile and macro schemas, semantic transcript and
 normalized-result schemas, and exact pending evidence registry form a
 fail-closed baseline validated by the new harness check.
 
-The first T1.1 compile attempt exposed an approval blocker in the normative
-public source rather than an implementation defect. The speculative
-declarations were removed, the exact failure is preserved by
-`check-spec-010-borrowing-property.sh`, and T1.1 remains unchecked pending a
-human-approved Specification amendment. T0.3 and T0.4 remain independent of
-that source correction and may proceed.
+The first T1.1 compile attempt exposed a source-spelling defect in the
+normative public contract rather than an implementation defect. On 2026-09-05
+the maintainer directed its correction to a compiler-valid read-only getter.
+`check-spec-010-attachment-property.sh` proves that the getter borrows without
+consuming the noncopyable sink. T1.1 is unblocked and remains unchecked until
+the complete declaration family and its profile evidence land.
 
 `T0.3` is complete: the
 [registered contract driver](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-0/contract-driver.md)
 exposes all four exact profile commands, compiles only the current portable
-prerequisite module, records pinned compiler/target/optimization and immutable
-input/report identity, and reproduces the host compiler blocker. Every report
+prerequisite module, and records pinned compiler/target/optimization plus
+immutable input/report identity. Every report
 contains exactly twelve `missing` acceptance rows and remains explicitly
-conformance-incomplete.
+conformance-incomplete. After the approved getter correction, the two macOS
+profiles compile its positive ownership witness and every profile reports the
+full public contract as `pending` rather than blocked.
 
 `T0.4` is complete: the checked-in
 [migration baseline](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-0/migration-baseline.md)

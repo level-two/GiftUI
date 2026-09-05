@@ -25,7 +25,7 @@ result=$?
 set -e
 
 if [[ "${result}" -eq 0 ]]; then
-    printf '%s\n' 'error: approved borrowing-property spelling unexpectedly compiled' >&2
+    printf '%s\n' 'error: historical borrowing-property spelling unexpectedly compiled' >&2
     exit 1
 fi
 
@@ -37,4 +37,4 @@ while IFS= read -r pattern; do
     }
 done <"${FIXTURE_DIR}/expected-diagnostic-patterns.txt"
 
-printf 'SPEC-010 borrowing-property blocker reproduced; report: %s\n' "${REPORT_DIR}"
+printf 'SPEC-010 historical borrowing-property blocker reproduced; report: %s\n' "${REPORT_DIR}"

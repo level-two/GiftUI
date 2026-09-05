@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-08-28
+updated: 2026-09-05
 proposal:
   - PROPOSAL-005
 related_rfcs:
@@ -47,8 +47,11 @@ target_milestone: MVP
 
 > **Approval status:** Explicitly reapproved by the maintainer after the
 > 2026-08-28 amendment exposing the exact publishable candidate target
-> generation needed by SPEC-011 and SPEC-013. The amended contract is
-> authoritative for implementation.
+> generation needed by SPEC-011 and SPEC-013. On 2026-09-05, the maintainer
+> directed the source-level correction of the attachment getter after the
+> pinned compiler rejected a declaration-level ownership modifier. The
+> corrected contract is authoritative for implementation; its ownership
+> semantics are unchanged.
 
 ## Summary
 
@@ -169,7 +172,7 @@ public enum _GiftUIObservableChangeReportOutcome: UInt8, Equatable, Sendable {
 }
 
 public struct _GiftUIObservableChangeSink: ~Copyable {
-    public borrowing var attachment: _GiftUIObservationAttachment { get }
+    public var attachment: _GiftUIObservationAttachment { get }
     public mutating func reportChange()
         -> _GiftUIObservableChangeReportOutcome
 }
@@ -216,8 +219,10 @@ The underscored types and protocols are framework conformance SPI, not
 supported client UI. `_GiftUIObservationAttachment` has no public initializer;
 only `GiftUIObservableState` may create one. The sink has no public initializer,
 contains that exact attachment and one fixed nonescaping runtime report route,
-and is transferred into the model's single registration. A conforming model
-MUST read `sink.attachment`, install the complete sink, and return that same
+and is transferred into the model's single registration. The read-only
+`attachment` getter borrows its noncopyable sink for the duration of access and
+does not consume or mutate it. A conforming model MUST read `sink.attachment`,
+install the complete sink, and return that same
 attachment. Returning `nil` means only that the model already owns a sink;
 capacity, identity-generation, and staging failures occur before the sink is
 offered. Returning a different attachment is `.invariantViolation` and the

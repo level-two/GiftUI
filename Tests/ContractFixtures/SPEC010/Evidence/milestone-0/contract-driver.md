@@ -17,9 +17,10 @@ optimization, full command transcript, and current portable `GiftUI` module.
 The ARMv6 and nRF modes use repository-local pinned toolchains and report-local
 compiler caches; they perform hardware-free cross-builds only.
 
-The two macOS profiles also reproduce the approved borrowing-property source
-blocker. Every profile sets `public_contract_compile=blocked`, lists exactly
-OS-001 through OS-012 as `missing`, and fixes `evidence_complete=false`.
+The two macOS profiles also compile the corrected read-only attachment getter
+and prove that the noncopyable sink remains usable until explicitly consumed.
+Every profile sets `public_contract_compile=pending`, lists exactly OS-001
+through OS-012 as `missing`, and fixes `evidence_complete=false`.
 Passing the harness means that prerequisites and failure reporting are
 reproducible; it does not mean the observable-state contract conforms.
 

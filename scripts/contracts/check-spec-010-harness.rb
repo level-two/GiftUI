@@ -79,7 +79,7 @@ end
   fail_check("metadata lacks #{key}") if metadata.fetch(key, "").empty?
 end
 fail_check("wrong report spec") unless metadata["spec"] == "SPEC-010"
-fail_check("public contract blocker must remain explicit") unless metadata["public_contract_compile"] == "blocked"
+fail_check("public contract status must remain pending") unless metadata["public_contract_compile"] == "pending"
 %w[connected_target_execution deployment service_restart flashing].each do |key|
   fail_check("driver must not claim #{key}") unless metadata[key] == "false"
 end
