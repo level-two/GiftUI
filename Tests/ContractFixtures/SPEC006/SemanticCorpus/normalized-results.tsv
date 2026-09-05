@@ -14,3 +14,11 @@ optional-absent	success	0	0	0	0	2	1	optional-absent-identities	host
 nested-combination	success	2	1	0	0	9	9	nested-combination-identities	host
 inactive-branch-base	success	1	0	0	0	5	3	inactive-branch-equivalence	host
 inactive-branch-varied	success	1	0	0	0	5	3	inactive-branch-equivalence	host
+modifier-zero	success	1	0	0	0	2	2	modifier-zero-identities	host
+modifier-one	success	1	0	1	0	3	4	modifier-one-identities	host
+modifier-repeated	success	1	0	2	0	4	6	modifier-repeated-identities	host
+modifier-mixed	success	1	0	2	0	4	6	modifier-mixed-identities	host
+modifier-custom	success	1	1	1	0	5	6	modifier-custom-identities	host
+modifier-fixed-group	success	2	0	1	0	5	7	modifier-group-identities	host
+modifier-nested	success	1	1	2	0	6	8	modifier-nested-identities	host
+modifier-siblings	success	2	0	2	0	5	9	modifier-sibling-identities	host

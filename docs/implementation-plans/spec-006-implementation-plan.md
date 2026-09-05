@@ -298,7 +298,7 @@ associations without layout, rendering, a backend, or connected hardware.
       endpoint role, declaration role, prefix/descendant paths, and forced
       alias detection. Compare equality relations and canonical paths, never
       profile-private identity bytes.
-- [ ] `T3.4` — Add test-only typed modifier declarations for zero, one,
+- [x] `T3.4` — Add test-only typed modifier declarations for zero, one,
       repeated same-kind, mixed-kind, custom-view, fixed-group, nested, and
       sibling scopes. Prove exact source order and scope identity, unchanged
       descendant semantic identities, no sibling interleaving, preservation of
@@ -709,3 +709,12 @@ fails with `invalidIdentity`, resets the workspace, and publishes no events;
 see the
 [identity-relation evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-3/identity-relations.md).
 `T3.4` is next.
+
+`T3.4` is complete: typed fixture modifiers cover zero, one, repeated,
+mixed, custom-view, fixed-group, nested, and sibling scopes. Exact transcripts
+prove source order, scope-local chain indices, unchanged descendant identity
+under payload-only changes, and no sibling interleaving; a fixture-owned sink
+also consumes the borrowed payload markers without assigning layout or render
+meaning. See the
+[modifier corpus evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-3/modifier-corpus.md).
+`T3.5` is next.

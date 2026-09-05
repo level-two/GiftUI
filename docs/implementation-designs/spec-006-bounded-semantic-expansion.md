@@ -211,7 +211,9 @@ symbolic fixture roles and exact path/event comparisons for the complete T3.2
 declaration-shape matrix. Its T3.3 relation cases compare complete canonical
 components and endpoint roles only; the forced-alias workspace is a negative
 test seam, not a production representation or collision strategy.
-Cross-profile comparison, allocation instrumentation, and owner failure
+T3.4 adds typed modifier fixtures and a fixture-owned payload inspector; the
+generic recording oracle retains only the scope identity, role, and chain
+index. Cross-profile comparison, allocation instrumentation, and owner failure
 mapping remain assigned to later Milestones 4 and 6 tasks.
 
 Diagnostics do not participate in this mechanism. The later test-only owner

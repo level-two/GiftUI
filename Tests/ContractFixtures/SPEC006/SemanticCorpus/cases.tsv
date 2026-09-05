@@ -14,3 +14,11 @@ optional-absent	optional	absent	success	host
 nested-combination	nested-combination	first,present	success	host
 inactive-branch-base	conditional-inactive-shape	one-inactive-child	success	host
 inactive-branch-varied	conditional-inactive-shape	two-inactive-children	success	host
+modifier-zero	modifier-zero	-	success	host
+modifier-one	modifier-one	inset(7)	success	host
+modifier-repeated	modifier-repeated	inset(11),inset(22)	success	host
+modifier-mixed	modifier-mixed	inset(31),tone(42)	success	host
+modifier-custom	modifier-custom	inset(5)	success	host
+modifier-fixed-group	modifier-fixed-group	inset(1)	success	host
+modifier-nested	modifier-nested	inset(5),tone(3)	success	host
+modifier-siblings	modifier-siblings	inset(1),tone(2)	success	host

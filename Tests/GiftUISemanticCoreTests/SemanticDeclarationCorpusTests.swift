@@ -259,6 +259,171 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
         XCTAssertFalse(workspace.isExpanding)
     }
 
+    func testModifierChainsPreserveSourceOrderAndTypedPayloads() {
+        let one = CorpusInset(content: CorpusA(), value: 7)
+        let oneRoot: [SemanticRecordingPathComponent] = [.root, .role(.inset)]
+        let oneChild = oneRoot + [.role(.a)]
+        assertExpansion(
+            one,
+            expectedEvents: [
+                .structural(path(oneRoot), .inset),
+                .structural(path(oneChild), .a),
+                .semantic(path(oneChild), .a),
+                .modifier(path(oneRoot), .inset, index: 0),
+            ],
+            expectedSummary: summary(nodes: 1, modifiers: 1, depth: 3)
+        )
+
+        let repeated = CorpusInset(
+            content: CorpusInset(content: CorpusA(), value: 11),
+            value: 22
+        )
+        let outer: [SemanticRecordingPathComponent] = [.root, .role(.inset)]
+        let inner = outer + [.role(.inset)]
+        let child = inner + [.role(.a)]
+        assertExpansion(
+            repeated,
+            expectedEvents: [
+                .structural(path(outer), .inset),
+                .structural(path(inner), .inset),
+                .structural(path(child), .a),
+                .semantic(path(child), .a),
+                .modifier(path(inner), .inset, index: 0),
+                .modifier(path(outer), .inset, index: 1),
+            ],
+            expectedSummary: summary(nodes: 1, modifiers: 2, depth: 4)
+        )
+
+        let mixed = CorpusTone(
+            content: CorpusInset(content: CorpusA(), value: 31),
+            value: 42
+        )
+        let toneRoot: [SemanticRecordingPathComponent] = [.root, .role(.tone)]
+        let insetPath = toneRoot + [.role(.inset)]
+        let mixedChild = insetPath + [.role(.a)]
+        assertExpansion(
+            mixed,
+            expectedEvents: [
+                .structural(path(toneRoot), .tone),
+                .structural(path(insetPath), .inset),
+                .structural(path(mixedChild), .a),
+                .semantic(path(mixedChild), .a),
+                .modifier(path(insetPath), .inset, index: 0),
+                .modifier(path(toneRoot), .tone, index: 1),
+            ],
+            expectedSummary: summary(nodes: 1, modifiers: 2, depth: 4)
+        )
+
+        var workspace = CorpusWorkspace()
+        let payloadProbe = CorpusModifierPayloadProbe()
+        var sink = CorpusModifierInspectingSink(probe: payloadProbe)
+        let result = expandSemanticTree(
+            mixed,
+            limits: corpusLimits,
+            workspace: &workspace,
+            sink: &sink
+        )
+        XCTAssertEqual(result, .success(summary(nodes: 1, modifiers: 2, depth: 4)))
+        XCTAssertEqual(payloadProbe.values, [31, 42])
+    }
+
+    func testModifierPayloadChangesDoNotReplaceDescendantIdentity() {
+        let first = CorpusInset(content: CorpusA(), value: 1)
+        let second = CorpusInset(content: CorpusA(), value: 999)
+        XCTAssertEqual(
+            semanticIdentities(in: expand(first).events),
+            semanticIdentities(in: expand(second).events)
+        )
+    }
+
+    func testModifiersOnCustomGroupsNestedContentAndSiblingsKeepScopesSeparate() {
+        let custom = CorpusModifiedCustom()
+        let customRoot: [SemanticRecordingPathComponent] = [.root, .role(.modifiedCustom)]
+        let customBody = customRoot + [.customBody]
+        let customModifier = customBody + [.role(.inset)]
+        let customChild = customModifier + [.role(.a)]
+        assertExpansion(
+            custom,
+            expectedEvents: [
+                .structural(path(customRoot), .modifiedCustom),
+                .body(path(customBody), .modifiedCustom),
+                .structural(path(customModifier), .inset),
+                .structural(path(customChild), .a),
+                .semantic(path(customChild), .a),
+                .modifier(path(customModifier), .inset, index: 0),
+            ],
+            expectedSummary: summary(nodes: 1, bodies: 1, modifiers: 1, depth: 5)
+        )
+
+        let group = CorpusInset(
+            content: ViewBuilder.buildBlock(CorpusA(), CorpusB()),
+            value: 1
+        )
+        let groupRoot: [SemanticRecordingPathComponent] = [.root, .role(.inset)]
+        let tuple = groupRoot + [.role(.tuple2)]
+        let groupA = tuple + [.fixedChild(0), .role(.a)]
+        let groupB = tuple + [.fixedChild(1), .role(.b)]
+        assertExpansion(
+            group,
+            expectedEvents: [
+                .structural(path(groupRoot), .inset),
+                .structural(path(tuple), .tuple2),
+                .structural(path(groupA), .a),
+                .semantic(path(groupA), .a),
+                .structural(path(groupB), .b),
+                .semantic(path(groupB), .b),
+                .modifier(path(groupRoot), .inset, index: 0),
+            ],
+            expectedSummary: summary(nodes: 2, modifiers: 1, depth: 5)
+        )
+
+        let siblings = ViewBuilder.buildBlock(
+            CorpusInset(content: CorpusA(), value: 1),
+            CorpusTone(content: CorpusB(), value: 2)
+        )
+        let siblingTuple: [SemanticRecordingPathComponent] = [.root, .role(.tuple2)]
+        let siblingInset = siblingTuple + [.fixedChild(0), .role(.inset)]
+        let siblingA = siblingInset + [.role(.a)]
+        let siblingTone = siblingTuple + [.fixedChild(1), .role(.tone)]
+        let siblingB = siblingTone + [.role(.b)]
+        assertExpansion(
+            siblings,
+            expectedEvents: [
+                .structural(path(siblingTuple), .tuple2),
+                .structural(path(siblingInset), .inset),
+                .structural(path(siblingA), .a),
+                .semantic(path(siblingA), .a),
+                .modifier(path(siblingInset), .inset, index: 0),
+                .structural(path(siblingTone), .tone),
+                .structural(path(siblingB), .b),
+                .semantic(path(siblingB), .b),
+                .modifier(path(siblingTone), .tone, index: 0),
+            ],
+            expectedSummary: summary(nodes: 2, modifiers: 2, depth: 5)
+        )
+
+        let nested = CorpusTone(content: CorpusModifiedCustom(), value: 3)
+        let nestedTone: [SemanticRecordingPathComponent] = [.root, .role(.tone)]
+        let nestedCustom = nestedTone + [.role(.modifiedCustom)]
+        let nestedBody = nestedCustom + [.customBody]
+        let nestedInset = nestedBody + [.role(.inset)]
+        let nestedA = nestedInset + [.role(.a)]
+        assertExpansion(
+            nested,
+            expectedEvents: [
+                .structural(path(nestedTone), .tone),
+                .structural(path(nestedCustom), .modifiedCustom),
+                .body(path(nestedBody), .modifiedCustom),
+                .structural(path(nestedInset), .inset),
+                .structural(path(nestedA), .a),
+                .semantic(path(nestedA), .a),
+                .modifier(path(nestedInset), .inset, index: 0),
+                .modifier(path(nestedTone), .tone, index: 0),
+            ],
+            expectedSummary: summary(nodes: 1, bodies: 1, modifiers: 2, depth: 6)
+        )
+    }
+
     private func assertFixedExpansion<Content: View>(
         _ content: Content,
         tupleRole: CorpusRole,
@@ -302,16 +467,9 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
     ) -> (result: SemanticExpansionResult, events: [CorpusEvent]) {
         var workspace = CorpusWorkspace()
         var sink = SemanticRecordingSink(storage: CorpusStorage())
-        let limits = SemanticExpansionLimits(
-            maximumDepth: 16,
-            maximumSemanticNodes: 16,
-            maximumBodyEvaluations: 16,
-            maximumModifierApplications: 16,
-            maximumActionOccurrences: 16
-        )!
         let result = expandSemanticTree(
             content,
-            limits: limits,
+            limits: corpusLimits,
             workspace: &workspace,
             sink: &sink
         )
@@ -345,12 +503,13 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
     private func summary(
         nodes: UInt16,
         bodies: UInt16 = 0,
+        modifiers: UInt16 = 0,
         depth: UInt16
     ) -> SemanticExpansionSummary {
         SemanticExpansionSummary(
             semanticNodeCount: nodes,
             bodyEvaluationCount: bodies,
-            modifierApplicationCount: 0,
+            modifierApplicationCount: modifiers,
             actionOccurrenceCount: 0,
             maximumObservedDepth: depth
         )
@@ -369,6 +528,9 @@ private enum CorpusRole: UInt16, Sendable {
     case inner = 21
     case propertyFunction = 22
     case combination = 23
+    case modifiedCustom = 24
+    case inset = 30
+    case tone = 31
     case a = 100
     case b = 101
     case c = 102
@@ -508,6 +670,45 @@ private struct CorpusNestedCombination: View, CorpusRoleProviding {
     }
 }
 
+private protocol CorpusModifierValue {
+    var corpusModifierValue: Int { get }
+}
+
+private struct CorpusInset<Content: View>: View, _GiftUISemanticModifierPayload,
+    CorpusRoleProviding, CorpusModifierValue
+{
+    static var corpusRole: CorpusRole { .inset }
+    let content: Content
+    let value: Int
+    var corpusModifierValue: Int { value }
+    var body: Never { fatalError("modifier body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    ) {
+        visitor.visitModifier(content: content, payload: self)
+    }
+}
+
+private struct CorpusTone<Content: View>: View, _GiftUISemanticModifierPayload,
+    CorpusRoleProviding, CorpusModifierValue
+{
+    static var corpusRole: CorpusRole { .tone }
+    let content: Content
+    let value: Int
+    var corpusModifierValue: Int { value }
+    var body: Never { fatalError("modifier body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    ) {
+        visitor.visitModifier(content: content, payload: self)
+    }
+}
+
+private struct CorpusModifiedCustom: View, CorpusRoleProviding {
+    static let corpusRole = CorpusRole.modifiedCustom
+    var body: some View { CorpusInset(content: CorpusA(), value: 5) }
+}
+
 private struct CorpusIdentity: SemanticRecordingIdentity {
     let components: [SemanticRecordingPathComponent]
     let declarationRole: SemanticRecordingRole
@@ -601,17 +802,25 @@ private enum CorpusEventKind: Equatable {
     case structural
     case body
     case semantic
+    case modifier
 }
 
 private struct CorpusEvent: Equatable {
     let path: CorpusIdentity
     let kind: CorpusEventKind
     let role: SemanticRecordingRole
+    let chainIndex: UInt16?
 
-    init(path: CorpusIdentity, kind: CorpusEventKind, role: SemanticRecordingRole) {
+    init(
+        path: CorpusIdentity,
+        kind: CorpusEventKind,
+        role: SemanticRecordingRole,
+        chainIndex: UInt16? = nil
+    ) {
         self.path = path
         self.kind = kind
         self.role = role
+        self.chainIndex = chainIndex
     }
 
     init(_ event: SemanticRecordingEvent<CorpusIdentity>) {
@@ -622,8 +831,10 @@ private struct CorpusEvent: Equatable {
             self.init(path: path, kind: .body, role: role)
         case .stageSemanticOccurrence(let path, let role):
             self.init(path: path, kind: .semantic, role: role)
-        case .applyModifier, .associateAction:
-            preconditionFailure("T3.2 declaration corpus contains no modifiers or actions")
+        case .applyModifier(let path, let role, let index):
+            self.init(path: path, kind: .modifier, role: role, chainIndex: index)
+        case .associateAction:
+            preconditionFailure("T3.4 declaration corpus contains no actions")
         }
     }
 
@@ -636,6 +847,14 @@ private struct CorpusEvent: Equatable {
     static func semantic(_ path: CorpusIdentity, _ role: CorpusRole) -> Self {
         Self(path: path, kind: .semantic, role: role.recordingRole)
     }
+    static func modifier(_ path: CorpusIdentity, _ role: CorpusRole, index: UInt16) -> Self {
+        Self(
+            path: path,
+            kind: .modifier,
+            role: role.recordingRole,
+            chainIndex: index
+        )
+    }
 }
 
 private func path(_ components: [SemanticRecordingPathComponent]) -> CorpusIdentity {
@@ -647,11 +866,19 @@ private func path(_ components: [SemanticRecordingPathComponent]) -> CorpusIdent
     return CorpusIdentity(components: components, declarationRole: role)
 }
 
+private let corpusLimits = SemanticExpansionLimits(
+    maximumDepth: 16,
+    maximumSemanticNodes: 16,
+    maximumBodyEvaluations: 16,
+    maximumModifierApplications: 16,
+    maximumActionOccurrences: 16
+)!
+
 private struct CorpusStorage: SemanticRecordingStorage {
     let maximumStructuralOccurrences: UInt16 = 128
     let maximumBodyEvaluations: UInt16 = 32
     let maximumSemanticOccurrences: UInt16 = 64
-    let maximumModifierApplications: UInt16 = 0
+    let maximumModifierApplications: UInt16 = 64
     let maximumActionOccurrences: UInt16 = 0
     var stagedEvents: [SemanticRecordingEvent<CorpusIdentity>] = []
     var committedEvents: [SemanticRecordingEvent<CorpusIdentity>] = []
@@ -670,4 +897,58 @@ private struct CorpusStorage: SemanticRecordingStorage {
     }
     mutating func discardRecording() { stagedEvents.removeAll(keepingCapacity: true) }
     mutating func resetRecording() {}
+}
+
+private final class CorpusModifierPayloadProbe {
+    var values: [Int] = []
+}
+
+private struct CorpusModifierInspectingSink: SemanticExpansionSink {
+    var recording = SemanticRecordingSink(storage: CorpusStorage())
+    let probe: CorpusModifierPayloadProbe
+
+    var maximumStructuralOccurrences: UInt16 { recording.maximumStructuralOccurrences }
+    var maximumBodyEvaluations: UInt16 { recording.maximumBodyEvaluations }
+    var maximumSemanticOccurrences: UInt16 { recording.maximumSemanticOccurrences }
+    var maximumModifierApplications: UInt16 { recording.maximumModifierApplications }
+    var maximumActionOccurrences: UInt16 { recording.maximumActionOccurrences }
+
+    mutating func beginExpansion() -> Bool { recording.beginExpansion() }
+    mutating func stageStructuralOccurrence(identity: borrowing CorpusIdentity) -> Bool {
+        recording.stageStructuralOccurrence(identity: identity)
+    }
+    mutating func stageBodyEvaluation(identity: borrowing CorpusIdentity) -> Bool {
+        recording.stageBodyEvaluation(identity: identity)
+    }
+    mutating func stageSemanticOccurrence<Payload: _GiftUISemanticPrimitivePayload>(
+        identity: borrowing CorpusIdentity,
+        payload: borrowing Payload
+    ) -> Bool {
+        recording.stageSemanticOccurrence(identity: identity, payload: payload)
+    }
+    mutating func stageModifierApplication<Payload: _GiftUISemanticModifierPayload>(
+        identity: borrowing CorpusIdentity,
+        payload: borrowing Payload,
+        chainIndex: UInt16
+    ) -> Bool {
+        let payloadCopy = copy payload
+        guard let fixturePayload = payloadCopy as? any CorpusModifierValue else { return false }
+        probe.values.append(fixturePayload.corpusModifierValue)
+        return recording.stageModifierApplication(
+            identity: identity,
+            payload: payload,
+            chainIndex: chainIndex
+        )
+    }
+    mutating func stageActionOccurrence<Action: GiftUIAction>(
+        identity: borrowing CorpusIdentity,
+        action: borrowing Action
+    ) -> Bool {
+        recording.stageActionOccurrence(identity: identity, action: action)
+    }
+    mutating func publishExpansion(_ summary: SemanticExpansionSummary) -> Bool {
+        recording.publishExpansion(summary)
+    }
+    mutating func discardExpansion() { recording.discardExpansion() }
+    mutating func resetExpansion() { recording.resetExpansion() }
 }

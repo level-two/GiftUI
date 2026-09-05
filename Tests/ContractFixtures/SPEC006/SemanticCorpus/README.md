@@ -69,6 +69,12 @@ T3.1 introduces `empty`. T3.2 adds `fixed-arity-1` through
 closed fixture tokens for the checked-in corpus, not production declaration
 names or a runtime registry.
 
+T3.4 adds `modifier-zero`, `modifier-one`, `modifier-repeated`,
+`modifier-mixed`, `modifier-custom`, `modifier-fixed-group`,
+`modifier-nested`, and `modifier-siblings`. Their payload tokens are bounded
+test values consumed only by the owning fixture sink; they assign no layout or
+rendering meaning.
+
 ## Structural-identity relations
 
 `identity-relations.tsv` has eight fields: a unique relation ID, the left
