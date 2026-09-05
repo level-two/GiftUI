@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-04
-updated: 2026-09-04
+updated: 2026-09-05
 related_design_notes: []
 conformance_report: null
 related_future_work:
@@ -477,7 +477,7 @@ verifies the accepted/approved lifecycle chain, all twelve acceptance labels,
 MVP need, upstream ownership, and the non-authoritative status of both Spikes.
 The fixture README, ordered compile and macro schemas, semantic transcript and
 normalized-result schemas, and exact pending evidence registry form a
-fail-closed baseline validated by the new harness check. `T0.2` is next.
+fail-closed baseline validated by the new harness check.
 
 The first T1.1 compile attempt exposed an approval blocker in the normative
 public source rather than an implementation defect. The speculative
@@ -492,4 +492,14 @@ exposes all four exact profile commands, compiles only the current portable
 prerequisite module, records pinned compiler/target/optimization and immutable
 input/report identity, and reproduces the host compiler blocker. Every report
 contains exactly twelve `missing` acceptance rows and remains explicitly
-conformance-incomplete. `T0.4` is next.
+conformance-incomplete.
+
+`T0.4` is complete: the checked-in
+[migration baseline](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-0/migration-baseline.md)
+and exact inventory classify every obsolete PoC state mechanism, direct
+thermostat mutation site, absent Apple Observation dependency, and disposable
+SPIKE-003/SPIKE-006 spelling. The registered check pins the PoC revision,
+reproduces every path/count map, and rejects a legacy compatibility path in
+maintained source. `T0.2` remains intentionally open until the first buildable
+macro target and SPEC-009-owned execution target make its atomic graph changes
+valid.
