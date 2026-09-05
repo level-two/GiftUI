@@ -113,12 +113,16 @@ fixture schema, and migration surface is explicit before declarations land.
       normalized result schema, required-evidence registry, and README that
       separates host execution, cross-build, simulator, and connected-target
       evidence. Map every `OS-001` through `OS-012` row fail-closed.
-- [ ] `T0.2` — Add the approved target/dependency rows for the host-only
-      `GiftUIMacros`, `GiftUIObservableState`, its tests, and narrowly named
-      owner-adapter fixtures to SPEC-002's exact graph. Prove the macro target
-      is neither a product nor in any target-image dependency closure, and
-      reject imports of runtimes, Interaction, application models, backends,
-      platforms, drivers, OS/RTOS, HAL, or hardware from the owner.
+- [ ] `T0.2` — Reserve and audit the approved target/dependency rows for the
+      host-only `GiftUIMacros`, `GiftUIObservableState`, its tests, and narrowly
+      named owner-adapter fixtures. Add `GiftUIMacros` to the exact package
+      graph only with its first buildable plugin implementation in `T1.2`; add
+      `GiftUIObservableState` and its exact `GiftUIExecution` edge only in
+      `T2.1` after that owned target exists. Prove the macro is neither a
+      product nor in any target-image dependency closure, and reject imports
+      of runtimes, Interaction, application models, backends, platforms,
+      drivers, OS/RTOS, HAL, or hardware from the owner. Do not add empty or
+      dependency-incomplete placeholder targets merely to reserve names.
 - [ ] `T0.3` — Create and register `scripts/contracts/run-spec-010.sh` with the
       exact four profile names, pinned compiler/SDK/optimization metadata,
       immutable input identity, normalized report schema, command transcript,
@@ -396,8 +400,11 @@ transition without overclaiming hardware or downstream application completion.
    only after each owner exists.
 
 Tasks `T0.1`, `T0.3`, and `T0.4` may proceed together after this plan is ready.
-`T1.1` may proceed after `T0.2`; it is the smallest slice that unblocks
-SPEC-006. Macro work `T1.2` and `T1.4` is ordered around that coordinated
+The portable subset of `T1.1` may proceed after `T0.1`; it is the smallest
+slice that unblocks SPEC-006 and changes no package edge. `T0.2` completes
+across the first buildable macro target in `T1.2` and the execution-dependent
+owner target in `T2.1`, rather than authorizing placeholder targets. Macro
+work `T1.2` and `T1.4` is ordered around that coordinated
 visitor addition. Milestone 2 and later execution-dependent work waits for
 SPEC-009. Profile-neutral fixture work may proceed before production runtime
 profiles, but `T6.1` production claims wait for SPEC-013 and SPEC-015 owners.
