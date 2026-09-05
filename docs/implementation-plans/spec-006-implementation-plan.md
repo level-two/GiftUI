@@ -345,7 +345,7 @@ mapping required by SPEC-006.
       exact `.invalidIdentity`, `.reentrancyViolation`, or
       `.invariantViolation` outcomes and keep unavoidable client traps outside
       the recoverable fixture claim.
-- [ ] `T4.4` — Implement the test-only first owner adapter and map all four
+- [x] `T4.4` — Implement the test-only first owner adapter and map all four
       local errors plus invalid-limits `nil` to the exact SPEC-003 facts. Run
       disabled, enabled, saturated, dropped, and failing diagnostics variants
       and prove they cannot alter the local result, transcript, counts, or
@@ -755,3 +755,12 @@ errors, atomic rollback, reuse, and zero poison-body calls are asserted while
 arbitrary client traps remain outside the recoverable claim; see the
 [framework invariant evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-4/framework-invariants.md).
 `T4.4` is next.
+
+`T4.4` is complete: the test-only first owner maps all four local errors and
+invalid-limits `nil` to their exact SPEC-003 facts. Disabled, accepted,
+saturated, dropped, and failed diagnostic variants leave the local result,
+transcript, counts, and primary fact unchanged. The harness also rejects any
+Failure Core import from Semantic Core; see the
+[owner mapping evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-4/owner-mapping.md).
+Milestone 4 is complete. Milestone 5 remains gated by the SPEC-010 macro-owned
+witness; `T6.1` is the next currently unblocked task.

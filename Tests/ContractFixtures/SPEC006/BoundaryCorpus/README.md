@@ -14,3 +14,7 @@ readability; `detecting_point` is authoritative.
 injection. Its `body_evaluations` column counts actual body closure calls, so
 the detectable `Never.body` row remains zero even though the attempted
 recording is discarded.
+
+`owner-mapping.tsv` records the complete SPEC-003 fact produced by the first
+test-only owner that imports both contracts. The invalid-limits row is the
+only row before an active cycle and therefore uses runtime scope.

@@ -1,0 +1,6 @@
+# id	local_result	condition	origin	affected_scope	containment	cycle_state	evidence_class
+capacity-exhausted	capacity-exhausted	capacity-exhausted	semantic	active-cycle	contained	active	host
+invalid-identity	invalid-identity	invalid-identity	semantic	active-cycle	contained	active	host
+reentrancy-violation	reentrancy-violation	reentrancy-violation	semantic	active-cycle	contained	active	host
+invariant-violation	invariant-violation	invariant-violation	semantic	active-cycle	safety-not-proven	active	host
+invalid-limits	invalid-limits	invalid-value	semantic	runtime	contained	before-first-cycle	host

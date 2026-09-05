@@ -5,6 +5,7 @@ require "pathname"
 
 ROOT = Pathname.new(File.expand_path("../..", __dir__))
 FIXTURES = ROOT.join("Tests/ContractFixtures/SPEC006")
+SEMANTIC_CORE = ROOT.join("Sources/GiftUISemanticCore")
 
 def fail_check(message)
   warn "SPEC-006 harness check failed: #{message}"
@@ -20,6 +21,7 @@ expected_headers = {
   "BoundaryCorpus/cases.tsv" => "# id\tboundary_owner\tbelow\texact\tone_over\texpected_one_over\tevidence_class",
   "BoundaryCorpus/coincident-failures.tsv" => "# id\tcompeting_conditions\tdetecting_point\texpected_result\tlater_hook_called\tpublished_rows\treuse\tevidence_class",
   "BoundaryCorpus/framework-invariants.tsv" => "# id\tinjection\texpected_result\tbody_evaluations\tpublished_rows\treuse\tevidence_class",
+  "BoundaryCorpus/owner-mapping.tsv" => "# id\tlocal_result\tcondition\torigin\taffected_scope\tcontainment\tcycle_state\tevidence_class",
 }
 expected_headers.each do |relative, expected|
   path = FIXTURES.join(relative)
@@ -27,6 +29,11 @@ expected_headers.each do |relative, expected|
   actual = path.each_line.first&.chomp
   fail_check("#{relative} header differs") unless actual == expected
 end
+
+semantic_imports = SEMANTIC_CORE.glob("**/*.swift").flat_map do |path|
+  path.each_line.map { |line| line[/\Aimport\s+(\S+)/, 1] }.compact
+end
+fail_check("Semantic Core imports the failure layer") if semantic_imports.include?("GiftUIFailureCore")
 
 rows = FIXTURES.join("fixture-manifest.tsv").each_line.each_with_object([]) do |line, result|
   next if line.start_with?("#") || line.strip.empty?

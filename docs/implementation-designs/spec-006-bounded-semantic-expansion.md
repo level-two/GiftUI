@@ -232,6 +232,10 @@ invariant failure. The check occurs after the ordered body reservation but
 before closure evaluation, allowing atomic rollback without claiming recovery
 from arbitrary client code that traps.
 
+The T4.4 first-owner fixture is intentionally outside Semantic Core. It maps
+the closed local result only after expansion returns, and optional diagnostic
+delivery receives a copied SPEC-003 record after the primary fact is fixed.
+
 Diagnostics do not participate in this mechanism. The later test-only owner
 adapter may observe the closed result only after Semantic Core returns.
 
