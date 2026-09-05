@@ -2,7 +2,7 @@
 id: SPEC-010
 feature: observable-reference-state
 title: Observable Reference State Contract
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-26
@@ -45,7 +45,8 @@ target_milestone: MVP
 
 # SPEC-010: Observable Reference State Contract
 
-> **Approval status:** Explicitly reapproved by the maintainer on 2026-09-05
+> **Implementation status:** Implementing after explicit maintainer reapproval
+> on 2026-09-05
 > after the completeness amendment closed result, storage, replacement-
 > lifecycle, attach-time-report, and focused-owner precedence gaps. This
 > contract is authoritative for implementation.

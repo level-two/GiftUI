@@ -117,11 +117,12 @@ reapproved completeness amendment:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `OBSERVABLE` | `SPEC-010` | `approved` |
+| `OBSERVABLE` | `SPEC-010` | `implementing` |
 | `INTERACTION` | `SPEC-011` | `approved` |
 | `DRAWING` | `SPEC-012` | `approved` |
 
-SPEC-009 through SPEC-012 are approved and authoritative for implementation.
+SPEC-009 through SPEC-012 are approved and authoritative for implementation;
+SPEC-010 is actively implementing its approved contract.
 
 Wave 6 has produced these immutable artifacts:
 

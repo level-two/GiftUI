@@ -2,7 +2,7 @@
 spec: SPEC-010
 feature: observable-reference-state
 title: SPEC-010 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-04
@@ -21,7 +21,7 @@ superseded_by: null
 
 # SPEC-010 Implementation Plan
 
-> This ready plan derives work from the approved Observable Reference State
+> This active plan derives work from the approved Observable Reference State
 > Contract, including its explicitly reapproved 2026-09-05 completeness
 > amendment. It orders implementation and evidence but does not amend the
 > declaration, generation, ownership, mutation, publication, failure, action-
@@ -473,7 +473,7 @@ Implementation began on 2026-09-04 under the then-approved contract. The
 2026-09-05 completeness amendment temporarily returned the feature to
 `specification`, the Specification to `review`, and this plan to `draft`.
 The maintainer explicitly reapproved the amendment the same day; the
-Specification is now `approved` and this reconciled plan is `ready`.
+Specification is now `implementing` and this reconciled plan is `active`.
 
 `T0.1` is complete: the checked-in
 [authority audit](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-0/authority-audit.md)
@@ -494,8 +494,8 @@ The subsequent completeness review found missing exact success-result routing,
 logical storage fields, attach-time report disposition, focused-owner failure
 precedence, and a contradiction over replacement commit timing. SPEC-010 now
 closes those gaps without changing accepted architecture. The maintainer
-explicitly reapproved the contract on 2026-09-05. The plan is executable again
-but does not become `active` until implementation resumes.
+explicitly reapproved the contract on 2026-09-05. Implementation resumed at
+T1.2 the same day, returning this plan to `active`.
 
 `T0.3` is complete: the
 [registered contract driver](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-0/contract-driver.md)

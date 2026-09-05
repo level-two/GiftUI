@@ -28,7 +28,7 @@ its required acceptance criteria.
   and Frame Handoff Contract (`approved`, including focused-owner failure
   amendment)
 - [SPEC-010](spec-010-observable-reference-state.md) — Observable Reference
-  State Contract (`approved`, including publishable target-generation
+  State Contract (`implementing`, including publishable target-generation
   amendment)
 - [SPEC-011](spec-011-interaction.md) — Button Interaction and Activation
   Contract (`approved`, including candidate target-binding amendment)

@@ -101,7 +101,7 @@ features:
     milestone: MVP
   observable-reference-state:
     title: Observable Reference State
-    status: specification
+    status: implementation
     proposal:
       - PROPOSAL-005
     rfcs:
