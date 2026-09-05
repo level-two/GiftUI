@@ -694,6 +694,91 @@ final class SemanticExpansionAttemptTests: XCTestCase {
         }
     }
 
+    func testCoincidentFailuresStopAtTheFirstNormativeDetectingPoint() {
+        var activeWorkspace = AttemptProbeWorkspace(nextEntryError: .invalidIdentity)
+        activeWorkspace.isExpanding = true
+        var rejectingBeginSink = AttemptProbeSink(acceptBegin: false)
+        var reentrantAttempt = makeAttempt()
+        XCTAssertEqual(
+            reentrantAttempt.begin(
+                workspace: &activeWorkspace,
+                sink: &rejectingBeginSink
+            ),
+            .reentrancyViolation
+        )
+        XCTAssertTrue(activeWorkspace.events.isEmpty)
+        XCTAssertTrue(rejectingBeginSink.events.isEmpty)
+
+        var depthWorkspace = AttemptProbeWorkspace(nextEntryError: .invalidIdentity)
+        var depthSink = AttemptProbeSink(maximumStructuralOccurrences: 0)
+        var depthAttempt = makeAttempt(maximumDepth: 1)
+        var identity: AttemptProbeIdentity?
+        XCTAssertNil(depthAttempt.begin(workspace: &depthWorkspace, sink: &depthSink))
+        depthWorkspace.nextEntryError = nil
+        XCTAssertNil(
+            depthAttempt.enterRoot(
+                AttemptProbeView.self,
+                workspace: &depthWorkspace,
+                identity: &identity
+            )
+        )
+        depthWorkspace.nextEntryError = .invalidIdentity
+        XCTAssertEqual(
+            depthAttempt.enterDeclarationRole(
+                AttemptProbeView.self,
+                workspace: &depthWorkspace,
+                identity: &identity
+            ),
+            .capacityExhausted
+        )
+        XCTAssertEqual(depthWorkspace.events, [.begin, .enter])
+        XCTAssertEqual(depthSink.events, [.begin])
+
+        var identityWorkspace = AttemptProbeWorkspace(nextEntryError: .invalidIdentity)
+        var identitySink = AttemptProbeSink(maximumStructuralOccurrences: 0)
+        var identityAttempt = makeAttempt()
+        XCTAssertNil(identityAttempt.begin(workspace: &identityWorkspace, sink: &identitySink))
+        XCTAssertEqual(
+            identityAttempt.enterRoot(
+                AttemptProbeView.self,
+                workspace: &identityWorkspace,
+                identity: &identity
+            ),
+            .invalidIdentity
+        )
+        XCTAssertEqual(identitySink.events, [.begin])
+
+        var actionWorkspace = AttemptProbeWorkspace()
+        var actionSink = AttemptProbeSink(maximumActionOccurrences: 0)
+        var actionAttempt = makeAttempt(maximumSemanticNodes: 1)
+        XCTAssertNil(actionAttempt.begin(workspace: &actionWorkspace, sink: &actionSink))
+        XCTAssertNil(
+            actionAttempt.stageSemanticOccurrence(
+                identity: AttemptProbeIdentity(rawValue: 0),
+                payload: AttemptProbePrimitive(),
+                workspace: &actionWorkspace,
+                sink: &actionSink
+            )
+        )
+        XCTAssertEqual(
+            actionAttempt.stageActionOccurrence(
+                identity: AttemptProbeIdentity(rawValue: 0),
+                action: AttemptProbeAction.primary,
+                workspace: &actionWorkspace,
+                sink: &actionSink
+            ),
+            .capacityExhausted
+        )
+        XCTAssertEqual(actionAttempt.semanticNodeCount, 1)
+        XCTAssertEqual(actionAttempt.actionOccurrenceCount, 0)
+        XCTAssertEqual(actionSink.events, [.begin, .semantic])
+        XCTAssertEqual(
+            actionAttempt.fail(.invalidIdentity, workspace: &actionWorkspace, sink: &actionSink),
+            .capacityExhausted
+        )
+        XCTAssertTrue(actionSink.publishedSummaries.isEmpty)
+    }
+
     func testBeginAndPublishFailuresDiscardAndResetWithoutPublication() {
         var beginWorkspace = AttemptProbeWorkspace()
         var rejectingBeginSink = AttemptProbeSink(acceptBegin: false)

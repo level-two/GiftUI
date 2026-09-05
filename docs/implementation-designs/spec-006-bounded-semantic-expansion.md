@@ -222,6 +222,11 @@ The T4.1 boundary matrix drives the same coordinator at declared-operation,
 workspace, sink, and checked-`UInt16` edges. It adds no fallback storage or
 retry path; failure still flows through the single discard-and-reset lifecycle.
 
+T4.2 models recursive entry sources with value workspaces sharing one
+profile-owned active-state object. This keeps same-workspace reentrancy
+observable across callback boundaries without retaining the root declaration
+or changing the coordinator's synchronous ownership model.
+
 Diagnostics do not participate in this mechanism. The later test-only owner
 adapter may observe the closed result only after Semantic Core returns.
 

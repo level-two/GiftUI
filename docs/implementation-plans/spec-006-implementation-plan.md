@@ -332,7 +332,7 @@ mapping required by SPEC-006.
       never report zero observed depth. Prove no truncation, overwrite, retry,
       recursive fallback, allocating fallback, or retained rejected
       declaration state.
-- [ ] `T4.2` — Exercise coincident failures in the mandated order:
+- [x] `T4.2` — Exercise coincident failures in the mandated order:
       reentrancy; next depth; path/identity; operation count; storage; then
       hook/body. Cover action node-before-action and increasing modifier index.
       Prove the first error is stable, later work stops, no action runs, no
@@ -737,3 +737,13 @@ one-over work, release rejected declaration state, and reset for reuse without
 fallback or retry; see the
 [boundary matrix evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-4/boundary-matrix.md).
 `T4.2` is next.
+
+`T4.2` is complete: the checked-in coincident-failure matrix and focused
+probes cover reentrancy, depth, identity, operation, storage, and hook/body
+precedence, including semantic-before-action and increasing modifier indices.
+Sticky failure, atomic discard, no action hook, and later reuse are preserved.
+Callback, invalidation, and external-input attempts sharing the active logical
+workspace all fail before their sinks begin while the outer root succeeds; see
+the
+[detection-order evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-4/detection-order.md).
+`T4.3` is next.

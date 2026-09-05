@@ -1,0 +1,10 @@
+# id	competing_conditions	detecting_point	expected_result	later_hook_called	published_rows	reuse	evidence_class
+active-entry	reentrancy,workspace-begin-refusal,sink-begin-refusal	reentrancy	reentrancy-violation	false	0	valid	host
+next-depth	depth,invalid-identity,storage	next-depth	capacity-exhausted	false	0	valid	host
+path-identity	invalid-identity,operation,storage	path-identity	invalid-identity	false	0	valid	host
+operation-count	operation-count,storage,hook	operation-count	capacity-exhausted	false	0	valid	host
+sink-storage	storage,hook	sink-storage	capacity-exhausted	false	0	valid	host
+action-semantic-first	semantic-node,action-count,action-storage	semantic-node	capacity-exhausted	false	0	valid	host
+callback-reentry	reentrancy,callback-root	reentrancy	reentrancy-violation	false	0	valid	host
+invalidation-reentry	reentrancy,invalidation-root	reentrancy	reentrancy-violation	false	0	valid	host
+external-input-reentry	reentrancy,external-input-root	reentrancy	reentrancy-violation	false	0	valid	host

@@ -18,6 +18,7 @@ expected_headers = {
   "SemanticCorpus/normalized-results.tsv" => "# case_id\tresult\tsemantic_nodes\tbody_evaluations\tmodifier_applications\taction_occurrences\tmaximum_observed_depth\ttranscript_rows\tidentity_relation_set\tevidence_class",
   "SemanticCorpus/identity-relations.tsv" => "# id\tlhs_path\tlhs_endpoint_role\trhs_path\trhs_endpoint_role\texpected_relation\texpected_result\tevidence_class",
   "BoundaryCorpus/cases.tsv" => "# id\tboundary_owner\tbelow\texact\tone_over\texpected_one_over\tevidence_class",
+  "BoundaryCorpus/coincident-failures.tsv" => "# id\tcompeting_conditions\tdetecting_point\texpected_result\tlater_hook_called\tpublished_rows\treuse\tevidence_class",
 }
 expected_headers.each do |relative, expected|
   path = FIXTURES.join(relative)
