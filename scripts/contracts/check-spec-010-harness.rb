@@ -59,3 +59,40 @@ fail_check("initial evidence must remain fail-closed") unless evidence_rows.all?
 fail_check("owner task or evidence is empty") if evidence_rows.any? { |row| row[1].empty? || row[2].empty? }
 
 puts "SPEC-010 fixture schemas passed: 12 pending acceptance criteria"
+
+exit 0 if ARGV.empty?
+fail_check("expected one report directory") unless ARGV.length == 1
+
+report = Pathname.new(ARGV.first)
+%w[metadata.txt commands.txt input-hashes.tsv image-hashes.tsv required-evidence.tsv].each do |relative|
+  path = report.join(relative)
+  fail_check("report lacks #{relative}") unless path.file? && !path.empty?
+end
+
+metadata = report.join("metadata.txt").each_line.each_with_object({}) do |line, values|
+  key, value = line.chomp.split("=", 2)
+  values[key] = value if value
+end
+%w[spec profile repository_revision repository_dirty target optimization compiler_path
+   compiler_sha256 evidence_complete public_contract_compile connected_target_execution
+   deployment service_restart flashing].each do |key|
+  fail_check("metadata lacks #{key}") if metadata.fetch(key, "").empty?
+end
+fail_check("wrong report spec") unless metadata["spec"] == "SPEC-010"
+fail_check("public contract blocker must remain explicit") unless metadata["public_contract_compile"] == "blocked"
+%w[connected_target_execution deployment service_restart flashing].each do |key|
+  fail_check("driver must not claim #{key}") unless metadata[key] == "false"
+end
+
+report_rows = report.join("required-evidence.tsv").each_line.each_with_object([]) do |line, rows|
+  next if line.start_with?("#") || line.strip.empty?
+
+  fields = line.chomp.split("\t", -1)
+  fail_check("report evidence row must have two fields") unless fields.length == 2
+  rows << fields
+end
+fail_check("report evidence criteria differ") unless report_rows.map(&:first) == expected_criteria
+fail_check("initial report evidence must be missing") unless report_rows.all? { |row| row[1] == "missing" }
+fail_check("missing evidence was reported complete") unless metadata["evidence_complete"] == "false"
+
+puts "SPEC-010 report is fail-closed: 12 acceptance criteria missing"

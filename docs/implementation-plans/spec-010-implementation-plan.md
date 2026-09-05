@@ -123,7 +123,7 @@ fixture schema, and migration surface is explicit before declarations land.
       of runtimes, Interaction, application models, backends, platforms,
       drivers, OS/RTOS, HAL, or hardware from the owner. Do not add empty or
       dependency-incomplete placeholder targets merely to reserve names.
-- [ ] `T0.3` — Create and register `scripts/contracts/run-spec-010.sh` with the
+- [x] `T0.3` — Create and register `scripts/contracts/run-spec-010.sh` with the
       exact four profile names, pinned compiler/SDK/optimization metadata,
       immutable input identity, normalized report schema, command transcript,
       and explicit `missing` evidence rows. The initial driver must compile
@@ -485,3 +485,11 @@ declarations were removed, the exact failure is preserved by
 `check-spec-010-borrowing-property.sh`, and T1.1 remains unchecked pending a
 human-approved Specification amendment. T0.3 and T0.4 remain independent of
 that source correction and may proceed.
+
+`T0.3` is complete: the
+[registered contract driver](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-0/contract-driver.md)
+exposes all four exact profile commands, compiles only the current portable
+prerequisite module, records pinned compiler/target/optimization and immutable
+input/report identity, and reproduces the host compiler blocker. Every report
+contains exactly twelve `missing` acceptance rows and remains explicitly
+conformance-incomplete. `T0.4` is next.
