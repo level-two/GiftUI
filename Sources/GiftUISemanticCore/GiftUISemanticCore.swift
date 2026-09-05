@@ -886,6 +886,10 @@ where
             stop(error)
             return
         }
+        guard Declaration.Body.self != Never.self else {
+            stop(.invariantViolation)
+            return
+        }
         let evaluatedBody = body()
         expandDeclaration(evaluatedBody)
         guard failure == nil else { return }

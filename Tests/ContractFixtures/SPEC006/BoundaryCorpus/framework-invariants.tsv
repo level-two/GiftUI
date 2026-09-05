@@ -1,0 +1,7 @@
+# id	injection	expected_result	body_evaluations	published_rows	reuse	evidence_class
+identity-alias	two-paths-one-identity	invalid-identity	0	0	valid	host
+same-workspace-reentry	active-root	reentrancy-violation	0	0	valid	host
+missing-category	zero-visitor-categories	invariant-violation	0	0	valid	host
+multiple-category	two-primitive-categories	invariant-violation	0	0	valid	host
+false-sink-capacity	advertised-storage-refusal	invariant-violation	0	0	valid	host
+never-body-category	custom-category-with-never-body	invariant-violation	0	0	valid	host

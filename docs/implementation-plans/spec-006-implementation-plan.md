@@ -339,7 +339,7 @@ mapping required by SPEC-006.
       partial result publishes, and the workspace accepts a later valid
       attempt. Inject callback, invalidation, and external-input attempts during
       expansion and prove they cannot recursively expand the active root.
-- [ ] `T4.3` — Add framework-only injection for identity alias,
+- [x] `T4.3` — Add framework-only injection for identity alias,
       same-workspace reentrancy, wrong/multiple visitor category, false
       capacity reporting, and detectable `Never.body` reachability. Verify
       exact `.invalidIdentity`, `.reentrancyViolation`, or
@@ -747,3 +747,11 @@ workspace all fail before their sinks begin while the outer root succeeds; see
 the
 [detection-order evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-4/detection-order.md).
 `T4.3` is next.
+
+`T4.3` is complete: the framework-invariant matrix injects identity alias,
+same-workspace reentrancy, missing/multiple category, false advertised sink
+capacity, and a wrong custom-body category with `Body == Never`. Exact local
+errors, atomic rollback, reuse, and zero poison-body calls are asserted while
+arbitrary client traps remain outside the recoverable claim; see the
+[framework invariant evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-4/framework-invariants.md).
+`T4.4` is next.

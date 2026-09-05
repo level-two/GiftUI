@@ -181,6 +181,32 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         XCTAssertTrue(sink.stagedEvents.isEmpty)
     }
 
+    func testMissingAndMultipleVisitorCategoriesFailAtomically() {
+        assertInvariantFailure(TraversalNoCategory())
+        assertInvariantFailure(TraversalMultipleCategory())
+    }
+
+    func testDetectableNeverBodyFailsWithoutEvaluatingIt() {
+        let bodyCounter = TraversalBodyCounter()
+        var workspace = TraversalWorkspace()
+        var sink = TraversalSink()
+
+        let result = expandSemanticTree(
+            TraversalNeverBody(bodyCounter: bodyCounter),
+            limits: makeLimits(),
+            workspace: &workspace,
+            sink: &sink
+        )
+
+        XCTAssertEqual(result, .failure(.invariantViolation))
+        XCTAssertEqual(bodyCounter.count, 0)
+        XCTAssertTrue(sink.committedEvents.isEmpty)
+        XCTAssertTrue(sink.stagedEvents.isEmpty)
+        XCTAssertEqual(sink.publishCount, 0)
+        XCTAssertEqual(sink.discardCount, 1)
+        XCTAssertFalse(workspace.isExpanding)
+    }
+
     private func makeLimits() -> SemanticExpansionLimits {
         SemanticExpansionLimits(
             maximumDepth: 16,
@@ -189,6 +215,28 @@ final class SemanticExpansionTraversalTests: XCTestCase {
             maximumModifierApplications: 16,
             maximumActionOccurrences: 16
         )!
+    }
+
+    private func assertInvariantFailure<Content: View>(
+        _ content: Content,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        var workspace = TraversalWorkspace()
+        var sink = TraversalSink()
+        let result = expandSemanticTree(
+            content,
+            limits: makeLimits(),
+            workspace: &workspace,
+            sink: &sink
+        )
+
+        XCTAssertEqual(result, .failure(.invariantViolation), file: file, line: line)
+        XCTAssertTrue(sink.committedEvents.isEmpty, file: file, line: line)
+        XCTAssertTrue(sink.stagedEvents.isEmpty, file: file, line: line)
+        XCTAssertEqual(sink.publishCount, 0, file: file, line: line)
+        XCTAssertEqual(sink.discardCount, 1, file: file, line: line)
+        XCTAssertFalse(workspace.isExpanding, file: file, line: line)
     }
 }
 
@@ -252,6 +300,37 @@ private struct TraversalPrimitive: View, _GiftUISemanticPrimitivePayload {
         _ visitor: inout Visitor
     ) {
         visitor.visitPrimitive(self)
+    }
+}
+
+private struct TraversalNoCategory: View {
+    var body: Never { fatalError("missing-category body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    ) {}
+}
+
+private struct TraversalMultipleCategory: View, _GiftUISemanticPrimitivePayload {
+    var body: Never { fatalError("multiple-category body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    ) {
+        visitor.visitPrimitive(self)
+        visitor.visitPrimitive(self)
+    }
+}
+
+private struct TraversalNeverBody: View {
+    let bodyCounter: TraversalBodyCounter
+    var body: Never { poison() }
+    private func poison() -> Never {
+        bodyCounter.count += 1
+        fatalError("detectable Never.body must not run")
+    }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    ) {
+        visitor.visitCustomView(self) { body }
     }
 }
 

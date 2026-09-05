@@ -227,6 +227,11 @@ profile-owned active-state object. This keeps same-workspace reentrancy
 observable across callback boundaries without retaining the root declaration
 or changing the coordinator's synchronous ownership model.
 
+For framework-owned custom-category dispatch, `Body == Never` is a detectable
+invariant failure. The check occurs after the ordered body reservation but
+before closure evaluation, allowing atomic rollback without claiming recovery
+from arbitrary client code that traps.
+
 Diagnostics do not participate in this mechanism. The later test-only owner
 adapter may observe the closed result only after Semantic Core returns.
 

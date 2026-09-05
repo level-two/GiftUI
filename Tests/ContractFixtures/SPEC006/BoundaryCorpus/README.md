@@ -9,3 +9,8 @@ allocation measurements or profile-private storage layouts.
 the first normative detecting point, its exact result, and the required
 no-hook/no-publication/reuse outcome. Condition lists are ordered only for
 readability; `detecting_point` is authoritative.
+
+`framework-invariants.tsv` is restricted to test-only framework fault
+injection. Its `body_evaluations` column counts actual body closure calls, so
+the detectable `Never.body` row remains zero even though the attempted
+recording is discarded.
