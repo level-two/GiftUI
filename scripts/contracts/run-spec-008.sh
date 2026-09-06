@@ -56,6 +56,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb" \
             "$SCRIPT_DIR/check-spec-008-recording-sink.rb" \
             "$SCRIPT_DIR/check-spec-008-recording-verification.rb" \
+            "$SCRIPT_DIR/check-spec-008-semantic-render-view.rb" \
             "$SCRIPT_DIR/check-spec-008-declaration-profiles.sh" \
             "$SCRIPT_DIR/check-spec-008-color-surface.sh" \
             "$SCRIPT_DIR/check-spec-008-bounded-text-surface.sh" \
@@ -235,6 +236,8 @@ record_command "$SCRIPT_DIR/check-spec-008-recording-sink.rb"
 "$SCRIPT_DIR/check-spec-008-recording-sink.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-recording-verification.rb"
 "$SCRIPT_DIR/check-spec-008-recording-verification.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-008-semantic-render-view.rb"
+"$SCRIPT_DIR/check-spec-008-semantic-render-view.rb" >>"$log_path" 2>&1
 case "$profile" in
     macos-dynamic | macos-static) record_macos_identity ;;
     raspberry-pi-armv6) record_raspberry_pi_identity ;;

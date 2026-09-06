@@ -286,7 +286,7 @@ must wait.
 views required by SPEC-008, keyed by one identity domain and borrowed without
 copying a second semantic/layout result.
 
-- [ ] `T2.1` — Implement `SemanticRenderScope` and `SemanticRenderView` in
+- [x] `T2.1` — Implement `SemanticRenderScope` and `SemanticRenderView` in
       `GiftUISemanticCore` with exact counts/lookups, child order, rendering-
       relevant payloads, and identity-preserving `layoutIdentity` selection.
       Represent structural, clip-boundary, text, foreground, and background
@@ -797,6 +797,15 @@ byte-for-byte with zero mismatches, allocations, observed traps, or body
 evaluations, while package tests independently cover exact bytes and traversal
 order. `T2.1` is the next independent task; production adaptation in `T2.2`
 continues to wait for its SPEC-006 and SPEC-007 prerequisites.
+
+`T2.1` is complete: `GiftUISemanticCore` now owns the exact five closed render
+scope values and package-only consumer view without concrete storage or a new
+identity domain. A direct fixture proves count and lookup semantics, child
+order, repeated layout-identity selection for transparent render-only scopes,
+and nil for unknown identities or out-of-range indices; see the
+[semantic render view evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-2/semantic-render-view.md).
+T2.2 remains blocked on the complete SPEC-006 result and SPEC-007 layout
+identity. T3.5 remains blocked on lowering-owned `RenderLimits`.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
