@@ -336,7 +336,7 @@ recording sink enforces atomic current transcripts without pixel behavior.
       conformance fixtures for empty streams, multiple fills/groups, zero
       capacity, incomplete groups, and every explicit refusal point without
       turning sink capacity into frame or raster acceptance.
-- [ ] `T3.3` — Implement the canonical recording sink over caller-owned bounded
+- [x] `T3.3` — Implement the canonical recording sink over caller-owned bounded
       storage with closed value events, staged/current transcript separation,
       exact attempted-call counters for failure tests, discard clearing only
       the attempted transcript, and no retained input/resource borrow or
@@ -762,6 +762,17 @@ acceptance; see the
 [sink evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-3/render-operation-sink.md).
 T1.5 is the next declaration consolidation task; T3.3 is the next independent
 Render Core task.
+
+`T3.3` is complete: the canonical `RenderRecordingSink` converts the transport
+to six closed typed value events over generic caller-owned bounded storage.
+The storage boundary owns staged/current representations while the sink keeps
+fixed saturating attempted-call counters. Focused refusal tests prove atomic
+publication, preservation of a prior current transcript, explicit clearing of
+only the staged attempt, and no retained borrow, string/pointer serialization,
+dynamic storage, or upward coupling in the sink; see the
+[recording evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-3/recording-sink.md).
+T1.5 remains the next declaration consolidation task; T3.4 is the next Render
+Core verification task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
