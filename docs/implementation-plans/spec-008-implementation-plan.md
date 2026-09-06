@@ -331,7 +331,7 @@ recording sink enforces atomic current transcripts without pixel behavior.
       conformances, resource identities, and value-size ceilings. Add source/
       layout audits excluding references, strings, existential meaning,
       closures, dynamic collections, and duplicate identity types.
-- [ ] `T3.2` — Implement `RenderOperationSink` with the exact begin/fill/group/
+- [x] `T3.2` — Implement `RenderOperationSink` with the exact begin/fill/group/
       glyph/end/finish/discard protocol and one-read idle capacity. Define
       conformance fixtures for empty streams, multiple fills/groups, zero
       capacity, incomplete groups, and every explicit refusal point without
@@ -753,7 +753,14 @@ identities, and semantic, layout, lowering, failure, capability, runtime, or
 backend coupling; see the
 [Render Core value evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-3/render-core-values.md).
 T0.2 remains active until Render Lowering and its owner-adapter rows land.
-T1.5 is the next declaration consolidation task; T3.2 is the next independent
+`T3.2` is complete: Render Core exposes the exact package sink transport with
+one idle-capacity getter and no imports or policy. A test-only checking sink
+proves empty and multiple-operation streams, zero and nonzero one-read
+capacity, complete group ordering, incomplete-group refusal, and independent
+refusal at every Boolean call without interpreting capacity as frame or raster
+acceptance; see the
+[sink evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-3/render-operation-sink.md).
+T1.5 is the next declaration consolidation task; T3.3 is the next independent
 Render Core task.
 
 Plan completion means every task has a recorded disposition; it does not mean

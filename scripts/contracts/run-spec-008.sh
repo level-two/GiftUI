@@ -52,6 +52,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-008-harness.rb" \
             "$SCRIPT_DIR/check-spec-008-migration.rb" \
             "$SCRIPT_DIR/check-spec-008-render-core-values.rb" \
+            "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb" \
             "$SCRIPT_DIR/check-spec-008-color-surface.sh" \
             "$SCRIPT_DIR/check-spec-008-bounded-text-surface.sh" \
             "$SCRIPT_DIR/check-spec-008-text-surface.sh" \
@@ -222,6 +223,8 @@ record_command "$SCRIPT_DIR/check-spec-008-migration.rb"
 "$SCRIPT_DIR/check-spec-008-migration.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-render-core-values.rb"
 "$SCRIPT_DIR/check-spec-008-render-core-values.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb"
+"$SCRIPT_DIR/check-spec-008-render-operation-sink.rb" >>"$log_path" 2>&1
 case "$profile" in
     macos-dynamic | macos-static) record_macos_identity ;;
     raspberry-pi-armv6) record_raspberry_pi_identity ;;
