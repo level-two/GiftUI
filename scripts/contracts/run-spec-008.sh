@@ -51,6 +51,7 @@ declared_inputs() {
             "$PROJECT_ROOT/scripts/contracts/driver-registry.tsv" \
             "$SCRIPT_DIR/check-spec-008-harness.rb" \
             "$SCRIPT_DIR/check-spec-008-migration.rb" \
+            "$SCRIPT_DIR/check-spec-008-render-core-values.rb" \
             "$SCRIPT_DIR/check-spec-008-color-surface.sh" \
             "$SCRIPT_DIR/check-spec-008-bounded-text-surface.sh" \
             "$SCRIPT_DIR/check-spec-008-text-surface.sh" \
@@ -101,7 +102,7 @@ printf '# label\tpath\tsha256\n' >"$images_path"
     printf 'repository_revision=%s\nrepository_dirty=%s\n' "$revision" "$dirty"
     printf 'input_set_sha256=%s\nrun_id=%s\n' "$input_set_sha256" "$run_id"
     printf 'invocation=scripts/contracts/run-spec-008.sh --profile %s\n' "$profile"
-    printf 'render_core_target=blocked\nrender_lowering_target=blocked\n'
+    printf 'render_core_target=complete\nrender_lowering_target=blocked\n'
     printf 'fixture_corpus=missing\nevidence_complete=false\n'
     printf 'remote_access=false\ndeployment=false\nservice_restart=false\n'
     printf 'simulator_execution=false\nconnected_target_execution=false\nflashing=false\n'
@@ -200,8 +201,8 @@ record_nrf52840_identity() {
     printf 'repository-revision\tcomplete\trevision and input digest recorded\n'
     printf 'command-transcript\tcomplete\texact invoked checks recorded\n'
     printf 'fixture-digest\tcomplete\tdeclared inputs and fixture digest recorded\n'
-    printf 'render-targets\tblocked\tRender Core and Render Lowering targets have not landed\n'
-    printf 'value-layouts\tmissing\tcomplete rendering value layout set is not implemented\n'
+    printf 'render-targets\tblocked\tRender Core is present; Render Lowering has not landed\n'
+    printf 'value-layouts\tmissing\tT3.1 host layouts pass; complete cross-profile set is unavailable\n'
     printf 'result-comparison\tmissing\tcanonical normalized results are not implemented\n'
     printf 'transcript-comparison\tmissing\tcanonical recording transcripts are not implemented\n'
     printf 'high-water\tmissing\tdeclared and observed high-water values are unavailable\n'
@@ -219,6 +220,8 @@ record_command "$SCRIPT_DIR/check-spec-008-harness.rb"
 "$SCRIPT_DIR/check-spec-008-harness.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-migration.rb"
 "$SCRIPT_DIR/check-spec-008-migration.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-008-render-core-values.rb"
+"$SCRIPT_DIR/check-spec-008-render-core-values.rb" >>"$log_path" 2>&1
 case "$profile" in
     macos-dynamic | macos-static) record_macos_identity ;;
     raspberry-pi-armv6) record_raspberry_pi_identity ;;

@@ -84,10 +84,10 @@ driver work, deployment, or connected-hardware changes.
 
 ## Current Repository State
 
-- `Sources/GiftUI/GiftUI.swift` implements SPEC-002 checked geometry, and
-  `Sources/GiftUI/DeclarativeView.swift` contains the in-progress SPEC-006
-  traversal surface. There is no `Color`, `BoundedText`, `Text`, foreground
-  style, background modifier, or rendering payload implementation.
+- `Sources/GiftUI/GiftUI.swift` implements SPEC-002 checked geometry;
+  SPEC-006 supplies the sealed traversal surface; and SPEC-008 T1.1-T1.4 now
+  supply `Color`, `BoundedText`, `Text`, foreground style, and background
+  declarations with typed primitive/modifier payloads.
 - `Sources/GiftUISemanticCore/GiftUISemanticCore.swift` contains in-progress
   bounded semantic expansion and recording support, but not the approved
   `SemanticRenderScope`/`SemanticRenderView` or an adapter over a complete
@@ -95,14 +95,13 @@ driver work, deployment, or connected-hardware changes.
 - `GiftUITextResources` and the concrete reference package provide the exact
   resource, instance, glyph, descriptor, and canonical metrics contracts that
   rendering must reuse. No parallel rendering identity is needed or allowed.
-- `Package.swift` has no `GiftUILayout`, `GiftUIRenderCore`, or
-  `GiftUIRenderLowering` target; no rendering unit-test target; and no narrow
-  rendering/failure owner-adapter fixture. The required compiler-visible
-  rendering graph therefore does not yet exist.
-- There is no `Tests/ContractFixtures/SPEC008/` canonical corpus, recording
-  sink, profile probe, allocation/stack/value-layout instrumentation, Signal
-  Analyzer rendering manifest, or `scripts/contracts/run-spec-008.sh`.
-  `scripts/contracts/driver-registry.tsv` consequently has no SPEC-008 row.
+- `GiftUIRenderCore` and its focused test target now exist with exactly the
+  `GiftUI` and `GiftUITextResources` production dependencies. `GiftUILayout`,
+  `GiftUIRenderLowering`, and the narrow rendering/failure owner adapter have
+  not landed, so T0.2 remains incrementally active.
+- `Tests/ContractFixtures/SPEC008/` and the registered four-profile driver now
+  exist. The canonical render/analyzer cases, recording sink, complete profile
+  probes, and allocation/stack/value-layout instrumentation remain pending.
 - SPEC-002 through SPEC-006 provide reusable conventions for exact target
   allow lists, positive and negative compile fixtures, normalized transcripts,
   owner-adapter mappings, fail-closed fixture manifests, allocation
@@ -326,7 +325,7 @@ module is imported.
 fill and positioned-glyph meaning in painter order, and the canonical
 recording sink enforces atomic current transcripts without pixel behavior.
 
-- [ ] `T3.1` — Implement `RenderProductionError`, `RenderSinkCapacity`, `RenderPlanHeader`,
+- [x] `T3.1` — Implement `RenderProductionError`, `RenderSinkCapacity`, `RenderPlanHeader`,
       `PositionedGlyph`, `FillRectOperation`, and
       `PositionedGlyphOperationHeader` with exact fields, access, initializers,
       conformances, resource identities, and value-size ceilings. Add source/
@@ -672,8 +671,8 @@ sources.
 exactly the four required profiles. It records the pinned compiler, target,
 SDK, optimization, repository revision, exact command transcript, and input/
 fixture digest, then publishes an immutable verified report. Its prerequisite
-matrix remains explicitly fail-closed for absent Render Core/Lowering targets,
-complete value layouts, normalized result and transcript comparisons,
+matrix remains explicitly fail-closed for absent Render Lowering and incomplete
+Render Core transport, complete value layouts, normalized result and transcript comparisons,
 declared/observed high-water, allocation, workspace, stack, timing, section,
 link-map, target-image/ELF inspection, and acceptance evidence. The driver
 performs no remote access, deployment, restart, simulator run, connected-
@@ -741,8 +740,21 @@ source audit reject direct client payload construction, wrapper storage
 access, alternate traversal, and rendering/backend work in `GiftUI`; see the
 [style evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-1/style-modifiers.md).
 Cross-profile and complete declaration-boundary coverage remains assigned to
-T1.5. T1.5 is the next portable declaration task; T3.1 may proceed once the
-Render Core target rows land atomically under T0.2.
+T1.5.
+
+`T3.1` is complete: the first `GiftUIRenderCore` source and target rows landed
+atomically with the exact `GiftUI` plus `GiftUITextResources` dependency edge.
+The target owns `RenderProductionError`, `RenderSinkCapacity`,
+`RenderPlanHeader`, `PositionedGlyph`, `FillRectOperation`, and
+`PositionedGlyphOperationHeader`. Focused tests prove every field, initializer,
+resource identity, raw error value, exact-size requirement, and upper layout
+bound. The source audit excludes dynamic/reference storage, duplicate resource
+identities, and semantic, layout, lowering, failure, capability, runtime, or
+backend coupling; see the
+[Render Core value evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-3/render-core-values.md).
+T0.2 remains active until Render Lowering and its owner-adapter rows land.
+T1.5 is the next declaration consolidation task; T3.2 is the next independent
+Render Core task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

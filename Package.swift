@@ -50,6 +50,10 @@ let package = Package(
             dependencies: ["GiftUI"]
         ),
         .target(
+            name: "GiftUIRenderCore",
+            dependencies: ["GiftUI", "GiftUITextResources"]
+        ),
+        .target(
             name: "GiftUIReferenceTextResources",
             dependencies: ["GiftUI", "GiftUITextResources"],
             exclude: ["Generated/generation-manifest.json"]
@@ -103,6 +107,10 @@ let package = Package(
         .testTarget(
             name: "GiftUITextResourcesTests",
             dependencies: ["GiftUI", "GiftUITextResources"]
+        ),
+        .testTarget(
+            name: "GiftUIRenderCoreTests",
+            dependencies: ["GiftUI", "GiftUIRenderCore", "GiftUITextResources"]
         ),
         .testTarget(
             name: "GiftUIReferenceTextResourcesTests",

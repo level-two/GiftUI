@@ -250,7 +250,7 @@ fail_check("report profile differs") unless %w[
 fail_check("report lacks repository revision") unless metadata["repository_revision"]&.match?(/\A[0-9a-f]{40}\z/)
 fail_check("report lacks input digest") unless metadata["input_set_sha256"]&.match?(/\A[0-9a-f]{64}\z/)
 fail_check("report lacks run identity") if metadata.fetch("run_id", "").empty?
-fail_check("render core must remain blocked") unless metadata["render_core_target"] == "blocked"
+fail_check("render core target must be recorded complete") unless metadata["render_core_target"] == "complete"
 fail_check("render lowering must remain blocked") unless metadata["render_lowering_target"] == "blocked"
 fail_check("fixture corpus must remain missing") unless metadata["fixture_corpus"] == "missing"
 fail_check("incomplete evidence must not claim completion") unless metadata["evidence_complete"] == "false"

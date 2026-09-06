@@ -69,6 +69,17 @@ targets:
     dependencies:
       - GiftUI
       - GiftUITextResources
+  GiftUIRenderCore:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUITextResources
+  GiftUIRenderCoreTests:
+    type: test
+    dependencies:
+      - GiftUI
+      - GiftUIRenderCore
+      - GiftUITextResources
   GiftUIReferenceTextResources:
     type: regular
     dependencies:

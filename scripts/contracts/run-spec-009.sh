@@ -190,7 +190,7 @@ record_nrf52840_identity() {
     printf 'command-transcript\tcomplete\texact invoked checks recorded\n'
     printf 'repository-revision\tcomplete\trevision and input digest recorded\n'
     printf 'fixture-schema\tcomplete\tSPEC-009 frozen schema validated\n'
-    printf 'execution-target\tblocked\tGiftUIExecution and GiftUIRenderCore targets are absent\n'
+    printf 'execution-target\tblocked\tGiftUIRenderCore is present; GiftUIExecution is absent\n'
     printf 'fixture-corpus\tmissing\tall six canonical case sequences are empty\n'
     printf 'value-layouts\tmissing\texecution values are not implemented\n'
     printf 'allocations\tmissing\texecution paths are not implemented\n'
