@@ -220,7 +220,7 @@ rendering behavior is claimed.
       that target's first compiling source, and mark T0.2 complete only after
       all named targets and checks exist. It is not a prerequisite requiring
       empty placeholder targets.
-- [ ] `T0.3` — Create `scripts/contracts/run-spec-008.sh --profile <profile>`
+- [x] `T0.3` — Create `scripts/contracts/run-spec-008.sh --profile <profile>`
       for exactly `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, and
       `nrf52840-embedded`; register it in
       `scripts/contracts/driver-registry.tsv`. Initially fail closed for every
@@ -664,9 +664,20 @@ cases, non-reciprocal criterion references, invalid or unreferenced symbolic
 data, and any non-pending initial evidence. The fixture
 [README](../../Tests/ContractFixtures/SPEC008/README.md) distinguishes host,
 cross-build, inspection, simulator, and separately authorized connected-
-hardware evidence without claiming deployment or flashing. `T0.3` and `T0.4`
-may proceed independently; package edits in `T0.2` remain coupled to their
-first compiling sources.
+hardware evidence without claiming deployment or flashing. `T0.4` may proceed
+independently; package edits in `T0.2` remain coupled to their first compiling
+sources.
+
+`T0.3` is complete: `scripts/contracts/run-spec-008.sh` is registered for
+exactly the four required profiles. It records the pinned compiler, target,
+SDK, optimization, repository revision, exact command transcript, and input/
+fixture digest, then publishes an immutable verified report. Its prerequisite
+matrix remains explicitly fail-closed for absent Render Core/Lowering targets,
+complete value layouts, normalized result and transcript comparisons,
+declared/observed high-water, allocation, workspace, stack, timing, section,
+link-map, target-image/ELF inspection, and acceptance evidence. The driver
+performs no remote access, deployment, restart, simulator run, connected-
+target execution, or flashing.
 
 On 2026-09-06 the maintainer explicitly approved the coordinated SPEC-008/
 SPEC-009 correction assigning the closed `RenderProductionError` value to

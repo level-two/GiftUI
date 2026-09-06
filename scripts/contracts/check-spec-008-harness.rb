@@ -223,4 +223,71 @@ end
 yaml_files = FIXTURES.children.select { |path| path.extname == ".yaml" }.map { |path| path.basename.to_s }.sort
 fail_check("unregistered or missing YAML fixture") unless yaml_files == %w[fixtures.yaml signal-analyzer.yaml]
 
-puts "SPEC-008 fixture schemas passed: #{fixture_cases.length} canonical case(s), #{signal_variants.length} analyzer variant(s), 11 pending acceptance criteria"
+if ARGV.empty?
+  puts "SPEC-008 fixture schemas passed: #{fixture_cases.length} canonical case(s), #{signal_variants.length} analyzer variant(s), 11 pending acceptance criteria"
+  exit 0
+end
+
+report = Pathname.new(ARGV.fetch(0))
+required_report_files = %w[
+  metadata.txt commands.txt input-hashes.tsv image-hashes.tsv
+  required-evidence.tsv prerequisites.tsv run.log
+]
+missing_report_files = required_report_files.reject { |relative| report.join(relative).file? }
+fail_check("report lacks #{missing_report_files.join(',')}") unless missing_report_files.empty?
+fail_check("command transcript is empty") if report.join("commands.txt").read.strip.empty?
+fail_check("input digest inventory is empty") if report.join("input-hashes.tsv").read.strip.empty?
+
+metadata = report.join("metadata.txt").each_line.each_with_object({}) do |line, values|
+  key, value = line.chomp.split("=", 2)
+  values[key] = value if value
+end
+fail_check("report schema differs") unless metadata["schema_version"] == "1"
+fail_check("report spec differs") unless metadata["spec"] == "SPEC-008"
+fail_check("report profile differs") unless %w[
+  macos-dynamic macos-static raspberry-pi-armv6 nrf52840-embedded
+].include?(metadata["profile"])
+fail_check("report lacks repository revision") unless metadata["repository_revision"]&.match?(/\A[0-9a-f]{40}\z/)
+fail_check("report lacks input digest") unless metadata["input_set_sha256"]&.match?(/\A[0-9a-f]{64}\z/)
+fail_check("report lacks run identity") if metadata.fetch("run_id", "").empty?
+fail_check("render core must remain blocked") unless metadata["render_core_target"] == "blocked"
+fail_check("render lowering must remain blocked") unless metadata["render_lowering_target"] == "blocked"
+fail_check("fixture corpus must remain missing") unless metadata["fixture_corpus"] == "missing"
+fail_check("incomplete evidence must not claim completion") unless metadata["evidence_complete"] == "false"
+%w[
+  remote_access deployment service_restart simulator_execution
+  connected_target_execution flashing
+].each do |key|
+  fail_check("driver must report #{key}=false") unless metadata[key] == "false"
+end
+
+report_evidence = report.join("required-evidence.tsv").each_line.each_with_object([]) do |line, rows|
+  next if line.start_with?("#") || line.strip.empty?
+
+  fields = line.chomp.split("\t", -1)
+  fail_check("malformed report evidence row") unless fields.length == 3
+  rows << fields
+end
+fail_check("report evidence criteria differ") unless report_evidence.map(&:first) == expected_criteria
+fail_check("report evidence must remain missing") unless report_evidence.all? { |row| row[1] == "missing" }
+fail_check("report evidence lacks reasons") if report_evidence.any? { |row| row[2].empty? }
+
+prerequisites = report.join("prerequisites.tsv").each_line.each_with_object([]) do |line, rows|
+  next if line.start_with?("#") || line.strip.empty?
+
+  fields = line.chomp.split("\t", -1)
+  fail_check("malformed prerequisite row") unless fields.length == 3
+  rows << fields
+end
+expected_prerequisites = %w[
+  compiler-identity target-sdk-identity optimization repository-revision
+  command-transcript fixture-digest render-targets value-layouts result-comparison
+  transcript-comparison high-water allocation workspace stack timing section-delta
+  link-map target-inspection acceptance-evidence
+]
+fail_check("prerequisite set differs") unless prerequisites.map(&:first) == expected_prerequisites
+allowed_statuses = %w[complete missing blocked]
+fail_check("invalid prerequisite status") if prerequisites.any? { |row| !allowed_statuses.include?(row[1]) }
+fail_check("prerequisite lacks reason") if prerequisites.any? { |row| row[2].empty? }
+
+puts "SPEC-008 report is fail-closed: 11 criteria missing; rendering targets blocked"

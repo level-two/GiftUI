@@ -4,5 +4,6 @@ SPEC-003	scripts/contracts/run-spec-003.sh	macos-dynamic,macos-static,raspberry-
 SPEC-004	scripts/contracts/run-spec-004.sh	macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
 SPEC-005	scripts/contracts/run-spec-005.sh	macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
 SPEC-006	scripts/contracts/run-spec-006.sh	macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
+SPEC-008	scripts/contracts/run-spec-008.sh	macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
 SPEC-009	scripts/contracts/run-spec-009.sh	macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
 SPEC-010	scripts/contracts/run-spec-010.sh	macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
