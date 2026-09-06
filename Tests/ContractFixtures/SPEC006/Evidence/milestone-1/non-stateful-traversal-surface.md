@@ -11,8 +11,8 @@ ordinary custom bodies, and all three typed payload categories.
 
 The registered traversal-surface audit rejects `Any`, view existentials,
 reflection, the retired `_visit`/`ViewVisitor` surface, a second traversal
-spelling, underscored production references outside the framework declaration,
-registered SPEC-008 concrete declaration, Semantic Core, and SPEC-010 macro-
+spelling, underscored production references outside the framework declarations,
+registered SPEC-008 concrete declarations, Semantic Core, and SPEC-010 macro-
 generator allow-list, and any attempt for SPEC-006 to define the SPEC-010-
 owned state-host protocol.
 

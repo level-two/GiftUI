@@ -1,0 +1,4 @@
+# id	expectation	entry_point	diagnostic_patterns
+style-public-surface	pass	Fixtures/Positive/style-public-surface/main.swift	-
+style-payload-construction	fail	Fixtures/Negative/style-payload-construction/main.swift	Fixtures/Negative/style-payload-construction/expected-diagnostic-patterns.txt
+style-wrapper-storage	fail	Fixtures/Negative/style-wrapper-storage/main.swift	Fixtures/Negative/style-wrapper-storage/expected-diagnostic-patterns.txt

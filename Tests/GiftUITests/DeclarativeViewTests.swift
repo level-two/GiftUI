@@ -148,6 +148,11 @@ private struct TestActionPayload: _GiftUISemanticActionPayload {
 
 private struct TestModifierPayload: _GiftUISemanticModifierPayload {}
 
+enum StyleVisit: Equatable {
+    case foreground(Color)
+    case background(Color)
+}
+
 struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
     let evaluateBody: Bool
     var customViewVisits = 0
@@ -162,6 +167,7 @@ struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
     var primitiveVisits = 0
     var actionPrimitiveVisits = 0
     var modifierVisits = 0
+    var styleVisits: [StyleVisit] = []
 
     mutating func visitCustomView<Declaration: View>(
         _ declaration: borrowing Declaration,
@@ -268,6 +274,15 @@ struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
         content: borrowing Content,
         payload: borrowing Payload
     ) {
+        if evaluateBody {
+            content._giftUITraverse(&self)
+        }
+        let payloadCopy = copy payload
+        if let foreground = payloadCopy as? _GiftUIForegroundStylePayload {
+            styleVisits.append(.foreground(foreground.color))
+        } else if let background = payloadCopy as? _GiftUIBackgroundPayload {
+            styleVisits.append(.background(background.color))
+        }
         modifierVisits += 1
     }
 }

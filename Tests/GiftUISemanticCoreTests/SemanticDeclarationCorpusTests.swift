@@ -376,6 +376,54 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
         )
     }
 
+    func testSpec008TextAndStylePayloadsPreserveModifierOrderAndIdentity() {
+        let first = CorpusBackground(
+            content: CorpusForeground(content: Text("signal"), color: .red),
+            color: .blue
+        )
+        let second = CorpusBackground(
+            content: CorpusForeground(content: Text("signal"), color: .green),
+            color: .gray
+        )
+        let backgroundPath: [SemanticRecordingPathComponent] = [
+            .root, .role(.background),
+        ]
+        let foregroundPath = backgroundPath + [.role(.foreground)]
+        let textPath = foregroundPath + [.role(.text)]
+        let expectedEvents: [CorpusEvent] = [
+            .structural(path(backgroundPath), .background),
+            .structural(path(foregroundPath), .foreground),
+            .structural(path(textPath), .text),
+            .semantic(path(textPath), .text),
+            .modifier(path(foregroundPath), .foreground, index: 0),
+            .modifier(path(backgroundPath), .background, index: 1),
+        ]
+
+        assertExpansion(
+            first,
+            expectedEvents: expectedEvents,
+            expectedSummary: summary(nodes: 1, modifiers: 2, depth: 4)
+        )
+        XCTAssertEqual(
+            semanticIdentities(in: expand(first).events),
+            semanticIdentities(in: expand(second).events)
+        )
+
+        var workspace = CorpusWorkspace()
+        let payloadProbe = CorpusPayloadProbe()
+        var sink = CorpusInspectingSink(probe: payloadProbe)
+        XCTAssertEqual(
+            expandSemanticTree(
+                first,
+                limits: corpusLimits,
+                workspace: &workspace,
+                sink: &sink
+            ),
+            .success(summary(nodes: 1, modifiers: 2, depth: 4))
+        )
+        XCTAssertEqual(payloadProbe.styles, [.foreground(.red), .background(.blue)])
+    }
+
     func testActionValueIsConsumedSynchronouslyWithoutRetainingDeclarationLifetime() {
         let lifetimeState = CorpusLifetimeState()
         let payloadProbe = CorpusPayloadProbe()
@@ -668,6 +716,9 @@ private enum CorpusRole: UInt16, Sendable {
     case modifiedCustom = 24
     case inset = 30
     case tone = 31
+    case text = 32
+    case foreground = 33
+    case background = 34
     case actionPrimitive = 40
     case a = 100
     case b = 101
@@ -716,6 +767,10 @@ extension ConditionalContent: CorpusRoleProviding {
 
 extension OptionalContent: CorpusRoleProviding {
     fileprivate static var corpusRole: CorpusRole { .optional }
+}
+
+extension Text: CorpusRoleProviding {
+    fileprivate static var corpusRole: CorpusRole { .text }
 }
 
 private struct CorpusA: View, _GiftUISemanticPrimitivePayload, CorpusRoleProviding {
@@ -839,6 +894,42 @@ private struct CorpusTone<Content: View>: View, _GiftUISemanticModifierPayload,
         _ visitor: inout Visitor
     ) {
         visitor.visitModifier(content: content, payload: self)
+    }
+}
+
+private struct CorpusForeground<Content: View>: View, CorpusRoleProviding {
+    static var corpusRole: CorpusRole { .foreground }
+    let content: Content
+    let payload: _GiftUIForegroundStylePayload
+
+    init(content: Content, color: Color) {
+        self.content = content
+        payload = _GiftUIForegroundStylePayload(color: color)
+    }
+
+    var body: Never { fatalError("modifier body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    ) {
+        visitor.visitModifier(content: content, payload: payload)
+    }
+}
+
+private struct CorpusBackground<Content: View>: View, CorpusRoleProviding {
+    static var corpusRole: CorpusRole { .background }
+    let content: Content
+    let payload: _GiftUIBackgroundPayload
+
+    init(content: Content, color: Color) {
+        self.content = content
+        payload = _GiftUIBackgroundPayload(color: color)
+    }
+
+    var body: Never { fatalError("modifier body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    ) {
+        visitor.visitModifier(content: content, payload: payload)
     }
 }
 
@@ -1078,6 +1169,12 @@ private struct CorpusStorage: SemanticRecordingStorage {
 private final class CorpusPayloadProbe {
     var values: [Int] = []
     var actions: [CorpusAction] = []
+    var styles: [CorpusStyle] = []
+}
+
+private enum CorpusStyle: Equatable {
+    case foreground(Color)
+    case background(Color)
 }
 
 private struct CorpusInspectingSink: SemanticExpansionSink {
@@ -1109,8 +1206,15 @@ private struct CorpusInspectingSink: SemanticExpansionSink {
         chainIndex: UInt16
     ) -> Bool {
         let payloadCopy = copy payload
-        guard let fixturePayload = payloadCopy as? any CorpusModifierValue else { return false }
-        probe.values.append(fixturePayload.corpusModifierValue)
+        if let fixturePayload = payloadCopy as? any CorpusModifierValue {
+            probe.values.append(fixturePayload.corpusModifierValue)
+        } else if let foreground = payloadCopy as? _GiftUIForegroundStylePayload {
+            probe.styles.append(.foreground(foreground.color))
+        } else if let background = payloadCopy as? _GiftUIBackgroundPayload {
+            probe.styles.append(.background(background.color))
+        } else {
+            return false
+        }
         return recording.stageModifierApplication(
             identity: identity,
             payload: payload,

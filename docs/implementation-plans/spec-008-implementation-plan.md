@@ -263,7 +263,7 @@ without performing rendering.
       correctness allocation, and expose no portable unbounded `String`
       initializer. Any dynamic convenience remains a separate optional module
       and is not required by this plan.
-- [ ] `T1.4` — Implement `foregroundStyle` and rectangular `background` as
+- [x] `T1.4` — Implement `foregroundStyle` and rectangular `background` as
       typed SPEC-006 modifier payloads, preserving exact color, structural
       identity, and source-call order. Extend the semantic declaration corpus
       for text and both modifiers without introducing public traversal
@@ -708,9 +708,20 @@ fixtures and the source audit reject an unbounded `String` initializer, client
 payload access, alternate ownership, or reference storage; see the
 [Text evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-1/text.md).
 The SPEC-007 pre-measurement rejection path remains assigned to T2.2/T6.2.
-Cross-profile compilation remains assigned to T1.5/T3.5. T1.4 is the next
-portable declaration task; T3.1 may proceed once the Render Core target rows
-land atomically under T0.2.
+Cross-profile compilation remains assigned to T1.5/T3.5.
+
+`T1.4` is complete: the exact `foregroundStyle` and rectangular `background`
+extensions produce opaque framework wrappers carrying distinct typed SPEC-006
+modifier payloads. Focused traversal tests prove exact colors and source-call
+order without body evaluation. The extended semantic corpus proves inner-to-
+outer chain indices, synchronous typed payload consumption, and unchanged
+descendant identity when only color values change. Compile fixtures and a
+source audit reject direct client payload construction, wrapper storage
+access, alternate traversal, and rendering/backend work in `GiftUI`; see the
+[style evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-1/style-modifiers.md).
+Cross-profile and complete declaration-boundary coverage remains assigned to
+T1.5. T1.5 is the next portable declaration task; T3.1 may proceed once the
+Render Core target rows land atomically under T0.2.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
