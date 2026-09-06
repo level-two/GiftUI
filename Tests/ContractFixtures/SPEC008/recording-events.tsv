@@ -1,0 +1,7 @@
+# order	event	required_fields
+1	begin	surfaceBounds,damageBounds,operationCount,positionedGlyphCount,maximumObservedClipDepth
+2	fill	bounds,clip,red,green,blue
+3	begin-glyphs	instance,clip,red,green,blue,glyphCount
+4	glyph	glyph,baseline
+5	end-glyphs	-
+6	finish	-

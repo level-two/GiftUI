@@ -2,7 +2,7 @@
 id: SPEC-008
 feature: giftui-mvp-architecture
 title: Normalized Rendering Contract
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-25

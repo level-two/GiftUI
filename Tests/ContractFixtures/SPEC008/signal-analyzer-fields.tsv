@@ -1,0 +1,15 @@
+# field	kind	rule
+name	kebab-case	globally unique analyzer variant name
+labels	sequence	every required analyzer label
+boundedValues	sequence	every required bounded displayed value
+statusTexts	sequence	every required acquisition status text
+errorTexts	sequence	every required error text
+foregrounds	sequence	every required opaque foreground color
+backgrounds	sequence	every required opaque rectangular background color
+maximumHierarchyVariants	sequence	maximum admitted presentation hierarchy variants
+renderLimits	mapping	exact common operation positioned-glyph and clip-depth limits
+workspaceCapacity	mapping	exact common caller-owned workspace capacity and bytes
+sinkCapacity	mapping	exact common sink operation and positioned-glyph capacity
+expectedHighWater	mapping	declared operation glyph and clip-depth high-water
+criteria	sequence	one or more RD-001 through RD-011 references
+evidenceClasses	sequence	one or more registered evidence classes

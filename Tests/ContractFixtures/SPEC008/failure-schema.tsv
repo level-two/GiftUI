@@ -1,0 +1,8 @@
+# precedence	local_error	condition	origin	affected_scope	containment
+1	reentrancy-violation	reentrancyViolation	rendering	activeCycle	safetyNotProven
+2	invalid-input	invalidValue	rendering	candidateFrame	contained
+3	arithmetic-overflow	arithmeticOverflow	foundation	operation	contained
+4	capacity-exhausted	capacityExhausted	rendering	candidateFrame	contained
+5	incompatible-text-resource	invalidValue	rendering	candidateFrame	contained
+6	sink-refused	nonRetryableRefusal	rendering	candidateFrame	contained
+7	invariant-violation	invariantViolation	rendering	runtime	safetyNotProven

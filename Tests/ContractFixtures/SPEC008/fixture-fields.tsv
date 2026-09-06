@@ -1,0 +1,22 @@
+# field	kind	rule
+name	kebab-case	globally unique canonical case name
+semanticEvents	sequence	ordered symbolic SPEC-006 rendering-relevant semantic events
+identityTokens	sequence	complete declared identity token set for this case
+resolvedBounds	sequence	exact identity-keyed SPEC-007 bounds values
+resolvedClips	sequence	exact identity-keyed SPEC-007 logical clip values
+clipDepths	sequence	exact identity-keyed structural clip depths
+textLines	sequence	exact line indices bounds baselines clips and glyph counts
+glyphs	sequence	exact occurrence-wide glyph indices instances glyphs baselines and clips
+resourceTokens	sequence	complete declared resource instance and glyph token set for this case
+surfaceBounds	mapping	exact zero-origin logical surface rectangle
+damageMode	token	root-intersection or initialize-complete-surface
+rootForeground	mapping	exact opaque red green and blue UInt8 values
+renderLimits	mapping	maximum operations positioned glyphs and clip depth
+workspaceCapacity	mapping	independent caller-owned render capacity
+sinkCapacity	mapping	one idle-read operation and positioned-glyph capacity
+expectedResult	mapping	normalized success header or exact local failure
+expectedRecordingEvents	sequence	ordered closed recording events
+expectedSinkCalls	mapping	exact capacity begin event finish discard and reset counts
+expectedFailureMapping	mapping-or-none	exact SPEC-003 mapping or none on success
+criteria	sequence	one or more RD-001 through RD-011 references
+evidenceClasses	sequence	one or more registered evidence classes

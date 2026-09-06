@@ -2,7 +2,7 @@
 spec: SPEC-008
 feature: giftui-mvp-architecture
 title: SPEC-008 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-06
@@ -198,7 +198,7 @@ SPEC-002, SPEC-003, SPEC-005, SPEC-006, and SPEC-007 remain approved authority.
 migration baseline, and registered fail-closed driver skeleton exist before
 rendering behavior is claimed.
 
-- [ ] `T0.1` — Create `Tests/ContractFixtures/SPEC008/` with canonical
+- [x] `T0.1` — Create `Tests/ContractFixtures/SPEC008/` with canonical
       `fixtures.yaml`, `signal-analyzer.yaml`, stable symbolic identity tokens,
       ordered recording-event/result/failure schemas, an acceptance/evidence
       registry, and README. Reject duplicate names, missing fields, unknown
@@ -645,8 +645,24 @@ obligation from SPEC-008 cannot be deferred.
 
 ## Completion Record
 
-No implementation task has been completed by creation of this plan. Update
-task checkboxes and dispositions only with stable code/test/report evidence.
+Implementation began on 2026-09-06 at the maintainer's request. SPEC-008 is
+`implementing` and this plan is `active`; these progress transitions do not
+change the approved contract or authorize the eventual `implemented`
+transition.
+
+`T0.1` is complete: `Tests/ContractFixtures/SPEC008/` now contains the exact
+two canonical YAML manifests, frozen fixture and Signal Analyzer fields,
+stable identity/resource tokens, ordered recording events, normalized results,
+local-failure precedence and mapping, and all eleven pending acceptance rows.
+The focused harness rejects duplicate names, missing or unknown fields and
+cases, non-reciprocal criterion references, invalid or unreferenced symbolic
+data, and any non-pending initial evidence. The fixture
+[README](../../Tests/ContractFixtures/SPEC008/README.md) distinguishes host,
+cross-build, inspection, simulator, and separately authorized connected-
+hardware evidence without claiming deployment or flashing. `T0.3` and `T0.4`
+may proceed independently; package edits in `T0.2` remain coupled to their
+first compiling sources.
+
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
 until `T8.5` creates it.

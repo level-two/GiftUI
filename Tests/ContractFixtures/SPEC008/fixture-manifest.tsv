@@ -1,0 +1,3 @@
+# order	file	domain	collection	evidence_classes
+1	fixtures.yaml	render-corpus	cases	connected-hardware,cross-build,host-execution,inspection,simulator
+2	signal-analyzer.yaml	signal-analyzer	variants	connected-hardware,cross-build,host-execution,inspection,simulator

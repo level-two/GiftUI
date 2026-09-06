@@ -1,0 +1,3 @@
+# result	required_fields	allowed_values
+success	header	-
+failure	error	invalid-input,arithmetic-overflow,capacity-exhausted,incompatible-text-resource,sink-refused,reentrancy-violation,invariant-violation

@@ -1,0 +1,5 @@
+# namespace	format	authority
+identity	identity:<kebab-case>	SPEC-006 equality relation only
+resource	resource:<kebab-case>	GiftUITextResources resource identity
+instance	instance:<kebab-case>	GiftUITextResources font instance identity
+glyph	glyph:<kebab-case>	GiftUITextResources glyph identity
