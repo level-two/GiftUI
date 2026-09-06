@@ -2,7 +2,7 @@
 spec: SPEC-010
 feature: observable-reference-state
 title: SPEC-010 Implementation Plan
-status: active
+status: ready
 owners:
   - codex
 created: 2026-09-04
@@ -21,7 +21,7 @@ superseded_by: null
 
 # SPEC-010 Implementation Plan
 
-> This active plan derives work from the approved Observable Reference State
+> This ready plan derives work from the approved Observable Reference State
 > Contract, including its explicitly reapproved 2026-09-05 completeness
 > amendment. It orders implementation and evidence but does not amend the
 > declaration, generation, ownership, mutation, publication, failure, action-
@@ -62,25 +62,77 @@ and generated code are not implementation authority.
 
 ## Current Repository State
 
-- `GiftUI` contains SPEC-006's portable `View`, builder/wrappers, typed
-  semantic payloads, and non-stateful visitor categories. It has no `State`,
-  observable model/sink/attachment declarations, or macro declaration.
-- SPEC-006 T1.4 is partially implemented and blocked specifically on the
-  SPEC-010-owned `_GiftUIObservableStateHost`; its later stateful integration
-  milestone also waits for the generated witness and binding seam.
-- `GiftUIMacros` is the pinned host-only macro target and has deterministic
-  expansion fixtures. There is no `GiftUIObservableState`, dynamic/static
-  state profile, or observable-state failure adapter in the package.
-- Approved SPEC-009 owns `GiftUIExecution`, `ObservableTargetGeneration`, and
-  `ExecutionAdmissionOutcome`, but that target and its implementation plan are
-  not present. Work requiring those declarations is blocked until its owner
-  supplies them; this plan must not create substitutes.
+- `GiftUI` now contains the exact SPEC-010 portable `State`, observable model,
+  sink, attachment, visitor, state-host, and macro declarations. Focused unit,
+  access-negative, ownership, and four-profile compile fixtures cover the
+  completed declaration work without claiming owner-runtime conformance.
+- `GiftUIMacros` is the pinned host-only macro target. Its deterministic
+  expansion and generated SPEC-006 traversal witnesses are implemented, and
+  the four target-image checks exclude macro and compiler-support linkage.
+- SPEC-006's stateful visitor category and generated traversal seam are
+  present. The SPEC-010 binding decorator and owner reconciliation that make
+  that traversal operational remain future `T3.2` work.
+- `GiftUIObservableState`, dynamic/static observable-state storage, and the
+  observable-state failure adapter do not exist. Package exact-set edits for
+  those owners remain assigned to `T0.2`, `T2.1`, `T6.*`, and `T7.1`.
+- Approved SPEC-009 now has a ready implementation plan, but the
+  `GiftUIExecution` target, `ObservableTargetGeneration`,
+  `ExecutionAdmissionOutcome`, phase/wake seams, and coordinator are not yet
+  implemented. Work requiring them remains dependency-blocked; this plan must
+  not create substitutes.
 - SPEC-002's exact target/dependency registry, SPEC-003's failure owner seam,
   SPEC-006's four-profile driver conventions, and repository-local ARMv6/nRF
   toolchains are reusable. Package exact-set controls must change atomically.
-- No production dynamic/static runtime targets exist. Profile realizations
-  remain jointly gated by SPEC-009, SPEC-013, and host configuration rather
+- SPEC-013 and SPEC-015 are approved, but they have no ready implementation
+  plans or production runtime/host targets. Profile realization and assembled
+  host claims remain jointly gated by their owner work and SPEC-009 rather
   than being inferred from the completed Spikes.
+
+## Readiness Review
+
+**Reviewed:** 2026-09-06
+
+**Disposition:** Ready. SPEC-010 remains an approved, implementing contract;
+all twelve acceptance criteria map exactly once to ordered tasks and
+reproducible evidence. The declaration and generation slice already completed
+under the approved contract remains recorded as completed work. This
+maintainer-requested readiness refresh means the remaining plan is executable
+without inventing architecture or contract; it does not roll back source,
+tests, evidence, the Specification's `implementing` status, or completed task
+dispositions.
+
+No `docs/features.yaml` update is required. Implementation records are not
+registered there, and `observable-reference-state` already reports the
+implementation stage. Missing owner implementations are explicit task
+dependencies: profile-neutral fixture and design preparation may proceed at
+the boundaries below, while production execution, runtime-profile, host,
+Interaction, and Signal Analyzer claims wait for their authoritative owners.
+
+If implementation cannot express the exact noncopyable sink, transient bound
+wrapper, atomic replacement, no-ordinary-failure publication, or zero-heap
+static behavior on the pinned toolchains, the affected work returns to
+Specification review. Any need to change module ownership, focused failure
+precedence, publication timing, registration-generation meaning, or profile
+equivalence returns to the applicable ADR or Specification rather than being
+resolved in code or a design note.
+
+## Task Dependencies and Affected Surfaces
+
+Milestone numbers define the default order. A task may start only after every
+listed prerequisite is satisfied.
+
+| Work | Prerequisites | Primary affected surfaces | Parallel boundary |
+| --- | --- | --- | --- |
+| `T0.1`-`T0.4` | Approved SPEC-010 authority chain | `Tests/ContractFixtures/SPEC010/`, contract-driver registry, package boundary registries | Completed schemas, driver, and migration work remain stable; `T0.2` closes incrementally only with compiling owner targets |
+| `T1.1`-`T1.5` | Milestone 0 boundaries; pinned host macro and cross-toolchains | `Sources/GiftUI/`, `Sources/GiftUIMacros/`, focused tests and evidence | Completed; no remaining task may revise these declarations without upstream review |
+| `T2.1`-`T2.4` | SPEC-009 `GiftUIExecution` declarations and package edge available | `Sources/GiftUIObservableState/`, owner tests, package graph | Value/protocol tests may proceed together after the complete execution types exist; design-note decision follows concrete complexity |
+| `T3.1`-`T3.4` | `T2.1`-`T2.2`; SPEC-006 structural identity/traversal seam | owner reconciliation, state-aware decorator, candidate fixtures | Lifecycle and decorator implementation may divide only after one shared result/rollback vocabulary is fixed |
+| `T4.1`-`T4.4` | Stable reconciliation plus SPEC-009 target-generation value | replacement storage, generation allocator, borrowed target views | Lookup fixtures may be authored alongside replacement fixtures; lifetime comparison consumes both |
+| `T5.1`-`T5.4` | Active/stale registrations; SPEC-009 phase, wake, publication, and mutation-result seams | report routing, coordinator integration, phase fixtures | Outcome routing and publication integration may proceed separately against one frozen phase/effect transcript |
+| `T6.1`-`T6.4` | Complete profile-neutral owner behavior; SPEC-013/SPEC-015 owner plans and targets for production claims | dynamic/static fixture storage, runtime profiles, fact-admission adapter | Fixture profiles may precede production realization; normalized equivalence follows both fixture reports |
+| `T7.1`-`T7.3` | Injectable local failures and SPEC-003 values | failure adapter, precedence/policy corpus, diagnostic isolation | Mapping and diagnostic-isolation fixtures may proceed together after mandatory effects are observable |
+| `T8.1`-`T8.4` | Complete corpus and profile workspaces; repository-local toolchains | four driver reports, ELF/link/allocation/stack/resource inspection | Profile commands may run independently; comparison consumes all four immutable reports |
+| `T9.1`-`T9.3` | All owner tasks and available downstream integrations | conformance audit/report and Specification cross-references | Surface audit may start early; conformance disposition waits for every criterion and required integration |
 
 ## Acceptance-Criterion Matrix
 
@@ -205,16 +257,23 @@ with exact local values, protocols, module direction, and no profile storage.
       `GiftUISemanticCore`, and `GiftUIExecution`. Implement exact
       `ObservableStateLimits`, error, operational, result, and candidate-
       disposition values; exhaust raw values, initializer validation, equal-
-      to-limit behavior, `Equatable`/`Sendable`, and owned layouts.
+      to-limit behavior, `Equatable`/`Sendable`, owned layouts, and every exact
+      operation-to-success-result row. Reject `nil`, Boolean, trap, and
+      profile-private result substitutes at owner boundaries.
 - [ ] `T2.2` — Implement the exact reconciler, mutation-owner, and target-view
       package protocols plus every logical storage field fixed by SPEC-010,
       without selecting concrete runtime packing. Add fixture-only bounded
       structural identity and prove live/publishable target views expose no
-      model, attachment, sink, handler, or mutating operation.
+      model, attachment, sink, handler, or mutating operation. Account
+      independently for location, registration, candidate association,
+      replacement staging, and fixed runtime bookkeeping; prove replacement
+      borrows one declared staging record rather than permanent duplicate
+      registration capacity.
 - [ ] `T2.3` — Implement `PresentationFactAdmissionAdapter` as the typed façade
       over SPEC-009 admission. Prove only finite immutable `Sendable` facts
-      pass, no second queue/limit/sequence/result exists, and refusal never
-      falls back to direct model mutation.
+      with no model, callable, task, platform object, or mutable repository
+      reference pass; prove no second queue/limit/sequence/result exists and
+      refusal never falls back to direct model mutation.
 - [ ] `T2.4` — Decide whether sink routing, noncopyable ownership, wrapper
       binding, candidate/live selection, and the mutation-result slot require
       a focused Implementation Design Note. If reconstruction is difficult,
@@ -232,6 +291,10 @@ locations atomically and binds every wrapper before its body.
 - [ ] `T3.1` — Implement begin/encounter/finish lifecycle, checked capacities,
       active-candidate guard, and staged association storage. Reserve every
       required resource before body evaluation and preserve the first failure.
+      Enforce one begin after `.deriving`, exactly one publish/discard finish,
+      exact success results, and no ordinary failure path from publication
+      after successful reservation; classify invalid entry and impossible
+      publication failure exactly.
 - [ ] `T3.2` — Implement the state-aware SPEC-006 visitor decorator. Copy the
       transient declaration, visit direct wrappers in generated lexical order,
       bind each successfully, evaluate the body exactly once only after all
@@ -239,11 +302,17 @@ locations atomically and binds every wrapper before its body.
 - [ ] `T3.3` — Implement first materialization, same-key compatible
       preservation, distinct ordinal handling, incompatible association,
       duplicate ownership, staged removal, published retirement, reinsertion,
-      failed-derivation discard, and runtime shutdown.
+      failed-derivation discard, and runtime shutdown. Prove repeated
+      initializers are consumed without attachment, removal/shutdown synthesize
+      no application start/stop lifecycle effect, shutdown detaches every
+      installed sink once, and no later report, fact, action, or candidate is
+      admitted.
 - [ ] `T3.4` — Fault-inject location, registration, association staging,
-      duplicate-owner, incompatible-association, attach-return mismatch, and
-      finish invariant failures. Prove complete candidate discard, candidate-
-      only detach, prior-live preservation, and body suppression.
+      duplicate-owner, incompatible-association, `nil`/mismatched attachment
+      return, report-during-attach, mismatched detach, and finish invariant
+      failures. Prove first-failure preservation, complete candidate discard,
+      candidate-only route invalidation/detach, prior-live preservation, exact
+      detach behavior, and body suppression for every binding failure.
 
 ### Milestone 4: Implement Replacement and Target-Generation Lifetime
 
@@ -260,7 +329,10 @@ fresh, non-aliasing target generations with exact borrowed lookup timing.
       reserve, attach/verify the candidate, commit it, activate its fresh
       generation, detach/retire the former registration, and dirty the
       location. Every precommit failure preserves the former model, route,
-      generation, dirtiness, and publication.
+      generation, dirtiness, and publication. Prove report-during-attachment
+      rejects the candidate even if attach later returns a matching attachment,
+      and prove successful replacement remains current and dirty when later
+      derivation fails.
 - [ ] `T4.3` — Implement live and publishable borrowed target lookup. Enforce
       successful-encounter timing, preserved versus candidate-only results,
       invalid query `nil`, no lazy materialization, and publication making the
@@ -268,7 +340,9 @@ fresh, non-aliasing target generations with exact borrowed lookup timing.
 - [ ] `T4.4` — Prove candidate discard detaches and permanently retires
       candidate-only generations, published removal retires the live value,
       failed/staged replacement preserves the former value, and no lookup
-      retains or exposes a model.
+      retains or exposes a model. Couple observable non-publication to mandatory
+      Interaction candidate discard and prove a borrowed publishable view
+      cannot escape candidate construction.
 
 ### Milestone 5: Implement Reporting, Dirtiness, and Mutation Phases
 
@@ -280,18 +354,26 @@ mandatory effect with bounded, coalesced state.
 
 - [ ] `T5.1` — Activate the noncopyable sink only after verified attachment;
       implement exact sink/package outcome correspondence, synchronous model
-      reporting, one dirty transition, repeated coalescing, and no-op omission.
+      reporting before a changed mutation returns, one dirty transition,
+      repeated coalescing, and proven no-op omission. Keep the registration
+      record to bounded route validation rather than a callable sink copy or
+      report history.
 - [ ] `T5.2` — Integrate one wake intent, complete-root dirty derivation,
       freeze, successful-publication clearing, frame-refusal independence, and
       derivation-failure dirty retention without mutation replay.
 - [ ] `T5.3` — Reject reports during attach, candidate state, detach, after
       retirement/slot reuse, outside mutation, across semantic dispatch, and
       after shutdown. Implement contained-phase paced rederivation versus
-      safety-not-proven/reentrancy normal-cycle exclusion exactly.
+      safety-not-proven/reentrancy normal-cycle exclusion exactly, including
+      preserved last publication, partial-candidate discard, dirty/wake state,
+      and the no-residual-policy-call contained row.
 - [ ] `T5.4` — Implement the cycle-local mutation-result slot used by bound
       setters and sink failures. Preserve the first failure until synchronous
       coordinator consumption; retain no model, fact, callable, candidate, or
-      history and allow no later success to overwrite it.
+      history and allow no later success to overwrite it. Read and clear the
+      slot after each enclosing fact, handler, or test operation before
+      derivation; when no cycle is active, route mandatory disposition through
+      the owner adapter directly.
 
 ### Milestone 6: Realize Equal Dynamic and Static Profiles
 
@@ -305,7 +387,9 @@ while the static path remains typed, bounded, and zero-heap.
 - [ ] `T6.1` — Implement dynamic and static fixture workspaces behind the same
       owner protocols. Run one canonical corpus covering preservation,
       ordinals, candidate lookup, replacement, removal/reinsertion, stale slot
-      reuse, exhaustion, and generation lifetime; compare normalized outputs.
+      reuse, all independent capacity boundaries, initial/replacement
+      generation exhaustion, exact success rows, and generation lifetime;
+      compare normalized outputs at equal limits.
 - [ ] `T6.2` — Exercise twenty reports and the 80-facts-per-second /
       250-millisecond selection workload with exactly one dirty owner, one
       outstanding wake, one complete reevaluation, no correctness history,
@@ -313,11 +397,16 @@ while the static path remains typed, bounded, and zero-heap.
 - [ ] `T6.3` — Implement the static typed/fixed storage path with no heap,
       reflection, `Any`, strings, task-local state, arbitrary existential
       registry, tasks, threads, exceptions, Apple Observation, Objective-C, or
-      runtime discovery. Measure each finite storage category separately.
+      runtime discovery. Measure each finite storage category separately,
+      including live locations, registrations, candidate associations,
+      replacement staging, fixed bookkeeping, SPEC-009 pending facts, and the
+      application-owned model; record bounded attach/detach/report/reconcile
+      operation counts and lookup space.
 - [ ] `T6.4` — Implement the fixture presentation-fact adapter and same-thread
       versus logically distinct executor cases. Prove ordered later
-      application, explicit refusal, action-triggered callback deferral, and no
-      direct/reentrant model mutation.
+      application in SPEC-009's fact-before-action order, explicit refusal,
+      after-seal/freeze deferral, action-triggered callback deferral, exact
+      admission-outcome forwarding, and no direct/reentrant model mutation.
 
 ### Milestone 7: Complete Failure Ownership and Mandatory Effects
 
@@ -335,6 +424,8 @@ scope, containment, mandatory effects, and allowed residual policy rows.
       focused-owner precedence plus the residual-policy table, including rows
       with no policy call. Prove policy cannot weaken containment, narrow scope,
       skip cleanup, retry without a bound, or reinterpret failure as success.
+      Verify secondary cleanup failure never replaces the first selected local
+      condition and every context-specific scope/containment row is exact.
 - [ ] `T7.3` — Run correctness with diagnostics absent and with permitted
       projections enabled/disabled/lost/saturated. Compare identical typed
       results, live sets, generations, dirtiness, wake, and publication state.
@@ -351,8 +442,9 @@ reports with compiler, ABI, resource, transcript, and dependency evidence.
       macro bytes, complete normalized transcripts, local layouts, allocation,
       stack, linked sections, and undefined/forbidden symbols.
 - [ ] `T8.2` — Cross-build Raspberry Pi 1 only for
-      `armv6-unknown-linux-gnueabihf`; inspect ELF/ABI, static-runtime closure,
-      stack/heap/linked-size evidence, and compare the canonical corpus without
+      `armv6-unknown-linux-gnueabihf`; inspect ELF/ABI, dynamic-profile
+      dependency closure, stack/heap/linked-size evidence, and compare the
+      canonical corpus without
       claiming remote execution or deployment.
 - [ ] `T8.3` — Cross-build `nrf52840dk/nrf52840` with the bundled
       `armv7em-none-none-eabi` module and Cortex-M4F hard-float flags. Require
@@ -417,15 +509,14 @@ transition without overclaiming hardware or downstream application completion.
 9. Audit downstream SPEC-006/009/011/013/015 and Signal Analyzer integration
    only after each owner exists.
 
-Tasks `T0.1`, `T0.3`, and `T0.4` may proceed together after this plan is ready.
-The portable subset of `T1.1` may proceed after `T0.1`; it is the smallest
-slice that unblocks SPEC-006 and changes no package edge. `T0.2` completes
-across the first buildable macro target in `T1.2` and the execution-dependent
-owner target in `T2.1`, rather than authorizing placeholder targets. Macro
-work `T1.2` and `T1.4` is ordered around that coordinated
-visitor addition. Milestone 2 and later execution-dependent work waits for
-SPEC-009. Profile-neutral fixture work may proceed before production runtime
-profiles, but `T6.1` production claims wait for SPEC-013 and SPEC-015 owners.
+Tasks `T0.1`, `T0.3`, `T0.4`, and `T1.1` through `T1.5` are complete. `T0.2`
+remains open only for the execution-dependent `GiftUIObservableState` and
+adapter edges that must land with compiling `T2.1` and `T7.1` targets rather
+than placeholders. Milestone 2 and later execution-dependent work waits for
+SPEC-009's implementation. Profile-neutral fixture work may proceed before
+production runtime profiles, but production portions of `T6.*`, assembled
+resource claims, and downstream integration wait for ready SPEC-013 and
+SPEC-015 implementation plans and their implemented owner seams.
 
 ## Risks and Upstream Blockers
 
@@ -448,15 +539,19 @@ profiles, but `T6.1` production claims wait for SPEC-013 and SPEC-015 owners.
 
 ### Upstream blockers
 
-- SPEC-009 is approved but has no implementation plan or `GiftUIExecution`
-  target. T2.1 and all phase, wake, admission, target-generation, and
-  coordinator work must wait for that owner; this plan cannot define aliases.
-- SPEC-006 must accept the exact stateful visitor method after T1.1. Any
-  compiler conflict in that coordinated public underscored surface returns to
-  SPEC-006/SPEC-010 review rather than adding a second traversal engine.
+- SPEC-009 is approved and has a ready implementation plan, but no
+  `GiftUIExecution` target. `T2.1` and all phase, wake, admission,
+  target-generation, mutation-result, and coordinator work must wait for that
+  owner; this plan cannot define aliases or fixture substitutes in production.
+- SPEC-006 now supplies the exact stateful visitor method and generated-host
+  routing required by completed `T1.4`. Any later compiler conflict in that
+  coordinated public underscored surface returns to SPEC-006/SPEC-010 review
+  rather than adding a second traversal engine.
 - Production dynamic/static profile targets and numeric capacities belong to
-  SPEC-013 and SPEC-015. Fixture-finite conformance work may proceed, but
-  production realization and host claims wait for those owners.
+  SPEC-013 and SPEC-015. Both Specifications are approved but neither has a
+  ready implementation plan or production owner target. Fixture-finite
+  conformance work may proceed, but production realization and host claims
+  wait for those owners and their normal readiness gates.
 - Interaction target binding belongs to SPEC-011. Observable State exposes
   only the borrowed generation views fixed by SPEC-010 and must not import or
   implement Interaction to accelerate integration.
@@ -481,7 +576,10 @@ Implementation began on 2026-09-04 under the then-approved contract. The
 2026-09-05 completeness amendment temporarily returned the feature to
 `specification`, the Specification to `review`, and this plan to `draft`.
 The maintainer explicitly reapproved the amendment the same day; the
-Specification is now `implementing` and this reconciled plan is `active`.
+Specification remains `implementing`. On 2026-09-06 the maintainer requested
+a completeness review and readiness refresh. The plan is now `ready`; this
+derived-record status confirms that all remaining work is executable and does
+not undo the already completed implementation tasks below.
 
 `T0.1` is complete: the checked-in
 [authority audit](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-0/authority-audit.md)
@@ -557,4 +655,13 @@ custom category, and evaluates its body through the borrowed declaration.
 The registered traversal audit rejects manual application witnesses and a
 second traversal requirement; see the
 [generated stateful traversal evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-1/generated-stateful-traversal.md).
-This closes the SPEC-006 T1.4 dependency. T1.5 remains the next SPEC-010 task.
+This closes the SPEC-006 T1.4 dependency.
+
+`T1.5` is complete: one canonical annotated model/host source and its
+byte-stable generated expansion compile as optimized target objects for macOS
+dynamic, macOS static, Raspberry Pi ARMv6, and nRF52840 Embedded Swift. The
+four reports record the same generated-source SHA-256 and reject target-image
+macro/compiler-support linkage; see the
+[four-profile generated-host evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-1/four-profile-generated-host.md).
+The next executable owner task is `T2.1`, blocked only on SPEC-009 supplying
+the exact `GiftUIExecution` declarations and package edge identified above.
