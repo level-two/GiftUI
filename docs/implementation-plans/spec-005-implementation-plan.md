@@ -517,11 +517,14 @@ review without asserting the `implemented` transition.
   declarations are sufficient to start the leaf, but incomplete or changed
   Foundation evidence blocks final four-profile and reciprocal conformance; it
   does not authorize a duplicate geometry or arithmetic implementation.
-- SPEC-007, SPEC-008, SPEC-014, and SPEC-015 have not created production
-  layout, render, backend, or host targets. `T4.4`, the final downstream part
-  of the module-graph criterion, and production-adapter evidence remain
-  blocked on those governed implementations. Test-only adapters may prove
-  mappings but may not become substitute architecture.
+- SPEC-008 has created `GiftUIRenderCore` with the exact direct
+  `GiftUITextResources` edge and nominal identities, and SPEC-005 now audits
+  that activated consumer. SPEC-007, later SPEC-008 lowering, SPEC-014, and
+  SPEC-015 have not yet created the remaining layout, lookup, raster, backend,
+  or host integrations. `T4.4`, the final downstream part of the module-graph
+  criterion, and production-adapter evidence remain blocked on those governed
+  implementations. Test-only adapters may prove mappings but may not become
+  substitute architecture.
 - The exact error-precedence rule requires knowledge of all applicable
   predicates. A validator that returns on first traversal failure can be
   order-dependent; if a bounded implementation cannot preserve precedence,
@@ -596,7 +599,7 @@ contract or authorize the eventual `implemented` transition.
 | `T4.1` | completed | [Exact owner-adapter mappings](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/owner-adapter-mappings.md), test-only failure adapter with exact imports, all nine local error mappings, layout/render/Foundation facts, required-realization loss, and diagnostic-independence coverage |
 | `T4.2` | completed | [Contract-local synchronous offer](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/synchronous-offer.md), nominal instance/glyph identities and explicit point only, nested exact-once resource/payload lookup, empty/invalid/unavailable cases, ended-borrow instrumentation, and no production rendering policy |
 | `T4.3` | completed | [Contract-local assembly and lifecycle](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/assembly-lifecycle.md), complete-package validation for both realizations, exactly-once selected-subset validation before publication, immutable nested borrows, last-consumer teardown ownership, unselected-payload catalogue unavailability, and zero partial exposure on failure |
-| `T4.4` | blocked | [Downstream integration disposition](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/downstream-integration-blocker.md): SPEC-007, SPEC-008, SPEC-014, and SPEC-015 have no active implementation plans or production layout, render, raster-provider, backend, platform, or host targets; reserved consumer rows remain pending and no substitute module was created |
+| `T4.4` | blocked after incremental Render Core integration | [Downstream integration disposition](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/downstream-integration-blocker.md): SPEC-008's production Render Core now has the activated exact text-resource edge and nominal identities; layout/lowering lookup, raster-provider, backend, platform, and host integrations remain pending and no substitute module was created |
 | `T5.1` | completed | [Four-profile semantic corpus](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/four-profile-semantic-corpus.md), concrete complete reference cross-build on ARMv6, bitmap-only reference cross-build on nRF52840, 66 equal logical transcript rows, exact validation and owner mappings, declared realization availability, toolchain/target/flag/revision/hash metadata, and 256-comparison maximum |
 | `T5.2` | completed | [Static-path allocation evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-path-allocation.md), one monotonic measured transaction covering validation, mapping, metric/raster lookup, payload borrow, synchronous offer, and combined work with zero allocation contribution in macOS dynamic/static, plus prohibited-runtime-facility source checks and the existing four-profile 16-value layout reports |
 | `T5.3` | completed | [Static resource image evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-resource-images.md), [maintained measurement design](../implementation-designs/spec-005-static-resource-layout.md), matched optimized nRF and ARMv6 baseline/candidate images, deterministic double nRF build, 23,024-byte flash and zero-byte fixed-RAM deltas, conservative 1,004-byte validation stack, exact target/ABI evidence, and bitmap-only link-map omission proof |

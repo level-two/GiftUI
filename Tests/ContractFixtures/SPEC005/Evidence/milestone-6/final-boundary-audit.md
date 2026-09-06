@@ -26,10 +26,10 @@ The audit finds:
 - Portable Presentation remains free of text-resource, raster, backend,
   platform, device, and target-conditional branches.
 
-`GiftUILayout`, `GiftUIRenderCore`, `GiftUITextRasterProvider`, `GiftUIBackend`,
-`GiftUIPlatform`, and `GiftUIHost` remain reserved pending consumers because
-SPEC-007, SPEC-008, SPEC-014, and SPEC-015 have approved contracts but no active
-implementation plans or production targets. This preserves T4.4 and TR-002 as
-an explicit downstream blocker; the audit does not invent aliases, translation
-layers, or substitute modules to close it.
-
+`GiftUIRenderCore` is now an activated exact consumer with direct
+`GiftUITextResources` access and no identity aliases or translation.
+`GiftUILayout`, `GiftUITextRasterProvider`, `GiftUIBackend`, `GiftUIPlatform`,
+and `GiftUIHost` remain reserved pending consumers, and Render Lowering's
+production lookup integration has not landed. This preserves T4.4 and TR-002
+as an explicit downstream blocker; the audit does not invent aliases,
+translation layers, or substitute modules to close it.

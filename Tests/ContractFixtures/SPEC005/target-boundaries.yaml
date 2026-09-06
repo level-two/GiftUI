@@ -32,6 +32,11 @@ active:
       - GiftUIFailureDiagnostics
       - GiftUITextResourceFailureAdapterFixture
       - GiftUITextResources
+  GiftUIRenderCore:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUITextResources
 forbidden_text_resource_imports:
   - GiftUIFailureCore
   - GiftUIFailureDiagnostics
@@ -53,7 +58,6 @@ forbidden_text_resource_imports:
   - GiftUIHardware
 reserved_consumers:
   GiftUILayout: pending
-  GiftUIRenderCore: pending
   GiftUITextRasterProvider: pending
   GiftUIBackend: pending
   GiftUIPlatform: pending

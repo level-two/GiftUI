@@ -40,7 +40,7 @@ the MVP Signal Analyzer's deterministic text across all four configurations.
 | Criterion | Result | Evidence | Notes / exception authority |
 | --- | --- | --- | --- |
 | `TR-001` | pass | [Authority audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/authority-audit.md) | Manifest, authority, Spike, and Future Work links are reciprocal and correctly classified. |
-| `TR-002` | blocked | [Compiler boundaries](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/compiler-boundaries.md), [downstream blocker](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/downstream-integration-blocker.md) | The owned leaf/concrete-package graph passes; production layout, render, raster/backend, and host consumers await implementation under SPEC-007/008/014/015. No exception exists. |
+| `TR-002` | blocked | [Compiler boundaries](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/compiler-boundaries.md), [downstream blocker](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/downstream-integration-blocker.md) | The owned leaf/concrete-package graph and activated Render Core consumer edge pass; production layout/lowering lookup, raster/backend, and host consumers await implementation under SPEC-007/008/014/015. No exception exists. |
 | `TR-003` | pass | [Exact declarations](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/exact-declarations.md), [canonical serialization](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/canonical-serialization.md), [four-profile corpus](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/four-profile-semantic-corpus.md) | Exact widths, bytes, identities, bounds, and digests pass. |
 | `TR-004` | pass | [Reference generation](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-generation.md), [provenance](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/provenance-and-build-validation.md) | Adopted source, license, coverage, hashes, generation, and both required-realization validations pass. |
 | `TR-005` | pass | [Accessor behavior](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/accessor-behavior.md), [validated behavior](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validated-behavior.md) | Scalar, replacement, CR, LF, and CRLF behavior is exact with no fallback. |
@@ -79,7 +79,8 @@ not claimed here.
 ## Deviations and Exceptions
 
 No implementation divergence, failed requirement, or approved exception is
-known. TR-002 is blocked by absent downstream production consumers.
+known. TR-002 is blocked by the remaining absent downstream production
+consumers and lookup integrations; the Render Core edge is now active.
 
 ## Deferred Work Audit
 
