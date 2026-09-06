@@ -1,0 +1,9 @@
+# namespace	format	first	allocation
+cycle	cycle:<decimal>	cycle:0	checked-successor-no-reuse
+semantic	semantic:<decimal>	semantic:0	checked-successor-no-reuse
+candidate	candidate:<decimal>	candidate:0	checked-successor-no-reuse
+presentation	presentation:<decimal>	presentation:0	checked-successor-no-reuse
+action	action:<decimal>	action:0	checked-successor-no-reuse
+target	target:<decimal>	target:0	downstream-owned-checked-successor
+source	source:<decimal>	source:0	fixture-symbolic
+case	case:<decimal>	case:0	fixture-symbolic

@@ -1,0 +1,7 @@
+# order	file	domain	extra_fields	evidence_classes
+1	cycles.yaml	cycle	entryWakeReasons,expectedSealedMembership,expectedAppliedEffects,expectedPublication	cross-build,host-execution,inspection
+2	handoff.yaml	handoff	expectedBodyCalled,expectedFrameStreamResult,expectedRetainedRenderError,expectedFrameOfferResult,expectedIrreversibleOutput,expectedCandidateDisposition	cross-build,host-execution,inspection
+3	input.yaml	input	initialSourceState,finalSourceState,expectedCapture,expectedCancellation,expectedQuiescence	cross-build,host-execution,inspection
+4	recovery.yaml	recovery	configuredMaximum,countBefore,countAfter,pacingOpportunity,supersession,terminalAvailability	cross-build,host-execution,inspection
+5	owner-failures.yaml	owner-failure	ownerFailure,detectingContext,cleanupFailures,expectedOwnerMapping,expectedStaticLayout	cross-build,host-execution,inspection
+6	signal-analyzer.yaml	signal-analyzer	factTimestamps,opportunityTimestamps,expectedPublications,expectedOffers,expectedWakes,expectedHighWater	connected-hardware,cross-build,host-execution,inspection,simulator

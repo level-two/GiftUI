@@ -1,0 +1,13 @@
+# field	kind	rule
+name	symbol	globally-unique-kebab-case
+initialState	mapping-or-none	explicit
+limits	mapping-or-none	explicit
+preOpportunityAdmissions	sequence-or-none	explicit
+phaseInjections	sequence-or-none	explicit
+endpointScript	mapping-or-none	explicit
+expectedPhaseTranscript	sequence-or-none	explicit
+expectedAdmissionSummary	mapping-or-none	explicit
+expectedResult	mapping-or-none	explicit
+expectedAuthoritativeState	mapping-or-none	explicit
+expectedWakeTransitions	sequence-or-none	explicit
+expectedFailureOrOperationalMapping	mapping-or-none	explicit

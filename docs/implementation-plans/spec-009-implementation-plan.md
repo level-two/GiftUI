@@ -2,7 +2,7 @@
 spec: SPEC-009
 feature: giftui-mvp-architecture
 title: SPEC-009 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-06
@@ -191,7 +191,7 @@ ADR, and prerequisite Specification gates remain authoritative.
 acceptance registry, and registered fail-closed driver skeleton exist before
 execution behavior is claimed.
 
-- [ ] `T0.1` — Create `Tests/ContractFixtures/SPEC009/` with an ordered fixture
+- [x] `T0.1` — Create `Tests/ContractFixtures/SPEC009/` with an ordered fixture
       manifest, shared-field schema, phase-transcript vocabulary, normalized
       result/failure/operational schema, stable identity-token rules,
       acceptance/evidence registry, and README. Register exactly `cycles.yaml`,
@@ -666,11 +666,26 @@ from SPEC-009 cannot be deferred.
 
 ## Completion Record
 
-No implementation task has been completed by creation of this plan. The plan
-was drafted and marked ready on 2026-09-06 after the complete authority chain,
-repository baseline, fourteen acceptance criteria, dependency gates, and
-evidence strategy were reviewed. Update task checkboxes and dispositions only
-with stable code, test, or report evidence.
+The plan was drafted and marked ready on 2026-09-06 after the complete
+authority chain, repository baseline, fourteen acceptance criteria, dependency
+gates, and evidence strategy were reviewed.
+
+Implementation began on 2026-09-06 at the maintainer's request. SPEC-009 is
+`implementing` and this plan is `active`; these progress transitions do not
+change the approved contract or authorize the eventual `implemented`
+transition.
+
+`T0.1` is complete: the checked-in
+[fixture schema evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-0/fixture-schema.md)
+records the exact six-file fixture registry, shared fields, phase-event
+vocabulary, normalized result/failure/operational records, symbolic identity
+rules, and fourteen-row acceptance registry. The focused harness rejects
+missing or extra fixture files, duplicate or unknown cases and fields,
+unreferenced populated cases, invalid symbolic identities, and non-pending
+initial evidence while permitting the canonical corpus to remain empty until
+its owning tasks populate it. `T0.3` and `T0.4` may now proceed independently;
+`T0.2` remains coupled to the first compiling `GiftUIExecution` target and its
+SPEC-008-owned prerequisites.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

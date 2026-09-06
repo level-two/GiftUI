@@ -1,0 +1,9 @@
+# record	required_fields	allowed_values
+phase-event	index,event,phase,context,details	phase-vocabulary
+admission-summary	inputEvents,stateChangeFacts,completionFacts,semanticActions,semanticDirty,presentationPending	exact-numeric-and-boolean
+success-result	kind,summary	success
+operational-result	kind,primary,summary	no-change|backpressured|retryable-refusal|superseded|deferred-to-later-admission
+failure-result	kind,context,failure,summary-or-none	execution|render-production|frame-offer|non-retryable-refusal|focused-owner
+operational-events	rawValue,events	no-change|backpressured|retryable-refusal|superseded|deferred-to-later-admission
+authoritative-state	phase,semanticRevision,committedPresentationRevision,presentationIntent,captures,inputSources,wakeReasons,wakeOutstanding	exact-symbolic
+failure-mapping	condition,origin,scope,containment,context,policy	exact-spec-003-values

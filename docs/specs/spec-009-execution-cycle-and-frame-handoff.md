@@ -2,11 +2,11 @@
 id: SPEC-009
 feature: giftui-mvp-architecture
 title: Execution Cycle and Frame Handoff Contract
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-08-29
+updated: 2026-09-06
 proposal:
   - PROPOSAL-003
 related_rfcs:

@@ -1,0 +1,15 @@
+# event	phase	required_fields
+opportunity-enter	idle	wakeReasons
+cycle-begin	admitting	cycle
+admission-seal	admitting	membership
+mutation-apply	mutating	category,ordinal
+derivation-freeze	deriving	semanticRevision
+derivation-step	deriving	owner,result
+publication-commit	publishing	semanticRevision
+candidate-reserve	offering	candidateFrame,presentationRevision
+frame-offer	offering	candidateFrame,result
+candidate-commit	offering	candidateFrame,presentationRevision
+candidate-abort	offering	candidateFrame,reason
+wake-transition	idle|admitting|mutating|deriving|publishing|offering|finalizing	reasons,outstanding
+cycle-finalize	finalizing	cycle,result
+cycle-idle	idle	cycle
