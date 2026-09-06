@@ -160,7 +160,7 @@ listed prerequisite is satisfied.
 | Work | Prerequisites | Primary affected surfaces | Parallel boundary |
 | --- | --- | --- | --- |
 | `T0.1`-`T0.4` | Approved SPEC-009 authority chain | `Tests/ContractFixtures/SPEC009/`, `scripts/contracts/`, `Package.swift`, existing target registries | Schemas, migration inventory, and driver scaffolding may proceed together after the acceptance registry exists; exact package edits land with compiling targets |
-| `T1.1`-`T1.5` | `T0.2`; SPEC-002 values; SPEC-008-owned render declarations for endpoint/result references | `Sources/GiftUIExecution/`, `Tests/GiftUIExecutionTests/`, package graph fixtures | Independent raw-value families may be implemented together; aggregate result validation follows their complete declarations |
+| `T1.1`-`T1.5` | `T0.2` boundary audit, SPEC-002 values, and SPEC-008-owned render declarations for endpoint/result references; the first compiling Execution source lands with its T0.2 package rows | `Sources/GiftUIExecution/`, `Tests/GiftUIExecutionTests/`, package graph fixtures | Independent raw-value families may be implemented together; aggregate result validation follows their complete declarations |
 | `T2.1`-`T2.5` | Relevant `T1.*`; fixture-owned bounded storage | execution tests and `cycles.yaml` validation | Pure allocation, summary, and phase tests may proceed in parallel after shared checked helpers are fixed |
 | `T3.1`-`T3.6` | `T1.*`, `T2.1`; SPEC-002 normalized pointer values; SPEC-006 identity supplied to fixtures | execution admission/input state machines, `input.yaml`, wake fixtures | Queue-family admission may be divided only after common context, ownership, seal, and cancellation rules are fixed |
 | `T4.1`-`T4.6` | `T2.*`, `T3.*`; scripted focused-owner seams | recording coordinator fixture, `cycles.yaml`, `owner-failures.yaml` | Success and focused-failure scripts may be authored independently against one frozen transcript vocabulary |
@@ -223,6 +223,11 @@ execution behavior is claimed.
       Enforce `GiftUIExecution -> GiftUI + GiftUIRenderCore` and
       `GiftUIFailureExecution -> GiftUIFailureCore + GiftUIExecution`, plus all
       prohibited reverse and downstream imports from SPEC-009.
+      This is an incremental boundary task: complete the graph audit and exact
+      intended rows before source work, land each target row atomically with
+      that target's first compiling source, and mark T0.2 complete only after
+      all named targets and checks exist. It is not a prerequisite requiring
+      empty placeholder targets.
 - [x] `T0.3` — Create and explicitly register
       `scripts/contracts/run-spec-009.sh --profile <profile>` for exactly
       `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, and

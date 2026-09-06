@@ -153,9 +153,9 @@ after every listed prerequisite is satisfied.
 | Work | Prerequisites | Primary affected surfaces | Parallel boundary |
 | --- | --- | --- | --- |
 | `T0.1`-`T0.4` | Approved SPEC-008 authority chain | `Tests/ContractFixtures/SPEC008/`, `Package.swift`, `scripts/contracts/`, SPEC-002 graph fixtures | Fixture schemas, migration inventory, and driver scaffolding may proceed together; exact graph edits land with their first compiling targets |
-| `T1.1`-`T1.5` | `T0.2`; current SPEC-006 sealed payload/traversal surface | `Sources/GiftUI/`, `Tests/GiftUITests/`, public compile fixtures, SPEC-006 semantic corpus | Color, bounded text, text primitive, and style modifiers may be implemented independently once their fixed payload roles are registered |
+| `T1.1`-`T1.5` | `T0.2` boundary audit and current SPEC-006 sealed payload/traversal surface; no new package target is needed for the `GiftUI`-owned declarations | `Sources/GiftUI/`, `Tests/GiftUITests/`, public compile fixtures, SPEC-006 semantic corpus | Color, bounded text, text primitive, and style modifiers may be implemented independently once their fixed payload roles are registered |
 | `T2.1`-`T2.5` | Relevant `T1.*`; SPEC-006 complete result and SPEC-007 resolved result where named | `Sources/GiftUISemanticCore/`, `Sources/GiftUILayout/`, their unit tests, direct fixture views | Protocols and malformed direct views may precede production adapters; profile-equivalence claims wait for both prerequisite owners |
-| `T3.1`-`T3.5` | `T0.2`, `T1.1`; existing SPEC-002 and SPEC-005 values | `Sources/GiftUIRenderCore/`, `Tests/GiftUIRenderCoreTests/`, recording fixtures | Operation values and sink lifecycle may proceed beside semantic/layout adapters; recording completion waits for the event schema |
+| `T3.1`-`T3.5` | `T0.2` boundary audit, `T1.1`, and existing SPEC-002/SPEC-005 values; the first compiling Render Core source lands with its T0.2 package rows | `Sources/GiftUIRenderCore/`, `Tests/GiftUIRenderCoreTests/`, recording fixtures | Operation values and sink lifecycle may proceed beside semantic/layout adapters; recording completion waits for the event schema |
 | `T4.1`-`T4.5` | `T2.1`, `T3.1`-`T3.3`; direct fixture views | `Sources/GiftUIRenderLowering/`, `Tests/GiftUIRenderLoweringTests/`, owner adapter | Workspace/preflight may use direct views before production adapters; streaming follows the exact preflight traversal |
 | `T5.1`-`T5.5` | `T2.*`, `T3.*`, `T4.*` as consumed by each row | lowering/core unit tests and canonical success corpus | Style, text, clip/damage, and lifecycle fixtures may be divided after canonical traversal and checked-intersection helpers are fixed |
 | `T6.1`-`T6.5` | Applicable `T1`-`T5` behavior complete | complete SPEC-008 corpus, normalized profile probes, instrumentation | Focused failure and golden rows may run independently; complete cross-profile comparison waits for all corpus rows |
@@ -215,6 +215,11 @@ rendering behavior is claimed.
       dependency fixtures atomically, including reverse and every prohibited
       runtime, execution, failure, capability, backend, raster, concrete
       resource, platform, driver, OS/RTOS, HAL, and hardware edge.
+      This is an incremental boundary task: complete the graph audit and exact
+      intended rows before source work, land each target row atomically with
+      that target's first compiling source, and mark T0.2 complete only after
+      all named targets and checks exist. It is not a prerequisite requiring
+      empty placeholder targets.
 - [ ] `T0.3` — Create `scripts/contracts/run-spec-008.sh --profile <profile>`
       for exactly `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, and
       `nrf52840-embedded`; register it in
