@@ -228,7 +228,7 @@ rendering behavior is claimed.
       command, fixture digest, value layout, result/transcript comparison,
       declared/observed high-water, allocation/workspace/stack measurement,
       timing sample, section delta, link map, or required ELF inspection.
-- [ ] `T0.4` — Inventory historical and current rendering-like surfaces,
+- [x] `T0.4` — Inventory historical and current rendering-like surfaces,
       including `Color`, raw-string text, display lists, recording backends,
       backend text placement, host-sized counts, unchecked clip/damage
       arithmetic, retained borrows, and capability fixture names. Assign
@@ -678,6 +678,16 @@ declared/observed high-water, allocation, workspace, stack, timing, section,
 link-map, target-image/ELF inspection, and acceptance evidence. The driver
 performs no remote access, deployment, restart, simulator run, connected-
 target execution, or flashing.
+
+`T0.4` is complete: the PoC/current migration inventory classifies legacy
+color, raw-string text, display lists, recording backends, backend text
+placement, host-sized render collections, unchecked clip/damage arithmetic,
+retained text borrows, and capability fixture naming as adopt, adapt, replace,
+or retire work with an exact successor owner. The registered audit pins the
+PoC revision, validates every inventoried path and disposition, preserves sole
+`Color`/text/style ownership in `GiftUI`, and rejects a maintained parallel
+display-list, recording-backend, backend text-placement, frame-history, damage,
+or capability-coupled rendering path.
 
 On 2026-09-06 the maintainer explicitly approved the coordinated SPEC-008/
 SPEC-009 correction assigning the closed `RenderProductionError` value to

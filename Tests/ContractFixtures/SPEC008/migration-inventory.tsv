@@ -1,0 +1,25 @@
+# family	baseline	path	occurrences	disposition	replacement_owner
+color	PoC	Sources/GiftUI/Rendering/Color.swift	1	adopt	SPEC-008-T1.1
+raw-string-text	PoC	Sources/GiftUI/PrimitiveViews/Text.swift	3	replace	SPEC-008-T1.2/T1.3
+raw-string-text	PoC	Sources/GiftUI/Rendering/TextRun.swift	2	replace	SPEC-005/SPEC-007/SPEC-008
+raw-string-text	PoC	Sources/GiftUIDynamicConveniences/DynamicText.swift	1	adapt	future-dynamic-bounded-adapter
+raw-string-text	PoC	Sources/GiftUIDynamicConveniences/DynamicTextRun.swift	1	adapt	future-dynamic-bounded-adapter
+display-list	PoC	Sources/GiftUIRuntimeDynamic/DisplayList.swift	7	retire	SPEC-008-direct-sink
+display-list	PoC	Sources/GiftUIRuntimeDynamic/DynamicRuntime.swift	5	replace	SPEC-008-render-lowering
+display-list	PoC	Sources/GiftUIRuntimeDynamic/GiftUIApplication.swift	5	replace	SPEC-009-one-shot-handoff
+display-list	PoC	Sources/GiftUIRuntimeDynamic/ViewNode.swift	3	replace	SPEC-006/SPEC-007/SPEC-008
+display-list	PoC	Sources/GiftUIRuntimeStatic/StaticRuntime.swift	4	replace	SPEC-008-shared-lowering
+recording-backend	PoC	Tests/GiftUIIntegrationTests/GiftUIIntegrationTests.swift	6	adapt	SPEC-008-recording-fixtures
+recording-backend	PoC	Tests/GiftUIRuntimeDynamicTests/GiftUIRuntimeDynamicTests.swift	2	adapt	SPEC-008-recording-fixtures
+backend-text-placement	PoC	Sources/GiftUI/Rendering/RenderBackend.swift	2	retire	SPEC-008-positioned-glyph-operations
+backend-text-placement	PoC	Sources/GiftUIBackendFramebuffer/FramebufferBackend.swift	1	replace	SPEC-014-backend-consumer
+backend-text-placement	PoC	Sources/GiftUIBackendRGB565/RGB565RetainedRenderer.swift	2	replace	SPEC-014-backend-consumer
+backend-text-placement	PoC	Sources/GiftUIBackendRGB565/RGB565TileRenderer.swift	1	replace	SPEC-014-backend-consumer
+host-sized-counts	PoC	Sources/GiftUIRuntimeDynamic/DisplayList.swift	2	replace	SPEC-008-fixed-width-limits
+host-sized-counts	PoC	Sources/GiftUIRuntimeDynamic/ViewNode.swift	3	replace	SPEC-006/SPEC-007-bounded-storage
+unchecked-clip-damage	PoC	Sources/GiftUIBackendRGB565/RGB565RetainedRenderer.swift	1	replace	SPEC-002/SPEC-008-checked-intersection
+unchecked-clip-damage	PoC	Sources/GiftUIBackendRGB565/RGB565TileRenderer.swift	7	replace	SPEC-002/SPEC-008-checked-intersection
+unchecked-clip-damage	PoC	Sources/GiftUIRuntimeDynamic/GiftUIApplication.swift	6	retire	SPEC-008-explicit-damage-mode
+retained-borrow	PoC	Sources/GiftUI/Rendering/TextRun.swift	2	replace	SPEC-008-BoundedText-withUTF8
+capability-fixture-name	current	Tests/GiftUICapabilitiesTests/GiftUICapabilitiesTests.swift	1	adapt	SPEC-008-symbolic-signal-analyzer-fixtures
+parallel-render-path	PoC-and-current	historical-and-current-maintained-source	0	already-absent	SPEC-008-single-lowering-owner
