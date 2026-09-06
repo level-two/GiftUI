@@ -2,7 +2,7 @@
 spec: SPEC-010
 feature: observable-reference-state
 title: SPEC-010 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-04
@@ -92,7 +92,7 @@ and generated code are not implementation authority.
 
 **Reviewed:** 2026-09-06
 
-**Disposition:** Ready. SPEC-010 remains an approved, implementing contract;
+**Disposition:** Ready to continue. SPEC-010 remains an approved, implementing contract;
 all twelve acceptance criteria map exactly once to ordered tasks and
 reproducible evidence. The declaration and generation slice already completed
 under the approved contract remains recorded as completed work. This
@@ -577,9 +577,9 @@ Implementation began on 2026-09-04 under the then-approved contract. The
 `specification`, the Specification to `review`, and this plan to `draft`.
 The maintainer explicitly reapproved the amendment the same day; the
 Specification remains `implementing`. On 2026-09-06 the maintainer requested
-a completeness review and readiness refresh. The plan is now `ready`; this
-derived-record status confirms that all remaining work is executable and does
-not undo the already completed implementation tasks below.
+a completeness review and readiness refresh. That review confirmed the
+remaining work is executable; because implementation is already in progress,
+the plan remains `active` and completed task dispositions remain unchanged.
 
 `T0.1` is complete: the checked-in
 [authority audit](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-0/authority-audit.md)

@@ -16,7 +16,7 @@ Date: 2026-09-06
 | ADR-024 through ADR-027 | accepted | own state, invalidation, profiles, facts |
 | ADR-033 | accepted | owns bounded model-target dispatch |
 | SPEC-010 | implementing approved contract | exact implementation authority |
-| SPEC-010 implementation plan | ready | ordered tasks and evidence |
+| SPEC-010 implementation plan | active | ordered tasks and evidence; implementation is in progress |
 
 SPEC-010 and its plan contain exactly twelve acceptance labels, `OS-001`
 through `OS-012`. `docs/features.yaml` now records the feature at
