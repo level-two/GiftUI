@@ -146,3 +146,69 @@ evidence.each do |criterion, owner_tasks, stable_evidence, listed_cases, _status
 end
 
 puts "SPEC-009 fixture schemas passed: #{case_names.length} case(s), 14 pending acceptance criteria"
+
+exit 0 if ARGV.empty?
+fail_check("expected one report directory") unless ARGV.length == 1
+report = Pathname.new(ARGV.first)
+%w[
+  metadata.txt commands.txt input-hashes.tsv image-hashes.tsv
+  required-evidence.tsv prerequisites.tsv
+].each do |relative|
+  path = report.join(relative)
+  fail_check("report lacks #{relative}") unless path.file? && !path.empty?
+end
+
+metadata = report.join("metadata.txt").each_line.each_with_object({}) do |line, result|
+  key, value = line.chomp.split("=", 2)
+  result[key] = value if value
+end
+%w[
+  spec profile repository_revision repository_dirty input_set_sha256 run_id
+  invocation execution_target fixture_corpus target optimization compiler_path
+  compiler_sha256 evidence_complete remote_access deployment service_restart
+  simulator_execution connected_target_execution flashing
+].each do |key|
+  fail_check("metadata lacks #{key}") if metadata.fetch(key, "").empty?
+end
+fail_check("wrong report spec") unless metadata["spec"] == "SPEC-009"
+profiles = %w[macos-dynamic macos-static raspberry-pi-armv6 nrf52840-embedded]
+fail_check("unknown report profile") unless profiles.include?(metadata["profile"])
+fail_check("execution target must remain blocked") unless metadata["execution_target"] == "blocked"
+fail_check("fixture corpus must remain missing") unless metadata["fixture_corpus"] == "missing"
+fail_check("incomplete report claimed completeness") unless metadata["evidence_complete"] == "false"
+%w[
+  remote_access deployment service_restart simulator_execution
+  connected_target_execution flashing
+].each do |key|
+  fail_check("driver must report #{key}=false") unless metadata[key] == "false"
+end
+
+report_evidence = report.join("required-evidence.tsv").each_line.each_with_object([]) do |line, rows|
+  next if line.start_with?("#") || line.strip.empty?
+
+  fields = line.chomp.split("\t", -1)
+  fail_check("malformed report evidence row") unless fields.length == 3
+  rows << fields
+end
+fail_check("report evidence criteria differ") unless report_evidence.map(&:first) == expected_criteria
+fail_check("report evidence must remain missing") unless report_evidence.all? { |row| row[1] == "missing" }
+fail_check("report evidence lacks reasons") if report_evidence.any? { |row| row[2].empty? }
+
+prerequisites = report.join("prerequisites.tsv").each_line.each_with_object([]) do |line, rows|
+  next if line.start_with?("#") || line.strip.empty?
+
+  fields = line.chomp.split("\t", -1)
+  fail_check("malformed prerequisite row") unless fields.length == 3
+  rows << fields
+end
+expected_prerequisites = %w[
+  compiler-identity target-sdk-identity optimization command-transcript
+  repository-revision fixture-schema execution-target fixture-corpus value-layouts
+  allocations dependency-checks target-inspection acceptance-evidence
+]
+fail_check("prerequisite set differs") unless prerequisites.map(&:first) == expected_prerequisites
+allowed_statuses = %w[complete missing blocked]
+fail_check("invalid prerequisite status") if prerequisites.any? { |row| !allowed_statuses.include?(row[1]) }
+fail_check("prerequisite lacks reason") if prerequisites.any? { |row| row[2].empty? }
+
+puts "SPEC-009 report is fail-closed: 14 criteria missing; 3 prerequisites blocked"

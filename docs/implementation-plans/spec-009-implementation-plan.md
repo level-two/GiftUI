@@ -223,7 +223,7 @@ execution behavior is claimed.
       Enforce `GiftUIExecution -> GiftUI + GiftUIRenderCore` and
       `GiftUIFailureExecution -> GiftUIFailureCore + GiftUIExecution`, plus all
       prohibited reverse and downstream imports from SPEC-009.
-- [ ] `T0.3` — Create and explicitly register
+- [x] `T0.3` — Create and explicitly register
       `scripts/contracts/run-spec-009.sh --profile <profile>` for exactly
       `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, and
       `nrf52840-embedded`. Use the SPEC-002 compiler/SDK/target/optimization
@@ -723,6 +723,18 @@ lands the real compiling target. The standalone regression scan rejects an
 unbounded execution queue or a restored second execution path. `T0.3` is the
 next dependency-complete SPEC-009 task; T0.2 remains incrementally coupled to
 its first compiling sources.
+
+`T0.3` is complete: the
+[registered contract driver](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-0/contract-driver.md)
+exposes the four exact profile commands, validates the fixture and migration
+schemas, and records the pinned compiler, SDK/target, optimization, repository
+revision, input digest, and complete command transcript. All four profiles
+pass on the project-local toolchains while explicitly reporting the execution
+target, dependency audit, and target inspection as blocked and every
+acceptance row as missing. The reports remain fail-closed with
+`evidence_complete=false`; no target build, simulator, remote access,
+deployment, service restart, connected hardware, or flashing occurs.
+Milestone 0 now waits only for the incrementally coupled T0.2 package boundary.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
