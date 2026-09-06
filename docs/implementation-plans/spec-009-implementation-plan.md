@@ -231,7 +231,7 @@ execution behavior is claimed.
       `blocked` rows fail-closed; never skip unavailable toolchains, fixture
       data, layouts, allocations, dependency checks, target inspection, or
       acceptance evidence.
-- [ ] `T0.4` — Inventory every historical or current immediate-invalidation
+- [x] `T0.4` — Inventory every historical or current immediate-invalidation
       path, direct action dispatch, unsealed/reentrant mutation, runtime-owned
       render operation, unbounded queue, retained/replayed frame, closure or
       model capture, stale hit-map route, backend/platform action path, and
@@ -711,6 +711,18 @@ that value in `RunCycleFailure` and prohibits `GiftUIExecution` from importing
 Lowering. The affected `T1.5` work is paused for Specification review. This
 blocker does not invalidate completed `T0.1` evidence or prevent independent
 `T0.3` and `T0.4` work.
+
+`T0.4` is complete: the checked-in
+[migration baseline](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-0/migration-baseline.md)
+pins the immutable PoC revision and reproduces exact path/count maps for
+immediate invalidation, direct dispatch, reentrancy guards, runtime-owned
+render operations, retained frames, closure/model capture, stale hit-map
+routing, and backend/platform action paths. It also inventories all eight
+current `GiftUIExecutionContract` placeholders for replacement only when T0.2
+lands the real compiling target. The standalone regression scan rejects an
+unbounded execution queue or a restored second execution path. `T0.3` is the
+next dependency-complete SPEC-009 task; T0.2 remains incrementally coupled to
+its first compiling sources.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

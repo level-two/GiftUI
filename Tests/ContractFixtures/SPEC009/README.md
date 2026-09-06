@@ -16,6 +16,8 @@ domain-specific fields each may add to the shared fields in
 vocabulary for canonical phase transcripts. `normalized-schema.tsv` fixes the
 profile-neutral result, failure, and operational records. `required-evidence.tsv`
 contains exactly `EX-001` through `EX-014` and begins fail-closed.
+`migration-inventory.tsv` pins the removed PoC execution paths and current
+execution-target placeholders to explicit dispositions and owning contracts.
 
 Every YAML document has `schema: spec-009-v1` and a `cases` sequence. A case
 must contain every shared field, use explicit `none` for an inapplicable field,
