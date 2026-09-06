@@ -785,6 +785,16 @@ names, and object identity; see the
 T1.5 remains the next declaration consolidation task; T3.5 is the next Render
 Core task and requires all four compiler profiles.
 
+The cross-profile compilation slice of `T1.5` is complete. One registered
+checker now builds the portable declaration module and all 17 positive and
+negative fixtures with the pinned macOS dynamic, macOS static, Raspberry Pi
+ARMv6, and nRF52840 Embedded Swift configurations. The corpus includes the
+complete named-color, bounded-input, integer, text, modifier, custom-view, and
+forbidden-convenience surface; see the
+[profile compilation evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-1/declaration-profile-compilation.md).
+T1.5 remains open for its exact admitted-byte and allocation/trap/body-
+evaluation counter evidence.
+
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
 until `T8.5` creates it.

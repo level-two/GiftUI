@@ -252,6 +252,7 @@ fail_check("report lacks input digest") unless metadata["input_set_sha256"]&.mat
 fail_check("report lacks run identity") if metadata.fetch("run_id", "").empty?
 fail_check("render core target must be recorded complete") unless metadata["render_core_target"] == "complete"
 fail_check("render lowering must remain blocked") unless metadata["render_lowering_target"] == "blocked"
+fail_check("declaration profiles must be complete") unless metadata["declaration_profiles"] == "complete"
 fail_check("fixture corpus must remain missing") unless metadata["fixture_corpus"] == "missing"
 fail_check("incomplete evidence must not claim completion") unless metadata["evidence_complete"] == "false"
 %w[
@@ -281,7 +282,7 @@ prerequisites = report.join("prerequisites.tsv").each_line.each_with_object([]) 
 end
 expected_prerequisites = %w[
   compiler-identity target-sdk-identity optimization repository-revision
-  command-transcript fixture-digest render-targets value-layouts result-comparison
+  command-transcript fixture-digest declaration-fixtures render-targets value-layouts result-comparison
   transcript-comparison high-water allocation workspace stack timing section-delta
   link-map target-inspection acceptance-evidence
 ]

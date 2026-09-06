@@ -60,4 +60,4 @@ if rg -n '\b(String|Array|ContiguousArray|class|actor)\b' "${SOURCE}" >/dev/null
     exit 1
 fi
 
-printf 'SPEC-008 Text surface passed: primitive/invalid-marker audit and three client fixtures.\n'
+printf 'SPEC-008 Text surface passed: primitive/invalid-marker audit and four client fixtures.\n'

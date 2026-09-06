@@ -66,4 +66,4 @@ if rg -n '\b(String|Array|ContiguousArray|class|actor)\b' "${SOURCE}" >/dev/null
     exit 1
 fi
 
-printf 'SPEC-008 BoundedText surface passed: inline storage audit and four client fixtures.\n'
+printf 'SPEC-008 BoundedText surface passed: inline storage audit and five client fixtures.\n'

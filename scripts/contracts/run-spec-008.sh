@@ -55,6 +55,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb" \
             "$SCRIPT_DIR/check-spec-008-recording-sink.rb" \
             "$SCRIPT_DIR/check-spec-008-recording-verification.rb" \
+            "$SCRIPT_DIR/check-spec-008-declaration-profiles.sh" \
             "$SCRIPT_DIR/check-spec-008-color-surface.sh" \
             "$SCRIPT_DIR/check-spec-008-bounded-text-surface.sh" \
             "$SCRIPT_DIR/check-spec-008-text-surface.sh" \
@@ -106,6 +107,7 @@ printf '# label\tpath\tsha256\n' >"$images_path"
     printf 'input_set_sha256=%s\nrun_id=%s\n' "$input_set_sha256" "$run_id"
     printf 'invocation=scripts/contracts/run-spec-008.sh --profile %s\n' "$profile"
     printf 'render_core_target=complete\nrender_lowering_target=blocked\n'
+    printf 'declaration_profiles=pending\n'
     printf 'fixture_corpus=missing\nevidence_complete=false\n'
     printf 'remote_access=false\ndeployment=false\nservice_restart=false\n'
     printf 'simulator_execution=false\nconnected_target_execution=false\nflashing=false\n'
@@ -204,6 +206,7 @@ record_nrf52840_identity() {
     printf 'repository-revision\tcomplete\trevision and input digest recorded\n'
     printf 'command-transcript\tcomplete\texact invoked checks recorded\n'
     printf 'fixture-digest\tcomplete\tdeclared inputs and fixture digest recorded\n'
+    printf 'declaration-fixtures\tcomplete\tall 17 fixtures compile as expected for the selected profile\n'
     printf 'render-targets\tblocked\tRender Core is present; Render Lowering has not landed\n'
     printf 'value-layouts\tmissing\tT3.1 host layouts pass; complete cross-profile set is unavailable\n'
     printf 'result-comparison\tmissing\tcanonical normalized results are not implemented\n'
@@ -236,6 +239,20 @@ case "$profile" in
     raspberry-pi-armv6) record_raspberry_pi_identity ;;
     nrf52840-embedded) record_nrf52840_identity ;;
 esac
+declaration_dir="$report_dir/declarations"
+record_command "$SCRIPT_DIR/check-spec-008-declaration-profiles.sh" \
+    --profile "$profile" --output "$declaration_dir"
+"$SCRIPT_DIR/check-spec-008-declaration-profiles.sh" \
+    --profile "$profile" --output "$declaration_dir" >>"$log_path" 2>&1
+printf 'declaration_profiles=complete\n' >>"$metadata_path"
+printf '%s\t%s\t%s\n' \
+    declaration-fixture-results \
+    "${declaration_dir#"$PROJECT_ROOT/"}/results.tsv" \
+    "$(hash_file "$declaration_dir/results.tsv")" >>"$images_path"
+printf '%s\t%s\t%s\n' \
+    declaration-module \
+    "${declaration_dir#"$PROJECT_ROOT/"}/modules/GiftUI.swiftmodule" \
+    "$(hash_file "$declaration_dir/modules/GiftUI.swiftmodule")" >>"$images_path"
 record_command "$SCRIPT_DIR/check-spec-008-harness.rb" "$report_dir"
 "$SCRIPT_DIR/check-spec-008-harness.rb" "$report_dir" >>"$log_path" 2>&1
 printf 'exit_code=0\n' >>"$metadata_path"
