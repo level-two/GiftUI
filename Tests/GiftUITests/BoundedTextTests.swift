@@ -25,7 +25,13 @@ func boundedTextStoresItsMaximumPayloadInline() {
 @Test
 func boundedTextAdmitsEmptyAndWellFormedUTF8Collections() {
     let empty = BoundedText(utf8: EmptyCollection<UInt8>())
-    let scalarBytes: [UInt8] = [0x41, 0xC2, 0xB0, 0xE2, 0x82, 0xAC, 0xF0, 0x9F, 0x8E, 0x81]
+    let scalarBytes: [UInt8] = [
+        0x41,
+        0xC2, 0xB0,
+        0xE2, 0x82, 0xAC,
+        0xEF, 0xBF, 0xBD,
+        0xF0, 0x9F, 0x8E, 0x81,
+    ]
     let scalars = BoundedText(utf8: scalarBytes[...])
 
     #expect(empty?.utf8ByteCount == 0)

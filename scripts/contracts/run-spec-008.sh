@@ -45,6 +45,7 @@ declared_inputs() {
             "$FIXTURE_ROOT" -type f -print
         printf '%s\n' \
             "$PROJECT_ROOT/Package.swift" \
+            "$PROJECT_ROOT/Tests/ContractFixtures/SPEC002/Instrumentation/AllocationInterposer.c" \
             "$PROJECT_ROOT/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
             "$PROJECT_ROOT/docs/specs/spec-008-rendering.md" \
             "$PROJECT_ROOT/docs/implementation-plans/spec-008-implementation-plan.md" \
@@ -253,6 +254,12 @@ printf '%s\t%s\t%s\n' \
     declaration-module \
     "${declaration_dir#"$PROJECT_ROOT/"}/modules/GiftUI.swiftmodule" \
     "$(hash_file "$declaration_dir/modules/GiftUI.swiftmodule")" >>"$images_path"
+if [[ "$profile" == macos-* ]]; then
+    printf '%s\t%s\t%s\n' \
+        declaration-runtime \
+        "${declaration_dir#"$PROJECT_ROOT/"}/runtime.txt" \
+        "$(hash_file "$declaration_dir/runtime.txt")" >>"$images_path"
+fi
 record_command "$SCRIPT_DIR/check-spec-008-harness.rb" "$report_dir"
 "$SCRIPT_DIR/check-spec-008-harness.rb" "$report_dir" >>"$log_path" 2>&1
 printf 'exit_code=0\n' >>"$metadata_path"

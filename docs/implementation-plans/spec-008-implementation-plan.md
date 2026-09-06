@@ -267,7 +267,7 @@ without performing rendering.
       identity, and source-call order. Extend the semantic declaration corpus
       for text and both modifiers without introducing public traversal
       witnesses or rendering work in `GiftUI`.
-- [ ] `T1.5` — Complete positive and negative compile fixtures for all
+- [x] `T1.5` — Complete positive and negative compile fixtures for all
       declarations, named colors, empty/96/97-byte and malformed inputs,
       embedded/trailing NUL, ASCII, degree/replacement scalars, every required
       `Int32`, modifier chaining, custom views, dynamic/static compilation,
@@ -785,15 +785,18 @@ names, and object identity; see the
 T1.5 remains the next declaration consolidation task; T3.5 is the next Render
 Core task and requires all four compiler profiles.
 
-The cross-profile compilation slice of `T1.5` is complete. One registered
+`T1.5` is complete. One registered
 checker now builds the portable declaration module and all 17 positive and
 negative fixtures with the pinned macOS dynamic, macOS static, Raspberry Pi
 ARMv6, and nRF52840 Embedded Swift configurations. The corpus includes the
 complete named-color, bounded-input, integer, text, modifier, custom-view, and
 forbidden-convenience surface; see the
 [profile compilation evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-1/declaration-profile-compilation.md).
-T1.5 remains open for its exact admitted-byte and allocation/trap/body-
-evaluation counter evidence.
+Its optimized dynamic and static host probes verify 14 admission cases
+byte-for-byte with zero mismatches, allocations, observed traps, or body
+evaluations, while package tests independently cover exact bytes and traversal
+order. `T2.1` is the next independent task; production adaptation in `T2.2`
+continues to wait for its SPEC-006 and SPEC-007 prerequisites.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

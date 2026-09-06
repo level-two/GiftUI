@@ -139,6 +139,38 @@ case "${profile}" in
         ;;
 esac
 
+if [[ "${profile}" == macos-* ]]; then
+    clang="$(xcrun --find clang)"
+    interposer="${output_root}/libGiftUIAllocationInterposer.dylib"
+    runtime_probe="${output_root}/declaration-probe"
+    runtime_output="${output_root}/runtime.txt"
+    run_command "${clang}" -target arm64-apple-macosx26.0 -isysroot "${sdk}" \
+        -O2 -dynamiclib \
+        "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/Instrumentation/AllocationInterposer.c" \
+        -install_name @rpath/libGiftUIAllocationInterposer.dylib \
+        -o "${interposer}" >/dev/null
+    run_command "${compiler}" "${fixture_flags[@]}" -I "${module_dir}" \
+        -L "${output_root}" -lGiftUI -lGiftUIAllocationInterposer \
+        -Xlinker -rpath -Xlinker "${output_root}" \
+        "${FIXTURE_ROOT}/Instrumentation/DeclarationProbe/main.swift" \
+        -o "${runtime_probe}" >/dev/null
+    record_command env "DYLD_LIBRARY_PATH=${output_root}" "${runtime_probe}"
+    env "DYLD_LIBRARY_PATH=${output_root}" "${runtime_probe}" >"${runtime_output}"
+    for expected in \
+        'case_count=14' \
+        'mismatch_count=0' \
+        'allocation_count=0' \
+        'trap_count=0' \
+        'body_evaluation_count=0' \
+        'primitive_visit_count=2' \
+        'modifier_visit_count=3'; do
+        grep -Fxq "${expected}" "${runtime_output}" || {
+            cat "${runtime_output}" >&2
+            fail "declaration runtime probe lacked: ${expected}"
+        }
+    done
+fi
+
 fixture_count=0
 for registry in "${REGISTRIES[@]}"; do
     while IFS=$'\t' read -r id expectation entry patterns; do
