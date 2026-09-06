@@ -84,6 +84,7 @@ swift_sources = Dir.glob(File.join(ROOT, "Sources/GiftUI/**/*.swift")).sort
 expected_sources = [FOUNDATION, File.join(ROOT, "Sources/GiftUI/DeclarativeView.swift")].sort
 expected_sources << File.join(ROOT, "Sources/GiftUI/ObservableState.swift")
 expected_sources << File.join(ROOT, "Sources/GiftUI/Color.swift")
+expected_sources << File.join(ROOT, "Sources/GiftUI/BoundedText.swift")
 expected_sources.sort!
 fail!("GiftUI owned source inventory is not exact") unless swift_sources == expected_sources
 

@@ -1,0 +1,1 @@
+cannot assign to property: 'utf8ByteCount' is a get-only property

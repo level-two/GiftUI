@@ -1,0 +1,5 @@
+# id	expectation	entry_point	diagnostic_patterns
+bounded-text-public-surface	pass	Fixtures/Positive/bounded-text-public-surface/main.swift	-
+bounded-text-string-input	fail	Fixtures/Negative/bounded-text-string-input/main.swift	Fixtures/Negative/bounded-text-string-input/expected-diagnostic-patterns.txt
+bounded-text-byte-count-mutation	fail	Fixtures/Negative/bounded-text-byte-count-mutation/main.swift	Fixtures/Negative/bounded-text-byte-count-mutation/expected-diagnostic-patterns.txt
+bounded-text-storage-access	fail	Fixtures/Negative/bounded-text-storage-access/main.swift	Fixtures/Negative/bounded-text-storage-access/expected-diagnostic-patterns.txt

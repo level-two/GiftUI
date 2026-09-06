@@ -251,7 +251,7 @@ without performing rendering.
       proving exact size and field values; negative fixtures prove there is no
       `clear`, alpha channel/initializer, lower-layer duplicate, or backend
       reinterpretation hook.
-- [ ] `T1.2` — Implement inline `BoundedText` with maximum 96 UTF-8 bytes,
+- [x] `T1.2` — Implement inline `BoundedText` with maximum 96 UTF-8 bytes,
       exact `StaticString` and generic byte-collection admission, trailing C
       NUL treatment, UTF-8 validation, locale-independent complete `Int32`
       formatting, and one-call nonescaping `withUTF8`. Prove the 100-byte
@@ -684,7 +684,19 @@ field values, required conformances, and the absence of `clear`, alpha API, or
 backend reinterpretation hooks. A source audit rejects a second maintained
 `Color` declaration; see the
 [Color evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-1/color.md).
-Cross-profile compilation remains assigned to T1.5/T3.5. T1.2 is the next
+Cross-profile compilation remains assigned to T1.5/T3.5.
+
+`T1.2` is complete: `GiftUI.BoundedText` admits at most 96 well-formed UTF-8
+bytes into platform-neutral inline fixed-width storage, excludes one trailing
+C NUL from `StaticString`, formats every `Int32` directly as locale-independent
+ASCII, and provides the exact one-call borrowed byte surface. Focused tests
+prove the 100-byte stride ceiling, admission and malformed-sequence boundaries,
+integer extremes, equality, and throwing borrow behavior. Registered positive
+and negative client fixtures plus a source audit exclude a portable unbounded
+`String` initializer, mutable/public storage, and reference or dynamic-array
+storage; see the
+[BoundedText evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-1/bounded-text.md).
+Cross-profile compilation remains assigned to T1.5/T3.5. T1.3 is the next
 portable declaration task; T3.1 may proceed once the Render Core target rows
 land atomically under T0.2.
 
