@@ -48,9 +48,12 @@ target_milestone: MVP
 # SPEC-008: Normalized Rendering Contract
 
 > **Approval status:** Approved by explicit maintainer authorization. The
-> governing Proposal and RFCs, accepted architectural decisions, and approved
-> Foundation, Failure, Text Resource, Declarative, and Layout contracts are
-> authoritative prerequisites.
+> maintainer explicitly approved the 2026-09-06 coordinated SPEC-008/SPEC-009
+> amendment that places the shared render-production error value in Render
+> Core while leaving all production behavior in Render Lowering. The governing
+> Proposal and RFCs, accepted architectural decisions, and approved Foundation,
+> Failure, Text Resource, Declarative, and Layout contracts are authoritative
+> prerequisites.
 
 ## Summary
 
@@ -265,15 +268,19 @@ layout-and-semantic-lowering producer, and `GiftUIRenderCore` is the consumer
 that owns normalized operation meaning and transport.
 
 `GiftUIRenderCore` owns the normalized operation values, operation headers,
-ordered `RenderOperationSink` transport, and canonical recording sink. It MUST
-depend only on `GiftUI` and `GiftUITextResources`. It MUST NOT import
+ordered `RenderOperationSink` transport, canonical recording sink, and the
+bounded `RenderProductionError` value that crosses into Execution. Owning this
+value does not give Render Core validation, preflight, production, failure-
+precedence, or cleanup behavior. It MUST depend only on `GiftUI` and
+`GiftUITextResources`. It MUST NOT import
 `GiftUISemanticCore`, `GiftUILayout`, `GiftUIRenderLowering`, a runtime-profile
 implementation, execution, failure, capability, backend, raster provider,
 concrete resource, platform, driver, OS/RTOS, HAL, or hardware module.
 
 `GiftUIRenderLowering` owns style resolution, semantic-to-resolved-layout
 correlation, render validation and preflight, immutable render limits,
-caller-owned production workspace, and `RenderProductionResult`. It MUST
+caller-owned production workspace, `RenderProductionResult`, and every rule
+that detects, orders, contains, and returns a `RenderProductionError`. It MUST
 depend on `GiftUI`, `GiftUISemanticCore`, `GiftUILayout`,
 `GiftUITextResources`, and `GiftUIRenderCore`. It MUST NOT import a
 runtime-profile implementation, execution, backend, raster provider,
@@ -303,9 +310,10 @@ GiftUI ----------------------------+--------------------+
 ```
 
 The arrows into `GiftUIRenderLowering` carry complete successful results and
-portable paint intent. The edge into `GiftUIRenderCore` carries only normalized
-operation meaning and transport; no semantic declaration, container, state,
-action/hit map, or layout algorithm crosses it.
+portable paint intent. The edge into `GiftUIRenderCore` carries normalized
+operation meaning, transport, and the bounded error vocabulary shared with
+Execution; no semantic declaration, container, state, action/hit map, layout
+algorithm, error-detection behavior, or production policy crosses it.
 
 Backends and raster providers consume `GiftUIRenderCore` SPI and MUST NOT
 depend on `GiftUIRenderLowering`, semantic core, or layout to reinterpret
@@ -314,8 +322,8 @@ content. An implementation MUST NOT create a parallel `Color`,
 
 ## Types / APIs
 
-`RenderLimits`, `RenderProductionError`, and `RenderProductionResult` are
-package SPI owned by `GiftUIRenderLowering`. `RenderPlanHeader`,
+`RenderLimits` and `RenderProductionResult` are package SPI owned by
+`GiftUIRenderLowering`. `RenderProductionError`, `RenderPlanHeader`,
 `PositionedGlyph`, both operation payloads, and `RenderOperationSink` are
 package SPI owned by `GiftUIRenderCore`.
 
@@ -704,6 +712,10 @@ always checked first as described under State / Lifecycle. For all other
 simultaneously visible conditions, the producer completes checks in the listed
 order and stops at the first applicable error.
 
+`GiftUIRenderCore` owns only the closed `RenderProductionError` value.
+`GiftUIRenderLowering` remains the sole owner of detecting and selecting that
+value and of all mandatory failure effects.
+
 The first runtime/owner adapter above `GiftUIRenderLowering` maps errors to
 SPEC-003 facts:
 
@@ -827,6 +839,8 @@ client, semantic, layout, or backend contracts.
   `GiftUITextResources`; prove `GiftUIRenderLowering` is the only rendering
   contract target that imports both semantic and layout contracts; and reject
   semantic/layout/lowering authority in backends or concrete integrations.
+  They also prove that the shared error declaration in Render Core introduces
+  no import of Lowering and no production behavior below Lowering.
 - `Tests/ContractFixtures/SPEC008/signal-analyzer.yaml` MUST enumerate every
   required analyzer label, bounded value, status and error text, foreground,
   background, and maximum hierarchy variant. It declares the exact fixture

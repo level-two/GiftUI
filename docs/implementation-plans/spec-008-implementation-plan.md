@@ -326,7 +326,7 @@ module is imported.
 fill and positioned-glyph meaning in painter order, and the canonical
 recording sink enforces atomic current transcripts without pixel behavior.
 
-- [ ] `T3.1` — Implement `RenderSinkCapacity`, `RenderPlanHeader`,
+- [ ] `T3.1` — Implement `RenderProductionError`, `RenderSinkCapacity`, `RenderPlanHeader`,
       `PositionedGlyph`, `FillRectOperation`, and
       `PositionedGlyphOperationHeader` with exact fields, access, initializers,
       conformances, resource identities, and value-size ceilings. Add source/
@@ -361,7 +361,7 @@ are testable. Production adapters may follow once SPEC-006 and SPEC-007 land.
 two-pass preflight and streaming with caller-owned finite workspace,
 deterministic failure precedence, and atomic sink behavior.
 
-- [ ] `T4.1` — Implement `RenderLimits`, `RenderProductionError`,
+- [ ] `T4.1` — Implement `RenderLimits`,
       `RenderProductionResult`, and `RenderProductionWorkspace` with exact
       access, cases/raw values, nonzero limit validation, capacity reporting,
       acquisition/reset semantics, and required value layouts. Provide bounded
@@ -667,6 +667,14 @@ cross-build, inspection, simulator, and separately authorized connected-
 hardware evidence without claiming deployment or flashing. `T0.3` and `T0.4`
 may proceed independently; package edits in `T0.2` remain coupled to their
 first compiling sources.
+
+On 2026-09-06 the maintainer explicitly approved the coordinated SPEC-008/
+SPEC-009 correction assigning the closed `RenderProductionError` value to
+Render Core while preserving all detection, precedence, cleanup, and
+production behavior in Render Lowering. The module graph and every existing
+error case, raw value, mapping, layout bound, and acceptance criterion remain
+unchanged. T3.1 now lands the value with Render Core; T4.1 retains limits,
+result, workspace, and behavior.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

@@ -49,7 +49,9 @@ target_milestone: MVP
 
 > **Approval status:** Explicitly reapproved by the maintainer after the
 > 2026-08-28 bounded generic focused-owner failure-carrier amendment required
-> by SPEC-013. The amended contract is authoritative for implementation.
+> by SPEC-013 and the 2026-09-06 coordinated SPEC-008/SPEC-009 render-error
+> ownership correction. The amended contract is authoritative for
+> implementation.
 
 ## Summary
 
@@ -143,7 +145,10 @@ All declarations below are package SPI unless explicitly stated otherwise.
 - [SPEC-007](spec-007-layout.md) owns resolved occurrence bounds, clips, and
   layout atomicity.
 - [SPEC-008](spec-008-rendering.md) owns atomic normalized render production
-  and the one-attempt operation-sink lifetime.
+  and the one-attempt operation-sink lifetime. Its dependency-leaf
+  `GiftUIRenderCore` owns the closed `RenderProductionError` value consumed by
+  this contract, while `GiftUIRenderLowering` alone owns detection and
+  production behavior.
 
 SPEC-002, SPEC-003, SPEC-006, SPEC-007, and SPEC-008 are approved. This
 Specification MUST NOT redefine their types, local errors, atomicity, or
@@ -237,6 +242,11 @@ backend, raster provider, platform, driver, OS/RTOS, HAL, or hardware target.
 `GiftUIFailureExecution` imports `GiftUIFailureCore` and `GiftUIExecution` and
 owns mapping and correlation of execution-local results to SPEC-003 facts.
 `GiftUIExecution` MUST NOT import back upward into either failure module.
+
+The `GiftUIRenderCore` dependency supplies `RenderOperationSink` and the
+bounded `RenderProductionError` value used by `RunCycleFailure`. It supplies no
+lowering behavior. `GiftUIExecution` MUST NOT import `GiftUIRenderLowering` or
+re-detect, translate, or duplicate a render-production error.
 
 Dynamic and static runtimes import `GiftUIExecution` and implement its
 profile-neutral protocols using their own bounded storage. Backends import
