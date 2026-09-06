@@ -257,7 +257,7 @@ without performing rendering.
       formatting, and one-call nonescaping `withUTF8`. Prove the 100-byte
       ceiling and exclude reference/string/dynamic-collection storage whose
       validity contributes to the value.
-- [ ] `T1.3` — Implement `Text` as a primitive for admitted `BoundedText` and
+- [x] `T1.3` — Implement `Text` as a primitive for admitted `BoundedText` and
       `StaticString`. Preserve a closed invalid-declaration marker for
       oversized or malformed literals without trap, repair, truncation, or
       correctness allocation, and expose no portable unbounded `String`
@@ -696,7 +696,19 @@ and negative client fixtures plus a source audit exclude a portable unbounded
 `String` initializer, mutable/public storage, and reference or dynamic-array
 storage; see the
 [BoundedText evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-1/bounded-text.md).
-Cross-profile compilation remains assigned to T1.5/T3.5. T1.3 is the next
+Cross-profile compilation remains assigned to T1.5/T3.5.
+
+`T1.3` is complete: `GiftUI.Text` stores a package-visible typed SPEC-006
+primitive payload behind the exact two public initializers. Admitted literals
+and `BoundedText` preserve identical bytes; failed literal admission stores
+only the closed invalid-declaration case without trapping or exposing it to a
+portable client. Focused tests prove valid byte preservation, oversized
+fail-closed storage, and one primitive visit without body evaluation. Compile
+fixtures and the source audit reject an unbounded `String` initializer, client
+payload access, alternate ownership, or reference storage; see the
+[Text evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-1/text.md).
+The SPEC-007 pre-measurement rejection path remains assigned to T2.2/T6.2.
+Cross-profile compilation remains assigned to T1.5/T3.5. T1.4 is the next
 portable declaration task; T3.1 may proceed once the Render Core target rows
 land atomically under T0.2.
 

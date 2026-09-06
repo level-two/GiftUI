@@ -42,6 +42,7 @@ end
 allowed_source_paths = [
   "Sources/GiftUI/DeclarativeView.swift",
   "Sources/GiftUI/ObservableState.swift",
+  "Sources/GiftUI/Text.swift",
   "Sources/GiftUIMacros/ObservableStateHostMacro.swift",
   "Sources/GiftUISemanticCore/GiftUISemanticCore.swift"
 ]
@@ -73,7 +74,7 @@ if failures.empty?
 end
 
 if failures.empty?
-  puts "SPEC-006 traversal surface check passed, including the SPEC-010-owned state-host category"
+  puts "SPEC-006 traversal surface check passed, including registered SPEC-008 and SPEC-010 declarations"
   exit 0
 end
 

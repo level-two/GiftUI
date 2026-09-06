@@ -148,7 +148,7 @@ private struct TestActionPayload: _GiftUISemanticActionPayload {
 
 private struct TestModifierPayload: _GiftUISemanticModifierPayload {}
 
-private struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
+struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
     let evaluateBody: Bool
     var customViewVisits = 0
     var statefulCustomViewVisits = 0

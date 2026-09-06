@@ -1,0 +1,4 @@
+# id	expectation	entry_point	diagnostic_patterns
+text-public-surface	pass	Fixtures/Positive/text-public-surface/main.swift	-
+text-string-input	fail	Fixtures/Negative/text-string-input/main.swift	Fixtures/Negative/text-string-input/expected-diagnostic-patterns.txt
+text-payload-access	fail	Fixtures/Negative/text-payload-access/main.swift	Fixtures/Negative/text-payload-access/expected-diagnostic-patterns.txt
