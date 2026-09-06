@@ -341,7 +341,7 @@ recording sink enforces atomic current transcripts without pixel behavior.
       exact attempted-call counters for failure tests, discard clearing only
       the attempted transcript, and no retained input/resource borrow or
       string/pointer serialization.
-- [ ] `T3.4` — Add field-by-field recording verification that successful
+- [x] `T3.4` — Add field-by-field recording verification that successful
       transcripts start with one begin, end with one finish, match header
       operation/glyph counts, keep each glyph group complete and ordered, and
       preserve nominal identities and numeric values without using memory
@@ -773,6 +773,17 @@ dynamic storage, or upward coupling in the sink; see the
 [recording evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-3/recording-sink.md).
 T1.5 remains the next declaration consolidation task; T3.4 is the next Render
 Core verification task.
+
+`T3.4` is complete: an independent typed-event verifier requires one leading
+begin, one trailing finish, exact header operation/glyph totals, and complete
+ordered non-empty glyph groups. Tests compare every header, fill, group,
+resource/instance, glyph, baseline, clip, and RGB field directly and reject
+count disagreement, incomplete groups, out-of-group glyphs, and nested begin
+events. The audit excludes representation bytes, pointers, hashes, reflected
+names, and object identity; see the
+[verification evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-3/recording-verification.md).
+T1.5 remains the next declaration consolidation task; T3.5 is the next Render
+Core task and requires all four compiler profiles.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
