@@ -141,6 +141,17 @@ Specification review. The implementation must not add a retained frame,
 deferred input, historical hit map, replay queue, scheduler API, unbounded
 identity, fallback action/model carrier, or profile-private outcome.
 
+**Implementation finding, 2026-09-06:** SPEC-009's exact
+`RunCycleFailure.renderProduction(RenderProductionError)` declaration is not
+currently implementable through its permitted `GiftUIExecution -> GiftUI +
+GiftUIRenderCore` dependency. Approved SPEC-008 assigns
+`RenderProductionError` to `GiftUIRenderLowering`, and forbids Render Core from
+importing that owner. This is an upstream contract contradiction, not a local
+implementation choice. `T1.5` and any aggregate declaration that embeds that
+case are paused for renewed Specification review; dependency-independent
+Milestone 0 work may continue. No alias, duplicate error, upward import, or
+type-erasing substitute is authorized.
+
 ## Task Dependencies and Affected Surfaces
 
 Milestone numbers define the default order. A task may start only after every
@@ -624,6 +635,13 @@ criterion is ready for conformance review.
 
 ### Upstream blockers
 
+- SPEC-009's normative focused-failure sum stores SPEC-008's
+  `RenderProductionError`, but the two approved module contracts place that
+  error in `GiftUIRenderLowering` while allowing `GiftUIExecution` to import
+  only `GiftUIRenderCore`. `T1.5` is blocked until renewed Specification review
+  supplies one coherent owner/dependency contract. Implementation must not
+  resolve this by moving or duplicating the type, adding the forbidden
+  Lowering import, or weakening the exact failure carrier.
 - `GiftUIExecution` depends on `GiftUIRenderCore`, which is owned by approved
   SPEC-008 and its ready plan but has no target yet. Declarations and tests
   that reference `RenderOperationSink` or `RenderProductionError` wait for
@@ -686,6 +704,13 @@ initial evidence while permitting the canonical corpus to remain empty until
 its owning tasks populate it. `T0.3` and `T0.4` may now proceed independently;
 `T0.2` remains coupled to the first compiling `GiftUIExecution` target and its
 SPEC-008-owned prerequisites.
+
+The same 2026-09-06 dependency audit found that SPEC-008 owns
+`RenderProductionError` in `GiftUIRenderLowering`, while SPEC-009 both embeds
+that value in `RunCycleFailure` and prohibits `GiftUIExecution` from importing
+Lowering. The affected `T1.5` work is paused for Specification review. This
+blocker does not invalidate completed `T0.1` evidence or prevent independent
+`T0.3` and `T0.4` work.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
