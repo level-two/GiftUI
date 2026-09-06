@@ -1,0 +1,6 @@
+# id	expectation	entry_point	diagnostic_patterns
+color-public-surface	pass	Fixtures/Positive/color-public-surface/main.swift	-
+color-clear-access	fail	Fixtures/Negative/color-clear-access/main.swift	Fixtures/Negative/color-clear-access/expected-diagnostic-patterns.txt
+color-alpha-initializer	fail	Fixtures/Negative/color-alpha-initializer/main.swift	Fixtures/Negative/color-alpha-initializer/expected-diagnostic-patterns.txt
+color-alpha-member	fail	Fixtures/Negative/color-alpha-member/main.swift	Fixtures/Negative/color-alpha-member/expected-diagnostic-patterns.txt
+color-backend-hook	fail	Fixtures/Negative/color-backend-hook/main.swift	Fixtures/Negative/color-backend-hook/expected-diagnostic-patterns.txt

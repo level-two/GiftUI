@@ -246,7 +246,7 @@ public declarations into semantic expansion.
 declarations remain fail-closed; and style declarations preserve source order
 without performing rendering.
 
-- [ ] `T1.1` — Implement three-byte `Color` with exact public initializer,
+- [x] `T1.1` — Implement three-byte `Color` with exact public initializer,
       conformances, and six named RGB values. Add compile and layout probes
       proving exact size and field values; negative fixtures prove there is no
       `clear`, alpha channel/initializer, lower-layer duplicate, or backend
@@ -675,6 +675,18 @@ production behavior in Render Lowering. The module graph and every existing
 error case, raw value, mapping, layout bound, and acceptance criterion remain
 unchanged. T3.1 now lands the value with Render Core; T4.1 retains limits,
 result, workspace, and behavior.
+
+`T1.1` is complete: `GiftUI.Color` stores exactly three public `UInt8`
+channels, provides the exact initializer and six named opaque RGB values, and
+conforms to `Equatable`, `Hashable`, and `Sendable`. Focused layout/value tests
+and the registered public-client fixture set prove size, stride, alignment,
+field values, required conformances, and the absence of `clear`, alpha API, or
+backend reinterpretation hooks. A source audit rejects a second maintained
+`Color` declaration; see the
+[Color evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-1/color.md).
+Cross-profile compilation remains assigned to T1.5/T3.5. T1.2 is the next
+portable declaration task; T3.1 may proceed once the Render Core target rows
+land atomically under T0.2.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
