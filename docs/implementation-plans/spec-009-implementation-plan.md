@@ -787,12 +787,26 @@ summaries, and generic cycle results now have complete focused evidence.
 Tests prove every raw value and width, unknown-bit normalization, exact
 `Equatable` and `Sendable` specialization, every failure carrier, intrinsic
 legal and rejected summary combinations, direct owner-value preservation, and
-the at-most-4/8/40/72-byte owner, failure, summary, and result ceilings. The registered
-source audit excludes existential or diagnostic carriers, owner-value
-inspection, prohibited imports, and profile coupling; see the
+the at-most-4/8/40/72-byte owner, failure, summary, and result ceilings. The
+registered source audit excludes existential or diagnostic carriers,
+owner-value inspection, prohibited imports, and profile coupling; see the
 [run-cycle value evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-1/run-cycle-values.md).
 Milestone 1's task surface is implemented. Consolidated complete-surface and
 cross-profile evidence is the next boundary before T2.1.
+
+Milestone 1 is complete: the registered value-profile check compiles the
+complete T1.1-T1.5 module surface and extracts 31 optimized target-IR layouts
+under macOS dynamic, macOS static, Raspberry Pi ARMv6, and nRF52840 Embedded
+Swift. The four normalized reports are byte-for-byte equal and satisfy every
+exact width and ceiling, including the 72-byte specialized cycle-result bound;
+see the
+[consolidated execution value evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-1/execution-value-surface.md).
+This is compilation and cross-build inspection, not simulator or connected-
+hardware execution. The focused test row now names the direct `GiftUI` import
+introduced by its first admission-contract source. T0.2 correctly remains
+open: neither `GiftUIFailureExecution` nor a fixture-only adapter has its first
+compiling source, so no placeholder package row was added. T2.1 is the next
+dependency-complete task.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

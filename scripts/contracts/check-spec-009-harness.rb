@@ -165,7 +165,7 @@ end
 %w[
   spec profile repository_revision repository_dirty input_set_sha256 run_id
   invocation execution_target fixture_corpus target optimization compiler_path
-  compiler_sha256 evidence_complete remote_access deployment service_restart
+  compiler_sha256 value_surface evidence_complete remote_access deployment service_restart
   simulator_execution connected_target_execution flashing
 ].each do |key|
   fail_check("metadata lacks #{key}") if metadata.fetch(key, "").empty?
@@ -174,6 +174,7 @@ fail_check("wrong report spec") unless metadata["spec"] == "SPEC-009"
 profiles = %w[macos-dynamic macos-static raspberry-pi-armv6 nrf52840-embedded]
 fail_check("unknown report profile") unless profiles.include?(metadata["profile"])
 fail_check("execution target must be present") unless metadata["execution_target"] == "present"
+fail_check("execution value surface must be complete") unless metadata["value_surface"] == "complete"
 fail_check("fixture corpus must remain missing") unless metadata["fixture_corpus"] == "missing"
 fail_check("incomplete report claimed completeness") unless metadata["evidence_complete"] == "false"
 %w[

@@ -62,6 +62,8 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-009-wake-values.rb" \
             "$SCRIPT_DIR/check-spec-009-migration.rb" \
             "$SCRIPT_DIR/check-spec-009-run-cycle-values.rb" \
+            "$SCRIPT_DIR/check-spec-009-value-layouts.rb" \
+            "$SCRIPT_DIR/check-spec-009-value-profiles.sh" \
             "$SCRIPT_DIR/report-input-identity.rb" \
             "$SCRIPT_DIR/publish-contract-report.rb" \
             "$SCRIPT_DIR/verify-contract-report.rb" \
@@ -108,7 +110,8 @@ printf '# label\tpath\tsha256\n' >"$images_path"
     printf 'repository_revision=%s\nrepository_dirty=%s\n' "$revision" "$dirty"
     printf 'input_set_sha256=%s\nrun_id=%s\n' "$input_set_sha256" "$run_id"
     printf 'invocation=scripts/contracts/run-spec-009.sh --profile %s\n' "$profile"
-    printf 'execution_target=present\nfixture_corpus=missing\nevidence_complete=false\n'
+    printf 'execution_target=present\nvalue_surface=complete\n'
+    printf 'fixture_corpus=missing\nevidence_complete=false\n'
     printf 'remote_access=false\ndeployment=false\nservice_restart=false\n'
     printf 'simulator_execution=false\nconnected_target_execution=false\nflashing=false\n'
 } >"$metadata_path"
@@ -208,7 +211,7 @@ record_nrf52840_identity() {
     printf 'fixture-schema\tcomplete\tSPEC-009 frozen schema validated\n'
     printf 'execution-target\tcomplete\tGiftUIExecution exists with its exact approved dependency edge\n'
     printf 'fixture-corpus\tmissing\tall six canonical case sequences are empty\n'
-    printf 'value-layouts\tmissing\tT1.1 host layouts pass; the complete value family is not implemented\n'
+    printf 'value-layouts\tcomplete\tT1.1 through T1.5 compile and pass 31 target-IR layout checks\n'
     printf 'allocations\tmissing\texecution paths are not implemented\n'
     printf 'dependency-checks\tcomplete\tGiftUIExecution target graph rows are active and acyclic\n'
     printf 'target-inspection\tblocked\tno execution target image exists\n'
@@ -234,6 +237,19 @@ case "$profile" in
     raspberry-pi-armv6) record_raspberry_pi_identity ;;
     nrf52840-embedded) record_nrf52840_identity ;;
 esac
+value_surface_dir="$report_dir/value-surface"
+record_command "$SCRIPT_DIR/check-spec-009-value-profiles.sh" \
+    --profile "$profile" --output "$value_surface_dir"
+"$SCRIPT_DIR/check-spec-009-value-profiles.sh" \
+    --profile "$profile" --output "$value_surface_dir" >>"$log_path" 2>&1
+printf '%s\t%s\t%s\n' \
+    execution-value-layouts \
+    "${value_surface_dir#"$PROJECT_ROOT/"}/execution-value-layouts.tsv" \
+    "$(hash_file "$value_surface_dir/execution-value-layouts.tsv")" >>"$images_path"
+printf '%s\t%s\t%s\n' \
+    execution-value-module \
+    "${value_surface_dir#"$PROJECT_ROOT/"}/modules/GiftUIExecution.swiftmodule" \
+    "$(hash_file "$value_surface_dir/modules/GiftUIExecution.swiftmodule")" >>"$images_path"
 record_command "$SCRIPT_DIR/check-spec-009-harness.rb" "$report_dir"
 "$SCRIPT_DIR/check-spec-009-harness.rb" "$report_dir" >>"$log_path" 2>&1
 printf 'exit_code=0\n' >>"$metadata_path"
