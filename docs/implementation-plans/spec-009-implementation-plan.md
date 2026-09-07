@@ -302,7 +302,7 @@ or host.
       snapshot. Reject backward, repeated, suspended, invalid, and nested
       entry; preserve the active cycle for reentrancy and `cycle == nil` for
       idle cycle-ID exhaustion.
-- [ ] `T2.4` — Exhaustively generate accepted and rejected
+- [x] `T2.4` — Exhaustively generate accepted and rejected
       `AdmissionSummary` and `RunCycleSummary` combinations. Check intrinsic
       invariants, limit equality/overflow, semantic/presentation consistency,
       operational exclusions, and the complete terminal-state matrix against
@@ -837,6 +837,15 @@ preserves the active cycle without allocation, idle identity exhaustion keeps
 The source audit excludes suspension and prohibited owner coupling; see the
 [phase machine evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-2/phase-machine.md).
 T2.4 is next.
+
+`T2.4` is complete: independent finite predicates match 768 exhaustive
+admission-summary combinations and 10,368 exhaustive cycle-summary
+combinations. A fixture-owned history oracle accepts all thirteen terminal
+matrix rows and rejects contradictions between entry state, reservations, and
+an otherwise intrinsically valid summary. Historical representation remains
+outside package SPI until the recording coordinator owns it; see the
+[summary matrix evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-2/summary-validation-matrix.md).
+T2.5 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
