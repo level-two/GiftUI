@@ -259,7 +259,7 @@ with exact local values, protocols, module direction, and no profile storage.
       to-limit behavior, `Equatable`/`Sendable`, owned layouts, and every exact
       operation-to-success-result row. Reject `nil`, Boolean, trap, and
       profile-private result substitutes at owner boundaries.
-- [ ] `T2.2` — Implement the exact reconciler, mutation-owner, and target-view
+- [x] `T2.2` — Implement the exact reconciler, mutation-owner, and target-view
       package protocols plus every logical storage field fixed by SPEC-010,
       without selecting concrete runtime packing. Add fixture-only bounded
       structural identity and prove live/publishable target views expose no
@@ -675,3 +675,16 @@ prohibited imports. See the
 [owner value evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-2/owner-values.md).
 The owner-target slice of T0.2 is complete; narrowly named adapters still wait
 for their first compiling sources. T2.2 is next.
+
+`T2.2` is complete: the exact reconciler, mutation-owner, and borrowed
+target-view protocols preserve typed structural identities, declaration
+ordinals, generic models, attachments, and opaque target generations without
+selecting runtime packing. Fixture-only bounded records account independently
+for every live-location, registration, candidate-association, replacement-
+staging, and runtime-bookkeeping field; replacement consumes one staging
+record rather than permanent duplicate registration capacity. The source
+audit proves the target view exposes no model, attachment, sink, handler, or
+mutation. See the
+[owner protocol evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-2/owner-protocols.md).
+T2.3 is independent of the decorator path; T2.4's design-note decision is the
+next Milestone 2 consolidation task.
