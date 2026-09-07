@@ -272,7 +272,7 @@ and value-layout bound, without importing a coordinator owner.
       action, and their exact validation. Prove the captured value stores only
       the unmodified SPEC-006 identity-generation pair and the producer seam
       has no existential payload or profile-private entry point.
-- [ ] `T1.5` — Implement local errors, semantic/frame/intent/operational
+- [x] `T1.5` — Implement local errors, semantic/frame/intent/operational
       values, masked operational event set, generic `RunCycleFailure`,
       `RunCycleSummary`, and `RunCycleResult`. Use a finite fixture
       `OwnerFailure` to prove every specialization, exact `Equatable` and
@@ -780,6 +780,19 @@ that pair; see the
 The opportunity seam's exact return type requires the transitive T1.5 value
 declarations in this buildable increment; their invariant, specialization,
 and layout evidence remains T1.5 work. T1.5 is next.
+
+`T1.5` is complete: exact execution errors, semantic and intent dispositions,
+masked operational events, generic focused-owner failures, validated cycle
+summaries, and generic cycle results now have complete focused evidence.
+Tests prove every raw value and width, unknown-bit normalization, exact
+`Equatable` and `Sendable` specialization, every failure carrier, intrinsic
+legal and rejected summary combinations, direct owner-value preservation, and
+the at-most-4/8/40/72-byte owner, failure, summary, and result ceilings. The registered
+source audit excludes existential or diagnostic carriers, owner-value
+inspection, prohibited imports, and profile coupling; see the
+[run-cycle value evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-1/run-cycle-values.md).
+Milestone 1's task surface is implemented. Consolidated complete-surface and
+cross-profile evidence is the next boundary before T2.1.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
