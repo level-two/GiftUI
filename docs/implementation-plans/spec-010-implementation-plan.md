@@ -295,7 +295,7 @@ locations atomically and binds every wrapper before its body.
       exact success results, and no ordinary failure path from publication
       after successful reservation; classify invalid entry and impossible
       publication failure exactly.
-- [ ] `T3.2` — Implement the state-aware SPEC-006 visitor decorator. Copy the
+- [x] `T3.2` — Implement the state-aware SPEC-006 visitor decorator. Copy the
       transient declaration, visit direct wrappers in generated lexical order,
       bind each successfully, evaluate the body exactly once only after all
       bindings succeed, and retain no declaration/binding after the call.
@@ -715,3 +715,15 @@ classification, cleanup, and later reuse without selecting production model
 packing. See the
 [candidate lifecycle evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-3/candidate-lifecycle.md).
 T3.2 is next.
+
+`T3.2` is complete: `ObservableStateBindingDecorator` copies one borrowed
+declaration, drives its generated lexical wrapper witness through one typed
+reconciler, and evaluates the body once only after complete binding. Focused
+tests prove both legal encounter successes, exact ordinal/identity passage,
+initializer preservation, body suppression at early and late failure, exact
+owner-error survival, and invariant rejection of an impossible success. The
+registered audit excludes declaration/binding retention, handwritten witness,
+reflection, dynamic storage, suspension, and prohibited imports. See the
+[binding decorator evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-3/binding-decorator.md).
+T3.3 is next; the decorator seam itself now unblocks SPEC-006 T5.2–T5.3
+composition.
