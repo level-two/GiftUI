@@ -80,6 +80,15 @@ targets:
       - GiftUI
       - GiftUIRenderCore
       - GiftUITextResources
+  GiftUIExecution:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUIRenderCore
+  GiftUIExecutionTests:
+    type: test
+    dependencies:
+      - GiftUIExecution
   GiftUIReferenceTextResources:
     type: regular
     dependencies:

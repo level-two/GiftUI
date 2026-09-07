@@ -120,10 +120,7 @@ expected_placeholders = placeholder_output.each_line.each_with_object(Hash.new(0
 
   result[relative] += 1
 end
-recorded_placeholders = rows.each_with_object({}) do |(family, baseline, path, count, _disposition, _owner), result|
-  result[path] = count.to_i if family == "execution-placeholder" && baseline == "current"
-end
-fail_check("execution placeholder inventory differs") unless recorded_placeholders == expected_placeholders
+fail_check("obsolete execution placeholder remains: #{expected_placeholders}") unless expected_placeholders.empty?
 
 maintained_swift = Dir[ROOT.join("Sources/**/*.swift"), ROOT.join("Tests/**/*Tests/*.swift")].sort
 legacy_execution = /\b(?:GiftUIApplication|DynamicRuntime|DisplayList|InteractionSnapshot|HitTestMap|ActionID|ButtonAction|RGB565RetainedRenderer)\b|\bpreviousRootFrame\b|\bidentifiedActionHandler\b/

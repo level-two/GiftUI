@@ -23,7 +23,7 @@ forbidden_capability_imports:
   - GiftUIFailureCore
   - GiftUIFailureDiagnostics
   - GiftUIFailureExecution
-  - GiftUIExecutionContract
+  - GiftUIExecution
   - GiftUISemantic
   - GiftUILayout
   - GiftUIRender

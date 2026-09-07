@@ -48,11 +48,3 @@ stale-hit-map-route	PoC	Tests/GiftUIPlatformLinuxTests/GiftUIPlatformLinuxTests.
 stale-hit-map-route	PoC	Tests/GiftUIRuntimeDynamicTests/DynamicGraphTests.swift	3	evidence-only	SPEC-011-conformance-fixtures
 backend-platform-action-path	PoC	Sources/GiftUIPlatformLinux/GiftUILinuxApplication.swift	3	retire	SPEC-009-admission/SPEC-011-dispatch
 backend-platform-action-path	PoC	Sources/GiftUISimulatorMac/SimulatorApplication.swift	1	retire	SPEC-009-admission/SPEC-011-dispatch
-execution-placeholder	current	Tests/ContractFixtures/SPEC003/target-boundaries.yaml	1	replace-through-owner	SPEC-009-T0.2
-execution-placeholder	current	Tests/ContractFixtures/SPEC004/Fixtures/Negative/forbidden-execution-contract-import/expected-diagnostic-patterns.txt	1	replace-through-owner	SPEC-009-T0.2
-execution-placeholder	current	Tests/ContractFixtures/SPEC004/Fixtures/Negative/forbidden-execution-contract-import/main.swift	1	replace-through-owner	SPEC-009-T0.2
-execution-placeholder	current	Tests/ContractFixtures/SPEC004/target-boundaries.yaml	1	replace-through-owner	SPEC-009-T0.2
-execution-placeholder	current	Tests/ContractFixtures/SPEC005/target-boundaries.yaml	1	replace-through-owner	SPEC-009-T0.2
-execution-placeholder	current	scripts/contracts/check-spec-002-boundaries.rb	1	replace-through-owner	SPEC-009-T0.2
-execution-placeholder	current	scripts/contracts/check-spec-003-core-boundary.rb	1	replace-through-owner	SPEC-009-T0.2
-execution-placeholder	current	scripts/contracts/check-spec-003-dependencies.rb	1	replace-through-owner	SPEC-009-T0.2

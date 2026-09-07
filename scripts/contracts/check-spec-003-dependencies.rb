@@ -41,7 +41,7 @@ end
 reserved.each do |name, declaration|
   fail_check("reserved target unexpectedly exists: #{name}") if targets.key?(name)
   fail_check("#{name} must name prerequisite SPEC-009") unless declaration["prerequisite"] == "SPEC-009"
-  expected_edges = %w[GiftUIExecutionContract GiftUIFailureCore]
+  expected_edges = %w[GiftUIExecution GiftUIFailureCore]
   fail_check("#{name} reserved edges differ") unless declaration["dependencies"].sort == expected_edges
 end
 

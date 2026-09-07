@@ -43,8 +43,20 @@ declared_inputs() {
         printf '%s\n' \
             "$PROJECT_ROOT/Package.swift" \
             "$PROJECT_ROOT/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
+            "$PROJECT_ROOT/Tests/ContractFixtures/SPEC003/target-boundaries.yaml" \
+            "$PROJECT_ROOT/Tests/ContractFixtures/SPEC004/fixture-manifest.tsv" \
+            "$PROJECT_ROOT/Tests/ContractFixtures/SPEC004/Fixtures/Negative/forbidden-execution-import/main.swift" \
+            "$PROJECT_ROOT/Tests/ContractFixtures/SPEC004/Fixtures/Negative/forbidden-execution-import/expected-diagnostic-patterns.txt" \
+            "$PROJECT_ROOT/Tests/ContractFixtures/SPEC004/target-boundaries.yaml" \
+            "$PROJECT_ROOT/Tests/ContractFixtures/SPEC005/target-boundaries.yaml" \
+            "$PROJECT_ROOT/Sources/GiftUIExecution/ExecutionValues.swift" \
+            "$PROJECT_ROOT/Tests/GiftUIExecutionTests/ExecutionValueTests.swift" \
             "$PROJECT_ROOT/scripts/contracts/driver-registry.tsv" \
+            "$SCRIPT_DIR/check-spec-002-boundaries.rb" \
+            "$SCRIPT_DIR/check-spec-003-core-boundary.rb" \
+            "$SCRIPT_DIR/check-spec-003-dependencies.rb" \
             "$SCRIPT_DIR/check-spec-009-harness.rb" \
+            "$SCRIPT_DIR/check-spec-009-execution-values.rb" \
             "$SCRIPT_DIR/check-spec-009-migration.rb" \
             "$SCRIPT_DIR/report-input-identity.rb" \
             "$SCRIPT_DIR/publish-contract-report.rb" \
@@ -92,7 +104,7 @@ printf '# label\tpath\tsha256\n' >"$images_path"
     printf 'repository_revision=%s\nrepository_dirty=%s\n' "$revision" "$dirty"
     printf 'input_set_sha256=%s\nrun_id=%s\n' "$input_set_sha256" "$run_id"
     printf 'invocation=scripts/contracts/run-spec-009.sh --profile %s\n' "$profile"
-    printf 'execution_target=blocked\nfixture_corpus=missing\nevidence_complete=false\n'
+    printf 'execution_target=present\nfixture_corpus=missing\nevidence_complete=false\n'
     printf 'remote_access=false\ndeployment=false\nservice_restart=false\n'
     printf 'simulator_execution=false\nconnected_target_execution=false\nflashing=false\n'
 } >"$metadata_path"
@@ -190,11 +202,11 @@ record_nrf52840_identity() {
     printf 'command-transcript\tcomplete\texact invoked checks recorded\n'
     printf 'repository-revision\tcomplete\trevision and input digest recorded\n'
     printf 'fixture-schema\tcomplete\tSPEC-009 frozen schema validated\n'
-    printf 'execution-target\tblocked\tGiftUIRenderCore is present; GiftUIExecution is absent\n'
+    printf 'execution-target\tcomplete\tGiftUIExecution exists with its exact approved dependency edge\n'
     printf 'fixture-corpus\tmissing\tall six canonical case sequences are empty\n'
-    printf 'value-layouts\tmissing\texecution values are not implemented\n'
+    printf 'value-layouts\tmissing\tT1.1 host layouts pass; the complete value family is not implemented\n'
     printf 'allocations\tmissing\texecution paths are not implemented\n'
-    printf 'dependency-checks\tblocked\tproduction target graph has not landed\n'
+    printf 'dependency-checks\tcomplete\tGiftUIExecution target graph rows are active and acyclic\n'
     printf 'target-inspection\tblocked\tno execution target image exists\n'
     printf 'acceptance-evidence\tmissing\tEX-001 through EX-014 remain pending\n'
 } >"$prerequisites_path"
@@ -203,6 +215,8 @@ record_command "$SCRIPT_DIR/check-spec-009-harness.rb"
 "$SCRIPT_DIR/check-spec-009-harness.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-migration.rb"
 "$SCRIPT_DIR/check-spec-009-migration.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-009-execution-values.rb"
+"$SCRIPT_DIR/check-spec-009-execution-values.rb" >>"$log_path" 2>&1
 case "$profile" in
     macos-dynamic | macos-static) record_macos_identity ;;
     raspberry-pi-armv6) record_raspberry_pi_identity ;;
@@ -218,5 +232,5 @@ trap - EXIT
     --destination "$canonical_report_dir" \
     --latest "$latest_pointer" \
     --run-id "$run_id"
-printf 'SPEC-009 %s harness passed; execution implementation blocked; run ID: %s\n' \
+printf 'SPEC-009 %s harness passed; execution implementation incomplete; run ID: %s\n' \
     "$profile" "$run_id"

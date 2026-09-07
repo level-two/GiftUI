@@ -173,7 +173,7 @@ end
 fail_check("wrong report spec") unless metadata["spec"] == "SPEC-009"
 profiles = %w[macos-dynamic macos-static raspberry-pi-armv6 nrf52840-embedded]
 fail_check("unknown report profile") unless profiles.include?(metadata["profile"])
-fail_check("execution target must remain blocked") unless metadata["execution_target"] == "blocked"
+fail_check("execution target must be present") unless metadata["execution_target"] == "present"
 fail_check("fixture corpus must remain missing") unless metadata["fixture_corpus"] == "missing"
 fail_check("incomplete report claimed completeness") unless metadata["evidence_complete"] == "false"
 %w[
@@ -211,4 +211,4 @@ allowed_statuses = %w[complete missing blocked]
 fail_check("invalid prerequisite status") if prerequisites.any? { |row| !allowed_statuses.include?(row[1]) }
 fail_check("prerequisite lacks reason") if prerequisites.any? { |row| row[2].empty? }
 
-puts "SPEC-009 report is fail-closed: 14 criteria missing; 3 prerequisites blocked"
+puts "SPEC-009 report is fail-closed: 14 criteria missing; target present"

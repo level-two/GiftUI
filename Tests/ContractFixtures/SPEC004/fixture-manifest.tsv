@@ -4,7 +4,7 @@ forbidden-giftui-import	fail	public	Fixtures/Negative/forbidden-giftui-import/ma
 forbidden-failure-core-import	fail	public	Fixtures/Negative/forbidden-failure-core-import/main.swift	Fixtures/Negative/forbidden-failure-core-import/expected-diagnostic-patterns.txt
 forbidden-failure-diagnostics-import	fail	public	Fixtures/Negative/forbidden-failure-diagnostics-import/main.swift	Fixtures/Negative/forbidden-failure-diagnostics-import/expected-diagnostic-patterns.txt
 forbidden-failure-execution-import	fail	public	Fixtures/Negative/forbidden-failure-execution-import/main.swift	Fixtures/Negative/forbidden-failure-execution-import/expected-diagnostic-patterns.txt
-forbidden-execution-contract-import	fail	public	Fixtures/Negative/forbidden-execution-contract-import/main.swift	Fixtures/Negative/forbidden-execution-contract-import/expected-diagnostic-patterns.txt
+forbidden-execution-import	fail	public	Fixtures/Negative/forbidden-execution-import/main.swift	Fixtures/Negative/forbidden-execution-import/expected-diagnostic-patterns.txt
 forbidden-semantic-import	fail	public	Fixtures/Negative/forbidden-semantic-import/main.swift	Fixtures/Negative/forbidden-semantic-import/expected-diagnostic-patterns.txt
 forbidden-layout-import	fail	public	Fixtures/Negative/forbidden-layout-import/main.swift	Fixtures/Negative/forbidden-layout-import/expected-diagnostic-patterns.txt
 forbidden-render-import	fail	public	Fixtures/Negative/forbidden-render-import/main.swift	Fixtures/Negative/forbidden-render-import/expected-diagnostic-patterns.txt

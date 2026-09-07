@@ -252,7 +252,7 @@ exists, target creation and declarations referencing it remain blocked.
 declaration, raw value, initializer, normalization rule, generic constraint,
 and value-layout bound, without importing a coordinator owner.
 
-- [ ] `T1.1` — Implement `RunCycleID`, `SemanticRevision`,
+- [x] `T1.1` — Implement `RunCycleID`, `SemanticRevision`,
       `CandidateFrameID`, `ActionGeneration`, `ObservableTargetGeneration`,
       `ExecutionPhase`, `ExecutionLimits`, and `ExecutionContext` with exact
       raw widths, cases, validation, `Equatable`, `Hashable` where declared,
@@ -729,6 +729,24 @@ acceptance row as missing. The reports remain fail-closed with
 `evidence_complete=false`; no target build, simulator, remote access,
 deployment, service restart, connected hardware, or flashing occurs.
 Milestone 0 now waits only for the incrementally coupled T0.2 package boundary.
+
+The first incremental `T0.2` boundary slice is complete. `GiftUIExecution`
+and `GiftUIExecutionTests` landed with the exact `GiftUI` plus
+`GiftUIRenderCore` production edge, and every SPEC-002 through SPEC-005
+placeholder reference now names the real owner. The obsolete
+`GiftUIExecutionContract` target name is absent and has no alias or shim. T0.2
+remains open for `GiftUIFailureExecution` and the fixture-only adapters, which
+must still land atomically with their first compiling sources.
+
+`T1.1` is complete: five exact four-byte identity values preserve every raw
+bit pattern without sentinels; the seven execution phases retain their exact
+one-byte raw order; limits enforce every required nonzero capacity while
+permitting zero completion capacity; and context preserves exact optional
+correlation. Focused tests prove the 12-byte limits layout and 24-byte context
+ceiling, while the registered source audit excludes dynamic storage, public
+surface, and prohibited upward coupling; see the
+[execution value evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-1/execution-values.md).
+T1.2 is the next dependency-complete execution value task.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

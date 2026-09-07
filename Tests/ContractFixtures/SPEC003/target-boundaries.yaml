@@ -37,4 +37,4 @@ reserved:
     prerequisite: SPEC-009
     dependencies:
       - GiftUIFailureCore
-      - GiftUIExecutionContract
+      - GiftUIExecution

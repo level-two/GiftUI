@@ -42,7 +42,7 @@ forbidden_text_resource_imports:
   - GiftUIFailureDiagnostics
   - GiftUIFailureExecution
   - GiftUICapabilities
-  - GiftUIExecutionContract
+  - GiftUIExecution
   - GiftUISemantics
   - GiftUILayout
   - GiftUIRenderCore

@@ -8,7 +8,7 @@ FORBIDDEN_MODULES = %w[
   GiftUIFailureExecution
   GiftUIFailureDiagnostics
   GiftUICapabilities
-  GiftUIExecutionContract
+  GiftUIExecution
   GiftUIRuntimeDynamic
   GiftUIRuntimeStatic
   GiftUIBackend
