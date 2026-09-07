@@ -50,6 +50,8 @@ declared_inputs() {
         find "${FIXTURE_ROOT}" -type f -print
         find "${PROJECT_ROOT}/Sources/GiftUI" -type f -name '*.swift' -print
         find "${PROJECT_ROOT}/Sources/GiftUIMacros" -type f -name '*.swift' -print
+        find "${PROJECT_ROOT}/Sources/GiftUIObservableState" -type f -name '*.swift' -print
+        find "${PROJECT_ROOT}/Tests/GiftUIObservableStateTests" -type f -name '*.swift' -print
         printf '%s\n' \
             "${PROJECT_ROOT}/Package.swift" \
             "${PROJECT_ROOT}/Package.resolved" \
@@ -60,6 +62,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-010-harness.rb" \
             "${SCRIPT_DIR}/check-spec-010-migration.rb" \
             "${SCRIPT_DIR}/check-spec-010-macro-boundary.rb" \
+            "${SCRIPT_DIR}/check-spec-010-owner-values.rb" \
             "${SCRIPT_DIR}/check-spec-010-profile-host.rb" \
             "${SCRIPT_DIR}/check-spec-010-state-wrapper.rb" \
             "${SCRIPT_DIR}/check-spec-010-sink-ownership.sh" \
@@ -336,6 +339,8 @@ record_command "${SCRIPT_DIR}/check-spec-010-declaration-surface.rb"
 "${SCRIPT_DIR}/check-spec-010-declaration-surface.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-macro-boundary.rb"
 "${SCRIPT_DIR}/check-spec-010-macro-boundary.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-010-owner-values.rb"
+"${SCRIPT_DIR}/check-spec-010-owner-values.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-profile-host.rb"
 "${SCRIPT_DIR}/check-spec-010-profile-host.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-state-wrapper.rb"

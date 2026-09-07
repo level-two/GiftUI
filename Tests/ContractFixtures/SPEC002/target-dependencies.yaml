@@ -91,6 +91,19 @@ targets:
       - GiftUI
       - GiftUIExecution
       - GiftUIRenderCore
+  GiftUIObservableState:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUIExecution
+      - GiftUISemanticCore
+  GiftUIObservableStateTests:
+    type: test
+    dependencies:
+      - GiftUI
+      - GiftUIExecution
+      - GiftUIObservableState
+      - GiftUISemanticCore
   GiftUIReferenceTextResources:
     type: regular
     dependencies:

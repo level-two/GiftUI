@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-04
-updated: 2026-09-06
+updated: 2026-09-07
 related_design_notes: []
 conformance_report: null
 related_future_work:
@@ -72,14 +72,13 @@ and generated code are not implementation authority.
 - SPEC-006's stateful visitor category and generated traversal seam are
   present. The SPEC-010 binding decorator and owner reconciliation that make
   that traversal operational remain future `T3.2` work.
-- `GiftUIObservableState`, dynamic/static observable-state storage, and the
-  observable-state failure adapter do not exist. Package exact-set edits for
-  those owners remain assigned to `T0.2`, `T2.1`, `T6.*`, and `T7.1`.
-- Approved SPEC-009 now has a ready implementation plan, but the
-  `GiftUIExecution` target, `ObservableTargetGeneration`,
-  `ExecutionAdmissionOutcome`, phase/wake seams, and coordinator are not yet
-  implemented. Work requiring them remains dependency-blocked; this plan must
-  not create substitutes.
+- `GiftUIObservableState` now contains the T2.1 owner values but no reconciler,
+  dynamic/static storage, or failure adapter. Remaining package exact-set edits
+  stay assigned to `T0.2`, `T2.2`-`T2.4`, `T6.*`, and `T7.1`.
+- SPEC-009 now supplies `GiftUIExecution`, `ObservableTargetGeneration`,
+  `ExecutionAdmissionOutcome`, phase/wake seams, and checked identity/phase
+  machinery. Later work still requiring its production coordinator remains
+  dependency-gated and must not create a substitute.
 - SPEC-002's exact target/dependency registry, SPEC-003's failure owner seam,
   SPEC-006's four-profile driver conventions, and repository-local ARMv6/nRF
   toolchains are reusable. Package exact-set controls must change atomically.
@@ -253,7 +252,7 @@ phase/admission protocols. Until then, this milestone is upstream-blocked.
 **Exit evidence:** `GiftUIObservableState` compiles as the one focused owner
 with exact local values, protocols, module direction, and no profile storage.
 
-- [ ] `T2.1` — Add `GiftUIObservableState` depending exactly on `GiftUI`,
+- [x] `T2.1` — Add `GiftUIObservableState` depending exactly on `GiftUI`,
       `GiftUISemanticCore`, and `GiftUIExecution`. Implement exact
       `ObservableStateLimits`, error, operational, result, and candidate-
       disposition values; exhaust raw values, initializer validation, equal-
@@ -665,3 +664,14 @@ macro/compiler-support linkage; see the
 [four-profile generated-host evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-1/four-profile-generated-host.md).
 The next executable owner task is `T2.1`, blocked only on SPEC-009 supplying
 the exact `GiftUIExecution` declarations and package edge identified above.
+
+`T2.1` is complete: `GiftUIObservableState` lands with exactly the `GiftUI`,
+`GiftUISemanticCore`, and `GiftUIExecution` edges and owns the complete limits,
+error, operational, result, and candidate-disposition value families. Focused
+tests prove validation, equal-to-limit behavior, every raw value, exact result
+preservation, `Equatable`/`Sendable`, and bounded host layouts; the registered
+source audit excludes alternate result carriers, dynamic storage, and
+prohibited imports. See the
+[owner value evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-2/owner-values.md).
+The owner-target slice of T0.2 is complete; narrowly named adapters still wait
+for their first compiling sources. T2.2 is next.
