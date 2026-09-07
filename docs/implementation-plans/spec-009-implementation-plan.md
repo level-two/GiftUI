@@ -288,7 +288,7 @@ fixture can observe every reserved and committed identity separately.
 summary/phase combination without a semantic owner, runtime profile, backend,
 or host.
 
-- [ ] `T2.1` — Implement one checked allocator per execution-owned namespace:
+- [x] `T2.1` — Implement one checked allocator per execution-owned namespace:
       raw zero first, exact successor, reservation retirement on abort, no
       reuse or wrap, and smallest-scope fail-closed exhaustion. Keep
       `ObservableTargetGeneration` allocation outside Execution as SPEC-010
@@ -807,6 +807,17 @@ introduced by its first admission-contract source. T0.2 correctly remains
 open: neither `GiftUIFailureExecution` nor a fixture-only adapter has its first
 compiling source, so no placeholder package row was added. T2.1 is the next
 dependency-complete task.
+
+`T2.1` is complete: five distinct package-scoped allocators reserve cycle,
+semantic-revision, candidate-frame, presentation-revision, and runtime-wide
+action-generation identities through one private checked cursor. Focused tests
+prove zero-first exact successors, independent namespaces, valid maximum
+reservation, permanent exhaustion without reuse or wrap, caller normalization
+to `identityExhausted`, and finite `Equatable`/`Sendable` state. The source
+audit rejects sentinels, wrapping arithmetic, prohibited imports, and any
+Execution-owned `ObservableTargetGeneration` allocator; see the
+[checked allocator evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-2/checked-identity-allocators.md).
+T2.2 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
