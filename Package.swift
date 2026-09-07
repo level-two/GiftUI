@@ -118,7 +118,7 @@ let package = Package(
         ),
         .testTarget(
             name: "GiftUIExecutionTests",
-            dependencies: ["GiftUIExecution"]
+            dependencies: ["GiftUIExecution", "GiftUIRenderCore"]
         ),
         .testTarget(
             name: "GiftUIReferenceTextResourcesTests",

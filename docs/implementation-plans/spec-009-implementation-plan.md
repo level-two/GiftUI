@@ -262,7 +262,7 @@ and value-layout bound, without importing a coordinator owner.
       `ExecutionWakeRequester`, and `PresentationPendingIntent`. Mask unknown
       option bits, validate retry-count semantics through owning transitions,
       and prove the value retains none of the forbidden payloads.
-- [ ] `T1.3` — Implement frame provenance, disposition, stream-result,
+- [x] `T1.3` — Implement frame provenance, disposition, stream-result,
       failure, refusal-origin, `FrameOfferResult`, and
       `SynchronousFrameEndpoint` declarations exactly. Test every valid and
       invalid failable construction and the nonescaping synchronous body/sink
@@ -756,6 +756,16 @@ backpressure, first and repeated refusal counts, maximum exhaustion, and
 newer-revision replacement without adding a runtime owner; see the
 [wake value evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-1/wake-values.md).
 T1.3 is the next dependency-complete execution value task.
+
+`T1.3` is complete: exact provenance, offer/logical/stream dispositions,
+failures, refusal origin, validated offer result, and the synchronous generic
+endpoint now live in `GiftUIExecution`. Focused tests prove raw values, layout
+bounds, all valid and invalid result constructions, one body call for every
+consumed envelope, zero calls under backpressure, and exact stream-result
+mapping. The registered audit fixes the nonescaping `inout` sink boundary and
+excludes retained frame/operation/resource storage; see the
+[frame handoff evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-1/frame-handoff-values.md).
+T1.4 is the next dependency-complete execution value task.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

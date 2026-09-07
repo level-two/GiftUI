@@ -89,6 +89,7 @@ targets:
     type: test
     dependencies:
       - GiftUIExecution
+      - GiftUIRenderCore
   GiftUIReferenceTextResources:
     type: regular
     dependencies:

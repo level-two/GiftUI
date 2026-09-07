@@ -57,6 +57,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-003-dependencies.rb" \
             "$SCRIPT_DIR/check-spec-009-harness.rb" \
             "$SCRIPT_DIR/check-spec-009-execution-values.rb" \
+            "$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb" \
             "$SCRIPT_DIR/check-spec-009-wake-values.rb" \
             "$SCRIPT_DIR/check-spec-009-migration.rb" \
             "$SCRIPT_DIR/report-input-identity.rb" \
@@ -218,6 +219,8 @@ record_command "$SCRIPT_DIR/check-spec-009-migration.rb"
 "$SCRIPT_DIR/check-spec-009-migration.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-execution-values.rb"
 "$SCRIPT_DIR/check-spec-009-execution-values.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb"
+"$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-wake-values.rb"
 "$SCRIPT_DIR/check-spec-009-wake-values.rb" >>"$log_path" 2>&1
 case "$profile" in
