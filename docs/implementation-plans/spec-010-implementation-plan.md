@@ -268,7 +268,7 @@ with exact local values, protocols, module direction, and no profile storage.
       replacement staging, and fixed runtime bookkeeping; prove replacement
       borrows one declared staging record rather than permanent duplicate
       registration capacity.
-- [ ] `T2.3` — Implement `PresentationFactAdmissionAdapter` as the typed façade
+- [x] `T2.3` — Implement `PresentationFactAdmissionAdapter` as the typed façade
       over SPEC-009 admission. Prove only finite immutable `Sendable` facts
       with no model, callable, task, platform object, or mutable repository
       reference pass; prove no second queue/limit/sequence/result exists and
@@ -688,3 +688,12 @@ mutation. See the
 [owner protocol evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-2/owner-protocols.md).
 T2.3 is independent of the decorator path; T2.4's design-note decision is the
 next Milestone 2 consolidation task.
+
+`T2.3` is complete: `PresentationFactAdmissionAdapter` forwards one finite
+typed `Sendable` fact through SPEC-009's exact admission result seam. Focused
+fixtures prove one-copy forwarding and unchanged queued or refused outcomes;
+the registered audit rejects a second queue, limit, sequence namespace,
+alternate result, model/callable payload, direct mutation fallback, and
+prohibited owner. See the
+[fact-admission evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-2/fact-admission.md).
+T2.4 remains the Milestone 2 consolidation task.
