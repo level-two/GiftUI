@@ -288,7 +288,7 @@ fixture-finite reconciler can observe SPEC-006 structural identities.
 **Exit evidence:** One complete candidate preserves/materializes/removes
 locations atomically and binds every wrapper before its body.
 
-- [ ] `T3.1` — Implement begin/encounter/finish lifecycle, checked capacities,
+- [x] `T3.1` — Implement begin/encounter/finish lifecycle, checked capacities,
       active-candidate guard, and staged association storage. Reserve every
       required resource before body evaluation and preserve the first failure.
       Enforce one begin after `.deriving`, exactly one publish/discard finish,
@@ -705,3 +705,13 @@ selection, and first-failure route warrant the focused, non-authoritative
 It records replaceable ownership transfer, lifecycle, validation, failure, and
 profile seams without selecting production storage or changing any public or
 package contract. Milestone 2 is complete; T3.1 is next.
+
+`T3.1` is complete: the internal profile-neutral candidate lifecycle validates
+deriving-phase begin, checked per-encounter association/location/registration
+reservation, sticky first failure, and exactly one publish/discard finish.
+The two-slot fixture proves reservation before key storage, every capacity and
+phase boundary, exact success results, impossible-publication invariant
+classification, cleanup, and later reuse without selecting production model
+packing. See the
+[candidate lifecycle evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-3/candidate-lifecycle.md).
+T3.2 is next.
