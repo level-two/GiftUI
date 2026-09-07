@@ -123,6 +123,7 @@ run_command "${compiler}" "${common_module_flags[@]}" -I "${module_dir}" \
     "${PROJECT_ROOT}/Sources/GiftUIExecution/AdmissionValues.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIExecution/RunCycleValues.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIExecution/IdentityAllocators.swift" \
+    "${PROJECT_ROOT}/Sources/GiftUIExecution/ExecutionPhaseMachine.swift" \
     -emit-module-path "${module_dir}/GiftUIExecution.swiftmodule" >/dev/null
 
 layout_ir="${output_root}/execution-value-layouts.ll"

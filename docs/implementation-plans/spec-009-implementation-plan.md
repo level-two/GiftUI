@@ -298,7 +298,7 @@ or host.
       exhaustion point before and after publication. Record reserved,
       published, committed, aborted, and permanently retired values without a
       sentinel or persistent identity claim.
-- [ ] `T2.3` — Implement the legal phase transition guard and exact context
+- [x] `T2.3` — Implement the legal phase transition guard and exact context
       snapshot. Reject backward, repeated, suspended, invalid, and nested
       entry; preserve the active cycle for reentrancy and `cycle == nil` for
       idle cycle-ID exhaustion.
@@ -827,6 +827,16 @@ exercises exhaustion before and after publication without an offer, alias,
 sentinel, persistent identity, or coordinator representation. See the
 [reservation ordering evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-2/reservation-ordering.md).
 T2.3 is next.
+
+`T2.3` is complete: `ExecutionPhaseMachine` enforces the exact twelve-edge
+forward/finalization graph and maintains bounded cycle, semantic, candidate,
+and detecting-phase context. A 49-pair matrix rejects every repeat, backward,
+and invalid skip without state change; focused tests also prove nested entry
+preserves the active cycle without allocation, idle identity exhaustion keeps
+`cycle == nil`, and idle cleanup retains only the latest semantic revision.
+The source audit excludes suspension and prohibited owner coupling; see the
+[phase machine evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-2/phase-machine.md).
+T2.4 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
