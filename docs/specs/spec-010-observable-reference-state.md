@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-09-05
+updated: 2026-09-07
 proposal:
   - PROPOSAL-005
 related_rfcs:
@@ -808,6 +808,12 @@ for Specification approval.
 SPIKE-003 is feasibility evidence only. Generated typed slots or a dynamic
 table are both suitable when they preserve this contract.
 
+The non-authoritative
+[Observable Binding and Report Routing design note](../implementation-designs/spec-010-binding-and-report-routing.md)
+records the current replaceable ownership, transient binding, candidate/live
+selection, and first-failure routing mechanics. It does not amend the
+declaration, lifecycle, profile, or failure contracts in this Specification.
+
 SPIKE-006 provides hardware-free compile/link evidence for the earlier
 property-wrapper, consuming-sink, and model-conformance declaration family.
 Against a configuration-equivalent nRF52840 baseline, its exercised fixture
@@ -837,6 +843,7 @@ that downstream work does not define or weaken SPEC-010.
 ## References
 
 - [SPEC-010 Implementation Plan](../implementation-plans/spec-010-implementation-plan.md)
+- [Observable Binding and Report Routing design note](../implementation-designs/spec-010-binding-and-report-routing.md)
 - [PROPOSAL-005](../proposals/proposal-005-observable-reference-state.md)
 - [RFC-008](../rfcs/rfc-008-observable-reference-state-architecture.md)
 - [ADR-008](../adrs/adr-008-module-dependency-graph-and-package-topology.md)

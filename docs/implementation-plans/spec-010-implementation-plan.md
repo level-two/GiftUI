@@ -7,7 +7,8 @@ owners:
   - codex
 created: 2026-09-04
 updated: 2026-09-07
-related_design_notes: []
+related_design_notes:
+  - ../implementation-designs/spec-010-binding-and-report-routing.md
 conformance_report: null
 related_future_work:
   - FW-019
@@ -273,7 +274,7 @@ with exact local values, protocols, module direction, and no profile storage.
       with no model, callable, task, platform object, or mutable repository
       reference pass; prove no second queue/limit/sequence/result exists and
       refusal never falls back to direct model mutation.
-- [ ] `T2.4` — Decide whether sink routing, noncopyable ownership, wrapper
+- [x] `T2.4` — Decide whether sink routing, noncopyable ownership, wrapper
       binding, candidate/live selection, and the mutation-result slot require
       a focused Implementation Design Note. If reconstruction is difficult,
       create `spec-010-binding-and-report-routing.md` without changing the
@@ -697,3 +698,10 @@ alternate result, model/callable payload, direct mutation fallback, and
 prohibited owner. See the
 [fact-admission evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-2/fact-admission.md).
 T2.4 remains the Milestone 2 consolidation task.
+
+`T2.4` is complete: the noncopyable sink, transient binding, candidate/live
+selection, and first-failure route warrant the focused, non-authoritative
+[Observable Binding and Report Routing design note](../implementation-designs/spec-010-binding-and-report-routing.md).
+It records replaceable ownership transfer, lifecycle, validation, failure, and
+profile seams without selecting production storage or changing any public or
+package contract. Milestone 2 is complete; T3.1 is next.
