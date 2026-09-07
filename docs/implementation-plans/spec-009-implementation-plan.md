@@ -293,7 +293,7 @@ or host.
       reuse or wrap, and smallest-scope fail-closed exhaustion. Keep
       `ObservableTargetGeneration` allocation outside Execution as SPEC-010
       requires.
-- [ ] `T2.2` — Prove reservation ordering for cycle, semantic, candidate,
+- [x] `T2.2` — Prove reservation ordering for cycle, semantic, candidate,
       presentation, and action-generation identities, including every
       exhaustion point before and after publication. Record reserved,
       published, committed, aborted, and permanently retired values without a
@@ -818,6 +818,15 @@ audit rejects sentinels, wrapping arithmetic, prohibited imports, and any
 Execution-owned `ObservableTargetGeneration` allocator; see the
 [checked allocator evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-2/checked-identity-allocators.md).
 T2.2 is next.
+
+`T2.2` is complete: a fixture-owned finite transcript proves cycle,
+replacement action-generation, semantic publication, candidate, presentation,
+offer, and commit/abort ordering. It records reserved, published, committed,
+aborted, and retired typed values; proves exact successors after abort; and
+exercises exhaustion before and after publication without an offer, alias,
+sentinel, persistent identity, or coordinator representation. See the
+[reservation ordering evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-2/reservation-ordering.md).
+T2.3 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
