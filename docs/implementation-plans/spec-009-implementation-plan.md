@@ -7,7 +7,8 @@ owners:
   - codex
 created: 2026-09-06
 updated: 2026-09-07
-related_design_notes: []
+related_design_notes:
+  - ../implementation-designs/spec-009-execution-state-axes.md
 conformance_report: null
 related_future_work:
   - FW-010
@@ -307,7 +308,7 @@ or host.
       invariants, limit equality/overflow, semantic/presentation consistency,
       operational exclusions, and the complete terminal-state matrix against
       recorded entry and reservation history.
-- [ ] `T2.5` — Decide whether checked identity retirement plus the independent
+- [x] `T2.5` — Decide whether checked identity retirement plus the independent
       semantic/candidate/frame/intent/input axes require a focused
       Implementation Design Note. If reconstruction would otherwise be
       difficult, create `spec-009-execution-state-axes.md` covering only
@@ -846,6 +847,15 @@ an otherwise intrinsically valid summary. Historical representation remains
 outside package SPI until the recording coordinator owns it; see the
 [summary matrix evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-2/summary-validation-matrix.md).
 T2.5 is next.
+
+`T2.5` is complete: reconstruction warrants the focused, non-authoritative
+[Execution Identity and State Axes design note](../implementation-designs/spec-009-execution-state-axes.md).
+It records the private checked-cursor representation, typed namespace
+wrappers, permanent retirement, exact phase/correlation guard, separation of
+intrinsic summary validation from fixture history, and the six independent
+state axes. It selects no production coordinator or profile storage and
+changes no transition or identity meaning. Milestone 2 is complete; T3.1 is
+the next dependency-complete task.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

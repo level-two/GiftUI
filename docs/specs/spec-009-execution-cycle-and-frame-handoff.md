@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-09-06
+updated: 2026-09-07
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -1647,6 +1647,12 @@ dynamic buffer, or direct streaming storage. Its representation does not alter
 the rule that acceptance follows complete validation/reservation and that the
 GiftUI operation borrow ends when `offer` returns.
 
+The non-authoritative
+[Execution Identity and State Axes design note](../implementation-designs/spec-009-execution-state-axes.md)
+records the current replaceable checked-allocation, retirement, phase-guard,
+correlation, and summary-validation mechanics. It does not amend identity,
+transition, lifecycle, or profile meaning in this Specification.
+
 ## Open Issues
 
 No unresolved contract or architectural choice remains in this amendment.
@@ -1672,6 +1678,7 @@ Current MVP scope is unchanged.
 ## References
 
 - [SPEC-009 Implementation Plan](../implementation-plans/spec-009-implementation-plan.md)
+- [Execution Identity and State Axes design note](../implementation-designs/spec-009-execution-state-axes.md)
 - [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
 - [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-004](../rfcs/rfc-004-run-cycle-and-frame-transaction.md)
