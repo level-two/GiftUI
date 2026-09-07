@@ -40,6 +40,8 @@ esac
 declared_inputs() {
     {
         find "$FIXTURE_ROOT" -type f -print
+        find "$PROJECT_ROOT/Sources/GiftUIExecution" \
+            "$PROJECT_ROOT/Tests/GiftUIExecutionTests" -type f -print
         printf '%s\n' \
             "$PROJECT_ROOT/Package.swift" \
             "$PROJECT_ROOT/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
@@ -49,14 +51,13 @@ declared_inputs() {
             "$PROJECT_ROOT/Tests/ContractFixtures/SPEC004/Fixtures/Negative/forbidden-execution-import/expected-diagnostic-patterns.txt" \
             "$PROJECT_ROOT/Tests/ContractFixtures/SPEC004/target-boundaries.yaml" \
             "$PROJECT_ROOT/Tests/ContractFixtures/SPEC005/target-boundaries.yaml" \
-            "$PROJECT_ROOT/Sources/GiftUIExecution/ExecutionValues.swift" \
-            "$PROJECT_ROOT/Tests/GiftUIExecutionTests/ExecutionValueTests.swift" \
             "$PROJECT_ROOT/scripts/contracts/driver-registry.tsv" \
             "$SCRIPT_DIR/check-spec-002-boundaries.rb" \
             "$SCRIPT_DIR/check-spec-003-core-boundary.rb" \
             "$SCRIPT_DIR/check-spec-003-dependencies.rb" \
             "$SCRIPT_DIR/check-spec-009-harness.rb" \
             "$SCRIPT_DIR/check-spec-009-execution-values.rb" \
+            "$SCRIPT_DIR/check-spec-009-wake-values.rb" \
             "$SCRIPT_DIR/check-spec-009-migration.rb" \
             "$SCRIPT_DIR/report-input-identity.rb" \
             "$SCRIPT_DIR/publish-contract-report.rb" \
@@ -217,6 +218,8 @@ record_command "$SCRIPT_DIR/check-spec-009-migration.rb"
 "$SCRIPT_DIR/check-spec-009-migration.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-execution-values.rb"
 "$SCRIPT_DIR/check-spec-009-execution-values.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-009-wake-values.rb"
+"$SCRIPT_DIR/check-spec-009-wake-values.rb" >>"$log_path" 2>&1
 case "$profile" in
     macos-dynamic | macos-static) record_macos_identity ;;
     raspberry-pi-armv6) record_raspberry_pi_identity ;;

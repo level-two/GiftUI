@@ -258,7 +258,7 @@ and value-layout bound, without importing a coordinator owner.
       raw widths, cases, validation, `Equatable`, `Hashable` where declared,
       and `Sendable` behavior. Prove every identity bit pattern is valid and
       no sentinel is introduced.
-- [ ] `T1.2` — Implement `ExecutionWakeReasons`,
+- [x] `T1.2` — Implement `ExecutionWakeReasons`,
       `ExecutionWakeRequester`, and `PresentationPendingIntent`. Mask unknown
       option bits, validate retry-count semantics through owning transitions,
       and prove the value retains none of the forbidden payloads.
@@ -747,6 +747,15 @@ ceiling, while the registered source audit excludes dynamic storage, public
 surface, and prohibited upward coupling; see the
 [execution value evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-1/execution-values.md).
 T1.2 is the next dependency-complete execution value task.
+
+`T1.2` is complete: the one-byte wake-reason set masks unknown bits and owns
+the exact three flags, the requester remains a non-suspending notification
+seam, and pending presentation retains only revision plus retry count within
+its eight-byte ceiling. Fixture-owned transitions prove zero-count
+backpressure, first and repeated refusal counts, maximum exhaustion, and
+newer-revision replacement without adding a runtime owner; see the
+[wake value evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-1/wake-values.md).
+T1.3 is the next dependency-complete execution value task.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
