@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-06
-updated: 2026-09-06
+updated: 2026-09-07
 related_design_notes: []
 conformance_report: null
 related_future_work:
@@ -267,7 +267,7 @@ and value-layout bound, without importing a coordinator owner.
       `SynchronousFrameEndpoint` declarations exactly. Test every valid and
       invalid failable construction and the nonescaping synchronous body/sink
       borrow at compile and runtime boundaries.
-- [ ] `T1.4` — Implement admission kinds/results/outcomes, admission and
+- [x] `T1.4` — Implement admission kinds/results/outcomes, admission and
       opportunity protocols, admission summaries, action view, captured
       action, and their exact validation. Prove the captured value stores only
       the unmodified SPEC-006 identity-generation pair and the producer seam
@@ -766,6 +766,20 @@ mapping. The registered audit fixes the nonescaping `inout` sink boundary and
 excludes retained frame/operation/resource storage; see the
 [frame handoff evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-1/frame-handoff-values.md).
 T1.4 is the next dependency-complete execution value task.
+
+`T1.4` is complete: exact admission kinds, results, contextual outcomes,
+typed admission and opportunity seams, bounded admission summaries, borrowed
+action view, and identity-generation-only capture now live in
+`GiftUIExecution`. Focused tests prove raw values, layouts, count validation,
+disabled completion capacity, semantic-action count bounds, typed protocol
+conformance, and unchanged passage of a SPEC-006-shaped identity beside the
+runtime-wide generation. The source audit rejects existential payloads,
+profile-private entry points, forbidden owners, and any captured field beyond
+that pair; see the
+[admission value evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-1/admission-values.md).
+The opportunity seam's exact return type requires the transitive T1.5 value
+declarations in this buildable increment; their invariant, specialization,
+and layout evidence remains T1.5 work. T1.5 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

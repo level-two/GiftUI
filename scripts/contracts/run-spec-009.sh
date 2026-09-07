@@ -56,6 +56,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-003-core-boundary.rb" \
             "$SCRIPT_DIR/check-spec-003-dependencies.rb" \
             "$SCRIPT_DIR/check-spec-009-harness.rb" \
+            "$SCRIPT_DIR/check-spec-009-admission-values.rb" \
             "$SCRIPT_DIR/check-spec-009-execution-values.rb" \
             "$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb" \
             "$SCRIPT_DIR/check-spec-009-wake-values.rb" \
@@ -217,6 +218,8 @@ record_command "$SCRIPT_DIR/check-spec-009-harness.rb"
 "$SCRIPT_DIR/check-spec-009-harness.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-migration.rb"
 "$SCRIPT_DIR/check-spec-009-migration.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-009-admission-values.rb"
+"$SCRIPT_DIR/check-spec-009-admission-values.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-execution-values.rb"
 "$SCRIPT_DIR/check-spec-009-execution-values.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb"
