@@ -61,6 +61,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-009-admission-values.rb" \
             "$SCRIPT_DIR/check-spec-009-admission-controller.rb" \
             "$SCRIPT_DIR/check-spec-009-admission-seal.rb" \
+            "$SCRIPT_DIR/check-spec-009-admission-seal-faults.rb" \
             "$SCRIPT_DIR/check-spec-009-execution-values.rb" \
             "$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb" \
             "$SCRIPT_DIR/check-spec-009-wake-values.rb" \
@@ -239,6 +240,8 @@ record_command "$SCRIPT_DIR/check-spec-009-admission-controller.rb"
 "$SCRIPT_DIR/check-spec-009-admission-controller.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-admission-seal.rb"
 "$SCRIPT_DIR/check-spec-009-admission-seal.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-009-admission-seal-faults.rb"
+"$SCRIPT_DIR/check-spec-009-admission-seal-faults.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-execution-values.rb"
 "$SCRIPT_DIR/check-spec-009-execution-values.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb"

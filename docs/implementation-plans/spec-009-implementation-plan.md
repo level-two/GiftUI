@@ -351,7 +351,7 @@ standalone transcripts.
       activations, dirty intent, then latest presentation recovery. Leave
       valid suffixes and after-seal arrivals queued in original order, record
       deferral, and request the next wake.
-- [ ] `T3.6` — Fault every seal reservation, stale/malformed pointer,
+- [x] `T3.6` — Fault every seal reservation, stale/malformed pointer,
       semantic-action capacity, active-source capacity, and queue boundary.
       Prove complete affected-sequence cancellation where required, zero
       admission counts on failed seal, preservation of all unrelated queued
@@ -906,7 +906,18 @@ selected pointers or semantic-action capacity. The admission controller marks
 after-seal arrivals deferred and requests a fresh coalesced wake while
 preserving storage order; see the
 [admission seal evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-3/admission-seal.md).
-T3.6 is next.
+
+`T3.6` is complete: the finite seal transaction faults pointer-transition and
+complete-batch reservation independently, keeps the first failure sticky, and
+returns an all-zero admission summary on every failed seal. Provenance and
+semantic-action failures identify the complete affected sequence, discard all
+staged counts and activations, preserve unrelated queue order, and reset the
+workspace during finalization for clean reuse. The admission-controller and
+sealer boundary fixtures complete active-source refusal, full-queue refusal,
+and valid suffix deferral coverage; see the
+[admission seal fault evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-3/admission-seal-faults.md).
+Milestone 3 is complete. T4.1 is the next SPEC-009 task after the requested
+SPEC-010 target-lifetime group.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
