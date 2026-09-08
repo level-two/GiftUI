@@ -69,6 +69,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-010-owner-protocols.rb" \
             "${SCRIPT_DIR}/check-spec-010-profile-host.rb" \
             "${SCRIPT_DIR}/check-spec-010-state-wrapper.rb" \
+            "${SCRIPT_DIR}/check-spec-010-structural-reconciliation.rb" \
             "${SCRIPT_DIR}/check-spec-010-sink-ownership.sh" \
             "${SCRIPT_DIR}/check-spec-010-generated-traversal.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
@@ -357,6 +358,8 @@ record_command "${SCRIPT_DIR}/check-spec-010-profile-host.rb"
 "${SCRIPT_DIR}/check-spec-010-profile-host.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-state-wrapper.rb"
 "${SCRIPT_DIR}/check-spec-010-state-wrapper.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-010-structural-reconciliation.rb"
+"${SCRIPT_DIR}/check-spec-010-structural-reconciliation.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-generated-traversal.rb"
 "${SCRIPT_DIR}/check-spec-010-generated-traversal.rb" >>"${log_path}" 2>&1
 if [[ "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ]]; then

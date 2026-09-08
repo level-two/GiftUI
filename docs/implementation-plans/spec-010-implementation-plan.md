@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-04
-updated: 2026-09-07
+updated: 2026-09-08
 related_design_notes:
   - ../implementation-designs/spec-010-binding-and-report-routing.md
 conformance_report: null
@@ -299,7 +299,7 @@ locations atomically and binds every wrapper before its body.
       transient declaration, visit direct wrappers in generated lexical order,
       bind each successfully, evaluate the body exactly once only after all
       bindings succeed, and retain no declaration/binding after the call.
-- [ ] `T3.3` — Implement first materialization, same-key compatible
+- [x] `T3.3` — Implement first materialization, same-key compatible
       preservation, distinct ordinal handling, incompatible association,
       duplicate ownership, staged removal, published retirement, reinsertion,
       failed-derivation discard, and runtime shutdown. Prove repeated
@@ -727,3 +727,14 @@ reflection, dynamic storage, suspension, and prohibited imports. See the
 [binding decorator evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-3/binding-decorator.md).
 T3.3 is next; the decorator seam itself now unblocks SPEC-006 T5.2–T5.3
 composition.
+
+`T3.3` is complete: the profile-neutral association lifecycle and explicit
+typed-slot fixture cover materialization, compatible preservation, distinct
+ordinals, incompatibility, duplicate ownership, staged removal, published
+retirement, fresh reinsertion, failed-derivation discard, and idempotent
+shutdown. Repeated initializers are consumed without attachment; removal and
+shutdown synthesize no application lifecycle effect; candidate-only and live
+routes detach exactly when required; and shutdown admits no later candidate or
+report. See the
+[structural reconciliation evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-3/structural-reconciliation.md).
+T3.4 is next.
