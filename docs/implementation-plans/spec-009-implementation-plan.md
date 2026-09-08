@@ -388,7 +388,7 @@ render-lowering, runtime, or backend implementations.
       results, preserve already-applied effects as dirty, request one later
       semantic wake, and rederive without replay, recursive entry, or partial
       publication.
-- [ ] `T4.5` — Inject every finite fixture `OwnerFailure` at its focused
+- [x] `T4.5` — Inject every finite fixture `OwnerFailure` at its focused
       boundary and every simultaneous later cleanup fault. Preserve the first
       exact value and detecting context, complete mandatory cleanup and a
       failure summary, and never replace it with a generic execution error or
@@ -955,7 +955,17 @@ taken at a later idle opportunity and leaves the applied-effect count unchanged.
 A clean pre-publication failure remains unchanged and requests no dirty wake;
 see the
 [recording recovery evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-4/recording-recovery.md).
-T4.5 is next.
+
+`T4.5` is complete: a five-case inline fixture sum captures the first exact
+focused-owner value and detecting context across mutation, completion,
+semantic, layout, and immutable-render-input boundaries. The exhaustive matrix
+crosses every value with all 32 subsets of later cleanup faults; mandatory
+partial-result discard, candidate abort, scratch and borrow release, and
+summary production still complete, while neither later focused failures nor
+diagnostic faults can replace the original result. The concrete owner value
+and specialized failure stay within their four- and eight-byte bounds; see the
+[focused-owner failure evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-4/focused-owner-failures.md).
+T4.6 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
