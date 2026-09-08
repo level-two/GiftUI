@@ -363,7 +363,7 @@ mandatory effect with bounded, coalesced state.
 - [x] `T5.2` — Integrate one wake intent, complete-root dirty derivation,
       freeze, successful-publication clearing, frame-refusal independence, and
       derivation-failure dirty retention without mutation replay.
-- [ ] `T5.3` — Reject reports during attach, candidate state, detach, after
+- [x] `T5.3` — Reject reports during attach, candidate state, detach, after
       retirement/slot reuse, outside mutation, across semantic dispatch, and
       after shutdown. Implement contained-phase paced rederivation versus
       safety-not-proven/reentrancy normal-cycle exclusion exactly, including
@@ -811,4 +811,13 @@ does not restore dirtiness. Derivation failure retains dirtiness and schedules
 one later wake; recovery rederives without incrementing the applied-mutation
 count. Mutation and repeated freeze are rejected beyond the boundary; see the
 [dirty derivation evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-5/dirty-derivation.md).
-T5.3 is next.
+
+`T5.3` is complete: inactive lifecycle states and stale slot generations reject
+reports without changing dirty, wake, or publication state. Every non-mutating
+phase follows one of two exact paths: a proven-contained violation preserves
+publication, marks dirty, requests one paced retry, and permits no residual
+policy call; safety-not-proven and reentrant reports discard partial work,
+preserve current dirtiness, and exclude normal cycling pending disposition.
+See the
+[report guard evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-5/report-guard.md).
+T5.4 is next.
