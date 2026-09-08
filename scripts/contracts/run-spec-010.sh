@@ -58,6 +58,7 @@ declared_inputs() {
             "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
             "${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv" \
             "${SCRIPT_DIR}/check-spec-010-attachment-property.sh" \
+            "${SCRIPT_DIR}/check-spec-010-attachment-generations.rb" \
             "${SCRIPT_DIR}/check-spec-010-binding-decorator.rb" \
             "${SCRIPT_DIR}/check-spec-010-candidate-lifecycle.rb" \
             "${SCRIPT_DIR}/check-spec-010-declaration-surface.rb" \
@@ -340,6 +341,8 @@ compile_nrf52840() {
 
 record_command "${SCRIPT_DIR}/check-spec-010-harness.rb"
 "${SCRIPT_DIR}/check-spec-010-harness.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-010-attachment-generations.rb"
+"${SCRIPT_DIR}/check-spec-010-attachment-generations.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-binding-decorator.rb"
 "${SCRIPT_DIR}/check-spec-010-binding-decorator.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-candidate-lifecycle.rb"

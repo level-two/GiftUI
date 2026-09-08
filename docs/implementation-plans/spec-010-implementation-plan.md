@@ -324,7 +324,7 @@ and SPEC-009's opaque target value is available.
 **Exit evidence:** Initial, replacement, removal, publish, and discard produce
 fresh, non-aliasing target generations with exact borrowed lookup timing.
 
-- [ ] `T4.1` — Implement checked runtime-wide attachment-generation allocation
+- [x] `T4.1` — Implement checked runtime-wide attachment-generation allocation
       with raw zero first, no sentinel/reuse/wrap, slot recycling protected by
       the full attachment, and fail-closed initial/replacement exhaustion.
 - [ ] `T4.2` — Implement atomic mutation-phase replacement: validate and
@@ -754,4 +754,15 @@ Milestone 3 behavior is complete; its evidence consolidation is next.
 Milestone 3 evidence is consolidated: the task index maps T3.1 through T3.4 to
 their commits, focused records, source audits, and reproducible test commands.
 OS-002, OS-003, and OS-005 remain pending because their mapped T6, T4, and T7
-work is not complete. The Milestone 3 plan boundary is complete; T4.1 is next.
+work is not complete. The Milestone 3 plan boundary is complete.
+
+`T4.1` is complete: one profile-neutral checked allocator issues attachment
+generation raw zero first across the runtime, advances independently of slot
+selection, issues `UInt32.max` once, and then fails permanently without a
+sentinel, reuse, or wrap. Each reservation builds the complete slot-generation
+attachment and derives the opaque target generation from the same bits. Tests
+prove recycled slots reject former attachments, while initial exhaustion
+activates nothing and replacement exhaustion preserves the former live route;
+see the
+[attachment-generation evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-4/attachment-generations.md).
+T4.2 is next.
