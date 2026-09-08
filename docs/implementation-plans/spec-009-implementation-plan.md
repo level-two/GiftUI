@@ -346,7 +346,7 @@ standalone transcripts.
       completion, unavailable, invalid-value, provenance, cancellation, and
       wake behavior. Submission never applies a fact, dispatches an action, or
       promises current-cycle membership.
-- [ ] `T3.5` — Implement exact ordered prefix selection and complete sealing:
+- [x] `T3.5` — Implement exact ordered prefix selection and complete sealing:
       pointer validation and staged transitions, fact categories, same-cycle
       activations, dirty intent, then latest presentation recovery. Leave
       valid suffixes and after-seal arrivals queued in original order, record
@@ -897,6 +897,16 @@ mandatory pointer cancellation, and one coalesced wake without applying or
 dispatching work; see the
 [admission controller evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-3/admission-controller.md).
 T3.5 is next.
+
+`T3.5` is complete: the focused sealer selects exact category prefixes in
+pointer, state-change, completion, same-cycle activation, dirty, and latest-
+presentation order. It accepts equality at every limit, leaves excess valid
+suffix counts deferred, and rejects activation membership that exceeds either
+selected pointers or semantic-action capacity. The admission controller marks
+after-seal arrivals deferred and requests a fresh coalesced wake while
+preserving storage order; see the
+[admission seal evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-3/admission-seal.md).
+T3.6 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

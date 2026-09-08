@@ -283,3 +283,18 @@ func submissionNeverAppliesFactsOrPromisesCurrentCycleMembership() {
     #expect(owner.context == admissionContext)
     #expect(owner.storage.firstStateChange == AdmissionFact(rawValue: 1))
 }
+
+@Test
+func workArrivingAfterSealIsDeferredAndRequestsFreshWake() {
+    var owner = controller()
+    #expect(owner.submit(stateChange: AdmissionFact(rawValue: 1)).result == .queued)
+    #expect(owner.takeWakeAtIdleOpportunity() == .admittedWork)
+    owner.closeAdmissionSeal()
+
+    #expect(owner.submit(completion: AdmissionCompletion(rawValue: 2)).result == .queued)
+    #expect(owner.didDeferAfterSeal)
+    #expect(owner.wakeAccumulator.requester.requestCount == 2)
+    #expect(owner.wakeAccumulator.accumulatedReasons == .admittedWork)
+    #expect(owner.storage.firstStateChange == AdmissionFact(rawValue: 1))
+    #expect(owner.storage.completion == AdmissionCompletion(rawValue: 2))
+}

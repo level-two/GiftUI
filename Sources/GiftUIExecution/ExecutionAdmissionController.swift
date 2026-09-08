@@ -32,6 +32,8 @@ where
     private(set) var isQuiescent: Bool
     private(set) var storage: Storage
     private(set) var wakeAccumulator: ExecutionWakeAccumulator<Requester>
+    private(set) var isSealClosed: Bool = false
+    private(set) var didDeferAfterSeal: Bool = false
     private var trackedSource: InputSourceID?
     private var sourceSequence = InputSourceSequenceState()
 
@@ -50,6 +52,14 @@ where
         self.storage = storage
         wakeAccumulator = ExecutionWakeAccumulator(requester: requester)
         trackedSource = nil
+    }
+
+    mutating func takeWakeAtIdleOpportunity() -> ExecutionWakeReasons {
+        wakeAccumulator.takeAtIdleOpportunity(phase: .idle) ?? []
+    }
+
+    mutating func closeAdmissionSeal() {
+        isSealClosed = true
     }
 
     mutating func submit(
@@ -98,7 +108,7 @@ where
 
         trackedSource = pointer.source
         sourceSequence = proposedState
-        wakeAccumulator.accumulate(.admittedWork)
+        recordQueuedWork()
         return outcome(.queued)
     }
 
@@ -115,7 +125,7 @@ where
             return outcome(.capacityRefused)
         }
 
-        wakeAccumulator.accumulate(.admittedWork)
+        recordQueuedWork()
         return outcome(.queued)
     }
 
@@ -134,12 +144,19 @@ where
             return outcome(.capacityRefused)
         }
 
-        wakeAccumulator.accumulate(.admittedWork)
+        recordQueuedWork()
         return outcome(.queued)
     }
 
     mutating func quiesce() {
         isQuiescent = true
+    }
+
+    private mutating func recordQueuedWork() {
+        if isSealClosed {
+            didDeferAfterSeal = true
+        }
+        wakeAccumulator.accumulate(.admittedWork)
     }
 
     private mutating func cancel(_ pointer: NormalizedPointerEvent) {
