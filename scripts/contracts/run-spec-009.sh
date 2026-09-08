@@ -73,6 +73,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-009-pointer-capture.rb" \
             "$SCRIPT_DIR/check-spec-009-recording-coordinator.rb" \
             "$SCRIPT_DIR/check-spec-009-recording-derivation.rb" \
+            "$SCRIPT_DIR/check-spec-009-recording-endpoint.rb" \
             "$SCRIPT_DIR/check-spec-009-recording-mutation.rb" \
             "$SCRIPT_DIR/check-spec-009-recording-recovery.rb" \
             "$SCRIPT_DIR/check-spec-009-run-cycle-values.rb" \
@@ -268,6 +269,8 @@ record_command "$SCRIPT_DIR/check-spec-009-recording-coordinator.rb"
 "$SCRIPT_DIR/check-spec-009-recording-coordinator.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-recording-derivation.rb"
 "$SCRIPT_DIR/check-spec-009-recording-derivation.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-009-recording-endpoint.rb"
+"$SCRIPT_DIR/check-spec-009-recording-endpoint.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-recording-mutation.rb"
 "$SCRIPT_DIR/check-spec-009-recording-mutation.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-recording-recovery.rb"

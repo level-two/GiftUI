@@ -408,7 +408,7 @@ presentation, routing, and pending-intent state are independently observable.
 abort, borrow lifetime, backpressure, refusal, supersession, retry count, and
 terminal state has an exact transcript.
 
-- [ ] `T5.1` — Implement a recording `SynchronousFrameEndpoint` with finite
+- [x] `T5.1` — Implement a recording `SynchronousFrameEndpoint` with finite
       sink capacity, pre-consumption reservation, body-call counting,
       operation/vocabulary validation, retained local producer error, and
       post-return borrow poisoning. It must retain only endpoint-owned derived
@@ -975,7 +975,16 @@ finalizing once, releases scratch and borrow state, clears active identities,
 and restores the idle authoritative context; repeated finalization is refused.
 See the
 [cycle finalization evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-4/cycle-finalization.md).
-Milestone 4 is complete; T5.1 is next.
+Milestone 4 is complete.
+
+`T5.1` is complete: the bounded recording endpoint validates envelope and
+downstream capacity before reserving an attempt and calling its body once. Its
+sink enforces finite capacity and exact operation vocabulary, retains the first
+local producer error, and is poisoned on every return. Acceptance retains only
+endpoint-derived frame values; every other result releases the reservation and
+retains no candidate data. See the
+[recording endpoint evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-5/recording-endpoint.md).
+T5.2 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
