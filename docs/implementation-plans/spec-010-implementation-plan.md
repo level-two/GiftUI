@@ -339,7 +339,7 @@ fresh, non-aliasing target generations with exact borrowed lookup timing.
       successful-encounter timing, preserved versus candidate-only results,
       invalid query `nil`, no lazy materialization, and publication making the
       staged generation live.
-- [ ] `T4.4` — Prove candidate discard detaches and permanently retires
+- [x] `T4.4` — Prove candidate discard detaches and permanently retires
       candidate-only generations, published removal retires the live value,
       failed/staged replacement preserves the former value, and no lookup
       retains or exposes a model. Couple observable non-publication to mandatory
@@ -784,4 +784,15 @@ candidate finish. Tests prove wrong and premature queries return `nil` without
 materialization, publication promotes the staged generation, discard exposes
 nothing, and the workspace remains reusable; see the
 [target lookup evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-4/target-lookup.md).
-T4.4 is next.
+
+`T4.4` is complete: candidate-only discard returns the exact attachment for
+detach, retires its exposed generation without reuse, clears lookup visibility,
+and invokes mandatory Interaction candidate discard once. Published absence
+retires the former live pair; preserved discard keeps it live; candidate
+publication makes the staged generation live without an Interaction discard;
+and the T4.2 matrix preserves the former pair on staged or failed replacement.
+Interaction construction can access the private model-free target view only
+through one synchronous closure with a `borrowing` parameter; see the
+[target lifetime evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-4/target-lifetime.md).
+Milestone 4 is complete. T5.1 follows the requested SPEC-009 Milestone 4
+coordinator group.
