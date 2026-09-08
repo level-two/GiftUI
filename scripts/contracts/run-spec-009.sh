@@ -57,6 +57,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-003-dependencies.rb" \
             "$SCRIPT_DIR/check-spec-009-harness.rb" \
             "$SCRIPT_DIR/check-spec-009-identity-allocators.rb" \
+            "$SCRIPT_DIR/check-spec-009-input-sequences.rb" \
             "$SCRIPT_DIR/check-spec-009-admission-values.rb" \
             "$SCRIPT_DIR/check-spec-009-execution-values.rb" \
             "$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb" \
@@ -227,6 +228,8 @@ record_command "$SCRIPT_DIR/check-spec-009-migration.rb"
 "$SCRIPT_DIR/check-spec-009-migration.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-identity-allocators.rb"
 "$SCRIPT_DIR/check-spec-009-identity-allocators.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-009-input-sequences.rb"
+"$SCRIPT_DIR/check-spec-009-input-sequences.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-admission-values.rb"
 "$SCRIPT_DIR/check-spec-009-admission-values.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-execution-values.rb"

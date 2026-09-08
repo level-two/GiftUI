@@ -330,7 +330,7 @@ standalone transcripts.
       take/clear at idle opportunity entry, a new transition during every
       later phase/finalization, masking, duplicate coalescing, and no
       synchronous run or scheduling result from the requester.
-- [ ] `T3.2` — Implement bounded per-source sequence/ordinal state with exact
+- [x] `T3.2` — Implement bounded per-source sequence/ordinal state with exact
       zero/start/successor rules, active/cancelled/quiescent states, checked
       exhaustion, and independently enforceable target-gate versus runtime
       validation. Keep target-local physical phases outside runtime-visible
@@ -866,6 +866,17 @@ and redundant idle opportunities. The generic requester returns no scheduling
 result and cannot synchronously select or run a cycle; see the
 [wake accumulation evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-3/wake-accumulation.md).
 T3.2 is next.
+
+`T3.2` is complete: the target gate consumes a runtime-visible sequence only
+when submitting a down, beginning at zero and exhausting permanently after
+the checked maximum. The independent runtime validator enforces exact down,
+move, and up ordinals and sequences across synchronized, active, cancelled,
+and quiescent source states. It cancels malformed provenance without adopting
+it as a baseline, consumes cancelled suffixes without dispatch, requires a
+separate target-gate proof for unfinished-sequence replacement, and maintains
+independent fixed-width state per bounded source. See the
+[input sequence evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-3/input-sequences.md).
+T3.3 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
