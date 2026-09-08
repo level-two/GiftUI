@@ -45,6 +45,7 @@ private struct FixtureBindingReconciler: ObservableStateReconciler {
     var ordinals: [UInt16] = []
     var identities: [UInt16] = []
     var failureOrdinal: UInt16?
+    var failure: ObservableStateError = .incompatibleAssociation
     var success: ObservableStateOperational = .preserved
 
     mutating func beginCandidate() -> ObservableStateResult {
@@ -59,7 +60,7 @@ private struct FixtureBindingReconciler: ObservableStateReconciler {
         ordinals.append(declarationOrdinal)
         identities.append(structuralIdentity)
         if failureOrdinal == declarationOrdinal {
-            return .failure(.incompatibleAssociation)
+            return .failure(failure)
         }
 
         let box = FixtureModelBox<Model>()
@@ -165,6 +166,39 @@ func decoratorPreservesLaterBindingFailureAndSuppressesBody() {
     #expect(result == .failure(.incompatibleAssociation))
     #expect(decorator.reconciler.ordinals == [0, 1])
     #expect(bodyCalls == 0)
+}
+
+@Test
+func decoratorSuppressesBodyForEveryCandidateBindingFailure() {
+    let failures: [ObservableStateError] = [
+        .locationCapacityExhausted,
+        .registrationCapacityExhausted,
+        .associationStagingCapacityExhausted,
+        .duplicateOwner,
+        .incompatibleAssociation,
+        .staleAttachment,
+        .invariantViolation,
+    ]
+
+    for failure in failures {
+        var decorator = ObservableStateBindingDecorator(
+            reconciler: FixtureBindingReconciler(
+                failureOrdinal: 0,
+                failure: failure
+            )
+        )
+        var bodyCalls: UInt16 = 0
+
+        #expect(
+            decorator.withBoundDeclaration(
+                FixtureStatefulHost(),
+                structuralIdentity: 73
+            ) { _ in
+                bodyCalls += 1
+            } == .failure(failure)
+        )
+        #expect(bodyCalls == 0)
+    }
 }
 
 @Test

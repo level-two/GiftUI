@@ -307,7 +307,7 @@ locations atomically and binds every wrapper before its body.
       no application start/stop lifecycle effect, shutdown detaches every
       installed sink once, and no later report, fact, action, or candidate is
       admitted.
-- [ ] `T3.4` — Fault-inject location, registration, association staging,
+- [x] `T3.4` — Fault-inject location, registration, association staging,
       duplicate-owner, incompatible-association, `nil`/mismatched attachment
       return, report-during-attach, mismatched detach, and finish invariant
       failures. Prove first-failure preservation, complete candidate discard,
@@ -738,3 +738,13 @@ routes detach exactly when required; and shutdown admits no later candidate or
 report. See the
 [structural reconciliation evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-3/structural-reconciliation.md).
 T3.4 is next.
+
+`T3.4` is complete: the registration-route lifecycle and exhaustive focused
+matrix inject location, registration, association-staging, duplicate-owner,
+incompatible-association, nil/mismatched attachment-return,
+report-during-attach, mismatched-detach, and finish-invariant failures. The
+tests preserve the first failure, retire candidate-only routes before cleanup,
+detach exactly the rejected candidate state, preserve prior live state, and
+suppress the stateful body for every binding failure. See the
+[reconciliation fault evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-3/reconciliation-faults.md).
+Milestone 3 behavior is complete; its evidence consolidation is next.
