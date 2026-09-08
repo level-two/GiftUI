@@ -393,7 +393,7 @@ render-lowering, runtime, or backend implementations.
       exact value and detecting context, complete mandatory cleanup and a
       failure summary, and never replace it with a generic execution error or
       diagnostic.
-- [ ] `T4.6` — Implement deterministic final result selection: failure before
+- [x] `T4.6` — Implement deterministic final result selection: failure before
       operational, complete event-set retention, exact operational primary
       precedence, summary presence for every started cycle, finalizing
       exactly once, release of all scratch/borrows, and return to idle.
@@ -965,7 +965,17 @@ summary production still complete, while neither later focused failures nor
 diagnostic faults can replace the original result. The concrete owner value
 and specialized failure stay within their four- and eight-byte bounds; see the
 [focused-owner failure evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-4/focused-owner-failures.md).
-T4.6 is next.
+
+`T4.6` is complete: the bounded finalizer retains the complete operational
+event set, selects any retained failure first, and otherwise applies the exact
+retryable-refusal, backpressure, supersession, later-admission, and no-change
+precedence before using success only for an empty set. Success, operational,
+and failure paths retain complete summaries. Every active exit phase enters
+finalizing once, releases scratch and borrow state, clears active identities,
+and restores the idle authoritative context; repeated finalization is refused.
+See the
+[cycle finalization evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-4/cycle-finalization.md).
+Milestone 4 is complete; T5.1 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
