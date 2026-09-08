@@ -335,7 +335,7 @@ fresh, non-aliasing target generations with exact borrowed lookup timing.
       rejects the candidate even if attach later returns a matching attachment,
       and prove successful replacement remains current and dirty when later
       derivation fails.
-- [ ] `T4.3` — Implement live and publishable borrowed target lookup. Enforce
+- [x] `T4.3` — Implement live and publishable borrowed target lookup. Enforce
       successful-encounter timing, preserved versus candidate-only results,
       invalid query `nil`, no lazy materialization, and publication making the
       staged generation live.
@@ -775,4 +775,13 @@ return exact cleanup identity. An attach-time report poisons the candidate so
 a later matching return cannot activate it, while successful replacement stays
 current and dirty across later derivation failure; see the
 [atomic replacement evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-4/atomic-replacement.md).
-T4.3 is next.
+
+`T4.3` is complete: the finite model-free target slot implements both borrowed
+view operations over exact structural identity/ordinal keys. Live lookup sees
+only publication; publishable lookup begins only after a successful preserved
+or candidate-only encounter, uses the already-reserved generation, and ends at
+candidate finish. Tests prove wrong and premature queries return `nil` without
+materialization, publication promotes the staged generation, discard exposes
+nothing, and the workspace remains reusable; see the
+[target lookup evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-4/target-lookup.md).
+T4.4 is next.
