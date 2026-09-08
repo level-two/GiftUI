@@ -360,7 +360,7 @@ mandatory effect with bounded, coalesced state.
       repeated coalescing, and proven no-op omission. Keep the registration
       record to bounded route validation rather than a callable sink copy or
       report history.
-- [ ] `T5.2` — Integrate one wake intent, complete-root dirty derivation,
+- [x] `T5.2` — Integrate one wake intent, complete-root dirty derivation,
       freeze, successful-publication clearing, frame-refusal independence, and
       derivation-failure dirty retention without mutation replay.
 - [ ] `T5.3` — Reject reports during attach, candidate state, detach, after
@@ -803,4 +803,12 @@ The first valid report dirties once and requests one semantic wake; repeats
 coalesce, while a proven no-op invokes no route. Registration state retains no
 sink, callable route, or report history; see the
 [report route evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-5/report-route.md).
-T5.2 is next.
+
+`T5.2` is complete: bounded per-location dirty bits share one semantic wake,
+freeze into one represented epoch, and cause complete-root derivation. A
+successful publication clears exactly that epoch, while later frame refusal
+does not restore dirtiness. Derivation failure retains dirtiness and schedules
+one later wake; recovery rederives without incrementing the applied-mutation
+count. Mutation and repeated freeze are rejected beyond the boundary; see the
+[dirty derivation evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-5/dirty-derivation.md).
+T5.3 is next.
