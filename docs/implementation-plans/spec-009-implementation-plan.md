@@ -335,7 +335,7 @@ standalone transcripts.
       exhaustion, and independently enforceable target-gate versus runtime
       validation. Keep target-local physical phases outside runtime-visible
       sequence allocation until submission.
-- [ ] `T3.3` — Implement down capture, move cancellation seam, release
+- [x] `T3.3` — Implement down capture, move cancellation seam, release
       revalidation, and activation-candidate formation through the borrowed
       `ExecutionActionView`. Prove stable records survive unrelated commits
       and that removal, movement, disablement, generation change, target
@@ -877,6 +877,16 @@ separate target-gate proof for unfinished-sequence replacement, and maintains
 independent fixed-width state per bounded source. See the
 [input sequence evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-3/input-sequences.md).
 T3.3 is next.
+
+`T3.3` is complete: the finite capture clears older state before down hit
+resolution, stores only the exact identity-generation pair from the borrowed
+action view, supports movement cancellation, and releases only after complete
+identity, generation, enabled-state, provenance, and ambiguity revalidation.
+Tests prove stable records survive unrelated commits while removal, movement,
+disablement, generation/target-record change, unavailable lookup, or ambiguous
+reuse produces no activation and no retargeting; see the
+[pointer capture evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-3/pointer-capture.md).
+T3.4 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
