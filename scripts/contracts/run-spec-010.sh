@@ -65,6 +65,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-010-harness.rb" \
             "${SCRIPT_DIR}/check-spec-010-migration.rb" \
             "${SCRIPT_DIR}/check-spec-010-macro-boundary.rb" \
+            "${SCRIPT_DIR}/check-spec-010-milestone-3.rb" \
             "${SCRIPT_DIR}/check-spec-010-owner-values.rb" \
             "${SCRIPT_DIR}/check-spec-010-owner-protocols.rb" \
             "${SCRIPT_DIR}/check-spec-010-profile-host.rb" \
@@ -351,6 +352,8 @@ record_command "${SCRIPT_DIR}/check-spec-010-fact-admission.rb"
 "${SCRIPT_DIR}/check-spec-010-fact-admission.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-macro-boundary.rb"
 "${SCRIPT_DIR}/check-spec-010-macro-boundary.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-010-milestone-3.rb"
+"${SCRIPT_DIR}/check-spec-010-milestone-3.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-owner-values.rb"
 "${SCRIPT_DIR}/check-spec-010-owner-values.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-owner-protocols.rb"

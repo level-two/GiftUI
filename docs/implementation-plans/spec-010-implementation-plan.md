@@ -286,7 +286,9 @@ with exact local values, protocols, module direction, and no profile storage.
 fixture-finite reconciler can observe SPEC-006 structural identities.
 
 **Exit evidence:** One complete candidate preserves/materializes/removes
-locations atomically and binds every wrapper before its body.
+locations atomically and binds every wrapper before its body. The consolidated
+[Milestone 3 evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-3/README.md)
+maps each completed task and preserves the later acceptance-criterion gates.
 
 - [x] `T3.1` — Implement begin/encounter/finish lifecycle, checked capacities,
       active-candidate guard, and staged association storage. Reserve every
@@ -748,3 +750,8 @@ detach exactly the rejected candidate state, preserve prior live state, and
 suppress the stateful body for every binding failure. See the
 [reconciliation fault evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-3/reconciliation-faults.md).
 Milestone 3 behavior is complete; its evidence consolidation is next.
+
+Milestone 3 evidence is consolidated: the task index maps T3.1 through T3.4 to
+their commits, focused records, source audits, and reproducible test commands.
+OS-002, OS-003, and OS-005 remain pending because their mapped T6, T4, and T7
+work is not complete. The Milestone 3 plan boundary is complete; T4.1 is next.
