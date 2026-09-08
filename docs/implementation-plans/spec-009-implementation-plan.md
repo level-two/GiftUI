@@ -369,7 +369,7 @@ not required.
 cycle independently of concrete semantic, layout, state, Interaction,
 render-lowering, runtime, or backend implementations.
 
-- [ ] `T4.1` — Implement the canonical recording coordinator and closed event
+- [x] `T4.1` — Implement the canonical recording coordinator and closed event
       vocabulary for idle, admitting, mutating, deriving, publishing,
       offering, finalizing, result selection, wake transitions, and
       authoritative state. The fixture may inject focused owner results but
@@ -916,8 +916,17 @@ workspace during finalization for clean reuse. The admission-controller and
 sealer boundary fixtures complete active-source refusal, full-queue refusal,
 and valid suffix deferral coverage; see the
 [admission seal fault evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-3/admission-seal-faults.md).
-Milestone 3 is complete. T4.1 is the next SPEC-009 task after the requested
-SPEC-010 target-lifetime group.
+Milestone 3 is complete.
+
+`T4.1` is complete: the canonical fixture implements the common opportunity
+runner, drives the existing phase and wake mechanisms, and emits a closed
+caller-owned event transcript for wake transition/take, every phase, result
+selection, and final authoritative state. Unchanged and published/offered paths
+prove exact phase coverage, coalescing, fresh later wake transitions, monotonic
+cycle/revision identities, and idle preservation without importing or
+redefining downstream owner contracts; see the
+[recording coordinator evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-4/recording-coordinator.md).
+T4.2 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
