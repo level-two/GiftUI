@@ -239,6 +239,11 @@ delivery receives a copied SPEC-003 record after the primary fact is fixed.
 Diagnostics do not participate in this mechanism. The later test-only owner
 adapter may observe the closed result only after Semantic Core returns.
 
+The Milestone 5 combined stateful entry preserves binding failures in the
+generic `BoundSemanticExpansionResult`. Owner failure discards and resets the
+semantic attempt without recording a semantic error; early and late generated
+wrapper failures therefore stage no body event and publish no semantic result.
+
 ## Rejected Implementation Alternatives
 
 - Retaining the borrowed root or body closures in a workspace was rejected
@@ -270,6 +275,7 @@ converting it into `SemanticExpansionError`.
 - [`SemanticExpansionTraversalTests.swift`](../../Tests/GiftUISemanticCoreTests/SemanticExpansionTraversalTests.swift)
 - [Expansion values evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-2/expansion-values.md)
 - [Attempt lifecycle evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-2/attempt-lifecycle.md)
+- [Stateful binding failure evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-5/stateful-binding-failures.md)
 - [Atomic traversal evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-2/atomic-traversal.md)
 - [SPEC-006](../specs/spec-006-declarative-view-semantics.md)
 - [SPEC-006 Implementation Plan](../implementation-plans/spec-006-implementation-plan.md)

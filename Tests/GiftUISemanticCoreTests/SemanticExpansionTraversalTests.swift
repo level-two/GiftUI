@@ -268,6 +268,55 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         XCTAssertTrue(statefulSink.stagedEvents.isEmpty)
     }
 
+    func testEveryStateBindingFailureSuppressesBodyAndSemanticPublication() {
+        let errors: [ObservableStateError] = [
+            .locationCapacityExhausted,
+            .registrationCapacityExhausted,
+            .associationStagingCapacityExhausted,
+            .replacementStagingCapacityExhausted,
+            .registrationGenerationExhausted,
+            .duplicateOwner,
+            .incompatibleAssociation,
+            .staleAttachment,
+            .invalidPhaseContained,
+            .invalidPhaseSafetyNotProven,
+            .reentrancyViolation,
+            .invariantViolation,
+        ]
+
+        for (index, error) in errors.enumerated() {
+            let trace = TraversalBindingTrace()
+            var workspace = TraversalWorkspace()
+            var sink = TraversalSink()
+            let failureOrdinal = UInt16(index % 2)
+            var binding = ObservableStateBindingDecorator(
+                reconciler: TraversalBindingReconciler(
+                    trace: trace,
+                    failure: error,
+                    failureOrdinal: failureOrdinal
+                )
+            )
+
+            let result = expandSemanticTreeWithStateBinding(
+                TraversalStatefulRoot(trace: trace),
+                limits: makeLimits(),
+                workspace: &workspace,
+                sink: &sink,
+                stateBinding: &binding
+            )
+
+            XCTAssertEqual(result, .bindingFailure(error))
+            XCTAssertEqual(trace.events.last, "fail:\(failureOrdinal)")
+            XCTAssertFalse(trace.events.contains("body"))
+            XCTAssertEqual(sink.bodyEvaluationStageCount, 0)
+            XCTAssertTrue(sink.committedEvents.isEmpty)
+            XCTAssertTrue(sink.stagedEvents.isEmpty)
+            XCTAssertEqual(sink.publishCount, 0)
+            XCTAssertEqual(sink.discardCount, 1)
+            XCTAssertFalse(workspace.isExpanding)
+        }
+    }
+
     private func makeLimits() -> SemanticExpansionLimits {
         SemanticExpansionLimits(
             maximumDepth: 16,
@@ -350,6 +399,8 @@ private struct TraversalBindingReconciler: ObservableStateReconciler {
 
     let trace: TraversalBindingTrace
     var ordinals: [UInt16] = []
+    var failure: ObservableStateError? = nil
+    var failureOrdinal: UInt16? = nil
 
     mutating func beginCandidate() -> ObservableStateResult {
         .success(.candidateStarted)
@@ -362,6 +413,10 @@ private struct TraversalBindingReconciler: ObservableStateReconciler {
     ) -> ObservableStateResult {
         trace.events.append("bind:\(declarationOrdinal)")
         ordinals.append(declarationOrdinal)
+        if failureOrdinal == declarationOrdinal, let failure {
+            trace.events.append("fail:\(declarationOrdinal)")
+            return .failure(failure)
+        }
         let box = TraversalBoundModelBox<Model>()
         guard
             let initial = state._giftUIBind(
@@ -642,9 +697,11 @@ private struct TraversalSink: SemanticExpansionSink {
     var observedActions: [TraversalAction] = []
     var publishCount = 0
     var discardCount = 0
+    var bodyEvaluationStageCount = 0
 
     mutating func beginExpansion() -> Bool {
         stagedEvents.removeAll(keepingCapacity: true)
+        bodyEvaluationStageCount = 0
         return true
     }
 
@@ -661,6 +718,7 @@ private struct TraversalSink: SemanticExpansionSink {
     mutating func stageBodyEvaluation(
         identity: borrowing TraversalIdentity
     ) -> Bool {
+        bodyEvaluationStageCount += 1
         return true
     }
 

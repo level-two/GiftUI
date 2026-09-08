@@ -378,7 +378,7 @@ no semantic publication when binding fails.
       transient copy, no Semantic Core state interpretation or retention, one
       body evaluation only after complete binding, and unchanged ordinary
       counts and structural/action identity on success.
-- [ ] `T5.3` — Inject every SPEC-010 binding failure relevant to this seam.
+- [x] `T5.3` — Inject every SPEC-010 binding failure relevant to this seam.
       Prove the body accessor and `evaluateCustomBody` event never occur, no
       partial semantic transcript/result publishes, the exact SPEC-010 error
       survives through the combined coordinator, and no semantic-expansion
@@ -789,3 +789,11 @@ structural/semantic event kinds, depth, and atomic publication exactly. No
 upward production import or state interpretation enters Semantic Core. See the
 [stateful binding evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-5/stateful-binding.md).
 T5.3 is next.
+
+`T5.3` is complete: the combined fixture injects all twelve exact SPEC-010
+errors at alternating first and second wrapper boundaries. Every case returns
+the unchanged typed binding failure, records no body-evaluation stage, commits
+and publishes nothing, discards once, resets the workspace, and never
+substitutes a `SemanticExpansionError`. See the
+[stateful binding failure evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-5/stateful-binding-failures.md).
+Milestone 5 is complete; T6.1 is the next SPEC-006 task.
