@@ -61,6 +61,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-009-execution-values.rb" \
             "$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb" \
             "$SCRIPT_DIR/check-spec-009-wake-values.rb" \
+            "$SCRIPT_DIR/check-spec-009-wake-accumulator.rb" \
             "$SCRIPT_DIR/check-spec-009-migration.rb" \
             "$SCRIPT_DIR/check-spec-009-phase-machine.rb" \
             "$SCRIPT_DIR/check-spec-009-run-cycle-values.rb" \
@@ -234,6 +235,8 @@ record_command "$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb"
 "$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-wake-values.rb"
 "$SCRIPT_DIR/check-spec-009-wake-values.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-009-wake-accumulator.rb"
+"$SCRIPT_DIR/check-spec-009-wake-accumulator.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-phase-machine.rb"
 "$SCRIPT_DIR/check-spec-009-phase-machine.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-run-cycle-values.rb"

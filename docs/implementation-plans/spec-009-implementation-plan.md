@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-06
-updated: 2026-09-07
+updated: 2026-09-08
 related_design_notes:
   - ../implementation-designs/spec-009-execution-state-axes.md
 conformance_report: null
@@ -325,7 +325,7 @@ does not select SPEC-013 production storage.
 source sequencing, capture, cancellation, and after-seal deferral have exact
 standalone transcripts.
 
-- [ ] `T3.1` — Implement one accumulated wake-reason set and
+- [x] `T3.1` — Implement one accumulated wake-reason set and
       `wakeOutstanding` transition: one request on empty-to-nonempty, atomic
       take/clear at idle opportunity entry, a new transition during every
       later phase/finalization, masking, duplicate coalescing, and no
@@ -856,6 +856,16 @@ intrinsic summary validation from fixture history, and the six independent
 state axes. It selects no production coordinator or profile storage and
 changes no transition or identity meaning. Milestone 2 is complete; T3.1 is
 the next dependency-complete task.
+
+`T3.1` is complete: one internal accumulator owns the normalized wake-reason
+set and outstanding bit, requests only on empty-to-nonempty transitions, and
+atomically takes and acknowledges both at idle opportunity entry. Focused
+tests prove masking, duplicate coalescing, a fresh transition for reasons
+arising after the take in every active/finalizing phase, non-idle rejection,
+and redundant idle opportunities. The generic requester returns no scheduling
+result and cannot synchronously select or run a cycle; see the
+[wake accumulation evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-3/wake-accumulation.md).
+T3.2 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
