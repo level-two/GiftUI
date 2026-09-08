@@ -383,7 +383,7 @@ render-lowering, runtime, or backend implementations.
       stable current state, reserve staged action generations, and publish a
       complete semantic revision atomically. Prove unchanged/no-obligation
       cycles produce no candidate or frame.
-- [ ] `T4.4` — Inject semantic, layout, action-table, routing, and immutable-
+- [x] `T4.4` — Inject semantic, layout, action-table, routing, and immutable-
       render-input failure before publication. Discard all partial downstream
       results, preserve already-applied effects as dirty, request one later
       semantic wake, and rederive without replay, recursive entry, or partial
@@ -945,7 +945,17 @@ remain retired. An unchanged result creates no semantic revision, action
 generation, candidate identity, or frame, and an outstanding presentation
 obligation selects recovery without inventing semantic change; see the
 [recording derivation evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-4/recording-derivation.md).
-T4.4 is next.
+
+`T4.4` is complete: the bounded recovery seam injects semantic, layout,
+action-table, routing, and immutable-render-input failures, discards every
+accumulated partial result, and preserves the prior complete semantic and
+presentation state. A failure after applied effects returns a dirty summary
+and requests one coalesced semantic wake; recovery is barred until that wake is
+taken at a later idle opportunity and leaves the applied-effect count unchanged.
+A clean pre-publication failure remains unchanged and requests no dirty wake;
+see the
+[recording recovery evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-4/recording-recovery.md).
+T4.5 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
