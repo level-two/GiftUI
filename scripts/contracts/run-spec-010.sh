@@ -71,6 +71,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-010-owner-protocols.rb" \
             "${SCRIPT_DIR}/check-spec-010-profile-host.rb" \
             "${SCRIPT_DIR}/check-spec-010-reconciliation-faults.rb" \
+            "${SCRIPT_DIR}/check-spec-010-replacement-transaction.rb" \
             "${SCRIPT_DIR}/check-spec-010-state-wrapper.rb" \
             "${SCRIPT_DIR}/check-spec-010-structural-reconciliation.rb" \
             "${SCRIPT_DIR}/check-spec-010-sink-ownership.sh" \
@@ -365,6 +366,8 @@ record_command "${SCRIPT_DIR}/check-spec-010-profile-host.rb"
 "${SCRIPT_DIR}/check-spec-010-profile-host.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-reconciliation-faults.rb"
 "${SCRIPT_DIR}/check-spec-010-reconciliation-faults.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-010-replacement-transaction.rb"
+"${SCRIPT_DIR}/check-spec-010-replacement-transaction.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-state-wrapper.rb"
 "${SCRIPT_DIR}/check-spec-010-state-wrapper.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-structural-reconciliation.rb"

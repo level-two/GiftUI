@@ -84,12 +84,16 @@ func everyReservationFaultIsStickyAndDiscardRestoresReusableStorage() {
 
 @Test
 func nilAndMismatchedAttachmentReturnsInvalidateCandidateRoute() {
-    for returned in [nil, mismatchedAttachment] {
+    let cases: [(_GiftUIObservationAttachment?, ObservableStateError)] = [
+        (nil, .duplicateOwner),
+        (mismatchedAttachment, .invariantViolation),
+    ]
+    for (returned, expectedFailure) in cases {
         var registration = ObservableStateRegistrationLifecycle()
         #expect(registration.beginAttachment(expectedAttachment) == nil)
         #expect(
             registration.acceptAttachmentReturn(returned)
-                == .staleAttachment
+                == expectedFailure
         )
         #expect(!registration.isActive)
         #expect(

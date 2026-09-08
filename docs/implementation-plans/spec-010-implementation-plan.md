@@ -327,7 +327,7 @@ fresh, non-aliasing target generations with exact borrowed lookup timing.
 - [x] `T4.1` — Implement checked runtime-wide attachment-generation allocation
       with raw zero first, no sentinel/reuse/wrap, slot recycling protected by
       the full attachment, and fail-closed initial/replacement exhaustion.
-- [ ] `T4.2` — Implement atomic mutation-phase replacement: validate and
+- [x] `T4.2` — Implement atomic mutation-phase replacement: validate and
       reserve, attach/verify the candidate, commit it, activate its fresh
       generation, detach/retire the former registration, and dirty the
       location. Every precommit failure preserves the former model, route,
@@ -765,4 +765,14 @@ prove recycled slots reject former attachments, while initial exhaustion
 activates nothing and replacement exhaustion preserves the former live route;
 see the
 [attachment-generation evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-4/attachment-generations.md).
-T4.2 is next.
+
+`T4.2` is complete: the mutation-only replacement transaction applies exact
+validation and reservation precedence before attachment, verifies the complete
+candidate attachment, and atomically retires the former route while installing
+the fresh target generation and dirtiness. Every precommit failure preserves
+the former route, generation, and dirty state; candidate attachment failures
+return exact cleanup identity. An attach-time report poisons the candidate so
+a later matching return cannot activate it, while successful replacement stays
+current and dirty across later derivation failure; see the
+[atomic replacement evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-4/atomic-replacement.md).
+T4.3 is next.

@@ -11,6 +11,12 @@ struct ObservableStateRegistrationLifecycle: Equatable, Sendable {
 
     private var state: State = .vacant
 
+    init() {}
+
+    init(activeAttachment: _GiftUIObservationAttachment) {
+        state = .active(activeAttachment)
+    }
+
     var isActive: Bool {
         if case .active = state { return true }
         return false
@@ -42,9 +48,17 @@ struct ObservableStateRegistrationLifecycle: Equatable, Sendable {
         else {
             return .invariantViolation
         }
-        guard !reportAttempted, returned == expected else {
+        guard !reportAttempted else {
             state = .retired
             return .staleAttachment
+        }
+        guard let returned else {
+            state = .retired
+            return .duplicateOwner
+        }
+        guard returned == expected else {
+            state = .retired
+            return .invariantViolation
         }
         state = .active(expected)
         return nil
