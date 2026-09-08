@@ -354,7 +354,7 @@ coordinator supplies phase, wake, publication, and mutation-result seams.
 **Exit evidence:** Every synchronous report produces its exact outcome and
 mandatory effect with bounded, coalesced state.
 
-- [ ] `T5.1` — Activate the noncopyable sink only after verified attachment;
+- [x] `T5.1` — Activate the noncopyable sink only after verified attachment;
       implement exact sink/package outcome correspondence, synchronous model
       reporting before a changed mutation returns, one dirty transition,
       repeated coalescing, and proven no-op omission. Keep the registration
@@ -794,5 +794,13 @@ and the T4.2 matrix preserves the former pair on staged or failed replacement.
 Interaction construction can access the private model-free target view only
 through one synchronous closure with a `borrowing` parameter; see the
 [target lifetime evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-4/target-lifetime.md).
-Milestone 4 is complete. T5.1 follows the requested SPEC-009 Milestone 4
-coordinator group.
+Milestone 4 is complete.
+
+`T5.1` is complete: the bounded registration route activates only after the
+model returns its exact attachment, maps every sink outcome to the exact
+package result, and synchronously reports every changed mutation before return.
+The first valid report dirties once and requests one semantic wake; repeats
+coalesce, while a proven no-op invokes no route. Registration state retains no
+sink, callable route, or report history; see the
+[report route evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-5/report-route.md).
+T5.2 is next.
