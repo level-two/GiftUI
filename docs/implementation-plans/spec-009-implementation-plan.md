@@ -374,7 +374,7 @@ render-lowering, runtime, or backend implementations.
       offering, finalizing, result selection, wake transitions, and
       authoritative state. The fixture may inject focused owner results but
       must not create a second production semantic/layout/render contract.
-- [ ] `T4.2` — Apply sealed state-change facts, completion facts, and semantic
+- [x] `T4.2` — Apply sealed state-change facts, completion facts, and semantic
       actions exactly once in category and producer/pointer order. Revalidate
       identity, action generation, enabled state, and target generation at the
       fixture dispatcher boundary; prove no admission-time dispatch and no
@@ -926,7 +926,16 @@ prove exact phase coverage, coalescing, fresh later wake transitions, monotonic
 cycle/revision identities, and idle preservation without importing or
 redefining downstream owner contracts; see the
 [recording coordinator evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-4/recording-coordinator.md).
-T4.2 is next.
+
+`T4.2` is complete: a bounded one-shot sealed batch applies state-change,
+completion, and semantic-action values exactly once in contract and
+producer/pointer order. Action dispatch immediately revalidates identity,
+action generation, enabled state, and observable target generation; every
+mismatch suppresses dispatch without retargeting. Construction and admission
+dispatch nothing, while every later phase and repeated mutation attempt leaves
+the applied transcript unchanged; see the
+[recording mutation evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-4/recording-mutation.md).
+T4.3 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
