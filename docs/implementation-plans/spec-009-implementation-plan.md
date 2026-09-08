@@ -418,7 +418,7 @@ terminal state has an exact transcript.
       every body observation/result pairing according to SPEC-009, including
       all illegal pairings and the distinct render-producer versus endpoint
       refusal origins.
-- [ ] `T5.3` — Implement candidate allocation and presentation-revision
+- [x] `T5.3` — Implement candidate allocation and presentation-revision
       reservation at the exact new-publication and unchanged-recovery phase
       boundaries, then invoke `offer` at most once. Exercise candidate-ID,
       presentation-ID, invalid-envelope, required-facility, and direct
@@ -992,7 +992,15 @@ only the five legal called-body pairings, normalizes all other pairings to an
 endpoint contract violation, and distinguishes render-producer refusal from a
 no-body endpoint refusal. See the
 [offer normalization evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-5/offer-normalization.md).
-T5.3 is next.
+
+`T5.3` is complete: candidate and presentation identities reserve in order at
+the publishing boundary for a new revision and the deriving boundary for
+unchanged recovery. Exhaustion, facility loss before/after candidate
+allocation, and direct contract failure preserve the semantic revision and
+never enter the body. Invalid envelopes enter one offer but no body; repeated
+offer is rejected. See the
+[candidate offer evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-5/candidate-offer.md).
+T5.4 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
