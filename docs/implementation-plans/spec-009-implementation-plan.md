@@ -379,7 +379,7 @@ render-lowering, runtime, or backend implementations.
       identity, action generation, enabled state, and target generation at the
       fixture dispatcher boundary; prove no admission-time dispatch and no
       replay after every later outcome.
-- [ ] `T4.3` — Freeze mutation membership, coalesce invalidation, derive from
+- [x] `T4.3` — Freeze mutation membership, coalesce invalidation, derive from
       stable current state, reserve staged action generations, and publish a
       complete semantic revision atomically. Prove unchanged/no-obligation
       cycles produce no candidate or frame.
@@ -935,7 +935,17 @@ mismatch suppresses dispatch without retargeting. Construction and admission
 dispatch nothing, while every later phase and repeated mutation attempt leaves
 the applied transcript unchanged; see the
 [recording mutation evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-4/recording-mutation.md).
-T4.3 is next.
+
+`T4.3` is complete: mutation membership freezes exactly once, invalidations
+coalesce separately before and after that boundary, and changed derivation
+reserves bounded staged action generations before its semantic revision. Only
+a fully reserved derivation replaces the published revision; capacity and
+identity failures preserve the prior publication while consumed identities
+remain retired. An unchanged result creates no semantic revision, action
+generation, candidate identity, or frame, and an outstanding presentation
+obligation selects recovery without inventing semantic change; see the
+[recording derivation evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-4/recording-derivation.md).
+T4.4 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
