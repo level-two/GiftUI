@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-01
-updated: 2026-09-05
+updated: 2026-09-08
 related_design_notes:
   - ../implementation-designs/spec-006-bounded-semantic-expansion.md
 conformance_report: null
@@ -373,7 +373,7 @@ no semantic publication when binding fails.
       `@ObservableStateHost` view side by side. Prove only the generated witness
       calls `visitStatefulCustomView`, the ordinary default still calls
       `visitCustomView`, and application code hand-authors neither witness.
-- [ ] `T5.2` — Extend the recording visitor through the SPEC-010 decorator.
+- [x] `T5.2` — Extend the recording visitor through the SPEC-010 decorator.
       Prove lexical state-declaration ordinal order, binding on one mutable
       transient copy, no Semantic Core state interpretation or retention, one
       body evaluation only after complete binding, and unchanged ordinary
@@ -779,3 +779,13 @@ witness selects `visitCustomView`, the generated witness selects only
 hand-authors a traversal witness; see the
 [generated stateful routing evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-5/generated-stateful-routing.md).
 `T5.2` remains gated on the SPEC-010-owned state-aware binding decorator.
+
+`T5.2` is complete: Semantic Core owns a downward generic state-binding hook
+and a combined result that keeps typed binding failure separate from semantic
+failure; `GiftUIObservableState` supplies the checked decorator conformance.
+The macro-generated two-wrapper fixture records lexical `bind:0`, `bind:1`,
+then one body evaluation, and matches an ordinary equivalent's summary,
+structural/semantic event kinds, depth, and atomic publication exactly. No
+upward production import or state interpretation enters Semantic Core. See the
+[stateful binding evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-5/stateful-binding.md).
+T5.3 is next.

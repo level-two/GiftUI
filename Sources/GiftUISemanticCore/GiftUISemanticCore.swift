@@ -60,6 +60,31 @@ package enum SemanticExpansionResult: Equatable, Sendable {
     case failure(SemanticExpansionError)
 }
 
+package enum SemanticStateBindingOutcome<Failure> {
+    case bound
+    case failure(Failure)
+    case unavailable
+}
+
+package protocol SemanticStatefulBinding {
+    associatedtype Identity: Equatable
+    associatedtype Failure: Equatable & Sendable
+
+    mutating func bind<Declaration>(
+        _ declaration: borrowing Declaration,
+        structuralIdentity: Identity,
+        body: (borrowing Declaration) -> Void
+    ) -> SemanticStateBindingOutcome<Failure>
+    where Declaration: View & _GiftUIObservableStateHost
+}
+
+package enum BoundSemanticExpansionResult<BindingFailure>: Equatable, Sendable
+where BindingFailure: Equatable & Sendable {
+    case success(SemanticExpansionSummary)
+    case semanticFailure(SemanticExpansionError)
+    case bindingFailure(BindingFailure)
+}
+
 package protocol SemanticExpansionWorkspace {
     associatedtype Identity: Equatable
 
@@ -755,6 +780,31 @@ struct SemanticExpansionAttempt {
         return error
     }
 
+    mutating func discardForOwnerFailure<Workspace, Sink>(
+        workspace: inout Workspace,
+        sink: inout Sink
+    )
+    where
+        Workspace: SemanticExpansionWorkspace,
+        Sink: SemanticExpansionSink,
+        Workspace.Identity == Sink.Identity
+    {
+        if workspaceBegan {
+            workspace.discardExpansion()
+        }
+        if sinkBegan {
+            sink.discardExpansion()
+        }
+        if workspaceBegan {
+            workspace.resetExpansion()
+        }
+        if sinkBegan {
+            sink.resetExpansion()
+        }
+        workspaceBegan = false
+        sinkBegan = false
+    }
+
     private mutating func enterPath<Workspace: SemanticExpansionWorkspace>(
         workspace: inout Workspace,
         identity: inout Workspace.Identity?,
@@ -808,18 +858,22 @@ struct SemanticExpansionAttempt {
     }
 }
 
-private struct SemanticExpansionTraversal<Workspace, Sink>:
+private struct SemanticExpansionTraversal<Workspace, Sink, StateBinding>:
     _GiftUISemanticTraversalVisitor
 where
     Workspace: SemanticExpansionWorkspace,
     Sink: SemanticExpansionSink,
-    Workspace.Identity == Sink.Identity
+    StateBinding: SemanticStatefulBinding,
+    Workspace.Identity == Sink.Identity,
+    Workspace.Identity == StateBinding.Identity
 {
     private(set) var attempt: SemanticExpansionAttempt
     private(set) var workspace: Workspace
     private(set) var sink: Sink
+    private(set) var stateBinding: StateBinding
 
     private(set) var failure: SemanticExpansionError?
+    private(set) var bindingFailure: StateBinding.Failure?
     private var currentIdentity: Workspace.Identity?
     private var currentCategoryWasVisited = false
     private var nextModifierChainIndex: UInt16 = 0
@@ -827,11 +881,13 @@ where
     init(
         attempt: SemanticExpansionAttempt,
         workspace: Workspace,
-        sink: Sink
+        sink: Sink,
+        stateBinding: StateBinding
     ) {
         self.attempt = attempt
         self.workspace = workspace
         self.sink = sink
+        self.stateBinding = stateBinding
     }
 
     mutating func expandRoot<Root: View>(_ root: borrowing Root) {
@@ -905,11 +961,65 @@ where
         body: (borrowing Declaration) -> Declaration.Body
     ) {
         guard beginCategory() else { return }
+        var bodyIdentity: Workspace.Identity?
+        if let error = attempt.enterCustomBody(
+            Declaration.self,
+            workspace: &workspace,
+            identity: &bodyIdentity
+        ) {
+            stop(error)
+            return
+        }
+        guard let bodyIdentity else {
+            stop(.invalidIdentity)
+            return
+        }
+        currentIdentity = bodyIdentity
 
-        // SPEC-010's binding decorator owns this category. Milestone 5 installs
-        // that combined coordinator; Semantic Core must not evaluate the body
-        // or invent state binding before then.
-        stop(.invariantViolation)
+        var evaluatedBody: Declaration.Body?
+        var bodyFailure: SemanticExpansionError?
+        let bindingOutcome = stateBinding.bind(
+            declaration,
+            structuralIdentity: bodyIdentity
+        ) { boundDeclaration in
+            if let error = attempt.stageBodyEvaluation(
+                identity: bodyIdentity,
+                workspace: &workspace,
+                sink: &sink
+            ) {
+                bodyFailure = error
+                return
+            }
+            guard Declaration.Body.self != Never.self else {
+                bodyFailure = .invariantViolation
+                return
+            }
+            evaluatedBody = body(boundDeclaration)
+        }
+
+        switch bindingOutcome {
+        case .failure(let error):
+            bindingFailure = error
+            return
+        case .unavailable:
+            stop(.invariantViolation)
+            return
+        case .bound:
+            break
+        }
+        if let bodyFailure {
+            stop(bodyFailure)
+            return
+        }
+        guard let evaluatedBody else {
+            stop(.invariantViolation)
+            return
+        }
+        expandDeclaration(evaluatedBody)
+        guard failure == nil, bindingFailure == nil else { return }
+        if let error = attempt.leavePathComponent(workspace: &workspace) {
+            stop(error)
+        }
     }
 
     mutating func visitEmpty() {
@@ -1207,6 +1317,22 @@ where
     }
 }
 
+private enum UnsupportedStateBindingFailure: UInt8, Equatable, Sendable {
+    case unreachable = 0
+}
+
+private struct UnsupportedStateBinding<Identity>: SemanticStatefulBinding
+where Identity: Equatable {
+    mutating func bind<Declaration>(
+        _ declaration: borrowing Declaration,
+        structuralIdentity: Identity,
+        body: (borrowing Declaration) -> Void
+    ) -> SemanticStateBindingOutcome<UnsupportedStateBindingFailure>
+    where Declaration: View & _GiftUIObservableStateHost {
+        .unavailable
+    }
+}
+
 package func expandSemanticTree<
     Root: View,
     Workspace: SemanticExpansionWorkspace,
@@ -1217,25 +1343,71 @@ package func expandSemanticTree<
     workspace: inout Workspace,
     sink: inout Sink
 ) -> SemanticExpansionResult where Workspace.Identity == Sink.Identity {
+    var stateBinding = UnsupportedStateBinding<Workspace.Identity>()
+    let result = expandSemanticTreeWithStateBinding(
+        root,
+        limits: limits,
+        workspace: &workspace,
+        sink: &sink,
+        stateBinding: &stateBinding
+    )
+    switch result {
+    case .success(let summary):
+        return .success(summary)
+    case .semanticFailure(let error):
+        return .failure(error)
+    case .bindingFailure:
+        return .failure(.invariantViolation)
+    }
+}
+
+package func expandSemanticTreeWithStateBinding<
+    Root: View,
+    Workspace: SemanticExpansionWorkspace,
+    Sink: SemanticExpansionSink,
+    StateBinding: SemanticStatefulBinding
+>(
+    _ root: borrowing Root,
+    limits: SemanticExpansionLimits,
+    workspace: inout Workspace,
+    sink: inout Sink,
+    stateBinding: inout StateBinding
+) -> BoundSemanticExpansionResult<StateBinding.Failure>
+where
+    Workspace.Identity == Sink.Identity,
+    Workspace.Identity == StateBinding.Identity
+{
     var attempt = SemanticExpansionAttempt(limits: limits)
     if let error = attempt.begin(workspace: &workspace, sink: &sink) {
-        return .failure(error)
+        return .semanticFailure(error)
     }
 
     var traversal = SemanticExpansionTraversal(
         attempt: attempt,
         workspace: workspace,
-        sink: sink
+        sink: sink,
+        stateBinding: stateBinding
     )
     traversal.expandRoot(root)
     attempt = traversal.attempt
     workspace = traversal.workspace
     sink = traversal.sink
+    stateBinding = traversal.stateBinding
+
+    if let bindingFailure = traversal.bindingFailure {
+        attempt.discardForOwnerFailure(workspace: &workspace, sink: &sink)
+        return .bindingFailure(bindingFailure)
+    }
 
     if let traversalFailure = traversal.failure {
-        return .failure(
+        return .semanticFailure(
             attempt.fail(traversalFailure, workspace: &workspace, sink: &sink)
         )
     }
-    return attempt.succeed(workspace: &workspace, sink: &sink)
+    switch attempt.succeed(workspace: &workspace, sink: &sink) {
+    case .success(let summary):
+        return .success(summary)
+    case .failure(let error):
+        return .semanticFailure(error)
+    }
 }

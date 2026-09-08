@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-05
-updated: 2026-09-05
+updated: 2026-09-08
 implementation_plan: ../implementation-plans/spec-006-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -258,12 +258,14 @@ adapter may observe the closed result only after Semantic Core returns.
 No open implementation choice blocks T2.1 through T2.3. Milestone 3 must choose
 the checked-in recording workspace and sink representations while preserving
 this coordinator and SPEC-006's exact canonical equality and transcript rules.
-Milestone 5 must compose the SPEC-010 binding decorator without converting its
-binding failures into `SemanticExpansionError`.
+Milestone 5 composes the SPEC-010 binding decorator through a downward generic
+hook. The combined result keeps its exact owner failure distinct rather than
+converting it into `SemanticExpansionError`.
 
 ## Code and Evidence Links
 
 - [`GiftUISemanticCore.swift`](../../Sources/GiftUISemanticCore/GiftUISemanticCore.swift)
+- [`ObservableStateBindingDecorator.swift`](../../Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift)
 - [`SemanticExpansionAttemptTests.swift`](../../Tests/GiftUISemanticCoreTests/SemanticExpansionAttemptTests.swift)
 - [`SemanticExpansionTraversalTests.swift`](../../Tests/GiftUISemanticCoreTests/SemanticExpansionTraversalTests.swift)
 - [Expansion values evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-2/expansion-values.md)

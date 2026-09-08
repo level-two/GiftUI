@@ -1,4 +1,5 @@
 import GiftUI
+import GiftUIObservableState
 import XCTest
 
 @testable import GiftUISemanticCore
@@ -207,6 +208,66 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         XCTAssertFalse(workspace.isExpanding)
     }
 
+    func testStatefulDecoratorBindsLexicallyBeforeUnchangedSemanticTraversal() {
+        let trace = TraversalBindingTrace()
+        let root = TraversalStatefulRoot(trace: trace)
+        var statefulWorkspace = TraversalWorkspace()
+        var statefulSink = TraversalSink()
+        var binding = ObservableStateBindingDecorator(
+            reconciler: TraversalBindingReconciler(trace: trace)
+        )
+
+        let statefulResult = expandSemanticTreeWithStateBinding(
+            root,
+            limits: makeLimits(),
+            workspace: &statefulWorkspace,
+            sink: &statefulSink,
+            stateBinding: &binding
+        )
+
+        var ordinaryWorkspace = TraversalWorkspace()
+        var ordinarySink = TraversalSink()
+        let ordinaryResult = expandSemanticTree(
+            TraversalOrdinaryBoundEquivalent(),
+            limits: makeLimits(),
+            workspace: &ordinaryWorkspace,
+            sink: &ordinarySink
+        )
+
+        XCTAssertEqual(
+            statefulResult,
+            .success(
+                SemanticExpansionSummary(
+                    semanticNodeCount: 1,
+                    bodyEvaluationCount: 1,
+                    modifierApplicationCount: 0,
+                    actionOccurrenceCount: 0,
+                    maximumObservedDepth: 4
+                )
+            )
+        )
+        XCTAssertEqual(
+            ordinaryResult,
+            .success(
+                SemanticExpansionSummary(
+                    semanticNodeCount: 1,
+                    bodyEvaluationCount: 1,
+                    modifierApplicationCount: 0,
+                    actionOccurrenceCount: 0,
+                    maximumObservedDepth: 4
+                )
+            )
+        )
+        XCTAssertEqual(trace.events, ["bind:0", "bind:1", "body"])
+        XCTAssertEqual(binding.reconciler.ordinals, [0, 1])
+        XCTAssertEqual(
+            statefulSink.committedEvents.map(\.kind),
+            ordinarySink.committedEvents.map(\.kind)
+        )
+        XCTAssertEqual(statefulSink.publishCount, 1)
+        XCTAssertTrue(statefulSink.stagedEvents.isEmpty)
+    }
+
     private func makeLimits() -> SemanticExpansionLimits {
         SemanticExpansionLimits(
             maximumDepth: 16,
@@ -237,6 +298,89 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         XCTAssertEqual(sink.publishCount, 0, file: file, line: line)
         XCTAssertEqual(sink.discardCount, 1, file: file, line: line)
         XCTAssertFalse(workspace.isExpanding, file: file, line: line)
+    }
+}
+
+private final class TraversalBoundModel: _GiftUIObservableReference {
+    let value: UInt8
+
+    init(value: UInt8) {
+        self.value = value
+    }
+
+    func _giftUIAttachChangeSink(
+        _ sink: consuming _GiftUIObservableChangeSink
+    ) -> _GiftUIObservationAttachment? {
+        sink.attachment
+    }
+
+    func _giftUIDetachChangeSink(
+        _ attachment: _GiftUIObservationAttachment
+    ) {}
+}
+
+private final class TraversalBoundModelBox<Model> {
+    var model: Model?
+}
+
+private final class TraversalBindingTrace {
+    var events: [String] = []
+}
+
+@ObservableStateHost
+private struct TraversalStatefulRoot: View {
+    @State private var first = TraversalBoundModel(value: 3)
+    @State private var second = TraversalBoundModel(value: 5)
+    let trace: TraversalBindingTrace
+
+    var body: TraversalPrimitive {
+        trace.events.append("body")
+        return TraversalPrimitive(marker: first.value + second.value)
+    }
+}
+
+private struct TraversalOrdinaryBoundEquivalent: View {
+    var body: TraversalPrimitive {
+        TraversalPrimitive(marker: 8)
+    }
+}
+
+private struct TraversalBindingReconciler: ObservableStateReconciler {
+    typealias StructuralIdentity = TraversalIdentity
+
+    let trace: TraversalBindingTrace
+    var ordinals: [UInt16] = []
+
+    mutating func beginCandidate() -> ObservableStateResult {
+        .success(.candidateStarted)
+    }
+
+    mutating func encounter<Model: _GiftUIObservableReference>(
+        structuralIdentity: TraversalIdentity,
+        declarationOrdinal: UInt16,
+        state: inout State<Model>
+    ) -> ObservableStateResult {
+        trace.events.append("bind:\(declarationOrdinal)")
+        ordinals.append(declarationOrdinal)
+        let box = TraversalBoundModelBox<Model>()
+        guard
+            let initial = state._giftUIBind(
+                read: { box.model! },
+                replace: { box.model = $0 }
+            )
+        else {
+            return .failure(.invariantViolation)
+        }
+        box.model = initial
+        return .success(.preserved)
+    }
+
+    mutating func finishCandidate(
+        _ disposition: ObservableStateCandidateDisposition
+    ) -> ObservableStateResult {
+        disposition == .publish
+            ? .success(.associationsCommitted)
+            : .success(.candidateDiscarded)
     }
 }
 

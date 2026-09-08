@@ -59,6 +59,7 @@ targets:
     type: test
     dependencies:
       - GiftUI
+      - GiftUIObservableState
       - GiftUISemanticCore
   GiftUITextResources:
     type: regular

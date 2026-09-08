@@ -58,6 +58,7 @@ declared_inputs() {
             "${DECLARATION_SOURCE}" \
             "${OBSERVABLE_SOURCE}" \
             "${SEMANTIC_SOURCE}" \
+            "${PROJECT_ROOT}/Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift" \
             "${PROJECT_ROOT}/Package.swift" \
             "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
             "${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv" \
@@ -67,6 +68,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-006-wrapper-sil.rb" \
             "${SCRIPT_DIR}/check-spec-006-traversal-surface.rb" \
             "${SCRIPT_DIR}/check-spec-006-migration.rb" \
+            "${SCRIPT_DIR}/check-spec-006-stateful-binding.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
             "${SCRIPT_DIR}/publish-contract-report.rb" \
             "${SCRIPT_DIR}/verify-contract-report.rb" \
@@ -371,6 +373,8 @@ record_command "${SCRIPT_DIR}/check-spec-006-builder-surface.rb"
 "${SCRIPT_DIR}/check-spec-006-builder-surface.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-006-traversal-surface.rb"
 "${SCRIPT_DIR}/check-spec-006-traversal-surface.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-006-stateful-binding.rb"
+"${SCRIPT_DIR}/check-spec-006-stateful-binding.rb" >>"${log_path}" 2>&1
 
 case "${profile}" in
     macos-dynamic | macos-static) run_macos ;;

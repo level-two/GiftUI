@@ -1,4 +1,5 @@
 import GiftUI
+import GiftUISemanticCore
 
 package struct ObservableStateBindingDecorator<Reconciler>
 where Reconciler: ObservableStateReconciler {
@@ -28,6 +29,29 @@ where Reconciler: ObservableStateReconciler {
 
         body(transientDeclaration)
         return .success(.unchanged)
+    }
+}
+
+extension ObservableStateBindingDecorator: SemanticStatefulBinding {
+    package typealias Identity = Reconciler.StructuralIdentity
+    package typealias Failure = ObservableStateError
+
+    package mutating func bind<Declaration>(
+        _ declaration: borrowing Declaration,
+        structuralIdentity: Reconciler.StructuralIdentity,
+        body: (borrowing Declaration) -> Void
+    ) -> SemanticStateBindingOutcome<ObservableStateError>
+    where Declaration: View & _GiftUIObservableStateHost {
+        switch withBoundDeclaration(
+            declaration,
+            structuralIdentity: structuralIdentity,
+            body: body
+        ) {
+        case .success:
+            return .bound
+        case .failure(let error):
+            return .failure(error)
+        }
     }
 }
 

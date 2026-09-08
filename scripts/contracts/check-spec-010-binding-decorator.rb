@@ -14,7 +14,8 @@ end
 
 source = SOURCE.read
 tests = TEST.read
-fail_check("binding decorator imports differ") unless source.scan(/^import (\w+)$/).flatten == %w[GiftUI]
+expected_imports = %w[GiftUI GiftUISemanticCore]
+fail_check("binding decorator imports differ") unless source.scan(/^import (\w+)$/).flatten == expected_imports
 
 required = [
   "package struct ObservableStateBindingDecorator<Reconciler>",
@@ -29,6 +30,8 @@ required = [
   "case .success(.materialized), .success(.preserved):",
   "failure = .invariantViolation",
   "failure = error",
+  "extension ObservableStateBindingDecorator: SemanticStatefulBinding",
+  "return .bound",
 ]
 required.each do |fragment|
   fail_check("binding decorator lacks #{fragment}") unless source.include?(fragment)
