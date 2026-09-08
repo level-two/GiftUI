@@ -413,7 +413,7 @@ terminal state has an exact transcript.
       operation/vocabulary validation, retained local producer error, and
       post-return borrow poisoning. It must retain only endpoint-owned derived
       values after acceptance and no candidate data after any other result.
-- [ ] `T5.2` — Implement the runtime-side adapter from SPEC-008 production to
+- [x] `T5.2` — Implement the runtime-side adapter from SPEC-008 production to
       `FrameStreamResult`, preserving the exact local render error. Normalize
       every body observation/result pairing according to SPEC-009, including
       all illegal pairings and the distinct render-producer versus endpoint
@@ -984,7 +984,15 @@ local producer error, and is poisoned on every return. Acceptance retains only
 endpoint-derived frame values; every other result releases the reservation and
 retains no candidate data. See the
 [recording endpoint evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-5/recording-endpoint.md).
-T5.2 is next.
+
+`T5.2` is complete: the runtime-side seam adapts successful production and all
+seven exact render errors to the narrow stream vocabulary while retaining the
+local error separately. The exhaustive stream/error/endpoint matrix accepts
+only the five legal called-body pairings, normalizes all other pairings to an
+endpoint contract violation, and distinguishes render-producer refusal from a
+no-body endpoint refusal. See the
+[offer normalization evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-5/offer-normalization.md).
+T5.3 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
