@@ -66,6 +66,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-010-fact-admission.rb" \
             "${SCRIPT_DIR}/check-spec-010-harness.rb" \
             "${SCRIPT_DIR}/check-spec-010-migration.rb" \
+            "${SCRIPT_DIR}/check-spec-010-mutation-result-slot.rb" \
             "${SCRIPT_DIR}/check-spec-010-macro-boundary.rb" \
             "${SCRIPT_DIR}/check-spec-010-milestone-3.rb" \
             "${SCRIPT_DIR}/check-spec-010-owner-values.rb" \
@@ -357,6 +358,8 @@ record_command "${SCRIPT_DIR}/check-spec-010-dirty-derivation.rb"
 "${SCRIPT_DIR}/check-spec-010-dirty-derivation.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-migration.rb"
 "${SCRIPT_DIR}/check-spec-010-migration.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-010-mutation-result-slot.rb"
+"${SCRIPT_DIR}/check-spec-010-mutation-result-slot.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-declaration-surface.rb"
 "${SCRIPT_DIR}/check-spec-010-declaration-surface.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-010-fact-admission.rb"

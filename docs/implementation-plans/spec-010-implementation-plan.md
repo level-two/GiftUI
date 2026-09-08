@@ -369,7 +369,7 @@ mandatory effect with bounded, coalesced state.
       safety-not-proven/reentrancy normal-cycle exclusion exactly, including
       preserved last publication, partial-candidate discard, dirty/wake state,
       and the no-residual-policy-call contained row.
-- [ ] `T5.4` — Implement the cycle-local mutation-result slot used by bound
+- [x] `T5.4` — Implement the cycle-local mutation-result slot used by bound
       setters and sink failures. Preserve the first failure until synchronous
       coordinator consumption; retain no model, fact, callable, candidate, or
       history and allow no later success to overwrite it. Read and clear the
@@ -820,4 +820,12 @@ policy call; safety-not-proven and reentrant reports discard partial work,
 preserve current dirtiness, and exclude normal cycling pending disposition.
 See the
 [report guard evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-5/report-guard.md).
-T5.4 is next.
+
+`T5.4` is complete: one bounded cycle-local slot accepts failures from bound
+setters and report dispositions, preserves the first exact error across later
+failure or success, and clears it only on synchronous coordinator consumption.
+Each enclosing operation must consume the slot before derivation. With no
+active cycle, failures are returned for direct owner-adapter disposition and
+are not stored; see the
+[mutation result evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-5/mutation-result-slot.md).
+Milestone 5 is complete.
