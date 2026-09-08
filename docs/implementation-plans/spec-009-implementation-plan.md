@@ -341,7 +341,7 @@ standalone transcripts.
       and that removal, movement, disablement, generation change, target
       change, exhaustion, or ambiguity dispatches neither old nor replacement
       behavior.
-- [ ] `T3.4` — Implement pointer, state-change, and completion submission with
+- [x] `T3.4` — Implement pointer, state-change, and completion submission with
       exact ownership transfer/refusal, context, capacity, disabled-
       completion, unavailable, invalid-value, provenance, cancellation, and
       wake behavior. Submission never applies a fact, dispatches an action, or
@@ -887,6 +887,16 @@ disablement, generation/target-record change, unavailable lookup, or ambiguous
 reuse produces no activation and no retargeting; see the
 [pointer capture evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-3/pointer-capture.md).
 T3.4 is next.
+
+`T3.4` is complete: the internal fixture-finite admission controller implements
+the shared sink over caller-owned bounded storage and the existing wake and
+per-source sequence mechanisms. Tests cover exact contexts, complete-value
+ownership, pointer/state/completion capacity, disabled completion, invalid
+facts, stale and malformed provenance, active-source refusal, quiescence,
+mandatory pointer cancellation, and one coalesced wake without applying or
+dispatching work; see the
+[admission controller evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-3/admission-controller.md).
+T3.5 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
