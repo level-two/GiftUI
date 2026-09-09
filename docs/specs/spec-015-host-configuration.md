@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-08-28
+updated: 2026-09-09
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -1245,6 +1245,7 @@ and are not newly related to this Specification:
 
 ## References
 
+- [SPEC-015 Implementation Plan](../implementation-plans/spec-015-implementation-plan.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
 - [Feature Lifecycle](../engineering/FEATURE_LIFECYCLE.md)
