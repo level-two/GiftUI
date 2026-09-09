@@ -201,7 +201,7 @@ layout behavior is claimed.
       record, limit/high-water result, allocation count, workspace and stack
       result, linked-code delta, no-second-graph proof, or required ELF
       inspection.
-- [ ] `T0.4` — Inventory proof-of-concept and repository layout surfaces,
+- [x] `T0.4` — Inventory proof-of-concept and repository layout surfaces,
       including recursive measurement, floating or unchecked geometry,
       runtime-local layout nodes, backend measurement, font fallback,
       retained semantic/layout graphs, and old stack/frame/padding APIs.
@@ -644,6 +644,17 @@ allocation, workspace, call-stack, linked-code delta, no-second-graph audit,
 target inspection, nRF hard-float ELF evidence, and all acceptance evidence.
 The driver performs no remote access, deployment, restart, simulator run,
 connected-target execution, or flashing.
+
+`T0.4` is complete: the immutable PoC inventory classifies recursive dynamic
+and static measurement, host-width/trapping geometry, retained layout graphs,
+backend text measurement and fallback, runtime-owned entry points, and legacy
+stack declarations for replacement or retirement. It records floating
+geometry, the previously absent ZStack/Spacer/padding/frame family, and a
+second maintained layout path as already absent rather than fabricating
+historical occurrences. The registered migration check reproduces every PoC
+path/family count and rejects legacy paths, measurement outside `GiftUILayout`,
+floating layout geometry, runtime/backend/platform layout graphs, and text
+measurement outside the layout owner.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-007 conforms or is `implemented`. The conformance report remains

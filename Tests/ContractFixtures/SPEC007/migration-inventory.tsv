@@ -1,0 +1,24 @@
+# family	baseline	path	occurrences	disposition	replacement_owner
+recursive-measurement	PoC	Sources/GiftUIRuntimeDynamic/ViewNode.swift	4	replace	SPEC-007-T4/T5
+recursive-measurement	PoC	Sources/GiftUIRuntimeStatic/StaticRuntime.swift	5	replace	SPEC-007-T4/T5
+host-width-geometry	PoC	Sources/GiftUI/Containers/HStack.swift	2	replace	SPEC-002/SPEC-007-T1.2
+host-width-geometry	PoC	Sources/GiftUI/Containers/VStack.swift	2	replace	SPEC-002/SPEC-007-T1.2
+host-width-geometry	PoC	Sources/GiftUI/Layout/LayoutArithmetic.swift	20	replace	SPEC-002/SPEC-007-T4.1
+retained-layout-graph	PoC	Sources/GiftUIRuntimeDynamic/LayoutNode.swift	3	retire	SPEC-007-direct-sink
+retained-layout-graph	PoC	Sources/GiftUIRuntimeDynamic/ViewNode.swift	3	retire	SPEC-006/SPEC-007-borrowed-view
+retained-layout-graph	PoC	Sources/GiftUIRuntimeStatic/StaticRuntime.swift	6	retire	SPEC-006/SPEC-007-bounded-workspace
+backend-text-measurement	PoC	Sources/GiftUIBackendFramebuffer/BitmapTextRasterizer.swift	3	retire	SPEC-005/SPEC-007-canonical-text
+backend-text-measurement	PoC	Sources/GiftUIBackendRGB565/RGB565RetainedRenderer.swift	7	retire	SPEC-005/SPEC-007-canonical-text
+backend-text-measurement	PoC	Sources/GiftUIBackendRGB565/RGB565TileRenderer.swift	5	retire	SPEC-005/SPEC-007-canonical-text
+font-fallback	PoC	Sources/GiftUIBackendFramebuffer/BitmapTextRasterizer.swift	1	replace	SPEC-005-exact-mapping
+font-fallback	PoC	Sources/GiftUIBackendRGB565/RGB565RetainedRenderer.swift	1	replace	SPEC-005-exact-mapping
+font-fallback	PoC	Sources/GiftUIBackendRGB565/RGB565TileRenderer.swift	1	replace	SPEC-005-exact-mapping
+runtime-layout-entrypoint	PoC	Sources/GiftUIRuntimeDynamic/DynamicRuntime.swift	2	retire	SPEC-007-layout-owner
+runtime-layout-entrypoint	PoC	Sources/GiftUIRuntimeDynamic/LayoutEngine.swift	1	retire	SPEC-007-layout-owner
+runtime-layout-entrypoint	PoC	Sources/GiftUIRuntimeDynamic/ViewGraph.swift	1	retire	SPEC-006/SPEC-007-owner-boundary
+runtime-layout-entrypoint	PoC	Sources/GiftUIRuntimeStatic/StaticRuntime.swift	3	retire	SPEC-007-layout-owner
+legacy-stack-api	PoC	Sources/GiftUI/Containers/HStack.swift	1	replace	SPEC-007-T1.2
+legacy-stack-api	PoC	Sources/GiftUI/Containers/VStack.swift	1	replace	SPEC-007-T1.2
+floating-geometry	PoC-and-current	historical-and-current-maintained-source	0	already-absent	SPEC-002-GeometryScalar
+legacy-zstack-spacer-padding-frame	PoC-and-current	historical-and-current-maintained-source	0	already-absent	SPEC-007-T1.2/T1.3
+parallel-layout-path	PoC-and-current	historical-and-current-maintained-source	0	already-absent	SPEC-007-GiftUILayout
