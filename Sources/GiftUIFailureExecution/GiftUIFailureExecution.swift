@@ -35,7 +35,64 @@ where OwnerFailure: Equatable & Sendable {
     }
 }
 
+package struct CorrelatedExecutionOperational: Equatable, Sendable {
+    package let context: ExecutionContext
+    package let fact: GiftUIOperationalFact
+    package let completeEvents: ExecutionOperationalEvents
+    package let attemptOrdinal: UInt8
+    package let attemptLimit: UInt8
+}
+
 package enum GiftUIExecutionFailureAdapter {
+    package static func operational(
+        _ primary: ExecutionOperational,
+        completeEvents: ExecutionOperationalEvents,
+        context: ExecutionContext,
+        attemptOrdinal: UInt8,
+        attemptLimit: UInt8,
+        mechanicalEffectsComplete: Bool
+    ) -> CorrelatedExecutionOperational? {
+        guard mechanicalEffectsComplete,
+            attemptLimit > 0,
+            attemptOrdinal < attemptLimit,
+            primaryOperationalEvent(in: completeEvents) == primary
+        else { return nil }
+
+        let fact: GiftUIOperationalFact
+        switch primary {
+        case .noChange:
+            fact = operationalFact(.noChange, .execution, .activeCycle)
+        case .backpressured:
+            fact = operationalFact(.backpressured, .backend, .candidateFrame)
+        case .retryableRefusal:
+            fact = operationalFact(.retryableRefusal, .backend, .candidateFrame)
+        case .superseded:
+            fact = operationalFact(.superseded, .execution, .candidateFrame)
+        case .deferredToLaterAdmission:
+            fact = operationalFact(.deferredToLaterAdmission, .execution, .activeCycle)
+        }
+        return CorrelatedExecutionOperational(
+            context: context,
+            fact: fact,
+            completeEvents: completeEvents,
+            attemptOrdinal: attemptOrdinal,
+            attemptLimit: attemptLimit
+        )
+    }
+
+    package static func residualInput(
+        for operational: CorrelatedExecutionOperational,
+        allowed: GiftUIAllowedDispositions
+    ) -> GiftUIResidualPolicyInput<ExecutionContext>? {
+        GiftUIResidualPolicyInput(
+            outcome: .operational(operational.fact),
+            context: operational.context,
+            allowed: allowed,
+            attemptOrdinal: operational.attemptOrdinal,
+            attemptLimit: operational.attemptLimit
+        )
+    }
+
     package static func offeredFailure<OwnerFailure>(
         _ failure: RunCycleFailure<OwnerFailure>,
         context: ExecutionContext,
@@ -232,6 +289,31 @@ package enum GiftUIExecutionFailureAdapter {
             affectedScope: scope,
             containment: containment
         )
+    }
+
+    private static func operationalFact(
+        _ kind: GiftUIOperationalKind,
+        _ origin: GiftUIFailureOrigin,
+        _ scope: GiftUIAffectedScope
+    ) -> GiftUIOperationalFact {
+        GiftUIOperationalFact(
+            kind: kind,
+            origin: origin,
+            affectedScope: scope
+        )
+    }
+
+    private static func primaryOperationalEvent(
+        in events: ExecutionOperationalEvents
+    ) -> ExecutionOperational? {
+        if events.contains(.retryableRefusal) { return .retryableRefusal }
+        if events.contains(.backpressured) { return .backpressured }
+        if events.contains(.superseded) { return .superseded }
+        if events.contains(.deferredToLaterAdmission) {
+            return .deferredToLaterAdmission
+        }
+        if events.contains(.noChange) { return .noChange }
+        return nil
     }
 
     private static func fact(

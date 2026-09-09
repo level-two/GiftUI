@@ -465,7 +465,7 @@ control path.
       Reject legal-impossible `.frameOffer(.insufficientCapacity)` and
       `.frameOffer(.producerFailed)` coordinator results in favor of the
       retained producer error.
-- [ ] `T6.4` — Map every operational primary result with exact origin, scope,
+- [x] `T6.4` — Map every operational primary result with exact origin, scope,
       context, attempt ordinal/limit, and complete event-set evidence. Prove
       mandatory abort, dirty, unavailable, cancellation, and quiescence
       effects precede total residual target policy.
@@ -1050,7 +1050,15 @@ map exactly; coordinator-impossible insufficient-capacity and producer-failed
 forms cannot replace the retained producer error. All offer mappings require
 mandatory abort and terminal effects first. See the
 [render and offer mapping evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-6/render-offer-mapping.md).
-T6.4 is next.
+
+`T6.4` is complete: all five operational primaries map to exact SPEC-003 facts
+while retaining detecting context, the complete event set, and attempt
+ordinal/limit. The adapter rejects primary-precedence mismatches, malformed
+attempts, and mapping before mandatory effects. Its residual-policy input
+admits every legal target while paced retry is limited to backpressure or
+retryable refusal strictly below exhaustion. See the
+[operational mapping evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-6/operational-mapping.md).
+T6.5 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
