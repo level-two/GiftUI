@@ -1,0 +1,25 @@
+# area	spec_section	evidence	checker	status
+non-goals	Non-goals	Tests/ContractFixtures/SPEC006/Evidence/milestone-6/dependency-surface.md	scripts/contracts/check-spec-006-dependency-surface.rb	complete
+public-contract	Public Contract	Tests/ContractFixtures/SPEC006/Evidence/milestone-6/portable-declarations.md	scripts/contracts/check-spec-006-portable-declarations.rb	complete
+module-contract	Module Contract	Tests/ContractFixtures/SPEC006/Evidence/milestone-0/semantic-core-leaf.md	scripts/contracts/check-spec-006-dependency-surface.rb	complete
+rank-zero-apis	Types / APIs — Rank 0 declarations	Tests/ContractFixtures/SPEC006/Evidence/milestone-1/action-and-custom-view.md	scripts/contracts/check-spec-006-action-surface.rb	complete
+traversal-api	Types / APIs — Underscored declaration traversal	Tests/ContractFixtures/SPEC006/Evidence/milestone-1/non-stateful-traversal-surface.md	scripts/contracts/check-spec-006-traversal-surface.rb	complete
+limits-summary	Types / APIs — Expansion limits and summary	Tests/ContractFixtures/SPEC006/Evidence/milestone-2/expansion-values.md	scripts/contracts/check-spec-006-complexity.rb	complete
+recording-seam	Types / APIs — Canonical recording seam	Tests/ContractFixtures/SPEC006/Evidence/milestone-3/recording-oracle.md	scripts/contracts/check-spec-006-semantic-profiles.rb	complete
+modifier-seam	Types / APIs — Modifier declaration seam	Tests/ContractFixtures/SPEC006/Evidence/milestone-3/modifier-corpus.md	scripts/contracts/check-spec-006-semantic-profiles.rb	complete
+expansion-order	Behavior — Expansion order	Tests/ContractFixtures/SPEC006/Evidence/milestone-3/declaration-corpus.md	scripts/contracts/check-spec-006-semantic-profiles.rb	complete
+structural-identity	Behavior — Structural identity	Tests/ContractFixtures/SPEC006/Evidence/milestone-3/identity-relations.md	scripts/contracts/check-spec-006-semantic-profiles.rb	complete
+action-identity	Behavior — Action identity	Tests/ContractFixtures/SPEC006/Evidence/milestone-3/action-corpus.md	scripts/contracts/check-spec-006-action-surface.rb	complete
+modifier-order	Behavior — Modifier order	Tests/ContractFixtures/SPEC006/Evidence/milestone-3/modifier-corpus.md	scripts/contracts/check-spec-006-semantic-profiles.rb	complete
+atomicity	Behavior — Atomicity	Tests/ContractFixtures/SPEC006/Evidence/milestone-2/atomic-traversal.md	scripts/contracts/check-spec-006-semantic-profiles.rb	complete
+lifecycle	State / Lifecycle	Tests/ContractFixtures/SPEC006/Evidence/milestone-2/attempt-lifecycle.md	scripts/contracts/check-spec-006-complexity.rb	complete
+capabilities	Capability Requirements	Tests/ContractFixtures/SPEC006/Evidence/milestone-6/dependency-surface.md	scripts/contracts/check-spec-006-dependency-surface.rb	complete
+backends	Backend Requirements	Tests/ContractFixtures/SPEC006/Evidence/milestone-6/dependency-surface.md	scripts/contracts/check-spec-006-dependency-surface.rb	complete
+errors	Error Handling	Tests/ContractFixtures/SPEC006/Evidence/milestone-4/owner-mapping.md	scripts/contracts/check-spec-006-semantic-profiles.rb	complete
+performance	Performance Requirements	Tests/ContractFixtures/SPEC006/Evidence/milestone-6/complexity.md	scripts/contracts/check-spec-006-complexity.rb	complete
+compatibility	Compatibility	Tests/ContractFixtures/SPEC006/Evidence/milestone-6/semantic-profiles.md	scripts/contracts/check-spec-006-semantic-profiles.rb	complete
+declaration-tests	Testing Requirements — Declaration and compile fixtures	Tests/ContractFixtures/SPEC006/Evidence/milestone-6/portable-declarations.md	scripts/contracts/check-spec-006-portable-declarations.rb	complete
+semantic-tests	Testing Requirements — Recording semantic fixtures	Tests/ContractFixtures/SPEC006/Evidence/milestone-6/semantic-profiles.md	scripts/contracts/check-spec-006-semantic-profiles.rb	complete
+bounds-tests	Testing Requirements — Bounds and failure fixtures	Tests/ContractFixtures/SPEC006/Evidence/milestone-4/boundary-matrix.md	scripts/contracts/check-spec-006-complexity.rb	complete
+profile-tests	Testing Requirements — Profile and dependency fixtures	Tests/ContractFixtures/SPEC006/Evidence/milestone-6/layout-allocation.md	scripts/contracts/check-spec-006-layout-allocation.rb	complete
+migration	Migration closure	Tests/ContractFixtures/SPEC006/Evidence/milestone-0/migration-baseline.md	scripts/contracts/check-spec-006-migration.rb	complete

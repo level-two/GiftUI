@@ -71,6 +71,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-006-wrapper-sil.rb" \
             "${SCRIPT_DIR}/check-spec-006-traversal-surface.rb" \
             "${SCRIPT_DIR}/check-spec-006-migration.rb" \
+            "${SCRIPT_DIR}/check-spec-006-normative-audit.rb" \
             "${SCRIPT_DIR}/check-spec-006-portable-declarations.rb" \
             "${SCRIPT_DIR}/check-spec-006-semantic-profiles.rb" \
             "${SCRIPT_DIR}/check-spec-006-stateful-binding.rb" \
@@ -449,6 +450,8 @@ record_command "${SCRIPT_DIR}/check-spec-006-harness.rb"
 "${SCRIPT_DIR}/check-spec-006-harness.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-006-migration.rb"
 "${SCRIPT_DIR}/check-spec-006-migration.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-006-normative-audit.rb"
+"${SCRIPT_DIR}/check-spec-006-normative-audit.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-006-portable-declarations.rb"
 "${SCRIPT_DIR}/check-spec-006-portable-declarations.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-006-action-surface.rb"

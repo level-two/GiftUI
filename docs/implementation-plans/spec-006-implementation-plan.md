@@ -442,7 +442,7 @@ required reports are reproducible from checked-in drivers and fixtures.
 implementation-record links are complete; remaining deviations are explicit
 upstream blockers rather than hidden plan edits.
 
-- [ ] `T7.1` — Audit every normative API, behavior, lifecycle, error,
+- [x] `T7.1` — Audit every normative API, behavior, lifecycle, error,
       performance, compatibility, testing, and non-goal clause against source
       and evidence. Close the migration ledger and prove no layout, rendering,
       state ownership/invalidation, activation/input, capability, backend,
@@ -841,3 +841,14 @@ from one through sixteen units, failure remains fixed at the third attempted
 event and publishes zero work. See the
 [complexity evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-6/complexity.md).
 Milestone 6 is complete; T7.1 is next.
+
+`T7.1` is complete: the checked-in normative inventory maps all 24 public,
+module, API, behavior, lifecycle, error, performance, compatibility, testing,
+non-goal, and migration areas to stable evidence plus executable checks. The
+scope audit rejects layout, rendering, state ownership/invalidation,
+interaction/input activation, capability, backend, frame, host, driver, and
+connected-hardware policy in Semantic Core. Every immutable migration-ledger
+entry remains removed, already absent, or replaced through the sealed surface;
+see the
+[normative audit evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-7/normative-audit.md).
+T7.2 is next.
