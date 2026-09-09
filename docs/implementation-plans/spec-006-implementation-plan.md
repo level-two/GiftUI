@@ -396,7 +396,7 @@ normalized hardware-free reports proving source compatibility, semantic
 equivalence, static-path constraints, value layouts, target ABI, dependency
 direction, and migration closure.
 
-- [ ] `T6.1` — Compile the identical portable declaration corpus with only
+- [x] `T6.1` — Compile the identical portable declaration corpus with only
       `import GiftUI` for macOS dynamic/static, Raspberry Pi ARMv6 dynamic, and
       nRF52840 static. Record the complete commands and repository revision;
       run public-interface and compile-negative fixtures for builder arity,
@@ -797,3 +797,13 @@ and publishes nothing, discards once, resets the workspace, and never
 substitutes a `SemanticExpansionError`. See the
 [stateful binding failure evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-5/stateful-binding-failures.md).
 Milestone 5 is complete; T6.1 is the next SPEC-006 task.
+
+`T6.1` is complete: all four standalone profile paths compile one manifest-
+driven client corpus whose public fixtures import only `GiftUI`. Positive and
+negative fixtures cover ordinary external conformance, invalid external body
+conformance, builder arity, unsupported dynamic array syntax, and inaccessible
+wrapper initialization and storage. Every path records its pinned compiler,
+target, optimization, exact commands, repository revision, module, and emitted
+textual public interface without connected-hardware claims; see the
+[portable declaration evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-6/portable-declarations.md).
+T6.2 is next.

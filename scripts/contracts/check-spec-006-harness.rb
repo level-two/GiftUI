@@ -136,7 +136,7 @@ fail_check("required evidence rows are duplicated") unless required_rows.map(&:f
 required = required_rows.to_h
 expected_evidence = %w[
   compiler-identity target-pin optimization command-transcript repository-revision
-  portable-module ordered-corpus normalized-results allocation-record owned-value-layouts
+  portable-module public-interface ordered-corpus normalized-results allocation-record owned-value-layouts
   summary-counters maximum-observed-depth underscored-reference-inventory nrf-elf-inspection
 ]
 fail_check("required evidence set differs") unless required.keys.sort == expected_evidence.sort

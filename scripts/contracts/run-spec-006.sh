@@ -68,6 +68,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-006-wrapper-sil.rb" \
             "${SCRIPT_DIR}/check-spec-006-traversal-surface.rb" \
             "${SCRIPT_DIR}/check-spec-006-migration.rb" \
+            "${SCRIPT_DIR}/check-spec-006-portable-declarations.rb" \
             "${SCRIPT_DIR}/check-spec-006-stateful-binding.rb" \
             "${SCRIPT_DIR}/check-spec-006-stateful-binding-failures.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
@@ -205,6 +206,7 @@ record_required_evidence() {
         printf 'command-transcript\tcomplete\n'
         printf 'repository-revision\tcomplete\n'
         printf 'portable-module\tcomplete\n'
+        printf 'public-interface\tcomplete\n'
         printf 'ordered-corpus\tmissing\n'
         printf 'normalized-results\tmissing\n'
         printf 'allocation-record\tmissing\n'
@@ -261,7 +263,7 @@ run_fixture_set() {
 run_macos() {
     [[ "$(uname -s)" == "Darwin" && "$(uname -m)" == "arm64" ]] ||
         fail 'macOS profiles require an arm64 macOS host'
-    local compiler version sdk profile_flag extension module_dir foundation_image image
+    local compiler version sdk profile_flag extension module_dir foundation_image foundation_interface image
     compiler="$(xcrun --find swiftc)"
     version="$("${compiler}" --version 2>&1)"
     [[ "${version}" == *'Apple Swift version 6.3.3'* && "${version}" == *'swiftlang-6.3.3.1.3'* ]] ||
@@ -276,6 +278,7 @@ run_macos() {
     fi
     module_dir="${report_dir}/build/modules"
     foundation_image="${report_dir}/build/libGiftUI.${extension}"
+    foundation_interface="${module_dir}/GiftUI.swiftinterface"
     image="${report_dir}/build/libGiftUISemanticCore.${extension}"
     mkdir -p "${module_dir}"
     record_compiler "${compiler}"
@@ -283,7 +286,7 @@ run_macos() {
     printf 'sdk_path=%s\n' "${sdk}" >>"${metadata_path}"
     printf 'optimization=-O -whole-module-optimization\n' >>"${metadata_path}"
     local -a flags=(-target arm64-apple-macosx26.0 -sdk "${sdk}" -O -whole-module-optimization "${profile_flag}" -language-mode 6 -package-name GiftUI)
-    local -a foundation=("${compiler}" "${flags[@]}" -parse-as-library -emit-module -emit-library -module-name GiftUI "${FOUNDATION_SOURCE}" "${DECLARATION_SOURCE}" "${OBSERVABLE_SOURCE}" -emit-module-path "${module_dir}/GiftUI.swiftmodule")
+    local -a foundation=("${compiler}" "${flags[@]}" -parse-as-library -emit-module -emit-library -module-name GiftUI "${FOUNDATION_SOURCE}" "${DECLARATION_SOURCE}" "${OBSERVABLE_SOURCE}" -emit-module-path "${module_dir}/GiftUI.swiftmodule" -emit-module-interface-path "${foundation_interface}")
     if [[ "${profile}" == "macos-static" ]]; then
         foundation+=(-static)
     fi
@@ -291,6 +294,7 @@ run_macos() {
     record_command "${foundation[@]}"
     "${foundation[@]}" >>"${log_path}" 2>&1
     record_image foundation-library "${foundation_image}"
+    record_image foundation-interface "${foundation_interface}"
     local -a semantic=("${compiler}" "${flags[@]}" -parse-as-library -emit-module -emit-library -module-name GiftUISemanticCore -I "${module_dir}" -L "${report_dir}/build" -lGiftUI "${SEMANTIC_SOURCE}" -emit-module-path "${module_dir}/GiftUISemanticCore.swiftmodule")
     if [[ "${profile}" == "macos-static" ]]; then
         semantic+=(-static)
@@ -315,7 +319,7 @@ run_macos() {
 
 run_raspberry_pi() {
     source "${PROJECT_ROOT}/scripts/raspberry-pi/common.sh"
-    local swift_driver compiler version module
+    local swift_driver compiler version module module_dir foundation_interface
     swift_driver="$(giftui_pi_host_swift)"
     compiler="$(dirname "${swift_driver}")/swiftc"
     giftui_pi_require_sdk
@@ -335,7 +339,13 @@ run_raspberry_pi() {
     module="$(find "${report_dir}/build/swiftpm" -type f -name 'GiftUISemanticCore.swiftmodule' -print -quit)"
     [[ -n "${module}" ]] || fail 'ARMv6 semantic module is missing'
     record_image semantic-module "${module}"
-    run_fixture_set "${compiler}" "$(dirname "${module}")" -target "${GIFTUI_PI_TARGET}" -sdk "${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}" -resource-dir "${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr/lib/swift_static" -Xcc "--gcc-toolchain=${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr"
+    module_dir="$(dirname "${module}")"
+    foundation_interface="${report_dir}/build/GiftUI.swiftinterface"
+    local -a interface_command=("${compiler}" -target "${GIFTUI_PI_TARGET}" -sdk "${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}" -resource-dir "${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr/lib/swift_static" -Xcc "--gcc-toolchain=${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr" -O -whole-module-optimization -language-mode 6 -package-name GiftUI -parse-as-library -emit-module -module-name GiftUI "${FOUNDATION_SOURCE}" "${DECLARATION_SOURCE}" "${OBSERVABLE_SOURCE}" -emit-module-path "${report_dir}/build/GiftUI.swiftmodule" -emit-module-interface-path "${foundation_interface}")
+    record_command "${interface_command[@]}"
+    "${interface_command[@]}" >>"${log_path}" 2>&1
+    record_image foundation-interface "${foundation_interface}"
+    run_fixture_set "${compiler}" "${module_dir}" -target "${GIFTUI_PI_TARGET}" -sdk "${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}" -resource-dir "${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr/lib/swift_static" -Xcc "--gcc-toolchain=${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr"
 }
 
 run_nrf52840() {
@@ -354,9 +364,11 @@ run_nrf52840() {
     module_dir="${report_dir}/build/modules"
     mkdir -p "${module_dir}"
     local -a flags=(-target "${GIFTUI_NRF_SWIFT_TARGET}" -enable-experimental-feature Embedded -Osize -whole-module-optimization -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16 -package-name GiftUI)
-    local -a foundation=("${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -parse-as-library -emit-module -module-name GiftUI "${FOUNDATION_SOURCE}" "${DECLARATION_SOURCE}" "${OBSERVABLE_SOURCE}" -emit-module-path "${module_dir}/GiftUI.swiftmodule")
+    local foundation_interface="${module_dir}/GiftUI.swiftinterface"
+    local -a foundation=("${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -parse-as-library -emit-module -module-name GiftUI "${FOUNDATION_SOURCE}" "${DECLARATION_SOURCE}" "${OBSERVABLE_SOURCE}" -emit-module-path "${module_dir}/GiftUI.swiftmodule" -emit-module-interface-path "${foundation_interface}")
     record_command "${foundation[@]}"
     "${foundation[@]}" >>"${log_path}" 2>&1
+    record_image foundation-interface "${foundation_interface}"
     local -a semantic=("${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -parse-as-library -emit-module -module-name GiftUISemanticCore -I "${module_dir}" "${SEMANTIC_SOURCE}" -emit-module-path "${module_dir}/GiftUISemanticCore.swiftmodule")
     record_command "${semantic[@]}"
     "${semantic[@]}" >>"${log_path}" 2>&1
@@ -368,6 +380,8 @@ record_command "${SCRIPT_DIR}/check-spec-006-harness.rb"
 "${SCRIPT_DIR}/check-spec-006-harness.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-006-migration.rb"
 "${SCRIPT_DIR}/check-spec-006-migration.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-006-portable-declarations.rb"
+"${SCRIPT_DIR}/check-spec-006-portable-declarations.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-006-action-surface.rb"
 "${SCRIPT_DIR}/check-spec-006-action-surface.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-006-builder-surface.rb"
