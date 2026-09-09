@@ -153,6 +153,19 @@ enum StyleVisit: Equatable {
     case background(Color)
 }
 
+enum LayoutModifierVisit: Equatable {
+    case padding(edges: EdgeSet, length: GeometryScalar)
+    case paddingInsets(EdgeInsets)
+    case fixedFrame(width: GeometryScalar?, height: GeometryScalar?, alignment: Alignment)
+    case flexibleFrame(
+        minWidth: GeometryScalar?,
+        maxWidth: FrameLimit?,
+        minHeight: GeometryScalar?,
+        maxHeight: FrameLimit?,
+        alignment: Alignment
+    )
+}
+
 struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
     let evaluateBody: Bool
     var customViewVisits = 0
@@ -168,6 +181,7 @@ struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
     var actionPrimitiveVisits = 0
     var modifierVisits = 0
     var styleVisits: [StyleVisit] = []
+    var layoutModifierVisits: [LayoutModifierVisit] = []
 
     mutating func visitCustomView<Declaration: View>(
         _ declaration: borrowing Declaration,
@@ -282,6 +296,30 @@ struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
             styleVisits.append(.foreground(foreground.color))
         } else if let background = payloadCopy as? _GiftUIBackgroundPayload {
             styleVisits.append(.background(background.color))
+        } else if let padding = payloadCopy as? _GiftUIPaddingPayload {
+            layoutModifierVisits.append(
+                .padding(edges: padding.edges, length: padding.length)
+            )
+        } else if let paddingInsets = payloadCopy as? _GiftUIPaddingInsetsPayload {
+            layoutModifierVisits.append(.paddingInsets(paddingInsets.insets))
+        } else if let frame = payloadCopy as? _GiftUIFixedFramePayload {
+            layoutModifierVisits.append(
+                .fixedFrame(
+                    width: frame.width,
+                    height: frame.height,
+                    alignment: frame.alignment
+                )
+            )
+        } else if let frame = payloadCopy as? _GiftUIFlexibleFramePayload {
+            layoutModifierVisits.append(
+                .flexibleFrame(
+                    minWidth: frame.minWidth,
+                    maxWidth: frame.maxWidth,
+                    minHeight: frame.minHeight,
+                    maxHeight: frame.maxHeight,
+                    alignment: frame.alignment
+                )
+            )
         }
         modifierVisits += 1
     }

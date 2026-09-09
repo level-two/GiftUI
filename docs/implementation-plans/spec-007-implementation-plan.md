@@ -229,7 +229,7 @@ and declaration initialization performs no layout.
       traversal, and preserved invalid spacing/minimum values. Their bodies
       remain unevaluated primitives and initialization performs no measuring,
       semantic expansion, allocation, or capability/backend lookup.
-- [ ] `T1.3` — Implement the three `padding` declarations and both `frame`
+- [x] `T1.3` — Implement the three `padding` declarations and both `frame`
       overloads as ordered SPEC-006 typed modifier wrappers. Preserve every
       negative optional dimension, negative finite `FrameLimit.points`,
       invalid min/max relation, empty/reserved edge set, all-`nil` frame, and
@@ -671,6 +671,19 @@ edge-set, and frame-limit value declarations. Focused public-import tests cover
 every raw value and constant, nonnegative inset validation, empty and reserved
 edge-bit preservation, and finite frame-limit preservation including negative
 values for layout-time rejection.
+
+`T1.2` is paused: the approved SPEC-006 traversal visitor has no operation
+that can describe a primitive and its child content. Implementing a stack as
+an unevaluated primitive would require a new visitor category or a change to
+the exact primitive operation, which code and this derived plan cannot
+authorize. `Spacer`, which has no child, can land with the container family
+after that upstream contract issue is resolved.
+
+`T1.3` is complete: all padding and frame overloads lower through the existing
+typed modifier operation. Runtime transcript tests prove exact source-call
+order and preservation of negative dimensions, negative finite limits,
+invalid minimum/maximum relations, empty and reserved edge sets, and all-`nil`
+frames without declaration-time normalization.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-007 conforms or is `implemented`. The conformance report remains
