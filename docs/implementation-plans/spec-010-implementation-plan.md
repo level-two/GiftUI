@@ -422,7 +422,7 @@ scope, containment, mandatory effects, and allowed residual policy rows.
       `GiftUIObservableState` and `GiftUIFailureCore`; map every candidate,
       replacement, stale, phase, generation, reentrancy, and invariant context
       to the exact SPEC-003 fact after mandatory effects complete.
-- [ ] `T7.2` — Exhaust individual and simultaneous failures in SPEC-010's exact
+- [x] `T7.2` — Exhaust individual and simultaneous failures in SPEC-010's exact
       focused-owner precedence plus the residual-policy table, including rows
       with no policy call. Prove policy cannot weaken containment, narrow scope,
       skip cleanup, retry without a bound, or reinterpret failure as success.
@@ -841,4 +841,14 @@ facts only after mandatory effects complete. The Cartesian matrix rejects all
 invalid contexts and pre-effect mapping without importing diagnostics,
 Execution, runtime, backend, policy, or dynamic carriers. See the
 [failure adapter evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-7/failure-adapter.md).
-T7.2 is next.
+
+`T7.2` is complete: one bounded visible-condition set selects every individual
+and simultaneous failure in the exact focused-owner order. The residual table
+distinguishes initial/candidate, replacement, retired-report, contained-phase,
+and terminal contexts; preserves the correlated failure fact and context; and
+allows only the exact finite dispositions after mandatory effects. It cannot
+request retry or reinterpret success, and the contained-phase row makes no
+policy call. Existing lifecycle fault tests plus the focused corpus prove later
+cleanup failure never replaces the selected condition; see the
+[failure policy evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-7/failure-policy.md).
+T7.3 is next.

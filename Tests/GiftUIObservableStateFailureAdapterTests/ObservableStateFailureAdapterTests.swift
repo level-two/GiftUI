@@ -47,7 +47,11 @@ func everyObservableStateFailureContextMapsExactlyAfterEffects() {
             (.incompatibleAssociation, .replacement, .invalidIdentity, .operation, .contained),
             (.staleAttachment, .candidateAttachment, .invalidIdentity, .component, .contained),
             (
-                .staleAttachment, .replacementAttachmentOrRetiredReport, .invalidIdentity,
+                .staleAttachment, .replacementAttachment, .invalidIdentity,
+                .operation, .contained
+            ),
+            (
+                .staleAttachment, .retiredReport, .invalidIdentity,
                 .operation, .contained
             ),
             (.invalidPhaseContained, .activeCycle, .invalidPhase, .activeCycle, .contained),
@@ -88,11 +92,11 @@ func mappingRejectsIncompleteEffectsAndEveryInvalidContextPair() {
     ]
     let contexts: [ObservableStateFailureDetectionContext] = [
         .initialOrCandidateBinding, .replacement, .candidateAttachment,
-        .replacementAttachmentOrRetiredReport, .activeCycle, .runtime,
+        .replacementAttachment, .retiredReport, .activeCycle, .runtime,
     ]
     let legal = Set([
-        "0:0", "1:0", "1:1", "2:4", "3:1", "4:5", "5:0", "5:1",
-        "6:0", "6:1", "7:2", "7:3", "8:4", "9:4", "10:4", "11:5",
+        "0:0", "1:0", "1:1", "2:5", "3:1", "4:6", "5:0", "5:1",
+        "6:0", "6:1", "7:2", "7:3", "7:4", "8:5", "9:5", "10:5", "11:6",
     ])
 
     for error in errors {

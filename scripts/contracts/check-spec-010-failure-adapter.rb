@@ -32,4 +32,4 @@ end
 forbidden = /\b(?:String|Array|Dictionary|Set|Any|Mirror|Task|actor|async|await|throw|fatalError|Diagnostic|GiftUIExecution|GiftUIRuntime|GiftUIBackend|GiftUIPlatform)\b/
 fail_check("adapter contains a prohibited carrier or owner") if source.match?(forbidden)
 
-puts "SPEC-010 failure adapter passed: all 16 context rows map exactly after mandatory effects, and every invalid context pair is rejected."
+puts "SPEC-010 failure adapter passed: all 17 finite context rows map exactly after mandatory effects, and every invalid context pair is rejected."
