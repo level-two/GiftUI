@@ -1,0 +1,5 @@
+# owner	expected_target	status	evidence_or_blocker
+SPEC-010	GiftUIObservableState	integrated	PresentationFactAdmissionAdapter
+SPEC-011	GiftUIInteraction	blocked	production-target-not-present
+SPEC-013	GiftUIRuntimeDynamic,GiftUIRuntimeStatic	blocked	production-targets-not-present
+SPEC-014	GiftUIBackend	blocked	production-endpoint-target-not-present

@@ -1123,6 +1123,14 @@ remain rejected. See the
 T8.2 remains blocked on SPEC-013's production coordinators; T8.3 is next for
 the currently available owner seams.
 
+`T8.2` remains blocked because the SPEC-013 dynamic and static production
+coordinator targets are absent. `T8.3` has integrated the available SPEC-010
+typed presentation-fact admission seam, but remains blocked on the absent
+SPEC-011 Interaction and SPEC-014 Backend endpoint targets. The
+[owner integration status](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-8/owner-integration-status.md)
+and fail-closed registry preserve these gates without substituting recording
+fixtures. T8.4 is the next independent task.
+
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
 `null` until `T8.6` creates it, and the Specification's final lifecycle
