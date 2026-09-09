@@ -451,7 +451,7 @@ mandatory mechanical effects.
 correlation without an import cycle, fallback owner mapping, or diagnostic
 control path.
 
-- [ ] `T6.1` — Add `GiftUIFailureExecution` importing exactly
+- [x] `T6.1` — Add `GiftUIFailureExecution` importing exactly
       `GiftUIFailureCore` and `GiftUIExecution`. Map every admission result and
       `ExecutionError` to its exact condition, origin, smallest proven scope,
       containment, and preserved `ExecutionContext` after mandatory pointer
@@ -1027,6 +1027,15 @@ paced retry. Pre-candidate facility loss leaves the frame unproduced, later
 loss aborts it, and only explicit reassembly reopens admission. See the
 [presentation-recovery evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-5/presentation-recovery.md).
 Milestone 5 is complete.
+
+`T6.1` is complete: `GiftUIFailureExecution` imports only Failure Core and
+Execution and maps queued admission plus every admission failure and local
+execution error after mandatory effects. The exhaustive matrix preserves the
+detecting context, both capacity scopes, all identity-exhaustion scopes,
+safe-reuse containment, and every exact condition and origin while rejecting
+unproven narrowing or pre-containment mapping. See the
+[execution failure adapter evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-6/execution-failure-adapter.md).
+T6.2 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

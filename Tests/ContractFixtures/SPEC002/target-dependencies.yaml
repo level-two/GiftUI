@@ -92,6 +92,17 @@ targets:
       - GiftUI
       - GiftUIExecution
       - GiftUIRenderCore
+  GiftUIFailureExecution:
+    type: regular
+    dependencies:
+      - GiftUIExecution
+      - GiftUIFailureCore
+  GiftUIFailureExecutionTests:
+    type: test
+    dependencies:
+      - GiftUIExecution
+      - GiftUIFailureCore
+      - GiftUIFailureExecution
   GiftUIObservableState:
     type: regular
     dependencies:

@@ -58,6 +58,10 @@ let package = Package(
             dependencies: ["GiftUI", "GiftUIRenderCore"]
         ),
         .target(
+            name: "GiftUIFailureExecution",
+            dependencies: ["GiftUIFailureCore", "GiftUIExecution"]
+        ),
+        .target(
             name: "GiftUIObservableState",
             dependencies: ["GiftUI", "GiftUISemanticCore", "GiftUIExecution"]
         ),
@@ -123,6 +127,14 @@ let package = Package(
         .testTarget(
             name: "GiftUIExecutionTests",
             dependencies: ["GiftUI", "GiftUIExecution", "GiftUIRenderCore"]
+        ),
+        .testTarget(
+            name: "GiftUIFailureExecutionTests",
+            dependencies: [
+                "GiftUIExecution",
+                "GiftUIFailureCore",
+                "GiftUIFailureExecution",
+            ]
         ),
         .testTarget(
             name: "GiftUIObservableStateTests",
