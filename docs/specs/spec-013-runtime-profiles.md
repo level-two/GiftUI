@@ -785,6 +785,7 @@ existing lifecycle or deferred tracks and are not required by this contract.
 
 ## References
 
+- [SPEC-013 Implementation Plan](../implementation-plans/spec-013-implementation-plan.md)
 - [GiftUI MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
