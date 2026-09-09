@@ -1,0 +1,9 @@
+# id	case_id	backend_fact	platform_fact	capability_fact	expected_relation
+empty-baseline	empty-root	baseline	baseline	baseline	canonical-equal
+empty-varied	empty-root	alternate	alternate	alternate	canonical-equal
+branch-backend	conditional-first	alternate	baseline	baseline	canonical-equal
+branch-platform	conditional-first	baseline	alternate	baseline	canonical-equal
+branch-capability	conditional-first	baseline	baseline	alternate	canonical-equal
+modifier-all-varied	modifier-mixed	alternate	alternate	alternate	canonical-equal
+action-all-varied	action-primary	alternate	alternate	alternate	canonical-equal
+state-host-all-varied	nested-custom	alternate	alternate	alternate	canonical-equal

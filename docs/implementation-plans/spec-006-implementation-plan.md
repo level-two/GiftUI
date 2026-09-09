@@ -401,7 +401,7 @@ direction, and migration closure.
       nRF52840 static. Record the complete commands and repository revision;
       run public-interface and compile-negative fixtures for builder arity,
       unsupported dynamic syntax, wrapper access, and external conformance.
-- [ ] `T6.2` — Run the complete normalized semantic, bounds, failure, modifier,
+- [x] `T6.2` — Run the complete normalized semantic, bounds, failure, modifier,
       action, and state-host corpus through fixture dynamic and static
       workspace/sink implementations. Compare event-by-event canonical output,
       identity relations, summaries, detecting failures, and mapped facts;
@@ -806,4 +806,13 @@ wrapper initialization and storage. Every path records its pinned compiler,
 target, optimization, exact commands, repository revision, module, and emitted
 textual public interface without connected-hardware claims; see the
 [portable declaration evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-6/portable-declarations.md).
-T6.2 is next.
+
+`T6.2` is complete: each standalone profile validates the identical ordered
+declaration, transcript, identity, summary, bounds, failure, modifier, action,
+owner-mapping, and state-host corpus and emits the same canonical digest and
+normalized counters. Representative Rank 0 variants independently vary
+backend, platform, and capability facts while requiring unchanged builder
+shape, branch selection, event order, identities, results, failures, and
+transcripts. See the
+[semantic profile evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-6/semantic-profiles.md).
+T6.3 is next.

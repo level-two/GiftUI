@@ -1,0 +1,11 @@
+# category	artifact	expected_relation
+declaration	SemanticCorpus/cases.tsv	canonical
+transcript	SemanticCorpus/canonical-transcript.tsv	event-equal
+identity	SemanticCorpus/identity-relations.tsv	relation-equal
+summary	SemanticCorpus/normalized-results.tsv	value-equal
+bounds	BoundaryCorpus/cases.tsv	boundary-equal
+failure-order	BoundaryCorpus/coincident-failures.tsv	detection-equal
+framework-failure	BoundaryCorpus/framework-invariants.tsv	failure-equal
+owner-mapping	BoundaryCorpus/owner-mapping.tsv	fact-equal
+state-host	Evidence/milestone-5/stateful-binding.md	result-equal
+state-host-failure	Evidence/milestone-5/stateful-binding-failures.md	failure-equal

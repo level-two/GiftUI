@@ -69,6 +69,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-006-traversal-surface.rb" \
             "${SCRIPT_DIR}/check-spec-006-migration.rb" \
             "${SCRIPT_DIR}/check-spec-006-portable-declarations.rb" \
+            "${SCRIPT_DIR}/check-spec-006-semantic-profiles.rb" \
             "${SCRIPT_DIR}/check-spec-006-stateful-binding.rb" \
             "${SCRIPT_DIR}/check-spec-006-stateful-binding-failures.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
@@ -207,12 +208,12 @@ record_required_evidence() {
         printf 'repository-revision\tcomplete\n'
         printf 'portable-module\tcomplete\n'
         printf 'public-interface\tcomplete\n'
-        printf 'ordered-corpus\tmissing\n'
-        printf 'normalized-results\tmissing\n'
+        printf 'ordered-corpus\tcomplete\n'
+        printf 'normalized-results\tcomplete\n'
         printf 'allocation-record\tmissing\n'
         printf 'owned-value-layouts\tmissing\n'
-        printf 'summary-counters\tmissing\n'
-        printf 'maximum-observed-depth\tmissing\n'
+        printf 'summary-counters\tcomplete\n'
+        printf 'maximum-observed-depth\tcomplete\n'
         printf 'underscored-reference-inventory\tmissing\n'
         printf 'nrf-elf-inspection\t%s\n' "${nrf_status}"
     } >"${evidence_path}"
@@ -398,6 +399,13 @@ case "${profile}" in
     raspberry-pi-armv6) run_raspberry_pi ;;
     nrf52840-embedded) run_nrf52840 ;;
 esac
+
+semantic_report="${report_dir}/semantics/normalized-profile.txt"
+mkdir -p "${report_dir}/semantics"
+record_command "${SCRIPT_DIR}/check-spec-006-semantic-profiles.rb" --output "${semantic_report}"
+"${SCRIPT_DIR}/check-spec-006-semantic-profiles.rb" \
+    --output "${semantic_report}" >>"${log_path}" 2>&1
+record_image normalized-semantic-profile "${semantic_report}"
 
 record_required_evidence
 record_command "${SCRIPT_DIR}/check-spec-006-harness.rb" "${report_dir}"
