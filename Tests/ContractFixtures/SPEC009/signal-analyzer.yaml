@@ -1,2 +1,22 @@
 schema: spec-009-v1
-cases: []
+cases:
+  - name: signal-analyzer-four-opportunities
+    initialState: {phase: idle, pendingIntent: none}
+    limits: {factsPerSecond: 80, opportunityIntervalMilliseconds: 250, pendingIntents: 1}
+    preOpportunityAdmissions: [{facts: 80, durationMilliseconds: 1000}]
+    phaseInjections: none
+    endpointScript: none
+    expectedPhaseTranscript: [opportunity-enter, cycle-begin, admission-seal, publication-commit, frame-offer, cycle-finalize, cycle-idle]
+    expectedAdmissionSummary: none
+    expectedResult: none
+    expectedAuthoritativeState: {publications: 4, offers: 4, wakes: 4, pendingIntentHighWater: 1}
+    expectedWakeTransitions: [{window: 1, count: 1}, {window: 2, count: 1}, {window: 3, count: 1}, {window: 4, count: 1}]
+    expectedFailureOrOperationalMapping: none
+    factTimestamps: [0, 12.5, 25, 37.5, 50, 62.5, 75, 87.5, 100, 112.5, 125, 137.5, 150, 162.5, 175, 187.5, 200, 212.5, 225, 237.5, 250, 262.5, 275, 287.5, 300, 312.5, 325, 337.5, 350, 362.5, 375, 387.5, 400, 412.5, 425, 437.5, 450, 462.5, 475, 487.5, 500, 512.5, 525, 537.5, 550, 562.5, 575, 587.5, 600, 612.5, 625, 637.5, 650, 662.5, 675, 687.5, 700, 712.5, 725, 737.5, 750, 762.5, 775, 787.5, 800, 812.5, 825, 837.5, 850, 862.5, 875, 887.5, 900, 912.5, 925, 937.5, 950, 962.5, 975, 987.5]
+    opportunityTimestamps: [250, 500, 750, 1000]
+    expectedPublications: 4
+    expectedOffers: 4
+    expectedWakes: 4
+    expectedHighWater: {queuedFacts: 20, pendingIntents: 1}
+    criteria: [EX-006, EX-011, EX-012]
+    evidenceClasses: [host-execution, cross-build, simulator]

@@ -497,7 +497,7 @@ nonduplicated corpus and the driver records every required measurement.
       pair, acceptance, refusal, reservation, discard, lifetime, operation
       count, producer error, contract violation, and irreversible-output
       case.
-- [ ] `T7.4` — Complete `recovery.yaml` and `signal-analyzer.yaml` for
+- [x] `T7.4` — Complete `recovery.yaml` and `signal-analyzer.yaml` for
       backpressure, retryable refusal, pacing, count boundaries,
       supersession, terminal state, 20 facts between each of four
       opportunities, one coalesced wake/publication per opportunity, and at
@@ -1093,6 +1093,15 @@ exact retained producer errors, candidate lifetime, and the rule that
 irreversible output requires accepted endpoint health. See the
 [handoff corpus evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-7/handoff-corpus.md).
 T7.4 is next.
+
+`T7.4` is complete: seven recovery cases cover backpressure, checked retry
+counts at every boundary, later-idle pacing, revision supersession, and every
+terminal unavailable/quiescent path. The Signal Analyzer corpus records 80
+explicit fact timestamps in four exact 20-fact windows, with one coalesced
+wake, publication, and offer per opportunity and one pending-intent high-water.
+See the
+[recovery/signal corpus evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-7/recovery-signal-corpus.md).
+T7.5 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
