@@ -6,7 +6,7 @@ status: captured
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
-updated: 2026-08-27
+updated: 2026-09-09
 source:
   - RFC-002
   - RFC-008
@@ -68,14 +68,17 @@ would add public API and runtime lifetime decisions without an MVP use case.
 
 ## Disposition
 
-Captured for post-MVP consideration. Promote through a Proposal when GiftUI is
-ready to evaluate a concrete binding-dependent feature need; any public API or
-runtime architecture must then pass the normal RFC, ADR, and Specification
-gates.
+Continued as captured post-MVP work after the SPEC-006 T7.2 review on
+2026-09-09. No revisit trigger has fired, and no SPEC-006 implementation task,
+fixture, or success claim depends on pursuing this item. Promote through a
+Proposal only when GiftUI is ready to evaluate a concrete binding-dependent
+feature need; any public API or runtime architecture must then pass the normal
+RFC, ADR, and Specification gates.
 
 ## References
 
 - [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-008: Observable Reference State Architecture](../rfcs/rfc-008-observable-reference-state-architecture.md)
+- [SPEC-006: Declarative View Semantics](../specs/spec-006-declarative-view-semantics.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [MVP Milestones](../roadmap/MVP_MILESTONES.md)

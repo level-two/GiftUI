@@ -447,7 +447,7 @@ upstream blockers rather than hidden plan edits.
       and evidence. Close the migration ledger and prove no layout, rendering,
       state ownership/invalidation, activation/input, capability, backend,
       frame, host, or connected-hardware policy entered the implementation.
-- [ ] `T7.2` — Recheck FW-017 and FW-020 provenance, reciprocal links,
+- [x] `T7.2` — Recheck FW-017 and FW-020 provenance, reciprocal links,
       post-MVP classification, and revisit triggers. Confirm no implementation
       task, fixture requirement, or success claim depends on pursuing either
       item; capture any new optional discovery through the deferred-work track
@@ -852,3 +852,11 @@ entry remains removed, already absent, or replaced through the sealed surface;
 see the
 [normative audit evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-7/normative-audit.md).
 T7.2 is next.
+
+`T7.2` is complete: FW-017 and FW-020 remain captured, unpromoted post-MVP
+items with SPEC-006 provenance, reciprocal links, explicit non-goals, and
+concrete revisit triggers. The scheduled review found no fired trigger or new
+optional discovery. Production sources, fixture inputs, implementation tasks,
+and success claims do not depend on pursuing either item; see the
+[deferred-work evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-7/deferred-work.md).
+T7.3 is next.

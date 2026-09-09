@@ -68,6 +68,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-006-builder-surface.rb" \
             "${SCRIPT_DIR}/check-spec-006-complexity.rb" \
             "${SCRIPT_DIR}/check-spec-006-dependency-surface.rb" \
+            "${SCRIPT_DIR}/check-spec-006-deferred-work.rb" \
             "${SCRIPT_DIR}/check-spec-006-wrapper-sil.rb" \
             "${SCRIPT_DIR}/check-spec-006-traversal-surface.rb" \
             "${SCRIPT_DIR}/check-spec-006-migration.rb" \
@@ -460,6 +461,8 @@ record_command "${SCRIPT_DIR}/check-spec-006-builder-surface.rb"
 "${SCRIPT_DIR}/check-spec-006-builder-surface.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-006-dependency-surface.rb"
 "${SCRIPT_DIR}/check-spec-006-dependency-surface.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-006-deferred-work.rb"
+"${SCRIPT_DIR}/check-spec-006-deferred-work.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-006-traversal-surface.rb"
 "${SCRIPT_DIR}/check-spec-006-traversal-surface.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-006-stateful-binding.rb"

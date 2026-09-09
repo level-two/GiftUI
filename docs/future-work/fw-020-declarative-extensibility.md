@@ -6,7 +6,7 @@ status: captured
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-08-27
+updated: 2026-09-09
 source:
   - SPEC-006
 related_future_work:
@@ -69,9 +69,12 @@ semantics.
 
 ## Disposition
 
-Captured as post-MVP work. When a trigger fires, triage the concrete facility
-independently and promote through a Proposal or Exploration as appropriate;
-do not treat this cluster as one preapproved architecture.
+Continued as captured post-MVP work after the SPEC-006 T7.2 review on
+2026-09-09. No revisit trigger has fired, and no SPEC-006 implementation task,
+fixture, or success claim depends on pursuing this item. When a trigger fires,
+triage the concrete facility independently and promote through a Proposal or
+Exploration as appropriate; do not treat this cluster as one preapproved
+architecture.
 
 ## References
 
