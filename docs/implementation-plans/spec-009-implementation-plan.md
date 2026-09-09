@@ -456,7 +456,7 @@ control path.
       `ExecutionError` to its exact condition, origin, smallest proven scope,
       containment, and preserved `ExecutionContext` after mandatory pointer
       cancellation or cycle effects.
-- [ ] `T6.2` — Preserve `.focusedOwner` as the concrete finite value through
+- [x] `T6.2` — Preserve `.focusedOwner` as the concrete finite value through
       the common result. Add a fixture owner adapter that switches exhaustively
       over its own sum and proves `GiftUIFailureExecution` supplies neither a
       fallback mapping nor generic invalid/invariant/diagnostic translation.
@@ -1035,7 +1035,14 @@ detecting context, both capacity scopes, all identity-exhaustion scopes,
 safe-reuse containment, and every exact condition and origin while rejecting
 unproven narrowing or pre-containment mapping. See the
 [execution failure adapter evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-6/execution-failure-adapter.md).
-T6.2 is next.
+
+`T6.2` is complete: the common adapter recognizes only `.focusedOwner` and
+returns its unchanged finite value and detecting context. The fixture owner
+exhaustively maps its five-case sum without a default; every non-focused common
+failure returns no focused mapping, so Failure Execution supplies no fallback
+fact or generic translation. See the
+[focused-owner adapter evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-6/focused-owner-adapter.md).
+T6.3 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

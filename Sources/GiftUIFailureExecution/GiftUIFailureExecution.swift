@@ -24,7 +24,30 @@ package struct CorrelatedExecutionFailure: Equatable, Sendable {
     }
 }
 
+package struct CorrelatedFocusedOwnerFailure<OwnerFailure>: Equatable, Sendable
+where OwnerFailure: Equatable & Sendable {
+    package let context: ExecutionContext
+    package let failure: OwnerFailure
+
+    package init(context: ExecutionContext, failure: OwnerFailure) {
+        self.context = context
+        self.failure = failure
+    }
+}
+
 package enum GiftUIExecutionFailureAdapter {
+    package static func focusedOwner<OwnerFailure>(
+        from failure: RunCycleFailure<OwnerFailure>,
+        context: ExecutionContext
+    ) -> CorrelatedFocusedOwnerFailure<OwnerFailure>?
+    where OwnerFailure: Equatable & Sendable {
+        guard case .focusedOwner(let ownerFailure) = failure else { return nil }
+        return CorrelatedFocusedOwnerFailure(
+            context: context,
+            failure: ownerFailure
+        )
+    }
+
     package static func admission(
         _ admission: ExecutionAdmissionOutcome,
         mechanicalEffectsComplete: Bool
