@@ -265,7 +265,7 @@ fixture-dynamic, and fixture-static producers have equal observable meaning.
       `.proxy`, approved layout-neutral modifiers alone use `.passthrough`,
       and unknown/unapproved modifiers fail instead of silently passing
       through.
-- [ ] `T2.2` — Implement the package `SemanticLayoutView` protocol in
+- [x] `T2.2` — Implement the package `SemanticLayoutView` protocol in
       `GiftUISemanticCore` with the exact associated identity, root/scope
       counts, primitive/child/modifier/text accessors, `UInt16` indices, and
       borrowed content meaning. Do not expose actions, generations, models,
@@ -689,6 +689,13 @@ frames without declaration-time normalization.
 summary, closed error codes, and success/failure result. Focused tests cover
 each independently invalid zero limit, exact value preservation, error raw
 values, and the 10-byte, 28-byte, 1-byte, and 32-byte size ceilings.
+
+`T2.2` is complete: Semantic Core now owns the exact package-scoped borrowed
+layout-view protocol with one associated identity type, `UInt16` counts and
+indices, and only primitive, child, modifier, and text-scalar access. A direct
+fixture proves valid and absent identity/count/index behavior. The closed
+primitive and modifier enums required by the protocol are declared; their
+production semantic-expansion mapping remains pending under `T2.1`.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-007 conforms or is `implemented`. The conformance report remains
