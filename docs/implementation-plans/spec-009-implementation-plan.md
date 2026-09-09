@@ -1131,6 +1131,14 @@ SPEC-011 Interaction and SPEC-014 Backend endpoint targets. The
 and fail-closed registry preserve these gates without substituting recording
 fixtures. T8.4 is the next independent task.
 
+`T8.4` has completed the four-compiler 31-value layout pass and both tracked
+hardware-free toolchain probes. `T8.5` has completed all four standalone driver
+preflights against one complete 35-case corpus. Neither task is complete:
+production allocation and dynamic high-water evidence remain blocked on
+SPEC-013, while production backend target inspection remains blocked on
+SPEC-014. See the
+[four-profile checkpoint](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-8/four-profile-checkpoint.md).
+
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
 `null` until `T8.6` creates it, and the Specification's final lifecycle

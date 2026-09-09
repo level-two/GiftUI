@@ -143,7 +143,7 @@ printf '# label\tpath\tsha256\n' >"$images_path"
     printf 'input_set_sha256=%s\nrun_id=%s\n' "$input_set_sha256" "$run_id"
     printf 'invocation=scripts/contracts/run-spec-009.sh --profile %s\n' "$profile"
     printf 'execution_target=present\nvalue_surface=complete\n'
-    printf 'fixture_corpus=missing\nevidence_complete=false\n'
+    printf 'fixture_corpus=complete\nevidence_complete=false\n'
     printf 'remote_access=false\ndeployment=false\nservice_restart=false\n'
     printf 'simulator_execution=false\nconnected_target_execution=false\nflashing=false\n'
 } >"$metadata_path"
@@ -242,11 +242,11 @@ record_nrf52840_identity() {
     printf 'repository-revision\tcomplete\trevision and input digest recorded\n'
     printf 'fixture-schema\tcomplete\tSPEC-009 frozen schema validated\n'
     printf 'execution-target\tcomplete\tGiftUIExecution exists with its exact approved dependency edge\n'
-    printf 'fixture-corpus\tmissing\tall six canonical case sequences are empty\n'
+    printf 'fixture-corpus\tcomplete\tall six files contain one reciprocal 35-case corpus\n'
     printf 'value-layouts\tcomplete\tT1.1 through T1.5 compile and pass 31 target-IR layout checks\n'
-    printf 'allocations\tmissing\texecution paths are not implemented\n'
+    printf 'allocations\tblocked\tproduction profile allocation and high-water evidence waits for SPEC-013\n'
     printf 'dependency-checks\tcomplete\tGiftUIExecution target graph rows are active and acyclic\n'
-    printf 'target-inspection\tblocked\tno execution target image exists\n'
+    printf 'target-inspection\tblocked\tproduction runtime and backend target images wait for SPEC-013 and SPEC-014\n'
     printf 'acceptance-evidence\tmissing\tEX-001 through EX-014 remain pending\n'
 } >"$prerequisites_path"
 
