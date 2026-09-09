@@ -301,7 +301,7 @@ when Milestone 2's SPEC-006-owned prerequisites land.
 limits, workspace/sink acquisition, deterministic local errors, and atomic
 publication without retaining input.
 
-- [ ] `T3.1` — Implement `LayoutLimits`, `LayoutSummary`, `LayoutError`, and
+- [x] `T3.1` — Implement `LayoutLimits`, `LayoutSummary`, `LayoutError`, and
       `LayoutResult` with exact access, raw values, nonzero-limit initializer,
       `Equatable`/`Sendable` behavior, and the specified size ceilings. Add
       compile-time/source audits excluding references, existentials, strings,
@@ -684,6 +684,11 @@ typed modifier operation. Runtime transcript tests prove exact source-call
 order and preservation of negative dimensions, negative finite limits,
 invalid minimum/maximum relations, empty and reserved edge sets, and all-`nil`
 frames without declaration-time normalization.
+
+`T3.1` is complete: the layout package now owns the exact five nonzero limits,
+summary, closed error codes, and success/failure result. Focused tests cover
+each independently invalid zero limit, exact value preservation, error raw
+values, and the 10-byte, 28-byte, 1-byte, and 32-byte size ceilings.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-007 conforms or is `implemented`. The conformance report remains

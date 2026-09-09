@@ -54,6 +54,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-007-harness.rb" \
             "$SCRIPT_DIR/check-spec-007-boundaries.rb" \
             "$SCRIPT_DIR/check-spec-007-migration.rb" \
+            "$SCRIPT_DIR/check-spec-007-values.rb" \
             "$SCRIPT_DIR/report-input-identity.rb" \
             "$SCRIPT_DIR/publish-contract-report.rb" \
             "$SCRIPT_DIR/verify-contract-report.rb" \
@@ -218,6 +219,8 @@ record_command "$SCRIPT_DIR/check-spec-007-boundaries.rb"
 "$SCRIPT_DIR/check-spec-007-boundaries.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-007-migration.rb"
 "$SCRIPT_DIR/check-spec-007-migration.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-007-values.rb"
+"$SCRIPT_DIR/check-spec-007-values.rb" >>"$log_path" 2>&1
 case "$profile" in
     macos-dynamic | macos-static) record_macos_identity ;;
     raspberry-pi-armv6) record_raspberry_pi_identity ;;
