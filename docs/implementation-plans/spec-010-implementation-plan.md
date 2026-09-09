@@ -418,7 +418,7 @@ coordinator effects are observable without diagnostics.
 **Exit evidence:** Exhaustive mappings preserve the exact local condition,
 scope, containment, mandatory effects, and allowed residual policy rows.
 
-- [ ] `T7.1` — Add the first narrow adapter importing
+- [x] `T7.1` — Add the first narrow adapter importing
       `GiftUIObservableState` and `GiftUIFailureCore`; map every candidate,
       replacement, stale, phase, generation, reentrancy, and invariant context
       to the exact SPEC-003 fact after mandatory effects complete.
@@ -829,3 +829,16 @@ active cycle, failures are returned for direct owner-adapter disposition and
 are not stored; see the
 [mutation result evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-5/mutation-result-slot.md).
 Milestone 5 is complete.
+
+Milestone 6 remains gated on the absent SPEC-013 runtime-profile and SPEC-015
+host targets. Its fixture-only preparation does not authorize a substitute
+production owner.
+
+`T7.1` is complete: the first narrow Observable State / Failure Core adapter
+retains the exact local error and finite detection context, admits only the 16
+legal context rows, and constructs exact condition/origin/scope/containment
+facts only after mandatory effects complete. The Cartesian matrix rejects all
+invalid contexts and pre-effect mapping without importing diagnostics,
+Execution, runtime, backend, policy, or dynamic carriers. See the
+[failure adapter evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-7/failure-adapter.md).
+T7.2 is next.

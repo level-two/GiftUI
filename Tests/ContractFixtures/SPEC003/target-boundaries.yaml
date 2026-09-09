@@ -32,9 +32,28 @@ active:
     dependencies:
       - GiftUICapabilities
       - GiftUIFailureCore
-reserved:
   GiftUIFailureExecution:
-    prerequisite: SPEC-009
+    type: regular
+    dependencies:
+      - GiftUIExecution
+      - GiftUIFailureCore
+  GiftUIFailureExecutionTests:
+    type: test
+    dependencies:
+      - GiftUIExecution
+      - GiftUIFailureCore
+      - GiftUIFailureDiagnostics
+      - GiftUIFailureExecution
+      - GiftUIRenderCore
+  GiftUIObservableStateFailureAdapterFixture:
+    type: regular
     dependencies:
       - GiftUIFailureCore
-      - GiftUIExecution
+      - GiftUIObservableState
+  GiftUIObservableStateFailureAdapterTests:
+    type: test
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUIObservableState
+      - GiftUIObservableStateFailureAdapterFixture
+reserved: {}
