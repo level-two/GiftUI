@@ -103,6 +103,7 @@ targets:
       - GiftUIExecution
       - GiftUIFailureCore
       - GiftUIFailureExecution
+      - GiftUIRenderCore
   GiftUIObservableState:
     type: regular
     dependencies:

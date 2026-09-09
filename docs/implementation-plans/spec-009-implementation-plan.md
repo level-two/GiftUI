@@ -460,7 +460,7 @@ control path.
       the common result. Add a fixture owner adapter that switches exhaustively
       over its own sum and proves `GiftUIFailureExecution` supplies neither a
       fallback mapping nor generic invalid/invariant/diagnostic translation.
-- [ ] `T6.3` — Map exact render-production errors, frame-offer failures,
+- [x] `T6.3` — Map exact render-production errors, frame-offer failures,
       illegal endpoint pairings, and both non-retryable-refusal origins.
       Reject legal-impossible `.frameOffer(.insufficientCapacity)` and
       `.frameOffer(.producerFailed)` coordinator results in favor of the
@@ -1042,7 +1042,15 @@ exhaustively maps its five-case sum without a default; every non-focused common
 failure returns no focused mapping, so Failure Execution supplies no fallback
 fact or generic translation. See the
 [focused-owner adapter evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-6/focused-owner-adapter.md).
-T6.3 is next.
+
+`T6.3` is complete: six directly representable producer errors retain their
+SPEC-008 mappings, while sink refusal maps only through the distinct render-
+producer refusal origin. Invalid-envelope and contract-violation frame failures
+map exactly; coordinator-impossible insufficient-capacity and producer-failed
+forms cannot replace the retained producer error. All offer mappings require
+mandatory abort and terminal effects first. See the
+[render and offer mapping evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-6/render-offer-mapping.md).
+T6.4 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

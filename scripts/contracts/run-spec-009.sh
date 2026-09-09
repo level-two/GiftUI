@@ -83,6 +83,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-009-recording-endpoint.rb" \
             "$SCRIPT_DIR/check-spec-009-recording-mutation.rb" \
             "$SCRIPT_DIR/check-spec-009-recording-recovery.rb" \
+            "$SCRIPT_DIR/check-spec-009-render-offer-mapping.rb" \
             "$SCRIPT_DIR/check-spec-009-run-cycle-values.rb" \
             "$SCRIPT_DIR/check-spec-009-value-layouts.rb" \
             "$SCRIPT_DIR/check-spec-009-value-profiles.sh" \
@@ -296,6 +297,8 @@ record_command "$SCRIPT_DIR/check-spec-009-recording-mutation.rb"
 "$SCRIPT_DIR/check-spec-009-recording-mutation.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-recording-recovery.rb"
 "$SCRIPT_DIR/check-spec-009-recording-recovery.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-009-render-offer-mapping.rb"
+"$SCRIPT_DIR/check-spec-009-render-offer-mapping.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-run-cycle-values.rb"
 "$SCRIPT_DIR/check-spec-009-run-cycle-values.rb" >>"$log_path" 2>&1
 case "$profile" in

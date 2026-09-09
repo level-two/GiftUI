@@ -134,6 +134,7 @@ let package = Package(
                 "GiftUIExecution",
                 "GiftUIFailureCore",
                 "GiftUIFailureExecution",
+                "GiftUIRenderCore",
             ]
         ),
         .testTarget(

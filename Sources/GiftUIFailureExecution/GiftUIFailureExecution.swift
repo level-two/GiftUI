@@ -36,6 +36,55 @@ where OwnerFailure: Equatable & Sendable {
 }
 
 package enum GiftUIExecutionFailureAdapter {
+    package static func offeredFailure<OwnerFailure>(
+        _ failure: RunCycleFailure<OwnerFailure>,
+        context: ExecutionContext,
+        mechanicalEffectsComplete: Bool
+    ) -> CorrelatedExecutionFailure?
+    where OwnerFailure: Equatable & Sendable {
+        guard mechanicalEffectsComplete else { return nil }
+        let mapped: GiftUIFailureFact
+        switch failure {
+        case .renderProduction(let error):
+            switch error {
+            case .invalidInput, .incompatibleTextResource:
+                mapped = fact(.invalidValue, .rendering, .candidateFrame, .contained)
+            case .arithmeticOverflow:
+                mapped = fact(.arithmeticOverflow, .foundation, .operation, .contained)
+            case .capacityExhausted:
+                mapped = fact(.capacityExhausted, .rendering, .candidateFrame, .contained)
+            case .sinkRefused:
+                return nil
+            case .reentrancyViolation:
+                mapped = fact(.reentrancyViolation, .rendering, .activeCycle, .safetyNotProven)
+            case .invariantViolation:
+                mapped = fact(.invariantViolation, .rendering, .runtime, .safetyNotProven)
+            }
+        case .frameOffer(let offerFailure):
+            switch offerFailure {
+            case .invalidEnvelope:
+                mapped = fact(.invalidValue, .backend, .candidateFrame, .contained)
+            case .contractViolation:
+                mapped = fact(.invariantViolation, .backend, .runtime, .safetyNotProven)
+            case .insufficientCapacity, .producerFailed:
+                return nil
+            }
+        case .nonRetryableRefusal(let origin):
+            switch origin {
+            case .renderProducer:
+                mapped = fact(.nonRetryableRefusal, .rendering, .candidateFrame, .contained)
+            case .endpoint:
+                mapped = fact(.nonRetryableRefusal, .backend, .candidateFrame, .contained)
+            }
+        case .execution, .focusedOwner:
+            return nil
+        }
+        return CorrelatedExecutionFailure(
+            context: context,
+            fact: mapped
+        )
+    }
+
     package static func focusedOwner<OwnerFailure>(
         from failure: RunCycleFailure<OwnerFailure>,
         context: ExecutionContext
