@@ -218,7 +218,7 @@ the only declaration-to-semantic path.
 with only `import GiftUI`, invalid values remain representable where required,
 and declaration initialization performs no layout.
 
-- [ ] `T1.1` — Implement `HorizontalAlignment`, `VerticalAlignment`,
+- [x] `T1.1` — Implement `HorizontalAlignment`, `VerticalAlignment`,
       `Alignment`, `EdgeInsets`, `EdgeSet`, and `FrameLimit` in `GiftUI` with
       the exact public access, cases, constants, raw bits, initialization,
       `Equatable`/`OptionSet`/`Sendable` conformances, and no widened API.
@@ -665,6 +665,12 @@ registry and executable audit cover the reverse edge, Failure Core,
 capability, render, runtime, backend, platform, driver, OS/RTOS, HAL, hardware,
 and portable-`GiftUI` non-re-export negatives. No public product or portable
 API exposes the package layout implementation.
+
+`T1.1` is complete: `GiftUI` now exposes the exact alignment, edge-inset,
+edge-set, and frame-limit value declarations. Focused public-import tests cover
+every raw value and constant, nonnegative inset validation, empty and reserved
+edge-bit preservation, and finite frame-limit preservation including negative
+values for layout-time rejection.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-007 conforms or is `implemented`. The conformance report remains
