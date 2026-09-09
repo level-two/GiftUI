@@ -2,14 +2,14 @@
 spec: SPEC-006
 feature: giftui-mvp-architecture
 title: SPEC-006 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-09-01
-updated: 2026-09-08
+updated: 2026-09-09
 related_design_notes:
   - ../implementation-designs/spec-006-bounded-semantic-expansion.md
-conformance_report: null
+conformance_report: ../conformance/spec-006-conformance.md
 related_future_work:
   - FW-017
   - FW-020
@@ -128,21 +128,21 @@ once below and maps to implementation tasks and reproducible evidence.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `DV-001` — Exact `GiftUIAction`, Rank 0 source contract, sole portable import, and unevaluated `Never` | `T1.1`, `T1.2`, `T1.4`, `T6.1` | Public-interface, action-code/domain, external-conformance, wrapper-dispatch, and four-profile compile reports | pending |
-| `DV-002` — Arity zero through five, conditionals, optionals, and absence of direct six-child/dynamic-array composition | `T1.2`, `T1.3`, `T6.1` | Positive and compile-negative builder corpus | pending |
-| `DV-003` — Synchronous once-only active bodies and exact depth-first, left-to-right transcript and summary | `T2.3`, `T3.1`, `T3.2`, `T6.2`, `T6.5` | Canonical nested-declaration transcripts, invocation counters, and linear-work instrumentation | pending |
-| `DV-004` — Exact structural-identity equality and inequality with no collision or client-visible raw form | `T2.1`, `T2.2`, `T3.3`, `T4.3` | Identity relation corpus, alias injection, and public-surface scan | pending |
-| `DV-005` — Exact modifier source/nesting order without semantic-node or layout/render meaning | `T1.4`, `T2.3`, `T3.4` | Typed modifier fixture transcripts and count/identity comparisons | pending |
-| `DV-006` — Stable distinct semantic action identities with no generation, target, callable, model retention, or invocation | `T1.1`, `T1.4`, `T2.3`, `T3.5`, `T6.3` | Typed action corpus, identity relations, lifetime probes, and forbidden-symbol/surface scans | pending |
-| `DV-007` — Exact-at-limit success, one-over capacity failure, atomic discard, detection order, reuse, and owner mapping | `T2.2`, `T4.1`, `T4.2`, `T4.4`, `T6.2`, `T6.5` | Independent and coincident bound corpus, work counters, and mapped-failure transcripts | pending |
-| `DV-008` — Exact identity, reentrancy, invalid-limit, and invariant failures unaffected by diagnostics | `T2.2`, `T4.2`, `T4.3`, `T4.4` | Framework-only fault injection, adapter mapping, and diagnostic-isolation matrix | pending |
-| `DV-009` — Equal dynamic/static canonical semantics and failure facts | `T3.2`, `T3.3`, `T3.4`, `T3.5`, `T4.4`, `T6.2` | Event-by-event normalized corpus comparison for all four profiles | pending |
-| `DV-010` — Static zero allocation, bounded depth/counters/layout, and nRF hard-float ELF evidence | `T0.3`, `T2.2`, `T4.1`, `T6.2`, `T6.4`, `T6.5` | Registered four-profile driver, allocation interposer, layout report, depth/work/overflow probes, commands, and ELF attributes | pending |
-| `DV-011` — Exact dependency direction and restricted underscored traversal references | `T0.2`, `T1.4`, `T4.4`, `T6.3` | Package graph, import-negative fixtures, source/reference allow-list, adapter-boundary audit | pending |
-| `DV-012` — No layout, render, state ownership, interaction, capability, backend, frame, or host policy | `T0.1`, `T7.1` | Scope and public/package-surface audit | pending |
-| `DV-013` — Complete proof-of-concept migration closure with no second expansion engine | `T0.4`, `T1.4`, `T6.3`, `T7.1` | Migration inventory and repository-wide forbidden-surface scan | pending |
-| `DV-014` — FW-017/FW-020 remain reciprocal optional post-MVP captures | `T0.1`, `T7.2` | Governance and reciprocal-link audit | pending |
-| `DV-015` — Generated SPEC-010 witness binds before body, preserves successful semantics, and publishes nothing on binding failure | `T5.1`, `T5.2`, `T5.3` | Macro expansion, lexical binding transcript, bound-copy probe, and failure atomicity report | pending |
+| `DV-001` — Exact `GiftUIAction`, Rank 0 source contract, sole portable import, and unevaluated `Never` | `T1.1`, `T1.2`, `T1.4`, `T6.1` | Public-interface, action-code/domain, external-conformance, wrapper-dispatch, and four-profile compile reports | pass |
+| `DV-002` — Arity zero through five, conditionals, optionals, and absence of direct six-child/dynamic-array composition | `T1.2`, `T1.3`, `T6.1` | Positive and compile-negative builder corpus | pass |
+| `DV-003` — Synchronous once-only active bodies and exact depth-first, left-to-right transcript and summary | `T2.3`, `T3.1`, `T3.2`, `T6.2`, `T6.5` | Canonical nested-declaration transcripts, invocation counters, and linear-work instrumentation | pass |
+| `DV-004` — Exact structural-identity equality and inequality with no collision or client-visible raw form | `T2.1`, `T2.2`, `T3.3`, `T4.3` | Identity relation corpus, alias injection, and public-surface scan | pass |
+| `DV-005` — Exact modifier source/nesting order without semantic-node or layout/render meaning | `T1.4`, `T2.3`, `T3.4` | Typed modifier fixture transcripts and count/identity comparisons | pass |
+| `DV-006` — Stable distinct semantic action identities with no generation, target, callable, model retention, or invocation | `T1.1`, `T1.4`, `T2.3`, `T3.5`, `T6.3` | Typed action corpus, identity relations, lifetime probes, and forbidden-symbol/surface scans | pass |
+| `DV-007` — Exact-at-limit success, one-over capacity failure, atomic discard, detection order, reuse, and owner mapping | `T2.2`, `T4.1`, `T4.2`, `T4.4`, `T6.2`, `T6.5` | Independent and coincident bound corpus, work counters, and mapped-failure transcripts | pass |
+| `DV-008` — Exact identity, reentrancy, invalid-limit, and invariant failures unaffected by diagnostics | `T2.2`, `T4.2`, `T4.3`, `T4.4` | Framework-only fault injection, adapter mapping, and diagnostic-isolation matrix | pass |
+| `DV-009` — Equal dynamic/static canonical semantics and failure facts | `T3.2`, `T3.3`, `T3.4`, `T3.5`, `T4.4`, `T6.2` | Event-by-event normalized corpus comparison for all four profiles | pass |
+| `DV-010` — Static zero allocation, bounded depth/counters/layout, and nRF hard-float ELF evidence | `T0.3`, `T2.2`, `T4.1`, `T6.2`, `T6.4`, `T6.5` | Registered four-profile driver, allocation interposer, layout report, depth/work/overflow probes, commands, and ELF attributes | pass |
+| `DV-011` — Exact dependency direction and restricted underscored traversal references | `T0.2`, `T1.4`, `T4.4`, `T6.3` | Package graph, import-negative fixtures, source/reference allow-list, adapter-boundary audit | pass |
+| `DV-012` — No layout, render, state ownership, interaction, capability, backend, frame, or host policy | `T0.1`, `T7.1` | Scope and public/package-surface audit | pass |
+| `DV-013` — Complete proof-of-concept migration closure with no second expansion engine | `T0.4`, `T1.4`, `T6.3`, `T7.1` | Migration inventory and repository-wide forbidden-surface scan | pass |
+| `DV-014` — FW-017/FW-020 remain reciprocal optional post-MVP captures | `T0.1`, `T7.2` | Governance and reciprocal-link audit | pass |
+| `DV-015` — Generated SPEC-010 witness binds before body, preserves successful semantics, and publishes nothing on binding failure | `T5.1`, `T5.2`, `T5.3` | Macro expansion, lexical binding transcript, bound-copy probe, and failure atomicity report | pass |
 
 ## Milestones and Tasks
 
@@ -452,7 +452,7 @@ upstream blockers rather than hidden plan edits.
       task, fixture requirement, or success claim depends on pursuing either
       item; capture any new optional discovery through the deferred-work track
       rather than expanding SPEC-006.
-- [ ] `T7.3` — Update task dispositions and design-note links, create
+- [x] `T7.3` — Update task dispositions and design-note links, create
       `docs/conformance/spec-006-conformance.md` from the conformance template
       in `collecting` status, and map all fifteen criteria to stable evidence.
       Set this plan to `completed` only after every task is complete, removed,
@@ -859,4 +859,12 @@ concrete revisit triggers. The scheduled review found no fired trigger or new
 optional discovery. Production sources, fixture inputs, implementation tasks,
 and success claims do not depend on pursuing either item; see the
 [deferred-work evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-7/deferred-work.md).
-T7.3 is next.
+
+`T7.3` is complete: every task has a completed disposition, the maintained
+bounded-expansion design note remains linked, and the
+[collecting conformance report](../conformance/spec-006-conformance.md) maps all
+fifteen criteria to stable passing evidence at reviewed revision
+`1d7b25c68413159eaee7798e741bc6af627160d3`. The plan is completed while
+SPEC-006 remains `implementing`; explicit human authorization is still required
+for the `implemented` transition. Milestone 7 and this implementation plan are
+complete.

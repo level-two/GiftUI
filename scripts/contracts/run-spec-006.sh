@@ -60,6 +60,9 @@ declared_inputs() {
             "${SEMANTIC_SOURCE}" \
             "${PROJECT_ROOT}/Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift" \
             "${PROJECT_ROOT}/Package.swift" \
+            "${PROJECT_ROOT}/docs/conformance/spec-006-conformance.md" \
+            "${PROJECT_ROOT}/docs/implementation-plans/spec-006-implementation-plan.md" \
+            "${PROJECT_ROOT}/docs/specs/spec-006-declarative-view-semantics.md" \
             "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
             "${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv" \
             "${SCRIPT_DIR}/check-spec-006-harness.rb" \
@@ -67,6 +70,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-006-action-surface.rb" \
             "${SCRIPT_DIR}/check-spec-006-builder-surface.rb" \
             "${SCRIPT_DIR}/check-spec-006-complexity.rb" \
+            "${SCRIPT_DIR}/check-spec-006-conformance.rb" \
             "${SCRIPT_DIR}/check-spec-006-dependency-surface.rb" \
             "${SCRIPT_DIR}/check-spec-006-deferred-work.rb" \
             "${SCRIPT_DIR}/check-spec-006-wrapper-sil.rb" \
@@ -463,6 +467,8 @@ record_command "${SCRIPT_DIR}/check-spec-006-dependency-surface.rb"
 "${SCRIPT_DIR}/check-spec-006-dependency-surface.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-006-deferred-work.rb"
 "${SCRIPT_DIR}/check-spec-006-deferred-work.rb" >>"${log_path}" 2>&1
+record_command "${SCRIPT_DIR}/check-spec-006-conformance.rb"
+"${SCRIPT_DIR}/check-spec-006-conformance.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-006-traversal-surface.rb"
 "${SCRIPT_DIR}/check-spec-006-traversal-surface.rb" >>"${log_path}" 2>&1
 record_command "${SCRIPT_DIR}/check-spec-006-stateful-binding.rb"
