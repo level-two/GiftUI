@@ -74,6 +74,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-009-frame-commit.rb" \
             "$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb" \
             "$SCRIPT_DIR/check-spec-009-focused-failures.rb" \
+            "$SCRIPT_DIR/check-spec-009-handoff-corpus.rb" \
             "$SCRIPT_DIR/check-spec-009-focused-owner-adapter.rb" \
             "$SCRIPT_DIR/check-spec-009-wake-values.rb" \
             "$SCRIPT_DIR/check-spec-009-wake-accumulator.rb" \
@@ -285,6 +286,8 @@ record_command "$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb"
 "$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-focused-failures.rb"
 "$SCRIPT_DIR/check-spec-009-focused-failures.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-009-handoff-corpus.rb"
+"$SCRIPT_DIR/check-spec-009-handoff-corpus.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-focused-owner-adapter.rb"
 "$SCRIPT_DIR/check-spec-009-focused-owner-adapter.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-wake-values.rb"

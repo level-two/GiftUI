@@ -493,7 +493,7 @@ nonduplicated corpus and the driver records every required measurement.
       at-most-once, provenance race, sequence/ordinal, cancellation,
       resynchronization, exhaustion, capture, replacement, movement, disabled,
       and quiescence case required by SPEC-009.
-- [ ] `T7.3` — Complete `handoff.yaml` for every legal/illegal endpoint/body
+- [x] `T7.3` — Complete `handoff.yaml` for every legal/illegal endpoint/body
       pair, acceptance, refusal, reservation, discard, lifetime, operation
       count, producer error, contract violation, and irreversible-output
       case.
@@ -1085,6 +1085,14 @@ resynchronization, both exhaustion paths, capture/release, replacement,
 movement, disabled targets, and quiescence. See the
 [cycle/input corpus evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-7/cycle-input-corpus.md).
 T7.3 is next.
+
+`T7.3` is complete: twelve canonical handoff cases cover accepted completion,
+every legal called-body and no-body outcome, all illegal-pair collapse,
+reservation and discard, post-return poisoning, operation-count mismatch,
+exact retained producer errors, candidate lifetime, and the rule that
+irreversible output requires accepted endpoint health. See the
+[handoff corpus evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-7/handoff-corpus.md).
+T7.4 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
