@@ -423,7 +423,7 @@ terminal state has an exact transcript.
       boundaries, then invoke `offer` at most once. Exercise candidate-ID,
       presentation-ID, invalid-envelope, required-facility, and direct
       contract failures before offer/body entry.
-- [ ] `T5.4` — Commit accepted frame, reserved presentation revision, hit
+- [x] `T5.4` — Commit accepted frame, reserved presentation revision, hit
       geometry, bound action records, and routing state atomically only after
       complete consumption/reservation. Abort all staged state for every
       non-accepted result, preserve prior committed routing, preserve new
@@ -1000,7 +1000,15 @@ allocation, and direct contract failure preserve the semantic revision and
 never enter the body. Invalid envelopes enter one offer but no body; repeated
 offer is rejected. See the
 [candidate offer evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-5/candidate-offer.md).
-T5.4 is next.
+
+`T5.4` is complete: one transaction stages the reserved presentation revision,
+logical frame, hit geometry, action table, and routing values and publishes all
+five only after complete accepted consumption. Every non-accepted result aborts
+all staged state while preserving prior committed routing and the newer semantic
+publication. Incomplete acceptance fails closed, and irreversible output is
+legal only when endpoint health finishes accepted. See the
+[frame commit evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-5/frame-commit.md).
+T5.5 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

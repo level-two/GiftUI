@@ -66,6 +66,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-009-cycle-finalization.rb" \
             "$SCRIPT_DIR/check-spec-009-candidate-offer.rb" \
             "$SCRIPT_DIR/check-spec-009-execution-values.rb" \
+            "$SCRIPT_DIR/check-spec-009-frame-commit.rb" \
             "$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb" \
             "$SCRIPT_DIR/check-spec-009-focused-failures.rb" \
             "$SCRIPT_DIR/check-spec-009-wake-values.rb" \
@@ -259,6 +260,8 @@ record_command "$SCRIPT_DIR/check-spec-009-candidate-offer.rb"
 "$SCRIPT_DIR/check-spec-009-candidate-offer.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-execution-values.rb"
 "$SCRIPT_DIR/check-spec-009-execution-values.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-009-frame-commit.rb"
+"$SCRIPT_DIR/check-spec-009-frame-commit.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb"
 "$SCRIPT_DIR/check-spec-009-frame-handoff-values.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-focused-failures.rb"
