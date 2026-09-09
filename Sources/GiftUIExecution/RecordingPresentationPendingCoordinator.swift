@@ -14,11 +14,12 @@ where Requester: ExecutionWakeRequester & Sendable {
 
     init?(
         maximumRetryableRefusals: UInt8,
+        pendingIntent: PresentationPendingIntent? = nil,
         requester: Requester
     ) {
         guard maximumRetryableRefusals > 0 else { return nil }
         self.maximumRetryableRefusals = maximumRetryableRefusals
-        pendingIntent = nil
+        self.pendingIntent = pendingIntent
         wakes = ExecutionWakeAccumulator(requester: requester)
     }
 

@@ -435,7 +435,7 @@ terminal state has an exact transcript.
       coalesce newer publication with `superseded`, and request one separately
       paced presentation wake without retaining a root, graph, frame, stream,
       operation, action, model, or borrow.
-- [ ] `T5.6` — Exercise configured maxima `1...255`, exact below/equal-limit
+- [x] `T5.6` — Exercise configured maxima `1...255`, exact below/equal-limit
       behavior, checked-increment failure, non-retryable refusal, facility
       loss before/after candidate allocation, capture cancellation, input
       quiescence, and reassembly boundary. Verify terminal residual policy
@@ -1017,7 +1017,16 @@ the complete intent and records supersession. Recovery requests coalesce into
 one presentation-pending wake until a separately paced idle opportunity, and
 revision-scoped clearing cannot discard newer work. See the
 [presentation-pending evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-5/presentation-pending.md).
-T5.6 is next.
+
+`T5.6` is complete: the exhaustive matrix crosses all configured maxima from
+one through 255, proves exact below-limit retention and at-limit exhaustion,
+and injects checked-increment overflow without wrap or wake. Exhaustion, both
+non-retryable-refusal origins, and required-facility loss clear pending state
+and capture, quiesce presentation input, mark intent unavailable, and exclude
+paced retry. Pre-candidate facility loss leaves the frame unproduced, later
+loss aborts it, and only explicit reassembly reopens admission. See the
+[presentation-recovery evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-5/presentation-recovery.md).
+Milestone 5 is complete.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
