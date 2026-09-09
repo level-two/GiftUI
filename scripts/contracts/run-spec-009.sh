@@ -60,6 +60,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-009-input-sequences.rb" \
             "$SCRIPT_DIR/check-spec-009-offer-normalization.rb" \
             "$SCRIPT_DIR/check-spec-009-operational-mapping.rb" \
+            "$SCRIPT_DIR/check-spec-009-owner-instrumentation.rb" \
             "$SCRIPT_DIR/check-spec-009-admission-values.rb" \
             "$SCRIPT_DIR/check-spec-009-admission-controller.rb" \
             "$SCRIPT_DIR/check-spec-009-admission-seal.rb" \
@@ -259,6 +260,8 @@ record_command "$SCRIPT_DIR/check-spec-009-offer-normalization.rb"
 "$SCRIPT_DIR/check-spec-009-offer-normalization.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-operational-mapping.rb"
 "$SCRIPT_DIR/check-spec-009-operational-mapping.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-009-owner-instrumentation.rb"
+"$SCRIPT_DIR/check-spec-009-owner-instrumentation.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-admission-values.rb"
 "$SCRIPT_DIR/check-spec-009-admission-values.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-admission-controller.rb"

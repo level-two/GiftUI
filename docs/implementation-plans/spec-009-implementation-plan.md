@@ -502,7 +502,7 @@ nonduplicated corpus and the driver records every required measurement.
       supersession, terminal state, 20 facts between each of four
       opportunities, one coalesced wake/publication per opportunity, and at
       most one pending intent.
-- [ ] `T7.5` — Complete `owner-failures.yaml` and instrumentation for every
+- [x] `T7.5` — Complete `owner-failures.yaml` and instrumentation for every
       finite owner case, first-failure/cleanup ordering, exact context and
       mapping, phase duration, seal-to-publication and offer latency,
       dirty-to-opportunity latency, retry attempts/pacing, queue/workspace and
@@ -1102,6 +1102,15 @@ wake, publication, and offer per opportunity and one pending-intent high-water.
 See the
 [recovery/signal corpus evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-7/recovery-signal-corpus.md).
 T7.5 is next.
+
+`T7.5` is complete: the canonical corpus retains all five finite owner values,
+exact detecting contexts and mappings, first-failure precedence, all 32 cleanup
+fault combinations, and static layout/allocation bounds. Fixture-only
+instrumentation registers all required timing, retry, high-water, drop,
+cancellation, operation, allocation, section, and link-map measurements without
+an allocating carrier. See the
+[owner/instrumentation evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-7/owner-instrumentation.md).
+Milestone 7 is complete; T8.1 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

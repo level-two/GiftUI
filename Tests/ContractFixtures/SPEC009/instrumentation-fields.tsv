@@ -1,0 +1,23 @@
+# field	unit	requirement
+idleDuration	nanoseconds	per-phase
+admittingDuration	nanoseconds	per-phase
+mutatingDuration	nanoseconds	per-phase
+derivingDuration	nanoseconds	per-phase
+publishingDuration	nanoseconds	per-phase
+offeringDuration	nanoseconds	per-phase
+finalizingDuration	nanoseconds	per-phase
+sealToPublicationLatency	nanoseconds	timed
+offerLatency	nanoseconds	timed
+dirtyToOpportunityLatency	nanoseconds	timed
+retryAttempts	count	bounded
+retryPacingInterval	nanoseconds	timed
+queueHighWater	count	bounded
+workspaceHighWater	bytes	bounded
+stackHighWater	bytes	bounded
+staleInputDrops	count	bounded
+sequenceCancellations	count	bounded
+activationCancellations	count	bounded
+operationCount	count	bounded
+heapAllocationCount	count	static-zero
+linkedSectionDelta	bytes	recorded
+linkMapDigest	four-u64-words	recorded

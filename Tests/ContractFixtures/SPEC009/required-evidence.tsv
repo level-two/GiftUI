@@ -7,9 +7,9 @@ EX-005	T5.1-T5.4,T6.3,T7.3	offer-body-and-irreversible-output-matrix	backpressur
 EX-006	T5.5,T5.6,T6.4,T7.4	recovery-coalescing-and-exhaustion-transcripts	backpressure-preserves-retry-count,facility-loss-quiesces-recovery,first-retryable-refusal-starts-at-one,newer-revision-supersedes-pending,nonretryable-refusal-clears-and-unavailable,retry-limit-exhaustion-is-terminal,retryable-refusal-increments-below-limit,signal-analyzer-four-opportunities	pending
 EX-007	T3.2-T3.6,T7.2	input-provenance-and-sequencing-transcripts	capture-release-and-replacement,movement-and-disabled-capture-cancellation,ordinal-and-sequence-exhaustion,provenance-race-and-capacity-cancellation,source-sequence-ordinal-and-resynchronization	pending
 EX-008	T3.3-T3.6,T4.2,T7.2	capture-generation-and-cancellation-probes	capture-release-and-replacement,movement-and-disabled-capture-cancellation,provenance-race-and-capacity-cancellation	pending
-EX-009	T2.4,T4.5,T4.6,T6.1-T6.5,T7.5	mapping-precedence-and-diagnostic-isolation	-	pending
-EX-010	T4.1,T7.2-T7.5,T8.2,T8.3	normalized-profile-comparison	backpressure-preserves-retry-count,complete-frame-acceptance,phase-and-admission-membership,source-sequence-ordinal-and-resynchronization	pending
+EX-009	T2.4,T4.5,T4.6,T6.1-T6.5,T7.5	mapping-precedence-and-diagnostic-isolation	owner-completion-failure,owner-immutable-render-input-failure,owner-layout-failure,owner-semantic-failure,owner-state-change-first-failure	pending
+EX-010	T4.1,T7.2-T7.5,T8.2,T8.3	normalized-profile-comparison	backpressure-preserves-retry-count,complete-frame-acceptance,owner-state-change-first-failure,phase-and-admission-membership,source-sequence-ordinal-and-resynchronization	pending
 EX-011	T5.5,T7.4,T8.2	signal-analyzer-workload-report	signal-analyzer-four-opportunities	pending
-EX-012	T0.3,T7.1-T7.5,T8.1-T8.5	four-profile-resource-and-dependency-reports	complete-frame-acceptance,phase-and-admission-membership,signal-analyzer-four-opportunities	pending
+EX-012	T0.3,T7.1-T7.5,T8.1-T8.5	four-profile-resource-and-dependency-reports	complete-frame-acceptance,owner-state-change-first-failure,phase-and-admission-membership,signal-analyzer-four-opportunities	pending
 EX-013	T0.2,T0.4,T8.1,T8.5	surface-import-migration-and-symbol-audits	-	pending
-EX-014	T1.5,T4.5,T4.6,T6.2,T7.5,T8.4	owner-failure-preservation-layout-and-allocation	-	pending
+EX-014	T1.5,T4.5,T4.6,T6.2,T7.5,T8.4	owner-failure-preservation-layout-and-allocation	owner-completion-failure,owner-immutable-render-input-failure,owner-layout-failure,owner-semantic-failure,owner-state-change-first-failure	pending

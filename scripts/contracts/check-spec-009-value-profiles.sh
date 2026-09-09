@@ -131,6 +131,7 @@ layout_report="${output_root}/execution-value-layouts.tsv"
 run_command "${compiler}" "${flags[@]}" -parse-as-library -package-name GiftUI \
     -I "${module_dir}" -emit-ir -module-name GiftUIExecutionValueLayoutProbe \
     "${FIXTURE_ROOT}/Instrumentation/ExecutionValueLayoutProbe.swift" \
+    "${FIXTURE_ROOT}/Instrumentation/ExecutionResourceProbe.swift" \
     -o "${layout_ir}" >/dev/null
 run_command "${SCRIPT_DIR}/check-spec-009-value-layouts.rb" \
     "${layout_ir}" "${layout_report}" >/dev/null
