@@ -1,0 +1,10 @@
+# criterion	owner_tasks	evidence	cases	status
+LY-001	T1.1-T1.5,T4.1,T8.1	public-compile-payload-preservation-and-surface-audit	-	pending
+LY-002	T2.1-T2.5,T6.1,T8.2	semantic-view-transcript-borrow-and-no-second-graph-evidence	-	pending
+LY-003	T4.1-T4.5,T6.2,T8.2	stack-spacer-modifier-placement-and-clip-goldens	-	pending
+LY-004	T5.1-T5.4,T6.3,T8.2	canonical-text-instance-glyph-line-baseline-and-clip-goldens	-	pending
+LY-005	T3.1-T3.5,T6.4,T8.2	failure-mapping-acquisition-discard-and-atomicity-matrix	-	pending
+LY-006	T2.4,T3.4,T6.1,T6.5,T8.2-T8.4	profile-normalized-allocation-and-borrow-lifetime-comparison	-	pending
+LY-007	T0.2,T2.5,T7.1,T8.1	package-graph-import-negative-and-source-dependency-audit	-	pending
+LY-008	T7.2,T7.3,T8.2	signal-analyzer-limits-high-water-and-surface-coverage	-	pending
+LY-009	T0.3,T7.3,T8.2-T8.4	four-profile-value-resource-stack-link-and-elf-reports	-	pending

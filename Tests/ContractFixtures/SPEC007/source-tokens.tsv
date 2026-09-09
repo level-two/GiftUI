@@ -1,0 +1,4 @@
+# namespace	format	authority
+scope	scope:<kebab-case>	SPEC-006 identity equality relation and source order only
+instance	instance:<kebab-case>	GiftUITextResources FontInstanceID identity
+glyph	glyph:<kebab-case>	GiftUITextResources GlyphID identity

@@ -1,0 +1,2 @@
+# order	file	domain	collection	evidence_classes
+1	fixtures.yaml	layout-corpus	cases	connected-hardware,cross-build,host-execution,inspection,simulator

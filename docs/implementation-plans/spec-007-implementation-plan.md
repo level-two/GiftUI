@@ -177,7 +177,7 @@ SPEC-002, SPEC-003, SPEC-005, and SPEC-006 remain approved authority.
 migration baseline, and registered fail-closed driver skeleton exist before
 layout behavior is claimed.
 
-- [ ] `T0.1` — Create `Tests/ContractFixtures/SPEC007/` with an ordered
+- [x] `T0.1` — Create `Tests/ContractFixtures/SPEC007/` with an ordered
       fixture manifest, canonical source-token transcript schema, normalized
       result and failure schemas, acceptance/evidence registry, and README.
       Label host execution, cross-build/inspection, simulator, and connected-
@@ -615,8 +615,25 @@ SPEC-007 cannot be deferred.
 
 ## Completion Record
 
-No implementation task has been completed by creation of this plan. Update
-task checkboxes and dispositions only with stable code/test/report evidence.
+Implementation began on 2026-09-09 at the maintainer's request. SPEC-007 is
+`implementing` and this plan is `active`; these progress transitions do not
+change the approved contract or authorize the eventual `implemented`
+transition.
+
+`T0.1` is complete: `Tests/ContractFixtures/SPEC007/` now contains the ordered
+canonical fixture manifest, frozen fixture fields and symbolic source-token
+namespaces, the complete scope/text-line/glyph transcript vocabulary,
+normalized success/failure shapes, exact local-error raw values and SPEC-003
+mapping, and all nine pending acceptance rows. The focused harness rejects
+schema drift, duplicate or incomplete cases, unknown events and evidence
+classes, non-reciprocal criterion references, and unregistered or forbidden
+identity representations. The fixture
+[README](../../Tests/ContractFixtures/SPEC007/README.md) distinguishes host,
+cross-build, inspection, simulator, and separately authorized connected-
+hardware evidence without claiming deployment, remote access, or flashing.
+`T0.3` and `T0.4` may proceed independently; package edits in `T0.2` remain
+coupled to their first compiling sources.
+
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-007 conforms or is `implemented`. The conformance report remains
 `null` until `T8.5` creates it.

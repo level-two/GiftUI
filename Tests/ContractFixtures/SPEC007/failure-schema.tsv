@@ -1,0 +1,6 @@
+# raw_value	local_error	condition	origin	affected_scope	containment
+0	invalid-declaration	invalidValue	layout	candidateFrame	contained
+1	arithmetic-overflow	arithmeticOverflow	foundation	operation	contained
+2	capacity-exhausted	capacityExhausted	layout	candidateFrame	contained
+3	reentrancy-violation	reentrancyViolation	layout	activeCycle	contained
+4	invariant-violation	invariantViolation	layout	candidateFrame	safetyNotProven

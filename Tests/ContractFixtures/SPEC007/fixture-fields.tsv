@@ -1,0 +1,15 @@
+# field	kind	rule
+name	kebab-case	globally unique canonical case name
+semanticInput	mapping	ordered symbolic SPEC-006 layout-facing scopes children modifiers and text scalars
+sourceTokens	sequence	complete declared scope instance and glyph token set for this case
+identityRelations	sequence	exact symbolic equality and inequality relations without raw identity bytes
+rootProposal	mapping	exact valid optional width and height proposal
+layoutLimits	mapping	exact five nonzero global limits
+workspaceCapacity	mapping	exact five caller-owned workspace capacities
+sinkCapacity	mapping	one idle-read capacity for scopes lines and glyphs
+expectedResult	mapping	normalized success summary or exact local failure
+expectedTranscript	sequence	ordered closed source-token transcript events
+expectedSinkCalls	mapping	exact begin stage publish discard and reset counts
+expectedFailureMapping	mapping-or-none	exact SPEC-003 mapping or none on success
+criteria	sequence	one or more LY-001 through LY-009 references
+evidenceClasses	sequence	one or more registered evidence classes

@@ -1,0 +1,3 @@
+# result	required_fields	allowed_values
+success	summary,transcript,sinkCalls	-
+failure	error,sinkCalls,failureMapping	invalid-declaration,arithmetic-overflow,capacity-exhausted,reentrancy-violation,invariant-violation

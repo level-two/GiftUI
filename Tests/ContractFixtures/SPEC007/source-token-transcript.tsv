@@ -1,0 +1,4 @@
+# order	event	required_fields
+1	scope	sourceToken,bounds,clip
+2	text-line	sourceToken,lineIndex,bounds,baseline,clip
+3	glyph	sourceToken,lineIndex,glyphIndex,instance,glyph,baseline,clip
