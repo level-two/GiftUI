@@ -63,6 +63,7 @@ declared_inputs() {
             "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
             "${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv" \
             "${SCRIPT_DIR}/check-spec-006-harness.rb" \
+            "${SCRIPT_DIR}/check-spec-006-layout-allocation.rb" \
             "${SCRIPT_DIR}/check-spec-006-action-surface.rb" \
             "${SCRIPT_DIR}/check-spec-006-builder-surface.rb" \
             "${SCRIPT_DIR}/check-spec-006-dependency-surface.rb" \
@@ -198,7 +199,7 @@ record_image() {
 record_required_evidence() {
     local nrf_status=not-applicable
     if [[ "${profile}" == "nrf52840-embedded" ]]; then
-        nrf_status=missing
+        nrf_status=complete
     fi
     {
         printf '# item\tstatus\n'
@@ -211,12 +212,13 @@ record_required_evidence() {
         printf 'public-interface\tcomplete\n'
         printf 'ordered-corpus\tcomplete\n'
         printf 'normalized-results\tcomplete\n'
-        printf 'allocation-record\tmissing\n'
-        printf 'owned-value-layouts\tmissing\n'
+        printf 'allocation-record\tcomplete\n'
+        printf 'owned-value-layouts\tcomplete\n'
         printf 'summary-counters\tcomplete\n'
         printf 'maximum-observed-depth\tcomplete\n'
         printf 'underscored-reference-inventory\tcomplete\n'
         printf 'nrf-elf-inspection\t%s\n' "${nrf_status}"
+        printf 'complexity-instrumentation\tmissing\n'
     } >"${evidence_path}"
 }
 
@@ -260,6 +262,29 @@ run_fixture_set() {
             done <"${FIXTURE_ROOT}/${patterns}"
         fi
     done <"${FIXTURE_ROOT}/fixture-manifest.tsv"
+}
+
+run_layout_allocation_probe() {
+    local compiler="$1"
+    local module_dir="$2"
+    local abi_path="$3"
+    shift 3
+    local probe_ir="${report_dir}/semantics/layout-probe.ll"
+    local allocation_sil="${report_dir}/semantics/semantic-core.sil"
+    local layout_report="${report_dir}/semantics/layout-allocation.tsv"
+    mkdir -p "${report_dir}/semantics"
+    local -a probe_command=("${compiler}" "$@" -I "${module_dir}" -parse-as-library -emit-ir -module-name GiftUISemanticLayoutProbe "${FIXTURE_ROOT}/LayoutProbe/LayoutProbe.swift" -o "${probe_ir}")
+    record_command "${probe_command[@]}"
+    "${probe_command[@]}" >>"${log_path}" 2>&1
+    local -a sil_command=("${compiler}" "$@" -I "${module_dir}" -parse-as-library -emit-sil -module-name GiftUISemanticCoreAllocationAudit "${SEMANTIC_SOURCE}" -o "${allocation_sil}")
+    record_command "${sil_command[@]}"
+    "${sil_command[@]}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-006-layout-allocation.rb" \
+        "${probe_ir}" "${allocation_sil}" "${abi_path}" "${layout_report}"
+    "${SCRIPT_DIR}/check-spec-006-layout-allocation.rb" \
+        "${probe_ir}" "${allocation_sil}" "${abi_path}" "${layout_report}" \
+        >>"${log_path}" 2>&1
+    record_image layout-allocation "${layout_report}"
 }
 
 run_macos() {
@@ -319,6 +344,9 @@ run_macos() {
         "${wrapper_sil}" "${wrapper_sil_report}" >>"${log_path}" 2>&1
     record_image wrapper-sil-audit "${wrapper_sil_report}"
     run_fixture_set "${compiler}" "${module_dir}" "${flags[@]}"
+    local abi_path="${report_dir}/semantics/target-abi.txt"
+    printf 'not-applicable\n' >"${abi_path}"
+    run_layout_allocation_probe "${compiler}" "${module_dir}" "${abi_path}" "${flags[@]}"
 }
 
 run_raspberry_pi() {
@@ -354,7 +382,21 @@ run_raspberry_pi() {
     record_command "${semantic_interface_command[@]}"
     "${semantic_interface_command[@]}" >>"${log_path}" 2>&1
     record_image semantic-interface "${semantic_interface}"
+    local semantic_object="${report_dir}/build/GiftUISemanticCore.swift.o"
+    local -a semantic_object_command=("${compiler}" -target "${GIFTUI_PI_TARGET}" -sdk "${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}" -resource-dir "${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr/lib/swift_static" -Xcc "--gcc-toolchain=${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr" -O -whole-module-optimization -language-mode 6 -package-name GiftUI -parse-as-library -emit-object -module-name GiftUISemanticCore -I "${report_dir}/build" "${SEMANTIC_SOURCE}" -o "${semantic_object}")
+    record_command "${semantic_object_command[@]}"
+    "${semantic_object_command[@]}" >>"${log_path}" 2>&1
+    local abi_path="${report_dir}/semantics/target-abi.txt"
+    mkdir -p "${report_dir}/semantics"
+    local llvm_objdump="${GIFTUI_PI_HOST_BIN_DIR}/llvm-objdump"
+    record_command file "${semantic_object}"
+    file "${semantic_object}" >"${abi_path}"
+    record_command "${llvm_objdump}" -s -j .ARM.attributes "${semantic_object}"
+    "${llvm_objdump}" -s -j .ARM.attributes "${semantic_object}" >>"${abi_path}"
+    grep -Fq 'ELF 32-bit LSB relocatable, ARM, EABI5' "${abi_path}" ||
+        fail 'ARMv6 Semantic Core object identity differs'
     run_fixture_set "${compiler}" "${module_dir}" -target "${GIFTUI_PI_TARGET}" -sdk "${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}" -resource-dir "${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr/lib/swift_static" -Xcc "--gcc-toolchain=${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr"
+    run_layout_allocation_probe "${compiler}" "${report_dir}/build" "${abi_path}" -target "${GIFTUI_PI_TARGET}" -sdk "${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}" -resource-dir "${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr/lib/swift_static" -Xcc "--gcc-toolchain=${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}/usr" -O -whole-module-optimization -language-mode 6 -package-name GiftUI
 }
 
 run_nrf52840() {
@@ -385,6 +427,21 @@ run_nrf52840() {
     record_image semantic-module "${module_dir}/GiftUISemanticCore.swiftmodule"
     record_image semantic-interface "${semantic_interface}"
     run_fixture_set "${GIFTUI_NRF_SWIFTC}" "${module_dir}" "${flags[@]}"
+    local semantic_object="${report_dir}/build/GiftUISemanticCore.swift.o"
+    local -a semantic_object_command=("${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -parse-as-library -emit-object -module-name GiftUISemanticCore -I "${module_dir}" "${SEMANTIC_SOURCE}" -o "${semantic_object}")
+    record_command "${semantic_object_command[@]}"
+    "${semantic_object_command[@]}" >>"${log_path}" 2>&1
+    local abi_path="${report_dir}/semantics/target-abi.txt"
+    mkdir -p "${report_dir}/semantics"
+    local readelf="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf"
+    record_command "${readelf}" -A "${semantic_object}"
+    "${readelf}" -A "${semantic_object}" >"${abi_path}"
+    grep -Fq 'Tag_CPU_name: "cortex-m4"' "${abi_path}" || fail 'nRF Semantic Core object lacks cortex-m4'
+    grep -Fq 'Tag_CPU_arch: v7E-M' "${abi_path}" || fail 'nRF Semantic Core object lacks ARMv7E-M'
+    grep -Fq 'Tag_FP_arch: VFPv4-D16' "${abi_path}" || fail 'nRF Semantic Core object lacks VFPv4-D16'
+    grep -Fq 'Tag_ABI_VFP_args: VFP registers' "${abi_path}" || fail 'nRF Semantic Core object lacks hard-float ABI'
+    record_image semantic-object "${semantic_object}"
+    run_layout_allocation_probe "${GIFTUI_NRF_SWIFTC}" "${module_dir}" "${abi_path}" "${flags[@]}"
 }
 
 record_command "${SCRIPT_DIR}/check-spec-006-harness.rb"

@@ -420,7 +420,7 @@ direction, and migration closure.
       distinguish forbidden production use from named fixture instrumentation.
       If a later separately imported dynamic convenience is present, prove it
       lowers to the same fixed declaration and canonical expansion semantics.
-- [ ] `T6.4` — Instrument allocation counts and size/stride/alignment for every
+- [x] `T6.4` — Instrument allocation counts and size/stride/alignment for every
       SPEC-006-owned value. Prove zero static-path heap allocations and bounded
       call depth; inspect ARMv6 and nRF artifacts, and verify the nRF52840 ELF
       uses the required Cortex-M4F hard-float calling convention. Record
@@ -824,4 +824,12 @@ backend/platform/driver/runtime coupling, and a second legacy traversal target.
 The immutable-tag migration inventory remains a mandatory independent check;
 see the
 [dependency surface evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-6/dependency-surface.md).
-T6.4 is next.
+
+`T6.4` is complete: a shared compiler probe records size, stride, and alignment
+for every bounded SPEC-006 value and enforces the exact one-byte error plus the
+10- and 12-byte maxima. Optimized Semantic Core SIL contains no heap-allocation
+instruction. ARMv6 and nRF relocatable artifacts are inspected directly; the
+nRF ELF proves Cortex-M4, ARMv7E-M, VFPv4-D16, and VFP-register hard-float
+calling convention without connected execution. See the
+[layout and allocation evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-6/layout-allocation.md).
+T6.5 is next.
