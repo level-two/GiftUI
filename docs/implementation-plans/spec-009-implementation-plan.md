@@ -429,7 +429,7 @@ terminal state has an exact transcript.
       non-accepted result, preserve prior committed routing, preserve new
       semantic publication, and prove irreversible output can only finish as
       accepted endpoint health.
-- [ ] `T5.5` — Implement constant-space latest-revision pending intent.
+- [x] `T5.5` — Implement constant-space latest-revision pending intent.
       Preserve or start count zero for backpressure, checked-increment from
       one for retryable refusal, keep the two outcomes mutually exclusive,
       coalesce newer publication with `superseded`, and request one separately
@@ -1008,7 +1008,16 @@ all staged state while preserving prior committed routing and the newer semantic
 publication. Incomplete acceptance fails closed, and irreversible output is
 legal only when endpoint health finishes accepted. See the
 [frame commit evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-5/frame-commit.md).
-T5.5 is next.
+
+`T5.5` is complete: the coordinator retains only the latest semantic revision
+and retryable-refusal count. Backpressure preserves a same-revision count or
+starts a newer revision at zero, while retryable refusal checked-increments
+from one; the outcomes remain mutually exclusive. Newer publication replaces
+the complete intent and records supersession. Recovery requests coalesce into
+one presentation-pending wake until a separately paced idle opportunity, and
+revision-scoped clearing cannot discard newer work. See the
+[presentation-pending evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-5/presentation-pending.md).
+T5.6 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
