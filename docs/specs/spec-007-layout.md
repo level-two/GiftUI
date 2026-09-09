@@ -2,11 +2,11 @@
 id: SPEC-007
 feature: giftui-mvp-architecture
 title: Proposal-Based Layout Contract
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-09-05
+updated: 2026-09-09
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -58,7 +58,8 @@ constraints, canonical text measurement, resolved hit geometry, and bounded
 checked layout production. It defines one profile-neutral result and recording
 seam; it does not define rendering, input dispatch, or runtime storage.
 
-This document is `approved` and authorizes implementation under this contract.
+This document is `implementing`; its approved contract remains authoritative
+while implementation proceeds through the active plan.
 
 ## Scope
 

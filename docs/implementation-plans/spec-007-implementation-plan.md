@@ -2,11 +2,11 @@
 spec: SPEC-007
 feature: giftui-mvp-architecture
 title: SPEC-007 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-05
-updated: 2026-09-05
+updated: 2026-09-09
 related_design_notes: []
 conformance_report: null
 related_future_work:
