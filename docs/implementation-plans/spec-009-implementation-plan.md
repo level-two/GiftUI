@@ -483,7 +483,7 @@ that violates the shared schema or lifecycle matrix.
 **Exit evidence:** All six required fixture files form one complete,
 nonduplicated corpus and the driver records every required measurement.
 
-- [ ] `T7.1` — Finish the manifest and canonical loader. Validate every shared
+- [x] `T7.1` — Finish the manifest and canonical loader. Validate every shared
       field, explicit `none`, stable symbolic identity token, primary
       operational precedence, summary matrix, endpoint script, referenced
       case, and expected evidence row. Reject pointer/closure/string/hash/
@@ -1067,6 +1067,16 @@ delivery begins. Failure Diagnostics remains a test-only dependency of the
 execution failure adapter. See the
 [diagnostic isolation evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-6/diagnostic-isolation.md).
 Milestone 6 is complete; T7.1 is next.
+
+`T7.1` is complete: the canonical loader requires every registered field and
+explicit `none`, recursively validates stable symbolic identities, checks the
+operational bitset and primary precedence, mirrors the legal summary matrix,
+validates the closed endpoint script, and preserves reciprocal criterion/case
+evidence rows. A temporary reference corpus proves rejection of missing fields,
+forbidden identity representations, wrong precedence, illegal summaries, and
+malformed endpoint scripts. See the
+[canonical loader evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-7/canonical-loader.md).
+T7.2 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

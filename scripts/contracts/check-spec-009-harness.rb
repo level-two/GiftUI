@@ -5,7 +5,7 @@ require "pathname"
 require "yaml"
 
 ROOT = Pathname.new(File.expand_path("../..", __dir__))
-FIXTURES = ROOT.join("Tests/ContractFixtures/SPEC009")
+FIXTURES = Pathname.new(ENV.fetch("SPEC009_FIXTURE_ROOT", ROOT.join("Tests/ContractFixtures/SPEC009").to_s))
 EXPECTED_FILES = %w[
   cycles.yaml
   handoff.yaml
@@ -37,6 +37,19 @@ FORBIDDEN_IDENTITY_NAMESPACES = %w[
   hash
   profile-private
 ].freeze
+SUMMARY_FIELDS = %w[
+  cycle admission semanticRevision semanticDisposition logicalFrameDisposition
+  committedPresentationRevision presentationIntentState presentationPending operationalEvents
+].freeze
+ADMISSION_FIELDS = %w[
+  inputEvents stateChangeFacts completionFacts semanticActions semanticDirty presentationPending
+].freeze
+ENDPOINT_FIELDS = %w[
+  bodyCalled frameStreamResult retainedRenderError frameOfferResult irreversibleOutputBegan
+].freeze
+OPERATIONAL_PRECEDENCE = %w[
+  retryable-refusal backpressured superseded deferred-to-later-admission no-change
+].freeze
 
 def fail_check(message)
   warn "SPEC-009 harness check failed: #{message}"
@@ -55,6 +68,133 @@ def tsv_rows(relative, header, width)
     fail_check("#{relative} row must have #{width} fields") unless fields.length == width
     rows << fields
   end
+end
+
+def explicit_value?(value)
+  !value.nil? && value != ""
+end
+
+def validate_shape(name, field, value, kind)
+  fail_check("#{name}.#{field} must use explicit none") unless explicit_value?(value)
+  return if value == "none"
+
+  expected = if kind.start_with?("mapping")
+               Hash
+             elsif kind.start_with?("sequence")
+               Array
+             else
+               String
+             end
+  fail_check("#{name}.#{field} has wrong #{kind} shape") unless value.is_a?(expected)
+end
+
+def validate_exact_keys(name, value, fields)
+  fail_check("#{name} must be a mapping") unless value.is_a?(Hash)
+  fail_check("#{name} fields differ") unless value.keys.sort == fields.sort
+end
+
+def validate_identity_tokens(name, value, namespaces)
+  case value
+  when Hash
+    value.each do |key, child|
+      validate_identity_tokens(name, key, namespaces)
+      validate_identity_tokens(name, child, namespaces)
+    end
+  when Array
+    value.each { |child| validate_identity_tokens(name, child, namespaces) }
+  when String
+    token = value.match(/\A([a-z][a-z-]*):(.*)\z/)
+    return unless token
+
+    namespace = token[1]
+    fail_check("#{name} uses forbidden identity representation") if FORBIDDEN_IDENTITY_NAMESPACES.include?(namespace)
+    return unless namespaces.include?(namespace)
+
+    fail_check("#{name} has invalid symbolic identity") unless token[2].match?(/\A\d+\z/)
+  end
+end
+
+def validate_admission(name, admission)
+  validate_exact_keys("#{name}.admission", admission, ADMISSION_FIELDS)
+  numeric = %w[inputEvents stateChangeFacts completionFacts semanticActions]
+  fail_check("#{name} admission counts must be nonnegative integers") unless numeric.all? { |field| admission[field].is_a?(Integer) && admission[field] >= 0 }
+  fail_check("#{name} admission flags must be boolean") unless %w[semanticDirty presentationPending].all? { |field| [true, false].include?(admission[field]) }
+  fail_check("#{name} semantic actions exceed inputs") if admission["semanticActions"] > admission["inputEvents"]
+end
+
+def validate_operational_events(name, events)
+  validate_exact_keys("#{name}.operationalEvents", events, %w[rawValue events])
+  values = events["events"]
+  fail_check("#{name} operational events must be a unique sequence") unless values.is_a?(Array) && values.uniq == values
+  fail_check("#{name} has unknown operational event") unless (values - OPERATIONAL_PRECEDENCE).empty?
+  expected_raw = values.sum { |event| 1 << (4 - OPERATIONAL_PRECEDENCE.index(event)) }
+  fail_check("#{name} operational raw value differs") unless events["rawValue"] == expected_raw
+end
+
+def validate_summary(name, summary)
+  validate_exact_keys("#{name}.summary", summary, SUMMARY_FIELDS)
+  validate_admission(name, summary["admission"])
+  validate_operational_events(name, summary["operationalEvents"])
+  symbolic_or_none = ->(value, namespace) { value == "none" || value.is_a?(String) && value.match?(%r{\A#{namespace}:\d+\z}) }
+  fail_check("#{name} has invalid cycle") unless symbolic_or_none.call(summary["cycle"], "cycle") && summary["cycle"] != "none"
+  fail_check("#{name} has invalid semantic revision") unless symbolic_or_none.call(summary["semanticRevision"], "semantic")
+  fail_check("#{name} has invalid presentation revision") unless symbolic_or_none.call(summary["committedPresentationRevision"], "presentation")
+  semantic = summary["semanticDisposition"]
+  frame = summary["logicalFrameDisposition"]
+  intent = summary["presentationIntentState"]
+  pending = summary["presentationPending"]
+  fail_check("#{name} has unknown semantic disposition") unless %w[unchanged published dirty].include?(semantic)
+  fail_check("#{name} has unknown frame disposition") unless %w[not-produced committed aborted].include?(frame)
+  fail_check("#{name} has unknown presentation intent") unless %w[satisfied pending unavailable].include?(intent)
+  fail_check("#{name} published without semantic revision") if semantic == "published" && summary["semanticRevision"] == "none"
+  fail_check("#{name} committed without presentation revision") if frame == "committed" && summary["committedPresentationRevision"] == "none"
+  fail_check("#{name} committed frame is not satisfied") if frame == "committed" && intent != "satisfied"
+  fail_check("#{name} pending intent shape differs") unless (intent == "pending") == pending.is_a?(Hash)
+  if pending.is_a?(Hash)
+    validate_exact_keys("#{name}.presentationPending", pending, %w[semanticRevision retryableRefusalCount])
+    fail_check("#{name} pending revision differs") unless pending["semanticRevision"] == summary["semanticRevision"]
+    fail_check("#{name} pending retry count is invalid") unless pending["retryableRefusalCount"].is_a?(Integer) && pending["retryableRefusalCount"].between?(0, 255)
+  elsif pending != "none"
+    fail_check("#{name} presentationPending must use explicit none")
+  end
+  values = summary["operationalEvents"]["events"]
+  fail_check("#{name} has contradictory refusal events") if values.include?("backpressured") && values.include?("retryable-refusal")
+  fail_check("#{name} no-change summary differs") if values.include?("no-change") && (semantic != "unchanged" || frame != "not-produced" || intent != "satisfied")
+  fail_check("#{name} backpressure summary differs") if values.include?("backpressured") && (frame != "aborted" || intent != "pending")
+  fail_check("#{name} retryable-refusal summary differs") if values.include?("retryable-refusal") && (frame != "aborted" || intent == "satisfied")
+  fail_check("#{name} superseded summary differs") if values.include?("superseded") && semantic != "published"
+end
+
+def validate_expected_result(name, result)
+  return if result == "none"
+
+  fail_check("#{name}.expectedResult must be a mapping") unless result.is_a?(Hash)
+  kind = result["kind"]
+  case kind
+  when "success"
+    validate_exact_keys("#{name}.expectedResult", result, %w[kind summary])
+  when "operational"
+    validate_exact_keys("#{name}.expectedResult", result, %w[kind primary summary])
+  when "failure"
+    validate_exact_keys("#{name}.expectedResult", result, %w[kind context failure summary])
+  else
+    fail_check("#{name} has unknown result kind")
+  end
+  validate_summary(name, result["summary"]) if result["summary"].is_a?(Hash)
+  return unless kind == "operational"
+
+  events = result.fetch("summary").fetch("operationalEvents").fetch("events")
+  expected = OPERATIONAL_PRECEDENCE.find { |candidate| events.include?(candidate) }
+  fail_check("#{name} primary operational precedence differs") unless result["primary"] == expected
+end
+
+def validate_endpoint(name, endpoint)
+  return if endpoint == "none"
+
+  validate_exact_keys("#{name}.endpointScript", endpoint, ENDPOINT_FIELDS)
+  fail_check("#{name} endpoint booleans differ") unless %w[bodyCalled irreversibleOutputBegan].all? { |field| [true, false].include?(endpoint[field]) }
+  fail_check("#{name} no-body endpoint declares a stream result") if !endpoint["bodyCalled"] && endpoint["frameStreamResult"] != "none"
+  fail_check("#{name} irreversible output requires the body") if endpoint["irreversibleOutputBegan"] && !endpoint["bodyCalled"]
 end
 
 manifest = tsv_rows(
@@ -114,7 +254,8 @@ manifest.each do |_order, relative, _domain, extra_field_text, evidence_class_te
     name = fixture_case["name"]
     valid_name = name.is_a?(String) && name.match?(/\A[a-z0-9]+(?:-[a-z0-9]+)*\z/)
     fail_check("#{relative} has invalid case name") unless valid_name
-    missing = SHARED_FIELDS - fixture_case.keys
+    extra_fields = extra_field_text.split(",")
+    missing = SHARED_FIELDS + extra_fields - fixture_case.keys
     unknown = fixture_case.keys - allowed_fields
     fail_check("#{name} lacks shared fields: #{missing.join(',')}") unless missing.empty?
     fail_check("#{name} has unknown fields: #{unknown.join(',')}") unless unknown.empty?
@@ -126,12 +267,11 @@ manifest.each do |_order, relative, _domain, extra_field_text, evidence_class_te
     valid_evidence = fixture_evidence.is_a?(Array) && !fixture_evidence.empty?
     fail_check("#{name} has invalid evidence classes") unless valid_evidence &&
       (fixture_evidence - allowed_evidence).empty?
-    fixture_case.to_s.scan(/\b([a-z][a-z-]*):([^\s,}\]]+)/).each do |namespace, value|
-      fail_check("#{name} uses forbidden identity representation") if FORBIDDEN_IDENTITY_NAMESPACES.include?(namespace)
-      next unless namespaces.include?(namespace)
-
-      fail_check("#{name} has invalid symbolic identity") unless value.match?(/\A\d+\z/)
-    end
+    shared.each { |field, kind, _rule| validate_shape(name, field, fixture_case[field], kind) }
+    validate_endpoint(name, fixture_case["endpointScript"])
+    validate_admission(name, fixture_case["expectedAdmissionSummary"]) if fixture_case["expectedAdmissionSummary"].is_a?(Hash)
+    validate_expected_result(name, fixture_case["expectedResult"])
+    validate_identity_tokens(name, fixture_case, namespaces)
     fixture_criteria.each { |criterion| case_criteria[criterion] << name }
     case_names << name
   end
