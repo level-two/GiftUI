@@ -488,7 +488,7 @@ nonduplicated corpus and the driver records every required measurement.
       operational precedence, summary matrix, endpoint script, referenced
       case, and expected evidence row. Reject pointer/closure/string/hash/
       metatype-address or profile-private semantic identity comparisons.
-- [ ] `T7.2` — Complete `cycles.yaml` and `input.yaml` for every phase,
+- [x] `T7.2` — Complete `cycles.yaml` and `input.yaml` for every phase,
       admission timing, ordering, capacity, publication, dirtiness,
       at-most-once, provenance race, sequence/ordinal, cancellation,
       resynchronization, exhaustion, capture, replacement, movement, disabled,
@@ -1077,6 +1077,14 @@ forbidden identity representations, wrong precedence, illegal summaries, and
 malformed endpoint scripts. See the
 [canonical loader evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-7/canonical-loader.md).
 T7.2 is next.
+
+`T7.2` is complete: ten canonical cycle and input cases cover every active
+phase, seal timing, ordering and capacity, atomic publication, dirty recovery,
+at-most-once effects, per-source provenance and sequencing, cancellation and
+resynchronization, both exhaustion paths, capture/release, replacement,
+movement, disabled targets, and quiescence. See the
+[cycle/input corpus evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-7/cycle-input-corpus.md).
+T7.3 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

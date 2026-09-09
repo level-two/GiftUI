@@ -43,10 +43,14 @@ shared = {
 Dir.mktmpdir("spec-009-loader") do |directory|
   root = Pathname.new(directory)
   FileUtils.cp_r(FIXTURES.children, root)
-  root.join("cycles.yaml").write(YAML.dump("schema" => "spec-009-v1", "cases" => [shared]))
+  baseline_cases = YAML.safe_load(root.join("cycles.yaml").read, aliases: false).fetch("cases")
+  root.join("cycles.yaml").write(YAML.dump("schema" => "spec-009-v1", "cases" => baseline_cases + [shared]))
   evidence = root.join("required-evidence.tsv").read.sub(
-    /^EX-002\t([^\t]+)\t([^\t]+)\t-\tpending$/
-  ) { "EX-002\t#{Regexp.last_match(1)}\t#{Regexp.last_match(2)}\tloader-reference-case\tpending" }
+    /^EX-002\t([^\t]+)\t([^\t]+)\t([^\t]+)\tpending$/
+  ) do
+    cases = (Regexp.last_match(3).split(",") + ["loader-reference-case"]).sort.join(",")
+    "EX-002\t#{Regexp.last_match(1)}\t#{Regexp.last_match(2)}\t#{cases}\tpending"
+  end
   root.join("required-evidence.tsv").write(evidence)
   _out, error, status = run_harness(root)
   fail_check("valid reference case failed: #{error}") unless status.success?
@@ -61,7 +65,7 @@ Dir.mktmpdir("spec-009-loader") do |directory|
   mutations.each do |label, mutation|
     candidate = Marshal.load(Marshal.dump(shared))
     mutation.call(candidate)
-    root.join("cycles.yaml").write(YAML.dump("schema" => "spec-009-v1", "cases" => [candidate]))
+    root.join("cycles.yaml").write(YAML.dump("schema" => "spec-009-v1", "cases" => baseline_cases + [candidate]))
     _mutation_out, _mutation_error, mutation_status = run_harness(root)
     fail_check("loader accepted #{label}") if mutation_status.success?
   end
