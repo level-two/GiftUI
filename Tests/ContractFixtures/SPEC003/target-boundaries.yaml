@@ -54,6 +54,7 @@ active:
     type: test
     dependencies:
       - GiftUIFailureCore
+      - GiftUIFailureDiagnostics
       - GiftUIObservableState
       - GiftUIObservableStateFailureAdapterFixture
 reserved: {}

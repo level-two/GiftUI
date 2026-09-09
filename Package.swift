@@ -155,6 +155,7 @@ let package = Package(
             name: "GiftUIObservableStateFailureAdapterTests",
             dependencies: [
                 "GiftUIFailureCore",
+                "GiftUIFailureDiagnostics",
                 "GiftUIObservableState",
                 "GiftUIObservableStateFailureAdapterFixture",
             ]

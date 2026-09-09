@@ -120,6 +120,7 @@ targets:
     type: test
     dependencies:
       - GiftUIFailureCore
+      - GiftUIFailureDiagnostics
       - GiftUIObservableState
       - GiftUIObservableStateFailureAdapterFixture
   GiftUIObservableStateTests:

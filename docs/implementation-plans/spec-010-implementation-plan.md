@@ -428,7 +428,7 @@ scope, containment, mandatory effects, and allowed residual policy rows.
       skip cleanup, retry without a bound, or reinterpret failure as success.
       Verify secondary cleanup failure never replaces the first selected local
       condition and every context-specific scope/containment row is exact.
-- [ ] `T7.3` — Run correctness with diagnostics absent and with permitted
+- [x] `T7.3` — Run correctness with diagnostics absent and with permitted
       projections enabled/disabled/lost/saturated. Compare identical typed
       results, live sets, generations, dirtiness, wake, and publication state.
 
@@ -851,4 +851,12 @@ request retry or reinterpret success, and the contained-phase row makes no
 policy call. Existing lifecycle fault tests plus the focused corpus prove later
 cleanup failure never replaces the selected condition; see the
 [failure policy evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-7/failure-policy.md).
-T7.3 is next.
+
+`T7.3` is complete: a test-only projection matrix runs diagnostics absent,
+enabled, disabled, lost, and saturated while comparing the identical typed
+result, live set, attachment generation, dirty locations, semantic wake,
+publication generation, and mapped failure. The production adapter has no
+diagnostic dependency, disabled and absent projections construct nothing, and
+selected sinks cannot mutate authoritative state; see the
+[diagnostic isolation evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-7/diagnostic-isolation.md).
+Milestone 7 is complete.
