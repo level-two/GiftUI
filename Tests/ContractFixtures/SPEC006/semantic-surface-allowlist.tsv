@@ -1,0 +1,18 @@
+# access	kind	name
+package	struct	SemanticExpansionLimits
+package	struct	SemanticExpansionSummary
+package	enum	SemanticExpansionError
+package	enum	SemanticExpansionResult
+package	enum	SemanticStateBindingOutcome
+package	protocol	SemanticStatefulBinding
+package	enum	BoundSemanticExpansionResult
+package	protocol	SemanticExpansionWorkspace
+package	protocol	SemanticExpansionSink
+package	struct	SemanticRecordingRole
+package	enum	SemanticRecordingPathComponent
+package	protocol	SemanticRecordingIdentity
+package	enum	SemanticRecordingEvent
+package	protocol	SemanticRecordingStorage
+package	struct	SemanticRecordingSink
+package	func	expandSemanticTree
+package	func	expandSemanticTreeWithStateBinding

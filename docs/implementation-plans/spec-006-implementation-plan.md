@@ -409,7 +409,7 @@ direction, and migration closure.
       Rank 0 cases with varied backend/platform/capability fixture facts and
       prove those facts cannot change builder shape, branch choice, expansion,
       modifier order, identity, result, or transcript.
-- [ ] `T6.3` — Enforce the exact import graph and underscored-reference
+- [x] `T6.3` — Enforce the exact import graph and underscored-reference
       allow-list in source and compiled interfaces. Scan for `Any`, reflection,
       runtime registries, `Task`, `MainActor`, Objective-C, callable/model
       retention, public identity bytes, string paths, second traversal engines,
@@ -815,4 +815,13 @@ backend, platform, and capability facts while requiring unchanged builder
 shape, branch selection, event order, identities, results, failures, and
 transcripts. See the
 [semantic profile evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-6/semantic-profiles.md).
-T6.3 is next.
+
+`T6.3` is complete: source and emitted-interface audits enforce Semantic
+Core's sole `GiftUI` edge, exact package declaration surface, and closed
+underscored-reference allow-list. Production scans reject dynamic storage,
+type erasure, reflection, concurrency and Objective-C surfaces, string paths,
+backend/platform/driver/runtime coupling, and a second legacy traversal target.
+The immutable-tag migration inventory remains a mandatory independent check;
+see the
+[dependency surface evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-6/dependency-surface.md).
+T6.4 is next.

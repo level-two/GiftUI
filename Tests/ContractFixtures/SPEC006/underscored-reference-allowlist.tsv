@@ -1,0 +1,12 @@
+# identifier	owner	purpose
+_GiftUIObservableStateHost	SPEC-010	stateful declaration constraint
+_GiftUIObservableChangeReportOutcome	SPEC-010	change report result
+_GiftUIObservableChangeSink	SPEC-010	borrowed observation sink
+_GiftUIObservableReference	SPEC-010	observable model constraint
+_GiftUIObservableStateDeclarationVisitor	SPEC-010	state declaration visitor
+_GiftUIObservationAttachment	SPEC-010	attachment identity
+_GiftUISemanticActionPayload	SPEC-006	action payload category
+_GiftUISemanticModifierPayload	SPEC-006	modifier payload category
+_GiftUISemanticPrimitivePayload	SPEC-006	primitive payload category
+_GiftUISemanticTraversalVisitor	SPEC-006	sealed traversal visitor
+_giftUITraverse	SPEC-006	declaration traversal witness
