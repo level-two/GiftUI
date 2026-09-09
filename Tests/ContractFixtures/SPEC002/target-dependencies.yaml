@@ -70,6 +70,27 @@ targets:
     dependencies:
       - GiftUI
       - GiftUITextResources
+  GiftUILayout:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUISemanticCore
+      - GiftUITextResources
+  GiftUILayoutFailureAdapterFixture:
+    type: regular
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUILayout
+  GiftUILayoutTests:
+    type: test
+    dependencies:
+      - GiftUILayout
+  GiftUILayoutFailureAdapterTests:
+    type: test
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUILayout
+      - GiftUILayoutFailureAdapterFixture
   GiftUIRenderCore:
     type: regular
     dependencies:

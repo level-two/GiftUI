@@ -183,7 +183,7 @@ layout behavior is claimed.
       Label host execution, cross-build/inspection, simulator, and connected-
       hardware evidence distinctly; no SPEC-007 task requires deployment,
       remote access, or flashing.
-- [ ] `T0.2` — Add `GiftUILayout`, its focused unit-test target, and a narrowly
+- [x] `T0.2` — Add `GiftUILayout`, its focused unit-test target, and a narrowly
       named layout/failure owner-adapter fixture to `Package.swift` only when
       their first compiling sources land. `GiftUILayout` depends exactly on
       `GiftUI`, `GiftUISemanticCore`, and `GiftUITextResources`; the adapter
@@ -655,6 +655,16 @@ historical occurrences. The registered migration check reproduces every PoC
 path/family count and rejects legacy paths, measurement outside `GiftUILayout`,
 floating layout geometry, runtime/backend/platform layout graphs, and text
 measurement outside the layout owner.
+
+`T0.2` is complete: `GiftUILayout` now has exactly the approved `GiftUI`,
+`GiftUISemanticCore`, and `GiftUITextResources` edges; its focused test target
+and the separate `GiftUILayoutFailureAdapterFixture` with only layout/failure
+knowledge compile as real owners around the first closed `LayoutError` value.
+The SPEC-002 exact target allow-list is updated atomically. The boundary
+registry and executable audit cover the reverse edge, Failure Core,
+capability, render, runtime, backend, platform, driver, OS/RTOS, HAL, hardware,
+and portable-`GiftUI` non-re-export negatives. No public product or portable
+API exposes the package layout implementation.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-007 conforms or is `implemented`. The conformance report remains

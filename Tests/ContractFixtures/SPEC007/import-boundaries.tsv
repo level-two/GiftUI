@@ -1,0 +1,13 @@
+# id	context	candidate_import	expectation
+reverse-semantic-layout	GiftUISemanticCore	GiftUILayout	forbidden
+layout-failure-core	GiftUILayout	GiftUIFailureCore	forbidden
+layout-capability	GiftUILayout	GiftUICapabilities	forbidden
+layout-render	GiftUILayout	GiftUIRenderCore	forbidden
+layout-runtime	GiftUILayout	GiftUIExecution	forbidden
+layout-backend	GiftUILayout	GiftUIBackendFramebuffer	forbidden
+layout-platform	GiftUILayout	GiftUIPlatformLinux	forbidden
+layout-driver	GiftUILayout	GiftUIDisplayDriver	forbidden
+layout-os-rtos	GiftUILayout	Zephyr	forbidden
+layout-hal	GiftUILayout	GiftUIHAL	forbidden
+layout-hardware	GiftUILayout	JLink	forbidden
+portable-layout-reexport	GiftUI	GiftUILayout	forbidden

@@ -50,6 +50,14 @@ let package = Package(
             dependencies: ["GiftUI"]
         ),
         .target(
+            name: "GiftUILayout",
+            dependencies: ["GiftUI", "GiftUISemanticCore", "GiftUITextResources"]
+        ),
+        .target(
+            name: "GiftUILayoutFailureAdapterFixture",
+            dependencies: ["GiftUIFailureCore", "GiftUILayout"]
+        ),
+        .target(
             name: "GiftUIRenderCore",
             dependencies: ["GiftUI", "GiftUITextResources"]
         ),
@@ -123,6 +131,18 @@ let package = Package(
         .testTarget(
             name: "GiftUITextResourcesTests",
             dependencies: ["GiftUI", "GiftUITextResources"]
+        ),
+        .testTarget(
+            name: "GiftUILayoutTests",
+            dependencies: ["GiftUILayout"]
+        ),
+        .testTarget(
+            name: "GiftUILayoutFailureAdapterTests",
+            dependencies: [
+                "GiftUIFailureCore",
+                "GiftUILayout",
+                "GiftUILayoutFailureAdapterFixture",
+            ]
         ),
         .testTarget(
             name: "GiftUIRenderCoreTests",

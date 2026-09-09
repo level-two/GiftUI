@@ -52,6 +52,7 @@ declared_inputs() {
             "$PROJECT_ROOT/docs/implementation-plans/spec-007-implementation-plan.md" \
             "$PROJECT_ROOT/scripts/contracts/driver-registry.tsv" \
             "$SCRIPT_DIR/check-spec-007-harness.rb" \
+            "$SCRIPT_DIR/check-spec-007-boundaries.rb" \
             "$SCRIPT_DIR/check-spec-007-migration.rb" \
             "$SCRIPT_DIR/report-input-identity.rb" \
             "$SCRIPT_DIR/publish-contract-report.rb" \
@@ -213,6 +214,8 @@ record_nrf52840_identity() {
 
 record_command "$SCRIPT_DIR/check-spec-007-harness.rb"
 "$SCRIPT_DIR/check-spec-007-harness.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-007-boundaries.rb"
+"$SCRIPT_DIR/check-spec-007-boundaries.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-007-migration.rb"
 "$SCRIPT_DIR/check-spec-007-migration.rb" >>"$log_path" 2>&1
 case "$profile" in
