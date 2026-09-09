@@ -520,7 +520,7 @@ remote target change is authorized.
 semantic, failure, resource, dependency, and cross-build checks; every
 criterion is ready for conformance review.
 
-- [ ] `T8.1` — Audit public/package interfaces, exact target dependencies,
+- [x] `T8.1` — Audit public/package interfaces, exact target dependencies,
       compiled imports, and negative fixtures. Reject any public Execution
       identity, portable-client observation, failure import upward, runtime or
       downstream owner import, backend-to-runtime dependency, input-adapter
@@ -1111,6 +1111,17 @@ cancellation, operation, allocation, section, and link-map measurements without
 an allocating carrier. See the
 [owner/instrumentation evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-7/owner-instrumentation.md).
 Milestone 7 is complete; T8.1 is next.
+
+`T8.1` is complete: the consolidated audit fixes both internal target
+dependency sets, rejects a public Execution product or declaration, limits
+compiled imports to approved owners, proves portable declarations cannot
+observe execution identity/context, and preserves input-adapter isolation. The
+registered negative fixture names the real module, while placeholder targets,
+compatibility shims, forbidden upward imports, and a second execution surface
+remain rejected. See the
+[interface audit evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-8/interface-audit.md).
+T8.2 remains blocked on SPEC-013's production coordinators; T8.3 is next for
+the currently available owner seams.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

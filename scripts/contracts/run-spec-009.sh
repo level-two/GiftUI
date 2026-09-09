@@ -58,6 +58,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-009-harness.rb" \
             "$SCRIPT_DIR/check-spec-009-identity-allocators.rb" \
             "$SCRIPT_DIR/check-spec-009-input-sequences.rb" \
+            "$SCRIPT_DIR/check-spec-009-interface-audit.rb" \
             "$SCRIPT_DIR/check-spec-009-offer-normalization.rb" \
             "$SCRIPT_DIR/check-spec-009-operational-mapping.rb" \
             "$SCRIPT_DIR/check-spec-009-owner-instrumentation.rb" \
@@ -256,6 +257,8 @@ record_command "$SCRIPT_DIR/check-spec-009-identity-allocators.rb"
 "$SCRIPT_DIR/check-spec-009-identity-allocators.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-input-sequences.rb"
 "$SCRIPT_DIR/check-spec-009-input-sequences.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-009-interface-audit.rb"
+"$SCRIPT_DIR/check-spec-009-interface-audit.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-offer-normalization.rb"
 "$SCRIPT_DIR/check-spec-009-offer-normalization.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-operational-mapping.rb"
