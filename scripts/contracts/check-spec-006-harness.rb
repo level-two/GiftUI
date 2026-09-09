@@ -20,6 +20,7 @@ expected_headers = {
   "SemanticCorpus/identity-relations.tsv" => "# id\tlhs_path\tlhs_endpoint_role\trhs_path\trhs_endpoint_role\texpected_relation\texpected_result\tevidence_class",
   "SemanticCorpus/profile-corpus.tsv" => "# category\tartifact\texpected_relation",
   "SemanticCorpus/rank-zero-variants.tsv" => "# id\tcase_id\tbackend_fact\tplatform_fact\tcapability_fact\texpected_relation",
+  "ComplexityCorpus/cases.tsv" => "# id\toutcome\tscale\trejected_subtree_units\tfirst_failure_event",
   "BoundaryCorpus/cases.tsv" => "# id\tboundary_owner\tbelow\texact\tone_over\texpected_one_over\tevidence_class",
   "BoundaryCorpus/coincident-failures.tsv" => "# id\tcompeting_conditions\tdetecting_point\texpected_result\tlater_hook_called\tpublished_rows\treuse\tevidence_class",
   "BoundaryCorpus/framework-invariants.tsv" => "# id\tinjection\texpected_result\tbody_evaluations\tpublished_rows\treuse\tevidence_class",

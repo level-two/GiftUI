@@ -425,7 +425,7 @@ direction, and migration closure.
       call depth; inspect ARMv6 and nRF artifacts, and verify the nRF52840 ELF
       uses the required Cortex-M4F hard-float calling convention. Record
       cross-build/inspection evidence only, with no connected-hardware claim.
-- [ ] `T6.5` — Instrument visitor dispatches, path/identity validations,
+- [x] `T6.5` — Instrument visitor dispatches, path/identity validations,
       counter reservations, workspace/sink reservations, body evaluations,
       semantic stages, modifier stages, and action stages over geometrically
       increasing valid and first-failure corpora. Prove each unit of admitted
@@ -832,4 +832,12 @@ instruction. ARMv6 and nRF relocatable artifacts are inspected directly; the
 nRF ELF proves Cortex-M4, ARMv7E-M, VFPv4-D16, and VFP-register hard-float
 calling convention without connected execution. See the
 [layout and allocation evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-6/layout-allocation.md).
-T6.5 is next.
+
+`T6.5` is complete: canonical modifier-custom and action-modified transcripts
+drive ten explicit counters for dispatch, validation, reservation, body,
+semantic, modifier, and action work. Geometric admitted scales through sixteen
+retain exact constant per-unit ratios. With rejected inactive subtrees growing
+from one through sixteen units, failure remains fixed at the third attempted
+event and publishes zero work. See the
+[complexity evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-6/complexity.md).
+Milestone 6 is complete; T7.1 is next.

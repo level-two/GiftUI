@@ -1,0 +1,11 @@
+# id	outcome	scale	rejected_subtree_units	first_failure_event
+valid-1	success	1	0	-
+valid-2	success	2	0	-
+valid-4	success	4	0	-
+valid-8	success	8	0	-
+valid-16	success	16	0	-
+failure-rejected-1	capacity-exhausted	1	1	3
+failure-rejected-2	capacity-exhausted	1	2	3
+failure-rejected-4	capacity-exhausted	1	4	3
+failure-rejected-8	capacity-exhausted	1	8	3
+failure-rejected-16	capacity-exhausted	1	16	3

@@ -66,6 +66,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-006-layout-allocation.rb" \
             "${SCRIPT_DIR}/check-spec-006-action-surface.rb" \
             "${SCRIPT_DIR}/check-spec-006-builder-surface.rb" \
+            "${SCRIPT_DIR}/check-spec-006-complexity.rb" \
             "${SCRIPT_DIR}/check-spec-006-dependency-surface.rb" \
             "${SCRIPT_DIR}/check-spec-006-wrapper-sil.rb" \
             "${SCRIPT_DIR}/check-spec-006-traversal-surface.rb" \
@@ -146,7 +147,7 @@ log_path="${report_dir}/run.log"
     printf 'simulator_execution=false\n'
     printf 'connected_target_execution=false\n'
     printf 'flashing=false\n'
-    printf 'evidence_complete=false\n'
+    printf 'evidence_complete=true\n'
 } >"${metadata_path}"
 
 finish() {
@@ -218,7 +219,7 @@ record_required_evidence() {
         printf 'maximum-observed-depth\tcomplete\n'
         printf 'underscored-reference-inventory\tcomplete\n'
         printf 'nrf-elf-inspection\t%s\n' "${nrf_status}"
-        printf 'complexity-instrumentation\tmissing\n'
+        printf 'complexity-instrumentation\tcomplete\n'
     } >"${evidence_path}"
 }
 
@@ -493,6 +494,12 @@ record_command "${SCRIPT_DIR}/check-spec-006-dependency-surface.rb" \
     --output "${dependency_report}" >>"${log_path}" 2>&1
 record_image dependency-surface "${dependency_report}"
 
+complexity_report="${report_dir}/semantics/complexity.tsv"
+record_command "${SCRIPT_DIR}/check-spec-006-complexity.rb" --output "${complexity_report}"
+"${SCRIPT_DIR}/check-spec-006-complexity.rb" \
+    --output "${complexity_report}" >>"${log_path}" 2>&1
+record_image complexity "${complexity_report}"
+
 record_required_evidence
 record_command "${SCRIPT_DIR}/check-spec-006-harness.rb" "${report_dir}"
 "${SCRIPT_DIR}/check-spec-006-harness.rb" "${report_dir}" >>"${log_path}" 2>&1
@@ -504,5 +511,5 @@ trap - EXIT
     --destination "${canonical_report_dir}" \
     --latest "${latest_pointer}" \
     --run-id "${run_id}"
-printf 'SPEC-006 %s harness passed; conformance evidence remains incomplete; run ID: %s\n' \
+printf 'SPEC-006 %s Milestone 6 evidence complete; conformance review remains pending; run ID: %s\n' \
     "${profile}" "${run_id}"
