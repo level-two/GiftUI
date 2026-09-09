@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-08-28
+updated: 2026-09-09
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -739,6 +739,7 @@ configuration contracts.
 
 ## References
 
+- [SPEC-011 Implementation Plan](../implementation-plans/spec-011-implementation-plan.md)
 - [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
 - [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-004](../rfcs/rfc-004-run-cycle-and-frame-transaction.md)
