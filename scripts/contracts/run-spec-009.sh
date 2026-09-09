@@ -66,6 +66,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-009-admission-seal-faults.rb" \
             "$SCRIPT_DIR/check-spec-009-cycle-finalization.rb" \
             "$SCRIPT_DIR/check-spec-009-candidate-offer.rb" \
+            "$SCRIPT_DIR/check-spec-009-diagnostic-isolation.rb" \
             "$SCRIPT_DIR/check-spec-009-execution-values.rb" \
             "$SCRIPT_DIR/check-spec-009-execution-failure-adapter.rb" \
             "$SCRIPT_DIR/check-spec-009-frame-commit.rb" \
@@ -266,6 +267,8 @@ record_command "$SCRIPT_DIR/check-spec-009-cycle-finalization.rb"
 "$SCRIPT_DIR/check-spec-009-cycle-finalization.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-candidate-offer.rb"
 "$SCRIPT_DIR/check-spec-009-candidate-offer.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-009-diagnostic-isolation.rb"
+"$SCRIPT_DIR/check-spec-009-diagnostic-isolation.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-execution-values.rb"
 "$SCRIPT_DIR/check-spec-009-execution-values.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-execution-failure-adapter.rb"

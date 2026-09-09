@@ -133,6 +133,7 @@ let package = Package(
             dependencies: [
                 "GiftUIExecution",
                 "GiftUIFailureCore",
+                "GiftUIFailureDiagnostics",
                 "GiftUIFailureExecution",
                 "GiftUIRenderCore",
             ]

@@ -469,7 +469,7 @@ control path.
       context, attempt ordinal/limit, and complete event-set evidence. Prove
       mandatory abort, dirty, unavailable, cancellation, and quiescence
       effects precede total residual target policy.
-- [ ] `T6.5` — Run diagnostics omitted, selected, saturated, dropped, and
+- [x] `T6.5` — Run diagnostics omitted, selected, saturated, dropped, and
       failing. Prove identical admissions, effects, revisions, identities,
       offers, wakes, retries, mappings, summaries, and authoritative state;
       reject any diagnostic callback or sink mutation/action path.
@@ -1058,7 +1058,15 @@ attempts, and mapping before mandatory effects. Its residual-policy input
 admits every legal target while paced retry is limited to backpressure or
 retryable refusal strictly below exhaustion. See the
 [operational mapping evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-6/operational-mapping.md).
-T6.5 is next.
+
+`T6.5` is complete: omitted, selected-and-accepted, saturated, dropped, and
+failing diagnostic configurations preserve an identical complete execution
+snapshot. Omitted records remain lazily unconstructed, and an attacking sink
+cannot mutate authoritative state or invoke a client action after diagnostic
+delivery begins. Failure Diagnostics remains a test-only dependency of the
+execution failure adapter. See the
+[diagnostic isolation evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-6/diagnostic-isolation.md).
+Milestone 6 is complete; T7.1 is next.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
