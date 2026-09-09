@@ -160,4 +160,70 @@ end
 yaml_files = FIXTURES.children.select { |path| path.extname == ".yaml" }.map { |path| path.basename.to_s }.sort
 fail_check("unregistered or missing YAML fixture") unless yaml_files == ["fixtures.yaml"]
 
-puts "SPEC-007 fixture schemas passed: #{cases.length} canonical case(s), 9 pending acceptance criteria"
+if ARGV.empty?
+  puts "SPEC-007 fixture schemas passed: #{cases.length} canonical case(s), 9 pending acceptance criteria"
+  exit 0
+end
+
+report = Pathname.new(ARGV.fetch(0))
+required_report_files = %w[
+  metadata.txt commands.txt input-hashes.tsv image-hashes.tsv
+  required-evidence.tsv prerequisites.tsv run.log
+]
+missing_report_files = required_report_files.reject { |relative| report.join(relative).file? }
+fail_check("report lacks #{missing_report_files.join(',')}") unless missing_report_files.empty?
+fail_check("command transcript is empty") if report.join("commands.txt").read.strip.empty?
+fail_check("input digest inventory is empty") if report.join("input-hashes.tsv").read.strip.empty?
+
+metadata = report.join("metadata.txt").each_line.each_with_object({}) do |line, values|
+  key, value = line.chomp.split("=", 2)
+  values[key] = value if value
+end
+fail_check("report schema differs") unless metadata["schema_version"] == "1"
+fail_check("report spec differs") unless metadata["spec"] == "SPEC-007"
+profiles = %w[macos-dynamic macos-static raspberry-pi-armv6 nrf52840-embedded]
+fail_check("report profile differs") unless profiles.include?(metadata["profile"])
+fail_check("report lacks repository revision") unless metadata["repository_revision"]&.match?(/\A[0-9a-f]{40}\z/)
+fail_check("report lacks dirty state") unless %w[true false].include?(metadata["repository_dirty"])
+fail_check("report lacks input digest") unless metadata["input_set_sha256"]&.match?(/\A[0-9a-f]{64}\z/)
+fail_check("report lacks run identity") if metadata.fetch("run_id", "").empty?
+fail_check("layout target must remain blocked") unless metadata["layout_target"] == "blocked"
+fail_check("fixture corpus must remain missing") unless metadata["fixture_corpus"] == "missing"
+fail_check("incomplete evidence must not claim completion") unless metadata["evidence_complete"] == "false"
+%w[
+  remote_access deployment service_restart simulator_execution
+  connected_target_execution flashing
+].each do |key|
+  fail_check("driver must report #{key}=false") unless metadata[key] == "false"
+end
+
+report_evidence = report.join("required-evidence.tsv").each_line.each_with_object([]) do |line, rows|
+  next if line.start_with?("#") || line.strip.empty?
+
+  row = line.chomp.split("\t", -1)
+  fail_check("malformed report evidence row") unless row.length == 3
+  rows << row
+end
+fail_check("report evidence criteria differ") unless report_evidence.map(&:first) == expected_criteria
+fail_check("report evidence must remain missing") unless report_evidence.all? { |row| row[1] == "missing" }
+fail_check("report evidence lacks reasons") if report_evidence.any? { |row| row[2].empty? }
+
+prerequisites = report.join("prerequisites.tsv").each_line.each_with_object([]) do |line, rows|
+  next if line.start_with?("#") || line.strip.empty?
+
+  row = line.chomp.split("\t", -1)
+  fail_check("malformed prerequisite row") unless row.length == 3
+  rows << row
+end
+expected_prerequisites = %w[
+  compiler-identity target-sdk-identity optimization repository-state
+  command-transcript fixture-digest layout-target fixture-corpus value-layouts
+  limits-high-water allocation workspace stack linked-code-delta no-second-graph
+  target-inspection nrf-hard-float-elf acceptance-evidence
+]
+fail_check("prerequisite set differs") unless prerequisites.map(&:first) == expected_prerequisites
+allowed_statuses = %w[complete missing blocked]
+fail_check("invalid prerequisite status") if prerequisites.any? { |row| !allowed_statuses.include?(row[1]) }
+fail_check("prerequisite lacks reason") if prerequisites.any? { |row| row[2].empty? }
+
+puts "SPEC-007 report is fail-closed: 9 criteria missing; layout target blocked"

@@ -192,7 +192,7 @@ layout behavior is claimed.
       failure-core, capability, render, runtime, backend, platform, driver,
       OS/RTOS, HAL, and hardware import negatives, plus a portable-`GiftUI`
       non-re-export check.
-- [ ] `T0.3` — Create `scripts/contracts/run-spec-007.sh --profile <profile>`
+- [x] `T0.3` — Create `scripts/contracts/run-spec-007.sh --profile <profile>`
       for exactly `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, and
       `nrf52840-embedded`; register it explicitly in
       `scripts/contracts/driver-registry.tsv`. Initially fail closed for every
@@ -633,6 +633,17 @@ cross-build, inspection, simulator, and separately authorized connected-
 hardware evidence without claiming deployment, remote access, or flashing.
 `T0.3` and `T0.4` may proceed independently; package edits in `T0.2` remain
 coupled to their first compiling sources.
+
+`T0.3` is complete: `scripts/contracts/run-spec-007.sh` is registered for
+exactly the four required profiles. It records the pinned compiler, target,
+SDK, optimization, repository revision and dirty state, exact command
+transcript, and input/fixture digest, then publishes an immutable verified
+report. Its prerequisite matrix remains explicitly fail-closed for the absent
+layout target and corpus, complete owned-value layouts, limits and high-water,
+allocation, workspace, call-stack, linked-code delta, no-second-graph audit,
+target inspection, nRF hard-float ELF evidence, and all acceptance evidence.
+The driver performs no remote access, deployment, restart, simulator run,
+connected-target execution, or flashing.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-007 conforms or is `implemented`. The conformance report remains
