@@ -1,0 +1,627 @@
+---
+spec: SPEC-012
+feature: canvas-drawing
+title: SPEC-012 Implementation Plan
+status: ready
+owners:
+  - codex
+created: 2026-09-09
+updated: 2026-09-09
+related_design_notes: []
+conformance_report: null
+related_future_work: []
+related_explorations: []
+related_spikes:
+  - SPIKE-004
+  - SPIKE-007
+  - SPIKE-008
+supersedes: null
+superseded_by: null
+---
+
+# SPEC-012 Implementation Plan
+
+> This ready plan derives work from the approved Canvas, Path, and Stroke
+> Drawing Contract. It orders implementation and evidence but does not amend
+> the drawing invocation, scoped ownership, normalized stroke, failure,
+> capacity, raster, profile, backend, or host contracts owned by that
+> Specification and its authoritative dependencies.
+
+## Authority and Scope
+
+The governing contract is approved
+[SPEC-012](../specs/spec-012-canvas-path-stroke-drawing.md). Its authority
+chain is accepted
+[PROPOSAL-006](../proposals/proposal-006-canvas-path-stroke-drawing.md),
+approved
+[RFC-009](../rfcs/rfc-009-canvas-path-stroke-drawing-architecture.md), and
+accepted
+[ADR-028](../adrs/adr-028-post-layout-canvas-derivation-and-cycle-local-plan.md),
+[ADR-029](../adrs/adr-029-scoped-transient-path-snapshot-semantics.md),
+[ADR-030](../adrs/adr-030-canonical-normalized-straight-line-stroke-operation.md),
+and
+[ADR-031](../adrs/adr-031-bounded-canvas-failure-and-startup-gate-integration.md).
+
+Approved SPEC-002 owns checked geometry and four-profile evidence; SPEC-003
+owns cross-layer failure outcomes; SPEC-004 owns the existing
+`rasterPresentation` capability; SPEC-006 owns semantic identity and typed
+primitive traversal; SPEC-007 owns Canvas layout bounds; SPEC-008 owns the
+ordinary render traversal, color, clipping, and stream transaction; and
+SPEC-009 owns phase, publication, one-shot offer, refusal, and dirty
+rederivation. Approved SPEC-001 and SPEC-015 own the Signal Analyzer workload
+and host configuration, SPEC-013 owns dynamic/static profile storage and
+generation, and SPEC-014 owns concrete backend and raster integration. This
+plan consumes those contracts without duplicating their owners.
+
+The [MVP Scope](../MVP_SCOPE.md) requires the substantially shared Signal
+Analyzer presentation to draw its time grid and four data-driven digital
+traces on macOS dynamic, macOS static, Raspberry Pi 1/Linux dynamic, and
+nRF52840 static configurations. SPEC-012 supplies the minimal portable
+straight-line Canvas surface and the bounded normalized drawing path required
+for that validation. It does not authorize richer drawing, retained plans,
+animation, deployment, remote service changes, or connected-board flashing.
+
+## Current Repository State
+
+- `GiftUI` already owns SPEC-002 geometry plus the in-progress SPEC-006 and
+  SPEC-008 public surfaces. It has no `Canvas`, `GraphicsContext`, `Path`,
+  `Shading`, `StrokeStyle`, `LineCap`, `LineJoin`, or `DrawingError` declarations.
+- `GiftUISemanticCore` has the generic primitive staging seam and an
+  in-progress `SemanticRenderView`, but no typed Canvas payload retention,
+  Canvas invocation view, or `.canvas` rendering scope. SPEC-007's
+  `SemanticLayoutPrimitive.canvas` and resolved layout owner do not yet exist.
+- `GiftUIRenderCore` contains the ordinary SPEC-008 render value and sink
+  surface. It has no `StraightLineStrokeHeader`, `StraightLineStrokeView`, or
+  `DrawingOperationSink` contract. `GiftUIRenderLowering`, `GiftUILayout`, and
+  `GiftUIDrawing` targets are absent from `Package.swift`.
+- `GiftUIExecution` contains the focused SPEC-009 phase, candidate, offer,
+  refusal, dirty-recovery, and finalization machinery. The production runtime
+  coordinator that sequences semantic, layout, drawing, publication, and
+  combined offer remains owned by SPEC-013.
+- SPEC-007, SPEC-013, SPEC-014, and SPEC-015 are approved but have not started
+  implementation; SPEC-007 has a ready plan. SPEC-008 and SPEC-009 are
+  implementing; SPEC-008 has its client declarations and part of Render Core,
+  while its resolved-layout and lowering work remains open. The
+  runtime-profile, backend-integration, and host-configuration production
+  targets remain absent.
+- There is no `Tests/ContractFixtures/SPEC012/`, focused drawing unit-test
+  target, drawing failure-adapter fixture, generated static Canvas fixture,
+  canonical stroke raster corpus, `scripts/contracts/run-spec-012.sh`, or
+  SPEC-012 driver-registry row.
+- SPIKE-004 supplies feasibility evidence for bounded plan construction,
+  SPIKE-007 supplies negative direct-closure and positive generated-callable
+  evidence, and SPIKE-008 supplies corrected typed-throws/two-`inout`
+  declaration evidence. Their experiment code is not production authority and
+  is not migrated wholesale.
+- Existing contract drivers and fixture trees provide reusable conventions for
+  fail-closed manifests, exact profile commands, positive and negative compile
+  witnesses, normalized transcripts, allocation and symbol inspection,
+  cross-build resource evidence, and explicit `scripts/test.sh` registration.
+
+## Readiness Review
+
+**Reviewed:** 2026-09-09
+
+**Disposition:** Ready. SPEC-012 is approved, its complete authority chain is
+current, its thirteen acceptance criteria map to ordered tasks and reproducible
+evidence, and no open contractual or architectural choice remains. Unfinished
+upstream implementations are explicit task dependencies: declaration,
+Render-Core value, direct-workspace, fixture, and harness tasks may proceed
+independently, while production layout, combined lowering, runtime-profile,
+backend, and host claims wait for their owning implementations.
+
+No `docs/features.yaml` change is required because implementation records are
+not registered there and `canvas-drawing` already reports the Specification
+stage. Starting production implementation requires a separate progress update
+that changes SPEC-012 to `implementing` and this plan to `active`; readiness
+alone does not perform that transition.
+
+If the supported compilers cannot express the approved scoped noncopyable or
+typed-throws surface, if exact identity cannot cross the semantic/layout/drawing
+seams without translation or retention, if the combined producer cannot reuse
+SPEC-008's traversal, or if the required value/resource bounds cannot be met,
+the affected work returns to Specification or architecture review. The plan
+must not add a fallback closure, second semantic/render traversal, relaxed
+stroke meaning, target branch, silent omission, or new capability field.
+
+## Task Dependencies and Affected Surfaces
+
+Milestone numbers define the default execution order. A task may start only
+after every listed prerequisite is satisfied.
+
+| Work | Prerequisites | Primary affected surfaces | Parallel boundary |
+| --- | --- | --- | --- |
+| `T0.1`-`T0.4` | Approved SPEC-012 authority chain | `Tests/ContractFixtures/SPEC012/`, `Package.swift`, `scripts/contracts/`, graph and migration fixtures | Evidence schemas, migration inventory, and driver scaffolding may proceed together; exact target-graph edits land with their first compiling sources |
+| `T1.1`-`T1.5` | `T0.2`; existing SPEC-002/006/008 public owners | `Sources/GiftUI/`, `Tests/GiftUITests/`, compile fixtures | Declaration families and negative ownership witnesses may proceed in parallel after the shared scoped-storage seam is fixed |
+| `T2.1`-`T2.5` | `T0.2`; relevant `T1.*`; SPEC-006 exact identity/payload seam for production adaptation | `Sources/GiftUISemanticCore/`, `Sources/GiftUIRenderCore/`, focused tests | Render-Core values and direct semantic fixtures may proceed before production semantic-result adaptation |
+| `T3.1`-`T3.6` | `T1.*`, `T2.2`-`T2.3`; SPEC-002 checked geometry | `Sources/GiftUIDrawing/`, drawing unit tests, recording plan fixtures | Limit/value construction may proceed beside private workspace storage; mutation, snapshot, and lifecycle tasks then follow shared invariants |
+| `T4.1`-`T4.5` | `T2.1`, `T3.*`; SPEC-007 resolved layout and SPEC-009 execution context for production integration | `GiftUISemanticCore`, `GiftUILayout`, `GiftUIDrawing`, `GiftUIExecution`, cycle fixtures | Direct source/layout/execution fixtures may establish local behavior; production identity-preserving integration waits for SPEC-007 and the owning runtime coordinator |
+| `T5.1`-`T5.5` | `T2.*`, successful drawing plans from `T3`-`T4`; SPEC-008 lowering workspace and traversal | `GiftUIDrawing`, `GiftUIRenderCore`, rendering fixtures | Plan validation and direct combined transcripts may proceed against fixed fixture views; production ordinary-operation coexistence waits for SPEC-008 lowering |
+| `T6.1`-`T6.5` | `T1.*`, `T3.*`; SPEC-013/015 generated storage and host assembly where named | static generator fixtures, profile storage, host configuration | Generator grammar and negative cases may proceed locally; production captures, numeric limits, and host lifetime proofs wait for SPEC-013 and SPEC-015 |
+| `T7.1`-`T7.4` | `T3`-`T6`; SPEC-004 resolver and SPEC-015 B2/host gates | structural/capability fixtures, owner adapter, runtime-cycle integration | Artificial equality/first-excess matrices may run before production host values; Signal Analyzer capacity proof waits for SPEC-001/015 assembly |
+| `T8.1`-`T8.4` | `T5`; SPEC-014 backend consumers and raster workspaces | shared raster vectors, RGBA8888/RGB565 consumers, backend integration fixtures | Golden-mask generation and recording semantics may be frozen independently; concrete full-surface/tiled evidence waits for SPEC-014 |
+| `T9.1`-`T9.6` | All applicable implementation and corpus tasks | resource probes, four profile reports, repository gates, conformance report | Profile runs may execute independently after the corpus freezes; equality comparison and conformance preparation consume all four reports |
+
+## Acceptance-Criterion Matrix
+
+The criterion text remains authoritative in SPEC-012. Every criterion appears
+once below and maps to implementation tasks and reproducible evidence.
+
+| Criterion | Implementation tasks | Evidence | Status |
+| --- | --- | --- | --- |
+| `DR-001` — Exact public declarations and typed-throws scoped source compile; illegal context/Path use fails | `T1.1`-`T1.5`, `T6.2`, `T9.1` | Public-interface audit plus four-profile positive and negative compile transcripts | pending |
+| `DR-002` — Canvas is one identity-preserving `Body == Never` semantic/layout/render leaf with no unrelated output | `T1.1`, `T2.1`, `T2.4`, `T4.1`, `T4.2`, `T9.2` | Semantic, layout, and render event transcript with zero-child/zero-unrelated-event assertions | pending |
+| `DR-003` — Each occurrence invokes once after layout in `.deriving`, releases before publication, and re-expands after refusal | `T4.1`-`T4.5`, `T7.4`, `T9.2` | Cycle timeline, invocation/release counts, revision tokens, throwing cleanup, and refusal-recovery transcript | pending |
+| `DR-004` — Stroke snapshots are immutable and preserve every explicit subpath | `T3.3`-`T3.6`, `T9.2` | Stroke-mutate-stroke, multiple-subpath, zero-length, atomic-capacity, and snapshot-isolation fixtures | pending |
+| `DR-005` — Combined sink receives exact header, operations, styles, geometry, clips, no-ops, order, begin, and finish | `T2.2`, `T5.1`-`T5.5`, `T9.2` | Cross-profile canonical combined recording transcript and header comparison | pending |
+| `DR-006` — RGBA8888 and tiled RGB565 match every normative mask and byte vector exactly | `T8.1`-`T8.4`, `T9.2`, `T9.4` | Shared vector corpus, zero-difference mask/byte reports, and full-surface/tiled equality report | pending |
+| `DR-007` — Every validation/capacity edge follows exact precedence, SPEC-003 mapping, and lifecycle disposition | `T3.2`-`T3.6`, `T5.2`-`T5.5`, `T7.3`-`T7.4`, `T9.2` | Ordered injected-failure matrix, mapping transcript, discard/dirty/refusal/invariant effect counts | pending |
+| `DR-008` — B2 and semantic capability startup gates pass/fail independently without drawing capacity in capability state | `T6.4`, `T7.1`, `T7.2`, `T9.2` | Equality/first-excess workload matrix, capability matrix, snapshot-field audit, and Signal Analyzer host proof | pending |
+| `DR-009` — No sink borrow, plan, or closure outlives its required scope | `T3.5`, `T4.3`-`T4.5`, `T5.4`, `T9.3` | Poison-borrow probes and accepted/refused/failed lifecycle storage audits | pending |
+| `DR-010` — Static generation uses complete nonzero IDs and bounded inline captures, rejecting unsupported/over-limit cases | `T6.1`-`T6.5`, `T9.1`, `T9.4` | Generated-source manifest, switch-coverage audit, repeated-occurrence records, compile-failure corpus, and no-fallback scan | pending |
+| `DR-011` — Static typed errors and cleanup use zero heap and exclude forbidden runtime/symbol dependencies | `T1.5`, `T6.2`-`T6.5`, `T9.3`, `T9.4` | Throwing cleanup transcripts, allocation interposer, linked-symbol/section reports, and nRF ELF inspection | pending |
+| `DR-012` — Normative value ceilings and separate capture/path/plan/render/raster/derived/stack/RAM/flash/timing costs are evidenced | `T2.3`, `T3.1`, `T9.3`-`T9.5` | Per-compiler layout reports and separately itemized resource/high-water/link/timing evidence | pending |
+| `DR-013` — Module ownership/import graph and portable target independence remain exact | `T0.2`, `T2.5`, `T5.5`, `T9.1`, `T9.5` | Target dependency allow-list, import-negative fixtures, symbol-owner audit, and portable-source scan | pending |
+
+## Milestones and Tasks
+
+### Milestone 0: Freeze Authority, Boundaries, and Evidence Schemas
+
+**Entry conditions:** SPEC-012 remains `approved`; PROPOSAL-006 remains
+`accepted`; RFC-009 remains `approved`; ADR-028 through ADR-031 remain
+`accepted`; and the related Specifications retain their current authority.
+
+**Exit evidence:** The exact module graph, canonical corpus schemas, migration
+baseline, and registered fail-closed four-profile driver exist before any
+drawing conformance is claimed.
+
+- [ ] `T0.1` — Create `Tests/ContractFixtures/SPEC012/` with an ordered fixture
+      manifest, declaration and negative-compile registries, normalized semantic/
+      layout/cycle/plan/render/raster result schemas, failure-precedence table,
+      acceptance/evidence registry, symbolic identity tokens, and README.
+      Distinguish host execution, cross-build/inspection, simulator, and
+      connected-hardware evidence; no task in this plan deploys or flashes.
+- [ ] `T0.2` — Add `GiftUIDrawing`, its focused unit-test target, and a narrowly
+      named drawing/failure owner-adapter fixture only with their first compiling
+      sources. Add the approved `GiftUIDrawing` dependency edges and
+      `GiftUIRenderCore` drawing contracts without importing profiles, failure
+      owners, capabilities, backends, rasterizers, platforms, drivers, OS/RTOS,
+      HAL, or hardware targets. Update exact target allow-list fixtures.
+- [ ] `T0.3` — Create and explicitly register
+      `scripts/contracts/run-spec-012.sh --profile <profile>` for
+      `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, and
+      `nrf52840-embedded`. Record pinned compiler/SDK/target/optimization,
+      revision, input digests, commands, evidence identity, and all thirteen
+      fail-closed criterion rows. Keep standalone invocations exact and make
+      the top-level runner perform no remote access, deployment, or flashing.
+- [ ] `T0.4` — Inventory every PoC and experiment Canvas/path/stroke, display-
+      list, direct-emission, raster, and static-callable surface. Classify each
+      as evidence, adapt, replace, retire, or downstream-owned, pin provenance,
+      and reject parallel maintained drawing paths or wholesale Spike adoption.
+
+### Milestone 1: Implement the Public Scoped Drawing Surface
+
+**Entry conditions:** `T0.2`; maintained SPEC-002 geometry, SPEC-006 primitive
+payload, and SPEC-008 `Color` declarations remain available.
+
+**Exit evidence:** The exact public source contract compiles where supported,
+all forbidden ownership/escape examples fail, and Canvas traversal stages one
+typed primitive without evaluating `body` or invoking drawing.
+
+- [ ] `T1.1` — Implement exact `Canvas` declaration, initializer, `Body == Never`,
+      invariant `body`, primitive marker, and one-call traversal override in
+      `GiftUI`. Preserve the exact draw callable for semantic staging without a
+      public/package lookup and without invocation during expansion.
+- [ ] `T1.2` — Implement noncopyable, non-publicly-constructible
+      `GraphicsContext` and `Path` with the exact two-`inout`, nonescaping,
+      typed-throws `withPath`, `move`, `addLine`, and both `stroke` declarations.
+- [ ] `T1.3` — Implement exact `Shading`, `StrokeStyle`, `LineCap`, `LineJoin`,
+      and `DrawingError` declarations. Preserve opaque RGB exactly, mark
+      nonpositive style widths invalid for the next stroke, and make the width
+      overload precisely `.butt` plus `.miter`.
+- [ ] `T1.4` — Add positive compile witnesses for defaults, both stroke overloads,
+      explicit typed trailing closures, stroke-mutate-stroke reuse, multiple
+      subpaths, and concrete `DrawingError` throws. Add negative witnesses for
+      initializers, copy/consume/escape, asynchronous escape, missing typed
+      throws where required, unsupported errors, and captured outer-context
+      overlapping access.
+- [ ] `T1.5` — Run the public witnesses across all four profile compilers and
+      compare the maintained surface with SPIKE-008 only as evidence. Audit
+      emitted interfaces/SIL/symbols for accidental `any Error`, retained
+      closure, allocator, reflection, concurrency, exception-runtime, or
+      Objective-C dependencies.
+
+### Milestone 2: Extend Semantic, Layout, and Render-Core Vocabulary
+
+**Entry conditions:** Relevant Milestone 1 declarations exist; SPEC-006's
+generic primitive and exact identity seams remain authoritative.
+
+**Exit evidence:** Canvas payloads and identities reach the drawing attempt,
+the additive layout/render cases preserve all existing raw values and behavior,
+and backends can consume borrowed stroke views without importing drawing.
+
+- [ ] `T2.1` — Extend the semantic result with a Canvas invocation view that
+      exposes staged callables only to the drawing-attempt input, indexed by the
+      exact SPEC-006 identity. Prove one event, zero children, no body evaluation,
+      stable occurrence order, exact lookup bounds, and no public/package
+      callable lookup outside this seam.
+- [ ] `T2.2` — Add exactly `.canvas` to SPEC-007's
+      `SemanticLayoutPrimitive` and SPEC-008's `SemanticRenderScope`, preserving
+      every existing case, raw value, traversal order, identity relation, and
+      non-Canvas result. Add `StraightLineStrokeHeader`,
+      `StraightLineStrokeView`, and extending `DrawingOperationSink` to
+      `GiftUIRenderCore`.
+- [ ] `T2.3` — Implement and measure `SubpathRange`, `DrawingPlanSummary`,
+      `StraightLineStrokeHeader`, `DrawingProductionError`, and
+      `DrawingPlanResult` with exact validation, cases/raw values, index meaning,
+      copyability, sendability, and value-size ceilings on every supported
+      compiler.
+- [ ] `T2.4` — Build direct recording semantic/layout/render views for Canvas
+      leaf identity, proposal behavior, frame expansion, exact resolved bounds,
+      inherited clip, painter position, empty Canvas, and the absence of child,
+      hit, text, glyph, clip-source, or ordinary-paint events.
+- [ ] `T2.5` — Add import, symbol-owner, interface, borrow-lifetime, and source
+      audits proving the declared module contract, backend independence from
+      `GiftUIDrawing`, and absence of a second identity, semantic graph, or
+      Canvas-specific visitor category.
+
+### Milestone 3: Implement Bounded Path Construction and Immutable Plans
+
+**Entry conditions:** Milestones 1-2 supply the exact public and package
+contracts; SPEC-002 checked geometry remains the sole arithmetic authority.
+
+**Exit evidence:** Caller-owned bounded storage implements atomic scoped Path
+mutation and immutable ordered snapshots with exact counts, lookup behavior,
+cleanup, and first-failure semantics.
+
+- [ ] `T3.1` — Implement validated `DrawingLimits` and `StaticCanvasLimits`
+      with positive fields, `maximumNormalizedStrokeOperations >=
+      maximumPlanStrokes`, exact equality admission, and nil for every invalid
+      construction. Establish focused finite dynamic/static fixture storage.
+- [ ] `T3.2` — Implement `DrawingPlanView`, `DrawingPlanWorkspace`, and
+      `CanvasInvocationSource` with exact acquisition, active/inaccessible/
+      successful/discarded/reset states, total summary accounting, zero-stroke
+      Canvas lookup, nil out-of-range behavior, and invariant detection for
+      duplicate/missing/inconsistent data.
+- [ ] `T3.3` — Implement one live scoped Path per context: current-point and
+      subpath state, consecutive-move replacement, post-segment move reservation,
+      line-without-move rejection, zero-length preservation, atomic equal-limit/
+      first-excess mutation, nested-path rejection, and normal/throwing reset.
+      Prove live-Path totals survive successful stroke snapshots and reset only
+      when the enclosing `withPath` exits.
+- [ ] `T3.4` — Implement style/path validation and atomic whole-snapshot
+      reservation before copy or unique transfer. Preserve complete ordered
+      points and explicit subpath ranges, append one no-op record for paths with
+      no nonzero segment, and ensure later mutation cannot alter prior strokes.
+      Reject nonpositive width as `.invalidValue` and positive width above
+      `maximumLineWidth` as `.capacityExhausted` before any snapshot mutation.
+- [ ] `T3.5` — Implement exact callable, context, live Path, immutable plan, and
+      borrowed stroke-view lifetimes. Add poisoned-storage and address-capture
+      tests covering normal, throwing, failed, accepted, refused, discarded, and
+      reset exits without retaining a borrow or eligible callable.
+- [ ] `T3.6` — Fault every local state and reservation edge in normative order,
+      prove no partial mutation/snapshot/plan exposure, and instrument linear
+      construction/snapshot work plus separate live-Path and plan high-water.
+
+### Milestone 4: Derive the Cycle-Local Plan After Layout
+
+**Entry conditions:** Milestone 3; exact SPEC-006 semantic Canvas identities,
+SPEC-007 resolved layout view, and SPEC-009 execution context are available for
+the integration path.
+
+**Exit evidence:** `CanvasPlanProducer.derive` invokes each occurrence once in
+resolved painter order and either exposes one complete translated plan or
+performs exact whole-attempt cleanup and dirty recovery.
+
+- [ ] `T4.1` — Implement Canvas measurement and placement integration: present
+      proposal axes become ideal dimensions, absent axes become zero, ordinary
+      cap/frame behavior resolves bounds, and Canvas adds no clip. Correlate the
+      same exact identity across semantic occurrence, layout result, and render
+      scope.
+- [ ] `T4.2` — Implement `CanvasPlanProducer.derive` validation for idle
+      workspace, `.deriving` phase, active cycle, allowed semantic/candidate
+      revisions, exact occurrence totals, unique identity coverage, complete
+      resolved layout, painter order, and exact invocation size. Guard every
+      detectable attempt by Canvas code to mutate GiftUI-observed state,
+      dispatch an action, submit a fact, request a wake, query capability or
+      backend identity, or start/reenter a cycle; prove exact `.invalidPhase`
+      versus `.reentrancyViolation` results and no later client invocation.
+- [ ] `T4.3` — Invoke every callable at most once, release it exactly once after
+      normal or throwing return, and remove all publication-eligible callable/
+      capture storage after the last occurrence. Exercise zero-Canvas and
+      zero-stroke Canvas attempts.
+- [ ] `T4.4` — Checked-add each Canvas surface origin to every local point,
+      preserve the origin as metadata without double translation, carry only
+      the inherited clip, validate normalized stroke totals, and expose a plan
+      only after every occurrence succeeds.
+- [ ] `T4.5` — Integrate drawing failure with SPEC-009 pre-publication effects:
+      discard/reset once, preserve admitted mutations, publish no semantic or
+      candidate revision, mark semantics dirty, and coalesce one wake. Prove
+      refusal recovery retains only presentation intent and obtains new Canvas
+      callables by root re-expansion and layout, not replay.
+
+### Milestone 5: Implement Combined Render Preflight and Streaming
+
+**Entry conditions:** A successful immutable drawing plan exists; SPEC-008's
+semantic/layout/text views, render limits, traversal workspace, and ordinary
+producer semantics are implemented.
+
+**Exit evidence:** One reused traversal preflights and streams exact ordinary
+and stroke operations in painter order with atomic headers, capacity checks,
+and synchronous borrowed consumption.
+
+- [ ] `T5.1` — Implement `CanvasRenderProducer.preflight` by extending the
+      existing SPEC-008 traversal with `.canvas`. Validate the immutable plan,
+      translated geometry, exact header totals, combined checked operation
+      count, configured sink lower bound, and all consistency invariants without
+      observing an endpoint sink or retaining a borrow. Acquire and reset the
+      caller-owned render workspace entirely within the call and expose no
+      partial header on failure.
+- [ ] `T5.2` — Implement `CanvasRenderProducer.produce` as the same traversal
+      inside one offer. Require exact expected-header and plan-summary equality
+      before `begin`, compare actual sink capacity before `begin`, and emit each
+      snapshot as one borrowed `straightLineStroke` event at its painter position.
+- [ ] `T5.3` — Extend the canonical recording transcript and verification with
+      exact color, width, cap, join, origin, clip, points, subpaths, no-op strokes,
+      header totals, mixed fill/glyph/stroke ordering, and one begin/finish pair.
+      Prove zero-Canvas ordinary transcripts equal SPEC-008 exactly.
+- [ ] `T5.4` — Exercise idle refusal, actual-capacity disagreement, post-begin
+      stroke refusal, header drift, plan corruption, and accepted completion.
+      Apply `.sinkRefused` only where specified, otherwise
+      `.invariantViolation`, and call discard exactly once where required.
+- [ ] `T5.5` — Audit that combined production reuses rather than forks
+      SPEC-008 fill/glyph/style/clip/damage/text-resource logic, retains no
+      complete operation list or borrowed payload, is the sole production entry
+      point for Canvas-admitting configurations, and keeps every backend free of
+      `GiftUIDrawing` imports.
+
+### Milestone 6: Implement Static Canvas Generation and Profile Storage
+
+**Entry conditions:** Exact public callable and plan interfaces are stable;
+SPIKE-007/008 remain evidence only. Production integration additionally waits
+for SPEC-013 and SPEC-015 owners.
+
+**Exit evidence:** Static Canvas expressions lower to complete nonzero IDs and
+bounded inline capture records, while dynamic and static fixture profiles
+produce identical drawing meaning and cleanup without static heap allocation.
+
+- [ ] `T6.1` — Define the source-generation input and checked manifest for each
+      syntactic Canvas expression, stable nonzero `UInt16` callable IDs,
+      occurrence-to-expression mapping, exact captured fields, and complete
+      generated switch coverage. Repeated runtime occurrences reuse the ID but
+      own distinct capture records.
+- [ ] `T6.2` — Implement generated `StaticCanvasCallableTable` conformance and
+      capture union dispatch with exact two-`inout`, `Size`, typed
+      `throws(DrawingError)`, order, and normal/throwing destruction semantics;
+      union size is the greatest case rather than the sum.
+- [ ] `T6.3` — Reject zero/excess IDs, incomplete or duplicate coverage,
+      unsupported capture types, over-limit captures, dynamic collections,
+      existentials, heap-owned/weak/unowned boxes, and ordinary class references
+      at build time. Prove generation has no retained-closure fallback.
+- [ ] `T6.4` — Implement independent static-limit and production host-handle
+      validation. Admit an observable model location only through its approved
+      address-stable static handle with no retain/release and an explicit host
+      lifetime proof.
+- [ ] `T6.5` — Implement the bounded profile-owned dynamic closure wrapper and
+      compare fixture dynamic and static semantic, invocation, plan, failure,
+      cleanup, and combined-render transcripts. Prove the wrapper is released
+      immediately after invocation and no later than cycle finalization.
+      Instrument static heap, forbidden `Any`, reflection, concurrency,
+      exception/runtime symbols, hidden complete-frame buffers, capture bytes,
+      linked RAM/flash, and ABI attributes; do not infer production costs from
+      Spike evidence.
+
+### Milestone 7: Integrate Startup Gates, Failures, and Cycle Disposition
+
+**Entry conditions:** Milestones 3-6 supply complete focused behavior;
+SPEC-004 and SPEC-015 supply production capability and host validation seams.
+
+**Exit evidence:** Structural B2 and semantic capability gates are independent,
+the exact Signal Analyzer workload is admitted, and every local error maps to
+the exact SPEC-003 fact and SPEC-009 lifecycle effect.
+
+- [ ] `T7.1` — Implement B2 comparison for every declared Canvas workload fact,
+      workspace capacity, combined ordinary-plus-stroke operation bound,
+      configured sink lower bound, and static callable/capture bound. Test
+      missing, zero, overflow, below, equal, and first-excess facts independently,
+      and prove startup validation invokes no client body or Canvas callable.
+- [ ] `T7.2` — Integrate the separate SPEC-004 `rasterPresentation` gate for
+      canonical straight-line operation coverage and required extent, clip,
+      encoding, derived payload, in-flight storage, lifetime, and host policy.
+      Prove neither gate repairs the other and no drawing capacity field enters
+      the closed capability snapshot.
+- [ ] `T7.3` — Implement the narrow drawing owner adapter and exact precedence/
+      mapping table for every `DrawingError`, `DrawingProductionError`, idle sink
+      refusal, and invariant. Preserve origin, scope, containment, first visible
+      failure, and the rule that no later check invokes client code.
+- [ ] `T7.4` — Integrate focused drawing results with publication, candidate
+      allocation, one-shot offer, refusal, dirty rederivation, and finalization.
+      Verify pre-publication versus post-publication dispositions and that no
+      accepted, refused, or failed attempt retains plan/callable state.
+
+### Milestone 8: Prove Canonical Raster Meaning Through Backend Integration
+
+**Entry conditions:** Milestone 5 freezes normalized strokes and combined
+ordering; SPEC-014 supplies the concrete full-surface RGBA8888 and bounded tiled
+RGB565 consumers and their workspace contracts.
+
+**Exit evidence:** Both consumers produce identical canonical binary coverage
+and exact encoding for the complete normative vector corpus without changing
+portable or normalized stroke meaning.
+
+- [ ] `T8.1` — Freeze shared normalized stroke and golden-mask vectors for all
+      required horizontal, vertical, diagonal, single-point, repeated-point,
+      zero-length, acute/obtuse/right-angle, same-direction, reversal,
+      miter-limit fallback, odd/even width, butt/round cap, miter/round join,
+      negative/outside-Canvas, every clip edge, empty clip, overlap/painter-order,
+      and RGB boundary values `0`, `1`, `127`, `128`, `254`, and `255`. Record
+      zero pixel/channel tolerance.
+- [ ] `T8.2` — Build an independent exact-rational or sufficiently widened-
+      integer oracle for closed segment regions, butt/round caps, round/miter/
+      bevel joins, ten-times-half-width miter limit, zero-tangent rules, pixel-
+      center inclusion, inherited half-open clipping, and exact replacement.
+- [ ] `T8.3` — Run the complete corpus through SPEC-014's RGBA8888 full-surface
+      and RGB565 bounded tiled consumers. Compare masks and exact RGBA/RGB565
+      bytes, including round-to-nearest conversion and big-endian RGB565 order.
+- [ ] `T8.4` — Inject admitted-bound arithmetic extremes, raster workspace
+      equality/first-excess, and borrowed-consumption poison cases. Classify an
+      admitted-style or representability failure as invariant/configuration
+      failure; permit no saturation, tolerance, native-style fallback, or hidden
+      complete-frame buffer.
+
+### Milestone 9: Complete Cross-Profile Evidence and Prepare Conformance
+
+**Entry conditions:** All applicable implementation, integration, corpus, and
+host tasks are complete; no required criterion remains delegated without
+stable evidence.
+
+**Exit evidence:** All four exact profile commands, repository gates, normalized
+comparisons, resource reports, and a complete criterion disposition are ready
+for independent conformance review.
+
+- [ ] `T9.1` — Run unit, public/negative compile, package graph, import, symbol,
+      portable-source, generated-source, and interface audits. Prove every
+      normative declaration, additive vocabulary case, module owner, and
+      forbidden dependency rule.
+- [ ] `T9.2` — Run the complete semantic/layout/invocation/path/plan/cycle/
+      combined-render/startup/failure corpus for every applicable profile and
+      compare normalized results, identities, counts, order, and first failure.
+- [ ] `T9.3` — Measure closure/capture, construction, snapshot, lowering,
+      operation, raster, point/stroke, plan, derived storage, peak simultaneous
+      workspace, stack, heap, and timing separately. Report generated capture
+      storage, live Path storage, sealed plan storage, combined render workspace,
+      backend raster workspace, and post-acceptance derived storage as distinct
+      values rather than only a sum. Verify all normative value ceilings on each
+      pinned compiler and each configured workspace byte bound.
+- [ ] `T9.4` — Inspect ARMv6 and nRF target images/ELFs for ABI, hard-float where
+      required, allocation, forbidden runtime/symbol dependencies, RAM, flash,
+      sections, and linked-size deltas. Keep hardware-free evidence distinct
+      from connected-target claims.
+- [ ] `T9.5` — Run `scripts/format-swift.sh`, the focused SPEC-012 driver, each
+      exact profile command, the fast repository gate, and the all-hardware-free
+      gate. Preserve immutable report identity and register every driver
+      explicitly.
+- [ ] `T9.6` — Update task dispositions and create
+      `docs/conformance/spec-012-conformance.md` from the canonical template,
+      mapping every DR criterion to stable evidence and recording deviations,
+      exceptions, platform limits, and absent connected-hardware evidence.
+      Request independent conformance review; do not mark SPEC-012 implemented.
+
+## Design-Note Triggers
+
+- Create `docs/implementation-designs/spec-012-scoped-path-plan-storage.md` if
+  the production noncopyable Path, snapshot transfer, plan packing, or
+  acquire/discard/reset realization is not locally reconstructable. The note
+  may explain replaceable storage and poison-test seams but cannot change
+  scoped ownership, atomic reservation, snapshot, lifetime, or capacity rules.
+- Create `docs/implementation-designs/spec-012-static-canvas-lowering.md` when
+  production source generation begins. Record syntactic ID assignment, capture
+  union layout, supported-capture validation, dispatch, destruction, and audit
+  seams without widening the approved capture set or making generator output
+  authoritative beyond the Specification.
+- Create a focused combined-traversal note only if extending SPEC-008 without
+  forking its implementation requires non-obvious workspace or iterator state.
+  A note cannot authorize a retained operation list or a second traversal
+  meaning.
+- Rasterizer internals belong to SPEC-014 design notes. This plan records
+  SPEC-012's observable vectors and integration evidence but does not select a
+  backend algorithm, tile shape, or derived-storage layout.
+
+## Integration and Validation Order
+
+1. Freeze the fail-closed corpus, target graph, migration inventory, and
+   registered driver before recording implementation claims.
+2. Land public declarations and Render-Core borrowed values, then prove source
+   ownership and compiler behavior independently of production profiles.
+3. Implement scoped Path, immutable plan, and direct recording fixtures before
+   connecting semantic identities, resolved layout, or runtime phases.
+4. Integrate post-layout derivation only after SPEC-007 supplies exact bounds;
+   integrate combined rendering only after SPEC-008 supplies its complete
+   ordinary traversal and workspace.
+5. Add static generation and host validation through SPEC-013/015 seams, then
+   connect exact failure/disposition behavior to SPEC-003/009.
+6. Freeze normalized stroke vectors before running them through SPEC-014's two
+   raster consumers; compare logical masks before encoded bytes.
+7. Run focused host tests first, then macOS static, Raspberry Pi ARMv6, and
+   hardware-free nRF52840 compile/link/inspection. Run cross-profile comparison
+   and conformance preparation only after all required reports exist.
+
+The hardware-free nRF gate proves compilation, linking, ABI, symbols, and
+resource properties only. Connected Raspberry Pi display evidence or nRF board
+operation belongs to separately authorized downstream conformance work and is
+not implied by this plan.
+
+## Risks and Upstream Blockers
+
+### Implementation risks
+
+- Swift ownership or exclusivity can regress around the approved two-`inout`
+  `withPath` shape. Keep the SPIKE-008 negative corpus as a compiler sentinel
+  and route any required source-contract change upstream.
+- Atomic snapshot reservation across points, subpaths, and records can leave
+  partial mutable state on late failure. Test storage before/after every
+  equality and first-excess site and keep reset/discard idempotence explicit.
+- Extending SPEC-008's traversal can accidentally produce header drift or
+  duplicate ordinary semantics. Compare zero-Canvas output byte-for-byte and
+  make preflight/produce share replaceable mechanics while retaining their
+  distinct calls.
+- Exact cap/join coverage at large checked coordinates is arithmetic-heavy.
+  The backend must use sufficient widened or exact arithmetic and report
+  invariant/configuration failure rather than saturating or changing style.
+- Generated generic callables, capture unions, plan storage, and raster helpers
+  may inflate nRF stack or flash even at zero heap. Measure each contribution
+  separately before selecting replaceable representations.
+- Concurrent SPEC-007/008/009 work shares package and semantic/render seams.
+  Preserve user changes and coordinate exact owners rather than adding
+  compatibility layers or parallel paths.
+
+### Upstream blockers
+
+- Production semantic-to-layout Canvas integration waits for SPEC-006's
+  complete Canvas-capable semantic result and SPEC-007's exact identity-
+  preserving resolved bounds. Direct Canvas declarations, Render-Core values,
+  workspace logic, and fixture views do not wait.
+- Production combined rendering waits for SPEC-008's complete
+  `GiftUIRenderLowering`, traversal workspace, text/layout view, and atomic
+  producer. SPEC-012 must extend that owner rather than create a substitute.
+- Production dynamic/static callable storage and source-generation integration
+  wait for SPEC-013. Production workload limits, observable static handles,
+  startup B2 assembly, and host lifetime proofs wait for SPEC-015.
+- Full-surface RGBA8888 and tiled RGB565 implementation evidence waits for
+  SPEC-014. SPEC-012 may freeze vectors and an independent oracle but must not
+  move raster ownership into `GiftUIDrawing` or a portable module.
+- Complete Signal Analyzer workload evidence consumes exact SPEC-001/015
+  counts and host configuration. SPIKE-004's 820-segment fixture is independent
+  feasibility evidence and cannot substitute for production capacity.
+- Any inability to preserve one invocation, pre-publication completion,
+  exact identity, no retained borrow, one operation per stroke, inherited-only
+  clipping, canonical raster meaning, conjunctive startup gates, or zero static
+  heap is an upstream Specification/architecture blocker, not a plan tradeoff.
+
+## Deferred and Follow-up Work
+
+SPIKE-004, SPIKE-007, and SPIKE-008 remain linked evidence only. They do not
+authorize a production storage layout, generated representation, capacity, or
+cost claim.
+
+Fills, curves, closed paths, images, Canvas text, transforms, client clips,
+alpha, gradients, effects, animation, retained/replayable paths or plans,
+asynchronous drawing, floating-point geometry, and richer capability fields
+remain outside the accepted MVP scope. No new deferred item was discovered
+while preparing this plan. A required correctness, capacity, profile,
+backend, or acceptance-evidence obligation from SPEC-012 cannot be deferred.
+
+## Completion Record
+
+Plan audited and marked ready on 2026-09-09 after the approved authority chain,
+current repository seams, thirteen acceptance criteria, exact normative
+subcontracts, downstream ownership, and four-profile evidence strategy were
+reviewed. The audit made invocation guards, live-Path accounting, preflight
+cleanup, sole-producer ownership, profile closure storage, forbidden-runtime
+checks, raster vectors, and separate resource evidence explicit. No
+implementation task was completed by creating this plan.
+
+Update task checkboxes and dispositions only with stable code, test, and report
+evidence. Plan completion will mean every task has a recorded disposition; it
+will not mean SPEC-012 conforms or is `implemented`. The conformance report
+remains `null` until `T9.6` creates it.
