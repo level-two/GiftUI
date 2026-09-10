@@ -6,7 +6,7 @@ status: completed
 owners:
   - codex
 created: 2026-09-01
-updated: 2026-09-09
+updated: 2026-09-10
 related_design_notes:
   - ../implementation-designs/spec-006-bounded-semantic-expansion.md
 conformance_report: ../conformance/spec-006-conformance.md
@@ -21,8 +21,14 @@ superseded_by: null
 
 # SPEC-006 Implementation Plan
 
-> This ready plan derives work from the approved Declarative View Semantics
-> Specification. It orders implementation and evidence but does not amend the
+> **Revision notice:** This completed plan covers the previously approved
+> fifteen-criterion contract. SPEC-006 returned to `review` on 2026-09-10 with
+> proposed criterion `DV-016`; the amendment requires explicit reapproval and
+> a revised or superseding implementation plan before implementation resumes.
+
+> This completed plan derived work from the previously approved Declarative
+> View Semantics Specification. It ordered implementation and evidence but did
+> not amend the
 > declaration, expansion, identity, action, state-host, modifier, failure, or
 > profile contracts owned by that Specification and its dependencies.
 
@@ -860,11 +866,20 @@ optional discovery. Production sources, fixture inputs, implementation tasks,
 and success claims do not depend on pursuing either item; see the
 [deferred-work evidence](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-7/deferred-work.md).
 
-`T7.3` is complete: every task has a completed disposition, the maintained
-bounded-expansion design note remains linked, and the
+`T7.3` was complete for the previously approved revision: every task had a
+completed disposition, the maintained bounded-expansion design note remains
+linked, and the
 [collecting conformance report](../conformance/spec-006-conformance.md) maps all
 fifteen criteria to stable passing evidence at reviewed revision
-`1d7b25c68413159eaee7798e741bc6af627160d3`. The plan is completed while
-SPEC-006 remains `implementing`; explicit human authorization is still required
-for the `implemented` transition. Milestone 7 and this implementation plan are
-complete.
+`1d7b25c68413159eaee7798e741bc6af627160d3`. At that revision, the plan was
+completed while SPEC-006 remained `implementing`; explicit human authorization
+was still required for the `implemented` transition. Milestone 7 and this
+implementation plan were complete for that contract revision.
+
+On 2026-09-10, SPEC-007 implementation exposed a contract gap and SPEC-006
+returned to `review` with a proposed typed primitive-with-content overload and
+new criterion `DV-016`. This completed plan and its evidence predate that
+amendment. After explicit reapproval, the implementation plan must be revised
+or superseded to map `DV-016` to declaration, traversal, identity, failure,
+profile, allocation, and contract-driver evidence before implementation of the
+new operation begins.

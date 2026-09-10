@@ -6,7 +6,7 @@ status: collecting
 reviewers:
   - codex
 created: 2026-09-09
-updated: 2026-09-09
+updated: 2026-09-10
 implementation_plan: ../implementation-plans/spec-006-implementation-plan.md
 related_future_work:
   - FW-017
@@ -24,7 +24,7 @@ superseded_by: null
 
 ## Review Scope
 
-- Governing contract: [SPEC-006 Declarative View Semantics](../specs/spec-006-declarative-view-semantics.md), status `implementing`.
+- Governing contract: [SPEC-006 Declarative View Semantics](../specs/spec-006-declarative-view-semantics.md), status `review` after the primitive-with-content amendment.
 - Derived plan: [SPEC-006 Implementation Plan](../implementation-plans/spec-006-implementation-plan.md), completed by this review.
 - Reviewed implementation revision: `1d7b25c68413159eaee7798e741bc6af627160d3`.
 - Design note: [bounded semantic expansion](../implementation-designs/spec-006-bounded-semantic-expansion.md), status `current`.
@@ -32,9 +32,10 @@ superseded_by: null
   project-local Swift 6.3.2 ARMv6 and Embedded Swift/nRF52840 hardware-free
   cross-build and artifact inspection.
 
-The authority chain remains accepted/approved, and SPEC-006 remains required
-for the Signal Analyzer's fixed non-trivial hierarchy and common Rank 0
-semantics across all four MVP configurations.
+The Proposal, RFC, and ADR authority chain remains accepted/approved. SPEC-006
+itself is under review and remains required for the Signal Analyzer's fixed
+non-trivial hierarchy and common Rank 0 semantics across all four MVP
+configurations.
 
 ## Acceptance-Criterion Results
 
@@ -55,6 +56,7 @@ semantics across all four MVP configurations.
 | `DV-013` | pass | [Migration baseline](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-0/migration-baseline.md), [normative audit](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-7/normative-audit.md) | All 23 historical rows are resolved with no compatibility shim or second expansion engine. |
 | `DV-014` | pass | [Deferred-work review](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-7/deferred-work.md) | FW-017 and FW-020 remain reciprocal, untriggered, optional post-MVP captures with no implementation dependency. |
 | `DV-015` | pass | [Stateful binding](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-5/stateful-binding.md), [stateful binding failures](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-5/stateful-binding-failures.md) | Generated binding precedes one body on success; all twelve binding failures publish no body or semantic result. |
+| `DV-016` | pending | — | The proposed primitive-with-content operation has no implementation or cross-profile evidence; prior evidence does not cover it. |
 
 ## Required-Test Results
 
@@ -108,7 +110,9 @@ current work.
 
 ## Review Conclusion
 
-All fifteen criteria have reproducible passing evidence. This collecting
-report supports requesting explicit human authorization for SPEC-006's
-`implemented` transition. That authorization remains the sole open lifecycle
-gate; this report does not perform or imply the transition.
+The fifteen criteria from the previously approved revision retain reproducible
+passing evidence, but new criterion `DV-016` is pending and the amended
+Specification is awaiting reapproval. This collecting report no longer
+supports an `implemented` transition. After reapproval and authorized
+implementation, the new operation requires complete four-profile evidence and
+renewed conformance review.

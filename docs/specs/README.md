@@ -17,13 +17,15 @@ its required acceptance criteria.
 
 ## Current portfolio
 
-- SPEC-001 through SPEC-015 — approved contracts
+- SPEC-001 through SPEC-015 — allocated contracts; consult each artifact for
+  its current lifecycle status
 - [SPEC-001](spec-001-signal-analyzer-reference-application.md) — Signal
   Analyzer Reference Application Contract (`approved`)
 - [SPEC-015](spec-015-host-configuration.md) — MVP Target-Host
   Configuration Contract (`approved`)
 - [SPEC-006](spec-006-declarative-view-semantics.md) — Declarative View
-  Semantics Specification (`approved`, reapproved after ADR-033)
+  Semantics Specification (`review`; primitive-with-content amendment awaiting
+  explicit reapproval)
 - [SPEC-009](spec-009-execution-cycle-and-frame-handoff.md) — Execution Cycle
   and Frame Handoff Contract (`approved`, including focused-owner failure
   amendment)

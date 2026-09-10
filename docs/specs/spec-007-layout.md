@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-09-09
+updated: 2026-09-10
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -47,7 +47,9 @@ target_milestone: MVP
 > **Approval status:** Approved by explicit maintainer authorization. The
 > governing Proposal and RFCs, accepted architectural decisions, and approved
 > Foundation, Failure, Text Resource, and Declarative contracts are
-> authoritative prerequisites.
+> authoritative prerequisites. Stack declaration and production semantic
+> integration work is paused while SPEC-006's typed primitive-with-content
+> traversal amendment is in review; this pause does not amend this contract.
 
 ## Summary
 
@@ -173,6 +175,12 @@ Portable Presentation uses only `import GiftUI`. The following declarations
 are Client API and MUST lower through SPEC-006's typed primitive/modifier seam.
 They MUST NOT perform layout while their values are initialized or `body` is
 evaluated.
+
+`VStack`, `HStack`, and `ZStack` MUST lower through SPEC-006's reviewed
+primitive-with-content overload once it is reapproved. Each stores the
+builder-produced `Content`, has `Body == Never`, and supplies its exact typed
+stack payload and content in one traversal call. `Spacer` remains a leaf
+primitive using SPEC-006's existing leaf operation.
 
 ```swift
 public enum HorizontalAlignment: UInt8, Sendable {

@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-05
-updated: 2026-09-09
+updated: 2026-09-10
 related_design_notes: []
 conformance_report: null
 related_future_work:
@@ -49,10 +49,11 @@ conventions. Approved
 [SPEC-003](../specs/spec-003-failure-outcomes-and-containment.md) owns failure
 facts and outcomes. Approved [SPEC-005](../specs/spec-005-text-resources.md)
 owns the validated canonical metrics view and exact text-resource identities.
-Approved [SPEC-006](../specs/spec-006-declarative-view-semantics.md) owns
-expansion, structural identity, modifier order, and the typed traversal seam.
-This plan consumes those contracts without duplicating their owners or
-changing their acceptance criteria.
+[SPEC-006](../specs/spec-006-declarative-view-semantics.md) owns expansion,
+structural identity, modifier order, and the typed traversal seam. Its
+primitive-with-content amendment is currently `review`; affected SPEC-007 work
+must wait for explicit reapproval. This plan consumes those contracts without
+duplicating their owners or changing their acceptance criteria.
 
 The [MVP Scope](../MVP_SCOPE.md) requires the substantially shared Signal
 Analyzer Presentation to express vertical, horizontal, and overlay layout,
@@ -91,12 +92,12 @@ platform integration, deployment, or connected-hardware work.
   transcripts, owner-adapter mapping, fail-closed fixture manifests,
   allocation interposition, cross-build resource inspection, and explicit
   registration with `scripts/test.sh`.
-- SPEC-006 is `implementing` with an active plan. Its public builder surface is
-  partially present, but its semantic result and recording/dynamic/static
-  producer fixtures remain prerequisites for the corresponding SPEC-007
-  integration and equivalence tasks. Contract-local layout values,
-  algorithms, direct recording views, and evidence schemas can proceed before
-  that dependency is complete.
+- SPEC-006 has returned to `review` for the primitive-with-content amendment.
+  Its previously implemented public builder surface remains present, but stack
+  declarations and semantic integration requiring the amended traversal
+  operation must wait for reapproval and authorized implementation.
+  Contract-local layout values, algorithms, direct recording views, and
+  evidence schemas that do not consume that operation may continue.
 - Existing proof-of-concept layout code is no longer maintained source. Its
   recursive algorithm is evidence only; migration must start from SPEC-002's
   clean baseline and must not restore a parallel geometry, text measurement,
@@ -115,6 +116,12 @@ local declarations, values, algorithms, text fixtures, and harness work may
 proceed. No `docs/features.yaml` update is required because implementation
 records are not registered there and the feature already reports the
 implementation stage.
+
+**Amendment note:** On 2026-09-10, `T1.2` exposed the missing SPEC-006
+primitive-with-content operation. The SPEC-007 contract remains approved, but
+the readiness disposition no longer applies to `T1.2`, `T1.5`, or production
+semantic integration until SPEC-006 is explicitly reapproved and its amended
+operation is implemented with evidence.
 
 If the pinned compiler cannot express the approved generic borrowing entry
 point or exact identity-preserving sink without retention, if static layout
@@ -171,7 +178,9 @@ once below and maps to implementation tasks and reproducible evidence.
 
 **Entry conditions:** SPEC-007 remains `approved`; PROPOSAL-003 remains
 `accepted`; linked RFCs remain `approved`; linked ADRs remain `accepted`; and
-SPEC-002, SPEC-003, SPEC-005, and SPEC-006 remain approved authority.
+SPEC-002, SPEC-003, and SPEC-005 remain approved authority. Tasks that consume
+SPEC-006's primitive-with-content amendment additionally require its explicit
+reapproval.
 
 **Exit evidence:** The exact target graph, fixture inventory, report schema,
 migration baseline, and registered fail-closed driver skeleton exist before
@@ -672,12 +681,13 @@ every raw value and constant, nonnegative inset validation, empty and reserved
 edge-bit preservation, and finite frame-limit preservation including negative
 values for layout-time rejection.
 
-`T1.2` is paused: the approved SPEC-006 traversal visitor has no operation
-that can describe a primitive and its child content. Implementing a stack as
-an unevaluated primitive would require a new visitor category or a change to
-the exact primitive operation, which code and this derived plan cannot
-authorize. `Spacer`, which has no child, can land with the container family
-after that upstream contract issue is resolved.
+`T1.2` is paused: the SPEC-006 amendment now proposes the exact typed
+`visitPrimitive(content:payload:)` overload needed to describe an unevaluated
+primitive and its builder-produced content. The amendment keeps this as a
+variant of the primitive category, stages the primitive before expanding
+content beneath `fixedChild(0)`, and leaves `Spacer` on the existing leaf
+operation. No stack implementation or transcript claim may rely on the new
+overload until a maintainer explicitly reapproves SPEC-006.
 
 `T1.3` is complete: all padding and frame overloads lower through the existing
 typed modifier operation. Runtime transcript tests prove exact source-call

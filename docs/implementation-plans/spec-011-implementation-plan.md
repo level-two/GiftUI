@@ -6,7 +6,7 @@ status: ready
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-09
+updated: 2026-09-10
 related_design_notes: []
 conformance_report: null
 related_future_work:
@@ -642,9 +642,10 @@ report has a disposition for every criterion.
 - SPEC-007 is approved with a ready plan, but `GiftUILayout` is not present.
   Production bound/clip integration in `T3.3` and later cannot substitute
   local geometry ownership while that implementation is pending.
-- SPEC-006, SPEC-009, and SPEC-010 are implementing. Their required typed
-  traversal, execution-generation/capture, and publishable-target seams are
-  partly present, but each consuming task waits for the exact production
+- SPEC-006 is `review` for its primitive-with-content amendment; SPEC-009 and
+  SPEC-010 are implementing. Their required typed traversal,
+  execution-generation/capture, and publishable-target seams are partly
+  present, but each consuming task waits for the exact authoritative production
   surface and its focused tests rather than adding aliases or forks.
 - SPEC-013 and SPEC-015 are approved, but their production runtime/host targets
   are absent from the current implementation baseline. `T5` production

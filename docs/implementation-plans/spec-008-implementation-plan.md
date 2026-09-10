@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-06
-updated: 2026-09-06
+updated: 2026-09-10
 related_design_notes: []
 conformance_report: null
 related_future_work:
@@ -107,11 +107,12 @@ driver work, deployment, or connected-hardware changes.
   owner-adapter mappings, fail-closed fixture manifests, allocation
   interposition, cross-build resource inspection, and explicit registration
   with `scripts/test.sh`.
-- SPEC-006 is `implementing`; SPEC-007 is `approved` with a ready plan but no
-  `GiftUILayout` implementation. Public rendering declarations, render-core
-  values/transport, direct fixture views, the recording oracle, and driver
-  scaffolding can proceed independently. Production semantic/layout adapters
-  and complete profile integration must wait for their owning implementations.
+- SPEC-006 is `review` for its primitive-with-content amendment; SPEC-007 is
+  `implementing`. Public rendering declarations, render-core values/transport,
+  direct fixture views, the recording oracle, and driver scaffolding can
+  proceed independently. Production semantic/layout adapters and complete
+  profile integration must wait for SPEC-006 reapproval and their owning
+  implementations.
 - Existing `RenderProducerContribution` names under SPEC-004 fixtures describe
   capability contributions, not a conforming normalized renderer. Historical
   `Color`, display-list, text-placement, and backend code is migration evidence
@@ -191,7 +192,9 @@ once below and maps to implementation tasks and reproducible evidence.
 
 **Entry conditions:** SPEC-008 remains `approved`; PROPOSAL-003 remains
 `accepted`; linked RFCs remain `approved`; linked ADRs remain `accepted`; and
-SPEC-002, SPEC-003, SPEC-005, SPEC-006, and SPEC-007 remain approved authority.
+SPEC-002, SPEC-003, SPEC-005, and SPEC-007 remain approved authority. Work that
+consumes the amended SPEC-006 traversal additionally requires its explicit
+reapproval.
 
 **Exit evidence:** The exact target graph, fixture schema, report schema,
 migration baseline, and registered fail-closed driver skeleton exist before
