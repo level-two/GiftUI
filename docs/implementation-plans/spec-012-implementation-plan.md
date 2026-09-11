@@ -182,7 +182,7 @@ drawing conformance is claimed.
       acceptance/evidence registry, symbolic identity tokens, and README.
       Distinguish host execution, cross-build/inspection, simulator, and
       connected-hardware evidence; no task in this plan deploys or flashes.
-- [ ] `T0.2` — Add `GiftUIDrawing`, its focused unit-test target, and a narrowly
+- [x] `T0.2` — Add `GiftUIDrawing`, its focused unit-test target, and a narrowly
       named drawing/failure owner-adapter fixture only with their first compiling
       sources. Add the approved `GiftUIDrawing` dependency edges and
       `GiftUIRenderCore` drawing contracts without importing profiles, failure
@@ -636,3 +636,13 @@ distinction between host, cross-build, inspection, simulator, and separately
 authorized connected-hardware evidence. The manifests intentionally contain
 no behavioral cases yet, and no acceptance criterion is marked passing by
 this schema-only task. `T0.2` is the next dependency-complete task.
+
+`T0.2` is complete. `GiftUIDrawing`, its focused test target, and the narrow
+`GiftUIDrawingFailureAdapterFixture` now exist with the exact approved direct
+dependency edges. `GiftUIRenderCore` owns the first compiling borrowed stroke
+view and extending sink contracts, while the SPEC-002 target allow-list and
+SPEC-007/008 boundary checks admit only the approved drawing producer join.
+The full 388-test host suite and focused graph/coexistence checks pass. The
+public style enum and Render-Core declarations are prerequisites only; their
+behavioral and profile evidence remains assigned to T1.3 and T2.2-T2.3, so no
+DR row advances. `T0.3` is the next dependency-complete task.

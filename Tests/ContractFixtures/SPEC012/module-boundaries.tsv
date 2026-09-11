@@ -1,0 +1,23 @@
+# target	dependency	disposition
+GiftUIDrawing	GiftUI	allowed
+GiftUIDrawing	GiftUIExecution	allowed
+GiftUIDrawing	GiftUILayout	allowed
+GiftUIDrawing	GiftUIRenderCore	allowed
+GiftUIDrawing	GiftUIRenderLowering	allowed
+GiftUIDrawing	GiftUISemanticCore	allowed
+GiftUIDrawingFailureAdapterFixture	GiftUIDrawing	allowed
+GiftUIDrawingFailureAdapterFixture	GiftUIFailureCore	allowed
+GiftUIDrawingTests	GiftUIDrawing	allowed
+GiftUIDrawing	GiftUIRuntimeDynamic	forbidden
+GiftUIDrawing	GiftUIRuntimeStatic	forbidden
+GiftUIDrawing	GiftUIFailureCore	forbidden
+GiftUIDrawing	GiftUIFailureDiagnostics	forbidden
+GiftUIDrawing	GiftUICapabilities	forbidden
+GiftUIDrawing	GiftUIBackend	forbidden
+GiftUIDrawing	GiftUIRaster	forbidden
+GiftUIDrawing	GiftUIPlatform	forbidden
+GiftUIDrawing	GiftUIDriver	forbidden
+GiftUIDrawing	GiftUIOSRTOS	forbidden
+GiftUIDrawing	GiftUIHAL	forbidden
+GiftUIDrawing	GiftUIHardware	forbidden
+

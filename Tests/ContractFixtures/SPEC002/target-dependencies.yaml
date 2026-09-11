@@ -136,6 +136,24 @@ targets:
       - GiftUIFailureCore
       - GiftUIRenderFailureAdapterFixture
       - GiftUIRenderLowering
+  GiftUIDrawing:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUIExecution
+      - GiftUILayout
+      - GiftUIRenderCore
+      - GiftUIRenderLowering
+      - GiftUISemanticCore
+  GiftUIDrawingFailureAdapterFixture:
+    type: regular
+    dependencies:
+      - GiftUIDrawing
+      - GiftUIFailureCore
+  GiftUIDrawingTests:
+    type: test
+    dependencies:
+      - GiftUIDrawing
   GiftUIExecution:
     type: regular
     dependencies:

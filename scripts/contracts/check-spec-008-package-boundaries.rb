@@ -50,8 +50,11 @@ joiners = SOURCES.glob("*/*.swift").select do |path|
   end
   imports.include?("GiftUISemanticCore") && imports.include?("GiftUILayout")
 end
-fail_check("semantic/layout join exists outside Render Lowering") unless
-  !joiners.empty? && joiners.all? { |path| path.to_s.include?("/GiftUIRenderLowering/") }
+approved_joiners = %w[GiftUIDrawing GiftUIRenderLowering]
+fail_check("semantic/layout join exists outside approved producers") unless
+  !joiners.empty? && joiners.all? do |path|
+    approved_joiners.any? { |target| path.to_s.include?("/#{target}/") }
+  end
 
 consumer_directories = SOURCES.children.select do |path|
   path.directory? && path.basename.to_s.match?(/(?:Backend|Raster|Platform|Driver)/)
@@ -89,4 +92,4 @@ owners.each do |symbol, owner|
     declarations.map { |path| path.relative_path_from(SOURCES).to_s } == [owner]
 end
 
-puts "SPEC-008 package boundaries passed: exact Render Core/Lowering edges, sole semantic-layout join, symbol ownership, backend isolation, and no GiftUI SPI re-export."
+puts "SPEC-008 package boundaries passed: exact Render Core/Lowering edges, approved semantic-layout producers, symbol ownership, backend isolation, and no GiftUI SPI re-export."

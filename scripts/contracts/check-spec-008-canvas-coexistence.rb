@@ -37,7 +37,8 @@ fail_check("future integration escaped SPEC-012") unless rows.all? { |row| row[3
 
 spec = SPEC.read
 plan = PLAN.read
-fail_check("SPEC-012 is not approved") unless spec.match?(/\A---\n.*?\nstatus: approved\n/m)
+fail_check("SPEC-012 is not authoritative") unless
+  spec.match?(/\A---\n.*?\nstatus: (?:approved|implementing|implemented)\n/m)
 fail_check("SPEC-012 does not preserve pre-existing cases and results") unless
   spec.match?(/without changing any\s+previous case, raw value, traversal order, or non-Canvas result/)
 fail_check("SPEC-012 does not own zero-Canvas equivalence") unless
@@ -61,12 +62,10 @@ ordinary_cases = scopes.scan(/^    case (structural|clipBoundary|text|foreground
 fail_check("ordinary semantic render cases changed") unless ordinary_cases == %w[
   structural clipBoundary text foregroundStyle background
 ]
-fail_check("Canvas prematurely entered the SPEC-008 semantic render scope") if scopes.match?(/\bcanvas\b/i)
 
 sink = SINK.read
 required_sink_calls = %w[begin fillRect beginPositionedGlyphs positionedGlyph endPositionedGlyphs finish discard]
 fail_check("ordinary sink surface changed") unless required_sink_calls.all? { |name| sink.include?("func #{name}") }
-fail_check("stroke prematurely entered the SPEC-008 sink") if sink.match?(/\bstroke\b/i)
 
 ordinary_test = ORDINARY_TEST.read
 fail_check("exact ordinary transcript fixture is missing") unless
@@ -78,4 +77,4 @@ fail_check("ordinary transcript fixture contains Canvas/stroke behavior") if
   ordinary_test[/func streamingRepeatsCanonicalLookupsAndEmitsTheExactOrderedValues\(\).*?\n}\n/m]
     &.match?(/\b(?:canvas|stroke)\b/i)
 
-puts "SPEC-008 Canvas coexistence passed: the base contract stays ordinary-only, extension points remain available, and SPEC-012 retains combined-production ownership."
+puts "SPEC-008 Canvas coexistence passed: the base contract stays ordinary-only, ordinary extension points remain intact, and authoritative SPEC-012 retains combined-production ownership."
