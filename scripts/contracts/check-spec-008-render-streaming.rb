@@ -18,13 +18,16 @@ expected_imports = %w[GiftUI GiftUILayout GiftUIRenderCore GiftUISemanticCore Gi
 fail_check("streaming imports differ") unless source.scan(/^import (\w+)$/).flatten == expected_imports
 
 required = [
-  "static func stream<Semantic, Layout, Metrics, Sink>",
+  "static func stream<Semantic, Layout, Metrics, Workspace, Sink>",
   "snapshotsMatch",
   "semantic.semanticOrdinal(of: identity)",
   "semantic.semanticIdentity(at: ordinal)",
   "layout.layoutOrdinal(of: layoutIdentity)",
   "layout.layoutIdentity(at: layoutOrdinal)",
   "sink.begin(preflight.header)",
+  "workspace.pushForeground(rootForeground)",
+  "workspace.popForeground()",
+  "workspace.currentForeground",
   "sink.fillRect(",
   "sink.beginPositionedGlyphs(",
   "sink.positionedGlyph(",

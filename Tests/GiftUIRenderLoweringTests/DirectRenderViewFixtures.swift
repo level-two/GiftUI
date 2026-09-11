@@ -11,6 +11,13 @@ enum RenderFixtureIdentity: UInt8, Equatable, Sendable {
     case text
     case alternate
     case missing
+    case outerForeground
+    case innerForeground
+    case outerBackground
+    case innerBackground
+    case firstText
+    case secondText
+    case leaf
 }
 
 struct SemanticFixtureRecord {

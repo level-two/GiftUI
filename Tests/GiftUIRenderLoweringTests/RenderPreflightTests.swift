@@ -274,6 +274,7 @@ func streamingRepeatsCanonicalLookupsAndEmitsTheExactOrderedValues() {
         surfaceBounds: DirectRenderFixtures.bounds,
         damageMode: .rootIntersection,
         rootForeground: .white,
+        workspace: &workspace,
         sink: &sink
     )
 
@@ -312,6 +313,177 @@ func streamingRepeatsCanonicalLookupsAndEmitsTheExactOrderedValues() {
                     baseline: Point(x: 5, y: 12)
                 )
             ),
+            .endGlyphs,
+            .finish,
+        ]
+    )
+}
+
+@Test
+func foregroundStackUsesInnermostColorRestoresSiblingsAndOrdersNestedBackgrounds() {
+    let bounds = DirectRenderFixtures.bounds
+    let instance = DirectRenderFixtures.instance
+    let semantic = DirectSemanticRenderView(
+        rootIdentity: .root,
+        semanticScopeCount: 7,
+        renderSnapshotVersion: 1,
+        records: [
+            SemanticFixtureRecord(
+                identity: .root,
+                scope: .structural,
+                layoutIdentity: .root,
+                children: [.outerForeground, .secondText]
+            ),
+            SemanticFixtureRecord(
+                identity: .outerForeground,
+                scope: .foregroundStyle(.green),
+                layoutIdentity: .outerForeground,
+                children: [.outerBackground]
+            ),
+            SemanticFixtureRecord(
+                identity: .outerBackground,
+                scope: .background(.blue),
+                layoutIdentity: .outerBackground,
+                children: [.innerForeground]
+            ),
+            SemanticFixtureRecord(
+                identity: .innerForeground,
+                scope: .foregroundStyle(.red),
+                layoutIdentity: .innerForeground,
+                children: [.innerBackground]
+            ),
+            SemanticFixtureRecord(
+                identity: .innerBackground,
+                scope: .background(.gray),
+                layoutIdentity: .innerBackground,
+                children: [.firstText]
+            ),
+            SemanticFixtureRecord(
+                identity: .firstText,
+                scope: .text,
+                layoutIdentity: .firstText,
+                children: []
+            ),
+            SemanticFixtureRecord(
+                identity: .secondText,
+                scope: .text,
+                layoutIdentity: .secondText,
+                children: []
+            ),
+        ]
+    )
+    let emptyRecord: (RenderFixtureIdentity) -> LayoutFixtureRecord = { identity in
+        LayoutFixtureRecord(
+            identity: identity,
+            bounds: bounds,
+            clip: bounds,
+            lines: [],
+            glyphs: []
+        )
+    }
+    let textRecord: (RenderFixtureIdentity, GlyphID, Point) -> LayoutFixtureRecord = {
+        identity, glyph, baseline in
+        LayoutFixtureRecord(
+            identity: identity,
+            bounds: bounds,
+            clip: bounds,
+            lines: [
+                ResolvedRenderTextLine(
+                    lineIndex: 0,
+                    bounds: bounds,
+                    baseline: baseline,
+                    clip: bounds,
+                    glyphCount: 1
+                )
+            ],
+            glyphs: [
+                ResolvedRenderGlyph(
+                    lineIndex: 0,
+                    glyphIndex: 0,
+                    instance: instance,
+                    glyph: glyph,
+                    baseline: baseline,
+                    clip: bounds
+                )
+            ]
+        )
+    }
+    let firstBaseline = Point(x: 2, y: 8)
+    let secondBaseline = Point(x: 20, y: 8)
+    let layout = DirectResolvedRenderLayoutView(
+        rootIdentity: .root,
+        layoutScopeCount: 7,
+        renderSnapshotVersion: 1,
+        rootBounds: bounds,
+        records: [
+            emptyRecord(.root),
+            emptyRecord(.outerForeground),
+            emptyRecord(.outerBackground),
+            emptyRecord(.innerForeground),
+            emptyRecord(.innerBackground),
+            textRecord(.firstText, GlyphID(rawValue: 1), firstBaseline),
+            textRecord(.secondText, GlyphID(rawValue: 2), secondBaseline),
+        ]
+    )
+    let limits = RenderLimits(
+        maximumOperations: 4,
+        maximumPositionedGlyphs: 2,
+        maximumClipDepth: 2
+    )!
+    let structure = RenderWorkspaceCapacity(
+        maximumSemanticScopes: 7,
+        maximumLayoutScopes: 7,
+        maximumTraversalDepth: 6,
+        maximumTextLines: 2
+    )!
+    var workspace = PreflightWorkspace<RenderFixtureIdentity>(
+        capacity: limits,
+        structuralCapacity: structure
+    )
+    var sink = StreamingSink()
+
+    let result = RenderProducer.produce(
+        semantic: semantic,
+        layout: layout,
+        textMetrics: PreflightMetrics(),
+        surfaceBounds: bounds,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: limits,
+        workspace: &workspace,
+        sink: &sink
+    )
+    guard case .success(let header) = result else {
+        Issue.record("expected nested style lowering to succeed")
+        return
+    }
+
+    #expect(workspace.foregroundHighWater == 3)
+    #expect(workspace.currentForeground == nil)
+    #expect(
+        sink.events == [
+            .begin(header),
+            .fill(FillRectOperation(bounds: bounds, clip: bounds, color: .blue)),
+            .fill(FillRectOperation(bounds: bounds, clip: bounds, color: .gray)),
+            .beginGlyphs(
+                PositionedGlyphOperationHeader(
+                    instance: instance,
+                    clip: bounds,
+                    color: .red,
+                    glyphCount: 1
+                )
+            ),
+            .glyph(PositionedGlyph(glyph: GlyphID(rawValue: 1), baseline: firstBaseline)),
+            .endGlyphs,
+            .beginGlyphs(
+                PositionedGlyphOperationHeader(
+                    instance: instance,
+                    clip: bounds,
+                    color: .white,
+                    glyphCount: 1
+                )
+            ),
+            .glyph(PositionedGlyph(glyph: GlyphID(rawValue: 2), baseline: secondBaseline)),
             .endGlyphs,
             .finish,
         ]
@@ -950,6 +1122,7 @@ func streamingDistinguishesBeginRefusalFromPostBeginInvariantFailure() {
         surfaceBounds: DirectRenderFixtures.bounds,
         damageMode: .rootIntersection,
         rootForeground: .white,
+        workspace: &beginWorkspace,
         sink: &beginSink
     )
     #expect(beginResult == .failure(.sinkRefused))
@@ -976,6 +1149,7 @@ func streamingDistinguishesBeginRefusalFromPostBeginInvariantFailure() {
         surfaceBounds: DirectRenderFixtures.bounds,
         damageMode: .rootIntersection,
         rootForeground: .white,
+        workspace: &glyphWorkspace,
         sink: &glyphSink
     )
     #expect(glyphResult == .failure(.invariantViolation))
@@ -1012,6 +1186,7 @@ func streamingDiscardsWhenSnapshotChangesAfterTheLastOperation() {
         surfaceBounds: DirectRenderFixtures.bounds,
         damageMode: .rootIntersection,
         rootForeground: .white,
+        workspace: &workspace,
         sink: &sink
     )
 

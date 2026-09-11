@@ -57,6 +57,7 @@ extension RenderProducer {
             surfaceBounds: surfaceBounds,
             damageMode: damageMode,
             rootForeground: rootForeground,
+            workspace: &workspace,
             sink: &sink
         )
     }

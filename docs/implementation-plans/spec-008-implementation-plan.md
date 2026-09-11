@@ -425,7 +425,7 @@ owned by their prerequisite modules.
 **Exit evidence:** Focused goldens reproduce every valid SPEC-008 rendering
 rule and every failure boundary without rasterization or frame state.
 
-- [ ] `T5.1` — Implement inherited root foreground, nested innermost
+- [x] `T5.1` — Implement inherited root foreground, nested innermost
       foreground resolution, sibling isolation, and a bounded foreground stack
       in caller-owned workspace through exact current/push/pop operations,
       including root initialization, LIFO restoration, full/empty/inactive
@@ -1023,7 +1023,14 @@ both maintained fixture workspaces now implement bounded current/push/pop
 foreground storage, equality and refusal behavior, high-water accounting, and
 acquire/reset clearing; see the
 [foreground-workspace evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-4/foreground-workspace.md).
-T5.1 is the next dependency-complete task.
+`T5.1` is complete. Streaming now initializes and verifies the root foreground
+around `begin`/`finish`, uses exact caller-owned LIFO push/pop operations for
+modifier scopes, and reads text paint only from `currentForeground`. A nested
+foreground/background plus sibling golden proves innermost resolution, outer-
+before-inner backgrounds, sibling restoration, exact high-water, and reset;
+see the
+[foreground-semantics evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-5/foreground-semantics.md).
+`T5.5` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

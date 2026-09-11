@@ -5,7 +5,7 @@ import GiftUISemanticCore
 import GiftUITextResources
 
 extension RenderProducer {
-    static func stream<Semantic, Layout, Metrics, Sink>(
+    static func stream<Semantic, Layout, Metrics, Workspace, Sink>(
         preflight: RenderPreflightSummary,
         semantic: borrowing Semantic,
         layout: borrowing Layout,
@@ -13,14 +13,17 @@ extension RenderProducer {
         surfaceBounds: Rect,
         damageMode: RenderDamageMode,
         rootForeground: Color,
+        workspace: inout Workspace,
         sink: inout Sink
     ) -> RenderProductionResult
     where
         Semantic: SemanticRenderView,
         Layout: ResolvedRenderLayoutView,
         Metrics: CanonicalTextMetricsView,
+        Workspace: RenderProductionWorkspace,
         Sink: RenderOperationSink,
-        Semantic.Identity == Layout.Identity
+        Semantic.Identity == Layout.Identity,
+        Semantic.Identity == Workspace.Identity
     {
         guard
             snapshotsMatch(
@@ -28,6 +31,12 @@ extension RenderProducer {
                 semantic: semantic,
                 layout: layout
             )
+        else {
+            return .failure(.invariantViolation)
+        }
+        guard workspace.currentForeground == nil,
+            workspace.pushForeground(rootForeground),
+            workspace.currentForeground == rootForeground
         else {
             return .failure(.invariantViolation)
         }
@@ -42,7 +51,7 @@ extension RenderProducer {
             layout: layout,
             textMetrics: textMetrics,
             surfaceBounds: surfaceBounds,
-            foreground: rootForeground,
+            workspace: &workspace,
             sink: &sink
         ) == false {
             sink.discard()
@@ -65,6 +74,10 @@ extension RenderProducer {
                 layout: layout
             )
         else {
+            sink.discard()
+            return .failure(.invariantViolation)
+        }
+        guard workspace.popForeground(), workspace.currentForeground == nil else {
             sink.discard()
             return .failure(.invariantViolation)
         }
@@ -112,21 +125,23 @@ private struct RenderStreamingState {
     var operationCount: UInt16 = 0
     var positionedGlyphCount: UInt16 = 0
 
-    mutating func stream<Semantic, Layout, Metrics, Sink>(
+    mutating func stream<Semantic, Layout, Metrics, Workspace, Sink>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         layout: borrowing Layout,
         textMetrics: borrowing Metrics,
         surfaceBounds: Rect,
-        foreground: Color,
+        workspace: inout Workspace,
         sink: inout Sink
     ) -> Bool
     where
         Semantic: SemanticRenderView,
         Layout: ResolvedRenderLayoutView,
         Metrics: CanonicalTextMetricsView,
+        Workspace: RenderProductionWorkspace,
         Sink: RenderOperationSink,
-        Semantic.Identity == Layout.Identity
+        Semantic.Identity == Layout.Identity,
+        Semantic.Identity == Workspace.Identity
     {
         guard let ordinal = semantic.semanticOrdinal(of: identity),
             ordinal < semantic.semanticScopeCount,
@@ -156,9 +171,17 @@ private struct RenderStreamingState {
             break
         }
 
-        var subtreeForeground = foreground
+        guard let inheritedForeground = workspace.currentForeground else {
+            return false
+        }
+        let overridesForeground: Bool
         if case .foregroundStyle(let color) = scope {
-            subtreeForeground = color
+            guard workspace.pushForeground(color), workspace.currentForeground == color else {
+                return false
+            }
+            overridesForeground = true
+        } else {
+            overridesForeground = false
         }
         if case .background(let color) = scope,
             bounds.size.width > 0,
@@ -179,17 +202,19 @@ private struct RenderStreamingState {
             }
         }
 
-        if scope == .text,
-            streamText(
-                identity: layoutIdentity,
-                layout: layout,
-                textMetrics: textMetrics,
-                surfaceBounds: surfaceBounds,
-                foreground: subtreeForeground,
-                sink: &sink
-            ) == false
-        {
-            return false
+        if scope == .text {
+            guard let foreground = workspace.currentForeground,
+                streamText(
+                    identity: layoutIdentity,
+                    layout: layout,
+                    textMetrics: textMetrics,
+                    surfaceBounds: surfaceBounds,
+                    foreground: foreground,
+                    sink: &sink
+                )
+            else {
+                return false
+            }
         }
 
         var childIndex: UInt16 = 0
@@ -201,7 +226,7 @@ private struct RenderStreamingState {
                     layout: layout,
                     textMetrics: textMetrics,
                     surfaceBounds: surfaceBounds,
-                    foreground: subtreeForeground,
+                    workspace: &workspace,
                     sink: &sink
                 )
             else {
@@ -209,7 +234,19 @@ private struct RenderStreamingState {
             }
             childIndex += 1
         }
-        return semantic.child(of: identity, at: childCount) == nil
+        guard semantic.child(of: identity, at: childCount) == nil else {
+            return false
+        }
+        if overridesForeground {
+            guard workspace.popForeground(),
+                workspace.currentForeground == inheritedForeground
+            else {
+                return false
+            }
+        } else if workspace.currentForeground != inheritedForeground {
+            return false
+        }
+        return true
     }
 
     private mutating func streamText<Layout, Metrics, Sink>(
