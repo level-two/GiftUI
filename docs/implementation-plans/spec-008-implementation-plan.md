@@ -435,7 +435,7 @@ rule and every failure boundary without rasterization or frame state.
       intersection. Validate metrics descriptor/resource identity and every
       instance/glyph before begin; never pass raw text or remeasure, reshape,
       fallback, add advances, move baselines, substitute, or translate.
-- [ ] `T5.4` — Implement checked surface/root/operation intersections,
+- [x] `T5.4` — Implement checked surface/root/operation intersections,
       nonzero-origin rejection, structural clip-depth accounting, empty-clip
       omission, `.rootIntersection` damage, and exact
       `.initializeCompleteSurface` damage. Keep root bounds unclamped for
@@ -992,6 +992,13 @@ preflight before capacity or begin. A source audit excludes raw-text, shaping,
 fallback, and advance behavior; see the
 [text-lowering evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-5/text-lowering.md).
 `T5.4` is the next independent dependency-complete task.
+
+`T5.4` is complete. Focused fixtures prove exact unclamped fill bounds with a
+checked partial final clip, omission for an off-surface empty final clip, and
+explicit complete-surface/root-intersection/complete-surface damage across
+fresh attempts without frame history; see the
+[clip/damage evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-5/clip-damage.md).
+`T5.5` is the next independent dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

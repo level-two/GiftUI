@@ -726,6 +726,205 @@ private func replacingTextRecord(
 }
 
 @Test
+func backgroundKeepsUnclippedBoundsAndOmitsOnlyAnEmptyFinalClip() {
+    let surface = DirectRenderFixtures.bounds
+    let rootBounds = Rect(
+        origin: Point(x: -10, y: -5),
+        size: Size(width: 60, height: 30)!
+    )!
+    let partialClip = Rect(
+        origin: Point(x: 30, y: 10),
+        size: Size(width: 20, height: 20)!
+    )!
+    let finalClip = Rect(
+        origin: Point(x: 30, y: 10),
+        size: Size(width: 10, height: 10)!
+    )!
+    let semantic = backgroundSemanticFixture()
+    let partialLayout = backgroundLayoutFixture(
+        rootBounds: rootBounds,
+        logicalClip: partialClip
+    )
+    var partialWorkspace = PreflightWorkspace<RenderFixtureIdentity>()
+    var partialSink = StreamingSink()
+
+    let partialResult = RenderProducer.produce(
+        semantic: semantic,
+        layout: partialLayout,
+        textMetrics: PreflightMetrics(),
+        surfaceBounds: surface,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+        workspace: &partialWorkspace,
+        sink: &partialSink
+    )
+    guard case .success(let partialHeader) = partialResult else {
+        Issue.record("expected partial background clip to succeed")
+        return
+    }
+    #expect(partialHeader.damageBounds == surface)
+    #expect(partialHeader.operationCount == 1)
+    #expect(
+        partialSink.events == [
+            .begin(partialHeader),
+            .fill(FillRectOperation(bounds: rootBounds, clip: finalClip, color: .green)),
+            .finish,
+        ]
+    )
+
+    let offSurfaceClip = Rect(
+        origin: Point(x: 50, y: 50),
+        size: Size(width: 10, height: 10)!
+    )!
+    var emptyWorkspace = PreflightWorkspace<RenderFixtureIdentity>()
+    var emptySink = StreamingSink()
+    let emptyResult = RenderProducer.produce(
+        semantic: semantic,
+        layout: backgroundLayoutFixture(
+            rootBounds: rootBounds,
+            logicalClip: offSurfaceClip
+        ),
+        textMetrics: PreflightMetrics(),
+        surfaceBounds: surface,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+        workspace: &emptyWorkspace,
+        sink: &emptySink
+    )
+    guard case .success(let emptyHeader) = emptyResult else {
+        Issue.record("expected empty final clip to succeed")
+        return
+    }
+    #expect(emptyHeader.operationCount == 0)
+    #expect(emptySink.events == [.begin(emptyHeader), .finish])
+}
+
+@Test
+func damageModeIsExplicitAndRetainsNoFirstFrameHistory() {
+    let surface = DirectRenderFixtures.bounds
+    let rootBounds = Rect(
+        origin: Point(x: 5, y: 4),
+        size: Size(width: 10, height: 6)!
+    )!
+    let semantic = DirectSemanticRenderView(
+        rootIdentity: .root,
+        semanticScopeCount: 1,
+        renderSnapshotVersion: 1,
+        records: [
+            SemanticFixtureRecord(
+                identity: .root,
+                scope: .structural,
+                layoutIdentity: .root,
+                children: []
+            )
+        ]
+    )
+    let layout = DirectResolvedRenderLayoutView(
+        rootIdentity: .root,
+        layoutScopeCount: 1,
+        renderSnapshotVersion: 1,
+        rootBounds: rootBounds,
+        records: [
+            LayoutFixtureRecord(
+                identity: .root,
+                bounds: rootBounds,
+                clip: rootBounds,
+                lines: [],
+                glyphs: []
+            )
+        ]
+    )
+
+    let modes: [(RenderDamageMode, Rect)] = [
+        (.initializeCompleteSurface, surface),
+        (.rootIntersection, rootBounds),
+        (.initializeCompleteSurface, surface),
+    ]
+    for (mode, expectedDamage) in modes {
+        let structure = RenderWorkspaceCapacity(
+            maximumSemanticScopes: 1,
+            maximumLayoutScopes: 1,
+            maximumTraversalDepth: 1,
+            maximumTextLines: 1
+        )!
+        var workspace = PreflightWorkspace<RenderFixtureIdentity>(
+            structuralCapacity: structure
+        )
+        var sink = StreamingSink()
+        let result = RenderProducer.produce(
+            semantic: semantic,
+            layout: layout,
+            textMetrics: PreflightMetrics(),
+            surfaceBounds: surface,
+            damageMode: mode,
+            rootForeground: .white,
+            limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+            workspace: &workspace,
+            sink: &sink
+        )
+        guard case .success(let header) = result else {
+            Issue.record("expected explicit damage mode to succeed")
+            return
+        }
+        #expect(header.damageBounds == expectedDamage)
+        #expect(header.operationCount == 0)
+        #expect(sink.events == [.begin(header), .finish])
+    }
+}
+
+private func backgroundSemanticFixture() -> DirectSemanticRenderView {
+    DirectSemanticRenderView(
+        rootIdentity: .root,
+        semanticScopeCount: 2,
+        renderSnapshotVersion: 1,
+        records: [
+            SemanticFixtureRecord(
+                identity: .root,
+                scope: .background(.green),
+                layoutIdentity: .root,
+                children: [.alternate]
+            ),
+            SemanticFixtureRecord(
+                identity: .alternate,
+                scope: .structural,
+                layoutIdentity: .alternate,
+                children: []
+            ),
+        ]
+    )
+}
+
+private func backgroundLayoutFixture(
+    rootBounds: Rect,
+    logicalClip: Rect
+) -> DirectResolvedRenderLayoutView {
+    DirectResolvedRenderLayoutView(
+        rootIdentity: .root,
+        layoutScopeCount: 2,
+        renderSnapshotVersion: 1,
+        rootBounds: rootBounds,
+        records: [
+            LayoutFixtureRecord(
+                identity: .root,
+                bounds: rootBounds,
+                clip: logicalClip,
+                lines: [],
+                glyphs: []
+            ),
+            LayoutFixtureRecord(
+                identity: .alternate,
+                bounds: rootBounds,
+                clip: logicalClip,
+                lines: [],
+                glyphs: []
+            ),
+        ]
+    )
+}
+
+@Test
 func streamingDistinguishesBeginRefusalFromPostBeginInvariantFailure() {
     let semantic = DirectRenderFixtures.validSemantic
     let layout = DirectRenderFixtures.validLayout
