@@ -2,7 +2,7 @@
 spec: SPEC-012
 feature: canvas-drawing
 title: SPEC-012 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-09

@@ -2,7 +2,7 @@
 id: SPEC-012
 feature: canvas-drawing
 title: Canvas, Path, and Stroke Drawing Contract
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-26

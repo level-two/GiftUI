@@ -117,7 +117,7 @@ features:
     milestone: MVP
   canvas-drawing:
     title: Canvas, Path, and Stroke Drawing
-    status: specification
+    status: implementation
     proposal:
       - PROPOSAL-006
     rfcs:
