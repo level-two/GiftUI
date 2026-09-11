@@ -286,7 +286,7 @@ fixture-dynamic, and fixture-static producers have equal observable meaning.
       root and every modifier scope to resolve to exactly one layout child;
       preserve exact modifier-scope and ordinary action-bearing occurrence
       identity; and expose text scalars without retaining the source.
-- [ ] `T2.4` — Build recording, fixture-dynamic, and fixture-static semantic
+- [x] `T2.4` — Build recording, fixture-dynamic, and fixture-static semantic
       views over one canonical corpus. Prove equality of occurrence kinds,
       child/modifier order, text scalars, identity relations, in-range and
       out-of-range behavior, and malformed-view injection while explicitly
@@ -747,6 +747,15 @@ indices, and only primitive, child, modifier, and text-scalar access. A direct
 fixture proves valid and absent identity/count/index behavior. The closed
 primitive and modifier enums required by the protocol are declared; their
 production semantic-expansion mapping remains pending under `T2.1`.
+
+`T2.4` is complete: recording-path, dynamic-slot, and fixed static-enum views
+expose one canonical stack/modifier/action-proxy/spacer/text corpus. The tests
+normalize only symbolic identity relations and compare occurrence kinds,
+ordered children and modifiers, text scalars, counts, in-range and out-of-range
+behavior across all three views. A dynamic malformed-view mode independently
+injects a missing in-range child. The fixed view uses switch-based finite
+storage and does not compare its private identity raw values with either host
+fixture.
 
 `T3.3` is in progress: `GiftUILayout` now has one fixed-width counter set for
 all five global limits. It accepts equality at each limit, rejects the next
