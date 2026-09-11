@@ -176,7 +176,7 @@ once below and maps to implementation tasks and reproducible evidence.
 baseline, and registered fail-closed four-profile driver exist before any
 drawing conformance is claimed.
 
-- [ ] `T0.1` — Create `Tests/ContractFixtures/SPEC012/` with an ordered fixture
+- [x] `T0.1` — Create `Tests/ContractFixtures/SPEC012/` with an ordered fixture
       manifest, declaration and negative-compile registries, normalized semantic/
       layout/cycle/plan/render/raster result schemas, failure-precedence table,
       acceptance/evidence registry, symbolic identity tokens, and README.
@@ -626,3 +626,13 @@ Update task checkboxes and dispositions only with stable code, test, and report
 evidence. Plan completion will mean every task has a recorded disposition; it
 will not mean SPEC-012 conforms or is `implemented`. The conformance report
 remains `null` until `T9.6` creates it.
+
+`T0.1` is complete. The
+[SPEC-012 contract fixture registry](../../Tests/ContractFixtures/SPEC012/README.md)
+now freezes the ordered drawing and raster manifests, positive and negative
+declaration witnesses, normalized cross-layer fields, symbolic identity
+tokens, failure precedence, all thirteen fail-closed evidence rows, and the
+distinction between host, cross-build, inspection, simulator, and separately
+authorized connected-hardware evidence. The manifests intentionally contain
+no behavioral cases yet, and no acceptance criterion is marked passing by
+this schema-only task. `T0.2` is the next dependency-complete task.

@@ -1,0 +1,4 @@
+# order	file	domain	collection	evidence_classes
+1	fixtures.yaml	drawing-corpus	cases	connected-hardware,cross-build,host-execution,inspection,simulator
+2	raster-vectors.yaml	raster-corpus	vectors	connected-hardware,cross-build,host-execution,inspection,simulator
+

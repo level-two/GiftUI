@@ -1,0 +1,41 @@
+# domain	field	kind	rule
+semantic	identityTokens	sequence	complete declared SPEC-006 identity tokens
+semantic	semanticEvents	sequence	exact ordered primitive events with one canvas leaf event per occurrence
+semantic	canvasOccurrenceOrder	sequence	exact dense painter-ordered canvas identity projection
+semantic	canvasCallableState	sequence	staged invoked released and publication-eligible state per occurrence
+layout	layoutIdentityOrder	sequence	exact dense SPEC-007 identity projection
+layout	proposals	sequence	identity-keyed optional width and height proposals
+layout	resolvedBounds	sequence	identity-keyed checked surface rectangles
+layout	resolvedClips	sequence	identity-keyed inherited logical clips
+layout	painterOrder	sequence	exact resolved render-scope order
+cycle	executionContext	mapping	phase cycle semantic revision and candidate frame
+cycle	timeline	sequence	ordered freeze layout invoke preflight publish allocate offer finalize observations
+cycle	invocationCalls	sequence	identity size result and exact call count
+cycle	releaseCalls	sequence	identity release count and publication eligibility
+cycle	disposition	mapping	publication candidate dirty wake refusal and reset counts
+plan	limits	mapping	all DrawingLimits and optional StaticCanvasLimits values
+plan	workspaceCalls	mapping	acquire discard reset active and high-water observations
+plan	summary	mapping	canvas stroke point subpath and normalized-operation totals
+plan	canvasRecords	sequence	identity and exact zero-or-more ordered stroke records
+plan	strokeRecords	sequence	header points and explicit subpath ranges
+plan	pathMutations	sequence	operation result before-state after-state and live high-water
+render	surfaceBounds	mapping	exact zero-origin logical surface rectangle
+render	damageMode	token	root-intersection or initialize-complete-surface
+render	rootForeground	mapping	exact opaque UInt8 RGB
+render	renderLimits	mapping	SPEC-008 render limit values
+render	configuredSinkCapacity	mapping	startup-proven sink capacity lower bound
+render	expectedHeader	mapping	exact combined RenderPlanHeader
+render	recordingEvents	sequence	one ordered begin fill glyph stroke finish or discard transcript
+render	sinkCalls	mapping	capacity begin fill glyph stroke finish and discard counts
+raster	strokeHeader	mapping	exact color width cap join origin clip point and subpath counts
+raster	points	sequence	translated checked surface points
+raster	subpaths	sequence	explicit first-point and point-count ranges
+raster	logicalExtent	mapping	finite raster extent used by the vector
+raster	expectedCoverage	sequence	exact covered logical pixel coordinates in row-major order
+raster	expectedRGBA8888	bytes	exact red green blue 255 byte sequence
+raster	expectedRGB565	bytes	exact big-endian RGB565 byte sequence
+raster	tolerance	mapping	exact zero differing pixels channels and bytes
+common	criteria	sequence	one or more DR-001 through DR-013 references
+common	evidenceClasses	sequence	one or more registered evidence classes
+common	expectedResult	mapping	success value or first local failure and mapped outcome
+

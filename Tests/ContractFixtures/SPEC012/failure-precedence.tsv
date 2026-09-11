@@ -1,0 +1,22 @@
+# precedence	stage	local_error	condition	origin	affected_scope	containment
+1	startup	invalid-limit-construction	invalidValue	rendering	runtime	safetyNotProven
+2	startup	invalid-static-callable-coverage	invalidValue	rendering	runtime	safetyNotProven
+3	startup	insufficient-b2-workload	invalidValue	rendering	runtime	safetyNotProven
+4	startup	incompatible-raster-presentation	invalidValue	capability	runtime	safetyNotProven
+5	drawing-attempt	workspace-reentry	reentrancyViolation	rendering	activeCycle	safetyNotProven
+6	drawing-attempt	invalid-phase	invalidPhase	rendering	activeCycle	safetyNotProven
+7	drawing-attempt	invalid-source-scope	invalidPhase	rendering	activeCycle	safetyNotProven
+8	drawing-attempt	canvas-occurrence-or-identity-mismatch	invariantViolation	rendering	runtime	safetyNotProven
+9	drawing-attempt	nested-path-reentry	reentrancyViolation	rendering	activeCycle	safetyNotProven
+10	drawing-attempt	invalid-path-state-or-value	invalidValue	rendering	activeCycle	contained
+11	drawing-attempt	live-path-capacity	capacityExhausted	rendering	activeCycle	contained
+12	drawing-attempt	invalid-stroke-style-or-path-state	invalidValue	rendering	activeCycle	contained
+13	drawing-attempt	plan-reservation-capacity	capacityExhausted	rendering	activeCycle	contained
+14	drawing-attempt	translated-geometry-overflow	arithmeticOverflow	foundation	operation	contained
+15	drawing-attempt	normalized-stroke-capacity	capacityExhausted	rendering	activeCycle	contained
+16	drawing-attempt	combined-operation-capacity	capacityExhausted	rendering	activeCycle	contained
+17	drawing-attempt	configured-sink-lower-bound	capacityExhausted	rendering	activeCycle	contained
+18	drawing-attempt	immutable-plan-inconsistency	invariantViolation	rendering	runtime	safetyNotProven
+19	offer	idle-sink-refusal	nonRetryableRefusal	rendering	candidateFrame	contained
+20	offer	combined-stream-contract-violation	invariantViolation	rendering	runtime	safetyNotProven
+

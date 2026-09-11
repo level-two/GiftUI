@@ -1,0 +1,14 @@
+# namespace	format	authority
+identity	identity:<kebab-case>	SPEC-006 structural identity equality only
+cycle	cycle:<positive-decimal>	SPEC-009 active-cycle relation
+semantic-revision	semantic-revision:<positive-decimal>	SPEC-009 published semantic revision relation
+candidate-frame	candidate-frame:<positive-decimal>	SPEC-009 candidate frame relation
+callable	callable:<positive-decimal>	SPEC-012 syntactic static callable identity
+capture	capture:<kebab-case>	SPEC-012 occurrence-local generated capture identity
+plan	plan:<kebab-case>	SPEC-012 drawing-attempt-local immutable plan identity
+stroke	stroke:<kebab-case>	SPEC-012 painter-ordered snapshot identity
+resource	resource:<kebab-case>	GiftUITextResources resource identity
+instance	instance:<kebab-case>	GiftUITextResources font instance identity
+glyph	glyph:<kebab-case>	GiftUITextResources glyph identity
+backend-derived	backend-derived:<kebab-case>	backend-owned post-acceptance derived identity
+

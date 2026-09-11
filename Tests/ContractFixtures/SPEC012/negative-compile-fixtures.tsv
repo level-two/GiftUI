@@ -1,0 +1,11 @@
+# case	family	expected_rejection	criteria	status
+graphics-context-initializer	construction	non-public-initializer	DR-001	pending
+path-initializer	construction	non-public-initializer	DR-001	pending
+path-copy	ownership	noncopyable-copy	DR-001	pending
+path-consume	ownership	borrowed-consume	DR-001	pending
+path-escape	lifetime	nonescaping-inout-escape	DR-001,DR-009	pending
+path-async-escape	lifetime	asynchronous-escape	DR-001,DR-009	pending
+missing-typed-throws	error-model	unsupported-untyped-error	DR-001,DR-011	pending
+unsupported-error	error-model	wrong-concrete-error	DR-001,DR-011	pending
+captured-outer-context	exclusivity	overlapping-access	DR-001	pending
+
