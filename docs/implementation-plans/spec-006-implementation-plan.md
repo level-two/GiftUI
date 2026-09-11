@@ -491,7 +491,7 @@ renewed review without claiming the `implemented` transition.
       optional, and modified-content tests covering canonical identity/order,
       depth accounting, first-failure precedence, atomic discard, workspace
       reuse, and zero body evaluation.
-- [ ] `T8.3` — Extend the canonical SPEC-006 corpus, normalized results,
+- [x] `T8.3` — Extend the canonical SPEC-006 corpus, normalized results,
       acceptance/evidence registry, underscored-reference allow-list, allocation
       and complexity probes, and all four contract-driver profiles. Prove equal
       dynamic/static meaning, zero static-path heap allocation, unchanged
@@ -938,3 +938,13 @@ conditional, optional, and modified content; canonical source order and
 identity paths; zero container-body evaluation; capacity failure before the
 rejected child; false-capacity sink refusal; atomic discard; and clean
 workspace/sink reuse after every injected failure.
+
+`T8.3` is complete: the canonical profile oracle now includes the nested
+`layout-container-chain` case with exact container-before-child identities,
+four modifier indices, bounded depth, and normalized counters. The package
+compile fixture exercises both leaf and primitive-with-content overloads; the
+exact-set surface, normative, complexity, dependency, allocation, report, and
+four-profile drivers now require the amendment evidence. The strengthened
+complexity base includes all four container semantic stages, and the existing
+optimized SIL plus ARMv6/nRF object probes cover the amended traversal without
+claiming connected-hardware execution.

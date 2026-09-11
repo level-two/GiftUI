@@ -12,6 +12,7 @@ builder-nested-six	pass	public	Fixtures/Positive/builder-nested-six/main.swift	-
 builder-conditional	pass	public	Fixtures/Positive/builder-conditional/main.swift	-	GiftUI
 builder-optional	pass	public	Fixtures/Positive/builder-optional/main.swift	-	GiftUI
 builder-property-function	pass	public	Fixtures/Positive/builder-property-function/main.swift	-	GiftUI
+primitive-with-content	pass	package	Fixtures/Positive/primitive-with-content/main.swift	-	GiftUI
 builder-direct-six	fail	public	Fixtures/Negative/builder-direct-six/main.swift	Fixtures/Negative/builder-direct-six/expected-diagnostic-patterns.txt	GiftUI
 builder-dynamic-array	fail	public	Fixtures/Negative/builder-dynamic-array/main.swift	Fixtures/Negative/builder-dynamic-array/expected-diagnostic-patterns.txt	GiftUI
 wrapper-initializer-access	fail	public	Fixtures/Negative/wrapper-initializer-access/main.swift	Fixtures/Negative/wrapper-initializer-access/expected-diagnostic-patterns.txt	GiftUI

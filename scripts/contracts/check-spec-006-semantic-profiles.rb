@@ -50,6 +50,7 @@ end
 required_categories = %w[
   declaration transcript identity summary bounds failure-order
   framework-failure owner-mapping state-host state-host-failure
+  primitive-container
 ]
 fail_check("profile corpus categories differ") unless profile.map(&:first) == required_categories
 profile.each do |_category, artifact, _relation|
@@ -70,6 +71,20 @@ canonical_paths = %w[
   cases.tsv canonical-transcript.tsv identity-relations.tsv normalized-results.tsv
 ].map { |name| CORPUS.join(name) }
 canonical_digest = Digest::SHA256.hexdigest(canonical_paths.map(&:read).join)
+
+container_events = events.select { |event| event.first == "layout-container-chain" }
+container_kinds = container_events.map { |event| event[3] }
+fail_check("primitive container transcript does not stage before content") unless
+  container_kinds[0, 12] == [
+    "enter-structural-occurrence", "enter-structural-occurrence",
+    "enter-structural-occurrence", "enter-structural-occurrence",
+    "enter-structural-occurrence", "stage-semantic-occurrence",
+    "enter-structural-occurrence", "stage-semantic-occurrence",
+    "enter-structural-occurrence", "stage-semantic-occurrence",
+    "enter-structural-occurrence", "stage-semantic-occurrence",
+  ]
+fail_check("primitive container modifier indices differ") unless
+  container_events.last(4).map { |event| event[5] } == %w[0 1 2 3]
 
 report = [
   "schema_version=1",

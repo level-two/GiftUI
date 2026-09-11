@@ -27,3 +27,4 @@ action-secondary	action-one	secondary	success	host
 action-siblings	action-siblings	primary,secondary	success	host
 action-modified	action-modified	primary,inset(8)	success	host
 action-lifetime	action-lifetime	secondary,poison-after-return	success	host
+layout-container-chain	primitive-container-chain	vstack,hstack,zstack,spacer,padding,padding-insets,fixed-frame,flexible-frame	success	host

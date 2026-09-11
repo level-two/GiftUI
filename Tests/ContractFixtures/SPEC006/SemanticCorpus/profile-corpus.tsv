@@ -9,3 +9,4 @@ framework-failure	BoundaryCorpus/framework-invariants.tsv	failure-equal
 owner-mapping	BoundaryCorpus/owner-mapping.tsv	fact-equal
 state-host	Evidence/milestone-5/stateful-binding.md	result-equal
 state-host-failure	Evidence/milestone-5/stateful-binding-failures.md	failure-equal
+primitive-container	Evidence/milestone-8/primitive-with-content.md	event-and-result-equal

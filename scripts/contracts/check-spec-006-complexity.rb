@@ -20,8 +20,14 @@ events = TRANSCRIPT.each_line.each_with_object([]) do |line, result|
   fail_check("transcript row width differs") unless fields.length == 6
   result << fields
 end
-base_events = events.select { |event| %w[modifier-custom action-modified].include?(event[0]) }
+base_events = events.select do |event|
+  %w[modifier-custom action-modified layout-container-chain].include?(event[0])
+end
 fail_check("complexity base lacks instrumented events") if base_events.empty?
+
+container_events = events.select { |event| event[0] == "layout-container-chain" }
+fail_check("complexity base lacks primitive container events") unless
+  container_events.count { |event| event[3] == "stage-semantic-occurrence" } == 4
 
 base = {
   "visitor_dispatches" => base_events.length,

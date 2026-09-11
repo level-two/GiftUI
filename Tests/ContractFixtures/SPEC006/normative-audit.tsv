@@ -22,4 +22,5 @@ declaration-tests	Testing Requirements — Declaration and compile fixtures	Test
 semantic-tests	Testing Requirements — Recording semantic fixtures	Tests/ContractFixtures/SPEC006/Evidence/milestone-6/semantic-profiles.md	scripts/contracts/check-spec-006-semantic-profiles.rb	complete
 bounds-tests	Testing Requirements — Bounds and failure fixtures	Tests/ContractFixtures/SPEC006/Evidence/milestone-4/boundary-matrix.md	scripts/contracts/check-spec-006-complexity.rb	complete
 profile-tests	Testing Requirements — Profile and dependency fixtures	Tests/ContractFixtures/SPEC006/Evidence/milestone-6/layout-allocation.md	scripts/contracts/check-spec-006-layout-allocation.rb	complete
+primitive-container	Types / APIs — Primitive with content	Tests/ContractFixtures/SPEC006/Evidence/milestone-8/primitive-with-content.md	scripts/contracts/check-spec-006-traversal-surface.rb	complete
 migration	Migration closure	Tests/ContractFixtures/SPEC006/Evidence/milestone-0/migration-baseline.md	scripts/contracts/check-spec-006-migration.rb	complete

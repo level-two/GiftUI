@@ -80,6 +80,11 @@ T3.5 adds `action-one`, `action-siblings`, `action-modified`, and
 enum. The poison token is a declaration-lifetime probe only; it is not part of
 the staged action value or recorded identity.
 
+T8.3 adds `primitive-container-chain`. It records the primitive occurrence
+before content enters `fixed-child(0)`, preserves nested container source
+order, and applies enclosing modifiers only after the contained primitive
+chain. It is amendment evidence, not a layout interpretation.
+
 ## Structural-identity relations
 
 `identity-relations.tsv` has eight fields: a unique relation ID, the left
