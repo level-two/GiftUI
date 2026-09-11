@@ -477,7 +477,7 @@ nonescaping borrows.
       admitted byte sequence and integer value, invalid literal propagation
       through semantic expansion into SPEC-007 rejection, and zero render
       invocation or layout publication after invalid declaration.
-- [ ] `T6.3` — Fault-inject every semantic/layout mismatch and every
+- [x] `T6.3` — Fault-inject every semantic/layout mismatch and every
       constructible producer failure; audit defensive arithmetic sites and the
       direct arithmetic-error mapping; exercise exactly-at/one-over
       operation/glyph/clip bound and semantic-scope,
@@ -1058,6 +1058,14 @@ rejection before sink begin/publication and before the gated render call. See
 the
 [text declaration integration evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-6/text-declaration-integration.md).
 `T6.3` is the next dependency-complete task.
+
+`T6.3` is complete. The production entry point now runs the full direct-view
+mismatch family and seven additional independent one-over capacity rows, all
+with exact pre-begin lifecycle assertions. The registered audit joins these
+with the existing precedence, ordinal-visit, snapshot, refusal, reentry,
+reuse, arithmetic, owner-mapping, and atomic-recording evidence; see the
+[complete failure corpus](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-6/failure-corpus.md).
+`T6.4` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

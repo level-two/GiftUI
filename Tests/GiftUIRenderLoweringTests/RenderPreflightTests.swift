@@ -247,6 +247,226 @@ func preflightRejectsRootOrdinalSnapshotAndResourceDisagreementExactly() {
 }
 
 @Test
+func everyDirectSemanticAndLayoutMismatchFailsBeforeBegin() {
+    let validSemantic = DirectRenderFixtures.validSemantic
+    let validLayout = DirectRenderFixtures.validLayout
+    let semanticMismatches = [
+        replacingSemanticRecord(in: validSemantic, identity: .text) { record in
+            SemanticFixtureRecord(
+                identity: record.identity, scope: nil, layoutIdentity: record.layoutIdentity,
+                children: record.children)
+        },
+        DirectSemanticRenderView(
+            rootIdentity: validSemantic.rootIdentity,
+            semanticScopeCount: validSemantic.semanticScopeCount, renderSnapshotVersion: 1,
+            records: validSemantic.records + [validSemantic.records.last!]),
+        replacingSemanticChildren(of: .foreground, with: [], in: validSemantic),
+        replacingSemanticChildren(of: .text, with: [.alternate], in: validSemantic),
+        replacingSemanticRecord(in: validSemantic, identity: .transparent) { record in
+            SemanticFixtureRecord(
+                identity: record.identity, scope: record.scope, layoutIdentity: nil,
+                children: record.children)
+        },
+        DirectSemanticRenderView(
+            rootIdentity: validSemantic.rootIdentity, semanticScopeCount: 4,
+            renderSnapshotVersion: 1, records: validSemantic.records),
+        DirectSemanticRenderView(
+            rootIdentity: validSemantic.rootIdentity, semanticScopeCount: 6,
+            renderSnapshotVersion: 1, records: validSemantic.records),
+    ]
+    let validText = validLayout.records.first { $0.identity == .text }!
+    let validLine = validText.lines[0]!
+    let validGlyph = validText.glyphs[0]!
+    let layoutMismatches = [
+        DirectResolvedRenderLayoutView(
+            rootIdentity: validLayout.rootIdentity, layoutScopeCount: 2, renderSnapshotVersion: 1,
+            rootBounds: validLayout.rootBounds, records: validLayout.records + [validText]),
+        replacingTextRecord(in: validLayout) {
+            LayoutFixtureRecord(
+                identity: $0.identity, bounds: nil, clip: $0.clip, lines: $0.lines,
+                glyphs: $0.glyphs)
+        },
+        replacingTextRecord(in: validLayout) {
+            LayoutFixtureRecord(
+                identity: $0.identity, bounds: $0.bounds, clip: nil, lines: $0.lines,
+                glyphs: $0.glyphs)
+        },
+        replacingTextRecord(in: validLayout) {
+            LayoutFixtureRecord(
+                identity: $0.identity, bounds: $0.bounds, clip: $0.clip, lines: [nil],
+                glyphs: $0.glyphs)
+        },
+        replacingTextRecord(in: validLayout) {
+            LayoutFixtureRecord(
+                identity: $0.identity, bounds: $0.bounds, clip: $0.clip, lines: $0.lines,
+                glyphs: [nil, $0.glyphs[1]])
+        },
+        replacingTextRecord(in: validLayout) {
+            LayoutFixtureRecord(
+                identity: $0.identity, bounds: $0.bounds, clip: $0.clip,
+                lines: [
+                    ResolvedRenderTextLine(
+                        lineIndex: 1, bounds: validLine.bounds, baseline: validLine.baseline,
+                        clip: validLine.clip, glyphCount: validLine.glyphCount)
+                ], glyphs: $0.glyphs)
+        },
+        replacingTextRecord(in: validLayout) {
+            LayoutFixtureRecord(
+                identity: $0.identity, bounds: $0.bounds, clip: $0.clip, lines: $0.lines,
+                glyphs: [
+                    ResolvedRenderGlyph(
+                        lineIndex: 1, glyphIndex: 0, instance: validGlyph.instance,
+                        glyph: validGlyph.glyph, baseline: validGlyph.baseline,
+                        clip: validGlyph.clip), $0.glyphs[1],
+                ])
+        },
+        replacingTextRecord(in: validLayout) {
+            LayoutFixtureRecord(
+                identity: $0.identity, bounds: $0.bounds, clip: $0.clip, lines: $0.lines,
+                glyphs: [
+                    ResolvedRenderGlyph(
+                        lineIndex: 0, glyphIndex: 1, instance: validGlyph.instance,
+                        glyph: validGlyph.glyph, baseline: validGlyph.baseline,
+                        clip: validGlyph.clip), $0.glyphs[1],
+                ])
+        },
+        DirectResolvedRenderLayoutView(
+            rootIdentity: validLayout.rootIdentity, layoutScopeCount: 1, renderSnapshotVersion: 1,
+            rootBounds: validLayout.rootBounds, records: validLayout.records),
+        DirectResolvedRenderLayoutView(
+            rootIdentity: validLayout.rootIdentity, layoutScopeCount: 3, renderSnapshotVersion: 1,
+            rootBounds: validLayout.rootBounds, records: validLayout.records),
+    ]
+    let structure = RenderWorkspaceCapacity(
+        maximumSemanticScopes: 6, maximumLayoutScopes: 3, maximumTraversalDepth: 6,
+        maximumTextLines: 2)!
+
+    for semantic in semanticMismatches {
+        var workspace = PreflightWorkspace<RenderFixtureIdentity>(structuralCapacity: structure)
+        var sink = StreamingSink()
+        let result = RenderProducer.produce(
+            semantic: semantic, layout: validLayout, textMetrics: PreflightMetrics(),
+            surfaceBounds: DirectRenderFixtures.bounds, damageMode: .rootIntersection,
+            rootForeground: .white, limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+            workspace: &workspace, sink: &sink)
+        #expect(result == .failure(.invariantViolation))
+        #expect(sink.operationCallCount == 0)
+        #expect(sink.discardCount == 0)
+        #expect(workspace.resetCount == 1)
+    }
+    for layout in layoutMismatches {
+        var workspace = PreflightWorkspace<RenderFixtureIdentity>(structuralCapacity: structure)
+        var sink = StreamingSink()
+        let result = RenderProducer.produce(
+            semantic: validSemantic, layout: layout, textMetrics: PreflightMetrics(),
+            surfaceBounds: DirectRenderFixtures.bounds, damageMode: .rootIntersection,
+            rootForeground: .white, limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+            workspace: &workspace, sink: &sink)
+        #expect(result == .failure(.invariantViolation))
+        #expect(sink.operationCallCount == 0)
+        #expect(sink.discardCount == 0)
+        #expect(workspace.resetCount == 1)
+    }
+}
+
+@Test
+func everyIndependentRenderAndStructuralCapacityFailsOneOverBeforeBegin() {
+    let defaultLimits = PreflightWorkspace<RenderFixtureIdentity>.limits
+    let defaultStructure = PreflightWorkspace<RenderFixtureIdentity>.structure
+    let defaultSink = RenderSinkCapacity(maximumOperations: 2, maximumPositionedGlyphs: 2)
+    let original = DirectRenderFixtures.validLayout
+    let twoLineLayout = replacingTextRecord(in: original) { record in
+        let first = record.glyphs[0]!
+        let second = record.glyphs[1]!
+        return LayoutFixtureRecord(
+            identity: record.identity,
+            bounds: record.bounds,
+            clip: record.clip,
+            lines: [
+                ResolvedRenderTextLine(
+                    lineIndex: 0, bounds: record.bounds!, baseline: first.baseline,
+                    clip: record.clip!, glyphCount: 1),
+                ResolvedRenderTextLine(
+                    lineIndex: 1, bounds: record.bounds!, baseline: second.baseline,
+                    clip: record.clip!, glyphCount: 1),
+            ],
+            glyphs: [
+                ResolvedRenderGlyph(
+                    lineIndex: 0, glyphIndex: 0, instance: first.instance, glyph: first.glyph,
+                    baseline: first.baseline, clip: first.clip),
+                ResolvedRenderGlyph(
+                    lineIndex: 1, glyphIndex: 1, instance: second.instance, glyph: second.glyph,
+                    baseline: second.baseline, clip: second.clip),
+            ]
+        )
+    }
+    let cases:
+        [(
+            RenderLimits, RenderLimits, RenderWorkspaceCapacity, RenderSinkCapacity,
+            DirectResolvedRenderLayoutView
+        )] = [
+            (
+                RenderLimits(
+                    maximumOperations: 1, maximumPositionedGlyphs: 2, maximumClipDepth: 2)!,
+                defaultLimits, defaultStructure, defaultSink, original
+            ),
+            (
+                RenderLimits(
+                    maximumOperations: 2, maximumPositionedGlyphs: 1, maximumClipDepth: 2)!,
+                defaultLimits, defaultStructure, defaultSink, original
+            ),
+            (
+                RenderLimits(
+                    maximumOperations: 2, maximumPositionedGlyphs: 2, maximumClipDepth: 1)!,
+                defaultLimits, defaultStructure, defaultSink, original
+            ),
+            (
+                defaultLimits,
+                RenderLimits(
+                    maximumOperations: 1, maximumPositionedGlyphs: 2, maximumClipDepth: 2)!,
+                defaultStructure, defaultSink, original
+            ),
+            (
+                defaultLimits, defaultLimits,
+                RenderWorkspaceCapacity(
+                    maximumSemanticScopes: 5, maximumLayoutScopes: 1, maximumTraversalDepth: 5,
+                    maximumTextLines: 1)!, defaultSink, original
+            ),
+            (
+                defaultLimits, defaultLimits,
+                RenderWorkspaceCapacity(
+                    maximumSemanticScopes: 5, maximumLayoutScopes: 2, maximumTraversalDepth: 5,
+                    maximumTextLines: 1)!, defaultSink, twoLineLayout
+            ),
+            (
+                defaultLimits, defaultLimits, defaultStructure,
+                RenderSinkCapacity(maximumOperations: 2, maximumPositionedGlyphs: 1), original
+            ),
+        ]
+
+    for (limits, capacity, structure, sinkCapacity, layout) in cases {
+        var workspace = PreflightWorkspace<RenderFixtureIdentity>(
+            capacity: capacity, structuralCapacity: structure)
+        var sink = StreamingSink(capacity: sinkCapacity)
+        let result = RenderProducer.produce(
+            semantic: DirectRenderFixtures.validSemantic,
+            layout: layout,
+            textMetrics: PreflightMetrics(),
+            surfaceBounds: DirectRenderFixtures.bounds,
+            damageMode: .rootIntersection,
+            rootForeground: .white,
+            limits: limits,
+            workspace: &workspace,
+            sink: &sink
+        )
+        #expect(result == .failure(.capacityExhausted))
+        #expect(sink.operationCallCount == 0)
+        #expect(sink.discardCount == 0)
+        #expect(workspace.resetCount == 1)
+    }
+}
+
+@Test
 func streamingRepeatsCanonicalLookupsAndEmitsTheExactOrderedValues() {
     var workspace = PreflightWorkspace<RenderFixtureIdentity>()
     let acquired = workspace.acquire()
@@ -895,6 +1115,34 @@ private func replacingTextRecord(
             record.identity == .text ? transform(record) : record
         }
     )
+}
+
+private func replacingSemanticRecord(
+    in semantic: DirectSemanticRenderView,
+    identity: RenderFixtureIdentity,
+    transform: (SemanticFixtureRecord) -> SemanticFixtureRecord
+) -> DirectSemanticRenderView {
+    DirectSemanticRenderView(
+        rootIdentity: semantic.rootIdentity,
+        semanticScopeCount: semantic.semanticScopeCount,
+        renderSnapshotVersion: semantic.renderSnapshotVersion,
+        records: semantic.records.map { $0.identity == identity ? transform($0) : $0 }
+    )
+}
+
+private func replacingSemanticChildren(
+    of identity: RenderFixtureIdentity,
+    with children: [RenderFixtureIdentity],
+    in semantic: DirectSemanticRenderView
+) -> DirectSemanticRenderView {
+    replacingSemanticRecord(in: semantic, identity: identity) { record in
+        SemanticFixtureRecord(
+            identity: record.identity,
+            scope: record.scope,
+            layoutIdentity: record.layoutIdentity,
+            children: children
+        )
+    }
 }
 
 @Test
@@ -1982,17 +2230,21 @@ private final class StreamingSinkCounter {
 }
 
 private struct StreamingSink: RenderOperationSink {
-    let reportedCapacity = RenderSinkCapacity(
-        maximumOperations: .max,
-        maximumPositionedGlyphs: .max
-    )
+    let reportedCapacity: RenderSinkCapacity
     let refuseAtOperationCall: UInt16?
     private let counter = StreamingSinkCounter()
     private(set) var operationCallCount: UInt16 = 0
     private(set) var discardCount: UInt16 = 0
     private(set) var events: [StreamingEvent] = []
 
-    init(refuseAtOperationCall: UInt16? = nil) {
+    init(
+        capacity: RenderSinkCapacity = RenderSinkCapacity(
+            maximumOperations: .max,
+            maximumPositionedGlyphs: .max
+        ),
+        refuseAtOperationCall: UInt16? = nil
+    ) {
+        reportedCapacity = capacity
         self.refuseAtOperationCall = refuseAtOperationCall
     }
 
