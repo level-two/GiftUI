@@ -67,6 +67,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-008-render-streaming.rb" \
             "$SCRIPT_DIR/check-spec-008-render-producer-lifecycle.rb" \
             "$SCRIPT_DIR/check-spec-008-render-failure-adapter.rb" \
+            "$SCRIPT_DIR/check-spec-008-painter-order.rb" \
             "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb" \
             "$SCRIPT_DIR/check-spec-008-recording-sink.rb" \
             "$SCRIPT_DIR/check-spec-008-recording-verification.rb" \
@@ -260,6 +261,8 @@ record_command "$SCRIPT_DIR/check-spec-008-render-producer-lifecycle.rb"
 "$SCRIPT_DIR/check-spec-008-render-producer-lifecycle.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-render-failure-adapter.rb"
 "$SCRIPT_DIR/check-spec-008-render-failure-adapter.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-008-painter-order.rb"
+"$SCRIPT_DIR/check-spec-008-painter-order.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb"
 "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-recording-sink.rb"

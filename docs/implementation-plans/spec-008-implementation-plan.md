@@ -425,7 +425,7 @@ rule and every failure boundary without rasterization or frame state.
       content subtree, with outer-before-inner modifier order, exact unclipped
       resolved bounds, final checked clip, and omission only for zero-area
       bounds or empty final clips.
-- [ ] `T5.2` — Implement source-order sibling and back-to-front ZStack painter
+- [x] `T5.2` — Implement source-order sibling and back-to-front ZStack painter
       traversal without sorting, coalescing, batching across intervening
       operations, resource/color reordering, or opaque-overdraw elimination.
       Stream one positioned-glyph group per non-empty line in occurrence-wide
@@ -972,7 +972,18 @@ tests exhaust the mapping, while the source and package audits prove that
 lowering imports no failure module and the pure adapter contains no diagnostic,
 allocation, or second-production path; see the
 [failure-adapter evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-4/render-failure-adapter.md).
-`T5.1` is the next dependency-complete task.
+`T5.1` remains open because its caller-owned foreground-stack requirement
+cannot be expressed by the approved exact `RenderProductionWorkspace`
+protocol. Adding workspace storage operations is a contract change and needs a
+reviewed Specification amendment before implementation.
+
+`T5.2` is complete independently of the unresolved T5.1 workspace-storage
+seam. A direct-view golden proves source-order structural children, both opaque
+backgrounds around intervening text without elimination or reordering, and one
+whole positioned-glyph group per non-empty line with occurrence-wide indices;
+see the
+[painter-order evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-5/painter-order.md).
+`T5.3` is the next independent dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

@@ -319,6 +319,222 @@ func streamingRepeatsCanonicalLookupsAndEmitsTheExactOrderedValues() {
 }
 
 @Test
+func sourceOrderChildrenPaintBackToFrontWithoutOpaqueEliminationAndLinesStayGrouped() {
+    let bounds = DirectRenderFixtures.bounds
+    let instance = DirectRenderFixtures.instance
+    let semantic = DirectSemanticRenderView(
+        rootIdentity: .root,
+        semanticScopeCount: 6,
+        renderSnapshotVersion: 1,
+        records: [
+            SemanticFixtureRecord(
+                identity: .root,
+                scope: .structural,
+                layoutIdentity: .root,
+                children: [.background, .text, .foreground]
+            ),
+            SemanticFixtureRecord(
+                identity: .background,
+                scope: .background(.green),
+                layoutIdentity: .background,
+                children: [.transparent]
+            ),
+            SemanticFixtureRecord(
+                identity: .transparent,
+                scope: .structural,
+                layoutIdentity: .transparent,
+                children: []
+            ),
+            SemanticFixtureRecord(
+                identity: .text,
+                scope: .text,
+                layoutIdentity: .text,
+                children: []
+            ),
+            SemanticFixtureRecord(
+                identity: .foreground,
+                scope: .background(.blue),
+                layoutIdentity: .foreground,
+                children: [.alternate]
+            ),
+            SemanticFixtureRecord(
+                identity: .alternate,
+                scope: .structural,
+                layoutIdentity: .alternate,
+                children: []
+            ),
+        ]
+    )
+    let emptyLineBounds = Rect(
+        origin: Point(x: 0, y: 10),
+        size: Size(width: 0, height: 0)!
+    )!
+    let layout = DirectResolvedRenderLayoutView(
+        rootIdentity: .root,
+        layoutScopeCount: 6,
+        renderSnapshotVersion: 1,
+        rootBounds: bounds,
+        records: [
+            LayoutFixtureRecord(
+                identity: .root,
+                bounds: bounds,
+                clip: bounds,
+                lines: [],
+                glyphs: []
+            ),
+            LayoutFixtureRecord(
+                identity: .background,
+                bounds: bounds,
+                clip: bounds,
+                lines: [],
+                glyphs: []
+            ),
+            LayoutFixtureRecord(
+                identity: .transparent,
+                bounds: bounds,
+                clip: bounds,
+                lines: [],
+                glyphs: []
+            ),
+            LayoutFixtureRecord(
+                identity: .text,
+                bounds: bounds,
+                clip: bounds,
+                lines: [
+                    ResolvedRenderTextLine(
+                        lineIndex: 0,
+                        bounds: bounds,
+                        baseline: Point(x: 1, y: 8),
+                        clip: bounds,
+                        glyphCount: 2
+                    ),
+                    ResolvedRenderTextLine(
+                        lineIndex: 1,
+                        bounds: emptyLineBounds,
+                        baseline: Point(x: 1, y: 12),
+                        clip: bounds,
+                        glyphCount: 0
+                    ),
+                    ResolvedRenderTextLine(
+                        lineIndex: 2,
+                        bounds: bounds,
+                        baseline: Point(x: 1, y: 16),
+                        clip: bounds,
+                        glyphCount: 1
+                    ),
+                ],
+                glyphs: [
+                    ResolvedRenderGlyph(
+                        lineIndex: 0,
+                        glyphIndex: 0,
+                        instance: instance,
+                        glyph: GlyphID(rawValue: 0),
+                        baseline: Point(x: 1, y: 8),
+                        clip: bounds
+                    ),
+                    ResolvedRenderGlyph(
+                        lineIndex: 0,
+                        glyphIndex: 1,
+                        instance: instance,
+                        glyph: GlyphID(rawValue: 1),
+                        baseline: Point(x: 5, y: 8),
+                        clip: bounds
+                    ),
+                    ResolvedRenderGlyph(
+                        lineIndex: 2,
+                        glyphIndex: 2,
+                        instance: instance,
+                        glyph: GlyphID(rawValue: 2),
+                        baseline: Point(x: 1, y: 16),
+                        clip: bounds
+                    ),
+                ]
+            ),
+            LayoutFixtureRecord(
+                identity: .foreground,
+                bounds: bounds,
+                clip: bounds,
+                lines: [],
+                glyphs: []
+            ),
+            LayoutFixtureRecord(
+                identity: .alternate,
+                bounds: bounds,
+                clip: bounds,
+                lines: [],
+                glyphs: []
+            ),
+        ]
+    )
+    let limits = RenderLimits(
+        maximumOperations: 4,
+        maximumPositionedGlyphs: 3,
+        maximumClipDepth: 2
+    )!
+    let structure = RenderWorkspaceCapacity(
+        maximumSemanticScopes: 6,
+        maximumLayoutScopes: 6,
+        maximumTraversalDepth: 3,
+        maximumTextLines: 3
+    )!
+    var workspace = PreflightWorkspace<RenderFixtureIdentity>(
+        capacity: limits,
+        structuralCapacity: structure
+    )
+    var sink = StreamingSink()
+
+    let result = RenderProducer.produce(
+        semantic: semantic,
+        layout: layout,
+        textMetrics: PreflightMetrics(),
+        surfaceBounds: bounds,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: limits,
+        workspace: &workspace,
+        sink: &sink
+    )
+    let header = RenderPlanHeader(
+        surfaceBounds: bounds,
+        damageBounds: bounds,
+        operationCount: 4,
+        positionedGlyphCount: 3,
+        maximumObservedClipDepth: 2
+    )
+
+    #expect(result == .success(header))
+    #expect(
+        sink.events == [
+            .begin(header),
+            .fill(FillRectOperation(bounds: bounds, clip: bounds, color: .green)),
+            .beginGlyphs(
+                PositionedGlyphOperationHeader(
+                    instance: instance,
+                    clip: bounds,
+                    color: .white,
+                    glyphCount: 2
+                )
+            ),
+            .glyph(PositionedGlyph(glyph: GlyphID(rawValue: 0), baseline: Point(x: 1, y: 8))),
+            .glyph(PositionedGlyph(glyph: GlyphID(rawValue: 1), baseline: Point(x: 5, y: 8))),
+            .endGlyphs,
+            .beginGlyphs(
+                PositionedGlyphOperationHeader(
+                    instance: instance,
+                    clip: bounds,
+                    color: .white,
+                    glyphCount: 1
+                )
+            ),
+            .glyph(PositionedGlyph(glyph: GlyphID(rawValue: 2), baseline: Point(x: 1, y: 16))),
+            .endGlyphs,
+            .fill(FillRectOperation(bounds: bounds, clip: bounds, color: .blue)),
+            .finish,
+        ]
+    )
+}
+
+@Test
 func streamingDistinguishesBeginRefusalFromPostBeginInvariantFailure() {
     let semantic = DirectRenderFixtures.validSemantic
     let layout = DirectRenderFixtures.validLayout
