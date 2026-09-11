@@ -3,9 +3,11 @@ import GiftUISemanticCore
 import GiftUITextResources
 
 package struct LayoutSemanticValidation {
+    private let limits: LayoutLimits
     private var counters: LayoutCounters
 
     package init(limits: LayoutLimits) {
+        self.limits = limits
         counters = LayoutCounters(limits: limits)
     }
 
@@ -21,7 +23,9 @@ package struct LayoutSemanticValidation {
         Semantic.Identity == Workspace.Identity
     {
         let expectedScopeCount = semantic.scopeCount
-        guard expectedScopeCount <= workspace.maximumScopes else {
+        guard expectedScopeCount <= limits.maximumScopes,
+            expectedScopeCount <= workspace.maximumScopes
+        else {
             return .capacityExhausted
         }
 

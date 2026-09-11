@@ -326,7 +326,7 @@ replaceable realization described by the
       profile-private fixture workspaces with all five preflight capacities,
       bounded identity-indexed measurement/placement storage, and explicit
       acquire/reset operations.
-- [ ] `T3.3` — Implement checked global scope/depth/scalar/line/glyph counters,
+- [x] `T3.3` — Implement checked global scope/depth/scalar/line/glyph counters,
       equality-at-limit success, one-over pre-reservation failure, declared
       scope-count agreement, preflight agreement between all five limits and
       reported workspace capacities, semantic in-range lookup validation,
@@ -783,17 +783,20 @@ borrow surface for `armv7em-none-none-eabi`, verifies ARMv7E-M hard-float
 attributes, and inspects its symbol closure for allocation calls and
 prohibited layout/render/runtime/backend/platform dependencies.
 
-`T3.3` is in progress: `GiftUILayout` now has one fixed-width counter set for
-all five global limits. It accepts equality at each limit, rejects the next
-reservation without changing the admitted count, tracks balanced active depth
-and its high-water, validates the declared scope total, and retains the first
-failure. The generic entry now also validates in-range child, modifier, and
-text-scalar access; transparent root and modifier cardinality; closed public
-payload values and relations; Unicode scalar validity; canonical instance,
-mapping, and metric availability; explicit line counts; and scalar/glyph
-reservation before lookup. Proposal-dependent wrapped-line reservation and
-the exact integrated first-failure corpus remain before this task can be
-marked complete.
+`T3.3` is complete: `GiftUILayout` has one fixed-width counter set for all five
+global limits. It accepts equality at each limit, rejects the next reservation
+without changing the admitted count, tracks balanced active depth and its
+high-water, validates the declared scope total, and retains the first failure.
+The generic entry snapshots and compares all five workspace capacities before
+acquisition or semantic inspection. Semantic validation rejects a declared
+scope total above the call limit before reading the root, validates in-range
+child/modifier/scalar access, transparent root and modifier cardinality,
+closed public payload values and relations, Unicode scalars, exact canonical
+instance/mapping/metric availability, and explicit line counts. Focused probes
+prove scope, scalar, explicit-line, and glyph reservation failures occur before
+the prohibited append, later scalar lookup, or mapping lookup. T5.1-T5.2 will
+use the same global line counter when proposal-dependent wrapping is measured;
+that text algorithm does not change this completed admission foundation.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-007 conforms or is `implemented`. The conformance report remains

@@ -108,6 +108,31 @@ func layoutEntryRetainsNeitherTheSemanticViewNorItsSourceLifetime() {
     #expect(releasedToken == nil)
 }
 
+@Test(arguments: [0, 1, 2, 3, 4])
+func everyWorkspaceCapacityFailsBeforeAcquisitionOrInput(_ capacityIndex: Int) {
+    let semantic = ProbeSemanticView()
+    let metrics = ProbeMetricsView()
+    var capacities = [UInt16](repeating: 5, count: 5)
+    capacities[capacityIndex] = 4
+    var workspace = ProbeWorkspace(capacities: capacities)
+    var sink = ProbeSink()
+
+    let result = layout(
+        semantic: semantic,
+        metrics: metrics,
+        proposal: ProposedSize()!,
+        limits: limits(),
+        workspace: &workspace,
+        sink: &sink
+    )
+
+    #expect(result == .failure(.capacityExhausted))
+    #expect(semantic.accessCount == 0)
+    #expect(metrics.accessCount == 0)
+    #expect(workspace.acquireCount == 0)
+    #expect(sink.beginCount == 0)
+}
+
 private func limits() -> LayoutLimits {
     LayoutLimits(
         maximumScopes: 5,
@@ -267,18 +292,26 @@ private struct ProbeMetricsView: CanonicalTextMetricsView {
 }
 
 private struct ProbeWorkspace: LayoutWorkspace {
-    let maximumScopes: UInt16 = 5
-    let maximumDepth: UInt16 = 5
-    let maximumTextScalars: UInt16 = 5
-    let maximumTextLines: UInt16 = 5
-    let maximumPositionedGlyphs: UInt16 = 5
+    let maximumScopes: UInt16
+    let maximumDepth: UInt16
+    let maximumTextScalars: UInt16
+    let maximumTextLines: UInt16
+    let maximumPositionedGlyphs: UInt16
     var isLayoutActive = false
     var acquireCount = 0
     private var scopes: [(UInt16, LayoutMeasurement, LayoutPlacement?)] = []
     private var depth: [UInt16] = []
 
-    init(isLayoutActive: Bool = false) {
+    init(
+        isLayoutActive: Bool = false,
+        capacities: [UInt16] = [5, 5, 5, 5, 5]
+    ) {
         self.isLayoutActive = isLayoutActive
+        maximumScopes = capacities[0]
+        maximumDepth = capacities[1]
+        maximumTextScalars = capacities[2]
+        maximumTextLines = capacities[3]
+        maximumPositionedGlyphs = capacities[4]
     }
 
     mutating func acquireLayout() -> Bool {

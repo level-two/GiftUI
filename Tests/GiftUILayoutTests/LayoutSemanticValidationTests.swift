@@ -76,6 +76,100 @@ func textScalarLimitFailsBeforeTheOneOverLookup() {
     #expect(accesses.indices == [0])
 }
 
+@Test
+func declaredScopeLimitFailsBeforeRootOrOccurrenceInspection() {
+    let accesses = SemanticAccesses()
+    let semantic = ScopeLimitSemanticView(accesses: accesses)
+    let limits = LayoutLimits(
+        maximumScopes: 1,
+        maximumDepth: 1,
+        maximumTextScalars: 1,
+        maximumTextLines: 1,
+        maximumPositionedGlyphs: 1
+    )!
+    var workspace = ValidationWorkspace(maximum: 2)
+    let acquired = workspace.acquireLayout()
+    #expect(acquired)
+    var validation = LayoutSemanticValidation(limits: limits)
+
+    #expect(
+        validation.validate(
+            semantic: semantic,
+            metrics: ValidationMetricsView(),
+            workspace: &workspace
+        ) == .capacityExhausted
+    )
+    #expect(accesses.rootCount == 0)
+    #expect(accesses.occurrenceCount == 0)
+}
+
+@Test
+func explicitLineLimitFailsAtTheBreakBeforeLaterScalarLookup() {
+    let accesses = ScalarAccesses()
+    let semantic = ValidationSemanticView(
+        scopeCount: 1,
+        records: [
+            ValidationRecord(
+                identity: 1,
+                primitive: .text,
+                scalars: [0x41, 0x0a, 0x42]
+            )
+        ],
+        scalarAccesses: accesses
+    )
+    let limits = LayoutLimits(
+        maximumScopes: 4,
+        maximumDepth: 4,
+        maximumTextScalars: 4,
+        maximumTextLines: 1,
+        maximumPositionedGlyphs: 4
+    )!
+    var workspace = ValidationWorkspace(maximum: 4)
+    let acquired = workspace.acquireLayout()
+    #expect(acquired)
+    var validation = LayoutSemanticValidation(limits: limits)
+
+    #expect(
+        validation.validate(
+            semantic: semantic,
+            metrics: ValidationMetricsView(),
+            workspace: &workspace
+        ) == .capacityExhausted
+    )
+    #expect(accesses.indices == [0, 1])
+}
+
+@Test
+func positionedGlyphLimitFailsBeforeTheOneOverMappingLookup() {
+    let accesses = MappingAccesses()
+    let semantic = ValidationSemanticView(
+        scopeCount: 1,
+        records: [
+            ValidationRecord(identity: 1, primitive: .text, scalars: [0x41, 0x42])
+        ]
+    )
+    let limits = LayoutLimits(
+        maximumScopes: 4,
+        maximumDepth: 4,
+        maximumTextScalars: 4,
+        maximumTextLines: 4,
+        maximumPositionedGlyphs: 1
+    )!
+    var workspace = ValidationWorkspace(maximum: 4)
+    let acquired = workspace.acquireLayout()
+    #expect(acquired)
+    var validation = LayoutSemanticValidation(limits: limits)
+
+    #expect(
+        validation.validate(
+            semantic: semantic,
+            metrics: ValidationMetricsView(mappingAccesses: accesses),
+            workspace: &workspace
+        ) == .capacityExhausted
+    )
+    #expect(accesses.scalars == [0x41])
+}
+
 private func validate(
     _ semantic: ValidationSemanticView,
     maximum: UInt16 = 8
@@ -102,6 +196,69 @@ private func validate(
 
 private final class ScalarAccesses: @unchecked Sendable {
     var indices: [UInt16] = []
+}
+
+private final class SemanticAccesses: @unchecked Sendable {
+    var rootCount = 0
+    var occurrenceCount = 0
+}
+
+private final class MappingAccesses: @unchecked Sendable {
+    var scalars: [UInt32] = []
+}
+
+private struct ScopeLimitSemanticView: SemanticLayoutView {
+    let accesses: SemanticAccesses
+
+    var rootIdentity: UInt16 {
+        accesses.rootCount += 1
+        return 1
+    }
+
+    var scopeCount: UInt16 { 2 }
+
+    func primitive(at identity: UInt16) -> SemanticLayoutPrimitive? {
+        accesses.occurrenceCount += 1
+        return .spacer(minLength: 0)
+    }
+
+    func childCount(of identity: UInt16) -> UInt16? {
+        accesses.occurrenceCount += 1
+        return 0
+    }
+
+    func child(of identity: UInt16, at index: UInt16) -> UInt16? {
+        accesses.occurrenceCount += 1
+        return nil
+    }
+
+    func modifierCount(of identity: UInt16) -> UInt16? {
+        accesses.occurrenceCount += 1
+        return 0
+    }
+
+    func modifierScope(of identity: UInt16, at index: UInt16) -> UInt16? {
+        accesses.occurrenceCount += 1
+        return nil
+    }
+
+    func modifier(
+        of identity: UInt16,
+        at index: UInt16
+    ) -> SemanticLayoutModifier? {
+        accesses.occurrenceCount += 1
+        return nil
+    }
+
+    func textScalarCount(of identity: UInt16) -> UInt16? {
+        accesses.occurrenceCount += 1
+        return nil
+    }
+
+    func textScalar(of identity: UInt16, at index: UInt16) -> UInt32? {
+        accesses.occurrenceCount += 1
+        return nil
+    }
 }
 
 private struct ValidationRecord {
@@ -198,8 +355,10 @@ private struct ValidationSemanticView: SemanticLayoutView {
 
 private struct ValidationMetricsView: CanonicalTextMetricsView {
     let instanceValue: FontInstanceDescriptor
+    let mappingAccesses: MappingAccesses?
 
-    init() {
+    init(mappingAccesses: MappingAccesses? = nil) {
+        self.mappingAccesses = mappingAccesses
         let resource = FontResourceID(
             rawValue: TextResourceDigest(
                 word0: 0,
@@ -246,7 +405,9 @@ private struct ValidationMetricsView: CanonicalTextMetricsView {
         _ scalarValue: UInt32,
         in instance: FontInstanceID
     ) -> GlyphMapping? {
-        instance == instanceValue.id ? .exact(GlyphID(rawValue: 0)) : nil
+        mappingAccesses?.scalars.append(scalarValue)
+        return instance == instanceValue.id
+            ? GlyphMapping.exact(GlyphID(rawValue: 0)) : nil
     }
 
     func metrics(

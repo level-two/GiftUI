@@ -145,6 +145,13 @@ current. Equality at the limit succeeds. The traversal stack is the sole
 source of observed depth; the first layout scope below the semantic root is
 depth one.
 
+The five workspace capacities are read and compared with the five call limits
+before acquisition or semantic access. After acquisition, the semantic view's
+declared scope count is compared with the scope limit before the root identity
+is read. Scalar, explicit-line, and glyph reservations precede their
+corresponding semantic or metrics lookup. The later canonical text algorithm
+uses the same line counter for proposal-dependent wrapped lines.
+
 ## Lifecycle and State
 
 Workspace state is either idle or acquired. Sink state is queried separately
