@@ -137,6 +137,7 @@ let package = Package(
             dependencies: [
                 "GiftUI",
                 "GiftUILayout",
+                "GiftUIReferenceTextResources",
                 "GiftUISemanticCore",
                 "GiftUITextResources",
             ]

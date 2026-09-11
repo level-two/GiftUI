@@ -201,7 +201,9 @@ package struct LayoutEngine {
         guard metrics.descriptor.instanceCount == 1,
             let instance = metrics.instance(at: 0),
             metrics.instance(at: 1) == nil,
-            let scalarCount = semantic.textScalarCount(of: identity),
+            let scalarCount = semantic.textScalarCount(of: identity)
+        else { return fail(.invariantViolation) }
+        guard
             let lineHeight = GeometryArithmetic.add(
                 instance.lineMetrics.ascent,
                 instance.lineMetrics.descent
@@ -209,10 +211,11 @@ package struct LayoutEngine {
             let baselineProgression = GeometryArithmetic.add(
                 lineHeight,
                 instance.lineMetrics.lineGap
-            ),
-            lineHeight >= 0,
-            baselineProgression >= 0
-        else { return fail(.invariantViolation) }
+            )
+        else { return fail(.arithmeticOverflow) }
+        guard lineHeight >= 0, baselineProgression >= 0 else {
+            return fail(.invariantViolation)
+        }
 
         if let error = counters.reserveTextLine() { return fail(error) }
         var localLineIndex: UInt16 = 0
@@ -284,12 +287,14 @@ package struct LayoutEngine {
                     let glyphMetrics = metrics.metrics(
                         for: glyph,
                         in: instance.id
-                    ), glyphMetrics.advanceX >= 0,
+                    ), glyphMetrics.advanceX >= 0
+                else { return fail(.invariantViolation) }
+                guard
                     let prospectiveAdvance = GeometryArithmetic.add(
                         currentAdvance,
                         glyphMetrics.advanceX
                     )
-                else { return fail(.invariantViolation) }
+                else { return fail(.arithmeticOverflow) }
                 let wraps =
                     currentHasGlyph
                     && proposal.width.map {
@@ -329,12 +334,14 @@ package struct LayoutEngine {
                             baseline: Point(x: currentAdvance, y: baselineY),
                             clip: zeroRect
                         )
-                    ), let nextGlyph = increment(localGlyphIndex),
+                    ), let nextGlyph = increment(localGlyphIndex)
+                else { return fail(failure ?? .invariantViolation) }
+                guard
                     let nextAdvance = GeometryArithmetic.add(
                         currentAdvance,
                         glyphMetrics.advanceX
                     )
-                else { return fail(.invariantViolation) }
+                else { return fail(.arithmeticOverflow) }
                 localGlyphIndex = nextGlyph
                 currentAdvance = nextAdvance
                 currentHasGlyph = true

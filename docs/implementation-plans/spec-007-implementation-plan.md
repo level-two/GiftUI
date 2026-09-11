@@ -407,7 +407,7 @@ text from Semantic Core scalar access and the sole validated MVP instance.
       indices excluding breaks; derive text, line, and glyph clips through the
       exact intersections; and stage all logical content even when a clip is
       empty or height-only clipping hides it.
-- [ ] `T5.4` — Build SPEC-005-backed goldens for ASCII, degree sign,
+- [x] `T5.4` — Build SPEC-005-backed goldens for ASCII, degree sign,
       replacement glyph, CR/LF/CRLF, empty content, all wrapping modes,
       zero-width, first/later baselines, line gaps, trailing/consecutive empty
       lines, over-wide first glyphs, clipping, height caps, and every checked

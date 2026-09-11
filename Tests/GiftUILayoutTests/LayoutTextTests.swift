@@ -1,4 +1,5 @@
 import GiftUI
+import GiftUIReferenceTextResources
 import GiftUISemanticCore
 import GiftUITextResources
 import Testing
@@ -147,6 +148,43 @@ func heightCapRetainsHiddenLinesAndProducesExactEmptyClips() {
     #expect(output.glyphs[1].clip == output.lines[1].clip)
 }
 
+@Test
+func spec005ReferenceMetricsProduceCanonicalResourceGolden() {
+    let metrics = GiftUIReferenceTextResources.targetPackage.metrics
+    let output = runTextLayoutWithMetrics(
+        scalars: [0x41, 0x00b0, 0x2603],
+        proposal: ProposedSize()!,
+        modifiers: [],
+        metrics: metrics
+    )
+    let instance = metrics.instance(at: 0)!
+
+    #expect(output.summary?.rootBounds.size == Size(width: 29, height: 20)!)
+    #expect(output.lines[0].baseline == Point(x: 0, y: 16))
+    #expect(output.glyphs.map { $0.glyph.rawValue } == [1, 96, 0])
+    #expect(output.glyphs.map { $0.baseline.x } == [0, 11, 18])
+    #expect(output.glyphs.allSatisfy { $0.instance == instance.id })
+    #expect(instance.id.instanceIndex == 0)
+    #expect(instance.id.resource == metrics.descriptor.resource)
+}
+
+@Test(arguments: [OverflowTextMetrics.Mode.lineHeight, .glyphAdvance])
+private func canonicalTextReportsCheckedArithmeticOverflow(
+    _ mode: OverflowTextMetrics.Mode
+) {
+    let output = runTextLayoutWithMetrics(
+        scalars: mode == .glyphAdvance ? [0x41, 0x41] : [],
+        proposal: ProposedSize()!,
+        modifiers: [],
+        metrics: OverflowTextMetrics(mode: mode)
+    )
+
+    #expect(output.result == .failure(.arithmeticOverflow))
+    #expect(output.summary == nil)
+    #expect(output.lines.isEmpty)
+    #expect(output.glyphs.isEmpty)
+}
+
 struct CapturedTextLine: Equatable {
     let identity: UInt16
     let lineIndex: UInt16
@@ -278,6 +316,53 @@ private struct TextMetricsView: CanonicalTextMetricsView {
     }
 }
 
+private struct OverflowTextMetrics: CanonicalTextMetricsView {
+    enum Mode: CaseIterable, Equatable {
+        case lineHeight
+        case glyphAdvance
+    }
+
+    let mode: Mode
+    var descriptor: TextResourceDescriptor { TextMetricsView().descriptor }
+
+    func instance(at index: UInt16) -> FontInstanceDescriptor? {
+        guard index == 0 else { return nil }
+        return FontInstanceDescriptor(
+            id: textInstanceID,
+            lineMetrics: mode == .lineHeight
+                ? FontLineMetrics(ascent: .max, descent: 1, lineGap: 0)
+                : FontLineMetrics(ascent: 7, descent: 3, lineGap: 2),
+            replacementGlyph: GlyphID(rawValue: 9),
+            glyphCount: 10,
+            mappingCount: 1
+        )
+    }
+
+    func mapping(
+        at index: UInt16,
+        in instance: FontInstanceID
+    ) -> ScalarGlyphMappingRecord? { nil }
+
+    func mapScalar(
+        _ scalarValue: UInt32,
+        in instance: FontInstanceID
+    ) -> GlyphMapping? {
+        .exact(GlyphID(rawValue: 1))
+    }
+
+    func metrics(
+        for glyph: GlyphID,
+        in instance: FontInstanceID
+    ) -> GlyphMetrics? {
+        GlyphMetrics(
+            advanceX: .max,
+            offsetX: 0,
+            offsetY: 0,
+            inkSize: Size(width: 0, height: 0)!
+        )
+    }
+}
+
 private struct TextSink: LayoutResultSink, LayoutResultSinkState {
     var isLayoutActive = false
     var summary: LayoutSummary?
@@ -362,11 +447,30 @@ func runTextLayout(
     lines: [CapturedTextLine],
     glyphs: [CapturedTextGlyph]
 ) {
+    runTextLayoutWithMetrics(
+        scalars: scalars,
+        proposal: proposal,
+        modifiers: modifiers,
+        metrics: TextMetricsView()
+    )
+}
+
+private func runTextLayoutWithMetrics<Metrics: CanonicalTextMetricsView>(
+    scalars: [UInt32],
+    proposal: ProposedSize,
+    modifiers: [SemanticLayoutModifier],
+    metrics: Metrics
+) -> (
+    result: LayoutResult,
+    summary: LayoutSummary?,
+    lines: [CapturedTextLine],
+    glyphs: [CapturedTextGlyph]
+) {
     var workspace = ProbeWorkspace(capacities: [64, 64, 64, 64, 64])
     var sink = TextSink()
     let result = layout(
         semantic: TextSemanticView(scalars: scalars, modifiers: modifiers),
-        metrics: TextMetricsView(),
+        metrics: metrics,
         proposal: proposal,
         limits: LayoutLimits(
             maximumScopes: 64,
