@@ -40,8 +40,10 @@ esac
 declared_inputs() {
     {
         find "$PROJECT_ROOT/Sources/GiftUI" \
+            "$PROJECT_ROOT/Sources/GiftUIRenderFailureAdapterFixture" \
             "$PROJECT_ROOT/Sources/GiftUIRenderLowering" \
             "$PROJECT_ROOT/Tests/GiftUITests" \
+            "$PROJECT_ROOT/Tests/GiftUIRenderFailureAdapterTests" \
             "$PROJECT_ROOT/Tests/GiftUIRenderLoweringTests" \
             "$PROJECT_ROOT/Tests/GiftUISemanticCoreTests" \
             "$FIXTURE_ROOT" -type f -print
@@ -64,6 +66,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-008-render-preflight.rb" \
             "$SCRIPT_DIR/check-spec-008-render-streaming.rb" \
             "$SCRIPT_DIR/check-spec-008-render-producer-lifecycle.rb" \
+            "$SCRIPT_DIR/check-spec-008-render-failure-adapter.rb" \
             "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb" \
             "$SCRIPT_DIR/check-spec-008-recording-sink.rb" \
             "$SCRIPT_DIR/check-spec-008-recording-verification.rb" \
@@ -255,6 +258,8 @@ record_command "$SCRIPT_DIR/check-spec-008-render-streaming.rb"
 "$SCRIPT_DIR/check-spec-008-render-streaming.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-render-producer-lifecycle.rb"
 "$SCRIPT_DIR/check-spec-008-render-producer-lifecycle.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-008-render-failure-adapter.rb"
+"$SCRIPT_DIR/check-spec-008-render-failure-adapter.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb"
 "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-recording-sink.rb"

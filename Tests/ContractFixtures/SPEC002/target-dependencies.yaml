@@ -123,6 +123,17 @@ targets:
       - GiftUIRenderLowering
       - GiftUISemanticCore
       - GiftUITextResources
+  GiftUIRenderFailureAdapterFixture:
+    type: regular
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUIRenderLowering
+  GiftUIRenderFailureAdapterTests:
+    type: test
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUIRenderFailureAdapterFixture
+      - GiftUIRenderLowering
   GiftUIExecution:
     type: regular
     dependencies:

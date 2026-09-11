@@ -99,8 +99,8 @@ driver work, deployment, or connected-hardware changes.
   rendering must reuse. No parallel rendering identity is needed or allowed.
 - `GiftUIRenderCore`, `GiftUILayout`, and `GiftUIRenderLowering` now exist with
   their exact production dependencies and focused test targets. The narrow
-  rendering/failure owner adapter has not landed, so T0.2 remains
-  incrementally active.
+  rendering/failure owner adapter has landed with only its approved edges, so
+  T0.2 is complete.
 - `Tests/ContractFixtures/SPEC008/` and the registered four-profile driver now
   exist. The canonical render/analyzer cases, recording sink, complete profile
   probes, and allocation/stack/value-layout instrumentation remain pending.
@@ -210,7 +210,7 @@ rendering behavior is claimed.
       cases, and unreferenced fixture data. Distinguish host execution,
       cross-build/inspection, simulator, and connected-hardware evidence; no
       SPEC-008 task requires deployment or flashing.
-- [ ] `T0.2` — Add `GiftUIRenderCore`, `GiftUIRenderLowering`, their focused
+- [x] `T0.2` — Add `GiftUIRenderCore`, `GiftUIRenderLowering`, their focused
       unit-test targets, and a narrowly named rendering/failure owner-adapter
       fixture to `Package.swift` only as their first compiling sources land.
       Give Render Core exactly `GiftUI` and `GiftUITextResources`; give Render
@@ -404,7 +404,7 @@ deterministic failure precedence, and atomic sink behavior.
       first before all input/sink access; call `acquire` only when inactive;
       reset exactly once after every successful acquisition on every exit;
       retain no input, operation, resource, pointer, or replay state.
-- [ ] `T4.5` — Implement the narrow owner adapter mapping all seven local
+- [x] `T4.5` — Implement the narrow owner adapter mapping all seven local
       errors to their exact SPEC-003 facts, origins, scopes, and containment.
       Prove lowering imports neither `GiftUIFailureCore` nor diagnostics and
       that no diagnostic path allocates as a requirement, changes the result,
@@ -965,7 +965,14 @@ attempt on reentry, inactive acquisition refusal without reset, no input/sink
 access before either early return, and workspace reuse after acquired exits;
 see the
 [producer lifecycle evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-4/render-producer-lifecycle.md).
-`T4.5` is the next dependency-complete task.
+`T4.5` and the final incremental slice of `T0.2` are complete. The unpublished
+`GiftUIRenderFailureAdapterFixture` depends only on Render Lowering and Failure
+Core and maps all seven local errors to their exact SPEC-003 facts. Focused
+tests exhaust the mapping, while the source and package audits prove that
+lowering imports no failure module and the pure adapter contains no diagnostic,
+allocation, or second-production path; see the
+[failure-adapter evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-4/render-failure-adapter.md).
+`T5.1` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
