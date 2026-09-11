@@ -384,9 +384,9 @@ deterministic failure precedence, and atomic sink behavior.
       **Amendment follow-up complete:** `RenderWorkspaceCapacity`, separate
       structural capacity reporting, and bounded semantic/layout ordinal visit
       sets have exact first/repeated/invalid and acquire/reset behavior.
-      **Current amendment follow-up required:** add exact current/push/pop
-      foreground-stack operations with physical capacity equal to
-      `maximumTraversalDepth` and reset/refusal behavior from the amended Spec.
+      **Amendment follow-up complete:** exact current/push/pop foreground-stack
+      operations use `maximumTraversalDepth` as physical capacity and have
+      covered inactive/full/empty/reset behavior.
 - [x] `T4.2` — Implement canonical depth-first traversal and preflight over
       immutable borrows. Validate root mapping, exact semantic/layout counts,
       ordinal bijections and preflight-only visit sets, every lookup and
@@ -408,8 +408,8 @@ deterministic failure precedence, and atomic sink behavior.
       first before all input/sink access; call `acquire` only when inactive;
       reset exactly once after every successful acquisition on every exit;
       retain no input, operation, resource, pointer, or replay state.
-      **Current amendment follow-up required:** reset must also clear the
-      foreground stack after every acquired exit.
+      **Amendment follow-up complete:** reset also clears the foreground stack
+      after every acquired exit.
 - [x] `T4.5` — Implement the narrow owner adapter mapping all seven local
       errors to their exact SPEC-003 facts, origins, scopes, and containment.
       Prove lowering imports neither `GiftUIFailureCore` nor diagnostics and
@@ -1017,6 +1017,13 @@ approved that amendment and resumed implementation on 2026-09-11; see the
 
 The next work is the T4.1/T4.4 foreground-workspace follow-up, then T5.1 and
 T5.5. Milestone 6 entry conditions remain unmet until those tasks complete.
+
+The T4.1/T4.4 amendment follow-up is complete. The exact workspace protocol and
+both maintained fixture workspaces now implement bounded current/push/pop
+foreground storage, equality and refusal behavior, high-water accounting, and
+acquire/reset clearing; see the
+[foreground-workspace evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-4/foreground-workspace.md).
+T5.1 is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

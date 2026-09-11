@@ -1205,8 +1205,10 @@ where Identity: Equatable & Sendable {
     private(set) var layoutVisitCalls: UInt16 = 0
     private(set) var firstSemanticVisits: UInt16 = 0
     private(set) var firstLayoutVisits: UInt16 = 0
+    private(set) var foregroundHighWater: UInt16 = 0
     private var semanticVisits: [Bool]
     private var layoutVisits: [Bool]
+    private var foregroundStack: [Color] = []
     private let refuseAcquire: Bool
 
     init(
@@ -1234,6 +1236,7 @@ where Identity: Equatable & Sendable {
         isActive = true
         semanticVisits = [Bool](repeating: false, count: semanticVisits.count)
         layoutVisits = [Bool](repeating: false, count: layoutVisits.count)
+        foregroundStack.removeAll(keepingCapacity: true)
         return true
     }
 
@@ -1251,9 +1254,30 @@ where Identity: Equatable & Sendable {
         return result
     }
 
+    var currentForeground: Color? {
+        guard isActive else { return nil }
+        return foregroundStack.last
+    }
+
+    mutating func pushForeground(_ color: Color) -> Bool {
+        guard isActive,
+            foregroundStack.count < Int(structuralCapacity.maximumTraversalDepth)
+        else { return false }
+        foregroundStack.append(color)
+        foregroundHighWater = max(foregroundHighWater, UInt16(foregroundStack.count))
+        return true
+    }
+
+    mutating func popForeground() -> Bool {
+        guard isActive, !foregroundStack.isEmpty else { return false }
+        foregroundStack.removeLast()
+        return true
+    }
+
     mutating func reset() {
         semanticVisits = [Bool](repeating: false, count: semanticVisits.count)
         layoutVisits = [Bool](repeating: false, count: layoutVisits.count)
+        foregroundStack.removeAll(keepingCapacity: true)
         isActive = false
         resetCount += 1
     }

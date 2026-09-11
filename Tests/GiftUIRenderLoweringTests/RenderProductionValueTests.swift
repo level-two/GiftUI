@@ -118,9 +118,32 @@ func boundedWorkspaceReportsCapacityAndHasExactAcquireResetLifecycle() {
     #expect(workspace.capacity == FixtureRenderWorkspace<UInt16>.limits)
     #expect(workspace.structuralCapacity == FixtureRenderWorkspace<UInt16>.structure)
     #expect(!workspace.isActive)
+    #expect(workspace.currentForeground == nil)
+    let inactivePush = workspace.pushForeground(.red)
+    let inactivePop = workspace.popForeground()
+    #expect(!inactivePush)
+    #expect(!inactivePop)
     let firstAcquire = workspace.acquire()
     #expect(firstAcquire)
     #expect(workspace.isActive)
+    #expect(workspace.currentForeground == nil)
+    for index in 0 ..< workspace.structuralCapacity.maximumTraversalDepth {
+        let color = Color(red: UInt8(index), green: 0, blue: 0)
+        let pushed = workspace.pushForeground(color)
+        #expect(pushed)
+        #expect(workspace.currentForeground == color)
+    }
+    let fullPush = workspace.pushForeground(.blue)
+    #expect(!fullPush)
+    #expect(workspace.foregroundHighWater == 8)
+    for index in (0 ..< workspace.structuralCapacity.maximumTraversalDepth).reversed() {
+        #expect(workspace.currentForeground == Color(red: UInt8(index), green: 0, blue: 0))
+        let popped = workspace.popForeground()
+        #expect(popped)
+    }
+    #expect(workspace.currentForeground == nil)
+    let emptyPop = workspace.popForeground()
+    #expect(!emptyPop)
     #expect(workspace.visitSemanticScope(at: 0) == .first)
     #expect(workspace.visitSemanticScope(at: 0) == .repeated)
     #expect(workspace.visitSemanticScope(at: 8) == .invalid)
@@ -130,6 +153,7 @@ func boundedWorkspaceReportsCapacityAndHasExactAcquireResetLifecycle() {
     #expect(!nestedAcquire)
     workspace.reset()
     #expect(!workspace.isActive)
+    #expect(workspace.currentForeground == nil)
     let secondAcquire = workspace.acquire()
     #expect(secondAcquire)
     #expect(workspace.visitSemanticScope(at: 0) == .first)
@@ -161,8 +185,9 @@ where Identity: Equatable & Sendable {
     let structuralCapacity = Self.structure
     private(set) var isActive = false
     private(set) var resetCount: UInt16 = 0
+    private(set) var foregroundHighWater: UInt16 = 0
     private var activeIdentity: Identity?
-    private var foregroundDepth: UInt16 = 0
+    private var foregroundStack: [Color] = []
     private var traversalDepth: UInt16 = 0
     private var preflightOperationCount: UInt16 = 0
     private var clipDepth: UInt16 = 0
@@ -172,6 +197,7 @@ where Identity: Equatable & Sendable {
     mutating func acquire() -> Bool {
         guard !isActive else { return false }
         isActive = true
+        foregroundStack.removeAll(keepingCapacity: true)
         return true
     }
 
@@ -183,9 +209,29 @@ where Identity: Equatable & Sendable {
         visit(ordinal: ordinal, in: &layoutVisits)
     }
 
+    var currentForeground: Color? {
+        guard isActive else { return nil }
+        return foregroundStack.last
+    }
+
+    mutating func pushForeground(_ color: Color) -> Bool {
+        guard isActive,
+            foregroundStack.count < Int(structuralCapacity.maximumTraversalDepth)
+        else { return false }
+        foregroundStack.append(color)
+        foregroundHighWater = max(foregroundHighWater, UInt16(foregroundStack.count))
+        return true
+    }
+
+    mutating func popForeground() -> Bool {
+        guard isActive, !foregroundStack.isEmpty else { return false }
+        foregroundStack.removeLast()
+        return true
+    }
+
     mutating func reset() {
         activeIdentity = nil
-        foregroundDepth = 0
+        foregroundStack.removeAll(keepingCapacity: true)
         traversalDepth = 0
         preflightOperationCount = 0
         clipDepth = 0

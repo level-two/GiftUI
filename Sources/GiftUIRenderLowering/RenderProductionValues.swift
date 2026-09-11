@@ -1,3 +1,4 @@
+import GiftUI
 import GiftUIRenderCore
 
 package struct RenderLimits: Equatable, Sendable {
@@ -65,8 +66,11 @@ package protocol RenderProductionWorkspace {
     var capacity: RenderLimits { get }
     var structuralCapacity: RenderWorkspaceCapacity { get }
     var isActive: Bool { get }
+    var currentForeground: Color? { get }
     mutating func acquire() -> Bool
     mutating func visitSemanticScope(at ordinal: UInt16) -> RenderWorkspaceVisit
     mutating func visitLayoutScope(at ordinal: UInt16) -> RenderWorkspaceVisit
+    mutating func pushForeground(_ color: Color) -> Bool
+    mutating func popForeground() -> Bool
     mutating func reset()
 }

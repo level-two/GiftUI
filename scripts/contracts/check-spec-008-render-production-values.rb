@@ -12,7 +12,8 @@ def fail_check(message)
 end
 
 source = SOURCE.read
-fail_check("lowering value imports differ") unless source.scan(/^import (\w+)$/).flatten == %w[GiftUIRenderCore]
+fail_check("lowering value imports differ") unless
+  source.scan(/^import (\w+)$/).flatten == %w[GiftUI GiftUIRenderCore]
 
 %w[RenderLimits RenderWorkspaceCapacity RenderWorkspaceVisit RenderProductionResult RenderProductionWorkspace].each do |name|
   declarations = Dir[ROOT.join("Sources/**/*.swift")].select do |path|
@@ -38,9 +39,12 @@ required_fragments = [
   "var capacity: RenderLimits { get }",
   "var structuralCapacity: RenderWorkspaceCapacity { get }",
   "var isActive: Bool { get }",
+  "var currentForeground: Color? { get }",
   "mutating func acquire() -> Bool",
   "mutating func visitSemanticScope(at ordinal: UInt16)",
   "mutating func visitLayoutScope(at ordinal: UInt16)",
+  "mutating func pushForeground(_ color: Color) -> Bool",
+  "mutating func popForeground() -> Bool",
   "mutating func reset()",
 ]
 required_fragments.each do |fragment|
