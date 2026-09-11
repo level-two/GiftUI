@@ -88,6 +88,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-008-render-resource-ir.rb" \
             "$SCRIPT_DIR/check-spec-008-profile-equivalence.rb" \
             "$SCRIPT_DIR/compare-spec-008-render-profiles.rb" \
+            "$SCRIPT_DIR/check-spec-008-nrf-render-report.rb" \
             "$SCRIPT_DIR/check-spec-008-package-boundaries.rb" \
             "$SCRIPT_DIR/check-spec-008-signal-analyzer.rb" \
             "$SCRIPT_DIR/check-spec-008-consumer-seams.rb" \
@@ -241,7 +242,7 @@ record_nrf52840_identity() {
 {
     printf '# criterion\tstatus\treason\n'
     awk -F $'\t' '!/^#/ && NF {
-        status = ($1 == "RD-007" || $1 == "RD-008" || $1 == "RD-011") ? "active" : "pass"
+        status = $1 == "RD-011" ? "active" : "pass"
         print $1 "\t" status "\t" $3
     }' \
         "$FIXTURE_ROOT/required-evidence.tsv"
@@ -267,7 +268,7 @@ record_nrf52840_identity() {
     printf 'section-delta\tcomplete\tlinked baseline/render section deltas are recorded\n'
     printf 'link-map\tcomplete\tbaseline and render image link maps are recorded\n'
     printf 'target-inspection\tcomplete\tMach-O, ARMv6 ELF, or Cortex-M4F hard-float ELF image is recorded\n'
-    printf 'acceptance-evidence\tactive\tRD-001 through RD-006 and RD-009 through RD-010 pass; RD-007, RD-008, and RD-011 await T8.3 through T8.5\n'
+    printf 'acceptance-evidence\tactive\tRD-001 through RD-010 pass; RD-011 awaits the T8.5 conformance handoff\n'
 } >"$prerequisites_path"
 
 record_command "$SCRIPT_DIR/check-spec-008-harness.rb"

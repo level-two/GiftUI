@@ -572,7 +572,7 @@ separated from connected-hardware claims and every plan task dispositioned.
       resource identity evidence. The Raspberry Pi result is cross-build and
       inspection only; it does not claim `armv6l` execution, framebuffer
       presentation, input, or PiScreen hardware validation.
-- [ ] `T8.4` — For nRF52840, prove the complete contract fixture compiles and
+- [x] `T8.4` — For nRF52840, prove the complete contract fixture compiles and
       links with zero static heap allocation and finite workspace; inspect
       values, symbols, sections, linked code, and the ELF's Cortex-M4F
       hard-float VFP calling convention. Record cross-build/inspection only;
@@ -1168,6 +1168,16 @@ inspection only and makes no execution, framebuffer, input, deployment, or
 hardware claim. See the
 [three-profile comparison](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-8/three-profile-comparison.md).
 `T8.4` is the next dependency-complete task.
+
+`T8.4` is complete. The clean nRF52840 report compiles the complete declaration
+and canonical corpus surface, links the concrete production entry into a
+Zephyr ELF, proves all 13 target layouts, zero optimized allocation
+instructions, and finite workspace, and records symbols, baseline/candidate
+maps, and linked-section deltas. ELF inspection proves ARMv7E-M, VFPv4-D16,
+single-precision hard-float use, and VFP-register argument passing. This is
+cross-build inspection only; no connected target was used or flashed. See the
+[nRF render inspection](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-8/nrf-render-inspection.md).
+`T8.5` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

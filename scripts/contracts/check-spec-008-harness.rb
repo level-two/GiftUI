@@ -271,7 +271,7 @@ report_evidence = report.join("required-evidence.tsv").each_line.each_with_objec
 end
 fail_check("report evidence criteria differ") unless report_evidence.map(&:first) == expected_criteria
 expected_evidence_statuses = expected_criteria.to_h do |criterion|
-  [criterion, %w[RD-007 RD-008 RD-011].include?(criterion) ? "active" : "pass"]
+  [criterion, criterion == "RD-011" ? "active" : "pass"]
 end
 fail_check("report evidence statuses differ") unless report_evidence.to_h { |row| [row[0], row[1]] } == expected_evidence_statuses
 fail_check("report evidence lacks reasons") if report_evidence.any? { |row| row[2].empty? }
@@ -294,4 +294,4 @@ allowed_statuses = %w[complete active missing blocked]
 fail_check("invalid prerequisite status") if prerequisites.any? { |row| !allowed_statuses.include?(row[1]) }
 fail_check("prerequisite lacks reason") if prerequisites.any? { |row| row[2].empty? }
 
-puts "SPEC-008 report captured: 8 criteria pass; 3 remain active through T8.3-T8.5"
+puts "SPEC-008 report captured: 10 criteria pass; RD-011 remains active through T8.5"
