@@ -53,6 +53,7 @@ declared_inputs() {
             "$PROJECT_ROOT/scripts/contracts/driver-registry.tsv" \
             "$SCRIPT_DIR/check-driver-registry.rb" \
             "$SCRIPT_DIR/check-spec-012-harness.rb" \
+            "$SCRIPT_DIR/check-spec-012-migration.rb" \
             "$SCRIPT_DIR/check-target-dependencies.rb" \
             "$SCRIPT_DIR/report-input-identity.rb" \
             "$SCRIPT_DIR/publish-contract-report.rb" \
@@ -205,6 +206,8 @@ record_nrf52840_identity() {
 
 record_command "$SCRIPT_DIR/check-spec-012-harness.rb"
 "$SCRIPT_DIR/check-spec-012-harness.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-012-migration.rb"
+"$SCRIPT_DIR/check-spec-012-migration.rb" >>"$log_path" 2>&1
 record_command swift package dump-package
 swift package dump-package | "$SCRIPT_DIR/check-target-dependencies.rb" >>"$log_path" 2>&1
 case "$profile" in
@@ -225,4 +228,3 @@ record_command "$SCRIPT_DIR/check-spec-012-harness.rb" "$report_dir"
     --run-id "$run_id"
 printf 'SPEC-012 %s harness passed; implementation evidence remains fail-closed; run ID: %s\n' \
     "$profile" "$run_id"
-

@@ -195,7 +195,7 @@ drawing conformance is claimed.
       revision, input digests, commands, evidence identity, and all thirteen
       fail-closed criterion rows. Keep standalone invocations exact and make
       the top-level runner perform no remote access, deployment, or flashing.
-- [ ] `T0.4` — Inventory every PoC and experiment Canvas/path/stroke, display-
+- [x] `T0.4` — Inventory every PoC and experiment Canvas/path/stroke, display-
       list, direct-emission, raster, and static-callable surface. Classify each
       as evidence, adapt, replace, retire, or downstream-owned, pin provenance,
       and reject parallel maintained drawing paths or wholesale Spike adoption.
@@ -658,3 +658,15 @@ an immutable report with all thirteen DR rows `missing`, as required before
 their owning tasks land; the driver performs no remote access, deployment,
 restart, simulation, connected-target execution, or flashing. `T0.4` is the
 next dependency-complete task.
+
+`T0.4` is complete. The checked
+[migration inventory](../../Tests/ContractFixtures/SPEC012/migration-inventory.tsv)
+classifies 48 PoC, SPIKE-004/007/008, current maintained, and downstream-owned
+drawing surfaces as evidence, extend, maintain, replace, retire, reject, or
+downstream-owned. Its registered audit verifies every historical PoC path
+against the immutable `PoC` tag, every tracked evidence path against the tree,
+the absence of premature SPEC-013/014 targets, rejection of retained
+`DisplayList`/`RGB565RetainedRenderer` paths, and absence of wholesale Spike
+source adoption. The updated macOS dynamic report passes while all DR rows
+remain fail-closed. Milestone 0 is complete; `T1.1` is the next
+dependency-complete task.

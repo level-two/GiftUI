@@ -1,0 +1,50 @@
+# baseline	family	path	surface	disposition	replacement_owner
+PoC	rectangle-stroke	Sources/GiftUI/Rendering/RenderBackend.swift	backend rectangle-stroke protocol and executor	retire	SPEC-012-normalized-stroke/SPEC-014-raster
+PoC	retained-render-operation	Sources/GiftUI/Rendering/RenderOperation.swift	array-storable fill and rectangle-stroke enum	retire	SPEC-008/SPEC-012-borrowed-stream
+PoC	operation-sink	Sources/GiftUI/Rendering/RenderOperationSink.swift	append whole copyable RenderOperation	retire	SPEC-008/SPEC-012-synchronous-sinks
+PoC	framebuffer-raster	Sources/GiftUIBackendFramebuffer/FramebufferBackend.swift	direct fill rectangle-stroke and text raster calls	downstream-owned	SPEC-014-full-surface-raster
+PoC	framebuffer-raster	Sources/GiftUIBackendFramebuffer/BitmapTextRasterizer.swift	bitmap glyph raster helper	downstream-owned	SPEC-014-text-raster
+PoC	framebuffer-surface	Sources/GiftUIBackendFramebuffer/FramebufferSurface.swift	mutable full-surface pixel contract	downstream-owned	SPEC-014-full-surface-backend
+PoC	framebuffer-surface	Sources/GiftUIBackendFramebuffer/MemoryFramebufferSurface.swift	heap-backed memory framebuffer fixture	evidence	SPEC-014-raster-fixtures
+PoC	framebuffer-encoding	Sources/GiftUIBackendFramebuffer/PixelFormat.swift	RGBA/BGRA encoding vocabulary	downstream-owned	SPEC-014-encoding
+PoC	rgb565-raster	Sources/GiftUIBackendRGB565/RGB565Pixel.swift	RGB565 conversion helper	evidence	SPEC-014-canonical-encoding
+PoC	rgb565-raster	Sources/GiftUIBackendRGB565/RGB565TileRenderer.swift	direct tiled fill and rectangle-stroke consumer	replace	SPEC-014-tiled-raster
+PoC	rgb565-raster	Sources/GiftUIBackendRGB565/RGB565TileStorage.swift	fixed tile storage	evidence	SPEC-014-tiled-workspace
+PoC	retained-raster	Sources/GiftUIBackendRGB565/RGB565RetainedRenderer.swift	retained full-frame RGB565 renderer	reject	SPEC-009-one-shot/SPEC-014-tiled-raster
+PoC	rgb565-configuration	Sources/GiftUIBackendRGB565/RGB565RendererConfiguration.swift	backend capacity and dimensions	downstream-owned	SPEC-014/SPEC-015-host
+PoC	direct-platform-stroke	Sources/GiftUIPlatformLinux/GiftUILinuxApplication.swift	direct backend rectangle-stroke call	reject	SPEC-012-portable-canvas/SPEC-014-backend
+PoC	display-list	Sources/GiftUIRuntimeDynamic/DisplayList.swift	heap array retained and replayed operations	reject	SPEC-008/SPEC-009/SPEC-012-one-shot
+PoC	display-list	Sources/GiftUIRuntimeDynamic/DynamicRuntime.swift	returns retained DisplayList	reject	SPEC-013-dynamic-profile/SPEC-012-plan
+PoC	display-list	Sources/GiftUIRuntimeDynamic/GiftUIApplication.swift	accepts and offers retained DisplayList	reject	SPEC-009-offer/SPEC-013-coordinator
+PoC	direct-emission	Sources/GiftUIRuntimeDynamic/ViewNode.swift	recursive append of fill and rectangle-stroke operations	replace	SPEC-008-lowering/SPEC-012-combined-producer
+PoC	direct-emission	Sources/GiftUIRuntimeStatic/StaticRuntime.swift	recursive direct fill and rectangle-stroke emission	replace	SPEC-013-static-profile/SPEC-012-combined-producer
+PoC	raster-fixture	Tests/GiftUIBackendFramebufferTests/GiftUIBackendFramebufferTests.swift	direct framebuffer rectangle-stroke observations	evidence	SPEC-014-raster-fixtures
+PoC	raster-fixture	Tests/GiftUIBackendRGB565Tests/RGB565FoundationTests.swift	RGB565 conversion observations	evidence	SPEC-014-encoding-fixtures
+PoC	raster-fixture	Tests/GiftUIBackendRGB565Tests/RGB565StaticIntegrationTests.swift	full-surface tiled retained and direct-emission comparison	evidence	SPEC-012-order/SPEC-014-raster-fixtures
+PoC	raster-fixture	Tests/GiftUIBackendRGB565Tests/RGB565TileRendererTests.swift	tile and rectangle-stroke observations	evidence	SPEC-014-raster-fixtures
+PoC	display-list-fixture	Tests/GiftUIRuntimeDynamicTests/GiftUIRuntimeDynamicTests.swift	retained DisplayList replay expectation	reject	SPEC-009/SPEC-012-lifetime-fixtures
+PoC	direct-emission-fixture	Tests/GiftUIRuntimeDynamicTests/DynamicGraphTests.swift	bounded append and rectangle-stroke ordering	evidence	SPEC-008/SPEC-012-recording-fixtures
+PoC	direct-emission-fixture	Tests/GiftUIRuntimeStaticTests/GiftUIRuntimeStaticTests.swift	static operation append without display list	evidence	SPEC-012-static-profile-fixtures
+PoC	direct-emission-fixture	Tests/GiftUIRuntimeConformanceTests/GiftUIRuntimeConformanceTests.swift	dynamic/static RenderOperation equality	evidence	SPEC-008/SPEC-012-profile-fixtures
+SPIKE-004	canvas-plan	experiments/spike-004-canvas-path-plan-feasibility/Candidate.swift	copy plan seal plan and direct-emission semantics	evidence	SPEC-012-T3/T4
+SPIKE-004	canvas-plan	experiments/spike-004-canvas-path-plan-feasibility/host/HostSemantics.swift	host path plan semantic comparison	evidence	SPEC-012-fixture-design
+SPIKE-004	canvas-plan	experiments/spike-004-canvas-path-plan-feasibility/storage.c	disposable fixed candidate storage	reject	SPEC-012-production-Swift-workspace
+SPIKE-004	raster-storage	experiments/spike-004-canvas-path-plan-feasibility/shared/raster_storage.c	disposable resource accounting storage	evidence	SPEC-012-resource-baseline
+SPIKE-007	static-callable	experiments/spike-007-static-action-storage-feasibility/DirectClosure.swift	persistent captured closure with allocator path	reject	SPEC-012-generated-callable
+SPIKE-007	static-callable	experiments/spike-007-static-action-storage-feasibility/Tagged.swift	finite tagged action callable evidence	evidence	SPEC-012-T6-generator
+SPIKE-008	exact-declarations	experiments/spike-008-spec-012-exact-canvas-declarations/Candidate.swift	disposable exact Canvas Path context and generated callable	evidence	SPEC-012-T1/T6
+SPIKE-008	exact-declarations	experiments/spike-008-spec-012-exact-canvas-declarations/IllegalOuterContextAccess.swift	overlapping inout rejection witness	evidence	SPEC-012-T1.4
+SPIKE-008	exact-declarations	experiments/spike-008-spec-012-exact-canvas-declarations/IllegalPathCopy.swift	noncopyable Path rejection witness	evidence	SPEC-012-T1.4
+SPIKE-008	exact-declarations	experiments/spike-008-spec-012-exact-canvas-declarations/IllegalPathEscape.swift	nonescaping Path rejection witness	evidence	SPEC-012-T1.4
+current	ordinary-render	Sources/GiftUIRenderCore/RenderOperationSink.swift	SPEC-008 synchronous ordinary sink	extend	SPEC-012-T2.2
+current	ordinary-render	Sources/GiftUIRenderLowering/RenderPreflight.swift	SPEC-008 ordinary preflight traversal	extend	SPEC-012-T5.1
+current	ordinary-render	Sources/GiftUIRenderLowering/RenderStreaming.swift	SPEC-008 ordinary streaming traversal	extend	SPEC-012-T5.2
+current	drawing-contract	Sources/GiftUI/DrawingStyles.swift	SPEC-012 public cap and join declarations	maintain	SPEC-012-T1.3
+current	drawing-contract	Sources/GiftUIRenderCore/DrawingOperationSink.swift	SPEC-012 borrowed stroke consumer contract	maintain	SPEC-012-T2.2/T2.3
+current	drawing-owner	Sources/GiftUIDrawing/GiftUIDrawing.swift	approved focused producer target seam	maintain	SPEC-012-T3/T5
+current	drawing-failure-adapter	Sources/GiftUIDrawingFailureAdapterFixture/GiftUIDrawingFailureAdapterFixture.swift	narrow owner mapping seam	maintain	SPEC-012-T7.3
+downstream	profile-storage	Sources/GiftUIRuntimeDynamic/	bounded dynamic Canvas callable and workspace owner	downstream-owned	SPEC-013
+downstream	profile-storage	Sources/GiftUIRuntimeStatic/	generated static Canvas capture and workspace owner	downstream-owned	SPEC-013
+downstream	backend-raster	Sources/GiftUIBackendFramebuffer/	RGBA8888 full-surface canonical stroke consumer	downstream-owned	SPEC-014
+downstream	backend-raster	Sources/GiftUIBackendRGB565/	bounded tiled RGB565 canonical stroke consumer	downstream-owned	SPEC-014
+
