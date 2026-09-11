@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-05
-updated: 2026-09-10
+updated: 2026-09-11
 related_design_notes:
   - ../implementation-designs/spec-007-bounded-layout-attempt.md
 conformance_report: null
@@ -747,6 +747,13 @@ indices, and only primitive, child, modifier, and text-scalar access. A direct
 fixture proves valid and absent identity/count/index behavior. The closed
 primitive and modifier enums required by the protocol are declared; their
 production semantic-expansion mapping remains pending under `T2.1`.
+
+`T3.3` is in progress: `GiftUILayout` now has one fixed-width counter set for
+all five global limits. It accepts equality at each limit, rejects the next
+reservation without changing the admitted count, tracks balanced active depth
+and its high-water, validates the declared scope total, and retains the first
+failure. Semantic lookup, payload, Unicode, and reservation-before-access
+integration remain before this task can be marked complete.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-007 conforms or is `implemented`. The conformance report remains
