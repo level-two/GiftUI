@@ -111,9 +111,16 @@ package struct StaticLayoutWorkspace: LayoutWorkspace {
     package let maximumTextLines: UInt16 = 512
     package let maximumPositionedGlyphs: UInt16 = 4096
     package var isLayoutActive = false
-    private var identity: UInt16?
-    private var measurement: LayoutMeasurement?
-    private var placement: LayoutPlacement?
+    private var identities = InlineArray<512, UInt16?>(repeating: nil)
+    private var measurements = InlineArray<512, LayoutMeasurement?>(repeating: nil)
+    private var placements = InlineArray<512, LayoutPlacement?>(repeating: nil)
+    private var storedScopeCount: UInt16 = 0
+    private var lines = InlineArray<512, LayoutTextLine<UInt16>?>(repeating: nil)
+    private var storedLineCount: UInt16 = 0
+    private var glyphs = InlineArray<4096, LayoutPositionedGlyph<UInt16>?>(repeating: nil)
+    private var storedGlyphCount: UInt16 = 0
+    private var depth = InlineArray<64, UInt16?>(repeating: nil)
+    private var storedDepth: UInt16 = 0
 
     package init() {}
 
@@ -127,67 +134,132 @@ package struct StaticLayoutWorkspace: LayoutWorkspace {
         identity: borrowing UInt16,
         measurement: LayoutMeasurement
     ) -> Bool {
-        guard isLayoutActive, self.identity == nil else { return false }
-        self.identity = copy identity
-        self.measurement = measurement
+        let value = copy identity
+        guard isLayoutActive, storedScopeCount < maximumScopes,
+            findScope(value) == nil
+        else { return false }
+        let index = Int(storedScopeCount)
+        identities[index] = value
+        measurements[index] = measurement
+        placements[index] = nil
+        storedScopeCount += 1
         return true
     }
 
-    package var scopeCount: UInt16 { identity == nil ? 0 : 1 }
+    package var scopeCount: UInt16 { storedScopeCount }
     package func scopeIdentity(at index: UInt16) -> UInt16? {
-        index == 0 ? identity : nil
+        guard index < storedScopeCount else { return nil }
+        return identities[Int(index)]
     }
     package func measurement(for identity: borrowing UInt16) -> LayoutMeasurement? {
-        let identityCopy = copy identity
-        return self.identity == identityCopy ? measurement : nil
+        findScope(copy identity).flatMap { measurements[$0] }
     }
     package mutating func storeMeasurement(
         _ measurement: LayoutMeasurement,
         for identity: borrowing UInt16
     ) -> Bool {
-        let identityCopy = copy identity
-        guard self.identity == identityCopy else { return false }
-        self.measurement = measurement
+        guard let index = findScope(copy identity) else { return false }
+        measurements[index] = measurement
         return true
     }
     package mutating func storePlacement(
         _ placement: LayoutPlacement,
         for identity: borrowing UInt16
     ) -> Bool {
-        let identityCopy = copy identity
-        guard self.identity == identityCopy else { return false }
-        self.placement = placement
+        guard let index = findScope(copy identity), placements[index] == nil else {
+            return false
+        }
+        placements[index] = placement
         return true
     }
     package func placement(for identity: borrowing UInt16) -> LayoutPlacement? {
-        let identityCopy = copy identity
-        return self.identity == identityCopy ? placement : nil
+        findScope(copy identity).flatMap { placements[$0] }
     }
-    package var textLineCount: UInt16 { 0 }
-    package mutating func appendTextLine(_ line: LayoutTextLine<UInt16>) -> Bool { false }
-    package func textLine(at index: UInt16) -> LayoutTextLine<UInt16>? { nil }
+    package var textLineCount: UInt16 { storedLineCount }
+    package mutating func appendTextLine(_ line: LayoutTextLine<UInt16>) -> Bool {
+        guard storedLineCount < maximumTextLines else { return false }
+        lines[Int(storedLineCount)] = line
+        storedLineCount += 1
+        return true
+    }
+    package func textLine(at index: UInt16) -> LayoutTextLine<UInt16>? {
+        guard index < storedLineCount else { return nil }
+        return lines[Int(index)]
+    }
     package mutating func storeTextLine(
         _ line: LayoutTextLine<UInt16>,
         at index: UInt16
-    ) -> Bool { false }
-    package var positionedGlyphCount: UInt16 { 0 }
+    ) -> Bool {
+        guard index < storedLineCount else { return false }
+        lines[Int(index)] = line
+        return true
+    }
+    package var positionedGlyphCount: UInt16 { storedGlyphCount }
     package mutating func appendPositionedGlyph(
         _ glyph: LayoutPositionedGlyph<UInt16>
-    ) -> Bool { false }
+    ) -> Bool {
+        guard storedGlyphCount < maximumPositionedGlyphs else { return false }
+        glyphs[Int(storedGlyphCount)] = glyph
+        storedGlyphCount += 1
+        return true
+    }
     package func positionedGlyph(
         at index: UInt16
-    ) -> LayoutPositionedGlyph<UInt16>? { nil }
+    ) -> LayoutPositionedGlyph<UInt16>? {
+        guard index < storedGlyphCount else { return nil }
+        return glyphs[Int(index)]
+    }
     package mutating func storePositionedGlyph(
         _ glyph: LayoutPositionedGlyph<UInt16>,
         at index: UInt16
-    ) -> Bool { false }
-    package mutating func pushScope(_ identity: borrowing UInt16) -> Bool { true }
-    package mutating func popScope() {}
+    ) -> Bool {
+        guard index < storedGlyphCount else { return false }
+        glyphs[Int(index)] = glyph
+        return true
+    }
+    package mutating func pushScope(_ identity: borrowing UInt16) -> Bool {
+        guard storedDepth < maximumDepth else { return false }
+        depth[Int(storedDepth)] = copy identity
+        storedDepth += 1
+        return true
+    }
+    package mutating func popScope() {
+        guard storedDepth > 0 else { return }
+        storedDepth -= 1
+        depth[Int(storedDepth)] = nil
+    }
     package mutating func resetLayout() {
-        identity = nil
-        measurement = nil
-        placement = nil
+        var scopeIndex: UInt16 = 0
+        while scopeIndex < storedScopeCount {
+            identities[Int(scopeIndex)] = nil
+            measurements[Int(scopeIndex)] = nil
+            placements[Int(scopeIndex)] = nil
+            scopeIndex += 1
+        }
+        var lineIndex: UInt16 = 0
+        while lineIndex < storedLineCount {
+            lines[Int(lineIndex)] = nil
+            lineIndex += 1
+        }
+        var glyphIndex: UInt16 = 0
+        while glyphIndex < storedGlyphCount {
+            glyphs[Int(glyphIndex)] = nil
+            glyphIndex += 1
+        }
+        while storedDepth > 0 { popScope() }
+        storedScopeCount = 0
+        storedLineCount = 0
+        storedGlyphCount = 0
         isLayoutActive = false
+    }
+
+    private func findScope(_ identity: UInt16) -> Int? {
+        var index: UInt16 = 0
+        while index < storedScopeCount {
+            if identities[Int(index)] == identity { return Int(index) }
+            index += 1
+        }
+        return nil
     }
 }
 

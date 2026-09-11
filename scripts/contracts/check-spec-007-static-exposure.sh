@@ -17,7 +17,7 @@ SDK="$(xcrun --sdk macosx --show-sdk-path)"
 SIL="$TEMPORARY_DIRECTORY/semantic-borrow.sil"
 
 "$COMPILER" -O -whole-module-optimization -parse-as-library -package-name giftui \
-    -target arm64-apple-macosx15.0 -sdk "$SDK" \
+    -target arm64-apple-macosx26.0 -sdk "$SDK" \
     -I "$BIN_PATH/Modules" -emit-sil "$PROBE" -o "$SIL"
 
 BODY="$(sed -n '/spec007BorrowedStaticExposure/,/^}/p' "$SIL")"
