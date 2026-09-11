@@ -358,7 +358,7 @@ implementation participates.
 rule with checked arithmetic, exact source ordering, bounds, clips, and hit
 geometry.
 
-- [ ] `T4.1` — Implement shared checked helpers for independent proposal caps,
+- [x] `T4.1` — Implement shared checked helpers for independent proposal caps,
       ideal/resolved sizes, origins, centering division toward zero, alignment
       offsets, cursor/gap arithmetic, constraint resolution, and rectangular
       intersection including empty intersections at the greater minimum
