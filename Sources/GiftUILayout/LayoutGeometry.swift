@@ -120,22 +120,15 @@ package enum LayoutGeometry {
         let minimumY = max(lhs.minY, rhs.minY)
         let maximumX = min(lhs.maxX, rhs.maxX)
         let maximumY = min(lhs.maxY, rhs.maxY)
-        let width: GeometryScalar
-        let height: GeometryScalar
-        if maximumX < minimumX {
-            width = 0
-        } else {
-            guard let difference = GeometryArithmetic.subtract(maximumX, minimumX)
-            else { return nil }
-            width = difference
+        if maximumX < minimumX || maximumY < minimumY {
+            return Rect(
+                origin: Point(x: minimumX, y: minimumY),
+                size: zeroSize
+            )
         }
-        if maximumY < minimumY {
-            height = 0
-        } else {
-            guard let difference = GeometryArithmetic.subtract(maximumY, minimumY)
-            else { return nil }
-            height = difference
-        }
+        guard let width = GeometryArithmetic.subtract(maximumX, minimumX),
+            let height = GeometryArithmetic.subtract(maximumY, minimumY)
+        else { return nil }
         guard let size = Size(width: width, height: height) else { return nil }
         return Rect(origin: Point(x: minimumX, y: minimumY), size: size)
     }

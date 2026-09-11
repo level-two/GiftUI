@@ -402,7 +402,7 @@ text from Semantic Core scalar access and the sole validated MVP instance.
       and zero widths; keep an over-wide first glyph; preserve empty, leading,
       trailing, and consecutive-break lines; and compute checked line widths,
       text ideal/resolved size, baseline progression, and line gaps exactly.
-- [ ] `T5.3` — Translate every line bound and glyph baseline to absolute root
+- [x] `T5.3` — Translate every line bound and glyph baseline to absolute root
       coordinates; stage zero-based line indices and source-order glyph
       indices excluding breaks; derive text, line, and glyph clips through the
       exact intersections; and stage all logical content even when a clip is

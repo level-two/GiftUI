@@ -115,6 +115,38 @@ func leadingTrailingAndConsecutiveBreaksPreserveEveryEmptyLine() {
     #expect(output.summary?.rootBounds.size.height == 46)
 }
 
+@Test
+func textLinesAndGlyphBaselinesTranslateToAbsoluteRootCoordinates() {
+    let output = runTextLayout(
+        scalars: [0x41, 0x42],
+        proposal: ProposedSize()!,
+        modifiers: [.padding(edges: .all, length: 2)]
+    )
+
+    #expect(output.summary?.rootBounds.size == Size(width: 13, height: 14)!)
+    #expect(output.lines[0].bounds.origin == Point(x: 2, y: 2))
+    #expect(output.lines[0].baseline == Point(x: 2, y: 9))
+    #expect(output.glyphs.map { $0.baseline } == [Point(x: 2, y: 9), Point(x: 6, y: 9)])
+    #expect(output.glyphs.allSatisfy { $0.clip == output.lines[0].clip })
+}
+
+@Test
+func heightCapRetainsHiddenLinesAndProducesExactEmptyClips() {
+    let output = runTextLayout(
+        scalars: [0x41, 0x0a, 0x42],
+        proposal: ProposedSize(height: 5)!
+    )
+
+    #expect(output.summary?.rootBounds.size == Size(width: 5, height: 5)!)
+    #expect(output.lines.count == 2)
+    #expect(output.glyphs.count == 2)
+    #expect(
+        output.lines[0].clip == Rect(origin: Point(x: 0, y: 0), size: Size(width: 4, height: 5)!)!)
+    #expect(
+        output.lines[1].clip == Rect(origin: Point(x: 0, y: 12), size: Size(width: 0, height: 0)!)!)
+    #expect(output.glyphs[1].clip == output.lines[1].clip)
+}
+
 struct CapturedTextLine: Equatable {
     let identity: UInt16
     let lineIndex: UInt16
@@ -135,8 +167,9 @@ struct CapturedTextGlyph: Equatable {
 
 private struct TextSemanticView: SemanticLayoutView {
     let scalars: [UInt32]
+    let modifiers: [SemanticLayoutModifier]
     let rootIdentity: UInt16 = 1
-    let scopeCount: UInt16 = 1
+    var scopeCount: UInt16 { UInt16(1 + modifiers.count) }
 
     func primitive(at identity: UInt16) -> SemanticLayoutPrimitive? {
         identity == 1 ? .text : nil
@@ -144,9 +177,15 @@ private struct TextSemanticView: SemanticLayoutView {
 
     func childCount(of identity: UInt16) -> UInt16? { identity == 1 ? 0 : nil }
     func child(of identity: UInt16, at index: UInt16) -> UInt16? { nil }
-    func modifierCount(of identity: UInt16) -> UInt16? { identity == 1 ? 0 : nil }
-    func modifierScope(of identity: UInt16, at index: UInt16) -> UInt16? { nil }
-    func modifier(of identity: UInt16, at index: UInt16) -> SemanticLayoutModifier? { nil }
+    func modifierCount(of identity: UInt16) -> UInt16? {
+        identity == 1 ? UInt16(modifiers.count) : nil
+    }
+    func modifierScope(of identity: UInt16, at index: UInt16) -> UInt16? {
+        Int(index) < modifiers.count ? 100 + index : nil
+    }
+    func modifier(of identity: UInt16, at index: UInt16) -> SemanticLayoutModifier? {
+        Int(index) < modifiers.count ? modifiers[Int(index)] : nil
+    }
     func textScalarCount(of identity: UInt16) -> UInt16? {
         identity == 1 ? UInt16(scalars.count) : nil
     }
@@ -315,7 +354,8 @@ private struct TextSink: LayoutResultSink, LayoutResultSinkState {
 
 func runTextLayout(
     scalars: [UInt32],
-    proposal: ProposedSize
+    proposal: ProposedSize,
+    modifiers: [SemanticLayoutModifier] = []
 ) -> (
     result: LayoutResult,
     summary: LayoutSummary?,
@@ -325,7 +365,7 @@ func runTextLayout(
     var workspace = ProbeWorkspace(capacities: [64, 64, 64, 64, 64])
     var sink = TextSink()
     let result = layout(
-        semantic: TextSemanticView(scalars: scalars),
+        semantic: TextSemanticView(scalars: scalars, modifiers: modifiers),
         metrics: TextMetricsView(),
         proposal: proposal,
         limits: LayoutLimits(
