@@ -167,10 +167,20 @@ private struct ResolvedGlyphRecord: Equatable {
 private struct ResolvedView: ResolvedRenderLayoutView {
     let rootIdentity: UInt16
     let layoutScopeCount: UInt16
+    let renderSnapshotVersion: UInt32 = 1
     let rootBounds: Rect
     let scopes: [ResolvedScope]
     let lines: [ResolvedLine]
     let glyphs: [ResolvedGlyphRecord]
+
+    func layoutIdentity(at ordinal: UInt16) -> UInt16? {
+        guard Int(ordinal) < scopes.count else { return nil }
+        return scopes[Int(ordinal)].identity
+    }
+
+    func layoutOrdinal(of identity: UInt16) -> UInt16? {
+        scopes.firstIndex { $0.identity == identity }.map(UInt16.init)
+    }
 
     func bounds(of identity: UInt16) -> Rect? {
         scopes.first { $0.identity == identity }?.bounds

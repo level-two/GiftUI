@@ -144,4 +144,4 @@ run_command "${compiler}" "${flags[@]}" -parse-as-library -package-name GiftUI \
 run_command "${SCRIPT_DIR}/check-spec-008-value-layouts.rb" \
     "${layout_ir}" "${layout_report}" >/dev/null
 
-printf 'SPEC-008 %s value profiles passed: 11 bounded value layouts.\n' "${profile}"
+printf 'SPEC-008 %s value profiles passed: 13 bounded value layouts.\n' "${profile}"

@@ -334,9 +334,19 @@ private struct AdapterRenderView: SemanticRenderView {
     let primitives: [AdapterPrimitiveRecord]
     let modifiers: [AdapterModifierRecord]
     let scopes: [AdapterRenderRecord]
+    let renderSnapshotVersion: UInt32 = 1
 
     var semanticScopeCount: UInt16 {
         UInt16(structural.count)
+    }
+
+    func semanticIdentity(at ordinal: UInt16) -> AdapterIdentity? {
+        guard Int(ordinal) < structural.count else { return nil }
+        return structural[Int(ordinal)]
+    }
+
+    func semanticOrdinal(of identity: AdapterIdentity) -> UInt16? {
+        structural.firstIndex(of: identity).map(UInt16.init)
     }
 
     func scope(at identity: AdapterIdentity) -> SemanticRenderScope? {

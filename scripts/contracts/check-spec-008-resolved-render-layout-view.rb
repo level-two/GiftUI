@@ -29,7 +29,10 @@ required_fragments = [
   "package protocol ResolvedRenderLayoutView",
   "var rootIdentity: Identity { get }",
   "var layoutScopeCount: UInt16 { get }",
+  "var renderSnapshotVersion: UInt32 { get }",
   "var rootBounds: Rect { get }",
+  "func layoutIdentity(at ordinal: UInt16) -> Identity?",
+  "func layoutOrdinal(of identity: Identity) -> UInt16?",
   "func bounds(of identity: Identity) -> Rect?",
   "func clip(of identity: Identity) -> Rect?",
   "func textLineCount(of identity: Identity) -> UInt16?",
@@ -44,4 +47,4 @@ end
 forbidden = /\b(?:public|open|String|GiftUIRenderCore|GiftUIRenderLowering|GiftUIFailureCore|GiftUICapabilities)\b/
 fail_check("source contains public, textual, rendering, failure, or capability coupling") if source.match?(forbidden)
 
-puts "SPEC-008 resolved render layout view ownership passed: exact geometry, text, glyph, and identity projection."
+puts "SPEC-008 resolved render layout view ownership passed: exact geometry, dense ordinals, and immutable snapshots."

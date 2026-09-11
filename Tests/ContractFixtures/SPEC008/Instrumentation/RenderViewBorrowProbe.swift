@@ -6,6 +6,15 @@ import GiftUITextResources
 package struct StaticSemanticRenderView: SemanticRenderView {
     package let rootIdentity: UInt16 = 1
     package let semanticScopeCount: UInt16 = 1
+    package let renderSnapshotVersion: UInt32 = 1
+
+    package func semanticIdentity(at ordinal: UInt16) -> UInt16? {
+        ordinal == 0 ? rootIdentity : nil
+    }
+
+    package func semanticOrdinal(of identity: UInt16) -> UInt16? {
+        identity == rootIdentity ? 0 : nil
+    }
 
     package func scope(at identity: UInt16) -> SemanticRenderScope? {
         identity == rootIdentity ? .structural : nil
@@ -25,10 +34,19 @@ package struct StaticSemanticRenderView: SemanticRenderView {
 package struct StaticResolvedRenderLayoutView: ResolvedRenderLayoutView {
     package let rootIdentity: UInt16 = 1
     package let layoutScopeCount: UInt16 = 1
+    package let renderSnapshotVersion: UInt32 = 1
     package let rootBounds = Rect(
         origin: Point(x: 0, y: 0),
         size: Size(width: 8, height: 8)!
     )!
+
+    package func layoutIdentity(at ordinal: UInt16) -> UInt16? {
+        ordinal == 0 ? rootIdentity : nil
+    }
+
+    package func layoutOrdinal(of identity: UInt16) -> UInt16? {
+        identity == rootIdentity ? 0 : nil
+    }
 
     package func bounds(of identity: UInt16) -> Rect? {
         identity == rootIdentity ? rootBounds : nil
@@ -65,6 +83,16 @@ where
     let semanticRoot = semantic.rootIdentity
     let layoutRoot = layout.rootIdentity
     var checksum = semantic.semanticScopeCount &+ layout.layoutScopeCount
+    checksum &+= UInt16(truncatingIfNeeded: semantic.renderSnapshotVersion)
+    checksum &+= UInt16(truncatingIfNeeded: layout.renderSnapshotVersion)
+    if semantic.semanticIdentity(at: 0) == semanticRoot {
+        checksum &+= 1
+    }
+    checksum &+= semantic.semanticOrdinal(of: semanticRoot) ?? 0
+    if layout.layoutIdentity(at: 0) == layoutRoot {
+        checksum &+= 1
+    }
+    checksum &+= layout.layoutOrdinal(of: layoutRoot) ?? 0
     if semanticRoot == layoutRoot {
         checksum &+= 1
     }

@@ -42,6 +42,26 @@ package enum RenderValueLayoutProbe {
         alignment(of: RenderLimits.self)
     }
 
+    @inline(never) package static func renderWorkspaceCapacitySize() -> UInt32 {
+        size(of: RenderWorkspaceCapacity.self)
+    }
+    @inline(never) package static func renderWorkspaceCapacityStride() -> UInt32 {
+        stride(of: RenderWorkspaceCapacity.self)
+    }
+    @inline(never) package static func renderWorkspaceCapacityAlignment() -> UInt32 {
+        alignment(of: RenderWorkspaceCapacity.self)
+    }
+
+    @inline(never) package static func renderWorkspaceVisitSize() -> UInt32 {
+        size(of: RenderWorkspaceVisit.self)
+    }
+    @inline(never) package static func renderWorkspaceVisitStride() -> UInt32 {
+        stride(of: RenderWorkspaceVisit.self)
+    }
+    @inline(never) package static func renderWorkspaceVisitAlignment() -> UInt32 {
+        alignment(of: RenderWorkspaceVisit.self)
+    }
+
     @inline(never) package static func renderSinkCapacitySize() -> UInt32 {
         size(of: RenderSinkCapacity.self)
     }

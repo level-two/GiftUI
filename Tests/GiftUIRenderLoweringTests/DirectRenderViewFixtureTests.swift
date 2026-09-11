@@ -14,6 +14,18 @@ func directValidViewsUseSymbolicIdentityAndIndependentDeclaredCounts() {
     #expect(semantic.layoutIdentity(for: semantic.rootIdentity) == layout.rootIdentity)
     #expect(semantic.semanticScopeCount == 5)
     #expect(layout.layoutScopeCount == 2)
+    #expect(semantic.renderSnapshotVersion == 1)
+    #expect(layout.renderSnapshotVersion == 1)
+    #expect(semantic.semanticIdentity(at: 0) == .root)
+    #expect(semantic.semanticIdentity(at: 4) == .text)
+    #expect(semantic.semanticIdentity(at: 5) == nil)
+    #expect(semantic.semanticOrdinal(of: .root) == 0)
+    #expect(semantic.semanticOrdinal(of: .text) == 4)
+    #expect(layout.layoutIdentity(at: 0) == .foreground)
+    #expect(layout.layoutIdentity(at: 1) == .text)
+    #expect(layout.layoutIdentity(at: 2) == nil)
+    #expect(layout.layoutOrdinal(of: .foreground) == 0)
+    #expect(layout.layoutOrdinal(of: .text) == 1)
     #expect(semantic.layoutIdentity(for: .root) == .foreground)
     #expect(semantic.layoutIdentity(for: .transparent) == .foreground)
     #expect(semantic.layoutIdentity(for: .foreground) == .foreground)
@@ -30,6 +42,7 @@ func directViewsRepresentEveryRequiredStructuralMalformedInput() {
     let missingScope = DirectSemanticRenderView(
         rootIdentity: valid.rootIdentity,
         semanticScopeCount: valid.semanticScopeCount,
+        renderSnapshotVersion: valid.renderSnapshotVersion,
         records: valid.records.map {
             $0.identity == .text
                 ? SemanticFixtureRecord(
@@ -43,6 +56,7 @@ func directViewsRepresentEveryRequiredStructuralMalformedInput() {
     let duplicateIdentity = DirectSemanticRenderView(
         rootIdentity: valid.rootIdentity,
         semanticScopeCount: valid.semanticScopeCount,
+        renderSnapshotVersion: valid.renderSnapshotVersion,
         records: valid.records + [valid.records.last!]
     )
     let invalidModifierArity = replacingChildren(
@@ -76,12 +90,14 @@ func directLayoutsRepresentEveryRequiredLookupAndIndexDisagreement() {
     let unequalRoot = DirectResolvedRenderLayoutView(
         rootIdentity: .alternate,
         layoutScopeCount: valid.layoutScopeCount,
+        renderSnapshotVersion: valid.renderSnapshotVersion,
         rootBounds: valid.rootBounds,
         records: valid.records
     )
     let duplicateIdentity = DirectResolvedRenderLayoutView(
         rootIdentity: valid.rootIdentity,
         layoutScopeCount: valid.layoutScopeCount,
+        renderSnapshotVersion: valid.renderSnapshotVersion,
         rootBounds: valid.rootBounds,
         records: valid.records + [valid.records[1]]
     )
@@ -148,6 +164,7 @@ private func replacingChildren(
     DirectSemanticRenderView(
         rootIdentity: view.rootIdentity,
         semanticScopeCount: view.semanticScopeCount,
+        renderSnapshotVersion: view.renderSnapshotVersion,
         records: view.records.map { record in
             record.identity == identity
                 ? SemanticFixtureRecord(
@@ -168,6 +185,7 @@ private func replacingMapping(
     DirectSemanticRenderView(
         rootIdentity: view.rootIdentity,
         semanticScopeCount: view.semanticScopeCount,
+        renderSnapshotVersion: view.renderSnapshotVersion,
         records: view.records.map { record in
             record.identity == identity
                 ? SemanticFixtureRecord(
@@ -187,6 +205,7 @@ private func replacingTextRecord(
     DirectResolvedRenderLayoutView(
         rootIdentity: view.rootIdentity,
         layoutScopeCount: view.layoutScopeCount,
+        renderSnapshotVersion: view.renderSnapshotVersion,
         rootBounds: view.rootBounds,
         records: view.records.map { $0.identity == .text ? transform($0) : $0 }
     )

@@ -16,6 +16,7 @@ private struct RenderScopeRecord {
 
 private struct FixtureSemanticRenderView: SemanticRenderView {
     let rootIdentity = RenderIdentity(rawValue: 10)
+    let renderSnapshotVersion: UInt32 = 1
     let records: [RenderScopeRecord] = [
         RenderScopeRecord(
             identity: RenderIdentity(rawValue: 10),
@@ -51,6 +52,15 @@ private struct FixtureSemanticRenderView: SemanticRenderView {
 
     var semanticScopeCount: UInt16 {
         UInt16(records.count)
+    }
+
+    func semanticIdentity(at ordinal: UInt16) -> RenderIdentity? {
+        guard Int(ordinal) < records.count else { return nil }
+        return records[Int(ordinal)].identity
+    }
+
+    func semanticOrdinal(of identity: RenderIdentity) -> UInt16? {
+        records.firstIndex { $0.identity == identity }.map(UInt16.init)
     }
 
     func scope(at identity: RenderIdentity) -> SemanticRenderScope? {
@@ -99,6 +109,12 @@ func semanticRenderViewPreservesCountsChildOrderAndLayoutIdentitySelection() {
 
     #expect(view.rootIdentity == root)
     #expect(view.semanticScopeCount == 5)
+    #expect(view.renderSnapshotVersion == 1)
+    #expect(view.semanticIdentity(at: 0) == root)
+    #expect(view.semanticIdentity(at: 4) == clip)
+    #expect(view.semanticIdentity(at: 5) == nil)
+    #expect(view.semanticOrdinal(of: root) == 0)
+    #expect(view.semanticOrdinal(of: clip) == 4)
     #expect(view.scope(at: root) == .structural)
     #expect(view.scope(at: foreground) == .foregroundStyle(.red))
     #expect(view.scope(at: background) == .background(.blue))

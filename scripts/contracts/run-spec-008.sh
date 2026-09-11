@@ -222,7 +222,7 @@ record_nrf52840_identity() {
     printf 'fixture-digest\tcomplete\tdeclared inputs and fixture digest recorded\n'
     printf 'declaration-fixtures\tcomplete\tall 17 fixtures compile as expected for the selected profile\n'
     printf 'render-targets\tblocked\tRender Core is present; Render Lowering has not landed\n'
-    printf 'value-layouts\tcomplete\tall 11 bounded values pass exact or maximum layouts for this profile\n'
+    printf 'value-layouts\tcomplete\tall 13 bounded values pass exact or maximum layouts for this profile\n'
     printf 'result-comparison\tmissing\tcanonical normalized results are not implemented\n'
     printf 'transcript-comparison\tmissing\tcanonical recording transcripts are not implemented\n'
     printf 'high-water\tmissing\tdeclared and observed high-water values are unavailable\n'

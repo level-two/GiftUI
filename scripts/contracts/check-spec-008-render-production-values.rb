@@ -14,7 +14,7 @@ end
 source = SOURCE.read
 fail_check("lowering value imports differ") unless source.scan(/^import (\w+)$/).flatten == %w[GiftUIRenderCore]
 
-%w[RenderLimits RenderProductionResult RenderProductionWorkspace].each do |name|
+%w[RenderLimits RenderWorkspaceCapacity RenderWorkspaceVisit RenderProductionResult RenderProductionWorkspace].each do |name|
   declarations = Dir[ROOT.join("Sources/**/*.swift")].select do |path|
     File.read(path).match?(/package (?:struct|enum|protocol) #{name}\b/)
   end
@@ -25,12 +25,22 @@ required_fragments = [
   "package let maximumOperations: UInt16",
   "package let maximumPositionedGlyphs: UInt16",
   "package let maximumClipDepth: UInt16",
+  "package let maximumSemanticScopes: UInt16",
+  "package let maximumLayoutScopes: UInt16",
+  "package let maximumTraversalDepth: UInt16",
+  "package let maximumTextLines: UInt16",
+  "case first = 0",
+  "case repeated = 1",
+  "case invalid = 2",
   "case success(RenderPlanHeader)",
   "case failure(RenderProductionError)",
   "associatedtype Identity: Equatable, Sendable",
   "var capacity: RenderLimits { get }",
+  "var structuralCapacity: RenderWorkspaceCapacity { get }",
   "var isActive: Bool { get }",
   "mutating func acquire() -> Bool",
+  "mutating func visitSemanticScope(at ordinal: UInt16)",
+  "mutating func visitLayoutScope(at ordinal: UInt16)",
   "mutating func reset()",
 ]
 required_fragments.each do |fragment|

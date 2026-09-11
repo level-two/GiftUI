@@ -30,6 +30,9 @@ required_fragments = [
   "associatedtype Identity: Equatable, Sendable",
   "var rootIdentity: Identity { get }",
   "var semanticScopeCount: UInt16 { get }",
+  "var renderSnapshotVersion: UInt32 { get }",
+  "func semanticIdentity(at ordinal: UInt16) -> Identity?",
+  "func semanticOrdinal(of identity: Identity) -> UInt16?",
   "func scope(at identity: Identity) -> SemanticRenderScope?",
   "func layoutIdentity(for identity: Identity) -> Identity?",
   "func childCount(of identity: Identity) -> UInt16?",
@@ -47,4 +50,4 @@ end
 forbidden = /\b(?:public|open|Any|String|Array|ContiguousArray|class|actor|GiftUILayout|GiftUIRenderCore|GiftUIRenderLowering|GiftUIFailureCore|GiftUICapabilities)\b/
 fail_check("semantic render view contains public, dynamic, or upward coupling") if source.match?(forbidden)
 
-puts "SPEC-008 semantic render view ownership passed: five scopes and six exact view requirements."
+puts "SPEC-008 semantic render view ownership passed: five scopes, dense ordinals, and immutable snapshots."

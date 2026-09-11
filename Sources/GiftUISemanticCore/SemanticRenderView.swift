@@ -38,7 +38,10 @@ package protocol SemanticRenderView {
 
     var rootIdentity: Identity { get }
     var semanticScopeCount: UInt16 { get }
+    var renderSnapshotVersion: UInt32 { get }
 
+    func semanticIdentity(at ordinal: UInt16) -> Identity?
+    func semanticOrdinal(of identity: Identity) -> UInt16?
     func scope(at identity: Identity) -> SemanticRenderScope?
     func layoutIdentity(for identity: Identity) -> Identity?
     func childCount(of identity: Identity) -> UInt16?

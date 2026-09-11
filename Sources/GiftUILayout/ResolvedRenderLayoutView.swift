@@ -53,7 +53,10 @@ package protocol ResolvedRenderLayoutView {
 
     var rootIdentity: Identity { get }
     var layoutScopeCount: UInt16 { get }
+    var renderSnapshotVersion: UInt32 { get }
     var rootBounds: Rect { get }
+    func layoutIdentity(at ordinal: UInt16) -> Identity?
+    func layoutOrdinal(of identity: Identity) -> UInt16?
     func bounds(of identity: Identity) -> Rect?
     func clip(of identity: Identity) -> Rect?
     func textLineCount(of identity: Identity) -> UInt16?

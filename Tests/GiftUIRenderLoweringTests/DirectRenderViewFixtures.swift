@@ -23,7 +23,17 @@ struct SemanticFixtureRecord {
 struct DirectSemanticRenderView: SemanticRenderView {
     let rootIdentity: RenderFixtureIdentity
     let semanticScopeCount: UInt16
+    let renderSnapshotVersion: UInt32
     let records: [SemanticFixtureRecord]
+
+    func semanticIdentity(at ordinal: UInt16) -> RenderFixtureIdentity? {
+        guard Int(ordinal) < records.count else { return nil }
+        return records[Int(ordinal)].identity
+    }
+
+    func semanticOrdinal(of identity: RenderFixtureIdentity) -> UInt16? {
+        records.firstIndex { $0.identity == identity }.map(UInt16.init)
+    }
 
     func scope(at identity: RenderFixtureIdentity) -> SemanticRenderScope? {
         records.first { $0.identity == identity }?.scope
@@ -61,8 +71,18 @@ struct LayoutFixtureRecord {
 struct DirectResolvedRenderLayoutView: ResolvedRenderLayoutView {
     let rootIdentity: RenderFixtureIdentity
     let layoutScopeCount: UInt16
+    let renderSnapshotVersion: UInt32
     let rootBounds: Rect
     let records: [LayoutFixtureRecord]
+
+    func layoutIdentity(at ordinal: UInt16) -> RenderFixtureIdentity? {
+        guard Int(ordinal) < records.count else { return nil }
+        return records[Int(ordinal)].identity
+    }
+
+    func layoutOrdinal(of identity: RenderFixtureIdentity) -> UInt16? {
+        records.firstIndex { $0.identity == identity }.map(UInt16.init)
+    }
 
     func bounds(of identity: RenderFixtureIdentity) -> Rect? {
         records.first { $0.identity == identity }?.bounds
@@ -122,6 +142,7 @@ enum DirectRenderFixtures {
         DirectSemanticRenderView(
             rootIdentity: .root,
             semanticScopeCount: 5,
+            renderSnapshotVersion: 1,
             records: [
                 SemanticFixtureRecord(
                     identity: .root,
@@ -161,6 +182,7 @@ enum DirectRenderFixtures {
         DirectResolvedRenderLayoutView(
             rootIdentity: .foreground,
             layoutScopeCount: 2,
+            renderSnapshotVersion: 1,
             rootBounds: bounds,
             records: [
                 LayoutFixtureRecord(

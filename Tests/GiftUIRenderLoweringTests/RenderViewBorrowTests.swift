@@ -9,6 +9,15 @@ private struct LifetimeSemanticRenderView: SemanticRenderView {
     let token: RenderViewLifetimeToken
     let rootIdentity: UInt16 = 1
     let semanticScopeCount: UInt16 = 1
+    let renderSnapshotVersion: UInt32 = 1
+
+    func semanticIdentity(at ordinal: UInt16) -> UInt16? {
+        ordinal == 0 ? rootIdentity : nil
+    }
+
+    func semanticOrdinal(of identity: UInt16) -> UInt16? {
+        identity == rootIdentity ? 0 : nil
+    }
 
     func scope(at identity: UInt16) -> SemanticRenderScope? {
         identity == rootIdentity ? .structural : nil
@@ -29,10 +38,19 @@ private struct LifetimeResolvedRenderLayoutView: ResolvedRenderLayoutView {
     let token: RenderViewLifetimeToken
     let rootIdentity: UInt16 = 1
     let layoutScopeCount: UInt16 = 1
+    let renderSnapshotVersion: UInt32 = 1
     let rootBounds = Rect(
         origin: Point(x: 0, y: 0),
         size: Size(width: 1, height: 1)!
     )!
+
+    func layoutIdentity(at ordinal: UInt16) -> UInt16? {
+        ordinal == 0 ? rootIdentity : nil
+    }
+
+    func layoutOrdinal(of identity: UInt16) -> UInt16? {
+        identity == rootIdentity ? 0 : nil
+    }
 
     func bounds(of identity: UInt16) -> Rect? {
         identity == rootIdentity ? rootBounds : nil

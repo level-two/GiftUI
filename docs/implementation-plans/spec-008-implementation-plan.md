@@ -298,8 +298,9 @@ copying a second semantic/layout result.
       Represent structural, clip-boundary, text, foreground, and background
       meaning only; keep action/state/runtime/layout-algorithm/backend facts
       outside the view.
-      **Amendment follow-up required:** add and verify exact semantic ordinal
-      bijection/inverse lookup and the semantic render snapshot version.
+      **Amendment follow-up complete:** exact semantic ordinal
+      bijection/inverse lookup and the semantic render snapshot version are
+      verified by the amended-contract evidence.
 - [x] `T2.2` — Adapt complete SPEC-006 results to the render view. Map primitive
       and layout modifiers to themselves, transparent/render-only scopes to
       their one flattened layout content scope, every SPEC-007 frame and only
@@ -311,8 +312,9 @@ copying a second semantic/layout result.
       results without translating identity or remeasuring text; expose exact
       bounds, clips, line/glyph indices, instances, glyphs, and baselines with
       the specified in-range and out-of-range behavior.
-      **Amendment follow-up required:** add and verify exact layout ordinal
-      bijection/inverse lookup and the layout render snapshot version.
+      **Amendment follow-up complete:** exact layout ordinal bijection/inverse
+      lookup and the layout render snapshot version are verified by the
+      amended-contract evidence.
 - [x] `T2.4` — Build direct valid and malformed semantic/layout views covering
       unequal roots, independent counts, missing/duplicate identities,
       transparent/render-only mappings, invalid arity, prohibited children,
@@ -360,9 +362,9 @@ recording sink enforces atomic current transcripts without pixel behavior.
       SPEC-008 value, including exact sizes for `Color`, `RenderLimits`,
       `RenderSinkCapacity`, and `RenderProductionError`, plus all upper bounds.
       Record compiler/target/optimization identity with each result.
-      **Amendment follow-up required:** include the exact 8-byte
+      **Amendment follow-up complete:** the exact 8-byte
       `RenderWorkspaceCapacity` and exact 1-byte `RenderWorkspaceVisit` values
-      on all four compilers.
+      pass on all four compilers.
 
 ### Milestone 4: Implement Bounded Atomic Render Production
 
@@ -378,9 +380,9 @@ deterministic failure precedence, and atomic sink behavior.
       access, cases/raw values, nonzero limit validation, capacity reporting,
       acquisition/reset semantics, and required value layouts. Provide bounded
       fixture workspaces keyed by the same semantic/layout identity.
-      **Amendment follow-up required:** add `RenderWorkspaceCapacity`, separate
+      **Amendment follow-up complete:** `RenderWorkspaceCapacity`, separate
       structural capacity reporting, and bounded semantic/layout ordinal visit
-      sets with exact first/repeated/invalid and acquire/reset behavior.
+      sets have exact first/repeated/invalid and acquire/reset behavior.
 - [ ] `T4.2` — Implement canonical depth-first traversal and preflight over
       immutable borrows. Validate root mapping, exact semantic/layout counts,
       ordinal bijections and preflight-only visit sets, every lookup and
@@ -918,6 +920,16 @@ mode, complete commands, and normalized layout table; see the
 [value layout profile evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-3/value-layout-profiles.md).
 The ARMv6 and nRF52840 results are cross-build evidence only. `T4.2` is the
 next dependency-complete implementation task.
+
+The 2026-09-11 amendment prerequisite step is complete. Semantic Core and
+Layout expose dense forward/reverse ordinal projections and immutable render
+snapshot versions; Render Lowering exposes the separate four-field structural
+capacity and preflight visit result; direct, lifetime, owner, and workspace
+fixtures cover their exact behavior. The value-layout probe now checks all 13
+bounded values on macOS dynamic/static, Raspberry Pi ARMv6, and nRF52840, with
+the two non-host profiles remaining cross-build evidence only; see the
+[amended contract evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-4/amended-render-contracts.md).
+`T4.2` remains the next dependency-complete implementation task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

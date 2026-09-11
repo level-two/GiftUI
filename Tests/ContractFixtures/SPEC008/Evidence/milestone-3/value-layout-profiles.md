@@ -4,11 +4,13 @@
 with the compiler, target, SDK, profile flag, and optimization mode for each of
 the four SPEC-008 evidence profiles. LLVM IR supplies constant size, stride,
 and alignment values for `Color`, `BoundedText`, `RenderLimits`,
+`RenderWorkspaceCapacity`, `RenderWorkspaceVisit`,
 `RenderSinkCapacity`, `RenderDamageMode`, `RenderPlanHeader`, `PositionedGlyph`,
 `FillRectOperation`, `PositionedGlyphOperationHeader`,
 `RenderProductionError`, and `RenderProductionResult`.
 
 The checker enforces exact sizes for `Color` (3), `RenderLimits` (6),
+`RenderWorkspaceCapacity` (8), `RenderWorkspaceVisit` (1),
 `RenderSinkCapacity` (4), `RenderDamageMode` (1), and
 `RenderProductionError` (1), plus the approved upper bounds for all remaining
 values. Each report records the compiler path, digest and version, target, and
