@@ -86,6 +86,7 @@ targets:
     dependencies:
       - GiftUI
       - GiftUILayout
+      - GiftUIReferenceTextResources
       - GiftUISemanticCore
       - GiftUITextResources
   GiftUILayoutFailureAdapterTests:
