@@ -82,6 +82,32 @@ func workspaceReportsEveryCapacityAndIndexesExactIdentities() {
     #expect(workspace.placement(for: 17) == nil)
 }
 
+@Test
+func layoutEntryRetainsNeitherTheSemanticViewNorItsSourceLifetime() {
+    weak var releasedToken: LifetimeToken?
+    do {
+        let token = LifetimeToken()
+        releasedToken = token
+        let semantic = LifetimeSemanticView(token: token)
+        var workspace = ProbeWorkspace()
+        var sink = ProbeSink()
+
+        let result = layout(
+            semantic: semantic,
+            metrics: ProbeMetricsView(),
+            proposal: ProposedSize()!,
+            limits: limits(),
+            workspace: &workspace,
+            sink: &sink
+        )
+
+        #expect(result == .failure(.invariantViolation))
+        #expect(!workspace.isLayoutActive)
+        #expect(!sink.isLayoutActive)
+    }
+    #expect(releasedToken == nil)
+}
+
 private func limits() -> LayoutLimits {
     LayoutLimits(
         maximumScopes: 5,
@@ -94,6 +120,38 @@ private func limits() -> LayoutLimits {
 
 private final class ProbeAccesses: @unchecked Sendable {
     var count = 0
+}
+
+private final class LifetimeToken: @unchecked Sendable {}
+
+private struct LifetimeSemanticView: SemanticLayoutView {
+    let token: LifetimeToken
+    let rootIdentity: UInt16 = 1
+    let scopeCount: UInt16 = 1
+
+    func primitive(at identity: UInt16) -> SemanticLayoutPrimitive? {
+        identity == rootIdentity ? .spacer(minLength: 0) : nil
+    }
+
+    func childCount(of identity: UInt16) -> UInt16? {
+        identity == rootIdentity ? 0 : nil
+    }
+
+    func child(of identity: UInt16, at index: UInt16) -> UInt16? { nil }
+
+    func modifierCount(of identity: UInt16) -> UInt16? {
+        identity == rootIdentity ? 0 : nil
+    }
+
+    func modifierScope(of identity: UInt16, at index: UInt16) -> UInt16? { nil }
+
+    func modifier(
+        of identity: UInt16,
+        at index: UInt16
+    ) -> SemanticLayoutModifier? { nil }
+
+    func textScalarCount(of identity: UInt16) -> UInt16? { nil }
+    func textScalar(of identity: UInt16, at index: UInt16) -> UInt32? { nil }
 }
 
 private struct ProbeSemanticView: SemanticLayoutView {

@@ -291,7 +291,7 @@ fixture-dynamic, and fixture-static producers have equal observable meaning.
       child/modifier order, text scalars, identity relations, in-range and
       out-of-range behavior, and malformed-view injection while explicitly
       avoiding comparison of profile-private raw identity bytes.
-- [ ] `T2.5` — Add lifetime, allocation, and dependency probes proving the
+- [x] `T2.5` — Add lifetime, allocation, and dependency probes proving the
       layout borrow cannot escape, Semantic Core imports no layout, static
       exposure allocates zero heap bytes, and no complete adapter-owned node
       array or runtime-specific input path exists. Add negative surface
@@ -767,6 +767,21 @@ node array. A focused expansion fixture proves transparent structural
 flattening, source-ordered primitive children and modifiers, exact modifier
 scope/action identity, and borrowed text-scalar access from the published
 semantic result.
+
+`T2.5` is complete: the optimized static exposure probe compiles a fixed
+`SemanticLayoutView` through the package SPI and rejects any heap allocation
+instruction in the borrowed accessor path. A runtime lifetime probe proves
+the generic layout entry and its reset path retain neither the view nor its
+source token. The registered boundary audit checks the exact view surface,
+rejects action/generation/model/state/runtime/render/backend/platform and
+unrestricted-existential exposure, rejects adapter-owned collections and
+layout-side retained semantic fields, verifies Semantic Core imports only
+`GiftUI`, and confirms the same one-edge package dependency closure. The
+macOS-static driver executes the optimized allocation probe; every profile
+executes the source/dependency audit. The nRF driver also compiles the exact
+borrow surface for `armv7em-none-none-eabi`, verifies ARMv7E-M hard-float
+attributes, and inspects its symbol closure for allocation calls and
+prohibited layout/render/runtime/backend/platform dependencies.
 
 `T3.3` is in progress: `GiftUILayout` now has one fixed-width counter set for
 all five global limits. It accepts equality at each limit, rejects the next

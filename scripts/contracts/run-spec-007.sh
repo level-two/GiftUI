@@ -54,7 +54,10 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-007-harness.rb" \
             "$SCRIPT_DIR/check-spec-007-boundaries.rb" \
             "$SCRIPT_DIR/check-spec-007-declarations.sh" \
+            "$SCRIPT_DIR/check-spec-007-embedded-semantic.sh" \
             "$SCRIPT_DIR/check-spec-007-migration.rb" \
+            "$SCRIPT_DIR/check-spec-007-semantic-boundary.rb" \
+            "$SCRIPT_DIR/check-spec-007-static-exposure.sh" \
             "$SCRIPT_DIR/check-spec-007-values.rb" \
             "$SCRIPT_DIR/report-input-identity.rb" \
             "$SCRIPT_DIR/publish-contract-report.rb" \
@@ -222,6 +225,8 @@ record_command "$SCRIPT_DIR/check-spec-007-declarations.sh"
 "$SCRIPT_DIR/check-spec-007-declarations.sh" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-007-migration.rb"
 "$SCRIPT_DIR/check-spec-007-migration.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-007-semantic-boundary.rb"
+"$SCRIPT_DIR/check-spec-007-semantic-boundary.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-007-values.rb"
 "$SCRIPT_DIR/check-spec-007-values.rb" >>"$log_path" 2>&1
 case "$profile" in
@@ -229,6 +234,14 @@ case "$profile" in
     raspberry-pi-armv6) record_raspberry_pi_identity ;;
     nrf52840-embedded) record_nrf52840_identity ;;
 esac
+if [[ "$profile" == "macos-static" ]]; then
+    record_command "$SCRIPT_DIR/check-spec-007-static-exposure.sh"
+    "$SCRIPT_DIR/check-spec-007-static-exposure.sh" >>"$log_path" 2>&1
+fi
+if [[ "$profile" == "nrf52840-embedded" ]]; then
+    record_command "$SCRIPT_DIR/check-spec-007-embedded-semantic.sh"
+    "$SCRIPT_DIR/check-spec-007-embedded-semantic.sh" >>"$log_path" 2>&1
+fi
 record_command "$SCRIPT_DIR/check-spec-007-harness.rb" "$report_dir"
 "$SCRIPT_DIR/check-spec-007-harness.rb" "$report_dir" >>"$log_path" 2>&1
 printf 'exit_code=0\n' >>"$metadata_path"
