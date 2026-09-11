@@ -14,7 +14,7 @@ end
 source = SOURCE.read
 fail_check("semantic render view must import only GiftUI") unless source.scan(/^import (\w+)$/).flatten == %w[GiftUI]
 
-%w[SemanticRenderScope SemanticRenderView].each do |name|
+%w[SemanticRenderScope SemanticRenderView SemanticRenderResultStorage].each do |name|
   declarations = Dir[ROOT.join("Sources/**/*.swift")].select do |path|
     File.read(path).match?(/package (?:enum|protocol) #{name}\b/)
   end
@@ -34,6 +34,11 @@ required_fragments = [
   "func layoutIdentity(for identity: Identity) -> Identity?",
   "func childCount(of identity: Identity) -> UInt16?",
   "func child(of identity: Identity, at index: UInt16) -> Identity?",
+  "package init<Payload>(primitivePayload: borrowing Payload)",
+  "package init<Payload>(modifierPayload: borrowing Payload)",
+  "package protocol SemanticRenderResultStorage: SemanticLayoutResultStorage",
+  "associatedtype RenderView: SemanticRenderView where RenderView.Identity == Identity",
+  "var renderView: RenderView { get }",
 ]
 required_fragments.each do |fragment|
   fail_check("semantic render view lacks #{fragment}") unless source.include?(fragment)

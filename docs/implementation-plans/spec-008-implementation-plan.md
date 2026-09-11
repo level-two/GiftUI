@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-06
-updated: 2026-09-10
+updated: 2026-09-11
 related_design_notes: []
 conformance_report: null
 related_future_work:
@@ -107,11 +107,10 @@ driver work, deployment, or connected-hardware changes.
   owner-adapter mappings, fail-closed fixture manifests, allocation
   interposition, cross-build resource inspection, and explicit registration
   with `scripts/test.sh`.
-- SPEC-006 is `approved`, including its primitive-with-content amendment;
-  SPEC-007 is `implementing`. Public rendering declarations, render-core values/transport,
-  direct fixture views, the recording oracle, and driver scaffolding can
-  proceed independently. Production semantic/layout adapters and complete
-  profile integration must wait for their owning implementations.
+- SPEC-006 and SPEC-007 are `implemented`. Public rendering declarations,
+  render-core values/transport, direct fixture views, the recording oracle,
+  driver scaffolding, and the production semantic-result render adapter are
+  available. The resolved-layout render adapter remains the next owner seam.
 - Existing `RenderProducerContribution` names under SPEC-004 fixtures describe
   capability contributions, not a conforming normalized renderer. Historical
   `Color`, display-list, text-placement, and backend code is migration evidence
@@ -292,7 +291,7 @@ copying a second semantic/layout result.
       Represent structural, clip-boundary, text, foreground, and background
       meaning only; keep action/state/runtime/layout-algorithm/backend facts
       outside the view.
-- [ ] `T2.2` — Adapt complete SPEC-006 results to the render view. Map primitive
+- [x] `T2.2` — Adapt complete SPEC-006 results to the render view. Map primitive
       and layout modifiers to themselves, transparent/render-only scopes to
       their one flattened layout content scope, every SPEC-007 frame and only
       frames to `clipBoundary`, and invalid `Text` to SPEC-007's existing
@@ -804,8 +803,17 @@ identity domain. A direct fixture proves count and lookup semantics, child
 order, repeated layout-identity selection for transparent render-only scopes,
 and nil for unknown identities or out-of-range indices; see the
 [semantic render view evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-2/semantic-render-view.md).
-T2.2 remains blocked on the complete SPEC-006 result and SPEC-007 layout
-identity. T3.5 remains blocked on lowering-owned `RenderLimits`.
+`T2.2` is complete now that SPEC-006 and SPEC-007 are implemented. The
+semantic result storage exposes its render projection from the same published
+result and exact identity domain; shared payload classification maps text,
+foreground, background, fixed/flexible frame clips, and structural scopes
+without rendering or layout work in Semantic Core. End-to-end expansion tests
+cover transparent-root mapping, modifier arity, self-mapped layout scopes, and
+invalid text preservation into SPEC-007's existing invalid-scalar rejection
+path; see the
+[semantic result adapter evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-2/semantic-result-render-adapter.md).
+T2.3 is the next dependency-complete task. T3.5 remains blocked on
+lowering-owned `RenderLimits`.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

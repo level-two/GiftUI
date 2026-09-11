@@ -113,11 +113,12 @@ package protocol SemanticLayoutResultStorage: SemanticLayoutView {
         primitive: SemanticLayoutPrimitive,
         payload: borrowing Payload
     ) -> Bool where Payload: _GiftUISemanticPrimitivePayload
-    mutating func stageModifier(
+    mutating func stageModifier<Payload>(
         identity: borrowing Identity,
         modifier: SemanticLayoutModifier,
+        payload: borrowing Payload,
         chainIndex: UInt16
-    ) -> Bool
+    ) -> Bool where Payload: _GiftUISemanticModifierPayload
     mutating func stageActionOccurrence(identity: borrowing Identity) -> Bool
     mutating func publishSemanticResult(_ summary: SemanticExpansionSummary) -> Bool
     mutating func discardSemanticResult()
@@ -191,6 +192,7 @@ where Storage: SemanticLayoutResultStorage {
         return storage.stageModifier(
             identity: identity,
             modifier: modifier,
+            payload: payload,
             chainIndex: chainIndex
         )
     }
@@ -269,5 +271,11 @@ where Storage: SemanticLayoutResultStorage {
         at index: UInt16
     ) -> UInt32? {
         storage.textScalar(of: identity, at: index)
+    }
+}
+
+package extension SemanticLayoutResultSink where Storage: SemanticRenderResultStorage {
+    var renderView: Storage.RenderView {
+        storage.renderView
     }
 }

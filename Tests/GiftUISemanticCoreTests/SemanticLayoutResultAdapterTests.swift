@@ -58,6 +58,126 @@ func successfulSemanticExpansionIsItsOwnBorrowedLayoutView() {
     #expect(sink.textScalar(of: text, at: 2) == nil)
 }
 
+@Test
+func successfulSemanticExpansionExposesTheSameResultAsItsRenderView() {
+    var workspace = AdapterWorkspace()
+    var sink = SemanticLayoutResultSink(storage: AdapterStorage())
+
+    let result = expandSemanticTree(
+        AdapterRenderRoot(),
+        limits: AdapterRenderRoot.limits,
+        workspace: &workspace,
+        sink: &sink
+    )
+
+    guard case .success = result else {
+        Issue.record("semantic expansion must succeed")
+        return
+    }
+
+    let render = sink.renderView
+    let identities = reachableIdentities(in: render)
+    #expect(render.semanticScopeCount == UInt16(identities.count))
+    #expect(render.layoutIdentity(for: render.rootIdentity) != render.rootIdentity)
+    #expect(identities.filter { render.scope(at: $0) == .text }.count == 1)
+    #expect(identities.filter { render.scope(at: $0) == .clipBoundary }.count == 1)
+    #expect(identities.filter { render.scope(at: $0) == .foregroundStyle(.red) }.count == 1)
+    #expect(identities.filter { render.scope(at: $0) == .background(.blue) }.count == 1)
+
+    for identity in identities {
+        guard let layoutIdentity = render.layoutIdentity(for: identity) else {
+            Issue.record("every reachable semantic scope must select layout identity")
+            continue
+        }
+        #expect(
+            sink.primitive(at: layoutIdentity) != nil
+                || sink.modifierCount(of: layoutIdentity) != nil
+        )
+        if render.scope(at: identity) == .text {
+            #expect(render.childCount(of: identity) == 0)
+        }
+        if render.scope(at: identity) == .foregroundStyle(.red)
+            || render.scope(at: identity) == .background(.blue)
+            || render.scope(at: identity) == .clipBoundary
+        {
+            #expect(render.childCount(of: identity) == 1)
+            #expect(render.layoutIdentity(for: identity) == identity)
+        }
+    }
+}
+
+@Test
+func invalidTextMarkerRemainsInvalidInTheSharedLayoutProjection() {
+    var workspace = AdapterWorkspace()
+    var sink = SemanticLayoutResultSink(storage: AdapterStorage())
+
+    let result = expandSemanticTree(
+        AdapterInvalidTextRoot(),
+        limits: AdapterRenderRoot.limits,
+        workspace: &workspace,
+        sink: &sink
+    )
+
+    guard case .success = result else {
+        Issue.record("semantic expansion must preserve the invalid declaration")
+        return
+    }
+    let render = sink.renderView
+    let text = reachableIdentities(in: render).first { render.scope(at: $0) == .text }
+    #expect(text != nil)
+    if let text {
+        #expect(sink.textScalarCount(of: text) == 1)
+        #expect(sink.textScalar(of: text, at: 0) == 0xd800)
+        #expect(render.childCount(of: text) == 0)
+    }
+}
+
+private func reachableIdentities<View: SemanticRenderView>(
+    in view: borrowing View
+) -> [View.Identity] {
+    var result: [View.Identity] = []
+    var pending = [view.rootIdentity]
+    while let identity = pending.popLast() {
+        result.append(identity)
+        guard let count = view.childCount(of: identity) else { continue }
+        var children: [View.Identity] = []
+        var index: UInt16 = 0
+        while index < count {
+            if let child = view.child(of: identity, at: index) {
+                children.append(child)
+            }
+            index += 1
+        }
+        pending.append(contentsOf: children.reversed())
+    }
+    return result
+}
+
+private struct AdapterRenderRoot: View {
+    static let limits = SemanticExpansionLimits(
+        maximumDepth: 32,
+        maximumSemanticNodes: 16,
+        maximumBodyEvaluations: 4,
+        maximumModifierApplications: 8,
+        maximumActionOccurrences: 1
+    )!
+
+    var body: some View {
+        Text("render")
+            .foregroundStyle(.red)
+            .background(.blue)
+            .frame(width: 32, height: 12)
+    }
+}
+
+private struct AdapterInvalidTextRoot: View {
+    var body: some View {
+        Text(
+            "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        )
+    }
+}
+
 private struct AdapterRoot: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 3) {
@@ -203,7 +323,69 @@ private struct AdapterModifierRecord {
     let chainIndex: UInt16
 }
 
-private struct AdapterStorage: SemanticLayoutResultStorage {
+private struct AdapterRenderRecord {
+    let identity: AdapterIdentity
+    var scope: SemanticRenderScope
+}
+
+private struct AdapterRenderView: SemanticRenderView {
+    let rootIdentity: AdapterIdentity
+    let structural: [AdapterIdentity]
+    let primitives: [AdapterPrimitiveRecord]
+    let modifiers: [AdapterModifierRecord]
+    let scopes: [AdapterRenderRecord]
+
+    var semanticScopeCount: UInt16 {
+        UInt16(structural.count)
+    }
+
+    func scope(at identity: AdapterIdentity) -> SemanticRenderScope? {
+        scopes.first { $0.identity == identity }?.scope
+    }
+
+    func layoutIdentity(for identity: AdapterIdentity) -> AdapterIdentity? {
+        guard structural.contains(identity) else { return nil }
+        if primitives.contains(where: { $0.identity == identity })
+            || modifiers.contains(where: { $0.identity == identity })
+        {
+            return identity
+        }
+        return structural.first { candidate in
+            identity != candidate
+                && identity.isPrefix(of: candidate)
+                && (primitives.contains(where: { $0.identity == candidate })
+                    || modifiers.contains(where: { $0.identity == candidate }))
+        }
+    }
+
+    func childCount(of identity: AdapterIdentity) -> UInt16? {
+        guard structural.contains(identity) else { return nil }
+        return UInt16(children(of: identity).count)
+    }
+
+    func child(of identity: AdapterIdentity, at index: UInt16) -> AdapterIdentity? {
+        guard structural.contains(identity) else { return nil }
+        let values = children(of: identity)
+        guard Int(index) < values.count else { return nil }
+        return values[Int(index)]
+    }
+
+    private func children(of identity: AdapterIdentity) -> [AdapterIdentity] {
+        structural.filter { candidate in
+            guard identity != candidate, identity.isPrefix(of: candidate) else {
+                return false
+            }
+            return !structural.contains { intermediate in
+                intermediate != identity
+                    && intermediate != candidate
+                    && identity.isPrefix(of: intermediate)
+                    && intermediate.isPrefix(of: candidate)
+            }
+        }
+    }
+}
+
+private struct AdapterStorage: SemanticRenderResultStorage {
     let maximumStructuralOccurrences: UInt16 = 32
     let maximumBodyEvaluations: UInt16 = 8
     let maximumSemanticOccurrences: UInt16 = 8
@@ -213,12 +395,25 @@ private struct AdapterStorage: SemanticLayoutResultStorage {
     private var structural: [AdapterIdentity] = []
     private var primitives: [AdapterPrimitiveRecord] = []
     private var modifiers: [AdapterModifierRecord] = []
+    private var renderScopes: [AdapterRenderRecord] = []
     private var isPublished = false
+
+    var renderView: AdapterRenderView {
+        precondition(isPublished)
+        return AdapterRenderView(
+            rootIdentity: structural[0],
+            structural: structural,
+            primitives: primitives,
+            modifiers: modifiers,
+            scopes: renderScopes
+        )
+    }
 
     mutating func beginSemanticResult() -> Bool {
         structural.removeAll(keepingCapacity: true)
         primitives.removeAll(keepingCapacity: true)
         modifiers.removeAll(keepingCapacity: true)
+        renderScopes.removeAll(keepingCapacity: true)
         isPublished = false
         return true
     }
@@ -227,6 +422,9 @@ private struct AdapterStorage: SemanticLayoutResultStorage {
         identity: borrowing AdapterIdentity
     ) -> Bool {
         structural.append(copy identity)
+        renderScopes.append(
+            AdapterRenderRecord(identity: copy identity, scope: .structural)
+        )
         return true
     }
 
@@ -259,20 +457,29 @@ private struct AdapterStorage: SemanticLayoutResultStorage {
                 scalars: scalars
             )
         )
+        setRenderScope(
+            SemanticRenderScope(primitivePayload: payload),
+            for: identity
+        )
         return true
     }
 
-    mutating func stageModifier(
+    mutating func stageModifier<Payload>(
         identity: borrowing AdapterIdentity,
         modifier: SemanticLayoutModifier,
+        payload: borrowing Payload,
         chainIndex: UInt16
-    ) -> Bool {
+    ) -> Bool where Payload: _GiftUISemanticModifierPayload {
         modifiers.append(
             AdapterModifierRecord(
                 identity: copy identity,
                 modifier: modifier,
                 chainIndex: chainIndex
             )
+        )
+        setRenderScope(
+            SemanticRenderScope(modifierPayload: payload),
+            for: identity
         )
         return true
     }
@@ -301,6 +508,7 @@ private struct AdapterStorage: SemanticLayoutResultStorage {
         structural.removeAll(keepingCapacity: true)
         primitives.removeAll(keepingCapacity: true)
         modifiers.removeAll(keepingCapacity: true)
+        renderScopes.removeAll(keepingCapacity: true)
     }
 
     mutating func resetSemanticResult() {}
@@ -378,6 +586,16 @@ private struct AdapterStorage: SemanticLayoutResultStorage {
                     && intermediate.identity.isPrefix(of: candidate)
             }
         }
+    }
+
+    private mutating func setRenderScope(
+        _ scope: SemanticRenderScope,
+        for identity: borrowing AdapterIdentity
+    ) {
+        guard let index = renderScopes.firstIndex(where: { $0.identity == identity }) else {
+            return
+        }
+        renderScopes[index].scope = scope
     }
 
     private func modifiers(of identity: AdapterIdentity) -> [AdapterModifierRecord] {
