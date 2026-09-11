@@ -1,2 +1,94 @@
 schema: spec-007-fixtures-v1
-cases: []
+cases:
+  - name: public-declaration-audit
+    semanticInput: {kind: declaration-surface}
+    sourceTokens: []
+    identityRelations: []
+    rootProposal: {width: absent, height: absent}
+    layoutLimits: {scopes: 1, depth: 1, scalars: 1, lines: 1, glyphs: 1}
+    workspaceCapacity: {scopes: 1, depth: 1, scalars: 1, lines: 1, glyphs: 1}
+    sinkCapacity: {scopes: 1, lines: 1, glyphs: 1}
+    expectedResult: {success: compile-and-layout-validation}
+    expectedTranscript: []
+    expectedSinkCalls: {begin: 0, stage: 0, publish: 0, discard: 0, reset: 0}
+    expectedFailureMapping: none
+    criteria: [LY-001]
+    evidenceClasses: [host-execution]
+  - name: semantic-profile-equivalence
+    semanticInput: {kind: recording-dynamic-static-equivalent}
+    sourceTokens: []
+    identityRelations: [same-token-equality, different-token-inequality]
+    rootProposal: {width: 80, height: 60}
+    layoutLimits: {scopes: 64, depth: 64, scalars: 64, lines: 64, glyphs: 64}
+    workspaceCapacity: {scopes: 64, depth: 64, scalars: 64, lines: 64, glyphs: 64}
+    sinkCapacity: {scopes: 64, lines: 64, glyphs: 64}
+    expectedResult: {success: normalized-transcript-equality}
+    expectedTranscript: []
+    expectedSinkCalls: {begin: 1, stage: equal, publish: 1, discard: 0, reset: 1}
+    expectedFailureMapping: none
+    criteria: [LY-002, LY-006]
+    evidenceClasses: [host-execution, inspection]
+  - name: combined-layout-success
+    semanticInput: {kind: stack-overlay-frame-padding-text, root: "scope:root", text: "scope:text"}
+    sourceTokens: ["scope:root", "scope:text", "instance:reference-zero", "glyph:uppercase-a"]
+    identityRelations: [root-not-equal-text]
+    rootProposal: {width: 80, height: 60}
+    layoutLimits: {scopes: 64, depth: 64, scalars: 64, lines: 64, glyphs: 64}
+    workspaceCapacity: {scopes: 64, depth: 64, scalars: 64, lines: 64, glyphs: 64}
+    sinkCapacity: {scopes: 64, lines: 64, glyphs: 64}
+    expectedResult: {success: {scopes: 8, scalars: 2, lines: 1, glyphs: 2}}
+    expectedTranscript:
+      - event: scope
+        fields: {sourceToken: "scope:root", bounds: "0,0,21,31", clip: "0,0,21,31"}
+      - event: scope
+        fields: {sourceToken: "scope:text", bounds: "1,1,18,20", clip: "1,1,18,20"}
+      - event: text-line
+        fields: {sourceToken: "scope:text", lineIndex: 0, bounds: "1,1,18,20", baseline: "1,17", clip: "1,1,18,20"}
+      - event: glyph
+        fields: {sourceToken: "scope:text", lineIndex: 0, glyphIndex: 0, instance: "instance:reference-zero", glyph: "glyph:uppercase-a", baseline: "1,17", clip: "1,1,18,20"}
+    expectedSinkCalls: {begin: 1, stage: 12, publish: 1, discard: 0, reset: 1}
+    expectedFailureMapping: none
+    criteria: [LY-003, LY-004]
+    evidenceClasses: [host-execution]
+  - name: failure-atomicity-matrix
+    semanticInput: {kind: injected-invalid-overflow-capacity-reentry-lookup-and-sink-refusal}
+    sourceTokens: []
+    identityRelations: []
+    rootProposal: {width: absent, height: absent}
+    layoutLimits: {scopes: 5, depth: 5, scalars: 5, lines: 5, glyphs: 5}
+    workspaceCapacity: {scopes: 5, depth: 5, scalars: 5, lines: 5, glyphs: 5}
+    sinkCapacity: {scopes: 5, lines: 5, glyphs: 5}
+    expectedResult: {failure: exact-local-error-and-owner-fact}
+    expectedTranscript: []
+    expectedSinkCalls: {begin: conditional, stage: conditional, publish: conditional, discard: zero-or-one, reset: zero-or-one}
+    expectedFailureMapping: {schema: failure-schema.tsv}
+    criteria: [LY-005]
+    evidenceClasses: [host-execution]
+  - name: package-boundary-audit
+    semanticInput: {kind: import-and-source-audit}
+    sourceTokens: []
+    identityRelations: []
+    rootProposal: {width: absent, height: absent}
+    layoutLimits: {scopes: 1, depth: 1, scalars: 1, lines: 1, glyphs: 1}
+    workspaceCapacity: {scopes: 1, depth: 1, scalars: 1, lines: 1, glyphs: 1}
+    sinkCapacity: {scopes: 1, lines: 1, glyphs: 1}
+    expectedResult: {success: forbidden-imports-rejected}
+    expectedTranscript: []
+    expectedSinkCalls: {begin: 0, stage: 0, publish: 0, discard: 0, reset: 0}
+    expectedFailureMapping: none
+    criteria: [LY-007]
+    evidenceClasses: [inspection]
+  - name: signal-analyzer-approval
+    semanticInput: {kind: complete-signal-analyzer-layout-surface}
+    sourceTokens: []
+    identityRelations: [exact-semantic-identities]
+    rootProposal: {width: 320, height: 240}
+    layoutLimits: {scopes: 512, depth: 64, scalars: 4096, lines: 512, glyphs: 4096}
+    workspaceCapacity: {scopes: 512, depth: 64, scalars: 4096, lines: 512, glyphs: 4096}
+    sinkCapacity: {scopes: 512, lines: 512, glyphs: 4096}
+    expectedResult: {success: bounded-signal-analyzer-transcript}
+    expectedTranscript: []
+    expectedSinkCalls: {begin: 1, stage: bounded, publish: 1, discard: 0, reset: 1}
+    expectedFailureMapping: none
+    criteria: [LY-008, LY-009]
+    evidenceClasses: [cross-build, host-execution, inspection]

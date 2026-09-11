@@ -424,21 +424,21 @@ tokens, not profile-private raw identity bytes or addresses.
 across direct recording, fixture-dynamic, and fixture-static views and proves
 linear work, exact staging order, reuse, and no retained input.
 
-- [ ] `T6.1` — Implement the recording sink's staged/current generations and
+- [x] `T6.1` — Implement the recording sink's staged/current generations and
       canonical event vocabulary for begin, scope, line, glyph, publish, and
       discard. Cross-check every summary count, root bounds, observed depth,
       identity relation, exact depth-first stage order, and text-event locality
       against the published transcript.
-- [ ] `T6.2` — Assemble the complete stack/spacer/alignment/padding/frame/
+- [x] `T6.2` — Assemble the complete stack/spacer/alignment/padding/frame/
       proposal/clip corpus with deterministic expected tokens and numeric
       fields. Cover every table row in SPEC-007's Testing Requirements and
       derive hit geometry as bounds or checked bounds/clip intersection
       without associating actions or dispatch policy.
-- [ ] `T6.3` — Add the complete canonical text corpus to the same event
+- [x] `T6.3` — Add the complete canonical text corpus to the same event
       oracle, verifying that text lines precede their glyphs and that no
       raster, backend, platform, capability, or native-font fact affects any
       value.
-- [ ] `T6.4` — Fault-inject every invalid declaration, arithmetic overflow,
+- [x] `T6.4` — Fault-inject every invalid declaration, arithmetic overflow,
       independent and coincident capacity edge, scope-count mismatch,
       malformed in-range access, invalid Unicode scalar, post-validation text
       lookup failure, begin/stage/publish refusal, and every independently
