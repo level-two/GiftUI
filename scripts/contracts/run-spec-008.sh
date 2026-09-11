@@ -62,6 +62,7 @@ declared_inputs() {
             "$PROJECT_ROOT/Tests/GiftUIRenderLoweringTests/RenderViewBorrowTests.swift" \
             "$PROJECT_ROOT/scripts/contracts/driver-registry.tsv" \
             "$SCRIPT_DIR/check-spec-008-harness.rb" \
+            "$SCRIPT_DIR/check-spec-008-conformance.rb" \
             "$SCRIPT_DIR/check-spec-008-migration.rb" \
             "$SCRIPT_DIR/check-spec-008-render-core-values.rb" \
             "$SCRIPT_DIR/check-spec-008-render-production-values.rb" \
@@ -274,6 +275,8 @@ record_nrf52840_identity() {
 
 record_command "$SCRIPT_DIR/check-spec-008-harness.rb"
 "$SCRIPT_DIR/check-spec-008-harness.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-008-conformance.rb"
+"$SCRIPT_DIR/check-spec-008-conformance.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-migration.rb"
 "$SCRIPT_DIR/check-spec-008-migration.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-render-core-values.rb"

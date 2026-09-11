@@ -2,7 +2,7 @@
 id: SPEC-008
 feature: giftui-mvp-architecture
 title: Normalized Rendering Contract
-status: implementing
+status: implemented
 authors:
   - codex
 created: 2026-08-25
@@ -48,11 +48,10 @@ target_milestone: MVP
 
 # SPEC-008: Normalized Rendering Contract
 
-> **Implementation status:** The maintainer explicitly approved the focused
-> foreground-stack and arithmetic-evidence amendment on 2026-09-11 and
-> authorized implementation to resume. The bounded-workspace,
-> immutable-snapshot, and error-owner amendments remain part of the approved
-> contract. SPEC-008 is again `implementing` through its active plan.
+> **Implementation status:** Implemented on 2026-09-11 after complete
+> conformance review and explicit maintainer authorization. The approved
+> bounded-workspace, immutable-snapshot, error-owner, foreground-stack, and
+> arithmetic-evidence contracts remain authoritative.
 
 ## Summary
 
@@ -1026,20 +1025,20 @@ the same workspace behavior without another stack or identity domain.
 
 ## Acceptance Criteria
 
-- [ ] **RD-001:** The exact public text/color/style declarations compile using
+- [x] **RD-001:** The exact public text/color/style declarations compile using
   only `import GiftUI`; `clear`, alpha construction, and portable unbounded
   `String` initialization fail their negative compile fixtures.
-- [ ] **RD-002:** Every bounded-text boundary and integer fixture has the exact
+- [x] **RD-002:** Every bounded-text boundary and integer fixture has the exact
   admitted bytes; invalid `Text(StaticString)` declarations reach SPEC-007's
   `.invalidDeclaration` without trap, allocation, repair, truncation, layout
   publication, or render invocation.
-- [ ] **RD-003:** Every valid canonical case emits the exact header, fills,
+- [x] **RD-003:** Every valid canonical case emits the exact header, fills,
   positioned-glyph groups, and event order declared by `fixtures.yaml`, with
   exact unclipped bounds, final clips, identities, indices, baselines, and RGB.
-- [ ] **RD-004:** Root-intersection and complete-surface initialization damage
+- [x] **RD-004:** Root-intersection and complete-surface initialization damage
   match their explicit modes for ordinary, smaller-root, empty-root, and
   off-surface cases; render lowering retains no frame-history state.
-- [ ] **RD-005:** Every semantic/layout mismatch, constructible producer
+- [x] **RD-005:** Every semantic/layout mismatch, constructible producer
   failure, render or
   structural-workspace capacity edge, ordinal-visit failure, snapshot change,
   sink capacity edge, incompatible resource, begin refusal, post-begin refusal,
@@ -1048,27 +1047,27 @@ the same workspace behavior without another stack or identity domain.
   partial current transcript. The defensive checked-intersection branches and
   direct `.arithmeticOverflow` mapping pass their required source and value
   audits without manufacturing an invalid SPEC-002 rectangle.
-- [ ] **RD-006:** No render or backend path remeasures text, changes glyphs or
+- [x] **RD-006:** No render or backend path remeasures text, changes glyphs or
   positions, substitutes or translates a resource identity, retains a borrow,
   requires a complete glyph-run array, retained display list, or per-field
   preflight transcript.
-- [ ] **RD-007:** Recording, dynamic, and static fixtures produce equal
+- [x] **RD-007:** Recording, dynamic, and static fixtures produce equal
   field-by-field event sequences, headers, results, and failure mappings; all
   global limit totals, structural capacities, and exactly-at/one-over behavior
   match the contract.
-- [ ] **RD-008:** All value-layout ceilings, the four evidence commands, and the
+- [x] **RD-008:** All value-layout ceilings, the four evidence commands, and the
   static zero-allocation requirement pass; each command records the required
   compiler, fixture digest, high-water, timing, section, and link-map evidence,
   and view-access instrumentation proves an affine `o + g` work bound.
-- [ ] **RD-009:** The Signal Analyzer manifest covers every required label,
+- [x] **RD-009:** The Signal Analyzer manifest covers every required label,
   bounded value, status, error, opaque foreground, rectangular background, and
   maximum hierarchy variant and fits its declared limits in all four profiles
   without a pixel backend.
-- [ ] **RD-010:** Import-graph tests preserve the
+- [x] **RD-010:** Import-graph tests preserve the
   semantic/layout/`GiftUIRenderLowering`/`GiftUIRenderCore`/backend boundary,
   keep both runtime profiles on the shared lowering implementation, and
   preserve the `GiftUITextResources` identity owner.
-- [ ] **RD-011:** Review finds no rasterization, pixel encoding, frame
+- [x] **RD-011:** Review finds no rasterization, pixel encoding, frame
   acceptance/disposition, capability resolution, runtime-profile selection,
   platform, driver, hardware, or Canvas/stroke contract in this Specification.
 

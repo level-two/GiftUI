@@ -1187,6 +1187,9 @@ exception and keeps all hardware-free evidence distinct from connected-target
 claims. It requests conformance review and explicit human authorization; it
 does not change SPEC-008 from `implementing`.
 
-Plan completion means every task has a recorded disposition; it does not mean
-SPEC-008 is `implemented`. The collecting conformance report requests review
-and the separate human-authorized transition.
+The maintainer explicitly authorized the separately gated `implemented`
+transition on 2026-09-11. SPEC-008 and its complete conformance report now
+record that decision without changing this plan's completed task history.
+
+Plan completion means every task has a recorded disposition; the separately
+authorized conformance transition now records SPEC-008 as `implemented`.

@@ -2,7 +2,7 @@
 spec: SPEC-008
 feature: giftui-mvp-architecture
 title: SPEC-008 Conformance Report
-status: collecting
+status: complete
 reviewers:
   - codex
 created: 2026-09-11
@@ -20,12 +20,12 @@ superseded_by: null
 
 # SPEC-008 Conformance Report
 
-> This collecting report records evidence and requests conformance review. It
-> does not authorize the governing Specification's `implemented` transition.
+> This complete report records evidence. The maintainer separately authorized
+> the governing Specification's `implemented` transition on 2026-09-11.
 
 ## Review Scope
 
-- Governing contract: [SPEC-008 Normalized Rendering Contract](../specs/spec-008-rendering.md), status `implementing` after the maintainer-approved 2026-09-11 amendment.
+- Governing contract: [SPEC-008 Normalized Rendering Contract](../specs/spec-008-rendering.md), status `implemented` after complete conformance review and explicit maintainer authorization on 2026-09-11.
 - Completed plan: [SPEC-008 Implementation Plan](../implementation-plans/spec-008-implementation-plan.md).
 - Reviewed implementation revision: `03ec470bcff90be7379810b9b2a2e219682a1a61`.
 - Four-profile evidence run: `c98c420834f90820d655316ac470fad86d1d375b-4c33a13788ae2679`.
@@ -121,7 +121,6 @@ correctness gap.
 ## Review Conclusion
 
 All eleven acceptance criteria have reproducible passing evidence, with no
-deviation or exception. This collecting report supports requesting formal
-conformance review and explicit human authorization for SPEC-008's
-`implemented` transition. Those two human gates remain open; this report does
-not perform the transition.
+deviation or exception. The maintainer explicitly authorized that transition
+on 2026-09-11, so SPEC-008 is now `implemented`. This report records the
+decision; it did not grant the authorization.
