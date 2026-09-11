@@ -214,7 +214,7 @@ typed primitive without evaluating `body` or invoking drawing.
       invariant `body`, primitive marker, and one-call traversal override in
       `GiftUI`. Preserve the exact draw callable for semantic staging without a
       public/package lookup and without invocation during expansion.
-- [ ] `T1.2` — Implement noncopyable, non-publicly-constructible
+- [x] `T1.2` — Implement noncopyable, non-publicly-constructible
       `GraphicsContext` and `Path` with the exact two-`inout`, nonescaping,
       typed-throws `withPath`, `move`, `addLine`, and both `stroke` declarations.
 - [ ] `T1.3` — Implement exact `Shading`, `StrokeStyle`, `LineCap`, `LineJoin`,
@@ -684,3 +684,18 @@ their operations and behavioral obligations remain incomplete under T1.2 and
 T1.3. The 388-test host suite, exact GiftUI source inventory, migration audit,
 and macOS dynamic SPEC-012 driver pass; all DR rows remain fail-closed. `T1.2`
 is the next dependency-complete task.
+
+`T1.2` is complete. `GraphicsContext` and `Path` are noncopyable and have no
+public initializer; their exact two-`inout`, nonescaping, typed-throws
+`withPath`, `move`, `addLine`, and two borrowed-Path `stroke` declarations now
+forward into caller-owned storage through a package-only, noncapturing,
+C-compatible primitive-status operation table. Normal and throwing bodies
+invalidate and end the Path scope exactly once, with the body error retaining
+precedence over cleanup failure. Focused tests exercise operation forwarding,
+typed results, and both cleanup paths. The first candidate used throwing
+`@convention(thin)` references, but the pinned host compiler rejected those as
+an unimplemented nontrivial thin reference; the linked draft design records
+the supported replacement and leaves four-profile symbol/resource proof to
+T1.5. `Shading` and `StrokeStyle` declarations were required to compile the
+exact stroke signatures, but their T1.3 behavior and evidence remain
+unclaimed. `T1.3` is the next dependency-complete task.

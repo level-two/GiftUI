@@ -40,7 +40,7 @@ current	ordinary-render	Sources/GiftUIRenderCore/RenderOperationSink.swift	SPEC-
 current	ordinary-render	Sources/GiftUIRenderLowering/RenderPreflight.swift	SPEC-008 ordinary preflight traversal	extend	SPEC-012-T5.1
 current	ordinary-render	Sources/GiftUIRenderLowering/RenderStreaming.swift	SPEC-008 ordinary streaming traversal	extend	SPEC-012-T5.2
 current	drawing-contract	Sources/GiftUI/DrawingStyles.swift	SPEC-012 public cap and join declarations	maintain	SPEC-012-T1.3
-current	drawing-contract	Sources/GiftUI/DrawingSurface.swift	SPEC-012 scoped context shell and exact drawing error declaration	maintain	SPEC-012-T1.2/T1.3
+current	drawing-contract	Sources/GiftUI/DrawingSurface.swift	SPEC-012 scoped context and Path facade bridge plus exact drawing error	maintain	SPEC-012-T1.2/T1.3
 current	drawing-contract	Sources/GiftUI/Canvas.swift	SPEC-012 public Canvas primitive declaration	maintain	SPEC-012-T1.1
 current	drawing-contract	Sources/GiftUIRenderCore/DrawingOperationSink.swift	SPEC-012 borrowed stroke consumer contract	maintain	SPEC-012-T2.2/T2.3
 current	drawing-owner	Sources/GiftUIDrawing/GiftUIDrawing.swift	approved focused producer target seam	maintain	SPEC-012-T3/T5

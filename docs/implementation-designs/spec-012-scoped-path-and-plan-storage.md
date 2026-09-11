@@ -83,11 +83,15 @@ The workspace separates three finite regions:
 2. immutable plan point and subpath snapshots;
 3. fixed stroke headers referring to their immutable snapshot ranges.
 
-The facade-to-workspace bridge is replaceable and package-internal. Its exact
-Swift representation is selected only after T1.2/T3 compile and resource
-checks demonstrate that it preserves exclusivity, typed throws, and the static
-profile's direct-call and zero-heap constraints. No raw storage reference,
-operation table, or callable meaning becomes public or backend-visible.
+The facade-to-workspace bridge is replaceable and package-internal. The T1.2
+candidate stores one workspace pointer, scope generations, and a fixed table
+of noncapturing C-compatible functions. The table crosses only primitive
+integers and maps one closed status byte back to the exact typed
+`DrawingError`; public methods continue to expose only GiftUI values and typed
+throws. Four-profile T1.5 and T3 resource checks must still demonstrate that
+the representation preserves exclusivity and the static profile's direct-call
+and zero-heap constraints. No storage reference, operation table, or callable
+meaning becomes public or backend-visible.
 
 ## Data and Control Flow
 
@@ -188,16 +192,19 @@ facade, stack, linked RAM/flash, and allocator-symbol evidence.
   must not alter an earlier stroke.
 - A public/package Canvas callable lookup is rejected by the exact primitive
   staging contract.
+- Throwing `@convention(thin)` operation references are rejected because the
+  pinned host compiler reports nontrivial thin function references as an
+  unimplemented feature when the maintained test target forms the table.
 
 ## Open Implementation Questions
 
-The exact package-internal facade bridge representation remains to be proven
-on the pinned macOS and Embedded Swift compilers. T1.2/T3 must show that the
-chosen representation preserves noncopyable exclusivity and typed throws
-without introducing allocator, existential, reflection, or indirect-dispatch
-artifacts forbidden by the static profile. Failure to find such a
-representation is an upstream contract/architecture blocker, not permission
-to widen the API or weaken a profile.
+The primitive-status C-compatible bridge compiles and preserves the scoped
+behavior in the pinned host debug build. T1.5 must still prove its emitted
+interfaces, SIL, symbols, and Embedded Swift compatibility, and T3 must prove
+the concrete workspace binding. Any allocator, existential, reflection,
+Objective-C runtime, or forbidden static callable-dispatch artifact is an
+upstream contract/architecture blocker, not permission to widen the API or
+weaken a profile.
 
 ## Code and Evidence Links
 
