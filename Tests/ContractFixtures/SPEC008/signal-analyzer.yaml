@@ -1,2 +1,75 @@
 schema: spec-008-signal-analyzer-v1
-variants: []
+variants:
+  - name: complete-signal-analyzer-render-surface
+    labels:
+      - DIGITAL SIGNAL ANALYZER
+      - Four-channel acquisition
+      - TIME
+      - CH1
+      - CH2
+      - CH3
+      - CH4
+      - HIGH
+      - LOW
+      - Start
+      - Stop
+      - Clear
+      - 1 s
+      - 2 s
+      - 5 s
+    boundedValues: ["0.00 s", "1.00 s", "2.00 s", "2.50 s", "5.00 s"]
+    statusTexts: [READY, RUNNING, STOPPED, FAILED]
+    errorTexts: [ACQUISITION ERROR]
+    foregrounds:
+      - {role: primary, red: 255, green: 255, blue: 255}
+      - {role: secondary, red: 128, green: 128, blue: 128}
+      - {role: channel-high, red: 0, green: 255, blue: 0}
+      - {role: channel-low, red: 0, green: 128, blue: 255}
+      - {role: failure, red: 255, green: 0, blue: 0}
+    backgrounds:
+      - {role: screen, red: 0, green: 0, blue: 0}
+      - {role: waveform-panel, red: 16, green: 16, blue: 16}
+      - {role: status, red: 32, green: 32, blue: 32}
+      - {role: controls, red: 48, green: 48, blue: 48}
+      - {role: ruler, red: 24, green: 24, blue: 24}
+      - {role: channel-row, red: 8, green: 8, blue: 8}
+    maximumHierarchyVariants:
+      - name: failed-five-second-four-channel-maximum
+        titleTexts: 2
+        statusTexts: 1
+        rulerValues: 3
+        channelRows: 4
+        channelLabels: 4
+        levelLabels: 4
+        controlLabels: 6
+        errorTexts: 1
+        textOccurrences: 21
+        rectangularBackgrounds: 9
+        positionedGlyphs: 139
+        semanticScopes: 62
+        layoutScopes: 32
+        traversalDepth: 6
+        textLines: 21
+        foregroundDepth: 5
+    renderLimits: {maximumOperations: 64, maximumPositionedGlyphs: 512, maximumClipDepth: 16}
+    workspaceCapacity:
+      maximumSemanticScopes: 128
+      maximumLayoutScopes: 128
+      maximumTraversalDepth: 32
+      maximumTextLines: 64
+      semanticVisitBytes: 128
+      layoutVisitBytes: 128
+      foregroundSlotBytes: 96
+      logicalStorageBytes: 352
+    sinkCapacity: {maximumOperations: 64, maximumPositionedGlyphs: 512}
+    expectedHighWater:
+      operations: 30
+      positionedGlyphs: 139
+      clipDepth: 4
+      semanticScopes: 62
+      layoutScopes: 32
+      traversalDepth: 6
+      textLines: 21
+      foregroundDepth: 5
+    criteria: [RD-009]
+    evidenceClasses: [cross-build, host-execution, inspection]

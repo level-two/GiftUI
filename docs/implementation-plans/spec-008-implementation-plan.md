@@ -519,7 +519,7 @@ without acquiring SPEC-008 authority.
       resources, platform, driver, OS/RTOS, HAL, or hardware module; backends
       cannot import semantic/layout/lowering authority; and `GiftUI` does not
       re-export internal rendering SPI.
-- [ ] `T7.2` — Populate `signal-analyzer.yaml` with every required label,
+- [x] `T7.2` — Populate `signal-analyzer.yaml` with every required label,
       bounded value, status/error text, opaque foreground, rectangular
       background, and maximum hierarchy variant. Fix the exact operation,
       glyph, clip-depth, semantic-scope, layout-scope, traversal-depth, text-
@@ -1095,6 +1095,16 @@ isolation, unique symbol ownership, and the absence of internal rendering SPI
 re-export from `GiftUI`; see the
 [package boundary evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-7/package-boundaries.md).
 `T7.2` is the next dependency-complete task.
+
+`T7.2` is complete. The governed manifest enumerates the exact title,
+subtitle, ruler/channel/level/control labels, bounded ruler values, all four
+status texts, a nonempty acquisition error, and every selected opaque
+foreground/background role. Its maximum hierarchy accounts for 62 semantic
+and 32 layout scopes, 21 text lines, 139 glyphs, 30 operations, and exact
+traversal/clip/foreground high-water within common render, structural, and
+sink limits; see the
+[Signal Analyzer render-surface evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-7/signal-analyzer-render-surface.md).
+`T7.3` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

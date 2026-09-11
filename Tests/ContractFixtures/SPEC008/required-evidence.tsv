@@ -7,6 +7,6 @@ RD-005	T4.1-T4.5,T5.5,T6.3,T8.2	failure-mapping-and-atomic-lifecycle-matrix	-	pe
 RD-006	T2.4,T3.3,T4.4,T5.2,T6.4,T7.1	borrow-streaming-and-no-retained-list-audits	-	pending
 RD-007	T4.2,T5.5,T6.3-T6.5,T8.2-T8.4	normalized-profile-and-limit-comparison	-	pending
 RD-008	T0.3,T3.5,T6.4,T8.1-T8.4	four-profile-layout-allocation-and-resource-reports	-	pending
-RD-009	T7.2,T7.4,T8.2	signal-analyzer-manifest-and-high-water-report	-	pending
+RD-009	T7.2,T7.4,T8.2	signal-analyzer-manifest-and-high-water-report	complete-signal-analyzer-render-surface	pending
 RD-010	T0.2,T2.5,T7.1,T7.3,T8.1	target-graph-symbol-and-shared-lowering-audit	-	pending
 RD-011	T0.4,T7.1,T7.3-T7.5,T8.5	scope-migration-and-downstream-seam-review	-	pending
