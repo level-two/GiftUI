@@ -67,6 +67,8 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-008-direct-render-views.rb" \
             "$SCRIPT_DIR/check-spec-008-render-view-boundaries.rb" \
             "$SCRIPT_DIR/check-spec-008-render-view-static-exposure.sh" \
+            "$SCRIPT_DIR/check-spec-008-value-layouts.rb" \
+            "$SCRIPT_DIR/check-spec-008-value-profiles.sh" \
             "$SCRIPT_DIR/check-spec-008-declaration-profiles.sh" \
             "$SCRIPT_DIR/check-spec-008-color-surface.sh" \
             "$SCRIPT_DIR/check-spec-008-bounded-text-surface.sh" \
@@ -220,7 +222,7 @@ record_nrf52840_identity() {
     printf 'fixture-digest\tcomplete\tdeclared inputs and fixture digest recorded\n'
     printf 'declaration-fixtures\tcomplete\tall 17 fixtures compile as expected for the selected profile\n'
     printf 'render-targets\tblocked\tRender Core is present; Render Lowering has not landed\n'
-    printf 'value-layouts\tmissing\tT3.1 host layouts pass; complete cross-profile set is unavailable\n'
+    printf 'value-layouts\tcomplete\tall 11 bounded values pass exact or maximum layouts for this profile\n'
     printf 'result-comparison\tmissing\tcanonical normalized results are not implemented\n'
     printf 'transcript-comparison\tmissing\tcanonical recording transcripts are not implemented\n'
     printf 'high-water\tmissing\tdeclared and observed high-water values are unavailable\n'
@@ -285,6 +287,19 @@ if [[ "$profile" == "macos-static" ]]; then
     record_command "$SCRIPT_DIR/check-spec-008-render-view-static-exposure.sh"
     "$SCRIPT_DIR/check-spec-008-render-view-static-exposure.sh" >>"$log_path" 2>&1
 fi
+value_layout_dir="$report_dir/value-layouts"
+record_command "$SCRIPT_DIR/check-spec-008-value-profiles.sh" \
+    --profile "$profile" --output "$value_layout_dir"
+"$SCRIPT_DIR/check-spec-008-value-profiles.sh" \
+    --profile "$profile" --output "$value_layout_dir" >>"$log_path" 2>&1
+printf '%s\t%s\t%s\n' \
+    render-value-layouts \
+    "${value_layout_dir#"$PROJECT_ROOT/"}/render-value-layouts.tsv" \
+    "$(hash_file "$value_layout_dir/render-value-layouts.tsv")" >>"$images_path"
+printf '%s\t%s\t%s\n' \
+    render-value-layout-identity \
+    "${value_layout_dir#"$PROJECT_ROOT/"}/identity.tsv" \
+    "$(hash_file "$value_layout_dir/identity.tsv")" >>"$images_path"
 record_command "$SCRIPT_DIR/check-spec-008-harness.rb" "$report_dir"
 "$SCRIPT_DIR/check-spec-008-harness.rb" "$report_dir" >>"$log_path" 2>&1
 printf 'exit_code=0\n' >>"$metadata_path"

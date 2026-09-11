@@ -345,7 +345,7 @@ recording sink enforces atomic current transcripts without pixel behavior.
       operation/glyph counts, keep each glyph group complete and ordered, and
       preserve nominal identities and numeric values without using memory
       bytes, pointers, hashes, metatype addresses, or profile-private storage.
-- [ ] `T3.5` — Add macOS and cross-compiler value-layout probes for every
+- [x] `T3.5` — Add macOS and cross-compiler value-layout probes for every
       SPEC-008 value, including exact sizes for `Color`, `RenderLimits`,
       `RenderSinkCapacity`, and `RenderProductionError`, plus all upper bounds.
       Record compiler/target/optimization identity with each result.
@@ -846,7 +846,7 @@ line/glyph, and occurrence-wide glyph-index disagreement. A source audit
 rejects pointer, hash, memory-layout, and raw-byte identity comparisons; see
 the
 [direct render view evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-2/direct-render-views.md).
-T3.5 is the next dependency-complete evidence task.
+T2.5 and T3.5 are the next dependency-complete evidence tasks.
 
 `T2.5` is complete. A runtime lifetime test passes semantic and resolved-layout
 views carrying the only strong references to their source tokens through one
@@ -859,6 +859,15 @@ materialization, and absence of normalized rendering authority in Layout or
 layout authority in Render Core; see the
 [render view boundary evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-2/render-view-boundaries.md).
 `T3.5` is the next dependency-complete evidence task.
+
+`T3.5` is complete. The registered four-profile value probe compiles and
+records size, stride, and alignment for all eleven bounded SPEC-008 values,
+enforcing the five exact sizes and every approved upper bound from LLVM IR.
+Each result records its compiler path, digest and version, target, optimization
+mode, complete commands, and normalized layout table; see the
+[value layout profile evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-3/value-layout-profiles.md).
+The ARMv6 and nRF52840 results are cross-build evidence only. `T4.2` is the
+next dependency-complete implementation task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
