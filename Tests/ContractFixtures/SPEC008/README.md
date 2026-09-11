@@ -1,7 +1,7 @@
 # SPEC-008 Contract Fixtures
 
 This directory contains the profile-neutral fixture and evidence schemas
-derived from SPEC-008's approved baseline and current review amendment. The
+derived from approved SPEC-008. The
 corpus fixes symbolic semantic/layout inputs, normalized rendering results,
 ordered recording events, exact local failure mappings, and the Signal Analyzer
 rendering manifest without defining pixel output, backend behavior, frame

@@ -2,7 +2,7 @@
 spec: SPEC-008
 feature: giftui-mvp-architecture
 title: SPEC-008 Implementation Plan
-status: draft
+status: active
 owners:
   - codex
 created: 2026-09-06
@@ -21,18 +21,16 @@ superseded_by: null
 
 # SPEC-008 Implementation Plan
 
-> This plan is paused in `draft` while the focused 2026-09-11 foreground-stack
-> and arithmetic-evidence amendment is in review. Completed task records remain
-> historical implementation evidence; implementation requires renewed
-> Specification approval and a final readiness pass.
+> This active plan incorporates the explicitly approved 2026-09-11
+> foreground-stack and arithmetic-evidence amendment. Completed task records
+> remain historical implementation evidence; the amendment follow-up work
+> below must land before those surfaces are treated as conforming.
 
 ## Authority and Scope
 
-The governing [SPEC-008](../specs/spec-008-rendering.md) contract is in review
-for a focused foreground-stack and arithmetic-evidence correction. Its
-previously approved contract and authority chain remain historical context,
-but the amended text is not implementation authority until explicitly
-approved. That chain is
+The governing [SPEC-008](../specs/spec-008-rendering.md) contract is
+`implementing` after the maintainer explicitly approved its focused
+foreground-stack and arithmetic-evidence correction. Its authority chain is
 accepted [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md),
 approved [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md),
 [RFC-003](../rfcs/rfc-003-deterministic-text-rendering-architecture.md), and
@@ -987,9 +985,8 @@ tests exhaust the mapping, while the source and package audits prove that
 lowering imports no failure module and the pure adapter contains no diagnostic,
 allocation, or second-production path; see the
 [failure-adapter evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-4/render-failure-adapter.md).
-`T5.1` remains open. The review amendment now supplies exact current/push/pop
-operations and binds their storage to `maximumTraversalDepth`; implementation
-waits for explicit approval of that contract change.
+`T5.1` remains open. The approved amendment now supplies exact current/push/pop
+operations and binds their storage to `maximumTraversalDepth`.
 
 `T5.2` is complete independently of the unresolved T5.1 workspace-storage
 seam. A direct-view golden proves source-order structural children, both opaque
@@ -1014,14 +1011,12 @@ fresh attempts without frame history; see the
 Implementation review found two approval blockers. The amendment now defines
 the missing foreground-stack operations and replaces impossible arithmetic
 fault injection with defensive branch and direct mapping evidence while
-preserving the closed error and precedence order. T5.1 and T5.5 remain open,
-and Milestone 6 entry conditions are not met until the amended Specification is
-explicitly approved; see the
+preserving the closed error and precedence order. The maintainer explicitly
+approved that amendment and resumed implementation on 2026-09-11; see the
 [implementation review](../../Tests/ContractFixtures/SPEC008/Evidence/implementation-blockers.md).
 
-After approval, the next work is the T4.1/T4.4 foreground-workspace follow-up,
-then T5.1 and T5.5. This plan must return to `active` only with that explicit
-approval.
+The next work is the T4.1/T4.4 foreground-workspace follow-up, then T5.1 and
+T5.5. Milestone 6 entry conditions remain unmet until those tasks complete.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

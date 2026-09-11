@@ -2,7 +2,7 @@
 id: SPEC-008
 feature: giftui-mvp-architecture
 title: Normalized Rendering Contract
-status: review
+status: implementing
 authors:
   - codex
 created: 2026-08-25
@@ -48,12 +48,11 @@ target_milestone: MVP
 
 # SPEC-008: Normalized Rendering Contract
 
-> **Amendment status:** Returned to `review` on 2026-09-11 for a focused
-> foreground-stack and arithmetic-evidence correction after implementation
-> exposed two contract gaps. The previously approved bounded-workspace,
-> immutable-snapshot, and error-owner amendments remain historical authority,
-> but implementation may not rely on the new text until explicit human
-> approval. The active implementation plan is paused at the affected tasks.
+> **Implementation status:** The maintainer explicitly approved the focused
+> foreground-stack and arithmetic-evidence amendment on 2026-09-11 and
+> authorized implementation to resume. The bounded-workspace,
+> immutable-snapshot, and error-owner amendments remain part of the approved
+> contract. SPEC-008 is again `implementing` through its active plan.
 
 ## Summary
 
@@ -65,10 +64,10 @@ operations.
 It also defines clipping, whole-root damage, bounded production, and the
 recording sink used to verify rendering without rasterization.
 
-This focused amendment is in review. It adds the missing caller-owned
-foreground-stack operations without adding a capacity domain, and aligns
-arithmetic evidence with the total intersection of valid SPEC-002 rectangles.
-Implementation remains paused until the amendment is explicitly approved.
+This complete amended contract is approved. The focused correction adds the
+missing caller-owned foreground-stack operations without adding a capacity
+domain, and aligns arithmetic evidence with the total intersection of valid
+SPEC-002 rectangles. Implementation has resumed through the active plan.
 
 ## Scope
 
@@ -1127,11 +1126,11 @@ outside the contract and depend on representation.
 ## Open Issues
 
 No unresolved architectural question is known. This focused contract amendment
-awaits explicit human approval before implementation may resume. Its
-coordinated runtime-profile and host-configuration schema amendments remain in
-review and block only their corresponding integration rows until separately
-approved. Stroke operations for Canvas enter through the separately governed
-DRAWING contract and its accepted ADRs; they are not silently added here.
+was explicitly approved by the maintainer on 2026-09-11. Its coordinated
+runtime-profile and host-configuration schema amendments remain in review and
+block only their corresponding integration rows until separately approved.
+Stroke operations for Canvas enter through the separately governed DRAWING
+contract and its accepted ADRs; they are not silently added here.
 
 ## Deferred and Follow-up Work
 

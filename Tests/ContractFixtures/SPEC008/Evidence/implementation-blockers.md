@@ -45,11 +45,10 @@ T5.1 and T5.5 remain open. Milestone 6 entry conditions require all focused
 semantics to be independently testable, so T6-T8 do not yet meet their entry
 gates. No implementation or conformance claim is made for the blocked work.
 
-## Draft amendment disposition
+## Approved amendment disposition
 
 The review amendment adds exact foreground current/push/pop operations, binds
 their physical storage to `maximumTraversalDepth`, and replaces impossible
 producer arithmetic injection with checked-branch and direct-mapping evidence.
-These corrections introduce no new architectural choice. They remain
-non-authoritative until explicit human approval returns SPEC-008 to an
-implementation status.
+These corrections introduce no new architectural choice. The maintainer
+explicitly approved them on 2026-09-11 and returned SPEC-008 to implementation.
