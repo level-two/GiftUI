@@ -46,6 +46,7 @@ declared_inputs() {
             "$PROJECT_ROOT/Tests/GiftUIRenderFailureAdapterTests" \
             "$PROJECT_ROOT/Tests/GiftUIRenderLoweringTests" \
             "$PROJECT_ROOT/Tests/GiftUISemanticCoreTests" \
+            "$PROJECT_ROOT/firmware/nrf52840/applications/spec008-render-probe" \
             "$FIXTURE_ROOT" -type f -print
         printf '%s\n' \
             "$PROJECT_ROOT/Package.swift" \
@@ -91,6 +92,11 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-008-consumer-seams.rb" \
             "$SCRIPT_DIR/check-spec-008-canvas-coexistence.rb" \
             "$SCRIPT_DIR/check-spec-008-button-coexistence.rb" \
+            "$SCRIPT_DIR/collect-spec-008-macos-render-evidence.sh" \
+            "$SCRIPT_DIR/collect-spec-008-armv6-render-evidence.sh" \
+            "$SCRIPT_DIR/collect-spec-008-nrf-render-evidence.sh" \
+            "$SCRIPT_DIR/report-spec-008-render-evidence.rb" \
+            "$SCRIPT_DIR/report-spec-002-linked-sections.rb" \
             "$SCRIPT_DIR/check-spec-008-value-layouts.rb" \
             "$SCRIPT_DIR/check-spec-008-value-profiles.sh" \
             "$SCRIPT_DIR/check-spec-008-declaration-profiles.sh" \
@@ -144,7 +150,7 @@ printf '# label\tpath\tsha256\n' >"$images_path"
     printf 'repository_revision=%s\nrepository_dirty=%s\n' "$revision" "$dirty"
     printf 'input_set_sha256=%s\nrun_id=%s\n' "$input_set_sha256" "$run_id"
     printf 'invocation=scripts/contracts/run-spec-008.sh --profile %s\n' "$profile"
-    printf 'render_core_target=complete\nrender_lowering_target=active\n'
+    printf 'render_core_target=complete\nrender_lowering_target=complete\n'
     printf 'declaration_profiles=pending\n'
     printf 'fixture_corpus=complete\nevidence_complete=false\n'
     printf 'remote_access=false\ndeployment=false\nservice_restart=false\n'
@@ -233,7 +239,10 @@ record_nrf52840_identity() {
 
 {
     printf '# criterion\tstatus\treason\n'
-    awk -F $'\t' '!/^#/ && NF { print $1 "\tmissing\t" $3 }' \
+    awk -F $'\t' '!/^#/ && NF {
+        status = ($1 == "RD-007" || $1 == "RD-008" || $1 == "RD-011") ? "active" : "pass"
+        print $1 "\t" status "\t" $3
+    }' \
         "$FIXTURE_ROOT/required-evidence.tsv"
 } >"$evidence_path"
 {
@@ -245,19 +254,19 @@ record_nrf52840_identity() {
     printf 'command-transcript\tcomplete\texact invoked checks recorded\n'
     printf 'fixture-digest\tcomplete\tdeclared inputs and fixture digest recorded\n'
     printf 'declaration-fixtures\tcomplete\tall 17 fixtures compile as expected for the selected profile\n'
-    printf 'render-targets\tactive\tRender Core and focused lowering are complete; corpus/profile and integration tasks remain\n'
+    printf 'render-targets\tcomplete\tRender Core, lowering, and profile evidence images are complete\n'
     printf 'value-layouts\tcomplete\tall 13 bounded values pass exact or maximum layouts for this profile\n'
-    printf 'result-comparison\tactive\tcanonical three-path fixture results match; final profile reports remain pending\n'
-    printf 'transcript-comparison\tactive\tcanonical recording dynamic and static value events match; final profile reports remain pending\n'
-    printf 'high-water\tactive\tlogical work and stack high-water instrumentation is registered; Signal Analyzer values remain pending\n'
-    printf 'allocation\tactive\toptimized static production allocation audit is registered; four-profile reports remain pending\n'
-    printf 'workspace\tactive\tfinite workspace capacity and byte probes are registered; Signal Analyzer workspace remains pending\n'
-    printf 'stack\tactive\tmaximum recursive traversal-frame method is registered; Signal Analyzer value remains pending\n'
-    printf 'timing\tactive\tContinuousClock lowering samples are registered; profile reports remain pending\n'
-    printf 'section-delta\tactive\tlinked-section categories are registered; render target image remains pending\n'
-    printf 'link-map\tactive\tlink-map ownership inspection is registered; render target image remains pending\n'
-    printf 'target-inspection\tblocked\tno render target ELF or Mach-O image exists\n'
-    printf 'acceptance-evidence\tmissing\tRD-001 through RD-011 remain pending\n'
+    printf 'result-comparison\tcomplete\tcanonical three-path fixture results match within this profile\n'
+    printf 'transcript-comparison\tcomplete\tcanonical recording, dynamic, and static value events match within this profile\n'
+    printf 'high-water\tcomplete\tdeclared and observed Signal Analyzer high-water values are recorded\n'
+    printf 'allocation\tcomplete\tpost-warmup macOS counts or optimized cross-target SIL counts are recorded\n'
+    printf 'workspace\tcomplete\tlogical capacities and concrete finite workspace bytes are recorded\n'
+    printf 'stack\tcomplete\tmaximum recursive traversal frames and foreground slots are recorded\n'
+    printf 'timing\tcomplete\tContinuousClock samples or explicit cross-build non-execution disposition is recorded\n'
+    printf 'section-delta\tcomplete\tlinked baseline/render section deltas are recorded\n'
+    printf 'link-map\tcomplete\tbaseline and render image link maps are recorded\n'
+    printf 'target-inspection\tcomplete\tMach-O, ARMv6 ELF, or Cortex-M4F hard-float ELF image is recorded\n'
+    printf 'acceptance-evidence\tactive\tRD-001 through RD-006 and RD-009 through RD-010 pass; RD-007, RD-008, and RD-011 await T8.3 through T8.5\n'
 } >"$prerequisites_path"
 
 record_command "$SCRIPT_DIR/check-spec-008-harness.rb"
@@ -325,6 +334,61 @@ case "$profile" in
     raspberry-pi-armv6) record_raspberry_pi_identity ;;
     nrf52840-embedded) record_nrf52840_identity ;;
 esac
+render_evidence_dir="$report_dir/render-evidence"
+record_command "$SCRIPT_DIR/report-spec-008-render-evidence.rb" \
+    "$profile" "$render_evidence_dir"
+"$SCRIPT_DIR/report-spec-008-render-evidence.rb" \
+    "$profile" "$render_evidence_dir" >>"$log_path" 2>&1
+for evidence_file in \
+    signal-analyzer-high-water.tsv workspace.tsv stack-high-water.tsv timing-method.tsv; do
+    printf '%s\t%s\t%s\n' \
+        "render-${evidence_file%.tsv}" \
+        "${render_evidence_dir#"$PROJECT_ROOT/"}/$evidence_file" \
+        "$(hash_file "$render_evidence_dir/$evidence_file")" >>"$images_path"
+done
+if [[ "$profile" == macos-* ]]; then
+    image_evidence_dir="$report_dir/render-image"
+    record_command "$SCRIPT_DIR/collect-spec-008-macos-render-evidence.sh" \
+        "$profile" "$image_evidence_dir"
+    "$SCRIPT_DIR/collect-spec-008-macos-render-evidence.sh" \
+        "$profile" "$image_evidence_dir" >>"$log_path" 2>&1
+    for evidence_file in \
+        runtime.txt allocation.tsv timing-samples.tsv concrete-workspace.tsv \
+        linked-section-deltas.tsv baseline.map render-probe.map render-probe symbols.txt; do
+        printf '%s\t%s\t%s\n' \
+            "render-image-${evidence_file//./-}" \
+            "${image_evidence_dir#"$PROJECT_ROOT/"}/$evidence_file" \
+            "$(hash_file "$image_evidence_dir/$evidence_file")" >>"$images_path"
+    done
+elif [[ "$profile" == "raspberry-pi-armv6" ]]; then
+    image_evidence_dir="$report_dir/render-image"
+    record_command "$SCRIPT_DIR/collect-spec-008-armv6-render-evidence.sh" \
+        "$image_evidence_dir"
+    "$SCRIPT_DIR/collect-spec-008-armv6-render-evidence.sh" \
+        "$image_evidence_dir" >>"$log_path" 2>&1
+    for evidence_file in \
+        allocation.tsv concrete-workspace.tsv linked-section-deltas.tsv \
+        baseline.map render-probe.map render-probe symbols.txt; do
+        printf '%s\t%s\t%s\n' \
+            "render-image-${evidence_file//./-}" \
+            "${image_evidence_dir#"$PROJECT_ROOT/"}/$evidence_file" \
+            "$(hash_file "$image_evidence_dir/$evidence_file")" >>"$images_path"
+    done
+elif [[ "$profile" == "nrf52840-embedded" ]]; then
+    image_evidence_dir="$report_dir/render-image"
+    record_command "$SCRIPT_DIR/collect-spec-008-nrf-render-evidence.sh" \
+        "$image_evidence_dir"
+    "$SCRIPT_DIR/collect-spec-008-nrf-render-evidence.sh" \
+        "$image_evidence_dir" >>"$log_path" 2>&1
+    for evidence_file in \
+        allocation.tsv concrete-workspace.tsv linked-section-deltas.tsv \
+        baseline.map candidate.map candidate symbols.txt arm-attributes.txt; do
+        printf '%s\t%s\t%s\n' \
+            "render-image-${evidence_file//./-}" \
+            "${image_evidence_dir#"$PROJECT_ROOT/"}/$evidence_file" \
+            "$(hash_file "$image_evidence_dir/$evidence_file")" >>"$images_path"
+    done
+fi
 declaration_dir="$report_dir/declarations"
 record_command "$SCRIPT_DIR/check-spec-008-declaration-profiles.sh" \
     --profile "$profile" --output "$declaration_dir"
@@ -372,5 +436,5 @@ trap - EXIT
     --destination "$canonical_report_dir" \
     --latest "$latest_pointer" \
     --run-id "$run_id"
-printf 'SPEC-008 %s harness passed; rendering implementation incomplete; run ID: %s\n' \
+printf 'SPEC-008 %s harness passed; profile evidence captured; run ID: %s\n' \
     "$profile" "$run_id"

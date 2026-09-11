@@ -560,7 +560,7 @@ separated from connected-hardware claims and every plan task dispositioned.
       `RenderWorkspaceCapacity`, on each contract compiler and ensure
       SPEC-008's standalone driver remains explicitly registered with the top-
       level gate.
-- [ ] `T8.2` — Run the four exact commands required by SPEC-008 and capture
+- [x] `T8.2` — Run the four exact commands required by SPEC-008 and capture
       complete command lines, compiler/target/SDK/optimization identities,
       repository revision/dirty state, fixture digests, layouts, declared and
       observed operation/glyph/clip and structural high-water, render and
@@ -1143,6 +1143,20 @@ bounds, including exact 8-byte `RenderWorkspaceCapacity`. SPEC-008 remains
 registered for all four profiles; see the
 [repository and compiler-surface evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-8/repository-gate.md).
 `T8.2` is the next dependency-complete task.
+
+`T8.2` is complete. All four exact standalone commands passed with shared run
+ID
+`c98c420834f90820d655316ac470fad86d1d375b-4c33a13788ae2679` and recorded
+compiler/SDK/target/optimization identity, full command and input-digest
+inventories, declaration and value-layout results, exact Signal Analyzer
+limits and high-water, logical and concrete finite workspace, stack high-water,
+zero allocation, macOS timing samples, linked-section deltas, symbols, images,
+and linker maps. ARMv6 and nRF results are explicitly cross-build/inspection
+only; the nRF ELF proves the hard-float VFP ABI and no board was flashed. The
+acceptance rows remain fail-closed for work assigned to T8.3 through T8.5; see
+the
+[four-profile evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-8/four-profile-evidence.md).
+`T8.3` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

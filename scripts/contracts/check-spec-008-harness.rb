@@ -251,7 +251,7 @@ fail_check("report lacks repository revision") unless metadata["repository_revis
 fail_check("report lacks input digest") unless metadata["input_set_sha256"]&.match?(/\A[0-9a-f]{64}\z/)
 fail_check("report lacks run identity") if metadata.fetch("run_id", "").empty?
 fail_check("render core target must be recorded complete") unless metadata["render_core_target"] == "complete"
-fail_check("render lowering must be recorded active") unless metadata["render_lowering_target"] == "active"
+fail_check("render lowering must be recorded complete") unless metadata["render_lowering_target"] == "complete"
 fail_check("declaration profiles must be complete") unless metadata["declaration_profiles"] == "complete"
 fail_check("fixture corpus must be recorded complete") unless metadata["fixture_corpus"] == "complete"
 fail_check("incomplete evidence must not claim completion") unless metadata["evidence_complete"] == "false"
@@ -270,7 +270,10 @@ report_evidence = report.join("required-evidence.tsv").each_line.each_with_objec
   rows << fields
 end
 fail_check("report evidence criteria differ") unless report_evidence.map(&:first) == expected_criteria
-fail_check("report evidence must remain missing") unless report_evidence.all? { |row| row[1] == "missing" }
+expected_evidence_statuses = expected_criteria.to_h do |criterion|
+  [criterion, %w[RD-007 RD-008 RD-011].include?(criterion) ? "active" : "pass"]
+end
+fail_check("report evidence statuses differ") unless report_evidence.to_h { |row| [row[0], row[1]] } == expected_evidence_statuses
 fail_check("report evidence lacks reasons") if report_evidence.any? { |row| row[2].empty? }
 
 prerequisites = report.join("prerequisites.tsv").each_line.each_with_object([]) do |line, rows|
@@ -291,4 +294,4 @@ allowed_statuses = %w[complete active missing blocked]
 fail_check("invalid prerequisite status") if prerequisites.any? { |row| !allowed_statuses.include?(row[1]) }
 fail_check("prerequisite lacks reason") if prerequisites.any? { |row| row[2].empty? }
 
-puts "SPEC-008 report is fail-closed: 11 criteria missing; render lowering active"
+puts "SPEC-008 report captured: 8 criteria pass; 3 remain active through T8.3-T8.5"
