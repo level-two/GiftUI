@@ -302,7 +302,7 @@ copying a second semantic/layout result.
       results without translating identity or remeasuring text; expose exact
       bounds, clips, line/glyph indices, instances, glyphs, and baselines with
       the specified in-range and out-of-range behavior.
-- [ ] `T2.4` — Build direct valid and malformed semantic/layout views covering
+- [x] `T2.4` — Build direct valid and malformed semantic/layout views covering
       unequal roots, independent counts, missing/duplicate identities,
       transparent/render-only mappings, invalid arity, prohibited children,
       every out-of-range index, every prohibited in-range `nil`, and all line/
@@ -835,6 +835,18 @@ errors, and acquire/reset/reuse semantics; see the
 [render production value evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-4/render-production-values.md).
 T2.4 and T3.5 are now dependency-complete; T0.2 remains active until its owner
 adapter target lands.
+
+`T2.4` is complete. The lowering test target now owns reusable direct semantic
+and resolved-layout views keyed by a closed symbolic identity enum. The valid
+pair separates semantic and layout counts while preserving transparent and
+render-only mappings. Malformed variants cover unequal roots, duplicates,
+missing in-range scopes/mappings/bounds/clips/lines/glyphs, invalid modifier
+arity, prohibited text children, unknown and out-of-range lookups, and line,
+line/glyph, and occurrence-wide glyph-index disagreement. A source audit
+rejects pointer, hash, memory-layout, and raw-byte identity comparisons; see
+the
+[direct render view evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-2/direct-render-views.md).
+T2.5 and T3.5 are the next dependency-complete evidence tasks.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

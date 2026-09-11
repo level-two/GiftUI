@@ -166,7 +166,14 @@ let package = Package(
         ),
         .testTarget(
             name: "GiftUIRenderLoweringTests",
-            dependencies: ["GiftUIRenderCore", "GiftUIRenderLowering"]
+            dependencies: [
+                "GiftUI",
+                "GiftUILayout",
+                "GiftUIRenderCore",
+                "GiftUIRenderLowering",
+                "GiftUISemanticCore",
+                "GiftUITextResources",
+            ]
         ),
         .testTarget(
             name: "GiftUIExecutionTests",

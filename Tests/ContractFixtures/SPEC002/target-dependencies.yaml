@@ -117,8 +117,12 @@ targets:
   GiftUIRenderLoweringTests:
     type: test
     dependencies:
+      - GiftUI
+      - GiftUILayout
       - GiftUIRenderCore
       - GiftUIRenderLowering
+      - GiftUISemanticCore
+      - GiftUITextResources
   GiftUIExecution:
     type: regular
     dependencies:
