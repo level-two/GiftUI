@@ -554,7 +554,7 @@ all prerequisite-owned declarations used by the complete corpus are present.
 produce inspectable evidence for every criterion, with cross-build evidence
 separated from connected-hardware claims and every plan task dispositioned.
 
-- [ ] `T8.1` — Run unit, public/negative compile, package-graph, forbidden-
+- [x] `T8.1` — Run unit, public/negative compile, package-graph, forbidden-
       import, API/source-surface, migration, and formatter checks. Verify all
       exact/maximum value-layout requirements, including
       `RenderWorkspaceCapacity`, on each contract compiler and ensure
@@ -1133,6 +1133,16 @@ see the
 [Button coexistence evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-7/button-coexistence.md).
 Interaction implementation and conformance remain in SPEC-011's plan. `T8.1`
 is the next dependency-complete task.
+
+`T8.1` is complete. The macOS dynamic top-level gate passed governance,
+tooling, formatter lint, driver registration, all 388 Swift tests, and every
+registered contract driver. Direct declaration and optimized value-layout
+checks also passed for macOS static, Raspberry Pi ARMv6, and nRF52840 Embedded:
+all profiles accept/reject the same 17 compile fixtures and meet all 13 layout
+bounds, including exact 8-byte `RenderWorkspaceCapacity`. SPEC-008 remains
+registered for all four profiles; see the
+[repository and compiler-surface evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-8/repository-gate.md).
+`T8.2` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
