@@ -2,7 +2,7 @@
 id: SPEC-008
 feature: giftui-mvp-architecture
 title: Normalized Rendering Contract
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-25
@@ -30,10 +30,11 @@ related_specs:
   - SPEC-006
   - SPEC-007
   - SPEC-009
-  - SPEC-013
-  - SPEC-014
   - SPEC-011
   - SPEC-012
+  - SPEC-013
+  - SPEC-014
+  - SPEC-015
 related_future_work:
   - FW-001
   - FW-003
@@ -47,14 +48,13 @@ target_milestone: MVP
 
 # SPEC-008: Normalized Rendering Contract
 
-> **Approval status:** In review. The previously approved contract, including
-> the explicitly approved 2026-09-06 coordinated SPEC-008/SPEC-009 error-owner
-> amendment, remains historical authority for work already completed. The
-> 2026-09-11 bounded-workspace and immutable-snapshot amendment below requires
-> renewed explicit maintainer approval before implementation may resume. The
-> governing Proposal and RFCs, accepted architectural decisions, and approved
-> Foundation, Failure, Text Resource, Declarative, and Layout contracts remain
-> authoritative prerequisites.
+> **Approval status:** Explicitly approved by the maintainer on 2026-09-11
+> after review and correction of the bounded-workspace and immutable-snapshot
+> amendment. The 2026-09-06 coordinated SPEC-008/SPEC-009 error-owner amendment
+> remains part of the approved contract. The governing Proposal and RFCs,
+> accepted architectural decisions, and approved Foundation, Failure, Text
+> Resource, Declarative, and Layout contracts remain authoritative
+> prerequisites.
 
 ## Summary
 
@@ -66,8 +66,9 @@ operations.
 It also defines clipping, whole-root damage, bounded production, and the
 recording sink used to verify rendering without rasterization.
 
-This complete amendment is `review` material. It does not authorize new or
-continued implementation until a human maintainer explicitly approves it.
+This complete amended contract is approved. Implementation remains governed by
+its implementation plan; integration into runtime profiles and generated host
+presets additionally waits for the coordinated downstream amendments.
 
 ## Scope
 
@@ -605,22 +606,36 @@ workspace capacity. `structuralCapacity` separately bounds semantic scopes,
 distinct layout scopes, simultaneously active semantic traversal depth, and
 all text lines including empty lines. A declared semantic or layout count
 above its capacity is `.capacityExhausted`; equality is valid. Traversal starts
-at depth one for the semantic root, and attempting the next depth or text line
-beyond its capacity is `.capacityExhausted` before `begin`.
+at depth one for the semantic root. Entering every canonical semantic child,
+including a custom-view, group, conditional, optional, modifier, primitive, or
+render-only child scope, increments the active traversal depth by one; returning
+from that child decrements it by one. Text lines do not increment traversal
+depth and are counted only by `maximumTextLines`. The observed traversal depth
+is the greatest active semantic-scope depth entered. Attempting the next scope
+depth or text line beyond its capacity is `.capacityExhausted` before `begin`.
+This count is independent of SPEC-006 `SemanticExpansionLimits.maximumDepth`
+and `maximumSemanticNodes`, whose inclusion rules intentionally differ.
 
 `acquire` is called only after `isActive == false`; failure then is
 `.invariantViolation`. A successful acquisition clears both ordinal visit
-sets. Each `visit*Scope` call returns `.first` for the first visit to an in-
-capacity ordinal during that attempt, `.repeated` for a later visit, and
+sets. Visit-set operations occur only during preflight. Before each semantic
+visit, the producer reverse-resolves the identity to an ordinal, verifies the
+ordinal is below `semanticScopeCount`, and verifies that forward lookup returns
+the same identity; it performs the analogous checks for every mapped layout
+identity. Each `visit*Scope` call returns `.first` for the first visit to an
+in-capacity ordinal during that attempt, `.repeated` for a later visit, and
 `.invalid` for an out-of-capacity or inactive visit. A repeated semantic visit
 is `.invariantViolation`; a repeated layout visit is permitted because
 transparent and render-only semantic scopes may map to the same layout scope
 and does not increase the distinct-layout count. An invalid visit is
-`.invariantViolation`. `reset` is called exactly once after every successful
-acquisition, on both success and failure, and clears both visit sets. The
-workspace MUST provide finite storage for ordinal visits, active identity,
-foreground, traversal, preflight, and clip state without retaining an input or
-operation after reset.
+`.invariantViolation`. At preflight completion, the number of `.first`
+semantic visits MUST equal `semanticScopeCount` and the number of `.first`
+layout visits MUST equal `layoutScopeCount`. Streaming repeats canonical view
+lookups but MUST NOT clear or call either visit set. `reset` is called exactly
+once after every successful acquisition, on both success and failure, and
+clears both visit sets. The workspace MUST provide finite storage for ordinal
+visits, active identity, foreground, traversal, preflight, and clip state
+without retaining an input or operation after reset.
 
 `RenderSinkCapacity` fields MAY be zero. They report how many complete
 operations and positioned glyphs the idle sink can admit in this attempt. The
@@ -697,7 +712,10 @@ Production performs two deterministic traversals over the same immutable
 borrows. Preflight validates every semantic/layout lookup, resource identity,
 checked intersection, operation/glyph count, and observed clip depth and
 constructs the exact `RenderPlanHeader`; it emits nothing and retains no
-operation list. The producer samples both snapshot versions before the first
+operation list. Preflight alone performs the ordinal visit accounting defined
+above; streaming relies on the completed accounting and unchanged snapshots
+rather than attempting to visit the same semantic identities a second time.
+The producer samples both snapshot versions before the first
 lookup and again after preflight. Streaming repeats every canonical lookup and
 emits the proven sequence without retaining a per-field proof transcript; the
 unchanged snapshot-version contract proves that repeated values agree. The
@@ -817,6 +835,14 @@ second production attempt.
 - Production MUST be `O(o + g)`, where `o` is semantic/render occurrences and
   `g` is positioned glyphs. Two complete linear traversals are permitted; no
   operation sort or traversal proportional to `o * g` is permitted.
+- Each production `SemanticRenderView` and `ResolvedRenderLayoutView`
+  conformance MUST provide ordinal, reverse-ordinal, identity, child, layout-
+  mapping, geometry, line, and glyph access in work bounded independently of
+  the admitted result size. Equality of identities used by those accessors MUST
+  also have size-independent bounded work. A conformer MUST NOT implement a
+  reverse lookup or other accessor by rescanning its admitted result. Across
+  both traversals, instrumentation MUST demonstrate an affine upper bound in
+  `o + g` for all view-access and identity-comparison work.
 - Static production MUST allocate zero heap bytes after assembly and operate
   with caller-owned finite workspace.
 - Direct sink emission MUST be conforming; a complete retained display list
@@ -913,7 +939,9 @@ conformers must add finite structural capacity and ordinal visit storage.
   line omission, incompatible-resource rejection, and no raw-string payload.
 - Limit tests exercise exactly-at and one-over global operation, glyph, and
   clip-depth bounds and structural semantic-scope, layout-scope, traversal-
-  depth, and text-line capacities; workspace visit-set failure; sink-capacity
+  depth, and text-line capacities, including wrapper/modifier depth and empty
+  lines; workspace visit-set failure and exact preflight-only visit call
+  counts; sink-capacity
   shortfall; `begin` refusal; refusal by every post-begin method; snapshot
   changes before and after `begin`; nested reentry; workspace reset; and exact
   discard behavior.
@@ -967,7 +995,8 @@ conformers must add finite structural capacity and ordinal visit storage.
   match the contract.
 - [ ] **RD-008:** All value-layout ceilings, the four evidence commands, and the
   static zero-allocation requirement pass; each command records the required
-  compiler, fixture digest, high-water, timing, section, and link-map evidence.
+  compiler, fixture digest, high-water, timing, section, and link-map evidence,
+  and view-access instrumentation proves an affine `o + g` work bound.
 - [ ] **RD-009:** The Signal Analyzer manifest covers every required label,
   bounded value, status, error, opaque foreground, rectangular background, and
   maximum hierarchy variant and fits its declared limits in all four profiles
@@ -1007,12 +1036,21 @@ scans, restricting the shared identity to an integer representation, and
 weakening duplicate or two-pass validation. Each would violate an existing
 performance, ownership, portability, or atomicity requirement.
 
+Approval review additionally resolved four implementability defects in the
+initial amendment: render structural limits are now explicit runtime-profile
+and host-workload inputs rather than being conflated with SPEC-006 limits;
+semantic traversal depth has exact inclusion rules; ordinal visit accounting
+is preflight-only across the two traversals; and production view access has a
+measurable linear-work obligation.
+
 ## Open Issues
 
-No unresolved architectural question is known. This focused amendment remains
-non-authoritative until explicit human approval. Stroke operations for Canvas
-enter through the separately governed DRAWING contract and its accepted ADRs;
-they are not silently added here.
+No unresolved architectural question is known. The focused amendment was
+explicitly approved on 2026-09-11. Its coordinated runtime-profile and host-
+configuration schema amendments remain in review and block only their
+corresponding integration rows until separately approved. Stroke operations
+for Canvas enter through the separately governed DRAWING contract and its
+accepted ADRs; they are not silently added here.
 
 ## Deferred and Follow-up Work
 

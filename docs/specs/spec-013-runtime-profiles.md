@@ -2,11 +2,11 @@
 id: SPEC-013
 feature: giftui-mvp-architecture
 title: Dynamic and Static Runtime Profile Contract
-status: approved
+status: review
 authors:
   - codex
 created: 2026-08-27
-updated: 2026-08-28
+updated: 2026-09-11
 proposal:
   - PROPOSAL-003
   - PROPOSAL-005
@@ -67,9 +67,11 @@ target_milestone: MVP
 
 # SPEC-013: Dynamic and Static Runtime Profile Contract
 
-> **Approval status:** Explicitly approved by the maintainer after coordinated
-> approval of the SPEC-009, SPEC-010, and SPEC-011 amendments. This contract is
-> authoritative for implementation.
+> **Approval status:** In review for a focused 2026-09-11 amendment that adds
+> SPEC-008 render-workspace limits to the profile limit schema and storage
+> audit. The previously approved contract remains historical authority, but
+> implementation against this amended surface requires renewed explicit
+> maintainer approval.
 
 ## Summary
 
@@ -284,6 +286,7 @@ package struct RuntimeProfileLimits: Equatable, Sendable {
     package let semantic: SemanticExpansionLimits
     package let layout: LayoutLimits
     package let render: RenderLimits
+    package let renderWorkspace: RenderWorkspaceCapacity
     package let renderSink: RenderSinkCapacity
     package let maximumOrdinaryRenderOperations: UInt16
     package let execution: ExecutionLimits
@@ -296,6 +299,7 @@ package struct RuntimeProfileLimits: Equatable, Sendable {
         semantic: SemanticExpansionLimits,
         layout: LayoutLimits,
         render: RenderLimits,
+        renderWorkspace: RenderWorkspaceCapacity,
         renderSink: RenderSinkCapacity,
         maximumOrdinaryRenderOperations: UInt16,
         execution: ExecutionLimits,
@@ -388,6 +392,8 @@ valid and these relations hold:
 - `execution.maximumSemanticActions <= execution.maximumInputEvents`;
 - `layout.maximumPositionedGlyphs <= render.maximumPositionedGlyphs` and
   `layout.maximumPositionedGlyphs <= renderSink.maximumPositionedGlyphs`;
+- `layout.maximumScopes <= renderWorkspace.maximumLayoutScopes` and
+  `layout.maximumTextLines <= renderWorkspace.maximumTextLines`;
 - `drawing.maximumCanvasOccurrences <= semantic.maximumSemanticNodes` and
   `drawing.maximumCanvasOccurrences <= layout.maximumScopes`;
 - `maximumOrdinaryRenderOperations` fits both render and sink operation limits;
@@ -402,6 +408,14 @@ valid and these relations hold:
 fill and nonempty glyph-group operations and excludes SPEC-012 straight-line
 strokes. Wave 7 derives production values from the approved workload; a zero
 value is valid only for a drawing-only fixture.
+
+`renderWorkspace` is the complete SPEC-008 structural capacity required by the
+admitted host workload. Its semantic-scope and traversal-depth fields are not
+derived from SPEC-006 `maximumSemanticNodes` or `maximumDepth`: SPEC-008 counts
+structural wrappers and modifier scopes that those two limits intentionally do
+not count. Profile storage MUST expose a render workspace whose
+`structuralCapacity` equals `limits.renderWorkspace`; inaccessible physical
+headroom does not change the configured value.
 
 Validation compares concrete storage capacities to every contained limit and
 performs checked byte summation. A missing or smaller store fails; validation
@@ -457,8 +471,10 @@ and stops at the first failure:
 
 1. every focused limit value was constructed successfully;
 2. every `RuntimeProfileLimits` cross-relation holds;
-3. every required storage family exists and reports concrete capacity;
-4. each capacity covers its configured limit;
+3. every required storage family exists and reports concrete capacity,
+   including all four SPEC-008 render-workspace fields;
+4. each capacity covers its configured limit, and the render workspace reports
+   `structuralCapacity == limits.renderWorkspace`;
 5. every audit field and exact checked total are representable; and
 6. for `.static`, generated Canvas table, ID, capture-size, and coverage
    metadata are complete.
@@ -494,7 +510,8 @@ Each opportunity follows this exact order:
    static inline capture exactly once immediately after invocation and before
    publication;
 7. preflight the combined SPEC-008/SPEC-012 stream against the immutable plan,
-   ordinary-operation bound, render limits, and sink-capacity lower bound;
+   ordinary-operation bound, render limits, render-workspace limits, and sink-
+   capacity lower bound;
 8. build and finish the SPEC-011 Interaction candidate, obtaining the exact
    SPEC-010 `publishableTargetGeneration` after encounter, appending in
    semantic order, and reserving required SPEC-009 action generations;
@@ -673,6 +690,13 @@ values are stable only within this contract. Dynamic and static profiles must
 compile from the same portable application source; profile-specific imports
 in Presentation are nonconforming.
 
+The render-workspace amendment is a source-breaking package-SPI change:
+existing `RuntimeProfileLimits` construction and profile storage conformances
+MUST supply the explicit `renderWorkspace` value and capacity equality before
+they can compile or validate against the amended contract. No default is
+permitted because the semantic-scope and traversal-depth fields cannot be
+derived from existing SPEC-006 limits.
+
 Adding a third profile, asynchronous semantics, replayable frames, or a new
 public selection mechanism requires normal lifecycle review. Internal storage
 may change without contract change when all behavior, limits, audits, and
@@ -684,6 +708,8 @@ The checked-in shared suite MUST instantiate the same fixture scripts against
 both profiles with identical artificial limits. It requires:
 
 - exact-limit and first-excess tests for every contained limit;
+- independent exact-limit and first-excess tests for all four render-workspace
+  fields, including structural wrappers, modifier depth, and empty text lines;
 - startup audit missing/small/overflow/incompatible-table tests;
 - semantic identity, branch replacement, state preservation/removal, and
   failed-derivation fixtures;
@@ -729,7 +755,8 @@ assembled configurations.
 - [ ] **RP-001:** Both runtime targets compile against the same portable root and focused
   contract owners without importing each other or a concrete backend.
 - [ ] **RP-002:** One successful storage audit accounts for every correctness-relevant
-  profile store with checked exact totals.
+  profile store with checked exact totals, including a render workspace whose
+  four structural capacities equal the configured `renderWorkspace` limits.
 - [ ] **RP-003:** Invalid, missing, undersized, overflowing, incompatible
   configurations and invalid static callable tables fail before client code or
   endpoint use.
@@ -772,10 +799,11 @@ assertions.
 
 ## Open Issues
 
-No unresolved contract or architectural issue remains. The coordinated
-SPEC-009, SPEC-010, and SPEC-011 amendments are approved. Production limits,
-audit totals, fact/action types, and retry policy remain intentionally owned by
-Wave 7 HOST-CONFIGURATION.
+No unresolved architectural choice is introduced by this amendment. The
+coordinated SPEC-009, SPEC-010, and SPEC-011 amendments remain approved. The
+focused render-workspace schema change is review material until explicit
+maintainer approval; its production values remain owned by Wave 7 HOST-
+CONFIGURATION.
 
 ## Deferred and Follow-up Work
 

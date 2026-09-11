@@ -22,13 +22,14 @@ its required acceptance criteria.
 - [SPEC-001](spec-001-signal-analyzer-reference-application.md) — Signal
   Analyzer Reference Application Contract (`approved`)
 - [SPEC-015](spec-015-host-configuration.md) — MVP Target-Host
-  Configuration Contract (`approved`)
+  Configuration Contract (`review`; schema-2 render-workspace workload
+  amendment awaiting explicit approval)
 - [SPEC-006](spec-006-declarative-view-semantics.md) — Declarative View
   Semantics Specification (`approved`; primitive-with-content amendment
   explicitly reapproved on 2026-09-10)
-- [SPEC-008](spec-008-rendering.md) — Normalized Rendering Contract (`review`;
-  bounded-workspace and immutable-snapshot amendment awaiting explicit
-  approval)
+- [SPEC-008](spec-008-rendering.md) — Normalized Rendering Contract
+  (`approved`; corrected bounded-workspace and immutable-snapshot amendment
+  explicitly approved on 2026-09-11)
 - [SPEC-009](spec-009-execution-cycle-and-frame-handoff.md) — Execution Cycle
   and Frame Handoff Contract (`approved`, including focused-owner failure
   amendment)
@@ -40,6 +41,7 @@ its required acceptance criteria.
 - [SPEC-012](spec-012-canvas-path-stroke-drawing.md) — Canvas, Path, and Stroke
   Drawing Contract (`approved`)
 - [SPEC-013](spec-013-runtime-profiles.md) — Dynamic and Static Runtime Profile
-  Contract (`approved`)
+  Contract (`review`; render-workspace-limit amendment awaiting explicit
+  approval)
 - [SPEC-014](spec-014-backend-integration.md) — Raster Backend and Display
   Integration Contract (`approved`)

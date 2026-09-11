@@ -6,7 +6,7 @@ status: ready
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-09
+updated: 2026-09-11
 related_design_notes: []
 conformance_report: null
 related_future_work: []
@@ -78,10 +78,11 @@ animation, deployment, remote service changes, or connected-board flashing.
   refusal, dirty-recovery, and finalization machinery. The production runtime
   coordinator that sequences semantic, layout, drawing, publication, and
   combined offer remains owned by SPEC-013.
-- SPEC-007, SPEC-013, SPEC-014, and SPEC-015 are approved but have not started
-  implementation; SPEC-007 has a ready plan. SPEC-008 and SPEC-009 are
-  implementing; SPEC-008 has its client declarations and part of Render Core,
-  while its resolved-layout and lowering work remains open. The
+- SPEC-007, SPEC-008, and SPEC-014 are approved; SPEC-013 and SPEC-015 are in
+  coordinated review and none has started production implementation. SPEC-007
+  and SPEC-008 have ready plans. SPEC-009 is implementing; SPEC-008 has its
+  client declarations and part of Render Core, while its resolved-layout and
+  lowering work remains open. The
   runtime-profile, backend-integration, and host-configuration production
   targets remain absent.
 - There is no `Tests/ContractFixtures/SPEC012/`, focused drawing unit-test

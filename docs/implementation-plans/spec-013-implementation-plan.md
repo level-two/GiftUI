@@ -2,11 +2,11 @@
 spec: SPEC-013
 feature: giftui-mvp-architecture
 title: SPEC-013 Implementation Plan
-status: ready
+status: draft
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-09
+updated: 2026-09-11
 related_design_notes: []
 conformance_report: null
 related_future_work: []
@@ -22,15 +22,16 @@ superseded_by: null
 
 # SPEC-013 Implementation Plan
 
-> This ready plan derives work from the approved Dynamic and Static Runtime
-> Profile Contract. It orders implementation and evidence but does not select
-> production capacities, a backend, host policy, application facts/actions, or
-> a replacement mechanism for any focused owner.
+> This plan is paused in `draft` while the focused 2026-09-11
+> render-workspace-limit amendment to SPEC-013 is in review. Historical task
+> planning remains useful, but implementation requires renewed Specification
+> approval and a final readiness pass.
 
 ## Authority and Scope
 
-The governing [SPEC-013](../specs/spec-013-runtime-profiles.md) is approved.
-Its Proposal, RFC, and accepted-ADR chain fixes one portable semantic meaning,
+The governing [SPEC-013](../specs/spec-013-runtime-profiles.md) is in review for
+one coordinated render-workspace limit addition. Its Proposal, RFC, and
+accepted-ADR chain continues to fix one portable semantic meaning,
 the module graph, checked geometry, serialized execution, observable-state and
 interaction lifetimes, scoped Canvas production, bounded failures, and static
 restrictions. In particular, accepted
@@ -90,7 +91,7 @@ override the approved contract.
   forbidden or future owners. Those rows must be changed atomically with the
   first compiling targets so a stale negative fixture cannot masquerade as a
   conformance result.
-- SPEC-014 and SPEC-015 are approved downstream contracts. SPEC-014 supplies
+- SPEC-014 is approved and SPEC-015 is in coordinated review. SPEC-014 supplies
   production endpoints and SPEC-015 supplies assembled limits and host policy;
   neither may be pulled into `GiftUIRuntimeCore` or used to choose values here.
 
@@ -98,24 +99,22 @@ override the approved contract.
 
 **Reviewed:** 2026-09-09
 
-**Disposition:** Ready. SPEC-013 is approved, every linked ADR is accepted,
-all fifteen acceptance criteria map exactly once to ordered work and evidence,
-and the Specification reports no unresolved contract or architecture issue.
+**Disposition:** Paused pending Specification reapproval. Every linked ADR
+remains accepted and all fifteen acceptance criteria map exactly once, but the
+plan must incorporate the new `RuntimeProfileLimits.renderWorkspace` leaf,
+storage equality checks, and exact boundary evidence before becoming ready.
 The readiness audit also reconciled the ready SPEC-011 and SPEC-012 plans:
 focused Interaction and Drawing contracts land under their owners, profile
 storage lands under SPEC-013, and the mutually dependent coordinator joins
 have an explicit integration handoff rather than a circular prerequisite.
-Missing focused-owner implementations are therefore task dependencies rather
-than missing design decisions. Runtime value declarations, storage-audit
-logic, fixture schemas, dependency checks, and focused recording seams may
-proceed now; complete profile coordinators and integrated profile claims wait
-for the named owners.
+Missing focused-owner implementations remain task dependencies rather than
+missing design decisions. No implementation task proceeds while the amended
+Specification is in review.
 
 No `docs/features.yaml` update is required. Implementation records are not
 registered there, and `giftui-mvp-architecture` already reports the
-implementation stage. SPEC-013 remains `approved` and this plan remains
-`ready` until production implementation actually begins; that progress update
-moves the Specification to `implementing` and this plan to `active`.
+implementation stage. SPEC-013 remains `review` and this plan remains `draft`
+until explicit reapproval and a revised readiness disposition.
 
 If a pinned compiler cannot express the noncopyable storage/coordinator
 contracts, the 2-byte `RuntimeOwnerFailure`, scoped borrows, generated static
@@ -132,7 +131,7 @@ listed prerequisite is satisfied.
 
 | Work | Prerequisites | Primary affected surfaces | Parallel boundary |
 | --- | --- | --- | --- |
-| `T0.1`-`T0.4` | Approved SPEC-013 authority chain | `Tests/ContractFixtures/SPEC013/`, `Package.swift`, boundary registries, `scripts/contracts/` | Schemas, migration inventory, and driver scaffolding may proceed together after the acceptance registry exists; package exact-set edits land with compiling targets |
+| `T0.1`-`T0.4` | Reapproved SPEC-013 authority chain | `Tests/ContractFixtures/SPEC013/`, `Package.swift`, boundary registries, `scripts/contracts/` | Schemas, migration inventory, and driver scaffolding may proceed together after the acceptance registry exists; package exact-set edits land with compiling targets |
 | `T1.1`-`T1.5` | `T0.2`; focused limit declarations from SPEC-006 through SPEC-012 as available | `Sources/GiftUIRuntimeCore/`, core tests, validation fixtures | Value families and checked audit arithmetic may proceed independently; aggregate validation and protocol conformance follow exact declarations |
 | `T2.1`-`T2.5` | `T1.*`; completed SPEC-009 execution seams and recording substitutes for unfinished owners | common coordinator, lifecycle, failure adapter, cycle fixtures | Phase orchestration and cleanup tables may be tested with focused recording owners; production adaptation waits for each owner |
 | `T3.1`-`T3.5` | `T1.*`, relevant `T2.*`, production SPEC-006/007/008/010 seams, SPEC-011 `T1`-`T4`, and SPEC-012 `T1`-`T5` | `GiftUIRuntimeDynamic`, dynamic tests and probes | Independent dynamic storage families may be implemented together after audit ownership and reset lifetimes freeze; SPEC-011/012 coordinator joins land through the handoffs below |
@@ -162,7 +161,7 @@ exactly once below.
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
 | `RP-001` — Both runtime targets use one portable root and focused owners without sibling/backend imports | `T0.2`, `T3.5`, `T4.6`, `T8.1` | Package graph, source-import audit, same-root positive compile, and forbidden-import negatives | pending |
-| `RP-002` — One successful audit accounts exactly for every correctness store | `T1.2`-`T1.4`, `T3.2`, `T4.2`, `T6.1` | Field ownership registry, exact byte reports, checked-total tests, and overlap/overlay audit | pending |
+| `RP-002` — One successful audit accounts exactly for every correctness store and configured render-workspace capacity | `T1.2`-`T1.4`, `T3.2`, `T4.2`, `T6.1` | Field ownership registry, four-field capacity equality, exact byte reports, checked-total tests, and overlap/overlay audit | pending |
 | `RP-003` — Invalid configurations and static tables fail before client/endpoint use | `T1.1`-`T1.4`, `T4.3`, `T6.2` | Ordered startup-failure corpus with poisoned client, callback, policy, and endpoint probes | pending |
 | `RP-004` — Exact stage order, pre-body binding, Canvas release, and cleanup rows | `T2.1`-`T2.4`, `T5.1`-`T5.5`, `T6.3` | Stage transcript, injected-failure cleanup matrix, and release/finalization counters | pending |
 | `RP-005` — Value-equal cross-profile semantic through disposition transcripts | `T0.1`, `T5.5`, `T6.6`, `T7.4` | Canonical tagged transcripts and zero-tolerance differential comparison | pending |
@@ -181,7 +180,7 @@ exactly once below.
 
 ### Milestone 0: Freeze Boundaries, Fixtures, and Driver Shape
 
-**Entry conditions:** SPEC-013 remains approved and its Proposal/RFC/ADR chain
+**Entry conditions:** SPEC-013 is reapproved and its Proposal/RFC/ADR chain
 remains authoritative.
 
 **Exit evidence:** The exact target graph, acceptance registry, fixture and
@@ -217,17 +216,21 @@ failure carrier, independent of concrete profile storage.
 
 - [ ] `T1.1` — Implement the exact `RuntimeProfileKind`,
       `RuntimeProfileLimits`, validation error/result, and initializer
-      relations in `GiftUIRuntimeCore`. Test each valid edge, each relation,
+      relations in `GiftUIRuntimeCore`, including the four-field
+      `renderWorkspace` value. Test each valid edge, each relation,
       `staticCanvas` iff `.static`, zero ordinary drawing-only fixtures, and
-      first-failure ordering without clamping.
+      first-failure ordering without clamping or deriving render structural
+      values from SPEC-006 node/depth limits.
 - [ ] `T1.2` — Implement `RuntimeStorageAudit` checked byte accounting and a
       fixture storage-family registry naming exclusive ownership, simultaneous
       lifetimes, overlay charging, exclusions, and dynamic bookkeeping. Test
       every field, overflow, double-count rejection, and exact total.
 - [ ] `T1.3` — Implement storage-capacity validation in the six mandated steps:
-      focused limits, cross-relations, presence, sufficiency, representability,
-      then static Canvas metadata. Poison client body, Canvas, attachment,
-      admission, wake, policy, and endpoint seams to prove startup purity.
+      focused limits, cross-relations, presence including the render workspace,
+      sufficiency and exact render-workspace capacity equality,
+      representability, then static Canvas metadata. Poison client body,
+      Canvas, attachment, admission, wake, policy, and endpoint seams to prove
+      startup purity.
 - [ ] `T1.4` — Implement the noncopyable `RuntimeProfileStorage` contract,
       structural identity, successful-audit retention, and reset legality.
       Test capacity immutability, attempt-versus-all reset boundaries, rejected
@@ -520,7 +523,7 @@ straightforward value declarations, or report wiring.
 - SPEC-007 has a ready plan but no `GiftUILayout` target. Layout-consuming
   tasks `T5.1` onward wait for its exact borrowed-input and resolved-storage
   production seams.
-- SPEC-008 is implementing but `GiftUIRenderLowering` is absent. Combined
+- SPEC-008 is approved but `GiftUIRenderLowering` is incomplete. Combined
   ordinary/drawing preflight and stream production in `T5.2` wait for it.
 - SPEC-011 has a ready plan but no `GiftUIInteraction` target. Its `T1`-`T4`
   focused declarations and behavior precede SPEC-013 profile binding;
@@ -536,9 +539,10 @@ straightforward value declarations, or report wiring.
 - SPEC-009 and SPEC-010 remain implementing. Their already available focused
   seams may be consumed, but tasks requiring unfinished production integration
   remain blocked and must not move ownership into Runtime Core.
-- SPEC-014/015 integration and Signal Analyzer production resource rows wait
-  for their normal implementation plans and exact host values. Their absence
-  does not block profile-local artificial-limit conformance.
+- SPEC-015 integration and Signal Analyzer production resource rows wait for
+  approval of its coordinated schema-2 workload amendment and exact host
+  values. SPEC-014 remains governed by its normal plan. These dependencies do
+  not replace the current whole-plan pause while SPEC-013 itself is in review.
 
 Any discovery that requires another public/profile selection API, a changed
 dependency edge, asynchronous semantics, retained/replayable frames, relaxed
@@ -554,12 +558,17 @@ their existing lifecycle or deferred records. Do not schedule them here.
 
 ## Completion Record
 
-Plan audited and marked ready on 2026-09-09. At this gate all fifteen RP
+Plan audited and marked ready on 2026-09-09. At that gate all fifteen RP
 criteria map to ordered code and evidence, immediately executable Runtime Core
 and harness work is separated from unfinished focused-owner and downstream
 integration dependencies, SPEC-011/012 cyclic-looking joins are split into
 explicit owner/profile handoffs, and no proof-of-concept or Spike mechanism is
 treated as production authority.
+
+On 2026-09-11 the plan returned to `draft` with SPEC-013 so the new explicit
+render-workspace limit, capacity-equality audit, and boundary evidence can be
+reviewed together with SPEC-015's schema-2 workload amendment. No task had been
+marked complete, so no implementation evidence is invalidated.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

@@ -2,7 +2,7 @@
 spec: SPEC-008
 feature: giftui-mvp-architecture
 title: SPEC-008 Implementation Plan
-status: draft
+status: ready
 owners:
   - codex
 created: 2026-09-06
@@ -21,16 +21,15 @@ superseded_by: null
 
 # SPEC-008 Implementation Plan
 
-> This plan is paused and returned to `draft` while the 2026-09-11
-> bounded-workspace and immutable-snapshot amendment to SPEC-008 is in review.
-> Completed task records remain historical implementation evidence, but no
-> further implementation is authorized until the amended Specification is
-> explicitly approved and this plan is revised and declared `ready` again.
+> This ready plan incorporates the explicitly approved 2026-09-11 bounded-
+> workspace and immutable-snapshot amendment. Completed task records remain
+> historical implementation evidence; the amendment follow-up work below must
+> land before those surfaces are treated as conforming.
 
 ## Authority and Scope
 
-The governing [SPEC-008](../specs/spec-008-rendering.md) contract is in review
-after implementation exposed a bounded-validation gap. Its authority chain is
+The governing [SPEC-008](../specs/spec-008-rendering.md) contract is approved
+after review resolved the bounded-validation gap. Its authority chain is
 accepted [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md),
 approved [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md),
 [RFC-003](../rfcs/rfc-003-deterministic-text-rendering-architecture.md), and
@@ -58,9 +57,12 @@ expansion, identity, modifier order, and typed payload dispatch. Approved
 positioning, resolved bounds and clips, and the layout result consumed here.
 This plan consumes those contracts without creating substitute owners.
 
-Approved [SPEC-009](../specs/spec-009-execution-cycle-and-frame-handoff.md),
-[SPEC-013](../specs/spec-013-runtime-profiles.md), and
-[SPEC-014](../specs/spec-014-backend-integration.md) consume SPEC-008 outputs
+Approved [SPEC-009](../specs/spec-009-execution-cycle-and-frame-handoff.md) and
+[SPEC-014](../specs/spec-014-backend-integration.md) consume SPEC-008 outputs;
+[SPEC-013](../specs/spec-013-runtime-profiles.md) and
+[SPEC-015](../specs/spec-015-host-configuration.md) are in coordinated review
+for the render-workspace limit and workload-schema additions. These contracts
+consume SPEC-008 outputs
 through separately governed execution, runtime, and backend boundaries. Their
 integration seams are audited here only to prove that SPEC-008 remains usable;
 their frame disposition, storage, rasterization, and platform behavior are not
@@ -124,18 +126,20 @@ driver work, deployment, or connected-hardware changes.
 
 **Reviewed:** 2026-09-11
 
-**Disposition:** Blocked pending Specification reapproval. `T4.2` showed that
+**Disposition:** Ready with coordinated downstream gates. `T4.2` showed that
 the prior workspace surface could not perform exact linear duplicate/count
 validation for arbitrary `Equatable` identity with bounded zero-allocation
 storage, and that two traversals could not prove complete lookup agreement
 without an owner-provided immutable-result signal or a prohibited retained
-transcript. The proposed SPEC-008 amendment adds dense ordinal projections,
-separate structural workspace capacity and visit sets, and snapshot versions.
-After explicit approval, this plan must be revised with exact follow-up tasks
-for the already completed view, workspace, fixture, and value-layout work.
+transcript. The approved SPEC-008 amendment adds dense ordinal projections,
+separate structural workspace capacity and visit sets, snapshot versions,
+exact traversal-depth rules, preflight-only visit accounting, and bounded-work
+view access. The existing follow-up tasks below cover the already completed
+view, workspace, fixture, and value-layout work. Integration with SPEC-013 and
+SPEC-015 waits for their focused amendments to be explicitly approved.
 No `docs/features.yaml` update is required because the aggregate feature
-remains in implementation while this individual Specification returns to
-review.
+remains in implementation while the individual Specification is approved and
+its coordinated downstream consumers are in review.
 
 If the pinned compiler cannot express the amended nonescaping generic borrows,
 ordinal projections, snapshot-version guarantees, or workspace visits; if
@@ -153,7 +157,7 @@ after every listed prerequisite is satisfied.
 
 | Work | Prerequisites | Primary affected surfaces | Parallel boundary |
 | --- | --- | --- | --- |
-| `T0.1`-`T0.4` | Historical approved SPEC-008 baseline; amendment approval required for follow-up | `Tests/ContractFixtures/SPEC008/`, `Package.swift`, `scripts/contracts/`, SPEC-002 graph fixtures | Fixture schemas, migration inventory, and driver scaffolding may proceed together; exact graph edits land with their first compiling targets |
+| `T0.1`-`T0.4` | Approved SPEC-008 authority chain | `Tests/ContractFixtures/SPEC008/`, `Package.swift`, `scripts/contracts/`, SPEC-002 graph fixtures | Fixture schemas, migration inventory, and driver scaffolding may proceed together; exact graph edits land with their first compiling targets |
 | `T1.1`-`T1.5` | `T0.2` boundary audit and current SPEC-006 sealed payload/traversal surface; no new package target is needed for the `GiftUI`-owned declarations | `Sources/GiftUI/`, `Tests/GiftUITests/`, public compile fixtures, SPEC-006 semantic corpus | Color, bounded text, text primitive, and style modifiers may be implemented independently once their fixed payload roles are registered |
 | `T2.1`-`T2.5` | Relevant `T1.*`; SPEC-006 complete result and SPEC-007 resolved result where named | `Sources/GiftUISemanticCore/`, `Sources/GiftUILayout/`, their unit tests, direct fixture views | Protocols and malformed direct views may precede production adapters; profile-equivalence claims wait for both prerequisite owners |
 | `T3.1`-`T3.5` | `T0.2` boundary audit, `T1.1`, and existing SPEC-002/SPEC-005 values; the first compiling Render Core source lands with its T0.2 package rows | `Sources/GiftUIRenderCore/`, `Tests/GiftUIRenderCoreTests/`, recording fixtures | Operation values and sink lifecycle may proceed beside semantic/layout adapters; recording completion waits for the event schema |
@@ -163,9 +167,9 @@ after every listed prerequisite is satisfied.
 | `T7.1`-`T7.5` | `T1`-`T6`; production SPEC-006/SPEC-007 outputs for end-to-end rows | package graph, Signal Analyzer manifest, SPEC-009/011/012/013/014 seams | Boundary audits may precede production integration; full analyzer and shared-lowering claims wait for prerequisite owners |
 | `T8.1`-`T8.5` | All applicable implementation and fixture tasks complete | formatter/gates, four profile reports, this plan, conformance report | Profile runs may execute independently after corpus freeze; comparison and conformance preparation consume all four reports |
 
-Implementation may resume only after explicit approval of the amendment, a
-revised readiness review, and an authorized transition of SPEC-008 back to
-`implementing` with this plan returned to `active`.
+Implementation may resume after an authorized transition of SPEC-008 to
+`implementing` with this plan moved to `active`. SPEC-013/SPEC-015 integration
+rows additionally require those coordinated amendments to be approved.
 
 ## Acceptance-Criterion Matrix
 
@@ -178,10 +182,10 @@ once below and maps to implementation tasks and reproducible evidence.
 | `RD-002` — Exact bounded-text admission and pre-layout invalid-declaration rejection | `T1.2`-`T1.4`, `T2.2`, `T6.2`, `T8.2` | UTF-8/integer byte goldens, invalid-marker semantic/layout probe, allocation/trap/invocation counters | pending |
 | `RD-003` — Exact valid headers, fills, glyph groups, ordering, geometry, identity, indices, baselines, and RGB | `T3.1`-`T3.4`, `T5.1`-`T5.3`, `T6.1`, `T8.2` | Canonical `fixtures.yaml` transcript and field-by-field recording comparisons | pending |
 | `RD-004` — Explicit root-intersection and complete-surface damage with no frame history | `T5.4`, `T6.1`, `T7.3`, `T8.2` | Damage-mode goldens, state/source audit, and repeated-attempt probes | pending |
-| `RD-005` — Exact errors, mappings, precedence, structural capacity/ordinal/snapshot failures, begin/discard/reset counts, and atomic current transcript | `T4.1`-`T4.5`, `T5.5`, `T6.3`, `T8.2` | Fault-injection and coincident-failure matrix with local/mapped results and sink/workspace call counts | pending |
+| `RD-005` — Exact errors, mappings, precedence, structural capacity/ordinal/snapshot failures, preflight-only visit accounting, begin/discard/reset counts, and atomic current transcript | `T4.1`-`T4.5`, `T5.5`, `T6.3`, `T8.2` | Fault-injection and coincident-failure matrix with local/mapped results and sink/workspace call counts | pending |
 | `RD-006` — No text reinterpretation, identity translation, retained borrow, glyph array, display-list, or per-field transcript requirement | `T2.4`, `T3.3`, `T4.4`, `T5.2`, `T6.4`, `T7.1` | Borrow/lifetime, source/import, streaming, allocation, and no-retained-list/transcript audits | pending |
 | `RD-007` — Recording/dynamic/static equivalence and exact render-limit and structural-capacity behavior | `T4.2`, `T5.5`, `T6.3`-`T6.5`, `T8.2`-`T8.4` | Normalized event/result/mapping comparisons and exactly-at/one-over reports | pending |
-| `RD-008` — Value layouts including structural capacity, four commands, zero static allocation, and complete reproducible measurements | `T0.3`, `T3.5`, `T6.4`, `T8.1`-`T8.4` | Per-profile compiler, digest, layout, allocation, high-water, timing, section, and link-map reports | pending |
+| `RD-008` — Value layouts including structural capacity, four commands, zero static allocation, affine view-access work, and complete reproducible measurements | `T0.3`, `T3.5`, `T6.4`, `T8.1`-`T8.4` | Per-profile compiler, digest, layout, access/comparison work, allocation, high-water, timing, section, and link-map reports | pending |
 | `RD-009` — Complete Signal Analyzer rendering manifest fitting all four profiles without a pixel backend | `T7.2`, `T7.4`, `T8.2` | Manifest coverage audit, declared/observed limits, and four-profile backend-free transcript | pending |
 | `RD-010` — Exact import graph and one shared lowering implementation across profiles | `T0.2`, `T2.5`, `T7.1`, `T7.3`, `T8.1` | Target graph, import-negative fixtures, symbol/source ownership audit, and shared-lowering profile probe | pending |
 | `RD-011` — No raster, frame disposition, capability resolution, profile selection, interaction/hit-map authority, platform, hardware, or Canvas/stroke contract in SPEC-008 implementation scope | `T0.4`, `T7.1`, `T7.3`-`T7.5`, `T8.5` | Scope/migration audit, prohibited-import scan, downstream-seam review, and conformance review disposition | pending |
@@ -379,14 +383,17 @@ deterministic failure precedence, and atomic sink behavior.
       sets with exact first/repeated/invalid and acquire/reset behavior.
 - [ ] `T4.2` — Implement canonical depth-first traversal and preflight over
       immutable borrows. Validate root mapping, exact semantic/layout counts,
-      ordinal bijections and visit sets, every lookup and structural invariant,
+      ordinal bijections and preflight-only visit sets, every lookup and
+      structural invariant,
       checked intersections, exact operation/glyph totals, structural clip and
-      traversal depth, resource compatibility, render and structural workspace
-      capacity, snapshot stability, and the one sink-capacity read without
-      emitting or retaining operations.
+      exact semantic traversal depth including every wrapper/modifier child,
+      resource compatibility, render and structural workspace capacity,
+      snapshot stability, exact first-visit totals, and the one sink-capacity
+      read without emitting or retaining operations.
 - [ ] `T4.3` — Implement the second traversal as direct ordered streaming and
       repeat every canonical lookup under the unchanged snapshot-version
-      contract without retaining a per-field proof transcript. Call `begin`
+      contract without clearing or calling either visit set and without
+      retaining a per-field proof transcript. Call `begin`
       once only after all preflight/capacity/version checks, keep glyph groups
       whole, call `finish` once on success, and treat any version disagreement
       or post-begin refusal as invariant failure with exactly one discard.
@@ -460,7 +467,8 @@ nonescaping borrows.
 - [ ] `T6.3` — Fault-inject every semantic/layout mismatch, arithmetic site,
       exactly-at/one-over operation/glyph/clip bound and semantic-scope,
       layout-scope, traversal-depth, and text-line capacity; ordinal visit-set
-      failure; workspace/sink shortfall; incompatible resource; every sink
+      failure and exact preflight-only visit counts; workspace/sink shortfall;
+      incompatible resource; every sink
       refusal; snapshot changes before and after begin; nested reentry; and
       reuse. Record exact local/mapped error and begin/discard/reset/attempted-
       call counts.
@@ -468,7 +476,9 @@ nonescaping borrows.
       allocation as zero, render and structural workspace capacity/bytes,
       maximum call-stack high-water, lowering duration and timing method/
       samples, and incremental linked code/read-only/initialized/zero-
-      initialized data. Prove no complete retained display list, glyph-run
+      initialized data. Count every view access and identity comparison across
+      both traversals and prove an affine `o + g` upper bound with no result-
+      sized accessor scan. Prove no complete retained display list, glyph-run
       array, or per-field preflight transcript is required.
 - [ ] `T6.5` — Run the entire corpus through recording, fixture-dynamic, and
       fixture-static semantic/layout/workspace storage. Compare headers,
@@ -644,9 +654,9 @@ separated from connected-hardware claims and every plan task dispositioned.
   `T7.2`-`T7.3` wait for SPEC-007's resolved layout result, canonical text
   geometry, and exact render view. Direct malformed views and Render Core
   tasks do not wait.
-- SPEC-008 is currently the upstream blocker: no T4.2 or later implementation,
-  nor amendment follow-up to completed tasks, may proceed until the 2026-09-11
-  amendment is explicitly approved and this plan is re-readied.
+- SPEC-013 and SPEC-015 integration portions of `T7.3` and `T7.4` wait for
+  explicit approval of their coordinated render-workspace and schema-2
+  amendments. This does not block focused SPEC-008 amendment follow-up.
 - Any compiler failure of the reviewed borrow/lifetime, ordinal-bijection, or
   snapshot contracts, need to translate identity, inability to preserve exact
   two-pass agreement and atomicity, or inability to satisfy required value-
@@ -678,17 +688,19 @@ obligation from SPEC-008 cannot be deferred.
 On 2026-09-11 implementation paused at `T4.2` and SPEC-008 returned to review.
 The prior contract did not bound storage for exact semantic/layout distinctness
 and traversal validation, and could not prove complete agreement between two
-passes without retaining all observed fields. The proposed amendment adds
+passes without retaining all observed fields. The approved amendment adds
 owner-provided dense ordinal projections, a separate four-field structural
 workspace capacity with ordinal visit sets, and owner-provided immutable
-snapshot versions. The completed `T2.1`, `T2.3`, `T3.5`, and `T4.1` records
-remain valid historical evidence but require the follow-up work marked above
-after approval. `docs/features.yaml` remains unchanged because its aggregate
-feature is still in implementation.
+snapshot versions, with exact traversal-depth, visit-lifecycle, and linear-view-
+access rules. The completed `T2.1`, `T2.3`, `T3.5`, and `T4.1` records remain
+valid historical evidence but require the follow-up work marked above.
+`docs/features.yaml` remains unchanged because its aggregate feature is still
+in implementation.
 
 Implementation began on 2026-09-06 at the maintainer's request. SPEC-008 is
-historically recorded as having entered `implementing`; this plan is now
-`draft` and paused. Neither that history nor this amendment authorizes the
+historically recorded as having entered `implementing`; after amendment
+approval this plan is `ready`, not `active`, pending an authorized transition
+back to implementation. Neither that history nor this approval authorizes the
 eventual `implemented` transition.
 
 `T0.1` is complete: `Tests/ContractFixtures/SPEC008/` now contains the exact

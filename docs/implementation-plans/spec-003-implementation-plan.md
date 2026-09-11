@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-08-29
-updated: 2026-08-31
+updated: 2026-09-11
 related_design_notes:
   - ../implementation-designs/spec-003-bounded-diagnostic-buffer.md
 conformance_report: null
@@ -92,9 +92,10 @@ SPEC-009 and SPEC-015 rather than creating substitute contracts here.
   `GiftUIFailureExecution` cannot yet be created conformingly. SPEC-004 is
   implementing, its arithmetic correction is reapproved, and its `T2.1`
   iteration is ready. The stable declarations required by `T4.2` remain
-  available independently of resolver completion. SPEC-015 remains approved
-  but unimplemented, so production host placement remains an integration
-  dependency rather than work to absorb into `GiftUIFailureCore`.
+  available independently of resolver completion. SPEC-015 is in focused
+  review with a draft implementation plan, so production host placement
+  remains an integration dependency rather than work to absorb into
+  `GiftUIFailureCore`.
 - No SPEC-003 implementation design note or conformance report exists.
 
 ## Parallel-Safe Cross-Owner Iteration — Ready
@@ -357,8 +358,8 @@ duplicated to remove a dependency blocker.
 - [ ] `T4.4` — After SPEC-015 supplies the production host policy and runtime
       gate, integrate the invariant mapping and terminal quiescence sequence
       proven by `T2.3`. A configured fatal hook may observe only after
-      quiescence and cannot replace it. **Blocked:** SPEC-015 is approved but
-      has no implementation plan or production host/runtime gate.
+      quiescence and cannot replace it. **Blocked:** SPEC-015 is in review and
+      has no production host/runtime gate.
 - [ ] `T4.5` — Refresh the exact package allow-list, positive/negative imports,
       compiled module dependencies, and product linkage after every owner
       target lands. Fail any upward edge, re-export, monolithic target, or

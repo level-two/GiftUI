@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-08-27
-updated: 2026-09-09
+updated: 2026-09-11
 proposal:
   - PROPOSAL-003
   - PROPOSAL-004
@@ -149,9 +149,10 @@ SPEC-012's approved one-operation-
 per-stroke, borrowed `StraightLineStrokeView`, checked surface-coordinate,
 inherited-clip, canonical coverage, encoding, capacity, and failure contract.
 
-SPEC-001 and SPEC-013 are approved downstream coordination contracts. Their
-production Signal Analyzer capacities and host assembly do not redefine this
-backend contract.
+SPEC-001 is an approved downstream application contract. SPEC-013 is in
+focused review for its render-workspace-limit addition; neither that runtime-
+profile coordination nor production Signal Analyzer capacities and host
+assembly redefine this backend contract.
 
 SPEC-004 owns capability vocabulary and resolution. SPEC-005 owns exact text
 resource identity and compatible raster-resource views. SPEC-008 and SPEC-012

@@ -86,13 +86,13 @@ the bounded public action-value protocol, and action identity. Neither
 Specification depends on or redefines the other.
 
 Wave 3 retains these immutable identities. SPEC-007 remains approved;
-SPEC-008 has returned to review for its focused 2026-09-11 bounded-workspace
-and immutable-snapshot amendment:
+SPEC-008's corrected 2026-09-11 bounded-workspace and immutable-snapshot
+amendment is explicitly approved:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
 | `LAYOUT` | `SPEC-007` | `approved` |
-| `RENDERING` | `SPEC-008` | `review` |
+| `RENDERING` | `SPEC-008` | `approved` |
 
 SPEC-007 owns proposal-based measurement, placement, canonical text geometry,
 and resolved occurrence bounds. SPEC-008 owns public text/color/style meaning,
@@ -131,23 +131,24 @@ Wave 6 has produced these immutable artifacts:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `RUNTIME-PROFILES` | `SPEC-013` | `approved` |
+| `RUNTIME-PROFILES` | `SPEC-013` | `review` |
 | `BACKEND-INTEGRATION` | `SPEC-014` | `approved` |
 
-Both artifacts are reconciled to approved SPEC-012. SPEC-013's completeness
-review produced the coordinated SPEC-009 through SPEC-011 amendments; the
-maintainer has explicitly approved all five contracts.
+Both artifacts are reconciled to approved SPEC-012. SPEC-013's previously
+approved completeness review produced the coordinated SPEC-009 through
+SPEC-011 amendments; its focused render-workspace-limit addition is now in
+review, while SPEC-014 remains approved.
 
 Wave 7 has produced this immutable artifact:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `HOST-CONFIGURATION` | `SPEC-015` | `approved` |
+| `HOST-CONFIGURATION` | `SPEC-015` | `review` |
 
 SPEC-015 owns immutable target-host assembly, structural and capability startup
 gates, action/model/fact wiring, input/wake integration, finite pacing and
-policy, and the four MVP configuration obligations. It is authoritative for
-implementation after explicit human approval.
+policy, and the four MVP configuration obligations. Its coordinated schema-2
+render-workspace workload amendment requires renewed explicit human approval.
 
 Candidate keys are planning labels, not reserved Specification IDs.
 

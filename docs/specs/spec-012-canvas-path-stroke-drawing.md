@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-09-09
+updated: 2026-09-11
 proposal:
   - PROPOSAL-006
 related_rfcs:
@@ -808,7 +808,8 @@ published semantic revision.
 Construction, snapshot, validation, and lowering are linear in admitted
 points, subpaths, and strokes. The independent fixture supports at least 820
 segments as feasibility evidence, while production capacity is derived from
-approved SPEC-001 and SPEC-015. Evidence reports closure,
+approved SPEC-001 and the approved version of SPEC-015's host workload.
+Evidence reports closure,
 construction, snapshot, lowering, operation, raster, point/stroke bytes, peak
 simultaneous workspace, stack, heap, flash, and linked-size deltas separately.
 

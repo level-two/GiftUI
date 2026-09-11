@@ -6,7 +6,7 @@ status: ready
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-10
+updated: 2026-09-11
 related_design_notes: []
 conformance_report: null
 related_future_work:
@@ -647,8 +647,9 @@ report has a disposition for every criterion.
   execution-generation/capture, and publishable-target seams are partly
   present, but each consuming task waits for the exact authoritative production
   surface and its focused tests rather than adding aliases or forks.
-- SPEC-013 and SPEC-015 are approved, but their production runtime/host targets
-  are absent from the current implementation baseline. `T5` production
+- SPEC-013 and SPEC-015 are in coordinated review, and their production
+  runtime/host targets are absent from the current implementation baseline.
+  `T5` production
   coordinator integration, `T7` profile/first-party assembly, and assembled
   resource claims wait for those owners and their normal readiness gates;
   recording fixtures may proceed without claiming production integration.

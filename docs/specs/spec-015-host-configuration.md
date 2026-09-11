@@ -2,7 +2,7 @@
 id: SPEC-015
 feature: giftui-mvp-architecture
 title: MVP Target-Host Configuration Contract
-status: approved
+status: review
 authors:
   - codex
 created: 2026-08-28
@@ -47,6 +47,7 @@ related_specs:
   - SPEC-003
   - SPEC-004
   - SPEC-005
+  - SPEC-008
   - SPEC-009
   - SPEC-010
   - SPEC-011
@@ -64,10 +65,12 @@ target_milestone: MVP
 
 # SPEC-015: MVP Target-Host Configuration Contract
 
-> **Approval status:** This is the approved Wave 7 `HOST-CONFIGURATION`
-> contract from the MVP Specification Portfolio. Its reusable prerequisites
-> are approved. SPEC-001 was subsequently reconciled against this contract and
-> explicitly approved; neither Specification redefines the other's ownership.
+> **Approval status:** In review for the coordinated 2026-09-11 workload-schema
+> amendment that supplies SPEC-008 render-workspace limits through SPEC-013.
+> The previously approved host-configuration contract remains historical
+> authority, but implementation against this amended surface requires renewed
+> explicit maintainer approval. SPEC-001 remains independently approved and
+> neither Specification redefines the other's ownership.
 
 ## Summary
 
@@ -137,9 +140,11 @@ coherent executable stack.
 
 ## Dependencies
 
-SPEC-004, SPEC-012, SPEC-013, and SPEC-014 are the direct Wave 7 prerequisites
-and are approved. SPEC-003, SPEC-005, and SPEC-009 through SPEC-011 supply the
-failure, resource, execution, observable, and interaction values joined here.
+SPEC-004, SPEC-012, SPEC-013, and SPEC-014 are the direct Wave 7 prerequisites.
+SPEC-013 is in coordinated review for the render-workspace limit added here;
+the other direct prerequisites are approved. SPEC-003, SPEC-005, and SPEC-009
+through SPEC-011 supply the failure, resource, execution, observable, and
+interaction values joined here.
 All ADRs listed in metadata are accepted. ADR-002 and ADR-013 are superseded
 and are not authority.
 
@@ -369,7 +374,10 @@ package struct SignalAnalyzerHostWorkload: Equatable, Sendable {
     package let schemaVersion: UInt16
     package let requiredRuntimeLimits: RuntimeProfileLimits
     package let semanticNodeOccurrences: UInt16
+    package let renderSemanticScopeOccurrences: UInt16
     package let layoutScopeOccurrences: UInt16
+    package let maximumRenderTraversalDepth: UInt16
+    package let renderTextLineCount: UInt16
     package let positionedGlyphCount: UInt16
     package let ordinaryRenderOperations: UInt16
     package let inputEventsPerOpportunity: UInt16
@@ -673,7 +681,7 @@ code is invalid. The root target is the one structurally owned
 the handler or model.
 
 Every first-party preset carries a `SignalAnalyzerHostWorkload` with
-`schemaVersion == 1`. Its `requiredRuntimeLimits` is the exact, complete
+`schemaVersion == 2`. Its `requiredRuntimeLimits` is the exact, complete
 `RuntimeProfileLimits` value derived before Swift compilation from one checked-
 in descriptor of the fixed portable hierarchy and application workload. The
 descriptor, generated manifest, and generated preset values are conformance
@@ -682,11 +690,14 @@ inputs and MUST be reviewable. Validation requires
 there is no independently chosen headroom and no omitted or defaulted
 `RuntimeProfileLimits` leaf.
 
-The generator counts every semantic occurrence, layout scope, positioned
-glyph, ordinary render operation, input event, semantic action, completion
-fact, Canvas occurrence, live Path element, snapshotted Drawing element, and
-static callable/capture requirement using the owning approved Specification's
-counting rules. It then constructs every nested semantic, layout, render,
+The generator counts every SPEC-006 semantic-node occurrence, every SPEC-008
+semantic render scope (including structural and modifier wrappers), every
+layout scope, the greatest active SPEC-008 semantic render traversal depth,
+every render text line including empty lines, every positioned glyph, ordinary
+render operation, input event, semantic action, completion fact, Canvas
+occurrence, live Path element, snapshotted Drawing element, and static callable/
+capture requirement using the owning approved Specification's counting rules.
+It then constructs every nested semantic, layout, render, render-workspace,
 render-sink, execution, observable-state, interaction, Drawing, and optional
 static-Canvas limit from those counts. Hierarchy- and application-derived
 counts MUST be value-equal across all four manifests. A limit may differ only
@@ -711,6 +722,11 @@ relations:
   separate 1/32/1 fact stores in one sealed sequence namespace;
 - every fact store has concrete storage for its exact cardinality and no
   ordinary fact may consume the reserved failure slot; and
+- `requiredRuntimeLimits.renderWorkspace.maximumSemanticScopes` equals
+  `renderSemanticScopeOccurrences`, `maximumLayoutScopes` equals
+  `layoutScopeOccurrences`, `maximumTraversalDepth` equals
+  `maximumRenderTraversalDepth`, and `maximumTextLines` equals
+  `renderTextLineCount`; and
 - every remaining Execution, semantic, layout, render, Drawing, and static-
   Canvas limit equals the corresponding generated
   `workload.requiredRuntimeLimits` value.
@@ -777,8 +793,9 @@ in `HostValidationStage` raw-value order:
    package and realization, reject its precise local error, and retain the
    successfully validated package for the host lifetime;
 4. validate the complete workload manifest and every
-   `requiredRuntimeLimits` leaf against producer, plan, runtime, render, sink,
-   observable, interaction, input, action, fact, and Drawing capacities;
+   `requiredRuntimeLimits` leaf against producer, plan, runtime, render,
+   render-workspace, sink, observable, interaction, input, action, fact, and
+   Drawing capacities;
 5. collect exactly four SPEC-004 contributions, resolve once, and require
    `rasterPresentation` with all five operation bits;
 6. require exact equality between the resolved effective presentation and the
@@ -1091,6 +1108,11 @@ persistent configuration format. Static generation may specialize wiring;
 dynamic hosts may use bounded references and existentials. Both preserve the
 same values, ordering, outcomes, capacities, and portable Presentation.
 
+Schema-1 generated workload manifests are historical inputs and MUST be
+regenerated as schema 2 before compilation. Validation rejects any schema
+version other than 2; there is no runtime defaulting or migration path for the
+new render-workspace fields.
+
 Legacy platform-owned stacks, ambient lookup, direct sink-to-ViewModel
 mutation, closure-retaining portable Button actions, mutable capability
 registries, and target-specific reduced presentations are incompatible.
@@ -1108,11 +1130,13 @@ Required tests include:
 - every validation stage success and each missing, duplicate, out-of-order,
   truncated, cyclic, upward, unknown-bit, malformed, mismatched, overflowing,
   and insufficient input, including a proof that no later projection is read;
-- generation of all four schema-1 workload manifests from the checked-in
+- generation of all four schema-2 workload manifests from the checked-in
   hierarchy descriptor, exact equality for every `RuntimeProfileLimits` leaf,
   success at each requirement, and failure when each leaf is independently
-  lowered or made unequal; a leaf whose lower value is not constructible must
-  instead prove that its owning initializer rejects that value;
+  lowered or made unequal; this includes independent coverage of all four
+  render-workspace counts and exact wrapper/modifier traversal-depth fixtures;
+  a leaf whose lower value is not constructible must instead prove that its
+  owning initializer rejects that value;
 - all permutations of capability contribution order and exact effective-value
   equality with the selected endpoint;
 - independent failure of the Drawing and capability gates;
@@ -1160,13 +1184,14 @@ software, transport, and observed architecture separately.
   dependency graph, `GiftUI` as the sole portable import, and no platform-owned
   semantic stack or ambient lookup.
 - [ ] **HC-004:** Each preset consumes one exact successful SPEC-013 audit,
-  requires equality with its complete schema-1 workload-derived limits, and
+  requires equality with its complete schema-2 workload-derived limits, and
   rejects every independently mismatched profile, limit leaf, storage, static
   Canvas table, or byte total.
 - [ ] **HC-005:** The five-Canvas workload proves the 202 live-point, 12 live-
   subpath, five-stroke, 832 plan-point, and 16 plan-subpath minima; generated
-  ordinary operation counts are equal across all hosts and fit every producer,
-  runtime, render, and sink bound.
+  render structural counts and ordinary operation counts are equal across all
+  hosts and fit every producer, runtime, render-workspace, render, and sink
+  bound.
 - [ ] **HC-006:** Structural Drawing capacity and `rasterPresentation` resolve
   as independent conjunctive gates; neither repairs the other and no Drawing
   capacity enters SPEC-004 vocabulary.
@@ -1229,8 +1254,10 @@ validation.
 
 ## Open Issues
 
-No architectural issue blocks this approved host-configuration contract.
-Approved SPEC-001 preserves this contract's fact-burst, failure normalization,
+No unresolved architectural choice is introduced by this amendment. The
+schema-2 render-workspace additions remain review material until explicit
+maintainer approval of this Specification and coordinated SPEC-013. Approved
+SPEC-001 preserves this contract's fact-burst, failure normalization,
 deterministic mock trace, diagnostic, and exact host-fixture alignment.
 
 ## Deferred and Follow-up Work

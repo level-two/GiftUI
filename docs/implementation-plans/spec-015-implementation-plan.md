@@ -2,11 +2,11 @@
 spec: SPEC-015
 feature: giftui-mvp-architecture
 title: SPEC-015 Implementation Plan
-status: ready
+status: draft
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-09
+updated: 2026-09-11
 related_design_notes: []
 conformance_report: null
 related_future_work: []
@@ -18,15 +18,15 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-> This ready plan derives work from the approved MVP Target-Host
-> Configuration Contract. It orders reusable host assembly and evidence but
-> does not amend SPEC-015, absorb behavior owned by another Specification, or
-> authorize connected deployment, service restart, or board flashing.
+> This plan is paused in `draft` while the focused 2026-09-11 schema-2
+> workload amendment to SPEC-015 is in review. It does not authorize connected
+> deployment, service restart, or board flashing.
 
 ## Authority and Scope
 
-The governing [SPEC-015](../specs/spec-015-host-configuration.md) contract is
-approved. Its authority chain consists of accepted
+The governing [SPEC-015](../specs/spec-015-host-configuration.md) contract is in
+review for the generated SPEC-008 render-workspace inputs carried through
+SPEC-013. Its authority chain otherwise consists of accepted
 [PROPOSAL-002](../proposals/proposal-002-signal-analyzer-reference-application.md)
 through [PROPOSAL-006](../proposals/proposal-006-canvas-path-stroke-drawing.md),
 approved [RFC-001](../rfcs/rfc-001-signal-analyzer-application-architecture.md),
@@ -60,11 +60,11 @@ are satisfied.
 
 - `docs/features.yaml` registers SPEC-015 under the
   `giftui-mvp-architecture` feature, whose lifecycle stage is
-  `implementation`. SPEC-015 itself remains `approved`; implementation has not
-  begun and this plan does not perform the `implementing` transition.
-- All linked ADRs are accepted, all linked RFCs are approved, and SPEC-001 plus
-  SPEC-003 through SPEC-015 are approved or implementing as required. No
-  architectural or contractual issue is open in SPEC-015.
+  `implementation`. SPEC-015 itself is in `review`; implementation has not
+  begun.
+- All linked ADRs are accepted and all linked RFCs are approved. SPEC-013 and
+  SPEC-015 are in coordinated review for the render-workspace workload schema;
+  no new architectural choice is open.
 - `Package.swift` has no `GiftUIHostConfiguration` target, host-instance
   target, runtime-profile owner, Interaction owner, Drawing owner, raster
   backend owner, concrete four-preset root, or SPEC-015 test target.
@@ -94,16 +94,15 @@ are satisfied.
 
 **Reviewed:** 2026-09-09
 
-**Disposition:** Ready with explicit prerequisite gates. The authority chain
-is complete and all eighteen acceptance criteria map exactly once below.
-Milestone 0 and dependency-complete slices of Milestones 1 through 3 can begin
-in order. Production owner construction and four-host integration cannot begin
-until the relevant SPEC-003 through SPEC-014 implementations expose the exact
-approved owner APIs and SPEC-001 has a ready executable application plan.
+**Disposition:** Paused pending Specification reapproval. The authority chain
+is otherwise complete and all eighteen acceptance criteria map exactly once,
+but the plan must freeze the schema-2 render-scope, traversal-depth, text-line,
+and render-workspace evidence before becoming ready. No implementation task
+proceeds while the amended Specification is in review.
 
-No `docs/features.yaml` edit is required for this derived record. When
-implementation actually starts, a maintainer must authorize or perform the
-SPEC-015 `approved` to `implementing` transition with the corresponding
+No `docs/features.yaml` edit is required for this derived record. After
+reapproval and a ready-plan review, implementation start still requires an
+authorized SPEC-015 transition to `implementing` with the corresponding
 metadata and manifest consistency update.
 
 If implementation cannot express the exact noncopyable validator/instance
@@ -122,7 +121,7 @@ all named prerequisites exist and its owner contract remains authoritative.
 
 | Work | Prerequisites | Primary affected surfaces | Parallel boundary |
 | --- | --- | --- | --- |
-| `T0.1`-`T0.4` | Approved SPEC-015 authority chain | `Tests/ContractFixtures/SPEC015/`, driver registry, exact package/source scans | Evidence schema, migration inventory, and driver skeleton may proceed together after names are fixed |
+| `T0.1`-`T0.4` | Reapproved SPEC-015 authority chain | `Tests/ContractFixtures/SPEC015/`, driver registry, exact package/source scans | Evidence schema, migration inventory, and driver skeleton may proceed together after names are fixed |
 | `T1.1`-`T1.4` | Milestone 0 boundaries; focused value types available | `Sources/GiftUIHostConfiguration/`, focused unit tests, package graph | Value families may be implemented separately; validator orchestration waits for all exact declarations |
 | `T2.1`-`T2.4` | SPEC-001 hierarchy/workload inputs; SPEC-012/013 limit vocabularies | checked-in descriptor, generator, generated preset manifests | Generator and negative leaf corpus may proceed together against one frozen schema |
 | `T3.1`-`T3.6` | Milestones 1-2; SPEC-004/005/013 projections; SPEC-014 descriptor vocabulary | pure validator, adapter fixtures, validation transcripts | Stages may have focused tests in parallel; ordered validator composition waits for every stage |
@@ -141,8 +140,8 @@ exactly once here with its implementation work and expected evidence.
 | `HC-001` — Complete authority, metadata, manifest, portfolio, and upstream linkage without implied SPEC-001 approval | `T0.1`, `T7.4` | Governance and reciprocal-link audit | pending |
 | `HC-002` — Pure ordered validation, first failure, no side effects or partial assembly, and valid-only instance exposure | `T1.4`, `T3.6`, `T4.1`, `T7.1` | Access-order probes, owner-call ledger, repeat-call corpus, construction transcript | pending |
 | `HC-003` — Exact acyclic one-owner graph, portable import boundary, and no ambient/platform stack | `T0.2`, `T1.2`, `T7.1` | Exact graph corpus, source/import/link scans, negative compile fixtures | pending |
-| `HC-004` — Exact SPEC-013 audit and complete schema-1 runtime-limit equality | `T2.2`, `T3.1`, `T6.4` | Per-leaf equality/lowering corpus, audit identity reports, static-table and byte-total checks | pending |
-| `HC-005` — Exact five-Canvas minima and equal bounded ordinary operation count | `T2.1`, `T2.3`, `T3.2`, `T6.4` | Generated workload manifests, checked arithmetic and capacity reports | pending |
+| `HC-004` — Exact SPEC-013 audit and complete schema-2 runtime-limit equality | `T2.2`, `T3.1`, `T6.4` | Per-leaf equality/lowering corpus including render workspace, audit identity reports, static-table and byte-total checks | pending |
+| `HC-005` — Exact five-Canvas minima and equal bounded render structural/ordinary operation counts | `T2.1`, `T2.3`, `T3.2`, `T6.4` | Generated workload manifests, checked arithmetic and capacity reports | pending |
 | `HC-006` — Independent conjunctive Drawing and capability gates | `T3.2`, `T3.3`, `T7.1` | Two independent negatives, combined success, capability-vocabulary audit | pending |
 | `HC-007` — Four contributions, five operation bits, required absence, one resolver call, exact endpoint equality | `T3.3`, `T6.4` | Permutation corpus, resolver instrumentation, effective-value transcripts | pending |
 | `HC-008` — Exact immutable compatible text package and nine exact validation mappings | `T3.1`, `T4.2`, `T7.1` | Resource identity/lifetime probes and nine-row failure matrix | pending |
@@ -161,8 +160,9 @@ exactly once here with its implementation work and expected evidence.
 
 ### Milestone 0: Freeze Authority, Boundaries, and Evidence Schemas
 
-**Entry conditions:** SPEC-015 remains approved; its linked Proposals, RFCs,
-ADRs, and Specifications retain their authoritative statuses.
+**Entry conditions:** SPEC-015 and coordinated SPEC-013 are reapproved; their
+linked Proposals, RFCs, ADRs, and Specifications retain their authoritative
+statuses.
 
 **Exit evidence:** The exact work boundary, migration disposition, fixture
 schema, and fail-closed driver contract exist before host implementation.
@@ -192,7 +192,7 @@ schema, and fail-closed driver contract exist before host implementation.
       `.build/spec-015/`; and contain no network, deployment, restart, probe,
       or flashing action.
 - [ ] `T0.4` — Define checked-in schemas for the portable hierarchy/workload
-      descriptor, generated schema-1 workload manifest, preset expectation,
+      descriptor, generated schema-2 workload manifest, preset expectation,
       validation transcript, lifecycle transcript, normalized semantic report,
       and resource report. Every schema rejects unknown, missing, duplicate,
       reordered, or unversioned required fields and preserves exact focused
@@ -252,18 +252,22 @@ or defaulted limit leaf.
 
 - [ ] `T2.1` — Add one checked-in descriptor for the fixed Signal Analyzer
       hierarchy and application workload plus a deterministic host-only
-      generator. Count every semantic occurrence, layout scope, glyph,
-      ordinary operation, input, action, completion fact, Canvas, live Path
-      element, snapshot element, and static callable/capture requirement under
-      its owner Specification. Generated Swift and manifest files must carry
-      source identity and be reproducible without evaluating a client body or
-      Canvas closure during validation.
+      generator. Count every SPEC-006 semantic-node occurrence, every SPEC-008
+      render semantic scope, layout scope, maximum render traversal depth,
+      render text line including empty lines, glyph, ordinary operation, input,
+      action, completion fact, Canvas, live Path element, snapshot element, and
+      static callable/capture requirement under its owner Specification.
+      Generated Swift and schema-2 manifest files must carry source identity
+      and be reproducible without evaluating a client body or Canvas closure
+      during validation.
 - [ ] `T2.2` — Generate every complete nested `RuntimeProfileLimits` leaf and
       one exact expected SPEC-013 `RuntimeStorageAudit` for each preset. Add a
       generated per-leaf corpus proving equality succeeds and each
       independently lowered, unequal, wrong-profile, wrong-storage,
       wrong-static-table, or wrong-byte-total value fails; where a lower value
-      is unconstructible, prove the owner initializer rejects it.
+      is unconstructible, prove the owner initializer rejects it. Verify all
+      four `renderWorkspace` fields equal their schema-2 source counts and the
+      audited workspace capacity.
 - [ ] `T2.3` — Generate and verify the exact Drawing minima: five Canvases,
       202 live points, 12 live subpaths, five strokes/normalized operations,
       832 snapshotted points, and 16 snapshotted subpaths. Compute
@@ -554,7 +558,8 @@ cross-build cannot satisfy a connected-hardware row.
 
 ### Upstream blockers
 
-- SPEC-011 through SPEC-014 have ready plans but no production targets.
+- SPEC-011, SPEC-012, and SPEC-014 have ready plans but no production targets;
+  SPEC-013 and this Specification are in coordinated review.
   `T3.4`, `T4.*`, `T5.*`, and `T6.*` must wait for the exact owner seams they
   govern.
 - SPEC-003, SPEC-004, and SPEC-008 through SPEC-010 have active plans;
@@ -615,8 +620,10 @@ must not be deferred merely to continue implementation.
 
 ## Completion Record
 
-This plan is ready, but no task is complete, no design note or conformance
-report exists, and no SPEC-015 implementation evidence is claimed. Update each
-task disposition and evidence link in place as work proceeds. Plan completion
-does not mark SPEC-015 implemented; that transition requires a complete
-conformance review and explicit human authorization.
+This plan returned to `draft` on 2026-09-11 for the coordinated SPEC-008/
+SPEC-013 render-workspace contract and schema-2 workload inputs. No task is
+complete, no design note or conformance report exists, and no SPEC-015
+implementation evidence is invalidated or claimed. After reapproval, update
+each task disposition and evidence link in place as work proceeds. Plan
+completion does not mark SPEC-015 implemented; that transition requires a
+complete conformance review and explicit human authorization.
