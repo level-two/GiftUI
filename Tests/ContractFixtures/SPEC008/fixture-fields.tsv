@@ -2,9 +2,14 @@
 name	kebab-case	globally unique canonical case name
 semanticEvents	sequence	ordered symbolic SPEC-006 rendering-relevant semantic events
 identityTokens	sequence	complete declared identity token set for this case
+semanticOrdinals	sequence	exact dense ordinal-to-identity projection
+layoutOrdinals	sequence	exact dense ordinal-to-identity projection
+semanticSnapshotVersion	integer	exact immutable SPEC-006 render snapshot version
+layoutSnapshotVersion	integer	exact immutable SPEC-007 render snapshot version
 resolvedBounds	sequence	exact identity-keyed SPEC-007 bounds values
 resolvedClips	sequence	exact identity-keyed SPEC-007 logical clip values
 clipDepths	sequence	exact identity-keyed structural clip depths
+traversalDepths	sequence	exact identity-keyed semantic traversal depths
 textLines	sequence	exact line indices bounds baselines clips and glyph counts
 glyphs	sequence	exact occurrence-wide glyph indices instances glyphs baselines and clips
 resourceTokens	sequence	complete declared resource instance and glyph token set for this case

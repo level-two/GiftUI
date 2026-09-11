@@ -251,9 +251,9 @@ fail_check("report lacks repository revision") unless metadata["repository_revis
 fail_check("report lacks input digest") unless metadata["input_set_sha256"]&.match?(/\A[0-9a-f]{64}\z/)
 fail_check("report lacks run identity") if metadata.fetch("run_id", "").empty?
 fail_check("render core target must be recorded complete") unless metadata["render_core_target"] == "complete"
-fail_check("render lowering must remain blocked") unless metadata["render_lowering_target"] == "blocked"
+fail_check("render lowering must be recorded active") unless metadata["render_lowering_target"] == "active"
 fail_check("declaration profiles must be complete") unless metadata["declaration_profiles"] == "complete"
-fail_check("fixture corpus must remain missing") unless metadata["fixture_corpus"] == "missing"
+fail_check("fixture corpus must be recorded complete") unless metadata["fixture_corpus"] == "complete"
 fail_check("incomplete evidence must not claim completion") unless metadata["evidence_complete"] == "false"
 %w[
   remote_access deployment service_restart simulator_execution
@@ -287,8 +287,8 @@ expected_prerequisites = %w[
   link-map target-inspection acceptance-evidence
 ]
 fail_check("prerequisite set differs") unless prerequisites.map(&:first) == expected_prerequisites
-allowed_statuses = %w[complete missing blocked]
+allowed_statuses = %w[complete active missing blocked]
 fail_check("invalid prerequisite status") if prerequisites.any? { |row| !allowed_statuses.include?(row[1]) }
 fail_check("prerequisite lacks reason") if prerequisites.any? { |row| row[2].empty? }
 
-puts "SPEC-008 report is fail-closed: 11 criteria missing; rendering targets blocked"
+puts "SPEC-008 report is fail-closed: 11 criteria missing; render lowering active"

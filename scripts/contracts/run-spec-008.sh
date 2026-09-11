@@ -72,6 +72,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-008-clip-damage.rb" \
             "$SCRIPT_DIR/check-spec-008-foreground-semantics.rb" \
             "$SCRIPT_DIR/check-spec-008-failure-precedence.rb" \
+            "$SCRIPT_DIR/check-spec-008-canonical-corpus.rb" \
             "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb" \
             "$SCRIPT_DIR/check-spec-008-recording-sink.rb" \
             "$SCRIPT_DIR/check-spec-008-recording-verification.rb" \
@@ -135,7 +136,7 @@ printf '# label\tpath\tsha256\n' >"$images_path"
     printf 'invocation=scripts/contracts/run-spec-008.sh --profile %s\n' "$profile"
     printf 'render_core_target=complete\nrender_lowering_target=active\n'
     printf 'declaration_profiles=pending\n'
-    printf 'fixture_corpus=missing\nevidence_complete=false\n'
+    printf 'fixture_corpus=complete\nevidence_complete=false\n'
     printf 'remote_access=false\ndeployment=false\nservice_restart=false\n'
     printf 'simulator_execution=false\nconnected_target_execution=false\nflashing=false\n'
 } >"$metadata_path"
@@ -234,10 +235,10 @@ record_nrf52840_identity() {
     printf 'command-transcript\tcomplete\texact invoked checks recorded\n'
     printf 'fixture-digest\tcomplete\tdeclared inputs and fixture digest recorded\n'
     printf 'declaration-fixtures\tcomplete\tall 17 fixtures compile as expected for the selected profile\n'
-    printf 'render-targets\tactive\tRender Core is complete; Render Lowering preflight is complete while streaming and owner adaptation remain pending\n'
+    printf 'render-targets\tactive\tRender Core and focused lowering are complete; corpus/profile and integration tasks remain\n'
     printf 'value-layouts\tcomplete\tall 13 bounded values pass exact or maximum layouts for this profile\n'
     printf 'result-comparison\tmissing\tcanonical normalized results are not implemented\n'
-    printf 'transcript-comparison\tmissing\tcanonical recording transcripts are not implemented\n'
+    printf 'transcript-comparison\tmissing\tcanonical host goldens are complete; three-path profile comparison remains\n'
     printf 'high-water\tmissing\tdeclared and observed high-water values are unavailable\n'
     printf 'allocation\tmissing\tstatic rendering path is not implemented\n'
     printf 'workspace\tmissing\trender production workspace is not implemented\n'
@@ -275,6 +276,8 @@ record_command "$SCRIPT_DIR/check-spec-008-foreground-semantics.rb"
 "$SCRIPT_DIR/check-spec-008-foreground-semantics.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-failure-precedence.rb"
 "$SCRIPT_DIR/check-spec-008-failure-precedence.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-008-canonical-corpus.rb"
+"$SCRIPT_DIR/check-spec-008-canonical-corpus.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb"
 "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-recording-sink.rb"

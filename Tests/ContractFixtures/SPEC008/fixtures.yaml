@@ -1,2 +1,214 @@
 schema: spec-008-fixtures-v1
-cases: []
+cases:
+  - name: nested-styles-and-sibling-restoration
+    semanticEvents:
+      - {identity: "identity:root", scope: structural, children: ["identity:outer-foreground", "identity:second-text"]}
+      - {identity: "identity:outer-foreground", scope: foreground-green, children: ["identity:outer-background"]}
+      - {identity: "identity:outer-background", scope: background-blue, children: ["identity:inner-foreground"]}
+      - {identity: "identity:inner-foreground", scope: foreground-red, children: ["identity:inner-background"]}
+      - {identity: "identity:inner-background", scope: background-gray, children: ["identity:first-text"]}
+      - {identity: "identity:first-text", scope: text, children: []}
+      - {identity: "identity:second-text", scope: text, children: []}
+    identityTokens: ["identity:root", "identity:outer-foreground", "identity:outer-background", "identity:inner-foreground", "identity:inner-background", "identity:first-text", "identity:second-text"]
+    semanticOrdinals: ["identity:root", "identity:outer-foreground", "identity:outer-background", "identity:inner-foreground", "identity:inner-background", "identity:first-text", "identity:second-text"]
+    layoutOrdinals: ["identity:root", "identity:outer-foreground", "identity:outer-background", "identity:inner-foreground", "identity:inner-background", "identity:first-text", "identity:second-text"]
+    semanticSnapshotVersion: 1
+    layoutSnapshotVersion: 1
+    resolvedBounds:
+      - {identity: "identity:root", rect: {x: 0, y: 0, width: 40, height: 20}}
+      - {identity: "identity:outer-foreground", rect: {x: 0, y: 0, width: 40, height: 20}}
+      - {identity: "identity:outer-background", rect: {x: 0, y: 0, width: 40, height: 20}}
+      - {identity: "identity:inner-foreground", rect: {x: 0, y: 0, width: 40, height: 20}}
+      - {identity: "identity:inner-background", rect: {x: 0, y: 0, width: 40, height: 20}}
+      - {identity: "identity:first-text", rect: {x: 0, y: 0, width: 40, height: 20}}
+      - {identity: "identity:second-text", rect: {x: 0, y: 0, width: 40, height: 20}}
+    resolvedClips:
+      - {identity: "identity:root", rect: {x: 0, y: 0, width: 40, height: 20}}
+      - {identity: "identity:outer-foreground", rect: {x: 0, y: 0, width: 40, height: 20}}
+      - {identity: "identity:outer-background", rect: {x: 0, y: 0, width: 40, height: 20}}
+      - {identity: "identity:inner-foreground", rect: {x: 0, y: 0, width: 40, height: 20}}
+      - {identity: "identity:inner-background", rect: {x: 0, y: 0, width: 40, height: 20}}
+      - {identity: "identity:first-text", rect: {x: 0, y: 0, width: 40, height: 20}}
+      - {identity: "identity:second-text", rect: {x: 0, y: 0, width: 40, height: 20}}
+    clipDepths: [{identity: "identity:root", depth: 1}, {identity: "identity:outer-foreground", depth: 1}, {identity: "identity:outer-background", depth: 1}, {identity: "identity:inner-foreground", depth: 1}, {identity: "identity:inner-background", depth: 1}, {identity: "identity:first-text", depth: 1}, {identity: "identity:second-text", depth: 1}]
+    traversalDepths: [{identity: "identity:root", depth: 1}, {identity: "identity:outer-foreground", depth: 2}, {identity: "identity:outer-background", depth: 3}, {identity: "identity:inner-foreground", depth: 4}, {identity: "identity:inner-background", depth: 5}, {identity: "identity:first-text", depth: 6}, {identity: "identity:second-text", depth: 2}]
+    textLines:
+      - {identity: "identity:first-text", lineIndex: 0, bounds: {x: 0, y: 0, width: 40, height: 20}, baseline: {x: 2, y: 8}, clip: {x: 0, y: 0, width: 40, height: 20}, glyphCount: 1, instance: "instance:fixture"}
+      - {identity: "identity:second-text", lineIndex: 0, bounds: {x: 0, y: 0, width: 40, height: 20}, baseline: {x: 20, y: 8}, clip: {x: 0, y: 0, width: 40, height: 20}, glyphCount: 1, instance: "instance:fixture"}
+    glyphs:
+      - {identity: "identity:first-text", lineIndex: 0, glyphIndex: 0, instance: "instance:fixture", glyph: "glyph:first", baseline: {x: 2, y: 8}, clip: {x: 0, y: 0, width: 40, height: 20}}
+      - {identity: "identity:second-text", lineIndex: 0, glyphIndex: 0, instance: "instance:fixture", glyph: "glyph:second", baseline: {x: 20, y: 8}, clip: {x: 0, y: 0, width: 40, height: 20}}
+    resourceTokens: ["instance:fixture", "glyph:first", "glyph:second"]
+    surfaceBounds: {x: 0, y: 0, width: 40, height: 20}
+    damageMode: root-intersection
+    rootForeground: {red: 255, green: 255, blue: 255}
+    renderLimits: {maximumOperations: 4, maximumPositionedGlyphs: 2, maximumClipDepth: 2}
+    workspaceCapacity: {maximumSemanticScopes: 7, maximumLayoutScopes: 7, maximumTraversalDepth: 6, maximumTextLines: 2}
+    sinkCapacity: {capacityReads: 1, maximumOperations: 4, maximumPositionedGlyphs: 2}
+    expectedResult: {kind: success, header: {surfaceBounds: {x: 0, y: 0, width: 40, height: 20}, damageBounds: {x: 0, y: 0, width: 40, height: 20}, operationCount: 4, positionedGlyphCount: 2, maximumObservedClipDepth: 2}}
+    expectedRecordingEvents:
+      - {event: begin, fields: {surfaceBounds: {x: 0, y: 0, width: 40, height: 20}, damageBounds: {x: 0, y: 0, width: 40, height: 20}, operationCount: 4, positionedGlyphCount: 2, maximumObservedClipDepth: 2}}
+      - {event: fill, fields: {bounds: {x: 0, y: 0, width: 40, height: 20}, clip: {x: 0, y: 0, width: 40, height: 20}, red: 0, green: 0, blue: 255}}
+      - {event: fill, fields: {bounds: {x: 0, y: 0, width: 40, height: 20}, clip: {x: 0, y: 0, width: 40, height: 20}, red: 128, green: 128, blue: 128}}
+      - {event: begin-glyphs, fields: {instance: "instance:fixture", clip: {x: 0, y: 0, width: 40, height: 20}, red: 255, green: 0, blue: 0, glyphCount: 1}}
+      - {event: glyph, fields: {glyph: "glyph:first", baseline: {x: 2, y: 8}}}
+      - {event: end-glyphs, fields: {}}
+      - {event: begin-glyphs, fields: {instance: "instance:fixture", clip: {x: 0, y: 0, width: 40, height: 20}, red: 255, green: 255, blue: 255, glyphCount: 1}}
+      - {event: glyph, fields: {glyph: "glyph:second", baseline: {x: 20, y: 8}}}
+      - {event: end-glyphs, fields: {}}
+      - {event: finish, fields: {}}
+    expectedSinkCalls: {capacity: 1, begin: 1, fill: 2, beginGlyphs: 2, glyph: 2, endGlyphs: 2, finish: 1, discard: 0}
+    expectedWorkspaceCalls: {acquire: 1, semanticVisits: 7, layoutVisits: 7, currentForeground: 21, pushForeground: 3, popForeground: 3, reset: 1, foregroundHighWater: 3}
+    expectedFailureMapping: none
+    criteria: [RD-003, RD-004]
+    evidenceClasses: [host-execution]
+
+  - name: zstack-painter-order-and-empty-line
+    semanticEvents:
+      - {identity: "identity:root", scope: structural, children: ["identity:background", "identity:text", "identity:foreground"]}
+      - {identity: "identity:background", scope: background-green, children: ["identity:first-leaf"]}
+      - {identity: "identity:first-leaf", scope: structural, children: []}
+      - {identity: "identity:text", scope: text, children: []}
+      - {identity: "identity:foreground", scope: background-blue, children: ["identity:second-leaf"]}
+      - {identity: "identity:second-leaf", scope: structural, children: []}
+    identityTokens: ["identity:root", "identity:background", "identity:first-leaf", "identity:text", "identity:foreground", "identity:second-leaf"]
+    semanticOrdinals: ["identity:root", "identity:background", "identity:first-leaf", "identity:text", "identity:foreground", "identity:second-leaf"]
+    layoutOrdinals: ["identity:root", "identity:background", "identity:first-leaf", "identity:text", "identity:foreground", "identity:second-leaf"]
+    semanticSnapshotVersion: 1
+    layoutSnapshotVersion: 1
+    resolvedBounds: [{identity: "identity:root", rect: {x: 0, y: 0, width: 40, height: 20}}, {identity: "identity:background", rect: {x: 0, y: 0, width: 40, height: 20}}, {identity: "identity:first-leaf", rect: {x: 0, y: 0, width: 40, height: 20}}, {identity: "identity:text", rect: {x: 0, y: 0, width: 40, height: 20}}, {identity: "identity:foreground", rect: {x: 0, y: 0, width: 40, height: 20}}, {identity: "identity:second-leaf", rect: {x: 0, y: 0, width: 40, height: 20}}]
+    resolvedClips: [{identity: "identity:root", rect: {x: 0, y: 0, width: 40, height: 20}}, {identity: "identity:background", rect: {x: 0, y: 0, width: 40, height: 20}}, {identity: "identity:first-leaf", rect: {x: 0, y: 0, width: 40, height: 20}}, {identity: "identity:text", rect: {x: 0, y: 0, width: 40, height: 20}}, {identity: "identity:foreground", rect: {x: 0, y: 0, width: 40, height: 20}}, {identity: "identity:second-leaf", rect: {x: 0, y: 0, width: 40, height: 20}}]
+    clipDepths: [{identity: "identity:root", depth: 1}, {identity: "identity:background", depth: 1}, {identity: "identity:first-leaf", depth: 1}, {identity: "identity:text", depth: 1}, {identity: "identity:foreground", depth: 1}, {identity: "identity:second-leaf", depth: 1}]
+    traversalDepths: [{identity: "identity:root", depth: 1}, {identity: "identity:background", depth: 2}, {identity: "identity:first-leaf", depth: 3}, {identity: "identity:text", depth: 2}, {identity: "identity:foreground", depth: 2}, {identity: "identity:second-leaf", depth: 3}]
+    textLines:
+      - {identity: "identity:text", lineIndex: 0, bounds: {x: 0, y: 0, width: 40, height: 20}, baseline: {x: 1, y: 8}, clip: {x: 0, y: 0, width: 40, height: 20}, glyphCount: 2, instance: "instance:fixture"}
+      - {identity: "identity:text", lineIndex: 1, bounds: {x: 0, y: 10, width: 0, height: 0}, baseline: {x: 1, y: 12}, clip: {x: 0, y: 0, width: 40, height: 20}, glyphCount: 0, instance: "instance:fixture"}
+      - {identity: "identity:text", lineIndex: 2, bounds: {x: 0, y: 0, width: 40, height: 20}, baseline: {x: 1, y: 16}, clip: {x: 0, y: 0, width: 40, height: 20}, glyphCount: 1, instance: "instance:fixture"}
+    glyphs:
+      - {identity: "identity:text", lineIndex: 0, glyphIndex: 0, instance: "instance:fixture", glyph: "glyph:zero", baseline: {x: 1, y: 8}, clip: {x: 0, y: 0, width: 40, height: 20}}
+      - {identity: "identity:text", lineIndex: 0, glyphIndex: 1, instance: "instance:fixture", glyph: "glyph:one", baseline: {x: 5, y: 8}, clip: {x: 0, y: 0, width: 40, height: 20}}
+      - {identity: "identity:text", lineIndex: 2, glyphIndex: 2, instance: "instance:fixture", glyph: "glyph:two", baseline: {x: 1, y: 16}, clip: {x: 0, y: 0, width: 40, height: 20}}
+    resourceTokens: ["instance:fixture", "glyph:zero", "glyph:one", "glyph:two"]
+    surfaceBounds: {x: 0, y: 0, width: 40, height: 20}
+    damageMode: root-intersection
+    rootForeground: {red: 255, green: 255, blue: 255}
+    renderLimits: {maximumOperations: 4, maximumPositionedGlyphs: 3, maximumClipDepth: 2}
+    workspaceCapacity: {maximumSemanticScopes: 6, maximumLayoutScopes: 6, maximumTraversalDepth: 3, maximumTextLines: 3}
+    sinkCapacity: {capacityReads: 1, maximumOperations: 4, maximumPositionedGlyphs: 3}
+    expectedResult: {kind: success, header: {surfaceBounds: {x: 0, y: 0, width: 40, height: 20}, damageBounds: {x: 0, y: 0, width: 40, height: 20}, operationCount: 4, positionedGlyphCount: 3, maximumObservedClipDepth: 2}}
+    expectedRecordingEvents:
+      - {event: begin, fields: {surfaceBounds: {x: 0, y: 0, width: 40, height: 20}, damageBounds: {x: 0, y: 0, width: 40, height: 20}, operationCount: 4, positionedGlyphCount: 3, maximumObservedClipDepth: 2}}
+      - {event: fill, fields: {bounds: {x: 0, y: 0, width: 40, height: 20}, clip: {x: 0, y: 0, width: 40, height: 20}, red: 0, green: 255, blue: 0}}
+      - {event: begin-glyphs, fields: {instance: "instance:fixture", clip: {x: 0, y: 0, width: 40, height: 20}, red: 255, green: 255, blue: 255, glyphCount: 2}}
+      - {event: glyph, fields: {glyph: "glyph:zero", baseline: {x: 1, y: 8}}}
+      - {event: glyph, fields: {glyph: "glyph:one", baseline: {x: 5, y: 8}}}
+      - {event: end-glyphs, fields: {}}
+      - {event: begin-glyphs, fields: {instance: "instance:fixture", clip: {x: 0, y: 0, width: 40, height: 20}, red: 255, green: 255, blue: 255, glyphCount: 1}}
+      - {event: glyph, fields: {glyph: "glyph:two", baseline: {x: 1, y: 16}}}
+      - {event: end-glyphs, fields: {}}
+      - {event: fill, fields: {bounds: {x: 0, y: 0, width: 40, height: 20}, clip: {x: 0, y: 0, width: 40, height: 20}, red: 0, green: 0, blue: 255}}
+      - {event: finish, fields: {}}
+    expectedSinkCalls: {capacity: 1, begin: 1, fill: 2, beginGlyphs: 2, glyph: 3, endGlyphs: 2, finish: 1, discard: 0}
+    expectedWorkspaceCalls: {acquire: 1, semanticVisits: 6, layoutVisits: 6, currentForeground: 16, pushForeground: 1, popForeground: 1, reset: 1, foregroundHighWater: 1}
+    expectedFailureMapping: none
+    criteria: [RD-003]
+    evidenceClasses: [host-execution]
+
+  - name: partial-unclipped-background
+    semanticEvents:
+      - {identity: "identity:root", scope: background-green, children: ["identity:leaf"]}
+      - {identity: "identity:leaf", scope: structural, children: []}
+    identityTokens: ["identity:root", "identity:leaf"]
+    semanticOrdinals: ["identity:root", "identity:leaf"]
+    layoutOrdinals: ["identity:root", "identity:leaf"]
+    semanticSnapshotVersion: 1
+    layoutSnapshotVersion: 1
+    resolvedBounds: [{identity: "identity:root", rect: {x: -10, y: -5, width: 60, height: 30}}, {identity: "identity:leaf", rect: {x: -10, y: -5, width: 60, height: 30}}]
+    resolvedClips: [{identity: "identity:root", rect: {x: 30, y: 10, width: 20, height: 20}}, {identity: "identity:leaf", rect: {x: 30, y: 10, width: 20, height: 20}}]
+    clipDepths: [{identity: "identity:root", depth: 1}, {identity: "identity:leaf", depth: 1}]
+    traversalDepths: [{identity: "identity:root", depth: 1}, {identity: "identity:leaf", depth: 2}]
+    textLines: []
+    glyphs: []
+    resourceTokens: []
+    surfaceBounds: {x: 0, y: 0, width: 40, height: 20}
+    damageMode: root-intersection
+    rootForeground: {red: 255, green: 255, blue: 255}
+    renderLimits: {maximumOperations: 2, maximumPositionedGlyphs: 2, maximumClipDepth: 2}
+    workspaceCapacity: {maximumSemanticScopes: 5, maximumLayoutScopes: 2, maximumTraversalDepth: 5, maximumTextLines: 1}
+    sinkCapacity: {capacityReads: 1, maximumOperations: 2, maximumPositionedGlyphs: 2}
+    expectedResult: {kind: success, header: {surfaceBounds: {x: 0, y: 0, width: 40, height: 20}, damageBounds: {x: 0, y: 0, width: 40, height: 20}, operationCount: 1, positionedGlyphCount: 0, maximumObservedClipDepth: 1}}
+    expectedRecordingEvents:
+      - {event: begin, fields: {surfaceBounds: {x: 0, y: 0, width: 40, height: 20}, damageBounds: {x: 0, y: 0, width: 40, height: 20}, operationCount: 1, positionedGlyphCount: 0, maximumObservedClipDepth: 1}}
+      - {event: fill, fields: {bounds: {x: -10, y: -5, width: 60, height: 30}, clip: {x: 30, y: 10, width: 10, height: 10}, red: 0, green: 255, blue: 0}}
+      - {event: finish, fields: {}}
+    expectedSinkCalls: {capacity: 1, begin: 1, fill: 1, beginGlyphs: 0, glyph: 0, endGlyphs: 0, finish: 1, discard: 0}
+    expectedWorkspaceCalls: {acquire: 1, semanticVisits: 2, layoutVisits: 2, currentForeground: 7, pushForeground: 1, popForeground: 1, reset: 1, foregroundHighWater: 1}
+    expectedFailureMapping: none
+    criteria: [RD-003, RD-004]
+    evidenceClasses: [host-execution]
+
+  - name: off-surface-and-zero-area-omission
+    semanticEvents:
+      - {identity: "identity:root", scope: structural, children: ["identity:off-surface", "identity:zero-area"]}
+      - {identity: "identity:off-surface", scope: background-green, children: ["identity:first-leaf"]}
+      - {identity: "identity:first-leaf", scope: structural, children: []}
+      - {identity: "identity:zero-area", scope: background-blue, children: ["identity:second-leaf"]}
+      - {identity: "identity:second-leaf", scope: structural, children: []}
+    identityTokens: ["identity:root", "identity:off-surface", "identity:first-leaf", "identity:zero-area", "identity:second-leaf"]
+    semanticOrdinals: ["identity:root", "identity:off-surface", "identity:first-leaf", "identity:zero-area", "identity:second-leaf"]
+    layoutOrdinals: ["identity:root", "identity:off-surface", "identity:first-leaf", "identity:zero-area", "identity:second-leaf"]
+    semanticSnapshotVersion: 1
+    layoutSnapshotVersion: 1
+    resolvedBounds: [{identity: "identity:root", rect: {x: 0, y: 0, width: 40, height: 20}}, {identity: "identity:off-surface", rect: {x: -10, y: -5, width: 60, height: 30}}, {identity: "identity:first-leaf", rect: {x: -10, y: -5, width: 60, height: 30}}, {identity: "identity:zero-area", rect: {x: 5, y: 5, width: 0, height: 10}}, {identity: "identity:second-leaf", rect: {x: 5, y: 5, width: 0, height: 10}}]
+    resolvedClips: [{identity: "identity:root", rect: {x: 0, y: 0, width: 40, height: 20}}, {identity: "identity:off-surface", rect: {x: 50, y: 50, width: 10, height: 10}}, {identity: "identity:first-leaf", rect: {x: 50, y: 50, width: 10, height: 10}}, {identity: "identity:zero-area", rect: {x: 0, y: 0, width: 40, height: 20}}, {identity: "identity:second-leaf", rect: {x: 0, y: 0, width: 40, height: 20}}]
+    clipDepths: [{identity: "identity:root", depth: 1}, {identity: "identity:off-surface", depth: 1}, {identity: "identity:first-leaf", depth: 1}, {identity: "identity:zero-area", depth: 1}, {identity: "identity:second-leaf", depth: 1}]
+    traversalDepths: [{identity: "identity:root", depth: 1}, {identity: "identity:off-surface", depth: 2}, {identity: "identity:first-leaf", depth: 3}, {identity: "identity:zero-area", depth: 2}, {identity: "identity:second-leaf", depth: 3}]
+    textLines: []
+    glyphs: []
+    resourceTokens: []
+    surfaceBounds: {x: 0, y: 0, width: 40, height: 20}
+    damageMode: root-intersection
+    rootForeground: {red: 255, green: 255, blue: 255}
+    renderLimits: {maximumOperations: 2, maximumPositionedGlyphs: 2, maximumClipDepth: 2}
+    workspaceCapacity: {maximumSemanticScopes: 5, maximumLayoutScopes: 5, maximumTraversalDepth: 3, maximumTextLines: 1}
+    sinkCapacity: {capacityReads: 1, maximumOperations: 2, maximumPositionedGlyphs: 2}
+    expectedResult: {kind: success, header: {surfaceBounds: {x: 0, y: 0, width: 40, height: 20}, damageBounds: {x: 0, y: 0, width: 40, height: 20}, operationCount: 0, positionedGlyphCount: 0, maximumObservedClipDepth: 1}}
+    expectedRecordingEvents:
+      - {event: begin, fields: {surfaceBounds: {x: 0, y: 0, width: 40, height: 20}, damageBounds: {x: 0, y: 0, width: 40, height: 20}, operationCount: 0, positionedGlyphCount: 0, maximumObservedClipDepth: 1}}
+      - {event: finish, fields: {}}
+    expectedSinkCalls: {capacity: 1, begin: 1, fill: 0, beginGlyphs: 0, glyph: 0, endGlyphs: 0, finish: 1, discard: 0}
+    expectedWorkspaceCalls: {acquire: 1, semanticVisits: 5, layoutVisits: 5, currentForeground: 13, pushForeground: 1, popForeground: 1, reset: 1, foregroundHighWater: 1}
+    expectedFailureMapping: none
+    criteria: [RD-003, RD-004]
+    evidenceClasses: [host-execution]
+
+  - name: complete-surface-damage-with-smaller-root
+    semanticEvents:
+      - {identity: "identity:root", scope: structural, children: []}
+    identityTokens: ["identity:root"]
+    semanticOrdinals: ["identity:root"]
+    layoutOrdinals: ["identity:root"]
+    semanticSnapshotVersion: 1
+    layoutSnapshotVersion: 1
+    resolvedBounds: [{identity: "identity:root", rect: {x: 5, y: 4, width: 10, height: 6}}]
+    resolvedClips: [{identity: "identity:root", rect: {x: 5, y: 4, width: 10, height: 6}}]
+    clipDepths: [{identity: "identity:root", depth: 1}]
+    traversalDepths: [{identity: "identity:root", depth: 1}]
+    textLines: []
+    glyphs: []
+    resourceTokens: []
+    surfaceBounds: {x: 0, y: 0, width: 40, height: 20}
+    damageMode: initialize-complete-surface
+    rootForeground: {red: 0, green: 0, blue: 0}
+    renderLimits: {maximumOperations: 2, maximumPositionedGlyphs: 2, maximumClipDepth: 2}
+    workspaceCapacity: {maximumSemanticScopes: 1, maximumLayoutScopes: 1, maximumTraversalDepth: 1, maximumTextLines: 1}
+    sinkCapacity: {capacityReads: 1, maximumOperations: 2, maximumPositionedGlyphs: 2}
+    expectedResult: {kind: success, header: {surfaceBounds: {x: 0, y: 0, width: 40, height: 20}, damageBounds: {x: 0, y: 0, width: 40, height: 20}, operationCount: 0, positionedGlyphCount: 0, maximumObservedClipDepth: 1}}
+    expectedRecordingEvents:
+      - {event: begin, fields: {surfaceBounds: {x: 0, y: 0, width: 40, height: 20}, damageBounds: {x: 0, y: 0, width: 40, height: 20}, operationCount: 0, positionedGlyphCount: 0, maximumObservedClipDepth: 1}}
+      - {event: finish, fields: {}}
+    expectedSinkCalls: {capacity: 1, begin: 1, fill: 0, beginGlyphs: 0, glyph: 0, endGlyphs: 0, finish: 1, discard: 0}
+    expectedWorkspaceCalls: {acquire: 1, semanticVisits: 1, layoutVisits: 1, currentForeground: 5, pushForeground: 1, popForeground: 1, reset: 1, foregroundHighWater: 1}
+    expectedFailureMapping: none
+    criteria: [RD-004]
+    evidenceClasses: [host-execution]

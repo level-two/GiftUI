@@ -468,7 +468,7 @@ and failure meaning across recording, fixture-dynamic, and fixture-static
 paths while proving linear work, bounded storage, zero static allocation, and
 nonescaping borrows.
 
-- [ ] `T6.1` — Assemble golden cases for nested foreground/background,
+- [x] `T6.1` — Assemble golden cases for nested foreground/background,
       siblings, ZStack order, empty/zero bounds, partial/off-surface/empty and
       unchanged nested clips, both damage modes, exact RGB, unclipped fill
       bounds, exact text identities/indices/baselines, non-empty groups, and
@@ -1040,6 +1040,16 @@ The audit covers all defensive checked-intersection branches and the direct
 arithmetic fact mapping without invalid rectangle construction; see the
 [failure-precedence evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-5/failure-precedence.md).
 Milestone 5 is complete and `T6.1` is the next dependency-complete task.
+
+`T6.1` is complete. Five canonical manifest rows and their executable Swift
+goldens cover nested styles and sibling restoration, source-order/ZStack
+painter order, exact multi-line text transport with empty-line omission,
+partial unclipped backgrounds, off-surface and zero-area omission, unchanged
+nested clips, exact RGB values, and both explicit damage modes. The registered
+corpus audit checks every field, token, total, lifecycle, and source-test link;
+see the
+[canonical corpus evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-6/canonical-corpus.md).
+`T6.2` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

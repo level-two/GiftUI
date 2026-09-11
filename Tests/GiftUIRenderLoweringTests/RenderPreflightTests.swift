@@ -974,6 +974,136 @@ func backgroundKeepsUnclippedBoundsAndOmitsOnlyAnEmptyFinalClip() {
 }
 
 @Test
+func offSurfaceAndZeroAreaBackgroundsAreBothOmitted() {
+    let surface = DirectRenderFixtures.bounds
+    let rootRecord = LayoutFixtureRecord(
+        identity: .root,
+        bounds: surface,
+        clip: surface,
+        lines: [],
+        glyphs: []
+    )
+    let offSurfaceBounds = Rect(
+        origin: Point(x: -10, y: -5),
+        size: Size(width: 60, height: 30)!
+    )!
+    let offSurfaceClip = Rect(
+        origin: Point(x: 50, y: 50),
+        size: Size(width: 10, height: 10)!
+    )!
+    let zeroAreaBounds = Rect(
+        origin: Point(x: 5, y: 5),
+        size: Size(width: 0, height: 10)!
+    )!
+    let semantic = DirectSemanticRenderView(
+        rootIdentity: .root,
+        semanticScopeCount: 5,
+        renderSnapshotVersion: 1,
+        records: [
+            SemanticFixtureRecord(
+                identity: .root,
+                scope: .structural,
+                layoutIdentity: .root,
+                children: [.background, .foreground]
+            ),
+            SemanticFixtureRecord(
+                identity: .background,
+                scope: .background(.green),
+                layoutIdentity: .background,
+                children: [.transparent]
+            ),
+            SemanticFixtureRecord(
+                identity: .transparent,
+                scope: .structural,
+                layoutIdentity: .transparent,
+                children: []
+            ),
+            SemanticFixtureRecord(
+                identity: .foreground,
+                scope: .background(.blue),
+                layoutIdentity: .foreground,
+                children: [.alternate]
+            ),
+            SemanticFixtureRecord(
+                identity: .alternate,
+                scope: .structural,
+                layoutIdentity: .alternate,
+                children: []
+            ),
+        ]
+    )
+    let layout = DirectResolvedRenderLayoutView(
+        rootIdentity: .root,
+        layoutScopeCount: 5,
+        renderSnapshotVersion: 1,
+        rootBounds: surface,
+        records: [
+            rootRecord,
+            LayoutFixtureRecord(
+                identity: .background,
+                bounds: offSurfaceBounds,
+                clip: offSurfaceClip,
+                lines: [],
+                glyphs: []
+            ),
+            LayoutFixtureRecord(
+                identity: .transparent,
+                bounds: offSurfaceBounds,
+                clip: offSurfaceClip,
+                lines: [],
+                glyphs: []
+            ),
+            LayoutFixtureRecord(
+                identity: .foreground,
+                bounds: zeroAreaBounds,
+                clip: surface,
+                lines: [],
+                glyphs: []
+            ),
+            LayoutFixtureRecord(
+                identity: .alternate,
+                bounds: zeroAreaBounds,
+                clip: surface,
+                lines: [],
+                glyphs: []
+            ),
+        ]
+    )
+    let structure = RenderWorkspaceCapacity(
+        maximumSemanticScopes: 5,
+        maximumLayoutScopes: 5,
+        maximumTraversalDepth: 3,
+        maximumTextLines: 1
+    )!
+    var workspace = PreflightWorkspace<RenderFixtureIdentity>(
+        structuralCapacity: structure
+    )
+    var sink = StreamingSink()
+
+    let result = RenderProducer.produce(
+        semantic: semantic,
+        layout: layout,
+        textMetrics: PreflightMetrics(),
+        surfaceBounds: surface,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+        workspace: &workspace,
+        sink: &sink
+    )
+    let header = RenderPlanHeader(
+        surfaceBounds: surface,
+        damageBounds: surface,
+        operationCount: 0,
+        positionedGlyphCount: 0,
+        maximumObservedClipDepth: 1
+    )
+
+    #expect(result == .success(header))
+    #expect(sink.events == [.begin(header), .finish])
+}
+
+@Test
 func damageModeIsExplicitAndRetainsNoFirstFrameHistory() {
     let surface = DirectRenderFixtures.bounds
     let rootBounds = Rect(
