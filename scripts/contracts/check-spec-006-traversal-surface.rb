@@ -60,7 +60,8 @@ allowed_source_paths = [
   "Sources/GiftUI/Text.swift",
   "Sources/GiftUIMacros/ObservableStateHostMacro.swift",
   "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
-  "Sources/GiftUISemanticCore/SemanticLayoutView.swift"
+  "Sources/GiftUISemanticCore/SemanticLayoutView.swift",
+  "Sources/GiftUISemanticCore/SemanticRenderView.swift"
 ]
 Dir.glob(File.join(root, "Sources/**/*.swift")).sort.each do |absolute|
   relative = absolute.delete_prefix("#{root}/")

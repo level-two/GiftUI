@@ -2394,3 +2394,251 @@ private struct PreflightMetrics: CanonicalTextMetricsView {
         )
     }
 }
+
+@Test
+func renderTraversalWorkIsAffineInOccurrencesAndGlyphs() {
+    let scales: [(occurrences: UInt16, glyphs: UInt16)] = [
+        (1, 0), (2, 1), (4, 0), (4, 1), (4, 2), (4, 4),
+        (8, 1), (8, 8), (16, 16),
+    ]
+
+    let clock = ContinuousClock()
+    var timingSamples: [Duration] = []
+    for scale in scales {
+        let counter = RenderWorkCounter()
+        let semantic = RenderWorkSemanticView(
+            occurrenceCount: scale.occurrences,
+            glyphCount: scale.glyphs,
+            counter: counter
+        )
+        let layout = RenderWorkLayoutView(
+            occurrenceCount: scale.occurrences,
+            glyphCount: scale.glyphs,
+            counter: counter
+        )
+        let limits = RenderLimits(
+            maximumOperations: 1,
+            maximumPositionedGlyphs: max(scale.glyphs, 1),
+            maximumClipDepth: 2
+        )!
+        let structure = RenderWorkspaceCapacity(
+            maximumSemanticScopes: scale.occurrences,
+            maximumLayoutScopes: scale.occurrences,
+            maximumTraversalDepth: scale.occurrences,
+            maximumTextLines: 1
+        )!
+        var workspace = PreflightWorkspace<RenderWorkIdentity>(
+            capacity: limits,
+            structuralCapacity: structure
+        )
+        var sink = StreamingSink()
+
+        let started = clock.now
+        let result = RenderProducer.produce(
+            semantic: semantic,
+            layout: layout,
+            textMetrics: PreflightMetrics(),
+            surfaceBounds: DirectRenderFixtures.bounds,
+            damageMode: .rootIntersection,
+            rootForeground: .white,
+            limits: limits,
+            workspace: &workspace,
+            sink: &sink
+        )
+        timingSamples.append(started.duration(to: clock.now))
+
+        #expect(result.isSuccess)
+        let occurrences = UInt32(scale.occurrences)
+        let glyphs = UInt32(scale.glyphs)
+        let expectedViewAccesses =
+            glyphs == 0 ? 26 &* occurrences &+ 25 : 26 &* occurrences &+ 33 &+ 2 &* glyphs
+        #expect(counter.viewAccesses == expectedViewAccesses)
+        #expect(counter.identityComparisons == 4 &* occurrences &+ 1)
+        #expect(counter.viewAccesses <= 33 &+ 26 &* occurrences &+ 2 &* glyphs)
+        #expect(counter.identityComparisons <= 1 &+ 4 &* (occurrences &+ glyphs))
+        #expect(workspace.foregroundHighWater == 1)
+    }
+    #expect(timingSamples.count == scales.count)
+    #expect(timingSamples.allSatisfy { $0 >= .zero })
+}
+
+private final class RenderWorkCounter: @unchecked Sendable {
+    var viewAccesses: UInt32 = 0
+    var identityComparisons: UInt32 = 0
+}
+
+private struct RenderWorkIdentity: Equatable, Sendable {
+    let rawValue: UInt16
+    let counter: RenderWorkCounter
+
+    static func == (left: Self, right: Self) -> Bool {
+        left.counter.identityComparisons += 1
+        return left.rawValue == right.rawValue
+    }
+}
+
+private struct RenderWorkSemanticView: SemanticRenderView {
+    let occurrenceCount: UInt16
+    let glyphCount: UInt16
+    let counter: RenderWorkCounter
+
+    var rootIdentity: RenderWorkIdentity {
+        access()
+        return identity(0)
+    }
+
+    var semanticScopeCount: UInt16 {
+        access()
+        return occurrenceCount
+    }
+
+    var renderSnapshotVersion: UInt32 {
+        access()
+        return 1
+    }
+
+    func semanticIdentity(at ordinal: UInt16) -> RenderWorkIdentity? {
+        access()
+        return ordinal < occurrenceCount ? identity(ordinal) : nil
+    }
+
+    func semanticOrdinal(of identity: RenderWorkIdentity) -> UInt16? {
+        access()
+        return identity.rawValue < occurrenceCount ? identity.rawValue : nil
+    }
+
+    func scope(at identity: RenderWorkIdentity) -> SemanticRenderScope? {
+        access()
+        guard identity.rawValue < occurrenceCount else { return nil }
+        if glyphCount > 0, identity.rawValue == occurrenceCount - 1 { return .text }
+        return .structural
+    }
+
+    func layoutIdentity(for identity: RenderWorkIdentity) -> RenderWorkIdentity? {
+        access()
+        return identity.rawValue < occurrenceCount ? identity : nil
+    }
+
+    func childCount(of identity: RenderWorkIdentity) -> UInt16? {
+        access()
+        guard identity.rawValue < occurrenceCount else { return nil }
+        return identity.rawValue + 1 < occurrenceCount ? 1 : 0
+    }
+
+    func child(of identity: RenderWorkIdentity, at index: UInt16) -> RenderWorkIdentity? {
+        access()
+        guard identity.rawValue < occurrenceCount else { return nil }
+        guard index == 0, identity.rawValue + 1 < occurrenceCount else { return nil }
+        return self.identity(identity.rawValue + 1)
+    }
+
+    private func identity(_ rawValue: UInt16) -> RenderWorkIdentity {
+        RenderWorkIdentity(rawValue: rawValue, counter: counter)
+    }
+
+    private func access() {
+        counter.viewAccesses += 1
+    }
+}
+
+private struct RenderWorkLayoutView: ResolvedRenderLayoutView {
+    let occurrenceCount: UInt16
+    let glyphCount: UInt16
+    let counter: RenderWorkCounter
+
+    var rootIdentity: RenderWorkIdentity {
+        access()
+        return identity(0)
+    }
+
+    var layoutScopeCount: UInt16 {
+        access()
+        return occurrenceCount
+    }
+
+    var renderSnapshotVersion: UInt32 {
+        access()
+        return 1
+    }
+
+    var rootBounds: Rect {
+        access()
+        return DirectRenderFixtures.bounds
+    }
+
+    func layoutIdentity(at ordinal: UInt16) -> RenderWorkIdentity? {
+        access()
+        return ordinal < occurrenceCount ? identity(ordinal) : nil
+    }
+
+    func layoutOrdinal(of identity: RenderWorkIdentity) -> UInt16? {
+        access()
+        return identity.rawValue < occurrenceCount ? identity.rawValue : nil
+    }
+
+    func bounds(of identity: RenderWorkIdentity) -> Rect? {
+        access()
+        return identity.rawValue < occurrenceCount ? DirectRenderFixtures.bounds : nil
+    }
+
+    func clip(of identity: RenderWorkIdentity) -> Rect? {
+        access()
+        return identity.rawValue < occurrenceCount ? DirectRenderFixtures.bounds : nil
+    }
+
+    func textLineCount(of identity: RenderWorkIdentity) -> UInt16? {
+        access()
+        guard identity.rawValue < occurrenceCount else { return nil }
+        return isText(identity) ? 1 : 0
+    }
+
+    func textLine(
+        of identity: RenderWorkIdentity,
+        at index: UInt16
+    ) -> ResolvedRenderTextLine? {
+        access()
+        guard isText(identity), index == 0 else { return nil }
+        return ResolvedRenderTextLine(
+            lineIndex: 0,
+            bounds: DirectRenderFixtures.bounds,
+            baseline: Point(x: 1, y: 12),
+            clip: DirectRenderFixtures.bounds,
+            glyphCount: glyphCount
+        )
+    }
+
+    func glyph(
+        of identity: RenderWorkIdentity,
+        at index: UInt16
+    ) -> ResolvedRenderGlyph? {
+        access()
+        guard isText(identity), index < glyphCount else { return nil }
+        return ResolvedRenderGlyph(
+            lineIndex: 0,
+            glyphIndex: index,
+            instance: DirectRenderFixtures.instance,
+            glyph: GlyphID(rawValue: 1),
+            baseline: Point(x: 1, y: 12),
+            clip: DirectRenderFixtures.bounds
+        )
+    }
+
+    private func isText(_ identity: RenderWorkIdentity) -> Bool {
+        glyphCount > 0 && identity.rawValue == occurrenceCount - 1
+    }
+
+    private func identity(_ rawValue: UInt16) -> RenderWorkIdentity {
+        RenderWorkIdentity(rawValue: rawValue, counter: counter)
+    }
+
+    private func access() {
+        counter.viewAccesses += 1
+    }
+}
+
+private extension RenderProductionResult {
+    var isSuccess: Bool {
+        if case .success = self { return true }
+        return false
+    }
+}

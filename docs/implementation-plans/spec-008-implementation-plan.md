@@ -487,7 +487,7 @@ nonescaping borrows.
       refusal; snapshot changes before and after begin; nested reentry; and
       reuse. Record exact local/mapped error and begin/discard/reset/attempted-
       call counts.
-- [ ] `T6.4` — Instrument canonical traversal work as `O(o + g)`, static heap
+- [x] `T6.4` — Instrument canonical traversal work as `O(o + g)`, static heap
       allocation as zero, render and structural workspace capacity/bytes,
       maximum call-stack high-water, lowering duration and timing method/
       samples, and incremental linked code/read-only/initialized/zero-
@@ -1066,6 +1066,18 @@ with the existing precedence, ordinal-visit, snapshot, refusal, reentry,
 reuse, arithmetic, owner-mapping, and atomic-recording evidence; see the
 [complete failure corpus](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-6/failure-corpus.md).
 `T6.4` is the next dependency-complete task.
+
+`T6.4` is complete. Direct-index semantic/layout conformers count every view
+access and render-identity comparison across both traversals and establish the
+exact affine models through 16 occurrences and glyphs. The maintained concrete
+static producer probe and whole-module Render Lowering SIL contain zero heap
+allocation instructions; target IR exposes finite render/structural capacity,
+workspace layout, and exact foreground-slot bytes. Timing, recursive-frame
+high-water, linked-section, and link-map methods are registered for final
+four-profile collection without claiming Signal Analyzer or connected-target
+measurements; see the
+[render resource instrumentation evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-6/render-resource-instrumentation.md).
+`T6.5` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

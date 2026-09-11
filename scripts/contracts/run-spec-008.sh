@@ -83,6 +83,8 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-008-direct-render-views.rb" \
             "$SCRIPT_DIR/check-spec-008-render-view-boundaries.rb" \
             "$SCRIPT_DIR/check-spec-008-render-view-static-exposure.sh" \
+            "$SCRIPT_DIR/check-spec-008-render-work.rb" \
+            "$SCRIPT_DIR/check-spec-008-render-resource-ir.rb" \
             "$SCRIPT_DIR/check-spec-008-value-layouts.rb" \
             "$SCRIPT_DIR/check-spec-008-value-profiles.sh" \
             "$SCRIPT_DIR/check-spec-008-declaration-profiles.sh" \
@@ -241,13 +243,13 @@ record_nrf52840_identity() {
     printf 'value-layouts\tcomplete\tall 13 bounded values pass exact or maximum layouts for this profile\n'
     printf 'result-comparison\tmissing\tcanonical normalized results are not implemented\n'
     printf 'transcript-comparison\tmissing\tcanonical host goldens are complete; three-path profile comparison remains\n'
-    printf 'high-water\tmissing\tdeclared and observed high-water values are unavailable\n'
-    printf 'allocation\tmissing\tstatic rendering path is not implemented\n'
-    printf 'workspace\tmissing\trender production workspace is not implemented\n'
-    printf 'stack\tmissing\trender production stack measurement is unavailable\n'
-    printf 'timing\tmissing\trender production timing sample is unavailable\n'
-    printf 'section-delta\tmissing\trender target image is unavailable\n'
-    printf 'link-map\tmissing\trender target image is unavailable\n'
+    printf 'high-water\tactive\tlogical work and stack high-water instrumentation is registered; Signal Analyzer values remain pending\n'
+    printf 'allocation\tactive\toptimized static production allocation audit is registered; four-profile reports remain pending\n'
+    printf 'workspace\tactive\tfinite workspace capacity and byte probes are registered; Signal Analyzer workspace remains pending\n'
+    printf 'stack\tactive\tmaximum recursive traversal-frame method is registered; Signal Analyzer value remains pending\n'
+    printf 'timing\tactive\tContinuousClock lowering samples are registered; profile reports remain pending\n'
+    printf 'section-delta\tactive\tlinked-section categories are registered; render target image remains pending\n'
+    printf 'link-map\tactive\tlink-map ownership inspection is registered; render target image remains pending\n'
     printf 'target-inspection\tblocked\tno render target ELF or Mach-O image exists\n'
     printf 'acceptance-evidence\tmissing\tRD-001 through RD-011 remain pending\n'
 } >"$prerequisites_path"
@@ -298,6 +300,8 @@ record_command "$SCRIPT_DIR/check-spec-008-direct-render-views.rb"
 "$SCRIPT_DIR/check-spec-008-direct-render-views.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-render-view-boundaries.rb"
 "$SCRIPT_DIR/check-spec-008-render-view-boundaries.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-008-render-work.rb"
+"$SCRIPT_DIR/check-spec-008-render-work.rb" >>"$log_path" 2>&1
 case "$profile" in
     macos-dynamic | macos-static) record_macos_identity ;;
     raspberry-pi-armv6) record_raspberry_pi_identity ;;

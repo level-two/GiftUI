@@ -71,3 +71,13 @@ Evidence classes remain distinct:
 No SPEC-008 fixture or schema command deploys, restarts a service, flashes a
 board, or claims connected-hardware evidence. SPEC-008 conformance requires no
 connected hardware.
+
+## Resource instrumentation
+
+`Instrumentation/render-work.tsv` fixes the exact geometric work observations
+for the direct-index semantic and layout conformers.
+`Instrumentation/render-measurement-methods.tsv` registers the timing, stack,
+workspace, allocation, linked-section, and link-map methods that the
+four-profile driver populates during the final evidence gate. The focused
+static exposure check compiles the real producer entry and rejects optimized
+heap-allocation instructions without claiming target execution.

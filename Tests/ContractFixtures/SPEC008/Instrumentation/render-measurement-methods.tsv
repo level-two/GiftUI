@@ -1,0 +1,10 @@
+# measurement	method	samples_or_unit
+duration	Swift ContinuousClock around one synchronous RenderProducer.produce call	9
+view-work	count every SemanticRenderView and ResolvedRenderLayoutView property or method entry across preflight and streaming	access
+identity-work	instrument RenderWorkIdentity.== across preflight and streaming	comparison
+call-stack	maximum active recursive semantic traversal frames for the registered chain	frame
+foreground-stack	workspace-observed maximum occupied caller-owned Color slots	slot
+allocation	optimized whole-module SIL scan of GiftUIRenderLowering plus the concrete static production entry	instruction
+workspace	MemoryLayout size and stride of the concrete finite static workspace	byte
+linked-sections	baseline/render link-map subtraction for code read-only initialized and zero-initialized sections	byte
+link-map	linker-emitted symbol and section ownership map	map
