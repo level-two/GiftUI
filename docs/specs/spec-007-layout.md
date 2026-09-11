@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-09-10
+updated: 2026-09-11
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -844,6 +844,7 @@ geometry model is architectural or post-MVP work and must not be decided here.
 ## References
 
 - [SPEC-007 Implementation Plan](../implementation-plans/spec-007-implementation-plan.md)
+- [SPEC-007 Conformance Report](../conformance/spec-007-conformance.md)
 - [Bounded Layout Attempt Implementation Design](../implementation-designs/spec-007-bounded-layout-attempt.md)
 - [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
 - [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)

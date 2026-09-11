@@ -1,9 +1,9 @@
 # T8.2-T8.4 Four-Profile Gate
 
 All four exact commands passed from clean revision
-`986a8a0c7378184213821144d07581512da12e31` with common run ID
-`986a8a0c7378184213821144d07581512da12e31-59a92effaec731f5` and full input
-digest `59a92effaec731f593df6bb49ac2d157e16977740752ab41cceaaae26de21140`.
+`c431b73a1df03590309515b967dd37cb847acf93` with common run ID
+`c431b73a1df03590309515b967dd37cb847acf93-8e38137a10b2b531` and full input
+digest `8e38137a10b2b531cc274668ecf32eca56d1ce72603028fc2c6d95197a303159`.
 The immutable local reports are under
 `.build/contract-reports/spec-007/<run-id>/<profile>/`.
 

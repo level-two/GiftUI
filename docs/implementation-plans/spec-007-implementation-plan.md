@@ -2,14 +2,14 @@
 spec: SPEC-007
 feature: giftui-mvp-architecture
 title: SPEC-007 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-09-05
 updated: 2026-09-11
 related_design_notes:
   - ../implementation-designs/spec-007-bounded-layout-attempt.md
-conformance_report: null
+conformance_report: ../conformance/spec-007-conformance.md
 related_future_work:
   - FW-001
   - FW-002
@@ -164,15 +164,15 @@ once below and maps to implementation tasks and reproducible evidence.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `LY-001` — Exact Rank 1 declarations/constants and layout-time rejection of every preserved invalid value | `T1.1`-`T1.5`, `T4.1`, `T8.1` | Public-interface, positive/negative declaration, payload-preservation, and four-profile compile reports | pending |
-| `LY-002` — Exact borrowed Semantic Core view, vocabulary, identity, flattening, ordering, text access, and index behavior | `T2.1`-`T2.5`, `T6.1`, `T8.2` | Semantic-view API audit, direct recording corpus, malformed-view corpus, borrow probe, and no-second-graph report | pending |
-| `LY-003` — Exact stack, spacer, alignment, padding, frame, proposal, placement, and clipping behavior | `T4.1`-`T4.5`, `T6.2`, `T8.2` | Table-driven golden layout transcripts, including minimum/fixed 100 under parent 50 | pending |
-| `LY-004` — Exact canonical text IDs, counts, bounds, baselines, advances, positions, and clips | `T5.1`-`T5.4`, `T6.3`, `T8.2` | SPEC-005-backed canonical text corpus and checked-geometry transcripts | pending |
-| `LY-005` — Exact local errors/facts, acquisition and discard lifecycle, and atomic publication | `T3.1`-`T3.5`, `T6.4`, `T8.2` | Limit, malformed-input, overflow, reentry, lookup-failure, sink-refusal, and owner-mapping matrix | pending |
-| `LY-006` — Equal recording/dynamic/static meaning with zero static allocation and no retained borrow | `T2.4`, `T3.4`, `T6.1`, `T6.5`, `T8.2`-`T8.4` | Canonical normalized comparisons, allocation interposer, lifetime probe, and graph/materialization audit | pending |
-| `LY-007` — Exact import graph and sibling separation | `T0.2`, `T2.5`, `T7.1`, `T8.1` | Package graph, target allow-list, import-negative fixtures, and source dependency scan | pending |
-| `LY-008` — Signal Analyzer approval fixture under the five exact limits and complete admitted layout surface | `T7.2`, `T7.3`, `T8.2` | Approval transcript, exact limits and high-water counts, and surface-coverage audit | pending |
-| `LY-009` — Four exact driver commands and complete owned-value/resource/ELF evidence without hardware claims | `T0.3`, `T7.3`, `T8.2`-`T8.4` | Registered per-profile reports, value layouts, allocation/workspace/stack/link evidence, and nRF hard-float ELF inspection | pending |
+| `LY-001` — Exact Rank 1 declarations/constants and layout-time rejection of every preserved invalid value | `T1.1`-`T1.5`, `T4.1`, `T8.1` | Public-interface, positive/negative declaration, payload-preservation, and four-profile compile reports | pass |
+| `LY-002` — Exact borrowed Semantic Core view, vocabulary, identity, flattening, ordering, text access, and index behavior | `T2.1`-`T2.5`, `T6.1`, `T8.2` | Semantic-view API audit, direct recording corpus, malformed-view corpus, borrow probe, and no-second-graph report | pass |
+| `LY-003` — Exact stack, spacer, alignment, padding, frame, proposal, placement, and clipping behavior | `T4.1`-`T4.5`, `T6.2`, `T8.2` | Table-driven golden layout transcripts, including minimum/fixed 100 under parent 50 | pass |
+| `LY-004` — Exact canonical text IDs, counts, bounds, baselines, advances, positions, and clips | `T5.1`-`T5.4`, `T6.3`, `T8.2` | SPEC-005-backed canonical text corpus and checked-geometry transcripts | pass |
+| `LY-005` — Exact local errors/facts, acquisition and discard lifecycle, and atomic publication | `T3.1`-`T3.5`, `T6.4`, `T8.2` | Limit, malformed-input, overflow, reentry, lookup-failure, sink-refusal, and owner-mapping matrix | pass |
+| `LY-006` — Equal recording/dynamic/static meaning with zero static allocation and no retained borrow | `T2.4`, `T3.4`, `T6.1`, `T6.5`, `T8.2`-`T8.4` | Canonical normalized comparisons, allocation interposer, lifetime probe, and graph/materialization audit | pass |
+| `LY-007` — Exact import graph and sibling separation | `T0.2`, `T2.5`, `T7.1`, `T8.1` | Package graph, target allow-list, import-negative fixtures, and source dependency scan | pass |
+| `LY-008` — Signal Analyzer approval fixture under the five exact limits and complete admitted layout surface | `T7.2`, `T7.3`, `T8.2` | Approval transcript, exact limits and high-water counts, and surface-coverage audit | pass |
+| `LY-009` — Four exact driver commands and complete owned-value/resource/ELF evidence without hardware claims | `T0.3`, `T7.3`, `T8.2`-`T8.4` | Registered per-profile reports, value layouts, allocation/workspace/stack/link evidence, and nRF hard-float ELF inspection | pass |
 
 ## Milestones and Tasks
 
@@ -516,7 +516,7 @@ separated from connected-hardware claims and all plan tasks dispositioned.
       symbols, sections, linked code, and the ELF's Cortex-M4F hard-float VFP
       calling convention. Record cross-build/inspection only; do not flash or
       claim connected-board display/input evidence.
-- [ ] `T8.5` — Update this plan with every completed, changed, removed, or
+- [x] `T8.5` — Update this plan with every completed, changed, removed, or
       blocked task disposition and stable evidence link. Create
       `docs/conformance/spec-007-conformance.md` in `collecting` status, map
       `LY-001` through `LY-009` once, and request conformance review. Do not
@@ -842,8 +842,8 @@ reported artifacts. A dry run of all four paths passed before the driver was
 frozen; T8.2 records the final clean-revision runs.
 
 `T8.2` is complete: all four exact commands passed from clean revision
-`986a8a0c7378184213821144d07581512da12e31` with common run ID
-`986a8a0c7378184213821144d07581512da12e31-59a92effaec731f5`. Each immutable
+`c431b73a1df03590309515b967dd37cb847acf93` with common run ID
+`c431b73a1df03590309515b967dd37cb847acf93-8e38137a10b2b531`. Each immutable
 report contains its complete command transcript, compiler/target/SDK and
 optimization identity, corpus and artifact hashes, exact limits/high-water,
 target-derived value layouts, 350,488-byte finite workspace, depth-5 stack
@@ -862,6 +862,12 @@ zero heap allocation, and ELF attributes report ARMv7E-M with VFP-register
 arguments. The run records object and section evidence without connected-board
 execution or flashing.
 
-Plan completion will mean every task has a recorded disposition; it will not
-mean SPEC-007 conforms or is `implemented`. The conformance report remains
-`null` until `T8.5` creates it.
+`T8.5` is complete: every task and acceptance row has a disposition, the
+plan is completed, the Specification and plan link the collecting conformance
+report, and that report maps `LY-001` through `LY-009` exactly once. The report
+finds no implementation deviation or approved exception and requests explicit
+human conformance review; it does not change SPEC-007 from `implementing`.
+
+Plan completion means every task has a recorded disposition; it does not mean
+SPEC-007 is `implemented`. The collecting conformance report now supports a
+separate human transition decision.
