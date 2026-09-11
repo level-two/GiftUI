@@ -337,7 +337,7 @@ publication without retaining input.
       post-begin stage or publish refusal; reset only state acquired by the
       current attempt; publish once; and leave no partial current output or
       retained borrow on any failure.
-- [ ] `T3.5` — Implement the separate fixture owner adapter mapping each local
+- [x] `T3.5` — Implement the separate fixture owner adapter mapping each local
       error to its exact SPEC-003 fact, including foundation-origin arithmetic
       overflow and safety-not-proven invariant failures. Prove invalid limits
       map only at their first host/runtime owner and that layout itself does
@@ -587,7 +587,7 @@ separated from connected-hardware claims and all plan tasks dispositioned.
 
 ### Upstream blockers
 
-- `T1.5`, `T2.3`-`T2.5`, and production portions of `T7.2`-`T7.3` wait for
+- `T2.3`-`T2.5` and production portions of `T7.2`-`T7.3` wait for
   SPEC-006's exact complete semantic result, identities, and typed operation
   recording. This is an implementation dependency, not permission to create a
   substitute semantic graph in SPEC-007.
@@ -708,6 +708,12 @@ text, padding, inset, fixed-frame, and flexible-frame values are preserved
 exactly; other layout-neutral primitives map to `.proxy`; current approved
 style modifiers map to `.passthrough`; and an unknown modifier produces no
 case so the layout producer must reject it rather than silently pass it.
+
+`T3.5` is complete: the separate layout/failure fixture owner maps all five
+closed local errors to their exact SPEC-003 facts, including Foundation-owned
+arithmetic overflow and safety-not-proven invariant failure. Invalid limits
+map at the pre-cycle runtime owner, while the executable import boundary proves
+`GiftUILayout` itself imports neither Failure Core nor diagnostics.
 
 `T1.3` is complete: all padding and frame overloads lower through the existing
 typed modifier operation. Runtime transcript tests prove exact source-call
