@@ -430,7 +430,7 @@ rule and every failure boundary without rasterization or frame state.
       operations, resource/color reordering, or opaque-overdraw elimination.
       Stream one positioned-glyph group per non-empty line in occurrence-wide
       glyph-index order.
-- [ ] `T5.3` — Preserve exact SPEC-007 instances, glyphs, baselines, bounds,
+- [x] `T5.3` — Preserve exact SPEC-007 instances, glyphs, baselines, bounds,
       and logical clips; apply only effective foreground and surface
       intersection. Validate metrics descriptor/resource identity and every
       instance/glyph before begin; never pass raw text or remeasure, reshape,
@@ -984,6 +984,14 @@ whole positioned-glyph group per non-empty line with occurrence-wide indices;
 see the
 [painter-order evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-5/painter-order.md).
 `T5.3` is the next independent dependency-complete task.
+
+`T5.3` is complete. Exact-transport goldens preserve the selected instance,
+glyphs, occurrence-wide ordering, baselines, foreground, and checked line clip,
+while independent resource, instance, and glyph disagreements all fail during
+preflight before capacity or begin. A source audit excludes raw-text, shaping,
+fallback, and advance behavior; see the
+[text-lowering evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-5/text-lowering.md).
+`T5.4` is the next independent dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

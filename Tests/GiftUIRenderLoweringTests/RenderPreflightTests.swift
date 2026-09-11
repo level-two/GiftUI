@@ -535,6 +535,197 @@ func sourceOrderChildrenPaintBackToFrontWithoutOpaqueEliminationAndLinesStayGrou
 }
 
 @Test
+func textLoweringPreservesResolvedGlyphMeaningAndOnlyIntersectsItsClip() {
+    let semantic = DirectRenderFixtures.validSemantic
+    let original = DirectRenderFixtures.validLayout
+    let partialClip = Rect(
+        origin: Point(x: 8, y: 3),
+        size: Size(width: 20, height: 10)!
+    )!
+    let firstBaseline = Point(x: 9, y: 7)
+    let secondBaseline = Point(x: 17, y: 11)
+    let layout = replacingTextRecord(in: original) { record in
+        LayoutFixtureRecord(
+            identity: record.identity,
+            bounds: record.bounds,
+            clip: partialClip,
+            lines: [
+                ResolvedRenderTextLine(
+                    lineIndex: 0,
+                    bounds: record.bounds!,
+                    baseline: firstBaseline,
+                    clip: partialClip,
+                    glyphCount: 2
+                )
+            ],
+            glyphs: [
+                ResolvedRenderGlyph(
+                    lineIndex: 0,
+                    glyphIndex: 0,
+                    instance: DirectRenderFixtures.instance,
+                    glyph: GlyphID(rawValue: 1),
+                    baseline: firstBaseline,
+                    clip: partialClip
+                ),
+                ResolvedRenderGlyph(
+                    lineIndex: 0,
+                    glyphIndex: 1,
+                    instance: DirectRenderFixtures.instance,
+                    glyph: GlyphID(rawValue: 2),
+                    baseline: secondBaseline,
+                    clip: partialClip
+                ),
+            ]
+        )
+    }
+    var workspace = PreflightWorkspace<RenderFixtureIdentity>()
+    var sink = StreamingSink()
+
+    let result = RenderProducer.produce(
+        semantic: semantic,
+        layout: layout,
+        textMetrics: PreflightMetrics(),
+        surfaceBounds: DirectRenderFixtures.bounds,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+        workspace: &workspace,
+        sink: &sink
+    )
+
+    guard case .success(let header) = result else {
+        Issue.record("expected exact text lowering to succeed")
+        return
+    }
+    #expect(
+        sink.events == [
+            .begin(header),
+            .fill(
+                FillRectOperation(
+                    bounds: DirectRenderFixtures.bounds,
+                    clip: partialClip,
+                    color: .blue
+                )
+            ),
+            .beginGlyphs(
+                PositionedGlyphOperationHeader(
+                    instance: DirectRenderFixtures.instance,
+                    clip: partialClip,
+                    color: .red,
+                    glyphCount: 2
+                )
+            ),
+            .glyph(PositionedGlyph(glyph: GlyphID(rawValue: 1), baseline: firstBaseline)),
+            .glyph(PositionedGlyph(glyph: GlyphID(rawValue: 2), baseline: secondBaseline)),
+            .endGlyphs,
+            .finish,
+        ]
+    )
+}
+
+@Test
+func textResourceInstanceAndGlyphDisagreementsAllFailBeforeBegin() {
+    let original = DirectRenderFixtures.validLayout
+    let validGlyphs = original.records.first { $0.identity == .text }!.glyphs
+    let incompatibleInstance = FontInstanceID(
+        resource: DirectRenderFixtures.instance.resource,
+        instanceIndex: 1
+    )
+    let incompatibleLayouts = [
+        replacingTextRecord(in: original) { record in
+            LayoutFixtureRecord(
+                identity: record.identity,
+                bounds: record.bounds,
+                clip: record.clip,
+                lines: record.lines,
+                glyphs: validGlyphs.map { glyph in
+                    glyph.map {
+                        ResolvedRenderGlyph(
+                            lineIndex: $0.lineIndex,
+                            glyphIndex: $0.glyphIndex,
+                            instance: incompatibleInstance,
+                            glyph: $0.glyph,
+                            baseline: $0.baseline,
+                            clip: $0.clip
+                        )
+                    }
+                }
+            )
+        },
+        replacingTextRecord(in: original) { record in
+            var glyphs = validGlyphs
+            let first = glyphs[0]!
+            glyphs[0] = ResolvedRenderGlyph(
+                lineIndex: first.lineIndex,
+                glyphIndex: first.glyphIndex,
+                instance: first.instance,
+                glyph: GlyphID(rawValue: 3),
+                baseline: first.baseline,
+                clip: first.clip
+            )
+            return LayoutFixtureRecord(
+                identity: record.identity,
+                bounds: record.bounds,
+                clip: record.clip,
+                lines: record.lines,
+                glyphs: glyphs
+            )
+        },
+    ]
+
+    for layout in incompatibleLayouts {
+        var workspace = PreflightWorkspace<RenderFixtureIdentity>()
+        var sink = StreamingSink()
+        let result = RenderProducer.produce(
+            semantic: DirectRenderFixtures.validSemantic,
+            layout: layout,
+            textMetrics: PreflightMetrics(),
+            surfaceBounds: DirectRenderFixtures.bounds,
+            damageMode: .rootIntersection,
+            rootForeground: .white,
+            limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+            workspace: &workspace,
+            sink: &sink
+        )
+        #expect(result == .failure(.incompatibleTextResource))
+        #expect(sink.operationCallCount == 0)
+        #expect(sink.capacityReads == 0)
+    }
+
+    var resourceWorkspace = PreflightWorkspace<RenderFixtureIdentity>()
+    var resourceSink = StreamingSink()
+    let resourceResult = RenderProducer.produce(
+        semantic: DirectRenderFixtures.validSemantic,
+        layout: original,
+        textMetrics: PreflightMetrics(resourceWord: 99),
+        surfaceBounds: DirectRenderFixtures.bounds,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+        workspace: &resourceWorkspace,
+        sink: &resourceSink
+    )
+    #expect(resourceResult == .failure(.incompatibleTextResource))
+    #expect(resourceSink.operationCallCount == 0)
+    #expect(resourceSink.capacityReads == 0)
+}
+
+private func replacingTextRecord(
+    in layout: DirectResolvedRenderLayoutView,
+    transform: (LayoutFixtureRecord) -> LayoutFixtureRecord
+) -> DirectResolvedRenderLayoutView {
+    DirectResolvedRenderLayoutView(
+        rootIdentity: layout.rootIdentity,
+        layoutScopeCount: layout.layoutScopeCount,
+        renderSnapshotVersion: layout.renderSnapshotVersion,
+        rootBounds: layout.rootBounds,
+        records: layout.records.map { record in
+            record.identity == .text ? transform(record) : record
+        }
+    )
+}
+
+@Test
 func streamingDistinguishesBeginRefusalFromPostBeginInvariantFailure() {
     let semantic = DirectRenderFixtures.validSemantic
     let layout = DirectRenderFixtures.validLayout
