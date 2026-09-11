@@ -188,7 +188,7 @@ drawing conformance is claimed.
       `GiftUIRenderCore` drawing contracts without importing profiles, failure
       owners, capabilities, backends, rasterizers, platforms, drivers, OS/RTOS,
       HAL, or hardware targets. Update exact target allow-list fixtures.
-- [ ] `T0.3` — Create and explicitly register
+- [x] `T0.3` — Create and explicitly register
       `scripts/contracts/run-spec-012.sh --profile <profile>` for
       `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, and
       `nrf52840-embedded`. Record pinned compiler/SDK/target/optimization,
@@ -646,3 +646,15 @@ The full 388-test host suite and focused graph/coexistence checks pass. The
 public style enum and Render-Core declarations are prerequisites only; their
 behavioral and profile evidence remains assigned to T1.3 and T2.2-T2.3, so no
 DR row advances. `T0.3` is the next dependency-complete task.
+
+`T0.3` is complete. The executable
+[`run-spec-012.sh`](../../scripts/contracts/run-spec-012.sh) is explicitly
+registered for all four profiles and records the pinned compiler, SDK/target,
+optimization, repository revision, complete input digest inventory, exact
+commands, safety claims, and report identity. Its schema checker rejects drift
+in the manifests, declaration registries, normalized fields, failure order,
+module boundary rows, or criterion set. A macOS dynamic rehearsal published
+an immutable report with all thirteen DR rows `missing`, as required before
+their owning tasks land; the driver performs no remote access, deployment,
+restart, simulation, connected-target execution, or flashing. `T0.4` is the
+next dependency-complete task.
