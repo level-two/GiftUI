@@ -2,7 +2,7 @@
 id: SPEC-008
 feature: giftui-mvp-architecture
 title: Normalized Rendering Contract
-status: implementing
+status: review
 authors:
   - codex
 created: 2026-08-25
@@ -48,14 +48,12 @@ target_milestone: MVP
 
 # SPEC-008: Normalized Rendering Contract
 
-> **Implementation status:** Explicitly approved by the maintainer on 2026-09-11
-> after review and correction of the bounded-workspace and immutable-snapshot
-> amendment. The 2026-09-06 coordinated SPEC-008/SPEC-009 error-owner amendment
-> remains part of the approved contract. The governing Proposal and RFCs,
-> accepted architectural decisions, and approved Foundation, Failure, Text
-> Resource, Declarative, and Layout contracts remain authoritative
-> prerequisites. Implementation resumed at the maintainer's request on
-> 2026-09-11 through the active implementation plan.
+> **Amendment status:** Returned to `review` on 2026-09-11 for a focused
+> foreground-stack and arithmetic-evidence correction after implementation
+> exposed two contract gaps. The previously approved bounded-workspace,
+> immutable-snapshot, and error-owner amendments remain historical authority,
+> but implementation may not rely on the new text until explicit human
+> approval. The active implementation plan is paused at the affected tasks.
 
 ## Summary
 
@@ -67,9 +65,10 @@ operations.
 It also defines clipping, whole-root damage, bounded production, and the
 recording sink used to verify rendering without rasterization.
 
-This complete amended contract is approved. Implementation remains governed by
-its implementation plan; integration into runtime profiles and generated host
-presets additionally waits for the coordinated downstream amendments.
+This focused amendment is in review. It adds the missing caller-owned
+foreground-stack operations without adding a capacity domain, and aligns
+arithmetic evidence with the total intersection of valid SPEC-002 rectangles.
+Implementation remains paused until the amendment is explicitly approved.
 
 ## Scope
 
@@ -487,11 +486,14 @@ package protocol RenderProductionWorkspace {
     var capacity: RenderLimits { get }
     var structuralCapacity: RenderWorkspaceCapacity { get }
     var isActive: Bool { get }
+    var currentForeground: Color? { get }
     mutating func acquire() -> Bool
     mutating func visitSemanticScope(at ordinal: UInt16)
         -> RenderWorkspaceVisit
     mutating func visitLayoutScope(at ordinal: UInt16)
         -> RenderWorkspaceVisit
+    mutating func pushForeground(_ color: Color) -> Bool
+    mutating func popForeground() -> Bool
     mutating func reset()
 }
 
@@ -617,9 +619,17 @@ depth or text line beyond its capacity is `.capacityExhausted` before `begin`.
 This count is independent of SPEC-006 `SemanticExpansionLimits.maximumDepth`
 and `maximumSemanticNodes`, whose inclusion rules intentionally differ.
 
+`structuralCapacity.maximumTraversalDepth` also fixes the physical capacity of
+the caller-owned foreground stack; it does not add a fifth capacity field. The
+stack stores the root foreground plus the active chain of foreground modifiers,
+so its high-water cannot exceed the already-validated active semantic traversal
+depth. A conforming workspace MUST provide storage for exactly that many
+`Color` values and MUST NOT allocate or borrow result-owned storage to do so.
+
 `acquire` is called only after `isActive == false`; failure then is
 `.invariantViolation`. A successful acquisition clears both ordinal visit
-sets. Visit-set operations occur only during preflight. Before each semantic
+sets and the foreground stack, so `currentForeground` is initially `nil`.
+Visit-set operations occur only during preflight. Before each semantic
 visit, the producer reverse-resolves the identity to an ordinal, verifies the
 ordinal is below `semanticScopeCount`, and verifies that forward lookup returns
 the same identity; it performs the analogous checks for every mapped layout
@@ -634,7 +644,16 @@ semantic visits MUST equal `semanticScopeCount` and the number of `.first`
 layout visits MUST equal `layoutScopeCount`. Streaming repeats canonical view
 lookups but MUST NOT clear or call either visit set. `reset` is called exactly
 once after every successful acquisition, on both success and failure, and
-clears both visit sets. The workspace MUST provide finite storage for ordinal
+clears both visit sets and the foreground stack.
+
+`currentForeground`, `pushForeground`, and `popForeground` are valid only while
+the workspace is active. `currentForeground` returns the last pushed value or
+`nil` for an empty or inactive stack. A successful `pushForeground` appends one
+exact `Color`; it returns `false` without mutation when inactive or full. A
+successful `popForeground` removes exactly the last pushed value; it returns
+`false` without mutation when inactive or empty. Failure of either operation
+while the producer remains within the validated traversal-depth capacity is
+`.invariantViolation`. The workspace MUST provide finite storage for ordinal
 visits, active identity, foreground, traversal, preflight, and clip state
 without retaining an input or operation after reset.
 
@@ -652,6 +671,18 @@ The root effective foreground is the exact required `rootForeground` input. A
 modified subtree, including text and later foreground-rendered declarations.
 Nested foreground modifiers use the innermost value. Sibling style does not
 leak. Color is an ordinary value; no capability or backend may reinterpret it.
+
+After successful preflight and the pre-`begin` snapshot check, streaming
+requires an empty foreground stack and pushes `rootForeground` once before
+calling `begin`. A `foregroundStyle` scope pushes its exact color before any
+operation in its subtree and pops it immediately after that complete subtree.
+Text and any later foreground-rendered declaration read
+`currentForeground`; a missing or different current value is an invariant
+violation. Successful streaming pops the root value and verifies the stack is
+empty before `finish`. Begin refusal and every later failure rely on the one
+mandatory workspace reset to clear any remaining entries. These rules give
+innermost resolution and sibling isolation without keeping style state in
+recursive call frames or result-owned storage.
 
 For `content.background(color)`, `FillRectOperation.bounds` is the exact
 unclipped resolved bounds returned for that scope's `layoutIdentity`, and
@@ -697,6 +728,15 @@ final root clip is the checked intersection of the resolved root clip and
 resolved logical clip and `surfaceBounds`. Rendering MUST NOT reconstruct
 frame ancestry, widen a layout clip, or add a clipping shape. Intersection is
 half-open and uses only SPEC-002 checked arithmetic.
+
+Every rectangle entering Render Lowering is an already-constructed SPEC-002
+`Rect`: its size is nonnegative and both exclusive edges are representable.
+The width and height of an intersection cannot exceed either input extent, so
+intersection of two contract-valid rectangles is total and cannot produce a
+constructible `.arithmeticOverflow`. Lowering MUST still call the shared
+checked helper and retain a defensive arithmetic-error branch if that helper
+reports failure; tests MUST verify that branch structurally and MUST NOT create
+an invalid rectangle by forging bytes or bypassing its initializer.
 
 For `.rootIntersection`, `damageBounds` is the checked intersection of
 `layout.rootBounds` and `surfaceBounds`. For `.initializeCompleteSurface`, it
@@ -800,8 +840,10 @@ Failure is deterministic and whole-stream atomic. At one detecting boundary,
 precedence is reentrancy, invalid input, arithmetic, capacity, incompatible
 resource, explicit begin refusal, then invariant violation. Reentrancy is
 always checked first as described under State / Lifecycle. For all other
-simultaneously visible conditions, the producer completes checks in the listed
-order and stops at the first applicable error.
+simultaneously constructible conditions, the producer completes checks in the
+listed order and stops at the first applicable error. Arithmetic remains in
+the closed order for defensive completeness, but valid SPEC-002 render inputs
+cannot make it coincide with another producer failure.
 
 `GiftUIRenderCore` owns only the closed `RenderProductionError` value.
 `GiftUIRenderLowering` remains the sole owner of detecting and selecting that
@@ -819,6 +861,12 @@ SPEC-003 facts:
 | `begin` refused | `nonRetryableRefusal` | `rendering` | `candidateFrame` | `contained` |
 | reentrancy violation | `reentrancyViolation` | `rendering` | `activeCycle` | `safetyNotProven` |
 | invariant violation | `invariantViolation` | `rendering` | `runtime` | `safetyNotProven` |
+
+The owner adapter maps all seven values, including a directly constructed
+`.arithmeticOverflow`, even though safe producer inputs cannot select that
+case. Producer conformance for arithmetic consists of the checked-helper
+source path plus the direct error-to-fact mapping; it does not require an
+impossible runtime fixture.
 
 `invalidInput` is limited to a nonzero surface origin or supplied semantic and
 layout results whose semantic-root mapping does not equal the layout root.
@@ -846,6 +894,10 @@ second production attempt.
   `o + g` for all view-access and identity-comparison work.
 - Static production MUST allocate zero heap bytes after assembly and operate
   with caller-owned finite workspace.
+- Foreground-stack storage MUST contain exactly
+  `structuralCapacity.maximumTraversalDepth` `Color` slots. Evidence reports
+  its bytes and observed high-water separately within the caller-owned render
+  workspace; the slots MUST NOT be placed in recursive call frames.
 - Direct sink emission MUST be conforming; a complete retained display list
   MUST NOT be required in either profile.
 - `Color` MUST occupy exactly 3 bytes; `BoundedText` MUST occupy no more than
@@ -905,7 +957,11 @@ The new ordinal accessors do not change the exact identity domain or authorize
 identity translation. Existing semantic/layout conformers and SPEC-012
 extensions must add the bijective ordinal projection and snapshot-version
 guarantee before this amendment can be implemented. Existing workspace
-conformers must add finite structural capacity and ordinal visit storage.
+conformers must add finite structural capacity, ordinal visit storage, and the
+three foreground-stack operations. This is a source-breaking package-SPI
+addition but does not change public Presentation API, the four-field workspace
+capacity value, or any configured limit. SPEC-012's producer extension inherits
+the same workspace behavior without another stack or identity domain.
 
 ## Testing Requirements
 
@@ -945,7 +1001,11 @@ conformers must add finite structural capacity and ordinal visit storage.
   counts; sink-capacity
   shortfall; `begin` refusal; refusal by every post-begin method; snapshot
   changes before and after `begin`; nested reentry; workspace reset; and exact
-  discard behavior.
+  discard behavior. Foreground tests record exact current/push/pop calls,
+  maximum stack high-water, LIFO restoration, root cleanup, sibling isolation,
+  inactive/empty/full refusal, and reset after every exit. Arithmetic evidence
+  directly maps the closed error value and audits every defensive checked-
+  intersection branch; it does not forge a nonconstructible `Rect`.
 - Recording, dynamic, and static fixtures MUST produce equal canonical event
   sequences, headers, results, and SPEC-003 mappings. Equality is field-by-field
   value equality, not profile-private memory or byte serialization. Static
@@ -980,12 +1040,15 @@ conformers must add finite structural capacity and ordinal visit storage.
 - [ ] **RD-004:** Root-intersection and complete-surface initialization damage
   match their explicit modes for ordinary, smaller-root, empty-root, and
   off-surface cases; render lowering retains no frame-history state.
-- [ ] **RD-005:** Every semantic/layout mismatch, checked overflow, render or
+- [ ] **RD-005:** Every semantic/layout mismatch, constructible producer
+  failure, render or
   structural-workspace capacity edge, ordinal-visit failure, snapshot change,
   sink capacity edge, incompatible resource, begin refusal, post-begin refusal,
   reentry, and invariant case returns the exact local error and SPEC-003 fact,
   follows the specified begin/discard/reset call counts, and publishes no
-  partial current transcript.
+  partial current transcript. The defensive checked-intersection branches and
+  direct `.arithmeticOverflow` mapping pass their required source and value
+  audits without manufacturing an invalid SPEC-002 rectangle.
 - [ ] **RD-006:** No render or backend path remeasures text, changes glyphs or
   positions, substitutes or translates a resource identity, retains a borrow,
   requires a complete glyph-run array, retained display list, or per-field
@@ -1044,14 +1107,31 @@ semantic traversal depth has exact inclusion rules; ordinal visit accounting
 is preflight-only across the two traversals; and production view access has a
 measurable linear-work obligation.
 
+### Foreground-stack and arithmetic-evidence amendment
+
+Implementation of T5.1 exposed that the normative caller-owned foreground
+stack had no operation in the exact `RenderProductionWorkspace` protocol. The
+amendment adds only current/push/pop operations and binds their physical
+capacity to the already-approved maximum semantic traversal depth. This
+realizes the existing caller-owned finite-workspace decision; it does not add a
+new limit, module edge, storage owner, or rendering behavior.
+
+T5.5 review separately proved that intersection of two valid SPEC-002
+rectangles is total: its result cannot exceed either already-representable
+extent. The amendment preserves checked-helper use, the closed arithmetic error
+value, precedence position, and exact SPEC-003 mapping, while replacing an
+impossible producer fault-injection demand with structural branch and direct
+mapping evidence. Forging an invalid value was rejected because it would test
+outside the contract and depend on representation.
+
 ## Open Issues
 
-No unresolved architectural question is known. The focused amendment was
-explicitly approved on 2026-09-11. Its coordinated runtime-profile and host-
-configuration schema amendments remain in review and block only their
-corresponding integration rows until separately approved. Stroke operations
-for Canvas enter through the separately governed DRAWING contract and its
-accepted ADRs; they are not silently added here.
+No unresolved architectural question is known. This focused contract amendment
+awaits explicit human approval before implementation may resume. Its
+coordinated runtime-profile and host-configuration schema amendments remain in
+review and block only their corresponding integration rows until separately
+approved. Stroke operations for Canvas enter through the separately governed
+DRAWING contract and its accepted ADRs; they are not silently added here.
 
 ## Deferred and Follow-up Work
 

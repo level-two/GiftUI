@@ -1,11 +1,11 @@
 # SPEC-008 Contract Fixtures
 
 This directory contains the profile-neutral fixture and evidence schemas
-derived from approved SPEC-008. The corpus fixes symbolic semantic/layout
-inputs, normalized rendering results, ordered recording events, exact local
-failure mappings, and the Signal Analyzer rendering manifest without defining
-pixel output, backend behavior, frame disposition, runtime-profile storage, or
-host policy.
+derived from SPEC-008's approved baseline and current review amendment. The
+corpus fixes symbolic semantic/layout inputs, normalized rendering results,
+ordered recording events, exact local failure mappings, and the Signal Analyzer
+rendering manifest without defining pixel output, backend behavior, frame
+disposition, runtime-profile storage, or host policy.
 
 ## Canonical manifests
 
@@ -45,8 +45,12 @@ notation order and the fields required by each event. Each case's
 glyph groups may interleave. `normalized-results.tsv` fixes success/failure
 result shapes.
 `failure-schema.tsv` fixes all seven local errors, their precedence, and exact
-SPEC-003 mappings. Tests compare nominal identities and numeric fields, not a
-string or byte serialization of a rendered result.
+SPEC-003 mappings. Its arithmetic row is exercised by direct value mapping and
+source audit because safe SPEC-002 rectangles cannot make intersection
+overflow; fixtures never forge invalid rectangle representations. Workspace
+call records separately cover foreground current/push/pop operations, stack
+high-water, visits, and reset. Tests compare nominal identities and numeric
+fields, not a string or byte serialization of a rendered result.
 
 ## Evidence registry
 

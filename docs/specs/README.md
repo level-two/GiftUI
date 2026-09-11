@@ -28,8 +28,8 @@ its required acceptance criteria.
   Semantics Specification (`approved`; primitive-with-content amendment
   explicitly reapproved on 2026-09-10)
 - [SPEC-008](spec-008-rendering.md) — Normalized Rendering Contract
-  (`approved`; corrected bounded-workspace and immutable-snapshot amendment
-  explicitly approved on 2026-09-11)
+  (`review`; foreground-stack and arithmetic-evidence amendment awaiting
+  explicit approval)
 - [SPEC-009](spec-009-execution-cycle-and-frame-handoff.md) — Execution Cycle
   and Frame Handoff Contract (`approved`, including focused-owner failure
   amendment)

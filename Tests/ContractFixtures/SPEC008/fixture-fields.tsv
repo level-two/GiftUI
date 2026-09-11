@@ -16,7 +16,8 @@ workspaceCapacity	mapping	independent caller-owned render capacity
 sinkCapacity	mapping	one idle-read operation and positioned-glyph capacity
 expectedResult	mapping	normalized success header or exact local failure
 expectedRecordingEvents	sequence	ordered closed recording events
-expectedSinkCalls	mapping	exact capacity begin event finish discard and reset counts
+expectedSinkCalls	mapping	exact capacity begin event finish and discard counts
+expectedWorkspaceCalls	mapping	exact visit current-foreground push pop reset and high-water counts
 expectedFailureMapping	mapping-or-none	exact SPEC-003 mapping or none on success
 criteria	sequence	one or more RD-001 through RD-011 references
 evidenceClasses	sequence	one or more registered evidence classes

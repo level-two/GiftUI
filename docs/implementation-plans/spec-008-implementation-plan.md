@@ -2,7 +2,7 @@
 spec: SPEC-008
 feature: giftui-mvp-architecture
 title: SPEC-008 Implementation Plan
-status: active
+status: draft
 owners:
   - codex
 created: 2026-09-06
@@ -21,15 +21,18 @@ superseded_by: null
 
 # SPEC-008 Implementation Plan
 
-> This active plan incorporates the explicitly approved 2026-09-11 bounded-
-> workspace and immutable-snapshot amendment. Completed task records remain
-> historical implementation evidence; the amendment follow-up work below must
-> land before those surfaces are treated as conforming.
+> This plan is paused in `draft` while the focused 2026-09-11 foreground-stack
+> and arithmetic-evidence amendment is in review. Completed task records remain
+> historical implementation evidence; implementation requires renewed
+> Specification approval and a final readiness pass.
 
 ## Authority and Scope
 
-The governing [SPEC-008](../specs/spec-008-rendering.md) contract is approved
-after review resolved the bounded-validation gap. Its authority chain is
+The governing [SPEC-008](../specs/spec-008-rendering.md) contract is in review
+for a focused foreground-stack and arithmetic-evidence correction. Its
+previously approved contract and authority chain remain historical context,
+but the amended text is not implementation authority until explicitly
+approved. That chain is
 accepted [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md),
 approved [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md),
 [RFC-003](../rfcs/rfc-003-deterministic-text-rendering-architecture.md), and
@@ -383,6 +386,9 @@ deterministic failure precedence, and atomic sink behavior.
       **Amendment follow-up complete:** `RenderWorkspaceCapacity`, separate
       structural capacity reporting, and bounded semantic/layout ordinal visit
       sets have exact first/repeated/invalid and acquire/reset behavior.
+      **Current amendment follow-up required:** add exact current/push/pop
+      foreground-stack operations with physical capacity equal to
+      `maximumTraversalDepth` and reset/refusal behavior from the amended Spec.
 - [x] `T4.2` — Implement canonical depth-first traversal and preflight over
       immutable borrows. Validate root mapping, exact semantic/layout counts,
       ordinal bijections and preflight-only visit sets, every lookup and
@@ -404,6 +410,8 @@ deterministic failure precedence, and atomic sink behavior.
       first before all input/sink access; call `acquire` only when inactive;
       reset exactly once after every successful acquisition on every exit;
       retain no input, operation, resource, pointer, or replay state.
+      **Current amendment follow-up required:** reset must also clear the
+      foreground stack after every acquired exit.
 - [x] `T4.5` — Implement the narrow owner adapter mapping all seven local
       errors to their exact SPEC-003 facts, origins, scopes, and containment.
       Prove lowering imports neither `GiftUIFailureCore` nor diagnostics and
@@ -421,10 +429,12 @@ rule and every failure boundary without rasterization or frame state.
 
 - [ ] `T5.1` — Implement inherited root foreground, nested innermost
       foreground resolution, sibling isolation, and a bounded foreground stack
-      in caller-owned workspace. Emit backgrounds immediately before their
-      content subtree, with outer-before-inner modifier order, exact unclipped
-      resolved bounds, final checked clip, and omission only for zero-area
-      bounds or empty final clips.
+      in caller-owned workspace through exact current/push/pop operations,
+      including root initialization, LIFO restoration, full/empty/inactive
+      refusal, high-water, and reset behavior. Emit backgrounds immediately
+      before their content subtree, with outer-before-inner modifier order,
+      exact unclipped resolved bounds, final checked clip, and omission only for
+      zero-area bounds or empty final clips.
 - [x] `T5.2` — Implement source-order sibling and back-to-front ZStack painter
       traversal without sorting, coalescing, batching across intervening
       operations, resource/color reordering, or opaque-overdraw elimination.
@@ -442,9 +452,12 @@ rule and every failure boundary without rasterization or frame state.
       damage calculation and retain no first-frame or other frame history.
 - [ ] `T5.5` — Exercise exact failure precedence—reentrancy, invalid input,
       arithmetic, capacity, incompatible resource, begin refusal, invariant—
-      including coincident failures. Verify before-begin failures call neither
-      begin nor discard, begin refusal leaves the sink idle, every post-begin
-      failure discards once, and prior current recordings remain atomic.
+      across every simultaneously constructible pair. Audit the defensive
+      checked-intersection arithmetic branches and direct error mapping without
+      forging an invalid SPEC-002 rectangle. Verify before-begin failures call
+      neither begin nor discard, begin refusal leaves the sink idle, every
+      post-begin failure discards once, and prior current recordings remain
+      atomic.
 
 ### Milestone 6: Complete the Canonical Corpus and Profile Equivalence
 
@@ -466,8 +479,10 @@ nonescaping borrows.
       admitted byte sequence and integer value, invalid literal propagation
       through semantic expansion into SPEC-007 rejection, and zero render
       invocation or layout publication after invalid declaration.
-- [ ] `T6.3` — Fault-inject every semantic/layout mismatch, arithmetic site,
-      exactly-at/one-over operation/glyph/clip bound and semantic-scope,
+- [ ] `T6.3` — Fault-inject every semantic/layout mismatch and every
+      constructible producer failure; audit defensive arithmetic sites and the
+      direct arithmetic-error mapping; exercise exactly-at/one-over
+      operation/glyph/clip bound and semantic-scope,
       layout-scope, traversal-depth, and text-line capacity; ordinal visit-set
       failure and exact preflight-only visit counts; workspace/sink shortfall;
       incompatible resource; every sink
@@ -972,10 +987,9 @@ tests exhaust the mapping, while the source and package audits prove that
 lowering imports no failure module and the pure adapter contains no diagnostic,
 allocation, or second-production path; see the
 [failure-adapter evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-4/render-failure-adapter.md).
-`T5.1` remains open because its caller-owned foreground-stack requirement
-cannot be expressed by the approved exact `RenderProductionWorkspace`
-protocol. Adding workspace storage operations is a contract change and needs a
-reviewed Specification amendment before implementation.
+`T5.1` remains open. The review amendment now supplies exact current/push/pop
+operations and binds their storage to `maximumTraversalDepth`; implementation
+waits for explicit approval of that contract change.
 
 `T5.2` is complete independently of the unresolved T5.1 workspace-storage
 seam. A direct-view golden proves source-order structural children, both opaque
@@ -983,7 +997,6 @@ backgrounds around intervening text without elimination or reordering, and one
 whole positioned-glyph group per non-empty line with occurrence-wide indices;
 see the
 [painter-order evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-5/painter-order.md).
-`T5.3` is the next independent dependency-complete task.
 
 `T5.3` is complete. Exact-transport goldens preserve the selected instance,
 glyphs, occurrence-wide ordering, baselines, foreground, and checked line clip,
@@ -991,7 +1004,6 @@ while independent resource, instance, and glyph disagreements all fail during
 preflight before capacity or begin. A source audit excludes raw-text, shaping,
 fallback, and advance behavior; see the
 [text-lowering evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-5/text-lowering.md).
-`T5.4` is the next independent dependency-complete task.
 
 `T5.4` is complete. Focused fixtures prove exact unclamped fill bounds with a
 checked partial final clip, omission for an off-surface empty final clip, and
@@ -999,14 +1011,17 @@ explicit complete-surface/root-intersection/complete-surface damage across
 fresh attempts without frame history; see the
 [clip/damage evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-5/clip-damage.md).
 
-Implementation review found two approval blockers. T5.1 requires a
-caller-owned foreground stack but the approved exact workspace protocol has no
-storage operations; T5.5 and T6.3 require arithmetic fault injection even
-though every render arithmetic branch intersects already-valid SPEC-002
-rectangles and is therefore unconstructible. T5.1 and T5.5 remain open, and
-Milestone 6 entry conditions are not met pending a reviewed Specification
-amendment; see the
+Implementation review found two approval blockers. The amendment now defines
+the missing foreground-stack operations and replaces impossible arithmetic
+fault injection with defensive branch and direct mapping evidence while
+preserving the closed error and precedence order. T5.1 and T5.5 remain open,
+and Milestone 6 entry conditions are not met until the amended Specification is
+explicitly approved; see the
 [implementation review](../../Tests/ContractFixtures/SPEC008/Evidence/implementation-blockers.md).
+
+After approval, the next work is the T4.1/T4.4 foreground-workspace follow-up,
+then T5.1 and T5.5. This plan must return to `active` only with that explicit
+approval.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
