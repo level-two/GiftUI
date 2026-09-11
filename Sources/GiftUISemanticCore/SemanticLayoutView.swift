@@ -97,3 +97,177 @@ package protocol SemanticLayoutView {
     func textScalarCount(of identity: Identity) -> UInt16?
     func textScalar(of identity: Identity, at index: UInt16) -> UInt32?
 }
+
+package protocol SemanticLayoutResultStorage: SemanticLayoutView {
+    var maximumStructuralOccurrences: UInt16 { get }
+    var maximumBodyEvaluations: UInt16 { get }
+    var maximumSemanticOccurrences: UInt16 { get }
+    var maximumModifierApplications: UInt16 { get }
+    var maximumActionOccurrences: UInt16 { get }
+
+    mutating func beginSemanticResult() -> Bool
+    mutating func stageStructuralOccurrence(identity: borrowing Identity) -> Bool
+    mutating func stageBodyEvaluation(identity: borrowing Identity) -> Bool
+    mutating func stagePrimitive<Payload>(
+        identity: borrowing Identity,
+        primitive: SemanticLayoutPrimitive,
+        payload: borrowing Payload
+    ) -> Bool where Payload: _GiftUISemanticPrimitivePayload
+    mutating func stageModifier(
+        identity: borrowing Identity,
+        modifier: SemanticLayoutModifier,
+        chainIndex: UInt16
+    ) -> Bool
+    mutating func stageActionOccurrence(identity: borrowing Identity) -> Bool
+    mutating func publishSemanticResult(_ summary: SemanticExpansionSummary) -> Bool
+    mutating func discardSemanticResult()
+    mutating func resetSemanticResult()
+}
+
+package struct SemanticLayoutResultSink<Storage>: SemanticExpansionSink,
+    SemanticLayoutView
+where Storage: SemanticLayoutResultStorage {
+    package var storage: Storage
+
+    package init(storage: Storage) {
+        self.storage = storage
+    }
+
+    package var maximumStructuralOccurrences: UInt16 {
+        storage.maximumStructuralOccurrences
+    }
+
+    package var maximumBodyEvaluations: UInt16 {
+        storage.maximumBodyEvaluations
+    }
+
+    package var maximumSemanticOccurrences: UInt16 {
+        storage.maximumSemanticOccurrences
+    }
+
+    package var maximumModifierApplications: UInt16 {
+        storage.maximumModifierApplications
+    }
+
+    package var maximumActionOccurrences: UInt16 {
+        storage.maximumActionOccurrences
+    }
+
+    package mutating func beginExpansion() -> Bool {
+        storage.beginSemanticResult()
+    }
+
+    package mutating func stageStructuralOccurrence(
+        identity: borrowing Storage.Identity
+    ) -> Bool {
+        storage.stageStructuralOccurrence(identity: identity)
+    }
+
+    package mutating func stageBodyEvaluation(
+        identity: borrowing Storage.Identity
+    ) -> Bool {
+        storage.stageBodyEvaluation(identity: identity)
+    }
+
+    package mutating func stageSemanticOccurrence<Payload>(
+        identity: borrowing Storage.Identity,
+        payload: borrowing Payload
+    ) -> Bool where Payload: _GiftUISemanticPrimitivePayload {
+        storage.stagePrimitive(
+            identity: identity,
+            primitive: SemanticLayoutPrimitive(payload: payload),
+            payload: payload
+        )
+    }
+
+    package mutating func stageModifierApplication<Payload>(
+        identity: borrowing Storage.Identity,
+        payload: borrowing Payload,
+        chainIndex: UInt16
+    ) -> Bool where Payload: _GiftUISemanticModifierPayload {
+        guard let modifier = SemanticLayoutModifier(payload: payload) else {
+            return false
+        }
+        return storage.stageModifier(
+            identity: identity,
+            modifier: modifier,
+            chainIndex: chainIndex
+        )
+    }
+
+    package mutating func stageActionOccurrence<Action>(
+        identity: borrowing Storage.Identity,
+        action: borrowing Action
+    ) -> Bool where Action: GiftUIAction {
+        _ = action
+        return storage.stageActionOccurrence(identity: identity)
+    }
+
+    package mutating func publishExpansion(
+        _ summary: SemanticExpansionSummary
+    ) -> Bool {
+        storage.publishSemanticResult(summary)
+    }
+
+    package mutating func discardExpansion() {
+        storage.discardSemanticResult()
+    }
+
+    package mutating func resetExpansion() {
+        storage.resetSemanticResult()
+    }
+
+    package var rootIdentity: Storage.Identity {
+        storage.rootIdentity
+    }
+
+    package var scopeCount: UInt16 {
+        storage.scopeCount
+    }
+
+    package func primitive(
+        at identity: Storage.Identity
+    ) -> SemanticLayoutPrimitive? {
+        storage.primitive(at: identity)
+    }
+
+    package func childCount(of identity: Storage.Identity) -> UInt16? {
+        storage.childCount(of: identity)
+    }
+
+    package func child(
+        of identity: Storage.Identity,
+        at index: UInt16
+    ) -> Storage.Identity? {
+        storage.child(of: identity, at: index)
+    }
+
+    package func modifierCount(of identity: Storage.Identity) -> UInt16? {
+        storage.modifierCount(of: identity)
+    }
+
+    package func modifierScope(
+        of identity: Storage.Identity,
+        at index: UInt16
+    ) -> Storage.Identity? {
+        storage.modifierScope(of: identity, at: index)
+    }
+
+    package func modifier(
+        of identity: Storage.Identity,
+        at index: UInt16
+    ) -> SemanticLayoutModifier? {
+        storage.modifier(of: identity, at: index)
+    }
+
+    package func textScalarCount(of identity: Storage.Identity) -> UInt16? {
+        storage.textScalarCount(of: identity)
+    }
+
+    package func textScalar(
+        of identity: Storage.Identity,
+        at index: UInt16
+    ) -> UInt32? {
+        storage.textScalar(of: identity, at: index)
+    }
+}

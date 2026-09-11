@@ -58,10 +58,10 @@ layout payload vocabulary. `GiftUITextResources` exposes the validated
 summary, result, and error values, while the fixture owner adapter maps closed
 layout errors only after layout returns.
 
-The remaining implementation needs one producer that can operate over direct
-recording views now and the production Semantic Core adapter when SPEC-006
-provides it. It must not make either producer's identity representation part of
-layout storage.
+The producer operates over direct recording views and
+`SemanticLayoutResultSink`, which exposes its one profile-owned successful
+SPEC-006 result storage directly as `SemanticLayoutView`. It does not make
+either producer's identity representation part of layout storage.
 
 ## Proposed Internal Organization
 

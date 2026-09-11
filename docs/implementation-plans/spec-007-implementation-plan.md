@@ -280,7 +280,7 @@ fixture-dynamic, and fixture-static producers have equal observable meaning.
       borrowed content meaning. Do not expose actions, generations, models,
       state storage, runtime nodes, render data, backend objects, or another
       identity representation.
-- [ ] `T2.3` — Adapt the complete successful SPEC-006 semantic result to this
+- [x] `T2.3` — Adapt the complete successful SPEC-006 semantic result to this
       view without copying a second complete graph. Implement transparent
       structural flattening in canonical source order; require the semantic
       root and every modifier scope to resolve to exactly one layout child;
@@ -756,6 +756,17 @@ behavior across all three views. A dynamic malformed-view mode independently
 injects a missing in-range child. The fixed view uses switch-based finite
 storage and does not compare its private identity raw values with either host
 fixture.
+
+`T2.3` is complete: `SemanticLayoutResultSink` is both the real SPEC-006
+expansion sink and the borrowed `SemanticLayoutView` over its one
+profile-owned result storage. It forwards exact identities and accessors,
+maps typed primitive and modifier payloads while they are staged, represents
+an action-bearing occurrence as the same-identity layout proxy without its
+callable value, rejects unknown layout modifiers, and adds no adapter-owned
+node array. A focused expansion fixture proves transparent structural
+flattening, source-ordered primitive children and modifiers, exact modifier
+scope/action identity, and borrowed text-scalar access from the published
+semantic result.
 
 `T3.3` is in progress: `GiftUILayout` now has one fixed-width counter set for
 all five global limits. It accepts equality at each limit, rejects the next
