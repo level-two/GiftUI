@@ -2,7 +2,7 @@
 spec: SPEC-006
 feature: giftui-mvp-architecture
 title: SPEC-006 Conformance Report
-status: collecting
+status: complete
 reviewers:
   - codex
 created: 2026-09-09
@@ -19,14 +19,14 @@ superseded_by: null
 
 # SPEC-006 Conformance Report
 
-> This collecting report records evidence. It does not authorize the
-> governing Specification's `implemented` transition.
+> This complete report records evidence. It does not itself authorize or
+> perform the governing Specification's `implemented` transition.
 
 ## Review Scope
 
 - Governing contract: [SPEC-006 Declarative View Semantics](../specs/spec-006-declarative-view-semantics.md), status `implementing` after explicit maintainer reapproval of the primitive-with-content amendment on 2026-09-10.
 - Derived plan: [SPEC-006 Implementation Plan](../implementation-plans/spec-006-implementation-plan.md), status `completed` after all amendment tasks received dispositions.
-- Reviewed implementation revision: `43d789bb89d00ec4761b54f4fd1ed585f999eed6`.
+- Reviewed implementation revision: `085f52c58a9ee27d6c7652b2f3562bed7416998d`.
 - Design note: [bounded semantic expansion](../implementation-designs/spec-006-bounded-semantic-expansion.md), status `current`.
 - Environments: Apple Swift 6.3.3 macOS arm64 dynamic/static host execution;
   project-local Swift 6.3.2 ARMv6 and Embedded Swift/nRF52840 hardware-free
@@ -59,9 +59,9 @@ hierarchy and common Rank 0 semantics across all four MVP configurations.
 
 ## Required-Test Results
 
-At reviewed revision `43d789bb89d00ec4761b54f4fd1ed585f999eed6`,
+At reviewed revision `085f52c58a9ee27d6c7652b2f3562bed7416998d`,
 the four standalone commands below passed with common run identity
-`43d789bb89d00ec4761b54f4fd1ed585f999eed6-8da6637110d9891f`:
+`085f52c58a9ee27d6c7652b2f3562bed7416998d-4256b4ebf2b2e167`:
 
 - `scripts/contracts/run-spec-006.sh --profile macos-dynamic`
 - `scripts/contracts/run-spec-006.sh --profile macos-static`
@@ -114,8 +114,10 @@ current work.
 
 ## Review Conclusion
 
-All sixteen criteria now have reproducible passing evidence, including the
-amended primitive-with-content contract across all four profiles. This
-collecting report is ready for renewed conformance review, but it does not
-authorize an `implemented` transition; explicit human authorization remains
-required before that transition.
+All sixteen criteria have reproducible passing evidence, including the
+amended primitive-with-content contract across all four profiles. No review
+gate remains open, and this report supports the Specification's separately
+authorized `implemented` transition. The maintainer explicitly authorized
+that transition on 2026-09-11, conditional on this review finding no issues;
+the review satisfied that condition. This report records the authorization
+but does not itself perform the transition.

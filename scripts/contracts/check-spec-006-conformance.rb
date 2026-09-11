@@ -13,11 +13,12 @@ def fail_check(message)
   exit 1
 end
 
-fail_check("report must remain collecting") unless REPORT.match?(/\nstatus: collecting\n/)
-fail_check("Specification must remain implementing") unless SPEC.match?(/\nstatus: implementing\n/)
-active_amendment = PLAN.match?(/\nstatus: active\n/)
-completed_amendment = PLAN.match?(/\nstatus: completed\n/)
-fail_check("plan must be active or completed") unless active_amendment || completed_amendment
+fail_check("report must be complete") unless REPORT.match?(/\nstatus: complete\n/)
+spec_implementing = SPEC.match?(/\nstatus: implementing\n/)
+spec_implemented = SPEC.match?(/\nstatus: implemented\n/)
+fail_check("Specification must be implementing or implemented") unless
+  spec_implementing || spec_implemented
+fail_check("plan must be completed") unless PLAN.match?(/\nstatus: completed\n/)
 fail_check("reviewed revision is missing") unless
   REPORT.match?(/Reviewed implementation revision: `[0-9a-f]{40}`/)
 
@@ -25,17 +26,11 @@ fail_check("reviewed revision is missing") unless
   criterion = format("DV-%03d", ordinal)
   rows = REPORT.scan(/^\| `#{criterion}` \|/).length
   fail_check("#{criterion} must appear in exactly one result row") unless rows == 1
-  if active_amendment && ordinal == 16
-    fail_check("DV-016 must remain pending while the amendment plan is active") unless
-      REPORT.match?(/^\| `DV-016` \| pending \|/)
-  else
-    fail_check("#{criterion} is not passing") unless REPORT.match?(/^\| `#{criterion}` \| pass \|/)
-  end
+  fail_check("#{criterion} is not passing") unless REPORT.match?(/^\| `#{criterion}` \| pass \|/)
 end
 
-fail_check("report claims an implemented transition") if REPORT.match?(/status: implemented/)
-fail_check("report omits human authorization gate") unless
-  REPORT.include?("explicit human authorization")
+fail_check("report omits explicit human authorization") unless
+  REPORT.match?(/maintainer explicitly authorized\s+that transition/m)
 hardware_boundary = /No simulator, remote\s+Pi, connected board, deployment, service restart, or flashing is claimed/
 fail_check("report omits hardware evidence boundary") unless REPORT.match?(hardware_boundary)
 
@@ -44,5 +39,5 @@ REPORT.scan(/\[[^\]]+\]\((\.\.\/[^)]+)\)/).flatten.each do |relative|
   fail_check("report link is missing: #{relative}") unless path.file?
 end
 
-state = active_amendment ? "15 passing criteria and DV-016 pending" : "all 16 criteria passing"
-puts "SPEC-006 conformance passed: #{state}; the report remains collecting and the human implemented-transition gate remains open."
+state = spec_implemented ? "implemented" : "implementing pending the authorized transition"
+puts "SPEC-006 conformance passed: all 16 criteria passing; report complete; Specification #{state}."
