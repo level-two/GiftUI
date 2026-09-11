@@ -398,7 +398,7 @@ text from Semantic Core scalar access and the sole validated MVP instance.
       lookup, CR/LF/CRLF handling, replacement mapping, glyph metric lookup,
       and invalid-scalar/post-validation invariant distinctions. Reserve the
       complete scalar, line, and positioned-glyph counts under global limits.
-- [ ] `T5.2` — Implement left-to-right advance wrapping for absent, positive,
+- [x] `T5.2` — Implement left-to-right advance wrapping for absent, positive,
       and zero widths; keep an over-wide first glyph; preserve empty, leading,
       trailing, and consecutive-break lines; and compute checked line widths,
       text ideal/resolved size, baseline progression, and line gaps exactly.

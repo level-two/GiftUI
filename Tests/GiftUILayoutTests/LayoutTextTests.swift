@@ -51,6 +51,70 @@ func emptyCanonicalTextStillProducesOneLine() {
     #expect(output.lines[0].baseline == Point(x: 0, y: 7))
 }
 
+@Test
+func positiveWidthWrapsBeforeOnlyTheOverflowingNonfirstGlyph() {
+    let output = runTextLayout(
+        scalars: [0x41, 0x42, 0x41],
+        proposal: ProposedSize(width: 8)!
+    )
+
+    #expect(output.summary?.rootBounds.size == Size(width: 5, height: 34)!)
+    #expect(output.lines.map { $0.bounds.size.width } == [4, 5, 4])
+    #expect(output.glyphs.map { $0.lineIndex } == [0, 1, 2])
+    #expect(output.glyphs.map { $0.baseline.x } == [0, 0, 0])
+    #expect(output.lines.map { $0.baseline.y } == [7, 19, 31])
+    #expect(output.lines.map { $0.bounds.origin.y } == [0, 12, 24])
+}
+
+@Test
+func zeroWidthProducesOneLinePerGlyphAndRetainsZeroLineWidths() {
+    let output = runTextLayout(
+        scalars: [0x41, 0x42, 0x41],
+        proposal: ProposedSize(width: 0)!
+    )
+
+    #expect(output.summary?.rootBounds.size == Size(width: 0, height: 34)!)
+    #expect(output.lines.count == 3)
+    #expect(output.lines.allSatisfy { $0.bounds.size.width == 0 })
+    #expect(output.glyphs.map { $0.lineIndex } == [0, 1, 2])
+}
+
+@Test
+func absentWidthWrapsOnlyAtExplicitBreaks() {
+    let output = runTextLayout(
+        scalars: [0x41, 0x42, 0x0a, 0x41],
+        proposal: ProposedSize()!
+    )
+
+    #expect(output.lines.map { $0.bounds.size.width } == [9, 4])
+    #expect(output.glyphs.map { $0.baseline.x } == [0, 4, 0])
+    #expect(output.summary?.rootBounds.size == Size(width: 9, height: 22)!)
+}
+
+@Test
+func overWideFirstGlyphStaysAndItsLogicalLineWidthIsCapped() {
+    let output = runTextLayout(
+        scalars: [0x41, 0x42],
+        proposal: ProposedSize(width: 3)!
+    )
+
+    #expect(output.lines.map { $0.bounds.size.width } == [3, 3])
+    #expect(output.glyphs.map { $0.lineIndex } == [0, 1])
+    #expect(output.summary?.rootBounds.size == Size(width: 3, height: 22)!)
+}
+
+@Test
+func leadingTrailingAndConsecutiveBreaksPreserveEveryEmptyLine() {
+    let output = runTextLayout(
+        scalars: [0x0a, 0x0a, 0x41, 0x0a],
+        proposal: ProposedSize()!
+    )
+
+    #expect(output.lines.map { $0.bounds.size.width } == [0, 0, 4, 0])
+    #expect(output.lines.map { $0.baseline.y } == [7, 19, 31, 43])
+    #expect(output.summary?.rootBounds.size.height == 46)
+}
+
 struct CapturedTextLine: Equatable {
     let identity: UInt16
     let lineIndex: UInt16
