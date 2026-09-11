@@ -297,7 +297,7 @@ copying a second semantic/layout result.
       frames to `clipBoundary`, and invalid `Text` to SPEC-007's existing
       `.invalidDeclaration` path before layout publication or render
       invocation.
-- [ ] `T2.3` — Implement `ResolvedRenderTextLine`, `ResolvedRenderGlyph`, and
+- [x] `T2.3` — Implement `ResolvedRenderTextLine`, `ResolvedRenderGlyph`, and
       `ResolvedRenderLayoutView` in `GiftUILayout`. Adapt complete SPEC-007
       results without translating identity or remeasuring text; expose exact
       bounds, clips, line/glyph indices, instances, glyphs, and baselines with
@@ -812,7 +812,16 @@ cover transparent-root mapping, modifier arity, self-mapped layout scopes, and
 invalid text preservation into SPEC-007's existing invalid-scalar rejection
 path; see the
 [semantic result adapter evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-2/semantic-result-render-adapter.md).
-T2.3 is the next dependency-complete task. T3.5 remains blocked on
+
+`T2.3` is complete. `GiftUILayout` now owns the exact resolved text-line,
+positioned-glyph, and layout-view SPI plus a result-sink adapter that exposes a
+read-only projection of the successfully published SPEC-007 result. Focused
+layout tests preserve semantic identity, root and per-scope bounds/clips,
+occurrence-wide glyph indices, line indices/counts, exact font/glyph IDs, and
+baselines, and prove nil for unknown identities and out-of-range indices; see
+the
+[resolved render layout evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-2/resolved-render-layout-view.md).
+T2.4 is the next dependency-complete task. T3.5 remains blocked on
 lowering-owned `RenderLimits`.
 
 Plan completion means every task has a recorded disposition; it does not mean
