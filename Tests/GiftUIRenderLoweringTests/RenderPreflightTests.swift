@@ -414,6 +414,122 @@ func streamingDiscardsWhenSnapshotChangesAfterTheLastOperation() {
     #expect(!sink.events.contains(.finish))
 }
 
+@Test
+func producerAcquiresRunsBothPassesAndResetsExactlyOnceOnEveryAcquiredExit() {
+    var successWorkspace = PreflightWorkspace<RenderFixtureIdentity>()
+    var successSink = StreamingSink()
+    let success = RenderProducer.produce(
+        semantic: DirectRenderFixtures.validSemantic,
+        layout: DirectRenderFixtures.validLayout,
+        textMetrics: PreflightMetrics(),
+        surfaceBounds: DirectRenderFixtures.bounds,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+        workspace: &successWorkspace,
+        sink: &successSink
+    )
+    #expect(success == .success(expectedPreflightHeader))
+    #expect(successWorkspace.acquireCount == 1)
+    #expect(successWorkspace.resetCount == 1)
+    #expect(!successWorkspace.isActive)
+    #expect(successSink.events.last == .finish)
+
+    var failureWorkspace = PreflightWorkspace<RenderFixtureIdentity>()
+    var failureSink = StreamingSink()
+    let invalidSurface = Rect(
+        origin: Point(x: 1, y: 0),
+        size: DirectRenderFixtures.bounds.size
+    )!
+    let failure = RenderProducer.produce(
+        semantic: DirectRenderFixtures.validSemantic,
+        layout: DirectRenderFixtures.validLayout,
+        textMetrics: PreflightMetrics(),
+        surfaceBounds: invalidSurface,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+        workspace: &failureWorkspace,
+        sink: &failureSink
+    )
+    #expect(failure == .failure(.invalidInput))
+    #expect(failureWorkspace.acquireCount == 1)
+    #expect(failureWorkspace.resetCount == 1)
+    #expect(!failureWorkspace.isActive)
+    #expect(failureSink.capacityReads == 0)
+    #expect(failureSink.operationCallCount == 0)
+}
+
+@Test
+func producerRejectsReentryBeforeInputOrSinkAccessAndPreservesActiveAttempt() {
+    var workspace = PreflightWorkspace<RenderFixtureIdentity>()
+    let acquired = workspace.acquire()
+    #expect(acquired)
+    let semantic = AccessCountingSemanticView(
+        base: DirectRenderFixtures.validSemantic
+    )
+    var sink = StreamingSink()
+
+    let result = RenderProducer.produce(
+        semantic: semantic,
+        layout: DirectRenderFixtures.validLayout,
+        textMetrics: PreflightMetrics(),
+        surfaceBounds: DirectRenderFixtures.bounds,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+        workspace: &workspace,
+        sink: &sink
+    )
+
+    #expect(result == .failure(.reentrancyViolation))
+    #expect(workspace.acquireCount == 1)
+    #expect(workspace.resetCount == 0)
+    #expect(workspace.isActive)
+    #expect(semantic.counter.accesses == 0)
+    #expect(sink.capacityReads == 0)
+    #expect(sink.operationCallCount == 0)
+}
+
+@Test
+func producerMapsInactiveAcquireRefusalToInvariantWithoutResetOrInputAccess() {
+    var workspace = PreflightWorkspace<RenderFixtureIdentity>(refuseAcquire: true)
+    let semantic = AccessCountingSemanticView(
+        base: DirectRenderFixtures.validSemantic
+    )
+    var sink = StreamingSink()
+
+    let result = RenderProducer.produce(
+        semantic: semantic,
+        layout: DirectRenderFixtures.validLayout,
+        textMetrics: PreflightMetrics(),
+        surfaceBounds: DirectRenderFixtures.bounds,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+        workspace: &workspace,
+        sink: &sink
+    )
+
+    #expect(result == .failure(.invariantViolation))
+    #expect(workspace.acquireCount == 1)
+    #expect(workspace.resetCount == 0)
+    #expect(!workspace.isActive)
+    #expect(semantic.counter.accesses == 0)
+    #expect(sink.capacityReads == 0)
+    #expect(sink.operationCallCount == 0)
+}
+
+private var expectedPreflightHeader: RenderPlanHeader {
+    RenderPlanHeader(
+        surfaceBounds: DirectRenderFixtures.bounds,
+        damageBounds: DirectRenderFixtures.bounds,
+        operationCount: 2,
+        positionedGlyphCount: 2,
+        maximumObservedClipDepth: 2
+    )
+}
+
 private func successfulPreflight<Semantic, Layout>(
     semantic: borrowing Semantic,
     layout: borrowing Layout,
@@ -477,19 +593,24 @@ where Identity: Equatable & Sendable {
     let capacity: RenderLimits
     let structuralCapacity: RenderWorkspaceCapacity
     private(set) var isActive = false
+    private(set) var acquireCount: UInt16 = 0
+    private(set) var resetCount: UInt16 = 0
     private(set) var semanticVisitCalls: UInt16 = 0
     private(set) var layoutVisitCalls: UInt16 = 0
     private(set) var firstSemanticVisits: UInt16 = 0
     private(set) var firstLayoutVisits: UInt16 = 0
     private var semanticVisits: [Bool]
     private var layoutVisits: [Bool]
+    private let refuseAcquire: Bool
 
     init(
         capacity: RenderLimits = Self.limits,
-        structuralCapacity: RenderWorkspaceCapacity = Self.structure
+        structuralCapacity: RenderWorkspaceCapacity = Self.structure,
+        refuseAcquire: Bool = false
     ) {
         self.capacity = capacity
         self.structuralCapacity = structuralCapacity
+        self.refuseAcquire = refuseAcquire
         semanticVisits = [Bool](
             repeating: false,
             count: Int(structuralCapacity.maximumSemanticScopes)
@@ -501,7 +622,9 @@ where Identity: Equatable & Sendable {
     }
 
     mutating func acquire() -> Bool {
+        acquireCount += 1
         guard !isActive else { return false }
+        guard !refuseAcquire else { return false }
         isActive = true
         semanticVisits = [Bool](repeating: false, count: semanticVisits.count)
         layoutVisits = [Bool](repeating: false, count: layoutVisits.count)
@@ -526,6 +649,7 @@ where Identity: Equatable & Sendable {
         semanticVisits = [Bool](repeating: false, count: semanticVisits.count)
         layoutVisits = [Bool](repeating: false, count: layoutVisits.count)
         isActive = false
+        resetCount += 1
     }
 
     private func visit(
@@ -606,6 +730,65 @@ private struct PreflightSink: RenderOperationSink {
 
 private final class SnapshotReadCounter {
     var reads: UInt32 = 0
+}
+
+private final class AccessCounter {
+    var accesses: UInt16 = 0
+}
+
+private struct AccessCountingSemanticView: SemanticRenderView {
+    let base: DirectSemanticRenderView
+    let counter = AccessCounter()
+
+    var rootIdentity: RenderFixtureIdentity {
+        counter.accesses += 1
+        return base.rootIdentity
+    }
+
+    var semanticScopeCount: UInt16 {
+        counter.accesses += 1
+        return base.semanticScopeCount
+    }
+
+    var renderSnapshotVersion: UInt32 {
+        counter.accesses += 1
+        return base.renderSnapshotVersion
+    }
+
+    func semanticIdentity(at ordinal: UInt16) -> RenderFixtureIdentity? {
+        counter.accesses += 1
+        return base.semanticIdentity(at: ordinal)
+    }
+
+    func semanticOrdinal(of identity: RenderFixtureIdentity) -> UInt16? {
+        counter.accesses += 1
+        return base.semanticOrdinal(of: identity)
+    }
+
+    func scope(at identity: RenderFixtureIdentity) -> SemanticRenderScope? {
+        counter.accesses += 1
+        return base.scope(at: identity)
+    }
+
+    func layoutIdentity(
+        for identity: RenderFixtureIdentity
+    ) -> RenderFixtureIdentity? {
+        counter.accesses += 1
+        return base.layoutIdentity(for: identity)
+    }
+
+    func childCount(of identity: RenderFixtureIdentity) -> UInt16? {
+        counter.accesses += 1
+        return base.childCount(of: identity)
+    }
+
+    func child(
+        of identity: RenderFixtureIdentity,
+        at index: UInt16
+    ) -> RenderFixtureIdentity? {
+        counter.accesses += 1
+        return base.child(of: identity, at: index)
+    }
 }
 
 private struct LateChangingSnapshotSemanticView: SemanticRenderView {

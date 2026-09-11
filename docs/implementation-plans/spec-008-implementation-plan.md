@@ -399,7 +399,7 @@ deterministic failure precedence, and atomic sink behavior.
       once only after all preflight/capacity/version checks, keep glyph groups
       whole, call `finish` once on success, and treat any version disagreement
       or post-begin refusal as invariant failure with exactly one discard.
-- [ ] `T4.4` — Implement the idle/acquired/preflighting/begun/streaming/
+- [x] `T4.4` — Implement the idle/acquired/preflighting/begun/streaming/
       finished-or-discarded/reset lifecycle. Check active-workspace reentry
       first before all input/sink access; call `acquire` only when inactive;
       reset exactly once after every successful acquisition on every exit;
@@ -954,7 +954,18 @@ sequence, unchanged preflight visit counts, one total capacity read, begin
 refusal without discard, post-begin refusal with discard, and late snapshot
 change with discard; see the
 [streaming evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-4/render-streaming.md).
-`T4.4` is the next dependency-complete task.
+This completed streaming boundary unblocked `T4.4`.
+
+`T4.4` is complete. The exact generic `RenderProducer.produce` entry point now
+checks active-workspace reentry before any semantic, layout, metrics, or sink
+access; acquires only an inactive workspace; runs preflight then streaming; and
+uses one deferred reset after every successful acquisition on all exits.
+Focused tests prove successful and invalid-input resets, an untouched active
+attempt on reentry, inactive acquisition refusal without reset, no input/sink
+access before either early return, and workspace reuse after acquired exits;
+see the
+[producer lifecycle evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-4/render-producer-lifecycle.md).
+`T4.5` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
