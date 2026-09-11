@@ -319,7 +319,7 @@ replaceable realization described by the
       `Equatable`/`Sendable` behavior, and the specified size ceilings. Add
       compile-time/source audits excluding references, existentials, strings,
       closures, and unbounded collections from these values.
-- [ ] `T3.2` — Define the package `LayoutResultSink` and one generic layout
+- [x] `T3.2` — Define the package `LayoutResultSink` and one generic layout
       entry point borrowing `SemanticLayoutView` and validated
       `CanonicalTextMetricsView`, sharing the exact identity with the sink,
       and exclusively borrowing caller-owned workspace and sink. Define the
@@ -719,6 +719,16 @@ closed local errors to their exact SPEC-003 facts, including Foundation-owned
 arithmetic overflow and safety-not-proven invariant failure. Invalid limits
 map at the pre-cycle runtime owner, while the executable import boundary proves
 `GiftUILayout` itself imports neither Failure Core nor diagnostics.
+
+`T3.2` is complete: the exact result sink, exact-identity generic layout entry,
+and caller-owned workspace seam now compile together. The workspace reports
+all five capacities before acquisition, provides bounded identity-indexed
+measurement and placement operations plus depth storage, and resets copied
+identity and derived geometry before returning. Focused poisoned-view probes
+prove workspace-active and sink-active reentry occur before borrowed input
+inspection. The admitted valid path remains deliberately fail-closed until
+`T3.3` installs semantic validation and measurement; it neither begins nor
+mutates the sink in that intermediate state.
 
 `T1.3` is complete: all padding and frame overloads lower through the existing
 typed modifier operation. Runtime transcript tests prove exact source-call
