@@ -1301,6 +1301,193 @@ func producerMapsInactiveAcquireRefusalToInvariantWithoutResetOrInputAccess() {
     #expect(sink.operationCallCount == 0)
 }
 
+@Test
+func constructibleFailurePrecedenceFollowsTheExactClosedOrder() {
+    let semantic = {
+        LateChangingSnapshotSemanticView(base: DirectRenderFixtures.validSemantic)
+    }
+    let invalidSurface = Rect(
+        origin: Point(x: 1, y: 0),
+        size: DirectRenderFixtures.bounds.size
+    )!
+    let shortLimits = RenderLimits(
+        maximumOperations: 1,
+        maximumPositionedGlyphs: 2,
+        maximumClipDepth: 2
+    )!
+
+    var reentrantWorkspace = PreflightWorkspace<RenderFixtureIdentity>()
+    let reentrantAcquired = reentrantWorkspace.acquire()
+    #expect(reentrantAcquired)
+    var reentrantSink = StreamingSink(refuseAtOperationCall: 1)
+    let reentrant = RenderProducer.produce(
+        semantic: semantic(),
+        layout: DirectRenderFixtures.validLayout,
+        textMetrics: PreflightMetrics(resourceWord: 99),
+        surfaceBounds: invalidSurface,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: shortLimits,
+        workspace: &reentrantWorkspace,
+        sink: &reentrantSink
+    )
+    #expect(reentrant == .failure(.reentrancyViolation))
+    #expect(reentrantSink.operationCallCount == 0)
+    #expect(reentrantSink.discardCount == 0)
+
+    var invalidWorkspace = PreflightWorkspace<RenderFixtureIdentity>()
+    var invalidSink = StreamingSink(refuseAtOperationCall: 1)
+    let invalid = RenderProducer.produce(
+        semantic: semantic(),
+        layout: DirectRenderFixtures.validLayout,
+        textMetrics: PreflightMetrics(resourceWord: 99),
+        surfaceBounds: invalidSurface,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: shortLimits,
+        workspace: &invalidWorkspace,
+        sink: &invalidSink
+    )
+    #expect(invalid == .failure(.invalidInput))
+    #expect(invalidSink.operationCallCount == 0)
+    #expect(invalidSink.discardCount == 0)
+
+    var capacityWorkspace = PreflightWorkspace<RenderFixtureIdentity>()
+    var capacitySink = StreamingSink(refuseAtOperationCall: 1)
+    let capacity = RenderProducer.produce(
+        semantic: semantic(),
+        layout: DirectRenderFixtures.validLayout,
+        textMetrics: PreflightMetrics(resourceWord: 99),
+        surfaceBounds: DirectRenderFixtures.bounds,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: shortLimits,
+        workspace: &capacityWorkspace,
+        sink: &capacitySink
+    )
+    #expect(capacity == .failure(.capacityExhausted))
+    #expect(capacitySink.operationCallCount == 0)
+    #expect(capacitySink.discardCount == 0)
+
+    var resourceWorkspace = PreflightWorkspace<RenderFixtureIdentity>()
+    var resourceSink = StreamingSink(refuseAtOperationCall: 1)
+    let resource = RenderProducer.produce(
+        semantic: semantic(),
+        layout: DirectRenderFixtures.validLayout,
+        textMetrics: PreflightMetrics(resourceWord: 99),
+        surfaceBounds: DirectRenderFixtures.bounds,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+        workspace: &resourceWorkspace,
+        sink: &resourceSink
+    )
+    #expect(resource == .failure(.incompatibleTextResource))
+    #expect(resourceSink.operationCallCount == 0)
+    #expect(resourceSink.discardCount == 0)
+
+    var beginWorkspace = PreflightWorkspace<RenderFixtureIdentity>()
+    var beginSink = StreamingSink(refuseAtOperationCall: 1)
+    let begin = RenderProducer.produce(
+        semantic: semantic(),
+        layout: DirectRenderFixtures.validLayout,
+        textMetrics: PreflightMetrics(),
+        surfaceBounds: DirectRenderFixtures.bounds,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+        workspace: &beginWorkspace,
+        sink: &beginSink
+    )
+    #expect(begin == .failure(.sinkRefused))
+    #expect(beginSink.operationCallCount == 1)
+    #expect(beginSink.discardCount == 0)
+
+    var invariantWorkspace = PreflightWorkspace<RenderFixtureIdentity>()
+    var invariantSink = StreamingSink()
+    let invariant = RenderProducer.produce(
+        semantic: semantic(),
+        layout: DirectRenderFixtures.validLayout,
+        textMetrics: PreflightMetrics(),
+        surfaceBounds: DirectRenderFixtures.bounds,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+        workspace: &invariantWorkspace,
+        sink: &invariantSink
+    )
+    #expect(invariant == .failure(.invariantViolation))
+    #expect(invariantSink.discardCount == 1)
+}
+
+@Test
+func everyPostBeginSinkAndForegroundRefusalDiscardsOnceAndResets() {
+    for refusedCall in UInt16(2) ... UInt16(7) {
+        var workspace = PreflightWorkspace<RenderFixtureIdentity>()
+        var sink = StreamingSink(refuseAtOperationCall: refusedCall)
+        let result = RenderProducer.produce(
+            semantic: DirectRenderFixtures.validSemantic,
+            layout: DirectRenderFixtures.validLayout,
+            textMetrics: PreflightMetrics(),
+            surfaceBounds: DirectRenderFixtures.bounds,
+            damageMode: .rootIntersection,
+            rootForeground: .white,
+            limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+            workspace: &workspace,
+            sink: &sink
+        )
+        #expect(result == .failure(.invariantViolation))
+        #expect(sink.discardCount == 1)
+        #expect(workspace.resetCount == 1)
+        #expect(workspace.currentForeground == nil)
+    }
+
+    for refusePushAt in [UInt16(1), UInt16(2)] {
+        var workspace = PreflightWorkspace<RenderFixtureIdentity>(
+            refuseForegroundPushAt: refusePushAt
+        )
+        var sink = StreamingSink()
+        let result = RenderProducer.produce(
+            semantic: DirectRenderFixtures.validSemantic,
+            layout: DirectRenderFixtures.validLayout,
+            textMetrics: PreflightMetrics(),
+            surfaceBounds: DirectRenderFixtures.bounds,
+            damageMode: .rootIntersection,
+            rootForeground: .white,
+            limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+            workspace: &workspace,
+            sink: &sink
+        )
+        #expect(result == .failure(.invariantViolation))
+        #expect(sink.discardCount == (refusePushAt == 1 ? 0 : 1))
+        #expect(sink.operationCallCount == (refusePushAt == 1 ? 0 : 1))
+        #expect(workspace.resetCount == 1)
+        #expect(workspace.currentForeground == nil)
+    }
+
+    for refusePopAt in [UInt16(1), UInt16(2)] {
+        var workspace = PreflightWorkspace<RenderFixtureIdentity>(
+            refuseForegroundPopAt: refusePopAt
+        )
+        var sink = StreamingSink()
+        let result = RenderProducer.produce(
+            semantic: DirectRenderFixtures.validSemantic,
+            layout: DirectRenderFixtures.validLayout,
+            textMetrics: PreflightMetrics(),
+            surfaceBounds: DirectRenderFixtures.bounds,
+            damageMode: .rootIntersection,
+            rootForeground: .white,
+            limits: PreflightWorkspace<RenderFixtureIdentity>.limits,
+            workspace: &workspace,
+            sink: &sink
+        )
+        #expect(result == .failure(.invariantViolation))
+        #expect(sink.discardCount == 1)
+        #expect(workspace.resetCount == 1)
+        #expect(workspace.currentForeground == nil)
+    }
+}
+
 private var expectedPreflightHeader: RenderPlanHeader {
     RenderPlanHeader(
         surfaceBounds: DirectRenderFixtures.bounds,
@@ -1381,19 +1568,27 @@ where Identity: Equatable & Sendable {
     private(set) var firstSemanticVisits: UInt16 = 0
     private(set) var firstLayoutVisits: UInt16 = 0
     private(set) var foregroundHighWater: UInt16 = 0
+    private(set) var foregroundPushCalls: UInt16 = 0
+    private(set) var foregroundPopCalls: UInt16 = 0
     private var semanticVisits: [Bool]
     private var layoutVisits: [Bool]
     private var foregroundStack: [Color] = []
     private let refuseAcquire: Bool
+    private let refuseForegroundPushAt: UInt16?
+    private let refuseForegroundPopAt: UInt16?
 
     init(
         capacity: RenderLimits = Self.limits,
         structuralCapacity: RenderWorkspaceCapacity = Self.structure,
-        refuseAcquire: Bool = false
+        refuseAcquire: Bool = false,
+        refuseForegroundPushAt: UInt16? = nil,
+        refuseForegroundPopAt: UInt16? = nil
     ) {
         self.capacity = capacity
         self.structuralCapacity = structuralCapacity
         self.refuseAcquire = refuseAcquire
+        self.refuseForegroundPushAt = refuseForegroundPushAt
+        self.refuseForegroundPopAt = refuseForegroundPopAt
         semanticVisits = [Bool](
             repeating: false,
             count: Int(structuralCapacity.maximumSemanticScopes)
@@ -1435,7 +1630,9 @@ where Identity: Equatable & Sendable {
     }
 
     mutating func pushForeground(_ color: Color) -> Bool {
+        foregroundPushCalls += 1
         guard isActive,
+            foregroundPushCalls != refuseForegroundPushAt,
             foregroundStack.count < Int(structuralCapacity.maximumTraversalDepth)
         else { return false }
         foregroundStack.append(color)
@@ -1444,7 +1641,11 @@ where Identity: Equatable & Sendable {
     }
 
     mutating func popForeground() -> Bool {
-        guard isActive, !foregroundStack.isEmpty else { return false }
+        foregroundPopCalls += 1
+        guard isActive,
+            foregroundPopCalls != refuseForegroundPopAt,
+            !foregroundStack.isEmpty
+        else { return false }
         foregroundStack.removeLast()
         return true
     }

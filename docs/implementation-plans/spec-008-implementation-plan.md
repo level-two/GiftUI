@@ -448,7 +448,7 @@ rule and every failure boundary without rasterization or frame state.
       omission, `.rootIntersection` damage, and exact
       `.initializeCompleteSurface` damage. Keep root bounds unclamped for
       damage calculation and retain no first-frame or other frame history.
-- [ ] `T5.5` — Exercise exact failure precedence—reentrancy, invalid input,
+- [x] `T5.5` — Exercise exact failure precedence—reentrancy, invalid input,
       arithmetic, capacity, incompatible resource, begin refusal, invariant—
       across every simultaneously constructible pair. Audit the defensive
       checked-intersection arithmetic branches and direct error mapping without
@@ -1031,6 +1031,15 @@ before-inner backgrounds, sibling restoration, exact high-water, and reset;
 see the
 [foreground-semantics evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-5/foreground-semantics.md).
 `T5.5` is the next dependency-complete task.
+
+`T5.5` is complete. A layered fault matrix proves every simultaneously
+constructible precedence pair; all pre-begin failures avoid begin/discard,
+begin refusal stays idle, every post-begin sink or foreground-stack refusal
+discards and resets once, and recording discard preserves prior current output.
+The audit covers all defensive checked-intersection branches and the direct
+arithmetic fact mapping without invalid rectangle construction; see the
+[failure-precedence evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-5/failure-precedence.md).
+Milestone 5 is complete and `T6.1` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
