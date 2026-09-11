@@ -512,7 +512,7 @@ limits without pixels, the package graph is mechanically enforced, and later
 execution/runtime/backend/drawing contracts can consume or extend the seam
 without acquiring SPEC-008 authority.
 
-- [ ] `T7.1` — Complete package-graph, symbol-owner, and source audits proving
+- [x] `T7.1` — Complete package-graph, symbol-owner, and source audits proving
       Render Core depends only on `GiftUI` and `GiftUITextResources`; Render
       Lowering alone joins semantic and layout; neither imports a runtime,
       execution, failure core, capability, backend, raster provider, concrete
@@ -1087,6 +1087,14 @@ high-water compare field for field, and a source audit proves all three paths
 join one generic `GiftUIRenderLowering.RenderProducer.produce` call; see the
 [profile equivalence evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-6/profile-equivalence.md).
 Milestone 6 is complete and `T7.1` is the next dependency-complete task.
+
+`T7.1` is complete. The governed graph and source-import audit enforce Render
+Core's exact two dependencies, Render Lowering's exact five dependencies and
+sole semantic/layout join, prohibited-owner exclusion, backend consumer
+isolation, unique symbol ownership, and the absence of internal rendering SPI
+re-export from `GiftUI`; see the
+[package boundary evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-7/package-boundaries.md).
+`T7.2` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

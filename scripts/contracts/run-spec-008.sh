@@ -86,6 +86,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-008-render-work.rb" \
             "$SCRIPT_DIR/check-spec-008-render-resource-ir.rb" \
             "$SCRIPT_DIR/check-spec-008-profile-equivalence.rb" \
+            "$SCRIPT_DIR/check-spec-008-package-boundaries.rb" \
             "$SCRIPT_DIR/check-spec-008-value-layouts.rb" \
             "$SCRIPT_DIR/check-spec-008-value-profiles.sh" \
             "$SCRIPT_DIR/check-spec-008-declaration-profiles.sh" \
@@ -305,6 +306,8 @@ record_command "$SCRIPT_DIR/check-spec-008-render-work.rb"
 "$SCRIPT_DIR/check-spec-008-render-work.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-profile-equivalence.rb"
 "$SCRIPT_DIR/check-spec-008-profile-equivalence.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-008-package-boundaries.rb"
+"$SCRIPT_DIR/check-spec-008-package-boundaries.rb" >>"$log_path" 2>&1
 case "$profile" in
     macos-dynamic | macos-static) record_macos_identity ;;
     raspberry-pi-armv6) record_raspberry_pi_identity ;;
