@@ -249,7 +249,7 @@ and declaration initialization performs no layout.
       Add runtime declaration-preservation probes for every invalid scalar,
       relation, and reserved edge bit, plus source/API scans that reject
       layout execution or forbidden imports in `GiftUI`.
-- [ ] `T1.5` — Extend the SPEC-006 typed primitive/modifier transcript corpus
+- [x] `T1.5` — Extend the SPEC-006 typed primitive/modifier transcript corpus
       with every layout payload. Prove exact payload values, outer/inner
       modifier scope identity and source order, primitive child order, and no
       new client-visible traversal witness. This integration waits only for
@@ -695,6 +695,12 @@ declaration audit rejects imports, layout execution, and backend/capability/
 runtime ownership in the portable layout files and proves exactly three
 primitive-with-content witnesses plus the one `Spacer` leaf witness. Focused
 runtime tests from `T1.1` through `T1.3` cover all preserved invalid values.
+
+`T1.5` is complete: the canonical SPEC-006 corpus now records every SPEC-007
+stack, overlay, spacer, padding, inset, fixed-frame, and flexible-frame
+payload. It proves exact invalid-value preservation, primitive-before-child
+traversal, nested source child order, exact semantic identities, and inner-to-
+outer modifier indices without adding a client traversal witness.
 
 `T1.3` is complete: all padding and frame overloads lower through the existing
 typed modifier operation. Runtime transcript tests prove exact source-call

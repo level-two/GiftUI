@@ -424,6 +424,98 @@ final class SemanticDeclarationCorpusTests: XCTestCase {
         XCTAssertEqual(payloadProbe.styles, [.foreground(.red), .background(.blue)])
     }
 
+    func testSpec007LayoutPayloadsPreservePrimitiveChildrenAndModifierOrder() {
+        let insets = EdgeInsets(top: 1, leading: 2, bottom: 3, trailing: 4)!
+        let alignment = Alignment(horizontal: .center, vertical: .bottom)
+        let primitives = VStack(alignment: .leading, spacing: -1) {
+            HStack(alignment: .bottom, spacing: 2) {
+                ZStack(alignment: alignment) {
+                    Spacer(minLength: -3)
+                }
+            }
+        }
+        let modified = CorpusLayoutModifier(
+            content: CorpusLayoutModifier(
+                content: CorpusLayoutModifier(
+                    content: CorpusLayoutModifier(
+                        content: primitives,
+                        payload: _GiftUIPaddingPayload(
+                            edges: EdgeSet(rawValue: 1 << 7),
+                            length: -4
+                        )
+                    ),
+                    payload: _GiftUIPaddingInsetsPayload(insets: insets)
+                ),
+                payload: _GiftUIFixedFramePayload(
+                    width: -5,
+                    height: nil,
+                    alignment: .leading
+                )
+            ),
+            payload: _GiftUIFlexibleFramePayload(
+                minWidth: 9,
+                maxWidth: .points(8),
+                minHeight: -6,
+                maxHeight: .infinity,
+                alignment: alignment
+            )
+        )
+        var workspace = CorpusWorkspace()
+        let payloadProbe = CorpusPayloadProbe()
+        var sink = CorpusInspectingSink(probe: payloadProbe)
+
+        let result = expandSemanticTree(
+            modified,
+            limits: corpusLimits,
+            workspace: &workspace,
+            sink: &sink
+        )
+
+        XCTAssertEqual(result, .success(summary(nodes: 4, modifiers: 4, depth: 12)))
+        XCTAssertEqual(
+            payloadProbe.layoutPrimitives,
+            [
+                .vStack(alignment: .leading, spacing: -1),
+                .hStack(alignment: .bottom, spacing: 2),
+                .zStack(alignment: alignment),
+                .spacer(minLength: -3),
+            ]
+        )
+        XCTAssertEqual(
+            payloadProbe.layoutModifiers,
+            [
+                .padding(edges: EdgeSet(rawValue: 1 << 7), length: -4),
+                .paddingInsets(insets),
+                .fixedFrame(width: -5, height: nil, alignment: .leading),
+                .flexibleFrame(
+                    minWidth: 9,
+                    maxWidth: .points(8),
+                    minHeight: -6,
+                    maxHeight: .infinity,
+                    alignment: alignment
+                ),
+            ]
+        )
+        XCTAssertEqual(
+            sink.recording.storage.committedEvents.compactMap { event -> UInt16? in
+                if case .applyModifier(_, _, let chainIndex) = event {
+                    return chainIndex
+                }
+                return nil
+            },
+            [0, 1, 2, 3]
+        )
+        XCTAssertEqual(
+            sink.recording.storage.committedEvents.compactMap { event -> CorpusRole? in
+                if case .stageSemanticOccurrence(_, let role) = event {
+                    return CorpusRole(rawValue: role.rawValue)
+                }
+                return nil
+            },
+            [.vStack, .hStack, .zStack, .spacer]
+        )
+    }
+
     func testActionValueIsConsumedSynchronouslyWithoutRetainingDeclarationLifetime() {
         let lifetimeState = CorpusLifetimeState()
         let payloadProbe = CorpusPayloadProbe()
@@ -719,6 +811,11 @@ private enum CorpusRole: UInt16, Sendable {
     case text = 32
     case foreground = 33
     case background = 34
+    case layoutModifier = 35
+    case vStack = 36
+    case hStack = 37
+    case zStack = 38
+    case spacer = 39
     case actionPrimitive = 40
     case a = 100
     case b = 101
@@ -771,6 +868,22 @@ extension OptionalContent: CorpusRoleProviding {
 
 extension Text: CorpusRoleProviding {
     fileprivate static var corpusRole: CorpusRole { .text }
+}
+
+extension VStack: CorpusRoleProviding {
+    fileprivate static var corpusRole: CorpusRole { .vStack }
+}
+
+extension HStack: CorpusRoleProviding {
+    fileprivate static var corpusRole: CorpusRole { .hStack }
+}
+
+extension ZStack: CorpusRoleProviding {
+    fileprivate static var corpusRole: CorpusRole { .zStack }
+}
+
+extension Spacer: CorpusRoleProviding {
+    fileprivate static var corpusRole: CorpusRole { .spacer }
 }
 
 private struct CorpusA: View, _GiftUISemanticPrimitivePayload, CorpusRoleProviding {
@@ -926,6 +1039,21 @@ private struct CorpusBackground<Content: View>: View, CorpusRoleProviding {
     }
 
     var body: Never { fatalError("modifier body is unreachable") }
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    ) {
+        visitor.visitModifier(content: content, payload: payload)
+    }
+}
+
+private struct CorpusLayoutModifier<
+    Content: View,
+    Payload: _GiftUISemanticModifierPayload
+>: View, CorpusRoleProviding {
+    static var corpusRole: CorpusRole { .layoutModifier }
+    let content: Content
+    let payload: Payload
+    var body: Never { fatalError("layout modifier body is unreachable") }
     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
         _ visitor: inout Visitor
     ) {
@@ -1170,11 +1298,33 @@ private final class CorpusPayloadProbe {
     var values: [Int] = []
     var actions: [CorpusAction] = []
     var styles: [CorpusStyle] = []
+    var layoutPrimitives: [CorpusLayoutPrimitive] = []
+    var layoutModifiers: [CorpusLayoutModifierValue] = []
 }
 
 private enum CorpusStyle: Equatable {
     case foreground(Color)
     case background(Color)
+}
+
+private enum CorpusLayoutPrimitive: Equatable {
+    case vStack(alignment: HorizontalAlignment, spacing: GeometryScalar)
+    case hStack(alignment: VerticalAlignment, spacing: GeometryScalar)
+    case zStack(alignment: Alignment)
+    case spacer(minLength: GeometryScalar)
+}
+
+private enum CorpusLayoutModifierValue: Equatable {
+    case padding(edges: EdgeSet, length: GeometryScalar)
+    case paddingInsets(EdgeInsets)
+    case fixedFrame(width: GeometryScalar?, height: GeometryScalar?, alignment: Alignment)
+    case flexibleFrame(
+        minWidth: GeometryScalar?,
+        maxWidth: FrameLimit?,
+        minHeight: GeometryScalar?,
+        maxHeight: FrameLimit?,
+        alignment: Alignment
+    )
 }
 
 private struct CorpusInspectingSink: SemanticExpansionSink {
@@ -1198,7 +1348,21 @@ private struct CorpusInspectingSink: SemanticExpansionSink {
         identity: borrowing CorpusIdentity,
         payload: borrowing Payload
     ) -> Bool {
-        recording.stageSemanticOccurrence(identity: identity, payload: payload)
+        let payloadCopy = copy payload
+        if let stack = payloadCopy as? _GiftUIVStackPayload {
+            probe.layoutPrimitives.append(
+                .vStack(alignment: stack.alignment, spacing: stack.spacing)
+            )
+        } else if let stack = payloadCopy as? _GiftUIHStackPayload {
+            probe.layoutPrimitives.append(
+                .hStack(alignment: stack.alignment, spacing: stack.spacing)
+            )
+        } else if let stack = payloadCopy as? _GiftUIZStackPayload {
+            probe.layoutPrimitives.append(.zStack(alignment: stack.alignment))
+        } else if let spacer = payloadCopy as? _GiftUISpacerPayload {
+            probe.layoutPrimitives.append(.spacer(minLength: spacer.minLength))
+        }
+        return recording.stageSemanticOccurrence(identity: identity, payload: payload)
     }
     mutating func stageModifierApplication<Payload: _GiftUISemanticModifierPayload>(
         identity: borrowing CorpusIdentity,
@@ -1212,6 +1376,30 @@ private struct CorpusInspectingSink: SemanticExpansionSink {
             probe.styles.append(.foreground(foreground.color))
         } else if let background = payloadCopy as? _GiftUIBackgroundPayload {
             probe.styles.append(.background(background.color))
+        } else if let padding = payloadCopy as? _GiftUIPaddingPayload {
+            probe.layoutModifiers.append(
+                .padding(edges: padding.edges, length: padding.length)
+            )
+        } else if let padding = payloadCopy as? _GiftUIPaddingInsetsPayload {
+            probe.layoutModifiers.append(.paddingInsets(padding.insets))
+        } else if let frame = payloadCopy as? _GiftUIFixedFramePayload {
+            probe.layoutModifiers.append(
+                .fixedFrame(
+                    width: frame.width,
+                    height: frame.height,
+                    alignment: frame.alignment
+                )
+            )
+        } else if let frame = payloadCopy as? _GiftUIFlexibleFramePayload {
+            probe.layoutModifiers.append(
+                .flexibleFrame(
+                    minWidth: frame.minWidth,
+                    maxWidth: frame.maxWidth,
+                    minHeight: frame.minHeight,
+                    maxHeight: frame.maxHeight,
+                    alignment: frame.alignment
+                )
+            )
         } else {
             return false
         }
