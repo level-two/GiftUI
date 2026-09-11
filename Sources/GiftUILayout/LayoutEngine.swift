@@ -110,26 +110,57 @@ package struct LayoutEngine {
         guard let modifier = semantic.modifier(of: identity, at: index),
             let scopeIdentity = semantic.modifierScope(of: identity, at: index)
         else { return fail(.invariantViolation) }
-        guard modifier == .passthrough else { return fail(.invariantViolation) }
+        let childProposal: ProposedSize
+        switch modifier {
+        case .passthrough:
+            childProposal = proposal
+        case .padding, .paddingInsets:
+            guard let insets = paddingInsets(for: modifier),
+                let insetProposal = LayoutGeometry.insetProposal(
+                    proposal,
+                    horizontal: insets.horizontal,
+                    vertical: insets.vertical
+                )
+            else { return fail(.arithmeticOverflow) }
+            childProposal = insetProposal
+        case .fixedFrame, .flexibleFrame:
+            return fail(.invariantViolation)
+        }
         let childMeasurement: LayoutMeasurement?
         if index > 0 {
             childMeasurement = measureModifier(
                 identity,
                 index: index - 1,
                 semantic: semantic,
-                proposal: proposal,
+                proposal: childProposal,
                 workspace: &workspace
             )
         } else {
             childMeasurement = measureContent(
                 identity,
                 semantic: semantic,
-                proposal: proposal,
+                proposal: childProposal,
                 workspace: &workspace
             )
         }
-        guard let measurement = childMeasurement,
-            workspace.storeMeasurement(measurement, for: scopeIdentity)
+        guard let childMeasurement else { return nil }
+        let measurement: LayoutMeasurement
+        switch modifier {
+        case .passthrough:
+            measurement = childMeasurement
+        case .padding, .paddingInsets:
+            guard let insets = paddingInsets(for: modifier),
+                let ideal = LayoutGeometry.adding(
+                    width: insets.horizontal,
+                    height: insets.vertical,
+                    to: childMeasurement.idealSize
+                )
+            else { return fail(.arithmeticOverflow) }
+            measurement = LayoutGeometry.cap(ideal: ideal, to: proposal)
+        case .fixedFrame, .flexibleFrame:
+            return fail(.invariantViolation)
+        }
+        guard workspace.storeMeasurement(measurement, for: scopeIdentity)
         else { return fail(.invariantViolation) }
         return measurement
     }
@@ -183,13 +214,56 @@ package struct LayoutEngine {
                 ideal: LayoutGeometry.zeroSize,
                 to: proposal
             )
-        case .zStack, .text:
+        case .zStack:
+            measurement = measureZStack(
+                identity,
+                semantic: semantic,
+                proposal: proposal,
+                workspace: &workspace
+            )
+        case .text:
             measurement = fail(.invariantViolation)
         }
         guard let measurement,
             workspace.storeMeasurement(measurement, for: identity)
         else { return fail(.invariantViolation) }
         return measurement
+    }
+
+    private mutating func measureZStack<Semantic, Workspace>(
+        _ identity: Semantic.Identity,
+        semantic: borrowing Semantic,
+        proposal: ProposedSize,
+        workspace: inout Workspace
+    ) -> LayoutMeasurement?
+    where
+        Semantic: SemanticLayoutView,
+        Workspace: LayoutWorkspace,
+        Semantic.Identity == Workspace.Identity
+    {
+        var maximumWidth: GeometryScalar = 0
+        var maximumHeight: GeometryScalar = 0
+        var result = StackMeasure()
+        guard
+            measureFlattenedChildren(
+                of: identity,
+                semantic: semantic,
+                proposal: proposal,
+                vertical: true,
+                recognizesFlexibleSpacers: false,
+                workspace: &workspace,
+                result: &result,
+                each: { measurement in
+                    maximumWidth = max(maximumWidth, measurement.idealSize.width)
+                    maximumHeight = max(maximumHeight, measurement.idealSize.height)
+                    return true
+                }
+            )
+        else { return nil }
+        return LayoutGeometry.cap(
+            ideal: Size(width: maximumWidth, height: maximumHeight)!,
+            to: proposal
+        )
     }
 
     private mutating func measureOnlyFlattenedChild<Semantic, Workspace>(
@@ -541,7 +615,6 @@ package struct LayoutEngine {
         Semantic.Identity == Workspace.Identity
     {
         guard let modifier = semantic.modifier(of: identity, at: index),
-            modifier == .passthrough,
             let scopeIdentity = semantic.modifierScope(of: identity, at: index),
             let measurement = workspace.measurement(for: scopeIdentity),
             let bounds = Rect(origin: origin, size: measurement.resolvedSize),
@@ -553,12 +626,28 @@ package struct LayoutEngine {
             fail(.invariantViolation)
             return false
         }
+        let childOrigin: Point
+        switch modifier {
+        case .passthrough:
+            childOrigin = origin
+        case .padding, .paddingInsets:
+            guard let insets = paddingInsets(for: modifier),
+                let translated = LayoutGeometry.translated(
+                    origin,
+                    x: insets.leading,
+                    y: insets.top
+                )
+            else { return fail(.arithmeticOverflow) }
+            childOrigin = translated
+        case .fixedFrame, .flexibleFrame:
+            return fail(.invariantViolation)
+        }
         if index > 0 {
             return placeModifier(
                 identity,
                 index: index - 1,
                 semantic: semantic,
-                origin: origin,
+                origin: childOrigin,
                 inheritedClip: inheritedClip,
                 workspace: &workspace
             )
@@ -566,7 +655,7 @@ package struct LayoutEngine {
         return placeContent(
             identity,
             semantic: semantic,
-            origin: origin,
+            origin: childOrigin,
             inheritedClip: inheritedClip,
             workspace: &workspace
         )
@@ -638,10 +727,163 @@ package struct LayoutEngine {
             )
         case .spacer:
             return true
-        case .zStack, .text:
+        case .zStack(let alignment):
+            return placeZStack(
+                identity,
+                semantic: semantic,
+                bounds: bounds,
+                inheritedClip: inheritedClip,
+                alignment: alignment,
+                workspace: &workspace
+            )
+        case .text:
             fail(.invariantViolation)
             return false
         }
+    }
+
+    private mutating func placeZStack<Semantic, Workspace>(
+        _ identity: Semantic.Identity,
+        semantic: borrowing Semantic,
+        bounds: Rect,
+        inheritedClip: Rect,
+        alignment: Alignment,
+        workspace: inout Workspace
+    ) -> Bool
+    where
+        Semantic: SemanticLayoutView,
+        Workspace: LayoutWorkspace,
+        Semantic.Identity == Workspace.Identity
+    {
+        guard let childCount = semantic.childCount(of: identity) else {
+            return fail(.invariantViolation)
+        }
+        var index: UInt16 = 0
+        while index < childCount {
+            guard let child = semantic.child(of: identity, at: index),
+                placeZFlattenedOccurrence(
+                    child,
+                    semantic: semantic,
+                    bounds: bounds,
+                    inheritedClip: inheritedClip,
+                    alignment: alignment,
+                    workspace: &workspace
+                )
+            else { return false }
+            index += 1
+        }
+        return true
+    }
+
+    private mutating func placeZFlattenedOccurrence<Semantic, Workspace>(
+        _ identity: Semantic.Identity,
+        semantic: borrowing Semantic,
+        bounds: Rect,
+        inheritedClip: Rect,
+        alignment: Alignment,
+        workspace: inout Workspace
+    ) -> Bool
+    where
+        Semantic: SemanticLayoutView,
+        Workspace: LayoutWorkspace,
+        Semantic.Identity == Workspace.Identity
+    {
+        guard let modifierCount = semantic.modifierCount(of: identity) else {
+            return fail(.invariantViolation)
+        }
+        if semantic.primitive(at: identity) != nil || modifierCount > 0 {
+            guard
+                let measurement = measurementForOccurrence(
+                    identity,
+                    semantic: semantic,
+                    workspace: workspace
+                ),
+                let xOffset = LayoutGeometry.offset(
+                    container: bounds.size.width,
+                    child: measurement.resolvedSize.width,
+                    alignment: alignment.horizontal
+                ),
+                let yOffset = LayoutGeometry.offset(
+                    container: bounds.size.height,
+                    child: measurement.resolvedSize.height,
+                    alignment: alignment.vertical
+                ),
+                let x = GeometryArithmetic.add(bounds.minX, xOffset),
+                let y = GeometryArithmetic.add(bounds.minY, yOffset)
+            else { return fail(.arithmeticOverflow) }
+            return placeOccurrence(
+                identity,
+                semantic: semantic,
+                origin: Point(x: x, y: y),
+                inheritedClip: inheritedClip,
+                workspace: &workspace
+            )
+        }
+        return placeZStack(
+            identity,
+            semantic: semantic,
+            bounds: bounds,
+            inheritedClip: inheritedClip,
+            alignment: alignment,
+            workspace: &workspace
+        )
+    }
+
+    private mutating func paddingInsets(
+        for modifier: SemanticLayoutModifier
+    ) -> (
+        top: GeometryScalar,
+        leading: GeometryScalar,
+        horizontal: GeometryScalar,
+        vertical: GeometryScalar
+    )? {
+        let top: GeometryScalar
+        let leading: GeometryScalar
+        let bottom: GeometryScalar
+        let trailing: GeometryScalar
+        switch modifier {
+        case .padding(let edges, let length):
+            top = edges.contains(.top) ? length : 0
+            leading = edges.contains(.leading) ? length : 0
+            bottom = edges.contains(.bottom) ? length : 0
+            trailing = edges.contains(.trailing) ? length : 0
+        case .paddingInsets(let insets):
+            top = insets.top
+            leading = insets.leading
+            bottom = insets.bottom
+            trailing = insets.trailing
+        default:
+            return nil
+        }
+        guard let horizontal = GeometryArithmetic.add(leading, trailing),
+            let vertical = GeometryArithmetic.add(top, bottom)
+        else { return nil }
+        return (top, leading, horizontal, vertical)
+    }
+
+    private mutating func measurementForOccurrence<Semantic, Workspace>(
+        _ identity: Semantic.Identity,
+        semantic: borrowing Semantic,
+        workspace: borrowing Workspace
+    ) -> LayoutMeasurement?
+    where
+        Semantic: SemanticLayoutView,
+        Workspace: LayoutWorkspace,
+        Semantic.Identity == Workspace.Identity
+    {
+        guard let modifierCount = semantic.modifierCount(of: identity) else {
+            return fail(.invariantViolation)
+        }
+        if modifierCount > 0 {
+            guard
+                let scopeIdentity = semantic.modifierScope(
+                    of: identity,
+                    at: modifierCount - 1
+                )
+            else { return fail(.invariantViolation) }
+            return workspace.measurement(for: scopeIdentity)
+        }
+        return workspace.measurement(for: identity)
     }
 
     private mutating func placeOnlyFlattenedChild<Semantic, Workspace>(
@@ -798,7 +1040,13 @@ package struct LayoutEngine {
                 return false
             }
             if semantic.primitive(at: child) != nil || modifierCount > 0 {
-                guard let measurement = workspace.measurement(for: child) else {
+                guard
+                    let measurement = measurementForOccurrence(
+                        child,
+                        semantic: semantic,
+                        workspace: workspace
+                    )
+                else {
                     return fail(.invariantViolation)
                 }
                 let childSize = measurement.resolvedSize

@@ -124,6 +124,78 @@ func standaloneAndWrappedSpacersAreOrdinaryZeroSizeScopes() {
     #expect(wrapped.scopes.map { $0.identity } == [1, 102, 2])
 }
 
+@Test
+func paddingInsetsProposalAndTranslatesChildWithoutAddingClip() {
+    let semantic = StackSemanticView(
+        nodes: [
+            1: .init(
+                .spacer(minLength: 0),
+                modifiers: [.padding(edges: .all, length: 2)]
+            )
+        ]
+    )
+    let result = runStackLayout(
+        semantic,
+        proposal: ProposedSize(width: 3, height: 10)!
+    )
+
+    #expect(result.summary?.rootBounds.size == Size(width: 3, height: 4)!)
+    #expect(result.scopes.map { $0.identity } == [101, 1])
+    #expect(result.scopes[1].bounds.origin == Point(x: 2, y: 2))
+    #expect(result.scopes.allSatisfy { $0.clip == result.summary?.rootBounds })
+}
+
+@Test
+func nestedPaddingKeepsSourceCallOrder() {
+    let semantic = StackSemanticView(
+        nodes: [
+            1: .init(
+                .spacer(minLength: 0),
+                modifiers: [
+                    .padding(edges: .all, length: 1),
+                    .padding(edges: .all, length: 2),
+                ]
+            )
+        ]
+    )
+    let result = runStackLayout(semantic, proposal: ProposedSize()!)
+
+    #expect(result.summary?.rootBounds.size == Size(width: 6, height: 6)!)
+    #expect(result.scopes.map { $0.identity } == [102, 101, 1])
+    #expect(result.scopes[1].bounds.origin == Point(x: 2, y: 2))
+    #expect(result.scopes[2].bounds.origin == Point(x: 3, y: 3))
+}
+
+@Test
+func zStackUsesSharedProposalMaximumIdealAndIndependentAlignment() {
+    let shortWide = EdgeInsets(top: 0, leading: 0, bottom: 2, trailing: 4)!
+    let semantic = StackSemanticView(
+        nodes: [
+            1: .init(
+                .zStack(
+                    alignment: Alignment(horizontal: .center, vertical: .bottom)
+                ),
+                children: [2, 3]
+            ),
+            2: .init(
+                .spacer(minLength: 0),
+                modifiers: [.paddingInsets(shortWide)]
+            ),
+            3: .init(
+                .spacer(minLength: 0),
+                modifiers: [.padding(edges: .all, length: 3)]
+            ),
+        ]
+    )
+    let result = runStackLayout(semantic, proposal: ProposedSize()!)
+
+    #expect(result.summary?.rootBounds.size == Size(width: 6, height: 6)!)
+    #expect(result.scopes.map { $0.identity } == [1, 102, 2, 103, 3])
+    #expect(result.scopes[1].bounds.origin == Point(x: 1, y: 4))
+    #expect(result.scopes[3].bounds.origin == Point(x: 0, y: 0))
+    #expect(result.scopes.allSatisfy { $0.clip == result.summary?.rootBounds })
+}
+
 private struct StackNode {
     let primitive: SemanticLayoutPrimitive?
     let children: [UInt16]

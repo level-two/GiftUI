@@ -372,7 +372,7 @@ geometry.
       source-order one-unit remainder distribution, cross-axis filling, and
       wrapped/outside-stack ordinary zero-size behavior. Never compress a
       child or assign negative space.
-- [ ] `T4.4` — Implement `ZStack` shared proposals, maximum ideal size,
+- [x] `T4.4` — Implement `ZStack` shared proposals, maximum ideal size,
       independent-axis alignment, source-order placement, and no added clip.
       Implement all padding forms with checked proposal subtraction floored
       at zero, checked ideal expansion, unchanged inherited clip, and
