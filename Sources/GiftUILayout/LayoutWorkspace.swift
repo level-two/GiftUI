@@ -92,6 +92,10 @@ package protocol LayoutWorkspace {
     var scopeCount: UInt16 { get }
     func scopeIdentity(at index: UInt16) -> Identity?
     func measurement(for identity: borrowing Identity) -> LayoutMeasurement?
+    mutating func storeMeasurement(
+        _ measurement: LayoutMeasurement,
+        for identity: borrowing Identity
+    ) -> Bool
     mutating func storePlacement(
         _ placement: LayoutPlacement,
         for identity: borrowing Identity

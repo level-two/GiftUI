@@ -43,11 +43,44 @@ where
         workspace.resetLayout()
         return .failure(error)
     }
-    workspace.resetLayout()
-
-    // The T3.4 publication coordinator consumes only a complete placed
-    // workspace. T4 and T5 install that geometry at this seam; until then, a
-    // validated attempt fails closed without beginning or mutating the sink.
-    _ = proposal
-    return .failure(.invariantViolation)
+    var engine = LayoutEngine(
+        limits: limits,
+        validatedCounters: validation.countersSnapshot
+    )
+    guard
+        let measurement = engine.measure(
+            semantic: semantic,
+            metrics: metrics,
+            proposal: proposal,
+            workspace: &workspace
+        )
+    else {
+        workspace.resetLayout()
+        return .failure(engine.failure ?? .invariantViolation)
+    }
+    let rootBounds = Rect(
+        origin: Point(x: 0, y: 0),
+        size: measurement.resolvedSize
+    )!
+    guard
+        engine.place(
+            semantic: semantic,
+            metrics: metrics,
+            rootBounds: rootBounds,
+            workspace: &workspace
+        )
+    else {
+        workspace.resetLayout()
+        return .failure(engine.failure ?? .invariantViolation)
+    }
+    let counters = engine.finalCounters
+    let summary = LayoutSummary(
+        scopeCount: counters.scopeCount,
+        textScalarCount: counters.textScalarCount,
+        textLineCount: counters.textLineCount,
+        positionedGlyphCount: counters.positionedGlyphCount,
+        maximumObservedDepth: counters.maximumObservedDepth,
+        rootBounds: rootBounds
+    )
+    return publishLayout(summary: summary, workspace: &workspace, sink: &sink)
 }

@@ -11,6 +11,8 @@ package struct LayoutSemanticValidation {
         counters = LayoutCounters(limits: limits)
     }
 
+    package var countersSnapshot: LayoutCounters { counters }
+
     package mutating func validate<Semantic, Metrics, Workspace>(
         semantic: borrowing Semantic,
         metrics: borrowing Metrics,

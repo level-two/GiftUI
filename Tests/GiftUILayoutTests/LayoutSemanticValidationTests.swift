@@ -470,6 +470,18 @@ private struct ValidationWorkspace: LayoutWorkspace {
         return scopes.first { $0.0 == identity }?.1
     }
 
+    mutating func storeMeasurement(
+        _ measurement: LayoutMeasurement,
+        for identity: borrowing UInt16
+    ) -> Bool {
+        let identityCopy = copy identity
+        guard let index = scopes.firstIndex(where: { $0.0 == identityCopy }) else {
+            return false
+        }
+        scopes[index].1 = measurement
+        return true
+    }
+
     mutating func storePlacement(
         _ placement: LayoutPlacement,
         for identity: borrowing UInt16

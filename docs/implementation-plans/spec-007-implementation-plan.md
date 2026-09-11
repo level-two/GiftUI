@@ -363,7 +363,7 @@ geometry.
       offsets, cursor/gap arithmetic, constraint resolution, and rectangular
       intersection including empty intersections at the greater minimum
       edges. Reject every invalid declaration before producing output.
-- [ ] `T4.2` — Implement `.proxy`, `VStack`, and `HStack` measurement and
+- [x] `T4.2` — Implement `.proxy`, `VStack`, and `HStack` measurement and
       placement for zero through five children, absent/present axes, checked
       spacing totals, explicit alignment, oversized children, zero sizes, and
       main-axis proposal underflow. Measure and place each scope once.

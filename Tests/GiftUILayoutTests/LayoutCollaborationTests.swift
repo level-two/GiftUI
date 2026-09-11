@@ -101,7 +101,22 @@ func layoutEntryRetainsNeitherTheSemanticViewNorItsSourceLifetime() {
             sink: &sink
         )
 
-        #expect(result == .failure(.invariantViolation))
+        #expect(
+            result
+                == .success(
+                    LayoutSummary(
+                        scopeCount: 1,
+                        textScalarCount: 0,
+                        textLineCount: 0,
+                        positionedGlyphCount: 0,
+                        maximumObservedDepth: 1,
+                        rootBounds: Rect(
+                            origin: Point(x: 0, y: 0),
+                            size: Size(width: 0, height: 0)!
+                        )!
+                    )
+                )
+        )
         #expect(!workspace.isLayoutActive)
         #expect(!sink.isLayoutActive)
     }
@@ -432,7 +447,7 @@ private struct ProbeSemanticView: SemanticLayoutView {
     }
 }
 
-private struct ProbeMetricsView: CanonicalTextMetricsView {
+struct ProbeMetricsView: CanonicalTextMetricsView {
     private let accesses = ProbeAccesses()
 
     var accessCount: Int { accesses.count }
@@ -485,7 +500,7 @@ private struct ProbeMetricsView: CanonicalTextMetricsView {
     }
 }
 
-private struct ProbeWorkspace: LayoutWorkspace {
+struct ProbeWorkspace: LayoutWorkspace {
     let maximumScopes: UInt16
     let maximumDepth: UInt16
     let maximumTextScalars: UInt16
@@ -543,6 +558,18 @@ private struct ProbeWorkspace: LayoutWorkspace {
     func measurement(for identity: borrowing UInt16) -> LayoutMeasurement? {
         let identityCopy = copy identity
         return scopes.first(where: { $0.0 == identityCopy })?.1
+    }
+
+    mutating func storeMeasurement(
+        _ measurement: LayoutMeasurement,
+        for identity: borrowing UInt16
+    ) -> Bool {
+        let identityCopy = copy identity
+        guard let index = scopes.firstIndex(where: { $0.0 == identityCopy }) else {
+            return false
+        }
+        scopes[index].1 = measurement
+        return true
     }
 
     mutating func storePlacement(
