@@ -62,6 +62,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-008-render-core-values.rb" \
             "$SCRIPT_DIR/check-spec-008-render-production-values.rb" \
             "$SCRIPT_DIR/check-spec-008-render-preflight.rb" \
+            "$SCRIPT_DIR/check-spec-008-render-streaming.rb" \
             "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb" \
             "$SCRIPT_DIR/check-spec-008-recording-sink.rb" \
             "$SCRIPT_DIR/check-spec-008-recording-verification.rb" \
@@ -249,6 +250,8 @@ record_command "$SCRIPT_DIR/check-spec-008-render-production-values.rb"
 "$SCRIPT_DIR/check-spec-008-render-production-values.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-render-preflight.rb"
 "$SCRIPT_DIR/check-spec-008-render-preflight.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-008-render-streaming.rb"
+"$SCRIPT_DIR/check-spec-008-render-streaming.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb"
 "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-recording-sink.rb"

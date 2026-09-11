@@ -392,7 +392,7 @@ deterministic failure precedence, and atomic sink behavior.
       resource compatibility, render and structural workspace capacity,
       snapshot stability, exact first-visit totals, and the one sink-capacity
       read without emitting or retaining operations.
-- [ ] `T4.3` — Implement the second traversal as direct ordered streaming and
+- [x] `T4.3` — Implement the second traversal as direct ordered streaming and
       repeat every canonical lookup under the unchanged snapshot-version
       contract without clearing or calling either visit set and without
       retaining a per-field proof transcript. Call `begin`
@@ -941,7 +941,20 @@ operation/glyph/clip totals, repeated layout mappings, declared and observed
 capacity boundaries, invalid roots/ordinals/snapshots/resources, zero emission,
 and exactly one sink-capacity read after successful validation; see the
 [preflight evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-4/render-preflight.md).
-`T4.3` is the next dependency-complete task.
+This completed preflight boundary unblocked `T4.3`.
+
+`T4.3` is complete. The second canonical traversal now repeats ordinal,
+identity, scope, mapping, geometry, line, glyph, resource, count-boundary, and
+damage lookups without touching either workspace visit set or retaining a
+proof transcript. It streams the exact background and positioned-glyph values
+directly, checks snapshots immediately before `begin` and after the last
+operation, distinguishes begin refusal from every post-begin invariant, and
+finishes or discards exactly once. Focused tests prove the ordered typed event
+sequence, unchanged preflight visit counts, one total capacity read, begin
+refusal without discard, post-begin refusal with discard, and late snapshot
+change with discard; see the
+[streaming evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-4/render-streaming.md).
+`T4.4` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
