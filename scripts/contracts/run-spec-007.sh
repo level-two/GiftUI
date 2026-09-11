@@ -53,6 +53,7 @@ declared_inputs() {
             "$PROJECT_ROOT/scripts/contracts/driver-registry.tsv" \
             "$SCRIPT_DIR/check-spec-007-harness.rb" \
             "$SCRIPT_DIR/check-spec-007-boundaries.rb" \
+            "$SCRIPT_DIR/check-spec-007-declarations.sh" \
             "$SCRIPT_DIR/check-spec-007-migration.rb" \
             "$SCRIPT_DIR/check-spec-007-values.rb" \
             "$SCRIPT_DIR/report-input-identity.rb" \
@@ -217,6 +218,8 @@ record_command "$SCRIPT_DIR/check-spec-007-harness.rb"
 "$SCRIPT_DIR/check-spec-007-harness.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-007-boundaries.rb"
 "$SCRIPT_DIR/check-spec-007-boundaries.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-007-declarations.sh"
+"$SCRIPT_DIR/check-spec-007-declarations.sh" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-007-migration.rb"
 "$SCRIPT_DIR/check-spec-007-migration.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-007-values.rb"

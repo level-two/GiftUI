@@ -243,7 +243,7 @@ and declaration initialization performs no layout.
       invalid min/max relation, empty/reserved edge set, all-`nil` frame, and
       source-call order for layout-time validation rather than clamping,
       normalizing, trapping, merging, or commuting modifiers.
-- [ ] `T1.4` — Add public compile fixtures for all constants, defaults,
+- [x] `T1.4` — Add public compile fixtures for all constants, defaults,
       overloads, custom views, view-returning properties/functions, fixed
       builder arities, and mixed modifier chains using only `import GiftUI`.
       Add runtime declaration-preservation probes for every invalid scalar,
@@ -686,6 +686,15 @@ content and dispatch exactly once through `visitPrimitive(content:payload:)`;
 `Spacer` retains the leaf operation. Focused tests cover exact defaults,
 zero-through-five builder shapes, every alignment payload, preservation of
 negative spacing/minimum values, nested traversal, and zero body evaluation.
+
+`T1.4` is complete: two external-client fixtures using only `import GiftUI`
+compile every alignment, edge, inset, finite/infinite frame limit, container
+default, modifier overload, custom view, view-returning property/function,
+zero-through-five builder shape, and mixed modifier chain. The registered
+declaration audit rejects imports, layout execution, and backend/capability/
+runtime ownership in the portable layout files and proves exactly three
+primitive-with-content witnesses plus the one `Spacer` leaf witness. Focused
+runtime tests from `T1.1` through `T1.3` cover all preserved invalid values.
 
 `T1.3` is complete: all padding and frame overloads lower through the existing
 typed modifier operation. Runtime transcript tests prove exact source-call
