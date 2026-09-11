@@ -87,6 +87,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-008-render-work.rb" \
             "$SCRIPT_DIR/check-spec-008-render-resource-ir.rb" \
             "$SCRIPT_DIR/check-spec-008-profile-equivalence.rb" \
+            "$SCRIPT_DIR/compare-spec-008-render-profiles.rb" \
             "$SCRIPT_DIR/check-spec-008-package-boundaries.rb" \
             "$SCRIPT_DIR/check-spec-008-signal-analyzer.rb" \
             "$SCRIPT_DIR/check-spec-008-consumer-seams.rb" \

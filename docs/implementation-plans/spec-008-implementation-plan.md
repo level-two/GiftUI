@@ -567,7 +567,7 @@ separated from connected-hardware claims and every plan task dispositioned.
       structural workspace capacity/bytes, maximum stack high-water,
       allocation count, timing method/samples, section deltas, link maps, and
       acceptance/evidence dispositions.
-- [ ] `T8.3` — For macOS dynamic/static and Raspberry Pi ARMv6, compare the
+- [x] `T8.3` — For macOS dynamic/static and Raspberry Pi ARMv6, compare the
       complete normalized success/failure corpus, owner mappings, values, and
       resource identity evidence. The Raspberry Pi result is cross-build and
       inspection only; it does not claim `armv6l` execution, framebuffer
@@ -1157,6 +1157,17 @@ acceptance rows remain fail-closed for work assigned to T8.3 through T8.5; see
 the
 [four-profile evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-8/four-profile-evidence.md).
 `T8.3` is the next dependency-complete task.
+
+`T8.3` is complete. Reports from clean revision
+`7b4eb21a68eb6240824c155f8eec0c22e1ed6aa4` share one input digest and compare
+identically for the complete canonical and failure corpora, owner mappings,
+ordered recording values, identity and resource evidence, 17 declaration
+results, 13 value layouts, limits, workspace, stack, and high-water. Both
+macOS profiles provide host execution; Raspberry Pi remains cross-build and
+inspection only and makes no execution, framebuffer, input, deployment, or
+hardware claim. See the
+[three-profile comparison](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-8/three-profile-comparison.md).
+`T8.4` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
