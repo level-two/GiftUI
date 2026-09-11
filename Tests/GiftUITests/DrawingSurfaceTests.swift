@@ -72,6 +72,87 @@ final class DrawingSurfaceTests: XCTestCase {
         XCTAssertEqual(probe.endCount, 1)
         XCTAssertFalse(probe.pathIsActive)
     }
+
+    func testDrawingStylesPreserveExactValuesAndDefaults() {
+        let color = Color(red: 1, green: 127, blue: 255)
+        let shading = Shading.color(color)
+        let defaultStyle = StrokeStyle()
+        let explicitStyle = StrokeStyle(
+            lineWidth: -1,
+            lineCap: .round,
+            lineJoin: .round
+        )
+        let sendableShading: any Sendable = shading
+        let sendableStyle: any Sendable = explicitStyle
+
+        XCTAssertEqual(shading.colorValue, color)
+        XCTAssertEqual(shading, Shading.color(color))
+        XCTAssertEqual(defaultStyle.lineWidth, 1)
+        XCTAssertEqual(defaultStyle.lineCap, .butt)
+        XCTAssertEqual(defaultStyle.lineJoin, .miter)
+        XCTAssertEqual(explicitStyle.lineWidth, -1)
+        XCTAssertEqual(explicitStyle.lineCap, .round)
+        XCTAssertEqual(explicitStyle.lineJoin, .round)
+        XCTAssertTrue(sendableShading is Shading)
+        XCTAssertTrue(sendableStyle is StrokeStyle)
+    }
+
+    func testStyleEnumsAndDrawingErrorsPreserveExactCases() {
+        XCTAssertEqual(LineCap.butt.rawValue, 0)
+        XCTAssertEqual(LineCap.round.rawValue, 1)
+        XCTAssertEqual(LineJoin.miter.rawValue, 0)
+        XCTAssertEqual(LineJoin.round.rawValue, 1)
+
+        let errors: [DrawingError] = [
+            .invalidValue,
+            .invalidPathState,
+            .arithmeticOverflow,
+            .capacityExhausted,
+            .invalidScope,
+            .invalidPhase,
+            .reentrancyViolation,
+            .invariantViolation,
+        ]
+        let sendableErrors: any Sendable = errors
+
+        XCTAssertEqual(errors.count, 8)
+        XCTAssertTrue(sendableErrors is [DrawingError])
+    }
+
+    func testWidthOverloadUsesDefaultsAndInvalidWidthsDoNotReachStorage() throws {
+        var probe = DrawingSurfaceProbe()
+
+        try withUnsafeMutablePointer(to: &probe) { pointer in
+            var context = makeContext(pointer)
+            try context.withPath { (context, path) throws(DrawingError) in
+                try path.move(to: Point(x: 0, y: 0))
+                try context.stroke(path, with: .color(.white), lineWidth: 2)
+
+                for width: GeometryScalar in [0, -1, .min] {
+                    XCTAssertThrowsError(
+                        try context.stroke(
+                            path,
+                            with: .color(.red),
+                            style: StrokeStyle(
+                                lineWidth: width,
+                                lineCap: .round,
+                                lineJoin: .round
+                            )
+                        )
+                    ) { error in
+                        XCTAssertEqual(error as? DrawingError, .invalidValue)
+                    }
+                }
+            }
+        }
+
+        XCTAssertEqual(probe.strokeCount, 1)
+        XCTAssertEqual(probe.strokeColor, .white)
+        XCTAssertEqual(
+            probe.strokeStyle,
+            StrokeStyle(lineWidth: 2, lineCap: .butt, lineJoin: .miter)
+        )
+    }
 }
 
 private let expectedContextGeneration: UInt32 = 17

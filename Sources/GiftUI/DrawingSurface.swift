@@ -139,6 +139,9 @@ public struct GraphicsContext: ~Copyable {
         guard isActive, path.isActive else {
             throw DrawingError.invalidScope
         }
+        guard style.lineWidth > 0 else {
+            throw DrawingError.invalidValue
+        }
         try requireDrawingSuccess(
             operations.strokePath(
                 storage,

@@ -217,7 +217,7 @@ typed primitive without evaluating `body` or invoking drawing.
 - [x] `T1.2` — Implement noncopyable, non-publicly-constructible
       `GraphicsContext` and `Path` with the exact two-`inout`, nonescaping,
       typed-throws `withPath`, `move`, `addLine`, and both `stroke` declarations.
-- [ ] `T1.3` — Implement exact `Shading`, `StrokeStyle`, `LineCap`, `LineJoin`,
+- [x] `T1.3` — Implement exact `Shading`, `StrokeStyle`, `LineCap`, `LineJoin`,
       and `DrawingError` declarations. Preserve opaque RGB exactly, mark
       nonpositive style widths invalid for the next stroke, and make the width
       overload precisely `.butt` plus `.miter`.
@@ -699,3 +699,15 @@ the supported replacement and leaves four-profile symbol/resource proof to
 T1.5. `Shading` and `StrokeStyle` declarations were required to compile the
 exact stroke signatures, but their T1.3 behavior and evidence remain
 unclaimed. `T1.3` is the next dependency-complete task.
+
+`T1.3` is complete. `Shading.color` stores the exact opaque RGB value;
+`StrokeStyle` preserves its exact fields and `.butt`/`.miter` defaults; the
+cap and join enums retain their required `UInt8` cases; and `DrawingError`
+contains the exact eight equatable, sendable cases. The line-width stroke
+overload delegates through `StrokeStyle(lineWidth:)`, while the style overload
+rejects zero and negative widths as `.invalidValue` before the caller-owned
+storage operation can observe a snapshot request. Focused tests cover RGB,
+defaults, explicit invalid markers, enum raw values, error shape, overload
+equivalence, and nonpositive-width suppression. Cross-profile interface and
+resource proof remains assigned to T1.5; T1.4 is the next dependency-complete
+task.
