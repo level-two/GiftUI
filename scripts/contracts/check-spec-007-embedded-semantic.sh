@@ -41,6 +41,14 @@ GIFTUI_SOURCES=(
     "$PROJECT_ROOT/Sources/GiftUISemanticCore/GiftUISemanticCore.swift" \
     "$PROJECT_ROOT/Sources/GiftUISemanticCore/SemanticLayoutView.swift" \
     -emit-module-path "$MODULES/GiftUISemanticCore.swiftmodule"
+"$GIFTUI_NRF_SWIFTC" "${FLAGS[@]}" -parse-as-library -emit-module \
+    -module-name GiftUITextResources -I "$MODULES" \
+    "$PROJECT_ROOT/Sources/GiftUITextResources/GiftUITextResources.swift" \
+    -emit-module-path "$MODULES/GiftUITextResources.swiftmodule"
+"$GIFTUI_NRF_SWIFTC" "${FLAGS[@]}" -parse-as-library -emit-module \
+    -module-name GiftUILayout -I "$MODULES" \
+    "$PROJECT_ROOT"/Sources/GiftUILayout/*.swift \
+    -emit-module-path "$MODULES/GiftUILayout.swiftmodule"
 
 PROBE_OBJECT="$TEMPORARY_DIRECTORY/SemanticBorrowProbe.swift.o"
 "$GIFTUI_NRF_SWIFTC" "${FLAGS[@]}" -parse-as-library -emit-object \
@@ -60,10 +68,10 @@ if grep -E 'UND.*(swift_allocObject|swift_allocBox|swift_slowAlloc)' "$SYMBOLS";
     printf 'SPEC-007 embedded semantic check failed: allocation symbol found\n' >&2
     exit 1
 fi
-if grep -Eqi 'GiftUILayout|GiftUIRender|GiftUIRuntime|GiftUIBackend|GiftUIPlatform|Zephyr|JLink' \
+if grep -Eqi 'GiftUIRender|GiftUIRuntime|GiftUIBackend|GiftUIPlatform|Zephyr|JLink' \
     "$SYMBOLS"; then
     printf 'SPEC-007 embedded semantic check failed: prohibited dependency symbol found\n' >&2
     exit 1
 fi
 
-printf 'SPEC-007 embedded semantic passed: ARMv7E-M hard-float object has zero allocation and no prohibited dependency symbols.\n'
+printf 'SPEC-007 embedded semantic passed: ARMv7E-M hard-float layout probe has zero allocation and no prohibited dependency symbols.\n'

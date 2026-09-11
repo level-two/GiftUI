@@ -446,7 +446,7 @@ linear work, exact staging order, reuse, and no retained input.
       mapped failure, detection order, whether `begin` was called, exact
       discard/reset counts, prior-current preservation, untouched active
       outer objects, and clean object reuse.
-- [ ] `T6.5` — Run the whole corpus through recording, fixture-dynamic, and
+- [x] `T6.5` — Run the whole corpus through recording, fixture-dynamic, and
       fixture-static semantic views. Compare canonical source-token
       transcripts, identity equality relations, numeric fields, summaries,
       and mapped facts event by event; instrument `O(n + g)` work, zero static
@@ -479,7 +479,7 @@ collect all four profiles without a backend or hardware claim.
       fixed/min/max/infinite frames, and canonical text; record exact observed
       counts and high-water values without treating these fixture limits as
       production host budgets.
-- [ ] `T7.3` — Add allocation, borrow-lifetime, workspace-byte, maximum call-
+- [x] `T7.3` — Add allocation, borrow-lifetime, workspace-byte, maximum call-
       stack, semantic-view traversal work, layout work, and incremental linked-
       code probes around the approval fixture. Prove static zero allocation,
       no retained declaration/text/resource view, and no second complete
@@ -811,6 +811,25 @@ pre-begin workspace rejection, and workspace/sink/both-active reentry without
 cleanup of the active outer attempt. The layout entry remains deliberately
 fail-closed until T4/T5 populate real placement and text records, then calls
 this completed publication coordinator rather than another sink path.
+
+`T6.5` is complete: the canonical mixed layout fixture now runs through
+recording-path, dynamic-slot, and fixed-enum semantic identity
+representations. The real layout entry produces equal normalized source-token
+events, identity relations, numeric bounds, clips, baselines, glyph positions,
+summaries, and result dispositions for all three without comparing private
+identity bytes. The fixture observes 8 scopes, 2 scalars, 1 line, 2 glyphs,
+and depth 4; the common validation/measurement/placement counters remain
+bounded by scopes plus glyphs.
+
+`T7.3` is complete: the optimized static probe invokes the real generic layout
+entry with fixed semantic/text views, finite workspace, and transactional
+sink, exposes exact workspace size/stride, and rejects heap-allocation
+instructions. The nRF probe compiles the layout module and entry for
+ARMv7E-M hard-float and rejects allocation and prohibited dependencies. The
+Signal Analyzer fixture supplies exact limits and logical high-water counts;
+the boundary and lifetime probes reject retained borrows, adapter-owned node
+collections, and a second semantic graph. Per-profile workspace, stack, and
+linked-image facts are collected by T8.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-007 conforms or is `implemented`. The conformance report remains
