@@ -61,20 +61,95 @@ func proxyAdoptsAndCoLocatesItsSingleFlattenedChild() {
     #expect(result.scopes.map { $0.identity } == [1, 2, 3, 4])
 }
 
+@Test
+func directSpacersReceiveEqualShareAndEarlierRemainder() {
+    let semantic = StackSemanticView(
+        nodes: [
+            1: .init(.vStack(alignment: .leading, spacing: 0), children: [2, 3, 4]),
+            2: .init(.spacer(minLength: 0)),
+            3: .init(.spacer(minLength: 0)),
+            4: .init(.spacer(minLength: 0)),
+        ]
+    )
+    let result = runStackLayout(
+        semantic,
+        proposal: ProposedSize(width: 7, height: 8)!
+    )
+
+    #expect(result.summary?.rootBounds.size == Size(width: 0, height: 8)!)
+    #expect(result.scopes.dropFirst().map { $0.bounds.size.height } == [3, 3, 2])
+    #expect(result.scopes.dropFirst().map { $0.bounds.origin.y } == [0, 3, 6])
+}
+
+@Test
+func directSpacersKeepMinimumsWhenProposalIsAbsentOrTooSmall() {
+    let semantic = StackSemanticView(
+        nodes: [
+            1: .init(.vStack(alignment: .leading, spacing: 1), children: [2, 3]),
+            2: .init(.spacer(minLength: 4)),
+            3: .init(.spacer(minLength: 5)),
+        ]
+    )
+    let absent = runStackLayout(semantic, proposal: ProposedSize()!)
+    let capped = runStackLayout(semantic, proposal: ProposedSize(height: 3)!)
+
+    #expect(absent.summary?.rootBounds.size.height == 10)
+    #expect(absent.scopes.dropFirst().map { $0.bounds.size.height } == [4, 5])
+    #expect(capped.summary?.rootBounds.size.height == 3)
+    #expect(capped.scopes.dropFirst().map { $0.bounds.size.height } == [4, 5])
+    #expect(capped.scopes.dropFirst().map { $0.bounds.origin.y } == [0, 5])
+}
+
+@Test
+func standaloneAndWrappedSpacersAreOrdinaryZeroSizeScopes() {
+    let standalone = runStackLayout(
+        StackSemanticView(nodes: [1: .init(.spacer(minLength: 99))]),
+        proposal: ProposedSize(width: 30, height: 30)!
+    )
+    let wrapped = runStackLayout(
+        StackSemanticView(
+            nodes: [
+                1: .init(.vStack(alignment: .leading, spacing: 0), children: [2]),
+                2: .init(
+                    .spacer(minLength: 99),
+                    modifiers: [.passthrough]
+                ),
+            ]
+        ),
+        proposal: ProposedSize(width: 30, height: 30)!
+    )
+
+    #expect(standalone.summary?.rootBounds.size == Size(width: 0, height: 0)!)
+    #expect(wrapped.summary?.rootBounds.size == Size(width: 0, height: 0)!)
+    #expect(wrapped.scopes.map { $0.identity } == [1, 102, 2])
+}
+
 private struct StackNode {
     let primitive: SemanticLayoutPrimitive?
     let children: [UInt16]
+    let modifiers: [SemanticLayoutModifier]
 
-    init(_ primitive: SemanticLayoutPrimitive?, children: [UInt16] = []) {
+    init(
+        _ primitive: SemanticLayoutPrimitive?,
+        children: [UInt16] = [],
+        modifiers: [SemanticLayoutModifier] = []
+    ) {
         self.primitive = primitive
         self.children = children
+        self.modifiers = modifiers
     }
 }
 
 private struct StackSemanticView: SemanticLayoutView {
     let nodes: [UInt16: StackNode]
     let rootIdentity: UInt16 = 1
-    var scopeCount: UInt16 { UInt16(nodes.values.filter { $0.primitive != nil }.count) }
+    var scopeCount: UInt16 {
+        UInt16(
+            nodes.values.reduce(0) {
+                $0 + ($1.primitive == nil ? 0 : 1) + $1.modifiers.count
+            }
+        )
+    }
 
     func primitive(at identity: UInt16) -> SemanticLayoutPrimitive? {
         nodes[identity]?.primitive
@@ -91,11 +166,25 @@ private struct StackSemanticView: SemanticLayoutView {
     }
 
     func modifierCount(of identity: UInt16) -> UInt16? {
-        nodes[identity] == nil ? nil : 0
+        nodes[identity].map { UInt16($0.modifiers.count) }
     }
 
-    func modifierScope(of identity: UInt16, at index: UInt16) -> UInt16? { nil }
-    func modifier(of identity: UInt16, at index: UInt16) -> SemanticLayoutModifier? { nil }
+    func modifierScope(of identity: UInt16, at index: UInt16) -> UInt16? {
+        guard let modifiers = nodes[identity]?.modifiers,
+            Int(index) < modifiers.count
+        else { return nil }
+        return identity + 100 + index
+    }
+
+    func modifier(
+        of identity: UInt16,
+        at index: UInt16
+    ) -> SemanticLayoutModifier? {
+        guard let modifiers = nodes[identity]?.modifiers,
+            Int(index) < modifiers.count
+        else { return nil }
+        return modifiers[Int(index)]
+    }
     func textScalarCount(of identity: UInt16) -> UInt16? { nil }
     func textScalar(of identity: UInt16, at index: UInt16) -> UInt32? { nil }
 }

@@ -5,6 +5,7 @@ import GiftUITextResources
 package struct LayoutEngine {
     private struct StackMeasure {
         var childCount: UInt16 = 0
+        var flexibleSpacerCount: UInt16 = 0
         var mainExtent: GeometryScalar = 0
         var crossExtent: GeometryScalar = 0
     }
@@ -211,6 +212,7 @@ package struct LayoutEngine {
                 semantic: semantic,
                 proposal: proposal,
                 vertical: true,
+                recognizesFlexibleSpacers: false,
                 workspace: &workspace,
                 result: &result,
                 each: { measurement in
@@ -246,6 +248,7 @@ package struct LayoutEngine {
                 semantic: semantic,
                 proposal: childProposal,
                 vertical: vertical,
+                recognizesFlexibleSpacers: true,
                 workspace: &workspace,
                 result: &result,
                 each: { _ in true }
@@ -264,11 +267,46 @@ package struct LayoutEngine {
                 childCount: result.childCount
             ), let mainExtent = GeometryArithmetic.add(result.mainExtent, gapTotal)
         else { return fail(.arithmeticOverflow) }
+        let proposedMain = vertical ? proposal.height : proposal.width
+        let idealMain: GeometryScalar
+        let extra: GeometryScalar
+        if result.flexibleSpacerCount > 0,
+            let proposedMain,
+            proposedMain > mainExtent
+        {
+            idealMain = proposedMain
+            guard
+                let difference = GeometryArithmetic.subtract(
+                    proposedMain,
+                    mainExtent
+                )
+            else { return fail(.arithmeticOverflow) }
+            extra = difference
+        } else {
+            idealMain = mainExtent
+            extra = 0
+        }
         let ideal =
             vertical
-            ? Size(width: result.crossExtent, height: mainExtent)!
-            : Size(width: mainExtent, height: result.crossExtent)!
-        return LayoutGeometry.cap(ideal: ideal, to: proposal)
+            ? Size(width: result.crossExtent, height: idealMain)!
+            : Size(width: idealMain, height: result.crossExtent)!
+        let measurement = LayoutGeometry.cap(ideal: ideal, to: proposal)
+        var assignedCount: UInt16 = 0
+        guard
+            assignFlexibleSpacers(
+                of: identity,
+                semantic: semantic,
+                vertical: vertical,
+                extra: extra,
+                spacerCount: result.flexibleSpacerCount,
+                crossExtent: vertical
+                    ? measurement.resolvedSize.width
+                    : measurement.resolvedSize.height,
+                assignedCount: &assignedCount,
+                workspace: &workspace
+            )
+        else { return nil }
+        return measurement
     }
 
     private mutating func measureFlattenedChildren<Semantic, Workspace>(
@@ -276,6 +314,7 @@ package struct LayoutEngine {
         semantic: borrowing Semantic,
         proposal: ProposedSize,
         vertical: Bool,
+        recognizesFlexibleSpacers: Bool,
         workspace: inout Workspace,
         result: inout StackMeasure,
         each: (LayoutMeasurement) -> Bool
@@ -297,6 +336,7 @@ package struct LayoutEngine {
                     semantic: semantic,
                     proposal: proposal,
                     vertical: vertical,
+                    recognizesFlexibleSpacers: recognizesFlexibleSpacers,
                     workspace: &workspace,
                     result: &result,
                     each: each
@@ -312,6 +352,7 @@ package struct LayoutEngine {
         semantic: borrowing Semantic,
         proposal: ProposedSize,
         vertical: Bool,
+        recognizesFlexibleSpacers: Bool,
         workspace: inout Workspace,
         result: inout StackMeasure,
         each: (LayoutMeasurement) -> Bool
@@ -325,15 +366,34 @@ package struct LayoutEngine {
             fail(.invariantViolation)
             return false
         }
-        if semantic.primitive(at: identity) != nil || modifierCount > 0 {
-            guard
-                let measurement = measureOccurrence(
-                    identity,
-                    semantic: semantic,
-                    proposal: proposal,
-                    workspace: &workspace
-                ), each(measurement)
-            else { return false }
+        let primitive = semantic.primitive(at: identity)
+        if primitive != nil || modifierCount > 0 {
+            let measurement: LayoutMeasurement
+            if recognizesFlexibleSpacers,
+                modifierCount == 0,
+                case .spacer(let minimum) = primitive
+            {
+                let size =
+                    vertical
+                    ? Size(width: 0, height: minimum)!
+                    : Size(width: minimum, height: 0)!
+                measurement = LayoutMeasurement(idealSize: size, resolvedSize: size)
+                guard let next = increment(result.flexibleSpacerCount) else {
+                    return fail(.capacityExhausted)
+                }
+                result.flexibleSpacerCount = next
+            } else {
+                guard
+                    let measured = measureOccurrence(
+                        identity,
+                        semantic: semantic,
+                        proposal: proposal,
+                        workspace: &workspace
+                    )
+                else { return false }
+                measurement = measured
+            }
+            guard each(measurement) else { return false }
             guard let nextCount = increment(result.childCount),
                 let nextMain = GeometryArithmetic.add(
                     result.mainExtent,
@@ -359,10 +419,77 @@ package struct LayoutEngine {
             semantic: semantic,
             proposal: proposal,
             vertical: vertical,
+            recognizesFlexibleSpacers: recognizesFlexibleSpacers,
             workspace: &workspace,
             result: &result,
             each: each
         )
+    }
+
+    private mutating func assignFlexibleSpacers<Semantic, Workspace>(
+        of identity: Semantic.Identity,
+        semantic: borrowing Semantic,
+        vertical: Bool,
+        extra: GeometryScalar,
+        spacerCount: UInt16,
+        crossExtent: GeometryScalar,
+        assignedCount: inout UInt16,
+        workspace: inout Workspace
+    ) -> Bool
+    where
+        Semantic: SemanticLayoutView,
+        Workspace: LayoutWorkspace,
+        Semantic.Identity == Workspace.Identity
+    {
+        guard let childCount = semantic.childCount(of: identity) else {
+            return fail(.invariantViolation)
+        }
+        var index: UInt16 = 0
+        while index < childCount {
+            guard let child = semantic.child(of: identity, at: index),
+                let modifierCount = semantic.modifierCount(of: child)
+            else { return fail(.invariantViolation) }
+            let primitive = semantic.primitive(at: child)
+            if modifierCount == 0, case .spacer(let minimum) = primitive {
+                guard spacerCount > 0 else { return fail(.invariantViolation) }
+                let divisor = GeometryScalar(spacerCount)
+                let quotient = extra / divisor
+                let remainder = extra % divisor
+                let bonus: GeometryScalar =
+                    GeometryScalar(assignedCount) < remainder
+                    ? 1 : 0
+                guard let withShare = GeometryArithmetic.add(minimum, quotient),
+                    let mainExtent = GeometryArithmetic.add(withShare, bonus),
+                    let nextAssigned = increment(assignedCount)
+                else { return fail(.arithmeticOverflow) }
+                let size =
+                    vertical
+                    ? Size(width: crossExtent, height: mainExtent)!
+                    : Size(width: mainExtent, height: crossExtent)!
+                guard
+                    workspace.storeMeasurement(
+                        LayoutMeasurement(idealSize: size, resolvedSize: size),
+                        for: child
+                    )
+                else { return fail(.invariantViolation) }
+                assignedCount = nextAssigned
+            } else if primitive == nil, modifierCount == 0 {
+                guard
+                    assignFlexibleSpacers(
+                        of: child,
+                        semantic: semantic,
+                        vertical: vertical,
+                        extra: extra,
+                        spacerCount: spacerCount,
+                        crossExtent: crossExtent,
+                        assignedCount: &assignedCount,
+                        workspace: &workspace
+                    )
+                else { return false }
+            }
+            index += 1
+        }
+        return true
     }
 
     private mutating func placeOccurrence<Semantic, Workspace>(

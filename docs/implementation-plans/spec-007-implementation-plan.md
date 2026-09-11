@@ -367,7 +367,7 @@ geometry.
       placement for zero through five children, absent/present axes, checked
       spacing totals, explicit alignment, oversized children, zero sizes, and
       main-axis proposal underflow. Measure and place each scope once.
-- [ ] `T4.3` — Implement direct unmodified flexible-spacer recognition,
+- [x] `T4.3` — Implement direct unmodified flexible-spacer recognition,
       minimum contribution, absent-proposal behavior, equal quotient and
       source-order one-unit remainder distribution, cross-axis filling, and
       wrapped/outside-stack ordinary zero-size behavior. Never compress a
