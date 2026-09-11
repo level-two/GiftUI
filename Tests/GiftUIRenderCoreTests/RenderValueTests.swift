@@ -86,3 +86,10 @@ func renderProductionErrorsHaveExactClosedRawValues() {
     #expect(RenderProductionError.reentrancyViolation.rawValue == 5)
     #expect(RenderProductionError.invariantViolation.rawValue == 6)
 }
+
+@Test
+func renderDamageModesHaveExactClosedRawValues() {
+    #expect(RenderDamageMode.rootIntersection.rawValue == 0)
+    #expect(RenderDamageMode.initializeCompleteSurface.rawValue == 1)
+    #expect(MemoryLayout<RenderDamageMode>.size == 1)
+}

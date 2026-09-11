@@ -95,10 +95,10 @@ driver work, deployment, or connected-hardware changes.
 - `GiftUITextResources` and the concrete reference package provide the exact
   resource, instance, glyph, descriptor, and canonical metrics contracts that
   rendering must reuse. No parallel rendering identity is needed or allowed.
-- `GiftUIRenderCore` and its focused test target now exist with exactly the
-  `GiftUI` and `GiftUITextResources` production dependencies. `GiftUILayout`,
-  `GiftUIRenderLowering`, and the narrow rendering/failure owner adapter have
-  not landed, so T0.2 remains incrementally active.
+- `GiftUIRenderCore`, `GiftUILayout`, and `GiftUIRenderLowering` now exist with
+  their exact production dependencies and focused test targets. The narrow
+  rendering/failure owner adapter has not landed, so T0.2 remains
+  incrementally active.
 - `Tests/ContractFixtures/SPEC008/` and the registered four-profile driver now
   exist. The canonical render/analyzer cases, recording sink, complete profile
   probes, and allocation/stack/value-layout instrumentation remain pending.
@@ -359,7 +359,7 @@ are testable. Production adapters may follow once SPEC-006 and SPEC-007 land.
 two-pass preflight and streaming with caller-owned finite workspace,
 deterministic failure precedence, and atomic sink behavior.
 
-- [ ] `T4.1` — Implement `RenderLimits`,
+- [x] `T4.1` — Implement `RenderLimits`,
       `RenderProductionResult`, and `RenderProductionWorkspace` with exact
       access, cases/raw values, nonzero limit validation, capacity reporting,
       acquisition/reset semantics, and required value layouts. Provide bounded
@@ -823,6 +823,18 @@ the
 [resolved render layout evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-2/resolved-render-layout-view.md).
 T2.4 is the next dependency-complete task. T3.5 remains blocked on
 lowering-owned `RenderLimits`.
+
+`T4.1` is complete and unblocks the complete value-layout work in T3.5.
+`GiftUIRenderLowering` now owns the exact nonzero `RenderLimits`, bounded
+`RenderProductionResult`, and identity-keyed caller-owned workspace protocol;
+the package graph records the exact five production dependencies. The missing
+`RenderDamageMode` declaration required by the already-approved producer
+signature was also restored to its specified Render Core owner. Focused tests
+cover every zero-limit rejection, exact fields/layouts, all seven result
+errors, and acquire/reset/reuse semantics; see the
+[render production value evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-4/render-production-values.md).
+T2.4 and T3.5 are now dependency-complete; T0.2 remains active until its owner
+adapter target lands.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

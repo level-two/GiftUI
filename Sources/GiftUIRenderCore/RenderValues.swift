@@ -14,6 +14,11 @@ package struct RenderSinkCapacity: Equatable, Sendable {
     }
 }
 
+package enum RenderDamageMode: UInt8, Equatable, Sendable {
+    case rootIntersection = 0
+    case initializeCompleteSurface = 1
+}
+
 package struct RenderPlanHeader: Equatable, Sendable {
     package let surfaceBounds: Rect
     package let damageBounds: Rect

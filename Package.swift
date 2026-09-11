@@ -62,6 +62,16 @@ let package = Package(
             dependencies: ["GiftUI", "GiftUITextResources"]
         ),
         .target(
+            name: "GiftUIRenderLowering",
+            dependencies: [
+                "GiftUI",
+                "GiftUISemanticCore",
+                "GiftUILayout",
+                "GiftUITextResources",
+                "GiftUIRenderCore",
+            ]
+        ),
+        .target(
             name: "GiftUIExecution",
             dependencies: ["GiftUI", "GiftUIRenderCore"]
         ),
@@ -153,6 +163,10 @@ let package = Package(
         .testTarget(
             name: "GiftUIRenderCoreTests",
             dependencies: ["GiftUI", "GiftUIRenderCore", "GiftUITextResources"]
+        ),
+        .testTarget(
+            name: "GiftUIRenderLoweringTests",
+            dependencies: ["GiftUIRenderCore", "GiftUIRenderLowering"]
         ),
         .testTarget(
             name: "GiftUIExecutionTests",

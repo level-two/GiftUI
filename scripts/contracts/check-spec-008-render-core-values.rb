@@ -16,7 +16,7 @@ imports = source.scan(/^import (\w+)$/).flatten
 fail_check("Render Core imports differ") unless imports == %w[GiftUI GiftUITextResources]
 
 expected_declarations = %w[
-  RenderSinkCapacity RenderPlanHeader PositionedGlyph FillRectOperation
+  RenderSinkCapacity RenderDamageMode RenderPlanHeader PositionedGlyph FillRectOperation
   PositionedGlyphOperationHeader RenderProductionError
 ]
 expected_declarations.each do |name|
@@ -34,6 +34,8 @@ required_fragments = [
   "case sinkRefused = 4",
   "case reentrancyViolation = 5",
   "case invariantViolation = 6",
+  "case rootIntersection = 0",
+  "case initializeCompleteSurface = 1",
   "package let instance: FontInstanceID",
   "package let glyph: GlyphID",
   "package let color: Color",
@@ -47,4 +49,4 @@ fail_check("Render Core values contain forbidden dynamic or owner coupling") if 
 fail_check("Render Core duplicates FontInstanceID") if source.match?(/struct FontInstanceID\b/)
 fail_check("Render Core duplicates GlyphID") if source.match?(/struct GlyphID\b/)
 
-puts "SPEC-008 Render Core value ownership passed: six closed values, two exact imports."
+puts "SPEC-008 Render Core value ownership passed: seven closed values, two exact imports."

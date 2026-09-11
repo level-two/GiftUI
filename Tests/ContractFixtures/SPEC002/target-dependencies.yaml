@@ -106,6 +106,19 @@ targets:
       - GiftUI
       - GiftUIRenderCore
       - GiftUITextResources
+  GiftUIRenderLowering:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUILayout
+      - GiftUIRenderCore
+      - GiftUISemanticCore
+      - GiftUITextResources
+  GiftUIRenderLoweringTests:
+    type: test
+    dependencies:
+      - GiftUIRenderCore
+      - GiftUIRenderLowering
   GiftUIExecution:
     type: regular
     dependencies:
