@@ -37,6 +37,12 @@ active:
     dependencies:
       - GiftUI
       - GiftUITextResources
+  GiftUILayout:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUISemanticCore
+      - GiftUITextResources
 forbidden_text_resource_imports:
   - GiftUIFailureCore
   - GiftUIFailureDiagnostics
@@ -57,7 +63,6 @@ forbidden_text_resource_imports:
   - GiftUIHAL
   - GiftUIHardware
 reserved_consumers:
-  GiftUILayout: pending
   GiftUITextRasterProvider: pending
   GiftUIBackend: pending
   GiftUIPlatform: pending

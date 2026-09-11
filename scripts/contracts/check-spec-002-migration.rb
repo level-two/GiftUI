@@ -87,7 +87,10 @@ expected_sources << File.join(ROOT, "Sources/GiftUI/Color.swift")
 expected_sources << File.join(ROOT, "Sources/GiftUI/BoundedText.swift")
 expected_sources << File.join(ROOT, "Sources/GiftUI/Text.swift")
 expected_sources << File.join(ROOT, "Sources/GiftUI/StyleModifiers.swift")
+expected_sources << File.join(ROOT, "Sources/GiftUI/LayoutValues.swift")
+expected_sources << File.join(ROOT, "Sources/GiftUI/LayoutContainers.swift")
+expected_sources << File.join(ROOT, "Sources/GiftUI/LayoutModifiers.swift")
 expected_sources.sort!
 fail!("GiftUI owned source inventory is not exact") unless swift_sources == expected_sources
 
-puts "SPEC-002 migration closure passed: 24 rows, 6 immutable PoC inventories, exact bounded Foundation source plus approved SPEC-006, SPEC-008, and SPEC-010 declarations."
+puts "SPEC-002 migration closure passed: 24 rows, 6 immutable PoC inventories, exact bounded Foundation source plus approved SPEC-006, SPEC-007, SPEC-008, and SPEC-010 declarations."
