@@ -500,18 +500,18 @@ separated from connected-hardware claims and all plan tasks dispositioned.
       `GiftUI` public declaration surface on every contract compiler and the
       exact value-size ceilings for semantic payloads, limits, summary, error,
       and result.
-- [ ] `T8.2` — Run the exact four commands required by SPEC-007 and capture
+- [x] `T8.2` — Run the exact four commands required by SPEC-007 and capture
       repository revision/dirty state, complete commands, compiler/target/SDK/
       optimization identities, canonical corpus hashes, exact limits and
       high-water counts, value layouts, allocation count, workspace bytes,
       maximum stack high-water, linked-code delta, borrow/no-second-graph
       evidence, and all acceptance/evidence dispositions.
-- [ ] `T8.3` — For macOS dynamic/static and Raspberry Pi ARMv6, compare the
+- [x] `T8.3` — For macOS dynamic/static and Raspberry Pi ARMv6, compare the
       normalized success/failure corpus and owned-value/resource reports. The
       Raspberry Pi result is cross-build/inspection evidence only and does not
       claim `armv6l` execution, framebuffer presentation, input, or PiScreen
       hardware validation.
-- [ ] `T8.4` — For nRF52840, prove the contract fixture compiles and links with
+- [x] `T8.4` — For nRF52840, prove the contract fixture compiles and links with
       zero static heap allocation and finite workspace, inspect value layouts,
       symbols, sections, linked code, and the ELF's Cortex-M4F hard-float VFP
       calling convention. Record cross-build/inspection only; do not flash or
@@ -840,6 +840,27 @@ target and optimization, derives the six required value sizes plus finite
 workspace bytes from target IR, validates every ceiling, and hashes all
 reported artifacts. A dry run of all four paths passed before the driver was
 frozen; T8.2 records the final clean-revision runs.
+
+`T8.2` is complete: all four exact commands passed from clean revision
+`986a8a0c7378184213821144d07581512da12e31` with common run ID
+`986a8a0c7378184213821144d07581512da12e31-59a92effaec731f5`. Each immutable
+report contains its complete command transcript, compiler/target/SDK and
+optimization identity, corpus and artifact hashes, exact limits/high-water,
+target-derived value layouts, 350,488-byte finite workspace, depth-5 stack
+high-water, zero static allocation result, layout image bytes, and
+no-second-graph audit.
+
+`T8.3` is complete: macOS dynamic/static host execution and the Raspberry Pi
+ARMv6 cross-build consume the same corpus digest and produce identical six-
+value layout reports. The macOS profiles pass the full behavioral suite;
+ARMv6 remains cross-build/inspection evidence only and makes no remote,
+framebuffer, input, or hardware claim.
+
+`T8.4` is complete: Embedded Swift compiles the layout modules and finite
+workspace probe for `armv7em-none-none-eabi`; target IR and symbols report
+zero heap allocation, and ELF attributes report ARMv7E-M with VFP-register
+arguments. The run records object and section evidence without connected-board
+execution or flashing.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-007 conforms or is `implemented`. The conformance report remains
