@@ -998,7 +998,15 @@ checked partial final clip, omission for an off-surface empty final clip, and
 explicit complete-surface/root-intersection/complete-surface damage across
 fresh attempts without frame history; see the
 [clip/damage evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-5/clip-damage.md).
-`T5.5` is the next independent dependency-complete task.
+
+Implementation review found two approval blockers. T5.1 requires a
+caller-owned foreground stack but the approved exact workspace protocol has no
+storage operations; T5.5 and T6.3 require arithmetic fault injection even
+though every render arithmetic branch intersects already-valid SPEC-002
+rectangles and is therefore unconstructible. T5.1 and T5.5 remain open, and
+Milestone 6 entry conditions are not met pending a reviewed Specification
+amendment; see the
+[implementation review](../../Tests/ContractFixtures/SPEC008/Evidence/implementation-blockers.md).
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
