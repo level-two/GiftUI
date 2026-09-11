@@ -485,7 +485,7 @@ renewed review without claiming the `implemented` transition.
       hook, and add public/package surface checks proving leaf primitives retain
       the existing unlabeled operation while a framework-only container calls
       the new overload exactly once with `Body == Never`.
-- [ ] `T8.2` — Implement Semantic Core traversal so the container primitive is
+- [x] `T8.2` — Implement Semantic Core traversal so the container primitive is
       reserved and staged before content enters existing `fixedChild(0)`
       structure. Add focused empty, one-child, five-child, nested, conditional,
       optional, and modified-content tests covering canonical identity/order,
@@ -930,3 +930,11 @@ builder content with `Body == Never`, one typed dispatch, and zero body
 evaluations. Semantic Core's conformance stages the primitive before entering
 the existing `fixedChild(0)` path; the complete traversal and failure corpus
 remains assigned to `T8.2`.
+
+`T8.2` is complete: Semantic Core stages the container primitive at its exact
+declaration identity before entering the existing `fixedChild(0)` content
+path. Focused traversal fixtures cover empty, one-child, five-child, nested,
+conditional, optional, and modified content; canonical source order and
+identity paths; zero container-body evaluation; capacity failure before the
+rejected child; false-capacity sink refusal; atomic discard; and clean
+workspace/sink reuse after every injected failure.

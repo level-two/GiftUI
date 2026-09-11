@@ -317,6 +317,187 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         }
     }
 
+    func testPrimitiveContainerStagesBeforeEmptyOneAndFiveChildContent() {
+        let emptyBodyCounter = TraversalBodyCounter()
+        var emptyWorkspace = TraversalWorkspace()
+        var emptySink = TraversalSink()
+        let emptyResult = expandSemanticTree(
+            TraversalPrimitiveContainer(marker: 10, bodyCounter: emptyBodyCounter) {},
+            limits: makeLimits(),
+            workspace: &emptyWorkspace,
+            sink: &emptySink
+        )
+
+        XCTAssertEqual(emptyResult.successSummary?.semanticNodeCount, 1)
+        XCTAssertEqual(
+            emptySink.committedEvents.map(\.kind), [.structural, .semantic, .structural])
+        XCTAssertEqual(emptyBodyCounter.count, 0)
+
+        let oneBodyCounter = TraversalBodyCounter()
+        var oneWorkspace = TraversalWorkspace()
+        var oneSink = TraversalSink()
+        let oneResult = expandSemanticTree(
+            TraversalPrimitiveContainer(marker: 20, bodyCounter: oneBodyCounter) {
+                TraversalPrimitive(marker: 21)
+            },
+            limits: makeLimits(),
+            workspace: &oneWorkspace,
+            sink: &oneSink
+        )
+
+        XCTAssertEqual(oneResult.successSummary?.semanticNodeCount, 2)
+        XCTAssertEqual(
+            oneSink.committedEvents.map(\.kind),
+            [.structural, .semantic, .structural, .semantic]
+        )
+        XCTAssertEqual(
+            oneSink.committedEvents.filter { $0.kind == .semantic }.map(\.identity.path),
+            [
+                [.root, .declarationRole(0)],
+                [.root, .declarationRole(0), .fixedChild(0), .declarationRole(1)],
+            ]
+        )
+        XCTAssertEqual(oneBodyCounter.count, 0)
+
+        let fiveBodyCounter = TraversalBodyCounter()
+        var fiveWorkspace = TraversalWorkspace()
+        var fiveSink = TraversalSink()
+        let fiveResult = expandSemanticTree(
+            TraversalPrimitiveContainer(marker: 30, bodyCounter: fiveBodyCounter) {
+                TraversalPrimitive(marker: 31)
+                TraversalPrimitive(marker: 32)
+                TraversalPrimitive(marker: 33)
+                TraversalPrimitive(marker: 34)
+                TraversalPrimitive(marker: 35)
+            },
+            limits: makeLimits(),
+            workspace: &fiveWorkspace,
+            sink: &fiveSink
+        )
+
+        XCTAssertEqual(fiveResult.successSummary?.semanticNodeCount, 6)
+        XCTAssertEqual(fiveSink.committedEvents.first?.kind, .structural)
+        XCTAssertEqual(fiveSink.committedEvents.dropFirst().first?.kind, .semantic)
+        XCTAssertEqual(
+            fiveSink.committedEvents.filter { $0.kind == .semantic }.count,
+            6
+        )
+        XCTAssertEqual(
+            fiveSink.committedEvents.filter { $0.kind == .semantic }.dropFirst().compactMap {
+                $0.identity.path.firstFixedChildAfterContent
+            },
+            [0, 1, 2, 3, 4]
+        )
+        XCTAssertEqual(fiveBodyCounter.count, 0)
+    }
+
+    func testPrimitiveContainerUsesOrdinaryNestedConditionalOptionalAndModifierTraversal() {
+        let bodyCounter = TraversalBodyCounter()
+        let conditional: ConditionalContent<TraversalInactiveTrap, TraversalPrimitive> =
+            ViewBuilder.buildEither(second: TraversalPrimitive(marker: 42))
+        let optional = ViewBuilder.buildOptional(TraversalPrimitive(marker: 43))
+        var workspace = TraversalWorkspace()
+        var sink = TraversalSink()
+
+        let result = expandSemanticTree(
+            TraversalPrimitiveContainer(marker: 40, bodyCounter: bodyCounter) {
+                TraversalPrimitiveContainer(marker: 41, bodyCounter: bodyCounter) {
+                    TraversalPrimitive(marker: 44)
+                }
+                conditional
+                optional
+                TraversalModifier(content: TraversalPrimitive(marker: 45), marker: 1)
+            },
+            limits: makeLimits(),
+            workspace: &workspace,
+            sink: &sink
+        )
+
+        XCTAssertEqual(result.successSummary?.semanticNodeCount, 6)
+        XCTAssertEqual(result.successSummary?.modifierApplicationCount, 1)
+        XCTAssertEqual(bodyCounter.count, 0)
+        XCTAssertEqual(sink.publishCount, 1)
+        XCTAssertEqual(sink.discardCount, 0)
+        XCTAssertTrue(sink.stagedEvents.isEmpty)
+        XCTAssertTrue(
+            sink.committedEvents.contains {
+                $0.identity.path.contains(.conditionalBranch(1))
+            }
+        )
+        XCTAssertTrue(
+            sink.committedEvents.contains {
+                $0.identity.path.contains(.optionalPresence)
+            }
+        )
+        XCTAssertEqual(sink.committedEvents.compactMap(\.modifierIndex), [0])
+    }
+
+    func testPrimitiveContainerFailureIsAtomicAndObjectsAreReusable() {
+        let bodyCounter = TraversalBodyCounter()
+        let root = TraversalPrimitiveContainer(marker: 50, bodyCounter: bodyCounter) {
+            TraversalPrimitive(marker: 51)
+        }
+
+        for refusal in 0 ... 1 {
+            var workspace = TraversalWorkspace()
+            var sink = TraversalSink(refusedSemanticStage: refusal)
+
+            let failure = expandSemanticTree(
+                root,
+                limits: makeLimits(),
+                workspace: &workspace,
+                sink: &sink
+            )
+
+            XCTAssertEqual(failure, .failure(.invariantViolation))
+            XCTAssertTrue(sink.committedEvents.isEmpty)
+            XCTAssertTrue(sink.stagedEvents.isEmpty)
+            XCTAssertEqual(sink.publishCount, 0)
+            XCTAssertEqual(sink.discardCount, 1)
+            XCTAssertFalse(workspace.isExpanding)
+            XCTAssertEqual(bodyCounter.count, 0)
+
+            sink.refusedSemanticStage = nil
+            let success = expandSemanticTree(
+                root,
+                limits: makeLimits(),
+                workspace: &workspace,
+                sink: &sink
+            )
+
+            XCTAssertEqual(success.successSummary?.semanticNodeCount, 2)
+            XCTAssertEqual(sink.publishCount, 1)
+            XCTAssertEqual(sink.discardCount, 1)
+            XCTAssertFalse(workspace.isExpanding)
+            XCTAssertEqual(bodyCounter.count, 0)
+        }
+
+        var capacityWorkspace = TraversalWorkspace()
+        var capacitySink = TraversalSink()
+        let capacityLimits = SemanticExpansionLimits(
+            maximumDepth: 16,
+            maximumSemanticNodes: 1,
+            maximumBodyEvaluations: 16,
+            maximumModifierApplications: 16,
+            maximumActionOccurrences: 16
+        )!
+
+        let capacityFailure = expandSemanticTree(
+            root,
+            limits: capacityLimits,
+            workspace: &capacityWorkspace,
+            sink: &capacitySink
+        )
+
+        XCTAssertEqual(capacityFailure, .failure(.capacityExhausted))
+        XCTAssertTrue(capacitySink.committedEvents.isEmpty)
+        XCTAssertTrue(capacitySink.stagedEvents.isEmpty)
+        XCTAssertEqual(capacitySink.publishCount, 0)
+        XCTAssertEqual(capacitySink.discardCount, 1)
+        XCTAssertFalse(capacityWorkspace.isExpanding)
+        XCTAssertEqual(bodyCounter.count, 0)
+    }
+
     private func makeLimits() -> SemanticExpansionLimits {
         SemanticExpansionLimits(
             maximumDepth: 16,
@@ -502,6 +683,46 @@ private struct TraversalPrimitive: View, _GiftUISemanticPrimitivePayload {
     }
 }
 
+private struct TraversalPrimitiveContainer<Content: View>: View {
+    typealias Body = Never
+
+    let marker: UInt8
+    let bodyCounter: TraversalBodyCounter
+    let content: Content
+
+    init(
+        marker: UInt8,
+        bodyCounter: TraversalBodyCounter,
+        @ViewBuilder content: () -> Content
+    ) {
+        self.marker = marker
+        self.bodyCounter = bodyCounter
+        self.content = content()
+    }
+
+    var body: Never {
+        poison()
+    }
+
+    private func poison() -> Never {
+        bodyCounter.count += 1
+        fatalError("primitive container bodies are unreachable")
+    }
+
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    ) {
+        visitor.visitPrimitive(
+            content: content,
+            payload: TraversalPrimitiveContainerPayload(marker: marker)
+        )
+    }
+}
+
+private struct TraversalPrimitiveContainerPayload: _GiftUISemanticPrimitivePayload {
+    let marker: UInt8
+}
+
 private struct TraversalNoCategory: View {
     var body: Never { fatalError("missing-category body is unreachable") }
     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
@@ -580,6 +801,27 @@ private enum TraversalPathComponent: Equatable {
 
 private struct TraversalIdentity: Equatable {
     let path: [TraversalPathComponent]
+}
+
+private extension Array where Element == TraversalPathComponent {
+    var firstFixedChildAfterContent: UInt8? {
+        guard let contentIndex = firstIndex(of: .fixedChild(0)) else { return nil }
+        return self[(contentIndex + 1)...].compactMap { component in
+            if case .fixedChild(let index) = component {
+                return index
+            }
+            return nil
+        }.first
+    }
+}
+
+private extension SemanticExpansionResult {
+    var successSummary: SemanticExpansionSummary? {
+        if case .success(let summary) = self {
+            return summary
+        }
+        return nil
+    }
 }
 
 private struct TraversalWorkspace: SemanticExpansionWorkspace {
@@ -698,10 +940,17 @@ private struct TraversalSink: SemanticExpansionSink {
     var publishCount = 0
     var discardCount = 0
     var bodyEvaluationStageCount = 0
+    var refusedSemanticStage: Int?
+    private var semanticStageAttemptCount = 0
+
+    init(refusedSemanticStage: Int? = nil) {
+        self.refusedSemanticStage = refusedSemanticStage
+    }
 
     mutating func beginExpansion() -> Bool {
         stagedEvents.removeAll(keepingCapacity: true)
         bodyEvaluationStageCount = 0
+        semanticStageAttemptCount = 0
         return true
     }
 
@@ -726,6 +975,8 @@ private struct TraversalSink: SemanticExpansionSink {
         identity: borrowing TraversalIdentity,
         payload: borrowing Payload
     ) -> Bool {
+        defer { semanticStageAttemptCount += 1 }
+        guard refusedSemanticStage != semanticStageAttemptCount else { return false }
         let storedIdentity = copy identity
         stagedEvents.append(
             TraversalEvent(identity: storedIdentity, kind: .semantic, modifierIndex: nil)
