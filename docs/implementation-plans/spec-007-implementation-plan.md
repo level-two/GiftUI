@@ -471,7 +471,7 @@ collect all four profiles without a backend or hardware claim.
       or Semantic Core, and no imports or references to runtime profiles,
       failure core from layout, capabilities, backends, platforms, drivers,
       OS/RTOS, HAL, hardware, or native font/layout APIs.
-- [ ] `T7.2` — Implement the Signal Analyzer approval fixture with exactly
+- [x] `T7.2` — Implement the Signal Analyzer approval fixture with exactly
       `maximumScopes: 512`, `maximumDepth: 64`,
       `maximumTextScalars: 4096`, `maximumTextLines: 512`, and
       `maximumPositionedGlyphs: 4096`. Exercise vertical, horizontal, overlay,

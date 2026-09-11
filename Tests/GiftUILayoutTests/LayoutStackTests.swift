@@ -1,4 +1,5 @@
 import GiftUI
+import GiftUIReferenceTextResources
 import GiftUISemanticCore
 import GiftUITextResources
 import Testing
@@ -306,19 +307,91 @@ func frameAndPaddingOrderChangesBoundsAndFrameClip() {
     #expect(frameThenPadding.scopes[2].bounds.origin.x == 25)
 }
 
+@Test
+func signalAnalyzerApprovalFixtureFitsExactLimitsAndExercisesLayoutSurface() {
+    let insets = EdgeInsets(top: 1, leading: 2, bottom: 3, trailing: 4)!
+    let textScalars: [UInt32] = [
+        0x53, 0x69, 0x67, 0x6e, 0x61, 0x6c, 0x0a, 0x34, 0x32, 0x00b0,
+    ]
+    let semantic = StackSemanticView(
+        nodes: [
+            1: .init(.vStack(alignment: .leading, spacing: 0), children: [2, 5, 8, 11, 14, 16]),
+            2: .init(
+                .hStack(alignment: .top, spacing: 0), children: [3, 4],
+                modifiers: [.padding(edges: .horizontal, length: 2)]),
+            3: .init(.spacer(minLength: 1)),
+            4: .init(.spacer(minLength: 2)),
+            5: .init(
+                .hStack(alignment: .center, spacing: 2), children: [6, 7],
+                modifiers: [.paddingInsets(insets)]),
+            6: .init(.spacer(minLength: 0)),
+            7: .init(.spacer(minLength: 0)),
+            8: .init(
+                .hStack(alignment: .bottom, spacing: 1), children: [9, 10],
+                modifiers: [.fixedFrame(width: 100, height: 12, alignment: .center)]),
+            9: .init(.spacer(minLength: 3)),
+            10: .init(.spacer(minLength: 4)),
+            11: .init(
+                .zStack(alignment: Alignment(horizontal: .center, vertical: .top)),
+                children: [12, 13],
+                modifiers: [
+                    .flexibleFrame(
+                        minWidth: 20, maxWidth: .points(80), minHeight: 10, maxHeight: .points(40),
+                        alignment: .leading)
+                ]),
+            12: .init(.spacer(minLength: 0), modifiers: [.padding(edges: [], length: 7)]),
+            13: .init(.spacer(minLength: 0), modifiers: [.padding(edges: .all, length: 1)]),
+            14: .init(
+                .vStack(alignment: .center, spacing: 2), children: [15],
+                modifiers: [
+                    .flexibleFrame(
+                        minWidth: nil, maxWidth: .infinity, minHeight: nil, maxHeight: .infinity,
+                        alignment: .center)
+                ]),
+            15: .init(.spacer(minLength: 5)),
+            16: .init(
+                .text, modifiers: [.padding(edges: .vertical, length: 1)], scalars: textScalars),
+        ]
+    )
+    let exactLimits = LayoutLimits(
+        maximumScopes: 512,
+        maximumDepth: 64,
+        maximumTextScalars: 4096,
+        maximumTextLines: 512,
+        maximumPositionedGlyphs: 4096
+    )!
+    let result = runStackLayout(
+        semantic,
+        proposal: ProposedSize(width: 320, height: 240)!,
+        limits: exactLimits,
+        capacities: [512, 64, 4096, 512, 4096]
+    )
+
+    #expect(result.result == .success(result.summary!))
+    #expect(result.summary?.scopeCount == 24)
+    #expect(result.summary?.textScalarCount == 10)
+    #expect(result.summary?.textLineCount == 2)
+    #expect(result.summary?.positionedGlyphCount == 9)
+    #expect(result.summary?.maximumObservedDepth == 5)
+    #expect(result.scopes.count == 24)
+}
+
 private struct StackNode {
     let primitive: SemanticLayoutPrimitive?
     let children: [UInt16]
     let modifiers: [SemanticLayoutModifier]
+    let scalars: [UInt32]?
 
     init(
         _ primitive: SemanticLayoutPrimitive?,
         children: [UInt16] = [],
-        modifiers: [SemanticLayoutModifier] = []
+        modifiers: [SemanticLayoutModifier] = [],
+        scalars: [UInt32]? = nil
     ) {
         self.primitive = primitive
         self.children = children
         self.modifiers = modifiers
+        self.scalars = scalars
     }
 }
 
@@ -367,8 +440,14 @@ private struct StackSemanticView: SemanticLayoutView {
         else { return nil }
         return modifiers[Int(index)]
     }
-    func textScalarCount(of identity: UInt16) -> UInt16? { nil }
-    func textScalar(of identity: UInt16, at index: UInt16) -> UInt32? { nil }
+    func textScalarCount(of identity: UInt16) -> UInt16? {
+        nodes[identity]?.scalars.map { UInt16($0.count) }
+    }
+    func textScalar(of identity: UInt16, at index: UInt16) -> UInt32? {
+        guard let scalars = nodes[identity]?.scalars, Int(index) < scalars.count
+        else { return nil }
+        return scalars[Int(index)]
+    }
 }
 
 private struct CapturedScope: Equatable {
@@ -442,22 +521,25 @@ private func stackFixture(
 
 private func runStackLayout(
     _ semantic: StackSemanticView,
-    proposal: ProposedSize
+    proposal: ProposedSize,
+    limits: LayoutLimits? = nil,
+    capacities: [UInt16] = [32, 32, 32, 32, 32]
 ) -> (result: LayoutResult, summary: LayoutSummary?, scopes: [CapturedScope]) {
-    var workspace = ProbeWorkspace(capacities: [32, 32, 32, 32, 32])
+    var workspace = ProbeWorkspace(capacities: capacities)
     var sink = StackSink()
-    let limits = LayoutLimits(
-        maximumScopes: 32,
-        maximumDepth: 32,
-        maximumTextScalars: 32,
-        maximumTextLines: 32,
-        maximumPositionedGlyphs: 32
-    )!
+    let resolvedLimits =
+        limits ?? LayoutLimits(
+            maximumScopes: capacities[0],
+            maximumDepth: capacities[1],
+            maximumTextScalars: capacities[2],
+            maximumTextLines: capacities[3],
+            maximumPositionedGlyphs: capacities[4]
+        )!
     let result = layout(
         semantic: semantic,
-        metrics: ProbeMetricsView(),
+        metrics: GiftUIReferenceTextResources.targetPackage.metrics,
         proposal: proposal,
-        limits: limits,
+        limits: resolvedLimits,
         workspace: &workspace,
         sink: &sink
     )
