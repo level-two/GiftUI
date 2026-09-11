@@ -49,8 +49,11 @@ declared_inputs() {
             "$PROJECT_ROOT/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
             "$PROJECT_ROOT/docs/specs/spec-008-rendering.md" \
             "$PROJECT_ROOT/docs/implementation-plans/spec-008-implementation-plan.md" \
+            "$PROJECT_ROOT/Sources/GiftUISemanticCore/SemanticLayoutView.swift" \
+            "$PROJECT_ROOT/Sources/GiftUISemanticCore/SemanticRenderView.swift" \
             "$PROJECT_ROOT/Sources/GiftUILayout/ResolvedRenderLayoutView.swift" \
             "$PROJECT_ROOT/Tests/GiftUILayoutTests/ResolvedRenderLayoutViewTests.swift" \
+            "$PROJECT_ROOT/Tests/GiftUIRenderLoweringTests/RenderViewBorrowTests.swift" \
             "$PROJECT_ROOT/scripts/contracts/driver-registry.tsv" \
             "$SCRIPT_DIR/check-spec-008-harness.rb" \
             "$SCRIPT_DIR/check-spec-008-migration.rb" \
@@ -62,6 +65,8 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-008-semantic-render-view.rb" \
             "$SCRIPT_DIR/check-spec-008-resolved-render-layout-view.rb" \
             "$SCRIPT_DIR/check-spec-008-direct-render-views.rb" \
+            "$SCRIPT_DIR/check-spec-008-render-view-boundaries.rb" \
+            "$SCRIPT_DIR/check-spec-008-render-view-static-exposure.sh" \
             "$SCRIPT_DIR/check-spec-008-declaration-profiles.sh" \
             "$SCRIPT_DIR/check-spec-008-color-surface.sh" \
             "$SCRIPT_DIR/check-spec-008-bounded-text-surface.sh" \
@@ -249,6 +254,8 @@ record_command "$SCRIPT_DIR/check-spec-008-resolved-render-layout-view.rb"
 "$SCRIPT_DIR/check-spec-008-resolved-render-layout-view.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-direct-render-views.rb"
 "$SCRIPT_DIR/check-spec-008-direct-render-views.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-008-render-view-boundaries.rb"
+"$SCRIPT_DIR/check-spec-008-render-view-boundaries.rb" >>"$log_path" 2>&1
 case "$profile" in
     macos-dynamic | macos-static) record_macos_identity ;;
     raspberry-pi-armv6) record_raspberry_pi_identity ;;
@@ -273,6 +280,10 @@ if [[ "$profile" == macos-* ]]; then
         declaration-runtime \
         "${declaration_dir#"$PROJECT_ROOT/"}/runtime.txt" \
         "$(hash_file "$declaration_dir/runtime.txt")" >>"$images_path"
+fi
+if [[ "$profile" == "macos-static" ]]; then
+    record_command "$SCRIPT_DIR/check-spec-008-render-view-static-exposure.sh"
+    "$SCRIPT_DIR/check-spec-008-render-view-static-exposure.sh" >>"$log_path" 2>&1
 fi
 record_command "$SCRIPT_DIR/check-spec-008-harness.rb" "$report_dir"
 "$SCRIPT_DIR/check-spec-008-harness.rb" "$report_dir" >>"$log_path" 2>&1

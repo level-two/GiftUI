@@ -308,7 +308,7 @@ copying a second semantic/layout result.
       every out-of-range index, every prohibited in-range `nil`, and all line/
       occurrence-wide glyph-index disagreements. Compare identity relations
       through symbolic fixture tokens, never raw bytes or hashes.
-- [ ] `T2.5` — Add import, lifetime, allocation, and materialization probes
+- [x] `T2.5` — Add import, lifetime, allocation, and materialization probes
       proving the views remain in their authoritative owners, share exact
       identity, retain no borrow, allocate zero on the static path, create no
       second complete graph/result, and expose no rendering authority to
@@ -846,7 +846,19 @@ line/glyph, and occurrence-wide glyph-index disagreement. A source audit
 rejects pointer, hash, memory-layout, and raw-byte identity comparisons; see
 the
 [direct render view evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-2/direct-render-views.md).
-T2.5 and T3.5 are the next dependency-complete evidence tasks.
+T3.5 is the next dependency-complete evidence task.
+
+`T2.5` is complete. A runtime lifetime test passes semantic and resolved-layout
+views carrying the only strong references to their source tokens through one
+generic shared-identity borrow and proves neither source is retained. The
+optimized static exposure probe reports zero heap-allocation instructions in
+that borrowed accessor. A registered boundary audit verifies the exact
+Semantic Core, Layout, and Render Core dependency closures, direct forwarding
+of both authoritative result views without adapter-owned collection/reference
+materialization, and absence of normalized rendering authority in Layout or
+layout authority in Render Core; see the
+[render view boundary evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-2/render-view-boundaries.md).
+`T3.5` is the next dependency-complete evidence task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
