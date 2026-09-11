@@ -538,7 +538,7 @@ without acquiring SPEC-008 authority.
       required by the separately approved drawing contract, and prove ordinary
       SPEC-008 production remains identical when no Canvas declaration is
       present. Any integration implementation belongs to SPEC-012's plan.
-- [ ] `T7.5` — Audit SPEC-011 coexistence using a visual Button fixture whose
+- [x] `T7.5` — Audit SPEC-011 coexistence using a visual Button fixture whose
       label, foreground, background, and painter order lower through SPEC-008
       while disabled state, hit geometry, action identity, pointer capture, and
       dispatch remain outside semantic render views and normalized operations.
@@ -1123,6 +1123,16 @@ combined producer and its future zero-Canvas entry-point comparison remain
 owned by SPEC-012 T5.3; see the
 [Canvas coexistence evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-7/canvas-coexistence.md).
 `T7.5` is the next dependency-complete task.
+
+`T7.5` is complete. A visual Button projection executes the canonical
+structural, red-foreground, blue-background, and two-glyph label path and
+proves the fill precedes the label glyph group. Its companion ownership fixture
+keeps disabled state, hit geometry, action identity, pointer capture, dispatch,
+and hit-map state excluded from semantic render views and normalized operations;
+see the
+[Button coexistence evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-7/button-coexistence.md).
+Interaction implementation and conformance remain in SPEC-011's plan. `T8.1`
+is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

@@ -540,6 +540,75 @@ func streamingRepeatsCanonicalLookupsAndEmitsTheExactOrderedValues() {
 }
 
 @Test
+func visualButtonProjectionLowersOnlyLabelStylesAndPainterOrder() {
+    var workspace = PreflightWorkspace<RenderFixtureIdentity>()
+    var sink = StreamingSink()
+
+    let result = RenderProducer.produce(
+        semantic: DirectRenderFixtures.validSemantic,
+        layout: DirectRenderFixtures.validLayout,
+        textMetrics: PreflightMetrics(),
+        surfaceBounds: DirectRenderFixtures.bounds,
+        damageMode: .rootIntersection,
+        rootForeground: .white,
+        limits: RenderLimits(
+            maximumOperations: 2,
+            maximumPositionedGlyphs: 2,
+            maximumClipDepth: 2
+        )!,
+        workspace: &workspace,
+        sink: &sink
+    )
+
+    guard case .success = result else {
+        Issue.record("expected the visual projection to lower")
+        return
+    }
+    #expect(
+        sink.events == [
+            .begin(
+                RenderPlanHeader(
+                    surfaceBounds: DirectRenderFixtures.bounds,
+                    damageBounds: DirectRenderFixtures.bounds,
+                    operationCount: 2,
+                    positionedGlyphCount: 2,
+                    maximumObservedClipDepth: 2
+                )
+            ),
+            .fill(
+                FillRectOperation(
+                    bounds: DirectRenderFixtures.bounds,
+                    clip: DirectRenderFixtures.bounds,
+                    color: .blue
+                )
+            ),
+            .beginGlyphs(
+                PositionedGlyphOperationHeader(
+                    instance: DirectRenderFixtures.instance,
+                    clip: DirectRenderFixtures.bounds,
+                    color: .red,
+                    glyphCount: 2
+                )
+            ),
+            .glyph(
+                PositionedGlyph(
+                    glyph: GlyphID(rawValue: 1),
+                    baseline: Point(x: 1, y: 12)
+                )
+            ),
+            .glyph(
+                PositionedGlyph(
+                    glyph: GlyphID(rawValue: 2),
+                    baseline: Point(x: 5, y: 12)
+                )
+            ),
+            .endGlyphs,
+            .finish,
+        ]
+    )
+}
+
+@Test
 func foregroundStackUsesInnermostColorRestoresSiblingsAndOrdersNestedBackgrounds() {
     let bounds = DirectRenderFixtures.bounds
     let instance = DirectRenderFixtures.instance

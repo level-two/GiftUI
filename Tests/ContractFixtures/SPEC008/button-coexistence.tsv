@@ -1,0 +1,11 @@
+# fact	owner	fixture_value	render_projection
+label	SPEC-008	bounded-text-two-glyphs	included
+foreground	SPEC-008	red	included
+background	SPEC-008	blue	included
+painter-order	SPEC-008	background-before-label	included
+disabled	SPEC-011	true	excluded
+hit-geometry	SPEC-011	rect-0-0-40-20	excluded
+action-identity	SPEC-011	action-start	excluded
+pointer-capture	SPEC-011	none	excluded
+dispatch	SPEC-011	none	excluded
+hit-map	SPEC-011	runtime-owned	excluded
