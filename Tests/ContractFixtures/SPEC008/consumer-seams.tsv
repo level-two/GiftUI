@@ -1,0 +1,4 @@
+# owner	fixture	boundary	retained_authority
+SPEC-009	endpointReservesBeforeConsumptionAndRetainsOnlyAcceptedDerivedFrame	synchronous-one-shot-sink-envelope	none
+SPEC-013	canonicalCorpusMatchesAcrossRecordingDynamicAndStaticRenderProfiles	shared-render-lowering-coordination	none
+SPEC-014	sinkCarriesEmptyAndMultipleOperationStreamsInExactOrder	backend-side-render-core-consumption	none

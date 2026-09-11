@@ -526,7 +526,7 @@ without acquiring SPEC-008 authority.
       line, workspace, and sink limits used by all four profile runs; record
       declared and observed high-water without claiming they are final
       production-host budgets.
-- [ ] `T7.3` — Add integration fixtures for SPEC-009's synchronous one-shot
+- [x] `T7.3` — Add integration fixtures for SPEC-009's synchronous one-shot
       sink/envelope seam, SPEC-013's shared-lowering coordination seam, and
       SPEC-014's backend-side Render Core consumption boundary. Prove the
       operation borrow is consumable once and no consumer gains semantic,
@@ -1105,6 +1105,15 @@ traversal/clip/foreground high-water within common render, structural, and
 sink limits; see the
 [Signal Analyzer render-surface evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-7/signal-analyzer-render-surface.md).
 `T7.3` is the next dependency-complete task.
+
+`T7.3` is complete. Registered executable fixtures cover SPEC-009's
+nonescaping one-shot sink/envelope and post-return poisoning, SPEC-013's three
+profile paths through one shared lowering call, and SPEC-014-side ordered
+Render Core consumption. The audit rejects retained operation/resource values
+and semantic, layout, style, profile, disposition, capability, or raster
+authority in consumers; see the
+[consumer seam evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-7/consumer-seams.md).
+`T7.4` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
