@@ -752,8 +752,13 @@ production semantic-expansion mapping remains pending under `T2.1`.
 all five global limits. It accepts equality at each limit, rejects the next
 reservation without changing the admitted count, tracks balanced active depth
 and its high-water, validates the declared scope total, and retains the first
-failure. Semantic lookup, payload, Unicode, and reservation-before-access
-integration remain before this task can be marked complete.
+failure. The generic entry now also validates in-range child, modifier, and
+text-scalar access; transparent root and modifier cardinality; closed public
+payload values and relations; Unicode scalar validity; canonical instance,
+mapping, and metric availability; explicit line counts; and scalar/glyph
+reservation before lookup. Proposal-dependent wrapped-line reservation and
+the exact integrated first-failure corpus remain before this task can be
+marked complete.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-007 conforms or is `implemented`. The conformance report remains

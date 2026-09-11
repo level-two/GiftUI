@@ -34,13 +34,20 @@ where
     guard workspace.acquireLayout() else {
         return .failure(.invariantViolation)
     }
+    var validation = LayoutSemanticValidation(limits: limits)
+    if let error = validation.validate(
+        semantic: semantic,
+        metrics: metrics,
+        workspace: &workspace
+    ) {
+        workspace.resetLayout()
+        return .failure(error)
+    }
     workspace.resetLayout()
 
-    // T3.3 installs semantic validation and measurement at this seam. Until
-    // then, an otherwise admitted attempt fails closed without beginning or
-    // mutating the result sink.
-    _ = semantic
-    _ = metrics
+    // T3.4 and the measurement milestones install atomic sink publication and
+    // resolved geometry at this seam. Until then, a validated attempt still
+    // fails closed without beginning or mutating the result sink.
     _ = proposal
     return .failure(.invariantViolation)
 }
