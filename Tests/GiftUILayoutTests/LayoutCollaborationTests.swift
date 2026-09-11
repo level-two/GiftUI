@@ -123,6 +123,32 @@ func layoutEntryRetainsNeitherTheSemanticViewNorItsSourceLifetime() {
     #expect(releasedToken == nil)
 }
 
+@Test
+func invalidTextDeclarationStopsBeforeLayoutPublicationOrRenderInvocation() {
+    var workspace = ProbeWorkspace()
+    var sink = ProbeSink(currentScopes: [99])
+    var renderInvocationCount = 0
+
+    let result = layout(
+        semantic: InvalidTextSemanticView(),
+        metrics: InvalidTextMetricsView(),
+        proposal: ProposedSize()!,
+        limits: limits(),
+        workspace: &workspace,
+        sink: &sink
+    )
+    if case .success = result {
+        renderInvocationCount += 1
+    }
+
+    #expect(result == .failure(.invalidDeclaration))
+    #expect(sink.beginCount == 0)
+    #expect(sink.events.isEmpty)
+    #expect(sink.currentScopes == [99])
+    #expect(workspace.resetCount == 1)
+    #expect(renderInvocationCount == 0)
+}
+
 @Test(arguments: [0, 1, 2, 3, 4])
 func everyWorkspaceCapacityFailsBeforeAcquisitionOrInput(_ capacityIndex: Int) {
     let semantic = ProbeSemanticView()
@@ -445,6 +471,90 @@ private struct ProbeSemanticView: SemanticLayoutView {
         accesses.count += 1
         return nil
     }
+}
+
+private struct InvalidTextSemanticView: SemanticLayoutView {
+    let rootIdentity: UInt16 = 1
+    let scopeCount: UInt16 = 1
+
+    func primitive(at identity: UInt16) -> SemanticLayoutPrimitive? {
+        identity == rootIdentity ? .text : nil
+    }
+
+    func childCount(of identity: UInt16) -> UInt16? {
+        identity == rootIdentity ? 0 : nil
+    }
+
+    func child(of identity: UInt16, at index: UInt16) -> UInt16? { nil }
+
+    func modifierCount(of identity: UInt16) -> UInt16? {
+        identity == rootIdentity ? 0 : nil
+    }
+
+    func modifierScope(of identity: UInt16, at index: UInt16) -> UInt16? { nil }
+
+    func modifier(
+        of identity: UInt16,
+        at index: UInt16
+    ) -> SemanticLayoutModifier? { nil }
+
+    func textScalarCount(of identity: UInt16) -> UInt16? {
+        identity == rootIdentity ? 1 : nil
+    }
+
+    func textScalar(of identity: UInt16, at index: UInt16) -> UInt32? {
+        identity == rootIdentity && index == 0 ? 0xd800 : nil
+    }
+}
+
+private struct InvalidTextMetricsView: CanonicalTextMetricsView {
+    private let instanceValue: FontInstanceDescriptor
+
+    init() {
+        let resource = FontResourceID(
+            rawValue: TextResourceDigest(
+                word0: 0,
+                word1: 0,
+                word2: 0,
+                word3: 0,
+                word4: 0,
+                word5: 0,
+                word6: 0,
+                word7: 0
+            )
+        )
+        instanceValue = FontInstanceDescriptor(
+            id: FontInstanceID(resource: resource, instanceIndex: 0),
+            lineMetrics: FontLineMetrics(ascent: 1, descent: 1, lineGap: 0),
+            replacementGlyph: GlyphID(rawValue: 0),
+            glyphCount: 1,
+            mappingCount: 0
+        )
+    }
+
+    var descriptor: TextResourceDescriptor {
+        TextResourceDescriptor(
+            schemaVersion: 1,
+            resource: instanceValue.id.resource,
+            instanceCount: 1,
+            realizationCount: 0,
+            canonicalManifestByteCount: 0
+        )
+    }
+
+    func instance(at index: UInt16) -> FontInstanceDescriptor? {
+        index == 0 ? instanceValue : nil
+    }
+
+    func mapping(
+        at index: UInt16,
+        in instance: FontInstanceID
+    ) -> ScalarGlyphMappingRecord? { nil }
+
+    func metrics(
+        for glyph: GlyphID,
+        in instance: FontInstanceID
+    ) -> GlyphMetrics? { nil }
 }
 
 struct ProbeMetricsView: CanonicalTextMetricsView {

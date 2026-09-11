@@ -473,7 +473,7 @@ nonescaping borrows.
       unchanged nested clips, both damage modes, exact RGB, unclipped fill
       bounds, exact text identities/indices/baselines, non-empty groups, and
       empty-line omission.
-- [ ] `T6.2` — Complete UTF-8 and declaration integration, proving every
+- [x] `T6.2` — Complete UTF-8 and declaration integration, proving every
       admitted byte sequence and integer value, invalid literal propagation
       through semantic expansion into SPEC-007 rejection, and zero render
       invocation or layout publication after invalid declaration.
@@ -1050,6 +1050,14 @@ corpus audit checks every field, token, total, lifecycle, and source-test link;
 see the
 [canonical corpus evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-6/canonical-corpus.md).
 `T6.2` is the next dependency-complete task.
+
+`T6.2` is complete. The registered integration audit ties the complete
+UTF-8/`Int32` matrix and zero-allocation declaration probe to actual invalid
+literal preservation through semantic expansion, then to production layout
+rejection before sink begin/publication and before the gated render call. See
+the
+[text declaration integration evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-6/text-declaration-integration.md).
+`T6.3` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
