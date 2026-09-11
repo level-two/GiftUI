@@ -30,6 +30,17 @@ witnesses must compile; negative witnesses pass only when compilation fails
 for the registered ownership, escape, exclusivity, or typed-error reason. A
 Spike source is evidence only and is never an alternate maintained witness.
 
+Every compile-registry row maps to
+`Fixtures/Positive/<case>/main.swift` or
+`Fixtures/Negative/<case>/main.swift`; negative directories also contain the
+required diagnostic fragments. Run
+`scripts/contracts/check-spec-012-declarations.sh --profile macos-dynamic`
+or `--profile macos-static` for the T1.4 host check. The Path-consumption and
+captured-outer-context cases intentionally use optimized whole-module
+ownership checking, matching SPIKE-008; all other fixtures compile as clients
+of the emitted `GiftUI` module. T1.5 extends the same checker to the two cross
+profiles and records all four results.
+
 ## Normalized observations
 
 `normalized-fields.tsv` fixes the complete field vocabulary by domain. Tests
@@ -65,4 +76,3 @@ Evidence classes remain distinct:
 No SPEC-012 fixture or schema command deploys, accesses a remote target,
 restarts a service, or flashes a board. ARMv6 and nRF52840 compiler, linker,
 image, symbol, and ABI reports are cross-build or inspection evidence only.
-

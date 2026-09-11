@@ -53,6 +53,7 @@ declared_inputs() {
             "$PROJECT_ROOT/scripts/contracts/driver-registry.tsv" \
             "$SCRIPT_DIR/check-driver-registry.rb" \
             "$SCRIPT_DIR/check-spec-012-harness.rb" \
+            "$SCRIPT_DIR/check-spec-012-declarations.sh" \
             "$SCRIPT_DIR/check-spec-012-migration.rb" \
             "$SCRIPT_DIR/check-target-dependencies.rb" \
             "$SCRIPT_DIR/report-input-identity.rb" \

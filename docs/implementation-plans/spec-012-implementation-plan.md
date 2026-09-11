@@ -221,7 +221,7 @@ typed primitive without evaluating `body` or invoking drawing.
       and `DrawingError` declarations. Preserve opaque RGB exactly, mark
       nonpositive style widths invalid for the next stroke, and make the width
       overload precisely `.butt` plus `.miter`.
-- [ ] `T1.4` — Add positive compile witnesses for defaults, both stroke overloads,
+- [x] `T1.4` — Add positive compile witnesses for defaults, both stroke overloads,
       explicit typed trailing closures, stroke-mutate-stroke reuse, multiple
       subpaths, and concrete `DrawingError` throws. Add negative witnesses for
       initializers, copy/consume/escape, asynchronous escape, missing typed
@@ -711,3 +711,18 @@ defaults, explicit invalid markers, enum raw values, error shape, overload
 equivalence, and nonpositive-width suppression. Cross-profile interface and
 resource proof remains assigned to T1.5; T1.4 is the next dependency-complete
 task.
+
+`T1.4` is complete. Seven maintained positive fixtures compile Canvas/style
+defaults, both stroke overloads, explicit typed trailing closures,
+stroke-mutate-stroke Path reuse, multiple subpaths, and concrete
+`DrawingError` propagation. Nine maintained negative fixtures reject public
+context/Path construction, explicit Path copying, borrowed consumption,
+Path return and asynchronous escape, missing or wrong typed errors, and
+captured outer-context access. Each rejection has a required diagnostic
+fragment. The reproducible macOS checker builds the maintained module and
+verifies all sixteen cases under optimized whole-module settings; ownership
+and exclusivity cases that require body visibility deliberately use the same
+whole-module mode as SPIKE-008, while the remaining cases compile against the
+emitted module. Registry status stays `pending` until T1.5 records all four
+profile compilers and emitted-artifact audits. `T1.5` is the next
+dependency-complete task.

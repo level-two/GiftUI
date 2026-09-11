@@ -1,0 +1,1 @@
+'path' is borrowed and cannot be consumed

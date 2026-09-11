@@ -60,6 +60,17 @@ fail_check("compile fixture statuses must begin pending") unless compile_rows.al
 compile_rows.each do |row|
   fail_check("compile fixture has unknown criterion") unless (row[3].split(",") - CRITERIA).empty?
 end
+positive.each do |name, _family, _expected, _criteria, _status|
+  source = FIXTURES.join("Fixtures/Positive", name, "main.swift")
+  fail_check("positive compile fixture #{name} is missing") unless source.file?
+end
+negative.each do |name, _family, _expected, _criteria, _status|
+  directory = FIXTURES.join("Fixtures/Negative", name)
+  fail_check("negative compile fixture #{name} is missing") unless directory.join("main.swift").file?
+  patterns = directory.join("expected-diagnostic-patterns.txt")
+  fail_check("negative diagnostic patterns for #{name} are missing") unless patterns.file?
+  fail_check("negative diagnostic patterns for #{name} are empty") if patterns.empty?
+end
 
 tokens = rows(FIXTURES.join("symbolic-tokens.tsv"), "# namespace\tformat\tauthority", 3)
 fail_check("symbolic namespaces are duplicated") unless tokens.map(&:first).uniq.length == tokens.length
