@@ -101,10 +101,9 @@ approved contract or satisfy an implementation task by themselves.
   publication, allocation interposition, cross-build inspection, and four-
   profile driver patterns. SPEC-006 and SPEC-010 demonstrate fail-closed
   incremental drivers while dependencies remain incomplete.
-- SPEC-006 is `review` for its primitive-with-content amendment, and SPEC-010
-  is implementing. SPEC-007 and SPEC-008 have active plans but incomplete
-  production layout or render targets. Any execution work that consumes the
-  amended SPEC-006 traversal waits for explicit reapproval. Approved
+- SPEC-006 is `approved`, including its primitive-with-content amendment, and
+  SPEC-010 is implementing. SPEC-007 and SPEC-008 have active plans but
+  incomplete production layout or render targets. Approved
   SPEC-013 owns the production dynamic/static coordinators and their concrete
   bounded storage; approved SPEC-014 owns production endpoints; and approved
   SPEC-015 owns assembled capacities, retry pacing, and target policy.

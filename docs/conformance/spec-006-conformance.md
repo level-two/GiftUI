@@ -24,8 +24,8 @@ superseded_by: null
 
 ## Review Scope
 
-- Governing contract: [SPEC-006 Declarative View Semantics](../specs/spec-006-declarative-view-semantics.md), status `review` after the primitive-with-content amendment.
-- Derived plan: [SPEC-006 Implementation Plan](../implementation-plans/spec-006-implementation-plan.md), completed by this review.
+- Governing contract: [SPEC-006 Declarative View Semantics](../specs/spec-006-declarative-view-semantics.md), status `approved` after explicit maintainer reapproval of the primitive-with-content amendment on 2026-09-10.
+- Derived plan: [SPEC-006 Implementation Plan](../implementation-plans/spec-006-implementation-plan.md), status `ready` for the approved amendment; its earlier milestones were completed by the prior review.
 - Reviewed implementation revision: `1d7b25c68413159eaee7798e741bc6af627160d3`.
 - Design note: [bounded semantic expansion](../implementation-designs/spec-006-bounded-semantic-expansion.md), status `current`.
 - Environments: Apple Swift 6.3.3 macOS arm64 dynamic/static host execution;
@@ -33,9 +33,8 @@ superseded_by: null
   cross-build and artifact inspection.
 
 The Proposal, RFC, and ADR authority chain remains accepted/approved. SPEC-006
-itself is under review and remains required for the Signal Analyzer's fixed
-non-trivial hierarchy and common Rank 0 semantics across all four MVP
-configurations.
+is approved and remains required for the Signal Analyzer's fixed non-trivial
+hierarchy and common Rank 0 semantics across all four MVP configurations.
 
 ## Acceptance-Criterion Results
 
@@ -110,9 +109,8 @@ current work.
 
 ## Review Conclusion
 
-The fifteen criteria from the previously approved revision retain reproducible
-passing evidence, but new criterion `DV-016` is pending and the amended
-Specification is awaiting reapproval. This collecting report no longer
-supports an `implemented` transition. After reapproval and authorized
-implementation, the new operation requires complete four-profile evidence and
-renewed conformance review.
+The fifteen criteria from the prior revision retain reproducible passing
+evidence, and the amended Specification is approved, but new criterion
+`DV-016` remains pending. This collecting report does not yet support an
+`implemented` transition. The new operation requires authorized
+implementation, complete four-profile evidence, and renewed conformance review.

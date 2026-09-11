@@ -47,9 +47,9 @@ target_milestone: MVP
 > **Approval status:** Approved by explicit maintainer authorization. The
 > governing Proposal and RFCs, accepted architectural decisions, and approved
 > Foundation, Failure, Text Resource, and Declarative contracts are
-> authoritative prerequisites. Stack declaration and production semantic
-> integration work is paused while SPEC-006's typed primitive-with-content
-> traversal amendment is in review; this pause does not amend this contract.
+> authoritative prerequisites. SPEC-006's typed primitive-with-content
+> traversal amendment was explicitly reapproved on 2026-09-10; stack work may
+> consume it once its authorized implementation lands.
 
 ## Summary
 
@@ -176,8 +176,8 @@ are Client API and MUST lower through SPEC-006's typed primitive/modifier seam.
 They MUST NOT perform layout while their values are initialized or `body` is
 evaluated.
 
-`VStack`, `HStack`, and `ZStack` MUST lower through SPEC-006's reviewed
-primitive-with-content overload once it is reapproved. Each stores the
+`VStack`, `HStack`, and `ZStack` MUST lower through SPEC-006's approved
+primitive-with-content overload. Each stores the
 builder-produced `Content`, has `Body == Never`, and supplies its exact typed
 stack payload and content in one traversal call. `Spacer` remains a leaf
 primitive using SPEC-006's existing leaf operation.

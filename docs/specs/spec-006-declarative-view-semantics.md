@@ -2,7 +2,7 @@
 id: SPEC-006
 feature: giftui-mvp-architecture
 title: Declarative View Semantics Specification
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-25
@@ -42,11 +42,10 @@ target_milestone: MVP
 
 # SPEC-006: Declarative View Semantics Specification
 
-> **Approval status:** Amendment under review. The previously approved contract
-> did not expose the primitive-with-content traversal operation required by its
-> own framework-child expansion rule and by approved SPEC-007. The amendment
-> below requires explicit maintainer reapproval before implementation relies on
-> the new operation.
+> **Approval status:** Explicitly reapproved by the maintainer on 2026-09-10.
+> This revision adds the primitive-with-content traversal operation required by
+> the existing framework-child expansion rule and approved SPEC-007. The
+> amended contract is authoritative for implementation.
 
 ## Summary
 
@@ -1171,11 +1170,8 @@ for later layout adapters.
 
 ## Open Issues
 
-The primitive-with-content amendment is awaiting explicit maintainer review and
-reapproval. Until that gate closes, downstream stack declarations and semantic
-integration that require the new overload remain paused.
-
-No other open issue remains. The contract-level builder-arity choice
+No open issue remains. The primitive-with-content amendment was explicitly
+reapproved on 2026-09-10. The contract-level builder-arity choice
 is resolved in favor of five direct expressions. The maintained Rank 0
 surface therefore remains fixed at arities zero through five; clients compose
 larger hierarchies by nesting fixed groups or custom views.

@@ -24,8 +24,8 @@ its required acceptance criteria.
 - [SPEC-015](spec-015-host-configuration.md) — MVP Target-Host
   Configuration Contract (`approved`)
 - [SPEC-006](spec-006-declarative-view-semantics.md) — Declarative View
-  Semantics Specification (`review`; primitive-with-content amendment awaiting
-  explicit reapproval)
+  Semantics Specification (`approved`; primitive-with-content amendment
+  explicitly reapproved on 2026-09-10)
 - [SPEC-009](spec-009-execution-cycle-and-frame-handoff.md) — Execution Cycle
   and Frame Handoff Contract (`approved`, including focused-owner failure
   amendment)

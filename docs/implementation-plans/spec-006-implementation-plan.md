@@ -2,7 +2,7 @@
 spec: SPEC-006
 feature: giftui-mvp-architecture
 title: SPEC-006 Implementation Plan
-status: completed
+status: ready
 owners:
   - codex
 created: 2026-09-01
@@ -21,16 +21,17 @@ superseded_by: null
 
 # SPEC-006 Implementation Plan
 
-> **Revision notice:** This completed plan covers the previously approved
-> fifteen-criterion contract. SPEC-006 returned to `review` on 2026-09-10 with
-> proposed criterion `DV-016`; the amendment requires explicit reapproval and
-> a revised or superseding implementation plan before implementation resumes.
+> **Revision notice:** The original seven milestones remain completed evidence
+> for the prior fifteen-criterion contract. SPEC-006 was explicitly reapproved
+> on 2026-09-10 with criterion `DV-016`; Milestone 8 is ready and must complete
+> before renewed conformance review.
 
-> This completed plan derived work from the previously approved Declarative
-> View Semantics Specification. It ordered implementation and evidence but did
-> not amend the
-> declaration, expansion, identity, action, state-host, modifier, failure, or
-> profile contracts owned by that Specification and its dependencies.
+> The completed portion of this plan derived work from the previously approved
+> Declarative View Semantics Specification. This revision adds only ordered
+> implementation and evidence work for the reapproved amendment; it does not
+> amend the declaration, expansion, identity, action, state-host, modifier,
+> failure, or profile contracts owned by that Specification and its
+> dependencies.
 
 ## Authority and Scope
 
@@ -149,6 +150,7 @@ once below and maps to implementation tasks and reproducible evidence.
 | `DV-013` — Complete proof-of-concept migration closure with no second expansion engine | `T0.4`, `T1.4`, `T6.3`, `T7.1` | Migration inventory and repository-wide forbidden-surface scan | pass |
 | `DV-014` — FW-017/FW-020 remain reciprocal optional post-MVP captures | `T0.1`, `T7.2` | Governance and reciprocal-link audit | pass |
 | `DV-015` — Generated SPEC-010 witness binds before body, preserves successful semantics, and publishes nothing on binding failure | `T5.1`, `T5.2`, `T5.3` | Macro expansion, lexical binding transcript, bound-copy probe, and failure atomicity report | pass |
+| `DV-016` — Exact primitive-with-content dispatch, primitive-before-child traversal, canonical identity/order, unevaluated body, and atomic failure across all profiles | `T8.1`-`T8.4` | Public-interface and visitor-conformance audit, focused traversal tests, canonical corpus, allocation/dependency probes, four-profile reports, and renewed conformance review | pending |
 
 ## Milestones and Tasks
 
@@ -465,6 +467,42 @@ upstream blockers rather than hidden plan edits.
       changed, or blocked with a recorded reason. Do not mark SPEC-006
       `implemented` without complete conformance review and explicit maintainer
       authorization.
+
+### Milestone 8: Implement the Approved Primitive-with-Content Amendment
+
+**Entry conditions:** SPEC-006 is explicitly reapproved; PROPOSAL-003 remains
+`accepted`; linked RFCs remain `approved`; linked ADRs remain `accepted`; and
+SPEC-002, SPEC-003, SPEC-007, and SPEC-010 retain their applicable authority.
+
+**Exit evidence:** The exact primitive-with-content operation is implemented,
+every visitor conforms to the revised sealed surface, `DV-016` has reproducible
+four-profile evidence, and the collecting conformance report is ready for
+renewed review without claiming the `implemented` transition.
+
+- [ ] `T8.1` — Add the exact typed
+      `visitPrimitive(content:payload:)` requirement to `GiftUI`, update every
+      framework and fixture visitor conformance without a default compatibility
+      hook, and add public/package surface checks proving leaf primitives retain
+      the existing unlabeled operation while a framework-only container calls
+      the new overload exactly once with `Body == Never`.
+- [ ] `T8.2` — Implement Semantic Core traversal so the container primitive is
+      reserved and staged before content enters existing `fixedChild(0)`
+      structure. Add focused empty, one-child, five-child, nested, conditional,
+      optional, and modified-content tests covering canonical identity/order,
+      depth accounting, first-failure precedence, atomic discard, workspace
+      reuse, and zero body evaluation.
+- [ ] `T8.3` — Extend the canonical SPEC-006 corpus, normalized results,
+      acceptance/evidence registry, underscored-reference allow-list, allocation
+      and complexity probes, and all four contract-driver profiles. Prove equal
+      dynamic/static meaning, zero static-path heap allocation, unchanged
+      dependency boundaries, bounded depth/counters, ARMv6 inspection, and
+      nRF52840 hard-float ELF evidence without connected hardware.
+- [ ] `T8.4` — Run the repository and four-profile gates, update every task
+      disposition and stable evidence link, and revise the SPEC-006 conformance
+      report so `DV-016` receives a reviewable disposition. Return this plan to
+      `completed` only when every Milestone 8 task is complete or has an
+      explicit blocker; do not mark SPEC-006 `implemented` without renewed
+      conformance review and explicit maintainer authorization.
 
 ## Design-Note Triggers
 
@@ -876,10 +914,9 @@ completed while SPEC-006 remained `implementing`; explicit human authorization
 was still required for the `implemented` transition. Milestone 7 and this
 implementation plan were complete for that contract revision.
 
-On 2026-09-10, SPEC-007 implementation exposed a contract gap and SPEC-006
-returned to `review` with a proposed typed primitive-with-content overload and
-new criterion `DV-016`. This completed plan and its evidence predate that
-amendment. After explicit reapproval, the implementation plan must be revised
-or superseded to map `DV-016` to declaration, traversal, identity, failure,
-profile, allocation, and contract-driver evidence before implementation of the
-new operation begins.
+On 2026-09-10, SPEC-007 implementation exposed a contract gap and SPEC-006 was
+explicitly reapproved with a typed primitive-with-content overload and new
+criterion `DV-016`. The original completed evidence predates that amendment.
+Milestone 8 now maps `DV-016` to declaration, traversal, identity, failure,
+profile, allocation, contract-driver, and conformance work. The plan is
+`ready`; implementation has not yet resumed.

@@ -71,13 +71,13 @@ and the `rasterPresentation` catalogue while referencing the first two
 contracts instead of redefining them.
 
 Wave 2 retains these immutable identities. SPEC-006 was explicitly reapproved
-after ADR-033 alignment and returned to review on 2026-09-10 for its
-primitive-with-content traversal amendment:
+after ADR-033 alignment and again on 2026-09-10 for its primitive-with-content
+traversal amendment:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
 | `TEXT` | `SPEC-005` | `approved` |
-| `DECLARATIVE` | `SPEC-006` | `review` |
+| `DECLARATIVE` | `SPEC-006` | `approved` |
 
 SPEC-005 and SPEC-006 are parallel sibling contracts. SPEC-005 owns exact text
 resource identities, compatible resource views, and resource lifetimes;

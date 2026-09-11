@@ -150,11 +150,10 @@ All declarations below are package SPI unless explicitly stated otherwise.
   this contract, while `GiftUIRenderLowering` alone owns detection and
   production behavior.
 
-SPEC-002, SPEC-003, SPEC-007, and SPEC-008 are approved. SPEC-006 was approved
-when this contract was reapproved and has since returned to review for a
-primitive-with-content traversal amendment. Execution work that consumes that
-amendment waits for its explicit reapproval. This Specification MUST NOT
-redefine those contracts' types, local errors, atomicity, or ownership.
+SPEC-002, SPEC-003, SPEC-006, SPEC-007, and SPEC-008 are approved. SPEC-006's
+primitive-with-content traversal amendment was explicitly reapproved on
+2026-09-10. This Specification MUST NOT redefine those contracts' types, local
+errors, atomicity, or ownership.
 
 ## Related ADRs
 
