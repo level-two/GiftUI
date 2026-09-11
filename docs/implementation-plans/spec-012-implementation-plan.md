@@ -7,7 +7,8 @@ owners:
   - codex
 created: 2026-09-09
 updated: 2026-09-11
-related_design_notes: []
+related_design_notes:
+  - ../implementation-designs/spec-012-scoped-path-and-plan-storage.md
 conformance_report: null
 related_future_work: []
 related_explorations: []
@@ -209,7 +210,7 @@ payload, and SPEC-008 `Color` declarations remain available.
 all forbidden ownership/escape examples fail, and Canvas traversal stages one
 typed primitive without evaluating `body` or invoking drawing.
 
-- [ ] `T1.1` — Implement exact `Canvas` declaration, initializer, `Body == Never`,
+- [x] `T1.1` — Implement exact `Canvas` declaration, initializer, `Body == Never`,
       invariant `body`, primitive marker, and one-call traversal override in
       `GiftUI`. Preserve the exact draw callable for semantic staging without a
       public/package lookup and without invocation during expansion.
@@ -670,3 +671,16 @@ the absence of premature SPEC-013/014 targets, rejection of retained
 source adoption. The updated macOS dynamic report passes while all DR rows
 remain fail-closed. Milestone 0 is complete; `T1.1` is the next
 dependency-complete task.
+
+`T1.1` is complete. `GiftUI.Canvas` now has the exact typed-throws initializer,
+private retained draw callable, `Body == Never` invariant body, primitive
+marker conformance, and one-call traversal override. The focused declaration
+test proves traversal records exactly one primitive while evaluating no body
+and invoking no drawing. The linked draft scoped-storage design records the
+replaceable ownership and lifecycle direction needed by T1.2 and T3 without
+widening the approved API. Minimal exact `GraphicsContext` and `DrawingError`
+type declarations exist only because the Canvas signature requires them;
+their operations and behavioral obligations remain incomplete under T1.2 and
+T1.3. The 388-test host suite, exact GiftUI source inventory, migration audit,
+and macOS dynamic SPEC-012 driver pass; all DR rows remain fail-closed. `T1.2`
+is the next dependency-complete task.

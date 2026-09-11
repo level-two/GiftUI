@@ -90,6 +90,21 @@ final class DeclarativeViewTests: XCTestCase {
         XCTAssertEqual(visitor.modifierVisits, 1)
     }
 
+    func testCanvasStagesOnePrimitiveWithoutInvokingDrawOrEvaluatingBody() {
+        let counter = InvocationCounter()
+        let canvas = Canvas { (_, _) throws(DrawingError) in
+            counter.value += 1
+        }
+        let _: Canvas.Body.Type = Never.self
+        var visitor = CustomViewProbeVisitor(evaluateBody: true)
+
+        canvas._giftUITraverse(&visitor)
+
+        XCTAssertEqual(visitor.primitiveVisits, 1)
+        XCTAssertEqual(visitor.bodyEvaluations, 0)
+        XCTAssertEqual(counter.value, 0)
+    }
+
     func testPrimitiveWithContentUsesOnlyItsTypedOverloadAndNeverReadsBody() {
         let empty = PrimitiveContainer {}
         let one = PrimitiveContainer { PrimitiveLeaf() }
@@ -112,6 +127,10 @@ final class DeclarativeViewTests: XCTestCase {
         XCTAssertEqual(visitor.fixedArities, [5])
         XCTAssertEqual(visitor.bodyEvaluations, 0)
     }
+}
+
+private final class InvocationCounter {
+    var value = 0
 }
 
 private enum TestAction: UInt16, GiftUIAction {
