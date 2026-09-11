@@ -1138,6 +1138,32 @@ where
         }
     }
 
+    mutating func visitPrimitive<
+        Content: View,
+        Payload: _GiftUISemanticPrimitivePayload
+    >(
+        content: borrowing Content,
+        payload: borrowing Payload
+    ) {
+        guard beginCategory(), let currentIdentity else {
+            if failure == nil {
+                stop(.invalidIdentity)
+            }
+            return
+        }
+        if let error = attempt.stageSemanticOccurrence(
+            identity: currentIdentity,
+            payload: payload,
+            workspace: &workspace,
+            sink: &sink
+        ) {
+            stop(error)
+            return
+        }
+
+        expandFixedChild(content, index: 0)
+    }
+
     mutating func visitActionPrimitive<Payload: _GiftUISemanticActionPayload>(
         _ payload: borrowing Payload
     ) {

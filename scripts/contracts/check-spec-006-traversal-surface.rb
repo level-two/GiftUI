@@ -23,12 +23,24 @@ required_fragments = [
   "mutating func visitOptionalAbsent<Content: View>(_ content: Content.Type)",
   "mutating func visitOptionalPresent<Content: View>(",
   "mutating func visitPrimitive<Payload: _GiftUISemanticPrimitivePayload>(",
+  "Content: View,",
+  "Payload: _GiftUISemanticPrimitivePayload",
+  "content: borrowing Content,",
+  "payload: borrowing Payload",
   "mutating func visitActionPrimitive<Payload: _GiftUISemanticActionPayload>(",
   "Payload: _GiftUISemanticModifierPayload"
 ]
 
 required_fragments.each do |fragment|
   failures << "missing traversal fragment: #{fragment}" unless source.include?(fragment)
+end
+
+if source.scan(/mutating func visitPrimitive</).length != 2
+  failures << "expected exactly leaf and primitive-with-content visitor requirements"
+end
+
+if source.match?(/extension _GiftUISemanticTraversalVisitor/)
+  failures << "traversal visitor must not supply a default compatibility hook"
 end
 
 if source.scan(/func _giftUITraverse</).length != 9
@@ -41,6 +53,7 @@ end
 
 allowed_source_paths = [
   "Sources/GiftUI/DeclarativeView.swift",
+  "Sources/GiftUI/LayoutModifiers.swift",
   "Sources/GiftUI/ObservableState.swift",
   "Sources/GiftUI/StyleModifiers.swift",
   "Sources/GiftUI/Text.swift",

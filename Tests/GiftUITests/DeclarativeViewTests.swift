@@ -89,6 +89,29 @@ final class DeclarativeViewTests: XCTestCase {
         XCTAssertEqual(visitor.actionPrimitiveVisits, 1)
         XCTAssertEqual(visitor.modifierVisits, 1)
     }
+
+    func testPrimitiveWithContentUsesOnlyItsTypedOverloadAndNeverReadsBody() {
+        let empty = PrimitiveContainer {}
+        let one = PrimitiveContainer { PrimitiveLeaf() }
+        let five = PrimitiveContainer {
+            PrimitiveLeaf()
+            PrimitiveLeaf()
+            PrimitiveLeaf()
+            PrimitiveLeaf()
+            PrimitiveLeaf()
+        }
+        var visitor = CustomViewProbeVisitor(evaluateBody: true)
+
+        empty._giftUITraverse(&visitor)
+        one._giftUITraverse(&visitor)
+        five._giftUITraverse(&visitor)
+
+        XCTAssertEqual(visitor.primitiveWithContentVisits, 3)
+        XCTAssertEqual(visitor.primitiveVisits, 1)
+        XCTAssertEqual(visitor.emptyVisits, 1)
+        XCTAssertEqual(visitor.fixedArities, [5])
+        XCTAssertEqual(visitor.bodyEvaluations, 0)
+    }
 }
 
 private enum TestAction: UInt16, GiftUIAction {
@@ -142,6 +165,40 @@ private struct InactiveLeaf: View {
 
 private struct TestPrimitivePayload: _GiftUISemanticPrimitivePayload {}
 
+private struct PrimitiveLeaf: View, _GiftUISemanticPrimitivePayload {
+    typealias Body = Never
+
+    var body: Never {
+        fatalError("PrimitiveLeaf.body must remain unevaluated")
+    }
+
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    ) {
+        visitor.visitPrimitive(self)
+    }
+}
+
+private struct PrimitiveContainer<Content: View>: View {
+    typealias Body = Never
+
+    let content: Content
+
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+
+    var body: Never {
+        fatalError("PrimitiveContainer.body must remain unevaluated")
+    }
+
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    ) {
+        visitor.visitPrimitive(content: content, payload: TestPrimitivePayload())
+    }
+}
+
 private struct TestActionPayload: _GiftUISemanticActionPayload {
     let _giftUIAction: TestAction
 }
@@ -178,6 +235,7 @@ struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
     var optionalAbsentVisits = 0
     var optionalPresentVisits = 0
     var primitiveVisits = 0
+    var primitiveWithContentVisits = 0
     var actionPrimitiveVisits = 0
     var modifierVisits = 0
     var styleVisits: [StyleVisit] = []
@@ -273,6 +331,19 @@ struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
         _ payload: borrowing Payload
     ) {
         primitiveVisits += 1
+    }
+
+    mutating func visitPrimitive<
+        Content: View,
+        Payload: _GiftUISemanticPrimitivePayload
+    >(
+        content: borrowing Content,
+        payload: borrowing Payload
+    ) {
+        primitiveWithContentVisits += 1
+        if evaluateBody {
+            content._giftUITraverse(&self)
+        }
     }
 
     mutating func visitActionPrimitive<Payload: _GiftUISemanticActionPayload>(

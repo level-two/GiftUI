@@ -2,11 +2,11 @@
 spec: SPEC-006
 feature: giftui-mvp-architecture
 title: SPEC-006 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-01
-updated: 2026-09-10
+updated: 2026-09-11
 related_design_notes:
   - ../implementation-designs/spec-006-bounded-semantic-expansion.md
 conformance_report: ../conformance/spec-006-conformance.md
@@ -479,7 +479,7 @@ every visitor conforms to the revised sealed surface, `DV-016` has reproducible
 four-profile evidence, and the collecting conformance report is ready for
 renewed review without claiming the `implemented` transition.
 
-- [ ] `T8.1` — Add the exact typed
+- [x] `T8.1` — Add the exact typed
       `visitPrimitive(content:payload:)` requirement to `GiftUI`, update every
       framework and fixture visitor conformance without a default compatibility
       hook, and add public/package surface checks proving leaf primitives retain
@@ -919,4 +919,14 @@ explicitly reapproved with a typed primitive-with-content overload and new
 criterion `DV-016`. The original completed evidence predates that amendment.
 Milestone 8 now maps `DV-016` to declaration, traversal, identity, failure,
 profile, allocation, contract-driver, and conformance work. The plan is
-`ready`; implementation has not yet resumed.
+`active`; implementation resumed on 2026-09-11 at the maintainer's request.
+
+`T8.1` is complete: `GiftUI` exposes the exact required
+`visitPrimitive(content:payload:)` overload with no default compatibility
+hook. Every maintained framework and fixture visitor conforms to the revised
+sealed surface, leaf primitives retain the unlabeled operation, and a focused
+framework-only declaration test covers empty, one-child, and five-child
+builder content with `Body == Never`, one typed dispatch, and zero body
+evaluations. Semantic Core's conformance stages the primitive before entering
+the existing `fixedChild(0)` path; the complete traversal and failure corpus
+remains assigned to `T8.2`.

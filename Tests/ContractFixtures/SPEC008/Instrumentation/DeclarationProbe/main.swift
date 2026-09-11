@@ -89,6 +89,17 @@ private struct DeclarationVisitor: _GiftUISemanticTraversalVisitor {
         primitiveVisitCount &+= 1
     }
 
+    mutating func visitPrimitive<
+        Content: View,
+        Payload: _GiftUISemanticPrimitivePayload
+    >(
+        content: borrowing Content,
+        payload: borrowing Payload
+    ) {
+        primitiveVisitCount &+= 1
+        content._giftUITraverse(&self)
+    }
+
     mutating func visitActionPrimitive<Payload: _GiftUISemanticActionPayload>(
         _ payload: borrowing Payload
     ) {}
