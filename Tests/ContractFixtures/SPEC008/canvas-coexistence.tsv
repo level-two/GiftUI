@@ -1,0 +1,5 @@
+# boundary	current_owner	preserved_fact	future_owner
+semantic-declaration	SPEC-006	generic-primitive-payload-and-visitor	SPEC-012-T1.1-T2.4
+semantic-render-scope	SPEC-008	closed-ordinary-cases-unchanged	SPEC-012-T2.2
+ordered-operation-sink	SPEC-008	fill-and-glyph-stream-unchanged	SPEC-012-T2.2
+ordinary-production	SPEC-008	exact-zero-canvas-transcript	SPEC-012-T5.3

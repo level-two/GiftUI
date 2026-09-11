@@ -533,7 +533,7 @@ without acquiring SPEC-008 authority.
       layout, style resolution, profile selection, frame disposition,
       capability, or raster authority. Do not implement those Specifications'
       owned behavior here.
-- [ ] `T7.4` — Audit SPEC-012 coexistence without adding Canvas/stroke cases to
+- [x] `T7.4` — Audit SPEC-012 coexistence without adding Canvas/stroke cases to
       the SPEC-008 criterion set or base transcript. Preserve extension points
       required by the separately approved drawing contract, and prove ordinary
       SPEC-008 production remains identical when no Canvas declaration is
@@ -1114,6 +1114,15 @@ and semantic, layout, style, profile, disposition, capability, or raster
 authority in consumers; see the
 [consumer seam evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-7/consumer-seams.md).
 `T7.4` is the next dependency-complete task.
+
+`T7.4` is complete. The fail-closed coexistence audit keeps Canvas/stroke cases
+out of the SPEC-008 criterion set and base transcript, preserves the generic
+primitive visitor and additive Render Core seams named by approved SPEC-012,
+and executes the exact ordinary transcript with no Canvas declaration. The
+combined producer and its future zero-Canvas entry-point comparison remain
+owned by SPEC-012 T5.3; see the
+[Canvas coexistence evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-7/canvas-coexistence.md).
+`T7.5` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
