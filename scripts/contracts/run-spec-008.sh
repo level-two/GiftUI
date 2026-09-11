@@ -40,7 +40,9 @@ esac
 declared_inputs() {
     {
         find "$PROJECT_ROOT/Sources/GiftUI" \
+            "$PROJECT_ROOT/Sources/GiftUIRenderLowering" \
             "$PROJECT_ROOT/Tests/GiftUITests" \
+            "$PROJECT_ROOT/Tests/GiftUIRenderLoweringTests" \
             "$PROJECT_ROOT/Tests/GiftUISemanticCoreTests" \
             "$FIXTURE_ROOT" -type f -print
         printf '%s\n' \
@@ -59,6 +61,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-008-migration.rb" \
             "$SCRIPT_DIR/check-spec-008-render-core-values.rb" \
             "$SCRIPT_DIR/check-spec-008-render-production-values.rb" \
+            "$SCRIPT_DIR/check-spec-008-render-preflight.rb" \
             "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb" \
             "$SCRIPT_DIR/check-spec-008-recording-sink.rb" \
             "$SCRIPT_DIR/check-spec-008-recording-verification.rb" \
@@ -120,7 +123,7 @@ printf '# label\tpath\tsha256\n' >"$images_path"
     printf 'repository_revision=%s\nrepository_dirty=%s\n' "$revision" "$dirty"
     printf 'input_set_sha256=%s\nrun_id=%s\n' "$input_set_sha256" "$run_id"
     printf 'invocation=scripts/contracts/run-spec-008.sh --profile %s\n' "$profile"
-    printf 'render_core_target=complete\nrender_lowering_target=blocked\n'
+    printf 'render_core_target=complete\nrender_lowering_target=active\n'
     printf 'declaration_profiles=pending\n'
     printf 'fixture_corpus=missing\nevidence_complete=false\n'
     printf 'remote_access=false\ndeployment=false\nservice_restart=false\n'
@@ -221,7 +224,7 @@ record_nrf52840_identity() {
     printf 'command-transcript\tcomplete\texact invoked checks recorded\n'
     printf 'fixture-digest\tcomplete\tdeclared inputs and fixture digest recorded\n'
     printf 'declaration-fixtures\tcomplete\tall 17 fixtures compile as expected for the selected profile\n'
-    printf 'render-targets\tblocked\tRender Core is present; Render Lowering has not landed\n'
+    printf 'render-targets\tactive\tRender Core is complete; Render Lowering preflight is complete while streaming and owner adaptation remain pending\n'
     printf 'value-layouts\tcomplete\tall 13 bounded values pass exact or maximum layouts for this profile\n'
     printf 'result-comparison\tmissing\tcanonical normalized results are not implemented\n'
     printf 'transcript-comparison\tmissing\tcanonical recording transcripts are not implemented\n'
@@ -244,6 +247,8 @@ record_command "$SCRIPT_DIR/check-spec-008-render-core-values.rb"
 "$SCRIPT_DIR/check-spec-008-render-core-values.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-render-production-values.rb"
 "$SCRIPT_DIR/check-spec-008-render-production-values.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-008-render-preflight.rb"
+"$SCRIPT_DIR/check-spec-008-render-preflight.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb"
 "$SCRIPT_DIR/check-spec-008-render-operation-sink.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-recording-sink.rb"

@@ -383,7 +383,7 @@ deterministic failure precedence, and atomic sink behavior.
       **Amendment follow-up complete:** `RenderWorkspaceCapacity`, separate
       structural capacity reporting, and bounded semantic/layout ordinal visit
       sets have exact first/repeated/invalid and acquire/reset behavior.
-- [ ] `T4.2` — Implement canonical depth-first traversal and preflight over
+- [x] `T4.2` — Implement canonical depth-first traversal and preflight over
       immutable borrows. Validate root mapping, exact semantic/layout counts,
       ordinal bijections and preflight-only visit sets, every lookup and
       structural invariant,
@@ -929,7 +929,19 @@ fixtures cover their exact behavior. The value-layout probe now checks all 13
 bounded values on macOS dynamic/static, Raspberry Pi ARMv6, and nRF52840, with
 the two non-host profiles remaining cross-build evidence only; see the
 [amended contract evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-4/amended-render-contracts.md).
-`T4.2` remains the next dependency-complete implementation task.
+This prerequisite step unblocked `T4.2`.
+
+`T4.2` is complete. `GiftUIRenderLowering` now performs one canonical
+depth-first preflight over the immutable semantic and layout borrows, validates
+dense ordinal inverses through preflight-only visit sets, enforces render and
+structural capacities, checks every required scope/child/layout/line/glyph and
+resource relation, computes checked clips and damage, and constructs the exact
+header. Focused tests prove the five-scope/two-layout valid traversal, exact
+operation/glyph/clip totals, repeated layout mappings, declared and observed
+capacity boundaries, invalid roots/ordinals/snapshots/resources, zero emission,
+and exactly one sink-capacity read after successful validation; see the
+[preflight evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-4/render-preflight.md).
+`T4.3` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`
