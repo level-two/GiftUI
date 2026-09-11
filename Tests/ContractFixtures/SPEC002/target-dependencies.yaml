@@ -84,7 +84,10 @@ targets:
   GiftUILayoutTests:
     type: test
     dependencies:
+      - GiftUI
       - GiftUILayout
+      - GiftUISemanticCore
+      - GiftUITextResources
   GiftUILayoutFailureAdapterTests:
     type: test
     dependencies:

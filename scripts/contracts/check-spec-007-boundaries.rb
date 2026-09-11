@@ -23,7 +23,9 @@ targets = package.fetch("targets").to_h { |target| [target.fetch("name"), target
 expected_dependencies = {
   "GiftUILayout" => %w[GiftUI GiftUISemanticCore GiftUITextResources],
   "GiftUILayoutFailureAdapterFixture" => %w[GiftUIFailureCore GiftUILayout],
-  "GiftUILayoutTests" => %w[GiftUILayout],
+  "GiftUILayoutTests" => %w[
+    GiftUI GiftUILayout GiftUISemanticCore GiftUITextResources
+  ],
   "GiftUILayoutFailureAdapterTests" => %w[
     GiftUIFailureCore GiftUILayout GiftUILayoutFailureAdapterFixture
   ],
