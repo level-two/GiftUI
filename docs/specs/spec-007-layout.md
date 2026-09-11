@@ -844,6 +844,7 @@ geometry model is architectural or post-MVP work and must not be decided here.
 ## References
 
 - [SPEC-007 Implementation Plan](../implementation-plans/spec-007-implementation-plan.md)
+- [Bounded Layout Attempt Implementation Design](../implementation-designs/spec-007-bounded-layout-attempt.md)
 - [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
 - [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-003](../rfcs/rfc-003-deterministic-text-rendering-architecture.md)

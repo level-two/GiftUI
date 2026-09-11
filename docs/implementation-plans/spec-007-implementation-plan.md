@@ -7,7 +7,8 @@ owners:
   - codex
 created: 2026-09-05
 updated: 2026-09-10
-related_design_notes: []
+related_design_notes:
+  - ../implementation-designs/spec-007-bounded-layout-attempt.md
 conformance_report: null
 related_future_work:
   - FW-001
@@ -308,6 +309,10 @@ when Milestone 2's SPEC-006-owned prerequisites land.
 **Exit evidence:** One generic synchronous layout entry point enforces exact
 limits, workspace/sink acquisition, deterministic local errors, and atomic
 publication without retaining input.
+
+The caller-owned storage, generic entry, and atomic lifecycle use the
+replaceable realization described by the
+[Bounded Layout Attempt design note](../implementation-designs/spec-007-bounded-layout-attempt.md).
 
 - [x] `T3.1` — Implement `LayoutLimits`, `LayoutSummary`, `LayoutError`, and
       `LayoutResult` with exact access, raw values, nonzero-limit initializer,
