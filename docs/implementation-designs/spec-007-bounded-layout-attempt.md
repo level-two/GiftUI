@@ -112,6 +112,12 @@ call. Workspace slots copy only exact identity values and derived layout/text
 values. Reset invalidates every occupied slot before the call returns, so no
 identity or borrowed source survives in the workspace.
 
+`publishLayout` accepts only an acquired workspace whose ordered scope, line,
+and glyph counts exactly match the completed summary and whose terminal
+indices are absent. It walks those sequential stores with one cursor each,
+emitting a scope followed immediately by its lines and each line's glyphs.
+This is linear and requires no staging collection owned by layout.
+
 ## Algorithms and Data Structures
 
 ### Scope slots

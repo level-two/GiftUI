@@ -458,6 +458,13 @@ private struct ValidationWorkspace: LayoutWorkspace {
         return true
     }
 
+    var scopeCount: UInt16 { UInt16(scopes.count) }
+
+    func scopeIdentity(at index: UInt16) -> UInt16? {
+        guard Int(index) < scopes.count else { return nil }
+        return scopes[Int(index)].0
+    }
+
     func measurement(for identity: borrowing UInt16) -> LayoutMeasurement? {
         let identity = copy identity
         return scopes.first { $0.0 == identity }?.1
@@ -469,6 +476,16 @@ private struct ValidationWorkspace: LayoutWorkspace {
     ) -> Bool { false }
 
     func placement(for identity: borrowing UInt16) -> LayoutPlacement? { nil }
+
+    var textLineCount: UInt16 { 0 }
+    mutating func appendTextLine(_ line: LayoutTextLine<UInt16>) -> Bool { false }
+    func textLine(at index: UInt16) -> LayoutTextLine<UInt16>? { nil }
+
+    var positionedGlyphCount: UInt16 { 0 }
+    mutating func appendPositionedGlyph(
+        _ glyph: LayoutPositionedGlyph<UInt16>
+    ) -> Bool { false }
+    func positionedGlyph(at index: UInt16) -> LayoutPositionedGlyph<UInt16>? { nil }
 
     mutating func pushScope(_ identity: borrowing UInt16) -> Bool {
         depth.append(copy identity)

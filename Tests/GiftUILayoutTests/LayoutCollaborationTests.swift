@@ -133,6 +133,107 @@ func everyWorkspaceCapacityFailsBeforeAcquisitionOrInput(_ capacityIndex: Int) {
     #expect(sink.beginCount == 0)
 }
 
+@Test
+func completeWorkspacePublishesAtomicallyInCanonicalOrder() {
+    var workspace = publicationWorkspace()
+    var sink = ProbeSink()
+    let summary = publicationSummary()
+
+    let result = publishLayout(summary: summary, workspace: &workspace, sink: &sink)
+
+    #expect(result == .success(summary))
+    #expect(
+        sink.events == ["begin", "scope:1", "scope:2", "line:2:0", "glyph:2:0", "publish"]
+    )
+    #expect(sink.discardCount == 0)
+    #expect(sink.currentScopes == [1, 2])
+    #expect(!workspace.isLayoutActive)
+    #expect(workspace.resetCount == 1)
+}
+
+@Test
+func beginRefusalResetsWorkspaceWithoutDiscardingOrReplacingCurrentOutput() {
+    var workspace = publicationWorkspace()
+    var sink = ProbeSink(acceptBegin: false, currentScopes: [99])
+
+    let result = publishLayout(
+        summary: publicationSummary(),
+        workspace: &workspace,
+        sink: &sink
+    )
+
+    #expect(result == .failure(.capacityExhausted))
+    #expect(sink.events == ["begin"])
+    #expect(sink.discardCount == 0)
+    #expect(sink.currentScopes == [99])
+    #expect(!workspace.isLayoutActive)
+}
+
+@Test(arguments: ProbeSinkRefusal.allCases)
+private func everyPostBeginRefusalDiscardsOnceAndPreservesPriorOutput(
+    _ refusal: ProbeSinkRefusal
+) {
+    var workspace = publicationWorkspace()
+    var sink = ProbeSink(refusal: refusal, currentScopes: [99])
+
+    let result = publishLayout(
+        summary: publicationSummary(),
+        workspace: &workspace,
+        sink: &sink
+    )
+
+    #expect(result == .failure(.invariantViolation))
+    #expect(sink.discardCount == 1)
+    #expect(sink.currentScopes == [99])
+    #expect(!sink.isLayoutActive)
+    #expect(!workspace.isLayoutActive)
+    #expect(workspace.resetCount == 1)
+}
+
+@Test
+func malformedCompleteWorkspaceFailsBeforeBeginAndStillResets() {
+    var workspace = publicationWorkspace()
+    workspace.omitTerminalNil = true
+    var sink = ProbeSink(currentScopes: [99])
+
+    let result = publishLayout(
+        summary: publicationSummary(),
+        workspace: &workspace,
+        sink: &sink
+    )
+
+    #expect(result == .failure(.invariantViolation))
+    #expect(sink.events.isEmpty)
+    #expect(sink.discardCount == 0)
+    #expect(sink.currentScopes == [99])
+    #expect(!workspace.isLayoutActive)
+}
+
+@Test
+func layoutEntryRejectsBothActiveCollaboratorsWithoutCleanup() {
+    let semantic = ProbeSemanticView()
+    let metrics = ProbeMetricsView()
+    var workspace = ProbeWorkspace(isLayoutActive: true)
+    var sink = ProbeSink(isLayoutActive: true, currentScopes: [99])
+
+    let result = layout(
+        semantic: semantic,
+        metrics: metrics,
+        proposal: ProposedSize()!,
+        limits: limits(),
+        workspace: &workspace,
+        sink: &sink
+    )
+
+    #expect(result == .failure(.reentrancyViolation))
+    #expect(semantic.accessCount == 0)
+    #expect(metrics.accessCount == 0)
+    #expect(workspace.resetCount == 0)
+    #expect(sink.events.isEmpty)
+    #expect(sink.discardCount == 0)
+    #expect(sink.currentScopes == [99])
+}
+
 private func limits() -> LayoutLimits {
     LayoutLimits(
         maximumScopes: 5,
@@ -140,6 +241,99 @@ private func limits() -> LayoutLimits {
         maximumTextScalars: 5,
         maximumTextLines: 5,
         maximumPositionedGlyphs: 5
+    )!
+}
+
+private func publicationSummary() -> LayoutSummary {
+    LayoutSummary(
+        scopeCount: 2,
+        textScalarCount: 1,
+        textLineCount: 1,
+        positionedGlyphCount: 1,
+        maximumObservedDepth: 2,
+        rootBounds: publicationBounds(origin: 0)
+    )
+}
+
+private func publicationWorkspace() -> ProbeWorkspace {
+    var workspace = ProbeWorkspace()
+    precondition(workspace.acquireLayout())
+    let zero = Size(width: 0, height: 0)!
+    precondition(
+        workspace.appendScope(
+            identity: 1,
+            measurement: LayoutMeasurement(idealSize: zero, resolvedSize: zero)
+        )
+    )
+    precondition(
+        workspace.appendScope(
+            identity: 2,
+            measurement: LayoutMeasurement(idealSize: zero, resolvedSize: zero)
+        )
+    )
+    precondition(
+        workspace.storePlacement(
+            LayoutPlacement(
+                bounds: publicationBounds(origin: 0),
+                clip: publicationBounds(origin: 0)
+            ),
+            for: 1
+        )
+    )
+    precondition(
+        workspace.storePlacement(
+            LayoutPlacement(
+                bounds: publicationBounds(origin: 2),
+                clip: publicationBounds(origin: 2)
+            ),
+            for: 2
+        )
+    )
+    let resource = FontResourceID(
+        rawValue: TextResourceDigest(
+            word0: 0,
+            word1: 0,
+            word2: 0,
+            word3: 0,
+            word4: 0,
+            word5: 0,
+            word6: 0,
+            word7: 0
+        )
+    )
+    let lineBounds = publicationBounds(origin: 2)
+    precondition(
+        workspace.appendTextLine(
+            LayoutTextLine(
+                identity: 2,
+                lineIndex: 0,
+                bounds: lineBounds,
+                baseline: Point(x: 2, y: 3),
+                clip: lineBounds
+            )
+        )
+    )
+    precondition(
+        workspace.appendPositionedGlyph(
+            LayoutPositionedGlyph(
+                identity: 2,
+                lineIndex: 0,
+                glyphIndex: 0,
+                instance: FontInstanceID(resource: resource, instanceIndex: 0),
+                glyph: GlyphID(rawValue: 7),
+                baseline: Point(x: 2, y: 3),
+                clip: lineBounds
+            )
+        )
+    )
+    workspace.acquireCount = 0
+    return workspace
+}
+
+private func publicationBounds(origin: GeometryScalar) -> Rect {
+    Rect(
+        origin: Point(x: origin, y: origin),
+        size: Size(width: 1, height: 1)!
     )!
 }
 
@@ -299,7 +493,11 @@ private struct ProbeWorkspace: LayoutWorkspace {
     let maximumPositionedGlyphs: UInt16
     var isLayoutActive = false
     var acquireCount = 0
+    var resetCount = 0
+    var omitTerminalNil = false
     private var scopes: [(UInt16, LayoutMeasurement, LayoutPlacement?)] = []
+    private var textLines: [LayoutTextLine<UInt16>] = []
+    private var positionedGlyphs: [LayoutPositionedGlyph<UInt16>] = []
     private var depth: [UInt16] = []
 
     init(
@@ -334,6 +532,14 @@ private struct ProbeWorkspace: LayoutWorkspace {
         return true
     }
 
+    var scopeCount: UInt16 { UInt16(scopes.count) }
+
+    func scopeIdentity(at index: UInt16) -> UInt16? {
+        if omitTerminalNil, Int(index) == scopes.count { return 999 }
+        guard Int(index) < scopes.count else { return nil }
+        return scopes[Int(index)].0
+    }
+
     func measurement(for identity: borrowing UInt16) -> LayoutMeasurement? {
         let identityCopy = copy identity
         return scopes.first(where: { $0.0 == identityCopy })?.1
@@ -356,6 +562,36 @@ private struct ProbeWorkspace: LayoutWorkspace {
         return scopes.first(where: { $0.0 == identityCopy })?.2
     }
 
+    var textLineCount: UInt16 { UInt16(textLines.count) }
+
+    mutating func appendTextLine(_ line: LayoutTextLine<UInt16>) -> Bool {
+        guard textLines.count < Int(maximumTextLines) else { return false }
+        textLines.append(line)
+        return true
+    }
+
+    func textLine(at index: UInt16) -> LayoutTextLine<UInt16>? {
+        guard Int(index) < textLines.count else { return nil }
+        return textLines[Int(index)]
+    }
+
+    var positionedGlyphCount: UInt16 { UInt16(positionedGlyphs.count) }
+
+    mutating func appendPositionedGlyph(
+        _ glyph: LayoutPositionedGlyph<UInt16>
+    ) -> Bool {
+        guard positionedGlyphs.count < Int(maximumPositionedGlyphs) else {
+            return false
+        }
+        positionedGlyphs.append(glyph)
+        return true
+    }
+
+    func positionedGlyph(at index: UInt16) -> LayoutPositionedGlyph<UInt16>? {
+        guard Int(index) < positionedGlyphs.count else { return nil }
+        return positionedGlyphs[Int(index)]
+    }
+
     mutating func pushScope(_ identity: borrowing UInt16) -> Bool {
         guard depth.count < Int(maximumDepth) else { return false }
         depth.append(copy identity)
@@ -367,10 +603,20 @@ private struct ProbeWorkspace: LayoutWorkspace {
     }
 
     mutating func resetLayout() {
+        resetCount += 1
         scopes.removeAll(keepingCapacity: true)
+        textLines.removeAll(keepingCapacity: true)
+        positionedGlyphs.removeAll(keepingCapacity: true)
         depth.removeAll(keepingCapacity: true)
         isLayoutActive = false
     }
+}
+
+private enum ProbeSinkRefusal: CaseIterable, Equatable {
+    case scope
+    case line
+    case glyph
+    case publish
 }
 
 private struct ProbeSink: LayoutResultSink, LayoutResultSinkState {
@@ -378,10 +624,31 @@ private struct ProbeSink: LayoutResultSink, LayoutResultSinkState {
 
     var isLayoutActive = false
     var beginCount = 0
+    var acceptBegin = true
+    var refusal: ProbeSinkRefusal?
+    var currentScopes: [UInt16] = []
+    var stagedScopes: [UInt16] = []
+    var events: [String] = []
+    var discardCount = 0
+
+    init(
+        isLayoutActive: Bool = false,
+        acceptBegin: Bool = true,
+        refusal: ProbeSinkRefusal? = nil,
+        currentScopes: [UInt16] = []
+    ) {
+        self.isLayoutActive = isLayoutActive
+        self.acceptBegin = acceptBegin
+        self.refusal = refusal
+        self.currentScopes = currentScopes
+    }
 
     mutating func begin(summary: LayoutSummary) -> Bool {
         beginCount += 1
+        events.append("begin")
+        guard acceptBegin else { return false }
         isLayoutActive = true
+        stagedScopes.removeAll(keepingCapacity: true)
         return true
     }
 
@@ -389,7 +656,12 @@ private struct ProbeSink: LayoutResultSink, LayoutResultSinkState {
         identity: UInt16,
         bounds: Rect,
         clip: Rect
-    ) -> Bool { true }
+    ) -> Bool {
+        events.append("scope:\(identity)")
+        guard refusal != .scope else { return false }
+        stagedScopes.append(identity)
+        return true
+    }
 
     mutating func stageTextLine(
         identity: UInt16,
@@ -397,7 +669,10 @@ private struct ProbeSink: LayoutResultSink, LayoutResultSinkState {
         bounds: Rect,
         baseline: Point,
         clip: Rect
-    ) -> Bool { true }
+    ) -> Bool {
+        events.append("line:\(identity):\(lineIndex)")
+        return refusal != .line
+    }
 
     mutating func stageGlyph(
         identity: UInt16,
@@ -407,14 +682,24 @@ private struct ProbeSink: LayoutResultSink, LayoutResultSinkState {
         glyph: GlyphID,
         baseline: Point,
         clip: Rect
-    ) -> Bool { true }
+    ) -> Bool {
+        events.append("glyph:\(identity):\(glyphIndex)")
+        return refusal != .glyph
+    }
 
     mutating func publish() -> Bool {
+        events.append("publish")
+        guard refusal != .publish else { return false }
+        currentScopes = stagedScopes
+        stagedScopes.removeAll(keepingCapacity: true)
         isLayoutActive = false
         return true
     }
 
     mutating func discard() {
+        events.append("discard")
+        discardCount += 1
+        stagedScopes.removeAll(keepingCapacity: true)
         isLayoutActive = false
     }
 }

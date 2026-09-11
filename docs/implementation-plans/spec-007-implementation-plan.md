@@ -333,7 +333,7 @@ replaceable realization described by the
       Unicode and public-payload validation, and the exact first-failure
       detection order. Prove reservations fail before the prohibited staging
       or lookup identified by the contract.
-- [ ] `T3.4` — Implement the idle/acquired/measuring/begun/staging/published or
+- [x] `T3.4` — Implement the idle/acquired/measuring/begun/staging/published or
       discarded/reset lifecycle. Check reentry before all input inspection;
       exercise independently active workspace, active sink, and both-active
       reentry; call `begin` only after complete measurement/count validation;
@@ -797,6 +797,20 @@ prove scope, scalar, explicit-line, and glyph reservation failures occur before
 the prohibited append, later scalar lookup, or mapping lookup. T5.1-T5.2 will
 use the same global line counter when proposal-dependent wrapping is measured;
 that text algorithm does not change this completed admission foundation.
+
+`T3.4` is complete: `LayoutWorkspace` now exposes bounded ordered scope,
+text-line, and positioned-glyph records, and `publishLayout` consumes only a
+complete acquired workspace. It validates summary/count and terminal-index
+agreement before `begin`, stages scopes in order with each text line and its
+glyphs immediately after the owning scope, publishes exactly once, and always
+resets the workspace acquired by the attempt. A begin refusal maps to capacity
+exhaustion without discard; every scope, line, glyph, or publish refusal after
+begin maps to invariant failure and discards exactly once. Focused tests prove
+successful order, prior-current preservation, each refusal point, malformed
+pre-begin workspace rejection, and workspace/sink/both-active reentry without
+cleanup of the active outer attempt. The layout entry remains deliberately
+fail-closed until T4/T5 populate real placement and text records, then calls
+this completed publication coordinator rather than another sink path.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-007 conforms or is `implemented`. The conformance report remains

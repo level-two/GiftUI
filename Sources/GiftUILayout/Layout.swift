@@ -45,9 +45,9 @@ where
     }
     workspace.resetLayout()
 
-    // T3.4 and the measurement milestones install atomic sink publication and
-    // resolved geometry at this seam. Until then, a validated attempt still
-    // fails closed without beginning or mutating the result sink.
+    // The T3.4 publication coordinator consumes only a complete placed
+    // workspace. T4 and T5 install that geometry at this seam; until then, a
+    // validated attempt fails closed without beginning or mutating the sink.
     _ = proposal
     return .failure(.invariantViolation)
 }
