@@ -27,6 +27,10 @@ fail_check("reviewed revision is missing") unless
   rows = REPORT.scan(/^\| `#{criterion}` \|/).length
   fail_check("#{criterion} must appear in exactly one result row") unless rows == 1
   fail_check("#{criterion} is not passing") unless REPORT.match?(/^\| `#{criterion}` \| pass \|/)
+  if spec_implemented
+    fail_check("#{criterion} is not checked in the implemented Specification") unless
+      SPEC.match?(/^- \[x\] \*\*#{criterion}:\*\*/)
+  end
 end
 
 fail_check("report omits explicit human authorization") unless

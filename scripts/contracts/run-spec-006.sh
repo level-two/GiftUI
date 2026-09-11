@@ -524,5 +524,5 @@ trap - EXIT
     --destination "${canonical_report_dir}" \
     --latest "${latest_pointer}" \
     --run-id "${run_id}"
-printf 'SPEC-006 %s Milestone 6 evidence complete; conformance review remains pending; run ID: %s\n' \
+printf 'SPEC-006 %s contract evidence complete; run ID: %s\n' \
     "${profile}" "${run_id}"

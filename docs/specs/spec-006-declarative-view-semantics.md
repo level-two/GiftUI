@@ -2,7 +2,7 @@
 id: SPEC-006
 feature: giftui-mvp-architecture
 title: Declarative View Semantics Specification
-status: implementing
+status: implemented
 authors:
   - codex
 created: 2026-08-25
@@ -42,10 +42,9 @@ target_milestone: MVP
 
 # SPEC-006: Declarative View Semantics Specification
 
-> **Approval status:** Explicitly reapproved by the maintainer on 2026-09-10.
-> This revision adds the primitive-with-content traversal operation required by
-> the existing framework-child expansion rule and approved SPEC-007. The
-> amended contract is authoritative for implementation.
+> **Implementation status:** Implemented on 2026-09-11 after a complete
+> conformance review and explicit maintainer authorization. The amended
+> primitive-with-content contract was explicitly reapproved on 2026-09-10.
 
 ## Summary
 
@@ -1090,65 +1089,65 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
 
 ## Acceptance Criteria
 
-- [ ] **DV-001:** The exact `GiftUIAction`, Rank 0 `View`, `ViewBuilder`, and
+- [x] **DV-001:** The exact `GiftUIAction`, Rank 0 `View`, `ViewBuilder`, and
   fixed-wrapper public source contract compiles for all four MVP configurations
   with only `import GiftUI` in portable Presentation; `Never` satisfies the
   recursive `Body: View` constraint without being evaluated.
-- [ ] **DV-002:** Builder fixtures accept direct arities zero through five,
+- [x] **DV-002:** Builder fixtures accept direct arities zero through five,
   conditionals, and optionals; direct six-expression and dynamic-array
   composition are absent unless explicitly nested into the supported surface.
-- [ ] **DV-003:** Custom bodies and view-returning properties/functions expand
+- [x] **DV-003:** Custom bodies and view-returning properties/functions expand
   synchronously, once per active occurrence, never for inactive branches, and
   with the exact depth-first left-to-right canonical transcript and summary.
-- [ ] **DV-004:** Repeated, branch-changing, and optional-removal/restoration
+- [x] **DV-004:** Repeated, branch-changing, and optional-removal/restoration
   fixtures satisfy every structural-identity equality and inequality rule,
   with no collision or client-visible raw representation.
-- [ ] **DV-005:** Modifier fixtures preserve exact source-call and nesting
+- [x] **DV-005:** Modifier fixtures preserve exact source-call and nesting
   order, do not create semantic-node identity, and assert no layout or render
   behavior.
-- [ ] **DV-006:** Action-bearing declarations at different structural
+- [x] **DV-006:** Action-bearing declarations at different structural
   occurrences have distinct package-SPI semantic action identities;
   equivalent re-expansions preserve their identity relation, and expansion
   allocates no committed action generation, binds no model target, retains no
   action value/callable/handler/model for pointer capture, and invokes no
   action.
-- [ ] **DV-007:** Every expansion/workspace capacity succeeds exactly at its
+- [x] **DV-007:** Every expansion/workspace capacity succeeds exactly at its
   limit and fails one over with `.capacityExhausted`, no truncation, partial
   publication, overwrite, allocation fallback, or action invocation; the
   mandated detection order is stable when conditions coincide, and the first
   runtime-owner adapter maps that local error to the exact SPEC-003 fact.
-- [ ] **DV-008:** Identity alias, reentrancy, invalid limits, and sealed-
+- [x] **DV-008:** Identity alias, reentrancy, invalid limits, and sealed-
   protocol violations produce the exact local error or `nil` specified here,
   and the first runtime-owner adapter maps each to the exact SPEC-003 fact;
   diagnostics cannot change any correctness-relevant result.
-- [ ] **DV-009:** Dynamic and static implementations produce equal canonical
+- [x] **DV-009:** Dynamic and static implementations produce equal canonical
   traces, identity relations, modifier order, action associations, summaries,
   and failure facts for the complete shared corpus.
-- [ ] **DV-010:** Static conformance records zero heap allocations, bounded
+- [x] **DV-010:** Static conformance records zero heap allocations, bounded
   depth, fixed-width nonwrapping counters, every owned value's required memory
   layout, and the nRF52840 hard-float ELF attributes through the four exact
   driver commands.
-- [ ] **DV-011:** Dependency tests prove `GiftUI` remains a portable leaf with
+- [x] **DV-011:** Dependency tests prove `GiftUI` remains a portable leaf with
   no semantic-runtime implementation import, only Semantic Core and named
   fixtures plus GiftUI declaration implementations reference the underscored
   traversal surface, Semantic Core imports no failure module, only the runtime
   owner adapter imports both semantic and failure contracts, and all remaining
   imports follow the approved partial order.
-- [ ] **DV-012:** Review finds no layout, render, state/invalidation,
+- [x] **DV-012:** Review finds no layout, render, state/invalidation,
   activation/input, capability, backend, frame, or host policy defined by this
   Specification.
-- [ ] **DV-013:** Migration evidence inventories and resolves every public
+- [x] **DV-013:** Migration evidence inventories and resolves every public
   proof-of-concept traversal hook, wrapper initializer/storage exposure,
   string structural path, and dynamic/static traversal entry without adding a
   compatibility shim that creates a second expansion engine.
-- [ ] **DV-014:** `FW-017` and `FW-020` remain optional, post-MVP captures with
+- [x] **DV-014:** `FW-017` and `FW-020` remain optional, post-MVP captures with
   reciprocal links and concrete revisit triggers; no required product behavior
   or implementation criterion depends on pursuing either item.
-- [ ] **DV-015:** Stateful custom-view fixtures call the generated SPEC-010
+- [x] **DV-015:** Stateful custom-view fixtures call the generated SPEC-010
   declaration witness before body evaluation, preserve ordinary expansion
   counts and identity on success, and emit no body event or partial semantic
   result when state binding fails.
-- [ ] **DV-016:** Primitive-with-content fixtures use the exact typed overload
+- [x] **DV-016:** Primitive-with-content fixtures use the exact typed overload
   once, stage one primitive before traversing builder-produced content beneath
   `fixedChild(0)`, preserve canonical zero-through-five child order and
   structural identity across all four profiles, never evaluate `body`, and

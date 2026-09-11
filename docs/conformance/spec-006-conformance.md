@@ -24,7 +24,7 @@ superseded_by: null
 
 ## Review Scope
 
-- Governing contract: [SPEC-006 Declarative View Semantics](../specs/spec-006-declarative-view-semantics.md), status `implementing` after explicit maintainer reapproval of the primitive-with-content amendment on 2026-09-10.
+- Governing contract: [SPEC-006 Declarative View Semantics](../specs/spec-006-declarative-view-semantics.md), status `implemented` after complete conformance review and explicit maintainer authorization on 2026-09-11.
 - Derived plan: [SPEC-006 Implementation Plan](../implementation-plans/spec-006-implementation-plan.md), status `completed` after all amendment tasks received dispositions.
 - Reviewed implementation revision: `085f52c58a9ee27d6c7652b2f3562bed7416998d`.
 - Design note: [bounded semantic expansion](../implementation-designs/spec-006-bounded-semantic-expansion.md), status `current`.
