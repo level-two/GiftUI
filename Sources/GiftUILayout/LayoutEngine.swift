@@ -124,7 +124,13 @@ package struct LayoutEngine {
             else { return fail(.arithmeticOverflow) }
             childProposal = insetProposal
         case .fixedFrame, .flexibleFrame:
-            return fail(.invariantViolation)
+            guard
+                let frameProposal = frameChildProposal(
+                    modifier: modifier,
+                    parent: proposal
+                )
+            else { return fail(.arithmeticOverflow) }
+            childProposal = frameProposal
         }
         let childMeasurement: LayoutMeasurement?
         if index > 0 {
@@ -158,7 +164,11 @@ package struct LayoutEngine {
             else { return fail(.arithmeticOverflow) }
             measurement = LayoutGeometry.cap(ideal: ideal, to: proposal)
         case .fixedFrame, .flexibleFrame:
-            return fail(.invariantViolation)
+            measurement = frameMeasurement(
+                modifier: modifier,
+                child: childMeasurement,
+                parent: proposal
+            )
         }
         guard workspace.storeMeasurement(measurement, for: scopeIdentity)
         else { return fail(.invariantViolation) }
@@ -617,9 +627,27 @@ package struct LayoutEngine {
         guard let modifier = semantic.modifier(of: identity, at: index),
             let scopeIdentity = semantic.modifierScope(of: identity, at: index),
             let measurement = workspace.measurement(for: scopeIdentity),
-            let bounds = Rect(origin: origin, size: measurement.resolvedSize),
+            let bounds = Rect(origin: origin, size: measurement.resolvedSize)
+        else {
+            fail(.invariantViolation)
+            return false
+        }
+        let scopeClip: Rect
+        switch modifier {
+        case .fixedFrame, .flexibleFrame:
+            guard
+                let intersection = LayoutGeometry.intersection(
+                    inheritedClip,
+                    bounds
+                )
+            else { return fail(.arithmeticOverflow) }
+            scopeClip = intersection
+        default:
+            scopeClip = inheritedClip
+        }
+        guard
             workspace.storePlacement(
-                LayoutPlacement(bounds: bounds, clip: inheritedClip),
+                LayoutPlacement(bounds: bounds, clip: scopeClip),
                 for: scopeIdentity
             )
         else {
@@ -639,8 +667,32 @@ package struct LayoutEngine {
                 )
             else { return fail(.arithmeticOverflow) }
             childOrigin = translated
-        case .fixedFrame, .flexibleFrame:
-            return fail(.invariantViolation)
+        case .fixedFrame(_, _, let alignment),
+            .flexibleFrame(_, _, _, _, let alignment):
+            guard
+                let childMeasurement = innerMeasurement(
+                    identity,
+                    modifierIndex: index,
+                    semantic: semantic,
+                    workspace: workspace
+                ),
+                let xOffset = LayoutGeometry.offset(
+                    container: bounds.size.width,
+                    child: childMeasurement.resolvedSize.width,
+                    alignment: alignment.horizontal
+                ),
+                let yOffset = LayoutGeometry.offset(
+                    container: bounds.size.height,
+                    child: childMeasurement.resolvedSize.height,
+                    alignment: alignment.vertical
+                ),
+                let translated = LayoutGeometry.translated(
+                    origin,
+                    x: xOffset,
+                    y: yOffset
+                )
+            else { return fail(.arithmeticOverflow) }
+            childOrigin = translated
         }
         if index > 0 {
             return placeModifier(
@@ -648,7 +700,7 @@ package struct LayoutEngine {
                 index: index - 1,
                 semantic: semantic,
                 origin: childOrigin,
-                inheritedClip: inheritedClip,
+                inheritedClip: scopeClip,
                 workspace: &workspace
             )
         }
@@ -656,7 +708,7 @@ package struct LayoutEngine {
             identity,
             semantic: semantic,
             origin: childOrigin,
-            inheritedClip: inheritedClip,
+            inheritedClip: scopeClip,
             workspace: &workspace
         )
     }
@@ -884,6 +936,193 @@ package struct LayoutEngine {
             return workspace.measurement(for: scopeIdentity)
         }
         return workspace.measurement(for: identity)
+    }
+
+    private mutating func innerMeasurement<Semantic, Workspace>(
+        _ identity: Semantic.Identity,
+        modifierIndex: UInt16,
+        semantic: borrowing Semantic,
+        workspace: borrowing Workspace
+    ) -> LayoutMeasurement?
+    where
+        Semantic: SemanticLayoutView,
+        Workspace: LayoutWorkspace,
+        Semantic.Identity == Workspace.Identity
+    {
+        if modifierIndex > 0 {
+            guard
+                let scopeIdentity = semantic.modifierScope(
+                    of: identity,
+                    at: modifierIndex - 1
+                )
+            else { return fail(.invariantViolation) }
+            return workspace.measurement(for: scopeIdentity)
+        }
+        if semantic.primitive(at: identity) != nil {
+            return workspace.measurement(for: identity)
+        }
+        return onlyFlattenedChildMeasurement(
+            of: identity,
+            semantic: semantic,
+            workspace: workspace
+        )
+    }
+
+    private mutating func onlyFlattenedChildMeasurement<Semantic, Workspace>(
+        of identity: Semantic.Identity,
+        semantic: borrowing Semantic,
+        workspace: borrowing Workspace
+    ) -> LayoutMeasurement?
+    where
+        Semantic: SemanticLayoutView,
+        Workspace: LayoutWorkspace,
+        Semantic.Identity == Workspace.Identity
+    {
+        guard let childCount = semantic.childCount(of: identity) else {
+            return fail(.invariantViolation)
+        }
+        var found: LayoutMeasurement?
+        var foundCount: UInt16 = 0
+        var index: UInt16 = 0
+        while index < childCount {
+            guard let child = semantic.child(of: identity, at: index),
+                let modifierCount = semantic.modifierCount(of: child)
+            else { return fail(.invariantViolation) }
+            let measurement: LayoutMeasurement?
+            if semantic.primitive(at: child) != nil || modifierCount > 0 {
+                measurement = measurementForOccurrence(
+                    child,
+                    semantic: semantic,
+                    workspace: workspace
+                )
+            } else {
+                measurement = onlyFlattenedChildMeasurement(
+                    of: child,
+                    semantic: semantic,
+                    workspace: workspace
+                )
+            }
+            if let measurement {
+                guard let next = increment(foundCount) else {
+                    return fail(.capacityExhausted)
+                }
+                foundCount = next
+                found = measurement
+            }
+            index += 1
+        }
+        guard foundCount == 1 else { return fail(.invariantViolation) }
+        return found
+    }
+
+    private func frameChildProposal(
+        modifier: SemanticLayoutModifier,
+        parent: ProposedSize
+    ) -> ProposedSize? {
+        switch modifier {
+        case .fixedFrame(let width, let height, _):
+            return ProposedSize(
+                width: childFrameProposalAxis(
+                    parent: parent.width,
+                    fixed: width,
+                    maximum: nil
+                ),
+                height: childFrameProposalAxis(
+                    parent: parent.height,
+                    fixed: height,
+                    maximum: nil
+                )
+            )
+        case .flexibleFrame(_, let maxWidth, _, let maxHeight, _):
+            return ProposedSize(
+                width: childFrameProposalAxis(
+                    parent: parent.width,
+                    fixed: nil,
+                    maximum: maxWidth
+                ),
+                height: childFrameProposalAxis(
+                    parent: parent.height,
+                    fixed: nil,
+                    maximum: maxHeight
+                )
+            )
+        default:
+            return nil
+        }
+    }
+
+    private func childFrameProposalAxis(
+        parent: GeometryScalar?,
+        fixed: GeometryScalar?,
+        maximum: FrameLimit?
+    ) -> GeometryScalar? {
+        if let fixed { return fixed }
+        if let parent {
+            if case .points(let finiteMaximum) = maximum {
+                return min(parent, finiteMaximum)
+            }
+            return parent
+        }
+        if case .points(let finiteMaximum) = maximum {
+            return finiteMaximum
+        }
+        return nil
+    }
+
+    private func frameMeasurement(
+        modifier: SemanticLayoutModifier,
+        child: LayoutMeasurement,
+        parent: ProposedSize
+    ) -> LayoutMeasurement {
+        let ideal: Size
+        switch modifier {
+        case .fixedFrame(let width, let height, _):
+            ideal = Size(
+                width: width ?? child.idealSize.width,
+                height: height ?? child.idealSize.height
+            )!
+        case .flexibleFrame(
+            let minWidth,
+            let maxWidth,
+            let minHeight,
+            let maxHeight,
+            _
+        ):
+            ideal = Size(
+                width: requestedFrameAxis(
+                    child: child.idealSize.width,
+                    minimum: minWidth ?? 0,
+                    maximum: maxWidth,
+                    parent: parent.width
+                ),
+                height: requestedFrameAxis(
+                    child: child.idealSize.height,
+                    minimum: minHeight ?? 0,
+                    maximum: maxHeight,
+                    parent: parent.height
+                )
+            )!
+        default:
+            ideal = child.idealSize
+        }
+        return LayoutGeometry.cap(ideal: ideal, to: parent)
+    }
+
+    private func requestedFrameAxis(
+        child: GeometryScalar,
+        minimum: GeometryScalar,
+        maximum: FrameLimit?,
+        parent: GeometryScalar?
+    ) -> GeometryScalar {
+        var requested = LayoutGeometry.clamped(
+            child,
+            minimum: minimum,
+            maximum: maximum
+        )
+        if maximum == .infinity, let parent, parent > requested {
+            requested = parent
+        }
+        return requested
     }
 
     private mutating func placeOnlyFlattenedChild<Semantic, Workspace>(

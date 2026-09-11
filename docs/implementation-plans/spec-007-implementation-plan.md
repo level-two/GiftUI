@@ -377,7 +377,7 @@ geometry.
       Implement all padding forms with checked proposal subtraction floored
       at zero, checked ideal expansion, unchanged inherited clip, and
       translated child origin even when capped.
-- [ ] `T4.5` — Implement fixed and flexible frame algorithms independently per
+- [x] `T4.5` — Implement fixed and flexible frame algorithms independently per
       axis, including nil/min/finite max/infinity proposals and requests,
       alignment, all-nil passthrough behavior, parent caps, child overflow,
       and frame-added clip intersections. Golden-test ordered padding/frame

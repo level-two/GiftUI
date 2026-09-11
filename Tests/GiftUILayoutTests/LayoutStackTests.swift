@@ -196,6 +196,116 @@ func zStackUsesSharedProposalMaximumIdealAndIndependentAlignment() {
     #expect(result.scopes.allSatisfy { $0.clip == result.summary?.rootBounds })
 }
 
+@Test
+func fixedAndMinimumFramesDifferUnderSmallerParentProposal() {
+    let fixed = runStackLayout(
+        StackSemanticView(
+            nodes: [
+                1: .init(
+                    .hStack(alignment: .center, spacing: 0),
+                    children: [2],
+                    modifiers: [
+                        .fixedFrame(width: 100, height: 10, alignment: .center)
+                    ]
+                ),
+                2: .init(.spacer(minLength: 0)),
+            ]
+        ),
+        proposal: ProposedSize(width: 50, height: 5)!
+    )
+    let minimum = runStackLayout(
+        StackSemanticView(
+            nodes: [
+                1: .init(
+                    .hStack(alignment: .center, spacing: 0),
+                    children: [2],
+                    modifiers: [
+                        .flexibleFrame(
+                            minWidth: 100,
+                            maxWidth: nil,
+                            minHeight: nil,
+                            maxHeight: nil,
+                            alignment: .center
+                        )
+                    ]
+                ),
+                2: .init(.spacer(minLength: 0)),
+            ]
+        ),
+        proposal: ProposedSize(width: 50, height: 5)!
+    )
+
+    #expect(fixed.summary?.rootBounds.size == Size(width: 50, height: 5)!)
+    #expect(fixed.scopes[1].bounds.size == Size(width: 100, height: 0)!)
+    #expect(fixed.scopes[1].bounds.origin == Point(x: -25, y: 2))
+    #expect(minimum.summary?.rootBounds.size == Size(width: 50, height: 0)!)
+    #expect(minimum.scopes[1].bounds.size == Size(width: 50, height: 0)!)
+    #expect(minimum.scopes[1].bounds.origin == Point(x: 0, y: 0))
+}
+
+@Test
+func infiniteFlexibleFrameExpandsOnlyToPresentParentProposal() {
+    let modifier = SemanticLayoutModifier.flexibleFrame(
+        minWidth: nil,
+        maxWidth: .infinity,
+        minHeight: nil,
+        maxHeight: nil,
+        alignment: .leading
+    )
+    let semantic = StackSemanticView(
+        nodes: [1: .init(.spacer(minLength: 0), modifiers: [modifier])]
+    )
+    let present = runStackLayout(
+        semantic,
+        proposal: ProposedSize(width: 50)!
+    )
+    let absent = runStackLayout(semantic, proposal: ProposedSize()!)
+
+    #expect(present.summary?.rootBounds.size.width == 50)
+    #expect(absent.summary?.rootBounds.size.width == 0)
+}
+
+@Test
+func frameAndPaddingOrderChangesBoundsAndFrameClip() {
+    let paddingThenFrame = runStackLayout(
+        StackSemanticView(
+            nodes: [
+                1: .init(
+                    .spacer(minLength: 0),
+                    modifiers: [
+                        .padding(edges: .all, length: 10),
+                        .fixedFrame(width: 100, height: nil, alignment: .center),
+                    ]
+                )
+            ]
+        ),
+        proposal: ProposedSize(width: 50)!
+    )
+    let frameThenPadding = runStackLayout(
+        StackSemanticView(
+            nodes: [
+                1: .init(
+                    .spacer(minLength: 0),
+                    modifiers: [
+                        .fixedFrame(width: 100, height: nil, alignment: .center),
+                        .padding(edges: .all, length: 10),
+                    ]
+                )
+            ]
+        ),
+        proposal: ProposedSize(width: 50)!
+    )
+
+    #expect(paddingThenFrame.scopes.map { $0.identity } == [102, 101, 1])
+    #expect(paddingThenFrame.scopes[1].bounds.origin.x == 15)
+    #expect(paddingThenFrame.scopes[2].bounds.origin.x == 25)
+    #expect(frameThenPadding.scopes[1].bounds.origin.x == 10)
+    #expect(frameThenPadding.scopes[1].bounds.size.width == 30)
+    #expect(frameThenPadding.scopes[1].clip.minX == 10)
+    #expect(frameThenPadding.scopes[1].clip.maxX == 40)
+    #expect(frameThenPadding.scopes[2].bounds.origin.x == 25)
+}
+
 private struct StackNode {
     let primitive: SemanticLayoutPrimitive?
     let children: [UInt16]
