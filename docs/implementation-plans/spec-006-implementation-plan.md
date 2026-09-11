@@ -150,7 +150,7 @@ once below and maps to implementation tasks and reproducible evidence.
 | `DV-013` — Complete proof-of-concept migration closure with no second expansion engine | `T0.4`, `T1.4`, `T6.3`, `T7.1` | Migration inventory and repository-wide forbidden-surface scan | pass |
 | `DV-014` — FW-017/FW-020 remain reciprocal optional post-MVP captures | `T0.1`, `T7.2` | Governance and reciprocal-link audit | pass |
 | `DV-015` — Generated SPEC-010 witness binds before body, preserves successful semantics, and publishes nothing on binding failure | `T5.1`, `T5.2`, `T5.3` | Macro expansion, lexical binding transcript, bound-copy probe, and failure atomicity report | pass |
-| `DV-016` — Exact primitive-with-content dispatch, primitive-before-child traversal, canonical identity/order, unevaluated body, and atomic failure across all profiles | `T8.1`-`T8.4` | Public-interface and visitor-conformance audit, focused traversal tests, canonical corpus, allocation/dependency probes, four-profile reports, and renewed conformance review | pending |
+| `DV-016` — Exact primitive-with-content dispatch, primitive-before-child traversal, canonical identity/order, unevaluated body, and atomic failure across all profiles | `T8.1`-`T8.4` | Public-interface and visitor-conformance audit, focused traversal tests, canonical corpus, allocation/dependency probes, four-profile reports, and renewed conformance review | pass |
 
 ## Milestones and Tasks
 
