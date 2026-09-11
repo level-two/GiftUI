@@ -267,7 +267,7 @@ Semantic Core adapter or profile-equivalence claim may be completed.
 preserving, nonescaping layout-facing view over a successful result; recording,
 fixture-dynamic, and fixture-static producers have equal observable meaning.
 
-- [ ] `T2.1` — Implement package `SemanticLayoutPrimitive` and
+- [x] `T2.1` — Implement package `SemanticLayoutPrimitive` and
       `SemanticLayoutModifier` with exactly the closed cases and payloads from
       SPEC-007. Extend semantic expansion so layout-neutral occurrences use
       `.proxy`, approved layout-neutral modifiers alone use `.passthrough`,
@@ -701,6 +701,13 @@ stack, overlay, spacer, padding, inset, fixed-frame, and flexible-frame
 payload. It proves exact invalid-value preservation, primitive-before-child
 traversal, nested source child order, exact semantic identities, and inner-to-
 outer modifier indices without adding a client traversal witness.
+
+`T2.1` is complete: Semantic Core owns the exact closed primitive and modifier
+enums and the single canonical typed-payload mapping. Stack, overlay, spacer,
+text, padding, inset, fixed-frame, and flexible-frame values are preserved
+exactly; other layout-neutral primitives map to `.proxy`; current approved
+style modifiers map to `.passthrough`; and an unknown modifier produces no
+case so the layout producer must reject it rather than silently pass it.
 
 `T1.3` is complete: all padding and frame overloads lower through the existing
 typed modifier operation. Runtime transcript tests prove exact source-call
