@@ -2,7 +2,7 @@
 spec: SPEC-006
 feature: giftui-mvp-architecture
 title: SPEC-006 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-09-01
@@ -497,7 +497,7 @@ renewed review without claiming the `implemented` transition.
       dynamic/static meaning, zero static-path heap allocation, unchanged
       dependency boundaries, bounded depth/counters, ARMv6 inspection, and
       nRF52840 hard-float ELF evidence without connected hardware.
-- [ ] `T8.4` — Run the repository and four-profile gates, update every task
+- [x] `T8.4` — Run the repository and four-profile gates, update every task
       disposition and stable evidence link, and revise the SPEC-006 conformance
       report so `DV-016` receives a reviewable disposition. Return this plan to
       `completed` only when every Milestone 8 task is complete or has an
@@ -948,3 +948,14 @@ four-profile drivers now require the amendment evidence. The strengthened
 complexity base includes all four container semantic stages, and the existing
 optimized SIL plus ARMv6/nRF object probes cover the amended traversal without
 claiming connected-hardware execution.
+
+`T8.4` is complete: all four standalone drivers passed from clean revision
+`43d789bb89d00ec4761b54f4fd1ed585f999eed6` with common run identity
+`43d789bb89d00ec4761b54f4fd1ed585f999eed6-8da6637110d9891f`. The repository
+gate passed governance, formatting, registration, and root tests; its initial
+aggregate run exposed and led to separately committed SPEC-002/SPEC-005 exact
+audit activation for the approved layout declarations and consumer. The
+collecting conformance report now gives `DV-016` a reviewable passing
+disposition. Every Milestone 8 task is complete, so this plan returns to
+`completed`; SPEC-006 remains `implementing` pending renewed conformance review
+and explicit maintainer authorization.
