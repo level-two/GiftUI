@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-09-09
+updated: 2026-09-11
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -53,7 +53,8 @@ related_specs:
   - SPEC-012
   - SPEC-013
   - SPEC-014
-related_future_work: []
+related_future_work:
+  - FW-022
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -1234,8 +1235,13 @@ deterministic mock trace, diagnostic, and exact host-fixture alignment.
 
 ## Deferred and Follow-up Work
 
-No new deferred item was created. Existing contextual items remain outside MVP
-and are not newly related to this Specification:
+[FW-022](../future-work/fw-022-contract-accurate-embedded-target-simulator.md)
+subsequently captures a possible post-MVP contract-accurate embedded-target
+simulator. It does not amend this contract, add an MVP host, or replace any
+connected-target evidence.
+
+Existing contextual items remain outside MVP and are not newly related to this
+Specification:
 
 - FW-006 preserves optional generated target-configuration tooling;
 - FW-009 preserves a shared delegated-service foundation until multiple

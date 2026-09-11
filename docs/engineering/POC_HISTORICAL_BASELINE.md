@@ -48,3 +48,10 @@ git show PoC:docs/GiftUI_Framework_Spec.md
 
 Current architecture and implementation authority remains in accepted ADRs
 and approved or implementing Specifications under the governed lifecycle.
+
+## Related Future Work
+
+- [FW-022: Contract-Accurate Embedded Target Simulator](../future-work/fw-022-contract-accurate-embedded-target-simulator.md)
+  preserves a possible post-MVP reconsideration of the simulator experience
+  under the current governed architecture. It does not restore or grant
+  authority to the retired PoC implementation.
