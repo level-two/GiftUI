@@ -394,7 +394,7 @@ remains owned by SPEC-008 and is not invented here.
 **Exit evidence:** A backend-free canonical corpus produces exact positioned
 text from Semantic Core scalar access and the sole validated MVP instance.
 
-- [ ] `T5.1` — Implement scalar decoding in source order, exact instance-zero
+- [x] `T5.1` — Implement scalar decoding in source order, exact instance-zero
       lookup, CR/LF/CRLF handling, replacement mapping, glyph metric lookup,
       and invalid-scalar/post-validation invariant distinctions. Reserve the
       complete scalar, line, and positioned-glyph counts under global limits.

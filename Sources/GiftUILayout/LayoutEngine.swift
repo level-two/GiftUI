@@ -11,15 +11,16 @@ package struct LayoutEngine {
     }
 
     private let limits: LayoutLimits
-    private let validatedCounters: LayoutCounters
+    private var counters: LayoutCounters
     package private(set) var failure: LayoutError?
 
     package init(limits: LayoutLimits, validatedCounters: LayoutCounters) {
         self.limits = limits
-        self.validatedCounters = validatedCounters
+        counters = validatedCounters
+        counters.resetTextCounts()
     }
 
-    package var finalCounters: LayoutCounters { validatedCounters }
+    package var finalCounters: LayoutCounters { counters }
 
     package mutating func measure<Semantic, Metrics, Workspace>(
         semantic: borrowing Semantic,
@@ -37,6 +38,7 @@ package struct LayoutEngine {
         return measureOccurrence(
             semantic.rootIdentity,
             semantic: semantic,
+            metrics: metrics,
             proposal: proposal,
             workspace: &workspace
         )
@@ -64,14 +66,16 @@ package struct LayoutEngine {
         )
     }
 
-    private mutating func measureOccurrence<Semantic, Workspace>(
+    private mutating func measureOccurrence<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
+        metrics: borrowing Metrics,
         proposal: ProposedSize,
         workspace: inout Workspace
     ) -> LayoutMeasurement?
     where
         Semantic: SemanticLayoutView,
+        Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -83,6 +87,7 @@ package struct LayoutEngine {
                 identity,
                 index: modifierCount - 1,
                 semantic: semantic,
+                metrics: metrics,
                 proposal: proposal,
                 workspace: &workspace
             )
@@ -90,20 +95,23 @@ package struct LayoutEngine {
         return measureContent(
             identity,
             semantic: semantic,
+            metrics: metrics,
             proposal: proposal,
             workspace: &workspace
         )
     }
 
-    private mutating func measureModifier<Semantic, Workspace>(
+    private mutating func measureModifier<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         index: UInt16,
         semantic: borrowing Semantic,
+        metrics: borrowing Metrics,
         proposal: ProposedSize,
         workspace: inout Workspace
     ) -> LayoutMeasurement?
     where
         Semantic: SemanticLayoutView,
+        Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -138,6 +146,7 @@ package struct LayoutEngine {
                 identity,
                 index: index - 1,
                 semantic: semantic,
+                metrics: metrics,
                 proposal: childProposal,
                 workspace: &workspace
             )
@@ -145,6 +154,7 @@ package struct LayoutEngine {
             childMeasurement = measureContent(
                 identity,
                 semantic: semantic,
+                metrics: metrics,
                 proposal: childProposal,
                 workspace: &workspace
             )
@@ -175,14 +185,255 @@ package struct LayoutEngine {
         return measurement
     }
 
-    private mutating func measureContent<Semantic, Workspace>(
+    private mutating func measureText<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
+        metrics: borrowing Metrics,
         proposal: ProposedSize,
         workspace: inout Workspace
     ) -> LayoutMeasurement?
     where
         Semantic: SemanticLayoutView,
+        Metrics: CanonicalTextMetricsView,
+        Workspace: LayoutWorkspace,
+        Semantic.Identity == Workspace.Identity
+    {
+        guard metrics.descriptor.instanceCount == 1,
+            let instance = metrics.instance(at: 0),
+            metrics.instance(at: 1) == nil,
+            let scalarCount = semantic.textScalarCount(of: identity),
+            let lineHeight = GeometryArithmetic.add(
+                instance.lineMetrics.ascent,
+                instance.lineMetrics.descent
+            ),
+            let baselineProgression = GeometryArithmetic.add(
+                lineHeight,
+                instance.lineMetrics.lineGap
+            ),
+            lineHeight >= 0,
+            baselineProgression >= 0
+        else { return fail(.invariantViolation) }
+
+        if let error = counters.reserveTextLine() { return fail(error) }
+        var localLineIndex: UInt16 = 0
+        var localGlyphIndex: UInt16 = 0
+        var currentAdvance: GeometryScalar = 0
+        var currentHasGlyph = false
+        var maximumLineWidth: GeometryScalar = 0
+        var previousWasCarriageReturn = false
+        var scalarIndex: UInt16 = 0
+
+        while scalarIndex < scalarCount {
+            if let error = counters.reserveTextScalar() { return fail(error) }
+            guard let scalar = semantic.textScalar(of: identity, at: scalarIndex)
+            else { return fail(.invariantViolation) }
+            if scalar == 0x0d {
+                guard
+                    finalizeTextLine(
+                        identity: identity,
+                        lineIndex: localLineIndex,
+                        advance: currentAdvance,
+                        proposalWidth: proposal.width,
+                        ascent: instance.lineMetrics.ascent,
+                        lineHeight: lineHeight,
+                        baselineProgression: baselineProgression,
+                        maximumLineWidth: &maximumLineWidth,
+                        workspace: &workspace
+                    ), let nextLine = increment(localLineIndex)
+                else { return nil }
+                if let error = counters.reserveTextLine() { return fail(error) }
+                localLineIndex = nextLine
+                currentAdvance = 0
+                currentHasGlyph = false
+                previousWasCarriageReturn = true
+            } else if scalar == 0x0a {
+                if !previousWasCarriageReturn {
+                    guard
+                        finalizeTextLine(
+                            identity: identity,
+                            lineIndex: localLineIndex,
+                            advance: currentAdvance,
+                            proposalWidth: proposal.width,
+                            ascent: instance.lineMetrics.ascent,
+                            lineHeight: lineHeight,
+                            baselineProgression: baselineProgression,
+                            maximumLineWidth: &maximumLineWidth,
+                            workspace: &workspace
+                        ), let nextLine = increment(localLineIndex)
+                    else { return nil }
+                    if let error = counters.reserveTextLine() { return fail(error) }
+                    localLineIndex = nextLine
+                    currentAdvance = 0
+                    currentHasGlyph = false
+                }
+                previousWasCarriageReturn = false
+            } else {
+                previousWasCarriageReturn = false
+                if let error = counters.reservePositionedGlyph() {
+                    return fail(error)
+                }
+                guard let mapping = metrics.mapScalar(scalar, in: instance.id) else {
+                    return fail(.invariantViolation)
+                }
+                let glyph: GlyphID
+                switch mapping {
+                case .exact(let value), .replacement(let value):
+                    glyph = value
+                }
+                guard
+                    let glyphMetrics = metrics.metrics(
+                        for: glyph,
+                        in: instance.id
+                    ), glyphMetrics.advanceX >= 0,
+                    let prospectiveAdvance = GeometryArithmetic.add(
+                        currentAdvance,
+                        glyphMetrics.advanceX
+                    )
+                else { return fail(.invariantViolation) }
+                let wraps =
+                    currentHasGlyph
+                    && proposal.width.map {
+                        $0 == 0 || prospectiveAdvance > $0
+                    } == true
+                if wraps {
+                    guard
+                        finalizeTextLine(
+                            identity: identity,
+                            lineIndex: localLineIndex,
+                            advance: currentAdvance,
+                            proposalWidth: proposal.width,
+                            ascent: instance.lineMetrics.ascent,
+                            lineHeight: lineHeight,
+                            baselineProgression: baselineProgression,
+                            maximumLineWidth: &maximumLineWidth,
+                            workspace: &workspace
+                        ), let nextLine = increment(localLineIndex)
+                    else { return nil }
+                    if let error = counters.reserveTextLine() { return fail(error) }
+                    localLineIndex = nextLine
+                    currentAdvance = 0
+                }
+                guard
+                    let baselineY = textBaselineY(
+                        lineIndex: localLineIndex,
+                        ascent: instance.lineMetrics.ascent,
+                        progression: baselineProgression
+                    ),
+                    workspace.appendPositionedGlyph(
+                        LayoutPositionedGlyph(
+                            identity: identity,
+                            lineIndex: localLineIndex,
+                            glyphIndex: localGlyphIndex,
+                            instance: instance.id,
+                            glyph: glyph,
+                            baseline: Point(x: currentAdvance, y: baselineY),
+                            clip: zeroRect
+                        )
+                    ), let nextGlyph = increment(localGlyphIndex),
+                    let nextAdvance = GeometryArithmetic.add(
+                        currentAdvance,
+                        glyphMetrics.advanceX
+                    )
+                else { return fail(.invariantViolation) }
+                localGlyphIndex = nextGlyph
+                currentAdvance = nextAdvance
+                currentHasGlyph = true
+            }
+            scalarIndex += 1
+        }
+        guard
+            finalizeTextLine(
+                identity: identity,
+                lineIndex: localLineIndex,
+                advance: currentAdvance,
+                proposalWidth: proposal.width,
+                ascent: instance.lineMetrics.ascent,
+                lineHeight: lineHeight,
+                baselineProgression: baselineProgression,
+                maximumLineWidth: &maximumLineWidth,
+                workspace: &workspace
+            )
+        else { return nil }
+        let localLineCount = localLineIndex + 1
+        guard
+            let additionalHeight = GeometryArithmetic.multiply(
+                GeometryScalar(localLineCount - 1),
+                baselineProgression
+            ), let idealHeight = GeometryArithmetic.add(lineHeight, additionalHeight)
+        else { return fail(.arithmeticOverflow) }
+        return LayoutGeometry.cap(
+            ideal: Size(width: maximumLineWidth, height: idealHeight)!,
+            to: proposal
+        )
+    }
+
+    private mutating func finalizeTextLine<Identity, Workspace>(
+        identity: Identity,
+        lineIndex: UInt16,
+        advance: GeometryScalar,
+        proposalWidth: GeometryScalar?,
+        ascent: GeometryScalar,
+        lineHeight: GeometryScalar,
+        baselineProgression: GeometryScalar,
+        maximumLineWidth: inout GeometryScalar,
+        workspace: inout Workspace
+    ) -> Bool
+    where Workspace: LayoutWorkspace, Workspace.Identity == Identity {
+        guard
+            let baselineY = textBaselineY(
+                lineIndex: lineIndex,
+                ascent: ascent,
+                progression: baselineProgression
+            ), let lineY = GeometryArithmetic.subtract(baselineY, ascent)
+        else { return fail(.arithmeticOverflow) }
+        let width = proposalWidth.map { min(advance, $0) } ?? advance
+        maximumLineWidth = max(maximumLineWidth, width)
+        guard
+            let bounds = Rect(
+                origin: Point(x: 0, y: lineY),
+                size: Size(width: width, height: lineHeight)!
+            ),
+            workspace.appendTextLine(
+                LayoutTextLine(
+                    identity: identity,
+                    lineIndex: lineIndex,
+                    bounds: bounds,
+                    baseline: Point(x: 0, y: baselineY),
+                    clip: zeroRect
+                )
+            )
+        else { return fail(.invariantViolation) }
+        return true
+    }
+
+    private mutating func textBaselineY(
+        lineIndex: UInt16,
+        ascent: GeometryScalar,
+        progression: GeometryScalar
+    ) -> GeometryScalar? {
+        guard
+            let offset = GeometryArithmetic.multiply(
+                GeometryScalar(lineIndex),
+                progression
+            ), let baseline = GeometryArithmetic.add(ascent, offset)
+        else { return fail(.arithmeticOverflow) }
+        return baseline
+    }
+
+    private var zeroRect: Rect {
+        Rect(origin: Point(x: 0, y: 0), size: LayoutGeometry.zeroSize)!
+    }
+
+    private mutating func measureContent<Semantic, Metrics, Workspace>(
+        _ identity: Semantic.Identity,
+        semantic: borrowing Semantic,
+        metrics: borrowing Metrics,
+        proposal: ProposedSize,
+        workspace: inout Workspace
+    ) -> LayoutMeasurement?
+    where
+        Semantic: SemanticLayoutView,
+        Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -190,6 +441,7 @@ package struct LayoutEngine {
             return measureOnlyFlattenedChild(
                 identity,
                 semantic: semantic,
+                metrics: metrics,
                 proposal: proposal,
                 workspace: &workspace
             )
@@ -200,6 +452,7 @@ package struct LayoutEngine {
             measurement = measureOnlyFlattenedChild(
                 identity,
                 semantic: semantic,
+                metrics: metrics,
                 proposal: proposal,
                 workspace: &workspace
             )
@@ -207,6 +460,7 @@ package struct LayoutEngine {
             measurement = measureStack(
                 identity,
                 semantic: semantic,
+                metrics: metrics,
                 proposal: proposal,
                 vertical: true,
                 workspace: &workspace
@@ -215,6 +469,7 @@ package struct LayoutEngine {
             measurement = measureStack(
                 identity,
                 semantic: semantic,
+                metrics: metrics,
                 proposal: proposal,
                 vertical: false,
                 workspace: &workspace
@@ -228,11 +483,18 @@ package struct LayoutEngine {
             measurement = measureZStack(
                 identity,
                 semantic: semantic,
+                metrics: metrics,
                 proposal: proposal,
                 workspace: &workspace
             )
         case .text:
-            measurement = fail(.invariantViolation)
+            measurement = measureText(
+                identity,
+                semantic: semantic,
+                metrics: metrics,
+                proposal: proposal,
+                workspace: &workspace
+            )
         }
         guard let measurement,
             workspace.storeMeasurement(measurement, for: identity)
@@ -240,14 +502,16 @@ package struct LayoutEngine {
         return measurement
     }
 
-    private mutating func measureZStack<Semantic, Workspace>(
+    private mutating func measureZStack<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
+        metrics: borrowing Metrics,
         proposal: ProposedSize,
         workspace: inout Workspace
     ) -> LayoutMeasurement?
     where
         Semantic: SemanticLayoutView,
+        Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -258,6 +522,7 @@ package struct LayoutEngine {
             measureFlattenedChildren(
                 of: identity,
                 semantic: semantic,
+                metrics: metrics,
                 proposal: proposal,
                 vertical: true,
                 recognizesFlexibleSpacers: false,
@@ -276,14 +541,16 @@ package struct LayoutEngine {
         )
     }
 
-    private mutating func measureOnlyFlattenedChild<Semantic, Workspace>(
+    private mutating func measureOnlyFlattenedChild<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
+        metrics: borrowing Metrics,
         proposal: ProposedSize,
         workspace: inout Workspace
     ) -> LayoutMeasurement?
     where
         Semantic: SemanticLayoutView,
+        Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -294,6 +561,7 @@ package struct LayoutEngine {
             measureFlattenedChildren(
                 of: identity,
                 semantic: semantic,
+                metrics: metrics,
                 proposal: proposal,
                 vertical: true,
                 recognizesFlexibleSpacers: false,
@@ -309,15 +577,17 @@ package struct LayoutEngine {
         return found
     }
 
-    private mutating func measureStack<Semantic, Workspace>(
+    private mutating func measureStack<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
+        metrics: borrowing Metrics,
         proposal: ProposedSize,
         vertical: Bool,
         workspace: inout Workspace
     ) -> LayoutMeasurement?
     where
         Semantic: SemanticLayoutView,
+        Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -330,6 +600,7 @@ package struct LayoutEngine {
             measureFlattenedChildren(
                 of: identity,
                 semantic: semantic,
+                metrics: metrics,
                 proposal: childProposal,
                 vertical: vertical,
                 recognizesFlexibleSpacers: true,
@@ -393,9 +664,10 @@ package struct LayoutEngine {
         return measurement
     }
 
-    private mutating func measureFlattenedChildren<Semantic, Workspace>(
+    private mutating func measureFlattenedChildren<Semantic, Metrics, Workspace>(
         of identity: Semantic.Identity,
         semantic: borrowing Semantic,
+        metrics: borrowing Metrics,
         proposal: ProposedSize,
         vertical: Bool,
         recognizesFlexibleSpacers: Bool,
@@ -405,6 +677,7 @@ package struct LayoutEngine {
     ) -> Bool
     where
         Semantic: SemanticLayoutView,
+        Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -418,6 +691,7 @@ package struct LayoutEngine {
                 measureFlattenedOccurrence(
                     child,
                     semantic: semantic,
+                    metrics: metrics,
                     proposal: proposal,
                     vertical: vertical,
                     recognizesFlexibleSpacers: recognizesFlexibleSpacers,
@@ -431,9 +705,10 @@ package struct LayoutEngine {
         return true
     }
 
-    private mutating func measureFlattenedOccurrence<Semantic, Workspace>(
+    private mutating func measureFlattenedOccurrence<Semantic, Metrics, Workspace>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
+        metrics: borrowing Metrics,
         proposal: ProposedSize,
         vertical: Bool,
         recognizesFlexibleSpacers: Bool,
@@ -443,6 +718,7 @@ package struct LayoutEngine {
     ) -> Bool
     where
         Semantic: SemanticLayoutView,
+        Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -471,6 +747,7 @@ package struct LayoutEngine {
                     let measured = measureOccurrence(
                         identity,
                         semantic: semantic,
+                        metrics: metrics,
                         proposal: proposal,
                         workspace: &workspace
                     )
@@ -501,6 +778,7 @@ package struct LayoutEngine {
         return measureFlattenedChildren(
             of: identity,
             semantic: semantic,
+            metrics: metrics,
             proposal: proposal,
             vertical: vertical,
             recognizesFlexibleSpacers: recognizesFlexibleSpacers,
@@ -735,9 +1013,26 @@ package struct LayoutEngine {
             )
         }
         guard let measurement = workspace.measurement(for: identity),
-            let bounds = Rect(origin: origin, size: measurement.resolvedSize),
+            let bounds = Rect(origin: origin, size: measurement.resolvedSize)
+        else {
+            fail(.invariantViolation)
+            return false
+        }
+        let scopeClip: Rect
+        if primitive == .text {
+            guard
+                let intersection = LayoutGeometry.intersection(
+                    inheritedClip,
+                    bounds
+                )
+            else { return fail(.arithmeticOverflow) }
+            scopeClip = intersection
+        } else {
+            scopeClip = inheritedClip
+        }
+        guard
             workspace.storePlacement(
-                LayoutPlacement(bounds: bounds, clip: inheritedClip),
+                LayoutPlacement(bounds: bounds, clip: scopeClip),
                 for: identity
             )
         else {
@@ -789,9 +1084,94 @@ package struct LayoutEngine {
                 workspace: &workspace
             )
         case .text:
-            fail(.invariantViolation)
-            return false
+            return placeTextGeometry(
+                identity,
+                origin: origin,
+                textClip: scopeClip,
+                workspace: &workspace
+            )
         }
+    }
+
+    private mutating func placeTextGeometry<Workspace: LayoutWorkspace>(
+        _ identity: Workspace.Identity,
+        origin: Point,
+        textClip: Rect,
+        workspace: inout Workspace
+    ) -> Bool {
+        var lineStart: UInt16?
+        var lineEnd: UInt16 = 0
+        var lineIndex: UInt16 = 0
+        while lineIndex < workspace.textLineCount {
+            guard let line = workspace.textLine(at: lineIndex) else {
+                return fail(.invariantViolation)
+            }
+            if line.identity == identity {
+                if lineStart == nil { lineStart = lineIndex }
+                guard
+                    let boundsOrigin = LayoutGeometry.translated(
+                        line.bounds.origin,
+                        x: origin.x,
+                        y: origin.y
+                    ), let bounds = Rect(origin: boundsOrigin, size: line.bounds.size),
+                    let baseline = LayoutGeometry.translated(
+                        line.baseline,
+                        x: origin.x,
+                        y: origin.y
+                    ), let clip = LayoutGeometry.intersection(textClip, bounds),
+                    workspace.storeTextLine(
+                        LayoutTextLine(
+                            identity: identity,
+                            lineIndex: line.lineIndex,
+                            bounds: bounds,
+                            baseline: baseline,
+                            clip: clip
+                        ),
+                        at: lineIndex
+                    ), let next = increment(lineIndex)
+                else { return fail(.arithmeticOverflow) }
+                lineEnd = next
+            }
+            lineIndex += 1
+        }
+        guard let firstLine = lineStart else { return fail(.invariantViolation) }
+
+        var lineCursor = firstLine
+        var glyphIndex: UInt16 = 0
+        while glyphIndex < workspace.positionedGlyphCount {
+            guard let glyph = workspace.positionedGlyph(at: glyphIndex) else {
+                return fail(.invariantViolation)
+            }
+            if glyph.identity == identity {
+                while lineCursor < lineEnd,
+                    workspace.textLine(at: lineCursor)?.lineIndex != glyph.lineIndex
+                {
+                    lineCursor += 1
+                }
+                guard lineCursor < lineEnd,
+                    let line = workspace.textLine(at: lineCursor),
+                    let baseline = LayoutGeometry.translated(
+                        glyph.baseline,
+                        x: origin.x,
+                        y: origin.y
+                    ),
+                    workspace.storePositionedGlyph(
+                        LayoutPositionedGlyph(
+                            identity: identity,
+                            lineIndex: glyph.lineIndex,
+                            glyphIndex: glyph.glyphIndex,
+                            instance: glyph.instance,
+                            glyph: glyph.glyph,
+                            baseline: baseline,
+                            clip: line.clip
+                        ),
+                        at: glyphIndex
+                    )
+                else { return fail(.arithmeticOverflow) }
+            }
+            glyphIndex += 1
+        }
+        return true
     }
 
     private mutating func placeZStack<Semantic, Workspace>(

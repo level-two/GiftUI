@@ -602,6 +602,15 @@ struct ProbeWorkspace: LayoutWorkspace {
         return textLines[Int(index)]
     }
 
+    mutating func storeTextLine(
+        _ line: LayoutTextLine<UInt16>,
+        at index: UInt16
+    ) -> Bool {
+        guard Int(index) < textLines.count else { return false }
+        textLines[Int(index)] = line
+        return true
+    }
+
     var positionedGlyphCount: UInt16 { UInt16(positionedGlyphs.count) }
 
     mutating func appendPositionedGlyph(
@@ -617,6 +626,15 @@ struct ProbeWorkspace: LayoutWorkspace {
     func positionedGlyph(at index: UInt16) -> LayoutPositionedGlyph<UInt16>? {
         guard Int(index) < positionedGlyphs.count else { return nil }
         return positionedGlyphs[Int(index)]
+    }
+
+    mutating func storePositionedGlyph(
+        _ glyph: LayoutPositionedGlyph<UInt16>,
+        at index: UInt16
+    ) -> Bool {
+        guard Int(index) < positionedGlyphs.count else { return false }
+        positionedGlyphs[Int(index)] = glyph
+        return true
     }
 
     mutating func pushScope(_ identity: borrowing UInt16) -> Bool {

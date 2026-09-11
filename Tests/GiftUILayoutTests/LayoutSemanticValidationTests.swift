@@ -493,11 +493,21 @@ private struct ValidationWorkspace: LayoutWorkspace {
     mutating func appendTextLine(_ line: LayoutTextLine<UInt16>) -> Bool { false }
     func textLine(at index: UInt16) -> LayoutTextLine<UInt16>? { nil }
 
+    mutating func storeTextLine(
+        _ line: LayoutTextLine<UInt16>,
+        at index: UInt16
+    ) -> Bool { false }
+
     var positionedGlyphCount: UInt16 { 0 }
     mutating func appendPositionedGlyph(
         _ glyph: LayoutPositionedGlyph<UInt16>
     ) -> Bool { false }
     func positionedGlyph(at index: UInt16) -> LayoutPositionedGlyph<UInt16>? { nil }
+
+    mutating func storePositionedGlyph(
+        _ glyph: LayoutPositionedGlyph<UInt16>,
+        at index: UInt16
+    ) -> Bool { false }
 
     mutating func pushScope(_ identity: borrowing UInt16) -> Bool {
         depth.append(copy identity)

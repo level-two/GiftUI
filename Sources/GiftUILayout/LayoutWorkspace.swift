@@ -104,11 +104,19 @@ package protocol LayoutWorkspace {
     var textLineCount: UInt16 { get }
     mutating func appendTextLine(_ line: LayoutTextLine<Identity>) -> Bool
     func textLine(at index: UInt16) -> LayoutTextLine<Identity>?
+    mutating func storeTextLine(
+        _ line: LayoutTextLine<Identity>,
+        at index: UInt16
+    ) -> Bool
     var positionedGlyphCount: UInt16 { get }
     mutating func appendPositionedGlyph(
         _ glyph: LayoutPositionedGlyph<Identity>
     ) -> Bool
     func positionedGlyph(at index: UInt16) -> LayoutPositionedGlyph<Identity>?
+    mutating func storePositionedGlyph(
+        _ glyph: LayoutPositionedGlyph<Identity>,
+        at index: UInt16
+    ) -> Bool
     mutating func pushScope(_ identity: borrowing Identity) -> Bool
     mutating func popScope()
     mutating func resetLayout()

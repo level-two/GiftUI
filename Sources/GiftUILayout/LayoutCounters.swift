@@ -73,6 +73,12 @@ package struct LayoutCounters: Equatable, Sendable {
         return nil
     }
 
+    package mutating func resetTextCounts() {
+        textScalarCount = 0
+        textLineCount = 0
+        positionedGlyphCount = 0
+    }
+
     package mutating func finish(expectedScopeCount: UInt16) -> LayoutError? {
         guard firstFailure == nil else { return firstFailure }
         guard currentDepth == 0, scopeCount == expectedScopeCount else {
