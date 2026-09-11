@@ -232,7 +232,7 @@ and declaration initialization performs no layout.
       `Equatable`/`OptionSet`/`Sendable` conformances, and no widened API.
       Prove the reserved edge bits remain representable and `EdgeInsets`
       alone returns `nil` for any negative field.
-- [ ] `T1.2` — Implement `VStack`, `HStack`, `ZStack`, and `Spacer` with exact
+- [x] `T1.2` — Implement `VStack`, `HStack`, `ZStack`, and `Spacer` with exact
       generic `View` conformances, defaults, builder behavior, payload
       traversal, and preserved invalid spacing/minimum values. Their bodies
       remain unevaluated primitives and initialization performs no measuring,
@@ -680,13 +680,12 @@ every raw value and constant, nonnegative inset validation, empty and reserved
 edge-bit preservation, and finite frame-limit preservation including negative
 values for layout-time rejection.
 
-`T1.2` is ready to resume: the approved SPEC-006 amendment defines the exact typed
-`visitPrimitive(content:payload:)` overload needed to describe an unevaluated
-primitive and its builder-produced content. The amendment keeps this as a
-variant of the primitive category, stages the primitive before expanding
-content beneath `fixedChild(0)`, and leaves `Spacer` on the existing leaf
-operation. Implementation and transcript evidence must land through the ready
-SPEC-006 amendment milestone before SPEC-007 claims integration completion.
+`T1.2` is complete after the explicitly reapproved SPEC-006 primitive-with-
+content amendment: `VStack`, `HStack`, and `ZStack` store builder-produced
+content and dispatch exactly once through `visitPrimitive(content:payload:)`;
+`Spacer` retains the leaf operation. Focused tests cover exact defaults,
+zero-through-five builder shapes, every alignment payload, preservation of
+negative spacing/minimum values, nested traversal, and zero body evaluation.
 
 `T1.3` is complete: all padding and frame overloads lower through the existing
 typed modifier operation. Runtime transcript tests prove exact source-call

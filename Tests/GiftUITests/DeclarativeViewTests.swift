@@ -223,6 +223,13 @@ enum LayoutModifierVisit: Equatable {
     )
 }
 
+enum LayoutPrimitiveVisit: Equatable {
+    case vStack(alignment: HorizontalAlignment, spacing: GeometryScalar)
+    case hStack(alignment: VerticalAlignment, spacing: GeometryScalar)
+    case zStack(alignment: Alignment)
+    case spacer(minLength: GeometryScalar)
+}
+
 struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
     let evaluateBody: Bool
     var customViewVisits = 0
@@ -240,6 +247,7 @@ struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
     var modifierVisits = 0
     var styleVisits: [StyleVisit] = []
     var layoutModifierVisits: [LayoutModifierVisit] = []
+    var layoutPrimitiveVisits: [LayoutPrimitiveVisit] = []
 
     mutating func visitCustomView<Declaration: View>(
         _ declaration: borrowing Declaration,
@@ -330,6 +338,7 @@ struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
     mutating func visitPrimitive<Payload: _GiftUISemanticPrimitivePayload>(
         _ payload: borrowing Payload
     ) {
+        recordLayoutPrimitive(payload)
         primitiveVisits += 1
     }
 
@@ -340,6 +349,7 @@ struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
         content: borrowing Content,
         payload: borrowing Payload
     ) {
+        recordLayoutPrimitive(payload)
         primitiveWithContentVisits += 1
         if evaluateBody {
             content._giftUITraverse(&self)
@@ -350,6 +360,25 @@ struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
         _ payload: borrowing Payload
     ) {
         actionPrimitiveVisits += 1
+    }
+
+    private mutating func recordLayoutPrimitive<
+        Payload: _GiftUISemanticPrimitivePayload
+    >(_ payload: borrowing Payload) {
+        let payloadCopy = copy payload
+        if let stack = payloadCopy as? _GiftUIVStackPayload {
+            layoutPrimitiveVisits.append(
+                .vStack(alignment: stack.alignment, spacing: stack.spacing)
+            )
+        } else if let stack = payloadCopy as? _GiftUIHStackPayload {
+            layoutPrimitiveVisits.append(
+                .hStack(alignment: stack.alignment, spacing: stack.spacing)
+            )
+        } else if let stack = payloadCopy as? _GiftUIZStackPayload {
+            layoutPrimitiveVisits.append(.zStack(alignment: stack.alignment))
+        } else if let spacer = payloadCopy as? _GiftUISpacerPayload {
+            layoutPrimitiveVisits.append(.spacer(minLength: spacer.minLength))
+        }
     }
 
     mutating func visitModifier<
