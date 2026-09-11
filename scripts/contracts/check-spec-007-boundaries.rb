@@ -24,7 +24,8 @@ expected_dependencies = {
   "GiftUILayout" => %w[GiftUI GiftUISemanticCore GiftUITextResources],
   "GiftUILayoutFailureAdapterFixture" => %w[GiftUIFailureCore GiftUILayout],
   "GiftUILayoutTests" => %w[
-    GiftUI GiftUILayout GiftUISemanticCore GiftUITextResources
+    GiftUI GiftUILayout GiftUIReferenceTextResources GiftUISemanticCore
+    GiftUITextResources
   ],
   "GiftUILayoutFailureAdapterTests" => %w[
     GiftUIFailureCore GiftUILayout GiftUILayoutFailureAdapterFixture

@@ -464,7 +464,7 @@ text syntax, SPEC-008.
 limits, every module boundary is mechanically enforced, and the driver can
 collect all four profiles without a backend or hardware claim.
 
-- [ ] `T7.1` — Complete package graph and source audits proving
+- [x] `T7.1` — Complete package graph and source audits proving
       `GiftUILayout -> GiftUISemanticCore -> GiftUI` and
       `GiftUILayout -> GiftUITextResources -> GiftUI`, no reverse edge,
       `GiftUIRenderCore` sibling separation, no `GiftUI` re-export of layout
