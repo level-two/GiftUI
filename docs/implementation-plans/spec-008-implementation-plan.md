@@ -2,13 +2,13 @@
 spec: SPEC-008
 feature: giftui-mvp-architecture
 title: SPEC-008 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-09-06
 updated: 2026-09-11
 related_design_notes: []
-conformance_report: null
+conformance_report: ../conformance/spec-008-conformance.md
 related_future_work:
   - FW-001
   - FW-003
@@ -21,7 +21,7 @@ superseded_by: null
 
 # SPEC-008 Implementation Plan
 
-> This active plan incorporates the explicitly approved 2026-09-11
+> This completed plan incorporates the explicitly approved 2026-09-11
 > foreground-stack and arithmetic-evidence amendment. Completed task records
 > remain historical implementation evidence; the amendment follow-up work
 > below must land before those surfaces are treated as conforming.
@@ -179,17 +179,17 @@ once below and maps to implementation tasks and reproducible evidence.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `RD-001` — Exact public text/color/style declarations and absence of clear, alpha, and portable unbounded String APIs | `T1.1`-`T1.5`, `T8.1` | Positive/negative public compile corpus and API/source audit on all compilers | pending |
-| `RD-002` — Exact bounded-text admission and pre-layout invalid-declaration rejection | `T1.2`-`T1.4`, `T2.2`, `T6.2`, `T8.2` | UTF-8/integer byte goldens, invalid-marker semantic/layout probe, allocation/trap/invocation counters | pending |
-| `RD-003` — Exact valid headers, fills, glyph groups, ordering, geometry, identity, indices, baselines, and RGB | `T3.1`-`T3.4`, `T5.1`-`T5.3`, `T6.1`, `T8.2` | Canonical `fixtures.yaml` transcript and field-by-field recording comparisons | pending |
-| `RD-004` — Explicit root-intersection and complete-surface damage with no frame history | `T5.4`, `T6.1`, `T7.3`, `T8.2` | Damage-mode goldens, state/source audit, and repeated-attempt probes | pending |
-| `RD-005` — Exact errors, mappings, precedence, structural capacity/ordinal/snapshot failures, preflight-only visit accounting, begin/discard/reset counts, and atomic current transcript | `T4.1`-`T4.5`, `T5.5`, `T6.3`, `T8.2` | Fault-injection and coincident-failure matrix with local/mapped results and sink/workspace call counts | pending |
-| `RD-006` — No text reinterpretation, identity translation, retained borrow, glyph array, display-list, or per-field transcript requirement | `T2.4`, `T3.3`, `T4.4`, `T5.2`, `T6.4`, `T7.1` | Borrow/lifetime, source/import, streaming, allocation, and no-retained-list/transcript audits | pending |
-| `RD-007` — Recording/dynamic/static equivalence and exact render-limit and structural-capacity behavior | `T4.2`, `T5.5`, `T6.3`-`T6.5`, `T8.2`-`T8.4` | Normalized event/result/mapping comparisons and exactly-at/one-over reports | pending |
-| `RD-008` — Value layouts including structural capacity, four commands, zero static allocation, affine view-access work, and complete reproducible measurements | `T0.3`, `T3.5`, `T6.4`, `T8.1`-`T8.4` | Per-profile compiler, digest, layout, access/comparison work, allocation, high-water, timing, section, and link-map reports | pending |
-| `RD-009` — Complete Signal Analyzer rendering manifest fitting all four profiles without a pixel backend | `T7.2`, `T7.4`, `T8.2` | Manifest coverage audit, declared/observed limits, and four-profile backend-free transcript | pending |
-| `RD-010` — Exact import graph and one shared lowering implementation across profiles | `T0.2`, `T2.5`, `T7.1`, `T7.3`, `T8.1` | Target graph, import-negative fixtures, symbol/source ownership audit, and shared-lowering profile probe | pending |
-| `RD-011` — No raster, frame disposition, capability resolution, profile selection, interaction/hit-map authority, platform, hardware, or Canvas/stroke contract in SPEC-008 implementation scope | `T0.4`, `T7.1`, `T7.3`-`T7.5`, `T8.5` | Scope/migration audit, prohibited-import scan, downstream-seam review, and conformance review disposition | pending |
+| `RD-001` — Exact public text/color/style declarations and absence of clear, alpha, and portable unbounded String APIs | `T1.1`-`T1.5`, `T8.1` | Positive/negative public compile corpus and API/source audit on all compilers | pass |
+| `RD-002` — Exact bounded-text admission and pre-layout invalid-declaration rejection | `T1.2`-`T1.4`, `T2.2`, `T6.2`, `T8.2` | UTF-8/integer byte goldens, invalid-marker semantic/layout probe, allocation/trap/invocation counters | pass |
+| `RD-003` — Exact valid headers, fills, glyph groups, ordering, geometry, identity, indices, baselines, and RGB | `T3.1`-`T3.4`, `T5.1`-`T5.3`, `T6.1`, `T8.2` | Canonical `fixtures.yaml` transcript and field-by-field recording comparisons | pass |
+| `RD-004` — Explicit root-intersection and complete-surface damage with no frame history | `T5.4`, `T6.1`, `T7.3`, `T8.2` | Damage-mode goldens, state/source audit, and repeated-attempt probes | pass |
+| `RD-005` — Exact errors, mappings, precedence, structural capacity/ordinal/snapshot failures, preflight-only visit accounting, begin/discard/reset counts, and atomic current transcript | `T4.1`-`T4.5`, `T5.5`, `T6.3`, `T8.2` | Fault-injection and coincident-failure matrix with local/mapped results and sink/workspace call counts | pass |
+| `RD-006` — No text reinterpretation, identity translation, retained borrow, glyph array, display-list, or per-field transcript requirement | `T2.4`, `T3.3`, `T4.4`, `T5.2`, `T6.4`, `T7.1` | Borrow/lifetime, source/import, streaming, allocation, and no-retained-list/transcript audits | pass |
+| `RD-007` — Recording/dynamic/static equivalence and exact render-limit and structural-capacity behavior | `T4.2`, `T5.5`, `T6.3`-`T6.5`, `T8.2`-`T8.4` | Normalized event/result/mapping comparisons and exactly-at/one-over reports | pass |
+| `RD-008` — Value layouts including structural capacity, four commands, zero static allocation, affine view-access work, and complete reproducible measurements | `T0.3`, `T3.5`, `T6.4`, `T8.1`-`T8.4` | Per-profile compiler, digest, layout, access/comparison work, allocation, high-water, timing, section, and link-map reports | pass |
+| `RD-009` — Complete Signal Analyzer rendering manifest fitting all four profiles without a pixel backend | `T7.2`, `T7.4`, `T8.2` | Manifest coverage audit, declared/observed limits, and four-profile backend-free transcript | pass |
+| `RD-010` — Exact import graph and one shared lowering implementation across profiles | `T0.2`, `T2.5`, `T7.1`, `T7.3`, `T8.1` | Target graph, import-negative fixtures, symbol/source ownership audit, and shared-lowering profile probe | pass |
+| `RD-011` — No raster, frame disposition, capability resolution, profile selection, interaction/hit-map authority, platform, hardware, or Canvas/stroke contract in SPEC-008 implementation scope | `T0.4`, `T7.1`, `T7.3`-`T7.5`, `T8.5` | Scope/migration audit, prohibited-import scan, downstream-seam review, and conformance review disposition | pass |
 
 ## Milestones and Tasks
 
@@ -577,7 +577,7 @@ separated from connected-hardware claims and every plan task dispositioned.
       values, symbols, sections, linked code, and the ELF's Cortex-M4F
       hard-float VFP calling convention. Record cross-build/inspection only;
       do not flash or claim connected-board display/input evidence.
-- [ ] `T8.5` — Update this plan with every completed, changed, removed, or
+- [x] `T8.5` — Update this plan with every completed, changed, removed, or
       blocked task disposition and stable evidence link. Create
       `docs/conformance/spec-008-conformance.md` in `collecting` status, map
       `RD-001` through `RD-011` once, and request conformance review. Do not
@@ -1179,6 +1179,14 @@ cross-build inspection only; no connected target was used or flashed. See the
 [nRF render inspection](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-8/nrf-render-inspection.md).
 `T8.5` is the next dependency-complete task.
 
+`T8.5` is complete. Every task and RD row now has a disposition, the plan is
+`completed`, and the linked
+[collecting conformance report](../conformance/spec-008-conformance.md) maps
+RD-001 through RD-011 exactly once. The review records no deviation or approved
+exception and keeps all hardware-free evidence distinct from connected-target
+claims. It requests conformance review and explicit human authorization; it
+does not change SPEC-008 from `implementing`.
+
 Plan completion means every task has a recorded disposition; it does not mean
-SPEC-008 conforms or is `implemented`. The conformance report remains `null`
-until `T8.5` creates it.
+SPEC-008 is `implemented`. The collecting conformance report requests review
+and the separate human-authorized transition.

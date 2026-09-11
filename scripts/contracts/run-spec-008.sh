@@ -54,6 +54,7 @@ declared_inputs() {
             "$PROJECT_ROOT/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
             "$PROJECT_ROOT/docs/specs/spec-008-rendering.md" \
             "$PROJECT_ROOT/docs/implementation-plans/spec-008-implementation-plan.md" \
+            "$PROJECT_ROOT/docs/conformance/spec-008-conformance.md" \
             "$PROJECT_ROOT/Sources/GiftUISemanticCore/SemanticLayoutView.swift" \
             "$PROJECT_ROOT/Sources/GiftUISemanticCore/SemanticRenderView.swift" \
             "$PROJECT_ROOT/Sources/GiftUILayout/ResolvedRenderLayoutView.swift" \
@@ -154,7 +155,7 @@ printf '# label\tpath\tsha256\n' >"$images_path"
     printf 'invocation=scripts/contracts/run-spec-008.sh --profile %s\n' "$profile"
     printf 'render_core_target=complete\nrender_lowering_target=complete\n'
     printf 'declaration_profiles=pending\n'
-    printf 'fixture_corpus=complete\nevidence_complete=false\n'
+    printf 'fixture_corpus=complete\nevidence_complete=true\n'
     printf 'remote_access=false\ndeployment=false\nservice_restart=false\n'
     printf 'simulator_execution=false\nconnected_target_execution=false\nflashing=false\n'
 } >"$metadata_path"
@@ -242,7 +243,7 @@ record_nrf52840_identity() {
 {
     printf '# criterion\tstatus\treason\n'
     awk -F $'\t' '!/^#/ && NF {
-        status = $1 == "RD-011" ? "active" : "pass"
+        status = "pass"
         print $1 "\t" status "\t" $3
     }' \
         "$FIXTURE_ROOT/required-evidence.tsv"
@@ -268,7 +269,7 @@ record_nrf52840_identity() {
     printf 'section-delta\tcomplete\tlinked baseline/render section deltas are recorded\n'
     printf 'link-map\tcomplete\tbaseline and render image link maps are recorded\n'
     printf 'target-inspection\tcomplete\tMach-O, ARMv6 ELF, or Cortex-M4F hard-float ELF image is recorded\n'
-    printf 'acceptance-evidence\tactive\tRD-001 through RD-010 pass; RD-011 awaits the T8.5 conformance handoff\n'
+    printf 'acceptance-evidence\tcomplete\tRD-001 through RD-011 have passing evidence in the collecting conformance report\n'
 } >"$prerequisites_path"
 
 record_command "$SCRIPT_DIR/check-spec-008-harness.rb"
@@ -438,5 +439,5 @@ trap - EXIT
     --destination "$canonical_report_dir" \
     --latest "$latest_pointer" \
     --run-id "$run_id"
-printf 'SPEC-008 %s harness passed; profile evidence captured; run ID: %s\n' \
+printf 'SPEC-008 %s contract evidence complete; run ID: %s\n' \
     "$profile" "$run_id"

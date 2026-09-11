@@ -1144,6 +1144,7 @@ contract and its accepted ADRs; they are not silently added here.
 ## References
 
 - [SPEC-008 Implementation Plan](../implementation-plans/spec-008-implementation-plan.md)
+- [SPEC-008 Conformance Report](../conformance/spec-008-conformance.md)
 - [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
 - [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-003](../rfcs/rfc-003-deterministic-text-rendering-architecture.md)
