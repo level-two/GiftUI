@@ -2,7 +2,7 @@
 spec: SPEC-008
 feature: giftui-mvp-architecture
 title: SPEC-008 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-06
@@ -21,7 +21,7 @@ superseded_by: null
 
 # SPEC-008 Implementation Plan
 
-> This ready plan incorporates the explicitly approved 2026-09-11 bounded-
+> This active plan incorporates the explicitly approved 2026-09-11 bounded-
 > workspace and immutable-snapshot amendment. Completed task records remain
 > historical implementation evidence; the amendment follow-up work below must
 > land before those surfaces are treated as conforming.
@@ -697,11 +697,11 @@ valid historical evidence but require the follow-up work marked above.
 `docs/features.yaml` remains unchanged because its aggregate feature is still
 in implementation.
 
-Implementation began on 2026-09-06 at the maintainer's request. SPEC-008 is
-historically recorded as having entered `implementing`; after amendment
-approval this plan is `ready`, not `active`, pending an authorized transition
-back to implementation. Neither that history nor this approval authorizes the
-eventual `implemented` transition.
+Implementation began on 2026-09-06 at the maintainer's request. SPEC-008
+returned to `implementing` and this plan returned to `active` on 2026-09-11 at
+the maintainer's request after approval of the amendment. Neither that history
+nor the resumed implementation authorizes the eventual `implemented`
+transition.
 
 `T0.1` is complete: `Tests/ContractFixtures/SPEC008/` now contains the exact
 two canonical YAML manifests, frozen fixture and Signal Analyzer fields,

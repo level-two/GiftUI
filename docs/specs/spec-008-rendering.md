@@ -2,7 +2,7 @@
 id: SPEC-008
 feature: giftui-mvp-architecture
 title: Normalized Rendering Contract
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-25
@@ -48,13 +48,14 @@ target_milestone: MVP
 
 # SPEC-008: Normalized Rendering Contract
 
-> **Approval status:** Explicitly approved by the maintainer on 2026-09-11
+> **Implementation status:** Explicitly approved by the maintainer on 2026-09-11
 > after review and correction of the bounded-workspace and immutable-snapshot
 > amendment. The 2026-09-06 coordinated SPEC-008/SPEC-009 error-owner amendment
 > remains part of the approved contract. The governing Proposal and RFCs,
 > accepted architectural decisions, and approved Foundation, Failure, Text
 > Resource, Declarative, and Layout contracts remain authoritative
-> prerequisites.
+> prerequisites. Implementation resumed at the maintainer's request on
+> 2026-09-11 through the active implementation plan.
 
 ## Summary
 
