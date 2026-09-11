@@ -52,9 +52,11 @@ declared_inputs() {
             "$PROJECT_ROOT/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
             "$PROJECT_ROOT/docs/specs/spec-007-layout.md" \
             "$PROJECT_ROOT/docs/implementation-plans/spec-007-implementation-plan.md" \
+            "$PROJECT_ROOT/docs/conformance/spec-007-conformance.md" \
             "$PROJECT_ROOT/scripts/contracts/driver-registry.tsv" \
             "$SCRIPT_DIR/check-spec-007-harness.rb" \
             "$SCRIPT_DIR/check-spec-007-boundaries.rb" \
+            "$SCRIPT_DIR/check-spec-007-conformance.rb" \
             "$SCRIPT_DIR/check-spec-007-declarations.sh" \
             "$SCRIPT_DIR/check-spec-007-embedded-semantic.sh" \
             "$SCRIPT_DIR/check-spec-007-migration.rb" \
@@ -247,6 +249,8 @@ record_command "$SCRIPT_DIR/check-spec-007-harness.rb"
 "$SCRIPT_DIR/check-spec-007-harness.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-007-boundaries.rb"
 "$SCRIPT_DIR/check-spec-007-boundaries.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-007-conformance.rb"
+"$SCRIPT_DIR/check-spec-007-conformance.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-007-declarations.sh"
 "$SCRIPT_DIR/check-spec-007-declarations.sh" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-007-migration.rb"

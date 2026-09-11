@@ -2,7 +2,7 @@
 spec: SPEC-007
 feature: giftui-mvp-architecture
 title: SPEC-007 Conformance Report
-status: collecting
+status: complete
 reviewers:
   - codex
 created: 2026-09-11
@@ -20,12 +20,12 @@ superseded_by: null
 
 # SPEC-007 Conformance Report
 
-> This report records evidence. It does not itself authorize or perform the
-> governing Specification's `implemented` transition.
+> This complete report records evidence. The maintainer separately authorized
+> the governing Specification's `implemented` transition on 2026-09-11.
 
 ## Review Scope
 
-- Governing contract: [SPEC-007 Proposal-Based Layout Contract](../specs/spec-007-layout.md), status `implementing`.
+- Governing contract: [SPEC-007 Proposal-Based Layout Contract](../specs/spec-007-layout.md), status `implemented` after complete conformance review and explicit maintainer authorization on 2026-09-11.
 - Completed plan: [SPEC-007 Implementation Plan](../implementation-plans/spec-007-implementation-plan.md).
 - Design note: [bounded layout attempt](../implementation-designs/spec-007-bounded-layout-attempt.md), status `current`.
 - Reviewed implementation revision: `c431b73a1df03590309515b967dd37cb847acf93`.
@@ -114,6 +114,6 @@ criterion and conceal no correctness gap.
 ## Review Conclusion
 
 All nine acceptance criteria have reproducible passing evidence, with no
-deviation or exception. This collecting report supports requesting explicit
-human conformance review and, if approved, a separate authorization for the
-SPEC-007 `implemented` transition. It does not perform that transition.
+deviation or exception. The maintainer explicitly authorized that transition
+on 2026-09-11, so SPEC-007 is now `implemented`. This report records the
+decision; it did not grant the authorization.

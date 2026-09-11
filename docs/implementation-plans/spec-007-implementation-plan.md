@@ -868,6 +868,9 @@ report, and that report maps `LY-001` through `LY-009` exactly once. The report
 finds no implementation deviation or approved exception and requests explicit
 human conformance review; it does not change SPEC-007 from `implementing`.
 
-Plan completion means every task has a recorded disposition; it does not mean
-SPEC-007 is `implemented`. The collecting conformance report now supports a
-separate human transition decision.
+The maintainer explicitly authorized the separately gated `implemented`
+transition on 2026-09-11. SPEC-007 and its complete conformance report now
+record that decision without changing this plan's completed task history.
+
+Plan completion means every task has a recorded disposition; the separately
+authorized conformance transition now records SPEC-007 as `implemented`.

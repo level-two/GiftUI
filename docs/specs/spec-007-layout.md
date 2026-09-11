@@ -2,7 +2,7 @@
 id: SPEC-007
 feature: giftui-mvp-architecture
 title: Proposal-Based Layout Contract
-status: implementing
+status: implemented
 authors:
   - codex
 created: 2026-08-25
@@ -44,12 +44,11 @@ target_milestone: MVP
 
 # SPEC-007: Proposal-Based Layout Contract
 
-> **Approval status:** Approved by explicit maintainer authorization. The
-> governing Proposal and RFCs, accepted architectural decisions, and approved
-> Foundation, Failure, Text Resource, and Declarative contracts are
-> authoritative prerequisites. SPEC-006's typed primitive-with-content
-> traversal amendment was explicitly reapproved on 2026-09-10; stack work may
-> consume it once its authorized implementation lands.
+> **Implementation status:** Implemented on 2026-09-11 after complete
+> conformance review and explicit maintainer authorization. The governing
+> Proposal and RFCs, accepted architectural decisions, and approved
+> Foundation, Failure, Text Resource, and Declarative contracts remain
+> authoritative prerequisites.
 
 ## Summary
 
@@ -779,39 +778,39 @@ change this contract's results for the admitted MVP surface.
 
 ## Acceptance Criteria
 
-- [ ] **LY-001:** All public Rank 1 declarations and their exact constants
+- [x] **LY-001:** All public Rank 1 declarations and their exact constants
   compile using only `import GiftUI`; every invalid scalar, frame relation, or
   reserved edge bit is preserved and rejected exactly as specified.
-- [ ] **LY-002:** Recording fixtures expose the exact Semantic Core view API,
+- [x] **LY-002:** Recording fixtures expose the exact Semantic Core view API,
   primitive/modifier vocabulary, identity relation, flattening rule, child and
   modifier order, text access, and invalid-index behavior without runtime
   storage or a second semantic representation.
-- [ ] **LY-003:** Golden stack, spacer, alignment, padding, and frame fixtures
+- [x] **LY-003:** Golden stack, spacer, alignment, padding, and frame fixtures
   match every normative proposal, underflow, remainder, placement, clipping,
   and checked-geometry rule, including a 100-point minimum/fixed request under
   a 50-point parent proposal.
-- [ ] **LY-004:** Canonical text fixtures produce exact SPEC-005 instance and
+- [x] **LY-004:** Canonical text fixtures produce exact SPEC-005 instance and
   glyph IDs, scalar/glyph/line counts, line bounds, baselines, advances,
   positions, and clips for the complete required corpus.
-- [ ] **LY-005:** Every invalid declaration, checked overflow, capacity edge,
+- [x] **LY-005:** Every invalid declaration, checked overflow, capacity edge,
   nested reentry, malformed semantic view, post-validation lookup failure, and
   sink refusal returns the exact local error and authoritative SPEC-003 fact,
   follows the acquisition/discard rules, and publishes no partial result.
-- [ ] **LY-006:** Recording, dynamic, and static fixtures produce equal
+- [x] **LY-006:** Recording, dynamic, and static fixtures produce equal
   canonical transcripts, identity relations, summaries, and failure mappings;
   static attempts allocate zero heap bytes and retain no semantic borrow.
-- [ ] **LY-007:** Import-graph tests enforce the exact one-way
+- [x] **LY-007:** Import-graph tests enforce the exact one-way
   `GiftUILayout -> GiftUISemanticCore -> GiftUI` dependency, preserve sibling
   separation from `GiftUIRenderCore`, and reject reverse, runtime, backend, and
   platform imports.
-- [ ] **LY-008:** The Signal Analyzer approval fixture succeeds with exact
+- [x] **LY-008:** The Signal Analyzer approval fixture succeeds with exact
   limits `maximumScopes: 512`, `maximumDepth: 64`,
   `maximumTextScalars: 4096`, `maximumTextLines: 512`, and
   `maximumPositionedGlyphs: 4096`, and exercises vertical, horizontal,
   overlay, spacer, spacing, all admitted alignments, padding,
   fixed/min/max/infinite frames, and canonical text. These are contract-fixture
   limits, not production host budgets.
-- [ ] **LY-009:** The four `run-spec-007.sh` commands reproduce owned-value
+- [x] **LY-009:** The four `run-spec-007.sh` commands reproduce owned-value
   layouts, exact limits/high-water counts, zero-allocation evidence, workspace,
   stack, linked-code and no-second-graph evidence, plus the required nRF52840
   hard-float ELF attributes, without claiming connected hardware.
