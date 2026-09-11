@@ -2,7 +2,7 @@
 spec: SPEC-008
 feature: giftui-mvp-architecture
 title: SPEC-008 Implementation Plan
-status: active
+status: draft
 owners:
   - codex
 created: 2026-09-06
@@ -21,17 +21,17 @@ superseded_by: null
 
 # SPEC-008 Implementation Plan
 
-> This ready plan derives work from the approved Normalized Rendering
-> Contract. It orders implementation and evidence but does not amend the text,
-> color, style, semantic/layout correlation, normalized operation, clipping,
-> damage, failure, resource, profile, or module contracts owned by that
-> Specification and its authoritative dependencies.
+> This plan is paused and returned to `draft` while the 2026-09-11
+> bounded-workspace and immutable-snapshot amendment to SPEC-008 is in review.
+> Completed task records remain historical implementation evidence, but no
+> further implementation is authorized until the amended Specification is
+> explicitly approved and this plan is revised and declared `ready` again.
 
 ## Authority and Scope
 
-The governing contract is approved
-[SPEC-008](../specs/spec-008-rendering.md). Its authority chain is accepted
-[PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md),
+The governing [SPEC-008](../specs/spec-008-rendering.md) contract is in review
+after implementation exposed a bounded-validation gap. Its authority chain is
+accepted [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md),
 approved [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md),
 [RFC-003](../rfcs/rfc-003-deterministic-text-rendering-architecture.md), and
 [RFC-010](../rfcs/rfc-010-layout-semantic-core-adapter-boundary.md), and
@@ -122,26 +122,29 @@ driver work, deployment, or connected-hardware changes.
 
 ## Readiness Review
 
-**Reviewed:** 2026-09-06
+**Reviewed:** 2026-09-11
 
-**Disposition:** Ready. SPEC-008 is approved, all linked Proposal/RFC/ADR
-gates are authoritative, and all eleven acceptance criteria map to ordered
-work and reproducible evidence below. Incomplete SPEC-006 and SPEC-007
-implementations are explicit task dependencies rather than unresolved design:
-contract-local public values, render-core transport, direct recording views,
-and evidence schemas may proceed while production adapters wait for their
-owners. No `docs/features.yaml` update is required because implementation
-records are not registered there and the feature already reports the
-implementation stage.
+**Disposition:** Blocked pending Specification reapproval. `T4.2` showed that
+the prior workspace surface could not perform exact linear duplicate/count
+validation for arbitrary `Equatable` identity with bounded zero-allocation
+storage, and that two traversals could not prove complete lookup agreement
+without an owner-provided immutable-result signal or a prohibited retained
+transcript. The proposed SPEC-008 amendment adds dense ordinal projections,
+separate structural workspace capacity and visit sets, and snapshot versions.
+After explicit approval, this plan must be revised with exact follow-up tasks
+for the already completed view, workspace, fixture, and value-layout work.
+No `docs/features.yaml` update is required because the aggregate feature
+remains in implementation while this individual Specification returns to
+review.
 
-If the pinned compiler cannot express the approved nonescaping generic
-borrows, if exact two-pass production cannot detect immutable-input
-disagreement without retaining operations, if static lowering requires heap
-allocation or a complete display list, or if any required value cannot meet
-its size ceiling, the affected task returns to Specification or architecture
-review. The plan must not add translated identity, backend text measurement,
-runtime-owned lowering, profile-specialized semantics, frame history,
-rasterization, or relaxed atomicity and limit behavior.
+If the pinned compiler cannot express the amended nonescaping generic borrows,
+ordinal projections, snapshot-version guarantees, or workspace visits; if
+static lowering requires heap allocation, a complete display list, or a per-
+field proof transcript; or if any required value cannot meet its size ceiling,
+the affected task returns to Specification or architecture review. The plan
+must not add translated identity, backend text measurement, runtime-owned
+lowering, profile-specialized semantics, frame history, rasterization, or
+relaxed atomicity and limit behavior.
 
 ## Task Dependencies and Affected Surfaces
 
@@ -150,7 +153,7 @@ after every listed prerequisite is satisfied.
 
 | Work | Prerequisites | Primary affected surfaces | Parallel boundary |
 | --- | --- | --- | --- |
-| `T0.1`-`T0.4` | Approved SPEC-008 authority chain | `Tests/ContractFixtures/SPEC008/`, `Package.swift`, `scripts/contracts/`, SPEC-002 graph fixtures | Fixture schemas, migration inventory, and driver scaffolding may proceed together; exact graph edits land with their first compiling targets |
+| `T0.1`-`T0.4` | Historical approved SPEC-008 baseline; amendment approval required for follow-up | `Tests/ContractFixtures/SPEC008/`, `Package.swift`, `scripts/contracts/`, SPEC-002 graph fixtures | Fixture schemas, migration inventory, and driver scaffolding may proceed together; exact graph edits land with their first compiling targets |
 | `T1.1`-`T1.5` | `T0.2` boundary audit and current SPEC-006 sealed payload/traversal surface; no new package target is needed for the `GiftUI`-owned declarations | `Sources/GiftUI/`, `Tests/GiftUITests/`, public compile fixtures, SPEC-006 semantic corpus | Color, bounded text, text primitive, and style modifiers may be implemented independently once their fixed payload roles are registered |
 | `T2.1`-`T2.5` | Relevant `T1.*`; SPEC-006 complete result and SPEC-007 resolved result where named | `Sources/GiftUISemanticCore/`, `Sources/GiftUILayout/`, their unit tests, direct fixture views | Protocols and malformed direct views may precede production adapters; profile-equivalence claims wait for both prerequisite owners |
 | `T3.1`-`T3.5` | `T0.2` boundary audit, `T1.1`, and existing SPEC-002/SPEC-005 values; the first compiling Render Core source lands with its T0.2 package rows | `Sources/GiftUIRenderCore/`, `Tests/GiftUIRenderCoreTests/`, recording fixtures | Operation values and sink lifecycle may proceed beside semantic/layout adapters; recording completion waits for the event schema |
@@ -160,10 +163,9 @@ after every listed prerequisite is satisfied.
 | `T7.1`-`T7.5` | `T1`-`T6`; production SPEC-006/SPEC-007 outputs for end-to-end rows | package graph, Signal Analyzer manifest, SPEC-009/011/012/013/014 seams | Boundary audits may precede production integration; full analyzer and shared-lowering claims wait for prerequisite owners |
 | `T8.1`-`T8.5` | All applicable implementation and fixture tasks complete | formatter/gates, four profile reports, this plan, conformance report | Profile runs may execute independently after corpus freeze; comparison and conformance preparation consume all four reports |
 
-Starting work does not by itself change `docs/features.yaml` or SPEC-008's
-lifecycle status. When production implementation actually begins, the
-separate authorized progress update changes SPEC-008 to `implementing` and
-this plan to `active` under the lifecycle rules.
+Implementation may resume only after explicit approval of the amendment, a
+revised readiness review, and an authorized transition of SPEC-008 back to
+`implementing` with this plan returned to `active`.
 
 ## Acceptance-Criterion Matrix
 
@@ -176,10 +178,10 @@ once below and maps to implementation tasks and reproducible evidence.
 | `RD-002` — Exact bounded-text admission and pre-layout invalid-declaration rejection | `T1.2`-`T1.4`, `T2.2`, `T6.2`, `T8.2` | UTF-8/integer byte goldens, invalid-marker semantic/layout probe, allocation/trap/invocation counters | pending |
 | `RD-003` — Exact valid headers, fills, glyph groups, ordering, geometry, identity, indices, baselines, and RGB | `T3.1`-`T3.4`, `T5.1`-`T5.3`, `T6.1`, `T8.2` | Canonical `fixtures.yaml` transcript and field-by-field recording comparisons | pending |
 | `RD-004` — Explicit root-intersection and complete-surface damage with no frame history | `T5.4`, `T6.1`, `T7.3`, `T8.2` | Damage-mode goldens, state/source audit, and repeated-attempt probes | pending |
-| `RD-005` — Exact errors, mappings, precedence, begin/discard/reset counts, and atomic current transcript | `T4.1`-`T4.5`, `T5.5`, `T6.3`, `T8.2` | Fault-injection and coincident-failure matrix with local/mapped results and sink/workspace call counts | pending |
-| `RD-006` — No text reinterpretation, identity translation, retained borrow, glyph array, or display-list requirement | `T2.4`, `T3.3`, `T4.4`, `T5.2`, `T6.4`, `T7.1` | Borrow/lifetime, source/import, streaming, allocation, and no-retained-list audits | pending |
-| `RD-007` — Recording/dynamic/static equivalence and exact global-limit behavior | `T4.2`, `T5.5`, `T6.3`-`T6.5`, `T8.2`-`T8.4` | Normalized event/result/mapping comparisons and exactly-at/one-over limit reports | pending |
-| `RD-008` — Value layouts, four commands, zero static allocation, and complete reproducible measurements | `T0.3`, `T3.5`, `T6.4`, `T8.1`-`T8.4` | Per-profile compiler, digest, layout, allocation, high-water, timing, section, and link-map reports | pending |
+| `RD-005` — Exact errors, mappings, precedence, structural capacity/ordinal/snapshot failures, begin/discard/reset counts, and atomic current transcript | `T4.1`-`T4.5`, `T5.5`, `T6.3`, `T8.2` | Fault-injection and coincident-failure matrix with local/mapped results and sink/workspace call counts | pending |
+| `RD-006` — No text reinterpretation, identity translation, retained borrow, glyph array, display-list, or per-field transcript requirement | `T2.4`, `T3.3`, `T4.4`, `T5.2`, `T6.4`, `T7.1` | Borrow/lifetime, source/import, streaming, allocation, and no-retained-list/transcript audits | pending |
+| `RD-007` — Recording/dynamic/static equivalence and exact render-limit and structural-capacity behavior | `T4.2`, `T5.5`, `T6.3`-`T6.5`, `T8.2`-`T8.4` | Normalized event/result/mapping comparisons and exactly-at/one-over reports | pending |
+| `RD-008` — Value layouts including structural capacity, four commands, zero static allocation, and complete reproducible measurements | `T0.3`, `T3.5`, `T6.4`, `T8.1`-`T8.4` | Per-profile compiler, digest, layout, allocation, high-water, timing, section, and link-map reports | pending |
 | `RD-009` — Complete Signal Analyzer rendering manifest fitting all four profiles without a pixel backend | `T7.2`, `T7.4`, `T8.2` | Manifest coverage audit, declared/observed limits, and four-profile backend-free transcript | pending |
 | `RD-010` — Exact import graph and one shared lowering implementation across profiles | `T0.2`, `T2.5`, `T7.1`, `T7.3`, `T8.1` | Target graph, import-negative fixtures, symbol/source ownership audit, and shared-lowering profile probe | pending |
 | `RD-011` — No raster, frame disposition, capability resolution, profile selection, interaction/hit-map authority, platform, hardware, or Canvas/stroke contract in SPEC-008 implementation scope | `T0.4`, `T7.1`, `T7.3`-`T7.5`, `T8.5` | Scope/migration audit, prohibited-import scan, downstream-seam review, and conformance review disposition | pending |
@@ -188,7 +190,8 @@ once below and maps to implementation tasks and reproducible evidence.
 
 ### Milestone 0: Freeze Scope, Module Boundaries, and Evidence Schemas
 
-**Entry conditions:** SPEC-008 remains `approved`; PROPOSAL-003 remains
+**Entry conditions:** These tasks were completed while SPEC-008 was `approved`;
+any amendment follow-up requires renewed approval. PROPOSAL-003 remains
 `accepted`; linked RFCs remain `approved`; linked ADRs remain `accepted`; and
 SPEC-002, SPEC-003, SPEC-005, SPEC-006, and SPEC-007 remain approved authority.
 
@@ -291,6 +294,8 @@ copying a second semantic/layout result.
       Represent structural, clip-boundary, text, foreground, and background
       meaning only; keep action/state/runtime/layout-algorithm/backend facts
       outside the view.
+      **Amendment follow-up required:** add and verify exact semantic ordinal
+      bijection/inverse lookup and the semantic render snapshot version.
 - [x] `T2.2` — Adapt complete SPEC-006 results to the render view. Map primitive
       and layout modifiers to themselves, transparent/render-only scopes to
       their one flattened layout content scope, every SPEC-007 frame and only
@@ -302,6 +307,8 @@ copying a second semantic/layout result.
       results without translating identity or remeasuring text; expose exact
       bounds, clips, line/glyph indices, instances, glyphs, and baselines with
       the specified in-range and out-of-range behavior.
+      **Amendment follow-up required:** add and verify exact layout ordinal
+      bijection/inverse lookup and the layout render snapshot version.
 - [x] `T2.4` — Build direct valid and malformed semantic/layout views covering
       unequal roots, independent counts, missing/duplicate identities,
       transparent/render-only mappings, invalid arity, prohibited children,
@@ -349,6 +356,9 @@ recording sink enforces atomic current transcripts without pixel behavior.
       SPEC-008 value, including exact sizes for `Color`, `RenderLimits`,
       `RenderSinkCapacity`, and `RenderProductionError`, plus all upper bounds.
       Record compiler/target/optimization identity with each result.
+      **Amendment follow-up required:** include the exact 8-byte
+      `RenderWorkspaceCapacity` and exact 1-byte `RenderWorkspaceVisit` values
+      on all four compilers.
 
 ### Milestone 4: Implement Bounded Atomic Render Production
 
@@ -364,17 +374,22 @@ deterministic failure precedence, and atomic sink behavior.
       access, cases/raw values, nonzero limit validation, capacity reporting,
       acquisition/reset semantics, and required value layouts. Provide bounded
       fixture workspaces keyed by the same semantic/layout identity.
+      **Amendment follow-up required:** add `RenderWorkspaceCapacity`, separate
+      structural capacity reporting, and bounded semantic/layout ordinal visit
+      sets with exact first/repeated/invalid and acquire/reset behavior.
 - [ ] `T4.2` — Implement canonical depth-first traversal and preflight over
       immutable borrows. Validate root mapping, exact semantic/layout counts,
-      every lookup and structural invariant, checked intersections, exact
-      operation/glyph totals, structural clip depth, resource compatibility,
-      supplied limits, workspace capacity, and the one sink-capacity read
-      without emitting or retaining operations.
+      ordinal bijections and visit sets, every lookup and structural invariant,
+      checked intersections, exact operation/glyph totals, structural clip and
+      traversal depth, resource compatibility, render and structural workspace
+      capacity, snapshot stability, and the one sink-capacity read without
+      emitting or retaining operations.
 - [ ] `T4.3` — Implement the second traversal as direct ordered streaming and
-      compare every repeated lookup and numeric field with preflight. Call
-      `begin` once only after all preflight/capacity checks, keep glyph groups
-      whole, call `finish` once on success, and treat any disagreement or
-      post-begin refusal as invariant failure with exactly one discard.
+      repeat every canonical lookup under the unchanged snapshot-version
+      contract without retaining a per-field proof transcript. Call `begin`
+      once only after all preflight/capacity/version checks, keep glyph groups
+      whole, call `finish` once on success, and treat any version disagreement
+      or post-begin refusal as invariant failure with exactly one discard.
 - [ ] `T4.4` — Implement the idle/acquired/preflighting/begun/streaming/
       finished-or-discarded/reset lifecycle. Check active-workspace reentry
       first before all input/sink access; call `acquire` only when inactive;
@@ -443,15 +458,18 @@ nonescaping borrows.
       through semantic expansion into SPEC-007 rejection, and zero render
       invocation or layout publication after invalid declaration.
 - [ ] `T6.3` — Fault-inject every semantic/layout mismatch, arithmetic site,
-      exactly-at/one-over operation/glyph/clip bound, workspace/sink shortfall,
-      incompatible resource, every sink refusal, immutable-input disagreement,
-      nested reentry, and reuse case. Record exact local/mapped error and
-      begin/discard/reset/attempted-call counts.
+      exactly-at/one-over operation/glyph/clip bound and semantic-scope,
+      layout-scope, traversal-depth, and text-line capacity; ordinal visit-set
+      failure; workspace/sink shortfall; incompatible resource; every sink
+      refusal; snapshot changes before and after begin; nested reentry; and
+      reuse. Record exact local/mapped error and begin/discard/reset/attempted-
+      call counts.
 - [ ] `T6.4` — Instrument canonical traversal work as `O(o + g)`, static heap
-      allocation as zero, workspace capacity/bytes, maximum call-stack
-      high-water, lowering duration and timing method/samples, and incremental
-      linked code/read-only/initialized/zero-initialized data. Prove no
-      complete retained display list or glyph-run array is required.
+      allocation as zero, render and structural workspace capacity/bytes,
+      maximum call-stack high-water, lowering duration and timing method/
+      samples, and incremental linked code/read-only/initialized/zero-
+      initialized data. Prove no complete retained display list, glyph-run
+      array, or per-field preflight transcript is required.
 - [ ] `T6.5` — Run the entire corpus through recording, fixture-dynamic, and
       fixture-static semantic/layout/workspace storage. Compare headers,
       ordered value events, results, SPEC-003 mappings, limits, and high-water
@@ -479,9 +497,10 @@ without acquiring SPEC-008 authority.
 - [ ] `T7.2` — Populate `signal-analyzer.yaml` with every required label,
       bounded value, status/error text, opaque foreground, rectangular
       background, and maximum hierarchy variant. Fix the exact operation,
-      glyph, clip-depth, workspace, and sink limits used by all four profile
-      runs; record declared and observed high-water without claiming they are
-      final production-host budgets.
+      glyph, clip-depth, semantic-scope, layout-scope, traversal-depth, text-
+      line, workspace, and sink limits used by all four profile runs; record
+      declared and observed high-water without claiming they are final
+      production-host budgets.
 - [ ] `T7.3` — Add integration fixtures for SPEC-009's synchronous one-shot
       sink/envelope seam, SPEC-013's shared-lowering coordination seam, and
       SPEC-014's backend-side Render Core consumption boundary. Prove the
@@ -512,15 +531,17 @@ separated from connected-hardware claims and every plan task dispositioned.
 
 - [ ] `T8.1` — Run unit, public/negative compile, package-graph, forbidden-
       import, API/source-surface, migration, and formatter checks. Verify all
-      exact/maximum value-layout requirements on each contract compiler and
-      ensure SPEC-008's standalone driver remains explicitly registered with
-      the top-level gate.
+      exact/maximum value-layout requirements, including
+      `RenderWorkspaceCapacity`, on each contract compiler and ensure
+      SPEC-008's standalone driver remains explicitly registered with the top-
+      level gate.
 - [ ] `T8.2` — Run the four exact commands required by SPEC-008 and capture
       complete command lines, compiler/target/SDK/optimization identities,
       repository revision/dirty state, fixture digests, layouts, declared and
-      observed operation/glyph/clip high-water, workspace capacity/bytes,
-      maximum stack high-water, allocation count, timing method/samples,
-      section deltas, link maps, and acceptance/evidence dispositions.
+      observed operation/glyph/clip and structural high-water, render and
+      structural workspace capacity/bytes, maximum stack high-water,
+      allocation count, timing method/samples, section deltas, link maps, and
+      acceptance/evidence dispositions.
 - [ ] `T8.3` — For macOS dynamic/static and Raspberry Pi ARMv6, compare the
       complete normalized success/failure corpus, owner mappings, values, and
       resource identity evidence. The Raspberry Pi result is cross-build and
@@ -594,11 +615,14 @@ separated from connected-hardware claims and every plan task dispositioned.
   heap allocation. Measure call-stack high-water and use a bounded iterative
   implementation/design note if needed without changing canonical order.
 - Repeated mappings from transparent and render-only scopes can accidentally
-  inflate layout counts or create a second identity index. Test distinct
-  reachable layout identities separately from semantic traversal count.
+  inflate layout counts or turn ordinals into a second identity domain. Test
+  the required ordinal bijections and distinct reachable layout identities
+  separately from semantic traversal count, while using exact identities for
+  all correlation and equality.
 - Preflight/stream comparison can accidentally retain a complete operation
-  list. Store only bounded traversal, identity, style, clip, and proof state
-  permitted by the workspace contract and audit every field.
+  list. Rely on owner-provided snapshot stability, store only bounded ordinal,
+  traversal, style, clip, and count state permitted by the workspace contract,
+  and audit out a per-field transcript.
 - Text-resource validation can drift into backend or layout authority. Restrict
   rendering to exact descriptor/instance/glyph compatibility checks against
   already positioned SPEC-007 output.
@@ -620,10 +644,13 @@ separated from connected-hardware claims and every plan task dispositioned.
   `T7.2`-`T7.3` wait for SPEC-007's resolved layout result, canonical text
   geometry, and exact render view. Direct malformed views and Render Core
   tasks do not wait.
-- Any compiler failure of the approved borrow/lifetime contracts, need to
-  translate identity, inability to preserve exact two-pass agreement and
-  atomicity, or inability to satisfy required value-size/zero-allocation bounds
-  is a Specification or architecture blocker.
+- SPEC-008 is currently the upstream blocker: no T4.2 or later implementation,
+  nor amendment follow-up to completed tasks, may proceed until the 2026-09-11
+  amendment is explicitly approved and this plan is re-readied.
+- Any compiler failure of the reviewed borrow/lifetime, ordinal-bijection, or
+  snapshot contracts, need to translate identity, inability to preserve exact
+  two-pass agreement and atomicity, or inability to satisfy required value-
+  size/zero-allocation bounds is a Specification or architecture blocker.
 - Any proposed alpha/blending, gradients, effects, images, arbitrary clips,
   backend batching that changes order, fine-grained damage, retained replay,
   rasterization, frame history/disposition, capability-selected semantics,
@@ -648,10 +675,21 @@ obligation from SPEC-008 cannot be deferred.
 
 ## Completion Record
 
+On 2026-09-11 implementation paused at `T4.2` and SPEC-008 returned to review.
+The prior contract did not bound storage for exact semantic/layout distinctness
+and traversal validation, and could not prove complete agreement between two
+passes without retaining all observed fields. The proposed amendment adds
+owner-provided dense ordinal projections, a separate four-field structural
+workspace capacity with ordinal visit sets, and owner-provided immutable
+snapshot versions. The completed `T2.1`, `T2.3`, `T3.5`, and `T4.1` records
+remain valid historical evidence but require the follow-up work marked above
+after approval. `docs/features.yaml` remains unchanged because its aggregate
+feature is still in implementation.
+
 Implementation began on 2026-09-06 at the maintainer's request. SPEC-008 is
-`implementing` and this plan is `active`; these progress transitions do not
-change the approved contract or authorize the eventual `implemented`
-transition.
+historically recorded as having entered `implementing`; this plan is now
+`draft` and paused. Neither that history nor this amendment authorizes the
+eventual `implemented` transition.
 
 `T0.1` is complete: `Tests/ContractFixtures/SPEC008/` now contains the exact
 two canonical YAML manifests, frozen fixture and Signal Analyzer fields,

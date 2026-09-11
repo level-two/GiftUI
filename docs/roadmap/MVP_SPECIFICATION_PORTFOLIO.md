@@ -85,12 +85,14 @@ SPEC-006 owns declarative expansion, ordered modifiers, structural identity,
 the bounded public action-value protocol, and action identity. Neither
 Specification depends on or redefines the other.
 
-Wave 3 has completed coordinated approval with these immutable identities:
+Wave 3 retains these immutable identities. SPEC-007 remains approved;
+SPEC-008 has returned to review for its focused 2026-09-11 bounded-workspace
+and immutable-snapshot amendment:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
 | `LAYOUT` | `SPEC-007` | `approved` |
-| `RENDERING` | `SPEC-008` | `approved` |
+| `RENDERING` | `SPEC-008` | `review` |
 
 SPEC-007 owns proposal-based measurement, placement, canonical text geometry,
 and resolved occurrence bounds. SPEC-008 owns public text/color/style meaning,

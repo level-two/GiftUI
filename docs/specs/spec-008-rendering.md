@@ -2,11 +2,11 @@
 id: SPEC-008
 feature: giftui-mvp-architecture
 title: Normalized Rendering Contract
-status: implementing
+status: review
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-09-06
+updated: 2026-09-11
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -47,13 +47,14 @@ target_milestone: MVP
 
 # SPEC-008: Normalized Rendering Contract
 
-> **Approval status:** Approved by explicit maintainer authorization. The
-> maintainer explicitly approved the 2026-09-06 coordinated SPEC-008/SPEC-009
-> amendment that places the shared render-production error value in Render
-> Core while leaving all production behavior in Render Lowering. The governing
-> Proposal and RFCs, accepted architectural decisions, and approved Foundation,
-> Failure, Text Resource, Declarative, and Layout contracts are authoritative
-> prerequisites.
+> **Approval status:** In review. The previously approved contract, including
+> the explicitly approved 2026-09-06 coordinated SPEC-008/SPEC-009 error-owner
+> amendment, remains historical authority for work already completed. The
+> 2026-09-11 bounded-workspace and immutable-snapshot amendment below requires
+> renewed explicit maintainer approval before implementation may resume. The
+> governing Proposal and RFCs, accepted architectural decisions, and approved
+> Foundation, Failure, Text Resource, Declarative, and Layout contracts remain
+> authoritative prerequisites.
 
 ## Summary
 
@@ -65,7 +66,8 @@ operations.
 It also defines clipping, whole-root damage, bounded production, and the
 recording sink used to verify rendering without rasterization.
 
-This document is `approved` and authorizes implementation under this contract.
+This complete amendment is `review` material. It does not authorize new or
+continued implementation until a human maintainer explicitly approves it.
 
 ## Scope
 
@@ -279,8 +281,9 @@ concrete resource, platform, driver, OS/RTOS, HAL, or hardware module.
 
 `GiftUIRenderLowering` owns style resolution, semantic-to-resolved-layout
 correlation, render validation and preflight, immutable render limits,
-caller-owned production workspace, `RenderProductionResult`, and every rule
-that detects, orders, contains, and returns a `RenderProductionError`. It MUST
+immutable structural workspace capacities, caller-owned production workspace,
+`RenderWorkspaceVisit`, `RenderProductionResult`, and every rule that detects,
+orders, contains, and returns a `RenderProductionError`. It MUST
 depend on `GiftUI`, `GiftUISemanticCore`, `GiftUILayout`,
 `GiftUITextResources`, and `GiftUIRenderCore`. It MUST NOT import a
 runtime-profile implementation, execution, backend, raster provider,
@@ -322,10 +325,11 @@ content. An implementation MUST NOT create a parallel `Color`,
 
 ## Types / APIs
 
-`RenderLimits` and `RenderProductionResult` are package SPI owned by
-`GiftUIRenderLowering`. `RenderProductionError`, `RenderPlanHeader`,
-`PositionedGlyph`, both operation payloads, and `RenderOperationSink` are
-package SPI owned by `GiftUIRenderCore`.
+`RenderLimits`, `RenderWorkspaceCapacity`, `RenderWorkspaceVisit`, and
+`RenderProductionResult` are package SPI owned by `GiftUIRenderLowering`.
+`RenderProductionError`, `RenderPlanHeader`, `PositionedGlyph`, both operation
+payloads, and `RenderOperationSink` are package SPI owned by
+`GiftUIRenderCore`.
 
 ```swift
 package enum SemanticRenderScope: Equatable, Sendable {
@@ -341,6 +345,9 @@ package protocol SemanticRenderView {
 
     var rootIdentity: Identity { get }
     var semanticScopeCount: UInt16 { get }
+    var renderSnapshotVersion: UInt32 { get }
+    func semanticIdentity(at ordinal: UInt16) -> Identity?
+    func semanticOrdinal(of identity: Identity) -> UInt16?
     func scope(at identity: Identity) -> SemanticRenderScope?
     func layoutIdentity(for identity: Identity) -> Identity?
     func childCount(of identity: Identity) -> UInt16?
@@ -369,7 +376,10 @@ package protocol ResolvedRenderLayoutView {
 
     var rootIdentity: Identity { get }
     var layoutScopeCount: UInt16 { get }
+    var renderSnapshotVersion: UInt32 { get }
     var rootBounds: Rect { get }
+    func layoutIdentity(at ordinal: UInt16) -> Identity?
+    func layoutOrdinal(of identity: Identity) -> UInt16?
     func bounds(of identity: Identity) -> Rect?
     func clip(of identity: Identity) -> Rect?
     func textLineCount(of identity: Identity) -> UInt16?
@@ -386,6 +396,17 @@ package struct RenderLimits: Equatable, Sendable {
     package init?(maximumOperations: UInt16,
                   maximumPositionedGlyphs: UInt16,
                   maximumClipDepth: UInt16)
+}
+
+package struct RenderWorkspaceCapacity: Equatable, Sendable {
+    package let maximumSemanticScopes: UInt16
+    package let maximumLayoutScopes: UInt16
+    package let maximumTraversalDepth: UInt16
+    package let maximumTextLines: UInt16
+    package init?(maximumSemanticScopes: UInt16,
+                  maximumLayoutScopes: UInt16,
+                  maximumTraversalDepth: UInt16,
+                  maximumTextLines: UInt16)
 }
 
 package struct RenderSinkCapacity: Equatable, Sendable {
@@ -452,12 +473,23 @@ package enum RenderProductionResult: Equatable, Sendable {
     case failure(RenderProductionError)
 }
 
+package enum RenderWorkspaceVisit: UInt8, Equatable, Sendable {
+    case first = 0
+    case repeated = 1
+    case invalid = 2
+}
+
 package protocol RenderProductionWorkspace {
     associatedtype Identity: Equatable, Sendable
 
     var capacity: RenderLimits { get }
+    var structuralCapacity: RenderWorkspaceCapacity { get }
     var isActive: Bool { get }
     mutating func acquire() -> Bool
+    mutating func visitSemanticScope(at ordinal: UInt16)
+        -> RenderWorkspaceVisit
+    mutating func visitLayoutScope(at ordinal: UInt16)
+        -> RenderWorkspaceVisit
     mutating func reset()
 }
 
@@ -503,9 +535,24 @@ above. These consumer views are package SPI; their concrete storage MAY differ
 by profile, but their identity equality, lookup results, and ordering MUST be
 identical.
 
-Every identity and index below its declared count MUST resolve. An index at or
-above its declared count and a lookup for an identity not reachable from
-`rootIdentity` MUST return `nil` and MUST NOT inspect unowned storage.
+Every reachable identity and every ordinal or index below its declared count
+MUST resolve. An ordinal or index at or above its declared count and a lookup
+for an identity not reachable from `rootIdentity` MUST return `nil` and MUST
+NOT inspect unowned storage. Semantic ordinals `0..<semanticScopeCount` MUST
+bijectively enumerate the reachable semantic identities, and layout ordinals
+`0..<layoutScopeCount` MUST bijectively enumerate the reachable layout
+identities. Each ordinal lookup and reverse lookup MUST be exact inverses.
+Ordinals are dense workspace addresses only: they are not identity, do not
+participate in equality or serialization, and MUST NOT replace or translate
+the exact SPEC-006 identity used for correlation.
+
+Each view's `renderSnapshotVersion` covers every result visible through that
+view, including its root, counts, ordinal mappings, identity lookups, child
+order, geometry, clips, text lines, and glyphs. While a render borrow is active,
+the version MUST remain unchanged if all visible values remain unchanged and
+MUST change before any visible value changes. A version value MUST NOT be
+reused for different visible content during one active borrow. A successful
+published result is therefore normally observed at one immutable version.
 `layoutIdentity(for:)` returns the exact SPEC-006 identity of the resolved
 layout scope that supplies geometry for a semantic scope. A primitive or
 layout-modifier scope maps to itself; a transparent or render-only scope maps
@@ -528,7 +575,8 @@ pair, duplicate identity, a render modifier with other than one child,
 children on a text scope, or disagreement between line and glyph indices is
 `.invariantViolation`.
 
-All three render limits MUST be nonzero. The totals are global to one attempt:
+All three render limits and all four structural workspace capacities MUST be
+nonzero. The render-limit totals are global to one attempt:
 
 - `maximumOperations` counts each emitted fill and each complete non-empty
   positioned-glyph group, not individual glyphs;
@@ -553,11 +601,26 @@ validation.
 
 `RenderProductionWorkspace.capacity` is the maximum limit set the storage can
 support. Each supplied limit MUST be less than or equal to the corresponding
-workspace capacity. `acquire` is called only after `isActive == false`; failure
-then is `.invariantViolation`. `reset` is called exactly once after every
-successful acquisition, on both success and failure. The workspace MUST
-provide finite storage for active identity, foreground, traversal, preflight,
-and clip state without retaining an input or operation after reset.
+workspace capacity. `structuralCapacity` separately bounds semantic scopes,
+distinct layout scopes, simultaneously active semantic traversal depth, and
+all text lines including empty lines. A declared semantic or layout count
+above its capacity is `.capacityExhausted`; equality is valid. Traversal starts
+at depth one for the semantic root, and attempting the next depth or text line
+beyond its capacity is `.capacityExhausted` before `begin`.
+
+`acquire` is called only after `isActive == false`; failure then is
+`.invariantViolation`. A successful acquisition clears both ordinal visit
+sets. Each `visit*Scope` call returns `.first` for the first visit to an in-
+capacity ordinal during that attempt, `.repeated` for a later visit, and
+`.invalid` for an out-of-capacity or inactive visit. A repeated semantic visit
+is `.invariantViolation`; a repeated layout visit is permitted because
+transparent and render-only semantic scopes may map to the same layout scope
+and does not increase the distinct-layout count. An invalid visit is
+`.invariantViolation`. `reset` is called exactly once after every successful
+acquisition, on both success and failure, and clears both visit sets. The
+workspace MUST provide finite storage for ordinal visits, active identity,
+foreground, traversal, preflight, and clip state without retaining an input or
+operation after reset.
 
 `RenderSinkCapacity` fields MAY be zero. They report how many complete
 operations and positioned glyphs the idle sink can admit in this attempt. The
@@ -634,14 +697,23 @@ Production performs two deterministic traversals over the same immutable
 borrows. Preflight validates every semantic/layout lookup, resource identity,
 checked intersection, operation/glyph count, and observed clip depth and
 constructs the exact `RenderPlanHeader`; it emits nothing and retains no
-operation list. Streaming repeats canonical traversal and emits the proven
-sequence. A changed lookup or numeric field during streaming is
-`.invariantViolation`.
+operation list. The producer samples both snapshot versions before the first
+lookup and again after preflight. Streaming repeats every canonical lookup and
+emits the proven sequence without retaining a per-field proof transcript; the
+unchanged snapshot-version contract proves that repeated values agree. The
+producer samples both versions again immediately before `begin` and after the
+last streamed operation but before `finish`. Any version disagreement is
+`.invariantViolation`; a post-`begin` disagreement calls `discard` exactly
+once. A conformer that changes a visible value without first changing its
+version violates the view contract; the producer is not required to detect
+such an unreported mutation.
 
-Before `begin`, the producer verifies the supplied limits against workspace
-capacity and the preflight totals against both limits and the one reported
-sink capacity. A shortfall returns `.capacityExhausted`; neither `begin` nor
-`discard` is called. With sufficient capacity, `begin(header)` is called once.
+Before `begin`, the producer verifies the supplied limits and declared and
+observed structural totals against workspace capacity, and the preflight
+operation/glyph totals against both limits and the one reported sink capacity.
+A shortfall returns `.capacityExhausted`; neither `begin` nor `discard` is
+called. With sufficient capacity and unchanged versions, `begin(header)` is
+called once.
 If it returns `false`, the result is `.sinkRefused`; the sink remains idle and
 `discard` is not called. After `begin` succeeds, operations are delivered in
 order and `finish` is called once. Any later `false`, lookup disagreement, or
@@ -751,7 +823,8 @@ second production attempt.
   MUST NOT be required in either profile.
 - `Color` MUST occupy exactly 3 bytes; `BoundedText` MUST occupy no more than
   100 bytes and contain its complete admitted payload inline; `RenderLimits`
-  MUST occupy exactly 6 bytes; `RenderSinkCapacity` exactly 4 bytes;
+  MUST occupy exactly 6 bytes; `RenderWorkspaceCapacity` exactly 8 bytes;
+  `RenderWorkspaceVisit` exactly 1 byte; `RenderSinkCapacity` exactly 4 bytes;
   `RenderPlanHeader` no more than 40 bytes; `PositionedGlyph` no more than 12
   bytes; `FillRectOperation` no more than 36 bytes;
   `PositionedGlyphOperationHeader` no more than 60 bytes;
@@ -762,10 +835,12 @@ second production attempt.
   value meaning. Borrowing protocols MAY be specialized from concrete static
   types and MUST NOT require existential storage on Embedded Swift.
 - Signal Analyzer evidence MUST report declared and observed operation, glyph,
-  and clip-depth high-water; workspace capacity and bytes; maximum call-stack
-  high-water; allocation count; lowering duration; and incremental linked code,
-  read-only data, initialized data, and zero-initialized data. The exact value-
-  layout ceilings and zero-allocation rule above are pass/fail requirements.
+  clip-depth, semantic-scope, layout-scope, traversal-depth, and text-line high-
+  water; render and structural workspace capacities and bytes; maximum call-
+  stack high-water; allocation count; lowering duration; and incremental linked
+  code, read-only data, initialized data, and zero-initialized data. The exact
+  value-layout ceilings and zero-allocation rule above are pass/fail
+  requirements.
   Timing, stack, workspace, and linked-section totals are descriptive inputs to
   the later runtime-profile and host-configuration budgets and MUST NOT be
   omitted or represented as passing connected-target evidence.
@@ -799,15 +874,23 @@ before portable lowering and must produce identical operations when admitted.
 A future retained producer may generate this vocabulary without changing
 client, semantic, layout, or backend contracts.
 
+The new ordinal accessors do not change the exact identity domain or authorize
+identity translation. Existing semantic/layout conformers and SPEC-012
+extensions must add the bijective ordinal projection and snapshot-version
+guarantee before this amendment can be implemented. Existing workspace
+conformers must add finite structural capacity and ordinal visit storage.
+
 ## Testing Requirements
 
 - `Tests/ContractFixtures/SPEC008/fixtures.yaml` MUST be the canonical corpus
   manifest. Each case declares a stable symbolic name; semantic-render events;
-  exact identity tokens; resolved bounds, clips, clip depths, lines, glyphs,
-  and resource identity; surface bounds; damage mode; root foreground; render,
-  workspace, and sink limits; expected result; expected ordered recording
-  events; sink call counts; and expected SPEC-003 mapping. The driver rejects
-  duplicate names, missing fields, unknown cases, or unreferenced fixture data.
+  exact identity tokens and dense ordinals; semantic/layout snapshot versions;
+  resolved bounds, clips, clip depths, traversal depths, lines, glyphs, and
+  resource identity; surface bounds; damage mode; root foreground; render,
+  structural-workspace, and sink limits; expected result; expected ordered
+  recording events; sink/workspace call counts; and expected SPEC-003 mapping.
+  The driver rejects duplicate names, missing fields, unknown cases, or
+  unreferenced fixture data.
 - Compile fixtures cover `Color`, all named colors, bounded/static/integer text,
   modifier chaining, custom views, and both profiles. Negative fixtures prove
   that `clear`, alpha construction, and portable `String` initialization are
@@ -818,8 +901,9 @@ client, semantic, layout, or backend contracts.
   that SPEC-007 rejects it before rendering without trap, repair, or truncation.
 - Semantic/layout correlation fixtures cover unequal roots, independent
   semantic and layout counts, declared-count mismatches, missing and duplicate
-  identities, transparent/render-only mappings, invalid child arity, every
-  out-of-range index, and every prohibited in-range `nil` lookup.
+  identities, complete ordinal bijections and inverse lookups, repeated and
+  out-of-range ordinals, transparent/render-only mappings, invalid child arity,
+  every out-of-range index, and every prohibited in-range `nil` lookup.
 - Golden operation events cover nested foreground/background modifiers,
   siblings, ZStack painter order, empty/zero bounds, partial/off-surface clips,
   empty clips, unchanged nested clip intersections, whole-root damage, explicit
@@ -828,9 +912,11 @@ client, semantic, layout, or backend contracts.
   indices, baseline, clip, paint, exactly one group per non-empty line, empty-
   line omission, incompatible-resource rejection, and no raw-string payload.
 - Limit tests exercise exactly-at and one-over global operation, glyph, and
-  clip-depth bounds; workspace shortfall; sink-capacity shortfall; `begin`
-  refusal; refusal by every post-begin method; immutable-input disagreement;
-  nested reentry; workspace reset; and exact discard behavior.
+  clip-depth bounds and structural semantic-scope, layout-scope, traversal-
+  depth, and text-line capacities; workspace visit-set failure; sink-capacity
+  shortfall; `begin` refusal; refusal by every post-begin method; snapshot
+  changes before and after `begin`; nested reentry; workspace reset; and exact
+  discard behavior.
 - Recording, dynamic, and static fixtures MUST produce equal canonical event
   sequences, headers, results, and SPEC-003 mappings. Equality is field-by-field
   value equality, not profile-private memory or byte serialization. Static
@@ -865,17 +951,20 @@ client, semantic, layout, or backend contracts.
 - [ ] **RD-004:** Root-intersection and complete-surface initialization damage
   match their explicit modes for ordinary, smaller-root, empty-root, and
   off-surface cases; render lowering retains no frame-history state.
-- [ ] **RD-005:** Every semantic/layout mismatch, checked overflow, workspace or
+- [ ] **RD-005:** Every semantic/layout mismatch, checked overflow, render or
+  structural-workspace capacity edge, ordinal-visit failure, snapshot change,
   sink capacity edge, incompatible resource, begin refusal, post-begin refusal,
   reentry, and invariant case returns the exact local error and SPEC-003 fact,
   follows the specified begin/discard/reset call counts, and publishes no
   partial current transcript.
 - [ ] **RD-006:** No render or backend path remeasures text, changes glyphs or
   positions, substitutes or translates a resource identity, retains a borrow,
-  or requires a complete glyph-run array or retained display list.
+  requires a complete glyph-run array, retained display list, or per-field
+  preflight transcript.
 - [ ] **RD-007:** Recording, dynamic, and static fixtures produce equal
   field-by-field event sequences, headers, results, and failure mappings; all
-  global limit totals and exactly-at/one-over behavior match the contract.
+  global limit totals, structural capacities, and exactly-at/one-over behavior
+  match the contract.
 - [ ] **RD-008:** All value-layout ceilings, the four evidence commands, and the
   static zero-allocation requirement pass; each command records the required
   compiler, fixture digest, high-water, timing, section, and link-map evidence.
@@ -900,10 +989,30 @@ placement with this contract. Migration MUST place shared style resolution and
 operation production in `GiftUIRenderLowering`; it MUST NOT move that work into
 `GiftUIRenderCore` or duplicate it in the dynamic and static runtimes.
 
+## Amendment Review
+
+Implementation of `T4.2` exposed two gaps in the previously approved text: an
+arbitrary `Equatable` identity could not support exact linear duplicate/count
+validation with bounded zero-allocation storage, and a second traversal could
+not prove complete agreement without either retaining all first-pass values or
+receiving an immutable-result signal from each owner. This amendment supplies
+dense owner-provided ordinals solely as workspace addresses, separately bounds
+all structural storage, and makes immutable observation explicit through
+snapshot versions. It preserves exact SPEC-006 identity, direct streaming,
+linear work, zero static allocation, the three render limits, and all accepted
+module and ownership decisions.
+
+Rejected repairs were a retained display/glyph transcript, quadratic identity
+scans, restricting the shared identity to an integer representation, and
+weakening duplicate or two-pass validation. Each would violate an existing
+performance, ownership, portability, or atomicity requirement.
+
 ## Open Issues
 
-None. Stroke operations for Canvas enter through the separately governed
-DRAWING contract and its accepted ADRs; they are not silently added here.
+No unresolved architectural question is known. This focused amendment remains
+non-authoritative until explicit human approval. Stroke operations for Canvas
+enter through the separately governed DRAWING contract and its accepted ADRs;
+they are not silently added here.
 
 ## Deferred and Follow-up Work
 

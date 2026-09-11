@@ -26,6 +26,9 @@ its required acceptance criteria.
 - [SPEC-006](spec-006-declarative-view-semantics.md) — Declarative View
   Semantics Specification (`approved`; primitive-with-content amendment
   explicitly reapproved on 2026-09-10)
+- [SPEC-008](spec-008-rendering.md) — Normalized Rendering Contract (`review`;
+  bounded-workspace and immutable-snapshot amendment awaiting explicit
+  approval)
 - [SPEC-009](spec-009-execution-cycle-and-frame-handoff.md) — Execution Cycle
   and Frame Handoff Contract (`approved`, including focused-owner failure
   amendment)
