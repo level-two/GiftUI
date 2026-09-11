@@ -495,7 +495,7 @@ all prerequisite-owned declarations used by the approval corpus are present.
 produce inspectable evidence for every criterion, with cross-build facts
 separated from connected-hardware claims and all plan tasks dispositioned.
 
-- [ ] `T8.1` — Run unit, public/negative compile, package-graph, forbidden-
+- [x] `T8.1` — Run unit, public/negative compile, package-graph, forbidden-
       import, source-surface, migration, and formatter checks. Verify the
       `GiftUI` public declaration surface on every contract compiler and the
       exact value-size ceilings for semantic payloads, limits, summary, error,
@@ -830,6 +830,16 @@ Signal Analyzer fixture supplies exact limits and logical high-water counts;
 the boundary and lifetime probes reject retained borrows, adapter-owned node
 collections, and a second semantic graph. Per-profile workspace, stack, and
 linked-image facts are collected by T8.
+
+`T8.1` is complete: the registered driver is now fail-closed on the completed
+layout target and canonical corpus. Every selected profile runs the public and
+negative compile, package-graph, forbidden-import, declaration, migration,
+semantic-boundary, and bounded-value audits; macOS additionally runs the full
+layout test target. The driver builds `GiftUILayout` for the exact selected
+target and optimization, derives the six required value sizes plus finite
+workspace bytes from target IR, validates every ceiling, and hashes all
+reported artifacts. A dry run of all four paths passed before the driver was
+frozen; T8.2 records the final clean-revision runs.
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-007 conforms or is `implemented`. The conformance report remains

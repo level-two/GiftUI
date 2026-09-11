@@ -6,6 +6,7 @@ SCRIPT_DIR="$(cd "$(dirname "$BASH_SOURCE")" && pwd -P)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd -P)"
 source "$PROJECT_ROOT/scripts/nrf52840/common.sh"
 giftui_nrf_require_environment
+EVIDENCE_DIRECTORY="${1:-}"
 
 TEMPORARY_DIRECTORY="$(mktemp -d "${TMPDIR:-/tmp}/giftui-spec007-embedded.XXXXXX")"
 trap 'rm -rf "$TEMPORARY_DIRECTORY"' EXIT
@@ -56,6 +57,15 @@ PROBE_OBJECT="$TEMPORARY_DIRECTORY/SemanticBorrowProbe.swift.o"
     "$PROJECT_ROOT/Tests/ContractFixtures/SPEC007/Instrumentation/SemanticBorrowProbe.swift" \
     -o "$PROBE_OBJECT"
 
+if [[ -n "$EVIDENCE_DIRECTORY" ]]; then
+    mkdir -p "$EVIDENCE_DIRECTORY"
+    PROBE_IR="$EVIDENCE_DIRECTORY/layout-resource.ll"
+    "$GIFTUI_NRF_SWIFTC" "${FLAGS[@]}" -parse-as-library -emit-ir \
+        -module-name SPEC007EmbeddedSemanticProbe -I "$MODULES" \
+        "$PROJECT_ROOT/Tests/ContractFixtures/SPEC007/Instrumentation/SemanticBorrowProbe.swift" \
+        -o "$PROBE_IR"
+fi
+
 READELF="$GIFTUI_NRF_SDK_DIR/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf"
 ATTRIBUTES="$TEMPORARY_DIRECTORY/attributes.txt"
 SYMBOLS="$TEMPORARY_DIRECTORY/symbols.txt"
@@ -72,6 +82,14 @@ if grep -Eqi 'GiftUIRender|GiftUIRuntime|GiftUIBackend|GiftUIPlatform|Zephyr|JLi
     "$SYMBOLS"; then
     printf 'SPEC-007 embedded semantic check failed: prohibited dependency symbol found\n' >&2
     exit 1
+fi
+
+if [[ -n "$EVIDENCE_DIRECTORY" ]]; then
+    cp "$PROBE_OBJECT" "$EVIDENCE_DIRECTORY/layout-probe.o"
+    cp "$ATTRIBUTES" "$EVIDENCE_DIRECTORY/attributes.txt"
+    cp "$SYMBOLS" "$EVIDENCE_DIRECTORY/symbols.txt"
+    "$SCRIPT_DIR/check-spec-007-resource-ir.rb" \
+        "$PROBE_IR" "$EVIDENCE_DIRECTORY/value-layouts.tsv"
 fi
 
 printf 'SPEC-007 embedded semantic passed: ARMv7E-M hard-float layout probe has zero allocation and no prohibited dependency symbols.\n'

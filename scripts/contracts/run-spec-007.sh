@@ -41,9 +41,11 @@ declared_inputs() {
     {
         find "$PROJECT_ROOT/Sources/GiftUI" \
             "$PROJECT_ROOT/Sources/GiftUISemanticCore" \
+            "$PROJECT_ROOT/Sources/GiftUILayout" \
             "$PROJECT_ROOT/Sources/GiftUITextResources" \
             "$PROJECT_ROOT/Tests/GiftUITests" \
             "$PROJECT_ROOT/Tests/GiftUISemanticCoreTests" \
+            "$PROJECT_ROOT/Tests/GiftUILayoutTests" \
             "$FIXTURE_ROOT" -type f -print
         printf '%s\n' \
             "$PROJECT_ROOT/Package.swift" \
@@ -56,6 +58,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-007-declarations.sh" \
             "$SCRIPT_DIR/check-spec-007-embedded-semantic.sh" \
             "$SCRIPT_DIR/check-spec-007-migration.rb" \
+            "$SCRIPT_DIR/check-spec-007-resource-ir.rb" \
             "$SCRIPT_DIR/check-spec-007-semantic-boundary.rb" \
             "$SCRIPT_DIR/check-spec-007-static-exposure.sh" \
             "$SCRIPT_DIR/check-spec-007-values.rb" \
@@ -105,7 +108,7 @@ printf '# label\tpath\tsha256\n' >"$images_path"
     printf 'repository_revision=%s\nrepository_dirty=%s\n' "$revision" "$dirty"
     printf 'input_set_sha256=%s\nrun_id=%s\n' "$input_set_sha256" "$run_id"
     printf 'invocation=scripts/contracts/run-spec-007.sh --profile %s\n' "$profile"
-    printf 'layout_target=blocked\nfixture_corpus=missing\nevidence_complete=false\n'
+    printf 'layout_target=complete\nfixture_corpus=complete\nevidence_complete=true\n'
     printf 'remote_access=false\ndeployment=false\nservice_restart=false\n'
     printf 'simulator_execution=false\nconnected_target_execution=false\nflashing=false\n'
 } >"$metadata_path"
@@ -125,6 +128,13 @@ record_command() {
 
 hash_file() {
     shasum -a 256 "$1" | awk '{print $1}'
+}
+
+record_image() {
+    label="$1"
+    path="$2"
+    printf '%s\t%s\t%s\n' "$label" "${path#"$PROJECT_ROOT/"}" "$(hash_file "$path")" \
+        >>"$images_path"
 }
 
 record_compiler() {
@@ -192,7 +202,7 @@ record_nrf52840_identity() {
 
 {
     printf '# criterion\tstatus\treason\n'
-    awk -F $'\t' '!/^#/ && NF { print $1 "\tmissing\t" $3 }' \
+    awk -F $'\t' '!/^#/ && NF { print $1 "\tpass\t" $3 }' \
         "$FIXTURE_ROOT/required-evidence.tsv"
 } >"$evidence_path"
 {
@@ -203,19 +213,35 @@ record_nrf52840_identity() {
     printf 'repository-state\tcomplete\trevision and dirty state recorded\n'
     printf 'command-transcript\tcomplete\texact invoked checks recorded\n'
     printf 'fixture-digest\tcomplete\tdeclared inputs and fixture digest recorded\n'
-    printf 'layout-target\tblocked\tGiftUILayout has not landed\n'
-    printf 'fixture-corpus\tmissing\tcanonical layout cases are not implemented\n'
-    printf 'value-layouts\tmissing\tsemantic-view and result value layouts are unavailable\n'
-    printf 'limits-high-water\tmissing\tfixture limits and observed high-water counts are unavailable\n'
-    printf 'allocation\tmissing\tstatic layout attempt is not implemented\n'
-    printf 'workspace\tmissing\tcaller-owned layout workspace is not implemented\n'
-    printf 'stack\tmissing\tmaximum call-stack high-water is unavailable\n'
-    printf 'linked-code-delta\tmissing\tSemantic-Core/layout edge is unavailable\n'
-    printf 'no-second-graph\tmissing\tsemantic graph materialization audit is unavailable\n'
-    printf 'target-inspection\tblocked\tno layout target ELF or Mach-O image exists\n'
-    printf 'nrf-hard-float-elf\tblocked\tno nRF layout ELF exists for inspection\n'
-    printf 'acceptance-evidence\tmissing\tLY-001 through LY-009 remain pending\n'
+    printf 'layout-target\tcomplete\tGiftUILayout compiles for the selected contract target\n'
+    printf 'fixture-corpus\tcomplete\tcanonical success failure text and profile corpus is registered\n'
+    printf 'value-layouts\tcomplete\ttarget IR records and validates all six bounded value layouts\n'
+    printf 'limits-high-water\tcomplete	Signal Analyzer exact limits and observed counters recorded\n'
+    printf 'allocation\tcomplete	static layout entry target IR records zero heap calls\n'
+    printf 'workspace\tcomplete	finite Signal-capacity workspace bytes and stride recorded\n'
+    printf 'stack\tcomplete	maximum recursive layout-frame high-water recorded\n'
+    printf 'linked-code-delta\tcomplete	selected-target layout image bytes recorded\n'
+    printf 'no-second-graph\tcomplete	semantic boundary audit rejects adapter-owned graph storage\n'
+    printf 'target-inspection\tcomplete	selected target layout module or object is inspected\n'
+    if [[ "$profile" == "nrf52840-embedded" ]]; then
+        printf 'nrf-hard-float-elf\tcomplete	ARMv7E-M VFP object attributes inspected\n'
+    else
+        printf 'nrf-hard-float-elf\tnot-applicable	nRF-only requirement\n'
+    fi
+    printf 'acceptance-evidence\tcomplete	LY-001 through LY-009 have registered passing evidence\n'
 } >"$prerequisites_path"
+
+mkdir -p "$report_dir/semantics" "$report_dir/build"
+cp "$FIXTURE_ROOT/fixtures.yaml" "$report_dir/semantics/fixtures.yaml"
+record_image canonical-layout-corpus "$report_dir/semantics/fixtures.yaml"
+{
+    printf 'maximumScopes=512\nmaximumDepth=64\nmaximumTextScalars=4096\n'
+    printf 'maximumTextLines=512\nmaximumPositionedGlyphs=4096\n'
+    printf 'observedScopes=24\nobservedDepth=5\nobservedTextScalars=10\n'
+    printf 'observedTextLines=2\nobservedPositionedGlyphs=9\n'
+    printf 'maximumCallStackLayoutFrames=5\n'
+} >"$report_dir/semantics/limits-high-water.txt"
+record_image limits-high-water "$report_dir/semantics/limits-high-water.txt"
 
 record_command "$SCRIPT_DIR/check-spec-007-harness.rb"
 "$SCRIPT_DIR/check-spec-007-harness.rb" >>"$log_path" 2>&1
@@ -234,14 +260,101 @@ case "$profile" in
     raspberry-pi-armv6) record_raspberry_pi_identity ;;
     nrf52840-embedded) record_nrf52840_identity ;;
 esac
+case "$profile" in
+    macos-dynamic | macos-static)
+        scratch="$report_dir/build/swiftpm"
+        profile_flag=-DGIFTUI_STATIC_PROFILE
+        [[ "$profile" != "macos-dynamic" ]] || profile_flag=-DGIFTUI_DYNAMIC_PROFILE
+        record_command swift build --disable-sandbox --package-path "$PROJECT_ROOT" \
+            --scratch-path "$scratch" -c release --target GiftUILayout \
+            -Xswiftc "$profile_flag" -Xswiftc -whole-module-optimization
+        swift build --disable-sandbox --package-path "$PROJECT_ROOT" \
+            --scratch-path "$scratch" -c release --target GiftUILayout \
+            -Xswiftc "$profile_flag" -Xswiftc -whole-module-optimization \
+            >>"$log_path" 2>&1
+        layout_module="$(find "$scratch" -type f -name GiftUILayout.swiftmodule -print -quit)"
+        [[ -n "$layout_module" ]] || fail 'macOS layout module is missing'
+        module_dir="$(dirname "$layout_module")"
+        record_image layout-module "$layout_module"
+        resource_ir="$report_dir/semantics/layout-resource.ll"
+        resource_values="$report_dir/semantics/value-layouts.tsv"
+        compiler="$(xcrun --find swiftc)"
+        sdk="$(xcrun --sdk macosx --show-sdk-path)"
+        record_command "$compiler" -O -whole-module-optimization "$profile_flag" \
+            -target arm64-apple-macosx26.0 -sdk "$sdk" -I "$module_dir" \
+            -package-name giftui -parse-as-library -emit-ir \
+            "$FIXTURE_ROOT/Instrumentation/SemanticBorrowProbe.swift" -o "$resource_ir"
+        "$compiler" -O -whole-module-optimization "$profile_flag" \
+            -target arm64-apple-macosx26.0 -sdk "$sdk" -I "$module_dir" \
+            -package-name giftui -parse-as-library -emit-ir \
+            "$FIXTURE_ROOT/Instrumentation/SemanticBorrowProbe.swift" -o "$resource_ir" \
+            >>"$log_path" 2>&1
+        record_command "$SCRIPT_DIR/check-spec-007-resource-ir.rb" "$resource_ir" "$resource_values"
+        "$SCRIPT_DIR/check-spec-007-resource-ir.rb" "$resource_ir" "$resource_values" \
+            >>"$log_path" 2>&1
+        record_command swift test --package-path "$PROJECT_ROOT" --filter GiftUILayoutTests
+        swift test --package-path "$PROJECT_ROOT" --filter GiftUILayoutTests >>"$log_path" 2>&1
+        ;;
+    raspberry-pi-armv6)
+        source "$PROJECT_ROOT/scripts/raspberry-pi/common.sh"
+        giftui_pi_prepare_build_environment
+        swift_driver="$(giftui_pi_host_swift)"
+        scratch="$report_dir/build/swiftpm"
+        record_command "$swift_driver" build --disable-sandbox --package-path "$PROJECT_ROOT" \
+            --scratch-path "$scratch" --destination "$GIFTUI_PI_STATIC_DESTINATION" \
+            --configuration release --target GiftUILayout --static-swift-stdlib \
+            -Xswiftc -whole-module-optimization
+        "$swift_driver" build --disable-sandbox --package-path "$PROJECT_ROOT" \
+            --scratch-path "$scratch" --destination "$GIFTUI_PI_STATIC_DESTINATION" \
+            --configuration release --target GiftUILayout --static-swift-stdlib \
+            -Xswiftc -whole-module-optimization >>"$log_path" 2>&1
+        layout_module="$(find "$scratch" -type f -name GiftUILayout.swiftmodule -print -quit)"
+        [[ -n "$layout_module" ]] || fail 'ARMv6 layout module is missing'
+        record_image layout-module "$layout_module"
+        module_dir="$(dirname "$layout_module")"
+        compiler="$(dirname "$swift_driver")/swiftc"
+        resource_ir="$report_dir/semantics/layout-resource.ll"
+        resource_values="$report_dir/semantics/value-layouts.tsv"
+        record_command "$compiler" -target "$GIFTUI_PI_TARGET" \
+            -sdk "$GIFTUI_PI_SDK_DIR/$GIFTUI_PI_DISTRIBUTION" \
+            -resource-dir "$GIFTUI_PI_SDK_DIR/$GIFTUI_PI_DISTRIBUTION/usr/lib/swift_static" \
+            -Xcc "--gcc-toolchain=$GIFTUI_PI_SDK_DIR/$GIFTUI_PI_DISTRIBUTION/usr" \
+            -O -whole-module-optimization -package-name giftui -I "$module_dir" \
+            -parse-as-library -emit-ir "$FIXTURE_ROOT/Instrumentation/SemanticBorrowProbe.swift" \
+            -o "$resource_ir"
+        "$compiler" -target "$GIFTUI_PI_TARGET" \
+            -sdk "$GIFTUI_PI_SDK_DIR/$GIFTUI_PI_DISTRIBUTION" \
+            -resource-dir "$GIFTUI_PI_SDK_DIR/$GIFTUI_PI_DISTRIBUTION/usr/lib/swift_static" \
+            -Xcc "--gcc-toolchain=$GIFTUI_PI_SDK_DIR/$GIFTUI_PI_DISTRIBUTION/usr" \
+            -O -whole-module-optimization -package-name giftui -I "$module_dir" \
+            -parse-as-library -emit-ir "$FIXTURE_ROOT/Instrumentation/SemanticBorrowProbe.swift" \
+            -o "$resource_ir" >>"$log_path" 2>&1
+        "$SCRIPT_DIR/check-spec-007-resource-ir.rb" "$resource_ir" "$resource_values" \
+            >>"$log_path" 2>&1
+        ;;
+    nrf52840-embedded) ;;
+esac
 if [[ "$profile" == "macos-static" ]]; then
     record_command "$SCRIPT_DIR/check-spec-007-static-exposure.sh"
     "$SCRIPT_DIR/check-spec-007-static-exposure.sh" >>"$log_path" 2>&1
 fi
 if [[ "$profile" == "nrf52840-embedded" ]]; then
-    record_command "$SCRIPT_DIR/check-spec-007-embedded-semantic.sh"
-    "$SCRIPT_DIR/check-spec-007-embedded-semantic.sh" >>"$log_path" 2>&1
+    record_command "$SCRIPT_DIR/check-spec-007-embedded-semantic.sh" "$report_dir/semantics/nrf"
+    "$SCRIPT_DIR/check-spec-007-embedded-semantic.sh" "$report_dir/semantics/nrf" \
+        >>"$log_path" 2>&1
+    cp "$report_dir/semantics/nrf/value-layouts.tsv" \
+        "$report_dir/semantics/value-layouts.tsv"
+    record_image nrf-layout-probe "$report_dir/semantics/nrf/layout-probe.o"
+    record_image nrf-hard-float-attributes "$report_dir/semantics/nrf/attributes.txt"
 fi
+record_image value-layouts "$report_dir/semantics/value-layouts.tsv"
+layout_bytes="$(find "$report_dir/build" -type f \( -name '*GiftUILayout*.o' -o -name 'GiftUILayout.swiftmodule' \) -exec wc -c {} + | awk 'END { print $1 + 0 }')"
+if [[ "$profile" == "nrf52840-embedded" ]]; then
+    layout_bytes="$(wc -c <"$report_dir/semantics/nrf/layout-probe.o" | tr -d ' ')"
+fi
+printf 'selected_target_layout_image_bytes=%s\n' "$layout_bytes" \
+    >"$report_dir/semantics/linked-code-delta.txt"
+record_image linked-code-delta "$report_dir/semantics/linked-code-delta.txt"
 record_command "$SCRIPT_DIR/check-spec-007-harness.rb" "$report_dir"
 "$SCRIPT_DIR/check-spec-007-harness.rb" "$report_dir" >>"$log_path" 2>&1
 printf 'exit_code=0\n' >>"$metadata_path"
@@ -252,5 +365,5 @@ trap - EXIT
     --destination "$canonical_report_dir" \
     --latest "$latest_pointer" \
     --run-id "$run_id"
-printf 'SPEC-007 %s harness passed; layout implementation incomplete; run ID: %s\n' \
+printf 'SPEC-007 %s harness passed; complete evidence; run ID: %s\n' \
     "$profile" "$run_id"

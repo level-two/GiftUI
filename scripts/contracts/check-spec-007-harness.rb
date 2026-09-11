@@ -93,7 +93,7 @@ evidence = tsv_rows(
 expected_criteria = (1..9).map { |value| format("LY-%03d", value) }
 fail_check("required evidence criteria differ") unless evidence.map(&:first) == expected_criteria
 fail_check("required evidence criteria are duplicated") unless evidence.map(&:first).uniq.length == evidence.length
-fail_check("initial evidence must remain pending") unless evidence.all? { |row| row[4] == "pending" }
+fail_check("acceptance evidence must be passing") unless evidence.all? { |row| row[4] == "pass" }
 fail_check("owner task or evidence is empty") if evidence.any? { |row| row[1].empty? || row[2].empty? }
 
 fixture_path = FIXTURES.join("fixtures.yaml")
@@ -161,7 +161,7 @@ yaml_files = FIXTURES.children.select { |path| path.extname == ".yaml" }.map { |
 fail_check("unregistered or missing YAML fixture") unless yaml_files == ["fixtures.yaml"]
 
 if ARGV.empty?
-  puts "SPEC-007 fixture schemas passed: #{cases.length} canonical case(s), 9 pending acceptance criteria"
+  puts "SPEC-007 fixture schemas passed: #{cases.length} canonical case(s), 9 passing acceptance criteria"
   exit 0
 end
 
@@ -170,10 +170,17 @@ required_report_files = %w[
   metadata.txt commands.txt input-hashes.tsv image-hashes.tsv
   required-evidence.tsv prerequisites.tsv run.log
 ]
+required_semantic_files = %w[
+  fixtures.yaml limits-high-water.txt value-layouts.tsv linked-code-delta.txt
+]
 missing_report_files = required_report_files.reject { |relative| report.join(relative).file? }
 fail_check("report lacks #{missing_report_files.join(',')}") unless missing_report_files.empty?
 fail_check("command transcript is empty") if report.join("commands.txt").read.strip.empty?
 fail_check("input digest inventory is empty") if report.join("input-hashes.tsv").read.strip.empty?
+missing_semantic_files = required_semantic_files.reject do |relative|
+  report.join("semantics", relative).file?
+end
+fail_check("report lacks semantics/#{missing_semantic_files.join(',semantics/')}") unless missing_semantic_files.empty?
 
 metadata = report.join("metadata.txt").each_line.each_with_object({}) do |line, values|
   key, value = line.chomp.split("=", 2)
@@ -187,9 +194,9 @@ fail_check("report lacks repository revision") unless metadata["repository_revis
 fail_check("report lacks dirty state") unless %w[true false].include?(metadata["repository_dirty"])
 fail_check("report lacks input digest") unless metadata["input_set_sha256"]&.match?(/\A[0-9a-f]{64}\z/)
 fail_check("report lacks run identity") if metadata.fetch("run_id", "").empty?
-fail_check("layout target must remain blocked") unless metadata["layout_target"] == "blocked"
-fail_check("fixture corpus must remain missing") unless metadata["fixture_corpus"] == "missing"
-fail_check("incomplete evidence must not claim completion") unless metadata["evidence_complete"] == "false"
+fail_check("layout target is incomplete") unless metadata["layout_target"] == "complete"
+fail_check("fixture corpus is incomplete") unless metadata["fixture_corpus"] == "complete"
+fail_check("evidence is incomplete") unless metadata["evidence_complete"] == "true"
 %w[
   remote_access deployment service_restart simulator_execution
   connected_target_execution flashing
@@ -205,7 +212,7 @@ report_evidence = report.join("required-evidence.tsv").each_line.each_with_objec
   rows << row
 end
 fail_check("report evidence criteria differ") unless report_evidence.map(&:first) == expected_criteria
-fail_check("report evidence must remain missing") unless report_evidence.all? { |row| row[1] == "missing" }
+fail_check("report evidence is not passing") unless report_evidence.all? { |row| row[1] == "pass" }
 fail_check("report evidence lacks reasons") if report_evidence.any? { |row| row[2].empty? }
 
 prerequisites = report.join("prerequisites.tsv").each_line.each_with_object([]) do |line, rows|
@@ -222,8 +229,8 @@ expected_prerequisites = %w[
   target-inspection nrf-hard-float-elf acceptance-evidence
 ]
 fail_check("prerequisite set differs") unless prerequisites.map(&:first) == expected_prerequisites
-allowed_statuses = %w[complete missing blocked]
+allowed_statuses = %w[complete not-applicable]
 fail_check("invalid prerequisite status") if prerequisites.any? { |row| !allowed_statuses.include?(row[1]) }
 fail_check("prerequisite lacks reason") if prerequisites.any? { |row| row[2].empty? }
 
-puts "SPEC-007 report is fail-closed: 9 criteria missing; layout target blocked"
+puts "SPEC-007 report passed: 9 criteria have complete evidence"

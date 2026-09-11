@@ -273,6 +273,36 @@ package func spec007StaticWorkspaceStride() -> UInt32 {
     UInt32(MemoryLayout<StaticLayoutWorkspace>.stride)
 }
 
+@inline(never)
+package func spec007PrimitiveSize() -> UInt32 {
+    UInt32(MemoryLayout<SemanticLayoutPrimitive>.size)
+}
+
+@inline(never)
+package func spec007ModifierSize() -> UInt32 {
+    UInt32(MemoryLayout<SemanticLayoutModifier>.size)
+}
+
+@inline(never)
+package func spec007LimitsSize() -> UInt32 {
+    UInt32(MemoryLayout<LayoutLimits>.size)
+}
+
+@inline(never)
+package func spec007SummarySize() -> UInt32 {
+    UInt32(MemoryLayout<LayoutSummary>.size)
+}
+
+@inline(never)
+package func spec007ErrorSize() -> UInt32 {
+    UInt32(MemoryLayout<LayoutError>.size)
+}
+
+@inline(never)
+package func spec007ResultSize() -> UInt32 {
+    UInt32(MemoryLayout<LayoutResult>.size)
+}
+
 package struct StaticLayoutSink: LayoutResultSink, LayoutResultSinkState {
     package var isLayoutActive = false
     package init() {}
