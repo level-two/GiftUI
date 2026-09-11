@@ -495,7 +495,7 @@ nonescaping borrows.
       both traversals and prove an affine `o + g` upper bound with no result-
       sized accessor scan. Prove no complete retained display list, glyph-run
       array, or per-field preflight transcript is required.
-- [ ] `T6.5` — Run the entire corpus through recording, fixture-dynamic, and
+- [x] `T6.5` — Run the entire corpus through recording, fixture-dynamic, and
       fixture-static semantic/layout/workspace storage. Compare headers,
       ordered value events, results, SPEC-003 mappings, limits, and high-water
       values field by field; audit both profile paths to the same
@@ -1078,6 +1078,15 @@ four-profile collection without claiming Signal Analyzer or connected-target
 measurements; see the
 [render resource instrumentation evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-6/render-resource-instrumentation.md).
 `T6.5` is the next dependency-complete task.
+
+`T6.5` is complete. Every canonical case runs through distinct recording,
+fixture-dynamic, and fixture-static identity, visit-set, and foreground-stack
+representations. Complete results, header-bearing ordered value events, real
+SPEC-003 adapter mappings, both capacity families, limits, and foreground
+high-water compare field for field, and a source audit proves all three paths
+join one generic `GiftUIRenderLowering.RenderProducer.produce` call; see the
+[profile equivalence evidence](../../Tests/ContractFixtures/SPEC008/Evidence/milestone-6/profile-equivalence.md).
+Milestone 6 is complete and `T7.1` is the next dependency-complete task.
 
 Plan completion means every task has a recorded disposition; it does not mean
 SPEC-008 conforms or is `implemented`. The conformance report remains `null`

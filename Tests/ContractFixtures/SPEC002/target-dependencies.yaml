@@ -118,8 +118,10 @@ targets:
     type: test
     dependencies:
       - GiftUI
+      - GiftUIFailureCore
       - GiftUILayout
       - GiftUIRenderCore
+      - GiftUIRenderFailureAdapterFixture
       - GiftUIRenderLowering
       - GiftUISemanticCore
       - GiftUITextResources

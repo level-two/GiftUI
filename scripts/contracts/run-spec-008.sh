@@ -85,6 +85,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-008-render-view-static-exposure.sh" \
             "$SCRIPT_DIR/check-spec-008-render-work.rb" \
             "$SCRIPT_DIR/check-spec-008-render-resource-ir.rb" \
+            "$SCRIPT_DIR/check-spec-008-profile-equivalence.rb" \
             "$SCRIPT_DIR/check-spec-008-value-layouts.rb" \
             "$SCRIPT_DIR/check-spec-008-value-profiles.sh" \
             "$SCRIPT_DIR/check-spec-008-declaration-profiles.sh" \
@@ -241,8 +242,8 @@ record_nrf52840_identity() {
     printf 'declaration-fixtures\tcomplete\tall 17 fixtures compile as expected for the selected profile\n'
     printf 'render-targets\tactive\tRender Core and focused lowering are complete; corpus/profile and integration tasks remain\n'
     printf 'value-layouts\tcomplete\tall 13 bounded values pass exact or maximum layouts for this profile\n'
-    printf 'result-comparison\tmissing\tcanonical normalized results are not implemented\n'
-    printf 'transcript-comparison\tmissing\tcanonical host goldens are complete; three-path profile comparison remains\n'
+    printf 'result-comparison\tactive\tcanonical three-path fixture results match; final profile reports remain pending\n'
+    printf 'transcript-comparison\tactive\tcanonical recording dynamic and static value events match; final profile reports remain pending\n'
     printf 'high-water\tactive\tlogical work and stack high-water instrumentation is registered; Signal Analyzer values remain pending\n'
     printf 'allocation\tactive\toptimized static production allocation audit is registered; four-profile reports remain pending\n'
     printf 'workspace\tactive\tfinite workspace capacity and byte probes are registered; Signal Analyzer workspace remains pending\n'
@@ -302,6 +303,8 @@ record_command "$SCRIPT_DIR/check-spec-008-render-view-boundaries.rb"
 "$SCRIPT_DIR/check-spec-008-render-view-boundaries.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-008-render-work.rb"
 "$SCRIPT_DIR/check-spec-008-render-work.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-008-profile-equivalence.rb"
+"$SCRIPT_DIR/check-spec-008-profile-equivalence.rb" >>"$log_path" 2>&1
 case "$profile" in
     macos-dynamic | macos-static) record_macos_identity ;;
     raspberry-pi-armv6) record_raspberry_pi_identity ;;

@@ -172,8 +172,10 @@ let package = Package(
             name: "GiftUIRenderLoweringTests",
             dependencies: [
                 "GiftUI",
+                "GiftUIFailureCore",
                 "GiftUILayout",
                 "GiftUIRenderCore",
+                "GiftUIRenderFailureAdapterFixture",
                 "GiftUIRenderLowering",
                 "GiftUISemanticCore",
                 "GiftUITextResources",
