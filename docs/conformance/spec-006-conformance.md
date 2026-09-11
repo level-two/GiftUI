@@ -114,3 +114,5 @@ evidence, and the amended Specification is approved, but new criterion
 `DV-016` remains pending. This collecting report does not yet support an
 `implemented` transition. The new operation requires authorized
 implementation, complete four-profile evidence, and renewed conformance review.
+Even after that evidence is collected, explicit human authorization remains
+required before any `implemented` transition.

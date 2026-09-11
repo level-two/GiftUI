@@ -14,16 +14,23 @@ def fail_check(message)
 end
 
 fail_check("report must remain collecting") unless REPORT.match?(/\nstatus: collecting\n/)
-fail_check("plan must be completed") unless PLAN.match?(/\nstatus: completed\n/)
 fail_check("Specification must remain implementing") unless SPEC.match?(/\nstatus: implementing\n/)
-fail_check("reviewed revision differs") unless
-  REPORT.include?("1d7b25c68413159eaee7798e741bc6af627160d3")
+active_amendment = PLAN.match?(/\nstatus: active\n/)
+completed_amendment = PLAN.match?(/\nstatus: completed\n/)
+fail_check("plan must be active or completed") unless active_amendment || completed_amendment
+fail_check("reviewed revision is missing") unless
+  REPORT.match?(/Reviewed implementation revision: `[0-9a-f]{40}`/)
 
-(1..15).each do |ordinal|
+(1..16).each do |ordinal|
   criterion = format("DV-%03d", ordinal)
   rows = REPORT.scan(/^\| `#{criterion}` \|/).length
   fail_check("#{criterion} must appear in exactly one result row") unless rows == 1
-  fail_check("#{criterion} is not passing") unless REPORT.match?(/^\| `#{criterion}` \| pass \|/)
+  if active_amendment && ordinal == 16
+    fail_check("DV-016 must remain pending while the amendment plan is active") unless
+      REPORT.match?(/^\| `DV-016` \| pending \|/)
+  else
+    fail_check("#{criterion} is not passing") unless REPORT.match?(/^\| `#{criterion}` \| pass \|/)
+  end
 end
 
 fail_check("report claims an implemented transition") if REPORT.match?(/status: implemented/)
@@ -37,4 +44,5 @@ REPORT.scan(/\[[^\]]+\]\((\.\.\/[^)]+)\)/).flatten.each do |relative|
   fail_check("report link is missing: #{relative}") unless path.file?
 end
 
-puts "SPEC-006 conformance passed: all 15 criteria have one passing evidence row; the report remains collecting and the human implemented-transition gate remains open."
+state = active_amendment ? "15 passing criteria and DV-016 pending" : "all 16 criteria passing"
+puts "SPEC-006 conformance passed: #{state}; the report remains collecting and the human implemented-transition gate remains open."
