@@ -169,6 +169,10 @@ owned by later profile-specific tasks and notes.
   `Tests/GiftUIRuntimeCoreTests/RuntimeCoordinatorLifecycleTests.swift`
 - T2.1 evidence:
   `Tests/ContractFixtures/SPEC013/Evidence/milestone-2/common-lifecycle.md`
+- T2.2 composed transaction oracle:
+  `Tests/GiftUIRuntimeCoreTests/RuntimeCoordinatorTransactionTests.swift`
+- T2.2 evidence:
+  `Tests/ContractFixtures/SPEC013/Evidence/milestone-2/common-transaction.md`
 
-The remaining code and focused evidence links will be added as T2.2-T2.5
+The remaining code and focused evidence links will be added as T2.3-T2.5
 land. The authoritative behavior remains SPEC-013 and its accepted ADRs.

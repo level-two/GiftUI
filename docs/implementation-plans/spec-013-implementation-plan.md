@@ -267,7 +267,7 @@ and quiescence behavior without profile-private semantics.
       `unvalidated -> validated -> idle <-> active -> quiescent -> torn down`,
       exclusive opportunity acquisition, reentry failure, retained immutable
       audit/context, and serialized admission/opportunity entry points.
-- [ ] `T2.2` — Compose SPEC-009 admission, at-most-once mutation, candidate
+- [x] `T2.2` — Compose SPEC-009 admission, at-most-once mutation, candidate
       frame/revision allocation, one-shot offer, accepted-only routing commit,
       constant-space pending intent, refusal convergence, and finalization.
       Use recording seams until production focused owners land.
@@ -666,6 +666,12 @@ T2.1 added the common fixed-size lifecycle and serialized admission/opportunity
 entry gate with explicit validation, rejection, active, quiescent, and teardown
 states. Seven focused tests passed; evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-2/common-lifecycle.md`.
+
+T2.2 added the common transaction oracle by composing the T2.1 lifecycle with
+SPEC-009's recording mutation, identity, one-shot offer, commit, pending-intent,
+wake, and finalization seams. Accepted and refusal paths passed without
+duplicating owner algorithms; evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-2/common-transaction.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

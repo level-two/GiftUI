@@ -3,7 +3,7 @@ import Testing
 
 @testable import GiftUIRuntimeCore
 
-private func lifecycleAudit() -> RuntimeStorageAudit {
+func makeRuntimeCoordinatorLifecycleAudit() -> RuntimeStorageAudit {
     guard
         case .valid(let audit) = RuntimeStorageAudit.checked(
             profile: .dynamic,
@@ -30,9 +30,9 @@ private func context(
     )
 }
 
-private func idleLifecycle() -> RuntimeCoordinatorLifecycle {
+func makeIdleRuntimeCoordinatorLifecycle() -> RuntimeCoordinatorLifecycle {
     var lifecycle = RuntimeCoordinatorLifecycle()
-    let validation = lifecycle.validate(.valid(lifecycleAudit()))
+    let validation = lifecycle.validate(.valid(makeRuntimeCoordinatorLifecycleAudit()))
     if validation != nil { fatalError("fixture validation must succeed") }
     let activation = lifecycle.enterIdle()
     if activation != nil { fatalError("fixture activation must succeed") }
@@ -42,7 +42,7 @@ private func idleLifecycle() -> RuntimeCoordinatorLifecycle {
 @Test
 func successfulConstructionTraversesValidatedAndRetainsImmutableAudit() {
     var lifecycle = RuntimeCoordinatorLifecycle()
-    let audit = lifecycleAudit()
+    let audit = makeRuntimeCoordinatorLifecycleAudit()
 
     #expect(lifecycle.state == .unvalidated)
     let validation = lifecycle.validate(.valid(audit))
@@ -70,7 +70,7 @@ func rejectedConstructionIsTerminalAndNeverEntersIdle() {
 
 @Test
 func admissionEntryIsSerializedAndRetainsReturnedContext() {
-    var lifecycle = idleLifecycle()
+    var lifecycle = makeIdleRuntimeCoordinatorLifecycle()
 
     #expect(lifecycle.beginAdmission() == nil)
     #expect(lifecycle.beginAdmission() == .reentrancyViolation)
@@ -86,7 +86,7 @@ func admissionEntryIsSerializedAndRetainsReturnedContext() {
 
 @Test
 func opportunityEntryIsExclusiveAndRetainsEveryContextSnapshot() {
-    var lifecycle = idleLifecycle()
+    var lifecycle = makeIdleRuntimeCoordinatorLifecycle()
     let admitting = context(cycle: 1, phase: .admitting)
 
     #expect(lifecycle.beginOpportunity(context: admitting) == nil)
@@ -107,7 +107,7 @@ func opportunityEntryIsExclusiveAndRetainsEveryContextSnapshot() {
 
 @Test
 func invalidOpportunityContextCannotAcquireOrReleaseTheSerializedEntry() {
-    var lifecycle = idleLifecycle()
+    var lifecycle = makeIdleRuntimeCoordinatorLifecycle()
 
     #expect(
         lifecycle.beginOpportunity(context: context(cycle: 1, phase: .deriving))
@@ -125,7 +125,7 @@ func invalidOpportunityContextCannotAcquireOrReleaseTheSerializedEntry() {
 
 @Test
 func activeQuiescenceDefersTerminalTransitionUntilOpportunityFinishes() {
-    var lifecycle = idleLifecycle()
+    var lifecycle = makeIdleRuntimeCoordinatorLifecycle()
     #expect(
         lifecycle.beginOpportunity(context: context(cycle: 1, phase: .admitting)) == nil
     )
@@ -147,7 +147,7 @@ func activeQuiescenceDefersTerminalTransitionUntilOpportunityFinishes() {
 
 @Test
 func idleQuiescenceIsSynchronousAndIdempotentlyUnavailable() {
-    var lifecycle = idleLifecycle()
+    var lifecycle = makeIdleRuntimeCoordinatorLifecycle()
 
     lifecycle.requestQuiescence()
     lifecycle.requestQuiescence()
