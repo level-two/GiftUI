@@ -1,51 +1,53 @@
-version: 1
+schema_version: 1
+spec: SPEC-011
+plan: docs/implementation-plans/spec-011-implementation-plan.md
 tasks:
-  T0.1: { criteria: [IN-001], paths: [Tests/ContractFixtures/SPEC011], profiles: [all], disposition: complete, blockers: [] }
-  T0.2: { criteria: [IN-011], paths: [Package.swift], profiles: [all], disposition: pending, blockers: [T6.1] }
-  T0.3: { criteria: [IN-010], paths: [scripts/contracts/run-spec-011.sh], profiles: [all], disposition: complete, blockers: [] }
-  T0.4: { criteria: [IN-011], paths: [Tests/ContractFixtures/SPEC011/migration-inventory.tsv], profiles: [all], disposition: complete, blockers: [] }
-  T1.1: { criteria: [IN-001, IN-003], paths: [Sources/GiftUI/Button.swift], profiles: [all], disposition: complete, blockers: [] }
-  T1.2: { criteria: [IN-001], paths: [Sources/GiftUI/Button.swift], profiles: [all], disposition: complete, blockers: [] }
-  T1.3: { criteria: [IN-004], paths: [Sources/GiftUI/Disabled.swift], profiles: [all], disposition: complete, blockers: [] }
-  T1.4: { criteria: [IN-007], paths: [Sources/GiftUI/ActionHandler.swift], profiles: [all], disposition: complete, blockers: [] }
-  T1.5: { criteria: [IN-001], paths: [Tests/ContractFixtures/SPEC011/Positive/declarations/main.swift], profiles: [all], disposition: complete, blockers: [] }
-  T2.1: { criteria: [IN-003], paths: [Sources/GiftUISemanticCore/GiftUISemanticCore.swift], profiles: [all], disposition: complete, blockers: [] }
-  T2.2: { criteria: [IN-004], paths: [Sources/GiftUIInteraction/EffectiveActionEnabledState.swift], profiles: [all], disposition: complete, blockers: [] }
-  T2.3: { criteria: [IN-002], paths: [Sources/GiftUIInteraction/InteractionActionNormalization.swift], profiles: [all], disposition: complete, blockers: [] }
-  T2.4: { criteria: [IN-003], paths: [Tests/ContractFixtures/SPEC011/semantic-transcript.tsv], profiles: [all], disposition: complete, blockers: [] }
-  T2.5: { criteria: [IN-002, IN-009], paths: [Tests/ContractFixtures/SPEC011/action-validation-faults.tsv], profiles: [all], disposition: complete, blockers: [] }
-  T3.1: { criteria: [IN-003, IN-011], paths: [Sources/GiftUIInteraction/InteractionValues.swift], profiles: [all], disposition: complete, blockers: [] }
-  T3.2: { criteria: [IN-010, IN-011], paths: [Sources/GiftUIInteraction/InteractionStorage.swift], profiles: [all], disposition: complete, blockers: [] }
-  T3.3: { criteria: [IN-004, IN-008], paths: [Sources/GiftUIInteraction/InteractionState.swift], profiles: [all], disposition: complete, blockers: [] }
-  T3.4: { criteria: [IN-008, IN-013], paths: [Sources/GiftUIInteraction/InteractionState.swift], profiles: [all], disposition: complete, blockers: [] }
-  T3.5: { criteria: [IN-008, IN-009], paths: [Sources/GiftUIInteraction/InteractionState.swift], profiles: [all], disposition: complete, blockers: [] }
-  T3.6: { criteria: [IN-008, IN-013], paths: [Sources/GiftUIInteraction/InteractionState.swift], profiles: [all], disposition: complete, blockers: [] }
-  T4.1: { criteria: [IN-004, IN-005], paths: [Sources/GiftUIInteraction/InteractionState.swift], profiles: [all], disposition: complete, blockers: [] }
-  T4.2: { criteria: [IN-005], paths: [Sources/GiftUIInteraction/InteractionState.swift], profiles: [all], disposition: complete, blockers: [] }
-  T4.3: { criteria: [IN-005], paths: [Sources/GiftUIInteraction/InteractionState.swift], profiles: [all], disposition: complete, blockers: [] }
-  T4.4: { criteria: [IN-005, IN-009], paths: [Sources/GiftUIInteraction/ExecutionGestureAdapter.swift], profiles: [all], disposition: complete, blockers: [] }
-  T5.1: { criteria: [IN-013], paths: [Sources/GiftUIRuntimeCore], profiles: [all], disposition: pending, blockers: [SPEC-013] }
-  T5.2: { criteria: [IN-008], paths: [Sources/GiftUIRuntimeCore], profiles: [all], disposition: pending, blockers: [SPEC-013] }
-  T5.3: { criteria: [IN-002, IN-007], paths: [Sources/GiftUIRuntimeCore], profiles: [all], disposition: pending, blockers: [SPEC-013] }
-  T5.4: { criteria: [IN-006, IN-009], paths: [Sources/GiftUIRuntimeCore], profiles: [all], disposition: pending, blockers: [SPEC-013] }
-  T5.5: { criteria: [IN-006, IN-013], paths: [Sources/GiftUIRuntimeCore], profiles: [all], disposition: pending, blockers: [SPEC-013] }
-  T5.6: { criteria: [IN-007], paths: [Sources/GiftUIRuntimeCore], profiles: [all], disposition: pending, blockers: [SPEC-013] }
-  T6.1: { criteria: [IN-009], paths: [Sources/GiftUIInteractionFailureAdapterFixture], profiles: [all], disposition: pending, blockers: [T5.1] }
-  T6.2: { criteria: [IN-009], paths: [Tests/ContractFixtures/SPEC011/failures.yaml], profiles: [all], disposition: pending, blockers: [T6.1] }
-  T6.3: { criteria: [IN-009], paths: [Sources/GiftUIInteractionFailureAdapterFixture], profiles: [all], disposition: pending, blockers: [T6.1] }
-  T6.4: { criteria: [IN-009], paths: [Tests/ContractFixtures/SPEC011/failures.yaml], profiles: [all], disposition: pending, blockers: [T6.1] }
-  T7.1: { criteria: [IN-010], paths: [Sources/GiftUIRuntimeDynamic], profiles: [macos-dynamic], disposition: pending, blockers: [SPEC-013] }
-  T7.2: { criteria: [IN-010, IN-013], paths: [Sources/GiftUIRuntimeStatic], profiles: [static], disposition: pending, blockers: [SPEC-013] }
-  T7.3: { criteria: [IN-010, IN-012], paths: [runtime-profiles], profiles: [all], disposition: pending, blockers: [SPEC-013] }
-  T7.4: { criteria: [IN-001, IN-002], paths: [SignalAnalyzer], profiles: [all], disposition: pending, blockers: [SPEC-001, SPEC-015] }
-  T7.5: { criteria: [IN-004], paths: [host-configuration], profiles: [all], disposition: pending, blockers: [SPEC-015] }
-  T8.1: { criteria: [IN-001], paths: [scripts/contracts/run-spec-011.sh], profiles: [all], disposition: pending, blockers: [T7.1] }
-  T8.2: { criteria: [IN-002, IN-004, IN-005, IN-008, IN-009, IN-010, IN-013], paths: [scripts/contracts/run-spec-011.sh], profiles: [all], disposition: pending, blockers: [T7.1] }
-  T8.3: { criteria: [IN-010, IN-012], paths: [scripts/contracts/run-spec-011.sh], profiles: [static], disposition: pending, blockers: [T7.2] }
-  T8.4: { criteria: [IN-003, IN-011, IN-012], paths: [scripts/contracts/run-spec-011.sh], profiles: [all], disposition: pending, blockers: [T7.3] }
-  T8.5: { criteria: [IN-012], paths: [scripts/contracts/run-spec-011.sh], profiles: [cross-target], disposition: pending, blockers: [T8.4] }
-  T9.1: { criteria: [IN-011], paths: [Package.swift], profiles: [all], disposition: pending, blockers: [T8.5] }
-  T9.2: { criteria: [IN-001], paths: [scripts/test.sh], profiles: [all], disposition: pending, blockers: [T9.1] }
-  T9.3: { criteria: [IN-004, IN-005, IN-007], paths: [connected-macos-pi], profiles: [connected], disposition: pending, blockers: [authorization] }
-  T9.4: { criteria: [IN-007, IN-012], paths: [connected-nrf52840], profiles: [connected], disposition: pending, blockers: [authorization] }
-  T9.5: { criteria: [IN-001, IN-013], paths: [docs/conformance/spec-011-conformance.md], profiles: [all], disposition: pending, blockers: [T9.2, T9.3, T9.4] }
+  T0.1: { disposition: completed, requirements: [], implementation: [Tests/ContractFixtures/SPEC011/fixture-manifest.tsv], checks: [scripts/contracts/check-spec-011-harness.rb], profiles: [macos-dynamic], evidence: [Tests/ContractFixtures/SPEC011/README.md], blockers: [] }
+  T0.2: { disposition: pending, requirements: [IN-011], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T0.3: { disposition: completed, requirements: [], implementation: [scripts/contracts/run-spec-011.sh], checks: [scripts/contracts/check-driver-registry.rb], profiles: [macos-dynamic], evidence: [Tests/ContractFixtures/SPEC011/required-evidence.tsv], blockers: [] }
+  T0.4: { disposition: completed, requirements: [], implementation: [Tests/ContractFixtures/SPEC011/migration-inventory.tsv], checks: [scripts/contracts/check-spec-011-migration.rb], profiles: [macos-dynamic], evidence: [Tests/ContractFixtures/SPEC011/migration-inventory.tsv], blockers: [] }
+  T1.1: { disposition: completed, requirements: [IN-001], implementation: [Sources/GiftUI/Button.swift], checks: [Tests/GiftUITests/DeclarativeViewTests.swift], profiles: [macos-dynamic], evidence: [Tests/GiftUITests/DeclarativeViewTests.swift], blockers: [] }
+  T1.2: { disposition: completed, requirements: [IN-003], implementation: [Sources/GiftUI/Button.swift], checks: [Tests/GiftUITests/DeclarativeViewTests.swift], profiles: [macos-dynamic], evidence: [Tests/GiftUITests/DeclarativeViewTests.swift], blockers: [] }
+  T1.3: { disposition: completed, requirements: [], implementation: [Sources/GiftUI/Disabled.swift], checks: [Tests/GiftUITests/DeclarativeViewTests.swift], profiles: [macos-dynamic], evidence: [Tests/GiftUITests/DeclarativeViewTests.swift], blockers: [] }
+  T1.4: { disposition: completed, requirements: [], implementation: [Sources/GiftUI/ActionHandler.swift], checks: [Tests/GiftUITests/DeclarativeViewTests.swift], profiles: [macos-dynamic], evidence: [Tests/GiftUITests/DeclarativeViewTests.swift], blockers: [] }
+  T1.5: { disposition: completed, requirements: [IN-001], implementation: [Tests/ContractFixtures/SPEC011/Positive/declarations/main.swift], checks: [scripts/contracts/check-spec-011-declaration-surface.rb], profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded], evidence: [Tests/ContractFixtures/SPEC011/Positive/declarations/main.swift], blockers: [] }
+  T2.1: { disposition: completed, requirements: [IN-003], implementation: [Sources/GiftUISemanticCore/GiftUISemanticCore.swift], checks: [Tests/GiftUISemanticCoreTests/SemanticExpansionTraversalTests.swift], profiles: [macos-dynamic], evidence: [Tests/GiftUISemanticCoreTests/SemanticExpansionTraversalTests.swift], blockers: [] }
+  T2.2: { disposition: completed, requirements: [IN-004], implementation: [Sources/GiftUIInteraction/EffectiveActionEnabledState.swift], checks: [Tests/GiftUIInteractionTests/InteractionValueTests.swift], profiles: [macos-dynamic], evidence: [Tests/ContractFixtures/SPEC011/Evidence/t2-2-effective-disabled.md], blockers: [] }
+  T2.3: { disposition: completed, requirements: [IN-002], implementation: [Sources/GiftUIInteraction/InteractionActionNormalization.swift], checks: [Tests/GiftUIInteractionTests/InteractionValueTests.swift], profiles: [macos-dynamic], evidence: [Tests/ContractFixtures/SPEC011/Evidence/t2-3-action-normalization.md], blockers: [] }
+  T2.4: { disposition: completed, requirements: [IN-003], implementation: [Tests/ContractFixtures/SPEC011/semantic-transcript.tsv], checks: [Tests/GiftUISemanticCoreTests/SemanticExpansionTraversalTests.swift], profiles: [macos-dynamic], evidence: [Tests/ContractFixtures/SPEC011/Evidence/t2-4-semantic-borrows.md], blockers: [] }
+  T2.5: { disposition: completed, requirements: [IN-002], implementation: [Sources/GiftUIInteraction/InteractionActionNormalization.swift], checks: [Tests/ContractFixtures/SPEC011/action-validation-faults.tsv], profiles: [macos-dynamic], evidence: [Tests/ContractFixtures/SPEC011/Evidence/t2-5-validation-faults.md], blockers: [] }
+  T3.1: { disposition: completed, requirements: [], implementation: [Sources/GiftUIInteraction/InteractionValues.swift], checks: [Tests/GiftUIInteractionTests/InteractionValueTests.swift], profiles: [macos-dynamic], evidence: [Tests/GiftUIInteractionTests/InteractionValueTests.swift], blockers: [] }
+  T3.2: { disposition: completed, requirements: [IN-003, IN-011], implementation: [Sources/GiftUIInteraction/InteractionStorage.swift], checks: [Tests/GiftUIInteractionTests/InteractionValueTests.swift], profiles: [macos-dynamic], evidence: [Tests/ContractFixtures/SPEC011/Evidence/t3-2-storage-contracts.md], blockers: [] }
+  T3.3: { disposition: completed, requirements: [IN-004, IN-008], implementation: [Sources/GiftUIInteraction/InteractionState.swift], checks: [Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift], profiles: [macos-dynamic], evidence: [Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift], blockers: [] }
+  T3.4: { disposition: completed, requirements: [IN-004, IN-013], implementation: [Sources/GiftUIInteraction/InteractionState.swift], checks: [Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift], profiles: [macos-dynamic], evidence: [Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift], blockers: [] }
+  T3.5: { disposition: completed, requirements: [IN-009], implementation: [Sources/GiftUIInteraction/InteractionState.swift], checks: [Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift], profiles: [macos-dynamic], evidence: [Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift], blockers: [] }
+  T3.6: { disposition: completed, requirements: [IN-008, IN-013], implementation: [Sources/GiftUIInteraction/InteractionState.swift], checks: [Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift], profiles: [macos-dynamic], evidence: [Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift], blockers: [] }
+  T4.1: { disposition: completed, requirements: [IN-004, IN-005], implementation: [Sources/GiftUIInteraction/InteractionState.swift], checks: [Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift], profiles: [macos-dynamic], evidence: [Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift], blockers: [] }
+  T4.2: { disposition: completed, requirements: [], implementation: [Sources/GiftUIInteraction/InteractionState.swift], checks: [Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift], profiles: [macos-dynamic], evidence: [Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift], blockers: [] }
+  T4.3: { disposition: completed, requirements: [], implementation: [Sources/GiftUIInteraction/InteractionState.swift], checks: [Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift], profiles: [macos-dynamic], evidence: [Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift], blockers: [] }
+  T4.4: { disposition: completed, requirements: [IN-005, IN-009], implementation: [Sources/GiftUIInteraction/ExecutionGestureAdapter.swift], checks: [Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift], profiles: [macos-dynamic], evidence: [Tests/ContractFixtures/SPEC011/gesture-interleavings.tsv], blockers: [] }
+  T5.1: { disposition: pending, requirements: [IN-006, IN-008, IN-013], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T5.2: { disposition: pending, requirements: [IN-005, IN-007, IN-008], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T5.3: { disposition: pending, requirements: [IN-002], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T5.4: { disposition: pending, requirements: [IN-002, IN-009], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T5.5: { disposition: pending, requirements: [IN-006, IN-013], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T5.6: { disposition: pending, requirements: [IN-007], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T6.1: { disposition: pending, requirements: [IN-009], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T6.2: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T6.3: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T6.4: { disposition: pending, requirements: [IN-009], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T7.1: { disposition: pending, requirements: [IN-010], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T7.2: { disposition: pending, requirements: [IN-006, IN-013], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T7.3: { disposition: pending, requirements: [IN-010, IN-011, IN-012], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T7.4: { disposition: pending, requirements: [IN-001, IN-002, IN-007], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T7.5: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T8.1: { disposition: pending, requirements: [IN-001], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T8.2: { disposition: pending, requirements: [IN-002, IN-004, IN-005, IN-006, IN-007, IN-008, IN-009, IN-010, IN-013], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T8.3: { disposition: pending, requirements: [IN-001, IN-012], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T8.4: { disposition: pending, requirements: [IN-003, IN-010, IN-011], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T8.5: { disposition: pending, requirements: [IN-012], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T9.1: { disposition: pending, requirements: [IN-011], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T9.2: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T9.3: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T9.4: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T9.5: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
