@@ -72,6 +72,6 @@ esac
 
 cp "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC011/required-evidence.tsv" \
     "${report_dir}/required-evidence.tsv"
-printf 'SPEC-011 %s remains fail-closed: T5-T9 profile evidence is pending; staging report: %s\n' \
+printf 'SPEC-011 %s remains fail-closed: T7-T9 profile and conformance evidence is pending; staging report: %s\n' \
     "${profile}" "${report_dir}" >&2
 exit 1
