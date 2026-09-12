@@ -300,7 +300,7 @@ deterministic semantic order, with no handler invocation or retained borrow.
       Interaction's semantic-to-candidate lowering adapter. Emit no identity
       for the modifier; prove `disabled(false)` never overrides an ancestor and
       sibling scopes do not leak.
-- [ ] `T2.3` — At the first assembled-handler-aware coordinator boundary,
+- [x] `T2.3` — At the first assembled-handler-aware coordinator boundary,
       validate every occurrence's concrete action type against
       `Handler.Action`, validate total raw-value round trip, and normalize to
       the exact two-byte `BoundedApplicationAction`. Dynamic mismatches return
