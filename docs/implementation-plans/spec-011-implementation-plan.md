@@ -263,7 +263,7 @@ payload values obey the exact declaration contract.
       label builder once during initialization, store its result by value, and
       borrow that same value once as the fixed semantic child. Add poison-count
       tests proving semantic expansion never re-invokes the builder.
-- [ ] `T1.2` — Implement the `StaticString` and `BoundedText` title initializers
+- [x] `T1.2` — Implement the `StaticString` and `BoundedText` title initializers
       as exact `Text`-label equivalents. Prove value/action preservation,
       qualified and ordinarily inferred cases, zero/maximum `UInt16` action
       codes, and the absence of closure, handler, model, type-token, runtime,

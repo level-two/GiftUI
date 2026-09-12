@@ -20,6 +20,23 @@ final class DeclarativeViewTests: XCTestCase {
         XCTAssertEqual(visitor.primitiveVisits, 2)
     }
 
+    func testButtonTitleInitializersPreserveActionAndTextValue() {
+        let bounded = BoundedText("bounded")!
+        let staticButton = Button("static", action: TestAction.minimum)
+        let boundedButton = Button(bounded, action: TestAction.maximum)
+
+        XCTAssertEqual(staticButton._giftUIButtonPayload.action, .minimum)
+        XCTAssertEqual(
+            staticButton._giftUIButtonPayload.label._giftUITextPayload,
+            Text("static")._giftUITextPayload
+        )
+        XCTAssertEqual(boundedButton._giftUIButtonPayload.action, .maximum)
+        XCTAssertEqual(
+            boundedButton._giftUIButtonPayload.label._giftUITextPayload,
+            Text(bounded)._giftUITextPayload
+        )
+    }
+
     func testActionCasesUseTheirExactUInt16Codes() {
         XCTAssertEqual(TestAction.minimum.rawValue, UInt16.min)
         XCTAssertEqual(TestAction.ordinary.rawValue, 17)

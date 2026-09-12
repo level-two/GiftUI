@@ -34,3 +34,17 @@ public struct Button<Action: GiftUIAction, Label: View>: View {
         )
     }
 }
+
+public extension Button where Label == Text {
+    init(_ title: StaticString, action: Action) {
+        self.init(action: action) {
+            Text(title)
+        }
+    }
+
+    init(_ title: BoundedText, action: Action) {
+        self.init(action: action) {
+            Text(title)
+        }
+    }
+}
