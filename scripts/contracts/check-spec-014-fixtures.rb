@@ -28,9 +28,30 @@ end
 required_files = %w[
   README.md fixture-manifest.tsv shared-field-schema.tsv required-evidence.tsv
   module-owners.tsv dependency-fixtures.tsv migration-inventory.tsv
+  declaration-compile-fixtures.tsv
 ] + EXPECTED_FILES
 missing = required_files.reject { |name| FIXTURES.join(name).file? }
 fail_check("required fixture files are missing: #{missing.join(', ')}") unless missing.empty?
+
+compile_rows = FIXTURES.join("declaration-compile-fixtures.tsv").each_line.each_with_object([]) do |line, rows|
+  next if line.start_with?("#") || line.strip.empty?
+
+  fields = line.chomp.split("\t", -1)
+  fail_check("declaration compile row width differs") unless fields.length == 4
+  rows << fields
+end
+fail_check("declaration compile fixture count differs") unless compile_rows.length == 5
+fail_check("declaration compile fixture IDs are duplicated") unless compile_rows.map(&:first).uniq.length == compile_rows.length
+compile_rows.each do |fixture_id, from_module, forbidden_module, diagnostic|
+  fail_check("invalid declaration fixture ID #{fixture_id}") unless fixture_id.match?(/\A[a-z0-9]+(?:-[a-z0-9]+)*\z/)
+  valid_module = /\AGiftUI[A-Za-z0-9]*\z/
+  fail_check("invalid declaration fixture module") unless from_module.match?(valid_module) && forbidden_module.match?(valid_module)
+  fail_check("empty declaration fixture diagnostic") if diagnostic.empty?
+  source = FIXTURES.join("Fixtures/Negative", fixture_id, "main.swift")
+  fail_check("missing declaration fixture source #{fixture_id}") unless source.file?
+end
+fail_check("missing positive compile-surface fixture") unless FIXTURES.join("Fixtures/Positive/compile-surface/main.swift").file?
+fail_check("missing value-layout instrumentation") unless FIXTURES.join("Instrumentation/BackendValueLayoutProbe.swift").file?
 
 manifest_rows = FIXTURES.join("fixture-manifest.tsv").each_line.each_with_object([]) do |line, rows|
   next if line.start_with?("#") || line.strip.empty?

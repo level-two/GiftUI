@@ -52,6 +52,14 @@ cover every file below that historical component root. The migration checker
 also verifies that retired component roots remain absent from maintained
 source and runs synthetic pattern regressions for the forbidden legacy shapes.
 
+`declaration-compile-fixtures.tsv` registers negative import boundaries that
+compile in an isolated transitive visibility closure for each owner. The
+positive compile-surface fixture supplies concrete conformers for all five
+normative protocols and generic `Sendable` constraints for all eight values.
+`Instrumentation/BackendValueLayoutProbe.swift` emits constant size, stride,
+and alignment facts from each pinned 32-bit and 64-bit compiler; the profile
+checker enforces the exact SPEC-014 ceilings before stateful implementations.
+
 Cross-build and inspection evidence for Raspberry Pi or nRF52840 is hardware-
 free. These fixtures do not deploy, access a remote target, restart a service,
 or flash a board, and they cannot establish connected-hardware conformance.

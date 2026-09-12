@@ -252,7 +252,7 @@ conformance, and value layouts from SPEC-014.
       constraints and borrowed immutable properties. Verify Canvas-capable
       sinks accept the canonical stroke operation without importing
       `GiftUIDrawing`, and ordinary render owners gain no raster dependency.
-- [ ] `T1.6` — Add compile-surface, negative-import, memory-layout, reference/
+- [x] `T1.6` — Add compile-surface, negative-import, memory-layout, reference/
       existential/closure/pointer-field, and `Sendable` probes for every
       normative value and protocol boundary on supported 32-bit and 64-bit
       compilers. Enforce the 8/32/40/4/1-byte ceilings and exact dependency
@@ -706,6 +706,16 @@ owner, and compiled a Canvas-capable sink against SPEC-012's borrowed
 The integration's exact direct graph includes `GiftUIFailureCore` because its
 required `health()` declaration names that leaf-owned value; it still excludes
 `GiftUIFailureExecution`, which remains confined to the narrow adapter.
+
+`T1.6` added a registered positive compile surface with conformers for all five
+normative protocols, generic `Sendable` checks for all eight normative values,
+five isolated negative-import fixtures, and an exact stored-field audit that
+rejects references, existentials, closures, dynamic collections, and lifetime-
+contributing pointer fields. Both macOS profiles, Raspberry Pi ARMv6, and
+nRF52840 Embedded Swift compile the real owner modules and report identical
+6/30/32/4/1-byte constrained layouts within the required 8/32/40/4/1-byte
+ceilings. The exact SwiftPM dependency graph remains a prerequisite in the
+registered driver before stateful Milestone 2 work.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

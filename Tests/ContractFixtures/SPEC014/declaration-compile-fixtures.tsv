@@ -1,0 +1,6 @@
+# case	from_module	forbidden_module	expected_diagnostic
+surface-cannot-import-raster	GiftUISurfaceCore	GiftUIRasterCore	no such module 'GiftUIRasterCore'
+raster-cannot-import-display	GiftUIRasterCore	GiftUIDisplayCore	no such module 'GiftUIDisplayCore'
+display-cannot-import-raster	GiftUIDisplayCore	GiftUIRasterCore	no such module 'GiftUIRasterCore'
+integration-cannot-import-drawing	GiftUIBackendIntegration	GiftUIDrawing	no such module 'GiftUIDrawing'
+giftui-cannot-import-integration	GiftUI	GiftUIBackendIntegration	no such module 'GiftUIBackendIntegration'

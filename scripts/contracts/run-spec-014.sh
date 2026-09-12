@@ -57,6 +57,9 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-014-fixtures.rb" \
             "${SCRIPT_DIR}/check-spec-014-migration.rb" \
             "${SCRIPT_DIR}/check-spec-014-module-contract.rb" \
+            "${SCRIPT_DIR}/check-spec-014-storage.rb" \
+            "${SCRIPT_DIR}/check-spec-014-value-layouts.rb" \
+            "${SCRIPT_DIR}/check-spec-014-value-profiles.sh" \
             "${SCRIPT_DIR}/check-target-dependencies.rb" \
             "${SCRIPT_DIR}/finalize-contract-metadata.rb" \
             "${SCRIPT_DIR}/publish-contract-report.rb" \
@@ -218,6 +221,9 @@ run_required migration-inventory "${SCRIPT_DIR}/check-spec-014-migration.rb"
 run_required driver-registry "${SCRIPT_DIR}/check-driver-registry.rb"
 run_package_checks
 record_toolchain
+run_required declaration-layout-and-imports \
+    "${SCRIPT_DIR}/check-spec-014-value-profiles.sh" \
+    --profile "${profile}" --output "${staging}/declarations"
 
 for target in GiftUISurfaceCore GiftUIRasterCore GiftUIDisplayCore GiftUIBackendIntegration; do
     require_path "target-${target}" "${PROJECT_ROOT}/Sources/${target}"
