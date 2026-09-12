@@ -61,6 +61,8 @@ owners = {
   "DrawingPlanSummary" => "GiftUIDrawing/DrawingValues.swift",
   "DrawingPlanView" => "GiftUIDrawing/DrawingPlan.swift",
   "DrawingPlanWorkspace" => "GiftUIDrawing/DrawingPlan.swift",
+  "DrawingPlanConstructionWorkspace" => "GiftUIDrawing/DrawingPlan.swift",
+  "CanvasPlanProducer" => "GiftUIDrawing/CanvasPlanProducer.swift",
   "CanvasInvocationSource" => "GiftUIDrawing/CanvasInvocationSource.swift",
   "LivePathStorage" => "GiftUIDrawing/PathConstruction.swift",
   "LivePathBuilder" => "GiftUIDrawing/PathConstruction.swift",
@@ -106,7 +108,11 @@ if ARGV.length == 2
   %w[SubpathRange StraightLineStrokeHeader StraightLineStrokeView DrawingOperationSink].each do |name|
     fail_check("Render Core interface lacks #{name}") unless render_interface.include?(name)
   end
-  %w[DrawingLimits StaticCanvasLimits DrawingPlanSummary DrawingProductionError DrawingPlanResult].each do |name|
+  %w[
+    CanvasPlanProducer DrawingLimits DrawingPlanConstructionWorkspace
+    DrawingPlanResult DrawingPlanSummary DrawingProductionError
+    StaticCanvasLimits
+  ].each do |name|
     fail_check("Drawing interface lacks #{name}") unless drawing_interface.include?(name)
   end
   fail_check("Render Core interface lacks exact stroke-header initializer") unless

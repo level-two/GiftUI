@@ -34,3 +34,18 @@ package protocol DrawingPlanWorkspace: DrawingPlanView {
     mutating func discard()
     mutating func reset()
 }
+
+package protocol DrawingPlanConstructionWorkspace: DrawingPlanWorkspace {
+    mutating func withCanvasContext<Result>(
+        identity: Identity,
+        surfaceOrigin: Point,
+        inheritedClip: Rect,
+        _ body: (
+            inout GraphicsContext
+        ) throws(DrawingError) -> Result
+    ) throws(DrawingError) -> Result
+
+    mutating func seal(
+        canvasOccurrenceCount: UInt16
+    ) -> DrawingPlanResult
+}

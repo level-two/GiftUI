@@ -321,7 +321,7 @@ performs exact whole-attempt cleanup and dirty recovery.
       cap/frame behavior resolves bounds, and Canvas adds no clip. Correlate the
       same exact identity across semantic occurrence, layout result, and render
       scope.
-- [ ] `T4.2` — Implement `CanvasPlanProducer.derive` validation for idle
+- [x] `T4.2` — Implement `CanvasPlanProducer.derive` validation for idle
       workspace, `.deriving` phase, active cycle, allowed semantic/candidate
       revisions, exact occurrence totals, unique identity coverage, complete
       resolved layout, painter order, and exact invocation size. Guard every
@@ -918,3 +918,13 @@ fixed inline storage and immediate logical invalidation. The
 [callable-table review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-callable-table-specification-blocker.md)
 records the former compiler defect and its resolution. T6.2-T6.3 may now
 resume; production portions of T6.4-T6.5 retain their SPEC-015/SPEC-013 gates.
+
+`T4.2` is complete through the amended construction-workspace seam.
+`CanvasPlanProducer` validates workspace/phase/cycle/candidate state, bounded
+occurrence count, dense unique identity coverage, complete layout lookup, and
+strict painter order before invoking client code. It passes exact size,
+surface origin, and inherited clip to the scoped workspace and preserves the
+first `.invalidPhase` or `.reentrancyViolation` client guard failure without
+invoking a later occurrence. The
+[producer validation evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-4/canvas-plan-producer-validation.md)
+records the full focused matrix. T4.3 is next.

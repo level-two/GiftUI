@@ -61,9 +61,11 @@ The relevant accepted decisions are:
 `Canvas` therefore retains its source callable privately and stages itself once
 without invoking drawing or exposing a public/package callable lookup.
 `GiftUIDrawing` is the focused owner of scoped construction, mutation,
-snapshotting, and the plan. Runtime profiles supply the actual workspace and
-callable storage; `GiftUIRenderCore` owns only the borrowed sink-facing stroke
-view.
+snapshotting, and the plan. The amended `DrawingPlanConstructionWorkspace`
+binds a fresh context and seals the finished summary without exposing the
+profile's concrete live or immutable storage. Runtime profiles supply the
+actual workspace and callable storage; `GiftUIRenderCore` owns only the
+borrowed sink-facing stroke view.
 
 SPIKE-004 and SPIKE-008 provide feasibility evidence, not production source or
 authority. Their useful observations are limited to fixed-capacity snapshot
@@ -95,7 +97,10 @@ meaning becomes public or backend-visible.
 
 ## Data and Control Flow
 
-One Canvas invocation acquires a fresh context scope. `withPath` reserves one
+`CanvasPlanProducer` validates the execution context and complete ordered
+identity/layout correspondence, acquires the workspace, and enters its sole
+`withCanvasContext` mutation seam for each occurrence. One Canvas invocation
+acquires a fresh context scope. `withPath` reserves one
 live Path scope and passes the active context and new Path as exclusive `inout`
 parameters. Path mutation validates scope and state before committing a point
 or subpath. Stroke validates style and current Path, preflights all plan
@@ -105,9 +110,10 @@ header atomically.
 After a successful stroke, later Path mutations affect only live storage;
 earlier plan snapshots remain unchanged. Leaving `withPath` invalidates the
 Path generation and releases its live ranges. Leaving the Canvas invocation
-invalidates the context generation. Attempt completion seals the plan for
-borrowed traversal; failure discards it. Cycle finalization resets every region
-regardless of success, refusal, or failure.
+invalidates the context generation. Attempt completion calls the construction
+workspace's `seal` operation once and exposes the plan for borrowed traversal
+only on success; failure discards and resets it. Cycle finalization resets every
+region regardless of success, refusal, or failure.
 
 ## Algorithms and Data Structures
 

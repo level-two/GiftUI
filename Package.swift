@@ -206,7 +206,14 @@ let package = Package(
         ),
         .testTarget(
             name: "GiftUIDrawingTests",
-            dependencies: ["GiftUI", "GiftUIDrawing", "GiftUISemanticCore"]
+            dependencies: [
+                "GiftUI",
+                "GiftUIDrawing",
+                "GiftUIExecution",
+                "GiftUILayout",
+                "GiftUIRenderCore",
+                "GiftUISemanticCore",
+            ]
         ),
         .testTarget(
             name: "GiftUIExecutionTests",
