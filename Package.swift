@@ -93,6 +93,19 @@ let package = Package(
             ]
         ),
         .target(
+            name: "GiftUIBackendIntegration",
+            dependencies: [
+                "GiftUICapabilities",
+                "GiftUIDisplayCore",
+                "GiftUIExecution",
+                "GiftUIFailureCore",
+                "GiftUIRasterCore",
+                "GiftUIRenderCore",
+                "GiftUISurfaceCore",
+                "GiftUITextResources",
+            ]
+        ),
+        .target(
             name: "GiftUIRenderLowering",
             dependencies: [
                 "GiftUI",
@@ -313,6 +326,20 @@ let package = Package(
                 "GiftUIDisplayCore",
                 "GiftUIFailureCore",
                 "GiftUISurfaceCore",
+            ]
+        ),
+        .testTarget(
+            name: "GiftUIBackendIntegrationTests",
+            dependencies: [
+                "GiftUIBackendIntegration",
+                "GiftUICapabilities",
+                "GiftUIDisplayCore",
+                "GiftUIExecution",
+                "GiftUIFailureCore",
+                "GiftUIRasterCore",
+                "GiftUIRenderCore",
+                "GiftUISurfaceCore",
+                "GiftUITextResources",
             ]
         ),
         .testTarget(

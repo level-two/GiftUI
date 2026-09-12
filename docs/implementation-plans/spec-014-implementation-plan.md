@@ -247,7 +247,7 @@ conformance, and value layouts from SPEC-014.
       `DisplayPayloadWriter`, and `DisplayTarget` exactly. Prove raw values,
       generic writer association, nonescaping exclusive writer borrow,
       immutable target lifetime/handoff maxima, and authoritative health.
-- [ ] `T1.5` — After SPEC-012 supplies `DrawingOperationSink`, implement
+- [x] `T1.5` — After SPEC-012 supplies `DrawingOperationSink`, implement
       `RasterFrameSink` and `RasterBackendEndpoint` with their exact inherited
       constraints and borrowed immutable properties. Verify Canvas-capable
       sinks accept the canonical stroke operation without importing
@@ -697,6 +697,15 @@ results, target errors, associated writer protocol, and target protocol with
 ordinary immutable property requirements, a nonescaping exclusive writer
 borrow, exact maxima/lifetime/handoff values, and authoritative borrowed
 health access.
+
+`T1.5` activated `GiftUIBackendIntegration` and its focused tests, added
+`RasterFrameSink` to Raster Core and `RasterBackendEndpoint` to the integration
+owner, and compiled a Canvas-capable sink against SPEC-012's borrowed
+`StraightLineStrokeView`. Neither production owner nor its test target imports
+`GiftUIDrawing`, and no ordinary Render Core owner gained a raster edge.
+The integration's exact direct graph includes `GiftUIFailureCore` because its
+required `health()` declaration names that leaf-owned value; it still excludes
+`GiftUIFailureExecution`, which remains confined to the narrow adapter.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

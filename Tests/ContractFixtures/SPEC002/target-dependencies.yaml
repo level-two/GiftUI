@@ -155,6 +155,29 @@ targets:
       - GiftUIDisplayCore
       - GiftUIFailureCore
       - GiftUISurfaceCore
+  GiftUIBackendIntegration:
+    type: regular
+    dependencies:
+      - GiftUICapabilities
+      - GiftUIDisplayCore
+      - GiftUIExecution
+      - GiftUIFailureCore
+      - GiftUIRasterCore
+      - GiftUIRenderCore
+      - GiftUISurfaceCore
+      - GiftUITextResources
+  GiftUIBackendIntegrationTests:
+    type: test
+    dependencies:
+      - GiftUIBackendIntegration
+      - GiftUICapabilities
+      - GiftUIDisplayCore
+      - GiftUIExecution
+      - GiftUIFailureCore
+      - GiftUIRasterCore
+      - GiftUIRenderCore
+      - GiftUISurfaceCore
+      - GiftUITextResources
   GiftUIRenderLowering:
     type: regular
     dependencies:
