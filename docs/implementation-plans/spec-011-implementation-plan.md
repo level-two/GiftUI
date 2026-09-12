@@ -311,7 +311,7 @@ deterministic semantic order, with no handler invocation or retained borrow.
       effective enabled state. Add poisoned semantic values and borrowed-
       lifetime probes proving no declaration, payload, label, handler, or model
       escapes its allowed scope.
-- [ ] `T2.5` — Add invalid-code and wrong-domain fault injection at the
+- [x] `T2.5` — Add invalid-code and wrong-domain fault injection at the
       coordinator adapter. Verify validation precedes candidate append and
       frame offer, dispatches nothing, discards all candidates as required,
       and preserves the exact local error rather than substituting a semantic

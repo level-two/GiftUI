@@ -1,0 +1,4 @@
+# row	action_domain	raw_value	validation	append_count	offer_count	candidate_discards	local_error
+wrong-domain	OtherAction	0	rejected-before-append	0	0	1	incompatibleActionDomain
+invalid-round-trip	ConfiguredAction	65535	rejected-before-append	0	0	1	invalidActionValue
+valid	ConfiguredAction	5	normalized	1	1	0	-

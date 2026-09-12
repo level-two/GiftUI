@@ -10,3 +10,4 @@
 9	Positive/declarations/main.swift	compile-positive	six-buttons
 10	Negative/declarations.tsv	compile-negative	wrong-raw-width,associated-value,wrong-domain,invalid-context,callback-button,handler-registration,escaping-model
 11	semantic-transcript.tsv	transcript	plain,local-disabled,ancestor-disabled-false,sibling-enabled
+12	action-validation-faults.tsv	faults	wrong-domain,invalid-round-trip,valid
