@@ -8,7 +8,7 @@ ROOT = Pathname.new(File.expand_path("../..", __dir__))
 BOUNDARIES = ROOT.join("Tests/ContractFixtures/SPEC013/module-boundaries.tsv")
 OWNERS = %w[
   GiftUIRuntimeCore GiftUIRuntimeDynamic GiftUIRuntimeStatic
-  GiftUIRuntimeFailureAdapterFixture
+  GiftUIRuntimeFailureAdapterFixture GiftUIDynamicConveniences
 ].freeze
 
 def fail_check(message)
@@ -62,4 +62,4 @@ fail_check("GiftUI depends on a runtime profile") unless (giftui_dependencies & 
 giftui_source = ROOT.join("Sources/GiftUI").glob("**/*.swift").map(&:read).join("\n")
 fail_check("GiftUI references a runtime profile") if runtime_names.any? { |name| giftui_source.include?(name) }
 
-puts "SPEC-013 module contract passed: 4 owner targets have exact imports and no sibling, reverse, failure, backend, platform, driver, or host edge."
+puts "SPEC-013 module contract passed: 5 owner targets have exact imports and no sibling, reverse, failure, backend, platform, driver, or host edge."

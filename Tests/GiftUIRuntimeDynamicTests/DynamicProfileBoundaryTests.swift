@@ -1,4 +1,6 @@
+import GiftUI
 import GiftUIDrawing
+import GiftUIDynamicConveniences
 import GiftUIExecution
 import GiftUIInteraction
 import GiftUILayout
@@ -200,6 +202,107 @@ func optInDynamicDeinitializationCounterDoesNotDriveCorrectness() {
     }
     #expect(counter.count == 1)
 }
+
+@Test
+func dynamicCanvasConvenienceIsExactlyThePortableCanvasContract() {
+    let convenience = DynamicCanvas { _, _ in }
+    let portable: Canvas = convenience
+    #expect(type(of: portable) == Canvas.self)
+}
+
+@Test
+func dynamicCanvasCallableStorageIsBoundedOrderedAndReleasesExactlyOnce() {
+    let first = DynamicStructuralIdentity(rawValue: 1)!
+    let second = DynamicStructuralIdentity(rawValue: 2)!
+    var storage = DynamicCanvasCallableStorage<DynamicStructuralIdentity>(capacity: 2)
+
+    let stagedFirst = storage.stage(identity: first, canvas: Canvas { _, _ in })
+    let stagedDuplicate = storage.stage(identity: first, canvas: Canvas { _, _ in })
+    let stagedSecond = storage.stage(identity: second, canvas: Canvas { _, _ in })
+    let stagedExcess = storage.stage(
+        identity: DynamicStructuralIdentity(rawValue: 3)!,
+        canvas: Canvas { _, _ in }
+    )
+    #expect(stagedFirst)
+    #expect(!stagedDuplicate)
+    #expect(stagedSecond)
+    #expect(!stagedExcess)
+    #expect(storage.canvasOccurrenceCount == 2)
+    #expect(storage.canvasIdentity(at: 0) == first)
+    #expect(storage.canvasIdentity(at: 1) == second)
+    #expect(storage.canvasIdentity(at: 2) == nil)
+
+    storage.releaseCanvas(at: first)
+    storage.releaseCanvas(at: first)
+    #expect(storage.releaseCount == 1)
+    storage.discard()
+    #expect(storage.releaseCount == 2)
+    #expect(storage.canvasOccurrenceCount == 0)
+}
+
+#if GIFTUI_DYNAMIC_PROFILE
+    @Test
+    func dynamicCanvasCallableInvokesExactPayloadAndRejectsReleasedOccurrence() throws {
+        let identity = DynamicStructuralIdentity(rawValue: 4)!
+        var invocationCount = 0
+        var observedSize: Size?
+        var storage = DynamicCanvasCallableStorage<DynamicStructuralIdentity>(capacity: 1)
+        let staged = storage.stage(
+            identity: identity,
+            canvas: Canvas { _, size in
+                invocationCount += 1
+                observedSize = size
+            }
+        )
+        #expect(staged)
+
+        let size = Size(width: 7, height: 11)!
+        try withDynamicCanvasContext { context in
+            try storage.invokeCanvas(
+                at: identity,
+                context: &context,
+                size: size
+            )
+        }
+        storage.releaseCanvas(at: identity)
+
+        #expect(invocationCount == 1)
+        #expect(observedSize == size)
+        #expect(throws: DrawingError.invariantViolation) {
+            try withDynamicCanvasContext { context in
+                try storage.invokeCanvas(
+                    at: identity,
+                    context: &context,
+                    size: size
+                )
+            }
+        }
+    }
+
+    private struct DynamicCanvasContextStorage {}
+
+    private let dynamicCanvasOperations = _GiftUIDrawingOperations(
+        beginPath: { _, _, _ in _GiftUIDrawingStatus.success.rawValue },
+        endPath: { _, _, _ in _GiftUIDrawingStatus.success.rawValue },
+        movePath: { _, _, _, _, _ in _GiftUIDrawingStatus.success.rawValue },
+        addLineToPath: { _, _, _, _, _ in _GiftUIDrawingStatus.success.rawValue },
+        strokePath: { _, _, _, _, _, _, _, _, _ in _GiftUIDrawingStatus.success.rawValue }
+    )
+
+    private func withDynamicCanvasContext<Result>(
+        _ body: (inout GraphicsContext) throws -> Result
+    ) throws -> Result {
+        var contextStorage = DynamicCanvasContextStorage()
+        return try withUnsafeMutablePointer(to: &contextStorage) { pointer in
+            var context = GraphicsContext(
+                storage: UnsafeMutableRawPointer(pointer),
+                generation: 1,
+                operations: dynamicCanvasOperations
+            )
+            return try body(&context)
+        }
+    }
+#endif
 
 private extension RuntimeProfileValidationResult {
     var audit: RuntimeStorageAudit? {

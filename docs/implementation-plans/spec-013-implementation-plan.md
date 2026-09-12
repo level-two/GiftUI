@@ -306,7 +306,7 @@ and the shared coordinator semantics without importing Static or a backend.
       behavior, candidate/committed separation, refusal intent retention, and
       quiescent teardown. Add deinitialization and release counters without
       making them common correctness dependencies.
-- [ ] `T3.4` — Consume SPEC-012's callable and invocation contracts to implement
+- [x] `T3.4` — Consume SPEC-012's callable and invocation contracts to implement
       the bounded profile-owned dynamic Canvas closure wrapper in
       `GiftUIRuntimeDynamic`, plus the separate `GiftUIDynamicConveniences`
       product. Do not recreate Drawing's plan or invocation algorithms.
@@ -724,6 +724,17 @@ participating in correctness decisions. Four additional focused tests cover
 reentry, preservation, active quiescence, reset legality, and deinitialization;
 evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-3/dynamic-storage-lifetime.md`.
+
+T3.4 added the bounded ordered Dynamic Canvas callable store as a direct
+`CanvasInvocationSource` conformance. It alone invokes the package Canvas
+bridge, rejects duplicate/excess/released occurrences, and drops each retained
+payload exactly once through release or discard while leaving invocation and
+plan production in SPEC-012. The separate `GiftUIDynamicConveniences` product
+adds only an exact `DynamicCanvas` type alias to the portable `Canvas`
+contract. Default and `GIFTUI_DYNAMIC_PROFILE` focused suites prove identical
+construction plus real closure invocation/release; the expanded boundary
+checker proves the convenience target depends only on `GiftUI`. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-3/dynamic-canvas-callables.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

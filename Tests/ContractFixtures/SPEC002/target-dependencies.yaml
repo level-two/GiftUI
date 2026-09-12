@@ -4,6 +4,10 @@ targets:
     type: regular
     dependencies:
       - GiftUIMacros
+  GiftUIDynamicConveniences:
+    type: regular
+    dependencies:
+      - GiftUI
   GiftUIMacros:
     type: macro
     dependencies: []
@@ -285,6 +289,7 @@ targets:
   GiftUIRuntimeDynamicTests:
     type: test
     dependencies:
+      - GiftUIDynamicConveniences
       - GiftUIRuntimeDynamic
   GiftUIRuntimeStaticTests:
     type: test

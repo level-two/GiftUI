@@ -16,6 +16,10 @@ let package = Package(
             targets: ["GiftUIFailureDiagnostics"]
         ),
         .library(name: "GiftUICapabilities", targets: ["GiftUICapabilities"]),
+        .library(
+            name: "GiftUIDynamicConveniences",
+            targets: ["GiftUIDynamicConveniences"]
+        ),
     ],
     dependencies: [
         .package(
@@ -41,6 +45,10 @@ let package = Package(
             dependencies: ["GiftUIFailureCore"]
         ),
         .target(name: "GiftUICapabilities"),
+        .target(
+            name: "GiftUIDynamicConveniences",
+            dependencies: ["GiftUI"]
+        ),
         .target(
             name: "GiftUISemanticCore",
             dependencies: ["GiftUI"]
@@ -337,7 +345,7 @@ let package = Package(
         ),
         .testTarget(
             name: "GiftUIRuntimeDynamicTests",
-            dependencies: ["GiftUIRuntimeDynamic"]
+            dependencies: ["GiftUIDynamicConveniences", "GiftUIRuntimeDynamic"]
         ),
         .testTarget(
             name: "GiftUIRuntimeStaticTests",
