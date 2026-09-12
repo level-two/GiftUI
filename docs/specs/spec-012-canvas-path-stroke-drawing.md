@@ -1202,6 +1202,7 @@ Richer drawing and retained paths remain outside the accepted MVP scope.
 - [SPEC-012 Implementation Plan](../implementation-plans/spec-012-implementation-plan.md)
 - [Scoped Path and Plan Storage Implementation Design](../implementation-designs/spec-012-scoped-path-and-plan-storage.md)
 - [Static Canvas Lowering Implementation Design](../implementation-designs/spec-012-static-canvas-lowering.md)
+- [Combined Render Traversal Implementation Design](../implementation-designs/spec-012-combined-render-traversal.md)
 - [PROPOSAL-006](../proposals/proposal-006-canvas-path-stroke-drawing.md)
 - [RFC-009](../rfcs/rfc-009-canvas-path-stroke-drawing-architecture.md)
 - [ADR-028](../adrs/adr-028-post-layout-canvas-derivation-and-cycle-local-plan.md)

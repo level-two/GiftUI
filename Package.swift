@@ -84,6 +84,7 @@ let package = Package(
                 "GiftUIRenderLowering",
                 "GiftUIRenderCore",
                 "GiftUIExecution",
+                "GiftUITextResources",
             ]
         ),
         .target(
@@ -212,7 +213,9 @@ let package = Package(
                 "GiftUIExecution",
                 "GiftUILayout",
                 "GiftUIRenderCore",
+                "GiftUIRenderLowering",
                 "GiftUISemanticCore",
+                "GiftUITextResources",
             ]
         ),
         .testTarget(

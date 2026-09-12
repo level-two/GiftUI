@@ -16,7 +16,7 @@ end
 expected_edges = {
   "GiftUIDrawing" => %w[
     GiftUI GiftUIExecution GiftUILayout GiftUIRenderCore GiftUIRenderLowering
-    GiftUISemanticCore
+    GiftUISemanticCore GiftUITextResources
   ],
   "GiftUIRenderCore" => %w[GiftUI GiftUITextResources],
 }
@@ -63,6 +63,7 @@ owners = {
   "DrawingPlanWorkspace" => "GiftUIDrawing/DrawingPlan.swift",
   "DrawingPlanConstructionWorkspace" => "GiftUIDrawing/DrawingPlan.swift",
   "CanvasPlanProducer" => "GiftUIDrawing/CanvasPlanProducer.swift",
+  "CanvasRenderProducer" => "GiftUIDrawing/CanvasRenderProducer.swift",
   "CanvasInvocationSource" => "GiftUIDrawing/CanvasInvocationSource.swift",
   "LivePathStorage" => "GiftUIDrawing/PathConstruction.swift",
   "LivePathBuilder" => "GiftUIDrawing/PathConstruction.swift",
@@ -72,6 +73,10 @@ owners = {
   "StaticCanvasLimits" => "GiftUIDrawing/DrawingLimits.swift",
   "DrawingProductionError" => "GiftUIDrawing/DrawingValues.swift",
   "DrawingPlanResult" => "GiftUIDrawing/DrawingValues.swift",
+  "RenderExtensionVisit" => "GiftUIRenderLowering/RenderExtensions.swift",
+  "RenderExtensionVisitResult" => "GiftUIRenderLowering/RenderExtensions.swift",
+  "RenderPreflightExtension" => "GiftUIRenderLowering/RenderExtensions.swift",
+  "RenderStreamingExtension" => "GiftUIRenderLowering/RenderExtensions.swift",
 }
 all_sources = SOURCES.glob("*/*.swift")
 owners.each do |symbol, owner|

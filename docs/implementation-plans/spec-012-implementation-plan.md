@@ -10,6 +10,7 @@ updated: 2026-09-12
 related_design_notes:
   - ../implementation-designs/spec-012-scoped-path-and-plan-storage.md
   - ../implementation-designs/spec-012-static-canvas-lowering.md
+  - ../implementation-designs/spec-012-combined-render-traversal.md
 conformance_report: null
 related_future_work: []
 related_explorations: []
@@ -353,7 +354,7 @@ producer semantics are implemented.
 and stroke operations in painter order with atomic headers, capacity checks,
 and synchronous borrowed consumption.
 
-- [ ] `T5.1` — Implement `CanvasRenderProducer.preflight` by extending the
+- [x] `T5.1` — Implement `CanvasRenderProducer.preflight` by extending the
       existing SPEC-008 traversal with `.canvas`. Validate the immutable plan,
       translated geometry, exact header totals, combined checked operation
       count, configured sink lower bound, and all consistency invariants without
@@ -881,8 +882,8 @@ ordinary traversal, workspace, capacity checks, snapshots, and single sink
 transaction while exposing the Canvas position exactly once per traversal.
 The focused
 [render extension review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-extension-seam-blocker.md)
-records the former defect and its resolution. T5.1-T5.5 remain unchecked
-implementation work and may now resume through the amended SPI.
+records the former defect and its resolution. T5.1-T5.5 could then resume
+through the amended SPI.
 
 `T1.4` is complete. Seven maintained positive fixtures compile Canvas/style
 defaults, both stroke overloads, explicit typed trailing closures,
@@ -956,3 +957,17 @@ and workspace under a new cycle. The
 [cycle recovery evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-4/drawing-cycle-recovery.md)
 records both paths. Production coordinator integration remains T7.4 through
 SPEC-013. Milestone 4 is complete; T5.1 is next.
+
+`T5.1` is complete. `GiftUIRenderLowering` now routes both ordinary-only and
+extended preflight through one traversal and invokes the extension once per
+semantic scope after the local operation and before children. The extended
+entry point owns acquire/reset and checked combined/configured-capacity
+validation without a sink. `CanvasRenderProducer.preflight` validates every
+Canvas identity, header, origin, inherited clip, point and gap-free subpath
+range, exact out-of-range behavior, aggregate summary, and normalized stroke
+count through that visitor. Focused fixtures cover the exact combined header,
+reentry/reset lifecycle, capacity equality/first-excess, and fourteen plan
+disagreements. The
+[combined preflight evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-preflight.md)
+and [combined traversal design](../implementation-designs/spec-012-combined-render-traversal.md)
+record the reusable mechanism. T5.2 is next.

@@ -37,6 +37,104 @@ extension RenderProducer {
         Semantic.Identity == Layout.Identity,
         Semantic.Identity == Workspace.Identity
     {
+        var extensionVisitor = EmptyRenderPreflightExtension<Semantic.Identity>()
+        let result = preflightTraversal(
+            semantic: semantic,
+            layout: layout,
+            textMetrics: textMetrics,
+            surfaceBounds: surfaceBounds,
+            damageMode: damageMode,
+            limits: limits,
+            workspace: &workspace,
+            extensionVisitor: &extensionVisitor
+        )
+        guard case .success(let summary) = result else { return result }
+        let sinkCapacity = sink.capacity
+        guard summary.header.operationCount <= sinkCapacity.maximumOperations,
+            summary.header.positionedGlyphCount
+                <= sinkCapacity.maximumPositionedGlyphs
+        else {
+            return .failure(.capacityExhausted)
+        }
+        return result
+    }
+
+    package static func preflight<
+        Semantic, Layout, Metrics, Workspace, Extension
+    >(
+        semantic: borrowing Semantic,
+        layout: borrowing Layout,
+        textMetrics: borrowing Metrics,
+        surfaceBounds: Rect,
+        damageMode: RenderDamageMode,
+        limits: RenderLimits,
+        configuredSinkCapacity: RenderSinkCapacity,
+        workspace: inout Workspace,
+        extensionVisitor: inout Extension
+    ) -> RenderProductionResult
+    where
+        Semantic: SemanticRenderView,
+        Layout: ResolvedRenderLayoutView,
+        Metrics: CanonicalTextMetricsView,
+        Workspace: RenderProductionWorkspace,
+        Extension: RenderPreflightExtension,
+        Semantic.Identity == Layout.Identity,
+        Semantic.Identity == Workspace.Identity,
+        Semantic.Identity == Extension.Identity
+    {
+        if workspace.isActive {
+            return .failure(.reentrancyViolation)
+        }
+        guard workspace.acquire() else {
+            return .failure(.invariantViolation)
+        }
+        defer { workspace.reset() }
+
+        let result = preflightTraversal(
+            semantic: semantic,
+            layout: layout,
+            textMetrics: textMetrics,
+            surfaceBounds: surfaceBounds,
+            damageMode: damageMode,
+            limits: limits,
+            workspace: &workspace,
+            extensionVisitor: &extensionVisitor
+        )
+        guard case .success(let summary) = result else {
+            if case .failure(let error) = result { return .failure(error) }
+            return .failure(.invariantViolation)
+        }
+        guard
+            summary.header.operationCount
+                <= configuredSinkCapacity.maximumOperations,
+            summary.header.positionedGlyphCount
+                <= configuredSinkCapacity.maximumPositionedGlyphs
+        else { return .failure(.capacityExhausted) }
+        return .success(summary.header)
+    }
+
+    private static func preflightTraversal<
+        Semantic, Layout, Metrics, Workspace, Extension
+    >(
+        semantic: borrowing Semantic,
+        layout: borrowing Layout,
+        textMetrics: borrowing Metrics,
+        surfaceBounds: Rect,
+        damageMode: RenderDamageMode,
+        limits: RenderLimits,
+        workspace: inout Workspace,
+        extensionVisitor: inout Extension
+    ) -> RenderPreflightResult
+    where
+        Semantic: SemanticRenderView,
+        Layout: ResolvedRenderLayoutView,
+        Metrics: CanonicalTextMetricsView,
+        Workspace: RenderProductionWorkspace,
+        Extension: RenderPreflightExtension,
+        Semantic.Identity == Layout.Identity,
+        Semantic.Identity == Workspace.Identity,
+        Semantic.Identity == Extension.Identity
+    {
         let semanticVersion = semantic.renderSnapshotVersion
         let layoutVersion = layout.renderSnapshotVersion
 
@@ -75,7 +173,8 @@ extension RenderProducer {
             surfaceBounds: surfaceBounds,
             semanticDepth: 1,
             clipDepth: 1,
-            workspace: &workspace
+            workspace: &workspace,
+            extensionVisitor: &extensionVisitor
         ) {
             return .failure(error)
         }
@@ -109,14 +208,6 @@ extension RenderProducer {
             return .failure(.invariantViolation)
         }
 
-        let sinkCapacity = sink.capacity
-        guard state.operationCount <= sinkCapacity.maximumOperations,
-            state.positionedGlyphCount
-                <= sinkCapacity.maximumPositionedGlyphs
-        else {
-            return .failure(.capacityExhausted)
-        }
-
         return .success(
             RenderPreflightSummary(
                 header: RenderPlanHeader(
@@ -143,7 +234,7 @@ private struct RenderPreflightState {
     var layoutVisitCount: UInt16 = 0
     var textLineCount: UInt16 = 0
 
-    mutating func visit<Semantic, Layout, Metrics, Workspace>(
+    mutating func visit<Semantic, Layout, Metrics, Workspace, Extension>(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         layout: borrowing Layout,
@@ -151,15 +242,18 @@ private struct RenderPreflightState {
         surfaceBounds: Rect,
         semanticDepth: UInt16,
         clipDepth: UInt16,
-        workspace: inout Workspace
+        workspace: inout Workspace,
+        extensionVisitor: inout Extension
     ) -> RenderProductionError?
     where
         Semantic: SemanticRenderView,
         Layout: ResolvedRenderLayoutView,
         Metrics: CanonicalTextMetricsView,
         Workspace: RenderProductionWorkspace,
+        Extension: RenderPreflightExtension,
         Semantic.Identity == Layout.Identity,
-        Semantic.Identity == Workspace.Identity
+        Semantic.Identity == Workspace.Identity,
+        Semantic.Identity == Extension.Identity
     {
         guard semanticDepth <= structuralCapacity.maximumTraversalDepth else {
             return .capacityExhausted
@@ -248,6 +342,18 @@ private struct RenderPreflightState {
             return error
         }
 
+        switch extensionVisitor.visit(
+            scope: scope,
+            identity: identity,
+            bounds: bounds,
+            clip: logicalClip
+        ) {
+        case .success(let visit):
+            if let error = reserveOperations(visit.operationCount) { return error }
+        case .failure(let error):
+            return error
+        }
+
         var childIndex: UInt16 = 0
         while childIndex < childCount {
             guard let child = semantic.child(of: identity, at: childIndex) else {
@@ -264,7 +370,8 @@ private struct RenderPreflightState {
                 surfaceBounds: surfaceBounds,
                 semanticDepth: childDepth,
                 clipDepth: activeClipDepth,
-                workspace: &workspace
+                workspace: &workspace,
+                extensionVisitor: &extensionVisitor
             ) {
                 return error
             }
@@ -392,12 +499,19 @@ private struct RenderPreflightState {
     }
 
     private mutating func reserveOperation() -> RenderProductionError? {
-        guard let next = incremented(operationCount),
-            next <= limits.maximumOperations
+        reserveOperations(1)
+    }
+
+    private mutating func reserveOperations(
+        _ count: UInt16
+    ) -> RenderProductionError? {
+        let next = operationCount.addingReportingOverflow(count)
+        guard !next.overflow,
+            next.partialValue <= limits.maximumOperations
         else {
             return .capacityExhausted
         }
-        operationCount = next
+        operationCount = next.partialValue
         return nil
     }
 
@@ -414,5 +528,17 @@ private struct RenderPreflightState {
     private func incremented(_ value: UInt16) -> UInt16? {
         let result = value.addingReportingOverflow(1)
         return result.overflow ? nil : result.partialValue
+    }
+}
+
+private struct EmptyRenderPreflightExtension<Identity>: RenderPreflightExtension
+where Identity: Equatable & Sendable {
+    mutating func visit(
+        scope _: SemanticRenderScope,
+        identity _: Identity,
+        bounds _: Rect,
+        clip _: Rect
+    ) -> RenderExtensionVisitResult {
+        .success(RenderExtensionVisit(operationCount: 0))
     }
 }

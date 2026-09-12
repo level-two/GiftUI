@@ -145,6 +145,7 @@ targets:
       - GiftUIRenderCore
       - GiftUIRenderLowering
       - GiftUISemanticCore
+      - GiftUITextResources
   GiftUIDrawingFailureAdapterFixture:
     type: regular
     dependencies:
@@ -158,7 +159,9 @@ targets:
       - GiftUIExecution
       - GiftUILayout
       - GiftUIRenderCore
+      - GiftUIRenderLowering
       - GiftUISemanticCore
+      - GiftUITextResources
   GiftUIExecution:
     type: regular
     dependencies:
