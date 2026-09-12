@@ -288,7 +288,7 @@ insufficient bound fails in exact order before an offer or target probe.
       bounds before first offer. Preserve exact SPEC-005 identity; test missing,
       mismatched, malformed, unavailable, and post-startup impossible cases
       without fallback or substitution.
-- [ ] `T2.5` — Populate `capabilities.yaml` with macOS dynamic/static
+- [x] `T2.5` — Populate `capabilities.yaml` with macOS dynamic/static
       full-surface, Raspberry Pi 240 x 240 with 240 x 16 RGB565 regions, and
       nRF52840 480 x 320 with 480 x 4 RGB565 regions. Assert the nRF 960-byte
       row and exact 3,840-byte raster/payload/in-flight single-slot values and
@@ -761,6 +761,17 @@ unavailable payloads, missing or malformed records, and first workspace
 excess; post-startup lookup accepts only the exact selected realization and
 glyph identity. The registered audit rejects realization search, fallback,
 replacement substitution, scalar remapping, and ambient lookup.
+
+`T2.5` populated the capability corpus with paired 640 x 480 macOS dynamic and
+static full-surface RGBA8888 cases derived from one checked-in test-only host
+input, the 240 x 240 Raspberry Pi RGB565 case with 240 x 16 regions, and the
+480 x 320 nRF52840 RGB565 case with 480 x 4 regions. The nRF fixture records
+the exact 960-byte row and 3,840-byte raster, payload, and one-slot in-flight
+bounds, zero surface/framebuffer bytes, and a 614,400-byte full-surface RGBA
+control rejected against the 3,840-byte raster ceiling. A registered checker
+proves descriptor/effective equality, byte products, paired macOS logical
+equality, absence of runtime-profile identity in capability data, and the
+explicit framebuffer rejection.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

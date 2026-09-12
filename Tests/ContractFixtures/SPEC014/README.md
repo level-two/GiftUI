@@ -60,6 +60,12 @@ normative protocols and generic `Sendable` constraints for all eight values.
 and alignment facts from each pinned 32-bit and 64-bit compiler; the profile
 checker enforces the exact SPEC-014 ceilings before stateful implementations.
 
+`macos-host-input.yaml` is the single immutable paired-test logical extent for
+the macOS dynamic and static capability cases. It does not select or imply a
+production window size. `capabilities.yaml` freezes those equal logical
+results alongside the exact Pi and nRF tiled results and the nRF full-
+framebuffer rejection.
+
 Cross-build and inspection evidence for Raspberry Pi or nRF52840 is hardware-
 free. These fixtures do not deploy, access a remote target, restart a service,
 or flash a board, and they cannot establish connected-hardware conformance.

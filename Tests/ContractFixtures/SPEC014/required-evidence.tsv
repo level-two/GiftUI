@@ -1,7 +1,7 @@
 # criterion	owner_tasks	evidence	cases	status
 BI-001	T0.2,T1.6,T8.1	package-graph-import-negative-and-positive-compilation	-	pending
-BI-002	T2.1,T2.2,T2.5,T7.1	contribution-effective-value-mismatch-and-target-call-matrix	-	pending
-BI-003	T2.5,T6.5,T8.2,T8.5	nrf-exact-geometry-storage-link-map-and-forbidden-buffer-report	-	pending
+BI-002	T2.1,T2.2,T2.5,T7.1	contribution-effective-value-mismatch-and-target-call-matrix	spec014-macos-dynamic-full-surface,spec014-macos-static-full-surface,spec014-nrf52840-full-framebuffer-rejected,spec014-nrf52840-rgb565-tiled,spec014-raspberry-pi-rgb565-tiled	pending
+BI-003	T2.5,T6.5,T8.2,T8.5	nrf-exact-geometry-storage-link-map-and-forbidden-buffer-report	spec014-nrf52840-full-framebuffer-rejected,spec014-nrf52840-rgb565-tiled	pending
 BI-004	T2.3,T3.1,T3.5,T7.1,T7.2	header-reservation-and-terminal-call-order-transcript	-	pending
 BI-005	T3.1-T3.5,T7.5	exhaustive-transaction-state-transition-corpus	-	pending
 BI-006	T0.4,T6.1-T6.5,T8.2	producer-borrow-address-storage-and-forbidden-symbol-reports	-	pending
@@ -10,7 +10,7 @@ BI-008	T2.4,T4.3,T6.3,T8.2	text-resource-identity-borrow-poisoning-and-address-r
 BI-009	T4.4,T5.4,T6.3,T8.3	canonical-stroke-zero-tolerance-pixel-and-byte-corpus	-	pending
 BI-010	T7.1-T7.3,T7.5	reservation-body-result-error-cleanup-and-disposition-cross-product	-	pending
 BI-011	T3.4,T6.6,T7.2-T7.4	pre-post-transfer-drain-health-and-capability-snapshot	-	pending
-BI-012	T1.3,T2.2-T2.4,T3.1,T3.2,T4.5,T7.3,T7.5	exact-limit-first-excess-and-detection-precedence-matrix	-	pending
+BI-012	T1.3,T2.2-T2.4,T3.1,T3.2,T4.5,T7.3,T7.5	exact-limit-first-excess-and-detection-precedence-matrix	spec014-macos-dynamic-full-surface,spec014-macos-static-full-surface,spec014-nrf52840-full-framebuffer-rejected,spec014-nrf52840-rgb565-tiled,spec014-raspberry-pi-rgb565-tiled	pending
 BI-013	T1.6,T8.2,T8.4,T8.5	value-layout-allocation-stack-section-and-symbol-reports	-	pending
 BI-014	T4.3,T4.4,T6.4,T7.2,T8.2	borrow-poisoning-and-post-offer-address-scans	-	pending
 BI-015	T0.1,T0.3,T8.1-T8.6	standalone-four-profile-driver-registry-and-output-path-audit	-	pending

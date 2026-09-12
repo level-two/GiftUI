@@ -1,2 +1,196 @@
 schema: spec-014-v1
-cases: []
+cases:
+  - fixtureID: spec014-macos-dynamic-full-surface
+    criteria: [BI-002, BI-012]
+    evidenceClasses: [cross-build, inspection]
+    profiles: [macos-dynamic]
+    descriptor:
+      hostInput: spec014-macos-logical-extent-v1
+      origin: {x: 0, y: 0}
+      extent: {width: 640, height: 480}
+      encoding: rgba8888
+      bytesPerRow: 2560
+      realization: fullSurface
+      regionExtent: {width: 640, height: 480}
+    effectiveCapability:
+      status: available
+      operationsRawValue: 31
+      extent: {width: 640, height: 480}
+      regionExtent: {width: 640, height: 480}
+      rowBytes: 2560
+      operationStream: synchronousBorrowedOneShot
+      encoding: rgba8888
+      submissionLifetime: synchronousBorrow
+      handoff: synchronous
+      realization: fullSurface
+      requiredRasterBytes: 1228800
+      requiredPayloadBytes: 1228800
+      inFlightCount: 1
+      requiredInFlightBytes: 1228800
+    header: none
+    operationsResources: {requiredOperationBits: 31, retainedCoreResources: false}
+    injectedEvents: none
+    orderedRegions: none
+    encodedImage: none
+    offerResult: none
+    bodyResult: none
+    health: none
+    highWater:
+      rasterBytes: 1228800
+      payloadBytes: 1228800
+      inFlightPayloads: 1
+      inFlightBytes: 1228800
+  - fixtureID: spec014-macos-static-full-surface
+    criteria: [BI-002, BI-012]
+    evidenceClasses: [cross-build, inspection]
+    profiles: [macos-static]
+    descriptor:
+      hostInput: spec014-macos-logical-extent-v1
+      origin: {x: 0, y: 0}
+      extent: {width: 640, height: 480}
+      encoding: rgba8888
+      bytesPerRow: 2560
+      realization: fullSurface
+      regionExtent: {width: 640, height: 480}
+    effectiveCapability:
+      status: available
+      operationsRawValue: 31
+      extent: {width: 640, height: 480}
+      regionExtent: {width: 640, height: 480}
+      rowBytes: 2560
+      operationStream: synchronousBorrowedOneShot
+      encoding: rgba8888
+      submissionLifetime: synchronousBorrow
+      handoff: synchronous
+      realization: fullSurface
+      requiredRasterBytes: 1228800
+      requiredPayloadBytes: 1228800
+      inFlightCount: 1
+      requiredInFlightBytes: 1228800
+    header: none
+    operationsResources: {requiredOperationBits: 31, retainedCoreResources: false}
+    injectedEvents: none
+    orderedRegions: none
+    encodedImage: none
+    offerResult: none
+    bodyResult: none
+    health: none
+    highWater:
+      rasterBytes: 1228800
+      payloadBytes: 1228800
+      inFlightPayloads: 1
+      inFlightBytes: 1228800
+  - fixtureID: spec014-raspberry-pi-rgb565-tiled
+    criteria: [BI-002, BI-012]
+    evidenceClasses: [cross-build, inspection]
+    profiles: [raspberry-pi-armv6]
+    descriptor:
+      origin: {x: 0, y: 0}
+      extent: {width: 240, height: 240}
+      encoding: rgb565BigEndian
+      bytesPerRow: 480
+      realization: tiled
+      regionExtent: {width: 240, height: 16}
+    effectiveCapability:
+      status: available
+      operationsRawValue: 31
+      extent: {width: 240, height: 240}
+      regionExtent: {width: 240, height: 16}
+      rowBytes: 480
+      operationStream: synchronousBorrowedOneShot
+      encoding: rgb565BigEndian
+      submissionLifetime: synchronousBorrow
+      handoff: synchronous
+      realization: tiled
+      requiredRasterBytes: 7680
+      requiredPayloadBytes: 7680
+      inFlightCount: 1
+      requiredInFlightBytes: 7680
+    header: none
+    operationsResources: {requiredOperationBits: 31, retainedCoreResources: false}
+    injectedEvents: none
+    orderedRegions: none
+    encodedImage: none
+    offerResult: none
+    bodyResult: none
+    health: none
+    highWater:
+      rasterBytes: 7680
+      payloadBytes: 7680
+      inFlightPayloads: 1
+      inFlightBytes: 7680
+  - fixtureID: spec014-nrf52840-rgb565-tiled
+    criteria: [BI-002, BI-003, BI-012]
+    evidenceClasses: [cross-build, inspection]
+    profiles: [nrf52840-embedded]
+    descriptor:
+      origin: {x: 0, y: 0}
+      extent: {width: 480, height: 320}
+      encoding: rgb565BigEndian
+      bytesPerRow: 960
+      realization: tiled
+      regionExtent: {width: 480, height: 4}
+    effectiveCapability:
+      status: available
+      operationsRawValue: 31
+      extent: {width: 480, height: 320}
+      regionExtent: {width: 480, height: 4}
+      rowBytes: 960
+      operationStream: synchronousBorrowedOneShot
+      encoding: rgb565BigEndian
+      submissionLifetime: synchronousBorrow
+      handoff: synchronous
+      realization: tiled
+      requiredRasterBytes: 3840
+      requiredPayloadBytes: 3840
+      inFlightCount: 1
+      requiredInFlightBytes: 3840
+    header: none
+    operationsResources:
+      requiredOperationBits: 31
+      retainedCoreResources: false
+      completeFramebuffer: false
+    injectedEvents: none
+    orderedRegions: none
+    encodedImage: none
+    offerResult: none
+    bodyResult: none
+    health: none
+    highWater:
+      surfaceBytes: 0
+      tileBytes: 3840
+      rasterBytes: 3840
+      payloadBytes: 3840
+      inFlightPayloads: 1
+      inFlightBytes: 3840
+  - fixtureID: spec014-nrf52840-full-framebuffer-rejected
+    criteria: [BI-002, BI-003, BI-012]
+    evidenceClasses: [cross-build, inspection]
+    profiles: [nrf52840-embedded]
+    descriptor:
+      proposedOrigin: {x: 0, y: 0}
+      proposedExtent: {width: 480, height: 320}
+      proposedEncoding: rgba8888
+      proposedBytesPerRow: 1920
+      proposedRealization: fullSurface
+      proposedRegionExtent: {width: 480, height: 320}
+    effectiveCapability:
+      status: unavailable
+      reason: insufficientCapacity
+      domain: raster
+      requiredBytes: 614400
+      availableBytes: 3840
+    header: none
+    operationsResources:
+      requiredOperationBits: 31
+      retainedCoreResources: false
+      completeFramebuffer: rejected
+    injectedEvents: none
+    orderedRegions: none
+    encodedImage: none
+    offerResult: none
+    bodyResult: none
+    health: none
+    highWater:
+      admittedFramebufferBytes: 0
+      maximumRasterBytes: 3840

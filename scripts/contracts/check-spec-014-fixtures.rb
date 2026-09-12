@@ -28,7 +28,7 @@ end
 required_files = %w[
   README.md fixture-manifest.tsv shared-field-schema.tsv required-evidence.tsv
   module-owners.tsv dependency-fixtures.tsv migration-inventory.tsv
-  declaration-compile-fixtures.tsv
+  declaration-compile-fixtures.tsv macos-host-input.yaml
 ] + EXPECTED_FILES
 missing = required_files.reject { |name| FIXTURES.join(name).file? }
 fail_check("required fixture files are missing: #{missing.join(', ')}") unless missing.empty?

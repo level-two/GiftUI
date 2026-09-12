@@ -1,0 +1,7 @@
+schema: spec-014-macos-host-input-v1
+id: spec014-macos-logical-extent-v1
+logicalExtent:
+  width: 640
+  height: 480
+scope: paired-test-fixture-only
+productionWindowSelection: false
