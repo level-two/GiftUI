@@ -3,7 +3,7 @@ import GiftUIExecution
 import GiftUILayout
 
 package struct InteractionState<CandidateRecords, CommittedRecords, HitRegions>:
-    InteractionCandidateBuilder
+    InteractionCandidateBuilder, InteractionGestureResolver
 where
     CandidateRecords: InteractionCandidateRecordStorage,
     CommittedRecords: InteractionCommittedRecordStorage,
@@ -296,5 +296,66 @@ where
         -> InteractionHitRegion<Identity>?
     {
         committedHitRegions.region(at: index)
+    }
+
+    package borrowing func resolveDown(
+        at point: Point
+    ) -> PointerGestureOutcome<Identity> {
+        guard let record = topmostRecord(at: point) else { return .ignored }
+        guard record.isEnabled else { return .ignored }
+        return .captured(
+            CapturedAction(
+                identity: record.identity,
+                generation: record.generation
+            )
+        )
+    }
+
+    private borrowing func topmostRecord(
+        at point: Point
+    ) -> BoundActionRecord<Identity>? {
+        var best: InteractionHitRegion<Identity>?
+        var index: UInt16 = 0
+        while index < committedHitRegions.count {
+            guard let region = committedHitRegions.region(at: index) else {
+                return nil
+            }
+            if region.bounds.contains(point),
+                best == nil || region.paintOrder > best!.paintOrder
+            {
+                best = region
+            }
+            index += 1
+        }
+        guard let best else { return nil }
+        return record(identity: best.identity)
+    }
+
+    private borrowing func record(
+        identity: Identity
+    ) -> BoundActionRecord<Identity>? {
+        var index: UInt16 = 0
+        while index < committedRecords.count {
+            guard let record = committedRecords.record(at: index) else {
+                return nil
+            }
+            if record.identity == identity { return record }
+            index += 1
+        }
+        return nil
+    }
+
+    package borrowing func resolveMove(
+        _ captured: CapturedAction<Identity>,
+        at point: Point
+    ) -> PointerGestureOutcome<Identity> {
+        .cancelled
+    }
+
+    package borrowing func resolveUp(
+        _ captured: CapturedAction<Identity>,
+        at point: Point
+    ) -> PointerGestureOutcome<Identity> {
+        .cancelled
     }
 }

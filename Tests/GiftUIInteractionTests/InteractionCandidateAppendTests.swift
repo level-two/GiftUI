@@ -5,6 +5,20 @@ import XCTest
 @testable import GiftUIInteraction
 
 final class InteractionCandidateAppendTests: XCTestCase {
+    func testDownCapturesTopmostEnabledAndDisabledTopmostBlocksRetargeting() {
+        var enabled = makeState(capacity: 2)
+        commitOverlappingRecords(&enabled, topEnabled: true)
+        XCTAssertEqual(
+            enabled.resolveDown(at: Point(x: 1, y: 1)),
+            .captured(CapturedAction(identity: 2, generation: ActionGeneration(rawValue: 12)))
+        )
+        XCTAssertEqual(enabled.resolveDown(at: Point(x: 8, y: 8)), .ignored)
+
+        var blocked = makeState(capacity: 2)
+        commitOverlappingRecords(&blocked, topEnabled: false)
+        XCTAssertEqual(blocked.resolveDown(at: Point(x: 1, y: 1)), .ignored)
+    }
+
     func testResolutionCommitsAtomicallyOrDiscardsAndPreservesCommittedState() {
         let former = BoundActionRecord(
             identity: UInt16(9),
@@ -236,6 +250,37 @@ private func appendRecord(
         action: BoundedApplicationAction(code: action),
         targetGeneration: ObservableTargetGeneration(rawValue: target)
     )
+}
+
+private func commitOverlappingRecords(
+    _ state:
+        inout InteractionState<
+            ArrayCandidateStorage, ArrayCommittedStorage, ArrayHitStorage
+        >,
+    topEnabled: Bool
+) {
+    let limits = InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!
+    XCTAssertNil(state.beginCandidate(limits: limits))
+    XCTAssertEqual(
+        appendRecord(&state, identity: 1, isEnabled: true, action: 1, target: 1),
+        .requiresGeneration
+    )
+    XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 11), to: 1))
+    XCTAssertEqual(
+        state.append(
+            identity: 2,
+            isEnabled: topEnabled,
+            bounds: rect(x: 0, y: 0, width: 2, height: 2),
+            clip: rect(x: 0, y: 0, width: 2, height: 2),
+            paintOrder: 1,
+            action: BoundedApplicationAction(code: 2),
+            targetGeneration: ObservableTargetGeneration(rawValue: 1)
+        ),
+        .requiresGeneration
+    )
+    XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 12), to: 2))
+    XCTAssertNil(state.finishCandidate())
+    state.resolveCandidate(.commit(PresentationRevision(rawValue: 1)))
 }
 
 private func append(

@@ -369,7 +369,7 @@ SPEC-009 owns admission provenance, source sequencing, and capture storage.
 identity-generation transitions, while Execution owns and clears every
 per-source capture.
 
-- [ ] `T4.1` — Implement `resolveDown(at:)` using exact clipped regions and
+- [x] `T4.1` — Implement `resolveDown(at:)` using exact clipped regions and
       greatest painter order. Return `.captured` only for the topmost enabled
       occurrence; a disabled topmost occurrence returns `.ignored` and blocks
       retargeting to an obscured action.
