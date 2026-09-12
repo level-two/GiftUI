@@ -241,7 +241,7 @@ claimed.
       repository's content-hashed immutable report identity, record dirty state
       without rejecting local iteration, and reject cross-profile comparison of
       different revisions or input-set hashes.
-- [ ] `T0.4` — Inventory every removed or residual PoC action identifier,
+- [x] `T0.4` — Inventory every removed or residual PoC action identifier,
       escaping Button closure, direct model/use-case capture, runtime/backend/
       platform hit test, historical map, deferred event, and callback registry.
       Record adopt, adapt, replace-through-owner, downstream-owned,

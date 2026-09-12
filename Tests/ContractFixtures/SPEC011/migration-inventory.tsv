@@ -1,0 +1,14 @@
+# concept	former_surface	disposition	production_owner	regression
+untyped-action-id	Sources/GiftUI/Input/ActionID.swift	already-absent	GiftUI.GiftUIAction	forbidden
+escaping-button-closure	Sources/GiftUI/Views/Button.swift	already-absent	GiftUI.Button value payload	forbidden
+direct-model-capture	Sources/GiftUIRuntimeDynamic/GiftUIApplication.swift	replace-through-owner	SPEC-011 target-composed coordinator	forbidden
+direct-use-case-capture	Sources/GiftUIRuntimeDynamic/GiftUIApplication.swift	replace-through-owner	GiftUIActionHandler	forbidden
+runtime-hit-map	Sources/GiftUIRuntimeDynamic/HitTestMap.swift	replace-through-owner	GiftUIInteraction committed state	forbidden
+backend-hit-test	Sources/GiftUIBackend*/	already-absent	GiftUIInteraction gesture resolver	forbidden
+platform-hit-test	Sources/GiftUIPlatformLinux/FocusInputAdapter.swift	replace-through-owner	GiftUIInteraction gesture resolver	forbidden
+historical-hit-map	Sources/GiftUIRuntimeDynamic/ViewNode.swift	already-absent	no production owner	forbidden
+deferred-event	Sources/GiftUIPlatformLinux/GiftUILinuxApplication.swift	already-absent	SPEC-009 bounded admission	forbidden
+callback-registry	Sources/GiftUIDynamicConveniences/	already-absent	statically typed handler	forbidden
+execution-capture	Sources/GiftUIExecution/PointerActionCapture.swift	adapt	SPEC-009 per-source capture owner	allowed-single-owner
+captured-action	Sources/GiftUIExecution/AdmissionValues.swift	adopt	SPEC-009 identity-generation value	allowed-single-owner
+legacy-test-oracles	Tests/GiftUIDynamicConveniencesTests/	evidence-only	SPEC-011 contract fixtures	no-production-path
