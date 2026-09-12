@@ -194,3 +194,4 @@ SPEC-013 and SPEC-015 respectively.
 - [T5.2 generation/offer evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-2-generation-offer.md)
 - [Target-composed dispatcher](../../Sources/GiftUIRuntimeCore/RuntimeInteractionDispatcher.swift)
 - [T5.3 dispatch evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-3-current-model-dispatch.md)
+- [T5.4 cancellation evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-4-dispatch-cancellation.md)

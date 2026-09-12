@@ -411,7 +411,7 @@ current model.
       target generation; decode through the statically known total
       `Handler.Action(rawValue:)`; borrow the matching current model for one
       nonescaping call; return exactly dispatched/cancelled/failure.
-- [ ] `T5.4` — Prove missing/changed records or target generations cancel
+- [x] `T5.4` — Prove missing/changed records or target generations cancel
       ordinarily, invalid committed action codes return
       `.failure(.invariantViolation)`, and wrong-type/invalid-code candidate
       failures invoke no handler. No path may fall back, search another model,
@@ -731,3 +731,9 @@ identity/generation/enabled/target state, totally decodes the configured action
 type, and borrows the matching current model for one synchronous handler call.
 See the
 [current-model dispatch evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-3-current-model-dispatch.md).
+
+`T5.4` is complete: focused dispatch tests cover missing, changed, disabled,
+removed, and corrupt committed state without fallback or handler invocation;
+candidate validation tests prove wrong-domain and invalid-code values never
+reach an offer or handler. See the
+[dispatch cancellation evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-4-dispatch-cancellation.md).

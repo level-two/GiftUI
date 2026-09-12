@@ -1,6 +1,10 @@
 version: 1
 rows:
   - { id: dispatched, result: dispatched }
+  - { id: missing_record, result: cancelled }
+  - { id: action_generation_changed, result: cancelled }
+  - { id: disabled_record, result: cancelled }
   - { id: target_changed, result: cancelled }
+  - { id: target_removed_before_borrow, result: cancelled }
   - { id: invalid_code, result: invariantViolation }
   - { id: wrong_domain, result: incompatibleActionDomain }

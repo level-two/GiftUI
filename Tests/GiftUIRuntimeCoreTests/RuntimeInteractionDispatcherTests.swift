@@ -127,3 +127,144 @@ func dispatcherRevalidatesDecodesAndBorrowsCurrentModelExactlyOnce() {
     #expect(probe.borrowAttemptCount == 1)
     #expect(probe.bodyCallCount == 1)
 }
+
+@Test
+func missingCommittedRecordCancelsWithoutConsultingTargetOrHandler() {
+    let model = DispatchModel()
+    let probe = DispatchAccessProbe()
+    var dispatcher = RuntimeInteractionDispatcher(
+        records: DispatchRecordView(record: nil),
+        handler: DispatchHandler(),
+        targetAccess: DispatchTargetAccess(
+            generation: ObservableTargetGeneration(rawValue: 12),
+            model: model,
+            probe: probe
+        )
+    )
+
+    let result = dispatcher.dispatch(
+        CapturedAction(
+            identity: 4,
+            generation: ActionGeneration(rawValue: 8)
+        )
+    )
+
+    #expect(result == .cancelled)
+    #expect(model.handledActions.isEmpty)
+    #expect(probe.generationReadCount == 0)
+    #expect(probe.borrowAttemptCount == 0)
+}
+
+@Test(arguments: [
+    dispatchRecord(generation: 9),
+    dispatchRecord(enabled: false),
+])
+func changedOrDisabledCommittedRecordCancelsBeforeTargetBorrow(
+    record: BoundActionRecord<UInt16>
+) {
+    let model = DispatchModel()
+    let probe = DispatchAccessProbe()
+    var dispatcher = RuntimeInteractionDispatcher(
+        records: DispatchRecordView(record: record),
+        handler: DispatchHandler(),
+        targetAccess: DispatchTargetAccess(
+            generation: ObservableTargetGeneration(rawValue: 12),
+            model: model,
+            probe: probe
+        )
+    )
+
+    let result = dispatcher.dispatch(
+        CapturedAction(
+            identity: 4,
+            generation: ActionGeneration(rawValue: 8)
+        )
+    )
+
+    #expect(result == .cancelled)
+    #expect(model.handledActions.isEmpty)
+    #expect(probe.generationReadCount == 0)
+    #expect(probe.borrowAttemptCount == 0)
+}
+
+@Test
+func changedTargetGenerationCancelsBeforeModelBorrow() {
+    let model = DispatchModel()
+    let probe = DispatchAccessProbe()
+    var dispatcher = RuntimeInteractionDispatcher(
+        records: DispatchRecordView(record: dispatchRecord()),
+        handler: DispatchHandler(),
+        targetAccess: DispatchTargetAccess(
+            generation: ObservableTargetGeneration(rawValue: 13),
+            model: model,
+            probe: probe
+        )
+    )
+
+    let result = dispatcher.dispatch(
+        CapturedAction(
+            identity: 4,
+            generation: ActionGeneration(rawValue: 8)
+        )
+    )
+
+    #expect(result == .cancelled)
+    #expect(model.handledActions.isEmpty)
+    #expect(probe.generationReadCount == 1)
+    #expect(probe.borrowAttemptCount == 0)
+}
+
+@Test
+func targetDisappearingBeforeBorrowCancelsWithoutHandlerInvocation() {
+    let model = DispatchModel()
+    let probe = DispatchAccessProbe()
+    var dispatcher = RuntimeInteractionDispatcher(
+        records: DispatchRecordView(record: dispatchRecord()),
+        handler: DispatchHandler(),
+        targetAccess: DispatchTargetAccess(
+            generation: ObservableTargetGeneration(rawValue: 12),
+            model: nil,
+            probe: probe
+        )
+    )
+
+    let result = dispatcher.dispatch(
+        CapturedAction(
+            identity: 4,
+            generation: ActionGeneration(rawValue: 8)
+        )
+    )
+
+    #expect(result == .cancelled)
+    #expect(model.handledActions.isEmpty)
+    #expect(probe.generationReadCount == 1)
+    #expect(probe.borrowAttemptCount == 1)
+    #expect(probe.bodyCallCount == 0)
+}
+
+@Test
+func invalidCommittedActionCodeReturnsInvariantFailureWithoutHandlerInvocation() {
+    let model = DispatchModel()
+    let probe = DispatchAccessProbe()
+    var dispatcher = RuntimeInteractionDispatcher(
+        records: DispatchRecordView(record: dispatchRecord(action: .max)),
+        handler: DispatchHandler(),
+        targetAccess: DispatchTargetAccess(
+            generation: ObservableTargetGeneration(rawValue: 12),
+            model: model,
+            probe: probe
+        )
+    )
+
+    let result = dispatcher.dispatch(
+        CapturedAction(
+            identity: 4,
+            generation: ActionGeneration(rawValue: 8)
+        )
+    )
+
+    #expect(result == .failure(.invariantViolation))
+    #expect(model.handledActions.isEmpty)
+    #expect(probe.generationReadCount == 1)
+    #expect(probe.borrowAttemptCount == 0)
+}
