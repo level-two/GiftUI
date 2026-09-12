@@ -159,10 +159,12 @@ run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" \
     -module-name GiftUIRasterCore \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterPayloadLimits.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterFrameSink.swift" \
+    "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterBackendContributionAdapter.swift" \
     -emit-module-path "${module_dir}/GiftUIRasterCore.swiftmodule" >/dev/null
 run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" \
     -module-name GiftUIDisplayCore \
     "${PROJECT_ROOT}/Sources/GiftUIDisplayCore/DisplayContracts.swift" \
+    "${PROJECT_ROOT}/Sources/GiftUIDisplayCore/SurfaceDisplayContributionAdapter.swift" \
     -emit-module-path "${module_dir}/GiftUIDisplayCore.swiftmodule" >/dev/null
 run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" \
     -module-name GiftUIBackendIntegration \

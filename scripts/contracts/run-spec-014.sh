@@ -47,6 +47,16 @@ esac
 declared_inputs() {
     {
         find "${FIXTURE_ROOT}" -type f -print
+        find \
+            "${PROJECT_ROOT}/Sources/GiftUISurfaceCore" \
+            "${PROJECT_ROOT}/Sources/GiftUIRasterCore" \
+            "${PROJECT_ROOT}/Sources/GiftUIDisplayCore" \
+            "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration" \
+            "${PROJECT_ROOT}/Tests/GiftUISurfaceCoreTests" \
+            "${PROJECT_ROOT}/Tests/GiftUIRasterCoreTests" \
+            "${PROJECT_ROOT}/Tests/GiftUIDisplayCoreTests" \
+            "${PROJECT_ROOT}/Tests/GiftUIBackendIntegrationTests" \
+            -type f -print
         printf '%s\n' \
             "${PROJECT_ROOT}/Package.swift" \
             "${PROJECT_ROOT}/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
@@ -55,6 +65,7 @@ declared_inputs() {
             "${PROJECT_ROOT}/docs/implementation-plans/spec-014-implementation-plan.md" \
             "${SCRIPT_DIR}/check-driver-registry.rb" \
             "${SCRIPT_DIR}/check-spec-014-fixtures.rb" \
+            "${SCRIPT_DIR}/check-spec-014-contributors.rb" \
             "${SCRIPT_DIR}/check-spec-014-migration.rb" \
             "${SCRIPT_DIR}/check-spec-014-module-contract.rb" \
             "${SCRIPT_DIR}/check-spec-014-storage.rb" \
@@ -218,6 +229,7 @@ record_toolchain() {
 
 run_required fixture-schema "${SCRIPT_DIR}/check-spec-014-fixtures.rb"
 run_required migration-inventory "${SCRIPT_DIR}/check-spec-014-migration.rb"
+run_required contributor-boundaries "${SCRIPT_DIR}/check-spec-014-contributors.rb"
 run_required driver-registry "${SCRIPT_DIR}/check-driver-registry.rb"
 run_package_checks
 record_toolchain

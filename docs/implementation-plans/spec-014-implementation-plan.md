@@ -267,7 +267,7 @@ values and SPEC-005 resource views are available.
 every mismatch, incompatible resource, missing operation, overflow, or
 insufficient bound fails in exact order before an offer or target probe.
 
-- [ ] `T2.1` — Implement the raster-backend and surface/display contributor
+- [x] `T2.1` — Implement the raster-backend and surface/display contributor
       adapters using only the exact SPEC-004 vocabulary and failable
       constructors. Report only locally owned facts; prohibit resolver calls,
       end-to-end Booleans, concrete target probing, health-derived facts, and
@@ -716,6 +716,17 @@ nRF52840 Embedded Swift compile the real owner modules and report identical
 6/30/32/4/1-byte constrained layouts within the required 8/32/40/4/1-byte
 ceilings. The exact SwiftPM dependency graph remains a prerequisite in the
 registered driver before stateful Milestone 2 work.
+
+`T2.1` added fact-only raster-backend and surface/display contributor adapters.
+They construct only SPEC-004 `RasterRealizationContribution`,
+`RasterBackendContribution`, and `SurfaceDisplayContribution` values, require
+the exact five-operation synchronous one-shot backend coverage, and reject
+ownership-transfer lifetime claims for tiled realizations. Focused tests cover
+every contribution field, malformed set/region/alignment/in-flight domain,
+zero byte ceilings, alternate-kind uniqueness, and attempts to bypass the
+adapter with weaker public SPEC-004 values. An executable boundary audit
+rejects resolver calls, component probing, health-derived facts, target
+identity, and end-to-end Boolean results.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
