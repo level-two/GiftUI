@@ -179,6 +179,12 @@ owned by later profile-specific tasks and notes.
   `Tests/GiftUIRuntimeCoreTests/RuntimeCoordinatorCleanupTests.swift`
 - T2.3 evidence:
   `Tests/ContractFixtures/SPEC013/Evidence/milestone-2/cleanup-oracle.md`
+- T2.4 first-failure state:
+  `Sources/GiftUIRuntimeCore/RuntimeFocusedFailureState.swift`
+- T2.4 owner mapping:
+  `Sources/GiftUIRuntimeFailureAdapterFixture/RuntimeFailureAdapterBoundary.swift`
+- T2.4 evidence:
+  `Tests/ContractFixtures/SPEC013/Evidence/milestone-2/focused-failure-disposition.md`
 
-The remaining code and focused evidence links will be added as T2.4-T2.5
-land. The authoritative behavior remains SPEC-013 and its accepted ADRs.
+The remaining code and focused evidence links will be added as T2.5 lands. The
+authoritative behavior remains SPEC-013 and its accepted ADRs.

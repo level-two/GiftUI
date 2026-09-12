@@ -275,7 +275,7 @@ and quiescence behavior without profile-private semantics.
       coordinator behavior and a table-driven oracle. Prove earlier failures
       skip later fallible work, applied mutation is never replayed, begun
       candidates discard exactly once, and every acquired workspace resets.
-- [ ] `T2.4` — Preserve the first exact focused failure through SPEC-009's
+- [x] `T2.4` — Preserve the first exact focused failure through SPEC-009's
       generic carrier, correlated SPEC-003 fact, mandatory disposition, and
       residual-policy input. Cleanup failures remain secondary except where
       their owner widens containment; diagnostics cannot affect results.
@@ -678,6 +678,12 @@ and non-replayable mutation marker. Four table-driven tests cover every row,
 partial acquisition, publication boundaries, deterministic order, and complete
 draining; evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-2/cleanup-oracle.md`.
+
+T2.4 added first-focused-failure retention, monotonic secondary-cleanup
+containment, owner-meaning mapping beside the preserved SPEC-009 correlation,
+and residual-policy/diagnostic-isolation tests. Nine focused tests passed;
+evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-2/focused-failure-disposition.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
