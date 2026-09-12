@@ -329,7 +329,7 @@ performs exact whole-attempt cleanup and dirty recovery.
       dispatch an action, submit a fact, request a wake, query capability or
       backend identity, or start/reenter a cycle; prove exact `.invalidPhase`
       versus `.reentrancyViolation` results and no later client invocation.
-- [ ] `T4.3` — Invoke every callable at most once, release it exactly once after
+- [x] `T4.3` — Invoke every callable at most once, release it exactly once after
       normal or throwing return, and remove all publication-eligible callable/
       capture storage after the last occurrence. Exercise zero-Canvas and
       zero-stroke Canvas attempts.
@@ -928,3 +928,12 @@ first `.invalidPhase` or `.reentrancyViolation` client guard failure without
 invoking a later occurrence. The
 [producer validation evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-4/canvas-plan-producer-validation.md)
 records the full focused matrix. T4.3 is next.
+
+`T4.3` is complete. Normal, first-failure, and later-failure fixtures prove
+each callable is invoked at most once and released exactly once; failure
+releases the uninvoked suffix without calling it, leaving no staged callable
+eligible for publication. Empty attempts seal without entering a context, and
+one zero-stroke Canvas contributes exactly one occurrence with zero remaining
+plan totals. The
+[callable lifetime evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-4/canvas-callable-lifetime.md)
+records release counts and cleanup. T4.4 is next.

@@ -82,6 +82,70 @@ func canvasPlanProducerAdmitsTheFirstDerivationWithoutAPublishedRevision() {
     #expect(summary.canvasOccurrenceCount == 1)
 }
 
+@Test
+func canvasPlanProducerSealsAnEmptyAttemptWithoutInvokingOrRetainingACallable() {
+    var source = CanvasPlanSourceFixture(identities: [])
+    let layout = CanvasPlanLayoutFixture(records: [])
+    var workspace = CanvasPlanConstructionFixture(capacity: canvasPlanLimits)
+
+    let result = CanvasPlanProducer.derive(
+        source: &source,
+        layout: layout,
+        executionContext: derivingContext,
+        limits: canvasPlanLimits,
+        workspace: &workspace
+    )
+
+    #expect(
+        result
+            == .success(
+                DrawingPlanSummary(
+                    canvasOccurrenceCount: 0,
+                    strokeCount: 0,
+                    pointCount: 0,
+                    subpathCount: 0,
+                    normalizedStrokeOperationCount: 0
+                )
+            )
+    )
+    #expect(source.invokedIdentities.isEmpty)
+    #expect(source.releasedIdentities.isEmpty)
+    #expect(source.activeIdentities.isEmpty)
+    #expect(workspace.contextBodyCount == 0)
+    #expect(workspace.sealCount == 1)
+}
+
+@Test
+func canvasPlanProducerReleasesEachCallableOnceOnLaterThrowAndInvokesNoSuffix() {
+    var source = CanvasPlanSourceFixture(
+        identities: [20, 40, 60],
+        errorAtIndex: 1,
+        error: .invalidValue
+    )
+    let layout = CanvasPlanLayoutFixture(
+        records: [20, 40, 60].map {
+            canvasLayoutRecord(identity: $0, x: 0, y: 0, width: 1, height: 1)
+        }
+    )
+    var workspace = CanvasPlanConstructionFixture(capacity: canvasPlanWideLimits)
+
+    let result = CanvasPlanProducer.derive(
+        source: &source,
+        layout: layout,
+        executionContext: derivingContext,
+        limits: canvasPlanWideLimits,
+        workspace: &workspace
+    )
+
+    #expect(result == .failure(.invalidValue))
+    #expect(source.invokedIdentities == [20, 40])
+    #expect(source.releasedIdentities == [20, 40, 60])
+    #expect(source.releaseCounts == [20: 1, 40: 1, 60: 1])
+    #expect(source.activeIdentities.isEmpty)
+    #expect(workspace.discardCount == 1)
+    #expect(workspace.resetCount == 1)
+}
+
 @Test(arguments: CanvasPlanEntryFailure.allCases)
 private func canvasPlanProducerRejectsInvalidEntryBeforeClientInvocation(
     _ failure: CanvasPlanEntryFailure
@@ -271,6 +335,8 @@ private struct CanvasPlanSourceFixture: CanvasInvocationSource {
     var invokedIdentities: [UInt16] = []
     var invokedSizes: [Size] = []
     var releasedIdentities: [UInt16] = []
+    var releaseCounts: [UInt16: Int] = [:]
+    var activeIdentities: Set<UInt16>
 
     init(
         identities: [UInt16],
@@ -282,6 +348,7 @@ private struct CanvasPlanSourceFixture: CanvasInvocationSource {
         self.reportedCountOverride = reportedCountOverride
         self.errorAtIndex = errorAtIndex
         self.error = error
+        activeIdentities = Set(identities)
     }
 
     var canvasOccurrenceCount: UInt16 {
@@ -298,6 +365,9 @@ private struct CanvasPlanSourceFixture: CanvasInvocationSource {
         context _: inout GraphicsContext,
         size: Size
     ) throws(DrawingError) {
+        guard activeIdentities.contains(identity) else {
+            throw DrawingError.invariantViolation
+        }
         let index = UInt16(invokedIdentities.count)
         invokedIdentities.append(identity)
         invokedSizes.append(size)
@@ -308,6 +378,8 @@ private struct CanvasPlanSourceFixture: CanvasInvocationSource {
 
     mutating func releaseCanvas(at identity: UInt16) {
         releasedIdentities.append(identity)
+        releaseCounts[identity, default: 0] += 1
+        activeIdentities.remove(identity)
     }
 }
 
@@ -454,6 +526,17 @@ private let derivingContext = ExecutionContext(
 private let canvasPlanLimits = DrawingLimits(
     maximumLineWidth: 8,
     maximumCanvasOccurrences: 2,
+    maximumLivePathPoints: 4,
+    maximumLivePathSubpaths: 2,
+    maximumPlanStrokes: 2,
+    maximumPlanPoints: 4,
+    maximumPlanSubpaths: 2,
+    maximumNormalizedStrokeOperations: 2
+)!
+
+private let canvasPlanWideLimits = DrawingLimits(
+    maximumLineWidth: 8,
+    maximumCanvasOccurrences: 3,
     maximumLivePathPoints: 4,
     maximumLivePathSubpaths: 2,
     maximumPlanStrokes: 2,

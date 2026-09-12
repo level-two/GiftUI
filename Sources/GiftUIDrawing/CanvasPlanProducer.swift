@@ -160,7 +160,18 @@ package enum CanvasPlanProducer {
         var index = firstIndex
         while index < source.canvasOccurrenceCount {
             if let identity = source.canvasIdentity(at: index) {
-                source.releaseCanvas(at: identity)
+                var alreadyReleased = false
+                var earlierIndex = firstIndex
+                while earlierIndex < index {
+                    if source.canvasIdentity(at: earlierIndex) == identity {
+                        alreadyReleased = true
+                        break
+                    }
+                    earlierIndex += 1
+                }
+                if !alreadyReleased {
+                    source.releaseCanvas(at: identity)
+                }
             }
             index += 1
         }
