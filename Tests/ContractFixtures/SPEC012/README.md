@@ -66,6 +66,21 @@ the exact SPEC-003 mapping. Startup rows precede drawing-attempt rows, which
 precede offer-time rows. A fixture reports the first applicable row and must
 record that no later check capable of invoking client code occurred.
 
+## Static Canvas generation
+
+`static-canvas-input.yaml` is the ordered, profile-neutral source-analysis
+descriptor for the T6 fixture in `StaticGeneration/StaticCanvasInput.swift`.
+It names each syntactic Canvas expression, its exact ordered captures, and
+each runtime occurrence's distinct capture record. `static-canvas-manifest.yaml`
+is the checked lowering result: dense nonzero callable IDs, fixed record
+layouts, complete switch coverage, and occurrence-to-expression mapping.
+
+Run `scripts/contracts/check-spec-012-static-canvas-manifest.rb` to reconstruct
+the expected manifest and reject source-anchor, ordering, layout, coverage, or
+capture-ownership drift. These files freeze the T6.1 generator handoff only;
+generated Swift dispatch, negative generation cases, production profile
+storage, limits, and host handles remain owned by T6.2-T6.5 and SPEC-013/015.
+
 ## Evidence registry
 
 `required-evidence.tsv` contains exactly `DR-001` through `DR-013`. Every row

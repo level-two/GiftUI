@@ -58,6 +58,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-012-value-profiles.sh" \
             "$SCRIPT_DIR/check-spec-012-migration.rb" \
             "$SCRIPT_DIR/check-spec-012-module-contract.rb" \
+            "$SCRIPT_DIR/check-spec-012-static-canvas-manifest.rb" \
             "$SCRIPT_DIR/check-target-dependencies.rb" \
             "$SCRIPT_DIR/report-input-identity.rb" \
             "$SCRIPT_DIR/publish-contract-report.rb" \
@@ -212,6 +213,8 @@ record_command "$SCRIPT_DIR/check-spec-012-harness.rb"
 "$SCRIPT_DIR/check-spec-012-harness.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-012-migration.rb"
 "$SCRIPT_DIR/check-spec-012-migration.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-012-static-canvas-manifest.rb"
+"$SCRIPT_DIR/check-spec-012-static-canvas-manifest.rb" >>"$log_path" 2>&1
 record_command swift package dump-package
 swift package dump-package | "$SCRIPT_DIR/check-target-dependencies.rb" >>"$log_path" 2>&1
 case "$profile" in

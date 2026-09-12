@@ -9,6 +9,7 @@ created: 2026-09-09
 updated: 2026-09-12
 related_design_notes:
   - ../implementation-designs/spec-012-scoped-path-and-plan-storage.md
+  - ../implementation-designs/spec-012-static-canvas-lowering.md
 conformance_report: null
 related_future_work: []
 related_explorations: []
@@ -387,7 +388,7 @@ for SPEC-013 and SPEC-015 owners.
 bounded inline capture records, while dynamic and static fixture profiles
 produce identical drawing meaning and cleanup without static heap allocation.
 
-- [ ] `T6.1` — Define the source-generation input and checked manifest for each
+- [x] `T6.1` — Define the source-generation input and checked manifest for each
       syntactic Canvas expression, stable nonzero `UInt16` callable IDs,
       occurrence-to-expression mapping, exact captured fields, and complete
       generated switch coverage. Repeated runtime occurrences reuse the ID but
@@ -907,3 +908,14 @@ whole-module mode as SPIKE-008, while the remaining cases compile against the
 emitted module. Registry status stays `pending` until T1.5 records all four
 profile compilers and emitted-artifact audits. `T1.5` is the next
 dependency-complete task.
+
+`T6.1` is complete. The ordered
+[static Canvas input](../../Tests/ContractFixtures/SPEC012/static-canvas-input.yaml)
+and [checked manifest](../../Tests/ContractFixtures/SPEC012/static-canvas-manifest.yaml)
+freeze dense nonzero callable IDs, exact capture fields and layouts, complete
+switch coverage, and distinct capture ownership for repeated occurrences. The
+[design note](../implementation-designs/spec-012-static-canvas-lowering.md)
+records the replaceable lowering and lifecycle realization, while the
+[manifest evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-generator-manifest.md)
+keeps generated Swift, production limits, and runtime storage explicitly
+pending. T6.2 is the next dependency-complete static-generation task.

@@ -1,0 +1,51 @@
+schema: spec-012-static-canvas-input-v1
+source: Tests/ContractFixtures/SPEC012/StaticGeneration/StaticCanvasInput.swift
+expressions:
+  - order: 1
+    key: grid
+    captures:
+      - name: color
+        type: Color
+      - name: lineWidth
+        type: GeometryScalar
+  - order: 2
+    key: trace
+    captures:
+      - name: color
+        type: Color
+      - name: verticalOffset
+        type: GeometryScalar
+      - name: highLevel
+        type: GeometryScalar
+  - order: 3
+    key: marker
+    captures: []
+occurrences:
+  - order: 1
+    key: grid-primary
+    expression: grid
+    capture_record: grid-primary-captures
+    captured_values:
+      color: rgb-128-128-128
+      lineWidth: scalar-1
+  - order: 2
+    key: trace-blue
+    expression: trace
+    capture_record: trace-blue-captures
+    captured_values:
+      color: rgb-0-0-255
+      verticalOffset: scalar-8
+      highLevel: scalar-2
+  - order: 3
+    key: trace-green
+    expression: trace
+    capture_record: trace-green-captures
+    captured_values:
+      color: rgb-0-255-0
+      verticalOffset: scalar-16
+      highLevel: scalar-10
+  - order: 4
+    key: marker-right-edge
+    expression: marker
+    capture_record: marker-right-edge-captures
+    captured_values: {}

@@ -1,0 +1,75 @@
+schema: spec-012-static-canvas-manifest-v1
+source_schema: spec-012-static-canvas-input-v1
+callable_case_count: 3
+greatest_capture_byte_count: 12
+callable_cases:
+  - id: 1
+    expression: grid
+    capture_record_type: StaticCanvasCapture1
+    capture_byte_count: 8
+    capture_alignment: 4
+    fields:
+      - name: color
+        type: Color
+        offset: 0
+      - name: lineWidth
+        type: GeometryScalar
+        offset: 4
+  - id: 2
+    expression: trace
+    capture_record_type: StaticCanvasCapture2
+    capture_byte_count: 12
+    capture_alignment: 4
+    fields:
+      - name: color
+        type: Color
+        offset: 0
+      - name: verticalOffset
+        type: GeometryScalar
+        offset: 4
+      - name: highLevel
+        type: GeometryScalar
+        offset: 8
+  - id: 3
+    expression: marker
+    capture_record_type: StaticCanvasCapture3
+    capture_byte_count: 0
+    capture_alignment: 1
+    fields: []
+switch_coverage:
+  - 1
+  - 2
+  - 3
+occurrences:
+  - order: 1
+    key: grid-primary
+    expression: grid
+    callable_id: 1
+    capture_record: grid-primary-captures
+    captured_values:
+      color: rgb-128-128-128
+      lineWidth: scalar-1
+  - order: 2
+    key: trace-blue
+    expression: trace
+    callable_id: 2
+    capture_record: trace-blue-captures
+    captured_values:
+      color: rgb-0-0-255
+      verticalOffset: scalar-8
+      highLevel: scalar-2
+  - order: 3
+    key: trace-green
+    expression: trace
+    callable_id: 2
+    capture_record: trace-green-captures
+    captured_values:
+      color: rgb-0-255-0
+      verticalOffset: scalar-16
+      highLevel: scalar-10
+  - order: 4
+    key: marker-right-edge
+    expression: marker
+    callable_id: 3
+    capture_record: marker-right-edge-captures
+    captured_values: {}

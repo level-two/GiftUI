@@ -42,6 +42,11 @@ manifest.each do |_, file, _, collection, classes|
   fail_check("#{file} has unknown evidence classes") unless unknown.empty?
 end
 
+static_input = FIXTURES.join("static-canvas-input.yaml")
+static_manifest = FIXTURES.join("static-canvas-manifest.yaml")
+fail_check("static Canvas input is missing") unless static_input.file?
+fail_check("static Canvas manifest is missing") unless static_manifest.file?
+
 positive = rows(
   FIXTURES.join("declaration-compile-fixtures.tsv"),
   "# case\tfamily\texpected\tcriteria\tstatus",
