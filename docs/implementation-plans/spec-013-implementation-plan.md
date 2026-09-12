@@ -328,7 +328,7 @@ seams are available.
 caller-supplied typed storage, complete static tables, zero heap allocation,
 and the same coordinator semantics.
 
-- [ ] `T4.1` — Integrate SPEC-010's observable-slot generation and SPEC-012
+- [x] `T4.1` — Integrate SPEC-010's observable-slot generation and SPEC-012
       `T6.1`-`T6.3`'s deterministic Canvas generator contract with the static
       runtime build. Produce the profile-owned generated metadata and storage
       bindings for observable slots, action specialization, callable IDs,
@@ -736,6 +736,16 @@ contract. Default and `GIFTUI_DYNAMIC_PROFILE` focused suites prove identical
 construction plus real closure invocation/release; the expanded boundary
 checker proves the convenience target depends only on `GiftUI`. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-3/dynamic-canvas-callables.md`.
+
+T4.1 added Static profile metadata bindings for dense generated observable
+slots, compile-time action specialization, the generated Canvas table, and its
+separate complete coverage metadata. The canonical integration fixture records
+and verifies SHA-256 provenance for the SPEC-010 generated host and SPEC-012
+Canvas manifest, two dense observable slots, three nonzero callable IDs, exact
+capture sizes, complete switch coverage, and generated source bytes. The
+checker is fail-closed in the repository gate and introduces no source parser
+or second generator grammar. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-4/static-generated-metadata.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
