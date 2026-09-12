@@ -306,7 +306,7 @@ deterministic semantic order, with no handler invocation or retained borrow.
       the exact two-byte `BoundedApplicationAction`. Dynamic mismatches return
       `incompatibleActionDomain`; static generated/compile-time validation
       rejects them without reflection or retained type tokens.
-- [ ] `T2.4` — Build exact recording transcripts for identity, action token,
+- [x] `T2.4` — Build exact recording transcripts for identity, action token,
       normalized code, label visitation, modifier chain, semantic order, and
       effective enabled state. Add poisoned semantic values and borrowed-
       lifetime probes proving no declaration, payload, label, handler, or model

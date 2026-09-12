@@ -1,0 +1,5 @@
+# row	identity	action_token	normalized_code	label_visit	modifier_chain	semantic_order	effective_enabled
+plain	root/button	FixtureAction.start	0	root/button/fixedChild(0)	-	button-action-label	true
+local-disabled	root/button	FixtureAction.stop	1	root/button/fixedChild(0)	disabled(true)	button-action-label-modifier	false
+ancestor-disabled-false	root/button	FixtureAction.clear	2	root/button/fixedChild(0)	disabled(true),disabled(false)	button-action-label-inner-outer	false
+sibling-enabled	root/fixedChild(1)/button	FixtureAction.selectOneSecond	3	root/fixedChild(1)/button/fixedChild(0)	disabled(false)	button-action-label-modifier	true
