@@ -54,6 +54,8 @@ declared_inputs() {
             "$SCRIPT_DIR/check-driver-registry.rb" \
             "$SCRIPT_DIR/check-spec-012-harness.rb" \
             "$SCRIPT_DIR/check-spec-012-declarations.sh" \
+            "$SCRIPT_DIR/check-spec-012-value-layouts.rb" \
+            "$SCRIPT_DIR/check-spec-012-value-profiles.sh" \
             "$SCRIPT_DIR/check-spec-012-migration.rb" \
             "$SCRIPT_DIR/check-target-dependencies.rb" \
             "$SCRIPT_DIR/report-input-identity.rb" \
@@ -220,6 +222,10 @@ record_command "$SCRIPT_DIR/check-spec-012-declarations.sh" \
     --profile "$profile" --output "$report_dir/declarations"
 "$SCRIPT_DIR/check-spec-012-declarations.sh" \
     --profile "$profile" --output "$report_dir/declarations" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-012-value-profiles.sh" \
+    --profile "$profile" --output "$report_dir/value-layouts"
+"$SCRIPT_DIR/check-spec-012-value-profiles.sh" \
+    --profile "$profile" --output "$report_dir/value-layouts" >>"$log_path" 2>&1
 
 printf 'exit_code=0\n' >>"$metadata_path"
 trap - EXIT

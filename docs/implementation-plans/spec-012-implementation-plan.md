@@ -253,7 +253,7 @@ and backends can consume borrowed stroke views without importing drawing.
       non-Canvas result. Add `StraightLineStrokeHeader`,
       `StraightLineStrokeView`, and extending `DrawingOperationSink` to
       `GiftUIRenderCore`.
-- [ ] `T2.3` — Implement and measure `SubpathRange`, `DrawingPlanSummary`,
+- [x] `T2.3` — Implement and measure `SubpathRange`, `DrawingPlanSummary`,
       `StraightLineStrokeHeader`, `DrawingProductionError`, and
       `DrawingPlanResult` with exact validation, cases/raw values, index meaning,
       copyability, sendability, and value-size ceilings on every supported
@@ -707,6 +707,17 @@ traversal order or identity behavior. `GiftUIRenderCore` retains the focused
 borrowed `StraightLineStrokeHeader`, `StraightLineStrokeView`, and extending
 `DrawingOperationSink` declarations established at T0.2, so backends can
 consume the normalized contract without importing `GiftUIDrawing`.
+
+`T2.3` is complete. `DrawingPlanSummary`, the exact nine-case/raw-value
+`DrawingProductionError`, and `DrawingPlanResult` now join the T2.2 Render-Core
+values. Focused tests cover fields, equality, cases, half-open subpath
+validation, copyability, and sendability. Optimized compiler-derived IR across
+macOS dynamic/static, Raspberry Pi ARMv6, and nRF52840 Embedded Swift reports
+the same layouts: 4-byte `SubpathRange`, 10-byte `DrawingPlanSummary`, 40-byte
+`StraightLineStrokeHeader`, 1-byte error, and 11-byte result with 12-byte
+stride. The registered
+[layout evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-2/drawing-value-layouts.md)
+records the commands and bounds.
 
 `T1.1` is complete. `GiftUI.Canvas` now has the exact typed-throws initializer,
 private retained draw callable, `Body == Never` invariant body, primitive

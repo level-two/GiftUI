@@ -41,6 +41,11 @@ ownership checking, matching SPIKE-008; all other fixtures compile as clients
 of the emitted `GiftUI` module. The SPEC-012 driver records the interface,
 SIL, symbol, baseline, diagnostics, and command results for its profile.
 
+`Instrumentation/DrawingValueLayoutProbe.swift` and
+`scripts/contracts/check-spec-012-value-profiles.sh` derive the five T2.3 value
+layouts from optimized IR for each supported compiler. The checked-in
+milestone-2 evidence records the common result and reproduction commands.
+
 ## Normalized observations
 
 `normalized-fields.tsv` fixes the complete field vocabulary by domain. Tests
