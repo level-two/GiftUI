@@ -57,8 +57,10 @@ if source.scan(/func _giftUITraverse<Visitor:/).length != 9
 end
 
 allowed_source_paths = [
+  "Sources/GiftUI/Button.swift",
   "Sources/GiftUI/Canvas.swift",
   "Sources/GiftUI/DeclarativeView.swift",
+  "Sources/GiftUI/Disabled.swift",
   "Sources/GiftUI/LayoutModifiers.swift",
   "Sources/GiftUI/LayoutContainers.swift",
   "Sources/GiftUI/ObservableState.swift",
