@@ -242,7 +242,7 @@ generic primitive and exact identity seams remain authoritative.
 the additive layout/render cases preserve all existing raw values and behavior,
 and backends can consume borrowed stroke views without importing drawing.
 
-- [ ] `T2.1` — Extend the semantic result with a Canvas invocation view that
+- [x] `T2.1` — Extend the semantic result with a Canvas invocation view that
       exposes staged callables only to the drawing-attempt input, indexed by the
       exact SPEC-006 identity. Prove one event, zero children, no body evaluation,
       stable occurrence order, exact lookup bounds, and no public/package
@@ -688,15 +688,18 @@ now records this evidence per profile, and all compile-registry rows are
 lifecycle, and production obligations are not yet satisfied. Milestone 1 is
 complete; T2.1 is the next dependency-complete task.
 
-The `T2.1` Specification blocker is resolved by the approved 2026-09-12
-SPEC-012 correction. The concrete Canvas payload now has a non-returning
-package invocation bridge restricted to the profile semantic-result adapter;
-dynamic storage retains the bounded identity-keyed payload, while generated
-static storage substitutes a callable ID and inline capture record and emits
-the corresponding bridge dispatch. The focused
-[Specification review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-2/canvas-invocation-seam-specification-blocker.md)
-records the resolution. T2.1 is the next dependency-complete task and remains
-unchecked until its implementation and four-profile evidence pass.
+`T2.1` is complete. `Canvas` now owns the exact non-returning package invocation
+bridge, while a focused dynamic profile semantic-result adapter copies each
+concrete payload under its existing SPEC-006 identity and alone calls that
+bridge through `CanvasInvocationSource`. Tests prove deferred invocation,
+exact-size forwarding, release invalidation, stable occurrence order, bounded
+lookup, zero children, no root-body evaluation, and atomic discard on staging
+refusal. Source and package-interface audits reject any additional bridge
+client or closure-returning lookup, and all four profile compilers accept the
+bridge while preserving profile-specific closure storage. The
+[callable staging evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-2/canvas-invocation-adapter.md)
+records the commands and observations. T3.2 is the next dependency-complete
+task.
 
 `T2.2` is complete. The existing closed semantic layout and render scope
 vocabularies now add only `.canvas`; generic payload mapping recognizes the

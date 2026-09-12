@@ -78,6 +78,16 @@ fail_check("Canvas-specific visitor category exists") if source.match?(/\bvisitC
 fail_check("second Canvas identity type exists") if source.match?(/\b(?:struct|enum|class|protocol)\s+CanvasIdentity\b/)
 fail_check("second Canvas semantic graph exists") if source.match?(/\b(?:struct|enum|class|protocol)\s+(?:CanvasSemanticGraph|CanvasNode)\b/)
 
+bridge_references = (all_sources + ROOT.join("Tests").glob("*/*.swift")).select do |path|
+  path.read.include?("_giftUIInvokeCanvas")
+end.map { |path| path.relative_path_from(ROOT).to_s }
+allowed_bridge_references = %w[
+  Sources/GiftUI/Canvas.swift
+  Tests/GiftUIDrawingTests/CanvasInvocationAdapterTests.swift
+]
+fail_check("Canvas invocation bridge references differ: #{bridge_references}") unless
+  bridge_references.sort == allowed_bridge_references.sort
+
 if ARGV.length == 2
   render_interface = Pathname.new(ARGV[0]).read
   drawing_interface = Pathname.new(ARGV[1]).read

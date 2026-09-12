@@ -24,6 +24,6 @@ swift test --filter canvasDirectView
 swift test --filter directCanvasView
 ```
 
-The fixtures deliberately do not stage or invoke a retained Canvas callable;
-that production seam remains blocked by the separately recorded T2.1
-Specification review.
+These fixtures deliberately isolate the non-callable view behavior. The
+separately registered T2.1 adapter evidence covers identity-keyed staging and
+invocation through the approved bridge.

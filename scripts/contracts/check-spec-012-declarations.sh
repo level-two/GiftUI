@@ -114,6 +114,7 @@ done < <(find "${PROJECT_ROOT}/Sources/GiftUI" -type f -name '*.swift' -print | 
 
 module_path="${output_root}/modules/GiftUI.swiftmodule"
 interface_path="${output_root}/modules/GiftUI.swiftinterface"
+package_interface_path="${output_root}/modules/GiftUI.package.swiftinterface"
 module_command=(
     "${compiler}" "${flags[@]}" -parse-as-library
     -package-name GiftUI -emit-module -module-name GiftUI
@@ -142,6 +143,12 @@ for forbidden in 'any Error' 'Foundation.'; do
     ! grep -Fq "${forbidden}" "${interface_path}" ||
         fail "emitted interface contains forbidden dependency: ${forbidden}"
 done
+grep -Fq \
+    'package func _giftUIInvokeCanvas(context: inout GiftUI.GraphicsContext, size: GiftUI.Size) throws(GiftUI.DrawingError)' \
+    "${package_interface_path}" ||
+    fail 'emitted package interface lacks the non-returning Canvas invocation bridge'
+! grep -Eq 'package (var|func) .*draw.*->' "${package_interface_path}" ||
+    fail 'emitted package interface contains a closure-returning Canvas lookup'
 if [[ "${profile}" == macos-dynamic || "${profile}" == raspberry-pi-armv6 ]]; then
     grep -Fq 'private let draw:' "${interface_path}" ||
         fail 'dynamic profile omitted bounded Canvas closure storage'
@@ -149,7 +156,7 @@ else
     ! grep -Fq 'private let draw:' "${interface_path}" ||
         fail 'static profile retained Canvas closure storage'
 fi
-printf 'public-interface\tpass\nprofile-canvas-storage\tpass\n' >>"${audit_path}"
+printf 'public-interface\tpass\npackage-canvas-bridge\tpass\nprofile-canvas-storage\tpass\n' >>"${audit_path}"
 
 fixture_count=0
 while IFS=$'\t' read -r case_name _family _expected _criteria _status; do

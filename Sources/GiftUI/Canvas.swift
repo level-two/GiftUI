@@ -32,4 +32,16 @@ public struct Canvas: View, _GiftUISemanticPrimitivePayload {
     ) {
         visitor.visitPrimitive(self)
     }
+
+    package func _giftUIInvokeCanvas(
+        context: inout GraphicsContext,
+        size: Size
+    ) throws(DrawingError) {
+        #if GIFTUI_DYNAMIC_PROFILE
+            try draw(&context, size)
+        #else
+            _ = size
+            throw DrawingError.invariantViolation
+        #endif
+    }
 }
