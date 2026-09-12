@@ -60,8 +60,10 @@ source_roots = %w[
 backend_source = source_roots.flat_map { |root| root.glob("**/*.swift") }.map(&:read).join("\n")
 nrf_roots = [ROOT.join("firmware/nrf52840/applications/spec014-backend")].select(&:directory?)
 nrf_source = nrf_roots.flat_map { |root| root.glob("**/*.{swift,c,h}") }.map(&:read).join("\n")
-non_raster_roots = source_roots.reject { |root| root.basename.to_s == "GiftUIRasterCore" }
-non_raster_source = non_raster_roots.flat_map { |root| root.glob("**/*.swift") }.map(&:read).join("\n")
+non_encoding_roots = source_roots.reject do |root|
+  %w[GiftUIRasterCore GiftUISurfaceCore].include?(root.basename.to_s)
+end
+non_encoding_source = non_encoding_roots.flat_map { |root| root.glob("**/*.swift") }.map(&:read).join("\n")
 
 regressions = {
   "closure-per-tile replay" => [backend_source, /renderTiles\s*\([^)]*(?:drawing|producer|body)\s*:/m],
@@ -69,7 +71,7 @@ regressions = {
   "target identity branch" => [backend_source, /(?:#if\s+(?:os|canImport)|nrf52840|raspberry\s*pi|piscreen|ili9[34]4[16])/i],
   "nRF complete display list" => [nrf_source, /DisplayList|\[(?:any\s+)?RenderOperation\]/],
   "nRF complete framebuffer" => [nrf_source, /Frame[Bb]uffer|480\s*\*\s*320\s*\*\s*2/],
-  "parallel RGB565 quantization" => [non_raster_source, /(?:red|\.red)\s*\*\s*31\s*\+\s*127/]
+  "parallel RGB565 quantization" => [non_encoding_source, /(?:red|\.red)\s*\*\s*31\s*\+\s*127/]
 }.freeze
 
 regressions.each do |name, (source, pattern)|

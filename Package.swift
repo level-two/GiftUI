@@ -70,6 +70,10 @@ let package = Package(
             dependencies: ["GiftUI", "GiftUITextResources"]
         ),
         .target(
+            name: "GiftUISurfaceCore",
+            dependencies: ["GiftUI", "GiftUICapabilities", "GiftUIRenderCore"]
+        ),
+        .target(
             name: "GiftUIRenderLowering",
             dependencies: [
                 "GiftUI",
@@ -261,6 +265,15 @@ let package = Package(
         .testTarget(
             name: "GiftUIRenderCoreTests",
             dependencies: ["GiftUI", "GiftUIRenderCore", "GiftUITextResources"]
+        ),
+        .testTarget(
+            name: "GiftUISurfaceCoreTests",
+            dependencies: [
+                "GiftUI",
+                "GiftUICapabilities",
+                "GiftUIRenderCore",
+                "GiftUISurfaceCore",
+            ]
         ),
         .testTarget(
             name: "GiftUIRenderLoweringTests",

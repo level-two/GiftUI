@@ -110,6 +110,19 @@ targets:
       - GiftUI
       - GiftUIRenderCore
       - GiftUITextResources
+  GiftUISurfaceCore:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUICapabilities
+      - GiftUIRenderCore
+  GiftUISurfaceCoreTests:
+    type: test
+    dependencies:
+      - GiftUI
+      - GiftUICapabilities
+      - GiftUIRenderCore
+      - GiftUISurfaceCore
   GiftUIRenderLowering:
     type: regular
     dependencies:

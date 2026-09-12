@@ -228,7 +228,7 @@ land only when all types from its approved upstream owner exist.
 raw values, failable initializers, protocol constraints, access, `Sendable`
 conformance, and value layouts from SPEC-014.
 
-- [ ] `T1.1` — In `GiftUISurfaceCore`, implement
+- [x] `T1.1` — In `GiftUISurfaceCore`, implement
       `CanonicalEncodedPixel` and `RasterSurfaceDescriptor` with exact stored
       fields, origin/extent/region/stride validation, checked packed-row and
       region byte products, realization rules, equality, and encoding-specific
@@ -658,6 +658,12 @@ PoC renderer/surface/display/platform/firmware family, verified already-absent
 legacy owners, and added executable regressions against producer-per-tile
 replay, nRF framebuffer/display-list storage, target-identity branching, and
 duplicate canonical RGB565 arithmetic.
+
+`T1.1` activated `GiftUISurfaceCore` and its focused test target atomically
+with the SPEC-002 exact graph. It implements the fixed encoded pixel and
+surface descriptor with checked extent, packed-row, stride, region, and byte-
+product validation; focused tests cover exact encoding, field preservation,
+layout ceilings, equality boundaries, and arithmetic overflow.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
