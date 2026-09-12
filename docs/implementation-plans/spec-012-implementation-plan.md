@@ -879,6 +879,20 @@ contract or architecture, so T4.2-T4.5 remain unchecked pending an approved
 Specification correction. Independent later work may proceed only where the
 plan explicitly permits direct immutable fixtures.
 
+`T5.1` is independently blocked in Specification review. SPEC-012 requires
+the combined producer to reuse SPEC-008's complete traversal while injecting
+Canvas strokes at their painter positions. `GiftUIRenderLowering` exposes only
+the package `RenderProducer.produce` entry point; its preflight summary,
+preflight traversal, streaming traversal, and per-scope hooks are internal or
+private to that module. Calling `produce` cannot inject strokes, would own the
+sink's sole begin/finish pair, and cannot yield the required pre-publication
+header without observing a sink. Reimplementing those files in
+`GiftUIDrawing` would violate T5.5 and the Specification's no-fork contract.
+The focused
+[render extension review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-extension-seam-blocker.md)
+records the missing reuse seam. T5.1-T5.5 remain unchecked pending an approved
+SPEC-008/SPEC-012 package extension contract.
+
 `T1.4` is complete. Seven maintained positive fixtures compile Canvas/style
 defaults, both stroke overloads, explicit typed trailing closures,
 stroke-mutate-stroke Path reuse, multiple subpaths, and concrete
