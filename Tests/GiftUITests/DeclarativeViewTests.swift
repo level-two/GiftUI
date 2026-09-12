@@ -2,6 +2,24 @@ import GiftUI
 import XCTest
 
 final class DeclarativeViewTests: XCTestCase {
+    func testButtonBuildsAndBorrowsItsStoredLabelExactlyOnce() {
+        var builderCalls = 0
+        let button = Button(action: TestAction.ordinary) {
+            builderCalls += 1
+            return PrimitiveLeaf()
+        }
+        XCTAssertEqual(builderCalls, 1)
+
+        var visitor = CustomViewProbeVisitor(evaluateBody: true)
+        button._giftUITraverse(&visitor)
+        button._giftUITraverse(&visitor)
+
+        XCTAssertEqual(builderCalls, 1)
+        XCTAssertEqual(visitor.actionPrimitiveWithContentVisits, 2)
+        XCTAssertEqual(visitor.visitedActionCodes, [17, 17])
+        XCTAssertEqual(visitor.primitiveVisits, 2)
+    }
+
     func testActionCasesUseTheirExactUInt16Codes() {
         XCTAssertEqual(TestAction.minimum.rawValue, UInt16.min)
         XCTAssertEqual(TestAction.ordinary.rawValue, 17)

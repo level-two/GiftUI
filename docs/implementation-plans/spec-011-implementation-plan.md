@@ -258,7 +258,7 @@ pending until the first compiling Interaction source lands.
 Buttons and disabled scopes with only `import GiftUI`; label construction and
 payload values obey the exact declaration contract.
 
-- [ ] `T1.1` — Implement the exact generic `Button<Action, Label>` declaration,
+- [x] `T1.1` — Implement the exact generic `Button<Action, Label>` declaration,
       initializer, `View` conformance, and `ButtonSemanticPayload`. Evaluate the
       label builder once during initialization, store its result by value, and
       borrow that same value once as the fixed semantic child. Add poison-count
