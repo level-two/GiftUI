@@ -10,6 +10,7 @@ updated: 2026-09-12
 related_design_notes:
   - ../implementation-designs/spec-013-common-coordinator-and-cleanup.md
   - ../implementation-designs/spec-013-storage-audit-and-overlay-ownership.md
+  - ../implementation-designs/spec-013-static-generation-and-capture-lifetime.md
 conformance_report: null
 related_future_work: []
 related_explorations: []
