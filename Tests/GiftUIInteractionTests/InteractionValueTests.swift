@@ -20,13 +20,33 @@ final class InteractionValueTests: XCTestCase {
 
     func testActionNormalizerRejectsWrongDomainAndPreservesExactCodes() {
         XCTAssertEqual(
-            InteractionActionNormalizer<TestHandler>.normalize(TestAction.maximum),
+            RecordingActionNormalizer<TestHandler>.normalize(TestAction.maximum),
             .normalized(BoundedApplicationAction(code: .max))
         )
         XCTAssertEqual(
-            InteractionActionNormalizer<TestHandler>.normalize(OtherAction.value),
+            RecordingActionNormalizer<TestHandler>.normalize(OtherAction.value),
             .failure(.incompatibleActionDomain)
         )
+    }
+
+    func testRecordingCoordinatorRejectsDomainAndValueBeforeAppendOrOffer() {
+        var wrongDomain = RecordingActionValidationCoordinator<TestHandler>()
+        XCTAssertEqual(
+            wrongDomain.validateAndAppend(OtherAction.value),
+            .failure(.incompatibleActionDomain)
+        )
+        XCTAssertEqual(wrongDomain.appendCount, 0)
+        XCTAssertEqual(wrongDomain.offerCount, 0)
+        XCTAssertEqual(wrongDomain.discardCount, 1)
+
+        var invalidValue = RecordingActionValidationCoordinator<NonTotalHandler>()
+        XCTAssertEqual(
+            invalidValue.validateAndAppend(NonTotalAction.invalid),
+            .failure(.invalidActionValue)
+        )
+        XCTAssertEqual(invalidValue.appendCount, 0)
+        XCTAssertEqual(invalidValue.offerCount, 0)
+        XCTAssertEqual(invalidValue.discardCount, 1)
     }
 
     func testBoundedApplicationActionIsExactlyTwoBytes() {
@@ -66,4 +86,23 @@ private final class TestModel: _GiftUIObservableReference {
 
 private struct TestHandler: GiftUIActionHandler {
     mutating func handle(_ action: TestAction, model: borrowing TestModel) {}
+}
+
+private struct NonTotalAction: GiftUIAction {
+    let rawValue: UInt16
+
+    init?(rawValue: UInt16) {
+        guard rawValue != .max else { return nil }
+        self.rawValue = rawValue
+    }
+
+    private init(unchecked rawValue: UInt16) {
+        self.rawValue = rawValue
+    }
+
+    static let invalid = NonTotalAction(unchecked: .max)
+}
+
+private struct NonTotalHandler: GiftUIActionHandler {
+    mutating func handle(_ action: NonTotalAction, model: borrowing TestModel) {}
 }

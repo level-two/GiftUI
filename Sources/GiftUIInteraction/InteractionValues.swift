@@ -1,6 +1,14 @@
 import GiftUI
 import GiftUIExecution
 
+package struct BoundedApplicationAction: Equatable, Hashable, Sendable {
+    package let code: UInt16
+
+    package init(code: UInt16) {
+        self.code = code
+    }
+}
+
 package struct InteractionLimits: Equatable, Sendable {
     package let maximumActions: UInt16
     package let maximumHitRegions: UInt16
