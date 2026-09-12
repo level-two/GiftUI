@@ -272,7 +272,16 @@ targets:
   GiftUIRuntimeCoreTests:
     type: test
     dependencies:
+      - GiftUI
+      - GiftUIDrawing
+      - GiftUIExecution
+      - GiftUIInteraction
+      - GiftUILayout
+      - GiftUIObservableState
+      - GiftUIRenderCore
+      - GiftUIRenderLowering
       - GiftUIRuntimeCore
+      - GiftUISemanticCore
   GiftUIRuntimeDynamicTests:
     type: test
     dependencies:

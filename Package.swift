@@ -322,7 +322,18 @@ let package = Package(
         ),
         .testTarget(
             name: "GiftUIRuntimeCoreTests",
-            dependencies: ["GiftUIRuntimeCore"]
+            dependencies: [
+                "GiftUI",
+                "GiftUIDrawing",
+                "GiftUIExecution",
+                "GiftUIInteraction",
+                "GiftUILayout",
+                "GiftUIObservableState",
+                "GiftUIRenderCore",
+                "GiftUIRenderLowering",
+                "GiftUIRuntimeCore",
+                "GiftUISemanticCore",
+            ]
         ),
         .testTarget(
             name: "GiftUIRuntimeDynamicTests",

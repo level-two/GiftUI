@@ -222,7 +222,7 @@ limit type is supplied by its owning module before production compilation.
 validation, checked non-overlapping audit totals, and the bounded focused
 failure carrier, independent of concrete profile storage.
 
-- [ ] `T1.1` — Implement the exact `RuntimeProfileKind`,
+- [x] `T1.1` — Implement the exact `RuntimeProfileKind`,
       `RuntimeProfileLimits`, validation error/result, and initializer
       relations in `GiftUIRuntimeCore`, including the four-field
       `renderWorkspace` value. Test each valid edge, each relation,
@@ -614,6 +614,13 @@ SPEC-003 failure-adapter registry, and SPEC-009 owner-integration registry now
 match the compiling graph. `module-boundaries.tsv` and its checker enforce the
 exact direct imports and reject reverse GiftUI, dynamic/static sibling,
 failure-owner, backend, platform, driver, and host edges.
+
+T1.1 implemented the exact runtime kind, aggregate limits, and validation
+value families in Runtime Core. Focused tests cover every aggregate relation,
+checked combined-operation overflow, static-Canvas presence, drawing-only
+zero ordinary operations, exact raw values, and explicit render-workspace
+values that are not derived from semantic limits. Reproduction evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-1/runtime-profile-limits.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
