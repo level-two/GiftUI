@@ -352,7 +352,7 @@ and the same coordinator semantics.
       and focused owners with zero allocation during construction and every
       later operation. Scan source, SIL, symbols, and linked images for every
       forbidden static facility named by SPEC-013.
-- [ ] `T4.6` — Add macOS-static and nRF embedded compile/link fixtures proving
+- [x] `T4.6` — Add macOS-static and nRF embedded compile/link fixtures proving
       the same portable root, no Dynamic import, no backend/host dependency,
       Embedded Swift restrictions, exact value layouts, and hard-float-ready
       generated declarations.
@@ -777,6 +777,16 @@ transition. Lifetime-token tests prove exactly-once destruction and no replay,
 and the expanded Static source gate rejects closure fallback or dynamic storage
 facilities. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-4/static-canvas-lifetime.md`.
+
+T4.6 added fail-closed macOS Static and nRF52840 Embedded Swift compile/link
+profiles over the production Runtime Static and focused-owner graph. Both
+optimized probes report exact equal layouts of 87/160/4/17 bytes for aggregate
+limits, audit, structural identity, and the fixture occurrence. The nRF Zephyr
+ELF retains the probe entry and verifies ARMv7E-M, VFPv4-D16, and VFP-register
+arguments. This work also corrected Runtime Core's formerly transitive focused-
+owner imports exposed by Embedded Swift. Module checks continue to prohibit
+Dynamic, backend, host, platform, and failure-adapter edges. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-4/static-profile-compilation.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

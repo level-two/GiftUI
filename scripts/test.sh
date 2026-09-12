@@ -107,6 +107,12 @@ run_check driver-registry "${PROJECT_ROOT}/scripts/contracts/check-driver-regist
 run_check spec-013-migration "${PROJECT_ROOT}/scripts/contracts/check-spec-013-migration.rb"
 run_check spec-013-static-generated-fixture "${PROJECT_ROOT}/scripts/contracts/check-spec-013-static-generated-fixture.rb"
 run_check spec-013-static-storage "${PROJECT_ROOT}/scripts/contracts/check-spec-013-static-storage.rb"
+run_check spec-013-macos-static \
+    "${PROJECT_ROOT}/scripts/contracts/check-spec-013-static-profiles.sh" \
+    --profile macos-static --output "${report_dir}/spec-013-macos-static"
+run_check spec-013-nrf-static \
+    "${PROJECT_ROOT}/scripts/contracts/check-spec-013-static-profiles.sh" \
+    --profile nrf52840-embedded --output "${report_dir}/spec-013-nrf-static"
 
 run_check root-tests giftui_swiftpm \
     --package-path "${PROJECT_ROOT}" \
