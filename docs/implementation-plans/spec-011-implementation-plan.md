@@ -7,7 +7,8 @@ owners:
   - codex
 created: 2026-09-09
 updated: 2026-09-12
-related_design_notes: []
+related_design_notes:
+  - ../implementation-designs/spec-011-target-bound-dispatch.md
 conformance_report: null
 related_future_work:
   - FW-021
@@ -577,7 +578,9 @@ report has a disposition for every criterion.
   `T5.1` begins if the publishable-target join, admitted-action revalidation,
   nonescaping current-model borrow, replacement timing, and synchronous report
   route cannot be reconstructed from one coordinator implementation and its
-  tests.
+  tests. This trigger fired when Milestone 5 began; the
+  [current design note](../implementation-designs/spec-011-target-bound-dispatch.md)
+  records the cross-owner handoff without changing the governing contracts.
 - Record dynamic/static storage packing in a design note only when needed to
   explain a replaceable bounded mechanism or resource result. Do not turn
   private storage names, SPIKE-007's tagged callable, or first-party capacities
