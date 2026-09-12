@@ -52,6 +52,7 @@ if source.scan(/func _giftUITraverse<Visitor:/).length != 9
 end
 
 allowed_source_paths = [
+  "Sources/GiftUI/Canvas.swift",
   "Sources/GiftUI/DeclarativeView.swift",
   "Sources/GiftUI/LayoutModifiers.swift",
   "Sources/GiftUI/LayoutContainers.swift",
@@ -91,7 +92,7 @@ if failures.empty?
 end
 
 if failures.empty?
-  puts "SPEC-006 traversal surface check passed, including registered SPEC-008 and SPEC-010 declarations"
+  puts "SPEC-006 traversal surface check passed, including registered SPEC-008, SPEC-010, and SPEC-012 declarations"
   exit 0
 end
 

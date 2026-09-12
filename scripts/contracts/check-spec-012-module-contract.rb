@@ -76,6 +76,7 @@ owners = {
   "DrawingPlanResult" => "GiftUIDrawing/DrawingValues.swift",
   "RenderExtensionVisit" => "GiftUIRenderLowering/RenderExtensions.swift",
   "RenderExtensionVisitResult" => "GiftUIRenderLowering/RenderExtensions.swift",
+  "RenderExtensionCompletionResult" => "GiftUIRenderLowering/RenderExtensions.swift",
   "RenderPreflightExtension" => "GiftUIRenderLowering/RenderExtensions.swift",
   "RenderStreamingExtension" => "GiftUIRenderLowering/RenderExtensions.swift",
 }
@@ -92,6 +93,35 @@ source = all_sources.map(&:read).join("\n")
 fail_check("Canvas-specific visitor category exists") if source.match?(/\bvisitCanvas\b/)
 fail_check("second Canvas identity type exists") if source.match?(/\b(?:struct|enum|class|protocol)\s+CanvasIdentity\b/)
 fail_check("second Canvas semantic graph exists") if source.match?(/\b(?:struct|enum|class|protocol)\s+(?:CanvasSemanticGraph|CanvasNode)\b/)
+
+canvas_render_source = SOURCES.join("GiftUIDrawing/CanvasRenderProducer.swift").read
+render_preflight_source = SOURCES.join("GiftUIRenderLowering/RenderPreflight.swift").read
+render_producer_source = SOURCES.join("GiftUIRenderLowering/RenderProducer.swift").read
+render_streaming_source = SOURCES.join("GiftUIRenderLowering/RenderStreaming.swift").read
+fail_check("Canvas producer independently recurses semantic state") if
+  canvas_render_source.match?(/semantic\.(?:rootIdentity|child|childCount|scope|semanticIdentity|semanticOrdinal)/)
+fail_check("Canvas producer forks ordinary fill lowering") if canvas_render_source.include?("fillRect(")
+fail_check("Canvas producer forks ordinary glyph lowering") if
+  canvas_render_source.match?(/(?:beginPositionedGlyphs|positionedGlyph|endPositionedGlyphs)\(/)
+fail_check("Canvas producer retains a complete operation list") if
+  canvas_render_source.match?(/\.(?:append|insert)\(/)
+fail_check("Canvas producer does not delegate preflight exactly once") unless
+  canvas_render_source.scan("RenderProducer.preflight(").length == 1
+fail_check("Canvas producer does not delegate production exactly once") unless
+  canvas_render_source.scan("RenderProducer.produce(").length == 1
+fail_check("ordinary and extended preflight do not share one traversal") unless
+  render_preflight_source.scan("preflightTraversal(").length +
+    render_producer_source.scan("preflightTraversal(").length == 3
+fail_check("ordinary and extended streaming do not share one traversal") unless
+  render_streaming_source.scan("static func stream<").length == 2
+
+stroke_emission_owners = all_sources.select do |path|
+  next false if path == SOURCES.join("GiftUIRenderCore/DrawingOperationSink.swift")
+
+  path.read.include?(".straightLineStroke(")
+end.map { |path| path.relative_path_from(SOURCES).to_s }
+fail_check("combined stroke emission owner differs: #{stroke_emission_owners}") unless
+  stroke_emission_owners == ["GiftUIDrawing/CanvasRenderProducer.swift"]
 
 bridge_references = (all_sources + ROOT.join("Tests").glob("*/*.swift")).select do |path|
   path.read.include?("_giftUIInvokeCanvas")
@@ -115,8 +145,7 @@ if ARGV.length == 2
     fail_check("Render Core interface lacks #{name}") unless render_interface.include?(name)
   end
   %w[
-    CanvasPlanProducer DrawingLimits DrawingPlanConstructionWorkspace
-    DrawingPlanResult DrawingPlanSummary DrawingProductionError
+    DrawingLimits DrawingPlanResult DrawingPlanSummary DrawingProductionError
     StaticCanvasLimits
   ].each do |name|
     fail_check("Drawing interface lacks #{name}") unless drawing_interface.include?(name)

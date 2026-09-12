@@ -31,7 +31,8 @@ fail_check("root foreground must be pushed before begin") unless locations == lo
 end
 fail_check("scoped foreground restoration is missing") unless
   SOURCE.include?("workspace.currentForeground == inheritedForeground")
-recursive_signature = SOURCE[/mutating func stream<.*?\) -> Bool/m]
+recursive_signature =
+  SOURCE[/mutating func stream<.*?\) -> RenderProductionError\?/m]
 fail_check("recursive stream signature is missing") unless recursive_signature
 fail_check("streaming retains foreground in recursive call frames") if
   recursive_signature.include?("foreground:")

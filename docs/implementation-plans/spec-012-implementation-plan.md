@@ -378,7 +378,7 @@ and synchronous borrowed consumption.
       stroke refusal, header drift, plan corruption, and accepted completion.
       Apply `.sinkRefused` only where specified, otherwise
       `.invariantViolation`, and call discard exactly once where required.
-- [ ] `T5.5` — Audit that combined production reuses rather than forks
+- [x] `T5.5` — Audit that combined production reuses rather than forks
       SPEC-008 fill/glyph/style/clip/damage/text-resource logic, retains no
       complete operation list or borrowed payload, is the sole production entry
       point for Canvas-admitting configurations, and keeps every backend free of
@@ -1035,6 +1035,18 @@ each post-begin failure discards exactly once before the workspace resets. The
 accepted control still finishes without discard. The
 [combined offer-failure evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-offer-failures.md)
 records the matrix. T5.5 is next.
+
+`T5.5` is complete. The registered module-contract audit now proves the Canvas
+producer performs no independent semantic recursion, delegates once to the
+shared SPEC-008 traversal, owns no fill/glyph lowering or retained operation
+list, and is the sole production stroke-emission entry point. Existing import
+and graph checks keep Render Core and backend/raster/platform/driver targets
+free of `GiftUIDrawing`, while the zero-Canvas execution fixture proves exact
+ordinary transcript equivalence. The
+[combined boundary evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-boundaries.md)
+records the audit. Milestone 5 is complete; the next dependency-complete work
+must be selected from the remaining SPEC-013/SPEC-015-gated profile, startup,
+integration, raster, and conformance tasks.
 
 `T6.2` is complete for the checked static fixture. `GiftUIDrawing` owns the
 exact amended `StaticCanvasCallableTable` protocol, and the manifest-generated
