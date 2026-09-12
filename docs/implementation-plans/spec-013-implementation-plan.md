@@ -2,7 +2,7 @@
 spec: SPEC-013
 feature: giftui-mvp-architecture
 title: SPEC-013 Implementation Plan
-status: draft
+status: ready
 owners:
   - codex
 created: 2026-09-09
@@ -22,9 +22,9 @@ superseded_by: null
 
 # SPEC-013 Implementation Plan
 
-> This plan remains in `draft` pending its final readiness pass. The focused
-> render-workspace-limit amendment to SPEC-013 was explicitly reapproved on
-> 2026-09-12; implementation still requires the plan to be marked `ready`.
+> This plan is `ready`. The focused render-workspace-limit amendment to
+> SPEC-013 was explicitly reapproved on 2026-09-12, and the plan's separate
+> readiness transition was explicitly requested on 2026-09-12.
 
 ## Authority and Scope
 
@@ -98,7 +98,7 @@ override the approved contract.
 
 **Reviewed:** 2026-09-09
 
-**Disposition:** Draft pending a final readiness pass. Every linked ADR remains
+**Disposition:** Ready. Every linked ADR remains
 accepted, SPEC-013 and coordinated SPEC-015 were explicitly reapproved on
 2026-09-12, and all fifteen acceptance criteria map exactly once. The plan now
 incorporates the new `RuntimeProfileLimits.renderWorkspace` leaf, storage
@@ -108,13 +108,13 @@ focused Interaction and Drawing contracts land under their owners, profile
 storage lands under SPEC-013, and the mutually dependent coordinator joins
 have an explicit integration handoff rather than a circular prerequisite.
 Missing focused-owner implementations remain task dependencies rather than
-missing design decisions. No implementation task proceeds until the plan's
-final readiness pass marks it `ready`.
+missing design decisions. The plan is executable in its stated dependency
+order without inventing architectural or contractual intent.
 
 No `docs/features.yaml` update is required. Implementation records are not
 registered there, and `giftui-mvp-architecture` already reports the
-implementation stage. SPEC-013 is `approved`; this plan remains `draft` until
-a revised readiness disposition marks it `ready`.
+implementation stage. SPEC-013 is `approved`, and this derived plan is now
+`ready`.
 
 If a pinned compiler cannot express the noncopyable storage/coordinator
 contracts, the 2-byte `RuntimeOwnerFailure`, scoped borrows, generated static
@@ -571,8 +571,10 @@ reviewed together with SPEC-015's schema-2 workload amendment. No task had been
 marked complete, so no implementation evidence is invalidated.
 
 The maintainer explicitly reapproved SPEC-013 and coordinated SPEC-015 on
-2026-09-12. This plan remains `draft` until its separate final readiness pass;
-Specification approval alone does not authorize plan execution.
+2026-09-12, then explicitly requested the plan's separate `ready` transition.
+The plan was marked `ready` on 2026-09-12 after confirming that its tasks,
+dependencies, and evidence mappings remain executable under the amended
+contract.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
