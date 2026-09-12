@@ -37,7 +37,7 @@ The `canvas-drawing` feature completed its decision stage with approved RFC-009
 and accepted ADR-028 through ADR-031. SPEC-010 and SPEC-011 are approved;
 SPEC-012 is implementing its explicitly approved focused render-extension
 completion-seam amendment.
-SPEC-006 returned to review on 2026-09-12 for the typed
+SPEC-006 was explicitly reapproved on 2026-09-12 for the typed
 action-primitive-with-content operation required by SPEC-011. SPEC-010 was
 explicitly reapproved on 2026-09-05 after its completeness
 amendment closed underspecified result, storage, lifecycle, and
@@ -76,13 +76,13 @@ contracts instead of redefining them.
 
 Wave 2 retains these immutable identities. SPEC-006 was explicitly reapproved
 after ADR-033 alignment and again on 2026-09-10 for its primitive-with-content
-traversal amendment. It returned to `review` on 2026-09-12 for the proposed
+traversal amendment and on 2026-09-12 for the
 action-primitive-with-content amendment required by SPEC-011:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
 | `TEXT` | `SPEC-005` | `approved` |
-| `DECLARATIVE` | `SPEC-006` | `review` |
+| `DECLARATIVE` | `SPEC-006` | `approved` |
 
 SPEC-005 and SPEC-006 are parallel sibling contracts. SPEC-005 owns exact text
 resource identities, compatible resource views, and resource lifetimes;

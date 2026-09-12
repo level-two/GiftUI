@@ -2,7 +2,7 @@
 id: SPEC-006
 feature: giftui-mvp-architecture
 title: Declarative View Semantics Specification
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-25
@@ -42,12 +42,11 @@ target_milestone: MVP
 
 # SPEC-006: Declarative View Semantics Specification
 
-> **Approval status:** Action-primitive-with-content amendment under review.
-> The previously implemented contract exposes content-bearing traversal only
-> for non-action primitives, while approved SPEC-011 requires Button to stage
-> one action at its identity and expand its stored label as a fixed semantic
-> child. The amendment below requires explicit maintainer reapproval before
-> implementation relies on the new operation.
+> **Approval status:** Explicitly reapproved by the maintainer on 2026-09-12.
+> This revision adds the action-primitive-with-content traversal operation
+> required by approved SPEC-011 so Button can stage one action at its identity
+> and expand its stored label as a fixed semantic child. The amended contract
+> is authoritative for implementation.
 
 ## Summary
 
@@ -1208,14 +1207,12 @@ for later layout adapters.
 
 ## Open Issues
 
-The action-primitive-with-content amendment is awaiting explicit maintainer
-review and reapproval. Until that gate closes, SPEC-011 Button implementation
-and semantic lowering remain paused. No other open issue remains. The existing
-primitive-with-content amendment was explicitly reapproved on 2026-09-10. The
-contract-level builder-arity choice is resolved in favor of five direct
-expressions. The maintained Rank 0 surface therefore remains fixed at arities
-zero through five; clients compose larger hierarchies by nesting fixed groups
-or custom views.
+No open issue remains. The action-primitive-with-content amendment was
+explicitly reapproved on 2026-09-12, and the existing primitive-with-content
+amendment was explicitly reapproved on 2026-09-10. The contract-level
+builder-arity choice is resolved in favor of five direct expressions. The
+maintained Rank 0 surface therefore remains fixed at arities zero through five;
+clients compose larger hierarchies by nesting fixed groups or custom views.
 
 Action lifetime and replacement are governed by RFC-011 and ADR-033: pointer
 down captures the stable semantic identity together with the committed action

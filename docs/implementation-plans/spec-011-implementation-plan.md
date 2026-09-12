@@ -21,10 +21,10 @@ superseded_by: null
 # SPEC-011 Implementation Plan
 
 > **Readiness notice:** SPEC-011 remains approved, but this plan returned to
-> `draft` on 2026-09-12 because implemented SPEC-006 lacks the closed typed
+> `draft` on 2026-09-12 because the approved SPEC-006
 > action-primitive-with-content traversal operation required by `T1.1` and
-> `T2.1`. Proposed SPEC-006 criterion `DV-017` must be explicitly reapproved,
-> planned, implemented, and evidenced before this plan can return to `ready`.
+> `T2.1` is not yet implemented. SPEC-006 criterion `DV-017` must be implemented
+> and evidenced before this plan can return to `ready`.
 
 > This plan derives work from the approved Button Interaction and
 > Activation Contract, including its explicitly reapproved target-generation
@@ -130,12 +130,12 @@ remain allocator-free.
 
 **Reviewed:** 2026-09-12
 
-**Disposition:** Draft pending the upstream SPEC-006 amendment. SPEC-011 is
-approved and explicitly reapproved after the coordinated SPEC-009/SPEC-010
-target-generation amendment. Every `IN-001` through `IN-013` criterion maps
-once to ordered work and reproducible evidence below. The missing
-action-primitive-with-content operation is a contract prerequisite, not an
-implementation choice.
+**Disposition:** Draft pending implementation of the approved upstream SPEC-006
+amendment. SPEC-011 is approved and explicitly reapproved after the coordinated
+SPEC-009/SPEC-010 target-generation amendment. Every `IN-001` through `IN-013`
+criterion maps once to ordered work and reproducible evidence below. The
+action-primitive-with-content operation is a production prerequisite, not an
+implementation choice owned by this plan.
 
 After the SPEC-006 amendment is authoritative and implemented, the plan is
 executable in dependency-aware slices. Portable declarations,
@@ -651,8 +651,9 @@ report has a disposition for every criterion.
 - SPEC-007 is approved with a ready plan, but `GiftUILayout` is not present.
   Production bound/clip integration in `T3.3` and later cannot substitute
   local geometry ownership while that implementation is pending.
-- SPEC-006 is `review` for its action-primitive-with-content amendment;
-  SPEC-009 and SPEC-010 are implementing. Their required typed traversal,
+- SPEC-006 is `approved` with its action-primitive-with-content amendment, whose
+  implementation and evidence remain pending; SPEC-009 and SPEC-010 are
+  implementing. Their required typed traversal,
   execution-generation/capture, and publishable-target seams are partly
   present, but each consuming task waits for the exact authoritative production
   surface and its focused tests rather than adding aliases or forks.
@@ -691,8 +692,8 @@ report has a disposition for every criterion.
 ## Completion Record
 
 No implementation task has begun. All tasks are pending, and `T1.1`/`T2.1`
-remain blocked by proposed SPEC-006 criterion `DV-017`. After that amendment is
-reapproved, planned, implemented, and evidenced, return this plan to `ready`.
+remain blocked by approved SPEC-006 criterion `DV-017`. After that amendment is
+implemented and evidenced, return this plan to `ready`.
 When work starts, change this plan to `active` and SPEC-011 to `implementing`
 in the same authorized lifecycle update. Record completed, changed, removed,
 or blocked task dispositions here as the implementation evolves; do not

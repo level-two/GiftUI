@@ -2,7 +2,7 @@
 spec: SPEC-006
 feature: giftui-mvp-architecture
 title: SPEC-006 Implementation Plan
-status: completed
+status: ready
 owners:
   - codex
 created: 2026-09-01
@@ -22,9 +22,9 @@ superseded_by: null
 # SPEC-006 Implementation Plan
 
 > **Revision notice:** The original eight milestones remain completed evidence
-> for the previously implemented sixteen-criterion contract. SPEC-006 returned
-> to `review` on 2026-09-12 with proposed criterion `DV-017`; the amendment
-> requires explicit reapproval and a revised plan before implementation resumes.
+> for the previously implemented sixteen-criterion contract. SPEC-006 was
+> explicitly reapproved on 2026-09-12 with criterion `DV-017`; Milestone 9 is
+> ready and must complete before renewed conformance review.
 
 > The completed portion of this plan derived work from the previously approved
 > Declarative View Semantics Specification. This revision adds only ordered
@@ -151,6 +151,7 @@ once below and maps to implementation tasks and reproducible evidence.
 | `DV-014` — FW-017/FW-020 remain reciprocal optional post-MVP captures | `T0.1`, `T7.2` | Governance and reciprocal-link audit | pass |
 | `DV-015` — Generated SPEC-010 witness binds before body, preserves successful semantics, and publishes nothing on binding failure | `T5.1`, `T5.2`, `T5.3` | Macro expansion, lexical binding transcript, bound-copy probe, and failure atomicity report | pass |
 | `DV-016` — Exact primitive-with-content dispatch, primitive-before-child traversal, canonical identity/order, unevaluated body, and atomic failure across all profiles | `T8.1`-`T8.4` | Public-interface and visitor-conformance audit, focused traversal tests, canonical corpus, allocation/dependency probes, four-profile reports, and renewed conformance review | pass |
+| `DV-017` — Exact action-primitive-with-content dispatch, action-before-child traversal, canonical identity/order, unevaluated body, and atomic failure across all profiles | `T9.1`-`T9.4` | Public-interface and visitor-conformance audit, focused action traversal tests, canonical action corpus, allocation/dependency probes, four-profile reports, and renewed conformance review | pending |
 
 ## Milestones and Tasks
 
@@ -504,6 +505,45 @@ renewed review without claiming the `implemented` transition.
       explicit blocker; do not mark SPEC-006 `implemented` without renewed
       conformance review and explicit maintainer authorization.
 
+### Milestone 9: Implement the Approved Action-Primitive-with-Content Amendment
+
+**Entry conditions:** SPEC-006 is explicitly reapproved; PROPOSAL-003 remains
+`accepted`; linked RFCs remain `approved`; linked ADRs remain `accepted`; and
+SPEC-002, SPEC-003, SPEC-010, and SPEC-011 retain their applicable authority.
+
+**Exit evidence:** The exact action-primitive-with-content operation is
+implemented, every visitor conforms to the revised sealed surface, `DV-017`
+has reproducible four-profile evidence, and the collecting conformance report
+is ready for renewed review without claiming the `implemented` transition.
+
+- [ ] `T9.1` — Add the exact typed
+      `visitActionPrimitive(content:payload:)` requirement to `GiftUI`, update
+      every framework and fixture visitor conformance without a default
+      compatibility hook, and add public/package surface checks proving leaf
+      action primitives retain the existing unlabeled operation while a
+      framework-only action container calls the new overload exactly once with
+      `Body == Never` and preserves its typed action and stored content.
+- [ ] `T9.2` — Implement Semantic Core traversal so the action occurrence is
+      reserved and staged at the declaration identity before content enters
+      existing `fixedChild(0)` structure. Add focused empty, one-child,
+      five-child, nested, conditional, optional, and modified-content tests
+      covering canonical identity/order, exact action association, depth and
+      count accounting, first-failure precedence, atomic discard, workspace
+      reuse, no second semantic occurrence, and zero body evaluation.
+- [ ] `T9.3` — Extend the canonical SPEC-006 corpus, normalized results,
+      acceptance/evidence registry, underscored-reference allow-list,
+      allocation and complexity probes, and all four contract-driver profiles.
+      Prove equal dynamic/static meaning, zero static-path heap allocation,
+      unchanged dependency boundaries, bounded depth/counters, ARMv6
+      inspection, and nRF52840 hard-float ELF evidence without connected
+      hardware.
+- [ ] `T9.4` — Run the repository and four-profile gates, update every task
+      disposition and stable evidence link, and revise the SPEC-006 conformance
+      report so `DV-017` receives a reviewable disposition. Return this plan to
+      `completed` only when every Milestone 9 task is complete or has an
+      explicit blocker; do not mark SPEC-006 `implemented` without renewed
+      conformance review and explicit maintainer authorization.
+
 ## Design-Note Triggers
 
 - **Bounded semantic expansion representation:** Create the focused note in
@@ -542,6 +582,10 @@ renewed review without claiming the `implemented` transition.
 8. Treat connected Raspberry Pi or nRF52840 execution as downstream
    conformance work under the applicable host/platform plan. This plan neither
    deploys nor flashes hardware and makes no hardware-execution claim.
+9. For the approved action-primitive-with-content amendment, land the sealed
+   visitor surface and all conformances before Semantic Core traversal; freeze
+   focused atomic-failure results before extending the canonical corpus and
+   running the four profile drivers.
 
 Tasks `T1.1` through `T1.3` may proceed in parallel only after `T0.1` through
 `T0.3` fix the target and fixture interfaces. Recording-corpus tasks `T3.2`
@@ -550,6 +594,8 @@ path oracle. Bound/failure tasks `T4.1` through `T4.3` may proceed in parallel
 after the Milestone 2 result and workspace/sink seams are fixed. Profile runs
 may execute in parallel after the driver schema and complete corpus are fixed;
 their normalized comparison and final evidence audit remain a join step.
+Milestone 9 tasks run in order because each consumes the exact surface,
+traversal behavior, and corpus fixed by its predecessor.
 
 ## Risks and Upstream Blockers
 
@@ -961,9 +1007,9 @@ disposition. Every Milestone 8 task is complete, so this plan returns to
 and explicit maintainer authorization.
 
 On 2026-09-12, SPEC-011 implementation exposed that the closed traversal SPI
-has no action-bearing primitive-with-content operation. SPEC-006 returned to
-`review` with a proposed typed overload and new criterion `DV-017`. This
-completed plan and its evidence predate that amendment. After explicit
-reapproval, the plan must be revised or superseded to map `DV-017` to exact
-surface, traversal, identity, failure, profile, allocation, driver, and renewed
-conformance evidence before implementation of the new operation begins.
+has no action-bearing primitive-with-content operation. SPEC-006 was explicitly
+reapproved with a typed overload and new criterion `DV-017`. The original
+completed evidence predates that amendment. Milestone 9 now maps `DV-017` to
+exact surface, traversal, identity, failure, profile, allocation, driver, and
+renewed conformance work. The plan is `ready`; implementation has not yet
+resumed.
