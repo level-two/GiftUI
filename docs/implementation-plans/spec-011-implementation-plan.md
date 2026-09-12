@@ -683,7 +683,7 @@ report has a disposition for every criterion.
 The maintainer's 2026-09-12 instruction started implementation after SPEC-006
 `DV-017` became reproducibly passing. `T0.1`, `T0.3`, `T0.4`, and every task in
 Milestones 1 through 4 are complete, each in its own task commit. The package
-suite passes 297 XCTest tests and 435 Swift Testing cases; focused Interaction,
+suite passes 298 XCTest tests and 435 Swift Testing cases; focused Interaction,
 Semantic Core, and existing Execution capture suites pass. Package dependency,
 fixture, declaration, migration, formatting, and driver-registration checks
 also pass.
