@@ -2,6 +2,15 @@ import GiftUI
 import XCTest
 
 final class DeclarativeViewTests: XCTestCase {
+    func testActionHandlerBorrowsTheConfiguredModelSynchronously() {
+        var handler = TestActionHandler()
+        let model = StatefulTestModel()
+
+        handler.handle(.maximum, model: model)
+
+        XCTAssertEqual(handler.handled, [.maximum])
+    }
+
     func testButtonBuildsAndBorrowsItsStoredLabelExactlyOnce() {
         var builderCalls = 0
         let button = Button(action: TestAction.ordinary) {
@@ -250,6 +259,14 @@ private final class StatefulTestModel: _GiftUIObservableReference {
     func _giftUIDetachChangeSink(
         _ attachment: _GiftUIObservationAttachment
     ) {}
+}
+
+private struct TestActionHandler: GiftUIActionHandler {
+    var handled: [TestAction] = []
+
+    mutating func handle(_ action: TestAction, model: borrowing StatefulTestModel) {
+        handled.append(action)
+    }
 }
 
 private struct InactiveLeaf: View {

@@ -272,7 +272,7 @@ payload values obey the exact declaration contract.
       `View.disabled(_:)` as a semantic modifier with no identity of its own.
       Test nested `true`/`false` scopes and modifier order without introducing
       backend-specific state.
-- [ ] `T1.4` — Implement the exact public `GiftUIActionHandler` protocol and
+- [x] `T1.4` — Implement the exact public `GiftUIActionHandler` protocol and
       borrowing `handle` signature. Add positive handler compile fixtures and
       negative retained/escaping/replacement/registration shapes without
       introducing a runtime dependency into `GiftUI`.
