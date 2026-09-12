@@ -172,6 +172,7 @@ run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RasterBackendStartupValidator.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RasterFrameWorkAdmission.swift" \
+    "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RasterTextResourceValidation.swift" \
     -emit-module-path "${module_dir}/GiftUIBackendIntegration.swiftmodule" >/dev/null
 
 positive_source="${FIXTURE_ROOT}/Fixtures/Positive/compile-surface/main.swift"

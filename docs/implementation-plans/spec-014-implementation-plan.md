@@ -283,7 +283,7 @@ insufficient bound fails in exact order before an offer or target probe.
       conservative region/payload submissions. Prove zero damage, equality,
       first excess, every multiplication/addition overflow, and exact
       contract-violation mapping for a header that contradicts construction.
-- [ ] `T2.4` — Validate the immutable text descriptor, realization ID, raster
+- [x] `T2.4` — Validate the immutable text descriptor, realization ID, raster
       view availability, greatest selected glyph record, and payload/workspace
       bounds before first offer. Preserve exact SPEC-005 identity; test missing,
       mismatched, malformed, unavailable, and post-startup impossible cases
@@ -750,6 +750,17 @@ Construction maps overflow/capacity to the exact local errors, while any
 post-construction header contradiction maps only to SPEC-009
 `.contractViolation`. The registered audit rejects wrapping arithmetic and
 clamping.
+
+`T2.4` added immutable text-raster startup validation over SPEC-005's prior
+validation result, exact descriptor, selected realization descriptor and ID,
+payload availability, contiguous selected glyph records, record byte ranges,
+greatest glyph record, and glyph/stroke workspace bounds. The retained facts
+preserve the original SPEC-005 values. Focused tests reject failed
+prevalidation before view access, descriptor/realization mismatch,
+unavailable payloads, missing or malformed records, and first workspace
+excess; post-startup lookup accepts only the exact selected realization and
+glyph identity. The registered audit rejects realization search, fallback,
+replacement substitution, scalar remapping, and ambient lookup.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
