@@ -237,7 +237,7 @@ conformance, and value layouts from SPEC-014.
       one begin, bounded in-damage encoded replacement, one finish or discard,
       sticky responsibility transfer, safe draining, and complete reset. Keep
       rasterization and display submission out of this owner.
-- [ ] `T1.3` — In `GiftUIRasterCore`, implement `RasterPayloadLimits`,
+- [x] `T1.3` — In `GiftUIRasterCore`, implement `RasterPayloadLimits`,
       `RasterBackendError`, and checked limit helpers. Require all positive
       fields, validate payload-by-in-flight multiplication, preserve equality
       success and first-excess failure, and keep region/counter/driver storage
@@ -684,6 +684,12 @@ proving single begin, bounded in-damage replacement, wrong-encoding rejection,
 sticky responsibility transfer, validation-only drain, exactly one finish or
 discard, and complete attempt reset without importing raster or display
 ownership.
+
+`T1.3` activated `GiftUIRasterCore` and its focused tests with the exact
+package graph. It implements all-positive payload limits, checked payload-by-
+in-flight construction, separate raster/payload/region/submission/tile/glyph/
+stroke domains, equality-admitting helpers, and the exact eleven-case local
+error vocabulary and raw layout.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
