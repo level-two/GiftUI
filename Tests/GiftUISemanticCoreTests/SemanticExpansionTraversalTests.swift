@@ -498,6 +498,193 @@ final class SemanticExpansionTraversalTests: XCTestCase {
         XCTAssertEqual(bodyCounter.count, 0)
     }
 
+    func testActionContainerStagesBeforeEmptyOneAndFiveChildContent() {
+        let emptyBodyCounter = TraversalBodyCounter()
+        var emptyWorkspace = TraversalWorkspace()
+        var emptySink = TraversalSink()
+        let emptyResult = expandSemanticTree(
+            TraversalActionContainer(action: .primary, bodyCounter: emptyBodyCounter) {},
+            limits: makeLimits(),
+            workspace: &emptyWorkspace,
+            sink: &emptySink
+        )
+
+        XCTAssertEqual(emptyResult.successSummary?.semanticNodeCount, 1)
+        XCTAssertEqual(emptyResult.successSummary?.actionOccurrenceCount, 1)
+        XCTAssertEqual(
+            emptySink.committedEvents.map(\.kind),
+            [.structural, .semantic, .action, .structural]
+        )
+        XCTAssertEqual(emptySink.observedActions, [.primary])
+        XCTAssertEqual(emptyBodyCounter.count, 0)
+
+        let oneBodyCounter = TraversalBodyCounter()
+        var oneWorkspace = TraversalWorkspace()
+        var oneSink = TraversalSink()
+        let oneResult = expandSemanticTree(
+            TraversalActionContainer(action: .secondary, bodyCounter: oneBodyCounter) {
+                TraversalPrimitive(marker: 61)
+            },
+            limits: makeLimits(),
+            workspace: &oneWorkspace,
+            sink: &oneSink
+        )
+
+        XCTAssertEqual(oneResult.successSummary?.semanticNodeCount, 2)
+        XCTAssertEqual(oneResult.successSummary?.actionOccurrenceCount, 1)
+        XCTAssertEqual(
+            oneSink.committedEvents.map(\.kind),
+            [.structural, .semantic, .action, .structural, .semantic]
+        )
+        XCTAssertEqual(
+            oneSink.committedEvents.filter { $0.kind == .action }.map(\.identity.path),
+            [[.root, .declarationRole(0)]]
+        )
+        XCTAssertEqual(
+            oneSink.committedEvents.filter { $0.kind == .semantic }.last?.identity.path,
+            [.root, .declarationRole(0), .fixedChild(0), .declarationRole(1)]
+        )
+        XCTAssertEqual(oneBodyCounter.count, 0)
+
+        let fiveBodyCounter = TraversalBodyCounter()
+        var fiveWorkspace = TraversalWorkspace()
+        var fiveSink = TraversalSink()
+        let fiveResult = expandSemanticTree(
+            TraversalActionContainer(action: .primary, bodyCounter: fiveBodyCounter) {
+                TraversalPrimitive(marker: 62)
+                TraversalPrimitive(marker: 63)
+                TraversalPrimitive(marker: 64)
+                TraversalPrimitive(marker: 65)
+                TraversalPrimitive(marker: 66)
+            },
+            limits: makeLimits(),
+            workspace: &fiveWorkspace,
+            sink: &fiveSink
+        )
+
+        XCTAssertEqual(fiveResult.successSummary?.semanticNodeCount, 6)
+        XCTAssertEqual(fiveResult.successSummary?.actionOccurrenceCount, 1)
+        XCTAssertEqual(fiveSink.committedEvents.filter { $0.kind == .action }.count, 1)
+        XCTAssertEqual(
+            fiveSink.committedEvents.filter { $0.kind == .semantic }.dropFirst().compactMap {
+                $0.identity.path.firstFixedChildAfterContent
+            },
+            [0, 1, 2, 3, 4]
+        )
+        XCTAssertEqual(fiveBodyCounter.count, 0)
+    }
+
+    func testActionContainerUsesOrdinaryNestedConditionalOptionalAndModifierTraversal() {
+        let bodyCounter = TraversalBodyCounter()
+        let conditional: ConditionalContent<TraversalInactiveTrap, TraversalPrimitive> =
+            ViewBuilder.buildEither(second: TraversalPrimitive(marker: 72))
+        let optional = ViewBuilder.buildOptional(TraversalPrimitive(marker: 73))
+        var workspace = TraversalWorkspace()
+        var sink = TraversalSink()
+
+        let result = expandSemanticTree(
+            TraversalActionContainer(action: .primary, bodyCounter: bodyCounter) {
+                TraversalActionContainer(action: .secondary, bodyCounter: bodyCounter) {
+                    TraversalPrimitive(marker: 71)
+                }
+                conditional
+                optional
+                TraversalModifier(content: TraversalPrimitive(marker: 74), marker: 2)
+            },
+            limits: makeLimits(),
+            workspace: &workspace,
+            sink: &sink
+        )
+
+        XCTAssertEqual(result.successSummary?.semanticNodeCount, 6)
+        XCTAssertEqual(result.successSummary?.actionOccurrenceCount, 2)
+        XCTAssertEqual(result.successSummary?.modifierApplicationCount, 1)
+        XCTAssertEqual(sink.observedActions, [.primary, .secondary])
+        XCTAssertEqual(sink.committedEvents.filter { $0.kind == .action }.count, 2)
+        XCTAssertTrue(
+            sink.committedEvents.contains {
+                $0.identity.path.contains(.conditionalBranch(1))
+            }
+        )
+        XCTAssertTrue(
+            sink.committedEvents.contains {
+                $0.identity.path.contains(.optionalPresence)
+            }
+        )
+        XCTAssertEqual(sink.committedEvents.compactMap(\.modifierIndex), [0])
+        XCTAssertEqual(bodyCounter.count, 0)
+    }
+
+    func testActionContainerFailureIsAtomicAndObjectsAreReusable() {
+        let bodyCounter = TraversalBodyCounter()
+        let root = TraversalActionContainer(action: .primary, bodyCounter: bodyCounter) {
+            TraversalPrimitive(marker: 81)
+        }
+
+        for sink in [
+            TraversalSink(refuseActionStage: true),
+            TraversalSink(refusedSemanticStage: 0),
+        ] {
+            var workspace = TraversalWorkspace()
+            var sink = sink
+
+            let failure = expandSemanticTree(
+                root,
+                limits: makeLimits(),
+                workspace: &workspace,
+                sink: &sink
+            )
+
+            XCTAssertEqual(failure, .failure(.invariantViolation))
+            XCTAssertTrue(sink.committedEvents.isEmpty)
+            XCTAssertTrue(sink.stagedEvents.isEmpty)
+            XCTAssertEqual(sink.publishCount, 0)
+            XCTAssertEqual(sink.discardCount, 1)
+            XCTAssertFalse(workspace.isExpanding)
+            XCTAssertEqual(bodyCounter.count, 0)
+
+            sink.refuseActionStage = false
+            sink.refusedSemanticStage = nil
+            let success = expandSemanticTree(
+                root,
+                limits: makeLimits(),
+                workspace: &workspace,
+                sink: &sink
+            )
+
+            XCTAssertEqual(success.successSummary?.semanticNodeCount, 2)
+            XCTAssertEqual(success.successSummary?.actionOccurrenceCount, 1)
+            XCTAssertEqual(sink.publishCount, 1)
+            XCTAssertEqual(sink.discardCount, 1)
+            XCTAssertFalse(workspace.isExpanding)
+        }
+
+        var capacityWorkspace = TraversalWorkspace()
+        var capacitySink = TraversalSink()
+        let capacityLimits = SemanticExpansionLimits(
+            maximumDepth: 16,
+            maximumSemanticNodes: 1,
+            maximumBodyEvaluations: 16,
+            maximumModifierApplications: 16,
+            maximumActionOccurrences: 1
+        )!
+
+        let capacityFailure = expandSemanticTree(
+            root,
+            limits: capacityLimits,
+            workspace: &capacityWorkspace,
+            sink: &capacitySink
+        )
+
+        XCTAssertEqual(capacityFailure, .failure(.capacityExhausted))
+        XCTAssertTrue(capacitySink.committedEvents.isEmpty)
+        XCTAssertTrue(capacitySink.stagedEvents.isEmpty)
+        XCTAssertEqual(capacitySink.publishCount, 0)
+        XCTAssertEqual(capacitySink.discardCount, 1)
+        XCTAssertFalse(capacityWorkspace.isExpanding)
+        XCTAssertEqual(bodyCounter.count, 0)
+    }
+
     private func makeLimits() -> SemanticExpansionLimits {
         SemanticExpansionLimits(
             maximumDepth: 16,
@@ -775,6 +962,48 @@ private struct TraversalActionPrimitive: View, _GiftUISemanticActionPayload {
     }
 }
 
+private struct TraversalActionContainer<Content: View>: View {
+    typealias Body = Never
+
+    let action: TraversalAction
+    let bodyCounter: TraversalBodyCounter
+    let content: Content
+
+    init(
+        action: TraversalAction,
+        bodyCounter: TraversalBodyCounter,
+        @ViewBuilder content: () -> Content
+    ) {
+        self.action = action
+        self.bodyCounter = bodyCounter
+        self.content = content()
+    }
+
+    var body: Never {
+        poison()
+    }
+
+    private func poison() -> Never {
+        bodyCounter.count += 1
+        fatalError("action primitive container bodies are unreachable")
+    }
+
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    ) {
+        visitor.visitActionPrimitive(
+            content: content,
+            payload: TraversalActionContainerPayload(action: action)
+        )
+    }
+}
+
+private struct TraversalActionContainerPayload: _GiftUISemanticActionPayload {
+    let action: TraversalAction
+
+    var _giftUIAction: TraversalAction { action }
+}
+
 private struct TraversalModifier<Content: View>: View, _GiftUISemanticModifierPayload {
     let content: Content
     let marker: UInt8
@@ -941,10 +1170,15 @@ private struct TraversalSink: SemanticExpansionSink {
     var discardCount = 0
     var bodyEvaluationStageCount = 0
     var refusedSemanticStage: Int?
+    var refuseActionStage: Bool
     private var semanticStageAttemptCount = 0
 
-    init(refusedSemanticStage: Int? = nil) {
+    init(
+        refusedSemanticStage: Int? = nil,
+        refuseActionStage: Bool = false
+    ) {
         self.refusedSemanticStage = refusedSemanticStage
+        self.refuseActionStage = refuseActionStage
     }
 
     mutating func beginExpansion() -> Bool {
@@ -1000,6 +1234,7 @@ private struct TraversalSink: SemanticExpansionSink {
         identity: borrowing TraversalIdentity,
         action: borrowing Action
     ) -> Bool {
+        guard !refuseActionStage else { return false }
         let semanticIdentity = copy identity
         let actionIdentity = copy identity
         stagedEvents.append(

@@ -523,7 +523,7 @@ is ready for renewed review without claiming the `implemented` transition.
       action primitives retain the existing unlabeled operation while a
       framework-only action container calls the new overload exactly once with
       `Body == Never` and preserves its typed action and stored content.
-- [ ] `T9.2` — Implement Semantic Core traversal so the action occurrence is
+- [x] `T9.2` — Implement Semantic Core traversal so the action occurrence is
       reserved and staged at the declaration identity before content enters
       existing `fixedChild(0)` structure. Add focused empty, one-child,
       five-child, nested, conditional, optional, and modified-content tests
@@ -1021,3 +1021,11 @@ action before traversing `fixedChild(0)`, and focused declaration tests prove
 the leaf and content-bearing overloads remain distinct, preserve typed actions
 and stored zero/one/five-child content, retain `Body == Never`, and do not
 evaluate a primitive body. The plan is `active`; `T9.2` is next.
+
+`T9.2` is complete: Semantic Core reserves and stages one action occurrence at
+the action container's declaration identity before entering `fixedChild(0)`.
+Focused tests cover empty, one-child, five-child, nested, conditional,
+optional, and modified content; exact action order and identity; bounded depth
+and counters; action-stage, child-stage, and child-capacity failures; atomic
+discard; clean workspace/sink reuse; one action occurrence without a second
+semantic occurrence; and zero primitive-body evaluations. `T9.3` is next.
