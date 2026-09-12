@@ -297,7 +297,7 @@ and the shared coordinator semantics without importing Static or a backend.
       permitted dependencies. Implement one validated structural identity and
       typed construction path; no target or portable Presentation gains a
       profile-selection branch.
-- [ ] `T3.2` — Implement bounded dynamic live, published, candidate, queue,
+- [x] `T3.2` — Implement bounded dynamic live, published, candidate, queue,
       sealed-batch, pointer, layout, render, drawing-plan, observable,
       Interaction, coordinator, and failure stores. Enforce configured logical
       limits despite spare heap and report exact owned bytes plus allocator
@@ -704,6 +704,16 @@ audit input. The existing module-boundary checker continues to prove the
 Dynamic target's permitted imports, sibling isolation, and absence of any
 portable profile-selection surface. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-3/dynamic-construction.md`.
+
+T3.2 added sixteen independently allocated Dynamic storage regions matching
+the complete audit family registry and a finite 51-dimension logical-use
+ledger covering every contained owner capacity. Exact-limit reservations
+succeed, first excess and counter overflow reject without mutation, and
+high-water values remain bounded by immutable configured limits regardless of
+heap headroom. The retained audit is reconstructed against every region's
+exact payload extent, while observed reserved payload, spare payload, and
+allocation count remain a separate Dynamic allocator report. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-3/dynamic-storage.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
