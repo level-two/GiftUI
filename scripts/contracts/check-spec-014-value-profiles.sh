@@ -160,6 +160,7 @@ run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterPayloadLimits.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterFrameSink.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterBackendContributionAdapter.swift" \
+    "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterFrameWork.swift" \
     -emit-module-path "${module_dir}/GiftUIRasterCore.swiftmodule" >/dev/null
 run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" \
     -module-name GiftUIDisplayCore \
@@ -170,6 +171,7 @@ run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" \
     -module-name GiftUIBackendIntegration \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RasterBackendStartupValidator.swift" \
+    "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RasterFrameWorkAdmission.swift" \
     -emit-module-path "${module_dir}/GiftUIBackendIntegration.swiftmodule" >/dev/null
 
 positive_source="${FIXTURE_ROOT}/Fixtures/Positive/compile-surface/main.swift"

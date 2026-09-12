@@ -278,7 +278,7 @@ insufficient bound fails in exact order before an offer or target probe.
       stores, glyph/stroke workspace, and per-frame ceilings. Exercise one-field
       mismatch for every effective field and prove no clamp, recomputation,
       target call, or capability mutation.
-- [ ] `T2.3` — Implement checked construction-time and per-header calculations
+- [x] `T2.3` — Implement checked construction-time and per-header calculations
       for damaged rows/pixels, ceiling tile rows, operation-by-tile visits, and
       conservative region/payload submissions. Prove zero damage, equality,
       first excess, every multiplication/addition overflow, and exact
@@ -738,6 +738,18 @@ effective fields plus each local store and prove equality admission, first-
 stage precedence, no clamping, and no mutation of the selected value. The
 registered source audit rejects resolver use, target/writer/reservation calls,
 health inputs, capability mutation, and clamping.
+
+`T2.3` added the shared checked frame-work calculator in Raster Core and the
+construction/per-header mapping seam in backend integration. It computes
+damaged rows/pixels, ceiling tile rows, operation-by-tile visits, and the
+conservative operation-by-damaged-pixel region/submission ceiling. Empty
+damage produces all-zero work values; focused tests prove exact/equality,
+first excess, invalid envelope bounds, operation/glyph capacity
+contradictions, and every multiplication or ceiling-addition overflow.
+Construction maps overflow/capacity to the exact local errors, while any
+post-construction header contradiction maps only to SPEC-009
+`.contractViolation`. The registered audit rejects wrapping arithmetic and
+clamping.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

@@ -65,6 +65,7 @@ declared_inputs() {
             "${PROJECT_ROOT}/docs/implementation-plans/spec-014-implementation-plan.md" \
             "${SCRIPT_DIR}/check-driver-registry.rb" \
             "${SCRIPT_DIR}/check-spec-014-fixtures.rb" \
+            "${SCRIPT_DIR}/check-spec-014-frame-work.rb" \
             "${SCRIPT_DIR}/check-spec-014-contributors.rb" \
             "${SCRIPT_DIR}/check-spec-014-migration.rb" \
             "${SCRIPT_DIR}/check-spec-014-module-contract.rb" \
@@ -233,6 +234,7 @@ run_required migration-inventory "${SCRIPT_DIR}/check-spec-014-migration.rb"
 run_required contributor-boundaries "${SCRIPT_DIR}/check-spec-014-contributors.rb"
 run_required startup-validation-boundaries \
     "${SCRIPT_DIR}/check-spec-014-startup-validator.rb"
+run_required frame-work-arithmetic "${SCRIPT_DIR}/check-spec-014-frame-work.rb"
 run_required driver-registry "${SCRIPT_DIR}/check-driver-registry.rb"
 run_package_checks
 record_toolchain
