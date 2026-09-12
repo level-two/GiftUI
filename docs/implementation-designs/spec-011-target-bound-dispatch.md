@@ -188,4 +188,5 @@ SPEC-013 and SPEC-015 respectively.
 
 ## Code and Evidence Links
 
-Code and task evidence links will be added as `T5.1` through `T5.6` land.
+- [Candidate coordinator](../../Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateCoordinator.swift)
+- [T5.1 target-binding evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-1-target-binding.md)

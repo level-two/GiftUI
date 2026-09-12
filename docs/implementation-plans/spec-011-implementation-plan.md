@@ -394,7 +394,7 @@ publishable target generation and synchronously dispatches admitted actions
 once through one immutable typed handler to a nonescaping borrow of the exact
 current model.
 
-- [ ] `T5.1` — Implement the coordinator sequence that encounters the root
+- [x] `T5.1` — Implement the coordinator sequence that encounters the root
       observable location, obtains its exact SPEC-010
       `publishableTargetGeneration`, and appends that value to every action
       before finish. Missing generation fails as `missingModelTarget` and
@@ -706,3 +706,12 @@ declaration landed in `GiftUIInteraction` as the declaration-only portion of
 the plans' explicit integration handoff. SPEC-011 T5.3 remains pending for
 `InteractionDispatcher`, the target-composed adapter, and all required
 dispatch behavior and evidence.
+
+`T5.1` is complete: Runtime Core now performs one bounded semantic-order pass
+over normalized Interaction occurrences, reads the exact post-encounter
+publishable root target generation once, supplies it to every append, and
+finishes a ready candidate only after all required generations are assigned.
+Missing target generation and every later build failure discard both begun
+candidates exactly once. Focused tests distinguish candidate-only and changed
+publishable generations from any former live value; see the
+[target-binding evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-1-target-binding.md).
