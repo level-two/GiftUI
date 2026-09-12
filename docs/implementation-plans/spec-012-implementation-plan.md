@@ -247,7 +247,7 @@ and backends can consume borrowed stroke views without importing drawing.
       exact SPEC-006 identity. Prove one event, zero children, no body evaluation,
       stable occurrence order, exact lookup bounds, and no public/package
       callable lookup outside this seam.
-- [ ] `T2.2` — Add exactly `.canvas` to SPEC-007's
+- [x] `T2.2` — Add exactly `.canvas` to SPEC-007's
       `SemanticLayoutPrimitive` and SPEC-008's `SemanticRenderScope`, preserving
       every existing case, raw value, traversal order, identity relation, and
       non-Canvas result. Add `StraightLineStrokeHeader`,
@@ -697,6 +697,16 @@ same missing staging hook. The focused
 [Specification review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-2/canvas-invocation-seam-specification-blocker.md)
 records the required correction. Independent T2.2-T2.5 and T3 work may proceed
 without claiming production semantic-callable integration.
+
+`T2.2` is complete. The existing closed semantic layout and render scope
+vocabularies now add only `.canvas`; generic payload mapping recognizes the
+public Canvas type while unknown and every pre-existing payload retain their
+prior mappings. Exhaustive layout and ordinary-render consumers treat Canvas
+as the specified zero-child, no-ordinary-paint leaf without changing other
+traversal order or identity behavior. `GiftUIRenderCore` retains the focused
+borrowed `StraightLineStrokeHeader`, `StraightLineStrokeView`, and extending
+`DrawingOperationSink` declarations established at T0.2, so backends can
+consume the normalized contract without importing `GiftUIDrawing`.
 
 `T1.1` is complete. `GiftUI.Canvas` now has the exact typed-throws initializer,
 private retained draw callable, `Body == Never` invariant body, primitive

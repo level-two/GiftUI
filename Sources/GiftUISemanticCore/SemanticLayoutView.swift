@@ -7,6 +7,7 @@ package enum SemanticLayoutPrimitive: Equatable, Sendable {
     case zStack(alignment: Alignment)
     case spacer(minLength: GeometryScalar)
     case text
+    case canvas
 
     package init<Payload>(
         payload: borrowing Payload
@@ -22,6 +23,8 @@ package enum SemanticLayoutPrimitive: Equatable, Sendable {
             self = .spacer(minLength: spacer.minLength)
         } else if payloadCopy is _GiftUITextPayload {
             self = .text
+        } else if payloadCopy is Canvas {
+            self = .canvas
         } else {
             self = .proxy
         }

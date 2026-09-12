@@ -29,6 +29,7 @@ func semanticLayoutPrimitiveMapsEveryApprovedPayloadExactly() {
             == .spacer(minLength: -3)
     )
     #expect(SemanticLayoutPrimitive(payload: Text("signal")._giftUITextPayload) == .text)
+    #expect(SemanticLayoutPrimitive(payload: Canvas { _, _ in }) == .canvas)
     #expect(SemanticLayoutPrimitive(payload: LayoutNeutralPrimitive()) == .proxy)
 }
 

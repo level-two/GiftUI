@@ -165,7 +165,7 @@ private struct RenderStreamingState {
         switch scope {
         case .foregroundStyle, .background, .clipBoundary:
             guard childCount == 1 else { return false }
-        case .text:
+        case .text, .canvas:
             guard childCount == 0 else { return false }
         case .structural:
             break

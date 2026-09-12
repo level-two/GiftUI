@@ -92,10 +92,19 @@ func semanticRenderScopeHasTheExactClosedCasesAndValues() {
     #expect(SemanticRenderScope.structural == .structural)
     #expect(SemanticRenderScope.clipBoundary == .clipBoundary)
     #expect(SemanticRenderScope.text == .text)
+    #expect(SemanticRenderScope.canvas == .canvas)
     #expect(SemanticRenderScope.foregroundStyle(.red) == .foregroundStyle(.red))
     #expect(SemanticRenderScope.background(.blue) == .background(.blue))
     #expect(SemanticRenderScope.foregroundStyle(.red) != .foregroundStyle(.blue))
     #expect(SemanticRenderScope.foregroundStyle(.red) != .background(.red))
+}
+
+@Test
+func semanticRenderScopeMapsCanvasWithoutChangingUnknownPrimitiveBehavior() {
+    #expect(SemanticRenderScope(primitivePayload: Canvas { _, _ in }) == .canvas)
+
+    struct UnknownPrimitive: _GiftUISemanticPrimitivePayload {}
+    #expect(SemanticRenderScope(primitivePayload: UnknownPrimitive()) == .structural)
 }
 
 @Test

@@ -4,13 +4,17 @@ package enum SemanticRenderScope: Equatable, Sendable {
     case structural
     case clipBoundary
     case text
+    case canvas
     case foregroundStyle(Color)
     case background(Color)
 
     package init<Payload>(primitivePayload: borrowing Payload)
     where Payload: _GiftUISemanticPrimitivePayload {
-        if copy primitivePayload is _GiftUITextPayload {
+        let payload = copy primitivePayload
+        if payload is _GiftUITextPayload {
             self = .text
+        } else if payload is Canvas {
+            self = .canvas
         } else {
             self = .structural
         }

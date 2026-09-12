@@ -220,7 +220,7 @@ private struct RenderPreflightState {
         switch scope {
         case .foregroundStyle, .background, .clipBoundary:
             guard childCount == 1 else { return .invariantViolation }
-        case .text:
+        case .text, .canvas:
             guard childCount == 0 else { return .invariantViolation }
         case .structural:
             break

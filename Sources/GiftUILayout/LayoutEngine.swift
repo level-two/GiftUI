@@ -502,6 +502,12 @@ package struct LayoutEngine {
                 proposal: proposal,
                 workspace: &workspace
             )
+        case .canvas:
+            let size = Size(
+                width: proposal.width ?? 0,
+                height: proposal.height ?? 0
+            )!
+            measurement = LayoutMeasurement(idealSize: size, resolvedSize: size)
         }
         guard let measurement,
             workspace.storeMeasurement(measurement, for: identity)
@@ -1097,6 +1103,8 @@ package struct LayoutEngine {
                 textClip: scopeClip,
                 workspace: &workspace
             )
+        case .canvas:
+            return true
         }
     }
 

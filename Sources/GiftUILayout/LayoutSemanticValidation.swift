@@ -175,7 +175,7 @@ package struct LayoutSemanticValidation {
         Semantic.Identity == Workspace.Identity
     {
         switch primitive {
-        case .spacer, .text:
+        case .spacer, .text, .canvas:
             guard childCount == 0 else { return .invalidDeclaration }
         case .proxy:
             guard childCount > 0 else { return .invalidDeclaration }
@@ -303,7 +303,7 @@ package struct LayoutSemanticValidation {
 
     private func validate(_ primitive: SemanticLayoutPrimitive) -> LayoutError? {
         switch primitive {
-        case .proxy, .text, .zStack:
+        case .proxy, .text, .canvas, .zStack:
             return nil
         case .vStack(_, let spacing), .hStack(_, let spacing):
             return spacing < 0 ? .invalidDeclaration : nil
