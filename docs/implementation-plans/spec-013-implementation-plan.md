@@ -65,15 +65,21 @@ override the approved contract.
 
 ## Current Repository State
 
-- `GiftUI`, `GiftUISemanticCore`, `GiftUITextResources`, `GiftUIRenderCore`,
-  `GiftUIExecution`, and `GiftUIObservableState` exist. SPEC-006 declaration
-  and semantic work is complete at the plan level; SPEC-009 and SPEC-010 have
-  active plans and substantial focused-owner machinery, but their production
-  runtime integration remains intentionally assigned to SPEC-013.
-- `GiftUILayout`, `GiftUIRenderLowering`, `GiftUIInteraction`, and
-  `GiftUIDrawing` do not yet exist. SPEC-007, SPEC-011, and SPEC-012 now have
-  ready plans. Tasks consuming those owners must wait for their exact
-  production seams; runtime code must not create substitutes or duplicate
+- `GiftUI`, `GiftUISemanticCore`, `GiftUITextResources`, `GiftUILayout`,
+  `GiftUIRenderCore`, `GiftUIRenderLowering`, `GiftUIExecution`, and
+  `GiftUIObservableState` exist. SPEC-006, SPEC-007, and SPEC-008 are
+  implemented with completed plans and conformance evidence. Their production
+  semantic, borrowed-layout, render-workspace, and render-extension seams are
+  available to SPEC-013.
+- `GiftUIDrawing` also exists. SPEC-012 is implementing: Milestones 0 through
+  5 and generator tasks `T6.1`-`T6.3` are complete, while profile-owned
+  callable storage, host handles, startup/cycle integration, and final
+  cross-profile evidence remain explicitly joined to SPEC-013 and SPEC-015.
+- `GiftUIInteraction` does not yet exist and SPEC-011 has a ready plan.
+  SPEC-009 and SPEC-010 have active plans and substantial focused-owner
+  machinery, but their remaining production runtime integration is
+  intentionally assigned to SPEC-013. Tasks consuming unfinished owner seams
+  must wait for them; runtime code must not create substitutes or duplicate
   their algorithms. The cross-plan handoffs below separate focused-owner work
   that can land first from coordinator/profile integration that must land with
   SPEC-013.
@@ -83,9 +89,9 @@ override the approved contract.
   removed under SPEC-002 and remain historical migration evidence only.
 - `Tests/ContractFixtures/SPEC013/`, `scripts/contracts/run-spec-013.sh`, and a
   SPEC-013 driver-registry row are absent. Existing SPEC-002 through SPEC-010
-  fixtures provide reusable fail-closed manifests, import checks, normalized
-  transcripts, allocation interposition, report metadata, cross-build, ELF,
-  and dirty-revision conventions.
+  and SPEC-012 fixtures provide reusable fail-closed manifests, import checks,
+  normalized transcripts, allocation interposition, report metadata,
+  cross-build, ELF, and dirty-revision conventions.
 - Existing exact-set boundary registries treat the absent runtime modules as
   forbidden or future owners. Those rows must be changed atomically with the
   first compiling targets so a stale negative fixture cannot masquerade as a
@@ -96,7 +102,7 @@ override the approved contract.
 
 ## Readiness Review
 
-**Reviewed:** 2026-09-09
+**Reviewed:** 2026-09-12
 
 **Disposition:** Ready. Every linked ADR remains
 accepted, SPEC-013 and coordinated SPEC-015 were explicitly reapproved on
@@ -162,7 +168,7 @@ exactly once below.
 | --- | --- | --- | --- |
 | `RP-001` — Both runtime targets use one portable root and focused owners without sibling/backend imports | `T0.2`, `T3.5`, `T4.6`, `T8.1` | Package graph, source-import audit, same-root positive compile, and forbidden-import negatives | pending |
 | `RP-002` — One successful audit accounts exactly for every correctness store and configured render-workspace capacity | `T1.2`-`T1.4`, `T3.2`, `T4.2`, `T6.1` | Field ownership registry, four-field capacity equality, exact byte reports, checked-total tests, and overlap/overlay audit | pending |
-| `RP-003` — Invalid configurations and static tables fail before client/endpoint use | `T1.1`-`T1.4`, `T4.3`, `T6.2` | Ordered startup-failure corpus with poisoned client, callback, policy, and endpoint probes | pending |
+| `RP-003` — Invalid configurations and static tables fail before client/endpoint use | `T1.1`-`T1.5`, `T4.3`, `T6.2` | Ordered startup-failure and exact SPEC-003 mapping corpus with poisoned client, callback, policy, and endpoint probes | pending |
 | `RP-004` — Exact stage order, pre-body binding, Canvas release, and cleanup rows | `T2.1`-`T2.4`, `T5.1`-`T5.5`, `T6.3` | Stage transcript, injected-failure cleanup matrix, and release/finalization counters | pending |
 | `RP-005` — Value-equal cross-profile semantic through disposition transcripts | `T0.1`, `T5.5`, `T6.6`, `T7.4` | Canonical tagged transcripts and zero-tolerance differential comparison | pending |
 | `RP-006` — Exact-limit success and deterministic first-excess for every store | `T3.2`, `T4.2`, `T6.1` | Table-driven boundary corpus and high-water reports for every storage family | pending |
@@ -193,9 +199,10 @@ before profile behavior is claimed.
       cross-build/inspection, simulator, and connected-hardware evidence.
 - [ ] `T0.2` — Record the exact permitted imports for `GiftUIRuntimeCore`,
       `GiftUIRuntimeDynamic`, `GiftUIRuntimeStatic`, and the sibling failure
-      adapter. Update SPEC-002 through SPEC-010 exact-set registries and stale
-      negative fixtures atomically with the first compiling targets; add
-      bidirectional sibling/backend/host forbidden-import tests.
+      adapter. Update the existing SPEC-002 through SPEC-010 and SPEC-012
+      exact-set registries and stale negative fixtures atomically with the
+      first compiling targets; add bidirectional sibling/backend/host
+      forbidden-import tests.
 - [ ] `T0.3` — Create a SPEC-013 migration inventory covering every removed
       proof-of-concept runtime/store/test path and assign each concept to
       replace-through-owner, evidence-only, or retire. Reject compatibility
@@ -236,9 +243,13 @@ failure carrier, independent of concrete profile storage.
       Test capacity immutability, attempt-versus-all reset boundaries, rejected
       construction, and before-use/after-quiescence all-storage reset.
 - [ ] `T1.5` — Implement exact `RuntimeOwnerFailure` cases and the coordinator
-      protocol surface. Prove `RuntimeOwnerFailure` is at most 2 bytes on every
-      compiler, preserves exact owner values, and maps only in a sibling
-      adapter importing Runtime Core and SPEC-003 failure authority.
+      protocol surface. In the sibling adapter that alone imports Runtime Core
+      and SPEC-003 failure authority, map every `RuntimeProfileValidationError`
+      to the specified condition, origin, scope, and containment and preserve
+      each focused owner value through execution correlation. Prove
+      `RuntimeOwnerFailure` is at most 2 bytes on every compiler, the two
+      mapping tables are total, and Runtime Core imports neither
+      `GiftUIFailureCore` nor `GiftUIFailureExecution`.
 
 ### Milestone 2: Common Coordinator, Lifecycle, and Cleanup Oracle
 
@@ -386,8 +397,9 @@ semantic tolerance.
       audit fields, high-water counts, allocator bookkeeping, and deterministic
       failure identity.
 - [ ] `T6.2` — Run startup missing/small/overflow/incompatible/table-invalid
-      cases in exact detection order with poison probes proving no client,
-      attachment, input, wake, policy, backend, or endpoint use.
+      cases in exact detection order, verify each exact SPEC-003 condition,
+      origin, scope, and containment mapping, and use poison probes proving no
+      client, attachment, input, wake, policy, backend, or endpoint use.
 - [ ] `T6.3` — Inject every focused failure at every stage and verify the exact
       cleanup row, first-error precedence, no effect replay, candidate discard,
       callable/capture release, dirty state, finalization, and wake behavior.
@@ -434,7 +446,8 @@ field.
 - [ ] `T7.5` — Run the shared small fixture and approved Signal Analyzer
       fixture timing/resource workloads when their portable source and exact
       Wave 7 configuration are available. Record a blocked disposition rather
-      than inventing production capacities before SPEC-015 supplies them.
+      than inventing production capacities before SPEC-015's owning
+      implementation generates and validates them.
 
 ### Milestone 8: Downstream Integration and Conformance Preparation
 
@@ -520,22 +533,20 @@ straightforward value declarations, or report wiring.
 
 ### Upstream blockers
 
-- SPEC-007 has a ready plan but no `GiftUILayout` target. Layout-consuming
-  tasks `T5.1` onward wait for its exact borrowed-input and resolved-storage
-  production seams.
-- SPEC-008 is approved but `GiftUIRenderLowering` is incomplete. Combined
-  ordinary/drawing preflight and stream production in `T5.2` wait for it.
+- SPEC-007 and SPEC-008 are implemented. Their `GiftUILayout` and
+  `GiftUIRenderLowering` production seams are available and are no longer
+  upstream blockers for `T5.1` and `T5.2`.
 - SPEC-011 has a ready plan but no `GiftUIInteraction` target. Its `T1`-`T4`
   focused declarations and behavior precede SPEC-013 profile binding;
   production coordinator work in the two plans then lands through the explicit
   cross-plan handoff above. `T5.3` and routing integration cannot substitute
   local candidate, generation, hit, or dispatch ownership.
-- SPEC-012 has a ready plan but no `GiftUIDrawing` target. Its `T1`-`T5`
-  focused Drawing behavior and `T6.1`-`T6.3` generated callable contract
-  precede SPEC-013 profile storage/generator integration; the remaining
-  startup and cycle joins return to SPEC-012 through the handoff above.
-  Dynamic/static Canvas production and full drawing evidence cannot proceed
-  by duplicating its callable, capture, Path, plan, or producer algorithms.
+- SPEC-012 is implementing and its `GiftUIDrawing` target, focused `T1`-`T5`
+  behavior, and `T6.1`-`T6.3` generated callable contract are available. Its
+  unfinished `T6.4`-`T7.4` production profile, host, startup, failure, and
+  cycle joins depend on SPEC-013/SPEC-015 through the handoff above.
+  Dynamic/static Canvas storage and full drawing evidence cannot proceed by
+  duplicating its callable, capture, Path, plan, or producer algorithms.
 - SPEC-009 and SPEC-010 remain implementing. Their already available focused
   seams may be consumed, but tasks requiring unfinished production integration
   remain blocked and must not move ownership into Runtime Core.
