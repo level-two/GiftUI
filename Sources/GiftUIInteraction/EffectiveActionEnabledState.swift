@@ -10,8 +10,9 @@ package struct EffectiveActionEnabledState: Equatable, Sendable {
     package func applying(_ payload: borrowing DisabledSemanticPayload)
         -> EffectiveActionEnabledState
     {
-        EffectiveActionEnabledState(
-            isEnabled: isEnabled && !payload.isDisabled
+        let locallyEnabled = !payload.isDisabled
+        return EffectiveActionEnabledState(
+            isEnabled: isEnabled && locallyEnabled
         )
     }
 }

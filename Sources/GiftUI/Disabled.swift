@@ -2,6 +2,10 @@ package struct DisabledSemanticPayload: _GiftUISemanticModifierPayload,
     Equatable, Sendable
 {
     package let isDisabled: Bool
+
+    package init(isDisabled: Bool) {
+        self.isDisabled = isDisabled
+    }
 }
 
 private struct GiftUIDisabledContent<Content: View>: View {

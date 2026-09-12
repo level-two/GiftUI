@@ -192,6 +192,19 @@ targets:
       - GiftUI
       - GiftUIExecution
       - GiftUISemanticCore
+  GiftUIInteraction:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUIExecution
+      - GiftUILayout
+      - GiftUISemanticCore
+  GiftUIInteractionTests:
+    type: test
+    dependencies:
+      - GiftUI
+      - GiftUIExecution
+      - GiftUIInteraction
   GiftUIObservableStateFailureAdapterFixture:
     type: regular
     dependencies:

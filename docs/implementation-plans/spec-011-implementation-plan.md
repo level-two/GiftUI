@@ -328,7 +328,7 @@ allocator are present.
 state machine, record comparison, hit map, and atomic committed state while
 allocating no identity or retaining any upstream borrow.
 
-- [ ] `T3.1` — Implement the exact package value/protocol surface:
+- [x] `T3.1` — Implement the exact package value/protocol surface:
       `BoundedApplicationAction`, `InteractionLimits`, `BoundActionRecord`,
       `InteractionError`, candidate dispositions/results, gesture outcomes,
       `InteractionCandidateBuilder`, and `InteractionGestureResolver`. Prove
