@@ -7,33 +7,170 @@ import GiftUISurfaceCore
 
 struct RecordingDisplayWriter: DisplayPayloadWriter {
     let capacityBytes: UInt32
-    var writtenBytes: UInt32 = 0
     let regionCapacity: UInt16
-    var writtenRegionCount: UInt16 = 0
+    let descriptor: RasterSurfaceDescriptor
+    let damageBounds: Rect
+
+    private(set) var writtenBytes: UInt32 = 0
+    private(set) var writtenRegionCount: UInt16 = 0
+    private(set) var regions: [RecordedDisplayRegion] = []
+    private(set) var stagedBytes: [UInt8]
+    private(set) var isFinished = false
+    private(set) var lastError: DisplayTargetError?
+
+    private var activeRegion: ActiveDisplayRegion?
+
+    init(
+        capacityBytes: UInt32,
+        regionCapacity: UInt16,
+        descriptor: RasterSurfaceDescriptor,
+        damageBounds: Rect
+    ) {
+        self.capacityBytes = capacityBytes
+        self.regionCapacity = regionCapacity
+        self.descriptor = descriptor
+        self.damageBounds = damageBounds
+        stagedBytes = Array(repeating: 0, count: Int(capacityBytes))
+    }
 
     mutating func beginRegion(
         origin: Point,
         pixelCount: UInt16,
         encoding: CanonicalPixelEncoding
     ) -> Bool {
-        _ = origin
-        _ = pixelCount
-        _ = encoding
-        return false
+        guard lastError == nil,
+            !isFinished,
+            activeRegion == nil,
+            pixelCount > 0,
+            encoding == descriptor.encoding,
+            descriptor.bounds.contains(origin),
+            damageBounds.contains(origin)
+        else {
+            return fault(.invariantViolation)
+        }
+
+        let endX = origin.x.addingReportingOverflow(Int32(pixelCount))
+        guard !endX.overflow,
+            endX.partialValue <= descriptor.bounds.maxX,
+            endX.partialValue <= damageBounds.maxX,
+            origin.y >= descriptor.bounds.minY,
+            origin.y < descriptor.bounds.maxY,
+            origin.y >= damageBounds.minY,
+            origin.y < damageBounds.maxY
+        else {
+            return fault(.invariantViolation)
+        }
+
+        let bytesPerPixel: UInt32 = encoding == .rgba8888 ? 4 : 2
+        let byteCount = UInt32(pixelCount).multipliedReportingOverflow(
+            by: bytesPerPixel
+        )
+        let endBytes = writtenBytes.addingReportingOverflow(byteCount.partialValue)
+        guard !byteCount.overflow,
+            !endBytes.overflow,
+            endBytes.partialValue <= capacityBytes,
+            writtenRegionCount < regionCapacity
+        else {
+            return fault(.capacityExhausted)
+        }
+
+        activeRegion = ActiveDisplayRegion(
+            origin: origin,
+            pixelCount: pixelCount,
+            encoding: encoding,
+            byteOffset: writtenBytes,
+            expectedByteCount: byteCount.partialValue,
+            writtenByteCount: 0
+        )
+        return true
     }
 
     mutating func write(byte: UInt8) -> Bool {
-        _ = byte
-        return false
+        guard lastError == nil, !isFinished, var region = activeRegion else {
+            return fault(.invariantViolation)
+        }
+        guard region.writtenByteCount < region.expectedByteCount,
+            writtenBytes < capacityBytes
+        else {
+            return fault(.capacityExhausted)
+        }
+        stagedBytes[Int(writtenBytes)] = byte
+        writtenBytes += 1
+        region.writtenByteCount += 1
+        activeRegion = region
+        return true
     }
 
-    mutating func endRegion() -> Bool { false }
-    mutating func finish() -> Bool { false }
+    mutating func endRegion() -> Bool {
+        guard lastError == nil, !isFinished, let region = activeRegion else {
+            return fault(.invariantViolation)
+        }
+        guard region.writtenByteCount == region.expectedByteCount else {
+            return fault(.invariantViolation)
+        }
+        regions.append(
+            RecordedDisplayRegion(
+                origin: region.origin,
+                pixelCount: region.pixelCount,
+                encoding: region.encoding,
+                byteOffset: region.byteOffset,
+                byteCount: region.expectedByteCount
+            )
+        )
+        writtenRegionCount += 1
+        activeRegion = nil
+        return true
+    }
+
+    mutating func finish() -> Bool {
+        guard lastError == nil,
+            !isFinished,
+            activeRegion == nil,
+            writtenRegionCount > 0,
+            writtenBytes <= capacityBytes,
+            writtenRegionCount <= regionCapacity
+        else {
+            return fault(.invariantViolation)
+        }
+        isFinished = true
+        return true
+    }
 
     mutating func discard() {
+        for index in stagedBytes.indices {
+            stagedBytes[index] = 0
+        }
         writtenBytes = 0
         writtenRegionCount = 0
+        regions.removeAll(keepingCapacity: true)
+        activeRegion = nil
+        isFinished = false
+        lastError = nil
     }
+
+    private mutating func fault(_ error: DisplayTargetError) -> Bool {
+        if lastError == nil {
+            lastError = error
+        }
+        return false
+    }
+}
+
+private struct ActiveDisplayRegion {
+    let origin: Point
+    let pixelCount: UInt16
+    let encoding: CanonicalPixelEncoding
+    let byteOffset: UInt32
+    let expectedByteCount: UInt32
+    var writtenByteCount: UInt32
+}
+
+struct RecordedDisplayRegion: Equatable {
+    let origin: Point
+    let pixelCount: UInt16
+    let encoding: CanonicalPixelEncoding
+    let byteOffset: UInt32
+    let byteCount: UInt32
 }
 
 struct RecordedDisplayReservation: Equatable {
@@ -62,6 +199,7 @@ struct RecordingDisplayTarget: DisplayTarget {
 
     private var nextReservationRawValue: UInt32
     private var reservationIdentityExhausted: Bool
+    private var writerBorrowActive = false
 
     init(
         descriptor: RasterSurfaceDescriptor,
@@ -71,6 +209,7 @@ struct RecordingDisplayTarget: DisplayTarget {
         handoff: SubmissionHandoff = .synchronous,
         maximumInFlightPayloads: UInt8 = 1,
         maximumInFlightBytes: UInt32? = nil,
+        damageBounds: Rect? = nil,
         nextReservationRawValue: UInt32 = 0
     ) {
         expectedDescriptor = descriptor
@@ -82,7 +221,9 @@ struct RecordingDisplayTarget: DisplayTarget {
         self.maximumInFlightBytes = maximumInFlightBytes ?? payloadCapacityBytes
         writer = RecordingDisplayWriter(
             capacityBytes: payloadCapacityBytes,
-            regionCapacity: regionCapacity
+            regionCapacity: regionCapacity,
+            descriptor: descriptor,
+            damageBounds: damageBounds ?? descriptor.bounds
         )
         self.nextReservationRawValue = nextReservationRawValue
         reservationIdentityExhausted = false
@@ -141,9 +282,18 @@ struct RecordingDisplayTarget: DisplayTarget {
         for reservation: DisplayReservationID,
         _ body: (inout RecordingDisplayWriter) -> Result
     ) -> Result? {
-        _ = reservation
-        _ = body
-        return nil
+        guard reservation == activeReservation,
+            !writerBorrowActive,
+            !writer.isFinished
+        else {
+            lastError =
+                reservation == activeReservation
+                ? .reentrancyViolation : .invalidReservation
+            return nil
+        }
+        writerBorrowActive = true
+        defer { writerBorrowActive = false }
+        return body(&writer)
     }
 
     mutating func submitPayload(

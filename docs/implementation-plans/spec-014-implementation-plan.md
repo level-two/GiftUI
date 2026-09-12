@@ -309,7 +309,7 @@ identity lifetime, and target-local health.
       starting at zero with no reuse or wrap, one active frame session, exact
       reservation arguments, idle/inactive/stale detection, and one terminal
       `finishFrame` or `cancelFrame`. Cover exhaustion before mutation.
-- [ ] `T3.2` — Implement the bounded writer state machine: one nonempty
+- [x] `T3.2` — Implement the bounded writer state machine: one nonempty
       horizontal in-bounds/in-damage region, exact encoding, no row crossing or
       nesting, exact left-to-right byte count, packed regions, deterministic
       zero initialization, finish/discard, and per-payload byte/region counters.
@@ -782,6 +782,16 @@ are rejected; and each reservation accepts exactly one `finishFrame` or
 `cancelFrame`. Focused tests cover the zero/start sequence, finish and cancel
 reuse boundaries, reentrancy, under/equal/over capacities, stale identities,
 duplicate terminal calls, and `UInt32.max` exhaustion.
+
+`T3.2` completed the recording writer's bounded region and byte grammar. It
+accepts only nonempty horizontal in-bounds/in-damage runs in the descriptor's
+exact encoding, performs checked row and byte bounds, packs regions in call
+order, starts from deterministic zeroed staging, and requires every region to
+end before a nonempty payload can finish. The first writer fault is sticky;
+discard zeroes and resets all counters, bytes, regions, and state. Focused
+tests cover exact limits, underflow/overflow, write-without-region, empty and
+double finish, nested/double region transitions, stale writer access, row and
+damage crossing, wrong encoding, region-capacity excess, and full reset/reuse.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
