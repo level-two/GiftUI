@@ -242,7 +242,7 @@ conformance, and value layouts from SPEC-014.
       fields, validate payload-by-in-flight multiplication, preserve equality
       success and first-excess failure, and keep region/counter/driver storage
       separate from capability raster/payload bytes.
-- [ ] `T1.4` — In `GiftUIDisplayCore`, implement `DisplayReservationID`,
+- [x] `T1.4` — In `GiftUIDisplayCore`, implement `DisplayReservationID`,
       reservation/transfer results, `DisplayTargetError`,
       `DisplayPayloadWriter`, and `DisplayTarget` exactly. Prove raw values,
       generic writer association, nonescaping exclusive writer borrow,
@@ -690,6 +690,13 @@ package graph. It implements all-positive payload limits, checked payload-by-
 in-flight construction, separate raster/payload/region/submission/tile/glyph/
 stroke domains, equality-admitting helpers, and the exact eleven-case local
 error vocabulary and raw layout.
+
+`T1.4` activated `GiftUIDisplayCore` and its focused tests with the exact
+package graph. It implements the reservation identity/results, transfer
+results, target errors, associated writer protocol, and target protocol with
+ordinary immutable property requirements, a nonescaping exclusive writer
+borrow, exact maxima/lifetime/handoff values, and authoritative borrowed
+health access.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
