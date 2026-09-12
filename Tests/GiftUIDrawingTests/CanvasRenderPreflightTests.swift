@@ -158,6 +158,100 @@ func canvasPreflightFailsClosedForCombinedAndConfiguredCapacity() {
     #expect(activeWorkspace.isActive)
 }
 
+@Test
+func canvasProductionCompletesBothTraversalsAndStreamsOneCombinedTransaction() {
+    var workspace = CanvasRenderWorkspace()
+    var sink = CanvasRenderSink()
+    let expectedHeader = RenderPlanHeader(
+        surfaceBounds: canvasRenderBounds,
+        damageBounds: canvasRenderBounds,
+        operationCount: 2,
+        positionedGlyphCount: 0,
+        maximumObservedClipDepth: 1
+    )
+
+    let result = CanvasRenderProducer.produce(
+        semantic: CanvasRenderSemantic(),
+        layout: CanvasRenderLayout(),
+        textMetrics: CanvasRenderMetrics(),
+        drawingPlan: CanvasRenderPlan(),
+        surfaceBounds: canvasRenderBounds,
+        damageMode: .rootIntersection,
+        rootForeground: .red,
+        limits: canvasRenderLimits,
+        expectedHeader: expectedHeader,
+        workspace: &workspace,
+        sink: &sink
+    )
+
+    #expect(result == .success(expectedHeader))
+    #expect(
+        sink.events
+            == [
+                .begin(expectedHeader),
+                .fill(
+                    FillRectOperation(
+                        bounds: canvasRenderClip,
+                        clip: canvasRenderClip,
+                        color: .blue
+                    )
+                ),
+                .stroke(
+                    CanvasRecordedStroke(
+                        header: StraightLineStrokeHeader(
+                            color: .red,
+                            lineWidth: 2,
+                            lineCap: .round,
+                            lineJoin: .miter,
+                            surfaceOrigin: canvasRenderClip.origin,
+                            inheritedClip: canvasRenderClip,
+                            pointCount: 2,
+                            subpathCount: 1
+                        ),
+                        points: [Point(x: 2, y: 2), Point(x: 8, y: 6)],
+                        subpaths: [SubpathRange(firstPoint: 0, pointCount: 2)!]
+                    )
+                ),
+                .finish,
+            ]
+    )
+    #expect(sink.capacityReadCount == 1)
+    #expect(sink.discardCount == 0)
+    #expect(workspace.acquireCount == 1)
+    #expect(workspace.resetCount == 1)
+    #expect(!workspace.isActive)
+}
+
+@Test
+func canvasProductionRejectsFinalPlanSummaryMismatchBeforeBegin() {
+    var workspace = CanvasRenderWorkspace()
+    var sink = CanvasRenderSink()
+    let result = CanvasRenderProducer.produce(
+        semantic: CanvasRenderSemantic(),
+        layout: CanvasRenderLayout(),
+        textMetrics: CanvasRenderMetrics(),
+        drawingPlan: CanvasRenderPlan(fault: .summaryPoint),
+        surfaceBounds: canvasRenderBounds,
+        damageMode: .rootIntersection,
+        rootForeground: .red,
+        limits: canvasRenderLimits,
+        expectedHeader: RenderPlanHeader(
+            surfaceBounds: canvasRenderBounds,
+            damageBounds: canvasRenderBounds,
+            operationCount: 2,
+            positionedGlyphCount: 0,
+            maximumObservedClipDepth: 1
+        ),
+        workspace: &workspace,
+        sink: &sink
+    )
+
+    #expect(result == .failure(.invariantViolation))
+    #expect(sink.events.isEmpty)
+    #expect(sink.discardCount == 0)
+    #expect(workspace.resetCount == 1)
+}
+
 private enum CanvasRenderIdentity: UInt8, Equatable, Sendable {
     case root
     case background
@@ -394,8 +488,9 @@ private struct CanvasRenderWorkspace: RenderProductionWorkspace {
     private(set) var layoutVisitCount: UInt16 = 0
     private var semanticVisits = [false, false, false]
     private var layoutVisits = [false, false]
+    private var foregroundStack: [Color] = []
 
-    var currentForeground: Color? { nil }
+    var currentForeground: Color? { foregroundStack.last }
 
     mutating func acquire() -> Bool {
         guard !isActive else { return false }
@@ -414,14 +509,24 @@ private struct CanvasRenderWorkspace: RenderProductionWorkspace {
         return visit(ordinal, in: &layoutVisits)
     }
 
-    mutating func pushForeground(_ color: Color) -> Bool { true }
-    mutating func popForeground() -> Bool { true }
+    mutating func pushForeground(_ color: Color) -> Bool {
+        guard isActive else { return false }
+        foregroundStack.append(color)
+        return true
+    }
+
+    mutating func popForeground() -> Bool {
+        guard isActive, !foregroundStack.isEmpty else { return false }
+        foregroundStack.removeLast()
+        return true
+    }
 
     mutating func reset() {
         isActive = false
         resetCount += 1
         semanticVisits = [false, false, false]
         layoutVisits = [false, false]
+        foregroundStack.removeAll(keepingCapacity: true)
     }
 
     private func visit(
@@ -432,6 +537,98 @@ private struct CanvasRenderWorkspace: RenderProductionWorkspace {
         if visits[Int(ordinal)] { return .repeated }
         visits[Int(ordinal)] = true
         return .first
+    }
+}
+
+private struct CanvasRecordedStroke: Equatable {
+    let header: StraightLineStrokeHeader
+    let points: [Point]
+    let subpaths: [SubpathRange]
+}
+
+private enum CanvasRenderEvent: Equatable {
+    case begin(RenderPlanHeader)
+    case fill(FillRectOperation)
+    case stroke(CanvasRecordedStroke)
+    case finish
+}
+
+private final class CanvasRenderSinkCounter {
+    var capacityReads: UInt16 = 0
+}
+
+private struct CanvasRenderSink: DrawingOperationSink {
+    private let counter = CanvasRenderSinkCounter()
+    private(set) var events: [CanvasRenderEvent] = []
+    private(set) var discardCount: UInt16 = 0
+
+    var capacityReadCount: UInt16 { counter.capacityReads }
+
+    var capacity: RenderSinkCapacity {
+        counter.capacityReads += 1
+        return RenderSinkCapacity(
+            maximumOperations: 2,
+            maximumPositionedGlyphs: 0
+        )
+    }
+
+    mutating func begin(_ header: RenderPlanHeader) -> Bool {
+        events.append(.begin(header))
+        return true
+    }
+
+    mutating func fillRect(_ operation: FillRectOperation) -> Bool {
+        events.append(.fill(operation))
+        return true
+    }
+
+    mutating func beginPositionedGlyphs(
+        _ operation: PositionedGlyphOperationHeader
+    ) -> Bool { false }
+
+    mutating func positionedGlyph(_ glyph: PositionedGlyph) -> Bool { false }
+    mutating func endPositionedGlyphs() -> Bool { false }
+
+    mutating func straightLineStroke<Stroke: StraightLineStrokeView>(
+        _ stroke: borrowing Stroke
+    ) -> Bool {
+        var points: [Point] = []
+        var pointIndex: UInt16 = 0
+        while pointIndex < stroke.header.pointCount {
+            guard let point = stroke.point(at: pointIndex) else { return false }
+            points.append(point)
+            pointIndex += 1
+        }
+
+        var subpaths: [SubpathRange] = []
+        var subpathIndex: UInt16 = 0
+        while subpathIndex < stroke.header.subpathCount {
+            guard let subpath = stroke.subpath(at: subpathIndex) else {
+                return false
+            }
+            subpaths.append(subpath)
+            subpathIndex += 1
+        }
+        events.append(
+            .stroke(
+                CanvasRecordedStroke(
+                    header: stroke.header,
+                    points: points,
+                    subpaths: subpaths
+                )
+            )
+        )
+        return true
+    }
+
+    mutating func finish() -> Bool {
+        events.append(.finish)
+        return true
+    }
+
+    mutating func discard() {
+        discardCount += 1
+        events.removeAll(keepingCapacity: true)
     }
 }
 

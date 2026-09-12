@@ -361,7 +361,7 @@ and synchronous borrowed consumption.
       observing an endpoint sink or retaining a borrow. Acquire and reset the
       caller-owned render workspace entirely within the call and expose no
       partial header on failure.
-- [ ] `T5.2` — Implement `CanvasRenderProducer.produce` as the same traversal inside one
+- [x] `T5.2` — Implement `CanvasRenderProducer.produce` as the same traversal inside one
       offer. First move T5.1's external successful-preflight summary comparison
       into the new preflight-extension completion requirement and make the
       ordinary empty extension complete successfully. Require exact
@@ -1001,6 +1001,19 @@ completion result to each extension protocol, with preflight completion before
 `begin` and streaming completion before `finish`. The maintainer explicitly
 approved the correction on 2026-09-12; T5.2-T5.5 may resume, and completed T6.2
 evidence remains valid.
+
+`T5.2` is complete under the approved completion-seam amendment.
+`RenderProducer` now provides the additive combined production overload using
+its existing preflight and streaming traversals, one workspace lifecycle, and
+one sink transaction. It validates the exact header and actual capacity before
+preflight completion and `begin`, tracks equal extension-operation totals, and
+requires streaming completion before `finish`. The ordinary entry point uses
+empty successful extensions and remains source- and transcript-compatible.
+`CanvasRenderProducer.produce` validates the immutable plan in both passes and
+streams each snapshot as one synchronous borrowed stroke. Focused tests prove
+the exact combined transaction and pre-`begin` final-summary rejection. The
+[combined production evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-production.md)
+records the boundary. T5.3 is next.
 
 `T6.2` is complete for the checked static fixture. `GiftUIDrawing` owns the
 exact amended `StaticCanvasCallableTable` protocol, and the manifest-generated

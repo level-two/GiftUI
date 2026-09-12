@@ -25,6 +25,49 @@ extension RenderProducer {
         Semantic.Identity == Layout.Identity,
         Semantic.Identity == Workspace.Identity
     {
+        var extensionVisitor = EmptyRenderStreamingExtension<
+            Semantic.Identity, Sink
+        >()
+        return stream(
+            preflight: preflight,
+            semantic: semantic,
+            layout: layout,
+            textMetrics: textMetrics,
+            surfaceBounds: surfaceBounds,
+            damageMode: damageMode,
+            rootForeground: rootForeground,
+            workspace: &workspace,
+            extensionVisitor: &extensionVisitor,
+            sink: &sink
+        )
+    }
+
+    static func stream<
+        Semantic, Layout, Metrics, Workspace, Extension, Sink
+    >(
+        preflight: RenderPreflightSummary,
+        semantic: borrowing Semantic,
+        layout: borrowing Layout,
+        textMetrics: borrowing Metrics,
+        surfaceBounds: Rect,
+        damageMode: RenderDamageMode,
+        rootForeground: Color,
+        workspace: inout Workspace,
+        extensionVisitor: inout Extension,
+        sink: inout Sink
+    ) -> RenderProductionResult
+    where
+        Semantic: SemanticRenderView,
+        Layout: ResolvedRenderLayoutView,
+        Metrics: CanonicalTextMetricsView,
+        Workspace: RenderProductionWorkspace,
+        Extension: RenderStreamingExtension,
+        Sink: RenderOperationSink,
+        Semantic.Identity == Layout.Identity,
+        Semantic.Identity == Workspace.Identity,
+        Semantic.Identity == Extension.Identity,
+        Extension.Sink == Sink
+    {
         guard
             snapshotsMatch(
                 preflight,
@@ -45,21 +88,24 @@ extension RenderProducer {
         }
 
         var state = RenderStreamingState()
-        if state.stream(
+        if let error = state.stream(
             semantic.rootIdentity,
             semantic: semantic,
             layout: layout,
             textMetrics: textMetrics,
             surfaceBounds: surfaceBounds,
             workspace: &workspace,
+            extensionVisitor: &extensionVisitor,
             sink: &sink
-        ) == false {
+        ) {
             sink.discard()
-            return .failure(.invariantViolation)
+            return .failure(error)
         }
         guard state.operationCount == preflight.header.operationCount,
             state.positionedGlyphCount
                 == preflight.header.positionedGlyphCount,
+            state.extensionOperationCount
+                == preflight.extensionOperationCount,
             semantic.semanticIdentity(at: semantic.semanticScopeCount) == nil,
             layout.layoutIdentity(at: layout.layoutScopeCount) == nil,
             damageMatches(
@@ -80,6 +126,13 @@ extension RenderProducer {
         guard workspace.popForeground(), workspace.currentForeground == nil else {
             sink.discard()
             return .failure(.invariantViolation)
+        }
+        switch extensionVisitor.complete() {
+        case .success:
+            break
+        case .failure(let error):
+            sink.discard()
+            return .failure(error)
         }
         guard sink.finish() else {
             sink.discard()
@@ -124,24 +177,31 @@ extension RenderProducer {
 private struct RenderStreamingState {
     var operationCount: UInt16 = 0
     var positionedGlyphCount: UInt16 = 0
+    var extensionOperationCount: UInt16 = 0
 
-    mutating func stream<Semantic, Layout, Metrics, Workspace, Sink>(
+    mutating func stream<
+        Semantic, Layout, Metrics, Workspace, Extension, Sink
+    >(
         _ identity: Semantic.Identity,
         semantic: borrowing Semantic,
         layout: borrowing Layout,
         textMetrics: borrowing Metrics,
         surfaceBounds: Rect,
         workspace: inout Workspace,
+        extensionVisitor: inout Extension,
         sink: inout Sink
-    ) -> Bool
+    ) -> RenderProductionError?
     where
         Semantic: SemanticRenderView,
         Layout: ResolvedRenderLayoutView,
         Metrics: CanonicalTextMetricsView,
         Workspace: RenderProductionWorkspace,
+        Extension: RenderStreamingExtension,
         Sink: RenderOperationSink,
         Semantic.Identity == Layout.Identity,
-        Semantic.Identity == Workspace.Identity
+        Semantic.Identity == Workspace.Identity,
+        Semantic.Identity == Extension.Identity,
+        Extension.Sink == Sink
     {
         guard let ordinal = semantic.semanticOrdinal(of: identity),
             ordinal < semantic.semanticScopeCount,
@@ -159,25 +219,25 @@ private struct RenderStreamingState {
                 surfaceBounds
             )
         else {
-            return false
+            return .invariantViolation
         }
 
         switch scope {
         case .foregroundStyle, .background, .clipBoundary:
-            guard childCount == 1 else { return false }
+            guard childCount == 1 else { return .invariantViolation }
         case .text, .canvas:
-            guard childCount == 0 else { return false }
+            guard childCount == 0 else { return .invariantViolation }
         case .structural:
             break
         }
 
         guard let inheritedForeground = workspace.currentForeground else {
-            return false
+            return .invariantViolation
         }
         let overridesForeground: Bool
         if case .foregroundStyle(let color) = scope {
             guard workspace.pushForeground(color), workspace.currentForeground == color else {
-                return false
+                return .invariantViolation
             }
             overridesForeground = true
         } else {
@@ -198,7 +258,7 @@ private struct RenderStreamingState {
                     )
                 ), incrementOperation()
             else {
-                return false
+                return .invariantViolation
             }
         }
 
@@ -213,40 +273,65 @@ private struct RenderStreamingState {
                     sink: &sink
                 )
             else {
-                return false
+                return .invariantViolation
             }
+        }
+
+        switch extensionVisitor.visit(
+            scope: scope,
+            identity: identity,
+            bounds: bounds,
+            clip: logicalClip,
+            sink: &sink
+        ) {
+        case .success(let visit):
+            let extensionTotal = extensionOperationCount.addingReportingOverflow(
+                visit.operationCount
+            )
+            let operationTotal = operationCount.addingReportingOverflow(
+                visit.operationCount
+            )
+            guard !extensionTotal.overflow, !operationTotal.overflow else {
+                return .invariantViolation
+            }
+            extensionOperationCount = extensionTotal.partialValue
+            operationCount = operationTotal.partialValue
+        case .failure(let error):
+            return error
         }
 
         var childIndex: UInt16 = 0
         while childIndex < childCount {
-            guard let child = semantic.child(of: identity, at: childIndex),
-                stream(
-                    child,
-                    semantic: semantic,
-                    layout: layout,
-                    textMetrics: textMetrics,
-                    surfaceBounds: surfaceBounds,
-                    workspace: &workspace,
-                    sink: &sink
-                )
-            else {
-                return false
+            guard let child = semantic.child(of: identity, at: childIndex) else {
+                return .invariantViolation
+            }
+            if let error = stream(
+                child,
+                semantic: semantic,
+                layout: layout,
+                textMetrics: textMetrics,
+                surfaceBounds: surfaceBounds,
+                workspace: &workspace,
+                extensionVisitor: &extensionVisitor,
+                sink: &sink
+            ) {
+                return error
             }
             childIndex += 1
         }
         guard semantic.child(of: identity, at: childCount) == nil else {
-            return false
+            return .invariantViolation
         }
         if overridesForeground {
             guard workspace.popForeground(),
                 workspace.currentForeground == inheritedForeground
             else {
-                return false
+                return .invariantViolation
             }
         } else if workspace.currentForeground != inheritedForeground {
-            return false
+            return .invariantViolation
         }
-        return true
+        return nil
     }
 
     private mutating func streamText<Layout, Metrics, Sink>(
@@ -375,5 +460,23 @@ private struct RenderStreamingState {
         guard !result.overflow else { return false }
         positionedGlyphCount = result.partialValue
         return true
+    }
+}
+
+private struct EmptyRenderStreamingExtension<Identity, Sink>:
+    RenderStreamingExtension
+where Identity: Equatable & Sendable, Sink: RenderOperationSink {
+    mutating func visit(
+        scope _: SemanticRenderScope,
+        identity _: Identity,
+        bounds _: Rect,
+        clip _: Rect,
+        sink _: inout Sink
+    ) -> RenderExtensionVisitResult {
+        .success(RenderExtensionVisit(operationCount: 0))
+    }
+
+    mutating func complete() -> RenderExtensionCompletionResult {
+        .success
     }
 }

@@ -10,6 +10,7 @@ struct RenderPreflightSummary {
     let header: RenderPlanHeader
     let semanticSnapshotVersion: UInt32
     let layoutSnapshotVersion: UInt32
+    let extensionOperationCount: UInt16
 }
 
 enum RenderPreflightResult {
@@ -55,6 +56,9 @@ extension RenderProducer {
                 <= sinkCapacity.maximumPositionedGlyphs
         else {
             return .failure(.capacityExhausted)
+        }
+        guard case .success = extensionVisitor.complete() else {
+            return .failure(.invariantViolation)
         }
         return result
     }
@@ -110,10 +114,16 @@ extension RenderProducer {
             summary.header.positionedGlyphCount
                 <= configuredSinkCapacity.maximumPositionedGlyphs
         else { return .failure(.capacityExhausted) }
+        switch extensionVisitor.complete() {
+        case .success:
+            break
+        case .failure(let error):
+            return .failure(error)
+        }
         return .success(summary.header)
     }
 
-    private static func preflightTraversal<
+    static func preflightTraversal<
         Semantic, Layout, Metrics, Workspace, Extension
     >(
         semantic: borrowing Semantic,
@@ -218,7 +228,8 @@ extension RenderProducer {
                     maximumObservedClipDepth: state.maximumObservedClipDepth
                 ),
                 semanticSnapshotVersion: semanticVersion,
-                layoutSnapshotVersion: layoutVersion
+                layoutSnapshotVersion: layoutVersion,
+                extensionOperationCount: state.extensionOperationCount
             )
         )
     }
@@ -233,6 +244,7 @@ private struct RenderPreflightState {
     var semanticVisitCount: UInt16 = 0
     var layoutVisitCount: UInt16 = 0
     var textLineCount: UInt16 = 0
+    var extensionOperationCount: UInt16 = 0
 
     mutating func visit<Semantic, Layout, Metrics, Workspace, Extension>(
         _ identity: Semantic.Identity,
@@ -350,6 +362,11 @@ private struct RenderPreflightState {
         ) {
         case .success(let visit):
             if let error = reserveOperations(visit.operationCount) { return error }
+            let extensionTotal = extensionOperationCount.addingReportingOverflow(
+                visit.operationCount
+            )
+            guard !extensionTotal.overflow else { return .capacityExhausted }
+            extensionOperationCount = extensionTotal.partialValue
         case .failure(let error):
             return error
         }
@@ -540,5 +557,9 @@ where Identity: Equatable & Sendable {
         clip _: Rect
     ) -> RenderExtensionVisitResult {
         .success(RenderExtensionVisit(operationCount: 0))
+    }
+
+    mutating func complete() -> RenderExtensionCompletionResult {
+        .success
     }
 }

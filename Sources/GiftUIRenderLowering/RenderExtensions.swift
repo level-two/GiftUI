@@ -16,6 +16,11 @@ package enum RenderExtensionVisitResult: Equatable, Sendable {
     case failure(RenderProductionError)
 }
 
+package enum RenderExtensionCompletionResult: Equatable, Sendable {
+    case success
+    case failure(RenderProductionError)
+}
+
 package protocol RenderPreflightExtension {
     associatedtype Identity: Equatable, Sendable
 
@@ -25,6 +30,8 @@ package protocol RenderPreflightExtension {
         bounds: Rect,
         clip: Rect
     ) -> RenderExtensionVisitResult
+
+    mutating func complete() -> RenderExtensionCompletionResult
 }
 
 package protocol RenderStreamingExtension {
@@ -38,4 +45,6 @@ package protocol RenderStreamingExtension {
         clip: Rect,
         sink: inout Sink
     ) -> RenderExtensionVisitResult
+
+    mutating func complete() -> RenderExtensionCompletionResult
 }
