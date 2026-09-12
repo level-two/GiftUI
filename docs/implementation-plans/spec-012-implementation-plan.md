@@ -333,7 +333,7 @@ performs exact whole-attempt cleanup and dirty recovery.
       normal or throwing return, and remove all publication-eligible callable/
       capture storage after the last occurrence. Exercise zero-Canvas and
       zero-stroke Canvas attempts.
-- [ ] `T4.4` — Checked-add each Canvas surface origin to every local point,
+- [x] `T4.4` — Checked-add each Canvas surface origin to every local point,
       preserve the origin as metadata without double translation, carry only
       the inherited clip, validate normalized stroke totals, and expose a plan
       only after every occurrence succeeds.
@@ -937,3 +937,12 @@ one zero-stroke Canvas contributes exactly one occurrence with zero remaining
 plan totals. The
 [callable lifetime evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-4/canvas-callable-lifetime.md)
 records release counts and cleanup. T4.4 is next.
+
+`T4.4` is complete. The construction workspace binds the scoped Path and
+snapshot engines to the exact Canvas origin and inherited clip, validates
+every checked coordinate addition before commit, stores translated points,
+retains origin only as metadata, and seals only when normalized-operation and
+stroke totals agree. Focused fixtures distinguish one translation from zero or
+two and prove overflow discards the whole plan without exposure. The
+[translation evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-4/canvas-plan-translation.md)
+records exact values and totals. T4.5 is next.

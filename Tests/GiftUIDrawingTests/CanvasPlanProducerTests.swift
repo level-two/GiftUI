@@ -146,6 +146,64 @@ func canvasPlanProducerReleasesEachCallableOnceOnLaterThrowAndInvokesNoSuffix() 
     #expect(workspace.resetCount == 1)
 }
 
+@Test
+func canvasPlanProducerTranslatesSnapshotsOnceAndPreservesOriginAndClip() {
+    var source = CanvasPlanSourceFixture(identities: [20], drawing: .stroke)
+    let record = canvasLayoutRecord(identity: 20, x: 10, y: 20, width: 30, height: 40)
+    let layout = CanvasPlanLayoutFixture(records: [record])
+    var workspace = CanvasPlanConstructionFixture(capacity: canvasPlanLimits)
+
+    let result = CanvasPlanProducer.derive(
+        source: &source,
+        layout: layout,
+        executionContext: derivingContext,
+        limits: canvasPlanLimits,
+        workspace: &workspace
+    )
+
+    guard case .success(let summary) = result else {
+        Issue.record("translated drawing plan must succeed")
+        return
+    }
+    #expect(summary.strokeCount == 1)
+    #expect(summary.pointCount == 2)
+    #expect(summary.subpathCount == 1)
+    #expect(summary.normalizedStrokeOperationCount == 1)
+    #expect(workspace.strokeHeader(of: 20, at: 0)?.surfaceOrigin == Point(x: 10, y: 20))
+    #expect(workspace.strokeHeader(of: 20, at: 0)?.inheritedClip == record.clip)
+    #expect(workspace.point(of: 20, stroke: 0, at: 0) == Point(x: 11, y: 22))
+    #expect(workspace.point(of: 20, stroke: 0, at: 1) == Point(x: 13, y: 24))
+    #expect(
+        workspace.subpath(of: 20, stroke: 0, at: 0) == SubpathRange(firstPoint: 0, pointCount: 2))
+}
+
+@Test
+func canvasPlanProducerDiscardsTheWholePlanOnTranslationOverflow() {
+    var source = CanvasPlanSourceFixture(identities: [20], drawing: .overflow)
+    let bounds = Rect(
+        origin: Point(x: GeometryScalar.max, y: 0),
+        size: Size(width: 0, height: 0)!
+    )!
+    let layout = CanvasPlanLayoutFixture(
+        records: [CanvasPlanLayoutRecord(identity: 20, bounds: bounds, clip: zeroRect)]
+    )
+    var workspace = CanvasPlanConstructionFixture(capacity: canvasPlanLimits)
+
+    let result = CanvasPlanProducer.derive(
+        source: &source,
+        layout: layout,
+        executionContext: derivingContext,
+        limits: canvasPlanLimits,
+        workspace: &workspace
+    )
+
+    #expect(result == .failure(.arithmeticOverflow))
+    #expect(source.releasedIdentities == [20])
+    #expect(workspace.discardCount == 1)
+    #expect(workspace.resetCount == 1)
+    #expect(workspace.strokeCount(of: 20) == nil)
+}
+
 @Test(arguments: CanvasPlanEntryFailure.allCases)
 private func canvasPlanProducerRejectsInvalidEntryBeforeClientInvocation(
     _ failure: CanvasPlanEntryFailure
@@ -332,6 +390,7 @@ private struct CanvasPlanSourceFixture: CanvasInvocationSource {
     var reportedCountOverride: UInt16?
     let errorAtIndex: UInt16?
     let error: DrawingError?
+    let drawing: CanvasPlanDrawing
     var invokedIdentities: [UInt16] = []
     var invokedSizes: [Size] = []
     var releasedIdentities: [UInt16] = []
@@ -342,12 +401,14 @@ private struct CanvasPlanSourceFixture: CanvasInvocationSource {
         identities: [UInt16],
         reportedCountOverride: UInt16? = nil,
         errorAtIndex: UInt16? = nil,
-        error: DrawingError? = nil
+        error: DrawingError? = nil,
+        drawing: CanvasPlanDrawing = .none
     ) {
         self.identities = identities
         self.reportedCountOverride = reportedCountOverride
         self.errorAtIndex = errorAtIndex
         self.error = error
+        self.drawing = drawing
         activeIdentities = Set(identities)
     }
 
@@ -362,7 +423,7 @@ private struct CanvasPlanSourceFixture: CanvasInvocationSource {
 
     mutating func invokeCanvas(
         at identity: UInt16,
-        context _: inout GraphicsContext,
+        context: inout GraphicsContext,
         size: Size
     ) throws(DrawingError) {
         guard activeIdentities.contains(identity) else {
@@ -374,6 +435,25 @@ private struct CanvasPlanSourceFixture: CanvasInvocationSource {
         if index == errorAtIndex, let error {
             throw error
         }
+        switch drawing {
+        case .none:
+            break
+        case .stroke:
+            try context.withPath { (context, path) throws(DrawingError) in
+                try path.move(to: Point(x: 1, y: 2))
+                try path.addLine(to: Point(x: 3, y: 4))
+                try context.stroke(
+                    path,
+                    with: .color(.blue),
+                    style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round)
+                )
+            }
+        case .overflow:
+            try context.withPath { (context, path) throws(DrawingError) in
+                try path.move(to: Point(x: 1, y: 0))
+                try context.stroke(path, with: .color(.red), lineWidth: 1)
+            }
+        }
     }
 
     mutating func releaseCanvas(at identity: UInt16) {
@@ -381,6 +461,12 @@ private struct CanvasPlanSourceFixture: CanvasInvocationSource {
         releaseCounts[identity, default: 0] += 1
         activeIdentities.remove(identity)
     }
+}
+
+private enum CanvasPlanDrawing {
+    case none
+    case stroke
+    case overflow
 }
 
 private struct CanvasPlanLayoutRecord {
@@ -418,7 +504,9 @@ private struct CanvasPlanLayoutFixture: ResolvedRenderLayoutView {
     func glyph(of _: UInt16, at _: UInt16) -> ResolvedRenderGlyph? { nil }
 }
 
-private struct CanvasPlanConstructionFixture: DrawingPlanConstructionWorkspace {
+private struct CanvasPlanConstructionFixture: DrawingPlanConstructionWorkspace,
+    DrawingPlanMutationStorage
+{
     let capacity: DrawingLimits
     private(set) var isActive = false
     private var publishedSummary: DrawingPlanSummary?
@@ -429,6 +517,11 @@ private struct CanvasPlanConstructionFixture: DrawingPlanConstructionWorkspace {
     private(set) var sealCount = 0
     private(set) var discardCount = 0
     private(set) var resetCount = 0
+    private var currentIdentity: UInt16?
+    private var currentOrigin: Point?
+    private var currentClip: Rect?
+    private var livePath: LivePathBuilder<DynamicLivePathStorage>?
+    private var strokes: [CanvasPlanStrokeFixture] = []
 
     init(capacity: DrawingLimits) {
         self.capacity = capacity
@@ -437,6 +530,12 @@ private struct CanvasPlanConstructionFixture: DrawingPlanConstructionWorkspace {
     var summary: DrawingPlanSummary {
         publishedSummary!
     }
+
+    var limits: DrawingLimits { capacity }
+    var strokeCount: UInt16 { UInt16(strokes.count) }
+    var pointCount: UInt16 { UInt16(strokes.reduce(0) { $0 + $1.points.count }) }
+    var subpathCount: UInt16 { UInt16(strokes.reduce(0) { $0 + $1.subpaths.count }) }
+    var normalizedStrokeOperationCount: UInt16 { strokeCount }
 
     mutating func acquire() -> Bool {
         guard !isActive, publishedSummary == nil else { return false }
@@ -457,13 +556,23 @@ private struct CanvasPlanConstructionFixture: DrawingPlanConstructionWorkspace {
         surfaceOrigins.append(surfaceOrigin)
         inheritedClips.append(inheritedClip)
         contextBodyCount += 1
-        var storage: UInt8 = 0
+        currentIdentity = identity
+        currentOrigin = surfaceOrigin
+        currentClip = inheritedClip
+        let contextGeneration = UInt32(contextBodyCount)
+        defer {
+            livePath?.reset()
+            livePath = nil
+            currentIdentity = nil
+            currentOrigin = nil
+            currentClip = nil
+        }
         do {
-            return try withUnsafeMutablePointer(to: &storage) { storagePointer in
+            return try withUnsafeMutablePointer(to: &self) { workspacePointer in
                 var context = GraphicsContext(
-                    storage: UnsafeMutableRawPointer(storagePointer),
-                    generation: UInt32(contextBodyCount),
-                    operations: noOpDrawingOperations
+                    storage: UnsafeMutableRawPointer(workspacePointer),
+                    generation: contextGeneration,
+                    operations: canvasPlanDrawingOperations
                 )
                 defer { context.invalidate() }
                 return try body(&context)
@@ -478,14 +587,15 @@ private struct CanvasPlanConstructionFixture: DrawingPlanConstructionWorkspace {
     mutating func seal(canvasOccurrenceCount: UInt16) -> DrawingPlanResult {
         sealCount += 1
         guard isActive,
-            canvasOccurrenceCount == UInt16(contextIdentities.count)
+            canvasOccurrenceCount == UInt16(contextIdentities.count),
+            normalizedStrokeOperationCount == strokeCount
         else { return .failure(.invariantViolation) }
         let summary = DrawingPlanSummary(
             canvasOccurrenceCount: canvasOccurrenceCount,
-            strokeCount: 0,
-            pointCount: 0,
-            subpathCount: 0,
-            normalizedStrokeOperationCount: 0
+            strokeCount: strokeCount,
+            pointCount: pointCount,
+            subpathCount: subpathCount,
+            normalizedStrokeOperationCount: normalizedStrokeOperationCount
         )
         publishedSummary = summary
         isActive = false
@@ -496,6 +606,7 @@ private struct CanvasPlanConstructionFixture: DrawingPlanConstructionWorkspace {
         discardCount += 1
         publishedSummary = nil
         isActive = false
+        strokes.removeAll(keepingCapacity: true)
     }
 
     mutating func reset() {
@@ -505,15 +616,159 @@ private struct CanvasPlanConstructionFixture: DrawingPlanConstructionWorkspace {
         contextIdentities.removeAll(keepingCapacity: true)
         surfaceOrigins.removeAll(keepingCapacity: true)
         inheritedClips.removeAll(keepingCapacity: true)
+        strokes.removeAll(keepingCapacity: true)
     }
 
     func strokeCount(of canvas: UInt16) -> UInt16? {
-        publishedSummary != nil && contextIdentities.contains(canvas) ? 0 : nil
+        guard publishedSummary != nil, contextIdentities.contains(canvas) else { return nil }
+        return UInt16(strokes.filter { $0.canvas == canvas }.count)
     }
 
-    func strokeHeader(of _: UInt16, at _: UInt16) -> StraightLineStrokeHeader? { nil }
-    func point(of _: UInt16, stroke _: UInt16, at _: UInt16) -> Point? { nil }
-    func subpath(of _: UInt16, stroke _: UInt16, at _: UInt16) -> SubpathRange? { nil }
+    func strokeHeader(of canvas: UInt16, at index: UInt16) -> StraightLineStrokeHeader? {
+        stroke(of: canvas, at: index)?.header
+    }
+
+    func point(of canvas: UInt16, stroke strokeIndex: UInt16, at index: UInt16) -> Point? {
+        guard let stroke = stroke(of: canvas, at: strokeIndex), Int(index) < stroke.points.count
+        else { return nil }
+        return stroke.points[Int(index)]
+    }
+
+    func subpath(
+        of canvas: UInt16,
+        stroke strokeIndex: UInt16,
+        at index: UInt16
+    ) -> SubpathRange? {
+        guard let stroke = stroke(of: canvas, at: strokeIndex),
+            Int(index) < stroke.subpaths.count
+        else { return nil }
+        return stroke.subpaths[Int(index)]
+    }
+
+    mutating func appendStroke<PathStorage>(
+        header: StraightLineStrokeHeader,
+        path: borrowing PathStorage
+    ) -> Bool where PathStorage: LivePathStorage {
+        guard let canvas = currentIdentity, let origin = currentOrigin else { return false }
+        var points: [Point] = []
+        var pointIndex: UInt16 = 0
+        while pointIndex < path.pointCount {
+            guard let point = path.point(at: pointIndex) else { return false }
+            let translatedX = point.x.addingReportingOverflow(origin.x)
+            let translatedY = point.y.addingReportingOverflow(origin.y)
+            guard !translatedX.overflow, !translatedY.overflow else { return false }
+            points.append(Point(x: translatedX.partialValue, y: translatedY.partialValue))
+            pointIndex += 1
+        }
+        var subpaths: [SubpathRange] = []
+        var subpathIndex: UInt16 = 0
+        while subpathIndex < path.subpathCount {
+            guard let subpath = path.subpath(at: subpathIndex) else { return false }
+            subpaths.append(subpath)
+            subpathIndex += 1
+        }
+        strokes.append(
+            CanvasPlanStrokeFixture(
+                canvas: canvas,
+                header: header,
+                points: points,
+                subpaths: subpaths
+            )
+        )
+        return true
+    }
+
+    mutating func beginPath(
+        contextGeneration: UInt32,
+        pathGeneration: inout UInt32
+    ) -> UInt8 {
+        guard contextGeneration == UInt32(contextBodyCount), livePath == nil else {
+            return _GiftUIDrawingStatus.reentrancyViolation.rawValue
+        }
+        livePath = LivePathBuilder(
+            storage: DynamicLivePathStorage(
+                maximumPointCount: capacity.maximumLivePathPoints,
+                maximumSubpathCount: capacity.maximumLivePathSubpaths
+            )
+        )
+        pathGeneration = 1
+        return _GiftUIDrawingStatus.success.rawValue
+    }
+
+    mutating func endPath(contextGeneration: UInt32, pathGeneration: UInt32) -> UInt8 {
+        guard contextGeneration == UInt32(contextBodyCount), pathGeneration == 1,
+            var path = livePath
+        else { return _GiftUIDrawingStatus.invalidScope.rawValue }
+        path.reset()
+        livePath = nil
+        return _GiftUIDrawingStatus.success.rawValue
+    }
+
+    mutating func mutatePath(
+        contextGeneration: UInt32,
+        pathGeneration: UInt32,
+        point: Point,
+        move: Bool
+    ) -> UInt8 {
+        guard contextGeneration == UInt32(contextBodyCount), pathGeneration == 1,
+            var path = livePath
+        else { return _GiftUIDrawingStatus.invalidScope.rawValue }
+        do {
+            if move { try path.move(to: point) } else { try path.addLine(to: point) }
+            livePath = path
+            return _GiftUIDrawingStatus.success.rawValue
+        } catch {
+            return drawingStatus(for: error)
+        }
+    }
+
+    mutating func strokePath(
+        contextGeneration: UInt32,
+        pathGeneration: UInt32,
+        color: Color,
+        style: StrokeStyle
+    ) -> UInt8 {
+        guard contextGeneration == UInt32(contextBodyCount), pathGeneration == 1,
+            let path = livePath, let origin = currentOrigin, let clip = currentClip
+        else { return _GiftUIDrawingStatus.invalidScope.rawValue }
+        var index: UInt16 = 0
+        while index < path.storage.pointCount {
+            guard let point = path.storage.point(at: index) else {
+                return _GiftUIDrawingStatus.invariantViolation.rawValue
+            }
+            guard !point.x.addingReportingOverflow(origin.x).overflow,
+                !point.y.addingReportingOverflow(origin.y).overflow
+            else { return _GiftUIDrawingStatus.arithmeticOverflow.rawValue }
+            index += 1
+        }
+        do {
+            try StrokeSnapshotProducer.snapshot(
+                path: path.storage,
+                shading: .color(color),
+                style: style,
+                surfaceOrigin: origin,
+                inheritedClip: clip,
+                plan: &self
+            )
+            return _GiftUIDrawingStatus.success.rawValue
+        } catch {
+            return drawingStatus(for: error)
+        }
+    }
+
+    private func stroke(of canvas: UInt16, at index: UInt16) -> CanvasPlanStrokeFixture? {
+        guard publishedSummary != nil else { return nil }
+        let matches = strokes.filter { $0.canvas == canvas }
+        guard Int(index) < matches.count else { return nil }
+        return matches[Int(index)]
+    }
+}
+
+private struct CanvasPlanStrokeFixture {
+    let canvas: UInt16
+    let header: StraightLineStrokeHeader
+    let points: [Point]
+    let subpaths: [SubpathRange]
 }
 
 private let derivingContext = ExecutionContext(
@@ -567,51 +822,101 @@ private func canvasLayoutRecord(
     )
 }
 
-private let noOpDrawingOperations = _GiftUIDrawingOperations(
+private let canvasPlanDrawingOperations = _GiftUIDrawingOperations(
     beginPath: canvasPlanBeginPath,
     endPath: canvasPlanEndPath,
-    movePath: canvasPlanMutatePath,
-    addLineToPath: canvasPlanMutatePath,
+    movePath: canvasPlanMovePath,
+    addLineToPath: canvasPlanAddLinePath,
     strokePath: canvasPlanStrokePath
 )
 
 private func canvasPlanBeginPath(
-    _: UnsafeMutableRawPointer,
-    _: UInt32,
+    storage: UnsafeMutableRawPointer,
+    contextGeneration: UInt32,
     pathGeneration: UnsafeMutablePointer<UInt32>
 ) -> UInt8 {
-    pathGeneration.pointee = 1
-    return _GiftUIDrawingStatus.success.rawValue
+    storage.assumingMemoryBound(to: CanvasPlanConstructionFixture.self).pointee.beginPath(
+        contextGeneration: contextGeneration,
+        pathGeneration: &pathGeneration.pointee
+    )
 }
 
 private func canvasPlanEndPath(
-    _: UnsafeMutableRawPointer,
-    _: UInt32,
-    _: UInt32
+    storage: UnsafeMutableRawPointer,
+    contextGeneration: UInt32,
+    pathGeneration: UInt32
 ) -> UInt8 {
-    _GiftUIDrawingStatus.success.rawValue
+    storage.assumingMemoryBound(to: CanvasPlanConstructionFixture.self).pointee.endPath(
+        contextGeneration: contextGeneration,
+        pathGeneration: pathGeneration
+    )
 }
 
-private func canvasPlanMutatePath(
-    _: UnsafeMutableRawPointer,
-    _: UInt32,
-    _: UInt32,
-    _: GeometryScalar,
-    _: GeometryScalar
+private func canvasPlanMovePath(
+    storage: UnsafeMutableRawPointer,
+    contextGeneration: UInt32,
+    pathGeneration: UInt32,
+    x: GeometryScalar,
+    y: GeometryScalar
 ) -> UInt8 {
-    _GiftUIDrawingStatus.success.rawValue
+    storage.assumingMemoryBound(to: CanvasPlanConstructionFixture.self).pointee.mutatePath(
+        contextGeneration: contextGeneration,
+        pathGeneration: pathGeneration,
+        point: Point(x: x, y: y),
+        move: true
+    )
+}
+
+private func canvasPlanAddLinePath(
+    storage: UnsafeMutableRawPointer,
+    contextGeneration: UInt32,
+    pathGeneration: UInt32,
+    x: GeometryScalar,
+    y: GeometryScalar
+) -> UInt8 {
+    storage.assumingMemoryBound(to: CanvasPlanConstructionFixture.self).pointee.mutatePath(
+        contextGeneration: contextGeneration,
+        pathGeneration: pathGeneration,
+        point: Point(x: x, y: y),
+        move: false
+    )
 }
 
 private func canvasPlanStrokePath(
-    _: UnsafeMutableRawPointer,
-    _: UInt32,
-    _: UInt32,
-    _: UInt8,
-    _: UInt8,
-    _: UInt8,
-    _: GeometryScalar,
-    _: UInt8,
-    _: UInt8
+    storage: UnsafeMutableRawPointer,
+    contextGeneration: UInt32,
+    pathGeneration: UInt32,
+    red: UInt8,
+    green: UInt8,
+    blue: UInt8,
+    lineWidth: GeometryScalar,
+    lineCap: UInt8,
+    lineJoin: UInt8
 ) -> UInt8 {
-    _GiftUIDrawingStatus.success.rawValue
+    guard let cap = LineCap(rawValue: lineCap), let join = LineJoin(rawValue: lineJoin) else {
+        return _GiftUIDrawingStatus.invariantViolation.rawValue
+    }
+    return storage.assumingMemoryBound(to: CanvasPlanConstructionFixture.self).pointee
+        .strokePath(
+            contextGeneration: contextGeneration,
+            pathGeneration: pathGeneration,
+            color: Color(red: red, green: green, blue: blue),
+            style: StrokeStyle(lineWidth: lineWidth, lineCap: cap, lineJoin: join)
+        )
+}
+
+private func drawingStatus(for error: any Error) -> UInt8 {
+    guard let error = error as? DrawingError else {
+        return _GiftUIDrawingStatus.invariantViolation.rawValue
+    }
+    return switch error {
+    case .invalidValue: _GiftUIDrawingStatus.invalidValue.rawValue
+    case .invalidPathState: _GiftUIDrawingStatus.invalidPathState.rawValue
+    case .arithmeticOverflow: _GiftUIDrawingStatus.arithmeticOverflow.rawValue
+    case .capacityExhausted: _GiftUIDrawingStatus.capacityExhausted.rawValue
+    case .invalidScope: _GiftUIDrawingStatus.invalidScope.rawValue
+    case .invalidPhase: _GiftUIDrawingStatus.invalidPhase.rawValue
+    case .reentrancyViolation: _GiftUIDrawingStatus.reentrancyViolation.rawValue
+    case .invariantViolation: _GiftUIDrawingStatus.invariantViolation.rawValue
+    }
 }
