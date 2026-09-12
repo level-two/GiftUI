@@ -79,14 +79,15 @@ override the approved contract.
   5 and generator tasks `T6.1`-`T6.3` are complete, while profile-owned
   callable storage, host handles, startup/cycle integration, and final
   cross-profile evidence remain explicitly joined to SPEC-013 and SPEC-015.
-- `GiftUIInteraction` does not yet exist and SPEC-011 has a ready plan.
-  SPEC-009 and SPEC-010 have active plans and substantial focused-owner
-  machinery, but their remaining production runtime integration is
-  intentionally assigned to SPEC-013. Tasks consuming unfinished owner seams
-  must wait for them; runtime code must not create substitutes or duplicate
-  their algorithms. The cross-plan handoffs below separate focused-owner work
-  that can land first from coordinator/profile integration that must land with
-  SPEC-013.
+- `GiftUIInteraction` now exists and SPEC-011 T1 through T4 supply declarations,
+  candidate/committed behavior, hit resolution, and gesture transitions. Its
+  T5.1-T5.6 production target/dispatch join remains open. SPEC-009 and SPEC-010
+  have active plans and substantial focused-owner machinery, but their remaining
+  production runtime integration is intentionally assigned to SPEC-013. Tasks
+  consuming unfinished owner seams must wait for them; runtime code must not
+  create substitutes or duplicate their algorithms. The cross-plan handoffs
+  below separate focused-owner work that can land first from coordinator/profile
+  integration that must land jointly.
 - `Package.swift` has no `GiftUIRuntimeCore`, `GiftUIRuntimeDynamic`,
   `GiftUIRuntimeStatic`, runtime failure-adapter fixture, or runtime test
   targets. Proof-of-concept runtime sources and tests were deliberately
@@ -787,6 +788,16 @@ arguments. This work also corrected Runtime Core's formerly transitive focused-
 owner imports exposed by Embedded Swift. Module checks continue to prohibit
 Dynamic, backend, host, platform, and failure-adapter edges. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-4/static-profile-compilation.md`.
+
+After T4.6, the next dependency-complete production task audit confirmed that
+T3.5 and T4.5 remain blocked on SPEC-011 T5.1-T5.6. The repository has the
+`ActionModelTargetAccess` declaration but no `InteractionDispatcher` protocol,
+production dispatcher, or target-composed adapter; the SPEC-011 plan leaves all
+six joint tasks unchecked. Runtime Core cannot create substitutes for that
+Interaction-owned behavior. This also blocks Milestones 5-7 and their dependent
+integration/conformance gates. Reproduction and the exact resumption boundary
+are recorded in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-3/focused-owner-integration-blocker.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
