@@ -17,6 +17,26 @@ package enum DrawingValueLayoutProbe {
         UInt32(MemoryLayout<T>.alignment)
     }
 
+    @inline(never) package static func drawingLimitsSize() -> UInt32 {
+        size(of: DrawingLimits.self)
+    }
+    @inline(never) package static func drawingLimitsStride() -> UInt32 {
+        stride(of: DrawingLimits.self)
+    }
+    @inline(never) package static func drawingLimitsAlignment() -> UInt32 {
+        alignment(of: DrawingLimits.self)
+    }
+
+    @inline(never) package static func staticCanvasLimitsSize() -> UInt32 {
+        size(of: StaticCanvasLimits.self)
+    }
+    @inline(never) package static func staticCanvasLimitsStride() -> UInt32 {
+        stride(of: StaticCanvasLimits.self)
+    }
+    @inline(never) package static func staticCanvasLimitsAlignment() -> UInt32 {
+        alignment(of: StaticCanvasLimits.self)
+    }
+
     @inline(never) package static func subpathRangeSize() -> UInt32 {
         size(of: SubpathRange.self)
     }

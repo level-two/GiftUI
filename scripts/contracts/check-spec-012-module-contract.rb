@@ -59,6 +59,8 @@ owners = {
   "StraightLineStrokeView" => "GiftUIRenderCore/DrawingOperationSink.swift",
   "DrawingOperationSink" => "GiftUIRenderCore/DrawingOperationSink.swift",
   "DrawingPlanSummary" => "GiftUIDrawing/DrawingValues.swift",
+  "DrawingLimits" => "GiftUIDrawing/DrawingLimits.swift",
+  "StaticCanvasLimits" => "GiftUIDrawing/DrawingLimits.swift",
   "DrawingProductionError" => "GiftUIDrawing/DrawingValues.swift",
   "DrawingPlanResult" => "GiftUIDrawing/DrawingValues.swift",
 }
@@ -87,7 +89,7 @@ if ARGV.length == 2
   %w[SubpathRange StraightLineStrokeHeader StraightLineStrokeView DrawingOperationSink].each do |name|
     fail_check("Render Core interface lacks #{name}") unless render_interface.include?(name)
   end
-  %w[DrawingPlanSummary DrawingProductionError DrawingPlanResult].each do |name|
+  %w[DrawingLimits StaticCanvasLimits DrawingPlanSummary DrawingProductionError DrawingPlanResult].each do |name|
     fail_check("Drawing interface lacks #{name}") unless drawing_interface.include?(name)
   end
 elsif !ARGV.empty?

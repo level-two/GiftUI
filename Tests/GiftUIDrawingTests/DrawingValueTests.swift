@@ -67,3 +67,70 @@ func drawingValuesMeetCopySendAndHostLayoutContracts() {
     #expect(MemoryLayout<DrawingProductionError>.size == 1)
     #expect(MemoryLayout<DrawingPlanResult>.size <= 12)
 }
+
+@Test
+func drawingLimitsRejectEveryZeroFieldAndInvalidOperationRelation() {
+    let valid = makeDrawingLimits()
+    #expect(valid != nil)
+    #expect(valid?.maximumLineWidth == 1)
+    #expect(valid?.maximumCanvasOccurrences == 2)
+    #expect(valid?.maximumLivePathPoints == 3)
+    #expect(valid?.maximumLivePathSubpaths == 4)
+    #expect(valid?.maximumPlanStrokes == 5)
+    #expect(valid?.maximumPlanPoints == 6)
+    #expect(valid?.maximumPlanSubpaths == 7)
+    #expect(valid?.maximumNormalizedStrokeOperations == 5)
+
+    for zeroField in 0 ..< 8 {
+        #expect(makeDrawingLimits(zeroField: zeroField) == nil)
+    }
+    #expect(makeDrawingLimits(normalizedOperations: 4) == nil)
+    #expect(makeDrawingLimits(normalizedOperations: 5) != nil)
+    #expect(StaticCanvasLimits(maximumStaticCallableCases: 0, maximumStaticCaptureBytes: 1) == nil)
+    #expect(StaticCanvasLimits(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: 0) == nil)
+    #expect(StaticCanvasLimits(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: 1) != nil)
+}
+
+@Test
+func dynamicAndStaticFixtureIdentityStorageAdmitEqualityAndRejectFirstExcess() {
+    var dynamic = DynamicCanvasIdentityFixtureStorage(capacity: 2)
+    var fixed = StaticCanvasIdentityFixtureStorage(capacity: 2)!
+    for identity: UInt16 in [11, 29] {
+        let dynamicAccepted = dynamic.append(identity)
+        let fixedAccepted = fixed.append(identity)
+        #expect(dynamicAccepted)
+        #expect(fixedAccepted)
+    }
+    let dynamicExcess = dynamic.append(47)
+    let fixedExcess = fixed.append(47)
+    #expect(!dynamicExcess)
+    #expect(!fixedExcess)
+    #expect(dynamic.count == 2)
+    #expect(fixed.count == 2)
+    #expect(dynamic.identity(at: 0) == 11)
+    #expect(fixed.identity(at: 1) == 29)
+    #expect(dynamic.identity(at: 2) == nil)
+    #expect(fixed.identity(at: 2) == nil)
+    #expect(StaticCanvasIdentityFixtureStorage(capacity: 0)?.capacity == nil)
+    #expect(StaticCanvasIdentityFixtureStorage(capacity: 5)?.capacity == nil)
+}
+
+private func makeDrawingLimits(
+    zeroField: Int? = nil,
+    normalizedOperations: UInt16 = 5
+) -> DrawingLimits? {
+    var values: [UInt16] = [2, 3, 4, 5, 6, 7, normalizedOperations]
+    if let zeroField, zeroField > 0 {
+        values[zeroField - 1] = 0
+    }
+    return DrawingLimits(
+        maximumLineWidth: zeroField == 0 ? 0 : 1,
+        maximumCanvasOccurrences: values[0],
+        maximumLivePathPoints: values[1],
+        maximumLivePathSubpaths: values[2],
+        maximumPlanStrokes: values[3],
+        maximumPlanPoints: values[4],
+        maximumPlanSubpaths: values[5],
+        maximumNormalizedStrokeOperations: values[6]
+    )
+}

@@ -2,6 +2,8 @@
 # frozen_string_literal: true
 
 VALUES = {
+  "DrawingLimits" => ["drawingLimits", :maximum, 20],
+  "StaticCanvasLimits" => ["staticCanvasLimits", :exact, 4],
   "SubpathRange" => ["subpathRange", :exact, 4],
   "DrawingPlanSummary" => ["drawingPlanSummary", :exact, 10],
   "StraightLineStrokeHeader" => ["straightLineStrokeHeader", :maximum, 40],

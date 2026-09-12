@@ -276,7 +276,7 @@ contracts; SPEC-002 checked geometry remains the sole arithmetic authority.
 mutation and immutable ordered snapshots with exact counts, lookup behavior,
 cleanup, and first-failure semantics.
 
-- [ ] `T3.1` — Implement validated `DrawingLimits` and `StaticCanvasLimits`
+- [x] `T3.1` — Implement validated `DrawingLimits` and `StaticCanvasLimits`
       with positive fields, `maximumNormalizedStrokeOperations >=
       maximumPlanStrokes`, exact equality admission, and nil for every invalid
       construction. Establish focused finite dynamic/static fixture storage.
@@ -739,6 +739,15 @@ compilers pass the interface audit through the value-profile checker. The
 [module evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-2/module-contract-audit.md)
 records the audited seams. Milestone 2's independent work is complete; T2.1
 and production callable integration remain blocked in Specification review.
+
+`T3.1` is complete. Both exact limit types reject every zero/nonpositive field,
+`DrawingLimits` rejects normalized-operation capacity below plan-stroke
+capacity while admitting equality, and focused dynamic plus inline static
+fixture storage proves exact-capacity success and first-excess refusal without
+mutation. All four optimized compilers report a 20-byte `DrawingLimits` and
+exactly 4-byte `StaticCanvasLimits`. The
+[limit evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-3/drawing-limits-and-fixture-storage.md)
+records the boundary and profile results.
 
 `T1.1` is complete. `GiftUI.Canvas` now has the exact typed-throws initializer,
 private retained draw callable, `Body == Never` invariant body, primitive

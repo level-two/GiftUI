@@ -112,6 +112,7 @@ run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" -module-name G
     -emit-module-interface-path "${module_dir}/GiftUIRenderCore.swiftinterface" >/dev/null
 run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" -module-name GiftUIDrawing \
     "${PROJECT_ROOT}/Sources/GiftUIDrawing/DrawingValues.swift" \
+    "${PROJECT_ROOT}/Sources/GiftUIDrawing/DrawingLimits.swift" \
     -emit-module-path "${module_dir}/GiftUIDrawing.swiftmodule" \
     -emit-module-interface-path "${module_dir}/GiftUIDrawing.swiftinterface" >/dev/null
 
@@ -126,4 +127,4 @@ run_command "${compiler}" "${flags[@]}" -parse-as-library -package-name GiftUI \
     "${FIXTURE_ROOT}/Instrumentation/DrawingValueLayoutProbe.swift" -o "${ir_path}" >/dev/null
 run_command "${SCRIPT_DIR}/check-spec-012-value-layouts.rb" "${ir_path}" "${report_path}" >/dev/null
 
-printf 'SPEC-012 %s value profiles passed: 5 bounded value layouts.\n' "${profile}"
+printf 'SPEC-012 %s value profiles passed: 7 bounded value layouts.\n' "${profile}"
