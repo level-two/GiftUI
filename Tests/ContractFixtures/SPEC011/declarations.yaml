@@ -1,0 +1,12 @@
+version: 1
+rows:
+  - id: button_generic
+    result: compile
+  - id: button_static_string
+    result: compile
+  - id: button_bounded_text
+    result: compile
+  - id: disabled
+    result: compile
+  - id: handler
+    result: compile

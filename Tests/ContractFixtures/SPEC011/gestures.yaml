@@ -1,0 +1,8 @@
+version: 1
+rows:
+  - { id: down_hit, result: captured }
+  - { id: down_disabled, result: ignored }
+  - { id: move_inside, result: continued }
+  - { id: move_outside, result: cancelled }
+  - { id: up_match, result: activationAdmitted }
+  - { id: up_rebound, result: cancelled }

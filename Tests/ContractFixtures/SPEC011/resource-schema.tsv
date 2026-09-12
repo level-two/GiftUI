@@ -1,0 +1,5 @@
+# evidence_kind	execution_claim	connected_claim
+host	host-executed	false
+cross_build	artifact-inspected	false
+simulator	simulator-observed	false
+connected	connected-hardware-observed	true

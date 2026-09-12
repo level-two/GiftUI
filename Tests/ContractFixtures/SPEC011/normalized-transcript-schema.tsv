@@ -1,0 +1,13 @@
+# field	comparison
+identity	exact
+action	exact
+generation	exact
+target_generation	exact
+enabled	exact
+geometry	exact
+paint_order	exact
+transition	exact
+gesture	exact
+dispatch	exact
+failure	exact
+publication	exact

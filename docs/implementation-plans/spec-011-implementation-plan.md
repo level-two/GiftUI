@@ -2,7 +2,7 @@
 spec: SPEC-011
 feature: giftui-mvp-architecture
 title: SPEC-011 Implementation Plan
-status: draft
+status: active
 owners:
   - codex
 created: 2026-09-09
@@ -20,11 +20,9 @@ superseded_by: null
 
 # SPEC-011 Implementation Plan
 
-> **Readiness notice:** SPEC-011 remains approved, but this plan returned to
-> `draft` on 2026-09-12 because the approved SPEC-006
-> action-primitive-with-content traversal operation required by `T1.1` and
-> `T2.1` is not yet implemented. SPEC-006 criterion `DV-017` must be implemented
-> and evidenced before this plan can return to `ready`.
+> **Execution notice:** SPEC-006's approved action-primitive-with-content
+> traversal operation and `DV-017` evidence are complete. The maintainer's
+> 2026-09-12 instruction to proceed started SPEC-011 implementation.
 
 > This plan derives work from the approved Button Interaction and
 > Activation Contract, including its explicitly reapproved target-generation
@@ -130,8 +128,8 @@ remain allocator-free.
 
 **Reviewed:** 2026-09-12
 
-**Disposition:** Draft pending implementation of the approved upstream SPEC-006
-amendment. SPEC-011 is approved and explicitly reapproved after the coordinated
+**Disposition:** Active after implementation and four-profile evidence for the
+approved upstream SPEC-006 amendment. SPEC-011 was approved and explicitly reapproved after the coordinated
 SPEC-009/SPEC-010 target-generation amendment. Every `IN-001` through `IN-013`
 criterion maps once to ordered work and reproducible evidence below. The
 action-primitive-with-content operation is a production prerequisite, not an
@@ -210,7 +208,7 @@ ownership boundaries.
 migration path, and driver failure condition is explicit before behavior is
 claimed.
 
-- [ ] `T0.1` — Create `Tests/ContractFixtures/SPEC011/` with the five required
+- [x] `T0.1` — Create `Tests/ContractFixtures/SPEC011/` with the five required
       `declarations.yaml`, `candidates.yaml`, `gestures.yaml`, `dispatch.yaml`,
       and `failures.yaml` corpora; an ordered fixture manifest; normalized
       transcript and resource schemas; a versioned `task-evidence.yaml` mapping

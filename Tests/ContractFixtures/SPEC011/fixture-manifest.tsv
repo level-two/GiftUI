@@ -1,0 +1,9 @@
+# order	fixture	kind	rows
+1	declarations.yaml	declarations	button_generic,button_static_string,button_bounded_text,disabled,handler
+2	candidates.yaml	candidates	preserved,replacement,empty_clip,capacity,invalid_geometry
+3	gestures.yaml	gestures	down_hit,down_disabled,move_inside,move_outside,up_match,up_rebound
+4	dispatch.yaml	dispatch	dispatched,target_changed,invalid_code,wrong_domain
+5	failures.yaml	failures	capacity,identity,geometry,phase,reentrancy,invariant,domain,action,target
+6	normalized-transcript-schema.tsv	schema	identity,action,generation,target_generation,enabled,geometry,paint_order,transition,gesture,dispatch,failure,publication
+7	resource-schema.tsv	schema	host,cross_build,simulator,connected
+8	task-evidence.yaml	evidence	T0.1-T9.5

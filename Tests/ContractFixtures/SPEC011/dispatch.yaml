@@ -1,0 +1,6 @@
+version: 1
+rows:
+  - { id: dispatched, result: dispatched }
+  - { id: target_changed, result: cancelled }
+  - { id: invalid_code, result: invariantViolation }
+  - { id: wrong_domain, result: incompatibleActionDomain }

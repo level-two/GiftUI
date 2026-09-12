@@ -1,0 +1,12 @@
+version: 1
+precedence: [reentrancy, phase, domain, target, identity, geometry, action, capacity, invariant]
+rows:
+  - { id: capacity, result: capacityExhausted }
+  - { id: identity, result: invalidIdentity }
+  - { id: geometry, result: invalidGeometry }
+  - { id: phase, result: invalidPhase }
+  - { id: reentrancy, result: reentrancyViolation }
+  - { id: invariant, result: invariantViolation }
+  - { id: domain, result: incompatibleActionDomain }
+  - { id: action, result: invalidActionValue }
+  - { id: target, result: missingModelTarget }

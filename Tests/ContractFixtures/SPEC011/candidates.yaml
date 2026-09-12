@@ -1,0 +1,7 @@
+version: 1
+rows:
+  - { id: preserved, result: preserved }
+  - { id: replacement, result: requiresGeneration }
+  - { id: empty_clip, result: retainedWithoutHitRegion }
+  - { id: capacity, result: capacityExhausted }
+  - { id: invalid_geometry, result: invalidGeometry }
