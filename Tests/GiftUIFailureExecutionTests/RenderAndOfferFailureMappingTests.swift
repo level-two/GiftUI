@@ -19,7 +19,7 @@ private enum RenderMappingOwner: Equatable, Sendable {
 private func offered(
     _ failure: RunCycleFailure<RenderMappingOwner>,
     effectsComplete: Bool = true
-) -> CorrelatedExecutionFailure? {
+) -> GiftUICorrelatedFailure<ExecutionContext>? {
     GiftUIExecutionFailureAdapter.offeredFailure(
         failure,
         context: offerContext,

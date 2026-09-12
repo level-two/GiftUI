@@ -348,13 +348,12 @@ duplicated to remove a dependency blocker.
       condition raw value and the
       `GiftUIOutcome<CapabilitySnapshot>.failure` envelope. The capability leaf
       must not import failure, and raw value 11 remains unassigned.
-- [ ] `T4.3` — After SPEC-009 produces the focused execution-contract target,
+- [x] `T4.3` — After SPEC-009 produces the focused execution-contract target,
       add `GiftUIFailureExecution` importing only that target and
       `GiftUIFailureCore`. Implement the generic
       `GiftUICorrelatedFailure<Context>`, preserve every fact field, and prove
       that low-level/driver fixtures cannot import correlation and the
-      execution contract does not import it. **Blocked:** SPEC-009 is approved
-      but has no implementation plan or production execution-contract target.
+      execution contract does not import it.
 - [ ] `T4.4` — After SPEC-015 supplies the production host policy and runtime
       gate, integrate the invariant mapping and terminal quiescence sequence
       proven by `T2.3`. A configured fatal hook may observe only after
@@ -744,3 +743,14 @@ contract and production target remain owned by and blocked on SPEC-009.
 `T4.3`-`T4.5`, `T5.4`, and the later integration/conformance tasks therefore
 cannot proceed without inventing forbidden authority; execution returns to the
 next dependency-complete SPEC-004 task.
+
+`T4.3` is complete: `GiftUIFailureExecution` now exports the exact generic
+`GiftUICorrelatedFailure<Context>` envelope with the unchanged core fact,
+caller-supplied context, and inline bounded annotations. Conditional
+`Equatable` and `Sendable` conformances follow the context. Focused tests prove
+fact/context preservation, two-entry annotation order, and unchanged fields
+after a refused third append. The registered boundary check proves the one-way
+Failure Core plus Execution dependency, rejects correlation from the driver
+fixture, and confirms Execution does not import its downstream correlation
+adapter. See the
+[execution-correlation evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-4/execution-correlation.md).

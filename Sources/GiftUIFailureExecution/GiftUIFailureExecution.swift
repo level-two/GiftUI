@@ -14,15 +14,24 @@ package struct CorrelatedExecutionOutcome: Sendable {
     }
 }
 
-package struct CorrelatedExecutionFailure: Equatable, Sendable {
-    package let context: ExecutionContext
-    package let fact: GiftUIFailureFact
+public struct GiftUICorrelatedFailure<Context> {
+    public let fact: GiftUIFailureFact
+    public let context: Context
+    public let annotations: GiftUIFailureAnnotations
 
-    package init(context: ExecutionContext, fact: GiftUIFailureFact) {
-        self.context = context
+    public init(
+        fact: GiftUIFailureFact,
+        context: Context,
+        annotations: GiftUIFailureAnnotations = .init()
+    ) {
         self.fact = fact
+        self.context = context
+        self.annotations = annotations
     }
 }
+
+extension GiftUICorrelatedFailure: Sendable where Context: Sendable {}
+extension GiftUICorrelatedFailure: Equatable where Context: Equatable {}
 
 package struct CorrelatedFocusedOwnerFailure<OwnerFailure>: Equatable, Sendable
 where OwnerFailure: Equatable & Sendable {
@@ -97,7 +106,7 @@ package enum GiftUIExecutionFailureAdapter {
         _ failure: RunCycleFailure<OwnerFailure>,
         context: ExecutionContext,
         mechanicalEffectsComplete: Bool
-    ) -> CorrelatedExecutionFailure?
+    ) -> GiftUICorrelatedFailure<ExecutionContext>?
     where OwnerFailure: Equatable & Sendable {
         guard mechanicalEffectsComplete else { return nil }
         let mapped: GiftUIFailureFact
@@ -136,10 +145,7 @@ package enum GiftUIExecutionFailureAdapter {
         case .execution, .focusedOwner:
             return nil
         }
-        return CorrelatedExecutionFailure(
-            context: context,
-            fact: mapped
-        )
+        return GiftUICorrelatedFailure(fact: mapped, context: context)
     }
 
     package static func focusedOwner<OwnerFailure>(
@@ -209,7 +215,7 @@ package enum GiftUIExecutionFailureAdapter {
         provenAffectedScope: GiftUIAffectedScope,
         safeReuseProven: Bool,
         mechanicalEffectsComplete: Bool
-    ) -> CorrelatedExecutionFailure? {
+    ) -> GiftUICorrelatedFailure<ExecutionContext>? {
         guard mechanicalEffectsComplete else { return nil }
 
         let mapped: GiftUIFailureFact
@@ -274,7 +280,7 @@ package enum GiftUIExecutionFailureAdapter {
                 .safetyNotProven
             )
         }
-        return CorrelatedExecutionFailure(context: context, fact: mapped)
+        return GiftUICorrelatedFailure(fact: mapped, context: context)
     }
 
     private static func fact(

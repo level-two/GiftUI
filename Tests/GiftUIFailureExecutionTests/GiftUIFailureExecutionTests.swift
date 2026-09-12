@@ -12,6 +12,43 @@ private let mappedContext = ExecutionContext(
 )
 
 @Test
+func genericCorrelationPreservesFactContextAndBoundedAnnotations() {
+    let fact = GiftUIFailureFact(
+        condition: .invalidValue,
+        origin: .execution,
+        affectedScope: .operation,
+        containment: .contained
+    )
+    var annotations = GiftUIFailureAnnotations()
+    let appendedFirst = annotations.append(GiftUIFailureAnnotation(key: 7, value: 11))
+    let appendedSecond = annotations.append(GiftUIFailureAnnotation(key: 13, value: 17))
+    let beforeRefusal = annotations
+    let appendedThird = annotations.append(GiftUIFailureAnnotation(key: 19, value: 23))
+
+    #expect(appendedFirst)
+    #expect(appendedSecond)
+    #expect(!appendedThird)
+
+    let correlated = GiftUICorrelatedFailure(
+        fact: fact,
+        context: mappedContext,
+        annotations: annotations
+    )
+    let equal = GiftUICorrelatedFailure(
+        fact: fact,
+        context: mappedContext,
+        annotations: beforeRefusal
+    )
+
+    #expect(correlated == equal)
+    #expect(correlated.fact == fact)
+    #expect(correlated.context == mappedContext)
+    #expect(correlated.annotations == beforeRefusal)
+    #expect(correlated.annotations[0] == GiftUIFailureAnnotation(key: 7, value: 11))
+    #expect(correlated.annotations[1] == GiftUIFailureAnnotation(key: 13, value: 17))
+}
+
+@Test
 func everyAdmissionResultMapsAfterMechanicalEffectsWithExactContext() {
     let cases:
         [(
