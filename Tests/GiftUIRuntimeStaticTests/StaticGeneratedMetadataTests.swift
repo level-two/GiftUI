@@ -112,6 +112,71 @@ func staticCanvasStagingRejectsZeroRangeAndSizeBeforeInvocation() {
 }
 
 @Test
+func staticCanvasOccurrenceDestroysInlineCaptureAfterSuccessfulInvocation() throws {
+    let lifetime = StaticCaptureLifetime()
+    var table = StaticCaptureTable(result: .success, probe: StaticCanvasInvocationProbe())
+    var occurrence = makeStaticOccurrence(lifetime: lifetime)
+
+    try withGeneratedCanvasContext { context in
+        try occurrence.invoke(
+            table: &table,
+            context: &context,
+            size: Size(width: 7, height: 9)!
+        )
+    }
+
+    #expect(table.probe.invocationCount == 1)
+    #expect(occurrence.state == .released)
+    #expect(occurrence.releaseCount == 1)
+    #expect(lifetime.destructionCount == 1)
+    #expect(throws: DrawingError.invariantViolation) {
+        try withGeneratedCanvasContext { context in
+            try occurrence.invoke(
+                table: &table,
+                context: &context,
+                size: Size(width: 7, height: 9)!
+            )
+        }
+    }
+    #expect(table.probe.invocationCount == 1)
+    #expect(lifetime.destructionCount == 1)
+}
+
+@Test
+func staticCanvasOccurrenceDestroysInlineCaptureAfterTypedThrow() {
+    let lifetime = StaticCaptureLifetime()
+    var table = StaticCaptureTable(result: .failure, probe: StaticCanvasInvocationProbe())
+    var occurrence = makeStaticOccurrence(lifetime: lifetime)
+
+    #expect(throws: DrawingError.invalidValue) {
+        try withGeneratedCanvasContext { context in
+            try occurrence.invoke(
+                table: &table,
+                context: &context,
+                size: Size(width: 7, height: 9)!
+            )
+        }
+    }
+    #expect(table.probe.invocationCount == 1)
+    #expect(occurrence.state == .released)
+    #expect(occurrence.releaseCount == 1)
+    #expect(lifetime.destructionCount == 1)
+}
+
+@Test
+func staticCanvasOccurrenceDiscardDestroysUninvokedCaptureExactlyOnce() {
+    let lifetime = StaticCaptureLifetime()
+    var occurrence = makeStaticOccurrence(lifetime: lifetime)
+
+    occurrence.discard()
+    occurrence.discard()
+
+    #expect(occurrence.state == .released)
+    #expect(occurrence.releaseCount == 1)
+    #expect(lifetime.destructionCount == 1)
+}
+
+@Test
 func fixedStaticStorageAuditsAllSixteenIndependentInlineRegions() {
     let storage = makeStaticStorage()
     #expect(storage.audit().audit?.totalProfileBytes == 16)
@@ -186,6 +251,73 @@ private struct StagingPoisonCanvasTable: StaticCanvasCallableTable {
     ) throws(DrawingError) {
         probe.invocationCount += 1
     }
+}
+
+private final class StaticCaptureLifetime {
+    var destructionCount = 0
+}
+
+private final class StaticCaptureToken {
+    let lifetime: StaticCaptureLifetime
+
+    init(lifetime: StaticCaptureLifetime) {
+        self.lifetime = lifetime
+    }
+
+    deinit {
+        lifetime.destructionCount += 1
+    }
+}
+
+private struct StaticInlineCapture {
+    let token: StaticCaptureToken
+    let scalar: GeometryScalar
+}
+
+private enum StaticCaptureTableResult {
+    case success
+    case failure
+}
+
+private struct StaticCaptureTable: StaticCanvasCallableTable {
+    let callableCaseCount: UInt16 = 1
+    let result: StaticCaptureTableResult
+    let probe: StaticCanvasInvocationProbe
+
+    func captureByteCount(for id: UInt16) -> UInt16? {
+        id == 1 ? 8 : nil
+    }
+
+    mutating func invoke(
+        id: UInt16,
+        captures: borrowing StaticInlineCapture,
+        context: inout GraphicsContext,
+        size: Size
+    ) throws(DrawingError) {
+        probe.invocationCount += 1
+        _ = captures.scalar
+        _ = size
+        if result == .failure {
+            throw .invalidValue
+        }
+    }
+}
+
+private func makeStaticOccurrence(
+    lifetime: StaticCaptureLifetime
+) -> StaticCanvasOccurrence<GeneratedProfileIdentity, StaticInlineCapture> {
+    StaticCanvasOccurrence(
+        identity: .primary,
+        callableID: 1,
+        declaredCaptureByteCount: 8,
+        capture: StaticInlineCapture(
+            token: StaticCaptureToken(lifetime: lifetime),
+            scalar: 17
+        ),
+        metadata: FaultedStaticMetadata(
+            callableCaseCount: 1, declaredEntryCount: 1,
+            maximumDeclaredID: 1)
+    )!
 }
 
 private enum StaticCanvasMetadataFault {

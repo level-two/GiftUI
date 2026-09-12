@@ -344,7 +344,7 @@ and the same coordinator semantics.
       startup rejection. Add build negatives for unsupported capture source
       and runtime invariant tests for zero/range/size mismatch before body or
       Canvas invocation.
-- [ ] `T4.4` — Implement inline Canvas capture staging, one complete dispatch
+- [x] `T4.4` — Implement inline Canvas capture staging, one complete dispatch
       table, immediate exactly-once destruction after invocation, and cleanup
       after typed throws. Prove no source closure, fallback box, capture, Path,
       or plan survives its contract boundary.
@@ -767,6 +767,16 @@ invocation. Instrumented tests prove validation never enters the generated
 Canvas switch, while SPEC-012's existing generator checker retains all fourteen
 unsupported-source/type rejection cases. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-4/static-canvas-validation.md`.
+
+T4.4 added a noncopyable fixed-layout Static Canvas occurrence containing only
+its structural identity, generated ID, declared capture byte count, state, and
+inline capture. Invocation borrows the stored capture into the one generated
+table and uses scoped cleanup to destroy it immediately after success or typed
+throw; discard destroys an uninvoked record through the same idempotent release
+transition. Lifetime-token tests prove exactly-once destruction and no replay,
+and the expanded Static source gate rejects closure fallback or dynamic storage
+facilities. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-4/static-canvas-lifetime.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
