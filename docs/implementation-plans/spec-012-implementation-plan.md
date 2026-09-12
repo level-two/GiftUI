@@ -749,6 +749,15 @@ exactly 4-byte `StaticCanvasLimits`. The
 [limit evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-3/drawing-limits-and-fixture-storage.md)
 records the boundary and profile results.
 
+`T3.2` is blocked in Specification review. The required plan producer lives in
+`GiftUIDrawing` and runtime profiles supply the workspace, but the
+Render-Core-owned `StraightLineStrokeHeader` exposes no package initializer;
+its synthesized initializer is internal. Profile workspaces likewise cannot
+construct `DrawingPlanSummary`. The focused
+[construction review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-3/plan-value-construction-specification-blocker.md)
+records the compiler diagnostic and required contract correction. T3.4-T3.5
+are transitively blocked; no unapproved initializer or factory has been added.
+
 `T1.1` is complete. `GiftUI.Canvas` now has the exact typed-throws initializer,
 private retained draw callable, `Body == Never` invariant body, primitive
 marker conformance, and one-call traversal override. The focused declaration
