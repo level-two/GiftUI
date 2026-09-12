@@ -108,10 +108,16 @@ run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" -module-name G
     "${PROJECT_ROOT}/Sources/GiftUIRenderCore/RenderValues.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRenderCore/RenderOperationSink.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRenderCore/DrawingOperationSink.swift" \
-    -emit-module-path "${module_dir}/GiftUIRenderCore.swiftmodule" >/dev/null
+    -emit-module-path "${module_dir}/GiftUIRenderCore.swiftmodule" \
+    -emit-module-interface-path "${module_dir}/GiftUIRenderCore.swiftinterface" >/dev/null
 run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" -module-name GiftUIDrawing \
     "${PROJECT_ROOT}/Sources/GiftUIDrawing/DrawingValues.swift" \
-    -emit-module-path "${module_dir}/GiftUIDrawing.swiftmodule" >/dev/null
+    -emit-module-path "${module_dir}/GiftUIDrawing.swiftmodule" \
+    -emit-module-interface-path "${module_dir}/GiftUIDrawing.swiftinterface" >/dev/null
+
+run_command "${SCRIPT_DIR}/check-spec-012-module-contract.rb" \
+    "${module_dir}/GiftUIRenderCore.package.swiftinterface" \
+    "${module_dir}/GiftUIDrawing.package.swiftinterface" >/dev/null
 
 ir_path="${output_root}/drawing-value-layouts.ll"
 report_path="${output_root}/drawing-value-layouts.tsv"

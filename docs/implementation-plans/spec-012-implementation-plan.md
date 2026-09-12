@@ -262,7 +262,7 @@ and backends can consume borrowed stroke views without importing drawing.
       leaf identity, proposal behavior, frame expansion, exact resolved bounds,
       inherited clip, painter position, empty Canvas, and the absence of child,
       hit, text, glyph, clip-source, or ordinary-paint events.
-- [ ] `T2.5` — Add import, symbol-owner, interface, borrow-lifetime, and source
+- [x] `T2.5` — Add import, symbol-owner, interface, borrow-lifetime, and source
       audits proving the declared module contract, backend independence from
       `GiftUIDrawing`, and absence of a second identity, semantic graph, or
       Canvas-specific visitor category.
@@ -729,6 +729,16 @@ ordinary operation or child of its own. The
 [direct-view evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-2/direct-canvas-views.md)
 records the covered observations and explicitly excludes the unresolved
 callable staging seam.
+
+`T2.5` is complete. The registered module-contract audit checks SPEC-002's
+exact target graph against source imports, sole declaration ownership,
+Render-Core/backend independence from `GiftUIDrawing`, the absence of a
+Canvas-specific visitor or second identity/semantic graph, and the exact
+borrowed stroke operation in emitted package interfaces. All four profile
+compilers pass the interface audit through the value-profile checker. The
+[module evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-2/module-contract-audit.md)
+records the audited seams. Milestone 2's independent work is complete; T2.1
+and production callable integration remain blocked in Specification review.
 
 `T1.1` is complete. `GiftUI.Canvas` now has the exact typed-throws initializer,
 private retained draw callable, `Body == Never` invariant body, primitive

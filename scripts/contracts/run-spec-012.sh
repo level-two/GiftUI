@@ -57,6 +57,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-012-value-layouts.rb" \
             "$SCRIPT_DIR/check-spec-012-value-profiles.sh" \
             "$SCRIPT_DIR/check-spec-012-migration.rb" \
+            "$SCRIPT_DIR/check-spec-012-module-contract.rb" \
             "$SCRIPT_DIR/check-target-dependencies.rb" \
             "$SCRIPT_DIR/report-input-identity.rb" \
             "$SCRIPT_DIR/publish-contract-report.rb" \

@@ -45,6 +45,10 @@ SIL, symbol, baseline, diagnostics, and command results for its profile.
 `scripts/contracts/check-spec-012-value-profiles.sh` derive the five T2.3 value
 layouts from optimized IR for each supported compiler. The checked-in
 milestone-2 evidence records the common result and reproduction commands.
+`scripts/contracts/check-spec-012-module-contract.rb` additionally audits the
+exact source imports and declaration owners, backend independence, the single
+generic semantic identity path, and each emitted package interface's borrowed
+stroke-view signature.
 
 ## Normalized observations
 
