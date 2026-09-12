@@ -233,7 +233,7 @@ failure carrier, independent of concrete profile storage.
       fixture storage-family registry naming exclusive ownership, simultaneous
       lifetimes, overlay charging, exclusions, and dynamic bookkeeping. Test
       every field, overflow, double-count rejection, and exact total.
-- [ ] `T1.3` — Implement storage-capacity validation in the six mandated steps:
+- [x] `T1.3` — Implement storage-capacity validation in the six mandated steps:
       focused limits, cross-relations, presence including the render workspace,
       sufficiency and exact render-workspace capacity equality,
       representability, then static Canvas metadata. Poison client body,
@@ -628,6 +628,14 @@ The machine-checked storage-family registry records unique owners,
 simultaneous lifetimes, overlay charging, exclusions, and double-count
 rejection. Reproduction evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-1/storage-audit-accounting.md`.
+
+T1.3 implemented the six ordered startup-validation steps, complete store
+presence and capacity checks, exact four-field render-workspace equality,
+checked audit construction before static table inspection, and a read-only
+generated-table metadata seam. The validator accepts no client, attachment,
+admission, wake, policy, diagnostic, or endpoint callback. Reproduction
+evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-1/storage-capacity-validation.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

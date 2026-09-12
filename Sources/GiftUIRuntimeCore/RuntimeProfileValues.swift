@@ -178,24 +178,59 @@ package struct RuntimeStorageAudit: Equatable, Sendable {
     }
 }
 
-struct RuntimeStorageByteCounts: Equatable, Sendable {
-    let semanticCandidateBytes: UInt32
-    let semanticPublishedBytes: UInt32
-    let layoutCandidateBytes: UInt32
-    let renderWorkspaceBytes: UInt32
-    let canvasCallableBytes: UInt32
-    let pathWorkspaceBytes: UInt32
-    let drawingPlanBytes: UInt32
-    let observableLiveBytes: UInt32
-    let observableCandidateBytes: UInt32
-    let interactionCandidateBytes: UInt32
-    let interactionCommittedBytes: UInt32
-    let admissionQueueBytes: UInt32
-    let sealedBatchBytes: UInt32
-    let pointerStateBytes: UInt32
-    let coordinatorStateBytes: UInt32
-    let failureStateBytes: UInt32
+package struct RuntimeStorageByteCounts: Equatable, Sendable {
+    package let semanticCandidateBytes: UInt32
+    package let semanticPublishedBytes: UInt32
+    package let layoutCandidateBytes: UInt32
+    package let renderWorkspaceBytes: UInt32
+    package let canvasCallableBytes: UInt32
+    package let pathWorkspaceBytes: UInt32
+    package let drawingPlanBytes: UInt32
+    package let observableLiveBytes: UInt32
+    package let observableCandidateBytes: UInt32
+    package let interactionCandidateBytes: UInt32
+    package let interactionCommittedBytes: UInt32
+    package let admissionQueueBytes: UInt32
+    package let sealedBatchBytes: UInt32
+    package let pointerStateBytes: UInt32
+    package let coordinatorStateBytes: UInt32
+    package let failureStateBytes: UInt32
 
+    package init(
+        semanticCandidateBytes: UInt32,
+        semanticPublishedBytes: UInt32,
+        layoutCandidateBytes: UInt32,
+        renderWorkspaceBytes: UInt32,
+        canvasCallableBytes: UInt32,
+        pathWorkspaceBytes: UInt32,
+        drawingPlanBytes: UInt32,
+        observableLiveBytes: UInt32,
+        observableCandidateBytes: UInt32,
+        interactionCandidateBytes: UInt32,
+        interactionCommittedBytes: UInt32,
+        admissionQueueBytes: UInt32,
+        sealedBatchBytes: UInt32,
+        pointerStateBytes: UInt32,
+        coordinatorStateBytes: UInt32,
+        failureStateBytes: UInt32
+    ) {
+        self.semanticCandidateBytes = semanticCandidateBytes
+        self.semanticPublishedBytes = semanticPublishedBytes
+        self.layoutCandidateBytes = layoutCandidateBytes
+        self.renderWorkspaceBytes = renderWorkspaceBytes
+        self.canvasCallableBytes = canvasCallableBytes
+        self.pathWorkspaceBytes = pathWorkspaceBytes
+        self.drawingPlanBytes = drawingPlanBytes
+        self.observableLiveBytes = observableLiveBytes
+        self.observableCandidateBytes = observableCandidateBytes
+        self.interactionCandidateBytes = interactionCandidateBytes
+        self.interactionCommittedBytes = interactionCommittedBytes
+        self.admissionQueueBytes = admissionQueueBytes
+        self.sealedBatchBytes = sealedBatchBytes
+        self.pointerStateBytes = pointerStateBytes
+        self.coordinatorStateBytes = coordinatorStateBytes
+        self.failureStateBytes = failureStateBytes
+    }
 }
 
 package enum RuntimeProfileValidationError: UInt8, Equatable, Sendable {
