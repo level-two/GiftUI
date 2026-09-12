@@ -541,11 +541,9 @@ straightforward value declarations, or report wiring.
 - SPEC-007 and SPEC-008 are implemented. Their `GiftUILayout` and
   `GiftUIRenderLowering` production seams are available and are no longer
   upstream blockers for `T5.1` and `T5.2`.
-- SPEC-011 has a ready plan but no `GiftUIInteraction` target. Its `T1`-`T4`
-  focused declarations and behavior precede SPEC-013 profile binding;
-  production coordinator work in the two plans then lands through the explicit
-  cross-plan handoff above. `T5.3` and routing integration cannot substitute
-  local candidate, generation, hit, or dispatch ownership.
+- SPEC-011 T5.1-T5.6 is complete. `GiftUIInteraction` and Runtime Core now
+  provide the target-bound candidate, offer-resolution, current-model dispatch,
+  replacement-validation, and mutation-join seams consumed by T5.3-T5.5.
 - SPEC-012 is implementing and its `GiftUIDrawing` target, focused `T1`-`T5`
   behavior, and `T6.1`-`T6.3` generated callable contract are available. Its
   unfinished `T6.4`-`T7.4` production profile, host, startup, failure, and
@@ -553,8 +551,10 @@ straightforward value declarations, or report wiring.
   Dynamic/static Canvas storage and full drawing evidence cannot proceed by
   duplicating its callable, capture, Path, plan, or producer algorithms.
 - SPEC-009 and SPEC-010 remain implementing. Their already available focused
-  seams may be consumed, but tasks requiring unfinished production integration
-  remain blocked and must not move ownership into Runtime Core.
+  seams may be consumed, but SPEC-010 T6.1/T6.3's Dynamic/Static production
+  workspaces and zero-heap typed Static state path have not landed. T5.1 is
+  blocked on those owner-profile seams and must not replace them with runtime-
+  local algorithms or recording fixtures.
 - SPEC-015 integration and Signal Analyzer production resource rows consume
   its approved schema-2 workload amendment and exact host values after the
   owning plan is ready and dependencies land. SPEC-014 remains governed by its
@@ -814,6 +814,15 @@ call-symbol path, rejecting allocation, closure/existential boxes, reflection,
 Objective-C, task, and thread facilities. Both linked fixtures retain the
 binding path, and the nRF image remains Cortex-M4F hard-float. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-4/static-profile-binding.md`.
+
+T5.1 reached its production-owner entry gate after T3/T4 completion. SPEC-011
+is no longer a blocker, but SPEC-010 T6.1/T6.3's concrete equal-profile
+workspaces and typed zero-heap Static state path remain unimplemented, with
+their own plan also waiting for SPEC-015 assembly inputs. Neither runtime target
+currently conforms to the required Observable, Semantic, or Layout storage
+protocols. T5.1 remains unchecked because a runtime-local duplicate or a
+recording fixture cannot satisfy Milestone 5. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-5/production-owner-integration-blocker.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
