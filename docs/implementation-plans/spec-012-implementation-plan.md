@@ -291,7 +291,7 @@ cleanup, and first-failure semantics.
       first-excess mutation, nested-path rejection, and normal/throwing reset.
       Prove live-Path totals survive successful stroke snapshots and reset only
       when the enclosing `withPath` exits.
-- [ ] `T3.4` — Implement style/path validation and atomic whole-snapshot
+- [x] `T3.4` — Implement style/path validation and atomic whole-snapshot
       reservation before copy or unique transfer. Preserve complete ordered
       points and explicit subpath ranges, append one no-op record for paths with
       no nonzero segment, and ensure later mutation cannot alter prior strokes.
@@ -816,6 +816,18 @@ leave storage unchanged. The public scoped facade additionally proves nested
 an earlier snapshot remains unchanged across later mutation. The
 [path construction evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-3/live-path-construction.md)
 records the covered states. T3.4 is the next dependency-complete task.
+
+`T3.4` is complete. `StrokeSnapshotProducer` validates width and complete
+gap-free Path structure, computes every stroke/point/subpath/normalized-
+operation reservation with checked `UInt16` arithmetic, compares all limits,
+and only then makes one atomic storage append. Focused fixtures prove exact
+style/header preservation, empty and one-point canonical no-op records,
+multiple subpaths, painter order, equal-limit success, nonpositive and
+over-limit width precedence, whole-reservation failure without mutation, and
+immutable earlier snapshots after later Path mutation. The
+[snapshot evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-3/stroke-snapshots.md)
+records the behavior and profile compilation. T3.5 is the next
+dependency-complete task.
 
 `T1.4` is complete. Seven maintained positive fixtures compile Canvas/style
 defaults, both stroke overloads, explicit typed trailing closures,

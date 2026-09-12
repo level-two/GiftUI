@@ -115,6 +115,7 @@ run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" -module-name G
     "${PROJECT_ROOT}/Sources/GiftUIDrawing/DrawingValues.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIDrawing/DrawingLimits.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIDrawing/PathConstruction.swift" \
+    "${PROJECT_ROOT}/Sources/GiftUIDrawing/StrokeSnapshot.swift" \
     -emit-module-path "${module_dir}/GiftUIDrawing.swiftmodule" \
     -emit-module-interface-path "${module_dir}/GiftUIDrawing.swiftinterface" >/dev/null
 

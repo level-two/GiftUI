@@ -105,7 +105,7 @@ private func transcript<Storage>(
     return LivePathTranscript(points: points, subpaths: subpaths)
 }
 
-private struct DynamicLivePathStorage: LivePathStorage {
+struct DynamicLivePathStorage: LivePathStorage {
     let maximumPointCount: UInt16
     let maximumSubpathCount: UInt16
     private var points: [Point] = []
@@ -170,7 +170,7 @@ private struct DynamicLivePathStorage: LivePathStorage {
     }
 }
 
-private struct StaticLivePathStorage: LivePathStorage {
+struct StaticLivePathStorage: LivePathStorage {
     let maximumPointCount: UInt16
     let maximumSubpathCount: UInt16
     private var storedPointCount: UInt16 = 0
