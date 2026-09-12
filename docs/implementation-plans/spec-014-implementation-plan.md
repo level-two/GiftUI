@@ -305,7 +305,7 @@ insufficient bound fails in exact order before an offer or target probe.
 session reusable-slot grammar, ownership transition, completion, cancellation,
 identity lifetime, and target-local health.
 
-- [ ] `T3.1` — Implement checked monotonic reservation identity allocation
+- [x] `T3.1` — Implement checked monotonic reservation identity allocation
       starting at zero with no reuse or wrap, one active frame session, exact
       reservation arguments, idle/inactive/stale detection, and one terminal
       `finishFrame` or `cancelFrame`. Cover exhaustion before mutation.
@@ -772,6 +772,16 @@ control rejected against the 3,840-byte raster ceiling. A registered checker
 proves descriptor/effective equality, byte products, paired macOS logical
 equality, absence of runtime-profile identity in capability data, and the
 explicit framebuffer rejection.
+
+`T3.1` added the test-owned recording display target and its first reservation
+state-machine layer. Reservation IDs begin at zero, advance monotonically,
+never reuse or wrap, and report exhaustion before session mutation. Exactly
+one active session is allowed; descriptor, payload, and region arguments are
+checked before allocation; inactive and stale writer/submission/terminal calls
+are rejected; and each reservation accepts exactly one `finishFrame` or
+`cancelFrame`. Focused tests cover the zero/start sequence, finish and cancel
+reuse boundaries, reentrancy, under/equal/over capacities, stale identities,
+duplicate terminal calls, and `UInt32.max` exhaustion.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
