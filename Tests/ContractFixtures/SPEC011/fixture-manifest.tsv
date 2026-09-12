@@ -12,3 +12,4 @@
 11	semantic-transcript.tsv	transcript	plain,local-disabled,ancestor-disabled-false,sibling-enabled
 12	action-validation-faults.tsv	faults	wrong-domain,invalid-round-trip,valid
 13	gesture-interleavings.tsv	transcript	malformed,dropped,out-of-order,capacity-refused,stale-revision,moved,disabled,removed,rebound,stable-multi-revision
+14	required-evidence.tsv	evidence	IN-001-IN-013

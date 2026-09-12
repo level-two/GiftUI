@@ -230,7 +230,7 @@ claimed.
       SPEC-002 exact target/dependency fixtures atomically and add reverse-edge,
       forbidden-import, non-re-export, reflection, existential, allocator, and
       task/async negatives.
-- [ ] `T0.3` — Create `scripts/contracts/run-spec-011.sh --profile <profile>`
+- [x] `T0.3` — Create `scripts/contracts/run-spec-011.sh --profile <profile>`
       with exactly `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, and
       `nrf52840-embedded`; register it explicitly in
       `scripts/contracts/driver-registry.tsv`. Fail closed for unavailable
