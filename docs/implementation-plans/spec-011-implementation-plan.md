@@ -344,7 +344,7 @@ allocating no identity or retaining any upstream borrow.
       intersection, identity/geometry/capacity/unique-zero-based-paint-order
       validation, and empty-intersection retention without a hit region. A
       count equal to each limit succeeds; the first excess fails deterministically.
-- [ ] `T3.4` — Implement exact complete-record comparison. Copy a preserved
+- [x] `T3.4` — Implement exact complete-record comparison. Copy a preserved
       record and generation only when identity, enabled state, clipped bounds,
       paint order, action code, and publishable target generation all match;
       otherwise stage a generation-pending replacement. Interaction must not

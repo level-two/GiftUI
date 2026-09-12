@@ -5,6 +5,53 @@ import XCTest
 @testable import GiftUIInteraction
 
 final class InteractionCandidateAppendTests: XCTestCase {
+    func testOnlyAnExactlyEqualCommittedRecordPreservesGeneration() {
+        let committed = BoundActionRecord(
+            identity: UInt16(7),
+            generation: ActionGeneration(rawValue: 41),
+            isEnabled: true,
+            hitBounds: rect(x: 0, y: 0, width: 2, height: 2),
+            paintOrder: 0,
+            action: BoundedApplicationAction(code: 5),
+            targetGeneration: ObservableTargetGeneration(rawValue: 9)
+        )
+        var equal = makeState(capacity: 2, committed: committed)
+        XCTAssertNil(
+            equal.beginCandidate(
+                limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+        XCTAssertEqual(
+            appendRecord(&equal, identity: 7, isEnabled: true, action: 5, target: 9),
+            .preserved
+        )
+
+        var changedAction = makeState(capacity: 2, committed: committed)
+        XCTAssertNil(
+            changedAction.beginCandidate(
+                limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+        XCTAssertEqual(
+            appendRecord(&changedAction, identity: 7, isEnabled: true, action: 6, target: 9),
+            .requiresGeneration
+        )
+
+        var changedTarget = makeState(capacity: 2, committed: committed)
+        XCTAssertNil(
+            changedTarget.beginCandidate(
+                limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+        XCTAssertEqual(
+            appendRecord(&changedTarget, identity: 7, isEnabled: true, action: 5, target: 10),
+            .requiresGeneration
+        )
+
+        var disabled = makeState(capacity: 2, committed: committed)
+        XCTAssertNil(
+            disabled.beginCandidate(
+                limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+        XCTAssertEqual(
+            appendRecord(&disabled, identity: 7, isEnabled: false, action: 5, target: 9),
+            .requiresGeneration
+        )
+    }
+
     func testAppendUsesExactClipAndRetainsEmptyIntersectionWithoutHit() {
         var state = makeState(capacity: 2)
         XCTAssertNil(
@@ -57,14 +104,41 @@ final class InteractionCandidateAppendTests: XCTestCase {
     }
 }
 
-private func makeState(capacity: UInt16) -> InteractionState<
+private func makeState(
+    capacity: UInt16,
+    committed: BoundActionRecord<UInt16>? = nil
+) -> InteractionState<
     ArrayCandidateStorage, ArrayCommittedStorage, ArrayHitStorage
 > {
     InteractionState(
         candidateRecords: ArrayCandidateStorage(capacity: capacity),
         candidateHitRegions: ArrayHitStorage(capacity: capacity),
-        committedRecords: ArrayCommittedStorage(capacity: capacity),
+        committedRecords: ArrayCommittedStorage(
+            capacity: capacity,
+            values: committed.map { [$0] } ?? []
+        ),
         committedHitRegions: ArrayHitStorage(capacity: capacity)
+    )
+}
+
+private func appendRecord(
+    _ state:
+        inout InteractionState<
+            ArrayCandidateStorage, ArrayCommittedStorage, ArrayHitStorage
+        >,
+    identity: UInt16,
+    isEnabled: Bool,
+    action: UInt16,
+    target: UInt32
+) -> InteractionCandidateAppendResult {
+    state.append(
+        identity: identity,
+        isEnabled: isEnabled,
+        bounds: rect(x: 0, y: 0, width: 2, height: 2),
+        clip: rect(x: 0, y: 0, width: 2, height: 2),
+        paintOrder: 0,
+        action: BoundedApplicationAction(code: action),
+        targetGeneration: ObservableTargetGeneration(rawValue: target)
     )
 }
 

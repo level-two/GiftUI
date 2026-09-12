@@ -84,9 +84,17 @@ where
             return failCandidate(.capacityExhausted)
         }
 
+        let preservedGeneration = matchingCommittedGeneration(
+            identity: identity,
+            isEnabled: isEnabled,
+            hitBounds: hitBounds,
+            paintOrder: paintOrder,
+            action: action,
+            targetGeneration: targetGeneration
+        )
         let record = InteractionCandidateRecord(
             identity: identity,
-            generation: nil,
+            generation: preservedGeneration,
             isEnabled: isEnabled,
             hitBounds: hitBounds,
             paintOrder: paintOrder,
@@ -106,7 +114,34 @@ where
                 return failCandidate(.invariantViolation)
             }
         }
-        return .requiresGeneration
+        return preservedGeneration == nil ? .requiresGeneration : .preserved
+    }
+
+    private borrowing func matchingCommittedGeneration(
+        identity: Identity,
+        isEnabled: Bool,
+        hitBounds: Rect,
+        paintOrder: UInt16,
+        action: BoundedApplicationAction,
+        targetGeneration: ObservableTargetGeneration
+    ) -> ActionGeneration? {
+        var index: UInt16 = 0
+        while index < committedRecords.count {
+            guard let record = committedRecords.record(at: index) else {
+                return nil
+            }
+            if record.identity == identity {
+                guard record.isEnabled == isEnabled,
+                    record.hitBounds == hitBounds,
+                    record.paintOrder == paintOrder,
+                    record.action == action,
+                    record.targetGeneration == targetGeneration
+                else { return nil }
+                return record.generation
+            }
+            index += 1
+        }
+        return nil
     }
 
     private borrowing func containsCandidate(identity: borrowing Identity) -> Bool {
