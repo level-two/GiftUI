@@ -143,14 +143,17 @@ runtime behavior.
 
 ## Open Implementation Questions
 
-The exact production source-analysis front end and emitted private type names
-remain replaceable SPEC-013 integration details. If that owner cannot preserve
-the checked descriptor semantics without changing public Canvas source, the
-work returns to Specification review.
+The pinned Apple Swift 6.3.3 compiler rejects the exact normative declaration
+`associatedtype CaptureStorage: ~Copyable`; associated types cannot suppress
+their implicit `Copyable` requirement in this compiler. T6.2 is therefore
+paused in Specification review rather than weakening the declaration. The
+exact production source-analysis front end and emitted private type names
+otherwise remain replaceable SPEC-013 integration details.
 
 ## Code and Evidence Links
 
 - [Static Canvas source descriptor](../../Tests/ContractFixtures/SPEC012/static-canvas-input.yaml)
 - [Checked static Canvas manifest](../../Tests/ContractFixtures/SPEC012/static-canvas-manifest.yaml)
 - [Static Canvas manifest checker](../../scripts/contracts/check-spec-012-static-canvas-manifest.rb)
+- [T6.2 Specification blocker](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-callable-table-specification-blocker.md)
 - [SPEC-012 contract fixtures](../../Tests/ContractFixtures/SPEC012/README.md)

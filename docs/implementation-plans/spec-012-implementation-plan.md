@@ -919,3 +919,12 @@ records the replaceable lowering and lifecycle realization, while the
 [manifest evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-generator-manifest.md)
 keeps generated Swift, production limits, and runtime storage explicitly
 pending. T6.2 is the next dependency-complete static-generation task.
+
+`T6.2` is blocked in Specification review. The pinned Apple Swift 6.3.3
+compiler rejects the exact normative
+`associatedtype CaptureStorage: ~Copyable` requirement because this compiler
+cannot suppress an associated type's implicit `Copyable` requirement. The
+[callable-table review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-callable-table-specification-blocker.md)
+records the compiler diagnostic and affected scope. Substituting an implicitly
+copyable associated type would change the approved contract, so T6.2-T6.5
+remain unchecked pending a compiler-supported Specification correction.
