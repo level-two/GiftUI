@@ -688,6 +688,16 @@ now records this evidence per profile, and all compile-registry rows are
 lifecycle, and production obligations are not yet satisfied. Milestone 1 is
 complete; T2.1 is the next dependency-complete task.
 
+`T2.1` is blocked in Specification review. SPEC-012 requires the private
+Canvas callable to cross from `GiftUI` into identity-keyed semantic storage
+and later drawing-attempt invocation, but defines no typed cross-module
+transfer or invocation seam while explicitly forbidding public/package
+callable lookup. The static source-generated callable-ID substitution has the
+same missing staging hook. The focused
+[Specification review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-2/canvas-invocation-seam-specification-blocker.md)
+records the required correction. Independent T2.2-T2.5 and T3 work may proceed
+without claiming production semantic-callable integration.
+
 `T1.1` is complete. `GiftUI.Canvas` now has the exact typed-throws initializer,
 private retained draw callable, `Body == Never` invariant body, primitive
 marker conformance, and one-call traversal override. The focused declaration
