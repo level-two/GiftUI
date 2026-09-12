@@ -19,12 +19,15 @@ package protocol LivePathStorage {
 
 package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
     package private(set) var storage: Storage
+    package private(set) var isActive: Bool
 
     package init(storage: Storage) {
         self.storage = storage
+        isActive = true
     }
 
     package mutating func move(to point: Point) throws(DrawingError) {
+        guard isActive else { throw DrawingError.invalidScope }
         if storage.subpathCount == 0 {
             guard storage.pointCount == 0 else {
                 throw DrawingError.invariantViolation
@@ -61,6 +64,7 @@ package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
     }
 
     package mutating func addLine(to point: Point) throws(DrawingError) {
+        guard isActive else { throw DrawingError.invalidScope }
         guard storage.subpathCount > 0 else {
             throw DrawingError.invalidPathState
         }
@@ -80,6 +84,7 @@ package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
 
     package mutating func reset() {
         storage.reset()
+        isActive = false
     }
 
     private func requireCapacity(

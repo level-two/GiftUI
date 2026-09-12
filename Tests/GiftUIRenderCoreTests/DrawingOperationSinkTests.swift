@@ -24,6 +24,7 @@ private struct TestDrawingSink: DrawingOperationSink {
     private(set) var strokeHeader: StraightLineStrokeHeader?
     private(set) var firstPoint: Point?
     private(set) var firstSubpath: SubpathRange?
+    var acceptsStroke = true
 
     mutating func straightLineStroke<Stroke: StraightLineStrokeView>(
         _ stroke: borrowing Stroke
@@ -31,7 +32,7 @@ private struct TestDrawingSink: DrawingOperationSink {
         strokeHeader = stroke.header
         firstPoint = stroke.point(at: 0)
         firstSubpath = stroke.subpath(at: 0)
-        return true
+        return acceptsStroke
     }
 
     mutating func begin(_: RenderPlanHeader) -> Bool { true }
@@ -41,6 +42,37 @@ private struct TestDrawingSink: DrawingOperationSink {
     mutating func endPositionedGlyphs() -> Bool { true }
     mutating func finish() -> Bool { true }
     mutating func discard() {}
+}
+
+@Test(arguments: [true, false])
+func drawingOperationSinkRetainsOnlyDerivedValuesAfterBorrowReturns(
+    acceptsStroke: Bool
+) {
+    let point = Point(x: 47, y: 53)
+    let subpath = SubpathRange(firstPoint: 0, pointCount: 1)!
+    let header = StraightLineStrokeHeader(
+        color: .blue,
+        lineWidth: 3,
+        lineCap: .butt,
+        lineJoin: .round,
+        surfaceOrigin: Point(x: 0, y: 0),
+        inheritedClip: Rect(
+            origin: Point(x: 0, y: 0),
+            size: Size(width: 59, height: 61)!
+        )!,
+        pointCount: 1,
+        subpathCount: 1
+    )
+    var sink = TestDrawingSink(acceptsStroke: acceptsStroke)
+
+    do {
+        let stroke = TestStroke(header: header, points: [point], subpaths: [subpath])
+        #expect(sink.straightLineStroke(stroke) == acceptsStroke)
+    }
+
+    #expect(sink.strokeHeader == header)
+    #expect(sink.firstPoint == point)
+    #expect(sink.firstSubpath == subpath)
 }
 
 @Test

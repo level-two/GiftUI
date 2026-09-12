@@ -102,6 +102,46 @@
         #expect(refusingSink.storage.canvasOccurrenceCount == 0)
     }
 
+    @Test
+    func throwingCanvasRemainsInaccessibleAfterExplicitRelease() throws {
+        var workspace = CanvasAdapterWorkspace()
+        var sink = SemanticLayoutResultSink(
+            storage: CanvasAdapterStorage(capacity: 1)
+        )
+        let result = expandSemanticTree(
+            Canvas { (_, _) throws(DrawingError) in
+                throw DrawingError.invalidValue
+            },
+            limits: canvasAdapterLimits,
+            workspace: &workspace,
+            sink: &sink
+        )
+        guard case .success = result else {
+            Issue.record("throwing Canvas must stage successfully")
+            return
+        }
+        let identity = sink.rootIdentity
+        _ = withCanvasAdapterContext { context in
+            #expect(throws: DrawingError.invalidValue) {
+                try sink.storage.invokeCanvas(
+                    at: identity,
+                    context: &context,
+                    size: Size(width: 1, height: 1)!
+                )
+            }
+        }
+        sink.storage.releaseCanvas(at: identity)
+        _ = withCanvasAdapterContext { context in
+            #expect(throws: DrawingError.invariantViolation) {
+                try sink.storage.invokeCanvas(
+                    at: identity,
+                    context: &context,
+                    size: Size(width: 1, height: 1)!
+                )
+            }
+        }
+    }
+
     private let canvasAdapterLimits = SemanticExpansionLimits(
         maximumDepth: 16,
         maximumSemanticNodes: 4,

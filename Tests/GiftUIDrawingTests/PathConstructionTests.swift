@@ -72,10 +72,17 @@ private func exerciseLivePath<Storage>(
     #expect(snapshotBeforeFurtherMutation.points.count == 2)
 
     builder.reset()
+    #expect(!builder.isActive)
     #expect(builder.storage.pointCount == 0)
     #expect(builder.storage.subpathCount == 0)
     #expect(builder.storage.point(at: 0) == nil)
     #expect(builder.storage.subpath(at: 0) == nil)
+    #expect(throws: DrawingError.invalidScope) {
+        try builder.move(to: Point(x: 9, y: 9))
+    }
+    #expect(throws: DrawingError.invalidScope) {
+        try builder.addLine(to: Point(x: 9, y: 9))
+    }
 }
 
 private struct LivePathTranscript: Equatable {

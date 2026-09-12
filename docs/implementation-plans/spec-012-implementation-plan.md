@@ -297,7 +297,7 @@ cleanup, and first-failure semantics.
       no nonzero segment, and ensure later mutation cannot alter prior strokes.
       Reject nonpositive width as `.invalidValue` and positive width above
       `maximumLineWidth` as `.capacityExhausted` before any snapshot mutation.
-- [ ] `T3.5` — Implement exact callable, context, live Path, immutable plan, and
+- [x] `T3.5` — Implement exact callable, context, live Path, immutable plan, and
       borrowed stroke-view lifetimes. Add poisoned-storage and address-capture
       tests covering normal, throwing, failed, accepted, refused, discarded, and
       reset exits without retaining a borrow or eligible callable.
@@ -828,6 +828,18 @@ immutable earlier snapshots after later Path mutation. The
 [snapshot evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-3/stroke-snapshots.md)
 records the behavior and profile compilation. T3.5 is the next
 dependency-complete task.
+
+`T3.5` is complete. Reset now poisons the live Path builder before storage can
+be reused, and the existing noncopyable/nonescaping declaration corpus rejects
+Path construction, copy, consume, synchronous escape, asynchronous escape,
+and overlapping outer-context access. Focused lifecycle probes cover normal
+and throwing Canvas returns followed by release, active Path normal/throwing
+exit, successful plan publication followed by discard/reset, failed snapshot
+reservation without retention, and accepted/refused borrowed stroke calls that
+retain only copied derived values. The
+[lifetime evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-3/drawing-lifetimes.md)
+records the poison and ownership checks. T3.6 is the next dependency-complete
+task.
 
 `T1.4` is complete. Seven maintained positive fixtures compile Canvas/style
 defaults, both stroke overloads, explicit typed trailing closures,
