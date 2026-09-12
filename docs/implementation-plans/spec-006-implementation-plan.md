@@ -2,7 +2,7 @@
 spec: SPEC-006
 feature: giftui-mvp-architecture
 title: SPEC-006 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-01
@@ -516,7 +516,7 @@ implemented, every visitor conforms to the revised sealed surface, `DV-017`
 has reproducible four-profile evidence, and the collecting conformance report
 is ready for renewed review without claiming the `implemented` transition.
 
-- [ ] `T9.1` — Add the exact typed
+- [x] `T9.1` — Add the exact typed
       `visitActionPrimitive(content:payload:)` requirement to `GiftUI`, update
       every framework and fixture visitor conformance without a default
       compatibility hook, and add public/package surface checks proving leaf
@@ -1013,3 +1013,11 @@ completed evidence predates that amendment. Milestone 9 now maps `DV-017` to
 exact surface, traversal, identity, failure, profile, allocation, driver, and
 renewed conformance work. The plan is `ready`; implementation has not yet
 resumed.
+
+`T9.1` is complete: `GiftUI` now exposes the exact typed action-primitive-with-
+content overload without a default compatibility hook. Every maintained
+visitor conforms to the revised surface, the Semantic Core visitor stages the
+action before traversing `fixedChild(0)`, and focused declaration tests prove
+the leaf and content-bearing overloads remain distinct, preserve typed actions
+and stored zero/one/five-child content, retain `Body == Never`, and do not
+evaluate a primitive body. The plan is `active`; `T9.2` is next.

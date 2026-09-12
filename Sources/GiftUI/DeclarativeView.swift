@@ -84,6 +84,14 @@ public protocol _GiftUISemanticTraversalVisitor {
         _ payload: borrowing Payload
     )
 
+    mutating func visitActionPrimitive<
+        Content: View,
+        Payload: _GiftUISemanticActionPayload
+    >(
+        content: borrowing Content,
+        payload: borrowing Payload
+    )
+
     mutating func visitModifier<
         Content: View,
         Payload: _GiftUISemanticModifierPayload

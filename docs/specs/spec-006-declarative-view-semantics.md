@@ -2,7 +2,7 @@
 id: SPEC-006
 feature: giftui-mvp-architecture
 title: Declarative View Semantics Specification
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-25
@@ -42,7 +42,8 @@ target_milestone: MVP
 
 # SPEC-006: Declarative View Semantics Specification
 
-> **Approval status:** Explicitly reapproved by the maintainer on 2026-09-12.
+> **Implementation status:** Implementation resumed on 2026-09-12 after the
+> maintainer explicitly reapproved the amendment and requested execution.
 > This revision adds the action-primitive-with-content traversal operation
 > required by approved SPEC-011 so Button can stage one action at its identity
 > and expand its stored label as a fixed semantic child. The amended contract

@@ -127,6 +127,38 @@ final class DeclarativeViewTests: XCTestCase {
         XCTAssertEqual(visitor.fixedArities, [5])
         XCTAssertEqual(visitor.bodyEvaluations, 0)
     }
+
+    func testActionPrimitiveWithContentUsesOnlyItsTypedOverloadAndNeverReadsBody() {
+        let empty = ActionPrimitiveContainer(action: TestAction.minimum) {}
+        let one = ActionPrimitiveContainer(action: TestAction.ordinary) { PrimitiveLeaf() }
+        let five = ActionPrimitiveContainer(action: TestAction.maximum) {
+            PrimitiveLeaf()
+            PrimitiveLeaf()
+            PrimitiveLeaf()
+            PrimitiveLeaf()
+            PrimitiveLeaf()
+        }
+        let _: ActionPrimitiveContainer<TestAction, EmptyView>.Body.Type = Never.self
+        var visitor = CustomViewProbeVisitor(evaluateBody: true)
+
+        visitor.visitActionPrimitive(TestActionPayload(_giftUIAction: .ordinary))
+        empty._giftUITraverse(&visitor)
+        one._giftUITraverse(&visitor)
+        five._giftUITraverse(&visitor)
+
+        XCTAssertEqual(visitor.actionPrimitiveWithContentVisits, 3)
+        XCTAssertEqual(visitor.actionPrimitiveVisits, 1)
+        XCTAssertEqual(
+            visitor.visitedActionCodes,
+            [
+                TestAction.minimum.rawValue, TestAction.ordinary.rawValue,
+                TestAction.maximum.rawValue,
+            ]
+        )
+        XCTAssertEqual(visitor.emptyVisits, 1)
+        XCTAssertEqual(visitor.fixedArities, [5])
+        XCTAssertEqual(visitor.bodyEvaluations, 0)
+    }
 }
 
 private final class InvocationCounter {
@@ -222,6 +254,34 @@ private struct TestActionPayload: _GiftUISemanticActionPayload {
     let _giftUIAction: TestAction
 }
 
+private struct ActionPrimitiveContainer<Action: GiftUIAction, Content: View>: View {
+    typealias Body = Never
+
+    let content: Content
+    let payload: ActionPrimitivePayload<Action>
+
+    init(action: Action, @ViewBuilder content: () -> Content) {
+        self.content = content()
+        payload = ActionPrimitivePayload(_giftUIAction: action)
+    }
+
+    var body: Never {
+        fatalError("ActionPrimitiveContainer.body must remain unevaluated")
+    }
+
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    ) {
+        visitor.visitActionPrimitive(content: content, payload: payload)
+    }
+}
+
+private struct ActionPrimitivePayload<Action: GiftUIAction>:
+    _GiftUISemanticActionPayload
+{
+    let _giftUIAction: Action
+}
+
 private struct TestModifierPayload: _GiftUISemanticModifierPayload {}
 
 enum StyleVisit: Equatable {
@@ -263,6 +323,8 @@ struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
     var primitiveVisits = 0
     var primitiveWithContentVisits = 0
     var actionPrimitiveVisits = 0
+    var actionPrimitiveWithContentVisits = 0
+    var visitedActionCodes: [UInt16] = []
     var modifierVisits = 0
     var styleVisits: [StyleVisit] = []
     var layoutModifierVisits: [LayoutModifierVisit] = []
@@ -379,6 +441,23 @@ struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
         _ payload: borrowing Payload
     ) {
         actionPrimitiveVisits += 1
+    }
+
+    mutating func visitActionPrimitive<
+        Content: View,
+        Payload: _GiftUISemanticActionPayload
+    >(
+        content: borrowing Content,
+        payload: borrowing Payload
+    ) {
+        actionPrimitiveWithContentVisits += 1
+        let payloadCopy = copy payload
+        if let action = payloadCopy._giftUIAction as? TestAction {
+            visitedActionCodes.append(action.rawValue)
+        }
+        if evaluateBody {
+            content._giftUITraverse(&self)
+        }
     }
 
     private mutating func recordLayoutPrimitive<
