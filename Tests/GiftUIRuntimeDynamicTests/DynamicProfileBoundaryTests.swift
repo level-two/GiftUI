@@ -240,6 +240,81 @@ func dynamicCanvasCallableStorageIsBoundedOrderedAndReleasesExactlyOnce() {
     #expect(storage.canvasOccurrenceCount == 0)
 }
 
+@Test
+func dynamicBindingUsesCommonLifecycleAndOwnsAttemptCleanup() {
+    let identity = DynamicStructuralIdentity(rawValue: 81)!
+    var binding = DynamicRuntimeProfileBinding(
+        structuralIdentity: identity,
+        limits: dynamicLimits(),
+        byteCounts: dynamicByteCounts()
+    )!
+    let active = ExecutionContext(
+        cycle: RunCycleID(rawValue: 5),
+        semanticRevision: nil,
+        candidateFrame: nil,
+        phase: .admitting
+    )
+
+    let profile = binding.profile
+    let auditProfile = binding.storageAudit?.profile
+    #expect(profile == .dynamic)
+    #expect(auditProfile == .dynamic)
+    #expect(binding.beginOpportunity(context: active) == nil)
+    #expect(binding.beginOpportunity(context: active) == .reentrancyViolation)
+    #expect(binding.reserve(1, for: .drawingPlanStrokes) == .accepted)
+    let staged = binding.stageCanvas(identity: identity, canvas: Canvas { _, _ in })
+    let stagedOccurrenceCount = binding.canvasOccurrenceCount
+    #expect(staged)
+    #expect(stagedOccurrenceCount == 1)
+
+    #expect(binding.finishOpportunity(context: idleExecutionContext()) == nil)
+    let finishedContext = binding.executionContext
+    let finishedStorageState = binding.storageLifetimeState
+    let finishedOccurrenceCount = binding.canvasOccurrenceCount
+    let releaseCount = binding.canvasReleaseCount
+    let attemptResetCount = binding.releaseCounters.attemptResetCount
+    #expect(finishedContext == idleExecutionContext())
+    #expect(finishedStorageState == .idle)
+    #expect(finishedOccurrenceCount == 0)
+    #expect(releaseCount == 1)
+    #expect(attemptResetCount == 1)
+}
+
+@Test
+func dynamicBindingDefersActiveQuiescenceThenTearsDownOnce() {
+    var binding = DynamicRuntimeProfileBinding(
+        structuralIdentity: DynamicStructuralIdentity(rawValue: 82)!,
+        limits: dynamicLimits(),
+        byteCounts: dynamicByteCounts()
+    )!
+    let active = ExecutionContext(
+        cycle: RunCycleID(rawValue: 6),
+        semanticRevision: nil,
+        candidateFrame: nil,
+        phase: .admitting
+    )
+
+    #expect(binding.beginOpportunity(context: active) == nil)
+    binding.quiesce()
+    let activeQuiescence = binding.isQuiescent
+    let requestedStorageState = binding.storageLifetimeState
+    #expect(!activeQuiescence)
+    #expect(requestedStorageState == .quiescenceRequested)
+    #expect(binding.beginOpportunity(context: active) == .reentrancyViolation)
+
+    #expect(binding.finishOpportunity(context: idleExecutionContext()) == nil)
+    let finishedQuiescence = binding.isQuiescent
+    let tornDownStorageState = binding.storageLifetimeState
+    let firstTeardownCount = binding.releaseCounters.quiescentTeardownCount
+    #expect(finishedQuiescence)
+    #expect(tornDownStorageState == .tornDown)
+    #expect(firstTeardownCount == 1)
+    binding.quiesce()
+    let secondTeardownCount = binding.releaseCounters.quiescentTeardownCount
+    #expect(secondTeardownCount == 1)
+    #expect(binding.beginOpportunity(context: active) == .requiredFacilityUnavailable)
+}
+
 #if GIFTUI_DYNAMIC_PROFILE
     @Test
     func dynamicCanvasCallableInvokesExactPayloadAndRejectsReleasedOccurrence() throws {
@@ -400,4 +475,13 @@ private func makeDynamicStorage() -> DynamicProfileStorage {
         limits: dynamicLimits(),
         byteCounts: dynamicByteCounts()
     )!
+}
+
+private func idleExecutionContext() -> ExecutionContext {
+    ExecutionContext(
+        cycle: nil,
+        semanticRevision: nil,
+        candidateFrame: nil,
+        phase: .idle
+    )
 }

@@ -103,6 +103,7 @@ EXPECTED_PROFILES.each do |profile|
 end
 %w[
   check-spec-013-module-contract.rb check-spec-013-module-contract.sh
+  check-spec-013-dynamic-binding.rb
   check-spec-013-storage-registry.rb
   check-spec-013-static-generated-fixture.rb
   check-spec-013-static-profiles.sh

@@ -315,7 +315,7 @@ and the shared coordinator semantics without importing Static or a backend.
       Release every occurrence once immediately after invocation; prove
       conveniences lower to portable contracts and produce identical fixture
       transcripts.
-- [ ] `T3.5` — Bind the dynamic stores to the common coordinator and production
+- [x] `T3.5` — Bind the dynamic stores to the common coordinator and production
       focused owners. Audit that Dynamic does not duplicate their algorithms,
       import Static, inspect a backend/host, or retain borrowed payloads.
 
@@ -793,10 +793,18 @@ The former T3.5/T4.5 dependency blocker was resolved by SPEC-011 T5.1-T5.6.
 Interaction now owns the dispatcher contract and committed-record view;
 Runtime Core provides target-bound candidate coordination, offer resolution,
 current-model dispatch, replacement validation, and the SPEC-009 mutation join.
-T3.5 and T4.5 remain pending implementation, but are now the next
-dependency-complete production profile tasks. The original blocker and its
-resolution boundary are recorded in
+T4.5 remains the next dependency-complete production profile task. The
+original T3.5/T4.5 blocker and its resolution boundary are recorded in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-3/focused-owner-integration-blocker.md`.
+
+T3.5 added the noncopyable Dynamic profile binding over the validated storage,
+bounded Canvas callable store, and Runtime Core's common lifecycle. Opportunity
+ownership, retained execution context, active quiescence, and teardown remain
+common; the profile layer only connects its concrete storage lifetimes and
+scoped Canvas release. Focused tests and a fail-closed source audit prove no
+Static/backend/host import, focused-owner algorithm redefinition, or retained
+borrowed payload. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-3/dynamic-profile-binding.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
