@@ -588,6 +588,14 @@ not implied by this plan.
 - SPEC-008's complete `GiftUIRenderLowering`, traversal workspace,
   text/layout view, and atomic producer are present. T5 must implement the
   amended extension overloads in that owner and may not create a substitute.
+- T5.2 is blocked because the amended extended `RenderProducer.produce` has no
+  completion operation between its preflight traversal and `sink.begin`.
+  `CanvasRenderProducer` therefore cannot validate the completed Canvas,
+  stroke, point, subpath, and normalized-operation totals against the immutable
+  plan summary before `begin` without either independently traversing semantic
+  state or widening the approved extension SPI. The focused
+  [pre-begin summary review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-prebegin-summary-blocker.md)
+  records the required upstream correction.
 - Production dynamic/static callable storage and source-generation integration
   wait for SPEC-013. Production workload limits, observable static handles,
   startup B2 assembly, and host lifetime proofs wait for SPEC-015.
@@ -971,3 +979,16 @@ disagreements. The
 [combined preflight evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-preflight.md)
 and [combined traversal design](../implementation-designs/spec-012-combined-render-traversal.md)
 record the reusable mechanism. T5.2 is next.
+
+`T5.2` is blocked at the amended render-extension boundary. The preflight
+visitor can accumulate complete Canvas plan totals, but the extended
+`RenderProducer.produce` begins and streams the sink before returning control
+to `CanvasRenderProducer`; neither extension protocol exposes a post-traversal,
+pre-`begin` completion result. Per-scope preorder visits cannot detect a
+missing final Canvas or final point/subpath summary disagreement, and the
+combined render header contains only operation and glyph counts. An independent
+Canvas semantic recursion, an early extra preflight, or an unapproved protocol
+requirement would violate the approved contract. The
+[pre-begin summary blocker](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-prebegin-summary-blocker.md)
+preserves the exact proof. T5.2-T5.5 remain paused pending a Spec correction;
+independently dependency-complete T6.2 may proceed.

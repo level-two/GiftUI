@@ -141,8 +141,12 @@ T5.5 audits source reuse, imports, and absence of retained operation storage.
 
 ## Open Implementation Questions
 
-None for T5.1. T5.2 must confirm the paired streaming visitor can expose exact
-totals after the one sink transaction without widening the approved SPI.
+T5.1 has no open implementation question. T5.2 is blocked by a contract-level
+completion gap: the extended producer does not return control between its
+preflight traversal and `begin`, while the preflight visitor has no completion
+operation. The Canvas owner cannot prove the final plan-summary equality at the
+required point. Resolving this requires an approved SPI correction rather than
+an implementation choice in this note.
 
 ## Code and Evidence Links
 
@@ -150,3 +154,4 @@ totals after the one sink transaction without widening the approved SPI.
 - [`RenderExtensions.swift`](../../Sources/GiftUIRenderLowering/RenderExtensions.swift)
 - [`CanvasRenderProducer.swift`](../../Sources/GiftUIDrawing/CanvasRenderProducer.swift)
 - [Combined preflight evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-preflight.md)
+- [Pre-begin summary blocker](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-prebegin-summary-blocker.md)
