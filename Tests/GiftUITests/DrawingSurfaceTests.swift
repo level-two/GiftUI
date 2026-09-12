@@ -28,6 +28,8 @@ final class DrawingSurfaceTests: XCTestCase {
         XCTAssertEqual(probe.beginCount, 1)
         XCTAssertEqual(probe.endCount, 1)
         XCTAssertFalse(probe.pathIsActive)
+        XCTAssertEqual(probe.livePointCount, 0)
+        XCTAssertEqual(probe.liveSubpathCount, 0)
         XCTAssertEqual(probe.points, [Point(x: 1, y: 2), Point(x: 3, y: 4)])
         XCTAssertEqual(probe.strokeCount, 1)
         XCTAssertEqual(probe.strokeColor, Color(red: 5, green: 6, blue: 7))
@@ -55,6 +57,8 @@ final class DrawingSurfaceTests: XCTestCase {
         XCTAssertEqual(probe.beginCount, 1)
         XCTAssertEqual(probe.endCount, 1)
         XCTAssertFalse(probe.pathIsActive)
+        XCTAssertEqual(probe.livePointCount, 0)
+        XCTAssertEqual(probe.liveSubpathCount, 0)
     }
 
     func testSuccessfulBodySurfacesEndScopeFailure() throws {
@@ -69,6 +73,26 @@ final class DrawingSurfaceTests: XCTestCase {
             }
         }
 
+        XCTAssertEqual(probe.endCount, 1)
+        XCTAssertFalse(probe.pathIsActive)
+    }
+
+    func testNestedPathScopeIsRejectedBeforeReplacingTheActivePath() throws {
+        var probe = DrawingSurfaceProbe()
+
+        try withUnsafeMutablePointer(to: &probe) { pointer in
+            var context = makeContext(pointer)
+            try context.withPath { (context, _) throws(DrawingError) in
+                XCTAssertThrowsError(
+                    try context.withPath { (_, _) throws(DrawingError) in }
+                ) { error in
+                    XCTAssertEqual(error as? DrawingError, .reentrancyViolation)
+                }
+                XCTAssertTrue(pointer.pointee.pathIsActive)
+            }
+        }
+
+        XCTAssertEqual(probe.beginCount, 1)
         XCTAssertEqual(probe.endCount, 1)
         XCTAssertFalse(probe.pathIsActive)
     }
@@ -162,6 +186,8 @@ private struct DrawingSurfaceProbe {
     var beginCount = 0
     var endCount = 0
     var pathIsActive = false
+    var livePointCount = 0
+    var liveSubpathCount = 0
     var points: [Point] = []
     var strokeCount = 0
     var strokeColor: Color?
@@ -203,10 +229,12 @@ private func drawingSurfaceProbeBegin(
     }
     let probe = drawingSurfaceProbe(storage)
     guard !probe.pointee.pathIsActive else {
-        return _GiftUIDrawingStatus.invalidScope.rawValue
+        return _GiftUIDrawingStatus.reentrancyViolation.rawValue
     }
     probe.pointee.beginCount += 1
     probe.pointee.pathIsActive = true
+    probe.pointee.livePointCount = 0
+    probe.pointee.liveSubpathCount = 0
     pathGeneration.pointee = expectedPathGeneration
     return _GiftUIDrawingStatus.success.rawValue
 }
@@ -224,6 +252,8 @@ private func drawingSurfaceProbeEnd(
     let probe = drawingSurfaceProbe(storage)
     probe.pointee.endCount += 1
     probe.pointee.pathIsActive = false
+    probe.pointee.livePointCount = 0
+    probe.pointee.liveSubpathCount = 0
     return probe.pointee.endStatus.rawValue
 }
 
@@ -234,12 +264,18 @@ private func drawingSurfaceProbeMove(
     _ x: GeometryScalar,
     _ y: GeometryScalar
 ) -> UInt8 {
-    drawingSurfaceProbeAppend(
+    let status = drawingSurfaceProbeAppend(
         storage,
         contextGeneration,
         pathGeneration,
         Point(x: x, y: y)
     )
+    if status == _GiftUIDrawingStatus.success.rawValue {
+        let probe = drawingSurfaceProbe(storage)
+        probe.pointee.livePointCount += 1
+        probe.pointee.liveSubpathCount += 1
+    }
+    return status
 }
 
 private func drawingSurfaceProbeAddLine(
@@ -249,12 +285,16 @@ private func drawingSurfaceProbeAddLine(
     _ x: GeometryScalar,
     _ y: GeometryScalar
 ) -> UInt8 {
-    drawingSurfaceProbeAppend(
+    let status = drawingSurfaceProbeAppend(
         storage,
         contextGeneration,
         pathGeneration,
         Point(x: x, y: y)
     )
+    if status == _GiftUIDrawingStatus.success.rawValue {
+        drawingSurfaceProbe(storage).pointee.livePointCount += 1
+    }
+    return status
 }
 
 private func drawingSurfaceProbeAppend(

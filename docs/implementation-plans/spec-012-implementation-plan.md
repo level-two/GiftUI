@@ -285,7 +285,7 @@ cleanup, and first-failure semantics.
       successful/discarded/reset states, total summary accounting, zero-stroke
       Canvas lookup, nil out-of-range behavior, and invariant detection for
       duplicate/missing/inconsistent data.
-- [ ] `T3.3` — Implement one live scoped Path per context: current-point and
+- [x] `T3.3` — Implement one live scoped Path per context: current-point and
       subpath state, consecutive-move replacement, post-segment move reservation,
       line-without-move rejection, zero-length preservation, atomic equal-limit/
       first-excess mutation, nested-path rejection, and normal/throwing reset.
@@ -804,6 +804,18 @@ defaults, explicit invalid markers, enum raw values, error shape, overload
 equivalence, and nonpositive-width suppression. Cross-profile interface and
 resource proof remains assigned to T1.5; T1.4 is the next dependency-complete
 task.
+
+`T3.3` is complete. A profile-neutral `LivePathBuilder` now applies the exact
+current-point and explicit-subpath state machine over caller-owned bounded
+storage. Dynamic and fixed-capacity fixtures produce identical transcripts for
+consecutive-move replacement, post-segment subpath creation, preserved
+zero-length segments, equal-limit success, and reset. Focused failure tests
+prove line-without-move and independent point/subpath first-excess rejection
+leave storage unchanged. The public scoped facade additionally proves nested
+`withPath` rejection and live-total reset on normal and throwing exits, while
+an earlier snapshot remains unchanged across later mutation. The
+[path construction evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-3/live-path-construction.md)
+records the covered states. T3.4 is the next dependency-complete task.
 
 `T1.4` is complete. Seven maintained positive fixtures compile Canvas/style
 defaults, both stroke overloads, explicit typed trailing closures,

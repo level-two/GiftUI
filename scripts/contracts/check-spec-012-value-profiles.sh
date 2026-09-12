@@ -100,6 +100,7 @@ run_command "${compiler}" "${module_flags[@]}" -module-name GiftUI \
     "${PROJECT_ROOT}/Sources/GiftUI/Color.swift" \
     "${PROJECT_ROOT}/Sources/GiftUI/BoundedText.swift" \
     "${PROJECT_ROOT}/Sources/GiftUI/DrawingStyles.swift" \
+    "${PROJECT_ROOT}/Sources/GiftUI/DrawingSurface.swift" \
     -emit-module-path "${module_dir}/GiftUI.swiftmodule" >/dev/null
 run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" -module-name GiftUITextResources \
     "${PROJECT_ROOT}/Sources/GiftUITextResources/GiftUITextResources.swift" \
@@ -113,6 +114,7 @@ run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" -module-name G
 run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" -module-name GiftUIDrawing \
     "${PROJECT_ROOT}/Sources/GiftUIDrawing/DrawingValues.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIDrawing/DrawingLimits.swift" \
+    "${PROJECT_ROOT}/Sources/GiftUIDrawing/PathConstruction.swift" \
     -emit-module-path "${module_dir}/GiftUIDrawing.swiftmodule" \
     -emit-module-interface-path "${module_dir}/GiftUIDrawing.swiftinterface" >/dev/null
 
