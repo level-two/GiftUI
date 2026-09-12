@@ -313,6 +313,7 @@ let package = Package(
             dependencies: [
                 "GiftUIExecution",
                 "GiftUIFailureCore",
+                "GiftUIFailureDiagnostics",
                 "GiftUIFailureExecution",
                 "GiftUIInteraction",
                 "GiftUIInteractionFailureAdapterFixture",

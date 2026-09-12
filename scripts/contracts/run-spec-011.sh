@@ -53,6 +53,7 @@ run_check() {
 
 run_check ruby "${SCRIPT_DIR}/check-spec-011-harness.rb"
 run_check ruby "${SCRIPT_DIR}/check-spec-011-boundaries.rb"
+run_check ruby "${SCRIPT_DIR}/check-spec-011-diagnostic-isolation.rb"
 run_check ruby "${SCRIPT_DIR}/check-spec-011-declaration-surface.rb"
 run_check ruby "${SCRIPT_DIR}/check-spec-011-migration.rb"
 

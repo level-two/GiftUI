@@ -452,7 +452,7 @@ remain independent of diagnostics.
       wake rule after mutation. Verify active-cycle/runtime safety-not-proven
       failures cancel affected captures, discard candidates, admit no later
       normal cycle, quiesce first, and expose only allowed residual policy.
-- [ ] `T6.4` — Add no-fallback/no-retarget/no-partial-publication/no-alias and
+- [x] `T6.4` — Add no-fallback/no-retarget/no-partial-publication/no-alias and
       diagnostic-isolation fixtures. Diagnostic selection, loss, saturation,
       callback, or sink failure must not affect results, containment, action
       dispatch, candidate resolution, capture cleanup, or policy eligibility.
@@ -779,3 +779,13 @@ prevents later normal cycles, and quiesces before a fatal hook becomes
 eligible. Its allowed residual set excludes retry and continuation for the
 terminal cases. See the
 [containment evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t6-3-containment.md).
+
+`T6.4` is complete: omitted, selected/accepted, dropped, saturated, and failing
+diagnostics preserve a value-equal snapshot of the mapped failure, containment
+effects, residual bounds, handler count, and zero fallback, retarget, partial-
+publication, and alias counts. An attacking diagnostic callback cannot mutate
+any authoritative field. Failure Diagnostics is a focused-test dependency
+only and remains absent from both production Interaction and its failure
+adapter. See the
+[diagnostic-isolation evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t6-4-diagnostic-isolation.md).
+Milestone 6 is complete; T7.1 is next.

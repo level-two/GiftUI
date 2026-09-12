@@ -22,8 +22,8 @@ expected_adapter = %w[GiftUIFailureCore GiftUIFailureExecution GiftUIInteraction
 fail_check("failure adapter dependencies differ") unless
   GRAPH.dig("GiftUIInteractionFailureAdapterFixture", "dependencies") == expected_adapter
 expected_tests = %w[
-  GiftUIExecution GiftUIFailureCore GiftUIFailureExecution GiftUIInteraction
-  GiftUIInteractionFailureAdapterFixture
+  GiftUIExecution GiftUIFailureCore GiftUIFailureDiagnostics GiftUIFailureExecution
+  GiftUIInteraction GiftUIInteractionFailureAdapterFixture
 ]
 fail_check("failure adapter test dependencies differ") unless
   GRAPH.dig("GiftUIInteractionFailureAdapterTests", "dependencies") == expected_tests

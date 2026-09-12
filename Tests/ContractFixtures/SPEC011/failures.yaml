@@ -48,3 +48,4 @@ rows:
   - { id: capacity-over-invariant, first: capacityExhausted, second: invariantViolation, result: capacityExhausted }
   - { id: contained-candidate-effects, result: discardCandidatePreserveCommittedDirtyWakeAfterMutation }
   - { id: safety-not-proven-effects, result: cancelCapturesDiscardCandidateQuiesceBeforeFatalHook }
+  - { id: diagnostic-isolation, result: identicalWithoutFallbackRetargetPartialPublicationOrAlias }
