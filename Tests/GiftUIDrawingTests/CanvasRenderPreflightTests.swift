@@ -21,8 +21,8 @@ func canvasPreflightCombinesOrdinaryAndStrokeCountsAndResetsItsWorkspace() {
         rootForeground: .red,
         limits: canvasRenderLimits,
         configuredSinkCapacity: RenderSinkCapacity(
-            maximumOperations: 2,
-            maximumPositionedGlyphs: 0
+            maximumOperations: 4,
+            maximumPositionedGlyphs: 1
         ),
         workspace: &workspace
     )
@@ -33,17 +33,17 @@ func canvasPreflightCombinesOrdinaryAndStrokeCountsAndResetsItsWorkspace() {
                 RenderPlanHeader(
                     surfaceBounds: canvasRenderBounds,
                     damageBounds: canvasRenderBounds,
-                    operationCount: 2,
-                    positionedGlyphCount: 0,
-                    maximumObservedClipDepth: 1
+                    operationCount: 4,
+                    positionedGlyphCount: 1,
+                    maximumObservedClipDepth: 2
                 )
             )
     )
     #expect(workspace.acquireCount == 1)
     #expect(workspace.resetCount == 1)
     #expect(!workspace.isActive)
-    #expect(workspace.semanticVisitCount == 3)
-    #expect(workspace.layoutVisitCount == 3)
+    #expect(workspace.semanticVisitCount == 4)
+    #expect(workspace.layoutVisitCount == 4)
 }
 
 @Test(
@@ -78,8 +78,8 @@ private func canvasPreflightRejectsEveryImmutablePlanDisagreement(
         rootForeground: .blue,
         limits: canvasRenderLimits,
         configuredSinkCapacity: RenderSinkCapacity(
-            maximumOperations: 2,
-            maximumPositionedGlyphs: 0
+            maximumOperations: 4,
+            maximumPositionedGlyphs: 1
         ),
         workspace: &workspace
     )
@@ -102,13 +102,13 @@ func canvasPreflightFailsClosedForCombinedAndConfiguredCapacity() {
         damageMode: .rootIntersection,
         rootForeground: .red,
         limits: RenderLimits(
-            maximumOperations: 1,
+            maximumOperations: 3,
             maximumPositionedGlyphs: 1,
-            maximumClipDepth: 1
+            maximumClipDepth: 2
         )!,
         configuredSinkCapacity: RenderSinkCapacity(
-            maximumOperations: 2,
-            maximumPositionedGlyphs: 0
+            maximumOperations: 4,
+            maximumPositionedGlyphs: 1
         ),
         workspace: &combinedShortWorkspace
     )
@@ -126,8 +126,8 @@ func canvasPreflightFailsClosedForCombinedAndConfiguredCapacity() {
         rootForeground: .red,
         limits: canvasRenderLimits,
         configuredSinkCapacity: RenderSinkCapacity(
-            maximumOperations: 1,
-            maximumPositionedGlyphs: 0
+            maximumOperations: 3,
+            maximumPositionedGlyphs: 1
         ),
         workspace: &configuredShortWorkspace
     )
@@ -147,8 +147,8 @@ func canvasPreflightFailsClosedForCombinedAndConfiguredCapacity() {
         rootForeground: .red,
         limits: canvasRenderLimits,
         configuredSinkCapacity: RenderSinkCapacity(
-            maximumOperations: 2,
-            maximumPositionedGlyphs: 0
+            maximumOperations: 4,
+            maximumPositionedGlyphs: 1
         ),
         workspace: &activeWorkspace
     )
@@ -165,9 +165,9 @@ func canvasProductionCompletesBothTraversalsAndStreamsOneCombinedTransaction() {
     let expectedHeader = RenderPlanHeader(
         surfaceBounds: canvasRenderBounds,
         damageBounds: canvasRenderBounds,
-        operationCount: 2,
-        positionedGlyphCount: 0,
-        maximumObservedClipDepth: 1
+        operationCount: 4,
+        positionedGlyphCount: 1,
+        maximumObservedClipDepth: 2
     )
 
     let result = CanvasRenderProducer.produce(
@@ -212,6 +212,37 @@ func canvasProductionCompletesBothTraversalsAndStreamsOneCombinedTransaction() {
                         subpaths: [SubpathRange(firstPoint: 0, pointCount: 2)!]
                     )
                 ),
+                .stroke(
+                    CanvasRecordedStroke(
+                        header: StraightLineStrokeHeader(
+                            color: .blue,
+                            lineWidth: 1,
+                            lineCap: .butt,
+                            lineJoin: .round,
+                            surfaceOrigin: canvasRenderClip.origin,
+                            inheritedClip: canvasRenderClip,
+                            pointCount: 0,
+                            subpathCount: 0
+                        ),
+                        points: [],
+                        subpaths: []
+                    )
+                ),
+                .beginGlyphs(
+                    PositionedGlyphOperationHeader(
+                        instance: CanvasRenderMetrics.instanceID,
+                        clip: canvasRenderClip,
+                        color: .red,
+                        glyphCount: 1
+                    )
+                ),
+                .glyph(
+                    PositionedGlyph(
+                        glyph: GlyphID(rawValue: 1),
+                        baseline: Point(x: 3, y: 7)
+                    )
+                ),
+                .endGlyphs,
                 .finish,
             ]
     )
@@ -238,9 +269,9 @@ func canvasProductionRejectsFinalPlanSummaryMismatchBeforeBegin() {
         expectedHeader: RenderPlanHeader(
             surfaceBounds: canvasRenderBounds,
             damageBounds: canvasRenderBounds,
-            operationCount: 2,
-            positionedGlyphCount: 0,
-            maximumObservedClipDepth: 1
+            operationCount: 4,
+            positionedGlyphCount: 1,
+            maximumObservedClipDepth: 2
         ),
         workspace: &workspace,
         sink: &sink
@@ -252,10 +283,56 @@ func canvasProductionRejectsFinalPlanSummaryMismatchBeforeBegin() {
     #expect(workspace.resetCount == 1)
 }
 
+@Test
+func zeroCanvasCombinedProductionMatchesOrdinaryRenderingExactly() {
+    let expectedHeader = RenderPlanHeader(
+        surfaceBounds: canvasRenderBounds,
+        damageBounds: canvasRenderBounds,
+        operationCount: 0,
+        positionedGlyphCount: 0,
+        maximumObservedClipDepth: 1
+    )
+    var ordinaryWorkspace = CanvasRenderWorkspace()
+    var ordinarySink = CanvasRenderSink()
+    let ordinaryResult = RenderProducer.produce(
+        semantic: EmptyCanvasRenderSemantic(),
+        layout: EmptyCanvasRenderLayout(),
+        textMetrics: CanvasRenderMetrics(),
+        surfaceBounds: canvasRenderBounds,
+        damageMode: .rootIntersection,
+        rootForeground: .red,
+        limits: canvasRenderLimits,
+        workspace: &ordinaryWorkspace,
+        sink: &ordinarySink
+    )
+
+    var combinedWorkspace = CanvasRenderWorkspace()
+    var combinedSink = CanvasRenderSink()
+    let combinedResult = CanvasRenderProducer.produce(
+        semantic: EmptyCanvasRenderSemantic(),
+        layout: EmptyCanvasRenderLayout(),
+        textMetrics: CanvasRenderMetrics(),
+        drawingPlan: EmptyCanvasRenderPlan(),
+        surfaceBounds: canvasRenderBounds,
+        damageMode: .rootIntersection,
+        rootForeground: .red,
+        limits: canvasRenderLimits,
+        expectedHeader: expectedHeader,
+        workspace: &combinedWorkspace,
+        sink: &combinedSink
+    )
+
+    #expect(ordinaryResult == .success(expectedHeader))
+    #expect(combinedResult == ordinaryResult)
+    #expect(combinedSink.events == ordinarySink.events)
+    #expect(combinedSink.events == [.begin(expectedHeader), .finish])
+}
+
 private enum CanvasRenderIdentity: UInt8, Equatable, Sendable {
     case root
     case background
     case canvas
+    case text
 }
 
 private let canvasRenderBounds = Rect(
@@ -267,14 +344,14 @@ private let canvasRenderClip = Rect(
     size: Size(width: 18, height: 8)!
 )!
 private let canvasRenderLimits = RenderLimits(
-    maximumOperations: 2,
+    maximumOperations: 4,
     maximumPositionedGlyphs: 1,
-    maximumClipDepth: 1
+    maximumClipDepth: 2
 )!
 
 private struct CanvasRenderSemantic: SemanticRenderView {
     let rootIdentity = CanvasRenderIdentity.root
-    let semanticScopeCount: UInt16 = 3
+    let semanticScopeCount: UInt16 = 4
     let renderSnapshotVersion: UInt32 = 7
 
     func semanticIdentity(at ordinal: UInt16) -> CanvasRenderIdentity? {
@@ -282,6 +359,7 @@ private struct CanvasRenderSemantic: SemanticRenderView {
         case 0: .root
         case 1: .background
         case 2: .canvas
+        case 3: .text
         default: nil
         }
     }
@@ -291,6 +369,7 @@ private struct CanvasRenderSemantic: SemanticRenderView {
         case .root: 0
         case .background: 1
         case .canvas: 2
+        case .text: 3
         }
     }
 
@@ -299,35 +378,43 @@ private struct CanvasRenderSemantic: SemanticRenderView {
         case .root: .structural
         case .background: .background(.blue)
         case .canvas: .canvas
+        case .text: .text
         }
     }
 
     func layoutIdentity(
         for identity: CanvasRenderIdentity
     ) -> CanvasRenderIdentity? {
-        identity == .root ? .root : .canvas
+        switch identity {
+        case .root: .root
+        case .background, .canvas: .canvas
+        case .text: .text
+        }
     }
 
     func childCount(of identity: CanvasRenderIdentity) -> UInt16? {
-        identity == .canvas ? 0 : 1
+        switch identity {
+        case .root: 2
+        case .background: 1
+        case .canvas, .text: 0
+        }
     }
 
     func child(
         of identity: CanvasRenderIdentity,
         at index: UInt16
     ) -> CanvasRenderIdentity? {
-        guard index == 0 else { return nil }
         return switch identity {
-        case .root: .background
-        case .background: .canvas
-        case .canvas: nil
+        case .root: index == 0 ? .background : (index == 1 ? .text : nil)
+        case .background: index == 0 ? .canvas : nil
+        case .canvas, .text: nil
         }
     }
 }
 
 private struct CanvasRenderLayout: ResolvedRenderLayoutView {
     let rootIdentity = CanvasRenderIdentity.root
-    let layoutScopeCount: UInt16 = 2
+    let layoutScopeCount: UInt16 = 3
     let renderSnapshotVersion: UInt32 = 7
     let rootBounds = canvasRenderBounds
 
@@ -335,6 +422,7 @@ private struct CanvasRenderLayout: ResolvedRenderLayoutView {
         switch ordinal {
         case 0: .root
         case 1: .canvas
+        case 2: .text
         default: nil
         }
     }
@@ -343,6 +431,7 @@ private struct CanvasRenderLayout: ResolvedRenderLayoutView {
         switch identity {
         case .root: 0
         case .canvas: 1
+        case .text: 2
         case .background: nil
         }
     }
@@ -355,15 +444,132 @@ private struct CanvasRenderLayout: ResolvedRenderLayoutView {
         identity == .root ? canvasRenderBounds : canvasRenderClip
     }
 
-    func textLineCount(of identity: CanvasRenderIdentity) -> UInt16? { 0 }
+    func textLineCount(of identity: CanvasRenderIdentity) -> UInt16? {
+        identity == .text ? 1 : 0
+    }
+    func textLine(
+        of identity: CanvasRenderIdentity,
+        at index: UInt16
+    ) -> ResolvedRenderTextLine? {
+        guard identity == .text, index == 0 else { return nil }
+        return ResolvedRenderTextLine(
+            lineIndex: 0,
+            bounds: canvasRenderClip,
+            baseline: Point(x: 3, y: 7),
+            clip: canvasRenderClip,
+            glyphCount: 1
+        )
+    }
+    func glyph(
+        of identity: CanvasRenderIdentity,
+        at index: UInt16
+    ) -> ResolvedRenderGlyph? {
+        guard identity == .text, index == 0 else { return nil }
+        return ResolvedRenderGlyph(
+            lineIndex: 0,
+            glyphIndex: 0,
+            instance: CanvasRenderMetrics.instanceID,
+            glyph: GlyphID(rawValue: 1),
+            baseline: Point(x: 3, y: 7),
+            clip: canvasRenderClip
+        )
+    }
+}
+
+private struct EmptyCanvasRenderSemantic: SemanticRenderView {
+    let rootIdentity = CanvasRenderIdentity.root
+    let semanticScopeCount: UInt16 = 1
+    let renderSnapshotVersion: UInt32 = 9
+
+    func semanticIdentity(at ordinal: UInt16) -> CanvasRenderIdentity? {
+        ordinal == 0 ? .root : nil
+    }
+
+    func semanticOrdinal(of identity: CanvasRenderIdentity) -> UInt16? {
+        identity == .root ? 0 : nil
+    }
+
+    func scope(at identity: CanvasRenderIdentity) -> SemanticRenderScope? {
+        identity == .root ? .structural : nil
+    }
+
+    func layoutIdentity(
+        for identity: CanvasRenderIdentity
+    ) -> CanvasRenderIdentity? {
+        identity == .root ? .root : nil
+    }
+
+    func childCount(of identity: CanvasRenderIdentity) -> UInt16? {
+        identity == .root ? 0 : nil
+    }
+
+    func child(
+        of identity: CanvasRenderIdentity,
+        at index: UInt16
+    ) -> CanvasRenderIdentity? { nil }
+}
+
+private struct EmptyCanvasRenderLayout: ResolvedRenderLayoutView {
+    let rootIdentity = CanvasRenderIdentity.root
+    let layoutScopeCount: UInt16 = 1
+    let renderSnapshotVersion: UInt32 = 9
+    let rootBounds = canvasRenderBounds
+
+    func layoutIdentity(at ordinal: UInt16) -> CanvasRenderIdentity? {
+        ordinal == 0 ? .root : nil
+    }
+
+    func layoutOrdinal(of identity: CanvasRenderIdentity) -> UInt16? {
+        identity == .root ? 0 : nil
+    }
+
+    func bounds(of identity: CanvasRenderIdentity) -> Rect? {
+        identity == .root ? canvasRenderBounds : nil
+    }
+
+    func clip(of identity: CanvasRenderIdentity) -> Rect? {
+        identity == .root ? canvasRenderBounds : nil
+    }
+
+    func textLineCount(of identity: CanvasRenderIdentity) -> UInt16? {
+        identity == .root ? 0 : nil
+    }
+
     func textLine(
         of identity: CanvasRenderIdentity,
         at index: UInt16
     ) -> ResolvedRenderTextLine? { nil }
+
     func glyph(
         of identity: CanvasRenderIdentity,
         at index: UInt16
     ) -> ResolvedRenderGlyph? { nil }
+}
+
+private struct EmptyCanvasRenderPlan: DrawingPlanView {
+    let summary = DrawingPlanSummary(
+        canvasOccurrenceCount: 0,
+        strokeCount: 0,
+        pointCount: 0,
+        subpathCount: 0,
+        normalizedStrokeOperationCount: 0
+    )
+
+    func strokeCount(of canvas: CanvasRenderIdentity) -> UInt16? { nil }
+    func strokeHeader(
+        of canvas: CanvasRenderIdentity,
+        at index: UInt16
+    ) -> StraightLineStrokeHeader? { nil }
+    func point(
+        of canvas: CanvasRenderIdentity,
+        stroke: UInt16,
+        at index: UInt16
+    ) -> Point? { nil }
+    func subpath(
+        of canvas: CanvasRenderIdentity,
+        stroke: UInt16,
+        at index: UInt16
+    ) -> SubpathRange? { nil }
 }
 
 private enum CanvasRenderPlanFault: CaseIterable {
@@ -394,16 +600,16 @@ private struct CanvasRenderPlan: DrawingPlanView {
     var summary: DrawingPlanSummary {
         DrawingPlanSummary(
             canvasOccurrenceCount: fault == .summaryCanvas ? 2 : 1,
-            strokeCount: fault == .summaryStroke ? 2 : 1,
+            strokeCount: fault == .summaryStroke ? 3 : 2,
             pointCount: fault == .summaryPoint ? 3 : 2,
             subpathCount: fault == .summarySubpath ? 2 : 1,
-            normalizedStrokeOperationCount: fault == .summaryNormalized ? 2 : 1
+            normalizedStrokeOperationCount: fault == .summaryNormalized ? 3 : 2
         )
     }
 
     func strokeCount(of canvas: CanvasRenderIdentity) -> UInt16? {
         if fault == .unexpectedNonCanvas, canvas == .root { return 0 }
-        return canvas == .canvas ? 1 : nil
+        return canvas == .canvas ? 2 : nil
     }
 
     func strokeHeader(
@@ -411,7 +617,19 @@ private struct CanvasRenderPlan: DrawingPlanView {
         at index: UInt16
     ) -> StraightLineStrokeHeader? {
         guard canvas == .canvas else { return nil }
-        if index == 1, fault == .extraStroke { return validHeader }
+        if index == 2, fault == .extraStroke { return validHeader }
+        if index == 1 {
+            return StraightLineStrokeHeader(
+                color: .blue,
+                lineWidth: 1,
+                lineCap: .butt,
+                lineJoin: .round,
+                surfaceOrigin: canvasRenderClip.origin,
+                inheritedClip: canvasRenderClip,
+                pointCount: 0,
+                subpathCount: 0
+            )
+        }
         guard index == 0 else { return nil }
         return StraightLineStrokeHeader(
             color: .red,
@@ -476,8 +694,8 @@ private struct CanvasRenderWorkspace: RenderProductionWorkspace {
 
     let capacity = canvasRenderLimits
     let structuralCapacity = RenderWorkspaceCapacity(
-        maximumSemanticScopes: 3,
-        maximumLayoutScopes: 2,
+        maximumSemanticScopes: 4,
+        maximumLayoutScopes: 3,
         maximumTraversalDepth: 3,
         maximumTextLines: 1
     )!
@@ -486,8 +704,8 @@ private struct CanvasRenderWorkspace: RenderProductionWorkspace {
     private(set) var resetCount: UInt16 = 0
     private(set) var semanticVisitCount: UInt16 = 0
     private(set) var layoutVisitCount: UInt16 = 0
-    private var semanticVisits = [false, false, false]
-    private var layoutVisits = [false, false]
+    private var semanticVisits = [false, false, false, false]
+    private var layoutVisits = [false, false, false]
     private var foregroundStack: [Color] = []
 
     var currentForeground: Color? { foregroundStack.last }
@@ -524,8 +742,8 @@ private struct CanvasRenderWorkspace: RenderProductionWorkspace {
     mutating func reset() {
         isActive = false
         resetCount += 1
-        semanticVisits = [false, false, false]
-        layoutVisits = [false, false]
+        semanticVisits = [false, false, false, false]
+        layoutVisits = [false, false, false]
         foregroundStack.removeAll(keepingCapacity: true)
     }
 
@@ -550,6 +768,9 @@ private enum CanvasRenderEvent: Equatable {
     case begin(RenderPlanHeader)
     case fill(FillRectOperation)
     case stroke(CanvasRecordedStroke)
+    case beginGlyphs(PositionedGlyphOperationHeader)
+    case glyph(PositionedGlyph)
+    case endGlyphs
     case finish
 }
 
@@ -567,8 +788,8 @@ private struct CanvasRenderSink: DrawingOperationSink {
     var capacity: RenderSinkCapacity {
         counter.capacityReads += 1
         return RenderSinkCapacity(
-            maximumOperations: 2,
-            maximumPositionedGlyphs: 0
+            maximumOperations: 4,
+            maximumPositionedGlyphs: 1
         )
     }
 
@@ -584,10 +805,20 @@ private struct CanvasRenderSink: DrawingOperationSink {
 
     mutating func beginPositionedGlyphs(
         _ operation: PositionedGlyphOperationHeader
-    ) -> Bool { false }
+    ) -> Bool {
+        events.append(.beginGlyphs(operation))
+        return true
+    }
 
-    mutating func positionedGlyph(_ glyph: PositionedGlyph) -> Bool { false }
-    mutating func endPositionedGlyphs() -> Bool { false }
+    mutating func positionedGlyph(_ glyph: PositionedGlyph) -> Bool {
+        events.append(.glyph(glyph))
+        return true
+    }
+
+    mutating func endPositionedGlyphs() -> Bool {
+        events.append(.endGlyphs)
+        return true
+    }
 
     mutating func straightLineStroke<Stroke: StraightLineStrokeView>(
         _ stroke: borrowing Stroke
@@ -633,26 +864,38 @@ private struct CanvasRenderSink: DrawingOperationSink {
 }
 
 private struct CanvasRenderMetrics: CanonicalTextMetricsView {
+    static let resource = FontResourceID(
+        rawValue: TextResourceDigest(
+            word0: 1,
+            word1: 2,
+            word2: 3,
+            word3: 4,
+            word4: 5,
+            word5: 6,
+            word6: 7,
+            word7: 8
+        )
+    )
+    static let instanceID = FontInstanceID(resource: resource, instanceIndex: 0)
+
     let descriptor = TextResourceDescriptor(
         schemaVersion: 1,
-        resource: FontResourceID(
-            rawValue: TextResourceDigest(
-                word0: 1,
-                word1: 2,
-                word2: 3,
-                word3: 4,
-                word4: 5,
-                word5: 6,
-                word6: 7,
-                word7: 8
-            )
-        ),
-        instanceCount: 0,
+        resource: resource,
+        instanceCount: 1,
         realizationCount: 0,
         canonicalManifestByteCount: 0
     )
 
-    func instance(at index: UInt16) -> FontInstanceDescriptor? { nil }
+    func instance(at index: UInt16) -> FontInstanceDescriptor? {
+        guard index == 0 else { return nil }
+        return FontInstanceDescriptor(
+            id: Self.instanceID,
+            lineMetrics: FontLineMetrics(ascent: 8, descent: 2, lineGap: 0),
+            replacementGlyph: GlyphID(rawValue: 0),
+            glyphCount: 2,
+            mappingCount: 0
+        )
+    }
     func mapping(
         at index: UInt16,
         in instance: FontInstanceID
@@ -661,6 +904,12 @@ private struct CanvasRenderMetrics: CanonicalTextMetricsView {
         nil
     }
     func metrics(for glyph: GlyphID, in instance: FontInstanceID) -> GlyphMetrics? {
-        nil
+        guard instance == Self.instanceID, glyph.rawValue < 2 else { return nil }
+        return GlyphMetrics(
+            advanceX: 4,
+            offsetX: 0,
+            offsetY: 0,
+            inkSize: Size(width: 1, height: 1)!
+        )
     }
 }

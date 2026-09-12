@@ -37,10 +37,36 @@ fail_check("fixture order differs") unless manifest.map(&:first) == %w[1 2]
 fail_check("fixture files differ") unless manifest.map { |row| row[1] } == %w[fixtures.yaml raster-vectors.yaml]
 manifest.each do |_, file, _, collection, classes|
   document = YAML.safe_load(FIXTURES.join(file).read, aliases: false)
-  fail_check("#{file} root differs") unless document.is_a?(Hash) && document[collection] == []
+  fail_check("#{file} root differs") unless document.is_a?(Hash) && document[collection].is_a?(Array)
+  if file == "raster-vectors.yaml"
+    fail_check("#{file} must remain empty before T8") unless document[collection].empty?
+  end
   unknown = classes.split(",") - EVIDENCE_CLASSES
   fail_check("#{file} has unknown evidence classes") unless unknown.empty?
 end
+
+fixtures = YAML.safe_load(FIXTURES.join("fixtures.yaml").read, aliases: false).fetch("cases")
+fail_check("combined fixture names differ") unless fixtures.map { |entry| entry["name"] } == [
+  "mixed-fill-strokes-and-glyph",
+  "zero-canvas-ordinary-equivalence"
+]
+fixtures.each do |entry|
+  required = %w[
+    name semanticEvents canvasOccurrenceOrder resolvedBounds resolvedClips
+    planSummary expectedHeader recordingEvents sinkCalls expectedResult criteria
+    evidenceClasses
+  ]
+  fail_check("#{entry['name']} fields differ") unless (required - entry.keys).empty?
+  fail_check("#{entry['name']} has unknown criterion") unless (entry["criteria"] - CRITERIA).empty?
+  fail_check("#{entry['name']} has unknown evidence class") unless (entry["evidenceClasses"] - EVIDENCE_CLASSES).empty?
+end
+mixed, zero = fixtures
+fail_check("mixed recording order differs") unless mixed["recordingEvents"].map { |event| event["event"] } == [
+  "begin", "fill", "stroke", "stroke", "begin-glyphs", "glyph", "end-glyphs", "finish"
+]
+fail_check("mixed no-op stroke differs") unless mixed["recordingEvents"][3].values_at("points", "subpaths") == [[], []]
+fail_check("zero-Canvas ordinary transcript is absent") unless zero["ordinaryRecordingEvents"].is_a?(Array)
+fail_check("zero-Canvas ordinary transcript differs") unless zero["recordingEvents"] == zero["ordinaryRecordingEvents"]
 
 static_input = FIXTURES.join("static-canvas-input.yaml")
 static_manifest = FIXTURES.join("static-canvas-manifest.yaml")

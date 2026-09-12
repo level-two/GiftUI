@@ -370,7 +370,7 @@ and synchronous borrowed consumption.
       plan-summary equality before `begin`. Emit each snapshot as one borrowed
       `straightLineStroke` event at its painter position and use streaming
       completion to require the same summary equality before `finish`.
-- [ ] `T5.3` — Extend the canonical recording transcript and verification with
+- [x] `T5.3` — Extend the canonical recording transcript and verification with
       exact color, width, cap, join, origin, clip, points, subpaths, no-op strokes,
       header totals, mixed fill/glyph/stroke ordering, and one begin/finish pair.
       Prove zero-Canvas ordinary transcripts equal SPEC-008 exactly.
@@ -1014,6 +1014,17 @@ streams each snapshot as one synchronous borrowed stroke. Focused tests prove
 the exact combined transaction and pre-`begin` final-summary rejection. The
 [combined production evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-production.md)
 records the boundary. T5.3 is next.
+
+`T5.3` is complete. The canonical combined fixture and typed recording test
+now cover exact fill, nonempty and no-op stroke, and positioned-glyph painter
+order; both admitted stroke styles, RGB values, origin, inherited clip,
+translated points, and explicit subpaths; one begin/finish transaction; and
+exact header and sink-call totals. A second case proves a zero-Canvas drawing
+plan produces the same result and transcript as ordinary SPEC-008 rendering.
+The fail-closed fixture harness validates both cases and keeps raster vectors
+empty until their owning milestone. The
+[combined transcript evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-transcript.md)
+records the corpus. T5.4 is next.
 
 `T6.2` is complete for the checked static fixture. `GiftUIDrawing` owns the
 exact amended `StaticCanvasCallableTable` protocol, and the manifest-generated

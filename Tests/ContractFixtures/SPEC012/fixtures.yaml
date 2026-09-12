@@ -1,3 +1,51 @@
 schema: spec-012-fixtures-v1
-cases: []
+cases:
+  - name: mixed-fill-strokes-and-glyph
+    semanticEvents:
+      - {identity: "identity:root", scope: structural}
+      - {identity: "identity:background", scope: background-blue}
+      - {identity: "identity:canvas", scope: canvas}
+      - {identity: "identity:text", scope: text}
+    canvasOccurrenceOrder: ["identity:canvas"]
+    resolvedBounds:
+      - {identity: "identity:canvas", x: 1, y: 1, width: 18, height: 8}
+      - {identity: "identity:text", x: 1, y: 1, width: 18, height: 8}
+    resolvedClips:
+      - {identity: "identity:canvas", x: 1, y: 1, width: 18, height: 8}
+      - {identity: "identity:text", x: 1, y: 1, width: 18, height: 8}
+    planSummary: {canvasOccurrences: 1, strokes: 2, points: 2, subpaths: 1, normalizedStrokeOperations: 2}
+    expectedHeader: {surfaceX: 0, surfaceY: 0, surfaceWidth: 20, surfaceHeight: 10, damageX: 0, damageY: 0, damageWidth: 20, damageHeight: 10, operations: 4, positionedGlyphs: 1, clipDepth: 2}
+    recordingEvents:
+      - {event: begin, operations: 4, positionedGlyphs: 1}
+      - {event: fill, red: 0, green: 0, blue: 255, x: 1, y: 1, width: 18, height: 8, clipX: 1, clipY: 1, clipWidth: 18, clipHeight: 8}
+      - {event: stroke, red: 255, green: 0, blue: 0, lineWidth: 2, cap: round, join: miter, originX: 1, originY: 1, clipX: 1, clipY: 1, clipWidth: 18, clipHeight: 8, points: [[2, 2], [8, 6]], subpaths: [[0, 2]]}
+      - {event: stroke, red: 0, green: 0, blue: 255, lineWidth: 1, cap: butt, join: round, originX: 1, originY: 1, clipX: 1, clipY: 1, clipWidth: 18, clipHeight: 8, points: [], subpaths: []}
+      - {event: begin-glyphs, instance: "instance:fixture", red: 255, green: 0, blue: 0, glyphCount: 1}
+      - {event: glyph, glyph: "glyph:one", baselineX: 3, baselineY: 7}
+      - {event: end-glyphs}
+      - {event: finish}
+    sinkCalls: {capacity: 1, begin: 1, fill: 1, stroke: 2, beginGlyphs: 1, glyph: 1, endGlyphs: 1, finish: 1, discard: 0}
+    expectedResult: success
+    criteria: [DR-005]
+    evidenceClasses: [host-execution]
 
+  - name: zero-canvas-ordinary-equivalence
+    semanticEvents:
+      - {identity: "identity:root", scope: structural}
+    canvasOccurrenceOrder: []
+    resolvedBounds:
+      - {identity: "identity:root", x: 0, y: 0, width: 20, height: 10}
+    resolvedClips:
+      - {identity: "identity:root", x: 0, y: 0, width: 20, height: 10}
+    planSummary: {canvasOccurrences: 0, strokes: 0, points: 0, subpaths: 0, normalizedStrokeOperations: 0}
+    expectedHeader: {surfaceX: 0, surfaceY: 0, surfaceWidth: 20, surfaceHeight: 10, damageX: 0, damageY: 0, damageWidth: 20, damageHeight: 10, operations: 0, positionedGlyphs: 0, clipDepth: 1}
+    recordingEvents:
+      - {event: begin, operations: 0, positionedGlyphs: 0}
+      - {event: finish}
+    ordinaryRecordingEvents:
+      - {event: begin, operations: 0, positionedGlyphs: 0}
+      - {event: finish}
+    sinkCalls: {capacity: 1, begin: 1, fill: 0, stroke: 0, beginGlyphs: 0, glyph: 0, endGlyphs: 0, finish: 1, discard: 0}
+    expectedResult: success
+    criteria: [DR-005, DR-013]
+    evidenceClasses: [host-execution]
