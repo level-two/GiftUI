@@ -354,7 +354,7 @@ allocating no identity or retaining any upstream borrow.
       and immutable ready-for-offer state. Prove unresolved replacements fail
       before offer and generation exhaustion remains SPEC-009's exact
       `ExecutionError.identityExhausted` with required capture cancellation.
-- [ ] `T3.6` — Implement non-failing exactly-once
+- [x] `T3.6` — Implement non-failing exactly-once
       `resolveCandidate(.commit(revision)/.discard)` as an infallible bounded
       swap or discard. Commit records, hit regions, and revision atomically;
       every failure/refusal/non-accepted offer preserves the previous complete

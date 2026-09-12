@@ -41,6 +41,7 @@ package protocol InteractionCommittedRecordStorage {
     mutating func reset()
     borrowing func record(at index: UInt16) -> BoundActionRecord<Identity>?
     mutating func append(_ record: consuming BoundActionRecord<Identity>) -> Bool
+    mutating func exchangeContents(with other: inout Self)
 }
 
 package protocol InteractionHitRegionStorage {
@@ -51,4 +52,5 @@ package protocol InteractionHitRegionStorage {
     mutating func reset()
     borrowing func region(at index: UInt16) -> InteractionHitRegion<Identity>?
     mutating func append(_ region: consuming InteractionHitRegion<Identity>) -> Bool
+    mutating func exchangeContents(with other: inout Self)
 }

@@ -5,6 +5,48 @@ import XCTest
 @testable import GiftUIInteraction
 
 final class InteractionCandidateAppendTests: XCTestCase {
+    func testResolutionCommitsAtomicallyOrDiscardsAndPreservesCommittedState() {
+        let former = BoundActionRecord(
+            identity: UInt16(9),
+            generation: ActionGeneration(rawValue: 4),
+            isEnabled: true,
+            hitBounds: rect(x: 0, y: 0, width: 2, height: 2),
+            paintOrder: 0,
+            action: BoundedApplicationAction(code: 9),
+            targetGeneration: ObservableTargetGeneration(rawValue: 1)
+        )
+        var state = makeState(capacity: 2, committed: former)
+        let limits = InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!
+        XCTAssertNil(state.beginCandidate(limits: limits))
+        XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+        XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+        XCTAssertNil(state.finishCandidate())
+        state.resolveCandidate(.discard)
+        XCTAssertEqual(state.committedRecord(at: 0), former)
+        XCTAssertNil(state.committedRevision)
+
+        XCTAssertNil(state.beginCandidate(limits: limits))
+        XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+        XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+        XCTAssertNil(state.finishCandidate())
+        state.resolveCandidate(.commit(PresentationRevision(rawValue: 12)))
+        XCTAssertEqual(state.committedRecordCount, 1)
+        XCTAssertEqual(state.committedHitRegionCount, 1)
+        XCTAssertEqual(state.committedRecord(at: 0)?.identity, 1)
+        XCTAssertEqual(state.committedRecord(at: 0)?.generation, ActionGeneration(rawValue: 8))
+        XCTAssertEqual(state.committedRevision, PresentationRevision(rawValue: 12))
+    }
+
+    func testFailedCandidateCanBeDiscardedExactlyOnceAndReused() {
+        var state = makeState(capacity: 1)
+        let limits = InteractionLimits(maximumActions: 1, maximumHitRegions: 1)!
+        XCTAssertNil(state.beginCandidate(limits: limits))
+        XCTAssertEqual(append(&state, identity: 1, paintOrder: 1), .failure(.invalidGeometry))
+        state.resolveCandidate(.discard)
+        state.resolveCandidate(.discard)
+        XCTAssertNil(state.beginCandidate(limits: limits))
+    }
+
     func testGenerationAssignmentAndFinishAreExactlyOnceAndPhaseBound() {
         var state = makeState(capacity: 2)
         XCTAssertEqual(
@@ -166,6 +208,7 @@ private func makeState(
     InteractionState(
         candidateRecords: ArrayCandidateStorage(capacity: capacity),
         candidateHitRegions: ArrayHitStorage(capacity: capacity),
+        candidateCommittedRecords: ArrayCommittedStorage(capacity: capacity),
         committedRecords: ArrayCommittedStorage(
             capacity: capacity,
             values: committed.map { [$0] } ?? []
@@ -250,6 +293,9 @@ private struct ArrayCommittedStorage: InteractionCommittedRecordStorage {
         values.append(record)
         return true
     }
+    mutating func exchangeContents(with other: inout ArrayCommittedStorage) {
+        swap(&values, &other.values)
+    }
 }
 
 private struct ArrayHitStorage: InteractionHitRegionStorage {
@@ -264,5 +310,8 @@ private struct ArrayHitStorage: InteractionHitRegionStorage {
         guard count < capacity else { return false }
         values.append(region)
         return true
+    }
+    mutating func exchangeContents(with other: inout ArrayHitStorage) {
+        swap(&values, &other.values)
     }
 }

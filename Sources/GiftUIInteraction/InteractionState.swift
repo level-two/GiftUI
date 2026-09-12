@@ -21,6 +21,7 @@ where
 
     private var candidateRecords: CandidateRecords
     private var candidateHitRegions: HitRegions
+    private var candidateCommittedRecords: CommittedRecords
     private var committedRecords: CommittedRecords
     private var committedHitRegions: HitRegions
     private var limits: InteractionLimits?
@@ -31,11 +32,13 @@ where
     package init(
         candidateRecords: consuming CandidateRecords,
         candidateHitRegions: consuming HitRegions,
+        candidateCommittedRecords: consuming CommittedRecords,
         committedRecords: consuming CommittedRecords,
         committedHitRegions: consuming HitRegions
     ) {
         self.candidateRecords = candidateRecords
         self.candidateHitRegions = candidateHitRegions
+        self.candidateCommittedRecords = candidateCommittedRecords
         self.committedRecords = committedRecords
         self.committedHitRegions = committedHitRegions
     }
@@ -51,6 +54,7 @@ where
         else { return .capacityExhausted }
         candidateRecords.reset()
         candidateHitRegions.reset()
+        candidateCommittedRecords.reset()
         self.limits = limits
         candidateError = nil
         phase = .staging
@@ -221,11 +225,76 @@ where
             candidateError = .capacityExhausted
             return .capacityExhausted
         }
+        candidateCommittedRecords.reset()
+        index = 0
+        while index < candidateRecords.count {
+            guard let candidate = candidateRecords.record(at: index),
+                let generation = candidate.generation
+            else {
+                candidateError = .invariantViolation
+                return .invariantViolation
+            }
+            let committed = BoundActionRecord(
+                identity: candidate.identity,
+                generation: generation,
+                isEnabled: candidate.isEnabled,
+                hitBounds: candidate.hitBounds,
+                paintOrder: candidate.paintOrder,
+                action: candidate.action,
+                targetGeneration: candidate.targetGeneration
+            )
+            guard candidateCommittedRecords.append(committed) else {
+                candidateError = .invariantViolation
+                return .invariantViolation
+            }
+            index += 1
+        }
         phase = .readyForOffer
         return nil
     }
 
     package mutating func resolveCandidate(
         _ disposition: InteractionCandidateDisposition
-    ) {}
+    ) {
+        switch disposition {
+        case .commit(let revision) where phase == .readyForOffer:
+            committedRecords.exchangeContents(with: &candidateCommittedRecords)
+            committedHitRegions.exchangeContents(with: &candidateHitRegions)
+            committedPresentationRevision = revision
+        case .discard where phase == .staging || phase == .readyForOffer:
+            break
+        default:
+            return
+        }
+        candidateRecords.reset()
+        candidateHitRegions.reset()
+        candidateCommittedRecords.reset()
+        limits = nil
+        candidateError = nil
+        phase = .idle
+    }
+
+    package var committedRevision: PresentationRevision? {
+        committedPresentationRevision
+    }
+
+    package var committedRecordCount: UInt16 {
+        committedRecords.count
+    }
+
+    package var committedHitRegionCount: UInt16 {
+        committedHitRegions.count
+    }
+
+    package borrowing func committedRecord(at index: UInt16)
+        -> BoundActionRecord<Identity>?
+    {
+        committedRecords.record(at: index)
+    }
+
+    package borrowing func committedHitRegion(at index: UInt16)
+        -> InteractionHitRegion<Identity>?
+    {
+        committedHitRegions.region(at: index)
+    }
 }
