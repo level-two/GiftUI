@@ -443,7 +443,7 @@ remain independent of diagnostics.
       Interaction versus coordinator origin. Do not translate SPEC-009
       generation exhaustion or rerank an already selected SPEC-009/SPEC-010
       failure.
-- [ ] `T6.2` — Implement the exact simultaneous-condition precedence:
+- [x] `T6.2` — Implement the exact simultaneous-condition precedence:
       reentrancy, phase, domain, missing target, identity, geometry, action
       value, capacity, invariant. Exercise every individual case and every
       precedence pair at the same boundary.
@@ -763,3 +763,10 @@ cases, and mapping is unavailable before mandatory effects or for the wrong
 detecting owner. See the
 [boundary evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t0-2-target-boundaries.md)
 and [mapping evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t6-1-failure-mapping.md).
+
+`T6.2` is complete: the finite inline visible-failure set selects the exact
+nine-case order without allocating or relying on raw-value order. Focused
+tests exercise every individual condition, all 36 simultaneous pairs at the
+same boundary, empty selection, and duplicate insertion. The canonical failure
+fixture records the same pair matrix. See the
+[precedence evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t6-2-failure-precedence.md).

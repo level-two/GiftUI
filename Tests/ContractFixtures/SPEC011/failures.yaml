@@ -10,3 +10,39 @@ rows:
   - { id: domain, result: incompatibleActionDomain }
   - { id: action, result: invalidActionValue }
   - { id: target, result: missingModelTarget }
+  - { id: reentrancy-over-phase, first: reentrancyViolation, second: invalidPhase, result: reentrancyViolation }
+  - { id: reentrancy-over-domain, first: reentrancyViolation, second: incompatibleActionDomain, result: reentrancyViolation }
+  - { id: reentrancy-over-target, first: reentrancyViolation, second: missingModelTarget, result: reentrancyViolation }
+  - { id: reentrancy-over-identity, first: reentrancyViolation, second: invalidIdentity, result: reentrancyViolation }
+  - { id: reentrancy-over-geometry, first: reentrancyViolation, second: invalidGeometry, result: reentrancyViolation }
+  - { id: reentrancy-over-action, first: reentrancyViolation, second: invalidActionValue, result: reentrancyViolation }
+  - { id: reentrancy-over-capacity, first: reentrancyViolation, second: capacityExhausted, result: reentrancyViolation }
+  - { id: reentrancy-over-invariant, first: reentrancyViolation, second: invariantViolation, result: reentrancyViolation }
+  - { id: phase-over-domain, first: invalidPhase, second: incompatibleActionDomain, result: invalidPhase }
+  - { id: phase-over-target, first: invalidPhase, second: missingModelTarget, result: invalidPhase }
+  - { id: phase-over-identity, first: invalidPhase, second: invalidIdentity, result: invalidPhase }
+  - { id: phase-over-geometry, first: invalidPhase, second: invalidGeometry, result: invalidPhase }
+  - { id: phase-over-action, first: invalidPhase, second: invalidActionValue, result: invalidPhase }
+  - { id: phase-over-capacity, first: invalidPhase, second: capacityExhausted, result: invalidPhase }
+  - { id: phase-over-invariant, first: invalidPhase, second: invariantViolation, result: invalidPhase }
+  - { id: domain-over-target, first: incompatibleActionDomain, second: missingModelTarget, result: incompatibleActionDomain }
+  - { id: domain-over-identity, first: incompatibleActionDomain, second: invalidIdentity, result: incompatibleActionDomain }
+  - { id: domain-over-geometry, first: incompatibleActionDomain, second: invalidGeometry, result: incompatibleActionDomain }
+  - { id: domain-over-action, first: incompatibleActionDomain, second: invalidActionValue, result: incompatibleActionDomain }
+  - { id: domain-over-capacity, first: incompatibleActionDomain, second: capacityExhausted, result: incompatibleActionDomain }
+  - { id: domain-over-invariant, first: incompatibleActionDomain, second: invariantViolation, result: incompatibleActionDomain }
+  - { id: target-over-identity, first: missingModelTarget, second: invalidIdentity, result: missingModelTarget }
+  - { id: target-over-geometry, first: missingModelTarget, second: invalidGeometry, result: missingModelTarget }
+  - { id: target-over-action, first: missingModelTarget, second: invalidActionValue, result: missingModelTarget }
+  - { id: target-over-capacity, first: missingModelTarget, second: capacityExhausted, result: missingModelTarget }
+  - { id: target-over-invariant, first: missingModelTarget, second: invariantViolation, result: missingModelTarget }
+  - { id: identity-over-geometry, first: invalidIdentity, second: invalidGeometry, result: invalidIdentity }
+  - { id: identity-over-action, first: invalidIdentity, second: invalidActionValue, result: invalidIdentity }
+  - { id: identity-over-capacity, first: invalidIdentity, second: capacityExhausted, result: invalidIdentity }
+  - { id: identity-over-invariant, first: invalidIdentity, second: invariantViolation, result: invalidIdentity }
+  - { id: geometry-over-action, first: invalidGeometry, second: invalidActionValue, result: invalidGeometry }
+  - { id: geometry-over-capacity, first: invalidGeometry, second: capacityExhausted, result: invalidGeometry }
+  - { id: geometry-over-invariant, first: invalidGeometry, second: invariantViolation, result: invalidGeometry }
+  - { id: action-over-capacity, first: invalidActionValue, second: capacityExhausted, result: invalidActionValue }
+  - { id: action-over-invariant, first: invalidActionValue, second: invariantViolation, result: invalidActionValue }
+  - { id: capacity-over-invariant, first: capacityExhausted, second: invariantViolation, result: capacityExhausted }
