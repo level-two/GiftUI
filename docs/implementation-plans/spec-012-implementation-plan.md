@@ -865,6 +865,20 @@ layout identity. The
 [integration evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-4/canvas-layout-integration.md)
 records the correlated path. T4.2 is next.
 
+`T4.2` is blocked in Specification review. The normative
+`CanvasPlanProducer.derive` signature constrains its generic workspace only to
+`DrawingPlanWorkspace`, whose operations are limited to read-only plan access,
+`acquire`, `discard`, and `reset`. It exposes no approved way to bind a fresh
+`GraphicsContext` to the concrete workspace, mutate live Path storage, append
+validated stroke snapshots, translate stored points, or seal the final
+summary. The focused
+[workspace integration review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-4/canvas-plan-producer-workspace-seam-blocker.md)
+records the missing typed seam. Adding a hidden refinement constraint, type
+cast, global storage, or duplicate profile switch would change the approved
+contract or architecture, so T4.2-T4.5 remain unchecked pending an approved
+Specification correction. Independent later work may proceed only where the
+plan explicitly permits direct immutable fixtures.
+
 `T1.4` is complete. Seven maintained positive fixtures compile Canvas/style
 defaults, both stroke overloads, explicit typed trailing closures,
 stroke-mutate-stroke Path reuse, multiple subpaths, and concrete
