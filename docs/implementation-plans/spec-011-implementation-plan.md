@@ -423,7 +423,7 @@ current model.
       Prove failed replacement preserves the former target/record, so an
       otherwise still-current capture or a new valid gesture follows ordinary
       validation rather than being cancelled by an uncommitted replacement.
-- [ ] `T5.6` — Integrate dispatch into SPEC-009 `.mutating` after admitted
+- [x] `T5.6` — Integrate dispatch into SPEC-009 `.mutating` after admitted
       state-change and completion facts. Prove admitted semantic-action order,
       at-most-once synchronous handling, a change report before handler return,
       coalesced dirtiness/wake behavior, and action-triggered repository
@@ -703,8 +703,8 @@ this plan correctly remains `active` and SPEC-011 remains `implementing`.
 
 During SPEC-013 T1.5 on 2026-09-12, the exact `ActionModelTargetAccess`
 declaration landed in `GiftUIInteraction` as the declaration-only portion of
-the plans' explicit integration handoff. SPEC-011 T5.3 remains pending for
-`InteractionDispatcher`, the target-composed adapter, and all required
+the plans' explicit integration handoff. SPEC-011 T5.3 subsequently completed
+`InteractionDispatcher`, the target-composed adapter, and the required
 dispatch behavior and evidence.
 
 `T5.1` is complete: Runtime Core now performs one bounded semantic-order pass
@@ -744,3 +744,10 @@ admission invokes neither model, removal finds no retained former model, and
 staged or failed replacement leaves the former route valid until publication.
 See the
 [replacement timing evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-5-replacement-timing.md).
+
+`T5.6` is complete: Execution supplies the bounded, one-shot production
+mutation batch and Runtime Core composes its action step with the current-model
+dispatcher. Focused integration proves category and action order, synchronous
+change reporting, at-most-once application, dirty/wake coalescing, and deferral
+of action-triggered repository facts to a later sealed batch. See the
+[mutation dispatch evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-6-mutation-dispatch.md).

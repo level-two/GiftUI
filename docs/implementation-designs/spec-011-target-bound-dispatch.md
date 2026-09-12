@@ -196,3 +196,4 @@ SPEC-013 and SPEC-015 respectively.
 - [T5.3 dispatch evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-3-current-model-dispatch.md)
 - [T5.4 cancellation evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-4-dispatch-cancellation.md)
 - [T5.5 replacement timing evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-5-replacement-timing.md)
+- [T5.6 mutation dispatch evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-6-mutation-dispatch.md)

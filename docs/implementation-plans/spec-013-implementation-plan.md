@@ -789,14 +789,13 @@ owner imports exposed by Embedded Swift. Module checks continue to prohibit
 Dynamic, backend, host, platform, and failure-adapter edges. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-4/static-profile-compilation.md`.
 
-After T4.6, the next dependency-complete production task audit confirmed that
-T3.5 and T4.5 remain blocked on SPEC-011 T5.1-T5.6. The repository has the
-`ActionModelTargetAccess` declaration but no `InteractionDispatcher` protocol,
-production dispatcher, or target-composed adapter; the SPEC-011 plan leaves all
-six joint tasks unchecked. Runtime Core cannot create substitutes for that
-Interaction-owned behavior. This also blocks Milestones 5-7 and their dependent
-integration/conformance gates. Reproduction and the exact resumption boundary
-are recorded in
+The former T3.5/T4.5 dependency blocker was resolved by SPEC-011 T5.1-T5.6.
+Interaction now owns the dispatcher contract and committed-record view;
+Runtime Core provides target-bound candidate coordination, offer resolution,
+current-model dispatch, replacement validation, and the SPEC-009 mutation join.
+T3.5 and T4.5 remain pending implementation, but are now the next
+dependency-complete production profile tasks. The original blocker and its
+resolution boundary are recorded in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-3/focused-owner-integration-blocker.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan

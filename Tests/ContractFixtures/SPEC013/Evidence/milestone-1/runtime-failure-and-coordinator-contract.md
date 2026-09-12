@@ -9,8 +9,9 @@ typed action handler, model-target access, and noncopyable profile storage.
 
 The `ActionModelTargetAccess` declaration was placed in its authoritative
 `GiftUIInteraction` owner as the declaration-only part of the explicit
-SPEC-011/SPEC-013 integration handoff. SPEC-011 T5.3 remains open for its
-dispatcher and concrete target-composed adapter behavior.
+SPEC-011/SPEC-013 integration handoff. SPEC-011 T5.1-T5.6 subsequently supplied
+the dispatcher, concrete target-composed adapter, and mutation-phase join,
+unblocking SPEC-013's pending profile bindings.
 
 The sibling runtime failure adapter is still the only target that imports
 Runtime Core and the SPEC-003 failure authority. Its total validation table
