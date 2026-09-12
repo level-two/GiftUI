@@ -279,7 +279,7 @@ and quiescence behavior without profile-private semantics.
       generic carrier, correlated SPEC-003 fact, mandatory disposition, and
       residual-policy input. Cleanup failures remain secondary except where
       their owner widens containment; diagnostics cannot affect results.
-- [ ] `T2.5` — Implement synchronous idempotent `quiesce()`: refuse new work,
+- [x] `T2.5` — Implement synchronous idempotent `quiesce()`: refuse new work,
       cancel pointer sources, finish only mandatory active-cycle containment,
       detach registrations, release queues/routing, and prohibit new cycle,
       offer, handler, or diagnostic calls.
@@ -684,6 +684,16 @@ containment, owner-meaning mapping beside the preserved SPEC-009 correlation,
 and residual-policy/diagnostic-isolation tests. Nine focused tests passed;
 evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-2/focused-failure-disposition.md`.
+
+T2.5 added fixed-size idle/active quiescence plans and an exactly-once action
+tracker tied to the common lifecycle. Three tests prove synchronous idle
+quiescence, mandatory-only active completion, ordered teardown, idempotence,
+and prohibition of new cycle/offer/handler/diagnostic calls; evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-2/quiescence.md`.
+
+Milestone 2 is complete: the shared Runtime Core lifecycle, transaction,
+cleanup, focused-failure, and quiescence oracles are ready for concrete dynamic
+and static profile binding.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

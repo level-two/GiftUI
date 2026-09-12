@@ -185,6 +185,12 @@ owned by later profile-specific tasks and notes.
   `Sources/GiftUIRuntimeFailureAdapterFixture/RuntimeFailureAdapterBoundary.swift`
 - T2.4 evidence:
   `Tests/ContractFixtures/SPEC013/Evidence/milestone-2/focused-failure-disposition.md`
+- T2.5 quiescence implementation:
+  `Sources/GiftUIRuntimeCore/RuntimeCoordinatorQuiescence.swift`
+- T2.5 focused tests:
+  `Tests/GiftUIRuntimeCoreTests/RuntimeCoordinatorQuiescenceTests.swift`
+- T2.5 evidence:
+  `Tests/ContractFixtures/SPEC013/Evidence/milestone-2/quiescence.md`
 
-The remaining code and focused evidence links will be added as T2.5 lands. The
-authoritative behavior remains SPEC-013 and its accepted ADRs.
+Milestone 2 is implemented through these linked common mechanisms and oracles.
+The authoritative behavior remains SPEC-013 and its accepted ADRs.
