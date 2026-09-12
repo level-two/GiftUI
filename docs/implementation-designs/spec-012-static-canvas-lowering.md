@@ -143,12 +143,12 @@ runtime behavior.
 
 ## Open Implementation Questions
 
-The pinned Apple Swift 6.3.3 compiler rejects the exact normative declaration
-`associatedtype CaptureStorage: ~Copyable`; associated types cannot suppress
-their implicit `Copyable` requirement in this compiler. T6.2 is therefore
-paused in Specification review rather than weakening the declaration. The
-exact production source-analysis front end and emitted private type names
-otherwise remain replaceable SPEC-013 integration details.
+The 2026-09-12 Specification amendment replaces the rejected
+`associatedtype CaptureStorage: ~Copyable` spelling with the compiler-supported
+implicitly `Copyable` associated type while normatively prohibiting table-side
+copy or retention. T6.2 may resume against that corrected seam. The exact
+production source-analysis front end and emitted private type names otherwise
+remain replaceable SPEC-013 integration details.
 
 ## Code and Evidence Links
 

@@ -6,7 +6,7 @@ status: implemented
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-09-11
+updated: 2026-09-12
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -960,6 +960,15 @@ three foreground-stack operations. This is a source-breaking package-SPI
 addition but does not change public Presentation API, the four-field workspace
 capacity value, or any configured limit. SPEC-012's producer extension inherits
 the same workspace behavior without another stack or identity domain.
+
+SPEC-012's approved 2026-09-12 implementation-seam amendment additionally
+owns `RenderExtensionVisit`, the paired preflight/streaming extension visitors,
+and the extended `RenderProducer.preflight` / `produce` overloads. Those
+additive package APIs must reuse this Specification's traversal, snapshots,
+workspace, validation, and single sink transaction exactly. They do not alter
+the existing `RenderProducer.produce` declaration or reopen this
+Specification's ordinary-render conformance; Canvas extension conformance is
+measured exclusively by SPEC-012.
 
 ## Testing Requirements
 

@@ -48,6 +48,13 @@ target_milestone: MVP
 > during completeness review. SPIKE-008 now records corrected macOS and
 > hardware-free nRF52840 declaration evidence. It is the authoritative drawing
 > implementation contract for the MVP profiles and backends.
+>
+> **2026-09-12 implementation-seam amendment:** This approved revision adds
+> the construction-workspace operations required by `CanvasPlanProducer`, the
+> additive single-traversal extension contract required to reuse SPEC-008
+> lowering, and a compiler-supported `Copyable` static capture associated type
+> whose value remains borrowed and uncopied during dispatch. These corrections
+> preserve ADR-028 through ADR-031 ownership, lifetime, and resource meaning.
 
 ## Summary
 
@@ -358,7 +365,7 @@ package struct StaticCanvasLimits: Equatable, Sendable {
 }
 
 package protocol StaticCanvasCallableTable {
-    associatedtype CaptureStorage: ~Copyable
+    associatedtype CaptureStorage
     var callableCaseCount: UInt16 { get }
     func captureByteCount(for id: UInt16) -> UInt16?
     mutating func invoke(
@@ -444,6 +451,106 @@ package protocol DrawingPlanWorkspace: DrawingPlanView {
     mutating func reset()
 }
 
+package protocol DrawingPlanConstructionWorkspace: DrawingPlanWorkspace {
+    mutating func withCanvasContext<Result>(
+        identity: Identity,
+        surfaceOrigin: Point,
+        inheritedClip: Rect,
+        _ body: (
+            inout GraphicsContext
+        ) throws(DrawingError) -> Result
+    ) throws(DrawingError) -> Result
+    mutating func seal(
+        canvasOccurrenceCount: UInt16
+    ) -> DrawingPlanResult
+}
+
+package struct RenderExtensionVisit: Equatable, Sendable {
+    package let operationCount: UInt16
+    package init(operationCount: UInt16)
+}
+
+package enum RenderExtensionVisitResult: Equatable, Sendable {
+    case success(RenderExtensionVisit)
+    case failure(RenderProductionError)
+}
+
+package protocol RenderPreflightExtension {
+    associatedtype Identity: Equatable, Sendable
+    mutating func visit(
+        scope: SemanticRenderScope,
+        identity: Identity,
+        bounds: Rect,
+        clip: Rect
+    ) -> RenderExtensionVisitResult
+}
+
+package protocol RenderStreamingExtension {
+    associatedtype Identity: Equatable, Sendable
+    associatedtype Sink: RenderOperationSink
+    mutating func visit(
+        scope: SemanticRenderScope,
+        identity: Identity,
+        bounds: Rect,
+        clip: Rect,
+        sink: inout Sink
+    ) -> RenderExtensionVisitResult
+}
+
+extension RenderProducer {
+    package static func preflight<
+        Semantic, Layout, Metrics, Workspace, Extension
+    >(
+        semantic: borrowing Semantic,
+        layout: borrowing Layout,
+        textMetrics: borrowing Metrics,
+        surfaceBounds: Rect,
+        damageMode: RenderDamageMode,
+        limits: RenderLimits,
+        configuredSinkCapacity: RenderSinkCapacity,
+        workspace: inout Workspace,
+        extensionVisitor: inout Extension
+    ) -> RenderProductionResult
+    where Semantic: SemanticRenderView,
+          Layout: ResolvedRenderLayoutView,
+          Metrics: CanonicalTextMetricsView,
+          Workspace: RenderProductionWorkspace,
+          Extension: RenderPreflightExtension,
+          Semantic.Identity == Layout.Identity,
+          Semantic.Identity == Workspace.Identity,
+          Semantic.Identity == Extension.Identity
+
+    package static func produce<
+        Semantic, Layout, Metrics, Workspace,
+        PreflightExtension, StreamingExtension, Sink
+    >(
+        semantic: borrowing Semantic,
+        layout: borrowing Layout,
+        textMetrics: borrowing Metrics,
+        surfaceBounds: Rect,
+        damageMode: RenderDamageMode,
+        rootForeground: Color,
+        limits: RenderLimits,
+        expectedHeader: RenderPlanHeader,
+        workspace: inout Workspace,
+        preflightExtension: inout PreflightExtension,
+        streamingExtension: inout StreamingExtension,
+        sink: inout Sink
+    ) -> RenderProductionResult
+    where Semantic: SemanticRenderView,
+          Layout: ResolvedRenderLayoutView,
+          Metrics: CanonicalTextMetricsView,
+          Workspace: RenderProductionWorkspace,
+          PreflightExtension: RenderPreflightExtension,
+          StreamingExtension: RenderStreamingExtension,
+          Sink: RenderOperationSink,
+          Semantic.Identity == Layout.Identity,
+          Semantic.Identity == Workspace.Identity,
+          Semantic.Identity == PreflightExtension.Identity,
+          Semantic.Identity == StreamingExtension.Identity,
+          StreamingExtension.Sink == Sink
+}
+
 package protocol DrawingOperationSink: RenderOperationSink {
     mutating func straightLineStroke<Stroke: StraightLineStrokeView>(
         _ stroke: borrowing Stroke
@@ -477,7 +584,7 @@ package enum CanvasPlanProducer {
     ) -> DrawingPlanResult
     where Source: CanvasInvocationSource,
           Layout: ResolvedRenderLayoutView,
-          Workspace: DrawingPlanWorkspace,
+          Workspace: DrawingPlanConstructionWorkspace,
           Source.Identity == Layout.Identity,
           Source.Identity == Workspace.Identity
 }
@@ -539,6 +646,48 @@ clip, identity, and summary-consistency validation before construction. A
 consumer that observes an impossible constructed value reports
 `.invariantViolation`; these initializers do not make unvalidated input valid.
 
+`StaticCanvasCallableTable.CaptureStorage` is implicitly `Copyable` because the
+pinned compilers cannot suppress `Copyable` on an associated type. This source
+shape does not authorize copying during dispatch: generated capture storage
+MUST remain fixed-layout and inline, `invoke` receives only a borrow, the table
+MUST NOT copy or retain it, and the occurrence owner MUST invalidate its sole
+logical record immediately after normal or throwing invocation. Its fields
+remain limited to the approved statically sized capture set.
+
+`DrawingPlanConstructionWorkspace.withCanvasContext` is the sole mutation seam
+used by `CanvasPlanProducer`. It registers the exact Canvas identity once,
+binds one fresh scoped context to that occurrence's live-Path and immutable-plan
+storage, and fixes the supplied surface origin and inherited clip for every
+stroke submitted by `body`. It invokes `body` exactly once and poisons the
+context and live Path on every exit. `seal(canvasOccurrenceCount:)` validates
+the complete stored identities and totals, constructs the exact summary, and
+makes the immutable view available only on success. Neither operation exposes
+concrete storage or profile identity.
+
+The render-extension declarations are additive SPI owned by
+`GiftUIRenderLowering` under this downstream Specification. The existing
+SPEC-008 `RenderProducer.produce` remains unchanged for non-Canvas callers.
+The extended overloads execute the same ordinary preflight and streaming
+implementation and call the extension visitor exactly once at each semantic
+scope, after that scope's ordinary local operation and before its children.
+They pass the exact semantic identity, resolved bounds, and resolved inherited
+logical clip before SPEC-008's surface intersection. This preserves the clip
+stored during post-layout plan derivation; the producer and backend still
+apply the render surface bound independently. Each successful visit reports
+only its added operation count;
+checked addition, render/workspace capacity, and configured or actual sink
+capacity remain owned by the producer. A failure aborts before `begin` during
+preflight or causes the one begun stream to discard during streaming.
+
+Extended `preflight` acquires and resets the workspace, performs no sink call,
+and returns the complete ordinary-plus-extension header. Extended `produce`
+repeats the same combined preflight against the actual sink capacity, requires
+exact equality with `expectedHeader` before `begin`, then streams through one
+begin/finish transaction. It requires equal preflight and streaming extension
+totals and unchanged semantic/layout snapshots. It MUST NOT retain operations,
+create a second identity or foreground stack, or fork any ordinary traversal
+rule.
+
 The existing SPEC-007 `SemanticLayoutPrimitive` enum gains exactly one case,
 `.canvas`. The existing SPEC-008 `SemanticRenderScope` enum gains exactly one
 case, `.canvas`. These are additive package-SPI amendments; every pre-existing
@@ -593,6 +742,12 @@ using SPEC-008's `RenderProducer`, and both entry points MUST produce identical
 ordinary-operation transcripts when `drawingPlan.summary` contains zero
 Canvas occurrences.
 
+`CanvasRenderProducer.preflight` constructs a Canvas preflight extension over
+the borrowed plan and delegates to the extended `RenderProducer.preflight`.
+`CanvasRenderProducer.produce` constructs matching Canvas preflight and
+streaming extensions and delegates to the extended `RenderProducer.produce`.
+It MUST NOT independently recurse through semantic or layout scopes.
+
 `preflight` performs the complete immutable combined traversal without a sink.
 It acquires and resets the caller-owned render workspace within the call and
 retains no borrow. On success it returns `.success` with the exact header that
@@ -633,6 +788,14 @@ The producer invokes each occurrence at most once with a fresh scoped context
 and the exact `Size` from that Canvas's resolved bounds. A callable is not
 invoked during semantic expansion, measurement, `.publishing`, backend offer,
 capability resolution, or recursive retry.
+
+For each occurrence the producer enters
+`workspace.withCanvasContext(identity:surfaceOrigin:inheritedClip:_:)` with
+the exact identity, resolved bounds origin, and inherited logical clip, then
+invokes the source only inside that body. After all occurrences and releases
+succeed, it calls `workspace.seal(canvasOccurrenceCount:)` exactly once with
+the validated source count and returns that exact result. It does not access a
+profile-private live Path or plan mutation protocol directly.
 
 After each normal or throwing invocation, the producer calls
 `releaseCanvas(at:)` exactly once and makes any later invocation of that staged

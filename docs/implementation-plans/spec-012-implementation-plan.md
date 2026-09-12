@@ -584,9 +584,9 @@ not implied by this plan.
   complete Canvas-capable semantic result and SPEC-007's exact identity-
   preserving resolved bounds. Direct Canvas declarations, Render-Core values,
   workspace logic, and fixture views do not wait.
-- Production combined rendering waits for SPEC-008's complete
-  `GiftUIRenderLowering`, traversal workspace, text/layout view, and atomic
-  producer. SPEC-012 must extend that owner rather than create a substitute.
+- SPEC-008's complete `GiftUIRenderLowering`, traversal workspace,
+  text/layout view, and atomic producer are present. T5 must implement the
+  amended extension overloads in that owner and may not create a substitute.
 - Production dynamic/static callable storage and source-generation integration
   wait for SPEC-013. Production workload limits, observable static handles,
   startup B2 assembly, and host lifetime proofs wait for SPEC-015.
@@ -866,33 +866,23 @@ layout identity. The
 [integration evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-4/canvas-layout-integration.md)
 records the correlated path. T4.2 is next.
 
-`T4.2` is blocked in Specification review. The normative
-`CanvasPlanProducer.derive` signature constrains its generic workspace only to
-`DrawingPlanWorkspace`, whose operations are limited to read-only plan access,
-`acquire`, `discard`, and `reset`. It exposes no approved way to bind a fresh
-`GraphicsContext` to the concrete workspace, mutate live Path storage, append
-validated stroke snapshots, translate stored points, or seal the final
-summary. The focused
+`T4.2` was blocked by the original workspace signature. The approved
+2026-09-12 amendment adds `DrawingPlanConstructionWorkspace`, whose scoped
+context body and sealing operation expose exactly the missing mutation path
+without revealing concrete storage or changing profile ownership. The focused
 [workspace integration review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-4/canvas-plan-producer-workspace-seam-blocker.md)
-records the missing typed seam. Adding a hidden refinement constraint, type
-cast, global storage, or duplicate profile switch would change the approved
-contract or architecture, so T4.2-T4.5 remain unchecked pending an approved
-Specification correction. Independent later work may proceed only where the
-plan explicitly permits direct immutable fixtures.
+records the former defect and its resolution. T4.2-T4.5 remain unchecked
+implementation work and may now resume through the amended public seam.
 
-`T5.1` is independently blocked in Specification review. SPEC-012 requires
-the combined producer to reuse SPEC-008's complete traversal while injecting
-Canvas strokes at their painter positions. `GiftUIRenderLowering` exposes only
-the package `RenderProducer.produce` entry point; its preflight summary,
-preflight traversal, streaming traversal, and per-scope hooks are internal or
-private to that module. Calling `produce` cannot inject strokes, would own the
-sink's sole begin/finish pair, and cannot yield the required pre-publication
-header without observing a sink. Reimplementing those files in
-`GiftUIDrawing` would violate T5.5 and the Specification's no-fork contract.
+`T5.1` was independently blocked by the absence of a reusable lowering hook.
+The approved 2026-09-12 amendment adds paired preflight/streaming extension
+visitors and extended `RenderProducer` overloads. They reuse the existing
+ordinary traversal, workspace, capacity checks, snapshots, and single sink
+transaction while exposing the Canvas position exactly once per traversal.
 The focused
 [render extension review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-extension-seam-blocker.md)
-records the missing reuse seam. T5.1-T5.5 remain unchecked pending an approved
-SPEC-008/SPEC-012 package extension contract.
+records the former defect and its resolution. T5.1-T5.5 remain unchecked
+implementation work and may now resume through the amended SPI.
 
 `T1.4` is complete. Seven maintained positive fixtures compile Canvas/style
 defaults, both stroke overloads, explicit typed trailing closures,
@@ -920,11 +910,11 @@ records the replaceable lowering and lifecycle realization, while the
 keeps generated Swift, production limits, and runtime storage explicitly
 pending. T6.2 is the next dependency-complete static-generation task.
 
-`T6.2` is blocked in Specification review. The pinned Apple Swift 6.3.3
-compiler rejects the exact normative
-`associatedtype CaptureStorage: ~Copyable` requirement because this compiler
-cannot suppress an associated type's implicit `Copyable` requirement. The
+`T6.2` was blocked because the pinned Apple Swift 6.3.3 compiler rejects the
+original `associatedtype CaptureStorage: ~Copyable` requirement. The approved
+2026-09-12 amendment uses an implicitly `Copyable` associated type and
+normatively prohibits dispatch-time copying or retention while preserving
+fixed inline storage and immediate logical invalidation. The
 [callable-table review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-callable-table-specification-blocker.md)
-records the compiler diagnostic and affected scope. Substituting an implicitly
-copyable associated type would change the approved contract, so T6.2-T6.5
-remain unchecked pending a compiler-supported Specification correction.
+records the former compiler defect and its resolution. T6.2-T6.3 may now
+resume; production portions of T6.4-T6.5 retain their SPEC-015/SPEC-013 gates.

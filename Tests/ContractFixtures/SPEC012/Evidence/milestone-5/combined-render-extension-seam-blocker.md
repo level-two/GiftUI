@@ -1,5 +1,10 @@
 # SPEC-012 Combined Render Extension Seam Blocker
 
+Resolution: corrected by the approved 2026-09-12 SPEC-012 amendment through
+the paired `RenderPreflightExtension` / `RenderStreamingExtension` visitors and
+extended `RenderProducer` overloads. The diagnostic below remains historical
+implementation evidence.
+
 Plan task: `SPEC-012 T5.1`
 
 Status: blocked in Specification review.

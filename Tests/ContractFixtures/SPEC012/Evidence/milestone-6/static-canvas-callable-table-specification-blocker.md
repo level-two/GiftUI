@@ -1,5 +1,10 @@
 # SPEC-012 Static Canvas Callable Table Specification Blocker
 
+Resolution: corrected by the approved 2026-09-12 SPEC-012 amendment. The
+associated type is now compiler-supported and implicitly `Copyable`, while
+dispatch is normatively borrow-only with no table-side copy or retention. The
+diagnostic below remains historical implementation evidence.
+
 Plan task: `SPEC-012 T6.2`
 
 T6.2 cannot implement the approved `StaticCanvasCallableTable` declaration
