@@ -340,7 +340,7 @@ allocating no identity or retaining any upstream borrow.
       dictionaries, unrestricted existentials, reflection, allocator, task,
       callable, handler, model, or borrowed semantic/layout storage on the
       static path. Record exact record/workspace/value sizes.
-- [ ] `T3.3` — Implement `beginCandidate`, ordered `append`, exact clip
+- [x] `T3.3` — Implement `beginCandidate`, ordered `append`, exact clip
       intersection, identity/geometry/capacity/unique-zero-based-paint-order
       validation, and empty-intersection retention without a hit region. A
       count equal to each limit succeeds; the first excess fails deterministically.
