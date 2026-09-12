@@ -405,7 +405,7 @@ current model.
       `.requiresGeneration`, retire failed reservations according to SPEC-009,
       commit only on accepted handoff under its reserved revision, and discard
       on every other outcome.
-- [ ] `T5.3` — Implement `ActionModelTargetAccess`, `InteractionDispatcher`,
+- [x] `T5.3` — Implement `ActionModelTargetAccess`, `InteractionDispatcher`,
       and the target-composed adapter at the runtime/host seam. Immediately
       re-read and validate identity, action generation, enabled state, and
       target generation; decode through the statically known total
@@ -723,3 +723,11 @@ revision, and discards every refusal or failure. Candidate-only generations
 remain consumed and are recorded as retired; exhaustion discards both
 candidates and cancels all captures. See the
 [generation/offer evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-2-generation-offer.md).
+
+`T5.3` is complete: Interaction exposes the exact dispatcher contract and a
+borrowed committed-record view, while Runtime Core supplies the target-composed
+generic adapter. Dispatch immediately re-reads the committed record, validates
+identity/generation/enabled/target state, totally decodes the configured action
+type, and borrows the matching current model for one synchronous handler call.
+See the
+[current-model dispatch evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-3-current-model-dispatch.md).

@@ -192,3 +192,5 @@ SPEC-013 and SPEC-015 respectively.
 - [T5.1 target-binding evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-1-target-binding.md)
 - [Generation/offer transaction](../../Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateTransaction.swift)
 - [T5.2 generation/offer evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-2-generation-offer.md)
+- [Target-composed dispatcher](../../Sources/GiftUIRuntimeCore/RuntimeInteractionDispatcher.swift)
+- [T5.3 dispatch evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-3-current-model-dispatch.md)

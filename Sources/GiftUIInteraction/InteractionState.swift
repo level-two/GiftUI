@@ -3,7 +3,8 @@ import GiftUIExecution
 import GiftUILayout
 
 package struct InteractionState<CandidateRecords, CommittedRecords, HitRegions>:
-    InteractionCandidateBuilder, InteractionGestureResolver
+    InteractionCandidateBuilder, InteractionCommittedActionView,
+    InteractionGestureResolver
 where
     CandidateRecords: InteractionCandidateRecordStorage,
     CommittedRecords: InteractionCommittedRecordStorage,
@@ -343,6 +344,12 @@ where
             index += 1
         }
         return nil
+    }
+
+    package borrowing func committedRecord(
+        for identity: Identity
+    ) -> BoundActionRecord<Identity>? {
+        record(identity: identity)
     }
 
     package borrowing func resolveMove(

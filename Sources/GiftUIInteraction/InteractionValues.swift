@@ -137,3 +137,19 @@ package protocol ActionModelTargetAccess {
         _ body: (borrowing Model) -> Void
     ) -> Bool
 }
+
+package protocol InteractionCommittedActionView {
+    associatedtype Identity: Equatable & Sendable
+
+    borrowing func committedRecord(
+        for identity: Identity
+    ) -> BoundActionRecord<Identity>?
+}
+
+package protocol InteractionDispatcher {
+    associatedtype Identity: Equatable & Sendable
+
+    mutating func dispatch(
+        _ captured: CapturedAction<Identity>
+    ) -> InteractionDispatchResult
+}
