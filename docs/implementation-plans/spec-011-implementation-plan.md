@@ -292,7 +292,7 @@ borrowed typed action occurrence.
 label child, one exact typed action, and one effective enabled value in
 deterministic semantic order, with no handler invocation or retained borrow.
 
-- [ ] `T2.1` — Extend the SPEC-006 production semantic path to recognize the
+- [x] `T2.1` — Extend the SPEC-006 production semantic path to recognize the
       Button payload exactly once, stage its action at the Button identity, and
       expand only its stored label in source order. Preserve all existing
       expansion capacity, reentrancy, atomicity, and borrow-lifetime rules.

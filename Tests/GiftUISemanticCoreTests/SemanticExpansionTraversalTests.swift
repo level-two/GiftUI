@@ -5,6 +5,43 @@ import XCTest
 @testable import GiftUISemanticCore
 
 final class SemanticExpansionTraversalTests: XCTestCase {
+    func testButtonStagesOneActionAtItsIdentityBeforeStoredLabel() {
+        var workspace = TraversalWorkspace()
+        var sink = TraversalSink()
+        let button = Button(action: TraversalAction.secondary) {
+            TraversalPrimitive(marker: 9)
+        }
+
+        let result = expandSemanticTree(
+            button,
+            limits: makeLimits(),
+            workspace: &workspace,
+            sink: &sink
+        )
+
+        XCTAssertEqual(
+            result,
+            .success(
+                SemanticExpansionSummary(
+                    semanticNodeCount: 2,
+                    bodyEvaluationCount: 0,
+                    modifierApplicationCount: 0,
+                    actionOccurrenceCount: 1,
+                    maximumObservedDepth: 4
+                )
+            )
+        )
+        XCTAssertEqual(
+            sink.committedEvents.map(\.kind),
+            [.structural, .semantic, .action, .structural, .semantic]
+        )
+        XCTAssertEqual(sink.observedActions, [.secondary])
+        XCTAssertEqual(
+            sink.committedEvents[1].identity,
+            sink.committedEvents[2].identity
+        )
+    }
+
     func testNestedDeclarationExpandsDepthFirstAndSkipsInactiveContent() {
         let bodyCounter = TraversalBodyCounter()
         var workspace = TraversalWorkspace()
