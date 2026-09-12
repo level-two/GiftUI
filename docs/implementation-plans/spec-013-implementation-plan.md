@@ -271,7 +271,7 @@ and quiescence behavior without profile-private semantics.
       frame/revision allocation, one-shot offer, accepted-only routing commit,
       constant-space pending intent, refusal convergence, and finalization.
       Use recording seams until production focused owners land.
-- [ ] `T2.3` — Encode the normative stage-order and cleanup matrix as shared
+- [x] `T2.3` — Encode the normative stage-order and cleanup matrix as shared
       coordinator behavior and a table-driven oracle. Prove earlier failures
       skip later fallible work, applied mutation is never replayed, begun
       candidates discard exactly once, and every acquired workspace resets.
@@ -672,6 +672,12 @@ SPEC-009's recording mutation, identity, one-shot offer, commit, pending-intent,
 wake, and finalization seams. Accepted and refusal paths passed without
 duplicating owner algorithms; evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-2/common-transaction.md`.
+
+T2.3 added the fixed-size stage/cleanup table, exactly-once cleanup tracker,
+and non-replayable mutation marker. Four table-driven tests cover every row,
+partial acquisition, publication boundaries, deterministic order, and complete
+draining; evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-2/cleanup-oracle.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

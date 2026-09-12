@@ -173,6 +173,12 @@ owned by later profile-specific tasks and notes.
   `Tests/GiftUIRuntimeCoreTests/RuntimeCoordinatorTransactionTests.swift`
 - T2.2 evidence:
   `Tests/ContractFixtures/SPEC013/Evidence/milestone-2/common-transaction.md`
+- T2.3 cleanup implementation:
+  `Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift`
+- T2.3 focused tests:
+  `Tests/GiftUIRuntimeCoreTests/RuntimeCoordinatorCleanupTests.swift`
+- T2.3 evidence:
+  `Tests/ContractFixtures/SPEC013/Evidence/milestone-2/cleanup-oracle.md`
 
-The remaining code and focused evidence links will be added as T2.3-T2.5
+The remaining code and focused evidence links will be added as T2.4-T2.5
 land. The authoritative behavior remains SPEC-013 and its accepted ADRs.
