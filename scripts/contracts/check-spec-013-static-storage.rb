@@ -18,6 +18,8 @@ end
 storage = STORAGE.read
 all_static_source = STATIC_SOURCES.glob("*.swift").sort.map(&:read).join("\n")
 fixture = FIXTURE.read
+binding = STATIC_SOURCES.join("StaticRuntimeProfileBinding.swift").read
+generated_metadata = STATIC_SOURCES.join("StaticGeneratedProfileMetadata.swift").read
 
 forbidden = {
   "Array" => /\b(?:Array|ContiguousArray)\s*</,
@@ -40,6 +42,16 @@ fail_check("Static occurrence lacks success/throw release scope") unless
 fail_check("Static occurrence does not destroy stored capture") unless
   occurrence.include?("capture = nil")
 fail_check("Static occurrence has a closure field") if occurrence.match?(/@escaping|->\s*Void/)
+
+%w[
+  RuntimeCoordinatorLifecycle StaticProfileStorage lifecycle.beginOpportunity
+  lifecycle.finishOpportunity lifecycle.requestQuiescence storage.stageCanvas
+  storage.invokeCanvas
+].each do |token|
+  fail_check("Static binding does not delegate through #{token}") unless binding.include?(token)
+end
+fail_check("generated metadata is not the one callable table") unless
+  generated_metadata.match?(/RuntimeStaticCanvasAuditMetadata,\s*StaticCanvasCallableTable/m)
 
 fail_check("fixed 51-counter tuple is missing") unless
   storage[/private typealias Storage = \((.*?)\n    \)/m, 1]&.scan(/UInt16/)&.length == 51

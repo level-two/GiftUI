@@ -224,6 +224,82 @@ func fixedStaticAttemptResetPreservesCommittedUntilQuiescentTeardown() {
     #expect(!beganAfterTeardown)
 }
 
+@Test
+func staticBindingUsesCommonLifecycleGeneratedTableAndInlineCapture() throws {
+    var binding = makeStaticBinding()
+    let active = ExecutionContext(
+        cycle: RunCycleID(rawValue: 7),
+        semanticRevision: nil,
+        candidateFrame: nil,
+        phase: .admitting
+    )
+
+    let profile = binding.profile
+    let auditProfile = binding.storageAudit?.profile
+    #expect(profile == .static)
+    #expect(auditProfile == .static)
+    #expect(binding.beginOpportunity(context: active) == nil)
+    #expect(binding.beginOpportunity(context: active) == .reentrancyViolation)
+    #expect(binding.reserve(1, for: .drawingPlanStrokes) == .accepted)
+
+    guard
+        var occurrence = binding.stageCanvas(
+            identity: GeneratedProfileIdentity.primary,
+            callableID: 1,
+            declaredCaptureByteCount: 8,
+            capture: GeneratedCanvasCaptureStorage(
+                color: .white,
+                firstScalar: 1,
+                secondScalar: 2
+            )
+        )
+    else {
+        Issue.record("valid generated Static Canvas occurrence was rejected")
+        return
+    }
+    try withGeneratedCanvasContext { context in
+        try binding.invokeCanvas(
+            occurrence: &occurrence,
+            context: &context,
+            size: Size(width: 3, height: 5)!
+        )
+    }
+    #expect(occurrence.state == .released)
+    #expect(occurrence.releaseCount == 1)
+
+    #expect(binding.finishOpportunity(context: idleStaticExecutionContext()) == nil)
+    let finishedState = binding.storageLifetimeState
+    let finishedContext = binding.executionContext
+    #expect(finishedState == .idle)
+    #expect(finishedContext == idleStaticExecutionContext())
+}
+
+@Test
+func staticBindingDefersActiveQuiescenceAndCannotRestart() {
+    var binding = makeStaticBinding()
+    let active = ExecutionContext(
+        cycle: RunCycleID(rawValue: 8),
+        semanticRevision: nil,
+        candidateFrame: nil,
+        phase: .admitting
+    )
+
+    #expect(binding.beginOpportunity(context: active) == nil)
+    binding.quiesce()
+    let activeQuiescence = binding.isQuiescent
+    let requestedState = binding.storageLifetimeState
+    #expect(!activeQuiescence)
+    #expect(requestedState == .quiescenceRequested)
+
+    #expect(binding.finishOpportunity(context: idleStaticExecutionContext()) == nil)
+    let finishedQuiescence = binding.isQuiescent
+    let tornDownState = binding.storageLifetimeState
+    #expect(finishedQuiescence)
+    #expect(tornDownState == .tornDown)
+    binding.quiesce()
+    #expect(binding.beginOpportunity(context: active) == .requiredFacilityUnavailable)
+}
+
 private struct GeneratedCanvasContextStorage {}
 
 private final class StaticCanvasInvocationProbe {
@@ -408,6 +484,33 @@ private func makeStaticStorage() -> StaticProfileStorage<
         regions: GeneratedStaticRegions(),
         metadata: metadata
     )!
+}
+
+private func makeStaticBinding() -> StaticRuntimeProfileBinding<
+    GeneratedStaticRegions,
+    GeneratedRuntimeMetadata
+> {
+    let metadata = GeneratedRuntimeMetadata(
+        observableSlots: GeneratedObservableSlots(),
+        action: GeneratedProfileAction.self,
+        canvasTable: GeneratedRuntimeCanvasTable(),
+        canvasCoverage: GeneratedCanvasCoverage()
+    )!
+    return StaticRuntimeProfileBinding(
+        structuralIdentity: StaticStructuralIdentity(rawValue: 24)!,
+        limits: staticLimits(),
+        regions: GeneratedStaticRegions(),
+        metadata: metadata
+    )!
+}
+
+private func idleStaticExecutionContext() -> ExecutionContext {
+    ExecutionContext(
+        cycle: nil,
+        semanticRevision: nil,
+        candidateFrame: nil,
+        phase: .idle
+    )
 }
 
 private func staticLimits() -> RuntimeProfileLimits {

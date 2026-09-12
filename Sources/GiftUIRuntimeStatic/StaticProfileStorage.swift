@@ -1,3 +1,5 @@
+import GiftUI
+import GiftUIDrawing
 import GiftUIRuntimeCore
 
 package struct StaticStructuralIdentity: Equatable, Hashable, Sendable {
@@ -215,6 +217,36 @@ where
 
     package borrowing func use(for limit: RuntimeStorageLimit) -> StaticStorageUse {
         logicalUse.use(for: limit)
+    }
+
+    package mutating func stageCanvas<Identity>(
+        identity: consuming Identity,
+        callableID: UInt16,
+        declaredCaptureByteCount: UInt16,
+        capture: consuming Metadata.CaptureStorage
+    ) -> StaticCanvasOccurrence<Identity, Metadata.CaptureStorage>?
+    where Metadata: StaticCanvasCallableTable, Identity: Equatable & Sendable {
+        guard lifetimeState == .attemptActive else { return nil }
+        return StaticCanvasOccurrence(
+            identity: consume identity,
+            callableID: callableID,
+            declaredCaptureByteCount: declaredCaptureByteCount,
+            capture: consume capture,
+            metadata: metadata
+        )
+    }
+
+    package mutating func invokeCanvas<Identity>(
+        occurrence: inout StaticCanvasOccurrence<Identity, Metadata.CaptureStorage>,
+        context: inout GraphicsContext,
+        size: Size
+    ) throws(DrawingError)
+    where Metadata: StaticCanvasCallableTable, Identity: Equatable & Sendable {
+        try occurrence.invoke(
+            table: &metadata,
+            context: &context,
+            size: size
+        )
     }
 
     package mutating func finishAttempt() {

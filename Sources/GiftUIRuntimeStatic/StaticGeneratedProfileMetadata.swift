@@ -33,7 +33,7 @@ package struct StaticActionSpecialization<Action: GiftUIAction>: Sendable {
 }
 
 package struct StaticGeneratedProfileMetadata<Slots, Action, CanvasTable, Coverage>:
-    RuntimeStaticCanvasAuditMetadata
+    RuntimeStaticCanvasAuditMetadata, StaticCanvasCallableTable
 where
     Slots: StaticObservableSlotMetadata,
     Action: GiftUIAction,
@@ -95,6 +95,20 @@ where
 
     package func captureByteCount(for id: UInt16) -> UInt16? {
         canvasTable.captureByteCount(for: id)
+    }
+
+    package mutating func invoke(
+        id: UInt16,
+        captures: borrowing CanvasTable.CaptureStorage,
+        context: inout GraphicsContext,
+        size: Size
+    ) throws(DrawingError) {
+        try canvasTable.invoke(
+            id: id,
+            captures: captures,
+            context: &context,
+            size: size
+        )
     }
 
     package borrowing func validateStagedCallable(

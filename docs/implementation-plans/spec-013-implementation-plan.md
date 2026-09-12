@@ -349,7 +349,7 @@ and the same coordinator semantics.
       table, immediate exactly-once destruction after invocation, and cleanup
       after typed throws. Prove no source closure, fallback box, capture, Path,
       or plan survives its contract boundary.
-- [ ] `T4.5` — Bind fixed stores and generated tables to the common coordinator
+- [x] `T4.5` — Bind fixed stores and generated tables to the common coordinator
       and focused owners with zero allocation during construction and every
       later operation. Scan source, SIL, symbols, and linked images for every
       forbidden static facility named by SPEC-013.
@@ -793,8 +793,7 @@ The former T3.5/T4.5 dependency blocker was resolved by SPEC-011 T5.1-T5.6.
 Interaction now owns the dispatcher contract and committed-record view;
 Runtime Core provides target-bound candidate coordination, offer resolution,
 current-model dispatch, replacement validation, and the SPEC-009 mutation join.
-T4.5 remains the next dependency-complete production profile task. The
-original T3.5/T4.5 blocker and its resolution boundary are recorded in
+The original T3.5/T4.5 blocker and its resolution boundary are recorded in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-3/focused-owner-integration-blocker.md`.
 
 T3.5 added the noncopyable Dynamic profile binding over the validated storage,
@@ -805,6 +804,16 @@ scoped Canvas release. Focused tests and a fail-closed source audit prove no
 Static/backend/host import, focused-owner algorithm redefinition, or retained
 borrowed payload. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-3/dynamic-profile-binding.md`.
+
+T4.5 added the noncopyable Static profile binding over generated fixed storage,
+the generated metadata/callable table, and Runtime Core's common lifecycle.
+Staging and invocation stay typed and inline through the single generated table;
+opportunity ownership, context retention, quiescence, and teardown stay common.
+The macOS and nRF optimized gates inspect owned SIL and the specialized binding
+call-symbol path, rejecting allocation, closure/existential boxes, reflection,
+Objective-C, task, and thread facilities. Both linked fixtures retain the
+binding path, and the nRF image remains Cortex-M4F hard-float. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-4/static-profile-binding.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

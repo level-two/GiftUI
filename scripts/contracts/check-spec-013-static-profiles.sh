@@ -74,6 +74,38 @@ StaticCanvasOccurrence giftui_spec013_layout_occurrence
 LAYOUTS
 }
 
+check_static_allocation_path() {
+    local ir="$1"
+    local sil="$2"
+    local body="${output_root}/static-binding-path.ll"
+    local calls="${output_root}/static-binding-calls.txt"
+    local owned_sil="${output_root}/static-runtime-owned.sil"
+
+    awk '
+        /^define / && /spec013c7Binding/ { capture = 1 }
+        capture { print }
+        capture && /^}/ { exit }
+    ' "${ir}" >"${body}"
+    [[ -s "${body}" ]] || fail 'optimized Static binding path is missing'
+
+    if grep -Eq '@(swift_allocObject|swift_allocateGenericValueMetadata|malloc|calloc|realloc|posix_memalign|aligned_alloc|objc_|swift_reflect|swift_task)|Builtin\.allocRaw' "${body}"; then
+        fail 'optimized Static binding path references a forbidden facility'
+    fi
+    awk '
+        /^sil / { capture = index($0, "GiftUIRuntimeStaticAllocationProbe") > 0 }
+        capture { print }
+        capture && /^}/ { capture = 0 }
+    ' "${sil}" >"${owned_sil}"
+    [[ -s "${owned_sil}" ]] || fail 'optimized Static owned SIL is missing'
+    if grep -Eq '\b(alloc_ref|alloc_box|alloc_existential_box|partial_apply)\b|builtin.*allocRaw' "${owned_sil}"; then
+        fail 'optimized Static SIL contains allocation, closure-box, or existential-box instructions'
+    fi
+
+    grep -E '\b(call|tail call)\b' "${body}" >"${calls}" || true
+    printf 'irPathForbiddenReferences\t0\nsilForbiddenInstructions\t0\n' \
+        >"${output_root}/allocation-proof.tsv"
+}
+
 if [[ "${profile}" == "macos-static" ]]; then
     command=(swift test --disable-sandbox
         --package-path "${PROJECT_ROOT}"
@@ -91,6 +123,24 @@ if [[ "${profile}" == "macos-static" ]]; then
         -I "${output_root}/swiftpm/arm64-apple-macosx/debug/Modules" \
         -emit-ir -module-name GiftUIRuntimeStaticProbe "${PROBE}" -o "${ir}"
     record_layouts "${ir}"
+    allocation_ir="${output_root}/static-binding-allocation.ll"
+    allocation_sil="${output_root}/static-binding-allocation.sil"
+    implementation_sources=("${PROJECT_ROOT}"/Sources/GiftUIRuntimeStatic/*.swift)
+    run_command "${compiler}" -target arm64-apple-macosx15.0 -sdk "${sdk}" \
+        -O -whole-module-optimization -DGIFTUI_STATIC_PROFILE \
+        -DGIFTUI_STATIC_PROFILE_IMPLEMENTATION -language-mode 6 \
+        -package-name giftui -parse-as-library \
+        -I "${output_root}/swiftpm/arm64-apple-macosx/debug/Modules" \
+        -emit-ir -module-name GiftUIRuntimeStaticAllocationProbe \
+        "${implementation_sources[@]}" "${PROBE}" -o "${allocation_ir}"
+    run_command "${compiler}" -target arm64-apple-macosx15.0 -sdk "${sdk}" \
+        -O -whole-module-optimization -DGIFTUI_STATIC_PROFILE \
+        -DGIFTUI_STATIC_PROFILE_IMPLEMENTATION -language-mode 6 \
+        -package-name giftui -parse-as-library \
+        -I "${output_root}/swiftpm/arm64-apple-macosx/debug/Modules" \
+        -emit-sil -module-name GiftUIRuntimeStaticAllocationProbe \
+        "${implementation_sources[@]}" "${PROBE}" -o "${allocation_sil}"
+    check_static_allocation_path "${allocation_ir}" "${allocation_sil}"
     printf 'profile\tmacos-static\nartifact\t%s\n' \
         "${output_root}/swiftpm/arm64-apple-macosx/debug/GiftUIPackageTests.xctest" \
         >"${output_root}/result.tsv"
@@ -144,6 +194,16 @@ probe_ir="${output_root}/static-profile-layouts.ll"
 run_command "${compiler}" "${flags[@]}" -I "${module_dir}" -emit-ir \
     -module-name GiftUIRuntimeStaticProbeIR "${PROBE}" -o "${probe_ir}"
 record_layouts "${probe_ir}"
+allocation_ir="${output_root}/static-binding-allocation.ll"
+allocation_sil="${output_root}/static-binding-allocation.sil"
+implementation_sources=("${PROJECT_ROOT}"/Sources/GiftUIRuntimeStatic/*.swift)
+run_command "${compiler}" "${flags[@]}" -DGIFTUI_STATIC_PROFILE_IMPLEMENTATION \
+    -I "${module_dir}" -emit-ir -module-name GiftUIRuntimeStaticAllocationProbe \
+    "${implementation_sources[@]}" "${PROBE}" -o "${allocation_ir}"
+run_command "${compiler}" "${flags[@]}" -DGIFTUI_STATIC_PROFILE_IMPLEMENTATION \
+    -I "${module_dir}" -emit-sil -module-name GiftUIRuntimeStaticAllocationProbe \
+    "${implementation_sources[@]}" "${PROBE}" -o "${allocation_sil}"
+check_static_allocation_path "${allocation_ir}" "${allocation_sil}"
 
 object_list="$(IFS=';'; printf '%s' "${objects[*]}")"
 application="${PROJECT_ROOT}/firmware/nrf52840/applications/spec013-static-profile-probe"
@@ -170,6 +230,8 @@ nm="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm"
 run_command "${nm}" "${elf}" >"${output_root}/symbols.txt"
 grep -Fq 'giftui_spec013_static_profile_probe' "${output_root}/symbols.txt" ||
     fail 'linked image lacks Static profile probe entry'
+grep -Eq 'giftui_spec013_static_binding_probe|spec013c7BindingD0' "${output_root}/symbols.txt" ||
+    fail 'linked image lacks zero-allocation Static binding path'
 printf 'profile\tnrf52840-embedded\ntarget\t%s\nboard\t%s\nartifact\t%s\n' \
     "${GIFTUI_NRF_SWIFT_TARGET}" "${GIFTUI_NRF_BOARD}" "${elf}" \
     >"${output_root}/result.tsv"

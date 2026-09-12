@@ -26,9 +26,10 @@ Both optimized targets report the same exact value sizes:
 
 The linked nRF ELF retains `giftui_spec013_static_profile_probe` and reports
 ARMv7E-M, VFPv4-D16, and VFP-register arguments. The link fixture supplies the
-same `posix_memalign` compatibility bridge used by earlier nRF evidence; this
-task makes no zero-allocation or forbidden-symbol claim, which remains assigned
-to T4.5 and T7.2-T7.3.
+same `posix_memalign` compatibility bridge used by earlier nRF evidence. T4.5's
+later path-scoped SIL and call-symbol inspection distinguishes that platform
+support from the specialized Runtime Static binding path and proves the latter
+does not reference it.
 
 Verification commands:
 
