@@ -21,13 +21,17 @@ events = TRANSCRIPT.each_line.each_with_object([]) do |line, result|
   result << fields
 end
 base_events = events.select do |event|
-  %w[modifier-custom action-modified layout-container-chain].include?(event[0])
+  %w[modifier-custom action-modified layout-container-chain action-container-chain].include?(event[0])
 end
 fail_check("complexity base lacks instrumented events") if base_events.empty?
 
 container_events = events.select { |event| event[0] == "layout-container-chain" }
 fail_check("complexity base lacks primitive container events") unless
   container_events.count { |event| event[3] == "stage-semantic-occurrence" } == 4
+
+action_container_events = events.select { |event| event[0] == "action-container-chain" }
+fail_check("complexity base lacks action container events") unless
+  action_container_events.count { |event| event[3] == "associate-action" } == 2
 
 base = {
   "visitor_dispatches" => base_events.length,

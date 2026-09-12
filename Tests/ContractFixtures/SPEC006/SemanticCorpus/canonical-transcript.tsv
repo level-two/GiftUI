@@ -157,3 +157,16 @@ layout-container-chain	12	root/declaration-role(layout-modifier)/declaration-rol
 layout-container-chain	13	root/declaration-role(layout-modifier)/declaration-role(layout-modifier)/declaration-role(layout-modifier)	apply-modifier	layout-modifier	1
 layout-container-chain	14	root/declaration-role(layout-modifier)/declaration-role(layout-modifier)	apply-modifier	layout-modifier	2
 layout-container-chain	15	root/declaration-role(layout-modifier)	apply-modifier	layout-modifier	3
+action-container-chain	0	root/declaration-role(action-container-primary)	enter-structural-occurrence	action-container-primary	-
+action-container-chain	1	root/declaration-role(action-container-primary)	stage-semantic-occurrence	action-container-primary	-
+action-container-chain	2	root/declaration-role(action-container-primary)	associate-action	action-container-primary	-
+action-container-chain	3	root/declaration-role(action-container-primary)/fixed-child(0)/declaration-role(tuple2)	enter-structural-occurrence	tuple2	-
+action-container-chain	4	root/declaration-role(action-container-primary)/fixed-child(0)/declaration-role(tuple2)/fixed-child(0)/declaration-role(action-container-secondary)	enter-structural-occurrence	action-container-secondary	-
+action-container-chain	5	root/declaration-role(action-container-primary)/fixed-child(0)/declaration-role(tuple2)/fixed-child(0)/declaration-role(action-container-secondary)	stage-semantic-occurrence	action-container-secondary	-
+action-container-chain	6	root/declaration-role(action-container-primary)/fixed-child(0)/declaration-role(tuple2)/fixed-child(0)/declaration-role(action-container-secondary)	associate-action	action-container-secondary	-
+action-container-chain	7	root/declaration-role(action-container-primary)/fixed-child(0)/declaration-role(tuple2)/fixed-child(0)/declaration-role(action-container-secondary)/fixed-child(0)/declaration-role(label)	enter-structural-occurrence	label	-
+action-container-chain	8	root/declaration-role(action-container-primary)/fixed-child(0)/declaration-role(tuple2)/fixed-child(0)/declaration-role(action-container-secondary)/fixed-child(0)/declaration-role(label)	stage-semantic-occurrence	label	-
+action-container-chain	9	root/declaration-role(action-container-primary)/fixed-child(0)/declaration-role(tuple2)/fixed-child(1)/declaration-role(inset)	enter-structural-occurrence	inset	-
+action-container-chain	10	root/declaration-role(action-container-primary)/fixed-child(0)/declaration-role(tuple2)/fixed-child(1)/declaration-role(inset)/declaration-role(label)	enter-structural-occurrence	label	-
+action-container-chain	11	root/declaration-role(action-container-primary)/fixed-child(0)/declaration-role(tuple2)/fixed-child(1)/declaration-role(inset)/declaration-role(label)	stage-semantic-occurrence	label	-
+action-container-chain	12	root/declaration-role(action-container-primary)/fixed-child(0)/declaration-role(tuple2)/fixed-child(1)/declaration-role(inset)	apply-modifier	inset	0

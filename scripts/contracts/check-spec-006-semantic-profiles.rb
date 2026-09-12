@@ -50,7 +50,7 @@ end
 required_categories = %w[
   declaration transcript identity summary bounds failure-order
   framework-failure owner-mapping state-host state-host-failure
-  primitive-container
+  primitive-container action-container
 ]
 fail_check("profile corpus categories differ") unless profile.map(&:first) == required_categories
 profile.each do |_category, artifact, _relation|
@@ -85,6 +85,22 @@ fail_check("primitive container transcript does not stage before content") unles
   ]
 fail_check("primitive container modifier indices differ") unless
   container_events.last(4).map { |event| event[5] } == %w[0 1 2 3]
+
+action_container_events = events.select { |event| event.first == "action-container-chain" }
+action_container_kinds = action_container_events.map { |event| event[3] }
+fail_check("action container transcript does not stage actions before content") unless
+  action_container_kinds == [
+    "enter-structural-occurrence", "stage-semantic-occurrence", "associate-action",
+    "enter-structural-occurrence", "enter-structural-occurrence",
+    "stage-semantic-occurrence", "associate-action", "enter-structural-occurrence",
+    "stage-semantic-occurrence", "enter-structural-occurrence",
+    "enter-structural-occurrence", "stage-semantic-occurrence", "apply-modifier",
+  ]
+fail_check("action container transcript has a second action semantic occurrence") unless
+  action_container_events.count { |event| event[3] == "stage-semantic-occurrence" } == 4 &&
+    action_container_events.count { |event| event[3] == "associate-action" } == 2
+fail_check("action container modifier index differs") unless
+  action_container_events.last[5] == "0"
 
 report = [
   "schema_version=1",

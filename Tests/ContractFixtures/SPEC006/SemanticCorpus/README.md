@@ -85,6 +85,11 @@ before content enters `fixed-child(0)`, preserves nested container source
 order, and applies enclosing modifiers only after the contained primitive
 chain. It is amendment evidence, not a layout interpretation.
 
+T9.3 adds `action-container-chain`. It records each action occurrence at its
+action-container declaration identity before stored content enters
+`fixed-child(0)`, retains ordinary nested wrapper/modifier traversal, and emits
+no second semantic occurrence or body evaluation for either action container.
+
 ## Structural-identity relations
 
 `identity-relations.tsv` has eight fields: a unique relation ID, the left

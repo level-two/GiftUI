@@ -8,5 +8,5 @@ _GiftUIObservationAttachment	SPEC-010	attachment identity
 _GiftUISemanticActionPayload	SPEC-006	action payload category
 _GiftUISemanticModifierPayload	SPEC-006	modifier payload category
 _GiftUISemanticPrimitivePayload	SPEC-006	primitive payload category
-_GiftUISemanticTraversalVisitor	SPEC-006	sealed leaf and primitive-with-content traversal visitor
+_GiftUISemanticTraversalVisitor	SPEC-006	sealed leaf, content, action-leaf, and action-content traversal visitor
 _giftUITraverse	SPEC-006	declaration traversal witness

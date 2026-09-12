@@ -17,7 +17,7 @@ required_areas = %w[
   limits-summary recording-seam modifier-seam expansion-order structural-identity
   action-identity modifier-order atomicity lifecycle capabilities backends errors
   performance compatibility declaration-tests semantic-tests bounds-tests profile-tests
-  primitive-container migration
+  primitive-container action-container migration
 ]
 rows = AUDIT.readlines(chomp: true).each_with_object([]) do |line, result|
   next if line.empty? || line.start_with?("#")
@@ -47,4 +47,4 @@ fail_check("migration ledger contains an unresolved disposition") unless
     %w[remove replace-through-the-sealed-surface already-absent].include?(line.split("\t")[3])
   end
 
-puts "SPEC-006 normative audit passed: 25 API, behavior, lifecycle, error, performance, compatibility, testing, non-goal, and migration areas have stable evidence and checks."
+puts "SPEC-006 normative audit passed: 26 API, behavior, lifecycle, error, performance, compatibility, testing, non-goal, and migration areas have stable evidence and checks."

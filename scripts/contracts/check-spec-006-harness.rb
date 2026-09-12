@@ -141,7 +141,7 @@ expected_evidence = %w[
   compiler-identity target-pin optimization command-transcript repository-revision
   portable-module public-interface ordered-corpus normalized-results allocation-record owned-value-layouts
   summary-counters maximum-observed-depth underscored-reference-inventory nrf-elf-inspection
-  complexity-instrumentation primitive-container
+  complexity-instrumentation primitive-container action-container
 ]
 fail_check("required evidence set differs") unless required.keys.sort == expected_evidence.sort
 missing = required.value?("missing")

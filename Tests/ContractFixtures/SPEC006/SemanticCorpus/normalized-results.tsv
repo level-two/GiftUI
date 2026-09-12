@@ -28,3 +28,4 @@ action-siblings	success	2	0	0	2	4	7	action-sibling-distinctness	host
 action-modified	success	1	0	1	1	3	5	action-modifier-order	host
 action-lifetime	success	1	0	0	1	2	3	action-lifetime-containment	host
 layout-container-chain	success	4	0	4	0	12	16	primitive-container-identities	host
+action-container-chain	success	4	0	1	2	8	13	action-container-identities	host

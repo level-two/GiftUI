@@ -28,6 +28,7 @@ required_fragments = [
   "content: borrowing Content,",
   "payload: borrowing Payload",
   "mutating func visitActionPrimitive<Payload: _GiftUISemanticActionPayload>(",
+  "Payload: _GiftUISemanticActionPayload",
   "Payload: _GiftUISemanticModifierPayload"
 ]
 
@@ -37,6 +38,10 @@ end
 
 if source.scan(/mutating func visitPrimitive</).length != 2
   failures << "expected exactly leaf and primitive-with-content visitor requirements"
+end
+
+if source.scan(/mutating func visitActionPrimitive</).length != 2
+  failures << "expected exactly leaf and action-primitive-with-content visitor requirements"
 end
 
 if source.match?(/extension _GiftUISemanticTraversalVisitor/)

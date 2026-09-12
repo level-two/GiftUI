@@ -227,6 +227,7 @@ record_required_evidence() {
         printf 'nrf-elf-inspection\t%s\n' "${nrf_status}"
         printf 'complexity-instrumentation\tcomplete\n'
         printf 'primitive-container\tcomplete\n'
+        printf 'action-container\tcomplete\n'
     } >"${evidence_path}"
 }
 

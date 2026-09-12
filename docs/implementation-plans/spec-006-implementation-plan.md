@@ -530,7 +530,7 @@ is ready for renewed review without claiming the `implemented` transition.
       covering canonical identity/order, exact action association, depth and
       count accounting, first-failure precedence, atomic discard, workspace
       reuse, no second semantic occurrence, and zero body evaluation.
-- [ ] `T9.3` — Extend the canonical SPEC-006 corpus, normalized results,
+- [x] `T9.3` — Extend the canonical SPEC-006 corpus, normalized results,
       acceptance/evidence registry, underscored-reference allow-list,
       allocation and complexity probes, and all four contract-driver profiles.
       Prove equal dynamic/static meaning, zero static-path heap allocation,
@@ -1029,3 +1029,11 @@ optional, and modified content; exact action order and identity; bounded depth
 and counters; action-stage, child-stage, and child-capacity failures; atomic
 discard; clean workspace/sink reuse; one action occurrence without a second
 semantic occurrence; and zero primitive-body evaluations. `T9.3` is next.
+
+`T9.3` is complete: the checked-in compile fixture now covers leaf and
+zero/one/five-child action containers, while the canonical
+`action-container-chain` case records two exact action associations before
+their content, fixed-child identity, ordinary modifier order, bounded counts,
+and zero body evaluations. The profile, traversal, complexity, normative,
+harness, allocation, dependency, ARMv6, and nRF evidence paths now require the
+new operation and report it as a distinct required item. `T9.4` is next.
