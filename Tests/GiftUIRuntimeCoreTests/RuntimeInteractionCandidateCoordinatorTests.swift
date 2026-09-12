@@ -34,9 +34,14 @@ private struct CandidateOccurrenceView: RuntimeInteractionOccurrenceView {
 
 private struct CandidateGenerationSource: RuntimeActionGenerationSource {
     var values: [UInt16: ActionGeneration]
+    private(set) var resolutions: [Bool] = []
 
     mutating func generation(for identity: UInt16) -> ActionGeneration? {
         values[identity]
+    }
+
+    mutating func resolveCandidate(committed: Bool) {
+        resolutions.append(committed)
     }
 }
 

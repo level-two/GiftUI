@@ -190,3 +190,5 @@ SPEC-013 and SPEC-015 respectively.
 
 - [Candidate coordinator](../../Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateCoordinator.swift)
 - [T5.1 target-binding evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-1-target-binding.md)
+- [Generation/offer transaction](../../Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateTransaction.swift)
+- [T5.2 generation/offer evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-2-generation-offer.md)

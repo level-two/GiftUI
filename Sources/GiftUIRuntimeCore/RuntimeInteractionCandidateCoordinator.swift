@@ -42,6 +42,7 @@ package protocol RuntimeActionGenerationSource {
     associatedtype Identity: Equatable & Sendable
 
     mutating func generation(for identity: Identity) -> ActionGeneration?
+    mutating func resolveCandidate(committed: Bool)
 }
 
 package enum RuntimeInteractionCandidateBuildResult: Equatable, Sendable {
@@ -104,6 +105,7 @@ package enum RuntimeInteractionCandidateCoordinator {
             case .requiresGeneration:
                 guard let generation = generations.generation(for: occurrence.identity) else {
                     discardCandidates(interaction: &interaction, observable: &observable)
+                    generations.resolveCandidate(committed: false)
                     return .executionFailure(.identityExhausted)
                 }
                 if let error = interaction.assignGeneration(
@@ -111,10 +113,12 @@ package enum RuntimeInteractionCandidateCoordinator {
                     to: occurrence.identity
                 ) {
                     discardCandidates(interaction: &interaction, observable: &observable)
+                    generations.resolveCandidate(committed: false)
                     return .ownerFailure(.interaction(error))
                 }
             case .failure(let error):
                 discardCandidates(interaction: &interaction, observable: &observable)
+                generations.resolveCandidate(committed: false)
                 return .ownerFailure(.interaction(error))
             }
             index += 1
@@ -122,6 +126,7 @@ package enum RuntimeInteractionCandidateCoordinator {
 
         if let error = interaction.finishCandidate() {
             discardCandidates(interaction: &interaction, observable: &observable)
+            generations.resolveCandidate(committed: false)
             return .ownerFailure(.interaction(error))
         }
         return .ready

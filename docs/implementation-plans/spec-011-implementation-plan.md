@@ -400,7 +400,7 @@ current model.
       before finish. Missing generation fails as `missingModelTarget` and
       discards Interaction and Observable State candidates exactly once. Never
       substitute a prior live generation for first materialization or replacement.
-- [ ] `T5.2` — Integrate action-generation reservation and candidate resolution
+- [x] `T5.2` — Integrate action-generation reservation and candidate resolution
       with SPEC-009 derivation and one-shot frame offer. Reserve only for
       `.requiresGeneration`, retire failed reservations according to SPEC-009,
       commit only on accepted handoff under its reserved revision, and discard
@@ -715,3 +715,11 @@ Missing target generation and every later build failure discard both begun
 candidates exactly once. Focused tests distinguish candidate-only and changed
 publishable generations from any former live value; see the
 [target-binding evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-1-target-binding.md).
+
+`T5.2` is complete: the runtime transaction reserves from SPEC-009's one
+monotonic action-generation namespace only for replacements, commits
+Interaction only for an accepted offer under its reserved presentation
+revision, and discards every refusal or failure. Candidate-only generations
+remain consumed and are recorded as retired; exhaustion discards both
+candidates and cancels all captures. See the
+[generation/offer evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-2-generation-offer.md).
