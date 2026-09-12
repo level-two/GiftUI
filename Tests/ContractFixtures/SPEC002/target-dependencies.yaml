@@ -224,6 +224,74 @@ targets:
       - GiftUIExecution
       - GiftUIObservableState
       - GiftUISemanticCore
+  GiftUIRuntimeCore:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUIDrawing
+      - GiftUIExecution
+      - GiftUIInteraction
+      - GiftUILayout
+      - GiftUIObservableState
+      - GiftUIRenderCore
+      - GiftUIRenderLowering
+      - GiftUISemanticCore
+      - GiftUITextResources
+  GiftUIRuntimeDynamic:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUIDrawing
+      - GiftUIExecution
+      - GiftUIInteraction
+      - GiftUILayout
+      - GiftUIObservableState
+      - GiftUIRenderCore
+      - GiftUIRenderLowering
+      - GiftUIRuntimeCore
+      - GiftUISemanticCore
+  GiftUIRuntimeStatic:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUIDrawing
+      - GiftUIExecution
+      - GiftUIInteraction
+      - GiftUILayout
+      - GiftUIObservableState
+      - GiftUIRenderCore
+      - GiftUIRenderLowering
+      - GiftUIRuntimeCore
+      - GiftUISemanticCore
+  GiftUIRuntimeFailureAdapterFixture:
+    type: regular
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUIFailureExecution
+      - GiftUIRuntimeCore
+  GiftUIRuntimeCoreTests:
+    type: test
+    dependencies:
+      - GiftUIRuntimeCore
+  GiftUIRuntimeDynamicTests:
+    type: test
+    dependencies:
+      - GiftUIRuntimeDynamic
+  GiftUIRuntimeStaticTests:
+    type: test
+    dependencies:
+      - GiftUIRuntimeStatic
+  GiftUIRuntimeConformanceTests:
+    type: test
+    dependencies:
+      - GiftUIRuntimeCore
+      - GiftUIRuntimeDynamic
+      - GiftUIRuntimeStatic
+  GiftUIRuntimeFailureAdapterTests:
+    type: test
+    dependencies:
+      - GiftUIRuntimeCore
+      - GiftUIRuntimeFailureAdapterFixture
   GiftUIReferenceTextResources:
     type: regular
     dependencies:

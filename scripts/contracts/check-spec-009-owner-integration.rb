@@ -25,13 +25,18 @@ tests = ROOT.join("Tests/GiftUIObservableStateTests/PresentationFactAdmissionTes
   fail_check("SPEC-010 integration tests lack #{name}") unless tests.include?(name)
 end
 
-missing_targets = %w[GiftUIInteraction GiftUIRuntimeDynamic GiftUIRuntimeStatic GiftUIBackend]
-missing_targets.each do |target|
+present_targets = %w[GiftUIInteraction GiftUIRuntimeCore GiftUIRuntimeDynamic GiftUIRuntimeStatic]
+present_targets.each do |target|
+  fail_check("#{target} integration target is missing") unless PACKAGE.include?(%{name: "#{target}"})
+end
+
+%w[GiftUIBackend].each do |target|
   fail_check("#{target} unexpectedly exists; integration status must be revisited") if PACKAGE.include?(%{name: "#{target}"})
 end
 
 rows = STATUS.each_line.reject { |line| line.start_with?("#") || line.strip.empty? }.map { |line| line.chomp.split("\t", -1) }
 fail_check("owner-status registry shape differs") unless rows.length == 4 && rows.all? { |row| row.length == 4 }
-fail_check("SPEC-010 must be the only integrated owner") unless rows.map { |row| row[2] } == %w[integrated blocked blocked blocked]
+expected_statuses = %w[integrated integrated boundary-ready blocked]
+fail_check("owner integration statuses differ") unless rows.map { |row| row[2] } == expected_statuses
 
-puts "SPEC-009 owner integration passed: SPEC-010 admission is exact; SPEC-011, SPEC-013, and SPEC-014 remain explicitly blocked with no substitute target."
+puts "SPEC-009 owner integration passed: SPEC-010 and SPEC-011 owners are integrated; SPEC-013 boundary targets are present without behavior; SPEC-014 remains blocked."

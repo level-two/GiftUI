@@ -198,7 +198,7 @@ before profile behavior is claimed.
       manifest, README, artificial-limit schema, canonical tagged transcript,
       acceptance/evidence registry, and report schema. Distinguish host run,
       cross-build/inspection, simulator, and connected-hardware evidence.
-- [ ] `T0.2` — Record the exact permitted imports for `GiftUIRuntimeCore`,
+- [x] `T0.2` — Record the exact permitted imports for `GiftUIRuntimeCore`,
       `GiftUIRuntimeDynamic`, `GiftUIRuntimeStatic`, and the sibling failure
       adapter. Update the existing SPEC-002 through SPEC-010 and SPEC-012
       exact-set registries and stale negative fixtures atomically with the
@@ -607,6 +607,13 @@ migration guard into `scripts/test.sh`. The driver records a blocked report
 and exits nonzero for missing toolchains, fixtures, targets, commands, corpus,
 or implementation evidence; it performs no remote access, deployment,
 service restart, simulator execution, or flashing.
+
+T0.2 added the four compiler-visible runtime boundary targets and five focused
+test targets without profile behavior. The global exact target registry,
+SPEC-003 failure-adapter registry, and SPEC-009 owner-integration registry now
+match the compiling graph. `module-boundaries.tsv` and its checker enforce the
+exact direct imports and reject reverse GiftUI, dynamic/static sibling,
+failure-owner, backend, platform, driver, and host edges.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

@@ -117,6 +117,59 @@ let package = Package(
             dependencies: ["GiftUIFailureCore", "GiftUIObservableState"]
         ),
         .target(
+            name: "GiftUIRuntimeCore",
+            dependencies: [
+                "GiftUI",
+                "GiftUIDrawing",
+                "GiftUIExecution",
+                "GiftUIInteraction",
+                "GiftUILayout",
+                "GiftUIObservableState",
+                "GiftUIRenderCore",
+                "GiftUIRenderLowering",
+                "GiftUISemanticCore",
+                "GiftUITextResources",
+            ]
+        ),
+        .target(
+            name: "GiftUIRuntimeDynamic",
+            dependencies: [
+                "GiftUI",
+                "GiftUIDrawing",
+                "GiftUIExecution",
+                "GiftUIInteraction",
+                "GiftUILayout",
+                "GiftUIObservableState",
+                "GiftUIRenderCore",
+                "GiftUIRenderLowering",
+                "GiftUIRuntimeCore",
+                "GiftUISemanticCore",
+            ]
+        ),
+        .target(
+            name: "GiftUIRuntimeStatic",
+            dependencies: [
+                "GiftUI",
+                "GiftUIDrawing",
+                "GiftUIExecution",
+                "GiftUIInteraction",
+                "GiftUILayout",
+                "GiftUIObservableState",
+                "GiftUIRenderCore",
+                "GiftUIRenderLowering",
+                "GiftUIRuntimeCore",
+                "GiftUISemanticCore",
+            ]
+        ),
+        .target(
+            name: "GiftUIRuntimeFailureAdapterFixture",
+            dependencies: [
+                "GiftUIFailureCore",
+                "GiftUIFailureExecution",
+                "GiftUIRuntimeCore",
+            ]
+        ),
+        .target(
             name: "GiftUIReferenceTextResources",
             dependencies: ["GiftUI", "GiftUITextResources"],
             exclude: ["Generated/generation-manifest.json"]
@@ -265,6 +318,33 @@ let package = Package(
                 "GiftUIFailureDiagnostics",
                 "GiftUIObservableState",
                 "GiftUIObservableStateFailureAdapterFixture",
+            ]
+        ),
+        .testTarget(
+            name: "GiftUIRuntimeCoreTests",
+            dependencies: ["GiftUIRuntimeCore"]
+        ),
+        .testTarget(
+            name: "GiftUIRuntimeDynamicTests",
+            dependencies: ["GiftUIRuntimeDynamic"]
+        ),
+        .testTarget(
+            name: "GiftUIRuntimeStaticTests",
+            dependencies: ["GiftUIRuntimeStatic"]
+        ),
+        .testTarget(
+            name: "GiftUIRuntimeConformanceTests",
+            dependencies: [
+                "GiftUIRuntimeCore",
+                "GiftUIRuntimeDynamic",
+                "GiftUIRuntimeStatic",
+            ]
+        ),
+        .testTarget(
+            name: "GiftUIRuntimeFailureAdapterTests",
+            dependencies: [
+                "GiftUIRuntimeCore",
+                "GiftUIRuntimeFailureAdapterFixture",
             ]
         ),
         .testTarget(
