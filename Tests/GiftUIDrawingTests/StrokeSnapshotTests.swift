@@ -123,13 +123,13 @@ func malformedLivePathFailsBeforePlanMutation() {
     #expect(plan.records.isEmpty)
 }
 
-private struct FixtureSnapshotRecord: Equatable {
+struct FixtureSnapshotRecord: Equatable {
     let header: StraightLineStrokeHeader
     let points: [Point]
     let subpaths: [SubpathRange]
 }
 
-private struct FixtureSnapshotPlanStorage: DrawingPlanMutationStorage {
+struct FixtureSnapshotPlanStorage: DrawingPlanMutationStorage {
     let limits: DrawingLimits
     private(set) var records: [FixtureSnapshotRecord] = []
 

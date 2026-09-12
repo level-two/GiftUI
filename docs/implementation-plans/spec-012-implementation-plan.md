@@ -301,7 +301,7 @@ cleanup, and first-failure semantics.
       borrowed stroke-view lifetimes. Add poisoned-storage and address-capture
       tests covering normal, throwing, failed, accepted, refused, discarded, and
       reset exits without retaining a borrow or eligible callable.
-- [ ] `T3.6` — Fault every local state and reservation edge in normative order,
+- [x] `T3.6` — Fault every local state and reservation edge in normative order,
       prove no partial mutation/snapshot/plan exposure, and instrument linear
       construction/snapshot work plus separate live-Path and plan high-water.
 
@@ -840,6 +840,19 @@ retain only copied derived values. The
 [lifetime evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-3/drawing-lifetimes.md)
 records the poison and ownership checks. T3.6 is the next dependency-complete
 task.
+
+`T3.6` is complete. The combined T3 fault corpus now covers inactive and
+reentrant scope, missing current point, malformed current ranges, all four
+post-validation storage refusals, live arithmetic and independent-capacity
+edges, invalid/over-limit style, malformed snapshot input, inconsistent
+normalized state, checked plan arithmetic, each whole-plan capacity, and final
+append refusal. Every failure preserves the former logical storage and the
+precedence probe confirms invalid width prevents later Path or plan access.
+Instrumented 1/2/4/8-point snapshots perform exactly two point lookups per
+point and two subpath lookups for the one admitted subpath, while reporting
+live and immutable-plan high-water separately. The
+[fault/work evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-3/drawing-faults-and-work.md)
+records the matrix. Milestone 3 is complete; T4.1 is next.
 
 `T1.4` is complete. Seven maintained positive fixtures compile Canvas/style
 defaults, both stroke overloads, explicit typed trailing closures,
