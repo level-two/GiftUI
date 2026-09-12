@@ -48,6 +48,7 @@ func surfaceDescriptorPreservesExactFullSurfaceAndTiledFields() {
     )
 
     #expect(full?.bounds == bounds(width: 4, height: 3))
+    #expect(full?.capabilityExtent == CapabilityExtent(width: 4, height: 3))
     #expect(full?.encoding == .rgba8888)
     #expect(full?.bytesPerRow == 20)
     #expect(full?.realization == .fullSurface)

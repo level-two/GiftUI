@@ -40,6 +40,13 @@ package struct RasterSurfaceDescriptor: Equatable, Sendable {
     package let regionWidth: UInt16
     package let regionHeight: UInt16
 
+    package var capabilityExtent: CapabilityExtent {
+        CapabilityExtent(
+            width: UInt16(bounds.size.width),
+            height: UInt16(bounds.size.height)
+        )!
+    }
+
     package init?(
         bounds: Rect,
         encoding: CanonicalPixelEncoding,

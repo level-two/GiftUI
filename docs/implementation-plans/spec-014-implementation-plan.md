@@ -272,7 +272,7 @@ insufficient bound fails in exact order before an offer or target probe.
       constructors. Report only locally owned facts; prohibit resolver calls,
       end-to-end Booleans, concrete target probing, health-derived facts, and
       target identity. Test every positive and negative contribution field.
-- [ ] `T2.2` — Implement integration construction checks in the normative
+- [x] `T2.2` — Implement integration construction checks in the normative
       detection order: descriptor construction, exact effective-value equality,
       resource compatibility, operation coverage, raster/payload/in-flight
       stores, glyph/stroke workspace, and per-frame ceilings. Exercise one-field
@@ -727,6 +727,17 @@ zero byte ceilings, alternate-kind uniqueness, and attempts to bypass the
 adapter with weaker public SPEC-004 values. An executable boundary audit
 rejects resolver calls, component probing, health-derived facts, target
 identity, and end-to-end Boolean results.
+
+`T2.2` added a stateless integration startup validator that consumes the
+immutable SPEC-004 effective value and scalar owner facts without creating a
+second configuration model. It enforces descriptor construction, every exact
+effective field, resource validity, five-operation coverage, exact surface
+storage, raster/payload/in-flight capacities, glyph/stroke workspaces, and
+per-frame ceilings in normative order. One-field tests cover all thirteen
+effective fields plus each local store and prove equality admission, first-
+stage precedence, no clamping, and no mutation of the selected value. The
+registered source audit rejects resolver use, target/writer/reservation calls,
+health inputs, capability mutation, and clamping.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

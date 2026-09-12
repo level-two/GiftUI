@@ -69,6 +69,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-014-migration.rb" \
             "${SCRIPT_DIR}/check-spec-014-module-contract.rb" \
             "${SCRIPT_DIR}/check-spec-014-storage.rb" \
+            "${SCRIPT_DIR}/check-spec-014-startup-validator.rb" \
             "${SCRIPT_DIR}/check-spec-014-value-layouts.rb" \
             "${SCRIPT_DIR}/check-spec-014-value-profiles.sh" \
             "${SCRIPT_DIR}/check-target-dependencies.rb" \
@@ -230,6 +231,8 @@ record_toolchain() {
 run_required fixture-schema "${SCRIPT_DIR}/check-spec-014-fixtures.rb"
 run_required migration-inventory "${SCRIPT_DIR}/check-spec-014-migration.rb"
 run_required contributor-boundaries "${SCRIPT_DIR}/check-spec-014-contributors.rb"
+run_required startup-validation-boundaries \
+    "${SCRIPT_DIR}/check-spec-014-startup-validator.rb"
 run_required driver-registry "${SCRIPT_DIR}/check-driver-registry.rb"
 run_package_checks
 record_toolchain
