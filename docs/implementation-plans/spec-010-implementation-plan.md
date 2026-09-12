@@ -166,7 +166,7 @@ fixture schema, and migration surface is explicit before declarations land.
       normalized result schema, required-evidence registry, and README that
       separates host execution, cross-build, simulator, and connected-target
       evidence. Map every `OS-001` through `OS-012` row fail-closed.
-- [ ] `T0.2` — Reserve and audit the approved target/dependency rows for the
+- [x] `T0.2` — Reserve and audit the approved target/dependency rows for the
       host-only `GiftUIMacros`, `GiftUIObservableState`, its tests, and narrowly
       named owner-adapter fixtures. Add `GiftUIMacros` to the exact package
       graph only with its first buildable plugin implementation in `T1.2`; add
@@ -678,6 +678,15 @@ prohibited imports. See the
 [owner value evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-2/owner-values.md).
 The owner-target slice of T0.2 is complete; narrowly named adapters still wait
 for their first compiling sources. T2.2 is next.
+
+`T0.2` is complete: the host-only macro, Observable State owner, focused
+tests, and narrow failure adapter all have their exact target rows alongside
+compiling sources. The boundary check permits only the `GiftUI` build-time and
+focused macro-test consumers, proves the owner imports exactly `GiftUI`,
+`GiftUISemanticCore`, and `GiftUIExecution`, and verifies the adapter remains
+downstream of Observable State and Failure Core. The four-profile generated-
+host symbol closures contain no macro or compiler-support linkage. See the
+[target dependency audit](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-0/target-dependency-audit.md).
 
 `T2.2` is complete: the exact reconciler, mutation-owner, and borrowed
 target-view protocols preserve typed structural identities, declaration

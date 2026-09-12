@@ -50,6 +50,27 @@ fail_check("macro compiler-support edges differ") unless
   macro_graph.fetch("external_dependencies") == expected_external
 fail_check("GiftUI does not name its host macro build edge") unless
   graph.fetch("GiftUI").fetch("dependencies") == ["GiftUIMacros"]
+macro_consumers = graph.each_with_object([]) do |(name, declaration), consumers|
+  consumers << name if declaration.fetch("dependencies").include?("GiftUIMacros")
+end.sort
+fail_check("macro consumers differ") unless macro_consumers == %w[GiftUI GiftUIMacrosTests]
+
+owner_graph = graph.fetch("GiftUIObservableState")
+fail_check("observable owner type differs") unless owner_graph.fetch("type") == "regular"
+fail_check("observable owner dependencies differ") unless
+  owner_graph.fetch("dependencies") == %w[GiftUI GiftUIExecution GiftUISemanticCore]
+fail_check("observable tests dependencies differ") unless
+  graph.fetch("GiftUIObservableStateTests").fetch("dependencies") ==
+    %w[GiftUI GiftUIExecution GiftUIObservableState GiftUISemanticCore]
+fail_check("observable failure adapter dependencies differ") unless
+  graph.fetch("GiftUIObservableStateFailureAdapterFixture").fetch("dependencies") ==
+    %w[GiftUIFailureCore GiftUIObservableState]
+
+owner_sources = Dir.glob(File.join(ROOT, "Sources/GiftUIObservableState/*.swift")).sort
+fail_check("observable owner source is missing") if owner_sources.empty?
+owner_imports = owner_sources.flat_map { |path| File.read(path).scan(/^import (\w+)/).flatten }.uniq.sort
+fail_check("observable owner imports differ: #{owner_imports.inspect}") unless
+  owner_imports == %w[GiftUI GiftUIExecution GiftUISemanticCore]
 
 required_declaration_fragments = [
   "@attached(\n    member,\n    names: named(_giftUIVisitObservableStateDeclarations), named(_giftUITraverse)\n)",
@@ -76,4 +97,4 @@ fail_check("macro generation differs: #{missing_generation.inspect}") unless mis
 forbidden = /import\s+(?:GiftUI|GiftUIRuntime|GiftUIInteraction|Foundation|Observation)|\b(?:Any|Mirror|TaskLocal)\b/
 fail_check("macro target contains a forbidden target/runtime mechanism") if macro_source.match?(forbidden)
 
-puts "SPEC-010 macro boundary passed: pinned host-only target, exact declaration, and bounded deterministic generation."
+puts "SPEC-010 target boundary passed: pinned host-only macro, exact observable owner graph, and bounded deterministic generation."
