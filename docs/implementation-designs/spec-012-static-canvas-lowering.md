@@ -51,8 +51,10 @@ requires fail-closed bounds before a cycle begins.
 `GiftUI` exposes the single closure-shaped Canvas source API and its narrow
 non-returning invocation bridge. `GiftUIDrawing` owns
 `StaticCanvasCallableTable` and `StaticCanvasLimits`. T6.1 adds a checked
-profile-neutral generator fixture; it does not yet emit or install a production
-static Canvas representation. SPEC-013 remains the owner of that profile seam.
+profile-neutral generator fixture. T6.2 supplies its generated capture records,
+greatest-case storage, and complete direct-dispatch table without installing a
+production static Canvas representation. SPEC-013 remains the owner of that
+profile seam.
 
 ## Proposed Internal Organization
 
@@ -65,7 +67,8 @@ The lowering step assigns dense IDs `1...N` in descriptor order. It computes
 each capture record using checked size/alignment facts, emits one callable case
 per expression, and emits occurrence records referencing the assigned ID.
 The checked manifest is the review seam between source analysis and Swift
-emission. T6.2 consumes it; it is evidence, not normative source authority.
+emission. T6.2's checked generated test source consumes it; that fixture is
+evidence, not normative source authority.
 
 ## Data and Control Flow
 
@@ -122,13 +125,15 @@ comparison and allocator/symbol evidence remain T6.3-T6.5 work.
 
 ## Test and Diagnostic Seams
 
-The T6.1 fixture has three expressions and four occurrences. Two occurrences
-reuse one callable ID while owning different capture records and values. The
-checker reconstructs the full manifest from the descriptor, verifies source
-anchors, field layouts, nonzero complete switch coverage, and exact occurrence
-ownership. Later tasks add generated Swift compilation, rejection fixtures,
-destruction probes, and resource inspection without making diagnostics control
-runtime behavior.
+The fixture has three expressions and four occurrences. Two occurrences reuse
+one callable ID while owning different capture records and values. The checker
+reconstructs the full manifest from the descriptor, verifies source anchors,
+field layouts, nonzero complete generated switch coverage, whole-storage borrow,
+and absence of a closure fallback. Host tests compile the generated conformance,
+compare its exact four-stroke transcript, verify greatest-case rather than
+summed storage, and poison captures after normal and throwing invocation. Later
+tasks add negative generation and cross-profile resource inspection without
+making diagnostics control runtime behavior.
 
 ## Rejected Implementation Alternatives
 
@@ -143,17 +148,17 @@ runtime behavior.
 
 ## Open Implementation Questions
 
-The 2026-09-12 Specification amendment replaces the rejected
-`associatedtype CaptureStorage: ~Copyable` spelling with the compiler-supported
-implicitly `Copyable` associated type while normatively prohibiting table-side
-copy or retention. T6.2 may resume against that corrected seam. The exact
-production source-analysis front end and emitted private type names otherwise
-remain replaceable SPEC-013 integration details.
+No T6.2 implementation question remains. The exact production source-analysis
+front end and emitted private type names remain replaceable SPEC-013 integration
+details. T6.3 must still prove build-time rejection and T6.5 must prove static
+profile resource behavior on both pinned compilers.
 
 ## Code and Evidence Links
 
 - [Static Canvas source descriptor](../../Tests/ContractFixtures/SPEC012/static-canvas-input.yaml)
 - [Checked static Canvas manifest](../../Tests/ContractFixtures/SPEC012/static-canvas-manifest.yaml)
 - [Static Canvas manifest checker](../../scripts/contracts/check-spec-012-static-canvas-manifest.rb)
+- [Generated callable table fixture](../../Tests/GiftUIDrawingTests/GeneratedStaticCanvasCallableTable.swift)
+- [Static callable evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-callable-table.md)
 - [T6.2 Specification blocker](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-callable-table-specification-blocker.md)
 - [SPEC-012 contract fixtures](../../Tests/ContractFixtures/SPEC012/README.md)

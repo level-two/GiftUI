@@ -71,6 +71,7 @@ owners = {
   "StrokeSnapshotProducer" => "GiftUIDrawing/StrokeSnapshot.swift",
   "DrawingLimits" => "GiftUIDrawing/DrawingLimits.swift",
   "StaticCanvasLimits" => "GiftUIDrawing/DrawingLimits.swift",
+  "StaticCanvasCallableTable" => "GiftUIDrawing/StaticCanvasCallableTable.swift",
   "DrawingProductionError" => "GiftUIDrawing/DrawingValues.swift",
   "DrawingPlanResult" => "GiftUIDrawing/DrawingValues.swift",
   "RenderExtensionVisit" => "GiftUIRenderLowering/RenderExtensions.swift",

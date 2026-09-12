@@ -394,7 +394,7 @@ produce identical drawing meaning and cleanup without static heap allocation.
       occurrence-to-expression mapping, exact captured fields, and complete
       generated switch coverage. Repeated runtime occurrences reuse the ID but
       own distinct capture records.
-- [ ] `T6.2` — Implement generated `StaticCanvasCallableTable` conformance and
+- [x] `T6.2` — Implement generated `StaticCanvasCallableTable` conformance and
       capture union dispatch with exact two-`inout`, `Size`, typed
       `throws(DrawingError)`, order, and normal/throwing destruction semantics;
       union size is the greatest case rather than the sum.
@@ -992,3 +992,18 @@ requirement would violate the approved contract. The
 [pre-begin summary blocker](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-prebegin-summary-blocker.md)
 preserves the exact proof. T5.2-T5.5 remain paused pending a Spec correction;
 independently dependency-complete T6.2 may proceed.
+
+`T6.2` is complete for the checked static fixture. `GiftUIDrawing` owns the
+exact amended `StaticCanvasCallableTable` protocol, and the manifest-generated
+fixture supplies three dense direct-dispatch cases plus 8-byte, 12-byte, and
+zero-byte capture records in one 12-byte greatest-case storage value. Dispatch
+borrows that storage, copies only scalar field values needed by the nonescaping
+Path body, preserves the exact two-`inout`/`Size`/typed-throws call shape, and
+has no retained-closure fallback. Four ordered occurrences prove distinct
+values for the repeated trace case. Normal and throwing owner paths invalidate
+their sole logical capture record exactly once, and later invocation fails.
+The
+[static callable evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-callable-table.md)
+records the source audit, layouts, dispatch transcript, and cleanup. T6.3 is
+the next dependency-complete task; production profile integration remains
+assigned to SPEC-013 and T6.5.
