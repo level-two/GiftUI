@@ -292,7 +292,7 @@ the focused production owners consumed by each task are available.
 **Exit evidence:** `GiftUIRuntimeDynamic` provides bounded heap-backed storage
 and the shared coordinator semantics without importing Static or a backend.
 
-- [ ] `T3.1` — Add `GiftUIRuntimeDynamic` and focused test targets with only
+- [x] `T3.1` — Add `GiftUIRuntimeDynamic` and focused test targets with only
       permitted dependencies. Implement one validated structural identity and
       typed construction path; no target or portable Presentation gains a
       profile-selection branch.
@@ -694,6 +694,15 @@ and prohibition of new cycle/offer/handler/diagnostic calls; evidence is in
 Milestone 2 is complete: the shared Runtime Core lifecycle, transaction,
 cleanup, focused-failure, and quiescence oracles are ready for concrete dynamic
 and static profile binding.
+
+T3.1 added a nonzero typed dynamic structural identity and a failable typed
+construction value that accepts only a successful Dynamic audit with no static
+Canvas limits. Four focused tests prove exact identity retention, audit and
+limit retention, and rejection of zero identity, failed validation, and Static
+audit input. The existing module-boundary checker continues to prove the
+Dynamic target's permitted imports, sibling isolation, and absence of any
+portable profile-selection surface. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-3/dynamic-construction.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
