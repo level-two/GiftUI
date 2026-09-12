@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-09-04
+updated: 2026-09-12
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -1259,7 +1259,7 @@ capability condition catalogue and enclosing
 manifest registration were already present.
 
 SPEC-009 provides the concrete `ExecutionContext` used by
-`GiftUICorrelatedFailure`. Review-stage SPEC-015 instantiates the total policy
+`GiftUICorrelatedFailure`. Approved SPEC-015 instantiates the total policy
 table and pacing choices for each MVP composition and permits a fatal hook only
 after mandatory quiescence. Those remain downstream obligations, not
 prerequisites for approval of this independent Wave 1 contract. Implementation

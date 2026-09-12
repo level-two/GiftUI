@@ -83,8 +83,8 @@ animation, deployment, remote service changes, or connected-board flashing.
   refusal, dirty-recovery, and finalization machinery. The production runtime
   coordinator that sequences semantic, layout, drawing, publication, and
   combined offer remains owned by SPEC-013.
-- SPEC-007, SPEC-008, and SPEC-014 are approved; SPEC-013 and SPEC-015 are in
-  coordinated review and none has started production implementation. SPEC-007
+- SPEC-007, SPEC-008, SPEC-013, SPEC-014, and SPEC-015 are approved; none of
+  SPEC-013 through SPEC-015 has started production implementation. SPEC-007
   and SPEC-008 have ready plans. SPEC-009 is implementing; SPEC-008 has its
   client declarations and part of Render Core, while its resolved-layout and
   lowering work remains open. The

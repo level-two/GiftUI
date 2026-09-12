@@ -2,11 +2,11 @@
 id: SPEC-015
 feature: giftui-mvp-architecture
 title: MVP Target-Host Configuration Contract
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-09-11
+updated: 2026-09-12
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -65,12 +65,11 @@ target_milestone: MVP
 
 # SPEC-015: MVP Target-Host Configuration Contract
 
-> **Approval status:** In review for the coordinated 2026-09-11 workload-schema
-> amendment that supplies SPEC-008 render-workspace limits through SPEC-013.
-> The previously approved host-configuration contract remains historical
-> authority, but implementation against this amended surface requires renewed
-> explicit maintainer approval. SPEC-001 remains independently approved and
-> neither Specification redefines the other's ownership.
+> **Approval status:** Explicitly reapproved by the maintainer on 2026-09-12.
+> The approved workload-schema amendment supplies SPEC-008 render-workspace
+> limits through approved SPEC-013. This amended contract is authoritative for
+> implementation. SPEC-001 remains independently approved, and neither
+> Specification redefines the other's ownership.
 
 ## Summary
 
@@ -140,11 +139,9 @@ coherent executable stack.
 
 ## Dependencies
 
-SPEC-004, SPEC-012, SPEC-013, and SPEC-014 are the direct Wave 7 prerequisites.
-SPEC-013 is in coordinated review for the render-workspace limit added here;
-the other direct prerequisites are approved. SPEC-003, SPEC-005, and SPEC-009
-through SPEC-011 supply the failure, resource, execution, observable, and
-interaction values joined here.
+SPEC-004, SPEC-012, SPEC-013, and SPEC-014 are the direct Wave 7 prerequisites
+and are approved. SPEC-003, SPEC-005, and SPEC-009 through SPEC-011 supply the
+failure, resource, execution, observable, and interaction values joined here.
 All ADRs listed in metadata are accepted. ADR-002 and ADR-013 are superseded
 and are not authority.
 
@@ -1254,11 +1251,11 @@ validation.
 
 ## Open Issues
 
-No unresolved architectural choice is introduced by this amendment. The
-schema-2 render-workspace additions remain review material until explicit
-maintainer approval of this Specification and coordinated SPEC-013. Approved
-SPEC-001 preserves this contract's fact-burst, failure normalization,
-deterministic mock trace, diagnostic, and exact host-fixture alignment.
+No unresolved architectural or contractual issue remains. The schema-2
+render-workspace additions and coordinated SPEC-013 amendment were explicitly
+reapproved on 2026-09-12. Approved SPEC-001 preserves this contract's
+fact-burst, failure normalization, deterministic mock trace, diagnostic, and
+exact host-fixture alignment.
 
 ## Deferred and Follow-up Work
 

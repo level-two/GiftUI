@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-04
-updated: 2026-09-11
+updated: 2026-09-12
 related_design_notes:
   - ../implementation-designs/spec-010-binding-and-report-routing.md
 conformance_report: null
@@ -83,10 +83,10 @@ and generated code are not implementation authority.
 - SPEC-002's exact target/dependency registry, SPEC-003's failure owner seam,
   SPEC-006's four-profile driver conventions, and repository-local ARMv6/nRF
   toolchains are reusable. Package exact-set controls must change atomically.
-- SPEC-013 and SPEC-015 are in coordinated review with draft implementation
-  plans and no production runtime/host targets. Profile realization and assembled
-  host claims remain jointly gated by their owner work and SPEC-009 rather
-  than being inferred from the completed Spikes.
+- SPEC-013 and SPEC-015 are approved with draft implementation plans and no
+  production runtime/host targets. Profile realization and assembled host
+  claims remain jointly gated by their owner work and SPEC-009 rather than
+  being inferred from the completed Spikes.
 
 ## Readiness Review
 
@@ -550,8 +550,8 @@ SPEC-015 implementation plans and their implemented owner seams.
   coordinated public underscored surface returns to SPEC-006/SPEC-010 review
   rather than adding a second traversal engine.
 - Production dynamic/static profile targets and numeric capacities belong to
-  SPEC-013 and SPEC-015. Both Specifications are in coordinated review with
-  draft plans and neither has a production owner target. Fixture-finite
+  SPEC-013 and SPEC-015. Both Specifications are approved with draft plans,
+  and neither has a production owner target. Fixture-finite
   conformance work may proceed, but production realization and host claims
   wait for those owners and their normal readiness gates.
 - Interaction target binding belongs to SPEC-011. Observable State exposes

@@ -2,11 +2,11 @@
 id: SPEC-013
 feature: giftui-mvp-architecture
 title: Dynamic and Static Runtime Profile Contract
-status: review
+status: approved
 authors:
   - codex
 created: 2026-08-27
-updated: 2026-09-11
+updated: 2026-09-12
 proposal:
   - PROPOSAL-003
   - PROPOSAL-005
@@ -67,11 +67,10 @@ target_milestone: MVP
 
 # SPEC-013: Dynamic and Static Runtime Profile Contract
 
-> **Approval status:** In review for a focused 2026-09-11 amendment that adds
-> SPEC-008 render-workspace limits to the profile limit schema and storage
-> audit. The previously approved contract remains historical authority, but
-> implementation against this amended surface requires renewed explicit
-> maintainer approval.
+> **Approval status:** Explicitly reapproved by the maintainer on 2026-09-12.
+> The approved amendment adds SPEC-008 render-workspace limits to the profile
+> limit schema and storage audit. This amended contract is authoritative for
+> implementation.
 
 ## Summary
 
@@ -801,11 +800,10 @@ assertions.
 
 ## Open Issues
 
-No unresolved architectural choice is introduced by this amendment. The
-coordinated SPEC-009, SPEC-010, and SPEC-011 amendments remain approved. The
-focused render-workspace schema change is review material until explicit
-maintainer approval; its production values remain owned by Wave 7 HOST-
-CONFIGURATION.
+No unresolved architectural or contractual issue remains. The coordinated
+SPEC-009, SPEC-010, and SPEC-011 amendments remain approved, and the focused
+render-workspace schema change was explicitly reapproved on 2026-09-12. Its
+production values remain owned by Wave 7 HOST-CONFIGURATION.
 
 ## Deferred and Follow-up Work
 

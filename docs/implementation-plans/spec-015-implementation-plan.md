@@ -6,7 +6,7 @@ status: draft
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-11
+updated: 2026-09-12
 related_design_notes: []
 conformance_report: null
 related_future_work: []
@@ -18,15 +18,16 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-> This plan is paused in `draft` while the focused 2026-09-11 schema-2
-> workload amendment to SPEC-015 is in review. It does not authorize connected
-> deployment, service restart, or board flashing.
+> This plan remains in `draft` pending its final readiness pass. The focused
+> schema-2 workload amendment to SPEC-015 was explicitly reapproved on
+> 2026-09-12. It does not authorize connected deployment, service restart, or
+> board flashing.
 
 ## Authority and Scope
 
-The governing [SPEC-015](../specs/spec-015-host-configuration.md) contract is in
-review for the generated SPEC-008 render-workspace inputs carried through
-SPEC-013. Its authority chain otherwise consists of accepted
+The governing [SPEC-015](../specs/spec-015-host-configuration.md) contract is
+approved, including the generated SPEC-008 render-workspace inputs carried
+through approved SPEC-013. Its authority chain consists of accepted
 [PROPOSAL-002](../proposals/proposal-002-signal-analyzer-reference-application.md)
 through [PROPOSAL-006](../proposals/proposal-006-canvas-path-stroke-drawing.md),
 approved [RFC-001](../rfcs/rfc-001-signal-analyzer-application-architecture.md),
@@ -60,11 +61,11 @@ are satisfied.
 
 - `docs/features.yaml` registers SPEC-015 under the
   `giftui-mvp-architecture` feature, whose lifecycle stage is
-  `implementation`. SPEC-015 itself is in `review`; implementation has not
+  `implementation`. SPEC-015 itself is `approved`; implementation has not
   begun.
 - All linked ADRs are accepted and all linked RFCs are approved. SPEC-013 and
-  SPEC-015 are in coordinated review for the render-workspace workload schema;
-  no new architectural choice is open.
+  SPEC-015 were explicitly reapproved together for the render-workspace
+  workload schema; no new architectural choice is open.
 - `Package.swift` has no `GiftUIHostConfiguration` target, host-instance
   target, runtime-profile owner, Interaction owner, Drawing owner, raster
   backend owner, concrete four-preset root, or SPEC-015 test target.
@@ -94,16 +95,16 @@ are satisfied.
 
 **Reviewed:** 2026-09-09
 
-**Disposition:** Paused pending Specification reapproval. The authority chain
-is otherwise complete and all eighteen acceptance criteria map exactly once,
-but the plan must freeze the schema-2 render-scope, traversal-depth, text-line,
-and render-workspace evidence before becoming ready. No implementation task
-proceeds while the amended Specification is in review.
+**Disposition:** Draft pending a final readiness pass. The authority chain is
+complete, SPEC-013 and SPEC-015 were explicitly reapproved on 2026-09-12, and
+all eighteen acceptance criteria map exactly once. The plan now freezes the
+schema-2 render-scope, traversal-depth, text-line, and render-workspace
+evidence. No implementation task proceeds until the plan is marked `ready`.
 
-No `docs/features.yaml` edit is required for this derived record. After
-reapproval and a ready-plan review, implementation start still requires an
-authorized SPEC-015 transition to `implementing` with the corresponding
-metadata and manifest consistency update.
+No `docs/features.yaml` edit is required for this derived record. After a
+ready-plan review, implementation start still requires an authorized SPEC-015
+transition to `implementing` with the corresponding metadata and manifest
+consistency update.
 
 If implementation cannot express the exact noncopyable validator/instance
 surfaces, bounded caller-owned storage, nine-stage purity, static no-allocation
@@ -559,7 +560,8 @@ cross-build cannot satisfy a connected-hardware row.
 ### Upstream blockers
 
 - SPEC-011, SPEC-012, and SPEC-014 have ready plans but no production targets;
-  SPEC-013 and this Specification are in coordinated review.
+  SPEC-013 and this Specification are approved, with their plans awaiting or
+  following their own readiness and implementation gates.
   `T3.4`, `T4.*`, `T5.*`, and `T6.*` must wait for the exact owner seams they
   govern.
 - SPEC-003, SPEC-004, and SPEC-008 through SPEC-010 have active plans;
@@ -623,7 +625,9 @@ must not be deferred merely to continue implementation.
 This plan returned to `draft` on 2026-09-11 for the coordinated SPEC-008/
 SPEC-013 render-workspace contract and schema-2 workload inputs. No task is
 complete, no design note or conformance report exists, and no SPEC-015
-implementation evidence is invalidated or claimed. After reapproval, update
-each task disposition and evidence link in place as work proceeds. Plan
-completion does not mark SPEC-015 implemented; that transition requires a
-complete conformance review and explicit human authorization.
+implementation evidence is invalidated or claimed. The maintainer explicitly
+reapproved SPEC-013 and SPEC-015 on 2026-09-12; this plan remains `draft`
+pending its separate final readiness pass. Afterward, update each task
+disposition and evidence link in place as work proceeds. Plan completion does
+not mark SPEC-015 implemented; that transition requires a complete conformance
+review and explicit human authorization.

@@ -6,7 +6,7 @@ status: completed
 owners:
   - codex
 created: 2026-09-06
-updated: 2026-09-11
+updated: 2026-09-12
 related_design_notes: []
 conformance_report: ../conformance/spec-008-conformance.md
 related_future_work:
@@ -61,9 +61,9 @@ This plan consumes those contracts without creating substitute owners.
 Approved [SPEC-009](../specs/spec-009-execution-cycle-and-frame-handoff.md) and
 [SPEC-014](../specs/spec-014-backend-integration.md) consume SPEC-008 outputs;
 [SPEC-013](../specs/spec-013-runtime-profiles.md) and
-[SPEC-015](../specs/spec-015-host-configuration.md) are in coordinated review
-for the render-workspace limit and workload-schema additions. These contracts
-consume SPEC-008 outputs
+[SPEC-015](../specs/spec-015-host-configuration.md) are approved, including
+their coordinated render-workspace limit and workload-schema additions. These
+contracts consume SPEC-008 outputs
 through separately governed execution, runtime, and backend boundaries. Their
 integration seams are audited here only to prove that SPEC-008 remains usable;
 their frame disposition, storage, rasterization, and platform behavior are not

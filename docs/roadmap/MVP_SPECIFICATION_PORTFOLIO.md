@@ -133,25 +133,24 @@ Wave 6 has produced these immutable artifacts:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `RUNTIME-PROFILES` | `SPEC-013` | `review` |
+| `RUNTIME-PROFILES` | `SPEC-013` | `approved` |
 | `BACKEND-INTEGRATION` | `SPEC-014` | `approved` |
 
-Both artifacts are reconciled to SPEC-012's previously approved drawing
-semantics. SPEC-013's previously
-approved completeness review produced the coordinated SPEC-009 through
-SPEC-011 amendments; its focused render-workspace-limit addition is now in
-review, while SPEC-014 remains approved.
+Both artifacts are approved and reconciled to SPEC-012's drawing semantics.
+SPEC-013's focused render-workspace-limit amendment was explicitly reapproved
+on 2026-09-12, while SPEC-014 remains approved.
 
 Wave 7 has produced this immutable artifact:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `HOST-CONFIGURATION` | `SPEC-015` | `review` |
+| `HOST-CONFIGURATION` | `SPEC-015` | `approved` |
 
 SPEC-015 owns immutable target-host assembly, structural and capability startup
 gates, action/model/fact wiring, input/wake integration, finite pacing and
 policy, and the four MVP configuration obligations. Its coordinated schema-2
-render-workspace workload amendment requires renewed explicit human approval.
+render-workspace workload amendment was explicitly reapproved with SPEC-013
+on 2026-09-12.
 
 Candidate keys are planning labels, not reserved Specification IDs.
 

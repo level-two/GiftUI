@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-08-29
-updated: 2026-09-11
+updated: 2026-09-12
 related_design_notes:
   - ../implementation-designs/spec-003-bounded-diagnostic-buffer.md
 conformance_report: null
@@ -358,8 +358,9 @@ duplicated to remove a dependency blocker.
 - [ ] `T4.4` — After SPEC-015 supplies the production host policy and runtime
       gate, integrate the invariant mapping and terminal quiescence sequence
       proven by `T2.3`. A configured fatal hook may observe only after
-      quiescence and cannot replace it. **Blocked:** SPEC-015 is in review and
-      has no production host/runtime gate.
+      quiescence and cannot replace it. **Blocked:** SPEC-015 is approved, but
+      its implementation plan is not ready and no production host/runtime gate
+      exists.
 - [ ] `T4.5` — Refresh the exact package allow-list, positive/negative imports,
       compiled module dependencies, and product linkage after every owner
       target lands. Fail any upward edge, re-export, monolithic target, or

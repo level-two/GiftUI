@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-08-29
-updated: 2026-09-11
+updated: 2026-09-12
 related_design_notes:
   - ../implementation-designs/spec-004-raster-arithmetic.md
   - ../implementation-designs/spec-004-resource-evidence-driver.md
@@ -109,9 +109,9 @@ and SPEC-015.
   plus the Foundation owner-adapter task. Its `T4.2` capability outcome adapter
   now has the stable SPEC-004 declarations it needs and may proceed separately
   without blocking or being absorbed into this iteration. SPEC-009, SPEC-014,
-  and SPEC-015 is in focused review, so first-party one-shot tiled
-  integration, operational fault injection, and the conjunctive startup gate
-  remain downstream integration tasks.
+  and SPEC-015 are approved, but their incomplete production owners keep
+  first-party one-shot tiled integration, operational fault injection, and the
+  conjunctive startup gate as downstream integration tasks.
 
 ## T2.1 Implementation Iteration — Completed
 

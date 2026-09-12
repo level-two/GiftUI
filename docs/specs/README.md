@@ -22,8 +22,8 @@ its required acceptance criteria.
 - [SPEC-001](spec-001-signal-analyzer-reference-application.md) — Signal
   Analyzer Reference Application Contract (`approved`)
 - [SPEC-015](spec-015-host-configuration.md) — MVP Target-Host
-  Configuration Contract (`review`; schema-2 render-workspace workload
-  amendment awaiting explicit approval)
+  Configuration Contract (`approved`; schema-2 render-workspace workload
+  amendment explicitly reapproved on 2026-09-12)
 - [SPEC-006](spec-006-declarative-view-semantics.md) — Declarative View
   Semantics Specification (`approved`; primitive-with-content amendment
   explicitly reapproved on 2026-09-10)
@@ -42,7 +42,7 @@ its required acceptance criteria.
   Drawing Contract (`implementing`; render-extension completion-seam amendment
   explicitly approved on 2026-09-12)
 - [SPEC-013](spec-013-runtime-profiles.md) — Dynamic and Static Runtime Profile
-  Contract (`review`; render-workspace-limit amendment awaiting explicit
-  approval)
+  Contract (`approved`; render-workspace-limit amendment explicitly
+  reapproved on 2026-09-12)
 - [SPEC-014](spec-014-backend-integration.md) — Raster Backend and Display
   Integration Contract (`approved`)
