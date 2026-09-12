@@ -78,6 +78,57 @@ private struct DispatchRecordView: InteractionCommittedActionView {
     }
 }
 
+private final class MutableDispatchRecordBox {
+    var record: BoundActionRecord<UInt16>?
+
+    init(record: BoundActionRecord<UInt16>?) {
+        self.record = record
+    }
+}
+
+private struct MutableDispatchRecordView: InteractionCommittedActionView {
+    let box: MutableDispatchRecordBox
+
+    func committedRecord(
+        for identity: UInt16
+    ) -> BoundActionRecord<UInt16>? {
+        guard box.record?.identity == identity else { return nil }
+        return box.record
+    }
+}
+
+private final class MutableDispatchTargetBox {
+    var generation: ObservableTargetGeneration?
+    var model: DispatchModel?
+
+    init(
+        generation: ObservableTargetGeneration?,
+        model: DispatchModel?
+    ) {
+        self.generation = generation
+        self.model = model
+    }
+}
+
+private struct MutableDispatchTargetAccess: ActionModelTargetAccess {
+    let box: MutableDispatchTargetBox
+
+    func currentGeneration() -> ObservableTargetGeneration? {
+        box.generation
+    }
+
+    mutating func withCurrentModel(
+        matching generation: ObservableTargetGeneration,
+        _ body: (borrowing DispatchModel) -> Void
+    ) -> Bool {
+        guard box.generation == generation, let model = box.model else {
+            return false
+        }
+        body(model)
+        return true
+    }
+}
+
 private let dispatchBounds = Rect(
     origin: Point(x: 0, y: 0),
     size: Size(width: 2, height: 2)!
@@ -267,4 +318,145 @@ func invalidCommittedActionCodeReturnsInvariantFailureWithoutHandlerInvocation()
     #expect(model.handledActions.isEmpty)
     #expect(probe.generationReadCount == 1)
     #expect(probe.borrowAttemptCount == 0)
+}
+
+@Test
+func committedReplacementAfterDownCancelsFormerCaptureForBothModels() {
+    let former = DispatchModel()
+    let replacement = DispatchModel()
+    let records = MutableDispatchRecordBox(record: dispatchRecord())
+    let target = MutableDispatchTargetBox(
+        generation: ObservableTargetGeneration(rawValue: 12),
+        model: former
+    )
+    var dispatcher = RuntimeInteractionDispatcher(
+        records: MutableDispatchRecordView(box: records),
+        handler: DispatchHandler(),
+        targetAccess: MutableDispatchTargetAccess(box: target)
+    )
+    let capturedAtDown = CapturedAction(
+        identity: UInt16(4),
+        generation: ActionGeneration(rawValue: 8)
+    )
+
+    records.record = dispatchRecord(generation: 9, target: 13)
+    target.generation = ObservableTargetGeneration(rawValue: 13)
+    target.model = replacement
+
+    #expect(dispatcher.dispatch(capturedAtDown) == .cancelled)
+    #expect(former.handledActions.isEmpty)
+    #expect(replacement.handledActions.isEmpty)
+}
+
+@Test
+func committedReplacementAfterAdmissionCancelsAtFinalTargetValidation() {
+    let former = DispatchModel()
+    let replacement = DispatchModel()
+    let records = MutableDispatchRecordBox(record: dispatchRecord())
+    let target = MutableDispatchTargetBox(
+        generation: ObservableTargetGeneration(rawValue: 12),
+        model: former
+    )
+    var dispatcher = RuntimeInteractionDispatcher(
+        records: MutableDispatchRecordView(box: records),
+        handler: DispatchHandler(),
+        targetAccess: MutableDispatchTargetAccess(box: target)
+    )
+    let admitted = CapturedAction(
+        identity: UInt16(4),
+        generation: ActionGeneration(rawValue: 8)
+    )
+
+    target.generation = ObservableTargetGeneration(rawValue: 13)
+    target.model = replacement
+
+    #expect(dispatcher.dispatch(admitted) == .cancelled)
+    #expect(former.handledActions.isEmpty)
+    #expect(replacement.handledActions.isEmpty)
+}
+
+@Test
+func committedRemovalAfterAdmissionCancelsWithoutRetainingFormerModel() {
+    let former = DispatchModel()
+    let records = MutableDispatchRecordBox(record: dispatchRecord())
+    let target = MutableDispatchTargetBox(
+        generation: ObservableTargetGeneration(rawValue: 12),
+        model: former
+    )
+    var dispatcher = RuntimeInteractionDispatcher(
+        records: MutableDispatchRecordView(box: records),
+        handler: DispatchHandler(),
+        targetAccess: MutableDispatchTargetAccess(box: target)
+    )
+
+    target.generation = nil
+    target.model = nil
+
+    #expect(
+        dispatcher.dispatch(
+            CapturedAction(
+                identity: 4,
+                generation: ActionGeneration(rawValue: 8)
+            )
+        ) == .cancelled
+    )
+    #expect(former.handledActions.isEmpty)
+}
+
+@Test
+func stagedReplacementPreservesFormerCaptureUntilCommit() {
+    let former = DispatchModel()
+    let staged = DispatchModel()
+    let records = MutableDispatchRecordBox(record: dispatchRecord())
+    let target = MutableDispatchTargetBox(
+        generation: ObservableTargetGeneration(rawValue: 12),
+        model: former
+    )
+    var dispatcher = RuntimeInteractionDispatcher(
+        records: MutableDispatchRecordView(box: records),
+        handler: DispatchHandler(),
+        targetAccess: MutableDispatchTargetAccess(box: target)
+    )
+
+    _ = staged
+
+    #expect(
+        dispatcher.dispatch(
+            CapturedAction(
+                identity: 4,
+                generation: ActionGeneration(rawValue: 8)
+            )
+        ) == .dispatched
+    )
+    #expect(former.handledActions == [.start])
+    #expect(staged.handledActions.isEmpty)
+}
+
+@Test
+func failedReplacementPreservesFormerRouteForNewValidGesture() {
+    let former = DispatchModel()
+    let failedCandidate = DispatchModel()
+    let records = MutableDispatchRecordBox(record: dispatchRecord())
+    let target = MutableDispatchTargetBox(
+        generation: ObservableTargetGeneration(rawValue: 12),
+        model: former
+    )
+    var dispatcher = RuntimeInteractionDispatcher(
+        records: MutableDispatchRecordView(box: records),
+        handler: DispatchHandler(),
+        targetAccess: MutableDispatchTargetAccess(box: target)
+    )
+
+    _ = failedCandidate
+
+    #expect(
+        dispatcher.dispatch(
+            CapturedAction(
+                identity: 4,
+                generation: ActionGeneration(rawValue: 8)
+            )
+        ) == .dispatched
+    )
+    #expect(former.handledActions == [.start])
+    #expect(failedCandidate.handledActions.isEmpty)
 }

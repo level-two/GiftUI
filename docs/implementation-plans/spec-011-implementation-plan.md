@@ -417,7 +417,7 @@ current model.
       failures invoke no handler. No path may fall back, search another model,
       invoke a previous model, trap as its only behavior, or retain the handler
       or model in Interaction/capture state.
-- [ ] `T5.5` — Integrate SPEC-010 replacement/removal and failed/staged
+- [x] `T5.5` — Integrate SPEC-010 replacement/removal and failed/staged
       replacement. Cover replacement after down and after admission but before
       a later same-phase dispatch; invoke neither former nor replacement model.
       Prove failed replacement preserves the former target/record, so an
@@ -737,3 +737,10 @@ removed, and corrupt committed state without fallback or handler invocation;
 candidate validation tests prove wrong-domain and invalid-code values never
 reach an offer or handler. See the
 [dispatch cancellation evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-4-dispatch-cancellation.md).
+
+`T5.5` is complete: Runtime Core replacement-timing tests consume SPEC-010's
+atomic live/staged target view. Committed replacement after down or after
+admission invokes neither model, removal finds no retained former model, and
+staged or failed replacement leaves the former route valid until publication.
+See the
+[replacement timing evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-5-replacement-timing.md).
