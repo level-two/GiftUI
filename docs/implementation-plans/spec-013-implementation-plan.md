@@ -229,7 +229,7 @@ failure carrier, independent of concrete profile storage.
       `staticCanvas` iff `.static`, zero ordinary drawing-only fixtures, and
       first-failure ordering without clamping or deriving render structural
       values from SPEC-006 node/depth limits.
-- [ ] `T1.2` — Implement `RuntimeStorageAudit` checked byte accounting and a
+- [x] `T1.2` — Implement `RuntimeStorageAudit` checked byte accounting and a
       fixture storage-family registry naming exclusive ownership, simultaneous
       lifetimes, overlay charging, exclusions, and dynamic bookkeeping. Test
       every field, overflow, double-count rejection, and exact total.
@@ -621,6 +621,13 @@ checked combined-operation overflow, static-Canvas presence, drawing-only
 zero ordinary operations, exact raw values, and explicit render-workspace
 values that are not derived from semantic limits. Reproduction evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-1/runtime-profile-limits.md`.
+
+T1.2 implemented checked audit construction across all sixteen exclusive byte
+fields, exact totals, overflow failure, and zero-byte overlay alias reporting.
+The machine-checked storage-family registry records unique owners,
+simultaneous lifetimes, overlay charging, exclusions, and double-count
+rejection. Reproduction evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-1/storage-audit-accounting.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

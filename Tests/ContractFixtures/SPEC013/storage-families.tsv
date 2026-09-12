@@ -1,0 +1,17 @@
+# field	byte_owner	lifetime	simultaneous_with	overlay_charge	exclusions
+semanticCandidateBytes	semantic-candidate	attempt	all-attempt-and-live-families	exclusive-or-zero-if-aliased	allocator-bookkeeping,stack,generated-code
+semanticPublishedBytes	semantic-published	published	all-live-committed-and-active-attempt-families	exclusive-or-zero-if-aliased	allocator-bookkeeping,stack,generated-code
+layoutCandidateBytes	layout-candidate	attempt	all-attempt-and-live-families	exclusive-or-zero-if-aliased	allocator-bookkeeping,stack,generated-code
+renderWorkspaceBytes	render-workspace	attempt	all-attempt-and-live-families	exclusive-or-complete-overlay-owner	allocator-bookkeeping,stack,generated-code
+canvasCallableBytes	canvas-callable	semantic-staging-through-invocation	semantic-candidate,layout-candidate,path-workspace,drawing-plan	exclusive-or-zero-if-aliased	generated-code,allocator-bookkeeping,stack
+pathWorkspaceBytes	path-workspace	withPath-scope	canvas-callable,drawing-plan	exclusive-or-zero-if-aliased	allocator-bookkeeping,stack,generated-code
+drawingPlanBytes	drawing-plan	post-layout-through-finalization	layout-candidate,render-workspace,canvas-callable,path-workspace	exclusive-or-zero-if-aliased	allocator-bookkeeping,stack,generated-code
+observableLiveBytes	observable-live	runtime-live	published-and-all-active-attempt-families	exclusive-or-zero-if-aliased	allocator-bookkeeping,stack,generated-code
+observableCandidateBytes	observable-candidate	attempt	observable-live-and-all-attempt-families	exclusive-or-zero-if-aliased	allocator-bookkeeping,stack,generated-code
+interactionCandidateBytes	interaction-candidate	attempt	interaction-committed-and-all-attempt-families	exclusive-or-zero-if-aliased	allocator-bookkeeping,stack,generated-code
+interactionCommittedBytes	interaction-committed	accepted-presentation	interaction-candidate-and-all-live-families	exclusive-or-zero-if-aliased	allocator-bookkeeping,stack,generated-code
+admissionQueueBytes	admission-queue	runtime-live	sealed-batch-and-all-live-families	exclusive-or-zero-if-aliased	allocator-bookkeeping,stack,generated-code
+sealedBatchBytes	sealed-batch	active-cycle	admission-queue-and-all-attempt-families	exclusive-or-zero-if-aliased	allocator-bookkeeping,stack,generated-code
+pointerStateBytes	pointer-state	runtime-live	queue-routing-and-active-attempt-families	exclusive-or-zero-if-aliased	allocator-bookkeeping,stack,generated-code
+coordinatorStateBytes	coordinator-state	runtime-live	all-profile-families	exclusive-or-zero-if-aliased	allocator-bookkeeping,stack,generated-code
+failureStateBytes	failure-state	construction-and-active-cycle	coordinator-and-active-attempt-families	exclusive-or-zero-if-aliased	diagnostics,allocator-bookkeeping,stack,generated-code

@@ -27,7 +27,7 @@ end
 required_files = %w[
   README.md artificial-limit-schema.tsv canonical-transcript.tsv
   fixture-manifest.tsv migration-inventory.tsv report-schema.tsv
-  required-evidence.tsv module-boundaries.tsv
+  required-evidence.tsv module-boundaries.tsv storage-families.tsv
 ] + EXPECTED_FILES
 missing = required_files.reject { |name| FIXTURES.join(name).file? }
 fail_check("required fixtures are missing: #{missing.join(', ')}") unless missing.empty?
@@ -101,7 +101,10 @@ runner_text = runner.read
 EXPECTED_PROFILES.each do |profile|
   fail_check("driver profile is missing: #{profile}") unless runner_text.include?(profile)
 end
-%w[check-spec-013-module-contract.rb check-spec-013-module-contract.sh].each do |name|
+%w[
+  check-spec-013-module-contract.rb check-spec-013-module-contract.sh
+  check-spec-013-storage-registry.rb
+].each do |name|
   path = ROOT.join("scripts/contracts", name)
   fail_check("SPEC-013 command is missing or not executable: #{name}") unless path.file? && path.executable?
 end

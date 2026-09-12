@@ -107,6 +107,95 @@ package struct RuntimeStorageAudit: Equatable, Sendable {
     package let coordinatorStateBytes: UInt32
     package let failureStateBytes: UInt32
     package let totalProfileBytes: UInt32
+
+    private init(
+        profile: RuntimeProfileKind,
+        limits: RuntimeProfileLimits,
+        byteCounts: RuntimeStorageByteCounts,
+        totalProfileBytes: UInt32
+    ) {
+        self.profile = profile
+        self.limits = limits
+        semanticCandidateBytes = byteCounts.semanticCandidateBytes
+        semanticPublishedBytes = byteCounts.semanticPublishedBytes
+        layoutCandidateBytes = byteCounts.layoutCandidateBytes
+        renderWorkspaceBytes = byteCounts.renderWorkspaceBytes
+        canvasCallableBytes = byteCounts.canvasCallableBytes
+        pathWorkspaceBytes = byteCounts.pathWorkspaceBytes
+        drawingPlanBytes = byteCounts.drawingPlanBytes
+        observableLiveBytes = byteCounts.observableLiveBytes
+        observableCandidateBytes = byteCounts.observableCandidateBytes
+        interactionCandidateBytes = byteCounts.interactionCandidateBytes
+        interactionCommittedBytes = byteCounts.interactionCommittedBytes
+        admissionQueueBytes = byteCounts.admissionQueueBytes
+        sealedBatchBytes = byteCounts.sealedBatchBytes
+        pointerStateBytes = byteCounts.pointerStateBytes
+        coordinatorStateBytes = byteCounts.coordinatorStateBytes
+        failureStateBytes = byteCounts.failureStateBytes
+        self.totalProfileBytes = totalProfileBytes
+    }
+
+    static func checked(
+        profile: RuntimeProfileKind,
+        limits: RuntimeProfileLimits,
+        byteCounts: RuntimeStorageByteCounts
+    ) -> RuntimeProfileValidationResult {
+        var total: UInt32 = 0
+        guard accumulate(byteCounts.semanticCandidateBytes, into: &total),
+            accumulate(byteCounts.semanticPublishedBytes, into: &total),
+            accumulate(byteCounts.layoutCandidateBytes, into: &total),
+            accumulate(byteCounts.renderWorkspaceBytes, into: &total),
+            accumulate(byteCounts.canvasCallableBytes, into: &total),
+            accumulate(byteCounts.pathWorkspaceBytes, into: &total),
+            accumulate(byteCounts.drawingPlanBytes, into: &total),
+            accumulate(byteCounts.observableLiveBytes, into: &total),
+            accumulate(byteCounts.observableCandidateBytes, into: &total),
+            accumulate(byteCounts.interactionCandidateBytes, into: &total),
+            accumulate(byteCounts.interactionCommittedBytes, into: &total),
+            accumulate(byteCounts.admissionQueueBytes, into: &total),
+            accumulate(byteCounts.sealedBatchBytes, into: &total),
+            accumulate(byteCounts.pointerStateBytes, into: &total),
+            accumulate(byteCounts.coordinatorStateBytes, into: &total),
+            accumulate(byteCounts.failureStateBytes, into: &total)
+        else {
+            return .invalid(.arithmeticOverflow)
+        }
+        return .valid(
+            RuntimeStorageAudit(
+                profile: profile,
+                limits: limits,
+                byteCounts: byteCounts,
+                totalProfileBytes: total
+            )
+        )
+    }
+
+    private static func accumulate(_ value: UInt32, into total: inout UInt32) -> Bool {
+        let (next, overflow) = total.addingReportingOverflow(value)
+        guard !overflow else { return false }
+        total = next
+        return true
+    }
+}
+
+struct RuntimeStorageByteCounts: Equatable, Sendable {
+    let semanticCandidateBytes: UInt32
+    let semanticPublishedBytes: UInt32
+    let layoutCandidateBytes: UInt32
+    let renderWorkspaceBytes: UInt32
+    let canvasCallableBytes: UInt32
+    let pathWorkspaceBytes: UInt32
+    let drawingPlanBytes: UInt32
+    let observableLiveBytes: UInt32
+    let observableCandidateBytes: UInt32
+    let interactionCandidateBytes: UInt32
+    let interactionCommittedBytes: UInt32
+    let admissionQueueBytes: UInt32
+    let sealedBatchBytes: UInt32
+    let pointerStateBytes: UInt32
+    let coordinatorStateBytes: UInt32
+    let failureStateBytes: UInt32
+
 }
 
 package enum RuntimeProfileValidationError: UInt8, Equatable, Sendable {
