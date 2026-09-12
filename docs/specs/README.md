@@ -39,7 +39,8 @@ its required acceptance criteria.
 - [SPEC-011](spec-011-interaction.md) — Button Interaction and Activation
   Contract (`approved`, including candidate target-binding amendment)
 - [SPEC-012](spec-012-canvas-path-stroke-drawing.md) — Canvas, Path, and Stroke
-  Drawing Contract (`approved`)
+  Drawing Contract (`implementing`; render-extension completion-seam amendment
+  explicitly approved on 2026-09-12)
 - [SPEC-013](spec-013-runtime-profiles.md) — Dynamic and Static Runtime Profile
   Contract (`review`; render-workspace-limit amendment awaiting explicit
   approval)

@@ -82,9 +82,10 @@ Presentation.
   and final cross-owner evidence remain intentionally outside that plan.
 - `GiftUIRenderCore` currently provides fill and positioned-glyph operation
   values and `RenderOperationSink`. The SPEC-008 plan remains active.
-  SPEC-012 is approved but has no production drawing implementation yet, so
-  `DrawingOperationSink` and the borrowed canonical stroke view are explicit
-  prerequisites for Canvas-capable backend compilation and stroke evidence.
+  SPEC-012's focused completion-seam amendment is approved, but it has no
+  production drawing implementation yet, so `DrawingOperationSink` and the
+  borrowed canonical stroke view are explicit prerequisites for Canvas-capable
+  backend compilation and stroke evidence.
 - `GiftUIExecution` provides the exact SPEC-009 provenance, stream-result,
   offer-result, and `SynchronousFrameEndpoint` declarations. Its focused
   one-shot and failure machinery is implemented, while production backend and
@@ -334,8 +335,8 @@ identity lifetime, and target-local health.
 ### Milestone 4: Implement Canonical Encoding and Shared Raster Semantics
 
 **Entry conditions:** Surface and display recording oracles pass. Fill and
-positioned-glyph operations exist; stroke tasks wait for SPEC-012's approved
-borrowed stroke view.
+positioned-glyph operations exist; stroke tasks consume SPEC-012's approved
+borrowed stroke view and completion-seam contract.
 
 **Exit evidence:** One backend-neutral raster core produces exact affected
 pixels, byte encodings, ordering, clipping, resource use, and bounded counters

@@ -75,8 +75,11 @@ operation count.
 At a Canvas scope the visitor validates the identity's presence, every stroke
 header, exact surface origin and inherited clip, complete point lookup, gap-free
 subpath coverage, and nil at each exclusive upper bound. After traversal its
-checked aggregate must equal all five drawing-plan summary fields. Only then
-does preflight expose the combined header.
+`complete()` operation checks the aggregate against all five drawing-plan
+summary fields. During production the producer invokes that completion after
+the sole preflight traversal and before `begin`; only then may it expose the
+combined header to the sink. The paired streaming visitor completes the same
+comparison after streaming traversal and before `finish`.
 
 ## Algorithms and Data Structures
 
@@ -141,12 +144,12 @@ T5.5 audits source reuse, imports, and absence of retained operation storage.
 
 ## Open Implementation Questions
 
-T5.1 has no open implementation question. T5.2 is blocked by a contract-level
-completion gap: the extended producer does not return control between its
-preflight traversal and `begin`, while the preflight visitor has no completion
-operation. The Canvas owner cannot prove the final plan-summary equality at the
-required point. Resolving this requires an approved SPI correction rather than
-an implementation choice in this note.
+T5.1 has no open implementation question. T5.2 exposed a contract-level
+completion gap: the extended producer did not return control between its
+preflight traversal and `begin`, while the preflight visitor had no completion
+operation. The maintainer explicitly approved SPEC-012's exact completion-result
+correction for both traversal phases on 2026-09-12. No implementation question
+remains; T5.2-T5.5 may proceed through that contract.
 
 ## Code and Evidence Links
 

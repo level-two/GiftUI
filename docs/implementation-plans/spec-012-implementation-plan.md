@@ -24,17 +24,19 @@ superseded_by: null
 
 # SPEC-012 Implementation Plan
 
-> This ready plan derives work from the approved Canvas, Path, and Stroke
-> Drawing Contract. It orders implementation and evidence but does not amend
+> This active plan incorporates the explicitly approved 2026-09-12
+> render-extension completion-seam amendment. Completed task records remain
+> historical implementation evidence, and T5.2-T5.5 may now resume through the
+> amended package SPI. The plan orders implementation and evidence but does not amend
 > the drawing invocation, scoped ownership, normalized stroke, failure,
 > capacity, raster, profile, backend, or host contracts owned by that
 > Specification and its authoritative dependencies.
 
 ## Authority and Scope
 
-The governing contract is approved
-[SPEC-012](../specs/spec-012-canvas-path-stroke-drawing.md). Its authority
-chain is accepted
+The governing [SPEC-012](../specs/spec-012-canvas-path-stroke-drawing.md) is
+`implementing`, including the explicitly approved focused completion-seam
+correction. Its authority chain remains accepted
 [PROPOSAL-006](../proposals/proposal-006-canvas-path-stroke-drawing.md),
 approved
 [RFC-009](../rfcs/rfc-009-canvas-path-stroke-drawing-architecture.md), and
@@ -104,21 +106,17 @@ animation, deployment, remote service changes, or connected-board flashing.
 
 ## Readiness Review
 
-**Reviewed:** 2026-09-09
+**Reviewed:** 2026-09-12
 
-**Disposition:** Ready. SPEC-012 is approved, its complete authority chain is
-current, its thirteen acceptance criteria map to ordered tasks and reproducible
-evidence, and no open contractual or architectural choice remains. Unfinished
-upstream implementations are explicit task dependencies: declaration,
-Render-Core value, direct-workspace, fixture, and harness tasks may proceed
-independently, while production layout, combined lowering, runtime-profile,
-backend, and host claims wait for their owning implementations.
+**Disposition:** Ready. T5.2 exposed a contractual completion gap in the
+otherwise reusable SPEC-008 producer extension; the focused SPEC-012 amendment
+now defines that missing package SPI without changing accepted architecture.
+The maintainer explicitly approved the amendment on 2026-09-12 and resumed the
+plan, so T5.2-T5.5 may proceed.
 
-No `docs/features.yaml` change is required because implementation records are
-not registered there and `canvas-drawing` already reports the Specification
-stage. Starting production implementation requires a separate progress update
-that changes SPEC-012 to `implementing` and this plan to `active`; readiness
-alone does not perform that transition.
+No `docs/features.yaml` change is required because `canvas-drawing` remains in
+the implementation stage based on completed work under the previously approved
+contract. The amendment does not register a new feature or change MVP scope.
 
 If the supported compilers cannot express the approved scoped noncopyable or
 typed-throws surface, if exact identity cannot cross the semantic/layout/drawing
@@ -140,7 +138,7 @@ after every listed prerequisite is satisfied.
 | `T2.1`-`T2.5` | `T0.2`; relevant `T1.*`; SPEC-006 exact identity/payload seam for production adaptation | `Sources/GiftUISemanticCore/`, `Sources/GiftUIRenderCore/`, focused tests | Render-Core values and direct semantic fixtures may proceed before production semantic-result adaptation |
 | `T3.1`-`T3.6` | `T1.*`, `T2.2`-`T2.3`; SPEC-002 checked geometry | `Sources/GiftUIDrawing/`, drawing unit tests, recording plan fixtures | Limit/value construction may proceed beside private workspace storage; mutation, snapshot, and lifecycle tasks then follow shared invariants |
 | `T4.1`-`T4.5` | `T2.1`, `T3.*`; SPEC-007 resolved layout and SPEC-009 execution context for production integration | `GiftUISemanticCore`, `GiftUILayout`, `GiftUIDrawing`, `GiftUIExecution`, cycle fixtures | Direct source/layout/execution fixtures may establish local behavior; production identity-preserving integration waits for SPEC-007 and the owning runtime coordinator |
-| `T5.1`-`T5.5` | `T2.*`, successful drawing plans from `T3`-`T4`; SPEC-008 lowering workspace and traversal | `GiftUIDrawing`, `GiftUIRenderCore`, rendering fixtures | Plan validation and direct combined transcripts may proceed against fixed fixture views; production ordinary-operation coexistence waits for SPEC-008 lowering |
+| `T5.1`-`T5.5` | `T2.*`, successful drawing plans from `T3`-`T4`; SPEC-008 lowering workspace and traversal; approved focused completion-seam amendment | `GiftUIDrawing`, `GiftUIRenderCore`, rendering fixtures | Completed T5.1 preflight evidence remains historical; T5.2 first migrates that summary check into the approved completion seam, then production and transcript/failure/boundary audits proceed |
 | `T6.1`-`T6.5` | `T1.*`, `T3.*`; SPEC-013/015 generated storage and host assembly where named | static generator fixtures, profile storage, host configuration | Generator grammar and negative cases may proceed locally; production captures, numeric limits, and host lifetime proofs wait for SPEC-013 and SPEC-015 |
 | `T7.1`-`T7.4` | `T3`-`T6`; SPEC-004 resolver and SPEC-015 B2/host gates | structural/capability fixtures, owner adapter, runtime-cycle integration | Artificial equality/first-excess matrices may run before production host values; Signal Analyzer capacity proof waits for SPEC-001/015 assembly |
 | `T8.1`-`T8.4` | `T5`; SPEC-014 backend consumers and raster workspaces | shared raster vectors, RGBA8888/RGB565 consumers, backend integration fixtures | Golden-mask generation and recording semantics may be frozen independently; concrete full-surface/tiled evidence waits for SPEC-014 |
@@ -171,9 +169,11 @@ once below and maps to implementation tasks and reproducible evidence.
 
 ### Milestone 0: Freeze Authority, Boundaries, and Evidence Schemas
 
-**Entry conditions:** SPEC-012 remains `approved`; PROPOSAL-006 remains
-`accepted`; RFC-009 remains `approved`; ADR-028 through ADR-031 remain
-`accepted`; and the related Specifications retain their current authority.
+**Entry conditions:** These tasks were completed under the previously approved
+SPEC-012 contract. PROPOSAL-006 remains `accepted`; RFC-009 remains `approved`;
+ADR-028 through ADR-031 remain `accepted`; and the related Specifications
+retain their current authority. The completion-seam amendment was explicitly
+approved on 2026-09-12.
 
 **Exit evidence:** The exact module graph, canonical corpus schemas, migration
 baseline, and registered fail-closed four-profile driver exist before any
@@ -361,10 +361,15 @@ and synchronous borrowed consumption.
       observing an endpoint sink or retaining a borrow. Acquire and reset the
       caller-owned render workspace entirely within the call and expose no
       partial header on failure.
-- [ ] `T5.2` — Implement `CanvasRenderProducer.produce` as the same traversal
-      inside one offer. Require exact expected-header and plan-summary equality
-      before `begin`, compare actual sink capacity before `begin`, and emit each
-      snapshot as one borrowed `straightLineStroke` event at its painter position.
+- [ ] `T5.2` — Implement `CanvasRenderProducer.produce` as the same traversal inside one
+      offer. First move T5.1's external successful-preflight summary comparison
+      into the new preflight-extension completion requirement and make the
+      ordinary empty extension complete successfully. Require exact
+      expected-header and actual-capacity checks, then use
+      the post-traversal preflight completion call to require complete
+      plan-summary equality before `begin`. Emit each snapshot as one borrowed
+      `straightLineStroke` event at its painter position and use streaming
+      completion to require the same summary equality before `finish`.
 - [ ] `T5.3` — Extend the canonical recording transcript and verification with
       exact color, width, cap, join, origin, clip, points, subpaths, no-op strokes,
       header totals, mixed fill/glyph/stroke ordering, and one begin/finish pair.
@@ -588,14 +593,15 @@ not implied by this plan.
 - SPEC-008's complete `GiftUIRenderLowering`, traversal workspace,
   text/layout view, and atomic producer are present. T5 must implement the
   amended extension overloads in that owner and may not create a substitute.
-- T5.2 is blocked because the amended extended `RenderProducer.produce` has no
-  completion operation between its preflight traversal and `sink.begin`.
-  `CanvasRenderProducer` therefore cannot validate the completed Canvas,
-  stroke, point, subpath, and normalized-operation totals against the immutable
-  plan summary before `begin` without either independently traversing semantic
-  state or widening the approved extension SPI. The focused
+- T5.2 exposed that the previously approved extended `RenderProducer.produce`
+  has no completion operation between its preflight traversal and
+  `sink.begin`. The proposed focused SPEC-012 amendment adds exact completion
+  results to both extension protocols, requires preflight completion before
+  `begin` and streaming completion before `finish`, and prohibits either
+  completion from traversing or owning producer state. The focused
   [pre-begin summary review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-prebegin-summary-blocker.md)
-  records the required upstream correction.
+  records the defect and required correction. The maintainer explicitly
+  approved the amendment on 2026-09-12, so T5.2-T5.5 may resume.
 - Production dynamic/static callable storage and source-generation integration
   wait for SPEC-013. Production workload limits, observable static handles,
   startup B2 assembly, and host lifetime proofs wait for SPEC-015.
@@ -980,8 +986,8 @@ disagreements. The
 and [combined traversal design](../implementation-designs/spec-012-combined-render-traversal.md)
 record the reusable mechanism. T5.2 is next.
 
-`T5.2` is blocked at the amended render-extension boundary. The preflight
-visitor can accumulate complete Canvas plan totals, but the extended
+`T5.2` exposed a contract defect at the amended render-extension boundary. The
+preflight visitor can accumulate complete Canvas plan totals, but the extended
 `RenderProducer.produce` begins and streams the sink before returning control
 to `CanvasRenderProducer`; neither extension protocol exposes a post-traversal,
 pre-`begin` completion result. Per-scope preorder visits cannot detect a
@@ -990,8 +996,11 @@ combined render header contains only operation and glyph counts. An independent
 Canvas semantic recursion, an early extra preflight, or an unapproved protocol
 requirement would violate the approved contract. The
 [pre-begin summary blocker](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-prebegin-summary-blocker.md)
-preserves the exact proof. T5.2-T5.5 remain paused pending a Spec correction;
-independently dependency-complete T6.2 may proceed.
+preserves the exact proof. The proposed focused amendment now adds one exact
+completion result to each extension protocol, with preflight completion before
+`begin` and streaming completion before `finish`. The maintainer explicitly
+approved the correction on 2026-09-12; T5.2-T5.5 may resume, and completed T6.2
+evidence remains valid.
 
 `T6.2` is complete for the checked static fixture. `GiftUIDrawing` owns the
 exact amended `StaticCanvasCallableTable` protocol, and the manifest-generated

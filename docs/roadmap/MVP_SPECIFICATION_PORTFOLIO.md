@@ -34,10 +34,12 @@ is current authority. RFC-007 remains `draft`; its delegated-service direction
 and FW-009 MUST NOT become a required MVP Specification dependency.
 
 The `canvas-drawing` feature completed its decision stage with approved RFC-009
-and accepted ADR-028 through ADR-031. Wave 5 artifacts SPEC-010 through
-SPEC-012 are approved. SPEC-010 was explicitly reapproved on 2026-09-05 after
-its completeness amendment closed underspecified result, storage, lifecycle,
-and failure-precedence rules.
+and accepted ADR-028 through ADR-031. SPEC-010 and SPEC-011 are approved;
+SPEC-012 is implementing its explicitly approved focused render-extension
+completion-seam amendment.
+SPEC-010 was explicitly reapproved on 2026-09-05 after its completeness
+amendment closed underspecified result, storage, lifecycle, and
+failure-precedence rules.
 
 ## Boundary Rules
 
@@ -122,10 +124,10 @@ reapproved completeness amendment:
 | --- | --- | --- |
 | `OBSERVABLE` | `SPEC-010` | `implementing` |
 | `INTERACTION` | `SPEC-011` | `approved` |
-| `DRAWING` | `SPEC-012` | `approved` |
+| `DRAWING` | `SPEC-012` | `implementing` |
 
 SPEC-009 through SPEC-012 are approved and authoritative for implementation;
-SPEC-010 is actively implementing its approved contract.
+SPEC-010 and SPEC-012 are actively implementing their approved contracts.
 
 Wave 6 has produced these immutable artifacts:
 
@@ -134,7 +136,8 @@ Wave 6 has produced these immutable artifacts:
 | `RUNTIME-PROFILES` | `SPEC-013` | `review` |
 | `BACKEND-INTEGRATION` | `SPEC-014` | `approved` |
 
-Both artifacts are reconciled to approved SPEC-012. SPEC-013's previously
+Both artifacts are reconciled to SPEC-012's previously approved drawing
+semantics. SPEC-013's previously
 approved completeness review produced the coordinated SPEC-009 through
 SPEC-011 amendments; its focused render-workspace-limit addition is now in
 review, while SPEC-014 remains approved.
@@ -271,8 +274,9 @@ MVP Specification portfolio.
    accepted ADR-028 through ADR-031 without allocating an implementation plan
    before its Specification is approved.
 6. Reconcile and review `RUNTIME-PROFILES` (SPEC-013) and
-   `BACKEND-INTEGRATION` (SPEC-014) against approved SPEC-012's plan,
-   operation, capacity, and lifetime contracts before advancing either draft.
+   `BACKEND-INTEGRATION` (SPEC-014) against SPEC-012's approved drawing
+   semantics and any subsequently approved package-SPI amendment before
+   advancing either draft.
 7. Review `HOST-CONFIGURATION` (SPEC-015), including the independent
    conjunctive Canvas structural-capacity and `rasterPresentation` capability
    startup gates.

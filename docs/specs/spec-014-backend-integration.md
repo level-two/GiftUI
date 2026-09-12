@@ -143,9 +143,10 @@ portable presentation.
 ## Dependencies
 
 The governing Proposals are accepted, RFCs approved, and ADRs accepted.
-SPEC-002 through SPEC-005, SPEC-008, SPEC-009, and SPEC-012 are approved. This
-revision is reconciled to
-SPEC-012's approved one-operation-
+SPEC-002 through SPEC-005, SPEC-008, SPEC-009, and SPEC-012 are approved.
+SPEC-012's focused render-extension completion seam was explicitly approved on
+2026-09-12 and does not change its stroke payload or raster semantics. This
+revision is reconciled to SPEC-012's approved one-operation-
 per-stroke, borrowed `StraightLineStrokeView`, checked surface-coordinate,
 inherited-clip, canonical coverage, encoding, capacity, and failure contract.
 

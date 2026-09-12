@@ -145,8 +145,10 @@ static nRF52840 configurations. Connected-target assembly is downstream.
 ## Dependencies
 
 The governing Proposals are accepted, the related RFCs are approved, and all
-listed ADRs are accepted. SPEC-002 through SPEC-012 are approved. SPEC-014 is
-a downstream sibling contract and supplies no authority here.
+listed ADRs are accepted. SPEC-002 through SPEC-012 are approved; SPEC-012's
+focused render-extension completion seam was explicitly approved on
+2026-09-12. SPEC-014 is a downstream sibling contract and supplies no authority
+here.
 
 The runtime receives a validated exact text-resource package from SPEC-005, a
 resolved capability snapshot from SPEC-004, and a synchronous frame endpoint

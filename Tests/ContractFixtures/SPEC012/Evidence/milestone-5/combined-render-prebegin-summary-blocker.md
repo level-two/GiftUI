@@ -47,3 +47,12 @@ T5.2-T5.5 must remain paused until the approved Specification supplies a
 post-preflight/pre-`begin` completion result or another exact equivalent. This
 is a source-contract blocker, not deferred work and not permission to weaken
 the plan-summary invariant.
+
+## Disposition
+
+The maintainer explicitly approved the focused SPEC-012 amendment on
+2026-09-12. It adds an exact completion result to both render-extension
+protocols and requires preflight completion after the sole traversal and before
+`sink.begin`, plus paired streaming completion before `sink.finish`. This
+evidence continues to record the resolved defect; T5.2-T5.5 may resume through
+the amended contract.

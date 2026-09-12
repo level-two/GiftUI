@@ -41,20 +41,27 @@ target_milestone: MVP
 
 # SPEC-012: Canvas, Path, and Stroke Drawing Contract
 
-> **Approved contract:** This revision corrects the source-composition and
-> Embedded
+> **Approved contract:** This revision includes the previously approved
+> correction for the
+> source-composition and Embedded
 > error-model failures found by SPIKE-008 and completes the semantic, layout,
 > render, execution, capacity, raster, and static-lowering contracts identified
 > during completeness review. SPIKE-008 now records corrected macOS and
-> hardware-free nRF52840 declaration evidence. It is the authoritative drawing
-> implementation contract for the MVP profiles and backends.
+> hardware-free nRF52840 declaration evidence.
 >
-> **2026-09-12 implementation-seam amendment:** This approved revision adds
+> **2026-09-12 implementation-seam amendment:** The previously approved
+> revision adds
 > the construction-workspace operations required by `CanvasPlanProducer`, the
 > additive single-traversal extension contract required to reuse SPEC-008
 > lowering, and a compiler-supported `Copyable` static capture associated type
 > whose value remains borrowed and uncopied during dispatch. These corrections
 > preserve ADR-028 through ADR-031 ownership, lifetime, and resource meaning.
+>
+> **2026-09-12 completion-seam amendment:** The maintainer explicitly approved
+> this focused amendment. It adds an exact completion result to each render
+> traversal extension and requires preflight completion after the sole
+> traversal and before `sink.begin`, with paired streaming completion before
+> `sink.finish`. Implementation may resume through the active plan.
 
 ## Summary
 
@@ -475,6 +482,11 @@ package enum RenderExtensionVisitResult: Equatable, Sendable {
     case failure(RenderProductionError)
 }
 
+package enum RenderExtensionCompletionResult: Equatable, Sendable {
+    case success
+    case failure(RenderProductionError)
+}
+
 package protocol RenderPreflightExtension {
     associatedtype Identity: Equatable, Sendable
     mutating func visit(
@@ -483,6 +495,7 @@ package protocol RenderPreflightExtension {
         bounds: Rect,
         clip: Rect
     ) -> RenderExtensionVisitResult
+    mutating func complete() -> RenderExtensionCompletionResult
 }
 
 package protocol RenderStreamingExtension {
@@ -495,6 +508,7 @@ package protocol RenderStreamingExtension {
         clip: Rect,
         sink: inout Sink
     ) -> RenderExtensionVisitResult
+    mutating func complete() -> RenderExtensionCompletionResult
 }
 
 extension RenderProducer {
@@ -679,14 +693,31 @@ checked addition, render/workspace capacity, and configured or actual sink
 capacity remain owned by the producer. A failure aborts before `begin` during
 preflight or causes the one begun stream to discard during streaming.
 
+After every scope visit and all producer-owned traversal validation succeed,
+the producer calls that traversal's extension `complete()` exactly once,
+including for a successful traversal containing zero Canvas scopes. It does
+not call `complete()` after a failed visit or failed producer validation.
+Preflight completion occurs after the sole complete preflight traversal and all
+combined header and capacity checks, but before `sink.begin`; failure returns
+that exact `RenderProductionError` without a sink lifecycle call. Streaming completion
+occurs after the sole complete streaming traversal and before `sink.finish`;
+failure calls `sink.discard()` exactly once and returns that exact error. A
+completion method MUST validate only its call-local accumulated extension
+state against the same borrowed immutable source used by its visits. It MUST
+NOT recurse through semantic or layout scopes, retain a borrow, emit an
+operation, call a sink lifecycle method, or change the producer-owned header,
+capacity, snapshot, foreground, damage, or ordinary-operation rules.
+
 Extended `preflight` acquires and resets the workspace, performs no sink call,
-and returns the complete ordinary-plus-extension header. Extended `produce`
-repeats the same combined preflight against the actual sink capacity, requires
-exact equality with `expectedHeader` before `begin`, then streams through one
-begin/finish transaction. It requires equal preflight and streaming extension
-totals and unchanged semantic/layout snapshots. It MUST NOT retain operations,
-create a second identity or foreground stack, or fork any ordinary traversal
-rule.
+and returns the complete ordinary-plus-extension header only after successful
+preflight completion. Extended `produce` repeats the same combined preflight
+against the actual sink capacity, requires exact equality with
+`expectedHeader`, and successfully completes the preflight extension before
+`begin`, then streams through one begin/finish transaction. It requires a
+successful streaming completion, equal preflight and streaming extension
+operation totals, and unchanged semantic/layout snapshots before `finish`.
+It MUST NOT retain operations, create a second identity or foreground stack,
+or fork any ordinary traversal rule.
 
 The existing SPEC-007 `SemanticLayoutPrimitive` enum gains exactly one case,
 `.canvas`. The existing SPEC-008 `SemanticRenderScope` enum gains exactly one
@@ -746,15 +777,22 @@ Canvas occurrences.
 the borrowed plan and delegates to the extended `RenderProducer.preflight`.
 `CanvasRenderProducer.produce` constructs matching Canvas preflight and
 streaming extensions and delegates to the extended `RenderProducer.produce`.
-It MUST NOT independently recurse through semantic or layout scopes.
+Each Canvas extension's `complete()` requires exact equality between its
+visited Canvas-occurrence, stroke, point, subpath, and normalized-stroke totals
+and `drawingPlan.summary`. `CanvasRenderProducer` MUST NOT inspect a completed
+visitor outside the delegate, independently recurse through semantic or layout
+scopes, or perform another authoritative preflight traversal.
 
 `preflight` performs the complete immutable combined traversal without a sink.
 It acquires and resets the caller-owned render workspace within the call and
 retains no borrow. On success it returns `.success` with the exact header that
 `produce` must later receive as `expectedHeader`. `produce` repeats the same
 traversal inside offer; any difference from that header or from the plan
-summary is `.invariantViolation` before `begin`. A preflight capacity shortfall
-returns SPEC-008 `.capacityExhausted`; no partial header is exposed.
+summary is `.invariantViolation` before `begin`. The plan-summary comparison is
+performed by the preflight extension's one completion call after all visits,
+so it includes a missing final zero-stroke Canvas and every final point or
+subpath count without guessing traversal termination. A preflight capacity
+shortfall returns SPEC-008 `.capacityExhausted`; no partial header is exposed.
 
 ## Behavior
 
@@ -863,7 +901,10 @@ Inside the later single `SynchronousFrameEndpoint.offer`,
 `CanvasRenderProducer` repeats the immutable ordinary/drawing traversal,
 constructs one combined `RenderPlanHeader`, requires equality with the
 pre-publication `expectedHeader`, compares the actual sink capacity with the
-already-proven counts before `begin`, and streams one painter-ordered sequence.
+already-proven counts, and successfully completes the Canvas preflight
+extension's full `drawingPlan.summary` comparison before `begin`. It then
+streams one painter-ordered sequence and successfully completes the Canvas
+streaming extension's full summary comparison before `finish`.
 An actual capacity smaller than the startup-validated lower bound is
 `.invariantViolation`, not ordinary exhaustion. After `begin`, a `false`
 straight-line-stroke call is also `.invariantViolation` and triggers exactly
@@ -999,7 +1040,7 @@ encoded bytes for that corpus.
 | `invalidPhase` | `.invalidPhase` | `.rendering` | `.activeCycle` | `.safetyNotProven` |
 | `reentrancyViolation` | `.reentrancyViolation` | `.rendering` | `.activeCycle` | `.safetyNotProven` |
 | idle combined-sink `sinkRefused` during offer | `.nonRetryableRefusal` | `.rendering` | `.candidateFrame` | `.contained` |
-| drawing or combined-stream `invariantViolation` | `.invariantViolation` | `.rendering` | `.runtime` | `.safetyNotProven` |
+| Canvas extension completion mismatch or drawing/combined-stream `invariantViolation` | `.invariantViolation` | `.rendering` | `.runtime` | `.safetyNotProven` |
 
 Detection precedence is normative. Startup validates limit construction,
 static callable coverage, B2 workload sufficiency, then SPEC-004 capability.
@@ -1019,6 +1060,12 @@ style, trap for ordinary exhaustion, or publish partial output. An idle sink
 refusal and any offer-time contract violation occur after publication and
 follow SPEC-009 refusal/invariant handling; they do not dirty or roll back the
 published semantic revision.
+
+During combined production, a Canvas preflight completion mismatch is detected
+only after the sole preflight traversal has visited every scope and before
+`begin`; no sink lifecycle call occurs. A Canvas streaming completion mismatch
+is detected after the sole streaming traversal and before `finish`; the
+producer calls `discard()` exactly once. Both map as the invariant row above.
 
 ## Performance Requirements
 
@@ -1053,6 +1100,12 @@ There is no prior approved Canvas API. These declarations are the MVP source
 contract, not SwiftUI compatibility. Internal plan packing, workspace layout,
 and borrowing implementation are not ABI or persistent formats.
 
+The focused completion-seam amendment is a source-breaking package-SPI change.
+Every `RenderPreflightExtension` and `RenderStreamingExtension` conformer MUST
+implement the exact `complete()` requirement; no default implementation is
+provided. The ordinary non-Canvas `RenderProducer.produce` declaration and
+public Presentation source remain unchanged.
+
 ## Testing Requirements
 
 Provide `scripts/contracts/run-spec-012.sh` for macOS dynamic/static and
@@ -1075,7 +1128,10 @@ and cross-profile equality.
 Combined render fixtures cover exact header totals; fill/glyph/stroke painter
 order; no-op strokes; local-to-surface overflow; outside-Canvas geometry;
 inherited clips; actual-sink capacity disagreement; begin, finish, and discard
-call counts; and borrowed-address nonretention. Raster fixtures exercise the
+call counts; preflight and streaming completion call counts; missing final
+zero-stroke Canvas and final point/subpath summary disagreements; completion
+failure before `begin` and before `finish`; and borrowed-address nonretention.
+Raster fixtures exercise the
 complete normative coverage/encoding corpus with zero mask and byte tolerance
 on the RGBA8888 framebuffer and RGB565/tiled reference consumers.
 
@@ -1089,7 +1145,8 @@ unlowered closure-based Canvas expressions in production images, cleanup,
 allocation count, symbols, value sizes, stack, RAM, flash, and linked-size
 deltas. Package-interface fixtures construct `DrawingPlanSummary` and
 `StraightLineStrokeHeader` from their non-owning producer/profile modules and
-verify exact field preservation.
+verify exact field preservation, and compile both completion-result cases plus
+both exact extension-protocol completion requirements on all four profiles.
 
 ## Acceptance Criteria
 
@@ -1111,7 +1168,9 @@ verify exact field preservation.
   earlier stroke and all explicit subpaths are preserved.
 - [ ] **DR-005:** The combined recording sink receives one begin/finish pair,
   exact total header counts, and exact fill/glyph/stroke style, point, boundary,
-  origin, clip, no-op, and painter-order transcripts across profiles.
+  origin, clip, no-op, and painter-order transcripts across profiles; complete
+  plan-summary equality is proven after preflight traversal and before begin,
+  and again after streaming traversal and before finish.
 - [ ] **DR-006:** RGBA8888 framebuffer and tiled RGB565 fixtures match every
   normative coverage and encoding vector with zero differing pixels or bytes.
 - [ ] **DR-007:** Every validation/capacity edge fails in the specified order,
@@ -1178,11 +1237,14 @@ board was flashed or operated.
 
 ## Open Issues
 
-No unresolved contract or architectural issue remains in this draft.
-The 2026-09-12 approved source correction adds the non-returning invocation
-bridge, exact profile-staging realization, and package value constructors that
-close the T2.1 and T3.2 implementation blockers without changing accepted
-ADR ownership or lifecycle decisions.
+No unresolved architectural issue remains. The maintainer explicitly approved
+the focused completion-seam correction on 2026-09-12; T5.2-T5.5 may resume at
+the SPEC-008 producer boundary through the active implementation plan.
+
+The previously approved 2026-09-12 source correction adds the non-returning
+invocation bridge, exact profile-staging realization, and package value
+constructors that close the T2.1 and T3.2 implementation blockers without
+changing accepted ADR ownership or lifecycle decisions.
 SPIKE-008 records corrected macOS and hardware-free nRF52840 evidence for the
 declaration, ownership, typed-throws, ABI, heap, and linked-symbol portions of
 DR-001 and DR-011. Full cross-profile conformance remains an implementation-
