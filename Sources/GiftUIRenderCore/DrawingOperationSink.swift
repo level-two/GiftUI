@@ -22,6 +22,26 @@ package struct StraightLineStrokeHeader: Equatable, Sendable {
     package let inheritedClip: Rect
     package let pointCount: UInt16
     package let subpathCount: UInt16
+
+    package init(
+        color: Color,
+        lineWidth: GeometryScalar,
+        lineCap: LineCap,
+        lineJoin: LineJoin,
+        surfaceOrigin: Point,
+        inheritedClip: Rect,
+        pointCount: UInt16,
+        subpathCount: UInt16
+    ) {
+        self.color = color
+        self.lineWidth = lineWidth
+        self.lineCap = lineCap
+        self.lineJoin = lineJoin
+        self.surfaceOrigin = surfaceOrigin
+        self.inheritedClip = inheritedClip
+        self.pointCount = pointCount
+        self.subpathCount = subpathCount
+    }
 }
 
 package protocol StraightLineStrokeView {

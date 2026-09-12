@@ -280,7 +280,7 @@ cleanup, and first-failure semantics.
       with positive fields, `maximumNormalizedStrokeOperations >=
       maximumPlanStrokes`, exact equality admission, and nil for every invalid
       construction. Establish focused finite dynamic/static fixture storage.
-- [ ] `T3.2` — Implement `DrawingPlanView`, `DrawingPlanWorkspace`, and
+- [x] `T3.2` — Implement `DrawingPlanView`, `DrawingPlanWorkspace`, and
       `CanvasInvocationSource` with exact acquisition, active/inaccessible/
       successful/discarded/reset states, total summary accounting, zero-stroke
       Canvas lookup, nil out-of-range behavior, and invariant detection for
@@ -753,14 +753,17 @@ exactly 4-byte `StaticCanvasLimits`. The
 [limit evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-3/drawing-limits-and-fixture-storage.md)
 records the boundary and profile results.
 
-The `T3.2` Specification blocker is resolved by the approved 2026-09-12
-SPEC-012 correction. `StraightLineStrokeHeader` and `DrawingPlanSummary` now
-expose exact nonfailing package initializers that copy already-validated values
-without normalization. The focused
-[construction review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-3/plan-value-construction-specification-blocker.md)
-records the resolution and retained validation responsibilities. T3.2 and its
-dependent T3.4-T3.5 tasks are unblocked but remain unchecked until implemented
-and verified; T2.1 remains the next dependency-complete task.
+`T3.2` is complete. `GiftUIDrawing` now owns the exact `DrawingPlanView` and
+`DrawingPlanWorkspace` contracts alongside the T2.1 `CanvasInvocationSource`.
+The approved package initializers for `DrawingPlanSummary` and
+`StraightLineStrokeHeader` copy every field without normalization. A focused
+finite workspace fixture proves idle/active/sealed/discarded/reset lifecycle,
+acquisition refusal without mutation, total summary accounting, zero-stroke
+Canvas lookup, all half-open lookup bounds, post-discard inaccessibility, and
+fail-closed duplicate, missing, header/range, and summary inconsistencies. The
+[workspace evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-3/drawing-plan-workspace.md)
+records the contract and package-interface checks. T3.3 is the next
+dependency-complete task.
 
 `T1.1` is complete. `GiftUI.Canvas` now has the exact typed-throws initializer,
 private retained draw callable, `Body == Never` invariant body, primitive

@@ -59,6 +59,9 @@ owners = {
   "StraightLineStrokeView" => "GiftUIRenderCore/DrawingOperationSink.swift",
   "DrawingOperationSink" => "GiftUIRenderCore/DrawingOperationSink.swift",
   "DrawingPlanSummary" => "GiftUIDrawing/DrawingValues.swift",
+  "DrawingPlanView" => "GiftUIDrawing/DrawingPlan.swift",
+  "DrawingPlanWorkspace" => "GiftUIDrawing/DrawingPlan.swift",
+  "CanvasInvocationSource" => "GiftUIDrawing/CanvasInvocationSource.swift",
   "DrawingLimits" => "GiftUIDrawing/DrawingLimits.swift",
   "StaticCanvasLimits" => "GiftUIDrawing/DrawingLimits.swift",
   "DrawingProductionError" => "GiftUIDrawing/DrawingValues.swift",
@@ -102,6 +105,14 @@ if ARGV.length == 2
   %w[DrawingLimits StaticCanvasLimits DrawingPlanSummary DrawingProductionError DrawingPlanResult].each do |name|
     fail_check("Drawing interface lacks #{name}") unless drawing_interface.include?(name)
   end
+  fail_check("Render Core interface lacks exact stroke-header initializer") unless
+    render_interface.include?(
+      "package init(color: GiftUI.Color, lineWidth: GiftUI.GeometryScalar, lineCap: GiftUI.LineCap, lineJoin: GiftUI.LineJoin, surfaceOrigin: GiftUI.Point, inheritedClip: GiftUI.Rect, pointCount: Swift.UInt16, subpathCount: Swift.UInt16)"
+    )
+  fail_check("Drawing interface lacks exact plan-summary initializer") unless
+    drawing_interface.include?(
+      "package init(canvasOccurrenceCount: Swift.UInt16, strokeCount: Swift.UInt16, pointCount: Swift.UInt16, subpathCount: Swift.UInt16, normalizedStrokeOperationCount: Swift.UInt16)"
+    )
 elsif !ARGV.empty?
   fail_check("expected zero arguments or Render Core and Drawing interfaces")
 end

@@ -4,6 +4,20 @@ package struct DrawingPlanSummary: Equatable, Sendable {
     package let pointCount: UInt16
     package let subpathCount: UInt16
     package let normalizedStrokeOperationCount: UInt16
+
+    package init(
+        canvasOccurrenceCount: UInt16,
+        strokeCount: UInt16,
+        pointCount: UInt16,
+        subpathCount: UInt16,
+        normalizedStrokeOperationCount: UInt16
+    ) {
+        self.canvasOccurrenceCount = canvasOccurrenceCount
+        self.strokeCount = strokeCount
+        self.pointCount = pointCount
+        self.subpathCount = subpathCount
+        self.normalizedStrokeOperationCount = normalizedStrokeOperationCount
+    }
 }
 
 package enum DrawingProductionError: UInt8, Equatable, Sendable {
