@@ -45,6 +45,20 @@ active:
       - GiftUIFailureDiagnostics
       - GiftUIFailureExecution
       - GiftUIRenderCore
+  GiftUIInteractionFailureAdapterFixture:
+    type: regular
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUIFailureExecution
+      - GiftUIInteraction
+  GiftUIInteractionFailureAdapterTests:
+    type: test
+    dependencies:
+      - GiftUIExecution
+      - GiftUIFailureCore
+      - GiftUIFailureExecution
+      - GiftUIInteraction
+      - GiftUIInteractionFailureAdapterFixture
   GiftUIObservableStateFailureAdapterFixture:
     type: regular
     dependencies:

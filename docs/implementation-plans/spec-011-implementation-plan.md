@@ -214,7 +214,7 @@ claimed.
       unknown/duplicate rows, unreferenced data, missing edges, and
       profile-private comparison fields. Distinguish host execution,
       cross-build/inspection, simulator, and connected-hardware evidence.
-- [ ] `T0.2` — Freeze the exact `GiftUIInteraction`, focused-test, and narrowly
+- [x] `T0.2` — Freeze the exact `GiftUIInteraction`, focused-test, and narrowly
       named interaction/failure-adapter target graph in dependency fixtures.
       Land each `Package.swift` target or edge only with its first compiling
       source, and complete this task only when all named targets and checks
@@ -438,7 +438,7 @@ and candidate/capture/dispatch side effects are observable in fixtures.
 origin/scope/containment, apply mandatory effects before residual policy, and
 remain independent of diagnostics.
 
-- [ ] `T6.1` — Implement or complete the narrow owner adapter mapping every
+- [x] `T6.1` — Implement or complete the narrow owner adapter mapping every
       SPEC-011 local error to the exact SPEC-003 fact table while preserving
       Interaction versus coordinator origin. Do not translate SPEC-009
       generation exhaustion or rerank an already selected SPEC-009/SPEC-010
@@ -751,3 +751,15 @@ dispatcher. Focused integration proves category and action order, synchronous
 change reporting, at-most-once application, dirty/wake coalescing, and deferral
 of action-triggered repository facts to a later sealed batch. See the
 [mutation dispatch evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t5-6-mutation-dispatch.md).
+
+`T0.2` and `T6.1` are complete together as required by the incremental target
+rule. `GiftUIInteractionFailureAdapterFixture` and its focused tests landed
+with their first compiling mapping source. The exact graph keeps Interaction
+on `GiftUI`, Semantic Core, Layout, and Execution only; the narrow adapter
+joins Interaction with Failure Core and Failure Execution without a reverse
+edge. Its exhaustive table preserves the exact local error, detecting owner,
+execution context, condition, origin, scope, and containment for all nine
+cases, and mapping is unavailable before mandatory effects or for the wrong
+detecting owner. See the
+[boundary evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t0-2-target-boundaries.md)
+and [mapping evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t6-1-failure-mapping.md).

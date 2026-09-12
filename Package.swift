@@ -113,6 +113,14 @@ let package = Package(
             ]
         ),
         .target(
+            name: "GiftUIInteractionFailureAdapterFixture",
+            dependencies: [
+                "GiftUIFailureCore",
+                "GiftUIFailureExecution",
+                "GiftUIInteraction",
+            ]
+        ),
+        .target(
             name: "GiftUIFailureExecution",
             dependencies: ["GiftUIFailureCore", "GiftUIExecution"]
         ),
@@ -298,6 +306,16 @@ let package = Package(
                 "GiftUI",
                 "GiftUIExecution",
                 "GiftUIInteraction",
+            ]
+        ),
+        .testTarget(
+            name: "GiftUIInteractionFailureAdapterTests",
+            dependencies: [
+                "GiftUIExecution",
+                "GiftUIFailureCore",
+                "GiftUIFailureExecution",
+                "GiftUIInteraction",
+                "GiftUIInteractionFailureAdapterFixture",
             ]
         ),
         .testTarget(
