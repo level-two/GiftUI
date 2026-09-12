@@ -203,7 +203,7 @@ production behavior is claimed.
       source. Enforce every allowed and prohibited import from SPEC-014; do not
       create placeholders, umbrella exports, compatibility shims, or a second
       owner for existing types.
-- [ ] `T0.3` — Create and explicitly register
+- [x] `T0.3` — Create and explicitly register
       `scripts/contracts/run-spec-014.sh --profile <profile>` for exactly
       `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, and
       `nrf52840-embedded`. Use the repository's immutable driver/report helpers,
@@ -649,7 +649,11 @@ adapter owners, every exact direct edge, prohibited dependency classes, and
 reserved-to-active activation rule. Package and SPEC-002 exact-set rows remain
 required atomically when each owner receives its first substantive source;
 empty placeholder targets are rejected. Every `BI-001` through `BI-015`
-evidence row remains pending.
+evidence row remains pending. `T0.3` registered the exact four-profile driver,
+immutable input/report identity, pinned toolchain preflights, and the exclusive
+`.build/spec-014/` output root. The driver publishes its explicit missing and
+blocked rows before returning nonzero while implementation evidence is
+incomplete.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

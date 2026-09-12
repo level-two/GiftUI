@@ -120,4 +120,13 @@ end
 unreferenced = all_cases.keys - referenced_cases
 fail_check("unreferenced fixture data: #{unreferenced.join(', ')}") unless unreferenced.empty?
 
+runner = ROOT.join("scripts/contracts/run-spec-014.sh")
+fail_check("SPEC-014 driver is missing or not executable") unless runner.file? && runner.executable?
+runner_text = runner.read
+EXPECTED_PROFILES.each do |profile|
+  fail_check("driver profile is missing: #{profile}") unless runner_text.include?(profile)
+end
+fail_check("driver does not use the SPEC-014 output root") unless runner_text.include?(".build/spec-014")
+fail_check("driver uses the shared contract-report output root") if runner_text.include?(".build/contract-reports")
+
 puts "SPEC-014 fixture check passed: 5 ordered corpora, #{all_cases.length} registered cases, and 15 pending criteria."

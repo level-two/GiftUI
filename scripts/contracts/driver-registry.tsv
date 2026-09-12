@@ -11,3 +11,4 @@ SPEC-010	scripts/contracts/run-spec-010.sh	macos-dynamic,macos-static,raspberry-
 SPEC-011	scripts/contracts/run-spec-011.sh	macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
 SPEC-012	scripts/contracts/run-spec-012.sh	macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
 SPEC-013	scripts/contracts/run-spec-013.sh	macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
+SPEC-014	scripts/contracts/run-spec-014.sh	macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
