@@ -349,7 +349,7 @@ allocating no identity or retaining any upstream borrow.
       paint order, action code, and publishable target generation all match;
       otherwise stage a generation-pending replacement. Interaction must not
       allocate a generation or reproduce target lookup.
-- [ ] `T3.5` — Implement exactly-once `assignGeneration`, `finishCandidate`,
+- [x] `T3.5` — Implement exactly-once `assignGeneration`, `finishCandidate`,
       preflight, first-error precedence, illegal-phase/reentry/duplicate checks,
       and immutable ready-for-offer state. Prove unresolved replacements fail
       before offer and generation exhaustion remains SPEC-009's exact

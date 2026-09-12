@@ -5,6 +5,59 @@ import XCTest
 @testable import GiftUIInteraction
 
 final class InteractionCandidateAppendTests: XCTestCase {
+    func testGenerationAssignmentAndFinishAreExactlyOnceAndPhaseBound() {
+        var state = makeState(capacity: 2)
+        XCTAssertEqual(
+            state.assignGeneration(ActionGeneration(rawValue: 1), to: 1),
+            .invalidPhase
+        )
+        XCTAssertNil(
+            state.beginCandidate(
+                limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!
+            )
+        )
+        XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+        XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+        XCTAssertEqual(
+            state.assignGeneration(ActionGeneration(rawValue: 9), to: 1),
+            .invariantViolation
+        )
+        XCTAssertEqual(state.finishCandidate(), .invariantViolation)
+
+        var unresolved = makeState(capacity: 1)
+        XCTAssertNil(
+            unresolved.beginCandidate(
+                limits: InteractionLimits(maximumActions: 1, maximumHitRegions: 1)!
+            )
+        )
+        XCTAssertEqual(append(&unresolved, identity: 1, paintOrder: 0), .requiresGeneration)
+        XCTAssertEqual(unresolved.finishCandidate(), .invalidIdentity)
+
+        var ready = makeState(capacity: 1)
+        XCTAssertNil(
+            ready.beginCandidate(
+                limits: InteractionLimits(maximumActions: 1, maximumHitRegions: 1)!
+            )
+        )
+        XCTAssertEqual(append(&ready, identity: 1, paintOrder: 0), .requiresGeneration)
+        XCTAssertNil(ready.assignGeneration(ActionGeneration(rawValue: 8), to: 1))
+        XCTAssertNil(ready.finishCandidate())
+        XCTAssertEqual(ready.finishCandidate(), .invalidPhase)
+        XCTAssertEqual(append(&ready, identity: 2, paintOrder: 1), .failure(.invalidPhase))
+    }
+
+    func testFirstCandidateErrorWinsUntilDiscard() {
+        var state = makeState(capacity: 2)
+        XCTAssertNil(
+            state.beginCandidate(
+                limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!
+            )
+        )
+        XCTAssertEqual(append(&state, identity: 1, paintOrder: 1), .failure(.invalidGeometry))
+        XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .failure(.invalidGeometry))
+        XCTAssertEqual(state.finishCandidate(), .invalidGeometry)
+    }
+
     func testOnlyAnExactlyEqualCommittedRecordPreservesGeneration() {
         let committed = BoundActionRecord(
             identity: UInt16(7),

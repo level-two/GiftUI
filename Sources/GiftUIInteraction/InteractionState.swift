@@ -25,6 +25,7 @@ where
     private var committedHitRegions: HitRegions
     private var limits: InteractionLimits?
     private var phase: Phase = .idle
+    private var candidateError: InteractionError?
     private var committedPresentationRevision: PresentationRevision?
 
     package init(
@@ -51,6 +52,7 @@ where
         candidateRecords.reset()
         candidateHitRegions.reset()
         self.limits = limits
+        candidateError = nil
         phase = .staging
         return nil
     }
@@ -66,6 +68,9 @@ where
     ) -> InteractionCandidateAppendResult {
         guard phase == .staging, let limits else {
             return .failure(.invalidPhase)
+        }
+        if let candidateError {
+            return .failure(candidateError)
         }
         guard !containsCandidate(identity: identity) else {
             return failCandidate(.invalidIdentity)
@@ -159,10 +164,9 @@ where
     private mutating func failCandidate(
         _ error: InteractionError
     ) -> InteractionCandidateAppendResult {
-        candidateRecords.reset()
-        candidateHitRegions.reset()
-        limits = nil
-        phase = .idle
+        if candidateError == nil {
+            candidateError = error
+        }
         return .failure(error)
     }
 
@@ -170,11 +174,55 @@ where
         _ generation: ActionGeneration,
         to identity: Identity
     ) -> InteractionError? {
-        .invalidPhase
+        guard phase == .staging else { return .invalidPhase }
+        if let candidateError { return candidateError }
+        var index: UInt16 = 0
+        while index < candidateRecords.count {
+            guard var record = candidateRecords.record(at: index) else {
+                candidateError = .invariantViolation
+                return .invariantViolation
+            }
+            if record.identity == identity {
+                guard record.generation == nil else {
+                    candidateError = .invariantViolation
+                    return .invariantViolation
+                }
+                record.generation = generation
+                guard candidateRecords.replace(at: index, with: record) else {
+                    candidateError = .invariantViolation
+                    return .invariantViolation
+                }
+                return nil
+            }
+            index += 1
+        }
+        candidateError = .invalidIdentity
+        return .invalidIdentity
     }
 
     package mutating func finishCandidate() -> InteractionError? {
-        .invalidPhase
+        guard phase == .staging else { return .invalidPhase }
+        if let candidateError { return candidateError }
+        var index: UInt16 = 0
+        while index < candidateRecords.count {
+            guard let record = candidateRecords.record(at: index) else {
+                candidateError = .invariantViolation
+                return .invariantViolation
+            }
+            guard record.generation != nil else {
+                candidateError = .invalidIdentity
+                return .invalidIdentity
+            }
+            index += 1
+        }
+        guard candidateRecords.count <= committedRecords.capacity,
+            candidateHitRegions.count <= committedHitRegions.capacity
+        else {
+            candidateError = .capacityExhausted
+            return .capacityExhausted
+        }
+        phase = .readyForOffer
+        return nil
     }
 
     package mutating func resolveCandidate(
