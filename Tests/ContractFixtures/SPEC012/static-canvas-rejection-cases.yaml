@@ -1,0 +1,75 @@
+schema: spec-012-static-canvas-rejections-v1
+limits:
+  maximum_callable_cases: 3
+  maximum_capture_bytes: 12
+cases:
+  - key: zero-id
+    callable_ids: [0]
+    switch_coverage: [0]
+    captures: [Color]
+    expected: callable ID is zero
+  - key: uint16-excess-id
+    callable_ids: [65536]
+    switch_coverage: [65536]
+    captures: [Color]
+    expected: callable ID exceeds UInt16
+  - key: configured-case-excess
+    callable_ids: [1, 2, 3, 4]
+    switch_coverage: [1, 2, 3, 4]
+    captures: [Color]
+    expected: callable case count exceeds limit
+  - key: incomplete-coverage
+    callable_ids: [1, 2, 3]
+    switch_coverage: [1, 2]
+    captures: [Color]
+    expected: switch coverage is incomplete
+  - key: duplicate-coverage
+    callable_ids: [1, 2, 3]
+    switch_coverage: [1, 2, 2, 3]
+    captures: [Color]
+    expected: switch coverage is duplicated
+  - key: unsupported-capture
+    callable_ids: [1]
+    switch_coverage: [1]
+    captures: [Double]
+    expected: unsupported capture type
+  - key: capture-byte-excess
+    callable_ids: [1]
+    switch_coverage: [1]
+    captures: [GeometryScalar, GeometryScalar, GeometryScalar, GeometryScalar]
+    expected: capture bytes exceed limit
+  - key: dynamic-collection
+    callable_ids: [1]
+    switch_coverage: [1]
+    captures: ['[Point]']
+    expected: dynamic collection capture is prohibited
+  - key: existential
+    callable_ids: [1]
+    switch_coverage: [1]
+    captures: ['any Equatable']
+    expected: existential capture is prohibited
+  - key: heap-owned-box
+    callable_ids: [1]
+    switch_coverage: [1]
+    captures: ['HeapBox<GeometryScalar>']
+    expected: heap-owned box capture is prohibited
+  - key: weak-box
+    callable_ids: [1]
+    switch_coverage: [1]
+    captures: ['weak FixtureModel']
+    expected: weak capture is prohibited
+  - key: unowned-box
+    callable_ids: [1]
+    switch_coverage: [1]
+    captures: ['unowned FixtureModel']
+    expected: unowned capture is prohibited
+  - key: class-reference
+    callable_ids: [1]
+    switch_coverage: [1]
+    captures: [FixtureModel]
+    expected: class reference capture is prohibited
+  - key: escaping-closure
+    callable_ids: [1]
+    switch_coverage: [1]
+    captures: ['@escaping (Size) -> Void']
+    expected: closure capture is prohibited

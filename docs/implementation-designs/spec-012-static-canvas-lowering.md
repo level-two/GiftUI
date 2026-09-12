@@ -121,7 +121,7 @@ All counts are checked before conversion to `UInt16`. Capture sizes and aligned
 offsets use checked arithmetic. Generation fails before linking for zero or
 excess IDs, incomplete coverage, unsupported captures, over-limit records, or
 an unlowered closure. There is no closure-retaining fallback. Production limit
-comparison and allocator/symbol evidence remain T6.3-T6.5 work.
+comparison and allocator/symbol evidence remain T6.4-T6.5 work.
 
 ## Test and Diagnostic Seams
 
@@ -131,8 +131,9 @@ reconstructs the full manifest from the descriptor, verifies source anchors,
 field layouts, nonzero complete generated switch coverage, whole-storage borrow,
 and absence of a closure fallback. Host tests compile the generated conformance,
 compare its exact four-stroke transcript, verify greatest-case rather than
-summed storage, and poison captures after normal and throwing invocation. Later
-tasks add negative generation and cross-profile resource inspection without
+summed storage, and poison captures after normal and throwing invocation. The
+generator gate runs a checked fourteen-case rejection corpus before accepting
+the generated source. Later tasks add cross-profile resource inspection without
 making diagnostics control runtime behavior.
 
 ## Rejected Implementation Alternatives
@@ -148,10 +149,10 @@ making diagnostics control runtime behavior.
 
 ## Open Implementation Questions
 
-No T6.2 implementation question remains. The exact production source-analysis
+No T6.2-T6.3 implementation question remains. The exact production source-analysis
 front end and emitted private type names remain replaceable SPEC-013 integration
-details. T6.3 must still prove build-time rejection and T6.5 must prove static
-profile resource behavior on both pinned compilers.
+details. T6.5 must still prove static profile resource behavior on both pinned
+compilers.
 
 ## Code and Evidence Links
 
@@ -160,5 +161,6 @@ profile resource behavior on both pinned compilers.
 - [Static Canvas manifest checker](../../scripts/contracts/check-spec-012-static-canvas-manifest.rb)
 - [Generated callable table fixture](../../Tests/GiftUIDrawingTests/GeneratedStaticCanvasCallableTable.swift)
 - [Static callable evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-callable-table.md)
+- [Generation rejection evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-generation-rejections.md)
 - [T6.2 Specification blocker](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-callable-table-specification-blocker.md)
 - [SPEC-012 contract fixtures](../../Tests/ContractFixtures/SPEC012/README.md)

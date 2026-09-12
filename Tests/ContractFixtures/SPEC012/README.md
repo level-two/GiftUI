@@ -79,8 +79,9 @@ Run `scripts/contracts/check-spec-012-static-canvas-manifest.rb` to reconstruct
 the expected manifest and reject source-anchor, ordering, layout, coverage,
 capture-ownership, or generated-dispatch drift. T6.2's checked generated test
 source implements the three fixture cases and greatest-case capture storage.
-Negative generation cases, production profile storage, limits, and host
-handles remain owned by T6.3-T6.5 and SPEC-013/015.
+`static-canvas-rejection-cases.yaml` supplies the exact T6.3 build-time
+rejection corpus. Production profile storage, limits, and host handles remain
+owned by T6.4-T6.5 and SPEC-013/015.
 
 ## Evidence registry
 

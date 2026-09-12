@@ -8,6 +8,7 @@ ROOT = Pathname.new(File.expand_path("../..", __dir__))
 FIXTURES = ROOT.join("Tests/ContractFixtures/SPEC012")
 INPUT = FIXTURES.join("static-canvas-input.yaml")
 MANIFEST = FIXTURES.join("static-canvas-manifest.yaml")
+REJECTIONS = FIXTURES.join("static-canvas-rejection-cases.yaml")
 GENERATED = ROOT.join(
   "Tests/GiftUIDrawingTests/GeneratedStaticCanvasCallableTable.swift"
 )
@@ -15,6 +16,7 @@ CAPTURE_LAYOUTS = {
   "Color" => [3, 1],
   "GeometryScalar" => [4, 4],
 }.freeze
+CLASS_CAPTURE_TYPES = %w[FixtureModel].freeze
 
 def fail_check(message)
   warn "SPEC-012 static Canvas manifest check failed: #{message}"
@@ -37,6 +39,44 @@ end
 def align(value, alignment)
   remainder = value % alignment
   remainder.zero? ? value : value + alignment - remainder
+end
+
+def rejection_for(candidate, limits)
+  ids = candidate.fetch("callable_ids")
+  coverage = candidate.fetch("switch_coverage")
+  captures = candidate.fetch("captures")
+  return "callable ID is zero" if ids.any? { |id| id == 0 }
+  return "callable ID exceeds UInt16" if ids.any? { |id| id > 65_535 }
+  if ids.length > limits.fetch("maximum_callable_cases")
+    return "callable case count exceeds limit"
+  end
+  return "switch coverage is duplicated" unless coverage.uniq == coverage
+  return "switch coverage is incomplete" unless coverage.sort == ids.sort
+
+  captures.each do |capture|
+    return "dynamic collection capture is prohibited" if capture.match?(/\A\[|\AArray</)
+    return "existential capture is prohibited" if capture.match?(/\A(?:any|some)\s/)
+    return "weak capture is prohibited" if capture.start_with?("weak ")
+    return "unowned capture is prohibited" if capture.start_with?("unowned ")
+    if capture.match?(/\A(?:HeapBox|ManagedBuffer|String)(?:<|\z)/)
+      return "heap-owned box capture is prohibited"
+    end
+    return "class reference capture is prohibited" if CLASS_CAPTURE_TYPES.include?(capture)
+    return "closure capture is prohibited" if capture.include?("->") || capture.include?("@escaping")
+    return "unsupported capture type" unless CAPTURE_LAYOUTS.key?(capture)
+  end
+
+  cursor = 0
+  record_alignment = 1
+  captures.each do |capture|
+    size, alignment = CAPTURE_LAYOUTS.fetch(capture)
+    cursor = align(cursor, alignment) + size
+    record_alignment = [record_alignment, alignment].max
+  end
+  return "capture bytes exceed limit" if
+    align(cursor, record_alignment) > limits.fetch("maximum_capture_bytes")
+
+  nil
 end
 
 input = load_yaml(INPUT)
@@ -164,4 +204,29 @@ fail_check("generated table copies the complete capture storage") if
 fail_check("generated table retains a closure fallback") if
   generated.match?(/@escaping|\[\s*GeneratedStaticCanvasCaptureStorage\s*\]/)
 
-puts "SPEC-012 static Canvas manifest passed: three nonzero generated cases, complete switch coverage, greatest-case capture storage, and four occurrence-owned capture records."
+rejections = load_yaml(REJECTIONS)
+require_keys(rejections, %w[cases limits schema], "rejection corpus")
+fail_check("rejection schema differs") unless
+  rejections["schema"] == "spec-012-static-canvas-rejections-v1"
+limits = rejections.fetch("limits")
+require_keys(
+  limits,
+  %w[maximum_callable_cases maximum_capture_bytes],
+  "rejection limits"
+)
+cases = rejections.fetch("cases")
+fail_check("rejection cases are empty") unless cases.is_a?(Array) && !cases.empty?
+keys = cases.map { |item| item["key"] }
+fail_check("rejection case keys are duplicated") unless keys.uniq.length == keys.length
+cases.each do |candidate|
+  require_keys(
+    candidate,
+    %w[callable_ids captures expected key switch_coverage],
+    "rejection #{candidate['key']}"
+  )
+  actual = rejection_for(candidate, limits)
+  fail_check("rejection #{candidate['key']} differed: #{actual.inspect}") unless
+    actual == candidate.fetch("expected")
+end
+
+puts "SPEC-012 static Canvas manifest passed: three generated cases, greatest-case capture storage, four occurrence records, and #{cases.length} exact build-time rejections."

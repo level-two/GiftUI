@@ -398,7 +398,7 @@ produce identical drawing meaning and cleanup without static heap allocation.
       capture union dispatch with exact two-`inout`, `Size`, typed
       `throws(DrawingError)`, order, and normal/throwing destruction semantics;
       union size is the greatest case rather than the sum.
-- [ ] `T6.3` — Reject zero/excess IDs, incomplete or duplicate coverage,
+- [x] `T6.3` — Reject zero/excess IDs, incomplete or duplicate coverage,
       unsupported capture types, over-limit captures, dynamic collections,
       existentials, heap-owned/weak/unowned boxes, and ordinary class references
       at build time. Prove generation has no retained-closure fallback.
@@ -1007,3 +1007,15 @@ The
 records the source audit, layouts, dispatch transcript, and cleanup. T6.3 is
 the next dependency-complete task; production profile integration remains
 assigned to SPEC-013 and T6.5.
+
+`T6.3` is complete at the checked generator boundary. The static manifest gate
+now runs fourteen exact negative candidates and rejects zero, `UInt16`-excess,
+and configured-limit-excess callable IDs; incomplete and duplicate switch
+coverage; unsupported and over-limit capture layouts; dynamic collections;
+existentials; heap-owned, weak, and unowned boxes; ordinary class references;
+and captured closures. The generated-source audit additionally requires the
+borrowed capture signature and rejects a complete-storage copy, `@escaping`
+storage, capture arrays, and any retained closure fallback. The
+[generation rejection evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-generation-rejections.md)
+records every first diagnostic. Focused host tests and the full 431-test suite
+remain green. T6.4-T6.5 production work retains its SPEC-015/SPEC-013 gates.
