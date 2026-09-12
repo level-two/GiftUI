@@ -380,7 +380,7 @@ per-source capture.
 - [x] `T4.3` — Implement `resolveUp(_:at:)` so only a matching current
       identity/generation/enabled hit admits activation. Every other release
       cancels, and Execution clears capture after either result.
-- [ ] `T4.4` — Integrate the resolver with SPEC-009's admitted down/move/up
+- [x] `T4.4` — Integrate the resolver with SPEC-009's admitted down/move/up
       sequence and capture table without duplicating provenance, ordinal,
       sequence, source, or capacity logic. Cover malformed, dropped,
       out-of-order, capacity-refused, stale-revision, moved, disabled, removed,

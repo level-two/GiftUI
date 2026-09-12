@@ -1,8 +1,20 @@
 import GiftUI
 
-struct PointerActionCapture<Identity>: Equatable, Sendable
+package struct PointerActionCapture<Identity>: Equatable, Sendable
 where Identity: Equatable & Sendable {
     private(set) var captured: CapturedAction<Identity>?
+
+    package init() {}
+
+    package var current: CapturedAction<Identity>? {
+        captured
+    }
+
+    package mutating func replace(
+        with captured: CapturedAction<Identity>?
+    ) {
+        self.captured = captured
+    }
 
     mutating func captureDown<ActionView>(
         at point: Point,
@@ -48,7 +60,7 @@ where Identity: Equatable & Sendable {
         return captured
     }
 
-    mutating func cancel() {
+    package mutating func cancel() {
         captured = nil
     }
 }

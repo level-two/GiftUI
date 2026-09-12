@@ -1,0 +1,11 @@
+# row	admission	capture_before	commit_change	result	dispatch	retarget
+malformed	rejected	-	-	cancelled	0	false
+dropped	rejected	-	-	cancelled	0	false
+out-of-order	rejected	-	-	cancelled	0	false
+capacity-refused	rejected	-	-	cancelled	0	false
+stale-revision	rejected	-	new-revision	cancelled	0	false
+moved	admitted	id1:g1	-	cancelled	0	false
+disabled	admitted	id1:g1	disabled	cancelled	0	false
+removed	admitted	id1:g1	removed	cancelled	0	false
+rebound	admitted	id1:g1	id1:g2	cancelled	0	false
+stable-multi-revision	admitted	id1:g1	equal-record	activationAdmitted	pending-dispatch	false

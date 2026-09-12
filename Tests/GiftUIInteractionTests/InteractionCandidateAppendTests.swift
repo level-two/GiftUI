@@ -5,6 +5,78 @@ import XCTest
 @testable import GiftUIInteraction
 
 final class InteractionCandidateAppendTests: XCTestCase {
+    func testExecutionAdapterUsesTheSingleCaptureOwnerAndAlwaysClearsUp() {
+        var state = makeState(capacity: 2)
+        commitOverlappingRecords(&state, topEnabled: true)
+        var capture = PointerActionCapture<UInt16>()
+
+        XCTAssertEqual(
+            ExecutionGestureAdapter.down(
+                at: Point(x: 1, y: 1),
+                capture: &capture,
+                resolver: state
+            ),
+            .captured(CapturedAction(identity: 2, generation: ActionGeneration(rawValue: 12)))
+        )
+        XCTAssertEqual(
+            ExecutionGestureAdapter.move(
+                at: Point(x: 1, y: 1),
+                capture: &capture,
+                resolver: state
+            ),
+            .continued(CapturedAction(identity: 2, generation: ActionGeneration(rawValue: 12)))
+        )
+        XCTAssertEqual(
+            ExecutionGestureAdapter.up(
+                at: Point(x: 1, y: 1),
+                capture: &capture,
+                resolver: state
+            ),
+            .activationAdmitted(
+                CapturedAction(identity: 2, generation: ActionGeneration(rawValue: 12))
+            )
+        )
+        XCTAssertNil(capture.current)
+
+        XCTAssertEqual(
+            ExecutionGestureAdapter.up(
+                at: Point(x: 1, y: 1),
+                capture: &capture,
+                resolver: state
+            ),
+            .cancelled
+        )
+    }
+
+    func testExecutionAdapterPermanentlyClearsAnOutsideMove() {
+        var state = makeState(capacity: 2)
+        commitOverlappingRecords(&state, topEnabled: true)
+        var capture = PointerActionCapture<UInt16>()
+        _ = ExecutionGestureAdapter.down(
+            at: Point(x: 1, y: 1),
+            capture: &capture,
+            resolver: state
+        )
+
+        XCTAssertEqual(
+            ExecutionGestureAdapter.move(
+                at: Point(x: 8, y: 8),
+                capture: &capture,
+                resolver: state
+            ),
+            .cancelled
+        )
+        XCTAssertNil(capture.current)
+        XCTAssertEqual(
+            ExecutionGestureAdapter.move(
+                at: Point(x: 1, y: 1),
+                capture: &capture,
+                resolver: state
+            ),
+            .cancelled
+        )
+    }
+
     func testDownCapturesTopmostEnabledAndDisabledTopmostBlocksRetargeting() {
         var enabled = makeState(capacity: 2)
         commitOverlappingRecords(&enabled, topEnabled: true)
