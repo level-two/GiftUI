@@ -354,6 +354,9 @@ let package = Package(
         .testTarget(
             name: "GiftUIRuntimeFailureAdapterTests",
             dependencies: [
+                "GiftUIExecution",
+                "GiftUIFailureCore",
+                "GiftUIFailureExecution",
                 "GiftUIRuntimeCore",
                 "GiftUIRuntimeFailureAdapterFixture",
             ]

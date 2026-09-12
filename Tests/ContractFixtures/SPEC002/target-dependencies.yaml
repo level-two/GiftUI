@@ -299,6 +299,9 @@ targets:
   GiftUIRuntimeFailureAdapterTests:
     type: test
     dependencies:
+      - GiftUIExecution
+      - GiftUIFailureCore
+      - GiftUIFailureExecution
       - GiftUIRuntimeCore
       - GiftUIRuntimeFailureAdapterFixture
   GiftUIReferenceTextResources:

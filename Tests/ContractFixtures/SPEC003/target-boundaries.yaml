@@ -66,6 +66,9 @@ active:
   GiftUIRuntimeFailureAdapterTests:
     type: test
     dependencies:
+      - GiftUIExecution
+      - GiftUIFailureCore
+      - GiftUIFailureExecution
       - GiftUIRuntimeCore
       - GiftUIRuntimeFailureAdapterFixture
 reserved: {}

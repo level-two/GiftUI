@@ -697,3 +697,9 @@ hardware-free artifact evidence, not simulator or connected-hardware evidence.
 first compiling `T6.1` source. `T5`-`T9` and conformance remain pending under
 their explicit runtime, host, profile, evidence, and authorization gates, so
 this plan correctly remains `active` and SPEC-011 remains `implementing`.
+
+During SPEC-013 T1.5 on 2026-09-12, the exact `ActionModelTargetAccess`
+declaration landed in `GiftUIInteraction` as the declaration-only portion of
+the plans' explicit integration handoff. SPEC-011 T5.3 remains pending for
+`InteractionDispatcher`, the target-composed adapter, and all required
+dispatch behavior and evidence.

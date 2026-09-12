@@ -127,3 +127,13 @@ package protocol InteractionGestureResolver {
         at point: Point
     ) -> PointerGestureOutcome<Identity>
 }
+
+package protocol ActionModelTargetAccess {
+    associatedtype Model: _GiftUIObservableReference
+
+    borrowing func currentGeneration() -> ObservableTargetGeneration?
+    mutating func withCurrentModel(
+        matching generation: ObservableTargetGeneration,
+        _ body: (borrowing Model) -> Void
+    ) -> Bool
+}

@@ -243,7 +243,7 @@ failure carrier, independent of concrete profile storage.
       structural identity, successful-audit retention, and reset legality.
       Test capacity immutability, attempt-versus-all reset boundaries, rejected
       construction, and before-use/after-quiescence all-storage reset.
-- [ ] `T1.5` — Implement exact `RuntimeOwnerFailure` cases and the coordinator
+- [x] `T1.5` — Implement exact `RuntimeOwnerFailure` cases and the coordinator
       protocol surface. In the sibling adapter that alone imports Runtime Core
       and SPEC-003 failure authority, map every `RuntimeProfileValidationError`
       to the specified condition, origin, scope, and containment and preserve
@@ -653,6 +653,13 @@ mutation, separates attempt reset from all-storage reset, and enforces the
 before-use/after-quiescence reset boundary. Five focused tests passed; evidence
 is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-1/profile-storage-lifetime.md`.
+
+T1.5 added the exact five-case focused failure carrier, coordinator protocol,
+Interaction-owned model-target access declaration, and sibling-only validation
+and execution-correlation adapter. The total mapping and two-byte layout tests
+pass under Apple Swift 6.3.3 and the repository's cross-build Apple Swift
+6.3.2. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-1/runtime-failure-and-coordinator-contract.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
