@@ -447,7 +447,7 @@ remain independent of diagnostics.
       reentrancy, phase, domain, missing target, identity, geometry, action
       value, capacity, invariant. Exercise every individual case and every
       precedence pair at the same boundary.
-- [ ] `T6.3` — Verify candidate-frame contained failures discard the complete
+- [x] `T6.3` — Verify candidate-frame contained failures discard the complete
       candidate, preserve committed state, and follow SPEC-009's exact dirty/
       wake rule after mutation. Verify active-cycle/runtime safety-not-proven
       failures cancel affected captures, discard candidates, admit no later
@@ -770,3 +770,12 @@ tests exercise every individual condition, all 36 simultaneous pairs at the
 same boundary, empty selection, and duplicate insertion. The canonical failure
 fixture records the same pair matrix. See the
 [precedence evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t6-2-failure-precedence.md).
+
+`T6.3` is complete: every contained candidate-frame case discards the
+candidate, preserves the committed-state token, and requests exactly one
+coalesced dirty wake only when mutation already occurred. Every active-cycle
+or runtime safety-not-proven case cancels captures, discards the candidate,
+prevents later normal cycles, and quiesces before a fatal hook becomes
+eligible. Its allowed residual set excludes retry and continuation for the
+terminal cases. See the
+[containment evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t6-3-containment.md).

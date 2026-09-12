@@ -46,3 +46,5 @@ rows:
   - { id: action-over-capacity, first: invalidActionValue, second: capacityExhausted, result: invalidActionValue }
   - { id: action-over-invariant, first: invalidActionValue, second: invariantViolation, result: invalidActionValue }
   - { id: capacity-over-invariant, first: capacityExhausted, second: invariantViolation, result: capacityExhausted }
+  - { id: contained-candidate-effects, result: discardCandidatePreserveCommittedDirtyWakeAfterMutation }
+  - { id: safety-not-proven-effects, result: cancelCapturesDiscardCandidateQuiesceBeforeFatalHook }
