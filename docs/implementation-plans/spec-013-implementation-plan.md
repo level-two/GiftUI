@@ -263,7 +263,7 @@ owners may stand in only where the production owner is not yet implemented.
 machine, stage order, first-failure rule, cleanup table, routing transaction,
 and quiescence behavior without profile-private semantics.
 
-- [ ] `T2.1` — Implement common construction and lifecycle states
+- [x] `T2.1` — Implement common construction and lifecycle states
       `unvalidated -> validated -> idle <-> active -> quiescent -> torn down`,
       exclusive opportunity acquisition, reentry failure, retained immutable
       audit/context, and serialized admission/opportunity entry points.
@@ -661,6 +661,11 @@ and execution-correlation adapter. The total mapping and two-byte layout tests
 pass under Apple Swift 6.3.3 and the repository's cross-build Apple Swift
 6.3.2. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-1/runtime-failure-and-coordinator-contract.md`.
+
+T2.1 added the common fixed-size lifecycle and serialized admission/opportunity
+entry gate with explicit validation, rejection, active, quiescent, and teardown
+states. Seven focused tests passed; evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-2/common-lifecycle.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

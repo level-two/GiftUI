@@ -11,7 +11,7 @@ import Testing
 
 @testable import GiftUIRuntimeCore
 
-private func makeAuditLimits() -> RuntimeProfileLimits {
+func makeRuntimeCoreAuditLimits() -> RuntimeProfileLimits {
     RuntimeProfileLimits(
         semantic: SemanticExpansionLimits(
             maximumDepth: 2,
@@ -69,7 +69,7 @@ private func makeAuditLimits() -> RuntimeProfileLimits {
     )!
 }
 
-private func byteCounts(
+func makeRuntimeCoreByteCounts(
     semanticCandidate: UInt32 = 1,
     semanticPublished: UInt32 = 2,
     layoutCandidate: UInt32 = 3,
@@ -111,8 +111,8 @@ private func byteCounts(
 func checkedAuditPreservesEveryExclusiveFieldAndExactTotal() {
     let result = RuntimeStorageAudit.checked(
         profile: .dynamic,
-        limits: makeAuditLimits(),
-        byteCounts: byteCounts()
+        limits: makeRuntimeCoreAuditLimits(),
+        byteCounts: makeRuntimeCoreByteCounts()
     )
 
     guard case .valid(let audit) = result else {
@@ -143,8 +143,11 @@ func checkedAuditPreservesEveryExclusiveFieldAndExactTotal() {
 func checkedAuditReturnsArithmeticOverflowWithoutSaturation() {
     let result = RuntimeStorageAudit.checked(
         profile: .dynamic,
-        limits: makeAuditLimits(),
-        byteCounts: byteCounts(semanticCandidate: .max, semanticPublished: 1)
+        limits: makeRuntimeCoreAuditLimits(),
+        byteCounts: makeRuntimeCoreByteCounts(
+            semanticCandidate: .max,
+            semanticPublished: 1
+        )
     )
 
     #expect(result == .invalid(.arithmeticOverflow))
@@ -154,8 +157,8 @@ func checkedAuditReturnsArithmeticOverflowWithoutSaturation() {
 func zeroByteOverlayAliasIsRepresentedOnlyByItsChargedOwner() {
     let result = RuntimeStorageAudit.checked(
         profile: .dynamic,
-        limits: makeAuditLimits(),
-        byteCounts: byteCounts(layoutCandidate: 0, renderWorkspace: 64)
+        limits: makeRuntimeCoreAuditLimits(),
+        byteCounts: makeRuntimeCoreByteCounts(layoutCandidate: 0, renderWorkspace: 64)
     )
 
     guard case .valid(let audit) = result else {

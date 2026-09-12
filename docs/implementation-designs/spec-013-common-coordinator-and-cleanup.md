@@ -164,5 +164,11 @@ owned by later profile-specific tasks and notes.
 
 ## Code and Evidence Links
 
-The code and focused evidence links will be added as T2.1-T2.5 land. Until
-then, the authoritative behavior remains SPEC-013 and its accepted ADRs.
+- T2.1 lifecycle: `Sources/GiftUIRuntimeCore/RuntimeCoordinatorLifecycle.swift`
+- T2.1 focused tests:
+  `Tests/GiftUIRuntimeCoreTests/RuntimeCoordinatorLifecycleTests.swift`
+- T2.1 evidence:
+  `Tests/ContractFixtures/SPEC013/Evidence/milestone-2/common-lifecycle.md`
+
+The remaining code and focused evidence links will be added as T2.2-T2.5
+land. The authoritative behavior remains SPEC-013 and its accepted ADRs.
