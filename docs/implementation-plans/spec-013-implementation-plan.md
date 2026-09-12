@@ -339,7 +339,7 @@ and the same coordinator semantics.
       capacities, structural identity, high-water counters, exclusive attempt
       ownership, reset rules, and checked byte totals. No unrelated store may
       donate spare capacity.
-- [ ] `T4.3` — Implement `StaticCanvasCallableTable` validation: nonzero bounded
+- [x] `T4.3` — Implement `StaticCanvasCallableTable` validation: nonzero bounded
       case count, exact `1...count` coverage once, exact capture sizes, and
       startup rejection. Add build negatives for unsupported capture source
       and runtime invariant tests for zero/range/size mismatch before body or
@@ -757,6 +757,16 @@ reference storage, allocation entry points, type erasure, and reflection in
 the production storage source. The tuple-backed representation avoids Swift's
 macOS-26-only `InlineArray` while retaining macOS 15 support. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-4/static-storage.md`.
+
+T4.3 completed Static Canvas startup and staging validation without moving the
+SPEC-012 generator boundary. Static construction rejects zero/over-limit case
+counts, count/range mismatches, missing/duplicate coverage, absent capture
+sizes, and oversized captures. Staging accepts only an exact nonzero generated
+ID and capture size; all mismatches produce the exact Drawing invariant before
+invocation. Instrumented tests prove validation never enters the generated
+Canvas switch, while SPEC-012's existing generator checker retains all fourteen
+unsupported-source/type rejection cases. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-4/static-canvas-validation.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

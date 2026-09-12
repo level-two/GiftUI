@@ -16,6 +16,11 @@ package protocol StaticCanvasCoverageMetadata {
     func coverageMultiplicity(for id: UInt16) -> UInt8
 }
 
+package enum StaticCanvasStagingValidation: Equatable, Sendable {
+    case accepted
+    case failure(RuntimeOwnerFailure)
+}
+
 package struct StaticActionSpecialization<Action: GiftUIAction>: Sendable {
     package init() {}
 
@@ -90,5 +95,18 @@ where
 
     package func captureByteCount(for id: UInt16) -> UInt16? {
         canvasTable.captureByteCount(for: id)
+    }
+
+    package borrowing func validateStagedCallable(
+        id: UInt16,
+        captureByteCount: UInt16
+    ) -> StaticCanvasStagingValidation {
+        guard id > 0,
+            id <= canvasTable.callableCaseCount,
+            canvasTable.captureByteCount(for: id) == captureByteCount
+        else {
+            return .failure(.drawing(.invariantViolation))
+        }
+        return .accepted
     }
 }

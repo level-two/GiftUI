@@ -25,6 +25,6 @@ scripts/contracts/check-spec-013-harness.rb
 
 Result: three focused Static tests passed under Apple Swift 6.3.3. The
 fail-closed generated-source checker reproduced both input digests, two slot
-bindings, three callable IDs, exact capture sizes, and 2,305 generated source
-bytes. The SPEC-013 harness passed with the checker registered in the repository
-gate.
+bindings, three callable IDs, exact capture sizes, and 5,154 generated source
+bytes after the T4.2 fixed-region bindings were added. The SPEC-013 harness
+passed with the checker registered in the repository gate.

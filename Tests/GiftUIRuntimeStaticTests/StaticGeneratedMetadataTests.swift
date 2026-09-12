@@ -65,6 +65,53 @@ func generatedStaticCanvasSwitchCoversEveryDeclaredID() throws {
 }
 
 @Test
+func staticCanvasStartupRejectsEveryTableMismatchBeforeInvocation() {
+    let invalidMetadata: [FaultedStaticMetadata] = [
+        FaultedStaticMetadata(callableCaseCount: 0),
+        FaultedStaticMetadata(callableCaseCount: 4, declaredEntryCount: 4, maximumDeclaredID: 4),
+        FaultedStaticMetadata(declaredEntryCount: 2),
+        FaultedStaticMetadata(maximumDeclaredID: 2),
+        FaultedStaticMetadata(fault: .missingCoverage),
+        FaultedStaticMetadata(fault: .duplicateCoverage),
+        FaultedStaticMetadata(fault: .missingCaptureSize),
+        FaultedStaticMetadata(fault: .oversizedCapture),
+    ]
+
+    for metadata in invalidMetadata {
+        let storage = StaticProfileStorage(
+            structuralIdentity: StaticStructuralIdentity(rawValue: 23)!,
+            limits: staticLimits(),
+            regions: GeneratedStaticRegions(),
+            metadata: metadata
+        )
+        switch consume storage {
+        case nil:
+            break
+        case .some:
+            Issue.record("invalid Static Canvas metadata unexpectedly constructed storage")
+        }
+    }
+}
+
+@Test
+func staticCanvasStagingRejectsZeroRangeAndSizeBeforeInvocation() {
+    let probe = StaticCanvasInvocationProbe()
+    let metadata = StaticGeneratedProfileMetadata(
+        observableSlots: GeneratedObservableSlots(),
+        action: GeneratedProfileAction.self,
+        canvasTable: StagingPoisonCanvasTable(probe: probe),
+        canvasCoverage: GeneratedCanvasCoverage()
+    )!
+    let invariant = StaticCanvasStagingValidation.failure(.drawing(.invariantViolation))
+
+    #expect(metadata.validateStagedCallable(id: 0, captureByteCount: 8) == invariant)
+    #expect(metadata.validateStagedCallable(id: 4, captureByteCount: 8) == invariant)
+    #expect(metadata.validateStagedCallable(id: 1, captureByteCount: 7) == invariant)
+    #expect(metadata.validateStagedCallable(id: 1, captureByteCount: 8) == .accepted)
+    #expect(probe.invocationCount == 0)
+}
+
+@Test
 func fixedStaticStorageAuditsAllSixteenIndependentInlineRegions() {
     let storage = makeStaticStorage()
     #expect(storage.audit().audit?.totalProfileBytes == 16)
@@ -113,6 +160,76 @@ func fixedStaticAttemptResetPreservesCommittedUntilQuiescentTeardown() {
 }
 
 private struct GeneratedCanvasContextStorage {}
+
+private final class StaticCanvasInvocationProbe {
+    var invocationCount = 0
+}
+
+private struct StagingPoisonCanvasTable: StaticCanvasCallableTable {
+    let callableCaseCount: UInt16 = 3
+    let probe: StaticCanvasInvocationProbe
+
+    func captureByteCount(for id: UInt16) -> UInt16? {
+        switch id {
+        case 1: 8
+        case 2: 12
+        case 3: 0
+        default: nil
+        }
+    }
+
+    mutating func invoke(
+        id: UInt16,
+        captures: borrowing GeneratedCanvasCaptureStorage,
+        context: inout GraphicsContext,
+        size: Size
+    ) throws(DrawingError) {
+        probe.invocationCount += 1
+    }
+}
+
+private enum StaticCanvasMetadataFault {
+    case none
+    case missingCoverage
+    case duplicateCoverage
+    case missingCaptureSize
+    case oversizedCapture
+}
+
+private struct FaultedStaticMetadata: RuntimeStaticCanvasAuditMetadata {
+    let callableCaseCount: UInt16
+    let declaredEntryCount: UInt16
+    let maximumDeclaredID: UInt16
+    let fault: StaticCanvasMetadataFault
+
+    init(
+        callableCaseCount: UInt16 = 3,
+        declaredEntryCount: UInt16 = 3,
+        maximumDeclaredID: UInt16 = 3,
+        fault: StaticCanvasMetadataFault = .none
+    ) {
+        self.callableCaseCount = callableCaseCount
+        self.declaredEntryCount = declaredEntryCount
+        self.maximumDeclaredID = maximumDeclaredID
+        self.fault = fault
+    }
+
+    func coverageMultiplicity(for id: UInt16) -> UInt8 {
+        switch fault {
+        case .missingCoverage where id == 2: 0
+        case .duplicateCoverage where id == 2: 2
+        default: id > 0 && id <= callableCaseCount ? 1 : 0
+        }
+    }
+
+    func captureByteCount(for id: UInt16) -> UInt16? {
+        switch fault {
+        case .missingCaptureSize where id == 2: nil
+        case .oversizedCapture where id == 2: 13
+        default: id > 0 && id <= callableCaseCount ? 8 : nil
+        }
+    }
+}
 
 private let generatedCanvasOperations = _GiftUIDrawingOperations(
     beginPath: { _, _, _ in _GiftUIDrawingStatus.success.rawValue },
