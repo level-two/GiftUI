@@ -335,7 +335,7 @@ allocating no identity or retaining any upstream borrow.
       the action value is exactly two bytes and `InteractionLimits` rejects
       zero values or hit regions greater than actions. Cross-owner validation
       against SPEC-009's `maximumCommittedActions` belongs to `T7.3`.
-- [ ] `T3.2` — Provide caller-owned/fixed storage contracts for staging and
+- [x] `T3.2` — Provide caller-owned/fixed storage contracts for staging and
       committed records/hit regions with finite counts and no arrays,
       dictionaries, unrestricted existentials, reflection, allocator, task,
       callable, handler, model, or borrowed semantic/layout storage on the
