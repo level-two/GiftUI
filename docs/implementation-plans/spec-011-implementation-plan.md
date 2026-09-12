@@ -377,7 +377,7 @@ per-source capture.
       continues while inside its current matching region. Moving outside,
       record replacement/removal, disabled state, or generation mismatch
       cancels permanently; re-entry does not restore capture.
-- [ ] `T4.3` — Implement `resolveUp(_:at:)` so only a matching current
+- [x] `T4.3` — Implement `resolveUp(_:at:)` so only a matching current
       identity/generation/enabled hit admits activation. Every other release
       cancels, and Execution clears capture after either result.
 - [ ] `T4.4` — Integrate the resolver with SPEC-009's admitted down/move/up

@@ -49,6 +49,26 @@ final class InteractionCandidateAppendTests: XCTestCase {
         )
     }
 
+    func testUpAdmitsOnlyTheExactCurrentEnabledCaptureInsideItsRegion() {
+        var state = makeState(capacity: 2)
+        commitOverlappingRecords(&state, topEnabled: true)
+        let capture = CapturedAction(
+            identity: UInt16(2), generation: ActionGeneration(rawValue: 12))
+
+        XCTAssertEqual(
+            state.resolveUp(capture, at: Point(x: 1, y: 1)),
+            .activationAdmitted(capture)
+        )
+        XCTAssertEqual(state.resolveUp(capture, at: Point(x: 8, y: 8)), .cancelled)
+        XCTAssertEqual(
+            state.resolveUp(
+                CapturedAction(identity: 2, generation: ActionGeneration(rawValue: 13)),
+                at: Point(x: 1, y: 1)
+            ),
+            .cancelled
+        )
+    }
+
     func testResolutionCommitsAtomicallyOrDiscardsAndPreservesCommittedState() {
         let former = BoundActionRecord(
             identity: UInt16(9),
