@@ -374,7 +374,7 @@ and synchronous borrowed consumption.
       exact color, width, cap, join, origin, clip, points, subpaths, no-op strokes,
       header totals, mixed fill/glyph/stroke ordering, and one begin/finish pair.
       Prove zero-Canvas ordinary transcripts equal SPEC-008 exactly.
-- [ ] `T5.4` — Exercise idle refusal, actual-capacity disagreement, post-begin
+- [x] `T5.4` — Exercise idle refusal, actual-capacity disagreement, post-begin
       stroke refusal, header drift, plan corruption, and accepted completion.
       Apply `.sinkRefused` only where specified, otherwise
       `.invariantViolation`, and call discard exactly once where required.
@@ -1025,6 +1025,16 @@ The fail-closed fixture harness validates both cases and keeps raster vectors
 empty until their owning milestone. The
 [combined transcript evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-transcript.md)
 records the corpus. T5.4 is next.
+
+`T5.4` is complete. Focused offer-time fault injection now distinguishes the
+sole `.sinkRefused` row (idle `begin` refusal) from exact
+`.invariantViolation` results for actual-capacity disagreement, expected-header
+drift, post-begin stroke refusal, and streaming-completion plan corruption.
+Pre-begin failures make no lifecycle call, idle refusal makes no discard, and
+each post-begin failure discards exactly once before the workspace resets. The
+accepted control still finishes without discard. The
+[combined offer-failure evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-5/combined-render-offer-failures.md)
+records the matrix. T5.5 is next.
 
 `T6.2` is complete for the checked static fixture. `GiftUIDrawing` owns the
 exact amended `StaticCanvasCallableTable` protocol, and the manifest-generated

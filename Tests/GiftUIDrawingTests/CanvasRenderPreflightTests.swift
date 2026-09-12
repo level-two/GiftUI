@@ -328,6 +328,77 @@ func zeroCanvasCombinedProductionMatchesOrdinaryRenderingExactly() {
     #expect(combinedSink.events == [.begin(expectedHeader), .finish])
 }
 
+@Test(
+    arguments: [
+        CanvasOfferFault.idleRefusal,
+        .actualCapacity,
+        .strokeRefusal,
+        .headerDrift,
+        .streamingPlanCorruption,
+    ]
+)
+private func canvasProductionAppliesExactOfferFailureAndDiscardSemantics(
+    _ fault: CanvasOfferFault
+) {
+    let header = RenderPlanHeader(
+        surfaceBounds: canvasRenderBounds,
+        damageBounds: canvasRenderBounds,
+        operationCount: 4,
+        positionedGlyphCount: 1,
+        maximumObservedClipDepth: 2
+    )
+    var workspace = CanvasRenderWorkspace()
+    var sink = CanvasRenderSink(
+        capacity: RenderSinkCapacity(
+            maximumOperations: fault == .actualCapacity ? 3 : 4,
+            maximumPositionedGlyphs: 1
+        ),
+        refusal: fault == .idleRefusal
+            ? .begin : (fault == .strokeRefusal ? .stroke(1) : nil)
+    )
+    let result = CanvasRenderProducer.produce(
+        semantic: CanvasRenderSemantic(),
+        layout: CanvasRenderLayout(),
+        textMetrics: CanvasRenderMetrics(),
+        drawingPlan: CanvasRenderPlan(
+            fault: fault == .streamingPlanCorruption
+                ? .streamingSummaryPoint : .none
+        ),
+        surfaceBounds: canvasRenderBounds,
+        damageMode: .rootIntersection,
+        rootForeground: .red,
+        limits: canvasRenderLimits,
+        expectedHeader: fault == .headerDrift
+            ? RenderPlanHeader(
+                surfaceBounds: canvasRenderBounds,
+                damageBounds: canvasRenderBounds,
+                operationCount: 3,
+                positionedGlyphCount: 1,
+                maximumObservedClipDepth: 2
+            ) : header,
+        workspace: &workspace,
+        sink: &sink
+    )
+
+    #expect(
+        result
+            == .failure(
+                fault == .idleRefusal ? .sinkRefused : .invariantViolation
+            )
+    )
+    #expect(
+        sink.beginCount
+            == (fault == .idleRefusal || fault == .strokeRefusal
+                || fault == .streamingPlanCorruption ? 1 : 0))
+    #expect(sink.finishCount == 0)
+    #expect(
+        sink.discardCount
+            == (fault == .strokeRefusal || fault == .streamingPlanCorruption ? 1 : 0)
+    )
+    #expect(workspace.resetCount == 1)
+    #expect(!workspace.isActive)
+}
+
 private enum CanvasRenderIdentity: UInt8, Equatable, Sendable {
     case root
     case background
@@ -588,20 +659,29 @@ private enum CanvasRenderPlanFault: CaseIterable {
     case extraSubpath
     case extraStroke
     case unexpectedNonCanvas
+    case streamingSummaryPoint
+}
+
+private final class CanvasRenderPlanCounter {
+    var summaryReads: UInt16 = 0
 }
 
 private struct CanvasRenderPlan: DrawingPlanView {
     let fault: CanvasRenderPlanFault
+    private let counter = CanvasRenderPlanCounter()
 
     init(fault: CanvasRenderPlanFault = .none) {
         self.fault = fault
     }
 
     var summary: DrawingPlanSummary {
-        DrawingPlanSummary(
+        counter.summaryReads += 1
+        let streamingPointMismatch =
+            fault == .streamingSummaryPoint && counter.summaryReads > 1
+        return DrawingPlanSummary(
             canvasOccurrenceCount: fault == .summaryCanvas ? 2 : 1,
             strokeCount: fault == .summaryStroke ? 3 : 2,
-            pointCount: fault == .summaryPoint ? 3 : 2,
+            pointCount: fault == .summaryPoint || streamingPointMismatch ? 3 : 2,
             subpathCount: fault == .summarySubpath ? 2 : 1,
             normalizedStrokeOperationCount: fault == .summaryNormalized ? 3 : 2
         )
@@ -774,26 +854,54 @@ private enum CanvasRenderEvent: Equatable {
     case finish
 }
 
+private enum CanvasOfferFault: CaseIterable {
+    case idleRefusal
+    case actualCapacity
+    case strokeRefusal
+    case headerDrift
+    case streamingPlanCorruption
+}
+
+private enum CanvasSinkRefusal: Equatable {
+    case begin
+    case stroke(UInt16)
+}
+
 private final class CanvasRenderSinkCounter {
     var capacityReads: UInt16 = 0
 }
 
 private struct CanvasRenderSink: DrawingOperationSink {
     private let counter = CanvasRenderSinkCounter()
+    private let reportedCapacity: RenderSinkCapacity
+    private let refusal: CanvasSinkRefusal?
     private(set) var events: [CanvasRenderEvent] = []
+    private(set) var beginCount: UInt16 = 0
+    private(set) var strokeCount: UInt16 = 0
+    private(set) var finishCount: UInt16 = 0
     private(set) var discardCount: UInt16 = 0
+
+    init(
+        capacity: RenderSinkCapacity = RenderSinkCapacity(
+            maximumOperations: 4,
+            maximumPositionedGlyphs: 1
+        ),
+        refusal: CanvasSinkRefusal? = nil
+    ) {
+        reportedCapacity = capacity
+        self.refusal = refusal
+    }
 
     var capacityReadCount: UInt16 { counter.capacityReads }
 
     var capacity: RenderSinkCapacity {
         counter.capacityReads += 1
-        return RenderSinkCapacity(
-            maximumOperations: 4,
-            maximumPositionedGlyphs: 1
-        )
+        return reportedCapacity
     }
 
     mutating func begin(_ header: RenderPlanHeader) -> Bool {
+        beginCount += 1
+        guard refusal != .begin else { return false }
         events.append(.begin(header))
         return true
     }
@@ -823,6 +931,8 @@ private struct CanvasRenderSink: DrawingOperationSink {
     mutating func straightLineStroke<Stroke: StraightLineStrokeView>(
         _ stroke: borrowing Stroke
     ) -> Bool {
+        strokeCount += 1
+        guard refusal != .stroke(strokeCount) else { return false }
         var points: [Point] = []
         var pointIndex: UInt16 = 0
         while pointIndex < stroke.header.pointCount {
@@ -853,6 +963,7 @@ private struct CanvasRenderSink: DrawingOperationSink {
     }
 
     mutating func finish() -> Bool {
+        finishCount += 1
         events.append(.finish)
         return true
     }
