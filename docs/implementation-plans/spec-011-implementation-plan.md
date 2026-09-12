@@ -296,7 +296,7 @@ deterministic semantic order, with no handler invocation or retained borrow.
       Button payload exactly once, stage its action at the Button identity, and
       expand only its stored label in source order. Preserve all existing
       expansion capacity, reentrancy, atomicity, and borrow-lifetime rules.
-- [ ] `T2.2` — Fold enclosing/local disabled scopes as conjunction in
+- [x] `T2.2` — Fold enclosing/local disabled scopes as conjunction in
       Interaction's semantic-to-candidate lowering adapter. Emit no identity
       for the modifier; prove `disabled(false)` never overrides an ancestor and
       sibling scopes do not leak.
