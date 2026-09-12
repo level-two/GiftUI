@@ -2,11 +2,11 @@
 id: SPEC-006
 feature: giftui-mvp-architecture
 title: Declarative View Semantics Specification
-status: implemented
+status: review
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-09-11
+updated: 2026-09-12
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -42,9 +42,12 @@ target_milestone: MVP
 
 # SPEC-006: Declarative View Semantics Specification
 
-> **Implementation status:** Implemented on 2026-09-11 after a complete
-> conformance review and explicit maintainer authorization. The amended
-> primitive-with-content contract was explicitly reapproved on 2026-09-10.
+> **Approval status:** Action-primitive-with-content amendment under review.
+> The previously implemented contract exposes content-bearing traversal only
+> for non-action primitives, while approved SPEC-011 requires Button to stage
+> one action at its identity and expand its stored label as a fixed semantic
+> child. The amendment below requires explicit maintainer reapproval before
+> implementation relies on the new operation.
 
 ## Summary
 
@@ -78,6 +81,8 @@ This Specification owns:
 - runtime-owned structural identity and semantic action-occurrence identity;
 - deterministic synchronous expansion of transient declarations;
 - typed traversal of both leaf primitives and unevaluated primitives with
+  builder-produced child content;
+- typed traversal of action-bearing primitives with unevaluated,
   builder-produced child content;
 - one stateful-custom-view traversal operation that permits SPEC-010 to bind a
   mutable transient copy before body evaluation without moving state ownership
@@ -509,6 +514,12 @@ public protocol _GiftUISemanticTraversalVisitor {
     mutating func visitActionPrimitive<Payload: _GiftUISemanticActionPayload>(
         _ payload: borrowing Payload
     )
+    mutating func visitActionPrimitive<
+        Content: View, Payload: _GiftUISemanticActionPayload
+    >(
+        content: borrowing Content,
+        payload: borrowing Payload
+    )
     mutating func visitModifier<
         Content: View, Payload: _GiftUISemanticModifierPayload
     >(
@@ -538,16 +549,15 @@ runtime coordinator as the exact SPEC-010 error rather than a semantic-
 expansion error. Semantic Core neither stores nor interprets a state value,
 attachment, registration, dirty bit, or target generation.
 
-Each wrapper above MUST override
-the requirement and call exactly its matching visitor operation. Each later
-concrete primitive or modifier contract MUST define its typed payload and its
-single matching override through this SPI. An action-bearing primitive MUST
-use the action-bearing operation exactly once; it MUST NOT separately use the
-non-action primitive operation for the same occurrence. These rules are the
-closed dispatch contract; adding a later declaration category requires a
-reviewed revision of this Specification rather than an unregistered hook. The
-stateful-custom-view operation is a custom-body boundary, not a semantic
-occurrence or new node category.
+Each wrapper above MUST override the requirement and call exactly its matching
+visitor operation. Each later concrete primitive or modifier contract MUST
+define its typed payload and its single matching override through this SPI. An
+action-bearing primitive MUST use exactly one of the two action-bearing
+operations; it MUST NOT separately use a non-action primitive operation for the
+same occurrence. These rules are the closed dispatch contract; adding a later
+declaration category requires a reviewed revision of this Specification rather
+than an unregistered hook. The stateful-custom-view operation is a custom-body
+boundary, not a semantic occurrence or new node category.
 
 The unlabeled `visitPrimitive` operation is the leaf-primitive form. The
 `visitPrimitive(content:payload:)` overload is the primitive-with-content form;
@@ -562,6 +572,18 @@ single child, and fixed groups therefore produce zero, one, or multiple
 semantic children without a new structural-path component or traversal engine.
 Transparent builder wrappers remain structural occurrences and later consumers
 MAY flatten them only where their approved contracts permit it.
+
+The unlabeled `visitActionPrimitive` operation is the leaf action-primitive
+form. The `visitActionPrimitive(content:payload:)` overload is the
+action-primitive-with-content form. A framework declaration using this overload
+MUST have `Body == Never`, store its builder-produced `Content`, and call the
+overload exactly once without evaluating `body`. Expansion MUST first reserve
+and stage one semantic action occurrence at the declaration's current identity.
+Only after that stage succeeds, it MUST enter existing `fixedChild(0)` structure
+and expand `content` through the ordinary wrapper traversal rules. It MUST NOT
+also stage a non-action primitive occurrence. `EmptyView`, a single child, and
+fixed groups therefore produce zero, one, or multiple semantic children without
+a new structural-path component or traversal engine.
 
 ### Expansion limits and summary
 
@@ -752,7 +774,9 @@ and result MUST be deterministic.
    associate one action occurrence when action-bearing, and then expand any
    declared fixed semantic children in source order. A primitive with content
    stages its payload before entering `fixedChild(0)` and expanding its stored
-   builder-produced content; it does not evaluate `body`.
+   builder-produced content. An action primitive with content stages its one
+   action occurrence before entering the same child path and MUST NOT stage a
+   second non-action occurrence. Neither form evaluates `body`.
 7. Apply modifiers for one modifier scope in increasing zero-based source-call
    index after the modified content has been structurally identified and
    before a later consumer observes the completed scope.
@@ -1005,6 +1029,10 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
   and five-expression builder content. Prove each calls only
   `visitPrimitive(content:payload:)`, retains `Body == Never`, and never reads
   `body` during traversal.
+- Compile framework-only action-primitive-with-content declarations with empty,
+  one, and five-expression builder content. Prove each calls only
+  `visitActionPrimitive(content:payload:)`, retains `Body == Never`, preserves
+  the exact typed action, and never reads `body` during traversal.
 - Compile an `@ObservableStateHost` view through the exact SPEC-010 macro
   expansion and prove its generated traversal witness calls
   `visitStatefulCustomView`, while an ordinary custom view continues to call
@@ -1024,6 +1052,11 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
   event precedes child traversal, the content enters `fixedChild(0)`, source
   order and identity remain canonical, and transparent builder wrappers add no
   semantic node.
+- Record action-primitive-with-content traces for empty, one-child, five-child,
+  nested, conditional, optional, and modified content. Prove the single action
+  association precedes child traversal, remains at the action declaration's
+  identity, and the stored content enters `fixedChild(0)` without a second
+  semantic occurrence.
 - Compare the complete canonical transcript event-by-event and prove its four
   counted event classes and greatest path depth equal the returned summary.
 - Compare canonical structural-identity equality across repeated expansion,
@@ -1152,6 +1185,12 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
   `fixedChild(0)`, preserve canonical zero-through-five child order and
   structural identity across all four profiles, never evaluate `body`, and
   publish no partial result when primitive staging or child traversal fails.
+- [ ] **DV-017:** Action-primitive-with-content fixtures use the exact typed
+  overload once, stage one action occurrence at the declaration identity before
+  traversing stored builder-produced content beneath `fixedChild(0)`, preserve
+  the exact action and canonical zero-through-five child order across all four
+  profiles, never stage a second semantic occurrence or evaluate `body`, and
+  publish no partial result when action staging or child traversal fails.
 
 ## Implementation Notes
 
@@ -1169,11 +1208,14 @@ for later layout adapters.
 
 ## Open Issues
 
-No open issue remains. The primitive-with-content amendment was explicitly
-reapproved on 2026-09-10. The contract-level builder-arity choice
-is resolved in favor of five direct expressions. The maintained Rank 0
-surface therefore remains fixed at arities zero through five; clients compose
-larger hierarchies by nesting fixed groups or custom views.
+The action-primitive-with-content amendment is awaiting explicit maintainer
+review and reapproval. Until that gate closes, SPEC-011 Button implementation
+and semantic lowering remain paused. No other open issue remains. The existing
+primitive-with-content amendment was explicitly reapproved on 2026-09-10. The
+contract-level builder-arity choice is resolved in favor of five direct
+expressions. The maintained Rank 0 surface therefore remains fixed at arities
+zero through five; clients compose larger hierarchies by nesting fixed groups
+or custom views.
 
 Action lifetime and replacement are governed by RFC-011 and ADR-033: pointer
 down captures the stable semantic identity together with the committed action

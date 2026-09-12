@@ -25,8 +25,7 @@ its required acceptance criteria.
   Configuration Contract (`approved`; schema-2 render-workspace workload
   amendment explicitly reapproved on 2026-09-12)
 - [SPEC-006](spec-006-declarative-view-semantics.md) — Declarative View
-  Semantics Specification (`approved`; primitive-with-content amendment
-  explicitly reapproved on 2026-09-10)
+  Semantics Specification (`review`; action-primitive-with-content amendment)
 - [SPEC-008](spec-008-rendering.md) — Normalized Rendering Contract
   (`implementing`; foreground-stack and arithmetic-evidence amendment
   explicitly approved on 2026-09-11)
@@ -37,7 +36,7 @@ its required acceptance criteria.
   State Contract (`implementing`, including publishable target-generation
   amendment)
 - [SPEC-011](spec-011-interaction.md) — Button Interaction and Activation
-  Contract (`approved`, including candidate target-binding amendment)
+  Contract (`approved`; implementation plan draft pending SPEC-006 amendment)
 - [SPEC-012](spec-012-canvas-path-stroke-drawing.md) — Canvas, Path, and Stroke
   Drawing Contract (`implementing`; render-extension completion-seam amendment
   explicitly approved on 2026-09-12)

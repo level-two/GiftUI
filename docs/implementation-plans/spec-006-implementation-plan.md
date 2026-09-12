@@ -6,7 +6,7 @@ status: completed
 owners:
   - codex
 created: 2026-09-01
-updated: 2026-09-11
+updated: 2026-09-12
 related_design_notes:
   - ../implementation-designs/spec-006-bounded-semantic-expansion.md
 conformance_report: ../conformance/spec-006-conformance.md
@@ -21,10 +21,10 @@ superseded_by: null
 
 # SPEC-006 Implementation Plan
 
-> **Revision notice:** The original seven milestones remain completed evidence
-> for the prior fifteen-criterion contract. SPEC-006 was explicitly reapproved
-> on 2026-09-10 with criterion `DV-016`; Milestone 8 is ready and must complete
-> before renewed conformance review.
+> **Revision notice:** The original eight milestones remain completed evidence
+> for the previously implemented sixteen-criterion contract. SPEC-006 returned
+> to `review` on 2026-09-12 with proposed criterion `DV-017`; the amendment
+> requires explicit reapproval and a revised plan before implementation resumes.
 
 > The completed portion of this plan derived work from the previously approved
 > Declarative View Semantics Specification. This revision adds only ordered
@@ -959,3 +959,11 @@ collecting conformance report now gives `DV-016` a reviewable passing
 disposition. Every Milestone 8 task is complete, so this plan returns to
 `completed`; SPEC-006 remains `implementing` pending renewed conformance review
 and explicit maintainer authorization.
+
+On 2026-09-12, SPEC-011 implementation exposed that the closed traversal SPI
+has no action-bearing primitive-with-content operation. SPEC-006 returned to
+`review` with a proposed typed overload and new criterion `DV-017`. This
+completed plan and its evidence predate that amendment. After explicit
+reapproval, the plan must be revised or superseded to map `DV-017` to exact
+surface, traversal, identity, failure, profile, allocation, driver, and renewed
+conformance evidence before implementation of the new operation begins.
