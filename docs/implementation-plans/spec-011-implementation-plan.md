@@ -268,7 +268,7 @@ payload values obey the exact declaration contract.
       qualified and ordinarily inferred cases, zero/maximum `UInt16` action
       codes, and the absence of closure, handler, model, type-token, runtime,
       or backend storage.
-- [ ] `T1.3` — Implement `DisabledSemanticPayload` and
+- [x] `T1.3` — Implement `DisabledSemanticPayload` and
       `View.disabled(_:)` as a semantic modifier with no identity of its own.
       Test nested `true`/`false` scopes and modifier order without introducing
       backend-specific state.

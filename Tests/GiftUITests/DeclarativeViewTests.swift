@@ -37,6 +37,19 @@ final class DeclarativeViewTests: XCTestCase {
         )
     }
 
+    func testDisabledScopesTraverseAsOrderedIdentityFreeModifiers() {
+        let declaration = Button("run", action: TestAction.ordinary)
+            .disabled(false)
+            .disabled(true)
+        var visitor = CustomViewProbeVisitor(evaluateBody: true)
+
+        declaration._giftUITraverse(&visitor)
+
+        XCTAssertEqual(visitor.actionPrimitiveWithContentVisits, 1)
+        XCTAssertEqual(visitor.disabledVisits, [false, true])
+        XCTAssertEqual(visitor.modifierVisits, 2)
+    }
+
     func testActionCasesUseTheirExactUInt16Codes() {
         XCTAssertEqual(TestAction.minimum.rawValue, UInt16.min)
         XCTAssertEqual(TestAction.ordinary.rawValue, 17)
@@ -364,6 +377,7 @@ struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
     var styleVisits: [StyleVisit] = []
     var layoutModifierVisits: [LayoutModifierVisit] = []
     var layoutPrimitiveVisits: [LayoutPrimitiveVisit] = []
+    var disabledVisits: [Bool] = []
 
     mutating func visitCustomView<Declaration: View>(
         _ declaration: borrowing Declaration,
@@ -553,6 +567,8 @@ struct CustomViewProbeVisitor: _GiftUISemanticTraversalVisitor {
                     alignment: frame.alignment
                 )
             )
+        } else if let disabled = payloadCopy as? DisabledSemanticPayload {
+            disabledVisits.append(disabled.isDisabled)
         }
         modifierVisits += 1
     }
