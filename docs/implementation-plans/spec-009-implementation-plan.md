@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-06
-updated: 2026-09-10
+updated: 2026-09-12
 related_design_notes:
   - ../implementation-designs/spec-009-execution-state-axes.md
 conformance_report: null
@@ -209,7 +209,7 @@ execution behavior is claimed.
       `signal-analyzer.yaml`; reject missing, duplicate, unknown, and
       unreferenced cases or fields. Distinguish host execution, cross-build,
       inspection, simulator, and connected-hardware evidence.
-- [ ] `T0.2` — Reserve the approved `GiftUIExecution`,
+- [x] `T0.2` — Reserve the approved `GiftUIExecution`,
       `GiftUIFailureExecution`, focused test, and fixture-only adapter targets
       in the package/target graph. Land each exact-set edit only with its first
       compiling source. Replace or retire every obsolete
@@ -739,6 +739,14 @@ placeholder reference now names the real owner. The obsolete
 `GiftUIExecutionContract` target name is absent and has no alias or shim. T0.2
 remains open for `GiftUIFailureExecution` and the fixture-only adapters, which
 must still land atomically with their first compiling sources.
+
+`T0.2` is complete: `GiftUIFailureExecution`, its focused tests, and the
+currently required fixture-only owner adapters now accompany their first
+compiling sources. The exact package registry proves the execution and failure
+edges, the focused interface audit checks every SPEC-003 through SPEC-005
+negative against the real target names, and the migration audit rejects any
+remaining `GiftUIExecutionContract` placeholder or compatibility shim. See the
+[completed target-graph evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-0/execution-failure-target-graph.md).
 
 `T1.1` is complete: five exact four-byte identity values preserve every raw
 bit pattern without sentinels; the seven execution phases retain their exact

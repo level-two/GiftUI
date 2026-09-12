@@ -52,6 +52,18 @@ fail_check("portable negative fixture diagnostic differs") unless negative.join(
 fixture_manifest = ROOT.join("Tests/ContractFixtures/SPEC004/fixture-manifest.tsv").read
 fail_check("portable negative fixture is not registered") unless fixture_manifest.include?("forbidden-execution-import\tfail\tpublic")
 
+failure_negatives = {
+  "SPEC003" => "import GiftUIFailureExecution\n",
+  "SPEC004" => "import GiftUIFailureExecution\n",
+  "SPEC005" => "import GiftUITextResources\nimport GiftUIFailureExecution\n",
+}
+failure_negatives.each do |spec, expected_source|
+  fixture_name = spec == "SPEC003" ? "forbidden-execution-import" : "forbidden-failure-execution-import"
+  fixture = ROOT.join("Tests/ContractFixtures/#{spec}/Fixtures/Negative/#{fixture_name}")
+  fail_check("#{spec} negative fixture does not reject the real failure target") unless fixture.join("main.swift").read == expected_source
+  fail_check("#{spec} failure diagnostic differs") unless fixture.join("expected-diagnostic-patterns.txt").read.include?("no such module 'GiftUIFailureExecution'")
+end
+
 maintained = ([ROOT.join("Package.swift")] + ROOT.glob("{Sources,Tests}/**/*.swift")).map(&:read).join("\n")
 obsolete_placeholder = "GiftUIExecution" + "Contract"
 fail_check("obsolete placeholder target remains") if maintained.include?(obsolete_placeholder)
