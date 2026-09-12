@@ -7,3 +7,5 @@
 6	normalized-transcript-schema.tsv	schema	identity,action,generation,target_generation,enabled,geometry,paint_order,transition,gesture,dispatch,failure,publication
 7	resource-schema.tsv	schema	host,cross_build,simulator,connected
 8	task-evidence.yaml	evidence	T0.1-T9.5
+9	Positive/declarations/main.swift	compile-positive	six-buttons
+10	Negative/declarations.tsv	compile-negative	wrong-raw-width,associated-value,wrong-domain,invalid-context,callback-button,handler-registration,escaping-model

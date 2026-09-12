@@ -276,7 +276,7 @@ payload values obey the exact declaration contract.
       borrowing `handle` signature. Add positive handler compile fixtures and
       negative retained/escaping/replacement/registration shapes without
       introducing a runtime dependency into `GiftUI`.
-- [ ] `T1.5` — Compile the exact SPEC-011 and SPEC-001 six-Button source corpus
+- [x] `T1.5` — Compile the exact SPEC-011 and SPEC-001 six-Button source corpus
       in ordinary Swift and Embedded Swift modes, including rejected wrong raw
       widths, associated values, incompatible domains, invalid contextual
       inference, and callback-shaped compatibility attempts. Record public

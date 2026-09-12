@@ -1,0 +1,8 @@
+# id	forbidden_shape
+wrong-raw-width	GiftUIAction with RawValue other than UInt16
+associated-value	action case with associated payload
+wrong-domain	Button action incompatible with assembled handler Action
+invalid-context	unqualified case without ordinary Swift inference
+callback-button	Button initializer retaining an escaping callback
+handler-registration	dynamic handler registry or replacement API
+escaping-model	model borrow retained outside handle
