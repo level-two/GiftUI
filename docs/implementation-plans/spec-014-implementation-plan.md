@@ -664,6 +664,14 @@ with the SPEC-002 exact graph. It implements the fixed encoded pixel and
 surface descriptor with checked extent, packed-row, stride, region, and byte-
 product validation; focused tests cover exact encoding, field preservation,
 layout ceilings, equality boundaries, and arithmetic overflow.
+
+`T1.2` reached the pinned-compiler gate on 2026-09-12. Apple Swift 6.3.3
+rejects SPEC-014's exact `borrowing var` protocol-property spelling before any
+implementation body is considered. The nonconforming attempt was removed,
+T1.2 remains open, and reproducible evidence is recorded in
+`Tests/ContractFixtures/SPEC014/Evidence/milestone-1/borrowing-property-specification-blocker.md`.
+The same invalid spelling occurs in T1.4 and T1.5 declarations, so those tasks
+and their dependents require an explicitly approved Specification correction.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
