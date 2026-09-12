@@ -45,6 +45,13 @@ in the same change as its first substantive source, `Package.swift` entry, and
 SPEC-002 exact target-dependency row. `dependency-fixtures.tsv` records the
 positive and negative graph examples that the module checker must classify.
 
+`migration-inventory.tsv` records the authoritative disposition for current
+owner seams and the relevant historical `PoC` renderer, surface, framebuffer,
+tile, display, text-raster, platform, device, and test families. Prefix rows
+cover every file below that historical component root. The migration checker
+also verifies that retired component roots remain absent from maintained
+source and runs synthetic pattern regressions for the forbidden legacy shapes.
+
 Cross-build and inspection evidence for Raspberry Pi or nRF52840 is hardware-
 free. These fixtures do not deploy, access a remote target, restart a service,
 or flash a board, and they cannot establish connected-hardware conformance.

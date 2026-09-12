@@ -55,6 +55,7 @@ declared_inputs() {
             "${PROJECT_ROOT}/docs/implementation-plans/spec-014-implementation-plan.md" \
             "${SCRIPT_DIR}/check-driver-registry.rb" \
             "${SCRIPT_DIR}/check-spec-014-fixtures.rb" \
+            "${SCRIPT_DIR}/check-spec-014-migration.rb" \
             "${SCRIPT_DIR}/check-spec-014-module-contract.rb" \
             "${SCRIPT_DIR}/check-target-dependencies.rb" \
             "${SCRIPT_DIR}/finalize-contract-metadata.rb" \
@@ -213,6 +214,7 @@ record_toolchain() {
 }
 
 run_required fixture-schema "${SCRIPT_DIR}/check-spec-014-fixtures.rb"
+run_required migration-inventory "${SCRIPT_DIR}/check-spec-014-migration.rb"
 run_required driver-registry "${SCRIPT_DIR}/check-driver-registry.rb"
 run_package_checks
 record_toolchain

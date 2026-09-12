@@ -211,7 +211,7 @@ production behavior is claimed.
       root. Until each assertion exists, emit a failing `missing` or `blocked`
       row; never silently skip a fixture, profile, toolchain, measurement,
       dependency edge, or expected report.
-- [ ] `T0.4` — Inventory every historical/current renderer, surface,
+- [x] `T0.4` — Inventory every historical/current renderer, surface,
       framebuffer, tile, display target, text raster, region/payload writer,
       capability adapter, and platform/device integration reference. Assign
       adopt-through-owner, replace, retire, downstream-owned, evidence-only,
@@ -653,7 +653,11 @@ evidence row remains pending. `T0.3` registered the exact four-profile driver,
 immutable input/report identity, pinned toolchain preflights, and the exclusive
 `.build/spec-014/` output root. The driver publishes its explicit missing and
 blocked rows before returning nonzero while implementation evidence is
-incomplete.
+incomplete. `T0.4` classified every maintained owner seam and every relevant
+PoC renderer/surface/display/platform/firmware family, verified already-absent
+legacy owners, and added executable regressions against producer-per-tile
+replay, nRF framebuffer/display-list storage, target-identity branching, and
+duplicate canonical RGB565 arithmetic.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
