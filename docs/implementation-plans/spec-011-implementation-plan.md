@@ -373,7 +373,7 @@ per-source capture.
       greatest painter order. Return `.captured` only for the topmost enabled
       occurrence; a disabled topmost occurrence returns `.ignored` and blocks
       retargeting to an obscured action.
-- [ ] `T4.2` — Implement `resolveMove(_:at:)` so only the exact captured pair
+- [x] `T4.2` — Implement `resolveMove(_:at:)` so only the exact captured pair
       continues while inside its current matching region. Moving outside,
       record replacement/removal, disabled state, or generation mismatch
       cancels permanently; re-entry does not restore capture.

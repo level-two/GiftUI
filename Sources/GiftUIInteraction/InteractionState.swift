@@ -349,7 +349,22 @@ where
         _ captured: CapturedAction<Identity>,
         at point: Point
     ) -> PointerGestureOutcome<Identity> {
-        .cancelled
+        guard capturedRecord(captured, contains: point) != nil else {
+            return .cancelled
+        }
+        return .continued(captured)
+    }
+
+    private borrowing func capturedRecord(
+        _ captured: CapturedAction<Identity>,
+        contains point: Point
+    ) -> BoundActionRecord<Identity>? {
+        guard let record = record(identity: captured.identity),
+            record.generation == captured.generation,
+            record.isEnabled,
+            record.hitBounds.contains(point)
+        else { return nil }
+        return record
     }
 
     package borrowing func resolveUp(

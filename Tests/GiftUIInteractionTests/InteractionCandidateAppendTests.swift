@@ -19,6 +19,36 @@ final class InteractionCandidateAppendTests: XCTestCase {
         XCTAssertEqual(blocked.resolveDown(at: Point(x: 1, y: 1)), .ignored)
     }
 
+    func testMoveContinuesOnlyTheExactCurrentCaptureInsideItsRegion() {
+        var state = makeState(capacity: 2)
+        commitOverlappingRecords(&state, topEnabled: true)
+        let capture = CapturedAction(
+            identity: UInt16(2), generation: ActionGeneration(rawValue: 12))
+
+        XCTAssertEqual(
+            state.resolveMove(capture, at: Point(x: 1, y: 1)),
+            .continued(capture)
+        )
+        XCTAssertEqual(
+            state.resolveMove(capture, at: Point(x: 8, y: 8)),
+            .cancelled
+        )
+        XCTAssertEqual(
+            state.resolveMove(
+                CapturedAction(identity: 2, generation: ActionGeneration(rawValue: 99)),
+                at: Point(x: 1, y: 1)
+            ),
+            .cancelled
+        )
+        XCTAssertEqual(
+            state.resolveMove(
+                CapturedAction(identity: 1, generation: ActionGeneration(rawValue: 12)),
+                at: Point(x: 1, y: 1)
+            ),
+            .cancelled
+        )
+    }
+
     func testResolutionCommitsAtomicallyOrDiscardsAndPreservesCommittedState() {
         let former = BoundActionRecord(
             identity: UInt16(9),
