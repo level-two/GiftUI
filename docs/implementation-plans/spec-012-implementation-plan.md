@@ -337,7 +337,7 @@ performs exact whole-attempt cleanup and dirty recovery.
       preserve the origin as metadata without double translation, carry only
       the inherited clip, validate normalized stroke totals, and expose a plan
       only after every occurrence succeeds.
-- [ ] `T4.5` — Integrate drawing failure with SPEC-009 pre-publication effects:
+- [x] `T4.5` — Integrate drawing failure with SPEC-009 pre-publication effects:
       discard/reset once, preserve admitted mutations, publish no semantic or
       candidate revision, mark semantics dirty, and coalesce one wake. Prove
       refusal recovery retains only presentation intent and obtains new Canvas
@@ -946,3 +946,13 @@ stroke totals agree. Focused fixtures distinguish one translation from zero or
 two and prove overflow discards the whole plan without exposure. The
 [translation evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-4/canvas-plan-translation.md)
 records exact values and totals. T4.5 is next.
+
+`T4.5` is complete at the focused owner seam. A drawing failure now composes
+with SPEC-009 recovery while preserving admitted-effect count and the prior
+semantic revision, publishing no candidate/frame, marking semantics dirty,
+and requesting one later wake. Retryable refusal finalizes the former plan,
+retains only bounded presentation intent, and rederives through a fresh source
+and workspace under a new cycle. The
+[cycle recovery evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-4/drawing-cycle-recovery.md)
+records both paths. Production coordinator integration remains T7.4 through
+SPEC-013. Milestone 4 is complete; T5.1 is next.

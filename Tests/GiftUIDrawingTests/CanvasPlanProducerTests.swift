@@ -1,10 +1,10 @@
 import GiftUI
-import GiftUIExecution
 import GiftUILayout
 import GiftUIRenderCore
 import Testing
 
 @testable import GiftUIDrawing
+@testable import GiftUIExecution
 
 @Test
 func canvasPlanProducerValidatesOrderAndInvokesWithExactLayoutValues() {
@@ -202,6 +202,117 @@ func canvasPlanProducerDiscardsTheWholePlanOnTranslationOverflow() {
     #expect(workspace.discardCount == 1)
     #expect(workspace.resetCount == 1)
     #expect(workspace.strokeCount(of: 20) == nil)
+}
+
+@Test
+func drawingFailureJoinsPrepublicationDirtyRecoveryWithoutReplayingEffects() {
+    var source = CanvasPlanSourceFixture(
+        identities: [20],
+        errorAtIndex: 0,
+        error: .invalidValue
+    )
+    let layout = CanvasPlanLayoutFixture(
+        records: [canvasLayoutRecord(identity: 20, x: 0, y: 0, width: 1, height: 1)]
+    )
+    var workspace = CanvasPlanConstructionFixture(capacity: canvasPlanLimits)
+    var recovery = RecordingDerivationRecovery(
+        publishedRevision: SemanticRevision(rawValue: 7),
+        requester: CanvasPlanWakeRequester()
+    )
+    #expect(recovery.beginMutationCycle(applying: 2) == nil)
+    #expect(recovery.stage(through: .immutableRenderInput) == nil)
+
+    let drawing = CanvasPlanProducer.derive(
+        source: &source,
+        layout: layout,
+        executionContext: derivingContext,
+        limits: canvasPlanLimits,
+        workspace: &workspace
+    )
+    #expect(drawing == .failure(.invalidValue))
+    let result = recovery.fail(
+        at: .immutableRenderInput,
+        cycle: RunCycleID(rawValue: 1),
+        admission: canvasPlanAdmission,
+        committedPresentationRevision: nil
+    )
+
+    guard case .failure(let context, _, let summary) = result else {
+        Issue.record("drawing failure must become a prepublication cycle failure")
+        return
+    }
+    #expect(context.semanticRevision == SemanticRevision(rawValue: 7))
+    #expect(context.candidateFrame == nil)
+    #expect(summary?.semanticRevision == SemanticRevision(rawValue: 7))
+    #expect(summary?.semanticDisposition == .dirty)
+    #expect(summary?.logicalFrameDisposition == .notProduced)
+    #expect(recovery.appliedEffectCount == 2)
+    #expect(recovery.isDirty)
+    #expect(recovery.wakeAccumulator.requester.requestCount == 1)
+    #expect(recovery.wakeAccumulator.accumulatedReasons == .semanticDirty)
+    #expect(workspace.discardCount == 1)
+    #expect(workspace.resetCount == 1)
+}
+
+@Test
+func refusalRecoveryUsesFreshCanvasRecordsAndRetainsOnlyPresentationIntent() {
+    let revision = SemanticRevision(rawValue: 9)
+    var firstSource = CanvasPlanSourceFixture(identities: [20])
+    let layout = CanvasPlanLayoutFixture(
+        records: [canvasLayoutRecord(identity: 20, x: 0, y: 0, width: 1, height: 1)]
+    )
+    var firstWorkspace = CanvasPlanConstructionFixture(capacity: canvasPlanLimits)
+    let firstContext = ExecutionContext(
+        cycle: RunCycleID(rawValue: 1),
+        semanticRevision: revision,
+        candidateFrame: nil,
+        phase: .deriving
+    )
+    #expect(
+        CanvasPlanProducer.derive(
+            source: &firstSource,
+            layout: layout,
+            executionContext: firstContext,
+            limits: canvasPlanLimits,
+            workspace: &firstWorkspace
+        ).isSuccess
+    )
+    firstWorkspace.discard()
+    firstWorkspace.reset()
+
+    var pending = RecordingPresentationPendingCoordinator(
+        maximumRetryableRefusals: 3,
+        requester: CanvasPlanWakeRequester()
+    )!
+    let transition = pending.recordRetryableRefusal(for: revision)
+    #expect(transition.intent?.semanticRevision == revision)
+    #expect(transition.intent?.retryableRefusalCount == 1)
+    #expect(pending.wakes.requester.requestCount == 1)
+
+    var recoveredSource = CanvasPlanSourceFixture(identities: [20])
+    var recoveredWorkspace = CanvasPlanConstructionFixture(capacity: canvasPlanLimits)
+    let recoveryContext = ExecutionContext(
+        cycle: RunCycleID(rawValue: 2),
+        semanticRevision: revision,
+        candidateFrame: nil,
+        phase: .deriving
+    )
+    #expect(
+        CanvasPlanProducer.derive(
+            source: &recoveredSource,
+            layout: layout,
+            executionContext: recoveryContext,
+            limits: canvasPlanLimits,
+            workspace: &recoveredWorkspace
+        ).isSuccess
+    )
+
+    #expect(firstSource.invokedIdentities == [20])
+    #expect(firstSource.activeIdentities.isEmpty)
+    #expect(recoveredSource.invokedIdentities == [20])
+    #expect(recoveredSource.activeIdentities.isEmpty)
+    #expect(recoveredWorkspace.summary.canvasOccurrenceCount == 1)
+    #expect(pending.pendingIntent == transition.intent)
 }
 
 @Test(arguments: CanvasPlanEntryFailure.allCases)
@@ -467,6 +578,14 @@ private enum CanvasPlanDrawing {
     case none
     case stroke
     case overflow
+}
+
+private struct CanvasPlanWakeRequester: ExecutionWakeRequester, Sendable {
+    private(set) var requestCount: UInt16 = 0
+
+    mutating func requestWake(for _: ExecutionWakeReasons) {
+        requestCount += 1
+    }
 }
 
 private struct CanvasPlanLayoutRecord {
@@ -799,6 +918,30 @@ private let canvasPlanWideLimits = DrawingLimits(
     maximumPlanSubpaths: 2,
     maximumNormalizedStrokeOperations: 2
 )!
+
+private let canvasPlanAdmission = AdmissionSummary(
+    inputEventCount: 0,
+    stateChangeFactCount: 1,
+    completionFactCount: 0,
+    semanticActionCount: 0,
+    includesDirtyRederivation: false,
+    includesPresentationRecovery: false,
+    limits: ExecutionLimits(
+        maximumInputEvents: 1,
+        maximumStateChangeFacts: 1,
+        maximumCompletionFacts: 0,
+        maximumSemanticActions: 1,
+        maximumActiveInputSources: 1,
+        maximumCommittedActions: 1
+    )!
+)!
+
+private extension DrawingPlanResult {
+    var isSuccess: Bool {
+        if case .success = self { return true }
+        return false
+    }
+}
 
 private let zeroRect = Rect(
     origin: Point(x: 0, y: 0),
