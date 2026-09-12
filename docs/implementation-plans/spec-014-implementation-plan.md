@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-12
+updated: 2026-09-13
 related_design_notes: []
 conformance_report: null
 related_future_work:
@@ -233,7 +233,7 @@ conformance, and value layouts from SPEC-014.
       fields, origin/extent/region/stride validation, checked packed-row and
       region byte products, realization rules, equality, and encoding-specific
       unused-byte zeroing. Add below/equal/above and overflow tests.
-- [ ] `T1.2` — Implement `RasterSurface` and a recording conformer that proves
+- [x] `T1.2` — Implement `RasterSurface` and a recording conformer that proves
       one begin, bounded in-damage encoded replacement, one finish or discard,
       sticky responsibility transfer, safe draining, and complete reset. Keep
       rasterization and display submission out of this owner.
@@ -677,6 +677,13 @@ compiler-invalid SPEC-014 `borrowing var` requirement to an ordinary read-only
 property while retaining its immutable borrowed-use semantics. The
 authoritative Specification and blocker evidence now record that correction;
 T1.2, T1.4, and T1.5 are unblocked.
+
+Following that correction, `T1.2` added the exact package `RasterSurface` SPI.
+Its focused recording conformer keeps transcript storage test-only while
+proving single begin, bounded in-damage replacement, wrong-encoding rejection,
+sticky responsibility transfer, validation-only drain, exactly one finish or
+discard, and complete attempt reset without importing raster or display
+ownership.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
