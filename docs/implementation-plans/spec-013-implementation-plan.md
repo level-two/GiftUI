@@ -239,7 +239,7 @@ failure carrier, independent of concrete profile storage.
       representability, then static Canvas metadata. Poison client body,
       Canvas, attachment, admission, wake, policy, and endpoint seams to prove
       startup purity.
-- [ ] `T1.4` — Implement the noncopyable `RuntimeProfileStorage` contract,
+- [x] `T1.4` — Implement the noncopyable `RuntimeProfileStorage` contract,
       structural identity, successful-audit retention, and reset legality.
       Test capacity immutability, attempt-versus-all reset boundaries, rejected
       construction, and before-use/after-quiescence all-storage reset.
@@ -646,6 +646,13 @@ Later on 2026-09-12 the maintainer explicitly approved correcting all five
 compiler-invalid `borrowing var` declarations in SPEC-013 to ordinary
 read-only properties. The authoritative Specification now contains the
 corrected declarations and T1.4 is unblocked.
+
+T1.4 added the noncopyable storage protocol and a validated storage owner that
+retains the successful audit and typed structural identity, detects capacity
+mutation, separates attempt reset from all-storage reset, and enforces the
+before-use/after-quiescence reset boundary. Five focused tests passed; evidence
+is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-1/profile-storage-lifetime.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
