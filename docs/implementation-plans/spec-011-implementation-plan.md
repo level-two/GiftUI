@@ -90,14 +90,14 @@ remain allocator-free.
 
 ## Current Repository State
 
-- `Sources/GiftUI/DeclarativeView.swift` already exposes SPEC-006's exact
-  `GiftUIAction` protocol and typed action traversal category. It does not yet
-  expose `Button`, `GiftUIActionHandler`, `disabled`,
-  `ButtonSemanticPayload`, or `DisabledSemanticPayload`.
-- `Sources/GiftUISemanticCore/GiftUISemanticCore.swift` already counts and
-  stages typed action occurrences through bounded expansion. No production
-  Button primitive owns a stored label yet, no disabled-scope payload exists,
-  and no action-domain validation/normalization is joined to layout output.
+- `GiftUI` exposes SPEC-006's exact `GiftUIAction` traversal category plus the
+  SPEC-011 Button, typed payloads, disabled modifier, and borrowing handler
+  protocol. Button stores one initializer-built label and traverses it through
+  the approved action-with-content operation.
+- `GiftUISemanticCore` stages each Button action at its stable identity before
+  the stored label. `GiftUIInteraction` owns effective-disabled folding and
+  handler-aware finite-code normalization without retaining a declaration,
+  handler, or model.
 - `GiftUIExecution` already owns `ActionGeneration`,
   `ObservableTargetGeneration`, `CapturedAction`, action-generation allocation,
   pointer capture, admission, mutation ordering, and one-shot commit seams from
@@ -108,18 +108,14 @@ remain allocator-free.
   expose a model to Interaction and must not gain an Interaction import. The
   target-composed current-model borrow required for dispatch remains a
   SPEC-011/SPEC-013/SPEC-015 coordinator integration.
-- `Package.swift` has no `GiftUIInteraction`, interaction unit-test target,
-  interaction/failure adapter fixture, `GiftUIRuntimeCore`, dynamic/static
-  runtime profile targets, or first-party host targets. `GiftUILayout` is also
-  not present yet. The focused owner can land only after its exact dependency
-  targets compile; production coordinator/profile and host work wait for their
-  approved owning plans and targets.
-- There is no `Tests/ContractFixtures/SPEC011/` corpus, exact contract driver,
-  driver-registry row, action-record resource probe, profile comparison, or
-  connected input/display evidence. Existing SPEC-002/003/006/009/010 drivers
-  provide reusable conventions for package-graph checks, positive/negative
-  compilation, finite transcripts, failure mapping, allocation interposition,
-  resource reports, ELF inspection, and fail-closed fixture registration.
+- `Package.swift` now contains `GiftUIInteraction` with exactly `GiftUI`,
+  `GiftUISemanticCore`, `GiftUILayout`, and `GiftUIExecution`, plus its focused
+  test target. The failure adapter, runtime profiles, and first-party host
+  targets remain downstream work owned by `T5`-`T7`.
+- `Tests/ContractFixtures/SPEC011/` contains the closed declaration, semantic,
+  candidate, gesture, dispatch, failure, migration, schema, and task-evidence
+  inventories. The explicitly registered driver is intentionally fail-closed
+  while `T5`-`T9` evidence is pending.
 - Removed proof-of-concept `ActionID`, escaping-closure Button, runtime hit map,
   and platform dispatch paths remain migration evidence only. They must not be
   restored as compatibility layers or alternate production paths.
@@ -646,15 +642,10 @@ report has a disposition for every criterion.
 
 ### Upstream blockers
 
-- SPEC-007 is approved with a ready plan, but `GiftUILayout` is not present.
-  Production bound/clip integration in `T3.3` and later cannot substitute
-  local geometry ownership while that implementation is pending.
-- SPEC-006 is `approved` with its action-primitive-with-content amendment, whose
-  implementation and evidence remain pending; SPEC-009 and SPEC-010 are
-  implementing. Their required typed traversal,
-  execution-generation/capture, and publishable-target seams are partly
-  present, but each consuming task waits for the exact authoritative production
-  surface and its focused tests rather than adding aliases or forks.
+- SPEC-006's action-with-content amendment and `DV-017` evidence are complete;
+  SPEC-007 layout geometry and SPEC-009 generation/capture seams are present
+  and consumed by `T1`-`T4`. SPEC-010's publishable target seam remains reserved
+  for the downstream coordinator join in `T5`.
 - SPEC-013 and SPEC-015 are approved, and their production runtime/host
   targets are absent from the current implementation baseline.
   `T5` production
@@ -689,12 +680,20 @@ report has a disposition for every criterion.
 
 ## Completion Record
 
-No implementation task has begun. All tasks are pending, and `T1.1`/`T2.1`
-remain blocked by approved SPEC-006 criterion `DV-017`. After that amendment is
-implemented and evidenced, return this plan to `ready`.
-When work starts, change this plan to `active` and SPEC-011 to `implementing`
-in the same authorized lifecycle update. Record completed, changed, removed,
-or blocked task dispositions here as the implementation evolves; do not
-rewrite pending tasks to conceal a contract mismatch. Plan completion requires
-a disposition for every task and a linked conformance report, but does not
-itself mark SPEC-011 implemented.
+The maintainer's 2026-09-12 instruction started implementation after SPEC-006
+`DV-017` became reproducibly passing. `T0.1`, `T0.3`, `T0.4`, and every task in
+Milestones 1 through 4 are complete, each in its own task commit. The package
+suite passes 297 XCTest tests and 435 Swift Testing cases; focused Interaction,
+Semantic Core, and existing Execution capture suites pass. Package dependency,
+fixture, declaration, migration, formatting, and driver-registration checks
+also pass.
+
+The portable GiftUI declarations cross-compile in the ARMv6 and nRF52840
+Embedded Swift SPEC-006 driver at revision
+`d5fce4483513e07f67357e2ebdac7bba68b4e634`, run identity
+`d5fce4483513e07f67357e2ebdac7bba68b4e634-6e7089c05700ca66`. This is
+hardware-free artifact evidence, not simulator or connected-hardware evidence.
+`T0.2` remains pending until the narrowly named failure adapter lands with its
+first compiling `T6.1` source. `T5`-`T9` and conformance remain pending under
+their explicit runtime, host, profile, evidence, and authorization gates, so
+this plan correctly remains `active` and SPEC-011 remains `implementing`.
