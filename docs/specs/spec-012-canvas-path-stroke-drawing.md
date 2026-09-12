@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-09-11
+updated: 2026-09-12
 proposal:
   - PROPOSAL-006
 related_rfcs:
@@ -205,9 +205,14 @@ conforms to SPEC-006's `_GiftUISemanticPrimitivePayload` marker and its
 traversal override calls `visitor.visitPrimitive(self)` exactly once. The
 visitor stages one semantic leaf with the exact SPEC-006 structural identity;
 it MUST NOT evaluate `body`, create a child, invoke the draw closure, or expose
-the closure through a public or package lookup. Dynamic and static semantic
-storage MAY encode the staged callable differently, but both MUST associate it
-with that exact identity until the post-layout invocation defined below.
+the closure through a public or package closure-returning lookup. The package
+invocation bridge specified below invokes the private representation without
+returning, borrowing, or otherwise exposing it. Only the
+`CanvasInvocationSource.invokeCanvas` implementation for the staged semantic
+result may reference that bridge. Dynamic and static semantic storage MAY
+encode the staged callable differently, but both MUST associate the concrete
+Canvas payload with that exact identity until the post-layout invocation
+defined below.
 
 `withPath` passes its active `GraphicsContext` and one new `Path` as the
 body's two exclusive `inout` parameters. Client source MUST perform stroke
@@ -239,8 +244,13 @@ Canvas { (context, size) throws(DrawingError) in
 
 The public `Canvas` initializer remains one portable closure-based source
 surface. A dynamic profile MAY retain that closure in a bounded profile-owned
-wrapper until post-layout invocation. A static profile MUST instead lower each
-statically known Canvas expression during its required source-generation step.
+wrapper until post-layout invocation. Its semantic-result adapter copies the
+concrete `Canvas` payload under the occurrence identity and implements
+`CanvasInvocationSource.invokeCanvas` by calling `_giftUIInvokeCanvas`; no
+other package client may reference that bridge. A static profile MUST instead
+lower each statically known Canvas expression during its required
+source-generation step while preserving the same concrete `Canvas` payload
+and public source surface.
 The generator assigns each syntactic expression one nonzero `UInt16` callable
 ID, emits one fixed-layout capture record containing exactly the values read by
 that closure, and emits one finite `StaticCanvasCallableTable` switch case for
@@ -254,9 +264,14 @@ static target image without reflection or existential storage. Capturing an
 unsupported value, exceeding `maximumStaticCaptureBytes`, assigning more than
 `maximumStaticCallableCases` IDs, or failing to prove complete ID coverage is a
 static build error; the generator MUST NOT fall back to retaining the source
-closure. At semantic staging the static profile stores only the callable ID
-and its inline generated capture record. Invocation dispatches that record
-through the generated case and preserves the exact scoped
+closure. The generated static `Canvas` representation replaces the private
+closure field with the nonzero callable ID and inline generated capture record,
+and the generated implementation of `_giftUIInvokeCanvas` dispatches that
+representation through the finite table. At semantic staging the static
+profile copies that generated concrete payload under the occurrence identity.
+A production static build containing an unlowered closure-based `Canvas`
+expression MUST fail before linking; the checked-in declaration-only fallback
+MUST NOT enter a production static image. Invocation preserves the exact scoped
 `inout GraphicsContext`, `Size`, typed `throws(DrawingError)`, order, and
 release semantics. The generated capture record is destroyed immediately
 after invocation and no later than cycle finalization.
@@ -275,9 +290,13 @@ line-width overload is exactly the style overload using `.butt` and `.miter`.
 
 ## Module Contract
 
-`GiftUI` owns the public declarations and typed Canvas primitive payload.
-`GiftUISemanticCore` stages the borrowed payload under SPEC-006 identity and
-exposes it only through the drawing-attempt input view below.
+`GiftUI` owns the public declarations, typed Canvas primitive payload, and the
+non-returning package invocation bridge. `GiftUISemanticCore` stages the
+borrowed payload under SPEC-006 identity. The concrete profile-owned semantic
+result copies the payload into bounded staged storage and exposes invocation
+only by conforming its drawing-attempt adapter to `CanvasInvocationSource`.
+`GiftUISemanticCore` does not import `GiftUIDrawing`, add a Canvas-specific
+visitor category, or own another identity relation.
 
 `GiftUIDrawing` owns scoped construction, static callable-table contract,
 drawing plan, plan validation, post-layout invocation, combined render
@@ -305,6 +324,13 @@ this Specification is required before those additive cases are authoritative.
 ## Types / APIs
 
 ```swift
+extension Canvas {
+    package func _giftUIInvokeCanvas(
+        context: inout GraphicsContext,
+        size: Size
+    ) throws(DrawingError)
+}
+
 package struct DrawingLimits: Equatable, Sendable {
     package let maximumLineWidth: GeometryScalar
     package let maximumCanvasOccurrences: UInt16
@@ -361,6 +387,11 @@ package struct DrawingPlanSummary: Equatable, Sendable {
     package let pointCount: UInt16
     package let subpathCount: UInt16
     package let normalizedStrokeOperationCount: UInt16
+    package init(canvasOccurrenceCount: UInt16,
+                 strokeCount: UInt16,
+                 pointCount: UInt16,
+                 subpathCount: UInt16,
+                 normalizedStrokeOperationCount: UInt16)
 }
 
 package struct SubpathRange: Equatable, Sendable {
@@ -378,6 +409,14 @@ package struct StraightLineStrokeHeader: Equatable, Sendable {
     package let inheritedClip: Rect
     package let pointCount: UInt16
     package let subpathCount: UInt16
+    package init(color: Color,
+                 lineWidth: GeometryScalar,
+                 lineCap: LineCap,
+                 lineJoin: LineJoin,
+                 surfaceOrigin: Point,
+                 inheritedClip: Rect,
+                 pointCount: UInt16,
+                 subpathCount: UInt16)
 }
 
 package protocol StraightLineStrokeView {
@@ -492,6 +531,14 @@ package enum CanvasRenderProducer {
 }
 ```
 
+`DrawingPlanSummary.init` and `StraightLineStrokeHeader.init` are nonfailing
+package construction seams for their cross-module producers. They copy the
+supplied values exactly and perform no normalization. The drawing producer or
+profile workspace MUST complete all applicable limit, range, geometry, style,
+clip, identity, and summary-consistency validation before construction. A
+consumer that observes an impossible constructed value reports
+`.invariantViolation`; these initializers do not make unvalidated input valid.
+
 The existing SPEC-007 `SemanticLayoutPrimitive` enum gains exactly one case,
 `.canvas`. The existing SPEC-008 `SemanticRenderScope` enum gains exactly one
 case, `.canvas`. These are additive package-SPI amendments; every pre-existing
@@ -575,10 +622,17 @@ publication or is `nil` before the first publication, and that
 `candidateFrame == nil`. It then verifies that
 `source.canvasOccurrenceCount` equals both the semantic Canvas count and the
 number of matching resolved layout identities. Each in-range identity must
-resolve exactly once. It invokes each closure at most once with a fresh scoped
-context and the exact `Size` from that Canvas's resolved bounds. A closure is
-not called during semantic expansion, measurement, `.publishing`, backend
-offer, capability resolution, or recursive retry.
+resolve exactly once. In a dynamic profile the semantic-result adapter owns a
+bounded copy of the concrete `Canvas` payload from expansion through this
+step. In a static profile it owns the generated concrete payload containing
+the callable ID and inline capture record. In both profiles
+`CanvasPlanProducer` invokes only `CanvasInvocationSource.invokeCanvas`; that
+adapter calls the payload's non-returning `_giftUIInvokeCanvas` bridge, which
+dispatches the private dynamic closure or generated static callable table.
+The producer invokes each occurrence at most once with a fresh scoped context
+and the exact `Size` from that Canvas's resolved bounds. A callable is not
+invoked during semantic expansion, measurement, `.publishing`, backend offer,
+capability resolution, or recursive retry.
 
 After each normal or throwing invocation, the producer calls
 `releaseCanvas(at:)` exactly once and makes any later invocation of that staged
@@ -851,7 +905,9 @@ zero-child leaf, present-proposal/absent-axis measurement, frame expansion,
 resolved bounds, inherited clip, and absence of hit/text/ordinary-paint output.
 Cycle fixtures cover pre-publication invocation, release-before-publication,
 whole-attempt discard, throwing-exit cleanup, dirty recovery, refusal
-re-expansion without a new semantic revision, and cross-profile equality.
+re-expansion without a new semantic revision, exact identity-keyed concrete
+payload staging, exclusive bridge references from the semantic-result adapter,
+and cross-profile equality.
 
 Combined render fixtures cover exact header totals; fill/glyph/stroke painter
 order; no-op strokes; local-to-surface overflow; outside-Canvas geometry;
@@ -865,8 +921,12 @@ SPEC-008 combined-operation, configured sink, invalid-state, invalid-phase,
 scope, reentrancy, and invariant edge in normative detection order. Static
 fixtures inspect generated callable IDs, distinct repeated-occurrence capture
 records, greatest-case union size, unsupported-capture rejection, complete
-switch coverage, cleanup, allocation count, symbols, value sizes, stack, RAM,
-flash, and linked-size deltas.
+switch coverage, generated `_giftUIInvokeCanvas` dispatch, rejection of
+unlowered closure-based Canvas expressions in production images, cleanup,
+allocation count, symbols, value sizes, stack, RAM, flash, and linked-size
+deltas. Package-interface fixtures construct `DrawingPlanSummary` and
+`StraightLineStrokeHeader` from their non-owning producer/profile modules and
+verify exact field preservation.
 
 ## Acceptance Criteria
 
@@ -880,8 +940,10 @@ flash, and linked-size deltas.
   glyph, or ordinary paint event.
 - [ ] **DR-003:** Each occurrence is called once in pre-publication
   `.deriving`, after complete layout, with exact size and the frozen revision;
-  its callable is released before publication, and refusal recovery obtains a
-  new callable only by re-expanding the root.
+  the identity-keyed profile adapter is the only package client of the
+  non-returning Canvas invocation bridge, its callable is released before
+  publication, and refusal recovery obtains a new callable only by re-expanding
+  the root.
 - [ ] **DR-004:** Snapshot fixtures prove later Path mutation cannot alter an
   earlier stroke and all explicit subpaths are preserved.
 - [ ] **DR-005:** The combined recording sink receives one begin/finish pair,
@@ -900,8 +962,9 @@ flash, and linked-size deltas.
   lifetime.
 - [ ] **DR-010:** Static generation assigns complete nonzero callable IDs,
   stores distinct bounded inline captures for repeated occurrences, rejects
-  unsupported or over-limit captures at build time, and never falls back to a
-  retained escaping closure.
+  unsupported, over-limit, or unlowered production Canvas expressions at build
+  time, dispatches through the generated Canvas invocation bridge, and never
+  falls back to a retained escaping closure.
 - [ ] **DR-011:** Static fixtures exercise concrete typed `DrawingError`
   throwing and cleanup, allocate zero heap bytes, and exclude `any Error`,
   allocator, reflection, task, thread, exception-runtime, and Objective-C
@@ -911,7 +974,9 @@ flash, and linked-size deltas.
   derived storage, stack, RAM, flash, and timing.
 - [ ] **DR-013:** Import-graph tests preserve the stated module ownership,
   keep backends independent of `GiftUIDrawing`, and prove portable Canvas code
-  contains no runtime-profile, capability, backend, platform, or target check.
+  contains no runtime-profile, capability, backend, platform, or target check;
+  emitted package interfaces expose the two exact nonfailing value
+  constructors and no closure-returning Canvas lookup.
 
 ## Implementation Notes
 
@@ -951,6 +1016,10 @@ board was flashed or operated.
 ## Open Issues
 
 No unresolved contract or architectural issue remains in this draft.
+The 2026-09-12 approved source correction adds the non-returning invocation
+bridge, exact profile-staging realization, and package value constructors that
+close the T2.1 and T3.2 implementation blockers without changing accepted
+ADR ownership or lifecycle decisions.
 SPIKE-008 records corrected macOS and hardware-free nRF52840 evidence for the
 declaration, ownership, typed-throws, ABI, heap, and linked-symbol portions of
 DR-001 and DR-011. Full cross-profile conformance remains an implementation-

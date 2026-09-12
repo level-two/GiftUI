@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-11
+updated: 2026-09-12
 related_design_notes:
   - ../implementation-designs/spec-012-scoped-path-and-plan-storage.md
 conformance_report: null
@@ -688,15 +688,15 @@ now records this evidence per profile, and all compile-registry rows are
 lifecycle, and production obligations are not yet satisfied. Milestone 1 is
 complete; T2.1 is the next dependency-complete task.
 
-`T2.1` is blocked in Specification review. SPEC-012 requires the private
-Canvas callable to cross from `GiftUI` into identity-keyed semantic storage
-and later drawing-attempt invocation, but defines no typed cross-module
-transfer or invocation seam while explicitly forbidding public/package
-callable lookup. The static source-generated callable-ID substitution has the
-same missing staging hook. The focused
+The `T2.1` Specification blocker is resolved by the approved 2026-09-12
+SPEC-012 correction. The concrete Canvas payload now has a non-returning
+package invocation bridge restricted to the profile semantic-result adapter;
+dynamic storage retains the bounded identity-keyed payload, while generated
+static storage substitutes a callable ID and inline capture record and emits
+the corresponding bridge dispatch. The focused
 [Specification review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-2/canvas-invocation-seam-specification-blocker.md)
-records the required correction. Independent T2.2-T2.5 and T3 work may proceed
-without claiming production semantic-callable integration.
+records the resolution. T2.1 is the next dependency-complete task and remains
+unchecked until its implementation and four-profile evidence pass.
 
 `T2.2` is complete. The existing closed semantic layout and render scope
 vocabularies now add only `.canvas`; generic payload mapping recognizes the
@@ -719,16 +719,17 @@ stride. The registered
 [layout evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-2/drawing-value-layouts.md)
 records the commands and bounds.
 
-`T2.4` is complete for the direct, non-callable integration permitted while
-T2.1 is blocked. Focused semantic expansion records one Canvas leaf at one
-identity without body evaluation or drawing invocation. Layout fixtures prove
+`T2.4` is complete for the direct, non-callable integration that was permitted
+before the T2.1 Specification correction. Focused semantic expansion records
+one Canvas leaf at one identity without body evaluation or drawing invocation.
+Layout fixtures prove
 present-proposal/absent-axis sizing, ordinary fixed-frame expansion, exact
 bounds, inherited clips, and no text/glyph output. A direct render fixture
 places Canvas between a background fill and text glyph group yet emits no
 ordinary operation or child of its own. The
 [direct-view evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-2/direct-canvas-views.md)
-records the covered observations and explicitly excludes the unresolved
-callable staging seam.
+records the covered observations and explicitly excludes the callable staging
+seam now assigned to unblocked T2.1.
 
 `T2.5` is complete. The registered module-contract audit checks SPEC-002's
 exact target graph against source imports, sole declaration ownership,
@@ -738,7 +739,7 @@ borrowed stroke operation in emitted package interfaces. All four profile
 compilers pass the interface audit through the value-profile checker. The
 [module evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-2/module-contract-audit.md)
 records the audited seams. Milestone 2's independent work is complete; T2.1
-and production callable integration remain blocked in Specification review.
+is now unblocked and is the next production callable-integration task.
 
 `T3.1` is complete. Both exact limit types reject every zero/nonpositive field,
 `DrawingLimits` rejects normalized-operation capacity below plan-stroke
@@ -749,14 +750,14 @@ exactly 4-byte `StaticCanvasLimits`. The
 [limit evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-3/drawing-limits-and-fixture-storage.md)
 records the boundary and profile results.
 
-`T3.2` is blocked in Specification review. The required plan producer lives in
-`GiftUIDrawing` and runtime profiles supply the workspace, but the
-Render-Core-owned `StraightLineStrokeHeader` exposes no package initializer;
-its synthesized initializer is internal. Profile workspaces likewise cannot
-construct `DrawingPlanSummary`. The focused
+The `T3.2` Specification blocker is resolved by the approved 2026-09-12
+SPEC-012 correction. `StraightLineStrokeHeader` and `DrawingPlanSummary` now
+expose exact nonfailing package initializers that copy already-validated values
+without normalization. The focused
 [construction review](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-3/plan-value-construction-specification-blocker.md)
-records the compiler diagnostic and required contract correction. T3.4-T3.5
-are transitively blocked; no unapproved initializer or factory has been added.
+records the resolution and retained validation responsibilities. T3.2 and its
+dependent T3.4-T3.5 tasks are unblocked but remain unchecked until implemented
+and verified; T2.1 remains the next dependency-complete task.
 
 `T1.1` is complete. `GiftUI.Canvas` now has the exact typed-throws initializer,
 private retained draw callable, `Body == Never` invariant body, primitive

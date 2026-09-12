@@ -1,6 +1,6 @@
 # SPEC-012 Canvas Invocation Seam Specification Review
 
-Disposition: **not ready — approval blocker**
+Disposition: **resolved by approved source correction**
 
 Date: 2026-09-12
 
@@ -57,3 +57,20 @@ not claim production semantic-callable integration.
 No accepted ADR is contradicted by the intended behavior. The defect is a
 missing implementable Specification seam rather than evidence that ADR-028's
 ownership or lifetime decision must change.
+
+## Resolution
+
+The human-approved 2026-09-12 SPEC-012 correction defines a non-returning
+package `_giftUIInvokeCanvas(context:size:)` bridge on the concrete `Canvas`
+payload. Only the profile semantic-result adapter's
+`CanvasInvocationSource.invokeCanvas` implementation may reference it. The
+dynamic adapter stores a bounded identity-keyed copy of the private-closure
+payload; static source generation substitutes the private representation with
+a nonzero callable ID and inline capture record and emits the bridge's finite
+table dispatch. Production static builds reject unlowered closure-based Canvas
+expressions.
+
+The bridge never returns or borrows the callable, so the existing public API,
+SPEC-006 generic visitor, exact identity relation, ADR-028 invocation phase,
+at-most-once rule, and release lifecycle remain unchanged. T2.1 is unblocked;
+its implementation and four-profile evidence remain outstanding.

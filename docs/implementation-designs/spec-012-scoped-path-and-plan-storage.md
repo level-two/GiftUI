@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-09-11
-updated: 2026-09-11
+updated: 2026-09-12
 implementation_plan: ../implementation-plans/spec-012-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -153,8 +153,10 @@ The public `Canvas` closure storage introduced by T1.1 is only the portable
 declaration surface. Dynamic builds retain it privately. Static builds expose
 the same initializer but store no closure, leaving source-generation to emit
 the T6/SPEC-013 callable ID and inline capture record. Profile-specific staging
-and release are T2.1/T4/T6 work; this design does not add a package accessor to
-bypass that contract.
+and release are T2.1/T4/T6 work. The approved SPEC-012 non-returning package
+bridge is not a callable accessor: only the profile semantic-result adapter's
+`CanvasInvocationSource.invokeCanvas` implementation may reference it, and it
+never returns or borrows the private callable representation.
 
 ## Resource and Failure Behavior
 
@@ -193,8 +195,9 @@ facade, stack, linked RAM/flash, and allocator-symbol evidence.
   failure must leave the plan unchanged.
 - Reusing live Path ranges as plan storage is rejected because later mutation
   must not alter an earlier stroke.
-- A public/package Canvas callable lookup is rejected by the exact primitive
-  staging contract.
+- A public/package Canvas closure-returning lookup is rejected by the exact
+  primitive staging contract; the approved non-returning invocation bridge is
+  the narrow cross-module seam.
 - Throwing `@convention(thin)` operation references are rejected because the
   pinned host compiler reports nontrivial thin function references as an
   unimplemented feature when the maintained test target forms the table.
@@ -202,9 +205,9 @@ facade, stack, linked RAM/flash, and allocator-symbol evidence.
 ## Open Implementation Questions
 
 The primitive-status C-compatible bridge compiles and preserves the scoped
-behavior in the pinned host debug build. T1.5 must still prove its emitted
-interfaces, SIL, symbols, and Embedded Swift compatibility, and T3 must prove
-the concrete workspace binding. Any allocator, existential, reflection,
+behavior in the pinned host debug build. T1.5 has proved its emitted
+interfaces, SIL, symbols, and Embedded Swift compatibility; T3 must still
+prove the concrete workspace binding. Any allocator, existential, reflection,
 Objective-C runtime, or forbidden static callable-dispatch artifact is an
 upstream contract/architecture blocker, not permission to widen the API or
 weaken a profile.

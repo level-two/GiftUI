@@ -1,6 +1,6 @@
 # SPEC-012 Plan Value Construction Specification Review
 
-Disposition: **not ready — approval blocker**
+Disposition: **resolved by approved source correction**
 
 Date: 2026-09-12
 
@@ -50,3 +50,17 @@ path that must form these values. Limit validation and the public scoped Path
 facade remain valid. T3.3 implementation may be designed independently, but
 its ordered snapshot integration cannot be claimed complete until this value
 construction seam is approved.
+
+## Resolution
+
+The human-approved 2026-09-12 SPEC-012 correction adds exact nonfailing package
+initializers for `DrawingPlanSummary` and `StraightLineStrokeHeader`. They copy
+their already-validated arguments without normalization. The drawing producer
+and profile workspace retain responsibility for all applicable limits, ranges,
+geometry, style, clip, identity, and summary-consistency checks before
+construction; impossible values observed downstream remain
+`.invariantViolation`.
+
+The field meanings, module ownership, value-size ceilings, and backend
+independence are unchanged. T3.2 and its dependent T3.4-T3.5 work are
+unblocked; implementation and conformance evidence remain outstanding.
