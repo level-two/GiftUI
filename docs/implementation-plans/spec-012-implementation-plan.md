@@ -227,7 +227,7 @@ typed primitive without evaluating `body` or invoking drawing.
       initializers, copy/consume/escape, asynchronous escape, missing typed
       throws where required, unsupported errors, and captured outer-context
       overlapping access.
-- [ ] `T1.5` — Run the public witnesses across all four profile compilers and
+- [x] `T1.5` — Run the public witnesses across all four profile compilers and
       compare the maintained surface with SPIKE-008 only as evidence. Audit
       emitted interfaces/SIL/symbols for accidental `any Error`, retained
       closure, allocator, reflection, concurrency, exception-runtime, or
@@ -671,6 +671,22 @@ the absence of premature SPEC-013/014 targets, rejection of retained
 source adoption. The updated macOS dynamic report passes while all DR rows
 remain fail-closed. Milestone 0 is complete; `T1.1` is the next
 dependency-complete task.
+
+`T1.5` is complete. The registered declaration checker now passes all seven
+positive and nine negative witnesses with the pinned optimized compilers for
+macOS dynamic, macOS static, Raspberry Pi ARMv6, and nRF52840 Embedded Swift.
+It records emitted interfaces, client SIL, undefined symbols, exact commands,
+and configuration-equivalent baselines. Interfaces preserve concrete typed
+throws, noncopyability, construction visibility, and the exact public types;
+dynamic profiles retain the private Canvas closure while static profiles store
+no closure pending generated T6/SPEC-013 lowering. Baseline-differenced audits
+reject drawing-introduced `any Error`, allocator, reflection, task,
+Objective-C, and exception-runtime artifacts without mistaking Embedded
+Swift's own linked support definitions for drawing dependencies. The driver
+now records this evidence per profile, and all compile-registry rows are
+`complete`; DR rows remain fail-closed because their later semantic,
+lifecycle, and production obligations are not yet satisfied. Milestone 1 is
+complete; T2.1 is the next dependency-complete task.
 
 `T1.1` is complete. `GiftUI.Canvas` now has the exact typed-throws initializer,
 private retained draw callable, `Body == Never` invariant body, primitive

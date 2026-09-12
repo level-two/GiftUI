@@ -1,9 +1,8 @@
 # case	family	expected	criteria	status
-canvas-defaults	canvas-and-style-defaults	compile	DR-001	pending
-line-width-stroke	stroke-overload	compile	DR-001	pending
-explicit-style-stroke	stroke-overload	compile	DR-001	pending
-typed-trailing-closures	typed-throws	compile	DR-001,DR-011	pending
-stroke-mutate-stroke	path-reuse	compile	DR-001,DR-004	pending
-multiple-subpaths	path-boundaries	compile	DR-001,DR-004	pending
-concrete-drawing-error	concrete-typed-error	compile	DR-001,DR-011	pending
-
+canvas-defaults	canvas-and-style-defaults	compile	DR-001	complete
+line-width-stroke	stroke-overload	compile	DR-001	complete
+explicit-style-stroke	stroke-overload	compile	DR-001	complete
+typed-trailing-closures	typed-throws	compile	DR-001,DR-011	complete
+stroke-mutate-stroke	path-reuse	compile	DR-001,DR-004	complete
+multiple-subpaths	path-boundaries	compile	DR-001,DR-004	complete
+concrete-drawing-error	concrete-typed-error	compile	DR-001,DR-011	complete

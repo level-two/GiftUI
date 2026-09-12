@@ -1,11 +1,13 @@
 public struct Canvas: View, _GiftUISemanticPrimitivePayload {
     public typealias Body = Never
 
-    private let draw:
-        (
-            inout GraphicsContext,
-            Size
-        ) throws(DrawingError) -> Void
+    #if GIFTUI_DYNAMIC_PROFILE
+        private let draw:
+            (
+                inout GraphicsContext,
+                Size
+            ) throws(DrawingError) -> Void
+    #endif
 
     public init(
         _ draw:
@@ -14,7 +16,11 @@ public struct Canvas: View, _GiftUISemanticPrimitivePayload {
                 Size
             ) throws(DrawingError) -> Void
     ) {
-        self.draw = draw
+        #if GIFTUI_DYNAMIC_PROFILE
+            self.draw = draw
+        #else
+            _ = draw
+        #endif
     }
 
     public var body: Never {

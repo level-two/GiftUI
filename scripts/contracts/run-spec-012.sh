@@ -216,6 +216,10 @@ case "$profile" in
     raspberry-pi-armv6) record_raspberry_pi_identity ;;
     nrf52840-embedded) record_nrf52840_identity ;;
 esac
+record_command "$SCRIPT_DIR/check-spec-012-declarations.sh" \
+    --profile "$profile" --output "$report_dir/declarations"
+"$SCRIPT_DIR/check-spec-012-declarations.sh" \
+    --profile "$profile" --output "$report_dir/declarations" >>"$log_path" 2>&1
 
 printf 'exit_code=0\n' >>"$metadata_path"
 trap - EXIT

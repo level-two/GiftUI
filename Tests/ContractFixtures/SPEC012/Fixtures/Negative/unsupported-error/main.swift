@@ -4,8 +4,8 @@ enum FixtureError: Error {
     case unsupported
 }
 
-let canvas = Canvas { (_, _) throws(FixtureError) in
-    throw FixtureError.unsupported
+func canvasWithUnsupportedError() -> Canvas {
+    Canvas { (_, _) throws(FixtureError) in
+        throw FixtureError.unsupported
+    }
 }
-
-_ = canvas

@@ -1,3 +1,5 @@
 import GiftUI
 
-let path = Path()
+func constructPath() -> Path {
+    Path()
+}

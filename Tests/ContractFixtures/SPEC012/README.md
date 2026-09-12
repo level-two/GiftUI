@@ -34,12 +34,12 @@ Every compile-registry row maps to
 `Fixtures/Positive/<case>/main.swift` or
 `Fixtures/Negative/<case>/main.swift`; negative directories also contain the
 required diagnostic fragments. Run
-`scripts/contracts/check-spec-012-declarations.sh --profile macos-dynamic`
-or `--profile macos-static` for the T1.4 host check. The Path-consumption and
+`scripts/contracts/check-spec-012-declarations.sh --profile <profile>` for any
+of the four registered profiles. The Path-consumption and
 captured-outer-context cases intentionally use optimized whole-module
 ownership checking, matching SPIKE-008; all other fixtures compile as clients
-of the emitted `GiftUI` module. T1.5 extends the same checker to the two cross
-profiles and records all four results.
+of the emitted `GiftUI` module. The SPEC-012 driver records the interface,
+SIL, symbol, baseline, diagnostics, and command results for its profile.
 
 ## Normalized observations
 

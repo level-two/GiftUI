@@ -56,7 +56,7 @@ fail_check("positive compile registry differs") unless positive.length == 7
 fail_check("negative compile registry differs") unless negative.length == 9
 compile_rows = positive + negative
 fail_check("compile fixture names are duplicated") unless compile_rows.map(&:first).uniq.length == compile_rows.length
-fail_check("compile fixture statuses must begin pending") unless compile_rows.all? { |row| row[4] == "pending" }
+fail_check("compile fixture statuses must be complete") unless compile_rows.all? { |row| row[4] == "complete" }
 compile_rows.each do |row|
   fail_check("compile fixture has unknown criterion") unless (row[3].split(",") - CRITERIA).empty?
 end

@@ -150,8 +150,11 @@ may heap-allocate through the facade bridge or retain a callable, context,
 Path, or plan beyond its specified lifetime.
 
 The public `Canvas` closure storage introduced by T1.1 is only the portable
-declaration surface. Profile-specific staging and release are T2.1/T4/T6 work;
-this design does not add a package accessor to bypass that contract.
+declaration surface. Dynamic builds retain it privately. Static builds expose
+the same initializer but store no closure, leaving source-generation to emit
+the T6/SPEC-013 callable ID and inline capture record. Profile-specific staging
+and release are T2.1/T4/T6 work; this design does not add a package accessor to
+bypass that contract.
 
 ## Resource and Failure Behavior
 

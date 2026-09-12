@@ -1,3 +1,5 @@
 import GiftUI
 
-let context = GraphicsContext()
+func constructContext() -> GraphicsContext {
+    GraphicsContext()
+}
