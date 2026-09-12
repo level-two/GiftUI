@@ -38,6 +38,13 @@ pending. Its `cases` field is `-` only while no case has been frozen for that
 criterion. Once a case exists, it must be referenced by at least one criterion
 row, and every reference must name a case in exactly one registered corpus.
 
+`module-owners.tsv` freezes each SPEC-014 production, test, and narrow failure-
+adapter owner with its exact direct dependencies. Owners begin `reserved` so
+T0.2 does not create empty placeholder modules. An owner becomes `active` only
+in the same change as its first substantive source, `Package.swift` entry, and
+SPEC-002 exact target-dependency row. `dependency-fixtures.tsv` records the
+positive and negative graph examples that the module checker must classify.
+
 Cross-build and inspection evidence for Raspberry Pi or nRF52840 is hardware-
 free. These fixtures do not deploy, access a remote target, restart a service,
 or flash a board, and they cannot establish connected-hardware conformance.

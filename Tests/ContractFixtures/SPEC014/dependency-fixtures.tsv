@@ -1,0 +1,13 @@
+# fixture_id	from	to	expectation
+surface-to-render-core	GiftUISurfaceCore	GiftUIRenderCore	allow
+surface-to-raster	GiftUISurfaceCore	GiftUIRasterCore	reject
+raster-to-surface	GiftUIRasterCore	GiftUISurfaceCore	allow
+raster-to-drawing	GiftUIRasterCore	GiftUIDrawing	reject
+display-to-surface	GiftUIDisplayCore	GiftUISurfaceCore	allow
+display-to-raster	GiftUIDisplayCore	GiftUIRasterCore	reject
+integration-to-execution	GiftUIBackendIntegration	GiftUIExecution	allow
+integration-to-drawing	GiftUIBackendIntegration	GiftUIDrawing	reject
+runtime-to-integration	GiftUIRuntimeCore	GiftUIBackendIntegration	reject
+giftui-to-integration	GiftUI	GiftUIBackendIntegration	reject
+failure-adapter-to-failure-execution	GiftUIBackendFailureAdapterFixture	GiftUIFailureExecution	allow
+display-to-failure-execution	GiftUIDisplayCore	GiftUIFailureExecution	reject

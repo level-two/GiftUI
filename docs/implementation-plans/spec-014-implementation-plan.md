@@ -194,7 +194,7 @@ production behavior is claimed.
       events, ordered regions, encoded image, offer/body results, health, and
       every high-water counter; require explicit `none` for inapplicable
       fields and reject missing, duplicate, unknown, or unreferenced data.
-- [ ] `T0.2` — Freeze and enforce the approved target graph for
+- [x] `T0.2` — Freeze and enforce the approved target graph for
       `GiftUISurfaceCore`, `GiftUIRasterCore`, `GiftUIDisplayCore`, and
       `GiftUIBackendIntegration`, their focused tests, and the narrow
       backend-failure adapter fixture. Update `Package.swift`, SPEC-002 target
@@ -644,7 +644,12 @@ MVP scope and both existing deferred boundaries remain unchanged.
 
 Implementation began on 2026-09-12. `T0.1` froze the five-corpus fixture
 schema, shared-field vocabulary, acceptance/evidence registry, and fail-closed
-schema validator. Every `BI-001` through `BI-015` evidence row remains pending.
+schema validator. `T0.2` froze the four production owners, five focused test/
+adapter owners, every exact direct edge, prohibited dependency classes, and
+reserved-to-active activation rule. Package and SPEC-002 exact-set rows remain
+required atomically when each owner receives its first substantive source;
+empty placeholder targets are rejected. Every `BI-001` through `BI-015`
+evidence row remains pending.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
