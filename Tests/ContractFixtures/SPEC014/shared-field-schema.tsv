@@ -1,0 +1,16 @@
+# field	type	none_allowed	meaning
+fixtureID	kebab-case-string	no	globally-stable-fixture-identity
+criteria	criterion-sequence	no	one-or-more-BI-001-through-BI-015-identifiers
+evidenceClasses	evidence-class-sequence	no	one-or-more-registered-evidence-classes
+profiles	profile-sequence	no	one-or-more-exact-driver-profiles
+descriptor	mapping-or-none	yes	surface-bounds-encoding-stride-realization-and-region
+effectiveCapability	mapping-or-none	yes	exact-SPEC-004-effective-raster-presentation
+header	mapping-or-none	yes	render-plan-header-and-damage
+operationsResources	mapping-sequence-or-none	yes	ordered-operations-and-exact-resource-identities
+injectedEvents	mapping-sequence-or-none	yes	ordered-target-writer-producer-or-diagnostic-events
+orderedRegions	mapping-sequence-or-none	yes	expected-packed-region-transcript
+encodedImage	mapping-or-none	yes	expected-logical-mask-and-canonical-bytes
+offerResult	mapping-or-none	yes	expected-SPEC-009-frame-offer-result
+bodyResult	mapping-or-none	yes	expected-SPEC-009-frame-stream-result
+health	mapping-or-none	yes	expected-authoritative-target-health
+highWater	mapping-or-none	yes	every-applicable-byte-count-work-and-call-counter

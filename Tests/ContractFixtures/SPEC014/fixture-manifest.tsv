@@ -1,0 +1,6 @@
+# order	file	domain	collection	evidence_classes
+1	raster.yaml	canonical-raster-semantics	cases	cross-build,host-execution,inspection
+2	transactions.yaml	display-and-frame-grammar	cases	cross-build,host-execution,inspection
+3	capabilities.yaml	capability-and-startup-reconciliation	cases	cross-build,host-execution,inspection
+4	failures.yaml	failure-health-and-drain	cases	cross-build,host-execution,inspection
+5	resources.yaml	resource-layout-and-timing	cases	cross-build,host-execution,inspection

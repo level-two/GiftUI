@@ -2,11 +2,11 @@
 id: SPEC-014
 feature: giftui-mvp-architecture
 title: Raster Backend and Display Integration Contract
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-27
-updated: 2026-09-11
+updated: 2026-09-12
 proposal:
   - PROPOSAL-003
   - PROPOSAL-004
@@ -63,9 +63,9 @@ target_milestone: MVP
 
 # SPEC-014: Raster Backend and Display Integration Contract
 
-> **Approval status:** Explicitly approved by the maintainer after renewed
-> approval of SPEC-009's focused-owner failure-carrier amendment. This
-> contract is authoritative for implementation.
+> **Implementation status:** Implementation is active under the maintainer-
+> authorized [SPEC-014 Implementation Plan](../implementation-plans/spec-014-implementation-plan.md).
+> The approved contract remains authoritative and is not yet implemented.
 
 ## Summary
 

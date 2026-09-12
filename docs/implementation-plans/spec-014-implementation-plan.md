@@ -2,11 +2,11 @@
 spec: SPEC-014
 feature: giftui-mvp-architecture
 title: SPEC-014 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-09
+updated: 2026-09-12
 related_design_notes: []
 conformance_report: null
 related_future_work:
@@ -186,7 +186,7 @@ chain remains current.
 inventory, acceptance registry, and registered fail-closed driver exist before
 production behavior is claimed.
 
-- [ ] `T0.1` — Create `Tests/ContractFixtures/SPEC014/` with README, fixture
+- [x] `T0.1` — Create `Tests/ContractFixtures/SPEC014/` with README, fixture
       manifest, shared-field schema, acceptance/evidence registry, and exactly
       `raster.yaml`, `transactions.yaml`, `capabilities.yaml`, `failures.yaml`,
       and `resources.yaml`. Require stable fixture IDs and explicit values for
@@ -642,11 +642,11 @@ MVP scope and both existing deferred boundaries remain unchanged.
 
 ## Completion Record
 
-No implementation task has started. Every task and `BI-001` through `BI-015`
-evidence row is pending. When implementation begins, update SPEC-014 to
-`implementing`, this plan to `active`, and the metadata dates in the same
-change. Record completed, changed, removed, and blocked task dispositions as
-work proceeds; do not silently rewrite task history.
+Implementation began on 2026-09-12. `T0.1` froze the five-corpus fixture
+schema, shared-field vocabulary, acceptance/evidence registry, and fail-closed
+schema validator. Every `BI-001` through `BI-015` evidence row remains pending.
+Record completed, changed, removed, and blocked task dispositions as work
+proceeds; do not silently rewrite task history.
 
 Plan completion requires every task to have an explicit disposition and a
 linked `docs/conformance/spec-014-conformance.md`. A complete plan and report
