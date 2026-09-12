@@ -335,7 +335,7 @@ and the same coordinator semantics.
       exact capture layouts, and complete switch tables. Record source
       provenance, stable regeneration, checked IDs, and generated-code-size
       reporting without defining a second generator grammar.
-- [ ] `T4.2` — Implement fixed static storage for every audit family with exact
+- [x] `T4.2` — Implement fixed static storage for every audit family with exact
       capacities, structural identity, high-water counters, exclusive attempt
       ownership, reset rules, and checked byte totals. No unrelated store may
       donate spare capacity.
@@ -746,6 +746,17 @@ capture sizes, complete switch coverage, and generated source bytes. The
 checker is fail-closed in the repository gate and introduces no source parser
 or second generator grammar. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-4/static-generated-metadata.md`.
+
+T4.2 added generated fixed-layout Static regions for all sixteen audit
+families and a repository-owned 51-element tuple-backed logical-use ledger.
+Construction retains the exact successful audit and typed structural identity;
+reservations enforce every focused limit with bounded high-water counters,
+while shared ownership metadata drives idempotent attempt reset and quiescent
+all-storage teardown. The structural checker rejects dynamic collections,
+reference storage, allocation entry points, type erasure, and reflection in
+the production storage source. The tuple-backed representation avoids Swift's
+macOS-26-only `InlineArray` while retaining macOS 15 support. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-4/static-storage.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

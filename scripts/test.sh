@@ -106,6 +106,7 @@ run_check swift-format "${PROJECT_ROOT}/scripts/format-swift.sh" --lint
 run_check driver-registry "${PROJECT_ROOT}/scripts/contracts/check-driver-registry.rb"
 run_check spec-013-migration "${PROJECT_ROOT}/scripts/contracts/check-spec-013-migration.rb"
 run_check spec-013-static-generated-fixture "${PROJECT_ROOT}/scripts/contracts/check-spec-013-static-generated-fixture.rb"
+run_check spec-013-static-storage "${PROJECT_ROOT}/scripts/contracts/check-spec-013-static-storage.rb"
 
 run_check root-tests giftui_swiftpm \
     --package-path "${PROJECT_ROOT}" \
