@@ -1,6 +1,6 @@
 # T1.2 Borrowing Property Compiler Blocker
 
-Disposition: **awaiting Specification correction**
+Disposition: **resolved by explicitly approved Specification correction**
 
 Date: 2026-09-12
 
@@ -45,3 +45,12 @@ compiler diagnostic, the maintainer explicitly approved correcting all
 compiler-invalid `borrowing var` declarations to ordinary read-only
 properties. Applying that correction to SPEC-014 is still a Specification
 decision and is not inferred from the precedent or the implementation request.
+
+## Resolution
+
+On 2026-09-12 the maintainer explicitly approved correcting every affected
+SPEC-014 property to an ordinary read-only `var` requirement while retaining
+the intended immutable borrowed-use semantics. The authoritative
+Specification now contains the corrected declarations. The compiler fixture
+and diagnostic remain checked in as the reproducible reason for the amendment;
+they no longer block T1.2, T1.4, or T1.5.

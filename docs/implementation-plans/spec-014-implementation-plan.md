@@ -671,7 +671,12 @@ implementation body is considered. The nonconforming attempt was removed,
 T1.2 remains open, and reproducible evidence is recorded in
 `Tests/ContractFixtures/SPEC014/Evidence/milestone-1/borrowing-property-specification-blocker.md`.
 The same invalid spelling occurs in T1.4 and T1.5 declarations, so those tasks
-and their dependents require an explicitly approved Specification correction.
+and their dependents required an explicitly approved Specification correction.
+Later on 2026-09-12 the maintainer explicitly approved correcting every
+compiler-invalid SPEC-014 `borrowing var` requirement to an ordinary read-only
+property while retaining its immutable borrowed-use semantics. The
+authoritative Specification and blocker evidence now record that correction;
+T1.2, T1.4, and T1.5 are unblocked.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

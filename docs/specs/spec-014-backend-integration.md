@@ -65,7 +65,10 @@ target_milestone: MVP
 
 > **Implementation status:** Implementation is active under the maintainer-
 > authorized [SPEC-014 Implementation Plan](../implementation-plans/spec-014-implementation-plan.md).
-> The approved contract remains authoritative and is not yet implemented.
+> On 2026-09-12 the maintainer explicitly approved correcting every compiler-
+> invalid `borrowing var` protocol requirement to an ordinary read-only
+> property while retaining the intended immutable borrowed-use semantics. The
+> approved contract remains authoritative and is not yet implemented.
 
 ## Summary
 
@@ -314,9 +317,9 @@ package struct RasterSurfaceDescriptor: Equatable, Sendable {
 }
 
 package protocol RasterSurface {
-    borrowing var descriptor: RasterSurfaceDescriptor { get }
-    borrowing var writableCapacityBytes: UInt32 { get }
-    borrowing var presentationResponsibilityAccepted: Bool { get }
+    var descriptor: RasterSurfaceDescriptor { get }
+    var writableCapacityBytes: UInt32 { get }
+    var presentationResponsibilityAccepted: Bool { get }
     mutating func beginFrame(_ header: RenderPlanHeader) -> Bool
     mutating func replacePixel(
         at point: Point,
@@ -389,10 +392,10 @@ package enum RasterBackendError: UInt8, Equatable, Sendable {
 }
 
 package protocol DisplayPayloadWriter {
-    borrowing var capacityBytes: UInt32 { get }
-    borrowing var writtenBytes: UInt32 { get }
-    borrowing var regionCapacity: UInt16 { get }
-    borrowing var writtenRegionCount: UInt16 { get }
+    var capacityBytes: UInt32 { get }
+    var writtenBytes: UInt32 { get }
+    var regionCapacity: UInt16 { get }
+    var writtenRegionCount: UInt16 { get }
     mutating func beginRegion(
         origin: Point,
         pixelCount: UInt16,
@@ -406,10 +409,10 @@ package protocol DisplayPayloadWriter {
 
 package protocol DisplayTarget {
     associatedtype Writer: DisplayPayloadWriter
-    borrowing var submissionLifetime: SubmissionLifetime { get }
-    borrowing var handoff: SubmissionHandoff { get }
-    borrowing var maximumInFlightPayloads: UInt8 { get }
-    borrowing var maximumInFlightBytes: UInt32 { get }
+    var submissionLifetime: SubmissionLifetime { get }
+    var handoff: SubmissionHandoff { get }
+    var maximumInFlightPayloads: UInt8 { get }
+    var maximumInFlightBytes: UInt32 { get }
     mutating func reserveFrame(
         descriptor: RasterSurfaceDescriptor,
         payloadCapacityBytes: UInt32,
@@ -430,19 +433,19 @@ package protocol DisplayTarget {
 }
 
 package protocol RasterFrameSink: DrawingOperationSink {
-    borrowing var descriptor: RasterSurfaceDescriptor { get }
-    borrowing var payloadLimits: RasterPayloadLimits { get }
-    borrowing var failure: RasterBackendError? { get }
+    var descriptor: RasterSurfaceDescriptor { get }
+    var payloadLimits: RasterPayloadLimits { get }
+    var failure: RasterBackendError? { get }
 }
 
 package protocol RasterBackendEndpoint: SynchronousFrameEndpoint
 where Sink: RasterFrameSink {
     associatedtype TextRaster: TextRasterResourceView
-    borrowing var effectivePresentation: EffectiveRasterPresentation { get }
-    borrowing var descriptor: RasterSurfaceDescriptor { get }
-    borrowing var payloadLimits: RasterPayloadLimits { get }
-    borrowing var textRaster: TextRaster { get }
-    borrowing var textRasterRealization: RasterRealizationID { get }
+    var effectivePresentation: EffectiveRasterPresentation { get }
+    var descriptor: RasterSurfaceDescriptor { get }
+    var payloadLimits: RasterPayloadLimits { get }
+    var textRaster: TextRaster { get }
+    var textRasterRealization: RasterRealizationID { get }
     borrowing func health() -> GiftUIOperationalHealth
 }
 ```
