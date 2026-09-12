@@ -1,0 +1,25 @@
+# baseline	path	legacy_surface	disposition	replacement_owner	compatibility_shim
+PoC	Sources/GiftUIRuntimeDynamic/DisplayList.swift	heap-retained replayable render-operation list	retire	SPEC-008/SPEC-009/SPEC-012 synchronous borrowed stream	forbidden
+PoC	Sources/GiftUIRuntimeDynamic/DynamicLayoutSnapshot.swift	heap-owned runtime layout snapshot	retire	SPEC-007 focused layout result storage	forbidden
+PoC	Sources/GiftUIRuntimeDynamic/DynamicRuntime.swift	profile façade duplicating semantic layout render and state algorithms	replace-through-owner	SPEC-013 coordinator over SPEC-006 through SPEC-012 owners	forbidden
+PoC	Sources/GiftUIRuntimeDynamic/DynamicStateStore.swift	type-keyed heap state store	replace-through-owner	SPEC-010 observable live storage plus SPEC-013 bounded profile storage	forbidden
+PoC	Sources/GiftUIRuntimeDynamic/GiftUIApplication.swift	host loop action dispatch rendering and retained handoff façade	retire	SPEC-009 execution plus SPEC-013 coordinator plus SPEC-015 host assembly	forbidden
+PoC	Sources/GiftUIRuntimeDynamic/GiftUIRuntimeDynamic.swift	public marker enum and profile query surface	retire	compile-time target graph with no portable profile query	forbidden
+PoC	Sources/GiftUIRuntimeDynamic/HitTestMap.swift	runtime-owned ad hoc hit map and interaction snapshot	replace-through-owner	SPEC-011 candidate and committed interaction stores	forbidden
+PoC	Sources/GiftUIRuntimeDynamic/LayoutContext.swift	runtime-local layout context and traversal state	retire	SPEC-007 focused layout workspace	forbidden
+PoC	Sources/GiftUIRuntimeDynamic/LayoutEngine.swift	runtime-local recursive layout engine	retire	GiftUILayout focused owner	forbidden
+PoC	Sources/GiftUIRuntimeDynamic/LayoutNode.swift	runtime-owned retained layout node graph	retire	SPEC-006 borrowed semantic layout view and SPEC-007 result sink	forbidden
+PoC	Sources/GiftUIRuntimeDynamic/State.swift	profile-specific public State wrapper and reference location	replace-through-owner	GiftUI State surface and SPEC-010 observable owner	forbidden
+PoC	Sources/GiftUIRuntimeDynamic/StateBindingContext.swift	dynamic thread-scoped style state binding context	replace-through-owner	SPEC-010 structural attachment and candidate encounter	forbidden
+PoC	Sources/GiftUIRuntimeDynamic/StateKey.swift	dynamic structural state key	replace-through-owner	SPEC-010 ObservableStructuralIdentity and generated/static equivalents	forbidden
+PoC	Sources/GiftUIRuntimeDynamic/StateStorage.swift	class-only public state storage protocol	replace-through-owner	SPEC-010 focused storage protocols and SPEC-013 profile storage	forbidden
+PoC	Sources/GiftUIRuntimeDynamic/ViewBuildContext.swift	runtime-local build context coupling body evaluation to state and actions	retire	SPEC-006 traversal plus SPEC-010 encounter plus SPEC-011 semantic payload	forbidden
+PoC	Sources/GiftUIRuntimeDynamic/ViewGraph.swift	runtime-owned semantic graph builder	retire	GiftUISemanticCore focused owner	forbidden
+PoC	Sources/GiftUIRuntimeDynamic/ViewNode.swift	heap-retained combined semantic layout render interaction node	retire	SPEC-006/007/008/011/012 focused owners	forbidden
+PoC	Sources/GiftUIRuntimeStatic/GiftUIRuntimeStatic.swift	public marker enum and profile query surface	retire	compile-time target graph with no portable profile query	forbidden
+PoC	Sources/GiftUIRuntimeStatic/StaticRuntime.swift	monolithic fixed semantic layout render hit and profile engine	replace-through-owner	SPEC-013 static storage and coordinator over focused owners	forbidden
+PoC	Sources/GiftUIRuntimeStatic/StaticStateStorage.swift	single-value typed state slot array and invalidation tracking	replace-through-owner	SPEC-010 generated observable storage plus SPEC-013 static profile storage	forbidden
+PoC	Tests/GiftUIRuntimeConformanceTests/GiftUIRuntimeConformanceTests.swift	portable thermostat runtime parity render and state expectations	evidence-only	SPEC-013 shared differential and lifetime corpus	forbidden
+PoC	Tests/GiftUIRuntimeDynamicTests/DynamicGraphTests.swift	dynamic graph layout render capacity and hit-order expectations	evidence-only	SPEC-006/007/008/011/013 focused and integration fixtures	forbidden
+PoC	Tests/GiftUIRuntimeDynamicTests/GiftUIRuntimeDynamicTests.swift	dynamic profile marker state persistence and display-list replay expectations	evidence-only	SPEC-010/013 bounded dynamic and one-shot fixtures	forbidden
+PoC	Tests/GiftUIRuntimeStaticTests/GiftUIRuntimeStaticTests.swift	static layout render state capacity and profile marker expectations	evidence-only	SPEC-006/007/008/010/011/013 static fixtures	forbidden

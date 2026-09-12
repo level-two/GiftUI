@@ -204,7 +204,7 @@ before profile behavior is claimed.
       exact-set registries and stale negative fixtures atomically with the
       first compiling targets; add bidirectional sibling/backend/host
       forbidden-import tests.
-- [ ] `T0.3` — Create a SPEC-013 migration inventory covering every removed
+- [x] `T0.3` — Create a SPEC-013 migration inventory covering every removed
       proof-of-concept runtime/store/test path and assign each concept to
       replace-through-owner, evidence-only, or retire. Reject compatibility
       shims and any second semantic, layout, rendering, state, or hit-map path.
@@ -594,6 +594,12 @@ transcript, RP-001 through RP-015 evidence registry, report field schema, and
 hardware-free versus connected-hardware evidence labels under
 `Tests/ContractFixtures/SPEC013/`. The Specification moved from `approved` to
 `implementing` and this plan moved from `ready` to `active` in the same change.
+
+T0.3 pinned all 24 removed runtime, store, and runtime-test paths from the
+immutable `PoC` tag to `replace-through-owner`, `evidence-only`, or `retire`
+dispositions in `Tests/ContractFixtures/SPEC013/migration-inventory.tsv`.
+`scripts/contracts/check-spec-013-migration.rb` verifies the exact historical
+path set and rejects the return of the retired compatibility surfaces.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
