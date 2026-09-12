@@ -208,7 +208,7 @@ before profile behavior is claimed.
       proof-of-concept runtime/store/test path and assign each concept to
       replace-through-owner, evidence-only, or retire. Reject compatibility
       shims and any second semantic, layout, rendering, state, or hit-map path.
-- [ ] `T0.4` — Add a fail-closed `run-spec-013.sh` skeleton with the four exact
+- [x] `T0.4` — Add a fail-closed `run-spec-013.sh` skeleton with the four exact
       profile modes and register it explicitly in `driver-registry.tsv` and
       `scripts/test.sh`. Missing toolchains, fixtures, targets, required fields,
       or commands report blocked/failure and are never silently skipped.
@@ -600,6 +600,13 @@ immutable `PoC` tag to `replace-through-owner`, `evidence-only`, or `retire`
 dispositions in `Tests/ContractFixtures/SPEC013/migration-inventory.tsv`.
 `scripts/contracts/check-spec-013-migration.rb` verifies the exact historical
 path set and rejects the return of the retired compatibility surfaces.
+
+T0.4 added the four-mode `scripts/contracts/run-spec-013.sh` skeleton and its
+schema checker, registered the driver for every exact profile, and wired the
+migration guard into `scripts/test.sh`. The driver records a blocked report
+and exits nonzero for missing toolchains, fixtures, targets, commands, corpus,
+or implementation evidence; it performs no remote access, deployment,
+service restart, simulator execution, or flashing.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
