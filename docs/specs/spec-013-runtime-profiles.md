@@ -2,7 +2,7 @@
 id: SPEC-013
 feature: giftui-mvp-architecture
 title: Dynamic and Static Runtime Profile Contract
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-27
@@ -67,10 +67,10 @@ target_milestone: MVP
 
 # SPEC-013: Dynamic and Static Runtime Profile Contract
 
-> **Approval status:** Explicitly reapproved by the maintainer on 2026-09-12.
-> The approved amendment adds SPEC-008 render-workspace limits to the profile
-> limit schema and storage audit. This amended contract is authoritative for
-> implementation.
+> **Implementation status:** Explicitly reapproved by the maintainer on
+> 2026-09-12 and moved to `implementing` when T0.1 began on 2026-09-12. The
+> approved amendment adds SPEC-008 render-workspace limits to the profile limit
+> schema and storage audit. This amended contract remains authoritative.
 
 ## Summary
 

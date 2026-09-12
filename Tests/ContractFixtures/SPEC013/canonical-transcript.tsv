@@ -1,0 +1,16 @@
+# order	record	required_fields	rule
+1	profile	kind,fixture,limitsToken	kind is dynamic or static; limitsToken names identical artificial values
+2	validation	step,result,errorOrAudit	first failing step or exact successful audit
+3	audit	profile,limits,semanticCandidateBytes,semanticPublishedBytes,layoutCandidateBytes,renderWorkspaceBytes,canvasCallableBytes,pathWorkspaceBytes,drawingPlanBytes,observableLiveBytes,observableCandidateBytes,interactionCandidateBytes,interactionCommittedBytes,admissionQueueBytes,sealedBatchBytes,pointerStateBytes,coordinatorStateBytes,failureStateBytes,totalProfileBytes	exact nonoverlapping UInt32 fields and checked total
+4	lifecycle	state,phase,executionContext,isQuiescent	exact SPEC-013 state and SPEC-009 context
+5	admission	facts,sealedMembership,lateArrivals,wakeState	exact bounded order and membership
+6	mutation	pointerEffects,stateEffects,completionEffects,semanticActionEffects,replayCount	exact at-most-once effects; replayCount zero
+7	semantic	identities,summary,publication,observableAssociations	exact SPEC-006 and SPEC-010 values
+8	layout	summary,bounds,clips,lines,glyphs	exact SPEC-007 values
+9	drawing	callableToken,invocationCount,releaseCount,planSummary,normalizedOperations	exact SPEC-012 values; no private capture bytes
+10	render	header,events,workspaceHighWater,sinkHighWater	exact painter-ordered SPEC-008 and SPEC-012 stream
+11	interaction	actions,hitRegions,targetGenerations,candidateDisposition,committedRevision	exact SPEC-011 values
+12	offer	candidateFrame,presentationRevision,result,pendingIntent,commitOrAbort	exact SPEC-009 provenance and one-shot result
+13	failure	owner,value,context,correlatedFact,mandatoryDisposition,residualPolicyInput	exact focused value and SPEC-003 mapping
+14	cleanup	skippedStages,discardCounts,resetCounts,releaseCounts,dirtyState,wakeState	first-error cleanup row and finalization
+15	result	cycleResult,semanticRevision,committedPresentationRevision,routingState,quiescence	exact returned and authoritative state

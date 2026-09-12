@@ -1,0 +1,16 @@
+# criterion	owner_tasks	evidence	cases	status
+RP-001	T0.2,T3.5,T4.6,T8.1	package-graph-import-negatives-and-same-root-positive-compiles	-	pending
+RP-002	T1.2-T1.4,T3.2,T4.2,T6.1	exclusive-storage-registry-render-workspace-equality-and-checked-byte-reports	-	pending
+RP-003	T1.1-T1.5,T4.3,T6.2	ordered-startup-failures-mappings-and-poisoned-callback-probes	-	pending
+RP-004	T2.1-T2.4,T5.1-T5.5,T6.3	stage-transcripts-failure-cleanup-matrix-and-release-counters	-	pending
+RP-005	T0.1,T5.5,T6.6,T7.4	canonical-value-transcripts-and-zero-tolerance-differential-report	-	pending
+RP-006	T3.2,T4.2,T6.1	table-driven-exact-limit-first-excess-and-high-water-reports	-	pending
+RP-007	T2.3,T3.3,T4.4,T6.3	replay-poisoning-mutation-reset-and-residual-state-reports	-	pending
+RP-008	T2.2,T5.4,T6.4	accepted-refused-failed-offer-routing-snapshots	-	pending
+RP-009	T2.2,T3.3,T4.4,T6.4	repeated-refusal-high-water-pending-intent-and-payload-lifetime-report	-	pending
+RP-010	T4.1-T4.6,T6.5,T7.2-T7.3	static-generation-coverage-destruction-allocation-symbol-sil-and-elf-reports	-	pending
+RP-011	T3.4,T6.6,T8.1	dynamic-convenience-product-import-and-equivalence-audit	-	pending
+RP-012	T0.2,T4.3,T6.5,T8.1	dependency-typed-source-borrow-and-generated-coverage-tests	-	pending
+RP-013	T7.1-T7.5,T8.3	two-pristine-builds-per-profile-with-resource-timing-and-digest-reports	-	pending
+RP-014	T5.3-T5.4,T6.3-T6.4	initial-replacement-discard-generation-and-committed-state-transcripts	-	pending
+RP-015	T1.5,T2.4,T5.5,T6.3,T6.6	failure-layout-owner-value-correlation-cleanup-mapping-and-differential-reports	-	pending

@@ -1,0 +1,40 @@
+# field	unit_or_values	requirement
+schema	spec-013-report-v1	required
+profile	macos-dynamic|macos-static|raspberry-pi-armv6|nrf52840-embedded	required exact driver mode
+evidenceClass	host-execution|cross-build|inspection|simulator|connected-hardware	required and truthful
+repositoryRevision	git object name	required
+repositoryDirty	true|false	required
+compiler	complete identity	required
+sdk	complete identity or none	required
+target	target triple	required
+command	complete invocation	required
+fixture	registered case name	required per fixture result
+fixtureResult	pass|fail|blocked	required per fixture result
+limits	all artificial-limit-schema fields	required
+audit	all RuntimeStorageAudit fields	required on successful validation
+storageHighWater	bytes by storage family	required
+stackConstruction	bytes	required
+stackAdmission	bytes	required
+stackDerivation	bytes	required
+stackCanvasInvocation	bytes	required
+stackRendering	bytes	required
+stackOffer	bytes	required
+stackFinalization	bytes	required
+heapAllocations	count	required; static must be zero
+peakHeapBytes	bytes	required; static must be zero
+dynamicAllocatorBookkeeping	bytes	required separately for dynamic; zero or none for static
+excludedTextResourceBytes	bytes	required exclusion
+excludedCapabilityBytes	bytes	required exclusion
+excludedBackendBytes	bytes	required exclusion
+excludedHostBytes	bytes	required exclusion
+generatedCanvasCodeBytes	bytes	required separately from canvasCallableBytes
+greatestInlineCaptureBytes	bytes	required
+linkedTextBytes	bytes	required
+linkedReadOnlyDataBytes	bytes	required
+linkedWritableDataBytes	bytes	required
+linkedBSSBytes	bytes	required
+linkedTotalImageBytes	bytes	required
+cycleTimeNanoseconds	nanoseconds by workload	required
+transcriptDigest	stable normalized digest	required
+hardwareExecution	true|false	required; cross-build and inspection are false
+connectedTarget	identity or none	required; non-none only for authorized connected-hardware evidence

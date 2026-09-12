@@ -1,0 +1,9 @@
+# order	file	domain	collection	evidence_classes
+1	storage.yaml	storage-audit	cases	cross-build,host-execution,inspection
+2	startup.yaml	startup-validation	cases	cross-build,host-execution,inspection
+3	cycles.yaml	cycle-and-cleanup	cases	cross-build,host-execution,inspection
+4	handoff.yaml	publication-and-routing	cases	cross-build,host-execution,inspection
+5	static-canvas.yaml	static-generation-and-lifetime	cases	cross-build,host-execution,inspection
+6	borrows.yaml	borrow-and-dependency-boundaries	cases	cross-build,host-execution,inspection
+7	equivalence.yaml	cross-profile-equivalence	cases	cross-build,host-execution,inspection
+8	signal-analyzer.yaml	reference-application	cases	connected-hardware,cross-build,host-execution,inspection,simulator

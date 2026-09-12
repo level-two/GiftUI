@@ -1,0 +1,42 @@
+# family	field	type	validity_or_relation	boundary_rule
+semantic	maximumDepth	UInt16	nonzero	exact succeeds; required first excess fails
+semantic	maximumSemanticNodes	UInt16	nonzero	exact succeeds; required first excess fails
+semantic	maximumBodyEvaluations	UInt16	nonzero	exact succeeds; required first excess fails
+semantic	maximumModifierApplications	UInt16	zero allowed	exact succeeds; required first excess fails
+semantic	maximumActionOccurrences	UInt16	at most interaction.maximumActions	exact succeeds; required first excess fails
+layout	maximumScopes	UInt16	focused owner valid	exact succeeds; required first excess fails
+layout	maximumDepth	UInt16	focused owner valid	exact succeeds; required first excess fails
+layout	maximumTextScalars	UInt16	focused owner valid	exact succeeds; required first excess fails
+layout	maximumTextLines	UInt16	at most renderWorkspace.maximumTextLines	exact succeeds; required first excess fails
+layout	maximumPositionedGlyphs	UInt16	at most render and sink positioned glyphs	exact succeeds; required first excess fails
+render	maximumOperations	UInt16	covers ordinary plus normalized strokes	exact succeeds; required first excess fails
+render	maximumPositionedGlyphs	UInt16	covers layout positioned glyphs	exact succeeds; required first excess fails
+render	maximumClipDepth	UInt16	focused owner valid	exact succeeds; required first excess fails
+renderWorkspace	maximumSemanticScopes	UInt16	exact configured structural capacity	exact succeeds; any unequal concrete capacity fails
+renderWorkspace	maximumLayoutScopes	UInt16	covers layout.maximumScopes and equals concrete capacity	exact succeeds; first excess and any unequal capacity fail
+renderWorkspace	maximumTraversalDepth	UInt16	exact configured structural capacity	exact succeeds; any unequal concrete capacity fails
+renderWorkspace	maximumTextLines	UInt16	covers layout.maximumTextLines and equals concrete capacity	exact succeeds; first excess and any unequal capacity fail
+renderSink	maximumOperations	UInt16	covers ordinary plus normalized strokes	exact succeeds; required first excess fails
+renderSink	maximumPositionedGlyphs	UInt16	covers layout positioned glyphs	exact succeeds; required first excess fails
+runtime	maximumOrdinaryRenderOperations	UInt16	zero allowed only for drawing-only fixture; covers render and sink	exact succeeds; required first excess fails
+execution	maximumInputEvents	UInt16	covers maximumSemanticActions	exact succeeds; required first excess fails
+execution	maximumStateChangeFacts	UInt16	focused owner valid	exact succeeds; required first excess fails
+execution	maximumCompletionFacts	UInt16	focused owner valid	exact succeeds; required first excess fails
+execution	maximumSemanticActions	UInt16	at most maximumInputEvents	exact succeeds; required first excess fails
+execution	maximumActiveInputSources	UInt16	focused owner valid	exact succeeds; required first excess fails
+execution	maximumCommittedActions	UInt16	covers interaction.maximumActions	exact succeeds; required first excess fails
+observableState	maximumLocations	UInt16	focused registration and association relations	exact succeeds; required first excess fails
+observableState	maximumRegistrations	UInt16	focused registration and location relations	exact succeeds; required first excess fails
+observableState	maximumStagedAssociations	UInt16	focused association and location relations	exact succeeds; required first excess fails
+interaction	maximumActions	UInt16	covers semantic actions and hit regions; at most committed actions	exact succeeds; required first excess fails
+interaction	maximumHitRegions	UInt16	at most maximumActions	exact succeeds; required first excess fails
+drawing	maximumLineWidth	GeometryScalar	focused owner valid	exact succeeds; required first excess fails
+drawing	maximumCanvasOccurrences	UInt16	at most semantic nodes and layout scopes	exact succeeds; required first excess fails
+drawing	maximumLivePathPoints	UInt16	focused stroke and plan relations	exact succeeds; required first excess fails
+drawing	maximumLivePathSubpaths	UInt16	focused stroke and plan relations	exact succeeds; required first excess fails
+drawing	maximumPlanStrokes	UInt16	focused stroke and plan relations	exact succeeds; required first excess fails
+drawing	maximumPlanPoints	UInt16	focused stroke and plan relations	exact succeeds; required first excess fails
+drawing	maximumPlanSubpaths	UInt16	focused stroke and plan relations	exact succeeds; required first excess fails
+drawing	maximumNormalizedStrokeOperations	UInt16	combined with ordinary operations using checked addition	exact succeeds; required first excess fails
+staticCanvas	maximumStaticCallableCases	UInt16	present exactly for static profile	exact succeeds; required first excess fails
+staticCanvas	maximumStaticCaptureBytes	UInt16	present exactly for static profile	exact succeeds; required first excess fails

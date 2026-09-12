@@ -2,7 +2,7 @@
 spec: SPEC-013
 feature: giftui-mvp-architecture
 title: SPEC-013 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-09
@@ -22,9 +22,10 @@ superseded_by: null
 
 # SPEC-013 Implementation Plan
 
-> This plan is `ready`. The focused render-workspace-limit amendment to
-> SPEC-013 was explicitly reapproved on 2026-09-12, and the plan's separate
-> readiness transition was explicitly requested on 2026-09-12.
+> This plan is `active`. The focused render-workspace-limit amendment to
+> SPEC-013 was explicitly reapproved on 2026-09-12, the plan's separate
+> readiness transition was explicitly requested on 2026-09-12, and authorized
+> implementation began with T0.1 on 2026-09-12.
 
 ## Authority and Scope
 
@@ -193,7 +194,7 @@ remains authoritative.
 report schemas, migration inventory, and fail-closed driver skeleton exist
 before profile behavior is claimed.
 
-- [ ] `T0.1` — Create `Tests/ContractFixtures/SPEC013/` with an ordered fixture
+- [x] `T0.1` — Create `Tests/ContractFixtures/SPEC013/` with an ordered fixture
       manifest, README, artificial-limit schema, canonical tagged transcript,
       acceptance/evidence registry, and report schema. Distinguish host run,
       cross-build/inspection, simulator, and connected-hardware evidence.
@@ -586,6 +587,13 @@ The maintainer explicitly reapproved SPEC-013 and coordinated SPEC-015 on
 The plan was marked `ready` on 2026-09-12 after confirming that its tasks,
 dependencies, and evidence mappings remain executable under the amended
 contract.
+
+Implementation began on 2026-09-12. T0.1 froze the ordered eight-corpus
+fixture manifest, complete artificial-limit vocabulary, canonical normalized
+transcript, RP-001 through RP-015 evidence registry, report field schema, and
+hardware-free versus connected-hardware evidence labels under
+`Tests/ContractFixtures/SPEC013/`. The Specification moved from `approved` to
+`implementing` and this plan moved from `ready` to `active` in the same change.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
