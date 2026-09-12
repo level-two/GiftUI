@@ -19,14 +19,15 @@ superseded_by: null
 
 # SPEC-006 Conformance Report
 
-> This complete report records evidence. It does not itself authorize or
-> perform the governing Specification's `implemented` transition.
+> This collecting report records evidence for renewed review. It does not
+> itself authorize or perform the governing Specification's `implemented`
+> transition.
 
 ## Review Scope
 
-- Governing contract: [SPEC-006 Declarative View Semantics](../specs/spec-006-declarative-view-semantics.md), status `approved` after explicit maintainer reapproval of the action-primitive-with-content amendment on 2026-09-12.
-- Derived plan: [SPEC-006 Implementation Plan](../implementation-plans/spec-006-implementation-plan.md), status `ready` for the approved amendment; its earlier milestones were completed by prior reviews.
-- Reviewed implementation revision: `085f52c58a9ee27d6c7652b2f3562bed7416998d`.
+- Governing contract: [SPEC-006 Declarative View Semantics](../specs/spec-006-declarative-view-semantics.md), status `implementing` after explicit maintainer reapproval of the action-primitive-with-content amendment on 2026-09-12.
+- Derived plan: [SPEC-006 Implementation Plan](../implementation-plans/spec-006-implementation-plan.md), status `completed` after all amendment tasks received dispositions.
+- Reviewed implementation revision: `9b66d622634ab6e3d3d8b4809404098a0cba0356`.
 - Design note: [bounded semantic expansion](../implementation-designs/spec-006-bounded-semantic-expansion.md), status `current`.
 - Environments: Apple Swift 6.3.3 macOS arm64 dynamic/static host execution;
   project-local Swift 6.3.2 ARMv6 and Embedded Swift/nRF52840 hardware-free
@@ -56,20 +57,20 @@ hierarchy and common Rank 0 semantics across all four MVP configurations.
 | `DV-014` | pass | [Deferred-work review](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-7/deferred-work.md) | FW-017 and FW-020 remain reciprocal, untriggered, optional post-MVP captures with no implementation dependency. |
 | `DV-015` | pass | [Stateful binding](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-5/stateful-binding.md), [stateful binding failures](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-5/stateful-binding-failures.md) | Generated binding precedes one body on success; all twelve binding failures publish no body or semantic result. |
 | `DV-016` | pass | [Primitive with content](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-8/primitive-with-content.md), [semantic profiles](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-6/semantic-profiles.md) | Both typed primitive overloads compile without a compatibility hook; containers stage before `fixedChild(0)` content with exact identities/order, zero body evaluation, bounded failures, atomic reuse, equal profile meaning, zero optimized allocation instructions, and hard-float artifact evidence. |
-| `DV-017` | pending | — | The approved action-primitive-with-content operation has no implementation or cross-profile evidence; prior evidence does not cover it. |
+| `DV-017` | pass | [Action with content](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-9/action-with-content.md), [semantic profiles](../../Tests/ContractFixtures/SPEC006/Evidence/milestone-6/semantic-profiles.md) | Leaf and content-bearing action overloads compile without a compatibility hook; containers stage one exact action at their declaration identity before `fixedChild(0)` content, never add a second semantic occurrence or evaluate `body`, discard atomically on action/child/capacity failure, reuse cleanly, preserve equal profile meaning, add no optimized heap-allocation instruction, and retain ARMv6/nRF hard-float artifact evidence. |
 
 ## Required-Test Results
 
-At reviewed revision `085f52c58a9ee27d6c7652b2f3562bed7416998d`,
+At reviewed revision `9b66d622634ab6e3d3d8b4809404098a0cba0356`,
 the four standalone commands below passed with common run identity
-`085f52c58a9ee27d6c7652b2f3562bed7416998d-4256b4ebf2b2e167`:
+`9b66d622634ab6e3d3d8b4809404098a0cba0356-b677a6f9f197e14e`:
 
 - `scripts/contracts/run-spec-006.sh --profile macos-dynamic`
 - `scripts/contracts/run-spec-006.sh --profile macos-static`
 - `scripts/contracts/run-spec-006.sh --profile raspberry-pi-armv6`
 - `scripts/contracts/run-spec-006.sh --profile nrf52840-embedded`
 
-The full Swift package suite also passes 292 tests. Each contract report records
+The full Swift package suite also passes 276 tests. Each contract report records
 the compiler digest/version, exact commands, input and artifact hashes,
 repository cleanliness, target, optimization, and successful exit.
 
@@ -84,10 +85,12 @@ and ELF inspection for `armv7em-none-none-eabi`, Cortex-M4F hard-float, and
 capability facts are symbolic independence inputs only. No simulator, remote
 Pi, connected board, deployment, service restart, or flashing is claimed.
 
-Every profile compiled the exact package-only primitive-with-content fixture
-and validated the same 29-case, 158-event canonical corpus with maximum depth
-12. The nested amendment case stages four container primitives before their
-ordered children and applies four modifier scopes in source-call order.
+Every profile compiled the exact package-only primitive-with-content and
+action-with-content fixtures and validated the same 30-case, 171-event
+canonical corpus with maximum depth 12. The new action-container case stages
+two action occurrences at their declaration identities before stored content,
+while the earlier nested amendment case still stages four container primitives
+before ordered children and applies four modifier scopes in source-call order.
 
 ## Resource and Performance Evidence
 
@@ -95,9 +98,10 @@ The shared layout probe enforces one-byte `SemanticExpansionError`, ten-byte
 limits/summary maxima, and a twelve-byte result maximum. Optimized static-path
 SIL contains no heap-allocation instruction. Geometric scales 1, 2, 4, 8, and
 16 preserve constant per-unit ratios for ten work counters; the base includes
-all four nested container semantic stages. Rejected inactive subtrees stop at
-the fixed third attempted event and publish zero work. ARMv6 and nRF objects
-carry the required ABI attributes, including VFP-register arguments on nRF.
+all four nested container semantic stages and both new action-container
+associations. Rejected inactive subtrees stop at the fixed third attempted
+event and publish zero work. ARMv6 and nRF objects carry the required ABI
+attributes, including VFP-register arguments on nRF.
 
 ## Deviations and Exceptions
 
@@ -115,8 +119,7 @@ current work.
 
 ## Review Conclusion
 
-The sixteen criteria from the prior implemented revision retain reproducible
-passing evidence, and the amended Specification is approved, but new criterion
-`DV-017` remains pending. This collecting report does not yet support an
-`implemented` transition. The new operation requires authorized implementation,
-complete four-profile evidence, and renewed conformance review.
+All seventeen criteria have reproducible passing evidence and the amended
+Specification remains `implementing`. This collecting report is ready for
+renewed conformance review but does not itself support or perform an
+`implemented` transition; explicit maintainer authorization remains required.

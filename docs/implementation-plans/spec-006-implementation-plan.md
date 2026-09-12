@@ -2,7 +2,7 @@
 spec: SPEC-006
 feature: giftui-mvp-architecture
 title: SPEC-006 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-09-01
@@ -151,7 +151,7 @@ once below and maps to implementation tasks and reproducible evidence.
 | `DV-014` — FW-017/FW-020 remain reciprocal optional post-MVP captures | `T0.1`, `T7.2` | Governance and reciprocal-link audit | pass |
 | `DV-015` — Generated SPEC-010 witness binds before body, preserves successful semantics, and publishes nothing on binding failure | `T5.1`, `T5.2`, `T5.3` | Macro expansion, lexical binding transcript, bound-copy probe, and failure atomicity report | pass |
 | `DV-016` — Exact primitive-with-content dispatch, primitive-before-child traversal, canonical identity/order, unevaluated body, and atomic failure across all profiles | `T8.1`-`T8.4` | Public-interface and visitor-conformance audit, focused traversal tests, canonical corpus, allocation/dependency probes, four-profile reports, and renewed conformance review | pass |
-| `DV-017` — Exact action-primitive-with-content dispatch, action-before-child traversal, canonical identity/order, unevaluated body, and atomic failure across all profiles | `T9.1`-`T9.4` | Public-interface and visitor-conformance audit, focused action traversal tests, canonical action corpus, allocation/dependency probes, four-profile reports, and renewed conformance review | pending |
+| `DV-017` — Exact action-primitive-with-content dispatch, action-before-child traversal, canonical identity/order, unevaluated body, and atomic failure across all profiles | `T9.1`-`T9.4` | Public-interface and visitor-conformance audit, focused action traversal tests, canonical action corpus, allocation/dependency probes, four-profile reports, and renewed conformance review | pass |
 
 ## Milestones and Tasks
 
@@ -537,7 +537,7 @@ is ready for renewed review without claiming the `implemented` transition.
       unchanged dependency boundaries, bounded depth/counters, ARMv6
       inspection, and nRF52840 hard-float ELF evidence without connected
       hardware.
-- [ ] `T9.4` — Run the repository and four-profile gates, update every task
+- [x] `T9.4` — Run the repository and four-profile gates, update every task
       disposition and stable evidence link, and revise the SPEC-006 conformance
       report so `DV-017` receives a reviewable disposition. Return this plan to
       `completed` only when every Milestone 9 task is complete or has an
@@ -1037,3 +1037,14 @@ their content, fixed-child identity, ordinary modifier order, bounded counts,
 and zero body evaluations. The profile, traversal, complexity, normative,
 harness, allocation, dependency, ARMv6, and nRF evidence paths now require the
 new operation and report it as a distinct required item. `T9.4` is next.
+
+`T9.4` is complete: all four standalone drivers passed from clean revision
+`9b66d622634ab6e3d3d8b4809404098a0cba0356` with common run identity
+`9b66d622634ab6e3d3d8b4809404098a0cba0356-b677a6f9f197e14e`. The Swift
+package suite passed 276 tests, formatting and driver registration passed, and
+the collecting conformance report now gives `DV-017` a reviewable passing
+disposition. The aggregate repository gate also reported two unrelated active
+SPEC-013 governance/driver-skeleton failures; all SPEC-006 focused and
+four-profile gates passed. Milestone 9 and this plan are complete; SPEC-006
+remains `implementing` pending renewed conformance review and explicit
+maintainer authorization.
