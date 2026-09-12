@@ -4,6 +4,46 @@ import Testing
 @testable import GiftUISemanticCore
 
 @Test
+func canvasExpansionPublishesOneIdentityPreservingLeafWithoutInvokingDrawing() {
+    var invocationCount = 0
+    let root = Canvas { _, _ in invocationCount += 1 }
+    var workspace = AdapterWorkspace()
+    var sink = SemanticLayoutResultSink(storage: AdapterStorage())
+
+    let result = expandSemanticTree(
+        root,
+        limits: SemanticExpansionLimits(
+            maximumDepth: 8,
+            maximumSemanticNodes: 4,
+            maximumBodyEvaluations: 4,
+            maximumModifierApplications: 4,
+            maximumActionOccurrences: 2
+        )!,
+        workspace: &workspace,
+        sink: &sink
+    )
+
+    guard case .success(let summary) = result else {
+        Issue.record("Canvas semantic expansion must succeed: \(result)")
+        return
+    }
+    let identity = sink.rootIdentity
+    #expect(summary.semanticNodeCount == 1)
+    #expect(summary.bodyEvaluationCount == 0)
+    #expect(summary.modifierApplicationCount == 0)
+    #expect(summary.actionOccurrenceCount == 0)
+    #expect(sink.scopeCount == 1)
+    #expect(sink.primitive(at: identity) == .canvas)
+    #expect(sink.childCount(of: identity) == 0)
+    #expect(sink.child(of: identity, at: 0) == nil)
+    #expect(sink.modifierCount(of: identity) == 0)
+    #expect(sink.textScalarCount(of: identity) == nil)
+    #expect(sink.renderView.scope(at: identity) == .canvas)
+    #expect(sink.renderView.layoutIdentity(for: identity) == identity)
+    #expect(invocationCount == 0)
+}
+
+@Test
 func successfulSemanticExpansionIsItsOwnBorrowedLayoutView() {
     let root = AdapterRoot()
     var workspace = AdapterWorkspace()

@@ -609,6 +609,149 @@ func visualButtonProjectionLowersOnlyLabelStylesAndPainterOrder() {
 }
 
 @Test
+func directCanvasViewKeepsPainterPositionAndEmitsNoOrdinaryOperation() {
+    let bounds = DirectRenderFixtures.bounds
+    let baseline = Point(x: 3, y: 12)
+    let semantic = DirectSemanticRenderView(
+        rootIdentity: .root,
+        semanticScopeCount: 5,
+        renderSnapshotVersion: 9,
+        records: [
+            SemanticFixtureRecord(
+                identity: .root,
+                scope: .structural,
+                layoutIdentity: .root,
+                children: [.background, .canvas, .text]
+            ),
+            SemanticFixtureRecord(
+                identity: .background,
+                scope: .background(.blue),
+                layoutIdentity: .background,
+                children: [.alternate]
+            ),
+            SemanticFixtureRecord(
+                identity: .alternate,
+                scope: .structural,
+                layoutIdentity: .alternate,
+                children: []
+            ),
+            SemanticFixtureRecord(
+                identity: .canvas,
+                scope: .canvas,
+                layoutIdentity: .canvas,
+                children: []
+            ),
+            SemanticFixtureRecord(
+                identity: .text,
+                scope: .text,
+                layoutIdentity: .text,
+                children: []
+            ),
+        ]
+    )
+    let emptyRecord: (RenderFixtureIdentity) -> LayoutFixtureRecord = { identity in
+        LayoutFixtureRecord(identity: identity, bounds: bounds, clip: bounds, lines: [], glyphs: [])
+    }
+    let layout = DirectResolvedRenderLayoutView(
+        rootIdentity: .root,
+        layoutScopeCount: 5,
+        renderSnapshotVersion: 9,
+        rootBounds: bounds,
+        records: [
+            emptyRecord(.root),
+            emptyRecord(.background),
+            emptyRecord(.alternate),
+            emptyRecord(.canvas),
+            LayoutFixtureRecord(
+                identity: .text,
+                bounds: bounds,
+                clip: bounds,
+                lines: [
+                    ResolvedRenderTextLine(
+                        lineIndex: 0,
+                        bounds: bounds,
+                        baseline: baseline,
+                        clip: bounds,
+                        glyphCount: 1
+                    )
+                ],
+                glyphs: [
+                    ResolvedRenderGlyph(
+                        lineIndex: 0,
+                        glyphIndex: 0,
+                        instance: DirectRenderFixtures.instance,
+                        glyph: GlyphID(rawValue: 1),
+                        baseline: baseline,
+                        clip: bounds
+                    )
+                ]
+            ),
+        ]
+    )
+    let limits = RenderLimits(
+        maximumOperations: 2,
+        maximumPositionedGlyphs: 1,
+        maximumClipDepth: 5
+    )!
+    let structure = RenderWorkspaceCapacity(
+        maximumSemanticScopes: 5,
+        maximumLayoutScopes: 5,
+        maximumTraversalDepth: 3,
+        maximumTextLines: 1
+    )!
+    var workspace = PreflightWorkspace<RenderFixtureIdentity>(
+        capacity: limits,
+        structuralCapacity: structure
+    )
+    var sink = StreamingSink()
+
+    let result = RenderProducer.produce(
+        semantic: semantic,
+        layout: layout,
+        textMetrics: PreflightMetrics(),
+        surfaceBounds: bounds,
+        damageMode: .rootIntersection,
+        rootForeground: .red,
+        limits: limits,
+        workspace: &workspace,
+        sink: &sink
+    )
+
+    guard case .success(let summary) = result else {
+        Issue.record("expected Canvas-bearing ordinary render success")
+        return
+    }
+    #expect(semantic.semanticOrdinal(of: .canvas) == 3)
+    #expect(semantic.childCount(of: .canvas) == 0)
+    #expect(semantic.child(of: .canvas, at: 0) == nil)
+    #expect(semantic.layoutIdentity(for: .canvas) == .canvas)
+    #expect(layout.bounds(of: .canvas) == bounds)
+    #expect(layout.clip(of: .canvas) == bounds)
+    #expect(layout.textLineCount(of: .canvas) == 0)
+    #expect(layout.textLine(of: .canvas, at: 0) == nil)
+    #expect(layout.glyph(of: .canvas, at: 0) == nil)
+    #expect(summary.operationCount == 2)
+    #expect(summary.positionedGlyphCount == 1)
+    #expect(
+        sink.events == [
+            .begin(summary),
+            .fill(FillRectOperation(bounds: bounds, clip: bounds, color: .blue)),
+            .beginGlyphs(
+                PositionedGlyphOperationHeader(
+                    instance: DirectRenderFixtures.instance,
+                    clip: bounds,
+                    color: .red,
+                    glyphCount: 1
+                )
+            ),
+            .glyph(PositionedGlyph(glyph: GlyphID(rawValue: 1), baseline: baseline)),
+            .endGlyphs,
+            .finish,
+        ]
+    )
+}
+
+@Test
 func foregroundStackUsesInnermostColorRestoresSiblingsAndOrdersNestedBackgrounds() {
     let bounds = DirectRenderFixtures.bounds
     let instance = DirectRenderFixtures.instance

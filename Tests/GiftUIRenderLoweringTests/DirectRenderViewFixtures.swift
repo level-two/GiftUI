@@ -18,6 +18,7 @@ enum RenderFixtureIdentity: UInt8, Equatable, Sendable {
     case firstText
     case secondText
     case leaf
+    case canvas
 }
 
 struct SemanticFixtureRecord {

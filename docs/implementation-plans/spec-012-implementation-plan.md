@@ -258,7 +258,7 @@ and backends can consume borrowed stroke views without importing drawing.
       `DrawingPlanResult` with exact validation, cases/raw values, index meaning,
       copyability, sendability, and value-size ceilings on every supported
       compiler.
-- [ ] `T2.4` — Build direct recording semantic/layout/render views for Canvas
+- [x] `T2.4` — Build direct recording semantic/layout/render views for Canvas
       leaf identity, proposal behavior, frame expansion, exact resolved bounds,
       inherited clip, painter position, empty Canvas, and the absence of child,
       hit, text, glyph, clip-source, or ordinary-paint events.
@@ -718,6 +718,17 @@ the same layouts: 4-byte `SubpathRange`, 10-byte `DrawingPlanSummary`, 40-byte
 stride. The registered
 [layout evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-2/drawing-value-layouts.md)
 records the commands and bounds.
+
+`T2.4` is complete for the direct, non-callable integration permitted while
+T2.1 is blocked. Focused semantic expansion records one Canvas leaf at one
+identity without body evaluation or drawing invocation. Layout fixtures prove
+present-proposal/absent-axis sizing, ordinary fixed-frame expansion, exact
+bounds, inherited clips, and no text/glyph output. A direct render fixture
+places Canvas between a background fill and text glyph group yet emits no
+ordinary operation or child of its own. The
+[direct-view evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-2/direct-canvas-views.md)
+records the covered observations and explicitly excludes the unresolved
+callable staging seam.
 
 `T1.1` is complete. `GiftUI.Canvas` now has the exact typed-throws initializer,
 private retained draw callable, `Body == Never` invariant body, primitive

@@ -21,6 +21,38 @@ func recordingDynamicAndStaticViewsProduceIdenticalLayoutTranscripts() {
     #expect(recording.summary.maximumObservedDepth == 4)
 }
 
+@Test
+func canvasDirectViewUsesProposalOrZeroAndFixedFrameExpansionWithoutExtraOutput() {
+    let unframed = runCanvasLayout(
+        CanvasSemantic<RecordingProfileIdentity>(hasFrame: false),
+        proposal: ProposedSize(width: 17)!
+    )
+    let unframedBounds = Rect(
+        origin: Point(x: 0, y: 0),
+        size: Size(width: 17, height: 0)!
+    )!
+    #expect(unframed.summary.scopeCount == 1)
+    #expect(unframed.summary.rootBounds == unframedBounds)
+    #expect(
+        unframed.scopes == [.init(token: .canvas, bounds: unframedBounds, clip: unframedBounds)])
+    #expect(unframed.summary.textScalarCount == 0)
+    #expect(unframed.summary.textLineCount == 0)
+    #expect(unframed.summary.positionedGlyphCount == 0)
+
+    let framed = runCanvasLayout(
+        CanvasSemantic<RecordingProfileIdentity>(hasFrame: true),
+        proposal: ProposedSize(width: 50, height: 40)!
+    )
+    let framedBounds = Rect(
+        origin: Point(x: 0, y: 0),
+        size: Size(width: 31, height: 19)!
+    )!
+    #expect(framed.summary.scopeCount == 2)
+    #expect(framed.summary.rootBounds == framedBounds)
+    #expect(framed.scopes.map(\.token) == [.canvasFrame, .canvas])
+    #expect(framed.scopes.allSatisfy { $0.bounds == framedBounds && $0.clip == framedBounds })
+}
+
 private enum ProfileToken: UInt8, Equatable, Sendable {
     case root
     case text
@@ -30,6 +62,8 @@ private enum ProfileToken: UInt8, Equatable, Sendable {
     case overlaySpacer
     case textPadding
     case overlayFrame
+    case canvas
+    case canvasFrame
 }
 
 private protocol ProfileIdentity: Equatable, Sendable {
@@ -71,6 +105,8 @@ private enum StaticProfileIdentity: UInt16, ProfileIdentity {
     case overlaySpacer = 0x203
     case textPadding = 0x7c1
     case overlayFrame = 0x355
+    case canvas = 0x4a2
+    case canvasFrame = 0x6b4
 
     init(_ token: ProfileToken) {
         switch token {
@@ -82,6 +118,8 @@ private enum StaticProfileIdentity: UInt16, ProfileIdentity {
         case .overlaySpacer: self = .overlaySpacer
         case .textPadding: self = .textPadding
         case .overlayFrame: self = .overlayFrame
+        case .canvas: self = .canvas
+        case .canvasFrame: self = .canvasFrame
         }
     }
 
@@ -95,6 +133,8 @@ private enum StaticProfileIdentity: UInt16, ProfileIdentity {
         case .overlaySpacer: .overlaySpacer
         case .textPadding: .textPadding
         case .overlayFrame: .overlayFrame
+        case .canvas: .canvas
+        case .canvasFrame: .canvasFrame
         }
     }
 }
@@ -111,6 +151,7 @@ private struct ProfileSemantic<Identity: ProfileIdentity>: SemanticLayoutView {
         case .spacer, .overlaySpacer: .spacer(minLength: 0)
         case .overlay: .zStack(alignment: .leading)
         case .textPadding, .overlayFrame: nil
+        case .canvas, .canvasFrame: nil
         }
     }
 
@@ -179,9 +220,96 @@ private struct ProfileSemantic<Identity: ProfileIdentity>: SemanticLayoutView {
     }
 }
 
+private struct CanvasSemantic<Identity: ProfileIdentity>: SemanticLayoutView {
+    let rootIdentity = Identity(.canvas)
+    let hasFrame: Bool
+    var scopeCount: UInt16 { hasFrame ? 2 : 1 }
+
+    func primitive(at identity: Identity) -> SemanticLayoutPrimitive? {
+        identity.token == .canvas ? .canvas : nil
+    }
+
+    func childCount(of identity: Identity) -> UInt16? {
+        identity.token == .canvas || identity.token == .canvasFrame ? 0 : nil
+    }
+
+    func child(of _: Identity, at _: UInt16) -> Identity? { nil }
+
+    func modifierCount(of identity: Identity) -> UInt16? {
+        identity.token == .canvas ? (hasFrame ? 1 : 0) : 0
+    }
+
+    func modifierScope(of identity: Identity, at index: UInt16) -> Identity? {
+        identity.token == .canvas && hasFrame && index == 0 ? Identity(.canvasFrame) : nil
+    }
+
+    func modifier(of identity: Identity, at index: UInt16) -> SemanticLayoutModifier? {
+        guard identity.token == .canvas, hasFrame, index == 0 else { return nil }
+        return .fixedFrame(width: 31, height: 19, alignment: .center)
+    }
+
+    func textScalarCount(of identity: Identity) -> UInt16? {
+        _ = identity
+        return nil
+    }
+
+    func textScalar(of _: Identity, at _: UInt16) -> UInt32? { nil }
+}
+
 private struct NormalizedProfileResult: Equatable {
     let summary: LayoutSummary
     let events: [String]
+}
+
+private struct CanvasScopeObservation: Equatable {
+    let token: ProfileToken
+    let bounds: Rect
+    let clip: Rect
+}
+
+private struct CanvasLayoutObservation {
+    let summary: LayoutSummary
+    let scopes: [CanvasScopeObservation]
+}
+
+private func runCanvasLayout<Identity: ProfileIdentity>(
+    _ semantic: CanvasSemantic<Identity>,
+    proposal: ProposedSize
+) -> CanvasLayoutObservation {
+    var workspace = ProfileWorkspace<Identity>()
+    var sink = ProfileSink<Identity>()
+    let result = layout(
+        semantic: semantic,
+        metrics: GiftUIReferenceTextResources.targetPackage.metrics,
+        proposal: proposal,
+        limits: LayoutLimits(
+            maximumScopes: 2,
+            maximumDepth: 2,
+            maximumTextScalars: 1,
+            maximumTextLines: 1,
+            maximumPositionedGlyphs: 1
+        )!,
+        workspace: &workspace,
+        sink: &sink
+    )
+    guard case .success(let summary) = result, sink.summary == summary else {
+        Issue.record("Canvas layout failed: \(result)")
+        return CanvasLayoutObservation(
+            summary: LayoutSummary(
+                scopeCount: 0,
+                textScalarCount: 0,
+                textLineCount: 0,
+                positionedGlyphCount: 0,
+                maximumObservedDepth: 0,
+                rootBounds: Rect(
+                    origin: Point(x: 0, y: 0),
+                    size: Size(width: 0, height: 0)!
+                )!
+            ),
+            scopes: []
+        )
+    }
+    return CanvasLayoutObservation(summary: summary, scopes: sink.scopes)
 }
 
 private func runProfileLayout<Identity: ProfileIdentity>(
@@ -353,6 +481,7 @@ private struct ProfileSink<Identity: ProfileIdentity>:
     var isLayoutActive = false
     var summary: LayoutSummary?
     var events: [String] = []
+    var scopes: [CanvasScopeObservation] = []
 
     mutating func begin(summary: LayoutSummary) -> Bool {
         self.summary = summary
@@ -362,6 +491,7 @@ private struct ProfileSink<Identity: ProfileIdentity>:
     }
 
     mutating func stageScope(identity: Identity, bounds: Rect, clip: Rect) -> Bool {
+        scopes.append(.init(token: identity.token, bounds: bounds, clip: clip))
         events.append("scope:\(identity.token):\(bounds):\(clip)")
         return true
     }
