@@ -302,7 +302,7 @@ and the shared coordinator semantics without importing Static or a backend.
       Interaction, coordinator, and failure stores. Enforce configured logical
       limits despite spare heap and report exact owned bytes plus allocator
       bookkeeping separately.
-- [ ] `T3.3` — Implement exclusive acquisition and exact attempt/all reset
+- [x] `T3.3` — Implement exclusive acquisition and exact attempt/all reset
       behavior, candidate/committed separation, refusal intent retention, and
       quiescent teardown. Add deinitialization and release counters without
       making them common correctness dependencies.
@@ -714,6 +714,16 @@ heap headroom. The retained audit is reconstructed against every region's
 exact payload extent, while observed reserved payload, spare payload, and
 allocation count remain a separate Dynamic allocator report. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-3/dynamic-storage.md`.
+
+T3.3 added the Dynamic storage lifetime state machine with exclusive attempt
+acquisition, idempotent exactly-once attempt reset, legal-boundary all-storage
+reset, distinct candidate/committed lifetimes, constant-space pending
+presentation intent, and synchronous idempotent quiescent teardown. Optional
+profile-local release and deinitialization counters observe cleanup without
+participating in correctness decisions. Four additional focused tests cover
+reentry, preservation, active quiescence, reset legality, and deinitialization;
+evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-3/dynamic-storage-lifetime.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

@@ -1,3 +1,4 @@
+import GiftUIExecution
 import GiftUIRuntimeCore
 
 package enum DynamicStorageFamily: UInt8, CaseIterable, Equatable, Sendable {
@@ -132,6 +133,7 @@ package enum DynamicStorageReservation: Equatable, Sendable {
     case accepted
     case limitExceeded
     case arithmeticOverflow
+    case unavailable
 }
 
 package struct DynamicStorageUse: Equatable, Sendable {
@@ -145,6 +147,62 @@ package struct DynamicAllocatorReport: Equatable, Sendable {
     package let observedReservedPayloadBytes: UInt32
     package let observedSparePayloadBytes: UInt32
     package let allocationCount: UInt16
+}
+
+package enum DynamicStorageLifetimeState: UInt8, Equatable, Sendable {
+    case beforeUse = 0
+    case idle = 1
+    case attemptActive = 2
+    case quiescenceRequested = 3
+    case tornDown = 4
+}
+
+package struct DynamicStorageReleaseCounters: Equatable, Sendable {
+    package private(set) var attemptResetCount: UInt32 = 0
+    package private(set) var allStorageResetCount: UInt32 = 0
+    package private(set) var quiescentTeardownCount: UInt32 = 0
+
+    mutating func recordAttemptReset() {
+        increment(&attemptResetCount)
+    }
+
+    mutating func recordAllStorageReset() {
+        increment(&allStorageResetCount)
+    }
+
+    mutating func recordQuiescentTeardown() {
+        increment(&quiescentTeardownCount)
+    }
+
+    private func increment(_ value: inout UInt32) {
+        let next = value.addingReportingOverflow(1)
+        guard !next.overflow else { return }
+        value = next.partialValue
+    }
+}
+
+package final class DynamicStorageDeinitializationCounter {
+    package private(set) var count: UInt32 = 0
+
+    package init() {}
+
+    fileprivate func record() {
+        let next = count.addingReportingOverflow(1)
+        guard !next.overflow else { return }
+        count = next.partialValue
+    }
+}
+
+private final class DynamicStorageLifetimeToken {
+    private let counter: DynamicStorageDeinitializationCounter
+
+    init(counter: DynamicStorageDeinitializationCounter) {
+        self.counter = counter
+    }
+
+    deinit {
+        counter.record()
+    }
 }
 
 private struct DynamicStorageRegion {
@@ -311,11 +369,17 @@ package struct DynamicProfileStorage: RuntimeProfileStorage {
     private let retainedAudit: RuntimeStorageAudit
     private var regions: [DynamicStorageRegion]
     private var logicalUse: DynamicLogicalUseLedger
+    private var lifetimeState: DynamicStorageLifetimeState
+    private var pendingPresentationIntent: PresentationPendingIntent?
+    private var releaseCounts: DynamicStorageReleaseCounters
+    private var attemptStorageWasReset: Bool
+    private let lifetimeToken: DynamicStorageLifetimeToken?
 
     package init?(
         structuralIdentity: DynamicStructuralIdentity,
         limits: RuntimeProfileLimits,
-        byteCounts: RuntimeStorageByteCounts
+        byteCounts: RuntimeStorageByteCounts,
+        deinitializationCounter: DynamicStorageDeinitializationCounter? = nil
     ) {
         let capacities = Self.capacities(for: limits, byteCounts: byteCounts)
         let validation = RuntimeProfileValidator.validateDynamic(
@@ -350,6 +414,11 @@ package struct DynamicProfileStorage: RuntimeProfileStorage {
         retainedAudit = construction.storageAudit
         regions = allocated
         logicalUse = DynamicLogicalUseLedger(limits: construction.limits)
+        lifetimeState = .beforeUse
+        pendingPresentationIntent = nil
+        releaseCounts = DynamicStorageReleaseCounters()
+        attemptStorageWasReset = false
+        lifetimeToken = deinitializationCounter.map(DynamicStorageLifetimeToken.init(counter:))
     }
 
     package borrowing func audit() -> RuntimeProfileValidationResult {
@@ -371,7 +440,16 @@ package struct DynamicProfileStorage: RuntimeProfileStorage {
         _ count: UInt16,
         for limit: DynamicStorageLimit
     ) -> DynamicStorageReservation {
-        logicalUse.reserve(count, for: limit)
+        guard lifetimeState != .quiescenceRequested, lifetimeState != .tornDown else {
+            return .unavailable
+        }
+        guard !limit.family.isAttemptLocal || lifetimeState == .attemptActive else {
+            return .unavailable
+        }
+        if lifetimeState == .beforeUse {
+            lifetimeState = .idle
+        }
+        return logicalUse.reserve(count, for: limit)
     }
 
     package borrowing func use(for limit: DynamicStorageLimit) -> DynamicStorageUse {
@@ -412,18 +490,95 @@ package struct DynamicProfileStorage: RuntimeProfileStorage {
         )
     }
 
+    package var storageLifetimeState: DynamicStorageLifetimeState {
+        lifetimeState
+    }
+
+    package var retainedPresentationIntent: PresentationPendingIntent? {
+        pendingPresentationIntent
+    }
+
+    package var releaseCounters: DynamicStorageReleaseCounters {
+        releaseCounts
+    }
+
+    package mutating func beginAttempt() -> Bool {
+        guard lifetimeState == .beforeUse || lifetimeState == .idle else { return false }
+        lifetimeState = .attemptActive
+        attemptStorageWasReset = false
+        return true
+    }
+
+    package mutating func retainPresentationIntent(_ intent: PresentationPendingIntent?) {
+        guard lifetimeState != .tornDown else { return }
+        pendingPresentationIntent = intent
+    }
+
+    package mutating func finishAttempt() {
+        guard lifetimeState == .attemptActive || lifetimeState == .quiescenceRequested else {
+            return
+        }
+        resetAttemptStorageIfNeeded()
+        if lifetimeState == .quiescenceRequested {
+            finishQuiescentTeardown()
+        } else {
+            lifetimeState = .idle
+        }
+    }
+
+    package mutating func quiesce() {
+        switch lifetimeState {
+        case .beforeUse, .idle:
+            finishQuiescentTeardown()
+        case .attemptActive:
+            lifetimeState = .quiescenceRequested
+        case .quiescenceRequested, .tornDown:
+            break
+        }
+    }
+
     package mutating func resetAttemptStorage() {
+        guard lifetimeState == .attemptActive || lifetimeState == .quiescenceRequested else {
+            return
+        }
+        resetAttemptStorageIfNeeded()
+    }
+
+    package mutating func resetAllStorage() {
+        guard lifetimeState == .beforeUse || lifetimeState == .tornDown else { return }
+        resetAllRegions()
+        releaseCounts.recordAllStorageReset()
+    }
+
+    private mutating func resetAttemptRegions() {
         logicalUse.resetAttempt()
         for index in regions.indices where regions[index].family.isAttemptLocal {
             regions[index].reset()
         }
     }
 
-    package mutating func resetAllStorage() {
+    private mutating func resetAttemptStorageIfNeeded() {
+        guard !attemptStorageWasReset else { return }
+        resetAttemptRegions()
+        attemptStorageWasReset = true
+        releaseCounts.recordAttemptReset()
+    }
+
+    private mutating func resetAllRegions() {
         logicalUse.resetAll()
         for index in regions.indices {
             regions[index].reset()
         }
+        pendingPresentationIntent = nil
+        attemptStorageWasReset = false
+    }
+
+    private mutating func finishQuiescentTeardown() {
+        guard lifetimeState != .tornDown else { return }
+        resetAllRegions()
+        releaseCounts.recordAllStorageReset()
+        releaseCounts.recordQuiescentTeardown()
+        lifetimeState = .tornDown
     }
 
     private static func inputs(for limits: RuntimeProfileLimits) -> RuntimeProfileLimitInputs {

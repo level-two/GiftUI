@@ -96,6 +96,8 @@ func everyDynamicLogicalDimensionAcceptsExactLimitAndRejectsFirstExcess() {
 
     #expect(DynamicStorageFamily.allCases.count == 16)
     #expect(DynamicStorageLimit.allCases.count == 51)
+    let beganAttempt = storage.beginAttempt()
+    #expect(beganAttempt)
     for limit in DynamicStorageLimit.allCases {
         let capacity = storage.use(for: limit).limit
         #expect(storage.reserve(capacity, for: limit) == .accepted)
@@ -105,6 +107,98 @@ func everyDynamicLogicalDimensionAcceptsExactLimitAndRejectsFirstExcess() {
         #expect(storage.reserve(1, for: limit) == .limitExceeded)
         #expect(storage.use(for: limit) == fullUse)
     }
+}
+
+@Test
+func dynamicAttemptIsExclusiveAndResetPreservesCommittedAndPendingState() {
+    var storage = makeDynamicStorage()
+    let intent = PresentationPendingIntent(
+        semanticRevision: SemanticRevision(rawValue: 8),
+        retryableRefusalCount: 2
+    )
+
+    let beganAttempt = storage.beginAttempt()
+    let beganReentrantAttempt = storage.beginAttempt()
+    #expect(beganAttempt)
+    #expect(!beganReentrantAttempt)
+    #expect(storage.reserve(1, for: .interactionCandidateActions) == .accepted)
+    #expect(storage.reserve(1, for: .interactionCommittedActions) == .accepted)
+    storage.retainPresentationIntent(intent)
+    storage.resetAttemptStorage()
+    storage.finishAttempt()
+
+    #expect(storage.storageLifetimeState == .idle)
+    #expect(storage.use(for: .interactionCandidateActions).current == 0)
+    #expect(storage.use(for: .interactionCommittedActions).current == 1)
+    #expect(storage.retainedPresentationIntent == intent)
+    #expect(storage.releaseCounters.attemptResetCount == 1)
+    #expect(storage.releaseCounters.allStorageResetCount == 0)
+}
+
+@Test
+func activeQuiescenceDefersMandatoryAttemptReleaseThenTearsDownOnce() {
+    var storage = makeDynamicStorage()
+    let beganAttempt = storage.beginAttempt()
+    #expect(beganAttempt)
+    #expect(storage.reserve(1, for: .drawingPlanStrokes) == .accepted)
+    #expect(storage.reserve(1, for: .interactionCommittedActions) == .accepted)
+    storage.retainPresentationIntent(
+        PresentationPendingIntent(
+            semanticRevision: SemanticRevision(rawValue: 3),
+            retryableRefusalCount: 1
+        )
+    )
+
+    storage.quiesce()
+    #expect(storage.storageLifetimeState == .quiescenceRequested)
+    #expect(storage.reserve(1, for: .failureState) == .unavailable)
+    storage.finishAttempt()
+    storage.quiesce()
+
+    #expect(storage.storageLifetimeState == .tornDown)
+    #expect(storage.use(for: .drawingPlanStrokes).current == 0)
+    #expect(storage.use(for: .interactionCommittedActions).current == 0)
+    #expect(storage.retainedPresentationIntent == nil)
+    #expect(storage.releaseCounters.attemptResetCount == 1)
+    #expect(storage.releaseCounters.allStorageResetCount == 1)
+    #expect(storage.releaseCounters.quiescentTeardownCount == 1)
+    let beganAfterTeardown = storage.beginAttempt()
+    #expect(!beganAfterTeardown)
+}
+
+@Test
+func allStorageResetIsEffectiveOnlyAtLegalLifetimeBoundaries() {
+    var storage = makeDynamicStorage()
+    storage.resetAllStorage()
+    #expect(storage.releaseCounters.allStorageResetCount == 1)
+
+    #expect(storage.reserve(1, for: .admissionInputEvents) == .accepted)
+    storage.resetAllStorage()
+    #expect(storage.use(for: .admissionInputEvents).current == 1)
+    #expect(storage.releaseCounters.allStorageResetCount == 1)
+
+    storage.quiesce()
+    #expect(storage.use(for: .admissionInputEvents).current == 0)
+    storage.resetAllStorage()
+    #expect(storage.releaseCounters.allStorageResetCount == 3)
+}
+
+@Test
+func optInDynamicDeinitializationCounterDoesNotDriveCorrectness() {
+    let counter = DynamicStorageDeinitializationCounter()
+    do {
+        var storage = DynamicProfileStorage(
+            structuralIdentity: DynamicStructuralIdentity(rawValue: 71)!,
+            limits: dynamicLimits(),
+            byteCounts: dynamicByteCounts(),
+            deinitializationCounter: counter
+        )!
+        let beganAttempt = storage.beginAttempt()
+        #expect(beganAttempt)
+        storage.finishAttempt()
+        #expect(counter.count == 0)
+    }
+    #expect(counter.count == 1)
 }
 
 private extension RuntimeProfileValidationResult {
@@ -195,4 +289,12 @@ private func dynamicByteCounts() -> RuntimeStorageByteCounts {
         coordinatorStateBytes: 15,
         failureStateBytes: 16
     )
+}
+
+private func makeDynamicStorage() -> DynamicProfileStorage {
+    DynamicProfileStorage(
+        structuralIdentity: DynamicStructuralIdentity(rawValue: 17)!,
+        limits: dynamicLimits(),
+        byteCounts: dynamicByteCounts()
+    )!
 }
