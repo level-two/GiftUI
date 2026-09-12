@@ -1,6 +1,6 @@
 # T1.4 Runtime Profile Storage Compiler Blocker
 
-Disposition: **upstream Specification review required**
+Disposition: **resolved by explicitly approved Specification correction**
 
 Date: 2026-09-12
 
@@ -50,3 +50,11 @@ The likely source correction is to remove the invalid modifier from all five
 read-only properties while retaining `{ get }`, matching the approved SPEC-010
 precedent, but that is a Specification decision and is not inferred by
 implementation.
+
+## Resolution
+
+On 2026-09-12 the maintainer explicitly approved that correction and directed
+that SPEC-013 remain approved. The authoritative Specification now declares
+all five properties as ordinary read-only `var` requirements. This evidence is
+retained as the reproducible reason for the source correction; it no longer
+blocks T1.4 or T1.5.

@@ -70,7 +70,9 @@ target_milestone: MVP
 > **Implementation status:** Explicitly reapproved by the maintainer on
 > 2026-09-12 and moved to `implementing` when T0.1 began on 2026-09-12. The
 > approved amendment adds SPEC-008 render-workspace limits to the profile limit
-> schema and storage audit. This amended contract remains authoritative.
+> schema and storage audit. On 2026-09-12 the maintainer also explicitly
+> approved correcting the compiler-invalid `borrowing var` spellings to
+> ordinary read-only properties. This amended contract remains authoritative.
 
 ## Summary
 
@@ -360,7 +362,7 @@ package enum RuntimeOwnerFailure: Equatable, Sendable {
 package protocol RuntimeProfileStorage: ~Copyable {
     associatedtype StructuralIdentity: Equatable & Sendable
     static var profile: RuntimeProfileKind { get }
-    borrowing var limits: RuntimeProfileLimits { get }
+    var limits: RuntimeProfileLimits { get }
     borrowing func audit() -> RuntimeProfileValidationResult
     mutating func resetAttemptStorage()
     mutating func resetAllStorage()
@@ -376,10 +378,10 @@ where OwnerFailure == RuntimeOwnerFailure
     associatedtype Handler: GiftUIActionHandler
     associatedtype TargetAccess: ActionModelTargetAccess
         where TargetAccess.Model == Handler.Model
-    borrowing var profile: RuntimeProfileKind { get }
-    borrowing var storageAudit: RuntimeStorageAudit { get }
-    borrowing var executionContext: ExecutionContext { get }
-    borrowing var isQuiescent: Bool { get }
+    var profile: RuntimeProfileKind { get }
+    var storageAudit: RuntimeStorageAudit { get }
+    var executionContext: ExecutionContext { get }
+    var isQuiescent: Bool { get }
     mutating func quiesce()
 }
 ```

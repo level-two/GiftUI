@@ -561,13 +561,6 @@ dependency edge, asynchronous semantics, retained/replayable frames, relaxed
 static restrictions, a new failure case, or different publication/routing
 lifetime returns upstream before affected work proceeds.
 
-- T1.4 is blocked because the pinned Apple Swift 6.3.3 compiler rejects the
-  exact normative `borrowing var limits` declaration. T1.5 contains four more
-  properties with the same unsupported modifier. Evidence is recorded in
-  `Tests/ContractFixtures/SPEC013/Evidence/milestone-1/profile-storage-compiler-blocker.md`.
-  The plan's explicit compiler gate requires Specification review before the
-  storage and coordinator protocol work may continue.
-
 ## Deferred and Follow-up Work
 
 No new deferred artifact was required while drafting this plan. Retained
@@ -649,6 +642,10 @@ T1.4 reached the plan's compiler gate on 2026-09-12. The pinned Apple Swift
 before any implementation body is considered. The nonconforming attempt was
 removed, T1.4 remains open, and reproducible evidence is recorded in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-1/profile-storage-compiler-blocker.md`.
+Later on 2026-09-12 the maintainer explicitly approved correcting all five
+compiler-invalid `borrowing var` declarations in SPEC-013 to ordinary
+read-only properties. The authoritative Specification now contains the
+corrected declarations and T1.4 is unblocked.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
