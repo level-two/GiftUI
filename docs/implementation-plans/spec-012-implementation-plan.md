@@ -315,7 +315,7 @@ the integration path.
 resolved painter order and either exposes one complete translated plan or
 performs exact whole-attempt cleanup and dirty recovery.
 
-- [ ] `T4.1` — Implement Canvas measurement and placement integration: present
+- [x] `T4.1` — Implement Canvas measurement and placement integration: present
       proposal axes become ideal dimensions, absent axes become zero, ordinary
       cap/frame behavior resolves bounds, and Canvas adds no clip. Correlate the
       same exact identity across semantic occurrence, layout result, and render
@@ -853,6 +853,17 @@ point and two subpath lookups for the one admitted subpath, while reporting
 live and immutable-plan high-water separately. The
 [fault/work evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-3/drawing-faults-and-work.md)
 records the matrix. Milestone 3 is complete; T4.1 is next.
+
+`T4.1` is complete. The production layout engine's additive `.canvas` branch
+uses the existing semantic identity without creating a child or Canvas-only
+identity relation. The established direct-view corpus proves present proposal
+axes, zero absent axes, ordinary cap and fixed-frame expansion, exact resolved
+bounds and inherited clip, and no text/glyph/clip-source output. T2.1 now
+supplies the same identity-keyed staged payload through the drawing-attempt
+seam, while the semantic render projection maps `.canvas` back to that exact
+layout identity. The
+[integration evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-4/canvas-layout-integration.md)
+records the correlated path. T4.2 is next.
 
 `T1.4` is complete. Seven maintained positive fixtures compile Canvas/style
 defaults, both stroke overloads, explicit typed trailing closures,
