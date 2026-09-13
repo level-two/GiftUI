@@ -29,7 +29,7 @@ private let glyphResourceDescriptor = TextResourceDescriptor(
     realizationCount: 1,
     canonicalManifestByteCount: 1
 )
-private let glyphRealization = RasterRealizationDescriptor(
+let glyphRealization = RasterRealizationDescriptor(
     id: RasterRealizationID(rawValue: 0),
     instance: glyphInstance,
     kind: .monochromeBitmap1,
@@ -55,7 +55,7 @@ private let glyphBounds = Rect(
     origin: Point(x: 0, y: 0),
     size: Size(width: 5, height: 4)!
 )!
-private let glyphDescriptor = RasterSurfaceDescriptor(
+let glyphDescriptor = RasterSurfaceDescriptor(
     bounds: glyphBounds,
     encoding: .rgb565BigEndian,
     bytesPerRow: 10,
@@ -63,7 +63,7 @@ private let glyphDescriptor = RasterSurfaceDescriptor(
     regionWidth: 5,
     regionHeight: 4
 )!
-private let glyphOperation = PositionedGlyphOperationHeader(
+let glyphOperation = PositionedGlyphOperationHeader(
     instance: glyphInstance,
     clip: glyphBounds,
     color: .green,
@@ -244,7 +244,7 @@ private func rasterizeGlyph(
     ) { _, _ in true }
 }
 
-private final class GlyphMetricsFixture: CanonicalTextMetricsView {
+final class GlyphMetricsFixture: CanonicalTextMetricsView {
     let descriptor = glyphResourceDescriptor
     let storedMetrics: GlyphMetrics?
     private(set) var requests: [(GlyphID, FontInstanceID)] = []
@@ -277,7 +277,7 @@ private final class GlyphMetricsFixture: CanonicalTextMetricsView {
     }
 }
 
-private final class GlyphRasterFixture: TextRasterResourceView {
+final class GlyphRasterFixture: TextRasterResourceView {
     let descriptor = glyphResourceDescriptor
     let storedRecord: GlyphRasterRecord?
     let payloadAvailable: Bool

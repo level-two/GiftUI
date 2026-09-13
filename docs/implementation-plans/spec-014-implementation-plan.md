@@ -364,7 +364,7 @@ for every operation independently of full-surface or tiled storage.
       glyph bytes, stroke workspace, and every algorithm work bound with
       checked equality/first-excess behavior and sticky first local failure.
       Continue validation-only draining after accepted responsibility.
-- [ ] `T4.6` — Build the canonical recording endpoint/surface and populate
+- [x] `T4.6` — Build the canonical recording endpoint/surface and populate
       `raster.yaml` from exact fills, glyphs, all SPEC-012 strokes, clipping,
       damage, odd strides, partial edges, empty intersections, negative
       geometry, painter overwrites, and overflow cases. Freeze zero-tolerance
@@ -900,6 +900,18 @@ duplicate/zero points, caps, joins, negative translated coordinates, clipping,
 and painter replacement. All four registered value profiles compile the
 shared source. BI-009 remains pending for the later concrete
 full-surface and tiled exact-byte comparison tasks.
+
+`T4.6` is complete. A canonical test endpoint now implements the complete
+combined sink grammar over a recording `RasterSurface`, delegates fills,
+positioned glyphs, and borrowed strokes to the shared raster paths, preserves
+operation order, writes exact bytes at odd stride, leaves padding untouched,
+and rejects malformed sequencing through sticky raster errors. `raster.yaml`
+now registers the mixed recording transcript, the complete imported SPEC-012
+stroke corpus, and translated-point overflow, alongside the existing encoding
+and glyph cases. Focused evidence covers damage, clipping, negative geometry,
+partial/empty intersections, painter overwrite, exact RGB565 bytes, padding,
+and zero replacement on overflow. Milestone 4 is complete; BI-007/BI-009 stay
+pending for concrete realization comparisons.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

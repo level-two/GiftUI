@@ -68,3 +68,57 @@ cases:
     bodyResult: none
     health: none
     highWater: {metricsLookups: 1, recordLookups: 1, payloadBorrows: 1, glyphPayloadBytes: 2, retainedResourceAddresses: 0}
+  - fixtureID: spec014-canonical-recording-mixed
+    criteria: [BI-007, BI-008, BI-009, BI-012]
+    evidenceClasses: [host-execution, inspection]
+    profiles: [macos-dynamic, macos-static]
+    descriptor: {origin: {x: 0, y: 0}, extent: {width: 5, height: 4}, encoding: rgb565BigEndian, bytesPerRow: 13, realization: recording, regionExtent: {width: 5, height: 4}}
+    effectiveCapability: none
+    header: {surfaceBounds: {x: 0, y: 0, width: 5, height: 4}, damageBounds: {x: 1, y: 0, width: 4, height: 3}, operationCount: 3, positionedGlyphCount: 1}
+    operationsResources:
+      - {operation: fill, bounds: {x: -2, y: -1, width: 8, height: 5}, clip: {x: 0, y: 0, width: 5, height: 4}, color: [255, 0, 0]}
+      - {operation: glyph, source: spec014-positioned-glyph-exact-bitmap}
+      - {operation: stroke, points: [[1, 1], [5, 1]], subpaths: [[0, 2]], width: 1, cap: butt, join: miter, clip: {x: 0, y: 0, width: 5, height: 4}, color: [0, 0, 255]}
+    injectedEvents: none
+    orderedRegions: [{kind: logical-pixel, order: row-major-with-painter-replacement}]
+    encodedImage:
+      affectedMask: [".####", ".####", ".####", "....."]
+      row0Pixel1RGB565: [0, 31]
+      row2Pixel1RGB565: [248, 0]
+      rowPadding: [0, 0, 0]
+      pixelTolerance: 0
+      channelTolerance: 0
+    offerResult: none
+    bodyResult: {status: complete}
+    health: none
+    highWater: {operationCount: 3, glyphCount: 1, retainedBorrowAddresses: 0}
+  - fixtureID: spec014-canonical-stroke-corpus
+    criteria: [BI-009, BI-014]
+    evidenceClasses: [cross-build, host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: {source: Tests/ContractFixtures/SPEC012/raster-vectors.yaml, coordinateAdaptation: translate-surface-origin-to-zero}
+    effectiveCapability: none
+    header: {vectorCount: 17, operationStream: synchronousBorrowedOneShot}
+    operationsResources: {source: Tests/ContractFixtures/SPEC012/raster-vectors.yaml#vectors, canvasBoundsParticipate: false}
+    injectedEvents: [{afterOperationReturn: poison-borrowed-view}]
+    orderedRegions: [{kind: logical-pixel, order: row-major-with-painter-replacement}]
+    encodedImage: {maskSource: expectedMask, rgbaSource: palette.rgba8888, rgb565Source: palette.rgb565, pixelTolerance: 0, channelTolerance: 0}
+    offerResult: none
+    bodyResult: {status: complete}
+    health: none
+    highWater: {retainedStrokeAddresses: 0, retainedPointArrays: 0, retainedSegmentArrays: 0}
+  - fixtureID: spec014-raster-overflow-rejected
+    criteria: [BI-012]
+    evidenceClasses: [cross-build, host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: {origin: {x: 0, y: 0}, extent: {width: 4, height: 4}, encoding: rgb565BigEndian, bytesPerRow: 8, realization: recording, regionExtent: {width: 4, height: 4}}
+    effectiveCapability: none
+    header: {surfaceBounds: {x: 0, y: 0, width: 4, height: 4}, damageBounds: {x: 0, y: 0, width: 4, height: 4}, operationCount: 1, positionedGlyphCount: 0}
+    operationsResources: {operation: stroke, surfaceOrigin: {x: 1, y: 0}, points: [[2147483647, 0], [0, 0]], width: 1}
+    injectedEvents: [{duringPreflight: translated-point-overflow}]
+    orderedRegions: []
+    encodedImage: {affectedMask: ["....", "....", "....", "...."], pixelTolerance: 0, channelTolerance: 0}
+    offerResult: none
+    bodyResult: {failure: arithmeticOverflow}
+    health: none
+    highWater: {replacementCalls: 0, retainedBorrowAddresses: 0}

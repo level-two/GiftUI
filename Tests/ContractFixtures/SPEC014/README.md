@@ -31,6 +31,12 @@ The five corpora have these responsibilities:
 - `resources.yaml`: limits, value layouts, ownership, allocation, stack,
   linked-symbol, high-water, and timing conditions.
 
+Milestone 4 adds three raster cases: a mixed recording-surface transcript with
+odd stride and damaged-subrect painter replacement, an explicit import of all
+17 independently frozen SPEC-012 stroke vectors, and a pre-output translated-
+point overflow. The recording endpoint is test evidence only; it does not
+select a production surface realization or submission strategy.
+
 ## Evidence boundary
 
 `required-evidence.tsv` begins fail-closed with every acceptance criterion
