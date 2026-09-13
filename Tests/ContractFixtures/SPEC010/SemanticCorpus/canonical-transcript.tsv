@@ -1,1 +1,11 @@
 # case_id	event_index	phase	location	declaration_ordinal	event	attachment_slot	generation	dirty	wake
+profile-initial-materialization	1	deriving	location:7	0	materialized	0	1	false	false
+profile-initial-materialization	2	publishing	location:7	0	published	0	1	false	false
+profile-preservation	1	deriving	location:7	0	preserved	0	1	false	false
+profile-distinct-ordinal	1	deriving	location:7	1	materialized	1	2	false	false
+profile-distinct-ordinal	2	publishing	location:7	0	retired	0	1	false	false
+profile-distinct-ordinal	3	publishing	location:7	1	published	1	2	false	false
+twenty-report-coalescing	1	mutating	location:7	0	dirtied	0	1	true	true
+twenty-report-coalescing	2	mutating	location:7	0	coalesced-x19	0	1	true	true
+twenty-report-coalescing	3	publishing	location:7	0	published	0	1	false	false
+presentation-fact-deferral	1	mutating	location:7	0	admitted-for-later-cycle	0	1	true	true

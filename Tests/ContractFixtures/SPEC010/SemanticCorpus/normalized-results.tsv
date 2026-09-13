@@ -1,1 +1,8 @@
 # case_id	result	live_locations	registrations	staged_associations	dirty_locations	outstanding_wakes	tree_evaluations	published_revisions	evidence_class
+profile-initial-materialization	success	1	1	0	0	0	1	1	host-execution
+profile-preservation	success	1	1	0	0	0	1	1	host-execution
+profile-distinct-ordinal	success	1	1	0	0	0	1	2	host-execution
+profile-first-excess	location-capacity-exhausted	1	1	0	0	0	0	0	host-execution
+profile-generation-exhaustion	registration-generation-exhausted	0	0	0	0	0	0	0	host-execution
+twenty-report-coalescing	success	1	1	0	0	0	1	1	host-execution
+presentation-fact-deferral	accepted	1	1	0	1	1	0	0	host-execution

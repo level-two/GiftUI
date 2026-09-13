@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-04
-updated: 2026-09-12
+updated: 2026-09-13
 related_design_notes:
   - ../implementation-designs/spec-010-binding-and-report-routing.md
 conformance_report: null
@@ -386,17 +386,17 @@ SPEC-015 has supplied host assembly inputs before production realization.
 **Exit evidence:** Both profiles satisfy the same finite corpus at equal limits
 while the static path remains typed, bounded, and zero-heap.
 
-- [ ] `T6.1` — Implement dynamic and static fixture workspaces behind the same
+- [x] `T6.1` — Implement dynamic and static fixture workspaces behind the same
       owner protocols. Run one canonical corpus covering preservation,
       ordinals, candidate lookup, replacement, removal/reinsertion, stale slot
       reuse, all independent capacity boundaries, initial/replacement
       generation exhaustion, exact success rows, and generation lifetime;
       compare normalized outputs at equal limits.
-- [ ] `T6.2` — Exercise twenty reports and the 80-facts-per-second /
+- [x] `T6.2` — Exercise twenty reports and the 80-facts-per-second /
       250-millisecond selection workload with exactly one dirty owner, one
       outstanding wake, one complete reevaluation, no correctness history,
       and no replay.
-- [ ] `T6.3` — Implement the static typed/fixed storage path with no heap,
+- [x] `T6.3` — Implement the static typed/fixed storage path with no heap,
       reflection, `Any`, strings, task-local state, arbitrary existential
       registry, tasks, threads, exceptions, Apple Observation, Objective-C, or
       runtime discovery. Measure each finite storage category separately,
@@ -404,7 +404,7 @@ while the static path remains typed, bounded, and zero-heap.
       replacement staging, fixed bookkeeping, SPEC-009 pending facts, and the
       application-owned model; record bounded attach/detach/report/reconcile
       operation counts and lookup space.
-- [ ] `T6.4` — Implement the fixture presentation-fact adapter and same-thread
+- [x] `T6.4` — Implement the fixture presentation-fact adapter and same-thread
       versus logically distinct executor cases. Prove ordered later
       application in SPEC-009's fact-before-action order, explicit refusal,
       after-seal/freeze deferral, action-triggered callback deferral, exact
@@ -839,9 +839,18 @@ are not stored; see the
 [mutation result evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-5/mutation-result-slot.md).
 Milestone 5 is complete.
 
-Milestone 6 remains gated on the absent SPEC-013 runtime-profile and SPEC-015
-host targets. Its fixture-only preparation does not authorize a substitute
-production owner.
+`T6.1` through `T6.4` are complete at the authorized equal-profile fixture
+boundary now supplied by SPEC-013's Runtime Conformance target. One common
+reconciler and target-view algorithm runs over bounded Dynamic storage and a
+two-slot inline Static store, producing equal materialization, preservation,
+ordinal, publication, retirement, capacity, and generation results. Existing
+owner suites provide the twenty-report coalescing and typed presentation-fact
+deferral rows, and the canonical SPEC-010 transcript registries now record the
+joined observations. Static layout/source inspection keeps the operation path
+free of dynamic storage and forbidden runtime facilities. The
+[profile-equivalence evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-6/profile-equivalence.md)
+records the commands and the boundary: production capacities and host assembly
+remain SPEC-015 work.
 
 `T7.1` is complete: the first narrow Observable State / Failure Core adapter
 retains the exact local error and finite detection context, admits only the 16

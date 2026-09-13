@@ -1,1 +1,8 @@
 # id	operation	inputs	expected_result	evidence_class
+profile-initial-materialization	begin-encounter-publish	identity=7,ordinal=0,generation=1	materialized-and-published	host-execution
+profile-preservation	begin-encounter-publish	identity=7,ordinal=0,prior-generation=1	preserved-generation-1	host-execution
+profile-distinct-ordinal	begin-encounter-publish	identity=7,ordinal=1,generation=2	materialized-and-replaces-ordinal-0	host-execution
+profile-first-excess	encounter	capacity=1,occupied=1	location-capacity-exhausted	host-execution
+profile-generation-exhaustion	encounter	next-generation=none	registration-generation-exhausted	host-execution
+twenty-report-coalescing	report-and-publish	reports=20,dirty-owners=1	one-wake-one-reevaluation	host-execution
+presentation-fact-deferral	admit-during-sealed-cycle	fact=state-change	accepted-for-later-opportunity	host-execution
