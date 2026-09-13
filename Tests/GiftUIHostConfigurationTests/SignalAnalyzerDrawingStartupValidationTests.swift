@@ -50,7 +50,7 @@ import Testing
             workload: excess,
             limits: dynamic.runtimeLimits,
             profile: dynamic.profile
-        ) == .insufficientWorkloadCapacity
+        ) == .invalidWorkload
     )
 
     let `static` = GeneratedSignalAnalyzerPresets.macOSStatic()

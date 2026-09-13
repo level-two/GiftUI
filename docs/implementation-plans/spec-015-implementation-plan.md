@@ -324,7 +324,7 @@ behavior, and emits one immutable report only after complete success.
       Cover every SPEC-013 local error and all nine SPEC-005 validation errors
       without constructing resources or reading their borrowed views outside
       the approved lifetime.
-- [ ] `T3.2` — Complete workload validation for producer, runtime, render,
+- [x] `T3.2` — Complete workload validation for producer, runtime, render,
       sink, observable, interaction, input, action, fact, Drawing, and static
       Canvas limits. Reject every schema version other than 2 before consuming
       a limit, require exact equality for each schema-2 source/limit pair, and
@@ -717,3 +717,14 @@ nine text errors at `.textResources`. The exact success fixture proceeds into
 the existing workload stage and produces a complete immutable report.
 Reproduction evidence is in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-3/profile-and-text-validation.md`.
+
+T3.2 added one pure complete workload gate before capability resolution. It
+rejects schema versions other than 2 and zero source counts, requires the
+complete generated `RuntimeProfileLimits` value plus every semantic, layout,
+render-workspace, text, glyph, ordinary-operation, input, action, completion,
+observable, interaction, fact-storage, Drawing, and static-Canvas source/limit
+relation, and preserves the exact 250-millisecond, 20/2/6, 28-of-32 pacing
+contract. All four presets pass; independent source-count, cardinality,
+pacing, fact-storage, and Drawing negatives fail with their exact host error.
+Evidence is in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-3/complete-workload-validation.md`.

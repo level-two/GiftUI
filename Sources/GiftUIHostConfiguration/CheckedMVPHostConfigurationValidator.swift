@@ -177,42 +177,9 @@ where
 
     private borrowing func validateWorkload() -> HostConfigurationError? {
         let configuration = structuralConfiguration
-        let workload = configuration.workload
-        let cardinality = configuration.cardinality
-        guard workload.schemaVersion == 2,
-            workload.requiredRuntimeLimits == configuration.runtimeLimits,
-            cardinality.actionCaseCount == 6,
-            cardinality.rootModelLocationCount == 1,
-            cardinality.activeRegistrationCount == 1,
-            cardinality.stagedAssociationCount == 1,
-            cardinality.snapshotFactCapacity == 1,
-            cardinality.compactFactCapacity == 32,
-            cardinality.reservedFailureFactCapacity == 1,
-            cardinality.normalizedInputSourceCapacity == 1,
-            workload.semanticActionsPerOpportunity == 6
-        else { return .invalidWorkload }
-
-        if let drawingError = SignalAnalyzerDrawingStartupValidation.validate(
-            workload: workload,
-            limits: configuration.runtimeLimits,
-            profile: configuration.profile
-        ) {
-            return drawingError
-        }
-
-        let pacing = configuration.pacing
-        let sum1 = pacing.maximumTransitionFactsPerServiceWindow
-            .addingReportingOverflow(
-                UInt16(pacing.maximumBootstrapFactsPerServiceWindow)
-            )
-        guard !sum1.overflow else { return .arithmeticOverflow }
-        let sum2 = sum1.partialValue.addingReportingOverflow(
-            UInt16(pacing.maximumActionInducedFactsPerServiceWindow)
+        return SignalAnalyzerWorkloadStartupValidation.validate(
+            configuration: configuration
         )
-        guard !sum2.overflow,
-            sum2.partialValue <= cardinality.compactFactCapacity
-        else { return .insufficientWorkloadCapacity }
-        return nil
     }
 
     private borrowing func validatePolicy() -> Bool {
