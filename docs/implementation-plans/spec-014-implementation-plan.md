@@ -878,17 +878,15 @@ and preserves the first failure. Focused tests cover every independent limit,
 malformed empty payloads, sticky precedence, post-acceptance drain, overflow,
 and complete attempt reset.
 
-`T4.4` is upstream-blocked as of 2026-09-13. The borrowed stroke declaration
-exists, but SPEC-012's authoritative `raster-vectors.yaml` still contains an
-empty vector list and its plan tasks `T8.1` and `T8.2` for the complete
-normative corpus and independent oracle remain unchecked. Implementing both
-expected masks and the consumer from one SPEC-014 algorithm would be circular
-evidence and would silently expand this authorized implementation group into
-SPEC-012's separately governed plan. The exact reproduction and downstream
-impact are recorded in
+`T4.4` was upstream-blocked on 2026-09-13. The user subsequently authorized
+the owning SPEC-012 work: its complete authoritative `raster-vectors.yaml`
+corpus and independent Q160 widened-integer oracle are now checked in as
+completed `T8.1` and `T8.2`. The blocker is resolved without deriving expected
+masks from the SPEC-014 consumer. The original reproduction and resolution are
+recorded in
 [`spec-012-stroke-vector-blocker.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-4/spec-012-stroke-vector-blocker.md).
-`T4.6`, the Milestone 5/6 zero-tolerance stroke comparisons, and BI-009 remain
-open; no approximate or native-style fallback was introduced.
+`T4.4` may proceed; `T4.6`, the Milestone 5/6 zero-tolerance stroke comparisons,
+and BI-009 remain open until their owning tasks complete.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

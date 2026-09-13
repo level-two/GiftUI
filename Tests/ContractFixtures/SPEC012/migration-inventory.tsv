@@ -45,7 +45,7 @@ current	drawing-contract	Sources/GiftUI/Canvas.swift	SPEC-012 public Canvas prim
 current	drawing-contract	Sources/GiftUIRenderCore/DrawingOperationSink.swift	SPEC-012 borrowed stroke consumer contract	maintain	SPEC-012-T2.2/T2.3
 current	drawing-owner	Sources/GiftUIDrawing/GiftUIDrawing.swift	approved focused producer target seam	maintain	SPEC-012-T3/T5
 current	drawing-failure-adapter	Sources/GiftUIDrawingFailureAdapterFixture/GiftUIDrawingFailureAdapterFixture.swift	narrow owner mapping seam	maintain	SPEC-012-T7.3
-downstream	profile-storage	Sources/GiftUIRuntimeDynamic/	bounded dynamic Canvas callable and workspace owner	downstream-owned	SPEC-013
-downstream	profile-storage	Sources/GiftUIRuntimeStatic/	generated static Canvas capture and workspace owner	downstream-owned	SPEC-013
+current	profile-storage	Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift	bounded dynamic Canvas callable and workspace owner	maintain	SPEC-013
+current	profile-storage	Sources/GiftUIRuntimeStatic/StaticCanvasOccurrence.swift	generated static Canvas occurrence owner	maintain	SPEC-013
 downstream	backend-raster	Sources/GiftUIBackendFramebuffer/	RGBA8888 full-surface canonical stroke consumer	downstream-owned	SPEC-014
 downstream	backend-raster	Sources/GiftUIBackendRGB565/	bounded tiled RGB565 canonical stroke consumer	downstream-owned	SPEC-014

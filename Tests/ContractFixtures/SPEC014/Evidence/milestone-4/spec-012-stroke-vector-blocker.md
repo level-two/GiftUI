@@ -2,7 +2,7 @@
 
 Date: 2026-09-13
 
-## Disposition
+## Original disposition
 
 `T4.4` remains open and upstream-blocked. SPEC-014 can consume the approved
 borrowed `StraightLineStrokeView`, but it cannot implement and prove “every
@@ -37,3 +37,21 @@ No SPEC-012 task, corpus, or acceptance status was changed. No approximate,
 floating-point, native-style, or self-authored fallback vector was admitted.
 `T4.6`, Milestone 5 equivalence, Milestone 6 stroke equivalence, and BI-009
 remain blocked behind this dependency.
+
+## Resolution
+
+The user authorized the owning blocking tasks on 2026-09-13. SPEC-012 `T8.1`
+now freezes 17 shared vectors with zero pixel/channel tolerance, and `T8.2`
+registers an independent Q160 widened-integer and exact-rational oracle in the
+four-profile contract driver. The oracle, not the SPEC-014 implementation,
+recomputes masks, painter replacement, and RGBA8888/RGB565 bytes.
+
+Reproduce the resolved prerequisite from the repository root:
+
+```sh
+scripts/contracts/check-spec-012-raster-vectors.rb
+rg -n 'T8\.1|T8\.2' docs/implementation-plans/spec-012-implementation-plan.md
+```
+
+`T4.4` is unblocked. This resolution does not prematurely satisfy SPEC-012
+`T8.3`/`T8.4`, SPEC-014 `T4.6`, or either specification's acceptance criterion.

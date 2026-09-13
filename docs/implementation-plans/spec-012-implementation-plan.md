@@ -465,7 +465,7 @@ portable or normalized stroke meaning.
       negative/outside-Canvas, every clip edge, empty clip, overlap/painter-order,
       and RGB boundary values `0`, `1`, `127`, `128`, `254`, and `255`. Record
       zero pixel/channel tolerance.
-- [ ] `T8.2` — Build an independent exact-rational or sufficiently widened-
+- [x] `T8.2` — Build an independent exact-rational or sufficiently widened-
       integer oracle for closed segment regions, butt/round caps, round/miter/
       bevel joins, ten-times-half-width miter limit, zero-tangent rules, pixel-
       center inclusion, inherited half-open clipping, and exact replacement.
@@ -682,11 +682,17 @@ classifies 48 PoC, SPIKE-004/007/008, current maintained, and downstream-owned
 drawing surfaces as evidence, extend, maintain, replace, retire, reject, or
 downstream-owned. Its registered audit verifies every historical PoC path
 against the immutable `PoC` tag, every tracked evidence path against the tree,
-the absence of premature SPEC-013/014 targets, rejection of retained
+the absence of then-premature SPEC-013/014 targets, rejection of retained
 `DisplayList`/`RGB565RetainedRenderer` paths, and absence of wholesale Spike
 source adoption. The updated macOS dynamic report passes while all DR rows
 remain fail-closed. Milestone 0 is complete; `T1.1` is the next
 dependency-complete task.
+
+The migration inventory was revisited after SPEC-013 landed. Its dynamic and
+static profile-storage rows now identify the maintained concrete callable and
+occurrence owners; the still-unlanded SPEC-014 backend directories remain
+fail-closed downstream rows. This traceability update changes no SPEC-012
+contract or acceptance status.
 
 `T1.5` is complete. The registered declaration checker now passes all seven
 positive and nine negative witnesses with the pinned optimized compilers for

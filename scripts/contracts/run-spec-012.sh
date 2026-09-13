@@ -58,6 +58,7 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-012-value-profiles.sh" \
             "$SCRIPT_DIR/check-spec-012-migration.rb" \
             "$SCRIPT_DIR/check-spec-012-module-contract.rb" \
+            "$SCRIPT_DIR/check-spec-012-raster-vectors.rb" \
             "$SCRIPT_DIR/check-spec-012-static-canvas-manifest.rb" \
             "$SCRIPT_DIR/check-target-dependencies.rb" \
             "$SCRIPT_DIR/report-input-identity.rb" \
@@ -202,6 +203,7 @@ record_nrf52840_identity() {
     printf 'command-transcript\tcomplete\texact invoked checks recorded\n'
     printf 'repository-revision\tcomplete\trevision and input digest recorded\n'
     printf 'fixture-schema\tcomplete\tSPEC-012 frozen schemas validated\n'
+    printf 'raster-oracle\tcomplete\tindependent Q160 widened-integer masks and exact encodings validated\n'
     printf 'fixture-corpus\tpending\tbehavioral cases land with their owning tasks\n'
     printf 'target-graph\tcomplete\tGiftUIDrawing ownership boundary is acyclic\n'
     printf 'profile-implementation\tpending\tpublic drawing behavior and profile evidence remain open\n'
@@ -213,6 +215,8 @@ record_command "$SCRIPT_DIR/check-spec-012-harness.rb"
 "$SCRIPT_DIR/check-spec-012-harness.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-012-migration.rb"
 "$SCRIPT_DIR/check-spec-012-migration.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-012-raster-vectors.rb"
+"$SCRIPT_DIR/check-spec-012-raster-vectors.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-012-static-canvas-manifest.rb"
 "$SCRIPT_DIR/check-spec-012-static-canvas-manifest.rb" >>"$log_path" 2>&1
 record_command swift package dump-package

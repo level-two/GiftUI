@@ -128,6 +128,7 @@ bridge_references = (all_sources + ROOT.join("Tests").glob("*/*.swift")).select 
 end.map { |path| path.relative_path_from(ROOT).to_s }
 allowed_bridge_references = %w[
   Sources/GiftUI/Canvas.swift
+  Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift
   Tests/GiftUIDrawingTests/CanvasInvocationAdapterTests.swift
 ]
 fail_check("Canvas invocation bridge references differ: #{bridge_references}") unless

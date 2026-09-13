@@ -26,6 +26,12 @@ the corresponding RGB source and encoded bytes. The optional `canvasBounds`
 field is deliberately non-raster metadata used by the outside-Canvas vector;
 only each operation's inherited half-open `clip` constrains coverage.
 
+Run `scripts/contracts/check-spec-012-raster-vectors.rb` to recompute every
+mask independently with exact doubled-integer segment/disk tests, rational
+line intersections, and Q160 widened-integer normalized offsets. The oracle
+also verifies the fixed ten-times-half-width miter limit, bevel exercise,
+zero-tangent filtering, painter replacement, and both exact encodings.
+
 Every case or vector name is globally unique lowercase kebab-case. Every row
 must cite one or more `DR-001` through `DR-013` criteria and one or more
 registered evidence classes. Drivers reject unregistered manifests, duplicate
