@@ -46,6 +46,7 @@ expected_paths = %w[
   admission-adapter-cases.tsv
   fact-application-cases.tsv
   failure-owner-cases.tsv
+  presentation-integration-cases.tsv
 ]
 abort "fixture registry is not exhaustive" unless manifest.map { |row| row[2] } == expected_paths
 

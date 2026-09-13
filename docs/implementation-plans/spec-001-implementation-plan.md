@@ -377,7 +377,7 @@ normalization/effect/policy sequence.
       residual inputs, enforce the selected total policy, reserve the failure
       path, implement invariant/no-policy rows, and prove optional diagnostics
       cannot alter semantic diagnostics, outcomes, effects, policy, or state.
-- [ ] `T3.5` — Create focused Presentation fixtures for initial state, all fact
+- [x] `T3.5` — Create focused Presentation fixtures for initial state, all fact
       and action cases, thrown/published errors, observation lifetime, exact
       no-op reporting, and source substitution. Verify `startTapped` clears an
       old error before application-executor entry, converts a thrown failure to
@@ -766,6 +766,9 @@ and synchronous dirty reports only for observable changes.
 `T3.4` adds exhaustive repository/admission/runtime normalization, ordered
 mandatory effects, nonrecursive reserved-failure handling, coordinator-owned
 contained-phase retry, valid residual inputs, and the target's total policy.
+`T3.5` closes the focused Presentation matrix with exact start error-clear and
+executor-entry ordering, deferred synchronous callback application, observation
+lifetime, no-op reporting, and source-substitution transcript equivalence.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,
