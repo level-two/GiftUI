@@ -3,6 +3,7 @@
 
 require "pathname"
 require "yaml"
+require_relative "spec014_fixture_loader"
 
 ROOT = Pathname.new(File.expand_path("../..", __dir__))
 FIXTURES = ROOT.join("Tests/ContractFixtures/SPEC014")
@@ -32,6 +33,12 @@ required_files = %w[
 ] + EXPECTED_FILES
 missing = required_files.reject { |name| FIXTURES.join(name).file? }
 fail_check("required fixture files are missing: #{missing.join(', ')}") unless missing.empty?
+
+begin
+  SPEC014::FixtureLoader.new(FIXTURES).load!
+rescue ArgumentError => error
+  fail_check(error.message)
+end
 
 compile_rows = FIXTURES.join("declaration-compile-fixtures.tsv").each_line.each_with_object([]) do |line, rows|
   next if line.start_with?("#") || line.strip.empty?
@@ -126,7 +133,7 @@ evidence_rows = FIXTURES.join("required-evidence.tsv").each_line.each_with_objec
   rows << fields
 end
 fail_check("acceptance registry differs") unless evidence_rows.map(&:first) == EXPECTED_CRITERIA
-fail_check("acceptance registry must begin pending") unless evidence_rows.all? { |row| row[4] == "pending" }
+fail_check("acceptance registry has an invalid disposition") unless evidence_rows.all? { |row| %w[pending complete].include?(row[4]) }
 
 referenced_cases = evidence_rows.flat_map do |row|
   next [] if row[3] == "-"
@@ -150,4 +157,5 @@ end
 fail_check("driver does not use the SPEC-014 output root") unless runner_text.include?(".build/spec-014")
 fail_check("driver uses the shared contract-report output root") if runner_text.include?(".build/contract-reports")
 
-puts "SPEC-014 fixture check passed: 5 ordered corpora, #{all_cases.length} registered cases, and 15 pending criteria."
+pending_count = evidence_rows.count { |row| row[4] == "pending" }
+puts "SPEC-014 fixture check passed: 5 ordered corpora, #{all_cases.length} registered cases, and #{pending_count} pending criteria."

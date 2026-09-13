@@ -79,6 +79,12 @@ legal reservation outcomes versus impossible constructed failures, accepted
 drain and health behavior, and the five diagnostic modes. Dedicated semantic
 checkers reject missing rows, precedence changes, or reopened responsibility.
 
+The canonical loader consumes this manifest and schema directly. It rejects
+profile names used as nested expectation keys; profile-specific mechanics
+belong in evidence, while shared semantic expectations stay keyed only by
+stable fixture ID. Normalized result reports use canonical JSON columns and
+are compared by fixture ID rather than row, address, or implementation order.
+
 Cross-build and inspection evidence for Raspberry Pi or nRF52840 is hardware-
 free. These fixtures do not deploy, access a remote target, restart a service,
 or flash a board, and they cannot establish connected-hardware conformance.

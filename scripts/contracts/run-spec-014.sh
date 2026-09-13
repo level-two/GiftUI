@@ -67,6 +67,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-driver-registry.rb" \
             "${SCRIPT_DIR}/check-spec-014-fixtures.rb" \
             "${SCRIPT_DIR}/check-spec-014-failures.rb" \
+            "${SCRIPT_DIR}/compare-spec-014-profiles.rb" \
             "${SCRIPT_DIR}/check-spec-014-frame-work.rb" \
             "${SCRIPT_DIR}/check-spec-014-contributors.rb" \
             "${SCRIPT_DIR}/check-spec-014-capability-fixtures.rb" \
@@ -82,6 +83,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/finalize-contract-metadata.rb" \
             "${SCRIPT_DIR}/publish-contract-report.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
+            "${SCRIPT_DIR}/spec014_fixture_loader.rb" \
             "${SCRIPT_DIR}/run-spec-014.sh" \
             "${SCRIPT_DIR}/verify-contract-report.rb"
     } | LC_ALL=C sort -u

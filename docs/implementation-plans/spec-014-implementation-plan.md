@@ -486,7 +486,7 @@ authorized.
 semantic, failure, dependency, resource, and hardware-free cross-build check;
 all criteria are ready for evidence-based conformance review.
 
-- [ ] `T8.1` — Finalize the canonical loader, fixture/acceptance manifests,
+- [x] `T8.1` — Finalize the canonical loader, fixture/acceptance manifests,
       dependency checks, and driver. Register every case exactly once, reject
       omitted shared fields and profile-private expectations, verify all
       generated output remains under `.build/spec-014/`, and compare normalized
@@ -1105,6 +1105,18 @@ disposition, body invocation on reservation exits, or an operational failure
 after successful construction. Focused endpoint tests additionally exercise
 all seven display reservation failures and malformed producer-result/error
 combinations. Milestone 7 is complete.
+
+`T8.1` is complete. `SPEC014::FixtureLoader` now loads the five manifest-
+ordered corpora through one shared-field schema, requires exact field order
+and shape, rejects duplicate identities and profile-keyed semantic
+expectations, and exposes a fixture-ID map. The fixture checker consumes this
+loader and permits only explicit pending/complete acceptance dispositions so
+the registry can close without weakening validation. The registered driver
+includes the loader, failure checker, and comparator in its hashed input set
+and retains every scratch, cache, staging, and published path under
+`.build/spec-014/`. `compare-spec-014-profiles.rb` validates canonical JSON
+fields and joins equal reports by stable fixture ID, independent of row order,
+addresses, or implementation identity.
 
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
