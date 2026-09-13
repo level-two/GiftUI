@@ -74,6 +74,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-014-storage.rb" \
             "${SCRIPT_DIR}/check-spec-014-startup-validator.rb" \
             "${SCRIPT_DIR}/check-spec-014-text-resource.rb" \
+            "${SCRIPT_DIR}/check-spec-014-transactions.rb" \
             "${SCRIPT_DIR}/check-spec-014-value-layouts.rb" \
             "${SCRIPT_DIR}/check-spec-014-value-profiles.sh" \
             "${SCRIPT_DIR}/check-target-dependencies.rb" \
@@ -241,6 +242,7 @@ run_required startup-validation-boundaries \
     "${SCRIPT_DIR}/check-spec-014-startup-validator.rb"
 run_required frame-work-arithmetic "${SCRIPT_DIR}/check-spec-014-frame-work.rb"
 run_required text-resource-boundary "${SCRIPT_DIR}/check-spec-014-text-resource.rb"
+run_required transaction-oracle "${SCRIPT_DIR}/check-spec-014-transactions.rb"
 run_required driver-registry "${SCRIPT_DIR}/check-driver-registry.rb"
 run_package_checks
 record_toolchain

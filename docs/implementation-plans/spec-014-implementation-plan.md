@@ -326,7 +326,7 @@ identity lifetime, and target-local health.
       legality, draining state, and one target-owned health transition per
       frame. Prove a pre-transfer writer/submission failure is fully reversible
       and a post-transfer failure cannot cancel or reopen disposition.
-- [ ] `T3.5` — Cover zero-, one-, and multi-payload sessions, zero-damage frame
+- [x] `T3.5` — Cover zero-, one-, and multi-payload sessions, zero-damage frame
       completion, failed writer-body discard, failed pre-transfer submission,
       cancellation, frame-end failure, teardown of display-owned in-flight
       data, and exact counter reset. Freeze the complete `transactions.yaml`
@@ -814,6 +814,18 @@ including zero-payload frame-end failures, and draining completion releases
 the session without reclassifying the original failure. Focused tests cover
 each boundary, repeated post-failure calls, cancellation legality, health
 cardinality and state, and terminal teardown.
+
+`T3.5` froze ten ordered transaction oracles and registered a fail-closed
+semantic checker in the four-profile driver. The corpus covers zero-, one-,
+and reusable multi-payload sessions; empty damage; failed writer-body discard;
+reversible pre-transfer submission failure; before- and after-acceptance
+frame-end failures; display-owned queued payload teardown; cancellation and
+complete counter reset; successor reservation identity; and checked identity
+exhaustion. Focused executable tests cover the corresponding recording-target
+paths, including exact in-flight cleanup and a pristine writer on the next
+reservation. The acceptance registry now links the transaction cases while
+retaining pending status until the later endpoint and four-profile evidence
+tasks complete their portions.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

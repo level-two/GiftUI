@@ -1,2 +1,152 @@
 schema: spec-014-v1
-cases: []
+cases:
+  - fixtureID: spec014-transaction-zero-payload-complete
+    criteria: [BI-004, BI-005]
+    evidenceClasses: [host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: {realization: fullSurface, encoding: rgba8888, extent: {width: 2, height: 2}, payloadBytes: 16, regionCapacity: 2}
+    effectiveCapability: {submissionLifetime: synchronousBorrow, handoff: synchronous, inFlightCount: 1, inFlightBytes: 16}
+    header: {damage: empty, operationCount: 0}
+    operationsResources: []
+    injectedEvents: [{call: reserveFrame, result: reserved-0}, {call: finishFrame, result: completed}]
+    orderedRegions: []
+    encodedImage: none
+    offerResult: {result: accepted}
+    bodyResult: {result: complete}
+    health: {state: available, failureCount: 0}
+    highWater: {reservations: 1, writerBorrows: 0, payloads: 0, payloadBytes: 0, regions: 0, responsibilityTransfers: 0, finishes: 1, cancels: 0, inFlightPayloadsAfterTerminal: 0, inFlightBytesAfterTerminal: 0}
+  - fixtureID: spec014-transaction-one-payload-complete
+    criteria: [BI-004, BI-005]
+    evidenceClasses: [host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: {realization: fullSurface, encoding: rgba8888, extent: {width: 2, height: 2}, payloadBytes: 16, regionCapacity: 2}
+    effectiveCapability: {submissionLifetime: synchronousBorrow, handoff: synchronous, inFlightCount: 1, inFlightBytes: 16}
+    header: {damage: {x: 0, y: 0, width: 1, height: 1}, operationCount: 1}
+    operationsResources: [{writerRegions: 1, writerBytes: 4}]
+    injectedEvents: [{call: reserveFrame, result: reserved-0}, {call: writerFinish, result: true}, {call: submitPayload, result: completed}, {call: finishFrame, result: completed}]
+    orderedRegions: [{origin: {x: 0, y: 0}, pixelCount: 1, encoding: rgba8888, bytes: [1, 2, 3, 255]}]
+    encodedImage: {bytes: [1, 2, 3, 255]}
+    offerResult: {result: accepted}
+    bodyResult: {result: complete}
+    health: {state: available, failureCount: 0}
+    highWater: {reservations: 1, writerBorrows: 1, payloads: 1, payloadBytes: 4, regions: 1, responsibilityTransfers: 1, finishes: 1, cancels: 0, inFlightPayloadsAfterTerminal: 0, inFlightBytesAfterTerminal: 0}
+  - fixtureID: spec014-transaction-multi-payload-complete
+    criteria: [BI-004, BI-005]
+    evidenceClasses: [host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: {realization: tiled, encoding: rgb565BigEndian, extent: {width: 2, height: 2}, payloadBytes: 8, regionCapacity: 2}
+    effectiveCapability: {submissionLifetime: synchronousCopy, handoff: synchronous, inFlightCount: 1, inFlightBytes: 8}
+    header: {damage: {x: 0, y: 0, width: 2, height: 2}, operationCount: 2}
+    operationsResources: [{writerRegions: 1, writerBytes: 2}, {writerRegions: 1, writerBytes: 2}]
+    injectedEvents: [{call: reserveFrame, result: reserved-0}, {call: submitPayload, result: completed}, {call: submitPayload, result: completed}, {call: finishFrame, result: completed}]
+    orderedRegions: [{payload: 0, origin: {x: 0, y: 0}, pixelCount: 1, bytes: [0, 1]}, {payload: 1, origin: {x: 1, y: 1}, pixelCount: 1, bytes: [0, 2]}]
+    encodedImage: {bytesByPoint: [{point: {x: 0, y: 0}, bytes: [0, 1]}, {point: {x: 1, y: 1}, bytes: [0, 2]}]}
+    offerResult: {result: accepted}
+    bodyResult: {result: complete}
+    health: {state: available, failureCount: 0}
+    highWater: {reservations: 1, writerBorrows: 2, payloads: 2, payloadBytes: 2, regions: 1, responsibilityTransfers: 1, finishes: 1, cancels: 0, inFlightPayloadsAfterTerminal: 0, inFlightBytesAfterTerminal: 0}
+  - fixtureID: spec014-transaction-writer-body-discard
+    criteria: [BI-004, BI-005, BI-010]
+    evidenceClasses: [host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: {realization: fullSurface, encoding: rgba8888, extent: {width: 2, height: 2}, payloadBytes: 16, regionCapacity: 2}
+    effectiveCapability: {submissionLifetime: synchronousBorrow, handoff: synchronous, inFlightCount: 1, inFlightBytes: 16}
+    header: {damage: {x: 0, y: 0, width: 1, height: 1}, operationCount: 1}
+    operationsResources: [{writerRegionsBeforeDiscard: 1, writerBytesBeforeDiscard: 1}]
+    injectedEvents: [{call: reserveFrame, result: reserved-0}, {call: writerBody, result: false}, {call: writerDiscard, result: reset}, {call: cancelFrame, result: cancelled}]
+    orderedRegions: []
+    encodedImage: none
+    offerResult: {result: failed-frame}
+    bodyResult: {result: failed-capacity-exceeded}
+    health: {state: available, failureCount: 0}
+    highWater: {reservations: 1, writerBorrows: 1, payloads: 0, payloadBytes: 0, regions: 0, responsibilityTransfers: 0, finishes: 0, cancels: 1, inFlightPayloadsAfterTerminal: 0, inFlightBytesAfterTerminal: 0}
+  - fixtureID: spec014-transaction-pretransfer-submit-failure
+    criteria: [BI-004, BI-005, BI-010, BI-011]
+    evidenceClasses: [host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: {realization: fullSurface, encoding: rgba8888, extent: {width: 2, height: 2}, payloadBytes: 16, regionCapacity: 2}
+    effectiveCapability: {submissionLifetime: synchronousBorrow, handoff: synchronous, inFlightCount: 1, inFlightBytes: 16}
+    header: {damage: {x: 0, y: 0, width: 1, height: 1}, operationCount: 1}
+    operationsResources: [{writerRegions: 1, writerBytes: 4}]
+    injectedEvents: [{call: reserveFrame, result: reserved-0}, {call: submitPayload, result: failureBeforeAcceptance-transportUnavailable}, {call: cancelFrame, result: cancelled}]
+    orderedRegions: []
+    encodedImage: none
+    offerResult: {result: failed-frame}
+    bodyResult: {result: complete}
+    health: {state: available, failureCount: 0}
+    highWater: {reservations: 1, writerBorrows: 1, payloads: 0, payloadBytes: 0, regions: 0, responsibilityTransfers: 0, finishes: 0, cancels: 1, inFlightPayloadsAfterTerminal: 0, inFlightBytesAfterTerminal: 0}
+  - fixtureID: spec014-transaction-frame-end-failure-before
+    criteria: [BI-004, BI-005, BI-010]
+    evidenceClasses: [host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: {realization: fullSurface, encoding: rgba8888, extent: {width: 2, height: 2}, payloadBytes: 16, regionCapacity: 2}
+    effectiveCapability: {submissionLifetime: synchronousBorrow, handoff: synchronous, inFlightCount: 1, inFlightBytes: 16}
+    header: {damage: empty, operationCount: 0}
+    operationsResources: []
+    injectedEvents: [{call: reserveFrame, result: reserved-0}, {call: finishFrame, result: failureBeforeAcceptance-transportUnavailable}]
+    orderedRegions: []
+    encodedImage: none
+    offerResult: {result: failed-frame}
+    bodyResult: {result: complete}
+    health: {state: available, failureCount: 0}
+    highWater: {reservations: 1, writerBorrows: 0, payloads: 0, payloadBytes: 0, regions: 0, responsibilityTransfers: 0, finishes: 1, cancels: 0, inFlightPayloadsAfterTerminal: 0, inFlightBytesAfterTerminal: 0}
+  - fixtureID: spec014-transaction-frame-end-failure-after
+    criteria: [BI-004, BI-005, BI-010, BI-011]
+    evidenceClasses: [host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: {realization: fullSurface, encoding: rgba8888, extent: {width: 2, height: 2}, payloadBytes: 16, regionCapacity: 2}
+    effectiveCapability: {submissionLifetime: synchronousBorrow, handoff: synchronous, inFlightCount: 1, inFlightBytes: 16}
+    header: {damage: empty, operationCount: 0}
+    operationsResources: []
+    injectedEvents: [{call: reserveFrame, result: reserved-0}, {call: finishFrame, result: failureAfterAcceptance-transportUnavailable}]
+    orderedRegions: []
+    encodedImage: none
+    offerResult: {result: accepted}
+    bodyResult: {result: complete}
+    health: {state: unavailable, failureCount: 1}
+    highWater: {reservations: 1, writerBorrows: 0, payloads: 0, payloadBytes: 0, regions: 0, responsibilityTransfers: 1, finishes: 1, cancels: 0, inFlightPayloadsAfterTerminal: 0, inFlightBytesAfterTerminal: 0}
+  - fixtureID: spec014-transaction-retained-payload-teardown
+    criteria: [BI-004, BI-005]
+    evidenceClasses: [host-execution, inspection]
+    profiles: [macos-dynamic, macos-static]
+    descriptor: {realization: fullSurface, encoding: rgba8888, extent: {width: 2, height: 2}, payloadBytes: 16, regionCapacity: 2}
+    effectiveCapability: {submissionLifetime: ownershipTransfer, handoff: queued, inFlightCount: 1, inFlightBytes: 16}
+    header: {damage: {x: 0, y: 0, width: 1, height: 1}, operationCount: 1}
+    operationsResources: [{writerRegions: 1, writerBytes: 4}]
+    injectedEvents: [{call: reserveFrame, result: reserved-0}, {call: submitPayload, result: completed}, {call: finishFrame, result: completed}]
+    orderedRegions: [{origin: {x: 0, y: 0}, pixelCount: 1, encoding: rgba8888, bytes: [1, 2, 3, 255]}]
+    encodedImage: {bytes: [1, 2, 3, 255]}
+    offerResult: {result: accepted}
+    bodyResult: {result: complete}
+    health: {state: available, failureCount: 0}
+    highWater: {reservations: 1, writerBorrows: 1, payloads: 1, payloadBytes: 4, regions: 1, responsibilityTransfers: 1, finishes: 1, cancels: 0, inFlightPayloadsBeforeTerminal: 1, inFlightBytesBeforeTerminal: 4, inFlightPayloadsAfterTerminal: 0, inFlightBytesAfterTerminal: 0}
+  - fixtureID: spec014-transaction-cancel-and-counter-reset
+    criteria: [BI-004, BI-005]
+    evidenceClasses: [host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: {realization: fullSurface, encoding: rgba8888, extent: {width: 2, height: 2}, payloadBytes: 16, regionCapacity: 2}
+    effectiveCapability: {submissionLifetime: synchronousBorrow, handoff: synchronous, inFlightCount: 1, inFlightBytes: 16}
+    header: {damage: {x: 0, y: 0, width: 1, height: 1}, operationCount: 1}
+    operationsResources: [{attempt: 0, writerBytesBeforeCancel: 1}, {attempt: 1, writerBytesAtStart: 0, writerRegionsAtStart: 0}]
+    injectedEvents: [{call: reserveFrame, result: reserved-0}, {call: cancelFrame, result: cancelled}, {call: reserveFrame, result: reserved-1}, {call: finishFrame, result: completed}]
+    orderedRegions: []
+    encodedImage: none
+    offerResult: {result: accepted}
+    bodyResult: {result: complete}
+    health: {state: available, failureCount: 0}
+    highWater: {reservations: 2, writerBorrows: 1, payloads: 0, payloadBytes: 0, regions: 0, responsibilityTransfers: 0, finishes: 1, cancels: 1, finalWriterBytes: 0, finalWriterRegions: 0, inFlightPayloadsAfterTerminal: 0, inFlightBytesAfterTerminal: 0}
+  - fixtureID: spec014-transaction-identity-exhaustion
+    criteria: [BI-005, BI-012]
+    evidenceClasses: [host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: {realization: fullSurface, encoding: rgba8888, extent: {width: 2, height: 2}, payloadBytes: 16, regionCapacity: 2}
+    effectiveCapability: {submissionLifetime: synchronousBorrow, handoff: synchronous, inFlightCount: 1, inFlightBytes: 16}
+    header: {damage: empty, operationCount: 0}
+    operationsResources: []
+    injectedEvents: [{call: reserveFrame, result: reserved-4294967295}, {call: finishFrame, result: completed}, {call: reserveFrame, result: failure-capacityExhausted}]
+    orderedRegions: []
+    encodedImage: none
+    offerResult: {result: failed-contractViolation}
+    bodyResult: {result: not-called}
+    health: {state: available, failureCount: 0}
+    highWater: {reservations: 1, writerBorrows: 0, payloads: 0, payloadBytes: 0, regions: 0, responsibilityTransfers: 0, finishes: 1, cancels: 0, inFlightPayloadsAfterTerminal: 0, inFlightBytesAfterTerminal: 0}
