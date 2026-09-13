@@ -13,3 +13,4 @@
 12	driver-invocations	driver-invocations.tsv	1
 13	prerequisite-registry	prerequisite-registry.tsv	1
 14	downstream-source-truth	downstream-source-truth.tsv	1
+15	negative-dependency-fixtures	negative-dependency-fixtures.tsv	1

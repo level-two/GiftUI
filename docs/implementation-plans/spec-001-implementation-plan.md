@@ -273,7 +273,7 @@ claimed.
       joins. Mark an unavailable prerequisite `missing` rather than copying or
       weakening it inside the analyzer. Add a source-of-truth registry for
       reused SPEC-007-015 fixture inputs so drift fails explicitly.
-- [ ] `T0.5` — Add governed root-package target and test boundaries for
+- [x] `T0.5` — Add governed root-package target and test boundaries for
       `SignalAnalyzerDomain`, `SignalAnalyzerData`, and
       `SignalAnalyzerPresentation`. Place them under root `Sources/` and
       `Tests/`, encode Data -> Domain and Presentation -> Domain/`GiftUI`/
@@ -726,18 +726,20 @@ identities and remains fail-closed until profile implementation commands land.
 backend, and host-join readiness and pins the reused SPEC-007-through-SPEC-015
 fixture inputs by digest. Checked criteria in SPEC-001 and the imported package
 remain baseline evidence only until the governed implementation and required
-profiles reproduce them.
+profiles reproduce them. `T0.5` activates the three governed root-package
+owners and their focused test targets with exact direct dependencies and
+negative graph/import fixtures; concrete host composition remains in SPEC-015.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,
 evidence classification, startup/action/category-bound checks, dual Drawing
 startup gates, connected sustained-workload evidence, and complete dependency-
-driver coverage. The plan remains `ready`; none of those documentation changes
-starts implementation or supplies conformance evidence.
+driver coverage. Those readiness changes did not themselves start
+implementation or supply conformance evidence; the plan is now `active` as
+recorded above.
 
-When work begins, change this plan to `active`, transition SPEC-001 and the
-manifest consistently, and update task dispositions with stable evidence in
-the same change that completes or invalidates them. When every planned task
-has a disposition, set the plan to `completed` and link the conformance report.
+Update task dispositions with stable evidence in the same change that completes
+or invalidates them. When every planned task has a disposition, set the plan to
+`completed` and link the conformance report.
 Plan completion alone does not establish conformance or authorize SPEC-001's
 `implemented` status.

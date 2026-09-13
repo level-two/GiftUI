@@ -1,0 +1,15 @@
+# schema_version=1
+# fixture_id	from	to	expectation
+domain-to-data	SignalAnalyzerDomain	SignalAnalyzerData	reject
+domain-to-presentation	SignalAnalyzerDomain	SignalAnalyzerPresentation	reject
+domain-to-giftui	SignalAnalyzerDomain	GiftUI	reject
+domain-to-foundation	SignalAnalyzerDomain	Foundation	reject-import
+data-to-domain	SignalAnalyzerData	SignalAnalyzerDomain	allow
+data-to-presentation	SignalAnalyzerData	SignalAnalyzerPresentation	reject
+data-to-giftui	SignalAnalyzerData	GiftUI	reject
+presentation-to-domain	SignalAnalyzerPresentation	SignalAnalyzerDomain	allow
+presentation-to-giftui	SignalAnalyzerPresentation	GiftUI	allow
+presentation-to-failure-core	SignalAnalyzerPresentation	GiftUIFailureCore	allow
+presentation-to-data	SignalAnalyzerPresentation	SignalAnalyzerData	reject
+presentation-to-swiftui	SignalAnalyzerPresentation	SwiftUI	reject-import
+presentation-to-foundation	SignalAnalyzerPresentation	Foundation	reject-import

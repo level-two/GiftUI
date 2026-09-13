@@ -459,3 +459,28 @@ targets:
       - GiftUIFailureCore
       - GiftUISemanticCore
       - GiftUISemanticFailureAdapterFixture
+  SignalAnalyzerDomain:
+    type: regular
+    dependencies: []
+  SignalAnalyzerData:
+    type: regular
+    dependencies:
+      - SignalAnalyzerDomain
+  SignalAnalyzerPresentation:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUIFailureCore
+      - SignalAnalyzerDomain
+  SignalAnalyzerDomainTests:
+    type: test
+    dependencies:
+      - SignalAnalyzerDomain
+  SignalAnalyzerDataTests:
+    type: test
+    dependencies:
+      - SignalAnalyzerData
+  SignalAnalyzerPresentationTests:
+    type: test
+    dependencies:
+      - SignalAnalyzerPresentation

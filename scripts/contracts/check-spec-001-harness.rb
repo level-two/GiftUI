@@ -33,6 +33,7 @@ expected_paths = %w[
   resource-transcript.schema.tsv task-evidence.yaml migration-inventory.tsv
   module-boundaries.tsv generated-static-equivalents.tsv driver-invocations.tsv
   prerequisite-registry.tsv downstream-source-truth.tsv
+  negative-dependency-fixtures.tsv
 ]
 abort "fixture registry is not exhaustive" unless manifest.map { |row| row[2] } == expected_paths
 

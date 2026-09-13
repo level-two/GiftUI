@@ -20,6 +20,12 @@ let package = Package(
             name: "GiftUIDynamicConveniences",
             targets: ["GiftUIDynamicConveniences"]
         ),
+        .library(name: "SignalAnalyzerDomain", targets: ["SignalAnalyzerDomain"]),
+        .library(name: "SignalAnalyzerData", targets: ["SignalAnalyzerData"]),
+        .library(
+            name: "SignalAnalyzerPresentation",
+            targets: ["SignalAnalyzerPresentation"]
+        ),
     ],
     dependencies: [
         .package(
@@ -252,6 +258,15 @@ let package = Package(
         .target(
             name: "GiftUISemanticFailureAdapterFixture",
             dependencies: ["GiftUIFailureCore", "GiftUISemanticCore"]
+        ),
+        .target(name: "SignalAnalyzerDomain"),
+        .target(
+            name: "SignalAnalyzerData",
+            dependencies: ["SignalAnalyzerDomain"]
+        ),
+        .target(
+            name: "SignalAnalyzerPresentation",
+            dependencies: ["GiftUI", "GiftUIFailureCore", "SignalAnalyzerDomain"]
         ),
         .testTarget(
             name: "GiftUITests",
@@ -523,6 +538,18 @@ let package = Package(
                 "GiftUISemanticCore",
                 "GiftUISemanticFailureAdapterFixture",
             ]
+        ),
+        .testTarget(
+            name: "SignalAnalyzerDomainTests",
+            dependencies: ["SignalAnalyzerDomain"]
+        ),
+        .testTarget(
+            name: "SignalAnalyzerDataTests",
+            dependencies: ["SignalAnalyzerData"]
+        ),
+        .testTarget(
+            name: "SignalAnalyzerPresentationTests",
+            dependencies: ["SignalAnalyzerPresentation"]
         ),
     ],
     swiftLanguageModes: [.v6]
