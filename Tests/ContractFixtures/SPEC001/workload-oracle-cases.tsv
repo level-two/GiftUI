@@ -1,0 +1,14 @@
+# schema_version=1
+# id	count	duration	expected
+initial-lows	4	0s	CH1,CH2,CH3,CH4-low
+accepted-workload	2400	30s	80-per-second
+aggregate	2404	30s	no-loss-duplicate-reorder
+capture-revisions	2404	30s	1-through-2404
+capture-callbacks	2405	30s	one-snapshot-plus-2404-mutations
+capture-outcomes	2405	30s	nonzero-monotonic
+state-callbacks	2	30s	idle-running
+time-evictions	0	30s	none-at-boundary
+capacity-evictions	0	2404	none-at-boundary
+final-duration	1	30s	exact
+final-replay	2404	30s	byte-semantic-equality
+first-excess-boundary	2405	30s	covered-retention-cases

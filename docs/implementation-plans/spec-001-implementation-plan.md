@@ -341,7 +341,7 @@ same capture/state/publication traces and deterministic source vectors.
       pause/resume conceptual time, accelerated timing, teardown, and a second
       conforming source fixture. Keep clocks/schedulers/tasks outside Domain and
       Presentation and reject generation wrap rather than aliasing.
-- [ ] `T2.4` — Run the repository/source oracle at the accepted aggregate rate
+- [x] `T2.4` — Run the repository/source oracle at the accepted aggregate rate
       for 30 conceptual seconds. Record every input, revision, mutation,
       eviction, sink outcome, state transition, and final capture; require no
       missing, duplicate, reordered, stale, or unexpected fact.
@@ -751,6 +751,9 @@ exhaustion with permanent object-graph quiescence.
 `T2.3` adds the scheduler-independent four-channel generator, exact wrapping
 CH4 vectors, host-scaled delivery seam, checked nonaliasing generations,
 pause/resume continuity, teardown, and a second conforming source fixture.
+`T2.4` adds the 30-second, 2,400-event workload oracle joined to four initial
+lows, checking all inputs, mutations, revisions, outcomes, state transitions,
+and the replayed 2,404-transition final capture without loss or duplication.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,
