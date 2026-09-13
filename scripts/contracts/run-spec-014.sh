@@ -68,6 +68,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-014-fixtures.rb" \
             "${SCRIPT_DIR}/check-spec-014-failures.rb" \
             "${SCRIPT_DIR}/compare-spec-014-profiles.rb" \
+            "${SCRIPT_DIR}/collect-spec-014-armv6-evidence.sh" \
             "${SCRIPT_DIR}/collect-spec-014-macos-profile.sh" \
             "${SCRIPT_DIR}/check-spec-014-frame-work.rb" \
             "${SCRIPT_DIR}/check-spec-014-contributors.rb" \
@@ -261,6 +262,11 @@ case "${profile}" in
         run_required macos-production-corpus \
             "${SCRIPT_DIR}/collect-spec-014-macos-profile.sh" \
             "${profile}" "${staging}/macos-corpus"
+        ;;
+    raspberry-pi-armv6)
+        run_required armv6-link-and-resource-evidence \
+            "${SCRIPT_DIR}/collect-spec-014-armv6-evidence.sh" \
+            "${staging}/armv6-evidence"
         ;;
 esac
 run_required declaration-layout-and-imports \

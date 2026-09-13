@@ -503,7 +503,7 @@ all criteria are ready for evidence-based conformance review.
       their exact owner seams. Compare logical pixels, bytes, region order,
       results, health, counters, and failures field by field. No static-private
       semantics or dynamic-only fallback is allowed.
-- [ ] `T8.4` — Preflight with `scripts/raspberry-pi/doctor.sh --probe` under the
+- [x] `T8.4` — Preflight with `scripts/raspberry-pi/doctor.sh --probe` under the
       repository Pi toolchain skill, then compile/link the complete SPEC-014
       corpus for `armv6-unknown-linux-gnueabihf`. Record compiler/SDK identity,
       ARMv6 target, layouts, allocations, resources, timings where executable,
@@ -1142,6 +1142,18 @@ and found every field identical. The capability checker separately proves the
 paired macOS descriptor and effective capability values are equal; neither
 profile uses a fallback or private semantic row. The collector and reporter
 are registered hashed inputs and are invoked by each macOS driver run.
+
+`T8.4` is complete. The repository Pi skill's pinned environment was inspected
+before any cross-build. `doctor.sh` and its hardware-free `--probe` both
+passed with project-local Swift 6.3.2, the Bookworm SDK, and exact
+`armv6-unknown-linux-gnueabihf`; no `/opt` toolchain was used. The SPEC-014
+collector then built every Backend Integration dependency with whole-module
+optimization, linked a static ARM EABI5 hard-float image and link map, and
+verified it with the repository binary check. It records all eight normative
+layouts, zero allocator references in the optimized resource path, linked
+sections/symbols, a bounded 7,680-byte tile/stack workspace, 15 tile visits,
+240 regions, 15 payloads, and explicit non-executed timing disposition.
+No remote access, deployment, service restart, or PiScreen claim occurred.
 
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
