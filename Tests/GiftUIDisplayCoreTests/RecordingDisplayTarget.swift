@@ -20,6 +20,8 @@ struct RecordingDisplayWriter: DisplayPayloadWriter {
 
     private var activeRegion: ActiveDisplayRegion?
 
+    var hasActiveRegion: Bool { activeRegion != nil }
+
     init(
         capacityBytes: UInt32,
         regionCapacity: UInt16,
@@ -180,6 +182,12 @@ struct RecordedDisplayReservation: Equatable {
     let regionCapacity: UInt16
 }
 
+struct RecordedDisplayPayload: Equatable {
+    let reservation: DisplayReservationID
+    let bytes: [UInt8]
+    let regions: [RecordedDisplayRegion]
+}
+
 struct RecordingDisplayTarget: DisplayTarget {
     let submissionLifetime: SubmissionLifetime
     let handoff: SubmissionHandoff
@@ -194,12 +202,16 @@ struct RecordingDisplayTarget: DisplayTarget {
     private(set) var reservations: [RecordedDisplayReservation] = []
     private(set) var finishedReservations: [DisplayReservationID] = []
     private(set) var cancelledReservations: [DisplayReservationID] = []
+    private(set) var submittedPayloads: [RecordedDisplayPayload] = []
+    private(set) var inFlightPayloadCount: UInt8 = 0
+    private(set) var inFlightBytes: UInt32 = 0
     private(set) var lastError: DisplayTargetError?
     private(set) var currentHealth = GiftUIOperationalHealth()
 
     private var nextReservationRawValue: UInt32
     private var reservationIdentityExhausted: Bool
     private var writerBorrowActive = false
+    private var payloadSlotReusable = true
 
     init(
         descriptor: RasterSurfaceDescriptor,
@@ -258,6 +270,14 @@ struct RecordingDisplayTarget: DisplayTarget {
             lastError = .capacityExhausted
             return .failure(.capacityExhausted)
         }
+        guard
+            expectedDescriptor.realization != .tiled
+                || (handoff == .synchronous
+                    && submissionLifetime != .ownershipTransfer)
+        else {
+            lastError = .invariantViolation
+            return .failure(.invariantViolation)
+        }
 
         let id = DisplayReservationID(rawValue: nextReservationRawValue)
         if nextReservationRawValue == .max {
@@ -266,6 +286,7 @@ struct RecordingDisplayTarget: DisplayTarget {
             nextReservationRawValue += 1
         }
         activeReservation = id
+        payloadSlotReusable = true
         lastError = nil
         reservations.append(
             RecordedDisplayReservation(
@@ -284,7 +305,8 @@ struct RecordingDisplayTarget: DisplayTarget {
     ) -> Result? {
         guard reservation == activeReservation,
             !writerBorrowActive,
-            !writer.isFinished
+            !writer.isFinished,
+            payloadSlotReusable
         else {
             lastError =
                 reservation == activeReservation
@@ -303,8 +325,45 @@ struct RecordingDisplayTarget: DisplayTarget {
             lastError = .invalidReservation
             return .failureBeforeAcceptance(.invalidReservation)
         }
-        lastError = .invariantViolation
-        return .failureBeforeAcceptance(.invariantViolation)
+        guard writer.isFinished, writer.lastError == nil else {
+            lastError = .invariantViolation
+            return .failureBeforeAcceptance(.invariantViolation)
+        }
+
+        let bytes = Array(writer.stagedBytes.prefix(Int(writer.writtenBytes)))
+        submittedPayloads.append(
+            RecordedDisplayPayload(
+                reservation: reservation,
+                bytes: bytes,
+                regions: writer.regions
+            )
+        )
+
+        if handoff == .synchronous,
+            submissionLifetime == .synchronousBorrow
+                || submissionLifetime == .synchronousCopy
+        {
+            writer.discard()
+            payloadSlotReusable = true
+        } else {
+            let payloadCount = inFlightPayloadCount.addingReportingOverflow(1)
+            let payloadBytes = inFlightBytes.addingReportingOverflow(UInt32(bytes.count))
+            guard !payloadCount.overflow,
+                !payloadBytes.overflow,
+                payloadCount.partialValue <= maximumInFlightPayloads,
+                payloadBytes.partialValue <= maximumInFlightBytes
+            else {
+                submittedPayloads.removeLast()
+                lastError = .capacityExhausted
+                return .failureBeforeAcceptance(.capacityExhausted)
+            }
+            inFlightPayloadCount = payloadCount.partialValue
+            inFlightBytes = payloadBytes.partialValue
+            payloadSlotReusable = false
+            writer.discard()
+        }
+        lastError = nil
+        return .completed
     }
 
     mutating func finishFrame(
@@ -314,8 +373,17 @@ struct RecordingDisplayTarget: DisplayTarget {
             lastError = .invalidReservation
             return .failureBeforeAcceptance(.invalidReservation)
         }
+        guard !writerBorrowActive,
+            !writer.isFinished,
+            !writer.hasActiveRegion,
+            writer.writtenBytes == 0,
+            writer.writtenRegionCount == 0
+        else {
+            lastError = .invariantViolation
+            return .failureBeforeAcceptance(.invariantViolation)
+        }
         finishedReservations.append(reservation)
-        activeReservation = nil
+        resetSession()
         lastError = nil
         return .completed
     }
@@ -326,12 +394,19 @@ struct RecordingDisplayTarget: DisplayTarget {
             return
         }
         cancelledReservations.append(reservation)
-        activeReservation = nil
+        resetSession()
         lastError = nil
-        writer.discard()
     }
 
     borrowing func health() -> GiftUIOperationalHealth {
         currentHealth
+    }
+
+    private mutating func resetSession() {
+        activeReservation = nil
+        payloadSlotReusable = true
+        inFlightPayloadCount = 0
+        inFlightBytes = 0
+        writer.discard()
     }
 }

@@ -315,7 +315,7 @@ identity lifetime, and target-local health.
       zero initialization, finish/discard, and per-payload byte/region counters.
       Fault every underflow, overflow, empty finish, double transition, stale
       writer, wrong encoding, and reentrancy case.
-- [ ] `T3.3` — Implement exactly one submission for each successful writer
+- [x] `T3.3` — Implement exactly one submission for each successful writer
       finish, slot reuse only after completed synchronous submission, and the
       selected borrow/copy/transfer/queued ownership behavior. Permit tiled
       multi-payload reuse only for synchronous handoff with synchronous borrow
@@ -792,6 +792,16 @@ discard zeroes and resets all counters, bytes, regions, and state. Focused
 tests cover exact limits, underflow/overflow, write-without-region, empty and
 double finish, nested/double region transitions, stale writer access, row and
 damage crossing, wrong encoding, region-capacity excess, and full reset/reuse.
+
+`T3.3` added the recording target's payload submission and ownership layer.
+Each successful writer finish admits exactly one submission. Synchronous
+borrow and copy reset the slot only after completed submission and support
+multiple payloads; queued or ownership-transfer full-surface sessions retain
+one lower-owned payload and do not reopen the writer. Tiled reservations reject
+queued handoff and ownership transfer before identity allocation. Focused
+tests cover submit-without-finish, double submit, unfinished/unsubmitted frame
+completion, exact payload transcripts, synchronous slot reuse, retained
+in-flight counters and teardown, and every prohibited tiled mode.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
