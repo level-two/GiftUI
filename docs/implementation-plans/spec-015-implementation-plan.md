@@ -233,7 +233,7 @@ layout evidence.
       declarations in `Sources/GiftUIHostConfiguration/`. Add API snapshot,
       raw-value, associated-payload, `Equatable`/`Sendable`, noncopyable
       conformance, illegal construction, and package-access tests.
-- [ ] `T1.2` — Implement `HostComponentRole`, `HostComponentRoleSet`,
+- [x] `T1.2` — Implement `HostComponentRole`, `HostComponentRoleSet`,
       `HostComponentRecord`, and the bounded graph-view seam. Prove exact bits
       `0...17`, rejection of bits `18...31`, exact raw-value ordering, no
       self/upward/unknown edges, eighteen production records, one owner per
@@ -249,7 +249,7 @@ layout evidence.
       zero, boundary, sum-overflow, capacity, refusal-limit, profile/kind, and
       exact Signal Analyzer constants including `20 + 2 + 6 == 28`, capacity
       `32`, four-slot margin, six action codes, and one model/input owner.
-- [ ] `T1.4` — Implement a bounded one-shot validation-state guard shared by
+- [x] `T1.4` — Implement a bounded one-shot validation-state guard shared by
       concrete validators. The first call may enter stages `0...8`; a second
       call returns graph-stage `.invariantViolation` without touching another
       projection. Instrument accessor and side-effect probes so the later
