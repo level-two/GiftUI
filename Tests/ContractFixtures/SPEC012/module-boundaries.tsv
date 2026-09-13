@@ -8,6 +8,8 @@ GiftUIDrawing	GiftUISemanticCore	allowed
 GiftUIDrawingFailureAdapterFixture	GiftUIDrawing	allowed
 GiftUIDrawingFailureAdapterFixture	GiftUIFailureCore	allowed
 GiftUIDrawingTests	GiftUIDrawing	allowed
+GiftUIDrawingTests	GiftUIDrawingFailureAdapterFixture	allowed
+GiftUIDrawingTests	GiftUIFailureCore	allowed
 GiftUIDrawing	GiftUIRuntimeDynamic	forbidden
 GiftUIDrawing	GiftUIRuntimeStatic	forbidden
 GiftUIDrawing	GiftUIFailureCore	forbidden
@@ -20,4 +22,3 @@ GiftUIDrawing	GiftUIDriver	forbidden
 GiftUIDrawing	GiftUIOSRTOS	forbidden
 GiftUIDrawing	GiftUIHAL	forbidden
 GiftUIDrawing	GiftUIHardware	forbidden
-

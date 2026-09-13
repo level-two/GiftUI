@@ -398,7 +398,9 @@ let package = Package(
             dependencies: [
                 "GiftUI",
                 "GiftUIDrawing",
+                "GiftUIDrawingFailureAdapterFixture",
                 "GiftUIExecution",
+                "GiftUIFailureCore",
                 "GiftUILayout",
                 "GiftUIRenderCore",
                 "GiftUIRenderLowering",

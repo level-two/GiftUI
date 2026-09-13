@@ -28,6 +28,11 @@ import Testing
         #expect(preset.runtimeLimits.maximumOrdinaryRenderOperations == 30)
         #expect(preset.runtimeLimits.render.maximumOperations == 35)
         #expect(preset.runtimeLimits.renderSink.maximumOperations == 35)
+        #expect(preset.capabilityRequirement.operations.rawValue == 0x1F)
+        #expect(preset.capabilityRequirement.extent.width == preset.raster.logicalWidth)
+        #expect(preset.capabilityRequirement.extent.height == preset.raster.logicalHeight)
+        #expect(preset.capabilityRequirement.operationStream == .synchronousBorrowedOneShot)
+        #expect(preset.capabilityRequirement.absence == .required)
         #expect(preset.cardinality.compactFactCapacity == 32)
         #expect(preset.pacing.maximumTransitionFactsPerServiceWindow == 20)
     }

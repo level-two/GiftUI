@@ -429,17 +429,17 @@ SPEC-004 and SPEC-015 supply production capability and host validation seams.
 the exact Signal Analyzer workload is admitted, and every local error maps to
 the exact SPEC-003 fact and SPEC-009 lifecycle effect.
 
-- [ ] `T7.1` — Implement B2 comparison for every declared Canvas workload fact,
+- [x] `T7.1` — Implement B2 comparison for every declared Canvas workload fact,
       workspace capacity, combined ordinary-plus-stroke operation bound,
       configured sink lower bound, and static callable/capture bound. Test
       missing, zero, overflow, below, equal, and first-excess facts independently,
       and prove startup validation invokes no client body or Canvas callable.
-- [ ] `T7.2` — Integrate the separate SPEC-004 `rasterPresentation` gate for
+- [x] `T7.2` — Integrate the separate SPEC-004 `rasterPresentation` gate for
       canonical straight-line operation coverage and required extent, clip,
       encoding, derived payload, in-flight storage, lifetime, and host policy.
       Prove neither gate repairs the other and no drawing capacity field enters
       the closed capability snapshot.
-- [ ] `T7.3` — Implement the narrow drawing owner adapter and exact precedence/
+- [x] `T7.3` — Implement the narrow drawing owner adapter and exact precedence/
       mapping table for every `DrawingError`, `DrawingProductionError`, idle sink
       refusal, and invariant. Preserve origin, scope, containment, first visible
       failure, and the rule that no later check invokes client code.
@@ -1092,3 +1092,15 @@ retained Core address or hidden complete-frame tiled storage. The
 [consumer-join evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-8/full-surface-tiled-consumers.md)
 records the owner tests and reproduction commands. Milestone 8 is complete;
 no connected display or hardware claim is made.
+
+`T7.1`-`T7.3` are complete through SPEC-015's generated workload and host
+validation join. The host checks every nonzero B2 Drawing fact, exact
+render-workspace source relation, combined ordinary/stroke capacity, and
+Dynamic/Static callable metadata before the separately generated SPEC-004
+capability requirement is resolved. The requirement carries all five operation
+bits and no Drawing storage field. The narrow Drawing adapter maps all local
+derivation errors plus idle refusal and combined-stream invariant outcomes to
+their exact SPEC-003 facts. Focused zero, first-excess, profile, capability-
+shape, and mapping tests are recorded in
+`Tests/ContractFixtures/SPEC012/Evidence/milestone-7/startup-and-failure-integration.md`.
+`T7.4` remains joined to SPEC-013's complete production pipeline.

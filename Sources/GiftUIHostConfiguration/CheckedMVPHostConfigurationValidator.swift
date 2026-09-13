@@ -60,10 +60,10 @@ where
                 error: .invalidTextResources(error)
             )
         }
-        guard validateWorkload() else {
+        if let error = validateWorkload() {
             return .invalid(
                 stage: .workload,
-                error: .insufficientWorkloadCapacity
+                error: error
             )
         }
 
@@ -164,19 +164,12 @@ where
         return nil
     }
 
-    private borrowing func validateWorkload() -> Bool {
+    private borrowing func validateWorkload() -> HostConfigurationError? {
         let configuration = structuralConfiguration
         let workload = configuration.workload
         let cardinality = configuration.cardinality
         guard workload.schemaVersion == 2,
             workload.requiredRuntimeLimits == configuration.runtimeLimits,
-            workload.drawing.canvasOccurrences > 0,
-            workload.drawing.maximumLivePathPoints > 0,
-            workload.drawing.maximumLivePathSubpaths > 0,
-            workload.drawing.submittedStrokes > 0,
-            workload.drawing.snapshottedPoints > 0,
-            workload.drawing.snapshottedSubpaths > 0,
-            workload.drawing.normalizedStrokeOperations > 0,
             cardinality.actionCaseCount == 6,
             cardinality.rootModelLocationCount == 1,
             cardinality.activeRegistrationCount == 1,
@@ -186,45 +179,29 @@ where
             cardinality.reservedFailureFactCapacity == 1,
             cardinality.normalizedInputSourceCapacity == 1,
             workload.semanticActionsPerOpportunity == 6
-        else { return false }
+        else { return .invalidWorkload }
+
+        if let drawingError = SignalAnalyzerDrawingStartupValidation.validate(
+            workload: workload,
+            limits: configuration.runtimeLimits,
+            profile: configuration.profile
+        ) {
+            return drawingError
+        }
 
         let pacing = configuration.pacing
         let sum1 = pacing.maximumTransitionFactsPerServiceWindow
             .addingReportingOverflow(
                 UInt16(pacing.maximumBootstrapFactsPerServiceWindow)
             )
-        guard !sum1.overflow else { return false }
+        guard !sum1.overflow else { return .arithmeticOverflow }
         let sum2 = sum1.partialValue.addingReportingOverflow(
             UInt16(pacing.maximumActionInducedFactsPerServiceWindow)
         )
         guard !sum2.overflow,
             sum2.partialValue <= cardinality.compactFactCapacity
-        else { return false }
-
-        let operations = workload.ordinaryRenderOperations
-            .addingReportingOverflow(
-                workload.drawing.normalizedStrokeOperations
-            )
-        guard !operations.overflow,
-            operations.partialValue
-                <= configuration.runtimeLimits.render.maximumOperations,
-            operations.partialValue
-                <= configuration.runtimeLimits.renderSink.maximumOperations
-        else { return false }
-
-        switch configuration.profile {
-        case .dynamic:
-            return workload.drawing.staticCallableCases == nil
-                && workload.drawing.maximumStaticCaptureBytes == nil
-        case .static:
-            guard let cases = workload.drawing.staticCallableCases,
-                let bytes = workload.drawing.maximumStaticCaptureBytes,
-                let limits = configuration.runtimeLimits.staticCanvas
-            else { return false }
-            return cases > 0 && bytes > 0
-                && cases <= limits.maximumStaticCallableCases
-                && bytes <= limits.maximumStaticCaptureBytes
-        }
+        else { return .insufficientWorkloadCapacity }
+        return nil
     }
 
     private borrowing func validatePolicy() -> Bool {

@@ -177,6 +177,7 @@ swift = +<<~SWIFT
   // Source SHA-256: #{descriptor_hash}
   // Do not edit independently of the checked descriptor.
 
+  import GiftUICapabilities
   import GiftUIRuntimeCore
 
   package struct GeneratedHostPresetIdentity: Equatable, Sendable {
@@ -203,6 +204,7 @@ swift = +<<~SWIFT
       package let runtimeLimits: RuntimeProfileLimits
       package let expectedStorageBytes: RuntimeStorageByteCounts
       package let workload: SignalAnalyzerHostWorkload
+      package let capabilityRequirement: RasterPresentationRequirement
       package let cardinality: SignalAnalyzerHostCardinality
       package let pacing: HostPacingPolicy
       package let raster: GeneratedHostRasterProjection
@@ -408,6 +410,25 @@ swift << <<~SWIFT
               identity: sourceIdentity, kind: kind, profile: profile,
               runtimeLimits: limits, expectedStorageBytes: byteCounts,
               workload: workload,
+              capabilityRequirement: RasterPresentationRequirement(
+                  operations: [
+                      .opaqueRectangles, .positionedText, .straightLineStrokes,
+                      .clipping, .damage,
+                  ],
+                  extent: CapabilityExtent(width: width, height: height)!,
+                  operationStream: .synchronousBorrowedOneShot,
+                  acceptedEncodings: kind == .macOSDynamic || kind == .macOSStatic
+                      ? .rgba8888 : .rgb565BigEndian,
+                  acceptedSubmissionLifetimes: [
+                      .synchronousBorrow, .synchronousCopy, .ownershipTransfer,
+                  ],
+                  maximumRasterBytes: CapabilityByteCount(rawValue: rasterBytes),
+                  maximumPayloadBytes: CapabilityByteCount(rawValue: payloadBytes),
+                  maximumInFlightBytes: CapabilityByteCount(
+                      rawValue: payloadBytes * UInt32(inFlightPayloads)
+                  ),
+                  absence: .required
+              )!,
               cardinality: SignalAnalyzerHostCardinality(
                   actionCaseCount: 6, rootModelLocationCount: 1,
                   activeRegistrationCount: 1, stagedAssociationCount: 1,
