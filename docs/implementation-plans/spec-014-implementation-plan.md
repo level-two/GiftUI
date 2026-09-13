@@ -525,6 +525,10 @@ all criteria are ready for evidence-based conformance review.
 
 ## Design-Note Triggers
 
+- [Widened-Integer Stroke Raster Design](../implementation-designs/spec-014-widened-integer-stroke-raster.md)
+  records the zero-allocation, doubled-coordinate, signed-128-bit scan model
+  selected for `T4.4` and the upstream SPEC-012 vector/oracle evidence blocker.
+
 - Create `docs/implementation-designs/spec-014-display-session-grammar.md`
   only if the reusable-slot writer, reservation identity, responsibility
   transfer, draining, and finish/cancel state machine cannot be reconstructed
