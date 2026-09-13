@@ -2,7 +2,7 @@
 spec: SPEC-001
 feature: signal-analyzer
 title: SPEC-001 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-13
@@ -243,7 +243,7 @@ statuses remain authoritative.
 schemas, and fail-closed four-profile driver exist before governed behavior is
 claimed.
 
-- [ ] `T0.1` — Create `Tests/ContractFixtures/SPEC001/` with a README, ordered
+- [x] `T0.1` — Create `Tests/ContractFixtures/SPEC001/` with a README, ordered
       fixture registry, criterion/evidence registry for `SA-AC-001` through
       `SA-AC-045`, task-evidence ledger, semantic/callback/cycle/host/resource
       transcript schemas, and explicit `host-native-fixture`,
@@ -714,9 +714,12 @@ and conformance gaps may not be deferred.
 
 ## Completion Record
 
-No task has been completed under this plan. Checked criteria in SPEC-001 and
-the imported package are baseline evidence only until the governed
-implementation and required profiles reproduce them.
+Governed implementation began on 2026-09-13. `T0.1` established the ordered,
+fail-closed fixture and evidence contract, the complete task ledger, five
+versioned transcript schemas, and explicit evidence-kind-to-criterion-class
+permissions. Checked criteria in SPEC-001 and the imported package remain
+baseline evidence only until the governed implementation and required profiles
+reproduce them.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

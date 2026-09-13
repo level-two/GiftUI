@@ -1,0 +1,18 @@
+# schema_version=1
+# order	field	type	required
+1	schema_version	uint16	true
+2	fixture_id	identifier	true
+3	profile	profile-id	true
+4	evidence_kind	evidence-kind	true
+5	repository_revision	sha256	true
+6	portable_source_identity	sha256	true
+7	workload_manifest_identity	sha256	true
+8	compiler_identity	string	true
+9	sdk_identity	string-or-none	true
+10	target_triple	string	true
+11	optimization	string	true
+12	command_identity	sha256	true
+13	artifact_identity	sha256-or-none	true
+14	display_exercised	bool	true
+15	input_exercised	bool	true
+16	result	typed-result	true

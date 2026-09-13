@@ -1,0 +1,48 @@
+schema_version: 1
+spec: SPEC-001
+plan: docs/implementation-plans/spec-001-implementation-plan.md
+tasks:
+  T0.1: { disposition: completed, requirements: [SA-AC-001], implementation: [Tests/ContractFixtures/SPEC001/fixture-registry.tsv, Tests/ContractFixtures/SPEC001/criterion-evidence-registry.tsv, Tests/ContractFixtures/SPEC001/evidence-kinds.tsv, Tests/ContractFixtures/SPEC001/semantic-transcript.schema.tsv, Tests/ContractFixtures/SPEC001/callback-transcript.schema.tsv, Tests/ContractFixtures/SPEC001/cycle-transcript.schema.tsv, Tests/ContractFixtures/SPEC001/host-transcript.schema.tsv, Tests/ContractFixtures/SPEC001/resource-transcript.schema.tsv, Tests/ContractFixtures/SPEC001/task-evidence.yaml], checks: [scripts/contracts/check-spec-001-harness.rb, scripts/governance/check-task-evidence.rb], profiles: [], evidence: [Tests/ContractFixtures/SPEC001/README.md], blockers: [] }
+  T0.2: { disposition: pending, requirements: [SA-AC-002, SA-AC-003, SA-AC-004], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T0.3: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T0.4: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T0.5: { disposition: pending, requirements: [SA-AC-002, SA-AC-003, SA-AC-004], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T1.1: { disposition: pending, requirements: [SA-AC-041], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T1.2: { disposition: pending, requirements: [SA-AC-012, SA-AC-013], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T1.3: { disposition: pending, requirements: [SA-AC-007, SA-AC-010, SA-AC-031, SA-AC-043], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T1.4: { disposition: pending, requirements: [SA-AC-002, SA-AC-003, SA-AC-008], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T2.1: { disposition: pending, requirements: [SA-AC-010, SA-AC-012, SA-AC-013, SA-AC-014], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T2.2: { disposition: pending, requirements: [SA-AC-007, SA-AC-008, SA-AC-009, SA-AC-010, SA-AC-014, SA-AC-031, SA-AC-043], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T2.3: { disposition: pending, requirements: [SA-AC-009, SA-AC-015, SA-AC-026, SA-AC-042], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T2.4: { disposition: pending, requirements: [SA-AC-011], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T3.1: { disposition: pending, requirements: [SA-AC-016, SA-AC-017, SA-AC-018, SA-AC-036, SA-AC-037, SA-AC-044], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T3.2: { disposition: pending, requirements: [SA-AC-007, SA-AC-008, SA-AC-028], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T3.3: { disposition: pending, requirements: [SA-AC-010, SA-AC-016, SA-AC-031], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T3.4: { disposition: pending, requirements: [SA-AC-040, SA-AC-041, SA-AC-043, SA-AC-044], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T3.5: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T4.1: { disposition: pending, requirements: [SA-AC-005, SA-AC-006, SA-AC-032], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T4.2: { disposition: pending, requirements: [SA-AC-017, SA-AC-037], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T4.3: { disposition: pending, requirements: [SA-AC-005, SA-AC-018, SA-AC-019, SA-AC-020, SA-AC-045], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T4.4: { disposition: pending, requirements: [SA-AC-004, SA-AC-006], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T5.1: { disposition: pending, requirements: [SA-AC-029, SA-AC-030, SA-AC-035, SA-AC-044], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T5.2: { disposition: pending, requirements: [SA-AC-016, SA-AC-032, SA-AC-033, SA-AC-034, SA-AC-038, SA-AC-039], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T5.3: { disposition: pending, requirements: [SA-AC-008, SA-AC-016, SA-AC-021, SA-AC-030, SA-AC-034, SA-AC-035, SA-AC-036], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T5.4: { disposition: pending, requirements: [SA-AC-036, SA-AC-037, SA-AC-038], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T5.5: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T6.1: { disposition: pending, requirements: [SA-AC-002, SA-AC-028, SA-AC-029, SA-AC-045], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T6.2: { disposition: pending, requirements: [SA-AC-005, SA-AC-006, SA-AC-022, SA-AC-032, SA-AC-042], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T6.3: { disposition: pending, requirements: [SA-AC-012, SA-AC-022, SA-AC-032], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T6.4: { disposition: pending, requirements: [SA-AC-023], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T6.5: { disposition: pending, requirements: [SA-AC-005, SA-AC-006, SA-AC-012, SA-AC-024, SA-AC-025, SA-AC-028, SA-AC-039, SA-AC-042, SA-AC-045], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T6.6: { disposition: pending, requirements: [SA-AC-026, SA-AC-027], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T7.1: { disposition: pending, requirements: [SA-AC-027, SA-AC-031, SA-AC-034, SA-AC-040, SA-AC-043], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T7.2: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T7.3: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T7.4: { disposition: pending, requirements: [SA-AC-011, SA-AC-012, SA-AC-021, SA-AC-025, SA-AC-029, SA-AC-035, SA-AC-039, SA-AC-045], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T8.1: { disposition: pending, requirements: [SA-AC-005, SA-AC-023], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T8.2: { disposition: pending, requirements: [SA-AC-005, SA-AC-024, SA-AC-025], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T8.3: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T9.1: { disposition: pending, requirements: [SA-AC-002, SA-AC-003, SA-AC-004, SA-AC-008, SA-AC-037, SA-AC-044], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T9.2: { disposition: pending, requirements: [SA-AC-022, SA-AC-041, SA-AC-042], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T9.3: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T9.4: { disposition: pending, requirements: [SA-AC-001], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }

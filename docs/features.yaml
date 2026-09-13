@@ -19,7 +19,7 @@ features:
     milestone: MVP
   signal-analyzer:
     title: Signal Analyzer Reference Application
-    status: specification
+    status: implementation
     proposal:
       - PROPOSAL-002
     rfcs:

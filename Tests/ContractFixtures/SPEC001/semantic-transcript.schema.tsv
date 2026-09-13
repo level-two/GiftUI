@@ -1,0 +1,11 @@
+# schema_version=1
+# order	field	type	required
+1	schema_version	uint16	true
+2	fixture_id	identifier	true
+3	profile	profile-id	true
+4	event_index	uint32	true
+5	semantic_revision	uint32	true
+6	state	canonical-value	true
+7	capture_revision	uint32	true
+8	action_or_fact	canonical-value	true
+9	result	typed-result	true

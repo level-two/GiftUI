@@ -1,0 +1,7 @@
+# schema_version=1
+# kind	governance	module	semantic	execution	cross-build	connected	resource
+host-native-fixture	true	true	true	false	false	false	false
+macos-target-execution	true	true	true	true	false	false	true
+cross-build-inspection	true	true	false	false	true	false	true
+simulator	true	true	true	false	false	false	true
+connected-target-execution	true	true	true	true	true	true	true

@@ -2,7 +2,7 @@
 id: SPEC-001
 feature: signal-analyzer
 title: Signal Analyzer Reference Application Contract
-status: approved
+status: implementing
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
@@ -59,7 +59,9 @@ target_milestone: MVP
 > **Approval status:** Explicitly approved by the maintainer after
 > reconciliation against approved SPEC-002 through SPEC-015, including the
 > SPEC-015 host-configuration contract. This Specification is authoritative
-> for implementation planning and implementation.
+> for implementation planning and implementation. Governed implementation
+> began on 2026-09-13; the `implemented` transition remains a separate human
+> decision after conformance review.
 
 ## Summary
 
