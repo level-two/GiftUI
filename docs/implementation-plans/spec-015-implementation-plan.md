@@ -7,7 +7,8 @@ owners:
   - codex
 created: 2026-09-09
 updated: 2026-09-13
-related_design_notes: []
+related_design_notes:
+  - ../implementation-designs/spec-015-generated-workload-and-presets.md
 conformance_report: null
 related_future_work: []
 related_explorations: []
@@ -267,7 +268,7 @@ as authority.
 complete manifests and immutable preset projections with no runtime discovery
 or defaulted limit leaf.
 
-- [ ] `T2.1` — Add one checked-in descriptor for the fixed Signal Analyzer
+- [x] `T2.1` — Add one checked-in descriptor for the fixed Signal Analyzer
       hierarchy and application workload plus a deterministic host-only
       generator. Count every SPEC-006 semantic-node occurrence, every SPEC-008
       render semantic scope, layout scope, maximum render traversal depth,
@@ -279,7 +280,7 @@ or defaulted limit leaf.
       schema 1, a changed descriptor, stale or manually edited output, or any
       non-deterministic regeneration. Generation and validation must not
       evaluate a client body or Canvas closure.
-- [ ] `T2.2` — Generate every complete nested `RuntimeProfileLimits` leaf and
+- [x] `T2.2` — Generate every complete nested `RuntimeProfileLimits` leaf and
       one exact expected SPEC-013 `RuntimeStorageAudit` for each preset. Add a
       generated per-leaf corpus proving equality succeeds and each
       independently lowered, unequal, wrong-profile, wrong-storage,
@@ -292,14 +293,14 @@ or defaulted limit leaf.
       `renderTextLineCount`/`maximumTextLines`, plus the audited workspace
       capacity. Include wrapper/modifier depth and empty-line fixtures so the
       generated values exercise the approved SPEC-008 counting rules.
-- [ ] `T2.3` — Generate and verify the exact Drawing minima: five Canvases,
+- [x] `T2.3` — Generate and verify the exact Drawing minima: five Canvases,
       202 live points, 12 live subpaths, five strokes/normalized operations,
       832 snapshotted points, and 16 snapshotted subpaths. Compute
       `ordinaryRenderOperations + 5` with checked arithmetic and prove the
       result fits producer, runtime, Drawing, render, sink, and endpoint lower
       bounds. Dynamic static-Canvas fields are `nil`; static fields exactly
       equal generated table metadata and capture bytes.
-- [ ] `T2.4` — Generate immutable projections for `macOSDynamic`,
+- [x] `T2.4` — Generate immutable projections for `macOSDynamic`,
       `macOSStatic`, `raspberryPiDynamic`, and `nrf52840Static`. The macOS pair
       shares logical extent, resources, workload counts, and effective
       semantics. Pi encodes 240 x 240 with a 240 x 16 RGB565 region. nRF52840
@@ -681,3 +682,12 @@ implemented-owner inventory and gates, and restored this plan to `ready`.
 Update each task disposition and evidence link in place as work proceeds. Plan
 completion does not mark SPEC-015 implemented; that transition requires a
 complete conformance review and explicit human authorization.
+
+Milestone 2 generated one checked descriptor, four schema-2 manifests, a
+complete 164-row per-preset limit-leaf corpus, and immutable Swift projections
+with one embedded descriptor identity. The generated values pass SPEC-013's
+complete storage audit in both profiles, preserve the exact Drawing minima and
+combined render bound, omit static Canvas metadata from Dynamic presets, and
+encode the approved macOS, Pi, and nRF raster projections. Freshness and focused
+evidence are recorded in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-2/generated-workload-and-presets.md`.
