@@ -16,3 +16,4 @@
 15	negative-dependency-fixtures	negative-dependency-fixtures.tsv	1
 16	diagnostic-cases	diagnostic-cases.tsv	1
 17	capture-value-cases	capture-value-cases.tsv	1
+18	capture-publication-cases	capture-publication-cases.tsv	1

@@ -303,7 +303,7 @@ prohibited imports or facilities.
       semantics. Provide dynamic bounded storage and static storage of at least
       2,404 transitions plus four baselines; prove invariants, stable order,
       retained reconstruction, value equality, and checked indexing.
-- [ ] `T1.3` — Implement `SignalCaptureChange`, revisioned
+- [x] `T1.3` — Implement `SignalCaptureChange`, revisioned
       `SignalCapturePublication`, repository/admission condition values, and
       exact insert/trim/reset replay. Use nonwrapping `UInt32` revision rules,
       bounds at 2,404, revision-zero snapshot semantics, and structural
@@ -735,6 +735,9 @@ projection without adding Foundation to Domain or Presentation.
 `T1.2` adds the exact fixed channels and baselines plus bounded dynamic and
 2,404-entry caller-owned static capture storage with shared invariant validation,
 stable ordering, value equality, retained reconstruction, and checked access.
+`T1.3` adds exact publication, delivery-outcome, rejection, and repository-
+condition values plus fail-closed snapshot/mutation replay, insert-before-trim
+ordering, bounded change validation, reset semantics, and nonwrapping revisions.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

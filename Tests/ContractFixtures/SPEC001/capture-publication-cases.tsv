@@ -1,0 +1,15 @@
+# schema_version=1
+# id	publication	base_revision	revision	expected
+initial-snapshot	snapshot	0	0	accepted-empty
+invalid-zero-snapshot	snapshot	0	0	rejected
+insert-no-trim	insertAndTrim	0	1	accepted
+insert-then-trim	insertAndTrim	7	8	accepted
+inserted-entry-evicted	insertAndTrim	40	41	accepted
+maximum-without-eviction	insertAndTrim	40	41	rejected
+invalid-insertion-index	insertAndTrim	0	1	rejected
+invalid-eviction-count	insertAndTrim	0	1	rejected
+reset	reset	2	3	accepted-empty
+base-revision-mismatch	reset	1	1	rejected
+target-revision-skip	reset	0	2	rejected
+revision-exhausted	reset	4294967295	0	rejected-no-wrap
+terminal-revision-failure	terminalFailure	-	-	structural
