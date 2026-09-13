@@ -97,24 +97,17 @@ where
                 error: error
             )
         }
-        guard actionAndModel.firstActionCode == 0,
-            actionAndModel.lastActionCode == 5,
-            actionAndModel.handlerCount == 1,
-            actionAndModel.rootModelTargetCount == 1,
-            actionAndModel.maximumNonTransitionPublicationsPerAction == 1
-        else {
-            return .invalid(stage: .actionAndModel, error: .invalidActionDomain)
+        if let error = HostApplicationStartupValidation.validateActionAndModel(
+            actionAndModel,
+            structural: structuralConfiguration
+        ) {
+            return .invalid(stage: .actionAndModel, error: error)
         }
-        guard inputAndWake.normalizedInputSourceCount == 1,
-            inputAndWake.targetLocalPresentationGateCount == 1
-        else {
-            return .invalid(stage: .inputAndWake, error: .invalidInputIntegration)
-        }
-        guard inputAndWake.wakeRequesterCount == 1,
-            inputAndWake.applicationAndMutationDomainsAreDistinct,
-            inputAndWake.wakeRequesterIsNonReentrant
-        else {
-            return .invalid(stage: .inputAndWake, error: .invalidWakeIntegration)
+        if let error = HostApplicationStartupValidation.validateInputAndWake(
+            inputAndWake,
+            structural: structuralConfiguration
+        ) {
+            return .invalid(stage: .inputAndWake, error: error)
         }
         guard validatePolicy() else {
             return .invalid(stage: .policy, error: .incompleteFailurePolicy)

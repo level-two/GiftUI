@@ -357,6 +357,11 @@ behavior, and emits one immutable report only after complete success.
       all application-factory projections supplied to the validator. Reject
       invalid code, stale generation, incompatible callback bounds, retained
       owner references, and reentrant or malformed integration.
+      **Partial:** the pure configuration projection now validates the exact
+      action range, handler/model cardinality, producer/executor/fact bounds,
+      normalized-input gate, wake count, distinct domains, and non-reentrant
+      wake declaration. Stale generation, retained-owner, and concrete
+      callback/admission probes remain open with the T5.4 integration seam.
 - [ ] `T3.6` — Implement policy-stage table completeness, allowed/selected
       pair validation, fatal-hook availability, diagnostic independence, and
       final `HostAssemblyReport` construction. Compose all nine stages with an
@@ -749,3 +754,11 @@ projection unequal to the validated value with
 `.invalidEndpointDescriptor`, preserving SPEC-014's safety-not-proven mapping
 for the later bootstrap adapter. Evidence is in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-3/endpoint-validation.md`.
+
+The first T3.5 slice extracted pure action/model and input/wake projection
+validation. Exact success and every independently malformed field now report
+at `.actionAndModel` or `.inputAndWake`, with root-target defects preserved as
+`.invalidModelTarget`. T3.5 remains open for concrete stale-generation,
+callback-bound, admission, and non-retention evidence joined with T5.4.
+Current evidence is in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-3/application-projection-validation.md`.

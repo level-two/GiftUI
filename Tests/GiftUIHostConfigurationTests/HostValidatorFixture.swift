@@ -78,7 +78,9 @@ func makeValidHostValidator(
     ),
     capabilityContributions: RasterPresentationContributions? = nil,
     capabilityWorkspace: RasterPresentationResolverWorkspace? = nil,
-    endpoint: HostEndpointConfiguration? = nil
+    endpoint: HostEndpointConfiguration? = nil,
+    actionAndModel: HostActionModelConfiguration? = nil,
+    inputAndWake: HostInputWakeConfiguration? = nil
 ) -> CheckedMVPHostConfigurationValidator<
     HostValidatorGraphFixture, HostValidatorPolicyFixture
 > {
@@ -115,21 +117,43 @@ func makeValidHostValidator(
         capabilityContributions: capabilityContributions ?? capability.contributions,
         capabilityWorkspace: capabilityWorkspace ?? RasterPresentationResolverWorkspace()!,
         endpoint: endpoint ?? defaultEndpoint,
-        actionAndModel: HostActionModelConfiguration(
-            firstActionCode: 0,
-            lastActionCode: 5,
-            handlerCount: 1,
-            rootModelTargetCount: 1,
-            maximumNonTransitionPublicationsPerAction: 1
-        ),
-        inputAndWake: HostInputWakeConfiguration(
-            normalizedInputSourceCount: 1,
-            targetLocalPresentationGateCount: 1,
-            wakeRequesterCount: 1,
-            applicationAndMutationDomainsAreDistinct: true,
-            wakeRequesterIsNonReentrant: true
-        ),
+        actionAndModel: actionAndModel ?? makeHostActionModelFixture(),
+        inputAndWake: inputAndWake ?? makeHostInputWakeFixture(),
         residualPolicyTable: HostValidatorPolicyFixture()
+    )
+}
+
+func makeHostActionModelFixture(
+    firstActionCode: UInt16 = 0,
+    lastActionCode: UInt16 = 5,
+    handlerCount: UInt8 = 1,
+    rootModelTargetCount: UInt8 = 1,
+    maximumNonTransitionPublicationsPerAction: UInt8 = 1
+) -> HostActionModelConfiguration {
+    HostActionModelConfiguration(
+        firstActionCode: firstActionCode,
+        lastActionCode: lastActionCode,
+        handlerCount: handlerCount,
+        rootModelTargetCount: rootModelTargetCount,
+        maximumNonTransitionPublicationsPerAction:
+            maximumNonTransitionPublicationsPerAction
+    )
+}
+
+func makeHostInputWakeFixture(
+    normalizedInputSourceCount: UInt16 = 1,
+    targetLocalPresentationGateCount: UInt8 = 1,
+    wakeRequesterCount: UInt8 = 1,
+    applicationAndMutationDomainsAreDistinct: Bool = true,
+    wakeRequesterIsNonReentrant: Bool = true
+) -> HostInputWakeConfiguration {
+    HostInputWakeConfiguration(
+        normalizedInputSourceCount: normalizedInputSourceCount,
+        targetLocalPresentationGateCount: targetLocalPresentationGateCount,
+        wakeRequesterCount: wakeRequesterCount,
+        applicationAndMutationDomainsAreDistinct:
+            applicationAndMutationDomainsAreDistinct,
+        wakeRequesterIsNonReentrant: wakeRequesterIsNonReentrant
     )
 }
 
