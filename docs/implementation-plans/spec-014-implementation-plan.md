@@ -2,13 +2,16 @@
 spec: SPEC-014
 feature: giftui-mvp-architecture
 title: SPEC-014 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-09-09
 updated: 2026-09-13
-related_design_notes: []
-conformance_report: null
+related_design_notes:
+  - ../implementation-designs/spec-014-widened-integer-stroke-raster.md
+  - ../implementation-designs/spec-014-operation-major-rgb565-tiling.md
+  - ../implementation-designs/spec-014-endpoint-responsibility-drain.md
+conformance_report: ../conformance/spec-014-conformance.md
 related_future_work:
   - FW-010
   - FW-014
@@ -515,7 +518,7 @@ all criteria are ready for evidence-based conformance review.
       VFP ELF attributes, zero allocator calls, no forbidden facility or full
       framebuffer/list, exact sections and storage high-water. Never flash or
       claim connected TFT evidence.
-- [ ] `T8.6` — Run `scripts/format-swift.sh`, focused unit/contract tests, the
+- [x] `T8.6` — Run `scripts/format-swift.sh`, focused unit/contract tests, the
       exact standalone four-profile SPEC-014 driver, cross-profile comparator,
       driver-registry check, dependency checks, and repository test gate.
       Create `docs/conformance/spec-014-conformance.md`, link it from SPEC-014
@@ -1167,6 +1170,15 @@ worst-case frame entry, exact 3,840-byte 480 x 4 tile/payload/in-flight bounds,
 80 tile visits/payloads, 320 regions, section
 deltas, symbols, maps, and no retained full framebuffer or recording list.
 No flash or connected-TFT claim occurred.
+
+`T8.6` is complete. Formatting, 667 Swift tests, governance validation, the
+13-driver registry, the 67-target/233-edge dependency audit, focused corpus
+checks, and all four standalone SPEC-014 profiles pass. The conformance report
+maps `BI-001` through `BI-015` to stable evidence with no deviation or
+exception, while preserving hardware-free boundaries. This plan is completed
+and the report supports requesting the separate human transition decision;
+SPEC-014 remains `implementing` because this work does not grant that
+authorization.
 
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.

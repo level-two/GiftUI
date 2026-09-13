@@ -65,6 +65,7 @@ declared_inputs() {
             "${PROJECT_ROOT}/docs/specs/spec-002-portable-foundation.md" \
             "${PROJECT_ROOT}/docs/specs/spec-014-backend-integration.md" \
             "${PROJECT_ROOT}/docs/implementation-plans/spec-014-implementation-plan.md" \
+            "${PROJECT_ROOT}/docs/conformance/spec-014-conformance.md" \
             "${SCRIPT_DIR}/check-driver-registry.rb" \
             "${SCRIPT_DIR}/check-spec-014-fixtures.rb" \
             "${SCRIPT_DIR}/check-spec-014-failures.rb" \
@@ -75,6 +76,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-014-frame-work.rb" \
             "${SCRIPT_DIR}/check-spec-014-contributors.rb" \
             "${SCRIPT_DIR}/check-spec-014-capability-fixtures.rb" \
+            "${SCRIPT_DIR}/check-spec-014-conformance.rb" \
             "${SCRIPT_DIR}/check-spec-014-migration.rb" \
             "${SCRIPT_DIR}/check-spec-014-module-contract.rb" \
             "${SCRIPT_DIR}/check-spec-014-resources.rb" \
@@ -130,7 +132,7 @@ log_path="${staging}/run.log"
 printf '# item\tstatus\treason\n' >"${prerequisites_path}"
 {
     printf '# criterion\tstatus\treason\n'
-    awk -F $'\t' '!/^#/ && NF { print $1 "\tmissing\t" $3 }' \
+    awk -F $'\t' '!/^#/ && NF { status = $5 == "complete" ? "complete" : "missing"; print $1 "\t" status "\t" $3 }' \
         "${FIXTURE_ROOT}/required-evidence.tsv"
 } >"${evidence_path}"
 
@@ -247,6 +249,7 @@ run_required migration-inventory "${SCRIPT_DIR}/check-spec-014-migration.rb"
 run_required contributor-boundaries "${SCRIPT_DIR}/check-spec-014-contributors.rb"
 run_required capability-fixtures \
     "${SCRIPT_DIR}/check-spec-014-capability-fixtures.rb"
+run_required conformance-report "${SCRIPT_DIR}/check-spec-014-conformance.rb"
 run_required startup-validation-boundaries \
     "${SCRIPT_DIR}/check-spec-014-startup-validator.rb"
 run_required frame-work-arithmetic "${SCRIPT_DIR}/check-spec-014-frame-work.rb"
