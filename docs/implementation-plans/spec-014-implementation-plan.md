@@ -392,7 +392,7 @@ one-payload full-surface rule.
       consumption. Cover zero damage, odd stride, row padding, maximum damaged
       rows, payload/region equality and first excess, cancellation, and faults
       on submission/frame completion.
-- [ ] `T5.4` — Run every frozen raster case through recording, RGBA8888, and
+- [x] `T5.4` — Run every frozen raster case through recording, RGBA8888, and
       RGB565 full-surface paths. Compare affected logical pixels, ordering,
       exact bytes, counters, operation/resource calls, and pre/post-transfer
       behavior with zero tolerance.
@@ -944,6 +944,17 @@ or failure remains pre-transfer and cancellable; submit and frame-end failures
 retain their exact stage and before/after-acceptance value. Tests cover partial
 damage, odd stride, maximum row/byte equality, first-byte-short capacity,
 zero payload, cancellation, submit failure, and post-transfer frame-end failure.
+
+`T5.4` is complete. The full-surface comparison suite replays all 17 frozen
+stroke vectors through the RGBA8888 and RGB565 surfaces and compares every
+logical pixel with the independent recording mask, including exact later-
+operation winners. Each affected pixel is compared to canonical encoded bytes;
+each unaffected pixel and odd-stride padding byte must retain its poison value.
+Together with the canonical mixed endpoint and focused fill/glyph resource
+tests, this covers every current `raster.yaml` operation, ordering, resource,
+counter, empty, clipping, damage, encoding, and overflow observation. Milestone
+5 is complete. BI-007/BI-009 remain pending only for the required tiled and
+final four-profile comparisons.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

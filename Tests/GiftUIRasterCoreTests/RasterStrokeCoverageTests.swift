@@ -6,7 +6,7 @@ import Testing
 
 @testable import GiftUIRasterCore
 
-private struct StrokeOperationFixture {
+struct StrokeOperationFixture {
     let symbol: Character
     let color: Color
     let lineWidth: Int32
@@ -18,7 +18,7 @@ private struct StrokeOperationFixture {
     let subpaths: [SubpathRange]
 }
 
-private struct StrokeVectorFixture: CustomTestStringConvertible {
+struct StrokeVectorFixture: CustomTestStringConvertible {
     let name: String
     let width: Int32
     let height: Int32
@@ -28,7 +28,7 @@ private struct StrokeVectorFixture: CustomTestStringConvertible {
     var testDescription: String { name }
 }
 
-private struct FixtureStroke: StraightLineStrokeView {
+struct FixtureStroke: StraightLineStrokeView {
     let header: StraightLineStrokeHeader
     let points: [Point]
     let subpaths: [SubpathRange]
@@ -83,7 +83,7 @@ private func operation(
     )
 }
 
-private let strokeVectors: [StrokeVectorFixture] = [
+let strokeVectors: [StrokeVectorFixture] = [
     StrokeVectorFixture(
         name: "horizontal-odd-butt",
         width: 7,
@@ -349,22 +349,28 @@ private let strokeVectors: [StrokeVectorFixture] = [
         height: 3,
         operations: [
             operation(
-                "A", width: 1, clip: rect(0, 0, 6, 3), points: [point(0, 0), point(0, 3)],
+                "A", color: Color(red: 0, green: 0, blue: 0), width: 1,
+                clip: rect(0, 0, 6, 3), points: [point(0, 0), point(0, 3)],
                 subpaths: [(0, 2)]),
             operation(
-                "B", width: 1, clip: rect(0, 0, 6, 3), points: [point(1, 0), point(1, 3)],
+                "B", color: Color(red: 1, green: 1, blue: 1), width: 1,
+                clip: rect(0, 0, 6, 3), points: [point(1, 0), point(1, 3)],
                 subpaths: [(0, 2)]),
             operation(
-                "C", width: 1, clip: rect(0, 0, 6, 3), points: [point(2, 0), point(2, 3)],
+                "C", color: Color(red: 127, green: 127, blue: 127), width: 1,
+                clip: rect(0, 0, 6, 3), points: [point(2, 0), point(2, 3)],
                 subpaths: [(0, 2)]),
             operation(
-                "D", width: 1, clip: rect(0, 0, 6, 3), points: [point(3, 0), point(3, 3)],
+                "D", color: Color(red: 128, green: 128, blue: 128), width: 1,
+                clip: rect(0, 0, 6, 3), points: [point(3, 0), point(3, 3)],
                 subpaths: [(0, 2)]),
             operation(
-                "E", width: 1, clip: rect(0, 0, 6, 3), points: [point(4, 0), point(4, 3)],
+                "E", color: Color(red: 254, green: 254, blue: 254), width: 1,
+                clip: rect(0, 0, 6, 3), points: [point(4, 0), point(4, 3)],
                 subpaths: [(0, 2)]),
             operation(
-                "F", width: 1, clip: rect(0, 0, 6, 3), points: [point(5, 0), point(5, 3)],
+                "F", color: Color(red: 255, green: 255, blue: 255), width: 1,
+                clip: rect(0, 0, 6, 3), points: [point(5, 0), point(5, 3)],
                 subpaths: [(0, 2)]),
         ],
         expectedMask: ["BCDEFF", "BCDEFF", "BCDEFF"]
