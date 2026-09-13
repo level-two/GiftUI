@@ -346,7 +346,7 @@ for every operation independently of full-surface or tiled storage.
       widened checked arithmetic, alpha 255, unused bytes zero, and no gamma,
       premultiplication, dithering, color-space conversion, or native-format
       substitution. Cover channel values 0, 1, 127, 128, 254, and 255.
-- [ ] `T4.2` — Implement half-open surface/damage/resolved-clip intersection,
+- [x] `T4.2` — Implement half-open surface/damage/resolved-clip intersection,
       checked negative/out-of-range geometry rejection, empty intersections,
       opaque replacement painter order, and fill coverage. Keep Canvas bounds
       out of clipping and row padding out of logical comparison.
@@ -835,6 +835,18 @@ unused value bytes zero. Focused tests and the first raster corpus case freeze
 all six required channel boundaries plus independent red, green, and blue
 packing, with exact zero-tolerance bytes and no floating-point or ambient
 native-format path.
+
+`T4.2` added the backend-neutral fill coverage primitive. It validates damage
+containment before replacement, intersects only operation bounds, resolved
+clip, damage, and surface bounds with half-open edges, and performs checked
+intersection and pixel-count arithmetic. Negative or out-of-surface operation
+geometry is clipped without inventing Canvas bounds; invalid damage is
+rejected before the callback, and empty/touching intersections make no calls.
+Pixels are visited deterministically in row-major order with the descriptor's
+canonical opaque encoding, so sequential fills implement replacement painter
+order. Focused tests cover every edge, partial negative geometry, odd stride
+independence, later-operation overwrite, invalid damage, empty coverage, and
+first replacement refusal.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
