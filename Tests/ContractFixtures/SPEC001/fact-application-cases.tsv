@@ -1,0 +1,17 @@
+# schema_version=1
+# id	fact	expected
+snapshot	captureSnapshot	atomic-capture-and-revision
+snapshot-zero-empty	captureSnapshot	accepted
+snapshot-zero-nonempty	captureSnapshot	captureRevisionMismatch
+mutation	captureMutation	exact-replay
+mutation-base-mismatch	captureMutation	unchanged-capture-rejected
+mutation-target-mismatch	captureMutation	unchanged-capture-rejected
+state-idle	acquisitionState	applied
+state-running	acquisitionState	applied
+state-stopped	acquisitionState	applied
+state-failed	acquisitionState	diagnostic-exposed
+operational-failure	operationalFailure	failed-diagnostic-exposed
+semantic-no-op	duplicate-state	no-report
+semantic-change	changed-state	one-report
+visible-range-empty	twoSecond	0..<2s
+visible-range-17.3	twoSecond	15.3..<17.3s

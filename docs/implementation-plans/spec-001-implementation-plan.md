@@ -366,7 +366,7 @@ normalization/effect/policy sequence.
       observation, exact callback conversions, two-current-value start result,
       partial-start cleanup, and rejection reporting. Prove it never owns,
       borrows, registers, observes, or mutates a ViewModel.
-- [ ] `T3.3` — Implement package-scoped mutation-phase fact application.
+- [x] `T3.3` — Implement package-scoped mutation-phase fact application.
       Atomically apply snapshots and exact mutations, validate base revisions,
       preserve capture on mismatch, apply state and operational failure, expose
       semantic error text, and emit synchronous owner-dirty reports only for
@@ -760,6 +760,9 @@ model-owned synchronous dirty reporting with proven no-op suppression.
 `T3.2` adds the non-model admission adapter with exact callback translation,
 two-current-value startup, idempotent host lifecycle, partial-start cleanup,
 original-rejection preservation, and nonrecursive reserved-failure reporting.
+`T3.3` adds atomic snapshot and exact-mutation application, fail-closed revision
+validation, state and operational-failure semantics, derived visible ranges,
+and synchronous dirty reports only for observable changes.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

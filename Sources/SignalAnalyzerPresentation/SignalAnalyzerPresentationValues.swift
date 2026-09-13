@@ -95,8 +95,14 @@ package protocol SignalAnalyzerFactAdmission {
     func submit(_ fact: SignalAnalyzerPresentationFact) -> SignalSinkDeliveryOutcome
 }
 
+package enum SignalAnalyzerFactApplicationOutcome: Equatable, Sendable {
+    case applied(changed: Bool)
+    case rejected(SignalAnalyzerRuntimeCondition)
+}
+
 package final class SignalAnalyzerViewModel: _GiftUIObservableReference {
     package private(set) var state = SignalAnalyzerViewState()
+    package private(set) var captureRevision: UInt32 = 0
 
     private let startAcquisition: StartSignalAcquisitionUseCase
     private let stopAcquisition: StopSignalAcquisitionUseCase
@@ -149,6 +155,64 @@ package final class SignalAnalyzerViewModel: _GiftUIObservableReference {
         let changed = state.visibleWindow != window
         state.visibleWindow = window
         reportChange(if: changed)
+    }
+
+    package func apply(
+        _ fact: SignalAnalyzerPresentationFact
+    ) -> SignalAnalyzerFactApplicationOutcome {
+        let previousState = state
+
+        switch fact {
+        case .captureSnapshot(let revision, let capture):
+            let publication = SignalCapturePublication.snapshot(
+                revision: revision,
+                capture: capture
+            )
+            guard
+                case .applied(let next) = publication.replay(
+                    on: SignalCaptureRevisionState(
+                        revision: captureRevision,
+                        capture: state.capture
+                    )
+                )
+            else {
+                return .rejected(.captureRevisionMismatch)
+            }
+            captureRevision = next.revision
+            state.capture = next.capture
+
+        case .captureMutation(let revision, let change):
+            let publication = SignalCapturePublication.mutation(
+                revision: revision,
+                change: change
+            )
+            guard
+                case .applied(let next) = publication.replay(
+                    on: SignalCaptureRevisionState(
+                        revision: captureRevision,
+                        capture: state.capture
+                    )
+                )
+            else {
+                return .rejected(.captureRevisionMismatch)
+            }
+            captureRevision = next.revision
+            state.capture = next.capture
+
+        case .acquisitionState(let acquisitionState):
+            state.acquisitionState = acquisitionState
+            if case .failed(let diagnostic) = acquisitionState {
+                state.errorMessage = diagnostic
+            }
+
+        case .operationalFailure(let failure):
+            state.acquisitionState = .failed(failure.diagnostic)
+            state.errorMessage = failure.diagnostic
+        }
+
+        let changed = state != previousState
+        reportChange(if: changed)
+        return .applied(changed: changed)
     }
 
     package func _giftUIAttachChangeSink(
