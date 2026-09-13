@@ -450,7 +450,7 @@ preserves failure/health/diagnostic ownership.
       the first post-reservation `sink.begin` before mutation; map
       backpressure/refusals/failures exactly; and call the body at most once.
       Record target/body call counts for every pre-body exit.
-- [ ] `T7.2` — Implement exact stream completion and cleanup. On complete,
+- [x] `T7.2` — Implement exact stream completion and cleanup. On complete,
       accept after the sink has performed one surface and target finish. Before
       transfer, map each non-complete body result through SPEC-009 and perform
       one discard/cancel. After transfer, accept every body result, preserve
@@ -1053,6 +1053,19 @@ approved Specification and plan now clarify that the body-owned header cannot
 be checked before the API delivers it: its exact work validation occurs in
 the reserved sink's first `begin`, before mutation. T7.2 owns the normative
 post-body cleanup and result mapping behind the session-sink seam.
+
+`T7.2` is complete. The endpoint now owns post-body disposition instead of
+delegating it to an opaque sink hook. A complete stream is accepted only after
+the session reports terminal surface/target completion. Before transfer, any
+other result performs one raster discard and one reservation cancel, then maps
+producer failure, exact capacity failure, endpoint refusal, or contract
+violation using the separately retained producer error. A false complete is a
+cancellable contract violation. After responsibility transfer, all five body
+results are accepted; a nonterminal session is mechanically finished once,
+never discarded or cancelled, and the exact producer error remains retained.
+Focused tests cover all four pre-transfer non-complete results, malformed
+complete, every post-transfer result, and exact discard/cancel/finish counts.
+All four profiles compile the endpoint/session state boundary.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

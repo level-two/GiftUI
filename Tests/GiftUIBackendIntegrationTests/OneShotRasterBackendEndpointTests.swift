@@ -60,6 +60,9 @@ private struct OfferSessionSink: RasterOfferSessionSink {
     let payloadLimits: RasterPayloadLimits
     var failure: RasterBackendError?
     var isIdleForOffer = true
+    var streamCompleted = false
+    var presentationResponsibilityAccepted = false
+    var retainedProducerError: RenderProductionError?
     var reservationResult: DisplayReservationResult
     private(set) var reservationArguments:
         (
@@ -67,8 +70,9 @@ private struct OfferSessionSink: RasterOfferSessionSink {
             UInt32,
             UInt16
         )?
-    private(set) var resolutionCalls = 0
-    private(set) var observedStreamResult: FrameStreamResult?
+    private(set) var discardCount = 0
+    private(set) var cancelCount = 0
+    private(set) var forcedFinishCount = 0
 
     mutating func reserveFrame(
         descriptor: RasterSurfaceDescriptor,
@@ -80,21 +84,21 @@ private struct OfferSessionSink: RasterOfferSessionSink {
             payloadCapacityBytes,
             regionCapacity
         )
+        if case .reserved = reservationResult {
+            isIdleForOffer = false
+        }
         return reservationResult
     }
 
-    mutating func resolveAfterBody(
-        _ result: FrameStreamResult
-    ) -> FrameOfferResult {
-        resolutionCalls += 1
-        observedStreamResult = result
-        if result == .complete {
-            return FrameOfferResult(disposition: .accepted, failure: nil)!
-        }
-        return FrameOfferResult(
-            disposition: .failed,
-            failure: .contractViolation
-        )!
+    mutating func cancelReservedFrame() {
+        cancelCount += 1
+        isIdleForOffer = true
+    }
+
+    mutating func finishTransferredFrameIfNeeded() {
+        forcedFinishCount += 1
+        streamCompleted = true
+        isIdleForOffer = true
     }
 
     borrowing func health() -> GiftUIOperationalHealth {
@@ -108,8 +112,12 @@ private struct OfferSessionSink: RasterOfferSessionSink {
     ) -> Bool { true }
     mutating func positionedGlyph(_ glyph: PositionedGlyph) -> Bool { true }
     mutating func endPositionedGlyphs() -> Bool { true }
-    mutating func finish() -> Bool { true }
-    mutating func discard() {}
+    mutating func finish() -> Bool {
+        streamCompleted = true
+        isIdleForOffer = true
+        return true
+    }
+    mutating func discard() { discardCount += 1 }
     mutating func straightLineStroke<Stroke: StraightLineStrokeView>(
         _ stroke: borrowing Stroke
     ) -> Bool { true }
@@ -162,6 +170,7 @@ func oneShotEndpointReservesExactSlotBeforeCallingBodyOnce() {
         #expect(sink.reservationArguments?.0 == descriptor())
         #expect(sink.reservationArguments?.1 == 48)
         #expect(sink.reservationArguments?.2 == 4)
+        _ = sink.finish()
         return .complete
     }
 
@@ -169,8 +178,8 @@ func oneShotEndpointReservesExactSlotBeforeCallingBodyOnce() {
     #expect(bodyCalls == 1)
     #expect(endpoint.bodyCallCount == 1)
     #expect(endpoint.reservationCallCount == 1)
-    #expect(endpoint.sink.resolutionCalls == 1)
-    #expect(endpoint.sink.observedStreamResult == .complete)
+    #expect(endpoint.sink.discardCount == 0)
+    #expect(endpoint.sink.cancelCount == 0)
 }
 
 private struct ReservationMappingFixture: CustomTestStringConvertible {
@@ -226,7 +235,8 @@ private func reservationOutcomesMapWithoutCallingBody(
     #expect(bodyCalls == 0)
     #expect(endpoint.bodyCallCount == 0)
     #expect(endpoint.reservationCallCount == 1)
-    #expect(endpoint.sink.resolutionCalls == 0)
+    #expect(endpoint.sink.discardCount == 0)
+    #expect(endpoint.sink.cancelCount == 0)
     #expect(endpoint.lastDisplayError == fixture.displayError)
 }
 
@@ -300,4 +310,118 @@ func endpointConstructionRejectsStartupAndImmutableConfigurationMismatch() {
             startupFailure: nil
         ) == nil
     )
+}
+
+private struct PretransferStreamFixture: CustomTestStringConvertible {
+    let name: String
+    let stream: FrameStreamResult
+    let producerError: RenderProductionError?
+    let expected: FrameOfferResult
+
+    var testDescription: String { name }
+}
+
+private let pretransferStreams = [
+    PretransferStreamFixture(
+        name: "producer-failed",
+        stream: .producerFailed,
+        producerError: .invalidInput,
+        expected: FrameOfferResult(
+            disposition: .failed,
+            failure: .producerFailed
+        )!
+    ),
+    PretransferStreamFixture(
+        name: "insufficient-capacity",
+        stream: .insufficientCapacity,
+        producerError: .capacityExhausted,
+        expected: FrameOfferResult(
+            disposition: .failed,
+            failure: .insufficientCapacity
+        )!
+    ),
+    PretransferStreamFixture(
+        name: "endpoint-refused",
+        stream: .endpointRefused,
+        producerError: .sinkRefused,
+        expected: FrameOfferResult(
+            disposition: .nonRetryableRefusal,
+            failure: nil
+        )!
+    ),
+    PretransferStreamFixture(
+        name: "contract-violation",
+        stream: .contractViolation,
+        producerError: .invariantViolation,
+        expected: FrameOfferResult(
+            disposition: .failed,
+            failure: .contractViolation
+        )!
+    ),
+]
+
+@Test(arguments: pretransferStreams)
+private func pretransferBodyResultsDiscardAndCancelExactlyOnce(
+    _ fixture: PretransferStreamFixture
+) {
+    var endpoint = makeOfferEndpoint()
+    let result = endpoint.offer(provenance: offerProvenance) { sink in
+        sink.retainedProducerError = fixture.producerError
+        return fixture.stream
+    }
+    #expect(result == fixture.expected)
+    #expect(endpoint.retainedProducerError == fixture.producerError)
+    #expect(endpoint.sink.discardCount == 1)
+    #expect(endpoint.sink.cancelCount == 1)
+    #expect(endpoint.sink.forcedFinishCount == 0)
+    #expect(endpoint.sink.isIdleForOffer)
+}
+
+private let everyStreamResult: [FrameStreamResult] = [
+    .complete,
+    .producerFailed,
+    .insufficientCapacity,
+    .endpointRefused,
+    .contractViolation,
+]
+
+@Test(arguments: everyStreamResult)
+func everyPosttransferBodyResultIsAcceptedAndMechanicallyFinished(
+    _ stream: FrameStreamResult
+) {
+    var endpoint = makeOfferEndpoint()
+    let result = endpoint.offer(provenance: offerProvenance) { sink in
+        sink.presentationResponsibilityAccepted = true
+        sink.retainedProducerError =
+            stream == .complete ? nil : .invariantViolation
+        if stream == .complete {
+            _ = sink.finish()
+        }
+        return stream
+    }
+    #expect(result == FrameOfferResult(disposition: .accepted, failure: nil)!)
+    #expect(endpoint.sink.discardCount == 0)
+    #expect(endpoint.sink.cancelCount == 0)
+    #expect(endpoint.sink.forcedFinishCount == (stream == .complete ? 0 : 1))
+    #expect(endpoint.sink.streamCompleted)
+    #expect(endpoint.sink.isIdleForOffer)
+    if stream != .complete {
+        #expect(endpoint.retainedProducerError == .invariantViolation)
+    }
+}
+
+@Test
+func incompleteCompleteResultIsContractViolationAndCancellable() {
+    var endpoint = makeOfferEndpoint()
+    let result = endpoint.offer(provenance: offerProvenance) { _ in .complete }
+    #expect(
+        result
+            == FrameOfferResult(
+                disposition: .failed,
+                failure: .contractViolation
+            )!
+    )
+    #expect(endpoint.sink.discardCount == 1)
+    #expect(endpoint.sink.cancelCount == 1)
+    #expect(endpoint.sink.forcedFinishCount == 0)
 }

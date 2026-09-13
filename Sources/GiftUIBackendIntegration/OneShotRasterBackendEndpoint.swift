@@ -13,15 +13,17 @@ package protocol RasterFrameEnvelopeValidator {
 
 package protocol RasterOfferSessionSink: RasterFrameSink {
     var isIdleForOffer: Bool { get }
+    var streamCompleted: Bool { get }
+    var presentationResponsibilityAccepted: Bool { get }
+    var retainedProducerError: RenderProductionError? { get }
 
     mutating func reserveFrame(
         descriptor: RasterSurfaceDescriptor,
         payloadCapacityBytes: UInt32,
         regionCapacity: UInt16
     ) -> DisplayReservationResult
-    mutating func resolveAfterBody(
-        _ result: FrameStreamResult
-    ) -> FrameOfferResult
+    mutating func cancelReservedFrame()
+    mutating func finishTransferredFrameIfNeeded()
     borrowing func health() -> GiftUIOperationalHealth
 }
 
@@ -47,6 +49,7 @@ where
     package private(set) var bodyCallCount: UInt32 = 0
     package private(set) var reservationCallCount: UInt32 = 0
     package private(set) var lastDisplayError: DisplayTargetError?
+    package private(set) var retainedProducerError: RenderProductionError?
 
     private let envelopeValidator: EnvelopeValidator
     private var offerActive = false
@@ -133,7 +136,8 @@ where
         }
         bodyCallCount = nextBodyCount.partialValue
         let streamResult = body(&sink)
-        return sink.resolveAfterBody(streamResult)
+        retainedProducerError = sink.retainedProducerError
+        return resolve(streamResult)
     }
 
     package borrowing func health() -> GiftUIOperationalHealth {
@@ -142,6 +146,46 @@ where
 
     private func failed(_ failure: FrameOfferFailure) -> FrameOfferResult {
         FrameOfferResult(disposition: .failed, failure: failure)!
+    }
+
+    private mutating func resolve(
+        _ streamResult: FrameStreamResult
+    ) -> FrameOfferResult {
+        if sink.presentationResponsibilityAccepted {
+            if !sink.streamCompleted {
+                sink.finishTransferredFrameIfNeeded()
+            }
+            return FrameOfferResult(disposition: .accepted, failure: nil)!
+        }
+
+        if streamResult == .complete, sink.streamCompleted {
+            return FrameOfferResult(disposition: .accepted, failure: nil)!
+        }
+
+        sink.discard()
+        sink.cancelReservedFrame()
+        switch streamResult {
+        case .producerFailed:
+            guard retainedProducerError != nil else {
+                return failed(.contractViolation)
+            }
+            return failed(.producerFailed)
+        case .insufficientCapacity:
+            guard retainedProducerError == .capacityExhausted else {
+                return failed(.contractViolation)
+            }
+            return failed(.insufficientCapacity)
+        case .endpointRefused:
+            guard retainedProducerError == .sinkRefused else {
+                return failed(.contractViolation)
+            }
+            return FrameOfferResult(
+                disposition: .nonRetryableRefusal,
+                failure: nil
+            )!
+        case .complete, .contractViolation:
+            return failed(.contractViolation)
+        }
     }
 
     private static func configurationMatches(
