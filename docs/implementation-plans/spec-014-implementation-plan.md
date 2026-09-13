@@ -407,7 +407,7 @@ intersecting full-width row tiles before returning from that borrowed call,
 with one producer invocation, bounded owned payloads, and no retained Core
 address or complete frame buffer/list.
 
-- [ ] `T6.1` — Implement one caller-owned full-width row-tile workspace and
+- [x] `T6.1` — Implement one caller-owned full-width row-tile workspace and
       operation-major traversal. For each operation, visit every intersecting
       tile in order and complete all owned derivation/submission before the
       borrowed call returns; never invoke the producer per tile or revisit a
@@ -955,6 +955,20 @@ tests, this covers every current `raster.yaml` operation, ordering, resource,
 counter, empty, clipping, damage, encoding, and overflow observation. Milestone
 5 is complete. BI-007/BI-009 remain pending only for the required tiled and
 final four-profile comparisons.
+
+`T6.1` is complete. Raster Core now owns one generic RGB565 row-tile
+workspace over caller-provided fixed byte and affected-pixel storage. Its
+constructor admits only tiled RGB565 descriptors and exact region capacity;
+each full-width tile reset clears only its active bounded extent. Backend
+Integration owns the operation-major traversal: it intersects the resolved
+operation clip once, visits intersecting row tiles top-to-bottom including a
+partial final tile, finishes every synchronous workspace borrow before moving
+on, and restores idle state on raster or consumer failure. The traversal has
+no producer handle and cannot replay the producer. Focused tests prove one
+operation call, exact tile/reset/consumer counts, partial and empty cases,
+capacity and grammar rejection, canonical bytes, and cleanup. The sources
+compile in all four registered profiles. Run formation and payload submission
+remain assigned to T6.2.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

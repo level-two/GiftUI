@@ -163,6 +163,7 @@ run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterFrameWork.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/FullSurfaceRGB565Framebuffer.swift" \
+    "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RGB565TileWorkspace.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterFillCoverage.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterGlyphCoverage.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterStrokeCoverage.swift" \
@@ -177,6 +178,7 @@ run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" \
     -module-name GiftUIBackendIntegration \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/FullSurfacePayloadEmitter.swift" \
+    "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RasterBackendStartupValidator.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RasterFrameWorkAdmission.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RasterTextResourceValidation.swift" \
