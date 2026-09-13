@@ -21,6 +21,63 @@ struct SignalAnalyzerViewHierarchyTests {
         #expect(visitor.ordinals == [0])
         _ = view.body
     }
+
+    @Test(
+        "status and acquisition controls follow the exact four-state matrix",
+        arguments: [
+            (AcquisitionState.idle, "READY", false, true),
+            (.running, "RUNNING", true, false),
+            (.stopped, "STOPPED", false, true),
+            (.failed(hierarchyDiagnostic("failed")), "FAILED", false, true),
+        ]
+    )
+    func acquisitionControls(
+        state: AcquisitionState,
+        expectedStatus: String,
+        startDisabled: Bool,
+        stopDisabled: Bool
+    ) {
+        let controls = SignalAnalyzerControlState(
+            acquisitionState: state,
+            selectedWindow: .twoSeconds
+        )
+
+        #expect(hierarchyText(controls.statusText) == expectedStatus)
+        #expect(controls.startDisabled == startDisabled)
+        #expect(controls.stopDisabled == stopDisabled)
+    }
+
+    @Test(
+        "exactly the selected window control is disabled",
+        arguments: [
+            (VisibleTimeWindow.oneSecond, true, false, false),
+            (.twoSeconds, false, true, false),
+            (.fiveSeconds, false, false, true),
+        ]
+    )
+    func windowControls(
+        window: VisibleTimeWindow,
+        oneSecondDisabled: Bool,
+        twoSecondsDisabled: Bool,
+        fiveSecondsDisabled: Bool
+    ) {
+        let controls = SignalAnalyzerControlState(
+            acquisitionState: .idle,
+            selectedWindow: window
+        )
+
+        #expect(controls.oneSecondDisabled == oneSecondDisabled)
+        #expect(controls.twoSecondsDisabled == twoSecondsDisabled)
+        #expect(controls.fiveSecondsDisabled == fiveSecondsDisabled)
+    }
+}
+
+private func hierarchyDiagnostic(_ text: String) -> SignalAnalyzerDiagnostic {
+    SignalAnalyzerDiagnostic(exactUTF8: Array(text.utf8))!
+}
+
+private func hierarchyText(_ text: BoundedText) -> String {
+    text.withUTF8 { String(decoding: $0, as: UTF8.self) }
 }
 
 private struct HierarchyStateVisitor: _GiftUIObservableStateDeclarationVisitor {

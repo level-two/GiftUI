@@ -400,7 +400,7 @@ occurrences without platform branches or closure actions.
       CH1-CH4 rows, controls, and error region explicitly; use no dynamic child
       collection, view-started observation, platform branch, runtime import, or
       unsupported client feature.
-- [ ] `T4.2` — Implement the complete title/subtitle/status/error text and
+- [x] `T4.2` — Implement the complete title/subtitle/status/error text and
       exact enabled/disabled table with the six qualified
       `Button(..., action: SignalAnalyzerAction.case)` values. Use only the
       approved opaque color, foreground, background, stack, spacer, padding,
@@ -772,6 +772,9 @@ lifetime, no-op reporting, and source-substitution transcript equivalence.
 `T4.1` adds the portable observable root and fixed explicit header, status,
 waveform, four-channel, six-control, and conditional-error hierarchy without
 dynamic collections, platform branches, or view-owned lifecycle work.
+`T4.2` adds the exact title, subtitle, status, channel-level, action-label,
+error, acquisition-control, and selected-window-control semantics with the
+complete four-state by three-window normalized matrix.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

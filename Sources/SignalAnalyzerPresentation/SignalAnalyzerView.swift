@@ -16,7 +16,10 @@ package struct SignalAnalyzerView: View {
                 capture: viewModel.state.capture,
                 visibleRange: viewModel.visibleRange
             )
-            SignalAnalyzerControlsView()
+            SignalAnalyzerControlsView(
+                acquisitionState: viewModel.state.acquisitionState,
+                selectedWindow: viewModel.state.visibleWindow
+            )
             if let errorMessage = viewModel.state.errorMessage {
                 Text(errorMessage.boundedText)
             }
@@ -105,19 +108,64 @@ package struct SignalAnalyzerTraceView: View {
 }
 
 package struct SignalAnalyzerControlsView: View {
+    package let acquisitionState: AcquisitionState
+    package let selectedWindow: VisibleTimeWindow
+
     package var body: some View {
+        let controlState = SignalAnalyzerControlState(
+            acquisitionState: acquisitionState,
+            selectedWindow: selectedWindow
+        )
         VStack {
             HStack {
                 Button("Start", action: SignalAnalyzerAction.start)
+                    .disabled(controlState.startDisabled)
                 Button("Stop", action: SignalAnalyzerAction.stop)
+                    .disabled(controlState.stopDisabled)
                 Button("Clear", action: SignalAnalyzerAction.clear)
             }
             HStack {
                 Button("1 s", action: SignalAnalyzerAction.selectOneSecond)
+                    .disabled(controlState.oneSecondDisabled)
                 Button("2 s", action: SignalAnalyzerAction.selectTwoSeconds)
+                    .disabled(controlState.twoSecondsDisabled)
                 Button("5 s", action: SignalAnalyzerAction.selectFiveSeconds)
+                    .disabled(controlState.fiveSecondsDisabled)
             }
         }
+    }
+}
+
+package struct SignalAnalyzerControlState: Equatable, Sendable {
+    package let statusText: BoundedText
+    package let startDisabled: Bool
+    package let stopDisabled: Bool
+    package let oneSecondDisabled: Bool
+    package let twoSecondsDisabled: Bool
+    package let fiveSecondsDisabled: Bool
+
+    package init(acquisitionState: AcquisitionState, selectedWindow: VisibleTimeWindow) {
+        switch acquisitionState {
+        case .idle:
+            statusText = BoundedText("READY")!
+            startDisabled = false
+            stopDisabled = true
+        case .running:
+            statusText = BoundedText("RUNNING")!
+            startDisabled = true
+            stopDisabled = false
+        case .stopped:
+            statusText = BoundedText("STOPPED")!
+            startDisabled = false
+            stopDisabled = true
+        case .failed:
+            statusText = BoundedText("FAILED")!
+            startDisabled = false
+            stopDisabled = true
+        }
+        oneSecondDisabled = selectedWindow == .oneSecond
+        twoSecondsDisabled = selectedWindow == .twoSeconds
+        fiveSecondsDisabled = selectedWindow == .fiveSeconds
     }
 }
 

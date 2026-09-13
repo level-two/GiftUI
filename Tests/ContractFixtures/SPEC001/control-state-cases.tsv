@@ -1,0 +1,14 @@
+# schema_version=1
+# state	window	status	start-disabled	stop-disabled	clear-disabled	one-disabled	two-disabled	five-disabled	error-region
+idle	oneSecond	READY	false	true	false	true	false	false	absent
+idle	twoSeconds	READY	false	true	false	false	true	false	absent
+idle	fiveSeconds	READY	false	true	false	false	false	true	absent
+running	oneSecond	RUNNING	true	false	false	true	false	false	absent
+running	twoSeconds	RUNNING	true	false	false	false	true	false	absent
+running	fiveSeconds	RUNNING	true	false	false	false	false	true	absent
+stopped	oneSecond	STOPPED	false	true	false	true	false	false	absent
+stopped	twoSeconds	STOPPED	false	true	false	false	true	false	absent
+stopped	fiveSeconds	STOPPED	false	true	false	false	false	true	absent
+failed	oneSecond	FAILED	false	true	false	true	false	false	present-exact-diagnostic
+failed	twoSeconds	FAILED	false	true	false	false	true	false	present-exact-diagnostic
+failed	fiveSeconds	FAILED	false	true	false	false	false	true	present-exact-diagnostic
