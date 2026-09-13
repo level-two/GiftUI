@@ -531,6 +531,10 @@ connected-hardware evidence is explicit rather than implied.
       first-excess cancellation, every policy/no-policy row, every
       construction/activation/teardown state, diagnostics, arithmetic, and
       fault injection. Add forbidden-import and portable-source scans.
+      **Partial:** the registered host-import, forbidden focused-owner import,
+      protected-owner upward-import, and ambient-lookup scans are complete.
+      Integrated action/input, lifecycle, failure, diagnostic, arithmetic,
+      resource, and fault-injection rows remain pending.
 - [ ] `T7.2` — Finish `scripts/contracts/run-spec-015.sh` so each exact profile
       runs unit, conformance, integration, compile/link, static-runtime,
       allocation, latency, resource-accounting, and generated-manifest
