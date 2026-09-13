@@ -371,7 +371,7 @@ normalization/effect/policy sequence.
       preserve capture on mismatch, apply state and operational failure, expose
       semantic error text, and emit synchronous owner-dirty reports only for
       changes. Prove callbacks cannot enter these operations directly.
-- [ ] `T3.4` — Implement the narrow analyzer owner adapter and exhaustive total
+- [x] `T3.4` — Implement the narrow analyzer owner adapter and exhaustive total
       mapping from repository, admission, and runtime conditions into exact
       SPEC-003 outcomes. Apply mandatory effects before constructing only valid
       residual inputs, enforce the selected total policy, reserve the failure
@@ -763,6 +763,9 @@ original-rejection preservation, and nonrecursive reserved-failure reporting.
 `T3.3` adds atomic snapshot and exact-mutation application, fail-closed revision
 validation, state and operational-failure semantics, derived visible ranges,
 and synchronous dirty reports only for observable changes.
+`T3.4` adds exhaustive repository/admission/runtime normalization, ordered
+mandatory effects, nonrecursive reserved-failure handling, coordinator-owned
+contained-phase retry, valid residual inputs, and the target's total policy.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

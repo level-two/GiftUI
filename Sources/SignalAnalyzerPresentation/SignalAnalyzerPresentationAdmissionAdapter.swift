@@ -10,6 +10,34 @@ package protocol SignalAnalyzerOperationalFailureFactory {
         for condition: SignalAnalyzerRepositoryCondition,
         diagnostic: SignalAnalyzerDiagnostic
     ) -> SignalAnalyzerOperationalFailure
+
+    func completeAdmissionFailure(
+        _ failure: SignalAnalyzerOperationalFailure,
+        rejection: SignalSinkDeliveryRejection,
+        context: SignalAnalyzerResidualPolicyContext,
+        reservedOutcome: SignalSinkDeliveryOutcome
+    )
+
+    func completeRepositoryFailure(
+        _ failure: SignalAnalyzerOperationalFailure,
+        condition: SignalAnalyzerRepositoryCondition,
+        reservedOutcome: SignalSinkDeliveryOutcome
+    )
+}
+
+package extension SignalAnalyzerOperationalFailureFactory {
+    func completeAdmissionFailure(
+        _ failure: SignalAnalyzerOperationalFailure,
+        rejection: SignalSinkDeliveryRejection,
+        context: SignalAnalyzerResidualPolicyContext,
+        reservedOutcome: SignalSinkDeliveryOutcome
+    ) {}
+
+    func completeRepositoryFailure(
+        _ failure: SignalAnalyzerOperationalFailure,
+        condition: SignalAnalyzerRepositoryCondition,
+        reservedOutcome: SignalSinkDeliveryOutcome
+    ) {}
 }
 
 package final class SignalAnalyzerPresentationAdmissionAdapter: SignalCaptureSink,
@@ -75,10 +103,13 @@ package final class SignalAnalyzerPresentationAdmissionAdapter: SignalCaptureSin
             outcome = admission.submit(.captureMutation(revision: revision, change: change))
             reportsRejection = true
         case .terminalFailure(let condition, let diagnostic):
-            outcome = admission.submit(
-                .operationalFailure(
-                    failureFactory.failure(for: condition, diagnostic: diagnostic)
-                )
+            let failure = failureFactory.failure(for: condition, diagnostic: diagnostic)
+            outcome = admission.submit(.operationalFailure(failure))
+            stopObserving()
+            failureFactory.completeRepositoryFailure(
+                failure,
+                condition: condition,
+                reservedOutcome: outcome
             )
             reportsRejection = false
         }
@@ -101,8 +132,14 @@ package final class SignalAnalyzerPresentationAdmissionAdapter: SignalCaptureSin
 
     private func reportActiveRejection(_ outcome: SignalSinkDeliveryOutcome) {
         guard !isStarting, case .rejected(let rejection) = outcome else { return }
-        _ = admission.submit(
-            .operationalFailure(failureFactory.failure(for: rejection, context: .activeDelivery))
+        let failure = failureFactory.failure(for: rejection, context: .activeDelivery)
+        let reservedOutcome = admission.submit(.operationalFailure(failure))
+        stopObserving()
+        failureFactory.completeAdmissionFailure(
+            failure,
+            rejection: rejection,
+            context: .activeDelivery,
+            reservedOutcome: reservedOutcome
         )
     }
 
@@ -115,8 +152,13 @@ package final class SignalAnalyzerPresentationAdmissionAdapter: SignalCaptureSin
         guard case .rejected(let rejection) = outcome else {
             return .rejected(.runtimeUnavailable)
         }
-        _ = admission.submit(
-            .operationalFailure(failureFactory.failure(for: rejection, context: .observationStart))
+        let failure = failureFactory.failure(for: rejection, context: .observationStart)
+        let reservedOutcome = admission.submit(.operationalFailure(failure))
+        failureFactory.completeAdmissionFailure(
+            failure,
+            rejection: rejection,
+            context: .observationStart,
+            reservedOutcome: reservedOutcome
         )
         return .rejected(rejection)
     }
