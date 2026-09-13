@@ -368,6 +368,11 @@ behavior, and emits one immutable report only after complete success.
       accessor ledger proving fixed order, immediate stop, no later read,
       single-use validation, no partial report/borrow, no policy decision, and
       no live owner construction on failure.
+      **Partial:** exact total-table validation, malformed-row rejection,
+      stages 2/4/5/6/7/8 first-failure precedence, single-use guarding, and
+      final report field equality are complete. The poison-accessor ledger,
+      graph/runtime/workload combined-precedence rows, and explicit
+      policy-decision/owner side-effect probes remain open.
 
 ### Milestone 4: Construct, Activate, Fail, and Tear Down One Host
 
@@ -762,3 +767,11 @@ at `.actionAndModel` or `.inputAndWake`, with root-target defects preserved as
 callback-bound, admission, and non-retention evidence joined with T5.4.
 Current evidence is in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-3/application-projection-validation.md`.
+
+The first T3.6 slice now requires exact equality with all nine approved policy
+rows rather than merely accepting any selected member of a nonempty set. It
+rejects each independently wrong allowed set or selection, proves the policy
+stage is last across the available combined-failure corpus, and checks every
+immutable `HostAssemblyReport` field. T3.6 remains open for the complete
+poison-accessor and no-side-effect ledger. Current evidence is in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-3/policy-and-report-validation.md`.

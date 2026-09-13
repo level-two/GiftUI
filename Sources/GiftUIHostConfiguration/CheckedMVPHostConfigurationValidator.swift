@@ -109,7 +109,8 @@ where
         ) {
             return .invalid(stage: .inputAndWake, error: error)
         }
-        guard validatePolicy() else {
+        guard HostResidualPolicyTableValidation.validate(residualPolicyTable)
+        else {
             return .invalid(stage: .policy, error: .incompleteFailurePolicy)
         }
 
@@ -177,25 +178,5 @@ where
         return SignalAnalyzerWorkloadStartupValidation.validate(
             configuration: configuration
         )
-    }
-
-    private borrowing func validatePolicy() -> Bool {
-        for rawValue in UInt8(0) ... 8 {
-            let context = HostResidualPolicyContext(rawValue: rawValue)!
-            let allowed = residualPolicyTable.allowed(for: context)
-            let selection = residualPolicyTable.selection(for: context)
-            let selected = GiftUIAllowedDispositions(
-                rawValue: 1 << selection.rawValue
-            )
-            guard !allowed.isEmpty, allowed.contains(selected) else {
-                return false
-            }
-            if selection == .invokeFatalHook,
-                !residualPolicyTable.fatalHookIsAvailable
-            {
-                return false
-            }
-        }
-        return true
     }
 }

@@ -20,12 +20,30 @@ struct HostValidatorGraphFixture: HostComponentGraphView {
 }
 
 struct HostValidatorPolicyFixture: MVPHostResidualPolicyTable {
-    var fatalHookIsAvailable: Bool { false }
+    let overriddenContext: HostResidualPolicyContext?
+    let overriddenAllowed: GiftUIAllowedDispositions?
+    let overriddenSelection: GiftUIResidualDisposition?
+    let fatalHookIsAvailable: Bool
+
+    init(
+        overriddenContext: HostResidualPolicyContext? = nil,
+        overriddenAllowed: GiftUIAllowedDispositions? = nil,
+        overriddenSelection: GiftUIResidualDisposition? = nil,
+        fatalHookIsAvailable: Bool = false
+    ) {
+        self.overriddenContext = overriddenContext
+        self.overriddenAllowed = overriddenAllowed
+        self.overriddenSelection = overriddenSelection
+        self.fatalHookIsAvailable = fatalHookIsAvailable
+    }
 
     func allowed(
         for context: HostResidualPolicyContext
     ) -> GiftUIAllowedDispositions {
-        switch context {
+        if context == overriddenContext, let overriddenAllowed {
+            return overriddenAllowed
+        }
+        return switch context {
         case .presentationBackpressure, .presentationRetryableRefusal:
             [.requestPacedRetry, .quiesceAffectedScope]
         case .containedCandidateFailure:
@@ -43,7 +61,10 @@ struct HostValidatorPolicyFixture: MVPHostResidualPolicyTable {
     func selection(
         for context: HostResidualPolicyContext
     ) -> GiftUIResidualDisposition {
-        switch context {
+        if context == overriddenContext, let overriddenSelection {
+            return overriddenSelection
+        }
+        return switch context {
         case .presentationBackpressure, .presentationRetryableRefusal:
             .requestPacedRetry
         case .containedCandidateFailure, .staleInputOrRegistration:
@@ -80,7 +101,8 @@ func makeValidHostValidator(
     capabilityWorkspace: RasterPresentationResolverWorkspace? = nil,
     endpoint: HostEndpointConfiguration? = nil,
     actionAndModel: HostActionModelConfiguration? = nil,
-    inputAndWake: HostInputWakeConfiguration? = nil
+    inputAndWake: HostInputWakeConfiguration? = nil,
+    residualPolicyTable: HostValidatorPolicyFixture = HostValidatorPolicyFixture()
 ) -> CheckedMVPHostConfigurationValidator<
     HostValidatorGraphFixture, HostValidatorPolicyFixture
 > {
@@ -119,7 +141,7 @@ func makeValidHostValidator(
         endpoint: endpoint ?? defaultEndpoint,
         actionAndModel: actionAndModel ?? makeHostActionModelFixture(),
         inputAndWake: inputAndWake ?? makeHostInputWakeFixture(),
-        residualPolicyTable: HostValidatorPolicyFixture()
+        residualPolicyTable: residualPolicyTable
     )
 }
 
