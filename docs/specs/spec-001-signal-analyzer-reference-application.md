@@ -6,7 +6,7 @@ status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-08-28
+updated: 2026-09-13
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -1910,6 +1910,12 @@ behavioral, resource, profile, or connected-hardware evidence.
 ## Implementation Notes
 
 This section is non-authoritative.
+
+### Implementation records
+
+- [SPEC-001 Implementation Plan](../implementation-plans/spec-001-implementation-plan.md)
+  is ready and maps all acceptance criteria to ordered implementation and
+  evidence tasks. It does not change this Specification's contract.
 
 ### Current implementation evidence
 
