@@ -1102,3 +1102,128 @@ func tiledFillAndExactGlyphMatchFullSurfaceWithPainterOverwrite() {
     let fullBytes = full.withBytes { Array($0) }
     #expect(tiledBytes == fullBytes)
 }
+
+private struct PlatformTileFixture: CustomTestStringConvertible {
+    let name: String
+    let width: UInt16
+    let height: UInt16
+    let tileHeight: UInt16
+    let tileBytes: UInt32
+    let tileCount: UInt32
+
+    var testDescription: String { name }
+}
+
+private let platformTileFixtures = [
+    PlatformTileFixture(
+        name: "raspberry-pi-240x16",
+        width: 240,
+        height: 240,
+        tileHeight: 16,
+        tileBytes: 7_680,
+        tileCount: 15
+    ),
+    PlatformTileFixture(
+        name: "nrf52840-480x4",
+        width: 480,
+        height: 320,
+        tileHeight: 4,
+        tileBytes: 3_840,
+        tileCount: 80
+    ),
+]
+
+@Test(arguments: platformTileFixtures)
+private func exactPlatformTilesMeetWorstCaseHighWater(
+    _ fixture: PlatformTileFixture
+) {
+    let bounds = Rect(
+        origin: Point(x: 0, y: 0),
+        size: Size(width: Int32(fixture.width), height: Int32(fixture.height))!
+    )!
+    let rowBytes = UInt32(fixture.width) * 2
+    let descriptor = RasterSurfaceDescriptor(
+        bounds: bounds,
+        encoding: .rgb565BigEndian,
+        bytesPerRow: rowBytes,
+        realization: .tiled,
+        regionWidth: fixture.width,
+        regionHeight: fixture.tileHeight
+    )!
+    var workspace = RGB565TileWorkspace(
+        descriptor: descriptor,
+        storage: TileStorage(
+            byteCount: Int(fixture.tileBytes),
+            pixelCount: Int(fixture.width) * Int(fixture.tileHeight)
+        )
+    )!
+    var target = TileTarget(
+        capacityBytes: fixture.tileBytes,
+        regionCapacity: fixture.tileHeight
+    )
+    var work = RasterWorkTracker(
+        limits: RasterPayloadLimits(
+            maximumRasterBytes: fixture.tileBytes,
+            maximumPayloadBytes: fixture.tileBytes,
+            maximumRegionsPerPayload: fixture.tileHeight,
+            maximumRegionSubmissionsPerFrame: UInt32(fixture.height),
+            maximumTileVisitsPerFrame: fixture.tileCount,
+            maximumInFlightPayloads: 1,
+            maximumGlyphRasterBytes: 1,
+            maximumStrokeWorkspaceBytes: 1
+        )!
+    )
+    let fill = FillRectOperation(bounds: bounds, clip: bounds, color: .green)
+    let traversal = OperationMajorTileTraversal.visit(
+        operationClip: bounds,
+        damageBounds: bounds,
+        workspace: &workspace,
+        { damage, replace in
+            if case .completed = RasterFillCoverage.rasterize(
+                fill,
+                descriptor: descriptor,
+                damageBounds: damage,
+                replace
+            ) {
+                return true
+            }
+            return false
+        },
+        { tile in
+            if case .completed = RGB565TilePayloadEmitter.submit(
+                &tile,
+                reservation: DisplayReservationID(rawValue: 11),
+                target: &target,
+                work: &work
+            ) {
+                return true
+            }
+            return false
+        }
+    )
+
+    #expect(traversal == .completed(tileVisits: fixture.tileCount))
+    #expect(work.highWater.rasterBytes == fixture.tileBytes)
+    #expect(work.highWater.payloadBytes == fixture.tileBytes)
+    #expect(work.highWater.inFlightBytes == fixture.tileBytes)
+    #expect(work.highWater.tileVisits == fixture.tileCount)
+    #expect(work.highWater.payloads == fixture.tileCount)
+    #expect(work.highWater.regionSubmissions == UInt32(fixture.height))
+    #expect(target.maximumInFlightPayloads == 1)
+    #expect(target.maximumInFlightBytes == fixture.tileBytes)
+    #expect(target.payloads.count == Int(fixture.tileCount))
+    #expect(
+        target.payloads.allSatisfy {
+            $0.bytes.count == Int(fixture.tileBytes)
+                && $0.regions.count == Int(fixture.tileHeight)
+        })
+    #expect(
+        target.payloads.flatMap(\.bytes).enumerated().allSatisfy {
+            $0.offset.isMultiple(of: 2) ? $0.element == 0x07 : $0.element == 0xE0
+        })
+    #expect(workspace.storage.byteCapacity == fixture.tileBytes)
+    if fixture.name == "nrf52840-480x4" {
+        #expect(fixture.tileBytes == 3_840)
+        #expect(fixture.tileBytes < UInt32(fixture.width) * UInt32(fixture.height) * 2)
+    }
+}

@@ -425,7 +425,7 @@ address or complete frame buffer/list.
       workspace poisoning, and post-call/post-offer address capture. Reject
       retained operations, glyph/stroke views, producer closure or sink borrow,
       replay, dynamic display lists, and hidden full-frame storage.
-- [ ] `T6.5` — Run the exact Raspberry Pi 240 x 16 and nRF52840 480 x 4 region
+- [x] `T6.5` — Run the exact Raspberry Pi 240 x 16 and nRF52840 480 x 4 region
       configurations at equal and worst-case limits. Record tile/payload/region
       high-water and prove one in-flight slot, 3,840-byte nRF storage, no full
       framebuffer, and exact equality with recording/full-surface output.
@@ -1009,6 +1009,19 @@ containers, producer storage, and class-owned workspace declarations in all
 three tiled production sources. Nonescaping closure and inout borrow types
 prevent producer, sink, operation, glyph payload, and workspace borrows from
 being stored. All four profiles compile the ownership seams.
+
+`T6.5` is complete for the required hardware-free evidence. The exact
+Raspberry Pi 240 x 240 / 240 x 16 configuration reaches 7,680 raster,
+payload, and in-flight bytes with 15 ordered tile/payload visits and 240
+regions. The exact nRF52840 480 x 320 / 480 x 4 configuration reaches 3,840
+bytes in all three domains with 80 ordered tile/payload visits and 320
+regions. Both run at equality under a single synchronous in-flight slot and
+produce exact green RGB565 bytes for every logical pixel. The nRF workspace
+is explicitly smaller than the 307,200-byte complete framebuffer, while the
+registered storage audit rejects hidden owned frame storage and all four
+profiles compile the same generic implementation. T6.3 supplies the
+zero-tolerance recording/full-surface comparisons; no hardware was opened,
+deployed, or flashed.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

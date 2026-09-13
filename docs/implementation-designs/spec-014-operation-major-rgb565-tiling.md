@@ -159,6 +159,8 @@ T6.3's corpus and full-surface comparisons are recorded in
 [`tiled-raster-equivalence.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/tiled-raster-equivalence.md).
 T6.4's single-borrow glyph seam and poisoning/address evidence are recorded in
 [`borrow-lifetime-evidence.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/borrow-lifetime-evidence.md).
-Later T6.5-T6.6 links will be added with those tasks. Full-surface comparison
+T6.5's exact platform high-water evidence is recorded in
+[`platform-tile-high-water.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/platform-tile-high-water.md).
+The T6.6 link will be added with that task. Full-surface comparison
 evidence is in
 [`full-surface-comparison.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-5/full-surface-comparison.md).
