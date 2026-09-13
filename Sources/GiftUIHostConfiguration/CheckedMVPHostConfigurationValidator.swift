@@ -10,6 +10,7 @@ where
     Policy: MVPHostResidualPolicyTable
 {
     package let structuralConfiguration: HostStructuralConfiguration
+    package let runtimeProfileValidation: RuntimeProfileValidationResult
     package let componentGraph: Graph
     package let textResourceValidation: TextResourceValidationResult
     package let capabilityRequirement: RasterPresentationRequirement
@@ -23,6 +24,7 @@ where
 
     package init(
         structuralConfiguration: HostStructuralConfiguration,
+        runtimeProfileValidation: RuntimeProfileValidationResult,
         componentGraph: consuming Graph,
         textResourceValidation: TextResourceValidationResult,
         capabilityRequirement: RasterPresentationRequirement,
@@ -34,6 +36,7 @@ where
         residualPolicyTable: consuming Policy
     ) {
         self.structuralConfiguration = structuralConfiguration
+        self.runtimeProfileValidation = runtimeProfileValidation
         self.componentGraph = consume componentGraph
         self.textResourceValidation = textResourceValidation
         self.capabilityRequirement = capabilityRequirement
@@ -149,15 +152,23 @@ where
 
     private borrowing func validateRuntimeProfile() -> HostConfigurationError? {
         let configuration = structuralConfiguration
+        let validatedAudit: RuntimeStorageAudit
+        switch runtimeProfileValidation {
+        case .valid(let audit):
+            validatedAudit = audit
+        case .invalid(let error):
+            return .invalidRuntimeProfile(error)
+        }
         let expectedProfile: RuntimeProfileKind =
             switch configuration.kind {
             case .macOSDynamic, .raspberryPiDynamic: .dynamic
             case .macOSStatic, .nrf52840Static: .static
             }
         guard configuration.profile == expectedProfile,
-            configuration.runtimeAudit.profile == expectedProfile
+            validatedAudit.profile == expectedProfile
         else { return .profileMismatch }
-        guard configuration.runtimeAudit.limits == configuration.runtimeLimits
+        guard validatedAudit == configuration.runtimeAudit,
+            validatedAudit.limits == configuration.runtimeLimits
         else {
             return .invalidRuntimeProfile(.invariantViolation)
         }

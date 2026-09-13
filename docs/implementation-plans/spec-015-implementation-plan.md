@@ -317,7 +317,7 @@ from SPEC-004, SPEC-005, SPEC-013, and SPEC-014 are implemented and stable.
 returns the first exact failure, reads no later projection, invokes no live
 behavior, and emits one immutable report only after complete success.
 
-- [ ] `T3.1` — Implement stages 1-3 after graph validation: exact host/profile
+- [x] `T3.1` — Implement stages 1-3 after graph validation: exact host/profile
       match and successful SPEC-013 audit/limit equality; one already-computed
       SPEC-005 result, selected realization, identity, compatibility, and
       lifetime join; then complete workload/cardinality/capacity validation.
@@ -707,3 +707,13 @@ kind/profile, 20/2/6 fact split, 28-of-32 capacity with four-slot margin,
 six-action and single-owner cardinalities, structural audit, input/wake
 configuration, and inert endpoint projection. Reproduction evidence is in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-1/host-configuration-values.md`.
+
+T3.1 made the concrete validator consume the exact typed SPEC-013 validation
+result before accepting its retained audit. It preserves all seven runtime
+profile errors at `.runtimeProfile`, compares the returned audit with the
+immutable structural projection, consumes the already-computed SPEC-005
+result without constructing or borrowing a resource owner, and preserves all
+nine text errors at `.textResources`. The exact success fixture proceeds into
+the existing workload stage and produces a complete immutable report.
+Reproduction evidence is in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-3/profile-and-text-validation.md`.
