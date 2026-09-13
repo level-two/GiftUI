@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require "csv"
 require "json"
 require "pathname"
 
@@ -39,9 +38,13 @@ fail_comparison("profile inputs are duplicated") unless reports.length == ARGV.l
 
 normalized = reports.transform_values do |path|
   fail_comparison("missing normalized result #{path}") unless path.file?
-  table = CSV.read(path, headers: true, col_sep: "\t")
-  fail_comparison("normalized field set differs for #{path}") unless table.headers == FIELDS
-  rows = table.each_with_object({}) do |row, values|
+  lines = path.each_line.map(&:chomp)
+  headers = lines.shift&.split("\t", -1)
+  fail_comparison("normalized field set differs for #{path}") unless headers == FIELDS
+  rows = lines.each_with_object({}) do |line, values|
+    fields = line.split("\t", -1)
+    fail_comparison("normalized row width differs for #{path}") unless fields.length == FIELDS.length
+    row = FIELDS.zip(fields).to_h
     id = row.fetch("fixtureID")
     fail_comparison("duplicate fixture ID #{id} in #{path}") if values.key?(id)
     canonical = FIELDS.drop(1).to_h do |field|

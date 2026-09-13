@@ -498,7 +498,7 @@ all criteria are ready for evidence-based conformance review.
       damage, resources, region geometry, compiler, optimization, warm-up, and
       sample method. Static construction plus worst-case frame must allocate
       zero heap bytes.
-- [ ] `T8.3` — Run macOS dynamic and static against the same canonical corpus,
+- [x] `T8.3` — Run macOS dynamic and static against the same canonical corpus,
       integrating SPEC-008/SPEC-009/SPEC-012 production operations only through
       their exact owner seams. Compare logical pixels, bytes, region order,
       results, health, counters, and failures field by field. No static-private
@@ -1129,6 +1129,19 @@ profiles. A registered resource checker freezes all metric/method rows and the
 zero-heap requirement. T8.3-T8.5 consume this instrumentation to publish the
 host and cross-target measurements; a missing or nonzero measurement remains
 fail-closed at the final evidence gate.
+
+`T8.3` is complete. The macOS collector runs the Surface, Raster, Display, and
+Backend Integration production-owner suites under explicit dynamic and static
+profile flags, with isolated SwiftPM and module caches below
+`.build/spec-014/`. Both profiles passed. The normalized reporter selects the
+same 21 shared canonical fixture IDs, emits canonical JSON for descriptors,
+effective values, headers, ordered regions, encoded images, offer/body results,
+health, high-water counters, and injected failures, and contains no address or
+implementation identity. The comparator joined those reports by fixture ID
+and found every field identical. The capability checker separately proves the
+paired macOS descriptor and effective capability values are equal; neither
+profile uses a fallback or private semantic row. The collector and reporter
+are registered hashed inputs and are invoked by each macOS driver run.
 
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.

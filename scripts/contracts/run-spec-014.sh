@@ -68,6 +68,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-014-fixtures.rb" \
             "${SCRIPT_DIR}/check-spec-014-failures.rb" \
             "${SCRIPT_DIR}/compare-spec-014-profiles.rb" \
+            "${SCRIPT_DIR}/collect-spec-014-macos-profile.sh" \
             "${SCRIPT_DIR}/check-spec-014-frame-work.rb" \
             "${SCRIPT_DIR}/check-spec-014-contributors.rb" \
             "${SCRIPT_DIR}/check-spec-014-capability-fixtures.rb" \
@@ -84,6 +85,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/finalize-contract-metadata.rb" \
             "${SCRIPT_DIR}/publish-contract-report.rb" \
             "${SCRIPT_DIR}/report-input-identity.rb" \
+            "${SCRIPT_DIR}/report-spec-014-normalized-fixtures.rb" \
             "${SCRIPT_DIR}/spec014_fixture_loader.rb" \
             "${SCRIPT_DIR}/run-spec-014.sh" \
             "${SCRIPT_DIR}/verify-contract-report.rb"
@@ -254,6 +256,13 @@ run_required transaction-oracle "${SCRIPT_DIR}/check-spec-014-transactions.rb"
 run_required driver-registry "${SCRIPT_DIR}/check-driver-registry.rb"
 run_package_checks
 record_toolchain
+case "${profile}" in
+    macos-dynamic | macos-static)
+        run_required macos-production-corpus \
+            "${SCRIPT_DIR}/collect-spec-014-macos-profile.sh" \
+            "${profile}" "${staging}/macos-corpus"
+        ;;
+esac
 run_required declaration-layout-and-imports \
     "${SCRIPT_DIR}/check-spec-014-value-profiles.sh" \
     --profile "${profile}" --output "${staging}/declarations"
