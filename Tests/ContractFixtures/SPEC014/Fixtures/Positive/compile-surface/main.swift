@@ -198,11 +198,33 @@ package struct CompileSurfaceTextRaster: TextRasterResourceView {
     }
 }
 
+package struct CompileSurfaceTextMetrics: CanonicalTextMetricsView {
+    package var descriptor: TextResourceDescriptor { fatalError() }
+
+    package func instance(at index: UInt16) -> FontInstanceDescriptor? { nil }
+
+    package func mapping(
+        at index: UInt16,
+        in instance: FontInstanceID
+    ) -> ScalarGlyphMappingRecord? { nil }
+
+    package func mapScalar(
+        _ scalarValue: UInt32,
+        in instance: FontInstanceID
+    ) -> GlyphMapping? { nil }
+
+    package func metrics(
+        for glyph: GlyphID,
+        in instance: FontInstanceID
+    ) -> GlyphMetrics? { nil }
+}
+
 package struct CompileSurfaceEndpoint: RasterBackendEndpoint {
     package var sink = CompileSurfaceRasterFrameSink()
     package var effectivePresentation: EffectiveRasterPresentation { fatalError() }
     package var descriptor: RasterSurfaceDescriptor { fatalError() }
     package var payloadLimits: RasterPayloadLimits { fatalError() }
+    package var textMetrics = CompileSurfaceTextMetrics()
     package var textRaster = CompileSurfaceTextRaster()
     package var textRasterRealization: RasterRealizationID {
         RasterRealizationID(rawValue: 0)

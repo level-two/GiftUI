@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-27
-updated: 2026-09-12
+updated: 2026-09-13
 proposal:
   - PROPOSAL-003
   - PROPOSAL-004
@@ -68,7 +68,11 @@ target_milestone: MVP
 > On 2026-09-12 the maintainer explicitly approved correcting every compiler-
 > invalid `borrowing var` protocol requirement to an ordinary read-only
 > property while retaining the intended immutable borrowed-use semantics. The
-> approved contract remains authoritative and is not yet implemented.
+> maintainer's 2026-09-13 instruction to update the Specification and proceed
+> also corrected the endpoint's missing canonical metrics view: SPEC-005 owns
+> glyph ink offsets, so the raster endpoint must borrow that exact view rather
+> than infer geometry. The approved contract remains authoritative and is not
+> yet implemented.
 
 ## Summary
 
@@ -440,10 +444,12 @@ package protocol RasterFrameSink: DrawingOperationSink {
 
 package protocol RasterBackendEndpoint: SynchronousFrameEndpoint
 where Sink: RasterFrameSink {
+    associatedtype TextMetrics: CanonicalTextMetricsView
     associatedtype TextRaster: TextRasterResourceView
     var effectivePresentation: EffectiveRasterPresentation { get }
     var descriptor: RasterSurfaceDescriptor { get }
     var payloadLimits: RasterPayloadLimits { get }
+    var textMetrics: TextMetrics { get }
     var textRaster: TextRaster { get }
     var textRasterRealization: RasterRealizationID { get }
     borrowing func health() -> GiftUIOperationalHealth
@@ -577,13 +583,16 @@ it. Attempt reset clears it only after all mapping/correlation has completed.
 `RasterBackendEndpoint.health()` returns the same authoritative value owned by
 its selected display target, not a cached reconstruction.
 
-The endpoint's text raster view and realization ID are immutable for its
-lifetime. Their descriptor and realization must equal the exact package and
-selected realization admitted by SPEC-005 validation. During each positioned-
-glyph call, the sink resolves that exact glyph record and invokes
-`withPayload` at most once; the payload borrow ends before the call returns.
-Missing lookup or payload after successful startup is
-`incompatibleResource` and a runtime invariant, never substitution.
+The endpoint's canonical text-metrics view, text-raster view, and realization
+ID are immutable for its lifetime. Both view descriptors and the selected
+realization must equal the exact package and realization admitted by SPEC-005
+validation. During each positioned-glyph call, the sink resolves that exact
+glyph's canonical metrics and raster record, adds the metrics-owned ink offset
+to the supplied baseline with checked geometry, and invokes `withPayload` at
+most once; the payload borrow ends before the call returns. Missing metrics,
+record, or payload after successful startup is `incompatibleResource` and a
+runtime invariant, never substitution. The metrics view is not permission to
+remeasure, reshape, select, advance, or reposition the supplied glyph.
 
 For a reserved writer, `capacityBytes` and `regionCapacity` equal the values
 passed to `reserveFrame`. `writtenBytes` and `writtenRegionCount` begin at zero

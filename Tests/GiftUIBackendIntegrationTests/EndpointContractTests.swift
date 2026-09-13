@@ -131,6 +131,27 @@ private struct CompileTextRaster: TextRasterResourceView {
     ) rethrows -> Result? { nil }
 }
 
+private struct CompileTextMetrics: CanonicalTextMetricsView {
+    var descriptor: TextResourceDescriptor { fatalError("compile-only property") }
+
+    func instance(at index: UInt16) -> FontInstanceDescriptor? { nil }
+
+    func mapping(
+        at index: UInt16,
+        in instance: FontInstanceID
+    ) -> ScalarGlyphMappingRecord? { nil }
+
+    func mapScalar(
+        _ scalarValue: UInt32,
+        in instance: FontInstanceID
+    ) -> GlyphMapping? { nil }
+
+    func metrics(
+        for glyph: GlyphID,
+        in instance: FontInstanceID
+    ) -> GlyphMetrics? { nil }
+}
+
 private struct CompileRasterEndpoint: RasterBackendEndpoint {
     var sink = CompileRasterSink()
     var effectivePresentation: EffectiveRasterPresentation {
@@ -138,6 +159,7 @@ private struct CompileRasterEndpoint: RasterBackendEndpoint {
     }
     var descriptor: RasterSurfaceDescriptor { sink.descriptor }
     var payloadLimits: RasterPayloadLimits { sink.payloadLimits }
+    let textMetrics = CompileTextMetrics()
     let textRaster = CompileTextRaster()
     let textRasterRealization = RasterRealizationID(rawValue: 5)
 
