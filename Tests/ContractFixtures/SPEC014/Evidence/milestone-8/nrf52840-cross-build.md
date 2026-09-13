@@ -11,7 +11,9 @@ The SPEC-014 collector compiled Surface, Raster, Display, and Backend
 Integration modules with `-Osize`, whole-module Embedded Swift, and Zephyr's
 Cortex-M4F hard-float flags, then linked baseline and candidate Zephyr ELFs.
 The final ELF reports ARMv7E-M, VFPv4-D16, and VFP register arguments. The
-optimized entry contains zero heap-allocation instructions; maps retain no
+optimized entry constructs the fixed 3,840-byte workspace, traverses and
+submits a worst-case 480 x 320 fill as 80 tiles and 320 regions, and finishes
+the frame. Its SIL contains zero heap-allocation instructions; maps retain no
 full-surface framebuffer or recording-list symbol.
 
 The exact selected bounds are 480 x 4, 960 bytes per row, 3,840 tile/raster/

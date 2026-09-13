@@ -1162,8 +1162,9 @@ Zephyr 4.3.0 at the pinned revision, SDK 0.17.4, board
 collector compiled every required module using `-Osize`, whole-module Embedded
 Swift, Cortex-M4F/VFPv4-D16 hard-float flags, and linked baseline/candidate
 Zephyr ELFs. ELF attributes prove VFP register arguments. Evidence records
-zero allocation instructions in the optimized entry, exact 3,840-byte 480 x 4
-tile/payload/in-flight bounds, 80 tile visits/payloads, 320 regions, section
+zero allocation instructions in the optimized fixed-storage construction and
+worst-case frame entry, exact 3,840-byte 480 x 4 tile/payload/in-flight bounds,
+80 tile visits/payloads, 320 regions, section
 deltas, symbols, maps, and no retained full framebuffer or recording list.
 No flash or connected-TFT claim occurred.
 
