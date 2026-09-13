@@ -1,0 +1,8 @@
+# measurement	method	execution
+storage-high-water	instrumented-owned-byte-and-count-maxima	all-profiles
+stack-high-water	compiler-stack-size-or-bounded-watermark	all-profiles
+heap-calls	allocation-interposition-after-one-warm-up	macos-host-static
+raster-timing	monotonic-clock-around-raster-only-nine-samples	macos-host
+submit-timing	monotonic-clock-around-submit-only-nine-samples	macos-host
+linked-sections	baseline-versus-probe-text-rodata-data-bss-delta	all-profiles
+linked-symbols	nm-and-link-map-forbidden-facility-scan	all-profiles

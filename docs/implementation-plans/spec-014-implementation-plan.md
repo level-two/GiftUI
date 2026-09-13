@@ -491,7 +491,7 @@ all criteria are ready for evidence-based conformance review.
       omitted shared fields and profile-private expectations, verify all
       generated output remains under `.build/spec-014/`, and compare normalized
       reports by fixture ID rather than address or implementation identity.
-- [ ] `T8.2` — Add resource instrumentation for surface/tile/glyph/stroke/
+- [x] `T8.2` — Add resource instrumentation for surface/tile/glyph/stroke/
       region/payload/in-flight/display storage, tile/region/payload counts,
       stack high-water, heap calls, frame raster/submit timing, value layouts,
       linked symbols, and text/rodata/data/BSS deltas. Record exact header,
@@ -1117,6 +1117,18 @@ and retains every scratch, cache, staging, and published path under
 `.build/spec-014/`. `compare-spec-014-profiles.rb` validates canonical JSON
 fields and joins equal reports by stable fixture ID, independent of row order,
 addresses, or implementation identity.
+
+`T8.2` is complete. The frozen resource case now requires fifteen separate
+storage, work, allocation, stack, and timing metrics; immutable capability,
+header, damage, resource, region, compiler, SDK, target, optimization, warm-up,
+sample, section, symbol, and link-map facts; and a zero-call static allocation
+window covering construction plus the worst-case frame. The caller-owned
+`BackendResourceSnapshot` uses only fixed-width fields and saturating counters,
+contains no collection or reference storage, and compiles in all four
+profiles. A registered resource checker freezes all metric/method rows and the
+zero-heap requirement. T8.3-T8.5 consume this instrumentation to publish the
+host and cross-target measurements; a missing or nonzero measurement remains
+fail-closed at the final evidence gate.
 
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.

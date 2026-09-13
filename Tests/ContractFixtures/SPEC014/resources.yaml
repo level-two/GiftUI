@@ -1,2 +1,24 @@
 schema: spec-014-v1
-cases: []
+cases:
+  - fixtureID: spec014-resource-instrumentation-contract
+    criteria: [BI-003, BI-006, BI-013, BI-014, BI-015]
+    evidenceClasses: [cross-build, host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor:
+      metrics: [surfaceBytes, tileBytes, glyphWorkspaceBytes, strokeWorkspaceBytes, regionRecordBytes, payloadBytes, inFlightBytes, displayTransportBytes, tileVisits, submittedRegions, submittedPayloads, stackHighWaterBytes, heapCalls, rasterNanoseconds, submitNanoseconds]
+    effectiveCapability:
+      immutableFields: [extent, regionExtent, rowBytes, encoding, realization, requiredRasterBytes, requiredPayloadBytes, inFlightCount, requiredInFlightBytes]
+    header: {recorded: [surfaceBounds, damageBounds, operationCount, positionedGlyphCount]}
+    operationsResources:
+      - {recorded: [glyphResourceIdentity, strokeWorkspace, regionGeometry]}
+      - {compiler: required, sdk: required, target: required, optimization: required}
+      - {warmUpFrames: 1, sampleFrames: 9, timingClock: monotonicNanoseconds}
+      - {staticMeasurementWindow: constructionPlusWorstCaseFrame, requiredHeapCalls: 0}
+      - {sections: [text, rodata, data, bss], linkMap: required, linkedSymbols: required}
+    injectedEvents: [{event: beginConstructionMeasurement}, {event: endConstructionMeasurement}, {event: beginFrameMeasurement}, {event: endRasterMeasurement}, {event: endSubmitMeasurement}]
+    orderedRegions: {comparisonKey: fixtureID, orderPreserved: true}
+    encodedImage: {logicalPixelsAndCanonicalBytesCompared: true}
+    offerResult: {recorded: true}
+    bodyResult: {recorded: true}
+    health: {recorded: true, authority: displayTarget}
+    highWater: {saturatingCounters: true, heapCallsStaticMaximum: 0, timingSamples: 9, addressFields: 0}

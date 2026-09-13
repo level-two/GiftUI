@@ -259,5 +259,11 @@ run_command "${compiler}" "${flags[@]}" -parse-as-library -package-name GiftUI \
 run_command "${SCRIPT_DIR}/check-spec-014-value-layouts.rb" \
     "${layout_ir}" "${layout_report}" >/dev/null
 
-printf 'SPEC-014 %s declarations passed: 8 layouts, 5 protocol conformers, 8 Sendable values, and 5 negative imports.\n' \
+resource_ir="${output_root}/backend-resource-probe.ll"
+run_command "${compiler}" "${flags[@]}" -parse-as-library -package-name GiftUI \
+    -emit-ir -module-name GiftUIBackendResourceProbe \
+    "${FIXTURE_ROOT}/Instrumentation/BackendResourceProbe.swift" \
+    -o "${resource_ir}" >/dev/null
+
+printf 'SPEC-014 %s declarations passed: 8 layouts, 5 protocol conformers, 8 Sendable values, 5 negative imports, and bounded resource instrumentation.\n' \
     "${profile}"

@@ -73,6 +73,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/check-spec-014-capability-fixtures.rb" \
             "${SCRIPT_DIR}/check-spec-014-migration.rb" \
             "${SCRIPT_DIR}/check-spec-014-module-contract.rb" \
+            "${SCRIPT_DIR}/check-spec-014-resources.rb" \
             "${SCRIPT_DIR}/check-spec-014-storage.rb" \
             "${SCRIPT_DIR}/check-spec-014-startup-validator.rb" \
             "${SCRIPT_DIR}/check-spec-014-text-resource.rb" \
@@ -246,6 +247,8 @@ run_required startup-validation-boundaries \
 run_required frame-work-arithmetic "${SCRIPT_DIR}/check-spec-014-frame-work.rb"
 run_required failure-precedence-and-health \
     "${SCRIPT_DIR}/check-spec-014-failures.rb"
+run_required resource-instrumentation \
+    "${SCRIPT_DIR}/check-spec-014-resources.rb"
 run_required text-resource-boundary "${SCRIPT_DIR}/check-spec-014-text-resource.rb"
 run_required transaction-oracle "${SCRIPT_DIR}/check-spec-014-transactions.rb"
 run_required driver-registry "${SCRIPT_DIR}/check-driver-registry.rb"
