@@ -7,7 +7,8 @@ owners:
   - codex
 created: 2026-09-13
 updated: 2026-09-13
-related_design_notes: []
+related_design_notes:
+  - ../implementation-designs/spec-001-presentation-admission-and-failure.md
 conformance_report: null
 related_future_work: []
 related_explorations: []
@@ -613,6 +614,8 @@ human `implemented` transition.
   before integrated `T3.4`/`T5.1` work if cross-storage sequencing, reserved
   failure admission, mandatory effects, quiescence, and residual policy need a
   maintained owner/data-flow account. It must not redefine SPEC-003/009/010.
+  **Created:** the current note fixes the replaceable three-store sequencing,
+  sealing, profile-storage, and failure-routing realization used for T5.1.
 - Create `docs/implementation-designs/spec-001-deterministic-source-adapters.md`
   only if sharing the deterministic generator between desktop scheduling,
   cooperative embedded scheduling, and accelerated tests requires a

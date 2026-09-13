@@ -1918,6 +1918,9 @@ This section is non-authoritative.
 - [SPEC-001 Implementation Plan](../implementation-plans/spec-001-implementation-plan.md)
   is ready and maps all acceptance criteria to ordered implementation and
   evidence tasks. It does not change this Specification's contract.
+- [Presentation Admission and Failure Implementation Design](../implementation-designs/spec-001-presentation-admission-and-failure.md)
+  describes the replaceable three-store sequencing and owner join selected for
+  Milestone 5 without changing this Specification's contract.
 
 ### Current implementation evidence
 
