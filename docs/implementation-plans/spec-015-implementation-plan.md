@@ -244,7 +244,7 @@ layout evidence.
       interrupt dependencies through source-owned concrete contracts visible
       in generated/compiler-visible construction evidence, without creating
       another component role or invoking those dependencies during validation.
-- [ ] `T1.3` — Implement `HostPacingPolicy`, cardinality, Drawing workload,
+- [x] `T1.3` — Implement `HostPacingPolicy`, cardinality, Drawing workload,
       complete workload, structural, action/model, input/wake, and endpoint
       configuration values with checked initializers where specified. Test all
       zero, boundary, sum-overflow, capacity, refusal-limit, profile/kind, and
@@ -699,3 +699,11 @@ proves noncopyable instance/validator conformance and residual-policy
 specialization; and negative fixtures reject external access and a
 non-`Sendable` activation failure. Evidence and reproduction commands are in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-1/host-configuration-surfaces.md`.
+
+T1.3 completed the immutable host value family. Focused tests reject every
+zero pacing field and both checked-sum overflow positions, accept the exact
+lower and representable upper boundaries, and prove every generated preset's
+kind/profile, 20/2/6 fact split, 28-of-32 capacity with four-slot margin,
+six-action and single-owner cardinalities, structural audit, input/wake
+configuration, and inert endpoint projection. Reproduction evidence is in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-1/host-configuration-values.md`.
