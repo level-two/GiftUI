@@ -163,5 +163,9 @@ printf 'measurement\tvalue\tunit\tmethod\nstack-high-water\t3840\tbyte\tbounded 
     >"${output}/stack-high-water.tsv"
 printf 'raster_timing=cross-build-not-executed\nsubmit_timing=cross-build-not-executed\n' \
     >"${output}/timing.txt"
+record_command "${SCRIPT_DIR}/report-spec-014-normalized-fixtures.rb" \
+    nrf52840-embedded "${output}/normalized-fixtures.tsv"
+"${SCRIPT_DIR}/report-spec-014-normalized-fixtures.rb" \
+    nrf52840-embedded "${output}/normalized-fixtures.tsv" >/dev/null
 
 printf 'SPEC-014 nRF52840 evidence passed: linked hard-float Cortex-M4F ELF, exact 480 x 4 storage/work bounds, zero allocation instructions, no retained framebuffer/list, sections, symbols, and maps.\n'

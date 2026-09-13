@@ -1137,7 +1137,7 @@ fail-closed at the final evidence gate.
 Backend Integration production-owner suites under explicit dynamic and static
 profile flags, with isolated SwiftPM and module caches below
 `.build/spec-014/`. Both profiles passed. The normalized reporter selects the
-same 21 shared canonical fixture IDs, emits canonical JSON for descriptors,
+same 19 four-profile canonical fixture IDs, emits canonical JSON for descriptors,
 effective values, headers, ordered regions, encoded images, offer/body results,
 health, high-water counters, and injected failures, and contains no address or
 implementation identity. The comparator joined those reports by fixture ID

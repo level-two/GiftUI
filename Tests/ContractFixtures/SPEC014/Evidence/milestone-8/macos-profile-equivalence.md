@@ -7,7 +7,7 @@ Core, Raster Core, Display Core, and Backend Integration test suites with the
 corresponding explicit profile flag. Both passed from isolated build roots
 under `.build/spec-014/t8.3/`.
 
-Each run normalized the same 21 shared fixture IDs into canonical JSON fields
+Each run normalized the same 19 four-profile fixture IDs into canonical JSON fields
 for descriptor, effective capability, header, ordered regions, encoded image,
 offer and body results, health, high-water counters, and failure events. The
 cross-profile comparator joined by fixture ID and reported zero differences.
@@ -23,4 +23,4 @@ scripts/contracts/compare-spec-014-profiles.rb .build/spec-014/t8.3/comparison.t
 scripts/contracts/check-spec-014-capability-fixtures.rb
 ```
 
-The comparator reports 21 identical stable fixture IDs.
+The comparator reports 19 identical stable fixture IDs.

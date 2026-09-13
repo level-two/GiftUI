@@ -59,7 +59,8 @@ resource, or hardware contracts.
 On 2026-09-13, `swift test` passed 667 Swift Testing tests plus the XCTest
 suites with zero failures. Governance validation passed 133 nodes and 1,522
 edges; the registry reported 13 drivers; dependency checks passed 67 targets
-and 233 direct acyclic edges. The exact final commands are:
+and 233 direct acyclic edges. The four-profile comparator joined 19 shared
+fixture IDs with zero field differences. The exact final commands are:
 
 ```sh
 scripts/contracts/run-spec-014.sh --profile macos-dynamic

@@ -128,5 +128,9 @@ printf 'measurement\tvalue\tunit\tmethod\nstack-high-water\t7680\tbyte\tbounded 
     >"${output}/stack-high-water.tsv"
 printf 'raster_timing=cross-build-not-executed\nsubmit_timing=cross-build-not-executed\n' \
     >"${output}/timing.txt"
+record_command "${SCRIPT_DIR}/report-spec-014-normalized-fixtures.rb" \
+    raspberry-pi-armv6 "${output}/normalized-fixtures.tsv"
+"${SCRIPT_DIR}/report-spec-014-normalized-fixtures.rb" \
+    raspberry-pi-armv6 "${output}/normalized-fixtures.tsv" >/dev/null
 
 printf 'SPEC-014 ARMv6 evidence passed: linked static ARMv6 image, exact 240 x 16 storage/work bounds, value layouts, zero allocator references, sections, symbols, and link map.\n'
