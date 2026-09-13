@@ -361,7 +361,7 @@ normalization/effect/policy sequence.
       success/operational outcomes unrepresentable in
       `SignalAnalyzerOperationalFailure`; implement initial state, visible
       range, four intents, and model-owned change signaling.
-- [ ] `T3.2` — Implement `SignalAnalyzerPresentationAdmissionAdapter` with both
+- [x] `T3.2` — Implement `SignalAnalyzerPresentationAdmissionAdapter` with both
       sinks, two use cases, one fact endpoint, idempotent host-started/stopped
       observation, exact callback conversions, two-current-value start result,
       partial-start cleanup, and rejection reporting. Prove it never owns,
@@ -757,6 +757,9 @@ and the replayed 2,404-transition final capture without loss or duplication.
 `T3.1` adds the exact Presentation values, runtime-condition catalogue,
 diagnostic-preserving intents, total six-action handler, visible range, and
 model-owned synchronous dirty reporting with proven no-op suppression.
+`T3.2` adds the non-model admission adapter with exact callback translation,
+two-current-value startup, idempotent host lifecycle, partial-start cleanup,
+original-rejection preservation, and nonrecursive reserved-failure reporting.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

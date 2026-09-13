@@ -23,3 +23,4 @@
 22	deterministic-source-cases	deterministic-source-cases.tsv	1
 23	workload-oracle-cases	workload-oracle-cases.tsv	1
 24	presentation-value-cases	presentation-value-cases.tsv	1
+25	admission-adapter-cases	admission-adapter-cases.tsv	1

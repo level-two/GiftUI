@@ -1,0 +1,15 @@
+# schema_version=1
+# id	input	expected
+start-success	snapshot+state	started-two-sequences
+start-repeat	started	already-started-no-callback
+start-capture-reject	snapshot-rejection	detach-both-report-original
+start-state-reject	state-rejection	detach-both-report-original
+stop	started	detach-both
+stop-repeat	stopped	no-op
+snapshot	repository-publication	one-captureSnapshot
+mutation	repository-publication	one-captureMutation
+state	repository-state	one-acquisitionState
+terminal	repository-failure	one-operationalFailure
+active-rejection	ordinary-fact	one-reserved-failure-attempt
+reserved-rejection	operational-failure	no-recursion
+model-ownership	adapter	absent
