@@ -14,7 +14,7 @@ package enum HostResidualPolicyTableValidation {
         return true
     }
 
-    private static func expectedRow(
+    package static func expectedRow(
         for context: HostResidualPolicyContext
     ) -> (
         allowed: GiftUIAllowedDispositions,

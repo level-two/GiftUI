@@ -397,6 +397,11 @@ tears down idempotently from every instance state.
       only after validator return; defective tables quiesce mechanically and
       never decide through themselves. Diagnostics remain optional downstream
       projections and cannot change a transcript.
+      **Partial:** exact host-owned, SPEC-013, SPEC-005, and SPEC-004 startup
+      mappings, the total nine-row table and concrete policy, defective-table
+      bypass, and post-discard-only `startupValidation` routing are complete.
+      Operational mandatory-effect ordering, explicit no-policy routes,
+      diagnostic fault injection, and fatal-hook bypass remain with T5.3/T5.5.
 - [ ] `T4.3` — Implement `MVPHostInstance.activate()` and its finite inline
       preset-specific activation-failure sum. Follow the seven specified
       construction/attachment/observation/input/source/runtime steps in order,
