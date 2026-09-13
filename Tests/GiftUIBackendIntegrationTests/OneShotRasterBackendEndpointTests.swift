@@ -223,13 +223,67 @@ private let reservationMappings = [
         displayError: nil
     ),
     ReservationMappingFixture(
-        name: "display-failure",
+        name: "invalid-descriptor-failure",
+        reservation: .failure(.invalidDescriptor),
+        expected: FrameOfferResult(
+            disposition: .failed,
+            failure: .contractViolation
+        )!,
+        displayError: .invalidDescriptor
+    ),
+    ReservationMappingFixture(
+        name: "invalid-reservation-failure",
+        reservation: .failure(.invalidReservation),
+        expected: FrameOfferResult(
+            disposition: .failed,
+            failure: .contractViolation
+        )!,
+        displayError: .invalidReservation
+    ),
+    ReservationMappingFixture(
+        name: "capacity-failure",
+        reservation: .failure(.capacityExhausted),
+        expected: FrameOfferResult(
+            disposition: .failed,
+            failure: .contractViolation
+        )!,
+        displayError: .capacityExhausted
+    ),
+    ReservationMappingFixture(
+        name: "arithmetic-failure",
+        reservation: .failure(.arithmeticOverflow),
+        expected: FrameOfferResult(
+            disposition: .failed,
+            failure: .contractViolation
+        )!,
+        displayError: .arithmeticOverflow
+    ),
+    ReservationMappingFixture(
+        name: "transport-failure",
         reservation: .failure(.transportUnavailable),
         expected: FrameOfferResult(
             disposition: .failed,
             failure: .contractViolation
         )!,
         displayError: .transportUnavailable
+    ),
+    ReservationMappingFixture(
+        name: "reentrancy-failure",
+        reservation: .failure(.reentrancyViolation),
+        expected: FrameOfferResult(
+            disposition: .failed,
+            failure: .contractViolation
+        )!,
+        displayError: .reentrancyViolation
+    ),
+    ReservationMappingFixture(
+        name: "invariant-failure",
+        reservation: .failure(.invariantViolation),
+        expected: FrameOfferResult(
+            disposition: .failed,
+            failure: .contractViolation
+        )!,
+        displayError: .invariantViolation
     ),
 ]
 
@@ -433,6 +487,51 @@ func incompleteCompleteResultIsContractViolationAndCancellable() {
                 failure: .contractViolation
             )!
     )
+    #expect(endpoint.sink.discardCount == 1)
+    #expect(endpoint.sink.cancelCount == 1)
+    #expect(endpoint.sink.forcedFinishCount == 0)
+}
+
+private let impossiblePretransferStreams = [
+    PretransferStreamFixture(
+        name: "producer-without-error",
+        stream: .producerFailed,
+        producerError: nil,
+        expected: FrameOfferResult(
+            disposition: .failed,
+            failure: .contractViolation
+        )!
+    ),
+    PretransferStreamFixture(
+        name: "capacity-with-wrong-error",
+        stream: .insufficientCapacity,
+        producerError: .invalidInput,
+        expected: FrameOfferResult(
+            disposition: .failed,
+            failure: .contractViolation
+        )!
+    ),
+    PretransferStreamFixture(
+        name: "refusal-without-sink-error",
+        stream: .endpointRefused,
+        producerError: nil,
+        expected: FrameOfferResult(
+            disposition: .failed,
+            failure: .contractViolation
+        )!
+    ),
+]
+
+@Test(arguments: impossiblePretransferStreams)
+private func impossiblePretransferResultsBecomeContractViolations(
+    _ fixture: PretransferStreamFixture
+) {
+    var endpoint = makeOfferEndpoint()
+    let result = endpoint.offer(provenance: offerProvenance) { sink in
+        sink.retainedProducerError = fixture.producerError
+        return fixture.stream
+    }
+    #expect(result == fixture.expected)
     #expect(endpoint.sink.discardCount == 1)
     #expect(endpoint.sink.cancelCount == 1)
     #expect(endpoint.sink.forcedFinishCount == 0)

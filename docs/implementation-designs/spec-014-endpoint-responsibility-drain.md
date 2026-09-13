@@ -80,4 +80,5 @@ T7.3's owner mapping matrix is recorded in
 [`backend-owner-failure-mapping.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/backend-owner-failure-mapping.md).
 T7.4's live projection and diagnostic-isolation evidence is in
 [`endpoint-health-diagnostics.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/endpoint-health-diagnostics.md).
-The T7.5 corpus link will be added with that task.
+T7.5's frozen transaction, failure, and precedence matrices are recorded in
+[`transaction-failure-corpus.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/transaction-failure-corpus.md).

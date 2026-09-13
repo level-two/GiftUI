@@ -150,3 +150,66 @@ cases:
     bodyResult: {result: not-called}
     health: {state: available, failureCount: 0}
     highWater: {reservations: 1, writerBorrows: 0, payloads: 0, payloadBytes: 0, regions: 0, responsibilityTransfers: 0, finishes: 1, cancels: 0, inFlightPayloadsAfterTerminal: 0, inFlightBytesAfterTerminal: 0}
+  - fixtureID: spec014-transaction-offer-cross-product
+    criteria: [BI-004, BI-010, BI-011]
+    evidenceClasses: [host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: {realization: fullSurface, encoding: rgba8888, extent: {width: 2, height: 2}, payloadBytes: 16, regionCapacity: 2}
+    effectiveCapability: {submissionLifetime: synchronousBorrow, handoff: synchronous, inFlightCount: 1, inFlightBytes: 16}
+    header: {damage: empty, operationCount: 0}
+    operationsResources:
+      - matrix: reservation
+        rows:
+          - {reservation: backpressured, bodyCalls: 0, offer: backpressured, discard: 0, cancel: 0}
+          - {reservation: retryableRefusal, bodyCalls: 0, offer: retryableRefusal, discard: 0, cancel: 0}
+          - {reservation: nonRetryableRefusal, bodyCalls: 0, offer: nonRetryableRefusal, discard: 0, cancel: 0}
+          - {reservation: failure, bodyCalls: 0, offer: failed-contractViolation, discard: 0, cancel: 0}
+      - matrix: pretransfer-body
+        rows:
+          - {body: complete, streamCompleted: true, localError: none, offer: accepted, discard: 0, cancel: 0, forcedFinish: 0}
+          - {body: complete, streamCompleted: false, localError: none, offer: failed-contractViolation, discard: 1, cancel: 1, forcedFinish: 0}
+          - {body: producerFailed, streamCompleted: false, localError: invalidInput, offer: failed-producerFailed, discard: 1, cancel: 1, forcedFinish: 0}
+          - {body: insufficientCapacity, streamCompleted: false, localError: capacityExhausted, offer: failed-insufficientCapacity, discard: 1, cancel: 1, forcedFinish: 0}
+          - {body: endpointRefused, streamCompleted: false, localError: sinkRefused, offer: nonRetryableRefusal, discard: 1, cancel: 1, forcedFinish: 0}
+          - {body: contractViolation, streamCompleted: false, localError: invariantViolation, offer: failed-contractViolation, discard: 1, cancel: 1, forcedFinish: 0}
+      - matrix: posttransfer-body
+        rows:
+          - {body: complete, streamCompleted: true, localError: none, offer: accepted, discard: 0, cancel: 0, forcedFinish: 0}
+          - {body: producerFailed, streamCompleted: false, localError: invariantViolation, offer: accepted, discard: 0, cancel: 0, forcedFinish: 1}
+          - {body: insufficientCapacity, streamCompleted: false, localError: invariantViolation, offer: accepted, discard: 0, cancel: 0, forcedFinish: 1}
+          - {body: endpointRefused, streamCompleted: false, localError: invariantViolation, offer: accepted, discard: 0, cancel: 0, forcedFinish: 1}
+          - {body: contractViolation, streamCompleted: false, localError: invariantViolation, offer: accepted, discard: 0, cancel: 0, forcedFinish: 1}
+    injectedEvents: [{call: reserveFrame, result: reserved-matrix}, {call: cancelFrame, result: cancelled-matrix}]
+    orderedRegions: []
+    encodedImage: none
+    offerResult: {matrixRows: 15, bodyCallsPerRowMaximum: 1}
+    bodyResult: {values: [complete, producerFailed, insufficientCapacity, endpointRefused, contractViolation]}
+    health: {state: unchanged, authority: displayTarget}
+    highWater: {reservations: 1, writerBorrows: 0, payloads: 0, payloadBytes: 0, regions: 0, responsibilityTransfers: 1, finishes: 0, cancels: 1, inFlightPayloadsAfterTerminal: 0, inFlightBytesAfterTerminal: 0}
+  - fixtureID: spec014-transaction-writer-invalid-matrix
+    criteria: [BI-005, BI-012]
+    evidenceClasses: [host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: {realization: fullSurface, encoding: rgba8888, extent: {width: 4, height: 3}, payloadBytes: 24, regionCapacity: 2}
+    effectiveCapability: {submissionLifetime: synchronousBorrow, handoff: synchronous, inFlightCount: 1, inFlightBytes: 24}
+    header: {damage: {x: 1, y: 1, width: 3, height: 2}, operationCount: 1}
+    operationsResources:
+      - matrix: writer-invalid
+        rows:
+          - {misuse: underflow, result: false, error: invariantViolation, physicalPayloads: 0}
+          - {misuse: overflow, result: false, error: capacityExhausted, physicalPayloads: 0}
+          - {misuse: emptyFinish, result: false, error: invariantViolation, physicalPayloads: 0}
+          - {misuse: doubleFinish, result: false, error: invariantViolation, physicalPayloads: 0}
+          - {misuse: doubleSubmit, result: failureBeforeAcceptance-invariantViolation, error: invariantViolation, physicalPayloads: 1}
+          - {misuse: submitWithoutFinish, result: failureBeforeAcceptance-invariantViolation, error: invariantViolation, physicalPayloads: 0}
+          - {misuse: staleReservation, result: nil, error: invalidReservation, physicalPayloads: 0}
+          - {misuse: regionRowCrossing, result: false, error: invalidDescriptor, physicalPayloads: 0}
+          - {misuse: wrongEncoding, result: false, error: invalidDescriptor, physicalPayloads: 0}
+          - {misuse: reentrancy, result: false, error: reentrancyViolation, physicalPayloads: 0}
+    injectedEvents: [{call: reserveFrame, result: reserved-matrix}, {call: cancelFrame, result: cancelled-matrix}]
+    orderedRegions: []
+    encodedImage: none
+    offerResult: {result: failed-contractViolation}
+    bodyResult: {result: contractViolation}
+    health: {state: available, failureCount: 0}
+    highWater: {reservations: 1, writerBorrows: 1, payloads: 1, payloadBytes: 4, regions: 1, responsibilityTransfers: 1, finishes: 0, cancels: 1, inFlightPayloadsAfterTerminal: 0, inFlightBytesAfterTerminal: 0}

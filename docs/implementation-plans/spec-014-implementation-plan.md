@@ -468,7 +468,7 @@ preserves failure/health/diagnostic ownership.
       runtime fact for an invariant failure. Run diagnostics omitted, selected,
       saturated, dropped, and failing and prove no change to output, result,
       capability, health authority, or input-eligibility facts.
-- [ ] `T7.5` — Complete `transactions.yaml` and `failures.yaml` with every
+- [x] `T7.5` — Complete `transactions.yaml` and `failures.yaml` with every
       reservation outcome, body result, legal/illegal transfer result, writer
       misuse, simultaneous detection point, local error, offer disposition,
       cleanup action, responsibility state, health transition, drain count,
@@ -1091,6 +1091,20 @@ tests cover diagnostics omitted and selected, while the shared execution
 isolation suite covers saturated, dropped, and failing diagnostic sinks; all
 modes preserve the offer result, body count, output, capabilities, health
 authority, and input-eligibility state.
+
+`T7.5` is complete. The transaction corpus now freezes the complete
+reservation/body/transfer cross-product and every required writer misuse in
+addition to the concrete zero-, one-, and multi-payload sessions. The failure
+corpus freezes all eleven raster and seven display local-error mappings, the
+normative detection order with simultaneous-failure winners, all three legal
+operational reservation outcomes, rejection of every constructed reservation
+failure, pre/post-transfer drain behavior, one health update, and all five
+diagnostic modes. Registered executable checkers require the exact rows and
+reject reordered precedence, missing error cases, reopened accepted
+disposition, body invocation on reservation exits, or an operational failure
+after successful construction. Focused endpoint tests additionally exercise
+all seven display reservation failures and malformed producer-result/error
+combinations. Milestone 7 is complete.
 
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.

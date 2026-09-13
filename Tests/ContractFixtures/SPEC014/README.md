@@ -72,6 +72,13 @@ production window size. `capabilities.yaml` freezes those equal logical
 results alongside the exact Pi and nRF tiled results and the nRF full-
 framebuffer rejection.
 
+Milestone 7 completes the transaction corpus with the full reservation/body/
+transfer result matrix and every required writer misuse. The failure corpus
+freezes the normative detection order, all raster/display local mappings,
+legal reservation outcomes versus impossible constructed failures, accepted
+drain and health behavior, and the five diagnostic modes. Dedicated semantic
+checkers reject missing rows, precedence changes, or reopened responsibility.
+
 Cross-build and inspection evidence for Raspberry Pi or nRF52840 is hardware-
 free. These fixtures do not deploy, access a remote target, restart a service,
 or flash a board, and they cannot establish connected-hardware conformance.

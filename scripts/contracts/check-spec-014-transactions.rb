@@ -17,6 +17,8 @@ EXPECTED_IDS = %w[
   spec014-transaction-retained-payload-teardown
   spec014-transaction-cancel-and-counter-reset
   spec014-transaction-identity-exhaustion
+  spec014-transaction-offer-cross-product
+  spec014-transaction-writer-invalid-matrix
 ].freeze
 COUNTERS = %w[
   reservations writerBorrows payloads payloadBytes regions
@@ -79,5 +81,25 @@ fail_check("counter reset oracle differs") unless reset["injectedEvents"].map { 
 
 exhaustion = by_id.fetch("spec014-transaction-identity-exhaustion")
 fail_check("identity exhaustion oracle differs") unless exhaustion["injectedEvents"].map { |event| event["result"] } == %w[reserved-4294967295 completed failure-capacityExhausted] && exhaustion["bodyResult"] == { "result" => "not-called" }
+
+offer = by_id.fetch("spec014-transaction-offer-cross-product")
+offer_matrices = offer.fetch("operationsResources").to_h do |matrix|
+  [matrix.fetch("matrix"), matrix.fetch("rows")]
+end
+reservation_rows = offer_matrices.fetch("reservation")
+fail_check("reservation outcome matrix differs") unless reservation_rows.map { |row| row.fetch("reservation") } == %w[backpressured retryableRefusal nonRetryableRefusal failure]
+fail_check("reservation exits invoked a body") unless reservation_rows.all? { |row| row.fetch("bodyCalls").zero? }
+expected_body_values = %w[complete producerFailed insufficientCapacity endpointRefused contractViolation]
+pretransfer_rows = offer_matrices.fetch("pretransfer-body")
+posttransfer_rows = offer_matrices.fetch("posttransfer-body")
+fail_check("pre-transfer body matrix differs") unless pretransfer_rows.map { |row| row.fetch("body") }.uniq == expected_body_values
+fail_check("post-transfer body matrix differs") unless posttransfer_rows.map { |row| row.fetch("body") } == expected_body_values
+fail_check("post-transfer result reopened disposition") unless posttransfer_rows.all? { |row| row.fetch("offer") == "accepted" && row.fetch("discard").zero? && row.fetch("cancel").zero? }
+
+writer = by_id.fetch("spec014-transaction-writer-invalid-matrix")
+writer_rows = writer.fetch("operationsResources").fetch(0).fetch("rows")
+expected_misuse = %w[underflow overflow emptyFinish doubleFinish doubleSubmit submitWithoutFinish staleReservation regionRowCrossing wrongEncoding reentrancy]
+fail_check("writer misuse matrix differs") unless writer_rows.map { |row| row.fetch("misuse") } == expected_misuse
+fail_check("writer misuse exposed an unsubmitted physical payload") unless writer_rows.all? { |row| row.fetch("physicalPayloads") <= (row.fetch("misuse") == "doubleSubmit" ? 1 : 0) }
 
 puts "SPEC-014 transaction check passed: #{cases.length} ordered transaction oracles."

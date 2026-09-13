@@ -1,2 +1,94 @@
 schema: spec-014-v1
-cases: []
+cases:
+  - fixtureID: spec014-failure-local-mapping-matrix
+    criteria: [BI-010, BI-012]
+    evidenceClasses: [host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: none
+    effectiveCapability: none
+    header: none
+    operationsResources:
+      - detectionOrder: [descriptorConstruction, effectiveValueEquality, resourceCompatibility, operationCoverage, rasterPayloadInFlightStores, glyphStrokeWorkspace, perFrameWorkCeilings, reservation, envelopeHeaderEquality, streamGrammar, operationValidation, writerGrammar, payloadCompletion, payloadSubmission, frameCompletion]
+      - rasterMappings:
+          - {local: arithmeticOverflow, point: construction, condition: arithmeticOverflow, origin: foundation, scope: runtime, containment: contained}
+          - {local: capacityExhausted, point: construction, condition: capacityExhausted, origin: hostComposition, scope: runtime, containment: contained}
+          - {local: invariantViolation, point: construction, condition: invariantViolation, origin: hostComposition, scope: runtime, containment: safetyNotProven}
+          - {local: invalidEnvelope, point: preBody, condition: invalidValue, origin: backend, scope: candidateFrame, containment: contained}
+          - {local: invalidGeometry, point: preBody, condition: invalidValue, origin: backend, scope: candidateFrame, containment: contained}
+          - {local: unsupportedOperation, point: postBegin, condition: invariantViolation, origin: backend, scope: runtime, containment: safetyNotProven}
+          - {local: incompatibleResource, point: postBegin, condition: invariantViolation, origin: backend, scope: runtime, containment: safetyNotProven}
+          - {local: malformedStream, point: postBegin, condition: invariantViolation, origin: backend, scope: runtime, containment: safetyNotProven}
+          - {local: rasterizationFailure, point: postBegin, condition: invariantViolation, origin: backend, scope: runtime, containment: safetyNotProven}
+          - {local: displayFailure, point: postAcceptance, condition: requiredFacilityUnavailable, origin: presentationIntegration, scope: component, containment: contained}
+          - {local: reentrancyViolation, point: postBegin, condition: reentrancyViolation, origin: backend, scope: runtime, containment: safetyNotProven}
+      - displayMappings:
+          - {local: invalidDescriptor, point: postBegin, condition: invariantViolation, origin: backend, scope: runtime, containment: safetyNotProven}
+          - {local: invalidReservation, point: postBegin, condition: invariantViolation, origin: backend, scope: runtime, containment: safetyNotProven}
+          - {local: capacityExhausted, point: postBegin, condition: invariantViolation, origin: backend, scope: runtime, containment: safetyNotProven}
+          - {local: arithmeticOverflow, point: postBegin, condition: invariantViolation, origin: backend, scope: runtime, containment: safetyNotProven}
+          - {local: transportUnavailable, point: postAcceptance, condition: requiredFacilityUnavailable, origin: presentationIntegration, scope: component, containment: contained}
+          - {local: reentrancyViolation, point: postBegin, condition: reentrancyViolation, origin: backend, scope: runtime, containment: safetyNotProven}
+          - {local: invariantViolation, point: postBegin, condition: invariantViolation, origin: backend, scope: runtime, containment: safetyNotProven}
+    injectedEvents:
+      - {simultaneous: [descriptorConstruction, effectiveValueEquality], selected: descriptorConstruction}
+      - {simultaneous: [resourceCompatibility, operationCoverage], selected: resourceCompatibility}
+      - {simultaneous: [rasterPayloadInFlightStores, glyphStrokeWorkspace], selected: rasterPayloadInFlightStores}
+      - {simultaneous: [perFrameWorkCeilings, reservation], selected: perFrameWorkCeilings}
+      - {simultaneous: [envelopeHeaderEquality, streamGrammar], selected: envelopeHeaderEquality}
+      - {simultaneous: [operationValidation, writerGrammar], selected: operationValidation}
+      - {simultaneous: [payloadCompletion, payloadSubmission], selected: payloadCompletion}
+      - {simultaneous: [payloadSubmission, frameCompletion], selected: payloadSubmission}
+    orderedRegions: none
+    encodedImage: none
+    offerResult: {firstDetectedFailureWins: true}
+    bodyResult: none
+    health: {runtimeSafetyNotProven: quiesced, acceptedFacilityUnavailable: unavailable}
+    highWater: {retainedRasterErrors: 1, retainedDisplayErrors: 1, failureFactsPerDetection: 1}
+  - fixtureID: spec014-failure-reservation-operational-matrix
+    criteria: [BI-010, BI-012]
+    evidenceClasses: [host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: none
+    effectiveCapability: none
+    header: none
+    operationsResources:
+      - legalOperationalResults:
+          - {target: backpressured, offer: backpressured, bodyCalls: 0}
+          - {target: retryableRefusal, offer: retryableRefusal, bodyCalls: 0}
+          - {target: nonRetryableRefusal, offer: nonRetryableRefusal, bodyCalls: 0}
+      - impossibleOperationalFailures:
+          - {target: failure-invalidDescriptor, offer: failed-contractViolation, bodyCalls: 0}
+          - {target: failure-invalidReservation, offer: failed-contractViolation, bodyCalls: 0}
+          - {target: failure-capacityExhausted, offer: failed-contractViolation, bodyCalls: 0}
+          - {target: failure-arithmeticOverflow, offer: failed-contractViolation, bodyCalls: 0}
+          - {target: failure-transportUnavailable, offer: failed-contractViolation, bodyCalls: 0}
+          - {target: failure-reentrancyViolation, offer: failed-contractViolation, bodyCalls: 0}
+          - {target: failure-invariantViolation, offer: failed-contractViolation, bodyCalls: 0}
+    injectedEvents: [{call: reserveFrame, rows: 10}]
+    orderedRegions: none
+    encodedImage: none
+    offerResult: {operationalRows: 3, rejectedFailureRows: 7}
+    bodyResult: {calls: 0}
+    health: {state: unchanged, authority: displayTarget}
+    highWater: {reservationCallsPerRow: 1, bodyCallsPerRow: 0}
+  - fixtureID: spec014-failure-health-drain-diagnostics
+    criteria: [BI-010, BI-011, BI-012]
+    evidenceClasses: [host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: {realization: tiled, encoding: rgb565BigEndian, extent: {width: 4, height: 4}, payloadBytes: 8, regionCapacity: 2}
+    effectiveCapability: {submissionLifetime: synchronousCopy, handoff: synchronous, inFlightCount: 1, inFlightBytes: 8}
+    header: {damage: {x: 0, y: 0, width: 4, height: 4}, operationCount: 3}
+    operationsResources:
+      - diagnosticModes: [omitted, selected, saturated, dropped, failing]
+      - invariants: [sameOutput, sameOfferResult, sameCapability, sameHealthAuthority, sameInputEligibility]
+    injectedEvents:
+      - {failure: firstPayloadBeforeAcceptance, transfer: false, offer: failed, drainOperations: 0, healthUpdates: 0, cancel: 1, finish: 0}
+      - {failure: firstPayloadAfterAcceptance, transfer: true, offer: accepted, drainOperations: 2, healthUpdates: 1, cancel: 0, finish: 1}
+      - {failure: laterPayloadAfterAcceptance, transfer: true, offer: accepted, drainOperations: 1, healthUpdates: 1, cancel: 0, finish: 1}
+      - {failure: invariantAfterAcceptance, transfer: true, offer: accepted, drainOperations: 2, healthUpdates: 1, cancel: 0, finish: 1}
+    orderedRegions: {physicalSubmissionStopsAtFirstFailure: true, logicalValidationContinues: true}
+    encodedImage: {capabilitySnapshotMutated: false}
+    offerResult: {beforeTransfer: failed, afterTransfer: accepted}
+    bodyResult: {allFiveValuesAfterTransfer: accepted}
+    health: {transport: unavailable, invariant: quiesced, updatesPerFrame: 1}
+    highWater: {producerBodyCalls: 1, borrowedOperationCalls: 3, healthUpdates: 1, frameFinishes: 1, diagnosticModes: 5}
