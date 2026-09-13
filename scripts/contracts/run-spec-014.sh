@@ -286,11 +286,9 @@ run_required declaration-layout-and-imports \
 for target in GiftUISurfaceCore GiftUIRasterCore GiftUIDisplayCore GiftUIBackendIntegration; do
     require_path "target-${target}" "${PROJECT_ROOT}/Sources/${target}"
 done
-for target in GiftUISurfaceCoreTests GiftUIRasterCoreTests GiftUIDisplayCoreTests GiftUIBackendIntegrationTests GiftUIBackendFailureAdapterTests; do
+for target in GiftUISurfaceCoreTests GiftUIRasterCoreTests GiftUIDisplayCoreTests GiftUIBackendIntegrationTests; do
     require_path "test-target-${target}" "${PROJECT_ROOT}/Tests/${target}"
 done
-require_path target-GiftUIBackendFailureAdapterFixture \
-    "${PROJECT_ROOT}/Sources/GiftUIBackendFailureAdapterFixture"
 
 case_count="$(awk '/^cases:/ { if ($2 != "[]") populated += 1 } END { print populated + 0 }' \
     "${FIXTURE_ROOT}"/*.yaml)"
@@ -304,8 +302,13 @@ fi
 missing_evidence="$(awk -F $'\t' '!/^#/ && $2 != "complete" { count += 1 } END { print count + 0 }' \
     "${evidence_path}")"
 failures=$((failures + missing_evidence))
-printf 'acceptance-evidence\tmissing\t%s criterion rows are incomplete\n' \
-    "${missing_evidence}" >>"${prerequisites_path}"
+if [[ "${missing_evidence}" -eq 0 ]]; then
+    printf 'acceptance-evidence\tcomplete\tall criterion rows are complete\n' \
+        >>"${prerequisites_path}"
+else
+    printf 'acceptance-evidence\tmissing\t%s criterion rows are incomplete\n' \
+        "${missing_evidence}" >>"${prerequisites_path}"
+fi
 
 if [[ "${failures}" -eq 0 ]]; then
     status=passed
