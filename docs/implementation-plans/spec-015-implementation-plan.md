@@ -2,11 +2,11 @@
 spec: SPEC-015
 feature: giftui-mvp-architecture
 title: SPEC-015 Implementation Plan
-status: draft
+status: ready
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-12
+updated: 2026-09-13
 related_design_notes: []
 conformance_report: null
 related_future_work: []
@@ -18,10 +18,11 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-> This plan remains in `draft` pending its final readiness pass. The focused
-> schema-2 workload amendment to SPEC-015 was explicitly reapproved on
-> 2026-09-12. It does not authorize connected deployment, service restart, or
-> board flashing.
+> This ready plan derives work from the approved MVP Target-Host Configuration
+> Contract, including its explicitly reapproved schema-2 workload amendment.
+> It orders reusable host assembly and evidence but does not amend SPEC-015,
+> absorb behavior owned by another Specification, or authorize connected
+> deployment, service restart, or board flashing.
 
 ## Authority and Scope
 
@@ -66,22 +67,32 @@ are satisfied.
 - All linked ADRs are accepted and all linked RFCs are approved. SPEC-013 and
   SPEC-015 were explicitly reapproved together for the render-workspace
   workload schema; no new architectural choice is open.
-- `Package.swift` has no `GiftUIHostConfiguration` target, host-instance
-  target, runtime-profile owner, Interaction owner, Drawing owner, raster
-  backend owner, concrete four-preset root, or SPEC-015 test target.
-- Existing production targets implement portions of SPEC-003 through
-  SPEC-010: failure, capability, semantic, text-resource, render, execution,
-  and observable-state seams. Their implementation plans retain incomplete
-  downstream integration work; this plan must consume those owners rather
-  than duplicate them.
-- SPEC-011 through SPEC-014 now have ready implementation plans but no
-  production owner targets. Their declarations, lifecycle behavior, backend
-  endpoint, runtime profile, and Drawing integration are hard entry conditions
-  for the production assembly milestones below.
+- `Package.swift` has no `GiftUIHostConfiguration` target, concrete four-preset
+  composition roots, or SPEC-015 test target. It now contains the focused
+  Interaction, Drawing, Runtime Core/Dynamic/Static, surface, raster, display,
+  and backend-integration owners that the host must consume rather than
+  duplicate.
+- SPEC-007 and SPEC-008 are implemented. SPEC-005, SPEC-006, and SPEC-014 have
+  completed implementation plans; SPEC-014 also has a complete conformance
+  report and reusable production endpoint seams. SPEC-003, SPEC-004, and
+  SPEC-009 through SPEC-013 remain in active implementation with the
+  downstream integration work recorded by their own plans.
+- SPEC-011 through SPEC-013 already expose substantial production declarations
+  and owner seams, but their remaining profile, application, host, platform,
+  resource, and conformance tasks are prerequisites only for the dependent
+  SPEC-015 slices named below. SPEC-015 must not replace an unfinished owner
+  with a host-local implementation.
 - `Tests/ContractFixtures/` and `scripts/contracts/` contain registered
-  reproducible suites through SPEC-010. There is no `SPEC015` fixture tree,
+  reproducible suites through SPEC-014, including the complete SPEC-014
+  four-profile hardware-free evidence. There is no `SPEC015` fixture tree,
   driver registration, `scripts/contracts/run-spec-015.sh`, or
   `.build/spec-015/` evidence.
+- The 2026-09-13 top-level `scripts/test.sh` readiness run is not green:
+  SPEC-002 and SPEC-006 through SPEC-008 report stale source or downstream-
+  consumer inventories, governance tooling rejects SPEC-013's mutable report
+  publication path, and SPEC-011/SPEC-013 remain intentionally fail-closed on
+  pending profile/conformance prerequisites. These are explicit `T7.3`
+  prerequisites, not permission for SPEC-015 to weaken another owner's gate.
 - `demo/SignalAnalyzer/` is a separate SwiftUI investigation with portable
   Domain/Data/Presentation material and a legacy `DependencyContainer`. It is
   evidence and migration input only. Its SwiftUI `App`, `MainActor`, dynamic
@@ -93,18 +104,20 @@ are satisfied.
 
 ## Readiness Review
 
-**Reviewed:** 2026-09-09
+**Reviewed:** 2026-09-13
 
-**Disposition:** Draft pending a final readiness pass. The authority chain is
-complete, SPEC-013 and SPEC-015 were explicitly reapproved on 2026-09-12, and
-all eighteen acceptance criteria map exactly once. The plan now freezes the
-schema-2 render-scope, traversal-depth, text-line, and render-workspace
-evidence. No implementation task proceeds until the plan is marked `ready`.
+**Disposition:** Ready with explicit prerequisite gates. The authority chain
+is complete, SPEC-013 and SPEC-015 were explicitly reapproved on 2026-09-12,
+and all eighteen acceptance criteria map exactly once. Every task is now
+traceable to at least one criterion, including the schema-2 descriptor and
+evidence schemas. Milestone 0 and dependency-complete slices of Milestones 1
+through 3 can begin in order. Owner construction and four-host integration
+wait for the exact prerequisite seams named by each task; those gates require
+no architectural or contractual choice by the implementer.
 
-No `docs/features.yaml` edit is required for this derived record. After a
-ready-plan review, implementation start still requires an authorized SPEC-015
-transition to `implementing` with the corresponding metadata and manifest
-consistency update.
+No `docs/features.yaml` edit is required for this derived `draft` to `ready`
+transition. When implementation actually starts, SPEC-015 must move from
+`approved` to `implementing` with its metadata and manifest kept consistent.
 
 If implementation cannot express the exact noncopyable validator/instance
 surfaces, bounded caller-owned storage, nine-stage purity, static no-allocation
@@ -124,10 +137,10 @@ all named prerequisites exist and its owner contract remains authoritative.
 | --- | --- | --- | --- |
 | `T0.1`-`T0.4` | Reapproved SPEC-015 authority chain | `Tests/ContractFixtures/SPEC015/`, driver registry, exact package/source scans | Evidence schema, migration inventory, and driver skeleton may proceed together after names are fixed |
 | `T1.1`-`T1.4` | Milestone 0 boundaries; focused value types available | `Sources/GiftUIHostConfiguration/`, focused unit tests, package graph | Value families may be implemented separately; validator orchestration waits for all exact declarations |
-| `T2.1`-`T2.4` | SPEC-001 hierarchy/workload inputs; SPEC-012/013 limit vocabularies | checked-in descriptor, generator, generated preset manifests | Generator and negative leaf corpus may proceed together against one frozen schema |
+| `T2.1`-`T2.4` | SPEC-001 hierarchy/workload inputs; SPEC-006/008 counting rules; SPEC-012/013 limit vocabularies | checked-in descriptor, generator, generated preset manifests | Generator and negative leaf corpus may proceed together against one frozen schema |
 | `T3.1`-`T3.6` | Milestones 1-2; SPEC-004/005/013 projections; SPEC-014 descriptor vocabulary | pure validator, adapter fixtures, validation transcripts | Stages may have focused tests in parallel; ordered validator composition waits for every stage |
 | `T4.1`-`T4.4` | Valid report; implemented focused owner factories | bootstrap, failure adapter, lifecycle instance, teardown | Failure routing and lifecycle fixtures may proceed separately after one owner-call transcript is fixed |
-| `T5.1`-`T5.5` | SPEC-009/010/011 production seams; active host lifecycle | application executor join, wake/pacing, input/action, backend health | Pacing and input/action fixtures may proceed in parallel against one serialized opportunity contract |
+| `T5.1`-`T5.5` | SPEC-001 and SPEC-009/010/011 application/runtime seams; SPEC-003/014 failure and health seams; active host lifecycle | application executor join, wake/pacing, input/action, backend health | Pacing and input/action fixtures may proceed in parallel against one serialized opportunity contract |
 | `T6.1`-`T6.4` | Implemented SPEC-001 and SPEC-003 through SPEC-014 owner seams | four concrete target roots, profile workspaces, ELF/map/resource evidence | Each preset may build independently; normalized equivalence consumes all four immutable reports |
 | `T7.1`-`T7.4` | Complete focused and integrated corpus | `run-spec-015.sh`, repository test gate, conformance report | Static scans may run early; conformance disposition waits for every criterion and required integration |
 
@@ -141,7 +154,7 @@ exactly once here with its implementation work and expected evidence.
 | `HC-001` — Complete authority, metadata, manifest, portfolio, and upstream linkage without implied SPEC-001 approval | `T0.1`, `T7.4` | Governance and reciprocal-link audit | pending |
 | `HC-002` — Pure ordered validation, first failure, no side effects or partial assembly, and valid-only instance exposure | `T1.4`, `T3.6`, `T4.1`, `T7.1` | Access-order probes, owner-call ledger, repeat-call corpus, construction transcript | pending |
 | `HC-003` — Exact acyclic one-owner graph, portable import boundary, and no ambient/platform stack | `T0.2`, `T1.2`, `T7.1` | Exact graph corpus, source/import/link scans, negative compile fixtures | pending |
-| `HC-004` — Exact SPEC-013 audit and complete schema-2 runtime-limit equality | `T2.2`, `T3.1`, `T6.4` | Per-leaf equality/lowering corpus including render workspace, audit identity reports, static-table and byte-total checks | pending |
+| `HC-004` — Exact SPEC-013 audit and complete schema-2 runtime-limit equality | `T0.4`, `T2.1`, `T2.2`, `T3.1`, `T3.2`, `T6.4` | Fresh four-manifest generation, schema-version rejection, per-leaf equality/lowering corpus including all render-workspace source/limit pairs, audit identity reports, static-table and byte-total checks | pending |
 | `HC-005` — Exact five-Canvas minima and equal bounded render structural/ordinary operation counts | `T2.1`, `T2.3`, `T3.2`, `T6.4` | Generated workload manifests, checked arithmetic and capacity reports | pending |
 | `HC-006` — Independent conjunctive Drawing and capability gates | `T3.2`, `T3.3`, `T7.1` | Two independent negatives, combined success, capability-vocabulary audit | pending |
 | `HC-007` — Four contributions, five operation bits, required absence, one resolver call, exact endpoint equality | `T3.3`, `T6.4` | Permutation corpus, resolver instrumentation, effective-value transcripts | pending |
@@ -196,8 +209,11 @@ schema, and fail-closed driver contract exist before host implementation.
       descriptor, generated schema-2 workload manifest, preset expectation,
       validation transcript, lifecycle transcript, normalized semantic report,
       and resource report. Every schema rejects unknown, missing, duplicate,
-      reordered, or unversioned required fields and preserves exact focused
-      error payloads rather than flattening them to strings.
+      reordered, stale, or unversioned required fields; the workload schema
+      names all four render-workspace source counts and their exact
+      `RuntimeProfileLimits.renderWorkspace` destinations; and evidence
+      preserves exact focused error payloads rather than flattening them to
+      strings.
 
 ### Milestone 1: Implement Exact Host Values and Finite Surfaces
 
@@ -258,17 +274,24 @@ or defaulted limit leaf.
       render text line including empty lines, glyph, ordinary operation, input,
       action, completion fact, Canvas, live Path element, snapshot element, and
       static callable/capture requirement under its owner Specification.
-      Generated Swift and schema-2 manifest files must carry source identity
-      and be reproducible without evaluating a client body or Canvas closure
-      during validation.
+      Emit all four schema-2 manifests and their generated Swift preset values
+      with source identity and content hashes. A freshness check must fail on
+      schema 1, a changed descriptor, stale or manually edited output, or any
+      non-deterministic regeneration. Generation and validation must not
+      evaluate a client body or Canvas closure.
 - [ ] `T2.2` — Generate every complete nested `RuntimeProfileLimits` leaf and
       one exact expected SPEC-013 `RuntimeStorageAudit` for each preset. Add a
       generated per-leaf corpus proving equality succeeds and each
       independently lowered, unequal, wrong-profile, wrong-storage,
       wrong-static-table, or wrong-byte-total value fails; where a lower value
-      is unconstructible, prove the owner initializer rejects it. Verify all
-      four `renderWorkspace` fields equal their schema-2 source counts and the
-      audited workspace capacity.
+      is unconstructible, prove the owner initializer rejects it. Verify the
+      four schema-2 source/limit pairs independently:
+      `renderSemanticScopeOccurrences`/`maximumSemanticScopes`,
+      `layoutScopeOccurrences`/`maximumLayoutScopes`,
+      `maximumRenderTraversalDepth`/`maximumTraversalDepth`, and
+      `renderTextLineCount`/`maximumTextLines`, plus the audited workspace
+      capacity. Include wrapper/modifier depth and empty-line fixtures so the
+      generated values exercise the approved SPEC-008 counting rules.
 - [ ] `T2.3` — Generate and verify the exact Drawing minima: five Canvases,
       202 live points, 12 live subpaths, five strokes/normalized operations,
       832 snapshotted points, and 16 snapshotted subpaths. Compute
@@ -302,7 +325,9 @@ behavior, and emits one immutable report only after complete success.
       the approved lifetime.
 - [ ] `T3.2` — Complete workload validation for producer, runtime, render,
       sink, observable, interaction, input, action, fact, Drawing, and static
-      Canvas limits. Prove equality at every minimum, checked overflow paths,
+      Canvas limits. Reject every schema version other than 2 before consuming
+      a limit, require exact equality for each schema-2 source/limit pair, and
+      prove equality at every remaining minimum, checked overflow paths,
       independent lowered leaves, exact ordinary-operation agreement, and the
       structural Drawing gate without naming Drawing capacities in SPEC-004.
 - [ ] `T3.3` — Implement the capability stage using exactly four
@@ -461,7 +486,8 @@ profile/backend differences and resource accounting.
       no framebuffer, and ELF VFP calling convention. Label the result
       cross-build evidence only; no board flashing is part of this task.
 - [ ] `T6.4` — Compare graph, limit, audit, resource, capability, action, fact,
-      input, semantic, layout, render-operation, failure, publication, and
+      input, semantic, render semantic-scope, layout-scope, traversal-depth,
+      text-line, glyph, ordinary/drawing-operation, failure, publication, and
       lifecycle transcripts across all four presets. Report zero resolver
       calls after startup and, for static presets, zero heap allocation during
       construction, steady-state opportunities, action dispatch, fact
@@ -483,18 +509,22 @@ connected-hardware evidence is explicit rather than implied.
 
 - [ ] `T7.1` — Complete the exhaustive negative corpus: graph shape/order,
       every validation stage and no-later-read proof, every runtime-limit leaf,
-      Drawing/capability independence, contribution permutations, all text
-      errors, endpoint mismatches, action/input/generation faults, 28/32/33
-      fact boundaries, producer-category excess, configured input/action
-      limit success and first-excess cancellation, every policy/no-policy row,
-      every activation/teardown state, diagnostics, arithmetic, and fault
-      injection. Add forbidden-import and portable-source scans.
+      schema-1 and malformed/stale schema-2 manifests, all four independent
+      render-workspace source/limit mismatches, wrapper/modifier traversal
+      depth and empty text lines, Drawing/capability independence,
+      contribution permutations, all text errors, endpoint mismatches,
+      action/input/generation faults, 28/32/33 fact boundaries,
+      producer-category excess, configured input/action limit success and
+      first-excess cancellation, every policy/no-policy row, every
+      construction/activation/teardown state, diagnostics, arithmetic, and
+      fault injection. Add forbidden-import and portable-source scans.
 - [ ] `T7.2` — Finish `scripts/contracts/run-spec-015.sh` so each exact profile
       runs unit, conformance, integration, compile/link, static-runtime,
-      allocation, latency, and resource-accounting checks; exits nonzero on a
-      missing/malformed/failing row; and writes nothing outside
-      `.build/spec-015/`. Register it in the repository test gate only after
-      its prerequisites are available and its output is deterministic.
+      allocation, latency, resource-accounting, and generated-manifest
+      freshness checks; exits nonzero on a missing, stale, malformed, or
+      failing row; and writes nothing outside `.build/spec-015/`. Register it
+      in the repository test gate only after its prerequisites are available
+      and its output is deterministic.
 - [ ] `T7.3` — Run the maintained documentation checks, Swift formatter before
       the repository test gate, focused unit suites, each SPEC-015 profile,
       `scripts/test.sh`, clean source/import/dependency scans, and deterministic
@@ -511,6 +541,11 @@ connected-hardware evidence is explicit rather than implied.
 
 ## Design-Note Triggers
 
+- Create a focused design note before `T2.1` if the descriptor-to-manifest
+  generator needs non-obvious ownership, traversal, or source-to-limit mapping
+  beyond the checked-in schema and generator code, especially for the four
+  schema-2 render-workspace fields. The note may explain generation mechanics
+  but cannot choose counts or counting rules.
 - Create a focused design note before `T3.6` if the nine-stage validator needs
   a maintained explanation of accessor sequencing, single-use state,
   noncopyable borrows, or fail-closed report construction beyond direct code.
@@ -535,7 +570,9 @@ or recovery behavior.
 
 1. Establish governance, package, source, fixture, and output boundaries.
 2. Land exact host value declarations and bounded primitive validation.
-3. Generate and review the complete workload and four preset projections.
+3. Generate and review the complete schema-2 workload and four preset
+   projections; reject stale output and prove each descriptor source maps to
+   its owning limit before validator integration.
 4. Implement and exhaustively test the pure nine-stage validator.
 5. Join failure policy, construct one fixture host, and prove activation and
    teardown before running steady-state opportunities.
@@ -559,17 +596,26 @@ cross-build cannot satisfy a connected-hardware row.
 
 ### Upstream blockers
 
-- SPEC-011, SPEC-012, and SPEC-014 have ready plans but no production targets;
-  SPEC-013 and this Specification are approved, with their plans awaiting or
-  following their own readiness and implementation gates.
-  `T3.4`, `T4.*`, `T5.*`, and `T6.*` must wait for the exact owner seams they
-  govern.
-- SPEC-003, SPEC-004, and SPEC-008 through SPEC-010 have active plans;
+- SPEC-011 through SPEC-013 have active plans and production owner slices, but
+  retain incomplete profile, application, host, platform, resource, or
+  conformance tasks. `T4.*`, `T5.*`, and `T6.*` wait only for the exact
+  unfinished seams they consume. SPEC-013's production-owner integration is
+  itself waiting for SPEC-010 equal-profile work and SPEC-015 assembly inputs;
+  implement the shared boundary once through the owning tasks rather than
+  creating reciprocal duplicate adapters.
+- SPEC-003, SPEC-004, SPEC-009, and SPEC-010 retain active-plan work.
   SPEC-005 and SPEC-006 have completed plans but await conformance and their
-  human `implemented` transitions; SPEC-007 remains approved with a ready
-  plan. SPEC-015 may test adapters against completed seams but cannot claim
-  production assembly until each governing owner exposes its approved
-  production contract and closes the dependencies named here.
+  human `implemented` transitions; SPEC-007 and SPEC-008 are implemented.
+  SPEC-014 has a completed plan and complete conformance report, so its
+  reusable endpoint seams are available, while its human Specification status
+  transition remains separate. SPEC-015 may test adapters against available
+  seams but cannot claim production assembly until every consumed owner closes
+  the prerequisite named by the dependent task.
+- The current repository gate also requires owner-side maintenance of the
+  SPEC-002/006/007/008 source and downstream-consumer inventories and
+  SPEC-013's immutable report publication path. Those existing failures block
+  `T7.3`; they do not block the ordered host-only work in Milestones 0-3 and
+  must be fixed under their governing plans rather than hidden in SPEC-015.
 - Approved SPEC-001 has no implementation plan. The workload descriptor and
   concrete host roots require its exact portable hierarchy, six-action domain,
   fact producers, deterministic mock trace, and application failure inputs;
@@ -626,8 +672,10 @@ This plan returned to `draft` on 2026-09-11 for the coordinated SPEC-008/
 SPEC-013 render-workspace contract and schema-2 workload inputs. No task is
 complete, no design note or conformance report exists, and no SPEC-015
 implementation evidence is invalidated or claimed. The maintainer explicitly
-reapproved SPEC-013 and SPEC-015 on 2026-09-12; this plan remains `draft`
-pending its separate final readiness pass. Afterward, update each task
-disposition and evidence link in place as work proceeds. Plan completion does
-not mark SPEC-015 implemented; that transition requires a complete conformance
-review and explicit human authorization.
+reapproved SPEC-013 and SPEC-015 on 2026-09-12. The 2026-09-13 readiness pass
+mapped the previously untraced evidence-schema task, made schema-2 generation,
+freshness, rejection, and source-to-limit evidence explicit, refreshed the
+implemented-owner inventory and gates, and restored this plan to `ready`.
+Update each task disposition and evidence link in place as work proceeds. Plan
+completion does not mark SPEC-015 implemented; that transition requires a
+complete conformance review and explicit human authorization.
