@@ -257,7 +257,7 @@ claimed.
       logical Domain -> none, Data -> Domain, Presentation -> Domain/GiftUI/
       GiftUIFailureCore, and host -> all selected owners dependency rules with
       import, package graph, and generated-static equivalents.
-- [ ] `T0.3` — Create and explicitly register a fail-closed
+- [x] `T0.3` — Create and explicitly register a fail-closed
       `scripts/contracts/run-spec-001.sh` with a required `--profile` argument
       accepting exactly `macos-dynamic`, `macos-static`,
       `raspberry-pi-armv6`, and `nrf52840-embedded`. Preserve each exact
@@ -719,9 +719,11 @@ fail-closed fixture and evidence contract, the complete task ledger, five
 versioned transcript schemas, and explicit evidence-kind-to-criterion-class
 permissions. `T0.2` classified all 26 tracked investigation sources/tests and
 26 existing analyzer-related SPEC-007-through-SPEC-015 fixtures, then froze
-the dynamic package and generated-static dependency equivalents. Checked
-criteria in SPEC-001 and the imported package remain baseline evidence only
-until the governed implementation and required profiles reproduce them.
+the dynamic package and generated-static dependency equivalents. `T0.3`
+registered the exact four-profile, report-only driver; it records all required
+identities and remains fail-closed until profile implementation commands land.
+Checked criteria in SPEC-001 and the imported package remain baseline evidence
+only until the governed implementation and required profiles reproduce them.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

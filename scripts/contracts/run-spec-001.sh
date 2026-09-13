@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+
+set -uo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
+FIXTURE_ROOT="${PROJECT_ROOT}/Tests/ContractFixtures/SPEC001"
+REPORT_ROOT="${PROJECT_ROOT}/.build/contract-reports/spec-001"
+
+usage() {
+    printf '%s\n' \
+        'Usage: scripts/contracts/run-spec-001.sh --profile <profile>' \
+        '' \
+        'Profiles: macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded'
+}
+
+fail_usage() {
+    printf 'error: %s\n' "$*" >&2
+    usage >&2
+    exit 2
+}
+
+profile=""
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --profile)
+            [[ $# -ge 2 ]] || fail_usage '--profile requires a value'
+            profile="$2"
+            shift 2
+            ;;
+        -h | --help)
+            usage
+            exit 0
+            ;;
+        *) fail_usage "unknown option: $1" ;;
+    esac
+done
+
+case "${profile}" in
+    macos-dynamic)
+        target_triple="arm64-apple-macosx"
+        optimization="debug-dynamic"
+        evidence_kind="macos-target-execution"
+        ;;
+    macos-static)
+        target_triple="arm64-apple-macosx"
+        optimization="debug-static"
+        evidence_kind="macos-target-execution"
+        ;;
+    raspberry-pi-armv6)
+        target_triple="armv6-unknown-linux-gnueabihf"
+        optimization="release"
+        evidence_kind="cross-build-inspection"
+        ;;
+    nrf52840-embedded)
+        target_triple="armv7em-none-none-eabi"
+        optimization="release-size"
+        evidence_kind="cross-build-inspection"
+        ;;
+    "") fail_usage '--profile is required' ;;
+    *) fail_usage "unknown profile: ${profile}" ;;
+esac
+
+revision="$(git -C "${PROJECT_ROOT}" rev-parse HEAD)"
+dirty=false
+[[ -z "$(git -C "${PROJECT_ROOT}" status --porcelain --untracked-files=normal)" ]] || dirty=true
+fixture_identity="$(find "${FIXTURE_ROOT}" -type f -print0 | sort -z | xargs -0 shasum -a 256 | shasum -a 256 | awk '{print $1}')"
+source_paths=(
+    "${PROJECT_ROOT}/Sources/SignalAnalyzerDomain"
+    "${PROJECT_ROOT}/Sources/SignalAnalyzerData"
+    "${PROJECT_ROOT}/Sources/SignalAnalyzerPresentation"
+)
+if [[ -d "${source_paths[0]}" && -d "${source_paths[1]}" && -d "${source_paths[2]}" ]]; then
+    source_identity="$(find "${source_paths[@]}" -type f -print0 | sort -z | xargs -0 shasum -a 256 | shasum -a 256 | awk '{print $1}')"
+else
+    source_identity="missing"
+fi
+compiler_identity="$(swiftc --version 2>/dev/null | tr '\n' ' ')"
+[[ -n "${compiler_identity}" ]] || compiler_identity="missing"
+sdk_identity="missing"
+if [[ "${profile}" == macos-* ]]; then
+    sdk_identity="$(xcrun --sdk macosx --show-sdk-path 2>/dev/null || true)"
+    [[ -n "${sdk_identity}" ]] || sdk_identity="missing"
+fi
+invocation="scripts/contracts/run-spec-001.sh --profile ${profile}"
+command_identity="$(printf '%s' "${invocation}" | shasum -a 256 | awk '{print $1}')"
+run_identity="$(date -u '+%Y%m%dT%H%M%SZ')-$$"
+report_dir="${REPORT_ROOT}/${profile}/${run_identity}"
+mkdir -p "${report_dir}"
+
+{
+    printf 'schema_version=1\n'
+    printf 'spec=SPEC-001\nprofile=%s\n' "${profile}"
+    printf 'evidence_kind=%s\n' "${evidence_kind}"
+    printf 'repository_revision=%s\nrepository_dirty=%s\n' "${revision}" "${dirty}"
+    printf 'source_identity=%s\nfixture_identity=%s\n' "${source_identity}" "${fixture_identity}"
+    printf 'compiler_identity=%s\nsdk_identity=%s\n' "${compiler_identity}" "${sdk_identity}"
+    printf 'target_triple=%s\noptimization=%s\n' "${target_triple}" "${optimization}"
+    printf 'invocation=%s\ncommand_identity=%s\n' "${invocation}" "${command_identity}"
+    printf 'artifact_path=missing\nartifact_identity=missing\n'
+    printf 'remote_access=false\ndeployment=false\nservice_restart=false\n'
+    printf 'hardware_probe=false\nflashing=false\nnetwork_access=false\n'
+    printf 'status=blocked\nblocking_reason=profile-implementation-evidence-missing\n'
+} >"${report_dir}/metadata.txt"
+
+printf 'SPEC-001 %s remains fail-closed until profile implementation evidence lands; see %s\n' \
+    "${profile}" "${report_dir}" >&2
+exit 1

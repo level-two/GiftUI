@@ -1,0 +1,6 @@
+# schema_version=1
+# profile	standalone_invocation	target_triple	report_root
+macos-dynamic	scripts/contracts/run-spec-001.sh --profile macos-dynamic	arm64-apple-macosx	.build/contract-reports/spec-001
+macos-static	scripts/contracts/run-spec-001.sh --profile macos-static	arm64-apple-macosx	.build/contract-reports/spec-001
+raspberry-pi-armv6	scripts/contracts/run-spec-001.sh --profile raspberry-pi-armv6	armv6-unknown-linux-gnueabihf	.build/contract-reports/spec-001
+nrf52840-embedded	scripts/contracts/run-spec-001.sh --profile nrf52840-embedded	armv7em-none-none-eabi	.build/contract-reports/spec-001
