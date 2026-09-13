@@ -95,13 +95,22 @@ private struct TileTarget: DisplayTarget {
     let maximumInFlightBytes: UInt32
     private(set) var writer: TileWriter
     private(set) var payloads: [TilePayload] = []
+    private(set) var writerBorrowCount = 0
+    private(set) var submitCount = 0
+    private(set) var finishCount = 0
+    private var submitResults: [DisplayTransferResult]
 
-    init(capacityBytes: UInt32, regionCapacity: UInt16) {
+    init(
+        capacityBytes: UInt32,
+        regionCapacity: UInt16,
+        submitResults: [DisplayTransferResult] = []
+    ) {
         maximumInFlightBytes = capacityBytes
         writer = TileWriter(
             capacityBytes: capacityBytes,
             regionCapacity: regionCapacity
         )
+        self.submitResults = submitResults
     }
 
     mutating func reserveFrame(
@@ -117,29 +126,38 @@ private struct TileTarget: DisplayTarget {
         _ body: (inout TileWriter) -> Result
     ) -> Result? {
         guard reservation.rawValue == 11 else { return nil }
+        writerBorrowCount += 1
         return body(&writer)
     }
 
     mutating func submitPayload(
         _ reservation: DisplayReservationID
     ) -> DisplayTransferResult {
+        submitCount += 1
         guard reservation.rawValue == 11 else {
             return .failureBeforeAcceptance(.invalidReservation)
         }
-        payloads.append(
-            TilePayload(
-                bytes: Array(writer.storage.prefix(Int(writer.writtenBytes))),
-                regions: writer.regions
+        let result = submitResults.isEmpty ? .completed : submitResults.removeFirst()
+        switch result {
+        case .failureBeforeAcceptance:
+            break
+        case .completed, .failureAfterAcceptance:
+            payloads.append(
+                TilePayload(
+                    bytes: Array(writer.storage.prefix(Int(writer.writtenBytes))),
+                    regions: writer.regions
+                )
             )
-        )
-        writer.discard()
-        return .completed
+            writer.discard()
+        }
+        return result
     }
 
     mutating func finishFrame(
         _ reservation: DisplayReservationID
     ) -> DisplayTransferResult {
-        .completed
+        finishCount += 1
+        return .completed
     }
 
     mutating func cancelFrame(_ reservation: DisplayReservationID) {
@@ -320,6 +338,144 @@ func tileEmitterSkipsEmptyWorkspaceAndRejectsOversizedRun() {
     #expect(shortResult == .writerFailure)
     #expect(shortTarget.payloads.isEmpty)
     #expect(shortTarget.writer.storage.allSatisfy { $0 == 0 })
+}
+
+@Test
+func tileEmitterPreservesPretransferFailureAndDrainsAfterAcceptance() {
+    var pretransferWorkspace = patternedWorkspace()
+    var pretransferTarget = TileTarget(
+        capacityBytes: 10,
+        regionCapacity: 2,
+        submitResults: [.failureBeforeAcceptance(.transportUnavailable)]
+    )
+    var pretransferWork = tileWork(maximumPayloadBytes: 10)
+    let pretransfer = RGB565TilePayloadEmitter.submit(
+        &pretransferWorkspace,
+        reservation: DisplayReservationID(rawValue: 11),
+        target: &pretransferTarget,
+        work: &pretransferWork
+    )
+    #expect(
+        pretransfer
+            == .payloadTransfer(
+                .failureBeforeAcceptance(.transportUnavailable)
+            )
+    )
+    #expect(pretransferWork.failure == .displayFailure)
+    #expect(!pretransferWork.presentationResponsibilityAccepted)
+    #expect(!pretransferWork.isDraining)
+    #expect(pretransferTarget.writerBorrowCount == 1)
+    #expect(pretransferTarget.submitCount == 1)
+    #expect(pretransferTarget.payloads.isEmpty)
+
+    var acceptedWorkspace = patternedWorkspace()
+    var acceptedTarget = TileTarget(
+        capacityBytes: 10,
+        regionCapacity: 2,
+        submitResults: [.failureAfterAcceptance(.transportUnavailable)]
+    )
+    var acceptedWork = tileWork(maximumPayloadBytes: 10)
+    let accepted = RGB565TilePayloadEmitter.submit(
+        &acceptedWorkspace,
+        reservation: DisplayReservationID(rawValue: 11),
+        target: &acceptedTarget,
+        work: &acceptedWork
+    )
+    #expect(
+        accepted
+            == .completed(
+                TilePayloadEmissionSummary(
+                    payloads: 2,
+                    regions: 3,
+                    bytes: 18,
+                    responsibilityTransferred: true
+                )
+            )
+    )
+    #expect(acceptedWork.failure == .displayFailure)
+    #expect(acceptedWork.presentationResponsibilityAccepted)
+    #expect(acceptedWork.isDraining)
+    #expect(acceptedWork.highWater.payloads == 2)
+    #expect(acceptedWork.highWater.regionSubmissions == 3)
+    #expect(acceptedTarget.writerBorrowCount == 1)
+    #expect(acceptedTarget.submitCount == 1)
+    #expect(acceptedTarget.payloads.count == 1)
+}
+
+@Test
+func laterAcceptedFailureStopsPhysicalWorkButDrainsLaterTiles() {
+    let fill = FillRectOperation(
+        bounds: tileBounds,
+        clip: tileBounds,
+        color: .blue
+    )
+    var workspace = makeTileWorkspace()!
+    var target = TileTarget(
+        capacityBytes: 16,
+        regionCapacity: 2,
+        submitResults: [
+            .completed,
+            .failureAfterAcceptance(.transportUnavailable),
+        ]
+    )
+    var work = RasterWorkTracker(
+        limits: RasterPayloadLimits(
+            maximumRasterBytes: 32,
+            maximumPayloadBytes: 16,
+            maximumRegionsPerPayload: 2,
+            maximumRegionSubmissionsPerFrame: 5,
+            maximumTileVisitsPerFrame: 3,
+            maximumInFlightPayloads: 1,
+            maximumGlyphRasterBytes: 1,
+            maximumStrokeWorkspaceBytes: 1
+        )!
+    )
+    var consumerCalls = 0
+    let traversal = OperationMajorTileTraversal.visit(
+        operationClip: tileBounds,
+        damageBounds: tileBounds,
+        workspace: &workspace,
+        { damage, replace in
+            if case .completed = RasterFillCoverage.rasterize(
+                fill,
+                descriptor: tileDescriptor,
+                damageBounds: damage,
+                replace
+            ) {
+                return true
+            }
+            return false
+        },
+        { tile in
+            consumerCalls += 1
+            if case .completed = RGB565TilePayloadEmitter.submit(
+                &tile,
+                reservation: DisplayReservationID(rawValue: 11),
+                target: &target,
+                work: &work
+            ) {
+                return true
+            }
+            return false
+        }
+    )
+    #expect(traversal == .completed(tileVisits: 3))
+    #expect(consumerCalls == 3)
+    #expect(work.failure == .displayFailure)
+    #expect(work.isDraining)
+    #expect(work.highWater.tileVisits == 3)
+    #expect(work.highWater.payloads == 5)
+    #expect(work.highWater.regionSubmissions == 5)
+    #expect(target.writerBorrowCount == 2)
+    #expect(target.submitCount == 2)
+    #expect(target.payloads.count == 2)
+    let completion = RGB565TilePayloadEmitter.finish(
+        reservation: DisplayReservationID(rawValue: 11),
+        target: &target,
+        work: &work
+    )
+    #expect(completion == .completed(responsibilityTransferred: true))
+    #expect(target.finishCount == 1)
 }
 
 @Test

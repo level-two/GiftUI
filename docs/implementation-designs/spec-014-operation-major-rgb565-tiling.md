@@ -161,6 +161,8 @@ T6.4's single-borrow glyph seam and poisoning/address evidence are recorded in
 [`borrow-lifetime-evidence.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/borrow-lifetime-evidence.md).
 T6.5's exact platform high-water evidence is recorded in
 [`platform-tile-high-water.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/platform-tile-high-water.md).
-The T6.6 link will be added with that task. Full-surface comparison
+T6.6 failure/drain behavior is recorded in
+[`tiled-failure-drain.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/tiled-failure-drain.md).
+Full-surface comparison
 evidence is in
 [`full-surface-comparison.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-5/full-surface-comparison.md).

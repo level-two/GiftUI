@@ -429,7 +429,7 @@ address or complete frame buffer/list.
       configurations at equal and worst-case limits. Record tile/payload/region
       high-water and prove one in-flight slot, 3,840-byte nRF storage, no full
       framebuffer, and exact equality with recording/full-surface output.
-- [ ] `T6.6` — Inject failure before the first submitted payload and on the
+- [x] `T6.6` — Inject failure before the first submitted payload and on the
       first and later payloads. Before transfer, discard/cancel with no effect;
       after transfer, stop physical work, keep validating/draining every later
       borrow, call `finishFrame` once, update health once, and preserve accepted
@@ -1022,6 +1022,21 @@ registered storage audit rejects hidden owned frame storage and all four
 profiles compile the same generic implementation. T6.3 supplies the
 zero-tolerance recording/full-surface comparisons; no hardware was opened,
 deployed, or flashed.
+
+`T6.6` is complete. A failure before the first accepted payload records the
+sticky display failure, returns the exact before-acceptance transfer result,
+and leaves responsibility reversible for endpoint cancellation. A first or
+later after-acceptance failure irreversibly marks responsibility, records the
+first display failure, and switches the emitter to validation-only dry-run
+segmentation. The current remainder and every later tile/operation continue
+checked raster, payload, region, in-flight, and visit accounting without any
+later writer borrow or submission. Tiled frame completion calls target
+`finishFrame` once and preserves the transferred state. Focused injection
+proves first and later failures, two physical submissions followed by all five
+logical row payloads drained, and three consumer calls. The Display Core
+responsibility suite independently proves one health transition, reversible
+pre-transfer failure, and illegal after-transfer result normalization.
+Milestone 6 is complete.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

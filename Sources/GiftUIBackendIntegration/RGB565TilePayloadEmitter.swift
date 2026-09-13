@@ -21,6 +21,11 @@ package enum TilePayloadEmissionResult: Equatable, Sendable {
     case arithmeticOverflow
 }
 
+package enum TileFrameCompletionResult: Equatable, Sendable {
+    case completed(responsibilityTransferred: Bool)
+    case frameEnd(DisplayTransferResult)
+}
+
 private enum TileWriterFillResult {
     case empty
     case payload(bytes: UInt32, regions: UInt16, finishedTile: Bool)
@@ -30,6 +35,32 @@ private enum TileWriterFillResult {
 }
 
 package enum RGB565TilePayloadEmitter {
+    package static func finish<Target>(
+        reservation: DisplayReservationID,
+        target: inout Target,
+        work: inout RasterWorkTracker
+    ) -> TileFrameCompletionResult where Target: DisplayTarget {
+        let result = target.finishFrame(reservation)
+        switch result {
+        case .completed:
+            return .completed(
+                responsibilityTransferred: work.presentationResponsibilityAccepted
+            )
+        case .failureBeforeAcceptance:
+            _ = work.recordFailure(.displayFailure)
+            if work.presentationResponsibilityAccepted {
+                return .frameEnd(
+                    .failureAfterAcceptance(.invariantViolation)
+                )
+            }
+            return .frameEnd(result)
+        case .failureAfterAcceptance:
+            work.acceptPresentationResponsibility()
+            _ = work.recordFailure(.displayFailure)
+            return .frameEnd(result)
+        }
+    }
+
     package static func submit<Storage, Target>(
         _ workspace: inout RGB565TileWorkspace<Storage>,
         reservation: DisplayReservationID,
@@ -51,6 +82,14 @@ package enum RGB565TilePayloadEmitter {
             .multipliedReportingOverflow(by: UInt32(tile.size.height))
         guard !pixelCapacity.overflow else { return .arithmeticOverflow }
         var cursor: UInt32 = 0
+        if work.isDraining {
+            return drain(
+                workspace,
+                pixelCapacity: pixelCapacity.partialValue,
+                cursor: &cursor,
+                work: &work
+            )
+        }
         var totalPayloads: UInt32 = 0
         var totalRegions: UInt32 = 0
         var totalBytes: UInt32 = 0
@@ -79,16 +118,6 @@ package enum RGB565TilePayloadEmitter {
             case .arithmeticOverflow:
                 return .arithmeticOverflow
             case .payload(let bytes, let regions, _):
-                let transfer = target.submitPayload(reservation)
-                switch transfer {
-                case .completed:
-                    work.acceptPresentationResponsibility()
-                case .failureBeforeAcceptance:
-                    return .payloadTransfer(transfer)
-                case .failureAfterAcceptance:
-                    work.acceptPresentationResponsibility()
-                    return .payloadTransfer(transfer)
-                }
                 guard let payloads = add(totalPayloads, 1),
                     let regionCount = add(totalRegions, UInt32(regions)),
                     let byteCount = add(totalBytes, bytes)
@@ -96,6 +125,37 @@ package enum RGB565TilePayloadEmitter {
                 totalPayloads = payloads
                 totalRegions = regionCount
                 totalBytes = byteCount
+                let transfer = target.submitPayload(reservation)
+                switch transfer {
+                case .completed:
+                    work.acceptPresentationResponsibility()
+                case .failureBeforeAcceptance:
+                    _ = work.recordFailure(.displayFailure)
+                    if work.presentationResponsibilityAccepted {
+                        return drain(
+                            workspace,
+                            pixelCapacity: pixelCapacity.partialValue,
+                            cursor: &cursor,
+                            work: &work,
+                            initialPayloads: totalPayloads,
+                            initialRegions: totalRegions,
+                            initialBytes: totalBytes
+                        )
+                    }
+                    return .payloadTransfer(transfer)
+                case .failureAfterAcceptance:
+                    work.acceptPresentationResponsibility()
+                    _ = work.recordFailure(.displayFailure)
+                    return drain(
+                        workspace,
+                        pixelCapacity: pixelCapacity.partialValue,
+                        cursor: &cursor,
+                        work: &work,
+                        initialPayloads: totalPayloads,
+                        initialRegions: totalRegions,
+                        initialBytes: totalBytes
+                    )
+                }
             }
         }
         return .completed(
@@ -106,6 +166,104 @@ package enum RGB565TilePayloadEmitter {
                 responsibilityTransferred: work.presentationResponsibilityAccepted
             )
         )
+    }
+
+    private static func drain<Storage>(
+        _ workspace: borrowing RGB565TileWorkspace<Storage>,
+        pixelCapacity: UInt32,
+        cursor: inout UInt32,
+        work: inout RasterWorkTracker,
+        initialPayloads: UInt32 = 0,
+        initialRegions: UInt32 = 0,
+        initialBytes: UInt32 = 0
+    ) -> TilePayloadEmissionResult where Storage: RGB565TileStorage {
+        var totalPayloads = initialPayloads
+        var totalRegions = initialRegions
+        var totalBytes = initialBytes
+        var payloadBytes: UInt32 = 0
+        var payloadRegions: UInt16 = 0
+        let width = UInt32(workspace.descriptor.regionWidth)
+
+        while cursor < pixelCapacity {
+            while cursor < pixelCapacity,
+                !workspace.storage.isAffected(pixelIndex: cursor)
+            {
+                cursor += 1
+            }
+            guard cursor < pixelCapacity else { break }
+            let row = cursor / width
+            let startX = cursor % width
+            var endX = startX + 1
+            while endX < width,
+                workspace.storage.isAffected(pixelIndex: row * width + endX)
+            {
+                endX += 1
+            }
+            let runBytes = (endX - startX).multipliedReportingOverflow(by: 2)
+            guard !runBytes.overflow,
+                runBytes.partialValue <= work.limits.maximumPayloadBytes
+            else {
+                _ = work.recordFailure(.capacityExhausted)
+                cursor = row * width + endX
+                continue
+            }
+            let nextBytes = payloadBytes.addingReportingOverflow(
+                runBytes.partialValue
+            )
+            if nextBytes.overflow
+                || nextBytes.partialValue > work.limits.maximumPayloadBytes
+                || payloadRegions == work.limits.maximumRegionsPerPayload
+            {
+                guard
+                    let updated = recordDrainedPayload(
+                        bytes: payloadBytes,
+                        regions: payloadRegions,
+                        totals: (totalPayloads, totalRegions, totalBytes),
+                        work: &work
+                    )
+                else { return .arithmeticOverflow }
+                (totalPayloads, totalRegions, totalBytes) = updated
+                payloadBytes = 0
+                payloadRegions = 0
+            }
+            payloadBytes += runBytes.partialValue
+            payloadRegions += 1
+            cursor = row * width + endX
+        }
+        if payloadRegions > 0 {
+            guard
+                let updated = recordDrainedPayload(
+                    bytes: payloadBytes,
+                    regions: payloadRegions,
+                    totals: (totalPayloads, totalRegions, totalBytes),
+                    work: &work
+                )
+            else { return .arithmeticOverflow }
+            (totalPayloads, totalRegions, totalBytes) = updated
+        }
+        return .completed(
+            TilePayloadEmissionSummary(
+                payloads: totalPayloads,
+                regions: totalRegions,
+                bytes: totalBytes,
+                responsibilityTransferred: true
+            )
+        )
+    }
+
+    private static func recordDrainedPayload(
+        bytes: UInt32,
+        regions: UInt16,
+        totals: (UInt32, UInt32, UInt32),
+        work: inout RasterWorkTracker
+    ) -> (UInt32, UInt32, UInt32)? {
+        _ = work.recordPayload(bytes: bytes, regions: regions)
+        _ = work.recordInFlight(payloads: 1, bytes: bytes)
+        guard let payloads = add(totals.0, 1),
+            let regionCount = add(totals.1, UInt32(regions)),
+            let byteCount = add(totals.2, bytes)
+        else { return nil }
+        return (payloads, regionCount, byteCount)
     }
 
     private static func fillWriter<Storage, Writer>(
