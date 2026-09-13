@@ -387,7 +387,7 @@ one-payload full-surface rule.
       adapter with the same surface contract and explicit mapped-surface plus
       workspace accounting. It must not open a device, deploy, or claim a
       connected framebuffer/PiScreen result.
-- [ ] `T5.3` — Emit affected full-width rows only after complete stream
+- [x] `T5.3` — Emit affected full-width rows only after complete stream
       success, in exactly one payload, with no effect during operation
       consumption. Cover zero damage, odd stride, row padding, maximum damaged
       rows, payload/region equality and first excess, cancellation, and faults
@@ -933,6 +933,17 @@ and accounting overflow. The adapter shares the exact begin/replace/finish/
 discard and post-transfer drain grammar with T5.1. Tests open no device, map no
 OS framebuffer, deploy nothing, and make no PiScreen or connected-hardware
 claim.
+
+`T5.3` is complete. `GiftUIBackendIntegration` now packs each damaged full-
+width row from either readable full-surface realization into one display
+writer payload, excluding raster stride padding and preserving exact row
+order. Empty damage skips writer/submission and performs one frame-end call.
+Nonempty damage finishes one writer, submits exactly once, records the transfer
+point on the surface, then finishes the target and surface once. Writer absence
+or failure remains pre-transfer and cancellable; submit and frame-end failures
+retain their exact stage and before/after-acceptance value. Tests cover partial
+damage, odd stride, maximum row/byte equality, first-byte-short capacity,
+zero payload, cancellation, submit failure, and post-transfer frame-end failure.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

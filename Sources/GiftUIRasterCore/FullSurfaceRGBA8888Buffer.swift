@@ -19,7 +19,14 @@ package protocol FullSurfaceRGBA8888Storage {
     ) rethrows -> Result
 }
 
-package struct FullSurfaceRGBA8888Buffer<Storage>: RasterSurface
+package protocol FullSurfaceReadableRaster: RasterSurface {
+    mutating func acceptPresentationResponsibility() -> Bool
+    borrowing func withBytes<Result>(
+        _ body: (UnsafeRawBufferPointer) throws -> Result
+    ) rethrows -> Result
+}
+
+package struct FullSurfaceRGBA8888Buffer<Storage>: FullSurfaceReadableRaster
 where Storage: FullSurfaceRGBA8888Storage {
     package let descriptor: RasterSurfaceDescriptor
     package private(set) var storage: Storage

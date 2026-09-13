@@ -17,7 +17,7 @@ package protocol FullSurfaceRGB565Storage {
     ) rethrows -> Result
 }
 
-package struct FullSurfaceRGB565Framebuffer<Storage>: RasterSurface
+package struct FullSurfaceRGB565Framebuffer<Storage>: FullSurfaceReadableRaster
 where Storage: FullSurfaceRGB565Storage {
     package let descriptor: RasterSurfaceDescriptor
     package let mappedSurfaceBytes: UInt32
