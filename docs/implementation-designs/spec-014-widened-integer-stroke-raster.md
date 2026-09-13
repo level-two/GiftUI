@@ -179,3 +179,5 @@ conformance complete until that evidence lands.
 Production and focused-test links will be added when the implementation lands.
 The current upstream placeholder is
 [`raster-vectors.yaml`](../../Tests/ContractFixtures/SPEC012/raster-vectors.yaml).
+The reproducible downstream disposition is recorded in the
+[T4.4 blocker evidence](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-4/spec-012-stroke-vector-blocker.md).

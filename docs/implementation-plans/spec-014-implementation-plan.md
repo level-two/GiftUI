@@ -146,7 +146,7 @@ listed prerequisite is satisfied.
 | `T1.1`-`T1.6` | `T0.2`; landed SPEC-002/003/004/005/008/009 declarations named by each task | four new Core/integration targets and focused test targets | Surface, raster-limit/error, and display value families may proceed independently after ownership and imports freeze; endpoint protocols wait for SPEC-012's drawing sink |
 | `T2.1`-`T2.5` | Relevant `T1.*`; exact SPEC-004 effective values and SPEC-005 resource views | contributor adapters, integration construction, capability fixtures | Contribution construction, equality matrices, and checked-work arithmetic may be tested separately before combined endpoint construction |
 | `T3.1`-`T3.5` | Display declarations from `T1.4`; descriptor and limits from `T1.1`/`T1.3` | display recording target, writer, transaction tests | Identity allocation and writer grammar may proceed in parallel against one frozen reservation state model |
-| `T4.1`-`T4.6` | Surface/raster contracts; normalized fill/text operations; SPEC-012 for `T4.4` | raster core, recording surface, golden fixtures | Encoding, fill, and glyph work may proceed independently; stroke work starts only after the canonical borrowed stroke view exists; final golden comparison consumes all paths |
+| `T4.1`-`T4.6` | Surface/raster contracts; normalized fill/text operations; SPEC-012 borrowed stroke view plus completed `T8.1` vectors and `T8.2` independent oracle for `T4.4` | raster core, recording surface, golden fixtures | Encoding, fill, glyph, and bounded-work tracking may proceed independently; stroke conformance waits for its owner-frozen vectors and oracle; final golden comparison consumes all paths |
 | `T5.1`-`T5.4` | `T3.*`, `T4.*`; complete full-surface bounds | RGBA8888 buffer, RGB565 framebuffer adapter, display recording target | The two encodings may be realized separately after shared raster semantics freeze |
 | `T6.1`-`T6.6` | `T3.*`, `T4.*`; synchronous borrowed/copy display slot; SPEC-012 stroke view | operation-major tiled backend and Pi/nRF fixture targets | Tile traversal and payload segmentation may be developed separately only after their shared ordering and ownership invariant is fixed |
 | `T7.1`-`T7.5` | `T2.*`-`T6.*`; SPEC-009 endpoint seam; SPEC-003 failure/health values | backend endpoint, failure adapter, diagnostics and transaction corpus | Offer normalization and local failure mapping may proceed in parallel; responsibility-transfer/drain evidence waits for both |
@@ -877,6 +877,18 @@ continues checked validation while returning success to the one-shot stream,
 and preserves the first failure. Focused tests cover every independent limit,
 malformed empty payloads, sticky precedence, post-acceptance drain, overflow,
 and complete attempt reset.
+
+`T4.4` is upstream-blocked as of 2026-09-13. The borrowed stroke declaration
+exists, but SPEC-012's authoritative `raster-vectors.yaml` still contains an
+empty vector list and its plan tasks `T8.1` and `T8.2` for the complete
+normative corpus and independent oracle remain unchecked. Implementing both
+expected masks and the consumer from one SPEC-014 algorithm would be circular
+evidence and would silently expand this authorized implementation group into
+SPEC-012's separately governed plan. The exact reproduction and downstream
+impact are recorded in
+[`spec-012-stroke-vector-blocker.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-4/spec-012-stroke-vector-blocker.md).
+`T4.6`, the Milestone 5/6 zero-tolerance stroke comparisons, and BI-009 remain
+open; no approximate or native-style fallback was introduced.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
