@@ -205,6 +205,9 @@ struct RecordingDisplayTarget: DisplayTarget {
     private(set) var submittedPayloads: [RecordedDisplayPayload] = []
     private(set) var inFlightPayloadCount: UInt8 = 0
     private(set) var inFlightBytes: UInt32 = 0
+    private(set) var responsibilityTransferCount: UInt32 = 0
+    private(set) var presentationResponsibilityAccepted = false
+    private(set) var isDraining = false
     private(set) var lastError: DisplayTargetError?
     private(set) var currentHealth = GiftUIOperationalHealth()
 
@@ -212,6 +215,9 @@ struct RecordingDisplayTarget: DisplayTarget {
     private var reservationIdentityExhausted: Bool
     private var writerBorrowActive = false
     private var payloadSlotReusable = true
+    private var injectedSubmitResults: [DisplayTransferResult]
+    private var injectedFinishResults: [DisplayTransferResult]
+    private var healthFailureRecordedForFrame = false
 
     init(
         descriptor: RasterSurfaceDescriptor,
@@ -222,6 +228,8 @@ struct RecordingDisplayTarget: DisplayTarget {
         maximumInFlightPayloads: UInt8 = 1,
         maximumInFlightBytes: UInt32? = nil,
         damageBounds: Rect? = nil,
+        submitResults: [DisplayTransferResult] = [],
+        finishResults: [DisplayTransferResult] = [],
         nextReservationRawValue: UInt32 = 0
     ) {
         expectedDescriptor = descriptor
@@ -239,6 +247,8 @@ struct RecordingDisplayTarget: DisplayTarget {
         )
         self.nextReservationRawValue = nextReservationRawValue
         reservationIdentityExhausted = false
+        injectedSubmitResults = submitResults
+        injectedFinishResults = finishResults
     }
 
     mutating func reserveFrame(
@@ -287,6 +297,9 @@ struct RecordingDisplayTarget: DisplayTarget {
         }
         activeReservation = id
         payloadSlotReusable = true
+        presentationResponsibilityAccepted = false
+        isDraining = false
+        healthFailureRecordedForFrame = false
         lastError = nil
         reservations.append(
             RecordedDisplayReservation(
@@ -303,6 +316,7 @@ struct RecordingDisplayTarget: DisplayTarget {
         for reservation: DisplayReservationID,
         _ body: (inout RecordingDisplayWriter) -> Result
     ) -> Result? {
+        guard !isDraining else { return nil }
         guard reservation == activeReservation,
             !writerBorrowActive,
             !writer.isFinished,
@@ -325,12 +339,69 @@ struct RecordingDisplayTarget: DisplayTarget {
             lastError = .invalidReservation
             return .failureBeforeAcceptance(.invalidReservation)
         }
+        guard !isDraining else {
+            return .failureAfterAcceptance(lastError ?? .invariantViolation)
+        }
         guard writer.isFinished, writer.lastError == nil else {
             lastError = .invariantViolation
             return .failureBeforeAcceptance(.invariantViolation)
         }
 
+        let plannedResult =
+            injectedSubmitResults.isEmpty
+            ? .completed : injectedSubmitResults.removeFirst()
+
+        switch plannedResult {
+        case .completed:
+            acceptCurrentPayload(for: reservation)
+            lastError = nil
+            return .completed
+        case .failureBeforeAcceptance(let error):
+            if presentationResponsibilityAccepted {
+                writer.discard()
+                payloadSlotReusable = false
+                isDraining = true
+                recordHealthFailure(.invariantViolation)
+                if lastError == nil { lastError = .invariantViolation }
+                return .failureAfterAcceptance(.invariantViolation)
+            }
+            if lastError == nil { lastError = error }
+            return .failureBeforeAcceptance(error)
+        case .failureAfterAcceptance(let error):
+            acceptCurrentPayload(for: reservation)
+            payloadSlotReusable = false
+            isDraining = true
+            recordHealthFailure(error)
+            if lastError == nil { lastError = error }
+            return .failureAfterAcceptance(error)
+        }
+    }
+
+    private mutating func acceptCurrentPayload(
+        for reservation: DisplayReservationID
+    ) {
         let bytes = Array(writer.stagedBytes.prefix(Int(writer.writtenBytes)))
+        let retainsPayload =
+            handoff != .synchronous
+            || submissionLifetime == .ownershipTransfer
+        var retainedPayloadCount = inFlightPayloadCount
+        var retainedPayloadBytes = inFlightBytes
+        if retainsPayload {
+            let payloadCount = inFlightPayloadCount.addingReportingOverflow(1)
+            let payloadBytes = inFlightBytes.addingReportingOverflow(
+                UInt32(bytes.count)
+            )
+            precondition(
+                !payloadCount.overflow
+                    && !payloadBytes.overflow
+                    && payloadCount.partialValue <= maximumInFlightPayloads
+                    && payloadBytes.partialValue <= maximumInFlightBytes,
+                "reservation admitted a payload that exceeds declared in-flight bounds"
+            )
+            retainedPayloadCount = payloadCount.partialValue
+            retainedPayloadBytes = payloadBytes.partialValue
+        }
+
         submittedPayloads.append(
             RecordedDisplayPayload(
                 reservation: reservation,
@@ -338,32 +409,17 @@ struct RecordingDisplayTarget: DisplayTarget {
                 regions: writer.regions
             )
         )
+        transferResponsibilityIfNeeded()
 
-        if handoff == .synchronous,
-            submissionLifetime == .synchronousBorrow
-                || submissionLifetime == .synchronousCopy
-        {
+        if !retainsPayload {
             writer.discard()
             payloadSlotReusable = true
         } else {
-            let payloadCount = inFlightPayloadCount.addingReportingOverflow(1)
-            let payloadBytes = inFlightBytes.addingReportingOverflow(UInt32(bytes.count))
-            guard !payloadCount.overflow,
-                !payloadBytes.overflow,
-                payloadCount.partialValue <= maximumInFlightPayloads,
-                payloadBytes.partialValue <= maximumInFlightBytes
-            else {
-                submittedPayloads.removeLast()
-                lastError = .capacityExhausted
-                return .failureBeforeAcceptance(.capacityExhausted)
-            }
-            inFlightPayloadCount = payloadCount.partialValue
-            inFlightBytes = payloadBytes.partialValue
+            inFlightPayloadCount = retainedPayloadCount
+            inFlightBytes = retainedPayloadBytes
             payloadSlotReusable = false
             writer.discard()
         }
-        lastError = nil
-        return .completed
     }
 
     mutating func finishFrame(
@@ -373,24 +429,52 @@ struct RecordingDisplayTarget: DisplayTarget {
             lastError = .invalidReservation
             return .failureBeforeAcceptance(.invalidReservation)
         }
-        guard !writerBorrowActive,
-            !writer.isFinished,
-            !writer.hasActiveRegion,
-            writer.writtenBytes == 0,
-            writer.writtenRegionCount == 0
+        guard
+            isDraining
+                || (!writerBorrowActive
+                    && !writer.isFinished
+                    && !writer.hasActiveRegion
+                    && writer.writtenBytes == 0
+                    && writer.writtenRegionCount == 0)
         else {
             lastError = .invariantViolation
             return .failureBeforeAcceptance(.invariantViolation)
         }
+        let plannedResult =
+            injectedFinishResults.isEmpty
+            ? .completed : injectedFinishResults.removeFirst()
         finishedReservations.append(reservation)
-        resetSession()
-        lastError = nil
-        return .completed
+        switch plannedResult {
+        case .completed:
+            resetSession()
+            lastError = nil
+            return .completed
+        case .failureBeforeAcceptance(let error):
+            if presentationResponsibilityAccepted {
+                recordHealthFailure(.invariantViolation)
+                resetSession()
+                if lastError == nil { lastError = .invariantViolation }
+                return .failureAfterAcceptance(.invariantViolation)
+            }
+            resetSession()
+            if lastError == nil { lastError = error }
+            return .failureBeforeAcceptance(error)
+        case .failureAfterAcceptance(let error):
+            transferResponsibilityIfNeeded()
+            recordHealthFailure(error)
+            resetSession()
+            if lastError == nil { lastError = error }
+            return .failureAfterAcceptance(error)
+        }
     }
 
     mutating func cancelFrame(_ reservation: DisplayReservationID) {
         guard reservation == activeReservation else {
             lastError = .invalidReservation
+            return
+        }
+        guard !presentationResponsibilityAccepted else {
+            if lastError == nil { lastError = .invariantViolation }
             return
         }
         cancelledReservations.append(reservation)
@@ -408,5 +492,29 @@ struct RecordingDisplayTarget: DisplayTarget {
         inFlightPayloadCount = 0
         inFlightBytes = 0
         writer.discard()
+        presentationResponsibilityAccepted = false
+        isDraining = false
+        healthFailureRecordedForFrame = false
+    }
+
+    private mutating func transferResponsibilityIfNeeded() {
+        guard !presentationResponsibilityAccepted else { return }
+        presentationResponsibilityAccepted = true
+        responsibilityTransferCount += 1
+    }
+
+    private mutating func recordHealthFailure(_ error: DisplayTargetError) {
+        guard !healthFailureRecordedForFrame else { return }
+        healthFailureRecordedForFrame = true
+        let isTransport = error == .transportUnavailable
+        currentHealth.recordFailure(
+            GiftUIFailureFact(
+                condition: isTransport ? .requiredFacilityUnavailable : .invariantViolation,
+                origin: isTransport ? .presentationIntegration : .backend,
+                affectedScope: isTransport ? .component : .runtime,
+                containment: isTransport ? .contained : .safetyNotProven
+            ),
+            resultingState: isTransport ? .unavailable : .quiesced
+        )
     }
 }

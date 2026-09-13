@@ -321,7 +321,7 @@ identity lifetime, and target-local health.
       multi-payload reuse only for synchronous handoff with synchronous borrow
       or copy; restrict queued/ownership-transfer to zero-or-one-payload
       full-surface sessions.
-- [ ] `T3.4` — Implement responsibility transfer at the first completed or
+- [x] `T3.4` — Implement responsibility transfer at the first completed or
       after-acceptance submission/effect, exact before/after-acceptance result
       legality, draining state, and one target-owned health transition per
       frame. Prove a pre-transfer writer/submission failure is fully reversible
@@ -802,6 +802,18 @@ queued handoff and ownership transfer before identity allocation. Focused
 tests cover submit-without-finish, double submit, unfinished/unsubmitted frame
 completion, exact payload transcripts, synchronous slot reuse, retained
 in-flight counters and teardown, and every prohibited tiled mode.
+
+`T3.4` added the recording target's irreversible responsibility boundary and
+draining state. The first completed or after-acceptance effect transfers
+responsibility exactly once; a before-acceptance failure before that boundary
+remains cancellable without a health transition, while a post-transfer
+failure cannot reopen the writer or cancel the frame. Illegal
+before-acceptance results after transfer are normalized to an after-acceptance
+invariant failure. Target-local health records at most one failure per frame,
+including zero-payload frame-end failures, and draining completion releases
+the session without reclassifying the original failure. Focused tests cover
+each boundary, repeated post-failure calls, cancellation legality, health
+cardinality and state, and terminal teardown.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
