@@ -444,9 +444,10 @@ and exact SPEC-009 endpoint values pass independently.
 once, maps every result exactly, transfers responsibility irreversibly, and
 preserves failure/health/diagnostic ownership.
 
-- [ ] `T7.1` — Implement endpoint `offer`: validate provenance/envelope,
-      immutable effective configuration, exact header work, idle state, and
-      resource compatibility; reserve one complete session before body; map
+- [x] `T7.1` — Implement endpoint `offer`: validate provenance/envelope,
+      immutable effective configuration and idle state before reservation;
+      validate exact stream-owned header work and resource compatibility at
+      the first post-reservation `sink.begin` before mutation; map
       backpressure/refusals/failures exactly; and call the body at most once.
       Record target/body call counts for every pre-body exit.
 - [ ] `T7.2` — Implement exact stream completion and cleanup. On complete,
@@ -1037,6 +1038,21 @@ logical row payloads drained, and three consumer calls. The Display Core
 responsibility suite independently proves one health transition, reversible
 pre-transfer failure, and illegal after-transfer result normalization.
 Milestone 6 is complete.
+
+`T7.1` is complete. A generic `OneShotRasterBackendEndpoint` now conforms to
+the SPEC-009 and SPEC-014 endpoint contracts while retaining its exact
+effective presentation, descriptor, payload limits, text views, and selected
+realization. Construction rejects any prior startup failure or immutable
+configuration/sink mismatch. Each offer detects active/non-idle state and
+invalid provenance before reservation, reserves the exact payload-byte and
+region slot once, maps all five reservation results exactly, preserves the
+display error for a reservation failure, and invokes the body at most once
+only after reservation. Focused tests prove exact call order/arguments,
+pre-body exit counts, configuration rejection, and body/result handoff. The
+approved Specification and plan now clarify that the body-owned header cannot
+be checked before the API delivers it: its exact work validation occurs in
+the reserved sink's first `begin`, before mutation. T7.2 owns the normative
+post-body cleanup and result mapping behind the session-sink seam.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

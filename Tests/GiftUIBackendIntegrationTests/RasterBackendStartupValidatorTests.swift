@@ -18,7 +18,7 @@ private let expectedExtent = CapabilityExtent(width: 4, height: 3)!
 private let expectedRegion = CapabilityExtent(width: 4, height: 3)!
 private let expectedBytes = CapabilityByteCount(rawValue: 48)
 
-private func effective(
+func effective(
     operations: RasterOperationSet = expectedOperations,
     extent: CapabilityExtent = expectedExtent,
     regionExtent: CapabilityExtent = expectedRegion,
@@ -50,7 +50,7 @@ private func effective(
     )
 }
 
-private func descriptor(
+func descriptor(
     encoding: CanonicalPixelEncoding = .rgba8888,
     realization: RasterRealizationKind = .fullSurface
 ) -> RasterSurfaceDescriptor {
@@ -67,7 +67,7 @@ private func descriptor(
     )!
 }
 
-private func limits(
+func limits(
     raster: UInt32 = 48,
     payload: UInt32 = 48,
     inFlightCount: UInt8 = 1,

@@ -177,6 +177,7 @@ run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" \
 run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" \
     -module-name GiftUIBackendIntegration \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift" \
+    "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/FullSurfacePayloadEmitter.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift" \

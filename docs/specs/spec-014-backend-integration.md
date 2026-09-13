@@ -71,8 +71,13 @@ target_milestone: MVP
 > maintainer's 2026-09-13 instruction to update the Specification and proceed
 > also corrected the endpoint's missing canonical metrics view: SPEC-005 owns
 > glyph ink offsets, so the raster endpoint must borrow that exact view rather
-> than infer geometry. The approved contract remains authoritative and is not
-> yet implemented.
+> than infer geometry. On 2026-09-13 the maintainer also authorized the
+> contract-order clarification required by the approved
+> `SynchronousFrameEndpoint` signature: offer-visible provenance and immutable
+> configuration are validated before reservation; the stream-owned header is
+> validated by the first `sink.begin` call after reservation and before any
+> surface or display mutation. The approved contract remains authoritative and
+> is not yet implemented.
 
 ## Summary
 
@@ -687,11 +692,15 @@ presentation path.
 
 ### Offer, reservation, and consumption
 
-For each candidate, the endpoint verifies provenance/envelope, equality with
-the immutable effective configuration, the checked header work bounds above,
-and idle state. It then calls `reserveFrame` for exactly one selected payload
-slot and its configured per-payload region records. It performs no operation
-consumption before successful reservation.
+For each candidate, the endpoint verifies the offer-visible provenance and
+envelope, equality with the immutable effective configuration, and idle state.
+It then calls `reserveFrame` for exactly one selected payload slot and its
+configured per-payload region records. The `SynchronousFrameEndpoint.offer`
+signature does not carry a `RenderPlanHeader`; that stream-owned value first
+appears in the body call. Therefore the reserved sink validates the exact
+header and its checked work bounds at the first `begin` call, before surface
+begin, operation consumption, payload writing, or any other mutation. No
+operation is consumed before successful reservation.
 
 Reservation results map exactly:
 
