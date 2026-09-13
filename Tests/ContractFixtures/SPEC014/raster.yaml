@@ -45,3 +45,26 @@ cases:
     bodyResult: none
     health: none
     highWater: {temporaryBytes: 0, unusedByte2: 0, unusedByte3: 0, alpha: 255}
+  - fixtureID: spec014-positioned-glyph-exact-bitmap
+    criteria: [BI-008, BI-014]
+    evidenceClasses: [cross-build, host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: {origin: {x: 0, y: 0}, extent: {width: 5, height: 4}, encoding: rgb565BigEndian, bytesPerRow: 10, realization: fullSurface, regionExtent: {width: 5, height: 4}}
+    effectiveCapability: none
+    header: {surfaceBounds: {x: 0, y: 0, width: 5, height: 4}, damageBounds: {x: 0, y: 0, width: 5, height: 4}, operationCount: 1, positionedGlyphCount: 1}
+    operationsResources:
+      operation: {instance: resource-1-instance-0, clip: {x: 0, y: 0, width: 5, height: 4}, color: {red: 0, green: 255, blue: 0}}
+      glyph: {id: 0, baseline: {x: 2, y: 2}}
+      metrics: {instance: resource-1-instance-0, glyph: 0, advanceX: 4, offsetX: -1, offsetY: -2, inkSize: {width: 3, height: 2}}
+      realization: {id: 0, instance: resource-1-instance-0, kind: monochromeBitmap1, glyphCount: 1, payloadByteCount: 2}
+      record: {glyph: 0, offset: 0, byteCount: 2, rowByteCount: 1, pixelWidth: 3, pixelHeight: 2}
+      payload: [160, 96]
+    injectedEvents: [{afterPayloadBorrow: poison-with-zero}]
+    orderedRegions: none
+    encodedImage:
+      affectedPoints: [{x: 1, y: 0}, {x: 3, y: 0}, {x: 2, y: 1}, {x: 3, y: 1}]
+      rgb565BigEndian: [7, 224]
+    offerResult: none
+    bodyResult: none
+    health: none
+    highWater: {metricsLookups: 1, recordLookups: 1, payloadBorrows: 1, glyphPayloadBytes: 2, retainedResourceAddresses: 0}

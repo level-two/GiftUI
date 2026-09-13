@@ -78,6 +78,7 @@ private func resourceLimits(
 func textResourceValidationPreservesExactIdentityAndGreatestRecord() {
     let raster = RecordingTextRaster()
     let result = RasterTextResourceValidator.validate(
+        metrics: ResourceMetrics(),
         raster,
         prevalidation: .valid,
         expectedDescriptor: resourceDescriptor,
@@ -109,6 +110,7 @@ func textResourceValidationRejectsPrevalidationBeforeViewAccess() {
 
     #expect(
         RasterTextResourceValidator.validate(
+            metrics: ResourceMetrics(),
             raster,
             prevalidation: .invalid(.malformedRasterRecord),
             expectedDescriptor: resourceDescriptor,
@@ -226,6 +228,7 @@ private func validateRaster(
     limits: RasterPayloadLimits = resourceLimits()
 ) -> RasterTextResourceValidationResult {
     RasterTextResourceValidator.validate(
+        metrics: ResourceMetrics(descriptor: descriptor),
         raster,
         prevalidation: .valid,
         expectedDescriptor: descriptor,
@@ -233,6 +236,31 @@ private func validateRaster(
         payloadLimits: limits,
         requiredStrokeWorkspaceBytes: 7
     )
+}
+
+private struct ResourceMetrics: CanonicalTextMetricsView {
+    let descriptor: TextResourceDescriptor
+
+    init(descriptor: TextResourceDescriptor = resourceDescriptor) {
+        self.descriptor = descriptor
+    }
+
+    func instance(at index: UInt16) -> FontInstanceDescriptor? { nil }
+
+    func mapping(
+        at index: UInt16,
+        in instance: FontInstanceID
+    ) -> ScalarGlyphMappingRecord? { nil }
+
+    func mapScalar(
+        _ scalarValue: UInt32,
+        in instance: FontInstanceID
+    ) -> GlyphMapping? { nil }
+
+    func metrics(
+        for glyph: GlyphID,
+        in instance: FontInstanceID
+    ) -> GlyphMetrics? { nil }
 }
 
 private final class RecordingTextRaster: TextRasterResourceView {

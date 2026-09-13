@@ -19,7 +19,11 @@ package enum RasterGlyphRecordLookup: Equatable, Sendable {
 }
 
 package enum RasterTextResourceValidator {
-    package static func validate<R: TextRasterResourceView>(
+    package static func validate<
+        M: CanonicalTextMetricsView,
+        R: TextRasterResourceView
+    >(
+        metrics: borrowing M,
         _ raster: borrowing R,
         prevalidation: TextResourceValidationResult,
         expectedDescriptor: TextResourceDescriptor,
@@ -30,7 +34,8 @@ package enum RasterTextResourceValidator {
         guard prevalidation == .valid else {
             return .failure(.incompatibleResource)
         }
-        guard raster.descriptor == expectedDescriptor,
+        guard metrics.descriptor == expectedDescriptor,
+            raster.descriptor == expectedDescriptor,
             selectedRealization.id.rawValue < expectedDescriptor.realizationCount,
             raster.realization(at: selectedRealization.id.rawValue)
                 == selectedRealization,

@@ -350,7 +350,7 @@ for every operation independently of full-surface or tiled storage.
       checked negative/out-of-range geometry rejection, empty intersections,
       opaque replacement painter order, and fill coverage. Keep Canvas bounds
       out of clipping and row padding out of logical comparison.
-- [ ] `T4.3` — Rasterize positioned glyphs only through the exact immutable
+- [x] `T4.3` — Rasterize positioned glyphs only through the exact immutable
       SPEC-005 realization. Resolve the exact record and call `withPayload` at
       most once per glyph, consume the borrow before return, preserve baseline
       and clip, and reject missing payload/lookup as the exact post-startup
@@ -847,6 +847,20 @@ canonical opaque encoding, so sequential fills implement replacement painter
 order. Focused tests cover every edge, partial negative geometry, odd stride
 independence, later-operation overwrite, invalid damage, empty coverage, and
 first replacement refusal.
+
+`T4.3` corrected the endpoint declaration to expose the canonical metrics
+view required by SPEC-005's metrics-owned ink offsets, then added exact
+positioned-glyph bitmap coverage. Startup now proves both metrics and raster
+descriptors equal the prevalidated package. Each operation checks the supplied
+instance, selected realization, glyph, canonical metrics, record dimensions,
+payload range, and checked `baseline + ink offset`; it resolves each view once
+and borrows the exact immutable payload at most once. The reference
+monochrome-bitmap path clips before borrowing, consumes MSB-first coverage
+entirely inside the call, and never reshapes, advances, substitutes, or
+repositions. Missing metrics, record, payload, identity, or unsupported raster
+kind returns `incompatibleResource`. Focused tests and a frozen corpus case
+cover exact calls and pixels, payload poisoning, empty clipping, checked
+overflow, wrong identity/kind, and every missing-resource stage.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
