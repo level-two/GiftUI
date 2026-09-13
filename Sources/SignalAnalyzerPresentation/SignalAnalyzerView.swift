@@ -1,0 +1,152 @@
+import GiftUI
+import SignalAnalyzerDomain
+
+@ObservableStateHost
+package struct SignalAnalyzerView: View {
+    @State private var viewModel: SignalAnalyzerViewModel
+
+    package init(viewModel: SignalAnalyzerViewModel) {
+        _viewModel = State(wrappedValue: viewModel)
+    }
+
+    package var body: some View {
+        VStack {
+            SignalAnalyzerHeaderView(acquisitionState: viewModel.state.acquisitionState)
+            SignalAnalyzerWaveformView(
+                capture: viewModel.state.capture,
+                visibleRange: viewModel.visibleRange
+            )
+            SignalAnalyzerControlsView()
+            if let errorMessage = viewModel.state.errorMessage {
+                Text(errorMessage.boundedText)
+            }
+        }
+    }
+}
+
+package struct SignalAnalyzerHeaderView: View {
+    package let acquisitionState: AcquisitionState
+
+    package var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text("DIGITAL SIGNAL ANALYZER")
+                Text("Four-channel acquisition")
+            }
+            Spacer()
+            Text(acquisitionState.statusText)
+        }
+    }
+}
+
+package struct SignalAnalyzerWaveformView: View {
+    package let capture: SignalCapture
+    package let visibleRange: Range<Duration>
+
+    package var body: some View {
+        VStack {
+            SignalAnalyzerTimeRulerView(visibleRange: visibleRange)
+            SignalAnalyzerChannelWaveformView(
+                channelID: SignalChannelID(rawValue: 1),
+                name: BoundedText("CH1")!,
+                level: capture.currentLevel(for: SignalChannelID(rawValue: 1))
+            )
+            SignalAnalyzerChannelWaveformView(
+                channelID: SignalChannelID(rawValue: 2),
+                name: BoundedText("CH2")!,
+                level: capture.currentLevel(for: SignalChannelID(rawValue: 2))
+            )
+            SignalAnalyzerChannelWaveformView(
+                channelID: SignalChannelID(rawValue: 3),
+                name: BoundedText("CH3")!,
+                level: capture.currentLevel(for: SignalChannelID(rawValue: 3))
+            )
+            SignalAnalyzerChannelWaveformView(
+                channelID: SignalChannelID(rawValue: 4),
+                name: BoundedText("CH4")!,
+                level: capture.currentLevel(for: SignalChannelID(rawValue: 4))
+            )
+        }
+    }
+}
+
+package struct SignalAnalyzerTimeRulerView: View {
+    package let visibleRange: Range<Duration>
+
+    package var body: some View {
+        HStack {
+            Spacer()
+            Spacer()
+            Spacer()
+        }
+    }
+}
+
+package struct SignalAnalyzerChannelWaveformView: View {
+    package let channelID: SignalChannelID
+    package let name: BoundedText
+    package let level: DigitalLevel
+
+    package var body: some View {
+        HStack {
+            Text(name)
+            SignalAnalyzerTraceView(channelID: channelID)
+            Text(level.label)
+        }
+    }
+}
+
+package struct SignalAnalyzerTraceView: View {
+    package let channelID: SignalChannelID
+
+    package var body: some View {
+        EmptyView()
+    }
+}
+
+package struct SignalAnalyzerControlsView: View {
+    package var body: some View {
+        VStack {
+            HStack {
+                Button("Start", action: SignalAnalyzerAction.start)
+                Button("Stop", action: SignalAnalyzerAction.stop)
+                Button("Clear", action: SignalAnalyzerAction.clear)
+            }
+            HStack {
+                Button("1 s", action: SignalAnalyzerAction.selectOneSecond)
+                Button("2 s", action: SignalAnalyzerAction.selectTwoSeconds)
+                Button("5 s", action: SignalAnalyzerAction.selectFiveSeconds)
+            }
+        }
+    }
+}
+
+private extension AcquisitionState {
+    var statusText: BoundedText {
+        switch self {
+        case .idle: BoundedText("READY")!
+        case .running: BoundedText("RUNNING")!
+        case .stopped: BoundedText("STOPPED")!
+        case .failed: BoundedText("FAILED")!
+        }
+    }
+}
+
+private extension DigitalLevel {
+    var label: BoundedText {
+        switch self {
+        case .low: BoundedText("LOW")!
+        case .high: BoundedText("HIGH")!
+        }
+    }
+}
+
+private extension SignalCapture {
+    func currentLevel(for channelID: SignalChannelID) -> DigitalLevel {
+        var result = baselineLevel(for: channelID)
+        for transition in transitions where transition.channelID == channelID {
+            result = transition.level
+        }
+        return result
+    }
+}

@@ -1,0 +1,13 @@
+# schema_version=1
+# property	expected
+observable-root	SignalAnalyzerView
+direct-state-count	1
+direct-state-type	SignalAnalyzerViewModel
+header-count	1
+waveform-count	1
+time-ruler-count	1
+explicit-channel-count	4
+control-count	6
+conditional-error-region-count	1
+dynamic-collection-count	0
+platform-branch-count	0

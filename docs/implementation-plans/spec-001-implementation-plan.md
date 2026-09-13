@@ -394,7 +394,7 @@ SPEC-007, SPEC-008, SPEC-010, SPEC-011, and SPEC-012 client surfaces.
 produces the exact labels, controls, layout workload, and five Canvas
 occurrences without platform branches or closure actions.
 
-- [ ] `T4.1` — Replace SwiftUI/Observation Presentation with one
+- [x] `T4.1` — Replace SwiftUI/Observation Presentation with one
       `@ObservableStateHost` GiftUI root containing
       `@State private var viewModel`. Declare header, status, waveform panel,
       CH1-CH4 rows, controls, and error region explicitly; use no dynamic child
@@ -769,6 +769,9 @@ contained-phase retry, valid residual inputs, and the target's total policy.
 `T3.5` closes the focused Presentation matrix with exact start error-clear and
 executor-entry ordering, deferred synchronous callback application, observation
 lifetime, no-op reporting, and source-substitution transcript equivalence.
+`T4.1` adds the portable observable root and fixed explicit header, status,
+waveform, four-channel, six-control, and conditional-error hierarchy without
+dynamic collections, platform branches, or view-owned lifecycle work.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,
