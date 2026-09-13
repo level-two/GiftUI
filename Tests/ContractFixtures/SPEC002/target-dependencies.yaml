@@ -356,6 +356,23 @@ targets:
       - GiftUIFailureCore
       - GiftUIFailureExecution
       - GiftUIRuntimeCore
+  GiftUIHostConfiguration:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUIBackendIntegration
+      - GiftUICapabilities
+      - GiftUIDisplayCore
+      - GiftUIExecution
+      - GiftUIFailureCore
+      - GiftUIRasterCore
+      - GiftUIRuntimeCore
+      - GiftUISurfaceCore
+      - GiftUITextResources
+  GiftUIHostConfigurationTests:
+    type: test
+    dependencies:
+      - GiftUIHostConfiguration
   GiftUIRuntimeCoreTests:
     type: test
     dependencies:

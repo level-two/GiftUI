@@ -222,6 +222,21 @@ let package = Package(
             ]
         ),
         .target(
+            name: "GiftUIHostConfiguration",
+            dependencies: [
+                "GiftUI",
+                "GiftUIBackendIntegration",
+                "GiftUICapabilities",
+                "GiftUIDisplayCore",
+                "GiftUIExecution",
+                "GiftUIFailureCore",
+                "GiftUIRasterCore",
+                "GiftUIRuntimeCore",
+                "GiftUISurfaceCore",
+                "GiftUITextResources",
+            ]
+        ),
+        .target(
             name: "GiftUIReferenceTextResources",
             dependencies: ["GiftUI", "GiftUITextResources"],
             exclude: ["Generated/generation-manifest.json"]
@@ -467,6 +482,10 @@ let package = Package(
                 "GiftUIRuntimeCore",
                 "GiftUIRuntimeFailureAdapterFixture",
             ]
+        ),
+        .testTarget(
+            name: "GiftUIHostConfigurationTests",
+            dependencies: ["GiftUIHostConfiguration"]
         ),
         .testTarget(
             name: "GiftUIReferenceTextResourcesTests",
