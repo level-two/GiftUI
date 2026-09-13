@@ -92,7 +92,9 @@ func makeHostValidatorGraph() -> HostValidatorGraphFixture {
 }
 
 func makeValidHostValidator(
+    componentGraph: HostValidatorGraphFixture? = nil,
     runtimeProfileValidation: RuntimeProfileValidationResult? = nil,
+    workload: SignalAnalyzerHostWorkload? = nil,
     textResourceValidation: TextResourceValidationResult = .valid,
     selectedTextRasterRealization: RasterRealizationID = RasterRealizationID(
         rawValue: 1
@@ -128,11 +130,11 @@ func makeValidHostValidator(
             runtimeLimits: preset.runtimeLimits,
             runtimeAudit: audit,
             cardinality: preset.cardinality,
-            workload: preset.workload,
+            workload: workload ?? preset.workload,
             pacing: preset.pacing
         ),
         runtimeProfileValidation: runtimeProfileValidation ?? validatedAudit,
-        componentGraph: makeHostValidatorGraph(),
+        componentGraph: componentGraph ?? makeHostValidatorGraph(),
         textResourceValidation: textResourceValidation,
         selectedTextRasterRealization: selectedTextRasterRealization,
         capabilityRequirement: preset.capabilityRequirement,

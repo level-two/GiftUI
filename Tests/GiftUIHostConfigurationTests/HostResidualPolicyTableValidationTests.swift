@@ -1,4 +1,5 @@
 import GiftUIFailureCore
+import GiftUIRuntimeCore
 import Testing
 
 @testable import GiftUIHostConfiguration
@@ -129,4 +130,110 @@ import Testing
     #expect(report.minimumAcceptedTransitionSpacingMicroseconds == 50_000)
     #expect(report.maximumCompactFactsPerServiceWindow == 28)
     #expect(report.maximumRetryableRefusals == 3)
+}
+
+@Test func validationAccessLedgerStopsAtEveryFirstFailure() {
+    let validGraph = makeHostValidatorGraph()
+    var graphFailure = makeValidHostValidator(
+        componentGraph: HostValidatorGraphFixture(
+            records: Array(validGraph.records.dropLast())
+        )
+    )
+    _ = graphFailure.validate()
+    expectAccessPrefix(graphFailure.validationAccessLedger, through: .graph)
+
+    var runtimeFailure = makeValidHostValidator(
+        runtimeProfileValidation: .invalid(.missingStorage)
+    )
+    _ = runtimeFailure.validate()
+    expectAccessPrefix(runtimeFailure.validationAccessLedger, through: .runtimeProfile)
+
+    var textFailure = makeValidHostValidator(
+        textResourceValidation: .invalid(.invalidIdentity)
+    )
+    _ = textFailure.validate()
+    expectAccessPrefix(textFailure.validationAccessLedger, through: .textResources)
+
+    let preset = GeneratedSignalAnalyzerPresets.nrf52840Static()
+    let workload = preset.workload
+    var workloadFailure = makeValidHostValidator(
+        workload: SignalAnalyzerHostWorkload(
+            schemaVersion: 1,
+            requiredRuntimeLimits: workload.requiredRuntimeLimits,
+            semanticNodeOccurrences: workload.semanticNodeOccurrences,
+            renderSemanticScopeOccurrences: workload.renderSemanticScopeOccurrences,
+            layoutScopeOccurrences: workload.layoutScopeOccurrences,
+            maximumRenderTraversalDepth: workload.maximumRenderTraversalDepth,
+            renderTextLineCount: workload.renderTextLineCount,
+            positionedGlyphCount: workload.positionedGlyphCount,
+            ordinaryRenderOperations: workload.ordinaryRenderOperations,
+            inputEventsPerOpportunity: workload.inputEventsPerOpportunity,
+            semanticActionsPerOpportunity: workload.semanticActionsPerOpportunity,
+            completionFactsPerOpportunity: workload.completionFactsPerOpportunity,
+            drawing: workload.drawing
+        )
+    )
+    _ = workloadFailure.validate()
+    expectAccessPrefix(workloadFailure.validationAccessLedger, through: .workload)
+
+    var capabilityFailure = makeValidHostValidator(
+        capabilityContributions: .init()
+    )
+    _ = capabilityFailure.validate()
+    expectAccessPrefix(capabilityFailure.validationAccessLedger, through: .capability)
+
+    var endpointFailure = makeValidHostValidator(
+        endpoint: makeHostEndpointFixture(displayMaximumInFlightBytes: 3_839)
+    )
+    _ = endpointFailure.validate()
+    expectAccessPrefix(endpointFailure.validationAccessLedger, through: .endpoint)
+
+    var actionFailure = makeValidHostValidator(
+        actionAndModel: makeHostActionModelFixture(firstActionCode: 1)
+    )
+    _ = actionFailure.validate()
+    expectAccessPrefix(actionFailure.validationAccessLedger, through: .actionAndModel)
+
+    var inputFailure = makeValidHostValidator(
+        inputAndWake: makeHostInputWakeFixture(normalizedInputSourceCount: 0)
+    )
+    _ = inputFailure.validate()
+    expectAccessPrefix(inputFailure.validationAccessLedger, through: .inputAndWake)
+
+    var policyFailure = makeValidHostValidator(
+        residualPolicyTable: HostValidatorPolicyFixture(
+            overriddenContext: .activation,
+            overriddenAllowed: .continueOperation
+        )
+    )
+    _ = policyFailure.validate()
+    expectAccessPrefix(policyFailure.validationAccessLedger, through: .policy)
+}
+
+@Test func successfulAndRepeatedValidationPreserveBoundedAccessEvidence() {
+    var validator = makeValidHostValidator()
+    guard case .valid = validator.validate() else {
+        Issue.record("valid fixture must reach every stage")
+        return
+    }
+    expectAccessPrefix(validator.validationAccessLedger, through: .policy)
+    let completedLedger = validator.validationAccessLedger
+
+    #expect(
+        validator.validate()
+            == .invalid(stage: .graph, error: .invariantViolation)
+    )
+    #expect(validator.validationAccessLedger == completedLedger)
+}
+
+private func expectAccessPrefix(
+    _ ledger: HostValidationAccessLedger,
+    through finalStage: HostValidationStage
+) {
+    #expect(ledger.accessCount == finalStage.rawValue + 1)
+    #expect(ledger.sideEffectCount == 0)
+    for rawValue in UInt8(0) ... 8 {
+        let stage = HostValidationStage(rawValue: rawValue)!
+        #expect(ledger.contains(stage) == (rawValue <= finalStage.rawValue))
+    }
 }

@@ -21,6 +21,7 @@ where
     package let actionAndModel: HostActionModelConfiguration
     package let inputAndWake: HostInputWakeConfiguration
     package let residualPolicyTable: Policy
+    package private(set) var validationAccessLedger: HostValidationAccessLedger
     private var stateGuard: HostValidationStateGuard
 
     package init(
@@ -49,23 +50,28 @@ where
         self.actionAndModel = actionAndModel
         self.inputAndWake = inputAndWake
         self.residualPolicyTable = consume residualPolicyTable
+        validationAccessLedger = HostValidationAccessLedger()
         stateGuard = HostValidationStateGuard()
     }
 
     package mutating func validate() -> HostValidationResult {
         if let repeated = stateGuard.begin() { return repeated }
+        guard enter(.graph) else { return orderViolation() }
         if let error = HostComponentGraphValidation.validate(componentGraph) {
             return .invalid(stage: .graph, error: error)
         }
+        guard enter(.runtimeProfile) else { return orderViolation() }
         if let error = validateRuntimeProfile() {
             return .invalid(stage: .runtimeProfile, error: error)
         }
+        guard enter(.textResources) else { return orderViolation() }
         if case .invalid(let error) = textResourceValidation {
             return .invalid(
                 stage: .textResources,
                 error: .invalidTextResources(error)
             )
         }
+        guard enter(.workload) else { return orderViolation() }
         if let error = validateWorkload() {
             return .invalid(
                 stage: .workload,
@@ -73,6 +79,7 @@ where
             )
         }
 
+        guard enter(.capability) else { return orderViolation() }
         let effective: EffectiveRasterPresentation
         switch RasterPresentationResolver.resolve(
             requirement: capabilityRequirement,
@@ -87,6 +94,7 @@ where
                 error: .capabilityUnavailable(error)
             )
         }
+        guard enter(.endpoint) else { return orderViolation() }
         if let error = HostEndpointStartupValidation.validateInert(
             endpoint,
             effectivePresentation: effective,
@@ -97,18 +105,21 @@ where
                 error: error
             )
         }
+        guard enter(.actionAndModel) else { return orderViolation() }
         if let error = HostApplicationStartupValidation.validateActionAndModel(
             actionAndModel,
             structural: structuralConfiguration
         ) {
             return .invalid(stage: .actionAndModel, error: error)
         }
+        guard enter(.inputAndWake) else { return orderViolation() }
         if let error = HostApplicationStartupValidation.validateInputAndWake(
             inputAndWake,
             structural: structuralConfiguration
         ) {
             return .invalid(stage: .inputAndWake, error: error)
         }
+        guard enter(.policy) else { return orderViolation() }
         guard HostResidualPolicyTableValidation.validate(residualPolicyTable)
         else {
             return .invalid(stage: .policy, error: .incompleteFailurePolicy)
@@ -146,6 +157,14 @@ where
                 maximumRetryableRefusals: pacing.maximumRetryableRefusals
             )
         )
+    }
+
+    private mutating func enter(_ stage: HostValidationStage) -> Bool {
+        validationAccessLedger.enter(stage)
+    }
+
+    private func orderViolation() -> HostValidationResult {
+        .invalid(stage: .graph, error: .invariantViolation)
     }
 
     private borrowing func validateRuntimeProfile() -> HostConfigurationError? {

@@ -362,17 +362,12 @@ behavior, and emits one immutable report only after complete success.
       normalized-input gate, wake count, distinct domains, and non-reentrant
       wake declaration. Stale generation, retained-owner, and concrete
       callback/admission probes remain open with the T5.4 integration seam.
-- [ ] `T3.6` — Implement policy-stage table completeness, allowed/selected
+- [x] `T3.6` — Implement policy-stage table completeness, allowed/selected
       pair validation, fatal-hook availability, diagnostic independence, and
       final `HostAssemblyReport` construction. Compose all nine stages with an
       accessor ledger proving fixed order, immediate stop, no later read,
       single-use validation, no partial report/borrow, no policy decision, and
       no live owner construction on failure.
-      **Partial:** exact total-table validation, malformed-row rejection,
-      stages 2/4/5/6/7/8 first-failure precedence, single-use guarding, and
-      final report field equality are complete. The poison-accessor ledger,
-      graph/runtime/workload combined-precedence rows, and explicit
-      policy-decision/owner side-effect probes remain open.
 
 ### Milestone 4: Construct, Activate, Fail, and Tear Down One Host
 

@@ -68,6 +68,25 @@ package enum HostValidationResult: Equatable, Sendable {
     case invalid(stage: HostValidationStage, error: HostConfigurationError)
 }
 
+package struct HostValidationAccessLedger: Equatable, Sendable {
+    package private(set) var accessedStages: UInt16 = 0
+    package private(set) var accessCount: UInt8 = 0
+    package let sideEffectCount: UInt16 = 0
+
+    package init() {}
+
+    package func contains(_ stage: HostValidationStage) -> Bool {
+        accessedStages & (UInt16(1) << UInt16(stage.rawValue)) != 0
+    }
+
+    mutating func enter(_ stage: HostValidationStage) -> Bool {
+        guard stage.rawValue == accessCount else { return false }
+        accessedStages |= UInt16(1) << UInt16(stage.rawValue)
+        accessCount += 1
+        return true
+    }
+}
+
 package enum MVPHostLifecycleState: UInt8, Equatable, Sendable {
     case valid = 0
     case activating = 1

@@ -69,3 +69,16 @@ import Testing
             == .invalid(stage: .graph, error: .invariantViolation)
     )
 }
+
+@Test func validationAccessLedgerRejectsOutOfOrderEntryWithoutMutation() {
+    var ledger = HostValidationAccessLedger()
+    let runtimeEntry = ledger.enter(.runtimeProfile)
+    #expect(!runtimeEntry)
+    #expect(ledger == HostValidationAccessLedger())
+    let graphEntry = ledger.enter(.graph)
+    #expect(graphEntry)
+    let graphOnly = ledger
+    let textEntry = ledger.enter(.textResources)
+    #expect(!textEntry)
+    #expect(ledger == graphOnly)
+}
