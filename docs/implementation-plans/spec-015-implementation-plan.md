@@ -331,7 +331,7 @@ behavior, and emits one immutable report only after complete success.
       prove equality at every remaining minimum, checked overflow paths,
       independent lowered leaves, exact ordinary-operation agreement, and the
       structural Drawing gate without naming Drawing capacities in SPEC-004.
-- [ ] `T3.3` — Implement the capability stage using exactly four
+- [x] `T3.3` — Implement the capability stage using exactly four
       role-addressed contributions, a two-candidate caller-owned workspace,
       all contribution-order permutations, and one required
       `RasterPresentationRequirement` carrying all five operation bits, the
@@ -728,3 +728,13 @@ contract. All four presets pass; independent source-count, cardinality,
 pacing, fact-storage, and Drawing negatives fail with their exact host error.
 Evidence is in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-3/complete-workload-validation.md`.
+
+T3.3 integrated the approved SPEC-004 resolver as the sole capability-stage
+call. The fixture corpus inserts the four role-addressed contributions in all
+24 orders, requires a two-candidate caller-owned workspace, carries all five
+operation bits and the exact extent, lifetime, encoding, byte, and required-
+absence inputs, preserves focused missing-role/workspace failures, and proves
+that valid Drawing capacity does not repair a failed capability gate. The
+validator's one-shot guard prevents a second resolver entry, and a source
+audit confirms no other host source invokes the resolver. Evidence is in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-3/capability-validation.md`.

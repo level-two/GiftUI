@@ -72,7 +72,9 @@ func makeHostValidatorGraph() -> HostValidatorGraphFixture {
 
 func makeValidHostValidator(
     runtimeProfileValidation: RuntimeProfileValidationResult? = nil,
-    textResourceValidation: TextResourceValidationResult = .valid
+    textResourceValidation: TextResourceValidationResult = .valid,
+    capabilityContributions: RasterPresentationContributions? = nil,
+    capabilityWorkspace: RasterPresentationResolverWorkspace? = nil
 ) -> CheckedMVPHostConfigurationValidator<
     HostValidatorGraphFixture, HostValidatorPolicyFixture
 > {
@@ -122,8 +124,8 @@ func makeValidHostValidator(
         componentGraph: makeHostValidatorGraph(),
         textResourceValidation: textResourceValidation,
         capabilityRequirement: preset.capabilityRequirement,
-        capabilityContributions: capability.contributions,
-        capabilityWorkspace: RasterPresentationResolverWorkspace()!,
+        capabilityContributions: capabilityContributions ?? capability.contributions,
+        capabilityWorkspace: capabilityWorkspace ?? RasterPresentationResolverWorkspace()!,
         endpoint: HostEndpointConfiguration(
             effectivePresentation: capability.effective,
             descriptor: descriptor,
@@ -155,12 +157,9 @@ func makeValidHostValidator(
     )
 }
 
-private func makeHostCapabilityFixture(
+func makeHostCapabilityValues(
     requirement: RasterPresentationRequirement
-) -> (
-    contributions: RasterPresentationContributions,
-    effective: EffectiveRasterPresentation
-) {
+) -> [RasterPresentationContribution] {
     let extent = requirement.extent
     let realization = RasterRealizationContribution(
         kind: .tiled,
@@ -175,19 +174,16 @@ private func makeHostCapabilityFixture(
         maximumRasterBytes: .init(rawValue: 3_840),
         maximumPayloadBytes: .init(rawValue: 3_840)
     )!
-    var contributions = RasterPresentationContributions()
-    _ = contributions.insert(
+    return [
         .renderProducer(
             RenderProducerContribution(
                 operations: requirement.operations,
                 operationStream: .synchronousBorrowedOneShot
             )!
-        )
-    )
-    _ = contributions.insert(
-        .rasterBackend(RasterBackendContribution(primary: realization, alternate: nil)!)
-    )
-    _ = contributions.insert(
+        ),
+        .rasterBackend(
+            RasterBackendContribution(primary: realization, alternate: nil)!
+        ),
         .surfaceDisplay(
             SurfaceDisplayContribution(
                 extent: extent,
@@ -200,9 +196,7 @@ private func makeHostCapabilityFixture(
                 maximumInFlightCount: 1,
                 maximumInFlightBytes: .init(rawValue: 3_840)
             )!
-        )
-    )
-    _ = contributions.insert(
+        ),
         .hostResourcePolicy(
             RasterPresentationPolicy(
                 maximumRasterBytes: .init(rawValue: 3_840),
@@ -213,7 +207,28 @@ private func makeHostCapabilityFixture(
                 preferredRealization: .tiled,
                 preferredEncoding: .rgb565BigEndian
             )!
-        )
+        ),
+    ]
+}
+
+func makeHostCapabilityContributions(
+    _ values: [RasterPresentationContribution]
+) -> RasterPresentationContributions {
+    var contributions = RasterPresentationContributions()
+    for value in values {
+        _ = contributions.insert(value)
+    }
+    return contributions
+}
+
+private func makeHostCapabilityFixture(
+    requirement: RasterPresentationRequirement
+) -> (
+    contributions: RasterPresentationContributions,
+    effective: EffectiveRasterPresentation
+) {
+    let contributions = makeHostCapabilityContributions(
+        makeHostCapabilityValues(requirement: requirement)
     )
     var workspace = RasterPresentationResolverWorkspace()!
     guard
