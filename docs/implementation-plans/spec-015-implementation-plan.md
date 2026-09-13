@@ -616,10 +616,12 @@ cross-build cannot satisfy a connected-hardware row.
   SPEC-013's immutable report publication path. Those existing failures block
   `T7.3`; they do not block the ordered host-only work in Milestones 0-3 and
   must be fixed under their governing plans rather than hidden in SPEC-015.
-- Approved SPEC-001 has no implementation plan. The workload descriptor and
-  concrete host roots require its exact portable hierarchy, six-action domain,
-  fact producers, deterministic mock trace, and application failure inputs;
-  the legacy SwiftUI demo cannot substitute for them.
+- Approved SPEC-001 now has a ready
+  [implementation plan](spec-001-implementation-plan.md). The workload
+  descriptor and concrete host roots still wait for that plan's implemented
+  portable hierarchy, six-action domain, fact producers, deterministic mock
+  trace, and application failure inputs; the legacy SwiftUI demo cannot
+  substitute for them.
 - If any linked owner exposes declarations inconsistent with the exact
   SPEC-015 package SPI, stop the affected task and route the discrepancy to
   the owning Specification. Do not add a compatibility wrapper that changes

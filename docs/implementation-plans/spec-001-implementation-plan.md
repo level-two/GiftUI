@@ -62,6 +62,11 @@ in the MVP now.
 - `demo/SignalAnalyzer/` is a separate SwiftPM macOS investigation containing
   logical Domain, Data, Presentation, and App targets plus 17 baseline tests.
   It is valuable migration input, but it is not the governed implementation.
+- The root package has no governed `SignalAnalyzerDomain`,
+  `SignalAnalyzerData`, or `SignalAnalyzerPresentation` production/test
+  targets. The implementation must add those package targets under root
+  `Sources/` and `Tests/`; it must not continue evolving the standalone demo
+  as though that package were the four-profile product.
 - The Domain target already has the four channel values, transition/capture
   values, repository contracts, and five use cases. It still uses `@MainActor`,
   reference-only sink protocols, unbounded Foundation collections, `String`
@@ -81,8 +86,12 @@ in the MVP now.
   for the approved reusable contracts, including `GiftUI`,
   `GiftUIFailureCore`, `GiftUIExecution`, `GiftUIObservableState`,
   `GiftUIInteraction`, `GiftUIDrawing`, dynamic/static runtimes, raster and
-  backend integration. SPEC-007 and SPEC-008 are implemented; the other
-  consumed contracts remain approved and are at various implementation gates.
+  backend integration. SPEC-007 and SPEC-008 are implemented; SPEC-002,
+  SPEC-005, SPEC-006, and SPEC-014 have completed plans but remain at their
+  independent conformance/status gates; SPEC-003, SPEC-004, and SPEC-009
+  through SPEC-013 have active plans; and SPEC-015 has a ready plan. These
+  states make the prerequisite seam, rather than a whole-document status,
+  the gate for each dependent analyzer task.
 - Existing SPEC-007 through SPEC-013 fixtures already encode parts of the
   analyzer layout, render, execution, observation, action, Drawing, and profile
   workload. There is no `Tests/ContractFixtures/SPEC001/`, registered SPEC-001
@@ -104,6 +113,12 @@ contract question remains. Milestones 0 through 4 and dependency-complete
 slices of Milestone 5 may begin in order. Production runtime, backend, and host
 joins wait for the exact approved SPEC-009 through SPEC-015 owner seams; they
 must not be replaced by analyzer-local substitutes.
+
+`ready` means the implementation order, ownership boundaries, and evidence
+requirements are executable without inventing contract intent. It does not
+mean every downstream production seam or connected target is currently
+available. `T0.4` records those seam-level gates, and an unavailable seam
+blocks only the tasks that name it.
 
 No `docs/features.yaml` change is required for this derived plan. When
 implementation actually begins, SPEC-001 must transition from `approved` to
@@ -127,7 +142,7 @@ contracts are available.
 
 | Work | Prerequisites | Primary affected surfaces | Parallel boundary |
 | --- | --- | --- | --- |
-| `T0.1`-`T0.4` | Approved SPEC-001 authority | `Tests/ContractFixtures/SPEC001/`, driver registry, migration/import inventories | Fixture schemas, migration inventory, and driver scaffold may proceed together |
+| `T0.1`-`T0.5` | Approved SPEC-001 authority | `Package.swift`, `Sources/SignalAnalyzer*/`, `Tests/SignalAnalyzer*/`, `Tests/ContractFixtures/SPEC001/`, driver registry, migration/import inventories | Fixture schemas, migration inventory, package-target reservation, and driver scaffold may proceed together |
 | `T1.1`-`T1.4` | SPEC-002/003/005 declaration owners | `SignalAnalyzerDomain`, domain tests, static compile fixtures | Diagnostic and capture values may proceed separately before publication/use-case integration |
 | `T2.1`-`T2.4` | Milestone 1 values | `SignalAnalyzerData`, repository/source tests, static storage fixtures | Repository and deterministic source work may proceed separately against fixed Domain contracts |
 | `T3.1`-`T3.5` | Milestone 1; SPEC-003/009/010 admission and failure seams | `SignalAnalyzerPresentation`, adapter/owner fixtures | ViewModel values and adapter normalization may proceed separately before integrated fact application |
@@ -138,6 +153,31 @@ contracts are available.
 | `T8.1`-`T8.3` | Corresponding cross-builds and explicit connected-hardware authorization | PiScreen and TFT execution evidence | Pi and nRF connected work is independent and remains separate from hardware-free evidence |
 | `T9.1`-`T9.4` | All applicable implementation and evidence tasks | registered driver, repository gate, conformance report | Profile runs may execute independently; final disposition consumes all required evidence |
 
+## Evidence Lanes and Artifact Ownership
+
+- macOS dynamic and macOS static runs are target-execution evidence because
+  the produced executables run on the claimed host. Their contract reports
+  live below `.build/contract-reports/spec-001/`.
+- Raspberry Pi and nRF52840 host-native fixtures or simulators prove only the
+  portable/profile semantics they actually execute. They MUST be labeled
+  `host-native-fixture` or `simulator`; neither label satisfies target
+  execution, display, input, process-memory, stack-high-water, responsiveness,
+  or watchdog criteria.
+- Raspberry Pi and nRF52840 compiler, ABI, symbol, link-map, and static-resource
+  results are `cross-build-inspection` evidence. Deployable Pi artifacts remain
+  under `.build/raspberry-pi/`; nRF52840 ELF, HEX, map, Devicetree, and reports
+  remain under `.build/nrf52840/`. The SPEC-001 driver records their emitted
+  paths and identities rather than relocating or duplicating them.
+- PiScreen and nRF52840 TFT/input runs are `connected-target-execution`
+  evidence, require a separate explicit user request, and must name the exact
+  inspected artifact. Only these runs may close the connected portions of
+  `SA-AC-023` through `SA-AC-025`.
+- Every report records repository revision, fixture/schema version, compiler,
+  SDK/toolchain, target triple, optimization mode, command, artifact digest,
+  evidence kind, execution environment, and whether physical display/input
+  was exercised. Unknown or contradictory claim/evidence combinations fail
+  closed.
+
 ## Acceptance-Criterion Matrix
 
 The criterion text remains authoritative in SPEC-001. A `baseline` status
@@ -147,9 +187,9 @@ governed implementation must still reproduce and record the required evidence.
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
 | `SA-AC-001` — Complete feature and authority traceability | `T0.1`, `T9.4` | Governance, manifest, status, and reciprocal-link audit | baseline; revalidation pending |
-| `SA-AC-002` — Logical Domain/Data/Presentation/host graph and inward dependencies | `T0.2`, `T1.4`, `T6.1`, `T9.1` | Package graph, imports, interfaces, generated graph report | baseline; revalidation pending |
-| `SA-AC-003` — Domain excludes UI/backend/platform/timing/hardware APIs | `T0.2`, `T1.4`, `T9.1` | Source/import/symbol negative scans in every profile | baseline; revalidation pending |
-| `SA-AC-004` — Presentation excludes Data/platform/timing/renderer/display/hardware APIs | `T0.2`, `T4.4`, `T9.1` | Import and dependency negative fixtures | pending |
+| `SA-AC-002` — Logical Domain/Data/Presentation/host graph and inward dependencies | `T0.2`, `T0.5`, `T1.4`, `T6.1`, `T9.1` | Package graph, imports, interfaces, generated graph report | baseline; revalidation pending |
+| `SA-AC-003` — Domain excludes UI/backend/platform/timing/hardware APIs | `T0.2`, `T0.5`, `T1.4`, `T9.1` | Source/import/symbol negative scans in every profile | baseline; revalidation pending |
+| `SA-AC-004` — Presentation excludes Data/platform/timing/renderer/display/hardware APIs | `T0.2`, `T0.5`, `T4.4`, `T9.1` | Import and dependency negative fixtures | pending |
 | `SA-AC-005` — Complete visible screen surface | `T4.1`-`T4.3`, `T6.2`-`T6.5`, `T8.1`, `T8.2` | Semantic hierarchy transcript plus rendered/connected display evidence | pending |
 | `SA-AC-006` — Fixed explicit portable composition shared by four configurations | `T4.1`, `T4.4`, `T6.2`-`T6.5` | Source identity/hash, compile, and hierarchy comparison | pending |
 | `SA-AC-007` — Revisioned current-value sink registration, replacement, detach, and bounded returns | `T1.3`, `T2.2`, `T3.2` | Ordered callback/outcome and lifetime transcript | pending |
@@ -206,9 +246,11 @@ claimed.
 - [ ] `T0.1` — Create `Tests/ContractFixtures/SPEC001/` with a README, ordered
       fixture registry, criterion/evidence registry for `SA-AC-001` through
       `SA-AC-045`, task-evidence ledger, semantic/callback/cycle/host/resource
-      transcript schemas, and explicit `host-execution`, `cross-build`,
-      `simulator`, `inspection`, and `connected-target` evidence kinds. Reject
-      missing, duplicate, unknown, stale, or unversioned required fields.
+      transcript schemas, and explicit `host-native-fixture`,
+      `macos-target-execution`, `cross-build-inspection`, `simulator`, and
+      `connected-target-execution` evidence kinds. Encode which criterion
+      classes each kind may satisfy. Reject missing, duplicate, unknown,
+      contradictory, stale, or unversioned required fields.
 - [ ] `T0.2` — Inventory every `demo/SignalAnalyzer` source and test plus all
       existing analyzer fixtures in SPEC-007 through SPEC-015. Classify each as
       preserve-as-evidence, adapt, replace, or downstream-owned. Freeze the
@@ -216,17 +258,30 @@ claimed.
       GiftUIFailureCore, and host -> all selected owners dependency rules with
       import, package graph, and generated-static equivalents.
 - [ ] `T0.3` — Create and explicitly register a fail-closed
-      `scripts/contracts/run-spec-001.sh --profile <profile>` for
-      `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, and
-      `nrf52840-embedded`. Preserve its standalone invocation, record immutable
-      source/fixture/compiler/SDK/target/optimization identity, write only below
-      `.build/spec-001/`, and perform no network access, remote deployment,
-      service restart, hardware probe, or flashing.
+      `scripts/contracts/run-spec-001.sh` with a required `--profile` argument
+      accepting exactly `macos-dynamic`, `macos-static`,
+      `raspberry-pi-armv6`, and `nrf52840-embedded`. Preserve each exact
+      standalone invocation, record immutable source/fixture/compiler/SDK/
+      target/optimization identity, write only below
+      `.build/contract-reports/spec-001/` for driver-owned reports, and perform
+      no network access, remote deployment, service restart, hardware probe,
+      or flashing. When the driver invokes a repository platform build, retain
+      the emitted deployable artifacts under `.build/raspberry-pi/` or
+      `.build/nrf52840/` and record their paths and digests in the report.
 - [ ] `T0.4` — Record the implementation prerequisites supplied by SPEC-002
       through SPEC-015 at declaration, focused-owner, profile, backend, and host
       joins. Mark an unavailable prerequisite `missing` rather than copying or
       weakening it inside the analyzer. Add a source-of-truth registry for
       reused SPEC-007-015 fixture inputs so drift fails explicitly.
+- [ ] `T0.5` — Add governed root-package target and test boundaries for
+      `SignalAnalyzerDomain`, `SignalAnalyzerData`, and
+      `SignalAnalyzerPresentation`. Place them under root `Sources/` and
+      `Tests/`, encode Data -> Domain and Presentation -> Domain/`GiftUI`/
+      `GiftUIFailureCore` dependencies in `Package.swift`, and add negative
+      dependency fixtures. Leave concrete composition roots and reusable host
+      validation in SPEC-015's `GiftUIHostConfiguration`/preset ownership;
+      retain `demo/SignalAnalyzer/` unchanged as migration evidence until its
+      eventual disposition is separately recorded.
 
 ### Milestone 1: Implement Bounded Domain Values and Publication Contracts
 
@@ -275,8 +330,11 @@ same capture/state/publication traces and deterministic source vectors.
       revisioned current values, synchronous bounded outcome propagation, weak
       or explicit non-retaining lifetime, detach-before-return, state-table
       actions, source-contract failures, horizon diagnostics, and the complete
-      `UInt32.max` terminal procedure. Prove no rollback after callback refusal
-      and no later operation on an exhausted graph.
+      `UInt32.max` terminal procedure. Prove startup failure stops partial
+      source activation, publishes one nonempty bounded failed state, and
+      throws the same failure or a value carrying the same diagnostic; prove no
+      rollback after callback refusal and no later operation on an exhausted
+      graph.
 - [ ] `T2.3` — Separate deterministic source state from host-provided live
       scheduling. Implement four initial lows, CH1/CH2/CH3 patterns, exact
       wrapping CH4 LCG and both golden vectors, checked nonaliasing generations,
@@ -321,7 +379,10 @@ normalization/effect/policy sequence.
       cannot alter semantic diagnostics, outcomes, effects, policy, or state.
 - [ ] `T3.5` — Create focused Presentation fixtures for initial state, all fact
       and action cases, thrown/published errors, observation lifetime, exact
-      no-op reporting, and source substitution. Preserve normalized semantic
+      no-op reporting, and source substitution. Verify `startTapped` clears an
+      old error before application-executor entry, converts a thrown failure to
+      the same bounded diagnostic, and leaves any synchronous repository
+      callback admitted for a later cycle. Preserve normalized semantic
       transcripts that can be replayed unchanged by both runtime profiles.
 
 ### Milestone 4: Port the Fixed Presentation to GiftUI and Drawing
@@ -371,7 +432,10 @@ coalescing behavior.
       nonwrapping `UInt32` sequencing across physical stores, seal/apply order,
       at-most-once application, post-seal deferral, exact first-excess
       rejection, and the full 28-fact production burst without replacement or
-      coalescing of facts.
+      coalescing of facts. Separately prove the `20`, `2`, and `6` producer
+      category bounds, all 32 physical compact slots, physical fact 33, and
+      rejection of each category excess as an incompatible host workload
+      rather than spending the four-slot margin.
 - [ ] `T5.2` — Bind the root to one observable location, active registration,
       dirty/live bit, and transient replacement record. Run identical dynamic/
       static fixtures for initializer preservation, atomic replacement,
@@ -408,7 +472,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       owner, `1/32/1` stores, 28-fact burst, five Canvas occurrences/strokes,
       202 live points, 12 live subpaths, 832 snapshot points, 16 snapshot
       subpaths, runtime limits, and one-owner acyclic graph before constructing
-      any host. Keep observation start/stop solely in host lifecycle.
+      any host. For every preset, require both the Drawing B2 structural gate
+      and the independent SPEC-004 `rasterPresentation` capability gate before
+      owner construction; neither may substitute for the other. Keep adapter
+      installation before acquisition and observation start/stop solely in
+      host lifecycle.
 - [ ] `T6.2` — Assemble and execute the macOS dynamic host with the deterministic
       source, dynamic runtime, complete GiftUI client surface, full-surface
       backend, input, clock/scheduler, owner adapter, and host pacing. Record
@@ -419,13 +487,21 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       application transcript with `T6.2`.
 - [ ] `T6.4` — Assemble the Raspberry Pi 1 dynamic preset with exact 240 x 240
       extent and 240 x 16 RGB565 tiled region. Cross-build only for
-      `armv6-unknown-linux-gnueabihf`, inspect ABI/dependencies/resources, and
-      keep connected PiScreen execution for `T8.1`.
+      `armv6-unknown-linux-gnueabihf` through
+      `scripts/raspberry-pi/build.sh --product`, passing the exact executable
+      product delivered by SPEC-015's Raspberry Pi preset task. Require its
+      ELF, ARMv6, and hard-float checks, record the emitted `ARTIFACT=` path
+      and digest, inspect dependencies/resources, and keep connected PiScreen
+      execution for `T8.1`.
 - [ ] `T6.5` — Assemble the `nrf52840dk/nrf52840` static preset with exact
       480 x 320 extent, 480 x 4 RGB565 region, 960-byte row, and 3,840-byte
-      raster/payload/in-flight bounds. Cross-build with the bundled
-      `armv7em-none-none-eabi` module and hard-float flags, verify VFP ABI,
-      storage and forbidden symbols, and keep flashing for `T8.2`.
+      raster/payload/in-flight bounds. Cross-build through
+      `scripts/nrf52840/build.sh --application`, passing the exact application
+      delivered by SPEC-015's nRF52840 preset task, with the bundled
+      `armv7em-none-none-eabi` module and Zephyr Cortex-M4F hard-float flags.
+      Record emitted `ELF=`, `HEX=`, `MAP=`, `DEVICETREE=`, and `REPORTS=`
+      paths and digests, verify VFP ABI, storage and forbidden symbols, and
+      keep flashing for `T8.2`.
 - [ ] `T6.6` — Replace the mock with the conforming fixture source without
       changing Domain, use cases, adapter, ViewModel, or portable hierarchy.
       Separately fault every required GiftUI/host facility and prove validation
@@ -455,7 +531,11 @@ and required performance/resource measurement has a reproducible disposition.
       no ordinary failed-state callback, no residual policy, full quiescence,
       and fresh-graph-only recovery.
 - [ ] `T7.4` — Run 80 events/second for 30 seconds with four frames/second and
-      the 28/32/33 admission corpus in all hardware-free profiles. Record
+      the 28/32/33 admission corpus in the executable macOS profiles and in
+      the shared host-native semantic fixture configured with each Pi/nRF
+      preset. Cross-build-only reports must label unexecuted timing and target
+      runtime claims `not-collected`, not infer them from the host fixture.
+      Record
       transition/snapshot/fact/model/registration/replacement/Drawing/buffer
       high-water values; admission, mutation, report, publication, and frame
       timing; process/heap/stack/RAM/flash/map/ELF evidence as applicable; and
@@ -474,15 +554,19 @@ simulation.
 
 - [ ] `T8.1` — After explicit authorization, require the remote Raspberry Pi to
       report `armv6l`, deploy the exact `T6.4` artifact through the repository
-      workflow, run the deterministic scenario on framebuffer/PiScreen, exercise
-      all six controls, and record display/input correctness, process memory,
-      frame cadence, teardown, commands, artifact identity, and recovery.
+      workflow, run the deterministic 80-event/second scenario for at least 30
+      continuous seconds on framebuffer/PiScreen, exercise all six controls,
+      and record display/input correctness, no loss/duplication/stale events,
+      responsiveness, process memory, four-frame/second cadence, teardown,
+      commands, artifact identity, and recovery.
 - [ ] `T8.2` — After explicit authorization, inspect and flash the exact `T6.5`
       ELF through the repository nRF workflow, run the deterministic scenario
-      on the connected TFT/input target, exercise all six controls, and record
-      display/input correctness, watchdog/reset behavior, stack high-water
-      where supported, assembled RAM/flash/workspaces/timing, artifact identity,
-      and teardown. Never infer this evidence from an emulator or cross-build.
+      for at least 30 continuous seconds on the connected TFT/input target,
+      exercise all six controls, and record display/input correctness, no
+      loss/duplication/stale events, responsiveness, four-frame/second cadence,
+      watchdog/reset behavior, stack high-water where supported, assembled
+      RAM/flash/workspaces/timing, artifact identity, and teardown. Never infer
+      this evidence from an emulator or cross-build.
 - [ ] `T8.3` — Compare connected semantic/action/drawing traces with the
       hardware-free oracle while preserving target-specific performance and
       display facts. Classify any absent hardware run as an open connected
@@ -503,9 +587,11 @@ human `implemented` transition.
       and evidence completeness. Run all positive and negative compile
       fixtures with their pinned profile compilers.
 - [ ] `T9.2` — Run focused Domain/Data/Presentation tests, the SPEC-001 driver
-      for every hardware-free profile, reused SPEC-003/005/007-015 dependency
-      drivers, and normalized cross-profile comparison. Preserve standalone
-      invocations and immutable logs.
+      for every hardware-free profile, every applicable registered dependency
+      driver from SPEC-002 through SPEC-015, and normalized cross-profile
+      comparison. Preserve standalone invocations and immutable logs; a
+      dependency driver may be inapplicable only through its own explicit
+      profile contract, never through a SPEC-001 skip.
 - [ ] `T9.3` — Run `scripts/format-swift.sh`, `scripts/test.sh` for the fast
       local gate and applicable explicit profiles, and governance validation.
       Record failures against their owning task/specification; do not weaken or
@@ -580,6 +666,10 @@ not warrant design notes.
 - Scheduling adapters can accidentally leak tasks, clocks, actors, or platform
   types into portable modules. Keep deterministic generation state separate
   from host scheduling and enforce source/import/symbol negatives early.
+- Host-native Pi/nRF semantic fixtures can be mistaken for target execution.
+  Enforce the evidence-kind schema before accepting a criterion disposition,
+  and leave target timing, display/input, process-memory, stack, responsiveness,
+  and watchdog fields open until connected evidence exists.
 - The admission, observable, action, Drawing, and host joins span several
   actively implemented Specifications. Reuse their checked fixtures and
   production seams; avoid analyzer-local parallel implementations that make a
@@ -627,6 +717,13 @@ and conformance gaps may not be deferred.
 No task has been completed under this plan. Checked criteria in SPEC-001 and
 the imported package are baseline evidence only until the governed
 implementation and required profiles reproduce them.
+
+The 2026-09-13 readiness revision fixed the governed root-package destination,
+seam-level dependency ledger, contract-report and platform-artifact ownership,
+evidence classification, startup/action/category-bound checks, dual Drawing
+startup gates, connected sustained-workload evidence, and complete dependency-
+driver coverage. The plan remains `ready`; none of those documentation changes
+starts implementation or supplies conformance evidence.
 
 When work begins, change this plan to `active`, transition SPEC-001 and the
 manifest consistently, and update task dispositions with stable evidence in
