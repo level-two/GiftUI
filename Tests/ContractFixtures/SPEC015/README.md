@@ -16,3 +16,7 @@ They become active only with substantive source, Package.swift declarations,
 and exact SPEC-002 dependency rows. The migration inventory treats the legacy
 SwiftUI composition root as evidence, never as production authority.
 
+`Fixtures/Positive/host-configuration-surface` compiles the complete T1.1
+package surface, including noncopyable protocol conformers. The paired
+negative fixtures prove package-only visibility and reject an activation
+failure that does not satisfy the exact `Sendable` constraint.

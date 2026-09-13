@@ -227,7 +227,7 @@ declaration slice.
 values, visibility, ownership, bounds, failable initialization, and static
 layout evidence.
 
-- [ ] `T1.1` — Implement the exact SPEC-015 host-kind, validation-stage,
+- [x] `T1.1` — Implement the exact SPEC-015 host-kind, validation-stage,
       configuration-error, assembly-report, validation-result,
       lifecycle-state, activation-result, opportunity-result,
       `MVPHostInstance`, validator, residual-policy-table, and residual-policy
@@ -691,3 +691,11 @@ combined render bound, omit static Canvas metadata from Dynamic presets, and
 encode the approved macOS, Pi, and nRF raster projections. Freshness and focused
 evidence are recorded in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-2/generated-workload-and-presets.md`.
+
+T1.1 completed the remaining compile-surface evidence for the exact host
+result and protocol declarations. Focused tests preserve associated payloads,
+raw values, equality, and `Sendable` constraints; a package compile fixture
+proves noncopyable instance/validator conformance and residual-policy
+specialization; and negative fixtures reject external access and a
+non-`Sendable` activation failure. Evidence and reproduction commands are in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-1/host-configuration-surfaces.md`.
