@@ -1,0 +1,16 @@
+# schema_version=1
+# id	seed	channel	expected
+initial-levels	any	all	CH1-low,CH2-low,CH3-low,CH4-low
+ch1-pattern	any	CH1	250ms-period
+ch2-pattern	any	CH2	400ms-period
+ch3-pattern	any	CH3	80,80,80,1200,75,75,900
+ch4-seed-1234	1234	CH4	0,251,791,1380,1674,2069,2477,2946
+ch4-live-seed	0x5EED	CH4	0,438,909,1189,1370,1964,2555,2815
+start-idempotent	any	all	one-generation
+pause	any	all	no-delivery
+resume	any	all	conceptual-time-preserved
+stale-generation	any	all	rejected
+generation-exhaustion	any	all	rejected-no-alias
+teardown	any	all	no-later-delivery
+accelerated-scale	any	all	host-delay-scaled
+second-source	fixture	CH4	repository-substitution

@@ -335,7 +335,7 @@ same capture/state/publication traces and deterministic source vectors.
       throws the same failure or a value carrying the same diagnostic; prove no
       rollback after callback refusal and no later operation on an exhausted
       graph.
-- [ ] `T2.3` — Separate deterministic source state from host-provided live
+- [x] `T2.3` — Separate deterministic source state from host-provided live
       scheduling. Implement four initial lows, CH1/CH2/CH3 patterns, exact
       wrapping CH4 LCG and both golden vectors, checked nonaliasing generations,
       pause/resume conceptual time, accelerated timing, teardown, and a second
@@ -748,6 +748,9 @@ baselines, exact mutation replay, and state-preserving Clear behavior.
 replacement, synchronous bounded outcomes, action idempotence, startup cleanup,
 source-contract and horizon paths, no-rollback refusal, and terminal revision
 exhaustion with permanent object-graph quiescence.
+`T2.3` adds the scheduler-independent four-channel generator, exact wrapping
+CH4 vectors, host-scaled delivery seam, checked nonaliasing generations,
+pause/resume continuity, teardown, and a second conforming source fixture.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

@@ -20,3 +20,4 @@
 19	domain-contract-cases	domain-contract-cases.tsv	1
 20	retention-cases	retention-cases.tsv	1
 21	repository-lifecycle-cases	repository-lifecycle-cases.tsv	1
+22	deterministic-source-cases	deterministic-source-cases.tsv	1

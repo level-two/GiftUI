@@ -53,6 +53,10 @@ package struct DeterministicSignalGenerator: Equatable, Sendable {
         )
     }
 
+    package var nextTimestamp: Duration {
+        min(ch1Next, ch2Next, ch3Next, ch4Next)
+    }
+
     package func level(for channelID: SignalChannelID) -> DigitalLevel {
         switch channelID.rawValue {
         case 1: ch1Level
