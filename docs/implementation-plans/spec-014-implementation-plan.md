@@ -355,7 +355,7 @@ for every operation independently of full-surface or tiled storage.
       most once per glyph, consume the borrow before return, preserve baseline
       and clip, and reject missing payload/lookup as the exact post-startup
       invariant without reshaping, measuring, substitution, or repositioning.
-- [ ] `T4.4` — Implement every SPEC-012 canonical straight-line stroke vector,
+- [x] `T4.4` — Implement every SPEC-012 canonical straight-line stroke vector,
       including subpaths, duplicate points, zero length, odd/even width,
       butt/round caps, miter/round joins and limit, origin, inherited clip, and
       binary pixel-center coverage. Consume the complete borrowed view within
@@ -887,6 +887,19 @@ recorded in
 [`spec-012-stroke-vector-blocker.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-4/spec-012-stroke-vector-blocker.md).
 `T4.4` may proceed; `T4.6`, the Milestone 5/6 zero-tolerance stroke comparisons,
 and BI-009 remain open until their owning tasks complete.
+
+`T4.4` is complete. Raster Core now validates and synchronously consumes the
+borrowed stroke header, contiguous subpaths, and translated points without
+retaining or allocating operation storage. Doubled Int128 pixel-center tests
+implement exact closed segment bodies, round disks, zero-tangent filtering,
+and in-limit miter strips; an exact fraction comparison selects the fixed
+ten-times-half-width limit, and a widened Q31 bevel triangle handles its sole
+fallback. Damage, surface, and inherited half-open clip constrain a row-major
+scan without Canvas bounds. All 17 independent SPEC-012 masks pass, including
+duplicate/zero points, caps, joins, negative translated coordinates, clipping,
+and painter replacement. All four registered value profiles compile the
+shared source. BI-009 remains pending for the later concrete
+full-surface and tiled exact-byte comparison tasks.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

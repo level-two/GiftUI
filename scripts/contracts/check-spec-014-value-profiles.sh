@@ -163,6 +163,7 @@ run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterFrameWork.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterFillCoverage.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterGlyphCoverage.swift" \
+    "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterStrokeCoverage.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterWorkTracker.swift" \
     -emit-module-path "${module_dir}/GiftUIRasterCore.swiftmodule" >/dev/null
 run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" \

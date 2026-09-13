@@ -52,12 +52,12 @@ encoding plus checked surface/damage/clip intersection. Surface and display
 owners accept only encoded values or horizontal regions and therefore do not
 participate in stroke geometry.
 
-SPEC-012's `raster-vectors.yaml` is still an empty fail-closed corpus. The
-implementation can be built from the approved equations, but `T4.4` and
-BI-009 cannot be closed until the upstream independent vectors and oracle are
-frozen.
+SPEC-012's `raster-vectors.yaml` now freezes 17 zero-tolerance vectors, and
+its registered independent oracle recomputes them without importing Raster
+Core. That prerequisite unblocks implementation; BI-009 remains open until
+the later full-surface/tiled byte comparisons also complete.
 
-## Proposed Internal Organization
+## Selected Internal Organization
 
 Raster Core owns a stateless `RasterStrokeCoverage` entry point and small
 private widened-coordinate helpers. The entry point takes the borrowed view,
@@ -106,13 +106,15 @@ nonzero segment determine each open subpath's cap endpoints.
 
 For a turn between adjacent nonzero segments, the implementation classifies
 the exterior side from the exact cross-product sign. Round joins use the disk.
-Miter joins use the intersection of the two exterior offset half-planes. All
-half-plane comparisons are expressed by signed cross products and squared
-length products, so no normalized vector or square root is materialized. The
-miter-limit decision compares the squared intersection distance with
-`100 * width^2`; an over-limit intersection selects the closed bevel wedge as
-required by SPEC-012. Collinear same-direction and exact reversal pairs add no
-join region. Boundary equality is always inside.
+In-limit miter joins use the intersection of the two exterior offset strips;
+continued-fraction comparison avoids overflowing the equivalent squared
+products. The exact ten-times-half-width decision reduces to
+`2500 * dot^2 <= 2401 * length1Squared * length2Squared`, again compared as
+fractions without forming the degree-four products. An over-limit join uses a
+Q31 widened-integer construction of the closed bevel triangle. The independent
+Q160 oracle confirms the selected precision produces every frozen boundary
+decision exactly. Collinear same-direction and exact reversal pairs add no
+join region, and tested boundary equality is inside.
 
 The initial implementation deliberately scans the already bounded clipped
 surface region rather than deriving a stroke bounding box. This avoids
@@ -156,8 +158,8 @@ fallback, saturation, tolerance, antialiasing, or partial style substitution.
 - the same callback transcript feeds full-surface and tiled comparison;
 - source and address audits reject `Double`, `Float`, dynamic collections,
   retained pointers/views, and `GiftUIDrawing` imports;
-- SPEC-012's independent oracle, once frozen, is compared byte-for-byte rather
-  than regenerated from this implementation.
+- SPEC-012's independent oracle is compared mask-for-mask rather than
+  regenerated from this implementation.
 
 ## Rejected Implementation Alternatives
 
@@ -169,15 +171,17 @@ tiles are rejected by the one-shot ownership contract.
 
 ## Open Implementation Questions
 
-There is no open internal semantic choice. SPEC-012 `T8.1` and `T8.2` remain an
-upstream evidence blocker: their empty vector corpus cannot validate every
-required mask independently. SPEC-014 must not mark `T4.4`, BI-009, or final
-conformance complete until that evidence lands.
+There is no open internal semantic choice. SPEC-012 `T8.1` and `T8.2` are
+complete. BI-009 and final conformance remain open for their later full-surface,
+tiled, resource, and four-profile evidence owners.
 
 ## Code and Evidence Links
 
-Production and focused-test links will be added when the implementation lands.
-The current upstream placeholder is
-[`raster-vectors.yaml`](../../Tests/ContractFixtures/SPEC012/raster-vectors.yaml).
-The reproducible downstream disposition is recorded in the
+The implementation is
+[`RasterStrokeCoverage.swift`](../../Sources/GiftUIRasterCore/RasterStrokeCoverage.swift),
+with all frozen masks mirrored by
+[`RasterStrokeCoverageTests.swift`](../../Tests/GiftUIRasterCoreTests/RasterStrokeCoverageTests.swift).
+The owning upstream corpus remains
+[`raster-vectors.yaml`](../../Tests/ContractFixtures/SPEC012/raster-vectors.yaml),
+and the original dependency history remains in the
 [T4.4 blocker evidence](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-4/spec-012-stroke-vector-blocker.md).
