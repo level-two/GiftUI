@@ -1,3 +1,207 @@
 schema: spec-012-raster-vectors-v1
-vectors: []
+pixelTolerance: 0
+channelTolerance: 0
+coordinates: integer-upper-left-with-half-unit-pixel-centers
+clipRule: inherited-half-open-only
+vectors:
+  - name: horizontal-odd-butt
+    covers: [horizontal, odd-width, butt-cap]
+    surface: [0, 0, 7, 5]
+    operations:
+      - {symbol: A, color: [255, 0, 0], lineWidth: 1, cap: butt, join: miter,
+         clip: [0, 0, 7, 5], points: [[1, 2], [6, 2]], subpaths: [[0, 2]]}
+    palette: {A: {rgb: [255, 0, 0], rgba8888: [255, 0, 0, 255], rgb565: [248, 0]}}
+    expectedMask: [".......", ".AAAAA.", ".AAAAA.", ".......", "......."]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]
 
+  - name: vertical-even-butt
+    covers: [vertical, even-width]
+    surface: [0, 0, 5, 7]
+    operations:
+      - {symbol: A, color: [0, 255, 0], lineWidth: 2, cap: butt, join: miter,
+         clip: [0, 0, 5, 7], points: [[2, 1], [2, 6]], subpaths: [[0, 2]]}
+    palette: {A: {rgb: [0, 255, 0], rgba8888: [0, 255, 0, 255], rgb565: [7, 224]}}
+    expectedMask: [".....", ".AA..", ".AA..", ".AA..", ".AA..", ".AA..", "....."]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]
+
+  - name: diagonal-round-cap
+    covers: [diagonal, round-cap]
+    surface: [0, 0, 6, 6]
+    operations:
+      - {symbol: A, color: [0, 0, 255], lineWidth: 1, cap: round, join: miter,
+         clip: [0, 0, 6, 6], points: [[1, 1], [5, 5]], subpaths: [[0, 2]]}
+    palette: {A: {rgb: [0, 0, 255], rgba8888: [0, 0, 255, 255], rgb565: [0, 31]}}
+    expectedMask: ["......", ".A....", "..A...", "...A..", "....A.", "......"]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]
+
+  - name: single-point-subpath
+    covers: [single-point]
+    surface: [0, 0, 4, 4]
+    operations:
+      - {symbol: A, color: [255, 255, 255], lineWidth: 3, cap: round, join: round,
+         clip: [0, 0, 4, 4], points: [[2, 2]], subpaths: [[0, 1]]}
+    palette: {A: {rgb: [255, 255, 255], rgba8888: [255, 255, 255, 255], rgb565: [255, 255]}}
+    expectedMask: ["....", "....", "....", "...."]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]
+
+  - name: repeated-point-round-join
+    covers: [repeated-point, round-join]
+    surface: [0, 0, 7, 7]
+    operations:
+      - {symbol: A, color: [255, 127, 1], lineWidth: 3, cap: butt, join: round,
+         clip: [0, 0, 7, 7], points: [[1, 4], [4, 4], [4, 4], [4, 1]], subpaths: [[0, 4]]}
+    palette: {A: {rgb: [255, 127, 1], rgba8888: [255, 127, 1, 255], rgb565: [251, 224]}}
+    expectedMask: [".......", "..AAAA.", ".AAAAA.", ".AAAAA.", ".AAAA..", ".AAA...", "......."]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]
+
+  - name: zero-length-subpath
+    covers: [zero-length]
+    surface: [0, 0, 4, 4]
+    operations:
+      - {symbol: A, color: [1, 1, 1], lineWidth: 4, cap: round, join: round,
+         clip: [0, 0, 4, 4], points: [[2, 2], [2, 2], [2, 2]], subpaths: [[0, 3]]}
+    palette: {A: {rgb: [1, 1, 1], rgba8888: [1, 1, 1, 255], rgb565: [0, 0]}}
+    expectedMask: ["....", "....", "....", "...."]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]
+
+  - name: right-angle-miter
+    covers: [right-angle, miter-join]
+    surface: [0, 0, 7, 7]
+    operations:
+      - {symbol: A, color: [128, 254, 127], lineWidth: 2, cap: butt, join: miter,
+         clip: [0, 0, 7, 7], points: [[1, 5], [5, 5], [5, 1]], subpaths: [[0, 3]]}
+    palette: {A: {rgb: [128, 254, 127], rgba8888: [128, 254, 127, 255], rgb565: [135, 239]}}
+    expectedMask: [".......", "....AA.", "....AA.", "....AA.", ".AAAAA.", ".AAAAA.", "......."]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]
+
+  - name: acute-angle-miter
+    covers: [acute-angle]
+    surface: [0, 0, 10, 8]
+    operations:
+      - {symbol: A, color: [254, 128, 0], lineWidth: 3, cap: butt, join: miter,
+         clip: [0, 0, 10, 8], points: [[1, 6], [5, 2], [8, 6]], subpaths: [[0, 3]]}
+    palette: {A: {rgb: [254, 128, 0], rgba8888: [254, 128, 0, 255], rgb565: [252, 0]}}
+    expectedMask: ["....AA....", "...AAAA...", "..AAAAA...", ".AAAAAAA..", "AAAAAAAAA.", "AAAA..AAA.", ".AA...A...", ".........."]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]
+
+  - name: obtuse-angle-round
+    covers: [obtuse-angle]
+    surface: [0, 0, 10, 7]
+    operations:
+      - {symbol: A, color: [127, 0, 254], lineWidth: 2, cap: butt, join: round,
+         clip: [0, 0, 10, 7], points: [[1, 5], [5, 3], [9, 4]], subpaths: [[0, 3]]}
+    palette: {A: {rgb: [127, 0, 254], rgba8888: [127, 0, 254, 255], rgb565: [120, 31]}}
+    expectedMask: ["..........", "..........", "....AAA...", "..AAAAAAA.", ".AAA...AA.", ".A........", ".........."]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]
+
+  - name: collinear-same-direction
+    covers: [same-direction]
+    surface: [0, 0, 9, 5]
+    operations:
+      - {symbol: A, color: [0, 128, 255], lineWidth: 2, cap: butt, join: miter,
+         clip: [0, 0, 9, 5], points: [[1, 2], [4, 2], [8, 2]], subpaths: [[0, 3]]}
+    palette: {A: {rgb: [0, 128, 255], rgba8888: [0, 128, 255, 255], rgb565: [4, 31]}}
+    expectedMask: [".........", ".AAAAAAA.", ".AAAAAAA.", ".........", "........."]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]
+
+  - name: exact-reversal
+    covers: [reversal]
+    surface: [0, 0, 7, 5]
+    operations:
+      - {symbol: A, color: [128, 128, 128], lineWidth: 2, cap: butt, join: miter,
+         clip: [0, 0, 7, 5], points: [[1, 2], [6, 2], [2, 2]], subpaths: [[0, 3]]}
+    palette: {A: {rgb: [128, 128, 128], rgba8888: [128, 128, 128, 255], rgb565: [132, 16]}}
+    expectedMask: [".......", ".AAAAA.", ".AAAAA.", ".......", "......."]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]
+
+  - name: miter-limit-bevel-fallback
+    covers: [miter-limit-fallback]
+    surface: [0, 0, 22, 8]
+    operations:
+      - {symbol: A, color: [254, 254, 254], lineWidth: 4, cap: butt, join: miter,
+         clip: [0, 0, 22, 8], points: [[1, 4], [10, 4], [1, 5]], subpaths: [[0, 3]]}
+    palette: {A: {rgb: [254, 254, 254], rgba8888: [254, 254, 254, 255], rgb565: [255, 255]}}
+    expectedMask: ["......................", "......................", ".AAAAAAAAA............", ".AAAAAAAAA............", ".AAAAAAAAA............", ".AAAAAAAAA............", ".AAAAA................", "......................"]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]
+
+  - name: negative-outside-canvas
+    covers: [negative-coordinate, outside-canvas]
+    canvasBounds: [0, 0, 2, 2]
+    surface: [-4, -3, 9, 7]
+    operations:
+      - {symbol: A, color: [1, 127, 255], lineWidth: 1, cap: round, join: miter,
+         clip: [-4, -3, 5, 4], points: [[-3, -2], [4, 3]], subpaths: [[0, 2]]}
+    palette: {A: {rgb: [1, 127, 255], rgba8888: [1, 127, 255, 255], rgb565: [3, 255]}}
+    expectedMask: [".........", ".AA......", "..AA.....", "....A....", ".....AA..", "......AA.", "........."]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]
+
+  - name: inherited-clip-all-edges
+    covers: [clip-left, clip-top, clip-right, clip-bottom]
+    surface: [0, 0, 6, 6]
+    operations:
+      - {symbol: A, color: [255, 255, 0], lineWidth: 8, cap: butt, join: miter,
+         clip: [1, 1, 5, 5], points: [[-2, 3], [8, 3]], subpaths: [[0, 2]]}
+    palette: {A: {rgb: [255, 255, 0], rgba8888: [255, 255, 0, 255], rgb565: [255, 224]}}
+    expectedMask: ["......", ".AAAA.", ".AAAA.", ".AAAA.", ".AAAA.", "......"]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]
+
+  - name: inherited-empty-clip
+    covers: [empty-clip]
+    surface: [0, 0, 5, 5]
+    operations:
+      - {symbol: A, color: [255, 0, 255], lineWidth: 5, cap: round, join: round,
+         clip: [2, 2, 2, 4], points: [[0, 2], [5, 2]], subpaths: [[0, 2]]}
+    palette: {A: {rgb: [255, 0, 255], rgba8888: [255, 0, 255, 255], rgb565: [248, 31]}}
+    expectedMask: [".....", ".....", ".....", ".....", "....."]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]
+
+  - name: overlap-painter-order
+    covers: [overlap, painter-order]
+    surface: [0, 0, 7, 7]
+    operations:
+      - {symbol: A, color: [255, 0, 0], lineWidth: 3, cap: butt, join: miter,
+         clip: [0, 0, 7, 7], points: [[0, 3], [7, 3]], subpaths: [[0, 2]]}
+      - {symbol: B, color: [0, 0, 255], lineWidth: 3, cap: butt, join: miter,
+         clip: [0, 0, 7, 7], points: [[3, 0], [3, 7]], subpaths: [[0, 2]]}
+    palette:
+      A: {rgb: [255, 0, 0], rgba8888: [255, 0, 0, 255], rgb565: [248, 0]}
+      B: {rgb: [0, 0, 255], rgba8888: [0, 0, 255, 255], rgb565: [0, 31]}
+    expectedMask: [".BBBB..", "ABBBBAA", "ABBBBAA", "ABBBBAA", "ABBBBAA", ".BBBB..", ".BBBB.."]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]
+
+  - name: rgb-rounding-boundaries
+    covers: [rgb-0, rgb-1, rgb-127, rgb-128, rgb-254, rgb-255]
+    surface: [0, 0, 6, 3]
+    operations:
+      - {symbol: A, color: [0, 0, 0], lineWidth: 1, cap: butt, join: miter, clip: [0, 0, 6, 3], points: [[0, 0], [0, 3]], subpaths: [[0, 2]]}
+      - {symbol: B, color: [1, 1, 1], lineWidth: 1, cap: butt, join: miter, clip: [0, 0, 6, 3], points: [[1, 0], [1, 3]], subpaths: [[0, 2]]}
+      - {symbol: C, color: [127, 127, 127], lineWidth: 1, cap: butt, join: miter, clip: [0, 0, 6, 3], points: [[2, 0], [2, 3]], subpaths: [[0, 2]]}
+      - {symbol: D, color: [128, 128, 128], lineWidth: 1, cap: butt, join: miter, clip: [0, 0, 6, 3], points: [[3, 0], [3, 3]], subpaths: [[0, 2]]}
+      - {symbol: E, color: [254, 254, 254], lineWidth: 1, cap: butt, join: miter, clip: [0, 0, 6, 3], points: [[4, 0], [4, 3]], subpaths: [[0, 2]]}
+      - {symbol: F, color: [255, 255, 255], lineWidth: 1, cap: butt, join: miter, clip: [0, 0, 6, 3], points: [[5, 0], [5, 3]], subpaths: [[0, 2]]}
+    palette:
+      A: {rgb: [0, 0, 0], rgba8888: [0, 0, 0, 255], rgb565: [0, 0]}
+      B: {rgb: [1, 1, 1], rgba8888: [1, 1, 1, 255], rgb565: [0, 0]}
+      C: {rgb: [127, 127, 127], rgba8888: [127, 127, 127, 255], rgb565: [123, 239]}
+      D: {rgb: [128, 128, 128], rgba8888: [128, 128, 128, 255], rgb565: [132, 16]}
+      E: {rgb: [254, 254, 254], rgba8888: [254, 254, 254, 255], rgb565: [255, 255]}
+      F: {rgb: [255, 255, 255], rgba8888: [255, 255, 255, 255], rgb565: [255, 255]}
+    expectedMask: ["BCDEFF", "BCDEFF", "BCDEFF"]
+    criteria: [DR-006]
+    evidenceClasses: [host-execution, cross-build, inspection]

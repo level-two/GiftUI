@@ -458,7 +458,7 @@ RGB565 consumers and their workspace contracts.
 and exact encoding for the complete normative vector corpus without changing
 portable or normalized stroke meaning.
 
-- [ ] `T8.1` — Freeze shared normalized stroke and golden-mask vectors for all
+- [x] `T8.1` — Freeze shared normalized stroke and golden-mask vectors for all
       required horizontal, vertical, diagonal, single-point, repeated-point,
       zero-length, acute/obtuse/right-angle, same-direction, reversal,
       miter-limit fallback, odd/even width, butt/round cap, miter/round join,

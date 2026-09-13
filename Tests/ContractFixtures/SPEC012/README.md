@@ -13,11 +13,18 @@ meaning.
 `fixture-manifest.tsv` is the ordered registry for canonical YAML fixture
 files. `fixtures.yaml` owns declaration, semantic, layout, cycle, path, plan,
 render, startup, and failure cases. `raster-vectors.yaml` owns normalized
-stroke inputs, binary coverage masks, and exact encoded bytes. T5.3 populated
-`fixtures.yaml` with the canonical mixed combined-render and zero-Canvas
-ordinary-equivalence cases; the raster manifest remains empty until T8. The
-implementation task that owns a behavior adds complete cases without changing
-the frozen field vocabulary merely to fit an implementation.
+stroke inputs, binary coverage masks, and exact RGBA8888/RGB565 palette bytes.
+T5.3 populated `fixtures.yaml` with the canonical mixed combined-render and
+zero-Canvas ordinary-equivalence cases. T8.1 froze the complete raster vector
+corpus with zero pixel and channel tolerance. The implementation task that
+owns a behavior adds complete cases without changing the frozen field
+vocabulary merely to fit an implementation.
+
+Each raster vector declares an integer-origin surface, painter-ordered stroke
+operations, an exact output-symbol mask, and a palette whose symbols freeze
+the corresponding RGB source and encoded bytes. The optional `canvasBounds`
+field is deliberately non-raster metadata used by the outside-Canvas vector;
+only each operation's inherited half-open `clip` constrains coverage.
 
 Every case or vector name is globally unique lowercase kebab-case. Every row
 must cite one or more `DR-001` through `DR-013` criteria and one or more

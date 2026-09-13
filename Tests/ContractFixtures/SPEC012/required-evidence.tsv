@@ -4,7 +4,7 @@ DR-002	T1.1,T2.1,T2.4,T4.1,T4.2,T9.2	semantic-layout-render-identity-and-zero-ou
 DR-003	T4.1-T4.5,T7.4,T9.2	cycle-timeline-invocation-release-and-refusal-recovery	-	pending
 DR-004	T3.3-T3.6,T9.2	path-snapshot-subpath-zero-length-and-atomic-capacity-fixtures	-	pending
 DR-005	T2.2,T5.1-T5.5,T9.2	canonical-combined-header-and-recording-transcript	-	pending
-DR-006	T8.1-T8.4,T9.2,T9.4	shared-raster-mask-and-exact-encoding-corpus	-	pending
+DR-006	T8.1-T8.4,T9.2,T9.4	shared-raster-mask-and-exact-encoding-corpus	raster-vectors.yaml#vectors	pending
 DR-007	T3.2-T3.6,T5.2-T5.5,T7.3-T7.4,T9.2	ordered-failure-mapping-and-lifecycle-disposition-matrix	-	pending
 DR-008	T6.4,T7.1,T7.2,T9.2	independent-b2-capability-and-snapshot-field-matrix	-	pending
 DR-009	T3.5,T4.3-T4.5,T5.4,T9.3	borrow-poisoning-and-lifecycle-storage-audits	-	pending
@@ -12,4 +12,3 @@ DR-010	T6.1-T6.5,T9.1,T9.4	generated-callable-coverage-capture-and-rejection-cor
 DR-011	T1.5,T6.2-T6.5,T9.3,T9.4	typed-error-cleanup-allocation-symbol-and-elf-inspection	-	pending
 DR-012	T2.3,T3.1,T9.3-T9.5	value-layout-resource-high-water-link-and-timing-reports	-	pending
 DR-013	T0.2,T2.5,T5.5,T9.1,T9.5	target-graph-import-symbol-owner-and-portable-source-audit	-	pending
-

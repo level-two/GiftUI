@@ -38,11 +38,44 @@ fail_check("fixture files differ") unless manifest.map { |row| row[1] } == %w[fi
 manifest.each do |_, file, _, collection, classes|
   document = YAML.safe_load(FIXTURES.join(file).read, aliases: false)
   fail_check("#{file} root differs") unless document.is_a?(Hash) && document[collection].is_a?(Array)
-  if file == "raster-vectors.yaml"
-    fail_check("#{file} must remain empty before T8") unless document[collection].empty?
-  end
   unknown = classes.split(",") - EVIDENCE_CLASSES
   fail_check("#{file} has unknown evidence classes") unless unknown.empty?
+end
+
+raster_document = YAML.safe_load(FIXTURES.join("raster-vectors.yaml").read, aliases: false)
+fail_check("raster schema differs") unless raster_document["schema"] == "spec-012-raster-vectors-v1"
+fail_check("raster pixel tolerance differs") unless raster_document["pixelTolerance"] == 0
+fail_check("raster channel tolerance differs") unless raster_document["channelTolerance"] == 0
+fail_check("raster coordinate rule differs") unless raster_document["coordinates"] == "integer-upper-left-with-half-unit-pixel-centers"
+fail_check("raster clip rule differs") unless raster_document["clipRule"] == "inherited-half-open-only"
+raster_vectors = raster_document.fetch("vectors")
+fail_check("raster vector corpus is empty") if raster_vectors.empty?
+required_raster_coverage = %w[
+  horizontal vertical diagonal single-point repeated-point zero-length
+  acute-angle obtuse-angle right-angle same-direction reversal
+  miter-limit-fallback odd-width even-width butt-cap round-cap miter-join
+  round-join negative-coordinate outside-canvas clip-left clip-top clip-right
+  clip-bottom empty-clip overlap painter-order rgb-0 rgb-1 rgb-127 rgb-128
+  rgb-254 rgb-255
+]
+actual_raster_coverage = raster_vectors.flat_map { |vector| vector.fetch("covers") }.uniq
+fail_check("raster coverage differs") unless actual_raster_coverage.sort == required_raster_coverage.sort
+fail_check("raster vector names are duplicated") unless raster_vectors.map { |vector| vector["name"] }.uniq.length == raster_vectors.length
+raster_vectors.each do |vector|
+  required = %w[name covers surface operations palette expectedMask criteria evidenceClasses]
+  fail_check("#{vector['name']} fields differ") unless (required - vector.keys).empty?
+  fail_check("#{vector['name']} criterion differs") unless vector["criteria"] == ["DR-006"]
+  fail_check("#{vector['name']} has unknown evidence class") unless (vector["evidenceClasses"] - EVIDENCE_CLASSES).empty?
+  surface = vector["surface"]
+  fail_check("#{vector['name']} surface differs") unless surface.length == 4 && surface[2].positive? && surface[3].positive?
+  mask = vector["expectedMask"]
+  fail_check("#{vector['name']} mask height differs") unless mask.length == surface[3]
+  fail_check("#{vector['name']} mask width differs") unless mask.all? { |row| row.length == surface[2] }
+  symbols = vector["operations"].map { |operation| operation.fetch("symbol") }
+  fail_check("#{vector['name']} operation symbols are duplicated") unless symbols.uniq.length == symbols.length
+  fail_check("#{vector['name']} palette symbols differ") unless vector["palette"].keys.sort == symbols.sort
+  allowed_mask_symbols = symbols + ["."]
+  fail_check("#{vector['name']} mask has unknown symbols") unless mask.join.chars.all? { |symbol| allowed_mask_symbols.include?(symbol) }
 end
 
 fixtures = YAML.safe_load(FIXTURES.join("fixtures.yaml").read, aliases: false).fetch("cases")
@@ -125,6 +158,8 @@ evidence = rows(
 )
 fail_check("criterion registry differs") unless evidence.map(&:first) == CRITERIA
 fail_check("criterion rows must begin pending") unless evidence.all? { |row| row[4] == "pending" }
+dr006 = evidence.find { |row| row[0] == "DR-006" }
+fail_check("DR-006 raster corpus reference differs") unless dr006[3] == "raster-vectors.yaml#vectors"
 
 boundaries = rows(
   FIXTURES.join("module-boundaries.tsv"),
