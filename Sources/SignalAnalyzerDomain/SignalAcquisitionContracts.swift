@@ -25,6 +25,10 @@ package protocol SignalDataSource {
     func stop()
 }
 
+package protocol SignalAnalyzerDiagnosticError: Error {
+    var signalAnalyzerDiagnostic: SignalAnalyzerDiagnostic { get }
+}
+
 package struct ObserveSignalCaptureUseCase {
     private let repository: any SignalAcquisitionRepository
 

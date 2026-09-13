@@ -355,7 +355,7 @@ SPEC-003/009/010 admission and mutation seams.
 facts apply only in GiftUI mutation, and every failure follows the exact total
 normalization/effect/policy sequence.
 
-- [ ] `T3.1` — Implement exact visible-window, view-state, six-action,
+- [x] `T3.1` — Implement exact visible-window, view-state, six-action,
       noncapturing action-handler, Presentation-fact, operational-failure,
       observation-start, residual-context, and ViewModel declarations. Keep
       success/operational outcomes unrepresentable in
@@ -754,6 +754,9 @@ pause/resume continuity, teardown, and a second conforming source fixture.
 `T2.4` adds the 30-second, 2,400-event workload oracle joined to four initial
 lows, checking all inputs, mutations, revisions, outcomes, state transitions,
 and the replayed 2,404-transition final capture without loss or duplication.
+`T3.1` adds the exact Presentation values, runtime-condition catalogue,
+diagnostic-preserving intents, total six-action handler, visible range, and
+model-owned synchronous dirty reporting with proven no-op suppression.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

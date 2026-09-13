@@ -1,15 +1,14 @@
 import SignalAnalyzerDomain
 
-package protocol SignalDataSourceDiagnosticError: Error {
-    var signalAnalyzerDiagnostic: SignalAnalyzerDiagnostic { get }
+package protocol SignalDataSourceDiagnosticError: SignalAnalyzerDiagnosticError {}
+
+package struct SignalAcquisitionStartError: SignalAnalyzerDiagnosticError, Equatable, Sendable {
+    package let signalAnalyzerDiagnostic: SignalAnalyzerDiagnostic
 }
 
-package struct SignalAcquisitionStartError: Error, Equatable, Sendable {
-    package let diagnostic: SignalAnalyzerDiagnostic
-}
-
-package struct SignalAcquisitionUnavailableError: Error, Equatable, Sendable {
-    package let diagnostic: SignalAnalyzerDiagnostic
+package struct SignalAcquisitionUnavailableError: SignalAnalyzerDiagnosticError, Equatable, Sendable
+{
+    package let signalAnalyzerDiagnostic: SignalAnalyzerDiagnostic
 }
 
 package final class DefaultSignalAcquisitionRepository: SignalAcquisitionRepository,
@@ -57,7 +56,7 @@ package final class DefaultSignalAcquisitionRepository: SignalAcquisitionReposit
 
     package func start() throws {
         if isTerminal {
-            throw SignalAcquisitionUnavailableError(diagnostic: terminalDiagnostic!)
+            throw SignalAcquisitionUnavailableError(signalAnalyzerDiagnostic: terminalDiagnostic!)
         }
         guard acquisitionState != .running else { return }
         do {
@@ -80,7 +79,7 @@ package final class DefaultSignalAcquisitionRepository: SignalAcquisitionReposit
             )!
             acquisitionState = .failed(diagnostic)
             publishState()
-            throw SignalAcquisitionStartError(diagnostic: diagnostic)
+            throw SignalAcquisitionStartError(signalAnalyzerDiagnostic: diagnostic)
         }
     }
 

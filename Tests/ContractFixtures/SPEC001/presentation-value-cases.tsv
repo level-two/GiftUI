@@ -1,0 +1,18 @@
+# schema_version=1
+# id	value	expected
+window-one	oneSecond	1s
+window-two	twoSeconds	2s
+window-five	fiveSeconds	5s
+initial-state	view-state	idle-empty-two-second-no-error
+initial-range	visible-range	0..<2s
+action-start	0	startTapped
+action-stop	1	stopTapped
+action-clear	2	clearTapped
+action-one	3	oneSecond
+action-two	4	twoSeconds
+action-five	5	fiveSeconds
+changed-action	visible-window	one-synchronous-report
+repeated-action	visible-window	no-report
+start-error	diagnostic	exact-bounded-value
+operational-failure	structure	failure-fact-plus-diagnostic
+runtime-conditions	catalogue	12-distinct-uint8-cases
