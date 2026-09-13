@@ -13,9 +13,9 @@ package struct CanonicalEncodedPixel: Equatable, Sendable {
         self.encoding = encoding
         switch encoding {
         case .rgb565BigEndian:
-            let red = (UInt32(color.red) * 31 + 127) / 255
-            let green = (UInt32(color.green) * 63 + 127) / 255
-            let blue = (UInt32(color.blue) * 31 + 127) / 255
+            let red = Self.quantizedChannel(color.red, maximum: 31)
+            let green = Self.quantizedChannel(color.green, maximum: 63)
+            let blue = Self.quantizedChannel(color.blue, maximum: 31)
             let word = UInt16((red << 11) | (green << 5) | blue)
             byteCount = 2
             byte0 = UInt8(truncatingIfNeeded: word >> 8)
@@ -29,6 +29,17 @@ package struct CanonicalEncodedPixel: Equatable, Sendable {
             byte2 = color.blue
             byte3 = 255
         }
+    }
+
+    private static func quantizedChannel(
+        _ channel: UInt8,
+        maximum: UInt32
+    ) -> UInt32 {
+        let scaled = UInt32(channel).multipliedReportingOverflow(by: maximum)
+        precondition(!scaled.overflow)
+        let rounded = scaled.partialValue.addingReportingOverflow(127)
+        precondition(!rounded.overflow)
+        return rounded.partialValue / 255
     }
 }
 

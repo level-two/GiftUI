@@ -1,2 +1,47 @@
 schema: spec-014-v1
-cases: []
+cases:
+  - fixtureID: spec014-canonical-encoding-boundaries
+    criteria: [BI-007]
+    evidenceClasses: [cross-build, host-execution, inspection]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    descriptor: none
+    effectiveCapability: none
+    header: none
+    operationsResources:
+      colors:
+        - {red: 0, green: 0, blue: 0}
+        - {red: 1, green: 1, blue: 1}
+        - {red: 127, green: 127, blue: 127}
+        - {red: 128, green: 128, blue: 128}
+        - {red: 254, green: 254, blue: 254}
+        - {red: 255, green: 255, blue: 255}
+        - {red: 255, green: 0, blue: 0}
+        - {red: 0, green: 255, blue: 0}
+        - {red: 0, green: 0, blue: 255}
+    injectedEvents: none
+    orderedRegions: none
+    encodedImage:
+      rgba8888:
+        - [0, 0, 0, 255]
+        - [1, 1, 1, 255]
+        - [127, 127, 127, 255]
+        - [128, 128, 128, 255]
+        - [254, 254, 254, 255]
+        - [255, 255, 255, 255]
+        - [255, 0, 0, 255]
+        - [0, 255, 0, 255]
+        - [0, 0, 255, 255]
+      rgb565BigEndian:
+        - [0, 0]
+        - [0, 0]
+        - [123, 239]
+        - [132, 16]
+        - [255, 255]
+        - [255, 255]
+        - [248, 0]
+        - [7, 224]
+        - [0, 31]
+    offerResult: none
+    bodyResult: none
+    health: none
+    highWater: {temporaryBytes: 0, unusedByte2: 0, unusedByte3: 0, alpha: 255}

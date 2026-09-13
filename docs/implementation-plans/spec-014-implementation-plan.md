@@ -342,7 +342,7 @@ borrowed stroke view and completion-seam contract.
 pixels, byte encodings, ordering, clipping, resource use, and bounded counters
 for every operation independently of full-surface or tiled storage.
 
-- [ ] `T4.1` — Implement exact RGBA8888 and big-endian RGB565 encoding with
+- [x] `T4.1` — Implement exact RGBA8888 and big-endian RGB565 encoding with
       widened checked arithmetic, alpha 255, unused bytes zero, and no gamma,
       premultiplication, dithering, color-space conversion, or native-format
       substitution. Cover channel values 0, 1, 127, 128, 254, and 255.
@@ -826,6 +826,15 @@ paths, including exact in-flight cleanup and a pristine writer on the next
 reservation. The acceptance registry now links the transaction cases while
 retaining pending status until the later endpoint and four-profile evidence
 tasks complete their portions.
+
+`T4.1` hardened canonical RGB565 quantization to use explicit widened checked
+multiply-and-round arithmetic and retained the surface value as the single
+encoding authority. RGBA8888 emits red, green, blue, and opaque alpha in that
+order; RGB565 emits the normative most-significant byte first and keeps both
+unused value bytes zero. Focused tests and the first raster corpus case freeze
+all six required channel boundaries plus independent red, green, and blue
+packing, with exact zero-tolerance bytes and no floating-point or ambient
+native-format path.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
