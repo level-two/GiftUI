@@ -11,3 +11,5 @@
 10	module-boundaries	module-boundaries.tsv	1
 11	generated-static-equivalents	generated-static-equivalents.tsv	1
 12	driver-invocations	driver-invocations.tsv	1
+13	prerequisite-registry	prerequisite-registry.tsv	1
+14	downstream-source-truth	downstream-source-truth.tsv	1

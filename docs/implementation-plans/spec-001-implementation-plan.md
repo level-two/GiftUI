@@ -268,7 +268,7 @@ claimed.
       or flashing. When the driver invokes a repository platform build, retain
       the emitted deployable artifacts under `.build/raspberry-pi/` or
       `.build/nrf52840/` and record their paths and digests in the report.
-- [ ] `T0.4` — Record the implementation prerequisites supplied by SPEC-002
+- [x] `T0.4` — Record the implementation prerequisites supplied by SPEC-002
       through SPEC-015 at declaration, focused-owner, profile, backend, and host
       joins. Mark an unavailable prerequisite `missing` rather than copying or
       weakening it inside the analyzer. Add a source-of-truth registry for
@@ -722,8 +722,11 @@ permissions. `T0.2` classified all 26 tracked investigation sources/tests and
 the dynamic package and generated-static dependency equivalents. `T0.3`
 registered the exact four-profile, report-only driver; it records all required
 identities and remains fail-closed until profile implementation commands land.
-Checked criteria in SPEC-001 and the imported package remain baseline evidence
-only until the governed implementation and required profiles reproduce them.
+`T0.4` records each reusable contract's declaration, focused-owner, profile,
+backend, and host-join readiness and pins the reused SPEC-007-through-SPEC-015
+fixture inputs by digest. Checked criteria in SPEC-001 and the imported package
+remain baseline evidence only until the governed implementation and required
+profiles reproduce them.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

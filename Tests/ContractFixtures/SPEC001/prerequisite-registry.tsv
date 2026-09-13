@@ -1,0 +1,16 @@
+# schema_version=1
+# spec	declaration	focused_owner	profile	backend	host	missing_blockers	evidence
+SPEC-002	available	available	available	not-applicable	not-applicable	-	docs/implementation-plans/spec-002-implementation-plan.md
+SPEC-003	available	available	available	not-applicable	missing	SPEC-003:T4.4,SPEC-015	docs/implementation-plans/spec-003-implementation-plan.md
+SPEC-004	available	available	missing	available	missing	SPEC-004:T4.3,T4.4,T6.2;SPEC-015	docs/implementation-plans/spec-004-implementation-plan.md
+SPEC-005	available	available	available	not-applicable	missing	SPEC-005:T4.4;SPEC-015	docs/implementation-plans/spec-005-implementation-plan.md
+SPEC-006	available	available	available	not-applicable	not-applicable	-	docs/implementation-plans/spec-006-implementation-plan.md
+SPEC-007	available	available	available	not-applicable	not-applicable	-	docs/conformance/spec-007-conformance.md
+SPEC-008	available	available	available	not-applicable	not-applicable	-	docs/conformance/spec-008-conformance.md
+SPEC-009	available	available	missing	missing	missing	SPEC-009:T8.2,T8.3;SPEC-013,SPEC-014,SPEC-015	docs/implementation-plans/spec-009-implementation-plan.md
+SPEC-010	available	available	missing	not-applicable	missing	SPEC-010:T8.1,T8.4;SPEC-013,SPEC-015	docs/implementation-plans/spec-010-implementation-plan.md
+SPEC-011	available	available	missing	not-applicable	missing	SPEC-011:T7.1,T7.3,T7.4,T7.5;SPEC-013,SPEC-015	docs/implementation-plans/spec-011-implementation-plan.md
+SPEC-012	available	available	missing	missing	missing	SPEC-012:T6.4,T6.5,T7.1,T9.2;SPEC-013,SPEC-015	docs/implementation-plans/spec-012-implementation-plan.md
+SPEC-013	available	available	missing	not-applicable	missing	SPEC-013:T5.2,T5.4,T5.5,T6.2,T6.5,T6.6,T7.5,T8.2;SPEC-015	docs/implementation-plans/spec-013-implementation-plan.md
+SPEC-014	available	available	available	available	missing	SPEC-015	docs/conformance/spec-014-conformance.md
+SPEC-015	missing	missing	missing	missing	missing	SPEC-015:T1.1,T1.3,T2.1-T7.2	docs/implementation-plans/spec-015-implementation-plan.md
