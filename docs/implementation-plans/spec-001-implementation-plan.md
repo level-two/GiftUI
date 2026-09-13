@@ -412,7 +412,7 @@ occurrences without platform branches or closure actions.
       vertical level changes, right-edge extension, current HIGH/LOW at capture
       duration, and exact SPEC-015 Drawing minima. Compare path/subpath/point/
       stroke transcripts at empty, trim, overflow, edge, and out-of-order cases.
-- [ ] `T4.4` — Compile byte-identical portable Presentation source through
+- [x] `T4.4` — Compile byte-identical portable Presentation source through
       dynamic and static declarations. Audit imports, macro output, semantic
       identities, fixed channel/window occurrences, action closure absence,
       model non-retention, and absence of concrete Data, platform, timing,
@@ -778,6 +778,9 @@ complete four-state by three-window normalized matrix.
 `T4.3` adds three-label ruler formatting, one 12-subpath grid Canvas, four
 streamed digital trace Canvases, exact lower/upper-bound transition handling,
 current-level projection, and the normative `5/5/202/12/832/16` workload.
+`T4.4` freezes the identical dynamic/static portable source set with an import,
+macro, identity, explicit-channel, qualified-action, Canvas-occurrence, and
+forbidden-mechanism audit plus successful compilation under both profile flags.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

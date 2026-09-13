@@ -1,0 +1,13 @@
+# schema_version=1
+# property	dynamic	static
+portable-source-set	identical	identical
+allowed-imports	GiftUI,GiftUIFailureCore,SignalAnalyzerDomain	GiftUI,GiftUIFailureCore,SignalAnalyzerDomain
+observable-state-count	1	1
+explicit-channel-count	4	4
+qualified-action-count	6	6
+canvas-occurrence-count	5	5
+action-closure-count	0	0
+platform-branch-count	0	0
+view-owned-lifecycle-count	0	0
+concrete-data-dependency-count	0	0
+profile-compilation	passed	passed
