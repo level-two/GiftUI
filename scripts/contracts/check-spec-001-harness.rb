@@ -35,6 +35,7 @@ expected_paths = %w[
   prerequisite-registry.tsv downstream-source-truth.tsv
   negative-dependency-fixtures.tsv
   diagnostic-cases.tsv
+  capture-value-cases.tsv
 ]
 abort "fixture registry is not exhaustive" unless manifest.map { |row| row[2] } == expected_paths
 

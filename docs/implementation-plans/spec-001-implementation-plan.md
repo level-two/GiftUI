@@ -298,7 +298,7 @@ prohibited imports or facilities.
       equality, static inline/caller-owned storage, and Presentation's
       byte-identical total `BoundedText` projection. Add the complete boundary,
       malformed, empty, nonempty failure, allocation, and borrow-lifetime corpus.
-- [ ] `T1.2` — Implement exact channels, levels, transitions, fixed standard
+- [x] `T1.2` — Implement exact channels, levels, transitions, fixed standard
       ordering, `SignalChannelLevels`, and profile-equivalent `SignalCapture`
       semantics. Provide dynamic bounded storage and static storage of at least
       2,404 transitions plus four baselines; prove invariants, stable order,
@@ -732,6 +732,9 @@ negative graph/import fixtures; concrete host composition remains in SPEC-015.
 `T1.1` adds the inline 96-byte diagnostic, scalar-boundary exact/truncating
 UTF-8 validation, one-call byte borrowing, and byte-identical `BoundedText`
 projection without adding Foundation to Domain or Presentation.
+`T1.2` adds the exact fixed channels and baselines plus bounded dynamic and
+2,404-entry caller-owned static capture storage with shared invariant validation,
+stable ordering, value equality, retained reconstruction, and checked access.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

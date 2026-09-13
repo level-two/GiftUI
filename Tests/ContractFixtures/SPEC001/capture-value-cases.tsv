@@ -1,0 +1,17 @@
+# schema_version=1
+# id	profile	count	expected
+empty-dynamic	dynamic	0	accepted-all-low
+empty-static	static	0	accepted-all-low
+stable-equal-time-dynamic	dynamic	3	accepted-arrival-order
+stable-equal-time-static	static	3	accepted-arrival-order
+maximum-dynamic	dynamic	2404	accepted
+maximum-static	static	2404	accepted-caller-owned
+first-excess	dynamic	2405	rejected
+invalid-channel	dynamic	1	rejected
+negative-lower-bound	dynamic	1	rejected
+transition-before-lower-bound	dynamic	1	rejected
+transition-after-duration	dynamic	1	rejected
+decreasing-timestamps	dynamic	2	rejected
+checked-first	static	2404	present
+checked-last	static	2404	present
+checked-first-excess	static	2404	nil
