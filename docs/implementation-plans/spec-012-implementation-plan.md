@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-12
+updated: 2026-09-13
 related_design_notes:
   - ../implementation-designs/spec-012-scoped-path-and-plan-storage.md
   - ../implementation-designs/spec-012-static-canvas-lowering.md
@@ -469,10 +469,10 @@ portable or normalized stroke meaning.
       integer oracle for closed segment regions, butt/round caps, round/miter/
       bevel joins, ten-times-half-width miter limit, zero-tangent rules, pixel-
       center inclusion, inherited half-open clipping, and exact replacement.
-- [ ] `T8.3` — Run the complete corpus through SPEC-014's RGBA8888 full-surface
+- [x] `T8.3` — Run the complete corpus through SPEC-014's RGBA8888 full-surface
       and RGB565 bounded tiled consumers. Compare masks and exact RGBA/RGB565
       bytes, including round-to-nearest conversion and big-endian RGB565 order.
-- [ ] `T8.4` — Inject admitted-bound arithmetic extremes, raster workspace
+- [x] `T8.4` — Inject admitted-bound arithmetic extremes, raster workspace
       equality/first-excess, and borrowed-consumption poison cases. Classify an
       admitted-style or representability failure as invariant/configuration
       failure; permit no saturation, tolerance, native-style fallback, or hidden
@@ -1080,3 +1080,15 @@ storage, capture arrays, and any retained closure fallback. The
 [generation rejection evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-generation-rejections.md)
 records every first diagnostic. Focused host tests and the full 431-test suite
 remain green. T6.4-T6.5 production work retains its SPEC-015/SPEC-013 gates.
+
+`T8.3` and `T8.4` are complete through SPEC-014's production consumers. All
+17 independently frozen SPEC-012 vectors pass through both full-surface
+RGBA8888/RGB565 storage and the bounded operation-major tiled RGB565 path with
+zero mask or byte differences. The joined suites also prove exact RGB565
+rounding and byte order, partial final tiles, exact workspace equality and
+first-excess rejection, admitted arithmetic failure without saturation,
+single borrowed-operation consumption, workspace/payload poisoning, and no
+retained Core address or hidden complete-frame tiled storage. The
+[consumer-join evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-8/full-surface-tiled-consumers.md)
+records the owner tests and reproduction commands. Milestone 8 is complete;
+no connected display or hardware claim is made.
