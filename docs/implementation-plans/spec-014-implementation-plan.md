@@ -456,7 +456,7 @@ preserves failure/health/diagnostic ownership.
       one discard/cancel. After transfer, accept every body result, preserve
       producer failure, quiesce when required, drain safely, and retain only
       backend/display-owned bytes and operational state.
-- [ ] `T7.3` — Implement a narrow backend-owner failure adapter that preserves
+- [x] `T7.3` — Implement a narrow backend-owner failure adapter that preserves
       the sticky `RasterBackendError` or `DisplayTargetError` and maps every
       construction, reservation, geometry/resource, writer, raster, display,
       reentrancy, and invariant condition to the exact SPEC-003 condition,
@@ -1066,6 +1066,20 @@ never discarded or cancelled, and the exact producer error remains retained.
 Focused tests cover all four pre-transfer non-complete results, malformed
 complete, every post-transfer result, and exact discard/cancel/finish counts.
 All four profiles compile the endpoint/session state boundary.
+
+`T7.3` is complete. `RasterBackendOwnerFailureAdapter` preserves exactly one
+optional `RasterBackendError` or `DisplayTargetError` beside the normalized
+SPEC-003 fact and requires an explicit construction, pre-body, post-begin, or
+post-acceptance detection point. Construction overflow maps to contained
+Foundation arithmetic; construction capacity maps to contained host
+composition capacity; construction mismatch maps to an unsafe runtime
+invariant. Pre-body envelope/geometry errors map to contained candidate-frame
+invalid values. Every post-begin raster, writer, resource, geometry, capacity,
+or display invariant maps to unsafe backend runtime containment, with exact
+reentrancy preserved. Only accepted transport/display loss maps to contained
+presentation-integration facility unavailability. Tests cover every raster
+and display enum case and exact fact fields. The adapter source imports no
+execution correlation, and lower display/transport modules remain unchanged.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
