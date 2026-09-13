@@ -13,6 +13,7 @@ where
     package let runtimeProfileValidation: RuntimeProfileValidationResult
     package let componentGraph: Graph
     package let textResourceValidation: TextResourceValidationResult
+    package let selectedTextRasterRealization: RasterRealizationID
     package let capabilityRequirement: RasterPresentationRequirement
     package let capabilityContributions: RasterPresentationContributions
     package var capabilityWorkspace: RasterPresentationResolverWorkspace
@@ -27,6 +28,7 @@ where
         runtimeProfileValidation: RuntimeProfileValidationResult,
         componentGraph: consuming Graph,
         textResourceValidation: TextResourceValidationResult,
+        selectedTextRasterRealization: RasterRealizationID,
         capabilityRequirement: RasterPresentationRequirement,
         capabilityContributions: RasterPresentationContributions,
         capabilityWorkspace: RasterPresentationResolverWorkspace,
@@ -39,6 +41,7 @@ where
         self.runtimeProfileValidation = runtimeProfileValidation
         self.componentGraph = consume componentGraph
         self.textResourceValidation = textResourceValidation
+        self.selectedTextRasterRealization = selectedTextRasterRealization
         self.capabilityRequirement = capabilityRequirement
         self.capabilityContributions = capabilityContributions
         self.capabilityWorkspace = capabilityWorkspace
@@ -84,13 +87,14 @@ where
                 error: .capabilityUnavailable(error)
             )
         }
-        guard endpoint.effectivePresentation == effective,
-            endpoint.healthOwnerCount == 1,
-            endpoint.endpointAndDisplayShareHealthOwner
-        else {
+        if let error = HostEndpointStartupValidation.validateInert(
+            endpoint,
+            effectivePresentation: effective,
+            selectedTextRasterRealization: selectedTextRasterRealization
+        ) {
             return .invalid(
                 stage: .endpoint,
-                error: .invalidEndpointDescriptor
+                error: error
             )
         }
         guard actionAndModel.firstActionCode == 0,

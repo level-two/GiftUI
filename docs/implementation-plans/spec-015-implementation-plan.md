@@ -341,7 +341,7 @@ behavior, and emits one immutable report only after complete success.
       resolver access. Keep capability failure independent from Drawing
       structural capacity and preserve SPEC-004's producer-specific failure
       mapping.
-- [ ] `T3.4` — Implement the endpoint stage against the inert SPEC-014 factory
+- [x] `T3.4` — Implement the endpoint stage against the inert SPEC-014 factory
       projection. Require exact effective-value equality, descriptor, writable
       capacity, payload, realization, lifetime/handoff, one in-flight slot,
       byte ceilings, and the single shared health owner. Cover both inert
@@ -738,3 +738,14 @@ that valid Drawing capacity does not repair a failed capability gate. The
 validator's one-shot guard prevents a second resolver entry, and a source
 audit confirms no other host source invokes the resolver. Evidence is in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-3/capability-validation.md`.
+
+T3.4 added a pure inert endpoint validator for every SPEC-014 construction
+relation: effective value, surface extent/region/row/encoding/realization,
+raster and payload limits, writable bytes, submission lifetime and handoff,
+in-flight count and bytes, selected text realization, and one shared health
+owner. The checked validator accepts no live endpoint or callback, so failure
+precedes owner construction. The same helper rejects an already-constructed
+projection unequal to the validated value with
+`.invalidEndpointDescriptor`, preserving SPEC-014's safety-not-proven mapping
+for the later bootstrap adapter. Evidence is in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-3/endpoint-validation.md`.

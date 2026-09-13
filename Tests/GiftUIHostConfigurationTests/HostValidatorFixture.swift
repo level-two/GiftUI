@@ -73,8 +73,12 @@ func makeHostValidatorGraph() -> HostValidatorGraphFixture {
 func makeValidHostValidator(
     runtimeProfileValidation: RuntimeProfileValidationResult? = nil,
     textResourceValidation: TextResourceValidationResult = .valid,
+    selectedTextRasterRealization: RasterRealizationID = RasterRealizationID(
+        rawValue: 1
+    ),
     capabilityContributions: RasterPresentationContributions? = nil,
-    capabilityWorkspace: RasterPresentationResolverWorkspace? = nil
+    capabilityWorkspace: RasterPresentationResolverWorkspace? = nil,
+    endpoint: HostEndpointConfiguration? = nil
 ) -> CheckedMVPHostConfigurationValidator<
     HostValidatorGraphFixture, HostValidatorPolicyFixture
 > {
@@ -88,27 +92,10 @@ func makeValidHostValidator(
         fatalError("generated fixture audit must be valid")
     }
     let capability = makeHostCapabilityFixture(requirement: preset.capabilityRequirement)
-    let descriptor = RasterSurfaceDescriptor(
-        bounds: Rect(
-            origin: Point(x: 0, y: 0),
-            size: Size(width: 480, height: 320)!
-        )!,
-        encoding: .rgb565BigEndian,
-        bytesPerRow: 960,
-        realization: .tiled,
-        regionWidth: 480,
-        regionHeight: 4
-    )!
-    let payload = RasterPayloadLimits(
-        maximumRasterBytes: 3_840,
-        maximumPayloadBytes: 3_840,
-        maximumRegionsPerPayload: 1,
-        maximumRegionSubmissionsPerFrame: 80,
-        maximumTileVisitsPerFrame: 80,
-        maximumInFlightPayloads: 1,
-        maximumGlyphRasterBytes: 3_840,
-        maximumStrokeWorkspaceBytes: 3_840
-    )!
+    let defaultEndpoint = makeHostEndpointFixture(
+        effectivePresentation: capability.effective,
+        textRasterRealization: RasterRealizationID(rawValue: 1)
+    )
 
     return CheckedMVPHostConfigurationValidator(
         structuralConfiguration: HostStructuralConfiguration(
@@ -123,22 +110,11 @@ func makeValidHostValidator(
         runtimeProfileValidation: runtimeProfileValidation ?? validatedAudit,
         componentGraph: makeHostValidatorGraph(),
         textResourceValidation: textResourceValidation,
+        selectedTextRasterRealization: selectedTextRasterRealization,
         capabilityRequirement: preset.capabilityRequirement,
         capabilityContributions: capabilityContributions ?? capability.contributions,
         capabilityWorkspace: capabilityWorkspace ?? RasterPresentationResolverWorkspace()!,
-        endpoint: HostEndpointConfiguration(
-            effectivePresentation: capability.effective,
-            descriptor: descriptor,
-            payloadLimits: payload,
-            surfaceWritableCapacityBytes: 3_840,
-            displaySubmissionLifetime: .synchronousBorrow,
-            displayHandoff: .synchronous,
-            displayMaximumInFlightPayloads: 1,
-            displayMaximumInFlightBytes: 3_840,
-            textRasterRealization: RasterRealizationID(rawValue: 1),
-            healthOwnerCount: 1,
-            endpointAndDisplayShareHealthOwner: true
-        ),
+        endpoint: endpoint ?? defaultEndpoint,
         actionAndModel: HostActionModelConfiguration(
             firstActionCode: 0,
             lastActionCode: 5,
@@ -154,6 +130,62 @@ func makeValidHostValidator(
             wakeRequesterIsNonReentrant: true
         ),
         residualPolicyTable: HostValidatorPolicyFixture()
+    )
+}
+
+func makeHostEndpointFixture(
+    effectivePresentation: EffectiveRasterPresentation? = nil,
+    descriptor: RasterSurfaceDescriptor? = nil,
+    payloadLimits: RasterPayloadLimits? = nil,
+    surfaceWritableCapacityBytes: UInt32 = 3_840,
+    displaySubmissionLifetime: SubmissionLifetime = .synchronousBorrow,
+    displayHandoff: SubmissionHandoff = .synchronous,
+    displayMaximumInFlightPayloads: UInt8 = 1,
+    displayMaximumInFlightBytes: UInt32 = 3_840,
+    textRasterRealization: RasterRealizationID = RasterRealizationID(rawValue: 1),
+    healthOwnerCount: UInt8 = 1,
+    endpointAndDisplayShareHealthOwner: Bool = true
+) -> HostEndpointConfiguration {
+    let preset = GeneratedSignalAnalyzerPresets.nrf52840Static()
+    let effective =
+        effectivePresentation
+        ?? makeHostCapabilityFixture(
+            requirement: preset.capabilityRequirement
+        ).effective
+    let defaultDescriptor = RasterSurfaceDescriptor(
+        bounds: Rect(
+            origin: Point(x: 0, y: 0),
+            size: Size(width: 480, height: 320)!
+        )!,
+        encoding: .rgb565BigEndian,
+        bytesPerRow: 960,
+        realization: .tiled,
+        regionWidth: 480,
+        regionHeight: 4
+    )!
+    let defaultPayload = RasterPayloadLimits(
+        maximumRasterBytes: 3_840,
+        maximumPayloadBytes: 3_840,
+        maximumRegionsPerPayload: 1,
+        maximumRegionSubmissionsPerFrame: 80,
+        maximumTileVisitsPerFrame: 80,
+        maximumInFlightPayloads: 1,
+        maximumGlyphRasterBytes: 3_840,
+        maximumStrokeWorkspaceBytes: 3_840
+    )!
+
+    return HostEndpointConfiguration(
+        effectivePresentation: effective,
+        descriptor: descriptor ?? defaultDescriptor,
+        payloadLimits: payloadLimits ?? defaultPayload,
+        surfaceWritableCapacityBytes: surfaceWritableCapacityBytes,
+        displaySubmissionLifetime: displaySubmissionLifetime,
+        displayHandoff: displayHandoff,
+        displayMaximumInFlightPayloads: displayMaximumInFlightPayloads,
+        displayMaximumInFlightBytes: displayMaximumInFlightBytes,
+        textRasterRealization: textRasterRealization,
+        healthOwnerCount: healthOwnerCount,
+        endpointAndDisplayShareHealthOwner: endpointAndDisplayShareHealthOwner
     )
 }
 
