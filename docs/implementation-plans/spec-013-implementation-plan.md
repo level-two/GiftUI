@@ -815,14 +815,14 @@ Objective-C, task, and thread facilities. Both linked fixtures retain the
 binding path, and the nRF image remains Cortex-M4F hard-float. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-4/static-profile-binding.md`.
 
-T5.1 reached its production-owner entry gate after T3/T4 completion. SPEC-011
-is no longer a blocker, but SPEC-010 T6.1/T6.3's concrete equal-profile
-workspaces and typed zero-heap Static state path remain unimplemented, with
-their own plan also waiting for SPEC-015 assembly inputs. Neither runtime target
-currently conforms to the required Observable, Semantic, or Layout storage
-protocols. T5.1 remains unchecked because a runtime-local duplicate or a
-recording fixture cannot satisfy Milestone 5. Evidence is in
-`Tests/ContractFixtures/SPEC013/Evidence/milestone-5/production-owner-integration-blocker.md`.
+T5.1 reached its production-owner entry gate after T3/T4 completion. The
+SPEC-010 profile-workspace prerequisite is now resolved: Runtime Core owns one
+generic production reconciler/target view, Dynamic supplies bounded array
+slots, and Static supplies one inline typed slot with no heap facility. Their
+normalized materialize/publish/lookup transcripts and first-excess result are
+equal. T5.1 remains unchecked until the same coordinator slice connects
+state-aware semantic expansion and borrowed Layout publication. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-5/production-observable-profile-workspaces.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
