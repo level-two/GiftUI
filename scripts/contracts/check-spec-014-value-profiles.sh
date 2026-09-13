@@ -162,6 +162,7 @@ run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterBackendContributionAdapter.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterFrameWork.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift" \
+    "${PROJECT_ROOT}/Sources/GiftUIRasterCore/FullSurfaceRGB565Framebuffer.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterFillCoverage.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterGlyphCoverage.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIRasterCore/RasterStrokeCoverage.swift" \

@@ -383,7 +383,7 @@ one-payload full-surface rule.
       `RasterSurface`, including exact stride/padding, begin/replace/finish/
       discard grammar, complete-damage validation, and one retained encoded
       surface owned below Core.
-- [ ] `T5.2` — Implement the hardware-free full-surface/framebuffer RGB565
+- [x] `T5.2` — Implement the hardware-free full-surface/framebuffer RGB565
       adapter with the same surface contract and explicit mapped-surface plus
       workspace accounting. It must not open a device, deploy, or claim a
       connected framebuffer/PiScreen result.
@@ -923,6 +923,16 @@ while post-transfer validation enters a non-writing drain and still permits
 the one-shot stream to finish. Tests prove odd-stride padding preservation,
 exact bytes, insufficient/wrong-encoding construction rejection, partial
 damage, duplicate/idle lifecycle calls, and irreversible drain state.
+
+`T5.2` is complete. Raster Core now supplies the matching hardware-free
+full-surface RGB565 framebuffer adapter over caller-owned mapped storage. It
+writes canonical most-significant byte first pixels, preserves odd-stride row
+padding, and reports mapped-surface bytes, separate workspace bytes, and their
+checked sum. Construction rejects the wrong encoding, first-byte-short storage,
+and accounting overflow. The adapter shares the exact begin/replace/finish/
+discard and post-transfer drain grammar with T5.1. Tests open no device, map no
+OS framebuffer, deploy nothing, and make no PiScreen or connected-hardware
+claim.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
