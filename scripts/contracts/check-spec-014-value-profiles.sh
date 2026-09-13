@@ -179,6 +179,7 @@ run_command "${compiler}" "${module_flags[@]}" -I "${module_dir}" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/FullSurfacePayloadEmitter.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift" \
+    "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RasterBackendStartupValidator.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RasterFrameWorkAdmission.swift" \
     "${PROJECT_ROOT}/Sources/GiftUIBackendIntegration/RasterTextResourceValidation.swift" \

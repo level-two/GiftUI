@@ -34,11 +34,13 @@ func rasterWorkTrackerAdmitsEqualityAndRecordsEveryHighWater() {
     let pixels = tracker.recordPixelVisits(4)
     let firstPayload = tracker.recordPayload(bytes: 8, regions: 2)
     let secondPayload = tracker.recordPayload(bytes: 4, regions: 2)
+    let inFlight = tracker.recordInFlight(payloads: 1, bytes: 8)
     #expect(raster && glyph && stroke && tiles && pixels)
-    #expect(firstPayload && secondPayload)
+    #expect(firstPayload && secondPayload && inFlight)
     #expect(tracker.failure == nil)
     #expect(tracker.highWater.rasterBytes == 10)
     #expect(tracker.highWater.payloadBytes == 8)
+    #expect(tracker.highWater.inFlightBytes == 8)
     #expect(tracker.highWater.payloads == 2)
     #expect(tracker.highWater.regionSubmissions == 4)
     #expect(tracker.highWater.tileVisits == 3)
@@ -56,6 +58,8 @@ func rasterWorkTrackerRejectsFirstExcessInEveryIndependentDomain() {
     assertCapacityFailure { $0.recordPixelVisits(5) }
     assertCapacityFailure { $0.recordPayload(bytes: 9, regions: 1) }
     assertCapacityFailure { $0.recordPayload(bytes: 1, regions: 3) }
+    assertCapacityFailure { $0.recordInFlight(payloads: 2, bytes: 8) }
+    assertCapacityFailure { $0.recordInFlight(payloads: 1, bytes: 9) }
 
     var regions = RasterWorkTracker(limits: trackerLimits())
     let first = regions.recordPayload(bytes: 1, regions: 2)

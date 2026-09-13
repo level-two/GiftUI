@@ -6,7 +6,7 @@ import Testing
 
 @testable import GiftUIBackendIntegration
 
-private struct TileStorage: RGB565TileStorage {
+struct TileStorage: RGB565TileStorage {
     private(set) var bytes: [UInt8]
     private(set) var affected: [Bool]
     private(set) var resetCount = 0
@@ -73,7 +73,7 @@ private let tileDescriptor = RasterSurfaceDescriptor(
     regionHeight: 2
 )!
 
-private func makeTileWorkspace(
+func makeTileWorkspace(
     byteCount: Int = 32,
     pixelCount: Int = 16
 ) -> RGB565TileWorkspace<TileStorage>? {

@@ -17,7 +17,7 @@ package enum OperationMajorTileTraversal {
         damageBounds: Rect,
         workspace: inout RGB565TileWorkspace<Storage>,
         _ rasterize: (Rect, (Point, CanonicalEncodedPixel) -> Bool) -> Bool,
-        _ consume: (borrowing RGB565TileWorkspace<Storage>) -> Bool
+        _ consume: (inout RGB565TileWorkspace<Storage>) -> Bool
     ) -> OperationMajorTileTraversalResult where Storage: RGB565TileStorage {
         let descriptor = workspace.descriptor
         guard contains(descriptor.bounds, damageBounds) else {
@@ -66,7 +66,7 @@ package enum OperationMajorTileTraversal {
                 _ = workspace.finishTile()
                 return .rasterFailure
             }
-            guard consume(workspace) else {
+            guard consume(&workspace) else {
                 _ = workspace.finishTile()
                 return .consumeFailure
             }

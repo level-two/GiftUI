@@ -412,7 +412,7 @@ address or complete frame buffer/list.
       tile in order and complete all owned derivation/submission before the
       borrowed call returns; never invoke the producer per tile or revisit a
       prior operation.
-- [ ] `T6.2` — Implement ordered left-to-right horizontal run formation,
+- [x] `T6.2` — Implement ordered left-to-right horizontal run formation,
       longest-convenient coalescing, deterministic payload zeroing, and flush
       before the next run would exceed byte or region capacity. Bound payloads,
       region records, tile visits, region submissions, and in-flight bytes
@@ -969,6 +969,19 @@ operation call, exact tile/reset/consumer counts, partial and empty cases,
 capacity and grammar rejection, canonical bytes, and cleanup. The sources
 compile in all four registered profiles. Run formation and payload submission
 remain assigned to T6.2.
+
+`T6.2` is complete. Backend Integration now scans each active tile row-major,
+forms maximal contiguous affected-pixel runs, and copies canonical big-endian
+RGB565 bytes directly from the caller-owned tile workspace into the reserved
+display writer. A checked cursor resumes after each synchronous submission;
+the emitter flushes before a run would exceed either byte or region capacity
+and rejects a single run that cannot fit the admitted slot. It creates no run
+list or side payload buffer. Raster, payload, in-flight byte, tile, payload,
+and region high-water values are checked independently through the shared
+tracker. Tests prove exact run origins, pixel counts, bytes, maximal
+coalescing, deterministic writer clearing, empty tiles, oversized-run failure,
+and output invariance under two byte segmentations. T6.3 retains the full
+operation-corpus equivalence obligation.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

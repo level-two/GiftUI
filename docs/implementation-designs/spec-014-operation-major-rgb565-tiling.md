@@ -150,6 +150,11 @@ with focused coverage in
 [`OperationMajorTileTraversalTests.swift`](../../Tests/GiftUIBackendIntegrationTests/OperationMajorTileTraversalTests.swift)
 and frozen evidence in
 [`operation-major-tile-workspace.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/operation-major-tile-workspace.md).
-Later T6.2-T6.6 links will be added with those tasks. Full-surface comparison
+T6.2 adds
+[`RGB565TilePayloadEmitter.swift`](../../Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift),
+[`RGB565TilePayloadEmitterTests.swift`](../../Tests/GiftUIBackendIntegrationTests/RGB565TilePayloadEmitterTests.swift),
+and
+[`tile-run-payloads.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/tile-run-payloads.md).
+Later T6.3-T6.6 links will be added with those tasks. Full-surface comparison
 evidence is in
 [`full-surface-comparison.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-5/full-surface-comparison.md).

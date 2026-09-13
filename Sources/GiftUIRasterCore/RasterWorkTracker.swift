@@ -1,6 +1,7 @@
 package struct RasterWorkHighWater: Equatable, Sendable {
     package fileprivate(set) var rasterBytes: UInt32 = 0
     package fileprivate(set) var payloadBytes: UInt32 = 0
+    package fileprivate(set) var inFlightBytes: UInt32 = 0
     package fileprivate(set) var payloads: UInt32 = 0
     package fileprivate(set) var regionSubmissions: UInt32 = 0
     package fileprivate(set) var tileVisits: UInt32 = 0
@@ -95,6 +96,17 @@ package struct RasterWorkTracker {
         guard limits.admitsRegionSubmissions(payloads),
             limits.admitsRegionSubmissions(submittedRegions)
         else {
+            return fault(.capacityExhausted)
+        }
+        return canContinue
+    }
+
+    package mutating func recordInFlight(
+        payloads: UInt8,
+        bytes: UInt32
+    ) -> Bool {
+        highWater.inFlightBytes = max(highWater.inFlightBytes, bytes)
+        guard limits.admitsInFlight(payloads: payloads, bytes: bytes) else {
             return fault(.capacityExhausted)
         }
         return canContinue
