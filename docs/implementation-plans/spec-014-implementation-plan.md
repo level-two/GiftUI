@@ -379,7 +379,7 @@ full-surface capacities and maximum damaged-row region count are admitted.
 produce the same logical affected image and exact selected bytes through the
 one-payload full-surface rule.
 
-- [ ] `T5.1` — Implement a bounded full-surface RGBA8888 buffer conforming to
+- [x] `T5.1` — Implement a bounded full-surface RGBA8888 buffer conforming to
       `RasterSurface`, including exact stride/padding, begin/replace/finish/
       discard grammar, complete-damage validation, and one retained encoded
       surface owned below Core.
@@ -912,6 +912,17 @@ and glyph cases. Focused evidence covers damage, clipping, negative geometry,
 partial/empty intersections, painter overwrite, exact RGB565 bytes, padding,
 and zero replacement on overflow. Milestone 4 is complete; BI-007/BI-009 stay
 pending for concrete realization comparisons.
+
+`T5.1` is complete. Raster Core now supplies a generic bounded full-surface
+RGBA8888 `RasterSurface` over caller-owned byte storage. Construction checks
+the full-surface descriptor, exact encoding, stride-derived byte requirement,
+and storage capacity. Frame begin validates the complete declared damage;
+pixel replacement checks active grammar, surface/damage membership, encoding,
+checked row offset, and storage refusal. Finish/discard reset attempt state,
+while post-transfer validation enters a non-writing drain and still permits
+the one-shot stream to finish. Tests prove odd-stride padding preservation,
+exact bytes, insufficient/wrong-encoding construction rejection, partial
+damage, duplicate/idle lifecycle calls, and irreversible drain state.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
