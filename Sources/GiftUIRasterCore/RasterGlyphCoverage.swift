@@ -12,6 +12,14 @@ package enum RasterGlyphResult: Equatable, Sendable {
     case replacementRefused
 }
 
+package enum RasterGlyphPayloadAccessResult<Result> {
+    case payload(Result)
+    case empty
+    case incompatibleResource
+    case invalidGeometry
+    case arithmeticOverflow
+}
+
 package enum RasterGlyphCoverage {
     package static func rasterize<
         Metrics: CanonicalTextMetricsView,
@@ -26,6 +34,52 @@ package enum RasterGlyphCoverage {
         damageBounds: Rect,
         _ replace: (Point, CanonicalEncodedPixel) -> Bool
     ) -> RasterGlyphResult {
+        let access = withValidatedPayload(
+            glyph,
+            operation: operation,
+            metrics: metrics,
+            raster: raster,
+            realization: realization,
+            descriptor: descriptor,
+            damageBounds: damageBounds
+        ) { inkBounds, record, bytes in
+            rasterizeValidatedPayload(
+                inkBounds: inkBounds,
+                record: record,
+                bytes: bytes,
+                operation: operation,
+                descriptor: descriptor,
+                damageBounds: damageBounds,
+                replace
+            )
+        }
+        switch access {
+        case .payload(let result): return result
+        case .empty: return .completed(pixelCount: 0, payloadBytes: 0)
+        case .incompatibleResource: return .incompatibleResource
+        case .invalidGeometry: return .invalidGeometry
+        case .arithmeticOverflow: return .arithmeticOverflow
+        }
+    }
+
+    package static func withValidatedPayload<
+        Result,
+        Metrics: CanonicalTextMetricsView,
+        Raster: TextRasterResourceView
+    >(
+        _ glyph: PositionedGlyph,
+        operation: PositionedGlyphOperationHeader,
+        metrics: borrowing Metrics,
+        raster: borrowing Raster,
+        realization: RasterRealizationDescriptor,
+        descriptor: RasterSurfaceDescriptor,
+        damageBounds: Rect,
+        _ body: (
+            Rect,
+            GlyphRasterRecord,
+            UnsafeRawBufferPointer
+        ) -> Result
+    ) -> RasterGlyphPayloadAccessResult<Result> {
         guard operation.instance == realization.instance,
             metrics.descriptor == raster.descriptor,
             metrics.descriptor.resource == operation.instance.resource,
@@ -79,6 +133,43 @@ package enum RasterGlyphCoverage {
         else {
             return .invalidGeometry
         }
+        guard contains(descriptor.bounds, damageBounds) else { return .invalidGeometry }
+        guard
+            let covered = RasterFillCoverage.intersection(
+                inkBounds,
+                operation.clip,
+                damageBounds,
+                descriptor.bounds
+            )
+        else { return .arithmeticOverflow }
+        guard covered.size.width > 0, covered.size.height > 0 else {
+            return .empty
+        }
+
+        let result: RasterGlyphPayloadAccessResult<Result>? = raster.withPayload(
+            for: record,
+            realization: realization.id
+        ) { bytes in
+            guard bytes.count == Int(record.byteCount) else {
+                return .incompatibleResource
+            }
+            return .payload(body(inkBounds, record, bytes))
+        }
+        return result ?? .incompatibleResource
+    }
+
+    package static func rasterizeValidatedPayload(
+        inkBounds: Rect,
+        record: GlyphRasterRecord,
+        bytes: UnsafeRawBufferPointer,
+        operation: PositionedGlyphOperationHeader,
+        descriptor: RasterSurfaceDescriptor,
+        damageBounds: Rect,
+        _ replace: (Point, CanonicalEncodedPixel) -> Bool
+    ) -> RasterGlyphResult {
+        guard bytes.count == Int(record.byteCount) else {
+            return .incompatibleResource
+        }
         guard contains(descriptor.bounds, damageBounds) else {
             return .invalidGeometry
         }
@@ -89,31 +180,19 @@ package enum RasterGlyphCoverage {
                 damageBounds,
                 descriptor.bounds
             )
-        else {
-            return .arithmeticOverflow
-        }
+        else { return .arithmeticOverflow }
         guard covered.size.width > 0, covered.size.height > 0 else {
             return .completed(pixelCount: 0, payloadBytes: 0)
         }
-
-        let result: RasterGlyphResult? = raster.withPayload(
-            for: record,
-            realization: realization.id
-        ) { bytes in
-            guard bytes.count == Int(record.byteCount) else {
-                return .incompatibleResource
-            }
-            return replaceCoveredBitmap(
-                covered,
-                inkOrigin: inkBounds.origin,
-                record: record,
-                bytes: bytes,
-                color: operation.color,
-                encoding: descriptor.encoding,
-                replace
-            )
-        }
-        return result ?? .incompatibleResource
+        return replaceCoveredBitmap(
+            covered,
+            inkOrigin: inkBounds.origin,
+            record: record,
+            bytes: bytes,
+            color: operation.color,
+            encoding: descriptor.encoding,
+            replace
+        )
     }
 
     private static func replaceCoveredBitmap(

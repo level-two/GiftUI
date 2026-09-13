@@ -322,6 +322,106 @@ func tileEmitterSkipsEmptyWorkspaceAndRejectsOversizedRun() {
     #expect(shortTarget.writer.storage.allSatisfy { $0 == 0 })
 }
 
+@Test
+func oneShotProducerAndBorrowedOperationLeaveOnlyOwnedPayloadBytes() {
+    let fill = FillRectOperation(
+        bounds: tileBounds,
+        clip: tileBounds,
+        color: .red
+    )
+    var workspace = makeTileWorkspace()!
+    var target = TileTarget(capacityBytes: 16, regionCapacity: 2)
+    var work = RasterWorkTracker(
+        limits: RasterPayloadLimits(
+            maximumRasterBytes: 32,
+            maximumPayloadBytes: 16,
+            maximumRegionsPerPayload: 2,
+            maximumRegionSubmissionsPerFrame: 5,
+            maximumTileVisitsPerFrame: 3,
+            maximumInFlightPayloads: 1,
+            maximumGlyphRasterBytes: 1,
+            maximumStrokeWorkspaceBytes: 1
+        )!
+    )
+    var producerCalls = 0
+    var operationCalls = 0
+    var rasterCalls = 0
+    var consumerCalls = 0
+    var workspaceAddresses: [UInt] = []
+
+    let producer: (((FillRectOperation) -> Bool) -> Bool) = { sink in
+        producerCalls += 1
+        return sink(fill)
+    }
+    let produced = producer { borrowedFill in
+        operationCalls += 1
+        let traversal = OperationMajorTileTraversal.visit(
+            operationClip: borrowedFill.clip,
+            damageBounds: tileBounds,
+            workspace: &workspace,
+            { damage, replace in
+                rasterCalls += 1
+                if case .completed = RasterFillCoverage.rasterize(
+                    borrowedFill,
+                    descriptor: tileDescriptor,
+                    damageBounds: damage,
+                    replace
+                ) {
+                    return true
+                }
+                return false
+            },
+            { tile in
+                consumerCalls += 1
+                let result = RGB565TilePayloadEmitter.submit(
+                    &tile,
+                    reservation: DisplayReservationID(rawValue: 11),
+                    target: &target,
+                    work: &work
+                )
+                withUnsafePointer(to: &tile) {
+                    workspaceAddresses.append(UInt(bitPattern: $0))
+                }
+                let poison = CanonicalEncodedPixel(
+                    color: .green,
+                    encoding: .rgb565BigEndian
+                )
+                let activeTile = tile.activeTile!
+                for y in activeTile.minY ..< activeTile.maxY {
+                    for x in activeTile.minX ..< activeTile.maxX {
+                        precondition(
+                            tile.replacePixel(
+                                at: Point(x: x, y: y),
+                                with: poison
+                            )
+                        )
+                    }
+                }
+                if case .completed = result { return true }
+                return false
+            }
+        )
+        return traversal == .completed(tileVisits: 3)
+    }
+
+    #expect(produced)
+    #expect(producerCalls == 1)
+    #expect(operationCalls == 1)
+    #expect(rasterCalls == 3)
+    #expect(consumerCalls == 3)
+    #expect(Set(workspaceAddresses).count == 1)
+    #expect(target.payloads.count == 5)
+    #expect(
+        target.payloads.flatMap(\.bytes).allSatisfy { byte in
+            byte == 0xF8 || byte == 0
+        })
+    #expect(
+        workspace.storage.bytes.enumerated().allSatisfy { index, byte in
+            index.isMultiple(of: 2) ? byte == 0x07 : byte == 0xE0
+        }
+    )
+}
+
 private struct ParsedStrokeOperation {
     let symbol: Character
     let color: Color
@@ -733,8 +833,9 @@ private let tiledGlyphRealization = RasterRealizationDescriptor(
     payloadDigest: tiledGlyphDigest
 )
 
-private struct TiledGlyphMetrics: CanonicalTextMetricsView {
+private final class TiledGlyphMetrics: CanonicalTextMetricsView {
     let descriptor = tiledGlyphDescriptor
+    private(set) var metricsCalls = 0
 
     func instance(at index: UInt16) -> FontInstanceDescriptor? { nil }
     func mapping(
@@ -749,6 +850,7 @@ private struct TiledGlyphMetrics: CanonicalTextMetricsView {
         for glyph: GlyphID,
         in instance: FontInstanceID
     ) -> GlyphMetrics? {
+        metricsCalls += 1
         guard glyph == tiledGlyphRecord.glyph,
             instance == tiledGlyphInstance
         else { return nil }
@@ -761,8 +863,11 @@ private struct TiledGlyphMetrics: CanonicalTextMetricsView {
     }
 }
 
-private struct TiledGlyphRaster: TextRasterResourceView {
+private final class TiledGlyphRaster: TextRasterResourceView {
     let descriptor = tiledGlyphDescriptor
+    private(set) var recordCalls = 0
+    private(set) var payloadCalls = 0
+    private(set) var payload: [UInt8] = [0xA0, 0x40, 0xE0]
 
     func realization(at index: UInt16) -> RasterRealizationDescriptor? {
         index == 0 ? tiledGlyphRealization : nil
@@ -771,7 +876,8 @@ private struct TiledGlyphRaster: TextRasterResourceView {
         for glyph: GlyphID,
         realization: RasterRealizationID
     ) -> GlyphRasterRecord? {
-        glyph == tiledGlyphRecord.glyph && realization.rawValue == 0
+        recordCalls += 1
+        return glyph == tiledGlyphRecord.glyph && realization.rawValue == 0
             ? tiledGlyphRecord : nil
     }
     func isPayloadAvailable(for realization: RasterRealizationID) -> Bool {
@@ -785,8 +891,10 @@ private struct TiledGlyphRaster: TextRasterResourceView {
         guard record == tiledGlyphRecord, realization.rawValue == 0 else {
             return nil
         }
-        let bytes: [UInt8] = [0xA0, 0x40, 0xE0]
-        return try bytes.withUnsafeBytes(body)
+        payloadCalls += 1
+        let result = try payload.withUnsafeBytes(body)
+        payload = [0, 0, 0]
+        return result
     }
 }
 
@@ -902,39 +1010,59 @@ func tiledFillAndExactGlyphMatchFullSurfaceWithPainterOverwrite() {
             return false
         }
     )
-    let glyphTraversal = OperationMajorTileTraversal.visit(
-        operationClip: glyphOperation.clip,
-        damageBounds: bounds,
-        workspace: &workspace,
-        { damage, replace in
-            if case .completed = RasterGlyphCoverage.rasterize(
-                glyph,
-                operation: glyphOperation,
-                metrics: TiledGlyphMetrics(),
-                raster: TiledGlyphRaster(),
-                realization: tiledGlyphRealization,
-                descriptor: tiledDescriptor,
-                damageBounds: damage,
-                replace
-            ) {
-                return true
+    let tiledMetrics = TiledGlyphMetrics()
+    let tiledRaster = TiledGlyphRaster()
+    let glyphAccess = RasterGlyphCoverage.withValidatedPayload(
+        glyph,
+        operation: glyphOperation,
+        metrics: tiledMetrics,
+        raster: tiledRaster,
+        realization: tiledGlyphRealization,
+        descriptor: tiledDescriptor,
+        damageBounds: bounds
+    ) { inkBounds, record, bytes in
+        OperationMajorTileTraversal.visit(
+            operationClip: glyphOperation.clip,
+            damageBounds: bounds,
+            workspace: &workspace,
+            { damage, replace in
+                if case .completed = RasterGlyphCoverage.rasterizeValidatedPayload(
+                    inkBounds: inkBounds,
+                    record: record,
+                    bytes: bytes,
+                    operation: glyphOperation,
+                    descriptor: tiledDescriptor,
+                    damageBounds: damage,
+                    replace
+                ) {
+                    return true
+                }
+                return false
+            },
+            { tile in
+                if case .completed = RGB565TilePayloadEmitter.submit(
+                    &tile,
+                    reservation: DisplayReservationID(rawValue: 11),
+                    target: &target,
+                    work: &work
+                ) {
+                    return true
+                }
+                return false
             }
-            return false
-        },
-        { tile in
-            if case .completed = RGB565TilePayloadEmitter.submit(
-                &tile,
-                reservation: DisplayReservationID(rawValue: 11),
-                target: &target,
-                work: &work
-            ) {
-                return true
-            }
-            return false
-        }
-    )
+        )
+    }
+    let glyphTraversal: OperationMajorTileTraversalResult
+    switch glyphAccess {
+    case .payload(let result): glyphTraversal = result
+    default: glyphTraversal = .rasterFailure
+    }
     #expect(fillTraversal == .completed(tileVisits: 3))
     #expect(glyphTraversal == .completed(tileVisits: 2))
+    #expect(tiledMetrics.metricsCalls == 1)
+    #expect(tiledRaster.recordCalls == 1)
+    #expect(tiledRaster.payloadCalls == 1)
+    #expect(tiledRaster.payload == [0, 0, 0])
 
     var tiledBytes = [UInt8](repeating: 0xA5, count: 80)
     apply(target.payloads, rowBytes: 16, to: &tiledBytes)

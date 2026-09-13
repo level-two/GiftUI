@@ -421,7 +421,7 @@ address or complete frame buffer/list.
       across tile/region boundaries, partial final tiles, empty intersections,
       clips, damage, and later-operation overwrites. Prove logical output and
       byte encoding match the full-surface oracle regardless of segmentation.
-- [ ] `T6.4` — Add producer/operation/resource call counts, borrow poisoning,
+- [x] `T6.4` — Add producer/operation/resource call counts, borrow poisoning,
       workspace poisoning, and post-call/post-offer address capture. Reject
       retained operations, glyph/stroke views, producer closure or sink borrow,
       replay, dynamic display lists, and hidden full-frame storage.
@@ -994,6 +994,21 @@ later-operation painter overwrite. A second zero-tolerance comparison runs a
 cross-tile fill followed by an exact borrowed glyph bitmap through both tiled
 and full-surface RGB565 realizations and requires byte-for-byte equality.
 Segmentation-specific tests from T6.2 cover varied slot capacities.
+
+`T6.4` is complete. The shared glyph raster seam now validates metrics,
+identity, record, geometry, and payload once, then permits all tiled coverage
+to execute synchronously inside that single payload borrow; existing
+full-surface behavior and empty-clip no-borrow behavior remain unchanged. The
+tiled comparison records exactly one metrics lookup, one raster-record lookup,
+and one payload borrow for a glyph crossing two tiles, then poisons the payload
+before return without changing owned display bytes. A one-shot harness records
+one producer call, one borrowed operation call, three ordered raster/consumer
+calls, one stable workspace address, and payload independence after immediate
+workspace overwrite. The registered storage audit rejects pointer/reference
+containers, producer storage, and class-owned workspace declarations in all
+three tiled production sources. Nonescaping closure and inout borrow types
+prevent producer, sink, operation, glyph payload, and workspace borrows from
+being stored. All four profiles compile the ownership seams.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

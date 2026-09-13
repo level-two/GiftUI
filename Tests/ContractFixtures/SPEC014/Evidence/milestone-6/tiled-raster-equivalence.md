@@ -12,7 +12,8 @@ the exact RGB565 palette and zero-tolerance masks in the fixture.
 A separate mixed-operation comparison runs a cross-tile fill and a three-row
 exact monochrome glyph bitmap with painter overwrite through tiled and
 full-surface RGB565 realizations. Their complete logical byte images must be
-identical. Together the cases cover partial final tiles, empty intersections,
+identical. The tiled glyph validates its metrics and record once and keeps the
+single payload borrow active across both tiles. Together the cases cover partial final tiles, empty intersections,
 clips, negative translated coordinates, tile and region boundaries, canonical
 RGB rounding, and later-operation replacement.
 

@@ -57,14 +57,15 @@ struct TileStorage: RGB565TileStorage {
         guard Int(offset) < bytes.count else { return nil }
         return bytes[Int(offset)]
     }
+
 }
 
-private let tileBounds = Rect(
+let tileBounds = Rect(
     origin: Point(x: 0, y: 0),
     size: Size(width: 8, height: 5)!
 )!
 
-private let tileDescriptor = RasterSurfaceDescriptor(
+let tileDescriptor = RasterSurfaceDescriptor(
     bounds: tileBounds,
     encoding: .rgb565BigEndian,
     bytesPerRow: 16,

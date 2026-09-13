@@ -71,6 +71,12 @@ PROTOCOLS = {
   "RasterBackendEndpoint" => "Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift",
 }.freeze
 
+TILED_SOURCE_PATHS = %w[
+  Sources/GiftUIRasterCore/RGB565TileWorkspace.swift
+  Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift
+  Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift
+].freeze
+
 FORBIDDEN_FIELD_TYPES = /\b(?:AnyObject|Unsafe[A-Za-z0-9_]*Pointer|Array|ContiguousArray|Dictionary|Set|String)\b|\bany\s+|\[[^\]]*\]|->/
 
 def fail_check(message)
@@ -113,4 +119,12 @@ PROTOCOLS.each do |name, path|
   fail_check("missing protocol #{name}") unless source.match?(/package\s+protocol\s+#{Regexp.escape(name)}\b/)
 end
 
-puts "SPEC-014 storage check passed: #{DECLARATIONS.length} values and #{PROTOCOLS.length} protocols audited."
+forbidden_tiled_storage = /\b(?:AnyObject|Array|ContiguousArray|Dictionary|Set|Unsafe[A-Za-z0-9_]*Pointer)\b/
+TILED_SOURCE_PATHS.each do |path|
+  source = ROOT.join(path).read
+  fail_check("#{path} contains ownership-bearing or pointer storage") if source.match?(forbidden_tiled_storage)
+  fail_check("#{path} stores or names a producer") if source.match?(/\bproducer\b/i)
+  fail_check("#{path} declares a reference-owned workspace") if source.match?(/^\s*(?:package\s+)?(?:final\s+)?class\s+/)
+end
+
+puts "SPEC-014 storage check passed: #{DECLARATIONS.length} values, #{PROTOCOLS.length} protocols, and #{TILED_SOURCE_PATHS.length} tiled sources audited."
