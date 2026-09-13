@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-12
-updated: 2026-09-12
+updated: 2026-09-13
 implementation_plan: ../implementation-plans/spec-013-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -23,12 +23,12 @@ superseded_by: null
 
 ## Purpose and Boundary
 
-This note explains the shared Runtime Core mechanism for SPEC-013 T2.1-T2.5:
-construction, serialized opportunity ownership, ordered attempt stages,
-mandatory cleanup, retained execution correlation, and synchronous
-quiescence. Dynamic and static storage representations, Canvas generation,
-backend realization, host policy, and production capacities remain outside
-this note.
+This note explains the shared Runtime Core mechanism for SPEC-013 T2.1-T2.5
+and T5.1-T5.5: construction, serialized opportunity ownership, the complete
+focused-owner pipeline, mandatory cleanup, retained execution correlation,
+publication/offer disposition, and synchronous quiescence. Dynamic and static
+storage representations, Canvas generation, backend realization, host policy,
+and production capacities remain outside this note.
 
 ## Governing Contract
 
@@ -41,7 +41,8 @@ publication, ADR-012's constant-space refusal intent, ADR-014's bounded outcome
 meaning, ADR-015's ordered disposition ownership, and ADR-016's
 non-authoritative diagnostics.
 
-The active implementation plan orders the realization through T2.1-T2.5.
+The active implementation plan orders the realization through T2.1-T2.5 and
+the production-owner join through T5.1-T5.5.
 
 ## Current-Code Context
 
@@ -68,6 +69,14 @@ mechanism at each contract boundary. Dynamic and static coordinators therefore
 share transitions and cleanup decisions while keeping storage layout in their
 own modules.
 
+The complete pipeline is a package-scoped, profile-neutral protocol with one
+method per normative fallible boundary. Those methods borrow the focused
+production owners; the common runner alone owns stage order, first-failure
+selection, publication-boundary disposition, cleanup selection, accepted-only
+Interaction commit, and exactly-once finalization. Both profile bindings reject
+the runner outside an active attempt and otherwise delegate to this same
+implementation.
+
 ## Data and Control Flow
 
 Construction accepts only a successful immutable storage audit. The lifecycle
@@ -89,6 +98,15 @@ Quiescence first makes admission unavailable. Idle quiescence performs
 teardown immediately. Active quiescence records a finite request; the active
 attempt performs mandatory containment/finalization and then the same teardown
 without beginning another stage or opportunity.
+
+The production runner uses the exact ordered boundaries: admission/seal,
+admitted mutation, Observable mutation freeze, Observable candidate plus
+Semantic expansion, Layout, Canvas invocation/plan, combined render preflight,
+Interaction candidate, atomic Semantic/Observable publication, candidate
+allocation, and one-shot offer/production. Publication is the irreversible
+boundary: earlier failure makes applied mutation dirty, while later refusal or
+failure preserves the published revision and only retains or clears bounded
+presentation intent according to the result.
 
 ## Algorithms and Data Structures
 
@@ -191,6 +209,16 @@ owned by later profile-specific tasks and notes.
   `Tests/GiftUIRuntimeCoreTests/RuntimeCoordinatorQuiescenceTests.swift`
 - T2.5 evidence:
   `Tests/ContractFixtures/SPEC013/Evidence/milestone-2/quiescence.md`
+- T5.1-T5.5 complete pipeline:
+  `Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift`
+- T5.1-T5.5 focused tests:
+  `Tests/GiftUIRuntimeCoreTests/RuntimeCompletePipelineTests.swift`
+- T5.1-T5.5 profile entry points:
+  `Sources/GiftUIRuntimeDynamic/DynamicRuntimeProfileBinding.swift` and
+  `Sources/GiftUIRuntimeStatic/StaticRuntimeProfileBinding.swift`
+- T5.1-T5.5 evidence:
+  `Tests/ContractFixtures/SPEC013/Evidence/milestone-5/complete-production-pipeline.md`
 
-Milestone 2 is implemented through these linked common mechanisms and oracles.
-The authoritative behavior remains SPEC-013 and its accepted ADRs.
+Milestones 2 and 5 are implemented through these linked common mechanisms,
+production owner boundaries, and oracles. The authoritative behavior remains
+SPEC-013 and its accepted ADRs.

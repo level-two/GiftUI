@@ -119,6 +119,16 @@ where
         return error
     }
 
+    package mutating func runActivePipeline<Owner>(
+        owner: inout Owner
+    ) -> RuntimeCompletePipelineResult
+    where Owner: RuntimeCompletePipelineOwner & ~Copyable {
+        guard storage.storageLifetimeState == .attemptActive else {
+            return RuntimeCompletePipeline.rejectInactive(owner: &owner)
+        }
+        return RuntimeCompletePipeline.run(owner: &owner)
+    }
+
     package mutating func quiesce() {
         lifecycle.requestQuiescence()
         storage.quiesce()

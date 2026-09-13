@@ -443,7 +443,7 @@ the exact SPEC-003 fact and SPEC-009 lifecycle effect.
       mapping table for every `DrawingError`, `DrawingProductionError`, idle sink
       refusal, and invariant. Preserve origin, scope, containment, first visible
       failure, and the rule that no later check invokes client code.
-- [ ] `T7.4` — Integrate focused drawing results with publication, candidate
+- [x] `T7.4` — Integrate focused drawing results with publication, candidate
       allocation, one-shot offer, refusal, dirty rederivation, and finalization.
       Verify pre-publication versus post-publication dispositions and that no
       accepted, refused, or failed attempt retains plan/callable state.
@@ -1103,4 +1103,11 @@ derivation errors plus idle refusal and combined-stream invariant outcomes to
 their exact SPEC-003 facts. Focused zero, first-excess, profile, capability-
 shape, and mapping tests are recorded in
 `Tests/ContractFixtures/SPEC012/Evidence/milestone-7/startup-and-failure-integration.md`.
-`T7.4` remains joined to SPEC-013's complete production pipeline.
+`T7.4` is complete through SPEC-013's shared production pipeline. A focused
+Drawing failure remains exact through `RuntimeOwnerFailure`, stops before
+publication, marks applied mutation dirty, releases/reset all acquired attempt
+state, schedules semantic rederivation, and finalizes once. Accepted routing,
+backpressure, and postpublication nonretryable refusal prove the complementary
+commit/discard, pending/unavailable intent, published-revision preservation,
+and no-retained-plan/callable cleanup paths. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-5/complete-production-pipeline.md`.

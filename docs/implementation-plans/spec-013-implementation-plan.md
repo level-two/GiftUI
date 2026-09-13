@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-12
+updated: 2026-09-13
 related_design_notes:
   - ../implementation-designs/spec-013-common-coordinator-and-cleanup.md
   - ../implementation-designs/spec-013-storage-audit-and-overlay-ownership.md
@@ -367,23 +367,23 @@ cannot satisfy this milestone's production claims.
 **Exit evidence:** Both profiles execute one shared complete pipeline with
 identical owner values and no duplicate algorithm or vocabulary.
 
-- [ ] `T5.1` — Integrate state binding before body, SPEC-010 candidate begin/
+- [x] `T5.1` — Integrate state binding before body, SPEC-010 candidate begin/
       encounter/finish, SPEC-006 state-aware expansion, and borrowed SPEC-007
       layout input/output. Preserve published state and dirty recovery on all
       prepublication failures.
-- [ ] `T5.2` — Integrate post-layout SPEC-012 Canvas invocation/Path snapshots,
+- [x] `T5.2` — Integrate post-layout SPEC-012 Canvas invocation/Path snapshots,
       immediate callable/capture release, plan formation, combined SPEC-008/
       SPEC-012 preflight, painter-order streaming, and synchronous endpoint
       borrowing without retained payloads.
-- [ ] `T5.3` — Integrate SPEC-011 candidate construction in semantic order with
+- [x] `T5.3` — Integrate SPEC-011 candidate construction in semantic order with
       the exact SPEC-010 publishable target generation after encounter and
       reserved SPEC-009 action generations. Test initial materialization,
       preservation, replacement, and candidate-only retirement.
-- [ ] `T5.4` — Integrate atomic semantic/observable publication, unchanged-
+- [x] `T5.4` — Integrate atomic semantic/observable publication, unchanged-
       presentation recovery, at-most-once endpoint offer, accepted-only action/
       hit-map commit, every other result's candidate discard, and prior
       committed routing preservation.
-- [ ] `T5.5` — Integrate exact Semantic, Layout, Observable State, Interaction,
+- [x] `T5.5` — Integrate exact Semantic, Layout, Observable State, Interaction,
       and Drawing errors through `RuntimeOwnerFailure` and the sibling failure
       adapter. Compare exact value/context, correlation, cleanup, disposition,
       policy input, and returned result across both profiles.
@@ -823,6 +823,19 @@ normalized materialize/publish/lookup transcripts and first-excess result are
 equal. T5.1 remains unchecked until the same coordinator slice connects
 state-aware semantic expansion and borrowed Layout publication. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-5/production-observable-profile-workspaces.md`.
+
+T5.1-T5.5 are complete. `RuntimeCompletePipeline` now owns the single ordered
+production-owner join from admission through one-shot offer/production. Its
+typed owner boundary composes the maintained Semantic, Layout, Observable
+State, Drawing, Render, and Interaction mechanisms without reproducing them;
+both Dynamic and Static active bindings delegate to that same runner. The
+focused corpus proves exact stage order, active-only admission, every-stage
+short-circuiting, prepublication dirty recovery, atomic publication,
+unchanged recovery, accepted-only routing commit, refusal/postpublication
+retention, distinct no-change/backpressure/retryable results, exact five-owner
+failures, reverse cleanup, and exactly-once finalization. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-5/complete-production-pipeline.md`.
+Milestone 5 is complete; Milestone 6's frozen cross-profile corpus is next.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
