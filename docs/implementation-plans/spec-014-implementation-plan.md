@@ -360,7 +360,7 @@ for every operation independently of full-surface or tiled storage.
       butt/round caps, miter/round joins and limit, origin, inherited clip, and
       binary pixel-center coverage. Consume the complete borrowed view within
       the operation call and preserve identical grouping and endpoint meaning.
-- [ ] `T4.5` — Track raster bytes, tile visits, region submissions, payloads,
+- [x] `T4.5` — Track raster bytes, tile visits, region submissions, payloads,
       glyph bytes, stroke workspace, and every algorithm work bound with
       checked equality/first-excess behavior and sticky first local failure.
       Continue validation-only draining after accepted responsibility.
@@ -865,6 +865,18 @@ repositions. Missing metrics, record, payload, identity, or unsupported raster
 kind returns `incompatibleResource`. Focused tests and a frozen corpus case
 cover exact calls and pixels, payload poisoning, empty clipping, checked
 overflow, wrong identity/kind, and every missing-resource stage.
+
+`T4.5` added the shared bounded raster-work tracker independently of the
+still-open stroke-vector evidence. It records raster and payload byte high-
+water, payload and region submissions, tile and conservative pixel visits,
+glyph bytes, and stroke workspace bytes using checked counters and the exact
+`RasterPayloadLimits` domains. Equality is admitted and the first excess or
+arithmetic overflow becomes the sticky local failure. Before responsibility
+transfer a failure stops work; after transfer the tracker enters draining,
+continues checked validation while returning success to the one-shot stream,
+and preserves the first failure. Focused tests cover every independent limit,
+malformed empty payloads, sticky precedence, post-acceptance drain, overflow,
+and complete attempt reset.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
