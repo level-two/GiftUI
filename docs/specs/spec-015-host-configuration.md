@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-09-12
+updated: 2026-09-13
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -70,6 +70,12 @@ target_milestone: MVP
 > limits through approved SPEC-013. This amended contract is authoritative for
 > implementation. SPEC-001 remains independently approved, and neither
 > Specification redefines the other's ownership.
+>
+> On 2026-09-13, the maintainer explicitly approved correcting every
+> compiler-invalid `borrowing var` protocol requirement below to an ordinary
+> read-only property requirement. This is a spelling correction only: it
+> preserves immutable borrowed-use semantics and matches the accepted
+> SPEC-013 and SPEC-014 protocol-property form.
 
 ## Summary
 
@@ -310,7 +316,7 @@ package struct HostComponentRecord: Equatable, Sendable {
 }
 
 package protocol HostComponentGraphView: ~Copyable {
-    borrowing var count: UInt8 { get }
+    var count: UInt8 { get }
     borrowing func record(at index: UInt8) -> HostComponentRecord?
 }
 
@@ -424,7 +430,7 @@ package struct HostEndpointConfiguration: Equatable, Sendable {
 }
 
 package protocol MVPHostResidualPolicyTable: ~Copyable {
-    borrowing var fatalHookIsAvailable: Bool { get }
+    var fatalHookIsAvailable: Bool { get }
     borrowing func allowed(
         for context: HostResidualPolicyContext
     ) -> GiftUIAllowedDispositions
@@ -510,8 +516,8 @@ package enum HostOpportunityResult: Equatable, Sendable {
 
 package protocol MVPHostInstance: ~Copyable {
     associatedtype ActivationFailure: Equatable & Sendable
-    borrowing var lifecycleState: MVPHostLifecycleState { get }
-    borrowing var assemblyReport: HostAssemblyReport { get }
+    var lifecycleState: MVPHostLifecycleState { get }
+    var assemblyReport: HostAssemblyReport { get }
     mutating func activate() -> HostActivationResult<ActivationFailure>
     mutating func runOpportunity() -> HostOpportunityResult
     mutating func teardown()
@@ -520,16 +526,16 @@ package protocol MVPHostInstance: ~Copyable {
 package protocol MVPHostConfigurationValidator: ~Copyable {
     associatedtype ComponentGraph: HostComponentGraphView
     associatedtype ResidualPolicyTable: MVPHostResidualPolicyTable
-    borrowing var structuralConfiguration: HostStructuralConfiguration { get }
-    borrowing var componentGraph: ComponentGraph { get }
-    borrowing var textResourceValidation: TextResourceValidationResult { get }
-    borrowing var capabilityRequirement: RasterPresentationRequirement { get }
-    borrowing var capabilityContributions: RasterPresentationContributions { get }
+    var structuralConfiguration: HostStructuralConfiguration { get }
+    var componentGraph: ComponentGraph { get }
+    var textResourceValidation: TextResourceValidationResult { get }
+    var capabilityRequirement: RasterPresentationRequirement { get }
+    var capabilityContributions: RasterPresentationContributions { get }
     var capabilityWorkspace: RasterPresentationResolverWorkspace { get set }
-    borrowing var endpoint: HostEndpointConfiguration { get }
-    borrowing var actionAndModel: HostActionModelConfiguration { get }
-    borrowing var inputAndWake: HostInputWakeConfiguration { get }
-    borrowing var residualPolicyTable: ResidualPolicyTable { get }
+    var endpoint: HostEndpointConfiguration { get }
+    var actionAndModel: HostActionModelConfiguration { get }
+    var inputAndWake: HostInputWakeConfiguration { get }
+    var residualPolicyTable: ResidualPolicyTable { get }
     mutating func validate() -> HostValidationResult
 }
 
