@@ -1,0 +1,17 @@
+# order	field	type	required
+1	schema_version	uint16	true
+2	semantic_node_occurrences	uint16	true
+3	render_semantic_scope_occurrences	uint16	true
+4	layout_scope_occurrences	uint16	true
+5	maximum_render_traversal_depth	uint16	true
+6	render_text_line_count	uint16	true
+7	positioned_glyph_count	uint16	true
+8	ordinary_render_operations	uint16	true
+9	canvas_occurrences	uint16	true
+10	maximum_live_path_points	uint16	true
+11	maximum_live_path_subpaths	uint16	true
+12	submitted_strokes	uint16	true
+13	snapshotted_points	uint16	true
+14	snapshotted_subpaths	uint16	true
+15	normalized_stroke_operations	uint16	true
+

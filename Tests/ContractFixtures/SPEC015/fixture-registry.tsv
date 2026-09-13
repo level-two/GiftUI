@@ -1,0 +1,12 @@
+# order	id	path	schema_version
+1	portable-hierarchy-workload	portable-workload.schema.tsv	1
+2	generated-workload-manifest	workload-manifest-v2.schema.tsv	2
+3	preset-expectation	preset-expectation.schema.tsv	1
+4	validation-access-ledger	validation-access-ledger.schema.tsv	1
+5	owner-call-transcript	owner-call-transcript.schema.tsv	1
+6	validation-transcript	validation-transcript.schema.tsv	1
+7	lifecycle-transcript	lifecycle-transcript.schema.tsv	1
+8	normalized-preset-report	normalized-preset-report.schema.tsv	1
+9	normalized-semantic-report	normalized-semantic-report.schema.tsv	1
+10	resource-report	resource-report.schema.tsv	1
+

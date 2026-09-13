@@ -1,0 +1,6 @@
+# kind	connected_hardware
+host-execution	false
+cross-build	false
+simulator	false
+connected-target	true
+

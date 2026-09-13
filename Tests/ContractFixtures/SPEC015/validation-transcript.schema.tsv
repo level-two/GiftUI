@@ -1,0 +1,9 @@
+# order	field	type	required
+1	schema_version	uint16	true
+2	profile	profile-id	true
+3	stage	uint8	true
+4	result_case	identifier	true
+5	error_case	identifier-or-none	true
+6	error_payload_type	type-name-or-none	true
+7	error_payload	canonical-value-or-none	true
+

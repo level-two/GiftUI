@@ -1,0 +1,8 @@
+# order	field	type	required
+1	schema_version	uint16	true
+2	invocation	uint16	true
+3	access_index	uint16	true
+4	stage	uint8	true
+5	projection	identifier	true
+6	side_effect_count	uint16	true
+

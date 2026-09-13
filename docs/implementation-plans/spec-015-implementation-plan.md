@@ -2,7 +2,7 @@
 spec: SPEC-015
 feature: giftui-mvp-architecture
 title: SPEC-015 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-09
@@ -18,7 +18,7 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-> This ready plan derives work from the approved MVP Target-Host Configuration
+> This active plan derives work from the approved MVP Target-Host Configuration
 > Contract, including its explicitly reapproved schema-2 workload amendment.
 > It orders reusable host assembly and evidence but does not amend SPEC-015,
 > absorb behavior owned by another Specification, or authorize connected
@@ -181,14 +181,14 @@ statuses.
 **Exit evidence:** The exact work boundary, migration disposition, fixture
 schema, and fail-closed driver contract exist before host implementation.
 
-- [ ] `T0.1` — Create `Tests/ContractFixtures/SPEC015/` with a README,
+- [x] `T0.1` — Create `Tests/ContractFixtures/SPEC015/` with a README,
       ordered fixture registry, criterion registry for `HC-001` through
       `HC-018`, validation-access ledger schema, owner-call transcript schema,
       normalized four-preset report schema, required-evidence registry, and
       explicit `host-execution`, `cross-build`, `simulator`, and
       `connected-target` evidence kinds. Audit metadata, manifest, portfolio,
       and reciprocal links without treating SPEC-001 as approved by inference.
-- [ ] `T0.2` — Reserve the exact `GiftUIHostConfiguration` package target,
+- [x] `T0.2` — Reserve the exact `GiftUIHostConfiguration` package target,
       focused tests, and narrowly named host/failure adapter fixtures in the
       package/dependency registries. Enforce its permitted focused-owner
       imports and prohibit portable Presentation, Domain, Data, focused
@@ -197,7 +197,7 @@ schema, and fail-closed driver contract exist before host implementation.
       ambient services, direct model mutation, target branching, and dynamic
       storage; assign each preserve-as-evidence, replace-through-approved-owner,
       or remove-from-production disposition.
-- [ ] `T0.3` — Create and register a fail-closed
+- [x] `T0.3` — Create and register a fail-closed
       `scripts/contracts/run-spec-015.sh` skeleton with the exact
       `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, and
       `nrf52840-embedded` profiles. It must record immutable input identity,
@@ -205,7 +205,7 @@ schema, and fail-closed driver contract exist before host implementation.
       hashes; mark unimplemented rows `missing`; write only below
       `.build/spec-015/`; and contain no network, deployment, restart, probe,
       or flashing action.
-- [ ] `T0.4` — Define checked-in schemas for the portable hierarchy/workload
+- [x] `T0.4` — Define checked-in schemas for the portable hierarchy/workload
       descriptor, generated schema-2 workload manifest, preset expectation,
       validation transcript, lifecycle transcript, normalized semantic report,
       and resource report. Every schema rejects unknown, missing, duplicate,

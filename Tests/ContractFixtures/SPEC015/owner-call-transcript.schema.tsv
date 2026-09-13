@@ -1,0 +1,7 @@
+# order	field	type	required
+1	schema_version	uint16	true
+2	call_index	uint16	true
+3	owner	identifier	true
+4	operation	identifier	true
+5	result	typed-result	true
+

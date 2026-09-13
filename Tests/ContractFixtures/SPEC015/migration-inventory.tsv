@@ -1,0 +1,8 @@
+# legacy_surface	disposition	replacement
+SignalAnalyzer.DependencyContainer	preserve-as-evidence	GiftUIHostConfiguration
+SignalAnalyzer.SwiftUIAppRoot	preserve-as-evidence	concrete-target-root
+SignalAnalyzer.ambient-services	remove-from-production	explicit-source-owned-dependencies
+SignalAnalyzer.direct-model-mutation	replace-through-approved-owner	GiftUIObservableState
+SignalAnalyzer.target-branching	replace-through-approved-owner	immutable-host-preset
+SignalAnalyzer.dynamic-storage	replace-through-approved-owner	GiftUIRuntimeDynamic-or-GiftUIRuntimeStatic
+

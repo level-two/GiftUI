@@ -1,0 +1,9 @@
+# order	field	type	required
+1	schema_version	uint16	true
+2	profile	profile-id	true
+3	call_index	uint16	true
+4	prior_state	uint8	true
+5	operation	identifier	true
+6	result	typed-result	true
+7	next_state	uint8	true
+

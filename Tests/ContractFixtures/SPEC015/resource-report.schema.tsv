@@ -1,0 +1,12 @@
+# order	field	type	required
+1	schema_version	uint16	true
+2	profile	profile-id	true
+3	evidence_kind	evidence-kind	true
+4	text_bytes	uint64	true
+5	data_bytes	uint64	true
+6	bss_bytes	uint64	true
+7	stack_high_water_bytes	uint64	true
+8	allocation_count	uint64	true
+9	forbidden_symbols	canonical-list	true
+10	toolchain_identity	string	true
+

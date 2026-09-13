@@ -2,7 +2,7 @@
 id: SPEC-015
 feature: giftui-mvp-architecture
 title: MVP Target-Host Configuration Contract
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-28
@@ -76,6 +76,9 @@ target_milestone: MVP
 > read-only property requirement. This is a spelling correction only: it
 > preserves immutable borrowed-use semantics and matches the accepted
 > SPEC-013 and SPEC-014 protocol-property form.
+>
+> Implementation began on 2026-09-13 through the approved implementation
+> plan. This transition does not change the contract or imply conformance.
 
 ## Summary
 

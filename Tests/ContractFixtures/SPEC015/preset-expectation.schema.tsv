@@ -1,0 +1,8 @@
+# order	field	type	required
+1	schema_version	uint16	true
+2	profile	profile-id	true
+3	host_kind	uint8	true
+4	workload_manifest_hash	sha256	true
+5	expected_validation_result	typed-result	true
+6	evidence_kind	evidence-kind	true
+

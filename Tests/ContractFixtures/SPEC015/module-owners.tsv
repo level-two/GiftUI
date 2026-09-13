@@ -1,0 +1,4 @@
+# target	type	status	dependencies	forbidden_imports
+GiftUIHostConfiguration	regular	reserved	GiftUIBackendIntegration,GiftUICapabilities,GiftUIDisplayCore,GiftUIExecution,GiftUIFailureCore,GiftUIRasterCore,GiftUIRuntimeCore,GiftUISurfaceCore,GiftUITextResources	GiftUIDrawing,GiftUIInteraction,GiftUILayout,GiftUIObservableState,GiftUIRenderLowering,GiftUISemanticCore
+GiftUIHostConfigurationTests	test	reserved	GiftUIHostConfiguration	-
+

@@ -1,0 +1,12 @@
+# order	field	type	required
+1	schema_version	uint16	true
+2	profile	profile-id	true
+3	input_identity	sha256	true
+4	compiler_identity	string	true
+5	toolchain_identity	string	true
+6	optimization	string	true
+7	command_hash	sha256	true
+8	output_hash	sha256	true
+9	status	complete-or-missing	true
+10	evidence_kind	evidence-kind	true
+
