@@ -19,10 +19,13 @@ package struct SignalCaptureStore: Sendable {
     private var epochSourceTimestamp: Duration
     private var latestSourceTimestamp: Duration
 
-    package init(capacity: Int = SignalCapture.maximumTransitionCount) {
+    package init(
+        capacity: Int = SignalCapture.maximumTransitionCount,
+        initialRevision: UInt32 = 0
+    ) {
         precondition(capacity >= SignalCapture.maximumTransitionCount)
         self.capacity = capacity
-        revision = 0
+        revision = initialRevision
         capture = .empty()
         epochSourceTimestamp = .zero
         latestSourceTimestamp = .zero

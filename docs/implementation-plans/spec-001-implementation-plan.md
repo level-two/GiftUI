@@ -326,7 +326,7 @@ same capture/state/publication traces and deterministic source vectors.
       30-second trimming, oldest-first capacity eviction, baseline updates,
       current levels, and Clear's exact reset mutation. Exhaust empty, boundary,
       equal/out-of-order, newly inserted-and-evicted, and four-state Clear cases.
-- [ ] `T2.2` — Implement one replaceable sink of each kind with immediate
+- [x] `T2.2` — Implement one replaceable sink of each kind with immediate
       revisioned current values, synchronous bounded outcome propagation, weak
       or explicit non-retaining lifetime, detach-before-return, state-table
       actions, source-contract failures, horizon diagnostics, and the complete
@@ -744,6 +744,10 @@ Domain UI, platform, timing, and concurrency facilities.
 `T2.1` adds checked capture retention and its repository integration, including
 epoch rebasing, stable insertion, 30-second and capacity eviction, reconstructed
 baselines, exact mutation replay, and state-preserving Clear behavior.
+`T2.2` completes repository lifecycle and failure handling: immediate weak sink
+replacement, synchronous bounded outcomes, action idempotence, startup cleanup,
+source-contract and horizon paths, no-rollback refusal, and terminal revision
+exhaustion with permanent object-graph quiescence.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

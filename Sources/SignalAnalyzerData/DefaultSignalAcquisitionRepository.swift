@@ -4,25 +4,42 @@ package protocol SignalDataSourceDiagnosticError: Error {
     var signalAnalyzerDiagnostic: SignalAnalyzerDiagnostic { get }
 }
 
+package struct SignalAcquisitionStartError: Error, Equatable, Sendable {
+    package let diagnostic: SignalAnalyzerDiagnostic
+}
+
+package struct SignalAcquisitionUnavailableError: Error, Equatable, Sendable {
+    package let diagnostic: SignalAnalyzerDiagnostic
+}
+
 package final class DefaultSignalAcquisitionRepository: SignalAcquisitionRepository,
     SignalTransitionSink
 {
     package private(set) var acquisitionState: AcquisitionState = .idle
     package private(set) var outOfHorizonDropCount: UInt32 = 0
+    package private(set) var lastCaptureDeliveryOutcome: SignalSinkDeliveryOutcome?
+    package private(set) var lastStateDeliveryOutcome: SignalSinkDeliveryOutcome?
+    package var captureRevision: UInt32 { store.revision }
+    package var currentCapture: SignalCapture { store.capture }
 
     private let source: any SignalDataSource
     private var store = SignalCaptureStore()
     private weak var captureSink: AnyObject?
     private weak var stateSink: AnyObject?
     private var isTerminal = false
+    private var isSourceActive = false
+    private var terminalDiagnostic: SignalAnalyzerDiagnostic?
 
-    package init(source: any SignalDataSource) {
+    package init(source: any SignalDataSource, initialRevision: UInt32 = 0) {
         self.source = source
+        store = SignalCaptureStore(initialRevision: initialRevision)
     }
 
     package func startObservingCapture(sink: some SignalCaptureSink) {
-        _ = sink.receive(.snapshot(revision: store.revision, capture: store.capture))
         captureSink = sink as AnyObject
+        lastCaptureDeliveryOutcome = sink.receive(
+            .snapshot(revision: store.revision, capture: store.capture)
+        )
     }
 
     package func stopObservingCapture() {
@@ -30,8 +47,8 @@ package final class DefaultSignalAcquisitionRepository: SignalAcquisitionReposit
     }
 
     package func startObservingAcquisitionState(sink: some AcquisitionStateSink) {
-        _ = sink.receive(acquisitionState)
         stateSink = sink as AnyObject
+        lastStateDeliveryOutcome = sink.receive(acquisitionState)
     }
 
     package func stopObservingAcquisitionState() {
@@ -39,25 +56,38 @@ package final class DefaultSignalAcquisitionRepository: SignalAcquisitionReposit
     }
 
     package func start() throws {
-        guard !isTerminal, acquisitionState != .running else { return }
+        if isTerminal {
+            throw SignalAcquisitionUnavailableError(diagnostic: terminalDiagnostic!)
+        }
+        guard acquisitionState != .running else { return }
         do {
             try source.start(sink: self)
+            isSourceActive = true
             acquisitionState = .running
             publishState()
-        } catch {
+        } catch let failure as any SignalDataSourceDiagnosticError {
             source.stop()
-            let diagnostic =
-                (error as? any SignalDataSourceDiagnosticError)?.signalAnalyzerDiagnostic
-                ?? SignalAnalyzerDiagnostic(exactUTF8: Array("source start failed".utf8))!
+            isSourceActive = false
+            let diagnostic = failure.signalAnalyzerDiagnostic
             acquisitionState = .failed(diagnostic)
             publishState()
-            throw error
+            throw failure
+        } catch {
+            source.stop()
+            isSourceActive = false
+            let diagnostic = SignalAnalyzerDiagnostic(
+                exactUTF8: Array("source start failed".utf8)
+            )!
+            acquisitionState = .failed(diagnostic)
+            publishState()
+            throw SignalAcquisitionStartError(diagnostic: diagnostic)
         }
     }
 
     package func stop() {
         guard !isTerminal, acquisitionState == .running else { return }
         source.stop()
+        isSourceActive = false
         acquisitionState = .stopped
         publishState()
     }
@@ -73,7 +103,9 @@ package final class DefaultSignalAcquisitionRepository: SignalAcquisitionReposit
         case .accepted(let publication):
             publishCapture(publication)
         case .rejected(.outsideRetainedHistory):
-            outOfHorizonDropCount &+= 1
+            if outOfHorizonDropCount < .max {
+                outOfHorizonDropCount += 1
+            }
         case .rejected(.invalidTransition):
             failSourceContract()
         case .rejected(.revisionExhausted):
@@ -91,16 +123,17 @@ package final class DefaultSignalAcquisitionRepository: SignalAcquisitionReposit
 
     private func publishCapture(_ publication: SignalCapturePublication) {
         guard let sink = captureSink as? any SignalCaptureSink else { return }
-        _ = sink.receive(publication)
+        lastCaptureDeliveryOutcome = sink.receive(publication)
     }
 
     private func publishState() {
         guard let sink = stateSink as? any AcquisitionStateSink else { return }
-        _ = sink.receive(acquisitionState)
+        lastStateDeliveryOutcome = sink.receive(acquisitionState)
     }
 
     private func failSourceContract() {
         source.stop()
+        isSourceActive = false
         let diagnostic = SignalAnalyzerDiagnostic(
             exactUTF8: Array("invalid source transition".utf8))!
         acquisitionState = .failed(diagnostic)
@@ -108,11 +141,15 @@ package final class DefaultSignalAcquisitionRepository: SignalAcquisitionReposit
     }
 
     private func failRevision() {
-        source.stop()
+        if isSourceActive {
+            source.stop()
+            isSourceActive = false
+        }
         let diagnostic = SignalAnalyzerDiagnostic(
             exactUTF8: Array("capture revision exhausted".utf8))!
         acquisitionState = .failed(diagnostic)
         isTerminal = true
+        terminalDiagnostic = diagnostic
         publishCapture(
             .terminalFailure(condition: .captureRevisionExhausted, diagnostic: diagnostic)
         )

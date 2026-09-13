@@ -26,7 +26,7 @@ struct DefaultSignalAcquisitionRepositoryTests {
             repository.stop()
         case .failed:
             source.startFailure = RepositorySourceSpy.Failure.start
-            #expect(throws: RepositorySourceSpy.Failure.start) { try repository.start() }
+            #expect(throws: SignalAcquisitionStartError.self) { try repository.start() }
         }
         let stateBeforeClear = repository.acquisitionState
         let countBeforeClear = sink.publications.count
@@ -71,13 +71,17 @@ private final class RepositorySourceSpy: SignalDataSource {
     enum Failure: Error { case start }
     var startFailure: Failure?
     private var sink: (any SignalTransitionSink)?
+    var stopCount = 0
 
     func start(sink: some SignalTransitionSink) throws {
         if let startFailure { throw startFailure }
         self.sink = sink
     }
 
-    func stop() { sink = nil }
+    func stop() {
+        stopCount += 1
+        sink = nil
+    }
 
     func emit(timestamp: Int, level: DigitalLevel) {
         sink?.receive(
@@ -92,9 +96,10 @@ private final class RepositorySourceSpy: SignalDataSource {
 
 private final class RepositoryCaptureSink: SignalCaptureSink {
     var publications: [SignalCapturePublication] = []
+    var outcome: SignalSinkDeliveryOutcome = .accepted(sequence: 1)
 
     func receive(_ publication: SignalCapturePublication) -> SignalSinkDeliveryOutcome {
         publications.append(publication)
-        return .accepted(sequence: UInt32(publications.count))
+        return outcome
     }
 }

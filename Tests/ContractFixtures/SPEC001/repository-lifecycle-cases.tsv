@@ -1,0 +1,22 @@
+# schema_version=1
+# id	operation	expected
+capture-attach	observe-capture	immediate-current-snapshot
+capture-replace	observe-capture	replace-before-callback
+capture-detach	stop-observe-capture	no-later-callback
+state-attach	observe-state	immediate-current-state
+state-replace	observe-state	replace-before-callback
+state-detach	stop-observe-state	no-later-callback
+weak-lifetime	observer-release	not-retained
+start-idempotent	start-running	no-op
+stop-idempotent	stop-inactive	no-op
+startup-failure	partial-source-start	stop-fail-throw-same-diagnostic
+callback-refusal	capture-mutation	state-retained-no-rollback
+invalid-channel	source-delivery	stop-and-fail
+negative-time	source-delivery	stop-and-fail
+out-of-horizon	source-delivery	drop-and-record
+transition-revision-max	source-delivery	one-terminal-capture-failure
+clear-revision-max	clear	one-terminal-capture-failure
+terminal-state-callback	revision-max	none
+terminal-later-start	revision-max	unavailable
+terminal-later-clear	revision-max	no-op
+terminal-later-delivery	revision-max	no-op
