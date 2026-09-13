@@ -7,3 +7,6 @@
 6	host-transcript	host-transcript.schema.tsv	1
 7	resource-transcript	resource-transcript.schema.tsv	1
 8	task-evidence	task-evidence.yaml	1
+9	migration-inventory	migration-inventory.tsv	1
+10	module-boundaries	module-boundaries.tsv	1
+11	generated-static-equivalents	generated-static-equivalents.tsv	1

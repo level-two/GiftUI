@@ -251,7 +251,7 @@ claimed.
       `connected-target-execution` evidence kinds. Encode which criterion
       classes each kind may satisfy. Reject missing, duplicate, unknown,
       contradictory, stale, or unversioned required fields.
-- [ ] `T0.2` — Inventory every `demo/SignalAnalyzer` source and test plus all
+- [x] `T0.2` — Inventory every `demo/SignalAnalyzer` source and test plus all
       existing analyzer fixtures in SPEC-007 through SPEC-015. Classify each as
       preserve-as-evidence, adapt, replace, or downstream-owned. Freeze the
       logical Domain -> none, Data -> Domain, Presentation -> Domain/GiftUI/
@@ -717,9 +717,11 @@ and conformance gaps may not be deferred.
 Governed implementation began on 2026-09-13. `T0.1` established the ordered,
 fail-closed fixture and evidence contract, the complete task ledger, five
 versioned transcript schemas, and explicit evidence-kind-to-criterion-class
-permissions. Checked criteria in SPEC-001 and the imported package remain
-baseline evidence only until the governed implementation and required profiles
-reproduce them.
+permissions. `T0.2` classified all 26 tracked investigation sources/tests and
+26 existing analyzer-related SPEC-007-through-SPEC-015 fixtures, then froze
+the dynamic package and generated-static dependency equivalents. Checked
+criteria in SPEC-001 and the imported package remain baseline evidence only
+until the governed implementation and required profiles reproduce them.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

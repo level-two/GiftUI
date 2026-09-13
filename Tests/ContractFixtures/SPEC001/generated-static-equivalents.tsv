@@ -1,0 +1,6 @@
+# schema_version=1
+# logical_owner	dynamic_boundary	generated_static_equivalent	required_rule
+SignalAnalyzerDomain	SwiftPM-target	typed-domain-declarations	no-outward-dependency
+SignalAnalyzerData	SwiftPM-target	typed-source-repository-wiring	depends-only-on-domain
+SignalAnalyzerPresentation	SwiftPM-target	typed-presentation-declarations	depends-only-on-domain-giftui-failure-core
+SignalAnalyzerHost	composition-root	generated-owner-graph	may-select-all-required-owners

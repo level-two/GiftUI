@@ -30,7 +30,8 @@ abort "fixture registry references a missing path" unless manifest.all? { |row| 
 expected_paths = %w[
   criterion-evidence-registry.tsv evidence-kinds.tsv semantic-transcript.schema.tsv
   callback-transcript.schema.tsv cycle-transcript.schema.tsv host-transcript.schema.tsv
-  resource-transcript.schema.tsv task-evidence.yaml
+  resource-transcript.schema.tsv task-evidence.yaml migration-inventory.tsv
+  module-boundaries.tsv generated-static-equivalents.tsv
 ]
 abort "fixture registry is not exhaustive" unless manifest.map { |row| row[2] } == expected_paths
 

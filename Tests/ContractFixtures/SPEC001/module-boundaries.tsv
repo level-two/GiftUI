@@ -1,0 +1,6 @@
+# schema_version=1
+# owner	kind	allowed_dependencies	forbidden_dependencies
+SignalAnalyzerDomain	portable-target	-	SignalAnalyzerData,SignalAnalyzerPresentation,GiftUI,SwiftUI,Foundation,Observation,Dispatch,platform,clock,scheduler,renderer,display,input-driver,GPIO,hardware
+SignalAnalyzerData	portable-target	SignalAnalyzerDomain	SignalAnalyzerPresentation,GiftUI,SwiftUI,Observation,renderer,display,input-driver,GPIO,hardware
+SignalAnalyzerPresentation	portable-target	SignalAnalyzerDomain,GiftUI,GiftUIFailureCore	SignalAnalyzerData,SwiftUI,Foundation,Observation,Dispatch,platform,clock,scheduler,renderer,display,input-driver,GPIO,hardware
+SignalAnalyzerHost	target-composition	selected-SignalAnalyzer-and-GiftUI-owners	portable-owner-defined-host-services
