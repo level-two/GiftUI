@@ -292,7 +292,7 @@ owners compile for the applicable profile.
 publication changes, sinks, repository contract, and use cases with no
 prohibited imports or facilities.
 
-- [ ] `T1.1` — Replace string failure state with the exact 96-byte
+- [x] `T1.1` — Replace string failure state with the exact 96-byte
       `SignalAnalyzerDiagnostic` and construction result. Implement exact and
       truncating UTF-8 validation at scalar boundaries, one-call byte borrowing,
       equality, static inline/caller-owned storage, and Presentation's
@@ -729,6 +729,9 @@ remain baseline evidence only until the governed implementation and required
 profiles reproduce them. `T0.5` activates the three governed root-package
 owners and their focused test targets with exact direct dependencies and
 negative graph/import fixtures; concrete host composition remains in SPEC-015.
+`T1.1` adds the inline 96-byte diagnostic, scalar-boundary exact/truncating
+UTF-8 validation, one-call byte borrowing, and byte-identical `BoundedText`
+projection without adding Foundation to Domain or Presentation.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

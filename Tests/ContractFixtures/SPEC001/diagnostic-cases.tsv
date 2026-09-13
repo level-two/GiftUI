@@ -1,0 +1,18 @@
+# schema_version=1
+# id	construction	input_shape	expected
+empty	exact	0-bytes	exact-0
+maximum	exact	96-ascii	exact-96
+first-excess	exact	97-ascii	rejected
+first-excess-truncating	truncating	97-ascii	truncated-96
+one-byte	exact	ascii	exact
+two-byte	exact	cent-sign	exact
+three-byte	exact	euro-sign	exact
+four-byte	exact	grinning-face	exact
+two-byte-straddle	truncating	95-ascii-plus-cent-plus-ascii	truncated-95
+three-byte-straddle	truncating	94-ascii-plus-euro	truncated-94
+four-byte-straddle	truncating	93-ascii-plus-face	truncated-93
+malformed-leading	both	continuation-first	invalid-utf8
+overlong-two-byte	both	c0-80	invalid-utf8
+surrogate	both	ed-a0-80	invalid-utf8
+above-maximum-scalar	both	f4-90-80-80	invalid-utf8
+projection	exact	mixed-ascii-euro	byte-identical-bounded-text
