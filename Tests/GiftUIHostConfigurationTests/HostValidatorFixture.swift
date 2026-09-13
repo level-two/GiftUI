@@ -152,15 +152,39 @@ func makeHostActionModelFixture(
     lastActionCode: UInt16 = 5,
     handlerCount: UInt8 = 1,
     rootModelTargetCount: UInt8 = 1,
-    maximumNonTransitionPublicationsPerAction: UInt8 = 1
+    sourceMinimumTransitionSpacingMicroseconds: UInt32 = 50_000,
+    maximumSourceCallbacksPerServiceWindow: UInt16 = 20,
+    maximumCallbacksPerAction: UInt8 = 1,
+    maximumRepositoryCallbacksPerAction: UInt8 = 1,
+    maximumUseCaseCallbacksPerAction: UInt8 = 1,
+    maximumNonTransitionPublicationsPerAction: UInt8 = 1,
+    applicationExecutorFactLimit: UInt16 = 28,
+    factAdmissionAdapterCount: UInt8 = 1,
+    targetGenerationIsPublishable: Bool = true,
+    actionHandlerIsTotal: Bool = true,
+    retainsOwnerReferences: Bool = false,
+    callbacksAreReentrant: Bool = false
 ) -> HostActionModelConfiguration {
     HostActionModelConfiguration(
         firstActionCode: firstActionCode,
         lastActionCode: lastActionCode,
         handlerCount: handlerCount,
         rootModelTargetCount: rootModelTargetCount,
+        sourceMinimumTransitionSpacingMicroseconds:
+            sourceMinimumTransitionSpacingMicroseconds,
+        maximumSourceCallbacksPerServiceWindow:
+            maximumSourceCallbacksPerServiceWindow,
+        maximumCallbacksPerAction: maximumCallbacksPerAction,
+        maximumRepositoryCallbacksPerAction: maximumRepositoryCallbacksPerAction,
+        maximumUseCaseCallbacksPerAction: maximumUseCaseCallbacksPerAction,
         maximumNonTransitionPublicationsPerAction:
-            maximumNonTransitionPublicationsPerAction
+            maximumNonTransitionPublicationsPerAction,
+        applicationExecutorFactLimit: applicationExecutorFactLimit,
+        factAdmissionAdapterCount: factAdmissionAdapterCount,
+        targetGenerationIsPublishable: targetGenerationIsPublishable,
+        actionHandlerIsTotal: actionHandlerIsTotal,
+        retainsOwnerReferences: retainsOwnerReferences,
+        callbacksAreReentrant: callbacksAreReentrant
     )
 }
 

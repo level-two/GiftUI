@@ -16,6 +16,15 @@ import Testing
         makeHostActionModelFixture(lastActionCode: 6),
         makeHostActionModelFixture(handlerCount: 0),
         makeHostActionModelFixture(handlerCount: 2),
+        makeHostActionModelFixture(sourceMinimumTransitionSpacingMicroseconds: 49_999),
+        makeHostActionModelFixture(maximumSourceCallbacksPerServiceWindow: 19),
+        makeHostActionModelFixture(maximumSourceCallbacksPerServiceWindow: 21),
+        makeHostActionModelFixture(maximumCallbacksPerAction: 0),
+        makeHostActionModelFixture(maximumCallbacksPerAction: 2),
+        makeHostActionModelFixture(maximumRepositoryCallbacksPerAction: 0),
+        makeHostActionModelFixture(maximumRepositoryCallbacksPerAction: 2),
+        makeHostActionModelFixture(maximumUseCaseCallbacksPerAction: 0),
+        makeHostActionModelFixture(maximumUseCaseCallbacksPerAction: 2),
         makeHostActionModelFixture(maximumNonTransitionPublicationsPerAction: 0),
         makeHostActionModelFixture(maximumNonTransitionPublicationsPerAction: 2),
     ]
@@ -26,6 +35,29 @@ import Testing
                 == .invalid(
                     stage: .actionAndModel,
                     error: .invalidActionDomain
+                )
+        )
+    }
+}
+
+@Test func everyFactoryJoinProjectionFailsClosedAsAnInvalidModelTarget() {
+    let variants = [
+        makeHostActionModelFixture(applicationExecutorFactLimit: 27),
+        makeHostActionModelFixture(applicationExecutorFactLimit: 29),
+        makeHostActionModelFixture(factAdmissionAdapterCount: 0),
+        makeHostActionModelFixture(factAdmissionAdapterCount: 2),
+        makeHostActionModelFixture(targetGenerationIsPublishable: false),
+        makeHostActionModelFixture(actionHandlerIsTotal: false),
+        makeHostActionModelFixture(retainsOwnerReferences: true),
+        makeHostActionModelFixture(callbacksAreReentrant: true),
+    ]
+    for variant in variants {
+        var validator = makeValidHostValidator(actionAndModel: variant)
+        #expect(
+            validator.validate()
+                == .invalid(
+                    stage: .actionAndModel,
+                    error: .invalidModelTarget
                 )
         )
     }

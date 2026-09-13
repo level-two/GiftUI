@@ -148,7 +148,18 @@ import Testing
         lastActionCode: 5,
         handlerCount: 1,
         rootModelTargetCount: 1,
-        maximumNonTransitionPublicationsPerAction: 1
+        sourceMinimumTransitionSpacingMicroseconds: 50_000,
+        maximumSourceCallbacksPerServiceWindow: 20,
+        maximumCallbacksPerAction: 1,
+        maximumRepositoryCallbacksPerAction: 1,
+        maximumUseCaseCallbacksPerAction: 1,
+        maximumNonTransitionPublicationsPerAction: 1,
+        applicationExecutorFactLimit: 28,
+        factAdmissionAdapterCount: 1,
+        targetGenerationIsPublishable: true,
+        actionHandlerIsTotal: true,
+        retainsOwnerReferences: false,
+        callbacksAreReentrant: false
     )
     let input = HostInputWakeConfiguration(
         normalizedInputSourceCount: 1,
@@ -165,7 +176,18 @@ import Testing
     #expect(action.lastActionCode == 5)
     #expect(action.handlerCount == 1)
     #expect(action.rootModelTargetCount == 1)
+    #expect(action.sourceMinimumTransitionSpacingMicroseconds == 50_000)
+    #expect(action.maximumSourceCallbacksPerServiceWindow == 20)
+    #expect(action.maximumCallbacksPerAction == 1)
+    #expect(action.maximumRepositoryCallbacksPerAction == 1)
+    #expect(action.maximumUseCaseCallbacksPerAction == 1)
     #expect(action.maximumNonTransitionPublicationsPerAction == 1)
+    #expect(action.applicationExecutorFactLimit == 28)
+    #expect(action.factAdmissionAdapterCount == 1)
+    #expect(action.targetGenerationIsPublishable)
+    #expect(action.actionHandlerIsTotal)
+    #expect(!action.retainsOwnerReferences)
+    #expect(!action.callbacksAreReentrant)
     #expect(input.normalizedInputSourceCount == 1)
     #expect(input.targetLocalPresentationGateCount == 1)
     #expect(input.wakeRequesterCount == 1)

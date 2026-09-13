@@ -358,10 +358,12 @@ behavior, and emits one immutable report only after complete success.
       invalid code, stale generation, incompatible callback bounds, retained
       owner references, and reentrant or malformed integration.
       **Partial:** the pure configuration projection now validates the exact
-      action range, handler/model cardinality, producer/executor/fact bounds,
-      normalized-input gate, wake count, distinct domains, and non-reentrant
-      wake declaration. Stale generation, retained-owner, and concrete
-      callback/admission probes remain open with the T5.4 integration seam.
+      action range, handler/model cardinality, source spacing, callback bounds,
+      executor/fact bounds, admission count, total-handler/publishable-
+      generation declarations, non-retention/non-reentrancy declarations,
+      normalized-input gate, wake count, and distinct domains. Concrete stale
+      generation/replacement races, invalid action decoding, and poisoned-
+      lifetime non-retention probes remain open with the T5.4 integration seam.
 - [x] `T3.6` — Implement policy-stage table completeness, allowed/selected
       pair validation, fatal-hook availability, diagnostic independence, and
       final `HostAssemblyReport` construction. Compose all nine stages with an

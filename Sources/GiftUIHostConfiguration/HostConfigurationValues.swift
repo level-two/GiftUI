@@ -171,7 +171,18 @@ package struct HostActionModelConfiguration: Equatable, Sendable {
     package let lastActionCode: UInt16
     package let handlerCount: UInt8
     package let rootModelTargetCount: UInt8
+    package let sourceMinimumTransitionSpacingMicroseconds: UInt32
+    package let maximumSourceCallbacksPerServiceWindow: UInt16
+    package let maximumCallbacksPerAction: UInt8
+    package let maximumRepositoryCallbacksPerAction: UInt8
+    package let maximumUseCaseCallbacksPerAction: UInt8
     package let maximumNonTransitionPublicationsPerAction: UInt8
+    package let applicationExecutorFactLimit: UInt16
+    package let factAdmissionAdapterCount: UInt8
+    package let targetGenerationIsPublishable: Bool
+    package let actionHandlerIsTotal: Bool
+    package let retainsOwnerReferences: Bool
+    package let callbacksAreReentrant: Bool
 }
 
 package struct HostInputWakeConfiguration: Equatable, Sendable {

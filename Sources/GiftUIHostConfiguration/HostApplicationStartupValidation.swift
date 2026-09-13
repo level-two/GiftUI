@@ -8,12 +8,26 @@ package enum HostApplicationStartupValidation {
             structural.cardinality.actionCaseCount == 6,
             structural.workload.semanticActionsPerOpportunity == 6,
             actionAndModel.handlerCount == 1,
+            actionAndModel.sourceMinimumTransitionSpacingMicroseconds
+                == structural.pacing.minimumAcceptedTransitionSpacingMicroseconds,
+            actionAndModel.maximumSourceCallbacksPerServiceWindow
+                == structural.pacing.maximumTransitionFactsPerServiceWindow,
+            actionAndModel.maximumCallbacksPerAction == 1,
+            actionAndModel.maximumRepositoryCallbacksPerAction == 1,
+            actionAndModel.maximumUseCaseCallbacksPerAction == 1,
             actionAndModel.maximumNonTransitionPublicationsPerAction == 1
         else { return .invalidActionDomain }
         guard actionAndModel.rootModelTargetCount == 1,
             structural.cardinality.rootModelLocationCount == 1,
             structural.cardinality.activeRegistrationCount == 1,
-            structural.cardinality.stagedAssociationCount == 1
+            structural.cardinality.stagedAssociationCount == 1,
+            actionAndModel.applicationExecutorFactLimit
+                == maximumFacts(in: structural.pacing),
+            actionAndModel.factAdmissionAdapterCount == 1,
+            actionAndModel.targetGenerationIsPublishable,
+            actionAndModel.actionHandlerIsTotal,
+            !actionAndModel.retainsOwnerReferences,
+            !actionAndModel.callbacksAreReentrant
         else { return .invalidModelTarget }
         return nil
     }
@@ -33,5 +47,13 @@ package enum HostApplicationStartupValidation {
             inputAndWake.wakeRequesterIsNonReentrant
         else { return .invalidWakeIntegration }
         return nil
+    }
+
+    private static func maximumFacts(
+        in pacing: HostPacingPolicy
+    ) -> UInt16 {
+        UInt16(pacing.maximumBootstrapFactsPerServiceWindow)
+            + UInt16(pacing.maximumActionInducedFactsPerServiceWindow)
+            + pacing.maximumTransitionFactsPerServiceWindow
     }
 }
