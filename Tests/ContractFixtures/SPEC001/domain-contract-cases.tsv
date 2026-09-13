@@ -1,0 +1,15 @@
+# schema_version=1
+# id	contract	operation	expected
+capture-attach	ObserveSignalCaptureUseCase	start	exactly-once-synchronous
+capture-detach	ObserveSignalCaptureUseCase	stop	exactly-once-synchronous
+state-attach	ObserveAcquisitionStateUseCase	start	exactly-once-synchronous
+state-detach	ObserveAcquisitionStateUseCase	stop	exactly-once-synchronous
+start	StartSignalAcquisitionUseCase	execute	exactly-once-synchronous
+start-failure	StartSignalAcquisitionUseCase	execute	preserved
+stop	StopSignalAcquisitionUseCase	execute	exactly-once-synchronous
+clear	ClearSignalCaptureUseCase	execute	exactly-once-synchronous
+source-start	SignalDataSource	start	exactly-once-synchronous
+source-stop	SignalDataSource	stop	exactly-once-synchronous
+domain-main-actor	SignalAnalyzerDomain	forbidden	absent
+domain-foundation	SignalAnalyzerDomain	forbidden	absent
+domain-concurrency	SignalAnalyzerDomain	forbidden	absent

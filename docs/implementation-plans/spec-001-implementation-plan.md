@@ -308,7 +308,7 @@ prohibited imports or facilities.
       exact insert/trim/reset replay. Use nonwrapping `UInt32` revision rules,
       bounds at 2,404, revision-zero snapshot semantics, and structural
       representation of the terminal capture-revision failure.
-- [ ] `T1.4` — Update the two sink protocols, repository protocol, source-facing
+- [x] `T1.4` — Update the two sink protocols, repository protocol, source-facing
       Domain boundary, and five use cases to their exact synchronous bounded
       behavior. Remove `@MainActor`, Foundation/UI/timing/platform requirements
       from Domain, add exact-once delegation/attach/detach tests, and enforce
@@ -738,6 +738,9 @@ stable ordering, value equality, retained reconstruction, and checked access.
 `T1.3` adds exact publication, delivery-outcome, rejection, and repository-
 condition values plus fail-closed snapshot/mutation replay, insert-before-trim
 ordering, bounded change validation, reset semantics, and nonwrapping revisions.
+`T1.4` adds the synchronous bounded sink, repository, and source contracts plus
+the five exact-once delegating use cases, with source-level enforcement against
+Domain UI, platform, timing, and concurrency facilities.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,
