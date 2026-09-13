@@ -321,7 +321,7 @@ prohibited imports or facilities.
 **Exit evidence:** Dynamic and bounded static Data realizations produce the
 same capture/state/publication traces and deterministic source vectors.
 
-- [ ] `T2.1` — Adapt the repository around checked dynamic/static storage.
+- [x] `T2.1` — Adapt the repository around checked dynamic/static storage.
       Implement validation, epoch rebasing, stable insertion, duration,
       30-second trimming, oldest-first capacity eviction, baseline updates,
       current levels, and Clear's exact reset mutation. Exhaust empty, boundary,
@@ -741,6 +741,9 @@ ordering, bounded change validation, reset semantics, and nonwrapping revisions.
 `T1.4` adds the synchronous bounded sink, repository, and source contracts plus
 the five exact-once delegating use cases, with source-level enforcement against
 Domain UI, platform, timing, and concurrency facilities.
+`T2.1` adds checked capture retention and its repository integration, including
+epoch rebasing, stable insertion, 30-second and capacity eviction, reconstructed
+baselines, exact mutation replay, and state-preserving Clear behavior.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

@@ -1,0 +1,18 @@
+# schema_version=1
+# id	input	expected
+empty	no-transitions	revision-zero-empty
+equal-time	equal-timestamps	stable-arrival-order
+retained-out-of-order	older-retained	stable-insertion
+time-boundary	30-seconds	retained
+time-first-excess	older-than-30-seconds	evicted-oldest
+capacity-boundary	2404	retained
+capacity-first-excess	2405	evicted-oldest
+inserted-and-evicted	older-insert-under-pressure	replay-exact
+invalid-channel	channel-5	rejected-unchanged
+negative-time	negative	rejected-unchanged
+out-of-horizon	before-lower-bound	dropped-diagnosed
+clear-idle	idle	reset-state-preserved
+clear-running	running	reset-state-preserved
+clear-stopped	stopped	reset-state-preserved
+clear-failed	failed	reset-state-preserved
+clear-rebase	later-source-time	capture-epoch-time
