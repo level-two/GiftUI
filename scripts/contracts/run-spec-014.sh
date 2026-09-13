@@ -56,6 +56,7 @@ declared_inputs() {
             "${PROJECT_ROOT}/Tests/GiftUIRasterCoreTests" \
             "${PROJECT_ROOT}/Tests/GiftUIDisplayCoreTests" \
             "${PROJECT_ROOT}/Tests/GiftUIBackendIntegrationTests" \
+            "${PROJECT_ROOT}/firmware/nrf52840/applications/spec014-backend-probe" \
             -type f -print
         printf '%s\n' \
             "${PROJECT_ROOT}/Package.swift" \
@@ -70,6 +71,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/compare-spec-014-profiles.rb" \
             "${SCRIPT_DIR}/collect-spec-014-armv6-evidence.sh" \
             "${SCRIPT_DIR}/collect-spec-014-macos-profile.sh" \
+            "${SCRIPT_DIR}/collect-spec-014-nrf-evidence.sh" \
             "${SCRIPT_DIR}/check-spec-014-frame-work.rb" \
             "${SCRIPT_DIR}/check-spec-014-contributors.rb" \
             "${SCRIPT_DIR}/check-spec-014-capability-fixtures.rb" \
@@ -267,6 +269,11 @@ case "${profile}" in
         run_required armv6-link-and-resource-evidence \
             "${SCRIPT_DIR}/collect-spec-014-armv6-evidence.sh" \
             "${staging}/armv6-evidence"
+        ;;
+    nrf52840-embedded)
+        run_required nrf-link-and-resource-evidence \
+            "${SCRIPT_DIR}/collect-spec-014-nrf-evidence.sh" \
+            "${staging}/nrf-evidence"
         ;;
 esac
 run_required declaration-layout-and-imports \

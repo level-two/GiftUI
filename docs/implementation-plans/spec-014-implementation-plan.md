@@ -508,7 +508,7 @@ all criteria are ready for evidence-based conformance review.
       corpus for `armv6-unknown-linux-gnueabihf`. Record compiler/SDK identity,
       ARMv6 target, layouts, allocations, resources, timings where executable,
       and link map. Do not deploy or claim `armv6l`/PiScreen evidence.
-- [ ] `T8.5` — Preflight with `scripts/nrf52840/doctor.sh --probe` under the
+- [x] `T8.5` — Preflight with `scripts/nrf52840/doctor.sh --probe` under the
       repository nRF toolchain skill, then compile/link the exact 480 x 4
       static tiled fixture for `nrf52840dk/nrf52840` using
       `armv7em-none-none-eabi` and Zephyr's Cortex-M4F hard-float flags. Verify
@@ -1154,6 +1154,18 @@ layouts, zero allocator references in the optimized resource path, linked
 sections/symbols, a bounded 7,680-byte tile/stack workspace, 15 tile visits,
 240 regions, 15 payloads, and explicit non-executed timing disposition.
 No remote access, deployment, service restart, or PiScreen claim occurred.
+
+`T8.5` is complete. The repository nRF skill's pinned manifest was inspected,
+then `doctor.sh` and its hardware-free `--probe` passed with Swift 6.3.2,
+Zephyr 4.3.0 at the pinned revision, SDK 0.17.4, board
+`nrf52840dk/nrf52840`, and Swift target `armv7em-none-none-eabi`. The SPEC-014
+collector compiled every required module using `-Osize`, whole-module Embedded
+Swift, Cortex-M4F/VFPv4-D16 hard-float flags, and linked baseline/candidate
+Zephyr ELFs. ELF attributes prove VFP register arguments. Evidence records
+zero allocation instructions in the optimized entry, exact 3,840-byte 480 x 4
+tile/payload/in-flight bounds, 80 tile visits/payloads, 320 regions, section
+deltas, symbols, maps, and no retained full framebuffer or recording list.
+No flash or connected-TFT claim occurred.
 
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
