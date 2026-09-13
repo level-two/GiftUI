@@ -406,7 +406,7 @@ occurrences without platform branches or closure actions.
       approved opaque color, foreground, background, stack, spacer, padding,
       alignment, and frame surface; record the semantic/layout transcript for
       all acquisition/window/error states.
-- [ ] `T4.3` — Implement one grid Canvas plus one trace Canvas for each explicit
+- [x] `T4.3` — Implement one grid Canvas plus one trace Canvas for each explicit
       channel. Derive ruler labels, 11 vertical/one center line, starting level
       through the lower bound, exact transition filtering and x mapping,
       vertical level changes, right-edge extension, current HIGH/LOW at capture
@@ -775,6 +775,9 @@ dynamic collections, platform branches, or view-owned lifecycle work.
 `T4.2` adds the exact title, subtitle, status, channel-level, action-label,
 error, acquisition-control, and selected-window-control semantics with the
 complete four-state by three-window normalized matrix.
+`T4.3` adds three-label ruler formatting, one 12-subpath grid Canvas, four
+streamed digital trace Canvases, exact lower/upper-bound transition handling,
+current-level projection, and the normative `5/5/202/12/832/16` workload.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

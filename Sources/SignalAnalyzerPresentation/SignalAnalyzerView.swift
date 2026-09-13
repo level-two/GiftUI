@@ -47,28 +47,35 @@ package struct SignalAnalyzerWaveformView: View {
     package let visibleRange: Range<Duration>
 
     package var body: some View {
-        VStack {
-            SignalAnalyzerTimeRulerView(visibleRange: visibleRange)
-            SignalAnalyzerChannelWaveformView(
-                channelID: SignalChannelID(rawValue: 1),
-                name: BoundedText("CH1")!,
-                level: capture.currentLevel(for: SignalChannelID(rawValue: 1))
-            )
-            SignalAnalyzerChannelWaveformView(
-                channelID: SignalChannelID(rawValue: 2),
-                name: BoundedText("CH2")!,
-                level: capture.currentLevel(for: SignalChannelID(rawValue: 2))
-            )
-            SignalAnalyzerChannelWaveformView(
-                channelID: SignalChannelID(rawValue: 3),
-                name: BoundedText("CH3")!,
-                level: capture.currentLevel(for: SignalChannelID(rawValue: 3))
-            )
-            SignalAnalyzerChannelWaveformView(
-                channelID: SignalChannelID(rawValue: 4),
-                name: BoundedText("CH4")!,
-                level: capture.currentLevel(for: SignalChannelID(rawValue: 4))
-            )
+        ZStack {
+            SignalAnalyzerGridView()
+            VStack {
+                SignalAnalyzerTimeRulerView(visibleRange: visibleRange)
+                SignalAnalyzerChannelWaveformView(
+                    channelID: SignalChannelID(rawValue: 1),
+                    name: BoundedText("CH1")!,
+                    capture: capture,
+                    visibleRange: visibleRange
+                )
+                SignalAnalyzerChannelWaveformView(
+                    channelID: SignalChannelID(rawValue: 2),
+                    name: BoundedText("CH2")!,
+                    capture: capture,
+                    visibleRange: visibleRange
+                )
+                SignalAnalyzerChannelWaveformView(
+                    channelID: SignalChannelID(rawValue: 3),
+                    name: BoundedText("CH3")!,
+                    capture: capture,
+                    visibleRange: visibleRange
+                )
+                SignalAnalyzerChannelWaveformView(
+                    channelID: SignalChannelID(rawValue: 4),
+                    name: BoundedText("CH4")!,
+                    capture: capture,
+                    visibleRange: visibleRange
+                )
+            }
         }
     }
 }
@@ -77,10 +84,13 @@ package struct SignalAnalyzerTimeRulerView: View {
     package let visibleRange: Range<Duration>
 
     package var body: some View {
+        let labels = SignalAnalyzerRulerLabels(visibleRange: visibleRange)
         HStack {
+            Text(labels.lowerBound)
             Spacer()
+            Text(labels.midpoint)
             Spacer()
-            Spacer()
+            Text(labels.upperBound)
         }
     }
 }
@@ -88,22 +98,133 @@ package struct SignalAnalyzerTimeRulerView: View {
 package struct SignalAnalyzerChannelWaveformView: View {
     package let channelID: SignalChannelID
     package let name: BoundedText
-    package let level: DigitalLevel
+    package let capture: SignalCapture
+    package let visibleRange: Range<Duration>
 
     package var body: some View {
         HStack {
             Text(name)
-            SignalAnalyzerTraceView(channelID: channelID)
-            Text(level.label)
+            SignalAnalyzerTraceView(
+                channelID: channelID,
+                capture: capture,
+                visibleRange: visibleRange
+            )
+            Text(capture.currentLevel(for: channelID).label)
         }
+    }
+}
+
+package struct SignalAnalyzerGridView: View {
+    package var body: some View {
+        makeSignalAnalyzerGridCanvas()
     }
 }
 
 package struct SignalAnalyzerTraceView: View {
     package let channelID: SignalChannelID
+    package let capture: SignalCapture
+    package let visibleRange: Range<Duration>
 
     package var body: some View {
-        EmptyView()
+        makeSignalAnalyzerTraceCanvas(
+            channelID: channelID,
+            capture: capture,
+            visibleRange: visibleRange
+        )
+    }
+}
+
+package func makeSignalAnalyzerGridCanvas() -> Canvas {
+    Canvas { (context, size) throws(DrawingError) in
+        try drawSignalAnalyzerGrid(context: &context, size: size)
+    }
+}
+
+package func makeSignalAnalyzerTraceCanvas(
+    channelID: SignalChannelID,
+    capture: SignalCapture,
+    visibleRange: Range<Duration>
+) -> Canvas {
+    Canvas { (context, size) throws(DrawingError) in
+        try drawSignalAnalyzerTrace(
+            context: &context,
+            size: size,
+            channelID: channelID,
+            capture: capture,
+            visibleRange: visibleRange
+        )
+    }
+}
+
+package func drawSignalAnalyzerGrid(
+    context: inout GraphicsContext,
+    size: Size
+) throws(DrawingError) {
+    guard size.width > 0, size.height > 0 else { throw .invalidValue }
+    try context.withPath { (context, path) throws(DrawingError) in
+        for index in 0 ... 10 {
+            let x = GeometryScalar(Int64(size.width) * Int64(index) / 10)
+            try path.move(to: Point(x: x, y: 0))
+            try path.addLine(to: Point(x: x, y: size.height))
+        }
+        let centerY = size.height / 2
+        try path.move(to: Point(x: 0, y: centerY))
+        try path.addLine(to: Point(x: size.width, y: centerY))
+        try context.stroke(path, with: .color(.gray), lineWidth: 1)
+    }
+}
+
+package func drawSignalAnalyzerTrace(
+    context: inout GraphicsContext,
+    size: Size,
+    channelID: SignalChannelID,
+    capture: SignalCapture,
+    visibleRange: Range<Duration>
+) throws(DrawingError) {
+    guard size.width > 0, size.height >= 4 else { throw .invalidValue }
+    var level = SignalAnalyzerWaveformGeometry.startingLevel(
+        capture: capture,
+        channelID: channelID,
+        visibleLowerBound: visibleRange.lowerBound
+    )
+    try context.withPath { (context, path) throws(DrawingError) in
+        try path.move(
+            to: Point(
+                x: 0,
+                y: SignalAnalyzerWaveformGeometry.y(for: level, height: size.height)
+            )
+        )
+        for transition in capture.transitions
+        where transition.channelID == channelID
+            && transition.timestamp > visibleRange.lowerBound
+            && transition.timestamp <= visibleRange.upperBound
+        {
+            let x = SignalAnalyzerWaveformGeometry.x(
+                for: transition.timestamp,
+                visibleRange: visibleRange,
+                width: size.width
+            )
+            try path.addLine(
+                to: Point(
+                    x: x,
+                    y: SignalAnalyzerWaveformGeometry.y(for: level, height: size.height)
+                )
+            )
+            level = transition.level
+            try path.addLine(
+                to: Point(
+                    x: x,
+                    y: SignalAnalyzerWaveformGeometry.y(for: level, height: size.height)
+                )
+            )
+        }
+        try path.addLine(
+            to: Point(
+                x: size.width,
+                y: SignalAnalyzerWaveformGeometry.y(for: level, height: size.height)
+            )
+        )
+        try context.stroke(path, with: .color(.green), lineWidth: 1)
     }
 }
 
@@ -189,7 +310,7 @@ private extension DigitalLevel {
     }
 }
 
-private extension SignalCapture {
+package extension SignalCapture {
     func currentLevel(for channelID: SignalChannelID) -> DigitalLevel {
         var result = baselineLevel(for: channelID)
         for transition in transitions where transition.channelID == channelID {

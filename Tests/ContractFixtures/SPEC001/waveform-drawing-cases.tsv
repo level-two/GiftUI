@@ -1,0 +1,15 @@
+# schema_version=1
+# property	expected
+canvas-occurrences	5
+strokes	5
+grid-vertical-subpaths	11
+grid-horizontal-subpaths	1
+grid-live-points	24
+trace-live-points-accepted-maximum	202
+snapshot-points	832
+snapshot-subpaths	16
+lower-bound-transition	starting-level-only
+upper-bound-transition	included
+empty-trace-points	2
+current-level-reference	capture-duration
+ruler-fractional-digits	2
