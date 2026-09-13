@@ -78,4 +78,6 @@ T7.2 cleanup and disposition evidence is in
 [`endpoint-stream-cleanup.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/endpoint-stream-cleanup.md).
 T7.3's owner mapping matrix is recorded in
 [`backend-owner-failure-mapping.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/backend-owner-failure-mapping.md).
-Links for T7.4-T7.5 will be added with those tasks.
+T7.4's live projection and diagnostic-isolation evidence is in
+[`endpoint-health-diagnostics.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/endpoint-health-diagnostics.md).
+The T7.5 corpus link will be added with that task.

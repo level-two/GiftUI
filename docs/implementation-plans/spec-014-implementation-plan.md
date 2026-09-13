@@ -462,7 +462,7 @@ preserves failure/health/diagnostic ownership.
       reentrancy, and invariant condition to the exact SPEC-003 condition,
       origin, scope, and containment in the stated detection order. Low-level
       display/transport modules must not import execution correlation.
-- [ ] `T7.4` — Project authoritative target health through the endpoint without
+- [x] `T7.4` — Project authoritative target health through the endpoint without
       caching or reconstructing it. Record exactly one unavailable component
       fact for the first post-acceptance transport failure or one quiesced
       runtime fact for an invariant failure. Run diagnostics omitted, selected,
@@ -1080,6 +1080,18 @@ reentrancy preserved. Only accepted transport/display loss maps to contained
 presentation-integration facility unavailability. Tests cover every raster
 and display enum case and exact fact fields. The adapter source imports no
 execution correlation, and lower display/transport modules remain unchanged.
+
+`T7.4` is complete. The endpoint's health accessor directly queries its
+session sink on every call and stores no health snapshot. A reference-backed
+test target proves that unavailable and quiesced transitions made after
+endpoint construction are immediately visible through that projection. The
+Display Core responsibility suite proves exactly one failure fact and health
+transition at the first accepted transport or invariant failure. Endpoint
+tests cover diagnostics omitted and selected, while the shared execution
+isolation suite covers saturated, dropped, and failing diagnostic sinks; all
+modes preserve the offer result, body count, output, capabilities, health
+authority, and input-eligibility state.
+
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 

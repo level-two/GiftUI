@@ -51,6 +51,17 @@ private struct OfferRaster: TextRasterResourceView {
     ) rethrows -> Result? { nil }
 }
 
+private final class OfferHealthBox {
+    var value = GiftUIOperationalHealth()
+
+    func record(
+        _ fact: GiftUIFailureFact,
+        resultingState: GiftUIOperationalHealthState
+    ) {
+        value.recordFailure(fact, resultingState: resultingState)
+    }
+}
+
 private struct OfferSessionSink: RasterOfferSessionSink {
     let capacity = RenderSinkCapacity(
         maximumOperations: 1,
@@ -73,6 +84,7 @@ private struct OfferSessionSink: RasterOfferSessionSink {
     private(set) var discardCount = 0
     private(set) var cancelCount = 0
     private(set) var forcedFinishCount = 0
+    let healthBox = OfferHealthBox()
 
     mutating func reserveFrame(
         descriptor: RasterSurfaceDescriptor,
@@ -102,7 +114,7 @@ private struct OfferSessionSink: RasterOfferSessionSink {
     }
 
     borrowing func health() -> GiftUIOperationalHealth {
-        GiftUIOperationalHealth()
+        healthBox.value
     }
 
     mutating func begin(_ header: RenderPlanHeader) -> Bool { true }
@@ -424,4 +436,65 @@ func incompleteCompleteResultIsContractViolationAndCancellable() {
     #expect(endpoint.sink.discardCount == 1)
     #expect(endpoint.sink.cancelCount == 1)
     #expect(endpoint.sink.forcedFinishCount == 0)
+}
+
+@Test
+func endpointProjectsLiveTargetOwnedHealthWithoutCaching() {
+    let endpoint = makeOfferEndpoint()
+    #expect(endpoint.health() == GiftUIOperationalHealth())
+
+    let mapping = RasterBackendOwnerFailureAdapter.map(
+        DisplayTargetError.transportUnavailable,
+        at: .postAcceptance
+    )
+    endpoint.sink.healthBox.record(
+        mapping.fact,
+        resultingState: .unavailable
+    )
+    let unavailable = endpoint.health()
+    #expect(unavailable.state == .unavailable)
+    #expect(unavailable.failureCount == 1)
+    #expect(unavailable.transitionCount == 1)
+
+    let invariant = RasterBackendOwnerFailureAdapter.map(
+        DisplayTargetError.invariantViolation,
+        at: .postAcceptance
+    )
+    endpoint.sink.healthBox.record(
+        invariant.fact,
+        resultingState: .quiesced
+    )
+    let quiesced = endpoint.health()
+    #expect(quiesced.state == .quiesced)
+    #expect(quiesced.failureCount == 2)
+    #expect(quiesced.transitionCount == 2)
+}
+
+@Test
+func diagnosticSelectionCannotChangeOfferOrHealth() {
+    let selections = [
+        GiftUIDiagnosticSelection(
+            kindMask: 0,
+            originMask: 0,
+            minimumSeverity: .critical
+        ),
+        GiftUIDiagnosticSelection(
+            kindMask: .max,
+            originMask: .max,
+            minimumSeverity: .debug
+        ),
+    ]
+    for selection in selections {
+        _ = selection
+        var endpoint = makeOfferEndpoint()
+        let result = endpoint.offer(provenance: offerProvenance) { sink in
+            _ = sink.finish()
+            return .complete
+        }
+        #expect(
+            result == FrameOfferResult(disposition: .accepted, failure: nil)!
+        )
+        #expect(endpoint.health() == GiftUIOperationalHealth())
+        #expect(endpoint.bodyCallCount == 1)
+    }
 }
