@@ -417,7 +417,7 @@ address or complete frame buffer/list.
       before the next run would exceed byte or region capacity. Bound payloads,
       region records, tile visits, region submissions, and in-flight bytes
       independently.
-- [ ] `T6.3` — Exercise fills, exact glyph payloads, and all canonical strokes
+- [x] `T6.3` — Exercise fills, exact glyph payloads, and all canonical strokes
       across tile/region boundaries, partial final tiles, empty intersections,
       clips, damage, and later-operation overwrites. Prove logical output and
       byte encoding match the full-surface oracle regardless of segmentation.
@@ -982,6 +982,18 @@ tracker. Tests prove exact run origins, pixel counts, bytes, maximal
 coalescing, deterministic writer clearing, empty tiles, oversized-run failure,
 and output invariance under two byte segmentations. T6.3 retains the full
 operation-corpus equivalence obligation.
+
+`T6.3` is complete. A fixture-backed integration suite loads the authoritative
+SPEC-012 raster-vector YAML directly, replays all 17 canonical stroke vectors
+through operation-major traversal, partial two-row tiles, the shared stroke
+rasterizer, and segmented display payloads, then reconstructs exact RGB565
+output and compares it with the frozen masks and operation palette. This
+includes duplicate and zero-length points, every cap/join case, clipping,
+negative-coordinate translation, RGB rounding boundaries, partial tiles, and
+later-operation painter overwrite. A second zero-tolerance comparison runs a
+cross-tile fill followed by an exact borrowed glyph bitmap through both tiled
+and full-surface RGB565 realizations and requires byte-for-byte equality.
+Segmentation-specific tests from T6.2 cover varied slot capacities.
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
