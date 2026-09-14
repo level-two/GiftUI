@@ -495,7 +495,7 @@ for independent conformance review.
 - [x] `T9.2` — Run the complete semantic/layout/invocation/path/plan/cycle/
       combined-render/startup/failure corpus for every applicable profile and
       compare normalized results, identities, counts, order, and first failure.
-- [ ] `T9.3` — Measure closure/capture, construction, snapshot, lowering,
+- [x] `T9.3` — Measure closure/capture, construction, snapshot, lowering,
       operation, raster, point/stroke, plan, derived storage, peak simultaneous
       workspace, stack, heap, and timing separately. Report generated capture
       storage, live Path storage, sealed plan storage, combined render workspace,
@@ -1127,3 +1127,13 @@ compile the same declarations and exact value checks on all four compilers,
 while the SPEC-014 consumer join runs all 17 raster vectors through both
 full-surface and tiled paths with zero mask or byte difference. See the
 [cross-profile corpus evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-9/cross-profile-corpus.md).
+
+`T9.3` is complete. All four compilers reproduce the seven Drawing value
+layouts exactly. Focused counters report callable capture, live Path, sealed
+plan, combined traversal, and linear snapshot work separately; SPEC-013 adds
+the sixteen distinct production storage families, stack stages, allocation,
+and workload timing. SPEC-014 reports raster workspace, payload/in-flight
+storage, stack, allocation, linked sections, and timing separately for the Pi
+and nRF targets. The pristine collectors now use the repository dependency
+cache, eliminating network-dependent evidence reruns. See the
+[resource evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-9/resources.md).

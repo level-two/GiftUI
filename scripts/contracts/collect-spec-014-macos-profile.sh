@@ -35,7 +35,8 @@ record_command() {
 
 for suite in GiftUISurfaceCoreTests GiftUIRasterCoreTests GiftUIDisplayCoreTests GiftUIBackendIntegrationTests; do
     command=(swift test --disable-sandbox --package-path "${PROJECT_ROOT}" \
-        --scratch-path "${output}/swiftpm" -Xswiftc "${profile_flag}" \
+        --scratch-path "${output}/swiftpm" --cache-path "${PROJECT_ROOT}/.build" \
+        -Xswiftc "${profile_flag}" \
         --filter "${suite}")
     record_command "${command[@]}"
     "${command[@]}" >>"${log}" 2>&1

@@ -35,7 +35,8 @@ sdk_root="${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}"
 scratch="${output}/swiftpm"
 
 build=("${swift_driver}" build --disable-sandbox --package-path "${PROJECT_ROOT}" \
-    --scratch-path "${scratch}" --destination "${GIFTUI_PI_STATIC_DESTINATION}" \
+    --scratch-path "${scratch}" --cache-path "${PROJECT_ROOT}/.build" \
+    --destination "${GIFTUI_PI_STATIC_DESTINATION}" \
     --configuration release --target GiftUIBackendIntegration \
     --static-swift-stdlib -Xswiftc -whole-module-optimization \
     -Xswiftc -DGIFTUI_DYNAMIC_PROFILE)
