@@ -154,6 +154,29 @@ struct ObservableStateReplacementTransaction: Equatable, Sendable {
         liveRegistration.acceptReport(attachment)
     }
 
+    mutating func acceptLiveReport(
+        _ attachment: _GiftUIObservationAttachment,
+        executionPhase: ExecutionPhase
+    ) -> _GiftUIObservableChangeReportOutcome {
+        if let failure = liveRegistration.acceptReport(attachment) {
+            return failure == .staleAttachment ? .staleAttachment : .invariantViolation
+        }
+        guard executionPhase == .mutating else {
+            return .invalidPhaseSafetyNotProven
+        }
+        guard !isDirty else { return .coalesced }
+        isDirty = true
+        return .dirtied
+    }
+
+    mutating func clearDirtyAfterPublication() {
+        isDirty = false
+    }
+
+    mutating func retireLive() -> ObservableStateError? {
+        liveRegistration.retire(attachment: liveReservation.attachment)
+    }
+
     private mutating func recordFailure(_ failure: ObservableStateError) {
         guard firstFailure == nil else { return }
         firstFailure = failure

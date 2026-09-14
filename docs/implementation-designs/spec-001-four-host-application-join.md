@@ -68,6 +68,10 @@ dynamic and static slot storage. It deliberately does not consume or own the
 one checked cursor also reserves replacement generations, preserving the live
 generation on discard and committing the reserved value only after replacement
 success so later reinsertion cannot alias either generation.
+`ObservableStateReplacementBridge` is the narrow package seam over the
+internal focused replacement transaction. Profile roots supply the workspace
+generation and consume exact attachment/commit outcomes without gaining access
+to or duplicating the transaction state machine.
 `DynamicObservableModelStorage` now supplies the first bounded Dynamic-profile
 typed storage slice: it binds a transient wrapper to the preserved model and
 routes assignment outward for later atomic replacement. Its second typed

@@ -76,6 +76,17 @@ and discard candidate 4 while identity 2 stays live. Reproduce with:
 swift test --filter productionReplacementStorageIsProfileEquivalent
 ```
 
+`ObservableStateReplacementBridgeTests` prove profile roots can supply the
+workspace generation while SPEC-010's replacement transaction remains
+internal. The bridge preserves candidate poisoning, exact commit attachments,
+dirty clearing/coalescing, live retirement, rollback, and stale-report
+behavior. Reproduce with:
+
+```sh
+swift test --filter ObservableStateReplacement
+ruby scripts/contracts/check-spec-010-replacement-transaction.rb
+```
+
 `ObservableStateRegistrationBridgeTests` exercise the root-facing registration
 façade. They prove one sink is issued for one pending attachment, activation
 occurs only after the exact return, a mismatched generation is stale, retirement

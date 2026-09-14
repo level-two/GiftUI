@@ -471,6 +471,10 @@ coalescing behavior.
       conformance transcripts prove these Dynamic and Static mechanisms expose
       equal materialization, preservation, read, assignment-routing, staging,
       commit, discard, and stored-model results.
+      A narrow replacement bridge now exposes supplied-generation begin,
+      candidate report/return validation, commit/discard, live report,
+      dirty-clear, and retirement operations while keeping SPEC-010's focused
+      replacement transaction internal as required.
       A focused package registration bridge now composes the existing finite
       lifecycle into single sink issuance, attach-time report poisoning, exact
       attachment-return activation, stale-report rejection, retirement, and
