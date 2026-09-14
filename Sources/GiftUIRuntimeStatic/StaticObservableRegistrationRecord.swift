@@ -82,6 +82,14 @@ package struct StaticObservableRegistrationRecord {
         return bridge.acceptReport(reported, phase: phase)
     }
 
+    package mutating func clearDirtyAfterPublication() {
+        if replacementBridge != nil {
+            replacementBridge!.clearDirtyAfterPublication()
+        } else {
+            bridge.clearDirtyAfterPublication()
+        }
+    }
+
     package borrowing func preflightReplacement(
         isCompatible: Bool,
         candidateAlreadyOwned: Bool,

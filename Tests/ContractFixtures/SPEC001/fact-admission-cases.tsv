@@ -19,3 +19,4 @@ missing-producer-context	ordinary-fact	0	runtime-unavailable
 application-rejection-mapping	all-host-rejections	0	exact-four-case-application-vocabulary
 production-mutation-join	sealed-snapshot+compact	2	exactly-once-model-application
 production-post-seal	later-compact	1	next-runtime-opportunity
+twenty-report-cycle	20-transition-facts	20	one-wake+one-dirty-transition+one-complete-publication

@@ -108,6 +108,14 @@ where Model: _GiftUIObservableReference {
         )
     }
 
+    package func clearDirtyAfterPublication() {
+        if replacementBridge != nil {
+            replacementBridge!.clearDirtyAfterPublication()
+        } else {
+            bridge.clearDirtyAfterPublication()
+        }
+    }
+
     package func replace(
         with replacement: consuming Model,
         generation: ObservableTargetGeneration,

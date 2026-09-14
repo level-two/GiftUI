@@ -59,6 +59,7 @@ private struct RootLifecycleTranscript: Equatable {
     let initialReport: _GiftUIObservableChangeReportOutcome?
     let repeated: ObservableStateResult
     let repeatedIdentity: UInt8?
+    let isDirtyAfterRepeatedPublication: Bool
     let replacement: ObservableStateResult
     let replacementGeneration: ObservableTargetGeneration?
     let replacementReport: _GiftUIObservableChangeReportOutcome?
@@ -104,6 +105,7 @@ private func dynamicRootLifecycleTranscript() -> RootLifecycleTranscript {
     )
     _ = root.finishCandidate(.publish)
     let repeatedIdentity = root.withModel { $0.identity }
+    let isDirtyAfterRepeatedPublication = root.isDirty
 
     let replacementModel = DynamicRootTranscriptModel(identity: 3)
     let replacement = root.replace(with: replacementModel)
@@ -139,6 +141,7 @@ private func dynamicRootLifecycleTranscript() -> RootLifecycleTranscript {
         initialReport: initialReport,
         repeated: repeated,
         repeatedIdentity: repeatedIdentity,
+        isDirtyAfterRepeatedPublication: isDirtyAfterRepeatedPublication,
         replacement: replacement,
         replacementGeneration: replacementGeneration,
         replacementReport: replacementReport,
@@ -182,6 +185,7 @@ private func staticRootLifecycleTranscript() -> RootLifecycleTranscript {
     )
     _ = root.finishCandidate(.publish)
     let repeatedIdentity = root.withModel { $0.identity }
+    let isDirtyAfterRepeatedPublication = root.isDirty
 
     let replacement = root.replace(
         with: StaticRootTranscriptModel(identity: 3),
@@ -211,6 +215,7 @@ private func staticRootLifecycleTranscript() -> RootLifecycleTranscript {
         initialReport: initialReport,
         repeated: repeated,
         repeatedIdentity: repeatedIdentity,
+        isDirtyAfterRepeatedPublication: isDirtyAfterRepeatedPublication,
         replacement: replacement,
         replacementGeneration: replacementGeneration,
         replacementReport: replacementReport,
@@ -243,6 +248,7 @@ private func normalize(
     #expect(dynamic.initialReport == .dirtied)
     #expect(dynamic.repeated == .success(.preserved))
     #expect(dynamic.repeatedIdentity == 1)
+    #expect(!dynamic.isDirtyAfterRepeatedPublication)
     #expect(dynamic.replacement == .success(.replaced))
     #expect(dynamic.replacementGeneration == ObservableTargetGeneration(rawValue: 1))
     #expect(dynamic.replacementReport == .coalesced)

@@ -115,7 +115,12 @@ where Model: _GiftUIObservableReference, Identity: Equatable & Sendable {
             }
         }
         candidateIntroducedRegistration = false
-        guard shouldRetire else { return result }
+        guard shouldRetire else {
+            if case .publish = disposition {
+                registration.clearDirtyAfterPublication()
+            }
+            return result
+        }
         guard case .success = registration.retire() else {
             return .failure(.invariantViolation)
         }

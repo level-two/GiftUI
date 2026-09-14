@@ -1,6 +1,9 @@
+import GiftUI
 import GiftUIExecution
 import GiftUIFailureCore
+import GiftUIObservableState
 import GiftUIRuntimeCore
+import GiftUIRuntimeDynamic
 import SignalAnalyzerDomain
 import SignalAnalyzerHost
 import SignalAnalyzerPresentation
@@ -11,18 +14,23 @@ import Testing
 private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner {
     let admission: DynamicSignalAnalyzerHostFactAdmission
     let model: SignalAnalyzerViewModel
+    let observableRoot: DynamicObservableRootAdapter<SignalAnalyzerViewModel, UInt32>
     var deferredAfterSeal: SignalAnalyzerPresentationFact?
     private(set) var appliedFacts: [SignalAnalyzerPresentationFact] = []
+    private(set) var dirtyTransitionCount = 0
+    private(set) var publishedStates: [SignalAnalyzerViewState] = []
     private(set) var finalizationCount = 0
     private var changed = false
 
     init(
         admission: DynamicSignalAnalyzerHostFactAdmission,
         model: SignalAnalyzerViewModel,
+        observableRoot: DynamicObservableRootAdapter<SignalAnalyzerViewModel, UInt32>,
         deferredAfterSeal: SignalAnalyzerPresentationFact?
     ) {
         self.admission = admission
         self.model = model
+        self.observableRoot = observableRoot
         self.deferredAfterSeal = deferredAfterSeal
     }
 
@@ -31,6 +39,7 @@ private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner
     }
 
     mutating func applyAdmittedWork() -> RuntimePipelineMutationResult {
+        observableRoot.setExecutionPhase(.mutating)
         if let deferredAfterSeal {
             guard admission.beginProducer(.action) else {
                 return .failure(.execution(.reentrancyViolation))
@@ -45,18 +54,44 @@ private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner
 
         while let (_, _, fact) = admission.takeNextSealed() {
             appliedFacts.append(fact)
+            let wasDirty = observableRoot.isDirty
             switch model.apply(fact) {
-            case .applied(let factChanged): changed = changed || factChanged
+            case .applied(let factChanged):
+                changed = changed || factChanged
+                if !wasDirty, observableRoot.isDirty {
+                    dirtyTransitionCount += 1
+                }
             case .rejected: return .failure(.execution(.invariantViolation))
             }
         }
         return .applied(changed)
     }
 
-    mutating func freezeObservableMutation() -> RuntimePipelineStepResult { .advanced }
+    mutating func freezeObservableMutation() -> RuntimePipelineStepResult {
+        observableRoot.setExecutionPhase(.deriving)
+        return .advanced
+    }
 
     mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult {
-        .advanced
+        guard observableRoot.beginCandidate() == .success(.candidateStarted) else {
+            return .failure(.execution(.invariantViolation))
+        }
+        var state = State(wrappedValue: model)
+        switch observableRoot.encounter(
+            structuralIdentity: 0x5341_0100,
+            declarationOrdinal: 0,
+            state: &state,
+            replacementRoute: { _ in }
+        ) {
+        case .success(.preserved):
+            return .advanced
+        case .failure(let failure):
+            _ = observableRoot.finishCandidate(.discard)
+            return .failure(.focusedOwner(.observableState(failure)))
+        case .success:
+            _ = observableRoot.finishCandidate(.discard)
+            return .failure(.execution(.invariantViolation))
+        }
     }
 
     mutating func resolveLayout() -> RuntimePipelineStepResult { .advanced }
@@ -65,7 +100,12 @@ private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner
     mutating func buildInteractionCandidate() -> RuntimePipelineStepResult { .advanced }
 
     mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult {
-        .published(
+        observableRoot.setExecutionPhase(.publishing)
+        guard case .success = observableRoot.finishCandidate(.publish) else {
+            return .failure(.execution(.invariantViolation))
+        }
+        publishedStates.append(model.state)
+        return .published(
             RuntimePipelinePublication(
                 semanticRevision: SemanticRevision(rawValue: 1),
                 changed: changed
@@ -77,7 +117,10 @@ private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner
     mutating func offerAndProduce() -> RuntimePipelineOfferResult { .backpressured }
     mutating func cleanup(_ action: RuntimeCleanupAction) {}
     mutating func applyDisposition(_ disposition: RuntimePipelineDisposition) {}
-    mutating func finalizePipeline() { finalizationCount += 1 }
+    mutating func finalizePipeline() {
+        observableRoot.setExecutionPhase(.idle)
+        finalizationCount += 1
+    }
 }
 
 @Test func analyzerClassifierMapsAllFactFamiliesIntoIndependentStores() {
@@ -150,6 +193,7 @@ private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner
 @Test func sealedAnalyzerFactsApplyOnceInsideTheProductionMutationPipeline() {
     let admission = DynamicSignalAnalyzerHostFactAdmission()
     let model = makeMutationModel()
+    let observableRoot = makeObservableRoot(model)
     let transition = SignalTransition(
         channelID: SignalChannelID(rawValue: 1),
         timestamp: .milliseconds(10),
@@ -174,6 +218,7 @@ private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner
     var first = SignalAnalyzerMutationPipelineOwner(
         admission: admission,
         model: model,
+        observableRoot: observableRoot,
         deferredAfterSeal: deferred
     )
     let firstResult = RuntimeCompletePipeline.run(owner: &first)
@@ -191,6 +236,7 @@ private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner
     var second = SignalAnalyzerMutationPipelineOwner(
         admission: admission,
         model: model,
+        observableRoot: observableRoot,
         deferredAfterSeal: nil
     )
     let secondResult = RuntimeCompletePipeline.run(owner: &second)
@@ -203,6 +249,52 @@ private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner
     #expect(secondCompletion.publication.changed)
     #expect(model.state.acquisitionState == .stopped)
     #expect(admission.takeNextSealed() == nil)
+}
+
+@Test func twentyAnalyzerFactsBecomeOneDirtyTransitionAndOneCompletePublication() {
+    let admission = DynamicSignalAnalyzerHostFactAdmission()
+    let model = makeMutationModel()
+    let observableRoot = makeObservableRoot(model)
+    var pacing = makeFactPacingController()
+    var wakeCount = 0
+
+    #expect(admission.beginProducer(.transition))
+    for index in 1 ... 20 {
+        let state: AcquisitionState = index.isMultiple(of: 2) ? .stopped : .running
+        #expect(admission.submit(.acquisitionState(state)) == .accepted(sequence: UInt32(index)))
+        if pacing.recordAcceptedFact(at: UInt64(index)) == .success(.requestWake) {
+            wakeCount += 1
+        }
+    }
+    admission.endProducer()
+
+    #expect(wakeCount == 1)
+    #expect(observableRoot.isDirty == false)
+    #expect(pacing.schedule(at: 249_999) == .wait(untilMicroseconds: 250_000))
+    #expect(pacing.beginOpportunity(at: 250_000) == .began(.admittedWork))
+
+    var owner = SignalAnalyzerMutationPipelineOwner(
+        admission: admission,
+        model: model,
+        observableRoot: observableRoot,
+        deferredAfterSeal: nil
+    )
+    let result = RuntimeCompletePipeline.run(owner: &owner)
+    #expect(pacing.completeOpportunity(at: 250_000) == nil)
+
+    guard case .completed(let completion) = result else {
+        Issue.record("expected the twenty-fact analyzer opportunity to complete")
+        return
+    }
+    #expect(owner.appliedFacts.count == 20)
+    #expect(owner.dirtyTransitionCount == 1)
+    #expect(owner.publishedStates == [model.state])
+    #expect(owner.finalizationCount == 1)
+    #expect(completion.publication.changed)
+    #expect(completion.publication.semanticRevision == SemanticRevision(rawValue: 1))
+    #expect(model.state.acquisitionState == .stopped)
+    #expect(!observableRoot.isDirty)
+    #expect(pacing.accumulatedReasons.isEmpty)
 }
 
 private func expectNext(
@@ -236,5 +328,38 @@ private func makeMutationModel() -> SignalAnalyzerViewModel {
         startAcquisition: StartSignalAcquisitionUseCase(repository: repository),
         stopAcquisition: StopSignalAcquisitionUseCase(repository: repository),
         clearCapture: ClearSignalCaptureUseCase(repository: repository)
+    )
+}
+
+private func makeObservableRoot(
+    _ model: SignalAnalyzerViewModel
+) -> DynamicObservableRootAdapter<SignalAnalyzerViewModel, UInt32> {
+    let root = DynamicObservableRootAdapter<SignalAnalyzerViewModel, UInt32>(capacity: 1)
+    var state = State(wrappedValue: model)
+    #expect(root.beginCandidate() == .success(.candidateStarted))
+    #expect(
+        root.encounter(
+            structuralIdentity: 0x5341_0100,
+            declarationOrdinal: 0,
+            state: &state,
+            replacementRoute: { _ in }
+        ) == .success(.materialized)
+    )
+    #expect(root.finishCandidate(.publish) == .success(.associationsCommitted))
+    return root
+}
+
+private func makeFactPacingController() -> HostWakePacingController {
+    HostWakePacingController(
+        policy: HostPacingPolicy(
+            minimumFrameIntervalMicroseconds: 250_000,
+            maximumFactServiceLatencyMicroseconds: 250_000,
+            minimumAcceptedTransitionSpacingMicroseconds: 12_500,
+            maximumTransitionFactsPerServiceWindow: 20,
+            maximumBootstrapFactsPerServiceWindow: 2,
+            maximumActionInducedFactsPerServiceWindow: 6,
+            maximumRetryableRefusals: 3
+        )!,
+        initialFrameOriginMicroseconds: 0
     )
 }

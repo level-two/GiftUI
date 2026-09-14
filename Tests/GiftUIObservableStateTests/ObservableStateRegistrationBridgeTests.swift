@@ -50,6 +50,9 @@ private final class BridgeModel: _GiftUIObservableReference {
     #expect(bridge.acceptReport(attachment, phase: .mutating) == .dirtied)
     #expect(bridge.isDirty)
     #expect(bridge.acceptReport(attachment, phase: .mutating) == .coalesced)
+    bridge.clearDirtyAfterPublication()
+    #expect(!bridge.isDirty)
+    #expect(bridge.acceptReport(attachment, phase: .mutating) == .dirtied)
     #expect(bridge.retire(attachment) == nil)
     #expect(!bridge.isDirty)
     #expect(

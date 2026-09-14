@@ -70,6 +70,10 @@ package struct ObservableStateRegistrationBridge {
         return .dirtied
     }
 
+    package mutating func clearDirtyAfterPublication() {
+        isDirty = false
+    }
+
     package mutating func retire(
         _ attachment: _GiftUIObservationAttachment
     ) -> ObservableStateError? {

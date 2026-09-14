@@ -560,6 +560,16 @@ coalescing behavior.
       and at most one wake while every fact applies, frames see one complete
       revision, and same-thread/distinct-executor callbacks never reenter the
       active mutation.
+      **Partial:** the Dynamic application endpoint, fixed host sequencer,
+      wake pacing, real analyzer model, Dynamic observable root, and complete
+      pipeline now run one 20-fact burst. All facts apply once after the paced
+      boundary, the first admission alone requests a wake, 20 model reports
+      produce one clean-to-dirty transition, and derivation publishes only the
+      final state in one semantic revision. Successful joint publication now
+      clears the observable dirty epoch in both production profile roots;
+      cross-profile evidence proves the next mutation can dirty once again.
+      Semantic-action application, retry/failure wake disposition, generated
+      Static fact admission, and concrete executable roots remain.
 - [ ] `T5.4` — Bind the six-action handler to the current model generation at
       the runtime coordinator. Exhaust exact dispatch, no capture/retention,
       pointer-down and admitted-action replacement, removal, failed/staged

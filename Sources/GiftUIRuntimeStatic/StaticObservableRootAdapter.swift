@@ -146,7 +146,12 @@ where Model: _GiftUIObservableReference, Identity: Equatable & Sendable {
                 ) == nil && registration.isActive
         }
         candidateIntroducedRegistration = false
-        guard shouldRetire else { return result }
+        guard shouldRetire else {
+            if case .publish = disposition {
+                registration.clearDirtyAfterPublication()
+            }
+            return result
+        }
         guard let attachment = registration.liveAttachment,
             registration.retire() == nil,
             storage.detachChangeSink(attachment),
