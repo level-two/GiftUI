@@ -467,7 +467,7 @@ exist before their respective production tasks land.
 contracts, and the six Signal Analyzer cases produce identical bounded
 interaction and dispatch transcripts at equal limits.
 
-- [ ] `T7.1` — Integrate and verify SPEC-013's bounded dynamic Interaction
+- [x] `T7.1` — Integrate and verify SPEC-013's bounded dynamic Interaction
       candidate/committed storage. Heap-backed internals are permitted only within
       configured limits and must expose no unbounded success behavior or
       different error/cancellation semantics.
@@ -789,3 +789,11 @@ only and remains absent from both production Interaction and its failure
 adapter. See the
 [diagnostic-isolation evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t6-4-diagnostic-isolation.md).
 Milestone 6 is complete; T7.1 is next.
+
+`T7.1` is complete. Runtime Dynamic now supplies bounded candidate,
+candidate-committed, committed, and hit-region array storage to the one common
+`InteractionState` algorithm. Every append checks its configured `UInt16`
+capacity before mutation, reset retains reserved capacity, and atomic commit
+exchanges both content and its matching bound. Focused tests prove exact-limit,
+first-excess, commit, and discard behavior. See the
+[Dynamic storage evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t7-1-dynamic-storage.md).
