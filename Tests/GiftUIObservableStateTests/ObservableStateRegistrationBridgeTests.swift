@@ -1,4 +1,5 @@
 import GiftUI
+import GiftUIExecution
 import Testing
 
 @testable import GiftUIObservableState
@@ -28,6 +29,33 @@ private final class BridgeModel: _GiftUIObservableReference {
     func report() -> _GiftUIObservableChangeReportOutcome? {
         sink?.reportChange()
     }
+}
+
+@Test func registrationBridgeOwnsMutationPhaseDirtyCoalescing() {
+    var bridge = ObservableStateRegistrationBridge()
+    let attachment = _GiftUIObservationAttachment(slot: 0, generation: 13)
+
+    #expect(bridge.beginAttachment(attachment) == nil)
+    guard let sink = bridge.makeSink(reportRoute: { _ in .dirtied }) else {
+        Issue.record("registration bridge did not issue its sink")
+        return
+    }
+    _ = consume sink
+    #expect(bridge.acceptAttachmentReturn(attachment) == nil)
+    #expect(
+        bridge.acceptReport(attachment, phase: .deriving)
+            == .invalidPhaseSafetyNotProven
+    )
+    #expect(!bridge.isDirty)
+    #expect(bridge.acceptReport(attachment, phase: .mutating) == .dirtied)
+    #expect(bridge.isDirty)
+    #expect(bridge.acceptReport(attachment, phase: .mutating) == .coalesced)
+    #expect(bridge.retire(attachment) == nil)
+    #expect(!bridge.isDirty)
+    #expect(
+        bridge.acceptReport(attachment, phase: .mutating)
+            == .staleAttachment
+    )
 }
 
 @Test func registrationBridgeIssuesOneSinkAndActivatesOnlyAfterExactReturn() {

@@ -72,7 +72,9 @@ routes assignment outward for later atomic replacement.
 value and confines its direct pointer binding to one synchronous traversal
 attempt; final address stability remains a generated-root responsibility.
 `ObservableStateRegistrationBridge` exposes the existing focused registration
-lifecycle to those roots without exposing or duplicating its state machine.
+lifecycle to those roots without exposing or duplicating its state machine. It
+also owns the profile-common mutation-phase gate and dirty/coalesced bit so a
+generated Static report function can delegate the same transition directly.
 `DynamicObservableModelRegistration` composes the bridge and typed box in one
 address-stable Dynamic owner and routes retained model reports back into that
 same registration record.

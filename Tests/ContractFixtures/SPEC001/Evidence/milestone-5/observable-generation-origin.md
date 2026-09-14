@@ -64,7 +64,9 @@ swift test --filter productionModelStorageBindingsAreProfileEquivalent
 façade. They prove one sink is issued for one pending attachment, activation
 occurs only after the exact return, a mismatched generation is stale, retirement
 detaches exactly once, and a report attempted during attach poisons the route
-before activation. Reproduce with:
+before activation. The bridge also owns the shared mutation-phase gate and
+single dirty bit: the first valid report dirties, the next coalesces, an invalid
+phase leaves the bit clear, and retirement clears it. Reproduce with:
 
 ```sh
 swift test --filter ObservableStateRegistrationBridge

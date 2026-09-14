@@ -1,9 +1,11 @@
 import GiftUI
+import GiftUIExecution
 
 package struct ObservableStateRegistrationBridge {
     private var lifecycle = ObservableStateRegistrationLifecycle()
     private var pendingAttachment: _GiftUIObservationAttachment?
     private var sinkWasIssued = false
+    private(set) package var isDirty = false
 
     package init() {}
 
@@ -19,6 +21,7 @@ package struct ObservableStateRegistrationBridge {
         }
         pendingAttachment = attachment
         sinkWasIssued = false
+        isDirty = false
         return nil
     }
 
@@ -52,15 +55,35 @@ package struct ObservableStateRegistrationBridge {
         lifecycle.acceptReport(attachment)
     }
 
+    package mutating func acceptReport(
+        _ attachment: _GiftUIObservationAttachment,
+        phase: ExecutionPhase
+    ) -> _GiftUIObservableChangeReportOutcome {
+        if let failure = lifecycle.acceptReport(attachment) {
+            return failure == .staleAttachment ? .staleAttachment : .invariantViolation
+        }
+        guard phase == .mutating else {
+            return .invalidPhaseSafetyNotProven
+        }
+        guard !isDirty else { return .coalesced }
+        isDirty = true
+        return .dirtied
+    }
+
     package mutating func retire(
         _ attachment: _GiftUIObservationAttachment
     ) -> ObservableStateError? {
-        lifecycle.retire(attachment: attachment)
+        let failure = lifecycle.retire(attachment: attachment)
+        if failure == nil {
+            isDirty = false
+        }
+        return failure
     }
 
     package mutating func shutdown() -> Bool {
         pendingAttachment = nil
         sinkWasIssued = false
+        isDirty = false
         return lifecycle.shutdown()
     }
 }

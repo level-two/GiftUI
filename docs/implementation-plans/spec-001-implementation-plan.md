@@ -467,7 +467,9 @@ coalescing behavior.
       A focused package registration bridge now composes the existing finite
       lifecycle into single sink issuance, attach-time report poisoning, exact
       attachment-return activation, stale-report rejection, retirement, and
-      shutdown for later address-stable roots. The Dynamic profile now composes
+      shutdown for later address-stable roots. The bridge also owns the common
+      mutation-phase check and one-bit dirty/coalesced transition, avoiding a
+      second Static report algorithm. The Dynamic profile now composes
       that bridge and typed storage in one stable owner: initial attachment,
       preserved rebinding, mutation-phase dirty/coalesced reports, attach-time
       cleanup, and retirement are integrated. A Dynamic root adapter now joins

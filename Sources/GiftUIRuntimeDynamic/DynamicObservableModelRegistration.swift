@@ -8,12 +8,15 @@ where Model: _GiftUIObservableReference {
     private var bridge = ObservableStateRegistrationBridge()
     private var attachment: _GiftUIObservationAttachment?
     private var phase: ExecutionPhase = .idle
-    private(set) package var isDirty = false
 
     package init() {}
 
     package var isActive: Bool {
         bridge.isActive
+    }
+
+    package var isDirty: Bool {
+        bridge.isDirty
     }
 
     package func bind(
@@ -80,21 +83,12 @@ where Model: _GiftUIObservableReference {
         _ = storage.detachChangeSink(attachment)
         storage.removeModel()
         self.attachment = nil
-        isDirty = false
         return .success(.associationsCommitted)
     }
 
     private func acceptReport(
         _ reported: _GiftUIObservationAttachment
     ) -> _GiftUIObservableChangeReportOutcome {
-        if let failure = bridge.acceptReport(reported) {
-            return failure == .staleAttachment ? .staleAttachment : .invariantViolation
-        }
-        guard phase == .mutating else {
-            return .invalidPhaseSafetyNotProven
-        }
-        guard !isDirty else { return .coalesced }
-        isDirty = true
-        return .dirtied
+        bridge.acceptReport(reported, phase: phase)
     }
 }
