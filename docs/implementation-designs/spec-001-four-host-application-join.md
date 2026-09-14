@@ -84,6 +84,12 @@ address stability remains a generated-root responsibility.
 lifecycle to those roots without exposing or duplicating its state machine. It
 also owns the profile-common mutation-phase gate and dirty/coalesced bit so a
 generated Static report function can delegate the same transition directly.
+`StaticObservableRegistrationRecord` keeps that initial lifecycle and the
+optional focused replacement bridge inline, separate from typed model storage.
+It permits exactly one replacement sink issuance, retires the initial route
+only after candidate activation, and thereafter projects the replacement
+bridge's live and dirty state. A failed candidate is discarded without
+changing either the active record or the caller-owned live model.
 `DynamicObservableModelRegistration` composes the bridge and typed box in one
 address-stable Dynamic owner and routes retained model reports back into that
 same registration record. Its replacement path stages and attaches the

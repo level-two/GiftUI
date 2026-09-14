@@ -502,6 +502,11 @@ coalescing behavior.
       attachment, attach-time-report, phase, dirty/coalesced, retirement, and
       shutdown behavior; keeping it separate from typed model storage permits
       generated direct dispatch without recursive access to one movable value.
+      That record now also owns the one transient replacement bridge and sink-
+      issuance bit. It preflights without mutation, activates the candidate
+      route before retiring the initial route, projects replacement dirtiness,
+      and discards an attach-time-poisoned candidate while the inline live
+      model and registration remain active.
       Generated Static root binding, wake integration, and the remaining
       equal-profile lifecycle corpus remain.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized
