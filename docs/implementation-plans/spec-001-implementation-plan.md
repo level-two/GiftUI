@@ -461,9 +461,11 @@ coalescing behavior.
       state, and rejects rebinding one wrapper. Static profile caller-owned
       inline typed storage now performs the same initializer preservation and
       assignment routing within one attempt-scoped direct binding whose wrapper
-      and pointer cannot escape. Generated analyzer storage, registration,
-      atomic replacement, dirtiness, and the complete equal-profile lifecycle
-      corpus remain.
+      and pointer cannot escape. One shared production conformance transcript
+      proves these Dynamic and Static mechanisms expose equal materialization,
+      preservation, read, assignment-routing, and stored-model results.
+      Generated analyzer storage, registration, atomic replacement, dirtiness,
+      and the remaining equal-profile lifecycle corpus remain.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized
       mutation phase, freeze, complete-root derivation, publication, wake, and
       paced retry owners. Prove 20 change reports become one dirty transition

@@ -49,3 +49,13 @@ swift test --filter StaticObservableModelStorage
 The final generated analyzer storage must place this caller-owned value at an
 address-stable location and prove its optimized artifact has no allocation
 path; this host-native layout fixture does not claim that later evidence.
+
+`ProductionObservableModelStorageTests` drives both mechanisms with the same
+three initializer/model identities and compares one normalized transcript.
+Both materialize identity 1, preserve it when initializer 2 is presented,
+route assignment of identity 3 without changing live storage, and finish with
+identity 1 still installed. Reproduce the comparison with:
+
+```sh
+swift test --filter productionModelStorageBindingsAreProfileEquivalent
+```
