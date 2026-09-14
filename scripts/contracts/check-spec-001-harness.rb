@@ -34,6 +34,7 @@ expected_paths = %w[
   module-boundaries.tsv generated-static-equivalents.tsv driver-invocations.tsv
   prerequisite-registry.tsv downstream-source-truth.tsv
   negative-dependency-fixtures.tsv
+  analyzer-consumers.tsv
   diagnostic-cases.tsv
   capture-value-cases.tsv
   capture-publication-cases.tsv

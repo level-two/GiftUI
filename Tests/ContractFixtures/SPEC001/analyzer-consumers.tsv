@@ -1,0 +1,3 @@
+# schema_version=1
+# target	kind	allowed_analyzer_dependencies
+GiftUIHostConfigurationTests	target-composition-test	SignalAnalyzerData,SignalAnalyzerDomain,SignalAnalyzerPresentation

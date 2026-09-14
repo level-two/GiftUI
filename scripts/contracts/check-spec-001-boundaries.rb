@@ -68,6 +68,24 @@ reverse_edges = targets.reject { |name, _target| OWNERS.key?(name) || test_owner
     edges << "#{name}->#{value}" if OWNERS.key?(value)
   end
 end
-abort "unregistered reverse analyzer dependencies: #{reverse_edges.sort.join(', ')}" unless reverse_edges.empty?
 
-puts "SPEC-001 boundary audit passed: three production owners, three test owners, and #{fixtures.length} dependency fixtures."
+consumer_rows = File.readlines(File.join(FIXTURES, "analyzer-consumers.tsv"), chomp: true)
+  .reject { |line| line.empty? || line.start_with?("#") }
+  .map { |line| line.split("\t", -1) }
+abort "analyzer consumer fixture columns differ" unless consumer_rows.all? { |row| row.length == 3 }
+abort "analyzer consumer targets are duplicated" unless consumer_rows.map(&:first).uniq.length == consumer_rows.length
+registered_reverse_edges = consumer_rows.flat_map do |target_name, kind, dependencies|
+  abort "unknown analyzer consumer kind #{kind}" unless kind == "target-composition-test"
+  abort "missing registered analyzer consumer #{target_name}" unless targets.key?(target_name)
+  dependencies.split(",").map do |dependency|
+    abort "unknown analyzer dependency #{dependency}" unless OWNERS.key?(dependency)
+    "#{target_name}->#{dependency}"
+  end
+end
+unless reverse_edges.sort == registered_reverse_edges.sort
+  missing = registered_reverse_edges - reverse_edges
+  unexpected = reverse_edges - registered_reverse_edges
+  abort "reverse analyzer dependency registry mismatch: missing=#{missing.sort.join(', ')} unexpected=#{unexpected.sort.join(', ')}"
+end
+
+puts "SPEC-001 boundary audit passed: three production owners, three test owners, #{fixtures.length} dependency fixtures, and #{registered_reverse_edges.length} registered composition edges."
