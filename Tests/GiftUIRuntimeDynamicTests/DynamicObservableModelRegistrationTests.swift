@@ -81,3 +81,55 @@ private final class DynamicRegisteredModel: _GiftUIObservableReference {
     #expect(initial.detachments == [_GiftUIObservationAttachment(slot: 0, generation: 7)])
     #expect(registration.withModel { $0.identity } == nil)
 }
+
+@Test func dynamicRegistrationCommitsReplacementOnlyAfterCandidateAttachment() {
+    let initial = DynamicRegisteredModel(identity: 5)
+    let replacement = DynamicRegisteredModel(identity: 6)
+    let registration = DynamicObservableModelRegistration<DynamicRegisteredModel>()
+    var state = State(wrappedValue: initial)
+    _ = registration.bind(&state, generation: 0, replacementRoute: { _ in })
+    registration.setExecutionPhase(.mutating)
+
+    #expect(
+        registration.replace(
+            with: replacement,
+            generation: ObservableTargetGeneration(rawValue: 1)
+        ) == .success(.replaced)
+    )
+    #expect(registration.withModel { $0.identity } == 6)
+    #expect(
+        initial.detachments
+            == [_GiftUIObservationAttachment(slot: 0, generation: 0)]
+    )
+    #expect(registration.isDirty)
+    #expect(replacement.report() == .coalesced)
+    #expect(registration.retire() == .success(.associationsCommitted))
+    #expect(
+        replacement.detachments
+            == [_GiftUIObservationAttachment(slot: 0, generation: 1)]
+    )
+}
+
+@Test func dynamicRegistrationDiscardsPoisonedReplacementAndPreservesLive() {
+    let initial = DynamicRegisteredModel(identity: 7)
+    let replacement = DynamicRegisteredModel(identity: 8)
+    replacement.reportDuringAttach = true
+    let registration = DynamicObservableModelRegistration<DynamicRegisteredModel>()
+    var state = State(wrappedValue: initial)
+    _ = registration.bind(&state, generation: 2, replacementRoute: { _ in })
+    registration.setExecutionPhase(.mutating)
+
+    #expect(
+        registration.replace(
+            with: replacement,
+            generation: ObservableTargetGeneration(rawValue: 3)
+        ) == .failure(.staleAttachment)
+    )
+    #expect(registration.withModel { $0.identity } == 7)
+    #expect(initial.detachments.isEmpty)
+    #expect(
+        replacement.detachments
+            == [_GiftUIObservationAttachment(slot: 0, generation: 3)]
+    )
+    #expect(initial.report() == .dirtied)
+}

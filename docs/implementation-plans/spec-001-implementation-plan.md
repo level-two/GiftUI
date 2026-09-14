@@ -483,7 +483,11 @@ coalescing behavior.
       second Static report algorithm. The Dynamic profile now composes
       that bridge and typed storage in one stable owner: initial attachment,
       preserved rebinding, mutation-phase dirty/coalesced reports, attach-time
-      cleanup, and retirement are integrated. A Dynamic root adapter now joins
+      cleanup, and retirement are integrated. It now also composes the focused
+      replacement bridge with the candidate model slot: successful candidate
+      attachment commits before former detachment, while attach-time failure
+      discards only candidate state and preserves the live model and route.
+      A Dynamic root adapter now joins
       that owner to the production structural workspace, so the workspace's
       nonaliasing generation zero drives attachment, candidate discard retires
       candidate-only state, and published absence retires live state. Static
@@ -491,7 +495,8 @@ coalescing behavior.
       attachment, attach-time-report, phase, dirty/coalesced, retirement, and
       shutdown behavior; keeping it separate from typed model storage permits
       generated direct dispatch without recursive access to one movable value.
-      Generated Static root binding, atomic replacement, wake integration, and the remaining
+      Generated Static root binding, root-level replacement generation commit,
+      wake integration, and the remaining
       equal-profile lifecycle corpus remain.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized
       mutation phase, freeze, complete-root derivation, publication, wake, and

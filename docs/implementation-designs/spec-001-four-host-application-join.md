@@ -86,7 +86,10 @@ also owns the profile-common mutation-phase gate and dirty/coalesced bit so a
 generated Static report function can delegate the same transition directly.
 `DynamicObservableModelRegistration` composes the bridge and typed box in one
 address-stable Dynamic owner and routes retained model reports back into that
-same registration record.
+same registration record. Its replacement path stages and attaches the
+candidate through `ObservableStateReplacementBridge`, commits that route,
+detaches the former attachment, and only then swaps typed storage; failure
+discards the candidate and leaves the former model and route intact.
 `DynamicObservableRootAdapter` joins this owner to the production profile
 workspace. It uses the workspace's publishable generation for attachment and
 coordinates candidate discard and published structural removal with exact

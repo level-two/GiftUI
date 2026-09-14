@@ -104,7 +104,10 @@ typed model box in one address-stable owner. Generation zero attaches exactly,
 repeated transient wrappers preserve the live model, two mutation-phase reports
 return `dirtied` then `coalesced`, retirement detaches and clears storage, and
 an attach-time report fails with `staleAttachment` and performs candidate
-cleanup. Reproduce with:
+cleanup. The same owner now stages a replacement separately, activates its
+fresh route before detaching and swapping the former model, remains dirty after
+commit, and discards an attach-time-poisoned candidate without detaching or
+replacing the live model. Reproduce with:
 
 ```sh
 swift test --filter DynamicObservableModelRegistration
