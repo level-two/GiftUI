@@ -502,7 +502,7 @@ for independent conformance review.
       backend raster workspace, and post-acceptance derived storage as distinct
       values rather than only a sum. Verify all normative value ceilings on each
       pinned compiler and each configured workspace byte bound.
-- [ ] `T9.4` — Inspect ARMv6 and nRF target images/ELFs for ABI, hard-float where
+- [x] `T9.4` — Inspect ARMv6 and nRF target images/ELFs for ABI, hard-float where
       required, allocation, forbidden runtime/symbol dependencies, RAM, flash,
       sections, and linked-size deltas. Keep hardware-free evidence distinct
       from connected-target claims.
@@ -1137,3 +1137,11 @@ storage, stack, allocation, linked sections, and timing separately for the Pi
 and nRF targets. The pristine collectors now use the repository dependency
 cache, eliminating network-dependent evidence reruns. See the
 [resource evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-9/resources.md).
+
+`T9.4` is complete. The final hardware-free backend artifacts verify exact
+`armv6-unknown-linux-gnueabihf` EABI5 hard-float for Pi and ARMv7E-M,
+VFPv4-D16, VFP-register arguments for nRF. Optimized target inspection finds
+zero forbidden allocation references/instructions, no hidden complete-frame
+tiled storage, and retains full symbol, map, section, stack, RAM/flash, and
+linked-size evidence. See the
+[target inspection evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-9/target-inspection.md).
