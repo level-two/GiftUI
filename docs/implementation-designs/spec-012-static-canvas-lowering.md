@@ -154,7 +154,11 @@ making diagnostics control runtime behavior.
 No Milestone 6 implementation question remains. The exact production
 source-analysis front end and emitted private type names remain replaceable
 SPEC-013 integration details. T6.5 still owns the cross-profile resource
-evidence on both pinned compilers.
+evidence on both pinned compilers. The completed differential fixture now
+compares Dynamic closure storage with Static generated occurrence storage for
+success, typed failure, immediate release, plan counts, cleanup, and combined
+render-operation accounting; the SPEC-013 profile reports supply the shared
+allocator, symbol, section, ABI, RAM, flash, and target inspection evidence.
 
 ## Code and Evidence Links
 
@@ -165,5 +169,6 @@ evidence on both pinned compilers.
 - [Static callable evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-callable-table.md)
 - [Generation rejection evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-generation-rejections.md)
 - [Static host-handle evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-host-handle.md)
+- [Profile storage equivalence evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/profile-canvas-storage-equivalence.md)
 - [T6.2 Specification blocker](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-callable-table-specification-blocker.md)
 - [SPEC-012 contract fixtures](../../Tests/ContractFixtures/SPEC012/README.md)

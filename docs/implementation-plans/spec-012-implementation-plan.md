@@ -411,7 +411,7 @@ produce identical drawing meaning and cleanup without static heap allocation.
       validation. Admit an observable model location only through its approved
       address-stable static handle with no retain/release and an explicit host
       lifetime proof.
-- [ ] `T6.5` — Implement the bounded profile-owned dynamic closure wrapper and
+- [x] `T6.5` — Implement the bounded profile-owned dynamic closure wrapper and
       compare fixture dynamic and static semantic, invocation, plan, failure,
       cleanup, and combined-render transcripts. Prove the wrapper is released
       immediately after invocation and no later than cycle finalization.
