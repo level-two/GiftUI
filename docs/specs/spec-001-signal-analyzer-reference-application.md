@@ -1921,6 +1921,9 @@ This section is non-authoritative.
 - [Presentation Admission and Failure Implementation Design](../implementation-designs/spec-001-presentation-admission-and-failure.md)
   describes the replaceable three-store sequencing and owner join selected for
   Milestone 5 without changing this Specification's contract.
+- [Four-Host Application Join Implementation Design](../implementation-designs/spec-001-four-host-application-join.md)
+  describes the replaceable typed composition-root ownership selected for
+  Milestone 6 without changing this Specification's contract.
 
 ### Current implementation evidence
 

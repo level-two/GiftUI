@@ -1287,6 +1287,7 @@ Specification:
 - [SPEC-015 Implementation Plan](../implementation-plans/spec-015-implementation-plan.md)
 - [Generated Workload and Presets Implementation Design](../implementation-designs/spec-015-generated-workload-and-presets.md)
 - [Wake and Pacing State Implementation Design](../implementation-designs/spec-015-wake-and-pacing.md)
+- [Four-Host Application Join Implementation Design](../implementation-designs/spec-001-four-host-application-join.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
 - [Feature Lifecycle](../engineering/FEATURE_LIFECYCLE.md)

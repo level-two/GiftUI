@@ -633,6 +633,9 @@ human `implemented` transition.
   before Milestone 6 only if the analyzer-specific mapping into the fixed
   SPEC-015 owner graph is not self-explanatory. Host validation and lifecycle
   semantics remain owned by SPEC-015.
+  **Created:** the current note fixes the typed executable-owned model, fact,
+  action, profile, and lifecycle joins while leaving reusable host validation
+  and lifecycle semantics under SPEC-015.
 
 No note may choose a new public value, capacity, dependency, capability,
 failure disposition, target preset, or application behavior. Mechanical view
