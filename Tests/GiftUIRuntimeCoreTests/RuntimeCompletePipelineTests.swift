@@ -132,6 +132,68 @@ private let exactPipelineOrder: [RuntimeCompletePipelineStage] = [
     .offerAndProduction,
 ]
 
+private let everyFocusedOwnerFailure: [RunCycleFailure<RuntimeOwnerFailure>] = [
+    .focusedOwner(.semantic(.invalidIdentity)),
+    .focusedOwner(.layout(.arithmeticOverflow)),
+    .focusedOwner(.observableState(.replacementStagingCapacityExhausted)),
+    .focusedOwner(.interaction(.invalidGeometry)),
+    .focusedOwner(.drawing(.invalidPathState)),
+]
+
+private func expectedFailureCleanups(
+    at stage: RuntimeCompletePipelineStage
+) -> [RuntimeCleanupAction] {
+    switch stage {
+    case .admissionAndSeal, .applyAdmittedWork, .freezeObservableMutation,
+        .observableCandidateAndSemanticExpansion:
+        []
+    case .layout:
+        [.discardSemanticCandidate, .discardObservableCandidate, .resetAttemptStorage]
+    case .canvasInvocationAndPlan:
+        [
+            .releaseCanvasCallable,
+            .resetLayoutCandidate,
+            .discardSemanticCandidate,
+            .discardObservableCandidate,
+            .resetAttemptStorage,
+        ]
+    case .combinedRenderPreflight:
+        [
+            .resetDrawingPlan,
+            .resetLayoutCandidate,
+            .discardSemanticCandidate,
+            .discardObservableCandidate,
+            .resetAttemptStorage,
+        ]
+    case .interactionCandidate:
+        [
+            .resetRenderWorkspace,
+            .resetDrawingPlan,
+            .resetLayoutCandidate,
+            .discardSemanticCandidate,
+            .discardObservableCandidate,
+            .resetAttemptStorage,
+        ]
+    case .semanticAndObservablePublication:
+        [
+            .discardInteractionCandidate,
+            .resetRenderWorkspace,
+            .resetDrawingPlan,
+            .resetLayoutCandidate,
+            .discardSemanticCandidate,
+            .discardObservableCandidate,
+            .resetAttemptStorage,
+        ]
+    case .candidateAllocation, .offerAndProduction:
+        [
+            .discardInteractionCandidate,
+            .resetRenderWorkspace,
+            .resetDrawingPlan,
+            .resetAttemptStorage,
+        ]
+    }
+}
+
 @Test func inactivePipelineIsRejectedBeforeOwnerWorkAndFinalizedOnce() {
     var owner = CompletePipelineRecorder()
     let result = RuntimeCompletePipeline.rejectInactive(owner: &owner)
@@ -269,6 +331,53 @@ private let exactPipelineOrder: [RuntimeCompletePipelineStage] = [
         #expect(record.failure == expected)
         #expect(record.stage == stage)
         #expect(owner.finalizationCount == 1)
+    }
+}
+
+@Test func everyFocusedOwnerFailureAtEveryStageHasExactCleanupAndDisposition() {
+    for stage in exactPipelineOrder {
+        for injectedFailure in everyFocusedOwnerFailure {
+            var owner = CompletePipelineRecorder(
+                failureStage: stage,
+                injectedFailure: injectedFailure
+            )
+            let result = RuntimeCompletePipeline.run(owner: &owner)
+            guard case .failed(let record) = result else {
+                Issue.record("expected focused failure at \(stage)")
+                continue
+            }
+
+            #expect(record.stage == stage)
+            #expect(record.failure == injectedFailure)
+            #expect(owner.stages == Array(exactPipelineOrder.prefix(Int(stage.rawValue) + 1)))
+            #expect(owner.cleanups == expectedFailureCleanups(at: stage))
+            #expect(owner.dispositions == [record.disposition])
+            #expect(owner.finalizationCount == 1)
+            for action in owner.cleanups {
+                #expect(owner.cleanups.count(where: { $0 == action }) == 1)
+            }
+
+            let wasPublished = stage == .candidateAllocation || stage == .offerAndProduction
+            let mutationWasApplied =
+                stage.rawValue
+                >= RuntimeCompletePipelineStage
+                .freezeObservableMutation.rawValue
+            #expect(
+                record.disposition.semanticDisposition
+                    == (wasPublished ? .published : (mutationWasApplied ? .dirty : .unchanged))
+            )
+            #expect(
+                record.disposition.logicalFrameDisposition
+                    == (wasPublished ? .aborted : .notProduced))
+            #expect(
+                record.disposition.presentationIntentState
+                    == (wasPublished ? .unavailable : .satisfied))
+            #expect(
+                record.disposition.wakeReasons
+                    == (mutationWasApplied && !wasPublished ? [.semanticDirty] : []))
+            #expect(!record.disposition.commitsInteractionCandidate)
+            #expect(record.disposition.preservesPublishedSemanticRevision == wasPublished)
+        }
     }
 }
 

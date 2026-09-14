@@ -405,7 +405,7 @@ semantic tolerance.
       cases in exact detection order, verify each exact SPEC-003 condition,
       origin, scope, and containment mapping, and use poison probes proving no
       client, attachment, input, wake, policy, backend, or endpoint use.
-- [ ] `T6.3` — Inject every focused failure at every stage and verify the exact
+- [x] `T6.3` — Inject every focused failure at every stage and verify the exact
       cleanup row, first-error precedence, no effect replay, candidate discard,
       callable/capture release, dirty state, finalization, and wake behavior.
 - [ ] `T6.4` — Exercise accepted/refused/failed endpoint outcomes, retry
@@ -854,7 +854,16 @@ selection, and the startup-purity probe records zero client, attachment,
 input, wake, policy, backend, and endpoint use. Static metadata access is also
 poisoned until the first five checks have passed. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-6/startup-validation.md`.
-T6.3 is next.
+
+`T6.3` is complete. One shared 55-cell matrix injects each of the five exact
+focused-owner failure values at each of the eleven production pipeline stages.
+Every cell verifies first-error preservation, later-stage exclusion, the exact
+cleanup sequence with no duplicate action, candidate and callable disposition,
+publication-sensitive dirty/wake behavior, one disposition, and exactly-once
+finalization. The existing mutation state test independently proves that
+cleanup cannot replay admitted effects. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-6/cycle-failure-matrix.md`.
+T6.4 is next.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

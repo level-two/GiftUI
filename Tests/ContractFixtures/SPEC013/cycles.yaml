@@ -1,2 +1,17 @@
 schema: spec-013-v1
-cases: []
+cases:
+  - name: focused-owner-stage-cleanup-matrix
+    criteria: [RP-004, RP-007]
+    evidenceClasses: [host-execution, inspection]
+    focusedOwnerCount: 5
+    stageCount: 11
+    injectionCount: 55
+    firstFailureWins: true
+    laterFallibleWorkSkipped: true
+    cleanupExactAndOnceOnly: true
+    appliedMutationReplayed: false
+    candidatesDiscardedBeforePublication: true
+    canvasCallableReleasedWhenAcquired: true
+    dispositionRecordedOnce: true
+    finalizationCount: 1
+    wakeMatchesPublicationBoundary: true
