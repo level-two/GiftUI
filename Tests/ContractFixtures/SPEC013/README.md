@@ -20,6 +20,8 @@ same deliberately small `RuntimeProfileLimits` in both profiles. A fixture
 records an exact-limit value and changes only its named variation field for a
 first-excess or incompatibility case. Production host values are outside this
 schema and remain owned by SPEC-015.
+`artificial-limit-values.tsv` supplies the exact numeric value for every leaf
+so each normalized profile report records the complete artificial limit set.
 
 `canonical-transcript.tsv` is the closed, ordered vocabulary for normalized
 cross-profile observations. Comparison is value-for-value and includes exact

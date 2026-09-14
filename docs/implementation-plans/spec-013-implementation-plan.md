@@ -432,7 +432,7 @@ checks needed by a profile are available under repository-local `.toolchains/`.
 truthfully scoped reports containing every required metadata and resource
 field.
 
-- [ ] `T7.1` — Complete `run-spec-013.sh` so every report records revision and
+- [x] `T7.1` — Complete `run-spec-013.sh` so every report records revision and
       dirty state, compiler/SDK/target, complete command, limits, audit,
       high-water counts, transcript digest, fixture pass/fail, and evidence
       classification. Preserve the exact standalone invocations.
@@ -894,6 +894,16 @@ bytes, allocation strategy, generated-code addresses, and diagnostic volume.
 Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-6/profile-equivalence.md`.
 Milestone 6 is complete; T7.1 is next.
+
+`T7.1` is complete. The four-mode driver now derives an immutable run identity
+from the repository revision and declared input hashes, records dirty state and
+the complete standalone invocation, captures the exact compiler, SDK, target,
+and truthful host-execution/cross-build classification, and publishes
+hash-verified normalized fixture, numeric-limit, audit, storage-high-water, and
+transcript-digest files. Reports remain explicitly blocked on T7.2 rather than
+inventing unmeasured resource fields. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-7/report-driver.md`.
+T7.2 is next.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

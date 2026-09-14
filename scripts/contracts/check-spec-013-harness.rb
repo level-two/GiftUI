@@ -25,7 +25,7 @@ def fail_check(message)
 end
 
 required_files = %w[
-  README.md artificial-limit-schema.tsv canonical-transcript.tsv
+  README.md artificial-limit-schema.tsv artificial-limit-values.tsv canonical-transcript.tsv
   fixture-manifest.tsv migration-inventory.tsv report-schema.tsv
   required-evidence.tsv module-boundaries.tsv storage-families.tsv
 ] + EXPECTED_FILES
@@ -114,6 +114,8 @@ end
   check-spec-013-handoff-recovery.rb
   check-spec-013-borrow-boundaries.rb
   check-spec-013-equivalence.rb
+  check-spec-013-report-driver.rb
+  report-spec-013-profile.rb
 ].each do |name|
   path = ROOT.join("scripts/contracts", name)
   fail_check("SPEC-013 command is missing or not executable: #{name}") unless path.file? && path.executable?
