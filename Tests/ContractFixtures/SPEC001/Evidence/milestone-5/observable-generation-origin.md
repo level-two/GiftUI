@@ -154,6 +154,20 @@ Its reinsertion fixture retires a successfully replaced route, removes the
 inline model, and attaches a new model through the reusable initial record with
 a clean dirty bit and a valid fresh-replacement preflight.
 
+The SPEC-015 generator now emits
+`GeneratedSignalAnalyzerStaticRootDescriptor` from the checked portable
+hierarchy and workload. Both Static presets carry the same hierarchy-derived,
+nonzero structural identity, declaration ordinal zero, two typed model storage
+positions, and exact `1/1/1` location, active-registration, and replacement
+capacities; both Dynamic presets omit it. The generator freshness check and
+host-configuration tests prevent hand-edited or runtime-negotiated values.
+Reproduce with:
+
+```sh
+ruby scripts/contracts/check-spec-015-generated-workload.rb
+swift test --filter generatedStaticRootDescriptorMatchesThePortableHierarchy
+```
+
 `ProductionObservableRegistrationTests` normalize the Dynamic retained owner
 and Static inline record/storage into one lifecycle transcript. Both profiles
 return materialized, dirtied, coalesced, replaced, and stale-attachment results

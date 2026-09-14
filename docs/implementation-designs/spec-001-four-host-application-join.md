@@ -161,6 +161,12 @@ then supplies access to the preserved typed storage. A repeated initializer is
 consumed but never installed. Publish/discard and replacement use the focused
 lifecycle results to determine which exact attachment is detached.
 
+The shared preset generator first emits a profile-gated Static-root descriptor:
+one hierarchy-derived nonzero structural identity, declaration ordinal zero,
+two typed model positions, and the exact `1/1/1` observable capacities. The
+Dynamic presets omit this descriptor, and no target may discover or negotiate
+these values at runtime.
+
 Dynamic roots use the bounded retained model mechanism permitted by the
 Dynamic audit. Static roots consume generated address-stable typed model and
 replacement storage. Static generated code contains direct typed access and

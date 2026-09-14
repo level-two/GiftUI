@@ -3,6 +3,7 @@
 
 require "pathname"
 require "rbconfig"
+require "digest"
 
 root = Pathname.new(File.expand_path("../..", __dir__))
 generator = root.join("scripts/contracts/generate-spec-015-workload.rb")
@@ -21,4 +22,29 @@ profiles.each do |name, preset_rows|
   abort "SPEC-015 #{name} does not cover every limit leaf" unless preset_rows.length == 41
 end
 
-puts "SPEC-015 generated workload check passed: four manifests, 164 exact leaf rows."
+hierarchy_path = root.join("Tests/ContractFixtures/SPEC001/hierarchy-shape-cases.tsv")
+hierarchy = hierarchy_path.read.lines.reject { |line| line.start_with?("#") || line.strip.empty? }
+  .to_h { |line| line.chomp.split("\t", 2) }
+abort "SPEC-015 Static root model type differs" unless hierarchy.fetch("direct-state-type") == "SignalAnalyzerViewModel"
+abort "SPEC-015 Static root count differs" unless hierarchy.fetch("direct-state-count") == "1"
+
+static_root_identity = Digest::SHA256.hexdigest(hierarchy_path.read)[0, 8].to_i(16)
+source = root.join(
+  "Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift"
+).read
+abort "SPEC-015 generated Static root descriptor is missing" unless
+  source.include?("package struct GeneratedSignalAnalyzerStaticRootDescriptor")
+abort "SPEC-015 generated Static root structural identity differs" unless
+  source.include?("structuralIdentity: #{static_root_identity}")
+%w[
+  declarationOrdinal:\ 0
+  modelStorageSlots:\ 2
+  locationCapacity:\ 1
+  registrationCapacity:\ 1
+  replacementCapacity:\ 1
+].each do |field|
+  abort "SPEC-015 generated Static root field differs: #{field}" unless source.include?(field)
+end
+
+puts "SPEC-015 generated workload check passed: four manifests, 164 exact leaf rows, " \
+  "and one provenance-bound Static root descriptor."

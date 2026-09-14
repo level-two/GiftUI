@@ -22,6 +22,15 @@ package struct GeneratedHostRasterProjection: Equatable, Sendable {
     package let maximumInFlightPayloads: UInt8
 }
 
+package struct GeneratedSignalAnalyzerStaticRootDescriptor: Equatable, Sendable {
+    package let structuralIdentity: UInt32
+    package let declarationOrdinal: UInt16
+    package let modelStorageSlots: UInt16
+    package let locationCapacity: UInt16
+    package let registrationCapacity: UInt16
+    package let replacementCapacity: UInt16
+}
+
 package struct GeneratedSignalAnalyzerPreset: Equatable, Sendable {
     package let identity: GeneratedHostPresetIdentity
     package let kind: MVPHostKind
@@ -33,6 +42,7 @@ package struct GeneratedSignalAnalyzerPreset: Equatable, Sendable {
     package let cardinality: SignalAnalyzerHostCardinality
     package let pacing: HostPacingPolicy
     package let raster: GeneratedHostRasterProjection
+    package let staticRoot: GeneratedSignalAnalyzerStaticRootDescriptor?
 
     package func validatedStorageAudit() -> RuntimeProfileValidationResult {
         let inputs = RuntimeProfileLimitInputs(
@@ -326,7 +336,17 @@ package static func nrf52840Static() -> GeneratedSignalAnalyzerPreset {
                 regionHeight: regionHeight, bytesPerRow: bytesPerRow,
                 maximumRasterBytes: rasterBytes, maximumPayloadBytes: payloadBytes,
                 maximumInFlightPayloads: inFlightPayloads
-            )
+            ),
+            staticRoot: profile == .static
+                ? GeneratedSignalAnalyzerStaticRootDescriptor(
+                    structuralIdentity: 1410692621,
+                    declarationOrdinal: 0,
+                    modelStorageSlots: 2,
+                    locationCapacity: 1,
+                    registrationCapacity: 1,
+                    replacementCapacity: 1
+                )
+                : nil
         )
     }
 }

@@ -78,6 +78,32 @@ import Testing
     #expect(`static`.runtimeLimits.staticCanvas?.maximumStaticCaptureBytes == 32)
 }
 
+@Test func generatedStaticRootDescriptorMatchesThePortableHierarchy() {
+    let dynamic = GeneratedSignalAnalyzerPresets.macOSDynamic()
+    let macOS = GeneratedSignalAnalyzerPresets.macOSStatic()
+    let embedded = GeneratedSignalAnalyzerPresets.nrf52840Static()
+
+    #expect(dynamic.staticRoot == nil)
+    #expect(GeneratedSignalAnalyzerPresets.raspberryPiDynamic().staticRoot == nil)
+    #expect(macOS.staticRoot == embedded.staticRoot)
+    guard let root = macOS.staticRoot else {
+        Issue.record("Static preset omitted its generated root descriptor")
+        return
+    }
+    #expect(root.structuralIdentity != 0)
+    #expect(root.declarationOrdinal == 0)
+    #expect(root.modelStorageSlots == 2)
+    #expect(root.locationCapacity == macOS.cardinality.rootModelLocationCount)
+    #expect(
+        root.registrationCapacity
+            == macOS.cardinality.activeRegistrationCount
+    )
+    #expect(
+        root.replacementCapacity
+            == macOS.cardinality.stagedAssociationCount
+    )
+}
+
 @Test func generatedStorageAuditsAreExactAndSuccessful() {
     for preset in [
         GeneratedSignalAnalyzerPresets.macOSDynamic(),

@@ -519,6 +519,12 @@ coalescing behavior.
       materialization with clear dirtiness, and a later generation-3
       replacement. Static record coverage proves the matching fresh initial
       route and clean dirty bit after replacement retirement.
+      The checked SPEC-015 generator now projects the immutable portable
+      hierarchy into one Static-root descriptor for both Static presets. Its
+      nonzero `UInt32` structural identity derives from the hierarchy input;
+      declaration ordinal zero, two typed model positions, and `1/1/1`
+      location/registration/replacement capacities are generated values rather
+      than runtime negotiation. Dynamic presets carry no Static descriptor.
       Generated Static root binding, wake integration, and the remaining
       equal-profile lifecycle corpus remain.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized
