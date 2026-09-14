@@ -378,9 +378,14 @@ targets:
       - GiftUIFailureCore
       - GiftUIHostConfiguration
       - GiftUIInteraction
+      - GiftUIObservableState
       - GiftUIRuntimeCore
+      - GiftUIRuntimeDynamic
+      - GiftUIRuntimeStatic
       - SignalAnalyzerData
       - SignalAnalyzerDomain
+      - SignalAnalyzerHost
+      - SignalAnalyzerPresetHarness
       - SignalAnalyzerPresentation
   GiftUIRuntimeCoreTests:
     type: test
@@ -481,6 +486,41 @@ targets:
       - GiftUI
       - GiftUIFailureCore
       - SignalAnalyzerDomain
+  SignalAnalyzerHost:
+    type: regular
+    dependencies:
+      - GiftUIExecution
+      - GiftUIHostConfiguration
+      - GiftUIInteraction
+      - GiftUIRuntimeCore
+      - GiftUIRuntimeDynamic
+      - GiftUIRuntimeStatic
+      - SignalAnalyzerDomain
+      - SignalAnalyzerPresentation
+  SignalAnalyzerPresetHarness:
+    type: regular
+    dependencies:
+      - GiftUICapabilities
+      - GiftUIHostConfiguration
+      - GiftUIRuntimeCore
+      - SignalAnalyzerHost
+      - SignalAnalyzerPresentation
+  SignalAnalyzerMacOSDynamic:
+    type: executable
+    dependencies:
+      - SignalAnalyzerPresetHarness
+  SignalAnalyzerMacOSStatic:
+    type: executable
+    dependencies:
+      - SignalAnalyzerPresetHarness
+  SignalAnalyzerRaspberryPiARMv6:
+    type: executable
+    dependencies:
+      - SignalAnalyzerPresetHarness
+  SignalAnalyzerNRF52840HostOracle:
+    type: executable
+    dependencies:
+      - SignalAnalyzerPresetHarness
   SignalAnalyzerDomainTests:
     type: test
     dependencies:

@@ -20,13 +20,15 @@ two 2,404-entry 24-byte transition stores (115,392 bytes), and one 3,840-byte
 RGB565 raster/payload/in-flight staging slot. Heap and C allocation arenas are
 configured to zero; the final global function table contains no malloc,
 calloc, realloc, Swift task, Objective-C, or reflection entry point, and the
-Zephyr configuration disables multithreading.
+Zephyr configuration disables multithreading. The retained two-byte protected
+Swift personality leaf is toolchain support and is not reachable from the
+preset entry; the entry path contains no throw or exception operation.
 
 Final linked totals are 153,852 bytes RAM and 8,164 bytes flash, below the
 approved 196,608-byte RAM and 1 MiB flash limits. The entry path uses eight
 bytes of analyzed stack. The separately governed SPEC-004 capability evidence
 records +252 bytes linked RAM, +4,768 bytes flash, 80 bytes conservative
-resolver stack, and 72 bytes named capability storage, each within its
+resolver stack, and 202 bytes named capability storage, each within its
 incremental budget. SPEC-014's reusable backend evidence supplies the exact
 one-slot 480 x 4 production path without a full framebuffer.
 

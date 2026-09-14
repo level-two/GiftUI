@@ -36,6 +36,17 @@ package struct HardwareFreePresetReport: Equatable, Sendable {
     package let canvasCount: UInt16
     package let livePointCount: UInt16
     package let planPointCount: UInt16
+    package let graphRoleCount: UInt16
+    package let semanticNodeCount: UInt16
+    package let renderSemanticScopeCount: UInt16
+    package let layoutScopeCount: UInt16
+    package let traversalDepth: UInt16
+    package let textLineCount: UInt16
+    package let glyphCount: UInt16
+    package let ordinaryOperationCount: UInt16
+    package let drawingOperationCount: UInt16
+    package let inputEventCount: UInt16
+    package let completionFactCount: UInt16
 
     package var normalizedLine: String {
         [
@@ -54,6 +65,17 @@ package struct HardwareFreePresetReport: Equatable, Sendable {
             "canvases=\(canvasCount)",
             "live_points=\(livePointCount)",
             "plan_points=\(planPointCount)",
+            "graph_roles=\(graphRoleCount)",
+            "semantic_nodes=\(semanticNodeCount)",
+            "render_semantic_scopes=\(renderSemanticScopeCount)",
+            "layout_scopes=\(layoutScopeCount)",
+            "traversal_depth=\(traversalDepth)",
+            "text_lines=\(textLineCount)",
+            "glyphs=\(glyphCount)",
+            "ordinary_operations=\(ordinaryOperationCount)",
+            "drawing_operations=\(drawingOperationCount)",
+            "input_events=\(inputEventCount)",
+            "completion_facts=\(completionFactCount)",
             "status=complete",
         ].joined(separator: "\t")
     }
@@ -146,7 +168,18 @@ package enum HardwareFreePresetRunner {
             compactFactCapacity: preset.cardinality.compactFactCapacity,
             canvasCount: workload.drawing.canvasOccurrences,
             livePointCount: workload.drawing.maximumLivePathPoints,
-            planPointCount: workload.drawing.snapshottedPoints
+            planPointCount: workload.drawing.snapshottedPoints,
+            graphRoleCount: 18,
+            semanticNodeCount: workload.semanticNodeOccurrences,
+            renderSemanticScopeCount: workload.renderSemanticScopeOccurrences,
+            layoutScopeCount: workload.layoutScopeOccurrences,
+            traversalDepth: workload.maximumRenderTraversalDepth,
+            textLineCount: workload.renderTextLineCount,
+            glyphCount: workload.positionedGlyphCount,
+            ordinaryOperationCount: workload.ordinaryRenderOperations,
+            drawingOperationCount: workload.drawing.normalizedStrokeOperations,
+            inputEventCount: workload.inputEventsPerOpportunity,
+            completionFactCount: workload.completionFactsPerOpportunity
         )
     }
 

@@ -690,10 +690,16 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       The registered report records every emitted artifact class, ABI,
       symbols, storage, and resource totals; the equal host-native transcript
       remains explicitly separate from uncollected connected execution.
-- [ ] `T6.6` — Replace the mock with the conforming fixture source without
+- [x] `T6.6` — Replace the mock with the conforming fixture source without
       changing Domain, use cases, adapter, ViewModel, or portable hierarchy.
       Separately fault every required GiftUI/host facility and prove validation
       fails before publishing a reduced or target-specific analyzer.
+      **Completed:** the independent `SignalDataSource` fixture substitutes at
+      the repository initializer and reaches the common publication contract
+      without changing any portable owner. The ordered validator corpus faults
+      all nine required facility stages independently, records zero side
+      effects, and proves later stages are not accessed. Evidence is in
+      `Tests/ContractFixtures/SPEC001/Evidence/milestone-6/source-and-facility-substitution.md`.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

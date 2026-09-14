@@ -416,3 +416,6 @@ host-native semantic evidence is recorded in
 The nRF root is the `signal-analyzer-static` firmware application; its
 cross-build and host-native semantic evidence is recorded in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-6/nrf52840-static.md`.
+The normalized four-root comparison and source/facility substitution evidence
+are recorded in the corresponding SPEC-015 and SPEC-001 Milestone 6 evidence
+directories.

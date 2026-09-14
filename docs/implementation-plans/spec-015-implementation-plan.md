@@ -528,7 +528,7 @@ profile/backend differences and resource accounting.
       normalized semantic result without converting it into target execution.
       Evidence is in
       `Tests/ContractFixtures/SPEC015/Evidence/milestone-6/nrf52840-static.md`.
-- [ ] `T6.4` — Compare graph, limit, audit, resource, capability, action, fact,
+- [x] `T6.4` — Compare graph, limit, audit, resource, capability, action, fact,
       input, semantic, render semantic-scope, layout-scope, traversal-depth,
       text-line, glyph, ordinary/drawing-operation, failure, publication, and
       lifecycle transcripts across all four presets. Report zero resolver
@@ -540,6 +540,14 @@ profile/backend differences and resource accounting.
       host-policy, staging, stack high-water, RAM, and flash costs separately
       under pinned tools, and verify the nRF52840 aggregate and incremental
       totals remain within the approved SPEC-004 and SPEC-014 budgets.
+      **Completed:** `run-spec-015-milestone-6.sh` rebuilds all four roots and
+      applies one fail-closed comparison to their immutable reports. Semantic,
+      structural, workload, resolver, and storage fields agree where required;
+      physical projection, ABI, profile storage, staging, RAM, flash, and
+      connected-evidence classifications remain separate. Static allocation
+      and prohibited-runtime claims compose the accepted owner evidence and
+      final nRF symbol/configuration inspection. Evidence is in
+      `Tests/ContractFixtures/SPEC015/Evidence/milestone-6/four-preset-comparison.md`.
 
 ### Milestone 7: Complete the Contract Runner and Conformance Handoff
 
