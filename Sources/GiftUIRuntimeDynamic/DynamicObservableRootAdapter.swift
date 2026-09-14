@@ -128,6 +128,59 @@ where Model: _GiftUIObservableReference, Identity: Equatable & Sendable {
         registration.setExecutionPhase(phase)
     }
 
+    package func replace(
+        with replacement: consuming Model,
+        isCompatible: Bool = true,
+        candidateAlreadyOwned: Bool = false,
+        registrationCapacityAvailable: Bool = true,
+        replacementStagingAvailable: Bool = true
+    ) -> ObservableStateResult {
+        guard let registeredIdentity else {
+            return .failure(.invariantViolation)
+        }
+        if let failure = registration.preflightReplacement(
+            isCompatible: isCompatible,
+            candidateAlreadyOwned: candidateAlreadyOwned,
+            registrationCapacityAvailable: registrationCapacityAvailable,
+            replacementStagingAvailable: replacementStagingAvailable
+        ) {
+            return .failure(failure)
+        }
+        let reservation = workspace.beginReplacement(
+            structuralIdentity: registeredIdentity,
+            declarationOrdinal: registeredOrdinal
+        )
+        guard case .success(let generation) = reservation else {
+            guard case .failure(let failure) = reservation else {
+                return .failure(.invariantViolation)
+            }
+            return .failure(failure)
+        }
+        let replacementResult = registration.replace(
+            with: consume replacement,
+            generation: generation,
+            isCompatible: isCompatible,
+            candidateAlreadyOwned: candidateAlreadyOwned,
+            registrationCapacityAvailable: registrationCapacityAvailable,
+            replacementStagingAvailable: replacementStagingAvailable
+        )
+        switch replacementResult {
+        case .success(.replaced):
+            let finish = workspace.finishReplacement(commit: true)
+            return finish == .success(.replaced)
+                ? replacementResult
+                : .failure(.invariantViolation)
+        case .failure:
+            let finish = workspace.finishReplacement(commit: false)
+            return finish == .success(.candidateDiscarded)
+                ? replacementResult
+                : .failure(.invariantViolation)
+        case .success:
+            _ = workspace.finishReplacement(commit: false)
+            return .failure(.invariantViolation)
+        }
+    }
+
     package borrowing func targetGeneration(
         structuralIdentity: Identity,
         declarationOrdinal: UInt16

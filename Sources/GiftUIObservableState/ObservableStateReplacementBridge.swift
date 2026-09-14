@@ -39,6 +39,27 @@ package struct ObservableStateReplacementBridge {
         transaction.pendingReservation?.attachment
     }
 
+    package borrowing func preflightReplacement(
+        executionPhase: ExecutionPhase,
+        isCompatible: Bool,
+        candidateAlreadyOwned: Bool,
+        registrationCapacityAvailable: Bool,
+        replacementStagingAvailable: Bool,
+        slot: UInt16
+    ) -> ObservableStateError? {
+        var probe = transaction
+        var allocator = ObservableStateAttachmentGenerationAllocator()
+        return probe.beginReplacement(
+            executionPhase: executionPhase,
+            isCompatible: isCompatible,
+            candidateAlreadyOwned: candidateAlreadyOwned,
+            registrationCapacityAvailable: registrationCapacityAvailable,
+            replacementStagingAvailable: replacementStagingAvailable,
+            slot: slot,
+            allocator: &allocator
+        )
+    }
+
     package mutating func beginReplacement(
         executionPhase: ExecutionPhase,
         isCompatible: Bool,

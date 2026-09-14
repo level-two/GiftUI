@@ -74,6 +74,37 @@ where Model: _GiftUIObservableReference {
         storage.withModel(body)
     }
 
+    package func preflightReplacement(
+        isCompatible: Bool,
+        candidateAlreadyOwned: Bool,
+        registrationCapacityAvailable: Bool,
+        replacementStagingAvailable: Bool
+    ) -> ObservableStateError? {
+        guard let attachment else { return .invariantViolation }
+        if let replacementBridge {
+            return replacementBridge.preflightReplacement(
+                executionPhase: phase,
+                isCompatible: isCompatible,
+                candidateAlreadyOwned: candidateAlreadyOwned,
+                registrationCapacityAvailable: registrationCapacityAvailable,
+                replacementStagingAvailable: replacementStagingAvailable,
+                slot: attachment.slot
+            )
+        }
+        let probe = ObservableStateReplacementBridge(
+            liveAttachment: attachment,
+            isDirty: bridge.isDirty
+        )
+        return probe.preflightReplacement(
+            executionPhase: phase,
+            isCompatible: isCompatible,
+            candidateAlreadyOwned: candidateAlreadyOwned,
+            registrationCapacityAvailable: registrationCapacityAvailable,
+            replacementStagingAvailable: replacementStagingAvailable,
+            slot: attachment.slot
+        )
+    }
+
     package func replace(
         with replacement: consuming Model,
         generation: ObservableTargetGeneration,

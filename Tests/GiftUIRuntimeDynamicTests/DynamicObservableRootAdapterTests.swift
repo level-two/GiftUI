@@ -8,6 +8,7 @@ import Testing
 private final class DynamicRootModel: _GiftUIObservableReference {
     let identity: UInt8
     private var sink: _GiftUIObservableChangeSink?
+    var reportDuringAttach = false
 
     init(identity: UInt8) {
         self.identity = identity
@@ -16,8 +17,10 @@ private final class DynamicRootModel: _GiftUIObservableReference {
     func _giftUIAttachChangeSink(
         _ sink: consuming _GiftUIObservableChangeSink
     ) -> _GiftUIObservationAttachment? {
-        let attachment = sink.attachment
-        self.sink = consume sink
+        var installed = consume sink
+        let attachment = installed.attachment
+        if reportDuringAttach { _ = installed.reportChange() }
+        self.sink = consume installed
         return attachment
     }
 
@@ -31,6 +34,66 @@ private final class DynamicRootModel: _GiftUIObservableReference {
     func reportChange() -> _GiftUIObservableChangeReportOutcome? {
         sink?.reportChange()
     }
+}
+
+@Test func dynamicRootAdapterCommitsAndDiscardsTheWorkspaceReplacementGeneration() {
+    let adapter = DynamicObservableRootAdapter<DynamicRootModel, UInt16>(capacity: 1)
+    var state = State(wrappedValue: DynamicRootModel(identity: 1))
+    _ = adapter.beginCandidate()
+    _ = adapter.encounter(
+        structuralIdentity: 21,
+        declarationOrdinal: 0,
+        state: &state,
+        replacementRoute: { _ in }
+    )
+    _ = adapter.finishCandidate(.publish)
+    adapter.setExecutionPhase(.mutating)
+
+    let poisoned = DynamicRootModel(identity: 2)
+    poisoned.reportDuringAttach = true
+    #expect(adapter.replace(with: poisoned) == .failure(.staleAttachment))
+    #expect(adapter.withModel { $0.identity } == 1)
+    #expect(
+        adapter.targetGeneration(structuralIdentity: 21, declarationOrdinal: 0)
+            == ObservableTargetGeneration(rawValue: 0)
+    )
+
+    #expect(
+        adapter.replace(with: DynamicRootModel(identity: 3))
+            == .success(.replaced)
+    )
+    #expect(adapter.withModel { $0.identity } == 3)
+    #expect(
+        adapter.targetGeneration(structuralIdentity: 21, declarationOrdinal: 0)
+            == ObservableTargetGeneration(rawValue: 2)
+    )
+}
+
+@Test func dynamicRootAdapterValidatesReplacementBeforeSpendingAGeneration() {
+    let adapter = DynamicObservableRootAdapter<DynamicRootModel, UInt16>(capacity: 1)
+    var state = State(wrappedValue: DynamicRootModel(identity: 4))
+    _ = adapter.beginCandidate()
+    _ = adapter.encounter(
+        structuralIdentity: 22,
+        declarationOrdinal: 0,
+        state: &state,
+        replacementRoute: { _ in }
+    )
+    _ = adapter.finishCandidate(.publish)
+
+    #expect(
+        adapter.replace(with: DynamicRootModel(identity: 5))
+            == .failure(.invalidPhaseContained)
+    )
+    adapter.setExecutionPhase(.mutating)
+    #expect(
+        adapter.replace(with: DynamicRootModel(identity: 6))
+            == .success(.replaced)
+    )
+    #expect(
+        adapter.targetGeneration(structuralIdentity: 22, declarationOrdinal: 0)
+            == ObservableTargetGeneration(rawValue: 1)
+    )
 }
 
 @Test func dynamicRootAdapterJoinsGenerationBindingAndPublishedRemoval() {

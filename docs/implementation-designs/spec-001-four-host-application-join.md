@@ -93,7 +93,13 @@ discards the candidate and leaves the former model and route intact.
 `DynamicObservableRootAdapter` joins this owner to the production profile
 workspace. It uses the workspace's publishable generation for attachment and
 coordinates candidate discard and published structural removal with exact
-registration retirement.
+registration retirement. Replacement first probes the focused transaction's
+phase, association, ownership, and capacity checks without mutating it. Only a
+valid candidate reserves from the workspace cursor. The reserved generation is
+then supplied to typed candidate attachment, and the root commits or discards
+the workspace reservation according to that exact registration result. This
+keeps the former model and live generation unchanged after attach-time failure
+while permanently spending the failed candidate generation.
 Focused Observable State components separately implement binding, attachment,
 atomic replacement, dirty reporting, removal, stale-report rejection, and
 shutdown. Existing tests prove those mechanisms independently, but no target

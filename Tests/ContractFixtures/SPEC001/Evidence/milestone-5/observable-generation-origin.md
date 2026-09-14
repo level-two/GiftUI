@@ -117,8 +117,12 @@ swift test --filter DynamicObservableModelRegistration
 `RuntimeObservableProfileWorkspace`. The workspace-reserved generation zero is
 the attachment generation; repeated structural encounters preserve it; an
 initial candidate discard retires its candidate-only registration; and
-published structural absence retires the live registration and model. Reproduce
-with:
+published structural absence retires the live registration and model. The root
+replacement fixture also proves ordered validation and generation publication:
+an invalid execution phase fails before reserving so the next valid replacement
+commits generation 1, while an attach-time-poisoned candidate discards reserved
+generation 1, preserves live generation 0 and its model, and forces the next
+successful replacement to commit generation 2. Reproduce with:
 
 ```sh
 swift test --filter DynamicObservableRootAdapter

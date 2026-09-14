@@ -490,13 +490,19 @@ coalescing behavior.
       A Dynamic root adapter now joins
       that owner to the production structural workspace, so the workspace's
       nonaliasing generation zero drives attachment, candidate discard retires
-      candidate-only state, and published absence retires live state. Static
+      candidate-only state, and published absence retires live state. Its
+      replacement join validates the focused transaction before reserving,
+      supplies the workspace's exact reserved generation to candidate
+      attachment, commits that reservation only with the typed registration,
+      and discards a failed candidate without changing the live generation.
+      Thus validation failure spends no generation, while attach-time failure
+      spends the discarded candidate generation and the next successful
+      replacement cannot alias it. Static
       composition now has a separate inline registration record with the same
       attachment, attach-time-report, phase, dirty/coalesced, retirement, and
       shutdown behavior; keeping it separate from typed model storage permits
       generated direct dispatch without recursive access to one movable value.
-      Generated Static root binding, root-level replacement generation commit,
-      wake integration, and the remaining
+      Generated Static root binding, wake integration, and the remaining
       equal-profile lifecycle corpus remain.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized
       mutation phase, freeze, complete-root derivation, publication, wake, and
