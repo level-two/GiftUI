@@ -254,3 +254,221 @@ private func normalize(
     #expect(dynamic.isActiveAfterReinsertion)
     #expect(!dynamic.isDirtyAfterReinsertion)
 }
+
+private struct RootFailureTranscript: Equatable {
+    let incompatible: ObservableStateResult
+    let duplicateOwner: ObservableStateResult
+    let registrationCapacity: ObservableStateResult
+    let replacementCapacity: ObservableStateResult
+    let nextReplacement: ObservableStateResult
+    let nextGeneration: ObservableTargetGeneration?
+    let exhaustedReplacement: ObservableStateResult
+    let preservedExhaustedGeneration: ObservableTargetGeneration?
+    let preservedExhaustedIdentity: UInt8?
+    let exhaustedInitial: ObservableStateResult
+}
+
+private func dynamicRootFailureTranscript() -> RootFailureTranscript {
+    let root = DynamicObservableRootAdapter<DynamicRootTranscriptModel, UInt32>(
+        capacity: 1
+    )
+    var state = State(wrappedValue: DynamicRootTranscriptModel(identity: 10))
+    _ = root.beginCandidate()
+    _ = root.encounter(
+        structuralIdentity: 0x5341_0200,
+        declarationOrdinal: 0,
+        state: &state,
+        replacementRoute: { _ in }
+    )
+    _ = root.finishCandidate(.publish)
+    root.setExecutionPhase(.mutating)
+    let incompatible = root.replace(
+        with: DynamicRootTranscriptModel(identity: 11),
+        isCompatible: false
+    )
+    let duplicateOwner = root.replace(
+        with: DynamicRootTranscriptModel(identity: 12),
+        candidateAlreadyOwned: true
+    )
+    let registrationCapacity = root.replace(
+        with: DynamicRootTranscriptModel(identity: 13),
+        registrationCapacityAvailable: false
+    )
+    let replacementCapacity = root.replace(
+        with: DynamicRootTranscriptModel(identity: 14),
+        replacementStagingAvailable: false
+    )
+    let nextReplacement = root.replace(
+        with: DynamicRootTranscriptModel(identity: 15)
+    )
+    let nextGeneration = root.targetGeneration(
+        structuralIdentity: 0x5341_0200,
+        declarationOrdinal: 0
+    )
+
+    let exhausted = DynamicObservableRootAdapter<
+        DynamicRootTranscriptModel,
+        UInt32
+    >(capacity: 1, firstGeneration: UInt32.max)
+    var exhaustedState = State(
+        wrappedValue: DynamicRootTranscriptModel(identity: 20)
+    )
+    _ = exhausted.beginCandidate()
+    _ = exhausted.encounter(
+        structuralIdentity: 0x5341_0201,
+        declarationOrdinal: 0,
+        state: &exhaustedState,
+        replacementRoute: { _ in }
+    )
+    _ = exhausted.finishCandidate(.publish)
+    exhausted.setExecutionPhase(.mutating)
+    let exhaustedReplacement = exhausted.replace(
+        with: DynamicRootTranscriptModel(identity: 21)
+    )
+    let preservedExhaustedGeneration = exhausted.targetGeneration(
+        structuralIdentity: 0x5341_0201,
+        declarationOrdinal: 0
+    )
+
+    let initiallyExhausted = DynamicObservableRootAdapter<
+        DynamicRootTranscriptModel,
+        UInt32
+    >(capacity: 1, firstGeneration: nil)
+    var rejectedState = State(
+        wrappedValue: DynamicRootTranscriptModel(identity: 30)
+    )
+    _ = initiallyExhausted.beginCandidate()
+    let exhaustedInitial = initiallyExhausted.encounter(
+        structuralIdentity: 0x5341_0202,
+        declarationOrdinal: 0,
+        state: &rejectedState,
+        replacementRoute: { _ in }
+    )
+
+    return RootFailureTranscript(
+        incompatible: incompatible,
+        duplicateOwner: duplicateOwner,
+        registrationCapacity: registrationCapacity,
+        replacementCapacity: replacementCapacity,
+        nextReplacement: nextReplacement,
+        nextGeneration: nextGeneration,
+        exhaustedReplacement: exhaustedReplacement,
+        preservedExhaustedGeneration: preservedExhaustedGeneration,
+        preservedExhaustedIdentity: exhausted.withModel { $0.identity },
+        exhaustedInitial: exhaustedInitial
+    )
+}
+
+private func staticRootFailureTranscript() -> RootFailureTranscript {
+    var root = StaticObservableRootAdapter<StaticRootTranscriptModel, UInt32>(
+        structuralIdentity: 0x5341_0200,
+        declarationOrdinal: 0
+    )
+    _ = root.beginCandidate()
+    _ = root.withEncounter(
+        state: State(wrappedValue: StaticRootTranscriptModel(identity: 10)),
+        replacementRoute: { _ in },
+        reportRoute: { _ in .staleAttachment },
+        body: { _ in () }
+    )
+    _ = root.finishCandidate(.publish)
+    root.setExecutionPhase(.mutating)
+    let incompatible = root.replace(
+        with: StaticRootTranscriptModel(identity: 11),
+        reportRoute: { _ in .staleAttachment },
+        isCompatible: false
+    )
+    let duplicateOwner = root.replace(
+        with: StaticRootTranscriptModel(identity: 12),
+        reportRoute: { _ in .staleAttachment },
+        candidateAlreadyOwned: true
+    )
+    let registrationCapacity = root.replace(
+        with: StaticRootTranscriptModel(identity: 13),
+        reportRoute: { _ in .staleAttachment },
+        registrationCapacityAvailable: false
+    )
+    let replacementCapacity = root.replace(
+        with: StaticRootTranscriptModel(identity: 14),
+        reportRoute: { _ in .staleAttachment },
+        replacementStagingAvailable: false
+    )
+    let nextReplacement = root.replace(
+        with: StaticRootTranscriptModel(identity: 15),
+        reportRoute: { _ in .staleAttachment }
+    )
+    let nextGeneration = root.targetGeneration()
+
+    var exhausted = StaticObservableRootAdapter<
+        StaticRootTranscriptModel,
+        UInt32
+    >(
+        structuralIdentity: 0x5341_0201,
+        declarationOrdinal: 0,
+        firstGeneration: UInt32.max
+    )
+    _ = exhausted.beginCandidate()
+    _ = exhausted.withEncounter(
+        state: State(wrappedValue: StaticRootTranscriptModel(identity: 20)),
+        replacementRoute: { _ in },
+        reportRoute: { _ in .staleAttachment },
+        body: { _ in () }
+    )
+    _ = exhausted.finishCandidate(.publish)
+    exhausted.setExecutionPhase(.mutating)
+    let exhaustedReplacement = exhausted.replace(
+        with: StaticRootTranscriptModel(identity: 21),
+        reportRoute: { _ in .staleAttachment }
+    )
+
+    var initiallyExhausted = StaticObservableRootAdapter<
+        StaticRootTranscriptModel,
+        UInt32
+    >(
+        structuralIdentity: 0x5341_0202,
+        declarationOrdinal: 0,
+        firstGeneration: nil
+    )
+    _ = initiallyExhausted.beginCandidate()
+    let exhaustedInitial = normalize(
+        initiallyExhausted.withEncounter(
+            state: State(wrappedValue: StaticRootTranscriptModel(identity: 30)),
+            replacementRoute: { _ in },
+            reportRoute: { _ in .staleAttachment },
+            body: { _ in () }
+        )
+    )
+
+    return RootFailureTranscript(
+        incompatible: incompatible,
+        duplicateOwner: duplicateOwner,
+        registrationCapacity: registrationCapacity,
+        replacementCapacity: replacementCapacity,
+        nextReplacement: nextReplacement,
+        nextGeneration: nextGeneration,
+        exhaustedReplacement: exhaustedReplacement,
+        preservedExhaustedGeneration: exhausted.targetGeneration(),
+        preservedExhaustedIdentity: exhausted.withModel { $0.identity },
+        exhaustedInitial: exhaustedInitial
+    )
+}
+
+@Test func productionObservableRootsHaveEqualFailureTranscripts() {
+    let dynamic = dynamicRootFailureTranscript()
+    let fixed = staticRootFailureTranscript()
+
+    #expect(dynamic == fixed)
+    #expect(dynamic.incompatible == .failure(.incompatibleAssociation))
+    #expect(dynamic.duplicateOwner == .failure(.duplicateOwner))
+    #expect(dynamic.registrationCapacity == .failure(.registrationCapacityExhausted))
+    #expect(dynamic.replacementCapacity == .failure(.replacementStagingCapacityExhausted))
+    #expect(dynamic.nextReplacement == .success(.replaced))
+    #expect(dynamic.nextGeneration == ObservableTargetGeneration(rawValue: 1))
+    #expect(dynamic.exhaustedReplacement == .failure(.registrationGenerationExhausted))
+    #expect(
+        dynamic.preservedExhaustedGeneration
+            == ObservableTargetGeneration(rawValue: UInt32.max)
+    )
+    #expect(dynamic.preservedExhaustedIdentity == 20)
+    #expect(dynamic.exhaustedInitial == .failure(.registrationGenerationExhausted))
+}

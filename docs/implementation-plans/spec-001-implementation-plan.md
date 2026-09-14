@@ -543,6 +543,11 @@ coalescing behavior.
       remain. A normalized production root transcript now proves equal Dynamic
       and Static materialization, preservation, dirty/coalesced reporting,
       replacement, published removal, and fresh generation-2 reinsertion.
+      Its paired failure transcript proves identical incompatible-association,
+      duplicate-owner, registration-capacity, replacement-capacity, and
+      initial/replacement-generation-exhaustion results. All four preflight
+      failures leave generation 1 available, and exhaustion preserves the
+      live `UInt32.max` generation and model.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized
       mutation phase, freeze, complete-root derivation, publication, wake, and
       paced retry owners. Prove 20 change reports become one dirty transition

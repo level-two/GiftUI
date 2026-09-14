@@ -187,6 +187,18 @@ direct registration route without a retained callback. Reproduce with:
 swift test --filter productionObservableRootsHaveEqualLifecycleTranscripts
 ```
 
+The same root-adapter suite compares the profile failure transcript. Dynamic
+and Static return the same incompatible-association, duplicate-owner,
+registration-capacity, and replacement-staging errors without spending a
+generation, then both commit the next valid replacement at generation 1. Both
+also reject an initially exhausted root and preserve the live model and
+`UInt32.max` target when replacement generation allocation is exhausted.
+Reproduce with:
+
+```sh
+swift test --filter productionObservableRootsHaveEqualFailureTranscripts
+```
+
 The SPEC-015 generator now emits
 `GeneratedSignalAnalyzerStaticRootDescriptor` from the checked portable
 hierarchy and workload. Both Static presets carry the same hierarchy-derived,

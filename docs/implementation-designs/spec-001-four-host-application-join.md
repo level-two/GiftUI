@@ -134,6 +134,11 @@ replacement, published absence, and fresh reinsertion. It compares every
 logical result, generation, live identity, and active/dirty projection while
 leaving the Static callback representation as an intentionally profile-local
 mechanism.
+The paired failure transcript compares the four ordered replacement preflight
+rejections and both initial and replacement generation exhaustion. Neither
+profile spends a generation for an incompatible association, duplicate owner,
+registration-capacity failure, or replacement-staging failure; both preserve
+the live model and `UInt32.max` generation when the cursor is exhausted.
 Focused Observable State components separately implement binding, attachment,
 atomic replacement, dirty reporting, removal, stale-report rejection, and
 shutdown. Existing tests prove those mechanisms independently, but no target
