@@ -303,6 +303,116 @@ func dynamicAndStaticBindingsProduceEqualCanonicalTranscripts() {
     }
 }
 
+private struct InteractionProfileTranscript: Equatable {
+    let begin: InteractionError?
+    let first: InteractionCandidateAppendResult
+    let second: InteractionCandidateAppendResult
+    let excess: InteractionCandidateAppendResult
+    let firstAssignment: InteractionError?
+    let secondAssignment: InteractionError?
+    let finish: InteractionError?
+    let firstRecord: BoundActionRecord<UInt16>?
+    let down: PointerGestureOutcome<UInt16>
+}
+
+@Test func dynamicAndStaticInteractionStorageProduceEqualBoundedTranscripts() {
+    var dynamic = DynamicInteractionState<UInt16>(
+        candidateRecords: DynamicInteractionCandidateStorage(capacity: 2),
+        candidateHitRegions: DynamicInteractionHitStorage(capacity: 2),
+        candidateCommittedRecords: DynamicInteractionCommittedStorage(capacity: 2),
+        committedRecords: DynamicInteractionCommittedStorage(capacity: 2),
+        committedHitRegions: DynamicInteractionHitStorage(capacity: 2)
+    )
+    var fixed = StaticInteractionState<UInt16>(
+        candidateRecords: StaticInteractionCandidateStorage(capacity: 2)!,
+        candidateHitRegions: StaticInteractionHitStorage(capacity: 2)!,
+        candidateCommittedRecords: StaticInteractionCommittedStorage(capacity: 2)!,
+        committedRecords: StaticInteractionCommittedStorage(capacity: 2)!,
+        committedHitRegions: StaticInteractionHitStorage(capacity: 2)!
+    )
+
+    #expect(interactionTranscript(from: &dynamic) == interactionTranscript(from: &fixed))
+}
+
+private func interactionTranscript<State>(
+    from state: inout State
+) -> InteractionProfileTranscript
+where
+    State: InteractionCandidateBuilder & InteractionCommittedActionView
+        & InteractionGestureResolver,
+    State.Identity == UInt16
+{
+    let limits = InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!
+    let bounds = Rect(
+        origin: Point(x: 0, y: 0),
+        size: Size(width: 8, height: 8)!
+    )!
+    let begin = state.beginCandidate(limits: limits)
+    let first = state.append(
+        identity: 1,
+        isEnabled: true,
+        bounds: bounds,
+        clip: bounds,
+        paintOrder: 0,
+        action: BoundedApplicationAction(code: 1),
+        targetGeneration: ObservableTargetGeneration(rawValue: 1)
+    )
+    let second = state.append(
+        identity: 2,
+        isEnabled: true,
+        bounds: bounds,
+        clip: bounds,
+        paintOrder: 1,
+        action: BoundedApplicationAction(code: 2),
+        targetGeneration: ObservableTargetGeneration(rawValue: 1)
+    )
+    let excess = state.append(
+        identity: 3,
+        isEnabled: true,
+        bounds: bounds,
+        clip: bounds,
+        paintOrder: 2,
+        action: BoundedApplicationAction(code: 3),
+        targetGeneration: ObservableTargetGeneration(rawValue: 1)
+    )
+    state.resolveCandidate(.discard)
+
+    _ = state.beginCandidate(limits: limits)
+    _ = state.append(
+        identity: 1,
+        isEnabled: true,
+        bounds: bounds,
+        clip: bounds,
+        paintOrder: 0,
+        action: BoundedApplicationAction(code: 1),
+        targetGeneration: ObservableTargetGeneration(rawValue: 1)
+    )
+    _ = state.append(
+        identity: 2,
+        isEnabled: true,
+        bounds: bounds,
+        clip: bounds,
+        paintOrder: 1,
+        action: BoundedApplicationAction(code: 2),
+        targetGeneration: ObservableTargetGeneration(rawValue: 1)
+    )
+    let firstAssignment = state.assignGeneration(ActionGeneration(rawValue: 1), to: 1)
+    let secondAssignment = state.assignGeneration(ActionGeneration(rawValue: 2), to: 2)
+    let finish = state.finishCandidate()
+    state.resolveCandidate(.commit(PresentationRevision(rawValue: 1)))
+    return InteractionProfileTranscript(
+        begin: begin,
+        first: first,
+        second: second,
+        excess: excess,
+        firstAssignment: firstAssignment,
+        secondAssignment: secondAssignment,
+        finish: finish,
+        firstRecord: state.committedRecord(for: 1),
+        down: state.resolveDown(at: Point(x: 2, y: 2))
+    )
+}
+
 private func submitStateChange<Sink: ExecutionAdmissionSink>(
     _ fact: Sink.StateChangeFact,
     to sink: inout Sink

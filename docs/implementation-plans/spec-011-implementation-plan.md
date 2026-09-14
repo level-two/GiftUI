@@ -476,7 +476,7 @@ interaction and dispatch transcripts at equal limits.
       reflection, `Any`, arbitrary existential registry, task/thread,
       exception, Objective-C runtime, string identity, closure-to-tag
       synthesis, or dynamically growing collection.
-- [ ] `T7.3` — Audit both profile workspaces, record/action/hit/source capacities,
+- [x] `T7.3` — Audit both profile workspaces, record/action/hit/source capacities,
       overlapping candidate/committed lifetimes, reset behavior, and startup
       validation, including rejection when Interaction `maximumActions`
       exceeds SPEC-009 `maximumCommittedActions`. Equal configured limits must
@@ -807,3 +807,11 @@ dispatch storage. Focused tests prove exact-limit, first-excess, atomic commit,
 and direct typed gesture resolution, and the optimized Static binding check
 continues to report zero forbidden allocation instructions. See the
 [Static storage evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t7-2-static-storage.md).
+
+`T7.3` is complete. A cross-profile test runs the same exact-limit,
+first-excess, discard/reset, generation assignment, commit, record lookup, and
+gesture-resolution script over the production Dynamic and Static stores and
+compares one normalized transcript. Existing Runtime profile validation fixes
+candidate/committed/action/hit/source capacities and rejects Interaction
+actions above Execution's committed-action limit before startup. See the
+[profile workspace evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t7-3-profile-workspaces.md).
