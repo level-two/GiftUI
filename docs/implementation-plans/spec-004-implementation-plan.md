@@ -466,11 +466,17 @@ for structural validation.
       stores one immutable snapshot equal to the endpoint projection, and the
       validator's single-use guard prevents later resolution. See the
       [conjunctive startup-gate evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-4/conjunctive-startup-gates.md).
-- [ ] `T4.5` — Refresh the exact package allow-list, positive/negative imports,
+- [x] `T4.5` — Refresh the exact package allow-list, positive/negative imports,
       compiled module dependencies, product linkage, and portable-source scans
       after every owner adapter lands. Fail upward imports, re-export, concrete
       identity, duplicated resolution, and any correctness dependency on
-      tooling or diagnostics.
+      tooling or diagnostics. **Complete:** the boundary registry now exactly
+      matches every production capability consumer, including surface, raster,
+      display, backend, host, failure adapter, and the hardware-free preset
+      harness. The checker rejects unregistered consumers, dependency drift,
+      re-export, diagnostics coupling, and any second production resolver call
+      site. Source/interface/binary/product and portable-source audits pass;
+      see the [final capability-boundary evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-4/final-capability-boundaries.md).
 
 ### Milestone 5: Produce Four-Profile and Bounded-Resource Evidence
 
@@ -907,3 +913,12 @@ validation and capability resolution as distinct stages, while
 report exists. The independent-negative controls and the single immutable
 snapshot/single-use validation controls pass; see the
 [conjunctive startup-gate evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-4/conjunctive-startup-gates.md).
+
+`T4.5` is complete: the SPEC-004 exact-set registry now covers all current
+regular targets that directly import `GiftUICapabilities`, and the dependency
+checker compares that derived package set with the registry. It also proves
+there is exactly one production resolver call site outside the capability leaf
+and hardware-free oracle. The complete macOS dynamic standalone driver passes
+with immutable run ID
+`5ea9e58559b676cd3b5200a6e96b0ce32506aa56-17ec6a3cec1f6fdd`; see the
+[final capability-boundary evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-4/final-capability-boundaries.md).

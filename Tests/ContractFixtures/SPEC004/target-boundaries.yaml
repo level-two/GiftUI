@@ -7,6 +7,51 @@ active:
     type: test
     dependencies:
       - GiftUICapabilities
+  GiftUISurfaceCore:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUICapabilities
+      - GiftUIRenderCore
+  GiftUIRasterCore:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUICapabilities
+      - GiftUIRenderCore
+      - GiftUISurfaceCore
+      - GiftUITextResources
+  GiftUIDisplayCore:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUICapabilities
+      - GiftUIFailureCore
+      - GiftUISurfaceCore
+  GiftUIBackendIntegration:
+    type: regular
+    dependencies:
+      - GiftUICapabilities
+      - GiftUIDisplayCore
+      - GiftUIExecution
+      - GiftUIFailureCore
+      - GiftUIRasterCore
+      - GiftUIRenderCore
+      - GiftUISurfaceCore
+      - GiftUITextResources
+  GiftUIHostConfiguration:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUIBackendIntegration
+      - GiftUICapabilities
+      - GiftUIDisplayCore
+      - GiftUIExecution
+      - GiftUIFailureCore
+      - GiftUIRasterCore
+      - GiftUIRuntimeCore
+      - GiftUISurfaceCore
+      - GiftUITextResources
   GiftUICapabilityFailureAdapterTests:
     type: test
     dependencies:
@@ -18,6 +63,14 @@ active:
     dependencies:
       - GiftUICapabilities
       - GiftUIFailureCore
+  SignalAnalyzerPresetHarness:
+    type: regular
+    dependencies:
+      - GiftUICapabilities
+      - GiftUIHostConfiguration
+      - GiftUIRuntimeCore
+      - SignalAnalyzerHost
+      - SignalAnalyzerPresentation
 forbidden_capability_imports:
   - GiftUI
   - GiftUIFailureCore
