@@ -574,8 +574,10 @@ coalescing behavior.
       identity without model retention. Concrete `SignalAnalyzerActionHandler`
       composition and the remaining interaction interleaving corpus remain.
       A production-dispatcher transcript now proves equal initial dispatch,
-      replacement cancellation of a captured former generation, exact current-
-      replacement dispatch, and cancellation after published removal.
+      preservation of former dispatch after incompatible replacement failure,
+      cancellation of a captured former generation after successful
+      replacement, exact current-replacement dispatch, and cancellation after
+      published removal.
 - [ ] `T5.5` — Produce one normalized integrated cycle transcript containing
       callback, admission, seal, application, change report, dirty/wake,
       semantic publication, Drawing, offer, and frame events. Compare all

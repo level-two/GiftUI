@@ -1,6 +1,7 @@
 import GiftUI
 import GiftUIExecution
 import GiftUIInteraction
+import GiftUIObservableState
 import GiftUIRuntimeCore
 import Testing
 
@@ -65,6 +66,8 @@ private struct RootDispatchRecords: InteractionCommittedActionView {
 
 private struct RootDispatchTranscript: Equatable {
     let initial: InteractionDispatchResult
+    let failedReplacement: ObservableStateResult
+    let afterFailedReplacement: InteractionDispatchResult
     let staleAfterReplacement: InteractionDispatchResult
     let currentAfterReplacement: InteractionDispatchResult
     let afterRemoval: InteractionDispatchResult
@@ -105,6 +108,14 @@ private func dynamicRootDispatchTranscript(
     let initial = initialDispatcher.dispatch(rootCapturedAction)
 
     root.setExecutionPhase(.mutating)
+    let failedReplacement = root.replace(
+        with: RootDispatchModel(
+            identity: 9,
+            invocationTotal: invocationTotal
+        ),
+        isCompatible: false
+    )
+    let afterFailedReplacement = initialDispatcher.dispatch(rootCapturedAction)
     _ = root.replace(
         with: RootDispatchModel(
             identity: 2,
@@ -128,6 +139,8 @@ private func dynamicRootDispatchTranscript(
     let afterRemoval = replacementDispatcher.dispatch(rootCapturedAction)
     return RootDispatchTranscript(
         initial: initial,
+        failedReplacement: failedReplacement,
+        afterFailedReplacement: afterFailedReplacement,
         staleAfterReplacement: staleAfterReplacement,
         currentAfterReplacement: currentAfterReplacement,
         afterRemoval: afterRemoval,
@@ -167,6 +180,17 @@ private func staticRootDispatchTranscript(
         let initial = initialDispatcher.dispatch(rootCapturedAction)
 
         rootPointer.pointee.setExecutionPhase(.mutating)
+        let failedReplacement = rootPointer.pointee.replace(
+            with: RootDispatchModel(
+                identity: 9,
+                invocationTotal: invocationTotal
+            ),
+            reportRoute: { _ in .staleAttachment },
+            isCompatible: false
+        )
+        let afterFailedReplacement = initialDispatcher.dispatch(
+            rootCapturedAction
+        )
         _ = rootPointer.pointee.replace(
             with: RootDispatchModel(
                 identity: 2,
@@ -193,6 +217,8 @@ private func staticRootDispatchTranscript(
         let afterRemoval = replacementDispatcher.dispatch(rootCapturedAction)
         return RootDispatchTranscript(
             initial: initial,
+            failedReplacement: failedReplacement,
+            afterFailedReplacement: afterFailedReplacement,
             staleAfterReplacement: staleAfterReplacement,
             currentAfterReplacement: currentAfterReplacement,
             afterRemoval: afterRemoval,
@@ -213,8 +239,10 @@ private func staticRootDispatchTranscript(
 
     #expect(dynamic == fixed)
     #expect(dynamic.initial == .dispatched)
+    #expect(dynamic.failedReplacement == .failure(.incompatibleAssociation))
+    #expect(dynamic.afterFailedReplacement == .dispatched)
     #expect(dynamic.staleAfterReplacement == .cancelled)
     #expect(dynamic.currentAfterReplacement == .dispatched)
     #expect(dynamic.afterRemoval == .cancelled)
-    #expect(dynamic.invocationTotal == 3)
+    #expect(dynamic.invocationTotal == 4)
 }

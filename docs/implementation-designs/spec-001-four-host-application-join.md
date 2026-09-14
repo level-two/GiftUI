@@ -278,8 +278,9 @@ lifetime; copying the pointer-valued handle preserves model storage identity
 and introduces no existential registry or model retention.
 The shared dispatcher fixture holds committed records constant while changing
 the root beneath each target adapter. This proves final revalidation cancels a
-captured former generation after replacement, routes only the new generation
-to the replacement model, and cancels all dispatch after published removal in
+captured former generation after replacement, preserves the former target when
+an incompatible replacement is rejected, routes only the new generation to
+the replacement model, and cancels all dispatch after published removal in
 both profiles.
 
 All root ledgers are fixed records or bit sets. The dynamic and static roots

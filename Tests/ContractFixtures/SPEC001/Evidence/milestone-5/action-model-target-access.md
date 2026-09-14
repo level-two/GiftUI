@@ -37,8 +37,11 @@ swift test --filter ObservableRootTargetAccess
 the production `RuntimeInteractionDispatcher`. Both normalized transcripts
 dispatch generation 0 to model identity 1 exactly once, cancel that captured
 action after replacement, dispatch generation 1 only to replacement identity
-2, and cancel again after published structural removal. The final invocation
-total is exactly three in both profiles. Reproduce with:
+2, and cancel again after published structural removal. Before successful
+replacement, an incompatible candidate is rejected and generation 0 still
+dispatches to the former model; the failed identity 9 candidate is never
+invoked. The final invocation total is exactly four in both profiles.
+Reproduce with:
 
 ```sh
 swift test --filter rootTargetAdaptersProduceEqualDispatchAndCancellation
