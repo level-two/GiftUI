@@ -525,6 +525,12 @@ coalescing behavior.
       declaration ordinal zero, two typed model positions, and `1/1/1`
       location/registration/replacement capacities are generated values rather
       than runtime negotiation. Dynamic presets carry no Static descriptor.
+      Static typed storage now provides the root's ownership-safe initial
+      operation: it binds and materializes inline storage, obtains exactly one
+      sink through a nonescaping factory over the separate registration
+      record, attaches and validates it, ends model mutation, and only then
+      evaluates the bound `State` body. Attach-time poisoning suppresses the
+      body and removes the partially materialized model.
       Generated Static root binding, wake integration, and the remaining
       equal-profile lifecycle corpus remain.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized

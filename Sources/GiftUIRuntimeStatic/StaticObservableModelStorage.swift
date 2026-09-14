@@ -51,6 +51,49 @@ where Model: _GiftUIObservableReference {
         }
     }
 
+    package mutating func withMaterializedBoundState<Result>(
+        _ state: State<Model>,
+        replacementRoute: @escaping (Model) -> Void,
+        makeSink: () -> _GiftUIObservableChangeSink?,
+        acceptAttachment: (_GiftUIObservationAttachment?) -> ObservableStateError?,
+        body: (borrowing State<Model>) -> Result
+    ) -> StaticObservableModelBindingOutcome<Result> {
+        withUnsafeMutablePointer(to: &model) { modelPointer in
+            var transientState = state
+            let initializer = transientState._giftUIBind(
+                read: {
+                    guard let model = modelPointer.pointee else {
+                        fatalError("observable model read before materialization")
+                    }
+                    return model
+                },
+                replace: replacementRoute
+            )
+            guard let initializer, modelPointer.pointee == nil else {
+                return .failure(.invariantViolation)
+            }
+            guard let sink = makeSink() else {
+                return .failure(.invariantViolation)
+            }
+
+            let expectedAttachment = sink.attachment
+            modelPointer.pointee = initializer
+            let returned = modelPointer.pointee!._giftUIAttachChangeSink(
+                consume sink
+            )
+            if let failure = acceptAttachment(returned) {
+                if returned != nil {
+                    modelPointer.pointee!._giftUIDetachChangeSink(
+                        expectedAttachment
+                    )
+                }
+                modelPointer.pointee = nil
+                return .failure(failure)
+            }
+            return .bound(.materialized, body(transientState))
+        }
+    }
+
     package borrowing func withModel<Result>(
         _ body: (borrowing Model) -> Result
     ) -> Result? {

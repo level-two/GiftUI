@@ -80,6 +80,12 @@ position stages one candidate without disturbing the live model until commit.
 value and confines its direct pointer binding to one synchronous traversal
 attempt. It contains the same distinct live and candidate positions; final
 address stability remains a generated-root responsibility.
+For first materialization, its combined binding operation obtains a sink from
+a nonescaping factory that touches only the separate registration record,
+attaches and validates that sink while inline model storage is address-stable,
+and evaluates the bound body only after attachment succeeds. A poisoned or
+otherwise rejected attachment removes the partial model and suppresses body
+evaluation.
 `ObservableStateRegistrationBridge` exposes the existing focused registration
 lifecycle to those roots without exposing or duplicating its state machine. It
 also owns the profile-common mutation-phase gate and dirty/coalesced bit so a

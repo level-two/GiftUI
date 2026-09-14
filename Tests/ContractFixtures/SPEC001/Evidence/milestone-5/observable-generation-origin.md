@@ -53,6 +53,12 @@ optionals. Reproduce with:
 swift test --filter StaticObservableModelStorage
 ```
 
+The same storage suite now covers the generated-root initial ordering seam.
+The inline model materializes, obtains one sink through the separate record,
+attaches and activates, and only then exposes the bound `State` body. A model
+that reports during attachment returns `staleAttachment`, never evaluates the
+body, and leaves no live model in storage.
+
 The final generated analyzer storage must place this caller-owned value at an
 address-stable location and prove its optimized artifact has no allocation
 path; this host-native layout fixture does not claim that later evidence.
