@@ -348,7 +348,7 @@ behavior, and emits one immutable report only after complete success.
       byte ceilings, and the single shared health owner. Cover both inert
       mismatch and post-construction mismatch using SPEC-014's exact
       safety-not-proven mapping, with no live endpoint call during validation.
-- [ ] `T3.5` — Implement action/model and input/wake stages: six total action
+- [x] `T3.5` — Implement action/model and input/wake stages: six total action
       codes `0...5`, one immutable handler, one root location/registration/
       staging record, publishable target generation, exact fact capacities,
       one normalized source, one target-local gate, one non-reentrant wake
@@ -358,13 +358,13 @@ behavior, and emits one immutable report only after complete success.
       all application-factory projections supplied to the validator. Reject
       invalid code, stale generation, incompatible callback bounds, retained
       owner references, and reentrant or malformed integration.
-      **Partial:** the pure configuration projection now validates the exact
+      **Complete:** the pure configuration projection validates the exact
       action range, handler/model cardinality, source spacing, callback bounds,
       executor/fact bounds, admission count, total-handler/publishable-
       generation declarations, non-retention/non-reentrancy declarations,
-      normalized-input gate, wake count, and distinct domains. Concrete stale
-      generation/replacement races, invalid action decoding, and poisoned-
-      lifetime non-retention probes remain open with the T5.4 integration seam.
+      normalized-input gate, wake count, and distinct domains. Focused
+      production-dispatch fixtures cover stale generation/replacement races,
+      invalid action decoding, and poisoned-lifetime model non-retention.
 - [x] `T3.6` — Implement policy-stage table completeness, allowed/selected
       pair validation, fatal-hook availability, diagnostic independence, and
       final `HostAssemblyReport` construction. Compose all nine stages with an
@@ -499,6 +499,13 @@ finite refusal recovery, and exact operational-failure routing.
       and semantic-action limits, prove submission at each configured bound
       succeeds and the first excess follows SPEC-009's exact capacity refusal
       and source-sequence cancellation behavior without resizing any limit.
+      **Partial:** SPEC-011's production dispatcher is now joined to the exact
+      six-case Signal Analyzer handler and a weak current-model access.
+      Focused fixtures prove all six dispatches, invalid-code failure, stale
+      action/target generations, replacement between capture and dispatch,
+      and no former-model retention. Target-local normalized input, pointer
+      sequence limits, configured-bound success, and first-excess cancellation
+      remain open.
 - [ ] `T5.5` — Integrate mutable endpoint/display health without changing the
       immutable capability snapshot. After responsibility transfer, drain the
       one-shot stream and update the single health owner before routing

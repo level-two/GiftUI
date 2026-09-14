@@ -506,6 +506,7 @@ let package = Package(
                 "GiftUIExecution",
                 "GiftUIFailureCore",
                 "GiftUIHostConfiguration",
+                "GiftUIInteraction",
                 "GiftUIRuntimeCore",
                 "SignalAnalyzerData",
                 "SignalAnalyzerDomain",
