@@ -85,8 +85,10 @@ fi
 invocation="scripts/contracts/run-spec-001.sh --profile ${profile}"
 command_identity="$(printf '%s' "${invocation}" | shasum -a 256 | awk '{print $1}')"
 run_identity="$(date -u '+%Y%m%dT%H%M%SZ')-$$"
-report_dir="${REPORT_ROOT}/${profile}/${run_identity}"
-mkdir -p "${report_dir}"
+staging_report_dir="${REPORT_ROOT}/.tmp-${profile}-${run_identity}"
+canonical_report_dir="${REPORT_ROOT}/${run_identity}/${profile}"
+latest_report="${REPORT_ROOT}/latest-${profile}.txt"
+mkdir -p "${staging_report_dir}"
 
 {
     printf 'schema_version=1\n'
@@ -101,8 +103,15 @@ mkdir -p "${report_dir}"
     printf 'remote_access=false\ndeployment=false\nservice_restart=false\n'
     printf 'hardware_probe=false\nflashing=false\nnetwork_access=false\n'
     printf 'status=blocked\nblocking_reason=profile-implementation-evidence-missing\n'
-} >"${report_dir}/metadata.txt"
+} >"${staging_report_dir}/metadata.txt"
+
+"${SCRIPT_DIR}/publish-contract-report.rb" \
+    --report-root "${REPORT_ROOT}" \
+    --staging "${staging_report_dir}" \
+    --destination "${canonical_report_dir}" \
+    --latest "${latest_report}" \
+    --run-id "${run_identity}" >/dev/null
 
 printf 'SPEC-001 %s remains fail-closed until profile implementation evidence lands; see %s\n' \
-    "${profile}" "${report_dir}" >&2
+    "${profile}" "${canonical_report_dir}" >&2
 exit 1
