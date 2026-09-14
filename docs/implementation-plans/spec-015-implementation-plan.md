@@ -478,7 +478,7 @@ finite refusal recovery, and exact operational-failure routing.
       evenly spaced facts in one second. Concrete scheduler callbacks,
       `MVPHostInstance.runOpportunity()`, report identity, and integrated fact/
       change-report ordering remain open.
-- [ ] `T5.3` — Integrate presentation supersession, backpressure, retryable
+- [x] `T5.3` — Integrate presentation supersession, backpressure, retryable
       refusal, non-retryable refusal, and terminal unavailability. Prove
       backpressure leaves the count unchanged, refusals retain ordinals zero
       through two, the third terminates without a fourth offer, newer
@@ -829,3 +829,13 @@ hook. All explicit no-policy reasons invoke no policy, and a failed optional
 diagnostic projection leaves the authoritative failure and disposition
 unchanged. Evidence is in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-4/host-failure-adapter.md`.
+
+`T5.3` is complete. `HostPresentationRecovery` retains only the bounded
+SPEC-009 presentation intent, keeps backpressure refusal-neutral, emits retry
+ordinals zero and one, and makes the third retryable refusal terminal without
+a fourth offer. A newer semantic revision replaces the former intent and
+resets its count in constant space; acceptance clears only its matching intent,
+while non-retryable refusal immediately clears intent and quiesces input. The
+state contains no fact, action, Canvas closure, plan, operation stream, or
+payload that could be replayed. Evidence is in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-5/presentation-recovery.md`.
