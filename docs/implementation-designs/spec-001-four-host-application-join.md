@@ -128,6 +128,12 @@ preflight rejection leaves the cursor untouched. The generated direct report
 route remains responsible for forwarding attach-time candidate reports into
 the inline registration record so this adapter can perform its existing
 candidate detach, discard, and workspace-reservation rollback path.
+One normalized root-adapter fixture now drives both profile realizations
+through initial publication, repeated declaration preservation, dirtiness,
+replacement, published absence, and fresh reinsertion. It compares every
+logical result, generation, live identity, and active/dirty projection while
+leaving the Static callback representation as an intentionally profile-local
+mechanism.
 Focused Observable State components separately implement binding, attachment,
 atomic replacement, dirty reporting, removal, stale-report rejection, and
 shutdown. Existing tests prove those mechanisms independently, but no target

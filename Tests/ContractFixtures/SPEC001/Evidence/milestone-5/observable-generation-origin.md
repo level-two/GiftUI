@@ -174,6 +174,19 @@ and reinsertion consumes a fresh generation. Reproduce with:
 swift test --filter StaticObservableRootAdapter
 ```
 
+`ProductionObservableRootAdapterTests` run one normalized lifecycle over the
+Dynamic retained root and Static inline root. Both profiles materialize
+identity 1 at generation 0, preserve it across a repeated initializer, dirty
+then coalesce the active route, replace with identity 3 at generation 1,
+retire on published absence, and reinsert clean identity 4 at generation 2.
+The transcript compares the logical results, model identities, generations,
+and active/dirty projections while permitting the Static fixture to invoke its
+direct registration route without a retained callback. Reproduce with:
+
+```sh
+swift test --filter productionObservableRootsHaveEqualLifecycleTranscripts
+```
+
 The SPEC-015 generator now emits
 `GeneratedSignalAnalyzerStaticRootDescriptor` from the checked portable
 hierarchy and workload. Both Static presets carry the same hierarchy-derived,

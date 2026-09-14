@@ -539,8 +539,10 @@ coalescing behavior.
       replacement with the workspace reservation. Preflight failure spends no
       generation. Generated `SignalAnalyzerViewModel` direct report and target
       dispatch, attach-time replacement poisoning through that direct route,
-      wake integration, address inspection, and the remaining equal-profile
-      lifecycle corpus remain.
+      wake integration, address inspection, and the remaining failure matrix
+      remain. A normalized production root transcript now proves equal Dynamic
+      and Static materialization, preservation, dirty/coalesced reporting,
+      replacement, published removal, and fresh generation-2 reinsertion.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized
       mutation phase, freeze, complete-root derivation, publication, wake, and
       paced retry owners. Prove 20 change reports become one dirty transition
