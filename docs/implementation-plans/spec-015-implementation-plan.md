@@ -501,7 +501,7 @@ finite refusal recovery, and exact operational-failure routing.
       and no former-model retention. Target-local normalized input, pointer
       sequence limits, configured-bound success, and first-excess cancellation
       remain open.
-- [ ] `T5.5` — Integrate mutable endpoint/display health without changing the
+- [x] `T5.5` — Integrate mutable endpoint/display health without changing the
       immutable capability snapshot. After responsibility transfer, drain the
       one-shot stream and update the single health owner before routing
       `backendOperationalFailure`; quiesce presentation-coupled input. Prove
@@ -839,3 +839,13 @@ while non-retryable refusal immediately clears intent and quiesces input. The
 state contains no fact, action, Canvas closure, plan, operation stream, or
 payload that could be replayed. Evidence is in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-5/presentation-recovery.md`.
+
+`T5.5` is complete. `HostEndpointHealthController` observes the live
+endpoint-owned health value without duplicating its mutable authority. It
+exposes a backend operational failure only after responsibility transfer,
+one-shot drain, and health update, then quiesces presentation-coupled input.
+Missing transfer/drain evidence and counter regression fail closed. Terminal
+unavailability, identity exhaustion, and every immutable graph/resource/
+extent/policy/configuration change require fresh host construction through a
+terminal controller with no reactivation path. Evidence is in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-5/endpoint-health-and-reconstruction.md`.
