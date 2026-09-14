@@ -453,7 +453,7 @@ reports with compiler, ABI, resource, transcript, and dependency evidence.
       VFP calling convention, both heaps zero, no allocator/forbidden symbol,
       macro-support exclusion, complete storage/flash/RAM/stack reports, and
       no flashing or connected-board claim.
-- [ ] `T8.4` — Compare all profile-independent rows value-for-value and classify
+- [x] `T8.4` — Compare all profile-independent rows value-for-value and classify
       host execution, compile/link, simulator, and connected evidence exactly.
       Leave connected timing/stack/application claims to the relevant host
       plans unless explicitly authorized later.
@@ -901,3 +901,13 @@ VFPv4-D16/VFP-register arguments, zero Static heap, no allocator or forbidden
 runtime facility on the specialized path, and bounded flash/RAM/stack/storage
 evidence. No board was connected or flashed. See the
 [nRF52840 cross-build evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-8/nrf52840-embedded.md).
+
+`T8.4` is complete. All four profiles have byte-identical generated
+declaration input, audit, limit, normalized fixture-result, storage high-water,
+and transcript-input-digest rows. Platform-dependent compiler, ABI,
+allocation strategy, timing, sections, link maps, and target attributes remain
+separately classified. macOS supplies host execution; Pi and nRF supply only
+compile/link and inspection; no simulator or connected evidence is claimed.
+See the
+[cross-profile comparison evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-8/cross-profile-comparison.md).
+Milestone 8 is complete.
