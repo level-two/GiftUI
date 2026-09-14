@@ -467,9 +467,12 @@ coalescing behavior.
       A focused package registration bridge now composes the existing finite
       lifecycle into single sink issuance, attach-time report poisoning, exact
       attachment-return activation, stale-report rejection, retirement, and
-      shutdown for later address-stable roots. Generated analyzer storage,
-      root-owned report routing, atomic replacement, dirtiness, and the
-      remaining equal-profile lifecycle corpus remain.
+      shutdown for later address-stable roots. The Dynamic profile now composes
+      that bridge and typed storage in one stable owner: initial attachment,
+      preserved rebinding, mutation-phase dirty/coalesced reports, attach-time
+      cleanup, and retirement are integrated. Generated Static analyzer
+      registration, atomic replacement, wake integration, and the remaining
+      equal-profile lifecycle corpus remain.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized
       mutation phase, freeze, complete-root derivation, publication, wake, and
       paced retry owners. Prove 20 change reports become one dirty transition

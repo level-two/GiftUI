@@ -41,4 +41,32 @@ where Model: _GiftUIObservableReference {
         guard let model else { return nil }
         return body(model)
     }
+
+    package func withMutableModel<Result>(
+        _ body: (inout Model) -> Result
+    ) -> Result? {
+        guard model != nil else { return nil }
+        return body(&model!)
+    }
+
+    package func attachChangeSink(
+        _ sink: consuming _GiftUIObservableChangeSink
+    ) -> _GiftUIObservationAttachment? {
+        guard model != nil else { return nil }
+        return model!._giftUIAttachChangeSink(consume sink)
+    }
+
+    package func detachChangeSink(
+        _ attachment: _GiftUIObservationAttachment
+    ) -> Bool {
+        guard model != nil else { return false }
+        model!._giftUIDetachChangeSink(attachment)
+        return true
+    }
+
+    @discardableResult
+    package func removeModel() -> Model? {
+        defer { model = nil }
+        return model
+    }
 }

@@ -73,6 +73,9 @@ value and confines its direct pointer binding to one synchronous traversal
 attempt; final address stability remains a generated-root responsibility.
 `ObservableStateRegistrationBridge` exposes the existing focused registration
 lifecycle to those roots without exposing or duplicating its state machine.
+`DynamicObservableModelRegistration` composes the bridge and typed box in one
+address-stable Dynamic owner and routes retained model reports back into that
+same registration record.
 Focused Observable State components separately implement binding, attachment,
 atomic replacement, dirty reporting, removal, stale-report rejection, and
 shutdown. Existing tests prove those mechanisms independently, but no target
@@ -288,6 +291,8 @@ permission to weaken the static contract.
   storage.
 - [`ObservableStateRegistrationBridge.swift`](../../Sources/GiftUIObservableState/ObservableStateRegistrationBridge.swift)
   supplies single-issue attachment and report-route lifecycle to a stable root.
+- [`DynamicObservableModelRegistration.swift`](../../Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift)
+  supplies the stable Dynamic attachment, report, and retirement owner.
 - [`HostActivationController.swift`](../../Sources/GiftUIHostConfiguration/HostActivationController.swift)
   supplies exact activation and teardown ordering.
 - [`HostSequencedFactAdmission.swift`](../../Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift)
