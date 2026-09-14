@@ -9,6 +9,7 @@ ROOT = Pathname.new(File.expand_path("../..", __dir__))
 FIXTURES = ROOT.join("Tests/ContractFixtures/SPEC014")
 OWNERS_PATH = FIXTURES.join("module-owners.tsv")
 DEPENDENCY_ALLOW_LIST = ROOT.join("Tests/ContractFixtures/SPEC002/target-dependencies.yaml")
+DOWNSTREAM_CONSUMERS = FIXTURES.join("downstream-consumers.tsv")
 
 CLASS_MODULES = {
   "backend-integration" => %w[GiftUIBackendIntegration],
@@ -88,14 +89,30 @@ owners.each do |name, declaration|
   fail_check("#{name} imports prohibited modules #{leaked.uniq.sort.inspect}") unless leaked.empty?
 end
 
+downstream_consumers = DOWNSTREAM_CONSUMERS.each_line.each_with_object({}) do |line, values|
+  next if line.start_with?("#") || line.strip.empty?
+
+  fields = line.chomp.split("\t", -1)
+  fail_check("downstream consumer row width differs") unless fields.length == 3
+  name, dependencies, authority = fields
+  fail_check("duplicate downstream consumer #{name}") if values.key?(name)
+  direct = dependencies.split(",", -1)
+  fail_check("#{name} downstream dependencies are not unique and sorted") unless direct == direct.uniq.sort
+  fail_check("#{name} downstream authority is missing") if authority.empty?
+  values[name] = direct
+end
+
 new_owner_names = owners.keys
 package_targets.each do |name, target|
   next if new_owner_names.include?(name)
 
   dependencies = target.fetch("dependencies", []).map { |dependency| package_dependency_name(dependency) }
   leaked = dependencies & new_owner_names
-  fail_check("unregistered reverse edge #{name} -> #{leaked.sort.join(',')}") unless leaked.empty?
+  expected = downstream_consumers.fetch(name, [])
+  fail_check("downstream edge set differs for #{name}") unless leaked.sort == expected
 end
+missing_consumers = downstream_consumers.keys - package_targets.keys
+fail_check("registered downstream consumers are missing: #{missing_consumers.join(',')}") unless missing_consumers.empty?
 
 fixture_rows = FIXTURES.join("dependency-fixtures.tsv").each_line.each_with_object([]) do |line, rows|
   next if line.start_with?("#") || line.strip.empty?
@@ -114,4 +131,4 @@ fixture_rows.each do |fixture_id, from, to, expectation|
 end
 
 active_count = owners.count { |_name, declaration| declaration["state"] == "active" }
-puts "SPEC-014 module contract passed: #{owners.length} frozen owners, #{active_count} active, and #{fixture_rows.length} graph fixtures."
+puts "SPEC-014 module contract passed: #{owners.length} frozen owners, #{active_count} active, #{downstream_consumers.length} downstream consumer, and #{fixture_rows.length} graph fixtures."

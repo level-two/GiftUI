@@ -38,7 +38,7 @@ resource, or hardware contracts.
 
 | Criterion | Result | Evidence | Notes / exception authority |
 | --- | --- | --- | --- |
-| `BI-001` | pass | [module checker](../../scripts/contracts/check-spec-014-module-contract.rb), [profile declarations](../../scripts/contracts/check-spec-014-value-profiles.sh) | Exact owner graphs and five import-negative fixtures pass. |
+| `BI-001` | pass | [module checker](../../scripts/contracts/check-spec-014-module-contract.rb), [downstream host registry](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/downstream-consumer-registry.md), [profile declarations](../../scripts/contracts/check-spec-014-value-profiles.sh) | Exact owner graphs, the explicit SPEC-015 consumer, and five import-negative fixtures pass. |
 | `BI-002` | pass | [capability checker](../../scripts/contracts/check-spec-014-capability-fixtures.rb), [endpoint admission](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/endpoint-admission.md) | Four exact effective values, every mismatch, and no pre-construction target probing pass. |
 | `BI-003` | pass | [nRF evidence](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/nrf52840-cross-build.md), [platform high-water](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/platform-tile-high-water.md) | Exact 480 x 4, 960-byte row, 3,840-byte one-slot path links without a framebuffer. |
 | `BI-004` | pass | [transaction corpus](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/transaction-failure-corpus.md), [endpoint cleanup](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/endpoint-stream-cleanup.md) | Header bounds precede mutation; every reservation terminates once. |

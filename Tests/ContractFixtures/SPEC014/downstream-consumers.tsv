@@ -1,0 +1,2 @@
+# target	approved_spec_014_dependencies	owner
+GiftUIHostConfiguration	GiftUIBackendIntegration,GiftUIDisplayCore,GiftUIRasterCore,GiftUISurfaceCore	SPEC-015

@@ -1180,6 +1180,14 @@ and the report supports requesting the separate human transition decision;
 SPEC-014 remains `implementing` because this work does not grant that
 authorization.
 
+On 2026-09-14, SPEC-015's completed host assembly activated four approved
+reverse dependencies on SPEC-014 owners. The module gate now records that
+exact downstream consumer set separately from owner declarations, rejects
+transitive or unregistered consumers, and passes the complete macOS Dynamic
+driver. This traceability refresh changes no SPEC-014 contract or task
+disposition; evidence is in
+`Tests/ContractFixtures/SPEC014/Evidence/milestone-8/downstream-consumer-registry.md`.
+
 Record completed, changed, removed, and blocked task dispositions as work
 proceeds; do not silently rewrite task history.
 
