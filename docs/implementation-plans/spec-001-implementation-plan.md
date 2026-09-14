@@ -548,6 +548,10 @@ coalescing behavior.
       initial/replacement-generation-exhaustion results. All four preflight
       failures leave generation 1 available, and exhaustion preserves the
       live `UInt32.max` generation and model.
+      The normalized corpus also proves that discarding a later derivation
+      which omits the root preserves an already committed replacement, its
+      generation-1 registration, and dirty state; the next encounter preserves
+      that same model in both profiles.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized
       mutation phase, freeze, complete-root derivation, publication, wake, and
       paced retry owners. Prove 20 change reports become one dirty transition

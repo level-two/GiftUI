@@ -199,6 +199,15 @@ Reproduce with:
 swift test --filter productionObservableRootsHaveEqualFailureTranscripts
 ```
 
+The failed-derivation fixture commits identity 41 at generation 1, then
+discards a candidate hierarchy which omits the root. Dynamic and Static both
+preserve that replacement, its active registration and dirty bit, and the next
+encounter ignores a fresh initializer and returns `preserved`. Reproduce with:
+
+```sh
+swift test --filter failedDerivationPreservesCommittedReplacementInBothProfiles
+```
+
 The SPEC-015 generator now emits
 `GeneratedSignalAnalyzerStaticRootDescriptor` from the checked portable
 hierarchy and workload. Both Static presets carry the same hierarchy-derived,

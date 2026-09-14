@@ -139,6 +139,10 @@ rejections and both initial and replacement generation exhaustion. Neither
 profile spends a generation for an incompatible association, duplicate owner,
 registration-capacity failure, or replacement-staging failure; both preserve
 the live model and `UInt32.max` generation when the cursor is exhausted.
+A separate derivation-failure transcript commits a replacement, begins a
+candidate which omits the root, and discards that candidate. Both profiles
+retain the replacement model, generation, registration, and dirty state, and
+the next structural encounter preserves that same value.
 Focused Observable State components separately implement binding, attachment,
 atomic replacement, dirty reporting, removal, stale-report rejection, and
 shutdown. Existing tests prove those mechanisms independently, but no target

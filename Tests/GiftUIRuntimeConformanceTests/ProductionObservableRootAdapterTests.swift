@@ -472,3 +472,122 @@ private func staticRootFailureTranscript() -> RootFailureTranscript {
     #expect(dynamic.preservedExhaustedIdentity == 20)
     #expect(dynamic.exhaustedInitial == .failure(.registrationGenerationExhausted))
 }
+
+private struct FailedDerivationTranscript: Equatable {
+    let replacement: ObservableStateResult
+    let failedDerivation: ObservableStateResult
+    let generation: ObservableTargetGeneration?
+    let identity: UInt8?
+    let isActive: Bool
+    let isDirty: Bool
+    let nextEncounter: ObservableStateResult
+}
+
+private func dynamicFailedDerivationTranscript() -> FailedDerivationTranscript {
+    let root = DynamicObservableRootAdapter<DynamicRootTranscriptModel, UInt32>(
+        capacity: 1
+    )
+    var initial = State(wrappedValue: DynamicRootTranscriptModel(identity: 40))
+    _ = root.beginCandidate()
+    _ = root.encounter(
+        structuralIdentity: 0x5341_0300,
+        declarationOrdinal: 0,
+        state: &initial,
+        replacementRoute: { _ in }
+    )
+    _ = root.finishCandidate(.publish)
+    root.setExecutionPhase(.mutating)
+    let replacement = root.replace(
+        with: DynamicRootTranscriptModel(identity: 41)
+    )
+
+    _ = root.beginCandidate()
+    let failedDerivation = root.finishCandidate(.discard)
+    let generation = root.targetGeneration(
+        structuralIdentity: 0x5341_0300,
+        declarationOrdinal: 0
+    )
+    let identity = root.withModel { $0.identity }
+    let isActive = root.isActive
+    let isDirty = root.isDirty
+
+    var next = State(wrappedValue: DynamicRootTranscriptModel(identity: 42))
+    _ = root.beginCandidate()
+    let nextEncounter = root.encounter(
+        structuralIdentity: 0x5341_0300,
+        declarationOrdinal: 0,
+        state: &next,
+        replacementRoute: { _ in }
+    )
+
+    return FailedDerivationTranscript(
+        replacement: replacement,
+        failedDerivation: failedDerivation,
+        generation: generation,
+        identity: identity,
+        isActive: isActive,
+        isDirty: isDirty,
+        nextEncounter: nextEncounter
+    )
+}
+
+private func staticFailedDerivationTranscript() -> FailedDerivationTranscript {
+    var root = StaticObservableRootAdapter<StaticRootTranscriptModel, UInt32>(
+        structuralIdentity: 0x5341_0300,
+        declarationOrdinal: 0
+    )
+    _ = root.beginCandidate()
+    _ = root.withEncounter(
+        state: State(wrappedValue: StaticRootTranscriptModel(identity: 40)),
+        replacementRoute: { _ in },
+        reportRoute: { _ in .staleAttachment },
+        body: { _ in () }
+    )
+    _ = root.finishCandidate(.publish)
+    root.setExecutionPhase(.mutating)
+    let replacement = root.replace(
+        with: StaticRootTranscriptModel(identity: 41),
+        reportRoute: { _ in .staleAttachment }
+    )
+
+    _ = root.beginCandidate()
+    let failedDerivation = root.finishCandidate(.discard)
+    let generation = root.targetGeneration()
+    let identity = root.withModel { $0.identity }
+    let isActive = root.isActive
+    let isDirty = root.isDirty
+
+    _ = root.beginCandidate()
+    let nextEncounter = normalize(
+        root.withEncounter(
+            state: State(wrappedValue: StaticRootTranscriptModel(identity: 42)),
+            replacementRoute: { _ in },
+            reportRoute: { _ in .staleAttachment },
+            body: { _ in () }
+        )
+    )
+
+    return FailedDerivationTranscript(
+        replacement: replacement,
+        failedDerivation: failedDerivation,
+        generation: generation,
+        identity: identity,
+        isActive: isActive,
+        isDirty: isDirty,
+        nextEncounter: nextEncounter
+    )
+}
+
+@Test func failedDerivationPreservesCommittedReplacementInBothProfiles() {
+    let dynamic = dynamicFailedDerivationTranscript()
+    let fixed = staticFailedDerivationTranscript()
+
+    #expect(dynamic == fixed)
+    #expect(dynamic.replacement == .success(.replaced))
+    #expect(dynamic.failedDerivation == .success(.candidateDiscarded))
+    #expect(dynamic.generation == ObservableTargetGeneration(rawValue: 1))
+    #expect(dynamic.identity == 41)
+    #expect(dynamic.isActive)
+    #expect(dynamic.isDirty)
+    #expect(dynamic.nextEncounter == .success(.preserved))
+}
