@@ -50,7 +50,10 @@ joiners = SOURCES.glob("*/*.swift").select do |path|
   end
   imports.include?("GiftUISemanticCore") && imports.include?("GiftUILayout")
 end
-approved_joiners = %w[GiftUIDrawing GiftUIRenderLowering]
+approved_joiners = %w[
+  GiftUIDrawing GiftUIRenderLowering GiftUIRuntimeCore GiftUIRuntimeDynamic
+  GiftUIRuntimeStatic
+]
 fail_check("semantic/layout join exists outside approved producers") unless
   !joiners.empty? && joiners.all? do |path|
     approved_joiners.any? { |target| path.to_s.include?("/#{target}/") }

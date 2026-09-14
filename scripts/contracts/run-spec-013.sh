@@ -79,7 +79,7 @@ input_set_sha256="$(printf '%s\n' "${identity_metadata}" | awk -F= '$1 == "input
 run_id="$(printf '%s\n' "${identity_metadata}" | awk -F= '$1 == "run_id" { print $2 }')"
 [[ -n "${input_set_sha256}" && -n "${run_id}" ]] || fail_usage 'input identity calculation failed'
 
-destination="${REPORT_ROOT}/${run_id}/${profile}"
+canonical_report_dir="${REPORT_ROOT}/${run_id}/${profile}"
 latest="${REPORT_ROOT}/latest-${profile}.txt"
 metadata_path="${staging}/metadata.txt"
 commands_path="${staging}/commands.txt"
@@ -211,7 +211,7 @@ relative_report=".build/contract-reports/spec-013/${run_id}/${profile}"
     --input-hash "${input_set_sha256}" --report-directory "${relative_report}"
 if ! "${SCRIPT_DIR}/publish-contract-report.rb" \
     --report-root "${REPORT_ROOT}" --staging "${staging}" \
-    --destination "${destination}" --latest "${latest}" --run-id "${run_id}"; then
+    --destination "${canonical_report_dir}" --latest "${latest}" --run-id "${run_id}"; then
     printf 'error: SPEC-013 %s report publication failed\n' "${profile}" >&2
     exit 1
 fi

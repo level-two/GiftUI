@@ -14,7 +14,7 @@ def fail_check(message)
 end
 
 package_json, package_error, package_status = Open3.capture3(
-  "swift", "package", "dump-package", chdir: ROOT.to_s
+  "swift", "package", "--disable-sandbox", "dump-package", chdir: ROOT.to_s
 )
 fail_check("package dump failed: #{package_error}") unless package_status.success?
 package = JSON.parse(package_json)
@@ -80,7 +80,7 @@ fail_check("portable GiftUI contains an exported import") if giftui_text.match?(
 
 allowed_layout_consumers = %w[
   GiftUILayoutFailureAdapterFixture GiftUIRenderLowering GiftUIInteraction
-  GiftUIDrawing GiftUIRuntimeDynamic GiftUIRuntimeStatic
+  GiftUIDrawing GiftUIRuntimeCore GiftUIRuntimeDynamic GiftUIRuntimeStatic
 ]
 consumer_violations = Dir[ROOT.join("Sources/*/**/*.swift")].map do |path|
   next unless File.read(path).match?(/^import GiftUILayout$/)

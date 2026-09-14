@@ -93,6 +93,9 @@ expected_sources << File.join(ROOT, "Sources/GiftUI/LayoutModifiers.swift")
 expected_sources << File.join(ROOT, "Sources/GiftUI/DrawingStyles.swift")
 expected_sources << File.join(ROOT, "Sources/GiftUI/DrawingSurface.swift")
 expected_sources << File.join(ROOT, "Sources/GiftUI/Canvas.swift")
+expected_sources << File.join(ROOT, "Sources/GiftUI/ActionHandler.swift")
+expected_sources << File.join(ROOT, "Sources/GiftUI/Button.swift")
+expected_sources << File.join(ROOT, "Sources/GiftUI/Disabled.swift")
 expected_sources.sort!
 fail!("GiftUI owned source inventory is not exact") unless swift_sources == expected_sources
 

@@ -44,7 +44,6 @@ semantic_target = package[/\.target\(\s*name: "GiftUISemanticCore",\s*dependenci
 fail_check("Semantic Core target declaration differs") unless semantic_target
 dependencies = semantic_target.scan(/"([A-Za-z0-9_]+)"/).flatten
 fail_check("Semantic Core target dependencies differ") unless dependencies == ["GiftUI"]
-fail_check("legacy runtime traversal target remains") if package.match?(/name: "GiftUIRuntime(?:Dynamic|Static)"/)
 
 arguments = ARGV.dup
 if arguments.empty?
@@ -72,7 +71,7 @@ output.write([
   "underscored_allowlist=#{allowed_underscored.length}",
   "compiled_underscored=#{compiled_underscored.length}",
   "forbidden_production_uses=0",
-  "legacy_runtime_targets=0",
+  "runtime_profile_targets=downstream",
   "migration_inventory=separately-verified",
 ].join("\n") + "\n")
 puts "SPEC-006 compiled dependency surface report written: #{output}"
