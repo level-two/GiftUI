@@ -160,6 +160,20 @@ Its reinsertion fixture retires a successfully replaced route, removes the
 inline model, and attaches a new model through the reusable initial record with
 a clean dirty bit and a valid fresh-replacement preflight.
 
+`StaticObservableRootAdapterTests` connect that separate inline storage and
+registration to the Static production workspace using one fixed structural
+identity and declaration ordinal. The adapter materializes and preserves the
+typed model, publishes and discards candidates, retires published absence,
+reinserts at a fresh generation, and commits replacement only with the
+workspace reservation. An invalid-phase preflight spends no generation; a
+subsequent successful replacement commits generation 1. Initial candidate
+discard and published removal both retire the inline model and registration,
+and reinsertion consumes a fresh generation. Reproduce with:
+
+```sh
+swift test --filter StaticObservableRootAdapter
+```
+
 The SPEC-015 generator now emits
 `GeneratedSignalAnalyzerStaticRootDescriptor` from the checked portable
 hierarchy and workload. Both Static presets carry the same hierarchy-derived,

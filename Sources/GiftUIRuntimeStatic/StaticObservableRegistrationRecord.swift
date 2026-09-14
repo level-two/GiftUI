@@ -20,6 +20,10 @@ package struct StaticObservableRegistrationRecord {
         replacementBridge?.isDirty ?? bridge.isDirty
     }
 
+    package var liveAttachment: _GiftUIObservationAttachment? {
+        attachment
+    }
+
     package mutating func beginAttachment(
         slot: UInt16 = 0,
         generation: UInt32

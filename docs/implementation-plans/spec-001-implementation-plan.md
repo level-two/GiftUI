@@ -531,8 +531,16 @@ coalescing behavior.
       record, attaches and validates it, ends model mutation, and only then
       evaluates the bound `State` body. Attach-time poisoning suppresses the
       body and removes the partially materialized model.
-      Generated Static root binding, wake integration, and the remaining
-      equal-profile lifecycle corpus remain.
+      A Static root adapter now consumes one fixed structural identity and
+      declaration ordinal and joins that inline storage and registration
+      record to the production Static workspace. It materializes or preserves
+      the typed model, publishes or discards candidates, retires published
+      absence, reinserts with a fresh generation, and coordinates atomic
+      replacement with the workspace reservation. Preflight failure spends no
+      generation. Generated `SignalAnalyzerViewModel` direct report and target
+      dispatch, attach-time replacement poisoning through that direct route,
+      wake integration, address inspection, and the remaining equal-profile
+      lifecycle corpus remain.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized
       mutation phase, freeze, complete-root derivation, publication, wake, and
       paced retry owners. Prove 20 change reports become one dirty transition

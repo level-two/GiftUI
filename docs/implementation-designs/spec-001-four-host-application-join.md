@@ -119,6 +119,15 @@ then supplied to typed candidate attachment, and the root commits or discards
 the workspace reservation according to that exact registration result. This
 keeps the former model and live generation unchanged after attach-time failure
 while permanently spending the failed candidate generation.
+`StaticObservableRootAdapter` now makes the same join around one generated
+identity and declaration ordinal. It uses the ownership-safe combined initial
+binding operation, keeps the inline registration and typed storage records
+separate, and coordinates candidate publish/discard, published removal,
+reinsertion, and replacement with the workspace generation source. Its
+preflight rejection leaves the cursor untouched. The generated direct report
+route remains responsible for forwarding attach-time candidate reports into
+the inline registration record so this adapter can perform its existing
+candidate detach, discard, and workspace-reservation rollback path.
 Focused Observable State components separately implement binding, attachment,
 atomic replacement, dirty reporting, removal, stale-report rejection, and
 shutdown. Existing tests prove those mechanisms independently, but no target
@@ -353,6 +362,9 @@ permission to weaken the static contract.
 - [`DynamicObservableRootAdapter.swift`](../../Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift)
   joins Dynamic structural reconciliation, target generation, typed binding,
   and registration retirement.
+- [`StaticObservableRootAdapter.swift`](../../Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift)
+  joins one fixed Static structural identity, inline typed binding and
+  registration, target generation, replacement, removal, and reinsertion.
 - [`HostActivationController.swift`](../../Sources/GiftUIHostConfiguration/HostActivationController.swift)
   supplies exact activation and teardown ordering.
 - [`HostSequencedFactAdmission.swift`](../../Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift)
