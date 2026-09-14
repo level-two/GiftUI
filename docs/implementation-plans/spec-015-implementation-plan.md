@@ -400,20 +400,13 @@ tears down idempotently from every instance state.
       only after validator return; defective tables quiesce mechanically and
       never decide through themselves. Diagnostics remain optional downstream
       projections and cannot change a transcript.
-- [ ] `T4.3` — Implement `MVPHostInstance.activate()` and its finite inline
+- [x] `T4.3` — Implement `MVPHostInstance.activate()` and its finite inline
       preset-specific activation-failure sum. Follow the seven specified
       construction/attachment/observation/input/source/runtime steps in order,
       fault each step, perform mandatory containment, preserve the first exact
       payload, and enter `.active` or terminal `.failed`. Repeated or
       wrong-state activation calls make no owner call and map to the exact
       reentrancy/safety-not-proven route.
-      **Partial:** a production activation controller now executes all seven
-      steps in order, tracks partial runtime/observation/source progress,
-      performs mandatory containment, preserves the originating finite
-      failure, and rejects repeated activation without owner calls. A concrete
-      `MVPHostInstance` fixture exhausts every step. The four preset-specific
-      focused failure sums and live owner implementations remain blocked on
-      their concrete target roots.
 - [ ] `T4.4` — Implement explicit synchronous idempotent teardown in the exact
       eight-step order from `.valid`, `.activating`, `.active`, `.failed`,
       `.quiescing`, and `.quiescent`. Reject new delivery/input, stop and

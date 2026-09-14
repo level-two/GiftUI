@@ -8,9 +8,16 @@ observation, and source progress triggers ordered mandatory containment, and
 success reaches `active`.
 
 Repeated activation from both `active` and `failed` returns the fixture's exact
-invariant case without calling an owner. The shared controller remains partial
-SPEC-015 T4.3 evidence: each concrete preset must still supply its focused
-activation-failure sum and live owner implementation.
+invariant case without calling an owner. Four distinct finite, inline
+activation-failure sums preserve runtime, endpoint, display, configuration,
+pacing, and invariant payloads for macOS Dynamic, macOS Static, Raspberry Pi
+Dynamic, and nRF52840 Static.
+
+`SignalAnalyzerPresetHostInstance` is the concrete live-owner lifecycle seam.
+Its four matching construction functions reject a report for another preset,
+delegate all seven activation steps, preserve the first focused payload, and
+enter the runtime owner only while active. The four-preset fixture verifies the
+same exact activation order and wrong-state behavior for every failure type.
 
 The same fixture proves synchronous teardown calls all eight required owner
 operations in order from `valid`, `active`, and `failed`, invalidates runtime
