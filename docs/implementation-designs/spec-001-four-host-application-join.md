@@ -65,6 +65,9 @@ failure routing without importing analyzer modules.
 profile-neutral structural-identity and target-generation algorithm over
 dynamic and static slot storage. It deliberately does not consume or own the
 `State` initializer; its `encounter` method only records the association.
+`DynamicObservableModelStorage` now supplies the first bounded Dynamic-profile
+typed storage slice: it binds a transient wrapper to the preserved model and
+routes assignment outward for later atomic replacement.
 Focused Observable State components separately implement binding, attachment,
 atomic replacement, dirty reporting, removal, stale-report rejection, and
 shutdown. Existing tests prove those mechanisms independently, but no target
@@ -272,6 +275,9 @@ permission to weaken the static contract.
 
 - [`RuntimeObservableProfileWorkspace.swift`](../../Sources/GiftUIRuntimeCore/RuntimeObservableProfileWorkspace.swift)
   supplies profile-neutral structural identity and target generations.
+- [`DynamicObservableModelStorage.swift`](../../Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift)
+  supplies bounded Dynamic-profile initializer preservation and assignment
+  routing.
 - [`HostActivationController.swift`](../../Sources/GiftUIHostConfiguration/HostActivationController.swift)
   supplies exact activation and teardown ordering.
 - [`HostSequencedFactAdmission.swift`](../../Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift)

@@ -20,3 +20,17 @@ swift test --filter ProductionObservableProfileWorkspace
 This is partial SPEC-001 T5.2 evidence. Typed model preservation, attachment,
 replacement, dirty/live state, removal/reinsertion, and complete profile
 equivalence remain required before the task is complete.
+
+The Dynamic profile additionally owns one bounded typed model box. Its focused
+fixture proves that the first transient wrapper installs its initializer, a
+later wrapper at the same storage observes the preserved model and discards its
+initializer, assignment is routed without directly changing stored state, and
+attempting to bind one transient wrapper twice fails as an invariant. Reproduce
+that slice with:
+
+```sh
+swift test --filter DynamicObservableModelStorage
+```
+
+Static generated binding, model attachment, atomic replacement, dirty/live
+state, and the complete equal-profile lifecycle remain pending.
