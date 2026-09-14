@@ -41,13 +41,21 @@ private enum ActivationCall: Equatable {
     case stopSourceAndObservation
     case preventInput
     case quiesceRuntime
+    case refuseDeliveryAndInput
+    case stopSourceAndDetachObservations
+    case cancelSequencesAndCallbacks
+    case quiesceAndFinalize
+    case retireRegistrationAndRouting
+    case releasePlatformOwners
+    case resetProfileStorage
+    case invalidateReportRuntimeUse
 }
 
 private final class ActivationProbe {
     var calls: [ActivationCall] = []
 }
 
-private struct FixtureActivationOwner: MVPHostActivationOwner {
+private struct FixtureActivationOwner: MVPHostActivationOwner, MVPHostTeardownOwner {
     let probe: ActivationProbe
     let failingStage: ActivationStage?
 
@@ -104,6 +112,38 @@ private struct FixtureActivationOwner: MVPHostActivationOwner {
         probe.calls.append(.quiesceRuntime)
     }
 
+    mutating func refuseApplicationDeliveryAndInput() {
+        probe.calls.append(.refuseDeliveryAndInput)
+    }
+
+    mutating func stopSourceDeliveryAndDetachObservations() {
+        probe.calls.append(.stopSourceAndDetachObservations)
+    }
+
+    mutating func cancelPointerSequencesAndHostCallbacks() {
+        probe.calls.append(.cancelSequencesAndCallbacks)
+    }
+
+    mutating func quiesceRuntimeAndFinalizeActiveCycle() {
+        probe.calls.append(.quiesceAndFinalize)
+    }
+
+    mutating func retireObservableRegistrationAndRouting() {
+        probe.calls.append(.retireRegistrationAndRouting)
+    }
+
+    mutating func releasePlatformOwners() {
+        probe.calls.append(.releasePlatformOwners)
+    }
+
+    mutating func resetProfileStorage() {
+        probe.calls.append(.resetProfileStorage)
+    }
+
+    mutating func invalidateAssemblyReportRuntimeUse() {
+        probe.calls.append(.invalidateReportRuntimeUse)
+    }
+
     private func result(
         for stage: ActivationStage
     ) -> HostActivationStepResult<FixtureActivationFailure> {
@@ -141,7 +181,9 @@ private struct ActivationFixtureInstance: MVPHostInstance {
         .invalidLifecycle
     }
 
-    mutating func teardown() {}
+    mutating func teardown() {
+        controller.teardown(owner: &owner)
+    }
 }
 
 @Test func successfulActivationUsesAllSevenStepsInOrder() {
@@ -210,6 +252,61 @@ private func everyActivationStepPreservesFailureAndContainsPartialWork(
 
     #expect(instance.activate() == .failure(.invariant))
     #expect(instance.lifecycleState == .failed)
+    #expect(probe.calls.isEmpty)
+}
+
+@Test(arguments: [MVPHostLifecycleState.valid, .active, .failed])
+private func teardownUsesAllEightStepsFromEveryExternallyStableState(
+    initialState: MVPHostLifecycleState
+) {
+    let probe = ActivationProbe()
+    var instance = ActivationFixtureInstance(
+        assemblyReport: makeActivationReport(),
+        owner: FixtureActivationOwner(
+            probe: probe,
+            failingStage: initialState == .failed ? .applicationOwners : nil
+        )
+    )
+    if initialState == .active {
+        #expect(instance.activate() == .active)
+    } else if initialState == .failed {
+        #expect(instance.activate() == .failure(.applicationOwners))
+    }
+    probe.calls.removeAll(keepingCapacity: true)
+
+    instance.teardown()
+
+    #expect(instance.lifecycleState == .quiescent)
+    #expect(!instance.controller.assemblyReportRuntimeUseIsValid)
+    #expect(
+        probe.calls
+            == [
+                .refuseDeliveryAndInput,
+                .stopSourceAndDetachObservations,
+                .cancelSequencesAndCallbacks,
+                .quiesceAndFinalize,
+                .retireRegistrationAndRouting,
+                .releasePlatformOwners,
+                .resetProfileStorage,
+                .invalidateReportRuntimeUse,
+            ]
+    )
+}
+
+@Test func repeatedTeardownFromQuiescentIsIdempotentWithoutOwnerCall() {
+    let probe = ActivationProbe()
+    var instance = ActivationFixtureInstance(
+        assemblyReport: makeActivationReport(),
+        owner: FixtureActivationOwner(probe: probe, failingStage: nil)
+    )
+    instance.teardown()
+    probe.calls.removeAll(keepingCapacity: true)
+
+    instance.teardown()
+
+    #expect(instance.lifecycleState == .quiescent)
+    #expect(probe.calls.isEmpty)
+    #expect(instance.activate() == .failure(.invariant))
     #expect(probe.calls.isEmpty)
 }
 

@@ -429,6 +429,13 @@ tears down idempotently from every instance state.
       retire registrations and identities, release endpoint/resource/platform
       owners, reset profile storage last, and prevent stale callbacks, report
       reuse, or reactivation.
+      **Partial:** the production lifecycle controller now performs the exact
+      eight teardown calls in order from each externally stable pre-terminal
+      state, invalidates report runtime use after storage reset, reaches
+      `.quiescent`, and makes repeated teardown owner-call-free. Concrete
+      callback cancellation, identity retirement/reconstruction, and reentrant
+      `.activating`/`.quiescing` fault probes remain with the four target
+      roots.
 
 ### Milestone 5: Integrate Serialized Application, Runtime, Input, and Recovery
 

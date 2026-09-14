@@ -52,9 +52,21 @@ package protocol MVPHostActivationOwner: ~Copyable {
     mutating func quiesceConstructedRuntime()
 }
 
+package protocol MVPHostTeardownOwner: ~Copyable {
+    mutating func refuseApplicationDeliveryAndInput()
+    mutating func stopSourceDeliveryAndDetachObservations()
+    mutating func cancelPointerSequencesAndHostCallbacks()
+    mutating func quiesceRuntimeAndFinalizeActiveCycle()
+    mutating func retireObservableRegistrationAndRouting()
+    mutating func releasePlatformOwners()
+    mutating func resetProfileStorage()
+    mutating func invalidateAssemblyReportRuntimeUse()
+}
+
 package struct MVPHostActivationController<Failure: Equatable & Sendable> {
     package private(set) var lifecycleState: MVPHostLifecycleState = .valid
     package private(set) var progress = HostActivationProgress()
+    package private(set) var assemblyReportRuntimeUseIsValid = true
 
     package init() {}
 
@@ -101,6 +113,26 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
 
         lifecycleState = .active
         return .active
+    }
+
+    package mutating func teardown<Owner: MVPHostTeardownOwner>(owner: inout Owner) {
+        guard lifecycleState != .quiescing, lifecycleState != .quiescent else {
+            return
+        }
+        lifecycleState = .quiescing
+
+        owner.refuseApplicationDeliveryAndInput()
+        owner.stopSourceDeliveryAndDetachObservations()
+        owner.cancelPointerSequencesAndHostCallbacks()
+        owner.quiesceRuntimeAndFinalizeActiveCycle()
+        owner.retireObservableRegistrationAndRouting()
+        owner.releasePlatformOwners()
+        owner.resetProfileStorage()
+        owner.invalidateAssemblyReportRuntimeUse()
+
+        progress = HostActivationProgress()
+        assemblyReportRuntimeUseIsValid = false
+        lifecycleState = .quiescent
     }
 
     private mutating func record(
