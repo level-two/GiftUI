@@ -115,6 +115,7 @@ run_required package-manifest giftui_swiftpm \
     --disable-sandbox \
     -- package dump-package
 run_required module-contract "${SCRIPT_DIR}/check-spec-013-module-contract.sh"
+run_required storage-boundaries "${SCRIPT_DIR}/check-spec-013-storage-boundaries.rb"
 
 for target in GiftUIRuntimeCore GiftUIRuntimeDynamic GiftUIRuntimeStatic GiftUIRuntimeFailureAdapterFixture; do
     require_path "target-${target}" "${PROJECT_ROOT}/Sources/${target}"

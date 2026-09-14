@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-13
+updated: 2026-09-14
 related_design_notes:
   - ../implementation-designs/spec-013-common-coordinator-and-cleanup.md
   - ../implementation-designs/spec-013-storage-audit-and-overlay-ownership.md
@@ -397,7 +397,7 @@ schema is frozen.
 cleanup rows, borrows, offers, generations, and equal results with zero
 semantic tolerance.
 
-- [ ] `T6.1` — Run exact-limit and first-excess cases for every contained limit
+- [x] `T6.1` — Run exact-limit and first-excess cases for every contained limit
       and every physical storage family. Record limits, concrete capacities,
       audit fields, high-water counts, allocator bookkeeping, and deterministic
       failure identity.
@@ -836,6 +836,16 @@ retention, distinct no-change/backpressure/retryable results, exact five-owner
 failures, reverse cleanup, and exactly-once finalization. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-5/complete-production-pipeline.md`.
 Milestone 5 is complete; Milestone 6's frozen cross-profile corpus is next.
+
+`T6.1` is complete. The frozen four-case storage corpus and registered checker
+cover all 51 logical limit dimensions and all 16 physical storage families in
+both production profiles. Exact-limit reservations reach exact high-water,
+the first excess returns `limitExceeded` without mutation, all exclusive audit
+fields and the checked total are retained, and Dynamic payload reservation,
+spare capacity, and sixteen allocations remain separate bookkeeping. Evidence
+is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-6/storage-boundaries.md`.
+T6.2 is next.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

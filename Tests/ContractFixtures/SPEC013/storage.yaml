@@ -1,2 +1,36 @@
 schema: spec-013-v1
-cases: []
+cases:
+  - name: dynamic-exact-limit-and-first-excess
+    criteria: [RP-002, RP-006]
+    evidenceClasses: [host-execution, inspection]
+    profile: dynamic
+    logicalLimitCount: 51
+    physicalFamilyCount: 16
+    exactResult: accepted
+    firstExcessResult: limitExceeded
+    rejectedReservationMutatesUse: false
+  - name: static-exact-limit-and-first-excess
+    criteria: [RP-002, RP-006]
+    evidenceClasses: [host-execution, inspection]
+    profile: static
+    logicalLimitCount: 51
+    physicalFamilyCount: 16
+    exactResult: accepted
+    firstExcessResult: limitExceeded
+    rejectedReservationMutatesUse: false
+  - name: exclusive-physical-storage-audit
+    criteria: [RP-002, RP-006]
+    evidenceClasses: [host-execution, inspection]
+    profile: both
+    physicalFamilyCount: 16
+    artificialFamilyBytes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+    expectedTotalProfileBytes: 136
+    overlappingBytes: 0
+  - name: dynamic-allocator-bookkeeping-is-separate
+    criteria: [RP-002, RP-006]
+    evidenceClasses: [host-execution, inspection]
+    profile: dynamic
+    ownedPayloadBytes: 136
+    minimumReservedPayloadBytes: 136
+    allocationCount: 16
+    includedInTotalProfileBytes: false
