@@ -253,4 +253,13 @@ where Model: _GiftUIObservableReference, Identity: Equatable & Sendable {
     ) -> Result? {
         storage.withModel(body)
     }
+
+    package mutating func withModel(
+        matching generation: ObservableTargetGeneration,
+        _ body: (borrowing Model) -> Void
+    ) -> Bool {
+        guard targetGeneration() == generation else { return false }
+        guard storage.withModel(body) != nil else { return false }
+        return true
+    }
 }

@@ -196,4 +196,19 @@ where Model: _GiftUIObservableReference, Identity: Equatable & Sendable {
     ) -> Result? {
         registration.withModel(body)
     }
+
+    package func withModel(
+        matching generation: ObservableTargetGeneration,
+        _ body: (borrowing Model) -> Void
+    ) -> Bool {
+        guard
+            let registeredIdentity,
+            workspace.targetGeneration(
+                structuralIdentity: registeredIdentity,
+                declarationOrdinal: registeredOrdinal
+            ) == generation
+        else { return false }
+        guard registration.withModel(body) != nil else { return false }
+        return true
+    }
 }

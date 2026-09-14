@@ -214,3 +214,43 @@ private final class DynamicRootModel: _GiftUIObservableReference {
             == nil
     )
 }
+
+@Test func dynamicRootAdapterBorrowsOnlyTheMatchingTargetGeneration() {
+    let adapter = DynamicObservableRootAdapter<DynamicRootModel, UInt16>(capacity: 1)
+    var state = State(wrappedValue: DynamicRootModel(identity: 12))
+    _ = adapter.beginCandidate()
+    _ = adapter.encounter(
+        structuralIdentity: 31,
+        declarationOrdinal: 0,
+        state: &state,
+        replacementRoute: { _ in }
+    )
+    _ = adapter.finishCandidate(.publish)
+
+    var identities: [UInt8] = []
+    #expect(
+        !adapter.withModel(
+            matching: ObservableTargetGeneration(rawValue: 1)
+        ) { identities.append($0.identity) }
+    )
+    #expect(
+        adapter.withModel(
+            matching: ObservableTargetGeneration(rawValue: 0)
+        ) { identities.append($0.identity) }
+    )
+    #expect(identities == [12])
+
+    adapter.setExecutionPhase(.mutating)
+    _ = adapter.replace(with: DynamicRootModel(identity: 13))
+    #expect(
+        !adapter.withModel(
+            matching: ObservableTargetGeneration(rawValue: 0)
+        ) { identities.append($0.identity) }
+    )
+    #expect(
+        adapter.withModel(
+            matching: ObservableTargetGeneration(rawValue: 1)
+        ) { identities.append($0.identity) }
+    )
+    #expect(identities == [12, 13])
+}

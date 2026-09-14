@@ -266,6 +266,10 @@ model and active registration before retiring the former registration. Failed
 candidate derivation discards candidate-only state; failed derivation after a
 committed replacement preserves the replacement and dirtiness. Published
 absence retires the model; later reinsertion consumes a fresh generation.
+Each profile root also performs the dispatch-time generation comparison and
+model borrow as one operation. This prevents a caller from separately reading
+a generation and then borrowing a model after replacement; a stale generation
+never invokes the supplied action body.
 
 All root ledgers are fixed records or bit sets. The dynamic and static roots
 run the same ordering and state-transition algorithm. A root never infers a

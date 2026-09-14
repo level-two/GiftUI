@@ -181,3 +181,48 @@ private struct StaticRootModel: _GiftUIObservableReference {
     #expect(isReinsertedActive)
     #expect(!isReinsertedDirty)
 }
+
+@Test func staticRootAdapterBorrowsOnlyTheMatchingTargetGeneration() {
+    var root = StaticObservableRootAdapter<StaticRootModel, UInt32>(
+        structuralIdentity: 0x5341_0005,
+        declarationOrdinal: 0
+    )
+    _ = root.beginCandidate()
+    _ = root.withEncounter(
+        state: State(wrappedValue: StaticRootModel(identity: 12)),
+        replacementRoute: { _ in },
+        reportRoute: { _ in .staleAttachment },
+        body: { _ in () }
+    )
+    _ = root.finishCandidate(.publish)
+
+    var identities: [UInt8] = []
+    #expect(
+        !root.withModel(
+            matching: ObservableTargetGeneration(rawValue: 1)
+        ) { identities.append($0.identity) }
+    )
+    #expect(
+        root.withModel(
+            matching: ObservableTargetGeneration(rawValue: 0)
+        ) { identities.append($0.identity) }
+    )
+    #expect(identities == [12])
+
+    root.setExecutionPhase(.mutating)
+    _ = root.replace(
+        with: StaticRootModel(identity: 13),
+        reportRoute: { _ in .staleAttachment }
+    )
+    #expect(
+        !root.withModel(
+            matching: ObservableTargetGeneration(rawValue: 0)
+        ) { identities.append($0.identity) }
+    )
+    #expect(
+        root.withModel(
+            matching: ObservableTargetGeneration(rawValue: 1)
+        ) { identities.append($0.identity) }
+    )
+    #expect(identities == [12, 13])
+}

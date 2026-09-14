@@ -563,6 +563,12 @@ coalescing behavior.
       pointer-down and admitted-action replacement, removal, failed/staged
       replacement, stale action generation, disabled state, and final target
       revalidation; require at-most-once dispatch to the exact current model.
+      **Partial:** both production root adapters now provide one atomic
+      generation-matching model borrow for final dispatch revalidation. A
+      stale requested generation invokes no body; replacement invalidates the
+      former generation and permits only the current generation to borrow the
+      new model. Concrete `SignalAnalyzerActionHandler` composition and the
+      complete interaction interleaving corpus remain.
 - [ ] `T5.5` — Produce one normalized integrated cycle transcript containing
       callback, admission, seal, application, change report, dirty/wake,
       semantic publication, Drawing, offer, and frame events. Compare all
