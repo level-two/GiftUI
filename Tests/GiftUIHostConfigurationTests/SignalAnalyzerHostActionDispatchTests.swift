@@ -1,6 +1,7 @@
 import GiftUI
 import GiftUIExecution
 import GiftUIInteraction
+import GiftUIObservableState
 import GiftUIRuntimeCore
 import GiftUIRuntimeDynamic
 import GiftUIRuntimeStatic
@@ -58,6 +59,17 @@ private struct ActionCallbackTranscript: Equatable {
     let stateBeforeLaterMutation: SignalAnalyzerViewState
     let admittedFact: SignalAnalyzerPresentationFact?
     let stateAfterLaterMutation: SignalAnalyzerViewState
+}
+
+private struct ActionReplacementTranscript: Equatable {
+    let afterPointerDownReplacement: InteractionDispatchResult
+    let afterAdmittedActionReplacement: InteractionDispatchResult
+    let afterRemoval: InteractionDispatchResult
+    let failedStagingReplacement: ObservableStateResult
+    let afterFailedReplacement: InteractionDispatchResult
+    let disabled: InteractionDispatchResult
+    let formerCalls: [String]
+    let replacementCalls: [String]
 }
 
 private struct AnalyzerActionRecords: InteractionCommittedActionView {
@@ -225,6 +237,24 @@ func invalidAnalyzerActionCodesFailClosed(code: UInt16) {
     #expect(repository.calls.isEmpty)
 }
 
+@Test func actionReplacementInterleavingsAreEqualAcrossProfiles() {
+    let dynamic = dynamicActionReplacementTranscript()
+    let fixed = staticActionReplacementTranscript()
+
+    #expect(dynamic == fixed)
+    #expect(dynamic.afterPointerDownReplacement == .cancelled)
+    #expect(dynamic.afterAdmittedActionReplacement == .cancelled)
+    #expect(dynamic.afterRemoval == .cancelled)
+    #expect(
+        dynamic.failedStagingReplacement
+            == ObservableStateResult.failure(.replacementStagingCapacityExhausted)
+    )
+    #expect(dynamic.afterFailedReplacement == .dispatched)
+    #expect(dynamic.disabled == .cancelled)
+    #expect(dynamic.formerCalls == ["start"])
+    #expect(dynamic.replacementCalls.isEmpty)
+}
+
 @Test func sameThreadAndDistinctActionCallbacksStopAtLaterFactAdmission() {
     let sameThread = runActionCallback(mode: .sameThread)
     let distinct = runActionCallback(mode: .distinctExecutor)
@@ -286,6 +316,142 @@ private func runActionCallback(
         admittedFact: admittedFact,
         stateAfterLaterMutation: model.state
     )
+}
+
+private func dynamicActionReplacementTranscript() -> ActionReplacementTranscript {
+    let formerRepository = ActionRepository()
+    let replacementRepository = ActionRepository()
+    let root = makeActionRoot(makeActionModel(repository: formerRepository))
+    var formerDispatcher = DynamicSignalAnalyzerActionDispatcher.make(
+        records: AnalyzerActionRecords(
+            record: analyzerActionRecord(code: SignalAnalyzerAction.start.rawValue)
+        ),
+        root: root
+    )
+    let pointerDownCapture = CapturedAction(
+        identity: UInt16(4),
+        generation: ActionGeneration(rawValue: 8)
+    )
+
+    root.setExecutionPhase(.mutating)
+    _ = root.replace(with: makeActionModel(repository: replacementRepository))
+    let afterPointerDownReplacement = formerDispatcher.dispatch(pointerDownCapture)
+    let admittedAction = pointerDownCapture
+    let afterAdmittedActionReplacement = formerDispatcher.dispatch(admittedAction)
+    _ = root.beginCandidate()
+    _ = root.finishCandidate(.publish)
+    let afterRemoval = formerDispatcher.dispatch(admittedAction)
+
+    let preservedRoot = makeActionRoot(makeActionModel(repository: formerRepository))
+    preservedRoot.setExecutionPhase(.mutating)
+    let failedStagingReplacement = preservedRoot.replace(
+        with: makeActionModel(repository: replacementRepository),
+        replacementStagingAvailable: false
+    )
+    var preservedDispatcher = DynamicSignalAnalyzerActionDispatcher.make(
+        records: AnalyzerActionRecords(
+            record: analyzerActionRecord(code: SignalAnalyzerAction.start.rawValue)
+        ),
+        root: preservedRoot
+    )
+    let afterFailedReplacement = preservedDispatcher.dispatch(pointerDownCapture)
+    var disabledDispatcher = DynamicSignalAnalyzerActionDispatcher.make(
+        records: AnalyzerActionRecords(
+            record: analyzerActionRecord(
+                code: SignalAnalyzerAction.start.rawValue,
+                enabled: false
+            )
+        ),
+        root: preservedRoot
+    )
+    let disabled = disabledDispatcher.dispatch(pointerDownCapture)
+    return ActionReplacementTranscript(
+        afterPointerDownReplacement: afterPointerDownReplacement,
+        afterAdmittedActionReplacement: afterAdmittedActionReplacement,
+        afterRemoval: afterRemoval,
+        failedStagingReplacement: failedStagingReplacement,
+        afterFailedReplacement: afterFailedReplacement,
+        disabled: disabled,
+        formerCalls: formerRepository.calls,
+        replacementCalls: replacementRepository.calls
+    )
+}
+
+private func staticActionReplacementTranscript() -> ActionReplacementTranscript {
+    let formerRepository = ActionRepository()
+    let replacementRepository = ActionRepository()
+    var root = makeStaticActionRoot(makeActionModel(repository: formerRepository))
+    let pointerDownCapture = CapturedAction(
+        identity: UInt16(4),
+        generation: ActionGeneration(rawValue: 8)
+    )
+    let firstResults = withUnsafeMutablePointer(to: &root) { rootPointer in
+        var formerDispatcher = StaticSignalAnalyzerActionDispatcher.make(
+            records: AnalyzerActionRecords(
+                record: analyzerActionRecord(code: SignalAnalyzerAction.start.rawValue)
+            ),
+            root: rootPointer
+        )
+        rootPointer.pointee.setExecutionPhase(.mutating)
+        _ = rootPointer.pointee.replace(
+            with: makeActionModel(repository: replacementRepository),
+            reportRoute: { attachment in
+                rootPointer.pointee.acceptReport(attachment)
+            }
+        )
+        let afterPointerDownReplacement = formerDispatcher.dispatch(pointerDownCapture)
+        let admittedAction = pointerDownCapture
+        let afterAdmittedActionReplacement = formerDispatcher.dispatch(admittedAction)
+        _ = rootPointer.pointee.beginCandidate()
+        _ = rootPointer.pointee.finishCandidate(.publish)
+        let afterRemoval = formerDispatcher.dispatch(admittedAction)
+        return (
+            afterPointerDownReplacement,
+            afterAdmittedActionReplacement,
+            afterRemoval
+        )
+    }
+
+    var preservedRoot = makeStaticActionRoot(
+        makeActionModel(repository: formerRepository)
+    )
+    return withUnsafeMutablePointer(to: &preservedRoot) { rootPointer in
+        rootPointer.pointee.setExecutionPhase(.mutating)
+        let failedStagingReplacement = rootPointer.pointee.replace(
+            with: makeActionModel(repository: replacementRepository),
+            reportRoute: { attachment in
+                rootPointer.pointee.acceptReport(attachment)
+            },
+            replacementStagingAvailable: false
+        )
+        var preservedDispatcher = StaticSignalAnalyzerActionDispatcher.make(
+            records: AnalyzerActionRecords(
+                record: analyzerActionRecord(code: SignalAnalyzerAction.start.rawValue)
+            ),
+            root: rootPointer
+        )
+        let afterFailedReplacement = preservedDispatcher.dispatch(pointerDownCapture)
+        var disabledDispatcher = StaticSignalAnalyzerActionDispatcher.make(
+            records: AnalyzerActionRecords(
+                record: analyzerActionRecord(
+                    code: SignalAnalyzerAction.start.rawValue,
+                    enabled: false
+                )
+            ),
+            root: rootPointer
+        )
+        let disabled = disabledDispatcher.dispatch(pointerDownCapture)
+        return ActionReplacementTranscript(
+            afterPointerDownReplacement: firstResults.0,
+            afterAdmittedActionReplacement: firstResults.1,
+            afterRemoval: firstResults.2,
+            failedStagingReplacement: failedStagingReplacement,
+            afterFailedReplacement: afterFailedReplacement,
+            disabled: disabled,
+            formerCalls: formerRepository.calls,
+            replacementCalls: replacementRepository.calls
+        )
+    }
 }
 
 private func makeActionRoot(

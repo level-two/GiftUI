@@ -28,11 +28,18 @@ real root commits a replacement. Reproduce with:
 swift test --filter SignalAnalyzerHostActionDispatchTests
 ```
 
-The Static analyzer composition now installs the same exact handler through
+The Static analyzer composition installs the same exact handler through
 the generated-root-compatible typed pointer path. Its six-case corpus reaches
 the same repository intents and visible-window mutations while preserving the
-address-stable root as the lifetime owner. Pointer-down and admitted-action
-replacement/removal interleavings remain.
+address-stable root as the lifetime owner.
+
+The final normalized interleaving corpus captures an action at pointer down
+and at activation admission, then commits model replacement before dispatch.
+Both captures cancel and invoke neither former nor replacement model. Published
+removal also cancels. A replacement-staging failure preserves generation zero
+and permits exactly one later dispatch to the former model, while disabled
+state cancels without another invocation. Dynamic and Static transcripts are
+equal, and the replacement model records no call.
 
 The profile-specific adapters now conform to `ActionModelTargetAccess`.
 Dynamic stores a weak root reference: releasing the composition root clears
@@ -57,4 +64,5 @@ Reproduce with:
 
 ```sh
 swift test --filter rootTargetAdaptersProduceEqualDispatchAndCancellation
+swift test --filter actionReplacementInterleavingsAreEqualAcrossProfiles
 ```

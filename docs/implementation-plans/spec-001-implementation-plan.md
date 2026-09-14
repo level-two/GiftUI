@@ -582,7 +582,7 @@ coalescing behavior.
       and compares accepted-frame and retryable-refusal dispositions. Static
       change reporting uses the generated-root-compatible direct route; both
       profiles leave exactly one paced wake after retryable refusal.
-- [ ] `T5.4` — Bind the six-action handler to the current model generation at
+- [x] `T5.4` — Bind the six-action handler to the current model generation at
       the runtime coordinator. Exhaust exact dispatch, no capture/retention,
       pointer-down and admitted-action replacement, removal, failed/staged
       replacement, stale action generation, disabled state, and final target
@@ -603,13 +603,17 @@ coalescing behavior.
       former action after real root replacement. Static analyzer composition
       now installs the same handler and dispatcher through a typed pointer to
       the generated-root-compatible address-stable model owner, and all six
-      exact actions reach the same intents. The remaining interaction
-      interleaving corpus remains.
+      exact actions reach the same intents.
       A production-dispatcher transcript now proves equal initial dispatch,
       preservation of former dispatch after incompatible replacement failure,
       cancellation of a captured former generation after successful
       replacement, exact current-replacement dispatch, and cancellation after
       published removal.
+      The final profile-equal interleaving corpus covers pointer-down and
+      activation-admitted capture across replacement, published removal,
+      replacement-staging failure, disabled state, and final revalidation.
+      Replacement cancels both captured actions without invoking either model;
+      failed staging preserves and dispatches only the former target.
 - [ ] `T5.5` — Produce one normalized integrated cycle transcript containing
       callback, admission, seal, application, change report, dirty/wake,
       semantic publication, Drawing, offer, and frame events. Compare all
