@@ -118,6 +118,7 @@ run_required module-contract "${SCRIPT_DIR}/check-spec-013-module-contract.sh"
 run_required storage-boundaries "${SCRIPT_DIR}/check-spec-013-storage-boundaries.rb"
 run_required startup-corpus "${SCRIPT_DIR}/check-spec-013-startup-corpus.rb"
 run_required cycle-failures "${SCRIPT_DIR}/check-spec-013-cycle-failures.rb"
+run_required handoff-recovery "${SCRIPT_DIR}/check-spec-013-handoff-recovery.rb"
 
 for target in GiftUIRuntimeCore GiftUIRuntimeDynamic GiftUIRuntimeStatic GiftUIRuntimeFailureAdapterFixture; do
     require_path "target-${target}" "${PROJECT_ROOT}/Sources/${target}"

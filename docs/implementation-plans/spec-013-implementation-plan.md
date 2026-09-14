@@ -408,7 +408,7 @@ semantic tolerance.
 - [x] `T6.3` — Inject every focused failure at every stage and verify the exact
       cleanup row, first-error precedence, no effect replay, candidate discard,
       callable/capture release, dirty state, finalization, and wake behavior.
-- [ ] `T6.4` — Exercise accepted/refused/failed endpoint outcomes, retry
+- [x] `T6.4` — Exercise accepted/refused/failed endpoint outcomes, retry
       exhaustion, backpressure, late admission, reentrancy, coalesced wake,
       pointer cancellation, committed-routing preservation, constant-space
       recovery, and idle/active quiescence.
@@ -863,7 +863,17 @@ publication-sensitive dirty/wake behavior, one disposition, and exactly-once
 finalization. The existing mutation state test independently proves that
 cleanup cannot replay admitted effects. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-6/cycle-failure-matrix.md`.
-T6.4 is next.
+
+`T6.4` is complete. The frozen handoff corpus composes the existing execution,
+transaction, routing, lifecycle, and quiescence suites with direct common-
+pipeline endpoint-failure coverage. Accepted offers alone commit routing;
+backpressure, retryable/nonretryable refusal, and failed offers discard the
+candidate while preserving prior committed state. One hundred superseding
+backpressure reports retain one fixed-size intent and one outstanding wake.
+Late admission, retry exhaustion, offer reentrancy, pointer cancellation, and
+idle/active quiescence retain their exact bounded behavior. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-6/handoff-recovery.md`.
+T6.5 is next.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

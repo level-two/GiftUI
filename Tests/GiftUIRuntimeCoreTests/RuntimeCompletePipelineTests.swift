@@ -443,3 +443,34 @@ private func expectedFailureCleanups(
     #expect(retryableCompletion.disposition.presentationIntentState == .pending)
     #expect(retryableCompletion.disposition.wakeReasons == [.presentationPending])
 }
+
+@Test func failedEndpointPreservesPublicationAndDiscardsCandidateRouting() {
+    let endpointFailure = RunCycleFailure<RuntimeOwnerFailure>.frameOffer(.producerFailed)
+    var owner = CompletePipelineRecorder(
+        failureStage: .offerAndProduction,
+        injectedFailure: endpointFailure
+    )
+    let result = RuntimeCompletePipeline.run(owner: &owner)
+    guard case .failed(let failure) = result else {
+        Issue.record("expected endpoint failure")
+        return
+    }
+
+    #expect(failure.failure == endpointFailure)
+    #expect(failure.publication?.semanticRevision == SemanticRevision(rawValue: 7))
+    #expect(failure.disposition.semanticDisposition == .published)
+    #expect(failure.disposition.logicalFrameDisposition == .aborted)
+    #expect(failure.disposition.presentationIntentState == .unavailable)
+    #expect(failure.disposition.wakeReasons.isEmpty)
+    #expect(!failure.disposition.commitsInteractionCandidate)
+    #expect(failure.disposition.preservesPublishedSemanticRevision)
+    #expect(
+        owner.cleanups == [
+            .discardInteractionCandidate,
+            .resetRenderWorkspace,
+            .resetDrawingPlan,
+            .resetAttemptStorage,
+        ]
+    )
+    #expect(owner.finalizationCount == 1)
+}

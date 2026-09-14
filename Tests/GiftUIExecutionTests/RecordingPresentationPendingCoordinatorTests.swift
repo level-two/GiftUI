@@ -107,3 +107,21 @@ func clearingOnlyMatchingRevisionCannotDiscardNewerIntent() {
     subject.clearPending(for: latest)
     #expect(subject.pendingIntent == nil)
 }
+
+@Test
+func repeatedBackpressureRetainsOneIntentAndOneOutstandingWake() {
+    var subject = makePendingCoordinator()
+
+    for rawValue in 1 ... 100 {
+        let transition = subject.recordBackpressure(
+            for: SemanticRevision(rawValue: UInt32(rawValue))
+        )
+        #expect(transition.intent?.semanticRevision == SemanticRevision(rawValue: UInt32(rawValue)))
+        #expect(transition.intent?.retryableRefusalCount == 0)
+        #expect(!transition.exhausted)
+    }
+
+    #expect(subject.pendingIntent?.semanticRevision == SemanticRevision(rawValue: 100))
+    #expect(subject.wakes.requester.requestCount == 1)
+    #expect(MemoryLayout<PresentationPendingIntent>.stride <= 8)
+}

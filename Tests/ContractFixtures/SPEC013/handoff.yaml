@@ -1,2 +1,37 @@
 schema: spec-013-v1
-cases: []
+cases:
+  - name: accepted-offer-commits-routing
+    criteria: [RP-008, RP-014]
+    evidenceClasses: [host-execution, inspection]
+    endpointOutcome: accepted
+    publishesCandidateRouting: true
+    preservesPriorRouting: false
+  - name: refused-and-failed-offers-preserve-routing
+    criteria: [RP-008, RP-014]
+    evidenceClasses: [host-execution, inspection]
+    endpointOutcomes: [backpressured, retryableRefusal, nonRetryableRefusal, failed]
+    publishesCandidateRouting: false
+    preservesPriorRouting: true
+    retiresCandidateGeneration: true
+  - name: bounded-refusal-recovery
+    criteria: [RP-009]
+    evidenceClasses: [host-execution, inspection]
+    repeatedBackpressureCount: 100
+    retainedIntentCount: 1
+    outstandingWakeCount: 1
+    retryExhaustionClearsIntent: true
+    newerRevisionSupersedesOlder: true
+  - name: late-admission-and-wake-coalescing
+    criteria: [RP-009]
+    evidenceClasses: [host-execution, inspection]
+    lateAdmissionDeferred: true
+    duplicateWakesCoalesced: true
+    idleTakeAcknowledgesWake: true
+  - name: reentrancy-and-quiescence
+    criteria: [RP-008, RP-009]
+    evidenceClasses: [host-execution, inspection]
+    repeatedOfferRejected: true
+    laterAdmissionRefused: true
+    pointerCancellationRequired: true
+    idleQuiescenceSynchronous: true
+    activeQuiescenceFinishesContainment: true
