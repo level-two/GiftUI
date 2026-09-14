@@ -475,7 +475,7 @@ finite refusal recovery, and exact operational-failure routing.
       through two, the third terminates without a fourth offer, newer
       revisions replace old pending intent in constant space, and no fact,
       action, Canvas closure, plan, operation stream, or payload is replayed.
-- [ ] `T5.4` — Join normalized input and action dispatch. The target-local gate
+- [x] `T5.4` — Join normalized input and action dispatch. The target-local gate
       attaches current physical-presentation provenance and drops malformed,
       stale, unknown, unavailable, out-of-order, or excess sequences before
       runtime admission. Dispatch revalidates action/target generations and
@@ -485,13 +485,6 @@ finite refusal recovery, and exact operational-failure routing.
       and semantic-action limits, prove submission at each configured bound
       succeeds and the first excess follows SPEC-009's exact capacity refusal
       and source-sequence cancellation behavior without resizing any limit.
-      **Partial:** SPEC-011's production dispatcher is now joined to the exact
-      six-case Signal Analyzer handler and a weak current-model access.
-      Focused fixtures prove all six dispatches, invalid-code failure, stale
-      action/target generations, replacement between capture and dispatch,
-      and no former-model retention. Target-local normalized input, pointer
-      sequence limits, configured-bound success, and first-excess cancellation
-      remain open.
 - [x] `T5.5` — Integrate mutable endpoint/display health without changing the
       immutable capability snapshot. After responsibility transfer, drain the
       one-shot stream and update the single health owner before routing
@@ -850,3 +843,14 @@ preserves all 80 ordered facts and change reports while coalescing them into
 four wakes and four derivations at exact 250,000-microsecond boundaries.
 Evidence is in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-5/scheduled-opportunity.md`.
+
+`T5.4` is complete. `HostNormalizedInputGate` implements the one-source
+target-local presentation gate, consumes sequence identity only for submitted
+downs, enforces ordinal zero and checked successors, and cancels stale,
+unknown, unavailable, malformed, out-of-order, exhausted, and runtime-refused
+sequences without retargeting. Focused tests prove the configured bound and
+first-excess capacity cancellation, while the existing production dispatcher
+fixtures prove all six actions, final generation/enabled-state checks, exact
+current-model borrowing, replacement cancellation, and non-retention. Evidence
+is in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-5/normalized-input-and-action.md`.

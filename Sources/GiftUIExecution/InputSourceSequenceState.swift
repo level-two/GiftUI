@@ -7,18 +7,18 @@ enum InputSequenceValidation: UInt8, Equatable, Sendable {
     case unavailable = 3
 }
 
-struct TargetInputSequenceGate: Equatable, Sendable {
+package struct TargetInputSequenceGate: Equatable, Sendable {
     private var nextSubmittedSequenceRaw: UInt32?
 
-    init(nextSubmittedSequenceRaw: UInt32? = 0) {
+    package init(nextSubmittedSequenceRaw: UInt32? = 0) {
         self.nextSubmittedSequenceRaw = nextSubmittedSequenceRaw
     }
 
-    var sequenceForUnsubmittedPhysicalInput: PointerSequenceID? {
+    package var sequenceForUnsubmittedPhysicalInput: PointerSequenceID? {
         nextSubmittedSequenceRaw.map(PointerSequenceID.init(rawValue:))
     }
 
-    mutating func beginSubmittedDown() -> PointerSequenceID? {
+    package mutating func beginSubmittedDown() -> PointerSequenceID? {
         guard let rawValue = nextSubmittedSequenceRaw else { return nil }
 
         let reserved = PointerSequenceID(rawValue: rawValue)
@@ -30,7 +30,7 @@ struct TargetInputSequenceGate: Equatable, Sendable {
         return reserved
     }
 
-    mutating func abandonUnsubmittedPhysicalInput() {
+    package mutating func abandonUnsubmittedPhysicalInput() {
         // A wholly target-local physical sequence consumes no runtime value.
     }
 }
