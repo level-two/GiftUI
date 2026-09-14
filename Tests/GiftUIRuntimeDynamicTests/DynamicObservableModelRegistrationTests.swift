@@ -97,6 +97,7 @@ private final class DynamicRegisteredModel: _GiftUIObservableReference {
         ) == .success(.replaced)
     )
     #expect(registration.withModel { $0.identity } == 6)
+    #expect(registration.isActive)
     #expect(
         initial.detachments
             == [_GiftUIObservationAttachment(slot: 0, generation: 0)]

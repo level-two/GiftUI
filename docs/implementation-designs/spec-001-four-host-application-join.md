@@ -96,6 +96,8 @@ same registration record. Its replacement path stages and attaches the
 candidate through `ObservableStateReplacementBridge`, commits that route,
 detaches the former attachment, and only then swaps typed storage; failure
 discards the candidate and leaves the former model and route intact.
+After the first committed replacement, its active and dirty projections read
+from the replacement lifecycle rather than the retired initial lifecycle.
 `DynamicObservableRootAdapter` joins this owner to the production profile
 workspace. It uses the workspace's publishable generation for attachment and
 coordinates candidate discard and published structural removal with exact

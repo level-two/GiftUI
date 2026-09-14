@@ -507,6 +507,12 @@ coalescing behavior.
       route before retiring the initial route, projects replacement dirtiness,
       and discards an attach-time-poisoned candidate while the inline live
       model and registration remain active.
+      A normalized production conformance fixture now drives both registration
+      realizations through initial dirtied/coalesced reports, successful
+      generation-1 replacement, a post-commit coalesced report, and a poisoned
+      generation-2 candidate. Their exact outcomes, retained model identity,
+      live state, and dirty state match; the fixture also corrected Dynamic's
+      active-state projection to follow its committed replacement route.
       Generated Static root binding, wake integration, and the remaining
       equal-profile lifecycle corpus remain.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized

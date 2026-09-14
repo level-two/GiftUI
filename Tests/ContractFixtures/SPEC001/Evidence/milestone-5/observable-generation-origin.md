@@ -144,3 +144,15 @@ with:
 ```sh
 swift test --filter StaticObservableRegistrationRecord
 ```
+
+`ProductionObservableRegistrationTests` normalize the Dynamic retained owner
+and Static inline record/storage into one lifecycle transcript. Both profiles
+return materialized, dirtied, coalesced, replaced, and stale-attachment results
+in the same order; both retain model identity 2 after the poisoned candidate
+and remain active and dirty. This fixture also guards the Dynamic active-state
+projection after its initial registration bridge has been retired. Reproduce
+with:
+
+```sh
+swift test --filter productionObservableRegistrationsHaveEqualReplacementTranscripts
+```

@@ -13,7 +13,7 @@ where Model: _GiftUIObservableReference {
     package init() {}
 
     package var isActive: Bool {
-        bridge.isActive
+        replacementBridge != nil ? attachment != nil : bridge.isActive
     }
 
     package var isDirty: Bool {
