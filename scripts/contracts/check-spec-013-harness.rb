@@ -112,6 +112,7 @@ end
   check-spec-013-startup-corpus.rb
   check-spec-013-cycle-failures.rb
   check-spec-013-handoff-recovery.rb
+  check-spec-013-borrow-boundaries.rb
 ].each do |name|
   path = ROOT.join("scripts/contracts", name)
   fail_check("SPEC-013 command is missing or not executable: #{name}") unless path.file? && path.executable?

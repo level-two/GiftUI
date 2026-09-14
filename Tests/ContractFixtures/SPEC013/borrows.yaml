@@ -1,2 +1,63 @@
 schema: spec-013-v1
-cases: []
+cases:
+  - name: canvas-callable-release
+    criteria: [RP-004, RP-007, RP-012]
+    evidenceClasses: [host-execution, inspection]
+    boundary: Canvas
+    retainedAfterBoundary: false
+  - name: path-typed-source-escape-rejected
+    criteria: [RP-012]
+    evidenceClasses: [inspection]
+    boundary: Path
+    compileNegatives: [path-copy, path-consume, path-escape, path-async-escape]
+  - name: drawing-plan-discard
+    criteria: [RP-004, RP-007, RP-012]
+    evidenceClasses: [host-execution, inspection]
+    boundary: drawing-plan
+    retainedAfterBoundary: false
+  - name: operation-and-glyph-borrows
+    criteria: [RP-012]
+    evidenceClasses: [host-execution, inspection]
+    boundary: operation-and-glyph
+    retainedAfterBoundary: false
+  - name: resource-payload-poison
+    criteria: [RP-012]
+    evidenceClasses: [host-execution, inspection]
+    boundary: resource
+    poisonedAfterBorrow: true
+  - name: action-and-model-borrows
+    criteria: [RP-012, RP-014]
+    evidenceClasses: [host-execution, inspection]
+    boundary: action-and-model
+    exactBorrowCount: 1
+    staleBorrowCount: 0
+  - name: endpoint-payload-storage
+    criteria: [RP-008, RP-012]
+    evidenceClasses: [host-execution, inspection]
+    boundary: endpoint
+    retainedBorrowedPayload: false
+  - name: generated-observable-slot-coverage
+    criteria: [RP-010, RP-012]
+    evidenceClasses: [inspection]
+    boundary: generated-observable-table
+    exactCoverage: true
+  - name: generated-canvas-callable-coverage
+    criteria: [RP-010, RP-012]
+    evidenceClasses: [host-execution, inspection]
+    boundary: generated-canvas-table
+    exactCoverage: true
+  - name: static-forbidden-facilities
+    criteria: [RP-010, RP-012]
+    evidenceClasses: [inspection]
+    boundary: static-profile
+    forbiddenFacilitiesAbsent: true
+  - name: dependency-direction
+    criteria: [RP-001, RP-011, RP-012]
+    evidenceClasses: [inspection]
+    boundary: module-graph
+    forbiddenEdgesAbsent: true
+  - name: typed-throws-negatives
+    criteria: [RP-010, RP-012]
+    evidenceClasses: [inspection]
+    boundary: typed-errors
+    compileNegatives: [missing-typed-throws, unsupported-error]

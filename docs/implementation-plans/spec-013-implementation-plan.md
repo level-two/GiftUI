@@ -412,7 +412,7 @@ semantic tolerance.
       exhaustion, backpressure, late admission, reentrancy, coalesced wake,
       pointer cancellation, committed-routing preservation, constant-space
       recovery, and idle/active quiescence.
-- [ ] `T6.5` — Add borrow-poisoning and typed-source negatives covering Canvas,
+- [x] `T6.5` — Add borrow-poisoning and typed-source negatives covering Canvas,
       Path, plan, operations, glyphs, resources, actions, model access,
       endpoint storage, generated tables, forbidden static types/facilities,
       and dependency direction. Prove exact coverage for both the generated
@@ -874,7 +874,17 @@ backpressure reports retain one fixed-size intent and one outstanding wake.
 Late admission, retry exhaustion, offer reentrancy, pointer cancellation, and
 idle/active quiescence retain their exact bounded behavior. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-6/handoff-recovery.md`.
-T6.5 is next.
+
+`T6.5` is complete. The registered twelve-case borrow corpus composes the
+focused owner proofs for Canvas and Path, drawing plans, render operations,
+glyphs and resources, actions and current-model access, endpoint payload
+storage, Static forbidden facilities, and dependency direction. SPEC-012's
+typed-source negatives reject Path copy/consume/escape/async escape plus
+untyped or wrong typed errors. The deterministic generated-profile audit
+proves exact observable-slot and Canvas-callable coverage from their canonical
+inputs. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-6/borrow-boundaries.md`.
+T6.6 is next.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
