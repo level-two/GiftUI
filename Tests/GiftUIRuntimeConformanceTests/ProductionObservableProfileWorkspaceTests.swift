@@ -31,6 +31,16 @@ private struct ProductionWorkspaceTranscript: Equatable {
     let committedGeneration: ObservableTargetGeneration?
 }
 
+private struct ProductionReplacementGenerationTranscript: Equatable {
+    let initial: ObservableTargetGeneration?
+    let discarded: RuntimeObservableReplacementReservationResult
+    let afterDiscard: ObservableTargetGeneration?
+    let committed: RuntimeObservableReplacementReservationResult
+    let commit: ObservableStateResult
+    let afterCommit: ObservableTargetGeneration?
+    let reinserted: ObservableTargetGeneration?
+}
+
 private func productionTranscript<Storage>(
     _ storage: consuming Storage
 ) -> ProductionWorkspaceTranscript
@@ -64,6 +74,68 @@ where
     )
 }
 
+private func replacementGenerationTranscript<Storage>(
+    _ storage: consuming Storage
+) -> ProductionReplacementGenerationTranscript
+where
+    Storage: RuntimeObservableProfileSlotStorage,
+    Storage.Identity == ProductionIdentity
+{
+    let identity = ProductionIdentity(rawValue: 9)
+    var model = State(wrappedValue: ProductionModel())
+    var workspace = RuntimeObservableProfileWorkspace(storage: consume storage)
+    _ = workspace.beginCandidate()
+    _ = workspace.encounter(
+        structuralIdentity: identity,
+        declarationOrdinal: 0,
+        state: &model
+    )
+    _ = workspace.finishCandidate(.publish)
+    let initial = workspace.targetGeneration(
+        structuralIdentity: identity,
+        declarationOrdinal: 0
+    )
+    let discarded = workspace.beginReplacement(
+        structuralIdentity: identity,
+        declarationOrdinal: 0
+    )
+    _ = workspace.finishReplacement(commit: false)
+    let afterDiscard = workspace.targetGeneration(
+        structuralIdentity: identity,
+        declarationOrdinal: 0
+    )
+    let committed = workspace.beginReplacement(
+        structuralIdentity: identity,
+        declarationOrdinal: 0
+    )
+    let commit = workspace.finishReplacement(commit: true)
+    let afterCommit = workspace.targetGeneration(
+        structuralIdentity: identity,
+        declarationOrdinal: 0
+    )
+    _ = workspace.beginCandidate()
+    _ = workspace.finishCandidate(.publish)
+    _ = workspace.beginCandidate()
+    _ = workspace.encounter(
+        structuralIdentity: identity,
+        declarationOrdinal: 0,
+        state: &model
+    )
+    _ = workspace.finishCandidate(.publish)
+    return ProductionReplacementGenerationTranscript(
+        initial: initial,
+        discarded: discarded,
+        afterDiscard: afterDiscard,
+        committed: committed,
+        commit: commit,
+        afterCommit: afterCommit,
+        reinserted: workspace.targetGeneration(
+            structuralIdentity: identity,
+            declarationOrdinal: 0
+        )
+    )
+}
+
 @Test func productionObservableWorkspacesAreProfileEquivalent() {
     let dynamic = productionTranscript(
         DynamicObservableProfileSlotStorage<ProductionIdentity>(capacity: 1)
@@ -77,6 +149,53 @@ where
     #expect(dynamic.publish == .success(.associationsCommitted))
     #expect(dynamic.candidateGeneration == ObservableTargetGeneration(rawValue: 0))
     #expect(dynamic.committedGeneration == dynamic.candidateGeneration)
+}
+
+@Test func productionReplacementGenerationsAreProfileEquivalentAndNeverAlias() {
+    let dynamic = replacementGenerationTranscript(
+        DynamicObservableProfileSlotStorage<ProductionIdentity>(capacity: 1)
+    )
+    let fixed = replacementGenerationTranscript(
+        StaticObservableProfileSlotStorage<ProductionIdentity>()
+    )
+
+    #expect(dynamic == fixed)
+    #expect(dynamic.initial == ObservableTargetGeneration(rawValue: 0))
+    #expect(dynamic.discarded == .success(ObservableTargetGeneration(rawValue: 1)))
+    #expect(dynamic.afterDiscard == dynamic.initial)
+    #expect(dynamic.committed == .success(ObservableTargetGeneration(rawValue: 2)))
+    #expect(dynamic.commit == .success(.replaced))
+    #expect(dynamic.afterCommit == ObservableTargetGeneration(rawValue: 2))
+    #expect(dynamic.reinserted == ObservableTargetGeneration(rawValue: 3))
+}
+
+@Test func productionReplacementGenerationExhaustionPreservesLiveGeneration() {
+    let identity = ProductionIdentity(rawValue: 10)
+    var model = State(wrappedValue: ProductionModel())
+    var workspace = RuntimeObservableProfileWorkspace(
+        storage: StaticObservableProfileSlotStorage<ProductionIdentity>(),
+        firstGeneration: UInt32.max
+    )
+    _ = workspace.beginCandidate()
+    _ = workspace.encounter(
+        structuralIdentity: identity,
+        declarationOrdinal: 0,
+        state: &model
+    )
+    _ = workspace.finishCandidate(.publish)
+
+    #expect(
+        workspace.beginReplacement(
+            structuralIdentity: identity,
+            declarationOrdinal: 0
+        ) == .failure(.registrationGenerationExhausted)
+    )
+    #expect(
+        workspace.targetGeneration(
+            structuralIdentity: identity,
+            declarationOrdinal: 0
+        ) == ObservableTargetGeneration(rawValue: UInt32.max)
+    )
 }
 
 @Test func productionObservableWorkspaceRejectsGenerationExhaustionWithoutAZeroSentinel() {

@@ -11,6 +11,12 @@ Static fixture starts with the explicit exhausted state and proves encounter
 returns `registrationGenerationExhausted` before a publishable association is
 staged.
 
+The same workspace is now the single replacement-generation source. Equal
+Dynamic and Static transcripts reserve generation 1 and discard it while live
+generation 0 remains, reserve and commit generation 2, publish removal, then
+reinsert with generation 3. A `UInt32.max` fixture proves the last initial
+generation remains live when replacement exhaustion rejects before staging.
+
 Reproduce with:
 
 ```sh

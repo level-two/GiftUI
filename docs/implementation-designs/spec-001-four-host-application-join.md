@@ -64,7 +64,10 @@ failure routing without importing analyzer modules.
 `RuntimeObservableProfileWorkspace` currently provides the production
 profile-neutral structural-identity and target-generation algorithm over
 dynamic and static slot storage. It deliberately does not consume or own the
-`State` initializer; its `encounter` method only records the association.
+`State` initializer; its `encounter` method only records the association. Its
+one checked cursor also reserves replacement generations, preserving the live
+generation on discard and committing the reserved value only after replacement
+success so later reinsertion cannot alias either generation.
 `DynamicObservableModelStorage` now supplies the first bounded Dynamic-profile
 typed storage slice: it binds a transient wrapper to the preserved model and
 routes assignment outward for later atomic replacement. Its second typed

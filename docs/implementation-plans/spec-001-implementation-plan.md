@@ -455,7 +455,11 @@ coalescing behavior.
       **Partial:** the production profile workspace now allocates its first
       target generation at raw zero without using that valid value as an
       exhaustion sentinel. An explicit optional exhausted state rejects before
-      staging a location in the inline Static store. Dynamic profile typed
+      staging a location in the inline Static store. The same workspace cursor
+      now reserves replacement generations for exact live keys, spends a
+      discarded reservation without changing the live generation, commits a
+      successful reservation atomically, and prevents a later reinsertion from
+      aliasing either value in both profiles. Dynamic profile typed
       storage now consumes the first initializer, preserves it across repeated
       transient wrappers, routes assignment without directly replacing stored
       state, and rejects rebinding one wrapper. Static profile caller-owned

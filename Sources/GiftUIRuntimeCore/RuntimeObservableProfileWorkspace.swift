@@ -38,6 +38,11 @@ package protocol RuntimeObservableProfileSlotStorage {
     ) -> Bool
 }
 
+package enum RuntimeObservableReplacementReservationResult: Equatable, Sendable {
+    case success(ObservableTargetGeneration)
+    case failure(ObservableStateError)
+}
+
 package struct RuntimeObservableProfileWorkspace<Storage>:
     ObservableStateReconciler, ObservableStateTargetView
 where Storage: RuntimeObservableProfileSlotStorage {
@@ -45,16 +50,20 @@ where Storage: RuntimeObservableProfileSlotStorage {
 
     private var storage: Storage
     private var isCandidateActive: Bool
+    private var replacementIndex: UInt16?
     private var nextGeneration: UInt32?
 
     package init(storage: consuming Storage, firstGeneration: UInt32? = 0) {
         self.storage = consume storage
         isCandidateActive = false
+        replacementIndex = nil
         nextGeneration = firstGeneration
     }
 
     package mutating func beginCandidate() -> ObservableStateResult {
-        guard !isCandidateActive else { return .failure(.reentrancyViolation) }
+        guard !isCandidateActive, replacementIndex == nil else {
+            return .failure(.reentrancyViolation)
+        }
         isCandidateActive = true
         for index in 0 ..< storage.capacity {
             guard var slot = storage.slot(at: index) else {
@@ -185,6 +194,59 @@ where Storage: RuntimeObservableProfileSlotStorage {
             slot.wasEncountered
         else { return nil }
         return slot.candidateGeneration ?? slot.generation
+    }
+
+    package mutating func beginReplacement(
+        structuralIdentity: Storage.Identity,
+        declarationOrdinal: UInt16
+    ) -> RuntimeObservableReplacementReservationResult {
+        guard !isCandidateActive, replacementIndex == nil else {
+            return .failure(.reentrancyViolation)
+        }
+        for index in 0 ..< storage.capacity {
+            guard var slot = storage.slot(at: index) else {
+                return .failure(.invariantViolation)
+            }
+            guard slot.identity == structuralIdentity,
+                slot.declarationOrdinal == declarationOrdinal
+            else { continue }
+            guard slot.generation != nil, slot.candidateGeneration == nil else {
+                return .failure(.invariantViolation)
+            }
+            guard let generation = reserveGeneration() else {
+                return .failure(.registrationGenerationExhausted)
+            }
+            slot.candidateGeneration = generation
+            guard storage.update(slot, at: index) else {
+                return .failure(.invariantViolation)
+            }
+            replacementIndex = index
+            return .success(generation)
+        }
+        return .failure(.incompatibleAssociation)
+    }
+
+    package mutating func finishReplacement(
+        commit: Bool
+    ) -> ObservableStateResult {
+        guard !isCandidateActive, let replacementIndex else {
+            return .failure(.invalidPhaseSafetyNotProven)
+        }
+        guard var slot = storage.slot(at: replacementIndex),
+            let candidateGeneration = slot.candidateGeneration,
+            slot.generation != nil
+        else {
+            return .failure(.invariantViolation)
+        }
+        if commit {
+            slot.generation = candidateGeneration
+        }
+        slot.candidateGeneration = nil
+        guard storage.update(slot, at: replacementIndex) else {
+            return .failure(.invariantViolation)
+        }
+        self.replacementIndex = nil
+        return commit ? .success(.replaced) : .success(.candidateDiscarded)
     }
 
     private borrowing func matching(
