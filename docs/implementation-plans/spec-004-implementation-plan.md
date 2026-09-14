@@ -444,12 +444,17 @@ for structural validation.
       `.capability`/`.runtime`/`.contained`, preserved associated capability
       detail, immutable snapshots under refusal/disconnection/post-handoff
       fault injection, and no failure import by `GiftUICapabilities`.
-- [ ] `T4.3` — After SPEC-009 and SPEC-014 provide the production one-shot
+- [x] `T4.3` — After SPEC-009 and SPEC-014 provide the production one-shot
       stream and first-party tiled paths, integrate capability inputs and
       consumers without rerunning resolution. Prove each tiled path consumes
       the borrowed operation stream once synchronously, retains only bounded
       backend-owned derived payload, and expresses runtime faults only through
-      SPEC-003-owned seams.
+      SPEC-003-owned seams. **Complete:** the resolved immutable presentation
+      is validated directly by the production endpoint, whose one-shot body
+      and tiled emitters consume each borrowed operation synchronously once,
+      retain only bounded payload/workspace state, poison borrowed storage in
+      tests, and map construction/runtime faults through Failure Core. See the
+      [production one-shot consumer evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-4/production-one-shot-consumers.md).
 - [ ] `T4.4` — After SPEC-015 provides the host composition/start gate, join
       RFC-002 B2 validation and SPEC-004 resolution as independent conjunctive
       gates. Prove valid-B2/capability-negative and B2-negative/capability-valid
@@ -880,3 +885,12 @@ resolver call graph are byte-identical. The graph contains no indirect call,
 dynamic stack adjustment, recursion, or missing reachable body. Milestone 5
 is complete; Milestone 6 remains gated by the SPEC-009/SPEC-014/SPEC-015 owner
 integrations required by T4.3/T4.4.
+
+`T4.3` is complete: the now-implemented SPEC-009 one-shot endpoint and
+SPEC-014 full-surface/tiled consumers take the already resolved immutable
+presentation directly, never call the resolver, invoke the producer body once,
+and retain only bounded backend-owned derived storage. Borrow poisoning,
+address capture, exact Pi/nRF high-water fixtures, transaction checks, and
+pre/post-transfer failure injection all pass. Runtime faults remain on the
+SPEC-003 Failure Core seam; see the
+[production one-shot consumer evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-4/production-one-shot-consumers.md).
