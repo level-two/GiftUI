@@ -19,9 +19,17 @@ delegate all seven activation steps, preserve the first focused payload, and
 enter the runtime owner only while active. The four-preset fixture verifies the
 same exact activation order and wrong-state behavior for every failure type.
 
-The same fixture proves synchronous teardown calls all eight required owner
-operations in order from `valid`, `active`, and `failed`, invalidates runtime
-use of the assembly report only after profile storage reset, reaches
-`quiescent`, and makes repeated teardown a no-op. Concrete identity retirement,
-stale-callback poisoning, and teardown reentry while `activating` or
-`quiescing` remain target-root integration evidence.
+The controller and four-preset fixtures prove synchronous teardown calls all
+eight required owner operations in order from `valid`, `activating`, `active`,
+and `failed`; a reentrant call observed during `quiescing` and every later call
+from `quiescent` is an owner-call-free no-op. Teardown refuses delivery and
+input before stopping observations, cancels callbacks before finalization,
+retires registration/routing identity before releasing platform owners, resets
+profile storage seventh, and invalidates report runtime use last.
+
+Every concrete preset reaches `quiescent`, rejects later runtime opportunity
+and activation calls without entering an owner, and preserves the exact
+eight-step transcript across repeated teardown. The failed-activation fixture
+proves the same retirement path after the first focused failure. Fresh identity
+allocation and whole-host reconstruction remain Milestone 5/T6 evidence; no
+old instance or assembly report is reused here.

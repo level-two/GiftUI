@@ -310,6 +310,39 @@ private func teardownUsesAllEightStepsFromEveryExternallyStableState(
     #expect(probe.calls.isEmpty)
 }
 
+@Test(arguments: [MVPHostLifecycleState.activating, .quiescing])
+private func teardownHandlesInProgressLifecycleStates(
+    initialState: MVPHostLifecycleState
+) {
+    let probe = ActivationProbe()
+    var owner = FixtureActivationOwner(probe: probe, failingStage: nil)
+    var controller = MVPHostActivationController<FixtureActivationFailure>(
+        lifecycleState: initialState
+    )
+
+    controller.teardown(owner: &owner)
+
+    if initialState == .activating {
+        #expect(controller.lifecycleState == .quiescent)
+        #expect(
+            probe.calls
+                == [
+                    .refuseDeliveryAndInput,
+                    .stopSourceAndDetachObservations,
+                    .cancelSequencesAndCallbacks,
+                    .quiesceAndFinalize,
+                    .retireRegistrationAndRouting,
+                    .releasePlatformOwners,
+                    .resetProfileStorage,
+                    .invalidateReportRuntimeUse,
+                ]
+        )
+    } else {
+        #expect(controller.lifecycleState == .quiescing)
+        #expect(probe.calls.isEmpty)
+    }
+}
+
 private func makeActivationReport() -> HostAssemblyReport {
     var validator = makeValidHostValidator()
     switch validator.validate() {

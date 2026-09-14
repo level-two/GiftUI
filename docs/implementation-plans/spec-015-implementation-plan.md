@@ -407,20 +407,13 @@ tears down idempotently from every instance state.
       payload, and enter `.active` or terminal `.failed`. Repeated or
       wrong-state activation calls make no owner call and map to the exact
       reentrancy/safety-not-proven route.
-- [ ] `T4.4` — Implement explicit synchronous idempotent teardown in the exact
+- [x] `T4.4` — Implement explicit synchronous idempotent teardown in the exact
       eight-step order from `.valid`, `.activating`, `.active`, `.failed`,
       `.quiescing`, and `.quiescent`. Reject new delivery/input, stop and
       detach observations, cancel callbacks/sequences, finalize/quiesce,
       retire registrations and identities, release endpoint/resource/platform
       owners, reset profile storage last, and prevent stale callbacks, report
       reuse, or reactivation.
-      **Partial:** the production lifecycle controller now performs the exact
-      eight teardown calls in order from each externally stable pre-terminal
-      state, invalidates report runtime use after storage reset, reaches
-      `.quiescent`, and makes repeated teardown owner-call-free. Concrete
-      callback cancellation, identity retirement/reconstruction, and reentrant
-      `.activating`/`.quiescing` fault probes remain with the four target
-      roots.
 
 ### Milestone 5: Integrate Serialized Application, Runtime, Input, and Recovery
 

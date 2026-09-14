@@ -14,8 +14,20 @@ private enum PresetStep: UInt8, CaseIterable {
     case loop
 }
 
+private enum PresetTeardownStep: UInt8, CaseIterable {
+    case refuseDeliveryAndInput
+    case stopSourceAndObservations
+    case cancelSequencesAndCallbacks
+    case quiesceAndFinalize
+    case retireRegistrationAndRouting
+    case releasePlatformOwners
+    case resetProfileStorage
+    case invalidateReportRuntimeUse
+}
+
 private final class PresetLifecycleProbe {
     var steps: [PresetStep] = []
+    var teardownSteps: [PresetTeardownStep] = []
     var opportunityCount = 0
 }
 
@@ -68,14 +80,30 @@ private struct PresetLiveOwner<Failure: Equatable & Sendable>:
     mutating func stopSourceDeliveryAndRepositoryObservation() {}
     mutating func preventInputEligibility() {}
     mutating func quiesceConstructedRuntime() {}
-    mutating func refuseApplicationDeliveryAndInput() {}
-    mutating func stopSourceDeliveryAndDetachObservations() {}
-    mutating func cancelPointerSequencesAndHostCallbacks() {}
-    mutating func quiesceRuntimeAndFinalizeActiveCycle() {}
-    mutating func retireObservableRegistrationAndRouting() {}
-    mutating func releasePlatformOwners() {}
-    mutating func resetProfileStorage() {}
-    mutating func invalidateAssemblyReportRuntimeUse() {}
+    mutating func refuseApplicationDeliveryAndInput() {
+        probe.teardownSteps.append(.refuseDeliveryAndInput)
+    }
+    mutating func stopSourceDeliveryAndDetachObservations() {
+        probe.teardownSteps.append(.stopSourceAndObservations)
+    }
+    mutating func cancelPointerSequencesAndHostCallbacks() {
+        probe.teardownSteps.append(.cancelSequencesAndCallbacks)
+    }
+    mutating func quiesceRuntimeAndFinalizeActiveCycle() {
+        probe.teardownSteps.append(.quiesceAndFinalize)
+    }
+    mutating func retireObservableRegistrationAndRouting() {
+        probe.teardownSteps.append(.retireRegistrationAndRouting)
+    }
+    mutating func releasePlatformOwners() {
+        probe.teardownSteps.append(.releasePlatformOwners)
+    }
+    mutating func resetProfileStorage() {
+        probe.teardownSteps.append(.resetProfileStorage)
+    }
+    mutating func invalidateAssemblyReportRuntimeUse() {
+        probe.teardownSteps.append(.invalidateReportRuntimeUse)
+    }
 
     private func step(_ value: PresetStep) -> HostActivationStepResult<Failure> {
         probe.steps.append(value)
@@ -119,6 +147,9 @@ private struct PresetLiveOwner<Failure: Equatable & Sendable>:
     #expect(probe.steps == [.runtime])
     #expect(instance.runOpportunity() == .invalidLifecycle)
     #expect(probe.opportunityCount == 0)
+    instance.teardown()
+    #expect(instance.lifecycleState == .quiescent)
+    #expect(probe.teardownSteps == PresetTeardownStep.allCases)
 }
 
 private func exerciseMacOSDynamic() {
@@ -175,6 +206,17 @@ private func exercise<Owner: SignalAnalyzerPresetLiveOwner>(
     let steps = probe.steps
     let repeated = instance.activate()
     #expect(repeated != .active)
+    #expect(probe.steps == steps)
+    instance.teardown()
+    #expect(instance.lifecycleState == .quiescent)
+    #expect(!instance.controller.assemblyReportRuntimeUseIsValid)
+    #expect(probe.teardownSteps == PresetTeardownStep.allCases)
+    let teardownSteps = probe.teardownSteps
+    instance.teardown()
+    #expect(probe.teardownSteps == teardownSteps)
+    #expect(instance.runOpportunity() == .invalidLifecycle)
+    let afterTeardownActivation = instance.activate()
+    #expect(afterTeardownActivation != .active)
     #expect(probe.steps == steps)
 }
 

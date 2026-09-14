@@ -70,6 +70,10 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
 
     package init() {}
 
+    package init(lifecycleState: MVPHostLifecycleState) {
+        self.lifecycleState = lifecycleState
+    }
+
     package mutating func activate<Owner: MVPHostActivationOwner>(
         owner: inout Owner,
         invariantFailure: Failure
