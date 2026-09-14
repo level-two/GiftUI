@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-13
-updated: 2026-09-13
+updated: 2026-09-14
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -46,19 +46,22 @@ exact Drawing workload.
 
 ## Proposed Internal Organization
 
-One ordered TSV descriptor records source counts and four physical preset
-projections. A host-only Ruby generator validates required values and checked
-operation addition, then emits four reviewable manifests and one Swift file in
-`GiftUIHostConfiguration`. Contextual `.init` expressions build nested runtime
-limits through Runtime Core without adding forbidden focused-owner imports.
+One ordered SPEC-015 TSV descriptor records source counts and four physical
+preset projections. The checked-in SPEC-001 hierarchy-shape descriptor is a
+second input. A host-only Ruby generator validates their shared model, action,
+and Canvas counts plus checked operation addition, then emits four reviewable
+manifests and one Swift file in `GiftUIHostConfiguration`. Contextual `.init`
+expressions build nested runtime limits through Runtime Core without adding
+forbidden focused-owner imports.
 
 ## Data and Control Flow
 
-The generator reads the descriptor once, rejects missing, duplicate, malformed,
-overflowing, or changed normative Drawing minima, computes its SHA-256 identity,
-and writes outputs in fixed field and preset order. `--check` regenerates in
-memory and byte-compares every output. Neither mode loads or evaluates Swift
-application code, a client body, or a Canvas closure.
+The generator reads both descriptors once, rejects missing, duplicate,
+malformed, overflowing, or changed hierarchy and normative Drawing minima,
+computes one SHA-256 identity over both ordered inputs, and writes outputs in
+fixed field and preset order. `--check` regenerates in memory and byte-compares
+every output. Neither mode loads or evaluates Swift application code, a client
+body, or a Canvas closure.
 
 ## Algorithms and Data Structures
 
@@ -111,6 +114,7 @@ None.
 
 ## Code and Evidence Links
 
+- `Tests/ContractFixtures/SPEC001/hierarchy-shape-cases.tsv`
 - `Tests/ContractFixtures/SPEC015/signal-analyzer-workload.tsv`
 - `scripts/contracts/generate-spec-015-workload.rb`
 - `Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift`

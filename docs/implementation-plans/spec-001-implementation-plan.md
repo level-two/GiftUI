@@ -477,7 +477,7 @@ slice and remains explicit.
 **Exit evidence:** Each exact SPEC-015 preset builds a single analyzer graph,
 uses the shared Presentation, and emits an immutable assembly/execution report.
 
-- [ ] `T6.1` — Feed the checked-in portable hierarchy descriptor into the
+- [x] `T6.1` — Feed the checked-in portable hierarchy descriptor into the
       SPEC-015 generator/validator. Prove exact six actions, one model/input
       owner, `1/32/1` stores, 28-fact burst, five Canvas occurrences/strokes,
       202 live points, 12 live subpaths, 832 snapshot points, 16 snapshot
@@ -793,6 +793,16 @@ current-level projection, and the normative `5/5/202/12/832/16` workload.
 `T4.4` freezes the identical dynamic/static portable source set with an import,
 macro, identity, explicit-channel, qualified-action, Canvas-occurrence, and
 forbidden-mechanism audit plus successful compilation under both profile flags.
+
+`T6.1` joins the checked-in SPEC-001 portable hierarchy descriptor to the
+SPEC-015 workload generator as a required, identity-bearing input. Generation
+fails unless the exact root/model, six-control/action, and five-Canvas hierarchy
+matches the workload descriptor. All four generated presets then pass the
+complete runtime-limit/storage audit, Drawing B2 structural gate, independent
+SPEC-004 capability resolution, endpoint projection, action/model, input/wake,
+policy, and one-owner acyclic graph stages before any live owner construction.
+Evidence is in
+`Tests/ContractFixtures/SPEC001/Evidence/milestone-6/host-structural-gates.md`.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,
