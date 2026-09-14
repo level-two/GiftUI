@@ -17,10 +17,19 @@ swift test --filter dynamicRootAdapterBorrowsOnlyTheMatchingTargetGeneration
 swift test --filter staticRootAdapterBorrowsOnlyTheMatchingTargetGeneration
 ```
 
-This is partial SPEC-001 T5.4 evidence. The concrete target composition must
-still install `SignalAnalyzerActionHandler` and prove pointer-down and
-admitted-action replacement/removal interleavings through
-`RuntimeInteractionDispatcher`.
+This is partial SPEC-001 T5.4 evidence. The application-specific Dynamic
+composition now installs `SignalAnalyzerActionHandler` with the production
+Dynamic root target access and dispatcher. Its focused corpus decodes all six
+exact action codes, rejects invalid codes without mutation, cancels stale
+action and target generations, and cancels a captured former action after the
+real root commits a replacement. Reproduce with:
+
+```sh
+swift test --filter SignalAnalyzerHostActionDispatchTests
+```
+
+The generated Static analyzer composition plus pointer-down and admitted-action
+replacement/removal interleavings remain.
 
 The profile-specific adapters now conform to `ActionModelTargetAccess`.
 Dynamic stores a weak root reference: releasing the composition root clears

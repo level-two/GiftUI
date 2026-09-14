@@ -273,6 +273,9 @@ let package = Package(
             dependencies: [
                 "GiftUIExecution",
                 "GiftUIHostConfiguration",
+                "GiftUIInteraction",
+                "GiftUIRuntimeCore",
+                "GiftUIRuntimeDynamic",
                 "SignalAnalyzerDomain",
                 "SignalAnalyzerPresentation",
             ]

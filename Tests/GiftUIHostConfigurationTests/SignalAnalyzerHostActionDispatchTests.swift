@@ -2,7 +2,9 @@ import GiftUI
 import GiftUIExecution
 import GiftUIInteraction
 import GiftUIRuntimeCore
+import GiftUIRuntimeDynamic
 import SignalAnalyzerDomain
+import SignalAnalyzerHost
 import SignalAnalyzerPresentation
 import Testing
 
@@ -27,31 +29,6 @@ private struct AnalyzerActionRecords: InteractionCommittedActionView {
     }
 }
 
-private final class AnalyzerTargetBox {
-    weak var model: SignalAnalyzerViewModel?
-    var generation: ObservableTargetGeneration?
-
-    init(model: SignalAnalyzerViewModel?, generation: ObservableTargetGeneration?) {
-        self.model = model
-        self.generation = generation
-    }
-}
-
-private struct AnalyzerTargetAccess: ActionModelTargetAccess {
-    let box: AnalyzerTargetBox
-
-    func currentGeneration() -> ObservableTargetGeneration? { box.generation }
-
-    mutating func withCurrentModel(
-        matching generation: ObservableTargetGeneration,
-        _ body: (borrowing SignalAnalyzerViewModel) -> Void
-    ) -> Bool {
-        guard box.generation == generation, let model = box.model else { return false }
-        body(model)
-        return true
-    }
-}
-
 private let analyzerActionBounds = Rect(
     origin: Point(x: 0, y: 0),
     size: Size(width: 4, height: 4)!
@@ -60,7 +37,7 @@ private let analyzerActionBounds = Rect(
 private func analyzerActionRecord(
     code: UInt16,
     actionGeneration: UInt32 = 8,
-    targetGeneration: UInt32 = 12,
+    targetGeneration: UInt32 = 0,
     enabled: Bool = true
 ) -> BoundActionRecord<UInt16> {
     BoundActionRecord(
@@ -78,15 +55,10 @@ private func analyzerActionRecord(
 func everyAnalyzerActionCodeDispatchesToTheExactCurrentModel(code: UInt16) {
     let repository = ActionRepository()
     let model = makeActionModel(repository: repository)
-    var dispatcher = RuntimeInteractionDispatcher(
+    let root = makeActionRoot(model)
+    var dispatcher = DynamicSignalAnalyzerActionDispatcher.make(
         records: AnalyzerActionRecords(record: analyzerActionRecord(code: code)),
-        handler: SignalAnalyzerActionHandler(),
-        targetAccess: AnalyzerTargetAccess(
-            box: AnalyzerTargetBox(
-                model: model,
-                generation: ObservableTargetGeneration(rawValue: 12)
-            )
-        )
+        root: root
     )
 
     let result = dispatcher.dispatch(
@@ -111,15 +83,10 @@ func everyAnalyzerActionCodeDispatchesToTheExactCurrentModel(code: UInt16) {
 func invalidAnalyzerActionCodesFailClosed(code: UInt16) {
     let repository = ActionRepository()
     let model = makeActionModel(repository: repository)
-    var dispatcher = RuntimeInteractionDispatcher(
+    let root = makeActionRoot(model)
+    var dispatcher = DynamicSignalAnalyzerActionDispatcher.make(
         records: AnalyzerActionRecords(record: analyzerActionRecord(code: code)),
-        handler: SignalAnalyzerActionHandler(),
-        targetAccess: AnalyzerTargetAccess(
-            box: AnalyzerTargetBox(
-                model: model,
-                generation: ObservableTargetGeneration(rawValue: 12)
-            )
-        )
+        root: root
     )
 
     #expect(
@@ -133,27 +100,21 @@ func invalidAnalyzerActionCodesFailClosed(code: UInt16) {
 
 @Test func staleActionAndTargetGenerationsCancelBeforeBorrowingTheModel() {
     for fixture in [
-        (recordGeneration: UInt32(9), targetGeneration: UInt32(12)),
-        (recordGeneration: UInt32(8), targetGeneration: UInt32(13)),
+        (recordGeneration: UInt32(9), targetGeneration: UInt32(0)),
+        (recordGeneration: UInt32(8), targetGeneration: UInt32(1)),
     ] {
         let repository = ActionRepository()
         let model = makeActionModel(repository: repository)
-        var dispatcher = RuntimeInteractionDispatcher(
+        let root = makeActionRoot(model)
+        var dispatcher = DynamicSignalAnalyzerActionDispatcher.make(
             records: AnalyzerActionRecords(
                 record: analyzerActionRecord(
                     code: SignalAnalyzerAction.start.rawValue,
-                    actionGeneration: fixture.recordGeneration
+                    actionGeneration: fixture.recordGeneration,
+                    targetGeneration: fixture.targetGeneration
                 )
             ),
-            handler: SignalAnalyzerActionHandler(),
-            targetAccess: AnalyzerTargetAccess(
-                box: AnalyzerTargetBox(
-                    model: model,
-                    generation: ObservableTargetGeneration(
-                        rawValue: fixture.targetGeneration
-                    )
-                )
-            )
+            root: root
         )
 
         #expect(
@@ -169,29 +130,46 @@ func invalidAnalyzerActionCodesFailClosed(code: UInt16) {
     let repository = ActionRepository()
     var former: SignalAnalyzerViewModel? = makeActionModel(repository: repository)
     weak let weakFormer = former
-    let target = AnalyzerTargetBox(
-        model: former,
-        generation: ObservableTargetGeneration(rawValue: 12)
-    )
-    var dispatcher = RuntimeInteractionDispatcher(
+    let root = makeActionRoot(former!)
+    var dispatcher = DynamicSignalAnalyzerActionDispatcher.make(
         records: AnalyzerActionRecords(
             record: analyzerActionRecord(code: SignalAnalyzerAction.start.rawValue)
         ),
-        handler: SignalAnalyzerActionHandler(),
-        targetAccess: AnalyzerTargetAccess(box: target)
+        root: root
     )
     let captured = CapturedAction(
         identity: UInt16(4),
         generation: ActionGeneration(rawValue: 8)
     )
 
-    target.generation = ObservableTargetGeneration(rawValue: 13)
-    target.model = nil
+    root.setExecutionPhase(.mutating)
+    #expect(
+        root.replace(with: makeActionModel(repository: repository))
+            == .success(.replaced)
+    )
     former = nil
 
     #expect(weakFormer == nil)
     #expect(dispatcher.dispatch(captured) == .cancelled)
     #expect(repository.calls.isEmpty)
+}
+
+private func makeActionRoot(
+    _ model: SignalAnalyzerViewModel
+) -> DynamicObservableRootAdapter<SignalAnalyzerViewModel, UInt16> {
+    let root = DynamicObservableRootAdapter<SignalAnalyzerViewModel, UInt16>(capacity: 1)
+    var state = State(wrappedValue: model)
+    #expect(root.beginCandidate() == .success(.candidateStarted))
+    #expect(
+        root.encounter(
+            structuralIdentity: 1,
+            declarationOrdinal: 0,
+            state: &state,
+            replacementRoute: { _ in }
+        ) == .success(.materialized)
+    )
+    #expect(root.finishCandidate(.publish) == .success(.associationsCommitted))
+    return root
 }
 
 private func makeActionModel(repository: ActionRepository) -> SignalAnalyzerViewModel {

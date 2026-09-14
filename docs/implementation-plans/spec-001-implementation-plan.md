@@ -583,7 +583,12 @@ coalescing behavior.
       the existing runtime dispatcher. Dynamic keeps only a weak root
       reference; Static copies one typed pointer whose lifetime remains owned
       by the generated address-stable root, so copied handles preserve storage
-      identity without model retention. Concrete `SignalAnalyzerActionHandler`
+      identity without model retention. The application-specific Dynamic
+      composition now installs the concrete `SignalAnalyzerActionHandler`,
+      production dispatcher, and weak production root access. Its corpus
+      dispatches all six exact actions, rejects invalid codes without model
+      mutation, cancels stale action/target generations, and cancels a captured
+      former action after real root replacement. Generated Static analyzer
       composition and the remaining interaction interleaving corpus remain.
       A production-dispatcher transcript now proves equal initial dispatch,
       preservation of former dispatch after incompatible replacement failure,
