@@ -415,6 +415,13 @@ tears down idempotently from every instance state.
       payload, and enter `.active` or terminal `.failed`. Repeated or
       wrong-state activation calls make no owner call and map to the exact
       reentrancy/safety-not-proven route.
+      **Partial:** a production activation controller now executes all seven
+      steps in order, tracks partial runtime/observation/source progress,
+      performs mandatory containment, preserves the originating finite
+      failure, and rejects repeated activation without owner calls. A concrete
+      `MVPHostInstance` fixture exhausts every step. The four preset-specific
+      focused failure sums and live owner implementations remain blocked on
+      their concrete target roots.
 - [ ] `T4.4` — Implement explicit synchronous idempotent teardown in the exact
       eight-step order from `.valid`, `.activating`, `.active`, `.failed`,
       `.quiescing`, and `.quiescent`. Reject new delivery/input, stop and
