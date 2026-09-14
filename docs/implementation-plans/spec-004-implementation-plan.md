@@ -521,11 +521,16 @@ plans have supplied the production integration seams required by Milestone 4.
 explicit upstream blocker, and a SPEC-004 conformance report is ready for
 independent review.
 
-- [ ] `T6.1` — Audit the manifest, Specification/plan link, reciprocal
+- [x] `T6.1` — Audit the manifest, Specification/plan link, reciprocal
       SPEC-002/003 declarations, package edges, adapter ownership, exact
       one-family catalogue, B2/capability gate independence, snapshot
       immutability, and all deferred-work boundaries. Update navigation only;
-      do not change contract meaning.
+      do not change contract meaning. **Complete:** governance validates the
+      139-node authority graph and all task evidence. Reciprocal SPEC-002/003
+      links, the one-family catalogue, exact package/adapter boundaries,
+      independent startup gates, immutable snapshot path, and all six deferred
+      records are present and consistent; see the
+      [final navigation audit](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-6/navigation-audit.md).
 - [ ] `T6.2` — Run the complete top-level hardware-free matrix and preserve
       exact standalone commands and stable evidence links. Label host execution,
       Pi/nRF cross-build/inspection, simulator, and any separately authorized
@@ -922,3 +927,12 @@ and hardware-free oracle. The complete macOS dynamic standalone driver passes
 with immutable run ID
 `5ea9e58559b676cd3b5200a6e96b0ce32506aa56-17ec6a3cec1f6fdd`; see the
 [final capability-boundary evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-4/final-capability-boundaries.md).
+
+`T6.1` is complete: the manifest and authority graph preserve reciprocal
+SPEC-002/003/004 navigation, the implementation plan is linked from the
+approved Specification, downstream adapter ownership follows the exact
+package DAG, B2 and capability gates remain independent, and snapshot
+immutability is evidenced without changing contract text. FW-006, FW-007,
+FW-008, FW-014, FW-015, and FW-018 remain separately linked and
+non-authoritative; see the
+[final navigation audit](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-6/navigation-audit.md).
