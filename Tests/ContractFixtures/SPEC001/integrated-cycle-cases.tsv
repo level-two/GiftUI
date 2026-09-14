@@ -1,0 +1,18 @@
+# schema_version=1
+schema_version	fixture_id	profile	cycle_index	phase	sequence	semantic_revision	dirty	wake_pending	result
+1	accepted	macos-dynamic	1	callback-admission	1	1	false	true	accepted-count-20
+1	accepted	macos-dynamic	1	mutation	20	1	true	false	facts-applied-20-action-dispatched
+1	accepted	macos-dynamic	1	drawing	none	1	true	false	strokes-5
+1	accepted	macos-dynamic	1	offer-frame	none	1	false	false	frame-1-accepted
+1	accepted	macos-static	1	callback-admission	1	1	false	true	accepted-count-20
+1	accepted	macos-static	1	mutation	20	1	true	false	facts-applied-20-action-dispatched
+1	accepted	macos-static	1	drawing	none	1	true	false	strokes-5
+1	accepted	macos-static	1	offer-frame	none	1	false	false	frame-1-accepted
+1	retryable	macos-dynamic	1	callback-admission	1	1	false	true	accepted-count-20
+1	retryable	macos-dynamic	1	mutation	20	1	true	false	facts-applied-20-action-dispatched
+1	retryable	macos-dynamic	1	drawing	none	1	true	false	strokes-5
+1	retryable	macos-dynamic	1	offer-frame	none	1	false	true	retryable-refusal-frame-aborted
+1	retryable	macos-static	1	callback-admission	1	1	false	true	accepted-count-20
+1	retryable	macos-static	1	mutation	20	1	true	false	facts-applied-20-action-dispatched
+1	retryable	macos-static	1	drawing	none	1	true	false	strokes-5
+1	retryable	macos-static	1	offer-frame	none	1	false	true	retryable-refusal-frame-aborted

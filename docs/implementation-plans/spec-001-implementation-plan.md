@@ -576,6 +576,12 @@ coalescing behavior.
       and deferred application callbacks: each returns through sequenced fact
       admission while the observable model remains unchanged, and only later
       fact application installs the running state.
+      A normalized Dynamic/Static integrated opportunity now applies all 20
+      facts, dispatches one semantic action, produces one dirty transition,
+      traverses Drawing/render/interaction, publishes one complete revision,
+      and compares accepted-frame and retryable-refusal dispositions. Static
+      change reporting uses the generated-root-compatible direct route; both
+      profiles leave exactly one paced wake after retryable refusal.
 - [ ] `T5.4` — Bind the six-action handler to the current model generation at
       the runtime coordinator. Exhaust exact dispatch, no capture/retention,
       pointer-down and admitted-action replacement, removal, failed/staged
@@ -608,6 +614,10 @@ coalescing behavior.
       callback, admission, seal, application, change report, dirty/wake,
       semantic publication, Drawing, offer, and frame events. Compare all
       profile-independent fields across dynamic and static realizations.
+      **Partial:** the checked-in accepted and retryable-refusal rows plus the
+      executable normalized comparison cover every named event family. Final
+      task disposition waits only for T5.4's remaining interaction
+      interleavings so the Milestone 5 evidence can close atomically.
 
 ### Milestone 6: Assemble and Validate the Four Target Hosts
 

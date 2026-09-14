@@ -523,6 +523,7 @@ let package = Package(
                 "GiftUIObservableState",
                 "GiftUIRuntimeCore",
                 "GiftUIRuntimeDynamic",
+                "GiftUIRuntimeStatic",
                 "SignalAnalyzerData",
                 "SignalAnalyzerDomain",
                 "SignalAnalyzerHost",
