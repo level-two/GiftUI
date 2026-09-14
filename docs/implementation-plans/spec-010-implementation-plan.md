@@ -448,7 +448,7 @@ reports with compiler, ABI, resource, transcript, and dependency evidence.
       dependency closure, stack/heap/linked-size evidence, and compare the
       canonical corpus without
       claiming remote execution or deployment.
-- [ ] `T8.3` — Cross-build `nrf52840dk/nrf52840` with the bundled
+- [x] `T8.3` — Cross-build `nrf52840dk/nrf52840` with the bundled
       `armv7em-none-none-eabi` module and Cortex-M4F hard-float flags. Require
       VFP calling convention, both heaps zero, no allocator/forbidden symbol,
       macro-support exclusion, complete storage/flash/RAM/stack reports, and
@@ -893,3 +893,11 @@ for `armv6-unknown-linux-gnueabihf`. Object and Runtime evidence verify 32-bit
 ARMv6 EABI5 hard-float identity, bounded resource reports, and the normalized
 corpus without remote access or deployment. See the
 [Raspberry Pi cross-build evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-8/raspberry-pi-armv6.md).
+
+`T8.3` is complete. The pinned Embedded Swift/Zephyr toolchain cross-builds
+the generated observable host and production Static owner graph for
+`nrf52840dk/nrf52840`. Linked-image inspection verifies ARMv7E-M,
+VFPv4-D16/VFP-register arguments, zero Static heap, no allocator or forbidden
+runtime facility on the specialized path, and bounded flash/RAM/stack/storage
+evidence. No board was connected or flashed. See the
+[nRF52840 cross-build evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-8/nrf52840-embedded.md).
