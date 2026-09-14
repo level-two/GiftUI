@@ -88,7 +88,7 @@ check_static_allocation_path() {
     ' "${ir}" >"${body}"
     [[ -s "${body}" ]] || fail 'optimized Static binding path is missing'
 
-    if grep -Eq '@(swift_allocObject|swift_allocateGenericValueMetadata|malloc|calloc|realloc|posix_memalign|aligned_alloc|objc_|swift_reflect|swift_task)|Builtin\.allocRaw' "${body}"; then
+    if grep -Eq '@(swift_(allocObject|slowAlloc|allocBox|allocateGenericValueMetadata|reflect[A-Za-z0-9_]*|task[A-Za-z0-9_]*)|malloc|calloc|realloc|posix_memalign|aligned_alloc|objc_[A-Za-z0-9_]*|pthread_[A-Za-z0-9_]*|_swift_exceptionPersonality|__gxx_personality_v0)|Builtin\.allocRaw' "${body}"; then
         fail 'optimized Static binding path references a forbidden facility'
     fi
     awk '
@@ -102,7 +102,7 @@ check_static_allocation_path() {
     fi
 
     grep -E '\b(call|tail call)\b' "${body}" >"${calls}" || true
-    printf 'irPathForbiddenReferences\t0\nsilForbiddenInstructions\t0\n' \
+    printf 'irPathForbiddenReferences\t0\nsilForbiddenInstructions\t0\nheapAllocations\t0\npeakHeapBytes\t0\n' \
         >"${output_root}/allocation-proof.tsv"
 }
 

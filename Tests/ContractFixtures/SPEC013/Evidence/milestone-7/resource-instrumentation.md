@@ -19,6 +19,7 @@ timing through `ContinuousClock` and optimized-IR `MemoryLayout` entry points
 for the five Runtime Core contract aggregates. The method registry fixes twelve
 measurement mechanisms and their truthful execution scopes.
 
-T7.3 still owns optimized symbol/SIL/linked-image scans and the nRF/Raspberry
-Pi target proofs. T7.4 still owns two pristine collections per profile. No
-numeric profile result is claimed merely because the instrumentation compiles.
+At T7.2 completion, T7.3 still owned optimized symbol/SIL/linked-image scans
+and the nRF/Raspberry Pi target proofs; T7.4 still owns two pristine
+collections per profile. No numeric profile result is claimed merely because
+the instrumentation compiles.

@@ -194,7 +194,7 @@ run_required normalized-report "${SCRIPT_DIR}/report-spec-013-profile.rb" \
     --command "scripts/contracts/run-spec-013.sh --profile ${profile}"
 
 failures=$((failures + 1))
-printf 'resource-collection\tblocked\tT7.3 scans and T7.4 pristine profile collection are not complete\n' >>"${prerequisites_path}"
+printf 'pristine-profile-collection\tblocked\tT7.4 two-build profile collection is not complete\n' >>"${prerequisites_path}"
 printf 'status=blocked\nexit_code=1\nblocking_count=%s\n' "${failures}" >>"${metadata_path}"
 
 relative_report=".build/contract-reports/spec-013/${run_id}/${profile}"
@@ -207,5 +207,5 @@ if ! "${SCRIPT_DIR}/publish-contract-report.rb" \
     printf 'error: SPEC-013 %s report publication failed\n' "${profile}" >&2
     exit 1
 fi
-printf 'SPEC-013 %s report finalized with T7.3/T7.4 collection blocked; run ID: %s\n' "${profile}" "${run_id}" >&2
+printf 'SPEC-013 %s report finalized with T7.4 pristine collection blocked; run ID: %s\n' "${profile}" "${run_id}" >&2
 exit 1

@@ -440,7 +440,7 @@ field.
       borrow-lifetime, section-size, generated-code, greatest-capture, and
       timing instrumentation. Report excluded text/capability/backend/host
       bytes and dynamic allocator bookkeeping separately.
-- [ ] `T7.3` — Run static forbidden-symbol/facility scans, prove zero heap, and
+- [x] `T7.3` — Run static forbidden-symbol/facility scans, prove zero heap, and
       inspect nRF ELF attributes for Cortex-M4F hard-float calling convention.
       Inspect Raspberry Pi artifacts for exactly
       `armv6-unknown-linux-gnueabihf`, rejecting ARMv7/AArch64 substitution.
@@ -910,10 +910,22 @@ stack-by-stage and resource snapshots, a bounded macOS allocation interposer
 that distinguishes allocation count, peak reserved heap bytes, and allocator
 bookkeeping, plus twelve explicit methods for value layouts, symbols, borrow
 lifetimes, sections, generated Canvas code, greatest capture, excluded owner
-bytes, and cycle timing. The report driver checks these mechanisms and remains
-fail-closed on T7.3 scans and T7.4 pristine profile collection. Evidence is in
+bytes, and cycle timing. At completion, the report driver checked these
+mechanisms and remained fail-closed on then-pending T7.3 scans and T7.4
+pristine profile collection. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-7/resource-instrumentation.md`.
 T7.3 is next.
+
+`T7.3` is complete. Optimized macOS Static and nRF52840 profile paths contain
+zero forbidden allocator, generic-metadata, Objective-C, reflection, task,
+thread, or exception references; all Runtime Static-owned SIL contains zero
+reference, closure, existential, partial-apply, or raw allocations. Both
+Static reports record zero heap allocations and zero peak heap bytes. The
+linked nRF ELF reports ARMv7E-M, VFPv4-D16, and VFP-register arguments, while a
+separate Runtime Dynamic cross-object and LLVM module report exactly
+`armv6-unknown-linux-gnueabihf` and reject ARMv7/AArch64 substitution. Evidence
+is in `Tests/ContractFixtures/SPEC013/Evidence/milestone-7/target-inspection.md`.
+T7.4 is next.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

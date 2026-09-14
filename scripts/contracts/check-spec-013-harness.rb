@@ -109,6 +109,7 @@ end
   check-spec-013-static-profiles.sh
   check-spec-013-static-storage.rb
   check-spec-013-storage-boundaries.rb
+  check-spec-013-target-evidence.rb
   check-spec-013-startup-corpus.rb
   check-spec-013-cycle-failures.rb
   check-spec-013-handoff-recovery.rb
@@ -117,6 +118,8 @@ end
   check-spec-013-report-driver.rb
   check-spec-013-resource-instrumentation.rb
   check-spec-013-resource-instrumentation.sh
+  collect-spec-013-pi-target-evidence.sh
+  collect-spec-013-t7.3-evidence.sh
   report-spec-013-profile.rb
 ].each do |name|
   path = ROOT.join("scripts/contracts", name)
