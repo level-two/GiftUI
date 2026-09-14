@@ -490,7 +490,7 @@ interaction and dispatch transcripts at equal limits.
       SPEC-015 assembly, verify exactly one immutable handler bound to the one
       root `SignalAnalyzerViewModel`; no default, closure path, stored model, or
       profile-specific portable source.
-- [ ] `T7.5` — Integrate SPEC-015's first-party action/hit capacities of six,
+- [x] `T7.5` — Integrate SPEC-015's first-party action/hit capacities of six,
       one normalized input source, and startup graph validation without making
       those production values Interaction defaults. Add the exact acquisition
       and selected-window disabled-state application corpus.
@@ -822,3 +822,12 @@ Clear, and 1/2/5-second selection. Dynamic and Static host dispatchers construct
 that same handler, revalidate the current root model target, reject invalid
 codes, and produce equal replacement interleavings. See the
 [Signal Analyzer dispatch evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t7-4-signal-analyzer-dispatch.md).
+
+`T7.5` is complete. Every generated first-party preset supplies exactly six
+actions, six hit regions, and one normalized input source, and startup requires
+those manifest counts to equal the owning Runtime/Execution limits. The
+portable hierarchy corpus covers all four acquisition states and proves the
+exact selected-window control alone is disabled for each 1/2/5-second choice.
+See the
+[first-party capacity evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t7-5-first-party-capacities.md).
+Milestone 7 is complete.
