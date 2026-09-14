@@ -383,7 +383,7 @@ substitute owner in this target.
 configuration, activates in exact order, preserves finite local failures, and
 tears down idempotently from every instance state.
 
-- [ ] `T4.1` — Implement the two-phase preset construction seam. Construct
+- [x] `T4.1` — Implement the two-phase preset construction seam. Construct
       inert projections and one validator, call `validate()` exactly once, and
       expose a `.valid` instance only for `.valid(report)`. After success,
       construct live owners without changing any projection and verify the
@@ -392,10 +392,6 @@ tears down idempotently from every instance state.
       capability snapshot, root target, handler, application executor, wake
       integration, and policy table. On failure, discard all projections and
       expose no instance or borrow.
-      **Partial:** the common valid-only bootstrap, exact-once validation,
-      retained-value and nine-owner audit, and fail-closed candidate teardown
-      are complete. The four concrete preset construction functions remain
-      blocked on their focused live-owner factories and target roots.
 - [x] `T4.2` — Implement the narrow host/failure adapter and exact total
       residual policy table. Preserve focused payloads and mappings, host
       error conditions, mandatory-effect ordering, all nine host contexts,

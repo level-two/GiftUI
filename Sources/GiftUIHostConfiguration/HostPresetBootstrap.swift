@@ -50,7 +50,8 @@ package enum HostPresetBootstrap {
     package static func construct<Validator: ~Copyable, Factory: ~Copyable>(
         validator: consuming Validator,
         factory: consuming Factory,
-        expectedEndpoint: HostEndpointConfiguration
+        expectedEndpoint: HostEndpointConfiguration,
+        expectedKind: MVPHostKind? = nil
     ) -> HostPresetConstructionResult<Factory.Instance>
     where
         Validator: MVPHostConfigurationValidator,
@@ -61,6 +62,11 @@ package enum HostPresetBootstrap {
         case .invalid(let stage, let error):
             return .invalid(.invalid(stage: stage, error: error))
         case .valid(let report):
+            guard expectedKind == nil || report.kind == expectedKind else {
+                return .invalid(
+                    .invalid(stage: .runtimeProfile, error: .profileMismatch)
+                )
+            }
             var factory = consume factory
             var instance = factory.construct(validatedBy: report)
             let audit = factory.audit(instance)
@@ -86,5 +92,93 @@ package enum HostPresetBootstrap {
             }
             return .constructed(instance)
         }
+    }
+}
+
+package enum SignalAnalyzerHostPresetConstruction {
+    package static func macOSDynamic<Validator: ~Copyable, Factory: ~Copyable>(
+        validator: consuming Validator,
+        factory: consuming Factory,
+        expectedEndpoint: HostEndpointConfiguration
+    ) -> HostPresetConstructionResult<Factory.Instance>
+    where
+        Validator: MVPHostConfigurationValidator,
+        Factory: MVPValidatedHostInstanceFactory
+    {
+        construct(
+            .macOSDynamic,
+            validator: consume validator,
+            factory: consume factory,
+            expectedEndpoint: expectedEndpoint
+        )
+    }
+
+    package static func macOSStatic<Validator: ~Copyable, Factory: ~Copyable>(
+        validator: consuming Validator,
+        factory: consuming Factory,
+        expectedEndpoint: HostEndpointConfiguration
+    ) -> HostPresetConstructionResult<Factory.Instance>
+    where
+        Validator: MVPHostConfigurationValidator,
+        Factory: MVPValidatedHostInstanceFactory
+    {
+        construct(
+            .macOSStatic,
+            validator: consume validator,
+            factory: consume factory,
+            expectedEndpoint: expectedEndpoint
+        )
+    }
+
+    package static func raspberryPiDynamic<Validator: ~Copyable, Factory: ~Copyable>(
+        validator: consuming Validator,
+        factory: consuming Factory,
+        expectedEndpoint: HostEndpointConfiguration
+    ) -> HostPresetConstructionResult<Factory.Instance>
+    where
+        Validator: MVPHostConfigurationValidator,
+        Factory: MVPValidatedHostInstanceFactory
+    {
+        construct(
+            .raspberryPiDynamic,
+            validator: consume validator,
+            factory: consume factory,
+            expectedEndpoint: expectedEndpoint
+        )
+    }
+
+    package static func nrf52840Static<Validator: ~Copyable, Factory: ~Copyable>(
+        validator: consuming Validator,
+        factory: consuming Factory,
+        expectedEndpoint: HostEndpointConfiguration
+    ) -> HostPresetConstructionResult<Factory.Instance>
+    where
+        Validator: MVPHostConfigurationValidator,
+        Factory: MVPValidatedHostInstanceFactory
+    {
+        construct(
+            .nrf52840Static,
+            validator: consume validator,
+            factory: consume factory,
+            expectedEndpoint: expectedEndpoint
+        )
+    }
+
+    private static func construct<Validator: ~Copyable, Factory: ~Copyable>(
+        _ kind: MVPHostKind,
+        validator: consuming Validator,
+        factory: consuming Factory,
+        expectedEndpoint: HostEndpointConfiguration
+    ) -> HostPresetConstructionResult<Factory.Instance>
+    where
+        Validator: MVPHostConfigurationValidator,
+        Factory: MVPValidatedHostInstanceFactory
+    {
+        HostPresetBootstrap.construct(
+            validator: consume validator,
+            factory: consume factory,
+            expectedEndpoint: expectedEndpoint,
+            expectedKind: kind
+        )
     }
 }
