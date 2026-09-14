@@ -5,32 +5,126 @@ import SignalAnalyzerPresentation
 
 /// Dynamic-target classification and fixed admission storage for Signal Analyzer facts.
 package final class DynamicSignalAnalyzerHostFactAdmission: SignalAnalyzerFactAdmission {
-    private var activeProducer: HostFactProducerCategory?
-    private var storage = HostSequencedFactAdmission<
-        SignalAnalyzerPresentationFact,
-        SignalAnalyzerPresentationFact,
-        SignalAnalyzerPresentationFact
-    >(
-        producerLimits: HostFactProducerLimits(
-            transition: 20,
-            bootstrap: 2,
-            action: 6
-        )!
-    )!
+    private var core = SignalAnalyzerHostFactAdmissionCore()
 
     package init() {}
 
     package func beginProducer(_ category: HostFactProducerCategory) -> Bool {
+        core.beginProducer(category)
+    }
+
+    package func endProducer() {
+        core.endProducer()
+    }
+
+    package func submit(
+        _ fact: SignalAnalyzerPresentationFact
+    ) -> SignalSinkDeliveryOutcome {
+        core.submit(fact)
+    }
+
+    package func seal() -> Bool {
+        core.seal()
+    }
+
+    package func takeNextSealed()
+        -> (UInt32, HostSequencedFactKind, SignalAnalyzerPresentationFact)?
+    {
+        core.takeNextSealed()
+    }
+
+    package func quiesce() {
+        core.quiesce()
+    }
+
+    package func discardAll() {
+        core.discardAll()
+    }
+}
+
+/// Caller-owned fixed storage used by generated Static analyzer roots.
+package struct StaticSignalAnalyzerHostFactAdmissionStorage: ~Copyable {
+    fileprivate var core: SignalAnalyzerHostFactAdmissionCore
+
+    package init(nextSequence: UInt32 = 1) {
+        core = SignalAnalyzerHostFactAdmissionCore(nextSequence: nextSequence)
+    }
+}
+
+/// Copyable direct-dispatch handle whose storage lifetime belongs to a Static root.
+package struct StaticSignalAnalyzerHostFactAdmission: SignalAnalyzerFactAdmission {
+    private let storage: UnsafeMutablePointer<StaticSignalAnalyzerHostFactAdmissionStorage>
+
+    package init(
+        storage: UnsafeMutablePointer<StaticSignalAnalyzerHostFactAdmissionStorage>
+    ) {
+        self.storage = storage
+    }
+
+    package func beginProducer(_ category: HostFactProducerCategory) -> Bool {
+        storage.pointee.core.beginProducer(category)
+    }
+
+    package func endProducer() {
+        storage.pointee.core.endProducer()
+    }
+
+    package func submit(
+        _ fact: SignalAnalyzerPresentationFact
+    ) -> SignalSinkDeliveryOutcome {
+        storage.pointee.core.submit(fact)
+    }
+
+    package func seal() -> Bool {
+        storage.pointee.core.seal()
+    }
+
+    package func takeNextSealed()
+        -> (UInt32, HostSequencedFactKind, SignalAnalyzerPresentationFact)?
+    {
+        storage.pointee.core.takeNextSealed()
+    }
+
+    package func quiesce() {
+        storage.pointee.core.quiesce()
+    }
+
+    package func discardAll() {
+        storage.pointee.core.discardAll()
+    }
+}
+
+private struct SignalAnalyzerHostFactAdmissionCore: ~Copyable {
+    private var activeProducer: HostFactProducerCategory?
+    private var storage:
+        HostSequencedFactAdmission<
+            SignalAnalyzerPresentationFact,
+            SignalAnalyzerPresentationFact,
+            SignalAnalyzerPresentationFact
+        >
+
+    init(nextSequence: UInt32 = 1) {
+        storage = HostSequencedFactAdmission(
+            producerLimits: HostFactProducerLimits(
+                transition: 20,
+                bootstrap: 2,
+                action: 6
+            )!,
+            nextSequence: nextSequence
+        )!
+    }
+
+    mutating func beginProducer(_ category: HostFactProducerCategory) -> Bool {
         guard activeProducer == nil else { return false }
         activeProducer = category
         return true
     }
 
-    package func endProducer() {
+    mutating func endProducer() {
         activeProducer = nil
     }
 
-    package func submit(
+    mutating func submit(
         _ fact: SignalAnalyzerPresentationFact
     ) -> SignalSinkDeliveryOutcome {
         let outcome: HostFactAdmissionOutcome
@@ -47,11 +141,11 @@ package final class DynamicSignalAnalyzerHostFactAdmission: SignalAnalyzerFactAd
         return map(outcome)
     }
 
-    package func seal() -> Bool {
+    mutating func seal() -> Bool {
         storage.seal()
     }
 
-    package func takeNextSealed()
+    mutating func takeNextSealed()
         -> (UInt32, HostSequencedFactKind, SignalAnalyzerPresentationFact)?
     {
         guard let stored = storage.takeNextSealed() else { return nil }
@@ -63,11 +157,11 @@ package final class DynamicSignalAnalyzerHostFactAdmission: SignalAnalyzerFactAd
         }
     }
 
-    package func quiesce() {
+    mutating func quiesce() {
         storage.quiesce()
     }
 
-    package func discardAll() {
+    mutating func discardAll() {
         activeProducer = nil
         storage.discardAll()
     }

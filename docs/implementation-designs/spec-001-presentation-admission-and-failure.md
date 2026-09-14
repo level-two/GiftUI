@@ -62,8 +62,11 @@ ordered removal, quiescence, and discard.
 four-case classification and exact rejection mapping behind
 `SignalAnalyzerFactAdmission`. The composition fixture also drives sealed facts through
 `RuntimeCompletePipeline.applyAdmittedWork()`, applies them to the real
-`SignalAnalyzerViewModel` exactly once, and proves post-seal deferral. No
-profile root wires that endpoint to its wake owner yet.
+`SignalAnalyzerViewModel` exactly once, and proves post-seal deferral. The
+matching Static endpoint is a copyable direct-dispatch handle over caller-owned
+fixed storage; both endpoints delegate to the same application-specific
+classifier and sequencer core and produce equal normalized cross-store
+transcripts. No profile root wires either endpoint to its wake owner yet.
 
 ## Proposed Internal Organization
 
@@ -227,8 +230,8 @@ algorithm above.
   covers physical and producer bounds, sequencing, sealing, deferral,
   quiescence, and nonaliasing exhaustion.
 - [`SignalAnalyzerHostFactAdmission.swift`](../../Sources/SignalAnalyzerHost/SignalAnalyzerHostFactAdmission.swift)
-  supplies the application-specific Dynamic production classifier and exact
-  application rejection mapping.
+  supplies the application-specific Dynamic retained endpoint, Static direct
+  endpoint, shared production classifier, and exact rejection mapping.
 - [`SignalAnalyzerHostFactAdmissionTests.swift`](../../Tests/GiftUIHostConfigurationTests/SignalAnalyzerHostFactAdmissionTests.swift)
   proves the target-root classification and application rejection vocabulary
   plus the production-pipeline mutation ordering without placing that switch
@@ -236,5 +239,5 @@ algorithm above.
 - [`fact-admission-cases.tsv`](../../Tests/ContractFixtures/SPEC001/fact-admission-cases.tsv)
   records the current partial T5.1 corpus.
 
-The Dynamic profile-root wake join, generated Static endpoint, and
-profile-equivalence cycle remain to be linked.
+The profile-root wake join and integrated profile-equivalence cycle remain to
+be linked.

@@ -445,9 +445,11 @@ coalescing behavior.
       `SignalAnalyzerPresentationFact` classifier, producer-context gate, and
       exact application rejection mapping. The composition join applies sealed
       facts exactly once in `RuntimeCompletePipeline` mutation order and proves
-      that post-seal facts wait for the next opportunity; profile-root wake
-      wiring, generated Static endpoint and artifact evidence, and profile
-      equivalence remain.
+      that post-seal facts wait for the next opportunity. A Static direct-
+      dispatch handle now uses caller-owned fixed storage and shares the same
+      classifier/sequencer core; normalized cross-store transcripts match the
+      Dynamic endpoint exactly. Profile-root wake wiring and final integrated
+      profile equivalence remain.
 - [ ] `T5.2` — Bind the root to one observable location, active registration,
       dirty/live bit, and transient replacement record. Run identical dynamic/
       static fixtures for initializer preservation, atomic replacement,

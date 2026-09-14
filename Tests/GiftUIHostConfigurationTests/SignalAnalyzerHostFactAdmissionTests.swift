@@ -123,6 +123,24 @@ private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner
     }
 }
 
+private protocol AnalyzerFactAdmissionTestEndpoint: SignalAnalyzerFactAdmission {
+    func beginProducer(_ category: HostFactProducerCategory) -> Bool
+    func endProducer()
+    func seal() -> Bool
+    func takeNextSealed()
+        -> (UInt32, HostSequencedFactKind, SignalAnalyzerPresentationFact)?
+}
+
+extension DynamicSignalAnalyzerHostFactAdmission: AnalyzerFactAdmissionTestEndpoint {}
+extension StaticSignalAnalyzerHostFactAdmission: AnalyzerFactAdmissionTestEndpoint {}
+
+private struct FactAdmissionTranscript: Equatable {
+    let outcomes: [SignalSinkDeliveryOutcome]
+    let sequences: [UInt32]
+    let kinds: [HostSequencedFactKind]
+    let facts: [SignalAnalyzerPresentationFact]
+}
+
 @Test func analyzerClassifierMapsAllFactFamiliesIntoIndependentStores() {
     let admission = DynamicSignalAnalyzerHostFactAdmission()
     #expect(admission.beginProducer(.action))
@@ -188,6 +206,29 @@ private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner
             == .rejected(.factCapacityExhausted)
     )
     admission.endProducer()
+}
+
+@Test func dynamicAndStaticAnalyzerAdmissionProduceEqualOrderedTranscripts() {
+    let dynamic = runFactAdmissionTranscript(
+        endpoint: DynamicSignalAnalyzerHostFactAdmission()
+    )
+    var storage = StaticSignalAnalyzerHostFactAdmissionStorage()
+    let fixed = withUnsafeMutablePointer(to: &storage) {
+        runFactAdmissionTranscript(
+            endpoint: StaticSignalAnalyzerHostFactAdmission(storage: $0)
+        )
+    }
+
+    #expect(dynamic == fixed)
+    #expect(
+        dynamic.outcomes == [
+            .accepted(sequence: 1),
+            .accepted(sequence: 2),
+            .accepted(sequence: 3),
+        ]
+    )
+    #expect(dynamic.sequences == [1, 2, 3])
+    #expect(dynamic.kinds == [.compact, .reservedFailure, .snapshot])
 }
 
 @Test func sealedAnalyzerFactsApplyOnceInsideTheProductionMutationPipeline() {
@@ -310,6 +351,51 @@ private func expectNext(
     #expect(next.0 == sequence)
     #expect(next.1 == kind)
     #expect(next.2 == fact)
+}
+
+private func runFactAdmissionTranscript<Endpoint>(
+    endpoint: Endpoint
+) -> FactAdmissionTranscript where Endpoint: AnalyzerFactAdmissionTestEndpoint {
+    let state = SignalAnalyzerPresentationFact.acquisitionState(.running)
+    let failure = SignalAnalyzerPresentationFact.operationalFailure(
+        SignalAnalyzerOperationalFailure(
+            failure: GiftUIFailureFact(
+                condition: .invalidValue,
+                origin: .presentationIntegration,
+                affectedScope: .component,
+                containment: .contained
+            ),
+            diagnostic: SignalAnalyzerDiagnostic(exactUTF8: Array("failure".utf8))!
+        )
+    )
+    let snapshot = SignalAnalyzerPresentationFact.captureSnapshot(
+        revision: 0,
+        capture: .empty()
+    )
+    var outcomes: [SignalSinkDeliveryOutcome] = []
+    #expect(endpoint.beginProducer(.action))
+    outcomes.append(endpoint.submit(state))
+    endpoint.endProducer()
+    outcomes.append(endpoint.submit(failure))
+    #expect(endpoint.beginProducer(.bootstrap))
+    outcomes.append(endpoint.submit(snapshot))
+    endpoint.endProducer()
+    #expect(endpoint.seal())
+
+    var sequences: [UInt32] = []
+    var kinds: [HostSequencedFactKind] = []
+    var facts: [SignalAnalyzerPresentationFact] = []
+    while let next = endpoint.takeNextSealed() {
+        sequences.append(next.0)
+        kinds.append(next.1)
+        facts.append(next.2)
+    }
+    return FactAdmissionTranscript(
+        outcomes: outcomes,
+        sequences: sequences,
+        kinds: kinds,
+        facts: facts
+    )
 }
 
 private final class MutationRepository: SignalAcquisitionRepository {
