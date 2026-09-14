@@ -1,2 +1,11 @@
 schema: spec-013-v1
-cases: []
+cases:
+  - name: dynamic-static-canonical-equivalence
+    criteria: [RP-005, RP-011, RP-015]
+    evidenceClasses: [host-execution, inspection]
+    normalizedInputFields: [root, resources, limits, initialModel, facts, pointers, capabilities, endpointScript, policy]
+    canonicalTranscriptRecordCount: 15
+    comparison: value-for-value
+    tolerance: zero
+    excludedFields: [addresses, privateBytes, allocationStrategy, generatedCodeAddresses, diagnosticVolume]
+    profiles: [dynamic, static]

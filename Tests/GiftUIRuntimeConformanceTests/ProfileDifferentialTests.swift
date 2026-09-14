@@ -1,0 +1,301 @@
+import GiftUI
+import GiftUIDrawing
+import GiftUIExecution
+import GiftUIInteraction
+import GiftUILayout
+import GiftUIObservableState
+import GiftUIRenderCore
+import GiftUIRenderLowering
+import GiftUIRuntimeCore
+import GiftUIRuntimeDynamic
+import GiftUIRuntimeStatic
+import GiftUISemanticCore
+import Testing
+
+private struct DifferentialInputs: Equatable {
+    let root = UInt16(1)
+    let resources = UInt16(2)
+    let limits = UInt16(3)
+    let initialModel = UInt16(4)
+    let facts = UInt16(5)
+    let pointers = UInt16(6)
+    let capabilities = UInt16(7)
+    let endpointScript = UInt16(8)
+    let policy = UInt16(9)
+}
+
+private struct DifferentialTranscript: Equatable {
+    let inputs: DifferentialInputs
+    let validation: UInt32
+    let lifecycle: ExecutionContext
+    let admission: UInt16
+    let mutation: UInt16
+    let semantic: UInt16
+    let layout: UInt16
+    let drawing: UInt16
+    let render: UInt16
+    let interaction: UInt16
+    let offer: UInt16
+    let failure: UInt16
+    let cleanup: [RuntimeCleanupAction]
+    let result: RuntimeCompletePipelineResult
+    let finalization: UInt16
+}
+
+private struct DifferentialPipelineOwner: RuntimeCompletePipelineOwner {
+    private(set) var stages: [RuntimeCompletePipelineStage] = []
+    private(set) var cleanups: [RuntimeCleanupAction] = []
+    private(set) var finalizationCount = UInt16(0)
+
+    mutating func admitAndSeal() -> RuntimePipelineStepResult { step(.admissionAndSeal) }
+
+    mutating func applyAdmittedWork() -> RuntimePipelineMutationResult {
+        stages.append(.applyAdmittedWork)
+        return .applied(true)
+    }
+
+    mutating func freezeObservableMutation() -> RuntimePipelineStepResult {
+        step(.freezeObservableMutation)
+    }
+
+    mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult {
+        step(.observableCandidateAndSemanticExpansion)
+    }
+
+    mutating func resolveLayout() -> RuntimePipelineStepResult { step(.layout) }
+
+    mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult {
+        step(.canvasInvocationAndPlan)
+    }
+
+    mutating func preflightCombinedRender() -> RuntimePipelineStepResult {
+        step(.combinedRenderPreflight)
+    }
+
+    mutating func buildInteractionCandidate() -> RuntimePipelineStepResult {
+        step(.interactionCandidate)
+    }
+
+    mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult {
+        stages.append(.semanticAndObservablePublication)
+        return .published(
+            RuntimePipelinePublication(
+                semanticRevision: SemanticRevision(rawValue: 7),
+                changed: true
+            )
+        )
+    }
+
+    mutating func allocateCandidate() -> RuntimePipelineStepResult { step(.candidateAllocation) }
+
+    mutating func offerAndProduce() -> RuntimePipelineOfferResult {
+        stages.append(.offerAndProduction)
+        return .accepted(PresentationRevision(rawValue: 9))
+    }
+
+    mutating func cleanup(_ action: RuntimeCleanupAction) { cleanups.append(action) }
+    mutating func applyDisposition(_: RuntimePipelineDisposition) {}
+    mutating func finalizePipeline() { finalizationCount += 1 }
+
+    private mutating func step(_ stage: RuntimeCompletePipelineStage) -> RuntimePipelineStepResult {
+        stages.append(stage)
+        return .advanced
+    }
+}
+
+private struct DifferentialStaticRegions: StaticProfileStorageRegions {
+    let byteCounts = differentialByteCounts()
+    mutating func resetAttemptRegions() {}
+    mutating func resetAllRegions() {}
+}
+
+private struct DifferentialStaticMetadata:
+    RuntimeStaticCanvasAuditMetadata, StaticCanvasCallableTable
+{
+    typealias CaptureStorage = UInt8
+    let callableCaseCount = UInt16(1)
+    let declaredEntryCount = UInt16(1)
+    let maximumDeclaredID = UInt16(1)
+
+    func coverageMultiplicity(for id: UInt16) -> UInt8 { id == 1 ? 1 : 0 }
+    func captureByteCount(for id: UInt16) -> UInt16? { id == 1 ? 1 : nil }
+
+    mutating func invoke(
+        id _: UInt16,
+        captures _: borrowing UInt8,
+        context _: inout GraphicsContext,
+        size _: Size
+    ) throws(DrawingError) {}
+}
+
+@Test
+func dynamicAndStaticBindingsProduceEqualCanonicalTranscripts() {
+    let inputs = DifferentialInputs()
+    var dynamic = DynamicRuntimeProfileBinding(
+        structuralIdentity: DynamicStructuralIdentity(rawValue: 1)!,
+        limits: differentialLimits(profile: .dynamic),
+        byteCounts: differentialByteCounts()
+    )!
+    var fixed = StaticRuntimeProfileBinding(
+        structuralIdentity: StaticStructuralIdentity(rawValue: 1)!,
+        limits: differentialLimits(profile: .static),
+        regions: DifferentialStaticRegions(),
+        metadata: DifferentialStaticMetadata()
+    )!
+    let active = ExecutionContext(
+        cycle: RunCycleID(rawValue: 1),
+        semanticRevision: nil,
+        candidateFrame: nil,
+        phase: .admitting
+    )
+    let idle = ExecutionContext(
+        cycle: nil,
+        semanticRevision: SemanticRevision(rawValue: 7),
+        candidateFrame: nil,
+        phase: .idle
+    )
+    #expect(dynamic.beginOpportunity(context: active) == nil)
+    #expect(fixed.beginOpportunity(context: active) == nil)
+    var dynamicOwner = DifferentialPipelineOwner()
+    var staticOwner = DifferentialPipelineOwner()
+    let dynamicResult = dynamic.runActivePipeline(owner: &dynamicOwner)
+    let staticResult = fixed.runActivePipeline(owner: &staticOwner)
+    #expect(dynamic.finishOpportunity(context: idle) == nil)
+    #expect(fixed.finishOpportunity(context: idle) == nil)
+
+    let dynamicTranscript = DifferentialTranscript(
+        inputs: inputs,
+        validation: dynamic.storageAudit?.totalProfileBytes ?? 0,
+        lifecycle: dynamic.executionContext,
+        admission: stageCount(.admissionAndSeal, in: dynamicOwner),
+        mutation: stageCount(.applyAdmittedWork, in: dynamicOwner)
+            + stageCount(.freezeObservableMutation, in: dynamicOwner),
+        semantic: stageCount(.observableCandidateAndSemanticExpansion, in: dynamicOwner)
+            + stageCount(.semanticAndObservablePublication, in: dynamicOwner),
+        layout: stageCount(.layout, in: dynamicOwner),
+        drawing: stageCount(.canvasInvocationAndPlan, in: dynamicOwner),
+        render: stageCount(.combinedRenderPreflight, in: dynamicOwner),
+        interaction: stageCount(.interactionCandidate, in: dynamicOwner),
+        offer: stageCount(.candidateAllocation, in: dynamicOwner)
+            + stageCount(.offerAndProduction, in: dynamicOwner),
+        failure: failureCount(in: dynamicResult),
+        cleanup: dynamicOwner.cleanups,
+        result: dynamicResult,
+        finalization: dynamicOwner.finalizationCount
+    )
+    let staticTranscript = DifferentialTranscript(
+        inputs: inputs,
+        validation: fixed.storageAudit?.totalProfileBytes ?? 0,
+        lifecycle: fixed.executionContext,
+        admission: stageCount(.admissionAndSeal, in: staticOwner),
+        mutation: stageCount(.applyAdmittedWork, in: staticOwner)
+            + stageCount(.freezeObservableMutation, in: staticOwner),
+        semantic: stageCount(.observableCandidateAndSemanticExpansion, in: staticOwner)
+            + stageCount(.semanticAndObservablePublication, in: staticOwner),
+        layout: stageCount(.layout, in: staticOwner),
+        drawing: stageCount(.canvasInvocationAndPlan, in: staticOwner),
+        render: stageCount(.combinedRenderPreflight, in: staticOwner),
+        interaction: stageCount(.interactionCandidate, in: staticOwner),
+        offer: stageCount(.candidateAllocation, in: staticOwner)
+            + stageCount(.offerAndProduction, in: staticOwner),
+        failure: failureCount(in: staticResult),
+        cleanup: staticOwner.cleanups,
+        result: staticResult,
+        finalization: staticOwner.finalizationCount
+    )
+
+    #expect(dynamicTranscript == staticTranscript)
+}
+
+private func stageCount(
+    _ stage: RuntimeCompletePipelineStage,
+    in owner: DifferentialPipelineOwner
+) -> UInt16 {
+    UInt16(owner.stages.count(where: { $0 == stage }))
+}
+
+private func failureCount(in result: RuntimeCompletePipelineResult) -> UInt16 {
+    if case .failed = result { return 1 }
+    return 0
+}
+
+private func differentialLimits(profile: RuntimeProfileKind) -> RuntimeProfileLimits {
+    RuntimeProfileLimits(
+        semantic: SemanticExpansionLimits(
+            maximumDepth: 2,
+            maximumSemanticNodes: 2,
+            maximumBodyEvaluations: 2,
+            maximumModifierApplications: 2,
+            maximumActionOccurrences: 1
+        )!,
+        layout: LayoutLimits(
+            maximumScopes: 2,
+            maximumDepth: 2,
+            maximumTextScalars: 2,
+            maximumTextLines: 2,
+            maximumPositionedGlyphs: 2
+        )!,
+        render: RenderLimits(
+            maximumOperations: 2,
+            maximumPositionedGlyphs: 2,
+            maximumClipDepth: 2
+        )!,
+        renderWorkspace: RenderWorkspaceCapacity(
+            maximumSemanticScopes: 2,
+            maximumLayoutScopes: 2,
+            maximumTraversalDepth: 2,
+            maximumTextLines: 2
+        )!,
+        renderSink: RenderSinkCapacity(maximumOperations: 2, maximumPositionedGlyphs: 2),
+        maximumOrdinaryRenderOperations: 1,
+        execution: ExecutionLimits(
+            maximumInputEvents: 2,
+            maximumStateChangeFacts: 2,
+            maximumCompletionFacts: 2,
+            maximumSemanticActions: 1,
+            maximumActiveInputSources: 1,
+            maximumCommittedActions: 1
+        )!,
+        observableState: ObservableStateLimits(
+            maximumLocations: 1,
+            maximumRegistrations: 1,
+            maximumStagedAssociations: 1
+        )!,
+        interaction: InteractionLimits(maximumActions: 1, maximumHitRegions: 1)!,
+        drawing: DrawingLimits(
+            maximumLineWidth: 1,
+            maximumCanvasOccurrences: 1,
+            maximumLivePathPoints: 1,
+            maximumLivePathSubpaths: 1,
+            maximumPlanStrokes: 1,
+            maximumPlanPoints: 1,
+            maximumPlanSubpaths: 1,
+            maximumNormalizedStrokeOperations: 1
+        )!,
+        staticCanvas: profile == .static
+            ? StaticCanvasLimits(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: 1)
+            : nil,
+        profile: profile
+    )!
+}
+
+private func differentialByteCounts() -> RuntimeStorageByteCounts {
+    RuntimeStorageByteCounts(
+        semanticCandidateBytes: 1,
+        semanticPublishedBytes: 1,
+        layoutCandidateBytes: 1,
+        renderWorkspaceBytes: 1,
+        canvasCallableBytes: 1,
+        pathWorkspaceBytes: 1,
+        drawingPlanBytes: 1,
+        observableLiveBytes: 1,
+        observableCandidateBytes: 1,
+        interactionCandidateBytes: 1,
+        interactionCommittedBytes: 1,
+        admissionQueueBytes: 1,
+        sealedBatchBytes: 1,
+        pointerStateBytes: 1,
+        coordinatorStateBytes: 1,
+        failureStateBytes: 1
+    )
+}

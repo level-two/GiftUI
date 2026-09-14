@@ -417,7 +417,7 @@ semantic tolerance.
       endpoint storage, generated tables, forbidden static types/facilities,
       and dependency direction. Prove exact coverage for both the generated
       observable-slot table and generated Canvas callable table.
-- [ ] `T6.6` — Run both profiles against identical roots, resources, limits,
+- [x] `T6.6` — Run both profiles against identical roots, resources, limits,
       initial models, facts, pointers, capabilities, endpoint scripts, and
       policy. Compare every SPEC-013 observable field value-for-value while
       explicitly excluding addresses, private bytes, allocation strategy,
@@ -884,7 +884,16 @@ untyped or wrong typed errors. The deterministic generated-profile audit
 proves exact observable-slot and Canvas-callable coverage from their canonical
 inputs. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-6/borrow-boundaries.md`.
-T6.6 is next.
+
+`T6.6` is complete. One conformance fixture runs identical normalized root,
+resource, common-limit, model, fact, pointer, capability, endpoint-script, and
+policy tokens through both concrete profile bindings and the same common
+pipeline owner. It compares all fifteen canonical transcript categories
+value-for-value with zero tolerance while excluding only addresses, private
+bytes, allocation strategy, generated-code addresses, and diagnostic volume.
+Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-6/profile-equivalence.md`.
+Milestone 6 is complete; T7.1 is next.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

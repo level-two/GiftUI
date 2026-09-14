@@ -120,6 +120,7 @@ run_required startup-corpus "${SCRIPT_DIR}/check-spec-013-startup-corpus.rb"
 run_required cycle-failures "${SCRIPT_DIR}/check-spec-013-cycle-failures.rb"
 run_required handoff-recovery "${SCRIPT_DIR}/check-spec-013-handoff-recovery.rb"
 run_required borrow-boundaries "${SCRIPT_DIR}/check-spec-013-borrow-boundaries.rb"
+run_required equivalence "${SCRIPT_DIR}/check-spec-013-equivalence.rb"
 
 for target in GiftUIRuntimeCore GiftUIRuntimeDynamic GiftUIRuntimeStatic GiftUIRuntimeFailureAdapterFixture; do
     require_path "target-${target}" "${PROJECT_ROOT}/Sources/${target}"
