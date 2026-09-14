@@ -68,6 +68,9 @@ dynamic and static slot storage. It deliberately does not consume or own the
 `DynamicObservableModelStorage` now supplies the first bounded Dynamic-profile
 typed storage slice: it binds a transient wrapper to the preserved model and
 routes assignment outward for later atomic replacement.
+`StaticObservableModelStorage` supplies the matching caller-owned inline typed
+value and confines its direct pointer binding to one synchronous traversal
+attempt; final address stability remains a generated-root responsibility.
 Focused Observable State components separately implement binding, attachment,
 atomic replacement, dirty reporting, removal, stale-report rejection, and
 shutdown. Existing tests prove those mechanisms independently, but no target
@@ -278,6 +281,9 @@ permission to weaken the static contract.
 - [`DynamicObservableModelStorage.swift`](../../Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift)
   supplies bounded Dynamic-profile initializer preservation and assignment
   routing.
+- [`StaticObservableModelStorage.swift`](../../Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift)
+  supplies attempt-scoped direct binding over caller-owned inline typed
+  storage.
 - [`HostActivationController.swift`](../../Sources/GiftUIHostConfiguration/HostActivationController.swift)
   supplies exact activation and teardown ordering.
 - [`HostSequencedFactAdmission.swift`](../../Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift)

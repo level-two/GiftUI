@@ -34,3 +34,18 @@ swift test --filter DynamicObservableModelStorage
 
 Static generated binding, model attachment, atomic replacement, dirty/live
 state, and the complete equal-profile lifecycle remain pending.
+
+The Static profile now supplies one caller-owned inline typed model optional.
+Its binding exists only for the synchronous body call, captures a direct
+pointer to that storage, preserves the first initializer, discards a repeated
+initializer, and routes assignment without changing the live value. The
+storage layout fixture proves the helper adds no field beyond the typed
+optional. Reproduce with:
+
+```sh
+swift test --filter StaticObservableModelStorage
+```
+
+The final generated analyzer storage must place this caller-owned value at an
+address-stable location and prove its optimized artifact has no allocation
+path; this host-native layout fixture does not claim that later evidence.

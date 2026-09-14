@@ -458,9 +458,12 @@ coalescing behavior.
       staging a location in the inline Static store. Dynamic profile typed
       storage now consumes the first initializer, preserves it across repeated
       transient wrappers, routes assignment without directly replacing stored
-      state, and rejects rebinding one wrapper. Static generated binding,
-      registration, atomic replacement, dirtiness, and the complete equal-
-      profile lifecycle corpus remain.
+      state, and rejects rebinding one wrapper. Static profile caller-owned
+      inline typed storage now performs the same initializer preservation and
+      assignment routing within one attempt-scoped direct binding whose wrapper
+      and pointer cannot escape. Generated analyzer storage, registration,
+      atomic replacement, dirtiness, and the complete equal-profile lifecycle
+      corpus remain.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized
       mutation phase, freeze, complete-root derivation, publication, wake, and
       paced retry owners. Prove 20 change reports become one dirty transition
