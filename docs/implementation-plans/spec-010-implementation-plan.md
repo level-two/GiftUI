@@ -440,7 +440,7 @@ stable; no production capacity is invented by this plan.
 **Exit evidence:** All four exact driver commands publish comparable immutable
 reports with compiler, ABI, resource, transcript, and dependency evidence.
 
-- [ ] `T8.1` — Run pristine macOS dynamic then macOS static profiles; compare
+- [x] `T8.1` — Run pristine macOS dynamic then macOS static profiles; compare
       macro bytes, complete normalized transcripts, local layouts, allocation,
       stack, linked sections, and undefined/forbidden symbols.
 - [ ] `T8.2` — Cross-build Raspberry Pi 1 only for
@@ -878,3 +878,11 @@ diagnostic dependency, disabled and absent projections construct nothing, and
 selected sinks cannot mutate authoritative state; see the
 [diagnostic isolation evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-7/diagnostic-isolation.md).
 Milestone 7 is complete.
+
+`T8.1` is complete. Pristine macOS Dynamic and Static reports share one input
+identity, the same generated declaration digest and portable symbol surface,
+and the complete normalized observable-state corpus. Joined SPEC-013 reports
+provide equal storage high-water, workload timing, stack/layout, allocation,
+section, and forbidden-symbol evidence; the Static optimized binding path is
+zero heap. See the
+[macOS profile evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-8/macos-profiles.md).
