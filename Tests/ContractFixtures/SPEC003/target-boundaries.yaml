@@ -21,6 +21,39 @@ active:
     dependencies:
       - GiftUIFailureCore
       - GiftUIFailureDiagnostics
+  GiftUILayoutFailureAdapterFixture:
+    type: regular
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUILayout
+  GiftUIDisplayCore:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUICapabilities
+      - GiftUIFailureCore
+      - GiftUISurfaceCore
+  GiftUIBackendIntegration:
+    type: regular
+    dependencies:
+      - GiftUICapabilities
+      - GiftUIDisplayCore
+      - GiftUIExecution
+      - GiftUIFailureCore
+      - GiftUIRasterCore
+      - GiftUIRenderCore
+      - GiftUISurfaceCore
+      - GiftUITextResources
+  GiftUIRenderFailureAdapterFixture:
+    type: regular
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUIRenderLowering
+  GiftUIDrawingFailureAdapterFixture:
+    type: regular
+    dependencies:
+      - GiftUIDrawing
+      - GiftUIFailureCore
   GiftUICapabilityFailureAdapterTests:
     type: test
     dependencies:
@@ -32,6 +65,11 @@ active:
     dependencies:
       - GiftUICapabilities
       - GiftUIFailureCore
+  GiftUISemanticFailureAdapterFixture:
+    type: regular
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUISemanticCore
   GiftUIFailureExecution:
     type: regular
     dependencies:
@@ -86,4 +124,28 @@ active:
       - GiftUIFailureExecution
       - GiftUIRuntimeCore
       - GiftUIRuntimeFailureAdapterFixture
+  GiftUIHostConfiguration:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUIBackendIntegration
+      - GiftUICapabilities
+      - GiftUIDisplayCore
+      - GiftUIExecution
+      - GiftUIFailureCore
+      - GiftUIRasterCore
+      - GiftUIRuntimeCore
+      - GiftUISurfaceCore
+      - GiftUITextResources
+  GiftUITextResourceFailureAdapterFixture:
+    type: regular
+    dependencies:
+      - GiftUIFailureCore
+      - GiftUITextResources
+  SignalAnalyzerPresentation:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUIFailureCore
+      - SignalAnalyzerDomain
 reserved: {}

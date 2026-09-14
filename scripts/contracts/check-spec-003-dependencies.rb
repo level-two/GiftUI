@@ -38,6 +38,32 @@ active.each do |name, expected|
   fail_check("#{name} dependencies differ") unless dependencies.sort == expected["dependencies"].sort
 end
 
+direct_failure_consumers = targets.each_with_object([]) do |(name, target), consumers|
+  next unless target["type"] == "regular"
+
+  dependencies = target.fetch("dependencies", []).map do |dependency|
+    declaration = dependency.fetch("target", dependency["byName"])
+    declaration.is_a?(Array) ? declaration.first : declaration
+  end
+  consumers << name if dependencies.include?("GiftUIFailureCore")
+end.sort
+expected_failure_consumers = active.each_with_object([]) do |(name, declaration), consumers|
+  next unless declaration["type"] == "regular"
+  next unless declaration["dependencies"].include?("GiftUIFailureCore")
+
+  consumers << name
+end.sort
+fail_check("direct production Failure Core consumer set differs") unless
+  direct_failure_consumers == expected_failure_consumers
+
+expected_failure_consumers.each do |name|
+  source_root = File.join(root, "Sources", name)
+  sources = Dir.glob(File.join(source_root, "**", "*.swift")).sort.map { |path| File.read(path) }.join("\n")
+  fail_check("#{name} re-exports a failure module") if sources.match?(/@_exported\s+import\s+GiftUIFailure/)
+  fail_check("#{name} correctness path imports diagnostics") if
+    name != "GiftUIFailureDiagnostics" && sources.match?(/^import GiftUIFailureDiagnostics$/)
+end
+
 reserved.each do |name, declaration|
   fail_check("reserved target unexpectedly exists: #{name}") if targets.key?(name)
   fail_check("#{name} must name prerequisite SPEC-009") unless declaration["prerequisite"] == "SPEC-009"

@@ -364,12 +364,16 @@ duplicated to remove a dependency blocker.
       available fatal hook. Defective-table, missing-effect, and unlisted-policy
       paths all use the same sequence without another policy call; see the
       [production host containment evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-4/production-host-containment.md).
-- [ ] `T4.5` — Refresh the exact package allow-list, positive/negative imports,
+- [x] `T4.5` — Refresh the exact package allow-list, positive/negative imports,
       compiled module dependencies, and product linkage after every owner
       target lands. Fail any upward edge, re-export, monolithic target, or
-      optional diagnostic dependency on a correctness path. **Blocked:** the
-      SPEC-009 and SPEC-015 owner targets required by `T4.3` and `T4.4` have
-      not landed, so the final exact-set refresh would be premature.
+      optional diagnostic dependency on a correctness path. **Complete:** the
+      boundary registry now names every production target with a direct
+      Failure Core edge. Its checker fails a missing consumer, dependency
+      drift, re-export, or diagnostics import on a correctness path; the
+      repository exact graph, host compiled surface, Core interface/link
+      inspection, and import fixtures remain enforced. See the
+      [final owner-boundary evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-4/final-owner-boundaries.md).
 
 ### Milestone 5: Produce Hardware-Free Four-Profile and Resource Evidence
 
@@ -766,3 +770,11 @@ health to `quiesced`, propagates the exact invariant fact, and permits the
 configured fatal hook only after that sequence. The focused routing suite and
 the complete 139-test host-configuration suite pass; see the
 [production host containment evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-4/production-host-containment.md).
+
+`T4.5` is complete: the fail-closed SPEC-003 registry now covers all current
+production targets directly importing `GiftUIFailureCore`, and its checker
+derives the actual consumer set from `Package.swift` so a later unregistered
+owner cannot silently bypass review. The repository-wide 81-target/282-edge
+allow-list, owner-local exact dependencies, diagnostic direction, host source
+boundary, and compiled host surface checks all pass; see the
+[final owner-boundary evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-4/final-owner-boundaries.md).
