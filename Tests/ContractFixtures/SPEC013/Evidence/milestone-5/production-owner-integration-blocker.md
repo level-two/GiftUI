@@ -38,3 +38,14 @@ T5.1 remains unchecked. T5.2-T8.4 depend on the complete production
 coordinator or on later milestones and therefore cannot be claimed from the
 currently authoritative repository state. The blocker can be re-audited after
 SPEC-010 T6.1/T6.3 and their required SPEC-015 assembly inputs land.
+
+## Resolution — 2026-09-14
+
+SPEC-010 T6.1 and T6.3 are now complete. Runtime Core owns the common
+production reconciler and target-view seam, Dynamic supplies bounded array
+slots, and Static supplies its inline typed slot without heap facilities.
+SPEC-013 T5.1-T5.5 subsequently integrated those focused seams through
+`RuntimeCompletePipeline`; their completion evidence is recorded in
+`complete-production-pipeline.md`. This historical blocker no longer applies
+to Milestone 6. SPEC-015 host assembly remains assigned to SPEC-013 T8.2 and
+does not block the profile-local T6.4 corpus.

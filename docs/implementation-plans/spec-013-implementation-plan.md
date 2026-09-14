@@ -550,11 +550,12 @@ straightforward value declarations, or report wiring.
   cycle joins depend on SPEC-013/SPEC-015 through the handoff above.
   Dynamic/static Canvas storage and full drawing evidence cannot proceed by
   duplicating its callable, capture, Path, plan, or producer algorithms.
-- SPEC-009 and SPEC-010 remain implementing. Their already available focused
-  seams may be consumed, but SPEC-010 T6.1/T6.3's Dynamic/Static production
-  workspaces and zero-heap typed Static state path have not landed. T5.1 is
-  blocked on those owner-profile seams and must not replace them with runtime-
-  local algorithms or recording fixtures.
+- SPEC-009 and SPEC-010 remain implementing. Their available focused seams may
+  be consumed. SPEC-010 T6.1 and T6.3 have landed the Dynamic/Static production
+  workspaces and zero-heap typed Static state path; SPEC-013 consumed those
+  seams through its completed T5.1-T5.5 production pipeline work. The former
+  T5.1 owner-profile blocker is resolved without substituting runtime-local
+  algorithms or recording fixtures for focused owners.
 - SPEC-015 integration and Signal Analyzer production resource rows consume
   its approved schema-2 workload amendment and exact host values after the
   owning plan is ready and dependencies land. SPEC-014 remains governed by its
