@@ -442,8 +442,10 @@ coalescing behavior.
       nonwrapping sequence across stores, ordered sealing, post-seal deferral,
       at-most-once removal, quiescence, and discard. Concrete executable roots
       still need to own the recording-proven `SignalAnalyzerPresentationFact`
-      classifier and join its sealed output to the production mutation
-      pipeline.
+      classifier. The recording join now applies sealed facts exactly once in
+      `RuntimeCompletePipeline` mutation order and proves that post-seal facts
+      wait for the next opportunity; dynamic/static executable ownership and
+      equivalence remain.
 - [ ] `T5.2` — Bind the root to one observable location, active registration,
       dirty/live bit, and transient replacement record. Run identical dynamic/
       static fixtures for initializer preservation, atomic replacement,

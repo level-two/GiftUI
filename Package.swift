@@ -503,8 +503,10 @@ let package = Package(
         .testTarget(
             name: "GiftUIHostConfigurationTests",
             dependencies: [
+                "GiftUIExecution",
                 "GiftUIFailureCore",
                 "GiftUIHostConfiguration",
+                "GiftUIRuntimeCore",
                 "SignalAnalyzerDomain",
                 "SignalAnalyzerPresentation",
             ]

@@ -59,7 +59,10 @@ kernel: one common sequence, three physical stores, producer counters, sealing,
 ordered removal, quiescence, and discard. The remaining mechanism is the
 target-owned endpoint behind `SignalAnalyzerFactAdmission`. A recording
 composition fixture now proves the exhaustive four-case classification and
-exact rejection mapping; no production root owns that endpoint yet.
+exact rejection mapping. It also drives the sealed facts through
+`RuntimeCompletePipeline.applyAdmittedWork()`, applies them to the real
+`SignalAnalyzerViewModel` exactly once, and proves post-seal deferral. No
+production root owns that endpoint yet.
 
 ## Proposed Internal Organization
 
@@ -224,9 +227,10 @@ algorithm above.
   quiescence, and nonaliasing exhaustion.
 - [`SignalAnalyzerHostFactAdmissionTests.swift`](../../Tests/GiftUIHostConfigurationTests/SignalAnalyzerHostFactAdmissionTests.swift)
   proves the target-root classification and application rejection vocabulary
-  without placing that switch in portable Presentation.
+  plus the production-pipeline mutation ordering without placing that switch
+  in portable Presentation.
 - [`fact-admission-cases.tsv`](../../Tests/ContractFixtures/SPEC001/fact-admission-cases.tsv)
   records the current partial T5.1 corpus.
 
-The executable-owned instance of the classifier and production
-mutation-pipeline join remain to be linked when completed.
+The executable-owned instance of the classifier and profile-equivalence join
+remain to be linked when completed.
