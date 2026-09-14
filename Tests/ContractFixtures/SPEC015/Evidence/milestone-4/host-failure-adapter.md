@@ -14,9 +14,15 @@ input for every row and verify the exact selection.
 Startup routing constructs no policy input for success, a defective policy
 table, or an ordinary failure whose projections have not yet been discarded.
 After discard, it constructs exactly one `startupValidation` input with the
-mapped failure, `quiesceAffectedScope`, ordinal zero, and limit one. This is
-partial T4.2 evidence; operational mandatory-effect ordering, no-policy rows,
-diagnostic fault injection, and fatal-hook bypass remain with T5.3/T5.5.
+mapped failure, `quiesceAffectedScope`, ordinal zero, and limit one.
+
+`HostResidualFailureRouting` completes the operational boundary. Every one of
+the nine contexts requires its exact mechanical state effects before policy
+entry. Missing effects, malformed inputs, a defective table, or an invalid
+policy selection bypasses policy and fails closed; the independently
+configured fatal hook runs only when its availability was proven. The five
+explicit no-policy reasons make no policy call. A failed optional diagnostic
+projection cannot change the retained failure or selected disposition.
 
 Reproduction:
 
@@ -29,4 +35,10 @@ giftui_swiftpm \
     --cache-root "$PWD/.build/swiftpm-cache" \
     --disable-sandbox \
     -- test --filter GiftUIHostConfigurationTests
+```
+
+The focused routing subset is also reproducible with:
+
+```sh
+swift test --filter HostResidualFailureRouting
 ```

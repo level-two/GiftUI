@@ -396,7 +396,7 @@ tears down idempotently from every instance state.
       retained-value and nine-owner audit, and fail-closed candidate teardown
       are complete. The four concrete preset construction functions remain
       blocked on their focused live-owner factories and target roots.
-- [ ] `T4.2` — Implement the narrow host/failure adapter and exact total
+- [x] `T4.2` — Implement the narrow host/failure adapter and exact total
       residual policy table. Preserve focused payloads and mappings, host
       error conditions, mandatory-effect ordering, all nine host contexts,
       every explicit no-policy row, ordinals/limits, allowed sets, and fixed
@@ -404,11 +404,6 @@ tears down idempotently from every instance state.
       only after validator return; defective tables quiesce mechanically and
       never decide through themselves. Diagnostics remain optional downstream
       projections and cannot change a transcript.
-      **Partial:** exact host-owned, SPEC-013, SPEC-005, and SPEC-004 startup
-      mappings, the total nine-row table and concrete policy, defective-table
-      bypass, and post-discard-only `startupValidation` routing are complete.
-      Operational mandatory-effect ordering, explicit no-policy routes,
-      diagnostic fault injection, and fatal-hook bypass remain with T5.3/T5.5.
 - [ ] `T4.3` — Implement `MVPHostInstance.activate()` and its finite inline
       preset-specific activation-failure sum. Follow the seven specified
       construction/attachment/observation/input/source/runtime steps in order,
@@ -824,3 +819,13 @@ stage is last across the available combined-failure corpus, and checks every
 immutable `HostAssemblyReport` field. T3.6 remains open for the complete
 poison-accessor and no-side-effect ledger. Current evidence is in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-3/policy-and-report-validation.md`.
+
+`T4.2` is complete. The host failure boundary preserves the focused
+SPEC-013, SPEC-005, and SPEC-004 mappings and now routes all nine operational
+contexts only after their exact mandatory-effect sets. Missing effects,
+malformed policy inputs, defective tables, and out-of-table policy selections
+bypass the policy and fail closed through the independently configured fatal
+hook. All explicit no-policy reasons invoke no policy, and a failed optional
+diagnostic projection leaves the authoritative failure and disposition
+unchanged. Evidence is in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-4/host-failure-adapter.md`.
