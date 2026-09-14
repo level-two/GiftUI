@@ -96,6 +96,57 @@ private final class DynamicRootModel: _GiftUIObservableReference {
     )
 }
 
+@Test func dynamicRootAdapterReinsertsFreshStateAfterReplacementRemoval() {
+    let adapter = DynamicObservableRootAdapter<DynamicRootModel, UInt16>(capacity: 1)
+    let initial = DynamicRootModel(identity: 7)
+    var state = State(wrappedValue: initial)
+    _ = adapter.beginCandidate()
+    _ = adapter.encounter(
+        structuralIdentity: 23,
+        declarationOrdinal: 0,
+        state: &state,
+        replacementRoute: { _ in }
+    )
+    _ = adapter.finishCandidate(.publish)
+    adapter.setExecutionPhase(.mutating)
+
+    let replacement = DynamicRootModel(identity: 8)
+    #expect(adapter.replace(with: replacement) == .success(.replaced))
+    #expect(adapter.isDirty)
+    _ = adapter.beginCandidate()
+    #expect(adapter.finishCandidate(.publish) == .success(.associationsCommitted))
+    #expect(!adapter.isActive)
+    #expect(replacement.reportChange() == nil)
+
+    let reinserted = DynamicRootModel(identity: 9)
+    var reinsertedState = State(wrappedValue: reinserted)
+    _ = adapter.beginCandidate()
+    #expect(
+        adapter.encounter(
+            structuralIdentity: 23,
+            declarationOrdinal: 0,
+            state: &reinsertedState,
+            replacementRoute: { _ in }
+        ) == .success(.materialized)
+    )
+    #expect(adapter.finishCandidate(.publish) == .success(.associationsCommitted))
+    #expect(adapter.isActive)
+    #expect(!adapter.isDirty)
+    #expect(
+        adapter.targetGeneration(structuralIdentity: 23, declarationOrdinal: 0)
+            == ObservableTargetGeneration(rawValue: 2)
+    )
+    #expect(reinserted.reportChange() == .dirtied)
+    #expect(
+        adapter.replace(with: DynamicRootModel(identity: 10))
+            == .success(.replaced)
+    )
+    #expect(
+        adapter.targetGeneration(structuralIdentity: 23, declarationOrdinal: 0)
+            == ObservableTargetGeneration(rawValue: 3)
+    )
+}
+
 @Test func dynamicRootAdapterJoinsGenerationBindingAndPublishedRemoval() {
     let adapter = DynamicObservableRootAdapter<DynamicRootModel, UInt16>(capacity: 1)
     let firstModel = DynamicRootModel(identity: 1)

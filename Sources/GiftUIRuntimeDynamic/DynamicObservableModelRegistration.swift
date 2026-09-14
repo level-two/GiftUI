@@ -28,6 +28,9 @@ where Model: _GiftUIObservableReference {
         if isActive {
             return storage.bind(&state, replacementRoute: replacementRoute)
         }
+        if attachment == nil {
+            replacementBridge = nil
+        }
 
         let binding = storage.bind(&state, replacementRoute: replacementRoute)
         guard binding == .success(.materialized) else {

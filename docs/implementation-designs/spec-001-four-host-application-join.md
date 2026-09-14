@@ -98,6 +98,11 @@ detaches the former attachment, and only then swaps typed storage; failure
 discards the candidate and leaves the former model and route intact.
 After the first committed replacement, its active and dirty projections read
 from the replacement lifecycle rather than the retired initial lifecycle.
+When published removal has retired that lifecycle and cleared the attachment,
+the next materialization drops the retired replacement bridge before reusing
+the initial registration bridge. The Static record performs the same reset at
+`beginAttachment`. This keeps reinsertion clean while preserving the runtime-
+wide generation cursor in the profile workspace.
 `DynamicObservableRootAdapter` joins this owner to the production profile
 workspace. It uses the workspace's publishable generation for attachment and
 coordinates candidate discard and published structural removal with exact

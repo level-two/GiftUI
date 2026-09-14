@@ -128,6 +128,11 @@ successful replacement to commit generation 2. Reproduce with:
 swift test --filter DynamicObservableRootAdapter
 ```
 
+The same Dynamic root fixture now commits a replacement at generation 1,
+publishes removal, then reinserts a clean model at generation 2 and replaces it
+at generation 3. The removed model's sink is detached, the reinserted model is
+active and initially not dirty, and no retired replacement bridge is reused.
+
 `StaticObservableRegistrationRecordTests` prove the Static profile can keep
 registration bookkeeping in one inline record separate from its typed model
 storage. The record delegates the same attachment and dirty/report lifecycle,
@@ -144,6 +149,10 @@ with:
 ```sh
 swift test --filter StaticObservableRegistrationRecord
 ```
+
+Its reinsertion fixture retires a successfully replaced route, removes the
+inline model, and attaches a new model through the reusable initial record with
+a clean dirty bit and a valid fresh-replacement preflight.
 
 `ProductionObservableRegistrationTests` normalize the Dynamic retained owner
 and Static inline record/storage into one lifecycle transcript. Both profiles

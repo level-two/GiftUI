@@ -513,6 +513,12 @@ coalescing behavior.
       generation-2 candidate. Their exact outcomes, retained model identity,
       live state, and dirty state match; the fixture also corrected Dynamic's
       active-state projection to follow its committed replacement route.
+      Both profile registration owners now drop a retired replacement bridge
+      only at the no-attachment reinsertion boundary. Dynamic root coverage
+      proves committed replacement, published removal, fresh generation-2
+      materialization with clear dirtiness, and a later generation-3
+      replacement. Static record coverage proves the matching fresh initial
+      route and clean dirty bit after replacement retirement.
       Generated Static root binding, wake integration, and the remaining
       equal-profile lifecycle corpus remain.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized

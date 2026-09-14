@@ -24,6 +24,11 @@ package struct StaticObservableRegistrationRecord {
         slot: UInt16 = 0,
         generation: UInt32
     ) -> ObservableStateError? {
+        if replacementOwnsLive, attachment == nil {
+            replacementBridge = nil
+            replacementOwnsLive = false
+            replacementSinkWasIssued = false
+        }
         let candidate = _GiftUIObservationAttachment(
             slot: slot,
             generation: generation

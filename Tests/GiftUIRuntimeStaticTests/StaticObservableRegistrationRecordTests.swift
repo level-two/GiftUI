@@ -164,6 +164,85 @@ private struct StaticRegistrationModel: _GiftUIObservableReference {
     )
 }
 
+@Test func staticRegistrationRecordResetsReplacementStateForReinsertion() {
+    var record = StaticObservableRegistrationRecord()
+    var storage = StaticObservableModelStorage<StaticRegistrationModel>()
+    _ = storage.withBoundState(
+        State(wrappedValue: StaticRegistrationModel(identity: 1)),
+        replacementRoute: { _ in },
+        body: { _ in () }
+    )
+    _ = record.beginAttachment(generation: 0)
+    guard
+        let initialSink = record.makeSink(reportRoute: { reported in
+            record.acceptReport(reported)
+        })
+    else {
+        Issue.record("static registration did not issue its initial sink")
+        return
+    }
+    _ = record.acceptAttachmentReturn(
+        storage.attachChangeSink(consume initialSink)
+    )
+    record.setExecutionPhase(.mutating)
+    _ = record.beginReplacement(
+        generation: ObservableTargetGeneration(rawValue: 1)
+    )
+    _ = storage.stageReplacement(StaticRegistrationModel(identity: 2))
+    guard
+        let replacementSink = record.makeReplacementSink(reportRoute: {
+            reported in
+            record.acceptReport(reported)
+        })
+    else {
+        Issue.record("static registration did not issue its replacement sink")
+        return
+    }
+    let replacementReturn = storage.attachCandidateChangeSink(
+        consume replacementSink
+    )
+    _ = record.acceptReplacementAttachmentReturn(replacementReturn)
+    guard case .success(let commit) = record.commitReplacement() else {
+        Issue.record("static replacement did not commit")
+        return
+    }
+    _ = storage.detachChangeSink(commit.formerAttachment)
+    _ = storage.commitReplacement()
+
+    #expect(record.retire() == nil)
+    let didDetachReplacement = storage.detachChangeSink(commit.activeAttachment)
+    #expect(didDetachReplacement)
+    #expect(storage.removeModel()?.identity == 2)
+    #expect(!record.isActive)
+
+    _ = storage.withBoundState(
+        State(wrappedValue: StaticRegistrationModel(identity: 3)),
+        replacementRoute: { _ in },
+        body: { _ in () }
+    )
+    #expect(record.beginAttachment(generation: 2) == nil)
+    guard
+        let reinsertedSink = record.makeSink(reportRoute: { reported in
+            record.acceptReport(reported)
+        })
+    else {
+        Issue.record("static registration did not issue its reinserted sink")
+        return
+    }
+    let reinsertedReturn = storage.attachChangeSink(consume reinsertedSink)
+    #expect(record.acceptAttachmentReturn(reinsertedReturn) == nil)
+    #expect(record.isActive)
+    #expect(!record.isDirty)
+    #expect(
+        record.preflightReplacement(
+            isCompatible: true,
+            candidateAlreadyOwned: false,
+            registrationCapacityAvailable: true,
+            replacementStagingAvailable: true
+        ) == nil
+    )
+}
+
 @Test func staticRegistrationRecordOwnsDirectReportStateApartFromModelStorage() {
     var record = StaticObservableRegistrationRecord()
     var storage = StaticObservableModelStorage<StaticRegistrationModel>()
