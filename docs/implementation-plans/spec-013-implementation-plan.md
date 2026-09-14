@@ -448,17 +448,19 @@ field.
       modes from two pristine builds, compare transcript digests and resource
       reports, and explain any permitted private/layout variance. Cross-build
       evidence must never be labeled connected-board execution.
-- [ ] `T7.5` — Run the shared small fixture and approved Signal Analyzer
+- [x] `T7.5` — Run the shared small fixture and approved Signal Analyzer
       fixture timing/resource workloads when their portable source and exact
       Wave 7 configuration are available. Record a blocked disposition rather
       than inventing production capacities before SPEC-015's owning
       implementation generates and validates them.
-      **Blocked:** SPEC-015 has generated and validated the exact schema-2
-      workload and four presets, and SPEC-001 has completed the portable
-      Presentation source, but the complete application/runtime cycle consumed
-      by this measurement is not yet available. SPEC-001 `T5.1`-`T5.5` and
-      SPEC-015 `T4`/`T5` still own that assembly. A focused pipeline recorder or
-      synthetic loop cannot be reported as Signal Analyzer cycle timing.
+      **Completed:** the registered workload driver measures 1,000 accepted
+      shared Runtime Complete Pipeline cycles and 100 complete accepted
+      Dynamic/Static Signal Analyzer opportunities inside the test process.
+      The analyzer workload uses SPEC-001's completed `T5.1`-`T5.5` cycle and
+      SPEC-015's completed workload/host assembly prerequisites. Each report
+      records the exact iteration count, result checksum, measured scope, and
+      host-execution classification; cross-build modes do not relabel this
+      timing as connected-target execution.
 
 ### Milestone 8: Downstream Integration and Conformance Preparation
 
@@ -944,14 +946,16 @@ Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-7/pristine-profile-builds.md`.
 T7.5 is next.
 
-`T7.5` is blocked at the production-cycle boundary. The exact SPEC-015
-schema-2 workload, generated presets, and complete Runtime limits exist, as
-does SPEC-001's portable Presentation source. The assembled application/runtime
-cycle that must consume them does not: SPEC-001 `T5.1`-`T5.5` and SPEC-015
-`T4`/`T5` remain incomplete. SPEC-013 therefore does not substitute its focused
-pipeline recorder or a synthetic work loop for the required timing/resource
-workload. The prerequisite audit is recorded in
-`Tests/ContractFixtures/SPEC013/Evidence/milestone-7/signal-analyzer-workload-blocker.md`.
+`T7.5` is complete. The workload registry now contains the shared accepted
+Runtime Complete Pipeline cycle and SPEC-001's approved integrated Signal
+Analyzer opportunity. Reproducible in-process timing executes 1,000 small
+cycles and 100 paired Dynamic/Static analyzer cycles, verifies fixed result
+checksums, and records both totals without including build or test-harness
+launch time. The report driver runs the workload for every exact mode and
+retains host-execution classification even when the surrounding profile
+evidence is an ARMv6 or nRF cross-build. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-7/signal-analyzer-workload.md`.
+Milestone 7 is complete; T8.1 is next.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

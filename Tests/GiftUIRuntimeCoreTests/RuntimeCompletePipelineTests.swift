@@ -227,6 +227,25 @@ private func expectedFailureCleanups(
     #expect(completion.disposition.wakeReasons.isEmpty)
 }
 
+@Test func spec013SmallFixtureWorkloadCycleTiming() {
+    let iterations = 1_000
+    var checksum: UInt64 = 0
+    let elapsed = measureSPEC013Nanoseconds {
+        for _ in 0 ..< iterations {
+            var owner = CompletePipelineRecorder()
+            let result = RuntimeCompletePipeline.run(owner: &owner)
+            if case .completed(let completion) = result {
+                checksum &+= UInt64(completion.publication.semanticRevision.rawValue)
+                checksum &+= UInt64(owner.finalizationCount)
+            }
+        }
+    }
+
+    #expect(checksum == UInt64(iterations * 8))
+    #expect(elapsed > 0)
+    print("SPEC013_WORKLOAD\tsmall-fixture\t\(elapsed)\t\(iterations)\t\(checksum)")
+}
+
 @Test func drawingFailureStopsThePipelineDirtiesAppliedMutationAndCleansOnce() {
     var owner = CompletePipelineRecorder(failureStage: .canvasInvocationAndPlan)
     let result = RuntimeCompletePipeline.run(owner: &owner)
@@ -473,4 +492,16 @@ private func expectedFailureCleanups(
         ]
     )
     #expect(owner.finalizationCount == 1)
+}
+
+private func measureSPEC013Nanoseconds(_ operation: () -> Void) -> UInt64 {
+    let clock = ContinuousClock()
+    let start = clock.now
+    operation()
+    let components = start.duration(to: clock.now).components
+    let seconds = UInt64(components.seconds)
+    let attoseconds = UInt64(components.attoseconds)
+    let (whole, wholeOverflow) = seconds.multipliedReportingOverflow(by: 1_000_000_000)
+    let (total, totalOverflow) = whole.addingReportingOverflow(attoseconds / 1_000_000_000)
+    return wholeOverflow || totalOverflow ? .max : total
 }

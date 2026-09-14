@@ -34,7 +34,7 @@ reporter_text = REPORTER.read
 %w[
   schema profile evidenceClass repositoryRevision repositoryDirty compiler sdk
   target command limits audit storageHighWater fixture fixtureResult
-  transcriptDigest hardwareExecution connectedTarget
+  cycleTimeNanoseconds transcriptDigest hardwareExecution connectedTarget
 ].each do |field|
   fail_check("normalized report field is missing: #{field}") unless reporter_text.include?(%(["#{field}",))
 end
@@ -53,8 +53,8 @@ fail_check("driver must forbid connected-target evidence") unless driver_text.in
 fail_check("driver must record the separately collected pristine evidence") unless driver_text.include?(
   "T7.4 two-build collection is recorded separately"
 )
-fail_check("driver must leave the production workload explicitly blocked") unless driver_text.include?(
-  "T7.5 awaits the SPEC-001 and SPEC-015 complete application runtime cycle"
+fail_check("driver must run the approved production workload") unless driver_text.include?(
+  "check-spec-013-workloads.sh"
 )
 
-puts "SPEC-013 report driver passed: 41 numeric limits, complete normalized fields, and 4 immutable report modes."
+puts "SPEC-013 report driver passed: 41 numeric limits, approved workload timing, complete normalized fields, and 4 immutable report modes."

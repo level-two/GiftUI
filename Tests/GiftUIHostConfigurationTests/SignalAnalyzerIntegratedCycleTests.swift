@@ -234,6 +234,30 @@ func integratedAnalyzerCycleIsProfileEquivalent(retryableOffer: Bool) {
     #expect(dynamic.wakePendingAfterCompletion == retryableOffer)
 }
 
+@Test func spec013SignalAnalyzerWorkloadCycleTiming() {
+    let iterations = 100
+    var checksum: UInt64 = 0
+    let elapsed = measureSPEC013Nanoseconds {
+        for _ in 0 ..< iterations {
+            let dynamic = dynamicIntegratedTranscript(
+                offer: .accepted(PresentationRevision(rawValue: 1))
+            )
+            let fixed = staticIntegratedTranscript(
+                offer: .accepted(PresentationRevision(rawValue: 1))
+            )
+            if dynamic == fixed {
+                checksum &+= UInt64(dynamic.appliedSequences.count)
+                checksum &+= UInt64(dynamic.drawingStrokeCount)
+                checksum &+= UInt64(dynamic.stages.count)
+            }
+        }
+    }
+
+    #expect(checksum == UInt64(iterations * 36))
+    #expect(elapsed > 0)
+    print("SPEC013_WORKLOAD\tsignal-analyzer\t\(elapsed)\t\(iterations)\t\(checksum)")
+}
+
 private func dynamicIntegratedTranscript(
     offer: RuntimePipelineOfferResult
 ) -> IntegratedCycleTranscript {
@@ -437,4 +461,16 @@ private func makeIntegratedPacingController() -> HostWakePacingController {
         )!,
         initialFrameOriginMicroseconds: 0
     )
+}
+
+private func measureSPEC013Nanoseconds(_ operation: () -> Void) -> UInt64 {
+    let clock = ContinuousClock()
+    let start = clock.now
+    operation()
+    let components = start.duration(to: clock.now).components
+    let seconds = UInt64(components.seconds)
+    let attoseconds = UInt64(components.attoseconds)
+    let (whole, wholeOverflow) = seconds.multipliedReportingOverflow(by: 1_000_000_000)
+    let (total, totalOverflow) = whole.addingReportingOverflow(attoseconds / 1_000_000_000)
+    return wholeOverflow || totalOverflow ? .max : total
 }

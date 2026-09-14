@@ -119,6 +119,7 @@ end
   check-spec-013-report-driver.rb
   check-spec-013-resource-instrumentation.rb
   check-spec-013-resource-instrumentation.sh
+  check-spec-013-workloads.sh
   collect-spec-013-pi-target-evidence.sh
   collect-spec-013-t7.3-evidence.sh
   compare-spec-013-pristine-builds.rb
@@ -136,5 +137,15 @@ end
   path = FIXTURES.join("Instrumentation", name)
   fail_check("SPEC-013 instrumentation is missing: #{name}") unless path.file?
 end
+
+workload = YAML.safe_load(FIXTURES.join("signal-analyzer.yaml").read)
+workload_cases = workload.fetch("cases")
+fail_check("SPEC-013 workload case set differs") unless workload_cases.map { |item| item.fetch("name") } == %w[
+  shared-small-cycle-timing approved-signal-analyzer-cycle-timing
+]
+fail_check("SPEC-013 small workload iteration/checksum differs") unless
+  workload_cases[0].fetch("iterations") == 1_000 && workload_cases[0].fetch("resultChecksum") == 8_000
+fail_check("SPEC-013 analyzer workload iteration/checksum differs") unless
+  workload_cases[1].fetch("iterations") == 100 && workload_cases[1].fetch("resultChecksum") == 3_600
 
 puts "SPEC-013 harness passed: 8 ordered corpora, 15 pending criteria, and 4 exact driver modes are fail-closed."

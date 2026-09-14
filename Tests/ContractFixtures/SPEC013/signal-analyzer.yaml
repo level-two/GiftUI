@@ -1,2 +1,19 @@
 schema: spec-013-v1
-cases: []
+cases:
+  - name: shared-small-cycle-timing
+    criteria: [RP-004, RP-013]
+    evidenceClasses: [host-execution]
+    iterations: 1000
+    measuredScope: runtime-complete-pipeline
+    includesHarnessLaunch: false
+    resultChecksum: 8000
+  - name: approved-signal-analyzer-cycle-timing
+    criteria: [RP-004, RP-005, RP-013, RP-014]
+    evidenceClasses: [host-execution]
+    iterations: 100
+    measuredScope: accepted-dynamic-and-static-integrated-cycle
+    includesHarnessLaunch: false
+    admittedFactsPerProfileCycle: 20
+    drawingStrokesPerProfileCycle: 5
+    pipelineStagesPerProfileCycle: 11
+    resultChecksum: 3600

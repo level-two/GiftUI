@@ -77,6 +77,7 @@ output.join("profile-report.tsv").write(
     ["storageHighWater", "storage-high-water.tsv"],
     ["fixture", "fixture-results.tsv"],
     ["fixtureResult", options.fetch(:fixture_result)],
+    ["cycleTimeNanoseconds", "workload-timing.tsv"],
     ["transcriptDigest", transcript_digest],
     ["hardwareExecution", "false"],
     ["connectedTarget", "none"],
