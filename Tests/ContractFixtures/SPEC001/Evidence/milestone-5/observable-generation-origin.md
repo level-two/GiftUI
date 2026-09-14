@@ -80,3 +80,14 @@ cleanup. Reproduce with:
 ```sh
 swift test --filter DynamicObservableModelRegistration
 ```
+
+`DynamicObservableRootAdapterTests` connect that typed owner to
+`RuntimeObservableProfileWorkspace`. The workspace-reserved generation zero is
+the attachment generation; repeated structural encounters preserve it; an
+initial candidate discard retires its candidate-only registration; and
+published structural absence retires the live registration and model. Reproduce
+with:
+
+```sh
+swift test --filter DynamicObservableRootAdapter
+```

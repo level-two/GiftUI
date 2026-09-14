@@ -76,6 +76,10 @@ lifecycle to those roots without exposing or duplicating its state machine.
 `DynamicObservableModelRegistration` composes the bridge and typed box in one
 address-stable Dynamic owner and routes retained model reports back into that
 same registration record.
+`DynamicObservableRootAdapter` joins this owner to the production profile
+workspace. It uses the workspace's publishable generation for attachment and
+coordinates candidate discard and published structural removal with exact
+registration retirement.
 Focused Observable State components separately implement binding, attachment,
 atomic replacement, dirty reporting, removal, stale-report rejection, and
 shutdown. Existing tests prove those mechanisms independently, but no target
@@ -293,6 +297,9 @@ permission to weaken the static contract.
   supplies single-issue attachment and report-route lifecycle to a stable root.
 - [`DynamicObservableModelRegistration.swift`](../../Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift)
   supplies the stable Dynamic attachment, report, and retirement owner.
+- [`DynamicObservableRootAdapter.swift`](../../Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift)
+  joins Dynamic structural reconciliation, target generation, typed binding,
+  and registration retirement.
 - [`HostActivationController.swift`](../../Sources/GiftUIHostConfiguration/HostActivationController.swift)
   supplies exact activation and teardown ordering.
 - [`HostSequencedFactAdmission.swift`](../../Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift)

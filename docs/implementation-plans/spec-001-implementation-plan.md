@@ -470,7 +470,10 @@ coalescing behavior.
       shutdown for later address-stable roots. The Dynamic profile now composes
       that bridge and typed storage in one stable owner: initial attachment,
       preserved rebinding, mutation-phase dirty/coalesced reports, attach-time
-      cleanup, and retirement are integrated. Generated Static analyzer
+      cleanup, and retirement are integrated. A Dynamic root adapter now joins
+      that owner to the production structural workspace, so the workspace's
+      nonaliasing generation zero drives attachment, candidate discard retires
+      candidate-only state, and published absence retires live state. Generated Static analyzer
       registration, atomic replacement, wake integration, and the remaining
       equal-profile lifecycle corpus remain.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized
