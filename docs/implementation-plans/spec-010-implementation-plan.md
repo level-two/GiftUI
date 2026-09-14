@@ -443,7 +443,7 @@ reports with compiler, ABI, resource, transcript, and dependency evidence.
 - [x] `T8.1` — Run pristine macOS dynamic then macOS static profiles; compare
       macro bytes, complete normalized transcripts, local layouts, allocation,
       stack, linked sections, and undefined/forbidden symbols.
-- [ ] `T8.2` — Cross-build Raspberry Pi 1 only for
+- [x] `T8.2` — Cross-build Raspberry Pi 1 only for
       `armv6-unknown-linux-gnueabihf`; inspect ELF/ABI, dynamic-profile
       dependency closure, stack/heap/linked-size evidence, and compare the
       canonical corpus without
@@ -886,3 +886,10 @@ provide equal storage high-water, workload timing, stack/layout, allocation,
 section, and forbidden-symbol evidence; the Static optimized binding path is
 zero heap. See the
 [macOS profile evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-8/macos-profiles.md).
+
+`T8.2` is complete. The project-local Swift 6.3.2 compiler and pinned SDK
+cross-build the generated observable host and production Dynamic runtime only
+for `armv6-unknown-linux-gnueabihf`. Object and Runtime evidence verify 32-bit
+ARMv6 EABI5 hard-float identity, bounded resource reports, and the normalized
+corpus without remote access or deployment. See the
+[Raspberry Pi cross-build evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-8/raspberry-pi-armv6.md).
