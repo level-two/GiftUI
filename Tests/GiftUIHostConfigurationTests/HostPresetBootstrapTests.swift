@@ -201,11 +201,89 @@ private enum HostOwnerOverride: CaseIterable {
         return
     }
     #expect(instance.lifecycleState == .valid)
+    #expect(
+        instance.assemblyReport.capabilitySnapshot.rasterPresentation
+            == instance.assemblyReport.effectivePresentation
+    )
     #expect(instance.assemblyReport.effectivePresentation == endpoint.effectivePresentation)
     #expect(probe.constructionCount == 1)
     #expect(probe.validationCount == 1)
     #expect(probe.auditCount == 1)
     #expect(probe.teardownCount == 0)
+}
+
+@Test func structuralAndCapabilityGatesBlockLiveConstructionIndependently() {
+    let endpoint = exactBootstrapEndpoint()
+
+    let capabilityProbe = BootstrapProbe()
+    let capabilityResult = HostPresetBootstrap.construct(
+        validator: CountingBootstrapValidator(
+            base: makeValidHostValidator(
+                capabilityContributions: RasterPresentationContributions()
+            ),
+            probe: capabilityProbe
+        ),
+        factory: BootstrapFactory(
+            probe: capabilityProbe,
+            endpoint: endpoint,
+            ownerOverride: nil,
+            reportIsCorrupted: false,
+            endpointIsCorrupted: false
+        ),
+        expectedEndpoint: endpoint
+    )
+    guard case .invalid(let capabilityFailure) = capabilityResult else {
+        Issue.record("valid B2 with unavailable capability must expose no instance")
+        return
+    }
+    #expect(
+        capabilityFailure
+            == .invalid(
+                stage: .capability,
+                error: .capabilityUnavailable(
+                    .missingContributor(role: .renderProducer)
+                )
+            )
+    )
+    #expect(capabilityProbe.validationCount == 1)
+    #expect(capabilityProbe.constructionCount == 0)
+    #expect(capabilityProbe.auditCount == 0)
+
+    var incompleteRecords = makeHostValidatorGraph().records
+    incompleteRecords.removeLast()
+    let structuralProbe = BootstrapProbe()
+    let structuralResult = HostPresetBootstrap.construct(
+        validator: CountingBootstrapValidator(
+            base: makeValidHostValidator(
+                componentGraph: HostValidatorGraphFixture(
+                    records: incompleteRecords
+                )
+            ),
+            probe: structuralProbe
+        ),
+        factory: BootstrapFactory(
+            probe: structuralProbe,
+            endpoint: endpoint,
+            ownerOverride: nil,
+            reportIsCorrupted: false,
+            endpointIsCorrupted: false
+        ),
+        expectedEndpoint: endpoint
+    )
+    guard case .invalid(let structuralFailure) = structuralResult else {
+        Issue.record("invalid B2 with valid capability must expose no instance")
+        return
+    }
+    #expect(
+        structuralFailure
+            == .invalid(
+                stage: .graph,
+                error: .missingRole(.residualPolicy)
+            )
+    )
+    #expect(structuralProbe.validationCount == 1)
+    #expect(structuralProbe.constructionCount == 0)
+    #expect(structuralProbe.auditCount == 0)
 }
 
 @Test(

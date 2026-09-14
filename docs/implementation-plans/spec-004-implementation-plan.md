@@ -455,11 +455,17 @@ for structural validation.
       retain only bounded payload/workspace state, poison borrowed storage in
       tests, and map construction/runtime faults through Failure Core. See the
       [production one-shot consumer evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-4/production-one-shot-consumers.md).
-- [ ] `T4.4` — After SPEC-015 provides the host composition/start gate, join
+- [x] `T4.4` — After SPEC-015 provides the host composition/start gate, join
       RFC-002 B2 validation and SPEC-004 resolution as independent conjunctive
       gates. Prove valid-B2/capability-negative and B2-negative/capability-valid
       controls, no partial snapshot, one resolution before first cycle, and no
-      later resolution or live snapshot mutation.
+      later resolution or live snapshot mutation. **Complete:** the production
+      validator executes B2 graph validation and capability resolution as
+      separate ordered gates before `HostPresetBootstrap` can construct a live
+      owner. Independent negative controls construct no instance; success
+      stores one immutable snapshot equal to the endpoint projection, and the
+      validator's single-use guard prevents later resolution. See the
+      [conjunctive startup-gate evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-4/conjunctive-startup-gates.md).
 - [ ] `T4.5` — Refresh the exact package allow-list, positive/negative imports,
       compiled module dependencies, product linkage, and portable-source scans
       after every owner adapter lands. Fail upward imports, re-export, concrete
@@ -894,3 +900,10 @@ address capture, exact Pi/nRF high-water fixtures, transaction checks, and
 pre/post-transfer failure injection all pass. Runtime faults remain on the
 SPEC-003 Failure Core seam; see the
 [production one-shot consumer evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-4/production-one-shot-consumers.md).
+
+`T4.4` is complete: `CheckedMVPHostConfigurationValidator` keeps B2 graph
+validation and capability resolution as distinct stages, while
+`HostPresetBootstrap` exposes no live instance unless the complete validation
+report exists. The independent-negative controls and the single immutable
+snapshot/single-use validation controls pass; see the
+[conjunctive startup-gate evidence](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-4/conjunctive-startup-gates.md).
