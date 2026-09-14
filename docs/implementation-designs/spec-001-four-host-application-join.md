@@ -270,6 +270,12 @@ Each profile root also performs the dispatch-time generation comparison and
 model borrow as one operation. This prevents a caller from separately reading
 a generation and then borrowing a model after replacement; a stale generation
 never invokes the supplied action body.
+The Dynamic `ActionModelTargetAccess` adapter holds a weak root reference so
+the dispatcher cannot extend the application graph's lifetime. The Static
+adapter contains only a typed mutable pointer into the generated root. The
+composition root owns and stabilizes that pointee for the adapter's complete
+lifetime; copying the pointer-valued handle preserves model storage identity
+and introduces no existential registry or model retention.
 
 All root ledgers are fixed records or bit sets. The dynamic and static roots
 run the same ordering and state-transition algorithm. A root never infers a

@@ -191,6 +191,16 @@ where Model: _GiftUIObservableReference, Identity: Equatable & Sendable {
         )
     }
 
+    package borrowing func currentTargetGeneration()
+        -> ObservableTargetGeneration?
+    {
+        guard let registeredIdentity else { return nil }
+        return workspace.targetGeneration(
+            structuralIdentity: registeredIdentity,
+            declarationOrdinal: registeredOrdinal
+        )
+    }
+
     package borrowing func withModel<Result>(
         _ body: (borrowing Model) -> Result
     ) -> Result? {
@@ -201,13 +211,7 @@ where Model: _GiftUIObservableReference, Identity: Equatable & Sendable {
         matching generation: ObservableTargetGeneration,
         _ body: (borrowing Model) -> Void
     ) -> Bool {
-        guard
-            let registeredIdentity,
-            workspace.targetGeneration(
-                structuralIdentity: registeredIdentity,
-                declarationOrdinal: registeredOrdinal
-            ) == generation
-        else { return false }
+        guard currentTargetGeneration() == generation else { return false }
         guard registration.withModel(body) != nil else { return false }
         return true
     }

@@ -567,8 +567,12 @@ coalescing behavior.
       generation-matching model borrow for final dispatch revalidation. A
       stale requested generation invokes no body; replacement invalidates the
       former generation and permits only the current generation to borrow the
-      new model. Concrete `SignalAnalyzerActionHandler` composition and the
-      complete interaction interleaving corpus remain.
+      new model. Profile target-access adapters now expose that operation to
+      the existing runtime dispatcher. Dynamic keeps only a weak root
+      reference; Static copies one typed pointer whose lifetime remains owned
+      by the generated address-stable root, so copied handles preserve storage
+      identity without model retention. Concrete `SignalAnalyzerActionHandler`
+      composition and the complete interaction interleaving corpus remain.
 - [ ] `T5.5` — Produce one normalized integrated cycle transcript containing
       callback, admission, seal, application, change report, dirty/wake,
       semantic publication, Drawing, offer, and frame events. Compare all
