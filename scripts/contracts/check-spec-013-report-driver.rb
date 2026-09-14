@@ -50,8 +50,8 @@ end
   fail_check("driver requirement is missing: #{requirement}") unless driver_text.include?(requirement)
 end
 fail_check("driver must forbid connected-target evidence") unless driver_text.include?("connected_target_execution=false")
-fail_check("driver must leave pristine profile collection explicitly blocked") unless driver_text.include?(
-  "T7.4 two-build profile collection is not complete"
+fail_check("driver must record the separately collected pristine evidence") unless driver_text.include?(
+  "T7.4 two-build collection is recorded separately"
 )
 
 puts "SPEC-013 report driver passed: 41 numeric limits, complete normalized fields, and 4 immutable report modes."

@@ -115,11 +115,13 @@ end
   check-spec-013-handoff-recovery.rb
   check-spec-013-borrow-boundaries.rb
   check-spec-013-equivalence.rb
+  check-spec-013-pristine-builds.sh
   check-spec-013-report-driver.rb
   check-spec-013-resource-instrumentation.rb
   check-spec-013-resource-instrumentation.sh
   collect-spec-013-pi-target-evidence.sh
   collect-spec-013-t7.3-evidence.sh
+  compare-spec-013-pristine-builds.rb
   report-spec-013-profile.rb
 ].each do |name|
   path = ROOT.join("scripts/contracts", name)

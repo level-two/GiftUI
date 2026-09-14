@@ -444,7 +444,7 @@ field.
       inspect nRF ELF attributes for Cortex-M4F hard-float calling convention.
       Inspect Raspberry Pi artifacts for exactly
       `armv6-unknown-linux-gnueabihf`, rejecting ARMv7/AArch64 substitution.
-- [ ] `T7.4` — Run macOS dynamic/static and hardware-free Raspberry Pi/nRF
+- [x] `T7.4` — Run macOS dynamic/static and hardware-free Raspberry Pi/nRF
       modes from two pristine builds, compare transcript digests and resource
       reports, and explain any permitted private/layout variance. Cross-build
       evidence must never be labeled connected-board execution.
@@ -926,6 +926,17 @@ separate Runtime Dynamic cross-object and LLVM module report exactly
 `armv6-unknown-linux-gnueabihf` and reject ARMv7/AArch64 substitution. Evidence
 is in `Tests/ContractFixtures/SPEC013/Evidence/milestone-7/target-inspection.md`.
 T7.4 is next.
+
+`T7.4` is complete. Two detached pristine checkouts at one revision run all
+four exact report-driver modes. Their canonical transcript inputs, storage
+audit, storage high-water, limits, and fixture reports compare byte-for-byte;
+the four profile transcript digests also compare with zero tolerance. Compiler,
+SDK, target-private layout, and other profile-private metadata remain recorded
+but are the only permitted variance. Raspberry Pi and nRF results are labeled
+cross-build and explicitly record no hardware execution or connected target.
+Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-7/pristine-profile-builds.md`.
+T7.5 is next.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
