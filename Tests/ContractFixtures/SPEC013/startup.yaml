@@ -1,2 +1,56 @@
 schema: spec-013-v1
-cases: []
+cases:
+  - name: invalid-limits-first
+    criteria: [RP-003]
+    evidenceClasses: [host-execution, inspection]
+    ordinal: 1
+    localError: invalidLimits
+    condition: invalidValue
+    origin: hostComposition
+    scope: runtime
+    containment: contained
+  - name: incompatible-limits-second
+    criteria: [RP-003]
+    evidenceClasses: [host-execution, inspection]
+    ordinal: 2
+    localError: incompatibleLimits
+    condition: invalidValue
+    origin: hostComposition
+    scope: runtime
+    containment: contained
+  - name: missing-storage-third
+    criteria: [RP-003]
+    evidenceClasses: [host-execution, inspection]
+    ordinal: 3
+    localError: missingStorage
+    condition: capacityExhausted
+    origin: hostComposition
+    scope: runtime
+    containment: contained
+  - name: insufficient-storage-fourth
+    criteria: [RP-003]
+    evidenceClasses: [host-execution, inspection]
+    ordinal: 4
+    localError: insufficientStorage
+    condition: capacityExhausted
+    origin: hostComposition
+    scope: runtime
+    containment: contained
+  - name: arithmetic-overflow-fifth
+    criteria: [RP-003]
+    evidenceClasses: [host-execution, inspection]
+    ordinal: 5
+    localError: arithmeticOverflow
+    condition: arithmeticOverflow
+    origin: foundation
+    scope: runtime
+    containment: contained
+  - name: static-table-invalid-sixth
+    criteria: [RP-003]
+    evidenceClasses: [host-execution, inspection]
+    ordinal: 6
+    localError: staticCanvasTableInvalid
+    condition: invariantViolation
+    origin: hostComposition
+    scope: runtime
+    containment: safetyNotProven

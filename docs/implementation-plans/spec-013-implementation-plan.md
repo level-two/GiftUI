@@ -401,7 +401,7 @@ semantic tolerance.
       and every physical storage family. Record limits, concrete capacities,
       audit fields, high-water counts, allocator bookkeeping, and deterministic
       failure identity.
-- [ ] `T6.2` — Run startup missing/small/overflow/incompatible/table-invalid
+- [x] `T6.2` — Run startup missing/small/overflow/incompatible/table-invalid
       cases in exact detection order, verify each exact SPEC-003 condition,
       origin, scope, and containment mapping, and use poison probes proving no
       client, attachment, input, wake, policy, backend, or endpoint use.
@@ -845,7 +845,16 @@ fields and the checked total are retained, and Dynamic payload reservation,
 spare capacity, and sixteen allocations remain separate bookkeeping. Evidence
 is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-6/storage-boundaries.md`.
-T6.2 is next.
+
+`T6.2` is complete. The frozen six-case startup corpus records the exact
+validation order from invalid limits through invalid Static callable metadata
+and its exact SPEC-003 condition, origin, runtime scope, and containment. The
+shared validator test makes all later faults simultaneous to prove first-error
+selection, and the startup-purity probe records zero client, attachment,
+input, wake, policy, backend, and endpoint use. Static metadata access is also
+poisoned until the first five checks have passed. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-6/startup-validation.md`.
+T6.3 is next.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

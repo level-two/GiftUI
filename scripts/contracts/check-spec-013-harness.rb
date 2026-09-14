@@ -109,6 +109,7 @@ end
   check-spec-013-static-profiles.sh
   check-spec-013-static-storage.rb
   check-spec-013-storage-boundaries.rb
+  check-spec-013-startup-corpus.rb
 ].each do |name|
   path = ROOT.join("scripts/contracts", name)
   fail_check("SPEC-013 command is missing or not executable: #{name}") unless path.file? && path.executable?

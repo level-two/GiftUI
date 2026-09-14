@@ -269,6 +269,20 @@ private final class PoisonStaticMetadata: RuntimeStaticCanvasAuditMetadata {
     }
 }
 
+private struct StartupUsePoison {
+    var client = 0
+    var attachment = 0
+    var input = 0
+    var wake = 0
+    var policy = 0
+    var backend = 0
+    var endpoint = 0
+
+    var total: Int {
+        client + attachment + input + wake + policy + backend + endpoint
+    }
+}
+
 @Test
 func validDynamicAndStaticStorageProduceExactAudits() {
     let dynamic = RuntimeProfileValidator.validateDynamic(
@@ -400,6 +414,58 @@ func sixValidationStepsStopAtTheFirstFailure() {
     )
     #expect(table == .invalid(.staticCanvasTableInvalid))
     #expect(metadata.callCount == 0)
+}
+
+@Test
+func startupFailuresCannotReachClientAttachmentInputWakePolicyBackendOrEndpoint() {
+    let poison = StartupUsePoison()
+    let metadata = PoisonStaticMetadata()
+
+    let results = [
+        RuntimeProfileValidator.validateStatic(
+            inputs: validationInputs(profile: .static, invalidFocusedLimits: true),
+            capacities: validationCapacities(profile: .static),
+            metadata: metadata
+        ),
+        RuntimeProfileValidator.validateStatic(
+            inputs: validationInputs(profile: .static, incompatibleLimits: true),
+            capacities: validationCapacities(profile: .static),
+            metadata: metadata
+        ),
+        RuntimeProfileValidator.validateStatic(
+            inputs: validationInputs(profile: .static),
+            capacities: validationCapacities(profile: .static, missing: "semantic-candidate"),
+            metadata: metadata
+        ),
+        RuntimeProfileValidator.validateStatic(
+            inputs: validationInputs(profile: .static),
+            capacities: validationCapacities(profile: .static, insufficient: "canvas-callable"),
+            metadata: metadata
+        ),
+        RuntimeProfileValidator.validateStatic(
+            inputs: validationInputs(profile: .static),
+            capacities: validationCapacities(profile: .static, overflow: true),
+            metadata: metadata
+        ),
+        RuntimeProfileValidator.validateStatic(
+            inputs: validationInputs(profile: .static),
+            capacities: validationCapacities(profile: .static),
+            metadata: metadata
+        ),
+    ]
+
+    #expect(
+        results == [
+            .invalid(.invalidLimits),
+            .invalid(.incompatibleLimits),
+            .invalid(.missingStorage),
+            .invalid(.insufficientStorage),
+            .invalid(.arithmeticOverflow),
+            .invalid(.staticCanvasTableInvalid),
+        ]
+    )
+    #expect(metadata.callCount == 0)
+    #expect(poison.total == 0)
 }
 
 @Test
