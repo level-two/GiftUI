@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-13
+updated: 2026-09-14
 related_design_notes:
   - ../implementation-designs/spec-015-generated-workload-and-presets.md
 conformance_report: null
@@ -455,6 +455,14 @@ finite refusal recovery, and exact operational-failure routing.
       bounded later fact admission, same-thread/distinct-executor equivalence,
       and that synchronous repository callbacks stop at admission for a later
       runtime opportunity.
+      **Partial:** one bounded production application-opportunity gate now
+      rejects reentrant and unavailable entry, and the focused deterministic
+      source/repository/use-case fixture proves equivalent same-thread and
+      explicitly queued distinct-executor bootstrap admission. Both immediate
+      repository callbacks stop at the exact `1/32/1` host storage and leave
+      the root model unchanged until sealed mutation application. Concrete
+      transition delivery, action-induced callbacks, and four-root ownership
+      remain with the later T5/T6 slices.
 - [ ] `T5.2` — Implement non-reentrant wake accumulation and host scheduling.
       An empty-to-nonempty transition requests one wake and returns; serialized
       `runOpportunity()` begins at or after the 250,000-microsecond frame

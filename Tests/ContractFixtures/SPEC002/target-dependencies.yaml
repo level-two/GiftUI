@@ -378,6 +378,7 @@ targets:
       - GiftUIFailureCore
       - GiftUIHostConfiguration
       - GiftUIRuntimeCore
+      - SignalAnalyzerData
       - SignalAnalyzerDomain
       - SignalAnalyzerPresentation
   GiftUIRuntimeCoreTests:
