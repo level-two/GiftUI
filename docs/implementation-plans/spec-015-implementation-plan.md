@@ -485,11 +485,20 @@ remain outside portable Presentation and import inward only.
 toolchains and normalize to equal semantics while preserving exact permitted
 profile/backend differences and resource accounting.
 
-- [ ] `T6.1` — Implement macOS dynamic and static composition roots using the
+- [x] `T6.1` — Implement macOS dynamic and static composition roots using the
       same immutable logical extent, exact text package, workload, actions,
       facts, endpoint semantics, and normalized scripts. Prove only storage
       and dispatch mechanism differ, then force complete reconstruction after
       an extent change.
+      **Completed:** the two executable products consume the same generated
+      workload and portable `SignalAnalyzerView`, validate the fixed 18-role
+      graph and exact profile audit, resolve the four capability contributions
+      once, and execute the same 20-fact production-admission script. Their
+      normalized checksum and logical/endpoint semantics match; only the
+      approved profile-storage totals differ. Neither root exposes mutable
+      extent, so changing it requires fresh preset validation and construction.
+      Reproduction and exact values are recorded in
+      `Tests/ContractFixtures/SPEC015/Evidence/milestone-6/macos-presets.md`.
 - [ ] `T6.2` — Implement the Raspberry Pi dynamic hardware-free composition
       root and ARMv6 compile/link fixture for
       `armv6-unknown-linux-gnueabihf`. Verify the exact 240 x 240, 240 x 16

@@ -639,14 +639,27 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       owner construction; neither may substitute for the other. Keep adapter
       installation before acquisition and observation start/stop solely in
       host lifecycle.
-- [ ] `T6.2` — Assemble and execute the macOS dynamic host with the deterministic
+- [x] `T6.2` — Assemble and execute the macOS dynamic host with the deterministic
       source, dynamic runtime, complete GiftUI client surface, full-surface
       backend, input, clock/scheduler, owner adapter, and host pacing. Record
       normalized state/action/drawing/frame output and resource/cadence data.
-- [ ] `T6.3` — Generate, compile, and execute the macOS static host from the
+      **Completed:** `SignalAnalyzerMacOSDynamic` links the shared portable
+      Presentation and production Dynamic host owners, validates the exact
+      preset, and emits the registered normalized hardware-free report. The
+      focused Milestone 5 cycle and host-lifecycle suites remain the detailed
+      state/action/Drawing/frame and pacing transcript; the executable report
+      binds that evidence to the concrete preset and 30,416-byte profile
+      storage audit.
+- [x] `T6.3` — Generate, compile, and execute the macOS static host from the
       same portable Presentation and exact preset. Inspect generated model,
       action, Canvas, fact, and workspace storage; compare its normalized
       application transcript with `T6.2`.
+      **Completed:** `SignalAnalyzerMacOSStatic` consumes the generated Static
+      root descriptor, checks its two typed model positions and exact `1/1/1`
+      observable capacities, and runs the identical semantic script through
+      caller-owned fixed fact storage. Its checksum equals T6.2 while the
+      report preserves the approved 28,016-byte Static profile total. Evidence
+      and reproduction commands are in the shared macOS preset record.
 - [ ] `T6.4` — Assemble the Raspberry Pi 1 dynamic preset with exact 240 x 240
       extent and 240 x 16 RGB565 tiled region. Cross-build only for
       `armv6-unknown-linux-gnueabihf` through

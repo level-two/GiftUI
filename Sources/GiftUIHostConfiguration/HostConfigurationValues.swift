@@ -49,6 +49,11 @@ package struct HostComponentRoleSet: OptionSet, Equatable, Sendable {
 package struct HostComponentRecord: Equatable, Sendable {
     package let role: HostComponentRole
     package let dependencies: HostComponentRoleSet
+
+    package init(role: HostComponentRole, dependencies: HostComponentRoleSet) {
+        self.role = role
+        self.dependencies = dependencies
+    }
 }
 
 package protocol HostComponentGraphView: ~Copyable {

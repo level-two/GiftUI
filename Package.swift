@@ -26,6 +26,14 @@ let package = Package(
             name: "SignalAnalyzerPresentation",
             targets: ["SignalAnalyzerPresentation"]
         ),
+        .executable(
+            name: "SignalAnalyzerMacOSDynamic",
+            targets: ["SignalAnalyzerMacOSDynamic"]
+        ),
+        .executable(
+            name: "SignalAnalyzerMacOSStatic",
+            targets: ["SignalAnalyzerMacOSStatic"]
+        ),
     ],
     dependencies: [
         .package(
@@ -281,6 +289,24 @@ let package = Package(
                 "SignalAnalyzerPresentation",
             ]
         ),
+        .target(
+            name: "SignalAnalyzerPresetHarness",
+            dependencies: [
+                "GiftUICapabilities",
+                "GiftUIHostConfiguration",
+                "GiftUIRuntimeCore",
+                "SignalAnalyzerHost",
+                "SignalAnalyzerPresentation",
+            ]
+        ),
+        .executableTarget(
+            name: "SignalAnalyzerMacOSDynamic",
+            dependencies: ["SignalAnalyzerPresetHarness"]
+        ),
+        .executableTarget(
+            name: "SignalAnalyzerMacOSStatic",
+            dependencies: ["SignalAnalyzerPresetHarness"]
+        ),
         .testTarget(
             name: "GiftUITests",
             dependencies: ["GiftUI"]
@@ -527,6 +553,7 @@ let package = Package(
                 "SignalAnalyzerData",
                 "SignalAnalyzerDomain",
                 "SignalAnalyzerHost",
+                "SignalAnalyzerPresetHarness",
                 "SignalAnalyzerPresentation",
             ]
         ),
