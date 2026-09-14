@@ -9,9 +9,12 @@ or flashing was used.
 The macOS Static and nRF52840 builds each specialize the concrete binding path
 under whole-module optimization. Their path call inventories contain zero
 allocator, generic-metadata allocator, Objective-C, reflection, task, thread,
-or exception-personality references. Every Runtime Static-owned optimized SIL
-body contains zero `alloc_ref`, `alloc_box`, existential-box, partial-apply, or
-raw-allocation instructions. Both reports therefore record:
+or exception-personality references. The specialized binding entry point and
+its inlined optimized SIL contain zero `alloc_ref`, `alloc_box`,
+existential-box, partial-apply, or raw-allocation instructions. The checker
+uses that named entry point as its reachability boundary, so adding an
+unrelated package-visible coordinator cannot make dead generic bodies alter
+the result. Both reports therefore record:
 
 ```text
 irPathForbiddenReferences	0

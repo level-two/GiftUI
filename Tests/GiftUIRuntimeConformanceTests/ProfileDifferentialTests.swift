@@ -274,7 +274,7 @@ func dynamicAndStaticBindingsProduceEqualCanonicalTranscripts() {
                 opportunity: DifferentialOpportunity()
             )
             var fixed = StaticRuntimeExecutionCoordinator(
-                binding: staticPointer,
+                binding: StaticRuntimeExecutionBindingAdapter(binding: staticPointer),
                 admission: DifferentialAdmission(),
                 opportunity: DifferentialOpportunity()
             )

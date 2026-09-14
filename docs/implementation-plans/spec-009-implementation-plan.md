@@ -539,7 +539,7 @@ criterion is ready for conformance review.
       raster meaning, production endpoint storage, target gating, or host
       policy. Keep missing owners as explicit blocked evidence rather than
       substitutes.
-- [ ] `T8.4` — Run value-layout and allocation probes on every supported
+- [x] `T8.4` — Run value-layout and allocation probes on every supported
       compiler. Prove every exact/non-generic width and aggregate ceiling,
       `OwnerFailure <= 4` bytes, generic result ceilings, zero heap in all
       static execution paths, and bounded dynamic queue/workspace high-water
@@ -1178,6 +1178,19 @@ defect: their module-contract check does not yet register SPEC-015's approved
 owner correction and SPEC-013's production runtime-image evidence; T8.4
 remains blocked on SPEC-013 allocation/high-water evidence. See the
 [four-profile checkpoint](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-8/four-profile-checkpoint.md).
+
+`T8.4` is complete. All four pinned compilers reproduce the exact 31-value
+layout table, including the 4-byte focused-owner carrier and bounded generic
+result ceilings. The SPEC-013 production storage corpus proves every one of
+the 51 logical limits at exact capacity and first excess, with the Dynamic
+queue/workspace families reporting their exact high-water values and sixteen
+allocator-backed regions separately. The macOS Static and nRF52840 optimized
+binding entry points have zero forbidden allocation references and record zero
+heap allocations and peak heap bytes. The Static coordinator now holds a thin
+binding adapter rather than making the complete noncopyable binding a protocol
+witness; this keeps its execution seam independent from unrelated generic
+observable-state bodies. See the
+[production resource evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-8/production-resources.md).
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

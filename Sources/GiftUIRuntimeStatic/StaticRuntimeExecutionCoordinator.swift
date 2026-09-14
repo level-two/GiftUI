@@ -5,11 +5,44 @@ import GiftUIRuntimeCore
 
 /// Connects a caller-owned Static profile binding to the common SPEC-009 seams
 /// without moving either focused owner's fixed storage.
-package struct StaticRuntimeExecutionCoordinator<Regions, Metadata, Admission, Opportunity>:
-    ExecutionAdmissionSink, ExecutionOpportunityRunner
+package protocol StaticExecutionProfileBinding {
+    var executionContext: ExecutionContext { get }
+    var isQuiescent: Bool { get }
+
+    mutating func quiesce()
+}
+
+package struct StaticRuntimeExecutionBindingAdapter<Regions, Metadata>:
+    StaticExecutionProfileBinding
 where
     Regions: StaticProfileStorageRegions & ~Copyable,
-    Metadata: RuntimeStaticCanvasAuditMetadata & StaticCanvasCallableTable,
+    Metadata: RuntimeStaticCanvasAuditMetadata & StaticCanvasCallableTable
+{
+    private let binding: UnsafeMutablePointer<StaticRuntimeProfileBinding<Regions, Metadata>>
+
+    package init(
+        binding: UnsafeMutablePointer<StaticRuntimeProfileBinding<Regions, Metadata>>
+    ) {
+        self.binding = binding
+    }
+
+    package var executionContext: ExecutionContext {
+        binding.pointee.executionContext
+    }
+
+    package var isQuiescent: Bool {
+        binding.pointee.isQuiescent
+    }
+
+    package mutating func quiesce() {
+        binding.pointee.quiesce()
+    }
+}
+
+package struct StaticRuntimeExecutionCoordinator<Binding, Admission, Opportunity>:
+    ExecutionAdmissionSink, ExecutionOpportunityRunner
+where
+    Binding: StaticExecutionProfileBinding,
     Admission: ExecutionAdmissionSink,
     Opportunity: ExecutionOpportunityRunner,
     Opportunity.OwnerFailure == RuntimeOwnerFailure
@@ -18,12 +51,12 @@ where
     package typealias CompletionFact = Admission.CompletionFact
     package typealias OwnerFailure = RuntimeOwnerFailure
 
-    private let binding: UnsafeMutablePointer<StaticRuntimeProfileBinding<Regions, Metadata>>
+    private var binding: Binding
     package private(set) var admission: Admission
     package private(set) var opportunity: Opportunity
 
     package init(
-        binding: UnsafeMutablePointer<StaticRuntimeProfileBinding<Regions, Metadata>>,
+        binding: Binding,
         admission: Admission,
         opportunity: Opportunity
     ) {
@@ -35,28 +68,28 @@ where
     package mutating func submit(
         pointer: NormalizedPointerEvent
     ) -> ExecutionAdmissionOutcome {
-        guard !binding.pointee.isQuiescent else { return unavailableAdmission() }
+        guard !binding.isQuiescent else { return unavailableAdmission() }
         return admission.submit(pointer: pointer)
     }
 
     package mutating func submit(
         stateChange: Admission.StateChangeFact
     ) -> ExecutionAdmissionOutcome {
-        guard !binding.pointee.isQuiescent else { return unavailableAdmission() }
+        guard !binding.isQuiescent else { return unavailableAdmission() }
         return admission.submit(stateChange: stateChange)
     }
 
     package mutating func submit(
         completion: Admission.CompletionFact
     ) -> ExecutionAdmissionOutcome {
-        guard !binding.pointee.isQuiescent else { return unavailableAdmission() }
+        guard !binding.isQuiescent else { return unavailableAdmission() }
         return admission.submit(completion: completion)
     }
 
     package mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure> {
-        guard !binding.pointee.isQuiescent else {
+        guard !binding.isQuiescent else {
             return .failure(
-                binding.pointee.executionContext,
+                binding.executionContext,
                 .execution(.requiredFacilityUnavailable),
                 nil
             )
@@ -65,13 +98,13 @@ where
     }
 
     package mutating func quiesce() {
-        binding.pointee.quiesce()
+        binding.quiesce()
     }
 
     private func unavailableAdmission() -> ExecutionAdmissionOutcome {
         ExecutionAdmissionOutcome(
             result: .unavailable,
-            context: binding.pointee.executionContext
+            context: binding.executionContext
         )
     }
 }

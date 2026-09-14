@@ -92,7 +92,7 @@ check_static_allocation_path() {
         fail 'optimized Static binding path references a forbidden facility'
     fi
     awk '
-        /^sil / { capture = index($0, "GiftUIRuntimeStaticAllocationProbe") > 0 }
+        /^sil / { capture = index($0, "spec013c7Binding") > 0 }
         capture { print }
         capture && /^}/ { capture = 0 }
     ' "${sil}" >"${owned_sil}"
