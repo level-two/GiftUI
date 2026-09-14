@@ -57,8 +57,9 @@ SPEC-013 supplies bounded dynamic and static storage lifetimes and audits.
 `HostSequencedFactAdmission` now supplies the analyzer-agnostic fixed-storage
 kernel: one common sequence, three physical stores, producer counters, sealing,
 ordered removal, quiescence, and discard. The remaining mechanism is the
-target-owned endpoint behind `SignalAnalyzerFactAdmission`; no production root
-yet classifies the four fact cases into that kernel.
+target-owned endpoint behind `SignalAnalyzerFactAdmission`. A recording
+composition fixture now proves the exhaustive four-case classification and
+exact rejection mapping; no production root owns that endpoint yet.
 
 ## Proposed Internal Organization
 
@@ -221,8 +222,11 @@ algorithm above.
 - [`HostSequencedFactAdmissionTests.swift`](../../Tests/GiftUIHostConfigurationTests/HostSequencedFactAdmissionTests.swift)
   covers physical and producer bounds, sequencing, sealing, deferral,
   quiescence, and nonaliasing exhaustion.
+- [`SignalAnalyzerHostFactAdmissionTests.swift`](../../Tests/GiftUIHostConfigurationTests/SignalAnalyzerHostFactAdmissionTests.swift)
+  proves the target-root classification and application rejection vocabulary
+  without placing that switch in portable Presentation.
 - [`fact-admission-cases.tsv`](../../Tests/ContractFixtures/SPEC001/fact-admission-cases.tsv)
   records the current partial T5.1 corpus.
 
-The executable fact classifier and production mutation-pipeline join remain to
-be linked when completed.
+The executable-owned instance of the classifier and production
+mutation-pipeline join remain to be linked when completed.

@@ -12,3 +12,8 @@ post-seal-deferral	compact	1	later-sealed-batch
 sequence-boundary	common-cursor	UInt32.max	sequence-exhausted-after-max
 quiescence	all-stores	0	unavailable
 discard	active+sealed	0	all-counts-zero
+analyzer-snapshot-classification	captureSnapshot	1	snapshot-store
+analyzer-compact-classification	captureMutation+acquisitionState	2	compact-store
+analyzer-failure-classification	operationalFailure	1	reserved-failure-store
+missing-producer-context	ordinary-fact	0	runtime-unavailable
+application-rejection-mapping	all-host-rejections	0	exact-four-case-application-vocabulary

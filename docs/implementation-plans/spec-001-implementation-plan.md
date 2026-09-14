@@ -441,8 +441,9 @@ coalescing behavior.
       `1/32/1` physical stores, `20/2/6` producer limits, one nonzero
       nonwrapping sequence across stores, ordered sealing, post-seal deferral,
       at-most-once removal, quiescence, and discard. Concrete executable roots
-      still need to map `SignalAnalyzerPresentationFact` into this kernel and
-      join its sealed output to the production mutation pipeline.
+      still need to own the recording-proven `SignalAnalyzerPresentationFact`
+      classifier and join its sealed output to the production mutation
+      pipeline.
 - [ ] `T5.2` — Bind the root to one observable location, active registration,
       dirty/live bit, and transient replacement record. Run identical dynamic/
       static fixtures for initializer preservation, atomic replacement,

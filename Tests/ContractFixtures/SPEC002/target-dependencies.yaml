@@ -374,7 +374,10 @@ targets:
   GiftUIHostConfigurationTests:
     type: test
     dependencies:
+      - GiftUIFailureCore
       - GiftUIHostConfiguration
+      - SignalAnalyzerDomain
+      - SignalAnalyzerPresentation
   GiftUIRuntimeCoreTests:
     type: test
     dependencies:
