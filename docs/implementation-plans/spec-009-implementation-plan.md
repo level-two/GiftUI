@@ -527,7 +527,7 @@ criterion is ready for conformance review.
       downstream owner import, backend-to-runtime dependency, input-adapter
       semantic-storage import, placeholder target, compatibility shim, or
       second execution path.
-- [ ] `T8.2` — Integrate the common corpus with SPEC-013's production dynamic
+- [x] `T8.2` — Integrate the common corpus with SPEC-013's production dynamic
       and static coordinators only after that owner exists. Drive both solely
       through `ExecutionAdmissionSink` and `ExecutionOpportunityRunner`; compare
       sealed membership, phases, identities, effects, publications, frame
@@ -1129,16 +1129,13 @@ registered negative fixture names the real module, while placeholder targets,
 compatibility shims, forbidden upward imports, and a second execution surface
 remain rejected. See the
 [interface audit evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-8/interface-audit.md).
-T8.2 remains blocked on SPEC-013's production coordinators; T8.3 is next for
-the currently available owner seams.
+At that checkpoint, T8.2 remained blocked on SPEC-013's production
+coordinators; T8.3 was the next available owner seam.
 
-`T8.2` remains blocked because the SPEC-013 dynamic and static production
-coordinator targets are absent. `T8.3` has integrated the available SPEC-010
-typed presentation-fact admission seam, but remains blocked on the absent
-SPEC-011 Interaction and SPEC-014 Backend endpoint targets. The
-[owner integration status](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-8/owner-integration-status.md)
-and fail-closed registry preserve these gates without substituting recording
-fixtures. T8.4 is the next independent task.
+`T8.2` was blocked because the SPEC-013 dynamic and static production
+coordinator targets were absent. That blocker is now resolved by the two thin
+profile composition façades described below; the historical status remains
+preserved here rather than erased.
 
 `T8.4` has completed the four-compiler 31-value layout pass and both tracked
 hardware-free toolchain probes. `T8.5` has completed all four standalone driver
@@ -1158,6 +1155,17 @@ remains blocked more narrowly: the SPEC-013 profile targets and shared active
 pipeline exist, but the Dynamic and Static production bindings do not yet
 conform to `ExecutionAdmissionSink` and `ExecutionOpportunityRunner`. See the
 [updated owner integration evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-8/owner-integration-status.md).
+
+`T8.2` is complete. `DynamicRuntimeExecutionCoordinator` and
+`StaticRuntimeExecutionCoordinator` expose the same production profile binding
+through only `ExecutionAdmissionSink` and `ExecutionOpportunityRunner`. Both
+delegate state-change/completion admission and opportunity execution to the
+injected focused owners, reject both seams after profile quiescence with the
+exact current context, and retain no queue, semantic, action, endpoint, or host
+policy algorithm. The cross-profile differential test drives the façades only
+through the two common protocols and compares outcomes and exact focused owner
+failure values. The owner registry now records all four downstream seams as
+integrated. T8.4 resource closure is next.
 
 The SPEC-014 portion of `T8.5` has advanced. At revision `11fd346`, all four
 production-backend collectors completed their substantive tests, declaration

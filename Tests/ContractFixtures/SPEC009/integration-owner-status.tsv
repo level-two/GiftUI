@@ -1,5 +1,5 @@
 # owner	expected_target	status	evidence_or_blocker
 SPEC-010	GiftUIObservableState	integrated	PresentationFactAdmissionAdapter
 SPEC-011	GiftUIInteraction	integrated	InteractionState-and-ExecutionGestureAdapter
-SPEC-013	GiftUIRuntimeCore,GiftUIRuntimeDynamic,GiftUIRuntimeStatic	blocked	dynamic-and-static-bindings-do-not-yet-conform-to-ExecutionAdmissionSink-and-ExecutionOpportunityRunner
+SPEC-013	GiftUIRuntimeCore,GiftUIRuntimeDynamic,GiftUIRuntimeStatic	integrated	DynamicRuntimeExecutionCoordinator-and-StaticRuntimeExecutionCoordinator
 SPEC-014	GiftUIBackendIntegration	integrated	OneShotRasterBackendEndpoint

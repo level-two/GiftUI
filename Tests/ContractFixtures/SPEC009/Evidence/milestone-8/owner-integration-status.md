@@ -18,10 +18,18 @@ and proves pre-body reservation, exact refusal mapping, invalid-envelope
 rejection, and at-most-once body entry. The source audit rejects runtime,
 Interaction, Observable State, action-target, and host-policy ownership.
 
-T8.3 is complete. T8.2 remains blocked because the present Dynamic and Static
-profile bindings expose active-pipeline entry points but do not yet conform to
-SPEC-013's production `ExecutionAdmissionSink` and
-`ExecutionOpportunityRunner` coordinator surface. The recording coordinator
-is not treated as a production substitute. `integration-owner-status.tsv`
-records that exact gate and the checker fails closed if any owner disposition
-or approved dependency set drifts.
+T8.2 and T8.3 are complete. `DynamicRuntimeExecutionCoordinator` and
+`StaticRuntimeExecutionCoordinator` borrow address-stable profile bindings and
+delegate only to injected focused admission and opportunity owners through
+SPEC-009's two common protocols. They add no second queue, cycle algorithm,
+state/action storage, endpoint, or host policy. Both façades reject admission
+and opportunity entry after profile quiescence with the current execution
+context and exact required-facility failure.
+
+The cross-profile differential fixture submits state-change and completion
+facts and runs the opportunity solely through generic
+`ExecutionAdmissionSink` and `ExecutionOpportunityRunner` functions. Dynamic
+and Static outcomes, retained owner counts, and focused failure values match
+field-for-field before and after quiescence. `integration-owner-status.tsv`
+records all four integrations, and the checker fails closed if a disposition,
+source seam, or approved dependency set drifts.

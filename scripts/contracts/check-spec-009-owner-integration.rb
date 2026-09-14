@@ -97,7 +97,19 @@ end
 
 rows = STATUS.each_line.reject { |line| line.start_with?("#") || line.strip.empty? }.map { |line| line.chomp.split("\t", -1) }
 fail_check("owner-status registry shape differs") unless rows.length == 4 && rows.all? { |row| row.length == 4 }
-expected_statuses = %w[integrated integrated blocked integrated]
+dynamic_coordinator = ROOT.join("Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift").read
+static_coordinator = ROOT.join("Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift").read
+[dynamic_coordinator, static_coordinator].each do |source|
+  %w[ExecutionAdmissionSink ExecutionOpportunityRunner submit runOpportunity requiredFacilityUnavailable].each do |fragment|
+    fail_check("SPEC-013 coordinator lacks #{fragment}") unless source.include?(fragment)
+  end
+end
+conformance = ROOT.join("Tests/GiftUIRuntimeConformanceTests/ProfileDifferentialTests.swift").read
+unless conformance.include?("dynamicAndStaticExecutionCoordinatorsUseTheCommonProtocolSeams")
+  fail_check("SPEC-013 coordinator differential test is missing")
+end
+
+expected_statuses = %w[integrated integrated integrated integrated]
 fail_check("owner integration statuses differ") unless rows.map { |row| row[2] } == expected_statuses
 
-puts "SPEC-009 owner integration passed: SPEC-010, SPEC-011, and SPEC-014 seams are integrated without transferring their storage, dispatch, raster, target, or host-policy ownership; SPEC-013 remains blocked on its production admission/opportunity coordinator surface."
+puts "SPEC-009 owner integration passed: SPEC-010 through SPEC-014 owner seams are integrated without transferring state, dispatch, runtime-profile, raster, target, or host-policy ownership."

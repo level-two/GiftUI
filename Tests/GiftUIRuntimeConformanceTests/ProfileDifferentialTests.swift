@@ -128,6 +128,52 @@ private struct DifferentialStaticMetadata:
     ) throws(DrawingError) {}
 }
 
+private struct DifferentialAdmission: ExecutionAdmissionSink {
+    private(set) var submittedStateChanges = UInt16(0)
+    private(set) var submittedCompletions = UInt16(0)
+
+    mutating func submit(pointer _: NormalizedPointerEvent) -> ExecutionAdmissionOutcome {
+        outcome(.queued)
+    }
+
+    mutating func submit(stateChange _: UInt16) -> ExecutionAdmissionOutcome {
+        submittedStateChanges += 1
+        return outcome(.queued)
+    }
+
+    mutating func submit(completion _: UInt8) -> ExecutionAdmissionOutcome {
+        submittedCompletions += 1
+        return outcome(.queued)
+    }
+
+    private func outcome(_ result: ExecutionAdmissionResult) -> ExecutionAdmissionOutcome {
+        ExecutionAdmissionOutcome(
+            result: result,
+            context: ExecutionContext(
+                cycle: nil,
+                semanticRevision: nil,
+                candidateFrame: nil,
+                phase: .idle
+            )
+        )
+    }
+}
+
+private struct DifferentialOpportunity: ExecutionOpportunityRunner {
+    mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure> {
+        .failure(
+            ExecutionContext(
+                cycle: RunCycleID(rawValue: 1),
+                semanticRevision: nil,
+                candidateFrame: nil,
+                phase: .deriving
+            ),
+            .focusedOwner(.drawing(.invalidValue)),
+            nil
+        )
+    }
+}
+
 @Test
 func dynamicAndStaticBindingsProduceEqualCanonicalTranscripts() {
     let inputs = DifferentialInputs()
@@ -205,6 +251,76 @@ func dynamicAndStaticBindingsProduceEqualCanonicalTranscripts() {
     )
 
     #expect(dynamicTranscript == staticTranscript)
+}
+
+@Test func dynamicAndStaticExecutionCoordinatorsUseTheCommonProtocolSeams() {
+    var dynamicBinding = DynamicRuntimeProfileBinding(
+        structuralIdentity: DynamicStructuralIdentity(rawValue: 31)!,
+        limits: differentialLimits(profile: .dynamic),
+        byteCounts: differentialByteCounts()
+    )!
+    var staticBinding = StaticRuntimeProfileBinding(
+        structuralIdentity: StaticStructuralIdentity(rawValue: 31)!,
+        limits: differentialLimits(profile: .static),
+        regions: DifferentialStaticRegions(),
+        metadata: DifferentialStaticMetadata()
+    )!
+
+    withUnsafeMutablePointer(to: &dynamicBinding) { dynamicPointer in
+        withUnsafeMutablePointer(to: &staticBinding) { staticPointer in
+            var dynamic = DynamicRuntimeExecutionCoordinator(
+                binding: dynamicPointer,
+                admission: DifferentialAdmission(),
+                opportunity: DifferentialOpportunity()
+            )
+            var fixed = StaticRuntimeExecutionCoordinator(
+                binding: staticPointer,
+                admission: DifferentialAdmission(),
+                opportunity: DifferentialOpportunity()
+            )
+
+            let dynamicState = submitStateChange(UInt16(7), to: &dynamic)
+            let staticState = submitStateChange(UInt16(7), to: &fixed)
+            let dynamicCompletion = submitCompletion(UInt8(9), to: &dynamic)
+            let staticCompletion = submitCompletion(UInt8(9), to: &fixed)
+            let dynamicResult = runOpportunity(with: &dynamic)
+            let staticResult = runOpportunity(with: &fixed)
+
+            #expect(dynamicState == staticState)
+            #expect(dynamicCompletion == staticCompletion)
+            #expect(dynamicResult == staticResult)
+            #expect(dynamic.admission.submittedStateChanges == 1)
+            #expect(fixed.admission.submittedStateChanges == 1)
+            #expect(dynamic.admission.submittedCompletions == 1)
+            #expect(fixed.admission.submittedCompletions == 1)
+
+            dynamic.quiesce()
+            fixed.quiesce()
+            #expect(submitStateChange(UInt16(8), to: &dynamic).result == .unavailable)
+            #expect(submitStateChange(UInt16(8), to: &fixed).result == .unavailable)
+            #expect(runOpportunity(with: &dynamic) == runOpportunity(with: &fixed))
+        }
+    }
+}
+
+private func submitStateChange<Sink: ExecutionAdmissionSink>(
+    _ fact: Sink.StateChangeFact,
+    to sink: inout Sink
+) -> ExecutionAdmissionOutcome {
+    sink.submit(stateChange: fact)
+}
+
+private func submitCompletion<Sink: ExecutionAdmissionSink>(
+    _ fact: Sink.CompletionFact,
+    to sink: inout Sink
+) -> ExecutionAdmissionOutcome {
+    sink.submit(completion: fact)
+}
+
+private func runOpportunity<Runner: ExecutionOpportunityRunner>(
+    with runner: inout Runner
+) -> RunCycleResult<Runner.OwnerFailure> {
+    runner.runOpportunity()
 }
 
 private func stageCount(
