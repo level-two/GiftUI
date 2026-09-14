@@ -459,7 +459,7 @@ finite refusal recovery, and exact operational-failure routing.
       the root model unchanged until sealed mutation application. Concrete
       transition delivery, action-induced callbacks, and four-root ownership
       remain with the later T5/T6 slices.
-- [ ] `T5.2` — Implement non-reentrant wake accumulation and host scheduling.
+- [x] `T5.2` — Implement non-reentrant wake accumulation and host scheduling.
       An empty-to-nonempty transition requests one wake and returns; serialized
       `runOpportunity()` begins at or after the 250,000-microsecond frame
       boundary and no later than the active 250,000-microsecond service-window
@@ -469,15 +469,6 @@ finite refusal recovery, and exact operational-failure routing.
       80-transition-fact-per-second workload, prove admission without
       rejection, ordered facts, coalesced change reports, and derivation paced
       at four frames per second.
-      **Partial:** a fixed-size production wake/pacing controller now returns
-      a wake directive only for empty-to-nonempty pending work, coalesces exact
-      SPEC-009 reason bits, and uses checked monotonic arithmetic for the frame
-      boundary and first-fact service deadline. Focused tests cover
-      just-before/at/just-after timing, post-seal admission, reentrancy,
-      quiescence, regression/overflow, and four opportunities for eighty
-      evenly spaced facts in one second. Concrete scheduler callbacks,
-      `MVPHostInstance.runOpportunity()`, report identity, and integrated fact/
-      change-report ordering remain open.
 - [x] `T5.3` — Integrate presentation supersession, backpressure, retryable
       refusal, non-retryable refusal, and terminal unavailability. Prove
       backpressure leaves the count unchanged, refusals retain ordinals zero
@@ -849,3 +840,13 @@ unavailability, identity exhaustion, and every immutable graph/resource/
 extent/policy/configuration change require fresh host construction through a
 terminal controller with no reactivation path. Evidence is in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-5/endpoint-health-and-reconstruction.md`.
+
+`T5.2` is complete. `HostScheduledOpportunityController` binds the validated
+assembly report to the fixed-size wake/pacing state and enters
+`MVPHostInstance.runOpportunity()` only through a serialized scheduled service
+call. Wake recording returns before runtime entry; lifecycle/report mismatch,
+early timing, and quiescence invoke no runtime owner. The sustained fixture
+preserves all 80 ordered facts and change reports while coalescing them into
+four wakes and four derivations at exact 250,000-microsecond boundaries.
+Evidence is in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-5/scheduled-opportunity.md`.
