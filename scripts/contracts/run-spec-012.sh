@@ -60,6 +60,8 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-012-module-contract.rb" \
             "$SCRIPT_DIR/check-spec-012-raster-vectors.rb" \
             "$SCRIPT_DIR/check-spec-012-static-canvas-manifest.rb" \
+            "$SCRIPT_DIR/check-spec-013-storage-boundaries.rb" \
+            "$SCRIPT_DIR/check-spec-014-module-contract.rb" \
             "$SCRIPT_DIR/check-target-dependencies.rb" \
             "$SCRIPT_DIR/report-input-identity.rb" \
             "$SCRIPT_DIR/publish-contract-report.rb" \
@@ -75,6 +77,9 @@ mkdir -p "$REPORT_ROOT"
 report_dir="$REPORT_ROOT/.tmp-$profile-$$"
 [[ ! -e "$report_dir" ]] || fail "temporary report directory exists: $report_dir"
 mkdir -p "$report_dir"
+mkdir -p "$report_dir/module-cache"
+export CLANG_MODULE_CACHE_PATH="$report_dir/module-cache"
+export SWIFTPM_MODULECACHE_OVERRIDE="$report_dir/module-cache"
 inputs_path="$report_dir/input-hashes.tsv"
 identity_metadata="$(declared_inputs | "$SCRIPT_DIR/report-input-identity.rb" \
     --root "$PROJECT_ROOT" --revision "$revision" --inventory "$inputs_path")"
@@ -105,7 +110,7 @@ log_path="$report_dir/run.log"
     printf 'repository_revision=%s\nrepository_dirty=%s\n' "$revision" "$dirty"
     printf 'input_set_sha256=%s\nrun_id=%s\n' "$input_set_sha256" "$run_id"
     printf 'invocation=scripts/contracts/run-spec-012.sh --profile %s\n' "$profile"
-    printf 'fixture_schema=complete\nfixture_corpus=pending\nevidence_complete=false\n'
+    printf 'fixture_schema=complete\nfixture_corpus=complete\nevidence_complete=false\n'
     printf 'remote_access=false\ndeployment=false\nservice_restart=false\n'
     printf 'simulator_execution=false\nconnected_target_execution=false\nflashing=false\n'
 } >"$metadata_path"
@@ -204,10 +209,10 @@ record_nrf52840_identity() {
     printf 'repository-revision\tcomplete\trevision and input digest recorded\n'
     printf 'fixture-schema\tcomplete\tSPEC-012 frozen schemas validated\n'
     printf 'raster-oracle\tcomplete\tindependent Q160 widened-integer masks and exact encodings validated\n'
-    printf 'fixture-corpus\tpending\tbehavioral cases land with their owning tasks\n'
+    printf 'fixture-corpus\tcomplete\tsemantic, path, plan, render, failure, and raster corpora are frozen\n'
     printf 'target-graph\tcomplete\tGiftUIDrawing ownership boundary is acyclic\n'
-    printf 'profile-implementation\tpending\tpublic drawing behavior and profile evidence remain open\n'
-    printf 'backend-evidence\tblocked\tconcrete raster evidence waits for SPEC-014\n'
+    printf 'profile-implementation\tcomplete\tSPEC-013 dynamic/static Canvas ownership and resource evidence is integrated\n'
+    printf 'backend-evidence\tcomplete\tSPEC-014 full-surface and tiled raster evidence is integrated\n'
     printf 'acceptance-evidence\tmissing\tDR-001 through DR-013 remain pending\n'
 } >"$prerequisites_path"
 
@@ -219,8 +224,14 @@ record_command "$SCRIPT_DIR/check-spec-012-raster-vectors.rb"
 "$SCRIPT_DIR/check-spec-012-raster-vectors.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-012-static-canvas-manifest.rb"
 "$SCRIPT_DIR/check-spec-012-static-canvas-manifest.rb" >>"$log_path" 2>&1
-record_command swift package dump-package
-swift package dump-package | "$SCRIPT_DIR/check-target-dependencies.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-013-storage-boundaries.rb"
+"$SCRIPT_DIR/check-spec-013-storage-boundaries.rb" >>"$log_path" 2>&1
+record_command swift package --disable-sandbox dump-package
+swift package --disable-sandbox dump-package >"$report_dir/package.json"
+record_command "$SCRIPT_DIR/check-target-dependencies.rb"
+"$SCRIPT_DIR/check-target-dependencies.rb" <"$report_dir/package.json" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-014-module-contract.rb"
+"$SCRIPT_DIR/check-spec-014-module-contract.rb" <"$report_dir/package.json" >>"$log_path" 2>&1
 case "$profile" in
     macos-dynamic | macos-static) record_macos_identity ;;
     raspberry-pi-armv6) record_raspberry_pi_identity ;;

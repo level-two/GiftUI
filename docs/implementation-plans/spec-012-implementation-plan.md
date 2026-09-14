@@ -488,7 +488,7 @@ stable evidence.
 comparisons, resource reports, and a complete criterion disposition are ready
 for independent conformance review.
 
-- [ ] `T9.1` — Run unit, public/negative compile, package graph, import, symbol,
+- [x] `T9.1` — Run unit, public/negative compile, package graph, import, symbol,
       portable-source, generated-source, and interface audits. Prove every
       normative declaration, additive vocabulary case, module owner, and
       forbidden dependency rule.
@@ -1111,3 +1111,11 @@ backpressure, and postpublication nonretryable refusal prove the complementary
 commit/discard, pending/unavailable intent, published-revision preservation,
 and no-retained-plan/callable cleanup paths. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-5/complete-production-pipeline.md`.
+
+`T9.1` is complete. The refreshed standalone driver runs the frozen harness,
+migration, raster-vector, static-generation, package-dependency, SPEC-014
+module-owner, declaration, and value-layout audits for every profile. It now
+records the completed corpus and integrated profile/backend prerequisites
+rather than the historical blockers. All four reports publish one input
+identity; see the
+[interface audit evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-9/interface-audit.md).
