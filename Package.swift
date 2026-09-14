@@ -276,6 +276,7 @@ let package = Package(
                 "GiftUIInteraction",
                 "GiftUIRuntimeCore",
                 "GiftUIRuntimeDynamic",
+                "GiftUIRuntimeStatic",
                 "SignalAnalyzerDomain",
                 "SignalAnalyzerPresentation",
             ]

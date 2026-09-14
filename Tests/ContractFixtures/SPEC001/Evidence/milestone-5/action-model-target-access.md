@@ -28,7 +28,10 @@ real root commits a replacement. Reproduce with:
 swift test --filter SignalAnalyzerHostActionDispatchTests
 ```
 
-The generated Static analyzer composition plus pointer-down and admitted-action
+The Static analyzer composition now installs the same exact handler through
+the generated-root-compatible typed pointer path. Its six-case corpus reaches
+the same repository intents and visible-window mutations while preserving the
+address-stable root as the lifetime owner. Pointer-down and admitted-action
 replacement/removal interleavings remain.
 
 The profile-specific adapters now conform to `ActionModelTargetAccess`.

@@ -592,8 +592,11 @@ coalescing behavior.
       production dispatcher, and weak production root access. Its corpus
       dispatches all six exact actions, rejects invalid codes without model
       mutation, cancels stale action/target generations, and cancels a captured
-      former action after real root replacement. Generated Static analyzer
-      composition and the remaining interaction interleaving corpus remain.
+      former action after real root replacement. Static analyzer composition
+      now installs the same handler and dispatcher through a typed pointer to
+      the generated-root-compatible address-stable model owner, and all six
+      exact actions reach the same intents. The remaining interaction
+      interleaving corpus remains.
       A production-dispatcher transcript now proves equal initial dispatch,
       preservation of former dispatch after incompatible replacement failure,
       cancellation of a captured former generation after successful

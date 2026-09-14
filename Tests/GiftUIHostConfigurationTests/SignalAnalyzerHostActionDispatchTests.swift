@@ -3,6 +3,7 @@ import GiftUIExecution
 import GiftUIInteraction
 import GiftUIRuntimeCore
 import GiftUIRuntimeDynamic
+import GiftUIRuntimeStatic
 import SignalAnalyzerDomain
 import SignalAnalyzerHost
 import SignalAnalyzerPresentation
@@ -115,6 +116,37 @@ func everyAnalyzerActionCodeDispatchesToTheExactCurrentModel(code: UInt16) {
     case .selectOneSecond: #expect(model.state.visibleWindow == .oneSecond)
     case .selectTwoSeconds: #expect(model.state.visibleWindow == .twoSeconds)
     case .selectFiveSeconds: #expect(model.state.visibleWindow == .fiveSeconds)
+    }
+}
+
+@Test(arguments: Array(UInt16(0) ... UInt16(5)))
+func everyAnalyzerActionCodeDispatchesThroughTheStaticRoot(code: UInt16) {
+    let repository = ActionRepository()
+    var root = makeStaticActionRoot(makeActionModel(repository: repository))
+
+    withUnsafeMutablePointer(to: &root) { rootPointer in
+        var dispatcher = StaticSignalAnalyzerActionDispatcher.make(
+            records: AnalyzerActionRecords(record: analyzerActionRecord(code: code)),
+            root: rootPointer
+        )
+
+        #expect(
+            dispatcher.dispatch(
+                CapturedAction(identity: 4, generation: ActionGeneration(rawValue: 8))
+            ) == .dispatched
+        )
+    }
+
+    switch SignalAnalyzerAction(rawValue: code)! {
+    case .start: #expect(repository.calls == ["start"])
+    case .stop: #expect(repository.calls == ["stop"])
+    case .clear: #expect(repository.calls == ["clear"])
+    case .selectOneSecond:
+        #expect(root.withModel { $0.state.visibleWindow } == .oneSecond)
+    case .selectTwoSeconds:
+        #expect(root.withModel { $0.state.visibleWindow } == .twoSeconds)
+    case .selectFiveSeconds:
+        #expect(root.withModel { $0.state.visibleWindow } == .fiveSeconds)
     }
 }
 
@@ -270,6 +302,28 @@ private func makeActionRoot(
             replacementRoute: { _ in }
         ) == .success(.materialized)
     )
+    #expect(root.finishCandidate(.publish) == .success(.associationsCommitted))
+    return root
+}
+
+private func makeStaticActionRoot(
+    _ model: SignalAnalyzerViewModel
+) -> StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16> {
+    var root = StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>(
+        structuralIdentity: 1,
+        declarationOrdinal: 0
+    )
+    #expect(root.beginCandidate() == .success(.candidateStarted))
+    let encounter = root.withEncounter(
+        state: State(wrappedValue: model),
+        replacementRoute: { _ in },
+        reportRoute: { _ in .staleAttachment },
+        body: { _ in () }
+    )
+    switch encounter {
+    case .bound(.success(.materialized), ()): break
+    default: Issue.record("expected the Static analyzer model to materialize")
+    }
     #expect(root.finishCandidate(.publish) == .success(.associationsCommitted))
     return root
 }
