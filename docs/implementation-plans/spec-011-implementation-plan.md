@@ -471,7 +471,7 @@ interaction and dispatch transcripts at equal limits.
       candidate/committed storage. Heap-backed internals are permitted only within
       configured limits and must expose no unbounded success behavior or
       different error/cancellation semantics.
-- [ ] `T7.2` — Integrate and verify SPEC-013's fixed/generated/caller-supplied
+- [x] `T7.2` — Integrate and verify SPEC-013's fixed/generated/caller-supplied
       static Interaction storage and direct typed dispatch. Use no heap,
       reflection, `Any`, arbitrary existential registry, task/thread,
       exception, Objective-C runtime, string identity, closure-to-tag
@@ -797,3 +797,13 @@ capacity before mutation, reset retains reserved capacity, and atomic commit
 exchanges both content and its matching bound. Focused tests prove exact-limit,
 first-excess, commit, and discard behavior. See the
 [Dynamic storage evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t7-1-dynamic-storage.md).
+
+`T7.2` is complete. Runtime Static supplies caller-constructed candidate,
+candidate-committed, committed, and hit-region stores backed by 32 generated
+inline optional slots. Construction rejects zero or more than the approved
+fixture ceiling, and the implementation contains no collection, existential
+registry, reflection, task/thread, Objective-C, string identity, or callable
+dispatch storage. Focused tests prove exact-limit, first-excess, atomic commit,
+and direct typed gesture resolution, and the optimized Static binding check
+continues to report zero forbidden allocation instructions. See the
+[Static storage evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t7-2-static-storage.md).
