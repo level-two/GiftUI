@@ -59,7 +59,12 @@ private final class IntegratedFactAdmission: SignalAnalyzerFactAdmission {
         )!
     )!
     private(set) var callbackModelStates: [SignalAnalyzerViewState] = []
+    private var bootstrapIsComplete = false
     weak var model: SignalAnalyzerViewModel?
+
+    func completeBootstrap() {
+        bootstrapIsComplete = true
+    }
 
     func submit(_ fact: SignalAnalyzerPresentationFact) -> SignalSinkDeliveryOutcome {
         if let model { callbackModelStates.append(model.state) }
@@ -68,7 +73,10 @@ private final class IntegratedFactAdmission: SignalAnalyzerFactAdmission {
         case .captureSnapshot:
             outcome = storage.admitSnapshot(fact, category: .bootstrap)
         case .acquisitionState:
-            outcome = storage.admitCompact(fact, category: .bootstrap)
+            outcome = storage.admitCompact(
+                fact,
+                category: bootstrapIsComplete ? .action : .bootstrap
+            )
         case .captureMutation:
             outcome = storage.admitCompact(fact, category: .transition)
         case .operationalFailure:
@@ -77,7 +85,10 @@ private final class IntegratedFactAdmission: SignalAnalyzerFactAdmission {
         return map(outcome)
     }
 
-    func applySealed(to model: SignalAnalyzerViewModel) -> [SignalAnalyzerPresentationFact] {
+    func applySealed(
+        to model: SignalAnalyzerViewModel,
+        expectedChanged: Bool
+    ) -> [SignalAnalyzerPresentationFact] {
         guard storage.seal() else { return [] }
         var applied: [SignalAnalyzerPresentationFact] = []
         while let sealed = storage.takeNextSealed() {
@@ -87,7 +98,7 @@ private final class IntegratedFactAdmission: SignalAnalyzerFactAdmission {
                 fact = value.value
             }
             applied.append(fact)
-            #expect(model.apply(fact) == .applied(changed: false))
+            #expect(model.apply(fact) == .applied(changed: expectedChanged))
         }
         return applied
     }
@@ -141,8 +152,10 @@ private struct IntegratedFailureFactory: SignalAnalyzerOperationalFailureFactory
 private struct ApplicationIntegrationReport: Equatable {
     let observation: SignalAnalyzerObservationStartOutcome
     let executorEvents: [String]
-    let admittedFacts: [SignalAnalyzerPresentationFact]
+    let bootstrapFacts: [SignalAnalyzerPresentationFact]
+    let laterFacts: [SignalAnalyzerPresentationFact]
     let callbackModelStates: [SignalAnalyzerViewState]
+    let modelStateBeforeLaterApplication: SignalAnalyzerViewState
     let finalModelState: SignalAnalyzerViewState
 }
 
@@ -155,10 +168,20 @@ private struct ApplicationIntegrationReport: Equatable {
         sameThread.observation
             == .started(captureSequence: 1, stateSequence: 2)
     )
-    #expect(sameThread.executorEvents == ["application-begin", "application-end"])
     #expect(
-        sameThread.callbackModelStates == [SignalAnalyzerViewState(), SignalAnalyzerViewState()])
-    #expect(sameThread.finalModelState == SignalAnalyzerViewState())
+        sameThread.executorEvents
+            == Array(repeating: ["application-begin", "application-end"], count: 3)
+            .flatMap(\.self)
+    )
+    #expect(sameThread.bootstrapFacts.count == 2)
+    #expect(sameThread.laterFacts.count == 6)
+    #expect(
+        sameThread.callbackModelStates
+            == Array(repeating: SignalAnalyzerViewState(), count: 8)
+    )
+    #expect(sameThread.modelStateBeforeLaterApplication == SignalAnalyzerViewState())
+    #expect(sameThread.finalModelState.acquisitionState == .running)
+    #expect(sameThread.finalModelState.capture.transitions.count == 5)
 }
 
 private func runApplicationIntegration(
@@ -193,12 +216,36 @@ private func runApplicationIntegration(
         executor.drain()
     }
 
-    let admitted = admission.applySealed(to: model)
+    let bootstrapFacts = admission.applySealed(to: model, expectedChanged: false)
+    admission.completeBootstrap()
+
+    #expect(
+        executor.submit(mode: mode) {
+            model.startTapped()
+        } == .admitted
+    )
+    if mode == .distinctExecutor { executor.drain() }
+
+    #expect(source.activeGeneration == 1)
+    var deliveredTransition = false
+    #expect(
+        executor.submit(mode: mode) {
+            deliveredTransition = source.deliverScheduledTransition(generation: 1)
+        } == .admitted
+    )
+    if mode == .distinctExecutor { #expect(!deliveredTransition) }
+    if mode == .distinctExecutor { executor.drain() }
+    #expect(deliveredTransition)
+
+    let stateBeforeLaterApplication = model.state
+    let laterFacts = admission.applySealed(to: model, expectedChanged: true)
     return ApplicationIntegrationReport(
         observation: observation!,
         executorEvents: executor.events,
-        admittedFacts: admitted,
+        bootstrapFacts: bootstrapFacts,
+        laterFacts: laterFacts,
         callbackModelStates: admission.callbackModelStates,
+        modelStateBeforeLaterApplication: stateBeforeLaterApplication,
         finalModelState: model.state
     )
 }

@@ -11,8 +11,16 @@ application boundary through `HostApplicationOpportunityGate`.
   fixture construct the deterministic Signal Analyzer source, repository,
   observation use cases, admission adapter, root model, and fixed host fact
   storage.
-- Both immediate repository callbacks stop at admission. The root model is
-  unchanged until the later sealed mutation application.
+- Both immediate bootstrap callbacks stop at admission. The root model is
+  unchanged until the sealed bootstrap mutation application.
+- Dispatching the start action through the application executor synchronously
+  emits four capture transitions and the running-state callback. A subsequent
+  scheduled source transition is also delivered through the executor. All six
+  later facts stop at bounded admission, and all eight callbacks observe the
+  unchanged initial model state.
+- The six later facts are sealed and applied only after callback return. They
+  produce the running state and the exact five-transition capture without
+  callback-to-model mutation.
 - Both execution modes produce identical callback sequences, admitted facts,
   and final model state.
 
@@ -22,6 +30,5 @@ Reproduce with:
 swift test --filter GiftUIHostConfigurationTests
 ```
 
-This is hardware-free host-execution evidence. Concrete executable ownership,
-source transition delivery, action dispatch, and four-preset normalization
-remain later T5/T6 work.
+This is hardware-free host-execution evidence. Concrete four-preset ownership
+and normalization remain Milestone 6 work.

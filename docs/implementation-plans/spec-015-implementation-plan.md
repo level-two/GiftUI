@@ -443,7 +443,7 @@ observable target, action-domain, admission, and application-executor seams.
 ordered transcripts with bounded facts, non-reentrant wake and mutation,
 finite refusal recovery, and exact operational-failure routing.
 
-- [ ] `T5.1` — Join the source, repository, use cases, application executor,
+- [x] `T5.1` — Join the source, repository, use cases, application executor,
       two repository sinks, the SPEC-010/ADR-027 admission adapter, root
       observable model,
       and mutation domain without direct callback-to-model mutation. Prove the
@@ -451,14 +451,14 @@ finite refusal recovery, and exact operational-failure routing.
       bounded later fact admission, same-thread/distinct-executor equivalence,
       and that synchronous repository callbacks stop at admission for a later
       runtime opportunity.
-      **Partial:** one bounded production application-opportunity gate now
-      rejects reentrant and unavailable entry, and the focused deterministic
-      source/repository/use-case fixture proves equivalent same-thread and
-      explicitly queued distinct-executor bootstrap admission. Both immediate
-      repository callbacks stop at the exact `1/32/1` host storage and leave
-      the root model unchanged until sealed mutation application. Concrete
-      transition delivery, action-induced callbacks, and four-root ownership
-      remain with the later T5/T6 slices.
+      The bounded production application-opportunity gate rejects reentrant
+      and unavailable entry. The focused deterministic source/repository/
+      use-case fixture proves equivalent same-thread and explicitly queued
+      distinct-executor delivery for bootstrap, an action-induced callback
+      burst, and a later scheduled source transition. Every synchronous
+      callback stops at bounded admission, leaves the root model unchanged,
+      and applies only from the sealed mutation phase. Concrete four-preset
+      ownership remains the Milestone 6 root work.
 - [x] `T5.2` — Implement non-reentrant wake accumulation and host scheduling.
       An empty-to-nonempty transition requests one wake and returns; serialized
       `runOpportunity()` begins at or after the 250,000-microsecond frame
