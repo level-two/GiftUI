@@ -572,7 +572,10 @@ coalescing behavior.
       reference; Static copies one typed pointer whose lifetime remains owned
       by the generated address-stable root, so copied handles preserve storage
       identity without model retention. Concrete `SignalAnalyzerActionHandler`
-      composition and the complete interaction interleaving corpus remain.
+      composition and the remaining interaction interleaving corpus remain.
+      A production-dispatcher transcript now proves equal initial dispatch,
+      replacement cancellation of a captured former generation, exact current-
+      replacement dispatch, and cancellation after published removal.
 - [ ] `T5.5` — Produce one normalized integrated cycle transcript containing
       callback, admission, seal, application, change report, dirty/wake,
       semantic publication, Drawing, offer, and frame events. Compare all

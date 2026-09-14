@@ -32,3 +32,14 @@ both copies borrow the same generation-0 model. Reproduce with:
 ```sh
 swift test --filter ObservableRootTargetAccess
 ```
+
+`ProductionObservableRootActionDispatchTests` install each profile adapter in
+the production `RuntimeInteractionDispatcher`. Both normalized transcripts
+dispatch generation 0 to model identity 1 exactly once, cancel that captured
+action after replacement, dispatch generation 1 only to replacement identity
+2, and cancel again after published structural removal. The final invocation
+total is exactly three in both profiles. Reproduce with:
+
+```sh
+swift test --filter rootTargetAdaptersProduceEqualDispatchAndCancellation
+```

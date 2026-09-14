@@ -276,6 +276,11 @@ adapter contains only a typed mutable pointer into the generated root. The
 composition root owns and stabilizes that pointee for the adapter's complete
 lifetime; copying the pointer-valued handle preserves model storage identity
 and introduces no existential registry or model retention.
+The shared dispatcher fixture holds committed records constant while changing
+the root beneath each target adapter. This proves final revalidation cancels a
+captured former generation after replacement, routes only the new generation
+to the replacement model, and cancels all dispatch after published removal in
+both profiles.
 
 All root ledgers are fixed records or bit sets. The dynamic and static roots
 run the same ordering and state-transition algorithm. A root never infers a
