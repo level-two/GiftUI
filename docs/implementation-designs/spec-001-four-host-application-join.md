@@ -135,6 +135,11 @@ Dynamic audit. Static roots consume generated address-stable typed model and
 replacement storage. Static generated code contains direct typed access and
 change-report dispatch; it does not introduce an existential registry,
 reflection, `Any`, dynamic collections, or an escaping closure-to-tag bridge.
+The model storage and `StaticObservableRegistrationRecord` are distinct inline
+records. Generated attachment mutates model storage only after sink issuance
+has ended its access to the registration record, so an attach-time direct
+report can reenter the registration record without overlapping access to one
+monolithic root value.
 
 ## Data and Control Flow
 
@@ -295,6 +300,9 @@ permission to weaken the static contract.
 - [`StaticObservableModelStorage.swift`](../../Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift)
   supplies attempt-scoped direct binding over caller-owned inline typed
   storage.
+- [`StaticObservableRegistrationRecord.swift`](../../Sources/GiftUIRuntimeStatic/StaticObservableRegistrationRecord.swift)
+  supplies the separate inline attachment, phase, dirty, retirement, and
+  shutdown record consumed by generated Static dispatch.
 - [`ObservableStateRegistrationBridge.swift`](../../Sources/GiftUIObservableState/ObservableStateRegistrationBridge.swift)
   supplies single-issue attachment and report-route lifecycle to a stable root.
 - [`DynamicObservableModelRegistration.swift`](../../Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift)

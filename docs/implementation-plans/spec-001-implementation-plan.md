@@ -475,8 +475,12 @@ coalescing behavior.
       cleanup, and retirement are integrated. A Dynamic root adapter now joins
       that owner to the production structural workspace, so the workspace's
       nonaliasing generation zero drives attachment, candidate discard retires
-      candidate-only state, and published absence retires live state. Generated Static analyzer
-      registration, atomic replacement, wake integration, and the remaining
+      candidate-only state, and published absence retires live state. Static
+      composition now has a separate inline registration record with the same
+      attachment, attach-time-report, phase, dirty/coalesced, retirement, and
+      shutdown behavior; keeping it separate from typed model storage permits
+      generated direct dispatch without recursive access to one movable value.
+      Generated Static root binding, atomic replacement, wake integration, and the remaining
       equal-profile lifecycle corpus remain.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized
       mutation phase, freeze, complete-root derivation, publication, wake, and

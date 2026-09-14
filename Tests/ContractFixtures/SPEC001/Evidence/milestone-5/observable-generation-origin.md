@@ -93,3 +93,16 @@ with:
 ```sh
 swift test --filter DynamicObservableRootAdapter
 ```
+
+`StaticObservableRegistrationRecordTests` prove the Static profile can keep
+registration bookkeeping in one inline record separate from its typed model
+storage. The record delegates the same attachment and dirty/report lifecycle,
+accepts generation zero, coalesces reports, clears on retirement, and rejects a
+report made synchronously during attachment. This separation is the required
+mechanical seam for a generated noncapturing direct report function: attachment
+does not hold one broad mutable access across both model and registration
+records. Reproduce with:
+
+```sh
+swift test --filter StaticObservableRegistrationRecord
+```
