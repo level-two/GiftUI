@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-06
-updated: 2026-09-12
+updated: 2026-09-14
 related_design_notes:
   - ../implementation-designs/spec-009-execution-state-axes.md
 conformance_report: null
@@ -533,7 +533,7 @@ criterion is ready for conformance review.
       sealed membership, phases, identities, effects, publications, frame
       dispositions, cancellations, event sets, owner failures, and mappings
       field by field against the recording oracle.
-- [ ] `T8.3` — Integrate SPEC-014 recording/backend endpoints and the
+- [x] `T8.3` — Integrate SPEC-014 recording/backend endpoints and the
       SPEC-010/SPEC-011 owner seams only through their approved boundaries.
       Prove Execution does not gain state storage, action dispatch ownership,
       raster meaning, production endpoint storage, target gating, or host
@@ -1147,6 +1147,17 @@ production allocation and dynamic high-water evidence remain blocked on
 SPEC-013, while production backend target inspection remains blocked on
 SPEC-014. See the
 [four-profile checkpoint](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-8/four-profile-checkpoint.md).
+
+`T8.3` is complete: the consolidated owner audit now integrates SPEC-010's
+typed presentation-fact seam, SPEC-011's committed interaction/capture seam,
+and SPEC-014's production one-shot raster endpoint through their approved
+package boundaries. Exact dependency, source-import, at-most-once offer, and
+negative-ownership checks prove Execution gains no state storage, action
+dispatch, raster, endpoint-storage, target, or host-policy authority. T8.2
+remains blocked more narrowly: the SPEC-013 profile targets and shared active
+pipeline exist, but the Dynamic and Static production bindings do not yet
+conform to `ExecutionAdmissionSink` and `ExecutionOpportunityRunner`. See the
+[updated owner integration evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-8/owner-integration-status.md).
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
