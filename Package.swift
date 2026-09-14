@@ -268,6 +268,15 @@ let package = Package(
             name: "SignalAnalyzerPresentation",
             dependencies: ["GiftUI", "GiftUIFailureCore", "SignalAnalyzerDomain"]
         ),
+        .target(
+            name: "SignalAnalyzerHost",
+            dependencies: [
+                "GiftUIExecution",
+                "GiftUIHostConfiguration",
+                "SignalAnalyzerDomain",
+                "SignalAnalyzerPresentation",
+            ]
+        ),
         .testTarget(
             name: "GiftUITests",
             dependencies: ["GiftUI"]
@@ -510,6 +519,7 @@ let package = Package(
                 "GiftUIRuntimeCore",
                 "SignalAnalyzerData",
                 "SignalAnalyzerDomain",
+                "SignalAnalyzerHost",
                 "SignalAnalyzerPresentation",
             ]
         ),

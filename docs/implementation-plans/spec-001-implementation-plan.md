@@ -440,11 +440,13 @@ coalescing behavior.
       **Partial:** the host-owned fixed-storage kernel now enforces exact
       `1/32/1` physical stores, `20/2/6` producer limits, one nonzero
       nonwrapping sequence across stores, ordered sealing, post-seal deferral,
-      at-most-once removal, quiescence, and discard. Concrete executable roots
-      still need to own the recording-proven `SignalAnalyzerPresentationFact`
-      classifier. The recording join now applies sealed facts exactly once in
-      `RuntimeCompletePipeline` mutation order and proves that post-seal facts
-      wait for the next opportunity; dynamic/static executable ownership and
+      at-most-once removal, quiescence, and discard. The application-specific
+      `SignalAnalyzerHost` target now owns the Dynamic production
+      `SignalAnalyzerPresentationFact` classifier, producer-context gate, and
+      exact application rejection mapping. The composition join applies sealed
+      facts exactly once in `RuntimeCompletePipeline` mutation order and proves
+      that post-seal facts wait for the next opportunity; profile-root wake
+      wiring, generated Static endpoint and artifact evidence, and profile
       equivalence remain.
 - [ ] `T5.2` — Bind the root to one observable location, active registration,
       dirty/live bit, and transient replacement record. Run identical dynamic/

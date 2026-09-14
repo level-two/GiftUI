@@ -54,15 +54,16 @@ to the mutation join. `GiftUIExecution` supplies the admission outcomes, wake
 accumulation, sealing vocabulary, and serialized production pipeline.
 SPEC-013 supplies bounded dynamic and static storage lifetimes and audits.
 
-`HostSequencedFactAdmission` now supplies the analyzer-agnostic fixed-storage
+`HostSequencedFactAdmission` supplies the analyzer-agnostic fixed-storage
 kernel: one common sequence, three physical stores, producer counters, sealing,
-ordered removal, quiescence, and discard. The remaining mechanism is the
-target-owned endpoint behind `SignalAnalyzerFactAdmission`. A recording
-composition fixture now proves the exhaustive four-case classification and
-exact rejection mapping. It also drives the sealed facts through
+ordered removal, quiescence, and discard.
+`DynamicSignalAnalyzerHostFactAdmission` in the application-specific
+`SignalAnalyzerHost` target now owns the first concrete endpoint's exhaustive
+four-case classification and exact rejection mapping behind
+`SignalAnalyzerFactAdmission`. The composition fixture also drives sealed facts through
 `RuntimeCompletePipeline.applyAdmittedWork()`, applies them to the real
 `SignalAnalyzerViewModel` exactly once, and proves post-seal deferral. No
-production root owns that endpoint yet.
+profile root wires that endpoint to its wake owner yet.
 
 ## Proposed Internal Organization
 
@@ -225,6 +226,9 @@ algorithm above.
 - [`HostSequencedFactAdmissionTests.swift`](../../Tests/GiftUIHostConfigurationTests/HostSequencedFactAdmissionTests.swift)
   covers physical and producer bounds, sequencing, sealing, deferral,
   quiescence, and nonaliasing exhaustion.
+- [`SignalAnalyzerHostFactAdmission.swift`](../../Sources/SignalAnalyzerHost/SignalAnalyzerHostFactAdmission.swift)
+  supplies the application-specific Dynamic production classifier and exact
+  application rejection mapping.
 - [`SignalAnalyzerHostFactAdmissionTests.swift`](../../Tests/GiftUIHostConfigurationTests/SignalAnalyzerHostFactAdmissionTests.swift)
   proves the target-root classification and application rejection vocabulary
   plus the production-pipeline mutation ordering without placing that switch
@@ -232,5 +236,5 @@ algorithm above.
 - [`fact-admission-cases.tsv`](../../Tests/ContractFixtures/SPEC001/fact-admission-cases.tsv)
   records the current partial T5.1 corpus.
 
-The executable-owned instance of the classifier and profile-equivalence join
-remain to be linked when completed.
+The Dynamic profile-root wake join, generated Static endpoint, and
+profile-equivalence cycle remain to be linked.
