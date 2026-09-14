@@ -513,12 +513,21 @@ profile/backend differences and resource accounting.
       The matching semantic fixture is host-native and the report labels all
       connected execution `not-collected`; no deployment occurred. Evidence is
       in `Tests/ContractFixtures/SPEC015/Evidence/milestone-6/raspberry-pi-armv6.md`.
-- [ ] `T6.3` — Implement the nRF52840 static hardware-free composition root and
+- [x] `T6.3` — Implement the nRF52840 static hardware-free composition root and
       Embedded Swift compile/link fixture for `nrf52840dk/nrf52840` with the
       bundled `armv7em-none-none-eabi` module and Cortex-M4F hard-float flags.
       Verify the exact 480 x 320 tiled projection, 3,840-byte bounds, one slot,
       no framebuffer, and ELF VFP calling convention. Label the result
       cross-build evidence only; no board flashing is part of this task.
+      **Completed:** `signal-analyzer-static` provides the Embedded Swift
+      preset entry and named caller-owned profile, application capture/snapshot,
+      and one-slot raster staging stores. The pinned build emits all required
+      artifacts, verifies ARMv7E-M/VFP ABI, zero heap configuration and
+      allocator entry points, exact projection/storage, and aggregate RAM,
+      flash, and entry-stack costs. The host-native Static oracle supplies the
+      normalized semantic result without converting it into target execution.
+      Evidence is in
+      `Tests/ContractFixtures/SPEC015/Evidence/milestone-6/nrf52840-static.md`.
 - [ ] `T6.4` — Compare graph, limit, audit, resource, capability, action, fact,
       input, semantic, render semantic-scope, layout-scope, traversal-depth,
       text-line, glyph, ordinary/drawing-operation, failure, publication, and

@@ -413,4 +413,6 @@ their normalized evidence is recorded in
 The Pi root is `SignalAnalyzerRaspberryPiARMv6`; its cross-build and
 host-native semantic evidence is recorded in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-6/raspberry-pi-armv6.md`.
-The nRF target evidence link remains pending T6.5.
+The nRF root is the `signal-analyzer-static` firmware application; its
+cross-build and host-native semantic evidence is recorded in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-6/nrf52840-static.md`.

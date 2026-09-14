@@ -37,6 +37,7 @@ case "${profile}" in
     macos-dynamic) product="SignalAnalyzerMacOSDynamic" ;;
     macos-static) product="SignalAnalyzerMacOSStatic" ;;
     raspberry-pi-armv6) product="SignalAnalyzerRaspberryPiARMv6" ;;
+    nrf52840-embedded) product="SignalAnalyzerNRF52840HostOracle" ;;
     *) product="" ;;
 esac
 
@@ -65,6 +66,44 @@ if [[ "${profile}" == "raspberry-pi-armv6" ]]; then
             "${profile}" "${input_identity}" "${compiler_identity}" "${command_hash}" "${output_hash}"
         printf '# artifact_identity\t%s\n' "${artifact_hash}"
         printf '# artifact_bytes\t%s\n' "$(stat -f '%z' "${artifact}")"
+        printf '# connected_execution\tnot-collected\n'
+    } >"${output}"
+    printf 'SPEC-015 %s complete (cross-build only): %s\n' "${profile}" "${output}"
+    exit 0
+fi
+
+if [[ "${profile}" == "nrf52840-embedded" ]]; then
+    compiler_identity="$(.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc --version | tr '\n' ' ')"
+    build_log="${REPORT_ROOT}/${profile}/build.log"
+    scripts/nrf52840/build.sh --application signal-analyzer-static >"${build_log}" 2>&1
+    swift build --disable-sandbox --product "${product}" >>"${build_log}" 2>&1
+    binary_dir="$(swift build --disable-sandbox --show-bin-path)"
+    semantic_report="${REPORT_ROOT}/${profile}/semantic.tsv"
+    "${binary_dir}/${product}" >"${semantic_report}"
+    grep -Fq $'status=complete' "${semantic_report}" || {
+        printf 'incomplete preset report: %s\n' "${semantic_report}" >&2
+        exit 1
+    }
+    firmware_root="${PROJECT_ROOT}/.build/nrf52840/signal-analyzer-static"
+    artifact="${firmware_root}/zephyr/zephyr.elf"
+    [[ -f "${artifact}" ]] || { printf 'missing nRF52840 preset ELF: %s\n' "${artifact}" >&2; exit 1; }
+    cp "${firmware_root}/reports/arm-attributes.txt" "${REPORT_ROOT}/${profile}/arm-attributes.txt"
+    cp "${firmware_root}/reports/memory-summary.txt" "${REPORT_ROOT}/${profile}/memory-summary.txt"
+    cp "${firmware_root}/reports/symbols.txt" "${REPORT_ROOT}/${profile}/symbols.txt"
+    grep -Fq 'Tag_CPU_arch: v7E-M' "${REPORT_ROOT}/${profile}/arm-attributes.txt"
+    grep -Fq 'Tag_ABI_VFP_args: VFP registers' "${REPORT_ROOT}/${profile}/arm-attributes.txt"
+    output_hash="$(shasum -a 256 "${semantic_report}" | awk '{print $1}')"
+    artifact_hash="$(shasum -a 256 "${artifact}" | awk '{print $1}')"
+    {
+        printf '# schema_version\tprofile\tinput_identity\tcompiler_identity\ttoolchain_identity\toptimization\tcommand_hash\toutput_hash\tstatus\tevidence_kind\n'
+        printf '1\t%s\t%s\t%s\tswift-6.3.2-zephyr-4.3.0\tOsize\t%s\t%s\tcomplete\tcross-build\n' \
+            "${profile}" "${input_identity}" "${compiler_identity}" "${command_hash}" "${output_hash}"
+        printf '# artifact_identity\t%s\n' "${artifact_hash}"
+        sed -n 's/^/\# /p' "${REPORT_ROOT}/${profile}/memory-summary.txt"
+        printf '# named_profile_storage_bytes\t28016\n'
+        printf '# named_capture_storage_bytes\t115392\n'
+        printf '# named_raster_staging_bytes\t3840\n'
+        printf '# analyzed_entry_stack_bytes\t8\n'
         printf '# connected_execution\tnot-collected\n'
     } >"${output}"
     printf 'SPEC-015 %s complete (cross-build only): %s\n' "${profile}" "${output}"

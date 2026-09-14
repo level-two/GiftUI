@@ -674,7 +674,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       exact 240 x 240 / 240 x 16 projection. Artifact identity, linked
       dependencies, profile storage, and the open connected PiScreen gate are
       recorded in the Milestone 6 ARMv6 evidence.
-- [ ] `T6.5` — Assemble the `nrf52840dk/nrf52840` static preset with exact
+- [x] `T6.5` — Assemble the `nrf52840dk/nrf52840` static preset with exact
       480 x 320 extent, 480 x 4 RGB565 region, 960-byte row, and 3,840-byte
       raster/payload/in-flight bounds. Cross-build through
       `scripts/nrf52840/build.sh --application`, passing the exact application
@@ -683,6 +683,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       Record emitted `ELF=`, `HEX=`, `MAP=`, `DEVICETREE=`, and `REPORTS=`
       paths and digests, verify VFP ABI, storage and forbidden symbols, and
       keep flashing for `T8.2`.
+      **Completed:** the exact application is `signal-analyzer-static`. Its
+      final ELF retains the Swift preset entry, generated-profile storage,
+      two complete 2,404-transition application stores, and one exact staging
+      slot while remaining within RAM/flash budgets with both heaps disabled.
+      The registered report records every emitted artifact class, ABI,
+      symbols, storage, and resource totals; the equal host-native transcript
+      remains explicitly separate from uncollected connected execution.
 - [ ] `T6.6` — Replace the mock with the conforming fixture source without
       changing Domain, use cases, adapter, ViewModel, or portable hierarchy.
       Separately fault every required GiftUI/host facility and prove validation

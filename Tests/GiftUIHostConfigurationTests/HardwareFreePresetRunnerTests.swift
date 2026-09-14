@@ -39,3 +39,17 @@ import Testing
     #expect(report.semanticChecksum == 360_515_885)
     #expect(report.resolverCalls == 1)
 }
+
+@Test func nRF52840HardwareFreePresetHasExactStaticTiledProjection() throws {
+    let report = try HardwareFreePresetRunner.run(.nrf52840Static)
+
+    #expect(report.profile == .static)
+    #expect(report.logicalWidth == 480)
+    #expect(report.logicalHeight == 320)
+    #expect(report.regionHeight == 4)
+    #expect(report.bytesPerRow == 960)
+    #expect(report.rasterBytes == 3_840)
+    #expect(report.profileStorageBytes == 28_016)
+    #expect(report.semanticChecksum == 360_515_885)
+    #expect(report.resolverCalls == 1)
+}

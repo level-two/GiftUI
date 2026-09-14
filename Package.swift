@@ -38,6 +38,10 @@ let package = Package(
             name: "SignalAnalyzerRaspberryPiARMv6",
             targets: ["SignalAnalyzerRaspberryPiARMv6"]
         ),
+        .executable(
+            name: "SignalAnalyzerNRF52840HostOracle",
+            targets: ["SignalAnalyzerNRF52840HostOracle"]
+        ),
     ],
     dependencies: [
         .package(
@@ -313,6 +317,10 @@ let package = Package(
         ),
         .executableTarget(
             name: "SignalAnalyzerRaspberryPiARMv6",
+            dependencies: ["SignalAnalyzerPresetHarness"]
+        ),
+        .executableTarget(
+            name: "SignalAnalyzerNRF52840HostOracle",
             dependencies: ["SignalAnalyzerPresetHarness"]
         ),
         .testTarget(
