@@ -1159,6 +1159,18 @@ pipeline exist, but the Dynamic and Static production bindings do not yet
 conform to `ExecutionAdmissionSink` and `ExecutionOpportunityRunner`. See the
 [updated owner integration evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-8/owner-integration-status.md).
 
+The SPEC-014 portion of `T8.5` has advanced. At revision `11fd346`, all four
+production-backend collectors completed their substantive tests, declaration
+checks, link builds, resource probes, and target inspection. The ARMv6 image
+is EABI5 hard-float for `armv6-unknown-linux-gnueabihf`; the nRF image is
+ARMv7E-M/VFPv4-D16 with VFP-register arguments and no retained framebuffer or
+display list. The SPEC-014 drivers remain fail-closed on one upstream registry
+defect: their module-contract check does not yet register SPEC-015's approved
+`GiftUIHostConfiguration` reverse edges. T8.5 remains incomplete pending that
+owner correction and SPEC-013's production runtime-image evidence; T8.4
+remains blocked on SPEC-013 allocation/high-water evidence. See the
+[four-profile checkpoint](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-8/four-profile-checkpoint.md).
+
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains
 `null` until `T8.6` creates it, and the Specification's final lifecycle
