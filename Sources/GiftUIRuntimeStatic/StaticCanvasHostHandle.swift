@@ -39,37 +39,19 @@ package enum StaticCanvasHostValidation {
 
 /// A copyable, unretained view of one host-owned observable model location.
 ///
-/// The handle is created only inside `StaticCanvasHostModelLocation.withHandle`.
-/// That scope is the host's explicit proof that the address remains stable and
-/// outlives every generated Canvas invocation performed by `body`.
+/// The handle is created only from a host-owned address. Constructing it is the
+/// host's explicit proof that the address remains stable and outlives every
+/// generated Canvas invocation that receives the handle.
 package struct StaticCanvasObservableModelHandle<Model>: @unchecked Sendable {
     private let location: UnsafePointer<Model>
 
-    fileprivate init(location: UnsafePointer<Model>) {
-        self.location = location
+    package init(hostOwnedLocation: UnsafePointer<Model>) {
+        location = hostOwnedLocation
     }
 
     package borrowing func withModel<Result>(
         _ body: (borrowing Model) -> Result
     ) -> Result {
         body(location.pointee)
-    }
-}
-
-/// Caller-owned inline storage that supplies the only approved Static Canvas
-/// observable-model handle construction seam.
-package struct StaticCanvasHostModelLocation<Model>: ~Copyable {
-    private var model: Model
-
-    package init(model: consuming Model) {
-        self.model = consume model
-    }
-
-    package mutating func withHandle<Result>(
-        _ body: (StaticCanvasObservableModelHandle<Model>) throws -> Result
-    ) rethrows -> Result {
-        try withUnsafePointer(to: &model) { location in
-            try body(StaticCanvasObservableModelHandle(location: location))
-        }
     }
 }

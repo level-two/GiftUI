@@ -88,10 +88,11 @@ private final class StaticCanvasHandleModel {
 }
 
 @Test func staticCanvasObservableHandleBorrowsOneAddressStableHostLocation() {
-    var location = StaticCanvasHostModelLocation(model: StaticCanvasHandleModel(value: 17))
+    var model = StaticCanvasHandleModel(value: 17)
     var firstAddress: UInt?
 
-    location.withHandle { handle in
+    withUnsafePointer(to: &model) { location in
+        let handle = StaticCanvasObservableModelHandle(hostOwnedLocation: location)
         let first = handle.withModel { model in
             firstAddress = UInt(bitPattern: Unmanaged.passUnretained(model).toOpaque())
             return model.value
