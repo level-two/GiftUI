@@ -482,7 +482,7 @@ interaction and dispatch transcripts at equal limits.
       exceeds SPEC-009 `maximumCommittedActions`. Equal configured limits must
       accept/fail at the same row and normalize to byte-for-byte equivalent
       semantic fields.
-- [ ] `T7.4` — Consume and verify SPEC-001's implemented
+- [x] `T7.4` — Consume and verify SPEC-001's implemented
       `SignalAnalyzerAction` codes `0...5` and total
       `SignalAnalyzerActionHandler` switch: Start, Stop, Clear, and 1/2/5-second
       selection. SPEC-011 fixtures may reproduce the approved six-case mapping,
@@ -815,3 +815,10 @@ compares one normalized transcript. Existing Runtime profile validation fixes
 candidate/committed/action/hit/source capacities and rejects Interaction
 actions above Execution's committed-action limit before startup. See the
 [profile workspace evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t7-3-profile-workspaces.md).
+
+`T7.4` is complete. The production Signal Analyzer action enum remains the
+total code set `0...5`, and one immutable typed handler implements Start, Stop,
+Clear, and 1/2/5-second selection. Dynamic and Static host dispatchers construct
+that same handler, revalidate the current root model target, reject invalid
+codes, and produce equal replacement interleavings. See the
+[Signal Analyzer dispatch evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t7-4-signal-analyzer-dispatch.md).
