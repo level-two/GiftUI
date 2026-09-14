@@ -28,6 +28,16 @@ private struct ProductionModelStorageTranscript: Equatable {
     let storedIdentity: UInt8?
 }
 
+private struct ProductionReplacementStorageTranscript: Equatable {
+    let liveBeforeCommit: UInt8?
+    let firstStageAccepted: Bool
+    let secondStageAccepted: Bool
+    let formerIdentity: UInt8?
+    let committedIdentity: UInt8?
+    let discardedIdentity: UInt8?
+    let liveAfterDiscard: UInt8?
+}
+
 private func dynamicModelStorageTranscript() -> ProductionModelStorageTranscript {
     let storage = DynamicObservableModelStorage<ProfileBoundModel>()
     var routedReplacement: ProfileBoundModel?
@@ -79,6 +89,57 @@ private func staticModelStorageTranscript() -> ProductionModelStorageTranscript 
     )
 }
 
+private func dynamicReplacementStorageTranscript()
+    -> ProductionReplacementStorageTranscript
+{
+    let storage = DynamicObservableModelStorage<ProfileBoundModel>()
+    var state = State(wrappedValue: ProfileBoundModel(identity: 1))
+    _ = storage.bind(&state, replacementRoute: { _ in })
+    let firstStage = storage.stageReplacement(ProfileBoundModel(identity: 2))
+    let secondStage = storage.stageReplacement(ProfileBoundModel(identity: 3))
+    let liveBeforeCommit = storage.withModel { $0.identity }
+    let former = storage.commitReplacement()
+    let committed = storage.withModel { $0.identity }
+    _ = storage.stageReplacement(ProfileBoundModel(identity: 4))
+    let discarded = storage.discardReplacement()
+    return ProductionReplacementStorageTranscript(
+        liveBeforeCommit: liveBeforeCommit,
+        firstStageAccepted: firstStage,
+        secondStageAccepted: secondStage,
+        formerIdentity: former?.identity,
+        committedIdentity: committed,
+        discardedIdentity: discarded?.identity,
+        liveAfterDiscard: storage.withModel { $0.identity }
+    )
+}
+
+private func staticReplacementStorageTranscript()
+    -> ProductionReplacementStorageTranscript
+{
+    var storage = StaticObservableModelStorage<ProfileBoundModel>()
+    _ = storage.withBoundState(
+        State(wrappedValue: ProfileBoundModel(identity: 1)),
+        replacementRoute: { _ in },
+        body: { _ in () }
+    )
+    let firstStage = storage.stageReplacement(ProfileBoundModel(identity: 2))
+    let secondStage = storage.stageReplacement(ProfileBoundModel(identity: 3))
+    let liveBeforeCommit = storage.withModel { $0.identity }
+    let former = storage.commitReplacement()
+    let committed = storage.withModel { $0.identity }
+    _ = storage.stageReplacement(ProfileBoundModel(identity: 4))
+    let discarded = storage.discardReplacement()
+    return ProductionReplacementStorageTranscript(
+        liveBeforeCommit: liveBeforeCommit,
+        firstStageAccepted: firstStage,
+        secondStageAccepted: secondStage,
+        formerIdentity: former?.identity,
+        committedIdentity: committed,
+        discardedIdentity: discarded?.identity,
+        liveAfterDiscard: storage.withModel { $0.identity }
+    )
+}
+
 private func operation(_ result: ObservableStateResult) -> ObservableStateOperational {
     guard case .success(let operation) = result else {
         Issue.record("model storage binding failed: \(result)")
@@ -108,4 +169,18 @@ private func bound(
     #expect(dynamic.repeatedReadIdentity == 1)
     #expect(dynamic.routedReplacementIdentity == 3)
     #expect(dynamic.storedIdentity == 1)
+}
+
+@Test func productionReplacementStorageIsProfileEquivalent() {
+    let dynamic = dynamicReplacementStorageTranscript()
+    let fixed = staticReplacementStorageTranscript()
+
+    #expect(dynamic == fixed)
+    #expect(dynamic.liveBeforeCommit == 1)
+    #expect(dynamic.firstStageAccepted)
+    #expect(!dynamic.secondStageAccepted)
+    #expect(dynamic.formerIdentity == 1)
+    #expect(dynamic.committedIdentity == 2)
+    #expect(dynamic.discardedIdentity == 4)
+    #expect(dynamic.liveAfterDiscard == 2)
 }

@@ -35,12 +35,13 @@ swift test --filter DynamicObservableModelStorage
 Static generated binding, model attachment, atomic replacement, dirty/live
 state, and the complete equal-profile lifecycle remain pending.
 
-The Static profile now supplies one caller-owned inline typed model optional.
+The Static profile now supplies caller-owned inline typed live and candidate
+model optionals.
 Its binding exists only for the synchronous body call, captures a direct
 pointer to that storage, preserves the first initializer, discards a repeated
 initializer, and routes assignment without changing the live value. The
-storage layout fixture proves the helper adds no field beyond the typed
-optional. Reproduce with:
+storage layout fixture proves the helper adds no field beyond those two typed
+optionals. Reproduce with:
 
 ```sh
 swift test --filter StaticObservableModelStorage
@@ -58,6 +59,15 @@ identity 1 still installed. Reproduce the comparison with:
 
 ```sh
 swift test --filter productionModelStorageBindingsAreProfileEquivalent
+```
+
+The same conformance file also compares the physical replacement position.
+Both profiles preserve live identity 1 while candidate 2 is staged, reject a
+second candidate, return former identity 1 only when committing identity 2,
+and discard candidate 4 while identity 2 stays live. Reproduce with:
+
+```sh
+swift test --filter productionReplacementStorageIsProfileEquivalent
 ```
 
 `ObservableStateRegistrationBridgeTests` exercise the root-facing registration

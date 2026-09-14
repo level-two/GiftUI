@@ -461,9 +461,12 @@ coalescing behavior.
       state, and rejects rebinding one wrapper. Static profile caller-owned
       inline typed storage now performs the same initializer preservation and
       assignment routing within one attempt-scoped direct binding whose wrapper
-      and pointer cannot escape. One shared production conformance transcript
-      proves these Dynamic and Static mechanisms expose equal materialization,
-      preservation, read, assignment-routing, and stored-model results.
+      and pointer cannot escape. Both typed stores also own exactly one separate
+      candidate-model position: a second stage is rejected, commit swaps only
+      after staging, and discard preserves the live model. Shared production
+      conformance transcripts prove these Dynamic and Static mechanisms expose
+      equal materialization, preservation, read, assignment-routing, staging,
+      commit, discard, and stored-model results.
       A focused package registration bridge now composes the existing finite
       lifecycle into single sink issuance, attach-time report poisoning, exact
       attachment-return activation, stale-report rejection, retirement, and

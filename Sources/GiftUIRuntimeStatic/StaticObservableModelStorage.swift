@@ -9,9 +9,11 @@ package enum StaticObservableModelBindingOutcome<Result> {
 package struct StaticObservableModelStorage<Model>: ~Copyable
 where Model: _GiftUIObservableReference {
     private var model: Model?
+    private var candidate: Model?
 
     package init() {
         model = nil
+        candidate = nil
     }
 
     package var isOccupied: Bool {
@@ -75,5 +77,46 @@ where Model: _GiftUIObservableReference {
     package mutating func removeModel() -> Model? {
         defer { model = nil }
         return model
+    }
+
+    package var hasStagedReplacement: Bool {
+        candidate != nil
+    }
+
+    package mutating func stageReplacement(
+        _ replacement: consuming Model
+    ) -> Bool {
+        guard candidate == nil else { return false }
+        candidate = replacement
+        return true
+    }
+
+    package mutating func attachCandidateChangeSink(
+        _ sink: consuming _GiftUIObservableChangeSink
+    ) -> _GiftUIObservationAttachment? {
+        guard candidate != nil else { return nil }
+        return candidate!._giftUIAttachChangeSink(consume sink)
+    }
+
+    package mutating func detachCandidateChangeSink(
+        _ attachment: _GiftUIObservationAttachment
+    ) -> Bool {
+        guard candidate != nil else { return false }
+        candidate!._giftUIDetachChangeSink(attachment)
+        return true
+    }
+
+    package mutating func commitReplacement() -> Model? {
+        guard let candidate else { return nil }
+        let former = model
+        model = candidate
+        self.candidate = nil
+        return former
+    }
+
+    @discardableResult
+    package mutating func discardReplacement() -> Model? {
+        defer { candidate = nil }
+        return candidate
     }
 }

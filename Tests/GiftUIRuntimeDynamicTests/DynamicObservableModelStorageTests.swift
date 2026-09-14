@@ -58,3 +58,25 @@ private final class DynamicStorageModel: _GiftUIObservableReference {
     #expect(storage.bind(&state) { _ in } == .failure(.invariantViolation))
     #expect(storage.withModel { $0.identity } == 4)
 }
+
+@Test func dynamicModelStorageStagesReplacementApartFromTheLiveModel() {
+    let storage = DynamicObservableModelStorage<DynamicStorageModel>()
+    var state = State(wrappedValue: DynamicStorageModel(identity: 1))
+    #expect(
+        storage.bind(&state, replacementRoute: { _ in })
+            == .success(.materialized)
+    )
+
+    #expect(storage.stageReplacement(DynamicStorageModel(identity: 2)))
+    #expect(storage.hasStagedReplacement)
+    #expect(!storage.stageReplacement(DynamicStorageModel(identity: 3)))
+    #expect(storage.withModel { $0.identity } == 1)
+    let former = storage.commitReplacement()
+    #expect(former?.identity == 1)
+    #expect(storage.withModel { $0.identity } == 2)
+    #expect(!storage.hasStagedReplacement)
+
+    #expect(storage.stageReplacement(DynamicStorageModel(identity: 4)))
+    #expect(storage.discardReplacement()?.identity == 4)
+    #expect(storage.withModel { $0.identity } == 2)
+}

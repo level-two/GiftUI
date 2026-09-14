@@ -67,10 +67,12 @@ dynamic and static slot storage. It deliberately does not consume or own the
 `State` initializer; its `encounter` method only records the association.
 `DynamicObservableModelStorage` now supplies the first bounded Dynamic-profile
 typed storage slice: it binds a transient wrapper to the preserved model and
-routes assignment outward for later atomic replacement.
+routes assignment outward for later atomic replacement. Its second typed
+position stages one candidate without disturbing the live model until commit.
 `StaticObservableModelStorage` supplies the matching caller-owned inline typed
 value and confines its direct pointer binding to one synchronous traversal
-attempt; final address stability remains a generated-root responsibility.
+attempt. It contains the same distinct live and candidate positions; final
+address stability remains a generated-root responsibility.
 `ObservableStateRegistrationBridge` exposes the existing focused registration
 lifecycle to those roots without exposing or duplicating its state machine. It
 also owns the profile-common mutation-phase gate and dirty/coalesced bit so a
