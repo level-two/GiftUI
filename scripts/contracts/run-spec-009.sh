@@ -43,6 +43,11 @@ declared_inputs() {
         find "$PROJECT_ROOT/Sources/GiftUIExecution" \
             "$PROJECT_ROOT/Tests/GiftUIExecutionTests" -type f -print
         printf '%s\n' \
+            "$PROJECT_ROOT/Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift" \
+            "$PROJECT_ROOT/Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift" \
+            "$PROJECT_ROOT/Tests/ContractFixtures/SPEC013/Evidence/milestone-6/storage-boundaries.md" \
+            "$PROJECT_ROOT/Tests/ContractFixtures/SPEC013/Evidence/milestone-7/target-inspection.md" \
+            "$PROJECT_ROOT/Tests/ContractFixtures/SPEC014/downstream-consumers.tsv" \
             "$PROJECT_ROOT/Package.swift" \
             "$PROJECT_ROOT/Tests/ContractFixtures/SPEC002/target-dependencies.yaml" \
             "$PROJECT_ROOT/Tests/ContractFixtures/SPEC003/target-boundaries.yaml" \
@@ -96,6 +101,8 @@ declared_inputs() {
             "$SCRIPT_DIR/check-spec-009-run-cycle-values.rb" \
             "$SCRIPT_DIR/check-spec-009-value-layouts.rb" \
             "$SCRIPT_DIR/check-spec-009-value-profiles.sh" \
+            "$SCRIPT_DIR/check-spec-013-storage-boundaries.rb" \
+            "$SCRIPT_DIR/check-spec-014-module-contract.rb" \
             "$SCRIPT_DIR/report-input-identity.rb" \
             "$SCRIPT_DIR/publish-contract-report.rb" \
             "$SCRIPT_DIR/verify-contract-report.rb" \
@@ -110,6 +117,9 @@ mkdir -p "$REPORT_ROOT"
 report_dir="$REPORT_ROOT/.tmp-$profile-$$"
 [[ ! -e "$report_dir" ]] || fail "temporary report directory exists: $report_dir"
 mkdir -p "$report_dir"
+mkdir -p "$report_dir/module-cache"
+export CLANG_MODULE_CACHE_PATH="$report_dir/module-cache"
+export SWIFTPM_MODULECACHE_OVERRIDE="$report_dir/module-cache"
 inputs_path="$report_dir/input-hashes.tsv"
 identity_metadata="$(declared_inputs | "$SCRIPT_DIR/report-input-identity.rb" \
     --root "$PROJECT_ROOT" --revision "$revision" --inventory "$inputs_path")"
@@ -244,9 +254,9 @@ record_nrf52840_identity() {
     printf 'execution-target\tcomplete\tGiftUIExecution exists with its exact approved dependency edge\n'
     printf 'fixture-corpus\tcomplete\tall six files contain one reciprocal 35-case corpus\n'
     printf 'value-layouts\tcomplete\tT1.1 through T1.5 compile and pass 31 target-IR layout checks\n'
-    printf 'allocations\tblocked\tproduction profile allocation and high-water evidence waits for SPEC-013\n'
+    printf 'allocations\tcomplete\tSPEC-013 production exact-limit, high-water, and Static zero-heap evidence is integrated\n'
     printf 'dependency-checks\tcomplete\tGiftUIExecution target graph rows are active and acyclic\n'
-    printf 'target-inspection\tblocked\tproduction runtime and backend target images wait for SPEC-013 and SPEC-014\n'
+    printf 'target-inspection\tcomplete\tSPEC-013 runtime and SPEC-014 backend cross-build evidence is integrated\n'
     printf 'acceptance-evidence\tmissing\tEX-001 through EX-014 remain pending\n'
 } >"$prerequisites_path"
 
@@ -268,6 +278,13 @@ record_command "$SCRIPT_DIR/check-spec-009-owner-instrumentation.rb"
 "$SCRIPT_DIR/check-spec-009-owner-instrumentation.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-owner-integration.rb"
 "$SCRIPT_DIR/check-spec-009-owner-integration.rb" >>"$log_path" 2>&1
+record_command "$SCRIPT_DIR/check-spec-013-storage-boundaries.rb"
+"$SCRIPT_DIR/check-spec-013-storage-boundaries.rb" >>"$log_path" 2>&1
+package_json="$report_dir/package.json"
+record_command swift package --disable-sandbox --package-path "$PROJECT_ROOT" dump-package
+swift package --disable-sandbox --package-path "$PROJECT_ROOT" dump-package >"$package_json"
+record_command "$SCRIPT_DIR/check-spec-014-module-contract.rb"
+"$SCRIPT_DIR/check-spec-014-module-contract.rb" <"$package_json" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-admission-values.rb"
 "$SCRIPT_DIR/check-spec-009-admission-values.rb" >>"$log_path" 2>&1
 record_command "$SCRIPT_DIR/check-spec-009-admission-controller.rb"

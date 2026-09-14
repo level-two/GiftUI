@@ -544,7 +544,7 @@ criterion is ready for conformance review.
       `OwnerFailure <= 4` bytes, generic result ceilings, zero heap in all
       static execution paths, and bounded dynamic queue/workspace high-water
       at the approved fixture limits.
-- [ ] `T8.5` — Run macOS dynamic, macOS static, Raspberry Pi ARMv6, and
+- [x] `T8.5` — Run macOS dynamic, macOS static, Raspberry Pi ARMv6, and
       nRF52840 Embedded Swift drivers. Preflight cross-compilation with
       `scripts/raspberry-pi/doctor.sh --probe` and
       `scripts/nrf52840/doctor.sh --probe` under their repository skills and
@@ -1191,6 +1191,19 @@ binding adapter rather than making the complete noncopyable binding a protocol
 witness; this keeps its execution seam independent from unrelated generic
 observable-state bodies. See the
 [production resource evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-8/production-resources.md).
+
+`T8.5` is complete. Both repository toolchain probes pass from their tracked
+project-local installations, and all four standalone SPEC-009 drivers publish
+one shared run ID with complete compiler, SDK, optimization, command, fixture,
+layout, allocation/high-water dependency, module-graph, and target-inspection
+prerequisites. SPEC-013 supplies the exact Static allocation and runtime-image
+evidence; SPEC-014 supplies the backend link-map, section, resource, and image
+inspection evidence after its downstream-consumer registry correction. The Pi
+artifact is exact ARMv6 EABI5 hard-float and the nRF artifact is Cortex-M4F
+hard-float. Every report truthfully records no remote access, deployment,
+service restart, simulator execution, connected-target execution, or flashing.
+See the
+[four-profile driver evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-8/four-profile-drivers.md).
 
 Plan completion will mean every task has a recorded disposition; it will not
 mean SPEC-009 conforms or is `implemented`. The conformance report remains

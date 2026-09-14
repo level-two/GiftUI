@@ -24,10 +24,9 @@ Their substantive profile work passed:
   no retained framebuffer/display list, and exact 480 x 4 bounds. No target
   was connected or flashed.
 
-The four SPEC-014 drivers remain fail-closed because their module-contract
-registry has not incorporated SPEC-015's later approved
-`GiftUIHostConfiguration` reverse edges to Backend Integration, Display Core,
-Raster Core, and Surface Core. SPEC-013 production admission/opportunity
-coordinators are still required for allocation, dynamic queue/workspace
-high-water, and complete runtime-image evidence. Consequently T8.4 and T8.5
-remain unchecked; the missing backend owner is no longer their blocker.
+This historical checkpoint's blockers are resolved. SPEC-014 now records the
+SPEC-015 `GiftUIHostConfiguration` reverse edges as downstream consumers, and
+SPEC-013 supplies the production admission/opportunity coordinators, exact
+dynamic queue/workspace high-water, Static zero-heap, and runtime-image
+evidence. T8.4 and T8.5 are closed by `production-resources.md` and
+`four-profile-drivers.md`; this file remains the earlier checkpoint record.
