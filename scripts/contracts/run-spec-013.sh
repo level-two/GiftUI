@@ -194,6 +194,8 @@ run_required normalized-report "${SCRIPT_DIR}/report-spec-013-profile.rb" \
     --command "scripts/contracts/run-spec-013.sh --profile ${profile}"
 
 printf 'pristine-profile-collection\tcomplete\tT7.4 two-build collection is recorded separately\n' >>"${prerequisites_path}"
+failures=$((failures + 1))
+printf 'signal-analyzer-workload\tblocked\tT7.5 awaits the SPEC-001 and SPEC-015 complete application runtime cycle\n' >>"${prerequisites_path}"
 if [[ "${failures}" -eq 0 ]]; then
     printf 'status=complete\nexit_code=0\nblocking_count=0\n' >>"${metadata_path}"
 else
@@ -210,5 +212,5 @@ if ! "${SCRIPT_DIR}/publish-contract-report.rb" \
     printf 'error: SPEC-013 %s report publication failed\n' "${profile}" >&2
     exit 1
 fi
-printf 'SPEC-013 %s report completed; run ID: %s\n' "${profile}" "${run_id}"
+printf 'SPEC-013 %s report finalized with T7.5 workload blocked; run ID: %s\n' "${profile}" "${run_id}" >&2
 [[ "${failures}" -eq 0 ]] || exit 1

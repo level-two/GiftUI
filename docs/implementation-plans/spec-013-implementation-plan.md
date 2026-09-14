@@ -453,6 +453,12 @@ field.
       Wave 7 configuration are available. Record a blocked disposition rather
       than inventing production capacities before SPEC-015's owning
       implementation generates and validates them.
+      **Blocked:** SPEC-015 has generated and validated the exact schema-2
+      workload and four presets, and SPEC-001 has completed the portable
+      Presentation source, but the complete application/runtime cycle consumed
+      by this measurement is not yet available. SPEC-001 `T5.1`-`T5.5` and
+      SPEC-015 `T4`/`T5` still own that assembly. A focused pipeline recorder or
+      synthetic loop cannot be reported as Signal Analyzer cycle timing.
 
 ### Milestone 8: Downstream Integration and Conformance Preparation
 
@@ -937,6 +943,15 @@ cross-build and explicitly record no hardware execution or connected target.
 Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-7/pristine-profile-builds.md`.
 T7.5 is next.
+
+`T7.5` is blocked at the production-cycle boundary. The exact SPEC-015
+schema-2 workload, generated presets, and complete Runtime limits exist, as
+does SPEC-001's portable Presentation source. The assembled application/runtime
+cycle that must consume them does not: SPEC-001 `T5.1`-`T5.5` and SPEC-015
+`T4`/`T5` remain incomplete. SPEC-013 therefore does not substitute its focused
+pipeline recorder or a synthetic work loop for the required timing/resource
+workload. The prerequisite audit is recorded in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-7/signal-analyzer-workload-blocker.md`.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

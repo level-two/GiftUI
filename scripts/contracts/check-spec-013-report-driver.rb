@@ -53,5 +53,8 @@ fail_check("driver must forbid connected-target evidence") unless driver_text.in
 fail_check("driver must record the separately collected pristine evidence") unless driver_text.include?(
   "T7.4 two-build collection is recorded separately"
 )
+fail_check("driver must leave the production workload explicitly blocked") unless driver_text.include?(
+  "T7.5 awaits the SPEC-001 and SPEC-015 complete application runtime cycle"
+)
 
 puts "SPEC-013 report driver passed: 41 numeric limits, complete normalized fields, and 4 immutable report modes."
