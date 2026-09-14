@@ -10,14 +10,53 @@ import Testing
 
 private final class ActionRepository: SignalAcquisitionRepository {
     private(set) var calls: [String] = []
+    var onStart: (() -> Void)?
 
     func startObservingCapture(sink: some SignalCaptureSink) {}
     func stopObservingCapture() {}
     func startObservingAcquisitionState(sink: some AcquisitionStateSink) {}
     func stopObservingAcquisitionState() {}
-    func start() throws { calls.append("start") }
+    func start() throws {
+        calls.append("start")
+        onStart?()
+    }
     func stop() { calls.append("stop") }
     func clear() { calls.append("clear") }
+}
+
+private enum ActionApplicationExecutorMode {
+    case sameThread
+    case distinctExecutor
+}
+
+private final class ActionApplicationExecutor {
+    let mode: ActionApplicationExecutorMode
+    private var pending: (() -> Void)?
+
+    init(mode: ActionApplicationExecutorMode) {
+        self.mode = mode
+    }
+
+    func submit(_ operation: @escaping () -> Void) {
+        switch mode {
+        case .sameThread: operation()
+        case .distinctExecutor: pending = operation
+        }
+    }
+
+    func drain() {
+        let operation = pending
+        pending = nil
+        operation?()
+    }
+}
+
+private struct ActionCallbackTranscript: Equatable {
+    let dispatch: InteractionDispatchResult
+    let outcomeBeforeDrain: SignalSinkDeliveryOutcome?
+    let stateBeforeLaterMutation: SignalAnalyzerViewState
+    let admittedFact: SignalAnalyzerPresentationFact?
+    let stateAfterLaterMutation: SignalAnalyzerViewState
 }
 
 private struct AnalyzerActionRecords: InteractionCommittedActionView {
@@ -152,6 +191,69 @@ func invalidAnalyzerActionCodesFailClosed(code: UInt16) {
     #expect(weakFormer == nil)
     #expect(dispatcher.dispatch(captured) == .cancelled)
     #expect(repository.calls.isEmpty)
+}
+
+@Test func sameThreadAndDistinctActionCallbacksStopAtLaterFactAdmission() {
+    let sameThread = runActionCallback(mode: .sameThread)
+    let distinct = runActionCallback(mode: .distinctExecutor)
+
+    #expect(sameThread.dispatch == .dispatched)
+    #expect(distinct.dispatch == .dispatched)
+    #expect(sameThread.outcomeBeforeDrain == .accepted(sequence: 1))
+    #expect(distinct.outcomeBeforeDrain == nil)
+    #expect(sameThread.stateBeforeLaterMutation == SignalAnalyzerViewState())
+    #expect(distinct.stateBeforeLaterMutation == SignalAnalyzerViewState())
+    #expect(sameThread.admittedFact == .acquisitionState(.running))
+    #expect(distinct.admittedFact == .acquisitionState(.running))
+    #expect(sameThread.stateAfterLaterMutation == distinct.stateAfterLaterMutation)
+    #expect(sameThread.stateAfterLaterMutation.acquisitionState == .running)
+}
+
+private func runActionCallback(
+    mode: ActionApplicationExecutorMode
+) -> ActionCallbackTranscript {
+    let admission = DynamicSignalAnalyzerHostFactAdmission()
+    let executor = ActionApplicationExecutor(mode: mode)
+    let repository = ActionRepository()
+    let model = makeActionModel(repository: repository)
+    let root = makeActionRoot(model)
+    var callbackOutcome: SignalSinkDeliveryOutcome?
+    repository.onStart = {
+        executor.submit {
+            callbackOutcome = admission.submit(.acquisitionState(.running))
+        }
+    }
+    var dispatcher = DynamicSignalAnalyzerActionDispatcher.make(
+        records: AnalyzerActionRecords(
+            record: analyzerActionRecord(code: SignalAnalyzerAction.start.rawValue)
+        ),
+        root: root
+    )
+
+    #expect(admission.beginProducer(.action))
+    let dispatch = dispatcher.dispatch(
+        CapturedAction(identity: 4, generation: ActionGeneration(rawValue: 8))
+    )
+    let outcomeBeforeDrain = callbackOutcome
+    let stateBeforeLaterMutation = model.state
+    executor.drain()
+    admission.endProducer()
+
+    #expect(callbackOutcome == .accepted(sequence: 1))
+    #expect(admission.seal())
+    let admittedFact = admission.takeNextSealed()?.2
+    if let admittedFact {
+        root.setExecutionPhase(.mutating)
+        #expect(model.apply(admittedFact) == .applied(changed: true))
+        #expect(root.isDirty)
+    }
+    return ActionCallbackTranscript(
+        dispatch: dispatch,
+        outcomeBeforeDrain: outcomeBeforeDrain,
+        stateBeforeLaterMutation: stateBeforeLaterMutation,
+        admittedFact: admittedFact,
+        stateAfterLaterMutation: model.state
+    )
 }
 
 private func makeActionRoot(

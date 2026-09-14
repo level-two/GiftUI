@@ -570,6 +570,10 @@ coalescing behavior.
       cross-profile evidence proves the next mutation can dirty once again.
       Semantic-action application, retry/failure wake disposition, generated
       Static fact admission, and concrete executable roots remain.
+      The production Dynamic Start dispatch now also drives equal same-thread
+      and deferred application callbacks: each returns through sequenced fact
+      admission while the observable model remains unchanged, and only later
+      fact application installs the running state.
 - [ ] `T5.4` — Bind the six-action handler to the current model generation at
       the runtime coordinator. Exhaust exact dispatch, no capture/retention,
       pointer-down and admitted-action replacement, removal, failed/staged

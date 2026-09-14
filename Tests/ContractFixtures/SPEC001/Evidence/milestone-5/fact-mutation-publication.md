@@ -16,14 +16,22 @@ The cross-profile root transcript separately proves that a successful repeated
 publication clears Dynamic and Static dirty state equally. The registration
 bridge test then proves a later mutation begins a fresh dirtied/coalesced epoch.
 
+The production Dynamic action composition also dispatches Start through
+same-thread and deferred application executors. Both callbacks leave the model
+at its initial state, admit the same sequenced running-state fact, and change
+the model only when that fact is applied later. The deferred executor has no
+admission outcome until drained; the same-thread executor returns from
+admission without entering observable mutation.
+
 Reproduce with:
 
 ```sh
 swift test --filter SignalAnalyzerHostFactAdmissionTests
 swift test --filter ObservableStateRegistrationBridgeTests
 swift test --filter ProductionObservableRootAdapterTests
+swift test --filter sameThreadAndDistinctActionCallbacksStopAtLaterFactAdmission
 ```
 
-The concrete semantic-action join, retry/failure wake disposition, generated
+The complete semantic-action queue join, retry/failure wake disposition, generated
 Static fact endpoint, and executable profile roots remain assigned to later
 T5.3/T5.4/T6 slices. This evidence does not claim T5.3 complete.
