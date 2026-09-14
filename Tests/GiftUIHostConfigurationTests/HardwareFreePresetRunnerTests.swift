@@ -25,3 +25,17 @@ import Testing
     #expect(dynamic.profileStorageBytes == 30_416)
     #expect(fixed.profileStorageBytes == 28_016)
 }
+
+@Test func raspberryPiHardwareFreePresetHasExactDynamicTiledProjection() throws {
+    let report = try HardwareFreePresetRunner.run(.raspberryPiDynamic)
+
+    #expect(report.profile == .dynamic)
+    #expect(report.logicalWidth == 240)
+    #expect(report.logicalHeight == 240)
+    #expect(report.regionHeight == 16)
+    #expect(report.bytesPerRow == 480)
+    #expect(report.rasterBytes == 7_680)
+    #expect(report.profileStorageBytes == 30_416)
+    #expect(report.semanticChecksum == 360_515_885)
+    #expect(report.resolverCalls == 1)
+}

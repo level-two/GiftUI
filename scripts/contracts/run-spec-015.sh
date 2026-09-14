@@ -36,8 +36,40 @@ output="${REPORT_ROOT}/${profile}/report.tsv"
 case "${profile}" in
     macos-dynamic) product="SignalAnalyzerMacOSDynamic" ;;
     macos-static) product="SignalAnalyzerMacOSStatic" ;;
+    raspberry-pi-armv6) product="SignalAnalyzerRaspberryPiARMv6" ;;
     *) product="" ;;
 esac
+
+if [[ "${profile}" == "raspberry-pi-armv6" ]]; then
+    compiler_identity="$(.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc --version | tr '\n' ' ')"
+    build_log="${REPORT_ROOT}/${profile}/build.log"
+    scripts/raspberry-pi/build.sh --product "${product}" >"${build_log}" 2>&1
+    artifact="${PROJECT_ROOT}/.build/raspberry-pi/artifacts/${product}"
+    [[ -x "${artifact}" ]] || { printf 'missing ARMv6 preset executable: %s\n' "${artifact}" >&2; exit 1; }
+    swift build --disable-sandbox --product "${product}" >>"${build_log}" 2>&1
+    binary_dir="$(swift build --disable-sandbox --show-bin-path)"
+    semantic_report="${REPORT_ROOT}/${profile}/semantic.tsv"
+    "${binary_dir}/${product}" >"${semantic_report}"
+    grep -Fq $'status=complete' "${semantic_report}" || {
+        printf 'incomplete preset report: %s\n' "${semantic_report}" >&2
+        exit 1
+    }
+    inspector="${PROJECT_ROOT}/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/llvm-objdump"
+    "${inspector}" -p -h "${artifact}" >"${REPORT_ROOT}/${profile}/elf.txt"
+    grep -Fq 'file format elf32-littlearm' "${REPORT_ROOT}/${profile}/elf.txt"
+    output_hash="$(shasum -a 256 "${semantic_report}" | awk '{print $1}')"
+    artifact_hash="$(shasum -a 256 "${artifact}" | awk '{print $1}')"
+    {
+        printf '# schema_version\tprofile\tinput_identity\tcompiler_identity\ttoolchain_identity\toptimization\tcommand_hash\toutput_hash\tstatus\tevidence_kind\n'
+        printf '1\t%s\t%s\t%s\tswift-6.3.2-armv6\trelease\t%s\t%s\tcomplete\tcross-build\n' \
+            "${profile}" "${input_identity}" "${compiler_identity}" "${command_hash}" "${output_hash}"
+        printf '# artifact_identity\t%s\n' "${artifact_hash}"
+        printf '# artifact_bytes\t%s\n' "$(stat -f '%z' "${artifact}")"
+        printf '# connected_execution\tnot-collected\n'
+    } >"${output}"
+    printf 'SPEC-015 %s complete (cross-build only): %s\n' "${profile}" "${output}"
+    exit 0
+fi
 
 if [[ -n "${product}" ]]; then
     build_log="${REPORT_ROOT}/${profile}/build.log"

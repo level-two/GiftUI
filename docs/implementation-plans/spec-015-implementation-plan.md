@@ -499,12 +499,20 @@ profile/backend differences and resource accounting.
       extent, so changing it requires fresh preset validation and construction.
       Reproduction and exact values are recorded in
       `Tests/ContractFixtures/SPEC015/Evidence/milestone-6/macos-presets.md`.
-- [ ] `T6.2` — Implement the Raspberry Pi dynamic hardware-free composition
+- [x] `T6.2` — Implement the Raspberry Pi dynamic hardware-free composition
       root and ARMv6 compile/link fixture for
       `armv6-unknown-linux-gnueabihf`. Verify the exact 240 x 240, 240 x 16
       RGB565 projection, dynamic audit, symbols/imports, and component costs.
       Label the result cross-build evidence only; connected deployment later
       requires an explicit request and remote `armv6l` verification.
+      **Completed:** `SignalAnalyzerRaspberryPiARMv6` links the shared portable
+      Presentation, production Dynamic admission owner, generated Pi preset,
+      and fixed graph/capability validation into one executable. The pinned
+      workflow verifies its 32-bit ARMv6 hard-float ELF, dependencies, digest,
+      artifact size, exact tiled projection, and component/profile storage.
+      The matching semantic fixture is host-native and the report labels all
+      connected execution `not-collected`; no deployment occurred. Evidence is
+      in `Tests/ContractFixtures/SPEC015/Evidence/milestone-6/raspberry-pi-armv6.md`.
 - [ ] `T6.3` — Implement the nRF52840 static hardware-free composition root and
       Embedded Swift compile/link fixture for `nrf52840dk/nrf52840` with the
       bundled `armv7em-none-none-eabi` module and Cortex-M4F hard-float flags.

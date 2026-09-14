@@ -34,6 +34,10 @@ let package = Package(
             name: "SignalAnalyzerMacOSStatic",
             targets: ["SignalAnalyzerMacOSStatic"]
         ),
+        .executable(
+            name: "SignalAnalyzerRaspberryPiARMv6",
+            targets: ["SignalAnalyzerRaspberryPiARMv6"]
+        ),
     ],
     dependencies: [
         .package(
@@ -305,6 +309,10 @@ let package = Package(
         ),
         .executableTarget(
             name: "SignalAnalyzerMacOSStatic",
+            dependencies: ["SignalAnalyzerPresetHarness"]
+        ),
+        .executableTarget(
+            name: "SignalAnalyzerRaspberryPiARMv6",
             dependencies: ["SignalAnalyzerPresetHarness"]
         ),
         .testTarget(

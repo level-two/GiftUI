@@ -125,6 +125,37 @@ if [[ "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ]]; then
     exit 0
 fi
 
+if [[ "${profile}" == "raspberry-pi-armv6" ]]; then
+    "${SCRIPT_DIR}/run-spec-015.sh" --profile "${profile}"
+    product="SignalAnalyzerRaspberryPiARMv6"
+    artifact="${PROJECT_ROOT}/.build/raspberry-pi/artifacts/${product}"
+    artifact_identity="$(shasum -a 256 "${artifact}" | awk '{print $1}')"
+    cp "${PROJECT_ROOT}/.build/spec-015/${profile}/semantic.tsv" \
+        "${staging_report_dir}/host-transcript.tsv"
+    {
+        printf 'schema_version=1\n'
+        printf 'spec=SPEC-001\nprofile=%s\n' "${profile}"
+        printf 'evidence_kind=%s\n' "${evidence_kind}"
+        printf 'repository_revision=%s\nrepository_dirty=%s\n' "${revision}" "${dirty}"
+        printf 'source_identity=%s\nfixture_identity=%s\n' "${source_identity}" "${fixture_identity}"
+        printf 'compiler_identity=%s\nsdk_identity=raspios-bookworm-armv6\n' "${compiler_identity}"
+        printf 'target_triple=%s\noptimization=%s\n' "${target_triple}" "${optimization}"
+        printf 'invocation=%s\ncommand_identity=%s\n' "${invocation}" "${command_identity}"
+        printf 'artifact_path=%s\nartifact_identity=%s\n' "${artifact}" "${artifact_identity}"
+        printf 'remote_access=false\ndeployment=false\nservice_restart=false\n'
+        printf 'hardware_probe=false\nflashing=false\nnetwork_access=false\n'
+        printf 'status=complete\nblocking_reason=connected-execution-not-collected\n'
+    } >"${staging_report_dir}/metadata.txt"
+    "${SCRIPT_DIR}/publish-contract-report.rb" \
+        --report-root "${REPORT_ROOT}" \
+        --staging "${staging_report_dir}" \
+        --destination "${canonical_report_dir}" \
+        --latest "${latest_report}" \
+        --run-id "${run_identity}" >/dev/null
+    printf 'SPEC-001 %s complete (cross-build only): %s\n' "${profile}" "${canonical_report_dir}"
+    exit 0
+fi
+
 {
     printf 'schema_version=1\n'
     printf 'spec=SPEC-001\nprofile=%s\n' "${profile}"

@@ -410,4 +410,7 @@ application-aware joins through generated-root-compatible owners. Concrete
 macOS roots are `SignalAnalyzerMacOSDynamic` and `SignalAnalyzerMacOSStatic`;
 their normalized evidence is recorded in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-6/macos-presets.md`.
-Pi and nRF target evidence links will be added as T6.4 and T6.5 land.
+The Pi root is `SignalAnalyzerRaspberryPiARMv6`; its cross-build and
+host-native semantic evidence is recorded in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-6/raspberry-pi-armv6.md`.
+The nRF target evidence link remains pending T6.5.

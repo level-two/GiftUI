@@ -660,7 +660,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       caller-owned fixed fact storage. Its checksum equals T6.2 while the
       report preserves the approved 28,016-byte Static profile total. Evidence
       and reproduction commands are in the shared macOS preset record.
-- [ ] `T6.4` — Assemble the Raspberry Pi 1 dynamic preset with exact 240 x 240
+- [x] `T6.4` — Assemble the Raspberry Pi 1 dynamic preset with exact 240 x 240
       extent and 240 x 16 RGB565 tiled region. Cross-build only for
       `armv6-unknown-linux-gnueabihf` through
       `scripts/raspberry-pi/build.sh --product`, passing the exact executable
@@ -668,6 +668,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       ELF, ARMv6, and hard-float checks, record the emitted `ARTIFACT=` path
       and digest, inspect dependencies/resources, and keep connected PiScreen
       execution for `T8.1`.
+      **Completed:** the exact product is `SignalAnalyzerRaspberryPiARMv6`.
+      The repository workflow emits and inspects the ARMv6 artifact while the
+      registered host-native fixture binds the equal semantic checksum to its
+      exact 240 x 240 / 240 x 16 projection. Artifact identity, linked
+      dependencies, profile storage, and the open connected PiScreen gate are
+      recorded in the Milestone 6 ARMv6 evidence.
 - [ ] `T6.5` — Assemble the `nrf52840dk/nrf52840` static preset with exact
       480 x 320 extent, 480 x 4 RGB565 region, 960-byte row, and 3,840-byte
       raster/payload/in-flight bounds. Cross-build through
