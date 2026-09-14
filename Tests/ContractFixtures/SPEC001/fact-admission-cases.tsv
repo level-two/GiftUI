@@ -1,0 +1,14 @@
+# schema_version=1
+# case	store_or_rule	accepted	rejection_or_order
+snapshot-boundary	snapshot	1	snapshot-capacity-exhausted-at-2
+compact-physical-boundary	compact	32	compact-capacity-exhausted-at-33
+reserved-failure-boundary	reserved-failure	1	reserved-failure-capacity-exhausted-at-2
+production-burst	20-transition+2-bootstrap+6-action	28	accepted-sequences-1-through-28
+transition-category-excess	transition	20	producer-category-exhausted-at-21
+bootstrap-category-excess	bootstrap	2	producer-category-exhausted-at-3
+action-category-excess	action	6	producer-category-exhausted-at-7
+cross-store-order	snapshot+compact+reserved-failure	3	least-sequence-first
+post-seal-deferral	compact	1	later-sealed-batch
+sequence-boundary	common-cursor	UInt32.max	sequence-exhausted-after-max
+quiescence	all-stores	0	unavailable
+discard	active+sealed	0	all-counts-zero

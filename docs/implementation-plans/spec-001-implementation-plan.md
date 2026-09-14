@@ -437,6 +437,12 @@ coalescing behavior.
       category bounds, all 32 physical compact slots, physical fact 33, and
       rejection of each category excess as an incompatible host workload
       rather than spending the four-slot margin.
+      **Partial:** the host-owned fixed-storage kernel now enforces exact
+      `1/32/1` physical stores, `20/2/6` producer limits, one nonzero
+      nonwrapping sequence across stores, ordered sealing, post-seal deferral,
+      at-most-once removal, quiescence, and discard. Concrete executable roots
+      still need to map `SignalAnalyzerPresentationFact` into this kernel and
+      join its sealed output to the production mutation pipeline.
 - [ ] `T5.2` — Bind the root to one observable location, active registration,
       dirty/live bit, and transient replacement record. Run identical dynamic/
       static fixtures for initializer preservation, atomic replacement,

@@ -54,15 +54,19 @@ to the mutation join. `GiftUIExecution` supplies the admission outcomes, wake
 accumulation, sealing vocabulary, and serialized production pipeline.
 SPEC-013 supplies bounded dynamic and static storage lifetimes and audits.
 
-The missing mechanism is the target-owned endpoint behind
-`SignalAnalyzerFactAdmission`: no production owner yet classifies the four
-fact cases into the three required physical stores or assigns their common
-sequence.
+`HostSequencedFactAdmission` now supplies the analyzer-agnostic fixed-storage
+kernel: one common sequence, three physical stores, producer counters, sealing,
+ordered removal, quiescence, and discard. The remaining mechanism is the
+target-owned endpoint behind `SignalAnalyzerFactAdmission`; no production root
+yet classifies the four fact cases into that kernel.
 
 ## Proposed Internal Organization
 
-Each concrete executable root owns one non-portable admission endpoint. The
-endpoint contains:
+`GiftUIHostConfiguration` owns a package-scoped, payload-generic sequencing
+kernel because SPEC-015 assigns the callback/admission cross-owner join to the
+host. It does not import or switch over analyzer facts. Each concrete
+executable root owns one non-portable admission endpoint that classifies facts
+and supplies them to the kernel. Together they contain:
 
 - one sequence cursor whose next accepted value begins at one;
 - one optional snapshot entry;
@@ -79,8 +83,10 @@ acquisition-state values to the compact ring. Reusable Execution and profile
 owners see only their existing admission, lifecycle, reservation, and
 opportunity contracts.
 
-Dynamic and static roots provide different fixed storage representations
-behind the same private operations. They do not expose a new package API.
+The common kernel uses inline tuple storage for all 32 compact entries and no
+dynamic collection. Dynamic and static roots therefore share the ordering
+algorithm; final profile artifacts still verify their independently audited
+storage and allocation behavior.
 
 ## Data and Control Flow
 
@@ -210,5 +216,13 @@ algorithm above.
 
 ## Code and Evidence Links
 
-Code and T5.1 evidence will be linked here when the target-owned endpoint and
-the dynamic/static admission corpus are committed.
+- [`HostSequencedFactAdmission.swift`](../../Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift)
+  implements the fixed host-owned sequencing kernel.
+- [`HostSequencedFactAdmissionTests.swift`](../../Tests/GiftUIHostConfigurationTests/HostSequencedFactAdmissionTests.swift)
+  covers physical and producer bounds, sequencing, sealing, deferral,
+  quiescence, and nonaliasing exhaustion.
+- [`fact-admission-cases.tsv`](../../Tests/ContractFixtures/SPEC001/fact-admission-cases.tsv)
+  records the current partial T5.1 corpus.
+
+The executable fact classifier and production mutation-pipeline join remain to
+be linked when completed.
