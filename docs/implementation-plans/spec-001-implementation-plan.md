@@ -452,6 +452,12 @@ coalescing behavior.
       candidate failure, derivation failure, published removal, reinsertion,
       stale reports, duplicate ownership, incompatible association, and
       generation exhaustion; inspect static address-stable typed storage.
+      **Partial:** the production profile workspace now allocates its first
+      target generation at raw zero without using that valid value as an
+      exhaustion sentinel. An explicit optional exhausted state rejects before
+      staging a location in the inline Static store. Typed model binding,
+      registration, replacement, dirtiness, and the complete equal-profile
+      lifecycle corpus remain.
 - [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized
       mutation phase, freeze, complete-root derivation, publication, wake, and
       paced retry owners. Prove 20 change reports become one dirty transition

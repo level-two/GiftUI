@@ -75,8 +75,32 @@ where
     #expect(dynamic.begin == .success(.candidateStarted))
     #expect(dynamic.encounter == .success(.materialized))
     #expect(dynamic.publish == .success(.associationsCommitted))
-    #expect(dynamic.candidateGeneration == ObservableTargetGeneration(rawValue: 1))
+    #expect(dynamic.candidateGeneration == ObservableTargetGeneration(rawValue: 0))
     #expect(dynamic.committedGeneration == dynamic.candidateGeneration)
+}
+
+@Test func productionObservableWorkspaceRejectsGenerationExhaustionWithoutAZeroSentinel() {
+    let identity = ProductionIdentity(rawValue: 3)
+    var model = State(wrappedValue: ProductionModel())
+    var workspace = RuntimeObservableProfileWorkspace(
+        storage: StaticObservableProfileSlotStorage<ProductionIdentity>(),
+        firstGeneration: nil
+    )
+
+    #expect(workspace.beginCandidate() == .success(.candidateStarted))
+    #expect(
+        workspace.encounter(
+            structuralIdentity: identity,
+            declarationOrdinal: 0,
+            state: &model
+        ) == .failure(.registrationGenerationExhausted)
+    )
+    #expect(
+        workspace.publishableTargetGeneration(
+            structuralIdentity: identity,
+            declarationOrdinal: 0
+        ) == nil
+    )
 }
 
 @Test func productionObservableWorkspacesRejectFirstExcess() {

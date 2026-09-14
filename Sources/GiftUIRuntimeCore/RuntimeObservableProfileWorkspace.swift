@@ -47,10 +47,10 @@ where Storage: RuntimeObservableProfileSlotStorage {
     private var isCandidateActive: Bool
     private var nextGeneration: UInt32?
 
-    package init(storage: consuming Storage, firstGeneration: UInt32 = 1) {
+    package init(storage: consuming Storage, firstGeneration: UInt32? = 0) {
         self.storage = consume storage
         isCandidateActive = false
-        nextGeneration = firstGeneration == 0 ? nil : firstGeneration
+        nextGeneration = firstGeneration
     }
 
     package mutating func beginCandidate() -> ObservableStateResult {
