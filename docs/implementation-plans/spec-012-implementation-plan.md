@@ -492,7 +492,7 @@ for independent conformance review.
       portable-source, generated-source, and interface audits. Prove every
       normative declaration, additive vocabulary case, module owner, and
       forbidden dependency rule.
-- [ ] `T9.2` — Run the complete semantic/layout/invocation/path/plan/cycle/
+- [x] `T9.2` — Run the complete semantic/layout/invocation/path/plan/cycle/
       combined-render/startup/failure corpus for every applicable profile and
       compare normalized results, identities, counts, order, and first failure.
 - [ ] `T9.3` — Measure closure/capture, construction, snapshot, lowering,
@@ -1119,3 +1119,11 @@ records the completed corpus and integrated profile/backend prerequisites
 rather than the historical blockers. All four reports publish one input
 identity; see the
 [interface audit evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-9/interface-audit.md).
+
+`T9.2` is complete. The 43 focused Drawing tests cover the full semantic,
+layout, invocation, path, plan, failure/recovery, and combined-render corpus,
+including explicit Dynamic/Static equality. The standalone profile reports
+compile the same declarations and exact value checks on all four compilers,
+while the SPEC-014 consumer join runs all 17 raster vectors through both
+full-surface and tiled paths with zero mask or byte difference. See the
+[cross-profile corpus evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-9/cross-profile-corpus.md).
