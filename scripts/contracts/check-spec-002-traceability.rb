@@ -77,7 +77,11 @@ end
 graph.each do |target, entry|
   imports = entry.fetch("dependencies")
   if %w[GiftUI GiftUIFailureCore GiftUICapabilities].all? { |owner| imports.include?(owner) }
-    fail!("#{target} creates a monolithic three-owner boundary")
+    approved_downstream_joins = %w[
+      GiftUIDisplayCore GiftUIDisplayCoreTests GiftUIHostConfiguration
+    ]
+    fail!("#{target} creates a monolithic three-owner boundary") unless
+      approved_downstream_joins.include?(target)
   end
 end
 

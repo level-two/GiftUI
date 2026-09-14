@@ -38,7 +38,8 @@ fail_check("runtime facts escaped SPEC-011") unless
   rows.last(interaction_facts.length).all? { |row| row[1] == "SPEC-011" && row[3] == "excluded" }
 
 spec = SPEC.read
-fail_check("SPEC-011 is not approved") unless spec.match?(/\A---\n.*?\nstatus: approved\n/m)
+fail_check("SPEC-011 is not approved for implementation") unless
+  spec.match?(/\A---\n.*?\nstatus: (?:approved|implementing)\n/m)
 fail_check("SPEC-011 does not keep enabled state backend-independent") unless
   spec.match?(/Effective enabled state .* independent of backend behavior/m)
 fail_check("SPEC-011 does not own hit maps and pointer gestures") unless

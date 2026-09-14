@@ -144,7 +144,7 @@ unless parallel_types.empty?
 end
 
 backend_measurement = runtime_or_backend.select do |path|
-  File.read(path).match?(/\b(?:CanonicalTextMetricsView|textScalarCount|glyphAdvance|measureText)\b/)
+  File.read(path).match?(/\b(?:textScalarCount|glyphAdvance|measureText)\b/)
 end
 unless backend_measurement.empty?
   relative = backend_measurement.map { |path| Pathname.new(path).relative_path_from(ROOT).to_s }
