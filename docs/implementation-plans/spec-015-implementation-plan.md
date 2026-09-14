@@ -9,6 +9,7 @@ created: 2026-09-09
 updated: 2026-09-14
 related_design_notes:
   - ../implementation-designs/spec-015-generated-workload-and-presets.md
+  - ../implementation-designs/spec-015-wake-and-pacing.md
 conformance_report: null
 related_future_work: []
 related_explorations: []
@@ -473,6 +474,15 @@ finite refusal recovery, and exact operational-failure routing.
       80-transition-fact-per-second workload, prove admission without
       rejection, ordered facts, coalesced change reports, and derivation paced
       at four frames per second.
+      **Partial:** a fixed-size production wake/pacing controller now returns
+      a wake directive only for empty-to-nonempty pending work, coalesces exact
+      SPEC-009 reason bits, and uses checked monotonic arithmetic for the frame
+      boundary and first-fact service deadline. Focused tests cover
+      just-before/at/just-after timing, post-seal admission, reentrancy,
+      quiescence, regression/overflow, and four opportunities for eighty
+      evenly spaced facts in one second. Concrete scheduler callbacks,
+      `MVPHostInstance.runOpportunity()`, report identity, and integrated fact/
+      change-report ordering remain open.
 - [ ] `T5.3` — Integrate presentation supersession, backpressure, retryable
       refusal, non-retryable refusal, and terminal unavailability. Prove
       backpressure leaves the count unchanged, refusals retain ordinals zero

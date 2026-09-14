@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-09-13
+updated: 2026-09-14
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -1286,6 +1286,7 @@ Specification:
 
 - [SPEC-015 Implementation Plan](../implementation-plans/spec-015-implementation-plan.md)
 - [Generated Workload and Presets Implementation Design](../implementation-designs/spec-015-generated-workload-and-presets.md)
+- [Wake and Pacing State Implementation Design](../implementation-designs/spec-015-wake-and-pacing.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
 - [Feature Lifecycle](../engineering/FEATURE_LIFECYCLE.md)
