@@ -71,6 +71,8 @@ routes assignment outward for later atomic replacement.
 `StaticObservableModelStorage` supplies the matching caller-owned inline typed
 value and confines its direct pointer binding to one synchronous traversal
 attempt; final address stability remains a generated-root responsibility.
+`ObservableStateRegistrationBridge` exposes the existing focused registration
+lifecycle to those roots without exposing or duplicating its state machine.
 Focused Observable State components separately implement binding, attachment,
 atomic replacement, dirty reporting, removal, stale-report rejection, and
 shutdown. Existing tests prove those mechanisms independently, but no target
@@ -284,6 +286,8 @@ permission to weaken the static contract.
 - [`StaticObservableModelStorage.swift`](../../Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift)
   supplies attempt-scoped direct binding over caller-owned inline typed
   storage.
+- [`ObservableStateRegistrationBridge.swift`](../../Sources/GiftUIObservableState/ObservableStateRegistrationBridge.swift)
+  supplies single-issue attachment and report-route lifecycle to a stable root.
 - [`HostActivationController.swift`](../../Sources/GiftUIHostConfiguration/HostActivationController.swift)
   supplies exact activation and teardown ordering.
 - [`HostSequencedFactAdmission.swift`](../../Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift)

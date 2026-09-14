@@ -59,3 +59,13 @@ identity 1 still installed. Reproduce the comparison with:
 ```sh
 swift test --filter productionModelStorageBindingsAreProfileEquivalent
 ```
+
+`ObservableStateRegistrationBridgeTests` exercise the root-facing registration
+façade. They prove one sink is issued for one pending attachment, activation
+occurs only after the exact return, a mismatched generation is stale, retirement
+detaches exactly once, and a report attempted during attach poisons the route
+before activation. Reproduce with:
+
+```sh
+swift test --filter ObservableStateRegistrationBridge
+```
