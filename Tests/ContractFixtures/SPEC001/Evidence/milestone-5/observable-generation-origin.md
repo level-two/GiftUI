@@ -23,9 +23,10 @@ Reproduce with:
 swift test --filter ProductionObservableProfileWorkspace
 ```
 
-This is partial SPEC-001 T5.2 evidence. Typed model preservation, attachment,
-replacement, dirty/live state, removal/reinsertion, and complete profile
-equivalence remain required before the task is complete.
+This begins the completed SPEC-001 T5.2 evidence chain. The sections below and
+the integrated-cycle evidence supply typed model preservation, attachment,
+replacement, dirty/live state, removal/reinsertion, direct Static reporting,
+and complete profile equivalence.
 
 The Dynamic profile additionally owns one bounded typed model box. Its focused
 fixture proves that the first transient wrapper installs its initializer, a
@@ -38,8 +39,8 @@ that slice with:
 swift test --filter DynamicObservableModelStorage
 ```
 
-Static generated binding, model attachment, atomic replacement, dirty/live
-state, and the complete equal-profile lifecycle remain pending.
+Static generated-root-compatible binding, model attachment, atomic replacement,
+dirty/live state, and the complete equal-profile lifecycle are covered below.
 
 The Static profile now supplies caller-owned inline typed live and candidate
 model optionals.

@@ -1,6 +1,6 @@
 # SPEC-001 Fact Mutation and Publication Evidence
 
-This partial T5.3 slice composes the application-owned Dynamic fact endpoint,
+This T5.3 evidence composes the application-owned Dynamic fact endpoint,
 the fixed host sequencer, host wake pacing, the real Signal Analyzer model,
 the Dynamic observable root, and `RuntimeCompletePipeline`.
 
@@ -30,8 +30,10 @@ swift test --filter SignalAnalyzerHostFactAdmissionTests
 swift test --filter ObservableStateRegistrationBridgeTests
 swift test --filter ProductionObservableRootAdapterTests
 swift test --filter sameThreadAndDistinctActionCallbacksStopAtLaterFactAdmission
+swift test --filter integratedAnalyzerCycleIsProfileEquivalent
 ```
 
-The complete semantic-action queue join, retry/failure wake disposition, generated
-Static fact endpoint, and executable profile roots remain assigned to later
-T5.3/T5.4/T6 slices. This evidence does not claim T5.3 complete.
+The normalized integrated-cycle evidence completes the semantic-action,
+Static direct endpoint/reporting, accepted-frame, and retryable-refusal wake
+joins. Concrete executable profile roots remain Milestone 6 work and are not
+claimed by this completed Milestone 5 task.

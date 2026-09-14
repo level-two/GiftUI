@@ -17,21 +17,24 @@ swift test --filter dynamicRootAdapterBorrowsOnlyTheMatchingTargetGeneration
 swift test --filter staticRootAdapterBorrowsOnlyTheMatchingTargetGeneration
 ```
 
-This is partial SPEC-001 T5.4 evidence. The application-specific Dynamic
-composition now installs `SignalAnalyzerActionHandler` with the production
-Dynamic root target access and dispatcher. Its focused corpus decodes all six
-exact action codes, rejects invalid codes without mutation, cancels stale
-action and target generations, and cancels a captured former action after the
-real root commits a replacement. Reproduce with:
+This completes the shared model-target access portion of SPEC-001 T5.4. The
+application-specific Dynamic composition installs
+`SignalAnalyzerActionHandler` with the production Dynamic root target access
+and dispatcher. Its focused corpus decodes all six exact action codes, rejects
+invalid codes without mutation, cancels stale action and target generations,
+and cancels a captured former action after the real root commits a
+replacement. Reproduce with:
 
 ```sh
 swift test --filter SignalAnalyzerHostActionDispatchTests
 ```
 
-The Static analyzer composition installs the same exact handler through
-the generated-root-compatible typed pointer path. Its six-case corpus reaches
-the same repository intents and visible-window mutations while preserving the
-address-stable root as the lifetime owner.
+The Static analyzer composition installs the same exact handler through the
+generated-root-compatible typed pointer path. Its six-case and replacement
+interleaving corpus reaches the same repository intents and visible-window
+mutations, cancels a captured former action after replacement or removal,
+preserves the former target after failed staging, and keeps the address-stable
+root as the lifetime owner.
 
 The final normalized interleaving corpus captures an action at pointer down
 and at activation admission, then commits model replacement before dispatch.

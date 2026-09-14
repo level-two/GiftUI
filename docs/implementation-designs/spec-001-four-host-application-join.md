@@ -405,4 +405,7 @@ permission to weaken the static contract.
 - [`SignalAnalyzerPresets.generated.swift`](../../Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift)
   supplies the four immutable preset projections.
 
-Concrete root and evidence links will be added as T6.2 through T6.5 land.
+Milestone 5's Dynamic and Static integrated-cycle evidence now exercises the
+application-aware joins through generated-root-compatible owners. Concrete
+executable root and target evidence links will be added as T6.2 through T6.5
+land.

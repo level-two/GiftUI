@@ -66,7 +66,9 @@ four-case classification and exact rejection mapping behind
 matching Static endpoint is a copyable direct-dispatch handle over caller-owned
 fixed storage; both endpoints delegate to the same application-specific
 classifier and sequencer core and produce equal normalized cross-store
-transcripts. No profile root wires either endpoint to its wake owner yet.
+transcripts. The integrated-cycle fixture wires both endpoints to the exact
+host pacing owner and production pipeline and compares their accepted and
+retryable-refusal outcomes.
 
 ## Proposed Internal Organization
 
@@ -237,7 +239,7 @@ algorithm above.
   plus the production-pipeline mutation ordering without placing that switch
   in portable Presentation.
 - [`fact-admission-cases.tsv`](../../Tests/ContractFixtures/SPEC001/fact-admission-cases.tsv)
-  records the current partial T5.1 corpus.
+  records the normalized T5.1 admission corpus.
 
-The profile-root wake join and integrated profile-equivalence cycle remain to
-be linked.
+The completed integrated profile-equivalence cycle and its checked-in
+normalized rows are linked from the SPEC-001 Milestone 5 evidence.

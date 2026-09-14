@@ -24,5 +24,6 @@ the executable comparison with:
 swift test --filter integratedAnalyzerCycleIsProfileEquivalent
 ```
 
-This supplies the integrated T5.1-T5.3 and T5.5 cycle evidence. The remaining
-T5.4 interaction capture/replacement boundaries are completed separately.
+This supplies the integrated T5.1-T5.3 and T5.5 cycle evidence. T5.4's
+interaction capture and replacement boundaries are completed by the
+action-model-target-access evidence and action-dispatch fixtures.

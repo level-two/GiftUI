@@ -19,5 +19,6 @@ swift test --filter SignalAnalyzerHostFactAdmissionTests
 swift test --filter HostSequencedFactAdmissionTests
 ```
 
-This is partial T5.1/T5.3 evidence. The final Static root wake, mutation, and
-publication join remains part of the integrated-cycle transcript.
+This completes the Static admission portion of T5.1. The Static root wake,
+mutation, and publication join is exercised by the integrated-cycle
+transcript.

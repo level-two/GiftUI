@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-13
-updated: 2026-09-13
+updated: 2026-09-14
 related_design_notes:
   - ../implementation-designs/spec-001-presentation-admission-and-failure.md
 conformance_report: null
@@ -428,7 +428,7 @@ seams are implemented for the dependent slice.
 action target provenance, mutation/publication atomicity, and 250-millisecond
 coalescing behavior.
 
-- [ ] `T5.1` — Configure independent snapshot capacity one, compact-fact
+- [x] `T5.1` — Configure independent snapshot capacity one, compact-fact
       capacity 32, and reserved-failure capacity one. Implement nonzero
       nonwrapping `UInt32` sequencing across physical stores, seal/apply order,
       at-most-once application, post-seal deferral, exact first-excess
@@ -437,7 +437,7 @@ coalescing behavior.
       category bounds, all 32 physical compact slots, physical fact 33, and
       rejection of each category excess as an incompatible host workload
       rather than spending the four-slot margin.
-      **Partial:** the host-owned fixed-storage kernel now enforces exact
+      **Completed:** the host-owned fixed-storage kernel enforces exact
       `1/32/1` physical stores, `20/2/6` producer limits, one nonzero
       nonwrapping sequence across stores, ordered sealing, post-seal deferral,
       at-most-once removal, quiescence, and discard. The application-specific
@@ -448,15 +448,15 @@ coalescing behavior.
       that post-seal facts wait for the next opportunity. A Static direct-
       dispatch handle now uses caller-owned fixed storage and shares the same
       classifier/sequencer core; normalized cross-store transcripts match the
-      Dynamic endpoint exactly. Profile-root wake wiring and final integrated
-      profile equivalence remain.
-- [ ] `T5.2` — Bind the root to one observable location, active registration,
+      Dynamic endpoint exactly. The integrated profile comparison joins both
+      endpoints to identical wake and cycle behavior.
+- [x] `T5.2` — Bind the root to one observable location, active registration,
       dirty/live bit, and transient replacement record. Run identical dynamic/
       static fixtures for initializer preservation, atomic replacement,
       candidate failure, derivation failure, published removal, reinsertion,
       stale reports, duplicate ownership, incompatible association, and
       generation exhaustion; inspect static address-stable typed storage.
-      **Partial:** the production profile workspace now allocates its first
+      **Completed:** the production profile workspace allocates its first
       target generation at raw zero without using that valid value as an
       exhaustion sentinel. An explicit optional exhausted state rejects before
       staging a location in the inline Static store. The same workspace cursor
@@ -541,10 +541,10 @@ coalescing behavior.
       the typed model, publishes or discards candidates, retires published
       absence, reinserts with a fresh generation, and coordinates atomic
       replacement with the workspace reservation. Preflight failure spends no
-      generation. Generated `SignalAnalyzerViewModel` direct report and target
-      dispatch, attach-time replacement poisoning through that direct route,
-      wake integration, address inspection, and the remaining failure matrix
-      remain. A normalized production root transcript now proves equal Dynamic
+      generation. Generated-root-compatible `SignalAnalyzerViewModel` direct
+      reporting and target dispatch now operate through the caller-owned,
+      address-stable root for the complete integrated opportunity. A normalized
+      production root transcript proves equal Dynamic
       and Static materialization, preservation, dirty/coalesced reporting,
       replacement, published removal, and fresh generation-2 reinsertion.
       Its paired failure transcript proves identical incompatible-association,
@@ -556,13 +556,13 @@ coalescing behavior.
       which omits the root preserves an already committed replacement, its
       generation-1 registration, and dirty state; the next encounter preserves
       that same model in both profiles.
-- [ ] `T5.3` — Integrate admitted facts and semantic actions with the serialized
+- [x] `T5.3` — Integrate admitted facts and semantic actions with the serialized
       mutation phase, freeze, complete-root derivation, publication, wake, and
       paced retry owners. Prove 20 change reports become one dirty transition
       and at most one wake while every fact applies, frames see one complete
       revision, and same-thread/distinct-executor callbacks never reenter the
       active mutation.
-      **Partial:** the Dynamic application endpoint, fixed host sequencer,
+      **Completed:** the Dynamic application endpoint, fixed host sequencer,
       wake pacing, real analyzer model, Dynamic observable root, and complete
       pipeline now run one 20-fact burst. All facts apply once after the paced
       boundary, the first admission alone requests a wake, 20 model reports
@@ -570,8 +570,6 @@ coalescing behavior.
       final state in one semantic revision. Successful joint publication now
       clears the observable dirty epoch in both production profile roots;
       cross-profile evidence proves the next mutation can dirty once again.
-      Semantic-action application, retry/failure wake disposition, generated
-      Static fact admission, and concrete executable roots remain.
       The production Dynamic Start dispatch now also drives equal same-thread
       and deferred application callbacks: each returns through sequenced fact
       admission while the observable model remains unchanged, and only later
@@ -587,7 +585,7 @@ coalescing behavior.
       pointer-down and admitted-action replacement, removal, failed/staged
       replacement, stale action generation, disabled state, and final target
       revalidation; require at-most-once dispatch to the exact current model.
-      **Partial:** both production root adapters now provide one atomic
+      **Completed:** both production root adapters provide one atomic
       generation-matching model borrow for final dispatch revalidation. A
       stale requested generation invokes no body; replacement invalidates the
       former generation and permits only the current generation to borrow the
@@ -614,14 +612,13 @@ coalescing behavior.
       replacement-staging failure, disabled state, and final revalidation.
       Replacement cancels both captured actions without invoking either model;
       failed staging preserves and dispatches only the former target.
-- [ ] `T5.5` — Produce one normalized integrated cycle transcript containing
+- [x] `T5.5` — Produce one normalized integrated cycle transcript containing
       callback, admission, seal, application, change report, dirty/wake,
       semantic publication, Drawing, offer, and frame events. Compare all
       profile-independent fields across dynamic and static realizations.
-      **Partial:** the checked-in accepted and retryable-refusal rows plus the
-      executable normalized comparison cover every named event family. Final
-      task disposition waits only for T5.4's remaining interaction
-      interleavings so the Milestone 5 evidence can close atomically.
+      **Completed:** the checked-in accepted and retryable-refusal rows plus
+      the executable normalized comparison cover every named event family and
+      match all profile-independent fields.
 
 ### Milestone 6: Assemble and Validate the Four Target Hosts
 
@@ -951,6 +948,20 @@ current-level projection, and the normative `5/5/202/12/832/16` workload.
 `T4.4` freezes the identical dynamic/static portable source set with an import,
 macro, identity, explicit-channel, qualified-action, Canvas-occurrence, and
 forbidden-mechanism audit plus successful compilation under both profile flags.
+
+Milestone 5 is complete. `T5.1` provides the common fixed `1/32/1` sequencer
+through Dynamic retained and Static caller-owned direct endpoints, including
+the exact producer/physical limits, nonwrapping order, sealing, deferral, and
+at-most-once application. `T5.2` completes equal typed model materialization,
+registration, replacement, failure, removal, reinsertion, direct reporting,
+and generation behavior. `T5.3` joins facts, semantic actions, 250-millisecond
+pacing, one-bit dirtiness, freeze, derivation, publication, and retryable offer
+recovery without callback reentrancy. `T5.4` installs the six-case handler in
+both roots and closes pointer-down, admitted-action, replacement, removal,
+failure, disabled, stale-generation, and final-revalidation cases. `T5.5`
+records equal accepted and retryable integrated-cycle transcripts through the
+Drawing, interaction, offer, and frame stages. Milestone 6 target-host
+assembly is the next dependency boundary.
 
 `T6.1` joins the checked-in SPEC-001 portable hierarchy descriptor to the
 SPEC-015 workload generator as a required, identity-bearing input. Generation
