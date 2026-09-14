@@ -436,7 +436,7 @@ field.
       dirty state, compiler/SDK/target, complete command, limits, audit,
       high-water counts, transcript digest, fixture pass/fail, and evidence
       classification. Preserve the exact standalone invocations.
-- [ ] `T7.2` — Add allocation, peak-heap, stack-by-stage, value-layout, symbol,
+- [x] `T7.2` — Add allocation, peak-heap, stack-by-stage, value-layout, symbol,
       borrow-lifetime, section-size, generated-code, greatest-capture, and
       timing instrumentation. Report excluded text/capability/backend/host
       bytes and dynamic allocator bookkeeping separately.
@@ -900,10 +900,20 @@ from the repository revision and declared input hashes, records dirty state and
 the complete standalone invocation, captures the exact compiler, SDK, target,
 and truthful host-execution/cross-build classification, and publishes
 hash-verified normalized fixture, numeric-limit, audit, storage-high-water, and
-transcript-digest files. Reports remain explicitly blocked on T7.2 rather than
-inventing unmeasured resource fields. Evidence is in
+transcript-digest files. At completion, reports remained explicitly blocked on
+then-pending T7.2 rather than inventing unmeasured resource fields. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-7/report-driver.md`.
 T7.2 is next.
+
+`T7.2` is complete. The canonical instrumentation fixture now provides bounded
+stack-by-stage and resource snapshots, a bounded macOS allocation interposer
+that distinguishes allocation count, peak reserved heap bytes, and allocator
+bookkeeping, plus twelve explicit methods for value layouts, symbols, borrow
+lifetimes, sections, generated Canvas code, greatest capture, excluded owner
+bytes, and cycle timing. The report driver checks these mechanisms and remains
+fail-closed on T7.3 scans and T7.4 pristine profile collection. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-7/resource-instrumentation.md`.
+T7.3 is next.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

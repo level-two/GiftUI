@@ -14,9 +14,10 @@ every registered fixture result, and the normalized transcript digest. A hash
 manifest protects every report file and repeated identical publication is
 idempotent.
 
-T7.2 resource and timing instrumentation is an explicit blocking prerequisite
-in each report. The driver does not insert guessed stack, heap, section, code-
-size, or timing values.
+At T7.1 completion, T7.2 resource and timing instrumentation was an explicit
+blocking prerequisite in each report. The driver did not insert guessed stack,
+heap, section, code-size, or timing values; later tasks replace that blocker
+only when their own mechanisms and evidence land.
 
 ## Standalone invocations
 

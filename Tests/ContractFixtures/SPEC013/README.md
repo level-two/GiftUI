@@ -34,6 +34,11 @@ criteria and begins fail-closed. A criterion remains `pending` until its
 owning task records reproducible evidence. `report-schema.tsv` fixes the
 required metadata and measurement fields for all four exact driver modes.
 
+`Instrumentation/` contains bounded, profile-neutral resource counters, a
+macOS allocation/peak-byte interposer, and the exact measurement-method
+registry. These mechanisms do not themselves constitute collected profile,
+forbidden-facility, ELF, pristine-build, or connected-hardware evidence.
+
 ## Evidence classification
 
 - `host-execution` runs a fixture on the build host.

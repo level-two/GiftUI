@@ -1,0 +1,13 @@
+# measurement	method	execution
+allocation-count	bounded-dyld-allocation-interposition-after-warm-up	macos-host
+peak-heap-bytes	interposed-live-malloc-size-high-water	macos-host
+dynamic-allocator-bookkeeping	reserved-minus-requested-live-byte-high-water	macos-dynamic-host
+stack-by-stage	compiler-stack-size-call-graph-or-bounded-stack-watermark	all-profiles
+value-layout	optimized-ir-runtime-profile-value-layout-probe	all-profiles
+linked-symbols	nm-and-link-map-symbol-inventory	all-profiles
+borrow-lifetime	optimized-sil-borrow-scope-inspection	all-profiles
+linked-sections	baseline-versus-runtime-text-rodata-data-bss-and-image-delta	all-profiles
+generated-canvas-code	generated-dispatch-symbol-section-delta	static-profiles
+greatest-inline-capture	checked-generator-manifest-maximum	static-profiles
+excluded-subsystems	separate-owner-image-and-storage-audits	all-profiles
+cycle-time	continuous-clock-around-complete-cycle-nine-samples	macos-host

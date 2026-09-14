@@ -45,13 +45,13 @@ driver_text = DRIVER.read
 end
 %w[
   report-input-identity.rb finalize-contract-metadata.rb publish-contract-report.rb
-  verify-contract-report.rb resource-instrumentation
+  verify-contract-report.rb resource-collection
 ].each do |requirement|
   fail_check("driver requirement is missing: #{requirement}") unless driver_text.include?(requirement)
 end
 fail_check("driver must forbid connected-target evidence") unless driver_text.include?("connected_target_execution=false")
-fail_check("driver must leave T7.2 explicitly blocked") unless driver_text.include?(
-  "T7.2 resource and timing fields are not implemented"
+fail_check("driver must leave later resource collection explicitly blocked") unless driver_text.include?(
+  "T7.3 scans and T7.4 pristine profile collection are not complete"
 )
 
 puts "SPEC-013 report driver passed: 41 numeric limits, complete normalized fields, and 4 immutable report modes."

@@ -115,10 +115,21 @@ end
   check-spec-013-borrow-boundaries.rb
   check-spec-013-equivalence.rb
   check-spec-013-report-driver.rb
+  check-spec-013-resource-instrumentation.rb
+  check-spec-013-resource-instrumentation.sh
   report-spec-013-profile.rb
 ].each do |name|
   path = ROOT.join("scripts/contracts", name)
   fail_check("SPEC-013 command is missing or not executable: #{name}") unless path.file? && path.executable?
+end
+
+%w[
+  AllocationInterposer.c AllocationInterposerProbe.c RuntimeProfileResourceProbe.swift
+  RuntimeProfileTimingProbe.swift RuntimeProfileValueLayoutProbe.swift
+  resource-measurement-methods.tsv
+].each do |name|
+  path = FIXTURES.join("Instrumentation", name)
+  fail_check("SPEC-013 instrumentation is missing: #{name}") unless path.file?
 end
 
 puts "SPEC-013 harness passed: 8 ordered corpora, 15 pending criteria, and 4 exact driver modes are fail-closed."
