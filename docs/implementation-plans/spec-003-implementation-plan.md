@@ -354,12 +354,16 @@ duplicated to remove a dependency blocker.
       `GiftUICorrelatedFailure<Context>`, preserve every fact field, and prove
       that low-level/driver fixtures cannot import correlation and the
       execution contract does not import it.
-- [ ] `T4.4` — After SPEC-015 supplies the production host policy and runtime
+- [x] `T4.4` — After SPEC-015 supplies the production host policy and runtime
       gate, integrate the invariant mapping and terminal quiescence sequence
       proven by `T2.3`. A configured fatal hook may observe only after
-      quiescence and cannot replace it. **Blocked:** SPEC-015 is approved, but
-      its implementation plan is not ready and no production host/runtime gate
-      exists.
+      quiescence and cannot replace it. **Complete:** the production host
+      residual router now requires an invariant owner, blocks later normal
+      cycles, records the exact safety-not-proven host-composition fact into
+      quiesced runtime health, propagates that fact, and only then invokes an
+      available fatal hook. Defective-table, missing-effect, and unlisted-policy
+      paths all use the same sequence without another policy call; see the
+      [production host containment evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-4/production-host-containment.md).
 - [ ] `T4.5` — Refresh the exact package allow-list, positive/negative imports,
       compiled module dependencies, and product linkage after every owner
       target lands. Fail any upward edge, re-export, monolithic target, or
@@ -754,3 +758,11 @@ Failure Core plus Execution dependency, rejects correlation from the driver
 fixture, and confirms Execution does not import its downstream correlation
 adapter. See the
 [execution-correlation evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-4/execution-correlation.md).
+
+`T4.4` is complete: `HostResidualFailureRouting` now places the approved
+SPEC-003 invariant mapping in the production SPEC-015 host boundary. Every
+fail-closed branch prevents later normal-cycle admission, transitions runtime
+health to `quiesced`, propagates the exact invariant fact, and permits the
+configured fatal hook only after that sequence. The focused routing suite and
+the complete 139-test host-configuration suite pass; see the
+[production host containment evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-4/production-host-containment.md).

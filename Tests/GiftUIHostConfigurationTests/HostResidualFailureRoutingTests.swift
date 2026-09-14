@@ -43,8 +43,48 @@ private struct DefectiveRoutingTable: MVPHostResidualPolicyTable {
 }
 
 private struct RoutingFatalHook: MVPHostFatalHook {
+    let probe: RoutingProbe
     private(set) var callCount = 0
-    mutating func invoke() { callCount += 1 }
+    mutating func invoke() {
+        callCount += 1
+        probe.events.append(.fatalHook)
+    }
+}
+
+private final class RoutingProbe {
+    enum Event: Equatable {
+        case preventNormalRunCycle
+        case quiesceRuntimeHealth(GiftUIFailureFact)
+        case propagateInvariantFailure(GiftUIFailureFact)
+        case fatalHook
+    }
+
+    var events: [Event] = []
+}
+
+private struct RoutingInvariantOwner: MVPHostInvariantFailureOwner {
+    let probe: RoutingProbe
+    private(set) var normalRunCycleIsAvailable = true
+    private(set) var health = GiftUIOperationalHealth()
+
+    mutating func preventNormalRunCycle() {
+        normalRunCycleIsAvailable = false
+        probe.events.append(.preventNormalRunCycle)
+    }
+
+    mutating func quiesceRuntimeHealth(with fact: GiftUIFailureFact) {
+        health.recordFailure(fact, resultingState: .quiesced)
+        probe.events.append(.quiesceRuntimeHealth(fact))
+    }
+
+    mutating func propagateInvariantFailure(_ fact: GiftUIFailureFact) {
+        probe.events.append(.propagateInvariantFailure(fact))
+    }
+
+    mutating func attemptNormalRunCycle() -> Bool {
+        guard normalRunCycleIsAvailable else { return false }
+        return true
+    }
 }
 
 private struct RoutingDiagnostic: MVPHostDiagnosticProjection {
@@ -63,13 +103,16 @@ private struct RoutingDiagnostic: MVPHostDiagnosticProjection {
 @Test(arguments: Array(UInt8(0) ... UInt8(8)))
 func everyHostPolicyRouteRequiresItsMandatoryEffects(rawValue: UInt8) {
     let context = HostResidualPolicyContext(rawValue: rawValue)!
+    let probe = RoutingProbe()
     var policy = RoutingPolicy()
-    var fatal = RoutingFatalHook()
+    var owner = RoutingInvariantOwner(probe: probe)
+    var fatal = RoutingFatalHook(probe: probe)
     var diagnostic = RoutingDiagnostic(succeeds: true)
     let result = HostResidualFailureRouting.route(
         request(context: context, effects: []),
         table: FixedMVPHostResidualPolicyTable(fatalHookIsAvailable: true),
         policy: &policy,
+        invariantOwner: &owner,
         fatalHook: &fatal,
         diagnostic: &diagnostic
     )
@@ -78,18 +121,22 @@ func everyHostPolicyRouteRequiresItsMandatoryEffects(rawValue: UInt8) {
     #expect(policy.callCount == 0)
     #expect(fatal.callCount == 1)
     #expect(diagnostic.callCount == 0)
+    expectInvariantContainment(owner: &owner, probe: probe, fatalExpected: true)
 }
 
 @Test(arguments: Array(UInt8(0) ... UInt8(8)))
 func everyHostPolicyRouteSelectsOnlyAfterMandatoryEffects(rawValue: UInt8) {
     let context = HostResidualPolicyContext(rawValue: rawValue)!
+    let probe = RoutingProbe()
     var policy = RoutingPolicy()
-    var fatal = RoutingFatalHook()
+    var owner = RoutingInvariantOwner(probe: probe)
+    var fatal = RoutingFatalHook(probe: probe)
     var diagnostic = RoutingDiagnostic(succeeds: false)
     let result = HostResidualFailureRouting.route(
         request(context: context, effects: requiredEffects(context)),
         table: FixedMVPHostResidualPolicyTable(fatalHookIsAvailable: true),
         policy: &policy,
+        invariantOwner: &owner,
         fatalHook: &fatal,
         diagnostic: &diagnostic
     )
@@ -99,6 +146,8 @@ func everyHostPolicyRouteSelectsOnlyAfterMandatoryEffects(rawValue: UInt8) {
     #expect(policy.callCount == 1)
     #expect(fatal.callCount == 0)
     #expect(diagnostic.callCount == 1)
+    #expect(probe.events.isEmpty)
+    #expect(owner.normalRunCycleIsAvailable)
     if case .failure(let failure) = request(
         context: context,
         effects: requiredEffects(context)
@@ -108,13 +157,16 @@ func everyHostPolicyRouteSelectsOnlyAfterMandatoryEffects(rawValue: UInt8) {
 }
 
 @Test func defectivePolicyResultBypassesTableAndUsesIndependentFatalHook() {
+    let probe = RoutingProbe()
     var policy = RoutingPolicy(override: .invokeFatalHook)
-    var fatal = RoutingFatalHook()
+    var owner = RoutingInvariantOwner(probe: probe)
+    var fatal = RoutingFatalHook(probe: probe)
     var diagnostic = RoutingDiagnostic(succeeds: true)
     let result = HostResidualFailureRouting.route(
         request(context: .activation, effects: .containActivation),
         table: FixedMVPHostResidualPolicyTable(fatalHookIsAvailable: true),
         policy: &policy,
+        invariantOwner: &owner,
         fatalHook: &fatal,
         diagnostic: &diagnostic
     )
@@ -123,16 +175,20 @@ func everyHostPolicyRouteSelectsOnlyAfterMandatoryEffects(rawValue: UInt8) {
     #expect(policy.callCount == 1)
     #expect(fatal.callCount == 1)
     #expect(diagnostic.callCount == 0)
+    expectInvariantContainment(owner: &owner, probe: probe, fatalExpected: true)
 }
 
 @Test func defectiveTableBypassesPolicyAndHonorsUnavailableFatalHook() {
+    let probe = RoutingProbe()
     var policy = RoutingPolicy()
-    var fatal = RoutingFatalHook()
+    var owner = RoutingInvariantOwner(probe: probe)
+    var fatal = RoutingFatalHook(probe: probe)
     var diagnostic = RoutingDiagnostic(succeeds: true)
     let result = HostResidualFailureRouting.route(
         request(context: .activation, effects: .containActivation),
         table: DefectiveRoutingTable(fatalHookIsAvailable: false),
         policy: &policy,
+        invariantOwner: &owner,
         fatalHook: &fatal,
         diagnostic: &diagnostic
     )
@@ -141,11 +197,14 @@ func everyHostPolicyRouteSelectsOnlyAfterMandatoryEffects(rawValue: UInt8) {
     #expect(policy.callCount == 0)
     #expect(fatal.callCount == 0)
     #expect(diagnostic.callCount == 0)
+    expectInvariantContainment(owner: &owner, probe: probe, fatalExpected: false)
 }
 
 @Test func diagnosticOutcomeCannotChangeAuthoritativeRouting() {
+    let successfulProbe = RoutingProbe()
     var successfulPolicy = RoutingPolicy()
-    var successfulFatal = RoutingFatalHook()
+    var successfulOwner = RoutingInvariantOwner(probe: successfulProbe)
+    var successfulFatal = RoutingFatalHook(probe: successfulProbe)
     var successfulDiagnostic = RoutingDiagnostic(succeeds: true)
     let successfulProjection = HostResidualFailureRouting.route(
         request(
@@ -154,12 +213,15 @@ func everyHostPolicyRouteSelectsOnlyAfterMandatoryEffects(rawValue: UInt8) {
         ),
         table: FixedMVPHostResidualPolicyTable(fatalHookIsAvailable: true),
         policy: &successfulPolicy,
+        invariantOwner: &successfulOwner,
         fatalHook: &successfulFatal,
         diagnostic: &successfulDiagnostic
     )
 
+    let failedProbe = RoutingProbe()
     var failedPolicy = RoutingPolicy()
-    var failedFatal = RoutingFatalHook()
+    var failedOwner = RoutingInvariantOwner(probe: failedProbe)
+    var failedFatal = RoutingFatalHook(probe: failedProbe)
     var failedDiagnostic = RoutingDiagnostic(succeeds: false)
     let failedProjection = HostResidualFailureRouting.route(
         request(
@@ -168,6 +230,7 @@ func everyHostPolicyRouteSelectsOnlyAfterMandatoryEffects(rawValue: UInt8) {
         ),
         table: FixedMVPHostResidualPolicyTable(fatalHookIsAvailable: true),
         policy: &failedPolicy,
+        invariantOwner: &failedOwner,
         fatalHook: &failedFatal,
         diagnostic: &failedDiagnostic
     )
@@ -175,6 +238,8 @@ func everyHostPolicyRouteSelectsOnlyAfterMandatoryEffects(rawValue: UInt8) {
     #expect(successfulProjection == .selected(.quiesceAffectedScope))
     #expect(failedProjection == successfulProjection)
     #expect(successfulPolicy.failure == failedPolicy.failure)
+    #expect(successfulProbe.events.isEmpty)
+    #expect(failedProbe.events.isEmpty)
 }
 
 @Test(arguments: HostNoPolicyReason.allCases)
@@ -235,5 +300,30 @@ private func requiredEffects(
         [.drainTransferredStream, .updateEndpointHealth, .quiesceInput]
     case .safetyNotProven:
         [.discardPartialWork, .preventNormalCycle]
+    }
+}
+
+private func expectInvariantContainment(
+    owner: inout RoutingInvariantOwner,
+    probe: RoutingProbe,
+    fatalExpected: Bool
+) {
+    let fact = GiftUIFailureFact(
+        condition: .invariantViolation,
+        origin: .hostComposition,
+        affectedScope: .runtime,
+        containment: .safetyNotProven
+    )
+    var expected: [RoutingProbe.Event] = [
+        .preventNormalRunCycle,
+        .quiesceRuntimeHealth(fact),
+        .propagateInvariantFailure(fact),
+    ]
+    if fatalExpected { expected.append(.fatalHook) }
+    #expect(probe.events == expected)
+    #expect(owner.health.state == .quiesced)
+    for _ in 0 ..< 3 {
+        let admitted = owner.attemptNormalRunCycle()
+        #expect(!admitted)
     }
 }

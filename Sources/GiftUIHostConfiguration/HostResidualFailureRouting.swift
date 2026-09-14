@@ -63,6 +63,12 @@ package protocol MVPHostFatalHook {
     mutating func invoke()
 }
 
+package protocol MVPHostInvariantFailureOwner {
+    mutating func preventNormalRunCycle()
+    mutating func quiesceRuntimeHealth(with fact: GiftUIFailureFact)
+    mutating func propagateInvariantFailure(_ fact: GiftUIFailureFact)
+}
+
 package protocol MVPHostDiagnosticProjection {
     mutating func project(
         context: HostResidualPolicyContext,
@@ -80,17 +86,23 @@ package enum HostResidualFailureRouting {
     package static func route<
         Table: MVPHostResidualPolicyTable,
         Policy: MVPHostResidualPolicy,
+        InvariantOwner: MVPHostInvariantFailureOwner,
         FatalHook: MVPHostFatalHook,
         Diagnostic: MVPHostDiagnosticProjection
     >(
         _ request: HostResidualRouteRequest,
         table: borrowing Table,
         policy: inout Policy,
+        invariantOwner: inout InvariantOwner,
         fatalHook: inout FatalHook,
         diagnostic: inout Diagnostic
     ) -> HostResidualRouteResult {
         guard HostResidualPolicyTableValidation.validate(table) else {
-            return failClosed(table: table, fatalHook: &fatalHook)
+            return failClosed(
+                table: table,
+                invariantOwner: &invariantOwner,
+                fatalHook: &fatalHook
+            )
         }
         let expected = HostResidualPolicyTableValidation.expectedRow(
             for: request.context
@@ -104,7 +116,11 @@ package enum HostResidualFailureRouting {
                 attemptLimit: request.attemptLimit
             )
         else {
-            return failClosed(table: table, fatalHook: &fatalHook)
+            return failClosed(
+                table: table,
+                invariantOwner: &invariantOwner,
+                fatalHook: &fatalHook
+            )
         }
         let disposition = policy.disposition(for: input)
         guard disposition == expected.selection,
@@ -112,7 +128,11 @@ package enum HostResidualFailureRouting {
                 GiftUIAllowedDispositions(rawValue: 1 << disposition.rawValue)
             )
         else {
-            return failClosed(table: table, fatalHook: &fatalHook)
+            return failClosed(
+                table: table,
+                invariantOwner: &invariantOwner,
+                fatalHook: &fatalHook
+            )
         }
         _ = diagnostic.project(
             context: request.context,
@@ -146,10 +166,24 @@ package enum HostResidualFailureRouting {
         }
     }
 
-    private static func failClosed<Table: MVPHostResidualPolicyTable, FatalHook: MVPHostFatalHook>(
+    private static func failClosed<
+        Table: MVPHostResidualPolicyTable,
+        InvariantOwner: MVPHostInvariantFailureOwner,
+        FatalHook: MVPHostFatalHook
+    >(
         table: borrowing Table,
+        invariantOwner: inout InvariantOwner,
         fatalHook: inout FatalHook
     ) -> HostResidualRouteResult {
+        let fact = GiftUIFailureFact(
+            condition: .invariantViolation,
+            origin: .hostComposition,
+            affectedScope: .runtime,
+            containment: .safetyNotProven
+        )
+        invariantOwner.preventNormalRunCycle()
+        invariantOwner.quiesceRuntimeHealth(with: fact)
+        invariantOwner.propagateInvariantFailure(fact)
         let invokeFatalHook = table.fatalHookIsAvailable
         if invokeFatalHook { fatalHook.invoke() }
         return .safetyNotProven(fatalHookInvoked: invokeFatalHook)
