@@ -407,7 +407,7 @@ produce identical drawing meaning and cleanup without static heap allocation.
       unsupported capture types, over-limit captures, dynamic collections,
       existentials, heap-owned/weak/unowned boxes, and ordinary class references
       at build time. Prove generation has no retained-closure fallback.
-- [ ] `T6.4` — Implement independent static-limit and production host-handle
+- [x] `T6.4` — Implement independent static-limit and production host-handle
       validation. Admit an observable model location only through its approved
       address-stable static handle with no retain/release and an explicit host
       lifetime proof.

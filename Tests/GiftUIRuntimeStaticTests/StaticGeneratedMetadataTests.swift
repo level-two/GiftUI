@@ -41,6 +41,73 @@ func generatedStaticMetadataBindsDenseSlotsActionsAndCanvasCoverage() {
     #expect(metadata?.captureByteCount(for: 3) == 0)
 }
 
+@Test func staticCanvasHostValidationIsIndependentAndExact() {
+    let metadata = GeneratedRuntimeMetadata(
+        observableSlots: GeneratedObservableSlots(),
+        action: GeneratedProfileAction.self,
+        canvasTable: GeneratedRuntimeCanvasTable(),
+        canvasCoverage: GeneratedCanvasCoverage()
+    )!
+    let exact = StaticCanvasLimits(
+        maximumStaticCallableCases: 3,
+        maximumStaticCaptureBytes: 12
+    )
+    #expect(
+        StaticCanvasHostValidation.validate(limits: exact, metadata: metadata) == nil
+    )
+    #expect(
+        StaticCanvasHostValidation.validate(limits: nil, metadata: metadata)
+            == .invalidLimits
+    )
+    #expect(
+        StaticCanvasHostValidation.validate(
+            limits: StaticCanvasLimits(
+                maximumStaticCallableCases: 2,
+                maximumStaticCaptureBytes: 12
+            ),
+            metadata: metadata
+        ) == .incompleteCallableTable
+    )
+    #expect(
+        StaticCanvasHostValidation.validate(
+            limits: StaticCanvasLimits(
+                maximumStaticCallableCases: 3,
+                maximumStaticCaptureBytes: 11
+            ),
+            metadata: metadata
+        ) == .incompleteCallableTable
+    )
+}
+
+private final class StaticCanvasHandleModel {
+    let value: UInt8
+
+    init(value: UInt8) {
+        self.value = value
+    }
+}
+
+@Test func staticCanvasObservableHandleBorrowsOneAddressStableHostLocation() {
+    var location = StaticCanvasHostModelLocation(model: StaticCanvasHandleModel(value: 17))
+    var firstAddress: UInt?
+
+    location.withHandle { handle in
+        let first = handle.withModel { model in
+            firstAddress = UInt(bitPattern: Unmanaged.passUnretained(model).toOpaque())
+            return model.value
+        }
+        let copiedHandle = handle
+        let second = copiedHandle.withModel { model in
+            #expect(
+                UInt(bitPattern: Unmanaged.passUnretained(model).toOpaque()) == firstAddress
+            )
+            return model.value
+        }
+        #expect(first == 17)
+        #expect(second == 17)
+    }
+}
+
 @Test
 func generatedStaticCanvasSwitchCoversEveryDeclaredID() throws {
     var table = GeneratedRuntimeCanvasTable()

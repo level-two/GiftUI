@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-12
-updated: 2026-09-12
+updated: 2026-09-14
 implementation_plan: ../implementation-plans/spec-012-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -121,7 +121,9 @@ All counts are checked before conversion to `UInt16`. Capture sizes and aligned
 offsets use checked arithmetic. Generation fails before linking for zero or
 excess IDs, incomplete coverage, unsupported captures, over-limit records, or
 an unlowered closure. There is no closure-retaining fallback. Production limit
-comparison and allocator/symbol evidence remain T6.4-T6.5 work.
+comparison and the address-stable observable-model handle are implemented by
+the Static runtime owner. Cross-profile allocator/symbol evidence remains T6.5
+work.
 
 ## Test and Diagnostic Seams
 
@@ -149,10 +151,10 @@ making diagnostics control runtime behavior.
 
 ## Open Implementation Questions
 
-No T6.2-T6.3 implementation question remains. The exact production source-analysis
-front end and emitted private type names remain replaceable SPEC-013 integration
-details. T6.5 must still prove static profile resource behavior on both pinned
-compilers.
+No Milestone 6 implementation question remains. The exact production
+source-analysis front end and emitted private type names remain replaceable
+SPEC-013 integration details. T6.5 still owns the cross-profile resource
+evidence on both pinned compilers.
 
 ## Code and Evidence Links
 
@@ -162,5 +164,6 @@ compilers.
 - [Generated callable table fixture](../../Tests/GiftUIDrawingTests/GeneratedStaticCanvasCallableTable.swift)
 - [Static callable evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-callable-table.md)
 - [Generation rejection evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-generation-rejections.md)
+- [Static host-handle evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-host-handle.md)
 - [T6.2 Specification blocker](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-6/static-canvas-callable-table-specification-blocker.md)
 - [SPEC-012 contract fixtures](../../Tests/ContractFixtures/SPEC012/README.md)
