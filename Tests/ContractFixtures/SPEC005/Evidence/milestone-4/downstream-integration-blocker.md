@@ -1,28 +1,32 @@
 # SPEC-005 T4.4 Downstream Integration Disposition
 
-T4.4 remains blocked on its incomplete downstream prerequisites as of
-2026-09-06. SPEC-008 now has an active implementation plan and its production
-`GiftUIRenderCore` target imports `GiftUITextResources` directly alongside
-`GiftUI`. The SPEC-005 boundary registry activates and audits that exact edge;
-Render Core reuses `FontInstanceID` and `GlyphID` without aliases or identity
-translation.
+The blocker recorded here on 2026-09-06 is resolved as of 2026-09-19. The old
+names were reservation labels, not required target names. Their governed
+production successors now exist under SPEC-007, SPEC-008, SPEC-014, and
+SPEC-015:
 
-`GiftUILayout`, `GiftUITextRasterProvider`, `GiftUIBackend`, `GiftUIPlatform`,
-and `GiftUIHost` remain reserved pending consumers. `GiftUIRenderLowering` and
-the production lookup adapter are also not yet present. The dependency checker
-continues to fail closed if any reserved target appears without an activated
-audit row. Public negative compile fixtures continue to prove there is no
-externally consumable text-resource or Render Core product.
+- `GiftUILayout` owns canonical text mapping, metrics lookup, and positioned
+  nominal glyph identities;
+- `GiftUIRenderLowering` validates and streams those same identities;
+- `GiftUIRasterCore` consumes exact raster records and borrowed payload bytes;
+- `GiftUIBackendIntegration` validates the selected realization, payload
+  availability, record coverage, and bounded raster work; and
+- `GiftUIHostConfiguration` validates the prior text-resource result, audits
+  exactly one retained resource package, tears down rejected candidates, and
+  releases platform owners before profile reset and report invalidation.
 
-No alias, translated text-resource identity, production host adapter, layout
-adapter, render adapter, raster provider, backend, platform, or host module was
-created as a substitute. T4.4 remains open until the governing downstream
-plans create the remaining production owners and integration seams.
+`SignalAnalyzerHost` and `SignalAnalyzerPresetHarness` are the concrete
+platform-root path rather than invented `GiftUIPlatform` or `GiftUIHost`
+targets. The [fresh downstream integration audit](downstream-integration-audit.md)
+registers these actual owners, fails on an unlisted direct production
+consumer, and retains the global no-alias/no-translation scan. T4.4 is
+therefore complete; no text-resource architecture was added to close it.
 
 ## Reproduction
 
 ```text
 swift package dump-package
 scripts/contracts/check-spec-005-dependencies.rb < package.json
+scripts/contracts/check-spec-005-downstream-integration.rb < package.json
 scripts/contracts/run-spec-005.sh --profile macos-dynamic
 ```

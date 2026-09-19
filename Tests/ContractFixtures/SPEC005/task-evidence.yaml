@@ -210,14 +210,23 @@ tasks:
       - Tests/ContractFixtures/SPEC005/Evidence/milestone-4/assembly-lifecycle.md
     blockers: []
   T4.4:
-    disposition: blocked
+    disposition: completed
     requirements: [TR-002]
-    implementation: []
-    checks: []
-    profiles: []
+    implementation:
+      - Sources/GiftUILayout
+      - Sources/GiftUIRenderLowering
+      - Sources/GiftUIRasterCore
+      - Sources/GiftUIBackendIntegration
+      - Sources/GiftUIHostConfiguration
+    checks:
+      - scripts/contracts/check-spec-005-dependencies.rb
+      - scripts/contracts/check-spec-005-downstream-integration.rb
+      - scripts/contracts/check-spec-005-boundaries.rb
+    profiles: [macos-dynamic]
     evidence:
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-4/downstream-integration-audit.md
       - Tests/ContractFixtures/SPEC005/Evidence/milestone-4/downstream-integration-blocker.md
-    blockers: [SPEC-007, SPEC-008, SPEC-014, SPEC-015]
+    blockers: []
   T5.1:
     disposition: completed
     requirements: [TR-003, TR-004, TR-005, TR-006, TR-007, TR-008, TR-011]

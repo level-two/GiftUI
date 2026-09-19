@@ -1,10 +1,10 @@
 # T6.2 Final Boundary Audit
 
-T6.2 completed on 2026-09-04 against revision
-`ae997b8181a13fad2efc3f102513dcf38facb2e0`.
+T6.2 was refreshed on 2026-09-19 against integration-audit revision
+`d1dda46e689208fcdacb5977adbc1c09fc06dc56`.
 
 The macOS dynamic SPEC-005 driver passed with immutable run ID
-`ae997b8181a13fad2efc3f102513dcf38facb2e0-3caeb4d43e22bebb`.
+`d1dda46e689208fcdacb5977adbc1c09fc06dc56-56797d8d23ec2826`.
 That run rechecked the exact package graph, source lists, public and package
 interfaces, compiled dependencies, positive/negative import fixtures,
 `GiftUI` non-re-export, absent standalone product, nominal identity ownership,
@@ -26,13 +26,11 @@ The audit finds:
 - Portable Presentation remains free of text-resource, raster, backend,
   platform, device, and target-conditional branches.
 
-`GiftUIRenderCore` is an activated exact consumer with direct
-`GiftUITextResources` access and no identity aliases or translation.
-`GiftUILayout` was subsequently activated by approved SPEC-007 with exact
-dependencies on `GiftUI`, `GiftUISemanticCore`, and `GiftUITextResources`; its
-identity use remains direct and introduces no translation type.
-`GiftUITextRasterProvider`, `GiftUIBackend`, `GiftUIPlatform`, and `GiftUIHost`
-remain reserved pending consumers, and Render Lowering's production lookup
-integration has not landed. This preserves T4.4 and TR-002 as an explicit
-downstream blocker; the audit does not invent aliases, translation layers, or
-substitute modules to close it.
+The refreshed consumer audit inventories every production target with a direct
+`GiftUITextResources` edge and separately proves that `SignalAnalyzerHost` and
+`SignalAnalyzerPresetHarness` reach that owner through the exact package
+graph. It verifies production layout and render lookup, synchronous raster
+payload borrowing, backend realization validation, and host construction and
+teardown lifetime. The historical placeholder names are no longer treated as
+missing modules. T4.4 and TR-002 pass without aliases, translation layers, or
+substitute text-resource architecture.

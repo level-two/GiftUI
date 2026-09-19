@@ -6,7 +6,7 @@ status: completed
 owners:
   - codex
 created: 2026-08-30
-updated: 2026-09-04
+updated: 2026-09-19
 related_design_notes:
   - ../implementation-designs/spec-005-reference-package-generation.md
   - ../implementation-designs/spec-005-static-resource-layout.md
@@ -66,14 +66,14 @@ outline realization may differ. SPEC-005 is therefore Wave 2 MVP work needed
 for the text, layout, rendering, backend, and host stack; it is not a general
 typography platform.
 
-The complete contract-local implementation and hardware-free suite may proceed
-independently after Milestone 0. Production adapters that require layout,
-render, backend, or host owner modules remain blocked until the corresponding
-approved Specifications have created those modules; test-only owner adapters
-must prove the already approved mappings without inventing those production
-contracts.
+The complete contract-local implementation and hardware-free suite proceeded
+independently after Milestone 0. Production adapters requiring layout, render,
+backend, or host owner modules were gated until their governing Specifications
+created them; T4.4 now records and audits those landed integrations. Test-only
+owner adapters continue to prove the approved mappings without becoming
+production contracts.
 
-## Current Repository State
+## Initial Repository State (2026-08-30)
 
 - `Package.swift` currently exposes `GiftUI`, `GiftUIFailureCore`,
   `GiftUIFailureDiagnostics`, and `GiftUICapabilities`. There is no
@@ -141,7 +141,7 @@ once below and maps to implementation tasks and reproducible evidence.
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
 | `TR-001` — Approval, manifest, authority, reciprocal Specification/Spike/Future Work traceability | `T0.1`, `T6.1` | Governance and reciprocal-link audit | pass |
-| `TR-002` — Exact module graph and zero parallel or translated text-resource identities | `T0.2`, `T0.4`, `T4.4`, `T6.2` | Package graph, source/interface/binary scans, compile fixtures, downstream integration audit | blocked |
+| `TR-002` — Exact module graph and zero parallel or translated text-resource identities | `T0.2`, `T0.4`, `T4.4`, `T6.2` | Package graph, source/interface/binary scans, compile fixtures, downstream integration audit | pass |
 | `TR-003` — Exact identity declarations, widths, serialization, SHA-256 inputs, counts, and identity-change behavior | `T1.1`, `T1.2`, `T1.5`, `T3.1`, `T5.1` | API/layout tests, canonical golden vectors, mutation corpus, four-profile digest transcripts | pass |
 | `TR-004` — Licensed reference package, exact coverage, replacement glyph, build validation, and target-selected assembly validity | `T0.5`, `T3.1`, `T3.2`, `T3.3`, `T3.4`, `T4.3`, `T5.1` | Provenance/hash audit, deterministic generation, complete-package and target-subset validation | pass |
 | `TR-005` — Exact scalar and line-break mapping with package-only replacement and no ambient fallback | `T1.3`, `T2.4`, `T5.1` | Exhaustive scalar/control corpus and cross-profile normalized output | pass |
@@ -387,7 +387,7 @@ integration tasks have explicit downstream prerequisites.
       no partial metrics or selected realization, while omission of an
       unselected payload remains valid catalogue unavailability rather than a
       partial package.
-- [ ] `T4.4` — When SPEC-007, SPEC-008, SPEC-014, and SPEC-015 create their
+- [x] `T4.4` — When SPEC-007, SPEC-008, SPEC-014, and SPEC-015 create their
       approved owner targets, integrate the exact nominal types and validated
       package without aliases or translation. Add the production host assembly
       validation/lifetime adapter, layout and render lookup adapters, exact
@@ -517,14 +517,12 @@ review without asserting the `implemented` transition.
   declarations are sufficient to start the leaf, but incomplete or changed
   Foundation evidence blocks final four-profile and reciprocal conformance; it
   does not authorize a duplicate geometry or arithmetic implementation.
-- SPEC-008 has created `GiftUIRenderCore` with the exact direct
-  `GiftUITextResources` edge and nominal identities, and SPEC-005 now audits
-  that activated consumer. SPEC-007, later SPEC-008 lowering, SPEC-014, and
-  SPEC-015 have not yet created the remaining layout, lookup, raster, backend,
-  or host integrations. `T4.4`, the final downstream part of the module-graph
-  criterion, and production-adapter evidence remain blocked on those governed
-  implementations. Test-only adapters may prove mappings but may not become
-  substitute architecture.
+- SPEC-007, SPEC-008, SPEC-014, and SPEC-015 now provide the governed layout,
+  render-lowering, raster, backend, host-validation, construction, and teardown
+  seams required by T4.4. The registered downstream audit checks every direct
+  production consumer, both platform-root paths, nominal identity ownership,
+  synchronous payload consumption, and host resource lifetime. Future target
+  additions remain fail-closed through the exact graph and consumer inventory.
 - The exact error-precedence rule requires knowledge of all applicable
   predicates. A validator that returns on first traversal failure can be
   order-dependent; if a bounded implementation cannot preserve precedence,
@@ -571,16 +569,16 @@ No new deferred item was discovered while preparing this plan.
 
 ## Completion Record
 
-Implementation began on 2026-08-31. The plan is `active` and SPEC-005 is
-`implementing`; these are progress transitions and do not change the approved
-contract or authorize the eventual `implemented` transition.
+Implementation began on 2026-08-31. The plan is `completed` and SPEC-005
+remains `implementing`; plan completion does not change the approved contract
+or authorize the eventual `implemented` transition.
 
 | Task | Disposition | Evidence |
 | --- | --- | --- |
 | `T0.1` | completed | [Authority and fixture audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/authority-audit.md), fixture README, ordered manifest, normalized-corpus schema, matched resource-harness roots, and evidence labels |
 | `T0.2` | completed | [Text-resource contract leaf](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/contract-leaf.md), focused unit test, and updated exact package graph |
 | `T0.3` | completed | [Four-profile contract driver](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/contract-driver.md), registry entry, fail-closed fixture/corpus/generated-asset checks, and deterministic reports |
-| `T0.4` | completed | [Compiler-visible boundary evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/compiler-boundaries.md), positive/negative compile fixtures, exact dependency/interface scans, reserved consumer rows, identity-owner scan, and portable Presentation scan |
+| `T0.4` | completed | [Compiler-visible boundary evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/compiler-boundaries.md), positive/negative compile fixtures, exact dependency/interface scans, fail-closed consumer inventory, identity-owner scan, and portable Presentation scan |
 | `T0.5` | completed | [Adopted SPIKE-005 input baseline](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/adopted-input-baseline.md), machine-checked inventory, exact hashes/counts/provenance, and nRF calibration |
 | `T1.1` | completed | [Exact declarations and raw surface](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/exact-declarations.md), focused value/protocol tests, package-interface audit, and fail-closed validator seam |
 | `T1.2` | completed | [Canonical serialization and SHA-256 seam](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/canonical-serialization.md), official hash vectors, exact schema-v1 byte vector, canonical-field mutation checks, exclusion invariants, and four-profile fixed-state compile evidence |
@@ -599,19 +597,19 @@ contract or authorize the eventual `implemented` transition.
 | `T4.1` | completed | [Exact owner-adapter mappings](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/owner-adapter-mappings.md), test-only failure adapter with exact imports, all nine local error mappings, layout/render/Foundation facts, required-realization loss, and diagnostic-independence coverage |
 | `T4.2` | completed | [Contract-local synchronous offer](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/synchronous-offer.md), nominal instance/glyph identities and explicit point only, nested exact-once resource/payload lookup, empty/invalid/unavailable cases, ended-borrow instrumentation, and no production rendering policy |
 | `T4.3` | completed | [Contract-local assembly and lifecycle](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/assembly-lifecycle.md), complete-package validation for both realizations, exactly-once selected-subset validation before publication, immutable nested borrows, last-consumer teardown ownership, unselected-payload catalogue unavailability, and zero partial exposure on failure |
-| `T4.4` | blocked after incremental Render Core integration | [Downstream integration disposition](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/downstream-integration-blocker.md): SPEC-008's production Render Core now has the activated exact text-resource edge and nominal identities; layout/lowering lookup, raster-provider, backend, platform, and host integrations remain pending and no substitute module was created |
+| `T4.4` | completed | [Downstream integration audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/downstream-integration-audit.md) and [revised disposition](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/downstream-integration-blocker.md): exact production consumer inventory, platform-root reachability, nominal layout/render lookups, synchronous raster payload consumption, backend startup validation, host construction cardinality, and teardown lifetime all pass |
 | `T5.1` | completed | [Four-profile semantic corpus](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/four-profile-semantic-corpus.md), concrete complete reference cross-build on ARMv6, bitmap-only reference cross-build on nRF52840, 66 equal logical transcript rows, exact validation and owner mappings, declared realization availability, toolchain/target/flag/revision/hash metadata, and 256-comparison maximum |
 | `T5.2` | completed | [Static-path allocation evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-path-allocation.md), one monotonic measured transaction covering validation, mapping, metric/raster lookup, payload borrow, synchronous offer, and combined work with zero allocation contribution in macOS dynamic/static, plus prohibited-runtime-facility source checks and the existing four-profile 16-value layout reports |
 | `T5.3` | completed | [Static resource image evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/static-resource-images.md), [maintained measurement design](../implementation-designs/spec-005-static-resource-layout.md), matched optimized nRF and ARMv6 baseline/candidate images, deterministic double nRF build, 23,024-byte flash and zero-byte fixed-RAM deltas, conservative 1,004-byte validation stack, exact target/ABI evidence, and bitmap-only link-map omission proof |
 | `T5.4` | completed | [Pristine rebuild evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/pristine-rebuilds.md), two detached clean checkouts, eight exact standalone driver runs, 27 matching normalized artifacts, and passing registered default and `all-hardware-free` gates with cross-build-only labels |
 | `T5.5` | completed | [Resource-only timing evidence](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/resource-only-timing.md), optimized host-executed dynamic/static measurements for 103 representative and 4,096 maximum admitted glyph lookups and payload borrows, both below 2.5 milliseconds against the 250-millisecond interval, with downstream timing claims explicitly excluded |
-| `T6.1` | completed | [Collecting conformance report](../conformance/spec-005-conformance.md), complete thirteen-criterion re-audit, current authority/status and manifest verification, exact evidence links, unchanged Foundation facts, and explicit open gates for downstream integration plus T6.2/T6.3 |
-| `T6.2` | completed with downstream blocker retained | [Final boundary audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-6/final-boundary-audit.md), exact source/interface/compiled dependency and product checks, concrete-package identity audit, complete non-goal scan, and explicit preservation of T4.4/TR-002 until governed production consumers exist |
+| `T6.1` | completed | [Complete conformance report](../conformance/spec-005-conformance.md), complete thirteen-criterion re-audit, current authority/status and manifest verification, exact evidence links, and unchanged Foundation facts |
+| `T6.2` | completed | [Final boundary audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-6/final-boundary-audit.md), exact source/interface/compiled dependency and product checks, concrete-package identity audit, downstream production-consumer audit, and complete non-goal scan |
 | `T6.3` | completed | [Final hardware-free gate](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-6/final-hardware-free-gate.md), clean revision, zero failures in common checks and all 16 registered Spec/profile driver combinations, explicit cross-build-only classification, and no platform exception |
 
-Every task now has a disposition. The plan is `completed`; T4.4 and TR-002
-remain blocked on governed downstream production consumers, so the linked
-conformance report remains `collecting` and SPEC-005 remains `implementing`.
+Every task is completed. The linked conformance report now has a disposition
+for every criterion, while SPEC-005 remains `implementing` until a human
+maintainer explicitly authorizes the `implemented` transition.
 
 Record every completed, changed, removed, and blocked task disposition here or
 in a clearly linked iteration record; update any current design note in the

@@ -2,11 +2,11 @@
 spec: SPEC-005
 feature: giftui-mvp-architecture
 title: SPEC-005 Conformance Report
-status: collecting
+status: complete
 reviewers:
   - codex
 created: 2026-09-04
-updated: 2026-09-04
+updated: 2026-09-19
 implementation_plan: ../implementation-plans/spec-005-implementation-plan.md
 related_future_work:
   - FW-001
@@ -27,8 +27,8 @@ superseded_by: null
 ## Review Scope
 
 - Governing contract: [SPEC-005 Deterministic Text Resource Contract](../specs/spec-005-text-resources.md), status `implementing`.
-- Derived plan: [SPEC-005 Implementation Plan](../implementation-plans/spec-005-implementation-plan.md), status `active`.
-- Reviewed implementation revision: `98273db3c433ce3abc0f9b81d97e7e262ef48d67`.
+- Derived plan: [SPEC-005 Implementation Plan](../implementation-plans/spec-005-implementation-plan.md), status `completed`.
+- Reviewed integration-audit revision: `d1dda46e689208fcdacb5977adbc1c09fc06dc56`.
 - Design notes: [reference package generation](../implementation-designs/spec-005-reference-package-generation.md) and [static resource layout](../implementation-designs/spec-005-static-resource-layout.md), both `current`.
 - Environments: Apple Swift 6.3.3 macOS arm64 dynamic/static host execution; project-local Swift 6.3.2 ARMv6 and Embedded Swift/nRF52840 hardware-free cross-builds.
 
@@ -40,7 +40,7 @@ the MVP Signal Analyzer's deterministic text across all four configurations.
 | Criterion | Result | Evidence | Notes / exception authority |
 | --- | --- | --- | --- |
 | `TR-001` | pass | [Authority audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/authority-audit.md) | Manifest, authority, Spike, and Future Work links are reciprocal and correctly classified. |
-| `TR-002` | blocked | [Compiler boundaries](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/compiler-boundaries.md), [downstream blocker](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/downstream-integration-blocker.md) | The owned leaf/concrete-package graph and activated Render Core consumer edge pass; production layout/lowering lookup, raster/backend, and host consumers await implementation under SPEC-007/008/014/015. No exception exists. |
+| `TR-002` | pass | [Compiler boundaries](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-0/compiler-boundaries.md), [downstream audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-4/downstream-integration-audit.md), [final boundary audit](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-6/final-boundary-audit.md) | Exact graph checks inventory all direct production consumers and both platform-root paths; production layout/render lookup, raster payload borrowing, backend validation, and host lifetime reuse the nominal identities without translation. |
 | `TR-003` | pass | [Exact declarations](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/exact-declarations.md), [canonical serialization](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/canonical-serialization.md), [four-profile corpus](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-5/four-profile-semantic-corpus.md) | Exact widths, bytes, identities, bounds, and digests pass. |
 | `TR-004` | pass | [Reference generation](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-generation.md), [provenance](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/provenance-and-build-validation.md) | Adopted source, license, coverage, hashes, generation, and both required-realization validations pass. |
 | `TR-005` | pass | [Accessor behavior](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-1/accessor-behavior.md), [validated behavior](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-2/validated-behavior.md) | Scalar, replacement, CR, LF, and CRLF behavior is exact with no fallback. |
@@ -65,7 +65,9 @@ Spec/profile driver combinations with zero failures.
 macOS dynamic/static results include host execution. ARMv6 and nRF results are
 compiler, linker, ELF, ABI, section, symbol, and semantic cross-build evidence
 only. No remote Pi, connected board, deployment, service restart, or flashing
-occurred. Production backend and host evidence is blocked with T4.4.
+occurred. Production backend and host integration is covered by T4.4's source,
+graph, focused-test, construction-cardinality, and teardown-lifetime audit.
+Connected display execution remains outside this hardware-free criterion.
 
 ## Resource and Performance Evidence
 
@@ -78,9 +80,8 @@ not claimed here.
 
 ## Deviations and Exceptions
 
-No implementation divergence, failed requirement, or approved exception is
-known. TR-002 is blocked by the remaining absent downstream production
-consumers and lookup integrations; the Render Core edge is now active.
+No implementation divergence, failed requirement, blocked criterion, or
+approved exception is known.
 
 ## Deferred Work Audit
 
@@ -90,7 +91,6 @@ implementation authority. No deferred item conceals required current work.
 
 ## Review Conclusion
 
-Twelve criteria pass and one is blocked. The report does not yet support
-requesting the human `implemented` transition because TR-002/T4.4 remains
-blocked until the downstream
-governing Specifications create and integrate their production consumers.
+All thirteen criteria pass. The evidence supports requesting explicit human
+authorization for the SPEC-005 `implementing` to `implemented` transition;
+this report does not itself authorize or perform that transition.
