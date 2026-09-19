@@ -5,7 +5,7 @@ require "pathname"
 require "yaml"
 
 ROOT = Pathname.new(File.expand_path("../..", __dir__))
-SOURCE = ROOT.join("Sources/GiftUIFailureExecution/GiftUIFailureExecution.swift")
+SOURCES = ROOT.glob("Sources/GiftUIFailureExecution/*.swift").sort
 TEST = ROOT.join("Tests/GiftUIFailureExecutionTests/GiftUIFailureExecutionTests.swift")
 
 def fail_check(message)
@@ -13,10 +13,10 @@ def fail_check(message)
   exit 1
 end
 
-source = SOURCE.read
+source = SOURCES.map(&:read).join("\n")
 tests = TEST.read
-imports = source.scan(/^import (\w+)/).flatten
-fail_check("failure execution imports differ") unless imports == %w[GiftUIExecution GiftUIFailureCore]
+imports = source.scan(/^import (\w+)/).flatten.uniq.sort
+fail_check("failure execution imports differ") unless imports == %w[GiftUIExecution GiftUIFailureCore].sort
 
 required_declaration = [
   "public struct GiftUICorrelatedFailure<Context>",

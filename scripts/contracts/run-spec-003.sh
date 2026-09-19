@@ -10,6 +10,7 @@ DIAGNOSTICS_ROOT="${PROJECT_ROOT}/Sources/GiftUIFailureDiagnostics"
 CAPABILITY_SOURCE="${PROJECT_ROOT}/Sources/GiftUICapabilities/GiftUICapabilities.swift"
 CAPABILITY_ADAPTER_SOURCE="${PROJECT_ROOT}/Sources/GiftUICapabilityFailureAdapterFixture/CapabilityFailureAdapter.swift"
 PROFILE_PROBE_ROOT="${FIXTURE_ROOT}/ProfileCorpusProbe"
+RESOURCE_ROOT="${FIXTURE_ROOT}/ResourceHarness"
 GENERATED_ROOT="${PROJECT_ROOT}/.build/contract-generated/spec-003"
 REPORT_ROOT="${PROJECT_ROOT}/.build/contract-reports/spec-003"
 # shellcheck source=report-path.sh
@@ -141,6 +142,424 @@ require_exact_fragment() {
 
 hash_file() {
     shasum -a 256 "$1" | awk '{print $1}'
+}
+
+sorted_swift_sources() {
+    find "$1" -maxdepth 1 -type f -name '*.swift' -print | LC_ALL=C sort
+}
+
+compile_resource_support_modules() {
+    local compiler="$1"
+    local module_dir="$2"
+    local object_dir="$3"
+    shift 3
+    local -a flags=("$@")
+    local -a execution_sources=(
+        "${PROJECT_ROOT}/Sources/GiftUIExecution/ExecutionValues.swift"
+        "${PROJECT_ROOT}/Sources/GiftUIExecution/WakeValues.swift"
+        "${PROJECT_ROOT}/Sources/GiftUIExecution/FrameHandoffValues.swift"
+        "${PROJECT_ROOT}/Sources/GiftUIExecution/AdmissionValues.swift"
+        "${PROJECT_ROOT}/Sources/GiftUIExecution/RunCycleValues.swift"
+        "${PROJECT_ROOT}/Sources/GiftUIExecution/IdentityAllocators.swift"
+        "${PROJECT_ROOT}/Sources/GiftUIExecution/ExecutionPhaseMachine.swift"
+    )
+    mkdir -p "${module_dir}" "${object_dir}"
+
+    local -a giftui_command=(
+        "${compiler}" "${flags[@]}" -parse-as-library -package-name GiftUI
+        -emit-object -emit-module -module-name GiftUI
+        "${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
+        "${PROJECT_ROOT}/Sources/GiftUI/Color.swift"
+        -emit-module-path "${module_dir}/GiftUI.swiftmodule"
+        -o "${object_dir}/GiftUI.o"
+    )
+    record_command "${giftui_command[@]}"
+    "${giftui_command[@]}" >>"${log_path}" 2>&1
+    local -a text_command=(
+        "${compiler}" "${flags[@]}" -parse-as-library -package-name GiftUI
+        -I "${module_dir}" -emit-object -emit-module -module-name GiftUITextResources
+        "${PROJECT_ROOT}/Sources/GiftUITextResources/GiftUITextResources.swift"
+        -emit-module-path "${module_dir}/GiftUITextResources.swiftmodule"
+        -o "${object_dir}/GiftUITextResources.o"
+    )
+    record_command "${text_command[@]}"
+    "${text_command[@]}" >>"${log_path}" 2>&1
+    local -a render_command=(
+        "${compiler}" "${flags[@]}" -parse-as-library -package-name GiftUI
+        -I "${module_dir}" -emit-object -emit-module -module-name GiftUIRenderCore
+        "${PROJECT_ROOT}/Sources/GiftUIRenderCore/RenderValues.swift"
+        "${PROJECT_ROOT}/Sources/GiftUIRenderCore/RenderOperationSink.swift"
+        "${PROJECT_ROOT}/Sources/GiftUIRenderCore/RenderRecordingSink.swift"
+        -emit-module-path "${module_dir}/GiftUIRenderCore.swiftmodule"
+        -o "${object_dir}/GiftUIRenderCore.o"
+    )
+    record_command "${render_command[@]}"
+    "${render_command[@]}" >>"${log_path}" 2>&1
+    local -a execution_command=(
+        "${compiler}" "${flags[@]}" -parse-as-library -package-name GiftUI
+        -I "${module_dir}" -emit-object -emit-module -module-name GiftUIExecution
+        "${execution_sources[@]}"
+        -emit-module-path "${module_dir}/GiftUIExecution.swiftmodule"
+        -o "${object_dir}/GiftUIExecution.o"
+    )
+    record_command "${execution_command[@]}"
+    "${execution_command[@]}" >>"${log_path}" 2>&1
+}
+
+compile_resource_candidate_objects() {
+    local compiler="$1"
+    local module_dir="$2"
+    local object_dir="$3"
+    local capacity_flag="$4"
+    shift 4
+    local -a flags=("$@")
+    mkdir -p "${object_dir}"
+    local -a core_command=(
+        "${compiler}" "${flags[@]}" -parse-as-library -package-name GiftUI
+        -emit-object -emit-module -module-name GiftUIFailureCore
+        "${SOURCE_ROOT}/GiftUIFailureCore.swift"
+        -emit-module-path "${module_dir}/GiftUIFailureCore.swiftmodule"
+        -o "${object_dir}/GiftUIFailureCore.o"
+    )
+    record_command "${core_command[@]}"
+    "${core_command[@]}" >>"${log_path}" 2>&1
+    local -a correlation_command=(
+        "${compiler}" "${flags[@]}" -parse-as-library -package-name GiftUI
+        -I "${module_dir}" -emit-object -emit-module
+        -module-name GiftUIFailureExecution
+        "${PROJECT_ROOT}/Sources/GiftUIFailureExecution/GiftUICorrelatedFailure.swift"
+        -emit-module-path "${module_dir}/GiftUIFailureExecution.swiftmodule"
+        -o "${object_dir}/GiftUIFailureExecution.o"
+    )
+    record_command "${correlation_command[@]}"
+    "${correlation_command[@]}" >>"${log_path}" 2>&1
+    local -a diagnostics_command=(
+        "${compiler}" "${flags[@]}" "${capacity_flag}"
+        -parse-as-library -package-name GiftUI -I "${module_dir}"
+        -emit-object -emit-module -module-name GiftUIFailureDiagnostics
+        "${DIAGNOSTICS_ROOT}/GiftUIDiagnosticProjector.swift"
+        "${DIAGNOSTICS_ROOT}/GiftUIFixedDiagnosticBuffer.swift"
+        -emit-module-path "${module_dir}/GiftUIFailureDiagnostics.swiftmodule"
+        -o "${object_dir}/GiftUIFailureDiagnostics.o"
+    )
+    record_command "${diagnostics_command[@]}"
+    "${diagnostics_command[@]}" >>"${log_path}" 2>&1
+}
+
+record_resource_libraries_macho() {
+    local image="$1"
+    local output="$2"
+    local cache_path='/System/Library/dyld/dyld_shared_cache_arm64e'
+    local cache_hash='dyld-cache-not-file-backed'
+    [[ ! -f "${cache_path}" ]] || cache_hash="$(hash_file "${cache_path}")"
+    : >"${output}"
+    while IFS= read -r library; do
+        [[ -n "${library}" ]] || continue
+        if [[ -f "${library}" ]]; then
+            printf '%s\t%s\n' "${library}" "$(hash_file "${library}")" >>"${output}"
+        else
+            printf '%s\t%s\n' "${library}" "${cache_hash}" >>"${output}"
+        fi
+    done < <(otool -L "${image}" | tail -n +2 | awk '{print $1}' | LC_ALL=C sort -u)
+}
+
+record_resource_image_macho() {
+    local image="$1"
+    local destination="$2"
+    local objdump
+    objdump="$(xcrun --find llvm-objdump)"
+    mkdir -p "${destination}"
+    printf 'macho\n' >"${destination}/format.txt"
+    record_command otool -l "${image}"
+    otool -l "${image}" >"${destination}/load-commands.txt"
+    record_command "${objdump}" --macho --section-headers --syms --disassemble --demangle "${image}"
+    "${objdump}" --macho --section-headers "${image}" >"${destination}/sections.txt"
+    "${objdump}" --macho --disassemble --demangle "${image}" >"${destination}/disassembly.txt"
+    nm -n -S "${image}" >"${destination}/named-symbols.txt"
+    record_resource_libraries_macho "${image}" "${destination}/libraries.tsv"
+    cp "${image}" "${destination}/resource-image"
+}
+
+record_resource_image_elf() {
+    local image="$1"
+    local destination="$2"
+    local readelf="$3"
+    local objdump="$4"
+    local nm_tool="$5"
+    mkdir -p "${destination}"
+    printf 'elf\n' >"${destination}/format.txt"
+    record_command "${readelf}" -lWS "${image}"
+    "${readelf}" -lW "${image}" >"${destination}/program-headers.txt"
+    "${readelf}" -SW "${image}" >"${destination}/sections.txt"
+    "${readelf}" -sW "${image}" >"${destination}/symbols.txt"
+    record_command "${objdump}" -d -C "${image}"
+    "${objdump}" -d -C "${image}" >"${destination}/disassembly.txt"
+    "${nm_tool}" -n -S -C "${image}" >"${destination}/named-symbols.txt"
+    "${readelf}" -dW "${image}" | awk '/\(NEEDED\)/ { gsub(/\[|\]/, "", $5); print $5 "\tlinked-image" }' | LC_ALL=C sort >"${destination}/libraries.tsv"
+    cp "${image}" "${destination}/resource-image"
+}
+
+analyze_resource_build() {
+    local build_index="$1"
+    local summary="${report_dir}/resources/build-${build_index}/resource-summary.tsv"
+    record_command "${SCRIPT_DIR}/check-spec-003-resource-evidence.rb" "${profile}" \
+        "${report_dir}/resources/build-${build_index}/baseline" \
+        "${report_dir}/resources/build-${build_index}/candidate" "${summary}"
+    "${SCRIPT_DIR}/check-spec-003-resource-evidence.rb" "${profile}" \
+        "${report_dir}/resources/build-${build_index}/baseline" \
+        "${report_dir}/resources/build-${build_index}/candidate" "${summary}" \
+        >>"${log_path}" 2>&1
+}
+
+verify_resource_repeatability() {
+    local kind file
+    for kind in baseline candidate; do
+        cmp "${report_dir}/resources/build-1/${kind}/resource-image" \
+            "${report_dir}/resources/build-2/${kind}/resource-image" ||
+            fail "${profile} ${kind} final image is not repeatable"
+        printf 'resource-build-1-%s\t%s\t%s\n' "${kind}" \
+            "${report_dir#"${PROJECT_ROOT}/"}/resources/build-1/${kind}/resource-image" \
+            "$(hash_file "${report_dir}/resources/build-1/${kind}/resource-image")" >>"${images_path}"
+        printf 'resource-build-2-%s\t%s\t%s\n' "${kind}" \
+            "${report_dir#"${PROJECT_ROOT}/"}/resources/build-2/${kind}/resource-image" \
+            "$(hash_file "${report_dir}/resources/build-2/${kind}/resource-image")" >>"${images_path}"
+    done
+    for file in resource-summary.tsv sections.tsv call-graph.tsv; do
+        cmp "${report_dir}/resources/build-1/${file}" \
+            "${report_dir}/resources/build-2/${file}" ||
+            fail "${profile} normalized ${file} is not repeatable"
+    done
+}
+
+run_macos_resource_pair() {
+    local compiler="$1" sdk_path="$2" profile_flag="$3" capacity_flag="$4"
+    local build_index kind root module_dir object_dir image map
+    local -a flags=(
+        -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
+        -O -whole-module-optimization -cross-module-optimization
+        -Xfrontend -disable-reflection-metadata
+        -Xfrontend -disable-reflection-names
+        -Xfrontend -conditional-runtime-records
+        -Xfrontend -disable-preallocated-instantiation-caches
+        -Xfrontend -internalize-at-link
+        -Xfrontend -function-sections
+        "${profile_flag}" -language-mode 6
+    )
+    for build_index in 1 2; do
+        root="${generated_dir}/resources/pristine"
+        rm -rf "${root}"
+        for kind in baseline candidate; do
+            module_dir="${root}/${kind}/modules"
+            object_dir="${root}/${kind}/objects"
+            image="${root}/${kind}/resource-image"
+            map="${report_dir}/resources/build-${build_index}/${kind}/link.map"
+            mkdir -p "${module_dir}" "${object_dir}" "$(dirname "${map}")"
+            local clang
+            clang="$(xcrun --find clang)"
+            local -a support_command=(
+                "${clang}" -target arm64-apple-macosx26.0 -isysroot "${sdk_path}"
+                -Oz -fno-builtin -c "${RESOURCE_ROOT}/Support.c"
+                -o "${object_dir}/ResourceSupport.o"
+            )
+            record_command "${support_command[@]}"
+            "${support_command[@]}" >>"${log_path}" 2>&1
+            if [[ "${kind}" == candidate ]]; then
+                compile_resource_support_modules \
+                    "${compiler}" "${module_dir}" "${object_dir}" "${flags[@]}"
+                compile_resource_candidate_objects "${compiler}" "${module_dir}" "${object_dir}" \
+                    "${capacity_flag}" "${flags[@]}"
+                local -a command=(
+                    "${compiler}" "${flags[@]}" -I "${module_dir}"
+                    "${RESOURCE_ROOT}/Candidate/ResourceEntry.swift"
+                    "${RESOURCE_ROOT}/Candidate/main.swift"
+                    "${object_dir}/GiftUIFailureCore.o"
+                    "${object_dir}/GiftUIFailureExecution.o"
+                    "${object_dir}/GiftUIFailureDiagnostics.o"
+                    "${object_dir}/ResourceSupport.o"
+                    -Xlinker -lswiftCore
+                    -Xlinker -dead_strip -Xlinker -map -Xlinker "${map}" -o "${image}"
+                )
+            else
+                local -a command=(
+                    "${compiler}" "${flags[@]}"
+                    "${RESOURCE_ROOT}/Baseline/ResourceEntry.swift"
+                    "${RESOURCE_ROOT}/Baseline/main.swift"
+                    "${object_dir}/ResourceSupport.o"
+                    -Xlinker -lswiftCore
+                    -Xlinker -dead_strip -Xlinker -map -Xlinker "${map}" -o "${image}"
+                )
+            fi
+            record_command "${command[@]}"
+            "${command[@]}" >>"${log_path}" 2>&1
+            record_resource_image_macho "${image}" \
+                "${report_dir}/resources/build-${build_index}/${kind}"
+        done
+        analyze_resource_build "${build_index}"
+    done
+    verify_resource_repeatability
+}
+
+run_armv6_resource_pair() {
+    local compiler="$1" sdk_root="$2" capacity_flag='-DGIFTUI_DIAGNOSTICS_CAPACITY_16'
+    local readelf="${PROJECT_ROOT}/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf"
+    local objdump="${GIFTUI_PI_HOST_BIN_DIR}/llvm-objdump"
+    local nm_tool="${GIFTUI_PI_HOST_BIN_DIR}/llvm-nm"
+    local build_index kind root module_dir object_dir image map
+    [[ -x "${readelf}" && -x "${objdump}" && -x "${nm_tool}" ]] ||
+        fail 'pinned ARMv6 LLVM inspection tools are missing'
+    local -a flags=(
+        -target "${GIFTUI_PI_TARGET}" -sdk "${sdk_root}"
+        -use-ld=lld
+        -resource-dir "${sdk_root}/usr/lib/swift_static"
+        -Xcc "--gcc-toolchain=${sdk_root}/usr"
+        -Xcc -march=armv6 -Xcc -mfpu=vfp -Xcc -mfloat-abi=hard
+        -Xcc -D_FILE_OFFSET_BITS=64 -Xcc -fPIC
+        -O -whole-module-optimization -cross-module-optimization
+        -Xfrontend -disable-reflection-metadata
+        -Xfrontend -disable-reflection-names
+        -Xfrontend -conditional-runtime-records
+        -Xfrontend -disable-preallocated-instantiation-caches
+        -Xfrontend -internalize-at-link
+        -Xfrontend -function-sections
+        -DGIFTUI_DYNAMIC_PROFILE -language-mode 6
+    )
+    for build_index in 1 2; do
+        root="${generated_dir}/resources/pristine"
+        rm -rf "${root}"
+        for kind in baseline candidate; do
+            module_dir="${root}/${kind}/modules"
+            object_dir="${root}/${kind}/objects"
+            image="${root}/${kind}/resource-image"
+            map="${report_dir}/resources/build-${build_index}/${kind}/link.map"
+            mkdir -p "${module_dir}" "${object_dir}" "$(dirname "${map}")"
+            local clang="${GIFTUI_PI_HOST_BIN_DIR}/clang"
+            local -a support_command=(
+                "${clang}" -target "${GIFTUI_PI_TARGET}" --sysroot="${sdk_root}"
+                "--gcc-toolchain=${sdk_root}/usr" -march=armv6 -mfpu=vfp
+                -mfloat-abi=hard -Oz -fno-builtin -c "${RESOURCE_ROOT}/Support.c"
+                -o "${object_dir}/ResourceSupport.o"
+            )
+            record_command "${support_command[@]}"
+            "${support_command[@]}" >>"${log_path}" 2>&1
+            if [[ "${kind}" == candidate ]]; then
+                compile_resource_support_modules \
+                    "${compiler}" "${module_dir}" "${object_dir}" "${flags[@]}"
+                compile_resource_candidate_objects "${compiler}" "${module_dir}" "${object_dir}" \
+                    "${capacity_flag}" "${flags[@]}"
+                local -a command=(
+                    "${compiler}" "${flags[@]}" -I "${module_dir}"
+                    "${RESOURCE_ROOT}/Candidate/ResourceEntry.swift"
+                    "${RESOURCE_ROOT}/Candidate/main.swift"
+                    "${object_dir}/GiftUIFailureCore.o"
+                    "${object_dir}/GiftUIFailureExecution.o"
+                    "${object_dir}/GiftUIFailureDiagnostics.o"
+                    "${object_dir}/ResourceSupport.o"
+                    -static-stdlib -latomic -Xlinker --gc-sections
+                    -Xlinker "-Map=${map}" -o "${image}"
+                )
+            else
+                local -a command=(
+                    "${compiler}" "${flags[@]}"
+                    "${RESOURCE_ROOT}/Baseline/ResourceEntry.swift"
+                    "${RESOURCE_ROOT}/Baseline/main.swift"
+                    "${object_dir}/ResourceSupport.o"
+                    -static-stdlib -latomic -Xlinker --gc-sections
+                    -Xlinker "-Map=${map}" -o "${image}"
+                )
+            fi
+            record_command "${command[@]}"
+            "${command[@]}" >>"${log_path}" 2>&1
+            record_resource_image_elf "${image}" \
+                "${report_dir}/resources/build-${build_index}/${kind}" \
+                "${readelf}" "${objdump}" "${nm_tool}"
+        done
+        analyze_resource_build "${build_index}"
+    done
+    verify_resource_repeatability
+}
+
+compile_nrf_resource_archive() {
+    local kind="$1" root="$2" capacity_flag='-DGIFTUI_DIAGNOSTICS_CAPACITY_8'
+    local module_dir="${root}/modules" object_dir="${root}/objects"
+    local archive="${root}/libspec003swift.a"
+    local archiver="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar"
+    local -a flags=(
+        -target "${GIFTUI_NRF_SWIFT_TARGET}"
+        -enable-experimental-feature Embedded
+        -Osize -whole-module-optimization -cross-module-optimization
+        -Xfrontend -function-sections -Xfrontend -disable-stack-protector
+        -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
+        -Xcc -fshort-enums -Xcc -fno-pic -Xcc -fno-pie
+        -DGIFTUI_STATIC_PROFILE -DGIFTUI_RESOURCE_C_MAIN -language-mode 6
+    )
+    mkdir -p "${module_dir}" "${object_dir}"
+    if [[ "${kind}" == candidate ]]; then
+        compile_resource_support_modules \
+            "${GIFTUI_NRF_SWIFTC}" "${module_dir}" "${object_dir}" "${flags[@]}"
+        compile_resource_candidate_objects "${GIFTUI_NRF_SWIFTC}" \
+            "${module_dir}" "${object_dir}" "${capacity_flag}" "${flags[@]}"
+        local -a harness_command=(
+            "${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -parse-as-library
+            -I "${module_dir}" -emit-object -module-name GiftUISPEC003ResourceCandidate
+            "${RESOURCE_ROOT}/Candidate/ResourceEntry.swift" -o "${object_dir}/ResourceHarness.o"
+        )
+        record_command "${harness_command[@]}"
+        "${harness_command[@]}" >>"${log_path}" 2>&1
+        record_command "${archiver}" rcs "${archive}" \
+            "${object_dir}/ResourceHarness.o" "${object_dir}/GiftUIFailureCore.o" \
+            "${object_dir}/GiftUIFailureExecution.o" "${object_dir}/GiftUIFailureDiagnostics.o"
+        "${archiver}" rcs "${archive}" \
+            "${object_dir}/ResourceHarness.o" "${object_dir}/GiftUIFailureCore.o" \
+            "${object_dir}/GiftUIFailureExecution.o" "${object_dir}/GiftUIFailureDiagnostics.o"
+    else
+        local -a harness_command=(
+            "${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -parse-as-library
+            -emit-object -module-name GiftUISPEC003ResourceBaseline
+            "${RESOURCE_ROOT}/Baseline/ResourceEntry.swift" -o "${object_dir}/ResourceHarness.o"
+        )
+        record_command "${harness_command[@]}"
+        "${harness_command[@]}" >>"${log_path}" 2>&1
+        record_command "${archiver}" rcs "${archive}" "${object_dir}/ResourceHarness.o"
+        "${archiver}" rcs "${archive}" "${object_dir}/ResourceHarness.o"
+    fi
+    printf '%s\n' "${archive}"
+}
+
+run_nrf_resource_pair() {
+    local application_dir="${PROJECT_ROOT}/firmware/nrf52840/applications/spec003-resource-probe"
+    local readelf="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf"
+    local objdump="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump"
+    local nm_tool="${GIFTUI_NRF_SDK_DIR}/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm"
+    local build_index kind root archive build_dir elf destination
+    giftui_nrf_export_environment
+    for build_index in 1 2; do
+        rm -rf "${generated_dir}/resources/pristine"
+        for kind in baseline candidate; do
+            root="${generated_dir}/resources/pristine/${kind}"
+            archive="$(compile_nrf_resource_archive "${kind}" "${root}")"
+            build_dir="${root}/zephyr-build"
+            local -a build_command=(
+                "${GIFTUI_NRF_WEST}" build -p always -b "${GIFTUI_NRF_BOARD}"
+                -d "${build_dir}" "${application_dir}" --
+                "-DCMAKE_MAKE_PROGRAM=$(giftui_nrf_ninja)"
+                "-DGIFTUI_SPEC003_SWIFT_ARCHIVE=${archive}"
+                "-DDTC=$(giftui_nrf_dtc)" -DUSE_CCACHE=0
+            )
+            record_command "${build_command[@]}"
+            "${build_command[@]}" >>"${log_path}" 2>&1
+            elf="${build_dir}/zephyr/zephyr.elf"
+            [[ -f "${elf}" ]] || fail "missing SPEC-003 ${kind} resource ELF"
+            destination="${report_dir}/resources/build-${build_index}/${kind}"
+            record_resource_image_elf \
+                "${elf}" "${destination}" "${readelf}" "${objdump}" "${nm_tool}"
+            cp "${build_dir}/zephyr/zephyr.map" "${destination}/link.map"
+            "${readelf}" -A "${elf}" >"${destination}/arm-attributes.txt"
+            grep -Fq 'Tag_ABI_VFP_args: VFP registers' "${destination}/arm-attributes.txt" ||
+                fail 'SPEC-003 resource ELF lacks the hard-float VFP calling convention'
+        done
+        analyze_resource_build "${build_index}"
+    done
+    verify_resource_repeatability
 }
 
 record_input_hashes() {
@@ -616,6 +1035,8 @@ run_macos() {
         -O -whole-module-optimization "${profile_flag}" -language-mode 6
     run_allocation_probe "${compiler}" "${sdk_path}" "${profile_flag}"
     run_latency_probe "${compiler}" "${sdk_path}" "${profile_flag}"
+    run_macos_resource_pair \
+        "${compiler}" "${sdk_path}" "${profile_flag}" "${capacity_flag}"
 }
 
 run_raspberry_pi() {
@@ -727,6 +1148,7 @@ run_raspberry_pi() {
         -Xcc "--gcc-toolchain=${sdk_root}/usr" \
         -resource-dir "${sdk_root}/usr/lib/swift_static" \
         -sdk "${sdk_root}" -latomic -O -whole-module-optimization -language-mode 6
+    run_armv6_resource_pair "${compiler}" "${sdk_root}"
 }
 
 run_nrf52840() {
@@ -838,6 +1260,7 @@ run_nrf52840() {
         -target "${GIFTUI_NRF_SWIFT_TARGET}" \
         -enable-experimental-feature Embedded -Osize -whole-module-optimization \
         -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
+    run_nrf_resource_pair
 }
 
 record_input_hashes
