@@ -81,9 +81,10 @@ allocation/bookkeeping and equal semantic checksums.
 
 No implementation divergence or approved exception was found. The authorized
 [PiScreen attempt](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/raspberry-pi-piscreen-attempt.md)
-found no framebuffer/connected DRM display and no production PiScreen
-integration in the exact artifact. PiScreen and nRF52840 TFT/input validation
-therefore remains missing; this is an explicit
+and follow-up remediation exposed accessible framebuffer and touchscreen
+devices, but the exact artifact has no production PiScreen integration.
+PiScreen and nRF52840 TFT/input validation therefore remains missing; this is
+an explicit
 downstream conformance gate, not an exception.
 
 ## Deferred Work Audit

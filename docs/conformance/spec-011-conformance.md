@@ -74,8 +74,9 @@ registries, tasks/threads, and allocator facilities.
 
 No contract divergence or approved exception was found. The authorized
 [Raspberry Pi attempt](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/raspberry-pi-piscreen-attempt.md)
-found no framebuffer/connected DRM display and no production PiScreen
-integration in the exact artifact, so the Pi portion of T9.3 remains blocked.
+and follow-up remediation exposed accessible framebuffer and touchscreen
+devices, but the exact artifact has no production PiScreen integration, so the
+Pi portion of T9.3 remains blocked.
 Connected macOS pointer evidence and nRF input/display evidence (T9.4) are not
 collected and are not inferred from hardware-free artifacts.
 
