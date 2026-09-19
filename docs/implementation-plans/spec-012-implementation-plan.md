@@ -6,12 +6,12 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-13
+updated: 2026-09-19
 related_design_notes:
   - ../implementation-designs/spec-012-scoped-path-and-plan-storage.md
   - ../implementation-designs/spec-012-static-canvas-lowering.md
   - ../implementation-designs/spec-012-combined-render-traversal.md
-conformance_report: null
+conformance_report: ../conformance/spec-012-conformance.md
 related_future_work: []
 related_explorations: []
 related_spikes:
@@ -510,7 +510,7 @@ for independent conformance review.
       exact profile command, the fast repository gate, and the all-hardware-free
       gate. Preserve immutable report identity and register every driver
       explicitly.
-- [ ] `T9.6` — Update task dispositions and create
+- [x] `T9.6` — Update task dispositions and create
       `docs/conformance/spec-012-conformance.md` from the canonical template,
       mapping every DR criterion to stable evidence and recording deviations,
       exceptions, platform limits, and absent connected-hardware evidence.
@@ -1145,3 +1145,18 @@ zero forbidden allocation references/instructions, no hidden complete-frame
 tiled storage, and retains full symbol, map, section, stack, RAM/flash, and
 linked-size evidence. See the
 [target inspection evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-9/target-inspection.md).
+
+`T9.5` remains open. Formatting and all four exact SPEC-012 standalone drivers
+pass at revision `76d61a7309990df8b421d012de6bc34b881bc23f` with immutable
+run ID `76d61a7309990df8b421d012de6bc34b881bc23f-d9c905290aa12829`.
+The focused Drawing rows also pass in the repository matrices. The required
+fast and `all-hardware-free` aggregates remain nonzero because SPEC-011 is
+fail-closed pending T7-T9, SPEC-013 has a same-identity report-publication
+conflict, and the all-hardware-free run additionally exposed SPEC-007's nRF
+direct-compilation defect. Those external rows are not replaced or waived.
+
+`T9.6` is complete. The
+[SPEC-012 conformance report](../conformance/spec-012-conformance.md) maps every
+DR criterion to stable evidence and records the open repository-gate blockers,
+platform classifications, and absence of connected-hardware claims. The plan
+remains `active` until T9.5 passes; SPEC-012 remains `implementing`.

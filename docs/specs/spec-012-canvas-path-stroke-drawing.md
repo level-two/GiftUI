@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-09-12
+updated: 2026-09-19
 proposal:
   - PROPOSAL-006
 related_rfcs:
@@ -1260,6 +1260,9 @@ stage obligation under the Testing Requirements and Acceptance Criteria.
 Richer drawing and retained paths remain outside the accepted MVP scope.
 
 ## References
+
+- [SPEC-012 Implementation Plan](../implementation-plans/spec-012-implementation-plan.md)
+- [SPEC-012 Conformance Report](../conformance/spec-012-conformance.md)
 
 - [SPEC-012 Implementation Plan](../implementation-plans/spec-012-implementation-plan.md)
 - [Scoped Path and Plan Storage Implementation Design](../implementation-designs/spec-012-scoped-path-and-plan-storage.md)
