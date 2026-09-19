@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -uo pipefail
+set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
@@ -92,14 +92,24 @@ canonical_report_dir="${REPORT_ROOT}/${run_identity}/${profile}"
 latest_report="${REPORT_ROOT}/latest-${profile}.txt"
 mkdir -p "${staging_report_dir}"
 
+ruby "${SCRIPT_DIR}/check-spec-001-harness.rb"
+ruby "${SCRIPT_DIR}/check-spec-001-failure-matrix.rb"
+ruby "${SCRIPT_DIR}/check-spec-001-diagnostic-matrix.rb"
+ruby "${SCRIPT_DIR}/check-spec-001-revision-boundary.rb"
+ruby "${SCRIPT_DIR}/check-spec-001-sustained-workload.rb"
+"${SCRIPT_DIR}/check-spec-001-interface-audit.sh"
+swift test --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" --filter SignalAnalyzer
+
 if [[ "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ]]; then
     "${SCRIPT_DIR}/run-spec-015.sh" --profile "${profile}"
+    spec015_run_id="$(cat "${PROJECT_ROOT}/.build/contract-reports/spec-015/latest-${profile}.txt")"
+    spec015_report_dir="${PROJECT_ROOT}/.build/contract-reports/spec-015/${spec015_run_id}/${profile}"
     product="SignalAnalyzerMacOSDynamic"
     [[ "${profile}" == "macos-static" ]] && product="SignalAnalyzerMacOSStatic"
     binary_dir="$(swift build --disable-sandbox --show-bin-path)"
     artifact="${binary_dir}/${product}"
     artifact_identity="$(shasum -a 256 "${artifact}" | awk '{print $1}')"
-    cp "${PROJECT_ROOT}/.build/spec-015/${profile}/semantic.tsv" \
+    cp "${spec015_report_dir}/semantic.tsv" \
         "${staging_report_dir}/host-transcript.tsv"
     {
         printf 'schema_version=1\n'
@@ -127,10 +137,12 @@ fi
 
 if [[ "${profile}" == "raspberry-pi-armv6" ]]; then
     "${SCRIPT_DIR}/run-spec-015.sh" --profile "${profile}"
+    spec015_run_id="$(cat "${PROJECT_ROOT}/.build/contract-reports/spec-015/latest-${profile}.txt")"
+    spec015_report_dir="${PROJECT_ROOT}/.build/contract-reports/spec-015/${spec015_run_id}/${profile}"
     product="SignalAnalyzerRaspberryPiARMv6"
     artifact="${PROJECT_ROOT}/.build/raspberry-pi/artifacts/${product}"
     artifact_identity="$(shasum -a 256 "${artifact}" | awk '{print $1}')"
-    cp "${PROJECT_ROOT}/.build/spec-015/${profile}/semantic.tsv" \
+    cp "${spec015_report_dir}/semantic.tsv" \
         "${staging_report_dir}/host-transcript.tsv"
     {
         printf 'schema_version=1\n'
@@ -158,11 +170,13 @@ fi
 
 if [[ "${profile}" == "nrf52840-embedded" ]]; then
     "${SCRIPT_DIR}/run-spec-015.sh" --profile "${profile}"
+    spec015_run_id="$(cat "${PROJECT_ROOT}/.build/contract-reports/spec-015/latest-${profile}.txt")"
+    spec015_report_dir="${PROJECT_ROOT}/.build/contract-reports/spec-015/${spec015_run_id}/${profile}"
     artifact="${PROJECT_ROOT}/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf"
     artifact_identity="$(shasum -a 256 "${artifact}" | awk '{print $1}')"
-    cp "${PROJECT_ROOT}/.build/spec-015/${profile}/semantic.tsv" \
+    cp "${spec015_report_dir}/semantic.tsv" \
         "${staging_report_dir}/host-transcript.tsv"
-    cp "${PROJECT_ROOT}/.build/spec-015/${profile}/memory-summary.txt" \
+    cp "${spec015_report_dir}/memory-summary.txt" \
         "${staging_report_dir}/resource-report.txt"
     {
         printf 'schema_version=1\n'

@@ -806,12 +806,17 @@ human `implemented` transition.
       action handler, structural failure representation, prohibited facilities,
       and all positive/negative dependency cases. Evidence is in
       `Tests/ContractFixtures/SPEC001/Evidence/milestone-9/interface-and-dependency-audit.md`.
-- [ ] `T9.2` — Run focused Domain/Data/Presentation tests, the SPEC-001 driver
+- [x] `T9.2` — Run focused Domain/Data/Presentation tests, the SPEC-001 driver
       for every hardware-free profile, every applicable registered dependency
       driver from SPEC-002 through SPEC-015, and normalized cross-profile
       comparison. Preserve standalone invocations and immutable logs; a
       dependency driver may be inapplicable only through its own explicit
       profile contract, never through a SPEC-001 skip.
+      **Completed:** every hardware-free SPEC-001 profile and every registered
+      dependency driver runs through the explicit repository registry. The
+      four latest analyzer reports compare equal across 24 semantic/workload
+      fields. Evidence is in
+      `Tests/ContractFixtures/SPEC001/Evidence/milestone-9/hardware-free-driver-suite.md`.
 - [ ] `T9.3` — Run `scripts/format-swift.sh`, `scripts/test.sh` for the fast
       local gate and applicable explicit profiles, and governance validation.
       Record failures against their owning task/specification; do not weaken or
