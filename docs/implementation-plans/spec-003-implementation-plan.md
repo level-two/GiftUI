@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-08-29
-updated: 2026-09-12
+updated: 2026-09-19
 related_design_notes:
   - ../implementation-designs/spec-003-bounded-diagnostic-buffer.md
 conformance_report: null
@@ -405,15 +405,19 @@ labeled as host or hardware-free cross-build evidence.
       section totals, signed writable/code deltas, link maps, disassembly, and
       a symbol-resolved conservative call graph. Fail recursion, unresolved
       indirect calls, missing runtime bodies, dynamic unbounded stack, unequal
-      shared-library sets, or non-repeatable evidence. **Blocked:** the
-      candidate must include the SPEC-009-owned execution-correlation path,
-      whose production target does not yet exist.
+      shared-library sets, or non-repeatable evidence. **Blocked:** the former
+      missing-target blocker is resolved because `GiftUIFailureExecution` now
+      exists, but both checked-in ResourceHarness image roots are still
+      placeholders and the driver has no matched-image, section-accounting,
+      final-image call-graph, or conservative stack implementation.
 - [ ] `T5.5` — On the exact macOS reference runner, execute at least 1,000
       warm-up and 10,000 measured iterations with no other repository job;
       preserve raw samples and enforce the p99 latency row. Treat results from
       another Mac as informative only. **Blocked:** the integration order
-      requires the complete matched candidate and call-graph proof from
-      `T5.4` before the latency row can be conformance evidence.
+      requires T5.4 first. The available `Mac15,7` hardware runs macOS 26.6.2
+      build 25G83 rather than the frozen 26.3 build 25D125, so its passing raw
+      samples remain informative until the reference runner is restored or the
+      Specification is deliberately revised.
 
 ### Milestone 6: Complete Target Evidence and Prepare Conformance Review
 
@@ -487,9 +491,10 @@ SPEC-003 conformance report is ready for independent review.
 
 ### Upstream blockers
 
-- `GiftUIFailureExecution` is blocked until SPEC-009 creates the focused
-  execution-contract target. Creating an execution identity or placeholder
-  target under SPEC-003 would violate ownership.
+- `GiftUIFailureExecution` now exists under SPEC-009 ownership. T5.4 is blocked
+  instead on the missing matched-image implementation in the SPEC-003 driver;
+  its checked-in baseline/candidate roots still contain only placeholder
+  READMEs.
 - The reciprocal capability catalogue adapter is now dependency-complete
   because SPEC-004 Milestone 1 created `GiftUICapabilities` and its closed
   unavailable vocabulary. End-to-end resolver-produced outcome evidence still
@@ -785,3 +790,20 @@ residual-routing source imports only Failure Core. No production target imports
 Failure Diagnostics, while FW-009 and FW-012 remain captured rather than
 silently entering MVP scope. See the
 [integration audit evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-6/integration-audit.md).
+
+The stale T5.4 execution-target blocker was re-audited on 2026-09-19.
+`GiftUIFailureExecution` is present and its focused mapping evidence passes,
+but `ResourceHarness/Baseline` and `ResourceHarness/Candidate` still contain no
+entry sources, and `run-spec-003.sh` still lacks the required four-profile
+matched final-image, section, disassembly, call-graph, and stack pipeline. T5.4
+therefore remains open for a narrower, current blocker.
+
+The T5.5 latency collector is now implemented and registered inside both
+macOS profile runs. It executes 1,000 warm-ups plus 10,000 individually timed
+samples, preserves every raw nanosecond value, enforces p99 <= 100 us, and
+records model, OS, compiler, revision, and reference-runner match. On the
+available `Mac15,7`/M3 Pro host, both optimized profiles measured p99 167 ns.
+The [informative latency record](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-5/informative-macos-latency.md)
+is not conformance evidence because T5.4 is incomplete and the host runs
+macOS 26.6.2 build 25G83 rather than the frozen 26.3 build 25D125. T5.5 remains
+open without weakening or revising the approved runner contract.

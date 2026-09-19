@@ -478,6 +478,72 @@ run_allocation_probe() {
     record_image allocation-interposer "${interposer}"
 }
 
+run_latency_probe() {
+    local compiler="$1"
+    local sdk_path="$2"
+    local profile_flag="$3"
+    local probe_dir="${report_dir}/build/latency-probe"
+    local core_library="${probe_dir}/libGiftUIFailureCore.dylib"
+    local probe="${probe_dir}/latency-probe"
+    local output="${report_dir}/semantics/latency-samples.txt"
+    local runner="${report_dir}/semantics/latency-runner.txt"
+    mkdir -p "${probe_dir}"
+
+    local -a core_command=(
+        "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
+        -O -whole-module-optimization "${profile_flag}"
+        -language-mode 6 -parse-as-library -enable-testing
+        -module-name GiftUIFailureCore -emit-library -emit-module
+        -emit-module-path "${probe_dir}/GiftUIFailureCore.swiftmodule"
+        "${SOURCE_ROOT}/GiftUIFailureCore.swift" -o "${core_library}"
+    )
+    record_command "${core_command[@]}"
+    "${core_command[@]}" >>"${log_path}" 2>&1
+
+    local -a probe_command=(
+        "${compiler}" -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
+        -O -whole-module-optimization "${profile_flag}" -language-mode 6
+        -I "${probe_dir}" -L "${probe_dir}" -lGiftUIFailureCore
+        -Xlinker -rpath -Xlinker "${probe_dir}"
+        "${FIXTURE_ROOT}/Instrumentation/LatencyProbe/main.swift"
+        -o "${probe}"
+    )
+    record_command "${probe_command[@]}"
+    "${probe_command[@]}" >>"${log_path}" 2>&1
+    record_command "${probe}"
+    "${probe}" >"${output}" 2>>"${log_path}"
+    grep -Fxq 'warmup_iterations=1000' "${output}" ||
+        fail 'latency probe did not record 1,000 warm-up iterations'
+    grep -Fxq 'measured_iterations=10000' "${output}" ||
+        fail 'latency probe did not record 10,000 measured iterations'
+    [[ "$(grep -c '^sample_nanoseconds\[[0-9][0-9]*\]=' "${output}")" -eq 10000 ]] ||
+        fail 'latency probe did not preserve 10,000 raw samples'
+    awk -F= '/^p99_nanoseconds=/ { if ($2 > 100000) exit 1; found = 1 } END { if (!found) exit 1 }' \
+        "${output}" || fail 'latency probe p99 exceeds 100 microseconds'
+
+    local hardware_summary
+    hardware_summary="$(
+        system_profiler SPHardwareDataType 2>/dev/null |
+            grep -E 'Model Identifier:|Chip:|Total Number of Cores:|Memory:' || true
+    )"
+    {
+        printf '%s\n' "${hardware_summary}"
+        sw_vers
+        "${compiler}" --version
+        printf 'reference_model=Mac15,7\n'
+        printf 'reference_os_version=26.3\n'
+        printf 'reference_os_build=25D125\n'
+        if [[ "${hardware_summary}" == *'Model Identifier: Mac15,7'* ]] && \
+            [[ "$(sw_vers -productVersion)" == '26.3' ]] && \
+            [[ "$(sw_vers -buildVersion)" == '25D125' ]]; then
+            printf 'reference_runner_match=true\n'
+        else
+            printf 'reference_runner_match=false\n'
+        fi
+    } >"${runner}"
+    record_image latency-probe "${probe}"
+}
+
 run_macos() {
     [[ "$(uname -s)" == "Darwin" ]] || fail 'macOS profile requires macOS'
     [[ "$(uname -m)" == "arm64" ]] || fail 'macOS evidence requires an arm64 host'
@@ -549,6 +615,7 @@ run_macos() {
         -target arm64-apple-macosx26.0 -sdk "${sdk_path}" \
         -O -whole-module-optimization "${profile_flag}" -language-mode 6
     run_allocation_probe "${compiler}" "${sdk_path}" "${profile_flag}"
+    run_latency_probe "${compiler}" "${sdk_path}" "${profile_flag}"
 }
 
 run_raspberry_pi() {
