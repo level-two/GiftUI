@@ -788,6 +788,39 @@ simulation.
       display facts. Classify any absent hardware run as an open connected
       gate, not a failure hidden by simulator evidence.
 
+#### Cross-Specification Connected Validation Campaign
+
+Milestone 8 executes as two coordinated target groups followed by one shared
+comparison. This ordering reuses one immutable artifact and one connected run
+per target without treating evidence owned by one Specification as evidence
+for a different criterion. Each group records the exact revision, artifact
+hash, target identity, commands, transports, raw traces, measurements, and
+teardown result needed by every consuming report.
+
+1. **Raspberry Pi / PiScreen group:** after SPEC-003 `T5.4` and `T5.5` pass,
+   select one Raspberry Pi 1 and obtain a separate explicit request authorizing
+   deployment and connected execution. Run the repository Pi doctor, verify
+   the exact `T6.4` artifact and hard-float ARMv6 attributes, require the remote
+   machine to report `armv6l` before deployment, and collect one coordinated
+   run for SPEC-001 `T8.1`, SPEC-003 `T6.2`, the Raspberry Pi portion of
+   SPEC-011 `T9.3`, and SPEC-015's connected PiScreen gate. A service restart
+   remains separately unauthorized unless the same request names it.
+2. **nRF52840 TFT/input group:** obtain a separate explicit request authorizing
+   the connected-board change. Run the repository nRF doctor, rebuild and
+   inspect the exact `T6.5` firmware, reverify ARMv7E-M and VFP hard-float
+   attributes, then flash only `nrf52840dk/nrf52840` through the checked-in
+   J-Link workflow. Collect one coordinated run for SPEC-001 `T8.2`, SPEC-011
+   `T9.4`, and SPEC-015's connected nRF52840 TFT/input gate.
+3. **Shared oracle comparison:** only after both target groups have immutable
+   evidence, run SPEC-001 `T8.3` against the hardware-free semantic, action,
+   and drawing oracle. Preserve target-specific timing, display, resource,
+   reset, and recovery facts rather than normalizing them away.
+
+Commit the evidence and matching task/report dispositions after each numbered
+group. Do not combine an uncollected group with a completed group or mark any
+Specification `implemented`; the lifecycle transition still requires explicit
+human authorization after conformance review.
+
 ### Milestone 9: Integrate Repository Gates and Prepare Conformance
 
 **Entry conditions:** All applicable implementation tasks have dispositions;

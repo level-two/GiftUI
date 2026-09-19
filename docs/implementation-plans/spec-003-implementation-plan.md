@@ -439,9 +439,12 @@ SPEC-003 conformance report is ready for independent review.
       pinned compiler, OS, command, revision, raw latency samples, RAM, stack,
       and linked-code evidence and enforce p99 <= 150 us. This task performs no
       deployment or service restart unless separately requested and
-      authorized. **Blocked:** the owning backend/host plans have not produced
-      a runnable release corpus, and no connected Raspberry Pi target has been
-      selected for this task.
+      authorized. Execute it in the Raspberry Pi / PiScreen group defined by
+      [SPEC-001 Milestone 8](spec-001-implementation-plan.md#cross-specification-connected-validation-campaign)
+      so the same immutable connected run can satisfy its separately owned
+      criteria without conflating them. **Blocked:** T5.4 and T5.5 are
+      incomplete, and no connected Raspberry Pi target has been selected or
+      separately authorized for this task.
 - [ ] `T6.3` — Create `docs/conformance/spec-003-conformance.md`, link stable
       evidence, distinguish host/cross-build/connected-target claims, and hand
       every `FAIL-AC` row to conformance review. Do not mark SPEC-003

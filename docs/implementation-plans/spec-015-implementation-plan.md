@@ -591,7 +591,10 @@ connected-hardware evidence is explicit rather than implied.
       nRF52840 TFT display/input runs as separate connected-target gates naming
       hardware, software, transport, and observed architecture. Request the
       human `implemented` transition only after all required criteria and
-      connected-target obligations have conforming evidence.
+      connected-target obligations have conforming evidence. Collect those
+      gates through the Raspberry Pi / PiScreen and nRF52840 TFT/input campaign
+      groups defined by
+      [SPEC-001 Milestone 8](spec-001-implementation-plan.md#cross-specification-connected-validation-campaign).
 
 ## Design-Note Triggers
 

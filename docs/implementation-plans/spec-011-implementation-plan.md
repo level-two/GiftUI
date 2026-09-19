@@ -556,12 +556,17 @@ report has a disposition for every criterion.
       behavior and Raspberry Pi 1 connected input/display behavior against
       committed presentation provenance, exact hit regions, disabled overlap,
       movement cancellation, stale replacement, and exact-once dispatch.
-      Require the Pi remote to report `armv6l` before deployment.
+      Require the Pi remote to report `armv6l` before deployment. Collect the
+      Raspberry Pi portion in the Raspberry Pi / PiScreen campaign group
+      defined by
+      [SPEC-001 Milestone 8](spec-001-implementation-plan.md#cross-specification-connected-validation-campaign).
 - [ ] `T9.4` — With explicit authorization, build, inspect, flash, and exercise
       the connected `nrf52840dk/nrf52840` target through its approved host/input/
       display stack. Record VFP ABI again and distinguish hardware-observed
       routing/dispatch evidence from hardware-free compilation. Never infer
-      this result from simulator, host, or ELF evidence.
+      this result from simulator, host, or ELF evidence. Collect it in the
+      nRF52840 TFT/input campaign group defined by
+      [SPEC-001 Milestone 8](spec-001-implementation-plan.md#cross-specification-connected-validation-campaign).
 - [x] `T9.5` — Create `docs/conformance/spec-011-conformance.md`, map every
       `IN-001` through `IN-013` criterion to reproducible evidence, record
       deviations/exceptions and connected-evidence status, link it from
