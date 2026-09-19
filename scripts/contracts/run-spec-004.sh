@@ -710,13 +710,10 @@ run_raspberry_pi() {
     )
     record_command "${command[@]}"
     "${command[@]}" >>"${log_path}" 2>&1
-    local -a modules=()
-    while IFS= read -r module; do
-        modules+=("${module}")
-    done < <(find "${report_dir}/build/swiftpm" -type f -name 'GiftUICapabilities.swiftmodule' -print)
-    [[ "${#modules[@]}" -eq 1 ]] ||
-        fail "expected one ARMv6 capability module, found ${#modules[@]}"
-    record_image candidate-module "${modules[0]}"
+    local capability_module="${report_dir}/build/swiftpm/${GIFTUI_PI_TARGET}/release/Modules/GiftUICapabilities.swiftmodule"
+    [[ -f "${capability_module}" ]] ||
+        fail "expected ARMv6 capability module at ${capability_module}"
+    record_image candidate-module "${capability_module}"
 
     capability_object="${report_dir}/build/swiftpm/${GIFTUI_PI_TARGET}/release/GiftUICapabilities.build/GiftUICapabilities.swift.o"
     object_attributes="${report_dir}/resources/candidate/arm-attributes.txt"
@@ -758,7 +755,7 @@ run_raspberry_pi() {
         -resource-dir "${sdk_root}/usr/lib/swift_static"
         -sdk "${sdk_root}" -latomic
         -O -whole-module-optimization -language-mode 6
-        -I "$(dirname "${modules[0]}")"
+        -I "$(dirname "${capability_module}")"
         -parse-as-library -emit-module
         -module-name GiftUICapabilityNormalizedProfileProbe
         "${FIXTURE_ROOT}/NormalizedProfileProbe/NormalizedProfileProbe.swift"
