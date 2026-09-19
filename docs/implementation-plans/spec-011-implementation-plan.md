@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-12
+updated: 2026-09-19
 related_design_notes:
   - ../implementation-designs/spec-011-target-bound-dispatch.md
 conformance_report: null
@@ -505,7 +505,7 @@ their pinned identities.
 reports; equal-limit transcripts match; cross-target images meet allocation,
 ABI, storage, stack, flash, RAM, and forbidden-symbol requirements.
 
-- [ ] `T8.1` — Run exact declaration/API/negative compilation for macOS
+- [x] `T8.1` — Run exact declaration/API/negative compilation for macOS
       dynamic and static, Raspberry Pi `armv6-unknown-linux-gnueabihf`, and
       nRF52840 `armv7em-none-none-eabi`. Record compiler identity, target, SDK,
       optimization, full commands, revision, and fixture digest.
