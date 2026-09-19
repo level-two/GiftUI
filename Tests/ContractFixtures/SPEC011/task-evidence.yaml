@@ -50,4 +50,4 @@ tasks:
   T9.2: { disposition: completed, requirements: [], implementation: [scripts/test.sh, scripts/contracts/run-spec-011.sh], checks: [scripts/format-swift.sh, scripts/test.sh], profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded], evidence: [Tests/ContractFixtures/SPEC011/Evidence/t9-2-repository-gate.md], blockers: [] }
   T9.3: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
   T9.4: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
-  T9.5: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T9.5: { disposition: completed, requirements: [], implementation: [docs/conformance/spec-011-conformance.md], checks: [scripts/test.sh], profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded], evidence: [docs/conformance/spec-011-conformance.md], blockers: [] }

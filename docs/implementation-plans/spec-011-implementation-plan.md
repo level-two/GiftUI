@@ -562,7 +562,7 @@ report has a disposition for every criterion.
       display stack. Record VFP ABI again and distinguish hardware-observed
       routing/dispatch evidence from hardware-free compilation. Never infer
       this result from simulator, host, or ELF evidence.
-- [ ] `T9.5` — Create `docs/conformance/spec-011-conformance.md`, map every
+- [x] `T9.5` — Create `docs/conformance/spec-011-conformance.md`, map every
       `IN-001` through `IN-013` criterion to reproducible evidence, record
       deviations/exceptions and connected-evidence status, link it from
       SPEC-011 and this plan, and request human conformance review. Do not mark
@@ -870,6 +870,12 @@ across every registered contract and all four profiles. SPEC-011's standalone
 commands remain explicit and independently reproducible. Evidence is in
 `Tests/ContractFixtures/SPEC011/Evidence/t9-2-repository-gate.md`. Connected
 T9.3 and T9.4 remain open by design; T9.5 is next for conformance preparation.
+
+`T9.5` is complete. The linked
+[conformance report](../conformance/spec-011-conformance.md) gives every
+criterion a traceable disposition and records no deviation or exception.
+Connected T9.3/T9.4 remain explicit blockers to requesting the `implemented`
+transition; the plan remains active and SPEC-011 remains `implementing`.
 
 `T9.1` is complete as the plan's independently runnable boundary audit. The
 exact package consumer set and every production Swift source now prove one

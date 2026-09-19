@@ -740,6 +740,7 @@ configuration contracts.
 ## References
 
 - [SPEC-011 Implementation Plan](../implementation-plans/spec-011-implementation-plan.md)
+- [SPEC-011 Conformance Report](../conformance/spec-011-conformance.md)
 - [Target-Bound Interaction Coordination Design](../implementation-designs/spec-011-target-bound-dispatch.md)
 - [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
 - [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
