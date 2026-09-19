@@ -1146,14 +1146,15 @@ tiled storage, and retains full symbol, map, section, stack, RAM/flash, and
 linked-size evidence. See the
 [target inspection evidence](../../Tests/ContractFixtures/SPEC012/Evidence/milestone-9/target-inspection.md).
 
-`T9.5` remains open. Formatting and all four exact SPEC-012 standalone drivers
-pass at revision `76d61a7309990df8b421d012de6bc34b881bc23f` with immutable
-run ID `76d61a7309990df8b421d012de6bc34b881bc23f-d9c905290aa12829`.
-The focused Drawing rows also pass in the repository matrices. The required
-fast and `all-hardware-free` aggregates remain nonzero because SPEC-011 is
-fail-closed pending T7-T9, SPEC-013 has a same-identity report-publication
-conflict, and the all-hardware-free run additionally exposed SPEC-007's nRF
-direct-compilation defect. Those external rows are not replaced or waived.
+`T9.5` remains open for one newly measured external blocker. Formatting, all
+43 focused Drawing tests, and all four exact SPEC-012 standalone drivers pass
+at revision `13aeda83c526c29fb7af302e530b6669ac945709` with immutable run ID
+`13aeda83c526c29fb7af302e530b6669ac945709-6d0a435e9fb34c80`. The fast
+repository gate is green. In the complete `all-hardware-free` matrix, every
+SPEC-012 row and the formerly blocking SPEC-007, SPEC-011, and SPEC-013 rows
+pass. Only SPEC-003 macOS-static and ARMv6 now fail their newly implemented
+linked writable-RAM checks. Those resource-limit failures are not replaced or
+waived, so the aggregate gate and T9.5 remain open.
 
 `T9.6` is complete. The
 [SPEC-012 conformance report](../conformance/spec-012-conformance.md) maps every

@@ -25,7 +25,7 @@ The review freezes [SPEC-012](../specs/spec-012-canvas-path-stroke-drawing.md)
 at pre-report SHA-256
 `25f5cdb769af4e5d6cd37925ad447b41ba326687481ed773598b66fb57d055f1`,
 the active [implementation plan](../implementation-plans/spec-012-implementation-plan.md),
-and implementation revision `76d61a7309990df8b421d012de6bc34b881bc23f`.
+and implementation revision `13aeda83c526c29fb7af302e530b6669ac945709`.
 Evidence covers Apple Swift 6.3.3 macOS host execution and project-local Swift
 6.3.2 ARMv6/nRF hardware-free cross-build/link inspection.
 
@@ -51,13 +51,15 @@ Evidence covers Apple Swift 6.3.3 macOS host execution and project-local Swift
 
 `scripts/format-swift.sh` was clean. All four exact `run-spec-012.sh` commands
 passed and published immutable run ID
-`76d61a7309990df8b421d012de6bc34b881bc23f-d9c905290aa12829`.
+`13aeda83c526c29fb7af302e530b6669ac945709-6d0a435e9fb34c80`.
 The focused Drawing suite contains 43 semantic/layout/invocation/path/plan/
 cycle/combined-render tests and passes Dynamic/Static equality.
 
-The required fast and all-hardware-free aggregate gates remain nonzero for
-external SPEC-011, SPEC-013, and SPEC-007 rows. Therefore plan task T9.5 is
-still open even though every SPEC-012 row passes.
+The fast repository gate passes. In the all-hardware-free aggregate, every
+SPEC-012 row and the formerly blocking SPEC-007, SPEC-011, and SPEC-013 rows
+pass. The aggregate remains nonzero only because the new SPEC-003 resource
+pipeline measures over-limit writable-RAM deltas for macOS static and ARMv6.
+Therefore plan task T9.5 remains open even though every SPEC-012 row passes.
 
 ## Profile, Backend, and Platform Evidence
 
@@ -76,9 +78,9 @@ forbidden allocation references/instructions and no hidden tiled framebuffer.
 
 ## Deviations and Exceptions
 
-No SPEC-012 divergence or approved exception was found. The repository-gate
-failures are external blockers and are not waived or represented as Drawing
-evidence.
+No SPEC-012 divergence or approved exception was found. The two current
+repository-gate failures belong to SPEC-003 resource conformance and are not
+waived or represented as Drawing evidence.
 
 ## Deferred Work Audit
 
@@ -88,6 +90,6 @@ deferred item conceals a current Drawing correctness requirement.
 ## Review Conclusion
 
 Every DR criterion has a traceable passing disposition, but the explicit
-repository-gate requirement in T9.5 is not green. This report does not yet
-support requesting the `implemented` transition. SPEC-012 remains
-`implementing`; the plan remains `active` until T9.5 passes.
+all-hardware-free repository-gate requirement in T9.5 is not green. This
+report does not yet support requesting the `implemented` transition. SPEC-012
+remains `implementing`; the plan remains `active` until T9.5 passes.
