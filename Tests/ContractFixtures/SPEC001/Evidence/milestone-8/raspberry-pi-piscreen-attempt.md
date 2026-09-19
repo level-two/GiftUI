@@ -58,6 +58,10 @@ After one required reboot, the target again reported `armv6l` and exposed:
 - `fb_ili9486`, 480 x 320, 16 bits per pixel, at SPI 16 MHz; and
 - ADS7846 touchscreen input at `/dev/input/event0`.
 
+The unprivileged `giftui` account belongs to both `video` and `input`; direct
+access checks confirmed that it can read and write `/dev/fb0` and read
+`/dev/input/event0`.
+
 The firmware `simple-framebuffer` no longer appeared in the boot log. This
 closes the target-configuration portion of the original blocker. It does not
 by itself close SPEC-001 T8.1: the exact T6.4 artifact must still supply the
@@ -78,7 +82,9 @@ produced a stripped ARM EABI5 hard-float executable with build ID
 `d0a4717d9161ab7bc92f709b992d118cb41d1060937196d1a1b11e5180db732c`.
 The repository deployment workflow rechecked `armv6l`, atomically installed
 that artifact at `giftui/bin/SignalAnalyzerRaspberryPiARMv6`, and ran it with
-no service restart. The target report completed with the registered
+no service restart. A target-side SHA-256 check reproduced
+`d0a4717d9161ab7bc92f709b992d118cb41d1060937196d1a1b11e5180db732c`.
+The target report completed with the registered
 Raspberry Pi preset values: 240 x 240 logical extent, 16-row RGB565 region,
 30,416 profile-storage bytes, six actions, five canvases, 2,400 workload
 events, 120 workload frames, and `status=complete`.
