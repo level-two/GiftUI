@@ -156,6 +156,7 @@ record_input_hashes() {
                 "${CAPABILITY_ADAPTER_SOURCE}" \
                 "${SCRIPT_DIR}/run-spec-003.sh" \
                 "${SCRIPT_DIR}/check-spec-003-execution-correlation.rb" \
+                "${SCRIPT_DIR}/check-spec-003-integration-audit.rb" \
                 "${SCRIPT_DIR}/normalize-spec-003-semantic-suite.rb" \
                 "${SCRIPT_DIR}/check-spec-003-layout.rb"
         } | LC_ALL=C sort
@@ -385,6 +386,8 @@ run_dependency_checks() {
     "${SCRIPT_DIR}/check-spec-003-dependencies.rb" <"${package_json}" >>"${log_path}" 2>&1
     record_command "${SCRIPT_DIR}/check-spec-003-execution-correlation.rb"
     "${SCRIPT_DIR}/check-spec-003-execution-correlation.rb" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-003-integration-audit.rb"
+    "${SCRIPT_DIR}/check-spec-003-integration-audit.rb" >>"${log_path}" 2>&1
 
     local regression_log="${report_dir}/dependency-regressions.log"
     set +e

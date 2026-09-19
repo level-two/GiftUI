@@ -425,12 +425,10 @@ plans.
 explicit upstream blocker, the connected Pi row is recorded separately, and a
 SPEC-003 conformance report is ready for independent review.
 
-- [ ] `T6.1` — Audit reciprocal links and exact shared declarations among
+- [x] `T6.1` — Audit reciprocal links and exact shared declarations among
       SPEC-002/003/004 plus execution/host integrations; audit package edges,
       adapter ownership, diagnostic direction, and all deferred-work
-      boundaries. Update navigation only, never contract meaning. **Blocked:**
-      the execution and host integrations under audit do not exist until
-      `T4.3` and `T4.4` complete.
+      boundaries. Update navigation only, never contract meaning.
 - [ ] `T6.2` — On an explicitly selected connected Raspberry Pi reference
       target, require `armv6l` before executing the release corpus. Record the
       pinned compiler, OS, command, revision, raw latency samples, RAM, stack,
@@ -778,3 +776,12 @@ owner cannot silently bypass review. The repository-wide 81-target/282-edge
 allow-list, owner-local exact dependencies, diagnostic direction, host source
 boundary, and compiled host surface checks all pass; see the
 [final owner-boundary evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-4/final-owner-boundaries.md).
+
+`T6.1` is complete: the SPEC-002 package registry and the SPEC-003/SPEC-004
+owner registries agree exactly for every registered target. Execution owns no
+failure correlation, Capabilities owns no Failure Core dependency, the
+downstream adapters preserve their one-way edges, and the production host's
+residual-routing source imports only Failure Core. No production target imports
+Failure Diagnostics, while FW-009 and FW-012 remain captured rather than
+silently entering MVP scope. See the
+[integration audit evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-6/integration-audit.md).

@@ -30,6 +30,6 @@ tasks:
   T5.3: {"disposition":"completed","requirements":["FAIL-AC-04","FAIL-AC-14","FAIL-AC-17"],"implementation":["docs/implementation-plans/spec-003-implementation-plan.md"],"checks":["scripts/contracts/run-spec-003.sh"],"profiles":["macos-dynamic"],"evidence":["Tests/ContractFixtures/SPEC003/Evidence/milestone-5/layout-allocation-and-ram.md"],"blockers":[]}
   T5.4: {"disposition":"pending","requirements":["FAIL-AC-16","FAIL-AC-17"],"implementation":[],"checks":[],"profiles":[],"evidence":[],"blockers":[]}
   T5.5: {"disposition":"pending","requirements":[],"implementation":[],"checks":[],"profiles":[],"evidence":[],"blockers":[]}
-  T6.1: {"disposition":"pending","requirements":["FAIL-AC-18"],"implementation":[],"checks":[],"profiles":[],"evidence":[],"blockers":[]}
+  T6.1: {"disposition":"completed","requirements":["FAIL-AC-18"],"implementation":["scripts/contracts/check-spec-003-integration-audit.rb"],"checks":["scripts/contracts/check-spec-003-integration-audit.rb","scripts/contracts/check-spec-003-dependencies.rb","scripts/contracts/check-spec-003-execution-correlation.rb"],"profiles":["macos-dynamic"],"evidence":["Tests/ContractFixtures/SPEC003/Evidence/milestone-6/integration-audit.md"],"blockers":[]}
   T6.2: {"disposition":"pending","requirements":["FAIL-AC-19"],"implementation":[],"checks":[],"profiles":[],"evidence":[],"blockers":[]}
   T6.3: {"disposition":"pending","requirements":[],"implementation":[],"checks":[],"profiles":[],"evidence":[],"blockers":[]}
