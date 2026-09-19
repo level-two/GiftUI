@@ -585,7 +585,7 @@ connected-hardware evidence is explicit rather than implied.
       evidence verification. Record compiler, optimization, target triple,
       fixture, repetition method, revision, dirty state, and input/output
       hashes in each immutable report.
-- [ ] `T7.4` — Create `docs/conformance/spec-015-conformance.md`, map every
+- [x] `T7.4` — Create `docs/conformance/spec-015-conformance.md`, map every
       `HC-001` through `HC-018` row to evidence and pass/fail/blocked status,
       link the report from this plan and SPEC-015, and classify PiScreen and
       nRF52840 TFT display/input runs as separate connected-target gates naming
@@ -890,3 +890,10 @@ the complete hardware-free repository matrix pass deterministically. Evidence
 is in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-7/repository-gates.md`.
 T7.4 is next.
+
+`T7.4` is complete. The linked
+[conformance report](../conformance/spec-015-conformance.md) maps all eighteen
+criteria to passing hardware-free evidence and records no divergence or
+exception. The connected PiScreen and nRF TFT/input rows remain explicitly
+open, so the plan stays active and SPEC-015 remains `implementing`; no
+`implemented` transition is requested yet.
