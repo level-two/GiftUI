@@ -24,8 +24,8 @@ superseded_by: null
 The review freezes [SPEC-009](../specs/spec-009-execution-cycle-and-frame-handoff.md)
 at pre-report SHA-256
 `5c0a694b5d999bb40b0780cd56c034b12906736b151d7fcb66aec9658c7f0159`,
-the active [implementation plan](../implementation-plans/spec-009-implementation-plan.md),
-and implementation revision `aea343848b24bc4d8471beddedfe3eedc71729f7`.
+the completed [implementation plan](../implementation-plans/spec-009-implementation-plan.md),
+and implementation revision `93c5da967eb5130c2d2f5b276996e37d640f51c1`.
 Evidence covers Apple Swift 6.3.3 macOS host execution and project-local Swift
 6.3.2 ARMv6/nRF hardware-free cross-build and inspection.
 
@@ -53,14 +53,10 @@ Evidence covers Apple Swift 6.3.3 macOS host execution and project-local Swift
 `scripts/format-swift.sh` was clean. The focused
 `GiftUIExecutionTests|GiftUIFailureExecutionTests` run passed 152 tests. All
 four exact `run-spec-009.sh` commands passed and published immutable run ID
-`aea343848b24bc4d8471beddedfe3eedc71729f7-1bd7caa6f097f98f`.
-Driver-registry, dependency, governance, formatting, and every SPEC-009 row in
-the fast repository gate pass.
-
-The fast repository gate is still nonzero because SPEC-011 intentionally
-fails closed pending its T7-T9 work and SPEC-013 macOS dynamic refuses a
-same-identity report overwrite after classifying its canonical corpus as
-empty. These are open repository gates, not SPEC-009 criterion failures.
+`93c5da967eb5130c2d2f5b276996e37d640f51c1-699b2029531d7d6f`.
+Driver-registry, dependency, governance, governance-tooling, formatting, root
+tests, and every registered macOS-dynamic contract-driver row pass in the
+repository gate.
 
 ## Profile, Backend, and Platform Evidence
 
@@ -79,8 +75,9 @@ reported by their owning runtime/backend evidence.
 
 ## Deviations and Exceptions
 
-No SPEC-009 divergence or exception was found. The required repository gate is
-blocked by external SPEC-011 and SPEC-013 rows, so plan task T8.6 remains open.
+No SPEC-009 divergence or exception was found. The former external SPEC-011
+and SPEC-013 blockers are resolved, the required repository gate is green,
+and plan task T8.6 is complete.
 
 ## Deferred Work Audit
 
@@ -89,7 +86,7 @@ evidence only. None conceals a current SPEC-009 correctness requirement.
 
 ## Review Conclusion
 
-Every EX criterion has a traceable passing disposition, but the explicit
-repository-gate portion of T8.6 is not green. This report therefore does not
-yet support requesting the `implemented` transition. SPEC-009 remains
-`implementing`, and no exception or lifecycle transition is inferred.
+Every EX criterion has a traceable passing disposition and the explicit
+repository-gate portion of T8.6 is green. This report supports requesting the
+`implemented` transition. SPEC-009 remains `implementing` until that transition
+receives explicit human authorization; no transition is inferred here.

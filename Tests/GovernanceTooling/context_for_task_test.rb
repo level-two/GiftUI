@@ -27,11 +27,11 @@ class ContextForTaskTest < Minitest::Test
   end
 
   def test_blocked_task_exposes_declared_prerequisites_and_blockers
-    output, error, status = run_context("--spec", "SPEC-005", "--task", "T4.4", "--format", "json", "--stdout")
+    output, error, status = run_context("--spec", "SPEC-003", "--task", "T5.4", "--format", "json", "--stdout")
     assert status.success?, error
     pack = JSON.parse(output)
     assert_equal "blocked", pack.fetch("disposition")
-    assert_equal %w[SPEC-007 SPEC-008 SPEC-014 SPEC-015], pack.fetch("blockers")
+    assert_equal ["Tests/ContractFixtures/SPEC003/Evidence/milestone-5/resource-images.md"], pack.fetch("blockers")
     assert pack.fetch("prerequisites").any? { |item| item["id"] == "SPEC-007" }
   end
 

@@ -2,7 +2,7 @@
 spec: SPEC-009
 feature: giftui-mvp-architecture
 title: SPEC-009 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-09-06
@@ -554,7 +554,7 @@ criterion is ready for conformance review.
       allocations, stack, sections, and link maps; verify ARMv6 target
       identity and nRF Cortex-M4F hard-float VFP attributes. Do not deploy,
       flash, access a remote target, or claim connected-hardware conformance.
-- [ ] `T8.6` — Run `scripts/format-swift.sh`, the focused unit/contract suite,
+- [x] `T8.6` — Run `scripts/format-swift.sh`, the focused unit/contract suite,
       exact standalone SPEC-009 drivers, driver-registry check, dependency
       checks, and the repository test gate. Create
       `docs/conformance/spec-009-conformance.md`, link it from SPEC-009 and
@@ -1205,20 +1205,18 @@ service restart, simulator execution, connected-target execution, or flashing.
 See the
 [four-profile driver evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-8/four-profile-drivers.md).
 
-Plan completion will mean every task has a recorded disposition; it will not
-mean SPEC-009 conforms or is `implemented`. On 2026-09-19, formatting, the
-152-test focused Execution/FailureExecution suite, all four exact standalone
-drivers, registry checks, dependency checks, and every SPEC-009 row of the
-repository gate passed at revision
-`aea343848b24bc4d8471beddedfe3eedc71729f7`. The four drivers share immutable
-run ID `aea343848b24bc4d8471beddedfe3eedc71729f7-1bd7caa6f097f98f`.
+Every task now has a recorded disposition; plan completion does not itself
+mean SPEC-009 is `implemented`. On 2026-09-19, formatting, the 152-test focused
+Execution/FailureExecution suite, all four exact standalone drivers, registry
+checks, dependency checks, governance tooling, the complete root suite, and
+the macOS-dynamic repository gate passed at revision
+`93c5da967eb5130c2d2f5b276996e37d640f51c1`. The four drivers share immutable
+run ID `93c5da967eb5130c2d2f5b276996e37d640f51c1-699b2029531d7d6f`.
 
-The repository gate remains nonzero for two external rows: SPEC-011
-deliberately fails closed while its T7-T9 evidence is pending, and SPEC-013's
-macOS dynamic report refuses to overwrite a same-identity report after its
-current prerequisite scan classifies the canonical corpus as empty. The
-[SPEC-009 conformance report](../conformance/spec-009-conformance.md) therefore
-has complete criterion dispositions but does not support the lifecycle
-transition while the required repository gate is red. T8.6 remains unchecked;
-the Specification remains `implementing` and still requires explicit human
-authorization for any later `implemented` transition.
+The stale SPEC-011 and SPEC-013 external blockers are resolved. The repository
+gate also exposed and then corrected a stale governance-tooling fixture that
+still named completed SPEC-005 T4.4 as blocked; it now exercises current
+blocked task SPEC-003 T5.4. The refreshed
+[SPEC-009 conformance report](../conformance/spec-009-conformance.md) supports
+requesting the lifecycle transition. SPEC-009 remains `implementing` until
+that transition receives explicit human authorization.
