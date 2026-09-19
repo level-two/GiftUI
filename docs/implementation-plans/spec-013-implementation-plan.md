@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-14
+updated: 2026-09-19
 related_design_notes:
   - ../implementation-designs/spec-013-common-coordinator-and-cleanup.md
   - ../implementation-designs/spec-013-storage-audit-and-overlay-ownership.md
@@ -471,7 +471,7 @@ SPEC-014/015 production seams are available for rows that consume them.
 runtime seam without ownership leakage, and a SPEC-013 conformance report is
 ready for independent review.
 
-- [ ] `T8.1` — Audit `Package.swift`, public/package interfaces, source imports,
+- [x] `T8.1` — Audit `Package.swift`, public/package interfaces, source imports,
       generated source, fixture registries, and product graphs. Prove `GiftUI`
       exposes no profile API, profiles do not import each other or concrete
       backend/host modules, and owner algorithms remain in focused targets.
@@ -956,6 +956,14 @@ retains host-execution classification even when the surrounding profile
 evidence is an ARMv6 or nRF cross-build. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-7/signal-analyzer-workload.md`.
 Milestone 7 is complete; T8.1 is next.
+
+`T8.1` is complete. The final package audit checks the parsed SwiftPM product
+graph, exact owner dependencies, public/package source imports, generated
+source, fixture registries, and retired migration paths. `GiftUI` exposes no
+profile surface; the profiles neither import each other nor concrete backend
+or host modules. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-8/final-package-audit.md`.
+T8.2 is next.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
