@@ -6,10 +6,10 @@ status: active
 owners:
   - codex
 created: 2026-09-06
-updated: 2026-09-14
+updated: 2026-09-19
 related_design_notes:
   - ../implementation-designs/spec-009-execution-state-axes.md
-conformance_report: null
+conformance_report: ../conformance/spec-009-conformance.md
 related_future_work:
   - FW-010
   - FW-014
@@ -1206,6 +1206,19 @@ See the
 [four-profile driver evidence](../../Tests/ContractFixtures/SPEC009/Evidence/milestone-8/four-profile-drivers.md).
 
 Plan completion will mean every task has a recorded disposition; it will not
-mean SPEC-009 conforms or is `implemented`. The conformance report remains
-`null` until `T8.6` creates it, and the Specification's final lifecycle
-transition requires explicit human authorization.
+mean SPEC-009 conforms or is `implemented`. On 2026-09-19, formatting, the
+152-test focused Execution/FailureExecution suite, all four exact standalone
+drivers, registry checks, dependency checks, and every SPEC-009 row of the
+repository gate passed at revision
+`aea343848b24bc4d8471beddedfe3eedc71729f7`. The four drivers share immutable
+run ID `aea343848b24bc4d8471beddedfe3eedc71729f7-1bd7caa6f097f98f`.
+
+The repository gate remains nonzero for two external rows: SPEC-011
+deliberately fails closed while its T7-T9 evidence is pending, and SPEC-013's
+macOS dynamic report refuses to overwrite a same-identity report after its
+current prerequisite scan classifies the canonical corpus as empty. The
+[SPEC-009 conformance report](../conformance/spec-009-conformance.md) therefore
+has complete criterion dispositions but does not support the lifecycle
+transition while the required repository gate is red. T8.6 remains unchecked;
+the Specification remains `implementing` and still requires explicit human
+authorization for any later `implemented` transition.

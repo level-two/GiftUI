@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-09-10
+updated: 2026-09-19
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -1677,6 +1677,9 @@ architecture, work MUST return to RFC/ADR review.
 Current MVP scope is unchanged.
 
 ## References
+
+- [SPEC-009 Implementation Plan](../implementation-plans/spec-009-implementation-plan.md)
+- [SPEC-009 Conformance Report](../conformance/spec-009-conformance.md)
 
 - [SPEC-009 Implementation Plan](../implementation-plans/spec-009-implementation-plan.md)
 - [Execution Identity and State Axes design note](../implementation-designs/spec-009-execution-state-axes.md)
