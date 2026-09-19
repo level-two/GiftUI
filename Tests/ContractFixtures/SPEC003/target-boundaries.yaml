@@ -36,6 +36,7 @@ active:
   GiftUIBackendIntegration:
     type: regular
     dependencies:
+      - GiftUI
       - GiftUICapabilities
       - GiftUIDisplayCore
       - GiftUIExecution

@@ -158,6 +158,7 @@ targets:
   GiftUIBackendIntegration:
     type: regular
     dependencies:
+      - GiftUI
       - GiftUICapabilities
       - GiftUIDisplayCore
       - GiftUIExecution
@@ -169,6 +170,7 @@ targets:
   GiftUIBackendIntegrationTests:
     type: test
     dependencies:
+      - GiftUI
       - GiftUIBackendIntegration
       - GiftUICapabilities
       - GiftUIDisplayCore
@@ -374,14 +376,20 @@ targets:
   GiftUIHostConfigurationTests:
     type: test
     dependencies:
+      - GiftUI
+      - GiftUICapabilities
+      - GiftUIDisplayCore
       - GiftUIExecution
       - GiftUIFailureCore
       - GiftUIHostConfiguration
       - GiftUIInteraction
       - GiftUIObservableState
+      - GiftUIRasterCore
       - GiftUIRuntimeCore
       - GiftUIRuntimeDynamic
       - GiftUIRuntimeStatic
+      - GiftUISurfaceCore
+      - GiftUITextResources
       - SignalAnalyzerData
       - SignalAnalyzerDomain
       - SignalAnalyzerHost
@@ -403,18 +411,47 @@ targets:
   GiftUIRuntimeDynamicTests:
     type: test
     dependencies:
+      - GiftUI
+      - GiftUIDrawing
       - GiftUIDynamicConveniences
+      - GiftUIExecution
+      - GiftUIInteraction
+      - GiftUILayout
+      - GiftUIObservableState
+      - GiftUIRenderCore
+      - GiftUIRenderLowering
+      - GiftUIRuntimeCore
       - GiftUIRuntimeDynamic
+      - GiftUISemanticCore
   GiftUIRuntimeStaticTests:
     type: test
     dependencies:
+      - GiftUI
+      - GiftUIDrawing
+      - GiftUIExecution
+      - GiftUIInteraction
+      - GiftUILayout
+      - GiftUIObservableState
+      - GiftUIRenderCore
+      - GiftUIRenderLowering
+      - GiftUIRuntimeCore
       - GiftUIRuntimeStatic
+      - GiftUISemanticCore
   GiftUIRuntimeConformanceTests:
     type: test
     dependencies:
+      - GiftUI
+      - GiftUIDrawing
+      - GiftUIExecution
+      - GiftUIInteraction
+      - GiftUILayout
+      - GiftUIObservableState
+      - GiftUIRenderCore
+      - GiftUIRenderLowering
       - GiftUIRuntimeCore
       - GiftUIRuntimeDynamic
       - GiftUIRuntimeStatic
+      - GiftUISemanticCore
   GiftUIRuntimeFailureAdapterTests:
     type: test
     dependencies:
@@ -503,6 +540,7 @@ targets:
       - GiftUICapabilities
       - GiftUIHostConfiguration
       - GiftUIRuntimeCore
+      - SignalAnalyzerDomain
       - SignalAnalyzerHost
       - SignalAnalyzerPresentation
   SignalAnalyzerMacOSDynamic:
@@ -529,7 +567,11 @@ targets:
     type: test
     dependencies:
       - SignalAnalyzerData
+      - SignalAnalyzerDomain
   SignalAnalyzerPresentationTests:
     type: test
     dependencies:
+      - GiftUI
+      - GiftUIFailureCore
+      - SignalAnalyzerDomain
       - SignalAnalyzerPresentation

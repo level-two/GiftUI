@@ -117,6 +117,7 @@ let package = Package(
         .target(
             name: "GiftUIBackendIntegration",
             dependencies: [
+                "GiftUI",
                 "GiftUICapabilities",
                 "GiftUIDisplayCore",
                 "GiftUIExecution",
@@ -303,6 +304,7 @@ let package = Package(
                 "GiftUICapabilities",
                 "GiftUIHostConfiguration",
                 "GiftUIRuntimeCore",
+                "SignalAnalyzerDomain",
                 "SignalAnalyzerHost",
                 "SignalAnalyzerPresentation",
             ]
@@ -416,6 +418,7 @@ let package = Package(
         .testTarget(
             name: "GiftUIBackendIntegrationTests",
             dependencies: [
+                "GiftUI",
                 "GiftUIBackendIntegration",
                 "GiftUICapabilities",
                 "GiftUIDisplayCore",
@@ -531,18 +534,52 @@ let package = Package(
         ),
         .testTarget(
             name: "GiftUIRuntimeDynamicTests",
-            dependencies: ["GiftUIDynamicConveniences", "GiftUIRuntimeDynamic"]
+            dependencies: [
+                "GiftUI",
+                "GiftUIDrawing",
+                "GiftUIDynamicConveniences",
+                "GiftUIExecution",
+                "GiftUIInteraction",
+                "GiftUILayout",
+                "GiftUIObservableState",
+                "GiftUIRenderCore",
+                "GiftUIRenderLowering",
+                "GiftUIRuntimeCore",
+                "GiftUIRuntimeDynamic",
+                "GiftUISemanticCore",
+            ]
         ),
         .testTarget(
             name: "GiftUIRuntimeStaticTests",
-            dependencies: ["GiftUIRuntimeStatic"]
+            dependencies: [
+                "GiftUI",
+                "GiftUIDrawing",
+                "GiftUIExecution",
+                "GiftUIInteraction",
+                "GiftUILayout",
+                "GiftUIObservableState",
+                "GiftUIRenderCore",
+                "GiftUIRenderLowering",
+                "GiftUIRuntimeCore",
+                "GiftUIRuntimeStatic",
+                "GiftUISemanticCore",
+            ]
         ),
         .testTarget(
             name: "GiftUIRuntimeConformanceTests",
             dependencies: [
+                "GiftUI",
+                "GiftUIDrawing",
+                "GiftUIExecution",
+                "GiftUIInteraction",
+                "GiftUILayout",
+                "GiftUIObservableState",
+                "GiftUIRenderCore",
+                "GiftUIRenderLowering",
                 "GiftUIRuntimeCore",
                 "GiftUIRuntimeDynamic",
                 "GiftUIRuntimeStatic",
+                "GiftUISemanticCore",
             ]
         ),
         .testTarget(
@@ -558,14 +595,20 @@ let package = Package(
         .testTarget(
             name: "GiftUIHostConfigurationTests",
             dependencies: [
+                "GiftUI",
+                "GiftUICapabilities",
+                "GiftUIDisplayCore",
                 "GiftUIExecution",
                 "GiftUIFailureCore",
                 "GiftUIHostConfiguration",
                 "GiftUIInteraction",
                 "GiftUIObservableState",
+                "GiftUIRasterCore",
                 "GiftUIRuntimeCore",
                 "GiftUIRuntimeDynamic",
                 "GiftUIRuntimeStatic",
+                "GiftUISurfaceCore",
+                "GiftUITextResources",
                 "SignalAnalyzerData",
                 "SignalAnalyzerDomain",
                 "SignalAnalyzerHost",
@@ -616,11 +659,16 @@ let package = Package(
         ),
         .testTarget(
             name: "SignalAnalyzerDataTests",
-            dependencies: ["SignalAnalyzerData"]
+            dependencies: ["SignalAnalyzerData", "SignalAnalyzerDomain"]
         ),
         .testTarget(
             name: "SignalAnalyzerPresentationTests",
-            dependencies: ["SignalAnalyzerPresentation"]
+            dependencies: [
+                "GiftUI",
+                "GiftUIFailureCore",
+                "SignalAnalyzerDomain",
+                "SignalAnalyzerPresentation",
+            ]
         ),
     ],
     swiftLanguageModes: [.v6]

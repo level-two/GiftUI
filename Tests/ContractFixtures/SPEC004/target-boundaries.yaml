@@ -31,6 +31,7 @@ active:
   GiftUIBackendIntegration:
     type: regular
     dependencies:
+      - GiftUI
       - GiftUICapabilities
       - GiftUIDisplayCore
       - GiftUIExecution
@@ -69,6 +70,7 @@ active:
       - GiftUICapabilities
       - GiftUIHostConfiguration
       - GiftUIRuntimeCore
+      - SignalAnalyzerDomain
       - SignalAnalyzerHost
       - SignalAnalyzerPresentation
 forbidden_capability_imports:
