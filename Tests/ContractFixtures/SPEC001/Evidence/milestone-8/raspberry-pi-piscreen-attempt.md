@@ -63,3 +63,29 @@ closes the target-configuration portion of the original blocker. It does not
 by itself close SPEC-001 T8.1: the exact T6.4 artifact must still supply the
 approved 240 x 240 logical presentation and input integration before visible
 output or six-control evidence can be claimed.
+
+## Exact T6.4 Artifact Execution
+
+After the repair, the repository Pi doctor passed with project-local Swift
+6.3.2 and the exact `armv6-unknown-linux-gnueabihf` SDK. The command
+
+```text
+scripts/raspberry-pi/build.sh --product SignalAnalyzerRaspberryPiARMv6
+```
+
+produced a stripped ARM EABI5 hard-float executable with build ID
+`8dc7afc03f5910a1946e8a259187030db4297528` and SHA-256
+`d0a4717d9161ab7bc92f709b992d118cb41d1060937196d1a1b11e5180db732c`.
+The repository deployment workflow rechecked `armv6l`, atomically installed
+that artifact at `giftui/bin/SignalAnalyzerRaspberryPiARMv6`, and ran it with
+no service restart. The target report completed with the registered
+Raspberry Pi preset values: 240 x 240 logical extent, 16-row RGB565 region,
+30,416 profile-storage bytes, six actions, five canvases, 2,400 workload
+events, 120 workload frames, and `status=complete`.
+
+This target execution strengthens T6.4's existing cross-build evidence by
+proving that the immutable artifact starts and completes on the selected
+ARMv6 machine. The executable still only calls `HardwareFreePresetRunner`; it
+did not open `/dev/fb0` or `/dev/input/event0`. Consequently this run does not
+claim visible PiScreen output, physical control input, presentation cadence,
+or completion of T8.1, SPEC-011 T9.3, or SPEC-015's connected PiScreen gate.
