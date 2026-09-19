@@ -229,7 +229,7 @@ governed implementation must still reproduce and record the required evidence.
 | `SA-AC-040` — Total normalization, mandatory effects, residual policy, and diagnostic independence | `T3.4`, `T7.1` | Exhaustive outcome/effect/policy/projection matrix | pending |
 | `SA-AC-041` — Complete 96-byte UTF-8 diagnostic and BoundedText matrix | `T1.1`, `T3.4`, `T9.2` | Dynamic/static construction, borrow, projection, allocation transcript | pending |
 | `SA-AC-042` — Exact wrapping CH4 vectors in every profile/host | `T2.3`, `T6.2`-`T6.5`, `T9.2` | Two golden vectors and four normalized host traces | pending |
-| `SA-AC-043` — Capture revision exhaustion terminal procedure | `T1.3`, `T2.2`, `T3.4`, `T7.1` | `UInt32.max - 1/max`, reserved fact, no-policy, quiesce/rebuild transcript | pending |
+| `SA-AC-043` — Capture revision exhaustion terminal procedure | `T1.3`, `T2.2`, `T3.4`, `T7.1`, `T7.3` | `UInt32.max - 1/max`, reserved fact, no-policy, quiesce/rebuild transcript | pending |
 | `SA-AC-044` — Operational failure structurally contains only failure fact plus semantic diagnostic | `T3.1`, `T3.4`, `T5.1`, `T9.1` | Positive API/layout and negative construction/generated-storage fixtures | pending |
 | `SA-AC-045` — Exact SPEC-015 workload/preset/report equality | `T4.3`, `T6.1`-`T6.5`, `T7.4` | Descriptor, generated manifest, limits, assembly, extent/region/bounds comparison | pending |
 
@@ -817,10 +817,15 @@ human `implemented` transition.
       four latest analyzer reports compare equal across 24 semantic/workload
       fields. Evidence is in
       `Tests/ContractFixtures/SPEC001/Evidence/milestone-9/hardware-free-driver-suite.md`.
-- [ ] `T9.3` — Run `scripts/format-swift.sh`, `scripts/test.sh` for the fast
+- [x] `T9.3` — Run `scripts/format-swift.sh`, `scripts/test.sh` for the fast
       local gate and applicable explicit profiles, and governance validation.
       Record failures against their owning task/specification; do not weaken or
       silently skip another contract driver.
+      **Completed:** formatting, the fast local gate, all four hardware-free
+      profile lanes, all 60 registered spec/profile driver combinations, and
+      governance validation pass. The one initial governance ledger mismatch
+      was corrected and revalidated without weakening a driver. Evidence is in
+      `Tests/ContractFixtures/SPEC001/Evidence/milestone-9/repository-gates.md`.
 - [ ] `T9.4` — Update every task disposition and evidence link, create
       `docs/conformance/spec-001-conformance.md` with all 45 criteria exactly
       once, link it from SPEC-001 and this plan, and request the human
