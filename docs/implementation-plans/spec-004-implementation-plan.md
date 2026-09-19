@@ -2,15 +2,15 @@
 spec: SPEC-004
 feature: capability-system
 title: SPEC-004 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-08-29
-updated: 2026-09-12
+updated: 2026-09-19
 related_design_notes:
   - ../implementation-designs/spec-004-raster-arithmetic.md
   - ../implementation-designs/spec-004-resource-evidence-driver.md
-conformance_report: null
+conformance_report: ../conformance/spec-004-conformance.md
 related_future_work:
   - FW-006
   - FW-007
@@ -531,11 +531,11 @@ independent review.
       independent startup gates, immutable snapshot path, and all six deferred
       records are present and consistent; see the
       [final navigation audit](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-6/navigation-audit.md).
-- [ ] `T6.2` — Run the complete top-level hardware-free matrix and preserve
+- [x] `T6.2` — Run the complete top-level hardware-free matrix and preserve
       exact standalone commands and stable evidence links. Label host execution,
       Pi/nRF cross-build/inspection, simulator, and any separately authorized
       connected-hardware evidence without promoting one category into another.
-- [ ] `T6.3` — Create `docs/conformance/spec-004-conformance.md`, link the
+- [x] `T6.3` — Create `docs/conformance/spec-004-conformance.md`, link the
       stable reports, record every `CR` row and upstream disposition, and hand
       the result to conformance review. Do not mark SPEC-004 `implemented`
       without complete evidence and explicit maintainer authorization.
@@ -936,3 +936,22 @@ immutability is evidenced without changing contract text. FW-006, FW-007,
 FW-008, FW-014, FW-015, and FW-018 remain separately linked and
 non-authoritative; see the
 [final navigation audit](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-6/navigation-audit.md).
+
+`T6.2` is complete. The complete registered `all-hardware-free` matrix ran on
+2026-09-19. It exposed and corrected an ARMv6 driver artifact-selection defect:
+the old recursive lookup counted a host `Modules-tool` cache artifact beside
+the target module. The driver now requires the exact target-triple module.
+All four standalone SPEC-004 commands then passed from clean revision
+`383d1e72b398fedb0ffb85313526ccbcee8cf8e9` with immutable run ID
+`383d1e72b398fedb0ffb85313526ccbcee8cf8e9-b55dbb156cbf7dac`.
+The aggregate still reports unrelated fail-closed SPEC-011 T7-T9 rows and one
+SPEC-007 nRF compile defect; those results do not replace or weaken the exact
+passing SPEC-004 profile evidence. See the
+[final hardware-free matrix](../../Tests/ContractFixtures/SPEC004/Evidence/milestone-6/final-hardware-free-matrix.md).
+
+`T6.3` is complete. The
+[SPEC-004 conformance report](../conformance/spec-004-conformance.md) records
+all seventeen criterion dispositions, exact profile classifications, resource
+evidence, and repository-wide aggregate observations. The plan is `completed`;
+SPEC-004 remains `implementing` pending explicit maintainer authorization for
+any `implemented` transition.

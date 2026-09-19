@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-08-30
+updated: 2026-09-19
 proposal:
   - PROPOSAL-004
 related_rfcs:
@@ -1264,6 +1264,7 @@ criteria.
 ## Implementation Records
 
 - [SPEC-004 Implementation Plan](../implementation-plans/spec-004-implementation-plan.md)
+- [SPEC-004 Conformance Report](../conformance/spec-004-conformance.md)
 - [nRF Resource Evidence Driver Design](../implementation-designs/spec-004-resource-evidence-driver.md)
 - [Checked Raster Arithmetic Implementation Design](../implementation-designs/spec-004-raster-arithmetic.md)
 
