@@ -475,7 +475,7 @@ ready for independent review.
       generated source, fixture registries, and product graphs. Prove `GiftUI`
       exposes no profile API, profiles do not import each other or concrete
       backend/host modules, and owner algorithms remain in focused targets.
-- [ ] `T8.2` — Integrate SPEC-013's profile construction/audit/coordinator seam
+- [x] `T8.2` — Integrate SPEC-013's profile construction/audit/coordinator seam
       with SPEC-014 recording/production endpoints and SPEC-015 host
       configuration only through their approved contracts. Keep numeric
       capacities, policy, facilities, and connected hardware outside Runtime
@@ -964,6 +964,15 @@ profile surface; the profiles neither import each other nor concrete backend
 or host modules. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-8/final-package-audit.md`.
 T8.2 is next.
+
+`T8.2` is complete. Runtime Core remains profile-neutral and imports no
+backend or host owner; Host Configuration consumes Runtime Core and Backend
+Integration without selecting a concrete profile; the platform-specific
+Signal Analyzer assembly selects Dynamic or Static storage through the
+approved seams. Focused pipeline, endpoint, preset, and equal-profile tests
+pass. Evidence is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-8/downstream-integration.md`.
+T8.3 is next.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
