@@ -188,9 +188,11 @@ record_command "${deploy_command[@]}"
 
 remote_sha256="$(ssh "${ssh_options[@]}" "${target}" "sha256sum '${remote_program}'" | awk '{print $1}')"
 [[ "${remote_sha256}" == "${artifact_sha256}" ]] || fail "deployed artifact digest differs"
-record_command ssh "${ssh_options[@]}" "${target}" "'${remote_program}'"
-ssh "${ssh_options[@]}" "${target}" "'${remote_program}'" \
-    >"${staging_dir}/latency-samples.txt"
+remote_run_command="'${remote_program}'; probe_status=\$?; rm -f '${remote_program}'; if test -e '${remote_program}'; then printf 'teardown=present\\n' >&2; exit 71; fi; printf 'teardown=removed\\n' >&2; exit \${probe_status}"
+record_command ssh "${ssh_options[@]}" "${target}" "${remote_run_command}"
+ssh "${ssh_options[@]}" "${target}" "${remote_run_command}" \
+    >"${staging_dir}/latency-samples.txt" \
+    2>"${staging_dir}/teardown.txt"
 grep -Fxq 'warmup_iterations=1000' "${staging_dir}/latency-samples.txt" ||
     fail "remote latency warm-up count differs"
 grep -Fxq 'measured_iterations=10000' "${staging_dir}/latency-samples.txt" ||
@@ -201,14 +203,8 @@ grep -Fxq 'p99_limit_nanoseconds=150000' "${staging_dir}/latency-samples.txt" ||
     fail "remote latency raw sample count differs"
 awk -F= '/^p99_nanoseconds=/ { if ($2 > 150000) exit 1; found = 1 } END { if (!found) exit 1 }' \
     "${staging_dir}/latency-samples.txt" || fail "remote p99 exceeds 150 microseconds"
-
-record_command ssh "${ssh_options[@]}" "${target}" rm -f "${remote_program}"
-ssh "${ssh_options[@]}" "${target}" "rm -f '${remote_program}'"
-teardown_state="$(
-    ssh "${ssh_options[@]}" "${target}" \
-        "if test -e '${remote_program}'; then printf 'present\\n'; else printf 'removed\\n'; fi"
-)" || fail "remote probe teardown verification was unavailable"
-[[ "${teardown_state}" == removed ]] || fail "remote probe teardown failed"
+grep -Fxq 'teardown=removed' "${staging_dir}/teardown.txt" ||
+    fail "remote probe teardown was not verified"
 
 compiler_version="$("${compiler}" --version)"
 p99_nanoseconds="$(awk -F= '/^p99_nanoseconds=/ { print $2 }' "${staging_dir}/latency-samples.txt")"
