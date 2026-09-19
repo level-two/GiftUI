@@ -1033,8 +1033,7 @@ recovery without callback reentrancy. `T5.4` installs the six-case handler in
 both roots and closes pointer-down, admitted-action, replacement, removal,
 failure, disabled, stale-generation, and final-revalidation cases. `T5.5`
 records equal accepted and retryable integrated-cycle transcripts through the
-Drawing, interaction, offer, and frame stages. Milestone 6 target-host
-assembly is the next dependency boundary.
+Drawing, interaction, offer, and frame stages.
 
 `T6.1` joins the checked-in SPEC-001 portable hierarchy descriptor to the
 SPEC-015 workload generator as a required, identity-bearing input. Generation
@@ -1045,6 +1044,20 @@ SPEC-004 capability resolution, endpoint projection, action/model, input/wake,
 policy, and one-owner acyclic graph stages before any live owner construction.
 Evidence is in
 `Tests/ContractFixtures/SPEC001/Evidence/milestone-6/host-structural-gates.md`.
+
+Milestone 7 is complete. `T7.1` records the 19-row exhaustive failure matrix,
+`T7.2` proves six diagnostic-projection modes cannot change Dynamic or Static
+semantics, `T7.3` closes both capture-revision terminal paths, and `T7.4`
+executes the equal 2,400-event/120-frame workload plus 28/32/33 capacity corpus
+in all four hardware-free presets.
+
+Milestone 9 is complete. The interface/dependency audit, all 60 registered
+hardware-free spec/profile driver combinations, formatter, root tests,
+governance, and 24-field analyzer comparison pass. The linked conformance
+report maps all 45 criteria once: 40 pass and five remain blocked by the
+separately authorized connected-hardware Milestone 8. The plan therefore
+remains `active`; neither the report nor Milestone 9 marks SPEC-001
+`implemented`.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,
