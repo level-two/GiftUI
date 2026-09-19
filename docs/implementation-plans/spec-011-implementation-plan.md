@@ -520,7 +520,7 @@ ABI, storage, stack, flash, RAM, and forbidden-symbol requirements.
       high-water probes at the 32-action, 32-hit-region, four-source independent
       fixture bounds. Require zero heap bytes for construction, record storage,
       routing, capture, decode, lookup, borrow, and dispatch.
-- [ ] `T8.4` — Record exact value layouts, record/candidate/committed workspace
+- [x] `T8.4` — Record exact value layouts, record/candidate/committed workspace
       bytes, timing samples, source/SIL dependency audits, target graph,
       forbidden symbols, full link maps, section deltas, stack, flash, and RAM.
       Prove no closure box, reflection/type metadata discovery, unrestricted
@@ -850,7 +850,13 @@ macOS/nRF Static paths report zero heap and bounded candidate, committed,
 routing, capture, decode, lookup, borrow, dispatch, and stage-stack storage;
 Dynamic bookkeeping remains separately reported. Evidence is in
 `Tests/ContractFixtures/SPEC011/Evidence/t8-3-static-allocation-workspace.md`.
-T8.4 is next.
+
+`T8.4` is complete through the composed profile resource report: value
+layouts, disjoint storage families, high-water values, timing, dependencies,
+symbols, SIL/IR, sections, maps, flash, RAM, and forbidden facilities remain
+separately inspectable for each mode. Evidence is in
+`Tests/ContractFixtures/SPEC011/Evidence/t8-4-layout-resource-audit.md`.
+T8.5 is next.
 
 `T9.1` is complete as the plan's independently runnable boundary audit. The
 exact package consumer set and every production Swift source now prove one
