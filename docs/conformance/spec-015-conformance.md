@@ -5,7 +5,7 @@ title: SPEC-015 Conformance Report
 status: complete
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-09-19
+updated: 2026-09-20
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
 related_future_work: [FW-022]
 related_explorations: []
@@ -79,8 +79,11 @@ allocation/bookkeeping and equal semantic checksums.
 
 ## Deviations and Exceptions
 
-No implementation divergence or approved exception was found. Connected
-PiScreen and nRF52840 TFT/input validation remains missing; this is an explicit
+No implementation divergence or approved exception was found. The authorized
+[PiScreen attempt](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/raspberry-pi-piscreen-attempt.md)
+found no framebuffer/connected DRM display and no production PiScreen
+integration in the exact artifact. PiScreen and nRF52840 TFT/input validation
+therefore remains missing; this is an explicit
 downstream conformance gate, not an exception.
 
 ## Deferred Work Audit

@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-13
-updated: 2026-09-19
+updated: 2026-09-20
 related_design_notes:
   - ../implementation-designs/spec-001-presentation-admission-and-failure.md
   - ../implementation-designs/spec-001-four-host-application-join.md
@@ -774,7 +774,12 @@ simulation.
       continuous seconds on framebuffer/PiScreen, exercise all six controls,
       and record display/input correctness, no loss/duplication/stale events,
       responsiveness, process memory, four-frame/second cadence, teardown,
-      commands, artifact identity, and recovery.
+      commands, artifact identity, and recovery. **Blocked:** the authorized
+      target reports `armv6l` and exposes its ADS7846 touchscreen, but has no
+      framebuffer or connected DRM display, and the exact T6.4 product still
+      contains only the hardware-free preset runner rather than a production
+      PiScreen display/input integration. See the
+      [connected attempt](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/raspberry-pi-piscreen-attempt.md).
 - [ ] `T8.2` — After explicit authorization, inspect and flash the exact `T6.5`
       ELF through the repository nRF workflow, run the deterministic scenario
       for at least 30 continuous seconds on the connected TFT/input target,

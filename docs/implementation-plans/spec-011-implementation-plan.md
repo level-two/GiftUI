@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-19
+updated: 2026-09-20
 related_design_notes:
   - ../implementation-designs/spec-011-target-bound-dispatch.md
 conformance_report: null
@@ -560,6 +560,10 @@ report has a disposition for every criterion.
       Raspberry Pi portion in the Raspberry Pi / PiScreen campaign group
       defined by
       [SPEC-001 Milestone 8](spec-001-implementation-plan.md#cross-specification-connected-validation-campaign).
+      **Blocked:** the authorized target has no framebuffer or connected DRM
+      display, and the exact T6.4 artifact lacks the production PiScreen
+      display/input integration required to observe routing and dispatch. See
+      the [connected attempt](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/raspberry-pi-piscreen-attempt.md).
 - [ ] `T9.4` — With explicit authorization, build, inspect, flash, and exercise
       the connected `nrf52840dk/nrf52840` target through its approved host/input/
       display stack. Record VFP ABI again and distinguish hardware-observed

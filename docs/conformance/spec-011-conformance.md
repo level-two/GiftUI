@@ -5,7 +5,7 @@ title: SPEC-011 Conformance Report
 status: complete
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-09-19
+updated: 2026-09-20
 implementation_plan: ../implementation-plans/spec-011-implementation-plan.md
 related_future_work: [FW-021]
 related_explorations: []
@@ -72,9 +72,12 @@ registries, tasks/threads, and allocator facilities.
 
 ## Deviations and Exceptions
 
-No contract divergence or approved exception was found. Connected macOS/Pi
-pointer-display evidence (T9.3) and connected nRF input/display evidence
-(T9.4) are not collected and are not inferred from hardware-free artifacts.
+No contract divergence or approved exception was found. The authorized
+[Raspberry Pi attempt](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/raspberry-pi-piscreen-attempt.md)
+found no framebuffer/connected DRM display and no production PiScreen
+integration in the exact artifact, so the Pi portion of T9.3 remains blocked.
+Connected macOS pointer evidence and nRF input/display evidence (T9.4) are not
+collected and are not inferred from hardware-free artifacts.
 
 ## Deferred Work Audit
 
