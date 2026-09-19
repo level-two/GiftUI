@@ -1,0 +1,6 @@
+# schema_version=1
+# profile	evidence_kind	duration_ms	event_rate	events	frame_rate	frames	producer_high_water	physical_high_water	first_excess	timing_claim
+macos-dynamic	macos-target-execution	30000	80	2400	4	120	28	32	33-rejected	collected
+macos-static	macos-target-execution	30000	80	2400	4	120	28	32	33-rejected	collected
+raspberry-pi-armv6	host-native-fixture	30000	80	2400	4	120	28	32	33-rejected	not-collected
+nrf52840-embedded	host-native-fixture	30000	80	2400	4	120	28	32	33-rejected	not-collected

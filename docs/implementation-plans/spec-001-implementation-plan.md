@@ -740,7 +740,7 @@ and required performance/resource measurement has a reproducible disposition.
       one reserved terminal fact with no ordinary failure callback or policy
       call. Evidence is in
       `Tests/ContractFixtures/SPEC001/Evidence/milestone-7/revision-exhaustion.md`.
-- [ ] `T7.4` — Run 80 events/second for 30 seconds with four frames/second and
+- [x] `T7.4` — Run 80 events/second for 30 seconds with four frames/second and
       the 28/32/33 admission corpus in the executable macOS profiles and in
       the shared host-native semantic fixture configured with each Pi/nRF
       preset. Cross-build-only reports must label unexecuted timing and target
@@ -751,6 +751,11 @@ and required performance/resource measurement has a reproducible disposition.
       timing; process/heap/stack/RAM/flash/map/ELF evidence as applicable; and
       exact equality with every SPEC-015 manifest, limit, extent, region,
       bound, and assembly report.
+      **Completed:** all four hardware-free roots execute the same 2,400-event,
+      120-frame workload and the 28/32/33 capacity corpus. The normalized
+      preset comparison preserves every SPEC-015 manifest and physical/resource
+      value; Pi/nRF target timing remains `not-collected`. Evidence is in
+      `Tests/ContractFixtures/SPEC001/Evidence/milestone-7/sustained-workload-and-resources.md`.
 
 ### Milestone 8: Collect Separately Authorized Connected-Hardware Evidence
 

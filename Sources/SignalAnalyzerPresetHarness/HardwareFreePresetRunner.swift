@@ -47,6 +47,13 @@ package struct HardwareFreePresetReport: Equatable, Sendable {
     package let drawingOperationCount: UInt16
     package let inputEventCount: UInt16
     package let completionFactCount: UInt16
+    package let workloadDurationMilliseconds: UInt32
+    package let workloadEventRate: UInt16
+    package let workloadEventCount: UInt32
+    package let workloadFrameRate: UInt16
+    package let workloadFrameCount: UInt16
+    package let workloadFactHighWater: UInt16
+    package let workloadChecksum: UInt32
 
     package var normalizedLine: String {
         [
@@ -76,6 +83,13 @@ package struct HardwareFreePresetReport: Equatable, Sendable {
             "drawing_operations=\(drawingOperationCount)",
             "input_events=\(inputEventCount)",
             "completion_facts=\(completionFactCount)",
+            "workload_duration_ms=\(workloadDurationMilliseconds)",
+            "workload_event_rate=\(workloadEventRate)",
+            "workload_events=\(workloadEventCount)",
+            "workload_frame_rate=\(workloadFrameRate)",
+            "workload_frames=\(workloadFrameCount)",
+            "workload_fact_high_water=\(workloadFactHighWater)",
+            "workload_checksum=\(workloadChecksum)",
             "status=complete",
         ].joined(separator: "\t")
     }
@@ -126,6 +140,11 @@ package enum HardwareFreePresetRunner {
         }
 
         guard let semanticChecksum = semanticChecksum(for: preset.profile) else {
+            throw .invalidSemanticWorkload
+        }
+        guard let workloadChecksum = sustainedWorkloadChecksum(for: preset.profile),
+            capacityCorpusPasses()
+        else {
             throw .invalidSemanticWorkload
         }
         let workload = preset.workload
@@ -179,7 +198,14 @@ package enum HardwareFreePresetRunner {
             ordinaryOperationCount: workload.ordinaryRenderOperations,
             drawingOperationCount: workload.drawing.normalizedStrokeOperations,
             inputEventCount: workload.inputEventsPerOpportunity,
-            completionFactCount: workload.completionFactsPerOpportunity
+            completionFactCount: workload.completionFactsPerOpportunity,
+            workloadDurationMilliseconds: 30_000,
+            workloadEventRate: 80,
+            workloadEventCount: 2_400,
+            workloadFrameRate: 4,
+            workloadFrameCount: 120,
+            workloadFactHighWater: 20,
+            workloadChecksum: workloadChecksum
         )
     }
 
@@ -206,6 +232,82 @@ package enum HardwareFreePresetRunner {
                 exercise(StaticSignalAnalyzerHostFactAdmission(storage: pointer))
             }
         }
+    }
+
+    private static func sustainedWorkloadChecksum(
+        for profile: RuntimeProfileKind
+    ) -> UInt32? {
+        switch profile {
+        case .dynamic:
+            return exerciseSustained(DynamicSignalAnalyzerHostFactAdmission())
+        case .static:
+            var storage = StaticSignalAnalyzerHostFactAdmissionStorage()
+            return withUnsafeMutablePointer(to: &storage) { pointer in
+                exerciseSustained(StaticSignalAnalyzerHostFactAdmission(storage: pointer))
+            }
+        }
+    }
+
+    private static func exerciseSustained<Admission: HardwareFreeFactAdmission>(
+        _ admission: Admission
+    ) -> UInt32? {
+        var expectedSequence: UInt32 = 1
+        var checksum: UInt32 = 2_166_136_261
+        for frame in UInt32(0) ..< 120 {
+            guard admission.beginProducer(.transition) else { return nil }
+            for ordinal in UInt32(0) ..< 20 {
+                let state: AcquisitionState =
+                    (frame &+ ordinal).isMultiple(of: 2)
+                    ? .stopped : .running
+                guard
+                    case .accepted(sequence: expectedSequence) =
+                        admission.submit(.acquisitionState(state))
+                else { return nil }
+                expectedSequence += 1
+            }
+            admission.endProducer()
+            guard admission.seal() else { return nil }
+            for _ in 0 ..< 20 {
+                guard let next = admission.takeNextSealed(), next.0 < expectedSequence,
+                    next.1 == .compact
+                else { return nil }
+                checksum = (checksum ^ next.0) &* 16_777_619
+            }
+            guard admission.takeNextSealed() == nil else { return nil }
+        }
+        return expectedSequence == 2_401 ? checksum : nil
+    }
+
+    private static func capacityCorpusPasses() -> Bool {
+        var producerBound = HostSequencedFactAdmission<String, String, String>(
+            producerLimits: HostFactProducerLimits(transition: 20, bootstrap: 2, action: 6)!
+        )!
+        for category in [HostFactProducerCategory.transition, .bootstrap, .action] {
+            let count: UInt16 =
+                switch category {
+                case .transition: 20
+                case .bootstrap: 2
+                case .action: 6
+                }
+            for ordinal in UInt16(0) ..< count {
+                guard
+                    case .accepted = producerBound.admitCompact(
+                        "\(category)-\(ordinal)", category: category)
+                else { return false }
+            }
+        }
+        guard producerBound.pendingCompactCount == 28 else { return false }
+
+        var physicalBound = HostSequencedFactAdmission<String, String, String>(
+            producerLimits: HostFactProducerLimits(transition: 32, bootstrap: 1, action: 1)!
+        )!
+        for ordinal in UInt16(0) ..< 32 {
+            guard case .accepted = physicalBound.admitCompact("\(ordinal)", category: .transition)
+            else { return false }
+        }
+        guard physicalBound.pendingCompactCount == 32 else { return false }
+        return physicalBound.admitCompact("33", category: .transition)
+            == .rejected(.producerCategoryExhausted)
     }
 
     private static func exercise<Admission: HardwareFreeFactAdmission>(

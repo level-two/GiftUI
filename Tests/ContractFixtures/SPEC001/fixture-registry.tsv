@@ -37,3 +37,4 @@
 36	exhaustive-failure-cases	exhaustive-failure-cases.tsv	1
 37	diagnostic-profile-matrix	diagnostic-profile-matrix.tsv	1
 38	revision-boundary-cases	revision-boundary-cases.tsv	1
+39	sustained-workload-cases	sustained-workload-cases.tsv	1

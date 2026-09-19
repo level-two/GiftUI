@@ -39,6 +39,8 @@ common = %w[
   semantic_checksum actions compact_facts canvases live_points plan_points
   graph_roles semantic_nodes render_semantic_scopes layout_scopes traversal_depth
   text_lines glyphs ordinary_operations drawing_operations input_events completion_facts
+  workload_duration_ms workload_event_rate workload_events workload_frame_rate workload_frames
+  workload_fact_high_water workload_checksum
 ]
 common.each do |field|
   values = semantic.values.map { |row| row.fetch(field, :missing) }.uniq

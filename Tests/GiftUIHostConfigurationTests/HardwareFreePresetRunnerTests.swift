@@ -24,6 +24,13 @@ import Testing
     #expect(dynamic.planPointCount == 832)
     #expect(dynamic.profileStorageBytes == 30_416)
     #expect(fixed.profileStorageBytes == 28_016)
+    #expect(dynamic.workloadDurationMilliseconds == 30_000)
+    #expect(dynamic.workloadEventRate == 80)
+    #expect(dynamic.workloadEventCount == 2_400)
+    #expect(dynamic.workloadFrameRate == 4)
+    #expect(dynamic.workloadFrameCount == 120)
+    #expect(dynamic.workloadFactHighWater == 20)
+    #expect(dynamic.workloadChecksum == fixed.workloadChecksum)
 }
 
 @Test func raspberryPiHardwareFreePresetHasExactDynamicTiledProjection() throws {
@@ -38,6 +45,8 @@ import Testing
     #expect(report.profileStorageBytes == 30_416)
     #expect(report.semanticChecksum == 360_515_885)
     #expect(report.resolverCalls == 1)
+    #expect(report.workloadEventCount == 2_400)
+    #expect(report.workloadFrameCount == 120)
 }
 
 @Test func nRF52840HardwareFreePresetHasExactStaticTiledProjection() throws {
@@ -52,4 +61,6 @@ import Testing
     #expect(report.profileStorageBytes == 28_016)
     #expect(report.semanticChecksum == 360_515_885)
     #expect(report.resolverCalls == 1)
+    #expect(report.workloadEventCount == 2_400)
+    #expect(report.workloadFrameCount == 120)
 }
