@@ -46,7 +46,7 @@ tasks:
   T8.3: { disposition: pending, requirements: [IN-001, IN-012], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
   T8.4: { disposition: pending, requirements: [IN-003, IN-010, IN-011], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
   T8.5: { disposition: pending, requirements: [IN-012], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
-  T9.1: { disposition: pending, requirements: [IN-011], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
+  T9.1: { disposition: completed, requirements: [IN-011], implementation: [scripts/contracts/check-spec-011-integration-audit.rb], checks: [scripts/contracts/check-spec-011-integration-audit.rb, scripts/contracts/check-spec-011-boundaries.rb], profiles: [macos-dynamic], evidence: [Tests/ContractFixtures/SPEC011/Evidence/t9-1-integration-audit.md], blockers: [] }
   T9.2: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
   T9.3: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }
   T9.4: { disposition: pending, requirements: [], implementation: [], checks: [], profiles: [], evidence: [], blockers: [] }

@@ -56,6 +56,7 @@ run_check ruby "${SCRIPT_DIR}/check-spec-011-boundaries.rb"
 run_check ruby "${SCRIPT_DIR}/check-spec-011-diagnostic-isolation.rb"
 run_check ruby "${SCRIPT_DIR}/check-spec-011-declaration-surface.rb"
 run_check ruby "${SCRIPT_DIR}/check-spec-011-migration.rb"
+run_check ruby "${SCRIPT_DIR}/check-spec-011-integration-audit.rb"
 
 case "${profile}" in
     macos-dynamic | macos-static)

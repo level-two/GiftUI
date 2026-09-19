@@ -543,7 +543,7 @@ request and verified target identity.
 SPEC-011 path, connected evidence is recorded distinctly, and the conformance
 report has a disposition for every criterion.
 
-- [ ] `T9.1` — Audit package boundaries and all SPEC-006/007/008/009/010/013/
+- [x] `T9.1` — Audit package boundaries and all SPEC-006/007/008/009/010/013/
       015 and Signal Analyzer integration points. Prove there is one action
       identity/generation allocator, one capture owner, one Interaction owner,
       one observable target-generation owner, one coordinator join, and no
@@ -831,3 +831,13 @@ exact selected-window control alone is disabled for each 1/2/5-second choice.
 See the
 [first-party capacity evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t7-5-first-party-capacities.md).
 Milestone 7 is complete.
+
+`T9.1` is complete as the plan's independently runnable boundary audit. The
+exact package consumer set and every production Swift source now prove one
+action-generation allocator construction, one capture owner, one Interaction
+state owner, one observable target-generation owner, and one candidate-
+coordinator join. Only the Dynamic and Static Runtime profiles realize the
+common state, and only the two Signal Analyzer host adapters construct the
+production dispatcher. Backend, display, driver, and platform ownership and
+portable re-export remain absent. See the
+[integration audit evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t9-1-integration-audit.md).
