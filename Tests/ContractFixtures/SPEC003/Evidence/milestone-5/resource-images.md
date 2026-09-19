@@ -14,25 +14,29 @@ stack adjustment, recursion, unequal libraries, resource-limit breaches, and
 non-repeatable images or normalized reports. ARMv6 and nRF runs remain
 hardware-free and perform no remote access, deployment, or flashing.
 
-Current disposition on 2026-09-19:
+Passing disposition on 2026-09-19:
 
-- `macos-dynamic`: the complete pipeline passes, including two identical
-  images and normalized reports. Run ID
-  `badd7575630a6cc5a15707d15cf1e82939019e12-dd196d587dbb490c` records a
-  1,700-byte writable delta, 25,675-byte code delta, and 64-byte stack.
-- `nrf52840-embedded`: the complete pipeline passes. Its measured candidate
-  delta is 256 bytes writable RAM and 132 bytes linked code, with a 24-byte
-  conservative stack and 38 reachable instructions in the first passing run.
-- `macos-static`: the pipeline reaches the enforced final-image check but the
-  548-byte linked writable delta exceeds the frozen 512-byte limit. The
-  426-byte named production state fits its owned-state sub-bound;
-  compiler-emitted witness and lazy-token storage makes the complete
-  final-image delta 36 bytes too large.
-- `raspberry-pi-armv6`: the pipeline reaches the enforced final-image check but
-  the static-runtime candidate pulls 8,456 bytes more writable storage than
-  the matched baseline, exceeding the frozen 512-byte limit.
+| Profile | Writable RAM delta | Linked-code delta | Stack | Reachable instructions |
+| --- | ---: | ---: | ---: | ---: |
+| `macos-dynamic` | 1,596 / 2,048 B | 532 / 32,768 B | 64 / 512 B | 45 |
+| `macos-static` | 444 / 512 B | 592 / 24,576 B | 64 / 384 B | 45 |
+| `raspberry-pi-armv6` | -40 / 512 B | 24,388 / 24,576 B | 40 / 384 B | 50 |
+| `nrf52840-embedded` | 256 / 320 B | 132 / 16,384 B | 24 / 256 B | 38 / 4,096 |
 
-Therefore the missing tooling blocker is removed, but T5.4 remains blocked by
-two measured resource nonconformances. The plan cannot grant an exception.
-The implementation must reduce those final-image contributions within the
-approved contract or return the bounds/build contract to Specification review.
+Every row comes from two byte-identical final images and identical normalized
+reports. Immutable reports are published under
+`.build/contract-reports/spec-003/<revision>-<input-digest>/<profile>/`; each
+report records its exact revision, dirty state, commands, inputs, and hashes.
+
+The closed macOS measurement image removes unused Swift runtime registration
+records before final dead stripping. Its retained image executes successfully
+and preserves the named health, counter, and buffer storage plus the resolved
+production path. The ARMv6 image uses a non-PIE executable export boundary,
+removes nondeterministic loader hashes, and places compiler-emitted immutable
+Swift tables in read-only sections. The checker rejects writable replacements
+or any dynamic relocation targeting those sections. Loader, unwind, and Swift
+runtime-registration tables are excluded from linked code as loader metadata;
+executable code and retained read-only production data remain counted.
+
+T5.4 is complete. These ARMv6 results are hardware-free cross-build evidence,
+not the connected `armv6l` execution and latency evidence required by T6.2.

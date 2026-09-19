@@ -130,9 +130,8 @@ builds. The repository registry continues to invoke the same commands.
 
 ## Open Implementation Questions
 
-The current macOS-static and ARMv6 linked writable deltas exceed their frozen
-bounds. That is implementation evidence requiring representation/build
-reduction or Specification review; it is not a tooling ambiguity.
+None for T5.4. The connected ARMv6 execution and latency evidence remains in
+T6.2, and exact-runner macOS latency remains in T5.5.
 
 ## Code and Evidence Links
 

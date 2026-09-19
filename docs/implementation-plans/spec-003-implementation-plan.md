@@ -400,17 +400,15 @@ labeled as host or hardware-free cross-build evidence.
       counts, fixture-counted correctness and selection steps, default buffer
       capacity, and named production health/counter/buffer symbols. Enforce all
       exact layout and RAM limits.
-- [ ] `T5.4` — Build two pristine matched baseline/candidate image pairs per
+- [x] `T5.4` — Build two pristine matched baseline/candidate image pairs per
       profile from one revision and equal runtime/test support. Record complete
       source hashes, compiler/linker commands, final hashes, normalized
       section totals, signed writable/code deltas, link maps, disassembly, and
       a symbol-resolved conservative call graph. Fail recursion, unresolved
       indirect calls, missing runtime bodies, dynamic unbounded stack, unequal
-      shared-library sets, or non-repeatable evidence. **Blocked by measured
-      nonconformance:** the full four-profile mechanism is implemented and
-      macOS dynamic plus nRF pass, but macOS static and ARMv6 exceed their
-      frozen 512-byte linked writable-RAM limits. See the T5.4 resource
-      evidence; the plan cannot waive either bound.
+      shared-library sets, or non-repeatable evidence. All four profiles pass
+      their frozen writable-RAM, linked-code, stack, and instruction limits;
+      see the T5.4 resource evidence.
 - [ ] `T5.5` — On the exact macOS reference runner, execute at least 1,000
       warm-up and 10,000 measured iterations with no other repository job;
       preserve raw samples and enforce the p99 latency row. Treat results from
@@ -442,8 +440,8 @@ SPEC-003 conformance report is ready for independent review.
       authorized. Execute it in the Raspberry Pi / PiScreen group defined by
       [SPEC-001 Milestone 8](spec-001-implementation-plan.md#cross-specification-connected-validation-campaign)
       so the same immutable connected run can satisfy its separately owned
-      criteria without conflating them. **Blocked:** T5.4 and T5.5 are
-      incomplete, and no connected Raspberry Pi target has been selected or
+      criteria without conflating them. **Blocked:** T5.5 is incomplete, and
+      no connected Raspberry Pi target has been selected or
       separately authorized for this task.
 - [ ] `T6.3` — Create `docs/conformance/spec-003-conformance.md`, link stable
       evidence, distinguish host/cross-build/connected-target claims, and hand
@@ -795,13 +793,13 @@ Failure Diagnostics, while FW-009 and FW-012 remain captured rather than
 silently entering MVP scope. See the
 [integration audit evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-6/integration-audit.md).
 
-The stale T5.4 tooling blocker was removed on 2026-09-19. The checked-in
+T5.4 was completed on 2026-09-19. The checked-in
 baseline/candidate entries, four-profile final-image builder, normalized
 Mach-O/ELF accounting, maps, disassembly, resolved call graph, conservative
 stack traversal, nRF instruction count, and two-build repeatability checks are
-now implemented. macOS dynamic and nRF pass. macOS static and ARMv6 fail their
-frozen 512-byte linked writable-RAM bounds, so T5.4 remains open for measured
-resource nonconformance rather than missing tooling. See the
+now produce byte-identical paired images and normalized reports. All four
+profiles pass their frozen writable-RAM, linked-code, stack, and instruction
+bounds. See the
 [resource-image evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-5/resource-images.md).
 
 The T5.5 latency collector is now implemented and registered inside both
@@ -810,6 +808,6 @@ samples, preserves every raw nanosecond value, enforces p99 <= 100 us, and
 records model, OS, compiler, revision, and reference-runner match. On the
 available `Mac15,7`/M3 Pro host, both optimized profiles measured p99 167 ns.
 The [informative latency record](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-5/informative-macos-latency.md)
-is not conformance evidence because T5.4 is incomplete and the host runs
+is not conformance evidence because the host runs
 macOS 26.6.2 build 25G83 rather than the frozen 26.3 build 25D125. T5.5 remains
 open without weakening or revising the approved runner contract.
