@@ -1004,11 +1004,11 @@ run_latency_probe() {
         sw_vers
         "${compiler}" --version
         printf 'reference_model=Mac15,7\n'
-        printf 'reference_os_version=26.3\n'
-        printf 'reference_os_build=25D125\n'
+        printf 'reference_os_version=26.6.2\n'
+        printf 'reference_os_build=25G83\n'
         if [[ "${hardware_summary}" == *'Model Identifier: Mac15,7'* ]] && \
-            [[ "$(sw_vers -productVersion)" == '26.3' ]] && \
-            [[ "$(sw_vers -buildVersion)" == '25D125' ]]; then
+            [[ "$(sw_vers -productVersion)" == '26.6.2' ]] && \
+            [[ "$(sw_vers -buildVersion)" == '25G83' ]]; then
             printf 'reference_runner_match=true\n'
         else
             printf 'reference_runner_match=false\n'
