@@ -204,9 +204,11 @@ awk -F= '/^p99_nanoseconds=/ { if ($2 > 150000) exit 1; found = 1 } END { if (!f
 
 record_command ssh "${ssh_options[@]}" "${target}" rm -f "${remote_program}"
 ssh "${ssh_options[@]}" "${target}" "rm -f '${remote_program}'"
-if ssh "${ssh_options[@]}" "${target}" "test -e '${remote_program}'"; then
-    fail "remote probe teardown failed"
-fi
+teardown_state="$(
+    ssh "${ssh_options[@]}" "${target}" \
+        "if test -e '${remote_program}'; then printf 'present\\n'; else printf 'removed\\n'; fi"
+)" || fail "remote probe teardown verification was unavailable"
+[[ "${teardown_state}" == removed ]] || fail "remote probe teardown failed"
 
 compiler_version="$("${compiler}" --version)"
 p99_nanoseconds="$(awk -F= '/^p99_nanoseconds=/ { print $2 }' "${staging_dir}/latency-samples.txt")"
