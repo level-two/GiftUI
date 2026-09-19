@@ -543,6 +543,14 @@ targets:
       - SignalAnalyzerDomain
       - SignalAnalyzerHost
       - SignalAnalyzerPresentation
+  GiftUIPlatformRaspberryPi:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUICapabilities
+      - GiftUIDisplayCore
+      - GiftUIFailureCore
+      - GiftUISurfaceCore
   SignalAnalyzerMacOSDynamic:
     type: executable
     dependencies:
@@ -554,6 +562,7 @@ targets:
   SignalAnalyzerRaspberryPiARMv6:
     type: executable
     dependencies:
+      - GiftUIPlatformRaspberryPi
       - SignalAnalyzerPresetHarness
   SignalAnalyzerNRF52840HostOracle:
     type: executable
@@ -563,6 +572,14 @@ targets:
     type: test
     dependencies:
       - SignalAnalyzerDomain
+  GiftUIPlatformRaspberryPiTests:
+    type: test
+    dependencies:
+      - GiftUI
+      - GiftUICapabilities
+      - GiftUIDisplayCore
+      - GiftUIPlatformRaspberryPi
+      - GiftUISurfaceCore
   SignalAnalyzerDataTests:
     type: test
     dependencies:

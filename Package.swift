@@ -23,6 +23,10 @@ let package = Package(
         .library(name: "SignalAnalyzerDomain", targets: ["SignalAnalyzerDomain"]),
         .library(name: "SignalAnalyzerData", targets: ["SignalAnalyzerData"]),
         .library(
+            name: "GiftUIPlatformRaspberryPi",
+            targets: ["GiftUIPlatformRaspberryPi"]
+        ),
+        .library(
             name: "SignalAnalyzerPresentation",
             targets: ["SignalAnalyzerPresentation"]
         ),
@@ -309,6 +313,16 @@ let package = Package(
                 "SignalAnalyzerPresentation",
             ]
         ),
+        .target(
+            name: "GiftUIPlatformRaspberryPi",
+            dependencies: [
+                "GiftUI",
+                "GiftUICapabilities",
+                "GiftUIDisplayCore",
+                "GiftUIFailureCore",
+                "GiftUISurfaceCore",
+            ]
+        ),
         .executableTarget(
             name: "SignalAnalyzerMacOSDynamic",
             dependencies: ["SignalAnalyzerPresetHarness"]
@@ -319,7 +333,10 @@ let package = Package(
         ),
         .executableTarget(
             name: "SignalAnalyzerRaspberryPiARMv6",
-            dependencies: ["SignalAnalyzerPresetHarness"]
+            dependencies: [
+                "GiftUIPlatformRaspberryPi",
+                "SignalAnalyzerPresetHarness",
+            ]
         ),
         .executableTarget(
             name: "SignalAnalyzerNRF52840HostOracle",
@@ -328,6 +345,16 @@ let package = Package(
         .testTarget(
             name: "GiftUITests",
             dependencies: ["GiftUI"]
+        ),
+        .testTarget(
+            name: "GiftUIPlatformRaspberryPiTests",
+            dependencies: [
+                "GiftUI",
+                "GiftUICapabilities",
+                "GiftUIDisplayCore",
+                "GiftUIPlatformRaspberryPi",
+                "GiftUISurfaceCore",
+            ]
         ),
         .testTarget(
             name: "GiftUIMacrosTests",

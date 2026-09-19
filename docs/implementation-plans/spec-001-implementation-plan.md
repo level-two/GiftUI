@@ -712,6 +712,15 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       six-action routing, stale-event rejection, frame offer/drain behavior,
       and exact owner cardinality. The ARMv6 build must retain the existing
       ABI/resource checks and must not access or deploy to a remote target.
+      **In progress:** the target-owned `GiftUIPlatformRaspberryPi` boundary
+      now provides the exact 240 x 240 / 240 x 16 RGB565 synchronous display
+      target, validated 16-bit framebuffer layout, 480 x 320 aspect-fit
+      projection, calibrated touch mapping, and one-contact sequencing. Its
+      fake-sink tests cover invalid format/stride/mapping, canonical byte and
+      physical-bound preservation, transport refusal, letterbox rejection,
+      and ordered down/move/up behavior. Linux device ownership, host-loop
+      composition, ARMv6 proof, and connected execution remain open; see the
+      [platform-adapter evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation
