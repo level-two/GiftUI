@@ -2,7 +2,7 @@
 spec: SPEC-013
 feature: giftui-mvp-architecture
 title: SPEC-013 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-09-09
@@ -483,7 +483,7 @@ ready for independent review.
 - [x] `T8.3` — Run `scripts/format-swift.sh`, focused unit suites, SPEC-013's
       four exact driver modes, dependency/governance checks, and the repository
       local gate. Preserve stable reports under `Tests/ContractFixtures/SPEC013/Evidence/`.
-- [ ] `T8.4` — Create `docs/conformance/spec-013-conformance.md`, map every RP
+- [x] `T8.4` — Create `docs/conformance/spec-013-conformance.md`, map every RP
       criterion to reproducible evidence, distinguish hardware-free from
       connected-target results, record deviations/exceptions, and request the
       human `implemented` transition only after conformance review.
@@ -981,6 +981,13 @@ report rather than conflicting with nondeterministic timing samples. Evidence
 is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-8/repository-profile-gates.md`.
 T8.4 is next.
+
+`T8.4` is complete. The linked
+[conformance report](../conformance/spec-013-conformance.md) maps all fifteen
+criteria to passing reproducible evidence, records no deviation or exception,
+and supports requesting explicit human authorization for the `implemented`
+transition. The plan is complete; SPEC-013 remains `implementing` pending that
+authorization.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013

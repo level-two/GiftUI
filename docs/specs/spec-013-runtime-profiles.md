@@ -816,6 +816,7 @@ existing lifecycle or deferred tracks and are not required by this contract.
 ## References
 
 - [SPEC-013 Implementation Plan](../implementation-plans/spec-013-implementation-plan.md)
+- [SPEC-013 Conformance Report](../conformance/spec-013-conformance.md)
 - [Common Coordinator and Cleanup Implementation Design](../implementation-designs/spec-013-common-coordinator-and-cleanup.md)
 - [Storage Audit and Overlay Ownership Implementation Design](../implementation-designs/spec-013-storage-audit-and-overlay-ownership.md)
 - [Static Generation and Capture Lifetime Implementation Design](../implementation-designs/spec-013-static-generation-and-capture-lifetime.md)
