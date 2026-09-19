@@ -21,6 +21,9 @@ its required acceptance criteria.
   its current lifecycle status
 - [SPEC-001](spec-001-signal-analyzer-reference-application.md) — Signal
   Analyzer Reference Application Contract (`approved`)
+- [SPEC-003](spec-003-failure-outcomes-and-containment.md) — Failure Outcomes
+  and Containment (`implementing`; macOS 26.6.2 build 25G83 reference-runner
+  amendment explicitly reapproved on 2026-09-19)
 - [SPEC-015](spec-015-host-configuration.md) — MVP Target-Host
   Configuration Contract (`approved`; schema-2 render-workspace workload
   amendment explicitly reapproved on 2026-09-12)

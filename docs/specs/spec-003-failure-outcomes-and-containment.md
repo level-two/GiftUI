@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-09-12
+updated: 2026-09-19
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -43,6 +43,12 @@ target_milestone: MVP
 ---
 
 # SPEC-003: Failure Outcomes and Containment
+
+> **Approval status:** Explicitly reapproved by the maintainer on 2026-09-19
+> after revising the frozen macOS reference runner from macOS 26.3 build
+> 25D125 to macOS 26.6.2 build 25G83. The runner hardware, compiler,
+> optimization, corpus, sampling, and latency threshold are unchanged. This
+> amended contract is authoritative for continued implementation.
 
 ## Summary
 
@@ -1047,7 +1053,7 @@ a negative delta is not clamped.
 ### Reproducible latency and instruction evidence
 
 The reproducible macOS reference runner is an arm64 `Mac15,7` with an Apple M3
-Pro (12 cores), 36 GB RAM, macOS 26.3 build 25D125, and the Apple Swift 6.3.3
+Pro (12 cores), 36 GB RAM, macOS 26.6.2 build 25G83, and the Apple Swift 6.3.3
 compiler above, using:
 
 ```text
