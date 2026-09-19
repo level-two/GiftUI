@@ -32,6 +32,9 @@ GIFTUI_SOURCES=(
     "$PROJECT_ROOT/Sources/GiftUI/LayoutContainers.swift"
     "$PROJECT_ROOT/Sources/GiftUI/LayoutModifiers.swift"
     "$PROJECT_ROOT/Sources/GiftUI/StyleModifiers.swift"
+    "$PROJECT_ROOT/Sources/GiftUI/Canvas.swift"
+    "$PROJECT_ROOT/Sources/GiftUI/DrawingStyles.swift"
+    "$PROJECT_ROOT/Sources/GiftUI/DrawingSurface.swift"
 )
 
 "$GIFTUI_NRF_SWIFTC" "${FLAGS[@]}" -parse-as-library -emit-module \
@@ -41,6 +44,7 @@ GIFTUI_SOURCES=(
     -module-name GiftUISemanticCore -I "$MODULES" \
     "$PROJECT_ROOT/Sources/GiftUISemanticCore/GiftUISemanticCore.swift" \
     "$PROJECT_ROOT/Sources/GiftUISemanticCore/SemanticLayoutView.swift" \
+    "$PROJECT_ROOT/Sources/GiftUISemanticCore/SemanticRenderView.swift" \
     -emit-module-path "$MODULES/GiftUISemanticCore.swiftmodule"
 "$GIFTUI_NRF_SWIFTC" "${FLAGS[@]}" -parse-as-library -emit-module \
     -module-name GiftUITextResources -I "$MODULES" \

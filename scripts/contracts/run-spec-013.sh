@@ -81,6 +81,16 @@ run_id="$(printf '%s\n' "${identity_metadata}" | awk -F= '$1 == "run_id" { print
 
 canonical_report_dir="${REPORT_ROOT}/${run_id}/${profile}"
 latest="${REPORT_ROOT}/latest-${profile}.txt"
+if [[ -d "${canonical_report_dir}" ]]; then
+    "${SCRIPT_DIR}/verify-contract-report.rb" "${canonical_report_dir}"
+    temporary_pointer="${REPORT_ROOT}/.latest-${profile}.tmp-$$"
+    printf '%s\n' "${run_id}" >"${temporary_pointer}"
+    mv "${temporary_pointer}" "${latest}"
+    rm -f "${inputs_path}"
+    rmdir "${staging}"
+    printf 'SPEC-013 %s report idempotent match; run ID: %s\n' "${profile}" "${run_id}"
+    exit 0
+fi
 metadata_path="${staging}/metadata.txt"
 commands_path="${staging}/commands.txt"
 prerequisites_path="${staging}/prerequisites.tsv"
