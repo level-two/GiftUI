@@ -572,7 +572,7 @@ connected-hardware evidence is explicit rather than implied.
       The registered audit now requires every focused negative family and the
       host-import, protected-owner, ambient-lookup, and portable-source scans;
       the focused suite exercises all 140 host-configuration cases.
-- [ ] `T7.2` — Finish `scripts/contracts/run-spec-015.sh` so each exact profile
+- [x] `T7.2` — Finish `scripts/contracts/run-spec-015.sh` so each exact profile
       runs unit, conformance, integration, compile/link, static-runtime,
       allocation, latency, resource-accounting, and generated-manifest
       freshness checks; exits nonzero on a missing, stale, malformed, or
@@ -876,3 +876,10 @@ portable-source scans. The 2026-09-19 reproduction passed the audit and all
 140 host-configuration tests without simulator or connected-target activity.
 Evidence is in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-7/exhaustive-negative-corpus.md`.
+
+`T7.2` is complete. Every exact driver mode now runs the common schema,
+negative, source-boundary, generation-freshness, validation-purity,
+compile-surface, and focused test gates before its profile-specific build and
+inspection. Immutable reports retain the full command log and keep connected
+operations false. Evidence is in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-7/four-profile-driver.md`.

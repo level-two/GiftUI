@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -uo pipefail
+set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
@@ -33,6 +33,28 @@ if [[ "${GIFTUI_IMMUTABLE_REPORT_INNER:-false}" != true ]]; then
 fi
 
 mkdir -p "${REPORT_ROOT}"
+commands_path="${REPORT_ROOT}/commands.txt"
+run_log="${REPORT_ROOT}/run.log"
+: >"${commands_path}"
+: >"${run_log}"
+
+run_check() {
+    local argument
+    for argument in "$@"; do printf '%q ' "${argument}" >>"${commands_path}"; done
+    printf '\n' >>"${commands_path}"
+    "$@" >>"${run_log}" 2>&1
+}
+
+run_check ruby "${SCRIPT_DIR}/check-spec-015-harness.rb"
+run_check ruby "${SCRIPT_DIR}/check-spec-015-negative-corpus.rb"
+run_check ruby "${SCRIPT_DIR}/check-spec-015-source-boundaries.rb"
+run_check ruby "${SCRIPT_DIR}/check-spec-015-generated-workload.rb"
+run_check "${SCRIPT_DIR}/check-spec-015-validation-purity.sh"
+run_check "${SCRIPT_DIR}/check-spec-015-host-surfaces.sh" \
+    --output "${REPORT_ROOT}/host-surfaces"
+run_check swift test --disable-sandbox \
+    --scratch-path "${PROJECT_ROOT}/.build" \
+    --filter GiftUIHostConfigurationTests
 input_identity="$(shasum -a 256 "${FIXTURE_ROOT}"/*.tsv | shasum -a 256 | awk '{print $1}')"
 compiler_identity="$(swiftc --version 2>/dev/null | tr '\n' ' ')"
 command_hash="$(printf '%s' "scripts/contracts/run-spec-015.sh --profile ${profile}" | shasum -a 256 | awk '{print $1}')"
@@ -62,11 +84,13 @@ esac
 if [[ "${profile}" == "raspberry-pi-armv6" ]]; then
     compiler_identity="$(.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc --version | tr '\n' ' ')"
     build_log="${REPORT_ROOT}/build.log"
+    run_check scripts/raspberry-pi/doctor.sh
     scripts/raspberry-pi/build.sh --product "${product}" >"${build_log}" 2>&1
     artifact="${PROJECT_ROOT}/.build/raspberry-pi/artifacts/${product}"
     [[ -x "${artifact}" ]] || { printf 'missing ARMv6 preset executable: %s\n' "${artifact}" >&2; exit 1; }
-    swift build --disable-sandbox --product "${product}" >>"${build_log}" 2>&1
-    binary_dir="$(swift build --disable-sandbox --show-bin-path)"
+    swift build --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
+        --product "${product}" >>"${build_log}" 2>&1
+    binary_dir="$(swift build --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" --show-bin-path)"
     semantic_report="${REPORT_ROOT}/semantic.tsv"
     "${binary_dir}/${product}" >"${semantic_report}"
     grep -Fq $'status=complete' "${semantic_report}" || {
@@ -93,9 +117,11 @@ fi
 if [[ "${profile}" == "nrf52840-embedded" ]]; then
     compiler_identity="$(.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc --version | tr '\n' ' ')"
     build_log="${REPORT_ROOT}/build.log"
+    run_check scripts/nrf52840/doctor.sh
     scripts/nrf52840/build.sh --application signal-analyzer-static >"${build_log}" 2>&1
-    swift build --disable-sandbox --product "${product}" >>"${build_log}" 2>&1
-    binary_dir="$(swift build --disable-sandbox --show-bin-path)"
+    swift build --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
+        --product "${product}" >>"${build_log}" 2>&1
+    binary_dir="$(swift build --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" --show-bin-path)"
     semantic_report="${REPORT_ROOT}/semantic.tsv"
     "${binary_dir}/${product}" >"${semantic_report}"
     grep -Fq $'status=complete' "${semantic_report}" || {
@@ -130,8 +156,9 @@ fi
 
 if [[ -n "${product}" ]]; then
     build_log="${REPORT_ROOT}/build.log"
-    swift build --disable-sandbox --product "${product}" >"${build_log}" 2>&1
-    binary_dir="$(swift build --disable-sandbox --show-bin-path)"
+    swift build --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
+        --product "${product}" >"${build_log}" 2>&1
+    binary_dir="$(swift build --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" --show-bin-path)"
     artifact="${binary_dir}/${product}"
     [[ -x "${artifact}" ]] || { printf 'missing preset executable: %s\n' "${artifact}" >&2; exit 1; }
     semantic_report="${REPORT_ROOT}/semantic.tsv"
