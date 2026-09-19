@@ -330,7 +330,7 @@ relative_report=".build/spec-014/reports/${run_id}/${profile}"
 
 if [[ "${exit_code}" -ne 0 ]]; then
     printf 'SPEC-014 %s driver blocked with %s explicit incomplete assertion(s); see %s\n' \
-        "${profile}" "${failures}" "${destination}" >&2
+        "${profile}" "${failures}" "${canonical_report_dir}" >&2
 else
     printf 'SPEC-014 %s driver passed; run ID: %s\n' "${profile}" "${run_id}"
 fi
