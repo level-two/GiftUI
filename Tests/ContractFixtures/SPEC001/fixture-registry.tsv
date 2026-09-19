@@ -34,3 +34,4 @@
 33	portable-profile-audit	portable-profile-audit.tsv	1
 34	fact-admission-cases	fact-admission-cases.tsv	1
 35	integrated-cycle-cases	integrated-cycle-cases.tsv	1
+36	exhaustive-failure-cases	exhaustive-failure-cases.tsv	1

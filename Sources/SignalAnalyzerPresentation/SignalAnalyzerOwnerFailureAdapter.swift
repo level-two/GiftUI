@@ -44,6 +44,9 @@ where Effects: SignalAnalyzerMandatoryEffectSink {
     private let stopAcquisition: StopSignalAcquisitionUseCase
     private var policy = SignalAnalyzerResidualFailurePolicy()
     package private(set) var lastDisposition: GiftUIResidualDisposition?
+    package private(set) var policyCallCount: UInt8 = 0
+    package private(set) var lastPolicyContext: SignalAnalyzerResidualPolicyContext?
+    package private(set) var lastAllowedDispositions: GiftUIAllowedDispositions?
 
     package init(effects: Effects, stopAcquisition: StopSignalAcquisitionUseCase) {
         self.effects = effects
@@ -207,6 +210,9 @@ where Effects: SignalAnalyzerMandatoryEffectSink {
             lastDisposition = nil
             return
         }
+        policyCallCount += 1
+        lastPolicyContext = context
+        lastAllowedDispositions = allowed
         let disposition = policy.disposition(for: input)
         let selected = GiftUIAllowedDispositions(rawValue: 1 << disposition.rawValue)
         guard allowed.contains(selected) else {

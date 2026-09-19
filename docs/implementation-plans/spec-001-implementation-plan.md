@@ -709,11 +709,17 @@ the relevant profile.
 **Exit evidence:** Every failure row, accepted workload, exact preset value,
 and required performance/resource measurement has a reproducible disposition.
 
-- [ ] `T7.1` — Exhaust every capacity, availability, sequence, identity,
+- [x] `T7.1` — Exhaust every capacity, availability, sequence, identity,
       revision, phase, reentrancy, invariant, unknown-producer, residual-policy,
       and diagnostic-projection condition. Record normalized fields, mandatory
       effects, policy-call count/input/result, reserved-fact behavior,
       quiescence, last-complete-state preservation, and reconstruction.
+      **Completed:** the 19-row normalized matrix covers every admission,
+      repository, and runtime condition and the focused owner tests assert
+      ordered mandatory effects, zero-or-one policy calls, policy inputs and
+      results, reserved-fact handling, terminal containment, and reconstruction
+      requirements. Evidence is in
+      `Tests/ContractFixtures/SPEC001/Evidence/milestone-7/exhaustive-failure-matrix.md`.
 - [ ] `T7.2` — Run the complete diagnostic matrix in dynamic and static
       profiles with projection omitted, enabled, filtered, saturated, dropped,
       and failing. Require byte/value-identical semantic diagnostics,

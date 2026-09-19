@@ -26,6 +26,9 @@ struct SignalAnalyzerOwnerFailureAdapterTests {
             ])
         #expect(fixture.repository.stopCount == 1)
         #expect(fixture.owner.lastDisposition == .quiesceAffectedScope)
+        #expect(fixture.owner.policyCallCount == 1)
+        #expect(fixture.owner.lastPolicyContext == .activeDelivery)
+        #expect(fixture.owner.lastAllowedDispositions == [.quiesceAffectedScope])
     }
 
     @Test("reserved failure rejection escalates without recursive admission")
@@ -70,6 +73,7 @@ struct SignalAnalyzerOwnerFailureAdapterTests {
 
         #expect(fixture.repository.stopCount == 1)
         #expect(fixture.owner.lastDisposition == nil)
+        #expect(fixture.owner.policyCallCount == 0)
         #expect(
             fixture.effects.values == [
                 .rejectWithoutOverwrite,
@@ -124,6 +128,98 @@ struct SignalAnalyzerOwnerFailureAdapterTests {
         )
         #expect(phase.owner.lastDisposition == nil)
         #expect(phase.effects.values == [.preserveLastCompleteRevision, .schedulePacedRetry])
+        #expect(phase.owner.policyCallCount == 0)
+    }
+
+    @Test("every unsafe runtime condition records exact effects and one policy selection")
+    func exhaustiveUnsafeRuntimeRows() {
+        let rows:
+            [(
+                SignalAnalyzerRuntimeCondition, SignalAnalyzerResidualPolicyContext, Bool,
+                [SignalAnalyzerMandatoryEffect], GiftUIResidualDisposition
+            )] = [
+                (
+                    .stateLocationCapacityExhausted, .initialModelAttachment, false,
+                    [.removePartialCandidate, .quiesceAffectedScope], .quiesceAffectedScope
+                ),
+                (
+                    .registrationCapacityExhausted, .initialModelAttachment, false,
+                    [.removePartialCandidate, .quiesceAffectedScope], .quiesceAffectedScope
+                ),
+                (
+                    .replacementStagingExhausted, .modelReplacement, true,
+                    [.removePartialCandidate, .preserveExistingModel], .continueOperation
+                ),
+                (
+                    .duplicateModelOwner, .modelReplacement, true,
+                    [.removePartialCandidate, .preserveExistingModel], .continueOperation
+                ),
+                (
+                    .incompatibleStateAssociation, .modelReplacement, true,
+                    [.removePartialCandidate, .preserveExistingModel], .continueOperation
+                ),
+                (
+                    .staleRegistrationReport, .modelChangeReport, true,
+                    [.preserveLastCompleteRevision], .continueOperation
+                ),
+                (
+                    .identityGenerationExhausted, .modelReplacement, true,
+                    [
+                        .preserveLastCompleteRevision, .preventNormalCycle, .requireFreshGraph,
+                        .quiesceAffectedScope,
+                    ], .quiesceAffectedScope
+                ),
+                (
+                    .captureRevisionMismatch, .captureFactApplication, true,
+                    [
+                        .preserveLastCompleteRevision, .markPresentationFailed, .detachObservation,
+                        .requireFreshGraph, .quiesceAffectedScope,
+                    ], .quiesceAffectedScope
+                ),
+                (
+                    .reservedFailureCapacityExhausted, .activeDelivery, true,
+                    [
+                        .preserveLastCompleteRevision, .preventNormalCycle, .requireFreshGraph,
+                        .quiesceAffectedScope,
+                    ], .quiesceAffectedScope
+                ),
+                (
+                    .mutationPhaseViolation, .modelChangeReport, true,
+                    [
+                        .discardPartialPublication, .quiesceRuntimeHealth, .preventNormalCycle,
+                        .quiesceAffectedScope,
+                    ], .quiesceAffectedScope
+                ),
+                (
+                    .observableStateReentrancyViolation, .modelChangeReport, true,
+                    [
+                        .discardPartialPublication, .quiesceRuntimeHealth, .preventNormalCycle,
+                        .quiesceAffectedScope,
+                    ], .quiesceAffectedScope
+                ),
+                (
+                    .observableStateInvariantViolation, .modelChangeReport, true,
+                    [
+                        .discardPartialPublication, .quiesceRuntimeHealth, .preventNormalCycle,
+                        .quiesceAffectedScope,
+                    ], .quiesceAffectedScope
+                ),
+            ]
+
+        for (condition, context, existing, effects, disposition) in rows {
+            let fixture = makeOwner()
+            _ = fixture.owner.handleRuntimeFailure(
+                condition,
+                context: context,
+                stableStateProven: false,
+                existingLiveModel: existing,
+                diagnostic: ownerDiagnostic("matrix")
+            )
+            #expect(fixture.effects.values == effects)
+            #expect(fixture.owner.policyCallCount == 1)
+            #expect(fixture.owner.lastPolicyContext == context)
+            #expect(fixture.owner.lastDisposition == disposition)
+        }
     }
 }
 
