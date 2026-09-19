@@ -720,11 +720,16 @@ and required performance/resource measurement has a reproducible disposition.
       results, reserved-fact handling, terminal containment, and reconstruction
       requirements. Evidence is in
       `Tests/ContractFixtures/SPEC001/Evidence/milestone-7/exhaustive-failure-matrix.md`.
-- [ ] `T7.2` — Run the complete diagnostic matrix in dynamic and static
+- [x] `T7.2` — Run the complete diagnostic matrix in dynamic and static
       profiles with projection omitted, enabled, filtered, saturated, dropped,
       and failing. Require byte/value-identical semantic diagnostics,
       `BoundedText`, normalized outcomes, effects, policy, revisions, and
       visible error state.
+      **Completed:** all six projection modes execute through both concrete
+      admission profiles and preserve byte-identical semantic diagnostics,
+      `BoundedText`, failure values, revision, and visible error state.
+      Evidence is in
+      `Tests/ContractFixtures/SPEC001/Evidence/milestone-7/diagnostic-profile-equivalence.md`.
 - [ ] `T7.3` — Run the capture revision boundary independently for transition
       processing and Clear. Prove success at `UInt32.max - 1`, rejection before
       mutation at `UInt32.max`, exactly one normalized reserved terminal fact,

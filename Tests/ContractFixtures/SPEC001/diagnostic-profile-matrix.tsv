@@ -1,0 +1,8 @@
+# schema_version=1
+# ordinal	mode	projection_result	authoritative_outcome	semantic_bytes	bounded_text_bytes	visible_error	dynamic_static_equal
+1	omitted	not-attempted	invalidProvenance/semantic/component/safetyNotProven	terminal-revision-€	terminal-revision-€	terminal-revision-€	true
+2	enabled	emitted	invalidProvenance/semantic/component/safetyNotProven	terminal-revision-€	terminal-revision-€	terminal-revision-€	true
+3	filtered	filtered	invalidProvenance/semantic/component/safetyNotProven	terminal-revision-€	terminal-revision-€	terminal-revision-€	true
+4	saturated	dropped-capacity	invalidProvenance/semantic/component/safetyNotProven	terminal-revision-€	terminal-revision-€	terminal-revision-€	true
+5	dropped	dropped-policy	invalidProvenance/semantic/component/safetyNotProven	terminal-revision-€	terminal-revision-€	terminal-revision-€	true
+6	failing	sink-failed	invalidProvenance/semantic/component/safetyNotProven	terminal-revision-€	terminal-revision-€	terminal-revision-€	true
