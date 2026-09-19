@@ -1,0 +1,8 @@
+{
+  global:
+    giftui_spec003_resource_entry;
+    giftui_spec003_named_storage_probe;
+    giftui_spec003_resource_sink;
+  local:
+    *;
+};

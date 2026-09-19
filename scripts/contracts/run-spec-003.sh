@@ -288,8 +288,10 @@ record_resource_image_elf() {
     local nm_tool="$5"
     mkdir -p "${destination}"
     printf 'elf\n' >"${destination}/format.txt"
-    record_command "${readelf}" -lWS "${image}"
+    record_command "${readelf}" -hlrWS "${image}"
+    "${readelf}" -hW "${image}" >"${destination}/file-header.txt"
     "${readelf}" -lW "${image}" >"${destination}/program-headers.txt"
+    "${readelf}" -rW "${image}" >"${destination}/relocations.txt"
     "${readelf}" -SW "${image}" >"${destination}/sections.txt"
     "${readelf}" -sW "${image}" >"${destination}/symbols.txt"
     record_command "${objdump}" -d -C "${image}"
@@ -368,6 +370,25 @@ run_macos_resource_pair() {
                     "${compiler}" "${module_dir}" "${object_dir}" "${flags[@]}"
                 compile_resource_candidate_objects "${compiler}" "${module_dir}" "${object_dir}" \
                     "${capacity_flag}" "${flags[@]}"
+                local host_objcopy="${PROJECT_ROOT}/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/llvm-objcopy"
+                local production_object
+                # The resource executable is a closed, statically resolved path. Removing
+                # unused runtime-registration records lets dead_strip discard their lazy
+                # writable witness caches without changing any retained production body.
+                for production_object in \
+                    "${object_dir}/GiftUIFailureCore.o" \
+                    "${object_dir}/GiftUIFailureExecution.o" \
+                    "${object_dir}/GiftUIFailureDiagnostics.o"; do
+                    local -a strip_registration_command=(
+                        "${host_objcopy}"
+                        --remove-section __TEXT,__swift5_proto
+                        --remove-section __TEXT,__swift5_protos
+                        --remove-section __TEXT,__swift5_types
+                        "${production_object}"
+                    )
+                    record_command "${strip_registration_command[@]}"
+                    "${strip_registration_command[@]}" >>"${log_path}" 2>&1
+                done
                 local -a command=(
                     "${compiler}" "${flags[@]}" -I "${module_dir}"
                     "${RESOURCE_ROOT}/Candidate/ResourceEntry.swift"
@@ -446,6 +467,24 @@ run_armv6_resource_pair() {
                     "${compiler}" "${module_dir}" "${object_dir}" "${flags[@]}"
                 compile_resource_candidate_objects "${compiler}" "${module_dir}" "${object_dir}" \
                     "${capacity_flag}" "${flags[@]}"
+                local objcopy="${GIFTUI_PI_HOST_BIN_DIR}/llvm-objcopy"
+                local production_object
+                # Swift emits immutable tables in writable input sections on this target.
+                # The final-image checker proves the renamed tables are read-only and have
+                # no dynamic relocations before accepting their RAM classification.
+                for production_object in \
+                    "${object_dir}/GiftUIFailureCore.o" \
+                    "${object_dir}/GiftUIFailureExecution.o" \
+                    "${object_dir}/GiftUIFailureDiagnostics.o"; do
+                    local -a readonly_metadata_command=(
+                        "${objcopy}"
+                        --rename-section ".data.rel.ro=.giftui_data_rel_ro,alloc,load,readonly,data,contents"
+                        --rename-section ".rodata=.giftui_rodata,alloc,load,readonly,data,contents"
+                        "${production_object}"
+                    )
+                    record_command "${readonly_metadata_command[@]}"
+                    "${readonly_metadata_command[@]}" >>"${log_path}" 2>&1
+                done
                 local -a command=(
                     "${compiler}" "${flags[@]}" -I "${module_dir}"
                     "${RESOURCE_ROOT}/Candidate/ResourceEntry.swift"
@@ -455,6 +494,10 @@ run_armv6_resource_pair() {
                     "${object_dir}/GiftUIFailureDiagnostics.o"
                     "${object_dir}/ResourceSupport.o"
                     -static-stdlib -latomic -Xlinker --gc-sections
+                    -Xlinker --no-pie
+                    -Xlinker --build-id=none
+                    -Xlinker --undefined-version
+                    -Xlinker "--version-script=${RESOURCE_ROOT}/armv6-exports.map"
                     -Xlinker "-Map=${map}" -o "${image}"
                 )
             else
@@ -464,11 +507,22 @@ run_armv6_resource_pair() {
                     "${RESOURCE_ROOT}/Baseline/main.swift"
                     "${object_dir}/ResourceSupport.o"
                     -static-stdlib -latomic -Xlinker --gc-sections
+                    -Xlinker --no-pie
+                    -Xlinker --build-id=none
+                    -Xlinker --undefined-version
+                    -Xlinker "--version-script=${RESOURCE_ROOT}/armv6-exports.map"
                     -Xlinker "-Map=${map}" -o "${image}"
                 )
             fi
             record_command "${command[@]}"
             "${command[@]}" >>"${log_path}" 2>&1
+            local -a strip_loader_metadata_command=(
+                "${GIFTUI_PI_HOST_BIN_DIR}/llvm-objcopy"
+                --remove-section .swift_modhash
+                "${image}"
+            )
+            record_command "${strip_loader_metadata_command[@]}"
+            "${strip_loader_metadata_command[@]}" >>"${log_path}" 2>&1
             record_resource_image_elf "${image}" \
                 "${report_dir}/resources/build-${build_index}/${kind}" \
                 "${readelf}" "${objdump}" "${nm_tool}"

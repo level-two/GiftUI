@@ -8,7 +8,7 @@ PROFILE_LIMITS = {
   "nrf52840-embedded" => { ram: 320, stack: 256, code: 16 * 1024, instructions: 4_096 }
 }.freeze
 
-EXCLUDED_SECTIONS = /(?:debug|symtab|strtab|shstrtab|comment|note|linkedit)/i
+EXCLUDED_SECTIONS = /(?:debug|symtab|strtab|shstrtab|dynsym|dynstr|gnu\.hash|gnu\.version|comment|note|linkedit|\.ARM\.exidx|\.swift_modhash|swift5_)/i
 
 def fail_check(message)
   warn "SPEC-003 resource evidence check failed: #{message}"
@@ -56,14 +56,15 @@ end
 def elf_sections(path)
   sections = []
   File.foreach(path) do |line|
-    match = line.match(/^\s*\[\s*\d+\]\s+(\S+)\s+\S+\s+[0-9a-fA-F]+\s+[0-9a-fA-F]+\s+([0-9a-fA-F]+)\s+\S+\s+([A-Z]*)/)
+    match = line.match(/^\s*\[\s*\d+\]\s+(\S+)\s+\S+\s+([0-9a-fA-F]+)\s+[0-9a-fA-F]+\s+([0-9a-fA-F]+)\s+\S+\s+([A-Z]*)/)
     next unless match
 
-    flags = match[3]
+    flags = match[4]
     next unless flags.include?("A")
 
     sections << {
-      segment: "ELF", name: match[1], size: Integer(match[2], 16),
+      segment: "ELF", name: match[1], address: Integer(match[2], 16),
+      size: Integer(match[3], 16),
       writable: flags.include?("W")
     }
   end
@@ -99,6 +100,25 @@ def image_accounting(root)
              end
   code = included.reject { |section| section[:writable] }.sum { |section| section[:size] }
   [writable, code, included]
+end
+
+def verify_armv6_readonly_metadata(candidate_root, sections)
+  names = %w[.giftui_rodata .giftui_data_rel_ro]
+  readonly = sections.select { |section| names.include?(section[:name]) }
+  missing = names - readonly.map { |section| section[:name] }
+  fail_check("ARMv6 immutable metadata sections are missing: #{missing.join(', ')}") unless missing.empty?
+  fail_check("ARMv6 immutable metadata section is writable") if readonly.any? { |section| section[:writable] }
+
+  relocation_offsets = File.readlines(File.join(candidate_root, "relocations.txt")).each_with_object([]) do |line, offsets|
+    match = line.match(/^\s*([0-9a-fA-F]+)\s+[0-9a-fA-F]+\s+R_ARM_/)
+    offsets << Integer(match[1], 16) if match
+  end
+  readonly.each do |section|
+    finish = section.fetch(:address) + section.fetch(:size)
+    if relocation_offsets.any? { |offset| offset >= section.fetch(:address) && offset < finish }
+      fail_check("ARMv6 dynamic relocation targets read-only section #{section[:name]}")
+    end
+  end
 end
 
 def disassembly_functions(path)
@@ -192,6 +212,7 @@ profile, baseline_root, candidate_root, output_path = ARGV
 limits = PROFILE_LIMITS[profile] || fail_check("unknown profile #{profile}")
 baseline_ram, baseline_code, baseline_sections = image_accounting(baseline_root)
 candidate_ram, candidate_code, candidate_sections = image_accounting(candidate_root)
+verify_armv6_readonly_metadata(candidate_root, candidate_sections) if profile == "raspberry-pi-armv6"
 ram_delta = candidate_ram - baseline_ram
 code_delta = candidate_code - baseline_code
 stack, instructions, root, functions, reachable = call_graph(candidate_root)
