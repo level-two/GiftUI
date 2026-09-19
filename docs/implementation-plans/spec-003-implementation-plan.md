@@ -2,15 +2,15 @@
 spec: SPEC-003
 feature: giftui-mvp-architecture
 title: SPEC-003 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-08-29
-updated: 2026-09-19
+updated: 2026-09-20
 related_design_notes:
   - ../implementation-designs/spec-003-bounded-diagnostic-buffer.md
   - ../implementation-designs/spec-003-resource-evidence-driver.md
-conformance_report: null
+conformance_report: ../conformance/spec-003-conformance.md
 related_future_work:
   - FW-009
   - FW-012
@@ -174,24 +174,24 @@ the authority in SPEC-003.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `FAIL-AC-01` — Core imports no higher module | `T0.2`, `T0.4`, `T1.4` | Positive Core import fixture plus compiled dependency inspection | pending |
-| `FAIL-AC-02` — Execution correlation and driver import graph | `T0.4`, `T4.3`, `T4.5` | Exact target graph, positive/negative compile fixtures, compiled import inspection | pending |
-| `FAIL-AC-03` — Exhaustive conservative containment mapping | `T1.3`, `T5.2` | Shared dynamic/static unknown-and-richer-value corpus | pending |
-| `FAIL-AC-04` — Raw values and 2/4/8/20/24-byte layout bounds | `T1.1`, `T1.2`, `T3.1`, `T5.3` | Host unit fixtures and four-profile layout reports | pending |
-| `FAIL-AC-05` — Identity/origin preservation and no unsafe narrowing or upgrade | `T1.3`, `T4.3` | Propagation and correlation fixtures | pending |
-| `FAIL-AC-06` — Two ordered annotations and refused third append | `T1.2`, `T4.3` | Annotation boundary corpus and unchanged-fact assertions | pending |
-| `FAIL-AC-07` — Total residual-policy domain and forbidden-input rejection | `T2.1`, `T2.2`, `T5.2` | Exhaustive finite-domain policy fixture with invocation counters | pending |
-| `FAIL-AC-08` — Invalid host policy use quiesces exactly and prevents later cycles | `T2.3`, `T4.4` | Pure owner-adapter fixture followed by SPEC-015 integration evidence | pending |
-| `FAIL-AC-09` — Diagnostic configurations preserve correctness outputs | `T3.2`, `T3.3`, `T5.2` | Value-equality diagnostic matrix | pending |
-| `FAIL-AC-10` — Dropped health records do not affect state/counters; saturation is safe | `T2.4`, `T3.3` | Health/saturation fixture with all records dropped | pending |
-| `FAIL-AC-11` — Quiesced health is terminal | `T2.4` | Exhaustive resulting-state and counter fixture | pending |
-| `FAIL-AC-12` — Diagnostic callbacks/interrupts cannot mutate semantics or invoke actions | `T3.4` | Reentrancy/isolation fixture with zero-mutation counters | pending |
-| `FAIL-AC-13` — Every bounded capacity exhausts deterministically | `T1.2`, `T2.1`, `T3.2`, `T3.3` | Annotation, policy, counter, context, and diagnostic-store exhaustion corpus | pending |
-| `FAIL-AC-14` — Static correctness path allocates zero heap storage | `T1.4`, `T2.5`, `T5.3` | Instrumented static candidate and allocation report | pending |
-| `FAIL-AC-15` — Static/dynamic portable facts and dispositions are identical | `T5.1`, `T5.2` | Matched semantic transcripts | pending |
-| `FAIL-AC-16` — Four exact optimized commands and two pristine builds | `T0.3`, `T5.1`, `T5.4` | Driver metadata, commands, hashes, and repeatability reports | pending |
-| `FAIL-AC-17` — Hardware-free step, selection, buffer, RAM, stack, and code bounds | `T0.3`, `T3.3`, `T5.3`, `T5.4` | Count reports, section accounting, disassembly, call graph, and limit checks | pending |
-| `FAIL-AC-18` — Exact reciprocal SPEC-002 and SPEC-004 mappings | `T4.1`, `T4.2`, `T6.1` | Cross-owner fixtures and reciprocal-link/import audit | pending |
+| `FAIL-AC-01` — Core imports no higher module | `T0.2`, `T0.4`, `T1.4` | Positive Core import fixture plus compiled dependency inspection | complete |
+| `FAIL-AC-02` — Execution correlation and driver import graph | `T0.4`, `T4.3`, `T4.5` | Exact target graph, positive/negative compile fixtures, compiled import inspection | complete |
+| `FAIL-AC-03` — Exhaustive conservative containment mapping | `T1.3`, `T5.2` | Shared dynamic/static unknown-and-richer-value corpus | complete |
+| `FAIL-AC-04` — Raw values and 2/4/8/20/24-byte layout bounds | `T1.1`, `T1.2`, `T3.1`, `T5.3` | Host unit fixtures and four-profile layout reports | complete |
+| `FAIL-AC-05` — Identity/origin preservation and no unsafe narrowing or upgrade | `T1.3`, `T4.3` | Propagation and correlation fixtures | complete |
+| `FAIL-AC-06` — Two ordered annotations and refused third append | `T1.2`, `T4.3` | Annotation boundary corpus and unchanged-fact assertions | complete |
+| `FAIL-AC-07` — Total residual-policy domain and forbidden-input rejection | `T2.1`, `T2.2`, `T5.2` | Exhaustive finite-domain policy fixture with invocation counters | complete |
+| `FAIL-AC-08` — Invalid host policy use quiesces exactly and prevents later cycles | `T2.3`, `T4.4` | Pure owner-adapter fixture followed by SPEC-015 integration evidence | complete |
+| `FAIL-AC-09` — Diagnostic configurations preserve correctness outputs | `T3.2`, `T3.3`, `T5.2` | Value-equality diagnostic matrix | complete |
+| `FAIL-AC-10` — Dropped health records do not affect state/counters; saturation is safe | `T2.4`, `T3.3` | Health/saturation fixture with all records dropped | complete |
+| `FAIL-AC-11` — Quiesced health is terminal | `T2.4` | Exhaustive resulting-state and counter fixture | complete |
+| `FAIL-AC-12` — Diagnostic callbacks/interrupts cannot mutate semantics or invoke actions | `T3.4` | Reentrancy/isolation fixture with zero-mutation counters | complete |
+| `FAIL-AC-13` — Every bounded capacity exhausts deterministically | `T1.2`, `T2.1`, `T3.2`, `T3.3` | Annotation, policy, counter, context, and diagnostic-store exhaustion corpus | complete |
+| `FAIL-AC-14` — Static correctness path allocates zero heap storage | `T1.4`, `T2.5`, `T5.3` | Instrumented static candidate and allocation report | complete |
+| `FAIL-AC-15` — Static/dynamic portable facts and dispositions are identical | `T5.1`, `T5.2` | Matched semantic transcripts | complete |
+| `FAIL-AC-16` — Four exact optimized commands and two pristine builds | `T0.3`, `T5.1`, `T5.4` | Driver metadata, commands, hashes, and repeatability reports | complete |
+| `FAIL-AC-17` — Hardware-free step, selection, buffer, RAM, stack, and code bounds | `T0.3`, `T3.3`, `T5.3`, `T5.4` | Count reports, section accounting, disassembly, call graph, and limit checks | complete |
+| `FAIL-AC-18` — Exact reciprocal SPEC-002 and SPEC-004 mappings | `T4.1`, `T4.2`, `T6.1` | Cross-owner fixtures and reciprocal-link/import audit | complete |
 | `FAIL-AC-19` — Connected Raspberry Pi `armv6l` resource and latency row | `T6.2` | Recorded connected-target command, identity, raw samples, and resource report | complete |
 
 ## Milestones and Tasks
@@ -448,12 +448,13 @@ SPEC-003 conformance report is ready for independent review.
       deployed artifact digest matched and teardown was verified without a
       service restart. See the
       [connected Raspberry Pi evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-6/connected-raspberry-pi.md).
-- [ ] `T6.3` — Create `docs/conformance/spec-003-conformance.md`, link stable
+- [x] `T6.3` — Create `docs/conformance/spec-003-conformance.md`, link stable
       evidence, distinguish host/cross-build/connected-target claims, and hand
       every `FAIL-AC` row to conformance review. Do not mark SPEC-003
       `implemented` without complete evidence and explicit maintainer
-      authorization. **Ready:** `T4.3` through `T6.2` now supply the required
-      integration, resource, latency, and connected-target evidence.
+      authorization. **Complete:** the report gives all nineteen criteria a
+      passing disposition and supports requesting, but does not perform, the
+      explicit human `implemented` transition.
 
 ## Design-Note Triggers
 
@@ -747,13 +748,8 @@ macOS profiles record zero allocations, 37 correctness-path steps, five
 containment-normalization steps, eight diagnostic-selection steps, and the
 same checksum across 10,000 measured iterations; see the
 [layout, allocation, and RAM evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-5/layout-allocation-and-ram.md).
-Final-image writable/code deltas and stack/call-graph proof remain `T5.4`.
-That matched candidate is not dependency-complete because the governing
-resource contract requires `GiftUIFailureExecution`, whose focused execution
-contract and production target remain owned by and blocked on SPEC-009.
-`T4.3`-`T4.5`, `T5.4`, and the later integration/conformance tasks therefore
-cannot proceed without inventing forbidden authority; execution returns to the
-next dependency-complete SPEC-004 task.
+Final-image writable/code deltas and stack/call-graph proof are completed by
+`T5.4` below.
 
 `T4.3` is complete: `GiftUIFailureExecution` now exports the exact generic
 `GiftUICorrelatedFailure<Context>` envelope with the unchanged core fact,
@@ -817,3 +813,9 @@ against the 150,000 ns limit. Same-revision matched-image evidence records
 stack, all passing. The deployed SHA-256 matched, no service restarted, and
 the same SSH session verified probe teardown. See the
 [connected Raspberry Pi evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-6/connected-raspberry-pi.md).
+
+T6.3 completed on 2026-09-20. The
+[SPEC-003 conformance report](../conformance/spec-003-conformance.md) maps all
+nineteen criteria to passing reproducible evidence, records no divergence or
+exception, and supports requesting the explicit human `implemented`
+transition without performing it.

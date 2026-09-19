@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-09-19
+updated: 2026-09-20
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -1294,6 +1294,7 @@ contract.
 ## References
 
 - [SPEC-003 Implementation Plan](../implementation-plans/spec-003-implementation-plan.md)
+- [SPEC-003 Conformance Report](../conformance/spec-003-conformance.md)
 - [Bounded Diagnostic Buffer Implementation Design](../implementation-designs/spec-003-bounded-diagnostic-buffer.md)
 - [Resource Evidence Driver Implementation Design](../implementation-designs/spec-003-resource-evidence-driver.md)
 - [PROPOSAL-003: GiftUI MVP Architecture Establishment](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
