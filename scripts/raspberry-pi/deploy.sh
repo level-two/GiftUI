@@ -15,6 +15,7 @@ remote_dir="${GIFTUI_PI_REMOTE_DIR}"
 product=""
 artifact=""
 identity="${GIFTUI_PI_SSH_IDENTITY:-}"
+host_key_alias=""
 configuration="release"
 build_first=1
 run_after=0
@@ -30,6 +31,7 @@ Options:
   --user USER             SSH user; default giftui.
   --remote-dir DIR        Directory relative to the remote home.
   --identity FILE         SSH private key.
+  --host-key-alias NAME   Verify HOST against this saved SSH host-key name.
   --product NAME          SwiftPM executable product to build and deploy.
   --artifact PATH         Deploy an existing ARM ELF binary.
   --configuration CFG     release (default) or debug.
@@ -61,6 +63,11 @@ while [[ $# -gt 0 ]]; do
         --identity)
             [[ $# -ge 2 ]] || giftui_pi_error "--identity requires a value"
             identity="$2"
+            shift
+            ;;
+        --host-key-alias)
+            [[ $# -ge 2 ]] || giftui_pi_error "--host-key-alias requires a value"
+            host_key_alias="$2"
             shift
             ;;
         --product)
@@ -108,6 +115,10 @@ done
     giftui_pi_error "--product is required for every deployment"
 [[ "${host}" =~ ^[A-Za-z0-9._-]+$ ]] || giftui_pi_error "invalid host: ${host}"
 [[ "${user}" =~ ^[A-Za-z0-9._-]+$ ]] || giftui_pi_error "invalid user: ${user}"
+if [[ -n "${host_key_alias}" ]]; then
+    [[ "${host_key_alias}" =~ ^[A-Za-z0-9._-]+$ ]] ||
+        giftui_pi_error "invalid host-key alias: ${host_key_alias}"
+fi
 [[ "${product}" =~ ^[A-Za-z0-9._-]+$ ]] || giftui_pi_error "invalid product: ${product}"
 [[ "${remote_dir}" =~ ^[A-Za-z0-9._/-]+$ ]] ||
     giftui_pi_error "invalid remote directory: ${remote_dir}"
@@ -137,6 +148,10 @@ giftui_pi_note "verified deploy artifact: ${file_description}"
 
 ssh_options=(-o BatchMode=yes -o ConnectTimeout=30)
 scp_options=(-o BatchMode=yes -o ConnectTimeout=30)
+if [[ -n "${host_key_alias}" ]]; then
+    ssh_options+=(-o "HostKeyAlias=${host_key_alias}" -o StrictHostKeyChecking=yes)
+    scp_options+=(-o "HostKeyAlias=${host_key_alias}" -o StrictHostKeyChecking=yes)
+fi
 if [[ -n "${identity}" ]]; then
     [[ -f "${identity}" ]] || giftui_pi_error "SSH identity not found: ${identity}"
     ssh_options+=(-i "${identity}")

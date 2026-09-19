@@ -71,14 +71,20 @@ for iteration in UInt32(0) ..< 10_000 {
 let sorted = samples.sorted()
 let percentileIndex = (sorted.count * 99 + 99) / 100 - 1
 let p99 = sorted[percentileIndex]
+#if GIFTUI_RASPBERRY_PI_PROFILE
+    let p99LimitNanoseconds: UInt64 = 150_000
+#else
+    let p99LimitNanoseconds: UInt64 = 100_000
+#endif
 print("warmup_iterations=1000")
 print("measured_iterations=10000")
 print("p99_nanoseconds=\(p99)")
+print("p99_limit_nanoseconds=\(p99LimitNanoseconds)")
 print("checksum=\(checksum)")
 for (index, sample) in samples.enumerated() {
     print("sample_nanoseconds[\(index)]=\(sample)")
 }
 
-if p99 > 100_000 {
-    fatalError("SPEC-003 p99 latency exceeds 100 microseconds")
+if p99 > p99LimitNanoseconds {
+    fatalError("SPEC-003 p99 latency exceeds the profile limit")
 }

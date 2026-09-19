@@ -91,8 +91,12 @@ Selected stable transcripts may be copied deliberately to
 - **Connected-target evidence** executes on an explicitly selected target and
   must record its reported architecture and environment. It is collected only
   when an owning integration exists and the user has separately authorized the
-  connected-target change. No SPEC-003 contract command deploys, restarts a
-  service, or flashes hardware.
+  connected-target change. The separate
+  `run-spec-003-connected-pi.sh` command builds and atomically deploys its
+  dedicated ARMv6 probe, executes it without a service restart, verifies the
+  raw sample corpus, removes the probe, and publishes a connected-only report.
+  No hardware-free SPEC-003 command performs remote access, deployment,
+  service restart, or flashing.
 
 The standalone command surface is introduced by plan task `T0.3`:
 
@@ -105,3 +109,12 @@ scripts/contracts/run-spec-003.sh --profile nrf52840-embedded
 
 Registration in the repository aggregate must preserve these exact standalone
 commands and must not turn hardware-free aggregation into connected access.
+
+After separate connected-hardware authorization, the Raspberry Pi evidence is
+collected explicitly:
+
+```sh
+scripts/contracts/run-spec-003-connected-pi.sh \
+  --host <verified-host-or-address> \
+  --host-key-alias <saved-host-key-name>
+```
