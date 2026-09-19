@@ -796,11 +796,16 @@ required owner contracts remain authoritative.
 every SPEC-001 criterion without conflating implementation completion with the
 human `implemented` transition.
 
-- [ ] `T9.1` — Audit Package.swift, generated sources/manifests, public/package
+- [x] `T9.1` — Audit Package.swift, generated sources/manifests, public/package
       interfaces, import/dependency graph, source identities, finite action
       switch, failure representation, prohibited facilities, static symbols,
       and evidence completeness. Run all positive and negative compile
       fixtures with their pinned profile compilers.
+      **Completed:** the registered audit verifies the exact target/import
+      graph, generated preset/storage surface, portable identities, six-case
+      action handler, structural failure representation, prohibited facilities,
+      and all positive/negative dependency cases. Evidence is in
+      `Tests/ContractFixtures/SPEC001/Evidence/milestone-9/interface-and-dependency-audit.md`.
 - [ ] `T9.2` — Run focused Domain/Data/Presentation tests, the SPEC-001 driver
       for every hardware-free profile, every applicable registered dependency
       driver from SPEC-002 through SPEC-015, and normalized cross-profile

@@ -40,12 +40,18 @@ OWNERS.each do |owner, expected|
   abort "#{owner} imports forbidden modules #{leaked.sort.inspect}" unless leaked.empty?
 end
 
-test_owners = OWNERS.keys.to_h { |owner| ["#{owner}Tests", [owner]] }
+test_owners = {
+  "SignalAnalyzerDomainTests" => %w[SignalAnalyzerDomain],
+  "SignalAnalyzerDataTests" => %w[SignalAnalyzerData SignalAnalyzerDomain],
+  "SignalAnalyzerPresentationTests" => %w[
+    GiftUI GiftUIFailureCore SignalAnalyzerDomain SignalAnalyzerPresentation
+  ]
+}.freeze
 test_owners.each do |owner, expected|
   target = targets[owner]
   abort "missing analyzer test target #{owner}" unless target
   actual = target.fetch("dependencies", []).map { |dependency| dependency_name(dependency) }.sort
-  abort "#{owner} dependencies differ" unless actual == expected
+  abort "#{owner} dependencies differ: #{actual.inspect}" unless actual == expected.sort
 end
 
 fixtures = File.readlines(File.join(FIXTURES, "negative-dependency-fixtures.tsv"), chomp: true)
@@ -75,7 +81,8 @@ consumer_rows = File.readlines(File.join(FIXTURES, "analyzer-consumers.tsv"), ch
 abort "analyzer consumer fixture columns differ" unless consumer_rows.all? { |row| row.length == 3 }
 abort "analyzer consumer targets are duplicated" unless consumer_rows.map(&:first).uniq.length == consumer_rows.length
 registered_reverse_edges = consumer_rows.flat_map do |target_name, kind, dependencies|
-  abort "unknown analyzer consumer kind #{kind}" unless kind == "target-composition-test"
+  allowed_kinds = %w[composition-owner profile-harness target-composition-test]
+  abort "unknown analyzer consumer kind #{kind}" unless allowed_kinds.include?(kind)
   abort "missing registered analyzer consumer #{target_name}" unless targets.key?(target_name)
   dependencies.split(",").map do |dependency|
     abort "unknown analyzer dependency #{dependency}" unless OWNERS.key?(dependency)
