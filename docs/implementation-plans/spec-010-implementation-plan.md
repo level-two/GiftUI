@@ -2,14 +2,14 @@
 spec: SPEC-010
 feature: observable-reference-state
 title: SPEC-010 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-09-04
-updated: 2026-09-13
+updated: 2026-09-19
 related_design_notes:
   - ../implementation-designs/spec-010-binding-and-report-routing.md
-conformance_report: null
+conformance_report: ../conformance/spec-010-conformance-report.md
 related_future_work:
   - FW-019
 related_explorations: []
@@ -466,14 +466,14 @@ remaining dependency is available through its authoritative owner.
 **Exit evidence:** A clause-by-clause report supports the requested lifecycle
 transition without overclaiming hardware or downstream application completion.
 
-- [ ] `T9.1` — Audit exact public/package/source surfaces, target graph,
+- [x] `T9.1` — Audit exact public/package/source surfaces, target graph,
       generated symbols, migration closure, static forbidden dependencies,
       bounds, layouts, and complete OS-001 through OS-012 traceability.
-- [ ] `T9.2` — Run SPEC-006 stateful traversal, SPEC-009 execution,
+- [x] `T9.2` — Run SPEC-006 stateful traversal, SPEC-009 execution,
       SPEC-011 action-target, SPEC-013 profile, SPEC-015 host, and SPEC-001
       Signal Analyzer integration seams that are implemented. Record missing
       owners as downstream blockers rather than substitutes.
-- [ ] `T9.3` — Use the conformance-reviewer role to produce
+- [x] `T9.3` — Use the conformance-reviewer role to produce
       `docs/conformance/spec-010-conformance-report.md`; update status and
       cross-references only through the required human transition gate.
 
@@ -911,3 +911,24 @@ compile/link and inspection; no simulator or connected evidence is claimed.
 See the
 [cross-profile comparison evidence](../../Tests/ContractFixtures/SPEC010/Evidence/milestone-8/cross-profile-comparison.md).
 Milestone 8 is complete.
+
+`T9.1` is complete. The exact four-profile driver reran the declaration,
+generated-symbol, migration, target-graph, static dependency, layout, bound,
+and OS-001 through OS-012 evidence audits at revision
+`ef3620907d857a06a94fff30f8937b2e2f8d17ce`. All four profiles passed with
+immutable run ID
+`ef3620907d857a06a94fff30f8937b2e2f8d17ce-36cd22863e7a64fe`.
+
+`T9.2` is complete with downstream blockers recorded rather than substituted.
+The implemented SPEC-006, SPEC-009, SPEC-011, SPEC-013, SPEC-015, and
+Signal Analyzer seams are covered by the owner-integration evidence and the
+four-profile normalized join. The repository gate still records SPEC-011's
+pending T7-T9 evidence and SPEC-013's same-identity report-publication conflict
+as downstream gates; neither changes the completed observable-state owner
+behavior or supplies substitute evidence.
+
+`T9.3` is complete. The
+[conformance report](../conformance/spec-010-conformance-report.md) maps all
+twelve OS criteria and preserves exact platform/evidence classifications. The
+plan is `completed`; SPEC-010 remains `implementing` pending explicit human
+authorization for any `implemented` transition.

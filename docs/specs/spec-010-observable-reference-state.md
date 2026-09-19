@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-09-07
+updated: 2026-09-19
 proposal:
   - PROPOSAL-005
 related_rfcs:
@@ -843,6 +843,7 @@ that downstream work does not define or weaken SPEC-010.
 ## References
 
 - [SPEC-010 Implementation Plan](../implementation-plans/spec-010-implementation-plan.md)
+- [SPEC-010 Conformance Report](../conformance/spec-010-conformance-report.md)
 - [Observable Binding and Report Routing design note](../implementation-designs/spec-010-binding-and-report-routing.md)
 - [PROPOSAL-005](../proposals/proposal-005-observable-reference-state.md)
 - [RFC-008](../rfcs/rfc-008-observable-reference-state-architecture.md)
