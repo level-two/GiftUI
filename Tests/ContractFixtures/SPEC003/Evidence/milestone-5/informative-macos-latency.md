@@ -9,8 +9,9 @@ dedicated optimized latency probe. Each run performs 1,000 warm-up iterations,
 then times and preserves 10,000 individual production-path samples. The driver
 fails if the p99 exceeds 100 microseconds or if any required sample is absent.
 
-Both profiles passed under immutable run ID
-`ed964f77b716777b300ff461db49ed02e542ac2d-73f3522a03c58738`:
+Both profiles passed after T5.4 completed. The clean-revision immutable report
+root records revision `f51af84cc6dc9f634a893716d21c783fd177dbcf`
+and input digest `923a181b54914d09`:
 
 | Profile | Warm-up | Samples | p99 |
 | --- | ---: | ---: | ---: |
@@ -22,10 +23,10 @@ RAM using Apple Swift 6.3.3 (`swiftlang-6.3.3.1.3`). It runs macOS 26.6.2 build
 25G83. SPEC-003 freezes macOS 26.3 build 25D125, so the driver's
 `reference_runner_match` is `false` and these samples are informative only.
 
-T5.5 remains open because T5.4's matched candidate/call-graph proof must precede
-latency evidence and because the exact frozen OS build was not used. The raw
-samples and runner metadata remain in the immutable `.build` report; this
-checked-in record preserves the reproduction command and classification:
+T5.4's matched candidate/call-graph proof is complete. T5.5 remains open only
+because the exact frozen OS build was not used. The raw samples and runner
+metadata remain in the immutable `.build` report; this checked-in record
+preserves the reproduction command and classification:
 
 ```sh
 scripts/contracts/run-spec-003.sh --profile macos-dynamic

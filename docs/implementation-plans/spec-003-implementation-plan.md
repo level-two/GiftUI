@@ -412,11 +412,11 @@ labeled as host or hardware-free cross-build evidence.
 - [ ] `T5.5` — On the exact macOS reference runner, execute at least 1,000
       warm-up and 10,000 measured iterations with no other repository job;
       preserve raw samples and enforce the p99 latency row. Treat results from
-      another Mac as informative only. **Blocked:** the integration order
-      requires T5.4 first. The available `Mac15,7` hardware runs macOS 26.6.2
-      build 25G83 rather than the frozen 26.3 build 25D125, so its passing raw
-      samples remain informative until the reference runner is restored or the
-      Specification is deliberately revised.
+      another Mac as informative only. **Blocked:** T5.4 is complete, but the
+      available `Mac15,7` hardware runs macOS 26.6.2 build 25G83 rather than
+      the frozen 26.3 build 25D125, so its passing raw samples remain
+      informative until the reference runner is restored or the Specification
+      is deliberately revised.
 
 ### Milestone 6: Complete Target Evidence and Prepare Conformance Review
 
