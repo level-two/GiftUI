@@ -409,14 +409,15 @@ labeled as host or hardware-free cross-build evidence.
       shared-library sets, or non-repeatable evidence. All four profiles pass
       their frozen writable-RAM, linked-code, stack, and instruction limits;
       see the T5.4 resource evidence.
-- [ ] `T5.5` — On the exact macOS reference runner, execute at least 1,000
+- [x] `T5.5` — On the exact macOS reference runner, execute at least 1,000
       warm-up and 10,000 measured iterations with no other repository job;
       preserve raw samples and enforce the p99 latency row. Treat results from
-      another Mac as informative only. **Blocked:** T5.4 is complete, but the
-      available `Mac15,7` hardware runs macOS 26.6.2 build 25G83 rather than
-      the frozen 26.3 build 25D125, so its passing raw samples remain
-      informative until the reference runner is restored or the Specification
-      is deliberately revised.
+      another Mac as informative only. **Complete:** after the reference-runner
+      amendment was explicitly reapproved, clean revision `f42e2f6` produced
+      10,000 raw samples per profile with p99 167 ns for macOS dynamic and
+      125 ns for macOS static; both reports record
+      `reference_runner_match=true`. See the
+      [T5.5 latency evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-5/macos-latency.md).
 
 ### Milestone 6: Complete Target Evidence and Prepare Conformance Review
 
@@ -440,9 +441,8 @@ SPEC-003 conformance report is ready for independent review.
       authorized. Execute it in the Raspberry Pi / PiScreen group defined by
       [SPEC-001 Milestone 8](spec-001-implementation-plan.md#cross-specification-connected-validation-campaign)
       so the same immutable connected run can satisfy its separately owned
-      criteria without conflating them. **Blocked:** T5.5 is incomplete, and
-      no connected Raspberry Pi target has been selected or
-      separately authorized for this task.
+      criteria without conflating them. **Blocked:** no connected Raspberry Pi
+      target has been selected or separately authorized for this task.
 - [ ] `T6.3` — Create `docs/conformance/spec-003-conformance.md`, link stable
       evidence, distinguish host/cross-build/connected-target claims, and hand
       every `FAIL-AC` row to conformance review. Do not mark SPEC-003
@@ -493,10 +493,8 @@ SPEC-003 conformance report is ready for independent review.
 
 ### Upstream blockers
 
-- `GiftUIFailureExecution` exists under SPEC-009 ownership and the complete
-  matched-image implementation now runs in the SPEC-003 driver. T5.4 is
-  blocked instead by the measured macOS-static and ARMv6 writable-RAM
-  nonconformances recorded in its Milestone 5 evidence.
+- T5.4 and T5.5 are complete. The remaining measured-evidence blocker is the
+  explicitly selected and separately authorized connected ARMv6 run in T6.2.
 - The reciprocal capability catalogue adapter is now dependency-complete
   because SPEC-004 Milestone 1 created `GiftUICapabilities` and its closed
   unavailable vocabulary. End-to-end resolver-produced outcome evidence still
@@ -802,12 +800,11 @@ profiles pass their frozen writable-RAM, linked-code, stack, and instruction
 bounds. See the
 [resource-image evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-5/resource-images.md).
 
-The T5.5 latency collector is now implemented and registered inside both
-macOS profile runs. It executes 1,000 warm-ups plus 10,000 individually timed
-samples, preserves every raw nanosecond value, enforces p99 <= 100 us, and
-records model, OS, compiler, revision, and reference-runner match. On the
-available `Mac15,7`/M3 Pro host, both optimized profiles measured p99 167 ns.
-The [informative latency record](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-5/informative-macos-latency.md)
-is not conformance evidence because the host runs
-macOS 26.6.2 build 25G83 rather than the frozen 26.3 build 25D125. T5.5 remains
-open without weakening or revising the approved runner contract.
+T5.5 completed on 2026-09-19 after the maintainer explicitly reapproved the
+macOS 26.6.2 build 25G83 reference-runner amendment. Clean revision `f42e2f6`
+ran 1,000 warm-ups plus 10,000 individually timed and preserved samples per
+profile with no concurrent repository job. The optimized dynamic fixture
+measured p99 167 ns and the optimized static fixture measured p99 125 ns;
+both are below 100 us and both driver reports record
+`reference_runner_match=true`. See the
+[macOS latency evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-5/macos-latency.md).

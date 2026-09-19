@@ -130,8 +130,8 @@ builds. The repository registry continues to invoke the same commands.
 
 ## Open Implementation Questions
 
-None for T5.4. The connected ARMv6 execution and latency evidence remains in
-T6.2, and exact-runner macOS latency remains in T5.5.
+None for T5.4. Exact-runner macOS latency is complete under T5.5; connected
+ARMv6 execution and latency evidence remains in T6.2.
 
 ## Code and Evidence Links
 
