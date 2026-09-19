@@ -516,7 +516,7 @@ ABI, storage, stack, flash, RAM, and forbidden-symbol requirements.
       enabled, geometry, paint order, candidate transition, gesture, dispatch,
       failure, and publication fields; reject missing edges and profile-private
       semantic differences.
-- [ ] `T8.3` — Run static allocation interposition and workspace/stack
+- [x] `T8.3` — Run static allocation interposition and workspace/stack
       high-water probes at the 32-action, 32-hit-region, four-source independent
       fixture bounds. Require zero heap bytes for construction, record storage,
       routing, capture, decode, lookup, borrow, and dispatch.
@@ -844,7 +844,13 @@ transcripts. The reports compare only normative symbolic fields and cover the
 full candidate, gesture, dispatch, replacement, failure, containment, and
 target-generation matrix. Evidence is in
 `Tests/ContractFixtures/SPEC011/Evidence/t8-2-interaction-corpus.md`.
-T8.3 is next.
+
+`T8.3` is complete through the composed SPEC-013 resource probes. Exact-limit
+macOS/nRF Static paths report zero heap and bounded candidate, committed,
+routing, capture, decode, lookup, borrow, dispatch, and stage-stack storage;
+Dynamic bookkeeping remains separately reported. Evidence is in
+`Tests/ContractFixtures/SPEC011/Evidence/t8-3-static-allocation-workspace.md`.
+T8.4 is next.
 
 `T9.1` is complete as the plan's independently runnable boundary audit. The
 exact package consumer set and every production Swift source now prove one
