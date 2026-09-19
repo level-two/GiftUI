@@ -509,7 +509,7 @@ ABI, storage, stack, flash, RAM, and forbidden-symbol requirements.
       dynamic and static, Raspberry Pi `armv6-unknown-linux-gnueabihf`, and
       nRF52840 `armv7em-none-none-eabi`. Record compiler identity, target, SDK,
       optimization, full commands, revision, and fixture digest.
-- [ ] `T8.2` — Run the complete declarations/candidates/gestures/dispatch/
+- [x] `T8.2` — Run the complete declarations/candidates/gestures/dispatch/
       failures corpus through recording, dynamic, and static paths. Compare
       only reports with the same repository revision and input-set hash, and
       compare exact symbolic identity, action, generation, target generation,
@@ -831,6 +831,20 @@ exact selected-window control alone is disabled for each 1/2/5-second choice.
 See the
 [first-party capacity evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t7-5-first-party-capacities.md).
 Milestone 7 is complete.
+
+`T8.1` is complete. The declaration audit is composed with each exact
+SPEC-013/SPEC-015 profile build, so the public action/Button/disabled/handler
+surface and registered negative shapes are checked alongside macOS Dynamic,
+macOS Static, ARMv6, and nRF product compilation. Evidence is in
+`Tests/ContractFixtures/SPEC011/Evidence/t8-1-four-profile-declarations.md`.
+
+`T8.2` is complete. All four modes run the complete focused Interaction and
+Runtime interaction corpus and compose SPEC-013's zero-tolerance equal-profile
+transcripts. The reports compare only normative symbolic fields and cover the
+full candidate, gesture, dispatch, replacement, failure, containment, and
+target-generation matrix. Evidence is in
+`Tests/ContractFixtures/SPEC011/Evidence/t8-2-interaction-corpus.md`.
+T8.3 is next.
 
 `T9.1` is complete as the plan's independently runnable boundary audit. The
 exact package consumer set and every production Swift source now prove one

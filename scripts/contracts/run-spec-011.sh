@@ -80,7 +80,8 @@ case "${profile}" in
 esac
 
 run_check "${SCRIPT_DIR}/run-spec-013.sh" --profile "${profile}"
-run_check "${SCRIPT_DIR}/run-spec-015.sh" --profile "${profile}"
+run_check env -u GIFTUI_IMMUTABLE_REPORT_INNER -u GIFTUI_CONTRACT_REPORT_DIR \
+    -u GIFTUI_CONTRACT_RUN_ID "${SCRIPT_DIR}/run-spec-015.sh" --profile "${profile}"
 
 spec013_latest="${PROJECT_ROOT}/.build/contract-reports/spec-013/latest-${profile}.txt"
 spec015_latest="${PROJECT_ROOT}/.build/contract-reports/spec-015/latest-${profile}.txt"
