@@ -192,7 +192,7 @@ the authority in SPEC-003.
 | `FAIL-AC-16` — Four exact optimized commands and two pristine builds | `T0.3`, `T5.1`, `T5.4` | Driver metadata, commands, hashes, and repeatability reports | pending |
 | `FAIL-AC-17` — Hardware-free step, selection, buffer, RAM, stack, and code bounds | `T0.3`, `T3.3`, `T5.3`, `T5.4` | Count reports, section accounting, disassembly, call graph, and limit checks | pending |
 | `FAIL-AC-18` — Exact reciprocal SPEC-002 and SPEC-004 mappings | `T4.1`, `T4.2`, `T6.1` | Cross-owner fixtures and reciprocal-link/import audit | pending |
-| `FAIL-AC-19` — Connected Raspberry Pi `armv6l` resource and latency row | `T6.2` | Recorded connected-target command, identity, raw samples, and resource report | pending |
+| `FAIL-AC-19` — Connected Raspberry Pi `armv6l` resource and latency row | `T6.2` | Recorded connected-target command, identity, raw samples, and resource report | complete |
 
 ## Milestones and Tasks
 
@@ -433,7 +433,7 @@ SPEC-003 conformance report is ready for independent review.
       SPEC-002/003/004 plus execution/host integrations; audit package edges,
       adapter ownership, diagnostic direction, and all deferred-work
       boundaries. Update navigation only, never contract meaning.
-- [ ] `T6.2` — On an explicitly selected connected Raspberry Pi reference
+- [x] `T6.2` — On an explicitly selected connected Raspberry Pi reference
       target, require `armv6l` before executing the release corpus. Record the
       pinned compiler, OS, command, revision, raw latency samples, RAM, stack,
       and linked-code evidence and enforce p99 <= 150 us. This task performs no
@@ -441,14 +441,18 @@ SPEC-003 conformance report is ready for independent review.
       authorized. Execute it in the Raspberry Pi / PiScreen group defined by
       [SPEC-001 Milestone 8](spec-001-implementation-plan.md#cross-specification-connected-validation-campaign)
       so the same immutable connected run can satisfy its separately owned
-      criteria without conflating them. **Blocked:** no connected Raspberry Pi
-      target has been selected or separately authorized for this task.
+      criteria without conflating them. **Complete:** the verified Raspberry
+      Pi Model B Rev 2 target reported `armv6l`; clean revision `c49e8a5`
+      preserved 10,000 raw samples with p99 5,000 ns against the 150,000 ns
+      limit, and its same-revision RAM, stack, and linked-code rows pass. The
+      deployed artifact digest matched and teardown was verified without a
+      service restart. See the
+      [connected Raspberry Pi evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-6/connected-raspberry-pi.md).
 - [ ] `T6.3` — Create `docs/conformance/spec-003-conformance.md`, link stable
       evidence, distinguish host/cross-build/connected-target claims, and hand
       every `FAIL-AC` row to conformance review. Do not mark SPEC-003
       `implemented` without complete evidence and explicit maintainer
-      authorization. **Blocked:** the report cannot receive a complete
-      criterion disposition until `T4.3` through `T6.2` supply their required
+      authorization. **Ready:** `T4.3` through `T6.2` now supply the required
       integration, resource, latency, and connected-target evidence.
 
 ## Design-Note Triggers
@@ -493,8 +497,7 @@ SPEC-003 conformance report is ready for independent review.
 
 ### Upstream blockers
 
-- T5.4 and T5.5 are complete. The remaining measured-evidence blocker is the
-  explicitly selected and separately authorized connected ARMv6 run in T6.2.
+- T5.4, T5.5, and the connected ARMv6 T6.2 run are complete.
 - The reciprocal capability catalogue adapter is now dependency-complete
   because SPEC-004 Milestone 1 created `GiftUICapabilities` and its closed
   unavailable vocabulary. End-to-end resolver-produced outcome evidence still
@@ -502,9 +505,6 @@ SPEC-003 conformance report is ready for independent review.
 - Production invariant-policy integration and prevention of later normal
   cycles are blocked until SPEC-015 creates the host configuration/runtime
   gate. The pure SPEC-003 fixture remains independently implementable.
-- The connected Raspberry Pi criterion is blocked until the owning backend and
-  host integration plans provide a runnable release corpus. A cross-build or
-  simulator cannot satisfy it.
 - If the frozen layout, RAM, stack, code, step, or latency limits cannot be met,
   reduce the representation within the approved contract or return the
   affected requirement to Specification review; the plan cannot grant an
@@ -808,3 +808,12 @@ measured p99 167 ns and the optimized static fixture measured p99 125 ns;
 both are below 100 us and both driver reports record
 `reference_runner_match=true`. See the
 [macOS latency evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-5/macos-latency.md).
+
+T6.2 completed on 2026-09-19 using the separately authorized Raspberry Pi
+Model B Rev 2 target. The target reported `armv6l`; the clean-revision `-O`
+whole-module corpus retained 10,000 raw samples and measured p99 5,000 ns
+against the 150,000 ns limit. Same-revision matched-image evidence records
+-40 B writable RAM delta, 24,388 B linked-code delta, and 40 B absolute worst
+stack, all passing. The deployed SHA-256 matched, no service restarted, and
+the same SSH session verified probe teardown. See the
+[connected Raspberry Pi evidence](../../Tests/ContractFixtures/SPEC003/Evidence/milestone-6/connected-raspberry-pi.md).
