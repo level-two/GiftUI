@@ -548,7 +548,7 @@ report has a disposition for every criterion.
       identity/generation allocator, one capture owner, one Interaction owner,
       one observable target-generation owner, one coordinator join, and no
       backend/platform/driver dispatch path or portable re-export.
-- [ ] `T9.2` — Run `scripts/format-swift.sh`, the focused unit suites, exact
+- [x] `T9.2` — Run `scripts/format-swift.sh`, the focused unit suites, exact
       `scripts/contracts/run-spec-011.sh` commands, dependency checks, and
       `scripts/test.sh --profile all-hardware-free`. Preserve standalone driver
       invocations and top-level explicit registration.
@@ -864,6 +864,12 @@ typed dispatch are inspected without device execution or flashing. Evidence
 is in
 `Tests/ContractFixtures/SPEC011/Evidence/t8-5-cross-target-artifacts.md`.
 Milestone 8 is complete; T9.2 is next.
+
+`T9.2` is complete. Formatting and the complete `all-hardware-free` gate pass
+across every registered contract and all four profiles. SPEC-011's standalone
+commands remain explicit and independently reproducible. Evidence is in
+`Tests/ContractFixtures/SPEC011/Evidence/t9-2-repository-gate.md`. Connected
+T9.3 and T9.4 remain open by design; T9.5 is next for conformance preparation.
 
 `T9.1` is complete as the plan's independently runnable boundary audit. The
 exact package consumer set and every production Swift source now prove one
