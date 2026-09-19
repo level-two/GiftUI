@@ -558,7 +558,7 @@ all four preset builds are reproducible from repository-local inputs.
 every acceptance criterion has a checkable disposition, and remaining
 connected-hardware evidence is explicit rather than implied.
 
-- [ ] `T7.1` — Complete the exhaustive negative corpus: graph shape/order,
+- [x] `T7.1` — Complete the exhaustive negative corpus: graph shape/order,
       every validation stage and no-later-read proof, every runtime-limit leaf,
       schema-1 and malformed/stale schema-2 manifests, all four independent
       render-workspace source/limit mismatches, wrapper/modifier traversal
@@ -569,10 +569,9 @@ connected-hardware evidence is explicit rather than implied.
       first-excess cancellation, every policy/no-policy row, every
       construction/activation/teardown state, diagnostics, arithmetic, and
       fault injection. Add forbidden-import and portable-source scans.
-      **Partial:** the registered host-import, forbidden focused-owner import,
-      protected-owner upward-import, and ambient-lookup scans are complete.
-      Integrated action/input, lifecycle, failure, diagnostic, arithmetic,
-      resource, and fault-injection rows remain pending.
+      The registered audit now requires every focused negative family and the
+      host-import, protected-owner, ambient-lookup, and portable-source scans;
+      the focused suite exercises all 140 host-configuration cases.
 - [ ] `T7.2` — Finish `scripts/contracts/run-spec-015.sh` so each exact profile
       runs unit, conformance, integration, compile/link, static-runtime,
       allocation, latency, resource-accounting, and generated-manifest
@@ -870,3 +869,10 @@ fixtures prove all six actions, final generation/enabled-state checks, exact
 current-model borrowing, replacement cancellation, and non-retention. Evidence
 is in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-5/normalized-input-and-action.md`.
+
+`T7.1` is complete. The negative-corpus audit binds every required family to
+its maintained focused suite and retains the existing forbidden-import and
+portable-source scans. The 2026-09-19 reproduction passed the audit and all
+140 host-configuration tests without simulator or connected-target activity.
+Evidence is in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-7/exhaustive-negative-corpus.md`.
