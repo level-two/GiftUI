@@ -84,7 +84,7 @@ expected_criteria = (1..45).map { |number| format("SA-AC-%03d", number) }
 abort "criterion registry columns differ" unless criterion_rows.all? { |row| row.length == 4 }
 abort "criterion registry is missing, duplicate, unknown, or reordered" unless criterion_rows.map(&:first) == expected_criteria
 abort "criterion registry has unknown class" unless criterion_rows.all? { |row| EVIDENCE_CLASSES.include?(row[1]) }
-abort "criterion registry has contradictory status" unless criterion_rows.all? { |row| %w[baseline pending].include?(row[2]) }
+abort "criterion registry has contradictory status" unless criterion_rows.all? { |row| %w[baseline pending pass blocked].include?(row[2]) }
 abort "criterion registry has missing evidence identity" unless criterion_rows.all? { |row| !row[3].empty? }
 
 task_document = YAML.safe_load(File.read(File.join(FIXTURES, "task-evidence.yaml")), aliases: false)

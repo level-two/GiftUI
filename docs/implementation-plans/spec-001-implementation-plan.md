@@ -6,10 +6,11 @@ status: active
 owners:
   - codex
 created: 2026-09-13
-updated: 2026-09-14
+updated: 2026-09-19
 related_design_notes:
   - ../implementation-designs/spec-001-presentation-admission-and-failure.md
-conformance_report: null
+  - ../implementation-designs/spec-001-four-host-application-join.md
+conformance_report: ../conformance/spec-001-conformance.md
 related_future_work: []
 related_explorations: []
 related_spikes: []
@@ -826,12 +827,16 @@ human `implemented` transition.
       governance validation pass. The one initial governance ledger mismatch
       was corrected and revalidated without weakening a driver. Evidence is in
       `Tests/ContractFixtures/SPEC001/Evidence/milestone-9/repository-gates.md`.
-- [ ] `T9.4` — Update every task disposition and evidence link, create
+- [x] `T9.4` — Update every task disposition and evidence link, create
       `docs/conformance/spec-001-conformance.md` with all 45 criteria exactly
       once, link it from SPEC-001 and this plan, and request the human
       conformance review. Plan completion does not mark SPEC-001 implemented;
       that transition remains an explicit human decision after all required
       platform and connected-hardware evidence is accepted.
+      **Completed:** the complete conformance report maps all 45 criteria
+      exactly once: 40 pass and five retain explicit connected-hardware
+      blockers. SPEC-001 remains `implementing`; T8.1-T8.3 and the human
+      transition remain open.
 
 ## Design-Note Triggers
 

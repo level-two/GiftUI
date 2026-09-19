@@ -6,7 +6,7 @@ status: implementing
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-09-13
+updated: 2026-09-19
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -1924,6 +1924,8 @@ This section is non-authoritative.
 - [Four-Host Application Join Implementation Design](../implementation-designs/spec-001-four-host-application-join.md)
   describes the replaceable typed composition-root ownership selected for
   Milestone 6 without changing this Specification's contract.
+- [SPEC-001 Conformance Report](../conformance/spec-001-conformance.md)
+  maps all 45 criteria and preserves the open connected-hardware gates.
 
 ### Current implementation evidence
 
