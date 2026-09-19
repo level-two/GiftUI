@@ -526,7 +526,7 @@ ABI, storage, stack, flash, RAM, and forbidden-symbol requirements.
       Prove no closure box, reflection/type metadata discovery, unrestricted
       existential, allocator, handler/model retention, or indirect registry
       dispatch enters the static path.
-- [ ] `T8.5` — Inspect final ARMv6 and nRF52840 artifacts. Require the exact Pi
+- [x] `T8.5` — Inspect final ARMv6 and nRF52840 artifacts. Require the exact Pi
       target, nRF board/module target, Cortex-M4F flags, VFP-register calling
       convention, fixed storage, and statically specialized direct dispatch.
       Keep downloads under `.toolchains/`, Pi artifacts under
@@ -856,7 +856,14 @@ layouts, disjoint storage families, high-water values, timing, dependencies,
 symbols, SIL/IR, sections, maps, flash, RAM, and forbidden facilities remain
 separately inspectable for each mode. Evidence is in
 `Tests/ContractFixtures/SPEC011/Evidence/t8-4-layout-resource-audit.md`.
-T8.5 is next.
+
+`T8.5` is complete. The final Pi artifact is exact ELF32 ARMv6 EABI5; the
+nRF firmware is ARMv7E-M/Thumb-2 with VFPv4-D16 and VFP-register calling
+convention. Fixed storage, linked resources, forbidden symbols, and direct
+typed dispatch are inspected without device execution or flashing. Evidence
+is in
+`Tests/ContractFixtures/SPEC011/Evidence/t8-5-cross-target-artifacts.md`.
+Milestone 8 is complete; T9.2 is next.
 
 `T9.1` is complete as the plan's independently runnable boundary audit. The
 exact package consumer set and every production Swift source now prove one
