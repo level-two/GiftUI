@@ -192,7 +192,7 @@ governed implementation must still reproduce and record the required evidence.
 | `SA-AC-002` — Logical Domain/Data/Presentation/host graph and inward dependencies | `T0.2`, `T0.5`, `T1.4`, `T6.1`, `T9.1` | Package graph, imports, interfaces, generated graph report | baseline; revalidation pending |
 | `SA-AC-003` — Domain excludes UI/backend/platform/timing/hardware APIs | `T0.2`, `T0.5`, `T1.4`, `T9.1` | Source/import/symbol negative scans in every profile | baseline; revalidation pending |
 | `SA-AC-004` — Presentation excludes Data/platform/timing/renderer/display/hardware APIs | `T0.2`, `T0.5`, `T4.4`, `T9.1` | Import and dependency negative fixtures | pending |
-| `SA-AC-005` — Complete visible screen surface | `T4.1`-`T4.3`, `T6.2`-`T6.5`, `T8.1`, `T8.2` | Semantic hierarchy transcript plus rendered/connected display evidence | pending |
+| `SA-AC-005` — Complete visible screen surface | `T4.1`-`T4.3`, `T6.2`-`T6.5`, `T6.7`, `T6.8`, `T8.1`, `T8.2` | Semantic hierarchy transcript plus rendered/connected display evidence | pending |
 | `SA-AC-006` — Fixed explicit portable composition shared by four configurations | `T4.1`, `T4.4`, `T6.2`-`T6.5` | Source identity/hash, compile, and hierarchy comparison | pending |
 | `SA-AC-007` — Revisioned current-value sink registration, replacement, detach, and bounded returns | `T1.3`, `T2.2`, `T3.2` | Ordered callback/outcome and lifetime transcript | pending |
 | `SA-AC-008` — Synchronous application delivery and distinct GiftUI mutation without portable concurrency facilities | `T1.4`, `T2.2`, `T3.2`, `T5.3`, `T9.1` | Same-thread/distinct-executor transcript and forbidden-facility scans | pending |
@@ -210,12 +210,12 @@ governed implementation must still reproduce and record the required evidence.
 | `SA-AC-020` — Ruler formatting and 11-plus-one grid | `T4.3` | Text bytes and normalized Drawing operation transcript | baseline; revalidation pending |
 | `SA-AC-021` — Consistent latest state at 250 ms without per-event frames | `T5.3`, `T7.4` | Admission/application/publication/frame timeline and cadence report | pending |
 | `SA-AC-022` — macOS dynamic and static deterministic execution | `T6.2`, `T6.3`, `T9.2` | Two host-execution reports and normalized equivalence | pending |
-| `SA-AC-023` — Raspberry Pi framebuffer/PiScreen display and input | `T6.4`, `T8.1` | ARMv6 cross-build plus separately labeled connected-target transcript | pending |
-| `SA-AC-024` — nRF52840 static TFT display and input | `T6.5`, `T8.2` | ELF inspection plus separately labeled connected-target transcript | pending |
-| `SA-AC-025` — nRF binary/RAM/storage/drawing/stack fit evidence | `T6.5`, `T7.4`, `T8.2` | Link map, ELF, stack/high-water, workspace, and run report | pending |
+| `SA-AC-023` — Raspberry Pi framebuffer/PiScreen display and input | `T6.4`, `T6.7`, `T8.1` | ARMv6 cross-build plus separately labeled connected-target transcript | pending |
+| `SA-AC-024` — nRF52840 static TFT display and input | `T6.5`, `T6.8`, `T8.2` | ELF inspection plus separately labeled connected-target transcript | pending |
+| `SA-AC-025` — nRF binary/RAM/storage/drawing/stack fit evidence | `T6.5`, `T6.8`, `T7.4`, `T8.2` | Link map, ELF, stack/high-water, workspace, and run report | pending |
 | `SA-AC-026` — Conforming source replacement changes no portable owners | `T2.3`, `T6.6` | Mock/fixture-source substitution compile and graph comparison | pending |
 | `SA-AC-027` — Missing GiftUI behavior fails configuration without reduced UI | `T6.6`, `T7.1` | Each-required-facility negative and zero-publication transcript | pending |
-| `SA-AC-028` — Host-owned observation and adapter sink installation | `T3.2`, `T6.1`-`T6.5` | Construction/start/stop/teardown owner-call ledger | pending |
+| `SA-AC-028` — Host-owned observation and adapter sink installation | `T3.2`, `T6.1`-`T6.5`, `T6.7`, `T6.8` | Construction/start/stop/teardown owner-call ledger | pending |
 | `SA-AC-029` — Exact `1/32/1` fact capacities and first-excess rejection | `T5.1`, `T6.1`, `T7.4` | 28/32/33 ordinary, snapshot 1/2, reserved 1/2 corpus | pending |
 | `SA-AC-030` — Nonzero monotonic sequence and ordered at-most-once application | `T5.1`, `T5.3` | Cross-storage seal/apply/post-seal/exhaustion transcript | pending |
 | `SA-AC-031` — Exact revisioned mutation replay and mismatch containment | `T1.3`, `T2.2`, `T3.3`, `T7.1` | Full replay, malformed/mismatch, unchanged-model, restart corpus | pending |
@@ -226,13 +226,13 @@ governed implementation must still reproduce and record the required evidence.
 | `SA-AC-036` — Button callback becomes later fact; executor realizations agree | `T3.1`, `T5.3`, `T5.4` | Reentrancy poison and normalized executor-equivalence transcript | pending |
 | `SA-AC-037` — Six qualified actions and total noncapturing handler | `T3.1`, `T4.2`, `T5.4`, `T9.1` | Four-profile compile, source audit, and six-case dispatch transcript | pending |
 | `SA-AC-038` — Replacement cancels in-flight dispatch; failed replacement preserves old target | `T5.2`, `T5.4` | Down/admission/replacement interleaving corpus | pending |
-| `SA-AC-039` — Embedded typed model/storage/facility/resource evidence | `T5.2`, `T6.5`, `T7.4` | Generated source, address/layout, forbidden-symbol, timing, RAM/flash/stack reports | pending |
+| `SA-AC-039` — Embedded typed model/storage/facility/resource evidence | `T5.2`, `T6.5`, `T6.8`, `T7.4` | Generated source, address/layout, forbidden-symbol, timing, RAM/flash/stack reports | pending |
 | `SA-AC-040` — Total normalization, mandatory effects, residual policy, and diagnostic independence | `T3.4`, `T7.1` | Exhaustive outcome/effect/policy/projection matrix | pending |
 | `SA-AC-041` — Complete 96-byte UTF-8 diagnostic and BoundedText matrix | `T1.1`, `T3.4`, `T9.2` | Dynamic/static construction, borrow, projection, allocation transcript | pending |
 | `SA-AC-042` — Exact wrapping CH4 vectors in every profile/host | `T2.3`, `T6.2`-`T6.5`, `T9.2` | Two golden vectors and four normalized host traces | pending |
 | `SA-AC-043` — Capture revision exhaustion terminal procedure | `T1.3`, `T2.2`, `T3.4`, `T7.1`, `T7.3` | `UInt32.max - 1/max`, reserved fact, no-policy, quiesce/rebuild transcript | pending |
 | `SA-AC-044` — Operational failure structurally contains only failure fact plus semantic diagnostic | `T3.1`, `T3.4`, `T5.1`, `T9.1` | Positive API/layout and negative construction/generated-storage fixtures | pending |
-| `SA-AC-045` — Exact SPEC-015 workload/preset/report equality | `T4.3`, `T6.1`-`T6.5`, `T7.4` | Descriptor, generated manifest, limits, assembly, extent/region/bounds comparison | pending |
+| `SA-AC-045` — Exact SPEC-015 workload/preset/report equality | `T4.3`, `T6.1`-`T6.5`, `T6.7`, `T6.8`, `T7.4` | Descriptor, generated manifest, limits, assembly, extent/region/bounds comparison | pending |
 
 ## Milestones and Tasks
 
@@ -701,6 +701,29 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       all nine required facility stages independently, records zero side
       effects, and proves later stages are not accessed. Evidence is in
       `Tests/ContractFixtures/SPEC001/Evidence/milestone-6/source-and-facility-substitution.md`.
+- [ ] `T6.7` — Replace the Raspberry Pi proof-only executable path with the
+      production target-host composition required by SPEC-001. Keep the
+      portable Presentation unchanged; compose the accepted Dynamic runtime,
+      240 x 240 / 240 x 16 RGB565 endpoint, Linux framebuffer submission,
+      normalized PiScreen input, clock/scheduler, application owners, pacing,
+      activation, and teardown at the executable boundary. Add hardware-free
+      device-adapter fixtures for format/stride/extent validation, partial
+      initialization cleanup, normalized input provenance and calibration,
+      six-action routing, stale-event rejection, frame offer/drain behavior,
+      and exact owner cardinality. The ARMv6 build must retain the existing
+      ABI/resource checks and must not access or deploy to a remote target.
+- [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
+      selected, replace the preset-only firmware entry with the production
+      Static target-host composition. Keep the portable Presentation
+      unchanged; compose the generated Static root, exact 480 x 4 RGB565
+      one-slot endpoint, synchronous borrowed display submission, normalized
+      input, clock/scheduler, application owners, watchdog-aware pacing,
+      activation, and teardown at the firmware boundary. Add hardware-free
+      HAL fixtures for initialization/cleanup, payload lifetime, six-action
+      routing, stale-event rejection, display/input failure mapping, and exact
+      storage/resource accounting. The checked build must preserve the VFP
+      ABI, zero-heap, no-full-framebuffer, RAM/flash, and forbidden-symbol
+      gates and must not flash a board.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 
@@ -804,7 +827,8 @@ for a different criterion. Each group records the exact revision, artifact
 hash, target identity, commands, transports, raw traces, measurements, and
 teardown result needed by every consuming report.
 
-1. **Raspberry Pi / PiScreen group:** after SPEC-003 `T5.4` and `T5.5` pass,
+1. **Raspberry Pi / PiScreen group:** after SPEC-003 `T5.4` and `T5.5` pass
+   and SPEC-001 `T6.7` supplies the production display/input-capable artifact,
    select one Raspberry Pi 1 and obtain a separate explicit request authorizing
    deployment and connected execution. Run the repository Pi doctor, verify
    the exact `T6.4` artifact and hard-float ARMv6 attributes, require the remote
@@ -812,7 +836,8 @@ teardown result needed by every consuming report.
    run for SPEC-001 `T8.1`, SPEC-003 `T6.2`, the Raspberry Pi portion of
    SPEC-011 `T9.3`, and SPEC-015's connected PiScreen gate. A service restart
    remains separately unauthorized unless the same request names it.
-2. **nRF52840 TFT/input group:** obtain a separate explicit request authorizing
+2. **nRF52840 TFT/input group:** after SPEC-001 `T6.8` supplies the production
+   display/input-capable firmware, obtain a separate explicit request authorizing
    the connected-board change. Run the repository nRF doctor, rebuild and
    inspect the exact `T6.5` firmware, reverify ARMv7E-M and VFP hard-float
    attributes, then flash only `nrf52840dk/nrf52840` through the checked-in
