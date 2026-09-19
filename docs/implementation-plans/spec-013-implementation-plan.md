@@ -480,7 +480,7 @@ ready for independent review.
       configuration only through their approved contracts. Keep numeric
       capacities, policy, facilities, and connected hardware outside Runtime
       Core.
-- [ ] `T8.3` — Run `scripts/format-swift.sh`, focused unit suites, SPEC-013's
+- [x] `T8.3` — Run `scripts/format-swift.sh`, focused unit suites, SPEC-013's
       four exact driver modes, dependency/governance checks, and the repository
       local gate. Preserve stable reports under `Tests/ContractFixtures/SPEC013/Evidence/`.
 - [ ] `T8.4` — Create `docs/conformance/spec-013-conformance.md`, map every RP
@@ -973,6 +973,14 @@ approved seams. Focused pipeline, endpoint, preset, and equal-profile tests
 pass. Evidence is in
 `Tests/ContractFixtures/SPEC013/Evidence/milestone-8/downstream-integration.md`.
 T8.3 is next.
+
+`T8.3` is complete. Formatting, focused suites, all four exact profile modes,
+dependency/governance checks, and the complete hardware-free repository gate
+pass. Same-input report repetition now verifies and reuses the immutable
+report rather than conflicting with nondeterministic timing samples. Evidence
+is in
+`Tests/ContractFixtures/SPEC013/Evidence/milestone-8/repository-profile-gates.md`.
+T8.4 is next.
 
 Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
