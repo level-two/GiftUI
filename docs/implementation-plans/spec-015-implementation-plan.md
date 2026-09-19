@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-14
+updated: 2026-09-19
 related_design_notes:
   - ../implementation-designs/spec-015-generated-workload-and-presets.md
   - ../implementation-designs/spec-015-wake-and-pacing.md
@@ -579,7 +579,7 @@ connected-hardware evidence is explicit rather than implied.
       failing row; and writes nothing outside `.build/spec-015/`. Register it
       in the repository test gate only after its prerequisites are available
       and its output is deterministic.
-- [ ] `T7.3` — Run the maintained documentation checks, Swift formatter before
+- [x] `T7.3` — Run the maintained documentation checks, Swift formatter before
       the repository test gate, focused unit suites, each SPEC-015 profile,
       `scripts/test.sh`, clean source/import/dependency scans, and deterministic
       evidence verification. Record compiler, optimization, target triple,
@@ -883,3 +883,10 @@ compile-surface, and focused test gates before its profile-specific build and
 inspection. Immutable reports retain the full command log and keep connected
 operations false. Evidence is in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-7/four-profile-driver.md`.
+
+`T7.3` is complete. The maintained formatter, governance/documentation checks,
+focused suites, all four SPEC-015 modes, source/import/dependency scans, and
+the complete hardware-free repository matrix pass deterministically. Evidence
+is in
+`Tests/ContractFixtures/SPEC015/Evidence/milestone-7/repository-gates.md`.
+T7.4 is next.
