@@ -730,11 +730,16 @@ and required performance/resource measurement has a reproducible disposition.
       `BoundedText`, failure values, revision, and visible error state.
       Evidence is in
       `Tests/ContractFixtures/SPEC001/Evidence/milestone-7/diagnostic-profile-equivalence.md`.
-- [ ] `T7.3` — Run the capture revision boundary independently for transition
+- [x] `T7.3` — Run the capture revision boundary independently for transition
       processing and Clear. Prove success at `UInt32.max - 1`, rejection before
       mutation at `UInt32.max`, exactly one normalized reserved terminal fact,
       no ordinary failed-state callback, no residual policy, full quiescence,
       and fresh-graph-only recovery.
+      **Completed:** transition processing and Clear each succeed from
+      `UInt32.max - 1` to `UInt32.max`, then reject before mutation through
+      one reserved terminal fact with no ordinary failure callback or policy
+      call. Evidence is in
+      `Tests/ContractFixtures/SPEC001/Evidence/milestone-7/revision-exhaustion.md`.
 - [ ] `T7.4` — Run 80 events/second for 30 seconds with four frames/second and
       the 28/32/33 admission corpus in the executable macOS profiles and in
       the shared host-native semantic fixture configured with each Pi/nRF

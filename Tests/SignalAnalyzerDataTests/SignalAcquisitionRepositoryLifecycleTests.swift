@@ -127,6 +127,38 @@ struct SignalAcquisitionRepositoryLifecycleTests {
         #expect(captures.publications.count == publicationCount)
     }
 
+    @Test("transition succeeds at max minus one then rejects before mutation at max")
+    func transitionRevisionBoundary() throws {
+        let source = LifecycleSource()
+        let repository = DefaultSignalAcquisitionRepository(
+            source: source, initialRevision: UInt32.max - 1)
+        let captures = LifecycleCaptureSink(outcome: .accepted(sequence: 1))
+        let states = LifecycleStateSink()
+        repository.startObservingCapture(sink: captures)
+        repository.startObservingAcquisitionState(sink: states)
+        try repository.start()
+        let stateCount = states.states.count
+
+        source.emit(1)
+        #expect(repository.captureRevision == .max)
+        #expect(repository.currentCapture.transitions.count == 1)
+        guard case .mutation(.max, _) = captures.publications.last else {
+            Issue.record("expected successful max revision mutation")
+            return
+        }
+
+        source.emit(2)
+        #expect(repository.captureRevision == .max)
+        #expect(repository.currentCapture.transitions.count == 1)
+        #expect(states.states.count == stateCount)
+        #expect(source.stopCount == 1)
+        guard case .terminalFailure(.captureRevisionExhausted, _) = captures.publications.last
+        else {
+            Issue.record("expected terminal failure after max revision")
+            return
+        }
+    }
+
     @Test("clear at maximum revision uses the same terminal procedure")
     func clearRevisionExhaustion() {
         let source = LifecycleSource()
@@ -140,6 +172,33 @@ struct SignalAcquisitionRepositoryLifecycleTests {
         guard case .terminalFailure(.captureRevisionExhausted, _) = captures.publications.last
         else {
             Issue.record("expected terminal failure from Clear")
+            return
+        }
+    }
+
+    @Test("clear succeeds at max minus one then uses terminal procedure at max")
+    func clearRevisionBoundary() {
+        let source = LifecycleSource()
+        let repository = DefaultSignalAcquisitionRepository(
+            source: source, initialRevision: UInt32.max - 1)
+        let captures = LifecycleCaptureSink(outcome: .accepted(sequence: 1))
+        repository.startObservingCapture(sink: captures)
+
+        repository.clear()
+        #expect(repository.captureRevision == .max)
+        guard
+            case .mutation(.max, .reset(baseRevision: UInt32.max - 1, _)) =
+                captures.publications.last
+        else {
+            Issue.record("expected successful max revision reset")
+            return
+        }
+
+        repository.clear()
+        #expect(repository.captureRevision == .max)
+        guard case .terminalFailure(.captureRevisionExhausted, _) = captures.publications.last
+        else {
+            Issue.record("expected terminal failure after max revision reset")
             return
         }
     }

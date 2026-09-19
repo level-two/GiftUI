@@ -71,6 +71,40 @@ struct SignalAnalyzerPresentationAdmissionAdapterTests {
         #expect(repository.stateStops == 1)
     }
 
+    @Test("terminal revision failure admits exactly one reserved fact and invokes no policy")
+    func terminalRevisionFailure() {
+        let repository = AdapterRepository()
+        let admission = AdapterAdmission(outcomes: [
+            .accepted(sequence: 1), .accepted(sequence: 2), .accepted(sequence: 9),
+        ])
+        let factory = AdapterFailureFactory()
+        let adapter = SignalAnalyzerPresentationAdmissionAdapter(
+            observeCapture: ObserveSignalCaptureUseCase(repository: repository),
+            observeState: ObserveAcquisitionStateUseCase(repository: repository),
+            admission: admission,
+            failureFactory: factory
+        )
+        let diagnostic = SignalAnalyzerDiagnostic(
+            exactUTF8: Array("capture revision exhausted".utf8))!
+        #expect(adapter.startObserving() == .started(captureSequence: 1, stateSequence: 2))
+
+        let outcome = adapter.receive(
+            .terminalFailure(condition: .captureRevisionExhausted, diagnostic: diagnostic)
+        )
+
+        #expect(outcome == .accepted(sequence: 9))
+        #expect(admission.facts.count == 3)
+        guard case .operationalFailure(let failure) = admission.facts[2] else {
+            Issue.record("expected exactly one reserved terminal fact")
+            return
+        }
+        #expect(failure.diagnostic == diagnostic)
+        #expect(factory.repositoryCompletionCount == 1)
+        #expect(factory.policyCallCount == 0)
+        #expect(repository.captureStops == 1)
+        #expect(repository.stateStops == 1)
+    }
+
     private func makeAdapter(
         repository: AdapterRepository,
         admission: AdapterAdmission
@@ -117,7 +151,10 @@ private final class AdapterAdmission: SignalAnalyzerFactAdmission {
     }
 }
 
-private struct AdapterFailureFactory: SignalAnalyzerOperationalFailureFactory {
+private final class AdapterFailureFactory: SignalAnalyzerOperationalFailureFactory {
+    var repositoryCompletionCount = 0
+    var policyCallCount = 0
+
     func failure(
         for rejection: SignalSinkDeliveryRejection,
         context: SignalAnalyzerResidualPolicyContext
@@ -125,6 +162,30 @@ private struct AdapterFailureFactory: SignalAnalyzerOperationalFailureFactory {
         _ = rejection
         _ = context
         return failure(diagnostic: "admission rejected")
+    }
+
+    func completeAdmissionFailure(
+        _ failure: SignalAnalyzerOperationalFailure,
+        rejection: SignalSinkDeliveryRejection,
+        context: SignalAnalyzerResidualPolicyContext,
+        reservedOutcome: SignalSinkDeliveryOutcome
+    ) {
+        _ = failure
+        _ = rejection
+        _ = context
+        _ = reservedOutcome
+        policyCallCount += 1
+    }
+
+    func completeRepositoryFailure(
+        _ failure: SignalAnalyzerOperationalFailure,
+        condition: SignalAnalyzerRepositoryCondition,
+        reservedOutcome: SignalSinkDeliveryOutcome
+    ) {
+        _ = failure
+        _ = condition
+        _ = reservedOutcome
+        repositoryCompletionCount += 1
     }
 
     func failure(

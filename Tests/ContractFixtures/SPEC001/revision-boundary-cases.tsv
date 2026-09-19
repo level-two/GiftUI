@@ -1,0 +1,4 @@
+# schema_version=1
+# operation	initial_revision	first_result	first_revision	second_result	mutation_preserved	reserved_terminal_facts	ordinary_failed_callbacks	policy_calls	recovery
+transition	4294967294	accepted	4294967295	captureRevisionExhausted	true	1	0	0	fresh-graph-only
+clear	4294967294	accepted	4294967295	captureRevisionExhausted	true	1	0	0	fresh-graph-only
