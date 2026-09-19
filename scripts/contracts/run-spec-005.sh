@@ -85,6 +85,7 @@ declared_inputs() {
             "${SCRIPT_DIR}/generate-spec-005-profile-semantics.rb" \
             "${SCRIPT_DIR}/compare-spec-005-profile-semantics.rb" \
             "${SCRIPT_DIR}/check-spec-005-dependencies.rb" \
+            "${SCRIPT_DIR}/check-spec-005-downstream-integration.rb" \
             "${SCRIPT_DIR}/check-spec-005-boundaries.rb" \
             "${SCRIPT_DIR}/check-spec-005-surface.rb" \
             "${SCRIPT_DIR}/check-spec-005-canonical.rb" \
@@ -368,6 +369,9 @@ run_preflight() {
         <"${package_json}" >>"${log_path}" 2>&1
     record_command "${SCRIPT_DIR}/check-spec-005-dependencies.rb"
     "${SCRIPT_DIR}/check-spec-005-dependencies.rb" \
+        <"${package_json}" >>"${log_path}" 2>&1
+    record_command "${SCRIPT_DIR}/check-spec-005-downstream-integration.rb"
+    "${SCRIPT_DIR}/check-spec-005-downstream-integration.rb" \
         <"${package_json}" >>"${log_path}" 2>&1
     record_command "${SCRIPT_DIR}/check-spec-005-portable-source.rb"
     "${SCRIPT_DIR}/check-spec-005-portable-source.rb" >>"${log_path}" 2>&1

@@ -62,11 +62,46 @@ forbidden_text_resource_imports:
   - GiftUIOSRTOS
   - GiftUIHAL
   - GiftUIHardware
-reserved_consumers:
-  GiftUITextRasterProvider: pending
-  GiftUIBackend: pending
-  GiftUIPlatform: pending
-  GiftUIHost: pending
+reserved_consumers: {}
+downstream_integration:
+  fixture_only_consumers:
+    - GiftUITextResourceFailureAdapterFixture
+  direct_text_resource_consumers:
+    - GiftUIReferenceTextResources
+    - GiftUILayout
+    - GiftUIRenderCore
+    - GiftUIRasterCore
+    - GiftUIBackendIntegration
+    - GiftUIRenderLowering
+    - GiftUIDrawing
+    - GiftUIRuntimeCore
+    - GiftUIHostConfiguration
+  platform_roots:
+    - SignalAnalyzerHost
+    - SignalAnalyzerPresetHarness
+  evidence:
+    layout:
+      source: Sources/GiftUILayout/LayoutSemanticValidation.swift
+      checks:
+        - Tests/GiftUILayoutTests/LayoutTextTests.swift
+    render:
+      source: Sources/GiftUIRenderLowering/RenderPreflight.swift
+      checks:
+        - Tests/GiftUIRenderLoweringTests/RenderPreflightTests.swift
+    raster:
+      source: Sources/GiftUIRasterCore/RasterGlyphCoverage.swift
+      checks:
+        - Tests/GiftUIRasterCoreTests/RasterGlyphCoverageTests.swift
+    backend:
+      source: Sources/GiftUIBackendIntegration/RasterTextResourceValidation.swift
+      checks:
+        - Tests/GiftUIBackendIntegrationTests/RasterTextResourceValidationTests.swift
+    host:
+      source: Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift
+      checks:
+        - Tests/GiftUIHostConfigurationTests/HostValidatorProfileAndTextTests.swift
+        - Tests/GiftUIHostConfigurationTests/HostPresetBootstrapTests.swift
+        - Tests/GiftUIHostConfigurationTests/SignalAnalyzerPresetHostInstanceTests.swift
 identity_owners:
   - FontResourceID
   - FontInstanceID
