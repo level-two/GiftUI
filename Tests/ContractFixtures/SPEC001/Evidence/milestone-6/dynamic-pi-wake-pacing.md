@@ -13,6 +13,12 @@ cannot begin before the generated boundary, completion releases the active
 gate, and quiescence rejects later work. The callback does not enter the
 runtime or mutate the application synchronously.
 
+The pacing owner now services the production serialized input/fact coordinator
+directly. It maps no-work and boundary waits without entering an opportunity,
+begins one coordinator drain at the boundary, and completes pacing even when
+the coordinator reports a focused failure. The hardware-free fixture exercises
+that exact boundary and proves the pacing state is not left active.
+
 Reproduce with:
 
 ```sh
@@ -24,6 +30,12 @@ giftui_swiftpm \
     --cache-root "$PWD/.build/swiftpm-cache" \
     --disable-sandbox -- \
     test --filter dynamicPiWakePacingOwnerCoalescesFactAndInputIngress
+giftui_swiftpm \
+    --package-path "$PWD" \
+    --scratch-path "$PWD/.build" \
+    --cache-root "$PWD/.build/swiftpm-cache" \
+    --disable-sandbox -- \
+    test --filter dynamicPiPacingServicesTheSerializedCoordinatorAtFrameBoundary
 scripts/contracts/check-spec-001-harness.rb
 scripts/contracts/check-spec-001-boundaries.rb
 scripts/raspberry-pi/doctor.sh

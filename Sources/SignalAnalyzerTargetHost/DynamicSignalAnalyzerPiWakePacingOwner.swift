@@ -1,5 +1,16 @@
+import GiftUIDisplayCore
 import GiftUIExecution
 import GiftUIHostConfiguration
+
+package enum DynamicSignalAnalyzerPiPacedOpportunityResult: Equatable, Sendable {
+    case noWork
+    case wait(untilMicroseconds: UInt64)
+    case completed(
+        reasons: ExecutionWakeReasons,
+        result: DynamicSignalAnalyzerPiInputOpportunityResult
+    )
+    case rejected(HostWakePacingError)
+}
 
 /// Owns the single pacing state shared by Pi ingress and the serialized host loop.
 package final class DynamicSignalAnalyzerPiWakePacingOwner {
@@ -52,6 +63,41 @@ package final class DynamicSignalAnalyzerPiWakePacingOwner {
         at timestampMicroseconds: UInt64
     ) -> HostWakePacingError? {
         controller.completeOpportunity(at: timestampMicroseconds)
+    }
+
+    package func service<Target>(
+        at timestampMicroseconds: UInt64,
+        coordinator: inout DynamicSignalAnalyzerPiInputCoordinator,
+        owner: inout DynamicSignalAnalyzerPiInitialPresentationOwner<Target>,
+        correlations: DynamicSignalAnalyzerPiCorrelationOwner
+    ) -> DynamicSignalAnalyzerPiPacedOpportunityResult
+    where Target: DisplayTarget {
+        switch controller.schedule(at: timestampMicroseconds) {
+        case .noWork:
+            return .noWork
+        case .wait(let boundary):
+            return .wait(untilMicroseconds: boundary)
+        case .invalid(let error):
+            return .rejected(error)
+        case .run:
+            break
+        }
+
+        let reasons: ExecutionWakeReasons
+        switch controller.beginOpportunity(at: timestampMicroseconds) {
+        case .began(let value):
+            reasons = value
+        case .rejected(let error):
+            return .rejected(error)
+        }
+        let result = coordinator.runOpportunity(
+            into: &owner,
+            correlations: correlations
+        )
+        if let error = controller.completeOpportunity(at: timestampMicroseconds) {
+            return .rejected(error)
+        }
+        return .completed(reasons: reasons, result: result)
     }
 
     package func quiesce() -> HostWakePacingError? {

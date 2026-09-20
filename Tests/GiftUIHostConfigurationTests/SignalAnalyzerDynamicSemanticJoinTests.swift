@@ -769,6 +769,80 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(pacing.recordQueuedInput(at: boundary) == .failure(.unavailable))
 }
 
+@Test func dynamicPiPacingServicesTheSerializedCoordinatorAtFrameBoundary() throws {
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    let pacing = DynamicSignalAnalyzerPiWakePacingOwner(
+        policy: preset.pacing,
+        initialFrameOriginMicroseconds: 0
+    )
+    let correlations = DynamicSignalAnalyzerPiCorrelationOwner()
+    let initial = try #require(correlations.reserveInitialPresentation())
+    var coordinator = DynamicSignalAnalyzerPiInputCoordinator(
+        source: InputSourceID(rawValue: 31),
+        capacity: preset.runtimeLimits.execution.maximumInputEvents,
+        context: ExecutionContext(
+            cycle: initial.provenance.cycle,
+            semanticRevision: initial.provenance.semanticRevision,
+            candidateFrame: initial.provenance.candidateFrame,
+            phase: .idle
+        )
+    )
+    let layout = try #require(
+        PiScreenFramebufferLayout(
+            width: 480,
+            height: 320,
+            bitsPerPixel: 16,
+            bytesPerRow: 960,
+            mappedBytes: 307_200
+        )
+    )
+    let target = try #require(
+        PiScreenDisplayTarget(sink: EndpointFramebufferSink(), layout: layout)
+    )
+    var owner = try #require(
+        DynamicSignalAnalyzerPiInitialPresentationOwner(
+            target: target,
+            limits: preset.runtimeLimits,
+            maximumRecordedTraversalIdentities: 203,
+            effectivePresentation: dynamicPiEffectivePresentation(preset: preset),
+            provenance: initial.provenance,
+            presentationRevision: initial.presentationRevision
+        )
+    )
+
+    #expect(pacing.recordQueuedInput(at: 1) == .success(.requestWake))
+    let boundary = UInt64(preset.pacing.minimumFrameIntervalMicroseconds)
+    #expect(
+        pacing.service(
+            at: boundary - 1,
+            coordinator: &coordinator,
+            owner: &owner,
+            correlations: correlations
+        ) == .wait(untilMicroseconds: boundary)
+    )
+    #expect(
+        pacing.service(
+            at: boundary,
+            coordinator: &coordinator,
+            owner: &owner,
+            correlations: correlations
+        )
+            == .completed(
+                reasons: .admittedWork,
+                result: .failure(.mutationUnavailable)
+            )
+    )
+    #expect(!pacing.opportunityIsActive)
+    #expect(
+        pacing.service(
+            at: boundary,
+            coordinator: &coordinator,
+            owner: &owner,
+            correlations: correlations
+        ) == .noWork
+    )
+}
+
 @Test func dynamicPiCorrelationOwnerReservesPublicationOnlyForChangedCycles() throws {
     let correlations = DynamicSignalAnalyzerPiCorrelationOwner()
     let initial = try #require(correlations.reserveInitialPresentation())
