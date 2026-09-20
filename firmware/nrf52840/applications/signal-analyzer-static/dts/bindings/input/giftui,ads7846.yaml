@@ -1,0 +1,15 @@
+title: GiftUI project-local ADS7846 resistive touch controller
+
+description: |
+  Hardware bring-up binding for the ADS7846-compatible controller on the
+  GiftUI PiScreen. The application owns sampling, filtering, and calibration.
+
+compatible: "giftui,ads7846"
+
+include: spi-device.yaml
+
+properties:
+  penirq-gpios:
+    type: phandle-array
+    required: true
+    description: Active-low pen interrupt input.

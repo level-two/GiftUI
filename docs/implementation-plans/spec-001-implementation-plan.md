@@ -740,6 +740,17 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       storage/resource accounting. The checked build must preserve the VFP
       ABI, zero-heap, no-full-framebuffer, RAM/flash, and forbidden-symbol
       gates and must not flash a board.
+      **In progress:** the concrete assembly is now the
+      `nrf52840dk/nrf52840` plus 480 x 320 ILI9486/ADS7846 PiScreen. The first
+      hardware-free slice installs application-local Devicetree bindings and
+      pin/frequency selection, safe-state display and touch drivers, bounded
+      480 x 4 / 3,840-byte RGB565 submission, raw touch acquisition, and
+      saturating fault accounting. The exact pristine firmware build retains
+      all driver entry points and passes ARMv7E-M hard-float, zero-heap,
+      RAM/flash, and required-symbol gates. Static host-loop composition,
+      action normalization, connected stack measurement, and flashing remain
+      open; see the
+      [TFT/input adapter evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md).
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

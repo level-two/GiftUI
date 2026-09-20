@@ -10,7 +10,15 @@ set(CMAKE_Swift_COMPILATION_MODE wholemodule)
 set(CMAKE_Swift_COMPILER_WORKS TRUE CACHE BOOL "Embedded Swift cross-compiler" FORCE)
 project(GiftUISignalAnalyzerStatic LANGUAGES C Swift)
 
-target_sources(app PRIVATE src/main.c src/storage.c src/stubs.c)
+target_sources(app PRIVATE
+    src/ads7846.c
+    src/fault.c
+    src/ili9486.c
+    src/main.c
+    src/storage.c
+    src/stubs.c
+)
+target_include_directories(app PRIVATE include)
 add_library(app_swift OBJECT src/StaticPreset.swift)
 add_dependencies(app_swift syscall_list_h_target)
 
