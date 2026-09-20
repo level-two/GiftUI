@@ -333,6 +333,14 @@ the sealed facts remain for a later serialized mutation opportunity. Scoped
 teardown stops observation before quiescing and discarding fact storage, then
 quiesces input and removes the root.
 
+That later opportunity is now explicit on the scoped owner. It seals the
+active admission batch, enters the Static root's observable mutation phase,
+applies each sealed fact in sequence through the bound model, and restores the
+idle phase on every return path. Its bounded result distinguishes applied work,
+fact rejection, and an unavailable model, while the applied summary carries
+the exact `UInt16` fact count and aggregate changed state. An empty later
+opportunity is a successful zero-fact application rather than replay.
+
 The firmware input ABI now has its first address-stable target-owned lifetime:
 one fixed global storage value binds the input source once and is mutated in
 place by every C bridge call. This removes per-call coordinator copies while

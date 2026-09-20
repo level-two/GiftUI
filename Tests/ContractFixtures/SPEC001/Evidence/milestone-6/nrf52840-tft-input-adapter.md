@@ -376,6 +376,15 @@ host mechanism evidence: the aggregate and observation adapter are not yet in
 the firmware whole-module source, firmware hashes and resource totals remain
 unchanged, and no board was flashed.
 
+`applyRepositoryFactsAtOpportunity` now owns the next Static mutation
+boundary. It seals the admitted bootstrap batch, applies the snapshot and
+acquisition-state facts through the bound model while the observable root is
+in its mutation phase, and restores the idle phase afterward. The fixture
+proves the callback leaves the model idle, the later opportunity applies two
+facts and changes the model to running, the root becomes dirty, and a repeated
+opportunity applies zero facts without replay. This is still host mechanism
+evidence and does not alter the firmware hashes or resource record.
+
 ## Static interaction and observable mutation
 
 `StaticSignalAnalyzerNRFApplicationInputOwner` is the production typed owner of

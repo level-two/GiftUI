@@ -154,23 +154,23 @@ private final class StaticNRFApplicationStorageRepository:
         #expect(repositoryProbe.captureObservationStartCount == 1)
         #expect(repositoryProbe.stateObservationStartCount == 1)
         #expect(owner.withModel { $0.state.acquisitionState } == .idle)
-        let factsSealed = owner.sealRepositoryFacts()
-        #expect(factsSealed)
-        if let snapshot = owner.takeNextSealedRepositoryFact() {
-            #expect(snapshot.0 == 1)
-            #expect(snapshot.1 == .snapshot)
-            #expect(snapshot.2 == .captureSnapshot(revision: 0, capture: .empty()))
-        } else {
-            Issue.record("Static repository capture callback was not deferred")
+        let initialFactApplication = owner.applyRepositoryFactsAtOpportunity()
+        guard case .applied(let initialFactSummary) = initialFactApplication else {
+            Issue.record("Static repository facts were not applied")
+            return
         }
-        if let state = owner.takeNextSealedRepositoryFact() {
-            #expect(state.0 == 2)
-            #expect(state.1 == .compact)
-            #expect(state.2 == .acquisitionState(.running))
-        } else {
-            Issue.record("Static repository state callback was not deferred")
+        #expect(initialFactSummary.factCount == 2)
+        #expect(initialFactSummary.changed)
+        #expect(owner.withModel { $0.state.acquisitionState } == .running)
+        let repositoryFactsDirtiedRoot = owner.rootIsDirty
+        #expect(repositoryFactsDirtiedRoot)
+        let repeatedFactApplication = owner.applyRepositoryFactsAtOpportunity()
+        guard case .applied(let repeatedFactSummary) = repeatedFactApplication else {
+            Issue.record("Empty Static repository opportunity was unavailable")
+            return
         }
-        #expect(owner.takeNextSealedRepositoryFact() == nil)
+        #expect(repeatedFactSummary.factCount == 0)
+        #expect(!repeatedFactSummary.changed)
         owner.withModel { model in
             model.startTapped()
             model.stopTapped()

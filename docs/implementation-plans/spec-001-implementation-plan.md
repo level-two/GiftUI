@@ -957,6 +957,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       callbacks terminate at sequenced fact admission and do not mutate the
       bound model synchronously. Scope teardown stops both observations,
       quiesces and discards admitted work, and only then detaches the root.
+      A later explicit Static application opportunity now seals the admitted
+      batch, applies every fact once through `SignalAnalyzerViewModel.apply`
+      under observable mutation ownership, and returns the bounded fact count
+      plus aggregate changed state. Repeating the opportunity without new
+      admission applies zero facts.
       Building this owner into the firmware's complete generated Static
       presentation composition remains open. The firmware
       now compiles the exact shared input values,

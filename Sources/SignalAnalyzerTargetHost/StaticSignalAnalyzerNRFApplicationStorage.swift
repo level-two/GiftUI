@@ -13,6 +13,17 @@ package enum StaticSignalAnalyzerNRFRootBindingOutcome: Equatable, Sendable {
     case rejected(ObservableStateError)
 }
 
+package struct StaticSignalAnalyzerNRFFactApplicationSummary: Equatable, Sendable {
+    package let factCount: UInt16
+    package let changed: Bool
+}
+
+package enum StaticSignalAnalyzerNRFFactApplicationResult: Equatable, Sendable {
+    case applied(StaticSignalAnalyzerNRFFactApplicationSummary)
+    case rejected(SignalAnalyzerRuntimeCondition)
+    case unavailable
+}
+
 /// Caller-owned, address-stable storage for the generated Static nRF
 /// application join. Construction remains inert and requires the exact
 /// validated assembly report.
@@ -172,14 +183,47 @@ package struct StaticSignalAnalyzerNRFApplicationOwner: ~Copyable {
         return admissionAdapter.startObserving()
     }
 
-    package func sealRepositoryFacts() -> Bool {
-        StaticSignalAnalyzerHostFactAdmission(storage: factAdmission).seal()
-    }
-
-    package func takeNextSealedRepositoryFact()
-        -> (UInt32, HostSequencedFactKind, SignalAnalyzerPresentationFact)?
+    package func applyRepositoryFactsAtOpportunity()
+        -> StaticSignalAnalyzerNRFFactApplicationResult
     {
-        StaticSignalAnalyzerHostFactAdmission(storage: factAdmission).takeNextSealed()
+        guard root.pointee.isActive else { return .unavailable }
+        let admission = StaticSignalAnalyzerHostFactAdmission(storage: factAdmission)
+        guard admission.seal() else {
+            return .applied(
+                StaticSignalAnalyzerNRFFactApplicationSummary(
+                    factCount: 0,
+                    changed: false
+                )
+            )
+        }
+
+        root.pointee.setExecutionPhase(.mutating)
+        defer { root.pointee.setExecutionPhase(.idle) }
+
+        var factCount: UInt16 = 0
+        var changed = false
+        while let (_, _, fact) = admission.takeNextSealed() {
+            let nextCount = factCount.addingReportingOverflow(1)
+            guard !nextCount.overflow else { return .unavailable }
+            factCount = nextCount.partialValue
+            guard
+                let application = root.pointee.withModel({ model in
+                    model.apply(fact)
+                })
+            else { return .unavailable }
+            switch application {
+            case .applied(let factChanged):
+                changed = changed || factChanged
+            case .rejected(let condition):
+                return .rejected(condition)
+            }
+        }
+        return .applied(
+            StaticSignalAnalyzerNRFFactApplicationSummary(
+                factCount: factCount,
+                changed: changed
+            )
+        )
     }
 
     package mutating func withInteraction<Result>(
