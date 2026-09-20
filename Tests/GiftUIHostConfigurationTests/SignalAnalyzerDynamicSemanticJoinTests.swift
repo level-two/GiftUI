@@ -7,13 +7,25 @@ import SignalAnalyzerPresentation
 import Testing
 
 private final class SemanticJoinRepository: SignalAcquisitionRepository {
+    let failsStart: Bool
+
+    init(failsStart: Bool = false) {
+        self.failsStart = failsStart
+    }
+
     func startObservingCapture(sink _: some SignalCaptureSink) {}
     func stopObservingCapture() {}
     func startObservingAcquisitionState(sink _: some AcquisitionStateSink) {}
     func stopObservingAcquisitionState() {}
-    func start() throws {}
+    func start() throws {
+        if failsStart { throw SemanticJoinFailure.expected }
+    }
     func stop() {}
     func clear() {}
+}
+
+private enum SemanticJoinFailure: Error {
+    case expected
 }
 
 @Test func signalAnalyzerDynamicSemanticJoinMeasuresRealHierarchy() throws {
@@ -68,7 +80,55 @@ private final class SemanticJoinRepository: SignalAcquisitionRepository {
     #expect(root.isActive)
 }
 
-@Test func signalAnalyzerDynamicSemanticJoinRejectsApprovedPresetDepth() throws {
+@Test func signalAnalyzerDynamicSemanticJoinMeasuresDiagnosticHierarchy() throws {
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    let measurementLimits = SemanticExpansionLimits(
+        maximumDepth: 64,
+        maximumSemanticNodes: 512,
+        maximumBodyEvaluations: 512,
+        maximumModifierApplications: 512,
+        maximumActionOccurrences: 32
+    )!
+    let model = makeSemanticJoinModel(failsStart: true)
+    model.startTapped()
+    let root = DynamicObservableRootAdapter<
+        SignalAnalyzerViewModel,
+        DynamicSemanticIdentity
+    >(capacity: preset.runtimeLimits.observableState.maximumLocations)
+    var reconciler = DynamicObservableStateReconciler(root: root)
+    var binding = ObservableStateBindingDecorator(reconciler: reconciler)
+    var workspace = DynamicSemanticExpansionWorkspace(
+        maximumPathComponents: 64,
+        maximumIdentities: 2048
+    )
+    var storage = DynamicSemanticHostStorage(
+        limits: measurementLimits,
+        canvasCapacity: preset.runtimeLimits.drawing.maximumCanvasOccurrences
+    )
+
+    #expect(reconciler.beginCandidate() == .success(.candidateStarted))
+    let result = expandSemanticTreeWithStateBinding(
+        SignalAnalyzerView(viewModel: model),
+        limits: measurementLimits,
+        workspace: &workspace,
+        sink: &storage,
+        stateBinding: &binding
+    )
+    guard case .success(let summary) = result else {
+        Issue.record("diagnostic Signal Analyzer expansion failed: \(result)")
+        return
+    }
+    #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
+    #expect(summary.semanticNodeCount == 48)
+    #expect(summary.bodyEvaluationCount == 14)
+    #expect(summary.modifierApplicationCount == 5)
+    #expect(summary.actionOccurrenceCount == 6)
+    #expect(summary.maximumObservedDepth == 26)
+    #expect(storage.semanticScopeCount == 81)
+    #expect(storage.canvasOccurrenceCount == 5)
+}
+
+@Test func signalAnalyzerDynamicSemanticJoinRejectsLegacyPresetDepth() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     let model = makeSemanticJoinModel()
     let root = DynamicObservableRootAdapter<
@@ -101,8 +161,8 @@ private final class SemanticJoinRepository: SignalAcquisitionRepository {
     #expect(!root.isActive)
 }
 
-private func makeSemanticJoinModel() -> SignalAnalyzerViewModel {
-    let repository = SemanticJoinRepository()
+private func makeSemanticJoinModel(failsStart: Bool = false) -> SignalAnalyzerViewModel {
+    let repository = SemanticJoinRepository(failsStart: failsStart)
     return SignalAnalyzerViewModel(
         startAcquisition: StartSignalAcquisitionUseCase(repository: repository),
         stopAcquisition: StopSignalAcquisitionUseCase(repository: repository),

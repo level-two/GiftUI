@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-09-14
+updated: 2026-09-20
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -79,6 +79,14 @@ target_milestone: MVP
 >
 > Implementation began on 2026-09-13 through the approved implementation
 > plan. This transition does not change the contract or imply conformance.
+>
+> On 2026-09-20, the maintainer explicitly approved and reapproved the
+> SPEC-013/SPEC-015 semantic-capacity correction after production traversal of
+> the fixed SPEC-001 hierarchy. Schema 3 records semantic structural
+> occurrences separately from semantic nodes and uses the measured maximum
+> complete hierarchy: 48 semantic nodes, 14 body evaluations, 5 modifier
+> applications, 6 actions, depth 26, and 81 retained structural identities.
+> The amendment is authoritative and implementation remains in progress.
 
 ## Summary
 
@@ -380,6 +388,7 @@ package struct SignalAnalyzerHostWorkload: Equatable, Sendable {
     package let schemaVersion: UInt16
     package let requiredRuntimeLimits: RuntimeProfileLimits
     package let semanticNodeOccurrences: UInt16
+    package let semanticStructuralOccurrences: UInt16
     package let renderSemanticScopeOccurrences: UInt16
     package let layoutScopeOccurrences: UInt16
     package let maximumRenderTraversalDepth: UInt16
@@ -687,7 +696,7 @@ code is invalid. The root target is the one structurally owned
 the handler or model.
 
 Every first-party preset carries a `SignalAnalyzerHostWorkload` with
-`schemaVersion == 2`. Its `requiredRuntimeLimits` is the exact, complete
+`schemaVersion == 3`. Its `requiredRuntimeLimits` is the exact, complete
 `RuntimeProfileLimits` value derived before Swift compilation from one checked-
 in descriptor of the fixed portable hierarchy and application workload. The
 descriptor, generated manifest, and generated preset values are conformance
@@ -696,9 +705,11 @@ inputs and MUST be reviewable. Validation requires
 there is no independently chosen headroom and no omitted or defaulted
 `RuntimeProfileLimits` leaf.
 
-The generator counts every SPEC-006 semantic-node occurrence, every SPEC-008
-semantic render scope (including structural and modifier wrappers), every
-layout scope, the greatest active SPEC-008 semantic render traversal depth,
+The generator counts every SPEC-006 semantic-node occurrence and every
+retained semantic structural identity across both the absent and present
+conditional diagnostic shapes. It separately counts every SPEC-008 semantic
+render scope (including structural and modifier wrappers), every layout scope,
+the greatest active SPEC-008 semantic render traversal depth,
 every render text line including empty lines, every positioned glyph, ordinary
 render operation, input event, semantic action, completion fact, Canvas
 occurrence, live Path element, snapshotted Drawing element, and static callable/
@@ -714,6 +725,15 @@ equal. A generated value at the required limit succeeds; the same fixture with
 any independently varied leaf below its requirement fails at `.workload` with
 `.insufficientWorkloadCapacity`.
 
+For the approved fixed hierarchy, every preset uses these exact semantic
+values: 48 semantic nodes, 81 retained structural identities, 14 body
+evaluations, 5 modifier applications, 6 action occurrences, and maximum depth
+26. The structural maximum is the diagnostic-present shape; the diagnostic-
+absent shape measures 80. Dynamic semantic candidate and published byte
+projections are each 2,592 bytes (81 records at 32 bytes). Static projections
+are each 1,944 bytes (81 records at 24 bytes). These are SPEC-013 profile-store
+projections and do not alter SPEC-006 counting meaning.
+
 The contained runtime limits MUST additionally satisfy these production
 relations:
 
@@ -723,6 +743,9 @@ relations:
 - Execution committed-action capacity is at least six and active input-source
   capacity equals one;
 - `workload.semanticActionsPerOpportunity` equals six;
+- `requiredRuntimeLimits.maximumSemanticStructuralOccurrences` equals
+  `workload.semanticStructuralOccurrences`, and concrete candidate and
+  published profile capacities equal that value;
 - `actionAndModel.maximumNonTransitionPublicationsPerAction` equals one;
 - Execution state-change-fact capacity is at least 34, covering the physically
   separate 1/32/1 fact stores in one sealed sequence namespace;
@@ -1114,10 +1137,10 @@ persistent configuration format. Static generation may specialize wiring;
 dynamic hosts may use bounded references and existentials. Both preserve the
 same values, ordering, outcomes, capacities, and portable Presentation.
 
-Schema-1 generated workload manifests are historical inputs and MUST be
-regenerated as schema 2 before compilation. Validation rejects any schema
-version other than 2; there is no runtime defaulting or migration path for the
-new render-workspace fields.
+Schema-1 and schema-2 generated workload manifests are historical inputs and
+MUST be regenerated as schema 3 before compilation. Validation rejects any
+other schema version; there is no runtime defaulting or migration path for the
+render-workspace or semantic-structural fields.
 
 Legacy platform-owned stacks, ambient lookup, direct sink-to-ViewModel
 mutation, closure-retaining portable Button actions, mutable capability
@@ -1136,11 +1159,12 @@ Required tests include:
 - every validation stage success and each missing, duplicate, out-of-order,
   truncated, cyclic, upward, unknown-bit, malformed, mismatched, overflowing,
   and insufficient input, including a proof that no later projection is read;
-- generation of all four schema-2 workload manifests from the checked-in
+- generation of all four schema-3 workload manifests from the checked-in
   hierarchy descriptor, exact equality for every `RuntimeProfileLimits` leaf,
   success at each requirement, and failure when each leaf is independently
   lowered or made unequal; this includes independent coverage of all four
-  render-workspace counts and exact wrapper/modifier traversal-depth fixtures;
+  render-workspace counts, semantic structural occurrences, and exact
+  wrapper/modifier traversal-depth fixtures;
   a leaf whose lower value is not constructible must instead prove that its
   owning initializer rejects that value;
 - all permutations of capability contribution order and exact effective-value
@@ -1190,7 +1214,7 @@ software, transport, and observed architecture separately.
   dependency graph, `GiftUI` as the sole portable import, and no platform-owned
   semantic stack or ambient lookup.
 - [ ] **HC-004:** Each preset consumes one exact successful SPEC-013 audit,
-  requires equality with its complete schema-2 workload-derived limits, and
+  requires equality with its complete schema-3 workload-derived limits, and
   rejects every independently mismatched profile, limit leaf, storage, static
   Canvas table, or byte total.
 - [ ] **HC-005:** The five-Canvas workload proves the 202 live-point, 12 live-
@@ -1260,7 +1284,7 @@ validation.
 
 ## Open Issues
 
-No unresolved architectural or contractual issue remains. The schema-2
+No unresolved architectural or contractual issue remains. The schema-3
 render-workspace additions and coordinated SPEC-013 amendment were explicitly
 reapproved on 2026-09-12. Approved SPEC-001 preserves this contract's
 fact-burst, failure normalization, deterministic mock trace, diagnostic, and

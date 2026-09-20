@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-27
-updated: 2026-09-12
+updated: 2026-09-20
 proposal:
   - PROPOSAL-003
   - PROPOSAL-005
@@ -73,6 +73,13 @@ target_milestone: MVP
 > schema and storage audit. On 2026-09-12 the maintainer also explicitly
 > approved correcting the compiler-invalid `borrowing var` spellings to
 > ordinary read-only properties. This amended contract remains authoritative.
+>
+> On 2026-09-20, exact traversal of the approved SPEC-001 hierarchy exposed
+> that structural semantic identities are not bounded by SPEC-006 semantic-
+> node count. The maintainer explicitly approved and reapproved this SPEC-013
+> amendment together with SPEC-015. The profile contract now carries and
+> audits an independent semantic-structural occurrence limit; implementation
+> remains in progress.
 
 ## Summary
 
@@ -287,6 +294,7 @@ package enum RuntimeProfileKind: UInt8, Equatable, Sendable {
 
 package struct RuntimeProfileLimits: Equatable, Sendable {
     package let semantic: SemanticExpansionLimits
+    package let maximumSemanticStructuralOccurrences: UInt16
     package let layout: LayoutLimits
     package let render: RenderLimits
     package let renderWorkspace: RenderWorkspaceCapacity
@@ -300,6 +308,7 @@ package struct RuntimeProfileLimits: Equatable, Sendable {
 
     package init?(
         semantic: SemanticExpansionLimits,
+        maximumSemanticStructuralOccurrences: UInt16,
         layout: LayoutLimits,
         render: RenderLimits,
         renderWorkspace: RenderWorkspaceCapacity,
@@ -389,6 +398,8 @@ where OwnerFailure == RuntimeOwnerFailure
 `RuntimeProfileLimits.init` returns `nil` unless every contained value is
 valid and these relations hold:
 
+- `maximumSemanticStructuralOccurrences` is nonzero and is at least
+  `semantic.maximumSemanticNodes`;
 - `semantic.maximumActionOccurrences <= interaction.maximumActions`;
 - `interaction.maximumActions <= execution.maximumCommittedActions`;
 - `interaction.maximumHitRegions <= interaction.maximumActions`;
@@ -419,6 +430,19 @@ structural wrappers and modifier scopes that those two limits intentionally do
 not count. Profile storage MUST expose a render workspace whose
 `structuralCapacity` equals `limits.renderWorkspace`; inaccessible physical
 headroom does not change the configured value.
+
+`maximumSemanticStructuralOccurrences` is the complete profile-storage bound
+for SPEC-006 structural identities, including custom-body, fixed-child,
+conditional, optional-presence, and declaration-role path occurrences retained
+by the candidate or published semantic representation. It is independent of
+`semantic.maximumSemanticNodes`, which counts only semantic primitive/action
+occurrences, and independent of SPEC-008 render semantic scopes. Candidate and
+published storage expose this concrete capacity as
+`semanticCandidateStructuralOccurrences` and
+`semanticPublishedStructuralOccurrences` in `RuntimeStorageCapacities`;
+validation rejects a missing or smaller value before client traversal. Hosts
+derive the production value from the greatest complete portable hierarchy
+shape admitted by their approved workload.
 
 Validation compares concrete storage capacities to every contained limit and
 performs checked byte summation. A missing or smaller store fails; validation
@@ -693,12 +717,13 @@ values are stable only within this contract. Dynamic and static profiles must
 compile from the same portable application source; profile-specific imports
 in Presentation are nonconforming.
 
-The render-workspace amendment is a source-breaking package-SPI change:
-existing `RuntimeProfileLimits` construction and profile storage conformances
-MUST supply the explicit `renderWorkspace` value and capacity equality before
-they can compile or validate against the amended contract. No default is
-permitted because the semantic-scope and traversal-depth fields cannot be
-derived from existing SPEC-006 limits.
+The render-workspace and semantic-structural amendments are source-breaking
+package-SPI changes. Existing `RuntimeProfileLimits` construction and profile
+storage conformances MUST supply the explicit `renderWorkspace`,
+`maximumSemanticStructuralOccurrences`, and matching candidate/published
+structural capacities before they can compile or validate against the amended
+contract. No default is permitted because neither render structure nor
+retained semantic structure can be derived from existing SPEC-006 limits.
 
 Adding a third profile, asynchronous semantics, replayable frames, or a new
 public selection mechanism requires normal lifecycle review. Internal storage
@@ -711,6 +736,8 @@ The checked-in shared suite MUST instantiate the same fixture scripts against
 both profiles with identical artificial limits. It requires:
 
 - exact-limit and first-excess tests for every contained limit;
+- independent exact-limit and first-excess tests for candidate and published
+  semantic structural-occurrence capacity;
 - independent exact-limit and first-excess tests for all four render-workspace
   fields, including structural wrappers, modifier depth, and empty text lines;
 - startup audit missing/small/overflow/incompatible-table tests;
@@ -759,7 +786,9 @@ assembled configurations.
   contract owners without importing each other or a concrete backend.
 - [ ] **RP-002:** One successful storage audit accounts for every correctness-relevant
   profile store with checked exact totals, including a render workspace whose
-  four structural capacities equal the configured `renderWorkspace` limits.
+  four structural capacities equal the configured `renderWorkspace` limits
+  and candidate/published semantic stores whose structural capacities equal
+  `maximumSemanticStructuralOccurrences`.
 - [ ] **RP-003:** Invalid, missing, undersized, overflowing, incompatible
   configurations and invalid static callable tables fail before client code or
   endpoint use.
