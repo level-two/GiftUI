@@ -63,6 +63,8 @@ package struct StaticSignalAnalyzerNRFGeneratedPresentationInputs {
     private let model: StaticCanvasObservableModelHandle<SignalAnalyzerViewModel>
     private let visibleRange: Range<Duration>
     private var reserved = false
+    private var semanticCandidateStaged = false
+    private var semanticCandidatePublished = false
 
     fileprivate init(
         model: StaticCanvasObservableModelHandle<SignalAnalyzerViewModel>,
@@ -105,6 +107,40 @@ package struct StaticSignalAnalyzerNRFGeneratedPresentationInputs {
         else { return false }
         reserved = true
         return true
+    }
+
+    package mutating func stageSemanticCandidate(
+        in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
+    ) -> StaticSignalAnalyzerNRFSemanticRegionHeader? {
+        guard !semanticCandidateStaged,
+            StaticSignalAnalyzerNRFSemanticRegionStore.stageCandidate(
+                inputs: &self,
+                in: &profile
+            )
+        else { return nil }
+        semanticCandidateStaged = true
+        return StaticSignalAnalyzerNRFSemanticRegionStore.header(
+            in: .semanticCandidate,
+            profile: &profile
+        )
+    }
+
+    package mutating func publishSemanticCandidate(
+        revision: UInt32,
+        in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
+    ) -> StaticSignalAnalyzerNRFSemanticRegionHeader? {
+        guard semanticCandidateStaged, !semanticCandidatePublished,
+            StaticSignalAnalyzerNRFSemanticRegionStore.publishCandidate(
+                inputs: self,
+                revision: revision,
+                in: &profile
+            )
+        else { return nil }
+        semanticCandidatePublished = true
+        return StaticSignalAnalyzerNRFSemanticRegionStore.header(
+            in: .semanticPublished,
+            profile: &profile
+        )
     }
 
     package borrowing func canvasInput(

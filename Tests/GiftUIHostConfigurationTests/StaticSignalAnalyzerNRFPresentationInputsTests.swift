@@ -111,6 +111,130 @@ import Testing
     }
 }
 
+@Test func staticNRFSemanticRegionsStagePublishAndRespectProfileLifetimes() {
+    withStaticNRFPresentationInputStorage { storage in
+        guard case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate(),
+            let metadata = StaticSignalAnalyzerNRFGeneratedMetadataFactory.make(
+                assemblyReport: report,
+                canvasTable: StaticSignalAnalyzerNRFCanvasCallableTable()
+            ),
+            var profile = StaticSignalAnalyzerNRFProfileBinding.make(
+                assemblyReport: report,
+                storage: storage,
+                metadata: metadata
+            )
+        else {
+            Issue.record("Static nRF profile did not construct")
+            return
+        }
+
+        let active = ExecutionContext(
+            cycle: RunCycleID(rawValue: 1),
+            semanticRevision: SemanticRevision(rawValue: 1),
+            candidateFrame: nil,
+            phase: .admitting
+        )
+        #expect(profile.beginOpportunity(context: active) == nil)
+        let normal = staticNRFPresentationInputModel()
+        StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
+            model: normal
+        ) { inputs in
+            let candidate = inputs.stageSemanticCandidate(in: &profile)
+            #expect(candidate?.state == .candidate)
+            #expect(candidate?.variant == .normal)
+            #expect(candidate?.rootIdentity == 1_410_692_621)
+            #expect(candidate?.revision == 0)
+            #expect(candidate?.expansion.semanticNodeCount == 47)
+            #expect(inputs.stageSemanticCandidate(in: &profile) == nil)
+
+            var index: UInt16 = 0
+            while index < StaticSignalAnalyzerNRFSemanticRegionStore.canvasDescriptorCount {
+                let descriptor = StaticSignalAnalyzerNRFSemanticRegionStore.canvasDescriptor(
+                    at: index,
+                    in: .semanticCandidate,
+                    profile: &profile
+                )
+                #expect(descriptor?.occurrenceIdentity == index + 1)
+                #expect(descriptor?.callableID == (index == 0 ? 1 : 2))
+                #expect(descriptor?.captureByteCount == (index == 0 ? 0 : 32))
+                index += 1
+            }
+            #expect(
+                StaticSignalAnalyzerNRFSemanticRegionStore.canvasDescriptor(
+                    at: 5,
+                    in: .semanticCandidate,
+                    profile: &profile
+                ) == nil
+            )
+            index = 0
+            while index < StaticSignalAnalyzerNRFSemanticRegionStore.actionCodeCount {
+                #expect(
+                    StaticSignalAnalyzerNRFSemanticRegionStore.actionCode(
+                        at: index,
+                        in: .semanticCandidate,
+                        profile: &profile
+                    ) == index
+                )
+                index += 1
+            }
+
+            let published = inputs.publishSemanticCandidate(
+                revision: 7,
+                in: &profile
+            )
+            #expect(published?.state == .published)
+            #expect(published?.variant == .normal)
+            #expect(published?.revision == 7)
+            #expect(inputs.publishSemanticCandidate(revision: 8, in: &profile) == nil)
+        }
+
+        let idle = ExecutionContext(
+            cycle: nil,
+            semanticRevision: nil,
+            candidateFrame: nil,
+            phase: .idle
+        )
+        #expect(profile.finishOpportunity(context: idle) == nil)
+        #expect(
+            StaticSignalAnalyzerNRFSemanticRegionStore.header(
+                in: .semanticCandidate,
+                profile: &profile
+            ) == nil
+        )
+        #expect(
+            StaticSignalAnalyzerNRFSemanticRegionStore.header(
+                in: .semanticPublished,
+                profile: &profile
+            )?.revision == 7
+        )
+
+        let diagnostic = staticNRFPresentationInputModel()
+        let message = SignalAnalyzerDiagnostic(exactUTF8: Array("fault".utf8))!
+        #expect(
+            diagnostic.apply(.acquisitionState(.failed(message)))
+                == .applied(changed: true)
+        )
+        #expect(profile.beginOpportunity(context: active) == nil)
+        StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
+            model: diagnostic
+        ) { inputs in
+            #expect(inputs.stageSemanticCandidate(in: &profile)?.variant == .diagnostic)
+            let published = inputs.publishSemanticCandidate(revision: 8, in: &profile)
+            #expect(published?.variant == .diagnostic)
+            #expect(published?.expansion.semanticNodeCount == 48)
+            #expect(published?.revision == 8)
+        }
+        #expect(profile.finishOpportunity(context: idle) == nil)
+        profile.quiesce()
+        #expect(
+            StaticSignalAnalyzerNRFSemanticRegionStore.header(
+                in: .semanticPublished,
+                profile: &profile
+            ) == nil
+        )
+    }
+}
+
 private final class StaticNRFPresentationInputRepository:
     SignalAcquisitionRepository
 {

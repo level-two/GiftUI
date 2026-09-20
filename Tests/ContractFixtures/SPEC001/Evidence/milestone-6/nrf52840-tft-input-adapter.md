@@ -545,6 +545,20 @@ all access rejects after teardown. This is the bounded workspace seam for the
 next semantic/layout/render implementation; it does not itself claim those
 stages are complete.
 
+The generated semantic-region store now gives the exact 3,024-byte candidate
+and published regions a checked fixed prefix: a 32-byte header, five 8-byte
+Canvas occurrence descriptors, and six dense `UInt16` action codes. Candidate
+staging reserves the generated normal or diagnostic semantic high-water values
+and writes directly into attempt-local storage. Publication validates that
+candidate, writes the retained region with a nonzero semantic revision, and
+cannot be repeated through the same generated input scope. The remaining 2,940
+bytes are zeroed and reserved for the generated primitive/modifier/text records
+that complete the Static layout view. Host tests prove normal and diagnostic
+publication, exact root/count/Canvas/action data, candidate clearing at attempt
+finish, published retention between attempts, and published invalidation at
+quiescence. This slice does not yet claim the primitive table or layout/render
+pipeline is complete.
+
 The shared Static observable-model handle now accepts a typed-throwing scoped
 borrow. This lets the generated trace case invoke the existing
 `throws(DrawingError)` helper against the address-stable model without copying
