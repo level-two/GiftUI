@@ -74,10 +74,10 @@ private enum SemanticJoinFailure: Error {
     #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
     #expect(summary.semanticNodeCount == 47)
     #expect(summary.bodyEvaluationCount == 14)
-    #expect(summary.modifierApplicationCount == 5)
+    #expect(summary.modifierApplicationCount == 44)
     #expect(summary.actionOccurrenceCount == 6)
-    #expect(summary.maximumObservedDepth == 26)
-    #expect(storage.semanticScopeCount == 80)
+    #expect(summary.maximumObservedDepth == 33)
+    #expect(storage.semanticScopeCount == 119)
     #expect(storage.actionOccurrenceCount == 6)
     #expect(storage.canvasOccurrenceCount == 5)
     #expect(storage.hasPublishedResult)
@@ -126,14 +126,43 @@ private enum SemanticJoinFailure: Error {
     #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
     #expect(summary.semanticNodeCount == 48)
     #expect(summary.bodyEvaluationCount == 14)
-    #expect(summary.modifierApplicationCount == 5)
+    #expect(summary.modifierApplicationCount == 45)
     #expect(summary.actionOccurrenceCount == 6)
-    #expect(summary.maximumObservedDepth == 26)
-    #expect(storage.semanticScopeCount == 81)
+    #expect(summary.maximumObservedDepth == 33)
+    #expect(storage.semanticScopeCount == 121)
     #expect(storage.canvasOccurrenceCount == 5)
+
+    var foregrounds: [Color: UInt16] = [:]
+    var backgrounds: [Color: UInt16] = [:]
+    for ordinal in 0 ..< storage.semanticScopeCount {
+        guard let identity = storage.semanticIdentity(at: ordinal) else {
+            Issue.record("missing render identity at ordinal \(ordinal)")
+            continue
+        }
+        switch storage.scope(at: identity) {
+        case .foregroundStyle(let color):
+            foregrounds[color, default: 0] += 1
+        case .background(let color):
+            backgrounds[color, default: 0] += 1
+        default:
+            break
+        }
+    }
+    #expect(foregrounds.values.reduce(0, +) == 21)
+    #expect(foregrounds[.white] == 12)
+    #expect(foregrounds[.gray] == 4)
+    #expect(foregrounds[.red] == 1)
+    #expect(foregrounds[Color(red: 0, green: 128, blue: 255)] == 4)
+    #expect(backgrounds.values.reduce(0, +) == 9)
+    #expect(backgrounds[.black] == 1)
+    #expect(backgrounds[Color(red: 8, green: 8, blue: 8)] == 4)
+    #expect(backgrounds[Color(red: 16, green: 16, blue: 16)] == 1)
+    #expect(backgrounds[Color(red: 24, green: 24, blue: 24)] == 1)
+    #expect(backgrounds[Color(red: 32, green: 32, blue: 32)] == 1)
+    #expect(backgrounds[Color(red: 48, green: 48, blue: 48)] == 1)
 }
 
-@Test func signalAnalyzerDynamicSemanticJoinFitsApprovedPreset() throws {
+@Test func signalAnalyzerDynamicSemanticJoinRejectsStaleApprovedPreset() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     let model = makeSemanticJoinModel()
     let root = DynamicObservableRootAdapter<
@@ -162,17 +191,10 @@ private enum SemanticJoinFailure: Error {
         stateBinding: &binding
     )
 
-    guard case .success(let summary) = result else {
-        _ = reconciler.finishCandidate(.discard)
-        Issue.record("approved state-bound Signal Analyzer expansion failed: \(result)")
-        return
-    }
-    #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
-    #expect(summary.semanticNodeCount == 47)
-    #expect(summary.maximumObservedDepth == 26)
-    #expect(storage.semanticScopeCount == 80)
-    #expect(storage.hasPublishedResult)
-    #expect(root.isActive)
+    #expect(result == .semanticFailure(.capacityExhausted))
+    #expect(reconciler.finishCandidate(.discard) == .success(.candidateDiscarded))
+    #expect(!storage.hasPublishedResult)
+    #expect(!root.isActive)
 }
 
 @Test func signalAnalyzerDynamicLayoutJoinMeasuresDiagnosticMaximum() throws {
@@ -185,21 +207,27 @@ private enum SemanticJoinFailure: Error {
     >(capacity: preset.runtimeLimits.observableState.maximumLocations)
     var reconciler = DynamicObservableStateReconciler(root: root)
     var binding = ObservableStateBindingDecorator(reconciler: reconciler)
+    let measurementSemanticLimits = SemanticExpansionLimits(
+        maximumDepth: 64,
+        maximumSemanticNodes: 512,
+        maximumBodyEvaluations: 512,
+        maximumModifierApplications: 512,
+        maximumActionOccurrences: 32
+    )!
     var semanticWorkspace = DynamicSemanticExpansionWorkspace(
-        maximumPathComponents: preset.runtimeLimits.semantic.maximumDepth,
-        maximumIdentities: 512
+        maximumPathComponents: 64,
+        maximumIdentities: 2048
     )
     var semanticStorage = DynamicSemanticHostStorage(
-        limits: preset.runtimeLimits.semantic,
-        maximumStructuralOccurrences:
-            preset.runtimeLimits.maximumSemanticStructuralOccurrences,
+        limits: measurementSemanticLimits,
+        maximumStructuralOccurrences: 512,
         canvasCapacity: preset.runtimeLimits.drawing.maximumCanvasOccurrences
     )
 
     #expect(reconciler.beginCandidate() == .success(.candidateStarted))
     let semanticResult = expandSemanticTreeWithStateBinding(
         SignalAnalyzerView(viewModel: model),
-        limits: preset.runtimeLimits.semantic,
+        limits: measurementSemanticLimits,
         workspace: &semanticWorkspace,
         sink: &semanticStorage,
         stateBinding: &binding
@@ -208,9 +236,9 @@ private enum SemanticJoinFailure: Error {
         Issue.record("approved semantic stage failed: \(semanticResult)")
         return
     }
-    #expect(semanticWorkspace.recordedIdentityCount == 158)
+    #expect(semanticWorkspace.recordedIdentityCount == 198)
     #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
-    #expect(semanticStorage.semanticScopeCount == 81)
+    #expect(semanticStorage.semanticScopeCount == 121)
     #expect(preset.runtimeLimits.renderWorkspace.maximumSemanticScopes == 62)
     #expect(
         semanticStorage.semanticScopeCount
@@ -241,10 +269,16 @@ private enum SemanticJoinFailure: Error {
     }.count
     #expect(duplicateScopeCount == 0)
 
-    let approvedLimits = preset.runtimeLimits.layout
-    var layoutWorkspace = DynamicLayoutWorkspace(limits: approvedLimits)
-    var validationWorkspace = DynamicLayoutWorkspace(limits: approvedLimits)
-    var validation = LayoutSemanticValidation(limits: approvedLimits)
+    let measurementLayoutLimits = LayoutLimits(
+        maximumScopes: 512,
+        maximumDepth: 64,
+        maximumTextScalars: 512,
+        maximumTextLines: 64,
+        maximumPositionedGlyphs: 512
+    )!
+    var layoutWorkspace = DynamicLayoutWorkspace(limits: measurementLayoutLimits)
+    var validationWorkspace = DynamicLayoutWorkspace(limits: measurementLayoutLimits)
+    var validation = LayoutSemanticValidation(limits: measurementLayoutLimits)
     let validationError = validation.validate(
         semantic: semanticStorage,
         metrics: GiftUIReferenceTextResources.targetPackage.metrics,
@@ -253,13 +287,13 @@ private enum SemanticJoinFailure: Error {
     #expect(validationError == nil)
     validationWorkspace.resetLayout()
     var layoutSink = ResolvedRenderLayoutResultSink(
-        storage: DynamicResolvedLayoutStorage(limits: approvedLimits)
+        storage: DynamicResolvedLayoutStorage(limits: measurementLayoutLimits)
     )
     let layoutResult = layout(
         semantic: semanticStorage,
         metrics: GiftUIReferenceTextResources.targetPackage.metrics,
         proposal: ProposedSize(width: 240, height: 240)!,
-        limits: approvedLimits,
+        limits: measurementLayoutLimits,
         workspace: &layoutWorkspace,
         sink: &layoutSink
     )
@@ -268,11 +302,11 @@ private enum SemanticJoinFailure: Error {
         Issue.record("approved layout stage failed: \(layoutResult)")
         return
     }
-    #expect(summary.scopeCount == 53)
+    #expect(summary.scopeCount == 93)
     #expect(summary.textScalarCount == 129)
     #expect(summary.textLineCount == 21)
     #expect(summary.positionedGlyphCount == 129)
-    #expect(summary.maximumObservedDepth == 6)
+    #expect(summary.maximumObservedDepth == 13)
     #expect(!layoutWorkspace.isLayoutActive)
     #expect(!layoutSink.isLayoutActive)
     #expect(layoutSink.renderView.layoutScopeCount == summary.scopeCount)

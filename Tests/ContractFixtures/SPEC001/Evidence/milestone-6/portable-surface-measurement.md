@@ -1,0 +1,48 @@
+# SPEC-001 T6.7 Portable Surface Measurement
+
+The portable Signal Analyzer hierarchy now realizes the approved opaque visual
+roles directly through `GiftUI`: twenty-one text foreground scopes, nine
+rectangular background scopes, bounded padding and spacing, and one flexible
+waveform frame. The implementation retains exactly five Canvas occurrences and
+six typed actions. It introduces no gradient, alpha, transform, animation, or
+backend-specific declaration.
+
+The diagnostic-present maximum was expanded through the production Dynamic
+semantic store and laid out at the required 240 x 240 proposal with canonical
+reference text metrics. The measured high-water values are:
+
+- 48 semantic nodes;
+- 14 body evaluations;
+- 45 modifier applications;
+- 6 action occurrences;
+- semantic traversal depth 33;
+- 121 retained semantic/render identities;
+- 198 recorded traversal identities;
+- 5 Canvas occurrences;
+- 93 layout scopes;
+- 129 text scalars and positioned glyphs across 21 lines; and
+- layout depth 13.
+
+The normal hierarchy measures 47 semantic nodes, 44 modifiers, 119 retained
+semantic/render identities, and the same traversal depth of 33.
+
+The foreground census is exactly 21 scopes: 12 white, 4 gray, 4 channel-low
+blue, and 1 failure red in the measured diagnostic scenario. The background
+census is exactly 9 scopes: one screen, one waveform panel, one status, one
+controls, one ruler, and four channel rows. State-dependent paths substitute
+the approved green and red roles without changing cardinality.
+
+The generated SPEC-015 preset remains deliberately unchanged. Its semantic
+limits admit 5 modifiers and depth 26, its render workspace admits 62 semantic
+scopes, and its layout/render workspace admits 53 scopes and traversal depth
+6. The exact preset therefore fails closed with semantic capacity exhaustion.
+The checked measurement test uses separately labeled diagnostic capacities and
+also proves that the approved preset rejects the expanded surface.
+
+These results require deliberate SPEC-008/SPEC-013/SPEC-015 review and
+reapproval before preset regeneration. They also replace the former statement
+that the portable foreground/background surface was absent; the remaining
+T6.7 blocker is a coherent render-only projection plus approved capacities.
+
+This evidence is hardware-free. No deployment, framebuffer access, or
+connected-target execution occurred.

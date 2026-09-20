@@ -14,18 +14,20 @@ projection traverses layout primitives rather than all identities claimed by
 the render view. Increasing workspace capacity therefore does not resolve the
 problem.
 
-The production portable hierarchy also does not yet apply the foreground and
-background modifiers represented by the approved SPEC-008 62-scope/30-
-operation Signal Analyzer fixture. Consequently, the final production render
-scope, operation, clip-depth, and layout counts cannot be inferred by simply
-substituting 81 for 62.
+The production portable hierarchy now applies the foreground, background,
+padding, and frame surface represented by SPEC-008. Its independently checked
+diagnostic maximum is 121 retained semantic/render identities, 93 layout
+scopes, and layout depth 13, including exactly 21 foreground scopes and 9
+background scopes. See `portable-surface-measurement.md`. These measurements
+exceed the currently approved SPEC-008/SPEC-015 render-workspace values of 62
+semantic scopes, 53 layout scopes, and traversal depth 6.
 
-The checked regression asserts the measured `81 > 62` mismatch next to the
-successful exact semantic/layout join. T6.7 render work must first realize the
-approved complete visible screen surface and construct a coherent render-only
-projection, then measure it against SPEC-008/SPEC-015. If those production
-measurements differ from the approved workload, the Specifications require
-deliberate amendment and reapproval rather than silent headroom.
+The checked regressions assert both the new measured surface and the exact
+preset's fail-closed semantic-capacity result. T6.7 render work must construct
+a coherent render-only projection, then measure the final operation and clip
+high-water values. The measured semantic/layout changes require deliberate
+SPEC-008/SPEC-013/SPEC-015 amendment and reapproval rather than silent
+headroom.
 
 This evidence is hardware-free. No deployment, framebuffer access, or
 connected-target execution occurred.
