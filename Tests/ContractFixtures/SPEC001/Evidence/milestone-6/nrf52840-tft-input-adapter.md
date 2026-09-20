@@ -477,3 +477,20 @@ storage contract without introducing that embedded-stack hazard. This remains
 host mechanism evidence; the remaining firmware join must construct the map
 over the retained symbol with semantic, layout, Drawing, render, and endpoint
 owners. No board was flashed.
+
+## Static runtime-profile binding join
+
+`StaticSignalAnalyzerNRFProfileBinding.make` now requires the exact validated
+nRF assembly report, generated Static root identity and limits, exact caller-
+owned region map, and one concrete generated metadata/callable-table value.
+It returns Runtime Static's common noncopyable binding rather than duplicating
+opportunity or storage lifecycle in the target host.
+
+The host fixture uses a deliberately local two-case metadata table to exercise
+only this join. It proves the retained audit equals the generated preset,
+opportunity begin activates attempt storage, opportunity finish clears exactly
+28,224 attempt bytes, and quiescence clears the remaining 8,144 retained bytes
+and tears the binding down. Another target's valid assembly report rejects
+before construction. The fixture table is not production generated-source or
+Canvas-meaning evidence; the real two-case Signal Analyzer generated table and
+complete presentation pipeline remain open. No board was flashed.

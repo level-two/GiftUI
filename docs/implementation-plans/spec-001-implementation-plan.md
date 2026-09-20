@@ -985,6 +985,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       audit equality, and that attempt reset clears 28,224 attempt-local bytes
       while complete reset also clears all 8,144 retained bytes. Caller-supplied
       storage avoids materializing this workspace as a large stack temporary.
+      An exact-assembly-gated factory now joins that map, the generated root
+      identity and limits, and caller-supplied generated Canvas metadata into
+      the common `StaticRuntimeProfileBinding`. A host fixture proves audit
+      equality plus begin/finish/quiesce lifecycle resets without presenting
+      its fixture callable table as production generated-source evidence.
       Building this owner into the firmware's complete generated Static
       presentation composition remains open. The firmware
       now compiles the exact shared input values,

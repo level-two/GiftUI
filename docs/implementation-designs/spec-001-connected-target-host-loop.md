@@ -335,6 +335,14 @@ only the eight attempt-local families; complete reset clears the entire
 caller-owned store. The remaining firmware composition must construct this map
 before lending its regions to semantic, layout, Drawing, and render owners.
 
+A report-gated factory now consumes that region map together with a concrete
+generated metadata/table value and constructs `StaticRuntimeProfileBinding`
+from the preset's exact structural identity and runtime limits. The common
+Static runtime therefore owns opportunity begin/finish, attempt reset, and
+quiescent teardown without target-local lifecycle duplication. The factory is
+generic over generated metadata so it cannot manufacture or substitute the
+still-required production Signal Analyzer Canvas table.
+
 The aggregate also owns the fixed Static fact-admission storage at a stable
 address. Root binding creates the Presentation observation adapter from the
 same repository as the model use cases, but does not start it. A distinct
