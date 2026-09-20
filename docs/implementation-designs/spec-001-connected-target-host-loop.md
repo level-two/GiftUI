@@ -299,6 +299,14 @@ mismatched target generation cancels before borrowing the model. The remaining
 T6.8 join builds that owner into the firmware's complete generated Static
 presentation composition.
 
+The Static nRF composition now also has an inert production assembly validator.
+It consumes the generated preset and fixed storage audit, rejects any departure
+from the 480 x 320 / 480 x 4 / 3,840-byte projection, resolves the exact
+capability contributions, and completes the same nine-stage host validator used
+by the Dynamic Pi composition. The resulting immutable report is available
+before device or application-owner construction; linking the report and owners
+into the firmware lifecycle remains the next join.
+
 ## Code and Evidence Links
 
 - [`DynamicSemanticHostStorage.swift`](../../Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift)
@@ -324,6 +332,10 @@ presentation composition.
 - [`StaticSignalAnalyzerNRFApplicationInputOwner.swift`](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFApplicationInputOwner.swift)
   owns input, capture, presentation replacement, quiescence, and synchronous
   borrows of the generated interaction and observable-root storage.
+- [`StaticSignalAnalyzerNRFAssembly.swift`](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFAssembly.swift)
+  validates the generated Static preset, storage audit, component graph,
+  capability resolution, endpoint projection, application, input, and policy
+  contract before construction has side effects.
 - [`nrf52840-tft-input-adapter.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md)
   records the current nRF device-adapter boundary and open host-loop gap.
 - [`piscreen-platform-adapter.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md)

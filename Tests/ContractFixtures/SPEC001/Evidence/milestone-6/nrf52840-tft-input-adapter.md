@@ -271,6 +271,26 @@ proves the serialized drain mechanism; the following host-only interaction
 evidence is deliberately separate from this firmware result. Calibration,
 connected shield behavior, and flashing remain open. No board was flashed.
 
+## Static production assembly validation
+
+`StaticSignalAnalyzerNRFAssembly` now performs the inert production validation
+that must precede nRF device and application-owner construction. It consumes
+the generated `nrf52840Static` preset and its fixed storage audit, rejects a
+projection other than 480 x 320 with one 480 x 4 RGB565 region, and resolves
+the exact 3,840-byte synchronous-borrow capability and endpoint contract. The
+validator also checks the complete component graph, reference text resources,
+six-action/one-root application domain, normalized input and wake boundary,
+`1/32/1` cardinality, generated pacing policy, and residual policy. Its report
+records the 35-operation sink minimum and 28-fact service-window maximum.
+
+`StaticSignalAnalyzerNRFAssemblyTests` proves that the production validator
+returns the immutable Static nRF report and that its storage audit, effective
+presentation, cardinality, Drawing limit, sink limit, and fact bound equal the
+generated preset contract. This is host execution of the production assembly
+validator, not an Embedded Swift link or connected-target run. The validator
+is not yet part of the firmware whole-module source, so the firmware hashes and
+resource totals above remain unchanged. No board was flashed.
+
 ## Static interaction and observable mutation
 
 `StaticSignalAnalyzerNRFApplicationInputOwner` is the production typed owner of

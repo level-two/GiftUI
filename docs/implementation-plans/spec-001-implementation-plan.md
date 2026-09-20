@@ -924,6 +924,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       only through the committed target-generation guard. Host fixtures prove a
       down/up pair split across opportunities, stale-generation cancellation,
       replacement cancellation, dirty reporting, and complete quiescence.
+      A production Static nRF assembly validator now binds the generated preset
+      and storage audit to the exact 480 x 320 RGB565 endpoint, one 480 x 4 /
+      3,840-byte synchronous-borrow slot, fixed component graph, six-action
+      domain, `1/32/1` admission cardinality, input/wake boundary, pacing, and
+      residual policy before any device or application owner is constructed.
+      Its host fixture proves the immutable report and remains distinct from
+      Embedded Swift or connected-target evidence.
       Building this owner into the firmware's complete generated Static
       presentation composition remains open. The firmware
       now compiles the exact shared input values,
