@@ -859,9 +859,13 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     let target = try #require(
         PiScreenDisplayTarget(sink: EndpointFramebufferSink(), layout: layout)
     )
+    guard case .valid(let assemblyReport) = DynamicSignalAnalyzerPiAssembly.validate() else {
+        Issue.record("Dynamic Pi production assembly did not validate")
+        return
+    }
     var owner = DynamicSignalAnalyzerPiLifecycleOwner(
         target: target,
-        assemblyReport: dynamicPiAssemblyReport(preset: preset),
+        assemblyReport: assemblyReport,
         inputSource: InputSourceID(rawValue: 91),
         initialFrameOriginMicroseconds: 0,
         timingScale: SignalSourceTimingScale(numerator: 1, denominator: 1)!,
@@ -1598,40 +1602,6 @@ private func dynamicPiEffectivePresentation(
         requiredPayloadBytes: CapabilityByteCount(rawValue: 7_680),
         inFlightCount: 1,
         requiredInFlightBytes: CapabilityByteCount(rawValue: 7_680)
-    )
-}
-
-private func dynamicPiAssemblyReport(
-    preset: GeneratedSignalAnalyzerPreset
-) -> HostAssemblyReport {
-    let audit: RuntimeStorageAudit
-    switch preset.validatedStorageAudit() {
-    case .valid(let value):
-        audit = value
-    case .invalid:
-        fatalError("generated Dynamic Pi storage audit must be valid")
-    }
-    let effective = dynamicPiEffectivePresentation(preset: preset)
-    return HostAssemblyReport(
-        kind: .raspberryPiDynamic,
-        profile: .dynamic,
-        storageAudit: audit,
-        capabilitySnapshot: CapabilitySnapshot(rasterPresentation: effective),
-        effectivePresentation: effective,
-        drawingPlanOperationLimit: preset.runtimeLimits.render.maximumOperations,
-        minimumSinkOperationCapacity: preset.runtimeLimits.renderSink.maximumOperations,
-        cardinality: preset.cardinality,
-        minimumFrameIntervalMicroseconds:
-            preset.pacing.minimumFrameIntervalMicroseconds,
-        maximumFactServiceLatencyMicroseconds:
-            preset.pacing.maximumFactServiceLatencyMicroseconds,
-        minimumAcceptedTransitionSpacingMicroseconds:
-            preset.pacing.minimumAcceptedTransitionSpacingMicroseconds,
-        maximumCompactFactsPerServiceWindow:
-            preset.pacing.maximumTransitionFactsPerServiceWindow
-            + UInt16(preset.pacing.maximumBootstrapFactsPerServiceWindow)
-            + UInt16(preset.pacing.maximumActionInducedFactsPerServiceWindow),
-        maximumRetryableRefusals: preset.pacing.maximumRetryableRefusals
     )
 }
 

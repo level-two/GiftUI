@@ -170,6 +170,24 @@ package struct HostStructuralConfiguration: Equatable, Sendable {
     package let cardinality: SignalAnalyzerHostCardinality
     package let workload: SignalAnalyzerHostWorkload
     package let pacing: HostPacingPolicy
+
+    package init(
+        kind: MVPHostKind,
+        profile: RuntimeProfileKind,
+        runtimeLimits: RuntimeProfileLimits,
+        runtimeAudit: RuntimeStorageAudit,
+        cardinality: SignalAnalyzerHostCardinality,
+        workload: SignalAnalyzerHostWorkload,
+        pacing: HostPacingPolicy
+    ) {
+        self.kind = kind
+        self.profile = profile
+        self.runtimeLimits = runtimeLimits
+        self.runtimeAudit = runtimeAudit
+        self.cardinality = cardinality
+        self.workload = workload
+        self.pacing = pacing
+    }
 }
 
 package struct HostActionModelConfiguration: Equatable, Sendable {
@@ -189,6 +207,45 @@ package struct HostActionModelConfiguration: Equatable, Sendable {
     package let actionHandlerIsTotal: Bool
     package let retainsOwnerReferences: Bool
     package let callbacksAreReentrant: Bool
+
+    package init(
+        firstActionCode: UInt16,
+        lastActionCode: UInt16,
+        handlerCount: UInt8,
+        rootModelTargetCount: UInt8,
+        sourceMinimumTransitionSpacingMicroseconds: UInt32,
+        maximumSourceCallbacksPerServiceWindow: UInt16,
+        maximumCallbacksPerAction: UInt8,
+        maximumRepositoryCallbacksPerAction: UInt8,
+        maximumUseCaseCallbacksPerAction: UInt8,
+        maximumNonTransitionPublicationsPerAction: UInt8,
+        applicationExecutorFactLimit: UInt16,
+        factAdmissionAdapterCount: UInt8,
+        targetGenerationIsPublishable: Bool,
+        actionHandlerIsTotal: Bool,
+        retainsOwnerReferences: Bool,
+        callbacksAreReentrant: Bool
+    ) {
+        self.firstActionCode = firstActionCode
+        self.lastActionCode = lastActionCode
+        self.handlerCount = handlerCount
+        self.rootModelTargetCount = rootModelTargetCount
+        self.sourceMinimumTransitionSpacingMicroseconds =
+            sourceMinimumTransitionSpacingMicroseconds
+        self.maximumSourceCallbacksPerServiceWindow =
+            maximumSourceCallbacksPerServiceWindow
+        self.maximumCallbacksPerAction = maximumCallbacksPerAction
+        self.maximumRepositoryCallbacksPerAction = maximumRepositoryCallbacksPerAction
+        self.maximumUseCaseCallbacksPerAction = maximumUseCaseCallbacksPerAction
+        self.maximumNonTransitionPublicationsPerAction =
+            maximumNonTransitionPublicationsPerAction
+        self.applicationExecutorFactLimit = applicationExecutorFactLimit
+        self.factAdmissionAdapterCount = factAdmissionAdapterCount
+        self.targetGenerationIsPublishable = targetGenerationIsPublishable
+        self.actionHandlerIsTotal = actionHandlerIsTotal
+        self.retainsOwnerReferences = retainsOwnerReferences
+        self.callbacksAreReentrant = callbacksAreReentrant
+    }
 }
 
 package struct HostInputWakeConfiguration: Equatable, Sendable {
@@ -197,6 +254,21 @@ package struct HostInputWakeConfiguration: Equatable, Sendable {
     package let wakeRequesterCount: UInt8
     package let applicationAndMutationDomainsAreDistinct: Bool
     package let wakeRequesterIsNonReentrant: Bool
+
+    package init(
+        normalizedInputSourceCount: UInt16,
+        targetLocalPresentationGateCount: UInt8,
+        wakeRequesterCount: UInt8,
+        applicationAndMutationDomainsAreDistinct: Bool,
+        wakeRequesterIsNonReentrant: Bool
+    ) {
+        self.normalizedInputSourceCount = normalizedInputSourceCount
+        self.targetLocalPresentationGateCount = targetLocalPresentationGateCount
+        self.wakeRequesterCount = wakeRequesterCount
+        self.applicationAndMutationDomainsAreDistinct =
+            applicationAndMutationDomainsAreDistinct
+        self.wakeRequesterIsNonReentrant = wakeRequesterIsNonReentrant
+    }
 }
 
 package struct HostEndpointConfiguration: Equatable, Sendable {
@@ -211,4 +283,30 @@ package struct HostEndpointConfiguration: Equatable, Sendable {
     package let textRasterRealization: RasterRealizationID
     package let healthOwnerCount: UInt8
     package let endpointAndDisplayShareHealthOwner: Bool
+
+    package init(
+        effectivePresentation: EffectiveRasterPresentation,
+        descriptor: RasterSurfaceDescriptor,
+        payloadLimits: RasterPayloadLimits,
+        surfaceWritableCapacityBytes: UInt32,
+        displaySubmissionLifetime: SubmissionLifetime,
+        displayHandoff: SubmissionHandoff,
+        displayMaximumInFlightPayloads: UInt8,
+        displayMaximumInFlightBytes: UInt32,
+        textRasterRealization: RasterRealizationID,
+        healthOwnerCount: UInt8,
+        endpointAndDisplayShareHealthOwner: Bool
+    ) {
+        self.effectivePresentation = effectivePresentation
+        self.descriptor = descriptor
+        self.payloadLimits = payloadLimits
+        self.surfaceWritableCapacityBytes = surfaceWritableCapacityBytes
+        self.displaySubmissionLifetime = displaySubmissionLifetime
+        self.displayHandoff = displayHandoff
+        self.displayMaximumInFlightPayloads = displayMaximumInFlightPayloads
+        self.displayMaximumInFlightBytes = displayMaximumInFlightBytes
+        self.textRasterRealization = textRasterRealization
+        self.healthOwnerCount = healthOwnerCount
+        self.endpointAndDisplayShareHealthOwner = endpointAndDisplayShareHealthOwner
+    }
 }

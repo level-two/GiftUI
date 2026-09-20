@@ -262,6 +262,8 @@ nonblocking Linux device poll directly into that seam. A production lifecycle
 aggregate now delegates exact seven-step activation and eight-step teardown to
 the existing host controller, starts acquisition through the committed Start
 action, and services deferred source facts at the generated frame boundary.
+Its production assembly factory runs the complete checked validator and emits
+the immutable report before Linux device construction.
 The surrounding Linux monotonic process loop and console ownership/restoration
 remain open.
 

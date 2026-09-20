@@ -854,7 +854,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       The ARMv6 executable's typed input pump maps the real nonblocking Linux
       device poll directly into that seam. A production Dynamic Pi lifecycle
       aggregate now delegates all seven activation and eight teardown steps to
-      the existing host controller. Its hardware-free fixture accepts the
+      the existing host controller. A production assembly factory now derives
+      every projection from the generated Pi preset and completes the checked
+      nine-stage validator before any Linux device is opened. Its hardware-free
+      fixture accepts the
       first physical frame before input eligibility, invokes the committed
       Start action through normalized admission, services six deferred source
       facts at the generated frame boundary, commits the replacement frame,
