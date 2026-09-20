@@ -896,14 +896,21 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       480 x 4 / 3,840-byte RGB565 submission, raw touch acquisition, and
       saturating fault accounting. The exact pristine firmware build retains
       all driver entry points and passes ARMv7E-M hard-float, zero-heap,
-      RAM/flash, and required-symbol gates. Static host-loop composition,
-      admission of normalized contacts, connected stack measurement, and
-      flashing remain open. A target-local, allocation-free touch normalizer
+      RAM/flash, and required-symbol gates. Static host-loop composition, the
+      firmware-to-Swift contact handoff and opportunity drain, connected stack
+      measurement, and flashing remain open. A target-local, allocation-free
+      touch normalizer
       now validates injected calibration, maps swapped/inverted raw axes into
       the 480 x 320 logical extent, emits ordered down/move/up phases, closes
       out-of-range contacts, and resets without an action-producing up event
       after transport failure. Its C99 fixture is part of the nRF SPEC-001
-      driver. A follow-up finite firmware entry now initializes both devices,
+      driver. A Static application-host coordinator now passes those phases
+      through the shared normalized input gate, assigns source, presentation,
+      sequence, and ordinal provenance, and retains the generated six-event
+      maximum in fixed inline ring storage. Its host fixture proves ordered
+      drain, first-excess cancellation, reuse, stale-presentation rejection,
+      and quiescent cleanup without treating that host run as embedded
+      evidence. A follow-up finite firmware entry now initializes both devices,
       transfers bounded color bars, polls touch for ten seconds, and reports
       faults plus stack high-water when deliberately flashed; its exact
       pristine build also passes. Both controllers now expose explicit

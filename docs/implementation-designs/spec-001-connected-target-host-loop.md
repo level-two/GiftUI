@@ -272,6 +272,14 @@ teardown. Its platform boundary now acquires Linux graphics-console mode
 before framebuffer construction, retains the prior mode, and restores it
 after process-loop teardown with fail-closed partial-initialization cleanup.
 
+The first Static nRF input owner now reuses `HostNormalizedInputGate` and an
+inline six-entry ring matching the generated preset. It assigns source,
+presentation, sequence, and ordinal provenance only after the target-local C
+normalizer emits a phase and point; capacity refusal cancels that physical
+sequence, and quiescence clears the ring. The host fixture is mechanism
+evidence only. The C-to-Swift handoff, serialized opportunity drain, and final
+firmware linkage remain part of T6.8.
+
 ## Code and Evidence Links
 
 - [`DynamicSemanticHostStorage.swift`](../../Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift)
@@ -286,6 +294,9 @@ after process-loop teardown with fail-closed partial-initialization cleanup.
 - [`DynamicSignalAnalyzerPiEndpoint.swift`](../../Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPiEndpoint.swift)
   constructs the exact Pi raster session and one-shot endpoint around that
   display target.
+- [`StaticSignalAnalyzerNRFInputCoordinator.swift`](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInputCoordinator.swift)
+  supplies fixed-capacity normalized contact provenance and admission for the
+  Static nRF application host.
 - [`nrf52840-tft-input-adapter.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md)
   records the current nRF device-adapter boundary and open host-loop gap.
 - [`piscreen-platform-adapter.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md)

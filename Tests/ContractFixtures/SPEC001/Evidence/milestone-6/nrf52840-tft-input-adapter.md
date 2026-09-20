@@ -148,3 +148,22 @@ The inspected artifacts are:
 The load segments use 32,456 flash bytes and 175,296 RAM bytes. Physical
 calibration values and orientation are deliberately not claimed by this
 hardware-free fixture and remain connected-target evidence.
+
+## Static normalized-input admission
+
+`StaticSignalAnalyzerNRFInputCoordinator` is the first application-host side
+of the touch boundary. It reuses the common normalized input gate to assign the
+configured source, committed physical-presentation revision, pointer sequence,
+and ordinal. Pending events occupy a six-entry inline tuple ring, exactly
+matching the generated nRF preset's maximum input-event bound; no dynamic
+collection is present in the owner.
+
+`swift test --filter StaticSignalAnalyzerNRFInputCoordinatorTests` proves that
+input is ineligible before a physical presentation, down/move/up receives
+exact provenance and drains in order, the first event beyond six cancels its
+sequence, cleared fixed storage can be reused without reusing the refused
+sequence, stale presentation input is dropped, and quiescence clears pending
+input and closes admission. This is host mechanism evidence only. The
+C-to-Swift contact handoff, opportunity-time action drain, Embedded Swift
+linkage, and connected shield behavior remain open and are not claimed by this
+fixture.
