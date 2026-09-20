@@ -282,9 +282,12 @@ sources with a thin typed C ABI. C forwards phase, logical point, observed
 presentation, and physical resynchronization proof; Swift assigns all target
 provenance and preserves the normalized rejection vocabulary. The finite entry
 constructs and quiesces the owner around device lifetime and installs the first
-presentation only after display acceptance. Physical calibration still gates
-the real polling call site, and the serialized opportunity drain remains part
-of T6.8.
+presentation only after display acceptance. A fixed C pipeline now joins an
+injected calibration, the exact normalizer, and this ABI. Transport or bridge
+failure resets normalization but cannot assert resynchronization until PENIRQ
+is later observed released. Physical calibration still gates activation of
+that pipeline in the real polling loop, and the serialized opportunity drain
+remains part of T6.8.
 
 ## Code and Evidence Links
 

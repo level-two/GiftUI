@@ -202,3 +202,41 @@ The load segments use 34,656 flash bytes and 175,552 RAM bytes. No heap entry
 point or full framebuffer is present. Physical calibration values, the real
 poll-loop submission call site, opportunity-time action drain, and connected
 shield behavior remain open. No board was flashed.
+
+## Integrated Static touch pipeline
+
+The production C boundary now composes the exact raw-sample normalizer and the
+retained Swift admission bridge behind an injected immutable calibration and
+observed presentation revision. It forwards only normalized phase and logical
+coordinates. The first down and each down after an observed release carry the
+physical-sequence completion proof; moves and ups never do.
+
+Transport reset, malformed normalization, or a negative ABI result clears the
+local contact and enters an awaiting-release state. Continued PENIRQ contact
+is suppressed in that state. Only a later observed release restores permission
+to submit a new down with resynchronization proof, so a read failure cannot be
+silently converted into proof that the former physical sequence ended.
+
+`check-spec-001-nrf-static-touch-pipeline.sh` compiles the exact normalizer,
+C/Swift bridge, and production pipeline as C99 with warnings as errors. Its
+fixture proves midpoint and edge mapping, down/move/up forwarding, presentation
+revision preservation, proof placement, transport-reset suppression,
+release-proven recovery, invalid calibration, and fail-closed bridge refusal.
+
+The pristine firmware retains the pipeline initialize, update, and reset
+entries and passes ARMv7E-M, VFP hard-float, zero-heap, symbol, RAM, and flash
+gates:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `zephyr.elf` | `2d7a9953ad9c27e47c15a5c664423330fdc1d82b019693f6313088c2319aafb5` |
+| `zephyr.hex` | `a96b2659c759f27f7e0014e48dca748894ea9cc9eaaa41667f56a31a79fea0e4` |
+| `zephyr.map` | `a92d1892bd82e0a0c4dbd6ad1928d2abb80d3e3f18bb5baef284bf0d04d815b8` |
+| `zephyr.dts` | `042dd0ead8283db2cb12d0ff36caad849f8c88787859202809cd03bf17aef6d7` |
+
+The load segments use 34,816 flash bytes and 175,552 RAM bytes. This remains
+hardware-free mechanism evidence. The historical connected-board record
+requires measured five-point calibration and explicitly forbids substituting
+typical ADS7846 ranges, so the finite polling loop does not activate this
+pipeline yet. Opportunity-time action drain and connected shield behavior also
+remain open. No board was flashed.

@@ -18,6 +18,7 @@ target_sources(app PRIVATE
     src/ili9486.c
     src/main.c
     src/static_input_bridge.c
+    src/static_touch_pipeline.c
     src/storage.c
     src/stubs.c
     src/touch_input.c

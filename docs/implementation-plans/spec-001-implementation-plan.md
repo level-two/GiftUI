@@ -897,8 +897,8 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       saturating fault accounting. The exact pristine firmware build retains
       all driver entry points and passes ARMv7E-M hard-float, zero-heap,
       RAM/flash, and required-symbol gates. Static host-loop composition, the
-      physical normalization-to-handoff call site and opportunity drain,
-      connected stack measurement, and flashing remain open. A target-local,
+      calibrated polling-loop activation and opportunity drain, connected
+      stack measurement, and flashing remain open. A target-local,
       allocation-free
       touch normalizer
       now validates injected calibration, maps swapped/inverted raw axes into
@@ -918,7 +918,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       proof; Swift alone assigns source, sequence, and ordinal provenance. C
       and Swift host fixtures cover the ABI, while a pristine build retains
       every bridge symbol and passes the existing zero-heap and resource
-      gates. A follow-up finite firmware entry now initializes both devices,
+      gates. An allocation-free production touch pipeline now joins the exact
+      normalizer to that bridge for injected calibration and committed
+      presentation revision. It suppresses contact after transport or bridge
+      failure until release is physically observed, and only then supplies
+      resynchronization proof for a later down. Its hardware-free fixture
+      covers the complete raw-sample-to-Swift-ABI seam without claiming
+      unmeasured shield calibration. A follow-up finite firmware entry now
+      initializes both devices,
       transfers bounded color bars, polls touch for ten seconds, and reports
       faults plus stack high-water when deliberately flashed; its exact
       pristine build also passes. Both controllers now expose explicit
