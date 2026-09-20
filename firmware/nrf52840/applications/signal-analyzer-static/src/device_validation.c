@@ -12,6 +12,8 @@
 #define GIFTUI_TOUCH_POLL_COUNT 1000U
 #define GIFTUI_TOUCH_POLL_MILLISECONDS 10U
 
+K_THREAD_STACK_DECLARE(z_main_stack, CONFIG_MAIN_STACK_SIZE);
+
 static void increment_saturating(uint32_t *value)
 {
     if (*value < UINT32_MAX) {
@@ -21,16 +23,17 @@ static void increment_saturating(uint32_t *value)
 
 static void report_stack_high_water(void)
 {
+    const size_t capacity = K_THREAD_STACK_SIZEOF(z_main_stack);
+    const uint8_t *const stack =
+        (const uint8_t *)K_THREAD_STACK_BUFFER(z_main_stack);
     size_t unused = 0U;
-    const int result = k_thread_stack_space_get(k_current_get(), &unused);
-    if (result != 0 || unused > CONFIG_MAIN_STACK_SIZE) {
-        printk("GiftUI stack measurement failed: result=%d\n", result);
-        return;
+    while (unused < capacity && stack[unused] == 0xaaU) {
+        ++unused;
     }
     printk("GiftUI main stack: used=%u unused=%u capacity=%u\n",
-           (unsigned int)(CONFIG_MAIN_STACK_SIZE - unused),
+           (unsigned int)(capacity - unused),
            (unsigned int)unused,
-           (unsigned int)CONFIG_MAIN_STACK_SIZE);
+           (unsigned int)capacity);
 }
 
 int giftui_device_validation_run(void)
@@ -75,7 +78,7 @@ int giftui_device_validation_run(void)
             }
             increment_saturating(&samples);
         }
-        k_msleep(GIFTUI_TOUCH_POLL_MILLISECONDS);
+        k_busy_wait(GIFTUI_TOUCH_POLL_MILLISECONDS * 1000U);
     }
 
     printk("GiftUI touch poll: status=completed contacts=%u samples=%u\n",
