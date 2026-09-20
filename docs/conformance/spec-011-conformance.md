@@ -73,12 +73,15 @@ registries, tasks/threads, and allocator facilities.
 ## Deviations and Exceptions
 
 No contract divergence or approved exception was found. The authorized
-[Raspberry Pi attempt](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/raspberry-pi-piscreen-attempt.md)
-and follow-up remediation exposed accessible framebuffer and touchscreen
-devices, but the exact artifact has no production PiScreen integration, so the
-Pi portion of T9.3 remains blocked.
+[Pi adapter work](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md)
+now validates accessible framebuffer/touchscreen devices and records one exact
+bounded connected framebuffer transfer. No physical touch occurred and the
+artifact has no production analyzer host loop, so routing, provenance, and
+dispatch remain unobserved and the Pi portion of T9.3 stays blocked.
 Connected macOS pointer evidence and nRF input/display evidence (T9.4) are not
-collected and are not inferred from hardware-free artifacts.
+collected. The [nRF adapter build](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md)
+selects and links the ILI9486/ADS7846 stack but was not flashed and is not
+inferred as connected evidence.
 
 ## Deferred Work Audit
 

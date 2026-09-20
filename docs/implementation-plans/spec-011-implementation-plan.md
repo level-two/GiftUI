@@ -560,11 +560,12 @@ report has a disposition for every criterion.
       Raspberry Pi portion in the Raspberry Pi / PiScreen campaign group
       defined by
       [SPEC-001 Milestone 8](spec-001-implementation-plan.md#cross-specification-connected-validation-campaign).
-      **Blocked:** authorized remediation exposed an accessible PiScreen
-      framebuffer and touchscreen at `/dev/fb0` and `/dev/input/event0`, but
-      the exact T6.4 artifact lacks the production PiScreen display/input
-      integration required to observe routing and dispatch. See
-      the [connected attempt](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/raspberry-pi-piscreen-attempt.md).
+      **Blocked:** the current ARMv6 artifact owns the accessible PiScreen
+      framebuffer and touchscreen and completed an exact bounded connected
+      framebuffer transfer. It still lacks the production analyzer host loop,
+      and no physical touch occurred, so committed provenance, routing, and
+      dispatch remain unobserved. See the
+      [Pi adapter evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md).
 - [ ] `T9.4` — With explicit authorization, build, inspect, flash, and exercise
       the connected `nrf52840dk/nrf52840` target through its approved host/input/
       display stack. Record VFP ABI again and distinguish hardware-observed
@@ -572,6 +573,9 @@ report has a disposition for every criterion.
       this result from simulator, host, or ELF evidence. Collect it in the
       nRF52840 TFT/input campaign group defined by
       [SPEC-001 Milestone 8](spec-001-implementation-plan.md#cross-specification-connected-validation-campaign).
+      **Blocked:** the selected ILI9486/ADS7846 device firmware passes exact
+      build/inspection but lacks the production Static analyzer host. No board
+      has been flashed, and the physical shield safety gates remain open.
 - [x] `T9.5` — Create `docs/conformance/spec-011-conformance.md`, map every
       `IN-001` through `IN-013` criterion to reproducible evidence, record
       deviations/exceptions and connected-evidence status, link it from

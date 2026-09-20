@@ -841,11 +841,12 @@ simulation.
       commands, artifact identity, and recovery. **Blocked:** after authorized
       remediation, the `armv6l` target exposes an accessible `fb_ili9486`
       framebuffer at `/dev/fb0` and its ADS7846 touchscreen at
-      `/dev/input/event0`. The exact T6.4 product still contains only the
-      hardware-free preset runner rather than a production PiScreen
-      display/input integration, so it cannot produce the required connected
-      observations. See the
-      [connected attempt](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/raspberry-pi-piscreen-attempt.md).
+      `/dev/input/event0`. The current product now owns those devices and a
+      bounded connected run transferred all fifteen 240 x 16 payloads, but it
+      still lacks the production analyzer host loop and no physical touch was
+      observed. It therefore cannot produce the six-control, semantic/action,
+      pacing, or teardown observations. See the
+      [Pi adapter evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md).
 - [ ] `T8.2` — After explicit authorization, inspect and flash the exact `T6.5`
       ELF through the repository nRF workflow, run the deterministic scenario
       for at least 30 continuous seconds on the connected TFT/input target,
@@ -854,6 +855,10 @@ simulation.
       watchdog/reset behavior, stack high-water where supported, assembled
       RAM/flash/workspaces/timing, artifact identity, and teardown. Never infer
       this evidence from an emulator or cross-build.
+      **Blocked:** the selected ILI9486/ADS7846 firmware builds with a finite
+      device-validation entry, but the Static analyzer host loop is not yet
+      composed. Physical shield provenance, continuity/orientation, and power
+      evidence is also required before flashing.
 - [ ] `T8.3` — Compare connected semantic/action/drawing traces with the
       hardware-free oracle while preserving target-specific performance and
       display facts. Classify any absent hardware run as an open connected

@@ -65,10 +65,12 @@ generated freshness, source/import scans, and
 ## Profile, Backend, and Platform Evidence
 
 macOS Dynamic/Static are host execution. Raspberry Pi is exact ARMv6 EABI5
-cross-build inspection with a 240×16 RGB565 region. nRF is ARMv7E-M/VFP hard-
-float link inspection with a 480×4 RGB565 region and 3,840-byte bounds. No
-simulator or connected display/input run, deployment, remote access, service
-restart, or flash is claimed.
+cross-build inspection with a 240×16 RGB565 region plus supplemental connected
+adapter evidence: deployment without service restart, device validation, and
+one exact bounded framebuffer transfer. It is not connected application/input
+evidence. nRF is ARMv7E-M/VFP hard-float link inspection with a 480×4 RGB565
+region, 3,840-byte bounds, and a finite device-validation entry. No nRF flash
+or connected nRF display/input result is claimed.
 
 ## Resource and Performance Evidence
 
@@ -80,11 +82,13 @@ allocation/bookkeeping and equal semantic checksums.
 ## Deviations and Exceptions
 
 No implementation divergence or approved exception was found. The authorized
-[PiScreen attempt](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/raspberry-pi-piscreen-attempt.md)
-and follow-up remediation exposed accessible framebuffer and touchscreen
-devices, but the exact artifact has no production PiScreen integration.
-PiScreen and nRF52840 TFT/input validation therefore remains missing; this is
-an explicit
+[PiScreen adapter evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md)
+now includes production device ownership and a bounded connected framebuffer
+transfer, but not the configured analyzer host or a physical touch. The
+[nRF adapter evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md)
+is hardware-free pending the physical safety gate and production Static host.
+PiScreen and nRF52840 application-level TFT/input validation therefore remains
+missing; this is an explicit
 downstream conformance gate, not an exception.
 
 ## Deferred Work Audit

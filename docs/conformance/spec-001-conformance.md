@@ -25,7 +25,7 @@ The review freezes [SPEC-001](../specs/spec-001-signal-analyzer-reference-applic
 at pre-report SHA-256
 `b68b72236c06ba4515acdfd9cb8d68c4d43f0b489a3a556d48b62adeb1bdbb4d`,
 the active [implementation plan](../implementation-plans/spec-001-implementation-plan.md),
-both current implementation design notes, and reviewed implementation revision
+the current implementation design notes, and reviewed implementation revision
 `b5b2640`. Evidence covers Apple Swift 6.3.3 host execution, project-local
 Swift 6.3.2 ARMv6/nRF cross-build inspection, and host-native Pi/nRF semantic
 fixtures. Connected PiScreen and nRF52840 TFT/input execution was not
@@ -39,7 +39,7 @@ authorized or collected.
 | `SA-AC-002` | pass | [interface audit](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-9/interface-and-dependency-audit.md) | Exact Domain/Data/Presentation/host direction is audited. |
 | `SA-AC-003` | pass | [interface audit](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-9/interface-and-dependency-audit.md) | Domain forbidden-import/facility scans pass. |
 | `SA-AC-004` | pass | [interface audit](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-9/interface-and-dependency-audit.md) | Presentation forbidden-import/facility scans pass. |
-| `SA-AC-005` | blocked | [host structural gates](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/host-structural-gates.md) | Semantic hierarchy is complete; connected PiScreen and TFT visible-output evidence is missing. |
+| `SA-AC-005` | blocked | [host structural gates](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/host-structural-gates.md), [Pi adapter](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md), [nRF adapter](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md) | Semantic hierarchy and device adapters are complete; connected analyzer output on PiScreen and TFT is missing. |
 | `SA-AC-006` | pass | [host structural gates](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/host-structural-gates.md) | One source identity and fixed hierarchy compile across all profiles. |
 | `SA-AC-007` | pass | [repository corpus](../../Tests/ContractFixtures/SPEC001/repository-lifecycle-cases.tsv) | Current-value, replacement, detach, and bounded-return cases pass. |
 | `SA-AC-008` | pass | [interface audit](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-9/interface-and-dependency-audit.md), [integrated cycle](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-5/integrated-cycle.md) | Serialized delivery and distinct mutation domains pass without portable concurrency facilities. |
@@ -57,9 +57,9 @@ authorized or collected.
 | `SA-AC-020` | pass | [waveform corpus](../../Tests/ContractFixtures/SPEC001/waveform-drawing-cases.tsv) | Ruler bytes and 11-plus-one grid pass. |
 | `SA-AC-021` | pass | [sustained workload](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/sustained-workload-and-resources.md) | 120 consistent frames cover 2,400 events with coalescing. |
 | `SA-AC-022` | pass | [driver suite](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-9/hardware-free-driver-suite.md) | Both macOS executables build, execute, and compare equal. |
-| `SA-AC-023` | blocked | [four-preset evidence](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-6/raspberry-pi-armv6.md), [connected attempt](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/raspberry-pi-piscreen-attempt.md) | ARMv6 build, target execution, and host-native semantics pass; authorized remediation exposed accessible framebuffer and touchscreen devices, but the exact artifact lacks production PiScreen integration. |
-| `SA-AC-024` | blocked | [four-preset evidence](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-6/nrf52840-static.md) | Static ELF and host-native semantics pass; connected TFT/input execution is missing. |
-| `SA-AC-025` | blocked | [sustained workload](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/sustained-workload-and-resources.md) | Binary/RAM/storage/drawing/stack fit is inspected; connected target execution is missing. |
+| `SA-AC-023` | blocked | [four-preset evidence](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-6/raspberry-pi-armv6.md), [Pi adapter](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md) | ARMv6 and host-native semantics pass. The exact artifact now owns validated framebuffer/input devices and completed a connected 115,200-byte bounded display transfer, but it has no production analyzer host loop and no physical touch event. |
+| `SA-AC-024` | blocked | [four-preset evidence](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-6/nrf52840-static.md), [nRF adapter](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md) | The selected ILI9486/ADS7846 assembly, device drivers, and finite validation firmware pass exact ELF inspection; no board was flashed and no analyzer host loop exists. |
+| `SA-AC-025` | blocked | [sustained workload](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/sustained-workload-and-resources.md), [nRF adapter](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md) | Binary/RAM/storage/drawing fit and finite-device-entry build are inspected; connected stack high-water and application execution are missing. |
 | `SA-AC-026` | pass | [source substitution](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/source-and-facility-substitution.md) | Conforming source replacement changes no portable owner. |
 | `SA-AC-027` | pass | [source/facility evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/source-and-facility-substitution.md) | Every required facility fails closed before publication. |
 | `SA-AC-028` | pass | [host structural gates](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/host-structural-gates.md) | Host lifecycle owns observation and adapter sinks. |
@@ -92,11 +92,13 @@ comparison also pass; see the [driver-suite evidence](../../Tests/ContractFixtur
 
 ## Profile, Backend, and Platform Evidence
 
-macOS Dynamic and Static are executable host evidence. Raspberry Pi is an
-exact ARMv6 hard-float cross-build plus a host-native Dynamic semantic fixture.
-nRF52840 is an ARMv7E-M/VFP hard-float ELF/resource inspection plus a
-host-native Static semantic fixture. No deployment, remote access, service
-restart, connected display/input execution, or flashing occurred.
+macOS Dynamic and Static are executable host evidence. Raspberry Pi includes
+an exact ARMv6 hard-float cross-build, host-native Dynamic semantic fixture,
+and supplemental connected adapter evidence: deployment without service
+restart, validated framebuffer/input descriptors, and one bounded framebuffer
+transfer. That transfer is not analyzer-host or physical-touch evidence.
+nRF52840 remains ARMv7E-M/VFP hard-float ELF/resource inspection plus a
+host-native Static semantic fixture; no board was flashed.
 
 ## Resource and Performance Evidence
 
