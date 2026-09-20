@@ -286,8 +286,10 @@ presentation only after display acceptance. A fixed C pipeline now joins an
 injected calibration, the exact normalizer, and this ABI. Transport or bridge
 failure resets normalization but cannot assert resynchronization until PENIRQ
 is later observed released. Physical calibration still gates activation of
-that pipeline in the real polling loop, and the serialized opportunity drain
-remains part of T6.8.
+that pipeline in the real polling loop. The fixed ring can now drain only under
+`HostApplicationOpportunityGate`, through a total Static handler result; direct
+package-level removal is unavailable. Joining the production Static interaction
+handler to that opportunity remains part of T6.8.
 
 ## Code and Evidence Links
 

@@ -95,8 +95,11 @@ package struct StaticSignalAnalyzerNRFInputABI {
         }
     }
 
-    package mutating func takeNext() -> NormalizedPointerEvent? {
-        coordinator.takeNext()
+    package mutating func runOpportunity<Handler>(
+        into handler: inout Handler
+    ) -> StaticSignalAnalyzerNRFInputOpportunityResult
+    where Handler: StaticSignalAnalyzerNRFInputHandler {
+        coordinator.runOpportunity(into: &handler)
     }
 
     package mutating func quiesce() {

@@ -240,3 +240,34 @@ requires measured five-point calibration and explicitly forbids substituting
 typical ADS7846 ranges, so the finite polling loop does not activate this
 pipeline yet. Opportunity-time action drain and connected shield behavior also
 remain open. No board was flashed.
+
+## Serialized Static input opportunity
+
+The Static nRF coordinator now owns `HostApplicationOpportunityGate`, matching
+the established Dynamic host serialization boundary. The six-entry ring has no
+package-level removal operation: its events can leave storage only during
+`runOpportunity`, where a total handler classifies each event as consumed,
+dispatched, or cancelled/rejected. The returned bounded summary records all
+three counts, and quiescence rejects later opportunities while clearing input.
+
+The coordinator and ABI fixtures cover ordered provenance-preserving drain,
+empty opportunities, exact classification counts, post-drain storage state,
+and unavailable rejection after quiescence. The firmware whole-module source
+now includes the exact shared application-opportunity gate; it does not export
+a C dequeue operation that could bypass the future interaction owner.
+
+The pristine firmware passes ARMv7E-M, VFP hard-float, zero-heap, symbol, RAM,
+and flash gates:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `zephyr.elf` | `5247369a54ba93d30bb9580cd9f8f2ccaa9bdc7a0f2f38a0d61b6ac3eaf257ca` |
+| `zephyr.hex` | `8fc1eb0d53b05ae9ad5145b4ecfe5834a44b36631e4c5293a5631bcbd7a8f4af` |
+| `zephyr.map` | `2f22764102a0f24dce5855fe45520387e7e6a734e8a6e97ffc33bbfd3467c91a` |
+| `zephyr.dts` | `042dd0ead8283db2cb12d0ff36caad849f8c88787859202809cd03bf17aef6d7` |
+
+The load segments use 35,296 flash bytes and 175,552 RAM bytes. This evidence
+proves the serialized drain mechanism, not action dispatch: the production
+Static interaction handler and application mutation owner are the next host
+composition boundary. Calibration, connected shield behavior, and flashing
+remain open. No board was flashed.

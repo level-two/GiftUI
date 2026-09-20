@@ -897,8 +897,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       saturating fault accounting. The exact pristine firmware build retains
       all driver entry points and passes ARMv7E-M hard-float, zero-heap,
       RAM/flash, and required-symbol gates. Static host-loop composition, the
-      calibrated polling-loop activation and opportunity drain, connected
-      stack measurement, and flashing remain open. A target-local,
+      calibrated polling-loop activation and the production Static interaction
+      handler join, connected stack measurement, and flashing remain open. A
+      target-local,
       allocation-free
       touch normalizer
       now validates injected calibration, maps swapped/inverted raw axes into
@@ -911,7 +912,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       maximum in fixed inline ring storage. Its host fixture proves ordered
       drain, first-excess cancellation, reuse, stale-presentation rejection,
       and quiescent cleanup without treating that host run as embedded
-      evidence. The firmware now compiles the exact shared input values,
+      evidence. The coordinator now owns the same application-opportunity gate
+      as the Dynamic host: no package API can remove queued input outside that
+      serialized opportunity, and each removed event receives a total consumed,
+      dispatched, or cancelled/rejected classification. The exact production
+      Static interaction handler remains to be joined. The firmware now
+      compiles the exact shared input values,
       sequence allocator, normalized gate, Static coordinator, and typed ABI
       into its Embedded Swift object. A retained C bridge forwards only phase,
       logical point, observed presentation, and physical resynchronization

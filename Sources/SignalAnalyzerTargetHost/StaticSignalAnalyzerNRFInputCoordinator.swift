@@ -6,6 +6,39 @@ private enum StaticSignalAnalyzerNRFUnusedFact: Sendable {
     case unsupported
 }
 
+package enum StaticSignalAnalyzerNRFInputHandling: UInt8, Equatable, Sendable {
+    case consumed = 0
+    case dispatched = 1
+    case cancelledOrRejected = 2
+}
+
+package protocol StaticSignalAnalyzerNRFInputHandler {
+    mutating func handle(
+        _ event: NormalizedPointerEvent
+    ) -> StaticSignalAnalyzerNRFInputHandling
+}
+
+package struct StaticSignalAnalyzerNRFInputDrainSummary: Equatable, Sendable {
+    package let eventCount: UInt16
+    package let dispatchedActionCount: UInt16
+    package let cancelledOrRejectedCount: UInt16
+
+    package init(
+        eventCount: UInt16,
+        dispatchedActionCount: UInt16,
+        cancelledOrRejectedCount: UInt16
+    ) {
+        self.eventCount = eventCount
+        self.dispatchedActionCount = dispatchedActionCount
+        self.cancelledOrRejectedCount = cancelledOrRejectedCount
+    }
+}
+
+package enum StaticSignalAnalyzerNRFInputOpportunityResult: Equatable, Sendable {
+    case completed(StaticSignalAnalyzerNRFInputDrainSummary)
+    case rejected(HostApplicationOpportunityRejection)
+}
+
 private struct StaticSignalAnalyzerNRFInputQueue: ExecutionAdmissionSink {
     typealias StateChangeFact = StaticSignalAnalyzerNRFUnusedFact
     typealias CompletionFact = StaticSignalAnalyzerNRFUnusedFact
@@ -106,6 +139,7 @@ package struct StaticSignalAnalyzerNRFInputCoordinator {
 
     private var gate: HostNormalizedInputGate
     private var queue: StaticSignalAnalyzerNRFInputQueue
+    private var opportunityGate = HostApplicationOpportunityGate()
 
     package init(
         source: InputSourceID,
@@ -147,11 +181,43 @@ package struct StaticSignalAnalyzerNRFInputCoordinator {
         )
     }
 
-    package mutating func takeNext() -> NormalizedPointerEvent? {
-        queue.takeNext()
+    package mutating func runOpportunity<Handler>(
+        into handler: inout Handler
+    ) -> StaticSignalAnalyzerNRFInputOpportunityResult
+    where Handler: StaticSignalAnalyzerNRFInputHandler {
+        switch opportunityGate.begin() {
+        case .admitted:
+            break
+        case .rejected(let rejection):
+            return .rejected(rejection)
+        }
+        defer { _ = opportunityGate.complete() }
+
+        var eventCount: UInt16 = 0
+        var dispatchedActionCount: UInt16 = 0
+        var cancelledOrRejectedCount: UInt16 = 0
+        while let event = queue.takeNext() {
+            eventCount += 1
+            switch handler.handle(event) {
+            case .consumed:
+                break
+            case .dispatched:
+                dispatchedActionCount += 1
+            case .cancelledOrRejected:
+                cancelledOrRejectedCount += 1
+            }
+        }
+        return .completed(
+            StaticSignalAnalyzerNRFInputDrainSummary(
+                eventCount: eventCount,
+                dispatchedActionCount: dispatchedActionCount,
+                cancelledOrRejectedCount: cancelledOrRejectedCount
+            )
+        )
     }
 
     package mutating func quiesce() {
+        guard opportunityGate.quiesce() == nil else { return }
         gate.quiesce()
         queue.quiesce()
     }
