@@ -1,11 +1,52 @@
 import GiftUIPlatformRaspberryPi
 import SignalAnalyzerPresetHarness
+import SignalAnalyzerTargetHost
 
 #if os(Linux)
     import Glibc
 #endif
 
 #if os(Linux)
+    if CommandLine.arguments.dropFirst().contains("--run-signal-analyzer") {
+        guard case .valid(let assemblyReport) = DynamicSignalAnalyzerPiAssembly.validate() else {
+            print("status=failed\terror=invalid-host-assembly")
+            exit(EXIT_FAILURE)
+        }
+        do {
+            let framebuffer = try LinuxPiScreenFramebuffer()
+            guard
+                let transform = PiScreenAspectFitTransform(
+                    physicalWidth: Int32(framebuffer.layout.width),
+                    physicalHeight: Int32(framebuffer.layout.height),
+                    logicalWidth: 240,
+                    logicalHeight: 240
+                ),
+                let calibration = PiScreenTouchCalibration(
+                    minimumX: 0,
+                    maximumX: 4_095,
+                    minimumY: 0,
+                    maximumY: 4_095
+                )
+            else {
+                fatalError("PiScreen geometry is invalid")
+            }
+            let touch = try LinuxPiScreenTouchDevice(
+                transform: transform,
+                calibration: calibration
+            )
+            try LinuxSignalAnalyzerPiProcessLoop.run(
+                framebuffer: framebuffer,
+                touch: touch,
+                assemblyReport: assemblyReport
+            )
+            print("status=completed")
+            exit(EXIT_SUCCESS)
+        } catch {
+            print("status=failed\terror=\(error)")
+            exit(EXIT_FAILURE)
+        }
+    }
+
     if CommandLine.arguments.dropFirst().contains("--exercise-piscreen") {
         do {
             let framebuffer = try LinuxPiScreenFramebuffer()

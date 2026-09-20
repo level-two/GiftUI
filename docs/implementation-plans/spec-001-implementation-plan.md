@@ -861,9 +861,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       first physical frame before input eligibility, invokes the committed
       Start action through normalized admission, services six deferred source
       facts at the generated frame boundary, commits the replacement frame,
-      and proves repeated teardown is inert. The Linux monotonic process loop,
-      console ownership/restoration, and connected application scenario remain
-      open; see the [lifecycle-owner evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-pi-lifecycle-owner.md).
+      and proves repeated teardown is inert. The ARMv6 executable now exposes
+      an explicit production mode that validates before device construction,
+      polls touch, advances source deadlines, services paced opportunities
+      against `CLOCK_MONOTONIC`, and routes SIGINT/SIGTERM plus loop failures
+      through controller teardown. Console ownership/restoration and the
+      connected application scenario remain open; see the
+      [lifecycle-owner evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-pi-lifecycle-owner.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation

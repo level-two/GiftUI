@@ -263,9 +263,10 @@ aggregate now delegates exact seven-step activation and eight-step teardown to
 the existing host controller, starts acquisition through the committed Start
 action, and services deferred source facts at the generated frame boundary.
 Its production assembly factory runs the complete checked validator and emits
-the immutable report before Linux device construction.
-The surrounding Linux monotonic process loop and console ownership/restoration
-remain open.
+the immutable report before Linux device construction. The ARMv6 executable's
+explicit production mode now uses a monotonic nonblocking loop for touch,
+source deadlines, paced opportunities, and signal-triggered controller
+teardown. Console ownership/restoration remains open.
 
 ## Code and Evidence Links
 

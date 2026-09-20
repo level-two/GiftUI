@@ -30,6 +30,15 @@ After teardown the source, input, platform-owning presentation, pacing,
 profile storage, and assembly-report runtime use are unavailable; repeated
 teardown is inert.
 
+The ARMv6 executable now has an explicit `--run-signal-analyzer` production
+entry. It validates the immutable assembly before opening `/dev/fb0` or
+`/dev/input/event0`, then uses `CLOCK_MONOTONIC` to poll decoded contacts,
+advance deterministic-source deadlines, and service the shared frame pacing
+owner. SIGINT and SIGTERM request an orderly exit through the controller's
+eight-step teardown; input, pacing, clock, and source-schedule failures also
+unwind through the same `defer`. The existing inspection and finite adapter
+diagnostics remain separate modes.
+
 Validation commands:
 
 ```text
@@ -41,5 +50,5 @@ scripts/raspberry-pi/build.sh --product SignalAnalyzerRaspberryPiARMv6
 
 This is hardware-free lifecycle evidence. It performs no remote access,
 deployment, service restart, or connected-target execution. T6.7 remains open
-for the Linux monotonic process loop, console ownership/restoration, and the
-separately gated connected application scenario.
+for console ownership/restoration and the separately gated connected
+application scenario.

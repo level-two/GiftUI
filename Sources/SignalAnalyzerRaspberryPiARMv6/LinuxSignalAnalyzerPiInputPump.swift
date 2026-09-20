@@ -1,35 +1,23 @@
 #if os(Linux)
     import GiftUI
+    import GiftUIDisplayCore
     import GiftUIPlatformRaspberryPi
     import SignalAnalyzerTargetHost
 
     struct LinuxSignalAnalyzerPiInputPump {
-        let ingress: DynamicSignalAnalyzerPiContactIngress
-
-        init(source: InputSourceID) {
-            ingress = DynamicSignalAnalyzerPiContactIngress(source: source)
-        }
-
-        func poll(
+        func poll<Target>(
             touch: LinuxPiScreenTouchDevice,
-            observedPresentationRevision: PresentationRevision?,
             at timestampMicroseconds: UInt64,
-            coordinator: inout DynamicSignalAnalyzerPiInputCoordinator,
-            pacing: DynamicSignalAnalyzerPiWakePacingOwner
-        ) throws(LinuxPiScreenDeviceError) -> DynamicSignalAnalyzerPiContactIngressResult {
+            owner: inout DynamicSignalAnalyzerPiLifecycleOwner<Target>
+        ) throws(LinuxPiScreenDeviceError) -> DynamicSignalAnalyzerPiContactIngressResult
+        where Target: DisplayTarget {
             let contacts = try touch.poll().map {
                 DynamicSignalAnalyzerPiContact(
                     phase: $0.phase,
                     position: $0.point
                 )
             }
-            return ingress.admit(
-                contacts,
-                observedPresentationRevision: observedPresentationRevision,
-                at: timestampMicroseconds,
-                coordinator: &coordinator,
-                pacing: pacing
-            )
+            return owner.admit(contacts, at: timestampMicroseconds)
         }
     }
 #endif

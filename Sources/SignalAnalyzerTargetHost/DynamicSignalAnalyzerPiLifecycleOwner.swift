@@ -277,6 +277,24 @@ where Target: DisplayTarget {
         return result
     }
 
+    package mutating func admit(
+        _ contacts: [DynamicSignalAnalyzerPiContact],
+        at timestampMicroseconds: UInt64
+    ) -> DynamicSignalAnalyzerPiContactIngressResult {
+        guard phase == .active, var inputCoordinator else {
+            return .failure(.wake(.unavailable))
+        }
+        let result = DynamicSignalAnalyzerPiContactIngress(source: inputSource).admit(
+            contacts,
+            observedPresentationRevision: currentPresentationRevision,
+            at: timestampMicroseconds,
+            coordinator: &inputCoordinator,
+            pacing: pacing
+        )
+        self.inputCoordinator = inputCoordinator
+        return result
+    }
+
     @discardableResult
     package func deliverScheduledSourceTransition() -> Bool {
         guard phase == .active, let source, let generation = source.activeGeneration,

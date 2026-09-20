@@ -880,6 +880,18 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(owner.sourceIsActive)
     #expect(owner.loopIsEstablished)
     #expect(owner.reportRuntimeUseIsValid)
+    #expect(
+        owner.admit([], at: 0)
+            == .admitted(
+                DynamicSignalAnalyzerPiContactIngressSummary(
+                    contactCount: 0,
+                    queuedCount: 0,
+                    rejectedCount: 0,
+                    wakeRequestCount: 0,
+                    coalescedWakeCount: 0
+                )
+            )
+    )
     #expect(owner.deliverScheduledSourceTransition())
 
     let boundary = UInt64(preset.pacing.minimumFrameIntervalMicroseconds)
