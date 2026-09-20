@@ -6,7 +6,7 @@ status: implemented
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-09-12
+updated: 2026-09-20
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -1134,14 +1134,29 @@ impossible producer fault-injection demand with structural branch and direct
 mapping evidence. Forging an invalid value was rejected because it would test
 outside the contract and depend on representation.
 
+### Signal Analyzer production-capacity fixture amendment
+
+Production traversal of the fully styled and Canvas-sized SPEC-001 hierarchy
+established a coherent render projection of 98 semantic scopes and 98 resolved
+layout scopes at traversal depth 13. The diagnostic-present fixture contains
+21 render text lines, emits 30 ordinary operations and 129 positioned glyphs,
+and reaches clip depth 3. The approved release ceilings remain 35 combined
+ordinary-plus-Canvas operations, 139 positioned glyphs, and clip depth 4.
+
+The maintainer explicitly approved these measured structural values on
+2026-09-20. They replace only the Signal Analyzer conformance fixture's former
+62-semantic-scope, 32-layout-scope, and depth-6 observations. The generic
+workspace contract, counting rules, finite-capacity behavior, and existing
+128/128/32/64 fixture workspace allocation are unchanged.
+
 ## Open Issues
 
-No unresolved architectural question is known. This focused contract amendment
-was explicitly approved by the maintainer on 2026-09-11. Its coordinated
-runtime-profile and host-configuration schema amendments remain in review and
-block only their corresponding integration rows until separately approved.
-Stroke operations for Canvas enter through the separately governed DRAWING
-contract and its accepted ADRs; they are not silently added here.
+No unresolved architectural question is known. The focused protocol amendment
+was explicitly approved by the maintainer on 2026-09-11, and the measured
+Signal Analyzer capacity-fixture amendment was explicitly approved on
+2026-09-20 together with its coordinated SPEC-013 and SPEC-015 values. Stroke
+operations for Canvas enter through the separately governed DRAWING contract
+and its accepted ADRs; they are not silently added here.
 
 ## Deferred and Follow-up Work
 

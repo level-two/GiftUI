@@ -93,6 +93,14 @@ target_milestone: MVP
 > with revised exact Dynamic and Static layout/render-workspace projections
 > and checked profile totals. This amendment is authoritative and does not
 > claim implementation conformance.
+>
+> On 2026-09-20, the maintainer explicitly approved the completed production
+> hierarchy measurement. Every preset now requires semantic depth 34, 48
+> semantic nodes, 14 body evaluations, 50 modifier applications, 6 actions,
+> 126 retained semantic identities, 98 coherent render/layout scopes, and
+> render/layout depth 13. The resulting profile totals are 41,376 Dynamic
+> bytes and 36,368 Static bytes. The release glyph and drawing ceilings remain
+> unchanged.
 
 ## Summary
 
@@ -732,32 +740,34 @@ any independently varied leaf below its requirement fails at `.workload` with
 `.insufficientWorkloadCapacity`.
 
 For the approved fixed hierarchy, every preset uses these exact semantic
-values: 48 semantic nodes, 81 retained structural identities, 14 body
-evaluations, 5 modifier applications, 6 action occurrences, and maximum depth
-26. The structural maximum is the diagnostic-present shape; the diagnostic-
-absent shape measures 80. Dynamic semantic candidate and published byte
-projections are each 2,592 bytes (81 records at 32 bytes). Static projections
-are each 1,944 bytes (81 records at 24 bytes). These are SPEC-013 profile-store
-projections and do not alter SPEC-006 counting meaning.
+values: 48 semantic nodes, 126 retained structural identities, 14 body
+evaluations, 50 modifier applications, 6 action occurrences, and maximum depth
+34. The structural maximum is the diagnostic-present shape; the diagnostic-
+absent shape retains 124 identities and has 49 modifier applications. Dynamic
+semantic candidate and published byte projections are each 4,032 bytes (126
+records at 32 bytes). Static projections are each 3,024 bytes (126 records at
+24 bytes). These are SPEC-013 profile-store projections and do not alter
+SPEC-006 counting meaning.
 
-For the same hierarchy, the diagnostic-absent shape measures 52 layout scopes
-and the diagnostic-present maximum measures 53. The approved 53-scope maximum
-contains 13 stack containers, 21 text primitives, 3 spacers, 5 Canvas
-primitives, 6 button action proxies, and 5 disabled-modifier scopes. Every
-preset therefore uses exactly `53` for both `layout.maximumScopes` and
-`renderWorkspace.maximumLayoutScopes`. The existing text, glyph, line, and
-layout-depth limits remain 139 scalars, 139 positioned glyphs, 21 lines, and
-depth 12 respectively; the measured maximums are 129, 129, 21, and 6.
+For the same hierarchy, the diagnostic-present coherent production render
+projection and resolved layout each contain 98 scopes at depth 13. Every preset
+therefore uses exactly `98` for `layout.maximumScopes`,
+`renderWorkspace.maximumSemanticScopes`, and
+`renderWorkspace.maximumLayoutScopes`, and exactly `13` for both
+`layout.maximumDepth` and `renderWorkspace.maximumTraversalDepth`. The release
+text, glyph, and line ceilings remain 139 scalars, 139 positioned glyphs, and
+21 lines; the diagnostic-present measurements are 129, 129, and 21.
 
 The exact resulting profile-store projections are:
 
-| Profile | Layout candidate | Render workspace | Total profile storage |
-| --- | ---: | ---: | ---: |
-| Dynamic | 2,120 bytes (53 x 40) | 3,392 bytes (53 x 64) | 33,816 bytes |
-| Static | 1,696 bytes (53 x 32) | 2,544 bytes (53 x 48) | 30,608 bytes |
+| Profile | Semantic candidate | Semantic published | Layout candidate | Render workspace | Total profile storage |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Dynamic | 4,032 bytes (126 x 32) | 4,032 bytes (126 x 32) | 3,920 bytes (98 x 40) | 6,272 bytes (98 x 64) | 41,376 bytes |
+| Static | 3,024 bytes (126 x 24) | 3,024 bytes (126 x 24) | 3,136 bytes (98 x 32) | 4,704 bytes (98 x 48) | 36,368 bytes |
 
-The total changes only by those two store deltas; all other schema-3 audit
-fields remain unchanged.
+The total changes only through the semantic candidate/published, layout
+candidate, and render-workspace deltas; all other schema-3 audit fields remain
+unchanged.
 
 The contained runtime limits MUST additionally satisfy these production
 relations:

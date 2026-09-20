@@ -88,6 +88,14 @@ target_milestone: MVP
 > and 3,392 render-workspace bytes for Dynamic, and 1,696 and 2,544 bytes for
 > Static. The amended contract remains authoritative and implementation
 > remains in progress.
+>
+> On 2026-09-20, the maintainer explicitly approved the final measured
+> production hierarchy capacities. The approved limits are 126 retained
+> semantic structural occurrences, 98 layout scopes, 98 render semantic
+> scopes, render traversal depth 13, semantic depth 34, and 50 modifier
+> applications. The corresponding checked profile totals are 41,376 Dynamic
+> bytes and 36,368 Static bytes. This amendment changes capacity values only;
+> storage ownership and counting contracts are unchanged.
 
 ## Summary
 
@@ -452,18 +460,19 @@ validation rejects a missing or smaller value before client traversal. Hosts
 derive the production value from the greatest complete portable hierarchy
 shape admitted by their approved workload.
 
-For the approved Signal Analyzer workload, the diagnostic-absent shape uses
-52 layout scopes and the diagnostic-present shape uses 53. The latter is the
-required `layout.maximumScopes` and
-`renderWorkspace.maximumLayoutScopes` value. Its scopes comprise 13 stack
-containers, 21 text primitives, 3 spacers, 5 Canvas primitives, 6 button
-action proxies, and 5 disabled-modifier scopes. The associated exact profile-
-store projections use the established per-scope representation sizes:
+For the approved Signal Analyzer workload, the diagnostic-present maximum
+retains 126 semantic structural identities and its coherent production render
+projection contains 98 semantic scopes and 98 resolved layout scopes at render
+traversal depth 13. The required `layout.maximumScopes` and
+`renderWorkspace.maximumLayoutScopes` values are therefore 98, while
+`renderWorkspace.maximumSemanticScopes` is independently 98. The associated
+exact profile-store projections use the established per-record representation
+sizes:
 
-| Profile | Layout candidate | Render workspace | Total profile storage |
-| --- | ---: | ---: | ---: |
-| Dynamic | 2,120 bytes (53 x 40) | 3,392 bytes (53 x 64) | 33,816 bytes |
-| Static | 1,696 bytes (53 x 32) | 2,544 bytes (53 x 48) | 30,608 bytes |
+| Profile | Semantic candidate | Semantic published | Layout candidate | Render workspace | Total profile storage |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Dynamic | 4,032 bytes (126 x 32) | 4,032 bytes (126 x 32) | 3,920 bytes (98 x 40) | 6,272 bytes (98 x 64) | 41,376 bytes |
+| Static | 3,024 bytes (126 x 24) | 3,024 bytes (126 x 24) | 3,136 bytes (98 x 32) | 4,704 bytes (98 x 48) | 36,368 bytes |
 
 All other Signal Analyzer audit fields retain their schema-3 approved values.
 The totals are checked sums, not independent limits or discretionary headroom.
