@@ -227,10 +227,11 @@ must not be counted as application-host success.
 
 ## Open Implementation Questions
 
-No architectural choice is open. Exact-tree integration found a SPEC-013 /
-SPEC-015 semantic-capacity mismatch; the maintainer reapproved schema 3 and
-the independent structural-capacity contract on 2026-09-20, and its
-implementation now passes the real hierarchy. Concrete private file/type names
+No architectural choice is open. Exact-tree integration found semantic and
+layout capacity mismatches in SPEC-013 / SPEC-015; the maintainer reapproved
+schema 3, the independent structural-capacity contract, and the measured
+53-scope layout bound on 2026-09-20. Both capacities now pass the real
+hierarchy. Concrete private file/type names
 may change while the ownership and stage boundaries above remain intact.
 Physical nRF shield provenance, continuity/orientation, and power evidence is
 a separate execution gate.
@@ -257,5 +258,7 @@ a separate execution gate.
 - [`dynamic-semantic-preset-blocker.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-semantic-preset-blocker.md)
   records the measured exact-tree mismatch and its schema-3 resolution.
 - [`dynamic-layout-preset-blocker.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-layout-preset-blocker.md)
-  records the production layout join, exact measured maxima, and the remaining
-  53-versus-32 approved-capacity blocker.
+  records the production layout join, exact measured maxima, and resolution of
+  the former 53-versus-32 capacity blocker.
+- [`dynamic-render-workspace.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-render-workspace.md)
+  records the bounded Dynamic render-preflight workspace prerequisite.
