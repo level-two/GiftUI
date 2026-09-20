@@ -162,7 +162,8 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(owner.state == .ready)
     #expect(!owner.inputIsEligible)
     #expect(owner.eligibleActionCount == 0)
-    let result = owner.presentInitial(model: makeSemanticJoinModel(failsStart: true))
+    let model = makeSemanticJoinModel(failsStart: true)
+    let result = owner.presentInitial(model: model)
     guard case .presented(let summary) = result else {
         Issue.record("initial presentation failed: \(result)")
         return
@@ -171,6 +172,65 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(owner.state == .inputEligible)
     #expect(owner.inputIsEligible)
     #expect(owner.eligibleActionCount == 6)
+    let action = try #require(
+        (0 ..< owner.eligibleActionCount).compactMap { owner.eligibleAction(at: $0) }
+            .first { $0.action.code == SignalAnalyzerAction.selectOneSecond.rawValue }
+    )
+    let point = Point(
+        x: action.hitBounds.origin.x + action.hitBounds.size.width / 2,
+        y: action.hitBounds.origin.y + action.hitBounds.size.height / 2
+    )
+    let source = InputSourceID(rawValue: 7)
+    let sequence = PointerSequenceID(rawValue: 8)
+    #expect(
+        owner.handle(
+            NormalizedPointerEvent(
+                phase: .down,
+                position: point,
+                source: source,
+                sequence: sequence,
+                ordinal: InputOrdinal(rawValue: 0),
+                presentationRevision: PresentationRevision(rawValue: 24)
+            )
+        ) == .captured
+    )
+    #expect(
+        owner.handle(
+            NormalizedPointerEvent(
+                phase: .move,
+                position: point,
+                source: source,
+                sequence: sequence,
+                ordinal: InputOrdinal(rawValue: 1),
+                presentationRevision: PresentationRevision(rawValue: 24)
+            )
+        ) == .continued
+    )
+    #expect(
+        owner.handle(
+            NormalizedPointerEvent(
+                phase: .up,
+                position: point,
+                source: source,
+                sequence: sequence,
+                ordinal: InputOrdinal(rawValue: 2),
+                presentationRevision: PresentationRevision(rawValue: 24)
+            )
+        ) == .dispatched(.dispatched)
+    )
+    #expect(model.state.visibleWindow == .oneSecond)
+    #expect(
+        owner.handle(
+            NormalizedPointerEvent(
+                phase: .down,
+                position: point,
+                source: source,
+                sequence: PointerSequenceID(rawValue: 9),
+                ordinal: InputOrdinal(rawValue: 0),
+                presentationRevision: PresentationRevision(rawValue: 23)
+            )
+        ) == .rejected(.stalePresentation)
+    )
     #expect(
         owner.presentInitial(model: makeSemanticJoinModel())
             == .failure(.invalidLifecycle)
@@ -180,6 +240,18 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(owner.state == .quiescent)
     #expect(!owner.inputIsEligible)
     #expect(owner.eligibleActionCount == 0)
+    #expect(
+        owner.handle(
+            NormalizedPointerEvent(
+                phase: .down,
+                position: point,
+                source: source,
+                sequence: PointerSequenceID(rawValue: 10),
+                ordinal: InputOrdinal(rawValue: 0),
+                presentationRevision: PresentationRevision(rawValue: 24)
+            )
+        ) == .rejected(.inputIneligible)
+    )
 }
 
 @Test func dynamicPiInitialPresentationRefusalKeepsInputIneligible() throws {

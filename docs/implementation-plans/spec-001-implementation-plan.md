@@ -811,9 +811,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       limits and validated effective presentation to that stack, enables all
       six actions only after an accepted physical frame, retains ineligibility
       on transport refusal, rejects repeated initial admission, and removes
-      eligibility on quiescence. Executable application ownership, acquisition,
-      input polling, pacing, and the complete seven-step activation/eight-step
-      teardown join remain open.
+      eligibility on quiescence. It now consumes already-normalized pointer
+      events with exact presentation/source/sequence/ordinal checks and routes
+      down/move/up through generation-checked dispatch. Executable application
+      ownership, raw contact polling and input-gate composition, acquisition,
+      pacing, and the complete seven-step activation/eight-step teardown join
+      remain open.
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation

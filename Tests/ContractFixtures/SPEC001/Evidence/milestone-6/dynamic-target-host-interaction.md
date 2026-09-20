@@ -91,9 +91,18 @@ presentation, derives the portable analyzer, submits it through the real
 `PiScreenDisplayTarget`, and commits the matching interaction candidate only
 after the display accepts the frame.
 
-The serialized Dynamic-profile fixture proves an accepted frame enables all six
+The Dynamic-profile fixture proves an accepted frame enables all six
 actions, a physical transport refusal discards the candidate and leaves input
 ineligible, a second initial-presentation attempt is rejected, and quiescence
 removes eligibility. This is hardware-free lifecycle evidence over a fake
 480 x 320 framebuffer sink; it does not claim Linux device access, connected
 display operation, input polling, acquisition, pacing, deployment, or flashing.
+
+The owner now also consumes already-normalized pointer events downstream of
+the host input gate. It requires the committed physical presentation revision,
+preserves source/sequence/ordinal ordering, resolves down/move/up against only
+the committed interaction generation, and performs final generation-checked
+dispatch. The fixture routes the one-second control through the complete
+three-event sequence, rejects a stale revision, and rejects all input after
+quiescence. Raw PiScreen contact polling and the `HostNormalizedInputGate`
+executable composition remain open.
