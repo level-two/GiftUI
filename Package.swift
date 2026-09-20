@@ -303,6 +303,22 @@ let package = Package(
             ]
         ),
         .target(
+            name: "SignalAnalyzerTargetHost",
+            dependencies: [
+                "GiftUI",
+                "GiftUIDrawing",
+                "GiftUIExecution",
+                "GiftUILayout",
+                "GiftUIObservableState",
+                "GiftUIReferenceTextResources",
+                "GiftUIRenderCore",
+                "GiftUIRuntimeCore",
+                "GiftUIRuntimeDynamic",
+                "GiftUISemanticCore",
+                "SignalAnalyzerPresentation",
+            ]
+        ),
+        .target(
             name: "SignalAnalyzerPresetHarness",
             dependencies: [
                 "GiftUICapabilities",
@@ -336,6 +352,7 @@ let package = Package(
             dependencies: [
                 "GiftUIPlatformRaspberryPi",
                 "SignalAnalyzerPresetHarness",
+                "SignalAnalyzerTargetHost",
             ]
         ),
         .executableTarget(
@@ -647,6 +664,7 @@ let package = Package(
                 "SignalAnalyzerHost",
                 "SignalAnalyzerPresetHarness",
                 "SignalAnalyzerPresentation",
+                "SignalAnalyzerTargetHost",
             ]
         ),
         .testTarget(

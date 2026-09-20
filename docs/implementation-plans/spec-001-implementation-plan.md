@@ -774,6 +774,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       [render capacity evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-render-projection-blocker.md).
       Dynamic Canvas ownership and the diagnostic plan census are recorded in
       the [drawing-plan evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-drawing-plan-workspace.md).
+      The real observable, semantic, layout, Canvas, and combined-render
+      stages now live together in the production `SignalAnalyzerTargetHost`
+      module. Its reusable pipeline is initialized from the exact generated
+      Dynamic limits and reproduces the approved diagnostic maxima on
+      consecutive cycles. Endpoint offer, interaction candidate formation,
+      pacing, and lifecycle ownership remain open; see the
+      [target-host pipeline evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-target-host-presentation-pipeline.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation

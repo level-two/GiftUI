@@ -11,6 +11,7 @@ import GiftUIRuntimeDynamic
 import GiftUISemanticCore
 import SignalAnalyzerDomain
 import SignalAnalyzerPresentation
+import SignalAnalyzerTargetHost
 import Testing
 
 private final class SemanticJoinRepository: SignalAcquisitionRepository {
@@ -33,6 +34,52 @@ private final class SemanticJoinRepository: SignalAcquisitionRepository {
 
 private enum SemanticJoinFailure: Error {
     case expected
+}
+
+@Test func dynamicTargetHostPresentationPipelineUsesExactGeneratedLimits() throws {
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    var pipeline = try #require(
+        DynamicSignalAnalyzerPresentationPipeline(
+            limits: preset.runtimeLimits,
+            maximumRecordedTraversalIdentities: 203,
+            logicalWidth: preset.raster.logicalWidth,
+            logicalHeight: preset.raster.logicalHeight
+        )
+    )
+    let model = makeSemanticJoinModel(failsStart: true)
+    model.startTapped()
+
+    let result = pipeline.derive(
+        model: model,
+        cycle: RunCycleID(rawValue: 1),
+        semanticRevision: SemanticRevision(rawValue: 1)
+    )
+    guard case .success(let summary) = result else {
+        Issue.record("production presentation pipeline failed: \(result)")
+        return
+    }
+    #expect(summary.semantic.semanticNodeCount == 48)
+    #expect(summary.semantic.modifierApplicationCount == 50)
+    #expect(summary.retainedSemanticIdentities == 126)
+    #expect(summary.recordedTraversalIdentities == 203)
+    #expect(summary.layout.scopeCount == 98)
+    #expect(summary.layout.maximumObservedDepth == 13)
+    #expect(summary.drawing.canvasOccurrenceCount == 5)
+    #expect(summary.drawing.strokeCount == 5)
+    #expect(summary.render.operationCount == 35)
+    #expect(summary.render.positionedGlyphCount == 129)
+    #expect(summary.render.maximumObservedClipDepth == 3)
+
+    let repeatedResult = pipeline.derive(
+        model: model,
+        cycle: RunCycleID(rawValue: 2),
+        semanticRevision: SemanticRevision(rawValue: 2)
+    )
+    guard case .success(let repeatedSummary) = repeatedResult else {
+        Issue.record("reused production presentation pipeline failed: \(repeatedResult)")
+        return
+    }
+    #expect(repeatedSummary == summary)
 }
 
 @Test func signalAnalyzerDynamicSemanticJoinMeasuresRealHierarchy() throws {
