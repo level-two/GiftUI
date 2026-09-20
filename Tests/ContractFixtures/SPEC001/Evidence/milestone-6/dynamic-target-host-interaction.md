@@ -81,3 +81,19 @@ streams the full diagnostic-present production candidate successfully.
 
 This closes endpoint construction independently of Linux device opening. The
 executable lifecycle/pacing loop and connected PiScreen execution remain open.
+
+## Initial Presentation Ownership (2026-09-20)
+
+`DynamicSignalAnalyzerPiInitialPresentationOwner` now owns the first concrete
+Pi presentation transaction. It constructs the production Dynamic pipeline and
+exact Pi endpoint from caller-supplied validated limits and effective
+presentation, derives the portable analyzer, submits it through the real
+`PiScreenDisplayTarget`, and commits the matching interaction candidate only
+after the display accepts the frame.
+
+The serialized Dynamic-profile fixture proves an accepted frame enables all six
+actions, a physical transport refusal discards the candidate and leaves input
+ineligible, a second initial-presentation attempt is rejected, and quiescence
+removes eligibility. This is hardware-free lifecycle evidence over a fake
+480 x 320 framebuffer sink; it does not claim Linux device access, connected
+display operation, input polling, acquisition, pacing, deployment, or flashing.

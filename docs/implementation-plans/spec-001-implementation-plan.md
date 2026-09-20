@@ -807,7 +807,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       store, reference bitmap resource, operation-major RGB565 session, and
       real `PiScreenDisplayTarget`. A hardware-free 480 x 320 framebuffer sink
       accepts the complete production candidate through that concrete stack.
-      Executable lifecycle ownership and pacing remain open.
+      A production initial-presentation owner now binds the generated Dynamic
+      limits and validated effective presentation to that stack, enables all
+      six actions only after an accepted physical frame, retains ineligibility
+      on transport refusal, rejects repeated initial admission, and removes
+      eligibility on quiescence. Executable application ownership, acquisition,
+      input polling, pacing, and the complete seven-step activation/eight-step
+      teardown join remain open.
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation

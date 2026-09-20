@@ -46,9 +46,14 @@ private enum SemanticJoinFailure: Error {
 }
 
 private struct EndpointFramebufferSink: PiScreenFramebufferSink {
+    let acceptsPayload: Bool
     private(set) var payloadCount: UInt32 = 0
     private(set) var regionCount: UInt32 = 0
     private(set) var byteCount: UInt32 = 0
+
+    init(acceptsPayload: Bool = true) {
+        self.acceptsPayload = acceptsPayload
+    }
 
     mutating func presentRGB565BigEndian(
         bytes: UnsafeRawBufferPointer,
@@ -58,6 +63,7 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
         guard transform.logicalWidth == 240, transform.logicalHeight == 240 else {
             return false
         }
+        guard acceptsPayload else { return false }
         payloadCount += 1
         regionCount += UInt32(regions.count)
         byteCount += UInt32(bytes.count)
@@ -67,21 +73,7 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
 
 @Test func dynamicPiEndpointFactoryStreamsTheProductionCandidate() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
-    let effective = EffectiveRasterPresentation(
-        operations: preset.capabilityRequirement.operations,
-        extent: preset.capabilityRequirement.extent,
-        regionExtent: CapabilityExtent(width: 240, height: 16)!,
-        rowBytes: CapabilityByteCount(rawValue: 480),
-        operationStream: .synchronousBorrowedOneShot,
-        encoding: .rgb565BigEndian,
-        submissionLifetime: .synchronousBorrow,
-        handoff: .synchronous,
-        realization: .tiled,
-        requiredRasterBytes: CapabilityByteCount(rawValue: 7_680),
-        requiredPayloadBytes: CapabilityByteCount(rawValue: 7_680),
-        inFlightCount: 1,
-        requiredInFlightBytes: CapabilityByteCount(rawValue: 7_680)
-    )
+    let effective = dynamicPiEffectivePresentation(preset: preset)
     let provenance = FrameProvenance(
         cycle: RunCycleID(rawValue: 11),
         semanticRevision: SemanticRevision(rawValue: 12),
@@ -135,6 +127,102 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(endpoint.sink.target.sink.payloadCount > 0)
     #expect(endpoint.sink.target.sink.regionCount > 0)
     #expect(endpoint.sink.target.sink.byteCount > 0)
+}
+
+@Test func dynamicPiInitialPresentationEnablesInputOnlyAfterAcceptedFrame() throws {
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    let provenance = FrameProvenance(
+        cycle: RunCycleID(rawValue: 21),
+        semanticRevision: SemanticRevision(rawValue: 22),
+        candidateFrame: CandidateFrameID(rawValue: 23)
+    )
+    let layout = try #require(
+        PiScreenFramebufferLayout(
+            width: 480,
+            height: 320,
+            bitsPerPixel: 16,
+            bytesPerRow: 960,
+            mappedBytes: 307_200
+        )
+    )
+    let target = try #require(
+        PiScreenDisplayTarget(sink: EndpointFramebufferSink(), layout: layout)
+    )
+    var owner = try #require(
+        DynamicSignalAnalyzerPiInitialPresentationOwner(
+            target: target,
+            limits: preset.runtimeLimits,
+            maximumRecordedTraversalIdentities: 203,
+            effectivePresentation: dynamicPiEffectivePresentation(preset: preset),
+            provenance: provenance,
+            presentationRevision: PresentationRevision(rawValue: 24)
+        )
+    )
+
+    #expect(owner.state == .ready)
+    #expect(!owner.inputIsEligible)
+    #expect(owner.eligibleActionCount == 0)
+    let result = owner.presentInitial(model: makeSemanticJoinModel(failsStart: true))
+    guard case .presented(let summary) = result else {
+        Issue.record("initial presentation failed: \(result)")
+        return
+    }
+    #expect(summary.interactionOccurrenceCount == 6)
+    #expect(owner.state == .inputEligible)
+    #expect(owner.inputIsEligible)
+    #expect(owner.eligibleActionCount == 6)
+    #expect(
+        owner.presentInitial(model: makeSemanticJoinModel())
+            == .failure(.invalidLifecycle)
+    )
+
+    owner.quiesce()
+    #expect(owner.state == .quiescent)
+    #expect(!owner.inputIsEligible)
+    #expect(owner.eligibleActionCount == 0)
+}
+
+@Test func dynamicPiInitialPresentationRefusalKeepsInputIneligible() throws {
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    let provenance = FrameProvenance(
+        cycle: RunCycleID(rawValue: 31),
+        semanticRevision: SemanticRevision(rawValue: 32),
+        candidateFrame: CandidateFrameID(rawValue: 33)
+    )
+    let layout = try #require(
+        PiScreenFramebufferLayout(
+            width: 480,
+            height: 320,
+            bitsPerPixel: 16,
+            bytesPerRow: 960,
+            mappedBytes: 307_200
+        )
+    )
+    let target = try #require(
+        PiScreenDisplayTarget(
+            sink: EndpointFramebufferSink(acceptsPayload: false),
+            layout: layout
+        )
+    )
+    var owner = try #require(
+        DynamicSignalAnalyzerPiInitialPresentationOwner(
+            target: target,
+            limits: preset.runtimeLimits,
+            maximumRecordedTraversalIdentities: 203,
+            effectivePresentation: dynamicPiEffectivePresentation(preset: preset),
+            provenance: provenance,
+            presentationRevision: PresentationRevision(rawValue: 34)
+        )
+    )
+
+    let result = owner.presentInitial(model: makeSemanticJoinModel(failsStart: true))
+    guard case .failure(.offer(let offer)) = result else {
+        Issue.record("refused presentation produced unexpected result: \(result)")
+        return
+    }
+    #expect(offer.disposition == .failed)
+    #expect(!owner.inputIsEligible)
+    #expect(owner.eligibleActionCount == 0)
 }
 
 @Test func dynamicTargetHostPresentationPipelineUsesExactGeneratedLimits() throws {
@@ -661,6 +749,26 @@ private func makeSemanticJoinModel(failsStart: Bool = false) -> SignalAnalyzerVi
         startAcquisition: StartSignalAcquisitionUseCase(repository: repository),
         stopAcquisition: StopSignalAcquisitionUseCase(repository: repository),
         clearCapture: ClearSignalCaptureUseCase(repository: repository)
+    )
+}
+
+private func dynamicPiEffectivePresentation(
+    preset: GeneratedSignalAnalyzerPreset
+) -> EffectiveRasterPresentation {
+    EffectiveRasterPresentation(
+        operations: preset.capabilityRequirement.operations,
+        extent: preset.capabilityRequirement.extent,
+        regionExtent: CapabilityExtent(width: 240, height: 16)!,
+        rowBytes: CapabilityByteCount(rawValue: 480),
+        operationStream: .synchronousBorrowedOneShot,
+        encoding: .rgb565BigEndian,
+        submissionLifetime: .synchronousBorrow,
+        handoff: .synchronous,
+        realization: .tiled,
+        requiredRasterBytes: CapabilityByteCount(rawValue: 7_680),
+        requiredPayloadBytes: CapabilityByteCount(rawValue: 7_680),
+        inFlightCount: 1,
+        requiredInFlightBytes: CapabilityByteCount(rawValue: 7_680)
     )
 }
 
