@@ -326,9 +326,11 @@ place by every C bridge call. This removes per-call coordinator copies while
 keeping the bridge unavailable before initialization and after quiescence. It
 is also the exact storage embedded by the production application input owner,
 which delegates its serialized opportunity drain instead of owning a parallel
-coordinator. The firmware does not yet link the generated root, interaction,
-rendering, or endpoint storage, so the complete Static application lifetime
-remains the next join.
+coordinator. The storage is noncopyable, so neither host composition nor
+firmware code can duplicate its sequence, queue, or opportunity state. The
+firmware does not yet link the generated root, interaction, rendering, or
+endpoint storage, so the complete Static application lifetime remains the next
+join.
 
 ## Code and Evidence Links
 

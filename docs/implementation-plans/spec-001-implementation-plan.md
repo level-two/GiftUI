@@ -965,7 +965,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       The production application input owner now embeds this exact firmware
       storage and delegates its serialized opportunity drain to it, eliminating
       the former parallel coordinator state before the larger composition is
-      linked. This is still the firmware-owned input lifetime only; the
+      linked. The shared storage is now noncopyable, and a compiler-negative
+      fixture rejects explicit duplication before the exact Embedded Swift
+      build proves the global form remains supported. This is still the
+      firmware-owned input lifetime only; the
       generated root, interaction, rendering, and endpoint aggregate remains
       to be linked. An
       allocation-free production touch pipeline now joins the exact

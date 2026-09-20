@@ -286,6 +286,15 @@ opportunity delegates to the storage's serialized drain and adds only the
 scoped interaction/root handler. Firmware admission and the later application
 join therefore cannot diverge into two coordinator states.
 
+The shared storage is noncopyable. The
+`nrf-firmware-input-storage-copy` compiler-negative fixture attempts an
+explicit copy from a consuming argument and must receive Swift's noncopyable
+copy diagnostic. `check-spec-001-nrf-input-storage-ownership.sh` builds the
+production target-host module, checks that diagnostic, and runs as part of the
+nRF SPEC-001 profile. The exact Embedded Swift build accepts the same
+noncopyable type as its fixed global without changing the artifact digests or
+resource totals above.
+
 `staticNRFFirmwareInputStorageOwnsOneInPlaceLifetime` proves pre-initialization
 refusal, duplicate-initialization refusal, a stable caller-owned address across
 admission, retained pending state, the shared serialized drain, and unavailable

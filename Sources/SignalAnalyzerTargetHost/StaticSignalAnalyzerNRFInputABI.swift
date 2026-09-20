@@ -110,7 +110,7 @@ package struct StaticSignalAnalyzerNRFInputABI {
 /// Fixed storage for one firmware-owned input lifetime. Initialization assigns
 /// the source exactly once; every later bridge call mutates the stored ABI in
 /// place rather than copying it out of global storage.
-package struct StaticSignalAnalyzerNRFFirmwareInputStorage {
+package struct StaticSignalAnalyzerNRFFirmwareInputStorage: ~Copyable {
     private var input = StaticSignalAnalyzerNRFInputABI(sourceRawValue: 0)
     private var isInitialized = false
 
