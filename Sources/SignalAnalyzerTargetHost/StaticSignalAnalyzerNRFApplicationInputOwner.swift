@@ -5,17 +5,19 @@ import SignalAnalyzerPresentation
 /// Owns the fixed input and pointer-session state while borrowing the
 /// generated Static root and interaction storage only for a synchronous drain.
 package struct StaticSignalAnalyzerNRFApplicationInputOwner: ~Copyable {
-    private var input: StaticSignalAnalyzerNRFInputABI
+    private var input: StaticSignalAnalyzerNRFFirmwareInputStorage
     private var interactionSession = StaticSignalAnalyzerNRFInteractionSession()
 
     package init(sourceRawValue: UInt16) {
-        input = StaticSignalAnalyzerNRFInputABI(sourceRawValue: sourceRawValue)
+        input = StaticSignalAnalyzerNRFFirmwareInputStorage(
+            sourceRawValue: sourceRawValue
+        )
     }
 
     package var pendingCount: UInt16 { input.pendingCount }
 
     package mutating func installPhysicalPresentation(rawValue: UInt32) {
-        input.installPhysicalPresentation(rawValue: rawValue)
+        _ = input.installPhysicalPresentation(rawValue: rawValue)
         interactionSession.installPhysicalPresentation(
             PresentationRevision(rawValue: rawValue)
         )

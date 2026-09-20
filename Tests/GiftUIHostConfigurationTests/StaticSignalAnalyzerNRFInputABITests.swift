@@ -192,8 +192,13 @@ private struct StaticNRFABIInputHandler: StaticSignalAnalyzerNRFInputHandler {
         observedPresentationRevisionRawValue: 19,
         priorPhysicalSequenceIsCompleteRawValue: 0
     )
+    var unavailableHandler = StaticNRFABIInputHandler()
+    let opportunityBeforeInitialization = storage.runOpportunity(
+        into: &unavailableHandler
+    )
     #expect(!installedBeforeInitialization)
     #expect(admittedBeforeInitialization == nil)
+    #expect(opportunityBeforeInitialization == .rejected(.application(.unavailable)))
 
     let initialized = storage.initialize(sourceRawValue: 73)
     let reinitialized = storage.initialize(sourceRawValue: 74)
@@ -212,6 +217,20 @@ private struct StaticNRFABIInputHandler: StaticSignalAnalyzerNRFInputHandler {
     #expect(admitted.disposition == .queued)
     #expect(storage.pendingCount == 1)
     #expect(withUnsafePointer(to: &storage) { UInt(bitPattern: $0) } == initialAddress)
+
+    var handler = StaticNRFABIInputHandler()
+    let opportunity = storage.runOpportunity(into: &handler)
+    #expect(
+        opportunity
+            == .completed(
+                StaticSignalAnalyzerNRFInputDrainSummary(
+                    eventCount: 1,
+                    dispatchedActionCount: 0,
+                    cancelledOrRejectedCount: 0
+                )
+            )
+    )
+    #expect(handler.events.count == 1)
 
     storage.quiesce()
     #expect(storage.pendingCount == 0)

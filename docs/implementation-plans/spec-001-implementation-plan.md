@@ -962,8 +962,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       tests cover pre-initialization refusal, duplicate initialization,
       stable-owner mutation, pending-state retention, and quiescence; the exact
       Embedded Swift build preserves the established ABI and resource gates.
-      This is the firmware-owned input lifetime only; the generated root,
-      interaction, rendering, and endpoint aggregate remains to be linked. An
+      The production application input owner now embeds this exact firmware
+      storage and delegates its serialized opportunity drain to it, eliminating
+      the former parallel coordinator state before the larger composition is
+      linked. This is still the firmware-owned input lifetime only; the
+      generated root, interaction, rendering, and endpoint aggregate remains
+      to be linked. An
       allocation-free production touch pipeline now joins the exact
       normalizer to that bridge for injected calibration and committed
       presentation revision. It suppresses contact after transport or bridge

@@ -116,6 +116,11 @@ package struct StaticSignalAnalyzerNRFFirmwareInputStorage {
 
     package init() {}
 
+    package init(sourceRawValue: UInt16) {
+        input = StaticSignalAnalyzerNRFInputABI(sourceRawValue: sourceRawValue)
+        isInitialized = true
+    }
+
     package var pendingCount: UInt16 {
         isInitialized ? input.pendingCount : 0
     }
@@ -154,6 +159,16 @@ package struct StaticSignalAnalyzerNRFFirmwareInputStorage {
             priorPhysicalSequenceIsCompleteRawValue:
                 priorPhysicalSequenceIsCompleteRawValue
         )
+    }
+
+    package mutating func runOpportunity<Handler>(
+        into handler: inout Handler
+    ) -> StaticSignalAnalyzerNRFInputOpportunityResult
+    where Handler: StaticSignalAnalyzerNRFInputHandler {
+        guard isInitialized else {
+            return .rejected(.application(.unavailable))
+        }
+        return input.runOpportunity(into: &handler)
     }
 
     package mutating func quiesce() {

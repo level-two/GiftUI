@@ -261,9 +261,9 @@ and flash gates:
 
 | Artifact | SHA-256 |
 | --- | --- |
-| `zephyr.elf` | `c25f6fcc6822aa1851f6c2ec9edf5a8b7d4215cc12c79b6c5c6d4f0b14e95eca` |
-| `zephyr.hex` | `7f126d1cf5891c8eeb5ad3a3cd446a33a3935b6374d88ae4b29db10686ffc39b` |
-| `zephyr.map` | `86fe38c3f47934eae268c886857333494dd902bc80c1db46abb994b79e4a3763` |
+| `zephyr.elf` | `373c02769f556b4c24937752a60c185756cc68eb57fc8a64f73090f3cc28d541` |
+| `zephyr.hex` | `13a426114a9677f1d782ab5999ea750cd38de73949ee4071f324dabe10a03822` |
+| `zephyr.map` | `53188f8d99cdb8d2944f2f8bbdc9af96cd57653352aa77175bbcc1ccccbbeb87` |
 | `zephyr.dts` | `042dd0ead8283db2cb12d0ff36caad849f8c88787859202809cd03bf17aef6d7` |
 
 The load segments use 34,384 flash bytes and 175,552 RAM bytes. This evidence
@@ -280,9 +280,17 @@ mutates the retained coordinator directly for every later bridge call. The
 firmware no longer copies an optional coordinator value out of global storage
 and assigns it back after presentation, admission, or quiescence.
 
+`StaticSignalAnalyzerNRFApplicationInputOwner` now embeds this exact storage
+rather than a separate `StaticSignalAnalyzerNRFInputABI`. Its application
+opportunity delegates to the storage's serialized drain and adds only the
+scoped interaction/root handler. Firmware admission and the later application
+join therefore cannot diverge into two coordinator states.
+
 `staticNRFFirmwareInputStorageOwnsOneInPlaceLifetime` proves pre-initialization
 refusal, duplicate-initialization refusal, a stable caller-owned address across
-admission, retained pending state, and unavailable rejection after quiescence.
+admission, retained pending state, the shared serialized drain, and unavailable
+rejection after quiescence. Existing application-owner tests prove action
+dispatch and capture cleanup through the same storage path.
 The exact ARMv7E-M build above compiles this same storage into the firmware and
 retains all six C entry points while passing VFP hard-float, zero-heap,
 no-full-framebuffer, RAM, and flash gates. This establishes only the firmware
