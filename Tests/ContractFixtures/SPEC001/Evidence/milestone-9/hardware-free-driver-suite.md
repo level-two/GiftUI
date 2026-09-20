@@ -12,3 +12,9 @@ logs under `.build/test-reports/all-hardware-free/` and contract reports under
 `.build/contract-reports/`. `compare-spec-001-profiles.rb` consumes the four
 latest SPEC-001 reports and fails on a missing field or any semantic/workload
 difference.
+
+The host-native focused phase explicitly compiles with
+`GIFTUI_DYNAMIC_PROFILE` because it exercises the production Dynamic target
+host and its retained Canvas callables for every requested evidence profile.
+The later profile-specific product build remains authoritative for the selected
+macOS, ARMv6, or nRF artifact and preserves its own compile-mode contract.

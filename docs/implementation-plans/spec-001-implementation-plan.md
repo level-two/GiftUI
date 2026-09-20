@@ -1042,7 +1042,9 @@ human `implemented` transition.
       **Completed:** every hardware-free SPEC-001 profile and every registered
       dependency driver runs through the explicit repository registry. The
       four latest analyzer reports compare equal across 24 semantic/workload
-      fields. Evidence is in
+      fields. The host-native focused phase explicitly enables the Dynamic
+      profile required by its production Canvas-callable tests; the later
+      profile product build remains independently selected. Evidence is in
       `Tests/ContractFixtures/SPEC001/Evidence/milestone-9/hardware-free-driver-suite.md`.
 - [x] `T9.3` — Run `scripts/format-swift.sh`, `scripts/test.sh` for the fast
       local gate and applicable explicit profiles, and governance validation.
