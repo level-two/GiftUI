@@ -32,7 +32,7 @@ package struct StaticSignalAnalyzerNRFSemanticCanvasDescriptor: Equatable, Senda
 /// generated primitive records can consume it without changing the ABI.
 package enum StaticSignalAnalyzerNRFSemanticRegionStore {
     package static let regionByteCount = 3_024
-    package static let encodedByteCount = 84
+    package static let encodedByteCount = 88
     package static let canvasDescriptorCount: UInt16 = 5
     package static let actionCodeCount: UInt16 = 6
 
@@ -43,6 +43,7 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
     private static let canvasOffset = 32
     private static let canvasStride = 8
     private static let actionOffset = 72
+    private static let checksumOffset = 84
 
     package static func stageCandidate(
         inputs: inout StaticSignalAnalyzerNRFGeneratedPresentationInputs,
@@ -163,6 +164,7 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
             store(actionIndex, in: region, at: actionOffset + Int(actionIndex) * 2)
             actionIndex += 1
         }
+        store(checksum(of: region), in: region, at: checksumOffset)
         return decodeHeader(from: region) != nil
     }
 
@@ -174,7 +176,8 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
             loadUInt16(from: region, at: 4) == schemaVersion,
             let state = StaticSignalAnalyzerNRFSemanticRegionState(rawValue: region[6]),
             let variant = StaticSignalAnalyzerNRFSemanticVariant(rawValue: region[7]),
-            loadUInt32(from: region, at: 8) == rootIdentity
+            loadUInt32(from: region, at: 8) == rootIdentity,
+            loadUInt32(from: region, at: checksumOffset) == checksum(of: region)
         else { return nil }
         return StaticSignalAnalyzerNRFSemanticRegionHeader(
             state: state,
@@ -222,5 +225,18 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
         at offset: Int
     ) -> UInt32 {
         UInt32(littleEndian: region.baseAddress!.load(fromByteOffset: offset, as: UInt32.self))
+    }
+
+    private static func checksum(
+        of region: UnsafeMutableRawBufferPointer
+    ) -> UInt32 {
+        var value: UInt32 = 2_166_136_261
+        var index = 0
+        while index < checksumOffset {
+            value ^= UInt32(region[index])
+            value = value &* 16_777_619
+            index += 1
+        }
+        return value
     }
 }

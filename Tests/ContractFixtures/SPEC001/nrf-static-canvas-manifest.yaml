@@ -7,12 +7,13 @@ callable_case_count: 2
 greatest_capture_byte_count: 32
 semantic_region:
   byte_count: 3024
-  encoded_byte_count: 84
+  encoded_byte_count: 88
   header_byte_count: 32
   canvas_descriptor_offset: 32
   canvas_descriptor_stride: 8
   action_code_offset: 72
   action_code_count: 6
+  checksum_offset: 84
 semantic_variants:
   - { name: normal, nodes: 47, bodies: 14, modifiers: 49, actions: 6, depth: 34, structural: 124, traversal: 201 }
   - { name: diagnostic, nodes: 48, bodies: 14, modifiers: 50, actions: 6, depth: 34, structural: 126, traversal: 203 }

@@ -178,6 +178,26 @@ import Testing
                 index += 1
             }
 
+            #expect(
+                profile.withRegion(.semanticCandidate) { region in
+                    region[72] ^= 0x01
+                    return true
+                } == true
+            )
+            #expect(
+                StaticSignalAnalyzerNRFSemanticRegionStore.header(
+                    in: .semanticCandidate,
+                    profile: &profile
+                ) == nil
+            )
+            #expect(inputs.publishSemanticCandidate(revision: 7, in: &profile) == nil)
+            #expect(
+                profile.withRegion(.semanticCandidate) { region in
+                    region[72] ^= 0x01
+                    return true
+                } == true
+            )
+
             let published = inputs.publishSemanticCandidate(
                 revision: 7,
                 in: &profile

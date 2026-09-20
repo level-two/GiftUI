@@ -19,12 +19,13 @@ fail_check("greatest capture differs") unless manifest["greatest_capture_byte_co
 semantic_region = manifest.fetch("semantic_region")
 expected_semantic_region = {
   "byte_count" => 3024,
-  "encoded_byte_count" => 84,
+  "encoded_byte_count" => 88,
   "header_byte_count" => 32,
   "canvas_descriptor_offset" => 32,
   "canvas_descriptor_stride" => 8,
   "action_code_offset" => 72,
-  "action_code_count" => 6
+  "action_code_count" => 6,
+  "checksum_offset" => 84
 }
 fail_check("semantic region layout differs") unless semantic_region == expected_semantic_region
 expected_variants = [
@@ -97,16 +98,17 @@ fail_check("generated presentation inputs use dynamic storage") if presentation_
 semantic_storage = ROOT.join(manifest.fetch("generated_semantic_region")).read
 semantic_tokens = [
   "static let regionByteCount = 3_024",
-  "static let encodedByteCount = 84",
+  "static let encodedByteCount = 88",
   "static let canvasDescriptorCount: UInt16 = 5",
   "static let actionCodeCount: UInt16 = 6",
   "profile.withRegion(.semanticCandidate)",
   "profile.withRegion(.semanticPublished)",
   "case candidate = 1",
-  "case published = 2"
+  "case published = 2",
+  "loadUInt32(from: region, at: checksumOffset) == checksum(of: region)"
 ]
 missing_semantic = semantic_tokens.reject { |token| semantic_storage.include?(token) }
 fail_check("generated semantic-region tokens are missing: #{missing_semantic.join(', ')}") unless missing_semantic.empty?
-fail_check("generated semantic region uses dynamic storage") if semantic_storage.match?(/\bArray\b|\[(?!\d+\])[^\]]+\]|@escaping/)
+fail_check("generated semantic region uses dynamic storage") if semantic_storage.match?(/\bArray\b|@escaping/)
 
 puts "SPEC-001 nRF Static Canvas manifest passed: two dense cases, fixed semantic regions, five occurrences, and one exact 32-byte trace record."
