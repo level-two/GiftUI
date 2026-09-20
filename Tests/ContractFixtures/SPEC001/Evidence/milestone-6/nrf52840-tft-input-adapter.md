@@ -291,6 +291,24 @@ validator, not an Embedded Swift link or connected-target run. The validator
 is not yet part of the firmware whole-module source, so the firmware hashes and
 resource totals above remain unchanged. No board was flashed.
 
+## Static application storage join
+
+`StaticSignalAnalyzerNRFApplicationStorage` is the caller-owned, noncopyable
+aggregate for the next composition boundary. It can be constructed only from
+the exact `StaticSignalAnalyzerNRFAssembly` report and uses the generated root
+descriptor to create the `UInt32` observable root. The same inert construction
+creates fixed candidate and committed interaction stores at the generated
+six-action/six-hit-region limit and one
+`StaticSignalAnalyzerNRFApplicationInputOwner`. It does not bind a model,
+activate input, open a device, or retain a pointer to movable storage.
+
+`StaticSignalAnalyzerNRFAssemblyTests` proves exact-report acceptance, rejection
+of a valid report from another target, successful use of the generated limit,
+and rejection of a seven-action/seven-region candidate. This remains host
+mechanism evidence; the aggregate is not yet linked into the firmware
+whole-module source or an address-stable firmware lifetime. Firmware hashes
+and resource totals therefore remain unchanged. No board was flashed.
+
 ## Static interaction and observable mutation
 
 `StaticSignalAnalyzerNRFApplicationInputOwner` is the production typed owner of

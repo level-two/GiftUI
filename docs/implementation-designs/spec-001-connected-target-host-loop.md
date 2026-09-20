@@ -307,8 +307,12 @@ It consumes the generated preset and fixed storage audit, rejects any departure
 from the 480 x 320 / 480 x 4 / 3,840-byte projection, resolves the exact
 capability contributions, and completes the same nine-stage host validator used
 by the Dynamic Pi composition. The resulting immutable report is available
-before device or application-owner construction; linking the report and owners
-into the firmware lifecycle remains the next join.
+before device or application-owner construction. A noncopyable, caller-owned
+Static application storage aggregate now requires that exact report and
+constructs the generated root, six-action/six-region interaction state, and
+input owner in one inert value. The eventual firmware owner must keep this
+value address-stable for the complete bound-model lifetime; activation and
+binding remain later joins.
 
 ## Code and Evidence Links
 
@@ -339,6 +343,9 @@ into the firmware lifecycle remains the next join.
   validates the generated Static preset, storage audit, component graph,
   capability resolution, endpoint projection, application, input, and policy
   contract before construction has side effects.
+- [`StaticSignalAnalyzerNRFApplicationStorage.swift`](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFApplicationStorage.swift)
+  constructs the inert generated root, interaction, and input storage only
+  from that exact validated assembly report.
 - [`nrf52840-tft-input-adapter.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md)
   records the current nRF device-adapter boundary and open host-loop gap.
 - [`piscreen-platform-adapter.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md)

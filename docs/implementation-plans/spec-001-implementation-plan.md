@@ -932,7 +932,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       domain, `1/32/1` admission cardinality, input/wake boundary, pacing, and
       residual policy before any device or application owner is constructed.
       Its host fixture proves the immutable report and remains distinct from
-      Embedded Swift or connected-target evidence.
+      Embedded Swift or connected-target evidence. A caller-owned,
+      noncopyable Static application aggregate now accepts only that exact
+      report and constructs the generated `UInt32` root, six-action/six-region
+      interaction stores, and input owner together without activating them.
+      Host checks prove another target report is rejected and the generated
+      interaction limit is neither narrowed nor enlarged.
       Building this owner into the firmware's complete generated Static
       presentation composition remains open. The firmware
       now compiles the exact shared input values,
