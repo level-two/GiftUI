@@ -327,6 +327,14 @@ absence through the existing Static root lifecycle, detaching the change sink,
 removing the model, and releasing the repository before any field pointer
 expires.
 
+The generated Static profile workspace is a noncopyable region map over the
+firmware's caller-owned retained storage symbol. Its sixteen exact,
+nonoverlapping ranges follow registry order and equal the approved 36,368-byte
+audit without an allocator or a large stack temporary. Attempt reset clears
+only the eight attempt-local families; complete reset clears the entire
+caller-owned store. The remaining firmware composition must construct this map
+before lending its regions to semantic, layout, Drawing, and render owners.
+
 The aggregate also owns the fixed Static fact-admission storage at a stable
 address. Root binding creates the Presentation observation adapter from the
 same repository as the model use cases, but does not start it. A distinct

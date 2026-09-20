@@ -979,6 +979,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       gate verifies the exact linked size of all three named stores, and the
       SPEC-015 report derives those sizes from the inspected ELF. The pristine
       build remains below the approved RAM/flash ceilings with both heaps off.
+      A noncopyable, allocation-free region map now partitions the existing
+      caller-owned 36,368-byte firmware reservation into all sixteen generated
+      profile families. Host tests prove exact-capacity refusal, field-by-field
+      audit equality, and that attempt reset clears 28,224 attempt-local bytes
+      while complete reset also clears all 8,144 retained bytes. Caller-supplied
+      storage avoids materializing this workspace as a large stack temporary.
       Building this owner into the firmware's complete generated Static
       presentation composition remains open. The firmware
       now compiles the exact shared input values,

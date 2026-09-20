@@ -455,5 +455,25 @@ flash ceilings.
 | `zephyr.map` | `fe4e06099b9f3585fdebf79c05053582a7336614126825bb03920feffd0f5fe0` |
 | `zephyr.dts` | `042dd0ead8283db2cb12d0ff36caad849f8c88787859202809cd03bf17aef6d7` |
 
-This is cross-build and inspection evidence only. No board was flashed, and
-the generated Static presentation owner remains the next firmware join.
+This is cross-build and inspection evidence only. No board was flashed.
+
+## Generated Static profile-region owner
+
+`StaticSignalAnalyzerNRFProfileRegions` now maps one exact, nonoverlapping range
+for every generated profile-storage family over a caller-owned 36,368-byte
+buffer. Its field-by-field `RuntimeStorageByteCounts` equals the nRF preset
+exactly, and any other supplied capacity is rejected. The representation adds
+no dynamic storage or discretionary headroom to the approved audit and can map
+the already retained firmware storage symbol without copying it onto the
+embedded stack.
+
+The reset fixture fills the complete owner with a nonzero byte pattern. An
+attempt reset clears the eight registry-defined attempt-local regions and
+leaves exactly 8,144 retained bytes; complete reset then clears those retained
+regions too. The first attempted inline aggregate representation was rejected
+after its synthesized initializer required roughly 342 KB of temporary stack
+in a focused host fixture. The caller-supplied map preserves the approved
+storage contract without introducing that embedded-stack hazard. This remains
+host mechanism evidence; the remaining firmware join must construct the map
+over the retained symbol with semantic, layout, Drawing, render, and endpoint
+owners. No board was flashed.
