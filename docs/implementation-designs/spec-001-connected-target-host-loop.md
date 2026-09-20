@@ -255,7 +255,9 @@ correlation allocator now advances cycles per opportunity and advances
 semantic, candidate-frame, and presentation identities only when a changed
 candidate reaches publication. The serialized coordinator owns that allocation
 call site and passes the reserved tuple directly to presentation. Linux polling
-and full activation/teardown remain open.
+now has a bounded decoded-contact ingress into normalized admission and the
+shared pacing owner. The device-file poll loop and full activation/teardown
+remain open.
 
 ## Code and Evidence Links
 

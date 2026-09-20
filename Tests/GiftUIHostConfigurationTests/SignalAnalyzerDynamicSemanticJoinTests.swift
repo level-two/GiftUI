@@ -769,6 +769,81 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(pacing.recordQueuedInput(at: boundary) == .failure(.unavailable))
 }
 
+@Test func dynamicPiDecodedContactsEnterNormalizedAdmissionAndWakePacing() throws {
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    let source = InputSourceID(rawValue: 29)
+    let revision = PresentationRevision(rawValue: 30)
+    var coordinator = DynamicSignalAnalyzerPiInputCoordinator(
+        source: source,
+        capacity: preset.runtimeLimits.execution.maximumInputEvents,
+        context: ExecutionContext(
+            cycle: RunCycleID(rawValue: 0),
+            semanticRevision: SemanticRevision(rawValue: 0),
+            candidateFrame: CandidateFrameID(rawValue: 0),
+            phase: .idle
+        )
+    )
+    coordinator.installPhysicalPresentation(revision)
+    let pacing = DynamicSignalAnalyzerPiWakePacingOwner(
+        policy: preset.pacing,
+        initialFrameOriginMicroseconds: 0
+    )
+    let ingress = DynamicSignalAnalyzerPiContactIngress(source: source)
+    var decoder = PiScreenContactDecoder()
+    let point = Point(x: 120, y: 80)
+    let decodedDown = decoder.update(point: point, touching: true)
+    let decodedMove = decoder.update(point: point, touching: true)
+    let decodedUp = decoder.update(point: point, touching: false)
+    let contacts = [
+        try #require(decodedDown),
+        try #require(decodedMove),
+        try #require(decodedUp),
+    ].map {
+        DynamicSignalAnalyzerPiContact(phase: $0.phase, position: $0.point)
+    }
+
+    #expect(
+        ingress.admit(
+            contacts,
+            observedPresentationRevision: revision,
+            at: 1,
+            coordinator: &coordinator,
+            pacing: pacing
+        )
+            == .admitted(
+                DynamicSignalAnalyzerPiContactIngressSummary(
+                    contactCount: 3,
+                    queuedCount: 3,
+                    rejectedCount: 0,
+                    wakeRequestCount: 1,
+                    coalescedWakeCount: 2
+                )
+            )
+    )
+    #expect(pacing.accumulatedReasons == .admittedWork)
+    #expect(!pacing.opportunityIsActive)
+
+    #expect(
+        ingress.admit(
+            [DynamicSignalAnalyzerPiContact(phase: .down, position: point)],
+            observedPresentationRevision: PresentationRevision(rawValue: 29),
+            at: 2,
+            coordinator: &coordinator,
+            pacing: pacing
+        )
+            == .admitted(
+                DynamicSignalAnalyzerPiContactIngressSummary(
+                    contactCount: 1,
+                    queuedCount: 0,
+                    rejectedCount: 1,
+                    wakeRequestCount: 0,
+                    coalescedWakeCount: 0
+                )
+            )
+    )
+    #expect(pacing.accumulatedReasons == .admittedWork)
+}
+
 @Test func dynamicPiPacingServicesTheSerializedCoordinatorAtFrameBoundary() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     let pacing = DynamicSignalAnalyzerPiWakePacingOwner(

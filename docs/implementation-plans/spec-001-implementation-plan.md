@@ -849,7 +849,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       owns those reservations, including the changed-publication-only call
       site. The pacing owner now services that coordinator only at the
       generated frame boundary and completes pacing for success or focused
-      failure. Linux polling and the complete lifecycle loop remain open.
+      failure. A bounded decoded-contact ingress now joins PiScreen phases to
+      normalized admission and wake coalescing without synchronous model work.
+      The Linux device-file poll loop and complete lifecycle loop remain open.
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation
