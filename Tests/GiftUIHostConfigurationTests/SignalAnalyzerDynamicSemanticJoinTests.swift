@@ -166,7 +166,7 @@ private enum SemanticJoinFailure: Error {
     #expect(backgrounds[Color(red: 48, green: 48, blue: 48)] == 1)
 }
 
-@Test func signalAnalyzerDynamicSemanticJoinRejectsStaleApprovedPreset() throws {
+@Test func signalAnalyzerDynamicSemanticJoinAdmitsApprovedPreset() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     let model = makeSemanticJoinModel()
     let root = DynamicObservableRootAdapter<
@@ -195,10 +195,18 @@ private enum SemanticJoinFailure: Error {
         stateBinding: &binding
     )
 
-    #expect(result == .semanticFailure(.capacityExhausted))
-    #expect(reconciler.finishCandidate(.discard) == .success(.candidateDiscarded))
-    #expect(!storage.hasPublishedResult)
-    #expect(!root.isActive)
+    guard case .success(let summary) = result else {
+        _ = reconciler.finishCandidate(.discard)
+        Issue.record("approved preset rejected the Signal Analyzer: \(result)")
+        return
+    }
+    #expect(summary.semanticNodeCount == 47)
+    #expect(summary.modifierApplicationCount == 49)
+    #expect(summary.maximumObservedDepth == 34)
+    #expect(storage.semanticScopeCount == 124)
+    #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
+    #expect(storage.hasPublishedResult)
+    #expect(root.isActive)
 }
 
 @Test func signalAnalyzerDynamicLayoutJoinMeasuresDiagnosticMaximum() throws {
@@ -211,27 +219,21 @@ private enum SemanticJoinFailure: Error {
     >(capacity: preset.runtimeLimits.observableState.maximumLocations)
     var reconciler = DynamicObservableStateReconciler(root: root)
     var binding = ObservableStateBindingDecorator(reconciler: reconciler)
-    let measurementSemanticLimits = SemanticExpansionLimits(
-        maximumDepth: 64,
-        maximumSemanticNodes: 512,
-        maximumBodyEvaluations: 512,
-        maximumModifierApplications: 512,
-        maximumActionOccurrences: 32
-    )!
     var semanticWorkspace = DynamicSemanticExpansionWorkspace(
-        maximumPathComponents: 64,
-        maximumIdentities: 2048
+        maximumPathComponents: preset.runtimeLimits.semantic.maximumDepth,
+        maximumIdentities: 203
     )
     var semanticStorage = DynamicSemanticHostStorage(
-        limits: measurementSemanticLimits,
-        maximumStructuralOccurrences: 512,
+        limits: preset.runtimeLimits.semantic,
+        maximumStructuralOccurrences:
+            preset.runtimeLimits.maximumSemanticStructuralOccurrences,
         canvasCapacity: preset.runtimeLimits.drawing.maximumCanvasOccurrences
     )
 
     #expect(reconciler.beginCandidate() == .success(.candidateStarted))
     let semanticResult = expandSemanticTreeWithStateBinding(
         SignalAnalyzerView(viewModel: model),
-        limits: measurementSemanticLimits,
+        limits: preset.runtimeLimits.semantic,
         workspace: &semanticWorkspace,
         sink: &semanticStorage,
         stateBinding: &binding
@@ -243,11 +245,7 @@ private enum SemanticJoinFailure: Error {
     #expect(semanticWorkspace.recordedIdentityCount == 203)
     #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
     #expect(semanticStorage.semanticScopeCount == 126)
-    #expect(preset.runtimeLimits.renderWorkspace.maximumSemanticScopes == 62)
-    #expect(
-        semanticStorage.semanticScopeCount
-            > preset.runtimeLimits.renderWorkspace.maximumSemanticScopes
-    )
+    #expect(preset.runtimeLimits.renderWorkspace.maximumSemanticScopes == 98)
 
     var scopeIdentities: [DynamicSemanticIdentity] = []
     var ordinal: UInt16 = 0
@@ -273,16 +271,10 @@ private enum SemanticJoinFailure: Error {
     }.count
     #expect(duplicateScopeCount == 0)
 
-    let measurementLayoutLimits = LayoutLimits(
-        maximumScopes: 512,
-        maximumDepth: 64,
-        maximumTextScalars: 512,
-        maximumTextLines: 64,
-        maximumPositionedGlyphs: 512
-    )!
-    var layoutWorkspace = DynamicLayoutWorkspace(limits: measurementLayoutLimits)
-    var validationWorkspace = DynamicLayoutWorkspace(limits: measurementLayoutLimits)
-    var validation = LayoutSemanticValidation(limits: measurementLayoutLimits)
+    let layoutLimits = preset.runtimeLimits.layout
+    var layoutWorkspace = DynamicLayoutWorkspace(limits: layoutLimits)
+    var validationWorkspace = DynamicLayoutWorkspace(limits: layoutLimits)
+    var validation = LayoutSemanticValidation(limits: layoutLimits)
     let validationError = validation.validate(
         semantic: semanticStorage,
         metrics: GiftUIReferenceTextResources.targetPackage.metrics,
@@ -291,13 +283,13 @@ private enum SemanticJoinFailure: Error {
     #expect(validationError == nil)
     validationWorkspace.resetLayout()
     var layoutSink = ResolvedRenderLayoutResultSink(
-        storage: DynamicResolvedLayoutStorage(limits: measurementLayoutLimits)
+        storage: DynamicResolvedLayoutStorage(limits: layoutLimits)
     )
     let layoutResult = layout(
         semantic: semanticStorage,
         metrics: GiftUIReferenceTextResources.targetPackage.metrics,
         proposal: ProposedSize(width: 240, height: 240)!,
-        limits: measurementLayoutLimits,
+        limits: layoutLimits,
         workspace: &layoutWorkspace,
         sink: &layoutSink
     )
@@ -339,27 +331,15 @@ private enum SemanticJoinFailure: Error {
     }
     #expect(visitedRenderScopes.count == 98)
     #expect(maximumRenderDepth == 13)
-    let renderLimits = RenderLimits(
-        maximumOperations: 64,
-        maximumPositionedGlyphs: 512,
-        maximumClipDepth: 16
-    )!
-    let renderWorkspaceCapacity = RenderWorkspaceCapacity(
-        maximumSemanticScopes: 128,
-        maximumLayoutScopes: 128,
-        maximumTraversalDepth: 32,
-        maximumTextLines: 64
-    )!
+    let renderLimits = preset.runtimeLimits.render
+    let renderWorkspaceCapacity = preset.runtimeLimits.renderWorkspace
     var renderWorkspace = DynamicRenderWorkspace(
         capacity: renderLimits,
         structuralCapacity: renderWorkspaceCapacity
     )
     var renderSink = RenderRecordingSink(
         storage: SemanticJoinRenderStorage(
-            capacity: RenderSinkCapacity(
-                maximumOperations: 64,
-                maximumPositionedGlyphs: 512
-            )
+            capacity: preset.runtimeLimits.renderSink
         )
     )
     let surfaceBounds = Rect(
@@ -439,10 +419,7 @@ private enum SemanticJoinFailure: Error {
             damageMode: .initializeCompleteSurface,
             rootForeground: .white,
             limits: renderLimits,
-            configuredSinkCapacity: RenderSinkCapacity(
-                maximumOperations: 64,
-                maximumPositionedGlyphs: 512
-            ),
+            configuredSinkCapacity: preset.runtimeLimits.renderSink,
             workspace: &renderWorkspace
         )
         guard case .success(let canvasHeader) = canvasPreflight else {
@@ -454,10 +431,7 @@ private enum SemanticJoinFailure: Error {
         #expect(canvasHeader.maximumObservedClipDepth == 3)
 
         var drawingSink = SemanticJoinDrawingSink(
-            capacity: RenderSinkCapacity(
-                maximumOperations: 64,
-                maximumPositionedGlyphs: 512
-            )
+            capacity: preset.runtimeLimits.renderSink
         )
         let canvasRenderResult = CanvasRenderProducer.produce(
             semantic: semanticRenderView,

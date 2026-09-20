@@ -32,19 +32,19 @@ census is exactly 9 scopes: one screen, one waveform panel, one status, one
 controls, one ruler, and four channel rows. State-dependent paths substitute
 the approved green and red roles without changing cardinality.
 
-The generated SPEC-015 preset remains deliberately unchanged. Its semantic
-limits admit 5 modifiers and depth 26, its render workspace admits 62 semantic
-scopes, and its layout/render workspace admits 53 scopes and traversal depth
-6. The exact preset therefore fails closed with semantic capacity exhaustion.
-The checked measurement test uses separately labeled diagnostic capacities and
-also proves that the approved preset rejects the expanded surface.
+The maintainer approved the measured capacities on 2026-09-20. The regenerated
+SPEC-015 preset now admits 50 modifiers at semantic depth 34, 126 retained
+semantic identities, and 98 coherent render/layout scopes at depth 13. The
+checked production test uses the exact generated preset values and proves that
+the complete diagnostic-present hierarchy reaches those bounds without
+capacity failure.
 
 After the five Canvas scopes receive nonzero exact frames, the coherent
 render-only projection measures 98 scopes at depth 13. Ordinary render
 streaming completes with 30 operations; Canvas streaming adds 5 strokes for a
 35-operation total, with 129 positioned glyphs and clip depth 3. These results
-require deliberate SPEC-008/SPEC-013/SPEC-015 review and reapproval before
-preset regeneration.
+are recorded in the reapproved SPEC-008, SPEC-013, and SPEC-015 capacity
+contract and its regenerated preset.
 
 This evidence is hardware-free. No deployment, framebuffer access, or
 connected-target execution occurred.

@@ -241,9 +241,9 @@ and the complete foreground/background screen surface is realized. The
 diagnostic maximum measures 126 retained expansion identities and 98 coherent
 render/layout scopes at depth 13. Ordinary render streaming produces 30
 operations; the production Dynamic Canvas plan and extension add five strokes
-for 35 total operations, 129 positioned glyphs, and clip depth 3. These values
-exceed the currently approved structural workload and require deliberate
-SPEC-008/SPEC-013/SPEC-015 reapproval before exact preset integration. Live
+for 35 total operations, 129 positioned glyphs, and clip depth 3. The
+maintainer approved these SPEC-008/SPEC-013/SPEC-015 values on 2026-09-20, and
+the regenerated exact preset admits the complete production join. Live
 host-owner composition remains open inside T6.7.
 
 ## Code and Evidence Links

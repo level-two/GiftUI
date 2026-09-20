@@ -36,8 +36,8 @@ The final styled-and-sized diagnostic hierarchy measures 48 semantic nodes,
 50 modifiers, semantic depth 34, 126 retained expansion identities, 203
 recorded traversal identities, and 98 coherent render/layout scopes at render
 and layout depth 13. The normal hierarchy measures 47 semantic nodes, 49
-modifiers, and 124 retained identities. These values require deliberate
-SPEC-008/SPEC-013/SPEC-015 review before preset regeneration.
+modifiers, and 124 retained identities. The maintainer approved these values
+on 2026-09-20, and the generated preset now admits the exact production join.
 
 This evidence is hardware-free. No deployment, framebuffer access, or
 connected-target execution occurred.

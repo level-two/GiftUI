@@ -19,12 +19,12 @@ swift test --disable-sandbox --filter macOSHardwareFreePresets
 ```
 
 The immutable reports are bound to repository revision
-`b85007d4176f2152f52c29b21e252fda0e72fc7a` and run
-`b85007d4176f2152f52c29b21e252fda0e72fc7a-451f863b0bdd06df`.
+`4035e46ed44e36fccf0fa160185f28a442257826` and run
+`4035e46ed44e36fccf0fa160185f28a442257826-e5b156c796a8714d`.
 The normalized reports agree on semantic checksum `360515885`, extent
 `320x240`, six actions, 32 compact-fact slots, five Canvas occurrences, 202
 live points, and 832 plan points. The permitted profile-storage difference is
-33,816 bytes Dynamic versus 30,608 bytes Static. Each report records one
+41,376 bytes Dynamic versus 36,368 bytes Static. Each report records one
 startup resolver call; the execution phase performs no further resolution.
 
 Changing the immutable extent requires selecting and validating a fresh preset;

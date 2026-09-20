@@ -46,9 +46,9 @@ variants:
         textOccurrences: 21
         rectangularBackgrounds: 9
         positionedGlyphs: 139
-        semanticScopes: 62
-        layoutScopes: 32
-        traversalDepth: 6
+        semanticScopes: 98
+        layoutScopes: 98
+        traversalDepth: 13
         textLines: 21
         foregroundDepth: 5
     renderLimits: {maximumOperations: 64, maximumPositionedGlyphs: 512, maximumClipDepth: 16}
@@ -66,9 +66,9 @@ variants:
       operations: 30
       positionedGlyphs: 139
       clipDepth: 4
-      semanticScopes: 62
-      layoutScopes: 32
-      traversalDepth: 6
+      semanticScopes: 98
+      layoutScopes: 98
+      traversalDepth: 13
       textLines: 21
       foregroundDepth: 5
     criteria: [RD-009]

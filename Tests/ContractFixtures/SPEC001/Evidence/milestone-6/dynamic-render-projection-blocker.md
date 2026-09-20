@@ -22,15 +22,14 @@ and frame surface represented by SPEC-008. Its independently checked expansion
 maximum is 126 retained semantic identities; its render-only projection and
 layout each contain 98 scopes at depth 13, including exactly 21 foreground
 scopes and 9 background scopes. See `portable-surface-measurement.md`. These
-measurements exceed the currently approved SPEC-008/SPEC-015 render-workspace
-values of 62 semantic scopes, 53 layout scopes, and traversal depth 6.
+measurements are the approved SPEC-008/SPEC-015 render-workspace values.
 
 The checked regressions assert the measured surface, complete render-tree
-coverage, successful production render streaming, and the exact preset's
-fail-closed semantic-capacity result. The coherent projection blocker is
-resolved, including Canvas-plan integration. T6.7 remains blocked on
-deliberate SPEC-008/SPEC-013/SPEC-015 amendment and reapproval plus the live
-host-owner composition; no silent headroom was added.
+coverage, successful production render streaming, and exact generated-preset
+admission. The maintainer approved the SPEC-008/SPEC-013/SPEC-015 amendment on
+2026-09-20; the workload generator now emits the measured structural values
+and checked profile byte totals. The capacity blocker is resolved with no
+silent headroom. T6.7 continues with the live host-owner composition.
 
 This evidence is hardware-free. No deployment, framebuffer access, or
 connected-target execution occurred.

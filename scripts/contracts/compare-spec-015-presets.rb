@@ -5,6 +5,7 @@ require "pathname"
 
 ROOT = Pathname.new(__dir__).join("../..").expand_path
 REPORT_ROOT = ROOT.join(".build/spec-015")
+IMMUTABLE_REPORT_ROOT = ROOT.join(".build/contract-reports/spec-015")
 PROFILES = %w[macos-dynamic macos-static raspberry-pi-armv6 nrf52840-embedded].freeze
 
 def fail_check(message)
@@ -29,8 +30,17 @@ def assignments(path)
   end
 end
 
+def report_directory(profile)
+  pointer = IMMUTABLE_REPORT_ROOT.join("latest-#{profile}.txt")
+  fail_check("missing #{pointer}; run the #{profile} SPEC-015 profile first") unless pointer.file?
+  run_id = pointer.read.strip
+  path = IMMUTABLE_REPORT_ROOT.join(run_id, profile)
+  fail_check("missing immutable report directory #{path}") unless path.directory?
+  path
+end
+
 semantic = PROFILES.to_h do |profile|
-  path = REPORT_ROOT.join(profile, "semantic.tsv")
+  path = report_directory(profile).join("semantic.tsv")
   fail_check("missing #{path}; run the four SPEC-015 profiles first") unless path.file?
   [profile, fields(path)]
 end
@@ -48,10 +58,10 @@ common.each do |field|
 end
 
 expected = {
-  "macos-dynamic" => %w[dynamic 320x240 240 1280 307200 33816],
-  "macos-static" => %w[static 320x240 240 1280 307200 30608],
-  "raspberry-pi-armv6" => %w[dynamic 240x240 16 480 7680 33816],
-  "nrf52840-embedded" => %w[static 480x320 4 960 3840 30608],
+  "macos-dynamic" => %w[dynamic 320x240 240 1280 307200 41376],
+  "macos-static" => %w[static 320x240 240 1280 307200 36368],
+  "raspberry-pi-armv6" => %w[dynamic 240x240 16 480 7680 41376],
+  "nrf52840-embedded" => %w[static 480x320 4 960 3840 36368],
 }
 physical_fields = %w[profile extent region_height bytes_per_row raster_bytes profile_storage_bytes]
 expected.each do |profile, values|
@@ -62,17 +72,18 @@ expected.each do |profile, values|
   fail_check("#{profile} resolved after startup") unless semantic[profile]["resolver_calls"] == "1"
 end
 
-nrf_memory = assignments(REPORT_ROOT.join("nrf52840-embedded", "memory-summary.txt"))
+nrf_report = report_directory("nrf52840-embedded")
+nrf_memory = assignments(nrf_report.join("memory-summary.txt"))
 flash = Integer(nrf_memory.fetch("FLASH_BYTES"), 10)
 ram = Integer(nrf_memory.fetch("RAM_BYTES"), 10)
 fail_check("nRF flash exceeds limit") unless flash <= Integer(nrf_memory.fetch("FLASH_LIMIT_BYTES"), 10)
 fail_check("nRF RAM exceeds approved application limit") unless ram <= Integer(nrf_memory.fetch("RAM_LIMIT_BYTES"), 10)
 
-nrf_attributes = REPORT_ROOT.join("nrf52840-embedded", "arm-attributes.txt").read
+nrf_attributes = nrf_report.join("arm-attributes.txt").read
 fail_check("nRF CPU ABI differs") unless nrf_attributes.include?("Tag_CPU_arch: v7E-M")
 fail_check("nRF hard-float ABI differs") unless nrf_attributes.include?("Tag_ABI_VFP_args: VFP registers")
 
-nrf_symbols = REPORT_ROOT.join("nrf52840-embedded", "symbols.txt").read
+nrf_symbols = nrf_report.join("symbols.txt").read
 forbidden = %w[malloc calloc realloc aligned_alloc k_malloc k_calloc k_realloc swift_task_create swift_allocObject objc_msgSend]
 symbol_names = nrf_symbols.lines.map { |line| line.split.last }
 present = forbidden & symbol_names
@@ -102,17 +113,19 @@ end
 output_dir = REPORT_ROOT.join("comparison")
 FileUtils.mkdir_p(output_dir)
 output = output_dir.join("report.tsv")
+nrf_named_application = Integer(semantic["nrf52840-embedded"]["profile_storage_bytes"], 10) +
+  115_392 + 3_840
 output.write(<<~TSV)
   dimension\tmacos-dynamic\tmacos-static\traspberry-pi-armv6\tnrf52840-embedded\tresult
   semantics\t#{semantic["macos-dynamic"]["semantic_checksum"]}\t#{semantic["macos-static"]["semantic_checksum"]}\t#{semantic["raspberry-pi-armv6"]["semantic_checksum"]}\t#{semantic["nrf52840-embedded"]["semantic_checksum"]}\tequal
-  profile-storage-bytes\t33816\t30608\t33816\t30608\tprofile-bounded
+  profile-storage-bytes\t41376\t36368\t41376\t36368\tprofile-bounded
   raster-staging-bytes\t307200\t307200\t7680\t3840\texact
   resolver-calls-startup\t1\t1\t1\t1\texact
   resolver-calls-post-startup\t0\t0\t0\t0\texact
   abi\tnative-macos\tnative-macos\tarmv6-hard-float\tarmv7e-m-vfp-hard-float\tverified
   linked-ram-bytes\tnot-collected\tnot-collected\tnot-collected\t#{ram}\twithin-limit
   linked-flash-bytes\tnot-applicable\tnot-applicable\tnot-collected\t#{flash}\twithin-limit
-  nrf-named-application-storage\tnot-applicable\tnot-applicable\tnot-applicable\t147248\texact
+  nrf-named-application-storage\tnot-applicable\tnot-applicable\tnot-applicable\t#{nrf_named_application}\texact
   static-heap-allocation\tnot-applicable\tcomposed-zero-allocation-owner-evidence\tnot-applicable\tzero-heap-linked-image\tverified
   connected-execution\thost\thost\tnot-collected\tnot-collected\tproperly-labeled
 TSV

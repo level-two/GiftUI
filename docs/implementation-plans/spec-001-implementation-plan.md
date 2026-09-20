@@ -650,7 +650,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       preset, and emits the registered normalized hardware-free report. The
       focused Milestone 5 cycle and host-lifecycle suites remain the detailed
       state/action/Drawing/frame and pacing transcript; the executable report
-      binds that evidence to the concrete preset and 33,816-byte profile
+      binds that evidence to the concrete preset and 41,376-byte profile
       storage audit.
 - [x] `T6.3` — Generate, compile, and execute the macOS static host from the
       same portable Presentation and exact preset. Inspect generated model,
@@ -660,7 +660,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       root descriptor, checks its two typed model positions and exact `1/1/1`
       observable capacities, and runs the identical semantic script through
       caller-owned fixed fact storage. Its checksum equals T6.2 while the
-      report preserves the approved 30,608-byte Static profile total. Evidence
+      report preserves the approved 36,368-byte Static profile total. Evidence
       and reproduction commands are in the shared macOS preset record.
 - [x] `T6.4` — Assemble the Raspberry Pi 1 dynamic preset with exact 240 x 240
       extent and 240 x 16 RGB565 tiled region. Cross-build only for
@@ -767,9 +767,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       operations, 129 positioned glyphs, and clip depth 3. A production
       Dynamic drawing-plan workspace then derives all five Canvas strokes;
       Canvas-aware streaming completes with 35 total operations. The
-      projection and Canvas-integration blockers are resolved. The measured
-      values exceed the current approved preset and require deliberate
-      SPEC-008/SPEC-013/SPEC-015 review; see the
+      maintainer approved the measured SPEC-008/SPEC-013/SPEC-015 values on
+      2026-09-20, and the regenerated exact preset now admits the complete
+      production join. The projection, Canvas-integration, and capacity
+      blockers are resolved; see the
       [render capacity evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-render-projection-blocker.md).
       Dynamic Canvas ownership and the diagnostic plan census are recorded in
       the [drawing-plan evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-drawing-plan-workspace.md).
