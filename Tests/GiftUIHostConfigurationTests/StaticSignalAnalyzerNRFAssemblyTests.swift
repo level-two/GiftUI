@@ -9,16 +9,31 @@ import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
 import Testing
 
+private final class StaticNRFApplicationStorageRepositoryProbe {
+    var startCount = 0
+    var stopCount = 0
+    var clearCount = 0
+    var repositoryWasReleased = false
+}
+
 private final class StaticNRFApplicationStorageRepository:
     SignalAcquisitionRepository
 {
+    private let probe: StaticNRFApplicationStorageRepositoryProbe
+
+    init(probe: StaticNRFApplicationStorageRepositoryProbe) {
+        self.probe = probe
+    }
+
+    deinit { probe.repositoryWasReleased = true }
+
     func startObservingCapture(sink _: some SignalCaptureSink) {}
     func stopObservingCapture() {}
     func startObservingAcquisitionState(sink _: some AcquisitionStateSink) {}
     func stopObservingAcquisitionState() {}
-    func start() throws {}
-    func stop() {}
-    func clear() {}
+    func start() throws { probe.startCount += 1 }
+    func stop() { probe.stopCount += 1 }
+    func clear() { probe.clearCount += 1 }
 }
 
 @Test func staticNRFAssemblyValidatesExactGeneratedEndpointContract() {
@@ -100,20 +115,29 @@ private final class StaticNRFApplicationStorageRepository:
         return
     }
     let revision = PresentationRevision(rawValue: 27)
+    let repositoryProbe = StaticNRFApplicationStorageRepositoryProbe()
 
     storage.withAddressStableOwner { owner in
-        let repository = StaticNRFApplicationStorageRepository()
-        let model = SignalAnalyzerViewModel(
-            startAcquisition: StartSignalAcquisitionUseCase(repository: repository),
-            stopAcquisition: StopSignalAcquisitionUseCase(repository: repository),
-            clearCapture: ClearSignalCaptureUseCase(repository: repository)
-        )
-        #expect(
-            owner.bindRoot(model: model)
-                == .bound(ObservableTargetGeneration(rawValue: 0))
-        )
+        do {
+            let repository = StaticNRFApplicationStorageRepository(
+                probe: repositoryProbe
+            )
+            #expect(
+                owner.bindRoot(repository: repository)
+                    == .bound(ObservableTargetGeneration(rawValue: 0))
+            )
+        }
+        #expect(!repositoryProbe.repositoryWasReleased)
         let rootIsActive = owner.rootIsActive
         #expect(rootIsActive)
+        owner.withModel { model in
+            model.startTapped()
+            model.stopTapped()
+            model.clearTapped()
+        }
+        #expect(repositoryProbe.startCount == 1)
+        #expect(repositoryProbe.stopCount == 1)
+        #expect(repositoryProbe.clearCount == 1)
 
         owner.withInteraction { interaction in
             #expect(
@@ -179,6 +203,7 @@ private final class StaticNRFApplicationStorageRepository:
     #expect(!rootIsActiveAfterScope)
     #expect(storage.root.withModel { _ in true } == nil)
     #expect(storage.input.pendingCount == 0)
+    #expect(repositoryProbe.repositoryWasReleased)
 }
 
 private extension RuntimeProfileValidationResult {

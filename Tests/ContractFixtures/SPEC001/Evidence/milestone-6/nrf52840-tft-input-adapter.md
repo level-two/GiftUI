@@ -348,15 +348,20 @@ and resource totals therefore remain unchanged. No board was flashed.
 
 `withAddressStableOwner` now spans the complete host-side application lifetime
 over the aggregate's disjoint root, interaction, and input fields. The scoped
-owner materializes the generated root at target generation zero, retains its
-direct change-report route only while those field addresses are valid, and
-uses the existing input opportunity to dispatch the committed one-second
-action. Scope exit quiesces input and publishes structural absence, which
-detaches the model change sink and removes the model before the borrowed field
-pointers expire. `staticNRFAddressStableOwnerBindsDispatchesAndDetachesRoot`
-proves the action mutation, dirty report, detached root, removed model, and
-empty input storage. The firmware lifetime join remains open, so this is still
-host mechanism evidence and does not change the firmware resource record.
+owner accepts the host's one concrete repository, constructs the exact Start,
+Stop, and Clear use cases plus `SignalAnalyzerViewModel`, and materializes that
+model in the generated root at target generation zero. The use cases retain the
+repository after the caller's reference ends, while the direct change-report
+route exists only while the aggregate field addresses are valid. The existing
+input opportunity dispatches the committed one-second action. Scope exit
+quiesces input and publishes structural absence, which detaches the model
+change sink, removes the model, and releases the repository before the borrowed
+field pointers expire.
+`staticNRFAddressStableOwnerBindsDispatchesAndDetachesRoot` proves the retained
+repository lifetime, exact-once Start/Stop/Clear delegation, action mutation,
+dirty report, detached root, repository release, removed model, and empty input
+storage. The firmware lifetime join remains open, so this is still host
+mechanism evidence and does not change the firmware resource record.
 
 ## Static interaction and observable mutation
 

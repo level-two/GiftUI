@@ -315,10 +315,13 @@ value address-stable for the complete bound-model lifetime; activation and
 binding remain later joins. For host and future firmware composition, the
 aggregate now provides one complete-lifetime scope that lends stable pointers
 to its root, interaction, and input fields. The scoped owner binds the initial
-model and retains the direct report route only inside that scope. On exit it
-quiesces input and publishes structural absence through the existing Static
-root lifecycle, detaching the change sink and removing the model before any
-field pointer expires.
+model from the host-supplied concrete repository, constructing the exact three
+action use cases at that boundary, and retains the direct report route only
+inside that scope. The model's use cases keep the repository alive while the
+root is bound. On exit the owner quiesces input and publishes structural
+absence through the existing Static root lifecycle, detaching the change sink,
+removing the model, and releasing the repository before any field pointer
+expires.
 
 The firmware input ABI now has its first address-stable target-owned lifetime:
 one fixed global storage value binds the input source once and is mutated in

@@ -945,7 +945,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       committed interaction, and automatically quiesces input plus publishes
       structural root removal before the scope ends. Its host fixture proves
       one action mutation, dirty reporting, model detachment, and empty input
-      cleanup.
+      cleanup. The scoped owner now accepts the one concrete acquisition
+      repository and constructs the exact Start, Stop, and Clear use cases plus
+      `SignalAnalyzerViewModel` itself. The bound model retains that repository
+      after the caller releases its reference, and structural root removal
+      releases it before the aggregate's stable-address scope ends.
       Building this owner into the firmware's complete generated Static
       presentation composition remains open. The firmware
       now compiles the exact shared input values,

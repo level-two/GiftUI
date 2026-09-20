@@ -4,6 +4,7 @@ import GiftUIHostConfiguration
 import GiftUIInteraction
 import GiftUIObservableState
 import GiftUIRuntimeStatic
+import SignalAnalyzerDomain
 import SignalAnalyzerPresentation
 
 package enum StaticSignalAnalyzerNRFRootBindingOutcome: Equatable, Sendable {
@@ -111,8 +112,13 @@ package struct StaticSignalAnalyzerNRFApplicationOwner: ~Copyable {
     package var pendingInputCount: UInt16 { input.pointee.pendingCount }
 
     package mutating func bindRoot(
-        model: SignalAnalyzerViewModel
+        repository: any SignalAcquisitionRepository
     ) -> StaticSignalAnalyzerNRFRootBindingOutcome {
+        let model = SignalAnalyzerViewModel(
+            startAcquisition: StartSignalAcquisitionUseCase(repository: repository),
+            stopAcquisition: StopSignalAcquisitionUseCase(repository: repository),
+            clearCapture: ClearSignalCaptureUseCase(repository: repository)
+        )
         guard root.pointee.beginCandidate() == .success(.candidateStarted) else {
             return .rejected(.invariantViolation)
         }
