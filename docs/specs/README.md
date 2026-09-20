@@ -25,8 +25,9 @@ its required acceptance criteria.
   and Containment (`implementing`; macOS 26.6.2 build 25G83 reference-runner
   amendment explicitly reapproved on 2026-09-19)
 - [SPEC-015](spec-015-host-configuration.md) — MVP Target-Host
-  Configuration Contract (`implementing`; schema-3 semantic-structural
-  capacity amendment explicitly reapproved on 2026-09-20)
+  Configuration Contract (`implementing`; schema-3 semantic-structural and
+  measured 53-scope layout-capacity amendments explicitly reapproved on
+  2026-09-20)
 - [SPEC-006](spec-006-declarative-view-semantics.md) — Declarative View
   Semantics Specification (`approved`; action-primitive-with-content amendment
   explicitly reapproved on 2026-09-12)
@@ -46,7 +47,7 @@ its required acceptance criteria.
   Drawing Contract (`implementing`; render-extension completion-seam amendment
   explicitly approved on 2026-09-12)
 - [SPEC-013](spec-013-runtime-profiles.md) — Dynamic and Static Runtime Profile
-  Contract (`approved`; render-workspace-limit amendment explicitly
-  reapproved on 2026-09-12)
+  Contract (`implementing`; measured 53-scope layout-capacity amendment
+  explicitly reapproved on 2026-09-20)
 - [SPEC-014](spec-014-backend-integration.md) — Raster Backend and Display
   Integration Contract (`approved`)

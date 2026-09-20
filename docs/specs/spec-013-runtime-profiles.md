@@ -80,6 +80,14 @@ target_milestone: MVP
 > amendment together with SPEC-015. The profile contract now carries and
 > audits an independent semantic-structural occurrence limit; implementation
 > remains in progress.
+>
+> On 2026-09-20, the maintainer explicitly approved the measured layout-
+> capacity amendment after the production semantic-to-layout join traversed
+> the fixed SPEC-001 hierarchy. The approved bound is 53 layout scopes. The
+> corresponding profile-store projections are 2,120 layout-candidate bytes
+> and 3,392 render-workspace bytes for Dynamic, and 1,696 and 2,544 bytes for
+> Static. The amended contract remains authoritative and implementation
+> remains in progress.
 
 ## Summary
 
@@ -443,6 +451,22 @@ published storage expose this concrete capacity as
 validation rejects a missing or smaller value before client traversal. Hosts
 derive the production value from the greatest complete portable hierarchy
 shape admitted by their approved workload.
+
+For the approved Signal Analyzer workload, the diagnostic-absent shape uses
+52 layout scopes and the diagnostic-present shape uses 53. The latter is the
+required `layout.maximumScopes` and
+`renderWorkspace.maximumLayoutScopes` value. Its scopes comprise 13 stack
+containers, 21 text primitives, 3 spacers, 5 Canvas primitives, 6 button
+action proxies, and 5 disabled-modifier scopes. The associated exact profile-
+store projections use the established per-scope representation sizes:
+
+| Profile | Layout candidate | Render workspace | Total profile storage |
+| --- | ---: | ---: | ---: |
+| Dynamic | 2,120 bytes (53 x 40) | 3,392 bytes (53 x 64) | 33,816 bytes |
+| Static | 1,696 bytes (53 x 32) | 2,544 bytes (53 x 48) | 30,608 bytes |
+
+All other Signal Analyzer audit fields retain their schema-3 approved values.
+The totals are checked sums, not independent limits or discretionary headroom.
 
 Validation compares concrete storage capacities to every contained limit and
 performs checked byte summation. A missing or smaller store fails; validation

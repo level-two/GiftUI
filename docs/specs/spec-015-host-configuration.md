@@ -87,6 +87,12 @@ target_milestone: MVP
 > complete hierarchy: 48 semantic nodes, 14 body evaluations, 5 modifier
 > applications, 6 actions, depth 26, and 81 retained structural identities.
 > The amendment is authoritative and implementation remains in progress.
+>
+> On 2026-09-20, the maintainer explicitly approved the follow-on measured
+> layout-capacity amendment. The production join requires 53 layout scopes,
+> with revised exact Dynamic and Static layout/render-workspace projections
+> and checked profile totals. This amendment is authoritative and does not
+> claim implementation conformance.
 
 ## Summary
 
@@ -733,6 +739,25 @@ absent shape measures 80. Dynamic semantic candidate and published byte
 projections are each 2,592 bytes (81 records at 32 bytes). Static projections
 are each 1,944 bytes (81 records at 24 bytes). These are SPEC-013 profile-store
 projections and do not alter SPEC-006 counting meaning.
+
+For the same hierarchy, the diagnostic-absent shape measures 52 layout scopes
+and the diagnostic-present maximum measures 53. The approved 53-scope maximum
+contains 13 stack containers, 21 text primitives, 3 spacers, 5 Canvas
+primitives, 6 button action proxies, and 5 disabled-modifier scopes. Every
+preset therefore uses exactly `53` for both `layout.maximumScopes` and
+`renderWorkspace.maximumLayoutScopes`. The existing text, glyph, line, and
+layout-depth limits remain 139 scalars, 139 positioned glyphs, 21 lines, and
+depth 12 respectively; the measured maximums are 129, 129, 21, and 6.
+
+The exact resulting profile-store projections are:
+
+| Profile | Layout candidate | Render workspace | Total profile storage |
+| --- | ---: | ---: | ---: |
+| Dynamic | 2,120 bytes (53 x 40) | 3,392 bytes (53 x 64) | 33,816 bytes |
+| Static | 1,696 bytes (53 x 32) | 2,544 bytes (53 x 48) | 30,608 bytes |
+
+The total changes only by those two store deltas; all other schema-3 audit
+fields remain unchanged.
 
 The contained runtime limits MUST additionally satisfy these production
 relations:
