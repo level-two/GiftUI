@@ -117,6 +117,10 @@ private struct OfferSessionSink: RasterOfferSessionSink {
         healthBox.value
     }
 
+    mutating func retainProducerError(_ error: RenderProductionError) {
+        retainedProducerError = error
+    }
+
     mutating func begin(_ header: RenderPlanHeader) -> Bool { true }
     mutating func fillRect(_ operation: FillRectOperation) -> Bool { true }
     mutating func beginPositionedGlyphs(

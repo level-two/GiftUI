@@ -17,6 +17,8 @@ package protocol RasterOfferSessionSink: RasterFrameSink {
     var presentationResponsibilityAccepted: Bool { get }
     var retainedProducerError: RenderProductionError? { get }
 
+    mutating func retainProducerError(_ error: RenderProductionError)
+
     mutating func reserveFrame(
         descriptor: RasterSurfaceDescriptor,
         payloadCapacityBytes: UInt32,

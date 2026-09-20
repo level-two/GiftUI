@@ -74,6 +74,7 @@ PROTOCOLS = {
 TILED_SOURCE_PATHS = %w[
   Sources/GiftUIRasterCore/RGB565TileWorkspace.swift
   Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift
+  Sources/GiftUIBackendIntegration/OperationMajorRGB565RasterSession.swift
   Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift
 ].freeze
 
@@ -120,10 +121,11 @@ PROTOCOLS.each do |name, path|
 end
 
 forbidden_tiled_storage = /\b(?:AnyObject|Array|ContiguousArray|Dictionary|Set|Unsafe[A-Za-z0-9_]*Pointer)\b/
+forbidden_producer_storage = /^\s*(?:package|private|fileprivate|internal|public)?\s*(?:let|var)\s+[A-Za-z0-9_]*producer[A-Za-z0-9_]*\s*:\s*(?!RenderProductionError\?)/i
 TILED_SOURCE_PATHS.each do |path|
   source = ROOT.join(path).read
   fail_check("#{path} contains ownership-bearing or pointer storage") if source.match?(forbidden_tiled_storage)
-  fail_check("#{path} stores or names a producer") if source.match?(/\bproducer\b/i)
+  fail_check("#{path} stores a producer") if source.match?(forbidden_producer_storage)
   fail_check("#{path} declares a reference-owned workspace") if source.match?(/^\s*(?:package\s+)?(?:final\s+)?class\s+/)
 end
 

@@ -788,6 +788,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       through the final observable target-generation guard. Endpoint
       production remains the next open stage; see the
       [interaction join evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-target-host-interaction.md).
+      Backend Integration now supplies the previously missing production
+      display-owning operation-major RGB565 offer session. Focused evidence
+      proves exact reservation, synchronous one-shot consumption, painter-
+      ordered tile payloads, one frame finish, and pre-transfer cancellation.
+      The remaining endpoint work is therefore the target-host call-site join,
+      not another backend realization; see the
+      [production session evidence](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/production-operation-major-session.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation

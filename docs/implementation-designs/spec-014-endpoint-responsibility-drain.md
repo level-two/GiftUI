@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-13
-updated: 2026-09-13
+updated: 2026-09-20
 implementation_plan: ../implementation-plans/spec-014-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -70,10 +70,16 @@ sticky local errors, health projection, and diagnostic non-interference.
 
 T7.1 is implemented by
 [`OneShotRasterBackendEndpoint.swift`](../../Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift)
+and its display-owning tiled session
+[`OperationMajorRGB565RasterSession.swift`](../../Sources/GiftUIBackendIntegration/OperationMajorRGB565RasterSession.swift)
 and covered by
 [`OneShotRasterBackendEndpointTests.swift`](../../Tests/GiftUIBackendIntegrationTests/OneShotRasterBackendEndpointTests.swift)
+and
+[`OperationMajorRGB565RasterSessionTests.swift`](../../Tests/GiftUIBackendIntegrationTests/OperationMajorRGB565RasterSessionTests.swift)
 with evidence in
-[`endpoint-admission.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/endpoint-admission.md).
+[`endpoint-admission.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/endpoint-admission.md)
+and
+[`production-operation-major-session.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/production-operation-major-session.md).
 T7.2 cleanup and disposition evidence is in
 [`endpoint-stream-cleanup.md`](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/endpoint-stream-cleanup.md).
 T7.3's owner mapping matrix is recorded in
