@@ -5,7 +5,7 @@ title: SPEC-013 Conformance Report
 status: complete
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-09-19
+updated: 2026-09-20
 implementation_plan: ../implementation-plans/spec-013-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -23,10 +23,12 @@ superseded_by: null
 
 The review freezes [SPEC-013](../specs/spec-013-runtime-profiles.md) at
 pre-report SHA-256
-`74003bc6a77cc2f3fc2fcf1ddc23e1dc3e668c0e24e810c6b4fc0bfc7a105dc7`,
+`fa23d3cb09efd86e223e1651667126f1671c59456e8e8eeab11774c2732fcfce`,
 the completed [implementation plan](../implementation-plans/spec-013-implementation-plan.md),
 its three current design notes, and reviewed implementation revision
-`2aeeb81`. Evidence covers Apple Swift 6.3.3 host execution and project-local
+`6202efd`. This amendment review includes the independently bounded semantic
+candidate and published structural-occurrence stores introduced by the
+2026-09-20 reapproval. Evidence covers Apple Swift 6.3.3 host execution and project-local
 Swift 6.3.2 ARMv6/nRF hardware-free cross-build, link, and inspection.
 
 ## Acceptance-Criterion Results
@@ -34,8 +36,8 @@ Swift 6.3.2 ARMv6/nRF hardware-free cross-build, link, and inspection.
 | Criterion | Result | Evidence | Notes / exception authority |
 | --- | --- | --- | --- |
 | `RP-001` | pass | [final package audit](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-8/final-package-audit.md) | Exact owner graph has no sibling or concrete backend import. |
-| `RP-002` | pass | [storage audit](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-1/storage-audit-accounting.md) | Every store and four render-workspace capacities have checked exact totals. |
-| `RP-003` | pass | [startup corpus](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-6/startup-validation.md) | All invalid/overflow/static-table cases fail before client or endpoint use. |
+| `RP-002` | pass | [storage audit](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-1/storage-audit-accounting.md) | Every store, including independent semantic node/structural candidate and published capacities, and four render-workspace capacities have checked exact totals. |
+| `RP-003` | pass | [startup corpus](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-6/startup-validation.md) | All missing, invalid, first-shortfall, overflow, and static-table cases fail before client or endpoint use. |
 | `RP-004` | pass | [common transaction](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-2/common-transaction.md), [cycle failures](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-6/cycle-failure-matrix.md) | Stage order, binding, release, and every cleanup row pass. |
 | `RP-005` | pass | [profile equivalence](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-6/profile-equivalence.md) | All normalized semantic through disposition categories compare exactly. |
 | `RP-006` | pass | [storage boundaries](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-6/storage-boundaries.md) | Exact limit and first excess pass for every storage family. |
@@ -55,6 +57,8 @@ The formatter, focused suites, four exact profile drivers, module/dependency
 audits, governance checks, and `scripts/test.sh --profile all-hardware-free`
 all pass. The aggregate result and idempotent publication behavior are recorded
 in the [repository/profile gate evidence](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-8/repository-profile-gates.md).
+The schema-3 amendment additionally passes exact-limit/first-excess Dynamic
+semantic storage tests and all four SPEC-015 profile drivers.
 
 ## Profile, Backend, and Platform Evidence
 

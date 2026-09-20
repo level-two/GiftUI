@@ -23,10 +23,13 @@ superseded_by: null
 
 The review freezes [SPEC-015](../specs/spec-015-host-configuration.md) at
 pre-report SHA-256
-`67481b9e48a5067412f62533b31c61d1a40ae43cf340bd56f32ebd5b0f3e0eaf`,
+`599afed02b15a8116ed76c68fd4461fe0582f611620df8d43d7475711a794d3f`,
 the active [implementation plan](../implementation-plans/spec-015-implementation-plan.md),
 its current generated-workload and wake/pacing design notes, and reviewed
-implementation revision `2aeeb81`. Evidence covers Apple Swift 6.3.3 host
+implementation revision `6202efd`. The four immutable profile reports share
+run ID `6202efd224733528dd679e7426f82ea6b9544a7f-7c95f8e7532ba3bf`.
+This amendment review includes schema-3 semantic structural capacity and the
+2026-09-20 reapproval. Evidence covers Apple Swift 6.3.3 host
 execution and project-local Swift 6.3.2 ARMv6/nRF hardware-free artifact
 inspection. Connected PiScreen and nRF TFT/input evidence is intentionally not
 collected.
@@ -56,7 +59,7 @@ collected.
 
 ## Required-Test Results
 
-The exhaustive negative audit and all 141 focused Host Configuration tests
+The exhaustive negative audit and all 144 focused Host Configuration tests
 pass. All four exact driver modes, formatter, governance/documentation checks,
 generated freshness, source/import scans, and
 `scripts/test.sh --profile all-hardware-free` pass; see the
