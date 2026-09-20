@@ -115,3 +115,36 @@ required-symbol, RAM, and flash gates:
 
 The inspected load segments use 32,168 flash bytes and 175,296 RAM bytes.
 No full framebuffer or heap entry point is present. No board was flashed.
+
+## Target-local touch normalization
+
+The ADS7846 boundary now includes an allocation-free normalizer configured by
+explicit raw horizontal/vertical ranges, logical extent, axis swap, and axis
+inversion. It maps accepted samples into bounded logical coordinates and emits
+the same numeric down/move/up phases as GiftUI's portable pointer contract.
+Leaving the calibrated range closes an active contact at its last valid point;
+an input transport failure can reset local contact state without synthesizing
+an action-producing up event. Source, sequence, ordinal, and physical-
+presentation provenance remain owned by the future Static host admission
+adapter, not by this device decoder.
+
+`check-spec-001-nrf-touch-input.sh` compiles the exact firmware source as C99
+with warnings treated as errors. Its fixture covers invalid calibration,
+fail-closed reinitialization, minimum/midpoint/maximum mapping, swapped and
+inverted axes, ordered down/move/up emission, out-of-range closure, and
+transport reset. The check is also part of the SPEC-001 nRF profile driver.
+
+The pristine firmware retains the initializer, update, and reset entry points
+and passes ARMv7E-M, VFP hard-float, zero-heap, symbol, RAM, and flash gates.
+The inspected artifacts are:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `zephyr.elf` | `269d09fa033546d0e1332785edc1727fc1452ba1451cc0f0ff34eb55fcaa63cb` |
+| `zephyr.hex` | `cb528626b32dd8343f88b9c1c4de384e586ff01ced990287fae906526a3243bf` |
+| `zephyr.map` | `28145b1e6dd81fac8325a4a99beda5d3448ab3f63350154c1eb673adc5906a37` |
+| `zephyr.dts` | `042dd0ead8283db2cb12d0ff36caad849f8c88787859202809cd03bf17aef6d7` |
+
+The load segments use 32,456 flash bytes and 175,296 RAM bytes. Physical
+calibration values and orientation are deliberately not claimed by this
+hardware-free fixture and remain connected-target evidence.

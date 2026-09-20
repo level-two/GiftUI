@@ -18,6 +18,7 @@ target_sources(app PRIVATE
     src/main.c
     src/storage.c
     src/stubs.c
+    src/touch_input.c
 )
 target_include_directories(app PRIVATE include)
 add_library(app_swift OBJECT src/StaticPreset.swift)

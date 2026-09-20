@@ -170,6 +170,7 @@ if [[ "${profile}" == "raspberry-pi-armv6" ]]; then
 fi
 
 if [[ "${profile}" == "nrf52840-embedded" ]]; then
+    "${SCRIPT_DIR}/check-spec-001-nrf-touch-input.sh"
     "${SCRIPT_DIR}/run-spec-015.sh" --profile "${profile}"
     spec015_run_id="$(cat "${PROJECT_ROOT}/.build/contract-reports/spec-015/latest-${profile}.txt")"
     spec015_report_dir="${PROJECT_ROOT}/.build/contract-reports/spec-015/${spec015_run_id}/${profile}"

@@ -897,8 +897,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       saturating fault accounting. The exact pristine firmware build retains
       all driver entry points and passes ARMv7E-M hard-float, zero-heap,
       RAM/flash, and required-symbol gates. Static host-loop composition,
-      action normalization, connected stack measurement, and flashing remain
-      open. A follow-up finite firmware entry now initializes both devices,
+      admission of normalized contacts, connected stack measurement, and
+      flashing remain open. A target-local, allocation-free touch normalizer
+      now validates injected calibration, maps swapped/inverted raw axes into
+      the 480 x 320 logical extent, emits ordered down/move/up phases, closes
+      out-of-range contacts, and resets without an action-producing up event
+      after transport failure. Its C99 fixture is part of the nRF SPEC-001
+      driver. A follow-up finite firmware entry now initializes both devices,
       transfers bounded color bars, polls touch for ten seconds, and reports
       faults plus stack high-water when deliberately flashed; its exact
       pristine build also passes. Both controllers now expose explicit
