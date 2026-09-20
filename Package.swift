@@ -633,6 +633,8 @@ let package = Package(
                 "GiftUIObservableState",
                 "GiftUIRasterCore",
                 "GiftUIReferenceTextResources",
+                "GiftUIRenderCore",
+                "GiftUIRenderLowering",
                 "GiftUIRuntimeCore",
                 "GiftUIRuntimeDynamic",
                 "GiftUIRuntimeStatic",

@@ -160,6 +160,7 @@ package struct DynamicSemanticActionRecord: Equatable, Sendable {
 private struct DynamicSemanticPrimitiveRecord {
     let identity: DynamicSemanticIdentity
     let primitive: SemanticLayoutPrimitive
+    let renderScope: SemanticRenderScope
     let scalars: [UInt32]?
 }
 
@@ -167,6 +168,7 @@ private struct DynamicSemanticModifierRecord {
     let identity: DynamicSemanticIdentity
     let layoutIdentity: DynamicSemanticIdentity
     let modifier: SemanticLayoutModifier
+    let renderScope: SemanticRenderScope
     let chainIndex: UInt16
     let disablesActions: Bool
 }
@@ -176,8 +178,67 @@ private struct DynamicSemanticRenderRecord {
     var scope: SemanticRenderScope
 }
 
+private struct DynamicSemanticRenderProjectionNode {
+    let identity: DynamicSemanticIdentity
+    let scope: SemanticRenderScope
+    let children: [DynamicSemanticIdentity]
+}
+
+package struct DynamicSemanticRenderView: SemanticRenderView {
+    package let rootIdentity: DynamicSemanticIdentity
+    package let renderSnapshotVersion: UInt32
+    private let nodes: [DynamicSemanticRenderProjectionNode]
+
+    fileprivate init(
+        rootIdentity: DynamicSemanticIdentity,
+        renderSnapshotVersion: UInt32,
+        nodes: [DynamicSemanticRenderProjectionNode]
+    ) {
+        self.rootIdentity = rootIdentity
+        self.renderSnapshotVersion = renderSnapshotVersion
+        self.nodes = nodes
+    }
+
+    package var semanticScopeCount: UInt16 {
+        UInt16(nodes.count)
+    }
+
+    package func semanticIdentity(at ordinal: UInt16) -> DynamicSemanticIdentity? {
+        guard Int(ordinal) < nodes.count else { return nil }
+        return nodes[Int(ordinal)].identity
+    }
+
+    package func semanticOrdinal(of identity: DynamicSemanticIdentity) -> UInt16? {
+        nodes.firstIndex { $0.identity == identity }.map(UInt16.init)
+    }
+
+    package func scope(at identity: DynamicSemanticIdentity) -> SemanticRenderScope? {
+        nodes.first { $0.identity == identity }?.scope
+    }
+
+    package func layoutIdentity(
+        for identity: DynamicSemanticIdentity
+    ) -> DynamicSemanticIdentity? {
+        nodes.contains { $0.identity == identity } ? identity : nil
+    }
+
+    package func childCount(of identity: DynamicSemanticIdentity) -> UInt16? {
+        nodes.first { $0.identity == identity }.map { UInt16($0.children.count) }
+    }
+
+    package func child(
+        of identity: DynamicSemanticIdentity,
+        at index: UInt16
+    ) -> DynamicSemanticIdentity? {
+        guard let children = nodes.first(where: { $0.identity == identity })?.children,
+            Int(index) < children.count
+        else { return nil }
+        return children[Int(index)]
+    }
+}
+
 package struct DynamicSemanticHostStorage: SemanticExpansionSink,
-    SemanticLayoutView, SemanticRenderView, CanvasInvocationSource
+    SemanticLayoutView, CanvasInvocationSource
 {
     package let maximumStructuralOccurrences: UInt16
     package let maximumBodyEvaluations: UInt16
@@ -191,6 +252,7 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
     private var renderScopes: [DynamicSemanticRenderRecord] = []
     private var actions: [DynamicSemanticActionRecord] = []
     private var canvasStorage: DynamicCanvasCallableStorage<DynamicSemanticIdentity>
+    private var publishedRenderView: DynamicSemanticRenderView?
     private var bodyEvaluationCount: UInt16 = 0
     private var isRecording = false
     private var isPublished = false
@@ -277,6 +339,7 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
             DynamicSemanticPrimitiveRecord(
                 identity: identity,
                 primitive: SemanticLayoutPrimitive(payload: payload),
+                renderScope: SemanticRenderScope(primitivePayload: payload),
                 scalars: scalars
             )
         )
@@ -317,6 +380,7 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
                 identity: identity,
                 layoutIdentity: layoutIdentity,
                 modifier: modifier,
+                renderScope: SemanticRenderScope(modifierPayload: payload),
                 chainIndex: chainIndex,
                 disablesActions: disablesActions
             )
@@ -354,7 +418,13 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
         else { return false }
         let nextVersion = renderSnapshotVersion.addingReportingOverflow(1)
         guard !nextVersion.overflow, nextVersion.partialValue != 0 else { return false }
+        guard
+            let renderView = makeRenderView(
+                snapshotVersion: nextVersion.partialValue
+            )
+        else { return false }
         renderSnapshotVersion = nextVersion.partialValue
+        publishedRenderView = renderView
         isRecording = false
         isPublished = true
         return true
@@ -387,6 +457,11 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
 
     package var hasPublishedResult: Bool {
         isPublished
+    }
+
+    package var renderView: DynamicSemanticRenderView {
+        precondition(isPublished)
+        return publishedRenderView!
     }
 
     package func action(at index: UInt16) -> DynamicSemanticActionRecord? {
@@ -520,6 +595,7 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
         renderScopes.removeAll(keepingCapacity: true)
         actions.removeAll(keepingCapacity: true)
         canvasStorage.discard()
+        publishedRenderView = nil
         bodyEvaluationCount = 0
     }
 
@@ -562,5 +638,77 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
                 }
         }
         .sorted { $0.chainIndex < $1.chainIndex }
+    }
+
+    private func makeRenderView(
+        snapshotVersion: UInt32
+    ) -> DynamicSemanticRenderView? {
+        let occurrenceIdentities = primitives.map(\.identity) + actions.map(\.identity)
+        guard !occurrenceIdentities.isEmpty else { return nil }
+
+        func entryIdentity(
+            for identity: DynamicSemanticIdentity
+        ) -> DynamicSemanticIdentity {
+            modifiers(of: identity).last?.layoutIdentity ?? identity
+        }
+
+        guard let recordedRoot = structural.first else { return nil }
+        let rootOccurrences: [DynamicSemanticIdentity]
+        if occurrenceIdentities.contains(recordedRoot) {
+            rootOccurrences = [recordedRoot]
+        } else {
+            rootOccurrences = children(of: recordedRoot)
+        }
+        guard rootOccurrences.count == 1 else { return nil }
+
+        var nodes: [DynamicSemanticRenderProjectionNode] = []
+        nodes.reserveCapacity(Int(scopeCount))
+        for identity in occurrenceIdentities {
+            let modifierRecords = modifiers(of: identity)
+            for (index, record) in modifierRecords.enumerated() {
+                let child =
+                    index == 0
+                    ? identity
+                    : modifierRecords[index - 1].layoutIdentity
+                nodes.append(
+                    DynamicSemanticRenderProjectionNode(
+                        identity: record.layoutIdentity,
+                        scope: record.renderScope,
+                        children: [child]
+                    )
+                )
+            }
+
+            let childEntries = children(of: identity).map(entryIdentity(for:))
+            let primitiveScope =
+                primitives.first {
+                    $0.identity == identity
+                }?.renderScope ?? .structural
+            nodes.append(
+                DynamicSemanticRenderProjectionNode(
+                    identity: identity,
+                    scope: primitiveScope,
+                    children: childEntries
+                )
+            )
+        }
+
+        guard nodes.count == Int(scopeCount) else { return nil }
+        for (index, node) in nodes.enumerated()
+        where nodes[..<index].contains(where: { $0.identity == node.identity }) {
+            return nil
+        }
+        let identities = nodes.map(\.identity)
+        guard
+            nodes.allSatisfy({ node in
+                node.children.allSatisfy(identities.contains)
+            })
+        else { return nil }
+
+        return DynamicSemanticRenderView(
+            rootIdentity: entryIdentity(for: rootOccurrences[0]),
+            renderSnapshotVersion: snapshotVersion,
+            nodes: nodes
+        )
     }
 }

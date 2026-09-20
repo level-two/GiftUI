@@ -16,7 +16,7 @@ reference text metrics. The measured high-water values are:
 - 45 modifier applications;
 - 6 action occurrences;
 - semantic traversal depth 33;
-- 121 retained semantic/render identities;
+- 121 retained semantic-expansion identities;
 - 198 recorded traversal identities;
 - 5 Canvas occurrences;
 - 93 layout scopes;
@@ -39,10 +39,10 @@ scopes, and its layout/render workspace admits 53 scopes and traversal depth
 The checked measurement test uses separately labeled diagnostic capacities and
 also proves that the approved preset rejects the expanded surface.
 
-These results require deliberate SPEC-008/SPEC-013/SPEC-015 review and
-reapproval before preset regeneration. They also replace the former statement
-that the portable foreground/background surface was absent; the remaining
-T6.7 blocker is a coherent render-only projection plus approved capacities.
+The coherent render-only projection subsequently measures 93 scopes at depth
+13 and completes ordinary render streaming with 30 operations, 129 positioned
+glyphs, and clip depth 3. These results require deliberate
+SPEC-008/SPEC-013/SPEC-015 review and reapproval before preset regeneration.
 
 This evidence is hardware-free. No deployment, framebuffer access, or
 connected-target execution occurred.

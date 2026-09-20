@@ -236,12 +236,14 @@ may change while the ownership and stage boundaries above remain intact.
 Physical nRF shield provenance, continuity/orientation, and power evidence is
 a separate execution gate.
 
-The current implementation blocker is the production render projection. The
-semantic store retains 81 structural identities, but the approved workload
-admits 62 render scopes and the current child projection does not traverse a
-coherent render-only tree. The complete foreground/background screen surface
-must be realized before final production counts can be compared to the
-approved workload.
+The Dynamic semantic store now publishes a coherent render-only projection,
+and the complete foreground/background screen surface is realized. The
+diagnostic maximum measures 121 retained expansion identities and 93 coherent
+render/layout scopes at depth 13; ordinary render streaming produces 30
+operations, 129 positioned glyphs, and clip depth 3. These values exceed the
+currently approved workload and require deliberate SPEC-008/SPEC-013/SPEC-015
+reapproval before exact preset integration. Canvas plan production/streaming
+remains open inside T6.7.
 
 ## Code and Evidence Links
 

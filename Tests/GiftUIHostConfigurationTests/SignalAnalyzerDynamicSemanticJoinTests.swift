@@ -3,6 +3,8 @@ import GiftUIHostConfiguration
 import GiftUILayout
 import GiftUIObservableState
 import GiftUIReferenceTextResources
+import GiftUIRenderCore
+import GiftUIRenderLowering
 import GiftUIRuntimeDynamic
 import GiftUISemanticCore
 import SignalAnalyzerDomain
@@ -312,6 +314,75 @@ private enum SemanticJoinFailure: Error {
     #expect(layoutSink.renderView.layoutScopeCount == summary.scopeCount)
     #expect(layoutSink.renderView.renderSnapshotVersion == 1)
     #expect(layoutSink.renderView.rootBounds.size.width == 240)
+
+    let semanticRenderView = semanticStorage.renderView
+    #expect(semanticRenderView.semanticScopeCount == summary.scopeCount)
+    #expect(semanticRenderView.rootIdentity == layoutSink.renderView.rootIdentity)
+    var pendingRenderScopes = [(semanticRenderView.rootIdentity, UInt16(1))]
+    var visitedRenderScopes: [DynamicSemanticIdentity] = []
+    var maximumRenderDepth: UInt16 = 0
+    while let (identity, depth) = pendingRenderScopes.popLast() {
+        #expect(!visitedRenderScopes.contains(identity))
+        visitedRenderScopes.append(identity)
+        maximumRenderDepth = max(maximumRenderDepth, depth)
+        let childCount = try #require(semanticRenderView.childCount(of: identity))
+        for childIndex in 0 ..< childCount {
+            pendingRenderScopes.append(
+                (
+                    try #require(semanticRenderView.child(of: identity, at: childIndex)),
+                    depth + 1
+                )
+            )
+        }
+    }
+    #expect(visitedRenderScopes.count == 93)
+    #expect(maximumRenderDepth == 13)
+    let renderLimits = RenderLimits(
+        maximumOperations: 64,
+        maximumPositionedGlyphs: 512,
+        maximumClipDepth: 16
+    )!
+    let renderWorkspaceCapacity = RenderWorkspaceCapacity(
+        maximumSemanticScopes: 128,
+        maximumLayoutScopes: 128,
+        maximumTraversalDepth: 32,
+        maximumTextLines: 64
+    )!
+    var renderWorkspace = DynamicRenderWorkspace(
+        capacity: renderLimits,
+        structuralCapacity: renderWorkspaceCapacity
+    )
+    var renderSink = RenderRecordingSink(
+        storage: SemanticJoinRenderStorage(
+            capacity: RenderSinkCapacity(
+                maximumOperations: 64,
+                maximumPositionedGlyphs: 512
+            )
+        )
+    )
+    let surfaceBounds = Rect(
+        origin: Point(x: 0, y: 0),
+        size: Size(width: 240, height: 240)!
+    )!
+    let renderResult = RenderProducer.produce(
+        semantic: semanticRenderView,
+        layout: layoutSink.renderView,
+        textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
+        surfaceBounds: surfaceBounds,
+        damageMode: .initializeCompleteSurface,
+        rootForeground: .white,
+        limits: renderLimits,
+        workspace: &renderWorkspace,
+        sink: &renderSink
+    )
+    guard case .success(let header) = renderResult else {
+        Issue.record("measured render projection failed: \(renderResult)")
+        return
+    }
+    #expect(header.operationCount == 30)
+    #expect(header.positionedGlyphCount == 129)
+    #expect(header.maximumObservedClipDepth == 3)
+    #expect(renderSink.storage.published.count > 0)
 }
 
 private func makeSemanticJoinModel(failsStart: Bool = false) -> SignalAnalyzerViewModel {
@@ -321,4 +392,30 @@ private func makeSemanticJoinModel(failsStart: Bool = false) -> SignalAnalyzerVi
         stopAcquisition: StopSignalAcquisitionUseCase(repository: repository),
         clearCapture: ClearSignalCaptureUseCase(repository: repository)
     )
+}
+
+private struct SemanticJoinRenderStorage: RenderRecordingStorage {
+    let capacity: RenderSinkCapacity
+    var staged: [RenderRecordingEvent] = []
+    var published: [RenderRecordingEvent] = []
+
+    mutating func beginRecording(_ event: borrowing RenderRecordingEvent) -> Bool {
+        staged = [copy event]
+        return true
+    }
+
+    mutating func stage(_ event: borrowing RenderRecordingEvent) -> Bool {
+        staged.append(copy event)
+        return true
+    }
+
+    mutating func publishRecording() -> Bool {
+        published = staged
+        staged.removeAll(keepingCapacity: true)
+        return true
+    }
+
+    mutating func discardRecording() {
+        staged.removeAll(keepingCapacity: true)
+    }
 }

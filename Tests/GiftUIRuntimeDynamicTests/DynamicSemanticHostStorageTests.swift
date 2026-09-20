@@ -70,6 +70,23 @@ private struct StructuralExcessRoot: View {
     #expect(storage.canvasIdentity(at: 0) != nil)
     #expect(storage.semanticScopeCount > 0)
     #expect(storage.renderSnapshotVersion == 1)
+    let renderView = storage.renderView
+    #expect(renderView.semanticScopeCount == storage.scopeCount)
+    #expect(renderView.renderSnapshotVersion == storage.renderSnapshotVersion)
+
+    var pending = [renderView.rootIdentity]
+    var visited: [DynamicSemanticIdentity] = []
+    while let identity = pending.popLast() {
+        #expect(!visited.contains(identity))
+        visited.append(identity)
+        let childCount = try #require(renderView.childCount(of: identity))
+        for childIndex in 0 ..< childCount {
+            pending.append(try #require(renderView.child(of: identity, at: childIndex)))
+        }
+        #expect(renderView.child(of: identity, at: childCount) == nil)
+        #expect(renderView.layoutIdentity(for: identity) == identity)
+    }
+    #expect(visited.count == Int(renderView.semanticScopeCount))
 
     var foundDegree = false
     for ordinal in 0 ..< storage.semanticScopeCount {

@@ -761,11 +761,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       semantic depth 33, 121 retained semantic/render identities, 93 layout
       scopes, and layout depth 13; see the
       [surface measurement](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/portable-surface-measurement.md).
-      Those values exceed the current approved preset and require deliberate
-      SPEC-008/SPEC-013/SPEC-015 review. The real render-preflight join also
-      remains blocked because an oversized diagnostic run proves the current
-      child projection is not yet a coherent render tree. See the
-      [render projection blocker](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-render-projection-blocker.md).
+      The semantic store now publishes a coherent 93-scope render-only tree.
+      With separately labeled measurement capacities, real render preflight
+      and streaming cover every render/layout scope and produce 30 ordinary
+      operations, 129 positioned glyphs, and clip depth 3. The projection
+      blocker is resolved; Canvas-plan integration remains open. The measured
+      values exceed the current approved preset and require deliberate
+      SPEC-008/SPEC-013/SPEC-015 review; see the
+      [render capacity evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-render-projection-blocker.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation
