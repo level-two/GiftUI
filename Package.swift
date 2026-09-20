@@ -308,6 +308,7 @@ let package = Package(
                 "GiftUI",
                 "GiftUIDrawing",
                 "GiftUIExecution",
+                "GiftUIInteraction",
                 "GiftUILayout",
                 "GiftUIObservableState",
                 "GiftUIReferenceTextResources",
@@ -315,6 +316,7 @@ let package = Package(
                 "GiftUIRuntimeCore",
                 "GiftUIRuntimeDynamic",
                 "GiftUISemanticCore",
+                "SignalAnalyzerHost",
                 "SignalAnalyzerPresentation",
             ]
         ),

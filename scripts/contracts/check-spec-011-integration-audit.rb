@@ -28,6 +28,7 @@ approved_consumers = %w[
   GiftUIRuntimeStatic
   GiftUIRuntimeStaticTests
   SignalAnalyzerHost
+  SignalAnalyzerTargetHost
 ]
 actual_consumers = GRAPH.each_with_object([]) do |(target, declaration), consumers|
   consumers << target if declaration.fetch("dependencies").include?("GiftUIInteraction")
@@ -51,7 +52,9 @@ definitions.each do |label, pattern|
   fail_check("expected one #{label} definition, found #{count}") unless count == 1
 end
 
-action_allocator_constructions = all_source.scan(/ActionGenerationAllocator\(\)/).length
+action_allocator_constructions = all_source.scan(
+  /(?<![A-Za-z0-9_])ActionGenerationAllocator\(\)/
+).length
 fail_check("expected one production action-generation allocator construction") unless
   action_allocator_constructions == 1
 coordinator_calls = all_source.scan(/RuntimeInteractionCandidateCoordinator\.build\(/).length

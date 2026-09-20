@@ -196,6 +196,16 @@ where Model: _GiftUIObservableReference, Identity: Equatable & Sendable {
         )
     }
 
+    package borrowing func publishableTargetGeneration(
+        structuralIdentity: Identity,
+        declarationOrdinal: UInt16
+    ) -> ObservableTargetGeneration? {
+        workspace.publishableTargetGeneration(
+            structuralIdentity: structuralIdentity,
+            declarationOrdinal: declarationOrdinal
+        )
+    }
+
     package borrowing func currentTargetGeneration()
         -> ObservableTargetGeneration?
     {

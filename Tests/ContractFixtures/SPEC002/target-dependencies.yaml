@@ -547,6 +547,7 @@ targets:
       - GiftUI
       - GiftUIDrawing
       - GiftUIExecution
+      - GiftUIInteraction
       - GiftUILayout
       - GiftUIObservableState
       - GiftUIReferenceTextResources
@@ -554,6 +555,7 @@ targets:
       - GiftUIRuntimeCore
       - GiftUIRuntimeDynamic
       - GiftUISemanticCore
+      - SignalAnalyzerHost
       - SignalAnalyzerPresentation
   SignalAnalyzerPresetHarness:
     type: regular

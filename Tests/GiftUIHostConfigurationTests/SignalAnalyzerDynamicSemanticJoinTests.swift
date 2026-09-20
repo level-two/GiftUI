@@ -69,6 +69,21 @@ private enum SemanticJoinFailure: Error {
     #expect(summary.render.operationCount == 35)
     #expect(summary.render.positionedGlyphCount == 129)
     #expect(summary.render.maximumObservedClipDepth == 3)
+    #expect(summary.interactionOccurrenceCount == 6)
+    let accepted = try #require(
+        FrameOfferResult(disposition: .accepted, failure: nil)
+    )
+    #expect(
+        pipeline.resolveInteraction(
+            offer: accepted,
+            presentationRevision: PresentationRevision(rawValue: 1)
+        ) == .committed(PresentationRevision(rawValue: 1))
+    )
+    #expect(pipeline.committedActionCount == 6)
+    #expect(pipeline.committedHitRegionCount == 6)
+    let firstGenerations = (0 ..< pipeline.committedActionCount).compactMap {
+        pipeline.committedAction(at: $0)?.generation
+    }
 
     let repeatedResult = pipeline.derive(
         model: model,
@@ -80,6 +95,34 @@ private enum SemanticJoinFailure: Error {
         return
     }
     #expect(repeatedSummary == summary)
+    #expect(
+        pipeline.resolveInteraction(
+            offer: accepted,
+            presentationRevision: PresentationRevision(rawValue: 2)
+        ) == .committed(PresentationRevision(rawValue: 2))
+    )
+    let repeatedGenerations = (0 ..< pipeline.committedActionCount).compactMap {
+        pipeline.committedAction(at: $0)?.generation
+    }
+    #expect(repeatedGenerations == firstGenerations)
+
+    let windowAction = try #require(
+        (0 ..< pipeline.committedActionCount).compactMap {
+            pipeline.committedAction(at: $0)
+        }.first { $0.action.code == SignalAnalyzerAction.selectOneSecond.rawValue }
+    )
+    let hitPoint = Point(
+        x: windowAction.hitBounds.origin.x + windowAction.hitBounds.size.width / 2,
+        y: windowAction.hitBounds.origin.y + windowAction.hitBounds.size.height / 2
+    )
+    guard case .captured(let captured) = pipeline.resolveDown(at: hitPoint) else {
+        Issue.record("production interaction did not capture the one-second action")
+        return
+    }
+    #expect(pipeline.resolveMove(captured, at: hitPoint) == .continued(captured))
+    #expect(pipeline.resolveUp(captured, at: hitPoint) == .activationAdmitted(captured))
+    #expect(pipeline.dispatch(captured) == .dispatched)
+    #expect(model.state.visibleWindow == .oneSecond)
 }
 
 @Test func signalAnalyzerDynamicSemanticJoinMeasuresRealHierarchy() throws {

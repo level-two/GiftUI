@@ -13,7 +13,8 @@ The target is a composition owner, not a portable Presentation owner. The
 portable `SignalAnalyzerPresentation` hierarchy remains unchanged. The
 Raspberry Pi executable links the new module so later T6.7 slices can add the
 endpoint offer, interaction candidate, clock/pacing, activation, and teardown
-owners at that boundary.
+owners at that boundary. The interaction candidate subsequently landed in the
+separately linked `dynamic-target-host-interaction.md` evidence.
 
 ## Exact-capacity evidence
 
@@ -50,8 +51,9 @@ connected display or input claim is made by this evidence.
 
 ## Remaining T6.7 work
 
-This slice does not complete T6.7. The production owner still needs to join
-interaction derivation and six-action routing, RGB565 endpoint offer/drain,
-frame pacing, console-mode ownership/restoration, activation, and teardown.
+This slice does not complete T6.7. Interaction derivation and six-action
+routing are now covered by the follow-on interaction evidence. The production
+owner still needs to join RGB565 endpoint offer/drain, frame pacing,
+console-mode ownership/restoration, activation, and teardown.
 Connected PiScreen validation remains gated on an explicit connected-hardware
 request.

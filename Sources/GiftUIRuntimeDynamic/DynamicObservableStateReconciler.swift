@@ -1,8 +1,9 @@
 import GiftUI
+import GiftUIExecution
 import GiftUIObservableState
 
 package struct DynamicObservableStateReconciler<Model, Identity>:
-    ObservableStateReconciler
+    ObservableStateReconciler, ObservableStateTargetView
 where Model: _GiftUIObservableReference, Identity: Equatable & Sendable {
     package typealias StructuralIdentity = Identity
 
@@ -45,5 +46,25 @@ where Model: _GiftUIObservableReference, Identity: Equatable & Sendable {
         _ disposition: ObservableStateCandidateDisposition
     ) -> ObservableStateResult {
         root.finishCandidate(disposition)
+    }
+
+    package borrowing func targetGeneration(
+        structuralIdentity: Identity,
+        declarationOrdinal: UInt16
+    ) -> ObservableTargetGeneration? {
+        root.targetGeneration(
+            structuralIdentity: structuralIdentity,
+            declarationOrdinal: declarationOrdinal
+        )
+    }
+
+    package borrowing func publishableTargetGeneration(
+        structuralIdentity: Identity,
+        declarationOrdinal: UInt16
+    ) -> ObservableTargetGeneration? {
+        root.publishableTargetGeneration(
+            structuralIdentity: structuralIdentity,
+            declarationOrdinal: declarationOrdinal
+        )
     }
 }
