@@ -84,6 +84,17 @@ sink on the selected Pi. The input descriptor remained readable throughout
 the bounded poll, but no physical touch occurred; therefore this result does
 not prove touch calibration, action routing, or any of the six controls.
 
+The user subsequently confirmed that the gradient was physically visible on
+the PiScreen. They also observed a blinking underscore over the image. That
+underscore is consistent with the Linux framebuffer console cursor after the
+finite validation process returns; it is not application output. This adds
+human-observed display evidence for the bounded transfer, while exposing a
+remaining platform-lifecycle requirement: the production host must own
+graphics-console mode (or an equivalent cursor suppression mechanism) and
+restore the prior console state during teardown. The unprivileged `giftui`
+account can access framebuffer and input devices but is not a member of the
+`tty` group, so this cannot be hidden by silently assuming `/dev/tty0` access.
+
 The implementation and cross-build evidence remains distinct from these
 connected adapter results. No Signal Analyzer composition root or physical
 control scenario executed, so application-level portions of T6.7 and all of

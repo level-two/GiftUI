@@ -731,9 +731,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       [platform-adapter evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md).
       A second bounded connected adapter run synchronously accepted and
       flushed the exact fifteen 240 x 16 payloads / 115,200 RGB565 bytes and
-      kept the input poll operational. No physical touch occurred, so
-      calibration, six-action routing, full host-loop composition, and T8.1
-      remain open. The remaining production-stage join is defined by the
+      kept the input poll operational. The user confirmed the gradient was
+      physically visible and reported the framebuffer console's blinking
+      underscore overlay after process exit. Production console-mode ownership
+      and restoration therefore joins calibration, six-action routing, full
+      host-loop composition, and T8.1 as open work. The remaining
+      production-stage join is defined by the
       [Connected-Target Host Loop design](../implementation-designs/spec-001-connected-target-host-loop.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
