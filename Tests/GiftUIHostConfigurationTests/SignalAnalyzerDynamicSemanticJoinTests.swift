@@ -210,6 +210,12 @@ private enum SemanticJoinFailure: Error {
     }
     #expect(semanticWorkspace.recordedIdentityCount == 158)
     #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
+    #expect(semanticStorage.semanticScopeCount == 81)
+    #expect(preset.runtimeLimits.renderWorkspace.maximumSemanticScopes == 62)
+    #expect(
+        semanticStorage.semanticScopeCount
+            > preset.runtimeLimits.renderWorkspace.maximumSemanticScopes
+    )
 
     var scopeIdentities: [DynamicSemanticIdentity] = []
     var ordinal: UInt16 = 0
@@ -272,7 +278,6 @@ private enum SemanticJoinFailure: Error {
     #expect(layoutSink.renderView.layoutScopeCount == summary.scopeCount)
     #expect(layoutSink.renderView.renderSnapshotVersion == 1)
     #expect(layoutSink.renderView.rootBounds.size.width == 240)
-
 }
 
 private func makeSemanticJoinModel(failsStart: Bool = false) -> SignalAnalyzerViewModel {

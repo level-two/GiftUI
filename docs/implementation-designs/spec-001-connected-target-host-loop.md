@@ -236,6 +236,13 @@ may change while the ownership and stage boundaries above remain intact.
 Physical nRF shield provenance, continuity/orientation, and power evidence is
 a separate execution gate.
 
+The current implementation blocker is the production render projection. The
+semantic store retains 81 structural identities, but the approved workload
+admits 62 render scopes and the current child projection does not traverse a
+coherent render-only tree. The complete foreground/background screen surface
+must be realized before final production counts can be compared to the
+approved workload.
+
 ## Code and Evidence Links
 
 - [`DynamicSemanticHostStorage.swift`](../../Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift)
@@ -262,3 +269,5 @@ a separate execution gate.
   the former 53-versus-32 capacity blocker.
 - [`dynamic-render-workspace.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-render-workspace.md)
   records the bounded Dynamic render-preflight workspace prerequisite.
+- [`dynamic-render-projection-blocker.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-render-projection-blocker.md)
+  records the measured production semantic-to-render mismatch.

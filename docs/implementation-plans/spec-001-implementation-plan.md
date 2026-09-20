@@ -755,6 +755,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       that measured capacity on 2026-09-20; the regenerated schema-3 preset now
       admits the exact production join, resolving the former capacity blocker.
       See the [layout resolution evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-layout-preset-blocker.md).
+      The following real render-preflight join is blocked: current Dynamic
+      semantic storage exposes 81 retained structural identities as render
+      scopes against the approved 62-scope render workspace, and an oversized
+      diagnostic run proves the child projection is not yet a coherent render
+      tree. The portable hierarchy also has not yet realized the approved
+      foreground/background surface. See the
+      [render projection blocker](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-render-projection-blocker.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation
