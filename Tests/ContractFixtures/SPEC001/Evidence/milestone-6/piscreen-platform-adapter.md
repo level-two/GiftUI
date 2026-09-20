@@ -111,6 +111,6 @@ effective console permissions and physical cursor suppression remain part of
 the authorized T8.1 target test rather than claimed evidence here.
 
 The implementation and cross-build evidence remains distinct from these
-connected adapter results. No physical control scenario executed, so the
-remaining application-level failure and cleanup fixtures in T6.7 and all of
-T8.1 remain open.
+connected adapter results. The application-level hardware-free fixtures are
+reconciled in the lifecycle-owner evidence, completing T6.7. No physical
+control scenario executed, so all connected claims in T8.1 remain open.

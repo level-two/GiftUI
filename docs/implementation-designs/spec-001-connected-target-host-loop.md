@@ -244,8 +244,10 @@ operations; the production Dynamic Canvas plan and extension add five strokes
 for 35 total operations, 129 positioned glyphs, and clip depth 3. The
 maintainer approved these SPEC-008/SPEC-013/SPEC-015 values on 2026-09-20, and
 the regenerated exact preset admits the complete production join. Live
-host-owner composition is now realized for the Pi lifecycle aggregate; the
-Linux process-loop boundary remains open inside T6.7.
+host-owner composition is now realized for the Pi lifecycle aggregate,
+including the Linux process-loop and graphics-console boundaries. T6.7's
+hardware-free implementation is complete; connected execution remains
+separately gated by T8.1.
 
 The first host-loop owner is now concrete: one reference-owned Dynamic Pi
 pacing state is shared by post-admission repository callbacks, queued input,

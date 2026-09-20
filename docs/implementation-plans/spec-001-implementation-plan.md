@@ -702,7 +702,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       all nine required facility stages independently, records zero side
       effects, and proves later stages are not accessed. Evidence is in
       `Tests/ContractFixtures/SPEC001/Evidence/milestone-6/source-and-facility-substitution.md`.
-- [ ] `T6.7` — Replace the Raspberry Pi proof-only executable path with the
+- [x] `T6.7` — Replace the Raspberry Pi proof-only executable path with the
       production target-host composition required by SPEC-001. Keep the
       portable Presentation unchanged; compose the accepted Dynamic runtime,
       240 x 240 / 240 x 16 RGB565 endpoint, Linux framebuffer submission,
@@ -713,7 +713,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       six-action routing, stale-event rejection, frame offer/drain behavior,
       and exact owner cardinality. The ARMv6 build must retain the existing
       ABI/resource checks and must not access or deploy to a remote target.
-      **In progress:** the target-owned `GiftUIPlatformRaspberryPi` boundary
+      **Completed:** the target-owned `GiftUIPlatformRaspberryPi` boundary
       now provides the exact 240 x 240 / 240 x 16 RGB565 synchronous display
       target, validated 16-bit framebuffer layout, 480 x 320 aspect-fit
       projection, calibrated touch mapping, and one-contact sequencing. Its
@@ -723,8 +723,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       framebuffer sysfs validation, an mmap lifetime, native RGB565 writes,
       nonblocking evdev reads, and explicit device teardown. The exact product
       cross-builds as an ARM EABI5 hard-float executable and exposes a bounded
-      `--inspect-piscreen` device-readiness mode. Host-loop composition and
-      connected application execution remain open. The separately authorized
+      `--inspect-piscreen` device-readiness mode. The separately authorized
       device-readiness run verified `armv6l`, deployed the exact artifact
       without a service restart, and opened an accessible 480 x 320 RGB565
       framebuffer plus `/dev/input/event0`; see the
@@ -739,9 +738,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       host-loop teardown. Hardware-free fixtures cover partial acquisition,
       restoration failure, preexisting graphics mode, and idempotent cleanup;
       the ARMv6 product cross-build verifies the Linux ioctl binding. Physical
-      permission and cursor-suppression proof remains in T8.1. Calibration,
-      six-action routing, and the remaining failure/cleanup evidence remain
-      open in T6.7. The remaining
+      permission and cursor-suppression proof remains in T8.1. The completed
       production-stage join is defined by the
       [Connected-Target Host Loop design](../implementation-designs/spec-001-connected-target-host-loop.md).
       Its first production-store slice now preserves bounded structural,
@@ -785,14 +782,15 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       module. Its reusable pipeline is initialized from the exact generated
       Dynamic limits and reproduces the approved diagnostic maxima on
       consecutive cycles. Endpoint offer, interaction candidate formation,
-      pacing, and lifecycle ownership remain open; see the
+      pacing, and lifecycle ownership are recorded by later slices below; see
+      the
       [target-host pipeline evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-target-host-presentation-pipeline.md).
       The pipeline now also derives the six real action occurrences from the
       published semantic and resolved-layout candidates, stages them through
       the production Dynamic interaction state, preserves generations across
       unchanged accepted presentations, performs hit testing, and dispatches
-      through the final observable target-generation guard. Endpoint
-      production remains the next open stage; see the
+      through the final observable target-generation guard. The subsequent
+      endpoint-production stage is recorded below; see the
       [interaction join evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-target-host-interaction.md).
       Backend Integration now supplies the previously missing production
       display-owning operation-major RGB565 offer session. Focused evidence
@@ -807,7 +805,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       authoritative offer for interaction resolution. Dynamic-profile proof
       observes the full 35-operation / 129-glyph / 5-stroke stream before
       committing all six actions. Concrete Pi endpoint construction and the
-      executable lifecycle loop remain open; see the
+      executable lifecycle loop are recorded by later slices below; see the
       [interaction and endpoint-offer evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-target-host-interaction.md).
       The exact Pi endpoint factory now composes the 7,680-byte Dynamic tile
       store, reference bitmap resource, operation-major RGB565 session, and
@@ -841,9 +839,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       decoder now emits canonical `PointerPhase` values, and its exact decoded
       down/move/up events feed the production coordinator in the hardware-free
       fixture without a translation seam. Linux device-file polling,
-      wake/pacing, and the
-      complete seven-step activation/eight-step teardown join remain open.
-      A production fact-admission decorator now notifies the future loop only
+      wake/pacing, and the complete seven-step activation/eight-step teardown
+      join are implemented by the production executable and lifecycle
+      aggregate.
+      A production fact-admission decorator now notifies the host loop only
       after bounded repository fact acceptance and stays silent on rejection.
       Its callback and queued input now feed one target-owned pacing state:
       first ingress requests a wake, later ingress coalesces, execution cannot
@@ -981,14 +980,16 @@ simulation.
       continuous seconds on framebuffer/PiScreen, exercise all six controls,
       and record display/input correctness, no loss/duplication/stale events,
       responsiveness, process memory, four-frame/second cadence, teardown,
-      commands, artifact identity, and recovery. **Blocked:** after authorized
-      remediation, the `armv6l` target exposes an accessible `fb_ili9486`
+      commands, artifact identity, and recovery. **Blocked pending explicit
+      connected-run authorization:** earlier authorized remediation
+      established that the `armv6l` target exposes an accessible `fb_ili9486`
       framebuffer at `/dev/fb0` and its ADS7846 touchscreen at
-      `/dev/input/event0`. The current product now owns those devices and a
-      bounded connected run transferred all fifteen 240 x 16 payloads, but it
-      still lacks the production analyzer host loop and no physical touch was
-      observed. It therefore cannot produce the six-control, semantic/action,
-      pacing, or teardown observations. See the
+      `/dev/input/event0`; a bounded adapter run transferred all fifteen 240 x
+      16 payloads, but no physical touch was observed. T6.7 now supplies the
+      production analyzer host loop and graphics-console lifecycle. A new
+      authorized run must still exercise the six physical controls and collect
+      semantic/action, pacing, process memory, cursor-suppression, and teardown
+      observations. See the
       [Pi adapter evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md).
 - [ ] `T8.2` — After explicit authorization, inspect and flash the exact `T6.5`
       ELF through the repository nRF workflow, run the deterministic scenario

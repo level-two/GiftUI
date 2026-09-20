@@ -47,6 +47,37 @@ eight-step teardown; input, pacing, clock, and source-schedule failures also
 unwind through the same `defer`. The existing inspection and finite adapter
 diagnostics remain separate modes.
 
+## T6.7 Closure Matrix
+
+The focused production and platform fixtures cover every hardware-free item
+named by T6.7:
+
+- `framebufferLayoutRejectsWrongFormatStrideAndMapping`,
+  `displayTargetPreservesCanonicalBytesAndPhysicalProjection`, and
+  `displayTargetRejectsWrongDescriptorAndTransportFailure` cover format,
+  stride, extent, canonical transfer, and display refusal;
+- the four `consoleOwner...` fixtures cover partial platform initialization,
+  exact prior-mode restoration, restoration failure, and repeated cleanup;
+- `aspectFitMapsTouchAndRejectsLetterbox`,
+  `contactDecoderProducesOneOrderedSequenceAndCancelsOutside`, and
+  `dynamicPiDecodedContactsEnterNormalizedAdmissionAndWakePacing` cover
+  calibration, normalized provenance, decoded sequencing, and host ingress;
+- `dynamicPiInitialPresentationEnablesInputOnlyAfterAcceptedFrame`,
+  `dynamicPiOwnerCommitsReplacementPresentationRevision`, and
+  `dynamicPiInputCoordinatorQueuesNormalizedSequenceUntilDrain` cover the six
+  action occurrences, action dispatch, stale revisions, and deferred drain;
+- `dynamicPiEndpointFactoryStreamsTheProductionCandidate`, the initial-frame
+  refusal fixture, and both lifecycle-owner fixtures cover offer completion,
+  failure containment, seven-step activation, eight-step teardown, and inert
+  repeated cleanup; and
+- `DynamicSignalAnalyzerPiAssembly.validate()` checks the exact generated
+  owner cardinality and all nine startup stages before device construction.
+
+The exact production product also passes the Raspberry Pi ARMv6 EABI5
+hard-float cross-build and resource checks. These results complete T6.7's
+hardware-free scope without asserting physical display, input, cadence,
+memory, or teardown behavior reserved for T8.1.
+
 Validation commands:
 
 ```text
@@ -58,6 +89,6 @@ scripts/raspberry-pi/build.sh --product SignalAnalyzerRaspberryPiARMv6
 
 This is hardware-free lifecycle evidence. It performs no remote access,
 deployment, service restart, or connected-target execution. Console ownership
-and restoration are now covered separately by the PiScreen platform-adapter
-evidence. T6.7 remains open for its final evidence reconciliation and the
-separately gated connected application scenario.
+and restoration are covered separately by the PiScreen platform-adapter
+evidence. T6.7 is complete; the connected application scenario remains gated
+by explicit authorization under T8.1.
