@@ -387,6 +387,7 @@ targets:
       - GiftUIInteraction
       - GiftUILayout
       - GiftUIObservableState
+      - GiftUIPlatformRaspberryPi
       - GiftUIRasterCore
       - GiftUIReferenceTextResources
       - GiftUIRenderCore
@@ -547,16 +548,21 @@ targets:
     dependencies:
       - GiftUI
       - GiftUIBackendIntegration
+      - GiftUICapabilities
+      - GiftUIDisplayCore
       - GiftUIDrawing
       - GiftUIExecution
       - GiftUIInteraction
       - GiftUILayout
       - GiftUIObservableState
+      - GiftUIRasterCore
       - GiftUIReferenceTextResources
       - GiftUIRenderCore
       - GiftUIRuntimeCore
       - GiftUIRuntimeDynamic
       - GiftUISemanticCore
+      - GiftUISurfaceCore
+      - GiftUITextResources
       - SignalAnalyzerHost
       - SignalAnalyzerPresentation
   SignalAnalyzerPresetHarness:

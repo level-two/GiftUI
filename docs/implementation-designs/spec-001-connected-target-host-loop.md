@@ -257,6 +257,9 @@ host-owner composition remains open inside T6.7.
   owns the stage order and cleanup/disposition behavior.
 - [`PiScreenDisplayTarget.swift`](../../Sources/GiftUIPlatformRaspberryPi/PiScreenDisplayTarget.swift)
   is the concrete Pi synchronous display target.
+- [`DynamicSignalAnalyzerPiEndpoint.swift`](../../Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPiEndpoint.swift)
+  constructs the exact Pi raster session and one-shot endpoint around that
+  display target.
 - [`nrf52840-tft-input-adapter.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md)
   records the current nRF device-adapter boundary and open host-loop gap.
 - [`piscreen-platform-adapter.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md)

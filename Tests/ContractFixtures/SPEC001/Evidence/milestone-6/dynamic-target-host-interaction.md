@@ -52,10 +52,10 @@ framebuffer, input device, or connected board is accessed.
 
 ## Remaining T6.7 work
 
-The next production slice must construct the checked 240 x 16 RGB565 Pi
-endpoint at the executable boundary and join pacing plus the seven-step
-activation/eight-step teardown lifecycle. Console-mode ownership and connected
-PiScreen validation remain separate explicit hardware gates.
+The next production slice must instantiate the checked endpoint from the Linux
+executable and join pacing plus the seven-step activation/eight-step teardown
+lifecycle. Console-mode ownership and connected PiScreen validation remain
+separate explicit hardware gates.
 ## Endpoint Offer Join (2026-09-20)
 
 The production Dynamic target-host pipeline now streams its already-derived
@@ -67,5 +67,17 @@ resolution. Dynamic-profile integration records the complete 35-operation,
 129-positioned-glyph, and 5-stroke stream before the accepted offer commits
 all six staged actions.
 
-This remains hardware-free evidence; concrete Pi endpoint construction,
-lifecycle execution, deployment, and connected execution remain open.
+This remains hardware-free evidence; Linux executable instantiation, lifecycle
+execution, deployment, and connected execution remain open.
+
+## Concrete Pi Endpoint Construction (2026-09-20)
+
+`DynamicSignalAnalyzerPiEndpointFactory` now combines the exact 240 x 240 /
+240 x 16 RGB565 descriptor, 7,680-byte tile and payload bounds, reference
+bitmap resource, operation-major session, exact-provenance validator, and a
+generic synchronous display target. The integration test supplies the real
+`PiScreenDisplayTarget` over a hardware-free 480 x 320 framebuffer sink and
+streams the full diagnostic-present production candidate successfully.
+
+This closes endpoint construction independently of Linux device opening. The
+executable lifecycle/pacing loop and connected PiScreen execution remain open.

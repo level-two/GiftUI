@@ -803,6 +803,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       committing all six actions. Concrete Pi endpoint construction and the
       executable lifecycle loop remain open; see the
       [interaction and endpoint-offer evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-target-host-interaction.md).
+      The exact Pi endpoint factory now composes the 7,680-byte Dynamic tile
+      store, reference bitmap resource, operation-major RGB565 session, and
+      real `PiScreenDisplayTarget`. A hardware-free 480 x 320 framebuffer sink
+      accepts the complete production candidate through that concrete stack.
+      Executable lifecycle ownership and pacing remain open.
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation

@@ -1,6 +1,5 @@
 import GiftUI
 import GiftUIBackendIntegration
-import GiftUICapabilities
 import GiftUIDisplayCore
 import GiftUIDrawing
 import GiftUIExecution
@@ -8,6 +7,7 @@ import GiftUIFailureCore
 import GiftUIHostConfiguration
 import GiftUILayout
 import GiftUIObservableState
+import GiftUIPlatformRaspberryPi
 import GiftUIRasterCore
 import GiftUIReferenceTextResources
 import GiftUIRenderCore
@@ -20,6 +20,8 @@ import SignalAnalyzerDomain
 import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
 import Testing
+
+@testable import GiftUICapabilities
 
 private final class SemanticJoinRepository: SignalAcquisitionRepository {
     let failsStart: Bool
@@ -41,6 +43,98 @@ private final class SemanticJoinRepository: SignalAcquisitionRepository {
 
 private enum SemanticJoinFailure: Error {
     case expected
+}
+
+private struct EndpointFramebufferSink: PiScreenFramebufferSink {
+    private(set) var payloadCount: UInt32 = 0
+    private(set) var regionCount: UInt32 = 0
+    private(set) var byteCount: UInt32 = 0
+
+    mutating func presentRGB565BigEndian(
+        bytes: UnsafeRawBufferPointer,
+        regions: [PiScreenPayloadRegion],
+        transform: PiScreenAspectFitTransform
+    ) -> Bool {
+        guard transform.logicalWidth == 240, transform.logicalHeight == 240 else {
+            return false
+        }
+        payloadCount += 1
+        regionCount += UInt32(regions.count)
+        byteCount += UInt32(bytes.count)
+        return true
+    }
+}
+
+@Test func dynamicPiEndpointFactoryStreamsTheProductionCandidate() throws {
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    let effective = EffectiveRasterPresentation(
+        operations: preset.capabilityRequirement.operations,
+        extent: preset.capabilityRequirement.extent,
+        regionExtent: CapabilityExtent(width: 240, height: 16)!,
+        rowBytes: CapabilityByteCount(rawValue: 480),
+        operationStream: .synchronousBorrowedOneShot,
+        encoding: .rgb565BigEndian,
+        submissionLifetime: .synchronousBorrow,
+        handoff: .synchronous,
+        realization: .tiled,
+        requiredRasterBytes: CapabilityByteCount(rawValue: 7_680),
+        requiredPayloadBytes: CapabilityByteCount(rawValue: 7_680),
+        inFlightCount: 1,
+        requiredInFlightBytes: CapabilityByteCount(rawValue: 7_680)
+    )
+    let provenance = FrameProvenance(
+        cycle: RunCycleID(rawValue: 11),
+        semanticRevision: SemanticRevision(rawValue: 12),
+        candidateFrame: CandidateFrameID(rawValue: 13)
+    )
+    let layout = try #require(
+        PiScreenFramebufferLayout(
+            width: 480,
+            height: 320,
+            bitsPerPixel: 16,
+            bytesPerRow: 960,
+            mappedBytes: 307_200
+        )
+    )
+    let target = try #require(
+        PiScreenDisplayTarget(sink: EndpointFramebufferSink(), layout: layout)
+    )
+    var endpoint = try #require(
+        DynamicSignalAnalyzerPiEndpointFactory.make(
+            target: target,
+            provenance: provenance,
+            effectivePresentation: effective
+        )
+    )
+    var pipeline = try #require(
+        DynamicSignalAnalyzerPresentationPipeline(
+            limits: preset.runtimeLimits,
+            maximumRecordedTraversalIdentities: 203,
+            logicalWidth: 240,
+            logicalHeight: 240
+        )
+    )
+    let model = makeSemanticJoinModel(failsStart: true)
+    model.startTapped()
+    let result = pipeline.derive(
+        model: model,
+        cycle: provenance.cycle,
+        semanticRevision: provenance.semanticRevision
+    )
+    guard case .success(let summary) = result else {
+        Issue.record("production presentation pipeline failed: \(result)")
+        return
+    }
+
+    let offer = pipeline.offer(
+        endpoint: &endpoint,
+        provenance: provenance,
+        expectedHeader: summary.render
+    )
+    #expect(offer == FrameOfferResult(disposition: .accepted, failure: nil)!)
+    #expect(endpoint.sink.target.sink.payloadCount > 0)
+    #expect(endpoint.sink.target.sink.regionCount > 0)
+    #expect(endpoint.sink.target.sink.byteCount > 0)
 }
 
 @Test func dynamicTargetHostPresentationPipelineUsesExactGeneratedLimits() throws {
