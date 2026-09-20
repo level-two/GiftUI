@@ -705,6 +705,32 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     adapter.stopObserving()
 }
 
+@Test func dynamicPiWakeAdmissionNotifiesOnlyAfterAcceptedFacts() {
+    let base = DynamicSignalAnalyzerHostFactAdmission()
+    var acceptedWakeCount = 0
+    let waking = DynamicSignalAnalyzerPiWakeAdmission(base: base) {
+        acceptedWakeCount += 1
+    }
+
+    #expect(
+        waking.submit(.acquisitionState(.idle))
+            == .rejected(.runtimeUnavailable)
+    )
+    #expect(acceptedWakeCount == 0)
+    #expect(base.beginProducer(.bootstrap))
+    #expect(
+        waking.submit(.captureSnapshot(revision: 0, capture: .empty()))
+            == .accepted(sequence: 1)
+    )
+    #expect(waking.submit(.acquisitionState(.idle)) == .accepted(sequence: 2))
+    #expect(
+        waking.submit(.acquisitionState(.running))
+            == .rejected(.factCapacityExhausted)
+    )
+    base.endProducer()
+    #expect(acceptedWakeCount == 2)
+}
+
 @Test func dynamicTargetHostPresentationPipelineUsesExactGeneratedLimits() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     var pipeline = try #require(

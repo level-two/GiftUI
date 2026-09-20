@@ -153,6 +153,12 @@ events to the target-host coordinator, removing a platform-to-host phase
 translation seam. `LinuxPiScreenTouchDevice.poll()` returns this same event
 type; device-file polling and the process wake loop remain executable work.
 
+`DynamicSignalAnalyzerPiWakeAdmission` now decorates the production fact
+admission endpoint used by repository observation. It requests host work only
+after the base store accepts a fact; missing producer context and bounded-store
+refusals produce no wake notification. This supplies the callback-safe seam
+for the paced loop without entering runtime work synchronously.
+
 The hardware-free fixture proves presentation-not-established, unknown-source,
 stale-revision, and quiescent rejection; exact down/move/up sequence and ordinal
 formation; unchanged model state before the opportunity; one generation-

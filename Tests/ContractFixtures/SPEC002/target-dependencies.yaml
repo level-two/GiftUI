@@ -564,6 +564,7 @@ targets:
       - GiftUISemanticCore
       - GiftUISurfaceCore
       - GiftUITextResources
+      - SignalAnalyzerDomain
       - SignalAnalyzerHost
       - SignalAnalyzerPresentation
   SignalAnalyzerPresetHarness:
