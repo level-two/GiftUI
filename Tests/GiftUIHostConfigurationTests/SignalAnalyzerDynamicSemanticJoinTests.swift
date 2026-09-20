@@ -1,5 +1,8 @@
+import GiftUI
 import GiftUIHostConfiguration
+import GiftUILayout
 import GiftUIObservableState
+import GiftUIReferenceTextResources
 import GiftUIRuntimeDynamic
 import GiftUISemanticCore
 import SignalAnalyzerDomain
@@ -170,6 +173,130 @@ private enum SemanticJoinFailure: Error {
     #expect(storage.semanticScopeCount == 80)
     #expect(storage.hasPublishedResult)
     #expect(root.isActive)
+}
+
+@Test func signalAnalyzerDynamicLayoutJoinMeasuresDiagnosticMaximum() throws {
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    let model = makeSemanticJoinModel(failsStart: true)
+    model.startTapped()
+    let root = DynamicObservableRootAdapter<
+        SignalAnalyzerViewModel,
+        DynamicSemanticIdentity
+    >(capacity: preset.runtimeLimits.observableState.maximumLocations)
+    var reconciler = DynamicObservableStateReconciler(root: root)
+    var binding = ObservableStateBindingDecorator(reconciler: reconciler)
+    var semanticWorkspace = DynamicSemanticExpansionWorkspace(
+        maximumPathComponents: preset.runtimeLimits.semantic.maximumDepth,
+        maximumIdentities: 512
+    )
+    var semanticStorage = DynamicSemanticHostStorage(
+        limits: preset.runtimeLimits.semantic,
+        maximumStructuralOccurrences:
+            preset.runtimeLimits.maximumSemanticStructuralOccurrences,
+        canvasCapacity: preset.runtimeLimits.drawing.maximumCanvasOccurrences
+    )
+
+    #expect(reconciler.beginCandidate() == .success(.candidateStarted))
+    let semanticResult = expandSemanticTreeWithStateBinding(
+        SignalAnalyzerView(viewModel: model),
+        limits: preset.runtimeLimits.semantic,
+        workspace: &semanticWorkspace,
+        sink: &semanticStorage,
+        stateBinding: &binding
+    )
+    guard case .success = semanticResult else {
+        Issue.record("approved semantic stage failed: \(semanticResult)")
+        return
+    }
+    #expect(semanticWorkspace.recordedIdentityCount == 158)
+    #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
+
+    var scopeIdentities: [DynamicSemanticIdentity] = []
+    var ordinal: UInt16 = 0
+    while let identity = semanticStorage.semanticIdentity(at: ordinal) {
+        if semanticStorage.primitive(at: identity) != nil {
+            let modifierCount = semanticStorage.modifierCount(of: identity) ?? 0
+            var modifierIndex: UInt16 = 0
+            while modifierIndex < modifierCount {
+                if let scope = semanticStorage.modifierScope(
+                    of: identity,
+                    at: modifierIndex
+                ) {
+                    scopeIdentities.append(scope)
+                }
+                modifierIndex += 1
+            }
+            scopeIdentities.append(identity)
+        }
+        ordinal += 1
+    }
+    let duplicateScopeCount = scopeIdentities.enumerated().filter { index, identity in
+        scopeIdentities[..<index].contains(identity)
+    }.count
+    #expect(duplicateScopeCount == 0)
+
+    let measurementLimits = LayoutLimits(
+        maximumScopes: 512,
+        maximumDepth: 64,
+        maximumTextScalars: 512,
+        maximumTextLines: 512,
+        maximumPositionedGlyphs: 512
+    )!
+    var layoutWorkspace = DynamicLayoutWorkspace(limits: measurementLimits)
+    var validationWorkspace = DynamicLayoutWorkspace(limits: measurementLimits)
+    var validation = LayoutSemanticValidation(limits: measurementLimits)
+    let validationError = validation.validate(
+        semantic: semanticStorage,
+        metrics: GiftUIReferenceTextResources.targetPackage.metrics,
+        workspace: &validationWorkspace
+    )
+    #expect(validationError == nil)
+    validationWorkspace.resetLayout()
+    var layoutSink = ResolvedRenderLayoutResultSink(
+        storage: DynamicResolvedLayoutStorage(limits: measurementLimits)
+    )
+    let layoutResult = layout(
+        semantic: semanticStorage,
+        metrics: GiftUIReferenceTextResources.targetPackage.metrics,
+        proposal: ProposedSize(width: 240, height: 240)!,
+        limits: measurementLimits,
+        workspace: &layoutWorkspace,
+        sink: &layoutSink
+    )
+
+    guard case .success(let summary) = layoutResult else {
+        Issue.record("approved layout stage failed: \(layoutResult)")
+        return
+    }
+    #expect(summary.scopeCount == 53)
+    #expect(summary.textScalarCount == 129)
+    #expect(summary.textLineCount == 21)
+    #expect(summary.positionedGlyphCount == 129)
+    #expect(summary.maximumObservedDepth == 6)
+    #expect(!layoutWorkspace.isLayoutActive)
+    #expect(!layoutSink.isLayoutActive)
+    #expect(layoutSink.renderView.layoutScopeCount == summary.scopeCount)
+    #expect(layoutSink.renderView.renderSnapshotVersion == 1)
+    #expect(layoutSink.renderView.rootBounds.size.width == 240)
+
+    var approvedWorkspace = DynamicLayoutWorkspace(
+        limits: preset.runtimeLimits.layout
+    )
+    var approvedSink = ResolvedRenderLayoutResultSink(
+        storage: DynamicResolvedLayoutStorage(
+            limits: preset.runtimeLimits.layout
+        )
+    )
+    #expect(
+        layout(
+            semantic: semanticStorage,
+            metrics: GiftUIReferenceTextResources.targetPackage.metrics,
+            proposal: ProposedSize(width: 240, height: 240)!,
+            limits: preset.runtimeLimits.layout,
+            workspace: &approvedWorkspace,
+            sink: &approvedSink
+        ) == .failure(.capacityExhausted)
+    )
 }
 
 private func makeSemanticJoinModel(failsStart: Bool = false) -> SignalAnalyzerViewModel {

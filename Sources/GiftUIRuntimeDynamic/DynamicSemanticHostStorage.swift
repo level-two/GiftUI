@@ -6,6 +6,17 @@ import GiftUISemanticCore
 package struct DynamicSemanticIdentity: SemanticRecordingIdentity {
     package let components: [SemanticRecordingPathComponent]
     package let declarationRole: SemanticRecordingRole
+    package let layoutScopeDiscriminator: UInt16?
+
+    package init(
+        components: [SemanticRecordingPathComponent],
+        declarationRole: SemanticRecordingRole,
+        layoutScopeDiscriminator: UInt16? = nil
+    ) {
+        self.components = components
+        self.declarationRole = declarationRole
+        self.layoutScopeDiscriminator = layoutScopeDiscriminator
+    }
 
     package var componentCount: UInt16 {
         UInt16(components.count)
@@ -17,8 +28,20 @@ package struct DynamicSemanticIdentity: SemanticRecordingIdentity {
     }
 
     package func isPrefix(of other: Self) -> Bool {
+        guard layoutScopeDiscriminator == nil,
+            other.layoutScopeDiscriminator == nil
+        else { return false }
         guard components.count <= other.components.count else { return false }
         return components.elementsEqual(other.components.prefix(components.count))
+    }
+
+    fileprivate func modifierLayoutScope(discriminator: UInt16) -> Self? {
+        guard discriminator > 0 else { return nil }
+        return Self(
+            components: components,
+            declarationRole: declarationRole,
+            layoutScopeDiscriminator: discriminator
+        )
     }
 }
 
@@ -28,7 +51,7 @@ package struct DynamicSemanticExpansionWorkspace: SemanticExpansionWorkspace {
     package private(set) var isExpanding = false
 
     private var path: [SemanticRecordingPathComponent]
-    private var identityCount: UInt16 = 0
+    package private(set) var recordedIdentityCount: UInt16 = 0
     private var nextRole: UInt16 = 0
 
     package init(maximumPathComponents: UInt16, maximumIdentities: UInt16) {
@@ -42,7 +65,7 @@ package struct DynamicSemanticExpansionWorkspace: SemanticExpansionWorkspace {
         guard !isExpanding else { return false }
         isExpanding = true
         path.removeAll(keepingCapacity: true)
-        identityCount = 0
+        recordedIdentityCount = 0
         nextRole = 0
         return true
     }
@@ -112,10 +135,10 @@ package struct DynamicSemanticExpansionWorkspace: SemanticExpansionWorkspace {
         identity: inout DynamicSemanticIdentity?
     ) -> SemanticExpansionError? {
         guard path.count < Int(maximumPathComponents),
-            identityCount < maximumIdentities
+            recordedIdentityCount < maximumIdentities
         else { return .capacityExhausted }
         path.append(component)
-        identityCount += 1
+        recordedIdentityCount += 1
         let role =
             path.reversed().lazy.compactMap { component in
                 if case .declarationRole(let role) = component { return role }
@@ -142,6 +165,7 @@ private struct DynamicSemanticPrimitiveRecord {
 
 private struct DynamicSemanticModifierRecord {
     let identity: DynamicSemanticIdentity
+    let layoutIdentity: DynamicSemanticIdentity
     let modifier: SemanticLayoutModifier
     let chainIndex: UInt16
     let disablesActions: Bool
@@ -282,9 +306,16 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
             disablesActions = false
         }
         let identity = copy identity
+        let scopeOrdinal = UInt16(modifiers.count).addingReportingOverflow(1)
+        guard !scopeOrdinal.overflow,
+            let layoutIdentity = identity.modifierLayoutScope(
+                discriminator: scopeOrdinal.partialValue
+            )
+        else { return false }
         modifiers.append(
             DynamicSemanticModifierRecord(
                 identity: identity,
+                layoutIdentity: layoutIdentity,
                 modifier: modifier,
                 chainIndex: chainIndex,
                 disablesActions: disablesActions
@@ -403,7 +434,7 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
     ) -> DynamicSemanticIdentity? {
         let values = modifiers(of: identity)
         guard Int(index) < values.count else { return nil }
-        return values[Int(index)].identity
+        return values[Int(index)].layoutIdentity
     }
 
     package func modifier(
@@ -505,11 +536,12 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
     private func children(
         of identity: DynamicSemanticIdentity
     ) -> [DynamicSemanticIdentity] {
-        structural.filter { candidate in
+        let layoutIdentities = primitives.map(\.identity) + actions.map(\.identity)
+        return layoutIdentities.filter { candidate in
             guard identity != candidate, identity.isPrefix(of: candidate) else {
                 return false
             }
-            return !structural.contains { intermediate in
+            return !layoutIdentities.contains { intermediate in
                 intermediate != identity && intermediate != candidate
                     && identity.isPrefix(of: intermediate)
                     && intermediate.isPrefix(of: candidate)
@@ -520,7 +552,15 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
     private func modifiers(
         of identity: DynamicSemanticIdentity
     ) -> [DynamicSemanticModifierRecord] {
-        modifiers.filter { $0.identity.isPrefix(of: identity) }
-            .sorted { $0.chainIndex < $1.chainIndex }
+        let layoutIdentities = primitives.map(\.identity) + actions.map(\.identity)
+        return modifiers.filter { record in
+            record.identity.isPrefix(of: identity)
+                && !layoutIdentities.contains { intermediate in
+                    intermediate != identity
+                        && record.identity.isPrefix(of: intermediate)
+                        && intermediate.isPrefix(of: identity)
+                }
+        }
+        .sorted { $0.chainIndex < $1.chainIndex }
     }
 }

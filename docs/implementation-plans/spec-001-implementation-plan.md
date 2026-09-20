@@ -749,6 +749,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       and SPEC-015 schema 3 on 2026-09-20. Generated depth 26 and independent
       structural capacity now admit the exact state-bound tree, resolving that
       blocker; see the [resolution evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-semantic-preset-blocker.md).
+      The next production slice joins that semantic result to the real layout
+      engine and atomic Dynamic resolved-layout storage. It measures a
+      diagnostic-present maximum of 53 layout scopes, while the reapproved
+      schema-3 preset admits 32, and therefore fails closed before publication.
+      T6.7 is blocked on a deliberate SPEC-013/SPEC-015 layout-capacity
+      amendment or an independently authorized portable-hierarchy change; see
+      the [layout blocker evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-layout-preset-blocker.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation

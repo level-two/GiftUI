@@ -256,3 +256,6 @@ a separate execution gate.
   records the production Dynamic state-binding bridge and its exact-type guard.
 - [`dynamic-semantic-preset-blocker.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-semantic-preset-blocker.md)
   records the measured exact-tree mismatch and its schema-3 resolution.
+- [`dynamic-layout-preset-blocker.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-layout-preset-blocker.md)
+  records the production layout join, exact measured maxima, and the remaining
+  53-versus-32 approved-capacity blocker.

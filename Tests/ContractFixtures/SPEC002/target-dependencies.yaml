@@ -383,8 +383,10 @@ targets:
       - GiftUIFailureCore
       - GiftUIHostConfiguration
       - GiftUIInteraction
+      - GiftUILayout
       - GiftUIObservableState
       - GiftUIRasterCore
+      - GiftUIReferenceTextResources
       - GiftUIRuntimeCore
       - GiftUIRuntimeDynamic
       - GiftUIRuntimeStatic
