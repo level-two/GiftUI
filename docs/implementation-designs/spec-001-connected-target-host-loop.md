@@ -246,6 +246,12 @@ maintainer approved these SPEC-008/SPEC-013/SPEC-015 values on 2026-09-20, and
 the regenerated exact preset admits the complete production join. Live
 host-owner composition remains open inside T6.7.
 
+The first host-loop owner is now concrete: one reference-owned Dynamic Pi
+pacing state is shared by post-admission repository callbacks, queued input,
+and the future serialized execution loop. This preserves callback deferral and
+coalesces all admitted work behind the generated frame boundary. Correlation
+allocation, Linux polling, and full activation/teardown remain open.
+
 ## Code and Evidence Links
 
 - [`DynamicSemanticHostStorage.swift`](../../Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift)

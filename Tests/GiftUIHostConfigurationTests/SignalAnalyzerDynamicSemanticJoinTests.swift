@@ -731,6 +731,44 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(acceptedWakeCount == 2)
 }
 
+@Test func dynamicPiWakePacingOwnerCoalescesFactAndInputIngress() {
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    let pacing = DynamicSignalAnalyzerPiWakePacingOwner(
+        policy: preset.pacing,
+        initialFrameOriginMicroseconds: 0
+    )
+    let base = DynamicSignalAnalyzerHostFactAdmission()
+    var now: UInt64 = 1
+    var directives: [Result<HostWakeDirective, HostWakePacingError>] = []
+    let waking = DynamicSignalAnalyzerPiWakeAdmission(base: base) {
+        directives.append(pacing.recordAcceptedFact(at: now))
+    }
+
+    #expect(base.beginProducer(.bootstrap))
+    #expect(
+        waking.submit(.captureSnapshot(revision: 0, capture: .empty()))
+            == .accepted(sequence: 1)
+    )
+    now = 2
+    #expect(waking.submit(.acquisitionState(.idle)) == .accepted(sequence: 2))
+    base.endProducer()
+    now = 3
+    directives.append(pacing.recordQueuedInput(at: now))
+
+    #expect(directives == [.success(.requestWake), .success(.coalesced), .success(.coalesced)])
+    #expect(pacing.accumulatedReasons == .admittedWork)
+    let boundary = UInt64(preset.pacing.minimumFrameIntervalMicroseconds)
+    #expect(pacing.schedule(at: boundary - 1) == .wait(untilMicroseconds: boundary))
+    #expect(pacing.beginOpportunity(at: boundary) == .began(.admittedWork))
+    #expect(pacing.opportunityIsActive)
+    #expect(!pacing.wakeIsOutstanding)
+    #expect(pacing.completeOpportunity(at: boundary) == nil)
+    #expect(!pacing.opportunityIsActive)
+    #expect(pacing.schedule(at: boundary) == .noWork)
+    #expect(pacing.quiesce() == nil)
+    #expect(pacing.recordQueuedInput(at: boundary) == .failure(.unavailable))
+}
+
 @Test func dynamicTargetHostPresentationPipelineUsesExactGeneratedLimits() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     var pipeline = try #require(

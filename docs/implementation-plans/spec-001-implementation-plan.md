@@ -839,6 +839,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       complete seven-step activation/eight-step teardown join remain open.
       A production fact-admission decorator now notifies the future loop only
       after bounded repository fact acceptance and stays silent on rejection.
+      Its callback and queued input now feed one target-owned pacing state:
+      first ingress requests a wake, later ingress coalesces, execution cannot
+      begin before the generated frame boundary, and quiescence closes further
+      admission. Correlation allocation, Linux polling, and the complete
+      lifecycle loop remain open.
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation
