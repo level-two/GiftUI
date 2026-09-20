@@ -825,8 +825,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       mutation. The Pi presentation owner now reuses the synchronous endpoint
       for later candidates, installs each exact frame provenance, advances the
       physical presentation revision only after offer and interaction commit,
-      and rejects the replaced revision as stale. Raw Linux contact polling,
-      sealed fact application into that rerender path, wake/pacing, and the
+      and rejects the replaced revision as stale. A later serialized
+      opportunity now seals and applies deferred repository facts in the
+      observable mutation phase, rerenders changed state, and updates input
+      correlation only after physical and interaction commit. Raw Linux
+      contact polling, direct action-dirty rerender joining, wake/pacing, and the
       complete seven-step activation/eight-step teardown join remain open.
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production

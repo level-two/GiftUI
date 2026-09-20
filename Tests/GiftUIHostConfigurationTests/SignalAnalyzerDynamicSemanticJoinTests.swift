@@ -634,12 +634,34 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     }
     #expect(summary.dispatchedActionCount == 1)
     #expect(model.state.acquisitionState == .idle)
-    #expect(admission.seal())
-    var deferredFacts: [SignalAnalyzerPresentationFact] = []
-    while let (_, _, fact) = admission.takeNextSealed() { deferredFacts.append(fact) }
-    #expect(deferredFacts.count == 5)
-    #expect(deferredFacts.last == .acquisitionState(.running))
-    #expect(model.state.acquisitionState == .idle)
+    let replacementRevision = PresentationRevision(rawValue: 55)
+    guard
+        case .completed(let deferred) = coordinator.runDeferredFactOpportunity(
+            into: &owner,
+            provenance: FrameProvenance(
+                cycle: RunCycleID(rawValue: 55),
+                semanticRevision: SemanticRevision(rawValue: 56),
+                candidateFrame: CandidateFrameID(rawValue: 57)
+            ),
+            presentationRevision: replacementRevision
+        )
+    else {
+        Issue.record("deferred repository facts did not produce a replacement frame")
+        return
+    }
+    #expect(deferred.application.factCount == 5)
+    #expect(deferred.application.changed)
+    #expect(deferred.presentation?.interactionOccurrenceCount == 6)
+    #expect(model.state.acquisitionState == .running)
+    #expect(owner.currentPresentationRevision == replacementRevision)
+    #expect(
+        coordinator.admit(
+            phase: .down,
+            position: point,
+            source: inputSource,
+            observedPresentationRevision: revision
+        ) == .dropped(.stalePresentation)
+    )
     adapter.stopObserving()
 }
 

@@ -3,6 +3,7 @@ import GiftUIDisplayCore
 import GiftUIExecution
 import GiftUIHostConfiguration
 import SignalAnalyzerHost
+import SignalAnalyzerPresentation
 
 private enum DynamicSignalAnalyzerPiUnusedFact: Sendable {
     case unsupported
@@ -81,6 +82,23 @@ package enum DynamicSignalAnalyzerPiInputOpportunityRejection: Equatable, Sendab
 package enum DynamicSignalAnalyzerPiInputOpportunityResult: Equatable, Sendable {
     case completed(DynamicSignalAnalyzerPiInputDrainSummary)
     case rejected(DynamicSignalAnalyzerPiInputOpportunityRejection)
+}
+
+package struct DynamicSignalAnalyzerPiDeferredFactOpportunitySummary: Equatable, Sendable {
+    package let application: DynamicSignalAnalyzerFactApplicationSummary
+    package let presentation: DynamicSignalAnalyzerPresentationSummary?
+}
+
+package enum DynamicSignalAnalyzerPiDeferredFactOpportunityFailure: Equatable, Sendable {
+    case factAdmissionUnavailable
+    case factApplicationRejected(SignalAnalyzerRuntimeCondition)
+    case presentation(DynamicSignalAnalyzerPiInitialPresentationFailure)
+}
+
+package enum DynamicSignalAnalyzerPiDeferredFactOpportunityResult: Equatable, Sendable {
+    case completed(DynamicSignalAnalyzerPiDeferredFactOpportunitySummary)
+    case rejected(HostApplicationOpportunityRejection)
+    case failure(DynamicSignalAnalyzerPiDeferredFactOpportunityFailure)
 }
 
 /// Connects target-normalized pointer phases to bounded execution admission.
@@ -169,6 +187,58 @@ package struct DynamicSignalAnalyzerPiInputCoordinator {
                 cancelledOrRejectedCount: cancelledOrRejected
             )
         )
+    }
+
+    package mutating func runDeferredFactOpportunity<Target>(
+        into owner: inout DynamicSignalAnalyzerPiInitialPresentationOwner<Target>,
+        provenance: FrameProvenance,
+        presentationRevision: PresentationRevision
+    ) -> DynamicSignalAnalyzerPiDeferredFactOpportunityResult
+    where Target: DisplayTarget {
+        switch opportunityGate.begin() {
+        case .admitted:
+            break
+        case .rejected(let rejection):
+            return .rejected(rejection)
+        }
+        defer { _ = opportunityGate.complete() }
+
+        guard factAdmission.seal() else {
+            return .failure(.factAdmissionUnavailable)
+        }
+        let application: DynamicSignalAnalyzerFactApplicationSummary
+        switch owner.applySealedFacts(from: factAdmission) {
+        case .applied(let summary):
+            application = summary
+        case .rejected(let condition):
+            return .failure(.factApplicationRejected(condition))
+        case .unavailable:
+            return .failure(.factAdmissionUnavailable)
+        }
+
+        guard application.changed else {
+            return .completed(
+                DynamicSignalAnalyzerPiDeferredFactOpportunitySummary(
+                    application: application,
+                    presentation: nil
+                )
+            )
+        }
+        switch owner.presentNext(
+            provenance: provenance,
+            presentationRevision: presentationRevision
+        ) {
+        case .presented(let summary):
+            gate.installPhysicalPresentation(presentationRevision)
+            return .completed(
+                DynamicSignalAnalyzerPiDeferredFactOpportunitySummary(
+                    application: application,
+                    presentation: summary
+                )
+            )
+        case .failure(let failure):
+            return .failure(.presentation(failure))
+        }
     }
 
     package mutating func quiesce() {

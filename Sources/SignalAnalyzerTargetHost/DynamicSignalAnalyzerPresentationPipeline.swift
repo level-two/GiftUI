@@ -39,6 +39,17 @@ package enum DynamicSignalAnalyzerPresentationResult: Equatable, Sendable {
     case failure(DynamicSignalAnalyzerPresentationFailure)
 }
 
+package struct DynamicSignalAnalyzerFactApplicationSummary: Equatable, Sendable {
+    package let factCount: UInt16
+    package let changed: Bool
+}
+
+package enum DynamicSignalAnalyzerFactApplicationResult: Equatable, Sendable {
+    case applied(DynamicSignalAnalyzerFactApplicationSummary)
+    case rejected(SignalAnalyzerRuntimeCondition)
+    case unavailable
+}
+
 private struct DynamicSignalAnalyzerInteractionOccurrences:
     RuntimeInteractionOccurrenceView
 {
@@ -407,6 +418,37 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
                 drawing: drawing,
                 render: render,
                 interactionOccurrenceCount: occurrences.interactionOccurrenceCount
+            )
+        )
+    }
+
+    package func applySealedFacts(
+        from admission: DynamicSignalAnalyzerHostFactAdmission
+    ) -> DynamicSignalAnalyzerFactApplicationResult {
+        guard root.isActive else { return .unavailable }
+        root.setExecutionPhase(.mutating)
+        defer { root.setExecutionPhase(.idle) }
+
+        var factCount: UInt16 = 0
+        var changed = false
+        while let (_, _, fact) = admission.takeNextSealed() {
+            let nextCount = factCount.addingReportingOverflow(1)
+            guard !nextCount.overflow else { return .unavailable }
+            factCount = nextCount.partialValue
+            guard let application = root.withModel({ model in model.apply(fact) }) else {
+                return .unavailable
+            }
+            switch application {
+            case .applied(let factChanged):
+                changed = changed || factChanged
+            case .rejected(let condition):
+                return .rejected(condition)
+            }
+        }
+        return .applied(
+            DynamicSignalAnalyzerFactApplicationSummary(
+                factCount: factCount,
+                changed: changed
             )
         )
     }

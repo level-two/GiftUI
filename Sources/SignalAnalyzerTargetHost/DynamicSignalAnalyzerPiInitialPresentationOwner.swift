@@ -5,6 +5,7 @@ import GiftUIExecution
 import GiftUIInteraction
 import GiftUIRuntimeCore
 import GiftUIRuntimeDynamic
+import SignalAnalyzerHost
 import SignalAnalyzerPresentation
 
 package enum DynamicSignalAnalyzerPiInitialPresentationState: UInt8, Equatable, Sendable {
@@ -54,6 +55,7 @@ where Target: DisplayTarget {
     private var activeInputSequence: PointerSequenceID?
     private var lastInputOrdinal: InputOrdinal?
     private var capturedAction: CapturedAction<DynamicSemanticIdentity>?
+    private var model: SignalAnalyzerViewModel?
 
     package private(set) var state: DynamicSignalAnalyzerPiInitialPresentationState = .ready
 
@@ -130,6 +132,25 @@ where Target: DisplayTarget {
         )
     }
 
+    package mutating func presentNext(
+        provenance: FrameProvenance,
+        presentationRevision: PresentationRevision
+    ) -> DynamicSignalAnalyzerPiInitialPresentationResult {
+        guard let model else { return .failure(.invalidLifecycle) }
+        return presentNext(
+            model: model,
+            provenance: provenance,
+            presentationRevision: presentationRevision
+        )
+    }
+
+    package func applySealedFacts(
+        from admission: DynamicSignalAnalyzerHostFactAdmission
+    ) -> DynamicSignalAnalyzerFactApplicationResult {
+        guard state == .inputEligible else { return .unavailable }
+        return pipeline.applySealedFacts(from: admission)
+    }
+
     private mutating func present(
         model: SignalAnalyzerViewModel,
         provenance: FrameProvenance,
@@ -172,6 +193,7 @@ where Target: DisplayTarget {
         cancelInputSequence()
         self.provenance = provenance
         self.presentationRevision = presentationRevision
+        self.model = model
         state = .inputEligible
         return .presented(summary)
     }

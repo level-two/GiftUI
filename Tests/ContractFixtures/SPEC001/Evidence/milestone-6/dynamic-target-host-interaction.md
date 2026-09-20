@@ -130,12 +130,19 @@ the physical presentation revision. The replacement-frame fixture changes the
 model, streams a second complete production candidate, accepts input correlated
 to the new revision, and rejects the formerly committed revision as stale.
 
+Deferred repository facts now enter a distinct later application opportunity.
+That opportunity seals the production fact stores, applies all five Start-
+induced facts while the observable root is in its mutation phase, derives and
+streams the replacement candidate, and advances normalized-input correlation
+only after the replacement frame and interaction candidate commit. The model
+remains idle after the input callback opportunity and becomes running only in
+this later opportunity.
+
 The hardware-free fixture proves presentation-not-established, unknown-source,
 stale-revision, and quiescent rejection; exact down/move/up sequence and ordinal
 formation; unchanged model state before the opportunity; one generation-
 checked one-second action inside it; and unavailable opportunity rejection
 after quiescence. The Start-action fixture also proves five deferred repository
 facts survive the opportunity in production admission order. Linux evdev
-polling, sealed fact application into this replacement-presentation path,
-wake-loop ownership, and
+polling, direct action-dirty rerender joining, wake-loop ownership, and
 the complete live activation owner remain open.
