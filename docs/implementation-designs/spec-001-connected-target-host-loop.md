@@ -312,7 +312,13 @@ Static application storage aggregate now requires that exact report and
 constructs the generated root, six-action/six-region interaction state, and
 input owner in one inert value. The eventual firmware owner must keep this
 value address-stable for the complete bound-model lifetime; activation and
-binding remain later joins.
+binding remain later joins. For host and future firmware composition, the
+aggregate now provides one complete-lifetime scope that lends stable pointers
+to its root, interaction, and input fields. The scoped owner binds the initial
+model and retains the direct report route only inside that scope. On exit it
+quiesces input and publishes structural absence through the existing Static
+root lifecycle, detaching the change sink and removing the model before any
+field pointer expires.
 
 ## Code and Evidence Links
 

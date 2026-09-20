@@ -937,7 +937,15 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       report and constructs the generated `UInt32` root, six-action/six-region
       interaction stores, and input owner together without activating them.
       Host checks prove another target report is rejected and the generated
-      interaction limit is neither narrowed nor enlarged.
+      interaction limit is neither narrowed nor enlarged. The aggregate now
+      lends its disjoint fields to a scoped address-stable application owner.
+      That owner materializes generation-zero model storage from the generated
+      root descriptor, retains the direct change-report route only for the
+      aggregate's stable lifetime, dispatches normalized input through the
+      committed interaction, and automatically quiesces input plus publishes
+      structural root removal before the scope ends. Its host fixture proves
+      one action mutation, dirty reporting, model detachment, and empty input
+      cleanup.
       Building this owner into the firmware's complete generated Static
       presentation composition remains open. The firmware
       now compiles the exact shared input values,

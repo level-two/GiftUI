@@ -309,6 +309,18 @@ mechanism evidence; the aggregate is not yet linked into the firmware
 whole-module source or an address-stable firmware lifetime. Firmware hashes
 and resource totals therefore remain unchanged. No board was flashed.
 
+`withAddressStableOwner` now spans the complete host-side application lifetime
+over the aggregate's disjoint root, interaction, and input fields. The scoped
+owner materializes the generated root at target generation zero, retains its
+direct change-report route only while those field addresses are valid, and
+uses the existing input opportunity to dispatch the committed one-second
+action. Scope exit quiesces input and publishes structural absence, which
+detaches the model change sink and removes the model before the borrowed field
+pointers expire. `staticNRFAddressStableOwnerBindsDispatchesAndDetachesRoot`
+proves the action mutation, dirty report, detached root, removed model, and
+empty input storage. The firmware lifetime join remains open, so this is still
+host mechanism evidence and does not change the firmware resource record.
+
 ## Static interaction and observable mutation
 
 `StaticSignalAnalyzerNRFApplicationInputOwner` is the production typed owner of

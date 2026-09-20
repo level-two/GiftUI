@@ -1,9 +1,25 @@
+import GiftUI
 import GiftUICapabilities
+import GiftUIExecution
 import GiftUIHostConfiguration
 import GiftUIInteraction
 import GiftUIRuntimeCore
+import SignalAnalyzerDomain
+import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
 import Testing
+
+private final class StaticNRFApplicationStorageRepository:
+    SignalAcquisitionRepository
+{
+    func startObservingCapture(sink _: some SignalCaptureSink) {}
+    func stopObservingCapture() {}
+    func startObservingAcquisitionState(sink _: some AcquisitionStateSink) {}
+    func stopObservingAcquisitionState() {}
+    func start() throws {}
+    func stop() {}
+    func clear() {}
+}
 
 @Test func staticNRFAssemblyValidatesExactGeneratedEndpointContract() {
     let preset = GeneratedSignalAnalyzerPresets.nrf52840Static()
@@ -71,6 +87,98 @@ import Testing
     case .some:
         Issue.record("Static nRF storage accepted another target report")
     }
+}
+
+@Test func staticNRFAddressStableOwnerBindsDispatchesAndDetachesRoot() {
+    guard case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate(),
+        var storage = StaticSignalAnalyzerNRFApplicationStorage(
+            assemblyReport: report,
+            inputSourceRawValue: 51
+        )
+    else {
+        Issue.record("Static nRF application storage did not construct")
+        return
+    }
+    let revision = PresentationRevision(rawValue: 27)
+
+    storage.withAddressStableOwner { owner in
+        let repository = StaticNRFApplicationStorageRepository()
+        let model = SignalAnalyzerViewModel(
+            startAcquisition: StartSignalAcquisitionUseCase(repository: repository),
+            stopAcquisition: StopSignalAcquisitionUseCase(repository: repository),
+            clearCapture: ClearSignalCaptureUseCase(repository: repository)
+        )
+        #expect(
+            owner.bindRoot(model: model)
+                == .bound(ObservableTargetGeneration(rawValue: 0))
+        )
+        let rootIsActive = owner.rootIsActive
+        #expect(rootIsActive)
+
+        owner.withInteraction { interaction in
+            #expect(
+                interaction.beginCandidate(
+                    limits: InteractionLimits(maximumActions: 6, maximumHitRegions: 6)!
+                ) == nil
+            )
+            #expect(
+                interaction.append(
+                    identity: 4,
+                    isEnabled: true,
+                    bounds: Rect(
+                        origin: Point(x: 0, y: 0),
+                        size: Size(width: 8, height: 8)!
+                    )!,
+                    clip: Rect(
+                        origin: Point(x: 0, y: 0),
+                        size: Size(width: 8, height: 8)!
+                    )!,
+                    paintOrder: 0,
+                    action: BoundedApplicationAction(
+                        code: SignalAnalyzerAction.selectOneSecond.rawValue
+                    ),
+                    targetGeneration: ObservableTargetGeneration(rawValue: 0)
+                ) == .requiresGeneration
+            )
+            #expect(
+                interaction.assignGeneration(ActionGeneration(rawValue: 8), to: 4)
+                    == nil
+            )
+            #expect(interaction.finishCandidate() == nil)
+            interaction.resolveCandidate(.commit(revision))
+        }
+
+        owner.installPhysicalPresentation(rawValue: revision.rawValue)
+        for phase in [PointerPhase.down, .up] {
+            #expect(
+                owner.admit(
+                    phaseRawValue: phase.rawValue,
+                    x: 4,
+                    y: 4,
+                    observedPresentationRevisionRawValue: revision.rawValue,
+                    priorPhysicalSequenceIsCompleteRawValue: 0
+                )?.disposition == .queued
+            )
+        }
+        #expect(
+            owner.runInputOpportunity()
+                == .completed(
+                    StaticSignalAnalyzerNRFInputDrainSummary(
+                        eventCount: 2,
+                        dispatchedActionCount: 1,
+                        cancelledOrRejectedCount: 0
+                    )
+                )
+        )
+        #expect(owner.withModel { $0.state.visibleWindow } == .oneSecond)
+        let rootIsDirty = owner.rootIsDirty
+        #expect(rootIsDirty)
+    }
+
+    let rootIsActiveAfterScope = storage.root.isActive
+    #expect(!rootIsActiveAfterScope)
+    #expect(storage.root.withModel { _ in true } == nil)
+    #expect(storage.input.pendingCount == 0)
 }
 
 private extension RuntimeProfileValidationResult {
