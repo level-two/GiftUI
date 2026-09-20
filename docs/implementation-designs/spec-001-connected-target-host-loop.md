@@ -249,3 +249,5 @@ not an implementation-design question.
   records the current Pi device-adapter boundary and open host-loop gap.
 - [`dynamic-semantic-host-storage.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-semantic-host-storage.md)
   records the first production-store slice and its atomic capacity tests.
+- [`dynamic-observable-semantic-bridge.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-observable-semantic-bridge.md)
+  records the production Dynamic state-binding bridge and its exact-type guard.
