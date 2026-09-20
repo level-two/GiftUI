@@ -13,18 +13,18 @@ reference text metrics. The measured high-water values are:
 
 - 48 semantic nodes;
 - 14 body evaluations;
-- 45 modifier applications;
+- 50 modifier applications;
 - 6 action occurrences;
-- semantic traversal depth 33;
-- 121 retained semantic-expansion identities;
-- 198 recorded traversal identities;
+- semantic traversal depth 34;
+- 126 retained semantic-expansion identities;
+- 203 recorded traversal identities;
 - 5 Canvas occurrences;
-- 93 layout scopes;
+- 98 layout scopes;
 - 129 text scalars and positioned glyphs across 21 lines; and
 - layout depth 13.
 
-The normal hierarchy measures 47 semantic nodes, 44 modifiers, 119 retained
-semantic/render identities, and the same traversal depth of 33.
+The normal hierarchy measures 47 semantic nodes, 49 modifiers, 124 retained
+semantic-expansion identities, and the same traversal depth of 34.
 
 The foreground census is exactly 21 scopes: 12 white, 4 gray, 4 channel-low
 blue, and 1 failure red in the measured diagnostic scenario. The background
@@ -39,10 +39,12 @@ scopes, and its layout/render workspace admits 53 scopes and traversal depth
 The checked measurement test uses separately labeled diagnostic capacities and
 also proves that the approved preset rejects the expanded surface.
 
-The coherent render-only projection subsequently measures 93 scopes at depth
-13 and completes ordinary render streaming with 30 operations, 129 positioned
-glyphs, and clip depth 3. These results require deliberate
-SPEC-008/SPEC-013/SPEC-015 review and reapproval before preset regeneration.
+After the five Canvas scopes receive nonzero exact frames, the coherent
+render-only projection measures 98 scopes at depth 13. Ordinary render
+streaming completes with 30 operations; Canvas streaming adds 5 strokes for a
+35-operation total, with 129 positioned glyphs and clip depth 3. These results
+require deliberate SPEC-008/SPEC-013/SPEC-015 review and reapproval before
+preset regeneration.
 
 This evidence is hardware-free. No deployment, framebuffer access, or
 connected-target execution occurred.

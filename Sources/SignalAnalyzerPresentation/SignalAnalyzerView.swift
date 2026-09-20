@@ -57,6 +57,7 @@ package struct SignalAnalyzerWaveformView: View {
     package var body: some View {
         ZStack {
             SignalAnalyzerGridView()
+                .frame(width: 200, height: 100)
             VStack(spacing: 2) {
                 SignalAnalyzerTimeRulerView(visibleRange: visibleRange)
                 SignalAnalyzerChannelWaveformView(
@@ -127,6 +128,7 @@ package struct SignalAnalyzerChannelWaveformView: View {
                 capture: capture,
                 visibleRange: visibleRange
             )
+            .frame(width: 120, height: 16)
             Text(level.label)
                 .foregroundStyle(level.foregroundColor)
         }

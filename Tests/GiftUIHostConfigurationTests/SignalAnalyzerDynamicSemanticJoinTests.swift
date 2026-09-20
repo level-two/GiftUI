@@ -1,4 +1,6 @@
 import GiftUI
+import GiftUIDrawing
+import GiftUIExecution
 import GiftUIHostConfiguration
 import GiftUILayout
 import GiftUIObservableState
@@ -76,10 +78,10 @@ private enum SemanticJoinFailure: Error {
     #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
     #expect(summary.semanticNodeCount == 47)
     #expect(summary.bodyEvaluationCount == 14)
-    #expect(summary.modifierApplicationCount == 44)
+    #expect(summary.modifierApplicationCount == 49)
     #expect(summary.actionOccurrenceCount == 6)
-    #expect(summary.maximumObservedDepth == 33)
-    #expect(storage.semanticScopeCount == 119)
+    #expect(summary.maximumObservedDepth == 34)
+    #expect(storage.semanticScopeCount == 124)
     #expect(storage.actionOccurrenceCount == 6)
     #expect(storage.canvasOccurrenceCount == 5)
     #expect(storage.hasPublishedResult)
@@ -128,10 +130,10 @@ private enum SemanticJoinFailure: Error {
     #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
     #expect(summary.semanticNodeCount == 48)
     #expect(summary.bodyEvaluationCount == 14)
-    #expect(summary.modifierApplicationCount == 45)
+    #expect(summary.modifierApplicationCount == 50)
     #expect(summary.actionOccurrenceCount == 6)
-    #expect(summary.maximumObservedDepth == 33)
-    #expect(storage.semanticScopeCount == 121)
+    #expect(summary.maximumObservedDepth == 34)
+    #expect(storage.semanticScopeCount == 126)
     #expect(storage.canvasOccurrenceCount == 5)
 
     var foregrounds: [Color: UInt16] = [:]
@@ -238,9 +240,9 @@ private enum SemanticJoinFailure: Error {
         Issue.record("approved semantic stage failed: \(semanticResult)")
         return
     }
-    #expect(semanticWorkspace.recordedIdentityCount == 198)
+    #expect(semanticWorkspace.recordedIdentityCount == 203)
     #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
-    #expect(semanticStorage.semanticScopeCount == 121)
+    #expect(semanticStorage.semanticScopeCount == 126)
     #expect(preset.runtimeLimits.renderWorkspace.maximumSemanticScopes == 62)
     #expect(
         semanticStorage.semanticScopeCount
@@ -304,7 +306,7 @@ private enum SemanticJoinFailure: Error {
         Issue.record("approved layout stage failed: \(layoutResult)")
         return
     }
-    #expect(summary.scopeCount == 93)
+    #expect(summary.scopeCount == 98)
     #expect(summary.textScalarCount == 129)
     #expect(summary.textLineCount == 21)
     #expect(summary.positionedGlyphCount == 129)
@@ -335,7 +337,7 @@ private enum SemanticJoinFailure: Error {
             )
         }
     }
-    #expect(visitedRenderScopes.count == 93)
+    #expect(visitedRenderScopes.count == 98)
     #expect(maximumRenderDepth == 13)
     let renderLimits = RenderLimits(
         maximumOperations: 64,
@@ -383,6 +385,97 @@ private enum SemanticJoinFailure: Error {
     #expect(header.positionedGlyphCount == 129)
     #expect(header.maximumObservedClipDepth == 3)
     #expect(renderSink.storage.published.count > 0)
+
+    #if GIFTUI_DYNAMIC_PROFILE
+        var drawingWorkspace = DynamicDrawingPlanWorkspace(
+            capacity: preset.runtimeLimits.drawing
+        )
+        var previousCanvasOrdinal: UInt16?
+        for canvasIndex in 0 ..< semanticStorage.canvasOccurrenceCount {
+            let canvasIdentity = try #require(
+                semanticStorage.canvasIdentity(at: canvasIndex)
+            )
+            let canvasOrdinal = try #require(
+                layoutSink.renderView.layoutOrdinal(of: canvasIdentity)
+            )
+            let canvasBounds = try #require(
+                layoutSink.renderView.bounds(of: canvasIdentity)
+            )
+            #expect(canvasBounds.size.width > 0)
+            #expect(canvasBounds.size.height >= 4)
+            if let previousCanvasOrdinal {
+                #expect(canvasOrdinal > previousCanvasOrdinal)
+            }
+            previousCanvasOrdinal = canvasOrdinal
+        }
+        let drawingResult = CanvasPlanProducer.derive(
+            source: &semanticStorage,
+            layout: layoutSink.renderView,
+            executionContext: ExecutionContext(
+                cycle: RunCycleID(rawValue: 1),
+                semanticRevision: SemanticRevision(rawValue: 1),
+                candidateFrame: nil,
+                phase: .deriving
+            ),
+            limits: preset.runtimeLimits.drawing,
+            workspace: &drawingWorkspace
+        )
+        guard case .success(let drawingSummary) = drawingResult else {
+            Issue.record("measured Canvas plan failed: \(drawingResult)")
+            return
+        }
+        #expect(drawingSummary.canvasOccurrenceCount == 5)
+        #expect(drawingSummary.strokeCount == 5)
+        #expect(drawingSummary.pointCount == 32)
+        #expect(drawingSummary.subpathCount == 16)
+        #expect(drawingSummary.normalizedStrokeOperationCount == 5)
+
+        let canvasPreflight = CanvasRenderProducer.preflight(
+            semantic: semanticRenderView,
+            layout: layoutSink.renderView,
+            textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
+            drawingPlan: drawingWorkspace,
+            surfaceBounds: surfaceBounds,
+            damageMode: .initializeCompleteSurface,
+            rootForeground: .white,
+            limits: renderLimits,
+            configuredSinkCapacity: RenderSinkCapacity(
+                maximumOperations: 64,
+                maximumPositionedGlyphs: 512
+            ),
+            workspace: &renderWorkspace
+        )
+        guard case .success(let canvasHeader) = canvasPreflight else {
+            Issue.record("measured Canvas render preflight failed: \(canvasPreflight)")
+            return
+        }
+        #expect(canvasHeader.operationCount == 35)
+        #expect(canvasHeader.positionedGlyphCount == 129)
+        #expect(canvasHeader.maximumObservedClipDepth == 3)
+
+        var drawingSink = SemanticJoinDrawingSink(
+            capacity: RenderSinkCapacity(
+                maximumOperations: 64,
+                maximumPositionedGlyphs: 512
+            )
+        )
+        let canvasRenderResult = CanvasRenderProducer.produce(
+            semantic: semanticRenderView,
+            layout: layoutSink.renderView,
+            textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
+            drawingPlan: drawingWorkspace,
+            surfaceBounds: surfaceBounds,
+            damageMode: .initializeCompleteSurface,
+            rootForeground: .white,
+            limits: renderLimits,
+            expectedHeader: canvasHeader,
+            workspace: &renderWorkspace,
+            sink: &drawingSink
+        )
+        #expect(canvasRenderResult == .success(canvasHeader))
+        #expect(drawingSink.publishedHeader == canvasHeader)
+        #expect(drawingSink.publishedStrokeCount == 5)
+    #endif
 }
 
 private func makeSemanticJoinModel(failsStart: Bool = false) -> SignalAnalyzerViewModel {
@@ -417,5 +510,96 @@ private struct SemanticJoinRenderStorage: RenderRecordingStorage {
 
     mutating func discardRecording() {
         staged.removeAll(keepingCapacity: true)
+    }
+}
+
+private struct SemanticJoinDrawingSink: DrawingOperationSink {
+    let capacity: RenderSinkCapacity
+    private var stagedHeader: RenderPlanHeader?
+    private var stagedOperationCount: UInt16 = 0
+    private var stagedGlyphCount: UInt16 = 0
+    private var stagedStrokeCount: UInt16 = 0
+    private(set) var publishedHeader: RenderPlanHeader?
+    private(set) var publishedStrokeCount: UInt16 = 0
+
+    init(capacity: RenderSinkCapacity) {
+        self.capacity = capacity
+    }
+
+    mutating func begin(_ header: RenderPlanHeader) -> Bool {
+        guard stagedHeader == nil, header.operationCount <= capacity.maximumOperations,
+            header.positionedGlyphCount <= capacity.maximumPositionedGlyphs
+        else { return false }
+        stagedHeader = header
+        stagedOperationCount = 0
+        stagedGlyphCount = 0
+        stagedStrokeCount = 0
+        return true
+    }
+
+    mutating func fillRect(_: FillRectOperation) -> Bool {
+        incrementOperation()
+    }
+
+    mutating func beginPositionedGlyphs(
+        _: PositionedGlyphOperationHeader
+    ) -> Bool {
+        incrementOperation()
+    }
+
+    mutating func positionedGlyph(_: PositionedGlyph) -> Bool {
+        guard stagedGlyphCount < capacity.maximumPositionedGlyphs else {
+            return false
+        }
+        stagedGlyphCount += 1
+        return true
+    }
+
+    mutating func endPositionedGlyphs() -> Bool {
+        stagedHeader != nil
+    }
+
+    mutating func straightLineStroke<Stroke>(
+        _ stroke: borrowing Stroke
+    ) -> Bool where Stroke: StraightLineStrokeView {
+        var pointIndex: UInt16 = 0
+        while pointIndex < stroke.header.pointCount {
+            guard stroke.point(at: pointIndex) != nil else { return false }
+            pointIndex += 1
+        }
+        var subpathIndex: UInt16 = 0
+        while subpathIndex < stroke.header.subpathCount {
+            guard stroke.subpath(at: subpathIndex) != nil else { return false }
+            subpathIndex += 1
+        }
+        guard incrementOperation() else { return false }
+        stagedStrokeCount += 1
+        return true
+    }
+
+    mutating func finish() -> Bool {
+        guard let stagedHeader,
+            stagedOperationCount == stagedHeader.operationCount,
+            stagedGlyphCount == stagedHeader.positionedGlyphCount
+        else { return false }
+        publishedHeader = stagedHeader
+        publishedStrokeCount = stagedStrokeCount
+        self.stagedHeader = nil
+        return true
+    }
+
+    mutating func discard() {
+        stagedHeader = nil
+        stagedOperationCount = 0
+        stagedGlyphCount = 0
+        stagedStrokeCount = 0
+    }
+
+    private mutating func incrementOperation() -> Bool {
+        guard stagedHeader != nil,
+            stagedOperationCount < capacity.maximumOperations
+        else { return false }
+        stagedOperationCount += 1
+        return true
     }
 }

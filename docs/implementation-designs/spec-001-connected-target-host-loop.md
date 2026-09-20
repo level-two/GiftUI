@@ -238,12 +238,13 @@ a separate execution gate.
 
 The Dynamic semantic store now publishes a coherent render-only projection,
 and the complete foreground/background screen surface is realized. The
-diagnostic maximum measures 121 retained expansion identities and 93 coherent
-render/layout scopes at depth 13; ordinary render streaming produces 30
-operations, 129 positioned glyphs, and clip depth 3. These values exceed the
-currently approved workload and require deliberate SPEC-008/SPEC-013/SPEC-015
-reapproval before exact preset integration. Canvas plan production/streaming
-remains open inside T6.7.
+diagnostic maximum measures 126 retained expansion identities and 98 coherent
+render/layout scopes at depth 13. Ordinary render streaming produces 30
+operations; the production Dynamic Canvas plan and extension add five strokes
+for 35 total operations, 129 positioned glyphs, and clip depth 3. These values
+exceed the currently approved structural workload and require deliberate
+SPEC-008/SPEC-013/SPEC-015 reapproval before exact preset integration. Live
+host-owner composition remains open inside T6.7.
 
 ## Code and Evidence Links
 

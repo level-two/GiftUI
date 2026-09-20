@@ -625,6 +625,7 @@ let package = Package(
                 "GiftUI",
                 "GiftUICapabilities",
                 "GiftUIDisplayCore",
+                "GiftUIDrawing",
                 "GiftUIExecution",
                 "GiftUIFailureCore",
                 "GiftUIHostConfiguration",

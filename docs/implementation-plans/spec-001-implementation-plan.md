@@ -757,18 +757,22 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       See the [layout resolution evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-layout-preset-blocker.md).
       The portable hierarchy now realizes the approved 21 foreground and 9
       rectangular-background roles plus bounded padding and a waveform frame.
-      Its checked diagnostic maximum is 48 semantic nodes, 45 modifiers,
-      semantic depth 33, 121 retained semantic/render identities, 93 layout
+      Its final checked diagnostic maximum is 48 semantic nodes, 50 modifiers,
+      semantic depth 34, 126 retained expansion identities, 98 layout
       scopes, and layout depth 13; see the
       [surface measurement](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/portable-surface-measurement.md).
-      The semantic store now publishes a coherent 93-scope render-only tree.
+      The semantic store now publishes a coherent 98-scope render-only tree.
       With separately labeled measurement capacities, real render preflight
       and streaming cover every render/layout scope and produce 30 ordinary
-      operations, 129 positioned glyphs, and clip depth 3. The projection
-      blocker is resolved; Canvas-plan integration remains open. The measured
+      operations, 129 positioned glyphs, and clip depth 3. A production
+      Dynamic drawing-plan workspace then derives all five Canvas strokes;
+      Canvas-aware streaming completes with 35 total operations. The
+      projection and Canvas-integration blockers are resolved. The measured
       values exceed the current approved preset and require deliberate
       SPEC-008/SPEC-013/SPEC-015 review; see the
       [render capacity evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-render-projection-blocker.md).
+      Dynamic Canvas ownership and the diagnostic plan census are recorded in
+      the [drawing-plan evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-drawing-plan-workspace.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation
