@@ -57,3 +57,31 @@ measure connected stack high-water behavior. No board was flashed. The
 documented physical-board provenance, shield continuity/orientation, and
 power checks remain mandatory before the authorized connected campaign can
 begin.
+
+## Finite device-validation entry
+
+A separately committed follow-up replaces the firmware's immediate
+preset-check exit with a finite target-owned validation entry. After confirming
+the exact generated preset, storage total, 4-row tile, and 3,840-byte segment,
+it will, when deliberately flashed:
+
+1. initialize ADS7846 and ILI9486 through their safe states;
+2. transfer bounded color bars without a full framebuffer;
+3. poll PENIRQ and raw samples every 10 ms for ten seconds;
+4. print saturating fault counts and main-stack high-water over UART; and
+5. return instead of running an unbounded loop.
+
+The exact pristine build passed again. The follow-up artifacts are:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `zephyr.elf` | `762373bed14562ffbc4c9d6421f003ca9543c49be58f3cfe9520912b7b57a0f8` |
+| `zephyr.hex` | `3382b495777a3e9161c247bdb5675e7d6595da143761171a0abd7896b03ded58` |
+| `zephyr.map` | `95b45a845a34b213bf97e4c2a001b213f51781cbd51d9ec2f62c7666797a29ea` |
+| `zephyr.dts` | `042dd0ead8283db2cb12d0ff36caad849f8c88787859202809cd03bf17aef6d7` |
+
+The load-segment report records 35,988 flash bytes and 176,508 RAM bytes;
+hard-float, zero-heap, required-symbol, and ceiling checks pass. This is still
+hardware-free evidence: the repository's `doctor.sh --probe` validates the
+probe build, not a connected DK. No board was detected or flashed, and no
+connected output or stack result is claimed.

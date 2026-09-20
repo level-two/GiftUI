@@ -754,7 +754,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       all driver entry points and passes ARMv7E-M hard-float, zero-heap,
       RAM/flash, and required-symbol gates. Static host-loop composition,
       action normalization, connected stack measurement, and flashing remain
-      open; see the
+      open. A follow-up finite firmware entry now initializes both devices,
+      transfers bounded color bars, polls touch for ten seconds, and reports
+      faults plus stack high-water when deliberately flashed; its exact
+      pristine build also passes. It has not been flashed because physical
+      shield provenance, continuity/orientation, and power gates are not yet
+      evidenced. See the
       [TFT/input adapter evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md).
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence

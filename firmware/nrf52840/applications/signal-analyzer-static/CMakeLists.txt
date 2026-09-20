@@ -12,6 +12,7 @@ project(GiftUISignalAnalyzerStatic LANGUAGES C Swift)
 
 target_sources(app PRIVATE
     src/ads7846.c
+    src/device_validation.c
     src/fault.c
     src/ili9486.c
     src/main.c
