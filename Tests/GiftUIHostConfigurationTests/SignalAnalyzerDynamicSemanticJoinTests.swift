@@ -299,6 +299,95 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(owner.eligibleActionCount == 0)
 }
 
+@Test func dynamicPiOwnerCommitsReplacementPresentationRevision() throws {
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    let initialProvenance = FrameProvenance(
+        cycle: RunCycleID(rawValue: 61),
+        semanticRevision: SemanticRevision(rawValue: 62),
+        candidateFrame: CandidateFrameID(rawValue: 63)
+    )
+    let initialRevision = PresentationRevision(rawValue: 64)
+    let layout = try #require(
+        PiScreenFramebufferLayout(
+            width: 480,
+            height: 320,
+            bitsPerPixel: 16,
+            bytesPerRow: 960,
+            mappedBytes: 307_200
+        )
+    )
+    let target = try #require(
+        PiScreenDisplayTarget(sink: EndpointFramebufferSink(), layout: layout)
+    )
+    var owner = try #require(
+        DynamicSignalAnalyzerPiInitialPresentationOwner(
+            target: target,
+            limits: preset.runtimeLimits,
+            maximumRecordedTraversalIdentities: 203,
+            effectivePresentation: dynamicPiEffectivePresentation(preset: preset),
+            provenance: initialProvenance,
+            presentationRevision: initialRevision
+        )
+    )
+    let model = makeSemanticJoinModel(failsStart: true)
+    guard case .presented = owner.presentInitial(model: model) else {
+        Issue.record("initial presentation did not commit")
+        return
+    }
+    #expect(owner.currentPresentationRevision == initialRevision)
+
+    model.visibleDurationChanged(.fiveSeconds)
+    let nextProvenance = FrameProvenance(
+        cycle: RunCycleID(rawValue: 65),
+        semanticRevision: SemanticRevision(rawValue: 66),
+        candidateFrame: CandidateFrameID(rawValue: 67)
+    )
+    let nextRevision = PresentationRevision(rawValue: 68)
+    guard
+        case .presented(let summary) = owner.presentNext(
+            model: model,
+            provenance: nextProvenance,
+            presentationRevision: nextRevision
+        )
+    else {
+        Issue.record("replacement presentation did not commit")
+        return
+    }
+    #expect(summary.interactionOccurrenceCount == 6)
+    #expect(owner.currentPresentationRevision == nextRevision)
+    let action = try #require(
+        (0 ..< owner.eligibleActionCount).compactMap { owner.eligibleAction(at: $0) }.first
+    )
+    let point = Point(
+        x: action.hitBounds.origin.x + action.hitBounds.size.width / 2,
+        y: action.hitBounds.origin.y + action.hitBounds.size.height / 2
+    )
+    #expect(
+        owner.handle(
+            NormalizedPointerEvent(
+                phase: .down,
+                position: point,
+                source: InputSourceID(rawValue: 30),
+                sequence: PointerSequenceID(rawValue: 31),
+                ordinal: InputOrdinal(rawValue: 0),
+                presentationRevision: initialRevision
+            )
+        ) == .rejected(.stalePresentation)
+    )
+    #expect(
+        owner.handle(
+            NormalizedPointerEvent(
+                phase: .down,
+                position: point,
+                source: InputSourceID(rawValue: 30),
+                sequence: PointerSequenceID(rawValue: 32),
+                ordinal: InputOrdinal(rawValue: 0),
+                presentationRevision: nextRevision
+            )
+        ) == .captured
+    )
+}
+
 @Test func dynamicPiInputCoordinatorQueuesNormalizedSequenceUntilDrain() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     let revision = PresentationRevision(rawValue: 44)

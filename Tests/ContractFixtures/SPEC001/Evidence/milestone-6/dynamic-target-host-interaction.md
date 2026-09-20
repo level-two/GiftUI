@@ -123,11 +123,19 @@ around dispatch. A real deterministic source and repository fixture proves
 that the Start action queues four initial channel transitions plus the running
 state without applying any callback-driven mutation synchronously.
 
+The production Pi presentation owner now reuses its display-owning endpoint
+for later candidates. Before each offer it installs the exact new frame
+provenance; only an accepted offer and committed interaction candidate replace
+the physical presentation revision. The replacement-frame fixture changes the
+model, streams a second complete production candidate, accepts input correlated
+to the new revision, and rejects the formerly committed revision as stale.
+
 The hardware-free fixture proves presentation-not-established, unknown-source,
 stale-revision, and quiescent rejection; exact down/move/up sequence and ordinal
 formation; unchanged model state before the opportunity; one generation-
 checked one-second action inside it; and unavailable opportunity rejection
 after quiescence. The Start-action fixture also proves five deferred repository
 facts survive the opportunity in production admission order. Linux evdev
-polling, fact application and rerender, wake-loop ownership, and
+polling, sealed fact application into this replacement-presentation path,
+wake-loop ownership, and
 the complete live activation owner remain open.

@@ -52,10 +52,18 @@ package struct DynamicSignalAnalyzerPiTileStorage: RGB565TileStorage {
     }
 }
 
-package struct DynamicSignalAnalyzerFrameEnvelopeValidator:
+package final class DynamicSignalAnalyzerFrameEnvelopeValidator:
     RasterFrameEnvelopeValidator
 {
-    package let expected: FrameProvenance
+    private var expected: FrameProvenance
+
+    package init(expected: FrameProvenance) {
+        self.expected = expected
+    }
+
+    package func install(_ expected: FrameProvenance) {
+        self.expected = expected
+    }
 
     package borrowing func accepts(_ provenance: FrameProvenance) -> Bool {
         provenance == expected
@@ -82,6 +90,18 @@ package enum DynamicSignalAnalyzerPiEndpointFactory {
     package static func make<Target: DisplayTarget>(
         target: consuming Target,
         provenance: FrameProvenance,
+        effectivePresentation: EffectiveRasterPresentation
+    ) -> DynamicSignalAnalyzerPiEndpoint<Target>? {
+        make(
+            target: consume target,
+            validator: DynamicSignalAnalyzerFrameEnvelopeValidator(expected: provenance),
+            effectivePresentation: effectivePresentation
+        )
+    }
+
+    package static func make<Target: DisplayTarget>(
+        target: consuming Target,
+        validator: DynamicSignalAnalyzerFrameEnvelopeValidator,
         effectivePresentation: EffectiveRasterPresentation
     ) -> DynamicSignalAnalyzerPiEndpoint<Target>? {
         let bounds = Rect(
@@ -129,9 +149,7 @@ package enum DynamicSignalAnalyzerPiEndpointFactory {
             textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
             textRaster: GiftUIReferenceTextResources.targetPackage.raster,
             textRasterRealization: RasterRealizationID(rawValue: 0),
-            envelopeValidator: DynamicSignalAnalyzerFrameEnvelopeValidator(
-                expected: provenance
-            ),
+            envelopeValidator: validator,
             sink: session,
             startupFailure: nil
         )

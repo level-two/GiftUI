@@ -47,8 +47,9 @@ package struct DynamicSignalAnalyzerPiInitialPresentationOwner<Target>
 where Target: DisplayTarget {
     private var pipeline: DynamicSignalAnalyzerPresentationPipeline
     private var endpoint: DynamicSignalAnalyzerPiEndpoint<Target>
-    private let provenance: FrameProvenance
-    private let presentationRevision: PresentationRevision
+    private let envelopeValidator: DynamicSignalAnalyzerFrameEnvelopeValidator
+    private var provenance: FrameProvenance
+    private var presentationRevision: PresentationRevision
     private var activeInputSource: InputSourceID?
     private var activeInputSequence: PointerSequenceID?
     private var lastInputOrdinal: InputOrdinal?
@@ -64,6 +65,9 @@ where Target: DisplayTarget {
         provenance: FrameProvenance,
         presentationRevision: PresentationRevision
     ) {
+        let envelopeValidator = DynamicSignalAnalyzerFrameEnvelopeValidator(
+            expected: provenance
+        )
         guard
             let pipeline = DynamicSignalAnalyzerPresentationPipeline(
                 limits: limits,
@@ -73,17 +77,21 @@ where Target: DisplayTarget {
             ),
             let endpoint = DynamicSignalAnalyzerPiEndpointFactory.make(
                 target: target,
-                provenance: provenance,
+                validator: envelopeValidator,
                 effectivePresentation: effectivePresentation
             )
         else { return nil }
         self.pipeline = pipeline
         self.endpoint = endpoint
+        self.envelopeValidator = envelopeValidator
         self.provenance = provenance
         self.presentationRevision = presentationRevision
     }
 
     package var inputIsEligible: Bool { state == .inputEligible }
+    package var currentPresentationRevision: PresentationRevision? {
+        inputIsEligible ? presentationRevision : nil
+    }
 
     package var eligibleActionCount: UInt16 {
         inputIsEligible ? pipeline.committedActionCount : 0
@@ -101,6 +109,33 @@ where Target: DisplayTarget {
     ) -> DynamicSignalAnalyzerPiInitialPresentationResult {
         guard state == .ready else { return .failure(.invalidLifecycle) }
 
+        return present(
+            model: model,
+            provenance: provenance,
+            presentationRevision: presentationRevision
+        )
+    }
+
+    package mutating func presentNext(
+        model: SignalAnalyzerViewModel,
+        provenance: FrameProvenance,
+        presentationRevision: PresentationRevision
+    ) -> DynamicSignalAnalyzerPiInitialPresentationResult {
+        guard state == .inputEligible else { return .failure(.invalidLifecycle) }
+
+        return present(
+            model: model,
+            provenance: provenance,
+            presentationRevision: presentationRevision
+        )
+    }
+
+    private mutating func present(
+        model: SignalAnalyzerViewModel,
+        provenance: FrameProvenance,
+        presentationRevision: PresentationRevision
+    ) -> DynamicSignalAnalyzerPiInitialPresentationResult {
+
         let result = pipeline.derive(
             model: model,
             cycle: provenance.cycle,
@@ -114,6 +149,7 @@ where Target: DisplayTarget {
             return .failure(.presentation(failure))
         }
 
+        envelopeValidator.install(provenance)
         let offer = pipeline.offer(
             endpoint: &endpoint,
             provenance: provenance,
@@ -133,6 +169,9 @@ where Target: DisplayTarget {
             ) == .committed(presentationRevision)
         else { return .failure(.interaction) }
 
+        cancelInputSequence()
+        self.provenance = provenance
+        self.presentationRevision = presentationRevision
         state = .inputEligible
         return .presented(summary)
     }
