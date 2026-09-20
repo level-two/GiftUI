@@ -79,26 +79,23 @@ package enum DynamicSignalAnalyzerPiInputOpportunityRejection: Equatable, Sendab
     case factProducerUnavailable
 }
 
-package enum DynamicSignalAnalyzerPiInputOpportunityResult: Equatable, Sendable {
-    case completed(DynamicSignalAnalyzerPiInputDrainSummary)
-    case rejected(DynamicSignalAnalyzerPiInputOpportunityRejection)
-}
-
-package struct DynamicSignalAnalyzerPiDeferredFactOpportunitySummary: Equatable, Sendable {
+package struct DynamicSignalAnalyzerPiOpportunitySummary: Equatable, Sendable {
     package let application: DynamicSignalAnalyzerFactApplicationSummary
+    package let input: DynamicSignalAnalyzerPiInputDrainSummary
     package let presentation: DynamicSignalAnalyzerPresentationSummary?
 }
 
-package enum DynamicSignalAnalyzerPiDeferredFactOpportunityFailure: Equatable, Sendable {
+package enum DynamicSignalAnalyzerPiOpportunityFailure: Equatable, Sendable {
     case factAdmissionUnavailable
     case factApplicationRejected(SignalAnalyzerRuntimeCondition)
+    case mutationUnavailable
     case presentation(DynamicSignalAnalyzerPiInitialPresentationFailure)
 }
 
-package enum DynamicSignalAnalyzerPiDeferredFactOpportunityResult: Equatable, Sendable {
-    case completed(DynamicSignalAnalyzerPiDeferredFactOpportunitySummary)
-    case rejected(HostApplicationOpportunityRejection)
-    case failure(DynamicSignalAnalyzerPiDeferredFactOpportunityFailure)
+package enum DynamicSignalAnalyzerPiInputOpportunityResult: Equatable, Sendable {
+    case completed(DynamicSignalAnalyzerPiOpportunitySummary)
+    case rejected(DynamicSignalAnalyzerPiInputOpportunityRejection)
+    case failure(DynamicSignalAnalyzerPiOpportunityFailure)
 }
 
 /// Connects target-normalized pointer phases to bounded execution admission.
@@ -152,7 +149,9 @@ package struct DynamicSignalAnalyzerPiInputCoordinator {
     }
 
     package mutating func runOpportunity<Target>(
-        into owner: inout DynamicSignalAnalyzerPiInitialPresentationOwner<Target>
+        into owner: inout DynamicSignalAnalyzerPiInitialPresentationOwner<Target>,
+        provenance: FrameProvenance,
+        presentationRevision: PresentationRevision
     ) -> DynamicSignalAnalyzerPiInputOpportunityResult
     where Target: DisplayTarget {
         switch opportunityGate.begin() {
@@ -162,10 +161,30 @@ package struct DynamicSignalAnalyzerPiInputCoordinator {
             return .rejected(.application(rejection))
         }
         defer { _ = opportunityGate.complete() }
+
+        let application: DynamicSignalAnalyzerFactApplicationSummary
+        if factAdmission.seal() {
+            switch owner.applySealedFacts(from: factAdmission) {
+            case .applied(let summary):
+                application = summary
+            case .rejected(let condition):
+                return .failure(.factApplicationRejected(condition))
+            case .unavailable:
+                return .failure(.factAdmissionUnavailable)
+            }
+        } else {
+            application = DynamicSignalAnalyzerFactApplicationSummary(
+                factCount: 0,
+                changed: false
+            )
+        }
+        guard owner.beginApplicationMutation() else {
+            return .failure(.mutationUnavailable)
+        }
         guard factAdmission.beginProducer(.action) else {
+            _ = owner.endApplicationMutation()
             return .rejected(.factProducerUnavailable)
         }
-        defer { factAdmission.endProducer() }
 
         let events = queue.takeAll()
         var dispatched: UInt16 = 0
@@ -180,46 +199,20 @@ package struct DynamicSignalAnalyzerPiInputCoordinator {
                 break
             }
         }
-        return .completed(
-            DynamicSignalAnalyzerPiInputDrainSummary(
-                eventCount: UInt16(events.count),
-                dispatchedActionCount: dispatched,
-                cancelledOrRejectedCount: cancelledOrRejected
-            )
+        factAdmission.endProducer()
+        guard let inputChanged = owner.endApplicationMutation() else {
+            return .failure(.mutationUnavailable)
+        }
+        let input = DynamicSignalAnalyzerPiInputDrainSummary(
+            eventCount: UInt16(events.count),
+            dispatchedActionCount: dispatched,
+            cancelledOrRejectedCount: cancelledOrRejected
         )
-    }
-
-    package mutating func runDeferredFactOpportunity<Target>(
-        into owner: inout DynamicSignalAnalyzerPiInitialPresentationOwner<Target>,
-        provenance: FrameProvenance,
-        presentationRevision: PresentationRevision
-    ) -> DynamicSignalAnalyzerPiDeferredFactOpportunityResult
-    where Target: DisplayTarget {
-        switch opportunityGate.begin() {
-        case .admitted:
-            break
-        case .rejected(let rejection):
-            return .rejected(rejection)
-        }
-        defer { _ = opportunityGate.complete() }
-
-        guard factAdmission.seal() else {
-            return .failure(.factAdmissionUnavailable)
-        }
-        let application: DynamicSignalAnalyzerFactApplicationSummary
-        switch owner.applySealedFacts(from: factAdmission) {
-        case .applied(let summary):
-            application = summary
-        case .rejected(let condition):
-            return .failure(.factApplicationRejected(condition))
-        case .unavailable:
-            return .failure(.factAdmissionUnavailable)
-        }
-
-        guard application.changed else {
+        guard application.changed || inputChanged else {
             return .completed(
-                DynamicSignalAnalyzerPiDeferredFactOpportunitySummary(
+                DynamicSignalAnalyzerPiOpportunitySummary(
                     application: application,
+                    input: input,
                     presentation: nil
                 )
             )
@@ -231,8 +224,9 @@ package struct DynamicSignalAnalyzerPiInputCoordinator {
         case .presented(let summary):
             gate.installPhysicalPresentation(presentationRevision)
             return .completed(
-                DynamicSignalAnalyzerPiDeferredFactOpportunitySummary(
+                DynamicSignalAnalyzerPiOpportunitySummary(
                     application: application,
+                    input: input,
                     presentation: summary
                 )
             )

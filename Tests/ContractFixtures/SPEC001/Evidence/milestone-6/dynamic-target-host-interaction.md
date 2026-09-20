@@ -138,11 +138,19 @@ only after the replacement frame and interaction candidate commit. The model
 remains idle after the input callback opportunity and becomes running only in
 this later opportunity.
 
+The coordinator now executes the complete mutation ordering for every input
+opportunity: seal prior facts, apply them, enter observable mutation, dispatch
+the queued pointer sequence inside the `.action` producer scope, close
+mutation, and derive one replacement candidate when either fact or action
+state changed. The one-second action fixture now commits its updated frame in
+the same opportunity, while Start-produced repository callbacks remain outside
+the seal and therefore wait for the next opportunity.
+
 The hardware-free fixture proves presentation-not-established, unknown-source,
 stale-revision, and quiescent rejection; exact down/move/up sequence and ordinal
 formation; unchanged model state before the opportunity; one generation-
 checked one-second action inside it; and unavailable opportunity rejection
 after quiescence. The Start-action fixture also proves five deferred repository
 facts survive the opportunity in production admission order. Linux evdev
-polling, direct action-dirty rerender joining, wake-loop ownership, and
+polling, wake-loop ownership, and
 the complete live activation owner remain open.

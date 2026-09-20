@@ -485,16 +485,31 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(upEvent.ordinal.rawValue == 2)
     #expect(model.state.visibleWindow == .twoSeconds)
 
+    let opportunityResult = coordinator.runOpportunity(
+        into: &owner,
+        provenance: FrameProvenance(
+            cycle: RunCycleID(rawValue: 45),
+            semanticRevision: SemanticRevision(rawValue: 46),
+            candidateFrame: CandidateFrameID(rawValue: 47)
+        ),
+        presentationRevision: PresentationRevision(rawValue: 48)
+    )
+    guard case .completed(let opportunity) = opportunityResult else {
+        Issue.record("normalized input opportunity did not complete: \(opportunityResult)")
+        return
+    }
+    #expect(opportunity.application.factCount == 0)
+    #expect(!opportunity.application.changed)
     #expect(
-        coordinator.runOpportunity(into: &owner)
-            == .completed(
-                DynamicSignalAnalyzerPiInputDrainSummary(
-                    eventCount: 3,
-                    dispatchedActionCount: 1,
-                    cancelledOrRejectedCount: 0
-                )
+        opportunity.input
+            == DynamicSignalAnalyzerPiInputDrainSummary(
+                eventCount: 3,
+                dispatchedActionCount: 1,
+                cancelledOrRejectedCount: 0
             )
     )
+    #expect(opportunity.presentation?.interactionOccurrenceCount == 6)
+    #expect(owner.currentPresentationRevision == PresentationRevision(rawValue: 48))
     #expect(model.state.visibleWindow == .oneSecond)
     #expect(
         coordinator.admit(
@@ -509,14 +524,22 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
             phase: .down,
             position: point,
             source: source,
-            observedPresentationRevision: PresentationRevision(rawValue: 43)
+            observedPresentationRevision: revision
         ) == .dropped(.stalePresentation)
     )
 
     coordinator.quiesce()
     #expect(!coordinator.inputIsEligible)
     #expect(
-        coordinator.runOpportunity(into: &owner)
+        coordinator.runOpportunity(
+            into: &owner,
+            provenance: FrameProvenance(
+                cycle: RunCycleID(rawValue: 49),
+                semanticRevision: SemanticRevision(rawValue: 50),
+                candidateFrame: CandidateFrameID(rawValue: 51)
+            ),
+            presentationRevision: PresentationRevision(rawValue: 52)
+        )
             == .rejected(.application(.unavailable))
     )
     #expect(
@@ -628,15 +651,25 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
         return
     }
 
-    guard case .completed(let summary) = coordinator.runOpportunity(into: &owner) else {
-        Issue.record("start action opportunity was rejected")
+    let firstOpportunityResult = coordinator.runOpportunity(
+        into: &owner,
+        provenance: FrameProvenance(
+            cycle: RunCycleID(rawValue: 58),
+            semanticRevision: SemanticRevision(rawValue: 59),
+            candidateFrame: CandidateFrameID(rawValue: 60)
+        ),
+        presentationRevision: PresentationRevision(rawValue: 61)
+    )
+    guard case .completed(let firstOpportunity) = firstOpportunityResult else {
+        Issue.record("start action opportunity was rejected: \(firstOpportunityResult)")
         return
     }
-    #expect(summary.dispatchedActionCount == 1)
+    #expect(firstOpportunity.input.dispatchedActionCount == 1)
+    #expect(firstOpportunity.presentation == nil)
     #expect(model.state.acquisitionState == .idle)
     let replacementRevision = PresentationRevision(rawValue: 55)
     guard
-        case .completed(let deferred) = coordinator.runDeferredFactOpportunity(
+        case .completed(let deferred) = coordinator.runOpportunity(
             into: &owner,
             provenance: FrameProvenance(
                 cycle: RunCycleID(rawValue: 55),

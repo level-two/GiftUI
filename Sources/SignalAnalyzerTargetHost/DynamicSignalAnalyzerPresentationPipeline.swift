@@ -453,6 +453,19 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
         )
     }
 
+    package func beginApplicationMutation() -> Bool {
+        guard root.isActive else { return false }
+        root.setExecutionPhase(.mutating)
+        return true
+    }
+
+    package func endApplicationMutation() -> Bool? {
+        guard root.isActive else { return nil }
+        let changed = root.isDirty
+        root.setExecutionPhase(.idle)
+        return changed
+    }
+
     package mutating func resolveInteraction(
         offer: FrameOfferResult,
         presentationRevision: PresentationRevision

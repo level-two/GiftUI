@@ -151,6 +151,15 @@ where Target: DisplayTarget {
         return pipeline.applySealedFacts(from: admission)
     }
 
+    package func beginApplicationMutation() -> Bool {
+        state == .inputEligible && pipeline.beginApplicationMutation()
+    }
+
+    package func endApplicationMutation() -> Bool? {
+        guard state == .inputEligible else { return nil }
+        return pipeline.endApplicationMutation()
+    }
+
     private mutating func present(
         model: SignalAnalyzerViewModel,
         provenance: FrameProvenance,
