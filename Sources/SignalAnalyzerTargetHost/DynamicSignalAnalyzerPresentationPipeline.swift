@@ -1,4 +1,5 @@
 import GiftUI
+import GiftUIBackendIntegration
 import GiftUIDrawing
 import GiftUIExecution
 import GiftUIInteraction
@@ -420,6 +421,38 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
             interaction: &interaction,
             generations: &actionGenerations
         )
+    }
+
+    package mutating func offer<Endpoint: RasterBackendEndpoint>(
+        endpoint: inout Endpoint,
+        provenance: FrameProvenance,
+        expectedHeader: RenderPlanHeader
+    ) -> FrameOfferResult where Endpoint.Sink: RasterOfferSessionSink {
+        endpoint.offer(provenance: provenance) { sink in
+            switch CanvasRenderProducer.produce(
+                semantic: semanticStorage.renderView,
+                layout: layoutSink.renderView,
+                textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
+                drawingPlan: drawingWorkspace,
+                surfaceBounds: surfaceBounds,
+                damageMode: .initializeCompleteSurface,
+                rootForeground: .white,
+                limits: limits.render,
+                expectedHeader: expectedHeader,
+                workspace: &renderWorkspace,
+                sink: &sink
+            ) {
+            case .success(let header):
+                return header == expectedHeader ? .complete : .contractViolation
+            case .failure(let error):
+                sink.retainProducerError(error)
+                switch error {
+                case .capacityExhausted: return .insufficientCapacity
+                case .sinkRefused: return .endpointRefused
+                default: return .producerFailed
+                }
+            }
+        }
     }
 
     package var committedActionCount: UInt16 {

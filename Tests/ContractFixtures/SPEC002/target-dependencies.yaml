@@ -377,6 +377,7 @@ targets:
     type: test
     dependencies:
       - GiftUI
+      - GiftUIBackendIntegration
       - GiftUICapabilities
       - GiftUIDisplayCore
       - GiftUIDrawing
@@ -545,6 +546,7 @@ targets:
     type: regular
     dependencies:
       - GiftUI
+      - GiftUIBackendIntegration
       - GiftUIDrawing
       - GiftUIExecution
       - GiftUIInteraction

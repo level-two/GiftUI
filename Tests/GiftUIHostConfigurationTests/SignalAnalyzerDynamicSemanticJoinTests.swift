@@ -1,14 +1,21 @@
 import GiftUI
+import GiftUIBackendIntegration
+import GiftUICapabilities
+import GiftUIDisplayCore
 import GiftUIDrawing
 import GiftUIExecution
+import GiftUIFailureCore
 import GiftUIHostConfiguration
 import GiftUILayout
 import GiftUIObservableState
+import GiftUIRasterCore
 import GiftUIReferenceTextResources
 import GiftUIRenderCore
 import GiftUIRenderLowering
 import GiftUIRuntimeDynamic
 import GiftUISemanticCore
+import GiftUISurfaceCore
+import GiftUITextResources
 import SignalAnalyzerDomain
 import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
@@ -70,9 +77,21 @@ private enum SemanticJoinFailure: Error {
     #expect(summary.render.positionedGlyphCount == 129)
     #expect(summary.render.maximumObservedClipDepth == 3)
     #expect(summary.interactionOccurrenceCount == 6)
-    let accepted = try #require(
-        FrameOfferResult(disposition: .accepted, failure: nil)
+    var endpoint = SemanticJoinEndpoint(
+        capacity: preset.runtimeLimits.renderSink
     )
+    let accepted = pipeline.offer(
+        endpoint: &endpoint,
+        provenance: FrameProvenance(
+            cycle: RunCycleID(rawValue: 1),
+            semanticRevision: SemanticRevision(rawValue: 1),
+            candidateFrame: CandidateFrameID(rawValue: 1)
+        ),
+        expectedHeader: summary.render
+    )
+    #expect(accepted == FrameOfferResult(disposition: .accepted, failure: nil)!)
+    #expect(endpoint.sink.publishedHeader == summary.render)
+    #expect(endpoint.sink.publishedStrokeCount == 5)
     #expect(
         pipeline.resolveInteraction(
             offer: accepted,
@@ -577,7 +596,7 @@ private struct SemanticJoinRenderStorage: RenderRecordingStorage {
     }
 }
 
-private struct SemanticJoinDrawingSink: DrawingOperationSink {
+private struct SemanticJoinDrawingSink: RasterOfferSessionSink {
     let capacity: RenderSinkCapacity
     private var stagedHeader: RenderPlanHeader?
     private var stagedOperationCount: UInt16 = 0
@@ -585,9 +604,35 @@ private struct SemanticJoinDrawingSink: DrawingOperationSink {
     private var stagedStrokeCount: UInt16 = 0
     private(set) var publishedHeader: RenderPlanHeader?
     private(set) var publishedStrokeCount: UInt16 = 0
+    private(set) var streamCompleted = false
+    private(set) var retainedProducerError: RenderProductionError?
+
+    var descriptor: RasterSurfaceDescriptor { fatalError("fixture-only") }
+    var payloadLimits: RasterPayloadLimits { fatalError("fixture-only") }
+    var failure: RasterBackendError? { nil }
+    var isIdleForOffer: Bool { true }
+    var presentationResponsibilityAccepted: Bool { streamCompleted }
 
     init(capacity: RenderSinkCapacity) {
         self.capacity = capacity
+    }
+
+    mutating func retainProducerError(_ error: RenderProductionError) {
+        retainedProducerError = error
+    }
+
+    mutating func reserveFrame(
+        descriptor: RasterSurfaceDescriptor,
+        payloadCapacityBytes: UInt32,
+        regionCapacity: UInt16
+    ) -> DisplayReservationResult {
+        .reserved(DisplayReservationID(rawValue: 1))
+    }
+
+    mutating func cancelReservedFrame() {}
+    mutating func finishTransferredFrameIfNeeded() { streamCompleted = true }
+    borrowing func health() -> GiftUIOperationalHealth {
+        GiftUIOperationalHealth()
     }
 
     mutating func begin(_ header: RenderPlanHeader) -> Bool {
@@ -648,6 +693,7 @@ private struct SemanticJoinDrawingSink: DrawingOperationSink {
         else { return false }
         publishedHeader = stagedHeader
         publishedStrokeCount = stagedStrokeCount
+        streamCompleted = true
         self.stagedHeader = nil
         return true
     }
@@ -665,5 +711,36 @@ private struct SemanticJoinDrawingSink: DrawingOperationSink {
         else { return false }
         stagedOperationCount += 1
         return true
+    }
+}
+
+private struct SemanticJoinEndpoint: RasterBackendEndpoint {
+    let textMetrics = GiftUIReferenceTextResources.targetPackage.metrics
+    let textRaster = GiftUIReferenceTextResources.targetPackage.raster
+    let textRasterRealization = RasterRealizationID(rawValue: 0)
+    private(set) var sink: SemanticJoinDrawingSink
+
+    init(capacity: RenderSinkCapacity) {
+        sink = SemanticJoinDrawingSink(capacity: capacity)
+    }
+
+    var effectivePresentation: EffectiveRasterPresentation {
+        fatalError("fixture-only")
+    }
+    var descriptor: RasterSurfaceDescriptor { fatalError("fixture-only") }
+    var payloadLimits: RasterPayloadLimits { fatalError("fixture-only") }
+
+    mutating func offer(
+        provenance: FrameProvenance,
+        body: (inout SemanticJoinDrawingSink) -> FrameStreamResult
+    ) -> FrameOfferResult {
+        _ = provenance
+        return body(&sink) == .complete && sink.streamCompleted
+            ? FrameOfferResult(disposition: .accepted, failure: nil)!
+            : FrameOfferResult(disposition: .failed, failure: .producerFailed)!
+    }
+
+    borrowing func health() -> GiftUIOperationalHealth {
+        GiftUIOperationalHealth()
     }
 }

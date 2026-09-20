@@ -306,6 +306,7 @@ let package = Package(
             name: "SignalAnalyzerTargetHost",
             dependencies: [
                 "GiftUI",
+                "GiftUIBackendIntegration",
                 "GiftUIDrawing",
                 "GiftUIExecution",
                 "GiftUIInteraction",
@@ -642,6 +643,7 @@ let package = Package(
             name: "GiftUIHostConfigurationTests",
             dependencies: [
                 "GiftUI",
+                "GiftUIBackendIntegration",
                 "GiftUICapabilities",
                 "GiftUIDisplayCore",
                 "GiftUIDrawing",

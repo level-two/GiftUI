@@ -795,6 +795,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       The remaining endpoint work is therefore the target-host call-site join,
       not another backend realization; see the
       [production session evidence](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/production-operation-major-session.md).
+      The target-host pipeline now owns that call-site: it streams the retained
+      semantic/layout/drawing candidate through `CanvasRenderProducer` inside
+      one endpoint offer, preserves the exact producer error, and returns the
+      authoritative offer for interaction resolution. Dynamic-profile proof
+      observes the full 35-operation / 129-glyph / 5-stroke stream before
+      committing all six actions. Concrete Pi endpoint construction and the
+      executable lifecycle loop remain open; see the
+      [interaction and endpoint-offer evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-target-host-interaction.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation
