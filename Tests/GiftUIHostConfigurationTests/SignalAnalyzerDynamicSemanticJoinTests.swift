@@ -235,16 +235,10 @@ private enum SemanticJoinFailure: Error {
     }.count
     #expect(duplicateScopeCount == 0)
 
-    let measurementLimits = LayoutLimits(
-        maximumScopes: 512,
-        maximumDepth: 64,
-        maximumTextScalars: 512,
-        maximumTextLines: 512,
-        maximumPositionedGlyphs: 512
-    )!
-    var layoutWorkspace = DynamicLayoutWorkspace(limits: measurementLimits)
-    var validationWorkspace = DynamicLayoutWorkspace(limits: measurementLimits)
-    var validation = LayoutSemanticValidation(limits: measurementLimits)
+    let approvedLimits = preset.runtimeLimits.layout
+    var layoutWorkspace = DynamicLayoutWorkspace(limits: approvedLimits)
+    var validationWorkspace = DynamicLayoutWorkspace(limits: approvedLimits)
+    var validation = LayoutSemanticValidation(limits: approvedLimits)
     let validationError = validation.validate(
         semantic: semanticStorage,
         metrics: GiftUIReferenceTextResources.targetPackage.metrics,
@@ -253,13 +247,13 @@ private enum SemanticJoinFailure: Error {
     #expect(validationError == nil)
     validationWorkspace.resetLayout()
     var layoutSink = ResolvedRenderLayoutResultSink(
-        storage: DynamicResolvedLayoutStorage(limits: measurementLimits)
+        storage: DynamicResolvedLayoutStorage(limits: approvedLimits)
     )
     let layoutResult = layout(
         semantic: semanticStorage,
         metrics: GiftUIReferenceTextResources.targetPackage.metrics,
         proposal: ProposedSize(width: 240, height: 240)!,
-        limits: measurementLimits,
+        limits: approvedLimits,
         workspace: &layoutWorkspace,
         sink: &layoutSink
     )
@@ -279,24 +273,6 @@ private enum SemanticJoinFailure: Error {
     #expect(layoutSink.renderView.renderSnapshotVersion == 1)
     #expect(layoutSink.renderView.rootBounds.size.width == 240)
 
-    var approvedWorkspace = DynamicLayoutWorkspace(
-        limits: preset.runtimeLimits.layout
-    )
-    var approvedSink = ResolvedRenderLayoutResultSink(
-        storage: DynamicResolvedLayoutStorage(
-            limits: preset.runtimeLimits.layout
-        )
-    )
-    #expect(
-        layout(
-            semantic: semanticStorage,
-            metrics: GiftUIReferenceTextResources.targetPackage.metrics,
-            proposal: ProposedSize(width: 240, height: 240)!,
-            limits: preset.runtimeLimits.layout,
-            workspace: &approvedWorkspace,
-            sink: &approvedSink
-        ) == .failure(.capacityExhausted)
-    )
 }
 
 private func makeSemanticJoinModel(failsStart: Bool = false) -> SignalAnalyzerViewModel {

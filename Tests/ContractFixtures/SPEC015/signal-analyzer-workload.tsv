@@ -7,7 +7,7 @@ semantic.maximum_structural_occurrences	81
 semantic.maximum_body_evaluations	14
 semantic.maximum_modifier_applications	5
 semantic.maximum_action_occurrences	6
-layout.maximum_scopes	32
+layout.maximum_scopes	53
 layout.maximum_depth	12
 layout.maximum_text_scalars	139
 layout.maximum_text_lines	21

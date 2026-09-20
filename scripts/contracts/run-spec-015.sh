@@ -144,7 +144,7 @@ if [[ "${profile}" == "nrf52840-embedded" ]]; then
             "${profile}" "${input_identity}" "${compiler_identity}" "${command_hash}" "${output_hash}"
         printf '# artifact_identity\t%s\n' "${artifact_hash}"
         sed -n 's/^/\# /p' "${REPORT_ROOT}/memory-summary.txt"
-        printf '# named_profile_storage_bytes\t28928\n'
+        printf '# named_profile_storage_bytes\t30608\n'
         printf '# named_capture_storage_bytes\t115392\n'
         printf '# named_raster_staging_bytes\t3840\n'
         printf '# analyzed_entry_stack_bytes\t8\n'

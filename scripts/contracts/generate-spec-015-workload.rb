@@ -60,13 +60,13 @@ def swift_kind(name)
   }.fetch(name)
 end
 
-def byte_counts(profile, structural_occurrences)
+def byte_counts(profile, structural_occurrences, layout_scopes)
   if profile == "dynamic"
     semantic_bytes = structural_occurrences * 32
-    [semantic_bytes, semantic_bytes, 1280, 2048, 160, 3280, 13_536, 256, 256, 384, 384, 2176, 2176, 128, 256, 128]
+    [semantic_bytes, semantic_bytes, layout_scopes * 40, layout_scopes * 64, 160, 3280, 13_536, 256, 256, 384, 384, 2176, 2176, 128, 256, 128]
   else
     semantic_bytes = structural_occurrences * 24
-    [semantic_bytes, semantic_bytes, 1024, 1536, 160, 3280, 13_536, 128, 128, 256, 256, 2176, 2176, 96, 192, 96]
+    [semantic_bytes, semantic_bytes, layout_scopes * 32, layout_scopes * 48, 160, 3280, 13_536, 128, 128, 256, 256, 2176, 2176, 96, 192, 96]
   end
 end
 
@@ -347,7 +347,8 @@ presets.each do |name, projection|
   }.fetch(name)
   static = projection[:profile] == "static"
   bytes = byte_counts(
-    projection[:profile], integer(values, "semantic.maximum_structural_occurrences")
+    projection[:profile], integer(values, "semantic.maximum_structural_occurrences"),
+    integer(values, "layout.maximum_scopes")
   )
   swift << <<~SWIFT
         package static func #{method_name}() -> GeneratedSignalAnalyzerPreset {

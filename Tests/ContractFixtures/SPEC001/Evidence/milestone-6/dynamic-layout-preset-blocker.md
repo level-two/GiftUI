@@ -19,10 +19,15 @@ diagnostic-present hierarchy with that exact preset therefore fails closed as
 glyph, and depth capacities admit the measured maximum; only layout-scope
 capacity is deficient.
 
-This evidence does not revise SPEC-013 or SPEC-015. T6.7 remains blocked until
-the layout-scope capacity and its candidate/render-workspace byte projections
-are deliberately amended and reapproved, or the portable hierarchy is
-changed under its own governing authority.
+## Resolution
+
+On 2026-09-20 the maintainer explicitly approved the measured additional
+layout scopes. SPEC-013 and SPEC-015 now require 53 layout scopes and the
+derived exact candidate/render-workspace byte projections. The regenerated
+schema-3 presets admit the diagnostic-present production join at the exact
+approved limit, so this former blocker no longer prevents T6.7. Host-loop,
+render, input-routing, console-ownership, and connected validation work remain
+open and are not claimed by this resolution.
 
 Reproduction:
 

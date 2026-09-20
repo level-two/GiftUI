@@ -650,7 +650,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       preset, and emits the registered normalized hardware-free report. The
       focused Milestone 5 cycle and host-lifecycle suites remain the detailed
       state/action/Drawing/frame and pacing transcript; the executable report
-      binds that evidence to the concrete preset and 31,632-byte profile
+      binds that evidence to the concrete preset and 33,816-byte profile
       storage audit.
 - [x] `T6.3` — Generate, compile, and execute the macOS static host from the
       same portable Presentation and exact preset. Inspect generated model,
@@ -660,7 +660,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       root descriptor, checks its two typed model positions and exact `1/1/1`
       observable capacities, and runs the identical semantic script through
       caller-owned fixed fact storage. Its checksum equals T6.2 while the
-      report preserves the approved 28,928-byte Static profile total. Evidence
+      report preserves the approved 30,608-byte Static profile total. Evidence
       and reproduction commands are in the shared macOS preset record.
 - [x] `T6.4` — Assemble the Raspberry Pi 1 dynamic preset with exact 240 x 240
       extent and 240 x 16 RGB565 tiled region. Cross-build only for
@@ -751,11 +751,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       blocker; see the [resolution evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-semantic-preset-blocker.md).
       The next production slice joins that semantic result to the real layout
       engine and atomic Dynamic resolved-layout storage. It measures a
-      diagnostic-present maximum of 53 layout scopes, while the reapproved
-      schema-3 preset admits 32, and therefore fails closed before publication.
-      T6.7 is blocked on a deliberate SPEC-013/SPEC-015 layout-capacity
-      amendment or an independently authorized portable-hierarchy change; see
-      the [layout blocker evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-layout-preset-blocker.md).
+      diagnostic-present maximum of 53 layout scopes. The maintainer approved
+      that measured capacity on 2026-09-20; the regenerated schema-3 preset now
+      admits the exact production join, resolving the former capacity blocker.
+      See the [layout resolution evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-layout-preset-blocker.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation

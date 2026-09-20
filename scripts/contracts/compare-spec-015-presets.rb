@@ -48,10 +48,10 @@ common.each do |field|
 end
 
 expected = {
-  "macos-dynamic" => %w[dynamic 320x240 240 1280 307200 31632],
-  "macos-static" => %w[static 320x240 240 1280 307200 28928],
-  "raspberry-pi-armv6" => %w[dynamic 240x240 16 480 7680 31632],
-  "nrf52840-embedded" => %w[static 480x320 4 960 3840 28928],
+  "macos-dynamic" => %w[dynamic 320x240 240 1280 307200 33816],
+  "macos-static" => %w[static 320x240 240 1280 307200 30608],
+  "raspberry-pi-armv6" => %w[dynamic 240x240 16 480 7680 33816],
+  "nrf52840-embedded" => %w[static 480x320 4 960 3840 30608],
 }
 physical_fields = %w[profile extent region_height bytes_per_row raster_bytes profile_storage_bytes]
 expected.each do |profile, values|
@@ -105,7 +105,7 @@ output = output_dir.join("report.tsv")
 output.write(<<~TSV)
   dimension\tmacos-dynamic\tmacos-static\traspberry-pi-armv6\tnrf52840-embedded\tresult
   semantics\t#{semantic["macos-dynamic"]["semantic_checksum"]}\t#{semantic["macos-static"]["semantic_checksum"]}\t#{semantic["raspberry-pi-armv6"]["semantic_checksum"]}\t#{semantic["nrf52840-embedded"]["semantic_checksum"]}\tequal
-  profile-storage-bytes\t31632\t28928\t31632\t28928\tprofile-bounded
+  profile-storage-bytes\t33816\t30608\t33816\t30608\tprofile-bounded
   raster-staging-bytes\t307200\t307200\t7680\t3840\texact
   resolver-calls-startup\t1\t1\t1\t1\texact
   resolver-calls-post-startup\t0\t0\t0\t0\texact
