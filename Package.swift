@@ -634,6 +634,7 @@ let package = Package(
                 "GiftUIRuntimeCore",
                 "GiftUIRuntimeDynamic",
                 "GiftUIRuntimeStatic",
+                "GiftUISemanticCore",
                 "GiftUISurfaceCore",
                 "GiftUITextResources",
                 "SignalAnalyzerData",

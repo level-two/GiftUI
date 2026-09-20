@@ -227,10 +227,13 @@ must not be counted as application-host success.
 
 ## Open Implementation Questions
 
-No contract choice is open. Concrete private file/type names may change while
-the ownership and stage boundaries above remain intact. Physical nRF shield
-provenance, continuity/orientation, and power evidence is an execution gate,
-not an implementation-design question.
+No architectural choice is open. Exact-tree integration found that the
+approved SPEC-015 semantic depth and Dynamic semantic-storage projection do
+not fit the real state-bound hierarchy. This is a contract correction and
+reapproval gate, not a private implementation choice. Concrete private
+file/type names may change while the ownership and stage boundaries above
+remain intact. Physical nRF shield provenance, continuity/orientation, and
+power evidence is a separate execution gate.
 
 ## Code and Evidence Links
 
@@ -251,3 +254,5 @@ not an implementation-design question.
   records the first production-store slice and its atomic capacity tests.
 - [`dynamic-observable-semantic-bridge.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-observable-semantic-bridge.md)
   records the production Dynamic state-binding bridge and its exact-type guard.
+- [`dynamic-semantic-preset-blocker.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-semantic-preset-blocker.md)
+  records the measured exact-tree mismatch that now blocks T6.7.

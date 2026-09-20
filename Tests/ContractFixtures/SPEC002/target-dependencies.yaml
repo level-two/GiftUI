@@ -388,6 +388,7 @@ targets:
       - GiftUIRuntimeCore
       - GiftUIRuntimeDynamic
       - GiftUIRuntimeStatic
+      - GiftUISemanticCore
       - GiftUISurfaceCore
       - GiftUITextResources
       - SignalAnalyzerData

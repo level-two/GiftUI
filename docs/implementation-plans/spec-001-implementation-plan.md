@@ -742,6 +742,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       layout, render, Canvas, action, and disabled-scope facts from one Dynamic
       semantic traversal with atomic first-excess cleanup; see the
       [Dynamic semantic-storage evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-semantic-host-storage.md).
+      Exact state-bound traversal then measured 47 semantic nodes, 14 body
+      evaluations, 5 modifiers, 6 actions, depth 26, 80 structural identities,
+      and 5 Canvas occurrences. The approved preset's depth 12 and Dynamic
+      semantic-storage projection reject that real tree, so this task is
+      blocked pending deliberate SPEC-015 descriptor/preset correction,
+      storage reconciliation, validation, and human reapproval; see the
+      [preset-blocker evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-semantic-preset-blocker.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation
