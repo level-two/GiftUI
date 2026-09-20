@@ -288,13 +288,16 @@ failure resets normalization but cannot assert resynchronization until PENIRQ
 is later observed released. Physical calibration still gates activation of
 that pipeline in the real polling loop. The fixed ring can now drain only under
 `HostApplicationOpportunityGate`, through a total Static handler result; direct
-package-level removal is unavailable. The production Static interaction
-handler owns a `PointerActionCapture` across opportunities, checks exact input
-provenance against the installed physical presentation, resolves through the
-committed `StaticInteractionState`, and dispatches only while the Static
-observable root is in its mutation phase. A mismatched target generation
-cancels before borrowing the model. The remaining T6.8 join builds that owner
-into the firmware's complete generated Static presentation composition.
+package-level removal is unavailable. The production Static application input
+owner keeps the gate, ring, capture, and provenance as fixed value state across
+opportunities. During one synchronous drain it creates a scoped interaction
+adapter that borrows the generated `StaticInteractionState` and observable root;
+no pointer to either movable caller-owned value survives the opportunity. The
+owner installs a physical revision in admission and dispatch together, and
+quiesces both. Dispatch occurs only in the root's mutation phase, and a
+mismatched target generation cancels before borrowing the model. The remaining
+T6.8 join builds that owner into the firmware's complete generated Static
+presentation composition.
 
 ## Code and Evidence Links
 
@@ -317,8 +320,10 @@ into the firmware's complete generated Static presentation composition.
   validates C-compatible values and preserves typed admission dispositions at
   the firmware boundary.
 - [`StaticSignalAnalyzerNRFInteractionHandler.swift`](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionHandler.swift)
-  owns Static hit testing, cross-opportunity capture, mutation phase, and
-  generation-checked analyzer action dispatch.
+  provides the value session and scoped Static hit-testing/dispatch adapter.
+- [`StaticSignalAnalyzerNRFApplicationInputOwner.swift`](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFApplicationInputOwner.swift)
+  owns input, capture, presentation replacement, quiescence, and synchronous
+  borrows of the generated interaction and observable-root storage.
 - [`nrf52840-tft-input-adapter.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md)
   records the current nRF device-adapter boundary and open host-loop gap.
 - [`piscreen-platform-adapter.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md)

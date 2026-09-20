@@ -21,65 +21,45 @@ private final class StaticNRFInteractionRepository: SignalAcquisitionRepository 
 private let staticNRFInteractionSource = InputSourceID(rawValue: 51)
 private let staticNRFInteractionRevision = PresentationRevision(rawValue: 27)
 private let staticNRFInteractionPoint = Point(x: 4, y: 4)
-private let staticNRFInteractionContext = ExecutionContext(
-    cycle: RunCycleID(rawValue: 13),
-    semanticRevision: SemanticRevision(rawValue: 17),
-    candidateFrame: CandidateFrameID(rawValue: 19),
-    phase: .idle
-)
-
 @Test func staticNRFInteractionDispatchesAcrossSerializedOpportunities() {
     var root = StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>(
         structuralIdentity: 1,
         declarationOrdinal: 0
     )
     var interaction = makeStaticNRFInteraction(targetGeneration: 0)
-    var coordinator = makeStaticNRFInteractionCoordinator()
+    var owner = makeStaticNRFApplicationInputOwner()
 
     withUnsafeMutablePointer(to: &root) { rootPointer in
         bindStaticNRFInteractionRoot(rootPointer)
-        withUnsafeMutablePointer(to: &interaction) { interactionPointer in
-            var handler = StaticSignalAnalyzerNRFInteractionHandler(
-                interaction: interactionPointer,
-                root: rootPointer
-            )
-            handler.installPhysicalPresentation(staticNRFInteractionRevision)
-
-            admitStaticNRFInteraction(.down, into: &coordinator)
-            #expect(
-                coordinator.runOpportunity(into: &handler)
-                    == .completed(
-                        StaticSignalAnalyzerNRFInputDrainSummary(
-                            eventCount: 1,
-                            dispatchedActionCount: 0,
-                            cancelledOrRejectedCount: 0
-                        )
-                    )
-            )
-            #expect(
-                rootPointer.pointee.withModel { $0.state.visibleWindow }
-                    == .twoSeconds
-            )
-
-            admitStaticNRFInteraction(.up, into: &coordinator)
-            #expect(
-                coordinator.runOpportunity(into: &handler)
-                    == .completed(
-                        StaticSignalAnalyzerNRFInputDrainSummary(
-                            eventCount: 1,
-                            dispatchedActionCount: 1,
-                            cancelledOrRejectedCount: 0
-                        )
-                    )
-            )
-            #expect(
-                rootPointer.pointee.withModel { $0.state.visibleWindow }
-                    == .oneSecond
-            )
-            let rootIsDirty = rootPointer.pointee.isDirty
-            #expect(rootIsDirty)
-        }
     }
+
+    admitStaticNRFInteraction(.down, into: &owner)
+    #expect(
+        owner.runOpportunity(interaction: &interaction, root: &root)
+            == .completed(
+                StaticSignalAnalyzerNRFInputDrainSummary(
+                    eventCount: 1,
+                    dispatchedActionCount: 0,
+                    cancelledOrRejectedCount: 0
+                )
+            )
+    )
+    #expect(root.withModel { $0.state.visibleWindow } == .twoSeconds)
+
+    admitStaticNRFInteraction(.up, into: &owner)
+    #expect(
+        owner.runOpportunity(interaction: &interaction, root: &root)
+            == .completed(
+                StaticSignalAnalyzerNRFInputDrainSummary(
+                    eventCount: 1,
+                    dispatchedActionCount: 1,
+                    cancelledOrRejectedCount: 0
+                )
+            )
+    )
+    #expect(root.withModel { $0.state.visibleWindow } == .oneSecond)
+    let rootIsDirty = root.isDirty
+    #expect(rootIsDirty)
 }
 
 @Test func staticNRFInteractionRejectsAStaleObservableTargetGeneration() {
@@ -88,87 +68,123 @@ private let staticNRFInteractionContext = ExecutionContext(
         declarationOrdinal: 0
     )
     var interaction = makeStaticNRFInteraction(targetGeneration: 1)
-    var coordinator = makeStaticNRFInteractionCoordinator()
+    var owner = makeStaticNRFApplicationInputOwner()
 
     withUnsafeMutablePointer(to: &root) { rootPointer in
         bindStaticNRFInteractionRoot(rootPointer)
-        withUnsafeMutablePointer(to: &interaction) { interactionPointer in
-            var handler = StaticSignalAnalyzerNRFInteractionHandler(
-                interaction: interactionPointer,
-                root: rootPointer
-            )
-            handler.installPhysicalPresentation(staticNRFInteractionRevision)
-            admitStaticNRFInteraction(.down, into: &coordinator)
-            admitStaticNRFInteraction(.up, into: &coordinator)
-
-            #expect(
-                coordinator.runOpportunity(into: &handler)
-                    == .completed(
-                        StaticSignalAnalyzerNRFInputDrainSummary(
-                            eventCount: 2,
-                            dispatchedActionCount: 0,
-                            cancelledOrRejectedCount: 1
-                        )
-                    )
-            )
-            #expect(
-                rootPointer.pointee.withModel { $0.state.visibleWindow }
-                    == .twoSeconds
-            )
-            let rootIsDirty = rootPointer.pointee.isDirty
-            #expect(!rootIsDirty)
-        }
     }
+    admitStaticNRFInteraction(.down, into: &owner)
+    admitStaticNRFInteraction(.up, into: &owner)
+
+    #expect(
+        owner.runOpportunity(interaction: &interaction, root: &root)
+            == .completed(
+                StaticSignalAnalyzerNRFInputDrainSummary(
+                    eventCount: 2,
+                    dispatchedActionCount: 0,
+                    cancelledOrRejectedCount: 1
+                )
+            )
+    )
+    #expect(root.withModel { $0.state.visibleWindow } == .twoSeconds)
+    let rootIsDirty = root.isDirty
+    #expect(!rootIsDirty)
 }
 
-@Test func staticNRFInteractionRetainsInputUntilItsPresentationIsInstalled() {
+@Test func staticNRFInteractionCancelsCaptureWhenPresentationChanges() {
     var root = StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>(
         structuralIdentity: 1,
         declarationOrdinal: 0
     )
     var interaction = makeStaticNRFInteraction(targetGeneration: 0)
-    var coordinator = makeStaticNRFInteractionCoordinator()
+    var owner = makeStaticNRFApplicationInputOwner()
 
     withUnsafeMutablePointer(to: &root) { rootPointer in
         bindStaticNRFInteractionRoot(rootPointer)
-        withUnsafeMutablePointer(to: &interaction) { interactionPointer in
-            var handler = StaticSignalAnalyzerNRFInteractionHandler(
-                interaction: interactionPointer,
-                root: rootPointer
-            )
-            admitStaticNRFInteraction(.down, into: &coordinator)
-
-            #expect(
-                coordinator.runOpportunity(into: &handler)
-                    == .rejected(.handlerUnavailable)
-            )
-            #expect(coordinator.pendingCount == 1)
-
-            handler.installPhysicalPresentation(staticNRFInteractionRevision)
-            #expect(
-                coordinator.runOpportunity(into: &handler)
-                    == .completed(
-                        StaticSignalAnalyzerNRFInputDrainSummary(
-                            eventCount: 1,
-                            dispatchedActionCount: 0,
-                            cancelledOrRejectedCount: 0
-                        )
-                    )
-            )
-            #expect(coordinator.pendingCount == 0)
-        }
     }
+    admitStaticNRFInteraction(.down, into: &owner)
+    #expect(
+        owner.runOpportunity(interaction: &interaction, root: &root)
+            == .completed(
+                StaticSignalAnalyzerNRFInputDrainSummary(
+                    eventCount: 1,
+                    dispatchedActionCount: 0,
+                    cancelledOrRejectedCount: 0
+                )
+            )
+    )
+
+    let replacementRevision = PresentationRevision(rawValue: 28)
+    owner.installPhysicalPresentation(rawValue: replacementRevision.rawValue)
+    admitStaticNRFInteraction(
+        .up,
+        revision: replacementRevision,
+        into: &owner
+    )
+    #expect(
+        owner.runOpportunity(interaction: &interaction, root: &root)
+            == .completed(
+                StaticSignalAnalyzerNRFInputDrainSummary(
+                    eventCount: 1,
+                    dispatchedActionCount: 0,
+                    cancelledOrRejectedCount: 1
+                )
+            )
+    )
+    #expect(root.withModel { $0.state.visibleWindow } == .twoSeconds)
 }
 
-private func makeStaticNRFInteractionCoordinator()
-    -> StaticSignalAnalyzerNRFInputCoordinator
-{
-    var coordinator = StaticSignalAnalyzerNRFInputCoordinator(
-        source: staticNRFInteractionSource,
-        context: staticNRFInteractionContext
+@Test func staticNRFApplicationInputOwnerQuiescesAdmissionAndCapture() {
+    var root = StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>(
+        structuralIdentity: 1,
+        declarationOrdinal: 0
     )
-    coordinator.installPhysicalPresentation(staticNRFInteractionRevision)
-    return coordinator
+    var interaction = makeStaticNRFInteraction(targetGeneration: 0)
+    var owner = makeStaticNRFApplicationInputOwner()
+
+    withUnsafeMutablePointer(to: &root) { rootPointer in
+        bindStaticNRFInteractionRoot(rootPointer)
+    }
+    admitStaticNRFInteraction(.down, into: &owner)
+    #expect(
+        owner.runOpportunity(interaction: &interaction, root: &root)
+            == .completed(
+                StaticSignalAnalyzerNRFInputDrainSummary(
+                    eventCount: 1,
+                    dispatchedActionCount: 0,
+                    cancelledOrRejectedCount: 0
+                )
+            )
+    )
+    owner.quiesce()
+
+    #expect(
+        owner.admit(
+            phaseRawValue: PointerPhase.up.rawValue,
+            x: UInt16(staticNRFInteractionPoint.x),
+            y: UInt16(staticNRFInteractionPoint.y),
+            observedPresentationRevisionRawValue:
+                staticNRFInteractionRevision.rawValue,
+            priorPhysicalSequenceIsCompleteRawValue: 0
+        )?.disposition == .sourceQuiesced
+    )
+    #expect(owner.pendingCount == 0)
+    #expect(
+        owner.runOpportunity(interaction: &interaction, root: &root)
+            == .rejected(.application(.unavailable))
+    )
+}
+
+private func makeStaticNRFApplicationInputOwner()
+    -> StaticSignalAnalyzerNRFApplicationInputOwner
+{
+    var owner = StaticSignalAnalyzerNRFApplicationInputOwner(
+        sourceRawValue: staticNRFInteractionSource.rawValue
+    )
+    owner.installPhysicalPresentation(
+        rawValue: staticNRFInteractionRevision.rawValue
+    )
+    return owner
 }
 
 private func makeStaticNRFInteraction(
@@ -250,15 +266,17 @@ private func bindStaticNRFInteractionRoot(
 
 private func admitStaticNRFInteraction(
     _ phase: PointerPhase,
-    into coordinator: inout StaticSignalAnalyzerNRFInputCoordinator
+    revision: PresentationRevision = staticNRFInteractionRevision,
+    into owner: inout StaticSignalAnalyzerNRFApplicationInputOwner
 ) {
     guard
-        case .queued = coordinator.admit(
-            phase: phase,
-            position: staticNRFInteractionPoint,
-            source: staticNRFInteractionSource,
-            observedPresentationRevision: staticNRFInteractionRevision
-        )
+        owner.admit(
+            phaseRawValue: phase.rawValue,
+            x: UInt16(staticNRFInteractionPoint.x),
+            y: UInt16(staticNRFInteractionPoint.y),
+            observedPresentationRevisionRawValue: revision.rawValue,
+            priorPhysicalSequenceIsCompleteRawValue: 0
+        )?.disposition == .queued
     else {
         Issue.record("expected Static nRF interaction admission")
         return

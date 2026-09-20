@@ -273,23 +273,27 @@ connected shield behavior, and flashing remain open. No board was flashed.
 
 ## Static interaction and observable mutation
 
-`StaticSignalAnalyzerNRFInteractionHandler` is the production typed consumer
-for the serialized ring. It retains `PointerActionCapture<UInt16>` across
-application opportunities, requires the installed physical-presentation
-revision and exact source/sequence/successor-ordinal provenance, resolves
-against committed `StaticInteractionState<UInt16>`, and dispatches through
-`StaticSignalAnalyzerActionDispatcher` while the Static observable root is in
-its `.mutating` phase. Dispatch therefore retains both action-generation and
-observable-target-generation guards.
+`StaticSignalAnalyzerNRFApplicationInputOwner` is the production typed owner of
+the serialized ring and interaction session. It retains
+`PointerActionCapture<UInt16>` and exact source/sequence/successor-ordinal
+provenance as fixed value state across application opportunities. Each
+`runOpportunity` creates a scoped `StaticSignalAnalyzerNRFInteractionHandler`
+that borrows the generated `StaticInteractionState<UInt16>` and observable root
+only for that synchronous drain, so no unsafe pointer to movable caller-owned
+storage survives an opportunity. Physical-presentation replacement is installed
+in admission and dispatch together and cancels any capture; quiescence closes
+both halves. Dispatch occurs while the root is `.mutating` and retains both
+action-generation and observable-target-generation guards.
 
 `StaticSignalAnalyzerNRFInteractionHandlerTests` proves that a down and up
-drained in separate serialized opportunities select the one-second window and
-dirty the root, a stale observable target generation cancels without mutation,
-and queued input remains stored when the handler has not installed the matching
-physical presentation. The established coordinator tests continue to prove
-total drain accounting and opportunity rejection after quiescence.
+drained through separately constructed scoped handlers select the one-second
+window and dirty the root, a stale observable target generation cancels without
+mutation, physical-presentation replacement cancels an in-flight capture, and
+owner quiescence closes admission, clears storage, cancels capture, and rejects
+later opportunities. The established coordinator tests continue to prove total
+drain accounting.
 
-This is host mechanism evidence for the production owner. The handler is not
+This is host mechanism evidence for the production owner. The owner is not
 yet part of the Embedded Swift whole-module source because its committed
 interaction state and observable root must be supplied by the remaining full
 Static presentation composition. Consequently, the firmware hashes and

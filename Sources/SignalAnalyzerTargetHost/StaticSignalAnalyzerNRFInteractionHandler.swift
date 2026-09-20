@@ -7,14 +7,7 @@ import SignalAnalyzerPresentation
 
 /// Resolves admitted nRF pointer input against one committed Static interaction
 /// candidate and dispatches through the current observable model generation.
-package struct StaticSignalAnalyzerNRFInteractionHandler:
-    StaticSignalAnalyzerNRFInputHandler
-{
-    private let interaction: UnsafeMutablePointer<StaticInteractionState<UInt16>>
-    private let root:
-        UnsafeMutablePointer<
-            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>
-        >
+package struct StaticSignalAnalyzerNRFInteractionSession: ~Copyable {
     private var presentationRevision: PresentationRevision?
     private var activeSource: InputSourceID?
     private var activeSequence: PointerSequenceID?
@@ -22,15 +15,7 @@ package struct StaticSignalAnalyzerNRFInteractionHandler:
     private var capture = PointerActionCapture<UInt16>()
     private var opportunityIsActive = false
 
-    package init(
-        interaction: UnsafeMutablePointer<StaticInteractionState<UInt16>>,
-        root: UnsafeMutablePointer<
-            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>
-        >
-    ) {
-        self.interaction = interaction
-        self.root = root
-    }
+    package init() {}
 
     package mutating func installPhysicalPresentation(
         _ revision: PresentationRevision
@@ -39,7 +24,17 @@ package struct StaticSignalAnalyzerNRFInteractionHandler:
         presentationRevision = revision
     }
 
-    package mutating func beginOpportunity() -> Bool {
+    package mutating func quiesce() {
+        opportunityIsActive = false
+        presentationRevision = nil
+        cancelSequence()
+    }
+
+    fileprivate mutating func beginOpportunity(
+        root: UnsafeMutablePointer<
+            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>
+        >
+    ) -> Bool {
         guard presentationRevision != nil, !opportunityIsActive else {
             return false
         }
@@ -48,8 +43,12 @@ package struct StaticSignalAnalyzerNRFInteractionHandler:
         return true
     }
 
-    package mutating func handle(
-        _ event: NormalizedPointerEvent
+    fileprivate mutating func handle(
+        _ event: NormalizedPointerEvent,
+        interaction: UnsafeMutablePointer<StaticInteractionState<UInt16>>,
+        root: UnsafeMutablePointer<
+            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>
+        >
     ) -> StaticSignalAnalyzerNRFInputHandling {
         guard opportunityIsActive,
             event.presentationRevision == presentationRevision
@@ -60,32 +59,32 @@ package struct StaticSignalAnalyzerNRFInteractionHandler:
 
         switch event.phase {
         case .down:
-            return handleDown(event)
+            return handleDown(event, interaction: interaction)
         case .move:
-            return handleMove(event)
+            return handleMove(event, interaction: interaction)
         case .up:
-            return handleUp(event)
+            return handleUp(
+                event,
+                interaction: interaction,
+                root: root
+            )
         }
     }
 
-    package mutating func endOpportunity() -> Bool {
+    fileprivate mutating func endOpportunity(
+        root: UnsafeMutablePointer<
+            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>
+        >
+    ) -> Bool {
         guard opportunityIsActive else { return false }
         root.pointee.setExecutionPhase(.idle)
         opportunityIsActive = false
         return true
     }
 
-    package mutating func quiesce() {
-        if opportunityIsActive {
-            root.pointee.setExecutionPhase(.idle)
-        }
-        opportunityIsActive = false
-        presentationRevision = nil
-        cancelSequence()
-    }
-
     private mutating func handleDown(
-        _ event: NormalizedPointerEvent
+        _ event: NormalizedPointerEvent,
+        interaction: UnsafeMutablePointer<StaticInteractionState<UInt16>>
     ) -> StaticSignalAnalyzerNRFInputHandling {
         guard event.ordinal.rawValue == 0 else {
             cancelSequence()
@@ -109,7 +108,8 @@ package struct StaticSignalAnalyzerNRFInteractionHandler:
     }
 
     private mutating func handleMove(
-        _ event: NormalizedPointerEvent
+        _ event: NormalizedPointerEvent,
+        interaction: UnsafeMutablePointer<StaticInteractionState<UInt16>>
     ) -> StaticSignalAnalyzerNRFInputHandling {
         guard validateContinuation(event) else {
             cancelSequence()
@@ -131,7 +131,11 @@ package struct StaticSignalAnalyzerNRFInteractionHandler:
     }
 
     private mutating func handleUp(
-        _ event: NormalizedPointerEvent
+        _ event: NormalizedPointerEvent,
+        interaction: UnsafeMutablePointer<StaticInteractionState<UInt16>>,
+        root: UnsafeMutablePointer<
+            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>
+        >
     ) -> StaticSignalAnalyzerNRFInputHandling {
         guard validateContinuation(event) else {
             cancelSequence()
@@ -174,5 +178,48 @@ package struct StaticSignalAnalyzerNRFInteractionHandler:
         activeSequence = nil
         lastOrdinal = nil
         capture.cancel()
+    }
+}
+
+/// A scoped adapter over caller-owned, address-stable Static application
+/// storage. No pointer retained here may outlive one synchronous opportunity.
+package struct StaticSignalAnalyzerNRFInteractionHandler:
+    StaticSignalAnalyzerNRFInputHandler
+{
+    private let session: UnsafeMutablePointer<StaticSignalAnalyzerNRFInteractionSession>
+    private let interaction: UnsafeMutablePointer<StaticInteractionState<UInt16>>
+    private let root:
+        UnsafeMutablePointer<
+            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>
+        >
+
+    package init(
+        session: UnsafeMutablePointer<StaticSignalAnalyzerNRFInteractionSession>,
+        interaction: UnsafeMutablePointer<StaticInteractionState<UInt16>>,
+        root: UnsafeMutablePointer<
+            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>
+        >
+    ) {
+        self.session = session
+        self.interaction = interaction
+        self.root = root
+    }
+
+    package mutating func beginOpportunity() -> Bool {
+        session.pointee.beginOpportunity(root: root)
+    }
+
+    package mutating func handle(
+        _ event: NormalizedPointerEvent
+    ) -> StaticSignalAnalyzerNRFInputHandling {
+        session.pointee.handle(
+            event,
+            interaction: interaction,
+            root: root
+        )
+    }
+
+    package mutating func endOpportunity() -> Bool {
+        session.pointee.endOpportunity(root: root)
     }
 }

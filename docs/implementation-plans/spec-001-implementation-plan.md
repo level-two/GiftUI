@@ -916,15 +916,16 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       as the Dynamic host: no package API can remove queued input outside that
       serialized opportunity, and each removed event receives a total consumed,
       dispatched, or cancelled/rejected classification. The production Static
-      interaction handler now retains capture across serialized opportunities,
-      resolves against the committed fixed interaction state, validates exact
-      source/sequence/ordinal and physical-presentation provenance, brackets
-      dispatch with observable mutation ownership, and applies actions only
-      through the committed target-generation guard. Host fixtures prove a
+      application input owner now retains capture and provenance as fixed value
+      state across serialized opportunities while borrowing the generated
+      interaction state and observable root only for one synchronous drain. It
+      installs each physical presentation atomically in admission and dispatch,
+      brackets dispatch with observable mutation ownership, and applies actions
+      only through the committed target-generation guard. Host fixtures prove a
       down/up pair split across opportunities, stale-generation cancellation,
-      dirty reporting, and fail-closed retention until the handler's physical
-      presentation is installed. Building this handler into the firmware's
-      complete generated Static presentation owner remains open. The firmware
+      replacement cancellation, dirty reporting, and complete quiescence.
+      Building this owner into the firmware's complete generated Static
+      presentation composition remains open. The firmware
       now compiles the exact shared input values,
       sequence allocator, normalized gate, Static coordinator, and typed ABI
       into its Embedded Swift object. A retained C bridge forwards only phase,
