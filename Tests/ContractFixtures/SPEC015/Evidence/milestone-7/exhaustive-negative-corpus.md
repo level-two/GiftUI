@@ -14,9 +14,12 @@ reproduced from the repository root with:
 ```text
 ruby scripts/contracts/check-spec-015-negative-corpus.rb
 ruby scripts/contracts/check-spec-015-source-boundaries.rb
-swift test --disable-sandbox --filter GiftUIHostConfigurationTests
+swift test --disable-sandbox -Xswiftc -DGIFTUI_DYNAMIC_PROFILE \
+  --filter GiftUIHostConfigurationTests
 ```
 
-The 2026-09-20 run passed the audit and all 141 focused host-configuration
-tests. No connected target, simulator, deployment, remote access, or flash was
-used.
+The Dynamic profile flag is required because the focused suite includes the
+conditional target-host Canvas and presentation fixtures even when the selected
+SPEC-015 product is cross-compiled separately. The 2026-09-20 run passed the
+audit and all 158 focused host-configuration tests. No connected target,
+simulator, deployment, remote access, or flash was used.

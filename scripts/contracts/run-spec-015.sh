@@ -54,6 +54,7 @@ run_check "${SCRIPT_DIR}/check-spec-015-host-surfaces.sh" \
     --output "${REPORT_ROOT}/host-surfaces"
 run_check swift test --disable-sandbox \
     --scratch-path "${PROJECT_ROOT}/.build" \
+    -Xswiftc -DGIFTUI_DYNAMIC_PROFILE \
     --filter GiftUIHostConfigurationTests
 input_identity="$(shasum -a 256 "${FIXTURE_ROOT}"/*.tsv | shasum -a 256 | awk '{print $1}')"
 compiler_identity="$(swiftc --version 2>/dev/null | tr '\n' ' ')"
