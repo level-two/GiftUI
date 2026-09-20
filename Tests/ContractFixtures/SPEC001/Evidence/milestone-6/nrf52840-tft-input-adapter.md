@@ -363,6 +363,19 @@ dirty report, detached root, repository release, removed model, and empty input
 storage. The firmware lifetime join remains open, so this is still host
 mechanism evidence and does not change the firmware resource record.
 
+The same address-stable aggregate now owns
+`StaticSignalAnalyzerHostFactAdmissionStorage`. Root binding constructs the
+capture/state admission adapter from the identical repository retained by the
+model, while `installRepositoryObservation` is the separate activation step.
+That step admits the repository's two current values under the generated
+bootstrap bound and leaves the model unchanged. The host fixture seals and
+drains sequence 1 as a snapshot and sequence 2 as a compact acquisition-state
+fact, proving callback termination and deferral. Scope exit stops both
+observations exactly once before fact disposal and root removal. This remains
+host mechanism evidence: the aggregate and observation adapter are not yet in
+the firmware whole-module source, firmware hashes and resource totals remain
+unchanged, and no board was flashed.
+
 ## Static interaction and observable mutation
 
 `StaticSignalAnalyzerNRFApplicationInputOwner` is the production typed owner of

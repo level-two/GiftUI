@@ -323,6 +323,16 @@ absence through the existing Static root lifecycle, detaching the change sink,
 removing the model, and releasing the repository before any field pointer
 expires.
 
+The aggregate also owns the fixed Static fact-admission storage at a stable
+address. Root binding creates the Presentation observation adapter from the
+same repository as the model use cases, but does not start it. A distinct
+activation call opens the bounded bootstrap producer, starts capture and state
+observation, and closes the producer after both current values have terminated
+at sequenced admission. The callbacks cannot synchronously mutate the model;
+the sealed facts remain for a later serialized mutation opportunity. Scoped
+teardown stops observation before quiescing and discarding fact storage, then
+quiesces input and removes the root.
+
 The firmware input ABI now has its first address-stable target-owned lifetime:
 one fixed global storage value binds the input source once and is mutated in
 place by every C bridge call. This removes per-call coordinator copies while

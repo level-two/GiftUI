@@ -5,6 +5,7 @@ import GiftUIInteraction
 import GiftUIObservableState
 import GiftUIRuntimeStatic
 import SignalAnalyzerDomain
+import SignalAnalyzerHost
 import SignalAnalyzerPresentation
 
 package enum StaticSignalAnalyzerNRFRootBindingOutcome: Equatable, Sendable {
@@ -20,6 +21,7 @@ package struct StaticSignalAnalyzerNRFApplicationStorage: ~Copyable {
     package var root: StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>
     package var interaction: StaticInteractionState<UInt32>
     package var input: StaticSignalAnalyzerNRFApplicationInputOwner
+    package var factAdmission: StaticSignalAnalyzerHostFactAdmissionStorage
 
     package init?(
         assemblyReport: HostAssemblyReport,
@@ -60,6 +62,7 @@ package struct StaticSignalAnalyzerNRFApplicationStorage: ~Copyable {
         input = StaticSignalAnalyzerNRFApplicationInputOwner(
             sourceRawValue: inputSourceRawValue
         )
+        factAdmission = StaticSignalAnalyzerHostFactAdmissionStorage()
     }
 
     /// Lends stable field addresses for one complete application lifetime.
@@ -70,13 +73,16 @@ package struct StaticSignalAnalyzerNRFApplicationStorage: ~Copyable {
         withUnsafeMutablePointer(to: &root) { root in
             withUnsafeMutablePointer(to: &interaction) { interaction in
                 withUnsafeMutablePointer(to: &input) { input in
-                    var owner = StaticSignalAnalyzerNRFApplicationOwner(
-                        root: root,
-                        interaction: interaction,
-                        input: input
-                    )
-                    defer { _ = owner.quiesce() }
-                    return body(&owner)
+                    withUnsafeMutablePointer(to: &factAdmission) { factAdmission in
+                        var owner = StaticSignalAnalyzerNRFApplicationOwner(
+                            root: root,
+                            interaction: interaction,
+                            input: input,
+                            factAdmission: factAdmission
+                        )
+                        defer { _ = owner.quiesce() }
+                        return body(&owner)
+                    }
                 }
             }
         }
@@ -91,17 +97,23 @@ package struct StaticSignalAnalyzerNRFApplicationOwner: ~Copyable {
         >
     private let interaction: UnsafeMutablePointer<StaticInteractionState<UInt32>>
     private let input: UnsafeMutablePointer<StaticSignalAnalyzerNRFApplicationInputOwner>
+    private let factAdmission: UnsafeMutablePointer<StaticSignalAnalyzerHostFactAdmissionStorage>
+    private var admissionAdapter: SignalAnalyzerPresentationAdmissionAdapter?
 
     fileprivate init(
         root: UnsafeMutablePointer<
             StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>
         >,
         interaction: UnsafeMutablePointer<StaticInteractionState<UInt32>>,
-        input: UnsafeMutablePointer<StaticSignalAnalyzerNRFApplicationInputOwner>
+        input: UnsafeMutablePointer<StaticSignalAnalyzerNRFApplicationInputOwner>,
+        factAdmission:
+            UnsafeMutablePointer<StaticSignalAnalyzerHostFactAdmissionStorage>
     ) {
         self.root = root
         self.interaction = interaction
         self.input = input
+        self.factAdmission = factAdmission
+        admissionAdapter = nil
     }
 
     package var rootIsActive: Bool { root.pointee.isActive }
@@ -140,7 +152,34 @@ package struct StaticSignalAnalyzerNRFApplicationOwner: ~Copyable {
         guard root.pointee.finishCandidate(.publish) == .success(.associationsCommitted),
             let generation = root.pointee.targetGeneration()
         else { return .rejected(.invariantViolation) }
+        admissionAdapter = SignalAnalyzerPresentationAdmissionAdapter(
+            observeCapture: ObserveSignalCaptureUseCase(repository: repository),
+            observeState: ObserveAcquisitionStateUseCase(repository: repository),
+            admission: StaticSignalAnalyzerHostFactAdmission(storage: factAdmission),
+            failureFactory: DefaultSignalAnalyzerOperationalFailureFactory()
+        )
         return .bound(generation)
+    }
+
+    package mutating func installRepositoryObservation()
+        -> SignalAnalyzerObservationStartOutcome
+    {
+        let admission = StaticSignalAnalyzerHostFactAdmission(storage: factAdmission)
+        guard root.pointee.isActive, let admissionAdapter,
+            admission.beginProducer(.bootstrap)
+        else { return .rejected(.runtimeUnavailable) }
+        defer { admission.endProducer() }
+        return admissionAdapter.startObserving()
+    }
+
+    package func sealRepositoryFacts() -> Bool {
+        StaticSignalAnalyzerHostFactAdmission(storage: factAdmission).seal()
+    }
+
+    package func takeNextSealedRepositoryFact()
+        -> (UInt32, HostSequencedFactKind, SignalAnalyzerPresentationFact)?
+    {
+        StaticSignalAnalyzerHostFactAdmission(storage: factAdmission).takeNextSealed()
     }
 
     package mutating func withInteraction<Result>(
@@ -188,6 +227,11 @@ package struct StaticSignalAnalyzerNRFApplicationOwner: ~Copyable {
 
     @discardableResult
     package mutating func quiesce() -> Bool {
+        admissionAdapter?.stopObserving()
+        admissionAdapter = nil
+        let admission = StaticSignalAnalyzerHostFactAdmission(storage: factAdmission)
+        admission.quiesce()
+        admission.discardAll()
         input.pointee.quiesce()
         guard root.pointee.isActive else { return true }
         guard root.pointee.beginCandidate() == .success(.candidateStarted),

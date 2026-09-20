@@ -950,6 +950,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       `SignalAnalyzerViewModel` itself. The bound model retains that repository
       after the caller releases its reference, and structural root removal
       releases it before the aggregate's stable-address scope ends.
+      The same aggregate now owns fixed Static fact-admission storage. Model
+      binding constructs the capture/state observation adapter from that exact
+      repository, and an explicit later activation step starts both observations
+      under the generated two-fact bootstrap producer bound. Repository
+      callbacks terminate at sequenced fact admission and do not mutate the
+      bound model synchronously. Scope teardown stops both observations,
+      quiesces and discards admitted work, and only then detaches the root.
       Building this owner into the firmware's complete generated Static
       presentation composition remains open. The firmware
       now compiles the exact shared input values,

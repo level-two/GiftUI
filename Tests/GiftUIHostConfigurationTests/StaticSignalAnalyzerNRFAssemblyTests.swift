@@ -13,6 +13,10 @@ private final class StaticNRFApplicationStorageRepositoryProbe {
     var startCount = 0
     var stopCount = 0
     var clearCount = 0
+    var captureObservationStartCount = 0
+    var captureObservationStopCount = 0
+    var stateObservationStartCount = 0
+    var stateObservationStopCount = 0
     var repositoryWasReleased = false
 }
 
@@ -27,10 +31,23 @@ private final class StaticNRFApplicationStorageRepository:
 
     deinit { probe.repositoryWasReleased = true }
 
-    func startObservingCapture(sink _: some SignalCaptureSink) {}
-    func stopObservingCapture() {}
-    func startObservingAcquisitionState(sink _: some AcquisitionStateSink) {}
-    func stopObservingAcquisitionState() {}
+    func startObservingCapture(sink: some SignalCaptureSink) {
+        probe.captureObservationStartCount += 1
+        _ = sink.receive(.snapshot(revision: 0, capture: .empty()))
+    }
+
+    func stopObservingCapture() {
+        probe.captureObservationStopCount += 1
+    }
+
+    func startObservingAcquisitionState(sink: some AcquisitionStateSink) {
+        probe.stateObservationStartCount += 1
+        _ = sink.receive(.running)
+    }
+
+    func stopObservingAcquisitionState() {
+        probe.stateObservationStopCount += 1
+    }
     func start() throws { probe.startCount += 1 }
     func stop() { probe.stopCount += 1 }
     func clear() { probe.clearCount += 1 }
@@ -130,6 +147,30 @@ private final class StaticNRFApplicationStorageRepository:
         #expect(!repositoryProbe.repositoryWasReleased)
         let rootIsActive = owner.rootIsActive
         #expect(rootIsActive)
+        #expect(
+            owner.installRepositoryObservation()
+                == .started(captureSequence: 1, stateSequence: 2)
+        )
+        #expect(repositoryProbe.captureObservationStartCount == 1)
+        #expect(repositoryProbe.stateObservationStartCount == 1)
+        #expect(owner.withModel { $0.state.acquisitionState } == .idle)
+        let factsSealed = owner.sealRepositoryFacts()
+        #expect(factsSealed)
+        if let snapshot = owner.takeNextSealedRepositoryFact() {
+            #expect(snapshot.0 == 1)
+            #expect(snapshot.1 == .snapshot)
+            #expect(snapshot.2 == .captureSnapshot(revision: 0, capture: .empty()))
+        } else {
+            Issue.record("Static repository capture callback was not deferred")
+        }
+        if let state = owner.takeNextSealedRepositoryFact() {
+            #expect(state.0 == 2)
+            #expect(state.1 == .compact)
+            #expect(state.2 == .acquisitionState(.running))
+        } else {
+            Issue.record("Static repository state callback was not deferred")
+        }
+        #expect(owner.takeNextSealedRepositoryFact() == nil)
         owner.withModel { model in
             model.startTapped()
             model.stopTapped()
@@ -203,6 +244,8 @@ private final class StaticNRFApplicationStorageRepository:
     #expect(!rootIsActiveAfterScope)
     #expect(storage.root.withModel { _ in true } == nil)
     #expect(storage.input.pendingCount == 0)
+    #expect(repositoryProbe.captureObservationStopCount == 1)
+    #expect(repositoryProbe.stateObservationStopCount == 1)
     #expect(repositoryProbe.repositoryWasReleased)
 }
 
