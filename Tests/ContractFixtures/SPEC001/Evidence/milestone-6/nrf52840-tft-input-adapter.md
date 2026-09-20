@@ -261,13 +261,36 @@ and flash gates:
 
 | Artifact | SHA-256 |
 | --- | --- |
-| `zephyr.elf` | `5247369a54ba93d30bb9580cd9f8f2ccaa9bdc7a0f2f38a0d61b6ac3eaf257ca` |
-| `zephyr.hex` | `8fc1eb0d53b05ae9ad5145b4ecfe5834a44b36631e4c5293a5631bcbd7a8f4af` |
-| `zephyr.map` | `2f22764102a0f24dce5855fe45520387e7e6a734e8a6e97ffc33bbfd3467c91a` |
+| `zephyr.elf` | `b2669171c6d13c12a5763c87ed163eac5648cb88e256a2828045fef2799429d0` |
+| `zephyr.hex` | `9aca73a42117d4cc607a736af3b83a2a2d71c1a6b0c19e9fdd3884f68d852d51` |
+| `zephyr.map` | `d66578d92b20cf5eef0628f2a130d7382cd3c5c12c5a6b2fa8e2145a163adf51` |
 | `zephyr.dts` | `042dd0ead8283db2cb12d0ff36caad849f8c88787859202809cd03bf17aef6d7` |
 
 The load segments use 35,296 flash bytes and 175,552 RAM bytes. This evidence
-proves the serialized drain mechanism, not action dispatch: the production
-Static interaction handler and application mutation owner are the next host
-composition boundary. Calibration, connected shield behavior, and flashing
-remain open. No board was flashed.
+proves the serialized drain mechanism; the following host-only interaction
+evidence is deliberately separate from this firmware result. Calibration,
+connected shield behavior, and flashing remain open. No board was flashed.
+
+## Static interaction and observable mutation
+
+`StaticSignalAnalyzerNRFInteractionHandler` is the production typed consumer
+for the serialized ring. It retains `PointerActionCapture<UInt16>` across
+application opportunities, requires the installed physical-presentation
+revision and exact source/sequence/successor-ordinal provenance, resolves
+against committed `StaticInteractionState<UInt16>`, and dispatches through
+`StaticSignalAnalyzerActionDispatcher` while the Static observable root is in
+its `.mutating` phase. Dispatch therefore retains both action-generation and
+observable-target-generation guards.
+
+`StaticSignalAnalyzerNRFInteractionHandlerTests` proves that a down and up
+drained in separate serialized opportunities select the one-second window and
+dirty the root, a stale observable target generation cancels without mutation,
+and queued input remains stored when the handler has not installed the matching
+physical presentation. The established coordinator tests continue to prove
+total drain accounting and opportunity rejection after quiescence.
+
+This is host mechanism evidence for the production owner. The handler is not
+yet part of the Embedded Swift whole-module source because its committed
+interaction state and observable root must be supplied by the remaining full
+Static presentation composition. Consequently, the firmware hashes and
+resource totals above are not attributed to this handler. No board was flashed.

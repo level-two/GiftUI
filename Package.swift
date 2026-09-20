@@ -320,6 +320,7 @@ let package = Package(
                 "GiftUIRenderCore",
                 "GiftUIRuntimeCore",
                 "GiftUIRuntimeDynamic",
+                "GiftUIRuntimeStatic",
                 "GiftUISemanticCore",
                 "GiftUISurfaceCore",
                 "GiftUITextResources",

@@ -896,9 +896,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       480 x 4 / 3,840-byte RGB565 submission, raw touch acquisition, and
       saturating fault accounting. The exact pristine firmware build retains
       all driver entry points and passes ARMv7E-M hard-float, zero-heap,
-      RAM/flash, and required-symbol gates. Static host-loop composition, the
-      calibrated polling-loop activation and the production Static interaction
-      handler join, connected stack measurement, and flashing remain open. A
+      RAM/flash, and required-symbol gates. Static host-loop composition,
+      calibrated polling-loop activation, connected stack measurement, and
+      flashing remain open. A
       target-local,
       allocation-free
       touch normalizer
@@ -915,9 +915,17 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       evidence. The coordinator now owns the same application-opportunity gate
       as the Dynamic host: no package API can remove queued input outside that
       serialized opportunity, and each removed event receives a total consumed,
-      dispatched, or cancelled/rejected classification. The exact production
-      Static interaction handler remains to be joined. The firmware now
-      compiles the exact shared input values,
+      dispatched, or cancelled/rejected classification. The production Static
+      interaction handler now retains capture across serialized opportunities,
+      resolves against the committed fixed interaction state, validates exact
+      source/sequence/ordinal and physical-presentation provenance, brackets
+      dispatch with observable mutation ownership, and applies actions only
+      through the committed target-generation guard. Host fixtures prove a
+      down/up pair split across opportunities, stale-generation cancellation,
+      dirty reporting, and fail-closed retention until the handler's physical
+      presentation is installed. Building this handler into the firmware's
+      complete generated Static presentation owner remains open. The firmware
+      now compiles the exact shared input values,
       sequence allocator, normalized gate, Static coordinator, and typed ABI
       into its Embedded Swift object. A retained C bridge forwards only phase,
       logical point, observed presentation, and physical resynchronization

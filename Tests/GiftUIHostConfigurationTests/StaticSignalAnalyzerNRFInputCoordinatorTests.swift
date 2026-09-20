@@ -239,6 +239,7 @@ private struct StaticNRFRecordingInputHandler: StaticSignalAnalyzerNRFInputHandl
 
     coordinator.quiesce()
     #expect(
-        coordinator.runOpportunity(into: &handler) == .rejected(.unavailable)
+        coordinator.runOpportunity(into: &handler)
+            == .rejected(.application(.unavailable))
     )
 }

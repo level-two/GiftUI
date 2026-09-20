@@ -13,9 +13,16 @@ package enum StaticSignalAnalyzerNRFInputHandling: UInt8, Equatable, Sendable {
 }
 
 package protocol StaticSignalAnalyzerNRFInputHandler {
+    mutating func beginOpportunity() -> Bool
     mutating func handle(
         _ event: NormalizedPointerEvent
     ) -> StaticSignalAnalyzerNRFInputHandling
+    mutating func endOpportunity() -> Bool
+}
+
+extension StaticSignalAnalyzerNRFInputHandler {
+    package mutating func beginOpportunity() -> Bool { true }
+    package mutating func endOpportunity() -> Bool { true }
 }
 
 package struct StaticSignalAnalyzerNRFInputDrainSummary: Equatable, Sendable {
@@ -34,9 +41,15 @@ package struct StaticSignalAnalyzerNRFInputDrainSummary: Equatable, Sendable {
     }
 }
 
+package enum StaticSignalAnalyzerNRFInputOpportunityRejection: Equatable, Sendable {
+    case application(HostApplicationOpportunityRejection)
+    case handlerUnavailable
+    case invalidHandlerCompletion
+}
+
 package enum StaticSignalAnalyzerNRFInputOpportunityResult: Equatable, Sendable {
     case completed(StaticSignalAnalyzerNRFInputDrainSummary)
-    case rejected(HostApplicationOpportunityRejection)
+    case rejected(StaticSignalAnalyzerNRFInputOpportunityRejection)
 }
 
 private struct StaticSignalAnalyzerNRFInputQueue: ExecutionAdmissionSink {
@@ -189,9 +202,12 @@ package struct StaticSignalAnalyzerNRFInputCoordinator {
         case .admitted:
             break
         case .rejected(let rejection):
-            return .rejected(rejection)
+            return .rejected(.application(rejection))
         }
         defer { _ = opportunityGate.complete() }
+        guard handler.beginOpportunity() else {
+            return .rejected(.handlerUnavailable)
+        }
 
         var eventCount: UInt16 = 0
         var dispatchedActionCount: UInt16 = 0
@@ -206,6 +222,9 @@ package struct StaticSignalAnalyzerNRFInputCoordinator {
             case .cancelledOrRejected:
                 cancelledOrRejectedCount += 1
             }
+        }
+        guard handler.endOpportunity() else {
+            return .rejected(.invalidHandlerCompletion)
         }
         return .completed(
             StaticSignalAnalyzerNRFInputDrainSummary(

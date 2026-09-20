@@ -561,6 +561,7 @@ targets:
       - GiftUIRenderCore
       - GiftUIRuntimeCore
       - GiftUIRuntimeDynamic
+      - GiftUIRuntimeStatic
       - GiftUISemanticCore
       - GiftUISurfaceCore
       - GiftUITextResources
