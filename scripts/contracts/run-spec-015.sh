@@ -137,6 +137,23 @@ if [[ "${profile}" == "nrf52840-embedded" ]]; then
     cp "${firmware_root}/reports/symbols.txt" "${REPORT_ROOT}/symbols.txt"
     grep -Fq 'Tag_CPU_arch: v7E-M' "${REPORT_ROOT}/arm-attributes.txt"
     grep -Fq 'Tag_ABI_VFP_args: VFP registers' "${REPORT_ROOT}/arm-attributes.txt"
+    symbol_size() {
+        local symbol="$1"
+        local raw
+        raw="$(awk -v symbol="${symbol}" '$8 == symbol {print $3; count += 1} END {exit count == 1 ? 0 : 1}' \
+            "${REPORT_ROOT}/symbols.txt")" || {
+            printf 'missing or duplicate firmware symbol: %s\n' "${symbol}" >&2
+            exit 1
+        }
+        if [[ "${raw}" == 0x* ]]; then
+            printf '%s\n' "$((16#${raw#0x}))"
+        else
+            printf '%s\n' "$((10#${raw}))"
+        fi
+    }
+    named_profile_storage_bytes="$(symbol_size giftui_signal_analyzer_profile_storage)"
+    named_capture_storage_bytes="$(symbol_size giftui_signal_analyzer_capture_storage)"
+    named_raster_staging_bytes="$(symbol_size giftui_signal_analyzer_raster_staging)"
     output_hash="$(shasum -a 256 "${semantic_report}" | awk '{print $1}')"
     artifact_hash="$(shasum -a 256 "${artifact}" | awk '{print $1}')"
     {
@@ -145,9 +162,9 @@ if [[ "${profile}" == "nrf52840-embedded" ]]; then
             "${profile}" "${input_identity}" "${compiler_identity}" "${command_hash}" "${output_hash}"
         printf '# artifact_identity\t%s\n' "${artifact_hash}"
         sed -n 's/^/\# /p' "${REPORT_ROOT}/memory-summary.txt"
-        printf '# named_profile_storage_bytes\t36368\n'
-        printf '# named_capture_storage_bytes\t115392\n'
-        printf '# named_raster_staging_bytes\t3840\n'
+        printf '# named_profile_storage_bytes\t%s\n' "${named_profile_storage_bytes}"
+        printf '# named_capture_storage_bytes\t%s\n' "${named_capture_storage_bytes}"
+        printf '# named_raster_staging_bytes\t%s\n' "${named_raster_staging_bytes}"
         printf '# analyzed_entry_stack_bytes\t8\n'
         printf '# connected_execution\tnot-collected\n'
     } >"${output}"

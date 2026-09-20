@@ -185,10 +185,14 @@ separate physical evidence and are not normalized away.
 
 All workspaces come from generated preset limits. The Pi display target keeps
 at most 7,680 payload bytes plus bounded region metadata. The nRF display path
-keeps exactly one 3,840-byte tile slot; existing application/profile storage
-remains separately accounted. The nRF build must remain within its checked
-196,608-byte RAM ceiling with both heaps disabled and must demonstrate at
-least the contract-required connected stack margin before conformance.
+keeps exactly one 3,840-byte tile slot; its separately accounted generated
+profile workspace is exactly 36,368 bytes. The firmware build rejects a named
+profile, capture, or raster-staging symbol whose linked size differs from the
+generated contract; report generation reads those sizes from the inspected ELF
+rather than restating configured constants. The nRF build must remain within
+its checked 196,608-byte RAM ceiling with both heaps disabled and must
+demonstrate at least the contract-required connected stack margin before
+conformance.
 
 Every stage maps its focused error through the existing owner adapter. A
 device initialization failure occurs before source start. A display failure

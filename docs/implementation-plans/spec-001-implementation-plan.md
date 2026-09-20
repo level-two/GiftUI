@@ -973,6 +973,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       six-event Start/Stop/Clear fixture proves the action callbacks are absent
       from that opportunity and become the next opportunity's three ordered
       facts; bootstrap application remains the explicit pre-presentation step.
+      The firmware's formerly stale pre-amendment profile reservation is now
+      reconciled to the generated 36,368-byte Static audit. Its entry validates
+      the resulting 155,600-byte named application-storage total, the build
+      gate verifies the exact linked size of all three named stores, and the
+      SPEC-015 report derives those sizes from the inspected ELF. The pristine
+      build remains below the approved RAM/flash ceilings with both heaps off.
       Building this owner into the firmware's complete generated Static
       presentation composition remains open. The firmware
       now compiles the exact shared input values,

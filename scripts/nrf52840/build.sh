@@ -110,6 +110,23 @@ if [[ -f "${checks_file}" ]]; then
                 grep -Fq "${value}" "${build_dir}/reports/symbols.txt" ||
                     giftui_nrf_error "${application} ELF does not contain required symbol: ${value}"
                 ;;
+            required-symbol-size)
+                symbol="${value%%:*}"
+                expected_size="${value#*:}"
+                [[ -n "${symbol}" && "${expected_size}" =~ ^[0-9]+$ && "${symbol}" != "${value}" ]] ||
+                    giftui_nrf_error "required-symbol-size must be SYMBOL:BYTES in ${checks_file}"
+                symbol_size="$({
+                    awk -v symbol="${symbol}" '$8 == symbol {print $3; count += 1} END {exit count == 1 ? 0 : 1}' \
+                        "${build_dir}/reports/symbols.txt"
+                })" || giftui_nrf_error "${application} ELF does not contain exactly one symbol: ${symbol}"
+                if [[ "${symbol_size}" == 0x* ]]; then
+                    actual_size=$((16#${symbol_size#0x}))
+                else
+                    actual_size=$((10#${symbol_size}))
+                fi
+                ((actual_size == expected_size)) ||
+                    giftui_nrf_error "${application} ELF symbol ${symbol} is ${actual_size} bytes, expected ${expected_size}"
+                ;;
             zero-heap)
                 [[ "${value}" == "true" ]] ||
                     giftui_nrf_error "zero-heap must be true in ${checks_file}"

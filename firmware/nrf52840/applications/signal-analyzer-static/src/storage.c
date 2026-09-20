@@ -1,7 +1,7 @@
 #include <stdint.h>
 
 /* Exact generated profile workspace from the nRF52840 Static preset. */
-uint8_t giftui_signal_analyzer_profile_storage[28016];
+uint8_t giftui_signal_analyzer_profile_storage[36368];
 
 /* Live capture plus the one complete publication snapshot: 2 * 2,404 * 24. */
 uint8_t giftui_signal_analyzer_capture_storage[115392];

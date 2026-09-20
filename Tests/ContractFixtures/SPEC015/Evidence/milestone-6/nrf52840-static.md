@@ -40,3 +40,19 @@ The host-native Static semantic fixture resolves the exact 480 x 320 extent,
 960-byte row, 3,840-byte bounds, one startup resolver call, and checksum
 `360515885`, equal to all other presets. This build does not claim TFT, input,
 watchdog, cadence, responsiveness, or other connected-board evidence.
+
+## Amended-profile firmware reconciliation
+
+The later SPEC-001 T6.8 composition audit found that the firmware reservation
+still used the earlier 28,016-byte profile total while the current generated
+audit and normalized report required 36,368 bytes. The corrected pristine
+cross-build now retains an exact 36,368-byte profile symbol and checks its size
+alongside the 115,392-byte capture and 3,840-byte staging symbols. Report
+generation derives these values from the inspected ELF.
+
+The corrected artifact has ELF SHA-256
+`2ce8059e501e4903016339df28829c587f847c2c06b1275cf01b5a8591b27cc7`
+and linked totals of 183,872 bytes RAM and 34,384 bytes flash. The immutable
+report records the three measured symbol sizes. The artifact remains below the
+approved ceilings with both heaps disabled. This remains cross-build-only
+evidence; no connected execution or flashing occurred.

@@ -4,7 +4,7 @@ private struct StaticSignalAnalyzerPreset {
     let regionHeight: UInt16 = 4
     let bytesPerRow: UInt32 = 960
     let rasterBytes: UInt32 = 3_840
-    let profileStorageBytes: UInt32 = 28_016
+    let profileStorageBytes: UInt32 = 36_368
     let captureEntries: UInt16 = 2_404
     let canvasCount: UInt16 = 5
     let livePointCount: UInt16 = 202
@@ -20,7 +20,7 @@ private struct StaticSignalAnalyzerPreset {
         logicalWidth == 480 && logicalHeight == 320
             && regionHeight == 4 && bytesPerRow == 960
             && rasterBytes == bytesPerRow * UInt32(regionHeight)
-            && profileStorageBytes == 28_016
+            && profileStorageBytes == 36_368
             && captureEntries == 2_404
             && canvasCount == 5 && livePointCount == 202 && planPointCount == 832
             && compactFactCapacity == 32 && actionCount == 6

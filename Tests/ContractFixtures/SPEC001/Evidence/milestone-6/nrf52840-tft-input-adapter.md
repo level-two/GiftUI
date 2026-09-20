@@ -429,3 +429,31 @@ yet part of the Embedded Swift whole-module source because its committed
 interaction state and observable root must be supplied by the remaining full
 Static presentation composition. Consequently, the firmware hashes and
 resource totals above are not attributed to this handler. No board was flashed.
+
+## Generated profile storage reconciliation
+
+The generated nRF Static audit is 36,368 bytes after the approved semantic,
+layout, and render-capacity amendments. The firmware's retained C reservation
+and Swift preset self-check still used the earlier 28,016-byte value even
+though the host-native report described the amended total. This slice replaces
+that stale reservation, updates the complete named application-storage check
+to 155,600 bytes, and adds exact ELF symbol-size gates for the profile,
+115,392-byte capture, and 3,840-byte raster-staging stores. SPEC-015 report
+generation now reads all three values from `readelf` output rather than
+printing constants.
+
+A pristine hardware-free build passed ARMv7E-M, VFP hard-float, zero-heap,
+forbidden-symbol, exact-size, RAM, and flash checks. The inspected symbols are
+36,368, 115,392, and 3,840 bytes respectively. Linked totals are 183,872 bytes
+RAM and 34,384 bytes flash, within the approved 196,608-byte RAM and 1 MiB
+flash ceilings.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `zephyr.elf` | `2ce8059e501e4903016339df28829c587f847c2c06b1275cf01b5a8591b27cc7` |
+| `zephyr.hex` | `9d3d4e238edd790f4c9fca5a9d4ed28b389ecbd89f63ecf73876791d3d53f4f9` |
+| `zephyr.map` | `fe4e06099b9f3585fdebf79c05053582a7336614126825bb03920feffd0f5fe0` |
+| `zephyr.dts` | `042dd0ead8283db2cb12d0ff36caad849f8c88787859202809cd03bf17aef6d7` |
+
+This is cross-build and inspection evidence only. No board was flashed, and
+the generated Static presentation owner remains the next firmware join.
