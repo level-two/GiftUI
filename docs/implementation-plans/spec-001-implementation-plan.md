@@ -10,6 +10,7 @@ updated: 2026-09-20
 related_design_notes:
   - ../implementation-designs/spec-001-presentation-admission-and-failure.md
   - ../implementation-designs/spec-001-four-host-application-join.md
+  - ../implementation-designs/spec-001-connected-target-host-loop.md
 conformance_report: ../conformance/spec-001-conformance.md
 related_future_work: []
 related_explorations: []
@@ -732,7 +733,8 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       flushed the exact fifteen 240 x 16 payloads / 115,200 RGB565 bytes and
       kept the input poll operational. No physical touch occurred, so
       calibration, six-action routing, full host-loop composition, and T8.1
-      remain open.
+      remain open. The remaining production-stage join is defined by the
+      [Connected-Target Host Loop design](../implementation-designs/spec-001-connected-target-host-loop.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation
@@ -761,6 +763,8 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       shield provenance, continuity/orientation, and power gates are not yet
       evidenced. See the
       [TFT/input adapter evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md).
+      The remaining production-stage join is defined by the
+      [Connected-Target Host Loop design](../implementation-designs/spec-001-connected-target-host-loop.md).
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

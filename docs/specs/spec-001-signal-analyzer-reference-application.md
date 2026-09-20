@@ -1924,6 +1924,9 @@ This section is non-authoritative.
 - [Four-Host Application Join Implementation Design](../implementation-designs/spec-001-four-host-application-join.md)
   describes the replaceable typed composition-root ownership selected for
   Milestone 6 without changing this Specification's contract.
+- [Connected-Target Host Loop Implementation Design](../implementation-designs/spec-001-connected-target-host-loop.md)
+  describes the replaceable production-stage and platform-adapter join for
+  plan tasks T6.7 and T6.8 without changing this Specification's contract.
 - [SPEC-001 Conformance Report](../conformance/spec-001-conformance.md)
   maps all 45 criteria and preserves the open connected-hardware gates.
 
