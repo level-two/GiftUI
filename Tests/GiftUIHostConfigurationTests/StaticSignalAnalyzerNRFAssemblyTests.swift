@@ -245,14 +245,19 @@ private final class StaticNRFApplicationStorageRepository:
                 )
             }
         }
+        let actionOpportunity = owner.runApplicationOpportunity()
+        guard case .completed(let actionSummary) = actionOpportunity else {
+            Issue.record("Static action opportunity did not complete")
+            return
+        }
+        #expect(actionSummary.application.factCount == 0)
+        #expect(!actionSummary.application.changed)
         #expect(
-            owner.runInputOpportunity()
-                == .completed(
-                    StaticSignalAnalyzerNRFInputDrainSummary(
-                        eventCount: 6,
-                        dispatchedActionCount: 3,
-                        cancelledOrRejectedCount: 0
-                    )
+            actionSummary.input
+                == StaticSignalAnalyzerNRFInputDrainSummary(
+                    eventCount: 6,
+                    dispatchedActionCount: 3,
+                    cancelledOrRejectedCount: 0
                 )
         )
         #expect(repositoryProbe.startCount == 1)
@@ -260,13 +265,14 @@ private final class StaticNRFApplicationStorageRepository:
         #expect(repositoryProbe.clearCount == 1)
         #expect(owner.withModel { $0.state.acquisitionState } == .running)
         #expect(owner.withModel { $0.captureRevision } == 0)
-        let actionFactApplication = owner.applyRepositoryFactsAtOpportunity()
-        guard case .applied(let actionFactSummary) = actionFactApplication else {
+        let actionFactOpportunity = owner.runApplicationOpportunity()
+        guard case .completed(let actionFactSummary) = actionFactOpportunity else {
             Issue.record("Static action-produced facts were not applied")
             return
         }
-        #expect(actionFactSummary.factCount == 3)
-        #expect(actionFactSummary.changed)
+        #expect(actionFactSummary.application.factCount == 3)
+        #expect(actionFactSummary.application.changed)
+        #expect(actionFactSummary.input.eventCount == 0)
         #expect(owner.withModel { $0.state.acquisitionState } == .stopped)
         #expect(owner.withModel { $0.captureRevision } == 1)
         let rootIsDirty = owner.rootIsDirty

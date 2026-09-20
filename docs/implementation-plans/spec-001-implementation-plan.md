@@ -967,7 +967,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       repository callbacks therefore terminate at admission, leave the model
       unchanged during action dispatch, and apply in sequence only at the next
       fact opportunity; unavailable producer ownership rejects before removing
-      queued input.
+      queued input. After first presentation, one combined Static application
+      opportunity now seals and applies the previously admitted repository
+      batch before it dispatches input and returns both bounded summaries. The
+      six-event Start/Stop/Clear fixture proves the action callbacks are absent
+      from that opportunity and become the next opportunity's three ordered
+      facts; bootstrap application remains the explicit pre-presentation step.
       Building this owner into the firmware's complete generated Static
       presentation composition remains open. The firmware
       now compiles the exact shared input values,

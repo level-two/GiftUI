@@ -24,6 +24,28 @@ package enum StaticSignalAnalyzerNRFFactApplicationResult: Equatable, Sendable {
     case unavailable
 }
 
+package struct StaticSignalAnalyzerNRFApplicationOpportunitySummary:
+    Equatable, Sendable
+{
+    package let application: StaticSignalAnalyzerNRFFactApplicationSummary
+    package let input: StaticSignalAnalyzerNRFInputDrainSummary
+}
+
+package enum StaticSignalAnalyzerNRFApplicationOpportunityFailure:
+    Equatable, Sendable
+{
+    case factAdmissionUnavailable
+    case factApplicationRejected(SignalAnalyzerRuntimeCondition)
+}
+
+package enum StaticSignalAnalyzerNRFApplicationOpportunityResult:
+    Equatable, Sendable
+{
+    case completed(StaticSignalAnalyzerNRFApplicationOpportunitySummary)
+    case rejected(StaticSignalAnalyzerNRFInputOpportunityRejection)
+    case failure(StaticSignalAnalyzerNRFApplicationOpportunityFailure)
+}
+
 /// Caller-owned, address-stable storage for the generated Static nRF
 /// application join. Construction remains inert and requires the exact
 /// validated assembly report.
@@ -260,7 +282,36 @@ package struct StaticSignalAnalyzerNRFApplicationOwner: ~Copyable {
         )
     }
 
-    package mutating func runInputOpportunity()
+    /// Applies facts sealed at the opportunity boundary before dispatching
+    /// input. Facts synchronously produced by dispatched actions therefore
+    /// remain active until the next opportunity.
+    package mutating func runApplicationOpportunity()
+        -> StaticSignalAnalyzerNRFApplicationOpportunityResult
+    {
+        let application: StaticSignalAnalyzerNRFFactApplicationSummary
+        switch applyRepositoryFactsAtOpportunity() {
+        case .applied(let summary):
+            application = summary
+        case .rejected(let condition):
+            return .failure(.factApplicationRejected(condition))
+        case .unavailable:
+            return .failure(.factAdmissionUnavailable)
+        }
+
+        switch runInputOpportunity() {
+        case .completed(let input):
+            return .completed(
+                StaticSignalAnalyzerNRFApplicationOpportunitySummary(
+                    application: application,
+                    input: input
+                )
+            )
+        case .rejected(let rejection):
+            return .rejected(rejection)
+        }
+    }
+
+    private mutating func runInputOpportunity()
         -> StaticSignalAnalyzerNRFInputOpportunityResult
     {
         let admission = StaticSignalAnalyzerHostFactAdmission(storage: factAdmission)

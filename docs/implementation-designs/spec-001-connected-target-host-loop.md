@@ -350,6 +350,16 @@ reserve the producer rejects before the input owner removes any queued event.
 Accepted action facts remain active until the next fact opportunity seals and
 applies them.
 
+After the first physical presentation, the scoped owner exposes one combined
+application opportunity. It seals and applies all previously admitted facts
+before opening the action producer and draining input. The result preserves
+the separate bounded fact and input summaries and distinguishes fact
+application failure from input rejection. Because the seal precedes action
+dispatch, callbacks produced by Start, Stop, or Clear cannot join the current
+batch and remain ordered for the next application opportunity. Bootstrap fact
+application remains an explicit pre-presentation activation step because input
+is not eligible until that first presentation is accepted.
+
 The firmware input ABI now has its first address-stable target-owned lifetime:
 one fixed global storage value binds the input source once and is mutated in
 place by every C bridge call. This removes per-call coordinator copies while
