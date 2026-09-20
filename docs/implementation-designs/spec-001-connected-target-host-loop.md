@@ -249,8 +249,11 @@ host-owner composition remains open inside T6.7.
 The first host-loop owner is now concrete: one reference-owned Dynamic Pi
 pacing state is shared by post-admission repository callbacks, queued input,
 and the future serialized execution loop. This preserves callback deferral and
-coalesces all admitted work behind the generated frame boundary. Correlation
-allocation, Linux polling, and full activation/teardown remain open.
+coalesces all admitted work behind the generated frame boundary. A target-owned
+correlation allocator now advances cycles per opportunity and advances
+semantic, candidate-frame, and presentation identities only when a changed
+candidate reaches publication. Its coordinator join, Linux polling, and full
+activation/teardown remain open.
 
 ## Code and Evidence Links
 

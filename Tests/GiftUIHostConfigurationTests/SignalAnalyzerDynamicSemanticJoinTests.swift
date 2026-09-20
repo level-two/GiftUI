@@ -769,6 +769,32 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(pacing.recordQueuedInput(at: boundary) == .failure(.unavailable))
 }
 
+@Test func dynamicPiCorrelationOwnerReservesPublicationOnlyForChangedCycles() throws {
+    let correlations = DynamicSignalAnalyzerPiCorrelationOwner()
+    let initial = try #require(correlations.reserveInitialPresentation())
+    #expect(initial.provenance.cycle == RunCycleID(rawValue: 0))
+    #expect(initial.provenance.semanticRevision == SemanticRevision(rawValue: 0))
+    #expect(initial.provenance.candidateFrame == CandidateFrameID(rawValue: 0))
+    #expect(initial.presentationRevision == PresentationRevision(rawValue: 0))
+
+    let changedCycle = try #require(correlations.reserveOpportunityCycle())
+    let changed = try #require(correlations.reservePresentation(for: changedCycle))
+    #expect(changed.provenance.cycle == RunCycleID(rawValue: 1))
+    #expect(changed.provenance.semanticRevision == SemanticRevision(rawValue: 1))
+    #expect(changed.provenance.candidateFrame == CandidateFrameID(rawValue: 1))
+    #expect(changed.presentationRevision == PresentationRevision(rawValue: 1))
+
+    let unchangedCycle = try #require(correlations.reserveOpportunityCycle())
+    #expect(unchangedCycle == RunCycleID(rawValue: 2))
+
+    let nextChangedCycle = try #require(correlations.reserveOpportunityCycle())
+    let nextChanged = try #require(correlations.reservePresentation(for: nextChangedCycle))
+    #expect(nextChanged.provenance.cycle == RunCycleID(rawValue: 3))
+    #expect(nextChanged.provenance.semanticRevision == SemanticRevision(rawValue: 2))
+    #expect(nextChanged.provenance.candidateFrame == CandidateFrameID(rawValue: 2))
+    #expect(nextChanged.presentationRevision == PresentationRevision(rawValue: 2))
+}
+
 @Test func dynamicTargetHostPresentationPipelineUsesExactGeneratedLimits() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     var pipeline = try #require(
