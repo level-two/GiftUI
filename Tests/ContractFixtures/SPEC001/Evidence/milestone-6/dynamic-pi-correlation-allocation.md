@@ -12,6 +12,14 @@ monotonic changed-publication identities, and an unchanged opportunity that
 advances only the cycle identity without leaving gaps in semantic, candidate,
 or physical-presentation identity.
 
+The production input/fact coordinator now owns the allocation call site. It
+reserves a cycle after serialized opportunity admission, reserves the other
+three identities only after application or input mutation reports a changed
+candidate, and passes that tuple directly to presentation. A hardware-free
+fixture proves the coordinator reserves a cycle at its call site without
+prematurely reserving a publication tuple when mutation cannot proceed. The
+next external observation is therefore cycle 2 / publication 1.
+
 Reproduce with:
 
 ```sh
@@ -23,6 +31,12 @@ giftui_swiftpm \
     --cache-root "$PWD/.build/swiftpm-cache" \
     --disable-sandbox -- \
     test --filter dynamicPiCorrelationOwnerReservesPublicationOnlyForChangedCycles
+giftui_swiftpm \
+    --package-path "$PWD" \
+    --scratch-path "$PWD/.build" \
+    --cache-root "$PWD/.build/swiftpm-cache" \
+    --disable-sandbox -- \
+    test --filter dynamicPiOpportunityOwnsCorrelationReservationCallSite
 scripts/contracts/check-spec-001-harness.rb
 swift package dump-package | scripts/contracts/check-spec-001-boundaries.rb
 scripts/raspberry-pi/doctor.sh

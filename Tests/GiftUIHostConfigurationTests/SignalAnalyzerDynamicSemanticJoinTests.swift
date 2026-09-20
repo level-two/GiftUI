@@ -795,6 +795,57 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(nextChanged.presentationRevision == PresentationRevision(rawValue: 2))
 }
 
+@Test func dynamicPiOpportunityOwnsCorrelationReservationCallSite() throws {
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    let factAdmission = DynamicSignalAnalyzerHostFactAdmission()
+    var coordinator = DynamicSignalAnalyzerPiInputCoordinator(
+        source: InputSourceID(rawValue: 19),
+        capacity: preset.runtimeLimits.execution.maximumInputEvents,
+        context: ExecutionContext(
+            cycle: RunCycleID(rawValue: 0),
+            semanticRevision: SemanticRevision(rawValue: 0),
+            candidateFrame: CandidateFrameID(rawValue: 0),
+            phase: .idle
+        ),
+        factAdmission: factAdmission
+    )
+    let correlations = DynamicSignalAnalyzerPiCorrelationOwner()
+    let initial = try #require(correlations.reserveInitialPresentation())
+    let layout = try #require(
+        PiScreenFramebufferLayout(
+            width: 480,
+            height: 320,
+            bitsPerPixel: 16,
+            bytesPerRow: 960,
+            mappedBytes: 307_200
+        )
+    )
+    let target = try #require(
+        PiScreenDisplayTarget(sink: EndpointFramebufferSink(), layout: layout)
+    )
+    var owner = try #require(
+        DynamicSignalAnalyzerPiInitialPresentationOwner(
+            target: target,
+            limits: preset.runtimeLimits,
+            maximumRecordedTraversalIdentities: 203,
+            effectivePresentation: dynamicPiEffectivePresentation(preset: preset),
+            provenance: initial.provenance,
+            presentationRevision: initial.presentationRevision
+        )
+    )
+    #expect(
+        coordinator.runOpportunity(into: &owner, correlations: correlations)
+            == .failure(.mutationUnavailable)
+    )
+
+    let nextCycle = try #require(correlations.reserveOpportunityCycle())
+    let nextPresentation = try #require(correlations.reservePresentation(for: nextCycle))
+    #expect(nextCycle == RunCycleID(rawValue: 2))
+    #expect(nextPresentation.provenance.semanticRevision == SemanticRevision(rawValue: 1))
+    #expect(nextPresentation.provenance.candidateFrame == CandidateFrameID(rawValue: 1))
+    #expect(nextPresentation.presentationRevision == PresentationRevision(rawValue: 1))
+}
+
 @Test func dynamicTargetHostPresentationPipelineUsesExactGeneratedLimits() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     var pipeline = try #require(

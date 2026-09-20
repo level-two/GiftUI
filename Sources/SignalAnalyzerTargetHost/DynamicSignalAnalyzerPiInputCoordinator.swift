@@ -88,6 +88,7 @@ package struct DynamicSignalAnalyzerPiOpportunitySummary: Equatable, Sendable {
 package enum DynamicSignalAnalyzerPiOpportunityFailure: Equatable, Sendable {
     case factAdmissionUnavailable
     case factApplicationRejected(SignalAnalyzerRuntimeCondition)
+    case correlationUnavailable
     case mutationUnavailable
     case presentation(DynamicSignalAnalyzerPiInitialPresentationFailure)
 }
@@ -150,8 +151,34 @@ package struct DynamicSignalAnalyzerPiInputCoordinator {
 
     package mutating func runOpportunity<Target>(
         into owner: inout DynamicSignalAnalyzerPiInitialPresentationOwner<Target>,
+        correlations: DynamicSignalAnalyzerPiCorrelationOwner
+    ) -> DynamicSignalAnalyzerPiInputOpportunityResult
+    where Target: DisplayTarget {
+        runOpportunity(into: &owner) {
+            guard let cycle = correlations.reserveOpportunityCycle() else { return nil }
+            return { correlations.reservePresentation(for: cycle) }
+        }
+    }
+
+    package mutating func runOpportunity<Target>(
+        into owner: inout DynamicSignalAnalyzerPiInitialPresentationOwner<Target>,
         provenance: FrameProvenance,
         presentationRevision: PresentationRevision
+    ) -> DynamicSignalAnalyzerPiInputOpportunityResult
+    where Target: DisplayTarget {
+        runOpportunity(into: &owner) {
+            {
+                DynamicSignalAnalyzerPiPresentationCorrelation(
+                    provenance: provenance,
+                    presentationRevision: presentationRevision
+                )
+            }
+        }
+    }
+
+    private mutating func runOpportunity<Target>(
+        into owner: inout DynamicSignalAnalyzerPiInitialPresentationOwner<Target>,
+        makePresentationCorrelation: () -> (() -> DynamicSignalAnalyzerPiPresentationCorrelation?)?
     ) -> DynamicSignalAnalyzerPiInputOpportunityResult
     where Target: DisplayTarget {
         switch opportunityGate.begin() {
@@ -161,6 +188,9 @@ package struct DynamicSignalAnalyzerPiInputCoordinator {
             return .rejected(.application(rejection))
         }
         defer { _ = opportunityGate.complete() }
+        guard let reservePresentation = makePresentationCorrelation() else {
+            return .failure(.correlationUnavailable)
+        }
 
         let application: DynamicSignalAnalyzerFactApplicationSummary
         if factAdmission.seal() {
@@ -217,12 +247,15 @@ package struct DynamicSignalAnalyzerPiInputCoordinator {
                 )
             )
         }
+        guard let correlation = reservePresentation() else {
+            return .failure(.correlationUnavailable)
+        }
         switch owner.presentNext(
-            provenance: provenance,
-            presentationRevision: presentationRevision
+            provenance: correlation.provenance,
+            presentationRevision: correlation.presentationRevision
         ) {
         case .presented(let summary):
-            gate.installPhysicalPresentation(presentationRevision)
+            gate.installPhysicalPresentation(correlation.presentationRevision)
             return .completed(
                 DynamicSignalAnalyzerPiOpportunitySummary(
                     application: application,

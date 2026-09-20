@@ -845,8 +845,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       admission. A target correlation owner now reserves every opportunity's
       cycle identity while reserving semantic, candidate-frame, and physical
       presentation identities only for changed publications; idle cycles do
-      not create gaps in publication identity. Joining that owner to the paced
-      coordinator, Linux polling, and the complete lifecycle loop remain open.
+      not create gaps in publication identity. The serialized coordinator now
+      owns those reservations, including the changed-publication-only call
+      site. Joining that coordinator to pacing and Linux polling, then the
+      complete lifecycle loop, remains open.
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation
