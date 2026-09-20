@@ -346,6 +346,13 @@ Signal Analyzer workload's `2 / 32` values. It therefore cannot manufacture,
 underfill, or substitute the still-required production Signal Analyzer Canvas
 table.
 
+A higher noncopyable runtime aggregate now requires the same immutable assembly
+report to construct both the application storage and profile binding. Its one
+address-stable scope lends the application owner and common Static binding
+together, then quiesces both before either caller-owned field location or the
+profile buffer can expire. The aggregate remains generic over the concrete
+generated Canvas metadata, so it does not collapse the generation boundary.
+
 The aggregate also owns the fixed Static fact-admission storage at a stable
 address. Root binding creates the Presentation observation adapter from the
 same repository as the model use cases, but does not start it. A distinct

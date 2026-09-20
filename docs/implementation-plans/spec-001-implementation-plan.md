@@ -993,6 +993,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       join now also requires the concrete table's dense case count and greatest
       capture record to exactly equal the generated workload's `2 / 32`
       metadata, rejecting an otherwise valid underfilled table.
+      One noncopyable runtime-storage aggregate now constructs the application
+      storage and profile binding from that same exact report and lends both
+      through a single address-stable lifetime scope with common quiescence.
       Building this owner into the firmware's complete generated Static
       presentation composition remains open. The firmware
       now compiles the exact shared input values,

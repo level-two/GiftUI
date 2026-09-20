@@ -492,6 +492,14 @@ cases and 32-byte maximum. An otherwise structurally valid two-case table with
 a 31-byte greatest record rejects before profile construction, so preset
 headroom cannot conceal stale or incomplete generated source.
 
+`StaticSignalAnalyzerNRFRuntimeStorage` now joins that binding with the
+application storage under the same exact assembly report. Its noncopyable
+address-stable scope lends both owners simultaneously and quiesces application
+and profile state before their locations or caller-owned profile buffer expire.
+The host fixture proves construction, one balanced profile opportunity, common
+scope teardown, and rejection of another target's report. It continues to use
+test-only metadata and does not claim production Canvas lowering.
+
 The host fixture uses a deliberately local two-case metadata table to exercise
 only this join. It proves the retained audit equals the generated preset,
 opportunity begin activates attempt storage, opportunity finish clears exactly
