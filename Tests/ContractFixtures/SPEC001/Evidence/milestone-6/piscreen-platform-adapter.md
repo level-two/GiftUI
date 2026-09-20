@@ -13,6 +13,8 @@ boundary without restoring legacy renderer or runtime architecture.
 - bounded region metadata and canonical payload-byte preservation; and
 - calibrated raw-touch mapping, letterbox rejection, and one ordered
   down/move/up contact sequence.
+- Linux-only ownership of framebuffer metadata validation, mmap lifetime,
+  native RGB565 writes, nonblocking evdev ingestion, and descriptor teardown.
 
 The focused command
 
@@ -26,7 +28,19 @@ physical-bound projection, invalid descriptors, and transport refusal.
 `swift package dump-package | ruby scripts/contracts/check-target-dependencies.rb`
 also passes with 83 targets, 335 direct edges, and no cycle.
 
-This is hardware-free implementation evidence only. It does not open a Linux
-device, execute the Signal Analyzer composition root, cross-build for ARMv6,
-deploy to a Raspberry Pi, or claim PiScreen display/input behavior. Those
-parts of T6.7 and T8.1 remain open.
+The project-local Raspberry Pi doctor reports Apple Swift 6.3.2 and exact
+target `armv6-unknown-linux-gnueabihf`. The command
+
+```text
+scripts/raspberry-pi/build.sh --product SignalAnalyzerRaspberryPiARMv6
+```
+
+passes and emits a stripped 32-bit ARM EABI5 hard-float executable with build
+ID `4faf112ea04f8a2a9bdc8acd98cdfa790cdf6ea6`. The executable exposes an
+explicit `--inspect-piscreen` mode that opens and validates `/dev/fb0` and
+`/dev/input/event0` without claiming application execution.
+
+This is hardware-free implementation and cross-build evidence only. It does
+not open a Linux device, execute the Signal Analyzer composition root, deploy
+to a Raspberry Pi, or claim PiScreen display/input behavior. Those parts of
+T6.7 and T8.1 remain open.

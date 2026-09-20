@@ -718,8 +718,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       projection, calibrated touch mapping, and one-contact sequencing. Its
       fake-sink tests cover invalid format/stride/mapping, canonical byte and
       physical-bound preservation, transport refusal, letterbox rejection,
-      and ordered down/move/up behavior. Linux device ownership, host-loop
-      composition, ARMv6 proof, and connected execution remain open; see the
+      and ordered down/move/up behavior. A Linux-only implementation now owns
+      framebuffer sysfs validation, an mmap lifetime, native RGB565 writes,
+      nonblocking evdev reads, and explicit device teardown. The exact product
+      cross-builds as an ARM EABI5 hard-float executable and exposes a bounded
+      `--inspect-piscreen` device-readiness mode. Host-loop composition and
+      connected execution remain open; see the
       [platform-adapter evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
