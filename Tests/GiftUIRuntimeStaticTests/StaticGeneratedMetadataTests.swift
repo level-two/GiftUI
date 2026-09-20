@@ -109,6 +109,20 @@ private final class StaticCanvasHandleModel {
     }
 }
 
+@Test func staticCanvasObservableHandlePropagatesTypedDrawingFailure() {
+    var model = StaticCanvasHandleModel(value: 17)
+
+    withUnsafePointer(to: &model) { location in
+        let handle = StaticCanvasObservableModelHandle(hostOwnedLocation: location)
+        #expect(throws: DrawingError.invalidValue) {
+            try handle.withModel { model throws(DrawingError) in
+                #expect(model.value == 17)
+                throw DrawingError.invalidValue
+            }
+        }
+    }
+}
+
 @Test
 func generatedStaticCanvasSwitchCoversEveryDeclaredID() throws {
     var table = GeneratedRuntimeCanvasTable()

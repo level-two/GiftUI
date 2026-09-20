@@ -361,6 +361,11 @@ after exact assembly selection and independent Static Canvas host validation.
 The table's concrete capture records and invocation switch remain generated
 inputs rather than handwritten target-host behavior.
 
+The observable-model handle's scoped borrow is typed-throwing. A generated
+trace callable can therefore execute the existing `throws(DrawingError)`
+waveform helper while borrowing the stable model location, preserving the
+original drawing failure without returning or copying captured model state.
+
 The aggregate also owns the fixed Static fact-admission storage at a stable
 address. Root binding creates the Presentation observation adapter from the
 same repository as the model use cases, but does not start it. A distinct

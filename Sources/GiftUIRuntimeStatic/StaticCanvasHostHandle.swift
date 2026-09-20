@@ -49,9 +49,9 @@ package struct StaticCanvasObservableModelHandle<Model>: @unchecked Sendable {
         location = hostOwnedLocation
     }
 
-    package borrowing func withModel<Result>(
-        _ body: (borrowing Model) -> Result
-    ) -> Result {
-        body(location.pointee)
+    package borrowing func withModel<Result, Failure: Error>(
+        _ body: (borrowing Model) throws(Failure) -> Result
+    ) throws(Failure) -> Result {
+        try body(location.pointee)
     }
 }

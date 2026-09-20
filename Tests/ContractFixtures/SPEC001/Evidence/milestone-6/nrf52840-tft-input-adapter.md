@@ -508,6 +508,12 @@ host validator over the supplied generated table. The runtime-storage fixture
 now consumes this production envelope, while its callable table remains a
 test-only stand-in for the still-open source-generation output.
 
+The shared Static observable-model handle now accepts a typed-throwing scoped
+borrow. This lets the pending generated trace case invoke the existing
+`throws(DrawingError)` helper against the address-stable model without copying
+or retaining its capture state; a focused runtime test proves the exact typed
+failure exits the borrow unchanged.
+
 The host fixture uses a deliberately local two-case metadata table to exercise
 only this join. It proves the retained audit equals the generated preset,
 opportunity begin activates attempt storage, opportunity finish clears exactly

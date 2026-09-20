@@ -1000,6 +1000,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       observable slot, six-action specialization, and dense two-case Canvas
       coverage around a caller-supplied generated callable table; host
       validation rejects incomplete table coverage before storage construction.
+      The approved address-stable observable-model handle now preserves a
+      generated callable's typed drawing failure while its model borrow remains
+      scoped, so trace dispatch does not need to copy or retain model state.
       Building this owner into the firmware's complete generated Static
       presentation composition remains open. The firmware
       now compiles the exact shared input values,
