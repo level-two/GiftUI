@@ -118,10 +118,16 @@ interaction owner, so platform input cannot synchronously mutate the model.
 The coordinator owns the application-opportunity gate rather than relying on
 its caller to serialize mutation. Quiescence closes both admission and the
 opportunity gate, and later opportunity requests fail as unavailable.
+The same opportunity now opens the production `.action` fact-producer scope
+around dispatch. A real deterministic source and repository fixture proves
+that the Start action queues four initial channel transitions plus the running
+state without applying any callback-driven mutation synchronously.
 
 The hardware-free fixture proves presentation-not-established, unknown-source,
 stale-revision, and quiescent rejection; exact down/move/up sequence and ordinal
 formation; unchanged model state before the opportunity; one generation-
 checked one-second action inside it; and unavailable opportunity rejection
-after quiescence. Linux evdev polling, wake-loop ownership, and
+after quiescence. The Start-action fixture also proves five deferred repository
+facts survive the opportunity in production admission order. Linux evdev
+polling, fact application and rerender, wake-loop ownership, and
 the complete live activation owner remain open.

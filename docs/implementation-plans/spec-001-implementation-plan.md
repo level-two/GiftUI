@@ -818,8 +818,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       normalization gate assigns source/sequence/ordinal/provenance and defers
       model mutation until an application-opportunity gate serializes a drain
       into the production interaction owner. Quiescence closes both admission
-      and opportunity execution. Raw Linux contact polling, acquisition,
-      wake/pacing, and the
+      and opportunity execution. Action dispatch now opens the production
+      `.action` fact-producer scope, so Start/Stop/Clear repository callbacks
+      remain deferred; a real deterministic-source fixture records the four
+      bootstrap transitions and running-state fact without synchronous model
+      mutation. Raw Linux contact polling, sealed fact application and
+      rerender, wake/pacing, and the
       complete seven-step activation/eight-step teardown join remain open.
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production

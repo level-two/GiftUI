@@ -16,7 +16,9 @@ import GiftUIRuntimeDynamic
 import GiftUISemanticCore
 import GiftUISurfaceCore
 import GiftUITextResources
+import SignalAnalyzerData
 import SignalAnalyzerDomain
+import SignalAnalyzerHost
 import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
 import Testing
@@ -424,7 +426,10 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
 
     coordinator.quiesce()
     #expect(!coordinator.inputIsEligible)
-    #expect(coordinator.runOpportunity(into: &owner) == .rejected(.unavailable))
+    #expect(
+        coordinator.runOpportunity(into: &owner)
+            == .rejected(.application(.unavailable))
+    )
     #expect(
         coordinator.admit(
             phase: .down,
@@ -433,6 +438,120 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
             observedPresentationRevision: revision
         ) == .sourceQuiesced(.inputUnavailable)
     )
+}
+
+@Test func dynamicPiInputOpportunityDefersActionRepositoryCallbacks() throws {
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    let revision = PresentationRevision(rawValue: 54)
+    let provenance = FrameProvenance(
+        cycle: RunCycleID(rawValue: 51),
+        semanticRevision: SemanticRevision(rawValue: 52),
+        candidateFrame: CandidateFrameID(rawValue: 53)
+    )
+    let source = DeterministicSignalDataSource()
+    let repository = DefaultSignalAcquisitionRepository(source: source)
+    let admission = DynamicSignalAnalyzerHostFactAdmission()
+    let adapter = SignalAnalyzerPresentationAdmissionAdapter(
+        observeCapture: ObserveSignalCaptureUseCase(repository: repository),
+        observeState: ObserveAcquisitionStateUseCase(repository: repository),
+        admission: admission,
+        failureFactory: DefaultSignalAnalyzerOperationalFailureFactory()
+    )
+    let model = SignalAnalyzerViewModel(
+        startAcquisition: StartSignalAcquisitionUseCase(repository: repository),
+        stopAcquisition: StopSignalAcquisitionUseCase(repository: repository),
+        clearCapture: ClearSignalCaptureUseCase(repository: repository)
+    )
+    #expect(admission.beginProducer(.bootstrap))
+    guard case .started = adapter.startObserving() else {
+        admission.endProducer()
+        Issue.record("repository bootstrap observation failed")
+        return
+    }
+    admission.endProducer()
+    #expect(admission.seal())
+    while let (_, _, fact) = admission.takeNextSealed() {
+        #expect(model.apply(fact) == .applied(changed: false))
+    }
+
+    let layout = try #require(
+        PiScreenFramebufferLayout(
+            width: 480,
+            height: 320,
+            bitsPerPixel: 16,
+            bytesPerRow: 960,
+            mappedBytes: 307_200
+        )
+    )
+    let target = try #require(
+        PiScreenDisplayTarget(sink: EndpointFramebufferSink(), layout: layout)
+    )
+    var owner = try #require(
+        DynamicSignalAnalyzerPiInitialPresentationOwner(
+            target: target,
+            limits: preset.runtimeLimits,
+            maximumRecordedTraversalIdentities: 203,
+            effectivePresentation: dynamicPiEffectivePresentation(preset: preset),
+            provenance: provenance,
+            presentationRevision: revision
+        )
+    )
+    guard case .presented = owner.presentInitial(model: model) else {
+        Issue.record("initial presentation did not establish input")
+        return
+    }
+    let startAction = try #require(
+        (0 ..< owner.eligibleActionCount).compactMap { owner.eligibleAction(at: $0) }
+            .first { $0.action.code == SignalAnalyzerAction.start.rawValue }
+    )
+    let point = Point(
+        x: startAction.hitBounds.origin.x + startAction.hitBounds.size.width / 2,
+        y: startAction.hitBounds.origin.y + startAction.hitBounds.size.height / 2
+    )
+    let inputSource = InputSourceID(rawValue: 27)
+    var coordinator = DynamicSignalAnalyzerPiInputCoordinator(
+        source: inputSource,
+        capacity: preset.runtimeLimits.execution.maximumInputEvents,
+        context: ExecutionContext(
+            cycle: provenance.cycle,
+            semanticRevision: provenance.semanticRevision,
+            candidateFrame: provenance.candidateFrame,
+            phase: .idle
+        ),
+        factAdmission: admission
+    )
+    coordinator.installPhysicalPresentation(revision)
+    guard
+        case .queued = coordinator.admit(
+            phase: .down,
+            position: point,
+            source: inputSource,
+            observedPresentationRevision: revision
+        ),
+        case .queued = coordinator.admit(
+            phase: .up,
+            position: point,
+            source: inputSource,
+            observedPresentationRevision: revision
+        )
+    else {
+        Issue.record("start action input was not queued")
+        return
+    }
+
+    guard case .completed(let summary) = coordinator.runOpportunity(into: &owner) else {
+        Issue.record("start action opportunity was rejected")
+        return
+    }
+    #expect(summary.dispatchedActionCount == 1)
+    #expect(model.state.acquisitionState == .idle)
+    #expect(admission.seal())
+    var deferredFacts: [SignalAnalyzerPresentationFact] = []
+    while let (_, _, fact) = admission.takeNextSealed() { deferredFacts.append(fact) }
+    #expect(deferredFacts.count == 5)
+    #expect(deferredFacts.last == .acquisitionState(.running))
+    #expect(model.state.acquisitionState == .idle)
+    adapter.stopObserving()
 }
 
 @Test func dynamicTargetHostPresentationPipelineUsesExactGeneratedLimits() throws {

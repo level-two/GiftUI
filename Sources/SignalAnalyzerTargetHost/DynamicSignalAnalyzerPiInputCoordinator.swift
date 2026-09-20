@@ -2,6 +2,7 @@ import GiftUI
 import GiftUIDisplayCore
 import GiftUIExecution
 import GiftUIHostConfiguration
+import SignalAnalyzerHost
 
 private enum DynamicSignalAnalyzerPiUnusedFact: Sendable {
     case unsupported
@@ -72,9 +73,14 @@ package struct DynamicSignalAnalyzerPiInputDrainSummary: Equatable, Sendable {
     }
 }
 
+package enum DynamicSignalAnalyzerPiInputOpportunityRejection: Equatable, Sendable {
+    case application(HostApplicationOpportunityRejection)
+    case factProducerUnavailable
+}
+
 package enum DynamicSignalAnalyzerPiInputOpportunityResult: Equatable, Sendable {
     case completed(DynamicSignalAnalyzerPiInputDrainSummary)
-    case rejected(HostApplicationOpportunityRejection)
+    case rejected(DynamicSignalAnalyzerPiInputOpportunityRejection)
 }
 
 /// Connects target-normalized pointer phases to bounded execution admission.
@@ -83,17 +89,21 @@ package struct DynamicSignalAnalyzerPiInputCoordinator {
     private var gate: HostNormalizedInputGate
     private var queue: DynamicSignalAnalyzerPiInputQueue
     private var opportunityGate = HostApplicationOpportunityGate()
+    private let factAdmission: DynamicSignalAnalyzerHostFactAdmission
 
     package init(
         source: InputSourceID,
         capacity: UInt16,
-        context: ExecutionContext
+        context: ExecutionContext,
+        factAdmission: DynamicSignalAnalyzerHostFactAdmission =
+            DynamicSignalAnalyzerHostFactAdmission()
     ) {
         gate = HostNormalizedInputGate(configuredSource: source)
         queue = DynamicSignalAnalyzerPiInputQueue(
             capacity: capacity,
             context: context
         )
+        self.factAdmission = factAdmission
     }
 
     package var inputIsEligible: Bool { gate.inputIsEligible }
@@ -131,9 +141,13 @@ package struct DynamicSignalAnalyzerPiInputCoordinator {
         case .admitted:
             break
         case .rejected(let rejection):
-            return .rejected(rejection)
+            return .rejected(.application(rejection))
         }
         defer { _ = opportunityGate.complete() }
+        guard factAdmission.beginProducer(.action) else {
+            return .rejected(.factProducerUnavailable)
+        }
+        defer { factAdmission.endProducer() }
 
         let events = queue.takeAll()
         var dispatched: UInt16 = 0
@@ -161,5 +175,6 @@ package struct DynamicSignalAnalyzerPiInputCoordinator {
         _ = opportunityGate.quiesce()
         gate.quiesce()
         queue.quiesce()
+        factAdmission.quiesce()
     }
 }
