@@ -119,7 +119,7 @@
                     }
                 }
             }
-            return true
+            return Glibc.msync(mapping, Int(layout.mappedBytes), MS_SYNC) == 0
         }
 
         private static func readText(path: String) -> [UInt8]? {

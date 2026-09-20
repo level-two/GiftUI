@@ -728,6 +728,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       without a service restart, and opened an accessible 480 x 320 RGB565
       framebuffer plus `/dev/input/event0`; see the
       [platform-adapter evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md).
+      A second bounded connected adapter run synchronously accepted and
+      flushed the exact fifteen 240 x 16 payloads / 115,200 RGB565 bytes and
+      kept the input poll operational. No physical touch occurred, so
+      calibration, six-action routing, full host-loop composition, and T8.1
+      remain open.
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation

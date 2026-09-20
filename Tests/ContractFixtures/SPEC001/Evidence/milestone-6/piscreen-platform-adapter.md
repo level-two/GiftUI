@@ -63,7 +63,28 @@ selected device nodes with the required account. It does not render an
 analyzer frame, ingest a physical touch, or establish application-level
 display/input behavior.
 
-The implementation and cross-build evidence remains distinct from the narrow
-connected device-readiness result. No Signal Analyzer composition root or
-physical control scenario executed, so application-level portions of T6.7 and
-all of T8.1 remain open.
+## Connected bounded-transport result
+
+The next separately committed adapter slice added a finite
+`--exercise-piscreen` mode. It reserves the exact 240 x 240 / 240 x 16 tiled
+surface, produces fifteen 7,680-byte payloads, synchronously flushes the mapped
+framebuffer after every payload, and polls the normalized input path for two
+seconds. The rebuilt ARMv6 artifact has build ID
+`cedb75d6279ff77454c7cda7d82c190000c6265f` and SHA-256
+`47b2a7f8775124a3bab67d9ec9a220e3f7eac88cac20c3c3fe2929cd617e579d`.
+It was deployed without a service restart. The connected command returned:
+
+```text
+status=completed payloads=15 regions=240 bytes=115200 contact-events=0
+```
+
+This proves that all 115,200 canonical RGB565 bytes for one logical surface
+were accepted through the production display target and Linux framebuffer
+sink on the selected Pi. The input descriptor remained readable throughout
+the bounded poll, but no physical touch occurred; therefore this result does
+not prove touch calibration, action routing, or any of the six controls.
+
+The implementation and cross-build evidence remains distinct from these
+connected adapter results. No Signal Analyzer composition root or physical
+control scenario executed, so application-level portions of T6.7 and all of
+T8.1 remain open.
