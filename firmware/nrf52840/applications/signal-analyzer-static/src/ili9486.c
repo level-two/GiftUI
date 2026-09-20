@@ -37,6 +37,7 @@ static const struct gpio_dt_spec display_reset =
 static uint8_t pixel_scratch[
     (GIFTUI_ILI9486_WIDTH / 8U) * GIFTUI_ILI9486_TILE_HEIGHT *
     GIFTUI_ILI9486_BYTES_PER_PIXEL];
+static bool display_initialized;
 
 BUILD_ASSERT(GIFTUI_ILI9486_SPI_SEGMENT_BYTES > 0U);
 BUILD_ASSERT(
@@ -204,60 +205,100 @@ int ili9486_initialize(void)
 {
     int result = configure_safe_state();
     if (result != 0) {
+        if (result != -ENODEV) {
+            (void)ili9486_shutdown();
+        }
         return result;
     }
 
     k_msleep(10);
     result = gpio_pin_set_dt(&display_reset, 0);
     if (result != 0) {
-        return result;
+        goto fail;
     }
     k_msleep(120);
 
     result = write_command(ILI9486_SWRESET, NULL, 0U);
     if (result != 0) {
-        return result;
+        goto fail;
     }
     k_msleep(120);
 
     result = write_command(ILI9486_DISPOFF, NULL, 0U);
     if (result != 0) {
-        return result;
+        goto fail;
     }
 
     const uint8_t pixel_format = ILI9486_RGB565_FORMAT;
     result = write_command(ILI9486_PIXFMT, &pixel_format, 1U);
     if (result != 0) {
-        return result;
+        goto fail;
     }
 
     /* First board milestone: 480x320 landscape with BGR color order. */
     const uint8_t memory_access = ILI9486_MADCTL_MV | ILI9486_MADCTL_BGR;
     result = write_command(ILI9486_MADCTL, &memory_access, 1U);
     if (result != 0) {
-        return result;
+        goto fail;
     }
 
     result = write_command(ILI9486_SLPOUT, NULL, 0U);
     if (result != 0) {
-        return result;
+        goto fail;
     }
     k_msleep(120);
 
     result = write_command(ILI9486_DISPON, NULL, 0U);
     if (result != 0) {
-        return result;
+        goto fail;
     }
     k_msleep(20);
 
 #if DT_NODE_HAS_PROP(ILI9486_NODE, backlight_gpios)
     result = gpio_pin_set_dt(&display_backlight, 1);
     if (result != 0) {
-        return result;
+        goto fail;
     }
 #endif
 
+    display_initialized = true;
     return 0;
+
+fail:
+    (void)ili9486_shutdown();
+    return result;
+}
+
+int ili9486_shutdown(void)
+{
+    int result = 0;
+    if (display_initialized) {
+        result = write_command(ILI9486_DISPOFF, NULL, 0U);
+    }
+#if DT_NODE_HAS_PROP(ILI9486_NODE, backlight_gpios)
+    const int backlight_result = gpio_pin_set_dt(&display_backlight, 0);
+    if (result == 0) {
+        result = backlight_result;
+    }
+#endif
+    const int reset_result = gpio_pin_set_dt(&display_reset, 1);
+    if (result == 0) {
+        result = reset_result;
+    }
+    const int dc_result = gpio_pin_set_dt(&display_dc, 0);
+    if (result == 0) {
+        result = dc_result;
+    }
+    if (spi_cs_is_gpio_dt(&display_spi)) {
+        const int chip_select_result = gpio_pin_set_dt(
+            &display_spi.config.cs.gpio,
+            0);
+        if (result == 0) {
+            result = chip_select_result;
+        }
+    }
+    display_initialized = false;
+    return result;
 }
 
 uint16_t ili9486_tile_height(void)

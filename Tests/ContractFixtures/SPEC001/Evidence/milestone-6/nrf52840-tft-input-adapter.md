@@ -85,3 +85,33 @@ hard-float, zero-heap, required-symbol, and ceiling checks pass. This is still
 hardware-free evidence: the repository's `doctor.sh --probe` validates the
 probe build, not a connected DK. No board was detected or flashed, and no
 connected output or stack result is claimed.
+
+## Explicit device cleanup
+
+The next hardware-free slice adds target-owned shutdown entry points for both
+controllers. ADS7846 shutdown leaves chip select inactive and PENIRQ as a
+pulled-up input. ILI9486 shutdown turns the display and backlight off when
+available, asserts reset, leaves data/command and chip select inactive, and
+clears its initialized state. Display initialization rolls partial progress
+back to that safe state.
+
+The finite validation entry now tracks successful initialization separately
+for touch and display. Every later display, input, or normal-completion path
+runs reverse-order cleanup, preserves the original operational failure, and
+records a cleanup failure without replacing an earlier one. This makes the
+previously implicit finite-return behavior an explicit device-lifecycle
+contract for the future Static host owner.
+
+A pristine hardware-free build retains `ads7846_shutdown` and
+`ili9486_shutdown` and again passes ARMv7E-M, VFP hard-float, zero-heap,
+required-symbol, RAM, and flash gates:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `zephyr.elf` | `f6fe865c298c3b52bdeda9c4dcb0d6361ed196d663f6dc8bfb7cb9ea71a2ec47` |
+| `zephyr.hex` | `dfbcda4af14bb61866cc61bf1f3e4ca9fe99da87da975833bb76d1c0ea4fc2fe` |
+| `zephyr.map` | `1b2b5f186403558049d3610400351cff42a7f1893fa7ce54dcf45e15d8666288` |
+| `zephyr.dts` | `042dd0ead8283db2cb12d0ff36caad849f8c88787859202809cd03bf17aef6d7` |
+
+The inspected load segments use 32,168 flash bytes and 175,296 RAM bytes.
+No full framebuffer or heap entry point is present. No board was flashed.

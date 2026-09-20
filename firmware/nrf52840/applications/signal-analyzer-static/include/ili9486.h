@@ -18,6 +18,7 @@
 #endif
 
 GIFTUI_DRIVER_ENTRY int ili9486_initialize(void);
+GIFTUI_DRIVER_ENTRY int ili9486_shutdown(void);
 uint16_t ili9486_tile_height(void);
 size_t ili9486_spi_segment_bytes(void);
 GIFTUI_DRIVER_ENTRY int ili9486_write_rgb565(uint16_t x,

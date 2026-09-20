@@ -4,6 +4,7 @@
 #include "giftui_fault.h"
 #include "ili9486.h"
 
+#include <stdbool.h>
 #include <limits.h>
 #include <stdint.h>
 #include <zephyr/kernel.h>
@@ -38,6 +39,8 @@ static void report_stack_high_water(void)
 
 int giftui_device_validation_run(void)
 {
+    bool touch_initialized = false;
+    bool display_initialized = false;
     printk("GiftUI target: nrf52840dk/nrf52840 + ILI9486/ADS7846\n");
     printk("GiftUI transfer: 480x4 RGB565, segment<=%u bytes\n",
            (unsigned int)ili9486_spi_segment_bytes());
@@ -45,19 +48,21 @@ int giftui_device_validation_run(void)
     int result = ads7846_initialize();
     if (result != 0) {
         giftui_fault_record(GIFTUI_FAULT_TOUCH_CONTROLLER, result);
-        return result;
+        goto cleanup;
     }
+    touch_initialized = true;
     result = ili9486_initialize();
     if (result != 0) {
         giftui_fault_record(GIFTUI_FAULT_DISPLAY_CONTROLLER, result);
-        return result;
+        goto cleanup;
     }
+    display_initialized = true;
 
     const uint32_t display_started = k_uptime_get_32();
     result = ili9486_render_color_bars();
     if (result != 0) {
         giftui_fault_record(GIFTUI_FAULT_DISPLAY_CONTROLLER, result);
-        return result;
+        goto cleanup;
     }
     printk("GiftUI display transfer: status=completed elapsed-ms=%u\n",
            k_uptime_get_32() - display_started);
@@ -67,14 +72,15 @@ int giftui_device_validation_run(void)
     for (uint32_t poll = 0U; poll < GIFTUI_TOUCH_POLL_COUNT; ++poll) {
         const int pen_state = ads7846_pen_is_down();
         if (pen_state < 0) {
-            return pen_state;
+            result = pen_state;
+            goto cleanup;
         }
         if (pen_state != 0) {
             struct ads7846_raw_sample sample;
             increment_saturating(&contacts);
             result = ads7846_read_raw(&sample);
             if (result != 0) {
-                return result;
+                goto cleanup;
             }
             increment_saturating(&samples);
         }
@@ -91,5 +97,29 @@ int giftui_device_validation_run(void)
            giftui_fault_count(GIFTUI_FAULT_TOUCH_CONTROLLER),
            giftui_fault_count(GIFTUI_FAULT_TOUCH_SPI));
     report_stack_high_water();
-    return 0;
+
+cleanup:
+    if (display_initialized) {
+        const int shutdown_result = ili9486_shutdown();
+        if (shutdown_result != 0) {
+            giftui_fault_record(
+                GIFTUI_FAULT_DISPLAY_CONTROLLER,
+                shutdown_result);
+        }
+        if (result == 0 && shutdown_result != 0) {
+            result = shutdown_result;
+        }
+    }
+    if (touch_initialized) {
+        const int shutdown_result = ads7846_shutdown();
+        if (shutdown_result != 0) {
+            giftui_fault_record(
+                GIFTUI_FAULT_TOUCH_CONTROLLER,
+                shutdown_result);
+        }
+        if (result == 0 && shutdown_result != 0) {
+            result = shutdown_result;
+        }
+    }
+    return result;
 }

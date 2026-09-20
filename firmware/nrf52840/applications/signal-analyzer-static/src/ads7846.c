@@ -73,9 +73,25 @@ int ads7846_initialize(void)
         }
     }
 
-    return gpio_pin_configure_dt(
+    result = gpio_pin_configure_dt(
         &touch_penirq,
         GPIO_INPUT | GPIO_PULL_UP);
+    if (result != 0) {
+        (void)ads7846_shutdown();
+    }
+    return result;
+}
+
+int ads7846_shutdown(void)
+{
+    int result = 0;
+    if (spi_cs_is_gpio_dt(&touch_spi)) {
+        result = gpio_pin_set_dt(&touch_spi.config.cs.gpio, 0);
+    }
+    const int pen_result = gpio_pin_configure_dt(
+        &touch_penirq,
+        GPIO_INPUT | GPIO_PULL_UP);
+    return result != 0 ? result : pen_result;
 }
 
 int ads7846_pen_is_down(void)

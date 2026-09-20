@@ -15,6 +15,7 @@ struct ads7846_raw_sample {
 #endif
 
 GIFTUI_DRIVER_ENTRY int ads7846_initialize(void);
+GIFTUI_DRIVER_ENTRY int ads7846_shutdown(void);
 GIFTUI_DRIVER_ENTRY int ads7846_pen_is_down(void);
 GIFTUI_DRIVER_ENTRY int ads7846_read_raw(struct ads7846_raw_sample *sample);
 GIFTUI_DRIVER_ENTRY int ads7846_read_raw_values(uint16_t *x,

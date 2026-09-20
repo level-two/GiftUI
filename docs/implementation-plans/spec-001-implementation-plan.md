@@ -901,7 +901,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       open. A follow-up finite firmware entry now initializes both devices,
       transfers bounded color bars, polls touch for ten seconds, and reports
       faults plus stack high-water when deliberately flashed; its exact
-      pristine build also passes. It has not been flashed because physical
+      pristine build also passes. Both controllers now expose explicit
+      shutdown operations; partial display initialization rolls back to safe
+      GPIO state, and the finite entry performs reverse-order cleanup on every
+      post-initialization failure and normal return while preserving the first
+      failure. The pristine firmware retains both shutdown symbols and passes
+      all existing ABI, zero-heap, no-full-framebuffer, RAM, and flash gates.
+      It has not been flashed because physical
       shield provenance, continuity/orientation, and power gates are not yet
       evidenced. See the
       [TFT/input adapter evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md).
