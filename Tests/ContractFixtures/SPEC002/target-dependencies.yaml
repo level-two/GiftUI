@@ -595,6 +595,7 @@ targets:
   SignalAnalyzerRaspberryPiARMv6:
     type: executable
     dependencies:
+      - GiftUI
       - GiftUIPlatformRaspberryPi
       - SignalAnalyzerPresetHarness
       - SignalAnalyzerTargetHost

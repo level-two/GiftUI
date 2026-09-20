@@ -360,6 +360,7 @@ let package = Package(
         .executableTarget(
             name: "SignalAnalyzerRaspberryPiARMv6",
             dependencies: [
+                "GiftUI",
                 "GiftUIPlatformRaspberryPi",
                 "SignalAnalyzerPresetHarness",
                 "SignalAnalyzerTargetHost",

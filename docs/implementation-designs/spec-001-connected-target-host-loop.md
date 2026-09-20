@@ -256,8 +256,9 @@ semantic, candidate-frame, and presentation identities only when a changed
 candidate reaches publication. The serialized coordinator owns that allocation
 call site and passes the reserved tuple directly to presentation. Linux polling
 now has a bounded decoded-contact ingress into normalized admission and the
-shared pacing owner. The device-file poll loop and full activation/teardown
-remain open.
+shared pacing owner. The ARMv6 executable's typed input pump maps the real
+nonblocking Linux device poll directly into that seam. The surrounding process
+loop and full activation/teardown remain open.
 
 ## Code and Evidence Links
 

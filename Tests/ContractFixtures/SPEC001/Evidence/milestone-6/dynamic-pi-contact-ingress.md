@@ -33,3 +33,11 @@ scripts/raspberry-pi/build.sh --product SignalAnalyzerRaspberryPiARMv6
 
 This is a hardware-free decoded-contact join. The Linux device-file poll loop,
 remote input, display behavior, and connected execution remain unclaimed.
+
+The ARMv6 executable boundary now also contains
+`LinuxSignalAnalyzerPiInputPump`. Its typed poll call reads the real nonblocking
+`LinuxPiScreenTouchDevice`, maps every decoded event without another
+calibration or phase translation, and submits the batch to this ingress with
+the current physical presentation revision and monotonic timestamp. The ARMv6
+cross-build proves this concrete device-to-host seam compiles; the surrounding
+process scheduling loop and connected behavior remain open.
