@@ -13,8 +13,8 @@ glyphs, and depth 6. Semantic expansion generated 155 recording identities in
 the normal state and 158 in the diagnostic-present state; the published
 structural maxima remain the separately approved 80 and 81.
 
-The schema-3 preset currently admits 32 layout scopes. Running the same
-diagnostic-present hierarchy with that exact preset therefore fails closed as
+At the time of discovery, the schema-3 preset admitted 32 layout scopes.
+Running the same diagnostic-present hierarchy with that exact preset therefore fails closed as
 `LayoutError.capacityExhausted` before layout publication. The existing text,
 glyph, and depth capacities admit the measured maximum; only layout-scope
 capacity is deficient.
