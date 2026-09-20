@@ -106,3 +106,58 @@ package struct StaticSignalAnalyzerNRFInputABI {
         coordinator.quiesce()
     }
 }
+
+/// Fixed storage for one firmware-owned input lifetime. Initialization assigns
+/// the source exactly once; every later bridge call mutates the stored ABI in
+/// place rather than copying it out of global storage.
+package struct StaticSignalAnalyzerNRFFirmwareInputStorage {
+    private var input = StaticSignalAnalyzerNRFInputABI(sourceRawValue: 0)
+    private var isInitialized = false
+
+    package init() {}
+
+    package var pendingCount: UInt16 {
+        isInitialized ? input.pendingCount : 0
+    }
+
+    @discardableResult
+    package mutating func initialize(sourceRawValue: UInt16) -> Bool {
+        guard !isInitialized else { return false }
+        input = StaticSignalAnalyzerNRFInputABI(sourceRawValue: sourceRawValue)
+        isInitialized = true
+        return true
+    }
+
+    @discardableResult
+    package mutating func installPhysicalPresentation(
+        rawValue: UInt32
+    ) -> Bool {
+        guard isInitialized else { return false }
+        input.installPhysicalPresentation(rawValue: rawValue)
+        return true
+    }
+
+    package mutating func admit(
+        phaseRawValue: UInt8,
+        x: UInt16,
+        y: UInt16,
+        observedPresentationRevisionRawValue: UInt32,
+        priorPhysicalSequenceIsCompleteRawValue: UInt8
+    ) -> StaticSignalAnalyzerNRFInputABIOutcome? {
+        guard isInitialized else { return nil }
+        return input.admit(
+            phaseRawValue: phaseRawValue,
+            x: x,
+            y: y,
+            observedPresentationRevisionRawValue:
+                observedPresentationRevisionRawValue,
+            priorPhysicalSequenceIsCompleteRawValue:
+                priorPhysicalSequenceIsCompleteRawValue
+        )
+    }
+
+    package mutating func quiesce() {
+        guard isInitialized else { return }
+        input.quiesce()
+    }
+}

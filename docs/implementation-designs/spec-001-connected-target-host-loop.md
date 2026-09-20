@@ -320,6 +320,13 @@ quiesces input and publishes structural absence through the existing Static
 root lifecycle, detaching the change sink and removing the model before any
 field pointer expires.
 
+The firmware input ABI now has its first address-stable target-owned lifetime:
+one fixed global storage value binds the input source once and is mutated in
+place by every C bridge call. This removes per-call coordinator copies while
+keeping the bridge unavailable before initialization and after quiescence. It
+does not yet link the generated root, interaction, rendering, or endpoint
+storage, so the complete Static application lifetime remains the next join.
+
 ## Code and Evidence Links
 
 - [`DynamicSemanticHostStorage.swift`](../../Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift)

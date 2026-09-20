@@ -955,7 +955,16 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       proof; Swift alone assigns source, sequence, and ordinal provenance. C
       and Swift host fixtures cover the ABI, while a pristine build retains
       every bridge symbol and passes the existing zero-heap and resource
-      gates. An allocation-free production touch pipeline now joins the exact
+      gates. The firmware bridge now stores that ABI in one fixed global owner,
+      binds its source exactly once, and mutates it in place through
+      presentation installation, admission, and quiescence rather than copying
+      coordinator state out of optional global storage on every call. Host
+      tests cover pre-initialization refusal, duplicate initialization,
+      stable-owner mutation, pending-state retention, and quiescence; the exact
+      Embedded Swift build preserves the established ABI and resource gates.
+      This is the firmware-owned input lifetime only; the generated root,
+      interaction, rendering, and endpoint aggregate remains to be linked. An
+      allocation-free production touch pipeline now joins the exact
       normalizer to that bridge for injected calibration and committed
       presentation revision. It suppresses contact after transport or bridge
       failure until release is physically observed, and only then supplies

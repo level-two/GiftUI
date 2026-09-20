@@ -1,20 +1,16 @@
-nonisolated(unsafe) private var giftUIStaticInput:
-    StaticSignalAnalyzerNRFInputABI?
+nonisolated(unsafe) private var giftUIStaticInput =
+    StaticSignalAnalyzerNRFFirmwareInputStorage()
 
 @_cdecl("giftui_signal_analyzer_input_initialize")
 public func giftUISignalAnalyzerInputInitialize(_ source: UInt16) -> Int32 {
-    giftUIStaticInput = StaticSignalAnalyzerNRFInputABI(sourceRawValue: source)
-    return 0
+    giftUIStaticInput.initialize(sourceRawValue: source) ? 0 : -1
 }
 
 @_cdecl("giftui_signal_analyzer_input_install_presentation")
 public func giftUISignalAnalyzerInputInstallPresentation(
     _ revision: UInt32
 ) -> Int32 {
-    guard var input = giftUIStaticInput else { return -1 }
-    input.installPhysicalPresentation(rawValue: revision)
-    giftUIStaticInput = input
-    return 0
+    giftUIStaticInput.installPhysicalPresentation(rawValue: revision) ? 0 : -1
 }
 
 @_cdecl("giftui_signal_analyzer_input_admit")
@@ -25,26 +21,22 @@ public func giftUISignalAnalyzerInputAdmit(
     _ observedPresentationRevision: UInt32,
     _ priorPhysicalSequenceIsComplete: UInt8
 ) -> Int32 {
-    guard var input = giftUIStaticInput else { return -1 }
-    let outcome = input.admit(
+    let outcome = giftUIStaticInput.admit(
         phaseRawValue: phase,
         x: x,
         y: y,
         observedPresentationRevisionRawValue: observedPresentationRevision,
         priorPhysicalSequenceIsCompleteRawValue: priorPhysicalSequenceIsComplete
     )
-    giftUIStaticInput = input
     return outcome?.packedValue ?? -1
 }
 
 @_cdecl("giftui_signal_analyzer_input_pending_count")
 public func giftUISignalAnalyzerInputPendingCount() -> UInt16 {
-    giftUIStaticInput?.pendingCount ?? 0
+    giftUIStaticInput.pendingCount
 }
 
 @_cdecl("giftui_signal_analyzer_input_quiesce")
 public func giftUISignalAnalyzerInputQuiesce() {
-    guard var input = giftUIStaticInput else { return }
-    input.quiesce()
-    giftUIStaticInput = input
+    giftUIStaticInput.quiesce()
 }

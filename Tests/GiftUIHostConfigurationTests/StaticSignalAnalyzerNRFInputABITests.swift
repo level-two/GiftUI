@@ -176,3 +176,52 @@ private struct StaticNRFABIInputHandler: StaticSignalAnalyzerNRFInputHandler {
     #expect(handler.events.count == 3)
     #expect(input.pendingCount == 0)
 }
+
+@Test func staticNRFFirmwareInputStorageOwnsOneInPlaceLifetime() throws {
+    var storage = StaticSignalAnalyzerNRFFirmwareInputStorage()
+    let initialAddress = withUnsafePointer(to: &storage) { UInt(bitPattern: $0) }
+
+    #expect(storage.pendingCount == 0)
+    let installedBeforeInitialization = storage.installPhysicalPresentation(
+        rawValue: 19
+    )
+    let admittedBeforeInitialization = storage.admit(
+        phaseRawValue: PointerPhase.down.rawValue,
+        x: 101,
+        y: 103,
+        observedPresentationRevisionRawValue: 19,
+        priorPhysicalSequenceIsCompleteRawValue: 0
+    )
+    #expect(!installedBeforeInitialization)
+    #expect(admittedBeforeInitialization == nil)
+
+    let initialized = storage.initialize(sourceRawValue: 73)
+    let reinitialized = storage.initialize(sourceRawValue: 74)
+    let installed = storage.installPhysicalPresentation(rawValue: 19)
+    let optionalAdmitted = storage.admit(
+        phaseRawValue: PointerPhase.down.rawValue,
+        x: 101,
+        y: 103,
+        observedPresentationRevisionRawValue: 19,
+        priorPhysicalSequenceIsCompleteRawValue: 0
+    )
+    #expect(initialized)
+    #expect(!reinitialized)
+    #expect(installed)
+    let admitted = try #require(optionalAdmitted)
+    #expect(admitted.disposition == .queued)
+    #expect(storage.pendingCount == 1)
+    #expect(withUnsafePointer(to: &storage) { UInt(bitPattern: $0) } == initialAddress)
+
+    storage.quiesce()
+    #expect(storage.pendingCount == 0)
+    let optionalQuiesced = storage.admit(
+        phaseRawValue: PointerPhase.down.rawValue,
+        x: 101,
+        y: 103,
+        observedPresentationRevisionRawValue: 19,
+        priorPhysicalSequenceIsCompleteRawValue: 0
+    )
+    let quiesced = try #require(optionalQuiesced)
+    #expect(quiesced.disposition == .sourceQuiesced)
+}

@@ -261,15 +261,35 @@ and flash gates:
 
 | Artifact | SHA-256 |
 | --- | --- |
-| `zephyr.elf` | `b2669171c6d13c12a5763c87ed163eac5648cb88e256a2828045fef2799429d0` |
-| `zephyr.hex` | `9aca73a42117d4cc607a736af3b83a2a2d71c1a6b0c19e9fdd3884f68d852d51` |
-| `zephyr.map` | `d66578d92b20cf5eef0628f2a130d7382cd3c5c12c5a6b2fa8e2145a163adf51` |
+| `zephyr.elf` | `c25f6fcc6822aa1851f6c2ec9edf5a8b7d4215cc12c79b6c5c6d4f0b14e95eca` |
+| `zephyr.hex` | `7f126d1cf5891c8eeb5ad3a3cd446a33a3935b6374d88ae4b29db10686ffc39b` |
+| `zephyr.map` | `86fe38c3f47934eae268c886857333494dd902bc80c1db46abb994b79e4a3763` |
 | `zephyr.dts` | `042dd0ead8283db2cb12d0ff36caad849f8c88787859202809cd03bf17aef6d7` |
 
-The load segments use 35,296 flash bytes and 175,552 RAM bytes. This evidence
+The load segments use 34,384 flash bytes and 175,552 RAM bytes. This evidence
 proves the serialized drain mechanism; the following host-only interaction
 evidence is deliberately separate from this firmware result. Calibration,
 connected shield behavior, and flashing remain open. No board was flashed.
+
+## Address-stable firmware input lifetime
+
+`StaticSignalAnalyzerNRFFirmwareInputStorage` now owns the Embedded Swift input
+ABI in one fixed global value. It permits one source initialization, refuses
+presentation installation or admission before that initialization, and
+mutates the retained coordinator directly for every later bridge call. The
+firmware no longer copies an optional coordinator value out of global storage
+and assigns it back after presentation, admission, or quiescence.
+
+`staticNRFFirmwareInputStorageOwnsOneInPlaceLifetime` proves pre-initialization
+refusal, duplicate-initialization refusal, a stable caller-owned address across
+admission, retained pending state, and unavailable rejection after quiescence.
+The exact ARMv7E-M build above compiles this same storage into the firmware and
+retains all six C entry points while passing VFP hard-float, zero-heap,
+no-full-framebuffer, RAM, and flash gates. This establishes only the firmware
+input lifetime. The generated observable root, interaction storage, rendering,
+and endpoint application aggregate remains outside the firmware whole-module
+source. Calibration, connected shield behavior, and flashing remain open. No
+board was flashed.
 
 ## Static production assembly validation
 
