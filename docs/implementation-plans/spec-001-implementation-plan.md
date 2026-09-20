@@ -816,8 +816,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       down/move/up through generation-checked dispatch. Executable application
       ownership now has a bounded pointer-admission seam: the existing host
       normalization gate assigns source/sequence/ordinal/provenance and defers
-      model mutation until a serialized drain into the production interaction
-      owner. Raw Linux contact polling, acquisition, wake/pacing, and the
+      model mutation until an application-opportunity gate serializes a drain
+      into the production interaction owner. Quiescence closes both admission
+      and opportunity execution. Raw Linux contact polling, acquisition,
+      wake/pacing, and the
       complete seven-step activation/eight-step teardown join remain open.
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production

@@ -72,11 +72,17 @@ package struct DynamicSignalAnalyzerPiInputDrainSummary: Equatable, Sendable {
     }
 }
 
+package enum DynamicSignalAnalyzerPiInputOpportunityResult: Equatable, Sendable {
+    case completed(DynamicSignalAnalyzerPiInputDrainSummary)
+    case rejected(HostApplicationOpportunityRejection)
+}
+
 /// Connects target-normalized pointer phases to bounded execution admission.
-/// The host calls `drain` only from its serialized mutation opportunity.
+/// Queued input mutates the model only inside the owned serialized opportunity.
 package struct DynamicSignalAnalyzerPiInputCoordinator {
     private var gate: HostNormalizedInputGate
     private var queue: DynamicSignalAnalyzerPiInputQueue
+    private var opportunityGate = HostApplicationOpportunityGate()
 
     package init(
         source: InputSourceID,
@@ -117,10 +123,18 @@ package struct DynamicSignalAnalyzerPiInputCoordinator {
         )
     }
 
-    package mutating func drain<Target>(
+    package mutating func runOpportunity<Target>(
         into owner: inout DynamicSignalAnalyzerPiInitialPresentationOwner<Target>
-    ) -> DynamicSignalAnalyzerPiInputDrainSummary
+    ) -> DynamicSignalAnalyzerPiInputOpportunityResult
     where Target: DisplayTarget {
+        switch opportunityGate.begin() {
+        case .admitted:
+            break
+        case .rejected(let rejection):
+            return .rejected(rejection)
+        }
+        defer { _ = opportunityGate.complete() }
+
         let events = queue.takeAll()
         var dispatched: UInt16 = 0
         var cancelledOrRejected: UInt16 = 0
@@ -134,14 +148,17 @@ package struct DynamicSignalAnalyzerPiInputCoordinator {
                 break
             }
         }
-        return DynamicSignalAnalyzerPiInputDrainSummary(
-            eventCount: UInt16(events.count),
-            dispatchedActionCount: dispatched,
-            cancelledOrRejectedCount: cancelledOrRejected
+        return .completed(
+            DynamicSignalAnalyzerPiInputDrainSummary(
+                eventCount: UInt16(events.count),
+                dispatchedActionCount: dispatched,
+                cancelledOrRejectedCount: cancelledOrRejected
+            )
         )
     }
 
     package mutating func quiesce() {
+        _ = opportunityGate.quiesce()
         gate.quiesce()
         queue.quiesce()
     }

@@ -395,11 +395,13 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(model.state.visibleWindow == .twoSeconds)
 
     #expect(
-        coordinator.drain(into: &owner)
-            == DynamicSignalAnalyzerPiInputDrainSummary(
-                eventCount: 3,
-                dispatchedActionCount: 1,
-                cancelledOrRejectedCount: 0
+        coordinator.runOpportunity(into: &owner)
+            == .completed(
+                DynamicSignalAnalyzerPiInputDrainSummary(
+                    eventCount: 3,
+                    dispatchedActionCount: 1,
+                    cancelledOrRejectedCount: 0
+                )
             )
     )
     #expect(model.state.visibleWindow == .oneSecond)
@@ -422,6 +424,7 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
 
     coordinator.quiesce()
     #expect(!coordinator.inputIsEligible)
+    #expect(coordinator.runOpportunity(into: &owner) == .rejected(.unavailable))
     #expect(
         coordinator.admit(
             phase: .down,

@@ -115,9 +115,13 @@ contact phases are assigned one source, sequence, ordinal, and committed
 presentation revision before execution admission. Accepted events remain
 queued until the serialized host opportunity drains them into the production
 interaction owner, so platform input cannot synchronously mutate the model.
+The coordinator owns the application-opportunity gate rather than relying on
+its caller to serialize mutation. Quiescence closes both admission and the
+opportunity gate, and later opportunity requests fail as unavailable.
 
 The hardware-free fixture proves presentation-not-established, unknown-source,
 stale-revision, and quiescent rejection; exact down/move/up sequence and ordinal
-formation; unchanged model state before drain; and one generation-checked
-one-second action after drain. Linux evdev polling, wake-loop ownership, and
+formation; unchanged model state before the opportunity; one generation-
+checked one-second action inside it; and unavailable opportunity rejection
+after quiescence. Linux evdev polling, wake-loop ownership, and
 the complete live activation owner remain open.
