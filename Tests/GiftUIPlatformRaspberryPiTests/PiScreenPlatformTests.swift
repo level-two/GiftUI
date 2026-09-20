@@ -44,6 +44,93 @@ private struct RecordingSink: PiScreenFramebufferSink {
     }
 }
 
+private final class ConsoleTransportProbe {
+    var mode: PiScreenConsoleMode?
+    var acceptsWrites = true
+    var writtenModes: [PiScreenConsoleMode] = []
+    var closeCount = 0
+
+    init(mode: PiScreenConsoleMode?) {
+        self.mode = mode
+    }
+}
+
+private struct RecordingConsoleTransport: PiScreenConsoleModeTransport {
+    let probe: ConsoleTransportProbe
+
+    mutating func readMode() -> PiScreenConsoleMode? {
+        probe.mode
+    }
+
+    mutating func writeMode(_ mode: PiScreenConsoleMode) -> Bool {
+        probe.writtenModes.append(mode)
+        guard probe.acceptsWrites else { return false }
+        probe.mode = mode
+        return true
+    }
+
+    mutating func close() {
+        probe.closeCount += 1
+    }
+}
+
+@Test func consoleOwnerAcquiresGraphicsAndRestoresPriorModeOnce() {
+    let probe = ConsoleTransportProbe(mode: .text)
+    var owner = PiScreenConsoleModeOwner(transport: RecordingConsoleTransport(probe: probe))
+
+    #expect(owner.acquire() == .acquired(previousMode: .text, changedMode: true))
+    #expect(probe.mode == .graphics)
+    #expect(probe.closeCount == 0)
+    #expect(owner.restore() == .restored(changedMode: true))
+    #expect(probe.mode == .text)
+    #expect(probe.closeCount == 1)
+    #expect(owner.restore() == .restored(changedMode: false))
+    #expect(probe.closeCount == 1)
+}
+
+@Test func consoleOwnerPreservesPreexistingGraphicsMode() {
+    let probe = ConsoleTransportProbe(mode: .graphics)
+    var owner = PiScreenConsoleModeOwner(transport: RecordingConsoleTransport(probe: probe))
+
+    #expect(owner.acquire() == .acquired(previousMode: .graphics, changedMode: false))
+    #expect(probe.writtenModes.isEmpty)
+    #expect(owner.restore() == .restored(changedMode: false))
+    #expect(probe.writtenModes.isEmpty)
+    #expect(probe.closeCount == 1)
+}
+
+@Test func consoleOwnerClosesAfterAcquisitionFailures() {
+    let unreadableProbe = ConsoleTransportProbe(mode: nil)
+    var unreadable = PiScreenConsoleModeOwner(
+        transport: RecordingConsoleTransport(probe: unreadableProbe)
+    )
+    #expect(unreadable.acquire() == .failure(.modeReadFailed))
+    #expect(unreadableProbe.closeCount == 1)
+    #expect(unreadable.restore() == .restored(changedMode: false))
+    #expect(unreadableProbe.closeCount == 1)
+
+    let unwritableProbe = ConsoleTransportProbe(mode: .text)
+    unwritableProbe.acceptsWrites = false
+    var unwritable = PiScreenConsoleModeOwner(
+        transport: RecordingConsoleTransport(probe: unwritableProbe)
+    )
+    #expect(unwritable.acquire() == .failure(.graphicsModeFailed))
+    #expect(unwritableProbe.writtenModes == [.graphics])
+    #expect(unwritableProbe.closeCount == 1)
+}
+
+@Test func consoleOwnerClosesWhenPriorModeRestorationFails() {
+    let probe = ConsoleTransportProbe(mode: .text)
+    var owner = PiScreenConsoleModeOwner(transport: RecordingConsoleTransport(probe: probe))
+    #expect(owner.acquire() == .acquired(previousMode: .text, changedMode: true))
+    probe.acceptsWrites = false
+
+    #expect(owner.restore() == .failure(.restoreModeFailed))
+    #expect(probe.closeCount == 1)
+    #expect(owner.restore() == .restored(changedMode: false))
+    #expect(probe.closeCount == 1)
+}
+
 @Test func framebufferLayoutRejectsWrongFormatStrideAndMapping() {
     #expect(
         PiScreenFramebufferLayout(
