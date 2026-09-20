@@ -9,6 +9,7 @@ import GiftUISemanticCore
 
 package struct RuntimeProfileLimitInputs: Sendable {
     package let semantic: SemanticExpansionLimits?
+    package let maximumSemanticStructuralOccurrences: UInt16?
     package let layout: LayoutLimits?
     package let render: RenderLimits?
     package let renderWorkspace: RenderWorkspaceCapacity?
@@ -23,6 +24,7 @@ package struct RuntimeProfileLimitInputs: Sendable {
 
     package init(
         semantic: SemanticExpansionLimits?,
+        maximumSemanticStructuralOccurrences: UInt16?,
         layout: LayoutLimits?,
         render: RenderLimits?,
         renderWorkspace: RenderWorkspaceCapacity?,
@@ -36,6 +38,7 @@ package struct RuntimeProfileLimitInputs: Sendable {
         profile: RuntimeProfileKind
     ) {
         self.semantic = semantic
+        self.maximumSemanticStructuralOccurrences = maximumSemanticStructuralOccurrences
         self.layout = layout
         self.render = render
         self.renderWorkspace = renderWorkspace
@@ -53,6 +56,8 @@ package struct RuntimeProfileLimitInputs: Sendable {
 package struct RuntimeStorageCapacities: Sendable {
     package let semanticCandidate: SemanticExpansionLimits?
     package let semanticPublished: SemanticExpansionLimits?
+    package let semanticCandidateStructuralOccurrences: UInt16?
+    package let semanticPublishedStructuralOccurrences: UInt16?
     package let layoutCandidate: LayoutLimits?
     package let render: RenderLimits?
     package let renderWorkspace: RenderWorkspaceCapacity?
@@ -81,6 +86,8 @@ package struct RuntimeStorageCapacities: Sendable {
     package init(
         semanticCandidate: SemanticExpansionLimits?,
         semanticPublished: SemanticExpansionLimits?,
+        semanticCandidateStructuralOccurrences: UInt16?,
+        semanticPublishedStructuralOccurrences: UInt16?,
         layoutCandidate: LayoutLimits?,
         render: RenderLimits?,
         renderWorkspace: RenderWorkspaceCapacity?,
@@ -108,6 +115,8 @@ package struct RuntimeStorageCapacities: Sendable {
     ) {
         self.semanticCandidate = semanticCandidate
         self.semanticPublished = semanticPublished
+        self.semanticCandidateStructuralOccurrences = semanticCandidateStructuralOccurrences
+        self.semanticPublishedStructuralOccurrences = semanticPublishedStructuralOccurrences
         self.layoutCandidate = layoutCandidate
         self.render = render
         self.renderWorkspace = renderWorkspace
@@ -197,6 +206,8 @@ package enum RuntimeProfileValidator {
         capacities: RuntimeStorageCapacities
     ) -> CommonValidation {
         guard let semantic = inputs.semantic,
+            let maximumSemanticStructuralOccurrences =
+                inputs.maximumSemanticStructuralOccurrences,
             let layout = inputs.layout,
             let render = inputs.render,
             let renderWorkspace = inputs.renderWorkspace,
@@ -210,6 +221,7 @@ package enum RuntimeProfileValidator {
         guard
             let limits = RuntimeProfileLimits(
                 semantic: semantic,
+                maximumSemanticStructuralOccurrences: maximumSemanticStructuralOccurrences,
                 layout: layout,
                 render: render,
                 renderWorkspace: renderWorkspace,
@@ -228,6 +240,10 @@ package enum RuntimeProfileValidator {
 
         guard let semanticCandidate = capacities.semanticCandidate,
             let semanticPublished = capacities.semanticPublished,
+            let semanticCandidateStructuralOccurrences =
+                capacities.semanticCandidateStructuralOccurrences,
+            let semanticPublishedStructuralOccurrences =
+                capacities.semanticPublishedStructuralOccurrences,
             let layoutCandidate = capacities.layoutCandidate,
             let renderCapacity = capacities.render,
             let concreteRenderWorkspace = capacities.renderWorkspace,
@@ -271,6 +287,10 @@ package enum RuntimeProfileValidator {
 
         guard covers(semanticCandidate, limits.semantic),
             covers(semanticPublished, limits.semantic),
+            semanticCandidateStructuralOccurrences
+                >= limits.maximumSemanticStructuralOccurrences,
+            semanticPublishedStructuralOccurrences
+                >= limits.maximumSemanticStructuralOccurrences,
             covers(layoutCandidate, limits.layout),
             covers(renderCapacity, limits.render),
             concreteRenderWorkspace == limits.renderWorkspace,

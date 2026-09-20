@@ -21,7 +21,7 @@ swift test --disable-sandbox --filter macOSHardwareFreePresets
 The normalized reports agree on semantic checksum `360515885`, extent
 `320x240`, six actions, 32 compact-fact slots, five Canvas occurrences, 202
 live points, and 832 plan points. The permitted profile-storage difference is
-30,416 bytes Dynamic versus 28,016 bytes Static. Each report records one
+31,632 bytes Dynamic versus 28,928 bytes Static. Each report records one
 startup resolver call; the execution phase performs no further resolution.
 
 Changing the immutable extent requires selecting and validating a fresh preset;

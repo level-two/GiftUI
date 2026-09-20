@@ -397,6 +397,7 @@ private func dynamicLimits(
             maximumModifierApplications: 1,
             maximumActionOccurrences: 1
         )!,
+        maximumSemanticStructuralOccurrences: 1,
         layout: LayoutLimits(
             maximumScopes: 1,
             maximumDepth: 1,

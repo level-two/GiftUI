@@ -60,11 +60,13 @@ def swift_kind(name)
   }.fetch(name)
 end
 
-def byte_counts(profile)
+def byte_counts(profile, structural_occurrences)
   if profile == "dynamic"
-    [1984, 1984, 1280, 2048, 160, 3280, 13_536, 256, 256, 384, 384, 2176, 2176, 128, 256, 128]
+    semantic_bytes = structural_occurrences * 32
+    [semantic_bytes, semantic_bytes, 1280, 2048, 160, 3280, 13_536, 256, 256, 384, 384, 2176, 2176, 128, 256, 128]
   else
-    [1488, 1488, 1024, 1536, 160, 3280, 13_536, 128, 128, 256, 256, 2176, 2176, 96, 192, 96]
+    semantic_bytes = structural_occurrences * 24
+    [semantic_bytes, semantic_bytes, 1024, 1536, 160, 3280, 13_536, 128, 128, 256, 256, 2176, 2176, 96, 192, 96]
   end
 end
 
@@ -121,9 +123,10 @@ fail_generation("drawing minima changed") unless [
 manifests = {}
 presets.each do |name, projection|
   rows = [
-    ["schema_version", 2], ["descriptor_sha256", descriptor_hash],
+    ["schema_version", 3], ["descriptor_sha256", descriptor_hash],
     ["host_kind", projection[:kind]], ["profile", projection[:profile]],
     ["semantic_node_occurrences", integer(values, "semantic.maximum_nodes")],
+    ["semantic_structural_occurrences", integer(values, "semantic.maximum_structural_occurrences")],
     ["render_semantic_scope_occurrences", integer(values, "render.semantic_scope_occurrences")],
     ["layout_scope_occurrences", integer(values, "layout.maximum_scopes")],
     ["maximum_render_traversal_depth", integer(values, "render.maximum_traversal_depth")],
@@ -158,6 +161,7 @@ presets.each do |name, projection|
   leaves = {
     "semantic.maximumDepth" => integer(values, "semantic.maximum_depth"),
     "semantic.maximumSemanticNodes" => integer(values, "semantic.maximum_nodes"),
+    "maximumSemanticStructuralOccurrences" => integer(values, "semantic.maximum_structural_occurrences"),
     "semantic.maximumBodyEvaluations" => integer(values, "semantic.maximum_body_evaluations"),
     "semantic.maximumModifierApplications" => integer(values, "semantic.maximum_modifier_applications"),
     "semantic.maximumActionOccurrences" => integer(values, "semantic.maximum_action_occurrences"),
@@ -254,6 +258,8 @@ swift = +<<~SWIFT
       package func validatedStorageAudit() -> RuntimeProfileValidationResult {
           let inputs = RuntimeProfileLimitInputs(
               semantic: runtimeLimits.semantic,
+              maximumSemanticStructuralOccurrences:
+                  runtimeLimits.maximumSemanticStructuralOccurrences,
               layout: runtimeLimits.layout,
               render: runtimeLimits.render,
               renderWorkspace: runtimeLimits.renderWorkspace,
@@ -269,6 +275,10 @@ swift = +<<~SWIFT
           let capacities = RuntimeStorageCapacities(
               semanticCandidate: runtimeLimits.semantic,
               semanticPublished: runtimeLimits.semantic,
+              semanticCandidateStructuralOccurrences:
+                  runtimeLimits.maximumSemanticStructuralOccurrences,
+              semanticPublishedStructuralOccurrences:
+                  runtimeLimits.maximumSemanticStructuralOccurrences,
               layoutCandidate: runtimeLimits.layout,
               render: runtimeLimits.render,
               renderWorkspace: runtimeLimits.renderWorkspace,
@@ -336,7 +346,9 @@ presets.each do |name, projection|
     "raspberry_pi_dynamic" => "raspberryPiDynamic", "nrf52840_static" => "nrf52840Static"
   }.fetch(name)
   static = projection[:profile] == "static"
-  bytes = byte_counts(projection[:profile])
+  bytes = byte_counts(
+    projection[:profile], integer(values, "semantic.maximum_structural_occurrences")
+  )
   swift << <<~SWIFT
         package static func #{method_name}() -> GeneratedSignalAnalyzerPreset {
             makePreset(
@@ -386,6 +398,7 @@ swift << <<~SWIFT
                   maximumModifierApplications: #{integer(values, "semantic.maximum_modifier_applications")},
                   maximumActionOccurrences: #{integer(values, "semantic.maximum_action_occurrences")}
               )!,
+              maximumSemanticStructuralOccurrences: #{integer(values, "semantic.maximum_structural_occurrences")},
               layout: .init(
                   maximumScopes: #{integer(values, "layout.maximum_scopes")},
                   maximumDepth: #{integer(values, "layout.maximum_depth")},
@@ -440,12 +453,18 @@ swift << <<~SWIFT
               maximumStaticCaptureBytes: staticCaptureBytes
           )
           let workload = SignalAnalyzerHostWorkload(
-              schemaVersion: 2, requiredRuntimeLimits: limits,
-              semanticNodeOccurrences: 62, renderSemanticScopeOccurrences: 62,
-              layoutScopeOccurrences: 32, maximumRenderTraversalDepth: 6,
-              renderTextLineCount: 21, positionedGlyphCount: 139,
-              ordinaryRenderOperations: 30, inputEventsPerOpportunity: 6,
-              semanticActionsPerOpportunity: 6, completionFactsPerOpportunity: 1,
+              schemaVersion: 3, requiredRuntimeLimits: limits,
+              semanticNodeOccurrences: #{integer(values, "semantic.maximum_nodes")},
+              semanticStructuralOccurrences: #{integer(values, "semantic.maximum_structural_occurrences")},
+              renderSemanticScopeOccurrences: #{integer(values, "render.semantic_scope_occurrences")},
+              layoutScopeOccurrences: #{integer(values, "layout.maximum_scopes")},
+              maximumRenderTraversalDepth: #{integer(values, "render.maximum_traversal_depth")},
+              renderTextLineCount: #{integer(values, "render.maximum_text_lines")},
+              positionedGlyphCount: #{integer(values, "render.maximum_positioned_glyphs")},
+              ordinaryRenderOperations: #{ordinary},
+              inputEventsPerOpportunity: #{integer(values, "application.input_events_per_opportunity")},
+              semanticActionsPerOpportunity: #{integer(values, "application.semantic_actions_per_opportunity")},
+              completionFactsPerOpportunity: #{integer(values, "application.completion_facts_per_opportunity")},
               drawing: drawing
           )
           return GeneratedSignalAnalyzerPreset(

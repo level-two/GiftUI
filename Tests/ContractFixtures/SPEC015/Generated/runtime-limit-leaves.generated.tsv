@@ -1,9 +1,10 @@
-# generated from bdd1a6766fdcd5aa2d7424bce07bc2b7ed4897e4aa27a8b9dd87287563a8131d
+# generated from 416f20418f104ff78f8a7000650b3b01dd61e29bd8c77a2e5bac58f7a66f3f78
 # preset	profile	leaf	exact_value	lowered_disposition
-macos_dynamic	dynamic	semantic.maximumDepth	12	insufficient-workload-capacity
-macos_dynamic	dynamic	semantic.maximumSemanticNodes	62	insufficient-workload-capacity
-macos_dynamic	dynamic	semantic.maximumBodyEvaluations	20	insufficient-workload-capacity
-macos_dynamic	dynamic	semantic.maximumModifierApplications	32	insufficient-workload-capacity
+macos_dynamic	dynamic	semantic.maximumDepth	26	insufficient-workload-capacity
+macos_dynamic	dynamic	semantic.maximumSemanticNodes	48	insufficient-workload-capacity
+macos_dynamic	dynamic	maximumSemanticStructuralOccurrences	81	insufficient-workload-capacity
+macos_dynamic	dynamic	semantic.maximumBodyEvaluations	14	insufficient-workload-capacity
+macos_dynamic	dynamic	semantic.maximumModifierApplications	5	insufficient-workload-capacity
 macos_dynamic	dynamic	semantic.maximumActionOccurrences	6	insufficient-workload-capacity
 macos_dynamic	dynamic	layout.maximumScopes	32	insufficient-workload-capacity
 macos_dynamic	dynamic	layout.maximumDepth	12	insufficient-workload-capacity
@@ -41,10 +42,11 @@ macos_dynamic	dynamic	drawing.maximumPlanSubpaths	16	insufficient-workload-capac
 macos_dynamic	dynamic	drawing.maximumNormalizedStrokeOperations	5	insufficient-workload-capacity
 macos_dynamic	dynamic	staticCanvas.maximumStaticCallableCases	nil	insufficient-workload-capacity
 macos_dynamic	dynamic	staticCanvas.maximumStaticCaptureBytes	nil	insufficient-workload-capacity
-macos_static	static	semantic.maximumDepth	12	insufficient-workload-capacity
-macos_static	static	semantic.maximumSemanticNodes	62	insufficient-workload-capacity
-macos_static	static	semantic.maximumBodyEvaluations	20	insufficient-workload-capacity
-macos_static	static	semantic.maximumModifierApplications	32	insufficient-workload-capacity
+macos_static	static	semantic.maximumDepth	26	insufficient-workload-capacity
+macos_static	static	semantic.maximumSemanticNodes	48	insufficient-workload-capacity
+macos_static	static	maximumSemanticStructuralOccurrences	81	insufficient-workload-capacity
+macos_static	static	semantic.maximumBodyEvaluations	14	insufficient-workload-capacity
+macos_static	static	semantic.maximumModifierApplications	5	insufficient-workload-capacity
 macos_static	static	semantic.maximumActionOccurrences	6	insufficient-workload-capacity
 macos_static	static	layout.maximumScopes	32	insufficient-workload-capacity
 macos_static	static	layout.maximumDepth	12	insufficient-workload-capacity
@@ -82,10 +84,11 @@ macos_static	static	drawing.maximumPlanSubpaths	16	insufficient-workload-capacit
 macos_static	static	drawing.maximumNormalizedStrokeOperations	5	insufficient-workload-capacity
 macos_static	static	staticCanvas.maximumStaticCallableCases	2	insufficient-workload-capacity
 macos_static	static	staticCanvas.maximumStaticCaptureBytes	32	insufficient-workload-capacity
-raspberry_pi_dynamic	dynamic	semantic.maximumDepth	12	insufficient-workload-capacity
-raspberry_pi_dynamic	dynamic	semantic.maximumSemanticNodes	62	insufficient-workload-capacity
-raspberry_pi_dynamic	dynamic	semantic.maximumBodyEvaluations	20	insufficient-workload-capacity
-raspberry_pi_dynamic	dynamic	semantic.maximumModifierApplications	32	insufficient-workload-capacity
+raspberry_pi_dynamic	dynamic	semantic.maximumDepth	26	insufficient-workload-capacity
+raspberry_pi_dynamic	dynamic	semantic.maximumSemanticNodes	48	insufficient-workload-capacity
+raspberry_pi_dynamic	dynamic	maximumSemanticStructuralOccurrences	81	insufficient-workload-capacity
+raspberry_pi_dynamic	dynamic	semantic.maximumBodyEvaluations	14	insufficient-workload-capacity
+raspberry_pi_dynamic	dynamic	semantic.maximumModifierApplications	5	insufficient-workload-capacity
 raspberry_pi_dynamic	dynamic	semantic.maximumActionOccurrences	6	insufficient-workload-capacity
 raspberry_pi_dynamic	dynamic	layout.maximumScopes	32	insufficient-workload-capacity
 raspberry_pi_dynamic	dynamic	layout.maximumDepth	12	insufficient-workload-capacity
@@ -123,10 +126,11 @@ raspberry_pi_dynamic	dynamic	drawing.maximumPlanSubpaths	16	insufficient-workloa
 raspberry_pi_dynamic	dynamic	drawing.maximumNormalizedStrokeOperations	5	insufficient-workload-capacity
 raspberry_pi_dynamic	dynamic	staticCanvas.maximumStaticCallableCases	nil	insufficient-workload-capacity
 raspberry_pi_dynamic	dynamic	staticCanvas.maximumStaticCaptureBytes	nil	insufficient-workload-capacity
-nrf52840_static	static	semantic.maximumDepth	12	insufficient-workload-capacity
-nrf52840_static	static	semantic.maximumSemanticNodes	62	insufficient-workload-capacity
-nrf52840_static	static	semantic.maximumBodyEvaluations	20	insufficient-workload-capacity
-nrf52840_static	static	semantic.maximumModifierApplications	32	insufficient-workload-capacity
+nrf52840_static	static	semantic.maximumDepth	26	insufficient-workload-capacity
+nrf52840_static	static	semantic.maximumSemanticNodes	48	insufficient-workload-capacity
+nrf52840_static	static	maximumSemanticStructuralOccurrences	81	insufficient-workload-capacity
+nrf52840_static	static	semantic.maximumBodyEvaluations	14	insufficient-workload-capacity
+nrf52840_static	static	semantic.maximumModifierApplications	5	insufficient-workload-capacity
 nrf52840_static	static	semantic.maximumActionOccurrences	6	insufficient-workload-capacity
 nrf52840_static	static	layout.maximumScopes	32	insufficient-workload-capacity
 nrf52840_static	static	layout.maximumDepth	12	insufficient-workload-capacity

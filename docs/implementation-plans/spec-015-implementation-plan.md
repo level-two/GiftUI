@@ -21,7 +21,7 @@ superseded_by: null
 # SPEC-015 Implementation Plan
 
 > This active plan derives work from the approved MVP Target-Host Configuration
-> Contract, including its explicitly reapproved schema-2 workload amendment.
+> Contract, including its explicitly reapproved schema-3 workload amendment.
 > It orders reusable host assembly and evidence but does not amend SPEC-015,
 > absorb behavior owned by another Specification, or authorize connected
 > deployment, service restart, or board flashing.
@@ -111,7 +111,7 @@ are satisfied.
 **Disposition:** Ready with explicit prerequisite gates. The authority chain
 is complete, SPEC-013 and SPEC-015 were explicitly reapproved on 2026-09-12,
 and all eighteen acceptance criteria map exactly once. Every task is now
-traceable to at least one criterion, including the schema-2 descriptor and
+traceable to at least one criterion, including the schema-3 descriptor and
 evidence schemas. Milestone 0 and dependency-complete slices of Milestones 1
 through 3 can begin in order. Owner construction and four-host integration
 wait for the exact prerequisite seams named by each task; those gates require
@@ -156,7 +156,7 @@ exactly once here with its implementation work and expected evidence.
 | `HC-001` — Complete authority, metadata, manifest, portfolio, and upstream linkage without implied SPEC-001 approval | `T0.1`, `T7.4` | Governance and reciprocal-link audit | pending |
 | `HC-002` — Pure ordered validation, first failure, no side effects or partial assembly, and valid-only instance exposure | `T1.4`, `T3.6`, `T4.1`, `T7.1` | Access-order probes, owner-call ledger, repeat-call corpus, construction transcript | pending |
 | `HC-003` — Exact acyclic one-owner graph, portable import boundary, and no ambient/platform stack | `T0.2`, `T1.2`, `T7.1` | Exact graph corpus, source/import/link scans, negative compile fixtures | pending |
-| `HC-004` — Exact SPEC-013 audit and complete schema-2 runtime-limit equality | `T0.4`, `T2.1`, `T2.2`, `T3.1`, `T3.2`, `T6.4` | Fresh four-manifest generation, schema-version rejection, per-leaf equality/lowering corpus including all render-workspace source/limit pairs, audit identity reports, static-table and byte-total checks | pending |
+| `HC-004` — Exact SPEC-013 audit and complete schema-3 runtime-limit equality | `T0.4`, `T2.1`, `T2.2`, `T3.1`, `T3.2`, `T6.4` | Fresh four-manifest generation, schema-version rejection, per-leaf equality/lowering corpus including semantic structural and render-workspace source/limit pairs, audit identity reports, static-table and byte-total checks | pending |
 | `HC-005` — Exact five-Canvas minima and equal bounded render structural/ordinary operation counts | `T2.1`, `T2.3`, `T3.2`, `T6.4` | Generated workload manifests, checked arithmetic and capacity reports | pending |
 | `HC-006` — Independent conjunctive Drawing and capability gates | `T3.2`, `T3.3`, `T7.1` | Two independent negatives, combined success, capability-vocabulary audit | pending |
 | `HC-007` — Four contributions, five operation bits, required absence, one resolver call, exact endpoint equality | `T3.3`, `T6.4` | Permutation corpus, resolver instrumentation, effective-value transcripts | pending |
@@ -208,7 +208,7 @@ schema, and fail-closed driver contract exist before host implementation.
       `.build/spec-015/`; and contain no network, deployment, restart, probe,
       or flashing action.
 - [x] `T0.4` — Define checked-in schemas for the portable hierarchy/workload
-      descriptor, generated schema-2 workload manifest, preset expectation,
+      descriptor, generated schema-3 workload manifest, preset expectation,
       validation transcript, lifecycle transcript, normalized semantic report,
       and resource report. Every schema rejects unknown, missing, duplicate,
       reordered, stale, or unversioned required fields; the workload schema
@@ -276,7 +276,7 @@ or defaulted limit leaf.
       render text line including empty lines, glyph, ordinary operation, input,
       action, completion fact, Canvas, live Path element, snapshot element, and
       static callable/capture requirement under its owner Specification.
-      Emit all four schema-2 manifests and their generated Swift preset values
+      Emit all four schema-3 manifests and their generated Swift preset values
       with source identity and content hashes. A freshness check must fail on
       schema 1, a changed descriptor, stale or manually edited output, or any
       non-deterministic regeneration. Generation and validation must not
@@ -287,7 +287,8 @@ or defaulted limit leaf.
       independently lowered, unequal, wrong-profile, wrong-storage,
       wrong-static-table, or wrong-byte-total value fails; where a lower value
       is unconstructible, prove the owner initializer rejects it. Verify the
-      four schema-2 source/limit pairs independently:
+      schema-3 source/limit pairs independently, including semantic structural
+      occurrences and the four render-workspace fields:
       `renderSemanticScopeOccurrences`/`maximumSemanticScopes`,
       `layoutScopeOccurrences`/`maximumLayoutScopes`,
       `maximumRenderTraversalDepth`/`maximumTraversalDepth`, and
@@ -327,8 +328,8 @@ behavior, and emits one immutable report only after complete success.
       the approved lifetime.
 - [x] `T3.2` — Complete workload validation for producer, runtime, render,
       sink, observable, interaction, input, action, fact, Drawing, and static
-      Canvas limits. Reject every schema version other than 2 before consuming
-      a limit, require exact equality for each schema-2 source/limit pair, and
+      Canvas limits. Reject every schema version other than 3 before consuming
+      a limit, require exact equality for each schema-3 source/limit pair, and
       prove equality at every remaining minimum, checked overflow paths,
       independent lowered leaves, exact ordinary-operation agreement, and the
       structural Drawing gate without naming Drawing capacities in SPEC-004.
@@ -560,7 +561,8 @@ connected-hardware evidence is explicit rather than implied.
 
 - [x] `T7.1` — Complete the exhaustive negative corpus: graph shape/order,
       every validation stage and no-later-read proof, every runtime-limit leaf,
-      schema-1 and malformed/stale schema-2 manifests, all four independent
+      schema-1/schema-2 and malformed/stale schema-3 manifests, semantic
+      structural capacity, all four independent
       render-workspace source/limit mismatches, wrapper/modifier traversal
       depth and empty text lines, Drawing/capability independence,
       contribution permutations, all text errors, endpoint mismatches,
@@ -601,8 +603,8 @@ connected-hardware evidence is explicit rather than implied.
 - Create a focused design note before `T2.1` if the descriptor-to-manifest
   generator needs non-obvious ownership, traversal, or source-to-limit mapping
   beyond the checked-in schema and generator code, especially for the four
-  schema-2 render-workspace fields. The note may explain generation mechanics
-  but cannot choose counts or counting rules.
+  schema-3 semantic-structural and render-workspace fields. The note may
+  explain generation mechanics but cannot choose counts or counting rules.
 - Create a focused design note before `T3.6` if the nine-stage validator needs
   a maintained explanation of accessor sequencing, single-use state,
   noncopyable borrows, or fail-closed report construction beyond direct code.
@@ -627,7 +629,7 @@ or recovery behavior.
 
 1. Establish governance, package, source, fixture, and output boundaries.
 2. Land exact host value declarations and bounded primitive validation.
-3. Generate and review the complete schema-2 workload and four preset
+3. Generate and review the complete schema-3 workload and four preset
    projections; reject stale output and prove each descriptor source maps to
    its owning limit before validator integration.
 4. Implement and exhaustively test the pure nine-stage validator.
@@ -728,19 +730,19 @@ must not be deferred merely to continue implementation.
 ## Completion Record
 
 This plan returned to `draft` on 2026-09-11 for the coordinated SPEC-008/
-SPEC-013 render-workspace contract and schema-2 workload inputs. No task is
+SPEC-013 render-workspace/semantic-structural contract and schema-3 workload inputs. No task is
 complete, no design note or conformance report exists, and no SPEC-015
 implementation evidence is invalidated or claimed. The maintainer explicitly
-reapproved SPEC-013 and SPEC-015 on 2026-09-12. The 2026-09-13 readiness pass
-mapped the previously untraced evidence-schema task, made schema-2 generation,
+reapproved SPEC-013 and SPEC-015 on 2026-09-20. The 2026-09-13 readiness pass
+mapped the previously untraced evidence-schema task, made schema-3 generation,
 freshness, rejection, and source-to-limit evidence explicit, refreshed the
 implemented-owner inventory and gates, and restored this plan to `ready`.
 Update each task disposition and evidence link in place as work proceeds. Plan
 completion does not mark SPEC-015 implemented; that transition requires a
 complete conformance review and explicit human authorization.
 
-Milestone 2 generated one checked descriptor, four schema-2 manifests, a
-complete 164-row per-preset limit-leaf corpus, and immutable Swift projections
+Milestone 2 generated one checked descriptor, four schema-3 manifests, a
+complete 168-row per-preset limit-leaf corpus, and immutable Swift projections
 with one embedded descriptor identity. The generated values pass SPEC-013's
 complete storage audit in both profiles, preserve the exact Drawing minima and
 combined render bound, omit static Canvas metadata from Dynamic presets, and
@@ -775,7 +777,7 @@ Reproduction evidence is in
 `Tests/ContractFixtures/SPEC015/Evidence/milestone-3/profile-and-text-validation.md`.
 
 T3.2 added one pure complete workload gate before capability resolution. It
-rejects schema versions other than 2 and zero source counts, requires the
+rejects schema versions other than 3 and zero source counts, requires the
 complete generated `RuntimeProfileLimits` value plus every semantic, layout,
 render-workspace, text, glyph, ordinary-operation, input, action, completion,
 observable, interaction, fact-storage, Drawing, and static-Canvas source/limit

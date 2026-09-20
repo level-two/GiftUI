@@ -118,6 +118,8 @@ import Testing
     )!
     let limits = RuntimeProfileLimits(
         semantic: source.semantic,
+        maximumSemanticStructuralOccurrences:
+            source.maximumSemanticStructuralOccurrences,
         layout: source.layout,
         render: source.render,
         renderWorkspace: source.renderWorkspace,
@@ -184,6 +186,7 @@ private func workload(
     schemaVersion: UInt16? = nil,
     requiredRuntimeLimits: RuntimeProfileLimits? = nil,
     semanticNodeOccurrences: UInt16? = nil,
+    semanticStructuralOccurrences: UInt16? = nil,
     renderSemanticScopeOccurrences: UInt16? = nil,
     layoutScopeOccurrences: UInt16? = nil,
     maximumRenderTraversalDepth: UInt16? = nil,
@@ -198,6 +201,8 @@ private func workload(
         schemaVersion: schemaVersion ?? source.schemaVersion,
         requiredRuntimeLimits: requiredRuntimeLimits ?? source.requiredRuntimeLimits,
         semanticNodeOccurrences: semanticNodeOccurrences ?? source.semanticNodeOccurrences,
+        semanticStructuralOccurrences:
+            semanticStructuralOccurrences ?? source.semanticStructuralOccurrences,
         renderSemanticScopeOccurrences:
             renderSemanticScopeOccurrences ?? source.renderSemanticScopeOccurrences,
         layoutScopeOccurrences: layoutScopeOccurrences ?? source.layoutScopeOccurrences,

@@ -12,6 +12,8 @@ import Testing
 private let capacityFamilies = [
     "semantic-candidate",
     "semantic-published",
+    "semantic-candidate-structural",
+    "semantic-published-structural",
     "layout-candidate",
     "render",
     "render-workspace",
@@ -52,6 +54,7 @@ private func validationInputs(
                 maximumModifierApplications: 2,
                 maximumActionOccurrences: incompatibleLimits ? 2 : 1
             ),
+        maximumSemanticStructuralOccurrences: invalidFocusedLimits ? nil : 2,
         layout: LayoutLimits(
             maximumScopes: 2,
             maximumDepth: 2,
@@ -208,6 +211,12 @@ private func validationCapacities(
     return RuntimeStorageCapacities(
         semanticCandidate: optional("semantic-candidate", semantic, tooSmallSemantic),
         semanticPublished: optional("semantic-published", semantic, tooSmallSemantic),
+        semanticCandidateStructuralOccurrences: optional(
+            "semantic-candidate-structural", 2, 1
+        ),
+        semanticPublishedStructuralOccurrences: optional(
+            "semantic-published-structural", 2, 1
+        ),
         layoutCandidate: optional("layout-candidate", layout, tooSmallLayout),
         render: optional("render", render, tooSmallRender),
         renderWorkspace: missing == "render-workspace" ? nil : workspace,
@@ -473,6 +482,8 @@ func staticCaptureStorageIsRequiredAndMustCoverItsConfiguredLimit() {
     let missing = RuntimeStorageCapacities(
         semanticCandidate: validationCapacities(profile: .static).semanticCandidate,
         semanticPublished: validationCapacities(profile: .static).semanticPublished,
+        semanticCandidateStructuralOccurrences: 2,
+        semanticPublishedStructuralOccurrences: 2,
         layoutCandidate: validationCapacities(profile: .static).layoutCandidate,
         render: validationCapacities(profile: .static).render,
         renderWorkspace: validationCapacities(profile: .static).renderWorkspace,
@@ -509,6 +520,10 @@ func staticCaptureStorageIsRequiredAndMustCoverItsConfiguredLimit() {
     let short = RuntimeStorageCapacities(
         semanticCandidate: missing.semanticCandidate,
         semanticPublished: missing.semanticPublished,
+        semanticCandidateStructuralOccurrences:
+            missing.semanticCandidateStructuralOccurrences,
+        semanticPublishedStructuralOccurrences:
+            missing.semanticPublishedStructuralOccurrences,
         layoutCandidate: missing.layoutCandidate,
         render: missing.render,
         renderWorkspace: missing.renderWorkspace,

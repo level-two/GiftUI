@@ -38,7 +38,7 @@ collected.
 | `HC-001` | pass | [source boundaries](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-7/source-boundary-scan.md) | Authority, manifest, portfolio, and upstream relationships remain correctly scoped. |
 | `HC-002` | pass | [validation guard](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-1/component-graph-and-validation-guard.md), [policy/report validation](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-3/policy-and-report-validation.md) | Nine pure stages stop at first failure and construction follows a complete report. |
 | `HC-003` | pass | [source boundaries](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-7/source-boundary-scan.md), [graph validation](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-1/component-graph-and-validation-guard.md) | Exact owner graph and all forbidden imports/ambient lookup scans pass. |
-| `HC-004` | pass | [complete workload validation](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-3/complete-workload-validation.md) | Complete schema-2/profile/storage/static-table equality and per-leaf negatives pass. |
+| `HC-004` | pass | [complete workload validation](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-3/complete-workload-validation.md) | Complete schema-3/profile/storage/static-table equality, including semantic structural capacity, and per-leaf negatives pass. |
 | `HC-005` | pass | [generated workload](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-2/generated-workload-and-presets.md) | Five-Canvas, point/subpath/operation, and all producer limits are exact. |
 | `HC-006` | pass | [capability validation](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-3/capability-validation.md) | Drawing and capability gates remain independent and conjunctive. |
 | `HC-007` | pass | [capability validation](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-3/capability-validation.md), [endpoint validation](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-3/endpoint-validation.md) | Four roles, five bits, one resolution, and endpoint equality pass. |
@@ -56,7 +56,7 @@ collected.
 
 ## Required-Test Results
 
-The exhaustive negative audit and all 140 focused Host Configuration tests
+The exhaustive negative audit and all 141 focused Host Configuration tests
 pass. All four exact driver modes, formatter, governance/documentation checks,
 generated freshness, source/import scans, and
 `scripts/test.sh --profile all-hardware-free` pass; see the

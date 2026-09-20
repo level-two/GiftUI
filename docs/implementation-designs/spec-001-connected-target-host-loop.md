@@ -227,13 +227,13 @@ must not be counted as application-host success.
 
 ## Open Implementation Questions
 
-No architectural choice is open. Exact-tree integration found that the
-approved SPEC-015 semantic depth and Dynamic semantic-storage projection do
-not fit the real state-bound hierarchy. This is a contract correction and
-reapproval gate, not a private implementation choice. Concrete private
-file/type names may change while the ownership and stage boundaries above
-remain intact. Physical nRF shield provenance, continuity/orientation, and
-power evidence is a separate execution gate.
+No architectural choice is open. Exact-tree integration found a SPEC-013 /
+SPEC-015 semantic-capacity mismatch; the maintainer reapproved schema 3 and
+the independent structural-capacity contract on 2026-09-20, and its
+implementation now passes the real hierarchy. Concrete private file/type names
+may change while the ownership and stage boundaries above remain intact.
+Physical nRF shield provenance, continuity/orientation, and power evidence is
+a separate execution gate.
 
 ## Code and Evidence Links
 
@@ -255,4 +255,4 @@ power evidence is a separate execution gate.
 - [`dynamic-observable-semantic-bridge.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-observable-semantic-bridge.md)
   records the production Dynamic state-binding bridge and its exact-type guard.
 - [`dynamic-semantic-preset-blocker.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-semantic-preset-blocker.md)
-  records the measured exact-tree mismatch that now blocks T6.7.
+  records the measured exact-tree mismatch and its schema-3 resolution.

@@ -2,8 +2,8 @@
 
 ## Review disposition
 
-**not ready** — the approved SPEC-015 preset cannot execute the real
-state-bound `SignalAnalyzerView` semantic traversal required by SPEC-001.
+**resolved after reapproval** — this report records the former approved-preset
+mismatch and the correction completed on 2026-09-20.
 
 ## Reproduction
 
@@ -12,7 +12,7 @@ observable root, observable/semantic bridge, semantic workspace, semantic
 store, and the actual `SignalAnalyzerView`. With measurement-only enlarged
 limits, the initial application state produces:
 
-| Measurement | Actual | Approved Pi preset |
+| Measurement | Actual | Former Pi preset |
 | --- | ---: | ---: |
 | semantic nodes | 47 | 62 |
 | body evaluations | 14 | 20 |
@@ -22,7 +22,7 @@ limits, the initial application state produces:
 | structural identities retained by the production store | 80 | 62 semantic-storage slots |
 | Canvas occurrences | 5 | 5 |
 
-The companion test uses the exact approved Raspberry Pi Dynamic preset and
+The companion test used the former Raspberry Pi Dynamic preset and
 deterministically receives `capacityExhausted`; it proves the failed candidate
 publishes neither semantic state nor an observable registration.
 
@@ -56,3 +56,19 @@ production host join.
 The issue is not deferred work: connected Pi and nRF execution depends on the
 same immutable workload and therefore cannot provide conformance evidence
 until the contract is corrected.
+
+## Resolution
+
+The maintainer explicitly reapproved SPEC-013 and SPEC-015 on 2026-09-20.
+Schema 3 now records the diagnostic-present maximum of 48 semantic nodes and
+81 structural identities, with depth 26, 14 body evaluations, 5 modifiers,
+6 actions, and 5 Canvas occurrences. Runtime Core validates candidate and
+published structural capacities independently. The Dynamic store consumes the
+81-occurrence value, rejects first excess atomically, and the exact generated
+Raspberry Pi preset now expands the state-bound application successfully.
+
+Dynamic semantic candidate/published projections are 2,592 bytes each; Static
+projections are 1,944 bytes each. Four generated manifests, the 168-row limit
+corpus, focused profile/host suites, and macOS Dynamic/Static SPEC-015 contract
+runs pass. This former blocker no longer prevents T6.7; the remaining host
+layout, Drawing, render, interaction, endpoint, and lifecycle join stays open.

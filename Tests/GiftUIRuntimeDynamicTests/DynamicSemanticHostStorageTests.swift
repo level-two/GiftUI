@@ -19,6 +19,14 @@ private struct SemanticHostRoot: View {
     }
 }
 
+private struct StructuralExcessRoot: View {
+    var body: some View {
+        VStack {
+            Text("A")
+        }
+    }
+}
+
 @Test func dynamicSemanticHostStoragePreservesRenderCanvasAndActionFacts() throws {
     let limits = try #require(
         SemanticExpansionLimits(
@@ -33,7 +41,11 @@ private struct SemanticHostRoot: View {
         maximumPathComponents: 16,
         maximumIdentities: 64
     )
-    var storage = DynamicSemanticHostStorage(limits: limits, canvasCapacity: 1)
+    var storage = DynamicSemanticHostStorage(
+        limits: limits,
+        maximumStructuralOccurrences: 16,
+        canvasCapacity: 1
+    )
 
     let result = expandSemanticTree(
         SemanticHostRoot(),
@@ -86,7 +98,11 @@ private struct SemanticHostRoot: View {
         maximumPathComponents: 16,
         maximumIdentities: 64
     )
-    var storage = DynamicSemanticHostStorage(limits: limits, canvasCapacity: 1)
+    var storage = DynamicSemanticHostStorage(
+        limits: limits,
+        maximumStructuralOccurrences: 16,
+        canvasCapacity: 1
+    )
 
     let result = expandSemanticTree(
         SemanticHostRoot(),
@@ -99,5 +115,37 @@ private struct SemanticHostRoot: View {
     #expect(!storage.hasPublishedResult)
     #expect(storage.actionOccurrenceCount == 0)
     #expect(storage.canvasOccurrenceCount == 0)
+    #expect(!workspace.isExpanding)
+}
+
+@Test func dynamicSemanticHostStorageRejectsFirstStructuralExcess() throws {
+    let limits = try #require(
+        SemanticExpansionLimits(
+            maximumDepth: 16,
+            maximumSemanticNodes: 2,
+            maximumBodyEvaluations: 2,
+            maximumModifierApplications: 0,
+            maximumActionOccurrences: 0
+        )
+    )
+    var workspace = DynamicSemanticExpansionWorkspace(
+        maximumPathComponents: 16,
+        maximumIdentities: 64
+    )
+    var storage = DynamicSemanticHostStorage(
+        limits: limits,
+        maximumStructuralOccurrences: 2,
+        canvasCapacity: 0
+    )
+
+    let result = expandSemanticTree(
+        StructuralExcessRoot(),
+        limits: limits,
+        workspace: &workspace,
+        sink: &storage
+    )
+
+    #expect(result == .failure(.capacityExhausted))
+    #expect(!storage.hasPublishedResult)
     #expect(!workspace.isExpanding)
 }

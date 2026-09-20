@@ -1,9 +1,9 @@
 # Complete workload validation
 
 `SignalAnalyzerWorkloadStartupValidation` is the pure stage-3 gate. It rejects
-schema versions other than 2 before source-to-limit comparison, then requires
+schema versions other than 3 before source-to-limit comparison, then requires
 the complete generated runtime limit value and the exact mappings for semantic
-nodes and actions, layout scopes, render semantic scopes, traversal depth,
+nodes, structural occurrences, and actions, layout scopes, render semantic scopes, traversal depth,
 text lines, positioned glyphs, ordinary operations, input events, completion
 facts, observable locations/registrations/associations, interaction actions
 and hit regions, and the separate 1/32/1 fact stores.
@@ -20,7 +20,7 @@ Focused tests cover all four successful generated presets; schema 1; each zero
 and independently mismatched manifest source count; every cardinality and
 pacing field; the 34-to-33 fact-storage boundary; every Drawing minimum; the
 first Drawing excess; and dynamic/static metadata mismatch. The generated
-164-row limit-leaf corpus remains the exhaustive proof that every nested
+168-row limit-leaf corpus remains the exhaustive proof that every nested
 `RuntimeProfileLimits` leaf is present and fresh.
 
 Reproduction:

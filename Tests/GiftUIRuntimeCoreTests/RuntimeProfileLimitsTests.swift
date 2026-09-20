@@ -12,6 +12,7 @@ import Testing
 
 private struct LimitInputs {
     var semanticNodes: UInt16 = 8
+    var semanticStructuralOccurrences: UInt16 = 12
     var semanticActions: UInt16 = 2
     var layoutScopes: UInt16 = 8
     var layoutLines: UInt16 = 4
@@ -89,6 +90,7 @@ private func makeLimits(
 
     return RuntimeProfileLimits(
         semantic: semantic,
+        maximumSemanticStructuralOccurrences: inputs.semanticStructuralOccurrences,
         layout: layout,
         render: render,
         renderWorkspace: renderWorkspace,
@@ -120,6 +122,7 @@ func matchingDynamicAndStaticLimitsPreserveEveryInputValue() {
     #expect(dynamic != nil)
     #expect(staticProfile != nil)
     #expect(dynamic?.semantic.maximumSemanticNodes == 8)
+    #expect(dynamic?.maximumSemanticStructuralOccurrences == 12)
     #expect(dynamic?.renderWorkspace.maximumSemanticScopes == 16)
     #expect(dynamic?.renderWorkspace.maximumTraversalDepth == 8)
     #expect(dynamic?.maximumOrdinaryRenderOperations == 4)
@@ -131,6 +134,7 @@ func matchingDynamicAndStaticLimitsPreserveEveryInputValue() {
 func renderWorkspaceStructuralValuesAreNotDerivedFromSemanticLimits() {
     var inputs = LimitInputs()
     inputs.semanticNodes = 32
+    inputs.semanticStructuralOccurrences = 40
     inputs.workspaceSemanticScopes = 3
     inputs.workspaceTraversalDepth = 2
 
@@ -152,6 +156,7 @@ func zeroOrdinaryOperationsAreValidForDrawingOnlyFixtures() {
 }
 
 @Test(arguments: [
+    "semantic-structure",
     "semantic-actions",
     "committed-actions",
     "execution-inputs",
@@ -170,6 +175,8 @@ func zeroOrdinaryOperationsAreValidForDrawingOnlyFixtures() {
 func eachCrossRelationRejectsItsFirstIncompatibleValue(relation: String) {
     var inputs = LimitInputs()
     switch relation {
+    case "semantic-structure":
+        inputs.semanticStructuralOccurrences = 7
     case "semantic-actions":
         inputs.semanticActions = 3
     case "committed-actions":

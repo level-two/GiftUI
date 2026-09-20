@@ -1,8 +1,9 @@
 # SPEC-012 Milestone 7 — Startup and Failure Integration
 
-SPEC-015's generated schema-2 presets now provide the exact B2 Drawing facts,
-complete runtime limits, combined render capacity, static callable metadata,
-and independent raster capability requirement consumed by startup validation.
+SPEC-015's generated schema-3 presets now provide the exact B2 Drawing facts,
+semantic structural-occurrence capacity, complete runtime limits, combined
+render capacity, static callable metadata, and independent raster capability
+requirement consumed by startup validation.
 
 `SignalAnalyzerDrawingStartupValidation` checks every nonzero workload fact,
 the four render-workspace source/limit relations, Drawing/workspace bounds,

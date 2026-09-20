@@ -27,16 +27,16 @@ Physical and resource differences remain explicit:
 
 | Preset | Profile storage | Raster staging | ABI | Linked RAM | Linked flash |
 | --- | ---: | ---: | --- | ---: | ---: |
-| macOS Dynamic | 30,416 B | 307,200 B | native macOS | not collected | n/a |
-| macOS Static | 28,016 B | 307,200 B | native macOS | not collected | n/a |
-| Pi 1 ARMv6 Dynamic | 30,416 B | 7,680 B | ARMv6 hard-float | not collected | not collected |
-| nRF52840 Static | 28,016 B | 3,840 B | ARMv7E-M VFP hard-float | 153,852 B | 8,164 B |
+| macOS Dynamic | 31,632 B | 307,200 B | native macOS | not collected | n/a |
+| macOS Static | 28,928 B | 307,200 B | native macOS | not collected | n/a |
+| Pi 1 ARMv6 Dynamic | 31,632 B | 7,680 B | ARMv6 hard-float | not collected | not collected |
+| nRF52840 Static | 28,928 B | 3,840 B | ARMv7E-M VFP hard-float | 153,852 B | 8,164 B |
 
 Each root resolves four capability contributions once at startup and performs
 zero later resolver calls. Static owner paths reuse the approved zero-allocation
 evidence from SPEC-004 through SPEC-014; the nRF linked image additionally has
 both heap arenas disabled and no global allocation entry point. Its separately
-named application storage is 28,016 bytes of profile workspace, 115,392 bytes
+named application storage is 28,928 bytes of profile workspace, 115,392 bytes
 of capture/snapshot storage, and one 3,840-byte raster/payload/in-flight slot.
 The nRF entry path has no task, thread, reflection, Objective-C, dynamic
 collection, throw, or exception operation; the two-byte protected personality

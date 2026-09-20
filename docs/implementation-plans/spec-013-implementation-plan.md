@@ -565,7 +565,7 @@ straightforward value declarations, or report wiring.
   T5.1 owner-profile blocker is resolved without substituting runtime-local
   algorithms or recording fixtures for focused owners.
 - SPEC-015 integration and Signal Analyzer production resource rows consume
-  its approved schema-2 workload amendment and exact host values after the
+  its approved schema-3 workload amendment and exact host values after the
   owning plan is ready and dependencies land. SPEC-014 remains governed by its
   normal plan.
 
@@ -592,7 +592,7 @@ treated as production authority.
 
 On 2026-09-11 the plan returned to `draft` with SPEC-013 so the new explicit
 render-workspace limit, capacity-equality audit, and boundary evidence can be
-reviewed together with SPEC-015's schema-2 workload amendment. No task had been
+reviewed together with SPEC-015's schema-3 workload amendment. No task had been
 marked complete, so no implementation evidence is invalidated.
 
 The maintainer explicitly reapproved SPEC-013 and coordinated SPEC-015 on

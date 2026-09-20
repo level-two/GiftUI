@@ -30,7 +30,7 @@ SPEC-008, SPEC-012, SPEC-013, and SPEC-015.
 
 ## Governing Contract
 
-The mechanism realizes SPEC-015 `Construction and validation`, the schema-2
+The mechanism realizes SPEC-015 `Construction and validation`, the schema-3
 workload requirements in `Types / APIs`, HC-004 through HC-006 and HC-013
 through HC-015, and plan tasks T2.1-T2.4. ADR-008 preserves module ownership,
 ADR-031 requires structural Drawing admission before execution, and ADR-033
@@ -94,7 +94,8 @@ owner construction. Invalid or stale input fails the checker before compilation.
 
 ## Test and Diagnostic Seams
 
-Unit tests compare all four projections, every schema-2 workspace relation,
+Unit tests compare all four projections, every schema-3 workspace and semantic-
+structural relation,
 Drawing minima, combined-operation bound, profile/static metadata, pacing,
 cardinality, extent, and raster bytes. The freshness checker provides a
 standalone fail-closed evidence seam.

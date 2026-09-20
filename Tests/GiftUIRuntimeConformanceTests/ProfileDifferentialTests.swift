@@ -454,6 +454,7 @@ private func differentialLimits(profile: RuntimeProfileKind) -> RuntimeProfileLi
             maximumModifierApplications: 2,
             maximumActionOccurrences: 1
         )!,
+        maximumSemanticStructuralOccurrences: 2,
         layout: LayoutLimits(
             maximumScopes: 2,
             maximumDepth: 2,

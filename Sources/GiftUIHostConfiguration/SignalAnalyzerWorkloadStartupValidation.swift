@@ -9,8 +9,9 @@ package enum SignalAnalyzerWorkloadStartupValidation {
         let cardinality = configuration.cardinality
         let pacing = configuration.pacing
 
-        guard workload.schemaVersion == 2 else { return .invalidWorkload }
+        guard workload.schemaVersion == 3 else { return .invalidWorkload }
         guard workload.semanticNodeOccurrences > 0,
+            workload.semanticStructuralOccurrences > 0,
             workload.renderSemanticScopeOccurrences > 0,
             workload.layoutScopeOccurrences > 0,
             workload.maximumRenderTraversalDepth > 0,
@@ -24,6 +25,8 @@ package enum SignalAnalyzerWorkloadStartupValidation {
 
         guard workload.requiredRuntimeLimits == limits,
             workload.semanticNodeOccurrences == limits.semantic.maximumSemanticNodes,
+            workload.semanticStructuralOccurrences
+                == limits.maximumSemanticStructuralOccurrences,
             workload.renderSemanticScopeOccurrences
                 == limits.renderWorkspace.maximumSemanticScopes,
             workload.layoutScopeOccurrences == limits.layout.maximumScopes,

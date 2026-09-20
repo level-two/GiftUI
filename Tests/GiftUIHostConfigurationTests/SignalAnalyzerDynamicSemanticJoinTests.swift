@@ -50,6 +50,7 @@ private enum SemanticJoinFailure: Error {
     )
     var storage = DynamicSemanticHostStorage(
         limits: measurementLimits,
+        maximumStructuralOccurrences: 512,
         canvasCapacity: preset.runtimeLimits.drawing.maximumCanvasOccurrences
     )
 
@@ -103,6 +104,7 @@ private enum SemanticJoinFailure: Error {
     )
     var storage = DynamicSemanticHostStorage(
         limits: measurementLimits,
+        maximumStructuralOccurrences: 512,
         canvasCapacity: preset.runtimeLimits.drawing.maximumCanvasOccurrences
     )
 
@@ -128,7 +130,7 @@ private enum SemanticJoinFailure: Error {
     #expect(storage.canvasOccurrenceCount == 5)
 }
 
-@Test func signalAnalyzerDynamicSemanticJoinRejectsLegacyPresetDepth() throws {
+@Test func signalAnalyzerDynamicSemanticJoinFitsApprovedPreset() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     let model = makeSemanticJoinModel()
     let root = DynamicObservableRootAdapter<
@@ -143,6 +145,8 @@ private enum SemanticJoinFailure: Error {
     )
     var storage = DynamicSemanticHostStorage(
         limits: preset.runtimeLimits.semantic,
+        maximumStructuralOccurrences:
+            preset.runtimeLimits.maximumSemanticStructuralOccurrences,
         canvasCapacity: preset.runtimeLimits.drawing.maximumCanvasOccurrences
     )
 
@@ -155,10 +159,17 @@ private enum SemanticJoinFailure: Error {
         stateBinding: &binding
     )
 
-    #expect(result == .semanticFailure(.capacityExhausted))
-    #expect(reconciler.finishCandidate(.discard) == .success(.candidateDiscarded))
-    #expect(!storage.hasPublishedResult)
-    #expect(!root.isActive)
+    guard case .success(let summary) = result else {
+        _ = reconciler.finishCandidate(.discard)
+        Issue.record("approved state-bound Signal Analyzer expansion failed: \(result)")
+        return
+    }
+    #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
+    #expect(summary.semanticNodeCount == 47)
+    #expect(summary.maximumObservedDepth == 26)
+    #expect(storage.semanticScopeCount == 80)
+    #expect(storage.hasPublishedResult)
+    #expect(root.isActive)
 }
 
 private func makeSemanticJoinModel(failsStart: Bool = false) -> SignalAnalyzerViewModel {

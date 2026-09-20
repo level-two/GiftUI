@@ -172,14 +172,19 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
     private var isPublished = false
     package private(set) var renderSnapshotVersion: UInt32 = 0
 
-    package init(limits: SemanticExpansionLimits, canvasCapacity: UInt16) {
-        maximumStructuralOccurrences = limits.maximumSemanticNodes
+    package init(
+        limits: SemanticExpansionLimits,
+        maximumStructuralOccurrences: UInt16,
+        canvasCapacity: UInt16
+    ) {
+        precondition(maximumStructuralOccurrences >= limits.maximumSemanticNodes)
+        self.maximumStructuralOccurrences = maximumStructuralOccurrences
         maximumBodyEvaluations = limits.maximumBodyEvaluations
         maximumSemanticOccurrences = limits.maximumSemanticNodes
         maximumModifierApplications = limits.maximumModifierApplications
         maximumActionOccurrences = limits.maximumActionOccurrences
         canvasStorage = DynamicCanvasCallableStorage(capacity: canvasCapacity)
-        structural.reserveCapacity(Int(limits.maximumSemanticNodes))
+        structural.reserveCapacity(Int(maximumStructuralOccurrences))
         primitives.reserveCapacity(Int(limits.maximumSemanticNodes))
         modifiers.reserveCapacity(Int(limits.maximumModifierApplications))
         renderScopes.reserveCapacity(Int(limits.maximumSemanticNodes))

@@ -91,6 +91,7 @@ private func drawingWorkload(
         schemaVersion: source.schemaVersion,
         requiredRuntimeLimits: source.requiredRuntimeLimits,
         semanticNodeOccurrences: source.semanticNodeOccurrences,
+        semanticStructuralOccurrences: source.semanticStructuralOccurrences,
         renderSemanticScopeOccurrences: source.renderSemanticScopeOccurrences,
         layoutScopeOccurrences: source.layoutScopeOccurrences,
         maximumRenderTraversalDepth: source.maximumRenderTraversalDepth,

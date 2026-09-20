@@ -22,6 +22,6 @@ Its dynamic imports are limited to `libstdc++`, `libm`, `libatomic`,
 The exact physical projection is 240 x 240 with a 240 x 16 RGB565 tile,
 480-byte rows, and 7,680-byte raster/payload/in-flight bounds. The host-native
 semantic fixture reports checksum `360515885`, equal to both macOS presets,
-with the Dynamic 30,416-byte profile storage audit. The report explicitly
+with the Dynamic 31,632-byte profile storage audit. The report explicitly
 does not claim framebuffer, PiScreen, input, timing, process-memory, or other
 connected-target evidence.

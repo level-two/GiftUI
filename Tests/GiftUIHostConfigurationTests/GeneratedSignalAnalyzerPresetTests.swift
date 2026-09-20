@@ -12,8 +12,13 @@ import Testing
     let first = presets[0]
     for preset in presets {
         #expect(preset.identity == GeneratedSignalAnalyzerPresets.sourceIdentity)
-        #expect(preset.workload.schemaVersion == 2)
-        #expect(preset.workload.semanticNodeOccurrences == 62)
+        #expect(preset.workload.schemaVersion == 3)
+        #expect(preset.workload.semanticNodeOccurrences == 48)
+        #expect(preset.workload.semanticStructuralOccurrences == 81)
+        #expect(preset.runtimeLimits.semantic.maximumDepth == 26)
+        #expect(preset.runtimeLimits.semantic.maximumBodyEvaluations == 14)
+        #expect(preset.runtimeLimits.semantic.maximumModifierApplications == 5)
+        #expect(preset.runtimeLimits.maximumSemanticStructuralOccurrences == 81)
         #expect(preset.workload.renderSemanticScopeOccurrences == 62)
         #expect(preset.workload.layoutScopeOccurrences == 32)
         #expect(preset.workload.maximumRenderTraversalDepth == 6)
@@ -38,6 +43,9 @@ import Testing
     }
     for preset in presets.dropFirst() {
         #expect(first.workload.semanticNodeOccurrences == preset.workload.semanticNodeOccurrences)
+        #expect(
+            first.workload.semanticStructuralOccurrences
+                == preset.workload.semanticStructuralOccurrences)
         #expect(
             first.workload.renderSemanticScopeOccurrences
                 == preset.workload.renderSemanticScopeOccurrences)

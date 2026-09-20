@@ -2,7 +2,7 @@
 HC-001	authority-and-reciprocal-link-audit	missing
 HC-002	ordered-validation-and-construction-transcript	missing
 HC-003	component-graph-and-import-boundary	missing
-HC-004	profile-audit-and-schema-2-limit-equality	missing
+HC-004	profile-audit-and-schema-3-limit-equality	missing
 HC-005	canvas-and-render-capacity-arithmetic	missing
 HC-006	independent-drawing-and-capability-gates	missing
 HC-007	capability-resolution-and-endpoint-equality	missing
@@ -17,4 +17,3 @@ HC-015	static-resource-and-forbidden-symbol-reports	missing
 HC-016	four-profile-driver-and-output-boundary	missing
 HC-017	evidence-kind-separation	missing
 HC-018	finite-lifecycle-api-and-call-matrix	missing
-

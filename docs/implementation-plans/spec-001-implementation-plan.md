@@ -650,7 +650,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       preset, and emits the registered normalized hardware-free report. The
       focused Milestone 5 cycle and host-lifecycle suites remain the detailed
       state/action/Drawing/frame and pacing transcript; the executable report
-      binds that evidence to the concrete preset and 30,416-byte profile
+      binds that evidence to the concrete preset and 31,632-byte profile
       storage audit.
 - [x] `T6.3` — Generate, compile, and execute the macOS static host from the
       same portable Presentation and exact preset. Inspect generated model,
@@ -660,7 +660,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       root descriptor, checks its two typed model positions and exact `1/1/1`
       observable capacities, and runs the identical semantic script through
       caller-owned fixed fact storage. Its checksum equals T6.2 while the
-      report preserves the approved 28,016-byte Static profile total. Evidence
+      report preserves the approved 28,928-byte Static profile total. Evidence
       and reproduction commands are in the shared macOS preset record.
 - [x] `T6.4` — Assemble the Raspberry Pi 1 dynamic preset with exact 240 x 240
       extent and 240 x 16 RGB565 tiled region. Cross-build only for
@@ -744,11 +744,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       [Dynamic semantic-storage evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-semantic-host-storage.md).
       Exact state-bound traversal then measured 47 semantic nodes, 14 body
       evaluations, 5 modifiers, 6 actions, depth 26, 80 structural identities,
-      and 5 Canvas occurrences. The approved preset's depth 12 and Dynamic
-      semantic-storage projection reject that real tree, so this task is
-      blocked pending deliberate SPEC-015 descriptor/preset correction,
-      storage reconciliation, validation, and human reapproval; see the
-      [preset-blocker evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-semantic-preset-blocker.md).
+      and 5 Canvas occurrences; the diagnostic-present maximum is 48 semantic
+      nodes and 81 structural identities. The maintainer reapproved SPEC-013
+      and SPEC-015 schema 3 on 2026-09-20. Generated depth 26 and independent
+      structural capacity now admit the exact state-bound tree, resolving that
+      blocker; see the [resolution evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-semantic-preset-blocker.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation

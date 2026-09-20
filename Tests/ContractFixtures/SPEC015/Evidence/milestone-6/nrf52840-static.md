@@ -15,7 +15,7 @@ The pinned Swift 6.3.2, Zephyr 4.3.0, and SDK 0.17.4 build emits ELF, HEX, MAP,
 Devicetree, and inspection reports under
 `.build/nrf52840/signal-analyzer-static/`. The final ELF reports ARMv7E-M and
 VFP-register arguments. It contains the Swift preset entry plus named,
-caller-owned storage for the exact 28,016-byte generated profile workspace,
+caller-owned storage for the exact 28,928-byte generated profile workspace,
 two 2,404-entry 24-byte transition stores (115,392 bytes), and one 3,840-byte
 RGB565 raster/payload/in-flight staging slot. Heap and C allocation arenas are
 configured to zero; the final global function table contains no malloc,

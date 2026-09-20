@@ -14,6 +14,7 @@ package enum RuntimeProfileKind: UInt8, Equatable, Sendable {
 
 package struct RuntimeProfileLimits: Equatable, Sendable {
     package let semantic: SemanticExpansionLimits
+    package let maximumSemanticStructuralOccurrences: UInt16
     package let layout: LayoutLimits
     package let render: RenderLimits
     package let renderWorkspace: RenderWorkspaceCapacity
@@ -27,6 +28,7 @@ package struct RuntimeProfileLimits: Equatable, Sendable {
 
     package init?(
         semantic: SemanticExpansionLimits,
+        maximumSemanticStructuralOccurrences: UInt16,
         layout: LayoutLimits,
         render: RenderLimits,
         renderWorkspace: RenderWorkspaceCapacity,
@@ -39,7 +41,9 @@ package struct RuntimeProfileLimits: Equatable, Sendable {
         staticCanvas: StaticCanvasLimits?,
         profile: RuntimeProfileKind
     ) {
-        guard semantic.maximumActionOccurrences <= interaction.maximumActions,
+        guard maximumSemanticStructuralOccurrences > 0,
+            maximumSemanticStructuralOccurrences >= semantic.maximumSemanticNodes,
+            semantic.maximumActionOccurrences <= interaction.maximumActions,
             interaction.maximumActions <= execution.maximumCommittedActions,
             interaction.maximumHitRegions <= interaction.maximumActions,
             execution.maximumSemanticActions <= execution.maximumInputEvents,
@@ -74,6 +78,7 @@ package struct RuntimeProfileLimits: Equatable, Sendable {
         }
 
         self.semantic = semantic
+        self.maximumSemanticStructuralOccurrences = maximumSemanticStructuralOccurrences
         self.layout = layout
         self.render = render
         self.renderWorkspace = renderWorkspace

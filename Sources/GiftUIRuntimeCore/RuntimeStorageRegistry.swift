@@ -215,6 +215,8 @@ package extension RuntimeProfileLimitInputs {
     init(validated limits: RuntimeProfileLimits, profile: RuntimeProfileKind) {
         self.init(
             semantic: limits.semantic,
+            maximumSemanticStructuralOccurrences:
+                limits.maximumSemanticStructuralOccurrences,
             layout: limits.layout,
             render: limits.render,
             renderWorkspace: limits.renderWorkspace,
@@ -235,6 +237,10 @@ package extension RuntimeStorageCapacities {
         self.init(
             semanticCandidate: limits.semantic,
             semanticPublished: limits.semantic,
+            semanticCandidateStructuralOccurrences:
+                limits.maximumSemanticStructuralOccurrences,
+            semanticPublishedStructuralOccurrences:
+                limits.maximumSemanticStructuralOccurrences,
             layoutCandidate: limits.layout,
             render: limits.render,
             renderWorkspace: limits.renderWorkspace,

@@ -1,10 +1,11 @@
-# schema_version=1
+# descriptor_schema_version=2
 # One authoritative, host-independent descriptor consumed by generate-spec-015-workload.rb.
 # field	value
-semantic.maximum_depth	12
-semantic.maximum_nodes	62
-semantic.maximum_body_evaluations	20
-semantic.maximum_modifier_applications	32
+semantic.maximum_depth	26
+semantic.maximum_nodes	48
+semantic.maximum_structural_occurrences	81
+semantic.maximum_body_evaluations	14
+semantic.maximum_modifier_applications	5
 semantic.maximum_action_occurrences	6
 layout.maximum_scopes	32
 layout.maximum_depth	12

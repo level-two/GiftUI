@@ -161,6 +161,7 @@ import Testing
             schemaVersion: 1,
             requiredRuntimeLimits: workload.requiredRuntimeLimits,
             semanticNodeOccurrences: workload.semanticNodeOccurrences,
+            semanticStructuralOccurrences: workload.semanticStructuralOccurrences,
             renderSemanticScopeOccurrences: workload.renderSemanticScopeOccurrences,
             layoutScopeOccurrences: workload.layoutScopeOccurrences,
             maximumRenderTraversalDepth: workload.maximumRenderTraversalDepth,

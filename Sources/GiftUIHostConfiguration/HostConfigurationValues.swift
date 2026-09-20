@@ -149,6 +149,7 @@ package struct SignalAnalyzerHostWorkload: Equatable, Sendable {
     package let schemaVersion: UInt16
     package let requiredRuntimeLimits: RuntimeProfileLimits
     package let semanticNodeOccurrences: UInt16
+    package let semanticStructuralOccurrences: UInt16
     package let renderSemanticScopeOccurrences: UInt16
     package let layoutScopeOccurrences: UInt16
     package let maximumRenderTraversalDepth: UInt16
