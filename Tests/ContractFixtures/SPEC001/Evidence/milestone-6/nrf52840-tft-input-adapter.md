@@ -498,27 +498,43 @@ address-stable scope lends both owners simultaneously and quiesces application
 and profile state before their locations or caller-owned profile buffer expire.
 The host fixture proves construction, one balanced profile opportunity, common
 scope teardown, and rejection of another target's report. It continues to use
-test-only metadata and does not claim production Canvas lowering.
+the production generated metadata and Canvas table.
 
 The production metadata envelope now derives its single observable slot from
 the generated root descriptor, specializes all six `SignalAnalyzerAction`
 codes, and declares dense coverage for callable IDs one and two. Construction
 requires the exact nRF assembly report and runs the independent Static Canvas
 host validator over the supplied generated table. The runtime-storage fixture
-now consumes this production envelope, while its callable table remains a
-test-only stand-in for the still-open source-generation output.
+now consumes this production envelope and the checked generated callable table.
+
+## Generated Static Canvas table
+
+`StaticSignalAnalyzerNRFCanvasTable.generated.swift` lowers the portable grid
+and trace expressions to dense callable IDs one and two. The grid record is
+empty. The trace record is exactly 32 bytes and contains only an address-stable
+model handle, a standard channel value, and millisecond-exact visible-range
+bounds. Invocation dispatches directly to the existing grid and trace drawing
+helpers; no Canvas closure or dynamic callable collection is retained.
+
+`nrf-static-canvas-manifest.yaml` records the exact two-case layout, offsets,
+switch coverage, and five portable source occurrences. The dedicated contract
+checker rejects source drift, non-dense coverage, an incorrect greatest record,
+closure fallback, or dynamic storage. Focused host tests prove the exact layout,
+grid and trace invocation, typed model borrowing, and invalid ID/capture
+rejection. Runtime-storage tests now pass this generated table through the
+production metadata factory. This is production target-host source compiled by
+the host package; it is not yet linked into the Embedded Swift firmware image.
 
 The shared Static observable-model handle now accepts a typed-throwing scoped
-borrow. This lets the pending generated trace case invoke the existing
+borrow. This lets the generated trace case invoke the existing
 `throws(DrawingError)` helper against the address-stable model without copying
 or retaining its capture state; a focused runtime test proves the exact typed
 failure exits the borrow unchanged.
 
-The host fixture uses a deliberately local two-case metadata table to exercise
-only this join. It proves the retained audit equals the generated preset,
+The host fixture uses the generated two-case table to exercise this join. It
+proves the retained audit equals the generated preset,
 opportunity begin activates attempt storage, opportunity finish clears exactly
 28,224 attempt bytes, and quiescence clears the remaining 8,144 retained bytes
 and tears the binding down. Another target's valid assembly report rejects
-before construction. The fixture table is not production generated-source or
-Canvas-meaning evidence; the real two-case Signal Analyzer generated table and
-complete presentation pipeline remain open. No board was flashed.
+before construction. The generated semantic staging, render presentation, and
+firmware linkage remain open. No board was flashed.

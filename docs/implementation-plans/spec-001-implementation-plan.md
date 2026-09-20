@@ -1003,8 +1003,15 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       The approved address-stable observable-model handle now preserves a
       generated callable's typed drawing failure while its model borrow remains
       scoped, so trace dispatch does not need to copy or retain model state.
-      Building this owner into the firmware's complete generated Static
-      presentation composition remains open. The firmware
+      A checked generated table now provides the two dense Canvas cases: an
+      empty grid capture and one exact 32-byte trace capture containing the
+      stable model handle, channel, and millisecond range. Its direct switch
+      dispatches the existing grid and trace helpers, while a manifest and
+      contract checker pin all five source occurrences, field offsets, and
+      capture bounds. Runtime-storage integration now consumes this production
+      table instead of a test stand-in. Building the remaining generated
+      semantic staging and presentation pipeline, and linking the complete
+      owner into firmware, remains open. The firmware
       now compiles the exact shared input values,
       sequence allocator, normalized gate, Static coordinator, and typed ABI
       into its Embedded Swift object. A retained C bridge forwards only phase,

@@ -97,6 +97,7 @@ ruby "${SCRIPT_DIR}/check-spec-001-failure-matrix.rb"
 ruby "${SCRIPT_DIR}/check-spec-001-diagnostic-matrix.rb"
 ruby "${SCRIPT_DIR}/check-spec-001-revision-boundary.rb"
 ruby "${SCRIPT_DIR}/check-spec-001-sustained-workload.rb"
+ruby "${SCRIPT_DIR}/check-spec-001-nrf-static-canvas.rb"
 "${SCRIPT_DIR}/check-spec-001-interface-audit.sh"
 swift test --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
     -Xswiftc -DGIFTUI_DYNAMIC_PROFILE --filter SignalAnalyzer

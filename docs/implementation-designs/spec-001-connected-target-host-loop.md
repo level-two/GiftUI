@@ -358,10 +358,17 @@ depend on Canvas capture lowering: one observable slot at the preset's exact
 root identity, the six-case `SignalAnalyzerAction` specialization, and dense
 coverage for callable IDs `1...2`. It accepts a supplied callable table only
 after exact assembly selection and independent Static Canvas host validation.
-The table's concrete capture records and invocation switch remain generated
-inputs rather than handwritten target-host behavior.
+The checked generated table now lowers the two portable Canvas expressions to
+dense callable IDs `1...2`. The grid case has an empty capture record. The
+trace case has one exact 32-byte record containing the address-stable model
+handle, standard channel, and millisecond-exact visible-range bounds. Its
+switch invokes the existing grid and trace drawing helpers directly; it does
+not retain an escaping Canvas closure or introduce dynamic callable storage.
+The generation manifest records all five source occurrences and exact field
+offsets, and a contract checker keeps the portable source, manifest, and
+generated output synchronized.
 
-The observable-model handle's scoped borrow is typed-throwing. A generated
+The observable-model handle's scoped borrow is typed-throwing. The generated
 trace callable can therefore execute the existing `throws(DrawingError)`
 waveform helper while borrowing the stable model location, preserving the
 original drawing failure without returning or copying captured model state.

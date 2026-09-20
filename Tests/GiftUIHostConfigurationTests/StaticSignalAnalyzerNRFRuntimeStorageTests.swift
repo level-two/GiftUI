@@ -8,35 +8,23 @@ import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
 import Testing
 
-private struct StaticNRFRuntimeCapture {
-    private var storage:
-        (
-            UInt64, UInt64, UInt64, UInt64
-        ) = (0, 0, 0, 0)
-}
-
-private struct StaticNRFRuntimeCanvasTable: StaticCanvasCallableTable {
-    let callableCaseCount: UInt16
-
-    init(callableCaseCount: UInt16 = 2) {
-        self.callableCaseCount = callableCaseCount
-    }
+private struct IncompleteStaticNRFCanvasTable: StaticCanvasCallableTable {
+    let callableCaseCount: UInt16 = 1
 
     func captureByteCount(for id: UInt16) -> UInt16? {
         switch id {
         case 1: 0
-        case 2: UInt16(MemoryLayout<StaticNRFRuntimeCapture>.size)
         default: nil
         }
     }
 
     mutating func invoke(
         id: UInt16,
-        captures: borrowing StaticNRFRuntimeCapture,
+        captures: borrowing UInt8,
         context: inout GraphicsContext,
         size: Size
     ) throws(DrawingError) {
-        guard id == 1 || id == 2 else { throw .invariantViolation }
+        guard id == 1 else { throw .invariantViolation }
     }
 }
 
@@ -50,7 +38,7 @@ private struct StaticNRFRuntimeCanvasTable: StaticCanvasCallableTable {
 
     let incomplete = StaticSignalAnalyzerNRFGeneratedMetadataFactory.make(
         assemblyReport: staticReport,
-        canvasTable: StaticNRFRuntimeCanvasTable(callableCaseCount: 1)
+        canvasTable: IncompleteStaticNRFCanvasTable()
     )
     switch consume incomplete {
     case nil:
@@ -61,7 +49,7 @@ private struct StaticNRFRuntimeCanvasTable: StaticCanvasCallableTable {
 
     let wrongAssembly = StaticSignalAnalyzerNRFGeneratedMetadataFactory.make(
         assemblyReport: dynamicReport,
-        canvasTable: StaticNRFRuntimeCanvasTable()
+        canvasTable: StaticSignalAnalyzerNRFCanvasCallableTable()
     )
     switch consume wrongAssembly {
     case nil:
@@ -76,7 +64,7 @@ private struct StaticNRFRuntimeCanvasTable: StaticCanvasCallableTable {
         guard case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate(),
             let metadata = StaticSignalAnalyzerNRFGeneratedMetadataFactory.make(
                 assemblyReport: report,
-                canvasTable: StaticNRFRuntimeCanvasTable()
+                canvasTable: StaticSignalAnalyzerNRFCanvasCallableTable()
             ),
             var runtime = StaticSignalAnalyzerNRFRuntimeStorage(
                 assemblyReport: report,
@@ -123,7 +111,7 @@ private struct StaticNRFRuntimeCanvasTable: StaticCanvasCallableTable {
     guard case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate(),
         let metadata = StaticSignalAnalyzerNRFGeneratedMetadataFactory.make(
             assemblyReport: report,
-            canvasTable: StaticNRFRuntimeCanvasTable()
+            canvasTable: StaticSignalAnalyzerNRFCanvasCallableTable()
         ),
         let root = GeneratedSignalAnalyzerPresets.nrf52840Static().staticRoot
     else {
@@ -155,7 +143,7 @@ private struct StaticNRFRuntimeCanvasTable: StaticCanvasCallableTable {
         guard case .valid(let staticReport) = StaticSignalAnalyzerNRFAssembly.validate(),
             let metadata = StaticSignalAnalyzerNRFGeneratedMetadataFactory.make(
                 assemblyReport: staticReport,
-                canvasTable: StaticNRFRuntimeCanvasTable()
+                canvasTable: StaticSignalAnalyzerNRFCanvasCallableTable()
             ),
             case .valid(let report) = DynamicSignalAnalyzerPiAssembly.validate()
         else {
