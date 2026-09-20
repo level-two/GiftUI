@@ -1,0 +1,181 @@
+// Generated from the portable Signal Analyzer hierarchy and SPEC-015 workload.
+// Keep this output synchronized with the SPEC-001 Static Canvas manifest.
+
+import GiftUIDrawing
+import GiftUIExecution
+import GiftUIRuntimeCore
+import GiftUIRuntimeStatic
+import GiftUISemanticCore
+import SignalAnalyzerDomain
+import SignalAnalyzerPresentation
+
+package enum StaticSignalAnalyzerNRFSemanticVariant: UInt8, Equatable, Sendable {
+    case normal = 0
+    case diagnostic = 1
+}
+
+package struct StaticSignalAnalyzerNRFGeneratedSemanticSummary: Equatable, Sendable {
+    package let variant: StaticSignalAnalyzerNRFSemanticVariant
+    package let expansion: SemanticExpansionSummary
+    package let structuralOccurrenceCount: UInt16
+    package let recordedTraversalIdentityCount: UInt16
+    package let canvasOccurrenceCount: UInt16
+
+    fileprivate init(model: borrowing SignalAnalyzerViewModel) {
+        if model.state.errorMessage == nil {
+            variant = .normal
+            expansion = SemanticExpansionSummary(
+                semanticNodeCount: 47,
+                bodyEvaluationCount: 14,
+                modifierApplicationCount: 49,
+                actionOccurrenceCount: 6,
+                maximumObservedDepth: 34
+            )
+            structuralOccurrenceCount = 124
+            recordedTraversalIdentityCount = 201
+        } else {
+            variant = .diagnostic
+            expansion = SemanticExpansionSummary(
+                semanticNodeCount: 48,
+                bodyEvaluationCount: 14,
+                modifierApplicationCount: 50,
+                actionOccurrenceCount: 6,
+                maximumObservedDepth: 34
+            )
+            structuralOccurrenceCount = 126
+            recordedTraversalIdentityCount = 203
+        }
+        canvasOccurrenceCount = 5
+    }
+}
+
+package struct StaticSignalAnalyzerNRFGeneratedCanvasInput: Sendable {
+    package let occurrenceIdentity: UInt16
+    package let callableID: UInt16
+    package let declaredCaptureByteCount: UInt16
+    package let capture: StaticSignalAnalyzerNRFCanvasCaptureStorage
+}
+
+/// Scoped generated inputs for one Static presentation derivation. The model
+/// handle is valid only for the synchronous body that receives this value.
+package struct StaticSignalAnalyzerNRFGeneratedPresentationInputs {
+    package let semantic: StaticSignalAnalyzerNRFGeneratedSemanticSummary
+    private let model: StaticCanvasObservableModelHandle<SignalAnalyzerViewModel>
+    private let visibleRange: Range<Duration>
+    private var reserved = false
+
+    fileprivate init(
+        model: StaticCanvasObservableModelHandle<SignalAnalyzerViewModel>,
+        semantic: StaticSignalAnalyzerNRFGeneratedSemanticSummary,
+        visibleRange: Range<Duration>
+    ) {
+        self.model = model
+        self.semantic = semantic
+        self.visibleRange = visibleRange
+    }
+
+    package mutating func reserveCandidate(
+        in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
+    ) -> Bool {
+        guard !reserved,
+            profile.reserve(
+                semantic.expansion.maximumObservedDepth,
+                for: .semanticCandidateDepth
+            ) == .accepted,
+            profile.reserve(
+                semantic.expansion.semanticNodeCount,
+                for: .semanticCandidateNodes
+            ) == .accepted,
+            profile.reserve(
+                semantic.expansion.bodyEvaluationCount,
+                for: .semanticCandidateBodies
+            ) == .accepted,
+            profile.reserve(
+                semantic.expansion.modifierApplicationCount,
+                for: .semanticCandidateModifiers
+            ) == .accepted,
+            profile.reserve(
+                semantic.expansion.actionOccurrenceCount,
+                for: .semanticCandidateActions
+            ) == .accepted,
+            profile.reserve(
+                semantic.canvasOccurrenceCount,
+                for: .canvasOccurrences
+            ) == .accepted
+        else { return false }
+        reserved = true
+        return true
+    }
+
+    package borrowing func canvasInput(
+        at index: UInt16
+    ) -> StaticSignalAnalyzerNRFGeneratedCanvasInput? {
+        switch index {
+        case 0:
+            return StaticSignalAnalyzerNRFGeneratedCanvasInput(
+                occurrenceIdentity: 1,
+                callableID: 1,
+                declaredCaptureByteCount: 0,
+                capture: StaticSignalAnalyzerNRFCanvasCaptureStorage(
+                    StaticSignalAnalyzerNRFGridCanvasCapture()
+                )
+            )
+        case 1 ... 4:
+            guard
+                let trace = StaticSignalAnalyzerNRFTraceCanvasCapture(
+                    model: model,
+                    channelID: SignalChannelID(rawValue: Int(index)),
+                    visibleRange: visibleRange
+                )
+            else { return nil }
+            return StaticSignalAnalyzerNRFGeneratedCanvasInput(
+                occurrenceIdentity: index + 1,
+                callableID: 2,
+                declaredCaptureByteCount: 32,
+                capture: StaticSignalAnalyzerNRFCanvasCaptureStorage(trace)
+            )
+        default:
+            return nil
+        }
+    }
+
+    package borrowing func stageCanvas(
+        at index: UInt16,
+        in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
+    ) -> StaticCanvasOccurrence<UInt16, StaticSignalAnalyzerNRFCanvasCaptureStorage>? {
+        guard reserved, let input = canvasInput(at: index) else { return nil }
+        return profile.stageCanvas(
+            identity: input.occurrenceIdentity,
+            callableID: input.callableID,
+            declaredCaptureByteCount: input.declaredCaptureByteCount,
+            capture: input.capture
+        )
+    }
+}
+
+package typealias StaticSignalAnalyzerNRFProductionMetadata =
+    StaticSignalAnalyzerNRFGeneratedMetadata<StaticSignalAnalyzerNRFCanvasCallableTable>
+
+package typealias StaticSignalAnalyzerNRFProductionProfileBinding =
+    StaticRuntimeProfileBinding<
+        StaticSignalAnalyzerNRFProfileRegions,
+        StaticSignalAnalyzerNRFProductionMetadata
+    >
+
+package enum StaticSignalAnalyzerNRFGeneratedPresentationInputFactory {
+    package static func withInputs<Result>(
+        model: borrowing SignalAnalyzerViewModel,
+        _ body: (inout StaticSignalAnalyzerNRFGeneratedPresentationInputs) -> Result
+    ) -> Result {
+        let semantic = StaticSignalAnalyzerNRFGeneratedSemanticSummary(model: model)
+        let visibleRange = model.visibleRange
+        return withUnsafePointer(to: model) { location in
+            var inputs = StaticSignalAnalyzerNRFGeneratedPresentationInputs(
+                model: StaticCanvasObservableModelHandle(hostOwnedLocation: location),
+                semantic: semantic,
+                visibleRange: visibleRange
+            )
+            return body(&inputs)
+        }
+    }
+}

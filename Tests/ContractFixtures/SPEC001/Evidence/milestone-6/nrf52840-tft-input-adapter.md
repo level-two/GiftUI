@@ -525,6 +525,18 @@ rejection. Runtime-storage tests now pass this generated table through the
 production metadata factory. This is production target-host source compiled by
 the host package; it is not yet linked into the Embedded Swift firmware image.
 
+`StaticSignalAnalyzerNRFPresentationInputs.generated.swift` adds the next
+generation boundary. It records the checked 47-node normal and 48-node
+diagnostic semantic variants, their exact body/modifier/action/depth and
+structural/traversal high-water values, and the five Canvas occurrences. One
+synchronous stable-model borrow supplies the current visible range to the grid
+plus four trace captures. The stage reserves the exact semantic candidate and
+Canvas logical limits once in an active Static profile opportunity; a repeated
+reservation rejects without staging more work. Host tests cover both variants,
+all five dense occurrence identities, capture sizes, scoped model access, and
+attempt teardown. This does not yet claim semantic primitive, layout, render,
+endpoint, firmware, or connected-hardware evidence.
+
 The shared Static observable-model handle now accepts a typed-throwing scoped
 borrow. This lets the generated trace case invoke the existing
 `throws(DrawingError)` helper against the address-stable model without copying

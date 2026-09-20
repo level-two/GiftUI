@@ -16,6 +16,14 @@ manifest = YAML.safe_load(MANIFEST_PATH.read, aliases: false)
 fail_check("schema differs") unless manifest["schema"] == "spec-001-nrf-static-canvas-manifest-v1"
 fail_check("callable count differs") unless manifest["callable_case_count"] == 2
 fail_check("greatest capture differs") unless manifest["greatest_capture_byte_count"] == 32
+expected_variants = [
+  ["normal", 47, 14, 49, 6, 34, 124, 201],
+  ["diagnostic", 48, 14, 50, 6, 34, 126, 203]
+]
+actual_variants = manifest.fetch("semantic_variants").map do |entry|
+  %w[name nodes bodies modifiers actions depth structural traversal].map { |key| entry.fetch(key) }
+end
+fail_check("semantic variants differ") unless actual_variants == expected_variants
 
 cases = manifest.fetch("callable_cases")
 fail_check("case IDs are not dense") unless cases.map { |entry| entry.fetch("id") } == [1, 2]
@@ -58,4 +66,21 @@ fail_check("generated source tokens are missing: #{missing.join(', ')}") unless 
 fail_check("generated source retains a Canvas closure") if generated.match?(/Canvas\s*\{/)
 fail_check("generated source has dynamic capture storage") if generated.match?(/\bAny\b|\[[^\]]+\]|@escaping/)
 
-puts "SPEC-001 nRF Static Canvas manifest passed: two dense cases, five occurrences, and one exact 32-byte trace record."
+presentation_inputs = ROOT.join(manifest.fetch("generated_presentation_inputs")).read
+input_tokens = [
+  "enum StaticSignalAnalyzerNRFSemanticVariant",
+  "case normal = 0",
+  "case diagnostic = 1",
+  "semanticNodeCount: 47",
+  "semanticNodeCount: 48",
+  "modifierApplicationCount: 49",
+  "modifierApplicationCount: 50",
+  "canvasOccurrenceCount = 5",
+  "case 1 ... 4:",
+  "profile.stageCanvas("
+]
+missing_inputs = input_tokens.reject { |token| presentation_inputs.include?(token) }
+fail_check("generated presentation-input tokens are missing: #{missing_inputs.join(', ')}") unless missing_inputs.empty?
+fail_check("generated presentation inputs use dynamic storage") if presentation_inputs.match?(/\bArray\b|\[[^\]]+\]|@escaping/)
+
+puts "SPEC-001 nRF Static Canvas manifest passed: two dense cases, two semantic variants, five occurrences, and one exact 32-byte trace record."

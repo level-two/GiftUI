@@ -260,6 +260,17 @@ package struct StaticSignalAnalyzerNRFApplicationOwner: ~Copyable {
         root.pointee.withModel(body)
     }
 
+    package borrowing func withGeneratedPresentationInputs<Result>(
+        _ body: (inout StaticSignalAnalyzerNRFGeneratedPresentationInputs) -> Result
+    ) -> Result? {
+        root.pointee.withModel { model in
+            StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
+                model: model,
+                body
+            )
+        }
+    }
+
     package mutating func installPhysicalPresentation(rawValue: UInt32) {
         input.pointee.installPhysicalPresentation(rawValue: rawValue)
     }

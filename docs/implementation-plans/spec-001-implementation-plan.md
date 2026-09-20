@@ -1009,9 +1009,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       dispatches the existing grid and trace helpers, while a manifest and
       contract checker pin all five source occurrences, field offsets, and
       capture bounds. Runtime-storage integration now consumes this production
-      table instead of a test stand-in. Building the remaining generated
-      semantic staging and presentation pipeline, and linking the complete
-      owner into firmware, remains open. The firmware
+      table instead of a test stand-in. A generated presentation-input stage
+      now selects the exact normal or diagnostic semantic high-water summary,
+      reserves those candidate limits once per active profile opportunity, and
+      produces all five fixed Canvas captures from one synchronous stable-model
+      borrow. Building the concrete generated semantic primitives plus
+      layout/render pipeline, and linking the complete owner into firmware,
+      remains open. The firmware
       now compiles the exact shared input values,
       sequence allocator, normalized gate, Static coordinator, and typed ABI
       into its Embedded Swift object. A retained C bridge forwards only phase,

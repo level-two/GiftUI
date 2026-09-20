@@ -373,6 +373,14 @@ trace callable can therefore execute the existing `throws(DrawingError)`
 waveform helper while borrowing the stable model location, preserving the
 original drawing failure without returning or copying captured model state.
 
+The first generated presentation-input stage is also scoped to that model
+borrow. It selects the checked normal or diagnostic semantic high-water
+summary, reserves every semantic-candidate counter and all five Canvas slots
+exactly once in the active Static opportunity, and materializes the grid plus
+four trace capture records without retaining the temporary model location.
+Concrete generated semantic primitives, layout, Drawing-plan retention, and
+render lowering remain the next pipeline join.
+
 The aggregate also owns the fixed Static fact-admission storage at a stable
 address. Root binding creates the Presentation observation adapter from the
 same repository as the model use cases, but does not start it. A distinct

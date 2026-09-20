@@ -1,8 +1,12 @@
 schema: spec-001-nrf-static-canvas-manifest-v1
 source: Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift
 generated_source: Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFCanvasTable.generated.swift
+generated_presentation_inputs: Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFPresentationInputs.generated.swift
 callable_case_count: 2
 greatest_capture_byte_count: 32
+semantic_variants:
+  - { name: normal, nodes: 47, bodies: 14, modifiers: 49, actions: 6, depth: 34, structural: 124, traversal: 201 }
+  - { name: diagnostic, nodes: 48, bodies: 14, modifiers: 50, actions: 6, depth: 34, structural: 126, traversal: 203 }
 callable_cases:
   - id: 1
     expression: grid
