@@ -105,6 +105,13 @@ private struct DifferentialPipelineOwner: RuntimeCompletePipelineOwner {
 
 private struct DifferentialStaticRegions: StaticProfileStorageRegions {
     let byteCounts = differentialByteCounts()
+    private var regionByte: UInt8 = 0
+    mutating func withRegion<Result>(
+        _: RuntimeStorageFamily,
+        _ body: (UnsafeMutableRawBufferPointer) throws -> Result
+    ) rethrows -> Result {
+        try withUnsafeMutableBytes(of: &regionByte, body)
+    }
     mutating func resetAttemptRegions() {}
     mutating func resetAllRegions() {}
 }

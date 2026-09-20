@@ -130,6 +130,32 @@ struct GeneratedStaticRegions: StaticProfileStorageRegions, ~Copyable {
         )
     }
 
+    mutating func withRegion<Result>(
+        _ family: RuntimeStorageFamily,
+        _ body: (UnsafeMutableRawBufferPointer) throws -> Result
+    ) rethrows -> Result {
+        switch family {
+        case .semanticCandidate: return try withUnsafeMutableBytes(of: &semanticCandidate, body)
+        case .semanticPublished: return try withUnsafeMutableBytes(of: &semanticPublished, body)
+        case .layoutCandidate: return try withUnsafeMutableBytes(of: &layoutCandidate, body)
+        case .renderWorkspace: return try withUnsafeMutableBytes(of: &renderWorkspace, body)
+        case .canvasCallable: return try withUnsafeMutableBytes(of: &canvasCallable, body)
+        case .pathWorkspace: return try withUnsafeMutableBytes(of: &pathWorkspace, body)
+        case .drawingPlan: return try withUnsafeMutableBytes(of: &drawingPlan, body)
+        case .observableLive: return try withUnsafeMutableBytes(of: &observableLive, body)
+        case .observableCandidate: return try withUnsafeMutableBytes(of: &observableCandidate, body)
+        case .interactionCandidate:
+            return try withUnsafeMutableBytes(of: &interactionCandidate, body)
+        case .interactionCommitted:
+            return try withUnsafeMutableBytes(of: &interactionCommitted, body)
+        case .admissionQueue: return try withUnsafeMutableBytes(of: &admissionQueue, body)
+        case .sealedBatch: return try withUnsafeMutableBytes(of: &sealedBatch, body)
+        case .pointerState: return try withUnsafeMutableBytes(of: &pointerState, body)
+        case .coordinatorState: return try withUnsafeMutableBytes(of: &coordinatorState, body)
+        case .failureState: return try withUnsafeMutableBytes(of: &failureState, body)
+        }
+    }
+
     mutating func resetAttemptRegions() {
         semanticCandidate = 0
         layoutCandidate = 0

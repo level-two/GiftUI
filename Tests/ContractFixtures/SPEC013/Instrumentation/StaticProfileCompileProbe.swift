@@ -23,6 +23,7 @@ private struct CompileProbeCapture: Sendable {
 }
 
 private struct CompileProbeRegions: StaticProfileStorageRegions, ~Copyable {
+    private var regionByte: UInt8 = 0
     var byteCounts: RuntimeStorageByteCounts {
         RuntimeStorageByteCounts(
             semanticCandidateBytes: 1,
@@ -42,6 +43,13 @@ private struct CompileProbeRegions: StaticProfileStorageRegions, ~Copyable {
             coordinatorStateBytes: 1,
             failureStateBytes: 1
         )
+    }
+
+    mutating func withRegion<Result>(
+        _: RuntimeStorageFamily,
+        _ body: (UnsafeMutableRawBufferPointer) throws -> Result
+    ) rethrows -> Result {
+        try withUnsafeMutableBytes(of: &regionByte, body)
     }
 
     mutating func resetAttemptRegions() {}

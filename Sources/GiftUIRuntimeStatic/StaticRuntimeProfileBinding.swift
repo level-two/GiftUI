@@ -80,6 +80,15 @@ where
         storage.reserve(count, for: limit)
     }
 
+    /// Lends one generated region only while its retained or attempt-local
+    /// lifetime is active. The buffer cannot escape the synchronous body.
+    package mutating func withRegion<Result>(
+        _ family: RuntimeStorageFamily,
+        _ body: (UnsafeMutableRawBufferPointer) throws -> Result
+    ) rethrows -> Result? {
+        try storage.withRegion(family, body)
+    }
+
     package mutating func stageCanvas<Identity>(
         identity: consuming Identity,
         callableID: UInt16,

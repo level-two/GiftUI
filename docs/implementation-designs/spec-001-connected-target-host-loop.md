@@ -381,6 +381,12 @@ four trace capture records without retaining the temporary model location.
 Concrete generated semantic primitives, layout, Drawing-plan retention, and
 render lowering remain the next pipeline join.
 
+The common Static profile binding now synchronously lends one generated region
+at a time. Attempt-local regions reject before and after an active opportunity;
+retained regions remain available until quiescent teardown. This preserves the
+single profile-buffer owner while allowing the focused generated semantic,
+layout, Drawing, and render stages to write only their registered ranges.
+
 The aggregate also owns the fixed Static fact-admission storage at a stable
 address. Root binding creates the Presentation observation adapter from the
 same repository as the model use cases, but does not start it. A distinct

@@ -13,6 +13,10 @@ package struct StaticStructuralIdentity: Equatable, Hashable, Sendable {
 
 package protocol StaticProfileStorageRegions: ~Copyable {
     var byteCounts: RuntimeStorageByteCounts { get }
+    mutating func withRegion<Result>(
+        _ family: RuntimeStorageFamily,
+        _ body: (UnsafeMutableRawBufferPointer) throws -> Result
+    ) rethrows -> Result
     mutating func resetAttemptRegions()
     mutating func resetAllRegions()
 }
@@ -217,6 +221,17 @@ where
 
     package borrowing func use(for limit: RuntimeStorageLimit) -> StaticStorageUse {
         logicalUse.use(for: limit)
+    }
+
+    package mutating func withRegion<Result>(
+        _ family: RuntimeStorageFamily,
+        _ body: (UnsafeMutableRawBufferPointer) throws -> Result
+    ) rethrows -> Result? {
+        guard lifetimeState != .quiescenceRequested,
+            lifetimeState != .tornDown,
+            !family.isAttemptLocal || lifetimeState == .attemptActive
+        else { return nil }
+        return try regions.withRegion(family, body)
     }
 
     package mutating func stageCanvas<Identity>(

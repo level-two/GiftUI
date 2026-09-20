@@ -1015,7 +1015,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       produces all five fixed Canvas captures from one synchronous stable-model
       borrow. Building the concrete generated semantic primitives plus
       layout/render pipeline, and linking the complete owner into firmware,
-      remains open. The firmware
+      remains open. The common Static profile binding now also lends each
+      generated region only during its registered retained or attempt-local
+      lifetime, giving those focused stages direct bounded workspace access
+      without exposing or duplicating the complete profile buffer. The firmware
       now compiles the exact shared input values,
       sequence allocator, normalized gate, Static coordinator, and typed ABI
       into its Embedded Swift object. A retained C bridge forwards only phase,

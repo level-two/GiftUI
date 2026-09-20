@@ -106,7 +106,7 @@ package struct StaticSignalAnalyzerNRFProfileRegions: StaticProfileStorageRegion
     }
 
     /// Lends one exact family range for a synchronous focused operation.
-    package borrowing func withRegion<Result>(
+    package mutating func withRegion<Result>(
         _ family: RuntimeStorageFamily,
         _ body: (UnsafeMutableRawBufferPointer) throws -> Result
     ) rethrows -> Result {

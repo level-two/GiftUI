@@ -119,6 +119,54 @@ private struct StaticNRFBindingMetadata:
     }
 }
 
+@Test func staticNRFProfileBindingLendsRegionsOnlyForTheirActiveLifetime() {
+    withProfileBindingStorage { storage in
+        guard case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate(),
+            var binding = StaticSignalAnalyzerNRFProfileBinding.make(
+                assemblyReport: report,
+                storage: storage,
+                metadata: StaticNRFBindingMetadata()
+            )
+        else {
+            Issue.record("Static nRF profile binding did not construct")
+            return
+        }
+
+        let beforeAttempt = binding.withRegion(.semanticCandidate) { $0.count }
+        let retained = binding.withRegion(.semanticPublished) { $0.count }
+        #expect(beforeAttempt == nil)
+        #expect(retained == 3_024)
+
+        let active = ExecutionContext(
+            cycle: RunCycleID(rawValue: 1),
+            semanticRevision: nil,
+            candidateFrame: nil,
+            phase: .admitting
+        )
+        #expect(binding.beginOpportunity(context: active) == nil)
+        let candidate = binding.withRegion(.semanticCandidate) { region in
+            region[0] = 0xA5
+            return region.count
+        }
+        #expect(candidate == 3_024)
+
+        let idle = ExecutionContext(
+            cycle: nil,
+            semanticRevision: nil,
+            candidateFrame: nil,
+            phase: .idle
+        )
+        #expect(binding.finishOpportunity(context: idle) == nil)
+        let afterAttempt = binding.withRegion(.semanticCandidate) { $0.count }
+        #expect(afterAttempt == nil)
+        #expect(storage[0] == 0)
+
+        binding.quiesce()
+        let afterTeardown = binding.withRegion(.semanticPublished) { $0.count }
+        #expect(afterTeardown == nil)
+    }
+}
+
 @Test func staticNRFProfileBindingRejectsAnotherAssemblyReport() {
     withProfileBindingStorage { storage in
         guard case .valid(let report) = DynamicSignalAnalyzerPiAssembly.validate() else {

@@ -537,6 +537,14 @@ all five dense occurrence identities, capture sizes, scoped model access, and
 attempt teardown. This does not yet claim semantic primitive, layout, render,
 endpoint, firmware, or connected-hardware evidence.
 
+Runtime Static now lends a generated region through the common profile binding
+only while that region's registered lifetime is active. The nRF fixture proves
+attempt-local semantic storage rejects before begin and after finish, is reset
+at finish, retained semantic storage remains available before quiescence, and
+all access rejects after teardown. This is the bounded workspace seam for the
+next semantic/layout/render implementation; it does not itself claim those
+stages are complete.
+
 The shared Static observable-model handle now accepts a typed-throwing scoped
 borrow. This lets the generated trace case invoke the existing
 `throws(DrawingError)` helper against the address-stable model without copying
