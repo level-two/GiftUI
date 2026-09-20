@@ -500,6 +500,14 @@ The host fixture proves construction, one balanced profile opportunity, common
 scope teardown, and rejection of another target's report. It continues to use
 test-only metadata and does not claim production Canvas lowering.
 
+The production metadata envelope now derives its single observable slot from
+the generated root descriptor, specializes all six `SignalAnalyzerAction`
+codes, and declares dense coverage for callable IDs one and two. Construction
+requires the exact nRF assembly report and runs the independent Static Canvas
+host validator over the supplied generated table. The runtime-storage fixture
+now consumes this production envelope, while its callable table remains a
+test-only stand-in for the still-open source-generation output.
+
 The host fixture uses a deliberately local two-case metadata table to exercise
 only this join. It proves the retained audit equals the generated preset,
 opportunity begin activates attempt storage, opportunity finish clears exactly

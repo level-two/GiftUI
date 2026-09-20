@@ -353,6 +353,14 @@ together, then quiesces both before either caller-owned field location or the
 profile buffer can expire. The aggregate remains generic over the concrete
 generated Canvas metadata, so it does not collapse the generation boundary.
 
+The target metadata factory now fills every generated component that does not
+depend on Canvas capture lowering: one observable slot at the preset's exact
+root identity, the six-case `SignalAnalyzerAction` specialization, and dense
+coverage for callable IDs `1...2`. It accepts a supplied callable table only
+after exact assembly selection and independent Static Canvas host validation.
+The table's concrete capture records and invocation switch remain generated
+inputs rather than handwritten target-host behavior.
+
 The aggregate also owns the fixed Static fact-admission storage at a stable
 address. Root binding creates the Presentation observation adapter from the
 same repository as the model use cases, but does not start it. A distinct

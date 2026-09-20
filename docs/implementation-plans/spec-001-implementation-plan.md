@@ -996,6 +996,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       One noncopyable runtime-storage aggregate now constructs the application
       storage and profile binding from that same exact report and lends both
       through a single address-stable lifetime scope with common quiescence.
+      The production metadata envelope now supplies the preset's one exact
+      observable slot, six-action specialization, and dense two-case Canvas
+      coverage around a caller-supplied generated callable table; host
+      validation rejects incomplete table coverage before storage construction.
       Building this owner into the firmware's complete generated Static
       presentation composition remains open. The firmware
       now compiles the exact shared input values,
