@@ -871,8 +871,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       an explicit production mode that validates before device construction,
       polls touch, advances source deadlines, services paced opportunities
       against `CLOCK_MONOTONIC`, and routes SIGINT/SIGTERM plus loop failures
-      through controller teardown. Console ownership/restoration and the
-      connected application scenario remain open; see the
+      through controller teardown. A refusing initial-frame fixture now proves
+      partial activation containment after runtime and observation setup,
+      followed by complete eight-step cleanup. Linux console ownership retains
+      and restores the prior mode around production device lifetime. Final
+      evidence reconciliation and the connected application scenario remain
+      open; see the
       [lifecycle-owner evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-pi-lifecycle-owner.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production

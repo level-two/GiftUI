@@ -30,6 +30,14 @@ After teardown the source, input, platform-owning presentation, pacing,
 profile storage, and assembly-report runtime use are unavailable; repeated
 teardown is inert.
 
+A second focused fixture refuses the initial physical framebuffer payload
+after runtime construction and repository observation installation. The
+activation controller reports the exact endpoint invariant failure, records
+runtime and observation progress without claiming source start, stops the
+installed observations, prevents input eligibility, and quiesces the
+constructed runtime. The same eight-step teardown then releases the remaining
+owners, resets profile storage, and invalidates assembly-report runtime use.
+
 The ARMv6 executable now has an explicit `--run-signal-analyzer` production
 entry. It validates the immutable assembly before opening `/dev/fb0` or
 `/dev/input/event0`, then uses `CLOCK_MONOTONIC` to poll decoded contacts,
@@ -49,6 +57,7 @@ scripts/raspberry-pi/build.sh --product SignalAnalyzerRaspberryPiARMv6
 ```
 
 This is hardware-free lifecycle evidence. It performs no remote access,
-deployment, service restart, or connected-target execution. T6.7 remains open
-for console ownership/restoration and the separately gated connected
-application scenario.
+deployment, service restart, or connected-target execution. Console ownership
+and restoration are now covered separately by the PiScreen platform-adapter
+evidence. T6.7 remains open for its final evidence reconciliation and the
+separately gated connected application scenario.

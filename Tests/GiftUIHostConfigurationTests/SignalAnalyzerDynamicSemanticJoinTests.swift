@@ -919,6 +919,60 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(owner.phase == phase)
 }
 
+@Test func dynamicPiLifecycleOwnerContainsInitialFrameFailureAndTearsDown() throws {
+    let layout = try #require(
+        PiScreenFramebufferLayout(
+            width: 480,
+            height: 320,
+            bitsPerPixel: 16,
+            bytesPerRow: 960,
+            mappedBytes: 307_200
+        )
+    )
+    let target = try #require(
+        PiScreenDisplayTarget(
+            sink: EndpointFramebufferSink(acceptsPayload: false),
+            layout: layout
+        )
+    )
+    guard case .valid(let assemblyReport) = DynamicSignalAnalyzerPiAssembly.validate() else {
+        Issue.record("Dynamic Pi production assembly did not validate")
+        return
+    }
+    var owner = DynamicSignalAnalyzerPiLifecycleOwner(
+        target: target,
+        assemblyReport: assemblyReport,
+        inputSource: InputSourceID(rawValue: 92),
+        initialFrameOriginMicroseconds: 0,
+        timingScale: SignalSourceTimingScale(numerator: 1, denominator: 1)!,
+        nowMicroseconds: { 0 }
+    )
+    var controller = MVPHostActivationController<RaspberryPiDynamicHostActivationFailure>()
+
+    #expect(
+        controller.activate(owner: &owner, invariantFailure: .invariant)
+            == .failure(.endpoint(.invariantViolation))
+    )
+    #expect(controller.lifecycleState == .failed)
+    #expect(controller.progress.runtimeConstructed)
+    #expect(controller.progress.observationInstalled)
+    #expect(!controller.progress.sourceStarted)
+    #expect(owner.phase == .observationInstalled)
+    #expect(!owner.inputIsEligible)
+    #expect(!owner.sourceIsActive)
+    #expect(!owner.loopIsEstablished)
+    #expect(owner.reportRuntimeUseIsValid)
+    #expect(owner.deliverScheduledSourceTransition() == false)
+    #expect(owner.service(at: 0) == .rejected(.unavailable))
+
+    controller.teardown(owner: &owner)
+    #expect(controller.lifecycleState == .quiescent)
+    #expect(owner.phase == .quiescent)
+    #expect(!owner.inputIsEligible)
+    #expect(!owner.sourceIsActive)
+    #expect(!owner.reportRuntimeUseIsValid)
+}
+
 @Test func dynamicPiPacingServicesTheSerializedCoordinatorAtFrameBoundary() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     let pacing = DynamicSignalAnalyzerPiWakePacingOwner(
