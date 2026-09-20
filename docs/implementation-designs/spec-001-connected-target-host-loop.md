@@ -277,8 +277,14 @@ inline six-entry ring matching the generated preset. It assigns source,
 presentation, sequence, and ordinal provenance only after the target-local C
 normalizer emits a phase and point; capacity refusal cancels that physical
 sequence, and quiescence clears the ring. The host fixture is mechanism
-evidence only. The C-to-Swift handoff, serialized opportunity drain, and final
-firmware linkage remain part of T6.8.
+evidence only. The firmware build now whole-module compiles those exact shared
+sources with a thin typed C ABI. C forwards phase, logical point, observed
+presentation, and physical resynchronization proof; Swift assigns all target
+provenance and preserves the normalized rejection vocabulary. The finite entry
+constructs and quiesces the owner around device lifetime and installs the first
+presentation only after display acceptance. Physical calibration still gates
+the real polling call site, and the serialized opportunity drain remains part
+of T6.8.
 
 ## Code and Evidence Links
 
@@ -297,6 +303,9 @@ firmware linkage remain part of T6.8.
 - [`StaticSignalAnalyzerNRFInputCoordinator.swift`](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInputCoordinator.swift)
   supplies fixed-capacity normalized contact provenance and admission for the
   Static nRF application host.
+- [`StaticSignalAnalyzerNRFInputABI.swift`](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInputABI.swift)
+  validates C-compatible values and preserves typed admission dispositions at
+  the firmware boundary.
 - [`nrf52840-tft-input-adapter.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md)
   records the current nRF device-adapter boundary and open host-loop gap.
 - [`piscreen-platform-adapter.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md)

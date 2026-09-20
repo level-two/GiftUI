@@ -10,18 +10,44 @@ set(CMAKE_Swift_COMPILATION_MODE wholemodule)
 set(CMAKE_Swift_COMPILER_WORKS TRUE CACHE BOOL "Embedded Swift cross-compiler" FORCE)
 project(GiftUISignalAnalyzerStatic LANGUAGES C Swift)
 
+set(giftui_project_root "${CMAKE_CURRENT_SOURCE_DIR}/../../../..")
 target_sources(app PRIVATE
     src/ads7846.c
     src/device_validation.c
     src/fault.c
     src/ili9486.c
     src/main.c
+    src/static_input_bridge.c
     src/storage.c
     src/stubs.c
     src/touch_input.c
 )
 target_include_directories(app PRIVATE include)
-add_library(app_swift OBJECT src/StaticPreset.swift)
+
+set(giftui_static_swift_source "${CMAKE_CURRENT_BINARY_DIR}/SignalAnalyzerStatic.swift")
+file(WRITE "${giftui_static_swift_source}" "")
+set(giftui_static_swift_inputs
+    "${giftui_project_root}/Sources/GiftUI/GiftUI.swift"
+    "${giftui_project_root}/Sources/GiftUIExecution/ExecutionValues.swift"
+    "${giftui_project_root}/Sources/GiftUIExecution/AdmissionValues.swift"
+    "${giftui_project_root}/Sources/GiftUIExecution/InputSourceSequenceState.swift"
+    "${giftui_project_root}/Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift"
+    "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInputCoordinator.swift"
+    "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInputABI.swift"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/StaticPreset.swift"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/StaticInputABI.swift"
+)
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
+    ${giftui_static_swift_inputs})
+foreach(source ${giftui_static_swift_inputs})
+    file(READ "${source}" giftui_static_swift_fragment)
+    string(REGEX REPLACE "(^|\n)import [A-Za-z0-9_]+\r?\n" "\\1"
+        giftui_static_swift_fragment "${giftui_static_swift_fragment}")
+    file(APPEND "${giftui_static_swift_source}"
+        "${giftui_static_swift_fragment}\n")
+endforeach()
+
+add_library(app_swift OBJECT "${giftui_static_swift_source}")
 add_dependencies(app_swift syscall_list_h_target)
 
 if(NOT CONFIG_FP_HARDABI)

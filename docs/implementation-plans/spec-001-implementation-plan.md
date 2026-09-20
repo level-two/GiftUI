@@ -897,8 +897,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       saturating fault accounting. The exact pristine firmware build retains
       all driver entry points and passes ARMv7E-M hard-float, zero-heap,
       RAM/flash, and required-symbol gates. Static host-loop composition, the
-      firmware-to-Swift contact handoff and opportunity drain, connected stack
-      measurement, and flashing remain open. A target-local, allocation-free
+      physical normalization-to-handoff call site and opportunity drain,
+      connected stack measurement, and flashing remain open. A target-local,
+      allocation-free
       touch normalizer
       now validates injected calibration, maps swapped/inverted raw axes into
       the 480 x 320 logical extent, emits ordered down/move/up phases, closes
@@ -910,7 +911,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       maximum in fixed inline ring storage. Its host fixture proves ordered
       drain, first-excess cancellation, reuse, stale-presentation rejection,
       and quiescent cleanup without treating that host run as embedded
-      evidence. A follow-up finite firmware entry now initializes both devices,
+      evidence. The firmware now compiles the exact shared input values,
+      sequence allocator, normalized gate, Static coordinator, and typed ABI
+      into its Embedded Swift object. A retained C bridge forwards only phase,
+      logical point, observed presentation, and physical resynchronization
+      proof; Swift alone assigns source, sequence, and ordinal provenance. C
+      and Swift host fixtures cover the ABI, while a pristine build retains
+      every bridge symbol and passes the existing zero-heap and resource
+      gates. A follow-up finite firmware entry now initializes both devices,
       transfers bounded color bars, polls touch for ten seconds, and reports
       faults plus stack high-water when deliberately flashed; its exact
       pristine build also passes. Both controllers now expose explicit

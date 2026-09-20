@@ -39,12 +39,6 @@ package protocol ExecutionAdmissionSink {
     mutating func submit(completion: CompletionFact) -> ExecutionAdmissionOutcome
 }
 
-package protocol ExecutionOpportunityRunner {
-    associatedtype OwnerFailure: Equatable & Sendable
-
-    mutating func runOpportunity() -> RunCycleResult<OwnerFailure>
-}
-
 package struct AdmissionSummary: Equatable, Sendable {
     package let inputEventCount: UInt16
     package let stateChangeFactCount: UInt16

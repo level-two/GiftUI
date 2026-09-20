@@ -163,7 +163,42 @@ input is ineligible before a physical presentation, down/move/up receives
 exact provenance and drains in order, the first event beyond six cancels its
 sequence, cleared fixed storage can be reused without reusing the refused
 sequence, stale presentation input is dropped, and quiescence clears pending
-input and closes admission. This is host mechanism evidence only. The
-C-to-Swift contact handoff, opportunity-time action drain, Embedded Swift
-linkage, and connected shield behavior remain open and are not claimed by this
-fixture.
+input and closes admission. This fixture alone is host mechanism evidence; the
+separate Embedded Swift handoff evidence follows below. Opportunity-time action
+drain and connected shield behavior remain open.
+
+## Embedded Swift contact handoff
+
+The production firmware now whole-module compiles the exact shared `GiftUI`
+input values, `GiftUIExecution` sequence allocator and admission values,
+`HostNormalizedInputGate`, `StaticSignalAnalyzerNRFInputCoordinator`, and
+`StaticSignalAnalyzerNRFInputABI`. CMake tracks every source as a configure
+dependency before producing the single Embedded Swift composition source.
+
+The retained C bridge forwards a normalized phase and logical point plus the
+observed physical-presentation revision and explicit resynchronization proof.
+It cannot supply source, sequence, or ordinal values. Swift validates the ABI
+values, assigns provenance through the shared gate, and packs the exact
+disposition and rejection without collapsing their vocabulary. The finite
+entry constructs the owner before device initialization, installs revision
+zero only after the color-bar transfer succeeds, and quiesces the owner on
+every cleanup path.
+
+`swift test --filter StaticSignalAnalyzerNRFInputABI` covers valid typed
+handoff, malformed C values, exact provenance, and packed rejection values.
+`check-spec-001-nrf-static-input-bridge.sh` compiles the production C bridge
+with warnings as errors and proves exact forwarding plus invalid-call
+rejection. The pristine firmware retains all six C/Swift bridge entry points
+and passes ARMv7E-M, VFP hard-float, zero-heap, symbol, RAM, and flash gates:
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `zephyr.elf` | `dd10ab24725f38631dc8042a0f6215936695c907dc4a67ffbfe3c4f73e92727c` |
+| `zephyr.hex` | `cc4dd1622f6c996540a9abb6af883dd54f9f5623fedbcba08878186189f888ca` |
+| `zephyr.map` | `4cfdd8280b27aa23afc075e37ab01520695b585fa41e485c7e950e9326d25395` |
+| `zephyr.dts` | `042dd0ead8283db2cb12d0ff36caad849f8c88787859202809cd03bf17aef6d7` |
+
+The load segments use 34,656 flash bytes and 175,552 RAM bytes. No heap entry
+point or full framebuffer is present. Physical calibration values, the real
+poll-loop submission call site, opportunity-time action drain, and connected
+shield behavior remain open. No board was flashed.

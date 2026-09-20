@@ -3,8 +3,10 @@
 #include "ads7846.h"
 #include "giftui_fault.h"
 #include "ili9486.h"
+#include "static_input_bridge.h"
 
 #include <stdbool.h>
+#include <errno.h>
 #include <limits.h>
 #include <stdint.h>
 #include <zephyr/kernel.h>
@@ -45,7 +47,16 @@ int giftui_device_validation_run(void)
     printk("GiftUI transfer: 480x4 RGB565, segment<=%u bytes\n",
            (unsigned int)ili9486_spi_segment_bytes());
 
-    int result = ads7846_initialize();
+    int result = giftui_signal_analyzer_input_initialize(1U);
+    if (result != 0 || giftui_signal_analyzer_input_pending_count() != 0U) {
+        if (result == 0) {
+            result = -EINVAL;
+        }
+        giftui_fault_record(GIFTUI_FAULT_CAPACITY, result);
+        goto cleanup;
+    }
+
+    result = ads7846_initialize();
     if (result != 0) {
         giftui_fault_record(GIFTUI_FAULT_TOUCH_CONTROLLER, result);
         goto cleanup;
@@ -66,6 +77,11 @@ int giftui_device_validation_run(void)
     }
     printk("GiftUI display transfer: status=completed elapsed-ms=%u\n",
            k_uptime_get_32() - display_started);
+    result = giftui_signal_analyzer_input_install_presentation(0U);
+    if (result != 0) {
+        giftui_fault_record(GIFTUI_FAULT_CAPACITY, result);
+        goto cleanup;
+    }
 
     uint32_t contacts = 0U;
     uint32_t samples = 0U;
@@ -99,6 +115,7 @@ int giftui_device_validation_run(void)
     report_stack_high_water();
 
 cleanup:
+    giftui_signal_analyzer_input_quiesce();
     if (display_initialized) {
         const int shutdown_result = ili9486_shutdown();
         if (shutdown_result != 0) {
