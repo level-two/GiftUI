@@ -146,11 +146,18 @@ state changed. The one-second action fixture now commits its updated frame in
 the same opportunity, while Start-produced repository callbacks remain outside
 the seal and therefore wait for the next opportunity.
 
+`PiScreenContactEvent` now carries the canonical `PointerPhase` directly.
+The hardware-free interaction fixture drives the production
+`PiScreenContactDecoder` through down/move/up and submits those exact decoded
+events to the target-host coordinator, removing a platform-to-host phase
+translation seam. `LinuxPiScreenTouchDevice.poll()` returns this same event
+type; device-file polling and the process wake loop remain executable work.
+
 The hardware-free fixture proves presentation-not-established, unknown-source,
 stale-revision, and quiescent rejection; exact down/move/up sequence and ordinal
 formation; unchanged model state before the opportunity; one generation-
 checked one-second action inside it; and unavailable opportunity rejection
 after quiescence. The Start-action fixture also proves five deferred repository
 facts survive the opportunity in production admission order. Linux evdev
-polling, wake-loop ownership, and
+device-file polling, wake-loop ownership, and
 the complete live activation owner remain open.

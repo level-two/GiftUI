@@ -452,9 +452,16 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
         ) == .dropped(.presentationNotEstablished)
     )
     coordinator.installPhysicalPresentation(revision)
+    var contactDecoder = PiScreenContactDecoder()
+    let decodedDown = contactDecoder.update(point: point, touching: true)
+    let decodedMove = contactDecoder.update(point: point, touching: true)
+    let decodedUp = contactDecoder.update(point: point, touching: false)
+    let downContact = try #require(decodedDown)
+    let moveContact = try #require(decodedMove)
+    let upContact = try #require(decodedUp)
     let down = coordinator.admit(
-        phase: .down,
-        position: point,
+        phase: downContact.phase,
+        position: downContact.point,
         source: source,
         observedPresentationRevision: revision
     )
@@ -463,14 +470,14 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
         return
     }
     let move = coordinator.admit(
-        phase: .move,
-        position: point,
+        phase: moveContact.phase,
+        position: moveContact.point,
         source: source,
         observedPresentationRevision: revision
     )
     let up = coordinator.admit(
-        phase: .up,
-        position: point,
+        phase: upContact.phase,
+        position: upContact.point,
         source: source,
         observedPresentationRevision: revision
     )

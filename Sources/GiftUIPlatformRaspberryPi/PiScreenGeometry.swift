@@ -189,14 +189,8 @@ package struct PiScreenAspectFitTransform: Equatable, Sendable {
     }
 }
 
-package enum PiScreenContactPhase: UInt8, Equatable, Sendable {
-    case down = 0
-    case move = 1
-    case up = 2
-}
-
 package struct PiScreenContactEvent: Equatable, Sendable {
-    package let phase: PiScreenContactPhase
+    package let phase: PointerPhase
     package let point: Point
 }
 

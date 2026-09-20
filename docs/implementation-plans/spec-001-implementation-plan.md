@@ -831,8 +831,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       correlation only after physical and interaction commit. The unified
       opportunity also dispatches normalized input under observable mutation,
       rerenders direct action changes immediately, and leaves repository
-      callbacks produced after the seal for the next opportunity. Raw Linux
-      contact polling, wake/pacing, and the
+      callbacks produced after the seal for the next opportunity. The PiScreen
+      decoder now emits canonical `PointerPhase` values, and its exact decoded
+      down/move/up events feed the production coordinator in the hardware-free
+      fixture without a translation seam. Linux device-file polling,
+      wake/pacing, and the
       complete seven-step activation/eight-step teardown join remain open.
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
