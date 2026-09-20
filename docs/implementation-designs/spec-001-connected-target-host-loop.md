@@ -293,7 +293,10 @@ owner keeps the gate, ring, capture, and provenance as fixed value state across
 opportunities. During one synchronous drain it creates a scoped interaction
 adapter that borrows the generated `StaticInteractionState` and observable root;
 no pointer to either movable caller-owned value survives the opportunity. The
-owner installs a physical revision in admission and dispatch together, and
+interaction state, capture, and observable root share the generated descriptor's
+`UInt32` structural identity type, so the application boundary does not truncate
+or introduce a parallel identity. The owner installs a physical revision in
+admission and dispatch together, and
 quiesces both. Dispatch occurs only in the root's mutation phase, and a
 mismatched target generation cancels before borrowing the model. The remaining
 T6.8 join builds that owner into the firmware's complete generated Static

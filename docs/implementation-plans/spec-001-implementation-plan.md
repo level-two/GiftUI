@@ -919,7 +919,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       application input owner now retains capture and provenance as fixed value
       state across serialized opportunities while borrowing the generated
       interaction state and observable root only for one synchronous drain. It
-      installs each physical presentation atomically in admission and dispatch,
+      uses the generated root descriptor's exact `UInt32` structural identity
+      type and value rather than narrowing that identity at the input boundary.
+      It installs each physical presentation atomically in admission and dispatch,
       brackets dispatch with observable mutation ownership, and applies actions
       only through the committed target-generation guard. Host fixtures prove a
       down/up pair split across opportunities, stale-generation cancellation,

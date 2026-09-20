@@ -21,9 +21,10 @@ private final class StaticNRFInteractionRepository: SignalAcquisitionRepository 
 private let staticNRFInteractionSource = InputSourceID(rawValue: 51)
 private let staticNRFInteractionRevision = PresentationRevision(rawValue: 27)
 private let staticNRFInteractionPoint = Point(x: 4, y: 4)
+private let staticNRFRootIdentity: UInt32 = 1_410_692_621
 @Test func staticNRFInteractionDispatchesAcrossSerializedOpportunities() {
-    var root = StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>(
-        structuralIdentity: 1,
+    var root = StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>(
+        structuralIdentity: staticNRFRootIdentity,
         declarationOrdinal: 0
     )
     var interaction = makeStaticNRFInteraction(targetGeneration: 0)
@@ -63,8 +64,8 @@ private let staticNRFInteractionPoint = Point(x: 4, y: 4)
 }
 
 @Test func staticNRFInteractionRejectsAStaleObservableTargetGeneration() {
-    var root = StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>(
-        structuralIdentity: 1,
+    var root = StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>(
+        structuralIdentity: staticNRFRootIdentity,
         declarationOrdinal: 0
     )
     var interaction = makeStaticNRFInteraction(targetGeneration: 1)
@@ -92,8 +93,8 @@ private let staticNRFInteractionPoint = Point(x: 4, y: 4)
 }
 
 @Test func staticNRFInteractionCancelsCaptureWhenPresentationChanges() {
-    var root = StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>(
-        structuralIdentity: 1,
+    var root = StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>(
+        structuralIdentity: staticNRFRootIdentity,
         declarationOrdinal: 0
     )
     var interaction = makeStaticNRFInteraction(targetGeneration: 0)
@@ -135,8 +136,8 @@ private let staticNRFInteractionPoint = Point(x: 4, y: 4)
 }
 
 @Test func staticNRFApplicationInputOwnerQuiescesAdmissionAndCapture() {
-    var root = StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>(
-        structuralIdentity: 1,
+    var root = StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>(
+        structuralIdentity: staticNRFRootIdentity,
         declarationOrdinal: 0
     )
     var interaction = makeStaticNRFInteraction(targetGeneration: 0)
@@ -189,8 +190,8 @@ private func makeStaticNRFApplicationInputOwner()
 
 private func makeStaticNRFInteraction(
     targetGeneration: UInt32
-) -> StaticInteractionState<UInt16> {
-    var interaction = StaticInteractionState<UInt16>(
+) -> StaticInteractionState<UInt32> {
+    var interaction = StaticInteractionState<UInt32>(
         candidateRecords: StaticInteractionCandidateStorage(capacity: 1)!,
         candidateHitRegions: StaticInteractionHitStorage(capacity: 1)!,
         candidateCommittedRecords: StaticInteractionCommittedStorage(capacity: 1)!,
@@ -236,7 +237,7 @@ private func makeStaticNRFInteraction(
 
 private func bindStaticNRFInteractionRoot(
     _ root: UnsafeMutablePointer<
-        StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>
+        StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>
     >
 ) {
     let repository = StaticNRFInteractionRepository()

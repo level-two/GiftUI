@@ -40,8 +40,8 @@ package struct StaticSignalAnalyzerNRFApplicationInputOwner: ~Copyable {
     }
 
     package mutating func runOpportunity(
-        interaction: inout StaticInteractionState<UInt16>,
-        root: inout StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>
+        interaction: inout StaticInteractionState<UInt32>,
+        root: inout StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>
     ) -> StaticSignalAnalyzerNRFInputOpportunityResult {
         withUnsafeMutablePointer(to: &interactionSession) { sessionPointer in
             withUnsafeMutablePointer(to: &interaction) { interactionPointer in

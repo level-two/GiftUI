@@ -295,15 +295,17 @@ resource totals above remain unchanged. No board was flashed.
 
 `StaticSignalAnalyzerNRFApplicationInputOwner` is the production typed owner of
 the serialized ring and interaction session. It retains
-`PointerActionCapture<UInt16>` and exact source/sequence/successor-ordinal
+`PointerActionCapture<UInt32>` and exact source/sequence/successor-ordinal
 provenance as fixed value state across application opportunities. Each
 `runOpportunity` creates a scoped `StaticSignalAnalyzerNRFInteractionHandler`
-that borrows the generated `StaticInteractionState<UInt16>` and observable root
+that borrows the generated `StaticInteractionState<UInt32>` and observable root
 only for that synchronous drain, so no unsafe pointer to movable caller-owned
-storage survives an opportunity. Physical-presentation replacement is installed
-in admission and dispatch together and cancels any capture; quiescence closes
-both halves. Dispatch occurs while the root is `.mutating` and retains both
-action-generation and observable-target-generation guards.
+storage survives an opportunity. All three use the generated root descriptor's
+exact `UInt32` structural identity (`1_410_692_621`); the input boundary neither
+narrows it nor creates a parallel identity. Physical-presentation replacement
+is installed in admission and dispatch together and cancels any capture;
+quiescence closes both halves. Dispatch occurs while the root is `.mutating`
+and retains both action-generation and observable-target-generation guards.
 
 `StaticSignalAnalyzerNRFInteractionHandlerTests` proves that a down and up
 drained through separately constructed scoped handlers select the one-second

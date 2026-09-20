@@ -12,7 +12,7 @@ package struct StaticSignalAnalyzerNRFInteractionSession: ~Copyable {
     private var activeSource: InputSourceID?
     private var activeSequence: PointerSequenceID?
     private var lastOrdinal: InputOrdinal?
-    private var capture = PointerActionCapture<UInt16>()
+    private var capture = PointerActionCapture<UInt32>()
     private var opportunityIsActive = false
 
     package init() {}
@@ -32,7 +32,7 @@ package struct StaticSignalAnalyzerNRFInteractionSession: ~Copyable {
 
     fileprivate mutating func beginOpportunity(
         root: UnsafeMutablePointer<
-            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>
+            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>
         >
     ) -> Bool {
         guard presentationRevision != nil, !opportunityIsActive else {
@@ -45,9 +45,9 @@ package struct StaticSignalAnalyzerNRFInteractionSession: ~Copyable {
 
     fileprivate mutating func handle(
         _ event: NormalizedPointerEvent,
-        interaction: UnsafeMutablePointer<StaticInteractionState<UInt16>>,
+        interaction: UnsafeMutablePointer<StaticInteractionState<UInt32>>,
         root: UnsafeMutablePointer<
-            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>
+            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>
         >
     ) -> StaticSignalAnalyzerNRFInputHandling {
         guard opportunityIsActive,
@@ -73,7 +73,7 @@ package struct StaticSignalAnalyzerNRFInteractionSession: ~Copyable {
 
     fileprivate mutating func endOpportunity(
         root: UnsafeMutablePointer<
-            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>
+            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>
         >
     ) -> Bool {
         guard opportunityIsActive else { return false }
@@ -84,7 +84,7 @@ package struct StaticSignalAnalyzerNRFInteractionSession: ~Copyable {
 
     private mutating func handleDown(
         _ event: NormalizedPointerEvent,
-        interaction: UnsafeMutablePointer<StaticInteractionState<UInt16>>
+        interaction: UnsafeMutablePointer<StaticInteractionState<UInt32>>
     ) -> StaticSignalAnalyzerNRFInputHandling {
         guard event.ordinal.rawValue == 0 else {
             cancelSequence()
@@ -109,7 +109,7 @@ package struct StaticSignalAnalyzerNRFInteractionSession: ~Copyable {
 
     private mutating func handleMove(
         _ event: NormalizedPointerEvent,
-        interaction: UnsafeMutablePointer<StaticInteractionState<UInt16>>
+        interaction: UnsafeMutablePointer<StaticInteractionState<UInt32>>
     ) -> StaticSignalAnalyzerNRFInputHandling {
         guard validateContinuation(event) else {
             cancelSequence()
@@ -132,9 +132,9 @@ package struct StaticSignalAnalyzerNRFInteractionSession: ~Copyable {
 
     private mutating func handleUp(
         _ event: NormalizedPointerEvent,
-        interaction: UnsafeMutablePointer<StaticInteractionState<UInt16>>,
+        interaction: UnsafeMutablePointer<StaticInteractionState<UInt32>>,
         root: UnsafeMutablePointer<
-            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>
+            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>
         >
     ) -> StaticSignalAnalyzerNRFInputHandling {
         guard validateContinuation(event) else {
@@ -187,17 +187,17 @@ package struct StaticSignalAnalyzerNRFInteractionHandler:
     StaticSignalAnalyzerNRFInputHandler
 {
     private let session: UnsafeMutablePointer<StaticSignalAnalyzerNRFInteractionSession>
-    private let interaction: UnsafeMutablePointer<StaticInteractionState<UInt16>>
+    private let interaction: UnsafeMutablePointer<StaticInteractionState<UInt32>>
     private let root:
         UnsafeMutablePointer<
-            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>
+            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>
         >
 
     package init(
         session: UnsafeMutablePointer<StaticSignalAnalyzerNRFInteractionSession>,
-        interaction: UnsafeMutablePointer<StaticInteractionState<UInt16>>,
+        interaction: UnsafeMutablePointer<StaticInteractionState<UInt32>>,
         root: UnsafeMutablePointer<
-            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>
+            StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>
         >
     ) {
         self.session = session
