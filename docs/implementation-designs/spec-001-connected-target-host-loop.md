@@ -234,6 +234,9 @@ not an implementation-design question.
 
 ## Code and Evidence Links
 
+- [`DynamicSemanticHostStorage.swift`](../../Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift)
+  supplies the first production bounded semantic/layout/render/action source
+  for the Raspberry Pi Dynamic host.
 - [`SignalAnalyzerIntegratedCycleTests.swift`](../../Tests/GiftUIHostConfigurationTests/SignalAnalyzerIntegratedCycleTests.swift)
   records current ordering evidence and the substitutions that must be removed.
 - [`RuntimeCompletePipeline.swift`](../../Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift)
@@ -244,3 +247,5 @@ not an implementation-design question.
   records the current nRF device-adapter boundary and open host-loop gap.
 - [`piscreen-platform-adapter.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md)
   records the current Pi device-adapter boundary and open host-loop gap.
+- [`dynamic-semantic-host-storage.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-semantic-host-storage.md)
+  records the first production-store slice and its atomic capacity tests.

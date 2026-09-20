@@ -738,6 +738,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       host-loop composition, and T8.1 as open work. The remaining
       production-stage join is defined by the
       [Connected-Target Host Loop design](../implementation-designs/spec-001-connected-target-host-loop.md).
+      Its first production-store slice now preserves bounded structural,
+      layout, render, Canvas, action, and disabled-scope facts from one Dynamic
+      semantic traversal with atomic first-excess cleanup; see the
+      [Dynamic semantic-storage evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-semantic-host-storage.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation
