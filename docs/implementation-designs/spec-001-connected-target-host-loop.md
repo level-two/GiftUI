@@ -340,8 +340,11 @@ generated metadata/table value and constructs `StaticRuntimeProfileBinding`
 from the preset's exact structural identity and runtime limits. The common
 Static runtime therefore owns opportunity begin/finish, attempt reset, and
 quiescent teardown without target-local lifecycle duplication. The factory is
-generic over generated metadata so it cannot manufacture or substitute the
-still-required production Signal Analyzer Canvas table.
+generic over generated metadata, but admits it only when its dense callable
+case count and greatest declared capture record exactly equal the generated
+Signal Analyzer workload's `2 / 32` values. It therefore cannot manufacture,
+underfill, or substitute the still-required production Signal Analyzer Canvas
+table.
 
 The aggregate also owns the fixed Static fact-admission storage at a stable
 address. Root binding creates the Presentation observation adapter from the

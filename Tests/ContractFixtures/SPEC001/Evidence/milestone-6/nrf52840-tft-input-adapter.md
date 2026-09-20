@@ -486,6 +486,12 @@ owned region map, and one concrete generated metadata/callable-table value.
 It returns Runtime Static's common noncopyable binding rather than duplicating
 opportunity or storage lifecycle in the target host.
 
+The join independently derives the concrete table's greatest declared capture
+record and requires exact equality with the generated workload's two callable
+cases and 32-byte maximum. An otherwise structurally valid two-case table with
+a 31-byte greatest record rejects before profile construction, so preset
+headroom cannot conceal stale or incomplete generated source.
+
 The host fixture uses a deliberately local two-case metadata table to exercise
 only this join. It proves the retained audit equals the generated preset,
 opportunity begin activates attempt storage, opportunity finish clears exactly

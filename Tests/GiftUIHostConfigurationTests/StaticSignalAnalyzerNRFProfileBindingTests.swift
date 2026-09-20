@@ -16,18 +16,26 @@ private struct StaticNRFBindingCapture {
 private struct StaticNRFBindingMetadata:
     RuntimeStaticCanvasAuditMetadata, StaticCanvasCallableTable
 {
-    let callableCaseCount: UInt16 = 2
-    let declaredEntryCount: UInt16 = 2
-    let maximumDeclaredID: UInt16 = 2
+    let secondCaptureByteCount: UInt16
+    let callableCaseCount: UInt16
+    let declaredEntryCount: UInt16
+    let maximumDeclaredID: UInt16
+
+    init(callableCaseCount: UInt16 = 2, secondCaptureByteCount: UInt16 = 32) {
+        self.callableCaseCount = callableCaseCount
+        declaredEntryCount = callableCaseCount
+        maximumDeclaredID = callableCaseCount
+        self.secondCaptureByteCount = secondCaptureByteCount
+    }
 
     func coverageMultiplicity(for id: UInt16) -> UInt8 {
-        id == 1 || id == 2 ? 1 : 0
+        id > 0 && id <= callableCaseCount ? 1 : 0
     }
 
     func captureByteCount(for id: UInt16) -> UInt16? {
         switch id {
         case 1: 0
-        case 2: UInt16(MemoryLayout<StaticNRFBindingCapture>.size)
+        case 2: secondCaptureByteCount
         default: nil
         }
     }
@@ -39,6 +47,32 @@ private struct StaticNRFBindingMetadata:
         size: Size
     ) throws(DrawingError) {
         guard id == 1 || id == 2 else { throw .invariantViolation }
+    }
+}
+
+@Test func staticNRFProfileBindingRequiresExactGeneratedCanvasMetadata() {
+    withProfileBindingStorage { storage in
+        guard case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate() else {
+            Issue.record("Static nRF assembly did not validate")
+            return
+        }
+        let invalidMetadata = [
+            StaticNRFBindingMetadata(callableCaseCount: 1),
+            StaticNRFBindingMetadata(secondCaptureByteCount: 31),
+        ]
+        for metadata in invalidMetadata {
+            let binding = StaticSignalAnalyzerNRFProfileBinding.make(
+                assemblyReport: report,
+                storage: storage,
+                metadata: metadata
+            )
+            switch consume binding {
+            case nil:
+                break
+            case .some:
+                Issue.record("Static nRF profile binding accepted unequal Canvas metadata")
+            }
+        }
     }
 }
 

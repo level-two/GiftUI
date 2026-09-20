@@ -17,6 +17,9 @@ package enum StaticSignalAnalyzerNRFProfileBinding {
         let preset = GeneratedSignalAnalyzerPresets.nrf52840Static()
         guard StaticSignalAnalyzerNRFAssembly.validate() == .valid(assemblyReport),
             preset.profile == .static,
+            metadata.callableCaseCount == preset.workload.drawing.staticCallableCases,
+            greatestCaptureByteCount(in: metadata)
+                == preset.workload.drawing.maximumStaticCaptureBytes,
             let root = preset.staticRoot,
             let identity = StaticStructuralIdentity(rawValue: root.structuralIdentity),
             let regions = StaticSignalAnalyzerNRFProfileRegions(storage: storage),
@@ -29,5 +32,21 @@ package enum StaticSignalAnalyzerNRFProfileBinding {
             regions: consume regions,
             metadata: consume metadata
         )
+    }
+
+    private static func greatestCaptureByteCount<Metadata>(
+        in metadata: borrowing Metadata
+    ) -> UInt16? where Metadata: RuntimeStaticCanvasAuditMetadata {
+        guard metadata.callableCaseCount > 0 else { return nil }
+        var greatest: UInt16 = 0
+        var id: UInt16 = 1
+        while true {
+            guard let byteCount = metadata.captureByteCount(for: id) else {
+                return nil
+            }
+            greatest = max(greatest, byteCount)
+            if id == metadata.callableCaseCount { return greatest }
+            id += 1
+        }
     }
 }

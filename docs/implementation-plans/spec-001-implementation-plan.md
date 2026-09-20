@@ -989,7 +989,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       identity and limits, and caller-supplied generated Canvas metadata into
       the common `StaticRuntimeProfileBinding`. A host fixture proves audit
       equality plus begin/finish/quiesce lifecycle resets without presenting
-      its fixture callable table as production generated-source evidence.
+      its fixture callable table as production generated-source evidence. The
+      join now also requires the concrete table's dense case count and greatest
+      capture record to exactly equal the generated workload's `2 / 32`
+      metadata, rejecting an otherwise valid underfilled table.
       Building this owner into the firmware's complete generated Static
       presentation composition remains open. The firmware
       now compiles the exact shared input values,
