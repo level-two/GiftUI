@@ -266,7 +266,9 @@ Its production assembly factory runs the complete checked validator and emits
 the immutable report before Linux device construction. The ARMv6 executable's
 explicit production mode now uses a monotonic nonblocking loop for touch,
 source deadlines, paced opportunities, and signal-triggered controller
-teardown. Console ownership/restoration remains open.
+teardown. Its platform boundary now acquires Linux graphics-console mode
+before framebuffer construction, retains the prior mode, and restores it
+after process-loop teardown with fail-closed partial-initialization cleanup.
 
 ## Code and Evidence Links
 

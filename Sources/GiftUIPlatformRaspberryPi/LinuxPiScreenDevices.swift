@@ -11,6 +11,82 @@
         case inputReadFailed = 5
     }
 
+    package enum LinuxPiScreenConsoleError: Error, Equatable, Sendable {
+        case invalidPath
+        case openFailed
+        case acquisition(PiScreenConsoleOwnershipFailure)
+        case restoration(PiScreenConsoleOwnershipFailure)
+    }
+
+    private struct LinuxPiScreenConsoleTransport: PiScreenConsoleModeTransport {
+        private static let getModeRequest: UInt = 0x4B3B
+        private static let setModeRequest: UInt = 0x4B3A
+
+        private var fileDescriptor: Int32
+
+        init(fileDescriptor: Int32) {
+            self.fileDescriptor = fileDescriptor
+        }
+
+        mutating func readMode() -> PiScreenConsoleMode? {
+            guard fileDescriptor >= 0 else { return nil }
+            var rawMode: Int32 = -1
+            guard Glibc.ioctl(fileDescriptor, Self.getModeRequest, &rawMode) == 0 else {
+                return nil
+            }
+            return PiScreenConsoleMode(rawValue: rawMode)
+        }
+
+        mutating func writeMode(_ mode: PiScreenConsoleMode) -> Bool {
+            guard fileDescriptor >= 0 else { return false }
+            return Glibc.ioctl(fileDescriptor, Self.setModeRequest, mode.rawValue) == 0
+        }
+
+        mutating func close() {
+            guard fileDescriptor >= 0 else { return }
+            _ = Glibc.close(fileDescriptor)
+            fileDescriptor = -1
+        }
+    }
+
+    package final class LinuxPiScreenConsoleSession {
+        private var owner: PiScreenConsoleModeOwner<LinuxPiScreenConsoleTransport>?
+
+        package init(devicePath: String = "/dev/tty0") throws(LinuxPiScreenConsoleError) {
+            guard !devicePath.isEmpty else { throw .invalidPath }
+            let descriptor = devicePath.withCString {
+                Glibc.open($0, O_RDWR | O_CLOEXEC)
+            }
+            guard descriptor >= 0 else { throw .openFailed }
+            var owner = PiScreenConsoleModeOwner(
+                transport: LinuxPiScreenConsoleTransport(fileDescriptor: descriptor)
+            )
+            switch owner.acquire() {
+            case .acquired:
+                break
+            case .failure(let failure):
+                throw .acquisition(failure)
+            }
+            self.owner = owner
+        }
+
+        deinit {
+            _ = restoreResult()
+        }
+
+        package func restore() throws(LinuxPiScreenConsoleError) {
+            if case .failure(let failure) = restoreResult() {
+                throw .restoration(failure)
+            }
+        }
+
+        private func restoreResult() -> PiScreenConsoleRestoration {
+            guard var owner else { return .restored(changedMode: false) }
+            self.owner = nil
+            return owner.restore()
+        }
+    }
+
     package final class LinuxPiScreenFramebuffer: PiScreenFramebufferSink {
         package let layout: PiScreenFramebufferLayout
         private let fileDescriptor: Int32

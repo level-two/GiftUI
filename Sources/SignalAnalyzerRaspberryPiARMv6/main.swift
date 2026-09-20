@@ -13,6 +13,7 @@ import SignalAnalyzerTargetHost
             exit(EXIT_FAILURE)
         }
         do {
+            let console = try LinuxPiScreenConsoleSession()
             let framebuffer = try LinuxPiScreenFramebuffer()
             guard
                 let transform = PiScreenAspectFitTransform(
@@ -39,6 +40,7 @@ import SignalAnalyzerTargetHost
                 touch: touch,
                 assemblyReport: assemblyReport
             )
+            try console.restore()
             print("status=completed")
             exit(EXIT_SUCCESS)
         } catch {

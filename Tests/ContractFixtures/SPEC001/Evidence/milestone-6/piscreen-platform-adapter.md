@@ -95,7 +95,22 @@ restore the prior console state during teardown. The unprivileged `giftui`
 account can access framebuffer and input devices but is not a member of the
 `tty` group, so this cannot be hidden by silently assuming `/dev/tty0` access.
 
+The production adapter now models console ownership as an explicit lifecycle:
+it reads and retains the prior Linux console mode, changes text mode to
+graphics mode before framebuffer construction, restores the retained mode
+after the host loop tears down, and closes the console descriptor on every
+acquisition and restoration outcome. Hardware-free transport tests prove
+preexisting graphics-mode preservation, text-mode restoration, partial
+acquisition cleanup, restoration-failure cleanup, and idempotent release. The
+Linux adapter uses `KDGETMODE` and `KDSETMODE`; inability to open `/dev/tty0`,
+read its mode, or enter graphics mode fails the explicit production mode
+before framebuffer or input construction. The exact ARMv6 product
+cross-compiled with EABI5 hard-float verification and build ID
+`ed6eb65f6762ae9d994a1c76a441f71fd79ed06f`. No connected command was run, so
+effective console permissions and physical cursor suppression remain part of
+the authorized T8.1 target test rather than claimed evidence here.
+
 The implementation and cross-build evidence remains distinct from these
-connected adapter results. No Signal Analyzer composition root or physical
-control scenario executed, so application-level portions of T6.7 and all of
+connected adapter results. No physical control scenario executed, so the
+remaining application-level failure and cleanup fixtures in T6.7 and all of
 T8.1 remain open.

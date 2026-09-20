@@ -734,8 +734,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       kept the input poll operational. The user confirmed the gradient was
       physically visible and reported the framebuffer console's blinking
       underscore overlay after process exit. Production console-mode ownership
-      and restoration therefore joins calibration, six-action routing, full
-      host-loop composition, and T8.1 as open work. The remaining
+      now retains the prior Linux console mode, enters graphics mode before
+      constructing framebuffer or input devices, and restores that mode after
+      host-loop teardown. Hardware-free fixtures cover partial acquisition,
+      restoration failure, preexisting graphics mode, and idempotent cleanup;
+      the ARMv6 product cross-build verifies the Linux ioctl binding. Physical
+      permission and cursor-suppression proof remains in T8.1. Calibration,
+      six-action routing, and the remaining failure/cleanup evidence remain
+      open in T6.7. The remaining
       production-stage join is defined by the
       [Connected-Target Host Loop design](../implementation-designs/spec-001-connected-target-host-loop.md).
       Its first production-store slice now preserves bounded structural,
