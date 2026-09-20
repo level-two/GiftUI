@@ -4,7 +4,6 @@ import GiftUIDisplayCore
 import GiftUIDrawing
 import GiftUIExecution
 import GiftUIFailureCore
-import GiftUIHostConfiguration
 import GiftUILayout
 import GiftUIObservableState
 import GiftUIPlatformRaspberryPi
@@ -12,6 +11,7 @@ import GiftUIRasterCore
 import GiftUIReferenceTextResources
 import GiftUIRenderCore
 import GiftUIRenderLowering
+import GiftUIRuntimeCore
 import GiftUIRuntimeDynamic
 import GiftUISemanticCore
 import GiftUISurfaceCore
@@ -24,6 +24,7 @@ import SignalAnalyzerTargetHost
 import Testing
 
 @testable import GiftUICapabilities
+@testable import GiftUIHostConfiguration
 
 private final class SemanticJoinRepository: SignalAcquisitionRepository {
     let failsStart: Bool
@@ -844,6 +845,64 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(pacing.accumulatedReasons == .admittedWork)
 }
 
+@Test func dynamicPiLifecycleOwnerRunsSevenStepsAndEightStepTeardown() throws {
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    let layout = try #require(
+        PiScreenFramebufferLayout(
+            width: 480,
+            height: 320,
+            bitsPerPixel: 16,
+            bytesPerRow: 960,
+            mappedBytes: 307_200
+        )
+    )
+    let target = try #require(
+        PiScreenDisplayTarget(sink: EndpointFramebufferSink(), layout: layout)
+    )
+    var owner = DynamicSignalAnalyzerPiLifecycleOwner(
+        target: target,
+        assemblyReport: dynamicPiAssemblyReport(preset: preset),
+        inputSource: InputSourceID(rawValue: 91),
+        initialFrameOriginMicroseconds: 0,
+        timingScale: SignalSourceTimingScale(numerator: 1, denominator: 1)!,
+        nowMicroseconds: { 0 }
+    )
+    var controller = MVPHostActivationController<RaspberryPiDynamicHostActivationFailure>()
+
+    #expect(controller.activate(owner: &owner, invariantFailure: .invariant) == .active)
+    #expect(controller.lifecycleState == .active)
+    #expect(owner.phase == .active)
+    #expect(owner.inputIsEligible)
+    #expect(owner.sourceIsActive)
+    #expect(owner.loopIsEstablished)
+    #expect(owner.reportRuntimeUseIsValid)
+    #expect(owner.deliverScheduledSourceTransition())
+
+    let boundary = UInt64(preset.pacing.minimumFrameIntervalMicroseconds)
+    guard case .completed(_, let result) = owner.service(at: boundary) else {
+        Issue.record("active lifecycle owner did not service its paced opportunity")
+        return
+    }
+    guard case .completed(let summary) = result else {
+        Issue.record("paced lifecycle opportunity failed: \(result)")
+        return
+    }
+    #expect(summary.application.factCount == 6)
+    #expect(summary.application.changed)
+    #expect(summary.presentation != nil)
+
+    controller.teardown(owner: &owner)
+    #expect(controller.lifecycleState == .quiescent)
+    #expect(owner.phase == .quiescent)
+    #expect(!owner.inputIsEligible)
+    #expect(!owner.sourceIsActive)
+    #expect(!owner.loopIsEstablished)
+    #expect(!owner.reportRuntimeUseIsValid)
+    let phase = owner.phase
+    controller.teardown(owner: &owner)
+    #expect(owner.phase == phase)
+}
+
 @Test func dynamicPiPacingServicesTheSerializedCoordinatorAtFrameBoundary() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     let pacing = DynamicSignalAnalyzerPiWakePacingOwner(
@@ -1539,6 +1598,40 @@ private func dynamicPiEffectivePresentation(
         requiredPayloadBytes: CapabilityByteCount(rawValue: 7_680),
         inFlightCount: 1,
         requiredInFlightBytes: CapabilityByteCount(rawValue: 7_680)
+    )
+}
+
+private func dynamicPiAssemblyReport(
+    preset: GeneratedSignalAnalyzerPreset
+) -> HostAssemblyReport {
+    let audit: RuntimeStorageAudit
+    switch preset.validatedStorageAudit() {
+    case .valid(let value):
+        audit = value
+    case .invalid:
+        fatalError("generated Dynamic Pi storage audit must be valid")
+    }
+    let effective = dynamicPiEffectivePresentation(preset: preset)
+    return HostAssemblyReport(
+        kind: .raspberryPiDynamic,
+        profile: .dynamic,
+        storageAudit: audit,
+        capabilitySnapshot: CapabilitySnapshot(rasterPresentation: effective),
+        effectivePresentation: effective,
+        drawingPlanOperationLimit: preset.runtimeLimits.render.maximumOperations,
+        minimumSinkOperationCapacity: preset.runtimeLimits.renderSink.maximumOperations,
+        cardinality: preset.cardinality,
+        minimumFrameIntervalMicroseconds:
+            preset.pacing.minimumFrameIntervalMicroseconds,
+        maximumFactServiceLatencyMicroseconds:
+            preset.pacing.maximumFactServiceLatencyMicroseconds,
+        minimumAcceptedTransitionSpacingMicroseconds:
+            preset.pacing.minimumAcceptedTransitionSpacingMicroseconds,
+        maximumCompactFactsPerServiceWindow:
+            preset.pacing.maximumTransitionFactsPerServiceWindow
+            + UInt16(preset.pacing.maximumBootstrapFactsPerServiceWindow)
+            + UInt16(preset.pacing.maximumActionInducedFactsPerServiceWindow),
+        maximumRetryableRefusals: preset.pacing.maximumRetryableRefusals
     )
 }
 

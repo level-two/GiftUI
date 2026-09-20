@@ -323,6 +323,7 @@ let package = Package(
                 "GiftUISemanticCore",
                 "GiftUISurfaceCore",
                 "GiftUITextResources",
+                "SignalAnalyzerData",
                 "SignalAnalyzerDomain",
                 "SignalAnalyzerHost",
                 "SignalAnalyzerPresentation",

@@ -244,7 +244,8 @@ operations; the production Dynamic Canvas plan and extension add five strokes
 for 35 total operations, 129 positioned glyphs, and clip depth 3. The
 maintainer approved these SPEC-008/SPEC-013/SPEC-015 values on 2026-09-20, and
 the regenerated exact preset admits the complete production join. Live
-host-owner composition remains open inside T6.7.
+host-owner composition is now realized for the Pi lifecycle aggregate; the
+Linux process-loop boundary remains open inside T6.7.
 
 The first host-loop owner is now concrete: one reference-owned Dynamic Pi
 pacing state is shared by post-admission repository callbacks, queued input,
@@ -257,8 +258,12 @@ candidate reaches publication. The serialized coordinator owns that allocation
 call site and passes the reserved tuple directly to presentation. Linux polling
 now has a bounded decoded-contact ingress into normalized admission and the
 shared pacing owner. The ARMv6 executable's typed input pump maps the real
-nonblocking Linux device poll directly into that seam. The surrounding process
-loop and full activation/teardown remain open.
+nonblocking Linux device poll directly into that seam. A production lifecycle
+aggregate now delegates exact seven-step activation and eight-step teardown to
+the existing host controller, starts acquisition through the committed Start
+action, and services deferred source facts at the generated frame boundary.
+The surrounding Linux monotonic process loop and console ownership/restoration
+remain open.
 
 ## Code and Evidence Links
 

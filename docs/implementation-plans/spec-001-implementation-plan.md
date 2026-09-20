@@ -852,8 +852,15 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       failure. A bounded decoded-contact ingress now joins PiScreen phases to
       normalized admission and wake coalescing without synchronous model work.
       The ARMv6 executable's typed input pump maps the real nonblocking Linux
-      device poll directly into that seam. The surrounding process loop and
-      complete lifecycle loop remain open.
+      device poll directly into that seam. A production Dynamic Pi lifecycle
+      aggregate now delegates all seven activation and eight teardown steps to
+      the existing host controller. Its hardware-free fixture accepts the
+      first physical frame before input eligibility, invokes the committed
+      Start action through normalized admission, services six deferred source
+      facts at the generated frame boundary, commits the replacement frame,
+      and proves repeated teardown is inert. The Linux monotonic process loop,
+      console ownership/restoration, and connected application scenario remain
+      open; see the [lifecycle-owner evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-pi-lifecycle-owner.md).
 - [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation
