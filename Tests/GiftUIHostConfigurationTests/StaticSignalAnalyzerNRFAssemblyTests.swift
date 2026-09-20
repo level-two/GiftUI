@@ -24,6 +24,8 @@ private final class StaticNRFApplicationStorageRepository:
     SignalAcquisitionRepository
 {
     private let probe: StaticNRFApplicationStorageRepositoryProbe
+    private var captureSink: (any SignalCaptureSink)?
+    private var stateSink: (any AcquisitionStateSink)?
 
     init(probe: StaticNRFApplicationStorageRepositoryProbe) {
         self.probe = probe
@@ -33,24 +35,40 @@ private final class StaticNRFApplicationStorageRepository:
 
     func startObservingCapture(sink: some SignalCaptureSink) {
         probe.captureObservationStartCount += 1
+        captureSink = sink
         _ = sink.receive(.snapshot(revision: 0, capture: .empty()))
     }
 
     func stopObservingCapture() {
         probe.captureObservationStopCount += 1
+        captureSink = nil
     }
 
     func startObservingAcquisitionState(sink: some AcquisitionStateSink) {
         probe.stateObservationStartCount += 1
+        stateSink = sink
         _ = sink.receive(.running)
     }
 
     func stopObservingAcquisitionState() {
         probe.stateObservationStopCount += 1
+        stateSink = nil
     }
-    func start() throws { probe.startCount += 1 }
-    func stop() { probe.stopCount += 1 }
-    func clear() { probe.clearCount += 1 }
+
+    func start() throws {
+        probe.startCount += 1
+        _ = stateSink?.receive(.running)
+    }
+
+    func stop() {
+        probe.stopCount += 1
+        _ = stateSink?.receive(.stopped)
+    }
+
+    func clear() {
+        probe.clearCount += 1
+        _ = captureSink?.receive(.snapshot(revision: 1, capture: .empty()))
+    }
 }
 
 @Test func staticNRFAssemblyValidatesExactGeneratedEndpointContract() {
@@ -171,71 +189,86 @@ private final class StaticNRFApplicationStorageRepository:
         }
         #expect(repeatedFactSummary.factCount == 0)
         #expect(!repeatedFactSummary.changed)
-        owner.withModel { model in
-            model.startTapped()
-            model.stopTapped()
-            model.clearTapped()
-        }
-        #expect(repositoryProbe.startCount == 1)
-        #expect(repositoryProbe.stopCount == 1)
-        #expect(repositoryProbe.clearCount == 1)
-
         owner.withInteraction { interaction in
             #expect(
                 interaction.beginCandidate(
                     limits: InteractionLimits(maximumActions: 6, maximumHitRegions: 6)!
                 ) == nil
             )
-            #expect(
-                interaction.append(
-                    identity: 4,
-                    isEnabled: true,
-                    bounds: Rect(
-                        origin: Point(x: 0, y: 0),
-                        size: Size(width: 8, height: 8)!
-                    )!,
-                    clip: Rect(
-                        origin: Point(x: 0, y: 0),
-                        size: Size(width: 8, height: 8)!
-                    )!,
-                    paintOrder: 0,
-                    action: BoundedApplicationAction(
-                        code: SignalAnalyzerAction.selectOneSecond.rawValue
-                    ),
-                    targetGeneration: ObservableTargetGeneration(rawValue: 0)
-                ) == .requiresGeneration
-            )
-            #expect(
-                interaction.assignGeneration(ActionGeneration(rawValue: 8), to: 4)
-                    == nil
-            )
+            let actions: [(UInt32, UInt16, SignalAnalyzerAction)] = [
+                (4, 0, .start),
+                (5, 8, .stop),
+                (6, 16, .clear),
+            ]
+            var paintOrder: UInt16 = 0
+            for (identity, x, action) in actions {
+                #expect(
+                    interaction.append(
+                        identity: identity,
+                        isEnabled: true,
+                        bounds: Rect(
+                            origin: Point(x: Int32(x), y: 0),
+                            size: Size(width: 8, height: 8)!
+                        )!,
+                        clip: Rect(
+                            origin: Point(x: Int32(x), y: 0),
+                            size: Size(width: 8, height: 8)!
+                        )!,
+                        paintOrder: paintOrder,
+                        action: BoundedApplicationAction(code: action.rawValue),
+                        targetGeneration: ObservableTargetGeneration(rawValue: 0)
+                    ) == .requiresGeneration
+                )
+                #expect(
+                    interaction.assignGeneration(
+                        ActionGeneration(rawValue: identity + 4),
+                        to: identity
+                    ) == nil
+                )
+                paintOrder += 1
+            }
             #expect(interaction.finishCandidate() == nil)
             interaction.resolveCandidate(.commit(revision))
         }
 
         owner.installPhysicalPresentation(rawValue: revision.rawValue)
-        for phase in [PointerPhase.down, .up] {
-            #expect(
-                owner.admit(
-                    phaseRawValue: phase.rawValue,
-                    x: 4,
-                    y: 4,
-                    observedPresentationRevisionRawValue: revision.rawValue,
-                    priorPhysicalSequenceIsCompleteRawValue: 0
-                )?.disposition == .queued
-            )
+        for x in [UInt16(4), 12, 20] {
+            for phase in [PointerPhase.down, .up] {
+                #expect(
+                    owner.admit(
+                        phaseRawValue: phase.rawValue,
+                        x: x,
+                        y: 4,
+                        observedPresentationRevisionRawValue: revision.rawValue,
+                        priorPhysicalSequenceIsCompleteRawValue: 0
+                    )?.disposition == .queued
+                )
+            }
         }
         #expect(
             owner.runInputOpportunity()
                 == .completed(
                     StaticSignalAnalyzerNRFInputDrainSummary(
-                        eventCount: 2,
-                        dispatchedActionCount: 1,
+                        eventCount: 6,
+                        dispatchedActionCount: 3,
                         cancelledOrRejectedCount: 0
                     )
                 )
         )
-        #expect(owner.withModel { $0.state.visibleWindow } == .oneSecond)
+        #expect(repositoryProbe.startCount == 1)
+        #expect(repositoryProbe.stopCount == 1)
+        #expect(repositoryProbe.clearCount == 1)
+        #expect(owner.withModel { $0.state.acquisitionState } == .running)
+        #expect(owner.withModel { $0.captureRevision } == 0)
+        let actionFactApplication = owner.applyRepositoryFactsAtOpportunity()
+        guard case .applied(let actionFactSummary) = actionFactApplication else {
+            Issue.record("Static action-produced facts were not applied")
+            return
+        }
+        #expect(actionFactSummary.factCount == 3)
+        #expect(actionFactSummary.changed)
+        #expect(owner.withModel { $0.state.acquisitionState } == .stopped)
+        #expect(owner.withModel { $0.captureRevision } == 1)
         let rootIsDirty = owner.rootIsDirty
         #expect(rootIsDirty)
     }

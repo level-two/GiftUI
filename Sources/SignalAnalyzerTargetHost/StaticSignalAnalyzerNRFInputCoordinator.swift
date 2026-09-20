@@ -43,6 +43,7 @@ package struct StaticSignalAnalyzerNRFInputDrainSummary: Equatable, Sendable {
 
 package enum StaticSignalAnalyzerNRFInputOpportunityRejection: Equatable, Sendable {
     case application(HostApplicationOpportunityRejection)
+    case factProducerUnavailable
     case handlerUnavailable
     case invalidHandlerCompletion
 }

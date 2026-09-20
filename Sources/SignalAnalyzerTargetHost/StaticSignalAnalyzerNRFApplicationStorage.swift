@@ -263,7 +263,12 @@ package struct StaticSignalAnalyzerNRFApplicationOwner: ~Copyable {
     package mutating func runInputOpportunity()
         -> StaticSignalAnalyzerNRFInputOpportunityResult
     {
-        input.pointee.runOpportunity(
+        let admission = StaticSignalAnalyzerHostFactAdmission(storage: factAdmission)
+        guard admission.beginProducer(.action) else {
+            return .rejected(.factProducerUnavailable)
+        }
+        defer { admission.endProducer() }
+        return input.pointee.runOpportunity(
             interaction: &interaction.pointee,
             root: &root.pointee
         )

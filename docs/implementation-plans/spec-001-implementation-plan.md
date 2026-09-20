@@ -962,6 +962,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       under observable mutation ownership, and returns the bounded fact count
       plus aggregate changed state. Repeating the opportunity without new
       admission applies zero facts.
+      Static input dispatch now brackets the complete normalized drain with
+      the bounded action-fact producer. Synchronous Start, Stop, and Clear
+      repository callbacks therefore terminate at admission, leave the model
+      unchanged during action dispatch, and apply in sequence only at the next
+      fact opportunity; unavailable producer ownership rejects before removing
+      queued input.
       Building this owner into the firmware's complete generated Static
       presentation composition remains open. The firmware
       now compiles the exact shared input values,

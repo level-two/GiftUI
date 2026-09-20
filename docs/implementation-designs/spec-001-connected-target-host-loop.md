@@ -341,6 +341,15 @@ fact rejection, and an unavailable model, while the applied summary carries
 the exact `UInt16` fact count and aggregate changed state. An empty later
 opportunity is a successful zero-fact application rather than replay.
 
+The scoped owner's input opportunity also owns the action producer lifetime.
+It reserves `.action` before delegating to the fixed input drain and releases
+that producer on every return path. Consequently a repository callback caused
+by Start, Stop, or Clear can only append a bounded fact while the interaction
+session owns observable mutation; it cannot reenter the model. Failure to
+reserve the producer rejects before the input owner removes any queued event.
+Accepted action facts remain active until the next fact opportunity seals and
+applies them.
+
 The firmware input ABI now has its first address-stable target-owned lifetime:
 one fixed global storage value binds the input source once and is mutated in
 place by every C bridge call. This removes per-call coordinator copies while

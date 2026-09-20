@@ -385,6 +385,17 @@ facts and changes the model to running, the root becomes dirty, and a repeated
 opportunity applies zero facts without replay. This is still host mechanism
 evidence and does not alter the firmware hashes or resource record.
 
+The scoped owner now opens the admission store's bounded `.action` producer
+around each complete input drain. The host fixture commits Start, Stop, and
+Clear hit regions, drains the generated six-event maximum, and proves each use
+case delegates exactly once. All three synchronous repository callbacks are
+admitted while the model remains at its pre-action acquisition state and
+capture revision. The next fact opportunity applies three facts in sequence,
+ending stopped at capture revision one. This proves same-thread callbacks do
+not reenter Static observable mutation. The result remains host mechanism
+evidence; no firmware source, resource record, or connected hardware was
+changed.
+
 ## Static interaction and observable mutation
 
 `StaticSignalAnalyzerNRFApplicationInputOwner` is the production typed owner of
