@@ -40,7 +40,30 @@ ID `4faf112ea04f8a2a9bdc8acd98cdfa790cdf6ea6`. The executable exposes an
 explicit `--inspect-piscreen` mode that opens and validates `/dev/fb0` and
 `/dev/input/event0` without claiming application execution.
 
-This is hardware-free implementation and cross-build evidence only. It does
-not open a Linux device, execute the Signal Analyzer composition root, deploy
-to a Raspberry Pi, or claim PiScreen display/input behavior. Those parts of
-T6.7 and T8.1 remain open.
+## Connected device-readiness result
+
+The separately authorized repository deployment workflow reverified the
+selected machine as `armv6l` and atomically deployed the exact artifact, whose
+SHA-256 is
+`9a3b5e626da31fc1371e8bd0ac04a29fdeb4ba5e22b0818c95e6eec7eeaa315d`.
+No service was restarted. Running
+
+```text
+giftui/bin/SignalAnalyzerRaspberryPiARMv6 --inspect-piscreen
+```
+
+as the unprivileged `giftui` user produced:
+
+```text
+status=ready framebuffer=480x320 bpp=16 stride=960 touch=/dev/input/event0
+```
+
+This proves that the current target-owned adapters can open and validate both
+selected device nodes with the required account. It does not render an
+analyzer frame, ingest a physical touch, or establish application-level
+display/input behavior.
+
+The implementation and cross-build evidence remains distinct from the narrow
+connected device-readiness result. No Signal Analyzer composition root or
+physical control scenario executed, so application-level portions of T6.7 and
+all of T8.1 remain open.
