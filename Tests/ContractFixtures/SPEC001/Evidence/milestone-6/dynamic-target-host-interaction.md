@@ -106,3 +106,18 @@ dispatch. The fixture routes the one-second control through the complete
 three-event sequence, rejects a stale revision, and rejects all input after
 quiescence. Raw PiScreen contact polling and the `HostNormalizedInputGate`
 executable composition remain open.
+
+## Normalized Input Admission (2026-09-20)
+
+`DynamicSignalAnalyzerPiInputCoordinator` now composes the existing
+`HostNormalizedInputGate` with a Dynamic-profile bounded pointer queue. Target
+contact phases are assigned one source, sequence, ordinal, and committed
+presentation revision before execution admission. Accepted events remain
+queued until the serialized host opportunity drains them into the production
+interaction owner, so platform input cannot synchronously mutate the model.
+
+The hardware-free fixture proves presentation-not-established, unknown-source,
+stale-revision, and quiescent rejection; exact down/move/up sequence and ordinal
+formation; unchanged model state before drain; and one generation-checked
+one-second action after drain. Linux evdev polling, wake-loop ownership, and
+the complete live activation owner remain open.

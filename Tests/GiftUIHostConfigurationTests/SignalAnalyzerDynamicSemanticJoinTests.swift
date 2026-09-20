@@ -297,6 +297,141 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(owner.eligibleActionCount == 0)
 }
 
+@Test func dynamicPiInputCoordinatorQueuesNormalizedSequenceUntilDrain() throws {
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    let revision = PresentationRevision(rawValue: 44)
+    let provenance = FrameProvenance(
+        cycle: RunCycleID(rawValue: 41),
+        semanticRevision: SemanticRevision(rawValue: 42),
+        candidateFrame: CandidateFrameID(rawValue: 43)
+    )
+    let layout = try #require(
+        PiScreenFramebufferLayout(
+            width: 480,
+            height: 320,
+            bitsPerPixel: 16,
+            bytesPerRow: 960,
+            mappedBytes: 307_200
+        )
+    )
+    let target = try #require(
+        PiScreenDisplayTarget(sink: EndpointFramebufferSink(), layout: layout)
+    )
+    var owner = try #require(
+        DynamicSignalAnalyzerPiInitialPresentationOwner(
+            target: target,
+            limits: preset.runtimeLimits,
+            maximumRecordedTraversalIdentities: 203,
+            effectivePresentation: dynamicPiEffectivePresentation(preset: preset),
+            provenance: provenance,
+            presentationRevision: revision
+        )
+    )
+    let model = makeSemanticJoinModel(failsStart: true)
+    guard case .presented = owner.presentInitial(model: model) else {
+        Issue.record("initial presentation did not establish input")
+        return
+    }
+    let action = try #require(
+        (0 ..< owner.eligibleActionCount).compactMap { owner.eligibleAction(at: $0) }
+            .first { $0.action.code == SignalAnalyzerAction.selectOneSecond.rawValue }
+    )
+    let point = Point(
+        x: action.hitBounds.origin.x + action.hitBounds.size.width / 2,
+        y: action.hitBounds.origin.y + action.hitBounds.size.height / 2
+    )
+    let source = InputSourceID(rawValue: 17)
+    var coordinator = DynamicSignalAnalyzerPiInputCoordinator(
+        source: source,
+        capacity: preset.runtimeLimits.execution.maximumInputEvents,
+        context: ExecutionContext(
+            cycle: provenance.cycle,
+            semanticRevision: provenance.semanticRevision,
+            candidateFrame: provenance.candidateFrame,
+            phase: .idle
+        )
+    )
+
+    #expect(
+        coordinator.admit(
+            phase: .down,
+            position: point,
+            source: source,
+            observedPresentationRevision: nil
+        ) == .dropped(.presentationNotEstablished)
+    )
+    coordinator.installPhysicalPresentation(revision)
+    let down = coordinator.admit(
+        phase: .down,
+        position: point,
+        source: source,
+        observedPresentationRevision: revision
+    )
+    guard case .queued(let downEvent) = down else {
+        Issue.record("normalized down was not queued: \(down)")
+        return
+    }
+    let move = coordinator.admit(
+        phase: .move,
+        position: point,
+        source: source,
+        observedPresentationRevision: revision
+    )
+    let up = coordinator.admit(
+        phase: .up,
+        position: point,
+        source: source,
+        observedPresentationRevision: revision
+    )
+    guard case .queued(let moveEvent) = move, case .queued(let upEvent) = up else {
+        Issue.record("normalized continuation was not queued")
+        return
+    }
+    #expect(downEvent.ordinal.rawValue == 0)
+    #expect(moveEvent.sequence == downEvent.sequence)
+    #expect(moveEvent.ordinal.rawValue == 1)
+    #expect(upEvent.sequence == downEvent.sequence)
+    #expect(upEvent.ordinal.rawValue == 2)
+    #expect(model.state.visibleWindow == .twoSeconds)
+
+    #expect(
+        coordinator.drain(into: &owner)
+            == DynamicSignalAnalyzerPiInputDrainSummary(
+                eventCount: 3,
+                dispatchedActionCount: 1,
+                cancelledOrRejectedCount: 0
+            )
+    )
+    #expect(model.state.visibleWindow == .oneSecond)
+    #expect(
+        coordinator.admit(
+            phase: .down,
+            position: point,
+            source: InputSourceID(rawValue: 18),
+            observedPresentationRevision: revision
+        ) == .dropped(.unknownSource)
+    )
+    #expect(
+        coordinator.admit(
+            phase: .down,
+            position: point,
+            source: source,
+            observedPresentationRevision: PresentationRevision(rawValue: 43)
+        ) == .dropped(.stalePresentation)
+    )
+
+    coordinator.quiesce()
+    #expect(!coordinator.inputIsEligible)
+    #expect(
+        coordinator.admit(
+            phase: .down,
+            position: point,
+            source: source,
+            observedPresentationRevision: revision
+        ) == .sourceQuiesced(.inputUnavailable)
+    )
+}
+
 @Test func dynamicTargetHostPresentationPipelineUsesExactGeneratedLimits() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     var pipeline = try #require(

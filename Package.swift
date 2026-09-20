@@ -311,6 +311,7 @@ let package = Package(
                 "GiftUIDisplayCore",
                 "GiftUIDrawing",
                 "GiftUIExecution",
+                "GiftUIHostConfiguration",
                 "GiftUIInteraction",
                 "GiftUILayout",
                 "GiftUIObservableState",
