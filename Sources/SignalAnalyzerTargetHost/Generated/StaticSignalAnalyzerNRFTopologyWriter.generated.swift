@@ -172,6 +172,91 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         return true
     }
 
+    /// The 15 padding and frame modifiers are invariant across model state.
+    /// Passthrough render colors and disabled-action flags are not written here.
+    package static func populateInvariantLayoutModifiers(
+        scopeCount: UInt16,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
+        let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+        guard region.count == table.regionByteCount,
+            scopeCount == 96 || scopeCount == 98
+        else { return false }
+        var slot: UInt16 = 0
+        while slot < 15 {
+            let ordinal = invariantModifierOrdinal(at: slot)
+            guard let record = table.scope(at: ordinal, in: region),
+                record.kind == .modifier,
+                record.flags == 0,
+                record.auxiliary == 0,
+                record.payload0 == 0,
+                record.payload1 == 0,
+                record.payload2 == 0
+            else { return false }
+            slot += 1
+        }
+        slot = 0
+        while slot < 15 {
+            let ordinal = invariantModifierOrdinal(at: slot)
+            let payload = invariantModifierPayload(at: slot)
+            guard let old = table.scope(at: ordinal, in: region),
+                table.storeScope(
+                    StaticSignalAnalyzerNRFScopeRecord(
+                        identity: old.identity,
+                        parent: old.parent,
+                        firstChild: old.firstChild,
+                        nextSibling: old.nextSibling,
+                        kind: .modifier,
+                        flags: payload.flags,
+                        auxiliary: payload.auxiliary,
+                        payload0: payload.payload0,
+                        payload1: payload.payload1,
+                        payload2: 0
+                    ),
+                    at: ordinal,
+                    in: region
+                )
+            else { return false }
+            slot += 1
+        }
+        return true
+    }
+
+    private static func invariantModifierOrdinal(at slot: UInt16) -> UInt16 {
+        switch slot {
+        case 0: 1
+        case 1: 11
+        case 2: 15
+        case 3: 16
+        case 4: 18
+        case 5: 22
+        case 6: 33
+        case 7: 37
+        case 8: 42
+        case 9: 46
+        case 10: 51
+        case 11: 55
+        case 12: 60
+        case 13: 64
+        default: 69
+        }
+    }
+
+    private static func invariantModifierPayload(
+        at slot: UInt16
+    ) -> (flags: UInt8, auxiliary: UInt16, payload0: UInt32, payload1: UInt32) {
+        switch slot {
+        case 0: (2, 15, 4, 0)
+        case 1, 2: (2, 15, 2, 0)
+        case 3: (12, 232, 80, 0)
+        case 4: (11, 15, 200, 100)
+        case 5: (2, 10, 2, 0)
+        case 6, 8, 10, 12: (2, 5, 1, 0)
+        case 7, 9, 11, 13: (11, 15, 120, 16)
+        default: (2, 15, 2, 0)
+        }
+    }
+
     private static func invariantPrimitiveOrdinal(at slot: UInt16) -> UInt16 {
         switch slot {
         case 0: 2

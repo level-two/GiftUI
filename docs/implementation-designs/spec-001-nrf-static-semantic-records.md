@@ -200,6 +200,10 @@ shared by both variants. Host oracle comparison covers every primitive
 record, including zero-valued proxies. This leaves text, modifier, and
 state-dependent values unfilled; a shape-plus-bindings table is not yet a
 publishable semantic result.
+The writer now also fills all fifteen invariant padding and frame modifier
+records. Host oracle comparison covers their exact packed flags, edges,
+alignment, dimensions, and render scope in both variants. Passthrough color
+and disabled-action modifiers remain live model-dependent writer work.
 If any required current payload cannot be encoded in the three words, this
 packing must be revised within the *same* 3,024-byte bound and revalidated;
 it is not permission to truncate a modifier or alter the portable hierarchy.

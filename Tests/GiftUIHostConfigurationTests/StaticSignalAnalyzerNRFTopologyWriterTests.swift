@@ -49,6 +49,19 @@ import Testing
             #expect(table.scope(at: 2, in: region)?.payload0 == 4)
             #expect(table.scope(at: 83, in: region)?.payload0 == 4)
             #expect(
+                StaticSignalAnalyzerNRFTopologyWriter.populateInvariantLayoutModifiers(
+                    scopeCount: count,
+                    in: region
+                )
+            )
+            #expect(table.scope(at: 18, in: region)?.payload1 == 100)
+            #expect(
+                !StaticSignalAnalyzerNRFTopologyWriter.populateInvariantLayoutModifiers(
+                    scopeCount: count,
+                    in: region
+                )
+            )
+            #expect(
                 !StaticSignalAnalyzerNRFTopologyWriter.populateInvariantPrimitives(
                     scopeCount: count,
                     in: region

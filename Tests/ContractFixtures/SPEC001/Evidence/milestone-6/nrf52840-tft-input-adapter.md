@@ -662,6 +662,9 @@ represent every required message: replacing the measured 12-scalar error in
 the 129-scalar diagnostic tree needs 213 slots, but the pool holds 139. Text
 publication is paused for internal repacking within the unchanged 3,024-byte
 region; the fail-closed scalar encoder is not claimed as full conformance.
+Independently, the generated writer now fills fifteen invariant padding/frame
+modifier records. Both real-tree variants match every packed flag, edge,
+alignment, and dimension; live color and disabled-state modifiers remain.
 The enclosing semantic-region owner now has a separate complete-candidate
 staging and publication path. A host fixture populates a synthetic 96-scope
 table directly in the borrowed candidate region, seals it, refreshes the
