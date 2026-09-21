@@ -517,6 +517,16 @@ import Testing
                         return true
                     }
                 #expect(candidateRead)
+                let candidateLayoutRead =
+                    StaticSignalAnalyzerNRFSemanticRegionStore.withGeneratedUTF8LayoutView(
+                        in: .semanticCandidate,
+                        profile: &profile
+                    ) { view in
+                        #expect(view.scopeCount == expectedScopes)
+                        #expect(view.primitive(at: view.rootIdentity) != nil)
+                        return true
+                    }
+                #expect(candidateLayoutRead)
                 #expect(inputs.stageGeneratedSemanticCandidate(in: &profile) == nil)
                 #expect(inputs.publishSemanticCandidate(revision: 1, in: &profile) == nil)
                 #expect(
@@ -582,6 +592,15 @@ import Testing
                         return true
                     }
                 #expect(publishedRead)
+                let publishedLayoutRead =
+                    StaticSignalAnalyzerNRFSemanticRegionStore.withGeneratedUTF8LayoutView(
+                        in: .semanticPublished,
+                        profile: &profile
+                    ) { view in
+                        #expect(view.scopeCount == expectedScopes)
+                        return true
+                    }
+                #expect(publishedLayoutRead)
             }
             let idle = ExecutionContext(
                 cycle: nil,
@@ -597,12 +616,24 @@ import Testing
                     profile: &profile
                 ) { _ in true }
             )
+            #expect(
+                !StaticSignalAnalyzerNRFSemanticRegionStore.withGeneratedUTF8LayoutView(
+                    in: .semanticCandidate,
+                    profile: &profile
+                ) { _ in true }
+            )
         }
         profile.quiesce()
         #expect(
             !StaticSignalAnalyzerNRFSemanticRegionStore.withGeneratedUTF8RenderView(
                 in: .semanticPublished,
                 renderSnapshotVersion: 3,
+                profile: &profile
+            ) { _ in true }
+        )
+        #expect(
+            !StaticSignalAnalyzerNRFSemanticRegionStore.withGeneratedUTF8LayoutView(
+                in: .semanticPublished,
                 profile: &profile
             ) { _ in true }
         )

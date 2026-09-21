@@ -325,6 +325,24 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
         } == true
     }
 
+    /// The layout view and its region pointer are valid only during `body`.
+    package static func withGeneratedUTF8LayoutView(
+        in family: RuntimeStorageFamily,
+        profile: inout StaticSignalAnalyzerNRFProductionProfileBinding,
+        body: (StaticSignalAnalyzerNRFUTF8LayoutView) -> Bool
+    ) -> Bool {
+        guard family == .semanticCandidate || family == .semanticPublished else {
+            return false
+        }
+        return profile.withRegion(family) { region in
+            guard let header = decodeHeader(from: region),
+                generatedUTF8TableSummary(in: region, header: header) != nil,
+                let view = StaticSignalAnalyzerNRFUTF8LayoutView(in: region)
+            else { return false }
+            return body(view)
+        } == true
+    }
+
     private static func generatedUTF8TableSummary(
         in region: UnsafeMutableRawBufferPointer,
         header: StaticSignalAnalyzerNRFSemanticRegionHeader

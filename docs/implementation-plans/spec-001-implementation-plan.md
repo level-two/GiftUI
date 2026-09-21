@@ -1029,8 +1029,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       links in both variants. The region owner now lends that reader only
       during validated candidate/published storage lifetimes. A companion
       version-2 layout reader now matches every portable primitive, child,
-      modifier, and text scalar query in both variants; its production scoped
-      lending and full layout/render transaction remain open. The common Static
+      modifier, and text scalar query in both variants. Production scoped
+      lending now follows candidate/published region lifetimes; the full
+      layout/render transaction remains open. The common Static
       profile binding now also lends each
       generated region only during its registered retained or attempt-local
       lifetime, giving those focused stages direct bounded workspace access

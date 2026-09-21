@@ -225,8 +225,9 @@ attempt finish and published access after quiescence. A companion layout
 view now unwraps render-only modifier chains into layout children, returns
 ordered modifier scopes and values, and decodes text scalars directly from
 validated UTF-8 ranges. The host oracle compares every generated primitive,
-child, modifier, and text query in both variants. Scoped production lending
-of this layout view and the full layout/render transaction remain open.
+child, modifier, and text query in both variants. The region owner now lends
+this layout view only during validated candidate or published storage
+lifetimes; the full layout/render transaction remains open.
 A ROM-backed generated topology writer now decodes each normal/diagnostic
 root-first scope's stable source ID, parent, first child, next sibling, and
 kind directly into the caller-owned candidate region. The host oracle checks
