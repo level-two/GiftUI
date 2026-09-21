@@ -273,6 +273,68 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         return true
     }
 
+    package static func populateLiveModifiers(
+        inputs: borrowing StaticSignalAnalyzerNRFGeneratedPresentationInputs,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
+        let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+        guard region.count == table.regionByteCount else { return false }
+        var slot: UInt16 = 0
+        while slot < 10 {
+            let ordinal = liveModifierOrdinal(at: slot)
+            guard let record = table.scope(at: ordinal, in: region),
+                record.kind == .modifier,
+                record.flags == 0,
+                record.auxiliary == 0,
+                record.payload0 == 0,
+                record.payload1 == 0,
+                record.payload2 == 0,
+                inputs.liveModifierInput(at: ordinal) != nil
+            else { return false }
+            slot += 1
+        }
+        slot = 0
+        while slot < 10 {
+            let ordinal = liveModifierOrdinal(at: slot)
+            guard let old = table.scope(at: ordinal, in: region),
+                let payload = inputs.liveModifierInput(at: ordinal),
+                table.storeScope(
+                    StaticSignalAnalyzerNRFScopeRecord(
+                        identity: old.identity,
+                        parent: old.parent,
+                        firstChild: old.firstChild,
+                        nextSibling: old.nextSibling,
+                        kind: .modifier,
+                        flags: payload.flags,
+                        auxiliary: payload.auxiliary,
+                        payload0: payload.payload0,
+                        payload1: payload.payload1,
+                        payload2: payload.payload2
+                    ),
+                    at: ordinal,
+                    in: region
+                )
+            else { return false }
+            slot += 1
+        }
+        return true
+    }
+
+    private static func liveModifierOrdinal(at slot: UInt16) -> UInt16 {
+        switch slot {
+        case 0: 12
+        case 1: 39
+        case 2: 48
+        case 3: 57
+        case 4: 66
+        case 5: 72
+        case 6: 76
+        case 7: 84
+        case 8: 88
+        default: 92
+        }
+    }
+
     private static func invariantStyle(at ordinal: UInt16) -> (
         flags: UInt8, color: UInt32
     )? {

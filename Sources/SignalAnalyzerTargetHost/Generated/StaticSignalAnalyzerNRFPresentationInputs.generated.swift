@@ -232,6 +232,66 @@ package struct StaticSignalAnalyzerNRFGeneratedPresentationInputs {
         }
     }
 
+    package borrowing func liveModifierInput(
+        at scopeOrdinal: UInt16
+    ) -> StaticSignalAnalyzerNRFModifierPayload? {
+        return model.withModel { source in
+            let state = source.state
+            switch scopeOrdinal {
+            case 12:
+                let color: Color
+                switch state.acquisitionState {
+                case .running: color = .green
+                case .failed: color = .red
+                case .idle, .stopped: color = .white
+                }
+                return StaticSignalAnalyzerNRFModifierPayload(
+                    modifier: .passthrough,
+                    renderScope: .foregroundStyle(color)
+                )
+            case 39, 48, 57, 66:
+                let channel: Int
+                switch scopeOrdinal {
+                case 39: channel = 1
+                case 48: channel = 2
+                case 57: channel = 3
+                default: channel = 4
+                }
+                let color: Color
+                switch state.capture.currentLevel(
+                    for: SignalChannelID(rawValue: channel)
+                ) {
+                case .low: color = Color(red: 0, green: 128, blue: 255)
+                case .high: color = .green
+                }
+                return StaticSignalAnalyzerNRFModifierPayload(
+                    modifier: .passthrough,
+                    renderScope: .foregroundStyle(color)
+                )
+            case 72, 76, 84, 88, 92:
+                let controls = SignalAnalyzerControlState(
+                    acquisitionState: state.acquisitionState,
+                    selectedWindow: state.visibleWindow
+                )
+                let disabled: Bool
+                switch scopeOrdinal {
+                case 72: disabled = controls.startDisabled
+                case 76: disabled = controls.stopDisabled
+                case 84: disabled = controls.oneSecondDisabled
+                case 88: disabled = controls.twoSecondsDisabled
+                default: disabled = controls.fiveSecondsDisabled
+                }
+                return StaticSignalAnalyzerNRFModifierPayload(
+                    modifier: .passthrough,
+                    renderScope: .structural,
+                    disablesActions: disabled
+                )
+            default:
+                return nil
+            }
+        }
+    }
+
     package borrowing func stageCanvas(
         at index: UInt16,
         in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding

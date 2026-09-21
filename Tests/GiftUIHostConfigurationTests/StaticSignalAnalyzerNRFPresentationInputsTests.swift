@@ -38,6 +38,30 @@ import Testing
     }
 }
 
+@Test func staticNRFLiveModifiersFollowRunningAndWindowState() {
+    let model = staticNRFPresentationInputModel()
+    StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
+        model: model
+    ) { inputs in
+        #expect(inputs.liveModifierInput(at: 12)?.payload0 == 16_777_215)
+        #expect(inputs.liveModifierInput(at: 72)?.flags == 1)
+        #expect(inputs.liveModifierInput(at: 76)?.flags == 65)
+        #expect(inputs.liveModifierInput(at: 88)?.flags == 65)
+    }
+    #expect(model.apply(.acquisitionState(.running)) == .applied(changed: true))
+    model.visibleDurationChanged(.fiveSeconds)
+    StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
+        model: model
+    ) { inputs in
+        #expect(inputs.liveModifierInput(at: 12)?.payload0 != 16_777_215)
+        #expect(inputs.liveModifierInput(at: 72)?.flags == 65)
+        #expect(inputs.liveModifierInput(at: 76)?.flags == 1)
+        #expect(inputs.liveModifierInput(at: 88)?.flags == 1)
+        #expect(inputs.liveModifierInput(at: 92)?.flags == 65)
+        #expect(inputs.liveModifierInput(at: 0) == nil)
+    }
+}
+
 @Test func staticNRFGeneratedPresentationInputsReserveAndStageFiveCanvases() {
     withStaticNRFPresentationInputStorage { profileStorage in
         guard case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate(),

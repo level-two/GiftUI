@@ -205,8 +205,12 @@ records. Host oracle comparison covers their exact packed flags, edges,
 alignment, dimensions, and render scope in both variants. The writer also
 fills twenty-five fixed passthrough styles: screen/panel backgrounds, fixed
 labels, and diagnostic red. Host oracle comparison covers each exact packed
-color and scope. Status foreground, channel level colors, and disabled-control
-flags remain live model-dependent writer work.
+color and scope. The final ten model-dependent passthroughs now read the
+borrowed model for status foreground, four channel-level colors, and five
+disabled-control flags. The oracle compares every modifier record in both
+variants; a separate state-change test covers running and selected-window
+transitions. Text-pool repacking remains open, so this is not yet a sealed
+semantic result.
 If any required current payload cannot be encoded in the three words, this
 packing must be revised within the *same* 3,024-byte bound and revalidated;
 it is not permission to truncate a modifier or alter the portable hierarchy.

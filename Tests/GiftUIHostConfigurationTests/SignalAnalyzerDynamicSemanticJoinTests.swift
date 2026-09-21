@@ -2167,6 +2167,16 @@ private func verifyPackedNRFRenderProjection(
                     in: generated
                 )
             )
+            StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
+                model: model
+            ) { inputs in
+                #expect(
+                    StaticSignalAnalyzerNRFTopologyWriter.populateLiveModifiers(
+                        inputs: inputs,
+                        in: generated
+                    )
+                )
+            }
             for ordinal in 0 ..< nodes.count {
                 guard let expected = table.scope(at: UInt16(ordinal), in: region),
                     let actual = table.scope(at: UInt16(ordinal), in: generated)
@@ -2190,7 +2200,7 @@ private func verifyPackedNRFRenderProjection(
                     #expect(actual.payload1 == expected.payload1)
                     #expect(actual.payload2 == expected.payload2)
                 }
-                if actual.kind == .modifier && actual.flags != 0 {
+                if actual.kind == .modifier {
                     #expect(actual.flags == expected.flags)
                     #expect(actual.auxiliary == expected.auxiliary)
                     #expect(actual.payload0 == expected.payload0)

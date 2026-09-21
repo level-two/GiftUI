@@ -665,8 +665,11 @@ region; the fail-closed scalar encoder is not claimed as full conformance.
 Independently, the generated writer now fills fifteen invariant padding/frame
 modifier records. Both real-tree variants match every packed flag, edge,
 alignment, and dimension. It also fills twenty-five fixed passthrough styles,
-with exact color/scope oracle comparison. Live status/channel colors and
-disabled-control modifiers remain.
+with exact color/scope oracle comparison. The final ten passthrough records
+now derive status/channel colors and disabled-control flags from the borrowed
+model. Both real-tree variants match every modifier record, and running plus
+selected-window changes update the generated payloads. Text publication is
+still blocked by the scalar-pool bound.
 The enclosing semantic-region owner now has a separate complete-candidate
 staging and publication path. A host fixture populates a synthetic 96-scope
 table directly in the borrowed candidate region, seals it, refreshes the
