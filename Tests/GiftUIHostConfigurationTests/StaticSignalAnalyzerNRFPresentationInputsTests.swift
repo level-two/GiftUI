@@ -539,6 +539,15 @@ import Testing
                         #expect(layoutView.scopeCount == renderView.semanticScopeCount)
                         #expect(renderView.semanticOrdinal(of: layoutView.rootIdentity) != nil)
                         #expect(renderView.renderSnapshotVersion == cycle)
+                        var requiredScalars: UInt16 = 0
+                        for ordinal in 0 ..< expectedScopes {
+                            guard let identity = renderView.semanticIdentity(at: ordinal) else {
+                                Issue.record("generated scope identity is missing")
+                                return false
+                            }
+                            requiredScalars += layoutView.textScalarCount(of: identity) ?? 0
+                        }
+                        #expect(requiredScalars == (cycle == 1 ? 117 : 214))
                         let limits = GeneratedSignalAnalyzerPresets.nrf52840Static()
                             .runtimeLimits.layout
                         var workspace = StaticNRFValidationOnlyLayoutWorkspace(limits: limits)
@@ -552,7 +561,7 @@ import Testing
                             #expect(validationError == nil)
                         } else {
                             // The approved 139-scalar preset cannot validate
-                            // the exact 96-byte diagnostic (213 scalars).
+                            // the exact 96-byte diagnostic (214 scalars).
                             #expect(validationError == .capacityExhausted)
                         }
                         #expect(workspace.scopeCount == expectedScopes)

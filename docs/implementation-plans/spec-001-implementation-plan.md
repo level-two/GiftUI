@@ -1035,7 +1035,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       both readers over one validated region lifetime. The common Static
       layout validator accepts the normal generated hierarchy, but its exact
       139-scalar/glyph nRF preset rejects a permitted 96-byte diagnostic that
-      requires 213 scalars/glyphs. This is an upstream SPEC-015/SPEC-001
+      requires 214 scalars/glyphs. This is an upstream SPEC-015/SPEC-001
       capacity-contract blocker for the full layout/render transaction; the
       affected integration is paused pending approved resolution, with no
       truncation or local budget change.

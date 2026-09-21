@@ -691,7 +691,7 @@ same validated bytes, with host checks at candidate, published, and invalid
 lifetimes. The full layout/render transaction remains open.
 The common semantic-layout validator accepts the normal generated nRF view
 under the exact preset. A maximal 96-byte ASCII diagnostic is preserved in
-the semantic table but needs 213 scalar/glyph slots, so validation returns
+the semantic table but needs 214 scalar/glyph slots, so validation returns
 `capacityExhausted` at the approved 139-slot limit. This is a recorded
 contract blocker, not successful layout or connected-target evidence.
 Independently, the generated writer now fills fifteen invariant padding/frame

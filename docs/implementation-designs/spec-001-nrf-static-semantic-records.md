@@ -232,7 +232,7 @@ and one synchronous lifetime, preventing separate region reads from silently
 forming a mismatched pair. The full layout/render transaction remains open.
 The first common `LayoutSemanticValidation` host probe accepts the normal
 generated view under the exact nRF preset, but rejects an exact 96-byte ASCII
-diagnostic with `capacityExhausted`: the variant needs 213 text scalars and
+diagnostic with `capacityExhausted`: the variant needs 214 text scalars and
 positioned glyphs, while the approved SPEC-015 preset caps each at 139. The
 UTF-8 semantic region fits all 214 text bytes and preserves them exactly; the
 conflict is downstream layout capacity, not table encoding. Full nRF layout
