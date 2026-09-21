@@ -22,7 +22,8 @@ package struct StaticSignalAnalyzerNRFModifierPayload: Equatable, Sendable {
 
     package init?(
         modifier: SemanticLayoutModifier,
-        renderScope: SemanticRenderScope
+        renderScope: SemanticRenderScope,
+        disablesActions: Bool = false
     ) {
         let renderCode: UInt8
         let colorWord: UInt32
@@ -45,14 +46,17 @@ package struct StaticSignalAnalyzerNRFModifierPayload: Equatable, Sendable {
 
         switch modifier {
         case .passthrough:
-            guard renderCode != Self.clip else { return nil }
+            guard renderCode != Self.clip,
+                !disablesActions || renderCode == Self.structural
+            else { return nil }
             flags = Self.passthrough | renderCode << 3
+                | (disablesActions ? 0x40 : 0)
             auxiliary = 0
             payload0 = colorWord
             payload1 = 0
             payload2 = 0
         case .padding(let edges, let length):
-            guard renderCode == Self.structural,
+            guard !disablesActions, renderCode == Self.structural,
                 edges.rawValue & ~EdgeSet.all.rawValue == 0
             else { return nil }
             flags = Self.padding
@@ -61,7 +65,7 @@ package struct StaticSignalAnalyzerNRFModifierPayload: Equatable, Sendable {
             payload1 = 0
             payload2 = 0
         case .fixedFrame(let width, let height, let alignment):
-            guard renderCode == Self.clip else { return nil }
+            guard !disablesActions, renderCode == Self.clip else { return nil }
             flags = Self.fixedFrame | Self.clip << 3
             var bits = Self.alignmentBits(alignment) << 2
             if width != nil { bits |= 1 }
@@ -77,7 +81,7 @@ package struct StaticSignalAnalyzerNRFModifierPayload: Equatable, Sendable {
             let maxHeight,
             let alignment
         ):
-            guard renderCode == Self.clip else { return nil }
+            guard !disablesActions, renderCode == Self.clip else { return nil }
             flags = Self.flexibleFrame | Self.clip << 3
             var bits = Self.alignmentBits(alignment) << 6
             var first: UInt32 = 0
@@ -123,10 +127,13 @@ package struct StaticSignalAnalyzerNRFModifierPayload: Equatable, Sendable {
         }
     }
 
-    package func decoded() -> (SemanticLayoutModifier, SemanticRenderScope)? {
-        guard flags & 0xC0 == 0 else { return nil }
+    package func decoded() -> (SemanticLayoutModifier, SemanticRenderScope, Bool)? {
+        guard flags & 0x80 == 0 else { return nil }
         let kind = flags & 7
         let renderCode = (flags >> 3) & 7
+        let disablesActions = flags & 0x40 != 0
+        guard !disablesActions || (kind == Self.passthrough && renderCode == Self.structural)
+        else { return nil }
         let render: SemanticRenderScope
         switch renderCode {
         case Self.structural: render = .structural
@@ -146,7 +153,7 @@ package struct StaticSignalAnalyzerNRFModifierPayload: Equatable, Sendable {
                 (renderCode != Self.structural || payload0 == 0),
                 payload0 & 0xFF00_0000 == 0
             else { return nil }
-            return (.passthrough, render)
+            return (.passthrough, render, disablesActions)
         case Self.padding:
             guard renderCode == Self.structural,
                 auxiliary <= UInt16(EdgeSet.all.rawValue),
@@ -157,7 +164,8 @@ package struct StaticSignalAnalyzerNRFModifierPayload: Equatable, Sendable {
                     edges: EdgeSet(rawValue: UInt8(auxiliary)),
                     length: Int32(bitPattern: payload0)
                 ),
-                render
+                render,
+                false
             )
         case Self.fixedFrame:
             guard renderCode == Self.clip, auxiliary & ~UInt16(0x1F) == 0,
@@ -172,7 +180,8 @@ package struct StaticSignalAnalyzerNRFModifierPayload: Equatable, Sendable {
                     height: auxiliary & 2 != 0 ? Int32(bitPattern: payload1) : nil,
                     alignment: alignment
                 ),
-                render
+                render,
+                false
             )
         case Self.flexibleFrame:
             guard renderCode == Self.clip,
@@ -224,7 +233,8 @@ package struct StaticSignalAnalyzerNRFModifierPayload: Equatable, Sendable {
                     maxHeight: maxHeight,
                     alignment: alignment
                 ),
-                render
+                render,
+                false
             )
         default:
             return nil

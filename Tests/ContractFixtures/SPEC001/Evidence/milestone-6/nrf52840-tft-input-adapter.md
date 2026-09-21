@@ -613,9 +613,12 @@ The primitive codec now round-trips every actual stack, spacer, proxy, text,
 and Canvas scope in both portable hierarchies. Text scopes retain exact scalar
 pool ranges and all five Canvas scopes retain their generated occurrence IDs;
 negative tests reject missing or out-of-range associations and mismatched
-render scopes. The complete table writer/reader and disabled-action bits
-remain open, so these codecs do not yet make the published prefix a usable
-semantic result.
+render scopes. The modifier codec now also carries the disabled-action bit,
+obtained from the exact Dynamic modifier record rather than inferred from
+final action state. The host oracle follows each packed action's ancestor
+chain and proves its effective enabled state matches all six Dynamic actions
+in both variants. The complete table writer/reader remains open, so these
+codecs do not yet make the published prefix a usable semantic result.
 
 The shared Static observable-model handle now accepts a typed-throwing scoped
 borrow. This lets the generated trace case invoke the existing

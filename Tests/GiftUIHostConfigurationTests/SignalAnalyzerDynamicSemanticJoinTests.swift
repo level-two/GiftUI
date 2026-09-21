@@ -1994,9 +1994,19 @@ private func verifyPackedNRFRenderProjection(
                                 of: owner.identity,
                                 at: modifierIndex
                             ), let scope = render.scope(at: node.identity),
+                            let disablesActions = storage.modifierDisablesActions(
+                                of: owner.identity,
+                                at: modifierIndex
+                            )
+                        else {
+                            Issue.record("modifier has no layout/render payload")
+                            return
+                        }
+                        guard
                             let encoded = StaticSignalAnalyzerNRFModifierPayload(
                                 modifier: modifier,
-                                renderScope: scope
+                                renderScope: scope,
+                                disablesActions: disablesActions
                             ), let decoded = encoded.decoded()
                         else {
                             Issue.record("modifier payload does not fit fixed record")
@@ -2004,6 +2014,7 @@ private func verifyPackedNRFRenderProjection(
                         }
                         #expect(decoded.0 == modifier)
                         #expect(decoded.1 == scope)
+                        #expect(decoded.2 == disablesActions)
                         modifierPayload = encoded
                     }
                 }
@@ -2043,6 +2054,17 @@ private func verifyPackedNRFRenderProjection(
             )
             #expect(table.actionScope(at: actionOrdinal, in: region) == UInt16(index))
             actionSourceIDs.append(encodedIdentities[index])
+            var ancestor = UInt16(index)
+            var packedDisabled = false
+            while ancestor != table.missingOrdinal {
+                guard let scope = table.scope(at: ancestor, in: region) else {
+                    Issue.record("action has invalid ancestor")
+                    return
+                }
+                packedDisabled = packedDisabled || scope.flags & 0x40 != 0
+                ancestor = scope.parent
+            }
+            #expect(packedDisabled == !storage.isActionEnabled(at: action.identity))
             actionOrdinal += 1
         }
         #expect(actionSourceIDs == [315, 35_973, 17_159, 45_233, 40_502, 48_398])

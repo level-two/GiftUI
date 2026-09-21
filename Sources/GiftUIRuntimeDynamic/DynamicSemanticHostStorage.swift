@@ -521,6 +521,15 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
         return values[Int(index)].modifier
     }
 
+    package func modifierDisablesActions(
+        of identity: DynamicSemanticIdentity,
+        at index: UInt16
+    ) -> Bool? {
+        let values = modifiers(of: identity)
+        guard Int(index) < values.count else { return nil }
+        return values[Int(index)].disablesActions
+    }
+
     package func textScalarCount(of identity: DynamicSemanticIdentity) -> UInt16? {
         primitives.first { $0.identity == identity }?.scalars.map {
             UInt16($0.count)

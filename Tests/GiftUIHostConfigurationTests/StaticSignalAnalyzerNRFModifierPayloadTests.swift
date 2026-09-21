@@ -35,4 +35,24 @@ import Testing
             renderScope: .clipBoundary
         ) == nil
     )
+    #expect(
+        StaticSignalAnalyzerNRFModifierPayload(
+            modifier: .passthrough,
+            renderScope: .foregroundStyle(.white),
+            disablesActions: true
+        ) == nil
+    )
+    #expect(
+        StaticSignalAnalyzerNRFModifierPayload(
+            modifier: .padding(edges: .all, length: 4),
+            renderScope: .structural,
+            disablesActions: true
+        ) == nil
+    )
+    let disabled = StaticSignalAnalyzerNRFModifierPayload(
+        modifier: .passthrough,
+        renderScope: .structural,
+        disablesActions: true
+    )
+    #expect(disabled?.decoded()?.2 == true)
 }

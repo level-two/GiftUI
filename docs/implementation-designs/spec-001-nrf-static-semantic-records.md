@@ -134,13 +134,17 @@ payload codec now round-trips every layout/render modifier in both actual
 hierarchies within the three record words: passthrough style, padding, fixed
 frame, and the currently used flexible frame. It rejects padding-insets,
 four-scalar flexible frames, or mismatched layout/render scopes because those
-forms do not fit the approved current projection. The generated table writer,
-disabled-action flags, and full layout/render reader remain open. A separate
+forms do not fit the approved current projection. The generated table writer
+and full layout/render reader remain open. A separate
 primitive codec now round-trips every actual proxy, stack, spacer, text, and
 Canvas scope. It encodes exact text-pool ranges and one of the five generated
 Canvas occurrence IDs, rejecting missing/out-of-range associations and render
-scope mismatches. Together the two codecs account for every current scope's
-layout/render payload, but they do not themselves generate production records.
+scope mismatches. The modifier codec now also retains the exact disabled-action
+bit on a structural passthrough record. The host oracle reads that bit from
+the Dynamic modifier record and checks each of the six actions against the
+packed ancestor chain. Together the two codecs account for every current
+scope's layout/render/action-state payload, but they do not themselves
+generate production records.
 If any required current payload cannot be encoded in the three words, this
 packing must be revised within the *same* 3,024-byte bound and revalidated;
 it is not permission to truncate a modifier or alter the portable hierarchy.
@@ -189,9 +193,9 @@ nRF build and connected run are recorded separately under T6.8/T8.2.
 
 ## Open Implementation Questions
 
-The current primitive and modifier layout/render forms fit the three words in
-both measured variants. Disabled-action flags and the full generated
-writer/reader still require verification. This is not authority to drop a
+The current primitive and modifier layout/render forms and disabled-action
+flags fit the three words in both measured variants. The full generated
+writer/reader still requires verification. This is not authority to drop a
 semantic value; a required value that cannot fit the approved 3,024-byte
 region is a contract issue to report upstream. Generator provenance and
 embedded compiler measurements remain required before this note can become
