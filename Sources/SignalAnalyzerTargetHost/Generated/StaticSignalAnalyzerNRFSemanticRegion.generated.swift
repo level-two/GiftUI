@@ -175,6 +175,7 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
             revision: revision,
             requireCompleteTable: false,
             requireGeneratedTopology: false,
+            requireGeneratedUTF8: false,
             in: &profile
         )
     }
@@ -189,6 +190,7 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
             revision: revision,
             requireCompleteTable: true,
             requireGeneratedTopology: false,
+            requireGeneratedUTF8: false,
             in: &profile
         )
     }
@@ -203,6 +205,22 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
             revision: revision,
             requireCompleteTable: true,
             requireGeneratedTopology: true,
+            requireGeneratedUTF8: false,
+            in: &profile
+        )
+    }
+
+    package static func publishGeneratedUTF8Candidate(
+        inputs: borrowing StaticSignalAnalyzerNRFGeneratedPresentationInputs,
+        revision: UInt32,
+        in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
+    ) -> Bool {
+        publishCandidate(
+            inputs: inputs,
+            revision: revision,
+            requireCompleteTable: false,
+            requireGeneratedTopology: false,
+            requireGeneratedUTF8: true,
             in: &profile
         )
     }
@@ -212,6 +230,7 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
         revision: UInt32,
         requireCompleteTable: Bool,
         requireGeneratedTopology: Bool,
+        requireGeneratedUTF8: Bool,
         in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
     ) -> Bool {
         guard revision > 0 else { return false }
@@ -223,11 +242,14 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
                 header.state == .candidate,
                 header.variant == expected.variant,
                 header.expansion == expected.expansion,
-                (requireCompleteTable || prefixFooterIsZero(in: candidate)),
+                (requireCompleteTable || requireGeneratedUTF8
+                    || prefixFooterIsZero(in: candidate)),
                 (!requireCompleteTable
                     || completeTableSummary(in: candidate, header: header) != nil),
                 (!requireGeneratedTopology
                     || generatedTableSummary(in: candidate, header: header) != nil),
+                (!requireGeneratedUTF8
+                    || generatedUTF8TableSummary(in: candidate, header: header) != nil),
                 canPublish(revision: revision, in: published)
             else { return false }
             published.baseAddress!.copyMemory(

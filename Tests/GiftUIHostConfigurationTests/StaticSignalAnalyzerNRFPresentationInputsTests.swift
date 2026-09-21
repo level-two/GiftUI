@@ -517,7 +517,47 @@ import Testing
                     StaticSignalAnalyzerNRFSemanticRegionStore.generatedUTF8TableSummary(
                         in: .semanticPublished,
                         profile: &profile
-                    ) == nil
+                    )?.scopeCount == (cycle == 1 ? nil : 96)
+                )
+                if cycle == 2 {
+                    #expect(
+                        inputs.publishGeneratedSemanticCandidate(revision: 1, in: &profile) == nil)
+                    let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+                    #expect(
+                        profile.withRegion(.semanticCandidate) { region in
+                            region[table.scalarOffset] ^= 1
+                            return true
+                        } == true
+                    )
+                    #expect(
+                        inputs.publishGeneratedSemanticCandidate(revision: 2, in: &profile) == nil)
+                    #expect(
+                        StaticSignalAnalyzerNRFSemanticRegionStore.generatedUTF8TableSummary(
+                            in: .semanticPublished,
+                            profile: &profile
+                        )?.scopeCount == 96
+                    )
+                    #expect(
+                        profile.withRegion(.semanticCandidate) { region in
+                            region[table.scalarOffset] ^= 1
+                            return true
+                        } == true
+                    )
+                }
+                #expect(
+                    inputs.publishGeneratedSemanticCandidate(
+                        revision: cycle,
+                        in: &profile
+                    )?.revision == cycle
+                )
+                #expect(
+                    inputs.publishGeneratedSemanticCandidate(revision: cycle + 1, in: &profile)
+                        == nil)
+                #expect(
+                    StaticSignalAnalyzerNRFSemanticRegionStore.generatedUTF8TableSummary(
+                        in: .semanticPublished,
+                        profile: &profile
+                    ) == summary
                 )
             }
             let idle = ExecutionContext(

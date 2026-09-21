@@ -1020,8 +1020,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       region. Host-oracle tests seal both complete version-2 tables and a
       96-byte diagnostic; the generated table now also stages through the
       attempt-local production region with checksum, topology, action, and
-      Canvas validation. Layout/render reading, complete publication, and
-      the firmware owner join remain open. The
+      Canvas validation. A separate version-2 publication path now retains
+      exact validated candidate bytes and rejects stale/corrupt replacement
+      without changing the prior revision. Layout/render reading, the full
+      presentation transaction, and the firmware owner join remain open. The
       common Static profile binding now also lends each
       generated region only during its registered retained or attempt-local
       lifetime, giving those focused stages direct bounded workspace access

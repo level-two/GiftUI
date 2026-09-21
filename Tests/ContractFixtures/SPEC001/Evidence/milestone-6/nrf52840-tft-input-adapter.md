@@ -670,7 +670,10 @@ the refreshed whole-region checksum, variant count, topology fingerprint,
 distinct action targets, and exact Canvas occurrences. Host tests stage the
 117-byte normal and 214-byte maximal-diagnostic candidates across separate
 opportunities. The prefix-only publish path rejects this staging input;
-complete publication and a layout/render reader remain open.
+the matching version-2 path now publishes the exact complete table after
+validation. A stale revision and a checksum-corrupt candidate each leave the
+previous published result unchanged. The layout/render reader and full
+presentation transaction remain open.
 Independently, the generated writer now fills fifteen invariant padding/frame
 modifier records. Both real-tree variants match every packed flag, edge,
 alignment, and dimension. It also fills twenty-five fixed passthrough styles,

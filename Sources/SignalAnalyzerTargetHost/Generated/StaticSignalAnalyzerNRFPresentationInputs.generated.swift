@@ -163,6 +163,25 @@ package struct StaticSignalAnalyzerNRFGeneratedPresentationInputs {
         )
     }
 
+    package mutating func publishGeneratedSemanticCandidate(
+        revision: UInt32,
+        in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
+    ) -> StaticSignalAnalyzerNRFSemanticRegionHeader? {
+        guard semanticCandidateStaged, generatedUTF8CandidateStaged,
+            !semanticCandidatePublished,
+            StaticSignalAnalyzerNRFSemanticRegionStore.publishGeneratedUTF8Candidate(
+                inputs: self,
+                revision: revision,
+                in: &profile
+            )
+        else { return nil }
+        semanticCandidatePublished = true
+        return StaticSignalAnalyzerNRFSemanticRegionStore.header(
+            in: .semanticPublished,
+            profile: &profile
+        )
+    }
+
     package borrowing func canvasInput(
         at index: UInt16
     ) -> StaticSignalAnalyzerNRFGeneratedCanvasInput? {

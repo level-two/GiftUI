@@ -211,7 +211,11 @@ that same generated version-2 table directly in the borrowed attempt-local
 candidate, refreshes the whole-region checksum, and checks variant summary,
 topology fingerprint, exact action/Canvas associations, and table footer.
 The older prefix-only publication method explicitly rejects a version-2
-staging input. Layout/render reading and complete publication remain open.
+staging input. A matching complete-publication path now revalidates the
+version-2 table and whole-region checksum before copying to retained storage;
+stale revision and corrupt candidate attempts leave the prior published
+region intact. Layout/render reading and the full presentation transaction
+remain open.
 A ROM-backed generated topology writer now decodes each normal/diagnostic
 root-first scope's stable source ID, parent, first child, next sibling, and
 kind directly into the caller-owned candidate region. The host oracle checks
