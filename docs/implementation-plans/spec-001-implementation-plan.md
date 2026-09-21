@@ -1031,7 +1031,8 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       version-2 layout reader now matches every portable primitive, child,
       modifier, and text scalar query in both variants. Production scoped
       lending now follows candidate/published region lifetimes; the full
-      layout/render transaction remains open. The common Static
+      layout/render transaction remains open. A paired borrow now exposes
+      both readers over one validated region lifetime. The common Static
       profile binding now also lends each
       generated region only during its registered retained or attempt-local
       lifetime, giving those focused stages direct bounded workspace access

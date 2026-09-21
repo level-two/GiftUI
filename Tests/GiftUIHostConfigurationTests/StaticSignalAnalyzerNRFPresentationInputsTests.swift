@@ -527,6 +527,18 @@ import Testing
                         return true
                     }
                 #expect(candidateLayoutRead)
+                let candidatePairedRead =
+                    StaticSignalAnalyzerNRFSemanticRegionStore.withGeneratedUTF8Views(
+                        in: .semanticCandidate,
+                        renderSnapshotVersion: cycle,
+                        profile: &profile
+                    ) { layoutView, renderView in
+                        #expect(layoutView.scopeCount == renderView.semanticScopeCount)
+                        #expect(renderView.semanticOrdinal(of: layoutView.rootIdentity) != nil)
+                        #expect(renderView.renderSnapshotVersion == cycle)
+                        return true
+                    }
+                #expect(candidatePairedRead)
                 #expect(inputs.stageGeneratedSemanticCandidate(in: &profile) == nil)
                 #expect(inputs.publishSemanticCandidate(revision: 1, in: &profile) == nil)
                 #expect(
@@ -601,6 +613,17 @@ import Testing
                         return true
                     }
                 #expect(publishedLayoutRead)
+                let publishedPairedRead =
+                    StaticSignalAnalyzerNRFSemanticRegionStore.withGeneratedUTF8Views(
+                        in: .semanticPublished,
+                        renderSnapshotVersion: cycle,
+                        profile: &profile
+                    ) { layoutView, renderView in
+                        #expect(layoutView.scopeCount == renderView.semanticScopeCount)
+                        #expect(renderView.semanticOrdinal(of: layoutView.rootIdentity) != nil)
+                        return true
+                    }
+                #expect(publishedPairedRead)
             }
             let idle = ExecutionContext(
                 cycle: nil,
@@ -622,6 +645,13 @@ import Testing
                     profile: &profile
                 ) { _ in true }
             )
+            #expect(
+                !StaticSignalAnalyzerNRFSemanticRegionStore.withGeneratedUTF8Views(
+                    in: .semanticCandidate,
+                    renderSnapshotVersion: cycle,
+                    profile: &profile
+                ) { _, _ in true }
+            )
         }
         profile.quiesce()
         #expect(
@@ -636,6 +666,13 @@ import Testing
                 in: .semanticPublished,
                 profile: &profile
             ) { _ in true }
+        )
+        #expect(
+            !StaticSignalAnalyzerNRFSemanticRegionStore.withGeneratedUTF8Views(
+                in: .semanticPublished,
+                renderSnapshotVersion: 3,
+                profile: &profile
+            ) { _, _ in true }
         )
     }
 }

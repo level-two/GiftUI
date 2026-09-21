@@ -343,6 +343,30 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
         } == true
     }
 
+    /// Both views refer to the same validated bytes and are valid only during
+    /// this synchronous borrow. Neither view may escape `body`.
+    package static func withGeneratedUTF8Views(
+        in family: RuntimeStorageFamily,
+        renderSnapshotVersion: UInt32,
+        profile: inout StaticSignalAnalyzerNRFProductionProfileBinding,
+        body: (StaticSignalAnalyzerNRFUTF8LayoutView, StaticSignalAnalyzerNRFUTF8RenderView) -> Bool
+    ) -> Bool {
+        guard family == .semanticCandidate || family == .semanticPublished else {
+            return false
+        }
+        return profile.withRegion(family) { region in
+            guard let header = decodeHeader(from: region),
+                generatedUTF8TableSummary(in: region, header: header) != nil,
+                let layoutView = StaticSignalAnalyzerNRFUTF8LayoutView(in: region),
+                let renderView = StaticSignalAnalyzerNRFUTF8RenderView(
+                    in: region,
+                    renderSnapshotVersion: renderSnapshotVersion
+                )
+            else { return false }
+            return body(layoutView, renderView)
+        } == true
+    }
+
     private static func generatedUTF8TableSummary(
         in region: UnsafeMutableRawBufferPointer,
         header: StaticSignalAnalyzerNRFSemanticRegionHeader
