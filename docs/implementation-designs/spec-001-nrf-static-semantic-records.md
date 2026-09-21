@@ -170,6 +170,11 @@ scope's layout/render/action-state payload, but they do not themselves
 generate production records.
 Complete acceptance also requires exactly one record for each of the five
 generated Canvas occurrence IDs; duplicate or missing occurrences fail closed.
+A production text-pool encoder now accepts the portable bounded UTF-8 text
+value, counts scalars before writing, and stores each decoded Unicode scalar
+directly in the borrowed region. Overflow or wrong region size causes no
+write. The generated hierarchy writer still has to call this encoder in
+root-first text-scope order and record each returned range.
 If any required current payload cannot be encoded in the three words, this
 packing must be revised within the *same* 3,024-byte bound and revalidated;
 it is not permission to truncate a modifier or alter the portable hierarchy.

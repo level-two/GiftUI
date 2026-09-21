@@ -639,6 +639,10 @@ This catches structural source drift before a generated Static writer is
 accepted; it is not a publication integrity checksum or an embedded run.
 The generated-result acceptance path rejects the synthetic complete-table
 fixture even though its checksums, counts, and generic topology are valid.
+The production text-pool encoder now converts bounded UTF-8 text directly to
+the fixed scalar region. Host fixtures cover ASCII, multibyte scalars, empty
+text, exact capacity, overflow, and a wrong-size borrow without a partial
+write. This is a writer component, not yet full generated hierarchy staging.
 The enclosing semantic-region owner now has a separate complete-candidate
 staging and publication path. A host fixture populates a synthetic 96-scope
 table directly in the borrowed candidate region, seals it, refreshes the
