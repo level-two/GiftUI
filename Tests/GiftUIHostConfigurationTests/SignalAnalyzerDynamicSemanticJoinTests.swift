@@ -1272,6 +1272,9 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(summary.actionOccurrenceCount == 6)
     #expect(summary.maximumObservedDepth == 34)
     #expect(storage.semanticScopeCount == 124)
+    #expect(storage.scopeCount == 96)
+    let normalTextScalars = semanticTextScalarCount(in: storage)
+    #expect(normalTextScalars == 117)
     #expect(storage.actionOccurrenceCount == 6)
     #expect(storage.canvasOccurrenceCount == 5)
     #expect(storage.hasPublishedResult)
@@ -1324,6 +1327,9 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(summary.actionOccurrenceCount == 6)
     #expect(summary.maximumObservedDepth == 34)
     #expect(storage.semanticScopeCount == 126)
+    #expect(storage.scopeCount == 98)
+    let diagnosticTextScalars = semanticTextScalarCount(in: storage)
+    #expect(diagnosticTextScalars == 129)
     #expect(storage.canvasOccurrenceCount == 5)
 
     var foregrounds: [Color: UInt16] = [:]
@@ -1844,4 +1850,16 @@ private struct SemanticJoinEndpoint: RasterBackendEndpoint {
     borrowing func health() -> GiftUIOperationalHealth {
         GiftUIOperationalHealth()
     }
+}
+
+private func semanticTextScalarCount(
+    in storage: DynamicSemanticHostStorage
+) -> UInt16 {
+    var total: UInt16 = 0
+    var ordinal: UInt16 = 0
+    while let identity = storage.semanticIdentity(at: ordinal) {
+        total += storage.textScalarCount(of: identity) ?? 0
+        ordinal += 1
+    }
+    return total
 }

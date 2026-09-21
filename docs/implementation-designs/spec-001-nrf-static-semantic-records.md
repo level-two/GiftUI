@@ -102,9 +102,12 @@ ordinal and payload interpretation, unique identities, tree acyclicity,
 exact variant counts, text-pool length, and consumed byte count. The decoder
 rejects unknown schema/kinds or mismatched checksum before any query.
 
-The 98-scope ceiling is the measured diagnostic maximum of 48 semantic nodes
-plus 50 modifiers; the 139-scalar ceiling comes from the approved generated
-workload. A render-only structural path is projected to its nearest concrete
+The oracle tests measure 96 scopes and 117 text scalars for the normal
+variant, and 98 scopes and 129 text scalars for the diagnostic variant. The
+98-scope ceiling is the measured diagnostic maximum of 48 semantic nodes plus
+50 modifiers; the 139-scalar ceiling comes from the approved generated
+workload and leaves ten scalars of headroom. A render-only structural path is
+projected to its nearest concrete
 scope using the same semantics as the Dynamic oracle. Source-path identity
 stability is checked across both variants, especially for all six controls.
 If any required current payload cannot be encoded in the three words, this
