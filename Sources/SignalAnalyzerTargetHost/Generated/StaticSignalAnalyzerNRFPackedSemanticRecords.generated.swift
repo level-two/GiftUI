@@ -59,11 +59,22 @@ package struct StaticSignalAnalyzerNRFPackedTableSummary: Equatable, Sendable {
     }
 }
 
+package struct StaticSignalAnalyzerNRFUTF8TableSummary: Equatable, Sendable {
+    package let scopeCount: UInt16
+    package let textByteCount: UInt16
+
+    package init(scopeCount: UInt16, textByteCount: UInt16) {
+        self.scopeCount = scopeCount
+        self.textByteCount = textByteCount
+    }
+}
+
 /// Byte-level table operations on a caller-owned 3,024-byte semantic region.
 /// No operation allocates a region or lets a pointer escape the borrow.
 package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
     package static let maximumScopeCount: UInt16 = 98
     package static let maximumScalarCount: UInt16 = 139
+    package static let maximumTextByteCount: UInt16 = 556
     package static let actionCount: UInt16 = 6
     package static let normalTopologyFingerprint: UInt64 = 9_859_439_025_635_601_183
     package static let diagnosticTopologyFingerprint: UInt64 = 11_401_492_284_248_230_541
@@ -76,6 +87,7 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
     package static let regionByteCount = 3_024
     private static let tableMagic: UInt32 = 0x5341_4E54
     private static let tableSchema: UInt16 = 1
+    private static let utf8TableSchema: UInt16 = 2
 
     package static func storeScope(
         _ record: StaticSignalAnalyzerNRFScopeRecord,
@@ -180,31 +192,71 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
         scalarCount: UInt16,
         in region: UnsafeMutableRawBufferPointer
     ) -> Bool {
+        validateTopology(
+            scopeCount: scopeCount,
+            textCount: scalarCount,
+            utf8: false,
+            in: region
+        )
+    }
+
+    package static func validateUTF8Topology(
+        scopeCount: UInt16,
+        textByteCount: UInt16,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
+        validateTopology(
+            scopeCount: scopeCount,
+            textCount: textByteCount,
+            utf8: true,
+            in: region
+        )
+    }
+
+    private static func validateTopology(
+        scopeCount: UInt16,
+        textCount: UInt16,
+        utf8: Bool,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
         guard validRegion(region), scopeCount > 0,
             scopeCount <= maximumScopeCount,
-            scalarCount <= maximumScalarCount,
+            textCount <= (utf8 ? maximumTextByteCount : maximumScalarCount),
             let root = scope(at: 0, in: region),
             root.parent == missingOrdinal,
             root.nextSibling == missingOrdinal
         else { return false }
 
         var ordinal: UInt16 = 0
-        var coveredScalars: UInt16 = 0
+        var coveredText: UInt16 = 0
         while ordinal < scopeCount {
             guard let record = scope(at: ordinal, in: region) else { return false }
             switch record.kind {
             case .modifier:
                 guard StaticSignalAnalyzerNRFModifierPayload(record: record) != nil
                 else { return false }
+            case .text where utf8:
+                guard record.flags == 0, record.auxiliary == 0,
+                    record.payload2 == 0,
+                    record.payload0 <= UInt32(maximumTextByteCount),
+                    record.payload1 <= UInt32(maximumTextByteCount) - record.payload0
+                else { return false }
             default:
                 guard StaticSignalAnalyzerNRFPrimitivePayload(record: record) != nil
                 else { return false }
             }
             if record.kind == .text {
-                guard record.payload0 == UInt32(coveredScalars),
-                    record.payload1 <= UInt32(scalarCount - coveredScalars)
+                guard record.payload0 == UInt32(coveredText),
+                    record.payload1 <= UInt32(textCount - coveredText)
                 else { return false }
-                coveredScalars += UInt16(record.payload1)
+                if utf8 {
+                    guard StaticSignalAnalyzerNRFUTF8TextPool.scalarCount(
+                        from: coveredText,
+                        byteCount: UInt16(record.payload1),
+                        in: region
+                    ) != nil else { return false }
+                }
+                coveredText += UInt16(record.payload1)
             }
             if ordinal > 0 {
                 guard record.parent < ordinal,
@@ -232,10 +284,10 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
             }
             ordinal += 1
         }
-        guard coveredScalars == scalarCount else { return false }
+        guard coveredText == textCount else { return false }
 
         var scalarOrdinal: UInt16 = 0
-        while scalarOrdinal < scalarCount {
+        while !utf8 && scalarOrdinal < textCount {
             guard scalar(at: scalarOrdinal, in: region) != nil else { return false }
             scalarOrdinal += 1
         }
@@ -270,6 +322,49 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
         put(actionCount, in: region, at: reservedOffset + 8)
         put(tableSchema, in: region, at: reservedOffset + 10)
         return true
+    }
+
+    package static func sealUTF8Table(
+        scopeCount: UInt16,
+        textByteCount: UInt16,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
+        guard validRegion(region),
+            footerIsZero(in: region),
+            validateUTF8Topology(
+                scopeCount: scopeCount,
+                textByteCount: textByteCount,
+                in: region
+            )
+        else { return false }
+        put(tableMagic, in: region, at: reservedOffset)
+        put(scopeCount, in: region, at: reservedOffset + 4)
+        put(textByteCount, in: region, at: reservedOffset + 6)
+        put(actionCount, in: region, at: reservedOffset + 8)
+        put(utf8TableSchema, in: region, at: reservedOffset + 10)
+        return true
+    }
+
+    package static func utf8TableSummary(
+        in region: UnsafeMutableRawBufferPointer
+    ) -> StaticSignalAnalyzerNRFUTF8TableSummary? {
+        guard validRegion(region),
+            getUInt32(from: region, at: reservedOffset) == tableMagic,
+            getUInt16(from: region, at: reservedOffset + 8) == actionCount,
+            getUInt16(from: region, at: reservedOffset + 10) == utf8TableSchema,
+            getUInt32(from: region, at: reservedOffset + 12) == 0
+        else { return nil }
+        let scopeCount = getUInt16(from: region, at: reservedOffset + 4)
+        let textByteCount = getUInt16(from: region, at: reservedOffset + 6)
+        guard validateUTF8Topology(
+            scopeCount: scopeCount,
+            textByteCount: textByteCount,
+            in: region
+        ) else { return nil }
+        return StaticSignalAnalyzerNRFUTF8TableSummary(
+            scopeCount: scopeCount,
+            textByteCount: textByteCount
+        )
     }
 
     package static func tableSummary(

@@ -197,6 +197,12 @@ The byte-pool reader validates strict UTF-8 (continuations, shortest form,
 surrogates, and Unicode maximum) and can count or retrieve scalars from a
 checked byte range without an intermediate string. The table validator must
 still use it when the footer/range schema migrates.
+A parallel version-2 UTF-8 table seal now validates the same ordered scope
+topology and action links with gap-free byte ranges and strict UTF-8 text
+validation. Its footer records used bytes rather than scalar slots; the
+version-1 scalar seal remains readable for existing fixtures. Production
+publication still recognizes only the former table path, so version 2 is not
+yet an application semantic result.
 A ROM-backed generated topology writer now decodes each normal/diagnostic
 root-first scope's stable source ID, parent, first child, next sibling, and
 kind directly into the caller-owned candidate region. The host oracle checks

@@ -1,3 +1,4 @@
+import GiftUI
 import SignalAnalyzerTargetHost
 import Testing
 
@@ -169,6 +170,42 @@ import Testing
         StaticSignalAnalyzerNRFScopeKind.modifier.rawValue
     badModifierPayload.withUnsafeMutableBytes { region in
         #expect(table.tableSummary(in: region) == nil)
+    }
+}
+
+@Test func staticNRFUTF8TableSealsExactTextAndRejectsCorruption() {
+    let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+    let pool = StaticSignalAnalyzerNRFUTF8TextPool.self
+    let diagnostic = BoundedText(utf8: [UInt8](repeating: 65, count: 96))!
+    var bytes = makeStaticNRFThreeScopeTable()
+    bytes.withUnsafeMutableBytes { region in
+        let text = StaticSignalAnalyzerNRFScopeRecord(
+            identity: 20,
+            parent: 0,
+            firstChild: table.missingOrdinal,
+            nextSibling: 2,
+            kind: .text,
+            flags: 0,
+            auxiliary: 0,
+            payload0: 0,
+            payload1: 96,
+            payload2: 0
+        )
+        #expect(table.storeScope(text, at: 1, in: region))
+        #expect(pool.append(diagnostic, at: 0, in: region) == 96)
+        #expect(table.validateUTF8Topology(scopeCount: 3, textByteCount: 96, in: region))
+        #expect(!table.validateTopology(scopeCount: 3, scalarCount: 96, in: region))
+        #expect(table.sealUTF8Table(scopeCount: 3, textByteCount: 96, in: region))
+        #expect(table.tableSummary(in: region) == nil)
+        #expect(
+            table.utf8TableSummary(in: region)
+                == StaticSignalAnalyzerNRFUTF8TableSummary(
+                    scopeCount: 3,
+                    textByteCount: 96
+                )
+        )
+        region[table.scalarOffset + 40] = 0x80
+        #expect(table.utf8TableSummary(in: region) == nil)
     }
 }
 
