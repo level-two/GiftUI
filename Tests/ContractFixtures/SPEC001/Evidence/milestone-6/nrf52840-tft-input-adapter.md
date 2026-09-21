@@ -585,6 +585,12 @@ round-trips, and rejection of out-of-range relations, invalid scalars, and
 short buffers without mutation. This is storage machinery only: the portable
 hierarchy has not yet populated or validated a complete table, so the current
 published result remains prefix-only and is not yet a semantic layout view.
+The packed table now also has a non-mutating topology validator. A three-scope
+fixture proves linked root/children plus all six action targets; corruption
+fixtures reject duplicate identity, parent cycles, orphan or duplicate links,
+wrong parents, surrogate scalar values, and targets outside the used scope
+count. The production candidate does not yet call this validator because it
+does not yet contain a generated complete table.
 
 The shared Static observable-model handle now accepts a typed-throwing scoped
 borrow. This lets the generated trace case invoke the existing

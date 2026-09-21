@@ -69,3 +69,107 @@ import Testing
     }
     #expect(bytes.allSatisfy { $0 == 0x5A })
 }
+
+@Test func staticNRFPackedSemanticTopologyValidatesCompleteLinkedTable() {
+    var bytes = makeStaticNRFThreeScopeTable()
+    bytes.withUnsafeMutableBytes { region in
+        #expect(
+            StaticSignalAnalyzerNRFPackedSemanticRecords.validateTopology(
+                scopeCount: 3,
+                scalarCount: 1,
+                in: region
+            )
+        )
+        #expect(
+            !StaticSignalAnalyzerNRFPackedSemanticRecords.validateTopology(
+                scopeCount: 2,
+                scalarCount: 1,
+                in: region
+            )
+        )
+        #expect(
+            !StaticSignalAnalyzerNRFPackedSemanticRecords.validateTopology(
+                scopeCount: 99,
+                scalarCount: 1,
+                in: region
+            )
+        )
+    }
+}
+
+@Test func staticNRFPackedSemanticTopologyRejectsBrokenLinksAndValues() {
+    let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+    let baseline = makeStaticNRFThreeScopeTable()
+    for (offset, value) in [
+        (table.scopeOffset + table.scopeStride + 0, UInt8(10)), // duplicate identity
+        (table.scopeOffset + table.scopeStride + 2, UInt8(2)), // parent cycle
+        (table.scopeOffset + table.scopeStride + 6, UInt8(0xFF)), // orphan sibling
+        (table.scopeOffset + table.scopeStride * 2 + 2, UInt8(1)), // wrong parent
+        (table.scalarOffset + 1, UInt8(0xD8)), // surrogate scalar
+        (table.actionOffset, UInt8(3)), // action outside used scopes
+    ] {
+        var bytes = baseline
+        bytes[offset] = value
+        bytes.withUnsafeMutableBytes { region in
+            #expect(!table.validateTopology(scopeCount: 3, scalarCount: 1, in: region))
+        }
+    }
+    var duplicateLink = baseline
+    duplicateLink[table.scopeOffset + 4] = 2
+    duplicateLink.withUnsafeMutableBytes { region in
+        #expect(!table.validateTopology(scopeCount: 3, scalarCount: 1, in: region))
+    }
+}
+
+private func makeStaticNRFThreeScopeTable() -> [UInt8] {
+    var bytes = [UInt8](repeating: 0, count: 3_024)
+    bytes.withUnsafeMutableBytes { region in
+        let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+        let root = StaticSignalAnalyzerNRFScopeRecord(
+            identity: 10,
+            parent: table.missingOrdinal,
+            firstChild: 1,
+            nextSibling: table.missingOrdinal,
+            kind: .vStack,
+            flags: 0,
+            auxiliary: 0,
+            payload0: 0,
+            payload1: 0,
+            payload2: 0
+        )
+        let first = StaticSignalAnalyzerNRFScopeRecord(
+            identity: 20,
+            parent: 0,
+            firstChild: table.missingOrdinal,
+            nextSibling: 2,
+            kind: .text,
+            flags: 0,
+            auxiliary: 0,
+            payload0: 0,
+            payload1: 1,
+            payload2: 0
+        )
+        let second = StaticSignalAnalyzerNRFScopeRecord(
+            identity: 30,
+            parent: 0,
+            firstChild: table.missingOrdinal,
+            nextSibling: table.missingOrdinal,
+            kind: .proxy,
+            flags: 0,
+            auxiliary: 0,
+            payload0: 0,
+            payload1: 0,
+            payload2: 0
+        )
+        #expect(table.storeScope(root, at: 0, in: region))
+        #expect(table.storeScope(first, at: 1, in: region))
+        #expect(table.storeScope(second, at: 2, in: region))
+        #expect(table.storeScalar(65, at: 0, in: region))
+        var action: UInt16 = 0
+        while action < table.actionCount {
+            #expect(table.storeActionScope(2, at: action, in: region))
+            action += 1
+        }
+    }
+    return bytes
+}

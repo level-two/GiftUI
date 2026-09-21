@@ -159,6 +159,83 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
         return ordinal < maximumScopeCount ? ordinal : nil
     }
 
+    /// Validate an ordered, fully linked projection before its owning region
+    /// is checksummed and published. This does not mutate the region.
+    package static func validateTopology(
+        scopeCount: UInt16,
+        scalarCount: UInt16,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
+        guard validRegion(region), scopeCount > 0,
+            scopeCount <= maximumScopeCount,
+            scalarCount <= maximumScalarCount,
+            let root = scope(at: 0, in: region),
+            root.parent == missingOrdinal,
+            root.nextSibling == missingOrdinal
+        else { return false }
+
+        var ordinal: UInt16 = 0
+        while ordinal < scopeCount {
+            guard let record = scope(at: ordinal, in: region) else { return false }
+            if ordinal > 0 {
+                guard record.parent < ordinal,
+                    incomingLinkCount(to: ordinal, scopeCount: scopeCount, in: region) == 1
+                else { return false }
+            }
+            if record.firstChild != missingOrdinal {
+                guard record.firstChild > ordinal,
+                    record.firstChild < scopeCount,
+                    scope(at: record.firstChild, in: region)?.parent == ordinal
+                else { return false }
+            }
+            if record.nextSibling != missingOrdinal {
+                guard record.nextSibling > ordinal,
+                    record.nextSibling < scopeCount,
+                    scope(at: record.nextSibling, in: region)?.parent == record.parent
+                else { return false }
+            }
+            var earlier: UInt16 = 0
+            while earlier < ordinal {
+                guard scope(at: earlier, in: region)?.identity != record.identity else {
+                    return false
+                }
+                earlier += 1
+            }
+            ordinal += 1
+        }
+
+        var scalarOrdinal: UInt16 = 0
+        while scalarOrdinal < scalarCount {
+            guard scalar(at: scalarOrdinal, in: region) != nil else { return false }
+            scalarOrdinal += 1
+        }
+        var actionOrdinal: UInt16 = 0
+        while actionOrdinal < actionCount {
+            guard let action = actionScope(at: actionOrdinal, in: region),
+                action < scopeCount
+            else { return false }
+            actionOrdinal += 1
+        }
+        return true
+    }
+
+    private static func incomingLinkCount(
+        to target: UInt16,
+        scopeCount: UInt16,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> UInt8 {
+        var count: UInt8 = 0
+        var source: UInt16 = 0
+        while source < scopeCount {
+            guard let record = scope(at: source, in: region) else { return 0 }
+            if record.firstChild == target { count += 1 }
+            if record.nextSibling == target { count += 1 }
+            if count > 1 { return count }
+            source += 1
+        }
+        return count
+    }
+
     private static func validRegion(_ region: UnsafeMutableRawBufferPointer) -> Bool {
         region.count == regionByteCount && region.baseAddress != nil
     }

@@ -102,6 +102,15 @@ ordinal and payload interpretation, unique identities, tree acyclicity,
 exact variant counts, text-pool length, and consumed byte count. The decoder
 rejects unknown schema/kinds or mismatched checksum before any query.
 
+The checked table codec now has a read-only whole-topology validation step.
+It requires an ordered root-first table, exactly one incoming child/sibling
+link for each nonroot scope, forward child/sibling links, parent agreement,
+unique nonzero identities, valid used scalars, and in-range action targets.
+The forward ordering gives an allocation-free acyclicity proof. It does not
+yet validate per-kind payload meanings or make the prefix-only published
+region a complete semantic result; generated population and final publication
+must call this validation at the correct lifetime boundary.
+
 The oracle tests measure 96 scopes and 117 text scalars for the normal
 variant, and 98 scopes and 129 text scalars for the diagnostic variant. The
 98-scope ceiling is the measured diagnostic maximum of 48 semantic nodes plus
