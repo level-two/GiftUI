@@ -160,6 +160,8 @@ packed ancestor chain. Complete publication also requires the six action
 entries to name distinct scope ordinals. Together the two codecs account for every current
 scope's layout/render/action-state payload, but they do not themselves
 generate production records.
+Complete acceptance also requires exactly one record for each of the five
+generated Canvas occurrence IDs; duplicate or missing occurrences fail closed.
 If any required current payload cannot be encoded in the three words, this
 packing must be revised within the *same* 3,024-byte bound and revalidated;
 it is not permission to truncate a modifier or alter the portable hierarchy.

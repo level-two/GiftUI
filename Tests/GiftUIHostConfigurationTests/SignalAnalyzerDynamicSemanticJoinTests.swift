@@ -2102,6 +2102,7 @@ private func verifyPackedNRFRenderProjection(
                     scalarCount: scalarOrdinal
                 )
         )
+        #expect(table.hasExactCanvasOccurrences(in: region))
     }
 }
 

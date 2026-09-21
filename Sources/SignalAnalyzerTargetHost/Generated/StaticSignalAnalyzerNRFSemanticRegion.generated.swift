@@ -82,6 +82,9 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
                 ),
                 StaticSignalAnalyzerNRFPackedSemanticRecords.hasDistinctActionScopes(
                     in: region
+                ),
+                StaticSignalAnalyzerNRFPackedSemanticRecords.hasExactCanvasOccurrences(
+                    in: region
                 )
             else { return false }
             store(checksum(of: region), in: region, at: checksumOffset)
@@ -178,7 +181,8 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
         guard let table = StaticSignalAnalyzerNRFPackedSemanticRecords.tableSummary(in: region),
             !expectedScopes.overflow,
             table.scopeCount == expectedScopes.partialValue,
-            StaticSignalAnalyzerNRFPackedSemanticRecords.hasDistinctActionScopes(in: region)
+            StaticSignalAnalyzerNRFPackedSemanticRecords.hasDistinctActionScopes(in: region),
+            StaticSignalAnalyzerNRFPackedSemanticRecords.hasExactCanvasOccurrences(in: region)
         else { return nil }
         return table
     }

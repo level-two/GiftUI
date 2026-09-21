@@ -315,6 +315,26 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
         return true
     }
 
+    /// Each generated Canvas occurrence must have exactly one live record.
+    package static func hasExactCanvasOccurrences(
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
+        guard let summary = tableSummary(in: region) else { return false }
+        var seen: UInt8 = 0
+        var ordinal: UInt16 = 0
+        while ordinal < summary.scopeCount {
+            guard let record = scope(at: ordinal, in: region) else { return false }
+            if record.kind == .canvas {
+                let occurrence = UInt8(truncatingIfNeeded: record.payload0)
+                let bit = UInt8(1) << (occurrence - 1)
+                guard seen & bit == 0 else { return false }
+                seen |= bit
+            }
+            ordinal += 1
+        }
+        return seen == 0b1_1111
+    }
+
     private static func footerIsZero(
         in region: UnsafeMutableRawBufferPointer
     ) -> Bool {

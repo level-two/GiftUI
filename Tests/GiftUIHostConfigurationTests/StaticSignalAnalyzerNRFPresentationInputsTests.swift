@@ -339,9 +339,9 @@ import Testing
             )
             #expect(
                 profile.withRegion(.semanticCandidate) { region in
-                    StaticSignalAnalyzerNRFPackedSemanticRecords.hasDistinctActionScopes(
-                        in: region
-                    )
+                    let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+                    return table.hasDistinctActionScopes(in: region)
+                        && table.hasExactCanvasOccurrences(in: region)
                 } == true
             )
             #expect(
@@ -352,6 +352,19 @@ import Testing
                     }
                     let rejected = !table.hasDistinctActionScopes(in: region)
                     return rejected && table.storeActionScope(1, at: 1, in: region)
+                } == true
+            )
+            #expect(
+                profile.withRegion(.semanticCandidate) { region in
+                    let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+                    guard let canvas = table.scope(at: 91, in: region) else {
+                        return false
+                    }
+                    let payloadOffset = table.scopeOffset + 91 * table.scopeStride + 12
+                    region[payloadOffset] = 1
+                    let rejected = !table.hasExactCanvasOccurrences(in: region)
+                    region[payloadOffset] = UInt8(canvas.payload0)
+                    return rejected
                 } == true
             )
             #expect(
@@ -421,10 +434,10 @@ private func populateSyntheticNRFCompleteTable(
             parent: ordinal == 0 ? table.missingOrdinal : ordinal - 1,
             firstChild: ordinal == 95 ? table.missingOrdinal : ordinal + 1,
             nextSibling: table.missingOrdinal,
-            kind: .proxy,
+            kind: (90 ... 94).contains(ordinal) ? .canvas : .proxy,
             flags: 0,
             auxiliary: 0,
-            payload0: 0,
+            payload0: (90 ... 94).contains(ordinal) ? UInt32(ordinal - 89) : 0,
             payload1: 0,
             payload2: 0
         )

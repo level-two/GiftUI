@@ -630,6 +630,9 @@ text-pool gaps or excess in addition to broken links. The positive real-tree
 projections still seal under those stricter checks.
 The complete-table acceptance path now also rejects repeated action-scope
 ordinals; the production six-action mapping must identify six distinct scopes.
+It also requires one and only one record for each of the five generated Canvas
+occurrence IDs. The real-tree host projections satisfy this check; duplicate
+Canvas occurrence corruption is rejected.
 The enclosing semantic-region owner now has a separate complete-candidate
 staging and publication path. A host fixture populates a synthetic 96-scope
 table directly in the borrowed candidate region, seals it, refreshes the
