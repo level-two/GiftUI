@@ -106,10 +106,11 @@ The checked table codec now has a read-only whole-topology validation step.
 It requires an ordered root-first table, exactly one incoming child/sibling
 link for each nonroot scope, forward child/sibling links, parent agreement,
 unique nonzero identities, valid used scalars, and in-range action targets.
-The forward ordering gives an allocation-free acyclicity proof. It does not
-yet validate per-kind payload meanings or make the prefix-only published
-region a complete semantic result; generated population and final publication
-must call this validation at the correct lifetime boundary.
+The forward ordering gives an allocation-free acyclicity proof. Per-kind
+payloads are now decoded and checked, and text ranges must cover the used
+scalar pool exactly. The prefix-only published region is still not a complete
+semantic result; generated population and final publication must call this
+validation at the correct lifetime boundary.
 The reserved 16-byte tail now holds a versioned table-completion footer only
 after a populated table passes topology validation. A reader checks the footer
 and revalidates the used records, including every per-kind payload and an exact
@@ -120,8 +121,9 @@ The owning semantic-region store now offers a scoped complete-candidate path:
 it writes the existing prefix, lets a synchronous caller populate the same
 borrowed candidate region, requires exact variant scope counts and a sealed
 table, then refreshes the whole-region checksum. Its complete-publication path
-requires both prefix integrity and the validated table before copying to the
-retained region and advancing revision. Prefix-only staging remains an
+requires prefix integrity, the validated table, distinct action scopes, and
+exact Canvas occurrences before copying to the retained region and advancing
+revision. Prefix-only staging remains an
 explicit incomplete fixture seam and is not sufficient for complete
 publication. The generated real-hierarchy writer is still missing.
 
