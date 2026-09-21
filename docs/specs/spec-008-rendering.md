@@ -6,7 +6,7 @@ status: implemented
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-09-20
+updated: 2026-09-21
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -1140,14 +1140,20 @@ Production traversal of the fully styled and Canvas-sized SPEC-001 hierarchy
 established a coherent render projection of 98 semantic scopes and 98 resolved
 layout scopes at traversal depth 13. The diagnostic-present fixture contains
 21 render text lines, emits 30 ordinary operations and 129 positioned glyphs,
-and reaches clip depth 3. The approved release ceilings remain 35 combined
-ordinary-plus-Canvas operations, 139 positioned glyphs, and clip depth 4.
+and reaches clip depth 3. At that amendment the release ceilings were 35
+combined ordinary-plus-Canvas operations, 139 positioned glyphs, and clip
+depth 4.
 
 The maintainer explicitly approved these measured structural values on
 2026-09-20. They replace only the Signal Analyzer conformance fixture's former
 62-semantic-scope, 32-layout-scope, and depth-6 observations. The generic
 workspace contract, counting rules, finite-capacity behavior, and existing
-128/128/32/64 fixture workspace allocation are unchanged.
+128/128/32/64 fixture workspace allocation are unchanged. The 2026-09-21
+SPEC-015 amendment supersedes the application-specific 139-glyph release
+ceiling above: an exact 96-byte ASCII diagnostic raises the measured shared
+hierarchy maximum to 214, with a 224-glyph preset ceiling. The older short-
+diagnostic and generic SPEC-008 fixtures remain valid tests of their own
+bounded workloads, not evidence that the full diagnostic fits 139 slots.
 
 ## Open Issues
 

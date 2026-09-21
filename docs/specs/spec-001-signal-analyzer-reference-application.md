@@ -6,7 +6,7 @@ status: implementing
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-09-19
+updated: 2026-09-21
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -1408,6 +1408,12 @@ The Raspberry Pi/Linux claim requires execution with framebuffer rendering and
 PiScreen display/input evidence. The nRF52840 claim requires static execution
 with the supported TFT display. A host simulator does not substitute for those
 connected-hardware claims.
+
+The approved SPEC-015 workload reserves 224 text-scalar and positioned-glyph
+slots in each host's layout/render limits. This covers the shared hierarchy's
+214-scalar/glyph maximum when a permitted 96-byte ASCII diagnostic is visible,
+with ten slots of headroom. Hosts MUST preserve that diagnostic exactly; a
+capacity refusal or truncated error text is not a conforming presentation.
 
 Real GPIO or peripheral acquisition MAY replace the mock behind
 `SignalDataSource`, but hardware acquisition is not required for analyzer
