@@ -183,6 +183,12 @@ error, while an admitted diagnostic may contain 96 ASCII bytes. Replacing
 that error needs 213 scalar slots, exceeding the proposed 139-slot pool by
 74. The current scalar encoder therefore remains a bounded component, not a
 production full-tree writer. No exact error text may be dropped or truncated.
+A separate UTF-8 byte-pool writer now copies whole `BoundedText` values into
+the same 556-byte region with preflight capacity checking. It preserves exact
+bytes, including multibyte scalars, and admits a 96-byte diagnostic without
+mutation on overflow. This is a codec seam only: the table footer, primitive
+text ranges, validator, and generated writer still use scalar ordinals and
+must be migrated together before this representation can be published.
 A ROM-backed generated topology writer now decodes each normal/diagnostic
 root-first scope's stable source ID, parent, first child, next sibling, and
 kind directly into the caller-owned candidate region. The host oracle checks
