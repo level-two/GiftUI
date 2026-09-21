@@ -193,6 +193,10 @@ The generated diagnostic-input test now packs every one of its 21 text
 values, including a maximal 96-byte error, into 214 UTF-8 bytes and checks
 each byte against the original bounded value. This measures one demanding
 state, not a proof of every reachable model and capture state.
+The byte-pool reader validates strict UTF-8 (continuations, shortest form,
+surrogates, and Unicode maximum) and can count or retrieve scalars from a
+checked byte range without an intermediate string. The table validator must
+still use it when the footer/range schema migrates.
 A ROM-backed generated topology writer now decodes each normal/diagnostic
 root-first scope's stable source ID, parent, first child, next sibling, and
 kind directly into the caller-owned candidate region. The host oracle checks

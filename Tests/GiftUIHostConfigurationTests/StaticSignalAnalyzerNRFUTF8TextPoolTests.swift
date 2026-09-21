@@ -14,6 +14,11 @@ import Testing
                 #expect(pool.byte(at: UInt16(4 + index), in: region) == expected[index])
             }
         }
+        #expect(pool.scalarCount(from: 4, byteCount: 7, in: region) == 3)
+        #expect(pool.scalar(at: 0, from: 4, byteCount: 7, in: region) == 65)
+        #expect(pool.scalar(at: 1, from: 4, byteCount: 7, in: region) == 0xE9)
+        #expect(pool.scalar(at: 2, from: 4, byteCount: 7, in: region) == 0x1_F600)
+        #expect(pool.scalar(at: 3, from: 4, byteCount: 7, in: region) == nil)
         #expect(pool.append(BoundedText("")!, at: pool.maximumByteCount, in: region) == 0)
         #expect(
             pool.append(
@@ -44,4 +49,29 @@ import Testing
     #expect(bytes[table.scalarOffset + 295] == 120)
     #expect(bytes[table.scalarOffset + 296] == 0xA5)
     #expect(bytes[table.scalarOffset + Int(pool.maximumByteCount) - 1] == 0xA5)
+}
+
+@Test func staticNRFUTF8PoolRejectsMalformedOrOutOfRangeBytes() {
+    let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+    let pool = StaticSignalAnalyzerNRFUTF8TextPool.self
+    let malformed: [[UInt8]] = [
+        [0x80], [0xC0, 0x80], [0xE0, 0x80, 0x80],
+        [0xED, 0xA0, 0x80], [0xF4, 0x90, 0x80, 0x80],
+        [0xF0, 0x9F, 0x98], [0xC3, 0x41],
+    ]
+    var bytes = [UInt8](repeating: 0, count: table.regionByteCount)
+    bytes.withUnsafeMutableBytes { region in
+        for candidate in malformed {
+            for index in candidate.indices {
+                region[table.scalarOffset + index] = candidate[index]
+            }
+            let length = UInt16(candidate.count)
+            #expect(pool.scalarCount(from: 0, byteCount: length, in: region) == nil)
+            #expect(pool.scalar(at: 0, from: 0, byteCount: length, in: region) == nil)
+        }
+        #expect(pool.scalarCount(from: pool.maximumByteCount, byteCount: 1, in: region) == nil)
+        #expect(pool.scalar(at: 0, from: pool.maximumByteCount, byteCount: 1, in: region) == nil)
+        let short = UnsafeMutableRawBufferPointer(rebasing: region[..<3_023])
+        #expect(pool.scalarCount(from: 0, byteCount: 1, in: short) == nil)
+    }
 }
