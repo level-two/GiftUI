@@ -122,6 +122,89 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         return true
     }
 
+    /// The current portable tree has the same invariant stack/spacer payloads
+    /// in both variants. No text, Canvas, or modifier payload is inferred here.
+    package static func populateInvariantPrimitives(
+        scopeCount: UInt16,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
+        let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+        guard region.count == table.regionByteCount,
+            scopeCount == 96 || scopeCount == 98
+        else { return false }
+        var slot: UInt16 = 0
+        while slot < 13 {
+            let ordinal = invariantPrimitiveOrdinal(at: slot)
+            let payload = invariantPrimitivePayload(at: slot)
+            guard let record = table.scope(at: ordinal, in: region),
+                record.kind == payload.kind,
+                record.auxiliary == 0,
+                record.payload0 == 0,
+                record.payload1 == 0,
+                record.payload2 == 0
+            else { return false }
+            slot += 1
+        }
+        slot = 0
+        while slot < 13 {
+            let ordinal = invariantPrimitiveOrdinal(at: slot)
+            let payload = invariantPrimitivePayload(at: slot)
+            guard let old = table.scope(at: ordinal, in: region),
+                table.storeScope(
+                    StaticSignalAnalyzerNRFScopeRecord(
+                        identity: old.identity,
+                        parent: old.parent,
+                        firstChild: old.firstChild,
+                        nextSibling: old.nextSibling,
+                        kind: old.kind,
+                        flags: old.flags,
+                        auxiliary: payload.auxiliary,
+                        payload0: payload.payload0,
+                        payload1: old.payload1,
+                        payload2: old.payload2
+                    ),
+                    at: ordinal,
+                    in: region
+                )
+            else { return false }
+            slot += 1
+        }
+        return true
+    }
+
+    private static func invariantPrimitiveOrdinal(at slot: UInt16) -> UInt16 {
+        switch slot {
+        case 0: 2
+        case 1: 3
+        case 2: 4
+        case 3: 17
+        case 4: 20
+        case 5: 23
+        case 6: 34
+        case 7: 43
+        case 8: 52
+        case 9: 61
+        case 10: 70
+        case 11: 71
+        default: 83
+        }
+    }
+
+    private static func invariantPrimitivePayload(
+        at slot: UInt16
+    ) -> (kind: StaticSignalAnalyzerNRFScopeKind, auxiliary: UInt16, payload0: UInt32) {
+        switch slot {
+        case 0: (.vStack, 1, 4)
+        case 1: (.hStack, 1, 4)
+        case 2: (.vStack, 0, 2)
+        case 3: (.zStack, 257, 0)
+        case 4: (.vStack, 1, 2)
+        case 5...9: (.hStack, 1, 2)
+        case 10: (.vStack, 1, 2)
+        default: (.hStack, 1, 4)
+        }
+    }
+
     private static func actionOrdinal(at index: UInt16) -> UInt16 {
         switch index {
         case 0: 74

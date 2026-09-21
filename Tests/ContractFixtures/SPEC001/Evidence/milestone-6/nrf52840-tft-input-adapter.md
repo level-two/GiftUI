@@ -652,6 +652,9 @@ The topology writer now also installs the exact six action ordinals and five
 Canvas occurrence payloads. The oracle checks each association in both real
 variants; a missing shape or repeated binding is rejected before publication.
 Text and modifier payloads remain unpopulated.
+The writer also fills thirteen invariant nonzero stack/spacer payloads.
+Every primitive payload now matches the real-tree oracle in both variants,
+while text and modifier payloads remain separate incomplete stages.
 The enclosing semantic-region owner now has a separate complete-candidate
 staging and publication path. A host fixture populates a synthetic 96-scope
 table directly in the borrowed candidate region, seals it, refreshes the

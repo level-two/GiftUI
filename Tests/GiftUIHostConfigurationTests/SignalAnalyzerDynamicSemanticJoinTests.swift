@@ -2131,6 +2131,12 @@ private func verifyPackedNRFRenderProjection(
                     in: generated
                 )
             )
+            #expect(
+                StaticSignalAnalyzerNRFTopologyWriter.populateInvariantPrimitives(
+                    scopeCount: UInt16(nodes.count),
+                    in: generated
+                )
+            )
             for ordinal in 0 ..< nodes.count {
                 guard let expected = table.scope(at: UInt16(ordinal), in: region),
                     let actual = table.scope(at: UInt16(ordinal), in: generated)
@@ -2145,6 +2151,14 @@ private func verifyPackedNRFRenderProjection(
                 #expect(actual.kind == expected.kind)
                 if actual.kind == .canvas {
                     #expect(actual.payload0 == expected.payload0)
+                }
+                if actual.kind != .canvas && actual.kind != .modifier
+                    && actual.kind != .text
+                {
+                    #expect(actual.auxiliary == expected.auxiliary)
+                    #expect(actual.payload0 == expected.payload0)
+                    #expect(actual.payload1 == expected.payload1)
+                    #expect(actual.payload2 == expected.payload2)
                 }
             }
             var action: UInt16 = 0

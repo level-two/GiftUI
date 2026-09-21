@@ -187,6 +187,11 @@ five Canvas occurrence payloads after checking the emitted stable source
 identities. Both variants share these associations. It rejects an unpopulated
 shape and repeated binding, while leaving text and state-dependent modifier
 payloads to the next stage.
+It now also fills the thirteen nonzero invariant stack and spacer payloads
+shared by both variants. Host oracle comparison covers every primitive
+record, including zero-valued proxies. This leaves text, modifier, and
+state-dependent values unfilled; a shape-plus-bindings table is not yet a
+publishable semantic result.
 If any required current payload cannot be encoded in the three words, this
 packing must be revised within the *same* 3,024-byte bound and revalidated;
 it is not permission to truncate a modifier or alter the portable hierarchy.
