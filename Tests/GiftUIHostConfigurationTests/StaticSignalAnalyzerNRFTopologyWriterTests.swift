@@ -32,6 +32,34 @@ import Testing
             )
             #expect(table.scope(at: 0, in: region)?.parent == table.missingOrdinal)
             #expect(table.scope(at: count - 1, in: region) != nil)
+            #expect(
+                StaticSignalAnalyzerNRFTopologyWriter.populateBindings(
+                    scopeCount: count,
+                    in: region
+                )
+            )
+            #expect(table.actionScope(at: 0, in: region) == 74)
+            #expect(table.scope(at: 19, in: region)?.payload0 == 1)
+            #expect(
+                !StaticSignalAnalyzerNRFTopologyWriter.populateBindings(
+                    scopeCount: count,
+                    in: region
+                )
+            )
         }
     }
+}
+
+@Test func staticNRFTopologyBindingsRejectUnpopulatedShapeWithoutMutation() {
+    let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+    var bytes = [UInt8](repeating: 0, count: table.regionByteCount)
+    bytes.withUnsafeMutableBytes { region in
+        #expect(
+            !StaticSignalAnalyzerNRFTopologyWriter.populateBindings(
+                scopeCount: 96,
+                in: region
+            )
+        )
+    }
+    #expect(bytes.allSatisfy { $0 == 0 })
 }

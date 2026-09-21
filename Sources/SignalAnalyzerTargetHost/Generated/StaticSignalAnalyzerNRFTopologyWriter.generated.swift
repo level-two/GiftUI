@@ -57,6 +57,113 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         }
     }
 
+    /// Fill only the variant-stable action and Canvas associations after
+    /// populateShape. The generated text and modifier payloads remain open.
+    package static func populateBindings(
+        scopeCount: UInt16,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
+        let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+        guard region.count == table.regionByteCount,
+            scopeCount == 96 || scopeCount == 98
+        else { return false }
+        var index: UInt16 = 0
+        while index < 5 {
+            let ordinal = canvasOrdinal(at: index)
+            guard let record = table.scope(at: ordinal, in: region),
+                record.kind == .canvas,
+                record.identity == canvasIdentity(at: index),
+                record.payload0 == 0, record.payload1 == 0, record.payload2 == 0
+            else { return false }
+            index += 1
+        }
+        index = 0
+        while index < table.actionCount {
+            let ordinal = actionOrdinal(at: index)
+            guard let record = table.scope(at: ordinal, in: region),
+                record.identity == actionIdentity(at: index),
+                region[table.actionOffset + Int(index) * 2] == 0,
+                region[table.actionOffset + Int(index) * 2 + 1] == 0
+            else { return false }
+            index += 1
+        }
+        index = 0
+        while index < 5 {
+            let ordinal = canvasOrdinal(at: index)
+            guard let old = table.scope(at: ordinal, in: region),
+                table.storeScope(
+                    StaticSignalAnalyzerNRFScopeRecord(
+                        identity: old.identity,
+                        parent: old.parent,
+                        firstChild: old.firstChild,
+                        nextSibling: old.nextSibling,
+                        kind: old.kind,
+                        flags: old.flags,
+                        auxiliary: old.auxiliary,
+                        payload0: UInt32(index + 1),
+                        payload1: old.payload1,
+                        payload2: old.payload2
+                    ),
+                    at: ordinal,
+                    in: region
+                )
+            else { return false }
+            index += 1
+        }
+        index = 0
+        while index < table.actionCount {
+            guard table.storeActionScope(
+                actionOrdinal(at: index),
+                at: index,
+                in: region
+            ) else { return false }
+            index += 1
+        }
+        return true
+    }
+
+    private static func actionOrdinal(at index: UInt16) -> UInt16 {
+        switch index {
+        case 0: 74
+        case 1: 78
+        case 2: 81
+        case 3: 86
+        case 4: 90
+        default: 94
+        }
+    }
+
+    private static func actionIdentity(at index: UInt16) -> UInt16 {
+        switch index {
+        case 0: 315
+        case 1: 35_973
+        case 2: 17_159
+        case 3: 45_233
+        case 4: 40_502
+        default: 48_398
+        }
+    }
+
+    private static func canvasOrdinal(at index: UInt16) -> UInt16 {
+        switch index {
+        case 0: 19
+        case 1: 38
+        case 2: 47
+        case 3: 56
+        default: 65
+        }
+    }
+
+    private static func canvasIdentity(at index: UInt16) -> UInt16 {
+        switch index {
+        case 0: 11_918
+        case 1: 42_967
+        case 2: 34_040
+        case 3: 54_698
+        default: 8_136
+        }
+    }
+
     private static func word(
         in bytes: UnsafeBufferPointer<UInt8>,
         at offset: Int

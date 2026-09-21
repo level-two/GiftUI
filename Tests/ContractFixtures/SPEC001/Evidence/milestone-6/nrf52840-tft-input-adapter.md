@@ -646,8 +646,12 @@ write. This is a writer component, not yet full generated hierarchy staging.
 The generated topology writer now emits all 96 normal or 98 diagnostic
 root-first scope shapes from ROM into the borrowed fixed region. Host oracle
 tests compare every emitted stable ID, relation, and kind with the real
-portable hierarchy; payloads, text ranges, modifier flags, and action
-bindings are not yet populated by this writer.
+portable hierarchy; dynamic payloads, text ranges, and modifier flags are
+not yet populated by this writer.
+The topology writer now also installs the exact six action ordinals and five
+Canvas occurrence payloads. The oracle checks each association in both real
+variants; a missing shape or repeated binding is rejected before publication.
+Text and modifier payloads remain unpopulated.
 The enclosing semantic-region owner now has a separate complete-candidate
 staging and publication path. A host fixture populates a synthetic 96-scope
 table directly in the borrowed candidate region, seals it, refreshes the

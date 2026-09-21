@@ -180,8 +180,13 @@ root-first scope's stable source ID, parent, first child, next sibling, and
 kind directly into the caller-owned candidate region. The host oracle checks
 all 96/98 emitted shape records against the actual portable hierarchy. This
 is only the immutable shape: it deliberately leaves payload words, modifier
-flags, scalar ranges, and action ordinals for a subsequent writer stage and
+flags, scalar ranges, and action ordinals for a subsequent binding stage and
 cannot pass complete-table sealing by itself.
+The same writer now fills the six variant-stable action-scope ordinals and
+five Canvas occurrence payloads after checking the emitted stable source
+identities. Both variants share these associations. It rejects an unpopulated
+shape and repeated binding, while leaving text and state-dependent modifier
+payloads to the next stage.
 If any required current payload cannot be encoded in the three words, this
 packing must be revised within the *same* 3,024-byte bound and revalidated;
 it is not permission to truncate a modifier or alter the portable hierarchy.
