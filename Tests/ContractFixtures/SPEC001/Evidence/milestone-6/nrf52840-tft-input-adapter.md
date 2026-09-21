@@ -677,8 +677,10 @@ presentation transaction remain open.
 A borrowed version-2 render view now decodes every stable scope identity,
 render scope, and child relationship from the checked table without allocation.
 The normal and diagnostic host oracle compares all of those queries with the
-portable Dynamic render projection. Its scoped production lending and the
-layout/text reader remain open; this host result is not an embedded run.
+portable Dynamic render projection. The region owner now lends this reader
+synchronously from validated candidate or published storage. Host tests
+reject candidate access after attempt finish and published access after
+quiescence. The layout/text reader remains open; this is not an embedded run.
 Independently, the generated writer now fills fifteen invariant padding/frame
 modifier records. Both real-tree variants match every packed flag, edge,
 alignment, and dimension. It also fills twenty-five fixed passthrough styles,

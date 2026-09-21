@@ -504,6 +504,19 @@ import Testing
                 )
                 #expect(summary?.scopeCount == expectedScopes)
                 #expect(summary?.textByteCount == (expectedScopes == 98 ? 214 : 117))
+                let candidateRead =
+                    StaticSignalAnalyzerNRFSemanticRegionStore.withGeneratedUTF8RenderView(
+                        in: .semanticCandidate,
+                        renderSnapshotVersion: cycle,
+                        profile: &profile
+                    ) { view in
+                        #expect(view.semanticScopeCount == expectedScopes)
+                        #expect(view.renderSnapshotVersion == cycle)
+                        #expect(view.semanticIdentity(at: 0) == view.rootIdentity)
+                        #expect(view.childCount(of: view.rootIdentity) == 1)
+                        return true
+                    }
+                #expect(candidateRead)
                 #expect(inputs.stageGeneratedSemanticCandidate(in: &profile) == nil)
                 #expect(inputs.publishSemanticCandidate(revision: 1, in: &profile) == nil)
                 #expect(
@@ -559,6 +572,16 @@ import Testing
                         profile: &profile
                     ) == summary
                 )
+                let publishedRead =
+                    StaticSignalAnalyzerNRFSemanticRegionStore.withGeneratedUTF8RenderView(
+                        in: .semanticPublished,
+                        renderSnapshotVersion: cycle,
+                        profile: &profile
+                    ) { view in
+                        #expect(view.semanticScopeCount == expectedScopes)
+                        return true
+                    }
+                #expect(publishedRead)
             }
             let idle = ExecutionContext(
                 cycle: nil,
@@ -567,8 +590,22 @@ import Testing
                 phase: .idle
             )
             #expect(profile.finishOpportunity(context: idle) == nil)
+            #expect(
+                !StaticSignalAnalyzerNRFSemanticRegionStore.withGeneratedUTF8RenderView(
+                    in: .semanticCandidate,
+                    renderSnapshotVersion: cycle,
+                    profile: &profile
+                ) { _ in true }
+            )
         }
         profile.quiesce()
+        #expect(
+            !StaticSignalAnalyzerNRFSemanticRegionStore.withGeneratedUTF8RenderView(
+                in: .semanticPublished,
+                renderSnapshotVersion: 3,
+                profile: &profile
+            ) { _ in true }
+        )
     }
 }
 

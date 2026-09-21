@@ -219,8 +219,10 @@ remain open.
 A read-only version-2 render view now maps stable IDs and every root-first
 scope/child link directly from a validated borrowed table. The host oracle
 compares all normal and diagnostic render scopes and children with the
-portable Dynamic projection. The view is only valid within the table borrow;
-the production scoped lending API and layout-text queries remain open.
+portable Dynamic projection. The region owner now lends it synchronously from
+validated candidate or published storage. Tests reject candidate access after
+attempt finish and published access after quiescence. Layout-text queries
+remain open.
 A ROM-backed generated topology writer now decodes each normal/diagnostic
 root-first scope's stable source ID, parent, first child, next sibling, and
 kind directly into the caller-owned candidate region. The host oracle checks

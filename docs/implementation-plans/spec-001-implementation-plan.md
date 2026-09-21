@@ -1026,7 +1026,8 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       presentation transaction, and the firmware owner join remain open. A
       validated borrowed version-2 render view now matches the portable
       Dynamic projection's exact scope kinds, stable identities, and child
-      links in both variants; scoped production lending and layout-text
+      links in both variants. The region owner now lends that reader only
+      during validated candidate/published storage lifetimes; layout-text
       queries remain open. The common Static profile binding now also lends each
       generated region only during its registered retained or attempt-local
       lifetime, giving those focused stages direct bounded workspace access
