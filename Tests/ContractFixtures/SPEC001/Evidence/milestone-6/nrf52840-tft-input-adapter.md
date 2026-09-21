@@ -602,6 +602,13 @@ that the six controls and five Canvas occurrences retain the same IDs when
 the diagnostic branch adds two scopes. Modifier IDs use the owning source
 path and local modifier index, not a variant-sensitive global ordinal. These
 IDs are still host-oracle derivation evidence, not a generated firmware table.
+The exact three-word modifier payload codec now round-trips every actual
+normal and diagnostic layout modifier together with its render scope. Both
+hierarchies use only passthrough style, padding, fixed frame, and one bounded
+flexible-frame shape; negative tests reject padding-insets, a flexible frame
+requiring four scalar words, and layout/render mismatches. Disabled-action
+flags, primitive payloads, and the production table writer/reader are still
+open; this host evidence does not claim a complete semantic result.
 
 The shared Static observable-model handle now accepts a typed-throwing scoped
 borrow. This lets the generated trace case invoke the existing

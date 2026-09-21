@@ -1965,17 +1965,46 @@ private func verifyPackedNRFRenderProjection(
             }
             #expect(!encodedIdentities.contains(sourceIdentity))
             encodedIdentities.append(sourceIdentity)
+            var modifierPayload: StaticSignalAnalyzerNRFModifierPayload?
+            if primitive == nil {
+                for owner in nodes where storage.primitive(at: owner.identity) != nil {
+                    let count = storage.modifierCount(of: owner.identity) ?? 0
+                    for modifierIndex in 0 ..< count
+                    where storage.modifierScope(
+                        of: owner.identity,
+                        at: modifierIndex
+                    ) == node.identity {
+                        guard
+                            let modifier = storage.modifier(
+                                of: owner.identity,
+                                at: modifierIndex
+                            ), let scope = render.scope(at: node.identity),
+                            let encoded = StaticSignalAnalyzerNRFModifierPayload(
+                                modifier: modifier,
+                                renderScope: scope
+                            ), let decoded = encoded.decoded()
+                        else {
+                            Issue.record("modifier payload does not fit fixed record")
+                            return
+                        }
+                        #expect(decoded.0 == modifier)
+                        #expect(decoded.1 == scope)
+                        modifierPayload = encoded
+                    }
+                }
+                #expect(modifierPayload != nil)
+            }
             let record = StaticSignalAnalyzerNRFScopeRecord(
                 identity: sourceIdentity,
                 parent: node.parent,
                 firstChild: node.firstChild,
                 nextSibling: node.nextSibling,
                 kind: kind,
-                flags: 0,
-                auxiliary: 0,
-                payload0: UInt32(textStart),
-                payload1: UInt32(textCount),
-                payload2: 0
+                flags: modifierPayload?.flags ?? 0,
+                auxiliary: modifierPayload?.auxiliary ?? 0,
+                payload0: modifierPayload?.payload0 ?? UInt32(textStart),
+                payload1: modifierPayload?.payload1 ?? UInt32(textCount),
+                payload2: modifierPayload?.payload2 ?? 0
             )
             #expect(table.storeScope(record, at: UInt16(index), in: region))
             #expect(table.scope(at: UInt16(index), in: region) == record)
