@@ -1927,6 +1927,9 @@ This section is non-authoritative.
 - [Connected-Target Host Loop Implementation Design](../implementation-designs/spec-001-connected-target-host-loop.md)
   describes the replaceable production-stage and platform-adapter join for
   plan tasks T6.7 and T6.8 without changing this Specification's contract.
+- [nRF Static Semantic Records Implementation Design](../implementation-designs/spec-001-nrf-static-semantic-records.md)
+  describes the proposed fixed-region representation for T6.8 without changing
+  this Specification's contract or claiming the semantic pipeline is complete.
 - [SPEC-001 Conformance Report](../conformance/spec-001-conformance.md)
   maps all 45 criteria and preserves the open connected-hardware gates.
 

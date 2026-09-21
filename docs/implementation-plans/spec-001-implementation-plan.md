@@ -11,6 +11,7 @@ related_design_notes:
   - ../implementation-designs/spec-001-presentation-admission-and-failure.md
   - ../implementation-designs/spec-001-four-host-application-join.md
   - ../implementation-designs/spec-001-connected-target-host-loop.md
+  - ../implementation-designs/spec-001-nrf-static-semantic-records.md
 conformance_report: ../conformance/spec-001-conformance.md
 related_future_work: []
 related_explorations: []
