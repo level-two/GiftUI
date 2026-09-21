@@ -49,6 +49,16 @@ package struct StaticSignalAnalyzerNRFScopeRecord: Equatable, Sendable {
     }
 }
 
+package struct StaticSignalAnalyzerNRFPackedTableSummary: Equatable, Sendable {
+    package let scopeCount: UInt16
+    package let scalarCount: UInt16
+
+    package init(scopeCount: UInt16, scalarCount: UInt16) {
+        self.scopeCount = scopeCount
+        self.scalarCount = scalarCount
+    }
+}
+
 /// Byte-level table operations on a caller-owned 3,024-byte semantic region.
 /// No operation allocates a region or lets a pointer escape the borrow.
 package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
@@ -62,6 +72,8 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
     package static let actionOffset = 2_996
     package static let reservedOffset = 3_008
     package static let regionByteCount = 3_024
+    private static let tableMagic: UInt32 = 0x5341_4E54
+    private static let tableSchema: UInt16 = 1
 
     package static func storeScope(
         _ record: StaticSignalAnalyzerNRFScopeRecord,
@@ -215,6 +227,62 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
                 action < scopeCount
             else { return false }
             actionOrdinal += 1
+        }
+        return true
+    }
+
+    /// Finalize only a fully populated table. The owning region must update
+    /// its whole-region checksum after this footer is written.
+    package static func sealTable(
+        scopeCount: UInt16,
+        scalarCount: UInt16,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
+        guard validRegion(region),
+            footerIsZero(in: region),
+            validateTopology(
+                scopeCount: scopeCount,
+                scalarCount: scalarCount,
+                in: region
+            )
+        else { return false }
+        put(tableMagic, in: region, at: reservedOffset)
+        put(scopeCount, in: region, at: reservedOffset + 4)
+        put(scalarCount, in: region, at: reservedOffset + 6)
+        put(actionCount, in: region, at: reservedOffset + 8)
+        put(tableSchema, in: region, at: reservedOffset + 10)
+        return true
+    }
+
+    package static func tableSummary(
+        in region: UnsafeMutableRawBufferPointer
+    ) -> StaticSignalAnalyzerNRFPackedTableSummary? {
+        guard validRegion(region),
+            getUInt32(from: region, at: reservedOffset) == tableMagic,
+            getUInt16(from: region, at: reservedOffset + 8) == actionCount,
+            getUInt16(from: region, at: reservedOffset + 10) == tableSchema,
+            getUInt32(from: region, at: reservedOffset + 12) == 0
+        else { return nil }
+        let scopeCount = getUInt16(from: region, at: reservedOffset + 4)
+        let scalarCount = getUInt16(from: region, at: reservedOffset + 6)
+        guard validateTopology(
+            scopeCount: scopeCount,
+            scalarCount: scalarCount,
+            in: region
+        ) else { return nil }
+        return StaticSignalAnalyzerNRFPackedTableSummary(
+            scopeCount: scopeCount,
+            scalarCount: scalarCount
+        )
+    }
+
+    private static func footerIsZero(
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
+        var offset = reservedOffset
+        while offset < regionByteCount {
+            if region[offset] != 0 { return false }
+            offset += 1
         }
         return true
     }

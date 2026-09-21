@@ -121,6 +121,34 @@ import Testing
     }
 }
 
+@Test func staticNRFPackedSemanticTableSealRequiresCompleteValidTopology() {
+    let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+    var bytes = makeStaticNRFThreeScopeTable()
+    bytes.withUnsafeMutableBytes { region in
+        #expect(table.tableSummary(in: region) == nil)
+        #expect(!table.sealTable(scopeCount: 2, scalarCount: 1, in: region))
+        #expect(table.sealTable(scopeCount: 3, scalarCount: 1, in: region))
+        #expect(
+            table.tableSummary(in: region)
+                == StaticSignalAnalyzerNRFPackedTableSummary(
+                    scopeCount: 3,
+                    scalarCount: 1
+                )
+        )
+        #expect(!table.sealTable(scopeCount: 3, scalarCount: 1, in: region))
+    }
+    var badFooter = bytes
+    badFooter[table.reservedOffset + 10] = 2
+    badFooter.withUnsafeMutableBytes { region in
+        #expect(table.tableSummary(in: region) == nil)
+    }
+    var badScope = bytes
+    badScope[table.scopeOffset + table.scopeStride + 2] = 2
+    badScope.withUnsafeMutableBytes { region in
+        #expect(table.tableSummary(in: region) == nil)
+    }
+}
+
 private func makeStaticNRFThreeScopeTable() -> [UInt8] {
     var bytes = [UInt8](repeating: 0, count: 3_024)
     bytes.withUnsafeMutableBytes { region in

@@ -2088,6 +2088,20 @@ private func verifyPackedNRFRenderProjection(
                 in: region
             )
         )
+        #expect(
+            table.sealTable(
+                scopeCount: UInt16(nodes.count),
+                scalarCount: scalarOrdinal,
+                in: region
+            )
+        )
+        #expect(
+            table.tableSummary(in: region)
+                == StaticSignalAnalyzerNRFPackedTableSummary(
+                    scopeCount: UInt16(nodes.count),
+                    scalarCount: scalarOrdinal
+                )
+        )
     }
 }
 

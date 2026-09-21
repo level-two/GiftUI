@@ -619,6 +619,12 @@ final action state. The host oracle follows each packed action's ancestor
 chain and proves its effective enabled state matches all six Dynamic actions
 in both variants. The complete table writer/reader remains open, so these
 codecs do not yet make the published prefix a usable semantic result.
+The table codec now uses the 16 reserved bytes for a versioned completion
+footer. It writes the footer only after whole-table validation; a checked
+summary rejects an unsealed prefix, corrupt footer, or malformed linked scope.
+The real normal and diagnostic oracle projections both seal and reread their
+exact scope/scalar counts. The enclosing region checksum and publication
+lifetime are still separate and must be integrated with the generated writer.
 
 The shared Static observable-model handle now accepts a typed-throwing scoped
 borrow. This lets the generated trace case invoke the existing
