@@ -596,8 +596,12 @@ into that codec: the normal variant fills 96 scopes and 117 text scalars, the
 diagnostic variant 98 scopes and 129 text scalars. Both round-trip every scope,
 map all six actual action identities, and pass the linked-tree validator.
 This is capacity/topology evidence, not generated firmware semantics: the
-fixture uses traversal-local IDs and does not encode the remaining per-kind
-modifier/layout/render payloads.
+fixture does not encode the remaining per-kind modifier/layout/render payloads.
+Its source-path-derived IDs are unique in each variant; exact assertions show
+that the six controls and five Canvas occurrences retain the same IDs when
+the diagnostic branch adds two scopes. Modifier IDs use the owning source
+path and local modifier index, not a variant-sensitive global ordinal. These
+IDs are still host-oracle derivation evidence, not a generated firmware table.
 
 The shared Static observable-model handle now accepts a typed-throwing scoped
 borrow. This lets the generated trace case invoke the existing

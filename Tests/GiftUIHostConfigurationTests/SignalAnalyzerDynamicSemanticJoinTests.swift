@@ -1922,6 +1922,7 @@ private func verifyPackedNRFRenderProjection(
     var bytes = [UInt8](repeating: 0, count: table.regionByteCount)
     bytes.withUnsafeMutableBytes { region in
         var scalarOrdinal: UInt16 = 0
+        var encodedIdentities: [UInt16] = []
         for (index, node) in nodes.enumerated() {
             let primitive = storage.primitive(at: node.identity)
             let kind: StaticSignalAnalyzerNRFScopeKind
@@ -1952,8 +1953,20 @@ private func verifyPackedNRFRenderProjection(
                     scalarOrdinal += 1
                 }
             }
+            guard
+                let sourceIdentity = packedNRFSourceIdentity(
+                    for: node.identity,
+                    in: storage,
+                    nodes: nodes
+                )
+            else {
+                Issue.record("render scope has no stable source identity")
+                return
+            }
+            #expect(!encodedIdentities.contains(sourceIdentity))
+            encodedIdentities.append(sourceIdentity)
             let record = StaticSignalAnalyzerNRFScopeRecord(
-                identity: UInt16(index + 1),
+                identity: sourceIdentity,
                 parent: node.parent,
                 firstChild: node.firstChild,
                 nextSibling: node.nextSibling,
@@ -1969,6 +1982,7 @@ private func verifyPackedNRFRenderProjection(
         }
         #expect(scalarOrdinal == expectedScalars)
         var actionOrdinal: UInt16 = 0
+        var actionSourceIDs: [UInt16] = []
         while actionOrdinal < table.actionCount {
             guard let action = storage.action(at: actionOrdinal),
                 let index = nodes.firstIndex(where: { $0.identity == action.identity })
@@ -1984,8 +1998,23 @@ private func verifyPackedNRFRenderProjection(
                 )
             )
             #expect(table.actionScope(at: actionOrdinal, in: region) == UInt16(index))
+            actionSourceIDs.append(encodedIdentities[index])
             actionOrdinal += 1
         }
+        #expect(actionSourceIDs == [315, 35_973, 17_159, 45_233, 40_502, 48_398])
+        var canvasSourceIDs: [UInt16] = []
+        var canvasOrdinal: UInt16 = 0
+        while canvasOrdinal < storage.canvasOccurrenceCount {
+            guard let canvasIdentity = storage.canvasIdentity(at: canvasOrdinal),
+                let index = nodes.firstIndex(where: { $0.identity == canvasIdentity })
+            else {
+                Issue.record("Canvas has no projected scope")
+                return
+            }
+            canvasSourceIDs.append(encodedIdentities[index])
+            canvasOrdinal += 1
+        }
+        #expect(canvasSourceIDs == [11_918, 42_967, 34_040, 54_698, 8_136])
         #expect(
             table.validateTopology(
                 scopeCount: UInt16(nodes.count),
@@ -1994,4 +2023,54 @@ private func verifyPackedNRFRenderProjection(
             )
         )
     }
+}
+
+private func packedNRFSourceIdentity(
+    for identity: DynamicSemanticIdentity,
+    in storage: DynamicSemanticHostStorage,
+    nodes: [PackedNRFOracleNode]
+) -> UInt16? {
+    if storage.primitive(at: identity) != nil {
+        return packedNRFPathID(identity, modifierIndex: nil)
+    }
+    for node in nodes where storage.primitive(at: node.identity) != nil {
+        let modifierCount = storage.modifierCount(of: node.identity) ?? 0
+        for index in 0 ..< modifierCount
+        where storage.modifierScope(of: node.identity, at: index) == identity {
+            return packedNRFPathID(node.identity, modifierIndex: index)
+        }
+    }
+    return nil
+}
+
+private func packedNRFPathID(
+    _ identity: DynamicSemanticIdentity,
+    modifierIndex: UInt16?
+) -> UInt16 {
+    var hash: UInt32 = 2_166_136_261
+    func mix(_ value: UInt8) {
+        hash ^= UInt32(value)
+        hash = hash &* 16_777_619
+    }
+    for component in identity.components {
+        switch component {
+        case .root: mix(1)
+        case .customBody: mix(2)
+        case .fixedChild(let index):
+            mix(3)
+            mix(index)
+        case .conditionalBranch(let index):
+            mix(4)
+            mix(index)
+        case .optionalPresence: mix(5)
+        case .declarationRole: mix(6)
+        }
+    }
+    if let modifierIndex {
+        mix(7)
+        mix(UInt8(truncatingIfNeeded: modifierIndex))
+        mix(UInt8(truncatingIfNeeded: modifierIndex >> 8))
+    }
+    let folded = UInt16(truncatingIfNeeded: hash ^ (hash >> 16))
+    return folded == 0 ? UInt16.max : folded
 }
