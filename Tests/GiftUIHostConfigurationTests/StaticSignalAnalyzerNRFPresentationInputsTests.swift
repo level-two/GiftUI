@@ -1,5 +1,8 @@
+import GiftUI
 import GiftUIExecution
 import GiftUIHostConfiguration
+import GiftUILayout
+import GiftUIReferenceTextResources
 import SignalAnalyzerDomain
 import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
@@ -536,6 +539,23 @@ import Testing
                         #expect(layoutView.scopeCount == renderView.semanticScopeCount)
                         #expect(renderView.semanticOrdinal(of: layoutView.rootIdentity) != nil)
                         #expect(renderView.renderSnapshotVersion == cycle)
+                        let limits = GeneratedSignalAnalyzerPresets.nrf52840Static()
+                            .runtimeLimits.layout
+                        var workspace = StaticNRFValidationOnlyLayoutWorkspace(limits: limits)
+                        var validation = LayoutSemanticValidation(limits: limits)
+                        let validationError = validation.validate(
+                            semantic: layoutView,
+                            metrics: GiftUIReferenceTextResources.targetPackage.metrics,
+                            workspace: &workspace
+                        )
+                        if cycle == 1 {
+                            #expect(validationError == nil)
+                        } else {
+                            // The approved 139-scalar preset cannot validate
+                            // the exact 96-byte diagnostic (213 scalars).
+                            #expect(validationError == .capacityExhausted)
+                        }
+                        #expect(workspace.scopeCount == expectedScopes)
                         return true
                     }
                 #expect(candidatePairedRead)
@@ -674,6 +694,82 @@ import Testing
                 profile: &profile
             ) { _, _ in true }
         )
+    }
+}
+
+/// Host-only probe for the common validation stage. It is not the production
+/// packed layout workspace and does not claim embedded storage conformance.
+private struct StaticNRFValidationOnlyLayoutWorkspace: LayoutWorkspace {
+    typealias Identity = UInt16
+
+    let maximumScopes: UInt16
+    let maximumDepth: UInt16
+    let maximumTextScalars: UInt16
+    let maximumTextLines: UInt16
+    let maximumPositionedGlyphs: UInt16
+    private(set) var isLayoutActive = false
+    private var identities: [UInt16] = []
+    private var depth: UInt16 = 0
+
+    init(limits: LayoutLimits) {
+        maximumScopes = limits.maximumScopes
+        maximumDepth = limits.maximumDepth
+        maximumTextScalars = limits.maximumTextScalars
+        maximumTextLines = limits.maximumTextLines
+        maximumPositionedGlyphs = limits.maximumPositionedGlyphs
+    }
+
+    mutating func acquireLayout() -> Bool {
+        guard !isLayoutActive else { return false }
+        isLayoutActive = true
+        return true
+    }
+
+    mutating func appendScope(identity: borrowing UInt16, measurement: LayoutMeasurement) -> Bool {
+        guard identities.count < Int(maximumScopes), !identities.contains(identity) else {
+            return false
+        }
+        identities.append(copy identity)
+        return true
+    }
+
+    var scopeCount: UInt16 { UInt16(identities.count) }
+
+    func scopeIdentity(at index: UInt16) -> UInt16? {
+        index < scopeCount ? identities[Int(index)] : nil
+    }
+
+    func measurement(for identity: borrowing UInt16) -> LayoutMeasurement? { nil }
+    mutating func storeMeasurement(_ measurement: LayoutMeasurement, for identity: borrowing UInt16)
+        -> Bool
+    { false }
+    mutating func storePlacement(_ placement: LayoutPlacement, for identity: borrowing UInt16)
+        -> Bool
+    { false }
+    func placement(for identity: borrowing UInt16) -> LayoutPlacement? { nil }
+    var textLineCount: UInt16 { 0 }
+    mutating func appendTextLine(_ line: LayoutTextLine<UInt16>) -> Bool { false }
+    func textLine(at index: UInt16) -> LayoutTextLine<UInt16>? { nil }
+    mutating func storeTextLine(_ line: LayoutTextLine<UInt16>, at index: UInt16) -> Bool { false }
+    var positionedGlyphCount: UInt16 { 0 }
+    mutating func appendPositionedGlyph(_ glyph: LayoutPositionedGlyph<UInt16>) -> Bool { false }
+    func positionedGlyph(at index: UInt16) -> LayoutPositionedGlyph<UInt16>? { nil }
+    mutating func storePositionedGlyph(_ glyph: LayoutPositionedGlyph<UInt16>, at index: UInt16)
+        -> Bool
+    { false }
+
+    mutating func pushScope(_ identity: borrowing UInt16) -> Bool {
+        guard depth < maximumDepth else { return false }
+        depth += 1
+        return true
+    }
+
+    mutating func popScope() { depth -= 1 }
+
+    mutating func resetLayout() {
+        identities.removeAll(keepingCapacity: true)
+        depth = 0
+        isLayoutActive = false
     }
 }
 

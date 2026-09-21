@@ -230,6 +230,15 @@ this layout view only during validated candidate or published storage
 lifetimes. A paired borrow now constructs both views from one checked region
 and one synchronous lifetime, preventing separate region reads from silently
 forming a mismatched pair. The full layout/render transaction remains open.
+The first common `LayoutSemanticValidation` host probe accepts the normal
+generated view under the exact nRF preset, but rejects an exact 96-byte ASCII
+diagnostic with `capacityExhausted`: the variant needs 213 text scalars and
+positioned glyphs, while the approved SPEC-015 preset caps each at 139. The
+UTF-8 semantic region fits all 214 text bytes and preserves them exactly; the
+conflict is downstream layout capacity, not table encoding. Full nRF layout
+integration is paused pending review of the approved workload/limits and their
+resource audit. Neither text truncation nor a local limit increase is an
+authorized implementation choice.
 A ROM-backed generated topology writer now decodes each normal/diagnostic
 root-first scope's stable source ID, parent, first child, next sibling, and
 kind directly into the caller-owned candidate region. The host oracle checks

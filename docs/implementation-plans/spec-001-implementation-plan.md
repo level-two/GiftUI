@@ -1033,6 +1033,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       lending now follows candidate/published region lifetimes; the full
       layout/render transaction remains open. A paired borrow now exposes
       both readers over one validated region lifetime. The common Static
+      layout validator accepts the normal generated hierarchy, but its exact
+      139-scalar/glyph nRF preset rejects a permitted 96-byte diagnostic that
+      requires 213 scalars/glyphs. This is an upstream SPEC-015/SPEC-001
+      capacity-contract blocker for the full layout/render transaction; the
+      affected integration is paused pending approved resolution, with no
+      truncation or local budget change.
+      The common Static
       profile binding now also lends each
       generated region only during its registered retained or attempt-local
       lifetime, giving those focused stages direct bounded workspace access
