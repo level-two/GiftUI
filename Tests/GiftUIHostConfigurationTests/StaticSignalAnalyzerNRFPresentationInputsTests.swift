@@ -239,6 +239,7 @@ import Testing
             model: diagnostic
         ) { inputs in
             #expect(inputs.stageSemanticCandidate(in: &profile)?.variant == .diagnostic)
+            #expect(inputs.publishSemanticCandidate(revision: 7, in: &profile) == nil)
             let published = inputs.publishSemanticCandidate(revision: 8, in: &profile)
             #expect(published?.variant == .diagnostic)
             #expect(published?.expansion.semanticNodeCount == 48)

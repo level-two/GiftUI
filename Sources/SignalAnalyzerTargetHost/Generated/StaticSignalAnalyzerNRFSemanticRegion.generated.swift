@@ -69,7 +69,8 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
             let candidate = header(in: .semanticCandidate, profile: &profile),
             candidate.state == .candidate,
             candidate.variant == inputs.semantic.variant,
-            candidate.expansion == inputs.semantic.expansion
+            candidate.expansion == inputs.semantic.expansion,
+            canPublish(revision: revision, profile: &profile)
         else { return false }
         let stableInputs = copy inputs
         return profile.withRegion(.semanticPublished) { region in
@@ -166,6 +167,28 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
         }
         store(checksum(of: region), in: region, at: checksumOffset)
         return decodeHeader(from: region) != nil
+    }
+
+    private static func canPublish(
+        revision: UInt32,
+        profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
+    ) -> Bool {
+        profile.withRegion(.semanticPublished) { region in
+            var isEmpty = true
+            var index = 0
+            while index < encodedByteCount {
+                if region[index] != 0 {
+                    isEmpty = false
+                    break
+                }
+                index += 1
+            }
+            if isEmpty { return true }
+            guard let published = decodeHeader(from: region),
+                published.state == .published
+            else { return false }
+            return published.revision < revision
+        } == true
     }
 
     private static func decodeHeader(

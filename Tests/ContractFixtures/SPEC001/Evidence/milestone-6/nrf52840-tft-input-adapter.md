@@ -466,6 +466,8 @@ exactly, and any other supplied capacity is rejected. The representation adds
 no dynamic storage or discretionary headroom to the approved audit and can map
 the already retained firmware storage symbol without copying it onto the
 embedded stack.
+The exact map clears its caller-owned storage on successful construction so
+retained publication never interprets uninitialized bytes as a prior revision.
 
 The reset fixture fills the complete owner with a nonzero byte pattern. An
 attempt reset clears the eight registry-defined attempt-local regions and
@@ -552,11 +554,11 @@ FNV-1a integrity word. Candidate
 staging reserves the generated normal or diagnostic semantic high-water values
 and writes directly into attempt-local storage. Publication validates that
 candidate, writes the retained region with a nonzero semantic revision, and
-cannot be repeated through the same generated input scope. The remaining 2,940
+cannot be repeated through the same generated input scope. The remaining 2,936
 bytes are zeroed and reserved for the generated primitive/modifier/text records
 that complete the Static layout view. Host tests prove normal and diagnostic
 publication, exact root/count/Canvas/action data, corruption rejection,
-candidate clearing at attempt
+strictly increasing retained semantic revisions, candidate clearing at attempt
 finish, published retention between attempts, and published invalidation at
 quiescence. This slice does not yet claim the primitive table or layout/render
 pipeline is complete.

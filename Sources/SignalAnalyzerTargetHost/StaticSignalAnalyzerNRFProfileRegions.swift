@@ -81,6 +81,7 @@ package struct StaticSignalAnalyzerNRFProfileRegions: StaticProfileStorageRegion
         guard storage.count == Self.requiredByteCount,
             storage.baseAddress != nil
         else { return nil }
+        storage.initializeMemory(as: UInt8.self, repeating: 0)
         self.storage = storage
     }
 

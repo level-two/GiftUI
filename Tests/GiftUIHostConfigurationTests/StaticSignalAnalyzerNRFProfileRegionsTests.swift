@@ -73,6 +73,7 @@ private func withProfileStorage(
         Issue.record("Static nRF profile regions did not accept exact storage")
         return
     }
+    #expect(nonzeroByteCount(in: storage) == 0)
     body(storage, &regions)
 }
 
