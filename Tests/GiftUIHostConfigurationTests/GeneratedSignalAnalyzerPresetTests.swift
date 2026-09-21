@@ -23,7 +23,7 @@ import Testing
         #expect(preset.workload.layoutScopeOccurrences == 98)
         #expect(preset.workload.maximumRenderTraversalDepth == 13)
         #expect(preset.workload.renderTextLineCount == 21)
-        #expect(preset.workload.positionedGlyphCount == 139)
+        #expect(preset.workload.positionedGlyphCount == 224)
         #expect(preset.workload.ordinaryRenderOperations == 30)
         #expect(preset.workload.requiredRuntimeLimits == preset.runtimeLimits)
         #expect(preset.runtimeLimits.renderWorkspace.maximumSemanticScopes == 98)

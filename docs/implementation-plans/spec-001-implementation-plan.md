@@ -1036,9 +1036,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       layout validator accepts the normal generated hierarchy. Its former
       139-scalar/glyph nRF preset rejected a permitted 96-byte diagnostic that
       requires 214 scalars/glyphs. The approved 2026-09-21 SPEC-015/SPEC-001
-      amendment raises all four preset layout/render/sink ceilings to 224;
-      regenerate and revalidate those presets before resuming the full
-      layout/render transaction. No diagnostic truncation is permitted.
+      amendment raises all four preset layout/render/sink ceilings to 224.
+      The descriptor and four generated presets now carry that exact value;
+      the common Static layout validator accepts both the normal hierarchy
+      and the 214-scalar maximal diagnostic. The full layout/render transaction
+      remains open. No diagnostic truncation is permitted.
       The common Static
       profile binding now also lends each
       generated region only during its registered retained or attempt-local

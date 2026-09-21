@@ -696,6 +696,10 @@ the semantic table but needs 214 scalar/glyph slots, so validation returns
 approved a 224-slot replacement on 2026-09-21; this transcript is the
 pre-amendment regression, not successful amended layout or connected-target
 evidence.
+The amended hardware-free host test now counts 117 scalars in the normal tree
+and 214 in the maximal diagnostic tree, then passes both through the common
+semantic-layout validator using the generated 224-slot nRF preset. It does
+not yet prove resolved layout publication or connected display behavior.
 Independently, the generated writer now fills fifteen invariant padding/frame
 modifier records. Both real-tree variants match every packed flag, edge,
 alignment, and dimension. It also fills twenty-five fixed passthrough styles,

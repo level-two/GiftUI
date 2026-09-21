@@ -3,6 +3,7 @@ import GiftUIBackendIntegration
 import GiftUICapabilities
 import GiftUIDisplayCore
 import GiftUIExecution
+import GiftUIHostConfiguration
 import GiftUIRasterCore
 import GiftUIReferenceTextResources
 import GiftUIRenderCore
@@ -129,10 +130,8 @@ package enum DynamicSignalAnalyzerPiEndpointFactory {
         let resources = GiftUIReferenceTextResources.targetPackage
         guard
             let session = DynamicSignalAnalyzerPiSession(
-                capacity: RenderSinkCapacity(
-                    maximumOperations: 35,
-                    maximumPositionedGlyphs: 139
-                ),
+                capacity: GeneratedSignalAnalyzerPresets.raspberryPiDynamic().runtimeLimits
+                    .renderSink,
                 descriptor: descriptor,
                 payloadLimits: limits,
                 metrics: resources.metrics,

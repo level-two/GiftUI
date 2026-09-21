@@ -557,13 +557,9 @@ import Testing
                             metrics: GiftUIReferenceTextResources.targetPackage.metrics,
                             workspace: &workspace
                         )
-                        if cycle == 1 {
-                            #expect(validationError == nil)
-                        } else {
-                            // The approved 139-scalar preset cannot validate
-                            // the exact 96-byte diagnostic (214 scalars).
-                            #expect(validationError == .capacityExhausted)
-                        }
+                        #expect(validationError == nil)
+                        #expect(limits.maximumTextScalars == 224)
+                        #expect(limits.maximumPositionedGlyphs == 224)
                         #expect(workspace.scopeCount == expectedScopes)
                         return true
                     }

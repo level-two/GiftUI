@@ -238,10 +238,11 @@ UTF-8 semantic region fits all 214 text bytes and preserves them exactly; the
 conflict is downstream layout capacity, not table encoding. The maintainer's
 2026-09-21 SPEC-015/SPEC-001 amendment authorizes a 224-slot ceiling across
 all profiles and dependent render/sink limits. The generated descriptor,
-presets, concrete endpoint capacities, and exact-limit tests must now follow
-that approved value; the unchanged named profile-store projections do not
-waive separate transient storage and stack-fit evidence. The full nRF layout
-transaction remains to be implemented.
+presets, Pi endpoint capacity, and exact-limit tests now follow that value.
+The common validator accepts both normal and full-diagnostic generated views.
+The unchanged named profile-store projections do not waive separate transient
+storage and stack-fit evidence. The full nRF layout transaction remains to be
+implemented.
 A ROM-backed generated topology writer now decodes each normal/diagnostic
 root-first scope's stable source ID, parent, first child, next sibling, and
 kind directly into the caller-owned candidate region. The host oracle checks

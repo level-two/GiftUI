@@ -4,6 +4,11 @@ Evidence kinds: `host-execution` for macOS and normalized semantic oracles;
 `cross-build` for Raspberry Pi and nRF52840 artifacts. Connected Pi and nRF
 execution remains `not-collected`.
 
+The report below is a historical pre-2026-09-21 snapshot with 139 glyph
+slots. The approved diagnostic-capacity amendment now requires 224 slots;
+fresh four-preset comparison evidence must be collected before using this
+milestone as current conformance evidence.
+
 Reproduce the complete hardware-free comparison from the repository root:
 
 ```sh
