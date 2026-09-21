@@ -1014,9 +1014,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       now selects the exact normal or diagnostic semantic high-water summary,
       reserves those candidate limits once per active profile opportunity, and
       produces all five fixed Canvas captures from one synchronous stable-model
-      borrow. Building the concrete generated semantic primitives plus
-      layout/render pipeline, and linking the complete owner into firmware,
-      remains open. The common Static profile binding now also lends each
+      borrow. The generated semantic writer now fills the exact 96/98-scope
+      portable hierarchy, all action/Canvas associations, primitive and
+      modifier payloads, and UTF-8 text ranges inside the unchanged 3,024-byte
+      region. Host-oracle tests seal both complete version-2 tables and a
+      96-byte diagnostic; production candidate staging, layout/render reading,
+      publication, and the complete firmware owner join remain open. The
+      common Static profile binding now also lends each
       generated region only during its registered retained or attempt-local
       lifetime, giving those focused stages direct bounded workspace access
       without exposing or duplicating the complete profile buffer. The firmware

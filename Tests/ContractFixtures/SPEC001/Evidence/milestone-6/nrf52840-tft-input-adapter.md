@@ -582,21 +582,23 @@ codec fixes the remaining region layout at 98 24-byte scope slots, 139
 four-byte Unicode scalar slots, six two-byte action-to-scope slots, and 16
 reserved bytes. Focused host tests prove exact region fit, last-slot
 round-trips, and rejection of out-of-range relations, invalid scalars, and
-short buffers without mutation. This is storage machinery only: the portable
-hierarchy has not yet populated or validated a complete table, so the current
-published result remains prefix-only and is not yet a semantic layout view.
+short buffers without mutation. This is the legacy version-1 scalar table;
+the generated hierarchy now fills and validates a separate version-2 UTF-8
+table, but production publication remains prefix-only and is not yet a
+semantic layout view.
 The packed table now also has a non-mutating topology validator. A three-scope
 fixture proves linked root/children plus all six action targets; corruption
 fixtures reject duplicate identity, parent cycles, orphan or duplicate links,
 wrong parents, surrogate scalar values, and targets outside the used scope
-count. The production candidate does not yet call this validator because it
-does not yet contain a generated complete table.
+count. The production candidate does not yet call this validator because its
+generated version-2 table is not yet staged through the region owner.
 The host Dynamic semantic oracle now projects each real portable render tree
 into that codec: the normal variant fills 96 scopes and 117 text scalars, the
 diagnostic variant 98 scopes and 129 text scalars. Both round-trip every scope,
 map all six actual action identities, and pass the linked-tree validator.
 This is capacity/topology evidence, not generated firmware semantics: the
-fixture does not encode the remaining per-kind modifier/layout/render payloads.
+fixture's version-1 scalar form alone did not encode the remaining
+per-kind modifier/layout/render payloads.
 Its source-path-derived IDs are unique in each variant; exact assertions show
 that the six controls and five Canvas occurrences retain the same IDs when
 the diagnostic branch adds two scopes. Modifier IDs use the owning source
@@ -607,8 +609,8 @@ normal and diagnostic layout modifier together with its render scope. Both
 hierarchies use only passthrough style, padding, fixed frame, and one bounded
 flexible-frame shape; negative tests reject padding-insets, a flexible frame
 requiring four scalar words, and layout/render mismatches. Disabled-action
-flags and the production table writer/reader are still open; this host
-evidence does not claim a complete semantic result.
+flags are now generated and host-checked; the production table reader is
+still open, so this host evidence does not claim a published semantic result.
 The primitive codec now round-trips every actual stack, spacer, proxy, text,
 and Canvas scope in both portable hierarchies. Text scopes retain exact scalar
 pool ranges and all five Canvas scopes retain their generated occurrence IDs;
@@ -617,8 +619,9 @@ render scopes. The modifier codec now also carries the disabled-action bit,
 obtained from the exact Dynamic modifier record rather than inferred from
 final action state. The host oracle follows each packed action's ancestor
 chain and proves its effective enabled state matches all six Dynamic actions
-in both variants. The complete table writer/reader remains open, so these
-codecs do not yet make the published prefix a usable semantic result.
+in both variants. The generated version-2 table writer is now host-checked,
+but its production reader remains open, so these codecs do not yet make the
+published prefix a usable semantic result.
 The table codec now uses the 16 reserved bytes for a versioned completion
 footer. It writes the footer only after whole-table validation; a checked
 summary rejects an unsealed prefix, corrupt footer, or malformed linked scope.
@@ -639,44 +642,46 @@ This catches structural source drift before a generated Static writer is
 accepted; it is not a publication integrity checksum or an embedded run.
 The generated-result acceptance path rejects the synthetic complete-table
 fixture even though its checksums, counts, and generic topology are valid.
-The production text-pool encoder now converts bounded UTF-8 text directly to
-the fixed scalar region. Host fixtures cover ASCII, multibyte scalars, empty
-text, exact capacity, overflow, and a wrong-size borrow without a partial
-write. This is a writer component, not yet full generated hierarchy staging.
+The original bounded-text encoder converts UTF-8 into the legacy scalar
+region and remains tested for overflow. A new byte-pool encoder uses the same
+556 bytes without changing the 3,024-byte region: it preserves exact Unicode
+bytes, preflights overflow, and has strict allocation-free UTF-8 validation.
 The generated topology writer now emits all 96 normal or 98 diagnostic
 root-first scope shapes from ROM into the borrowed fixed region. Host oracle
 tests compare every emitted stable ID, relation, and kind with the real
-portable hierarchy; dynamic payloads, text ranges, and modifier flags are
-not yet populated by this writer.
+portable hierarchy. Subsequent generated stages now fill every primitive,
+modifier, action, Canvas, and UTF-8 text payload in that same region.
 The topology writer now also installs the exact six action ordinals and five
 Canvas occurrence payloads. The oracle checks each association in both real
 variants; a missing shape or repeated binding is rejected before publication.
-Text and modifier payloads remain unpopulated.
 The writer also fills thirteen invariant nonzero stack/spacer payloads.
-Every primitive payload now matches the real-tree oracle in both variants,
-while text and modifier payloads remain separate incomplete stages.
+Every non-text primitive payload now matches the real-tree oracle in both
+variants; text and modifier payloads have separate generated stages.
 The generated input mapping now returns all 20 normal and 21 diagnostic text
 values from the live model, with exact host-oracle comparison. A maximum
 96-byte admitted diagnostic proves the current four-byte scalar pool cannot
 represent every required message: replacing the measured 12-scalar error in
 the 129-scalar diagnostic tree needs 213 slots, but the pool holds 139. Text
-publication is paused for internal repacking within the unchanged 3,024-byte
-region; the fail-closed scalar encoder is not claimed as full conformance.
+therefore cannot use the legacy scalar schema. The version-2 byte schema
+packs all 21 generated text values with that maximal diagnostic into 214
+bytes, validates each range, and seals the generated table in host tests.
+This does not yet make production publication conformant.
 Independently, the generated writer now fills fifteen invariant padding/frame
 modifier records. Both real-tree variants match every packed flag, edge,
 alignment, and dimension. It also fills twenty-five fixed passthrough styles,
 with exact color/scope oracle comparison. The final ten passthrough records
 now derive status/channel colors and disabled-control flags from the borrowed
 model. Both real-tree variants match every modifier record, and running plus
-selected-window changes update the generated payloads. Text publication is
-still blocked by the scalar-pool bound.
+selected-window changes update the generated payloads. The byte-pool schema
+removes the measured scalar-capacity obstacle, but production publication and
+layout/render reading are still open.
 The enclosing semantic-region owner now has a separate complete-candidate
 staging and publication path. A host fixture populates a synthetic 96-scope
 table directly in the borrowed candidate region, seals it, refreshes the
 whole-region checksum, rejects corruption before retained publication, then
 publishes exact bytes with revision and lifetime checks. This proves the
 storage transaction only; the synthetic chain is not the portable analyzer
-hierarchy and does not satisfy the production generated-writer obligation.
+hierarchy and does not satisfy the production generated-staging obligation.
 
 The shared Static observable-model handle now accepts a typed-throwing scoped
 borrow. This lets the generated trace case invoke the existing
