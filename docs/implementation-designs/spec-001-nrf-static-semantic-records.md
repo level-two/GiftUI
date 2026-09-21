@@ -135,8 +135,12 @@ hierarchies within the three record words: passthrough style, padding, fixed
 frame, and the currently used flexible frame. It rejects padding-insets,
 four-scalar flexible frames, or mismatched layout/render scopes because those
 forms do not fit the approved current projection. The generated table writer,
-primitive payloads, disabled-action flags, and full layout/render reader remain
-open.
+disabled-action flags, and full layout/render reader remain open. A separate
+primitive codec now round-trips every actual proxy, stack, spacer, text, and
+Canvas scope. It encodes exact text-pool ranges and one of the five generated
+Canvas occurrence IDs, rejecting missing/out-of-range associations and render
+scope mismatches. Together the two codecs account for every current scope's
+layout/render payload, but they do not themselves generate production records.
 If any required current payload cannot be encoded in the three words, this
 packing must be revised within the *same* 3,024-byte bound and revalidated;
 it is not permission to truncate a modifier or alter the portable hierarchy.
@@ -185,8 +189,8 @@ nRF build and connected run are recorded separately under T6.8/T8.2.
 
 ## Open Implementation Questions
 
-The current modifier layout/render forms fit the three words in both measured
-variants. Primitive payloads, disabled-action flags, and the full generated
+The current primitive and modifier layout/render forms fit the three words in
+both measured variants. Disabled-action flags and the full generated
 writer/reader still require verification. This is not authority to drop a
 semantic value; a required value that cannot fit the approved 3,024-byte
 region is a contract issue to report upstream. Generator provenance and
@@ -198,6 +202,7 @@ embedded compiler measurements remain required before this note can become
 - [Current checked prefix](../../Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFSemanticRegion.generated.swift)
 - [Packed record codec](../../Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift)
 - [Modifier payload codec](../../Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFModifierPayload.generated.swift)
+- [Primitive payload codec](../../Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFPrimitivePayload.generated.swift)
 - [Portable hierarchy](../../Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift)
 - [Dynamic semantic oracle](../../Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift)
 - [T6.8 evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md)

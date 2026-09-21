@@ -1925,17 +1925,6 @@ private func verifyPackedNRFRenderProjection(
         var encodedIdentities: [UInt16] = []
         for (index, node) in nodes.enumerated() {
             let primitive = storage.primitive(at: node.identity)
-            let kind: StaticSignalAnalyzerNRFScopeKind
-            switch primitive {
-            case .proxy: kind = .proxy
-            case .vStack: kind = .vStack
-            case .hStack: kind = .hStack
-            case .zStack: kind = .zStack
-            case .spacer: kind = .spacer
-            case .text: kind = .text
-            case .canvas: kind = .canvas
-            case nil: kind = .modifier
-            }
             let textStart = scalarOrdinal
             let textCount = storage.textScalarCount(of: node.identity) ?? 0
             if textCount > 0 {
@@ -1965,6 +1954,32 @@ private func verifyPackedNRFRenderProjection(
             }
             #expect(!encodedIdentities.contains(sourceIdentity))
             encodedIdentities.append(sourceIdentity)
+            var canvasOccurrence: UInt16?
+            for canvasIndex in 0 ..< storage.canvasOccurrenceCount
+            where storage.canvasIdentity(at: canvasIndex) == node.identity {
+                canvasOccurrence = canvasIndex + 1
+            }
+            var primitivePayload: StaticSignalAnalyzerNRFPrimitivePayload?
+            if let primitive {
+                guard let scope = render.scope(at: node.identity),
+                    let encoded = StaticSignalAnalyzerNRFPrimitivePayload(
+                        primitive: primitive,
+                        renderScope: scope,
+                        textStart: primitive == .text ? textStart : 0,
+                        textCount: textCount,
+                        canvasOccurrence: canvasOccurrence
+                    ), let decoded = encoded.decoded()
+                else {
+                    Issue.record("primitive payload does not fit fixed record")
+                    return
+                }
+                #expect(decoded.primitive == primitive)
+                #expect(decoded.renderScope == scope)
+                #expect(decoded.textStart == (primitive == .text ? textStart : 0))
+                #expect(decoded.textCount == textCount)
+                #expect(decoded.canvasOccurrence == canvasOccurrence)
+                primitivePayload = encoded
+            }
             var modifierPayload: StaticSignalAnalyzerNRFModifierPayload?
             if primitive == nil {
                 for owner in nodes where storage.primitive(at: owner.identity) != nil {
@@ -1999,12 +2014,12 @@ private func verifyPackedNRFRenderProjection(
                 parent: node.parent,
                 firstChild: node.firstChild,
                 nextSibling: node.nextSibling,
-                kind: kind,
+                kind: primitivePayload?.kind ?? .modifier,
                 flags: modifierPayload?.flags ?? 0,
-                auxiliary: modifierPayload?.auxiliary ?? 0,
-                payload0: modifierPayload?.payload0 ?? UInt32(textStart),
-                payload1: modifierPayload?.payload1 ?? UInt32(textCount),
-                payload2: modifierPayload?.payload2 ?? 0
+                auxiliary: modifierPayload?.auxiliary ?? primitivePayload?.auxiliary ?? 0,
+                payload0: modifierPayload?.payload0 ?? primitivePayload?.payload0 ?? 0,
+                payload1: modifierPayload?.payload1 ?? primitivePayload?.payload1 ?? 0,
+                payload2: modifierPayload?.payload2 ?? primitivePayload?.payload2 ?? 0
             )
             #expect(table.storeScope(record, at: UInt16(index), in: region))
             #expect(table.scope(at: UInt16(index), in: region) == record)

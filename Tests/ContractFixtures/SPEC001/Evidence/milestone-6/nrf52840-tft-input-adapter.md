@@ -607,8 +607,15 @@ normal and diagnostic layout modifier together with its render scope. Both
 hierarchies use only passthrough style, padding, fixed frame, and one bounded
 flexible-frame shape; negative tests reject padding-insets, a flexible frame
 requiring four scalar words, and layout/render mismatches. Disabled-action
-flags, primitive payloads, and the production table writer/reader are still
-open; this host evidence does not claim a complete semantic result.
+flags and the production table writer/reader are still open; this host
+evidence does not claim a complete semantic result.
+The primitive codec now round-trips every actual stack, spacer, proxy, text,
+and Canvas scope in both portable hierarchies. Text scopes retain exact scalar
+pool ranges and all five Canvas scopes retain their generated occurrence IDs;
+negative tests reject missing or out-of-range associations and mismatched
+render scopes. The complete table writer/reader and disabled-action bits
+remain open, so these codecs do not yet make the published prefix a usable
+semantic result.
 
 The shared Static observable-model handle now accepts a typed-throwing scoped
 borrow. This lets the generated trace case invoke the existing
