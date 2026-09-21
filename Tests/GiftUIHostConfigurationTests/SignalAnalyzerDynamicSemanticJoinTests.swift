@@ -1387,6 +1387,30 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     ) { inputs in
         #expect(inputs.semantic.variant == .diagnostic)
         #expect(inputs.textInput(at: 97)?.utf8ByteCount == 96)
+        let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+        let pool = StaticSignalAnalyzerNRFUTF8TextPool.self
+        var regionBytes = [UInt8](repeating: 0, count: table.regionByteCount)
+        regionBytes.withUnsafeMutableBytes { region in
+            var used: UInt16 = 0
+            var textCount = 0
+            for ordinal: UInt16 in 0 ..< table.maximumScopeCount {
+                guard let value = inputs.textInput(at: ordinal) else { continue }
+                guard let count = pool.append(value, at: used, in: region) else {
+                    Issue.record("generated diagnostic text exceeds the UTF-8 pool")
+                    return
+                }
+                value.withUTF8 { expected in
+                    for index in expected.indices {
+                        #expect(pool.byte(at: used + UInt16(index), in: region) == expected[index])
+                    }
+                }
+                used += count
+                textCount += 1
+            }
+            #expect(textCount == 21)
+            #expect(used == 214)
+            #expect(used <= pool.maximumByteCount)
+        }
     }
     #expect(129 - 12 + 96 > StaticSignalAnalyzerNRFPackedSemanticRecords.maximumScalarCount)
 }

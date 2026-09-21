@@ -189,6 +189,10 @@ bytes, including multibyte scalars, and admits a 96-byte diagnostic without
 mutation on overflow. This is a codec seam only: the table footer, primitive
 text ranges, validator, and generated writer still use scalar ordinals and
 must be migrated together before this representation can be published.
+The generated diagnostic-input test now packs every one of its 21 text
+values, including a maximal 96-byte error, into 214 UTF-8 bytes and checks
+each byte against the original bounded value. This measures one demanding
+state, not a proof of every reachable model and capture state.
 A ROM-backed generated topology writer now decodes each normal/diagnostic
 root-first scope's stable source ID, parent, first child, next sibling, and
 kind directly into the caller-owned candidate region. The host oracle checks
