@@ -221,8 +221,12 @@ scope/child link directly from a validated borrowed table. The host oracle
 compares all normal and diagnostic render scopes and children with the
 portable Dynamic projection. The region owner now lends it synchronously from
 validated candidate or published storage. Tests reject candidate access after
-attempt finish and published access after quiescence. Layout-text queries
-remain open.
+attempt finish and published access after quiescence. A companion layout
+view now unwraps render-only modifier chains into layout children, returns
+ordered modifier scopes and values, and decodes text scalars directly from
+validated UTF-8 ranges. The host oracle compares every generated primitive,
+child, modifier, and text query in both variants. Scoped production lending
+of this layout view and the full layout/render transaction remain open.
 A ROM-backed generated topology writer now decodes each normal/diagnostic
 root-first scope's stable source ID, parent, first child, next sibling, and
 kind directly into the caller-owned candidate region. The host oracle checks

@@ -1438,6 +1438,16 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
                     == 214)
             #expect(table.sealUTF8Table(scopeCount: 98, textByteCount: 214, in: region))
             #expect(table.utf8TableSummary(in: region)?.textByteCount == 214)
+            guard let layout = StaticSignalAnalyzerNRFUTF8LayoutView(in: region),
+                let diagnosticID = table.scope(at: 97, in: region)?.identity
+            else {
+                Issue.record("maximum diagnostic layout text is missing")
+                return
+            }
+            #expect(layout.textScalarCount(of: diagnosticID) == 96)
+            #expect(layout.textScalar(of: diagnosticID, at: 0) == 65)
+            #expect(layout.textScalar(of: diagnosticID, at: 95) == 65)
+            #expect(layout.textScalar(of: diagnosticID, at: 96) == nil)
         }
     }
     #expect(129 - 12 + 96 > StaticSignalAnalyzerNRFPackedSemanticRecords.maximumScalarCount)
@@ -2327,6 +2337,77 @@ private func verifyPackedNRFRenderProjection(
                         )
                     }
                     #expect(generatedRender.child(of: identity, at: count) == nil)
+                }
+            }
+            guard
+                let generatedLayout = StaticSignalAnalyzerNRFUTF8LayoutView(
+                    in: generated
+                )
+            else {
+                Issue.record("generated UTF-8 layout view is unavailable")
+                return
+            }
+            #expect(generatedLayout.scopeCount == UInt16(nodes.count))
+            for (ordinal, node) in nodes.enumerated() {
+                guard let primitive = storage.primitive(at: node.identity) else { continue }
+                let identity = encodedIdentities[ordinal]
+                #expect(generatedLayout.primitive(at: identity) == primitive)
+                let childCount = storage.childCount(of: node.identity)
+                #expect(generatedLayout.childCount(of: identity) == childCount)
+                if let childCount {
+                    for index in 0 ..< childCount {
+                        guard let child = storage.child(of: node.identity, at: index),
+                            let childOrdinal = nodes.firstIndex(where: { $0.identity == child })
+                        else {
+                            Issue.record("portable layout child is missing")
+                            return
+                        }
+                        #expect(
+                            generatedLayout.child(of: identity, at: index)
+                                == encodedIdentities[childOrdinal]
+                        )
+                    }
+                    #expect(generatedLayout.child(of: identity, at: childCount) == nil)
+                }
+                let modifierCount = storage.modifierCount(of: node.identity)
+                #expect(generatedLayout.modifierCount(of: identity) == modifierCount)
+                if let modifierCount {
+                    for index in 0 ..< modifierCount {
+                        guard
+                            let modifierScope = storage.modifierScope(
+                                of: node.identity,
+                                at: index
+                            ),
+                            let modifierOrdinal = nodes.firstIndex(where: {
+                                $0.identity == modifierScope
+                            })
+                        else {
+                            Issue.record("portable modifier scope is missing")
+                            return
+                        }
+                        #expect(
+                            generatedLayout.modifierScope(of: identity, at: index)
+                                == encodedIdentities[modifierOrdinal]
+                        )
+                        #expect(
+                            generatedLayout.modifier(of: identity, at: index)
+                                == storage.modifier(of: node.identity, at: index)
+                        )
+                    }
+                    #expect(generatedLayout.modifierScope(of: identity, at: modifierCount) == nil)
+                }
+                #expect(
+                    generatedLayout.textScalarCount(of: identity)
+                        == storage.textScalarCount(of: node.identity)
+                )
+                if let scalarCount = storage.textScalarCount(of: node.identity) {
+                    for index in 0 ..< scalarCount {
+                        #expect(
+                            generatedLayout.textScalar(of: identity, at: index)
+                                == storage.textScalar(of: node.identity, at: index)
+                        )
+                    }
+                    #expect(generatedLayout.textScalar(of: identity, at: scalarCount) == nil)
                 }
             }
             StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(

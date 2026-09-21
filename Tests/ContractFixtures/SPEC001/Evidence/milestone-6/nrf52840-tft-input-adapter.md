@@ -680,7 +680,12 @@ The normal and diagnostic host oracle compares all of those queries with the
 portable Dynamic render projection. The region owner now lends this reader
 synchronously from validated candidate or published storage. Host tests
 reject candidate access after attempt finish and published access after
-quiescence. The layout/text reader remains open; this is not an embedded run.
+quiescence. This is not an embedded run.
+A version-2 layout view now unwraps render modifier chains, returns the
+portable primitive/child/modifier ordering, and decodes UTF-8 text scalars
+without a second text buffer. The host oracle checks all of these queries in
+normal and diagnostic variants, plus the 96-byte diagnostic boundary. Scoped
+production lending and the full layout/render transaction remain open.
 Independently, the generated writer now fills fifteen invariant padding/frame
 modifier records. Both real-tree variants match every packed flag, edge,
 alignment, and dimension. It also fills twenty-five fixed passthrough styles,
