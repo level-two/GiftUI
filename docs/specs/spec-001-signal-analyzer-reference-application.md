@@ -1414,6 +1414,8 @@ slots in each host's layout/render limits. This covers the shared hierarchy's
 214-scalar/glyph maximum when a permitted 96-byte ASCII diagnostic is visible,
 with ten slots of headroom. Hosts MUST preserve that diagnostic exactly; a
 capacity refusal or truncated error text is not a conforming presentation.
+The shared preset also reserves 128 text lines for valid diagnostics, including
+the 117-line result of a 96-byte LF sequence.
 
 Real GPIO or peripheral acquisition MAY replace the mock behind
 `SignalDataSource`, but hardware acquisition is not required for analyzer

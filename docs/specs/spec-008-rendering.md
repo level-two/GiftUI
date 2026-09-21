@@ -1154,6 +1154,10 @@ ceiling above: an exact 96-byte ASCII diagnostic raises the measured shared
 hierarchy maximum to 214, with a 224-glyph preset ceiling. The older short-
 diagnostic and generic SPEC-008 fixtures remain valid tests of their own
 bounded workloads, not evidence that the full diagnostic fits 139 slots.
+The subsequent full-pipeline measurement also supersedes the application's
+21-line preset ceiling: 96 printable `W` bytes require 27 lines and 96 LF
+bytes require 117, so SPEC-015 now reserves 128 lines in layout and render
+workspace. Generic SPEC-008 fixtures and their counting rules are unchanged.
 
 ## Open Issues
 

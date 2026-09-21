@@ -106,8 +106,11 @@ target_milestone: MVP
 > A full 96-byte ASCII `SignalAnalyzerDiagnostic` produces 214 text scalars
 > and positioned glyphs in the shared hierarchy. Every preset now reserves
 > 224 scalar/glyph slots (the measured maximum plus ten), consistently across
-> layout, render, render sink, and generated workload metadata. The 21-line,
-> 98-scope, and scope-derived named profile-store projections do not change;
+> layout, render, render sink, and generated workload metadata. A follow-up
+> full-pipeline measurement found 27 lines for 96 `W` bytes and 117 lines for
+> 96 LF bytes, both valid exact diagnostics. The shared layout/render-workspace
+> line ceiling is therefore 128. The 98-scope and scope-derived named
+> profile-store projections do not change;
 > concrete target implementations must still prove their actual transient
 > storage and stack costs under the larger glyph workload.
 
@@ -765,9 +768,10 @@ therefore uses exactly `98` for `layout.maximumScopes`,
 `renderWorkspace.maximumLayoutScopes`, and exactly `13` for both
 `layout.maximumDepth` and `renderWorkspace.maximumTraversalDepth`. The release
 text, glyph, and line ceilings are 224 scalars, 224 positioned glyphs, and
-21 lines. The prior short-diagnostic fixture measured 129 scalars/glyphs and
-21 lines; the permitted 96-byte ASCII diagnostic measures 214 scalars/glyphs
-and 21 lines. The ten-slot margin is retained. All four presets use the same
+128 lines. The prior short-diagnostic fixture measured 129 scalars/glyphs and
+21 lines; 96 printable `W` bytes measure 214 scalars/glyphs and 27 lines,
+while 96 LF bytes measure 118 positioned glyphs and 117 lines. The ten-slot
+scalar/glyph margin and eleven-line margin are retained. All four presets use the same
 limits; a target must not truncate or omit the diagnostic to fit them.
 
 The exact resulting profile-store projections are:
@@ -1264,13 +1268,15 @@ software, transport, and observed architecture separately.
   requires equality with its complete schema-3 workload-derived limits, and
   rejects every independently mismatched profile, limit leaf, storage, static
   Canvas table, or byte total. Each preset has exactly 224 layout text-scalar,
-  layout glyph, render glyph, and sink glyph slots.
+  layout glyph, render glyph, and sink glyph slots, plus 128 layout and render-
+  workspace text-line slots.
 - [ ] **HC-005:** The five-Canvas workload proves the 202 live-point, 12 live-
   subpath, five-stroke, 832 plan-point, and 16 plan-subpath minima; generated
   render structural counts and ordinary operation counts are equal across all
   hosts and fit every producer, runtime, render-workspace, render, and sink
   bound; a full 96-byte ASCII diagnostic yields exactly 214 scalar/glyph
-  occurrences and fits the amended 224-slot limits without truncation.
+  occurrences and fits the amended 224-slot limits without truncation; 96 LF
+  bytes fit the 128-line bound.
 - [ ] **HC-006:** Structural Drawing capacity and `rasterPresentation` resolve
   as independent conjunctive gates; neither repairs the other and no Drawing
   capacity enters SPEC-004 vocabulary.
