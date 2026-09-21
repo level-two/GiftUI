@@ -2115,6 +2115,30 @@ private func verifyPackedNRFRenderProjection(
         )
         #expect(table.hasExactCanvasOccurrences(in: region))
         #expect(table.topologyFingerprint(in: region) == expectedTopologyFingerprint)
+        var generatedBytes = [UInt8](repeating: 0, count: table.regionByteCount)
+        generatedBytes.withUnsafeMutableBytes { generated in
+            let variant: StaticSignalAnalyzerNRFSemanticVariant =
+                expectedScalars == 117 ? .normal : .diagnostic
+            #expect(
+                StaticSignalAnalyzerNRFTopologyWriter.populateShape(
+                    variant: variant,
+                    in: generated
+                ) == UInt16(nodes.count)
+            )
+            for ordinal in 0 ..< nodes.count {
+                guard let expected = table.scope(at: UInt16(ordinal), in: region),
+                    let actual = table.scope(at: UInt16(ordinal), in: generated)
+                else {
+                    Issue.record("generated topology has missing scope")
+                    return
+                }
+                #expect(actual.identity == expected.identity)
+                #expect(actual.parent == expected.parent)
+                #expect(actual.firstChild == expected.firstChild)
+                #expect(actual.nextSibling == expected.nextSibling)
+                #expect(actual.kind == expected.kind)
+            }
+        }
     }
 }
 

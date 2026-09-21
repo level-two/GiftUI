@@ -175,6 +175,13 @@ value, counts scalars before writing, and stores each decoded Unicode scalar
 directly in the borrowed region. Overflow or wrong region size causes no
 write. The generated hierarchy writer still has to call this encoder in
 root-first text-scope order and record each returned range.
+A ROM-backed generated topology writer now decodes each normal/diagnostic
+root-first scope's stable source ID, parent, first child, next sibling, and
+kind directly into the caller-owned candidate region. The host oracle checks
+all 96/98 emitted shape records against the actual portable hierarchy. This
+is only the immutable shape: it deliberately leaves payload words, modifier
+flags, scalar ranges, and action ordinals for a subsequent writer stage and
+cannot pass complete-table sealing by itself.
 If any required current payload cannot be encoded in the three words, this
 packing must be revised within the *same* 3,024-byte bound and revalidated;
 it is not permission to truncate a modifier or alter the portable hierarchy.

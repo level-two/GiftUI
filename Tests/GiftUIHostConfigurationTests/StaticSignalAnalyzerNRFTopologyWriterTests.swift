@@ -1,0 +1,37 @@
+import SignalAnalyzerTargetHost
+import Testing
+
+@Test func staticNRFTopologyWriterRejectsWrongRegionWithoutMutation() {
+    let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+    var bytes = [UInt8](repeating: 0xA5, count: table.regionByteCount)
+    bytes.withUnsafeMutableBytes { region in
+        let short = UnsafeMutableRawBufferPointer(rebasing: region[..<3_023])
+        #expect(
+            StaticSignalAnalyzerNRFTopologyWriter.populateShape(
+                variant: .normal,
+                in: short
+            ) == nil
+        )
+    }
+    #expect(bytes.allSatisfy { $0 == 0xA5 })
+}
+
+@Test func staticNRFTopologyWriterUsesExactVariantScopeCounts() {
+    let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+    for (variant, count) in [
+        (StaticSignalAnalyzerNRFSemanticVariant.normal, UInt16(96)),
+        (.diagnostic, UInt16(98)),
+    ] {
+        var bytes = [UInt8](repeating: 0, count: table.regionByteCount)
+        bytes.withUnsafeMutableBytes { region in
+            #expect(
+                StaticSignalAnalyzerNRFTopologyWriter.populateShape(
+                    variant: variant,
+                    in: region
+                ) == count
+            )
+            #expect(table.scope(at: 0, in: region)?.parent == table.missingOrdinal)
+            #expect(table.scope(at: count - 1, in: region) != nil)
+        }
+    }
+}

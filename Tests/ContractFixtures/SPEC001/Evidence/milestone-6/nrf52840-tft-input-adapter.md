@@ -643,6 +643,11 @@ The production text-pool encoder now converts bounded UTF-8 text directly to
 the fixed scalar region. Host fixtures cover ASCII, multibyte scalars, empty
 text, exact capacity, overflow, and a wrong-size borrow without a partial
 write. This is a writer component, not yet full generated hierarchy staging.
+The generated topology writer now emits all 96 normal or 98 diagnostic
+root-first scope shapes from ROM into the borrowed fixed region. Host oracle
+tests compare every emitted stable ID, relation, and kind with the real
+portable hierarchy; payloads, text ranges, modifier flags, and action
+bindings are not yet populated by this writer.
 The enclosing semantic-region owner now has a separate complete-candidate
 staging and publication path. A host fixture populates a synthetic 96-scope
 table directly in the borrowed candidate region, seals it, refreshes the
