@@ -576,6 +576,16 @@ regenerating semantic data from a second model read and
 avoids a full-region stack temporary; the remaining topology writer must keep
 all future candidate records within the same integrity boundary.
 
+The Dynamic semantic oracle now asserts 96 scopes/117 text scalars for normal
+and 98 scopes/129 text scalars for diagnostic. The generated packed-record
+codec fixes the remaining region layout at 98 24-byte scope slots, 139
+four-byte Unicode scalar slots, six two-byte action-to-scope slots, and 16
+reserved bytes. Focused host tests prove exact region fit, last-slot
+round-trips, and rejection of out-of-range relations, invalid scalars, and
+short buffers without mutation. This is storage machinery only: the portable
+hierarchy has not yet populated or validated a complete table, so the current
+published result remains prefix-only and is not yet a semantic layout view.
+
 The shared Static observable-model handle now accepts a typed-throwing scoped
 borrow. This lets the generated trace case invoke the existing
 `throws(DrawingError)` helper against the address-stable model without copying

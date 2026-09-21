@@ -168,6 +168,7 @@ required before this note can become `current`.
 ## Code and Evidence Links
 
 - [Current checked prefix](../../Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFSemanticRegion.generated.swift)
+- [Packed record codec](../../Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift)
 - [Portable hierarchy](../../Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift)
 - [Dynamic semantic oracle](../../Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift)
 - [T6.8 evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md)
