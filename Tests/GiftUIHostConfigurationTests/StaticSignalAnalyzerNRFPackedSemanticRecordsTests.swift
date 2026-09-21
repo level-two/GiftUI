@@ -136,6 +136,7 @@ import Testing
                 )
         )
         #expect(!table.sealTable(scopeCount: 3, scalarCount: 1, in: region))
+        #expect(!table.hasDistinctActionScopes(in: region))
     }
     var badFooter = bytes
     badFooter[table.reservedOffset + 10] = 2

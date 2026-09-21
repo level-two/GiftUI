@@ -79,6 +79,9 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
                     scopeCount: table.scopeCount,
                     scalarCount: table.scalarCount,
                     in: region
+                ),
+                StaticSignalAnalyzerNRFPackedSemanticRecords.hasDistinctActionScopes(
+                    in: region
                 )
             else { return false }
             store(checksum(of: region), in: region, at: checksumOffset)
@@ -174,7 +177,8 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
             .addingReportingOverflow(header.expansion.modifierApplicationCount)
         guard let table = StaticSignalAnalyzerNRFPackedSemanticRecords.tableSummary(in: region),
             !expectedScopes.overflow,
-            table.scopeCount == expectedScopes.partialValue
+            table.scopeCount == expectedScopes.partialValue,
+            StaticSignalAnalyzerNRFPackedSemanticRecords.hasDistinctActionScopes(in: region)
         else { return nil }
         return table
     }

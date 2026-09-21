@@ -292,6 +292,29 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
         )
     }
 
+    /// Production actions identify six different occurrences. A generic
+    /// topology fixture may reuse a scope, but a publishable result may not.
+    package static func hasDistinctActionScopes(
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
+        guard let summary = tableSummary(in: region) else { return false }
+        var action: UInt16 = 0
+        while action < actionCount {
+            guard let scope = actionScope(at: action, in: region),
+                scope < summary.scopeCount
+            else { return false }
+            var earlier: UInt16 = 0
+            while earlier < action {
+                guard actionScope(at: earlier, in: region) != scope else {
+                    return false
+                }
+                earlier += 1
+            }
+            action += 1
+        }
+        return true
+    }
+
     private static func footerIsZero(
         in region: UnsafeMutableRawBufferPointer
     ) -> Bool {

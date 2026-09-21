@@ -156,7 +156,8 @@ Canvas occurrence IDs, rejecting missing/out-of-range associations and render
 scope mismatches. The modifier codec now also retains the exact disabled-action
 bit on a structural passthrough record. The host oracle reads that bit from
 the Dynamic modifier record and checks each of the six actions against the
-packed ancestor chain. Together the two codecs account for every current
+packed ancestor chain. Complete publication also requires the six action
+entries to name distinct scope ordinals. Together the two codecs account for every current
 scope's layout/render/action-state payload, but they do not themselves
 generate production records.
 If any required current payload cannot be encoded in the three words, this

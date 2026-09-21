@@ -339,6 +339,23 @@ import Testing
             )
             #expect(
                 profile.withRegion(.semanticCandidate) { region in
+                    StaticSignalAnalyzerNRFPackedSemanticRecords.hasDistinctActionScopes(
+                        in: region
+                    )
+                } == true
+            )
+            #expect(
+                profile.withRegion(.semanticCandidate) { region in
+                    let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+                    guard table.storeActionScope(0, at: 1, in: region) else {
+                        return false
+                    }
+                    let rejected = !table.hasDistinctActionScopes(in: region)
+                    return rejected && table.storeActionScope(1, at: 1, in: region)
+                } == true
+            )
+            #expect(
+                profile.withRegion(.semanticCandidate) { region in
                     region[StaticSignalAnalyzerNRFPackedSemanticRecords.scopeOffset + 2] ^= 1
                     return true
                 } == true

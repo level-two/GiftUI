@@ -628,6 +628,8 @@ lifetime are still separate and must be integrated with the generated writer.
 Whole-table validation now rejects malformed primitive/modifier payloads and
 text-pool gaps or excess in addition to broken links. The positive real-tree
 projections still seal under those stricter checks.
+The complete-table acceptance path now also rejects repeated action-scope
+ordinals; the production six-action mapping must identify six distinct scopes.
 The enclosing semantic-region owner now has a separate complete-candidate
 staging and publication path. A host fixture populates a synthetic 96-scope
 table directly in the borrowed candidate region, seals it, refreshes the
