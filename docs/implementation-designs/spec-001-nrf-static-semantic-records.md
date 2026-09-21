@@ -115,6 +115,14 @@ after a populated table passes topology validation. A reader checks the footer
 and revalidates the used records before returning scope/scalar counts. This is
 separate from the enclosing region checksum, which the region owner must
 refresh after writing the footer. Prefix-only regions have no valid footer.
+The owning semantic-region store now offers a scoped complete-candidate path:
+it writes the existing prefix, lets a synchronous caller populate the same
+borrowed candidate region, requires exact variant scope counts and a sealed
+table, then refreshes the whole-region checksum. Its complete-publication path
+requires both prefix integrity and the validated table before copying to the
+retained region and advancing revision. Prefix-only staging remains an
+explicit incomplete fixture seam and is not sufficient for complete
+publication. The generated real-hierarchy writer is still missing.
 
 The oracle tests measure 96 scopes and 117 text scalars for the normal
 variant, and 98 scopes and 129 text scalars for the diagnostic variant. The

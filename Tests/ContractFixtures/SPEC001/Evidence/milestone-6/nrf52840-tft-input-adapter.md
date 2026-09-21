@@ -625,6 +625,13 @@ summary rejects an unsealed prefix, corrupt footer, or malformed linked scope.
 The real normal and diagnostic oracle projections both seal and reread their
 exact scope/scalar counts. The enclosing region checksum and publication
 lifetime are still separate and must be integrated with the generated writer.
+The enclosing semantic-region owner now has a separate complete-candidate
+staging and publication path. A host fixture populates a synthetic 96-scope
+table directly in the borrowed candidate region, seals it, refreshes the
+whole-region checksum, rejects corruption before retained publication, then
+publishes exact bytes with revision and lifetime checks. This proves the
+storage transaction only; the synthetic chain is not the portable analyzer
+hierarchy and does not satisfy the production generated-writer obligation.
 
 The shared Static observable-model handle now accepts a typed-throwing scoped
 borrow. This lets the generated trace case invoke the existing

@@ -293,6 +293,137 @@ import Testing
     }
 }
 
+@Test func staticNRFCompleteSemanticTableUsesCheckedRegionPublication() {
+    withStaticNRFPresentationInputStorage { storage in
+        guard case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate(),
+            let metadata = StaticSignalAnalyzerNRFGeneratedMetadataFactory.make(
+                assemblyReport: report,
+                canvasTable: StaticSignalAnalyzerNRFCanvasCallableTable()
+            ),
+            var profile = StaticSignalAnalyzerNRFProfileBinding.make(
+                assemblyReport: report,
+                storage: storage,
+                metadata: metadata
+            )
+        else {
+            Issue.record("Static nRF profile did not construct")
+            return
+        }
+        let active = ExecutionContext(
+            cycle: RunCycleID(rawValue: 1),
+            semanticRevision: SemanticRevision(rawValue: 1),
+            candidateFrame: nil,
+            phase: .admitting
+        )
+        #expect(profile.beginOpportunity(context: active) == nil)
+        let model = staticNRFPresentationInputModel()
+        StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
+            model: model
+        ) { inputs in
+            #expect(
+                StaticSignalAnalyzerNRFSemanticRegionStore.stageCompleteCandidate(
+                    inputs: &inputs,
+                    in: &profile,
+                    populate: populateSyntheticNRFCompleteTable
+                )
+            )
+            let expected = StaticSignalAnalyzerNRFPackedTableSummary(
+                scopeCount: 96,
+                scalarCount: 0
+            )
+            #expect(
+                StaticSignalAnalyzerNRFSemanticRegionStore.completeTableSummary(
+                    in: .semanticCandidate,
+                    profile: &profile
+                ) == expected
+            )
+            #expect(
+                profile.withRegion(.semanticCandidate) { region in
+                    region[StaticSignalAnalyzerNRFPackedSemanticRecords.scopeOffset + 2] ^= 1
+                    return true
+                } == true
+            )
+            #expect(
+                !StaticSignalAnalyzerNRFSemanticRegionStore.publishCompleteCandidate(
+                    inputs: inputs,
+                    revision: 1,
+                    in: &profile
+                )
+            )
+            #expect(
+                profile.withRegion(.semanticCandidate) { region in
+                    region[StaticSignalAnalyzerNRFPackedSemanticRecords.scopeOffset + 2] ^= 1
+                    return true
+                } == true
+            )
+            #expect(
+                StaticSignalAnalyzerNRFSemanticRegionStore.publishCompleteCandidate(
+                    inputs: inputs,
+                    revision: 1,
+                    in: &profile
+                )
+            )
+            #expect(
+                StaticSignalAnalyzerNRFSemanticRegionStore.completeTableSummary(
+                    in: .semanticPublished,
+                    profile: &profile
+                ) == expected
+            )
+        }
+        let idle = ExecutionContext(
+            cycle: nil,
+            semanticRevision: nil,
+            candidateFrame: nil,
+            phase: .idle
+        )
+        #expect(profile.finishOpportunity(context: idle) == nil)
+        #expect(
+            StaticSignalAnalyzerNRFSemanticRegionStore.completeTableSummary(
+                in: .semanticCandidate,
+                profile: &profile
+            ) == nil
+        )
+        #expect(
+            StaticSignalAnalyzerNRFSemanticRegionStore.completeTableSummary(
+                in: .semanticPublished,
+                profile: &profile
+            )?.scopeCount == 96
+        )
+        profile.quiesce()
+    }
+}
+
+private func populateSyntheticNRFCompleteTable(
+    in region: UnsafeMutableRawBufferPointer
+) -> StaticSignalAnalyzerNRFPackedTableSummary? {
+    let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+    var ordinal: UInt16 = 0
+    while ordinal < 96 {
+        let record = StaticSignalAnalyzerNRFScopeRecord(
+            identity: ordinal + 1,
+            parent: ordinal == 0 ? table.missingOrdinal : ordinal - 1,
+            firstChild: ordinal == 95 ? table.missingOrdinal : ordinal + 1,
+            nextSibling: table.missingOrdinal,
+            kind: .proxy,
+            flags: 0,
+            auxiliary: 0,
+            payload0: 0,
+            payload1: 0,
+            payload2: 0
+        )
+        guard table.storeScope(record, at: ordinal, in: region) else { return nil }
+        ordinal += 1
+    }
+    var action: UInt16 = 0
+    while action < table.actionCount {
+        guard table.storeActionScope(action, at: action, in: region) else {
+            return nil
+        }
+        action += 1
+    }
+    return StaticSignalAnalyzerNRFPackedTableSummary(scopeCount: 96, scalarCount: 0)
+}
+
 private final class StaticNRFPresentationInputRepository:
     SignalAcquisitionRepository
 {

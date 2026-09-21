@@ -60,9 +60,73 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
         } == true
     }
 
+    package static func stageCompleteCandidate(
+        inputs: inout StaticSignalAnalyzerNRFGeneratedPresentationInputs,
+        in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding,
+        populate: (UnsafeMutableRawBufferPointer) -> StaticSignalAnalyzerNRFPackedTableSummary?
+    ) -> Bool {
+        guard inputs.reserveCandidate(in: &profile) else { return false }
+        return profile.withRegion(.semanticCandidate) { region in
+            let expectedScopes = inputs.semantic.expansion.semanticNodeCount
+                .addingReportingOverflow(
+                    inputs.semantic.expansion.modifierApplicationCount
+                )
+            guard encode(inputs: inputs, state: .candidate, revision: 0, into: region),
+                let table = populate(region),
+                !expectedScopes.overflow,
+                table.scopeCount == expectedScopes.partialValue,
+                StaticSignalAnalyzerNRFPackedSemanticRecords.sealTable(
+                    scopeCount: table.scopeCount,
+                    scalarCount: table.scalarCount,
+                    in: region
+                )
+            else { return false }
+            store(checksum(of: region), in: region, at: checksumOffset)
+            guard let header = decodeHeader(from: region),
+                header.state == .candidate,
+                header.variant == inputs.semantic.variant,
+                header.expansion == inputs.semantic.expansion,
+                header.structuralOccurrenceCount
+                    == inputs.semantic.structuralOccurrenceCount,
+                header.recordedTraversalIdentityCount
+                    == inputs.semantic.recordedTraversalIdentityCount,
+                header.canvasOccurrenceCount == inputs.semantic.canvasOccurrenceCount,
+                StaticSignalAnalyzerNRFPackedSemanticRecords.tableSummary(in: region) == table
+            else { return false }
+            return true
+        } == true
+    }
+
     package static func publishCandidate(
         inputs: borrowing StaticSignalAnalyzerNRFGeneratedPresentationInputs,
         revision: UInt32,
+        in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
+    ) -> Bool {
+        publishCandidate(
+            inputs: inputs,
+            revision: revision,
+            requireCompleteTable: false,
+            in: &profile
+        )
+    }
+
+    package static func publishCompleteCandidate(
+        inputs: borrowing StaticSignalAnalyzerNRFGeneratedPresentationInputs,
+        revision: UInt32,
+        in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
+    ) -> Bool {
+        publishCandidate(
+            inputs: inputs,
+            revision: revision,
+            requireCompleteTable: true,
+            in: &profile
+        )
+    }
+
+    private static func publishCandidate(
+        inputs: borrowing StaticSignalAnalyzerNRFGeneratedPresentationInputs,
+        revision: UInt32,
+        requireCompleteTable: Bool,
         in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
     ) -> Bool {
         guard revision > 0 else { return false }
@@ -74,6 +138,8 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
                 header.state == .candidate,
                 header.variant == expected.variant,
                 header.expansion == expected.expansion,
+                (!requireCompleteTable
+                    || completeTableSummary(in: candidate, header: header) != nil),
                 canPublish(revision: revision, in: published)
             else { return false }
             published.baseAddress!.copyMemory(
@@ -85,6 +151,32 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
             store(checksum(of: published), in: published, at: checksumOffset)
             return true
         } == true
+    }
+
+    package static func completeTableSummary(
+        in family: RuntimeStorageFamily,
+        profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
+    ) -> StaticSignalAnalyzerNRFPackedTableSummary? {
+        guard family == .semanticCandidate || family == .semanticPublished else {
+            return nil
+        }
+        return profile.withRegion(family) { region in
+            guard let header = decodeHeader(from: region) else { return nil }
+            return completeTableSummary(in: region, header: header)
+        } ?? nil
+    }
+
+    private static func completeTableSummary(
+        in region: UnsafeMutableRawBufferPointer,
+        header: StaticSignalAnalyzerNRFSemanticRegionHeader
+    ) -> StaticSignalAnalyzerNRFPackedTableSummary? {
+        let expectedScopes = header.expansion.semanticNodeCount
+            .addingReportingOverflow(header.expansion.modifierApplicationCount)
+        guard let table = StaticSignalAnalyzerNRFPackedSemanticRecords.tableSummary(in: region),
+            !expectedScopes.overflow,
+            table.scopeCount == expectedScopes.partialValue
+        else { return nil }
+        return table
     }
 
     package static func header(
