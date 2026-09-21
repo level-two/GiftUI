@@ -4,10 +4,9 @@ Evidence kinds: `host-execution` for macOS and normalized semantic oracles;
 `cross-build` for Raspberry Pi and nRF52840 artifacts. Connected Pi and nRF
 execution remains `not-collected`.
 
-The report below is a historical pre-2026-09-21 snapshot with 139 glyph
-slots. The approved diagnostic-capacity amendment now requires 224 slots;
-fresh four-preset comparison evidence must be collected before using this
-milestone as current conformance evidence.
+This comparison was rerun after the approved 2026-09-21 diagnostic-capacity
+amendment. It checks 224 glyph slots in all four generated presets; the older
+139-slot run remains available only as historical evidence.
 
 Reproduce the complete hardware-free comparison from the repository root:
 
@@ -16,15 +15,15 @@ scripts/contracts/run-spec-015-milestone-6.sh
 ```
 
 The gate consumes four independently emitted immutable reports. The current
-evidence is bound to repository revision `4035e46ed44e36fccf0fa160185f28a442257826`
+evidence is bound to repository revision `bbee91efa193b961f450fb80803b23cebd902f68`
 and immutable run
-`4035e46ed44e36fccf0fa160185f28a442257826-e5b156c796a8714d`. It requires
+`bbee91efa193b961f450fb80803b23cebd902f68-c6c9a92ad0d003b3`. It requires
 equal checksum, graph-role count, semantic and render-semantic counts, layout
 scope and traversal bounds, text lines, glyphs, ordinary and Drawing
 operations, actions, inputs, completion facts, admission capacity, Canvas
 count, and live/plan point bounds. All roots report checksum `360515885`, 18
 roles, 48 semantic nodes, 98 render-semantic scopes, 98 layout scopes, depth
-13, 21 text lines, 139
+13, 21 text lines, 224
 glyphs, 30 ordinary operations, five Drawing operations, six actions/inputs,
 one completion fact, 32 compact-fact slots, five canvases, 202 live points,
 and 832 plan points. The same generated runtime-limit source and successful
@@ -39,7 +38,7 @@ Physical and resource differences remain explicit:
 | macOS Dynamic | 41,376 B | 307,200 B | native macOS | not collected | n/a |
 | macOS Static | 36,368 B | 307,200 B | native macOS | not collected | n/a |
 | Pi 1 ARMv6 Dynamic | 41,376 B | 7,680 B | ARMv6 hard-float | not collected | not collected |
-| nRF52840 Static | 36,368 B | 3,840 B | ARMv7E-M VFP hard-float | 175,296 B | 31,928 B |
+| nRF52840 Static | 36,368 B | 3,840 B | ARMv7E-M VFP hard-float | 183,872 B | 34,384 B |
 
 Each root resolves four capability contributions once at startup and performs
 zero later resolver calls. Static owner paths reuse the approved zero-allocation
