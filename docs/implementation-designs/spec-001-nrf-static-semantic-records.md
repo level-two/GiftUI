@@ -203,6 +203,11 @@ validation. Its footer records used bytes rather than scalar slots; the
 version-1 scalar seal remains readable for existing fixtures. Production
 publication still recognizes only the former table path, so version 2 is not
 yet an application semantic result.
+The generated writer now preflights every live text scope and cumulative byte
+count, then writes exact UTF-8 ranges into the version-2 table. The host
+oracle compares every written byte with the portable presentation and seals
+the complete generated normal/diagnostic tables. Production candidate staging,
+layout/render reading, and publication remain to be connected.
 A ROM-backed generated topology writer now decodes each normal/diagnostic
 root-first scope's stable source ID, parent, first child, next sibling, and
 kind directly into the caller-owned candidate region. The host oracle checks

@@ -320,6 +320,65 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         return true
     }
 
+    /// Writes every generated text scope as a contiguous UTF-8 byte range.
+    /// Capacity and shape are checked before the first byte is changed.
+    package static func populateTextBytes(
+        inputs: borrowing StaticSignalAnalyzerNRFGeneratedPresentationInputs,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> UInt16? {
+        let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+        let pool = StaticSignalAnalyzerNRFUTF8TextPool.self
+        guard region.count == table.regionByteCount else { return nil }
+        let scopeCount: UInt16 = inputs.semantic.variant == .normal ? 96 : 98
+        var ordinal: UInt16 = 0
+        var required: UInt16 = 0
+        var textCount: UInt16 = 0
+        while ordinal < scopeCount {
+            guard let record = table.scope(at: ordinal, in: region) else { return nil }
+            if record.kind == .text {
+                guard record.flags == 0, record.auxiliary == 0,
+                    record.payload0 == 0, record.payload1 == 0,
+                    record.payload2 == 0,
+                    let value = inputs.textInput(at: ordinal),
+                    value.utf8ByteCount <= Int(pool.maximumByteCount - required)
+                else { return nil }
+                required += UInt16(value.utf8ByteCount)
+                textCount += 1
+            }
+            ordinal += 1
+        }
+        guard textCount == (scopeCount == 96 ? 20 : 21) else { return nil }
+        ordinal = 0
+        var used: UInt16 = 0
+        while ordinal < scopeCount {
+            guard let old = table.scope(at: ordinal, in: region) else { return nil }
+            if old.kind == .text {
+                guard let value = inputs.textInput(at: ordinal),
+                    let count = pool.append(value, at: used, in: region),
+                    table.storeScope(
+                        StaticSignalAnalyzerNRFScopeRecord(
+                            identity: old.identity,
+                            parent: old.parent,
+                            firstChild: old.firstChild,
+                            nextSibling: old.nextSibling,
+                            kind: .text,
+                            flags: 0,
+                            auxiliary: 0,
+                            payload0: UInt32(used),
+                            payload1: UInt32(count),
+                            payload2: 0
+                        ),
+                        at: ordinal,
+                        in: region
+                    )
+                else { return nil }
+                used += count
+            }
+            ordinal += 1
+        }
+        return used == required ? used : nil
+    }
+
     private static func liveModifierOrdinal(at slot: UInt16) -> UInt16 {
         switch slot {
         case 0: 12

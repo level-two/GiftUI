@@ -1411,6 +1411,34 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
             #expect(used == 214)
             #expect(used <= pool.maximumByteCount)
         }
+        var generatedBytes = [UInt8](repeating: 0, count: table.regionByteCount)
+        generatedBytes.withUnsafeMutableBytes { region in
+            #expect(
+                StaticSignalAnalyzerNRFTopologyWriter.populateShape(
+                    variant: .diagnostic,
+                    in: region
+                ) == 98
+            )
+            #expect(
+                StaticSignalAnalyzerNRFTopologyWriter.populateBindings(scopeCount: 98, in: region))
+            #expect(
+                StaticSignalAnalyzerNRFTopologyWriter.populateInvariantPrimitives(
+                    scopeCount: 98, in: region))
+            #expect(
+                StaticSignalAnalyzerNRFTopologyWriter.populateInvariantLayoutModifiers(
+                    scopeCount: 98, in: region))
+            #expect(
+                StaticSignalAnalyzerNRFTopologyWriter.populateInvariantStyles(
+                    scopeCount: 98, in: region))
+            #expect(
+                StaticSignalAnalyzerNRFTopologyWriter.populateLiveModifiers(
+                    inputs: inputs, in: region))
+            #expect(
+                StaticSignalAnalyzerNRFTopologyWriter.populateTextBytes(inputs: inputs, in: region)
+                    == 214)
+            #expect(table.sealUTF8Table(scopeCount: 98, textByteCount: 214, in: region))
+            #expect(table.utf8TableSummary(in: region)?.textByteCount == 214)
+        }
     }
     #expect(129 - 12 + 96 > StaticSignalAnalyzerNRFPackedSemanticRecords.maximumScalarCount)
 }
@@ -2200,6 +2228,30 @@ private func verifyPackedNRFRenderProjection(
                         in: generated
                     )
                 )
+                guard
+                    let textBytes = StaticSignalAnalyzerNRFTopologyWriter.populateTextBytes(
+                        inputs: inputs,
+                        in: generated
+                    )
+                else {
+                    Issue.record("generated UTF-8 text population failed")
+                    return
+                }
+                #expect(
+                    table.validateUTF8Topology(
+                        scopeCount: UInt16(nodes.count),
+                        textByteCount: textBytes,
+                        in: generated
+                    )
+                )
+                #expect(
+                    table.sealUTF8Table(
+                        scopeCount: UInt16(nodes.count),
+                        textByteCount: textBytes,
+                        in: generated
+                    )
+                )
+                #expect(table.utf8TableSummary(in: generated)?.textByteCount == textBytes)
             }
             for ordinal in 0 ..< nodes.count {
                 guard let expected = table.scope(at: UInt16(ordinal), in: region),
@@ -2260,6 +2312,22 @@ private func verifyPackedNRFRenderProjection(
                                         at: UInt16(expected.payload0) + UInt16(index),
                                         in: region
                                     )
+                            )
+                        }
+                    }
+                    guard let actual = table.scope(at: UInt16(ordinal), in: generated)
+                    else {
+                        Issue.record("generated text scope is missing")
+                        return
+                    }
+                    value.withUTF8 { bytes in
+                        #expect(actual.payload1 == UInt32(bytes.count))
+                        for index in bytes.indices {
+                            #expect(
+                                StaticSignalAnalyzerNRFUTF8TextPool.byte(
+                                    at: UInt16(actual.payload0) + UInt16(index),
+                                    in: generated
+                                ) == bytes[index]
                             )
                         }
                     }
