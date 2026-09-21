@@ -103,6 +103,68 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
         } == true
     }
 
+    package static func stageGeneratedUTF8Candidate(
+        inputs: inout StaticSignalAnalyzerNRFGeneratedPresentationInputs,
+        in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
+    ) -> Bool {
+        guard inputs.reserveCandidate(in: &profile) else { return false }
+        return profile.withRegion(.semanticCandidate) { region in
+            let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+            guard encode(inputs: inputs, state: .candidate, revision: 0, into: region),
+                let scopeCount = StaticSignalAnalyzerNRFTopologyWriter.populateShape(
+                    variant: inputs.semantic.variant,
+                    in: region
+                ),
+                StaticSignalAnalyzerNRFTopologyWriter.populateBindings(
+                    scopeCount: scopeCount,
+                    in: region
+                ),
+                StaticSignalAnalyzerNRFTopologyWriter.populateInvariantPrimitives(
+                    scopeCount: scopeCount,
+                    in: region
+                ),
+                StaticSignalAnalyzerNRFTopologyWriter.populateInvariantLayoutModifiers(
+                    scopeCount: scopeCount,
+                    in: region
+                ),
+                StaticSignalAnalyzerNRFTopologyWriter.populateInvariantStyles(
+                    scopeCount: scopeCount,
+                    in: region
+                ),
+                StaticSignalAnalyzerNRFTopologyWriter.populateLiveModifiers(
+                    inputs: inputs,
+                    in: region
+                ),
+                let textByteCount = StaticSignalAnalyzerNRFTopologyWriter.populateTextBytes(
+                    inputs: inputs,
+                    in: region
+                ),
+                table.sealUTF8Table(
+                    scopeCount: scopeCount,
+                    textByteCount: textByteCount,
+                    in: region
+                )
+            else { return false }
+            store(checksum(of: region), in: region, at: checksumOffset)
+            guard let header = decodeHeader(from: region),
+                header.state == .candidate,
+                header.variant == inputs.semantic.variant,
+                header.expansion == inputs.semantic.expansion,
+                header.structuralOccurrenceCount
+                    == inputs.semantic.structuralOccurrenceCount,
+                header.recordedTraversalIdentityCount
+                    == inputs.semantic.recordedTraversalIdentityCount,
+                header.canvasOccurrenceCount == inputs.semantic.canvasOccurrenceCount,
+                generatedUTF8TableSummary(in: region, header: header)
+                    == StaticSignalAnalyzerNRFUTF8TableSummary(
+                        scopeCount: scopeCount,
+                        textByteCount: textByteCount
+                    )
+            else { return false }
+            return true
+        } == true
+    }
+
     package static func publishCandidate(
         inputs: borrowing StaticSignalAnalyzerNRFGeneratedPresentationInputs,
         revision: UInt32,
@@ -161,6 +223,7 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
                 header.state == .candidate,
                 header.variant == expected.variant,
                 header.expansion == expected.expansion,
+                (requireCompleteTable || prefixFooterIsZero(in: candidate)),
                 (!requireCompleteTable
                     || completeTableSummary(in: candidate, header: header) != nil),
                 (!requireGeneratedTopology
@@ -202,6 +265,42 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
             guard let header = decodeHeader(from: region) else { return nil }
             return generatedTableSummary(in: region, header: header)
         } ?? nil
+    }
+
+    package static func generatedUTF8TableSummary(
+        in family: RuntimeStorageFamily,
+        profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
+    ) -> StaticSignalAnalyzerNRFUTF8TableSummary? {
+        guard family == .semanticCandidate || family == .semanticPublished else {
+            return nil
+        }
+        return profile.withRegion(family) { region in
+            guard let header = decodeHeader(from: region) else { return nil }
+            return generatedUTF8TableSummary(in: region, header: header)
+        } ?? nil
+    }
+
+    private static func generatedUTF8TableSummary(
+        in region: UnsafeMutableRawBufferPointer,
+        header: StaticSignalAnalyzerNRFSemanticRegionHeader
+    ) -> StaticSignalAnalyzerNRFUTF8TableSummary? {
+        let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+        let expectedScopes = header.expansion.semanticNodeCount
+            .addingReportingOverflow(header.expansion.modifierApplicationCount)
+        guard let summary = table.utf8TableSummary(in: region),
+            !expectedScopes.overflow,
+            summary.scopeCount == expectedScopes.partialValue,
+            table.hasDistinctUTF8ActionScopes(in: region),
+            table.hasExactUTF8CanvasOccurrences(in: region),
+            let fingerprint = table.utf8TopologyFingerprint(in: region)
+        else { return nil }
+        switch header.variant {
+        case .normal:
+            guard fingerprint == table.normalTopologyFingerprint else { return nil }
+        case .diagnostic:
+            guard fingerprint == table.diagnosticTopologyFingerprint else { return nil }
+        }
+        return summary
     }
 
     private static func generatedTableSummary(
@@ -345,6 +444,18 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
             published.state == .published
         else { return false }
         return published.revision < revision
+    }
+
+    private static func prefixFooterIsZero(
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
+        let offset = StaticSignalAnalyzerNRFPackedSemanticRecords.reservedOffset
+        var index = offset
+        while index < regionByteCount {
+            guard region[index] == 0 else { return false }
+            index += 1
+        }
+        return true
     }
 
     private static func decodeHeader(

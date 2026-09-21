@@ -460,6 +460,78 @@ import Testing
     }
 }
 
+@Test func staticNRFGeneratedUTF8CandidateStagesExactHierarchyWithoutPrefixPublication() {
+    withStaticNRFPresentationInputStorage { storage in
+        guard case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate(),
+            let metadata = StaticSignalAnalyzerNRFGeneratedMetadataFactory.make(
+                assemblyReport: report,
+                canvasTable: StaticSignalAnalyzerNRFCanvasCallableTable()
+            ),
+            var profile = StaticSignalAnalyzerNRFProfileBinding.make(
+                assemblyReport: report,
+                storage: storage,
+                metadata: metadata
+            )
+        else {
+            Issue.record("Static nRF profile did not construct")
+            return
+        }
+        let normal = staticNRFPresentationInputModel()
+        let diagnostic = staticNRFPresentationInputModel()
+        let maximum = SignalAnalyzerDiagnostic(
+            exactUTF8: [UInt8](repeating: 65, count: 96)
+        )!
+        #expect(diagnostic.apply(.acquisitionState(.failed(maximum))) == .applied(changed: true))
+
+        for (cycle, model, expectedScopes) in [
+            (UInt32(1), normal, UInt16(96)),
+            (UInt32(2), diagnostic, UInt16(98)),
+        ] {
+            let active = ExecutionContext(
+                cycle: RunCycleID(rawValue: cycle),
+                semanticRevision: SemanticRevision(rawValue: cycle),
+                candidateFrame: nil,
+                phase: .admitting
+            )
+            #expect(profile.beginOpportunity(context: active) == nil)
+            StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
+                model: model
+            ) { inputs in
+                #expect(inputs.stageGeneratedSemanticCandidate(in: &profile)?.state == .candidate)
+                let summary = StaticSignalAnalyzerNRFSemanticRegionStore.generatedUTF8TableSummary(
+                    in: .semanticCandidate,
+                    profile: &profile
+                )
+                #expect(summary?.scopeCount == expectedScopes)
+                #expect(summary?.textByteCount == (expectedScopes == 98 ? 214 : 117))
+                #expect(inputs.stageGeneratedSemanticCandidate(in: &profile) == nil)
+                #expect(inputs.publishSemanticCandidate(revision: 1, in: &profile) == nil)
+                #expect(
+                    !StaticSignalAnalyzerNRFSemanticRegionStore.publishCandidate(
+                        inputs: inputs,
+                        revision: 1,
+                        in: &profile
+                    )
+                )
+                #expect(
+                    StaticSignalAnalyzerNRFSemanticRegionStore.generatedUTF8TableSummary(
+                        in: .semanticPublished,
+                        profile: &profile
+                    ) == nil
+                )
+            }
+            let idle = ExecutionContext(
+                cycle: nil,
+                semanticRevision: nil,
+                candidateFrame: nil,
+                phase: .idle
+            )
+            #expect(profile.finishOpportunity(context: idle) == nil)
+        }
+        profile.quiesce()
+    }
+}
+
 private func populateSyntheticNRFCompleteTable(
     in region: UnsafeMutableRawBufferPointer
 ) -> StaticSignalAnalyzerNRFPackedTableSummary? {

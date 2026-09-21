@@ -1018,8 +1018,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       portable hierarchy, all action/Canvas associations, primitive and
       modifier payloads, and UTF-8 text ranges inside the unchanged 3,024-byte
       region. Host-oracle tests seal both complete version-2 tables and a
-      96-byte diagnostic; production candidate staging, layout/render reading,
-      publication, and the complete firmware owner join remain open. The
+      96-byte diagnostic; the generated table now also stages through the
+      attempt-local production region with checksum, topology, action, and
+      Canvas validation. Layout/render reading, complete publication, and
+      the firmware owner join remain open. The
       common Static profile binding now also lends each
       generated region only during its registered retained or attempt-local
       lifetime, giving those focused stages direct bounded workspace access

@@ -65,6 +65,7 @@ package struct StaticSignalAnalyzerNRFGeneratedPresentationInputs {
     private let visibleRange: Range<Duration>
     private var reserved = false
     private var semanticCandidateStaged = false
+    private var generatedUTF8CandidateStaged = false
     private var semanticCandidatePublished = false
 
     fileprivate init(
@@ -126,11 +127,29 @@ package struct StaticSignalAnalyzerNRFGeneratedPresentationInputs {
         )
     }
 
+    package mutating func stageGeneratedSemanticCandidate(
+        in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
+    ) -> StaticSignalAnalyzerNRFSemanticRegionHeader? {
+        guard !semanticCandidateStaged,
+            StaticSignalAnalyzerNRFSemanticRegionStore.stageGeneratedUTF8Candidate(
+                inputs: &self,
+                in: &profile
+            )
+        else { return nil }
+        semanticCandidateStaged = true
+        generatedUTF8CandidateStaged = true
+        return StaticSignalAnalyzerNRFSemanticRegionStore.header(
+            in: .semanticCandidate,
+            profile: &profile
+        )
+    }
+
     package mutating func publishSemanticCandidate(
         revision: UInt32,
         in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
     ) -> StaticSignalAnalyzerNRFSemanticRegionHeader? {
-        guard semanticCandidateStaged, !semanticCandidatePublished,
+        guard semanticCandidateStaged, !generatedUTF8CandidateStaged,
+            !semanticCandidatePublished,
             StaticSignalAnalyzerNRFSemanticRegionStore.publishCandidate(
                 inputs: self,
                 revision: revision,

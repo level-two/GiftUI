@@ -395,10 +395,24 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
         in region: UnsafeMutableRawBufferPointer
     ) -> Bool {
         guard let summary = tableSummary(in: region) else { return false }
+        return hasDistinctActionScopes(scopeCount: summary.scopeCount, in: region)
+    }
+
+    package static func hasDistinctUTF8ActionScopes(
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
+        guard let summary = utf8TableSummary(in: region) else { return false }
+        return hasDistinctActionScopes(scopeCount: summary.scopeCount, in: region)
+    }
+
+    private static func hasDistinctActionScopes(
+        scopeCount: UInt16,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
         var action: UInt16 = 0
         while action < actionCount {
             guard let scope = actionScope(at: action, in: region),
-                scope < summary.scopeCount
+                scope < scopeCount
             else { return false }
             var earlier: UInt16 = 0
             while earlier < action {
@@ -417,9 +431,23 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
         in region: UnsafeMutableRawBufferPointer
     ) -> Bool {
         guard let summary = tableSummary(in: region) else { return false }
+        return hasExactCanvasOccurrences(scopeCount: summary.scopeCount, in: region)
+    }
+
+    package static func hasExactUTF8CanvasOccurrences(
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
+        guard let summary = utf8TableSummary(in: region) else { return false }
+        return hasExactCanvasOccurrences(scopeCount: summary.scopeCount, in: region)
+    }
+
+    private static func hasExactCanvasOccurrences(
+        scopeCount: UInt16,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
         var seen: UInt8 = 0
         var ordinal: UInt16 = 0
-        while ordinal < summary.scopeCount {
+        while ordinal < scopeCount {
             guard let record = scope(at: ordinal, in: region) else { return false }
             if record.kind == .canvas {
                 let occurrence = UInt8(truncatingIfNeeded: record.payload0)
@@ -439,9 +467,23 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
         in region: UnsafeMutableRawBufferPointer
     ) -> UInt64? {
         guard let summary = tableSummary(in: region) else { return nil }
+        return topologyFingerprint(scopeCount: summary.scopeCount, in: region)
+    }
+
+    package static func utf8TopologyFingerprint(
+        in region: UnsafeMutableRawBufferPointer
+    ) -> UInt64? {
+        guard let summary = utf8TableSummary(in: region) else { return nil }
+        return topologyFingerprint(scopeCount: summary.scopeCount, in: region)
+    }
+
+    private static func topologyFingerprint(
+        scopeCount: UInt16,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> UInt64? {
         var hash: UInt64 = 0xcbf2_9ce4_8422_2325
         var ordinal: UInt16 = 0
-        while ordinal < summary.scopeCount {
+        while ordinal < scopeCount {
             guard let record = scope(at: ordinal, in: region) else { return nil }
             hash = mix(record.identity, into: hash)
             hash = mix(record.parent, into: hash)

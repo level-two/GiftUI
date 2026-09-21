@@ -665,7 +665,12 @@ the 129-scalar diagnostic tree needs 213 slots, but the pool holds 139. Text
 therefore cannot use the legacy scalar schema. The version-2 byte schema
 packs all 21 generated text values with that maximal diagnostic into 214
 bytes, validates each range, and seals the generated table in host tests.
-This does not yet make production publication conformant.
+The generated table now stages in the attempt-local production region with
+the refreshed whole-region checksum, variant count, topology fingerprint,
+distinct action targets, and exact Canvas occurrences. Host tests stage the
+117-byte normal and 214-byte maximal-diagnostic candidates across separate
+opportunities. The prefix-only publish path rejects this staging input;
+complete publication and a layout/render reader remain open.
 Independently, the generated writer now fills fifteen invariant padding/frame
 modifier records. Both real-tree variants match every packed flag, edge,
 alignment, and dimension. It also fills twenty-five fixed passthrough styles,
