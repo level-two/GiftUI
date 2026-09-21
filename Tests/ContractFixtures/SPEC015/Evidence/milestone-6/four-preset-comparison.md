@@ -5,8 +5,10 @@ Evidence kinds: `host-execution` for macOS and normalized semantic oracles;
 execution remains `not-collected`.
 
 This comparison was rerun after the approved 2026-09-21 diagnostic-capacity
-amendment. It checks 224 glyph slots in all four generated presets; the older
-139-slot run remains available only as historical evidence.
+and text-line amendments. It checks 224 glyph and 128 text-line slots in all
+four generated presets; the older 139-glyph/21-line run remains available only
+as historical evidence. The Dynamic Pi full pipeline separately passed exact
+96-byte `W` and LF diagnostic fixtures at 27 and 117 measured lines.
 
 Reproduce the complete hardware-free comparison from the repository root:
 
@@ -15,15 +17,15 @@ scripts/contracts/run-spec-015-milestone-6.sh
 ```
 
 The gate consumes four independently emitted immutable reports. The current
-evidence is bound to repository revision `bbee91efa193b961f450fb80803b23cebd902f68`
+evidence is bound to repository revision `242a8f7a7d67516bff0fe17327ce78c105408850`
 and immutable run
-`bbee91efa193b961f450fb80803b23cebd902f68-c6c9a92ad0d003b3`. It requires
+`242a8f7a7d67516bff0fe17327ce78c105408850-db2f822e88db0e4f`. It requires
 equal checksum, graph-role count, semantic and render-semantic counts, layout
 scope and traversal bounds, text lines, glyphs, ordinary and Drawing
 operations, actions, inputs, completion facts, admission capacity, Canvas
 count, and live/plan point bounds. All roots report checksum `360515885`, 18
 roles, 48 semantic nodes, 98 render-semantic scopes, 98 layout scopes, depth
-13, 21 text lines, 224
+13, 128 text lines, 224
 glyphs, 30 ordinary operations, five Drawing operations, six actions/inputs,
 one completion fact, 32 compact-fact slots, five canvases, 202 live points,
 and 832 plan points. The same generated runtime-limit source and successful
