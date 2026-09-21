@@ -674,6 +674,11 @@ the matching version-2 path now publishes the exact complete table after
 validation. A stale revision and a checksum-corrupt candidate each leave the
 previous published result unchanged. The layout/render reader and full
 presentation transaction remain open.
+A borrowed version-2 render view now decodes every stable scope identity,
+render scope, and child relationship from the checked table without allocation.
+The normal and diagnostic host oracle compares all of those queries with the
+portable Dynamic render projection. Its scoped production lending and the
+layout/text reader remain open; this host result is not an embedded run.
 Independently, the generated writer now fills fifteen invariant padding/frame
 modifier records. Both real-tree variants match every packed flag, edge,
 alignment, and dimension. It also fills twenty-five fixed passthrough styles,

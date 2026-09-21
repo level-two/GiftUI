@@ -214,8 +214,13 @@ The older prefix-only publication method explicitly rejects a version-2
 staging input. A matching complete-publication path now revalidates the
 version-2 table and whole-region checksum before copying to retained storage;
 stale revision and corrupt candidate attempts leave the prior published
-region intact. Layout/render reading and the full presentation transaction
+region intact. Layout-text reading and the full render/presentation transaction
 remain open.
+A read-only version-2 render view now maps stable IDs and every root-first
+scope/child link directly from a validated borrowed table. The host oracle
+compares all normal and diagnostic render scopes and children with the
+portable Dynamic projection. The view is only valid within the table borrow;
+the production scoped lending API and layout-text queries remain open.
 A ROM-backed generated topology writer now decodes each normal/diagnostic
 root-first scope's stable source ID, parent, first child, next sibling, and
 kind directly into the caller-owned candidate region. The host oracle checks

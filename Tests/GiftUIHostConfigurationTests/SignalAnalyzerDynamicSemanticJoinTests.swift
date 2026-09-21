@@ -2292,6 +2292,43 @@ private func verifyPackedNRFRenderProjection(
                 )
                 action += 1
             }
+            guard
+                let generatedRender = StaticSignalAnalyzerNRFUTF8RenderView(
+                    in: generated,
+                    renderSnapshotVersion: 1
+                )
+            else {
+                Issue.record("generated UTF-8 render view is unavailable")
+                return
+            }
+            #expect(generatedRender.semanticScopeCount == UInt16(nodes.count))
+            #expect(generatedRender.rootIdentity == encodedIdentities[0])
+            #expect(generatedRender.semanticIdentity(at: UInt16(nodes.count)) == nil)
+            #expect(generatedRender.semanticOrdinal(of: 0) == nil)
+            for (ordinal, node) in nodes.enumerated() {
+                let identity = encodedIdentities[ordinal]
+                #expect(generatedRender.semanticIdentity(at: UInt16(ordinal)) == identity)
+                #expect(generatedRender.semanticOrdinal(of: identity) == UInt16(ordinal))
+                #expect(generatedRender.layoutIdentity(for: identity) == identity)
+                #expect(generatedRender.scope(at: identity) == render.scope(at: node.identity))
+                let count = render.childCount(of: node.identity)
+                #expect(generatedRender.childCount(of: identity) == count)
+                if let count {
+                    for index in 0 ..< count {
+                        guard let child = render.child(of: node.identity, at: index),
+                            let childOrdinal = nodes.firstIndex(where: { $0.identity == child })
+                        else {
+                            Issue.record("portable render child is missing")
+                            return
+                        }
+                        #expect(
+                            generatedRender.child(of: identity, at: index)
+                                == encodedIdentities[childOrdinal]
+                        )
+                    }
+                    #expect(generatedRender.child(of: identity, at: count) == nil)
+                }
+            }
             StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
                 model: model
             ) { inputs in
