@@ -65,6 +65,8 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
     package static let maximumScopeCount: UInt16 = 98
     package static let maximumScalarCount: UInt16 = 139
     package static let actionCount: UInt16 = 6
+    package static let normalTopologyFingerprint: UInt64 = 9_859_439_025_635_601_183
+    package static let diagnosticTopologyFingerprint: UInt64 = 11_401_492_284_248_230_541
     package static let missingOrdinal = UInt16.max
     package static let scopeOffset = 88
     package static let scopeStride = 24
@@ -333,6 +335,34 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
             ordinal += 1
         }
         return seen == 0b1_1111
+    }
+
+    /// Stable source topology fingerprint; dynamic text and modifier state
+    /// deliberately do not participate. This is a generation consistency
+    /// check, not the whole-region publication checksum.
+    package static func topologyFingerprint(
+        in region: UnsafeMutableRawBufferPointer
+    ) -> UInt64? {
+        guard let summary = tableSummary(in: region) else { return nil }
+        var hash: UInt64 = 0xcbf2_9ce4_8422_2325
+        var ordinal: UInt16 = 0
+        while ordinal < summary.scopeCount {
+            guard let record = scope(at: ordinal, in: region) else { return nil }
+            hash = mix(record.identity, into: hash)
+            hash = mix(record.parent, into: hash)
+            hash = mix(record.firstChild, into: hash)
+            hash = mix(record.nextSibling, into: hash)
+            hash = (hash ^ UInt64(record.kind.rawValue)) &* 0x100_0000_01b3
+            ordinal += 1
+        }
+        return hash
+    }
+
+    private static func mix(_ value: UInt16, into hash: UInt64) -> UInt64 {
+        let low = (hash ^ UInt64(UInt8(truncatingIfNeeded: value)))
+            &* 0x100_0000_01b3
+        return (low ^ UInt64(UInt8(truncatingIfNeeded: value >> 8)))
+            &* 0x100_0000_01b3
     }
 
     private static func footerIsZero(

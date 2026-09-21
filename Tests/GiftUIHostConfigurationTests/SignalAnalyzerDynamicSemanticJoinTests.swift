@@ -1279,7 +1279,12 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(storage.canvasOccurrenceCount == 5)
     #expect(storage.hasPublishedResult)
     #expect(root.isActive)
-    verifyPackedNRFRenderProjection(of: storage, expectedScalars: 117)
+    verifyPackedNRFRenderProjection(
+        of: storage,
+        expectedScalars: 117,
+        expectedTopologyFingerprint:
+            StaticSignalAnalyzerNRFPackedSemanticRecords.normalTopologyFingerprint
+    )
 }
 
 @Test func signalAnalyzerDynamicSemanticJoinMeasuresDiagnosticHierarchy() throws {
@@ -1332,7 +1337,12 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     let diagnosticTextScalars = semanticTextScalarCount(in: storage)
     #expect(diagnosticTextScalars == 129)
     #expect(storage.canvasOccurrenceCount == 5)
-    verifyPackedNRFRenderProjection(of: storage, expectedScalars: 129)
+    verifyPackedNRFRenderProjection(
+        of: storage,
+        expectedScalars: 129,
+        expectedTopologyFingerprint:
+            StaticSignalAnalyzerNRFPackedSemanticRecords.diagnosticTopologyFingerprint
+    )
 
     var foregrounds: [Color: UInt16] = [:]
     var backgrounds: [Color: UInt16] = [:]
@@ -1878,7 +1888,8 @@ private struct PackedNRFOracleNode {
 /// the remaining modifier/layout payloads are encoded.
 private func verifyPackedNRFRenderProjection(
     of storage: DynamicSemanticHostStorage,
-    expectedScalars: UInt16
+    expectedScalars: UInt16,
+    expectedTopologyFingerprint: UInt64
 ) {
     let render = storage.renderView
     var nodes: [PackedNRFOracleNode] = []
@@ -2103,6 +2114,7 @@ private func verifyPackedNRFRenderProjection(
                 )
         )
         #expect(table.hasExactCanvasOccurrences(in: region))
+        #expect(table.topologyFingerprint(in: region) == expectedTopologyFingerprint)
     }
 }
 

@@ -633,6 +633,10 @@ ordinals; the production six-action mapping must identify six distinct scopes.
 It also requires one and only one record for each of the five generated Canvas
 occurrence IDs. The real-tree host projections satisfy this check; duplicate
 Canvas occurrence corruption is rejected.
+The real-tree oracle now pins complete source topology fingerprints for normal
+and diagnostic variants, covering every stable scope ID, tree link, and kind.
+This catches structural source drift before a generated Static writer is
+accepted; it is not a publication integrity checksum or an embedded run.
 The enclosing semantic-region owner now has a separate complete-candidate
 staging and publication path. A host fixture populates a synthetic 96-scope
 table directly in the borrowed candidate region, seals it, refreshes the

@@ -144,7 +144,10 @@ fixed child/branch indices, excluding traversal-assigned declaration-role
 numbers. Modifier IDs add their owning primitive's local modifier index
 instead of the Dynamic storage's global modifier ordinal. The fixture checks
 unique IDs in each variant and pins identical IDs for all six controls and
-five Canvas occurrences across variants. This verifies current table
+five Canvas occurrences across variants. A generated fingerprint now pins
+every scope's stable ID, parent/child/sibling relation, and kind in both
+variants; text scalars and state-dependent payloads are deliberately excluded.
+This verifies current table
 capacity, linkage, and stable reference occurrences. The production modifier
 payload codec now round-trips every layout/render modifier in both actual
 hierarchies within the three record words: passthrough style, padding, fixed

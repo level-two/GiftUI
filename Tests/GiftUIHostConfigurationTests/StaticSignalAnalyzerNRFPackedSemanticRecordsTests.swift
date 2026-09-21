@@ -138,6 +138,11 @@ import Testing
         #expect(!table.sealTable(scopeCount: 3, scalarCount: 1, in: region))
         #expect(!table.hasDistinctActionScopes(in: region))
         #expect(!table.hasExactCanvasOccurrences(in: region))
+        let fingerprint = table.topologyFingerprint(in: region)
+        #expect(fingerprint != nil)
+        region[table.scalarOffset] = 66
+        #expect(table.topologyFingerprint(in: region) == fingerprint)
+        region[table.scalarOffset] = 65
     }
     var badFooter = bytes
     badFooter[table.reservedOffset + 10] = 2
