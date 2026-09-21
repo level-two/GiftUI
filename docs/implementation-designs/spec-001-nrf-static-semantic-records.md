@@ -235,10 +235,13 @@ generated view under the exact nRF preset, but rejects an exact 96-byte ASCII
 diagnostic with `capacityExhausted`: the variant needs 214 text scalars and
 positioned glyphs, while the approved SPEC-015 preset caps each at 139. The
 UTF-8 semantic region fits all 214 text bytes and preserves them exactly; the
-conflict is downstream layout capacity, not table encoding. Full nRF layout
-integration is paused pending review of the approved workload/limits and their
-resource audit. Neither text truncation nor a local limit increase is an
-authorized implementation choice.
+conflict is downstream layout capacity, not table encoding. The maintainer's
+2026-09-21 SPEC-015/SPEC-001 amendment authorizes a 224-slot ceiling across
+all profiles and dependent render/sink limits. The generated descriptor,
+presets, concrete endpoint capacities, and exact-limit tests must now follow
+that approved value; the unchanged named profile-store projections do not
+waive separate transient storage and stack-fit evidence. The full nRF layout
+transaction remains to be implemented.
 A ROM-backed generated topology writer now decodes each normal/diagnostic
 root-first scope's stable source ID, parent, first child, next sibling, and
 kind directly into the caller-owned candidate region. The host oracle checks

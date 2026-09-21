@@ -661,7 +661,7 @@ The generated input mapping now returns all 20 normal and 21 diagnostic text
 values from the live model, with exact host-oracle comparison. A maximum
 96-byte admitted diagnostic proves the current four-byte scalar pool cannot
 represent every required message: replacing the measured 12-scalar error in
-the 129-scalar diagnostic tree needs 213 slots, but the pool holds 139. Text
+the 129-scalar diagnostic tree needs 214 slots, but the pool holds 139. Text
 therefore cannot use the legacy scalar schema. The version-2 byte schema
 packs all 21 generated text values with that maximal diagnostic into 214
 bytes, validates each range, and seals the generated table in host tests.
@@ -692,8 +692,10 @@ lifetimes. The full layout/render transaction remains open.
 The common semantic-layout validator accepts the normal generated nRF view
 under the exact preset. A maximal 96-byte ASCII diagnostic is preserved in
 the semantic table but needs 214 scalar/glyph slots, so validation returns
-`capacityExhausted` at the approved 139-slot limit. This is a recorded
-contract blocker, not successful layout or connected-target evidence.
+`capacityExhausted` at the former approved 139-slot limit. The maintainer
+approved a 224-slot replacement on 2026-09-21; this transcript is the
+pre-amendment regression, not successful amended layout or connected-target
+evidence.
 Independently, the generated writer now fills fifteen invariant padding/frame
 modifier records. Both real-tree variants match every packed flag, edge,
 alignment, and dimension. It also fills twenty-five fixed passthrough styles,
