@@ -175,6 +175,14 @@ value, counts scalars before writing, and stores each decoded Unicode scalar
 directly in the borrowed region. Overflow or wrong region size causes no
 write. The generated hierarchy writer still has to call this encoder in
 root-first text-scope order and record each returned range.
+The generated input mapping now returns all 20 normal and 21 diagnostic text
+values from the live model; host oracle tests compare every value with the
+portable tree. It also exposed a required case that invalidates the proposed
+four-byte scalar pool: the measured 129-scalar diagnostic includes a 12-scalar
+error, while an admitted diagnostic may contain 96 ASCII bytes. Replacing
+that error needs 213 scalar slots, exceeding the proposed 139-slot pool by
+74. The current scalar encoder therefore remains a bounded component, not a
+production full-tree writer. No exact error text may be dropped or truncated.
 A ROM-backed generated topology writer now decodes each normal/diagnostic
 root-first scope's stable source ID, parent, first child, next sibling, and
 kind directly into the caller-owned candidate region. The host oracle checks
@@ -241,10 +249,14 @@ nRF build and connected run are recorded separately under T6.8/T8.2.
 ## Open Implementation Questions
 
 The current primitive and modifier layout/render forms and disabled-action
-flags fit the three words in both measured variants. The full generated
-writer/reader still requires verification. This is not authority to drop a
-semantic value; a required value that cannot fit the approved 3,024-byte
-region is a contract issue to report upstream. Generator provenance and
+flags fit the three words in both measured variants. The 139-slot scalar
+pool, however, does not cover the approved 96-byte diagnostic. The affected
+text publication is paused pending a checked internal repacking within the
+same 3,024-byte semantic region; a variable-length UTF-8 byte pool is a
+candidate because the existing 556-byte pool area can retain exact bounded
+text without four-byte slots. Its worst-case byte count, decoder behavior,
+footer schema, and resource cost still require proof. This is not authority
+to drop a semantic value or relax the Specification. Generator provenance and
 embedded compiler measurements remain required before this note can become
 `current`.
 

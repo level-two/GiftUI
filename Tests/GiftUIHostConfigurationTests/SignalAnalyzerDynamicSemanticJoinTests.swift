@@ -1281,6 +1281,7 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(root.isActive)
     verifyPackedNRFRenderProjection(
         of: storage,
+        model: model,
         expectedScalars: 117,
         expectedTopologyFingerprint:
             StaticSignalAnalyzerNRFPackedSemanticRecords.normalTopologyFingerprint
@@ -1339,6 +1340,7 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(storage.canvasOccurrenceCount == 5)
     verifyPackedNRFRenderProjection(
         of: storage,
+        model: model,
         expectedScalars: 129,
         expectedTopologyFingerprint:
             StaticSignalAnalyzerNRFPackedSemanticRecords.diagnosticTopologyFingerprint
@@ -1372,6 +1374,21 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(backgrounds[Color(red: 24, green: 24, blue: 24)] == 1)
     #expect(backgrounds[Color(red: 32, green: 32, blue: 32)] == 1)
     #expect(backgrounds[Color(red: 48, green: 48, blue: 48)] == 1)
+}
+
+@Test func staticNRFGeneratedTextRetainsMaximumDiagnosticAndExposesPackingLimit() {
+    let model = makeSemanticJoinModel()
+    let diagnostic = SignalAnalyzerDiagnostic(
+        exactUTF8: [UInt8](repeating: 65, count: 96)
+    )!
+    #expect(model.apply(.acquisitionState(.failed(diagnostic))) == .applied(changed: true))
+    StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
+        model: model
+    ) { inputs in
+        #expect(inputs.semantic.variant == .diagnostic)
+        #expect(inputs.textInput(at: 97)?.utf8ByteCount == 96)
+    }
+    #expect(129 - 12 + 96 > StaticSignalAnalyzerNRFPackedSemanticRecords.maximumScalarCount)
 }
 
 @Test func signalAnalyzerDynamicSemanticJoinAdmitsApprovedPreset() throws {
@@ -1888,6 +1905,7 @@ private struct PackedNRFOracleNode {
 /// the remaining modifier/layout payloads are encoded.
 private func verifyPackedNRFRenderProjection(
     of storage: DynamicSemanticHostStorage,
+    model: SignalAnalyzerViewModel,
     expectedScalars: UInt16,
     expectedTopologyFingerprint: UInt64
 ) {
@@ -2168,6 +2186,31 @@ private func verifyPackedNRFRenderProjection(
                         == table.actionScope(at: action, in: region)
                 )
                 action += 1
+            }
+            StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
+                model: model
+            ) { inputs in
+                for ordinal in 0 ..< nodes.count {
+                    guard let expected = table.scope(at: UInt16(ordinal), in: region),
+                        expected.kind == .text
+                    else { continue }
+                    guard let value = inputs.textInput(at: UInt16(ordinal)) else {
+                        Issue.record("generated text value is missing")
+                        return
+                    }
+                    value.withUTF8 { bytes in
+                        #expect(bytes.count == Int(expected.payload1))
+                        for index in 0 ..< bytes.count {
+                            #expect(
+                                UInt32(bytes[index])
+                                    == table.scalar(
+                                        at: UInt16(expected.payload0) + UInt16(index),
+                                        in: region
+                                    )
+                            )
+                        }
+                    }
+                }
             }
         }
     }

@@ -655,6 +655,13 @@ Text and modifier payloads remain unpopulated.
 The writer also fills thirteen invariant nonzero stack/spacer payloads.
 Every primitive payload now matches the real-tree oracle in both variants,
 while text and modifier payloads remain separate incomplete stages.
+The generated input mapping now returns all 20 normal and 21 diagnostic text
+values from the live model, with exact host-oracle comparison. A maximum
+96-byte admitted diagnostic proves the current four-byte scalar pool cannot
+represent every required message: replacing the measured 12-scalar error in
+the 129-scalar diagnostic tree needs 213 slots, but the pool holds 139. Text
+publication is paused for internal repacking within the unchanged 3,024-byte
+region; the fail-closed scalar encoder is not claimed as full conformance.
 The enclosing semantic-region owner now has a separate complete-candidate
 staging and publication path. A host fixture populates a synthetic 96-scope
 table directly in the borrowed candidate region, seals it, refreshes the
