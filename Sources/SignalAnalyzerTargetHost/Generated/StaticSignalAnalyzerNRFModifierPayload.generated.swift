@@ -11,6 +11,16 @@ package struct StaticSignalAnalyzerNRFModifierPayload: Equatable, Sendable {
     package let payload1: UInt32
     package let payload2: UInt32
 
+    package init?(record: StaticSignalAnalyzerNRFScopeRecord) {
+        guard record.kind == .modifier else { return nil }
+        flags = record.flags
+        auxiliary = record.auxiliary
+        payload0 = record.payload0
+        payload1 = record.payload1
+        payload2 = record.payload2
+        guard decoded() != nil else { return nil }
+    }
+
     private static let passthrough: UInt8 = 1
     private static let padding: UInt8 = 2
     private static let fixedFrame: UInt8 = 3

@@ -187,8 +187,23 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
         else { return false }
 
         var ordinal: UInt16 = 0
+        var coveredScalars: UInt16 = 0
         while ordinal < scopeCount {
             guard let record = scope(at: ordinal, in: region) else { return false }
+            switch record.kind {
+            case .modifier:
+                guard StaticSignalAnalyzerNRFModifierPayload(record: record) != nil
+                else { return false }
+            default:
+                guard StaticSignalAnalyzerNRFPrimitivePayload(record: record) != nil
+                else { return false }
+            }
+            if record.kind == .text {
+                guard record.payload0 == UInt32(coveredScalars),
+                    record.payload1 <= UInt32(scalarCount - coveredScalars)
+                else { return false }
+                coveredScalars += UInt16(record.payload1)
+            }
             if ordinal > 0 {
                 guard record.parent < ordinal,
                     incomingLinkCount(to: ordinal, scopeCount: scopeCount, in: region) == 1
@@ -215,6 +230,7 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
             }
             ordinal += 1
         }
+        guard coveredScalars == scalarCount else { return false }
 
         var scalarOrdinal: UInt16 = 0
         while scalarOrdinal < scalarCount {

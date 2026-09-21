@@ -147,6 +147,22 @@ import Testing
     badScope.withUnsafeMutableBytes { region in
         #expect(table.tableSummary(in: region) == nil)
     }
+    var badTextRange = bytes
+    badTextRange[table.scopeOffset + table.scopeStride + 16] = 140
+    badTextRange.withUnsafeMutableBytes { region in
+        #expect(table.tableSummary(in: region) == nil)
+    }
+    var badTextGap = bytes
+    badTextGap[table.scopeOffset + table.scopeStride + 12] = 1
+    badTextGap.withUnsafeMutableBytes { region in
+        #expect(table.tableSummary(in: region) == nil)
+    }
+    var badModifierPayload = bytes
+    badModifierPayload[table.scopeOffset + table.scopeStride * 2 + 8] =
+        StaticSignalAnalyzerNRFScopeKind.modifier.rawValue
+    badModifierPayload.withUnsafeMutableBytes { region in
+        #expect(table.tableSummary(in: region) == nil)
+    }
 }
 
 private func makeStaticNRFThreeScopeTable() -> [UInt8] {

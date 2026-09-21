@@ -10,6 +10,16 @@ package struct StaticSignalAnalyzerNRFPrimitivePayload: Equatable, Sendable {
     package let payload1: UInt32
     package let payload2: UInt32
 
+    package init?(record: StaticSignalAnalyzerNRFScopeRecord) {
+        guard record.kind != .modifier, record.flags == 0 else { return nil }
+        kind = record.kind
+        auxiliary = record.auxiliary
+        payload0 = record.payload0
+        payload1 = record.payload1
+        payload2 = record.payload2
+        guard decoded() != nil else { return nil }
+    }
+
     package init?(
         primitive: SemanticLayoutPrimitive,
         renderScope: SemanticRenderScope,

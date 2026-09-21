@@ -112,7 +112,8 @@ region a complete semantic result; generated population and final publication
 must call this validation at the correct lifetime boundary.
 The reserved 16-byte tail now holds a versioned table-completion footer only
 after a populated table passes topology validation. A reader checks the footer
-and revalidates the used records before returning scope/scalar counts. This is
+and revalidates the used records, including every per-kind payload and an exact
+gap-free text-pool covering sequence, before returning scope/scalar counts. This is
 separate from the enclosing region checksum, which the region owner must
 refresh after writing the footer. Prefix-only regions have no valid footer.
 The owning semantic-region store now offers a scoped complete-candidate path:
