@@ -119,6 +119,24 @@ package struct StaticSignalAnalyzerNRFProfileRegions: StaticProfileStorageRegion
         )
     }
 
+    package mutating func withSemanticRegions<Result>(
+        _ body: (
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer
+        ) throws -> Result
+    ) rethrows -> Result {
+        let candidate = Self.semanticCandidate
+        let published = Self.semanticPublished
+        return try body(
+            UnsafeMutableRawBufferPointer(
+                rebasing: storage[candidate.offset ..< candidate.offset + candidate.byteCount]
+            ),
+            UnsafeMutableRawBufferPointer(
+                rebasing: storage[published.offset ..< published.offset + published.byteCount]
+            )
+        )
+    }
+
     package mutating func resetAttemptRegions() {
         reset(Self.semanticCandidate)
         reset(Self.layoutCandidate)

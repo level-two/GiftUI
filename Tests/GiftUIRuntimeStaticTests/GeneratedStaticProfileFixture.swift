@@ -156,6 +156,19 @@ struct GeneratedStaticRegions: StaticProfileStorageRegions, ~Copyable {
         }
     }
 
+    mutating func withSemanticRegions<Result>(
+        _ body: (
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer
+        ) throws -> Result
+    ) rethrows -> Result {
+        try withUnsafeMutableBytes(of: &semanticCandidate) { candidate in
+            try withUnsafeMutableBytes(of: &semanticPublished) { published in
+                try body(candidate, published)
+            }
+        }
+    }
+
     mutating func resetAttemptRegions() {
         semanticCandidate = 0
         layoutCandidate = 0

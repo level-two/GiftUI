@@ -65,21 +65,25 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
         revision: UInt32,
         in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
     ) -> Bool {
-        guard revision > 0,
-            let candidate = header(in: .semanticCandidate, profile: &profile),
-            candidate.state == .candidate,
-            candidate.variant == inputs.semantic.variant,
-            candidate.expansion == inputs.semantic.expansion,
-            canPublish(revision: revision, profile: &profile)
-        else { return false }
-        let stableInputs = copy inputs
-        return profile.withRegion(.semanticPublished) { region in
-            encode(
-                inputs: stableInputs,
-                state: .published,
-                revision: revision,
-                into: region
+        guard revision > 0 else { return false }
+        let expected = inputs.semantic
+        return profile.withSemanticRegions { candidate, published in
+            guard candidate.count == regionByteCount,
+                published.count == regionByteCount,
+                let header = decodeHeader(from: candidate),
+                header.state == .candidate,
+                header.variant == expected.variant,
+                header.expansion == expected.expansion,
+                canPublish(revision: revision, in: published)
+            else { return false }
+            published.baseAddress!.copyMemory(
+                from: candidate.baseAddress!,
+                byteCount: regionByteCount
             )
+            published[6] = StaticSignalAnalyzerNRFSemanticRegionState.published.rawValue
+            store(revision, in: published, at: revisionOffset)
+            store(checksum(of: published), in: published, at: checksumOffset)
+            return true
         } == true
     }
 
@@ -171,24 +175,22 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
 
     private static func canPublish(
         revision: UInt32,
-        profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
+        in region: UnsafeMutableRawBufferPointer
     ) -> Bool {
-        profile.withRegion(.semanticPublished) { region in
-            var isEmpty = true
-            var index = 0
-            while index < encodedByteCount {
-                if region[index] != 0 {
-                    isEmpty = false
-                    break
-                }
-                index += 1
+        var isEmpty = true
+        var index = 0
+        while index < encodedByteCount {
+            if region[index] != 0 {
+                isEmpty = false
+                break
             }
-            if isEmpty { return true }
-            guard let published = decodeHeader(from: region),
-                published.state == .published
-            else { return false }
-            return published.revision < revision
-        } == true
+            index += 1
+        }
+        if isEmpty { return true }
+        guard let published = decodeHeader(from: region),
+            published.state == .published
+        else { return false }
+        return published.revision < revision
     }
 
     private static func decodeHeader(
@@ -255,9 +257,11 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
     ) -> UInt32 {
         var value: UInt32 = 2_166_136_261
         var index = 0
-        while index < checksumOffset {
-            value ^= UInt32(region[index])
-            value = value &* 16_777_619
+        while index < regionByteCount {
+            if index < checksumOffset || index >= checksumOffset + MemoryLayout<UInt32>.size {
+                value ^= UInt32(region[index])
+                value = value &* 16_777_619
+            }
             index += 1
         }
         return value

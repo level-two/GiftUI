@@ -17,6 +17,12 @@ package protocol StaticProfileStorageRegions: ~Copyable {
         _ family: RuntimeStorageFamily,
         _ body: (UnsafeMutableRawBufferPointer) throws -> Result
     ) rethrows -> Result
+    mutating func withSemanticRegions<Result>(
+        _ body: (
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer
+        ) throws -> Result
+    ) rethrows -> Result
     mutating func resetAttemptRegions()
     mutating func resetAllRegions()
 }
@@ -232,6 +238,18 @@ where
             !family.isAttemptLocal || lifetimeState == .attemptActive
         else { return nil }
         return try regions.withRegion(family, body)
+    }
+
+    /// Lends disjoint candidate and published semantic regions together. The
+    /// attempt must be active because the candidate region is attempt-local.
+    package mutating func withSemanticRegions<Result>(
+        _ body: (
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer
+        ) throws -> Result
+    ) rethrows -> Result? {
+        guard lifetimeState == .attemptActive else { return nil }
+        return try regions.withSemanticRegions(body)
     }
 
     package mutating func stageCanvas<Identity>(

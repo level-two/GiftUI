@@ -106,11 +106,24 @@ private struct DifferentialPipelineOwner: RuntimeCompletePipelineOwner {
 private struct DifferentialStaticRegions: StaticProfileStorageRegions {
     let byteCounts = differentialByteCounts()
     private var regionByte: UInt8 = 0
+    private var publishedByte: UInt8 = 0
     mutating func withRegion<Result>(
         _: RuntimeStorageFamily,
         _ body: (UnsafeMutableRawBufferPointer) throws -> Result
     ) rethrows -> Result {
         try withUnsafeMutableBytes(of: &regionByte, body)
+    }
+    mutating func withSemanticRegions<Result>(
+        _ body: (
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer
+        ) throws -> Result
+    ) rethrows -> Result {
+        try withUnsafeMutableBytes(of: &regionByte) { candidate in
+            try withUnsafeMutableBytes(of: &publishedByte) { published in
+                try body(candidate, published)
+            }
+        }
     }
     mutating func resetAttemptRegions() {}
     mutating func resetAllRegions() {}

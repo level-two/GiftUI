@@ -197,6 +197,19 @@ import Testing
                     return true
                 } == true
             )
+            #expect(
+                profile.withRegion(.semanticCandidate) { region in
+                    region[3_000] = 0xA5
+                    return true
+                } == true
+            )
+            #expect(inputs.publishSemanticCandidate(revision: 7, in: &profile) == nil)
+            #expect(
+                profile.withRegion(.semanticCandidate) { region in
+                    region[3_000] = 0
+                    return true
+                } == true
+            )
 
             let published = inputs.publishSemanticCandidate(
                 revision: 7,
@@ -205,6 +218,20 @@ import Testing
             #expect(published?.state == .published)
             #expect(published?.variant == .normal)
             #expect(published?.revision == 7)
+            #expect(
+                profile.withSemanticRegions { candidate, retained in
+                    var index = 0
+                    while index < candidate.count {
+                        if index != 6 && !(28 ..< 32).contains(index)
+                            && !(84 ..< 88).contains(index)
+                            && candidate[index] != retained[index]
+                        {
+                            return false
+                        }
+                        index += 1
+                    }
+                    return true
+                } == true)
             #expect(inputs.publishSemanticCandidate(revision: 8, in: &profile) == nil)
         }
 
@@ -240,10 +267,20 @@ import Testing
         ) { inputs in
             #expect(inputs.stageSemanticCandidate(in: &profile)?.variant == .diagnostic)
             #expect(inputs.publishSemanticCandidate(revision: 7, in: &profile) == nil)
+            #expect(
+                profile.withRegion(.semanticPublished) { region in
+                    region[28]
+                } == 7
+            )
             let published = inputs.publishSemanticCandidate(revision: 8, in: &profile)
             #expect(published?.variant == .diagnostic)
             #expect(published?.expansion.semanticNodeCount == 48)
             #expect(published?.revision == 8)
+            #expect(
+                profile.withRegion(.semanticPublished) { region in
+                    region[3_000]
+                } == 0
+            )
         }
         #expect(profile.finishOpportunity(context: idle) == nil)
         profile.quiesce()

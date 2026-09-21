@@ -25,7 +25,8 @@ expected_semantic_region = {
   "canvas_descriptor_stride" => 8,
   "action_code_offset" => 72,
   "action_code_count" => 6,
-  "checksum_offset" => 84
+  "checksum_offset" => 84,
+  "checksum_coverage" => "full_region_except_checksum_word"
 }
 fail_check("semantic region layout differs") unless semantic_region == expected_semantic_region
 expected_variants = [
@@ -102,10 +103,11 @@ semantic_tokens = [
   "static let canvasDescriptorCount: UInt16 = 5",
   "static let actionCodeCount: UInt16 = 6",
   "profile.withRegion(.semanticCandidate)",
-  "profile.withRegion(.semanticPublished)",
+  "profile.withSemanticRegions",
   "case candidate = 1",
   "case published = 2",
-  "loadUInt32(from: region, at: checksumOffset) == checksum(of: region)"
+  "loadUInt32(from: region, at: checksumOffset) == checksum(of: region)",
+  "while index < regionByteCount"
 ]
 missing_semantic = semantic_tokens.reject { |token| semantic_storage.include?(token) }
 fail_check("generated semantic-region tokens are missing: #{missing_semantic.join(', ')}") unless missing_semantic.empty?

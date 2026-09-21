@@ -133,8 +133,10 @@ private struct StaticNRFBindingMetadata:
         }
 
         let beforeAttempt = binding.withRegion(.semanticCandidate) { $0.count }
+        let beforePair = binding.withSemanticRegions { _, _ in true }
         let retained = binding.withRegion(.semanticPublished) { $0.count }
         #expect(beforeAttempt == nil)
+        #expect(beforePair == nil)
         #expect(retained == 3_024)
 
         let active = ExecutionContext(
@@ -149,6 +151,14 @@ private struct StaticNRFBindingMetadata:
             return region.count
         }
         #expect(candidate == 3_024)
+        let pair = binding.withSemanticRegions { candidate, published in
+            #expect(candidate.count == 3_024)
+            #expect(published.count == 3_024)
+            #expect(candidate.baseAddress != published.baseAddress)
+            published[0] = candidate[0]
+            return published[0]
+        }
+        #expect(pair == 0xA5)
 
         let idle = ExecutionContext(
             cycle: nil,
@@ -158,8 +168,11 @@ private struct StaticNRFBindingMetadata:
         )
         #expect(binding.finishOpportunity(context: idle) == nil)
         let afterAttempt = binding.withRegion(.semanticCandidate) { $0.count }
+        let afterPair = binding.withSemanticRegions { _, _ in true }
         #expect(afterAttempt == nil)
+        #expect(afterPair == nil)
         #expect(storage[0] == 0)
+        #expect(storage[3_024] == 0xA5)
 
         binding.quiesce()
         let afterTeardown = binding.withRegion(.semanticPublished) { $0.count }

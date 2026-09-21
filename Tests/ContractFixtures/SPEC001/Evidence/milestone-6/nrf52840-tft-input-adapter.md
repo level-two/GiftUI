@@ -550,8 +550,9 @@ stages are complete.
 The generated semantic-region store now gives the exact 3,024-byte candidate
 and published regions a checked fixed prefix: a 32-byte header, five 8-byte
 Canvas occurrence descriptors, six dense `UInt16` action codes, and a trailing
-FNV-1a integrity word. Candidate
-staging reserves the generated normal or diagnostic semantic high-water values
+FNV-1a integrity word. The integrity word covers the entire region, excluding
+its own four bytes. Candidate staging reserves the generated normal or
+diagnostic semantic high-water values
 and writes directly into attempt-local storage. Publication validates that
 candidate, writes the retained region with a nonzero semantic revision, and
 cannot be repeated through the same generated input scope. The remaining 2,936
@@ -562,6 +563,18 @@ strictly increasing retained semantic revisions, candidate clearing at attempt
 finish, published retention between attempts, and published invalidation at
 quiescence. This slice does not yet claim the primitive table or layout/render
 pipeline is complete.
+
+Publication now borrows the attempt-local candidate and retained published
+regions together through the common Static profile owner. Once candidate
+integrity and revision ordering pass, it copies the exact 3,024 candidate
+bytes into the published region in place, then changes only state, revision,
+and checksum. A test corrupts an otherwise unused tail byte and proves
+publication rejects it; after repair, the published payload matches the
+candidate byte-for-byte except for state, revision, and checksum. A stale
+revision attempt leaves the prior retained bytes unchanged. This avoids
+regenerating semantic data from a second model read and
+avoids a full-region stack temporary; the remaining topology writer must keep
+all future candidate records within the same integrity boundary.
 
 The shared Static observable-model handle now accepts a typed-throwing scoped
 borrow. This lets the generated trace case invoke the existing
