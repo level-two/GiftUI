@@ -10,11 +10,11 @@ semantic.maximum_action_occurrences	6
 layout.maximum_scopes	98
 layout.maximum_depth	13
 layout.maximum_text_scalars	224
-layout.maximum_text_lines	21
+layout.maximum_text_lines	128
 layout.maximum_positioned_glyphs	224
 render.semantic_scope_occurrences	98
 render.maximum_traversal_depth	13
-render.maximum_text_lines	21
+render.maximum_text_lines	128
 render.maximum_operations	30
 render.maximum_positioned_glyphs	224
 render.maximum_clip_depth	4

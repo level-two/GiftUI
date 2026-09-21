@@ -1,4 +1,4 @@
-# generated from ad9eb32a6e2e13a89cc3878a270a0ad325d9447a4f0b542df973297e699753c1
+# generated from a613de50915826c1984a8c4a0277902a4489c029d4c1128fd5c9e85095234546
 # preset	profile	leaf	exact_value	lowered_disposition
 macos_dynamic	dynamic	semantic.maximumDepth	34	insufficient-workload-capacity
 macos_dynamic	dynamic	semantic.maximumSemanticNodes	48	insufficient-workload-capacity
@@ -9,7 +9,7 @@ macos_dynamic	dynamic	semantic.maximumActionOccurrences	6	insufficient-workload-
 macos_dynamic	dynamic	layout.maximumScopes	98	insufficient-workload-capacity
 macos_dynamic	dynamic	layout.maximumDepth	13	insufficient-workload-capacity
 macos_dynamic	dynamic	layout.maximumTextScalars	224	insufficient-workload-capacity
-macos_dynamic	dynamic	layout.maximumTextLines	21	insufficient-workload-capacity
+macos_dynamic	dynamic	layout.maximumTextLines	128	insufficient-workload-capacity
 macos_dynamic	dynamic	layout.maximumPositionedGlyphs	224	insufficient-workload-capacity
 macos_dynamic	dynamic	render.maximumOperations	35	insufficient-workload-capacity
 macos_dynamic	dynamic	render.maximumPositionedGlyphs	224	insufficient-workload-capacity
@@ -17,7 +17,7 @@ macos_dynamic	dynamic	render.maximumClipDepth	4	insufficient-workload-capacity
 macos_dynamic	dynamic	renderWorkspace.maximumSemanticScopes	98	insufficient-workload-capacity
 macos_dynamic	dynamic	renderWorkspace.maximumLayoutScopes	98	insufficient-workload-capacity
 macos_dynamic	dynamic	renderWorkspace.maximumTraversalDepth	13	insufficient-workload-capacity
-macos_dynamic	dynamic	renderWorkspace.maximumTextLines	21	insufficient-workload-capacity
+macos_dynamic	dynamic	renderWorkspace.maximumTextLines	128	insufficient-workload-capacity
 macos_dynamic	dynamic	renderSink.maximumOperations	35	insufficient-workload-capacity
 macos_dynamic	dynamic	renderSink.maximumPositionedGlyphs	224	insufficient-workload-capacity
 macos_dynamic	dynamic	maximumOrdinaryRenderOperations	30	insufficient-workload-capacity
@@ -51,7 +51,7 @@ macos_static	static	semantic.maximumActionOccurrences	6	insufficient-workload-ca
 macos_static	static	layout.maximumScopes	98	insufficient-workload-capacity
 macos_static	static	layout.maximumDepth	13	insufficient-workload-capacity
 macos_static	static	layout.maximumTextScalars	224	insufficient-workload-capacity
-macos_static	static	layout.maximumTextLines	21	insufficient-workload-capacity
+macos_static	static	layout.maximumTextLines	128	insufficient-workload-capacity
 macos_static	static	layout.maximumPositionedGlyphs	224	insufficient-workload-capacity
 macos_static	static	render.maximumOperations	35	insufficient-workload-capacity
 macos_static	static	render.maximumPositionedGlyphs	224	insufficient-workload-capacity
@@ -59,7 +59,7 @@ macos_static	static	render.maximumClipDepth	4	insufficient-workload-capacity
 macos_static	static	renderWorkspace.maximumSemanticScopes	98	insufficient-workload-capacity
 macos_static	static	renderWorkspace.maximumLayoutScopes	98	insufficient-workload-capacity
 macos_static	static	renderWorkspace.maximumTraversalDepth	13	insufficient-workload-capacity
-macos_static	static	renderWorkspace.maximumTextLines	21	insufficient-workload-capacity
+macos_static	static	renderWorkspace.maximumTextLines	128	insufficient-workload-capacity
 macos_static	static	renderSink.maximumOperations	35	insufficient-workload-capacity
 macos_static	static	renderSink.maximumPositionedGlyphs	224	insufficient-workload-capacity
 macos_static	static	maximumOrdinaryRenderOperations	30	insufficient-workload-capacity
@@ -93,7 +93,7 @@ raspberry_pi_dynamic	dynamic	semantic.maximumActionOccurrences	6	insufficient-wo
 raspberry_pi_dynamic	dynamic	layout.maximumScopes	98	insufficient-workload-capacity
 raspberry_pi_dynamic	dynamic	layout.maximumDepth	13	insufficient-workload-capacity
 raspberry_pi_dynamic	dynamic	layout.maximumTextScalars	224	insufficient-workload-capacity
-raspberry_pi_dynamic	dynamic	layout.maximumTextLines	21	insufficient-workload-capacity
+raspberry_pi_dynamic	dynamic	layout.maximumTextLines	128	insufficient-workload-capacity
 raspberry_pi_dynamic	dynamic	layout.maximumPositionedGlyphs	224	insufficient-workload-capacity
 raspberry_pi_dynamic	dynamic	render.maximumOperations	35	insufficient-workload-capacity
 raspberry_pi_dynamic	dynamic	render.maximumPositionedGlyphs	224	insufficient-workload-capacity
@@ -101,7 +101,7 @@ raspberry_pi_dynamic	dynamic	render.maximumClipDepth	4	insufficient-workload-cap
 raspberry_pi_dynamic	dynamic	renderWorkspace.maximumSemanticScopes	98	insufficient-workload-capacity
 raspberry_pi_dynamic	dynamic	renderWorkspace.maximumLayoutScopes	98	insufficient-workload-capacity
 raspberry_pi_dynamic	dynamic	renderWorkspace.maximumTraversalDepth	13	insufficient-workload-capacity
-raspberry_pi_dynamic	dynamic	renderWorkspace.maximumTextLines	21	insufficient-workload-capacity
+raspberry_pi_dynamic	dynamic	renderWorkspace.maximumTextLines	128	insufficient-workload-capacity
 raspberry_pi_dynamic	dynamic	renderSink.maximumOperations	35	insufficient-workload-capacity
 raspberry_pi_dynamic	dynamic	renderSink.maximumPositionedGlyphs	224	insufficient-workload-capacity
 raspberry_pi_dynamic	dynamic	maximumOrdinaryRenderOperations	30	insufficient-workload-capacity
@@ -135,7 +135,7 @@ nrf52840_static	static	semantic.maximumActionOccurrences	6	insufficient-workload
 nrf52840_static	static	layout.maximumScopes	98	insufficient-workload-capacity
 nrf52840_static	static	layout.maximumDepth	13	insufficient-workload-capacity
 nrf52840_static	static	layout.maximumTextScalars	224	insufficient-workload-capacity
-nrf52840_static	static	layout.maximumTextLines	21	insufficient-workload-capacity
+nrf52840_static	static	layout.maximumTextLines	128	insufficient-workload-capacity
 nrf52840_static	static	layout.maximumPositionedGlyphs	224	insufficient-workload-capacity
 nrf52840_static	static	render.maximumOperations	35	insufficient-workload-capacity
 nrf52840_static	static	render.maximumPositionedGlyphs	224	insufficient-workload-capacity
@@ -143,7 +143,7 @@ nrf52840_static	static	render.maximumClipDepth	4	insufficient-workload-capacity
 nrf52840_static	static	renderWorkspace.maximumSemanticScopes	98	insufficient-workload-capacity
 nrf52840_static	static	renderWorkspace.maximumLayoutScopes	98	insufficient-workload-capacity
 nrf52840_static	static	renderWorkspace.maximumTraversalDepth	13	insufficient-workload-capacity
-nrf52840_static	static	renderWorkspace.maximumTextLines	21	insufficient-workload-capacity
+nrf52840_static	static	renderWorkspace.maximumTextLines	128	insufficient-workload-capacity
 nrf52840_static	static	renderSink.maximumOperations	35	insufficient-workload-capacity
 nrf52840_static	static	renderSink.maximumPositionedGlyphs	224	insufficient-workload-capacity
 nrf52840_static	static	maximumOrdinaryRenderOperations	30	insufficient-workload-capacity

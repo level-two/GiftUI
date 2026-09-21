@@ -1040,7 +1040,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       The descriptor and four generated presets now carry that exact value;
       the common Static layout validator accepts both the normal hierarchy
       and the 214-scalar maximal diagnostic. The full layout/render transaction
-      remains open. No diagnostic truncation is permitted.
+      remains open. The follow-up full Dynamic Pi pipeline test measured 27
+      lines for 96 printable `W` bytes and 117 lines for 96 LF bytes; the
+      approved SPEC-015 line ceiling is now 128 in all four presets. No
+      diagnostic truncation is permitted.
       The common Static
       profile binding now also lends each
       generated region only during its registered retained or attempt-local

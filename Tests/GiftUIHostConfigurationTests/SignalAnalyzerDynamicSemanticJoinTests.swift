@@ -1225,6 +1225,49 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(model.state.visibleWindow == .oneSecond)
 }
 
+@Test func dynamicPiPipelineRendersFullDiagnosticWithinAmendedPreset() throws {
+    #if GIFTUI_DYNAMIC_PROFILE
+        let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+        #expect(preset.runtimeLimits.layout.maximumTextLines == 128)
+        #expect(preset.runtimeLimits.renderWorkspace.maximumTextLines == 128)
+        let cases: [(UInt8, UInt16, UInt16)] = [
+            (87, 27, 214),
+            (10, 117, 118),
+        ]
+        for (byte, expectedLines, expectedGlyphs) in cases {
+            var pipeline = try #require(
+                DynamicSignalAnalyzerPresentationPipeline(
+                    limits: preset.runtimeLimits,
+                    maximumRecordedTraversalIdentities: 203,
+                    logicalWidth: preset.raster.logicalWidth,
+                    logicalHeight: preset.raster.logicalHeight
+                )
+            )
+            let model = makeSemanticJoinModel()
+            let diagnostic = try #require(
+                SignalAnalyzerDiagnostic(exactUTF8: [UInt8](repeating: byte, count: 96))
+            )
+            #expect(
+                model.apply(.acquisitionState(.failed(diagnostic))) == .applied(changed: true)
+            )
+
+            let result = pipeline.derive(
+                model: model,
+                cycle: RunCycleID(rawValue: 1),
+                semanticRevision: SemanticRevision(rawValue: 1)
+            )
+            guard case .success(let summary) = result else {
+                Issue.record("full diagnostic pipeline failed for byte \(byte): \(result)")
+                continue
+            }
+            #expect(summary.layout.textScalarCount == 214)
+            #expect(summary.layout.textLineCount == expectedLines)
+            #expect(summary.layout.positionedGlyphCount == expectedGlyphs)
+            #expect(summary.render.positionedGlyphCount <= expectedGlyphs)
+        }
+    #endif
+}
+
 @Test func signalAnalyzerDynamicSemanticJoinMeasuresRealHierarchy() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     let measurementLimits = SemanticExpansionLimits(

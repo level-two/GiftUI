@@ -1,6 +1,6 @@
-# generated from ad9eb32a6e2e13a89cc3878a270a0ad325d9447a4f0b542df973297e699753c1
+# generated from a613de50915826c1984a8c4a0277902a4489c029d4c1128fd5c9e85095234546
 schema_version	3
-descriptor_sha256	ad9eb32a6e2e13a89cc3878a270a0ad325d9447a4f0b542df973297e699753c1
+descriptor_sha256	a613de50915826c1984a8c4a0277902a4489c029d4c1128fd5c9e85095234546
 host_kind	2
 profile	dynamic
 semantic_node_occurrences	48
@@ -8,7 +8,7 @@ semantic_structural_occurrences	126
 render_semantic_scope_occurrences	98
 layout_scope_occurrences	98
 maximum_render_traversal_depth	13
-render_text_line_count	21
+render_text_line_count	128
 positioned_glyph_count	224
 ordinary_render_operations	30
 input_events_per_opportunity	6
