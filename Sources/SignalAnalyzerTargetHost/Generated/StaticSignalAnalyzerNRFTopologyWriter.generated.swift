@@ -222,6 +222,75 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         return true
     }
 
+    /// Fixed palette and label styles only. Status, channel levels, and
+    /// disabled-control passthroughs are evaluated from live model state.
+    package static func populateInvariantStyles(
+        scopeCount: UInt16,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
+        let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+        guard region.count == table.regionByteCount,
+            scopeCount == 96 || scopeCount == 98
+        else { return false }
+        var ordinal: UInt16 = 0
+        while ordinal < scopeCount {
+            if invariantStyle(at: ordinal) != nil {
+                guard let record = table.scope(at: ordinal, in: region),
+                    record.kind == .modifier,
+                    record.flags == 0,
+                    record.auxiliary == 0,
+                    record.payload0 == 0,
+                    record.payload1 == 0,
+                    record.payload2 == 0
+                else { return false }
+            }
+            ordinal += 1
+        }
+        ordinal = 0
+        while ordinal < scopeCount {
+            if let style = invariantStyle(at: ordinal) {
+                guard let old = table.scope(at: ordinal, in: region),
+                    table.storeScope(
+                        StaticSignalAnalyzerNRFScopeRecord(
+                            identity: old.identity,
+                            parent: old.parent,
+                            firstChild: old.firstChild,
+                            nextSibling: old.nextSibling,
+                            kind: .modifier,
+                            flags: style.flags,
+                            auxiliary: 0,
+                            payload0: style.color,
+                            payload1: 0,
+                            payload2: 0
+                        ),
+                        at: ordinal,
+                        in: region
+                    )
+                else { return false }
+            }
+            ordinal += 1
+        }
+        return true
+    }
+
+    private static func invariantStyle(at ordinal: UInt16) -> (
+        flags: UInt8, color: UInt32
+    )? {
+        switch ordinal {
+        case 0: (25, 0)
+        case 5, 35, 44, 53, 62, 73, 77, 80, 85, 89, 93:
+            (17, 16_777_215)
+        case 7, 24, 27, 30: (17, 8_421_504)
+        case 10: (25, 2_105_376)
+        case 14: (25, 1_052_688)
+        case 21: (25, 1_579_032)
+        case 32, 41, 50, 59: (25, 526_344)
+        case 68: (25, 3_158_064)
+        case 96: (17, 255)
+        default: nil
+        }
+    }
+
     private static func invariantModifierOrdinal(at slot: UInt16) -> UInt16 {
         switch slot {
         case 0: 1

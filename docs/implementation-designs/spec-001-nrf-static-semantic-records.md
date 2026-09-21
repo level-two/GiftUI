@@ -197,13 +197,16 @@ shape and repeated binding, while leaving text and state-dependent modifier
 payloads to the next stage.
 It now also fills the thirteen nonzero invariant stack and spacer payloads
 shared by both variants. Host oracle comparison covers every primitive
-record, including zero-valued proxies. This leaves text, modifier, and
-state-dependent values unfilled; a shape-plus-bindings table is not yet a
+record, including zero-valued proxies. This leaves text and state-dependent
+values unfilled; a shape-plus-bindings table is not yet a
 publishable semantic result.
 The writer now also fills all fifteen invariant padding and frame modifier
 records. Host oracle comparison covers their exact packed flags, edges,
-alignment, dimensions, and render scope in both variants. Passthrough color
-and disabled-action modifiers remain live model-dependent writer work.
+alignment, dimensions, and render scope in both variants. The writer also
+fills twenty-five fixed passthrough styles: screen/panel backgrounds, fixed
+labels, and diagnostic red. Host oracle comparison covers each exact packed
+color and scope. Status foreground, channel level colors, and disabled-control
+flags remain live model-dependent writer work.
 If any required current payload cannot be encoded in the three words, this
 packing must be revised within the *same* 3,024-byte bound and revalidated;
 it is not permission to truncate a modifier or alter the portable hierarchy.

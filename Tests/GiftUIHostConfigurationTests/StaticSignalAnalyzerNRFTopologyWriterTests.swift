@@ -56,6 +56,20 @@ import Testing
             )
             #expect(table.scope(at: 18, in: region)?.payload1 == 100)
             #expect(
+                StaticSignalAnalyzerNRFTopologyWriter.populateInvariantStyles(
+                    scopeCount: count,
+                    in: region
+                )
+            )
+            #expect(table.scope(at: 5, in: region)?.payload0 == 16_777_215)
+            #expect(table.scope(at: 12, in: region)?.flags == 0)
+            #expect(
+                !StaticSignalAnalyzerNRFTopologyWriter.populateInvariantStyles(
+                    scopeCount: count,
+                    in: region
+                )
+            )
+            #expect(
                 !StaticSignalAnalyzerNRFTopologyWriter.populateInvariantLayoutModifiers(
                     scopeCount: count,
                     in: region
