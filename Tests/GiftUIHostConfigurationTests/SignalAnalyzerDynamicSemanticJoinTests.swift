@@ -1279,6 +1279,7 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(storage.canvasOccurrenceCount == 5)
     #expect(storage.hasPublishedResult)
     #expect(root.isActive)
+    verifyPackedNRFRenderProjection(of: storage, expectedScalars: 117)
 }
 
 @Test func signalAnalyzerDynamicSemanticJoinMeasuresDiagnosticHierarchy() throws {
@@ -1331,6 +1332,7 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     let diagnosticTextScalars = semanticTextScalarCount(in: storage)
     #expect(diagnosticTextScalars == 129)
     #expect(storage.canvasOccurrenceCount == 5)
+    verifyPackedNRFRenderProjection(of: storage, expectedScalars: 129)
 
     var foregrounds: [Color: UInt16] = [:]
     var backgrounds: [Color: UInt16] = [:]
@@ -1862,4 +1864,134 @@ private func semanticTextScalarCount(
         ordinal += 1
     }
     return total
+}
+
+private struct PackedNRFOracleNode {
+    let identity: DynamicSemanticIdentity
+    let parent: UInt16
+    var firstChild: UInt16 = UInt16.max
+    var nextSibling: UInt16 = UInt16.max
+}
+
+/// Prove the portable hierarchy's actual render tree and text fit the exact
+/// fixed table. This host oracle does not generate production source or claim
+/// the remaining modifier/layout payloads are encoded.
+private func verifyPackedNRFRenderProjection(
+    of storage: DynamicSemanticHostStorage,
+    expectedScalars: UInt16
+) {
+    let render = storage.renderView
+    var nodes: [PackedNRFOracleNode] = []
+
+    func appendNode(
+        _ identity: DynamicSemanticIdentity,
+        parent: UInt16
+    ) {
+        let ordinal = UInt16(nodes.count)
+        nodes.append(PackedNRFOracleNode(identity: identity, parent: parent))
+        guard let childCount = render.childCount(of: identity) else {
+            Issue.record("render scope has no child count")
+            return
+        }
+        var previous: UInt16?
+        for index in 0 ..< childCount {
+            guard let child = render.child(of: identity, at: index) else {
+                Issue.record("render scope has missing child")
+                return
+            }
+            let childOrdinal = UInt16(nodes.count)
+            if let previous {
+                nodes[Int(previous)].nextSibling = childOrdinal
+            } else {
+                nodes[Int(ordinal)].firstChild = childOrdinal
+            }
+            appendNode(child, parent: ordinal)
+            previous = childOrdinal
+        }
+    }
+
+    appendNode(render.rootIdentity, parent: UInt16.max)
+    let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
+    #expect(nodes.count == Int(storage.scopeCount))
+    #expect(nodes.count == Int(render.semanticScopeCount))
+    #expect(nodes.count <= Int(table.maximumScopeCount))
+    guard nodes.count == Int(storage.scopeCount),
+        nodes.count <= Int(table.maximumScopeCount)
+    else { return }
+
+    var bytes = [UInt8](repeating: 0, count: table.regionByteCount)
+    bytes.withUnsafeMutableBytes { region in
+        var scalarOrdinal: UInt16 = 0
+        for (index, node) in nodes.enumerated() {
+            let primitive = storage.primitive(at: node.identity)
+            let kind: StaticSignalAnalyzerNRFScopeKind
+            switch primitive {
+            case .proxy: kind = .proxy
+            case .vStack: kind = .vStack
+            case .hStack: kind = .hStack
+            case .zStack: kind = .zStack
+            case .spacer: kind = .spacer
+            case .text: kind = .text
+            case .canvas: kind = .canvas
+            case nil: kind = .modifier
+            }
+            let textStart = scalarOrdinal
+            let textCount = storage.textScalarCount(of: node.identity) ?? 0
+            if textCount > 0 {
+                for textIndex in 0 ..< textCount {
+                    guard
+                        let scalar = storage.textScalar(
+                            of: node.identity,
+                            at: textIndex
+                        )
+                    else {
+                        Issue.record("text scope has missing scalar")
+                        return
+                    }
+                    #expect(table.storeScalar(scalar, at: scalarOrdinal, in: region))
+                    scalarOrdinal += 1
+                }
+            }
+            let record = StaticSignalAnalyzerNRFScopeRecord(
+                identity: UInt16(index + 1),
+                parent: node.parent,
+                firstChild: node.firstChild,
+                nextSibling: node.nextSibling,
+                kind: kind,
+                flags: 0,
+                auxiliary: 0,
+                payload0: UInt32(textStart),
+                payload1: UInt32(textCount),
+                payload2: 0
+            )
+            #expect(table.storeScope(record, at: UInt16(index), in: region))
+            #expect(table.scope(at: UInt16(index), in: region) == record)
+        }
+        #expect(scalarOrdinal == expectedScalars)
+        var actionOrdinal: UInt16 = 0
+        while actionOrdinal < table.actionCount {
+            guard let action = storage.action(at: actionOrdinal),
+                let index = nodes.firstIndex(where: { $0.identity == action.identity })
+            else {
+                Issue.record("action has no projected scope")
+                return
+            }
+            #expect(
+                table.storeActionScope(
+                    UInt16(index),
+                    at: actionOrdinal,
+                    in: region
+                )
+            )
+            #expect(table.actionScope(at: actionOrdinal, in: region) == UInt16(index))
+            actionOrdinal += 1
+        }
+        #expect(
+            table.validateTopology(
+                scopeCount: UInt16(nodes.count),
+                scalarCount: scalarOrdinal,
+                in: region
+            )
+        )
+    }
 }

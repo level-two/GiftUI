@@ -591,6 +591,13 @@ fixtures reject duplicate identity, parent cycles, orphan or duplicate links,
 wrong parents, surrogate scalar values, and targets outside the used scope
 count. The production candidate does not yet call this validator because it
 does not yet contain a generated complete table.
+The host Dynamic semantic oracle now projects each real portable render tree
+into that codec: the normal variant fills 96 scopes and 117 text scalars, the
+diagnostic variant 98 scopes and 129 text scalars. Both round-trip every scope,
+map all six actual action identities, and pass the linked-tree validator.
+This is capacity/topology evidence, not generated firmware semantics: the
+fixture uses traversal-local IDs and does not encode the remaining per-kind
+modifier/layout/render payloads.
 
 The shared Static observable-model handle now accepts a typed-throwing scoped
 borrow. This lets the generated trace case invoke the existing

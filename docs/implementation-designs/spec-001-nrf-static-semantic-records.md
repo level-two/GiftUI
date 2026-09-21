@@ -118,7 +118,14 @@ variant, and 98 scopes and 129 text scalars for the diagnostic variant. The
 workload and leaves ten scalars of headroom. A render-only structural path is
 projected to its nearest concrete
 scope using the same semantics as the Dynamic oracle. Source-path identity
-stability is checked across both variants, especially for all six controls.
+stability must be checked across both variants, especially for all six controls.
+
+The host oracle now traverses the actual Dynamic render view in root-first
+order and writes both variants into the packed codec. It round-trips each
+scope, records all text scalars and six action-to-scope links, and passes the
+whole-topology validator. This verifies table capacity and linkage against
+the portable hierarchy, but the fixture's ordinal-based identities are not
+production stable IDs, and it does not encode modifier/layout payload words.
 If any required current payload cannot be encoded in the three words, this
 packing must be revised within the *same* 3,024-byte bound and revalidated;
 it is not permission to truncate a modifier or alter the portable hierarchy.
