@@ -112,6 +112,7 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
             inputs: inputs,
             revision: revision,
             requireCompleteTable: false,
+            requireGeneratedTopology: false,
             in: &profile
         )
     }
@@ -125,6 +126,21 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
             inputs: inputs,
             revision: revision,
             requireCompleteTable: true,
+            requireGeneratedTopology: false,
+            in: &profile
+        )
+    }
+
+    package static func publishGeneratedCandidate(
+        inputs: borrowing StaticSignalAnalyzerNRFGeneratedPresentationInputs,
+        revision: UInt32,
+        in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
+    ) -> Bool {
+        publishCandidate(
+            inputs: inputs,
+            revision: revision,
+            requireCompleteTable: true,
+            requireGeneratedTopology: true,
             in: &profile
         )
     }
@@ -133,6 +149,7 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
         inputs: borrowing StaticSignalAnalyzerNRFGeneratedPresentationInputs,
         revision: UInt32,
         requireCompleteTable: Bool,
+        requireGeneratedTopology: Bool,
         in profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
     ) -> Bool {
         guard revision > 0 else { return false }
@@ -146,6 +163,8 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
                 header.expansion == expected.expansion,
                 (!requireCompleteTable
                     || completeTableSummary(in: candidate, header: header) != nil),
+                (!requireGeneratedTopology
+                    || generatedTableSummary(in: candidate, header: header) != nil),
                 canPublish(revision: revision, in: published)
             else { return false }
             published.baseAddress!.copyMemory(
@@ -170,6 +189,41 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
             guard let header = decodeHeader(from: region) else { return nil }
             return completeTableSummary(in: region, header: header)
         } ?? nil
+    }
+
+    package static func generatedTableSummary(
+        in family: RuntimeStorageFamily,
+        profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
+    ) -> StaticSignalAnalyzerNRFPackedTableSummary? {
+        guard family == .semanticCandidate || family == .semanticPublished else {
+            return nil
+        }
+        return profile.withRegion(family) { region in
+            guard let header = decodeHeader(from: region) else { return nil }
+            return generatedTableSummary(in: region, header: header)
+        } ?? nil
+    }
+
+    private static func generatedTableSummary(
+        in region: UnsafeMutableRawBufferPointer,
+        header: StaticSignalAnalyzerNRFSemanticRegionHeader
+    ) -> StaticSignalAnalyzerNRFPackedTableSummary? {
+        guard let table = completeTableSummary(in: region, header: header),
+            let fingerprint = StaticSignalAnalyzerNRFPackedSemanticRecords.topologyFingerprint(
+                in: region
+            )
+        else { return nil }
+        switch header.variant {
+        case .normal:
+            guard fingerprint
+                == StaticSignalAnalyzerNRFPackedSemanticRecords.normalTopologyFingerprint
+            else { return nil }
+        case .diagnostic:
+            guard fingerprint
+                == StaticSignalAnalyzerNRFPackedSemanticRecords.diagnosticTopologyFingerprint
+            else { return nil }
+        }
+        return table
     }
 
     private static func completeTableSummary(

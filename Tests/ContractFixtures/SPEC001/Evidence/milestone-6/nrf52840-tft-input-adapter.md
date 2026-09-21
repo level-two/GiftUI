@@ -637,6 +637,8 @@ The real-tree oracle now pins complete source topology fingerprints for normal
 and diagnostic variants, covering every stable scope ID, tree link, and kind.
 This catches structural source drift before a generated Static writer is
 accepted; it is not a publication integrity checksum or an embedded run.
+The generated-result acceptance path rejects the synthetic complete-table
+fixture even though its checksums, counts, and generic topology are valid.
 The enclosing semantic-region owner now has a separate complete-candidate
 staging and publication path. A host fixture populates a synthetic 96-scope
 table directly in the borrowed candidate region, seals it, refreshes the

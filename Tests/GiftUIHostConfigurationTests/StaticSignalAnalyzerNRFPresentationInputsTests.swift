@@ -338,6 +338,19 @@ import Testing
                 ) == expected
             )
             #expect(
+                StaticSignalAnalyzerNRFSemanticRegionStore.generatedTableSummary(
+                    in: .semanticCandidate,
+                    profile: &profile
+                ) == nil
+            )
+            #expect(
+                !StaticSignalAnalyzerNRFSemanticRegionStore.publishGeneratedCandidate(
+                    inputs: inputs,
+                    revision: 1,
+                    in: &profile
+                )
+            )
+            #expect(
                 profile.withRegion(.semanticCandidate) { region in
                     let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
                     return table.hasDistinctActionScopes(in: region)

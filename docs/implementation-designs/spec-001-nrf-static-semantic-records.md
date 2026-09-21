@@ -147,8 +147,11 @@ unique IDs in each variant and pins identical IDs for all six controls and
 five Canvas occurrences across variants. A generated fingerprint now pins
 every scope's stable ID, parent/child/sibling relation, and kind in both
 variants; text scalars and state-dependent payloads are deliberately excluded.
-This verifies current table
-capacity, linkage, and stable reference occurrences. The production modifier
+This verifies current table capacity, linkage, and stable reference
+occurrences. The generated-result acceptance path now requires the variant's
+complete topology fingerprint
+before treating a sealed table as a generated hierarchy. The synthetic
+complete-table storage fixture deliberately fails that gate. The production modifier
 payload codec now round-trips every layout/render modifier in both actual
 hierarchies within the three record words: passthrough style, padding, fixed
 frame, and the currently used flexible frame. It rejects padding-insets,
