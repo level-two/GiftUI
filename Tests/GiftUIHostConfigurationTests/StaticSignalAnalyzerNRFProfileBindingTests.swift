@@ -136,11 +136,13 @@ private struct StaticNRFBindingMetadata:
         let beforePair = binding.withSemanticRegions { _, _ in true }
         let beforeLayoutPair = binding.withLayoutRegions { _, _ in true }
         let beforeLayoutJoin = binding.withSemanticCandidateAndLayoutRegions { _, _, _ in true }
+        let beforePresentation = binding.withPresentationRegions { _, _, _, _, _ in true }
         let retained = binding.withRegion(.semanticPublished) { $0.count }
         #expect(beforeAttempt == nil)
         #expect(beforePair == nil)
         #expect(beforeLayoutPair == nil)
         #expect(beforeLayoutJoin == nil)
+        #expect(beforePresentation == nil)
         #expect(retained == 3_024)
 
         let active = ExecutionContext(
@@ -192,6 +194,22 @@ private struct StaticNRFBindingMetadata:
             return true
         }
         #expect(layoutJoin == true)
+        let presentation = binding.withPresentationRegions {
+            semantic, layout, render, path, plan in
+            #expect(semantic.count == 3_024)
+            #expect(layout.count == 3_136)
+            #expect(render.count == 4_704)
+            #expect(path.count == 3_280)
+            #expect(plan.count == 13_536)
+            #expect(semantic.baseAddress != layout.baseAddress)
+            #expect(layout.baseAddress != render.baseAddress)
+            #expect(render.baseAddress != path.baseAddress)
+            #expect(path.baseAddress != plan.baseAddress)
+            path[0] = 0xC4
+            plan[0] = 0xD5
+            return true
+        }
+        #expect(presentation == true)
 
         let idle = ExecutionContext(
             cycle: nil,
@@ -204,14 +222,18 @@ private struct StaticNRFBindingMetadata:
         let afterPair = binding.withSemanticRegions { _, _ in true }
         let afterLayoutPair = binding.withLayoutRegions { _, _ in true }
         let afterLayoutJoin = binding.withSemanticCandidateAndLayoutRegions { _, _, _ in true }
+        let afterPresentation = binding.withPresentationRegions { _, _, _, _, _ in true }
         #expect(afterAttempt == nil)
         #expect(afterPair == nil)
         #expect(afterLayoutPair == nil)
         #expect(afterLayoutJoin == nil)
+        #expect(afterPresentation == nil)
         #expect(storage[0] == 0)
         #expect(storage[3_024] == 0xA5)
         #expect(storage[6_048] == 0)
         #expect(storage[9_184] == 0)
+        #expect(storage[14_048] == 0)
+        #expect(storage[17_328] == 0)
 
         binding.quiesce()
         let afterTeardown = binding.withRegion(.semanticPublished) { $0.count }
