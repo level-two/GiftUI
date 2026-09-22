@@ -745,3 +745,9 @@ and 96-byte ASCII, wide-printable, and multiline diagnostic trees. The profile
 borrow rejects outside an active opportunity and clears all three attempt-local
 regions at finish. This is hardware-free layout evidence; render lowering,
 physical display, firmware linkage, and connected-target evidence remain open.
+
+The Static Drawing join now has an allocation-free live-path store over the
+exact 3,280-byte attempt-local path region. Host tests prove scoped move/line
+construction, two subpaths, signed coordinates, the first-excess 203rd-point
+boundary, and complete reset. The 13,536-byte plan, five-Canvas derivation,
+render production, and firmware linkage remain open.

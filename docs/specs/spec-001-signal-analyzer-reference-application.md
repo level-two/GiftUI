@@ -1939,8 +1939,11 @@ This section is non-authoritative.
   describes the proposed fixed-region representation for T6.8 without changing
   this Specification's contract or claiming the semantic pipeline is complete.
 - [nRF Static Layout Records Implementation Design](../implementation-designs/spec-001-nrf-static-layout-records.md)
-  drafts the replaceable packed workspace/result representation for T6.8
-  without changing the approved capacities or claiming layout completion.
+  explains the replaceable packed workspace/result representation for T6.8;
+  host layout evidence does not claim embedded presentation completion.
+- [nRF Static Drawing Records Implementation Design](../implementation-designs/spec-001-nrf-static-drawing-records.md)
+  explains the replaceable fixed-region path and Drawing-plan realization for
+  T6.8 without changing the approved Drawing contract or capacities.
 - [SPEC-001 Conformance Report](../conformance/spec-001-conformance.md)
   maps all 45 criteria and preserves the open connected-hardware gates.
 

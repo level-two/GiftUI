@@ -1121,6 +1121,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       scratch tail of the same render region; host tests prove visit/foreground
       bounds and isolation from the published layout records. Render preflight
       and operation production remain open.
+      The next fixed-region Drawing join follows the
+      [nRF Static Drawing Records design](../implementation-designs/spec-001-nrf-static-drawing-records.md).
+      Its first production slice implements the exact 3,280-byte live-path
+      region and passes scoped builder, signed point, subpath, first-excess,
+      and reset host tests. The plan region and five-Canvas derivation remain
+      open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 
