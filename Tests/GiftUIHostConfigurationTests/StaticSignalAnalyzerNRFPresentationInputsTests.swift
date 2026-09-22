@@ -616,6 +616,35 @@ import Testing
                     #expect(sink.renderView.layoutScopeCount == expectedScopes)
                     #expect(sink.renderView.bounds(of: semanticView.rootIdentity) != nil)
                     guard
+                        let occurrences = StaticSignalAnalyzerNRFInteractionOccurrences(
+                            semanticRegion: semanticRegion,
+                            layout: sink.renderView
+                        )
+                    else {
+                        Issue.record("generated action occurrences did not resolve")
+                        return false
+                    }
+                    #expect(occurrences.interactionOccurrenceCount == 6)
+                    #expect(occurrences.interactionOccurrence(at: 6) == nil)
+                    for index: UInt16 in 0 ..< 6 {
+                        guard let occurrence = occurrences.interactionOccurrence(at: index),
+                            let actionOrdinal =
+                                StaticSignalAnalyzerNRFPackedSemanticRecords
+                                .actionScope(at: index, in: semanticRegion),
+                            let action = StaticSignalAnalyzerNRFPackedSemanticRecords.scope(
+                                at: actionOrdinal, in: semanticRegion
+                            )
+                        else {
+                            Issue.record("generated action occurrence \(index) is missing")
+                            return false
+                        }
+                        #expect(occurrence.identity == UInt32(action.identity))
+                        #expect(occurrence.action.code == index)
+                        #expect(occurrence.paintOrder == index)
+                    }
+                    #expect(occurrences.interactionOccurrence(at: 0)?.isEnabled == true)
+                    #expect(occurrences.interactionOccurrence(at: 1)?.isEnabled == false)
+                    guard
                         var source = StaticSignalAnalyzerNRFCanvasInvocationSource(
                             semanticRegion: semanticRegion, inputs: inputs
                         ),

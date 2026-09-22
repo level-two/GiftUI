@@ -1152,6 +1152,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       streams all four cases into a counting `DrawingOperationSink` in host
       tests; the `A` and `W` measurement paths use the test-only 38-operation
       capacity. A production raster sink and firmware loop remain open.
+      A direct Static interaction occurrence reader now maps six generated
+      action scopes through resolved bounds and ancestor disable modifiers;
+      the four generated hierarchy fixtures verify identities, action codes,
+      paint order, and initial enabled state. Candidate construction and
+      committed interaction publication remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

@@ -791,3 +791,10 @@ and a counting Drawing operation sink. All publish their expected headers and
 five strokes with matching operation and glyph counts; the `A` and `W` cases
 use only the test measurement capacity. This verifies operation production,
 not the production raster endpoint or connected firmware loop.
+
+The generated Static action reader now resolves six occurrence identities,
+action codes, paint order, bounds, clips, and inherited disable modifiers
+directly from the borrowed semantic candidate and published layout. Four
+hierarchy fixtures check the exact mapping and initial Start/Stop enabled
+state. Candidate construction and committed interaction publication remain
+open.
