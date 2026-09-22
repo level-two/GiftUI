@@ -29,6 +29,13 @@ package protocol StaticProfileStorageRegions: ~Copyable {
             UnsafeMutableRawBufferPointer
         ) throws -> Result
     ) rethrows -> Result
+    mutating func withSemanticCandidateAndLayoutRegions<Result>(
+        _ body: (
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer
+        ) throws -> Result
+    ) rethrows -> Result
     mutating func resetAttemptRegions()
     mutating func resetAllRegions()
 }
@@ -268,6 +275,19 @@ where
     ) rethrows -> Result? {
         guard lifetimeState == .attemptActive else { return nil }
         return try regions.withLayoutRegions(body)
+    }
+
+    /// Lends one semantic candidate and both disjoint layout regions during
+    /// the same attempt, without escaping or copying the generated table.
+    package mutating func withSemanticCandidateAndLayoutRegions<Result>(
+        _ body: (
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer
+        ) throws -> Result
+    ) rethrows -> Result? {
+        guard lifetimeState == .attemptActive else { return nil }
+        return try regions.withSemanticCandidateAndLayoutRegions(body)
     }
 
     package mutating func stageCanvas<Identity>(

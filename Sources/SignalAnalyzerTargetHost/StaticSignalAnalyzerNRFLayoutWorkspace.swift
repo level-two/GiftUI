@@ -143,7 +143,6 @@ package struct StaticSignalAnalyzerNRFLayoutWorkspace: LayoutWorkspace {
     ) -> Bool {
         guard isLayoutActive, positionedGlyphCount < maximumPositionedGlyphs,
             scopeIndex(for: glyph.identity) != nil,
-            lineRecord(identity: glyph.identity, lineIndex: glyph.lineIndex) != nil,
             glyph.instance == referenceInstance, glyph.clip == zeroRect,
             glyph.glyphIndex
                 == nextGlyphIndex(

@@ -581,6 +581,40 @@ import Testing
                         return true
                     }
                 #expect(candidatePairedRead)
+                let resolvedLayoutRead = profile.withSemanticCandidateAndLayoutRegions {
+                    semanticRegion, layoutRegion, renderRegion in
+                    guard
+                        let semanticView = StaticSignalAnalyzerNRFUTF8LayoutView(
+                            in: semanticRegion
+                        ),
+                        var workspace = StaticSignalAnalyzerNRFLayoutWorkspace(
+                            scopes: layoutRegion, text: renderRegion
+                        ),
+                        var sink = StaticSignalAnalyzerNRFResolvedLayoutStorage(
+                            scopes: layoutRegion, text: renderRegion
+                        )
+                    else { return false }
+                    let packedLimits = GeneratedSignalAnalyzerPresets.nrf52840Static()
+                        .runtimeLimits.layout
+                    let result = layout(
+                        semantic: semanticView,
+                        metrics: GiftUIReferenceTextResources.targetPackage.metrics,
+                        proposal: ProposedSize(width: 480, height: 320)!,
+                        limits: packedLimits,
+                        workspace: &workspace,
+                        sink: &sink
+                    )
+                    guard case .success(let layoutSummary) = result else {
+                        Issue.record("generated Static hierarchy did not resolve layout: \(result)")
+                        return false
+                    }
+                    #expect(layoutSummary.scopeCount == expectedScopes)
+                    #expect(sink.hasPublishedResult)
+                    #expect(sink.renderView.layoutScopeCount == expectedScopes)
+                    #expect(sink.renderView.bounds(of: semanticView.rootIdentity) != nil)
+                    return true
+                }
+                #expect(resolvedLayoutRead == true)
                 #expect(inputs.stageGeneratedSemanticCandidate(in: &profile) == nil)
                 #expect(inputs.publishSemanticCandidate(revision: 1, in: &profile) == nil)
                 #expect(

@@ -135,10 +135,12 @@ private struct StaticNRFBindingMetadata:
         let beforeAttempt = binding.withRegion(.semanticCandidate) { $0.count }
         let beforePair = binding.withSemanticRegions { _, _ in true }
         let beforeLayoutPair = binding.withLayoutRegions { _, _ in true }
+        let beforeLayoutJoin = binding.withSemanticCandidateAndLayoutRegions { _, _, _ in true }
         let retained = binding.withRegion(.semanticPublished) { $0.count }
         #expect(beforeAttempt == nil)
         #expect(beforePair == nil)
         #expect(beforeLayoutPair == nil)
+        #expect(beforeLayoutJoin == nil)
         #expect(retained == 3_024)
 
         let active = ExecutionContext(
@@ -177,6 +179,19 @@ private struct StaticNRFBindingMetadata:
             return layout[0] != render[0]
         }
         #expect(layoutPair == true)
+        let layoutJoin = binding.withSemanticCandidateAndLayoutRegions {
+            semantic, layout, render in
+            #expect(semantic.count == 3_024)
+            #expect(layout.count == 3_136)
+            #expect(render.count == 4_704)
+            #expect(semantic[0] == 0xA5)
+            #expect(layout[0] == 0x5A)
+            #expect(render[0] == 0xC3)
+            #expect(semantic.baseAddress != layout.baseAddress)
+            #expect(layout.baseAddress != render.baseAddress)
+            return true
+        }
+        #expect(layoutJoin == true)
 
         let idle = ExecutionContext(
             cycle: nil,
@@ -188,9 +203,11 @@ private struct StaticNRFBindingMetadata:
         let afterAttempt = binding.withRegion(.semanticCandidate) { $0.count }
         let afterPair = binding.withSemanticRegions { _, _ in true }
         let afterLayoutPair = binding.withLayoutRegions { _, _ in true }
+        let afterLayoutJoin = binding.withSemanticCandidateAndLayoutRegions { _, _, _ in true }
         #expect(afterAttempt == nil)
         #expect(afterPair == nil)
         #expect(afterLayoutPair == nil)
+        #expect(afterLayoutJoin == nil)
         #expect(storage[0] == 0)
         #expect(storage[3_024] == 0xA5)
         #expect(storage[6_048] == 0)

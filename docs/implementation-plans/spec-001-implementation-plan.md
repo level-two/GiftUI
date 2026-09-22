@@ -1113,8 +1113,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       duplicate rejection, and reset. An in-place resolved-layout sink now
       verifies workspace records, publishes only a complete result, and lends
       a checked view until the next layout acquisition; focused host tests
-      cover success and refusal. The generated hierarchy's full common layout
-      pass and firmware join remain open.
+      cover success and refusal. An attempt-scoped three-region borrow now
+      runs the generated normal and three 96-byte diagnostic hierarchies
+      through the common full layout pass, including in-place publication.
+      Render/Canvas consumption and firmware join remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

@@ -121,8 +121,14 @@ common `publishLayout` cleanup then clears the depth stack and counters while
 preserving the published records for the rest of the active opportunity.
 Acquiring another layout clears both regions and invalidates the former view.
 Focused host tests prove publication, field queries, reuse invalidation, and
-refusal without partial publication. The generated hierarchy has not yet run
-through this common layout transaction.
+refusal without partial publication. The common Static profile now lends the
+semantic candidate and both disjoint layout regions in one attempt-scoped
+borrow. A host fixture runs the generated normal hierarchy and the 96-byte
+ASCII, wide-printable, and multiline diagnostic hierarchies through the common
+validation, measurement, placement, and in-place publication path. The
+workspace admits glyphs before their line records are finalized, matching the
+common measure order; it derives line and glyph clips after placement. The
+same package source is not yet linked into the embedded firmware pipeline.
 
 The remaining 416 bytes can hold two 98-scope visit sets and a bounded
 13-depth foreground stack for render preflight. Exact offsets and record

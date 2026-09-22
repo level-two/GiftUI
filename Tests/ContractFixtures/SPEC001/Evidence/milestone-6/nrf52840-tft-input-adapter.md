@@ -737,3 +737,11 @@ opportunity begin activates attempt storage, opportunity finish clears exactly
 and tears the binding down. Another target's valid assembly report rejects
 before construction. The generated semantic staging, render presentation, and
 firmware linkage remain open. No board was flashed.
+
+The generated Static semantic candidate now completes common layout validation,
+measurement, placement, and in-place publication over the exact 3,136-byte
+layout and 4,704-byte render regions. The host fixture covers the normal tree
+and 96-byte ASCII, wide-printable, and multiline diagnostic trees. The profile
+borrow rejects outside an active opportunity and clears all three attempt-local
+regions at finish. This is hardware-free layout evidence; render lowering,
+physical display, firmware linkage, and connected-target evidence remain open.
