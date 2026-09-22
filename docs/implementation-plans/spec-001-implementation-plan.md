@@ -1102,8 +1102,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       slice is drafted in the
       [nRF Static Layout Records design](../implementation-designs/spec-001-nrf-static-layout-records.md);
       its first 32-byte scope codec passes exact-region, placement, overflow,
-      duplicate, and corruption tests. The line/glyph store and complete
-      layout/render join remain open.
+      duplicate, and corruption tests. Fixed 16-byte line and 10-byte glyph
+      codecs now pass exact-range and scratch-isolation tests. The workspace,
+      derived clips/indexes, and complete layout/render join remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

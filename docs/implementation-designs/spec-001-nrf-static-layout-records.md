@@ -105,6 +105,9 @@ is derived from stable record order, its instance is the one checked reference
 font, and its clip comes from its line. The append/store methods must verify
 these derivations rather than silently discard supplied fields. `publishLayout`
 then checks line/glyph order and replays them into an in-place validating sink.
+The fixed 16-byte line and 10-byte glyph codecs now prove their byte ranges,
+checked geometry, last-slot access, and untouched scratch tail in host tests;
+font, clip, and glyph-index derivation still belongs to the future workspace.
 
 The remaining 416 bytes can hold two 98-scope visit sets and a bounded
 13-depth foreground stack for render preflight. Exact offsets and record
@@ -160,3 +163,5 @@ stack evidence remain the separate T8.2 gate.
 - [Current Static validation fixture](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFPresentationInputsTests.swift)
 - [Checked scope codec](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLayoutScopeCodec.swift)
 - [Scope codec tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFLayoutScopeCodecTests.swift)
+- [Checked line/glyph codec](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLayoutTextCodec.swift)
+- [Line/glyph codec tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFLayoutTextCodecTests.swift)
