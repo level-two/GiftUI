@@ -6,7 +6,7 @@ status: implementing
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-09-21
+updated: 2026-09-22
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -1938,6 +1938,9 @@ This section is non-authoritative.
 - [nRF Static Semantic Records Implementation Design](../implementation-designs/spec-001-nrf-static-semantic-records.md)
   describes the proposed fixed-region representation for T6.8 without changing
   this Specification's contract or claiming the semantic pipeline is complete.
+- [nRF Static Layout Records Implementation Design](../implementation-designs/spec-001-nrf-static-layout-records.md)
+  drafts the replaceable packed workspace/result representation for T6.8
+  without changing the approved capacities or claiming layout completion.
 - [SPEC-001 Conformance Report](../conformance/spec-001-conformance.md)
   maps all 45 criteria and preserves the open connected-hardware gates.
 

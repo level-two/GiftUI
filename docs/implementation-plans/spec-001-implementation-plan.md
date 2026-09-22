@@ -6,12 +6,13 @@ status: active
 owners:
   - codex
 created: 2026-09-13
-updated: 2026-09-20
+updated: 2026-09-22
 related_design_notes:
   - ../implementation-designs/spec-001-presentation-admission-and-failure.md
   - ../implementation-designs/spec-001-four-host-application-join.md
   - ../implementation-designs/spec-001-connected-target-host-loop.md
   - ../implementation-designs/spec-001-nrf-static-semantic-records.md
+  - ../implementation-designs/spec-001-nrf-static-layout-records.md
 conformance_report: ../conformance/spec-001-conformance.md
 related_future_work: []
 related_explorations: []
@@ -1097,6 +1098,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       [TFT/input adapter evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md).
       The remaining production-stage join is defined by the
       [Connected-Target Host Loop design](../implementation-designs/spec-001-connected-target-host-loop.md).
+      The exact packed workspace/result ownership for the next Static layout
+      slice is drafted in the
+      [nRF Static Layout Records design](../implementation-designs/spec-001-nrf-static-layout-records.md);
+      it requires codec and region-boundary proof before production adoption.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 
