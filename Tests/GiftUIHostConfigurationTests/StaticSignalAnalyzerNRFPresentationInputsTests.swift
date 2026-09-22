@@ -2,10 +2,13 @@ import GiftUI
 import GiftUIDrawing
 import GiftUIExecution
 import GiftUIHostConfiguration
+import GiftUIInteraction
 import GiftUILayout
 import GiftUIReferenceTextResources
 import GiftUIRenderCore
 import GiftUIRenderLowering
+import GiftUIRuntimeCore
+import GiftUIRuntimeStatic
 import SignalAnalyzerDomain
 import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
@@ -666,6 +669,57 @@ import Testing
                     }
                     #expect(occurrences.interactionOccurrence(at: 0)?.isEnabled == true)
                     #expect(occurrences.interactionOccurrence(at: 1)?.isEnabled == false)
+                    let interactionLimits = GeneratedSignalAnalyzerPresets.nrf52840Static()
+                        .runtimeLimits.interaction
+                    var interaction = StaticInteractionState<UInt32>(
+                        candidateRecords: StaticInteractionCandidateStorage(
+                            capacity: interactionLimits.maximumActions
+                        )!,
+                        candidateHitRegions: StaticInteractionHitStorage(
+                            capacity: interactionLimits.maximumHitRegions
+                        )!,
+                        candidateCommittedRecords: StaticInteractionCommittedStorage(
+                            capacity: interactionLimits.maximumActions
+                        )!,
+                        committedRecords: StaticInteractionCommittedStorage(
+                            capacity: interactionLimits.maximumActions
+                        )!,
+                        committedHitRegions: StaticInteractionHitStorage(
+                            capacity: interactionLimits.maximumHitRegions
+                        )!
+                    )
+                    var generations = RuntimeActionGenerationAllocator<UInt32>()
+                    #expect(
+                        StaticSignalAnalyzerNRFInteractionCandidateProducer.build(
+                            occurrences: occurrences,
+                            targetGeneration: ObservableTargetGeneration(rawValue: 1),
+                            limits: interactionLimits,
+                            interaction: &interaction,
+                            generations: &generations
+                        ) == .ready
+                    )
+                    interaction.resolveCandidate(
+                        .commit(PresentationRevision(rawValue: cycle))
+                    )
+                    generations.resolveCandidate(committed: true)
+                    #expect(interaction.committedRevision?.rawValue == cycle)
+                    #expect(interaction.committedRecordCount == 6)
+                    #expect(interaction.committedRecord(at: 0)?.isEnabled == true)
+                    #expect(interaction.committedRecord(at: 1)?.isEnabled == false)
+                    #expect(generations.committedReservationCount == 6)
+                    #expect(
+                        StaticSignalAnalyzerNRFInteractionCandidateProducer.build(
+                            occurrences: occurrences,
+                            targetGeneration: ObservableTargetGeneration(rawValue: 1),
+                            limits: interactionLimits,
+                            interaction: &interaction,
+                            generations: &generations
+                        ) == .ready
+                    )
+                    interaction.resolveCandidate(.discard)
+                    generations.resolveCandidate(committed: false)
+                    #expect(generations.retiredReservationCount == 0)
+                    #expect(interaction.committedRevision?.rawValue == cycle)
                     guard
                         var source = StaticSignalAnalyzerNRFCanvasInvocationSource(
                             semanticRegion: semanticRegion, inputs: inputs

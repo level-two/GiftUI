@@ -1156,9 +1156,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       capacity. A production raster sink and firmware loop remain open.
       A direct Static interaction occurrence reader now maps six generated
       action scopes through resolved bounds and ancestor disable modifiers;
-      the four generated hierarchy fixtures verify identities, action codes,
-      paint order, and initial enabled state. Candidate construction and
-      committed interaction publication remain open.
+      the eight generated hierarchy fixtures verify identities, action codes,
+      paint order, and initial enabled state. A production candidate builder
+      now stages all six bounded records, assigns generations, and permits
+      offer-time commit or discard. Host fixtures commit six records, then
+      rebuild an unchanged candidate without consuming new generations.
+      Joining this builder to the application owner and physical offer remains
+      open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

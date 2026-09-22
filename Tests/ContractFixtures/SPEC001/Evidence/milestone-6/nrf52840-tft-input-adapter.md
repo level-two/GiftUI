@@ -800,4 +800,8 @@ action codes, paint order, bounds, clips, and inherited disable modifiers
 directly from the borrowed semantic candidate and published layout. Eight
 hierarchy fixtures check the exact mapping and initial Start/Stop enabled
 state. Candidate construction and committed interaction publication remain
-open.
+open in the application owner. The focused production candidate builder now
+stages all six records in `StaticInteractionState`, assigns six generations,
+commits them after a simulated accepted offer, then proves that an unchanged
+rebuild preserves those generations before discard. The connected owner must
+still perform this at the real offer boundary.
