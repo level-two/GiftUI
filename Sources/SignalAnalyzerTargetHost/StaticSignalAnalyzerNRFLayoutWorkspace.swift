@@ -214,8 +214,14 @@ package struct StaticSignalAnalyzerNRFLayoutWorkspace: LayoutWorkspace {
     }
 
     package mutating func resetLayout() {
-        scopes.initializeMemory(as: UInt8.self, repeating: 0)
-        text.initializeMemory(as: UInt8.self, repeating: 0)
+        if text[Self.publishedMarkerOffset] == 1 {
+            let stackStart = StaticSignalAnalyzerNRFLayoutTextCodec.scratchOffset
+            text[stackStart ..< (stackStart + Int(maximumDepth) * 2)]
+                .initializeMemory(as: UInt8.self, repeating: 0)
+        } else {
+            scopes.initializeMemory(as: UInt8.self, repeating: 0)
+            text.initializeMemory(as: UInt8.self, repeating: 0)
+        }
         scopeCount = 0
         textLineCount = 0
         positionedGlyphCount = 0
@@ -273,6 +279,9 @@ package struct StaticSignalAnalyzerNRFLayoutWorkspace: LayoutWorkspace {
     private var zeroRect: Rect {
         Rect(origin: Point(x: 0, y: 0), size: Size(width: 0, height: 0)!)!
     }
+
+    package static let publishedMarkerOffset =
+        StaticSignalAnalyzerNRFLayoutTextCodec.scratchOffset + 26
 
     private func intersection(_ a: Rect, _ b: Rect) -> Rect? {
         LayoutGeometry.intersection(a, b)

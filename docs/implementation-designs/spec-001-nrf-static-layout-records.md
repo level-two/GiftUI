@@ -114,8 +114,15 @@ the fixed-region workspace now verifies the reference font, derives text clips
 from placed scope and line bounds, derives glyph indexes from record order, and
 stores its 13-entry scope stack in the reserved scratch tail. Focused host tests
 cover placement, text replacement, duplicate rejection, and complete reset.
-The workspace is not yet connected to the common layout pass or a resolved
-render-layout sink.
+The in-place resolved-layout storage now checks every staged scope, line, and
+glyph against those same packed records. It sets a one-byte publication marker
+in the scratch tail only after complete summary and root verification. The
+common `publishLayout` cleanup then clears the depth stack and counters while
+preserving the published records for the rest of the active opportunity.
+Acquiring another layout clears both regions and invalidates the former view.
+Focused host tests prove publication, field queries, reuse invalidation, and
+refusal without partial publication. The generated hierarchy has not yet run
+through this common layout transaction.
 
 The remaining 416 bytes can hold two 98-scope visit sets and a bounded
 13-depth foreground stack for render preflight. Exact offsets and record

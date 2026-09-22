@@ -1110,8 +1110,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       attempt and clears both on finish. A fixed-region Static layout workspace
       now implements the common workspace protocol over those exact ranges;
       focused host tests prove scoped geometry/text storage, derived fields,
-      duplicate rejection, and reset. The common layout pass, resolved sink,
-      and firmware join remain open.
+      duplicate rejection, and reset. An in-place resolved-layout sink now
+      verifies workspace records, publishes only a complete result, and lends
+      a checked view until the next layout acquisition; focused host tests
+      cover success and refusal. The generated hierarchy's full common layout
+      pass and firmware join remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 
