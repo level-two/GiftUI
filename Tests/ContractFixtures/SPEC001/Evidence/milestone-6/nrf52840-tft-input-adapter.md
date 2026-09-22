@@ -751,3 +751,11 @@ exact 3,280-byte attempt-local path region. Host tests prove scoped move/line
 construction, two subpaths, signed coordinates, the first-excess 203rd-point
 boundary, and complete reset. The 13,536-byte plan, five-Canvas derivation,
 render production, and firmware linkage remain open.
+
+The Static Drawing-plan codec now fixes checked regions for five Canvas slots,
+five stroke headers, 832 translated points, and sixteen subpaths inside the
+existing 13,536-byte profile family. Host tests round-trip the final slot of
+each family, including a signed extreme point, and reject duplicate zero-point
+writes, wrong region length, invalid stroke enums, and reserved-byte
+corruption. This is storage evidence only; plan publication and Canvas
+derivation remain open.

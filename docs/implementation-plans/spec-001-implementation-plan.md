@@ -1125,7 +1125,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       [nRF Static Drawing Records design](../implementation-designs/spec-001-nrf-static-drawing-records.md).
       Its first production slice implements the exact 3,280-byte live-path
       region and passes scoped builder, signed point, subpath, first-excess,
-      and reset host tests. The plan region and five-Canvas derivation remain
+      and reset host tests. The fixed 13,536-byte Drawing-plan codec now
+      round-trips the last
+      Canvas, stroke, point, and subpath slots with checked occupancy and
+      corruption rejection. Plan publication and five-Canvas derivation remain
       open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence

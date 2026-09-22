@@ -81,14 +81,16 @@ array. The store rejects a region-size mismatch and preserves the existing
 `LivePathBuilder` first-excess behavior. Its host tests cover move replacement,
 two subpaths, signed coordinates, exact 202-point capacity, and reset.
 
-The Drawing plan can use a checked fixed header, five Canvas identity slots,
-five bounded stroke headers, 832 eight-byte translated points, and sixteen
-four-byte subpath ranges within 13,536 bytes. Header packing must retain every
-field of `StraightLineStrokeHeader`, plus each stroke's Canvas identity and
-point/subpath base ordinals. Before the plan implementation is accepted, its
-exact offsets, widths, integrity checks, and spare tail must be pinned by host
-tests and the generated storage audit. A published view must query by Canvas
-without allocating filtered collections.
+The Drawing-plan record codec now fixes a 128-byte header region (including a
+104-byte point-occupancy bitmap), five 16-byte Canvas slots at offset 128,
+five 64-byte stroke slots at offset 208, 832 eight-byte translated points at
+offset 528, and sixteen four-byte subpaths at offset 7,184. The used prefix
+ends at 7,248; the rest of the approved 13,536-byte region remains reserved.
+Every `StraightLineStrokeHeader` field, Canvas identity, and point/subpath base
+ordinal round-trips. The codec rejects duplicate writes even for a zero point,
+wrong region size, invalid stroke enums, and corrupt reserved bytes. The plan
+owner must still validate cross-record ranges, seal an immutable summary, and
+provide a `DrawingPlanView` without allocating filtered collections.
 
 ## Lifecycle and State
 
@@ -130,11 +132,14 @@ approved post-layout Drawing plan and change failure ordering.
 
 ## Open Implementation Questions
 
-The Drawing-plan record offsets and compact header codec remain to be
-implemented and checked. No architectural or Specification decision is open.
+Cross-record validation, scoped publication, and five-Canvas derivation remain
+to be implemented and checked. No architectural or Specification decision is
+open.
 
 ## Code and Evidence Links
 
 - [Fixed live-path store](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLivePathStorage.swift)
 - [Live-path host tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFLivePathStorageTests.swift)
+- [Drawing-plan records](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanRecords.swift)
+- [Drawing-plan record tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFDrawingPlanRecordsTests.swift)
 - [T6.8 evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md)
