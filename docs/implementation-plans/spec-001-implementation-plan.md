@@ -1117,6 +1117,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       runs the generated normal and three 96-byte diagnostic hierarchies
       through the common full layout pass, including in-place publication.
       Render/Canvas consumption and firmware join remain open.
+      The fixed Static render traversal workspace now uses only the 416-byte
+      scratch tail of the same render region; host tests prove visit/foreground
+      bounds and isolation from the published layout records. Render preflight
+      and operation production remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

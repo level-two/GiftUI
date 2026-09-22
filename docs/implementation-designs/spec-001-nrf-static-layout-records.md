@@ -130,11 +130,14 @@ workspace admits glyphs before their line records are finalized, matching the
 common measure order; it derives line and glyph clips after placement. The
 same package source is not yet linked into the embedded firmware pipeline.
 
-The remaining 416 bytes can hold two 98-scope visit sets and a bounded
-13-depth foreground stack for render preflight. Exact offsets and record
-encodings remain provisional until compile-time size, overflow, and full-
-pipeline tests prove the partition. No part of a live layout result may be
-overwritten by render traversal.
+The remaining 416 bytes now hold render scratch starting 32 bytes into the
+tail: two 98-byte visit sets and a 13-entry RGB foreground stack of 39 bytes.
+The first 32 bytes preserve the layout depth stack and publication marker.
+The Static render workspace refuses an incorrect region or structural limit,
+detects repeated/out-of-range visits, and clears only its scratch on reset.
+Host tests prove the packed layout records and publication marker survive a
+render traversal. The full render preflight and production transaction remain
+open.
 
 ## Lifecycle and Resource Behavior
 
