@@ -481,15 +481,31 @@ import Testing
         }
         let normal = staticNRFPresentationInputModel()
         let diagnostic = staticNRFPresentationInputModel()
+        let wideDiagnostic = staticNRFPresentationInputModel()
+        let multilineDiagnostic = staticNRFPresentationInputModel()
         let maximum = SignalAnalyzerDiagnostic(
             exactUTF8: [UInt8](repeating: 65, count: 96)
         )!
+        let wide = SignalAnalyzerDiagnostic(
+            exactUTF8: [UInt8](repeating: 87, count: 96)
+        )!
+        let multiline = SignalAnalyzerDiagnostic(
+            exactUTF8: [UInt8](repeating: 10, count: 96)
+        )!
         #expect(diagnostic.apply(.acquisitionState(.failed(maximum))) == .applied(changed: true))
+        #expect(wideDiagnostic.apply(.acquisitionState(.failed(wide))) == .applied(changed: true))
+        #expect(
+            multilineDiagnostic.apply(.acquisitionState(.failed(multiline)))
+                == .applied(changed: true)
+        )
 
-        for (cycle, model, expectedScopes) in [
-            (UInt32(1), normal, UInt16(96)),
-            (UInt32(2), diagnostic, UInt16(98)),
-        ] {
+        let cases: [(UInt32, SignalAnalyzerViewModel, UInt16, UInt16, UInt16?)] = [
+            (1, normal, 96, 117, nil),
+            (2, diagnostic, 98, 214, 96),
+            (3, wideDiagnostic, 98, 214, 98),
+            (4, multilineDiagnostic, 98, 214, 98),
+        ]
+        for (cycle, model, expectedScopes, expectedBytes, previousScopes) in cases {
             let active = ExecutionContext(
                 cycle: RunCycleID(rawValue: cycle),
                 semanticRevision: SemanticRevision(rawValue: cycle),
@@ -506,7 +522,7 @@ import Testing
                     profile: &profile
                 )
                 #expect(summary?.scopeCount == expectedScopes)
-                #expect(summary?.textByteCount == (expectedScopes == 98 ? 214 : 117))
+                #expect(summary?.textByteCount == expectedBytes)
                 let candidateRead =
                     StaticSignalAnalyzerNRFSemanticRegionStore.withGeneratedUTF8RenderView(
                         in: .semanticCandidate,
@@ -547,7 +563,7 @@ import Testing
                             }
                             requiredScalars += layoutView.textScalarCount(of: identity) ?? 0
                         }
-                        #expect(requiredScalars == (cycle == 1 ? 117 : 214))
+                        #expect(requiredScalars == expectedBytes)
                         let limits = GeneratedSignalAnalyzerPresets.nrf52840Static()
                             .runtimeLimits.layout
                         var workspace = StaticNRFValidationOnlyLayoutWorkspace(limits: limits)
@@ -559,6 +575,7 @@ import Testing
                         )
                         #expect(validationError == nil)
                         #expect(limits.maximumTextScalars == 224)
+                        #expect(limits.maximumTextLines == 128)
                         #expect(limits.maximumPositionedGlyphs == 224)
                         #expect(workspace.scopeCount == expectedScopes)
                         return true
@@ -577,7 +594,7 @@ import Testing
                     StaticSignalAnalyzerNRFSemanticRegionStore.generatedUTF8TableSummary(
                         in: .semanticPublished,
                         profile: &profile
-                    )?.scopeCount == (cycle == 1 ? nil : 96)
+                    )?.scopeCount == previousScopes
                 )
                 if cycle == 2 {
                     #expect(

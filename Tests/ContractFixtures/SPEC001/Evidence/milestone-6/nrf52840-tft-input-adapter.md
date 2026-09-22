@@ -700,6 +700,13 @@ The amended hardware-free host test now counts 117 scalars in the normal tree
 and 214 in the maximal diagnostic tree, then passes both through the common
 semantic-layout validator using the generated 224-slot nRF preset. It does
 not yet prove resolved layout publication or connected display behavior.
+The follow-up fixture also stages exact 96-byte wide-printable `W` and
+multiline LF diagnostics through separate generated Static candidate and
+publication opportunities. Both retain the 214-byte semantic payload and pass
+the common validator with the amended 224-scalar/128-line preset; previous
+published state remains intact until each candidate is committed. The Dynamic
+Pi full-pipeline fixture measured 27 and 117 resolved lines respectively, but
+the Static test remains validation-only and does not claim resolved layout.
 Independently, the generated writer now fills fifteen invariant padding/frame
 modifier records. Both real-tree variants match every packed flag, edge,
 alignment, and dimension. It also fills twenty-five fixed passthrough styles,

@@ -1043,7 +1043,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       remains open. The follow-up full Dynamic Pi pipeline test measured 27
       lines for 96 printable `W` bytes and 117 lines for 96 LF bytes; the
       approved SPEC-015 line ceiling is now 128 in all four presets. No
-      diagnostic truncation is permitted.
+      diagnostic truncation is permitted. The Static nRF generated candidate
+      host fixture now stages and validates 96-byte `A`, `W`, and LF
+      diagnostics across separate profile opportunities, preserving prior
+      publication on refusal. Resolved Static layout publication remains open.
       The common Static
       profile binding now also lends each
       generated region only during its registered retained or attempt-local
