@@ -36,6 +36,15 @@ package protocol StaticProfileStorageRegions: ~Copyable {
             UnsafeMutableRawBufferPointer
         ) throws -> Result
     ) rethrows -> Result
+    mutating func withPresentationRegions<Result>(
+        _ body: (
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer
+        ) throws -> Result
+    ) rethrows -> Result
     mutating func resetAttemptRegions()
     mutating func resetAllRegions()
 }
@@ -288,6 +297,19 @@ where
     ) rethrows -> Result? {
         guard lifetimeState == .attemptActive else { return nil }
         return try regions.withSemanticCandidateAndLayoutRegions(body)
+    }
+
+    package mutating func withPresentationRegions<Result>(
+        _ body: (
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer
+        ) throws -> Result
+    ) rethrows -> Result? {
+        guard lifetimeState == .attemptActive else { return nil }
+        return try regions.withPresentationRegions(body)
     }
 
     package mutating func stageCanvas<Identity>(

@@ -1,4 +1,5 @@
 import GiftUI
+import GiftUIDrawing
 import GiftUIExecution
 import GiftUIHostConfiguration
 import GiftUILayout
@@ -581,8 +582,8 @@ import Testing
                         return true
                     }
                 #expect(candidatePairedRead)
-                let resolvedLayoutRead = profile.withSemanticCandidateAndLayoutRegions {
-                    semanticRegion, layoutRegion, renderRegion in
+                let resolvedLayoutRead = profile.withPresentationRegions {
+                    semanticRegion, layoutRegion, renderRegion, pathRegion, planRegion in
                     guard
                         let semanticView = StaticSignalAnalyzerNRFUTF8LayoutView(
                             in: semanticRegion
@@ -612,6 +613,39 @@ import Testing
                     #expect(sink.hasPublishedResult)
                     #expect(sink.renderView.layoutScopeCount == expectedScopes)
                     #expect(sink.renderView.bounds(of: semanticView.rootIdentity) != nil)
+                    guard
+                        var source = StaticSignalAnalyzerNRFCanvasInvocationSource(
+                            semanticRegion: semanticRegion, inputs: inputs
+                        ),
+                        var drawingWorkspace = StaticSignalAnalyzerNRFDrawingWorkspace(
+                            pathRegion: pathRegion,
+                            planRegion: planRegion,
+                            capacity: GeneratedSignalAnalyzerPresets.nrf52840Static()
+                                .runtimeLimits.drawing
+                        )
+                    else {
+                        Issue.record(
+                            "generated Canvas source or Static drawing workspace is invalid")
+                        return false
+                    }
+                    let drawingResult = CanvasPlanProducer.derive(
+                        source: &source,
+                        layout: sink.renderView,
+                        executionContext: ExecutionContext(
+                            cycle: RunCycleID(rawValue: cycle),
+                            semanticRevision: SemanticRevision(rawValue: cycle),
+                            candidateFrame: nil,
+                            phase: .deriving
+                        ),
+                        limits: drawingWorkspace.limits,
+                        workspace: &drawingWorkspace
+                    )
+                    guard case .success(let drawingSummary) = drawingResult else {
+                        Issue.record("generated Canvas derivation failed: \(drawingResult)")
+                        return false
+                    }
+                    #expect(drawingSummary.canvasOccurrenceCount == 5)
+                    #expect(source.allReleased)
                     return true
                 }
                 #expect(resolvedLayoutRead == true)

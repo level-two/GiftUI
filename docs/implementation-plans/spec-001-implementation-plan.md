@@ -1134,7 +1134,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       A scoped Static Drawing workspace now connects `GraphicsContext`,
       `LivePathBuilder`, and `StrokeSnapshotProducer` to those two fixed
       regions; host tests invoke five contexts and reject an invalid path
-      without a partial plan. Generated five-Canvas derivation remains open.
+      without a partial plan. An attempt-scoped five-region borrow now lends
+      semantic, layout, render, path, and plan storage together. The generated
+      Canvas source maps five occurrence identities from the packed semantic
+      table to the callable manifest; the common `CanvasPlanProducer` derives
+      all five against resolved layout for the normal and three diagnostic
+      hierarchies in host tests. Normalized operation comparison and firmware
+      linkage remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

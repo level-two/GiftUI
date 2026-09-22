@@ -109,6 +109,8 @@ private struct DifferentialStaticRegions: StaticProfileStorageRegions {
     private var publishedByte: UInt8 = 0
     private var layoutByte: UInt8 = 0
     private var renderByte: UInt8 = 0
+    private var pathByte: UInt8 = 0
+    private var planByte: UInt8 = 0
     mutating func withRegion<Result>(
         _: RuntimeStorageFamily,
         _ body: (UnsafeMutableRawBufferPointer) throws -> Result
@@ -150,6 +152,25 @@ private struct DifferentialStaticRegions: StaticProfileStorageRegions {
             try withUnsafeMutableBytes(of: &layoutByte) { layout in
                 try withUnsafeMutableBytes(of: &renderByte) { render in
                     try body(semantic, layout, render)
+                }
+            }
+        }
+    }
+    mutating func withPresentationRegions<Result>(
+        _ body: (
+            UnsafeMutableRawBufferPointer, UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer, UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer
+        ) throws -> Result
+    ) rethrows -> Result {
+        try withUnsafeMutableBytes(of: &regionByte) { semantic in
+            try withUnsafeMutableBytes(of: &layoutByte) { layout in
+                try withUnsafeMutableBytes(of: &renderByte) { render in
+                    try withUnsafeMutableBytes(of: &pathByte) { path in
+                        try withUnsafeMutableBytes(of: &planByte) { plan in
+                            try body(semantic, layout, render, path, plan)
+                        }
+                    }
                 }
             }
         }

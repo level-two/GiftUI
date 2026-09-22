@@ -141,8 +141,10 @@ approved post-layout Drawing plan and change failure ordering.
 
 ## Open Implementation Questions
 
-Generated five-Canvas derivation through the common producer remains to be
-implemented and checked. No architectural or Specification decision is open.
+The generated normal and three diagnostic hierarchies now derive all five
+Canvases through the common producer using a scoped semantic/layout/path/plan
+borrow. Golden operation comparison and firmware linkage remain open. No
+architectural or Specification decision is open.
 
 ## Code and Evidence Links
 
@@ -154,4 +156,6 @@ implemented and checked. No architectural or Specification decision is open.
 - [Drawing-plan owner tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFDrawingPlanStorageTests.swift)
 - [Scoped Drawing workspace](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingWorkspace.swift)
 - [Scoped Drawing workspace tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFDrawingWorkspaceTests.swift)
+- [Generated Canvas invocation source](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCanvasInvocationSource.swift)
+- [Five-Canvas derivation tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFPresentationInputsTests.swift)
 - [T6.8 evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md)

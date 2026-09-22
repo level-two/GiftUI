@@ -197,6 +197,26 @@ struct GeneratedStaticRegions: StaticProfileStorageRegions, ~Copyable {
         }
     }
 
+    mutating func withPresentationRegions<Result>(
+        _ body: (
+            UnsafeMutableRawBufferPointer, UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer, UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer
+        ) throws -> Result
+    ) rethrows -> Result {
+        try withUnsafeMutableBytes(of: &semanticCandidate) { semantic in
+            try withUnsafeMutableBytes(of: &layoutCandidate) { layout in
+                try withUnsafeMutableBytes(of: &renderWorkspace) { render in
+                    try withUnsafeMutableBytes(of: &pathWorkspace) { path in
+                        try withUnsafeMutableBytes(of: &drawingPlan) { plan in
+                            try body(semantic, layout, render, path, plan)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     mutating func resetAttemptRegions() {
         semanticCandidate = 0
         layoutCandidate = 0

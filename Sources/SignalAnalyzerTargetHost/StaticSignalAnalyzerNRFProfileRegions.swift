@@ -178,6 +178,34 @@ package struct StaticSignalAnalyzerNRFProfileRegions: StaticProfileStorageRegion
         )
     }
 
+    package mutating func withPresentationRegions<Result>(
+        _ body: (
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer
+        ) throws -> Result
+    ) rethrows -> Result {
+        let semantic = Self.semanticCandidate
+        let layout = Self.layoutCandidate
+        let render = Self.renderWorkspace
+        let path = Self.pathWorkspace
+        let plan = Self.drawingPlan
+        return try body(
+            UnsafeMutableRawBufferPointer(
+                rebasing: storage[semantic.offset ..< semantic.offset + semantic.byteCount]),
+            UnsafeMutableRawBufferPointer(
+                rebasing: storage[layout.offset ..< layout.offset + layout.byteCount]),
+            UnsafeMutableRawBufferPointer(
+                rebasing: storage[render.offset ..< render.offset + render.byteCount]),
+            UnsafeMutableRawBufferPointer(
+                rebasing: storage[path.offset ..< path.offset + path.byteCount]),
+            UnsafeMutableRawBufferPointer(
+                rebasing: storage[plan.offset ..< plan.offset + plan.byteCount])
+        )
+    }
+
     package mutating func resetAttemptRegions() {
         reset(Self.semanticCandidate)
         reset(Self.layoutCandidate)
