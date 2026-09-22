@@ -1140,7 +1140,15 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       table to the callable manifest; the common `CanvasPlanProducer` derives
       all five against resolved layout for the normal and three diagnostic
       hierarchies in host tests. Normalized operation comparison and firmware
-      linkage remain open.
+      linkage remain open. The first common render preflight exposed an
+      application-capacity mismatch: at 480×320, valid 96-byte `A` and `W`
+      diagnostics require 37 and 38 combined operations, while the approved
+      nRF preset and sink allow 35. The normal and 96-byte LF cases pass
+      preflight. A regression fixture confirms the exact counts with a
+      measurement-only 38-operation capacity; production retains the approved
+      35-operation ceiling. Resolving this in-scope contract mismatch requires
+      an approved SPEC-015/SPEC-008 coordinated amendment before T6.8 can
+      claim complete render conformance.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

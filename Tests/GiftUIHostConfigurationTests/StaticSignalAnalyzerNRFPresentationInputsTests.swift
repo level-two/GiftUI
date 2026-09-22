@@ -4,6 +4,8 @@ import GiftUIExecution
 import GiftUIHostConfiguration
 import GiftUILayout
 import GiftUIReferenceTextResources
+import GiftUIRenderCore
+import GiftUIRenderLowering
 import SignalAnalyzerDomain
 import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
@@ -645,7 +647,80 @@ import Testing
                         return false
                     }
                     #expect(drawingSummary.canvasOccurrenceCount == 5)
+                    #expect(drawingSummary.strokeCount == 5)
                     #expect(source.allReleased)
+                    guard
+                        let renderView = StaticSignalAnalyzerNRFUTF8RenderView(
+                            in: semanticRegion, renderSnapshotVersion: cycle
+                        ),
+                        var renderWorkspace = StaticSignalAnalyzerNRFRenderWorkspace(
+                            region: renderRegion,
+                            capacity: GeneratedSignalAnalyzerPresets.nrf52840Static()
+                                .runtimeLimits.render,
+                            structuralCapacity: GeneratedSignalAnalyzerPresets.nrf52840Static()
+                                .runtimeLimits.renderWorkspace
+                        )
+                    else {
+                        Issue.record("generated render view or workspace is invalid")
+                        return false
+                    }
+                    let renderLimits = GeneratedSignalAnalyzerPresets.nrf52840Static()
+                        .runtimeLimits
+                    let preflight = CanvasRenderProducer.preflight(
+                        semantic: renderView,
+                        layout: sink.renderView,
+                        textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
+                        drawingPlan: drawingWorkspace,
+                        surfaceBounds: sink.renderView.rootBounds,
+                        damageMode: .initializeCompleteSurface,
+                        rootForeground: .white,
+                        limits: renderLimits.render,
+                        configuredSinkCapacity: renderLimits.renderSink,
+                        workspace: &renderWorkspace
+                    )
+                    if cycle == 1 || cycle == 4 {
+                        guard case .success(let header) = preflight else {
+                            Issue.record("generated Canvas render preflight failed: \(preflight)")
+                            return false
+                        }
+                        #expect(header.operationCount <= renderLimits.render.maximumOperations)
+                        #expect(header.positionedGlyphCount > 0)
+                    } else {
+                        // Valid 96-byte A and W diagnostics exceed the
+                        // approved 35-operation ceiling on this nRF layout.
+                        #expect(preflight == .failure(.capacityExhausted))
+                        let measuredLimits = RenderLimits(
+                            maximumOperations: 38,
+                            maximumPositionedGlyphs: 224,
+                            maximumClipDepth: 4
+                        )!
+                        var measuredWorkspace = StaticSignalAnalyzerNRFRenderWorkspace(
+                            region: renderRegion,
+                            capacity: measuredLimits,
+                            structuralCapacity: renderLimits.renderWorkspace
+                        )!
+                        let measured = CanvasRenderProducer.preflight(
+                            semantic: renderView,
+                            layout: sink.renderView,
+                            textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
+                            drawingPlan: drawingWorkspace,
+                            surfaceBounds: sink.renderView.rootBounds,
+                            damageMode: .initializeCompleteSurface,
+                            rootForeground: .white,
+                            limits: measuredLimits,
+                            configuredSinkCapacity: RenderSinkCapacity(
+                                maximumOperations: 38,
+                                maximumPositionedGlyphs: 224
+                            ),
+                            workspace: &measuredWorkspace
+                        )
+                        guard case .success(let measuredHeader) = measured else {
+                            Issue.record("measured diagnostic preflight failed: \(measured)")
+                            return false
+                        }
+                        #expect(measuredHeader.operationCount == (cycle == 2 ? 37 : 38))
+                        #expect(measuredHeader.positionedGlyphCount == 214)
+                    }
                     return true
                 }
                 #expect(resolvedLayoutRead == true)

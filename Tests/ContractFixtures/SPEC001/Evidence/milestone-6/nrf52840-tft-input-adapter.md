@@ -771,3 +771,17 @@ invocations over the same path and plan regions. Host tests confirm exact
 stroke/point publication and path-region cleanup after every context. An
 invalid `addLine` before `move` fails with the typed Drawing error and leaves
 no sealed plan. The generated Canvas source is not yet connected.
+
+The generated Static Canvas source now maps all five packed semantic Canvas
+identities to the callable table inside one active five-region profile borrow.
+The common `CanvasPlanProducer` derives all five strokes over the resolved
+layout for the normal tree and valid 96-byte `A`, `W`, and LF diagnostics.
+`swift test --filter staticNRF` passes 74 host tests, and the SPEC-013 macOS
+Static profile check links the production target. The common render preflight
+accepts normal and LF cases under the approved 35-operation nRF ceiling, but
+rejects the `A` and `W` cases with `capacityExhausted`. A measurement-only
+38-operation workspace and sink resolve those same inputs to 37 and 38
+operations respectively, with 214 positioned glyphs each. The approved
+preset is unchanged; this is an in-scope capacity blocker for complete T6.8
+render conformance, pending coordinated Specification approval. No connected
+board run or flash is claimed.

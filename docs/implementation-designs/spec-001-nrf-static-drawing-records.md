@@ -143,8 +143,10 @@ approved post-layout Drawing plan and change failure ordering.
 
 The generated normal and three diagnostic hierarchies now derive all five
 Canvases through the common producer using a scoped semantic/layout/path/plan
-borrow. Golden operation comparison and firmware linkage remain open. No
-architectural or Specification decision is open.
+borrow. Render preflight has exposed an in-scope approved-preset mismatch:
+96-byte `A` and `W` diagnostics require 37 and 38 combined operations against
+the 35-operation release ceiling. Golden operation comparison and firmware
+linkage remain open. The ceiling needs coordinated Specification approval.
 
 ## Code and Evidence Links
 
