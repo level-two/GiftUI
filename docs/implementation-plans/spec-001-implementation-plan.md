@@ -1148,7 +1148,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       measurement-only 38-operation capacity; production retains the approved
       35-operation ceiling. Resolving this in-scope contract mismatch requires
       an approved SPEC-015/SPEC-008 coordinated amendment before T6.8 can
-      claim complete render conformance.
+      claim complete render conformance. The common render producer also
+      streams all four cases into a counting `DrawingOperationSink` in host
+      tests; the `A` and `W` measurement paths use the test-only 38-operation
+      capacity. A production raster sink and firmware loop remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

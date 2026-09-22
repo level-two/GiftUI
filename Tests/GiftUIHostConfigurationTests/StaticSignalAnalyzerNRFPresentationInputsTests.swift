@@ -678,6 +678,9 @@ import Testing
                         configuredSinkCapacity: renderLimits.renderSink,
                         workspace: &renderWorkspace
                     )
+                    let acceptedHeader: RenderPlanHeader
+                    let acceptedLimits: RenderLimits
+                    let acceptedSinkCapacity: RenderSinkCapacity
                     if cycle == 1 || cycle == 4 {
                         guard case .success(let header) = preflight else {
                             Issue.record("generated Canvas render preflight failed: \(preflight)")
@@ -685,6 +688,9 @@ import Testing
                         }
                         #expect(header.operationCount <= renderLimits.render.maximumOperations)
                         #expect(header.positionedGlyphCount > 0)
+                        acceptedHeader = header
+                        acceptedLimits = renderLimits.render
+                        acceptedSinkCapacity = renderLimits.renderSink
                     } else {
                         // Valid 96-byte A and W diagnostics exceed the
                         // approved 35-operation ceiling on this nRF layout.
@@ -720,7 +726,37 @@ import Testing
                         }
                         #expect(measuredHeader.operationCount == (cycle == 2 ? 37 : 38))
                         #expect(measuredHeader.positionedGlyphCount == 214)
+                        acceptedHeader = measuredHeader
+                        acceptedLimits = measuredLimits
+                        acceptedSinkCapacity = RenderSinkCapacity(
+                            maximumOperations: 38,
+                            maximumPositionedGlyphs: 224
+                        )
                     }
+                    var operationSink = StaticNRFCountingRenderSink(
+                        capacity: acceptedSinkCapacity
+                    )
+                    var productionWorkspace = StaticSignalAnalyzerNRFRenderWorkspace(
+                        region: renderRegion,
+                        capacity: acceptedLimits,
+                        structuralCapacity: renderLimits.renderWorkspace
+                    )!
+                    let production = CanvasRenderProducer.produce(
+                        semantic: renderView,
+                        layout: sink.renderView,
+                        textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
+                        drawingPlan: drawingWorkspace,
+                        surfaceBounds: sink.renderView.rootBounds,
+                        damageMode: .initializeCompleteSurface,
+                        rootForeground: .white,
+                        limits: acceptedLimits,
+                        expectedHeader: acceptedHeader,
+                        workspace: &productionWorkspace,
+                        sink: &operationSink
+                    )
+                    #expect(production == .success(acceptedHeader))
+                    #expect(operationSink.publishedHeader == acceptedHeader)
+                    #expect(operationSink.strokeCount == 5)
                     return true
                 }
                 #expect(resolvedLayoutRead == true)
@@ -997,4 +1033,83 @@ private func withStaticNRFPresentationInputStorage(
     let pointer = UnsafeMutableRawPointer.allocate(byteCount: byteCount, alignment: 8)
     defer { pointer.deallocate() }
     body(UnsafeMutableRawBufferPointer(start: pointer, count: byteCount))
+}
+
+private struct StaticNRFCountingRenderSink: DrawingOperationSink {
+    let capacity: RenderSinkCapacity
+    private var stagedHeader: RenderPlanHeader?
+    private var operationCount: UInt16 = 0
+    private var glyphCount: UInt16 = 0
+    private(set) var strokeCount: UInt16 = 0
+    private(set) var publishedHeader: RenderPlanHeader?
+
+    init(capacity: RenderSinkCapacity) { self.capacity = capacity }
+
+    mutating func begin(_ header: RenderPlanHeader) -> Bool {
+        guard stagedHeader == nil,
+            header.operationCount <= capacity.maximumOperations,
+            header.positionedGlyphCount <= capacity.maximumPositionedGlyphs
+        else { return false }
+        stagedHeader = header
+        operationCount = 0
+        glyphCount = 0
+        strokeCount = 0
+        return true
+    }
+
+    mutating func fillRect(_: FillRectOperation) -> Bool { countOperation() }
+    mutating func beginPositionedGlyphs(_: PositionedGlyphOperationHeader) -> Bool {
+        countOperation()
+    }
+    mutating func positionedGlyph(_: PositionedGlyph) -> Bool {
+        guard stagedHeader != nil, glyphCount < capacity.maximumPositionedGlyphs else {
+            return false
+        }
+        glyphCount += 1
+        return true
+    }
+    mutating func endPositionedGlyphs() -> Bool { stagedHeader != nil }
+
+    mutating func straightLineStroke<Stroke: StraightLineStrokeView>(
+        _ stroke: borrowing Stroke
+    ) -> Bool {
+        var point: UInt16 = 0
+        while point < stroke.header.pointCount {
+            guard stroke.point(at: point) != nil else { return false }
+            point += 1
+        }
+        var subpath: UInt16 = 0
+        while subpath < stroke.header.subpathCount {
+            guard stroke.subpath(at: subpath) != nil else { return false }
+            subpath += 1
+        }
+        guard countOperation() else { return false }
+        strokeCount += 1
+        return true
+    }
+
+    mutating func finish() -> Bool {
+        guard let stagedHeader,
+            operationCount == stagedHeader.operationCount,
+            glyphCount == stagedHeader.positionedGlyphCount
+        else { return false }
+        publishedHeader = stagedHeader
+        self.stagedHeader = nil
+        return true
+    }
+
+    mutating func discard() {
+        stagedHeader = nil
+        operationCount = 0
+        glyphCount = 0
+        strokeCount = 0
+    }
+
+    private mutating func countOperation() -> Bool {
+        guard stagedHeader != nil, operationCount < capacity.maximumOperations else {
+            return false
+        }
+        operationCount += 1
+        return true
+    }
 }

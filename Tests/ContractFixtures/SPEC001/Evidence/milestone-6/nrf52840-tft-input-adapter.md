@@ -785,3 +785,9 @@ operations respectively, with 214 positioned glyphs each. The approved
 preset is unchanged; this is an in-scope capacity blocker for complete T6.8
 render conformance, pending coordinated Specification approval. No connected
 board run or flash is claimed.
+
+The same four host cases now stream through the common Canvas render producer
+and a counting Drawing operation sink. All publish their expected headers and
+five strokes with matching operation and glyph counts; the `A` and `W` cases
+use only the test measurement capacity. This verifies operation production,
+not the production raster endpoint or connected firmware loop.
