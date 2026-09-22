@@ -1128,7 +1128,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       and reset host tests. The fixed 13,536-byte Drawing-plan codec now
       round-trips the last
       Canvas, stroke, point, and subpath slots with checked occupancy and
-      corruption rejection. Plan publication and five-Canvas derivation remain
+      corruption rejection. The fixed plan owner now snapshots five strokes,
+      validates contiguous ranges and subpath coverage, publishes a direct
+      `DrawingPlanView`, and rejects incomplete or corrupt plans in host tests.
+      Scoped Canvas invocation and generated five-Canvas derivation remain
       open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence

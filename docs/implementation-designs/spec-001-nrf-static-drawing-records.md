@@ -89,8 +89,13 @@ ends at 7,248; the rest of the approved 13,536-byte region remains reserved.
 Every `StraightLineStrokeHeader` field, Canvas identity, and point/subpath base
 ordinal round-trips. The codec rejects duplicate writes even for a zero point,
 wrong region size, invalid stroke enums, and corrupt reserved bytes. The plan
-owner must still validate cross-record ranges, seal an immutable summary, and
-provide a `DrawingPlanView` without allocating filtered collections.
+owner now validates contiguous Canvas/stroke/point/subpath ranges and each
+stroke's complete subpath coverage before sealing its summary. Its
+`DrawingPlanView` queries the packed region directly without filtered
+collections. Host tests snapshot one stroke under each of five Canvas IDs,
+check translated points and clips, reject incomplete or corrupt plans, and
+prove reset. The owner does not yet create a `GraphicsContext` or invoke the
+generated Canvas table.
 
 ## Lifecycle and State
 
@@ -132,9 +137,8 @@ approved post-layout Drawing plan and change failure ordering.
 
 ## Open Implementation Questions
 
-Cross-record validation, scoped publication, and five-Canvas derivation remain
-to be implemented and checked. No architectural or Specification decision is
-open.
+Scoped GraphicsContext callbacks and five-Canvas derivation remain to be
+implemented and checked. No architectural or Specification decision is open.
 
 ## Code and Evidence Links
 
@@ -142,4 +146,6 @@ open.
 - [Live-path host tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFLivePathStorageTests.swift)
 - [Drawing-plan records](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanRecords.swift)
 - [Drawing-plan record tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFDrawingPlanRecordsTests.swift)
+- [Drawing-plan owner](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanStorage.swift)
+- [Drawing-plan owner tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFDrawingPlanStorageTests.swift)
 - [T6.8 evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md)

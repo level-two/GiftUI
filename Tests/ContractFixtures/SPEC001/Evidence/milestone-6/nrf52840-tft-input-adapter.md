@@ -757,5 +757,11 @@ five stroke headers, 832 translated points, and sixteen subpaths inside the
 existing 13,536-byte profile family. Host tests round-trip the final slot of
 each family, including a signed extreme point, and reject duplicate zero-point
 writes, wrong region length, invalid stroke enums, and reserved-byte
-corruption. This is storage evidence only; plan publication and Canvas
-derivation remain open.
+corruption. The following owner fixture adds publication evidence; Canvas
+derivation remains open.
+
+The fixed Static Drawing-plan owner now snapshots five focused strokes into
+the audited region and seals one directly readable `DrawingPlanView`. Host
+tests compare translated points, headers, and subpaths, reject an incomplete
+five-Canvas plan, reject a corrupt subpath before publication, and prove reset.
+The common generated Canvas invocation and firmware render path remain open.
