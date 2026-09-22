@@ -125,6 +125,18 @@ private struct DifferentialStaticRegions: StaticProfileStorageRegions {
             }
         }
     }
+    mutating func withLayoutRegions<Result>(
+        _ body: (
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer
+        ) throws -> Result
+    ) rethrows -> Result {
+        try withUnsafeMutableBytes(of: &regionByte) { layout in
+            try withUnsafeMutableBytes(of: &publishedByte) { render in
+                try body(layout, render)
+            }
+        }
+    }
     mutating func resetAttemptRegions() {}
     mutating func resetAllRegions() {}
 }

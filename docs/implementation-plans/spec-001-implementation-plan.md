@@ -1104,7 +1104,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       its first 32-byte scope codec passes exact-region, placement, overflow,
       duplicate, and corruption tests. Fixed 16-byte line and 10-byte glyph
       codecs now pass exact-range and scratch-isolation tests. The workspace,
-      derived clips/indexes, and complete layout/render join remain open.
+      derived clips/indexes, and complete layout/render join remain open. The
+      common Static profile owner now lends the exact disjoint 3,136-byte
+      layout and 4,704-byte render regions together only during an active
+      attempt and clears both on finish.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

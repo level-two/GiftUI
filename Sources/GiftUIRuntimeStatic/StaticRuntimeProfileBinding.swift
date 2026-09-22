@@ -98,6 +98,15 @@ where
         try storage.withSemanticRegions(body)
     }
 
+    package mutating func withLayoutRegions<Result>(
+        _ body: (
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer
+        ) throws -> Result
+    ) rethrows -> Result? {
+        try storage.withLayoutRegions(body)
+    }
+
     package mutating func stageCanvas<Identity>(
         identity: consuming Identity,
         callableID: UInt16,

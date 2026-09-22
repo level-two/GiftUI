@@ -23,6 +23,12 @@ package protocol StaticProfileStorageRegions: ~Copyable {
             UnsafeMutableRawBufferPointer
         ) throws -> Result
     ) rethrows -> Result
+    mutating func withLayoutRegions<Result>(
+        _ body: (
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer
+        ) throws -> Result
+    ) rethrows -> Result
     mutating func resetAttemptRegions()
     mutating func resetAllRegions()
 }
@@ -250,6 +256,18 @@ where
     ) rethrows -> Result? {
         guard lifetimeState == .attemptActive else { return nil }
         return try regions.withSemanticRegions(body)
+    }
+
+    /// Lends the disjoint layout-candidate and render-workspace regions only
+    /// during one active attempt. The latter retains compact text geometry.
+    package mutating func withLayoutRegions<Result>(
+        _ body: (
+            UnsafeMutableRawBufferPointer,
+            UnsafeMutableRawBufferPointer
+        ) throws -> Result
+    ) rethrows -> Result? {
+        guard lifetimeState == .attemptActive else { return nil }
+        return try regions.withLayoutRegions(body)
     }
 
     package mutating func stageCanvas<Identity>(

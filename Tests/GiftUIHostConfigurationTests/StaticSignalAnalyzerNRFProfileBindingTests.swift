@@ -134,9 +134,11 @@ private struct StaticNRFBindingMetadata:
 
         let beforeAttempt = binding.withRegion(.semanticCandidate) { $0.count }
         let beforePair = binding.withSemanticRegions { _, _ in true }
+        let beforeLayoutPair = binding.withLayoutRegions { _, _ in true }
         let retained = binding.withRegion(.semanticPublished) { $0.count }
         #expect(beforeAttempt == nil)
         #expect(beforePair == nil)
+        #expect(beforeLayoutPair == nil)
         #expect(retained == 3_024)
 
         let active = ExecutionContext(
@@ -159,6 +161,22 @@ private struct StaticNRFBindingMetadata:
             return published[0]
         }
         #expect(pair == 0xA5)
+        let layoutPair = binding.withLayoutRegions { layout, render in
+            #expect(layout.count == 3_136)
+            #expect(render.count == 4_704)
+            #expect(
+                Int(bitPattern: layout.baseAddress)
+                    - Int(bitPattern: storage.baseAddress) == 6_048
+            )
+            #expect(
+                Int(bitPattern: render.baseAddress)
+                    - Int(bitPattern: storage.baseAddress) == 9_184
+            )
+            layout[0] = 0x5A
+            render[0] = 0xC3
+            return layout[0] != render[0]
+        }
+        #expect(layoutPair == true)
 
         let idle = ExecutionContext(
             cycle: nil,
@@ -169,10 +187,14 @@ private struct StaticNRFBindingMetadata:
         #expect(binding.finishOpportunity(context: idle) == nil)
         let afterAttempt = binding.withRegion(.semanticCandidate) { $0.count }
         let afterPair = binding.withSemanticRegions { _, _ in true }
+        let afterLayoutPair = binding.withLayoutRegions { _, _ in true }
         #expect(afterAttempt == nil)
         #expect(afterPair == nil)
+        #expect(afterLayoutPair == nil)
         #expect(storage[0] == 0)
         #expect(storage[3_024] == 0xA5)
+        #expect(storage[6_048] == 0)
+        #expect(storage[9_184] == 0)
 
         binding.quiesce()
         let afterTeardown = binding.withRegion(.semanticPublished) { $0.count }

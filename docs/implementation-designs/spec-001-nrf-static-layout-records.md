@@ -64,6 +64,9 @@ opportunity, with no escaping buffer or duplicate owner. The sink validates
 and publishes the records already written by the workspace in place; it does
 not copy them into another array. A compact render-workspace adapter uses the
 unoccupied tail without modifying the retained layout result.
+The common Static storage protocol and binding now provide that paired borrow:
+it exposes exactly 3,136 layout bytes and 4,704 render-workspace bytes only
+during an active attempt, then the existing attempt reset clears both ranges.
 
 ## Data and Control Flow
 
@@ -165,3 +168,5 @@ stack evidence remain the separate T8.2 gate.
 - [Scope codec tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFLayoutScopeCodecTests.swift)
 - [Checked line/glyph codec](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLayoutTextCodec.swift)
 - [Line/glyph codec tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFLayoutTextCodecTests.swift)
+- [Static profile lifetime binding](../../Sources/GiftUIRuntimeStatic/StaticProfileStorage.swift)
+- [Paired-region lifetime test](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFProfileBindingTests.swift)
