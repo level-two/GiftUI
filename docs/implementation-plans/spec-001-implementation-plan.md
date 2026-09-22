@@ -1101,7 +1101,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       The exact packed workspace/result ownership for the next Static layout
       slice is drafted in the
       [nRF Static Layout Records design](../implementation-designs/spec-001-nrf-static-layout-records.md);
-      it requires codec and region-boundary proof before production adoption.
+      its first 32-byte scope codec passes exact-region, placement, overflow,
+      duplicate, and corruption tests. The line/glyph store and complete
+      layout/render join remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

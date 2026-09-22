@@ -76,15 +76,18 @@ it cannot alter the prior published semantic revision or enable input.
 
 ## Algorithms and Data Structures
 
-The 3,136-byte layout region has 98 fixed 32-byte scope slots. Scope identity
-is its generated ordinal, so no redundant identity array is stored. Each slot
-must retain ideal/resolved measurements while placement runs; it also retains
+The 3,136-byte layout region has 98 fixed 32-byte scope slots. Each slot
+stores its generated two-byte stable identity; the identities are not scope
+ordinals and lookup must search the occupied prefix. Each slot must retain
+ideal/resolved measurements while placement runs; it also retains
 placed bounds and clip. Candidate packing uses checked signed or unsigned
 16-bit geometry where the exact 480 x 320 hierarchy and 96-byte text bound
 prove representability. Decoding reconstructs full `GeometryScalar` values.
-The record format and proof of every field's range must be tested before the
-production adapter is accepted; an unrepresentable value fails closed, never
-wraps or clamps.
+The first checked scope codec now stores stable identity, ideal/resolved
+sizes, placed origin, and clip inside one slot and rejects signed-16-bit
+overflow, duplicate placement, wrong region size, and corrupt reserved bytes.
+The production adapter must still prove every field's range under the real
+hierarchy; an unrepresentable value fails closed, never wraps or clamps.
 
 The 4,704-byte render-workspace region is partitioned by checked offsets:
 
@@ -155,3 +158,5 @@ stack evidence remain the separate T8.2 gate.
 - [Common layout](../../Sources/GiftUILayout/Layout.swift)
 - [Common layout publication](../../Sources/GiftUILayout/LayoutPublication.swift)
 - [Current Static validation fixture](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFPresentationInputsTests.swift)
+- [Checked scope codec](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLayoutScopeCodec.swift)
+- [Scope codec tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFLayoutScopeCodecTests.swift)
