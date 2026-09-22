@@ -803,5 +803,9 @@ state. Candidate construction and committed interaction publication remain
 open in the application owner. The focused production candidate builder now
 stages all six records in `StaticInteractionState`, assigns six generations,
 commits them after a simulated accepted offer, then proves that an unchanged
-rebuild preserves those generations before discard. The connected owner must
-still perform this at the real offer boundary.
+rebuild preserves those generations before discard. The address-stable
+application owner now holds the generation allocator and delegates candidate
+build and offer resolution to these production helpers. A host fixture proves
+that an unbound root is refused, a retryably refused offer leaves no committed
+actions, and a later accepted offer commits all six records. The connected
+owner must still use this at the physical offer boundary.

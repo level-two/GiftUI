@@ -3,6 +3,7 @@ import GiftUIExecution
 import GiftUIHostConfiguration
 import GiftUIInteraction
 import GiftUIObservableState
+import GiftUIRuntimeCore
 import GiftUIRuntimeStatic
 import SignalAnalyzerDomain
 import SignalAnalyzerHost
@@ -53,6 +54,7 @@ package struct StaticSignalAnalyzerNRFApplicationStorage: ~Copyable {
     package let assemblyReport: HostAssemblyReport
     package var root: StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>
     package var interaction: StaticInteractionState<UInt32>
+    package var actionGenerations = RuntimeActionGenerationAllocator<UInt32>()
     package var input: StaticSignalAnalyzerNRFApplicationInputOwner
     package var factAdmission: StaticSignalAnalyzerHostFactAdmissionStorage
 
@@ -105,16 +107,19 @@ package struct StaticSignalAnalyzerNRFApplicationStorage: ~Copyable {
     ) -> Result {
         withUnsafeMutablePointer(to: &root) { root in
             withUnsafeMutablePointer(to: &interaction) { interaction in
-                withUnsafeMutablePointer(to: &input) { input in
-                    withUnsafeMutablePointer(to: &factAdmission) { factAdmission in
-                        var owner = StaticSignalAnalyzerNRFApplicationOwner(
-                            root: root,
-                            interaction: interaction,
-                            input: input,
-                            factAdmission: factAdmission
-                        )
-                        defer { _ = owner.quiesce() }
-                        return body(&owner)
+                withUnsafeMutablePointer(to: &actionGenerations) { generations in
+                    withUnsafeMutablePointer(to: &input) { input in
+                        withUnsafeMutablePointer(to: &factAdmission) { factAdmission in
+                            var owner = StaticSignalAnalyzerNRFApplicationOwner(
+                                root: root,
+                                interaction: interaction,
+                                actionGenerations: generations,
+                                input: input,
+                                factAdmission: factAdmission
+                            )
+                            defer { _ = owner.quiesce() }
+                            return body(&owner)
+                        }
                     }
                 }
             }
@@ -129,6 +134,7 @@ package struct StaticSignalAnalyzerNRFApplicationOwner: ~Copyable {
             StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>
         >
     private let interaction: UnsafeMutablePointer<StaticInteractionState<UInt32>>
+    private let actionGenerations: UnsafeMutablePointer<RuntimeActionGenerationAllocator<UInt32>>
     private let input: UnsafeMutablePointer<StaticSignalAnalyzerNRFApplicationInputOwner>
     private let factAdmission: UnsafeMutablePointer<StaticSignalAnalyzerHostFactAdmissionStorage>
     private var admissionAdapter: SignalAnalyzerPresentationAdmissionAdapter?
@@ -138,12 +144,14 @@ package struct StaticSignalAnalyzerNRFApplicationOwner: ~Copyable {
             StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>
         >,
         interaction: UnsafeMutablePointer<StaticInteractionState<UInt32>>,
+        actionGenerations: UnsafeMutablePointer<RuntimeActionGenerationAllocator<UInt32>>,
         input: UnsafeMutablePointer<StaticSignalAnalyzerNRFApplicationInputOwner>,
         factAdmission:
             UnsafeMutablePointer<StaticSignalAnalyzerHostFactAdmissionStorage>
     ) {
         self.root = root
         self.interaction = interaction
+        self.actionGenerations = actionGenerations
         self.input = input
         self.factAdmission = factAdmission
         admissionAdapter = nil
@@ -252,6 +260,34 @@ package struct StaticSignalAnalyzerNRFApplicationOwner: ~Copyable {
         _ body: (inout StaticInteractionState<UInt32>) -> Result
     ) -> Result {
         body(&interaction.pointee)
+    }
+
+    package mutating func buildInteractionCandidate(
+        occurrences: borrowing StaticSignalAnalyzerNRFInteractionOccurrences,
+        limits: InteractionLimits
+    ) -> StaticSignalAnalyzerNRFInteractionCandidateResult {
+        guard let generation = root.pointee.targetGeneration() else {
+            return .interaction(.missingModelTarget)
+        }
+        return StaticSignalAnalyzerNRFInteractionCandidateProducer.build(
+            occurrences: occurrences,
+            targetGeneration: generation,
+            limits: limits,
+            interaction: &interaction.pointee,
+            generations: &actionGenerations.pointee
+        )
+    }
+
+    package mutating func resolveInteractionCandidate(
+        offer: FrameOfferResult,
+        presentationRevision: PresentationRevision
+    ) -> RuntimeInteractionCandidateResolution {
+        RuntimeInteractionCandidateTransaction.resolve(
+            offer: offer,
+            presentationRevision: presentationRevision,
+            interaction: &interaction.pointee,
+            generations: &actionGenerations.pointee
+        )
     }
 
     package borrowing func withModel<Result>(

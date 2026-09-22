@@ -720,6 +720,70 @@ import Testing
                     generations.resolveCandidate(committed: false)
                     #expect(generations.retiredReservationCount == 0)
                     #expect(interaction.committedRevision?.rawValue == cycle)
+                    if cycle == 1,
+                        case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate()
+                    {
+                        guard
+                            var application = StaticSignalAnalyzerNRFApplicationStorage(
+                                assemblyReport: report,
+                                inputSourceRawValue: 51
+                            )
+                        else {
+                            Issue.record("Static application owner did not construct")
+                            return false
+                        }
+                        application.withAddressStableOwner { owner in
+                            #expect(
+                                owner.buildInteractionCandidate(
+                                    occurrences: occurrences,
+                                    limits: interactionLimits
+                                ) == .interaction(.missingModelTarget)
+                            )
+                            #expect(
+                                owner.bindRoot(
+                                    repository: StaticNRFPresentationInputRepository()
+                                ) == .bound(ObservableTargetGeneration(rawValue: 0))
+                            )
+                            #expect(
+                                owner.buildInteractionCandidate(
+                                    occurrences: occurrences,
+                                    limits: interactionLimits
+                                ) == .ready
+                            )
+                            let refusal = FrameOfferResult(
+                                disposition: .retryableRefusal, failure: nil
+                            )!
+                            #expect(
+                                owner.resolveInteractionCandidate(
+                                    offer: refusal,
+                                    presentationRevision: PresentationRevision(rawValue: cycle)
+                                ) == .discarded
+                            )
+                            owner.withInteraction { state in
+                                #expect(state.committedRecordCount == 0)
+                                #expect(state.committedRevision == nil)
+                            }
+                            #expect(
+                                owner.buildInteractionCandidate(
+                                    occurrences: occurrences,
+                                    limits: interactionLimits
+                                ) == .ready
+                            )
+                            let offer = FrameOfferResult(
+                                disposition: .accepted, failure: nil
+                            )!
+                            #expect(
+                                owner.resolveInteractionCandidate(
+                                    offer: offer,
+                                    presentationRevision: PresentationRevision(rawValue: cycle)
+                                ) == .committed(PresentationRevision(rawValue: cycle))
+                            )
+                            owner.withInteraction { state in
+                                #expect(state.committedRecordCount == 6)
+                                #expect(state.committedRevision?.rawValue == cycle)
+                            }
+                        }
+                    }
                     guard
                         var source = StaticSignalAnalyzerNRFCanvasInvocationSource(
                             semanticRegion: semanticRegion, inputs: inputs

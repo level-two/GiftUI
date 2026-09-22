@@ -1161,8 +1161,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       now stages all six bounded records, assigns generations, and permits
       offer-time commit or discard. Host fixtures commit six records, then
       rebuild an unchanged candidate without consuming new generations.
-      Joining this builder to the application owner and physical offer remains
-      open.
+      The address-stable application owner now owns its generation allocator,
+      refuses candidate construction before root binding, and delegates
+      offer-time commit/discard to the common transaction resolver. A host
+      fixture rejects an offer before accepting a later one and verifies that
+      the refused candidate never reaches committed interaction state. The
+      physical offer and firmware loop remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 
