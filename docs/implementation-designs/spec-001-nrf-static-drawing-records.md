@@ -94,8 +94,12 @@ stroke's complete subpath coverage before sealing its summary. Its
 `DrawingPlanView` queries the packed region directly without filtered
 collections. Host tests snapshot one stroke under each of five Canvas IDs,
 check translated points and clips, reject incomplete or corrupt plans, and
-prove reset. The owner does not yet create a `GraphicsContext` or invoke the
-generated Canvas table.
+prove reset. A scoped Drawing workspace now lends `GraphicsContext` with a
+monotonic generation, forwards path operations into the 3,280-byte region,
+snapshots strokes into the plan, and invalidates each context and live path on
+return. Focused tests invoke five Canvas contexts and reject an invalid path
+without publishing a partial plan. The generated Canvas table is not yet
+connected to this workspace.
 
 ## Lifecycle and State
 
@@ -137,7 +141,7 @@ approved post-layout Drawing plan and change failure ordering.
 
 ## Open Implementation Questions
 
-Scoped GraphicsContext callbacks and five-Canvas derivation remain to be
+Generated five-Canvas derivation through the common producer remains to be
 implemented and checked. No architectural or Specification decision is open.
 
 ## Code and Evidence Links
@@ -148,4 +152,6 @@ implemented and checked. No architectural or Specification decision is open.
 - [Drawing-plan record tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFDrawingPlanRecordsTests.swift)
 - [Drawing-plan owner](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanStorage.swift)
 - [Drawing-plan owner tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFDrawingPlanStorageTests.swift)
+- [Scoped Drawing workspace](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingWorkspace.swift)
+- [Scoped Drawing workspace tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFDrawingWorkspaceTests.swift)
 - [T6.8 evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md)

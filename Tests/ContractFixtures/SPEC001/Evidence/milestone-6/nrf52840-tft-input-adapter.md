@@ -765,3 +765,9 @@ the audited region and seals one directly readable `DrawingPlanView`. Host
 tests compare translated points, headers, and subpaths, reject an incomplete
 five-Canvas plan, reject a corrupt subpath before publication, and prove reset.
 The common generated Canvas invocation and firmware render path remain open.
+
+The Static Drawing workspace now executes five scoped `GraphicsContext`
+invocations over the same path and plan regions. Host tests confirm exact
+stroke/point publication and path-region cleanup after every context. An
+invalid `addLine` before `move` fails with the typed Drawing error and leaves
+no sealed plan. The generated Canvas source is not yet connected.

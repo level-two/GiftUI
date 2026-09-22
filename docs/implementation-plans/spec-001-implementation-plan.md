@@ -1131,8 +1131,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       corruption rejection. The fixed plan owner now snapshots five strokes,
       validates contiguous ranges and subpath coverage, publishes a direct
       `DrawingPlanView`, and rejects incomplete or corrupt plans in host tests.
-      Scoped Canvas invocation and generated five-Canvas derivation remain
-      open.
+      A scoped Static Drawing workspace now connects `GraphicsContext`,
+      `LivePathBuilder`, and `StrokeSnapshotProducer` to those two fixed
+      regions; host tests invoke five contexts and reject an invalid path
+      without a partial plan. Generated five-Canvas derivation remains open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 
