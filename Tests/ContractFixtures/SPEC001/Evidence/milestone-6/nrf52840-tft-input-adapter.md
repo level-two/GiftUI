@@ -775,26 +775,29 @@ no sealed plan. The generated Canvas source is not yet connected.
 The generated Static Canvas source now maps all five packed semantic Canvas
 identities to the callable table inside one active five-region profile borrow.
 The common `CanvasPlanProducer` derives all five strokes over the resolved
-layout for the normal tree and valid 96-byte `A`, `W`, and LF diagnostics.
+layout for the normal tree and valid 96-byte `A`, `W`, LF, and four mixed
+`W`/LF diagnostics.
 `swift test --filter staticNRF` passes 74 host tests, and the SPEC-013 macOS
 Static profile check links the production target. The common render preflight
 accepts normal and LF cases under the approved 35-operation nRF ceiling, but
-rejects the `A` and `W` cases with `capacityExhausted`. A measurement-only
-38-operation workspace and sink resolve those same inputs to 37 and 38
-operations respectively, with 214 positioned glyphs each. The approved
+rejects the `A`, `W`, and mixed cases with `capacityExhausted`. A
+measurement-only 39-operation workspace and sink resolve `A` and `W` to 37
+and 38 operations with 214 positioned glyphs each; four mixed shapes each
+need 39 operations with 123, 128, 133, and 143 glyphs. Thirty-nine is the
+observed lower bound, not a proven maximum. The approved
 preset is unchanged; this is an in-scope capacity blocker for complete T6.8
 render conformance, pending coordinated Specification approval. No connected
 board run or flash is claimed.
 
-The same four host cases now stream through the common Canvas render producer
+The same eight host cases now stream through the common Canvas render producer
 and a counting Drawing operation sink. All publish their expected headers and
-five strokes with matching operation and glyph counts; the `A` and `W` cases
+five strokes with matching operation and glyph counts; the oversized cases
 use only the test measurement capacity. This verifies operation production,
 not the production raster endpoint or connected firmware loop.
 
 The generated Static action reader now resolves six occurrence identities,
 action codes, paint order, bounds, clips, and inherited disable modifiers
-directly from the borrowed semantic candidate and published layout. Four
+directly from the borrowed semantic candidate and published layout. Eight
 hierarchy fixtures check the exact mapping and initial Start/Stop enabled
 state. Candidate construction and committed interaction publication remain
 open.

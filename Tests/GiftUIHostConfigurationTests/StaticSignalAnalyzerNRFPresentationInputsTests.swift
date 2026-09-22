@@ -486,6 +486,10 @@ import Testing
         let diagnostic = staticNRFPresentationInputModel()
         let wideDiagnostic = staticNRFPresentationInputModel()
         let multilineDiagnostic = staticNRFPresentationInputModel()
+        let mixedOne = staticNRFPresentationInputModel()
+        let mixedTwo = staticNRFPresentationInputModel()
+        let mixedThree = staticNRFPresentationInputModel()
+        let mixedFour = staticNRFPresentationInputModel()
         let maximum = SignalAnalyzerDiagnostic(
             exactUTF8: [UInt8](repeating: 65, count: 96)
         )!
@@ -501,12 +505,30 @@ import Testing
             multilineDiagnostic.apply(.acquisitionState(.failed(multiline)))
                 == .applied(changed: true)
         )
+        let mixedPatterns: [[UInt8]] = [
+            Array(repeating: [87, 10], count: 48).flatMap { $0 },
+            Array(repeating: [87, 87, 10], count: 32).flatMap { $0 },
+            Array(repeating: [87, 87, 87, 10], count: 24).flatMap { $0 },
+            Array(repeating: [87, 87, 87, 87, 87, 10], count: 16).flatMap { $0 },
+        ]
+        for (model, bytes) in zip(
+            [mixedOne, mixedTwo, mixedThree, mixedFour], mixedPatterns
+        ) {
+            #expect(
+                model.apply(.acquisitionState(.failed(SignalAnalyzerDiagnostic(exactUTF8: bytes)!)))
+                    == .applied(changed: true)
+            )
+        }
 
         let cases: [(UInt32, SignalAnalyzerViewModel, UInt16, UInt16, UInt16?)] = [
             (1, normal, 96, 117, nil),
             (2, diagnostic, 98, 214, 96),
             (3, wideDiagnostic, 98, 214, 98),
             (4, multilineDiagnostic, 98, 214, 98),
+            (5, mixedOne, 98, 214, 98),
+            (6, mixedTwo, 98, 214, 98),
+            (7, mixedThree, 98, 214, 98),
+            (8, mixedFour, 98, 214, 98),
         ]
         for (cycle, model, expectedScopes, expectedBytes, previousScopes) in cases {
             let active = ExecutionContext(
@@ -721,11 +743,11 @@ import Testing
                         acceptedLimits = renderLimits.render
                         acceptedSinkCapacity = renderLimits.renderSink
                     } else {
-                        // Valid 96-byte A and W diagnostics exceed the
-                        // approved 35-operation ceiling on this nRF layout.
+                        // Valid 96-byte printable and mixed-line diagnostics
+                        // exceed the approved 35-operation nRF ceiling.
                         #expect(preflight == .failure(.capacityExhausted))
                         let measuredLimits = RenderLimits(
-                            maximumOperations: 38,
+                            maximumOperations: 39,
                             maximumPositionedGlyphs: 224,
                             maximumClipDepth: 4
                         )!
@@ -744,7 +766,7 @@ import Testing
                             rootForeground: .white,
                             limits: measuredLimits,
                             configuredSinkCapacity: RenderSinkCapacity(
-                                maximumOperations: 38,
+                                maximumOperations: 39,
                                 maximumPositionedGlyphs: 224
                             ),
                             workspace: &measuredWorkspace
@@ -753,12 +775,23 @@ import Testing
                             Issue.record("measured diagnostic preflight failed: \(measured)")
                             return false
                         }
-                        #expect(measuredHeader.operationCount == (cycle == 2 ? 37 : 38))
-                        #expect(measuredHeader.positionedGlyphCount == 214)
+                        #expect(
+                            measuredHeader.operationCount
+                                == (cycle == 2 ? 37 : cycle == 3 ? 38 : 39)
+                        )
+                        let expectedGlyphs: UInt16
+                        switch cycle {
+                        case 2, 3: expectedGlyphs = 214
+                        case 5: expectedGlyphs = 123
+                        case 6: expectedGlyphs = 128
+                        case 7: expectedGlyphs = 133
+                        default: expectedGlyphs = 143
+                        }
+                        #expect(measuredHeader.positionedGlyphCount == expectedGlyphs)
                         acceptedHeader = measuredHeader
                         acceptedLimits = measuredLimits
                         acceptedSinkCapacity = RenderSinkCapacity(
-                            maximumOperations: 38,
+                            maximumOperations: 39,
                             maximumPositionedGlyphs: 224
                         )
                     }

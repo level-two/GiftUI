@@ -1138,19 +1138,21 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       semantic, layout, render, path, and plan storage together. The generated
       Canvas source maps five occurrence identities from the packed semantic
       table to the callable manifest; the common `CanvasPlanProducer` derives
-      all five against resolved layout for the normal and three diagnostic
+      all five against resolved layout for the normal and seven diagnostic
       hierarchies in host tests. Normalized operation comparison and firmware
       linkage remain open. The first common render preflight exposed an
-      application-capacity mismatch: at 480×320, valid 96-byte `A` and `W`
-      diagnostics require 37 and 38 combined operations, while the approved
-      nRF preset and sink allow 35. The normal and 96-byte LF cases pass
-      preflight. A regression fixture confirms the exact counts with a
-      measurement-only 38-operation capacity; production retains the approved
-      35-operation ceiling. Resolving this in-scope contract mismatch requires
+      application-capacity mismatch: at 480×320, valid 96-byte `A`, `W`,
+      and mixed `W`/LF diagnostics require 37, 38, and 39 combined operations,
+      while the approved nRF preset and sink allow 35. The normal and 96-byte
+      LF cases pass preflight. A regression fixture confirms the exact counts
+      with a measurement-only 39-operation capacity; production retains the
+      approved 35-operation ceiling. Thirty-nine is an observed lower bound;
+      the full diagnostic maximum needs proof before a new ceiling is proposed.
+      Resolving this in-scope contract mismatch requires
       an approved SPEC-015/SPEC-008 coordinated amendment before T6.8 can
       claim complete render conformance. The common render producer also
       streams all four cases into a counting `DrawingOperationSink` in host
-      tests; the `A` and `W` measurement paths use the test-only 38-operation
+      tests; the oversized diagnostics use the test-only 39-operation
       capacity. A production raster sink and firmware loop remain open.
       A direct Static interaction occurrence reader now maps six generated
       action scopes through resolved bounds and ancestor disable modifiers;
