@@ -110,7 +110,12 @@ these derivations rather than silently discard supplied fields. `publishLayout`
 then checks line/glyph order and replays them into an in-place validating sink.
 The fixed 16-byte line and 10-byte glyph codecs now prove their byte ranges,
 checked geometry, last-slot access, and untouched scratch tail in host tests;
-font, clip, and glyph-index derivation still belongs to the future workspace.
+the fixed-region workspace now verifies the reference font, derives text clips
+from placed scope and line bounds, derives glyph indexes from record order, and
+stores its 13-entry scope stack in the reserved scratch tail. Focused host tests
+cover placement, text replacement, duplicate rejection, and complete reset.
+The workspace is not yet connected to the common layout pass or a resolved
+render-layout sink.
 
 The remaining 416 bytes can hold two 98-scope visit sets and a bounded
 13-depth foreground stack for render preflight. Exact offsets and record

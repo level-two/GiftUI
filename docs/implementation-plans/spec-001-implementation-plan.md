@@ -1107,7 +1107,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       derived clips/indexes, and complete layout/render join remain open. The
       common Static profile owner now lends the exact disjoint 3,136-byte
       layout and 4,704-byte render regions together only during an active
-      attempt and clears both on finish.
+      attempt and clears both on finish. A fixed-region Static layout workspace
+      now implements the common workspace protocol over those exact ranges;
+      focused host tests prove scoped geometry/text storage, derived fields,
+      duplicate rejection, and reset. The common layout pass, resolved sink,
+      and firmware join remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 
