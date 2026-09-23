@@ -813,6 +813,15 @@ retains exact surface selection and producer-failure mapping for the live
 owner. This remains hardware-free endpoint evidence, not connected display
 evidence.
 
+The Static nRF display target now borrows the same 3,840-byte region as the
+raster tile and packs touched runs toward its front before synchronous
+submission. Host tests verify two separated source pixels survive successive
+in-place submissions, reject invalid reservations and transport refusal, and
+run all eight generated hierarchies through this one-slot target. The focused
+generated hierarchy test passes with all eight raster offers enabled; its
+previous condition exercised only the first offer, so that earlier eight-offer
+claim lacked endpoint evidence.
+
 The firmware now reserves a separately named 240-byte touched-pixel bitmap
 beside its existing 3,840-byte raster slot. The entry self-check counts
 155,840 named application-storage bytes, and the build gate checks the new

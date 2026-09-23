@@ -905,9 +905,7 @@ import Testing
                     #expect(production == .success(acceptedHeader))
                     #expect(operationSink.publishedHeader == acceptedHeader)
                     #expect(operationSink.strokeCount == 5)
-                    if cycle == 1,
-                        case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate()
-                    {
+                    if case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate() {
                         let raster = UnsafeMutableRawPointer.allocate(
                             byteCount: 3_840, alignment: 8
                         )
@@ -921,14 +919,19 @@ import Testing
                             semanticRevision: SemanticRevision(rawValue: cycle),
                             candidateFrame: CandidateFrameID(rawValue: cycle)
                         )
+                        let rasterRegion = UnsafeMutableRawBufferPointer(
+                            start: raster, count: 3_840
+                        )
                         guard
+                            let displayTarget = StaticSignalAnalyzerNRFDisplayTarget(
+                                transport: StaticNRFRecordingDisplayTransport(),
+                                rasterRegion: rasterRegion
+                            ),
                             var endpoint = StaticSignalAnalyzerNRFEndpointFactory.make(
-                                target: StaticNRFEndpointTarget(acceptsOffers: true),
+                                target: displayTarget,
                                 provenance: provenance,
                                 assemblyReport: report,
-                                rasterRegion: UnsafeMutableRawBufferPointer(
-                                    start: raster, count: 3_840
-                                ),
+                                rasterRegion: rasterRegion,
                                 coverageRegion: UnsafeMutableRawBufferPointer(
                                     start: coverage, count: 240
                                 )
@@ -957,9 +960,8 @@ import Testing
                             )
                         }
                         #expect(offer == FrameOfferResult(disposition: .accepted, failure: nil)!)
-                        #expect(endpoint.sink.target.submittedPayloads > 0)
-                        #expect(endpoint.sink.target.submittedBytes > 0)
-                        #expect(endpoint.sink.target.completedFrames == 1)
+                        #expect(endpoint.sink.target.transport.payloads > 0)
+                        #expect(endpoint.sink.target.transport.bytes > 0)
                     }
                     return true
                 }

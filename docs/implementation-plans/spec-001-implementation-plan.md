@@ -1152,8 +1152,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       operations across the full 480 x 320 surface. A production render-offer
       helper streams the generated normal and seven diagnostic hierarchies
       through that endpoint in host fixtures with accepted synchronous RGB565
-      submissions. The 240-byte coverage map now has its own exact-size
-      firmware symbol and is included in the 155,840-byte named-storage
+      submissions. A bounded display target now packs each touched run into
+      the same raster region and synchronously lends it to a platform
+      transport. The host fixture verifies the in-place compaction across
+      separated source offsets and offers all eight generated cases through
+      the shared one-slot target. The 240-byte coverage map now has its own
+      exact-size firmware symbol and is included in the 155,840-byte named-storage
       self-check. The hardware-free nRF build passes ABI, zero-heap, symbol,
       and resource gates at 184,128 RAM bytes and 34,400 flash bytes. The live
       application host and firmware loop remain open.

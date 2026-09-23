@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-20
-updated: 2026-09-20
+updated: 2026-09-23
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -177,6 +177,12 @@ dispatch. It renders 480 x 320 content into one 480 x 4 RGB565 staging slot
 and a 240-byte coverage bitmap for touched-pixel run emission.
 ILI9486 consumes the synchronous borrow before return. No full framebuffer,
 heap, reflection, `Any`, or runtime profile selection is permitted.
+
+The display writer and tile store borrow the same 3,840-byte region. Traversal
+reads covered pixels in ascending offset order, and the writer packs each
+horizontal run toward the front of that region. Its output offset never
+overtakes the source offset. Submission consumes each run synchronously before
+the writer resets its cursors; reset does not clear unread tile bytes.
 
 The semantic/action/drawing transcript is profile-equivalent. Device timing,
 physical extents, payload counts, stack high-water, and transport errors remain
