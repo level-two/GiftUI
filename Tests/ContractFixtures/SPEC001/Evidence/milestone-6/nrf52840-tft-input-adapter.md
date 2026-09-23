@@ -801,6 +801,9 @@ submissions. A host fixture checks exact capacity admission, successful
 endpoint construction, and rejection of a short coverage region. The full
 application producer is not yet offered through this endpoint, and the
 connected firmware loop remains open.
+An additional host offer sends one touched RGB565 pixel through the real
+operation-major session and verifies one 2-byte synchronous payload followed
+by frame completion.
 
 The generated Static action reader now resolves six occurrence identities,
 action codes, paint order, bounds, clips, and inherited disable modifiers
