@@ -512,6 +512,13 @@ state facts with the same failed-state diagnostic rule as the portable
 ViewModel. Start clears only the error message; the failed acquisition state
 remains until a later repository fact replaces it. Both fields roll back if
 the direct change report refuses.
+The allocation-free portable channel ID, level, transition, and four-channel
+baseline declarations now live in a separate Domain source. The nRF compiler
+builds that exact source with the compact record conversion, and firmware
+startup round-trips a channel-4 high transition at 125 ms before entering
+device validation. The array-backed channel collection and `SignalCapture`
+remain outside the Embedded Swift source set; repository fact application
+still needs an allocation-free model capture representation.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact

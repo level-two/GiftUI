@@ -989,6 +989,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       failed-state fact installs its diagnostic and Start clears the message
       while preserving the failed state until a later fact. The checked image
       uses 184,384 RAM and 38,396 flash bytes.
+      The target now compiles the same portable channel/level/transition
+      primitive values and compact-record conversion as the host, with an
+      ELF-retained startup round-trip. Domain contract audit, host record
+      fixture, and target build pass; the image uses 184,384 RAM and 40,764
+      flash bytes. Array-backed capture and fact replay remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

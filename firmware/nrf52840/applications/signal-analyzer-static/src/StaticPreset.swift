@@ -125,6 +125,19 @@ public func giftUISignalAnalyzerCaptureLayout() -> UInt32 {
         ? 115_392 : 0
 }
 
+@_cdecl("giftui_signal_analyzer_capture_roundtrip")
+public func giftUISignalAnalyzerCaptureRoundtrip() -> UInt32 {
+    let transition = SignalTransition(
+        channelID: SignalChannelID(rawValue: 4),
+        timestamp: .milliseconds(125),
+        level: .high
+    )
+    guard let record = StaticSignalAnalyzerNRFCaptureRecord(transition),
+        record.transition == transition
+    else { return 0 }
+    return 1
+}
+
 @_cdecl("giftui_signal_analyzer_capture_region_valid")
 public func giftUISignalAnalyzerCaptureRegionValid(
     _ address: UnsafeMutableRawPointer?, _ bytes: UInt32

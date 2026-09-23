@@ -54,6 +54,14 @@ diagnostic in one change report; Start clears the message but leaves the
 acquisition state until a later fact. Host and retained target checks pass.
 The hardware-free image passes hard-float, zero-heap, symbol, RAM, and flash
 gates at 184,384 RAM and 38,396 flash bytes.
+The portable allocation-free `SignalChannelID`, `DigitalLevel`,
+`SignalTransition`, and `SignalChannelLevels` declarations now compile in
+Embedded Swift. The target also compiles the host's existing compact-record
+conversion and round-trips a channel-4 high transition at 125 ms through a
+retained startup entry. The Domain contract audit and host record fixture
+pass. The nRF build passes hard-float, zero-heap, symbol, RAM, and flash gates
+at 184,384 RAM and 40,764 flash bytes. Full capture replay into the model
+remains open.
 
 The selected connected assembly is the `nrf52840dk/nrf52840` with the
 480 x 320 ILI9486 PiScreen display bridge and its ADS7846 resistive-touch
