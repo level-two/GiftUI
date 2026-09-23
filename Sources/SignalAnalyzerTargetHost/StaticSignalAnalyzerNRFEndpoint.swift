@@ -7,16 +7,12 @@ import GiftUIReferenceTextResources
 import GiftUIRenderCore
 import GiftUITextResources
 
-package final class StaticSignalAnalyzerNRFFrameEnvelopeValidator:
+package struct StaticSignalAnalyzerNRFFrameEnvelopeValidator:
     RasterFrameEnvelopeValidator
 {
-    private var expected: FrameProvenance
+    private let expected: FrameProvenance
 
     package init(expected: FrameProvenance) { self.expected = expected }
-
-    package func install(_ expected: FrameProvenance) {
-        self.expected = expected
-    }
 
     package borrowing func accepts(_ provenance: FrameProvenance) -> Bool {
         provenance == expected
@@ -43,6 +39,15 @@ package typealias StaticSignalAnalyzerNRFEndpoint<Target: DisplayTarget> =
 /// display submission have completed. Construction validates the same report
 /// and raster limits used by the Static nRF host assembly.
 package enum StaticSignalAnalyzerNRFEndpointFactory {
+    package static func installExpectedProvenance<Target: DisplayTarget>(
+        _ provenance: FrameProvenance,
+        endpoint: inout StaticSignalAnalyzerNRFEndpoint<Target>
+    ) -> Bool {
+        endpoint.replaceEnvelopeValidator(
+            StaticSignalAnalyzerNRFFrameEnvelopeValidator(expected: provenance)
+        )
+    }
+
     package static func make<Transport: StaticSignalAnalyzerNRFDisplayTransport>(
         transport: consuming Transport,
         provenance: FrameProvenance,

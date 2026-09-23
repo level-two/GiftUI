@@ -1372,11 +1372,12 @@ import Testing
         defer { raster.deallocate() }
         let coverage = UnsafeMutableRawPointer.allocate(byteCount: 240, alignment: 8)
         defer { coverage.deallocate() }
-        let provenance = FrameProvenance(
-            cycle: RunCycleID(rawValue: 1),
-            semanticRevision: SemanticRevision(rawValue: 1),
-            candidateFrame: CandidateFrameID(rawValue: 1)
-        )
+        var identities = StaticSignalAnalyzerNRFPresentationIdentityOwner()
+        guard let first = identities.reserve() else {
+            Issue.record("Static nRF initial presentation identity was unavailable")
+            return
+        }
+        let provenance = first.provenance
         guard
             var endpoint = StaticSignalAnalyzerNRFEndpointFactory.make(
                 transport: StaticNRFRecordingDisplayTransport(),
@@ -1412,8 +1413,8 @@ import Testing
                     pacing: &pacing,
                     endpoint: &endpoint,
                     provenance: provenance,
-                    renderSnapshotVersion: 1,
-                    presentationRevision: PresentationRevision(rawValue: 1)
+                    renderSnapshotVersion: first.provenance.semanticRevision.rawValue,
+                    presentationRevision: first.presentationRevision
                 ) == .wait(untilMicroseconds: 250_000)
             )
             let result = StaticSignalAnalyzerNRFPacedApplicationStage.serviceAndPresent(
@@ -1423,8 +1424,8 @@ import Testing
                 pacing: &pacing,
                 endpoint: &endpoint,
                 provenance: provenance,
-                renderSnapshotVersion: 1,
-                presentationRevision: PresentationRevision(rawValue: 1)
+                renderSnapshotVersion: first.provenance.semanticRevision.rawValue,
+                presentationRevision: first.presentationRevision
             )
             switch result {
             case .completed(let reasons, let applicationResult, let presentation):
@@ -1439,7 +1440,7 @@ import Testing
                         == .handoff(
                             .offered(
                                 FrameOfferResult(disposition: .accepted, failure: nil)!,
-                                .committed(PresentationRevision(rawValue: 1))
+                                .committed(first.presentationRevision)
                             )
                         )
                 )
@@ -1451,6 +1452,68 @@ import Testing
             owner.withInteraction { state in
                 #expect(state.committedRecordCount == 6)
             }
+
+            guard let next = identities.reserve() else {
+                Issue.record("Static nRF next presentation identity was unavailable")
+                return
+            }
+            #expect(next.provenance.cycle.rawValue == first.provenance.cycle.rawValue + 1)
+            #expect(
+                StaticSignalAnalyzerNRFEndpointFactory.installExpectedProvenance(
+                    next.provenance,
+                    endpoint: &endpoint
+                )
+            )
+            let payloadsBeforeStaleOffer = endpoint.sink.target.transport.payloads
+            #expect(
+                endpoint.offer(provenance: first.provenance) { _ in
+                    Issue.record("Stale frame reached raster submission")
+                    return .complete
+                }
+                    == FrameOfferResult(
+                        disposition: .failed,
+                        failure: .invalidEnvelope
+                    )!
+            )
+            #expect(
+                endpoint.sink.target.transport.payloads == payloadsBeforeStaleOffer
+            )
+            #expect(
+                pacing.recordAcceptedFact(at: 250_001) == .success(.requestWake)
+            )
+            let second = StaticSignalAnalyzerNRFPacedApplicationStage.serviceAndPresent(
+                at: 500_000,
+                application: &owner,
+                profile: &profile,
+                pacing: &pacing,
+                endpoint: &endpoint,
+                provenance: next.provenance,
+                renderSnapshotVersion: next.provenance.semanticRevision.rawValue,
+                presentationRevision: next.presentationRevision
+            )
+            switch second {
+            case .completed(let reasons, let applicationResult, let presentation):
+                #expect(reasons == .admittedWork)
+                guard case .completed(let summary) = applicationResult else {
+                    Issue.record("Second paced application failed: \(applicationResult)")
+                    return
+                }
+                #expect(summary.application.factCount == 0)
+                #expect(summary.input.eventCount == 0)
+                #expect(
+                    presentation
+                        == .handoff(
+                            .offered(
+                                FrameOfferResult(disposition: .accepted, failure: nil)!,
+                                .committed(next.presentationRevision)
+                            )
+                        )
+                )
+            default:
+                Issue.record("Second paced presentation failed: \(second)")
+            }
+            #expect(profile.storageLifetimeState == .idle)
+            #expect(!pacing.opportunityIsActive)
         }
         #expect(endpoint.sink.target.transport.payloads > 0)
     }

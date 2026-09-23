@@ -1195,7 +1195,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       frame applies facts with an empty input drain because no physical
       presentation can admit input yet; a focused fixture verifies the
       accepted first offer and closed lifetimes. The firmware owner remains
-      open for identity allocation, endpoint lifetime, and recovery policy.
+      open for endpoint lifetime and recovery policy. A bounded Static nRF
+      identity owner now reserves the next cycle, positive semantic revision,
+      candidate frame, and presentation revision. The one-slot endpoint
+      replaces its value envelope validator only while idle; a focused
+      two-cycle fixture reuses the same endpoint, rejects stale provenance
+      before raster submission, and accepts the next identity.
       The Static nRF endpoint now owns one exact 3,840-byte raster tile and
       240-byte coverage map, with raster work limits derived from 150
       operations across the full 480 x 320 surface. A production render-offer

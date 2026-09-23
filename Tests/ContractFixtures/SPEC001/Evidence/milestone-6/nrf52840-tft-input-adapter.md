@@ -956,3 +956,11 @@ eligibility. The focused host fixture observes two bootstrap facts, six
 committed actions, a nonempty display payload, and idle profile/pacing state
 after the accepted offer. Firmware identity allocation and recovery remain
 open; this is host fixture evidence.
+
+The same host fixture now reserves two consecutive identity bundles from the
+Static nRF value owner. Semantic revision zero is excluded as the packed
+table's unpublished sentinel. Between opportunities the one-slot endpoint
+replaces its value envelope validator while idle, rejects the prior
+provenance before raster work, and accepts the second physical offer using
+the same tile, coverage, transport, profile, and application owners. Firmware
+endpoint lifetime and recovery still need implementation.

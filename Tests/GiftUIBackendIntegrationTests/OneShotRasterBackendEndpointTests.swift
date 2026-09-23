@@ -198,6 +198,43 @@ func oneShotEndpointReservesExactSlotBeforeCallingBodyOnce() {
     #expect(endpoint.sink.cancelCount == 0)
 }
 
+@Test
+func endpointRebindsEnvelopeOnlyWhileRasterSinkIsIdle() {
+    let next = FrameProvenance(
+        cycle: RunCycleID(rawValue: 11),
+        semanticRevision: SemanticRevision(rawValue: 21),
+        candidateFrame: CandidateFrameID(rawValue: 31)
+    )
+    var nonidle = makeOfferEndpoint(idle: false)
+    let refused = nonidle.replaceEnvelopeValidator(ExactEnvelopeValidator(expected: next))
+    #expect(!refused)
+    #expect(
+        nonidle.offer(provenance: next) { _ in
+            Issue.record("Rejected envelope reached raster body")
+            return .complete
+        }
+            == FrameOfferResult(disposition: .failed, failure: .invalidEnvelope)!
+    )
+
+    var idle = makeOfferEndpoint()
+    let installed = idle.replaceEnvelopeValidator(ExactEnvelopeValidator(expected: next))
+    #expect(installed)
+    #expect(
+        idle.offer(provenance: offerProvenance) { _ in
+            Issue.record("Replaced envelope reached raster body")
+            return .complete
+        }
+            == FrameOfferResult(disposition: .failed, failure: .invalidEnvelope)!
+    )
+    #expect(idle.reservationCallCount == 0)
+    #expect(
+        idle.offer(provenance: next) { sink in
+            _ = sink.finish()
+            return .complete
+        } == FrameOfferResult(disposition: .accepted, failure: nil)!
+    )
+}
+
 private struct ReservationMappingFixture: CustomTestStringConvertible {
     let name: String
     let reservation: DisplayReservationResult

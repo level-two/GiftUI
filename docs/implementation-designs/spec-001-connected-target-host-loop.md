@@ -220,7 +220,14 @@ The paced application stage now retains its pacing opportunity and profile
 attempt through the transaction. Before the first physical frame, fact
 application completes with an empty input drain; subsequent opportunities
 drain admitted input before presentation. The firmware owner still needs to
-provide identity allocation, endpoint lifetime, and recovery policy.
+join identity allocation, endpoint lifetime, and recovery policy at the
+firmware boundary.
+The Static nRF identity owner now reserves cycle, semantic, candidate, and
+presentation numbers together; semantic revision zero is skipped because the
+packed table uses it for unpublished storage. The one-slot endpoint stores
+its envelope validator as a value and replaces it only while the raster sink
+is idle. This lets consecutive paced opportunities reuse the same raster and
+transport owners while rejecting the previous frame identity.
 
 ## Resource and Failure Behavior
 

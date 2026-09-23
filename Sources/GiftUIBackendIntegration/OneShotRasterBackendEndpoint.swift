@@ -53,7 +53,7 @@ where
     package private(set) var lastDisplayError: DisplayTargetError?
     package private(set) var retainedProducerError: RenderProductionError?
 
-    private let envelopeValidator: EnvelopeValidator
+    private var envelopeValidator: EnvelopeValidator
     private var offerActive = false
 
     package init?(
@@ -84,6 +84,16 @@ where
         self.textRasterRealization = textRasterRealization
         self.envelopeValidator = envelopeValidator
         self.sink = sink
+    }
+
+    /// Rebinds a reusable endpoint to the next candidate only while no
+    /// raster offer owns its sink or payload region.
+    package mutating func replaceEnvelopeValidator(
+        _ validator: consuming EnvelopeValidator
+    ) -> Bool {
+        guard !offerActive, sink.isIdleForOffer else { return false }
+        envelopeValidator = consume validator
+        return true
     }
 
     package mutating func offer(
