@@ -948,3 +948,11 @@ publication, five-region preparation, and physical handoff while that model
 borrow remains active. The focused host fixture verifies the unbound-root
 outcome before binding and an accepted physical offer after binding; the
 firmware pacing and recovery join remains open.
+
+The paced full-cycle entry now holds the pacing opportunity and Static profile
+attempt through fact application and the physical offer. The initial cycle
+has an empty input drain until its first accepted frame installs input
+eligibility. The focused host fixture observes two bootstrap facts, six
+committed actions, a nonempty display payload, and idle profile/pacing state
+after the accepted offer. Firmware identity allocation and recovery remain
+open; this is host fixture evidence.

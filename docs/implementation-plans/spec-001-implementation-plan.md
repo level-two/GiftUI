@@ -1189,7 +1189,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       now calls semantic publication, scoped preparation, and physical handoff
       as one bounded operation, with explicit unbound, semantic, preparation,
       and handoff outcomes. The focused fixture exercises the unbound and
-      accepted paths. The paced firmware owner remains open.
+      accepted paths. A paced full-cycle entry now begins profile storage at
+      the frame boundary, applies facts and input, completes the presentation
+      transaction, and finishes both profile and pacing ownership. The first
+      frame applies facts with an empty input drain because no physical
+      presentation can admit input yet; a focused fixture verifies the
+      accepted first offer and closed lifetimes. The firmware owner remains
+      open for identity allocation, endpoint lifetime, and recovery policy.
       The Static nRF endpoint now owns one exact 3,840-byte raster tile and
       240-byte coverage map, with raster work limits derived from 150
       operations across the full 480 x 320 surface. A production render-offer

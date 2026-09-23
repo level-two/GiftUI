@@ -377,6 +377,22 @@ package struct StaticSignalAnalyzerNRFApplicationOwner: ~Copyable {
             return .failure(.factAdmissionUnavailable)
         }
 
+        // Admission cannot queue a pointer event before the first physical
+        // frame. Let the initial opportunity publish that frame before asking
+        // the interaction handler to begin a drain.
+        guard input.pointee.hasPhysicalPresentation else {
+            return .completed(
+                StaticSignalAnalyzerNRFApplicationOpportunitySummary(
+                    application: application,
+                    input: StaticSignalAnalyzerNRFInputDrainSummary(
+                        eventCount: 0,
+                        dispatchedActionCount: 0,
+                        cancelledOrRejectedCount: 0
+                    )
+                )
+            )
+        }
+
         switch runInputOpportunity() {
         case .completed(let input):
             return .completed(

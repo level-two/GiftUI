@@ -216,7 +216,11 @@ The production presentation transaction joins semantic publication,
 five-region preparation, and physical handoff in that borrow. It returns
 distinct unbound-root, semantic, preparation, and handoff outcomes to the
 caller, leaving opportunity pacing and recovery with the firmware owner.
-The paced firmware owner still surrounds this focused preparation stage.
+The paced application stage now retains its pacing opportunity and profile
+attempt through the transaction. Before the first physical frame, fact
+application completes with an empty input drain; subsequent opportunities
+drain admitted input before presentation. The firmware owner still needs to
+provide identity allocation, endpoint lifetime, and recovery policy.
 
 ## Resource and Failure Behavior
 

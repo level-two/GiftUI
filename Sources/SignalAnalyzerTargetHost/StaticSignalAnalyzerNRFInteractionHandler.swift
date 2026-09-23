@@ -17,6 +17,8 @@ package struct StaticSignalAnalyzerNRFInteractionSession: ~Copyable {
 
     package init() {}
 
+    package var hasPhysicalPresentation: Bool { presentationRevision != nil }
+
     package mutating func installPhysicalPresentation(
         _ revision: PresentationRevision
     ) {

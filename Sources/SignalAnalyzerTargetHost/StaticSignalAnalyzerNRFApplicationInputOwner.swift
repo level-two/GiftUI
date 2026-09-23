@@ -15,6 +15,9 @@ package struct StaticSignalAnalyzerNRFApplicationInputOwner: ~Copyable {
     }
 
     package var pendingCount: UInt16 { input.pendingCount }
+    package var hasPhysicalPresentation: Bool {
+        interactionSession.hasPhysicalPresentation
+    }
 
     package mutating func installPhysicalPresentation(rawValue: UInt32) {
         _ = input.installPhysicalPresentation(rawValue: rawValue)

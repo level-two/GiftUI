@@ -1348,6 +1348,114 @@ import Testing
     }
 }
 
+@Test func staticNRFPacedStageKeepsProfileActiveThroughPhysicalHandoff() {
+    withStaticNRFPresentationInputStorage { storage in
+        guard case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate(),
+            let metadata = StaticSignalAnalyzerNRFGeneratedMetadataFactory.make(
+                assemblyReport: report,
+                canvasTable: StaticSignalAnalyzerNRFCanvasCallableTable()
+            ),
+            var profile = StaticSignalAnalyzerNRFProfileBinding.make(
+                assemblyReport: report,
+                storage: storage,
+                metadata: metadata
+            ),
+            var application = StaticSignalAnalyzerNRFApplicationStorage(
+                assemblyReport: report,
+                inputSourceRawValue: 51
+            )
+        else {
+            Issue.record("Static nRF paced presentation owners did not construct")
+            return
+        }
+        let raster = UnsafeMutableRawPointer.allocate(byteCount: 3_840, alignment: 8)
+        defer { raster.deallocate() }
+        let coverage = UnsafeMutableRawPointer.allocate(byteCount: 240, alignment: 8)
+        defer { coverage.deallocate() }
+        let provenance = FrameProvenance(
+            cycle: RunCycleID(rawValue: 1),
+            semanticRevision: SemanticRevision(rawValue: 1),
+            candidateFrame: CandidateFrameID(rawValue: 1)
+        )
+        guard
+            var endpoint = StaticSignalAnalyzerNRFEndpointFactory.make(
+                transport: StaticNRFRecordingDisplayTransport(),
+                provenance: provenance,
+                assemblyReport: report,
+                rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 3_840),
+                coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 240)
+            )
+        else {
+            Issue.record("Static nRF paced presentation endpoint did not construct")
+            return
+        }
+        var pacing = HostWakePacingController(
+            policy: GeneratedSignalAnalyzerPresets.nrf52840Static().pacing,
+            initialFrameOriginMicroseconds: 0
+        )
+        application.withAddressStableOwner { owner in
+            let repository = StaticNRFPresentationInputRepository()
+            #expect(
+                owner.bindRoot(repository: repository)
+                    == .bound(ObservableTargetGeneration(rawValue: 0))
+            )
+            #expect(
+                owner.installRepositoryObservation()
+                    == .started(captureSequence: 1, stateSequence: 2)
+            )
+            #expect(pacing.recordAcceptedFact(at: 1) == .success(.requestWake))
+            #expect(
+                StaticSignalAnalyzerNRFPacedApplicationStage.serviceAndPresent(
+                    at: 249_999,
+                    application: &owner,
+                    profile: &profile,
+                    pacing: &pacing,
+                    endpoint: &endpoint,
+                    provenance: provenance,
+                    renderSnapshotVersion: 1,
+                    presentationRevision: PresentationRevision(rawValue: 1)
+                ) == .wait(untilMicroseconds: 250_000)
+            )
+            let result = StaticSignalAnalyzerNRFPacedApplicationStage.serviceAndPresent(
+                at: 250_000,
+                application: &owner,
+                profile: &profile,
+                pacing: &pacing,
+                endpoint: &endpoint,
+                provenance: provenance,
+                renderSnapshotVersion: 1,
+                presentationRevision: PresentationRevision(rawValue: 1)
+            )
+            switch result {
+            case .completed(let reasons, let applicationResult, let presentation):
+                #expect(reasons == .admittedWork)
+                guard case .completed(let summary) = applicationResult else {
+                    Issue.record("Paced application failed: \(applicationResult)")
+                    return
+                }
+                #expect(summary.application.factCount == 2)
+                #expect(
+                    presentation
+                        == .handoff(
+                            .offered(
+                                FrameOfferResult(disposition: .accepted, failure: nil)!,
+                                .committed(PresentationRevision(rawValue: 1))
+                            )
+                        )
+                )
+            default:
+                Issue.record("Paced presentation failed: \(result)")
+            }
+            #expect(!pacing.opportunityIsActive)
+            #expect(profile.storageLifetimeState == .idle)
+            owner.withInteraction { state in
+                #expect(state.committedRecordCount == 6)
+            }
+        }
+        #expect(endpoint.sink.target.transport.payloads > 0)
+    }
+}
+
 /// Host-only probe for the common validation stage. It is not the production
 /// packed layout workspace and does not claim embedded storage conformance.
 private struct StaticNRFValidationOnlyLayoutWorkspace: LayoutWorkspace {
@@ -1458,9 +1566,13 @@ private func populateSyntheticNRFCompleteTable(
 private final class StaticNRFPresentationInputRepository:
     SignalAcquisitionRepository
 {
-    func startObservingCapture(sink: some SignalCaptureSink) {}
+    func startObservingCapture(sink: some SignalCaptureSink) {
+        _ = sink.receive(.snapshot(revision: 0, capture: .empty()))
+    }
     func stopObservingCapture() {}
-    func startObservingAcquisitionState(sink: some AcquisitionStateSink) {}
+    func startObservingAcquisitionState(sink: some AcquisitionStateSink) {
+        _ = sink.receive(.idle)
+    }
     func stopObservingAcquisitionState() {}
     func start() throws {}
     func stop() {}
