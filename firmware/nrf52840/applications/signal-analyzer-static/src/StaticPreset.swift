@@ -36,3 +36,12 @@ public func giftUISignalAnalyzerStaticPreset() -> UInt32 {
     let preset = StaticSignalAnalyzerPreset()
     return preset.isValid ? 360_515_885 : 0
 }
+
+@_cdecl("giftui_signal_analyzer_capture_layout")
+public func giftUISignalAnalyzerCaptureLayout() -> UInt32 {
+    let recordSize = MemoryLayout<StaticSignalAnalyzerNRFCaptureRecord>.size
+    let recordStride = MemoryLayout<StaticSignalAnalyzerNRFCaptureRecord>.stride
+    return recordSize == 24 && recordStride == 24
+        && StaticSignalAnalyzerNRFCaptureRegions.requiredByteCount == 115_392
+        ? 115_392 : 0
+}

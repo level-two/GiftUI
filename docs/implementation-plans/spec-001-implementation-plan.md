@@ -935,6 +935,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       need to consume these records. The scoped composition now lends the
       live capture history with its exact record region and other application
       owners; its host fixture receives a transition inside that lifetime.
+      The compact record and checked region borrower now compile as the same
+      shared Swift source in the nRF firmware. Its entry checks the target
+      record size/stride and 115,392-byte two-slot layout before diagnostic
+      device startup; the checked ELF retains the entry at 184,128 RAM and
+      35,164 flash bytes. The production model/repository join remains open.
       A
       target-local,
       allocation-free

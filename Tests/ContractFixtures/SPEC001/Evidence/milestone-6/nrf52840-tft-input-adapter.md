@@ -1062,3 +1062,13 @@ and production firmware linkage are still open.
 The scoped presentation composition now lends that live history alongside its
 record region and the other target owners. Its host fixture admits and reads
 one transition within the shared lifetime; this is still host-native evidence.
+
+The shared compact record and region borrower now compile in the Embedded
+Swift firmware. `main` calls a Swift layout entry before device setup and
+rejects any target size/stride other than 24 bytes or a two-slot total other
+than 115,392 bytes. The checked build retains that entry and passes ARMv7E-M
+VFP hard-float, zero-heap, required-symbol, RAM, and flash gates. Its exact
+artifacts are under `.build/nrf52840/signal-analyzer-static/`: `zephyr/zephyr.elf`,
+`zephyr/zephyr.hex`, `zephyr/zephyr.map`, `zephyr/zephyr.dts`, and `reports/`.
+The inspected image uses 184,128 RAM bytes and 35,164 flash bytes. It still
+runs diagnostic device validation rather than the production Static host.

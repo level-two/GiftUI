@@ -448,6 +448,13 @@ together with the generated application/profile owners, pacing, identity,
 endpoint, and health. The policy begins at revision zero within that scope;
 its host fixture mutates the live slot before the scope ends.
 
+The compact record and raw region borrower are split from portable
+`SignalTransition` conversion. The same primitive source now enters the
+firmware's whole-module Embedded Swift build. A C-called Swift layout entry
+checks the target's 24-byte size/stride and exact two-slot byte count before
+device validation. This proves the encoding layout in the target compiler;
+the current firmware still does not run the capture policy or portable model.
+
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact
 root identity, the six-case `SignalAnalyzerAction` specialization, and dense

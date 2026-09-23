@@ -39,6 +39,7 @@ set(giftui_static_swift_inputs
     "${giftui_project_root}/Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInputCoordinator.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInputABI.swift"
+    "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCaptureStorage.swift"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/StaticPreset.swift"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/StaticInputABI.swift"
 )
