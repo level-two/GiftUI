@@ -1187,6 +1187,15 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       counts with the generated layout view. Firmware startup checks the title
       scalar through this target view. The checked image uses 187,840 RAM and
       82,860 flash bytes. Layout and render execution remain open.
+      The first target-safe layout scope codec now reads and writes the exact
+      98 × 32-byte region format for checked measurements and placements.
+      A host differential fixture compares the complete region bytes with the
+      existing layout codec, including a negative origin, clip, mismatched
+      size refusal, and reserved-byte corruption. Firmware startup borrows the
+      actual 3,136-byte profile slice and stages one root scope after semantic
+      publication. The checked image uses 187,840 RAM and 83,756 flash bytes.
+      This is a codec probe; the common layout measure/place pass and resolved
+      result publication remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

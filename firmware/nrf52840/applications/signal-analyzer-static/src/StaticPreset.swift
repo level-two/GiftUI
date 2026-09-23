@@ -158,6 +158,35 @@ public func giftUISignalAnalyzerTopologyValid(
     return 1
 }
 
+@_cdecl("giftui_signal_analyzer_layout_scope_valid")
+public func giftUISignalAnalyzerLayoutScopeValid(
+    _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32
+) -> UInt32 {
+    guard let profile, bytes == 39_696 else { return 0 }
+    let published = UnsafeMutableRawBufferPointer(
+        start: profile.advanced(by: 3_024), count: 3_024
+    )
+    let layout = UnsafeMutableRawBufferPointer(
+        start: profile.advanced(by: 6_048), count: 3_136
+    )
+    guard let view = StaticSignalAnalyzerNRFEmbeddedSemanticView(
+        published: published
+    ), let root = view.rootPrimitiveIdentity else { return 0 }
+    layout.initializeMemory(as: UInt8.self, repeating: 0)
+    guard StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodec.stage(
+        identity: root, idealWidth: 480, idealHeight: 320,
+        width: 480, height: 320, at: 0, in: layout
+    ), StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodec.place(
+        identity: root, originX: 0, originY: 0,
+        width: 480, height: 320,
+        clipX: 0, clipY: 0, clipWidth: 480, clipHeight: 320,
+        at: 0, in: layout
+    ), StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodec.read(
+        at: 0, in: layout
+    )?.identity == root else { return 0 }
+    return 1
+}
+
 @_cdecl("giftui_signal_analyzer_source_valid")
 public func giftUISignalAnalyzerSourceValid() -> UInt32 {
     var source = StaticSignalAnalyzerNRFDeterministicSource()

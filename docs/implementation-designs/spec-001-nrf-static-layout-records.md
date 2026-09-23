@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-09-22
-updated: 2026-09-22
+updated: 2026-09-23
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -89,6 +89,10 @@ prove representability. Decoding reconstructs full `GeometryScalar` values.
 The first checked scope codec now stores stable identity, ideal/resolved
 sizes, placed origin, and clip inside one slot and rejects signed-16-bit
 overflow, duplicate placement, wrong region size, and corrupt reserved bytes.
+The corresponding target-safe codec now compiles into the nRF image, and a
+host differential fixture compares its entire 3,136-byte region against this
+host codec for a checked measurement and placement. Firmware startup uses the
+actual profile slice for a root-scope probe; complete layout is still open.
 The production adapter must still prove every field's range under the real
 hierarchy; an unrepresentable value fails closed, never wraps or clamps.
 
