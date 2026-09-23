@@ -101,11 +101,36 @@ import Testing
                 }
                 #expect(identity == render.semanticIdentity(at: ordinal))
                 #expect(view.childCount(of: identity) == render.childCount(of: identity))
+                #expect(
+                    (view.layoutPrimitiveKind(of: identity) != nil)
+                        == (layout.primitive(at: identity) != nil)
+                )
                 if let children = view.childCount(of: identity) {
                     for child in UInt16(0) ..< children {
                         #expect(
                             view.child(of: identity, at: child)
                                 == render.child(of: identity, at: child)
+                        )
+                    }
+                }
+                #expect(view.layoutChildCount(of: identity) == layout.childCount(of: identity))
+                if let layoutChildren = layout.childCount(of: identity) {
+                    for child in UInt16(0) ..< layoutChildren {
+                        #expect(
+                            view.layoutChild(of: identity, at: child)
+                                == layout.child(of: identity, at: child)
+                        )
+                    }
+                }
+                #expect(
+                    view.layoutModifierCount(of: identity)
+                        == layout.modifierCount(of: identity)
+                )
+                if let modifiers = layout.modifierCount(of: identity) {
+                    for modifier in UInt16(0) ..< modifiers {
+                        #expect(
+                            view.layoutModifierScope(of: identity, at: modifier)
+                                == layout.modifierScope(of: identity, at: modifier)
                         )
                     }
                 }

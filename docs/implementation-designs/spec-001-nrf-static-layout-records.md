@@ -53,6 +53,11 @@ resolved-layout sink. The production profile owns exactly 3,136
 `layoutCandidateBytes` and 4,704 `renderWorkspaceBytes`; both are attempt-local
 and disjoint. Extra global arrays or heap-backed buffers would evade the
 approved storage audit.
+The target-safe published semantic view now resolves primitive children beneath
+modifier chains and exposes the same modifier-scope order as the host layout
+projection. A differential fixture checks every normal/diagnostic scope and
+edge. Primitive and modifier payload decoding, measurement, and placement
+remain the next layout work.
 
 ## Proposed Internal Organization
 

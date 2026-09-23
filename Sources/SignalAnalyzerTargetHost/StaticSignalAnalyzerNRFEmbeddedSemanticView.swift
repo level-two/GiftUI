@@ -23,6 +23,71 @@ package struct StaticSignalAnalyzerNRFEmbeddedSemanticView {
         primitiveIdentity(beneath: 0)
     }
 
+    /// Layout follows primitive children beneath their modifier chains.
+    package func layoutPrimitiveKind(of identity: UInt16) -> StaticSignalAnalyzerNRFScopeKind? {
+        guard let record = scope(at: identity), record.kind != .modifier else {
+            return nil
+        }
+        return record.kind
+    }
+
+    package func layoutChildCount(of identity: UInt16) -> UInt16? {
+        guard layoutPrimitiveKind(of: identity) != nil else { return nil }
+        return childCount(of: identity)
+    }
+
+    package func layoutChild(of identity: UInt16, at index: UInt16) -> UInt16? {
+        guard layoutPrimitiveKind(of: identity) != nil,
+            let childIdentity = child(of: identity, at: index),
+            let childOrdinal = ordinal(of: childIdentity)
+        else { return nil }
+        return primitiveIdentity(beneath: childOrdinal)
+    }
+
+    package func layoutModifierCount(of identity: UInt16) -> UInt16? {
+        guard layoutPrimitiveKind(of: identity) != nil,
+            let start = ordinal(of: identity),
+            let record = StaticSignalAnalyzerNRFPackedSemanticRecords.scope(
+                at: start, in: region
+            )
+        else { return nil }
+        var parent = record.parent
+        var count: UInt16 = 0
+        while parent != StaticSignalAnalyzerNRFPackedSemanticRecords.missingOrdinal {
+            guard
+                let modifier = StaticSignalAnalyzerNRFPackedSemanticRecords.scope(
+                    at: parent, in: region
+                )
+            else { return nil }
+            if modifier.kind != .modifier { break }
+            count += 1
+            parent = modifier.parent
+        }
+        return count
+    }
+
+    package func layoutModifierScope(of identity: UInt16, at index: UInt16) -> UInt16? {
+        guard layoutPrimitiveKind(of: identity) != nil,
+            let start = ordinal(of: identity),
+            let record = StaticSignalAnalyzerNRFPackedSemanticRecords.scope(
+                at: start, in: region
+            )
+        else { return nil }
+        var parent = record.parent
+        var current: UInt16 = 0
+        while parent != StaticSignalAnalyzerNRFPackedSemanticRecords.missingOrdinal {
+            guard
+                let modifier = StaticSignalAnalyzerNRFPackedSemanticRecords.scope(
+                    at: parent, in: region
+                ), modifier.kind == .modifier
+            else { return nil }
+            if current == index { return modifier.identity }
+            current += 1
+            parent = modifier.parent
+        }
+        return nil
+    }
+
     package func semanticIdentity(at ordinal: UInt16) -> UInt16? {
         guard ordinal < scopeCount else { return nil }
         return StaticSignalAnalyzerNRFPackedSemanticRecords.scope(at: ordinal, in: region)?

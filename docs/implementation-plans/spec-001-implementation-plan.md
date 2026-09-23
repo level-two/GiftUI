@@ -1212,6 +1212,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       image uses 187,840 RAM and 86,556 flash bytes; the registered nRF gate
       passes 248 host tests and the seven C fixtures. Full layout measurement
       and raster consumption remain open.
+      The target-safe semantic borrow now resolves layout children beneath
+      modifier chains and exposes the same modifier-scope order as the host
+      layout projection. A differential fixture checks the complete diagnostic
+      hierarchy and the firmware startup probe checks the primitive root.
+      Payload decoding, measurement, and placement remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

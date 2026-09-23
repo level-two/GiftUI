@@ -171,7 +171,11 @@ public func giftUISignalAnalyzerLayoutScopeValid(
     )
     guard let view = StaticSignalAnalyzerNRFEmbeddedSemanticView(
         published: published
-    ), let root = view.rootPrimitiveIdentity else { return 0 }
+    ), let root = view.rootPrimitiveIdentity,
+        view.layoutPrimitiveKind(of: root) != nil,
+        view.layoutChildCount(of: root) != nil,
+        view.layoutModifierCount(of: root) != nil
+    else { return 0 }
     layout.initializeMemory(as: UInt8.self, repeating: 0)
     guard StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodec.stage(
         identity: root, idealWidth: 480, idealHeight: 320,
