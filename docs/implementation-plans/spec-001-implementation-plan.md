@@ -1029,6 +1029,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       The registered nRF SPEC-001 driver passes 230 host tests, seven C HAL
       fixtures, the ownership probe, and the SPEC-015 cross-build in report
       `20260923T124615Z-3807`.
+      Capture-mutation admission now assigns nonwrapping sequences within the
+      exact active region and enforces the `20/2/6` producer quotas before
+      writing a compact record. Host tests cover quotas, producer exclusivity,
+      sealing, quiescence, and sequence exhaustion. Firmware startup exercises
+      the same owner; the checked image uses 184,384 RAM and 49,164 flash
+      bytes. Snapshot, state, and reserved-failure admission remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

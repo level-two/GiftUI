@@ -92,7 +92,7 @@ package struct StaticSignalAnalyzerNRFCompactFactRing: ~Copyable {
     }
 
     private mutating func resetMetadata() {
-        storage[Self.metadataOffset ..< Self.requiredByteCount]
+        storage[Self.metadataOffset ..< Self.metadataOffset + 6]
             .initializeMemory(as: UInt8.self, repeating: 0)
     }
 }

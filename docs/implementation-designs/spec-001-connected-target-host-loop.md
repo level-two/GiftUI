@@ -562,6 +562,13 @@ sealed region; it refuses an occupied destination. Host tests cover full
 capacity, refusal, seal, ordered drain, and reuse, and firmware startup
 exercises the actual C profile storage. Snapshot, acquisition-state, and
 reserved-failure variants still need target admission and ordering.
+The capture-mutation admission owner now holds the producer category and
+transition/bootstrap/action counters in the active region reserve. It applies
+the generated `20/2/6` producer limits, assigns nonwrapping `UInt32` sequences
+only after representability and capacity checks, seals into the second region,
+and quiesces/discards without allocation. The target startup checks this route
+against the actual C profile storage. Full fact classification still requires
+snapshot, acquisition-state, and reserved-failure paths.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact

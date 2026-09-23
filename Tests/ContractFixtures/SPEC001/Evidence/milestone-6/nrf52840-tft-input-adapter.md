@@ -19,6 +19,12 @@ The registered `nrf52840-embedded` SPEC-001 driver then passed 230 host tests,
 seven C HAL fixtures, the ownership probe, and the SPEC-015 cross-build. Its
 immutable report is
 `.build/contract-reports/spec-001/20260923T124615Z-3807/nrf52840-embedded/`.
+The capture-only admission owner now stores producer category, three quota
+counters, and next sequence inside the active ring reserve. It enforces the
+`20/2/6` limits, rejects nested producers and sequence wrap, and preserves
+accepted sequence order through sealing. The target startup check uses the
+same owner and actual C profile region. Its checked build passes at 184,384
+RAM and 49,164 flash bytes. Other fact kinds remain pending.
 
 ## Fixed typed model-location precursor
 

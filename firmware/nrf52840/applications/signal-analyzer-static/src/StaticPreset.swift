@@ -167,21 +167,25 @@ public func giftUISignalAnalyzerCompactRingValid(
 ) -> UInt32 {
     guard let profile, bytes == 36_368 else { return 0 }
     let storage = UnsafeMutableRawBufferPointer(start: profile, count: Int(bytes))
-    guard
-        var active = StaticSignalAnalyzerNRFCompactFactRing(
-            storage: UnsafeMutableRawBufferPointer(rebasing: storage[31_632 ..< 33_808])
+    guard var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
+        activeStorage: UnsafeMutableRawBufferPointer(
+            rebasing: storage[31_632 ..< 33_808]
         ),
-        var sealed = StaticSignalAnalyzerNRFCompactFactRing(
-            storage: UnsafeMutableRawBufferPointer(rebasing: storage[33_808 ..< 35_984])
+        sealedStorage: UnsafeMutableRawBufferPointer(
+            rebasing: storage[33_808 ..< 35_984]
         )
+    )
     else { return 0 }
     let change = SignalCaptureChange.reset(baseRevision: 0, baselines: .allLow)
-    guard let fact = StaticSignalAnalyzerNRFCompactCaptureFact(
-        sequence: 1, revision: 1, change: change
-    ), active.append(fact), active.seal(into: &sealed),
-        active.count == 0, sealed.count == 1,
-        sealed.takeFirst()?.publication?.change == change,
-        sealed.count == 0
+    guard admission.beginProducer(.bootstrap),
+        admission.admitCaptureMutation(revision: 1, change: change)
+            == .accepted(sequence: 1)
+    else { return 0 }
+    admission.endProducer()
+    guard admission.seal(), admission.pendingCompactCount == 0,
+        admission.sealedCompactCount == 1,
+        admission.takeNextSealed()?.publication?.change == change,
+        admission.sealedCompactCount == 0
     else { return 0 }
     return 1
 }
