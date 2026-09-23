@@ -1638,6 +1638,18 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       revision; the host fixture rejects an event tagged with the previous
       revision and admits a resynchronized event for the replacement. The
       physical offer and firmware loop remain open.
+      The nRF image now compiles the common Layout, Drawing, render, and
+      operation-major RGB565 raster path. Retained startup probes and an
+      exact-source native harness derive both an empty-capture frame and a
+      one-transition frame, stream all five Canvas operations with 121 glyphs,
+      rasterize fill/glyph/stroke coverage in the 480 x 4 tile, and scan
+      borrowed horizontal runs. The reference bitmap records and payload are
+      checked against the host catalogue. A synchronous ILI9486-shaped
+      callback validates each run, and an injected post-begin refusal verifies
+      whole-stream discard. The latest registered hardware-free gate passes
+      with 187,904 RAM and 197,628 flash bytes. Real driver submission,
+      repeated opportunities, normalized action routing, and the firmware
+      lifecycle join remain open; see the [nRF T6.8 evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md).
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

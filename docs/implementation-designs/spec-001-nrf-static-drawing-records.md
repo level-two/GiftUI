@@ -155,7 +155,15 @@ Canvases through the common producer using a scoped semantic/layout/path/plan
 borrow. The approved SPEC-001, SPEC-008, and SPEC-015 amendment reserves 145
 ordinary and 150 combined operation slots for the bounded hierarchy. All eight
 host cases pass render preflight and stream through the approved sink capacity.
-Golden operation comparison and firmware linkage remain open.
+The nRF firmware now compiles shared Canvas derivation, combined render
+preflight and streaming, all three shared raster coverages, and operation-major
+tile traversal. Exact-source native probes execute empty and rising-transition
+five-Canvas frames into the fixed 3,840-byte RGB565 tile and 240-byte coverage
+map, then emit borrowed horizontal runs. The reference bitmap payload and
+record table are generated from the host catalogue. A synchronous display
+write-shaped callback is validated, including post-begin refusal containment.
+Golden operation comparison, the real ILI9486 submission join, and the paced
+production firmware loop remain open.
 
 ## Code and Evidence Links
 
@@ -163,6 +171,8 @@ Golden operation comparison and firmware linkage remain open.
 - [Generated Embedded Canvas mapping](../../Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFEmbeddedCanvasTable.generated.swift)
 - [Canvas mapping generator](../../scripts/contracts/generate-spec-001-nrf-canvas-table.rb)
 - [Embedded render preflight](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedRenderPreflight.swift)
+- [Embedded raster sink](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedRasterSink.swift)
+- [Embedded borrowed tile runs](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedTileRuns.swift)
 - [Fixed live-path store](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLivePathStorage.swift)
 - [Live-path host tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFLivePathStorageTests.swift)
 - [Drawing-plan records](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanRecords.swift)
