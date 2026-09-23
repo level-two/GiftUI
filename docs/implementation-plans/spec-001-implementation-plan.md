@@ -1152,7 +1152,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       operations across the full 480 x 320 surface. A production render-offer
       helper streams the generated normal and seven diagnostic hierarchies
       through that endpoint in host fixtures with accepted synchronous RGB565
-      submissions. The live application host and firmware loop remain open.
+      submissions. The 240-byte coverage map now has its own exact-size
+      firmware symbol and is included in the 155,840-byte named-storage
+      self-check. The hardware-free nRF build passes ABI, zero-heap, symbol,
+      and resource gates at 184,128 RAM bytes and 34,400 flash bytes. The live
+      application host and firmware loop remain open.
       A direct Static interaction occurrence reader now maps six generated
       action scopes through resolved bounds and ancestor disable modifiers;
       the eight generated hierarchy fixtures verify identities, action codes,

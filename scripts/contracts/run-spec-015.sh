@@ -154,6 +154,7 @@ if [[ "${profile}" == "nrf52840-embedded" ]]; then
     named_profile_storage_bytes="$(symbol_size giftui_signal_analyzer_profile_storage)"
     named_capture_storage_bytes="$(symbol_size giftui_signal_analyzer_capture_storage)"
     named_raster_staging_bytes="$(symbol_size giftui_signal_analyzer_raster_staging)"
+    named_raster_coverage_bytes="$(symbol_size giftui_signal_analyzer_raster_coverage)"
     output_hash="$(shasum -a 256 "${semantic_report}" | awk '{print $1}')"
     artifact_hash="$(shasum -a 256 "${artifact}" | awk '{print $1}')"
     {
@@ -165,6 +166,7 @@ if [[ "${profile}" == "nrf52840-embedded" ]]; then
         printf '# named_profile_storage_bytes\t%s\n' "${named_profile_storage_bytes}"
         printf '# named_capture_storage_bytes\t%s\n' "${named_capture_storage_bytes}"
         printf '# named_raster_staging_bytes\t%s\n' "${named_raster_staging_bytes}"
+        printf '# named_raster_coverage_bytes\t%s\n' "${named_raster_coverage_bytes}"
         printf '# analyzed_entry_stack_bytes\t8\n'
         printf '# connected_execution\tnot-collected\n'
     } >"${output}"

@@ -813,6 +813,27 @@ retains exact surface selection and producer-failure mapping for the live
 owner. This remains hardware-free endpoint evidence, not connected display
 evidence.
 
+The firmware now reserves a separately named 240-byte touched-pixel bitmap
+beside its existing 3,840-byte raster slot. The entry self-check counts
+155,840 named application-storage bytes, and the build gate checks the new
+symbol's exact linked size. A hardware-free `signal-analyzer-static` build
+passed ARMv7E-M, VFP hard-float, zero-heap, forbidden-symbol, exact-size,
+RAM, and flash gates. The inspected totals are 184,128 RAM bytes and 34,400
+flash bytes. The built Swift entry still contains the preset/input diagnostic
+source set; this build does not establish linked application-host execution.
+The full SPEC-015 `nrf52840-embedded` runner was attempted but stopped in its
+shared host-test phase at the Dynamic Pi Drawing pipeline's existing
+`invariantViolation`, before that runner's cross-build/report phase. The
+direct nRF build and its inspection remain the evidence for this storage
+change.
+
+| Artifact | SHA-256 |
+| --- | --- |
+| `zephyr.elf` | `5335f20e5df7f4936e7fce5e4e97a6276c3c977119a4bcb49ea55c321ba91b02` |
+| `zephyr.hex` | `1dacee1dd137eddcefdc8e2a4cc85e1052b92274912aa48b86d3a03c980cff7e` |
+| `zephyr.map` | `88bcefea8ed680f4edf0747f9198c6e626b0720a44eb9d43fa015633d6434cbe` |
+| `zephyr.dts` | `042dd0ead8283db2cb12d0ff36caad849f8c88787859202809cd03bf17aef6d7` |
+
 The generated Static action reader now resolves six occurrence identities,
 action codes, paint order, bounds, clips, and inherited disable modifiers
 directly from the borrowed semantic candidate and published layout. Eight
