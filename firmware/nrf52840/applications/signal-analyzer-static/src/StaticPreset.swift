@@ -577,6 +577,21 @@ public func giftUISignalAnalyzerFullCanvasValid(
         rasterSink.tileVisits > 0, rasterSink.submittedRuns > 0,
         rasterSink.submittedBytes > 0
     else { return 0 }
+    guard var refusingSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(
+        rasterRegion: UnsafeMutableRawBufferPointer(
+            start: raster, count: Int(rasterBytes)
+        ), coverageRegion: UnsafeMutableRawBufferPointer(
+            start: coverage, count: Int(coverageBytes)
+        ), write: giftUISignalAnalyzerRefuseRGB565
+    ), case .failure(.invariantViolation) =
+        StaticSignalAnalyzerNRFEmbeddedRenderPreflight.streamCombined(
+            semantic: semantic, layout: resolved,
+            textRegion: UnsafeMutableRawBufferPointer(
+                start: profile.advanced(by: 9_184), count: 4_704
+            ), drawing: drawing, expectedHeader: renderHeader,
+            sink: &refusingSink
+        ), !refusingSink.isFinished
+    else { return 0 }
     var occurrence: UInt16 = 1
     while occurrence < 5 {
         guard let identity = source.canvasIdentity(at: occurrence),
@@ -700,6 +715,20 @@ public func giftUISignalAnalyzerProbeRGB565(
         byteCount == Int(width) * 2, pixels != nil
     else { return -1 }
     return 0
+}
+
+@_cdecl("giftui_signal_analyzer_refuse_rgb565")
+public func giftUISignalAnalyzerRefuseRGB565(
+    _ x: UInt16, _ y: UInt16, _ width: UInt16, _ height: UInt16,
+    _ pixels: UnsafePointer<UInt8>?, _ byteCount: Int
+) -> Int32 {
+    _ = x
+    _ = y
+    _ = width
+    _ = height
+    _ = pixels
+    _ = byteCount
+    return -1
 }
 
 @_cdecl("giftui_signal_analyzer_tile_valid")

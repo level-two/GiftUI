@@ -1402,3 +1402,12 @@ passed at
 The checked image uses 187,904 RAM and 197,276 flash bytes. Passing the real
 driver function from the production lifecycle and handling its failures
 remain open.
+
+A second injected write callback now refuses a post-begin RGB565 run. The
+exact-source native probe requires `.invariantViolation` and an unfinished
+raster sink, matching SPEC-008's rule that only `begin` refusal returns
+`.sinkRefused` and later refusal discards the stream. The registered nRF
+SPEC-001 run passed at
+`.build/contract-reports/spec-001/20260923T230313Z-45398/nrf52840-embedded/`.
+The checked image uses 187,904 RAM and 197,628 flash bytes. The real driver
+and production lifecycle are not yet joined.
