@@ -1358,3 +1358,13 @@ nRF SPEC-001 run passed at
 `.build/contract-reports/spec-001/20260923T223231Z-32771/nrf52840-embedded/`.
 The checked image uses 187,904 RAM and 172,796 flash bytes. The production
 operation stream is not yet connected to this raster path or the display.
+
+The firmware now compiles shared operation-major tile traversal. The retained
+probe visits one clipped tile, invokes shared fill coverage through its
+replacement callback, consumes the tile's coverage, and checks a single visit
+with no active tile left behind. Exact-source native execution and the
+registered nRF SPEC-001 run passed at
+`.build/contract-reports/spec-001/20260923T223729Z-35038/nrf52840-embedded/`.
+The checked image uses 187,904 RAM and 174,124 flash bytes. This establishes
+the traversal primitive; frame operations and display submission are still
+to be connected.

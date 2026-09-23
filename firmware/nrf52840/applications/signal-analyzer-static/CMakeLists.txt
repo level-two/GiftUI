@@ -92,6 +92,7 @@ set(giftui_static_swift_inputs
     "${giftui_project_root}/Sources/GiftUIRasterCore/RasterFillCoverage.swift"
     "${giftui_project_root}/Sources/GiftUIRasterCore/RasterStrokeCoverage.swift"
     "${giftui_project_root}/Sources/GiftUIRasterCore/RasterGlyphCoverage.swift"
+    "${giftui_project_root}/Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift"
     "${giftui_reference_bitmap}"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedFontRaster.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFTileStorage.swift"

@@ -749,6 +749,31 @@ public func giftUISignalAnalyzerTileValid(
         glyphPixels > 0, payloadBytes == 24,
         tile.finishTile()
     else { return 0 }
+    guard let fourth = Rect(
+        origin: Point(x: 0, y: 12), size: Size(width: 480, height: 4)!
+    ), let small = Rect(
+        origin: Point(x: 0, y: 12), size: Size(width: 2, height: 2)!
+    ) else { return 0 }
+    var consumedTiles: UInt32 = 0
+    let traversal = OperationMajorTileTraversal.visit(
+        operationClip: small, damageBounds: fourth, workspace: &tile,
+        { damage, replace in
+            RasterFillCoverage.rasterize(
+                FillRectOperation(bounds: small, clip: small, color: .white),
+                descriptor: descriptor, damageBounds: damage, replace
+            ) == .completed(pixelCount: 4)
+        },
+        { workspace in
+            guard workspace.storage.isAffected(pixelIndex: 0),
+                workspace.storage.isAffected(pixelIndex: 481)
+            else { return false }
+            consumedTiles += 1
+            return true
+        }
+    )
+    guard traversal == .completed(tileVisits: 1), consumedTiles == 1,
+        tile.activeTile == nil
+    else { return 0 }
     return 1
 }
 
