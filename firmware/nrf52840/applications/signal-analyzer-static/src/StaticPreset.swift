@@ -137,7 +137,23 @@ public func giftUISignalAnalyzerTopologyValid(
         else { return false }
         return true
     }
-    return check(.normal, count: 96) && check(.diagnostic, count: 98) ? 1 : 0
+    guard check(.normal, count: 96) && check(.diagnostic, count: 98) else {
+        return 0
+    }
+    let title: StaticString = "DIGITAL SIGNAL ANALYZER"
+    return title.withUTF8Buffer { bytes in
+        guard StaticSignalAnalyzerNRFUTF8TextPool.appendBytes(
+            bytes, at: 0, in: semantic
+        ) == 23,
+            StaticSignalAnalyzerNRFUTF8TextPool.scalarCount(
+                from: 0, byteCount: 23, in: semantic
+            ) == 23,
+            StaticSignalAnalyzerNRFUTF8TextPool.scalar(
+                at: 0, from: 0, byteCount: 23, in: semantic
+            ) == 0x44
+        else { return 0 }
+        return 1
+    }
 }
 
 @_cdecl("giftui_signal_analyzer_source_valid")

@@ -73,6 +73,9 @@ actual candidate region. Live modifier/text population and complete-table
 validation remain outside that Embedded Swift source set while their dependent
 portable Presentation values are lowered. This check does not seal or publish
 a semantic result.
+The byte-level UTF-8 pool and scalar decoder also compile on the target. A
+startup probe writes and decodes the invariant title through the real
+candidate region; it does not yet assign text ranges to scope records.
 
 ## Data and Control Flow
 

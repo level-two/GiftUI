@@ -1133,6 +1133,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       spacer, frame, padding, and fixed style payloads to both variants.
       The checked image remains at 187,840 RAM and grows to 72,332 flash
       bytes. Live modifier and text inputs still need fixed model lowering.
+      The generated UTF-8 pool now exposes a bounded byte append and scalar
+      decoder to Embedded Swift while the host `BoundedText` adapter delegates
+      to that same append. Firmware startup checks the static title's exact
+      23 bytes and decoded first scalar in the candidate region. The checked
+      image uses 187,840 RAM and 72,796 flash bytes. Dynamic text values and
+      complete table publication remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or
