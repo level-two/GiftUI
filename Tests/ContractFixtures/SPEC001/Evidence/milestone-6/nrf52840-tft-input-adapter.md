@@ -42,6 +42,12 @@ Firmware CMake now runs the SPEC-015 generator's `--check` mode before Swift
 source assembly and tracks the generator plus workload and hierarchy inputs
 for reconfiguration. The hardware-free nRF build passed with that configure
 gate and unchanged 184,192 RAM / 36,020 flash use.
+The exact portable `SignalAnalyzerDiagnostic` source is now an Embedded Swift
+build input. Firmware startup constructs a three-byte diagnostic through its
+fixed UTF-8 store and exercises the model's Start-clear path; the host fixture
+also verifies the dirty report. The checked ELF passes hard-float, zero-heap,
+symbol, RAM, and flash gates at 184,256 RAM and 37,672 flash bytes. This does
+not yet connect repository facts or complete the portable model.
 
 The selected connected assembly is the `nrf52840dk/nrf52840` with the
 480 x 320 ILI9486 PiScreen display bridge and its ADS7846 resistive-touch

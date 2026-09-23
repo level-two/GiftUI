@@ -979,6 +979,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       Firmware configuration now requires the SPEC-015 generated workload
       outputs to be fresh before compiling Embedded Swift. The hardware-free
       target build passes with the same 184,192 RAM and 36,020 flash bytes.
+      The portable fixed UTF-8 diagnostic value now compiles in the Embedded
+      Swift target and lives inline in the fixed model location. Host and
+      target checks cover diagnostic replacement, Start clearing, and the
+      resulting dirty report. The checked image uses 184,256 RAM and 37,672
+      flash bytes while passing the zero-heap and ABI gates.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

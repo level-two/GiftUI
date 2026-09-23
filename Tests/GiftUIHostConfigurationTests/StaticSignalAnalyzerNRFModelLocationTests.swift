@@ -1,4 +1,5 @@
 import GiftUIHostConfiguration
+import SignalAnalyzerDomain
 import SignalAnalyzerTargetHost
 import Testing
 
@@ -49,7 +50,14 @@ import Testing
         )
         #expect(pointer.pointee.reportChange(token: wrongToken) == .staleRegistration)
         #expect(!pointer.pointee.isDirty)
+        let diagnostic = SignalAnalyzerDiagnostic(exactUTF8: [0x45, 0x52, 0x52])!
+        let acceptedDiagnostic = pointer.pointee.setDiagnostic(diagnostic)
+        #expect(acceptedDiagnostic)
+        #expect(pointer.pointee.errorMessage == diagnostic)
+        pointer.pointee.clearDirtyAfterPublication()
         #expect(handle.dispatch(actionRawValue: 0) == .start)
+        #expect(pointer.pointee.errorMessage == nil)
+        #expect(pointer.pointee.isDirty)
         #expect(handle.dispatch(actionRawValue: 1) == .stop)
         #expect(handle.dispatch(actionRawValue: 2) == .clear)
         #expect(copy.dispatch(actionRawValue: 3) == .visibleWindowChanged)

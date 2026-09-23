@@ -56,6 +56,7 @@ set(giftui_static_swift_inputs
     "${giftui_project_root}/Sources/GiftUIExecution/ExecutionValues.swift"
     "${giftui_project_root}/Sources/GiftUIExecution/AdmissionValues.swift"
     "${giftui_project_root}/Sources/GiftUIExecution/InputSourceSequenceState.swift"
+    "${giftui_project_root}/Sources/SignalAnalyzerDomain/SignalAnalyzerDiagnostic.swift"
     "${giftui_project_root}/Sources/GiftUIHostConfiguration/HostApplicationOpportunityGate.swift"
     "${giftui_project_root}/Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInputCoordinator.swift"

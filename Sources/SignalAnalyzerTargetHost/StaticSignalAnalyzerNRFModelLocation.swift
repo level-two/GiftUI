@@ -1,3 +1,5 @@
+import SignalAnalyzerDomain
+
 /// One typed, address-stable target model location. A copied handle refers to
 /// this location and its current generation; no model object is allocated.
 package struct StaticSignalAnalyzerNRFModelLocation {
@@ -8,6 +10,7 @@ package struct StaticSignalAnalyzerNRFModelLocation {
     package private(set) var visibleWindowRawValue: UInt8 = 1
     package private(set) var isDirty = false
     package private(set) var isMutating = false
+    package private(set) var errorMessage: SignalAnalyzerDiagnostic?
 
     package init() {}
 
@@ -20,6 +23,7 @@ package struct StaticSignalAnalyzerNRFModelLocation {
         visibleWindowRawValue = 1
         isDirty = true
         isMutating = false
+        errorMessage = nil
         return generation
     }
 
@@ -43,6 +47,19 @@ package struct StaticSignalAnalyzerNRFModelLocation {
 
     package mutating func clearDirtyAfterPublication() {
         isDirty = false
+    }
+
+    package mutating func setDiagnostic(_ diagnostic: SignalAnalyzerDiagnostic?) -> Bool {
+        guard let generation = activeGeneration, isMutating else { return false }
+        guard errorMessage != diagnostic else { return true }
+        let previous = errorMessage
+        errorMessage = diagnostic
+        let token = StaticSignalAnalyzerNRFRegistrationToken(slot: 0, generation: generation)
+        guard reportChange(token: token) == .accepted else {
+            errorMessage = previous
+            return false
+        }
+        return true
     }
 
     package mutating func reportChange(
@@ -139,7 +156,8 @@ package struct StaticSignalAnalyzerNRFModelHandle {
             location.pointee.isMutating
         else { return nil }
         switch actionRawValue {
-        case 0: return .start
+        case 0:
+            return location.pointee.setDiagnostic(nil) ? .start : nil
         case 1: return .stop
         case 2: return .clear
         case 3: return selectWindow(0)

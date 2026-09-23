@@ -8,6 +8,7 @@ extern uint32_t giftui_signal_analyzer_static_preset(void);
 extern uint32_t giftui_signal_analyzer_storage_bytes(void);
 extern uint32_t giftui_signal_analyzer_capture_layout(void);
 extern uint32_t giftui_signal_analyzer_model_location_valid(void);
+extern uint32_t giftui_signal_analyzer_diagnostic_value_valid(void);
 extern uint32_t giftui_signal_analyzer_capture_region_valid(
     void *address, uint32_t bytes);
 extern uint32_t giftui_signal_analyzer_region_map_valid(
@@ -23,6 +24,7 @@ int main(void)
         giftui_signal_analyzer_storage_bytes() != 155840u ||
         giftui_signal_analyzer_capture_layout() != 115392u ||
         giftui_signal_analyzer_model_location_valid() != 1u ||
+        giftui_signal_analyzer_diagnostic_value_valid() != 1u ||
         giftui_signal_analyzer_storage_regions(&regions) != 0 ||
         regions.capture_bytes != GIFTUI_STATIC_CAPTURE_BYTES ||
         giftui_signal_analyzer_capture_region_valid(

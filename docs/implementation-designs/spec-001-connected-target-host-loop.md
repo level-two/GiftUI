@@ -498,6 +498,13 @@ The firmware CMake configuration checks the workload generator's complete
 checked-in output set against its descriptor and hierarchy inputs before it
 concatenates Swift sources. Changes to those inputs trigger reconfiguration;
 a stale target model descriptor therefore cannot silently enter the ELF.
+The portable Domain diagnostic is a fixed 96-byte UTF-8 value, so its exact
+source now compiles in Embedded Swift. The target model location stores that
+value inline. A diagnostic update runs through the direct registration; Start
+clears it and coalesces a change report before returning its use-case intent.
+The target startup check constructs a diagnostic from stack bytes and verifies
+the same clear path. Acquisition state, capture value storage, and the
+use-case implementation remain outside this model precursor.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact

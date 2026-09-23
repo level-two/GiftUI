@@ -67,7 +67,11 @@ public func giftUISignalAnalyzerModelLocationValid() -> UInt32 {
             location.pointee.beginMutation(),
             !location.pointee.beginMutation(),
             registration.reportChange() == .accepted,
+            let diagnostic = giftUIStaticSampleDiagnostic(),
+            location.pointee.setDiagnostic(diagnostic),
+            location.pointee.errorMessage == diagnostic,
             handle.dispatch(actionRawValue: 0) == .start,
+            location.pointee.errorMessage == nil,
             handle.dispatch(actionRawValue: 1) == .stop,
             handle.dispatch(actionRawValue: 2) == .clear,
             copy.dispatch(actionRawValue: 3) == .visibleWindowChanged,
@@ -92,6 +96,22 @@ public func giftUISignalAnalyzerModelLocationValid() -> UInt32 {
 public func giftUISignalAnalyzerStaticPreset() -> UInt32 {
     let preset = StaticSignalAnalyzerPreset()
     return preset.isValid ? 360_515_885 : 0
+}
+
+@_cdecl("giftui_signal_analyzer_diagnostic_value_valid")
+public func giftUISignalAnalyzerDiagnosticValueValid() -> UInt32 {
+    guard SignalAnalyzerDiagnostic.maximumUTF8ByteCount == 96,
+        giftUIStaticSampleDiagnostic()?.utf8ByteCount == 3
+    else { return 0 }
+    return 1
+}
+
+private func giftUIStaticSampleDiagnostic() -> SignalAnalyzerDiagnostic? {
+    var bytes: (UInt8, UInt8, UInt8) = (0x45, 0x52, 0x52)
+    return withUnsafeBytes(of: &bytes) { raw in
+        let utf8 = raw.bindMemory(to: UInt8.self)
+        return SignalAnalyzerDiagnostic(exactUTF8: utf8)
+    }
 }
 
 @_cdecl("giftui_signal_analyzer_capture_layout")
