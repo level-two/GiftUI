@@ -1,5 +1,19 @@
 # SPEC-001 T6.8 nRF52840 TFT/Input Adapter Slice
 
+## Fixed typed model-location precursor
+
+`StaticSignalAnalyzerNRFModelLocation.swift` now provides a firmware-lifetime
+typed value location, with a copyable pointer-plus-generation handle. Its host
+fixture passed all six exact action routes, one shared location, dirty-window
+updates, and retirement/reactivation invalidation. The same source is included
+in the Embedded Swift whole-module build. Firmware startup calls the retained
+`giftui_signal_analyzer_model_location_valid` entry; the hardware-free checked
+build passed VFP hard-float, zero-heap, required-symbol, RAM, and flash gates
+at 184,128 RAM bytes and 35,756 flash bytes. The image still enters diagnostic
+device validation after this check. Capture publication, direct model/use-case
+integration, and the generated Static root remain to be linked; this entry
+does not establish connected-target behavior.
+
 The selected connected assembly is the `nrf52840dk/nrf52840` with the
 480 x 320 ILI9486 PiScreen display bridge and its ADS7846 resistive-touch
 controller. This is the concrete assembly whose dimensions match the approved

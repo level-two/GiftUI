@@ -468,6 +468,16 @@ by accepted ADR-026 and SPEC-001. The firmware cannot call the full host loop
 until this static model realization and its direct observation/use-case route
 compile and link with the zero-heap gate. The accepted contract remains intact.
 
+The first target model primitive is one firmware-lifetime typed value location
+and a copyable pointer-plus-generation handle. Its six action codes return
+bounded intents, while the three window selections mutate the same location
+and mark it dirty. Retirement invalidates copies; generation advancement
+rejects a stale handle after reactivation. The common source builds on the
+host and in Embedded Swift, and firmware startup validates the action map
+before entering device validation. This primitive contains neither capture
+values nor observation/use-case wiring, so it is not yet the generated
+`SignalAnalyzerViewModel` specialization or the production host loop.
+
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact
 root identity, the six-case `SignalAnalyzerAction` specialization, and dense

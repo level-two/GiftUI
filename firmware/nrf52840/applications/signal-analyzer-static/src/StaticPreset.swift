@@ -31,6 +31,37 @@ private struct StaticSignalAnalyzerPreset {
     }
 }
 
+// The firmware owns this one typed model location for its entire lifetime.
+// Until the generated application adapter is linked, startup only validates
+// its handle identity, generation, and six action routes.
+nonisolated(unsafe) private var giftUIStaticModelLocation = StaticSignalAnalyzerNRFModelLocation()
+
+@_cdecl("giftui_signal_analyzer_model_location_valid")
+public func giftUISignalAnalyzerModelLocationValid() -> UInt32 {
+    withUnsafeMutablePointer(to: &giftUIStaticModelLocation) { location in
+        guard let generation = location.pointee.activate(),
+            let handle = StaticSignalAnalyzerNRFModelHandle(
+                location: location, generation: generation
+            )
+        else { return 0 }
+        let copy = handle
+        guard handle.dispatch(actionRawValue: 0) == .start,
+            handle.dispatch(actionRawValue: 1) == .stop,
+            handle.dispatch(actionRawValue: 2) == .clear,
+            copy.dispatch(actionRawValue: 3) == .visibleWindowChanged,
+            location.pointee.visibleWindowRawValue == 0,
+            handle.dispatch(actionRawValue: 4) == .visibleWindowChanged,
+            location.pointee.visibleWindowRawValue == 1,
+            copy.dispatch(actionRawValue: 5) == .visibleWindowChanged,
+            location.pointee.visibleWindowRawValue == 2,
+            handle.dispatch(actionRawValue: 6) == nil
+        else { return 0 }
+        location.pointee.retire()
+        guard handle.dispatch(actionRawValue: 0) == nil else { return 0 }
+        return 1
+    }
+}
+
 @_cdecl("giftui_signal_analyzer_static_preset")
 public func giftUISignalAnalyzerStaticPreset() -> UInt32 {
     let preset = StaticSignalAnalyzerPreset()

@@ -952,6 +952,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       address-stable typed model location with zero heap use on nRF. A generated
       static model handle/storage realization is required before `main` can
       enter the complete Static host lifecycle without violating that contract.
+      The first fixed typed model location and copyable generation-checked
+      handle now compile in the target. A startup entry validates all six
+      action codes, shared location mutation, and stale-handle rejection;
+      the checked image uses 184,128 RAM and 35,756 flash bytes and passes
+      hard-float, zero-heap, symbol, and resource gates. This is a bounded
+      model primitive only; capture publication, direct observation/use-case
+      wiring, and the complete firmware root remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or
