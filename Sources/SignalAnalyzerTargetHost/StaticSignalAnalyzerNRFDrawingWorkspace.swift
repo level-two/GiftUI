@@ -73,7 +73,8 @@ package struct StaticSignalAnalyzerNRFDrawingWorkspace:
 
         let result: Result
         do {
-            result = try withUnsafeMutablePointer(to: &self) { pointer in
+            result = try withUnsafeMutablePointer(to: &self) {
+                (pointer) throws(DrawingError) in
                 var context = GraphicsContext(
                     storage: UnsafeMutableRawPointer(pointer),
                     generation: activeGeneration,
@@ -82,10 +83,8 @@ package struct StaticSignalAnalyzerNRFDrawingWorkspace:
                 defer { context.invalidate() }
                 return try body(&context)
             }
-        } catch let error as DrawingError {
-            throw error
         } catch {
-            throw DrawingError.invariantViolation
+            throw error
         }
         guard plan.endCanvas() else { throw .invariantViolation }
         return result
@@ -281,10 +280,7 @@ private func staticNRFStrokePath(
         )
 }
 
-private func staticNRFDrawingStatus(for error: any Error) -> UInt8 {
-    guard let error = error as? DrawingError else {
-        return _GiftUIDrawingStatus.invariantViolation.rawValue
-    }
+private func staticNRFDrawingStatus(for error: DrawingError) -> UInt8 {
     return switch error {
     case .invalidValue: _GiftUIDrawingStatus.invalidValue.rawValue
     case .invalidPathState: _GiftUIDrawingStatus.invalidPathState.rawValue

@@ -1261,3 +1261,13 @@ and all 121 positioned glyphs. The nRF cross-build retains these checks at
 remain open.
 The registered SPEC-001 run completed at
 `.build/contract-reports/spec-001/20260923T211706Z-2350/nrf52840-embedded/`.
+
+The target now compiles the shared Drawing path, snapshot, and plan values
+with the fixed 3,280-byte live path and 13,536-byte plan regions. A retained
+startup probe and native execution of the exact firmware Swift source exercise
+five Canvas contexts, five strokes, ten translated points, five subpaths,
+sealed reads, and reset. This tests the bounded storage and callback ABI;
+the generated grid and trace callables are not yet invoked. The checked image
+uses 187,840 RAM and 133,900 flash bytes before the registered gate.
+The registered SPEC-001 run completed at
+`.build/contract-reports/spec-001/20260923T212453Z-5452/nrf52840-embedded/`.

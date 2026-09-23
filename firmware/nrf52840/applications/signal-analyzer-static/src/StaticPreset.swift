@@ -356,6 +356,60 @@ public func giftUISignalAnalyzerFullLayoutValid(
     return resolved.isPublished ? 0 : 1
 }
 
+@_cdecl("giftui_signal_analyzer_drawing_storage_valid")
+public func giftUISignalAnalyzerDrawingStorageValid(
+    _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32
+) -> UInt32 {
+    guard let profile, bytes == 39_696,
+        let limits = DrawingLimits(
+            maximumLineWidth: 1,
+            maximumCanvasOccurrences: 5,
+            maximumLivePathPoints: 202,
+            maximumLivePathSubpaths: 12,
+            maximumPlanStrokes: 5,
+            maximumPlanPoints: 832,
+            maximumPlanSubpaths: 16,
+            maximumNormalizedStrokeOperations: 5
+        ), var workspace = StaticSignalAnalyzerNRFDrawingWorkspace(
+            pathRegion: UnsafeMutableRawBufferPointer(
+                start: profile.advanced(by: 14_048), count: 3_280
+            ),
+            planRegion: UnsafeMutableRawBufferPointer(
+                start: profile.advanced(by: 17_328), count: 13_536
+            ), capacity: limits
+        ), workspace.acquire(),
+        let clip = Rect(
+            origin: Point(x: 0, y: 0), size: Size(width: 480, height: 320)!
+        )
+    else { return 0 }
+    var canvas: UInt16 = 1
+    while canvas <= 5 {
+        do {
+            try workspace.withCanvasContext(
+                identity: canvas, surfaceOrigin: Point(x: 0, y: 0),
+                inheritedClip: clip
+            ) { (context) throws(DrawingError) in
+                try context.withPath { (context, path) throws(DrawingError) in
+                    try path.move(to: Point(x: 0, y: 0))
+                    try path.addLine(to: Point(x: 10, y: 10))
+                    try context.stroke(path, with: .color(.green), lineWidth: 1)
+                }
+            }
+        } catch { return 0 }
+        canvas += 1
+    }
+    guard case .success(let summary) = workspace.seal(canvasOccurrenceCount: 5),
+        summary.canvasOccurrenceCount == 5,
+        summary.strokeCount == 5,
+        summary.pointCount == 10,
+        summary.subpathCount == 5,
+        workspace.strokeCount(of: 1) == 1,
+        workspace.point(of: 5, stroke: 0, at: 1) == Point(x: 10, y: 10)
+    else { return 0 }
+    workspace.reset()
+    return workspace.isActive ? 0 : 1
+}
+
 @_cdecl("giftui_signal_analyzer_source_valid")
 public func giftUISignalAnalyzerSourceValid() -> UInt32 {
     var source = StaticSignalAnalyzerNRFDeterministicSource()

@@ -19,6 +19,10 @@ struct FullLayoutNativeCheck {
             giftUISignalAnalyzerFullLayoutValid(profile, 39_696) == 1,
             "full diagnostic layout failed"
         )
-        print("nRF full diagnostic layout: passed")
+        precondition(
+            giftUISignalAnalyzerDrawingStorageValid(profile, 39_696) == 1,
+            "fixed Drawing workspace failed"
+        )
+        print("nRF layout and Drawing storage: passed")
     }
 }
