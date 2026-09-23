@@ -942,31 +942,15 @@ import Testing
                             Issue.record("Static nRF raster endpoint did not construct")
                             return false
                         }
-                        let offer = endpoint.offer(provenance: provenance) { rasterSink in
-                            switch CanvasRenderProducer.produce(
-                                semantic: renderView,
-                                layout: sink.renderView,
-                                textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
-                                drawingPlan: drawingWorkspace,
-                                surfaceBounds: surfaceBounds,
-                                damageMode: .initializeCompleteSurface,
-                                rootForeground: .white,
-                                limits: renderLimits.render,
-                                expectedHeader: acceptedHeader,
-                                workspace: &rasterRenderWorkspace,
-                                sink: &rasterSink
-                            ) {
-                            case .success(let header):
-                                return header == acceptedHeader ? .complete : .contractViolation
-                            case .failure(let error):
-                                rasterSink.retainProducerError(error)
-                                switch error {
-                                case .capacityExhausted: return .insufficientCapacity
-                                case .sinkRefused: return .endpointRefused
-                                default: return .producerFailed
-                                }
-                            }
-                        }
+                        let offer = StaticSignalAnalyzerNRFRenderOffer.offer(
+                            semantic: renderView,
+                            layout: sink.renderView,
+                            drawingPlan: drawingWorkspace,
+                            expectedHeader: acceptedHeader,
+                            workspace: &rasterRenderWorkspace,
+                            endpoint: &endpoint,
+                            provenance: provenance
+                        )
                         if offer.disposition != .accepted {
                             Issue.record(
                                 "Static raster offer: \(offer), producer: \(String(describing: endpoint.retainedProducerError)), raster: \(String(describing: endpoint.sink.failure)), header: \(acceptedHeader), descriptor: \(endpoint.descriptor)"

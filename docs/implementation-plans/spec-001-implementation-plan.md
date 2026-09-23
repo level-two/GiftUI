@@ -1147,7 +1147,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       and 150 combined operation slots from the bounded hierarchy. All eight
       generated normal and diagnostic cases now pass preflight and stream into
       a counting `DrawingOperationSink` under the approved production capacity.
-      A production raster sink and firmware loop remain open.
+      The Static nRF endpoint now owns one exact 3,840-byte raster tile and
+      240-byte coverage map, with raster work limits derived from 150
+      operations across the full 480 x 320 surface. A production render-offer
+      helper streams the generated normal and seven diagnostic hierarchies
+      through that endpoint in host fixtures with accepted synchronous RGB565
+      submissions. The live application host and firmware loop remain open.
       A direct Static interaction occurrence reader now maps six generated
       action scopes through resolved bounds and ancestor disable modifiers;
       the eight generated hierarchy fixtures verify identities, action codes,

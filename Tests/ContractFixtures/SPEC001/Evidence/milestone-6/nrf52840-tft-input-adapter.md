@@ -808,7 +808,10 @@ The generated hierarchy fixture now offers all eight normal and diagnostic
 Canvas streams through that production endpoint. Each offer is accepted and
 submits nonempty synchronous RGB565 payloads. It uses the validated 480 x 320
 physical surface for the render header; layout's content root is 480 x 224.
-This remains hardware-free endpoint evidence, not connected display evidence.
+The fixture now calls the production Static nRF render-offer helper, which
+retains exact surface selection and producer-failure mapping for the live
+owner. This remains hardware-free endpoint evidence, not connected display
+evidence.
 
 The generated Static action reader now resolves six occurrence identities,
 action codes, paint order, bounds, clips, and inherited disable modifiers
