@@ -828,6 +828,11 @@ The transport-failure fixture now proves both sides of the display handoff:
 refusal before the first payload cancels the frame with no accepted
 responsibility, while refusal after one accepted payload preserves the
 accepted offer, records `displayFailure`, and drains to an idle session.
+The platform transport value now matches the six-argument ILI9486 C write
+entry with a noncapturing C function pointer. A host test verifies the final
+pixel in the 480 x 320 extent, one-row geometry, exact byte count, malformed
+run refusal, and nonzero C status mapping. This is C ABI shape evidence on
+macOS; the full Static Swift host is not yet linked in firmware.
 
 The firmware now reserves a separately named 240-byte touched-pixel bitmap
 beside its existing 3,840-byte raster slot. The entry self-check counts

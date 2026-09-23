@@ -186,6 +186,10 @@ the writer resets its cursors; reset does not clear unread tile bytes.
 The Static endpoint factory constructs both borrowers from one caller-supplied
 region, so its firmware call site cannot choose distinct raster and payload
 allocations.
+The target's transport value holds a noncapturing C function pointer matching
+`ili9486_write_rgb565`. It passes one horizontal row and the borrowed bytes
+to the C driver before return. A nonzero driver status becomes target transport
+refusal; the driver retains detailed fault counters.
 
 The semantic/action/drawing transcript is profile-equivalent. Device timing,
 physical extents, payload counts, stack high-water, and transport errors remain
