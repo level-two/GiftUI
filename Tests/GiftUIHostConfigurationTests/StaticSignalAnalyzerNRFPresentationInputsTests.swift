@@ -1301,40 +1301,38 @@ import Testing
             phase: .admitting
         )
         #expect(profile.beginOpportunity(context: active) == nil)
-        let model = staticNRFPresentationInputModel()
-        StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
-            model: model
-        ) { inputs in
-            let unstaged =
-                StaticSignalAnalyzerNRFPresentationPreparation
-                .withPreparedCandidate(
-                    inputs: &inputs,
-                    profile: &profile,
-                    cycle: provenance.cycle,
-                    semanticRevision: provenance.semanticRevision,
-                    renderSnapshotVersion: 1
-                ) { _, _, _, _, _, _ in true }
-            if case .failure(.invalidRegions) = unstaged {
-            } else {
-                Issue.record("Unstaged semantic input reached presentation preparation")
-            }
-            let publication = StaticSignalAnalyzerNRFSemanticPublication.publish(
-                inputs: &inputs,
-                revision: 1,
-                profile: &profile
+        application.withAddressStableOwner { owner in
+            #expect(
+                owner.bindRoot(repository: StaticNRFPresentationInputRepository())
+                    == .bound(ObservableTargetGeneration(rawValue: 0))
             )
-            if case .published(let header) = publication {
-                #expect(header.state == .published)
-                #expect(header.revision == 1)
-            } else {
-                Issue.record("Generated semantic publication failed: \(publication)")
-            }
-            application.withAddressStableOwner { owner in
-                #expect(
-                    owner.bindRoot(repository: StaticNRFPresentationInputRepository())
-                        == .bound(ObservableTargetGeneration(rawValue: 0))
+            let borrowed = owner.withGeneratedPresentationTransaction {
+                inputs, committer in
+                let unstaged =
+                    StaticSignalAnalyzerNRFPresentationPreparation
+                    .withPreparedCandidate(
+                        inputs: &inputs,
+                        profile: &profile,
+                        cycle: provenance.cycle,
+                        semanticRevision: provenance.semanticRevision,
+                        renderSnapshotVersion: 1
+                    ) { _, _, _, _, _, _ in true }
+                if case .failure(.invalidRegions) = unstaged {
+                } else {
+                    Issue.record("Unstaged semantic input reached presentation preparation")
+                }
+                let publication = StaticSignalAnalyzerNRFSemanticPublication.publish(
+                    inputs: &inputs,
+                    revision: 1,
+                    profile: &profile
                 )
-                let prepared =
+                if case .published(let header) = publication {
+                    #expect(header.state == .published)
+                    #expect(header.revision == 1)
+                } else {
+                    Issue.record("Generated semantic publication failed: \(publication)")
+                }
+                return
                     StaticSignalAnalyzerNRFPresentationPreparation
                     .withPreparedCandidate(
                         inputs: &inputs,
@@ -1350,30 +1348,34 @@ import Testing
                             occurrences: occurrences,
                             expectedHeader: header,
                             workspace: &workspace,
-                            application: &owner,
+                            committer: &committer,
                             endpoint: &endpoint,
                             provenance: provenance,
                             presentationRevision: PresentationRevision(rawValue: 1)
                         )
                     }
-                switch prepared {
-                case .ready(let handoff):
-                    #expect(
-                        handoff
-                            == .offered(
-                                FrameOfferResult(disposition: .accepted, failure: nil)!,
-                                .committed(PresentationRevision(rawValue: 1))
-                            )
-                    )
-                case .failure(let failure):
-                    Issue.record("Generated preparation failed: \(failure)")
-                }
-                owner.withInteraction { state in
-                    #expect(state.committedRecordCount == 6)
-                }
             }
-            #expect(endpoint.sink.target.transport.payloads > 0)
+            guard let prepared = borrowed else {
+                Issue.record("Bound root could not lend generated presentation inputs")
+                return
+            }
+            switch prepared {
+            case .ready(let handoff):
+                #expect(
+                    handoff
+                        == .offered(
+                            FrameOfferResult(disposition: .accepted, failure: nil)!,
+                            .committed(PresentationRevision(rawValue: 1))
+                        )
+                )
+            case .failure(let failure):
+                Issue.record("Generated preparation failed: \(failure)")
+            }
+            owner.withInteraction { state in
+                #expect(state.committedRecordCount == 6)
+            }
         }
+        #expect(endpoint.sink.target.transport.payloads > 0)
         let idle = ExecutionContext(
             cycle: nil,
             semanticRevision: nil,

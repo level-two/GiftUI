@@ -1182,7 +1182,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       input and accepts a staged normal candidate through the physical handoff.
       A production semantic stage now atomically publishes the checked
       generated table before that preparation; the same fixture passes from
-      publication through physical acceptance. The paced firmware owner
+      publication through physical acceptance. The scoped application owner
+      now lends its actual bound model for generated inputs and a disjoint
+      noncopyable committer for candidate publication and input eligibility;
+      the focused fixture covers this joined borrow. The paced firmware owner
       remains open.
       The Static nRF endpoint now owns one exact 3,840-byte raster tile and
       240-byte coverage map, with raster work limits derived from 150

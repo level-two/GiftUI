@@ -208,6 +208,10 @@ performs layout, Canvas derivation, and render preflight before lending checked
 views to a synchronous handoff callback. No region-backed view escapes that
 scope. The generated semantic stage publishes a complete checked revision
 before preparation and leaves the candidate region intact for that borrow.
+The application owner lends generated inputs from its bound model together
+with a noncopyable committer over the disjoint interaction, generation, and
+input fields. This keeps model derivation and physical-offer resolution in
+one synchronous borrow without duplicating the model.
 The paced firmware owner still surrounds this focused preparation stage.
 
 ## Resource and Failure Behavior

@@ -20,6 +20,40 @@ package enum StaticSignalAnalyzerNRFPresentationHandoff {
         occurrences: borrowing StaticSignalAnalyzerNRFInteractionOccurrences,
         expectedHeader: RenderPlanHeader,
         workspace: inout StaticSignalAnalyzerNRFRenderWorkspace,
+        committer: inout StaticSignalAnalyzerNRFPresentationCommitter,
+        endpoint: inout StaticSignalAnalyzerNRFEndpoint<Target>,
+        provenance: FrameProvenance,
+        presentationRevision: PresentationRevision
+    ) -> StaticSignalAnalyzerNRFPresentationHandoffResult {
+        let interaction = committer.build(
+            occurrences: occurrences,
+            limits: GeneratedSignalAnalyzerPresets.nrf52840Static()
+                .runtimeLimits.interaction
+        )
+        guard interaction == .ready else { return .interaction(interaction) }
+        let offer = StaticSignalAnalyzerNRFRenderOffer.offer(
+            semantic: semantic,
+            layout: layout,
+            drawingPlan: drawingPlan,
+            expectedHeader: expectedHeader,
+            workspace: &workspace,
+            endpoint: &endpoint,
+            provenance: provenance
+        )
+        let resolution = committer.resolve(
+            offer: offer,
+            presentationRevision: presentationRevision
+        )
+        return .offered(offer, resolution)
+    }
+
+    package static func offerPreflighted<Target: DisplayTarget>(
+        semantic: borrowing StaticSignalAnalyzerNRFUTF8RenderView,
+        layout: borrowing StaticSignalAnalyzerNRFResolvedLayoutView,
+        drawingPlan: borrowing StaticSignalAnalyzerNRFDrawingWorkspace,
+        occurrences: borrowing StaticSignalAnalyzerNRFInteractionOccurrences,
+        expectedHeader: RenderPlanHeader,
+        workspace: inout StaticSignalAnalyzerNRFRenderWorkspace,
         application: inout StaticSignalAnalyzerNRFApplicationOwner,
         endpoint: inout StaticSignalAnalyzerNRFEndpoint<Target>,
         provenance: FrameProvenance,

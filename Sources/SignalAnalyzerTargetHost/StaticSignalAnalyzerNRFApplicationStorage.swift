@@ -314,6 +314,31 @@ package struct StaticSignalAnalyzerNRFApplicationOwner: ~Copyable {
         }
     }
 
+    /// Lends generated inputs from the actual bound model together with only
+    /// the disjoint fields needed to publish interaction and input. Neither
+    /// borrow may escape this synchronous callback.
+    package borrowing func withGeneratedPresentationTransaction<Result>(
+        _ body: (
+            inout StaticSignalAnalyzerNRFGeneratedPresentationInputs,
+            inout StaticSignalAnalyzerNRFPresentationCommitter
+        ) -> Result
+    ) -> Result? {
+        guard let generation = root.pointee.targetGeneration() else { return nil }
+        return root.pointee.withModel { model in
+            StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
+                model: model
+            ) { inputs in
+                var committer = StaticSignalAnalyzerNRFPresentationCommitter(
+                    targetGeneration: generation,
+                    interaction: interaction,
+                    generations: actionGenerations,
+                    input: input
+                )
+                return body(&inputs, &committer)
+            }
+        }
+    }
+
     package mutating func installPhysicalPresentation(rawValue: UInt32) {
         input.pointee.installPhysicalPresentation(rawValue: rawValue)
     }

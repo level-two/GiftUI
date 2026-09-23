@@ -936,3 +936,9 @@ normal hierarchy through display and interaction commit. Semantic publication
 now uses the generated checked stage-and-publish entry before preparation,
 and the focused fixture verifies its retained revision before physical
 handoff. Firmware ownership remains separate work.
+
+The focused preparation fixture now derives generated inputs from the
+application owner's bound model. A scoped noncopyable committer lends only
+the disjoint interaction, action-generation, and input fields while that
+model is borrowed. The accepted physical offer commits six actions and makes
+input eligible before the callback ends.
