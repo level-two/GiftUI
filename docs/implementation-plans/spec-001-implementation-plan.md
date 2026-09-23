@@ -1142,18 +1142,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       hierarchies in host tests. Normalized operation comparison and firmware
       linkage remain open. The first common render preflight exposed an
       application-capacity mismatch: at 480×320, valid 96-byte `A`, `W`,
-      and mixed `W`/LF diagnostics require 37, 38, and 39 combined operations,
-      while the approved nRF preset and sink allow 35. The normal and 96-byte
-      LF cases pass preflight. A regression fixture confirms the exact counts
-      with a measurement-only 39-operation capacity; production retains the
-      approved 35-operation ceiling. Thirty-nine is an observed lower bound;
-      the full diagnostic maximum needs proof before a new ceiling is proposed.
-      Resolving this in-scope contract mismatch requires
-      an approved SPEC-015/SPEC-008 coordinated amendment before T6.8 can
-      claim complete render conformance. The common render producer also
-      streams all four cases into a counting `DrawingOperationSink` in host
-      tests; the oversized diagnostics use the test-only 39-operation
-      capacity. A production raster sink and firmware loop remain open.
+      and mixed `W`/LF diagnostics require 37, 38, and 39 combined operations.
+      The approved SPEC-001/SPEC-008/SPEC-015 amendment reserves 145 ordinary
+      and 150 combined operation slots from the bounded hierarchy. All eight
+      generated normal and diagnostic cases now pass preflight and stream into
+      a counting `DrawingOperationSink` under the approved production capacity.
+      A production raster sink and firmware loop remain open.
       A direct Static interaction occurrence reader now maps six generated
       action scopes through resolved bounds and ancestor disable modifiers;
       the eight generated hierarchy fixtures verify identities, action codes,

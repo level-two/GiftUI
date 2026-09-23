@@ -833,6 +833,14 @@ import Testing
                         Issue.record("generated render view or workspace is invalid")
                         return false
                     }
+                    var backgroundScopes: UInt16 = 0
+                    for ordinal in 0 ..< renderView.semanticScopeCount {
+                        guard let identity = renderView.semanticIdentity(at: ordinal),
+                            let scope = renderView.scope(at: identity)
+                        else { return false }
+                        if case .background = scope { backgroundScopes += 1 }
+                    }
+                    #expect(backgroundScopes <= 12)
                     let renderLimits = GeneratedSignalAnalyzerPresets.nrf52840Static()
                         .runtimeLimits
                     let preflight = CanvasRenderProducer.preflight(
@@ -847,78 +855,38 @@ import Testing
                         configuredSinkCapacity: renderLimits.renderSink,
                         workspace: &renderWorkspace
                     )
-                    let acceptedHeader: RenderPlanHeader
-                    let acceptedLimits: RenderLimits
-                    let acceptedSinkCapacity: RenderSinkCapacity
-                    if cycle == 1 || cycle == 4 {
-                        guard case .success(let header) = preflight else {
-                            Issue.record("generated Canvas render preflight failed: \(preflight)")
-                            return false
-                        }
-                        #expect(header.operationCount <= renderLimits.render.maximumOperations)
-                        #expect(header.positionedGlyphCount > 0)
-                        acceptedHeader = header
-                        acceptedLimits = renderLimits.render
-                        acceptedSinkCapacity = renderLimits.renderSink
-                    } else {
-                        // Valid 96-byte printable and mixed-line diagnostics
-                        // exceed the approved 35-operation nRF ceiling.
-                        #expect(preflight == .failure(.capacityExhausted))
-                        let measuredLimits = RenderLimits(
-                            maximumOperations: 39,
-                            maximumPositionedGlyphs: 224,
-                            maximumClipDepth: 4
-                        )!
-                        var measuredWorkspace = StaticSignalAnalyzerNRFRenderWorkspace(
-                            region: renderRegion,
-                            capacity: measuredLimits,
-                            structuralCapacity: renderLimits.renderWorkspace
-                        )!
-                        let measured = CanvasRenderProducer.preflight(
-                            semantic: renderView,
-                            layout: sink.renderView,
-                            textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
-                            drawingPlan: drawingWorkspace,
-                            surfaceBounds: sink.renderView.rootBounds,
-                            damageMode: .initializeCompleteSurface,
-                            rootForeground: .white,
-                            limits: measuredLimits,
-                            configuredSinkCapacity: RenderSinkCapacity(
-                                maximumOperations: 39,
-                                maximumPositionedGlyphs: 224
-                            ),
-                            workspace: &measuredWorkspace
-                        )
-                        guard case .success(let measuredHeader) = measured else {
-                            Issue.record("measured diagnostic preflight failed: \(measured)")
-                            return false
-                        }
-                        #expect(
-                            measuredHeader.operationCount
-                                == (cycle == 2 ? 37 : cycle == 3 ? 38 : 39)
-                        )
-                        let expectedGlyphs: UInt16
-                        switch cycle {
-                        case 2, 3: expectedGlyphs = 214
-                        case 5: expectedGlyphs = 123
-                        case 6: expectedGlyphs = 128
-                        case 7: expectedGlyphs = 133
-                        default: expectedGlyphs = 143
-                        }
-                        #expect(measuredHeader.positionedGlyphCount == expectedGlyphs)
-                        acceptedHeader = measuredHeader
-                        acceptedLimits = measuredLimits
-                        acceptedSinkCapacity = RenderSinkCapacity(
-                            maximumOperations: 39,
-                            maximumPositionedGlyphs: 224
-                        )
+                    guard case .success(let acceptedHeader) = preflight else {
+                        Issue.record("generated Canvas render preflight failed: \(preflight)")
+                        return false
                     }
+                    #expect(renderLimits.maximumOrdinaryRenderOperations == 145)
+                    #expect(renderLimits.render.maximumOperations == 150)
+                    #expect(renderLimits.renderSink.maximumOperations == 150)
+                    #expect(acceptedHeader.operationCount <= 150)
+                    switch cycle {
+                    case 2: #expect(acceptedHeader.operationCount == 37)
+                    case 3: #expect(acceptedHeader.operationCount == 38)
+                    case 4: #expect(acceptedHeader.operationCount == 34)
+                    case 5 ... 8: #expect(acceptedHeader.operationCount == 39)
+                    default: #expect(acceptedHeader.operationCount > 0)
+                    }
+                    let expectedGlyphs: UInt16
+                    switch cycle {
+                    case 1: expectedGlyphs = 117
+                    case 2, 3: expectedGlyphs = 214
+                    case 4: expectedGlyphs = 118
+                    case 5: expectedGlyphs = 123
+                    case 6: expectedGlyphs = 128
+                    case 7: expectedGlyphs = 133
+                    default: expectedGlyphs = 143
+                    }
+                    #expect(acceptedHeader.positionedGlyphCount == expectedGlyphs)
                     var operationSink = StaticNRFCountingRenderSink(
-                        capacity: acceptedSinkCapacity
+                        capacity: renderLimits.renderSink
                     )
                     var productionWorkspace = StaticSignalAnalyzerNRFRenderWorkspace(
                         region: renderRegion,
-                        capacity: acceptedLimits,
+                        capacity: renderLimits.render,
                         structuralCapacity: renderLimits.renderWorkspace
                     )!
                     let production = CanvasRenderProducer.produce(
@@ -929,7 +897,7 @@ import Testing
                         surfaceBounds: sink.renderView.rootBounds,
                         damageMode: .initializeCompleteSurface,
                         rootForeground: .white,
-                        limits: acceptedLimits,
+                        limits: renderLimits.render,
                         expectedHeader: acceptedHeader,
                         workspace: &productionWorkspace,
                         sink: &operationSink

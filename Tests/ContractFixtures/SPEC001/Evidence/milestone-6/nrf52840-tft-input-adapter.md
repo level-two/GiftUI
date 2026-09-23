@@ -779,21 +779,18 @@ layout for the normal tree and valid 96-byte `A`, `W`, LF, and four mixed
 `W`/LF diagnostics.
 `swift test --filter staticNRF` passes 74 host tests, and the SPEC-013 macOS
 Static profile check links the production target. The common render preflight
-accepts normal and LF cases under the approved 35-operation nRF ceiling, but
-rejects the `A`, `W`, and mixed cases with `capacityExhausted`. A
-measurement-only 39-operation workspace and sink resolve `A` and `W` to 37
-and 38 operations with 214 positioned glyphs each; four mixed shapes each
-need 39 operations with 123, 128, 133, and 143 glyphs. Thirty-nine is the
-observed lower bound, not a proven maximum. The approved
-preset is unchanged; this is an in-scope capacity blocker for complete T6.8
-render conformance, pending coordinated Specification approval. No connected
-board run or flash is claimed.
+accepts all eight normal and diagnostic cases under the approved 150-operation
+nRF ceiling. The 96-byte `A` and `W` cases produce 37 and 38 operations with
+214 positioned glyphs each; four mixed shapes each produce 39 operations with
+123, 128, 133, and 143 glyphs. The approved SPEC-001/SPEC-008/SPEC-015
+amendment derives 145 ordinary and 150 combined slots from the bounded
+hierarchy. No connected board run or flash is claimed.
 
 The same eight host cases now stream through the common Canvas render producer
-and a counting Drawing operation sink. All publish their expected headers and
-five strokes with matching operation and glyph counts; the oversized cases
-use only the test measurement capacity. This verifies operation production,
-not the production raster endpoint or connected firmware loop.
+and a counting Drawing operation sink at approved production capacity. All
+publish their expected headers and five strokes with matching operation and
+glyph counts. This verifies operation production, not the production raster
+endpoint or connected firmware loop.
 
 The generated Static action reader now resolves six occurrence identities,
 action codes, paint order, bounds, clips, and inherited disable modifiers

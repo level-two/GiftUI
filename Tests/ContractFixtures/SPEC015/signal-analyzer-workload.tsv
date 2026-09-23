@@ -15,7 +15,7 @@ layout.maximum_positioned_glyphs	224
 render.semantic_scope_occurrences	98
 render.maximum_traversal_depth	13
 render.maximum_text_lines	128
-render.maximum_operations	30
+render.maximum_operations	145
 render.maximum_positioned_glyphs	224
 render.maximum_clip_depth	4
 application.input_events_per_opportunity	6

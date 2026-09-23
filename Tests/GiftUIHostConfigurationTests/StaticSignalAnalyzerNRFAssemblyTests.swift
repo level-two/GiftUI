@@ -89,7 +89,7 @@ private final class StaticNRFApplicationStorageRepository:
     #expect(report.effectivePresentation.requiredPayloadBytes.rawValue == 3_840)
     #expect(report.effectivePresentation.submissionLifetime == .synchronousBorrow)
     #expect(report.drawingPlanOperationLimit == 5)
-    #expect(report.minimumSinkOperationCapacity == 35)
+    #expect(report.minimumSinkOperationCapacity == 150)
     #expect(report.cardinality == preset.cardinality)
     #expect(report.maximumCompactFactsPerServiceWindow == 28)
 }

@@ -143,12 +143,10 @@ approved post-layout Drawing plan and change failure ordering.
 
 The generated normal and seven diagnostic hierarchies now derive all five
 Canvases through the common producer using a scoped semantic/layout/path/plan
-borrow. Render preflight has exposed an in-scope approved-preset mismatch:
-96-byte `A`, `W`, and mixed `W`/LF diagnostics require 37, 38, and 39 combined
-operations against the 35-operation release ceiling. Thirty-nine is a measured
-lower bound, not a proven maximum over all valid diagnostics. Golden operation
-comparison and firmware linkage remain open. The ceiling needs coordinated
-Specification approval after its full bound is established.
+borrow. The approved SPEC-001, SPEC-008, and SPEC-015 amendment reserves 145
+ordinary and 150 combined operation slots for the bounded hierarchy. All eight
+host cases pass render preflight and stream through the approved sink capacity.
+Golden operation comparison and firmware linkage remain open.
 
 ## Code and Evidence Links
 

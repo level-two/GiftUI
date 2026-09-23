@@ -1,6 +1,6 @@
-# generated from a613de50915826c1984a8c4a0277902a4489c029d4c1128fd5c9e85095234546
+# generated from 3fecc980975c86994b3c93a521d4770a26bc2504f6c1257e2ce7896c59a89960
 schema_version	3
-descriptor_sha256	a613de50915826c1984a8c4a0277902a4489c029d4c1128fd5c9e85095234546
+descriptor_sha256	3fecc980975c86994b3c93a521d4770a26bc2504f6c1257e2ce7896c59a89960
 host_kind	1
 profile	static
 semantic_node_occurrences	48
@@ -10,7 +10,7 @@ layout_scope_occurrences	98
 maximum_render_traversal_depth	13
 render_text_line_count	128
 positioned_glyph_count	224
-ordinary_render_operations	30
+ordinary_render_operations	145
 input_events_per_opportunity	6
 semantic_actions_per_opportunity	6
 completion_facts_per_opportunity	1
@@ -21,7 +21,7 @@ submitted_strokes	5
 snapshotted_points	832
 snapshotted_subpaths	16
 normalized_stroke_operations	5
-combined_render_operations	35
+combined_render_operations	150
 logical_width	320
 logical_height	240
 region_height	240
