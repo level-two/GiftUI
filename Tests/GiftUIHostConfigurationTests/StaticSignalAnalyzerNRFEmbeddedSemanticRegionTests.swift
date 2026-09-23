@@ -298,18 +298,42 @@ private func staticNRFEmbeddedTextMeasureMatchesHost(
                         limits: limits,
                         validatedCounters: LayoutCounters(limits: limits)
                     )
-                    let measurement = engine.measure(
-                        semantic: StaticNRFOneTextSemantic(
-                            rootIdentity: identity, source: source
+                    guard
+                        let measurement = engine.measure(
+                            semantic: StaticNRFOneTextSemantic(
+                                rootIdentity: identity, source: source
+                            ),
+                            metrics: GiftUIReferenceTextMetricsView(),
+                            proposal: ProposedSize(width: 480, height: 320)!,
+                            workspace: &host
                         ),
-                        metrics: GiftUIReferenceTextMetricsView(),
-                        proposal: ProposedSize(width: 480, height: 320)!,
-                        workspace: &host
-                    )
-                    guard measurement != nil,
                         StaticSignalAnalyzerNRFEmbeddedTextMeasure.run(
                             identity: identity, semantic: source,
                             proposalWidth: 480, proposalHeight: 320,
+                            workspace: &target
+                        )
+                    else { return false }
+                    guard [UInt8](targetScopeRegion) == [UInt8](hostScopeRegion),
+                        [UInt8](targetTextRegion) == [UInt8](hostTextRegion),
+                        let rootBounds = Rect(
+                            origin: Point(x: 7, y: 11),
+                            size: measurement.resolvedSize
+                        ),
+                        engine.place(
+                            semantic: StaticNRFOneTextSemantic(
+                                rootIdentity: identity, source: source
+                            ),
+                            metrics: GiftUIReferenceTextMetricsView(),
+                            rootBounds: rootBounds,
+                            workspace: &host
+                        ), let width = Int16(exactly: measurement.resolvedSize.width),
+                        let height = Int16(exactly: measurement.resolvedSize.height),
+                        StaticSignalAnalyzerNRFEmbeddedTextPlace.run(
+                            identity: identity, semantic: source,
+                            originX: 7, originY: 11,
+                            inheritedClipX: 7, inheritedClipY: 11,
+                            inheritedClipWidth: width,
+                            inheritedClipHeight: height,
                             workspace: &target
                         )
                     else { return false }

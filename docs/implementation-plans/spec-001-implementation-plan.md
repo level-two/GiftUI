@@ -1259,6 +1259,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       modifier measurement, placement, and publication remain open. The
       checked image uses 187,840 RAM and 92,492 flash bytes, and the
       registered nRF SPEC-001 gate passes.
+      The target text placer now translates scopes, lines, and glyph baselines
+      under a checked clip. Its differential fixture compares complete packed
+      records against the common engine after nonzero-origin placement of
+      every diagnostic text scope. Firmware startup exercises placement of
+      the title. The checked image uses 187,840 RAM and 94,156 flash bytes;
+      the registered nRF SPEC-001 gate passes. Container and modifier
+      placement and publication remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

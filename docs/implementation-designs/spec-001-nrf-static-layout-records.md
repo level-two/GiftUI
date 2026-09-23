@@ -73,6 +73,11 @@ common measure engine for every diagnostic text scope, including a 96-LF
 diagnostic. The target primitive decoder now checks text byte offsets against
 the UTF-8 byte pool capacity, which can exceed the old scalar table capacity.
 Container and modifier measurement, placement, and publication remain open.
+The target text placer now translates the measured scope, line bounds, line
+baselines, and glyph baselines with checked 16-bit storage and derives the
+scope/line clips. The differential fixture compares all packed records after
+nonzero-origin placement by the common engine for every diagnostic text
+scope. Container and modifier placement and resolved publication remain open.
 
 ## Proposed Internal Organization
 

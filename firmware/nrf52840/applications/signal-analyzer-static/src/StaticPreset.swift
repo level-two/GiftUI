@@ -250,6 +250,12 @@ public func giftUISignalAnalyzerLayoutTextValid(
         identity: title.identity, semantic: semantic,
         proposalWidth: 480, proposalHeight: 320,
         workspace: &layout
+    ), StaticSignalAnalyzerNRFEmbeddedTextPlace.run(
+        identity: title.identity, semantic: semantic,
+        originX: 0, originY: 0,
+        inheritedClipX: 0, inheritedClipY: 0,
+        inheritedClipWidth: 480, inheritedClipHeight: 320,
+        workspace: &layout
     ), layout.textLineCount > 0, layout.positionedGlyphCount > 0
     else { return 0 }
     layout.reset()
