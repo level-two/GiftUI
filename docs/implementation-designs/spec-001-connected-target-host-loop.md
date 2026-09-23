@@ -547,6 +547,15 @@ Firmware startup exercises the actual global location with the actual C
 capture region. The application fact-admission adapter and portable root
 lowering still need to call this location in production.
 
+The first compact fact representation is an exact 64-byte target record for
+portable capture mutations. It carries the admission sequence, base revision,
+transition record, insertion/eviction indices, two bounded duration components,
+and four baseline bits. Revision continuity and representability are checked
+before encoding; decoding reconstructs the unchanged portable
+`SignalCaptureChange`. The target compiler checks size, stride, and a mutation
+round trip at startup. The active/sealed rings and state/failure fact paths
+still need to use this record within the registered 2,176-byte regions.
+
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact
 root identity, the six-case `SignalAnalyzerAction` specialization, and dense

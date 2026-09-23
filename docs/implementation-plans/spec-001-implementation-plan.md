@@ -1016,6 +1016,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       location and C capture region. The checked image uses 184,384 RAM and
       45,708 flash bytes. Fact-admission sequencing and the generated root
       remain open.
+      A 64-byte compact capture-fact record now round-trips the portable
+      mutation with sequence and revision checks. The target compiler validates
+      its stride at firmware startup. The checked image uses 184,384 RAM and
+      47,964 flash bytes; active/sealed fact storage remains open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

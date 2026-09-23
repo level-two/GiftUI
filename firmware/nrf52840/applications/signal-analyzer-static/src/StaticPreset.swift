@@ -138,6 +138,29 @@ public func giftUISignalAnalyzerCaptureRoundtrip() -> UInt32 {
     return 1
 }
 
+@_cdecl("giftui_signal_analyzer_compact_fact_valid")
+public func giftUISignalAnalyzerCompactFactValid() -> UInt32 {
+    let transition = SignalTransition(
+        channelID: SignalChannelID(rawValue: 4),
+        timestamp: .milliseconds(125), level: .high
+    )
+    let change = SignalCaptureChange.insertAndTrim(
+        baseRevision: 7, insertionIndex: 1,
+        transition: transition, evictedPrefixCount: 0,
+        duration: .seconds(2), retainedLowerBound: .zero,
+        baselines: .allLow
+    )
+    guard MemoryLayout<StaticSignalAnalyzerNRFCompactCaptureFact>.size == 64,
+        MemoryLayout<StaticSignalAnalyzerNRFCompactCaptureFact>.stride == 64,
+        let fact = StaticSignalAnalyzerNRFCompactCaptureFact(
+            sequence: 3, revision: 8, change: change
+        ), fact.sequence == 3,
+        fact.publication?.revision == 8,
+        fact.publication?.change == change
+    else { return 0 }
+    return 1
+}
+
 @_cdecl("giftui_signal_analyzer_capture_region_valid")
 public func giftUISignalAnalyzerCaptureRegionValid(
     _ address: UnsafeMutableRawPointer?, _ bytes: UInt32

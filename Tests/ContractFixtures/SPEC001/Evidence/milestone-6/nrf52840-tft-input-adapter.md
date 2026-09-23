@@ -1,5 +1,15 @@
 # SPEC-001 T6.8 nRF52840 TFT/Input Adapter Slice
 
+## Compact capture-fact encoding
+
+The target now compiles a 64-byte capture-mutation record with the admission
+sequence and exact portable change payload. A focused host fixture checks
+insertion/trim and reset round trips, revision mismatch rejection, and slot
+stride. Firmware startup checks size, stride, and a portable mutation round
+trip. The hardware-free checked build passed its hard-float, zero-heap,
+forbidden-symbol, required-symbol, and memory gates at 184,384 RAM and 47,964
+flash bytes. The active and sealed admission regions are not yet connected.
+
 ## Fixed typed model-location precursor
 
 `StaticSignalAnalyzerNRFModelLocation.swift` now provides a firmware-lifetime
