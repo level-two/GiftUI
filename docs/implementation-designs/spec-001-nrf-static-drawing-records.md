@@ -51,10 +51,10 @@ already own generic construction and validation and should be reused.
 
 The current Embedded Swift source mirrors the portable grid and trace formulas
 over compact snapshot records and drives the common Canvas producer. It has
-empty-capture and one-transition native checks. The static callable IDs and
-captures still need to be staged in the reserved 160-byte profile region and
-dispatched through a generated two-case target table before this source is a
-complete production static payload adapter.
+empty-capture and one-transition native checks. Five 32-byte static callable
+records now occupy the reserved 160-byte region and are cleared as each Canvas
+is released. The two-case target dispatch still needs generation from the
+manifest before this is a complete production static payload adapter.
 
 ## Proposed Internal Organization
 

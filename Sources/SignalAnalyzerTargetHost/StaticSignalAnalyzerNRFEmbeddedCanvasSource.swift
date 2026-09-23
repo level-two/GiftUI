@@ -9,24 +9,45 @@
         private let semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView
         private let captureState: StaticSignalAnalyzerNRFModelCaptureState
         private let captureRegion: UnsafeMutableRawBufferPointer
-        private let visibleRange: Range<Duration>
+        private let callableRegion: UnsafeMutableRawBufferPointer
+        private let modelGeneration: UInt32
         private var released: UInt8 = 0
 
         package init?(
             semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
             model: StaticSignalAnalyzerNRFModelLocation,
-            captureRegion: UnsafeMutableRawBufferPointer
+            captureRegion: UnsafeMutableRawBufferPointer,
+            callableRegion: UnsafeMutableRawBufferPointer
         ) {
-            guard model.activeGeneration != nil,
-                StaticSignalAnalyzerNRFCaptureRegions(storage: captureRegion) != nil
+            guard let generation = model.activeGeneration,
+                StaticSignalAnalyzerNRFCaptureRegions(storage: captureRegion) != nil,
+                StaticSignalAnalyzerNRFEmbeddedCanvasPayload.isEmpty(callableRegion)
             else { return nil }
             self.semantic = semantic
             captureState = model.capture
             self.captureRegion = captureRegion
-            visibleRange = model.visibleRange
+            self.callableRegion = callableRegion
+            modelGeneration = generation
+            let visibleRange = model.visibleRange
+            guard let lower = Self.exactMilliseconds(visibleRange.lowerBound),
+                let upper = Self.exactMilliseconds(visibleRange.upperBound)
+            else { return nil }
             var index: UInt16 = 0
             while index < 5 {
-                guard canvasIdentity(at: index) != nil else { return nil }
+                guard canvasIdentity(at: index) != nil,
+                    index == 0
+                        || StaticSignalAnalyzerNRFEmbeddedCanvasPayload.stageTrace(
+                            .init(
+                                modelToken: UInt64(generation) + 1,
+                                channelRawValue: Int64(index),
+                                lowerMilliseconds: lower,
+                                upperMilliseconds: upper
+                            ), at: index, in: callableRegion
+                        )
+                else {
+                    callableRegion.initializeMemory(as: UInt8.self, repeating: 0)
+                    return nil
+                }
                 index += 1
             }
         }
@@ -54,13 +75,26 @@
                 if canvasIdentity(at: index) == identity {
                     let bit = UInt8(1) << UInt8(index)
                     guard released & bit == 0 else { throw .invariantViolation }
-                    if index == 0 {
+                    switch index == 0 ? UInt8(1) : UInt8(2) {
+                    case 1:
                         try drawGrid(context: &context, size: size)
-                    } else {
+                    case 2:
+                        guard
+                            let payload =
+                                StaticSignalAnalyzerNRFEmbeddedCanvasPayload.trace(
+                                    at: index, in: callableRegion
+                                ), payload.modelToken == UInt64(modelGeneration) + 1,
+                            payload.channelRawValue == Int64(index)
+                        else { throw .invariantViolation }
                         try drawTrace(
                             context: &context, size: size,
-                            channelID: SignalChannelID(rawValue: Int(index))
+                            channelID: SignalChannelID(
+                                rawValue: Int(payload.channelRawValue)
+                            ),
+                            visibleRange: Duration.milliseconds(payload.lowerMilliseconds)
+                                ..< Duration.milliseconds(payload.upperMilliseconds)
                         )
+                    default: throw .invariantViolation
                     }
                     return
                 }
@@ -73,6 +107,9 @@
             var index: UInt16 = 0
             while index < canvasOccurrenceCount {
                 if canvasIdentity(at: index) == identity {
+                    _ = StaticSignalAnalyzerNRFEmbeddedCanvasPayload.release(
+                        at: index, in: callableRegion
+                    )
                     released |= UInt8(1) << UInt8(index)
                     return
                 }
@@ -80,7 +117,10 @@
             }
         }
 
-        package var allReleased: Bool { released == 0b1_1111 }
+        package var allReleased: Bool {
+            released == 0b1_1111
+                && StaticSignalAnalyzerNRFEmbeddedCanvasPayload.isEmpty(callableRegion)
+        }
 
         private func drawGrid(
             context: inout GraphicsContext, size: Size
@@ -102,7 +142,8 @@
         private func drawTrace(
             context: inout GraphicsContext,
             size: Size,
-            channelID: SignalChannelID
+            channelID: SignalChannelID,
+            visibleRange: Range<Duration>
         ) throws(DrawingError) {
             guard size.width > 0, size.height >= 4,
                 channelID.isStandard,
@@ -136,7 +177,10 @@
                         transition.timestamp > visibleRange.lowerBound,
                         transition.timestamp <= visibleRange.upperBound
                     {
-                        let x = x(for: transition.timestamp, width: size.width)
+                        let x = x(
+                            for: transition.timestamp, width: size.width,
+                            visibleRange: visibleRange
+                        )
                         try path.addLine(
                             to: Point(x: x, y: y(for: current, height: size.height))
                         )
@@ -156,7 +200,10 @@
             }
         }
 
-        private func x(for timestamp: Duration, width: GeometryScalar) -> GeometryScalar {
+        private func x(
+            for timestamp: Duration, width: GeometryScalar,
+            visibleRange: Range<Duration>
+        ) -> GeometryScalar {
             let span = milliseconds(visibleRange.upperBound - visibleRange.lowerBound)
             guard width > 0, span > 0 else { return 0 }
             let elapsed = milliseconds(timestamp - visibleRange.lowerBound)
@@ -179,6 +226,18 @@
             return result.overflow
                 ? (seconds.partialValue < 0 ? .min : .max)
                 : result.partialValue
+        }
+
+        private static func exactMilliseconds(_ duration: Duration) -> Int64? {
+            let parts = duration.components
+            let seconds = parts.seconds.multipliedReportingOverflow(by: 1_000)
+            guard !seconds.overflow,
+                parts.attoseconds.isMultiple(of: 1_000_000_000_000_000)
+            else { return nil }
+            let result = seconds.partialValue.addingReportingOverflow(
+                parts.attoseconds / 1_000_000_000_000_000
+            )
+            return result.overflow ? nil : result.partialValue
         }
     }
 #endif

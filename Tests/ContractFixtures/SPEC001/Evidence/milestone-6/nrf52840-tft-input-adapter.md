@@ -1284,3 +1284,18 @@ at each opportunity. Callable IDs and captures still need staging in the
 reserved 160-byte profile region. The cross-build uses 187,840 RAM and 144,516
 flash bytes. The registered SPEC-001 run completed at
 `.build/contract-reports/spec-001/20260923T213428Z-9088/nrf52840-embedded/`.
+
+Five 32-byte static Canvas capture slots now occupy the reserved 160-byte
+profile region. The grid slot is empty; each trace slot has the manifest's
+four eight-byte fields at offsets 0, 8, 16, and 24: opaque model token,
+channel, lower milliseconds, and upper milliseconds. The callable ID follows
+the generated occurrence order. The target source validates a trace capture
+before invocation and clears it on release; the native probe rejects duplicate
+staging and corrupt channel bytes, then confirms release leaves no live
+capture. The empty and transition plans still pass. The two-case target
+dispatch is currently written in the Embedded source; generation from the
+manifest remains open.
+
+The checked image uses 187,840 RAM and 146,260 flash bytes; the registered
+SPEC-001 run completed at
+`.build/contract-reports/spec-001/20260923T214658Z-14048/nrf52840-embedded/`.

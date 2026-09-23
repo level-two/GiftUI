@@ -410,6 +410,38 @@ public func giftUISignalAnalyzerDrawingStorageValid(
     return workspace.isActive ? 0 : 1
 }
 
+@_cdecl("giftui_signal_analyzer_canvas_payload_valid")
+public func giftUISignalAnalyzerCanvasPayloadValid(
+    _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32
+) -> UInt32 {
+    guard let profile, bytes == 39_696 else { return 0 }
+    let region = UnsafeMutableRawBufferPointer(
+        start: profile.advanced(by: 13_888), count: 160
+    )
+    region.initializeMemory(as: UInt8.self, repeating: 0)
+    let trace = StaticSignalAnalyzerNRFEmbeddedCanvasPayload.TraceCapture(
+        modelToken: 8, channelRawValue: 1,
+        lowerMilliseconds: 0, upperMilliseconds: 2_000
+    )
+    guard StaticSignalAnalyzerNRFEmbeddedCanvasPayload.stageTrace(
+        trace, at: 1, in: region
+    ), !StaticSignalAnalyzerNRFEmbeddedCanvasPayload.stageTrace(
+        trace, at: 1, in: region
+    ), StaticSignalAnalyzerNRFEmbeddedCanvasPayload.trace(at: 1, in: region)?
+        .modelToken == 8,
+        region[32] == 8, region[40] == 1,
+        region[48] == 0, region[56] == 0xD0, region[57] == 0x07
+    else { return 0 }
+    region[40] = 0
+    guard StaticSignalAnalyzerNRFEmbeddedCanvasPayload.trace(at: 1, in: region) == nil
+    else { return 0 }
+    guard StaticSignalAnalyzerNRFEmbeddedCanvasPayload.release(at: 1, in: region),
+        StaticSignalAnalyzerNRFEmbeddedCanvasPayload.isEmpty(region),
+        StaticSignalAnalyzerNRFEmbeddedCanvasPayload.trace(at: 1, in: region) == nil
+    else { return 0 }
+    return 1
+}
+
 @_cdecl("giftui_signal_analyzer_full_canvas_valid")
 public func giftUISignalAnalyzerFullCanvasValid(
     _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32,
@@ -456,6 +488,9 @@ public func giftUISignalAnalyzerFullCanvasValid(
             semantic: semantic, model: model,
             captureRegion: UnsafeMutableRawBufferPointer(
                 start: capture, count: Int(captureBytes)
+            ),
+            callableRegion: UnsafeMutableRawBufferPointer(
+                start: profile.advanced(by: 13_888), count: 160
             )
         )
     else { return 0 }
@@ -515,7 +550,10 @@ public func giftUISignalAnalyzerFullCanvasValid(
         let updatedLayout = StaticSignalAnalyzerNRFCommonLayoutPass.run(
             semantic: semantic, workspace: &layoutWorkspace
         ), var updatedSource = StaticSignalAnalyzerNRFEmbeddedCanvasSource(
-            semantic: semantic, model: model, captureRegion: captureRegion
+            semantic: semantic, model: model, captureRegion: captureRegion,
+            callableRegion: UnsafeMutableRawBufferPointer(
+                start: profile.advanced(by: 13_888), count: 160
+            )
         )
     else { return 0 }
     let updatedResult = CanvasPlanProducer.derive(

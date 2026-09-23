@@ -24,6 +24,10 @@ struct FullLayoutNativeCheck {
             "fixed Drawing workspace failed"
         )
         precondition(
+            giftUISignalAnalyzerCanvasPayloadValid(profile, 39_696) == 1,
+            "bounded Canvas payload failed"
+        )
+        precondition(
             giftUISignalAnalyzerFullCanvasValid(profile, 39_696, capture, 115_392) == 1,
             "five Canvas derivation failed"
         )
