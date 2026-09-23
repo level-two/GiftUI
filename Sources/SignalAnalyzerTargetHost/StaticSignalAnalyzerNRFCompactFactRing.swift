@@ -1,9 +1,10 @@
-/// One 2,176-byte profile region: 32 compact facts followed by 128 bytes of
+/// One 3,840-byte profile region: 32 compact facts followed by 256 bytes of
 /// ring metadata/reserve. All mutable ring state lives in the lent region.
 package struct StaticSignalAnalyzerNRFCompactFactRing: ~Copyable {
-    package static let requiredByteCount = 2_176
+    package static let requiredByteCount = 3_840
     package static let capacity: UInt16 = 32
-    private static let metadataOffset = 2_048
+    private static let metadataOffset = 3_584
+    private static let factStride = 112
 
     private let storage: UnsafeMutableRawBufferPointer
 
@@ -11,7 +12,8 @@ package struct StaticSignalAnalyzerNRFCompactFactRing: ~Copyable {
         guard storage.count == Self.requiredByteCount,
             let address = storage.baseAddress,
             UInt(bitPattern: address) & 7 == 0,
-            MemoryLayout<StaticSignalAnalyzerNRFCompactCaptureFact>.stride == 64
+            MemoryLayout<StaticSignalAnalyzerNRFCompactPresentationFact>.stride
+                <= Self.factStride
         else { return nil }
         storage.initializeMemory(as: UInt8.self, repeating: 0)
         self.storage = storage
@@ -21,19 +23,21 @@ package struct StaticSignalAnalyzerNRFCompactFactRing: ~Copyable {
         storage.baseAddress!.load(fromByteOffset: Self.metadataOffset, as: UInt16.self)
     }
 
-    package var first: StaticSignalAnalyzerNRFCompactCaptureFact? {
+    package var first: StaticSignalAnalyzerNRFCompactPresentationFact? {
         guard count > 0, count <= Self.capacity else { return nil }
         let head = storage.baseAddress!.load(
             fromByteOffset: Self.metadataOffset + 4, as: UInt16.self
         )
         guard head < Self.capacity else { return nil }
         return storage.baseAddress!.load(
-            fromByteOffset: Int(head) * 64,
-            as: StaticSignalAnalyzerNRFCompactCaptureFact.self
+            fromByteOffset: Int(head) * Self.factStride,
+            as: StaticSignalAnalyzerNRFCompactPresentationFact.self
         )
     }
 
-    package mutating func append(_ fact: StaticSignalAnalyzerNRFCompactCaptureFact) -> Bool {
+    package mutating func append(_ fact: StaticSignalAnalyzerNRFCompactPresentationFact)
+        -> Bool
+    {
         let currentCount = count
         guard currentCount < Self.capacity else { return false }
         let tail = storage.baseAddress!.load(
@@ -41,8 +45,8 @@ package struct StaticSignalAnalyzerNRFCompactFactRing: ~Copyable {
         )
         guard tail < Self.capacity else { return false }
         storage.baseAddress!.storeBytes(
-            of: fact, toByteOffset: Int(tail) * 64,
-            as: StaticSignalAnalyzerNRFCompactCaptureFact.self
+            of: fact, toByteOffset: Int(tail) * Self.factStride,
+            as: StaticSignalAnalyzerNRFCompactPresentationFact.self
         )
         storage.baseAddress!.storeBytes(
             of: currentCount + 1, toByteOffset: Self.metadataOffset, as: UInt16.self
@@ -54,7 +58,7 @@ package struct StaticSignalAnalyzerNRFCompactFactRing: ~Copyable {
         return true
     }
 
-    package mutating func takeFirst() -> StaticSignalAnalyzerNRFCompactCaptureFact? {
+    package mutating func takeFirst() -> StaticSignalAnalyzerNRFCompactPresentationFact? {
         let currentCount = count
         guard currentCount > 0, currentCount <= Self.capacity else { return nil }
         let head = storage.baseAddress!.load(
@@ -62,8 +66,8 @@ package struct StaticSignalAnalyzerNRFCompactFactRing: ~Copyable {
         )
         guard head < Self.capacity else { return nil }
         let fact = storage.baseAddress!.load(
-            fromByteOffset: Int(head) * 64,
-            as: StaticSignalAnalyzerNRFCompactCaptureFact.self
+            fromByteOffset: Int(head) * Self.factStride,
+            as: StaticSignalAnalyzerNRFCompactPresentationFact.self
         )
         storage.baseAddress!.storeBytes(
             of: currentCount - 1, toByteOffset: Self.metadataOffset, as: UInt16.self
@@ -90,8 +94,8 @@ package struct StaticSignalAnalyzerNRFCompactFactRing: ~Copyable {
         for index in 0 ..< Int(originalCount) {
             let source = (Int(head) + index) % Int(Self.capacity)
             let fact = storage.baseAddress!.load(
-                fromByteOffset: source * 64,
-                as: StaticSignalAnalyzerNRFCompactCaptureFact.self
+                fromByteOffset: source * Self.factStride,
+                as: StaticSignalAnalyzerNRFCompactPresentationFact.self
             )
             guard sealed.append(fact) else { return false }
         }

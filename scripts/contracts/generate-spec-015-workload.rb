@@ -67,7 +67,7 @@ def byte_counts(profile, structural_occurrences, layout_scopes)
     [semantic_bytes, semantic_bytes, layout_scopes * 40, layout_scopes * 64, 160, 3280, 13_536, 256, 256, 384, 384, 2176, 2176, 128, 256, 128]
   else
     semantic_bytes = structural_occurrences * 24
-    [semantic_bytes, semantic_bytes, layout_scopes * 32, layout_scopes * 48, 160, 3280, 13_536, 128, 128, 256, 256, 2176, 2176, 96, 192, 96]
+    [semantic_bytes, semantic_bytes, layout_scopes * 32, layout_scopes * 48, 160, 3280, 13_536, 128, 128, 256, 256, 3840, 3840, 96, 192, 96]
   end
 end
 

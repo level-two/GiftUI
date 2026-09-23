@@ -102,6 +102,12 @@ target_milestone: MVP
 > bytes and 36,368 Static bytes. The release glyph and drawing ceilings remain
 > unchanged.
 >
+> On 2026-09-23, the maintainer authorized the T6.8 Static admission-storage
+> amendment. Each Static admission and sealed region grows from 2,176 to
+> 3,840 bytes for 32 full 112-byte typed compact facts and 256 bytes of
+> metadata and reserved fact storage. The Static profile total is 39,696
+> bytes. Dynamic profile sizes and the shared fact capacities are unchanged.
+>
 > On 2026-09-21, the maintainer approved a diagnostic-capacity amendment.
 > A full 96-byte ASCII `SignalAnalyzerDiagnostic` produces 214 text scalars
 > and positioned glyphs in the shared hierarchy. Every preset now reserves
@@ -789,11 +795,12 @@ The exact resulting profile-store projections are:
 | Profile | Semantic candidate | Semantic published | Layout candidate | Render workspace | Total profile storage |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Dynamic | 4,032 bytes (126 x 32) | 4,032 bytes (126 x 32) | 3,920 bytes (98 x 40) | 6,272 bytes (98 x 64) | 41,376 bytes |
-| Static | 3,024 bytes (126 x 24) | 3,024 bytes (126 x 24) | 3,136 bytes (98 x 32) | 4,704 bytes (98 x 48) | 36,368 bytes |
+| Static | 3,024 bytes (126 x 24) | 3,024 bytes (126 x 24) | 3,136 bytes (98 x 32) | 4,704 bytes (98 x 48) | 39,696 bytes |
 
-The total changes only through the semantic candidate/published, layout
-candidate, and render-workspace deltas; all other schema-3 audit fields remain
-unchanged.
+The semantic candidate/published, layout candidate, and render-workspace
+deltas established the earlier profile totals. The Static admission and sealed
+regions each subsequently grew by 1,664 bytes to carry full diagnostic facts;
+all other schema-3 audit fields remain unchanged.
 
 The contained runtime limits MUST additionally satisfy these production
 relations:

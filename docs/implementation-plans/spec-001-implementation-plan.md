@@ -1057,6 +1057,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       the checked image uses 184,448 RAM and 51,484 flash bytes. The existing
       64-byte ring entry must be replaced with audited larger fixed storage
       before failed states can enter production admission.
+      The approved Static audit now assigns 3,840 bytes to each active and
+      sealed region: 32 inline 112-byte union facts and a 256-byte reserve.
+      Admission accepts the complete portable acquisition state, including a
+      96-byte failure diagnostic, and the mixed mutation/state sequence
+      survives sealing. The generated Static profile is 39,696 bytes; the
+      checked target links at 187,776 RAM and 52,124 flash bytes, within the
+      SPEC-004 RAM ceiling. Reserved operational-failure admission and the
+      complete production host loop remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

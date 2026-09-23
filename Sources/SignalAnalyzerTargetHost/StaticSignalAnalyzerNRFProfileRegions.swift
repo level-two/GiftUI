@@ -7,11 +7,11 @@ private struct StaticNRFProfileRegion {
 }
 
 /// Allocation-free region map over the caller-owned nRF52840 Static profile
-/// workspace. Firmware supplies its retained 36,368-byte storage symbol.
+/// workspace. Firmware supplies its retained 39,696-byte storage symbol.
 package struct StaticSignalAnalyzerNRFProfileRegions: StaticProfileStorageRegions,
     ~Copyable
 {
-    package static let requiredByteCount = 36_368
+    package static let requiredByteCount = 39_696
 
     private static let semanticCandidate = StaticNRFProfileRegion(offset: 0, byteCount: 3_024)
     private static let semanticPublished = StaticNRFProfileRegion(
@@ -56,22 +56,22 @@ package struct StaticSignalAnalyzerNRFProfileRegions: StaticProfileStorageRegion
     )
     private static let admissionQueue = StaticNRFProfileRegion(
         offset: 31_632,
-        byteCount: 2_176
+        byteCount: 3_840
     )
     private static let sealedBatch = StaticNRFProfileRegion(
-        offset: 33_808,
-        byteCount: 2_176
+        offset: 35_472,
+        byteCount: 3_840
     )
     private static let pointerState = StaticNRFProfileRegion(
-        offset: 35_984,
+        offset: 39_312,
         byteCount: 96
     )
     private static let coordinatorState = StaticNRFProfileRegion(
-        offset: 36_080,
+        offset: 39_408,
         byteCount: 192
     )
     private static let failureState = StaticNRFProfileRegion(
-        offset: 36_272,
+        offset: 39_600,
         byteCount: 96
     )
 

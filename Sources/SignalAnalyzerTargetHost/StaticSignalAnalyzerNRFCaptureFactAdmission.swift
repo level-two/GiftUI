@@ -26,20 +26,34 @@ package enum StaticSignalAnalyzerNRFCaptureAdmissionOutcome: Equatable {
 
 package enum StaticSignalAnalyzerNRFSealedCaptureFact {
     case snapshot(StaticSignalAnalyzerNRFSnapshotFact)
-    case mutation(StaticSignalAnalyzerNRFCompactCaptureFact)
+    case compact(StaticSignalAnalyzerNRFCompactPresentationFact)
 
     package var sequence: UInt32 {
         switch self {
         case .snapshot(let fact): fact.sequence
-        case .mutation(let fact): fact.sequence
+        case .compact(let fact): fact.sequence
         }
     }
 
     package var captureMutation: (revision: UInt32, change: SignalCaptureChange)? {
         switch self {
         case .snapshot: nil
-        case .mutation(let fact): fact.publication
+        case .compact(let fact):
+            if case .captureMutation(let mutation) = fact.payload {
+                mutation.publication
+            } else {
+                nil
+            }
         }
+    }
+
+    package var acquisitionState: AcquisitionState? {
+        if case .compact(let fact) = self,
+            case .acquisitionState(let state) = fact.payload
+        {
+            return state
+        }
+        return nil
     }
 }
 
@@ -63,8 +77,8 @@ package struct StaticSignalAnalyzerNRFCaptureFactAdmission: ~Copyable {
         else { return nil }
         self.active = consume active
         self.sealed = consume sealed
-        metadata = activeStorage.baseAddress!.advanced(by: 2_048)
-        sealedMetadata = sealedStorage.baseAddress!.advanced(by: 2_048)
+        metadata = activeStorage.baseAddress!.advanced(by: 3_584)
+        sealedMetadata = sealedStorage.baseAddress!.advanced(by: 3_584)
         metadata.storeBytes(of: nextSequence, toByteOffset: 8, as: UInt32.self)
         metadata.storeBytes(of: UInt8.max, toByteOffset: 18, as: UInt8.self)
         metadata.storeBytes(of: UInt8(1), toByteOffset: 19, as: UInt8.self)
@@ -116,8 +130,39 @@ package struct StaticSignalAnalyzerNRFCaptureFactAdmission: ~Copyable {
         let sequence = metadata.load(fromByteOffset: 8, as: UInt32.self)
         guard sequence != 0 else { return .sequenceExhausted }
         guard
-            let fact = StaticSignalAnalyzerNRFCompactCaptureFact(
+            let mutation = StaticSignalAnalyzerNRFCompactCaptureFact(
                 sequence: sequence, revision: revision, change: change
+            ),
+            let fact = StaticSignalAnalyzerNRFCompactPresentationFact(
+                sequence: sequence, payload: .captureMutation(mutation)
+            )
+        else { return .unrepresentable }
+        guard active.append(fact) else { return .compactCapacityExhausted }
+        metadata.storeBytes(
+            of: sequence == .max ? UInt32(0) : sequence + 1,
+            toByteOffset: 8, as: UInt32.self
+        )
+        metadata.storeBytes(of: count + 1, toByteOffset: offset, as: UInt16.self)
+        return .accepted(sequence: sequence)
+    }
+
+    package mutating func admitAcquisitionState(
+        _ state: AcquisitionState
+    ) -> StaticSignalAnalyzerNRFCaptureAdmissionOutcome {
+        guard isAvailable, let producer = activeProducer else {
+            return .producerUnavailable
+        }
+        let offset = countOffset(for: producer)
+        let count = metadata.load(fromByteOffset: offset, as: UInt16.self)
+        guard count < producer.limit else { return .producerCapacityExhausted }
+        guard active.count < StaticSignalAnalyzerNRFCompactFactRing.capacity else {
+            return .compactCapacityExhausted
+        }
+        let sequence = metadata.load(fromByteOffset: 8, as: UInt32.self)
+        guard sequence != 0 else { return .sequenceExhausted }
+        guard
+            let fact = StaticSignalAnalyzerNRFCompactPresentationFact(
+                sequence: sequence, payload: .acquisitionState(state)
             )
         else { return .unrepresentable }
         guard active.append(fact) else { return .compactCapacityExhausted }
@@ -188,7 +233,7 @@ package struct StaticSignalAnalyzerNRFCaptureFactAdmission: ~Copyable {
             return .snapshot(snapshot)
         }
         guard let compact = sealed.takeFirst() else { return nil }
-        return .mutation(compact)
+        return .compact(compact)
     }
 
     package mutating func quiesce() {

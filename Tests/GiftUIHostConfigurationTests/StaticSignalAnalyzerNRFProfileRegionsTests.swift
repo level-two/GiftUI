@@ -12,7 +12,7 @@ import Testing
 
         let expectedByteCounts = [
             3_024, 3_024, 3_136, 4_704, 160, 3_280, 13_536, 128,
-            128, 256, 256, 2_176, 2_176, 96, 192, 96,
+            128, 256, 256, 3_840, 3_840, 96, 192, 96,
         ]
         var expectedOffset = 0
         for (family, expectedByteCount) in zip(
@@ -52,7 +52,7 @@ import Testing
         storage.initializeMemory(as: UInt8.self, repeating: 0xA5)
 
         regions.resetAttemptRegions()
-        #expect(nonzeroByteCount(in: storage) == 8_144)
+        #expect(nonzeroByteCount(in: storage) == 11_472)
 
         regions.resetAllRegions()
         #expect(nonzeroByteCount(in: storage) == 0)

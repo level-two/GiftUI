@@ -7,7 +7,7 @@ package enum StaticSignalAnalyzerNRFRegionMap {
         raster: UnsafeMutableRawBufferPointer,
         coverage: UnsafeMutableRawBufferPointer
     ) -> Bool {
-        guard profile.count == 36_368,
+        guard profile.count == 39_696,
             capture.count == StaticSignalAnalyzerNRFCaptureRegions.requiredByteCount,
             raster.count == 3_840,
             coverage.count == 240,

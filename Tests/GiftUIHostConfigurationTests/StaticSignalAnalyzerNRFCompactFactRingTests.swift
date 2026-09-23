@@ -25,16 +25,22 @@ import Testing
         let change = SignalCaptureChange.reset(
             baseRevision: UInt32(index), baselines: .allLow
         )
-        let fact = StaticSignalAnalyzerNRFCompactCaptureFact(
+        let mutation = StaticSignalAnalyzerNRFCompactCaptureFact(
             sequence: UInt32(index + 1), revision: UInt32(index + 1), change: change
+        )!
+        let fact = StaticSignalAnalyzerNRFCompactPresentationFact(
+            sequence: UInt32(index + 1), payload: .captureMutation(mutation)
         )!
         let accepted = active.append(fact)
         #expect(accepted)
     }
     #expect(active.count == 32)
-    let excess = StaticSignalAnalyzerNRFCompactCaptureFact(
+    let excessMutation = StaticSignalAnalyzerNRFCompactCaptureFact(
         sequence: 33, revision: 33,
         change: .reset(baseRevision: 32, baselines: .allLow)
+    )!
+    let excess = StaticSignalAnalyzerNRFCompactPresentationFact(
+        sequence: 33, payload: .captureMutation(excessMutation)
     )!
     let acceptedExcess = active.append(excess)
     #expect(!acceptedExcess)
@@ -51,9 +57,12 @@ import Testing
     #expect(sealed.count == 0)
     let empty = sealed.takeFirst()
     #expect(empty == nil)
-    let next = StaticSignalAnalyzerNRFCompactCaptureFact(
+    let nextMutation = StaticSignalAnalyzerNRFCompactCaptureFact(
         sequence: 33, revision: 33,
         change: .reset(baseRevision: 32, baselines: .allLow)
+    )!
+    let next = StaticSignalAnalyzerNRFCompactPresentationFact(
+        sequence: 33, payload: .captureMutation(nextMutation)
     )!
     let acceptedNext = active.append(next)
     #expect(acceptedNext)

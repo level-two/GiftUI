@@ -69,6 +69,14 @@ target_milestone: MVP
 > 150 combined render/sink operations. The approved diagnostic contract still
 > requires full text without truncation; the fixed hierarchy's 12-background,
 > 128-line, five-stroke bound leaves five combined-operation slots of margin.
+>
+> On 2026-09-23, the maintainer authorized further Specification amendments
+> for T6.8. The Static target stores each of the 32 compact facts in a
+> 112-byte typed slot so an acquisition failure retains its full 96-byte
+> diagnostic. Each of its two admission regions is 3,840 bytes, comprising
+> 3,584 fact bytes and 256 bytes of metadata and separately sequenced fact
+> reserve. These physical storage sizes implement the unchanged capacities
+> and ordered-admission contract below.
 
 ## Summary
 

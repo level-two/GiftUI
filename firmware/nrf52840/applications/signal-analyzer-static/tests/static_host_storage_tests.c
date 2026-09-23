@@ -21,7 +21,7 @@ int main(void)
     assert(regions.capture_bytes == GIFTUI_STATIC_CAPTURE_BYTES);
     assert(regions.raster_bytes == GIFTUI_STATIC_RASTER_BYTES);
     assert(regions.coverage_bytes == GIFTUI_STATIC_COVERAGE_BYTES);
-    assert(giftui_signal_analyzer_storage_bytes() == 155840U);
+    assert(giftui_signal_analyzer_storage_bytes() == 159168U);
 
     const uint8_t *pointers[] = {
         regions.profile, regions.capture, regions.raster, regions.coverage

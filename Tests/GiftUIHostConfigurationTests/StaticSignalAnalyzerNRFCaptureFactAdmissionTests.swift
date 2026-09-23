@@ -3,7 +3,7 @@ import SignalAnalyzerTargetHost
 import Testing
 
 @Test func nRFCaptureAdmissionOwnsProducerLimitsAndSequences() {
-    let bytes = 2_176
+    let bytes = 3_840
     let active = UnsafeMutableRawPointer.allocate(byteCount: bytes, alignment: 8)
     let sealed = UnsafeMutableRawPointer.allocate(byteCount: bytes, alignment: 8)
     defer {
@@ -61,7 +61,7 @@ import Testing
 }
 
 @Test func nRFCaptureAdmissionStopsBeforeSequenceWrap() {
-    let bytes = 2_176
+    let bytes = 3_840
     let active = UnsafeMutableRawPointer.allocate(byteCount: bytes, alignment: 8)
     let sealed = UnsafeMutableRawPointer.allocate(byteCount: bytes, alignment: 8)
     defer {
@@ -88,9 +88,50 @@ import Testing
     #expect(admission.pendingCompactCount == 1)
 }
 
+@Test func nRFAcquisitionFailurePreservesMaximumDiagnosticThroughSeal() {
+    let bytes = 3_840
+    let active = UnsafeMutableRawPointer.allocate(byteCount: bytes, alignment: 8)
+    let sealed = UnsafeMutableRawPointer.allocate(byteCount: bytes, alignment: 8)
+    defer {
+        active.deallocate()
+        sealed.deallocate()
+    }
+    guard
+        var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
+            activeStorage: UnsafeMutableRawBufferPointer(start: active, count: bytes),
+            sealedStorage: UnsafeMutableRawBufferPointer(start: sealed, count: bytes)
+        ),
+        let diagnostic = SignalAnalyzerDiagnostic(
+            exactUTF8: Array(repeating: 0x57, count: 96)
+        )
+    else {
+        Issue.record("Exact failure admission setup failed")
+        return
+    }
+    let began = admission.beginProducer(.bootstrap)
+    #expect(began)
+    let state = AcquisitionState.failed(diagnostic)
+    let admittedState = admission.admitAcquisitionState(state)
+    #expect(admittedState == .accepted(sequence: 1))
+    let reset = SignalCaptureChange.reset(baseRevision: 0, baselines: .allLow)
+    let admittedMutation = admission.admitCaptureMutation(revision: 1, change: reset)
+    #expect(admittedMutation == .accepted(sequence: 2))
+    admission.endProducer()
+    let didSeal = admission.seal()
+    #expect(didSeal)
+    let first = admission.takeNextSealed()
+    #expect(first?.sequence == 1)
+    #expect(first?.acquisitionState == state)
+    let second = admission.takeNextSealed()
+    #expect(second?.sequence == 2)
+    #expect(second?.captureMutation?.revision == 1)
+    let empty = admission.takeNextSealed()
+    #expect(empty == nil)
+}
+
 @Test func nRFSnapshotAdmissionMergesOnePhysicalSlotInSequence() {
     #expect(MemoryLayout<StaticSignalAnalyzerNRFSnapshotFact>.stride <= 48)
-    let factBytes = 2_176
+    let factBytes = 3_840
     let captureBytes = 115_392
     let active = UnsafeMutableRawPointer.allocate(byteCount: factBytes, alignment: 8)
     let sealed = UnsafeMutableRawPointer.allocate(byteCount: factBytes, alignment: 8)

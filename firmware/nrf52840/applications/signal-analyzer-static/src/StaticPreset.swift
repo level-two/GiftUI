@@ -4,7 +4,7 @@ private struct StaticSignalAnalyzerPreset {
     let regionHeight: UInt16 = 4
     let bytesPerRow: UInt32 = 960
     let rasterBytes: UInt32 = 3_840
-    let profileStorageBytes: UInt32 = 36_368
+    let profileStorageBytes: UInt32 = 39_696
     let captureEntries: UInt16 = 2_404
     let canvasCount: UInt16 = 5
     let livePointCount: UInt16 = 202
@@ -20,7 +20,7 @@ private struct StaticSignalAnalyzerPreset {
         logicalWidth == 480 && logicalHeight == 320
             && regionHeight == 4 && bytesPerRow == 960
             && rasterBytes == bytesPerRow * UInt32(regionHeight)
-            && profileStorageBytes == 36_368
+            && profileStorageBytes == 39_696
             && captureEntries == 2_404
             && canvasCount == 5 && livePointCount == 202 && planPointCount == 832
             && compactFactCapacity == 32 && actionCount == 6
@@ -179,14 +179,14 @@ public func giftUISignalAnalyzerPresentationFactLayoutValid() -> UInt32 {
 public func giftUISignalAnalyzerCompactRingValid(
     _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32
 ) -> UInt32 {
-    guard let profile, bytes == 36_368 else { return 0 }
+    guard let profile, bytes == 39_696 else { return 0 }
     let storage = UnsafeMutableRawBufferPointer(start: profile, count: Int(bytes))
     guard var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
         activeStorage: UnsafeMutableRawBufferPointer(
-            rebasing: storage[31_632 ..< 33_808]
+            rebasing: storage[31_632 ..< 35_472]
         ),
         sealedStorage: UnsafeMutableRawBufferPointer(
-            rebasing: storage[33_808 ..< 35_984]
+            rebasing: storage[35_472 ..< 39_312]
         )
     )
     else { return 0 }
@@ -209,7 +209,7 @@ public func giftUISignalAnalyzerSnapshotAdmissionValid(
     _ profile: UnsafeMutableRawPointer?, _ profileBytes: UInt32,
     _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
 ) -> UInt32 {
-    guard let profile, let capture, profileBytes == 36_368,
+    guard let profile, let capture, profileBytes == 39_696,
         captureBytes == 115_392,
         MemoryLayout<StaticSignalAnalyzerNRFSnapshotFact>.stride <= 48
     else { return 0 }
@@ -221,10 +221,10 @@ public func giftUISignalAnalyzerSnapshotAdmissionValid(
     )
     guard var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
         activeStorage: UnsafeMutableRawBufferPointer(
-            rebasing: profileStorage[31_632 ..< 33_808]
+            rebasing: profileStorage[31_632 ..< 35_472]
         ),
         sealedStorage: UnsafeMutableRawBufferPointer(
-            rebasing: profileStorage[33_808 ..< 35_984]
+            rebasing: profileStorage[35_472 ..< 39_312]
         )
     ), let view = StaticSignalAnalyzerNRFCaptureSnapshotView(
         storage: captureStorage, revision: 0, count: 0,
@@ -330,7 +330,7 @@ public func giftUISignalAnalyzerRegionMapValid(
     _ coverage: UnsafeMutableRawPointer?, _ coverageBytes: UInt32
 ) -> UInt32 {
     guard profile != nil, capture != nil, raster != nil, coverage != nil,
-        profileBytes == 36_368, captureBytes == 115_392,
+        profileBytes == 39_696, captureBytes == 115_392,
         rasterBytes == 3_840, coverageBytes == 240
     else { return 0 }
     let valid = StaticSignalAnalyzerNRFRegionMap.validate(

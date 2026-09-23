@@ -164,8 +164,8 @@ package static func macOSStatic() -> GeneratedSignalAnalyzerPreset {
             canvasCallableBytes: 160, pathWorkspaceBytes: 3280,
             drawingPlanBytes: 13536, observableLiveBytes: 128,
             observableCandidateBytes: 128, interactionCandidateBytes: 256,
-            interactionCommittedBytes: 256, admissionQueueBytes: 2176,
-            sealedBatchBytes: 2176, pointerStateBytes: 96,
+            interactionCommittedBytes: 256, admissionQueueBytes: 3840,
+            sealedBatchBytes: 3840, pointerStateBytes: 96,
             coordinatorStateBytes: 192, failureStateBytes: 96
         )
     )
@@ -208,8 +208,8 @@ package static func nrf52840Static() -> GeneratedSignalAnalyzerPreset {
             canvasCallableBytes: 160, pathWorkspaceBytes: 3280,
             drawingPlanBytes: 13536, observableLiveBytes: 128,
             observableCandidateBytes: 128, interactionCandidateBytes: 256,
-            interactionCommittedBytes: 256, admissionQueueBytes: 2176,
-            sealedBatchBytes: 2176, pointerStateBytes: 96,
+            interactionCommittedBytes: 256, admissionQueueBytes: 3840,
+            sealedBatchBytes: 3840, pointerStateBytes: 96,
             coordinatorStateBytes: 192, failureStateBytes: 96
         )
     )

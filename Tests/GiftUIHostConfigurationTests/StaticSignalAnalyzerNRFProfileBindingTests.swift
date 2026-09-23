@@ -108,7 +108,7 @@ private struct StaticNRFBindingMetadata:
             phase: .idle
         )
         #expect(binding.finishOpportunity(context: idle) == nil)
-        #expect(nonzeroByteCount(in: storage) == 8_144)
+        #expect(nonzeroByteCount(in: storage) == 11_472)
 
         binding.quiesce()
         let isQuiescent = binding.isQuiescent

@@ -19,7 +19,7 @@ private struct StaticNRFCompositionRecordingTransport:
         Issue.record("Static nRF assembly did not validate")
         return
     }
-    let profile = UnsafeMutableRawPointer.allocate(byteCount: 36_368, alignment: 8)
+    let profile = UnsafeMutableRawPointer.allocate(byteCount: 39_696, alignment: 8)
     defer { profile.deallocate() }
     let capture = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
     defer { capture.deallocate() }
@@ -32,7 +32,7 @@ private struct StaticNRFCompositionRecordingTransport:
         assemblyReport: report,
         inputSourceRawValue: 51,
         initialFrameOriginMicroseconds: 0,
-        profileStorage: UnsafeMutableRawBufferPointer(start: profile, count: 36_368),
+        profileStorage: UnsafeMutableRawBufferPointer(start: profile, count: 39_696),
         captureRegion: UnsafeMutableRawBufferPointer(start: capture, count: 115_392),
         rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 3_840),
         coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 240),
@@ -78,7 +78,7 @@ private struct StaticNRFCompositionRecordingTransport:
         assemblyReport: report,
         inputSourceRawValue: 51,
         initialFrameOriginMicroseconds: 0,
-        profileStorage: UnsafeMutableRawBufferPointer(start: storage, count: 36_368),
+        profileStorage: UnsafeMutableRawBufferPointer(start: storage, count: 39_696),
         captureRegion: UnsafeMutableRawBufferPointer(start: capture, count: 115_392),
         rasterRegion: UnsafeMutableRawBufferPointer(
             start: storage.advanced(by: 36_000), count: 3_840
@@ -113,7 +113,7 @@ private struct StaticNRFCompositionRecordingTransport:
         inputSourceRawValue: 51,
         initialFrameOriginMicroseconds: 0,
         profileStorage: UnsafeMutableRawBufferPointer(
-            start: profile.advanced(by: 1), count: 36_368
+            start: profile.advanced(by: 1), count: 39_696
         ),
         captureRegion: UnsafeMutableRawBufferPointer(start: capture, count: 115_392),
         rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 3_840),
@@ -131,7 +131,7 @@ private struct StaticNRFCompositionRecordingTransport:
         Issue.record("Static nRF assembly did not validate")
         return
     }
-    let shared = UnsafeMutableRawPointer.allocate(byteCount: 151_760, alignment: 8)
+    let shared = UnsafeMutableRawPointer.allocate(byteCount: 155_088, alignment: 8)
     defer { shared.deallocate() }
     let raster = UnsafeMutableRawPointer.allocate(byteCount: 3_840, alignment: 8)
     defer { raster.deallocate() }
@@ -142,7 +142,7 @@ private struct StaticNRFCompositionRecordingTransport:
         assemblyReport: report,
         inputSourceRawValue: 51,
         initialFrameOriginMicroseconds: 0,
-        profileStorage: UnsafeMutableRawBufferPointer(start: shared, count: 36_368),
+        profileStorage: UnsafeMutableRawBufferPointer(start: shared, count: 39_696),
         captureRegion: UnsafeMutableRawBufferPointer(
             start: shared.advanced(by: 8), count: 115_392
         ),
@@ -157,17 +157,17 @@ private struct StaticNRFCompositionRecordingTransport:
 }
 
 @Test func staticNRFRegionMapRequiresExactExtentAndDisjointness() {
-    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 155_848, alignment: 8)
+    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 159_168, alignment: 8)
     defer { pointer.deallocate() }
-    let profile = UnsafeMutableRawBufferPointer(start: pointer, count: 36_368)
+    let profile = UnsafeMutableRawBufferPointer(start: pointer, count: 39_696)
     let capture = UnsafeMutableRawBufferPointer(
-        start: pointer.advanced(by: 36_368), count: 115_392
+        start: pointer.advanced(by: 39_696), count: 115_392
     )
     let raster = UnsafeMutableRawBufferPointer(
-        start: pointer.advanced(by: 151_760), count: 3_840
+        start: pointer.advanced(by: 155_088), count: 3_840
     )
     let coverage = UnsafeMutableRawBufferPointer(
-        start: pointer.advanced(by: 155_600), count: 240
+        start: pointer.advanced(by: 158_928), count: 240
     )
     #expect(
         StaticSignalAnalyzerNRFRegionMap.validate(

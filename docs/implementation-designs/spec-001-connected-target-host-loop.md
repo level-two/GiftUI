@@ -252,7 +252,7 @@ transport owners while rejecting the previous frame identity.
 All workspaces come from generated preset limits. The Pi display target keeps
 at most 7,680 payload bytes plus bounded region metadata. The nRF display path
 keeps exactly one 3,840-byte tile slot; its separately accounted generated
-profile workspace is exactly 36,368 bytes. The firmware build rejects a named
+profile workspace is exactly 39,696 bytes. The firmware build rejects a named
 profile, capture, or raster-staging symbol whose linked size differs from the
 generated contract; report generation reads those sizes from the inspected ELF
 rather than restating configured constants. The nRF build must remain within
@@ -395,7 +395,7 @@ expires.
 
 The generated Static profile workspace is a noncopyable region map over the
 firmware's caller-owned retained storage symbol. Its sixteen exact,
-nonoverlapping ranges follow registry order and equal the approved 36,368-byte
+nonoverlapping ranges follow registry order and equal the approved 39,696-byte
 audit without an allocator or a large stack temporary. Attempt reset clears
 only the eight attempt-local families; complete reset clears the entire
 caller-owned store. The remaining firmware composition must construct this map
