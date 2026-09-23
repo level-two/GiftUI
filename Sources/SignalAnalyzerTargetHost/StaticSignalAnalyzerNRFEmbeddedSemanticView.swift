@@ -95,6 +95,15 @@ package struct StaticSignalAnalyzerNRFEmbeddedSemanticView {
         return nil
     }
 
+    package func layoutModifier(
+        of identity: UInt16, at index: UInt16
+    ) -> StaticSignalAnalyzerNRFEmbeddedLayoutModifier? {
+        guard let modifierIdentity = layoutModifierScope(of: identity, at: index),
+            let record = scope(at: modifierIdentity)
+        else { return nil }
+        return StaticSignalAnalyzerNRFEmbeddedLayoutModifier(record: record)
+    }
+
     package func semanticIdentity(at ordinal: UInt16) -> UInt16? {
         guard ordinal < scopeCount else { return nil }
         return StaticSignalAnalyzerNRFPackedSemanticRecords.scope(at: ordinal, in: region)?

@@ -1,3 +1,4 @@
+import GiftUI
 import GiftUISemanticCore
 import SignalAnalyzerDomain
 import SignalAnalyzerTargetHost
@@ -153,6 +154,46 @@ import Testing
                             view.layoutModifierScope(of: identity, at: modifier)
                                 == layout.modifierScope(of: identity, at: modifier)
                         )
+                        guard let expected = layout.modifier(of: identity, at: modifier) else {
+                            Issue.record("A generated layout modifier was missing")
+                            return
+                        }
+                        let decoded: StaticSignalAnalyzerNRFEmbeddedLayoutModifier
+                        switch expected {
+                        case .passthrough:
+                            decoded = .passthrough
+                        case .padding(let edges, let length):
+                            decoded = .padding(edges: edges.rawValue, length: length)
+                        case .paddingInsets:
+                            Issue.record("The nRF preset does not pack padding insets")
+                            return
+                        case .fixedFrame(let width, let height, let alignment):
+                            decoded = .fixedFrame(
+                                width: width, height: height,
+                                horizontal: alignment.horizontal.rawValue,
+                                vertical: alignment.vertical.rawValue
+                            )
+                        case .flexibleFrame(
+                            let minWidth, let maxWidth, let minHeight, let maxHeight,
+                            let alignment
+                        ):
+                            func targetLimit(
+                                _ limit: FrameLimit?
+                            ) -> StaticSignalAnalyzerNRFEmbeddedLayoutModifier.Limit? {
+                                guard let limit else { return nil }
+                                switch limit {
+                                case .points(let value): return .points(value)
+                                case .infinity: return .infinity
+                                }
+                            }
+                            decoded = .flexibleFrame(
+                                minWidth: minWidth, maxWidth: targetLimit(maxWidth),
+                                minHeight: minHeight, maxHeight: targetLimit(maxHeight),
+                                horizontal: alignment.horizontal.rawValue,
+                                vertical: alignment.vertical.rawValue
+                            )
+                        }
+                        #expect(view.layoutModifier(of: identity, at: modifier) == decoded)
                     }
                 }
                 if view.scope(at: identity)?.kind == .text {

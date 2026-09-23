@@ -174,7 +174,8 @@ public func giftUISignalAnalyzerLayoutScopeValid(
     ), let root = view.rootPrimitiveIdentity,
         view.layoutPrimitive(at: root) != nil,
         view.layoutChildCount(of: root) != nil,
-        view.layoutModifierCount(of: root) != nil
+        let modifierCount = view.layoutModifierCount(of: root),
+        modifierCount == 0 || view.layoutModifier(of: root, at: 0) != nil
     else { return 0 }
     layout.initializeMemory(as: UInt8.self, repeating: 0)
     guard StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodec.stage(

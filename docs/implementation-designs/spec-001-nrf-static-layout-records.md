@@ -59,7 +59,12 @@ projection. A differential fixture checks every normal/diagnostic scope and
 edge. The target now decodes all seven layout primitive
 shapes with checked payload fields; a differential test compares every
 primitive in the published diagnostic table with the generated host view.
-Modifier payloads and the actual layout pass remain open.
+The actual layout pass remains open.
+The target also decodes the preset's passthrough, padding, fixed-frame, and
+flexible-frame modifiers with checked alignment, optional dimensions, and
+limits. The differential fixture compares every modifier of every diagnostic
+primitive against the host layout projection. Measurement and placement
+remain open.
 
 ## Proposed Internal Organization
 

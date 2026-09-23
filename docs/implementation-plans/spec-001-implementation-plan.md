@@ -1221,7 +1221,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       A target-safe primitive decoder now reads all seven generated layout
       shapes and their alignment, spacing, and spacer values. The differential
       fixture compares every diagnostic primitive with the host layout view.
-      Modifier decoding and layout execution remain open.
+      Layout execution remains open.
+      The target-safe decoder now covers passthrough, edge padding, fixed
+      frames, and flexible frames. A host differential fixture compares every
+      modifier in the diagnostic tree, including optional dimensions and
+      infinity limits. The firmware probe decodes its first root modifier.
+      The checked image uses 187,840 RAM and 88,476 flash bytes; the
+      registered nRF SPEC-001 gate passes. Measurement and placement remain
+      open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or
