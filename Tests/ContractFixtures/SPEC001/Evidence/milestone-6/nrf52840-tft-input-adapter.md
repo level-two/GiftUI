@@ -1049,3 +1049,11 @@ The scoped Static presentation composition now borrows that capture region
 with the profile, raster, and coverage regions. Its host fixture writes and
 reads a compact live transition through the joined owner and rejects overlap
 between capture and profile before entering the application body.
+
+The target capture history now inserts and trims within the compact live slot,
+keeps the lower-bound channel baselines, clears with epoch rebasing, and rejects
+revision exhaustion. A hardware-free differential run compares each mutation
+publication, revision, duration, lower bound, baseline, and retained record
+against the portable store over 2,450 transitions plus out-of-history input
+and clear. This establishes host policy equivalence only; snapshot delivery
+and production firmware linkage are still open.

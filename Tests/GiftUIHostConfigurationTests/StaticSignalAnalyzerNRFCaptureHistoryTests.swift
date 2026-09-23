@@ -1,0 +1,86 @@
+import SignalAnalyzerData
+import SignalAnalyzerDomain
+import SignalAnalyzerTargetHost
+import Testing
+
+@Test func staticNRFCaptureHistoryMatchesPortableInsertionTrimAndClear() {
+    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
+    defer { pointer.deallocate() }
+    guard
+        var regions = StaticSignalAnalyzerNRFCaptureRegions(
+            storage: UnsafeMutableRawBufferPointer(start: pointer, count: 115_392)
+        )
+    else {
+        Issue.record("Exact capture region did not construct")
+        return
+    }
+    var target = StaticSignalAnalyzerNRFCaptureHistory()
+    var portable = SignalCaptureStore()
+
+    func compare(_ source: SignalTransition) {
+        let targetResult = target.receive(source, in: &regions)
+        let portableResult = portable.receive(source)
+        #expect(targetResult == portableResult)
+        #expect(target.revision == portable.revision)
+        #expect(Int(target.count) == portable.capture.transitions.count)
+        #expect(target.duration == portable.capture.duration)
+        #expect(target.retainedLowerBound == portable.capture.retainedLowerBound)
+        #expect(target.baselineLevels == portable.capture.baselineLevels)
+        for index in 0 ..< Int(target.count) {
+            let actual = regions.load(from: .live, at: index)?.transition
+            #expect(actual == portable.capture.transitions[index])
+        }
+    }
+
+    // Equal timestamps retain arrival order; an older valid item inserts in
+    // front. The sustained run crosses both the 30-second and 2,404 limits.
+    compare(transition(channel: 1, milliseconds: 100, level: .high))
+    compare(transition(channel: 2, milliseconds: 100, level: .low))
+    compare(transition(channel: 3, milliseconds: 50, level: .high))
+    for index in 0 ..< 2_450 {
+        compare(
+            transition(
+                channel: index % 4 + 1,
+                milliseconds: 200 + index * 12,
+                level: index.isMultiple(of: 2) ? .high : .low
+            ))
+    }
+    compare(transition(channel: 2, milliseconds: 25_000, level: .high))
+    compare(transition(channel: 3, milliseconds: 60_000, level: .low))
+    compare(transition(channel: 4, milliseconds: 1, level: .high))
+    let targetClear = target.clear(in: &regions)
+    let portableClear = portable.clear()
+    #expect(targetClear == portableClear)
+    #expect(target.count == 0)
+    #expect(target.baselineLevels == portable.capture.baselineLevels)
+    compare(transition(channel: 1, milliseconds: 30_000, level: .low))
+}
+
+@Test func staticNRFCaptureHistoryRevisionExhaustionIsTerminal() {
+    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
+    defer { pointer.deallocate() }
+    guard
+        var regions = StaticSignalAnalyzerNRFCaptureRegions(
+            storage: UnsafeMutableRawBufferPointer(start: pointer, count: 115_392)
+        )
+    else {
+        Issue.record("Exact capture region did not construct")
+        return
+    }
+    var target = StaticSignalAnalyzerNRFCaptureHistory(initialRevision: .max - 1)
+    var portable = SignalCaptureStore(initialRevision: .max - 1)
+    let first = transition(channel: 1, milliseconds: 1, level: .high)
+    #expect(target.receive(first, in: &regions) == portable.receive(first))
+    #expect(target.receive(first, in: &regions) == portable.receive(first))
+    #expect(target.clear(in: &regions) == portable.clear())
+}
+
+private func transition(
+    channel: Int, milliseconds: Int, level: DigitalLevel
+) -> SignalTransition {
+    SignalTransition(
+        channelID: SignalChannelID(rawValue: channel),
+        timestamp: .milliseconds(milliseconds),
+        level: level
+    )
+}

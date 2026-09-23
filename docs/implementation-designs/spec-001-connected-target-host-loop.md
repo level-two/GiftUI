@@ -429,6 +429,17 @@ This representation is an implementation prerequisite for the Static
 repository and snapshot path; the current firmware still links only the
 diagnostic input slice.
 
+The target capture history now owns only scalar policy state and mutates the
+live compact-record slot in place. It scans the ordered slot for stable
+insertion, computes the combined sequence's time and capacity prefix eviction
+before writing, and updates baseline levels from that prefix. With no eviction
+it shifts records backward; with an evicted prefix it writes forward, so both
+paths stay within the 2,404-record slot without a temporary array. Clear
+preserves current levels, rebases source time, and advances the same revision
+as the portable store. A host differential fixture compares publications,
+metadata, and every retained record through sustained capacity pressure.
+The snapshot slot and firmware repository join remain to be built.
+
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact
 root identity, the six-case `SignalAnalyzerAction` specialization, and dense
