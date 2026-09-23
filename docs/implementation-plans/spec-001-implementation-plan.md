@@ -968,6 +968,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       carries its structural identity and declaration ordinal; host assertions
       compare all six descriptor fields. The target compiles this generated
       source and passes the build gates at 184,192 RAM and 35,796 flash bytes.
+      The registered nRF SPEC-001 driver passes 225 host tests, all seven C
+      fixtures, and its SPEC-015 cross-build at this revision; it publishes
+      cross-build inspection only, with no connected display or input claim.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

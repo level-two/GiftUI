@@ -25,6 +25,11 @@ host preset. The firmware compiles that descriptor and validates its fields
 before diagnostic startup. The checked image passes the hard-float,
 zero-heap, required-symbol, RAM, and flash gates at 184,192 RAM and 35,796
 flash bytes. The generated root and repository are still not linked.
+The registered `scripts/contracts/run-spec-001.sh --profile
+nrf52840-embedded` driver also passed after this change: 225 host tests, the
+touch/input/storage/clock/scheduler/lifecycle C fixtures, and the SPEC-015
+nRF cross-build. Its immutable SPEC-001 report is
+`.build/contract-reports/spec-001/20260923T113743Z-91221/nrf52840-embedded/`.
 
 The selected connected assembly is the `nrf52840dk/nrf52840` with the
 480 x 320 ILI9486 PiScreen display bridge and its ADS7846 resistive-touch
