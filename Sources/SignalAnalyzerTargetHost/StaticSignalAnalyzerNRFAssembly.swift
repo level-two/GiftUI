@@ -140,7 +140,7 @@ package enum StaticSignalAnalyzerNRFAssembly {
             + UInt16(pacing.maximumActionInducedFactsPerServiceWindow)
     }
 
-    private static func descriptor() -> RasterSurfaceDescriptor? {
+    package static func descriptor() -> RasterSurfaceDescriptor? {
         RasterSurfaceDescriptor(
             bounds: Rect(
                 origin: Point(x: 0, y: 0),
@@ -154,13 +154,13 @@ package enum StaticSignalAnalyzerNRFAssembly {
         )
     }
 
-    private static func payloadLimits() -> RasterPayloadLimits? {
+    package static func payloadLimits() -> RasterPayloadLimits? {
         RasterPayloadLimits(
             maximumRasterBytes: 3_840,
             maximumPayloadBytes: 3_840,
             maximumRegionsPerPayload: 1,
-            maximumRegionSubmissionsPerFrame: 80,
-            maximumTileVisitsPerFrame: 80,
+            maximumRegionSubmissionsPerFrame: 23_040_000,
+            maximumTileVisitsPerFrame: 12_000,
             maximumInFlightPayloads: 1,
             maximumGlyphRasterBytes: 3_840,
             maximumStrokeWorkspaceBytes: 3_840

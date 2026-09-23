@@ -173,7 +173,8 @@ content into 240 x 16 RGB565 regions and projects them into the validated
 480 x 320 framebuffer aspect-fit rectangle.
 
 The Static nRF owner uses only generated inline storage and direct typed
-dispatch. It renders 480 x 320 content into one 480 x 4 RGB565 staging slot.
+dispatch. It renders 480 x 320 content into one 480 x 4 RGB565 staging slot
+and a 240-byte coverage bitmap for touched-pixel run emission.
 ILI9486 consumes the synchronous borrow before return. No full framebuffer,
 heap, reflection, `Any`, or runtime profile selection is permitted.
 

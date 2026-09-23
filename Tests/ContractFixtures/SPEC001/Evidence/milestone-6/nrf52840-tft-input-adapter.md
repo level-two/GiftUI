@@ -792,6 +792,16 @@ publish their expected headers and five strokes with matching operation and
 glyph counts. This verifies operation production, not the production raster
 endpoint or connected firmware loop.
 
+The Static nRF raster endpoint factory now constructs the common one-shot
+operation-major RGB565 session from the exact validated host assembly and
+caller-owned 3,840-byte raster region plus 240-byte coverage bitmap. The
+assembly's raster work limits admit the approved worst-case 150 operations
+across 80 tile rows: 12,000 tile visits and 23,040,000 theoretical pixel-run
+submissions. A host fixture checks exact capacity admission, successful
+endpoint construction, and rejection of a short coverage region. The full
+application producer is not yet offered through this endpoint, and the
+connected firmware loop remains open.
+
 The generated Static action reader now resolves six occurrence identities,
 action codes, paint order, bounds, clips, and inherited disable modifiers
 directly from the borrowed semantic candidate and published layout. Eight
