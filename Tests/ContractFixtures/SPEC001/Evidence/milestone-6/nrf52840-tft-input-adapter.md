@@ -1432,3 +1432,12 @@ SPEC-001 run passed at
 `.build/contract-reports/spec-001/20260923T231915Z-50805/nrf52840-embedded/`.
 The checked image uses 187,968 RAM and 204,252 flash bytes. The one-shot
 endpoint is compiled but has not yet been exercised in this firmware probe.
+
+The one-shot backend endpoint now runs in the exact firmware-source probe
+around that shared raster session. It rejects a wrong frame provenance before
+reserving or calling the body, then accepts a correctly tagged synchronous
+fill offer and returns its session to idle. The registered nRF SPEC-001 run
+passed at
+`.build/contract-reports/spec-001/20260923T232432Z-53090/nrf52840-embedded/`.
+The checked image uses 187,968 RAM and 206,236 flash bytes. A complete
+five-Canvas render offer through this endpoint remains open.

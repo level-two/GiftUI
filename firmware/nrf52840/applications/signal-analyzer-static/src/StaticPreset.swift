@@ -989,7 +989,81 @@ public func giftUISignalAnalyzerTileValid(
         session.isIdleForOffer
     else { return 0 }
     _ = sessionReservation
+    let provenance = FrameProvenance(
+        cycle: RunCycleID(rawValue: 1),
+        semanticRevision: SemanticRevision(rawValue: 1),
+        candidateFrame: CandidateFrameID(rawValue: 1)
+    )
+    let effective = EffectiveRasterPresentation(
+        operations: [
+            .opaqueRectangles, .positionedText,
+            .straightLineStrokes, .clipping, .damage,
+        ],
+        extent: CapabilityExtent(width: 480, height: 320)!,
+        regionExtent: CapabilityExtent(width: 480, height: 4)!,
+        rowBytes: CapabilityByteCount(rawValue: 960),
+        operationStream: .synchronousBorrowedOneShot,
+        encoding: .rgb565BigEndian,
+        submissionLifetime: .synchronousBorrow,
+        handoff: .synchronous,
+        realization: .tiled,
+        requiredRasterBytes: CapabilityByteCount(rawValue: 3_840),
+        requiredPayloadBytes: CapabilityByteCount(rawValue: 3_840),
+        inFlightCount: 1,
+        requiredInFlightBytes: CapabilityByteCount(rawValue: 3_840)
+    )
+    guard var endpoint = OneShotRasterBackendEndpoint(
+        effectivePresentation: effective,
+        descriptor: descriptor,
+        payloadLimits: payloadLimits,
+        textMetrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
+        textRaster: StaticSignalAnalyzerNRFEmbeddedFontRaster(),
+        textRasterRealization: RasterRealizationID(rawValue: 0),
+        envelopeValidator: StaticSignalAnalyzerNRFEmbeddedProbeEnvelope(
+            expected: provenance
+        ),
+        sink: session,
+        startupFailure: nil
+    ) else { return 0 }
+    let wrong = FrameProvenance(
+        cycle: RunCycleID(rawValue: 2),
+        semanticRevision: SemanticRevision(rawValue: 1),
+        candidateFrame: CandidateFrameID(rawValue: 1)
+    )
+    guard endpoint.offer(provenance: wrong, body: { _ in .complete })
+        == FrameOfferResult(
+            disposition: .failed, failure: .invalidEnvelope
+        ), endpoint.bodyCallCount == 0
+    else { return 0 }
+    let offer = endpoint.offer(provenance: provenance) { sink in
+        guard sink.begin(
+            RenderPlanHeader(
+                surfaceBounds: surface, damageBounds: small,
+                operationCount: 1, positionedGlyphCount: 0,
+                maximumObservedClipDepth: 0
+            )
+        ), sink.fillRect(
+            FillRectOperation(bounds: small, clip: small, color: .white)
+        ), sink.finish()
+        else { return .contractViolation }
+        return .complete
+    }
+    guard offer == FrameOfferResult(disposition: .accepted, failure: nil),
+        endpoint.bodyCallCount == 1,
+        endpoint.reservationCallCount == 1,
+        endpoint.sink.isIdleForOffer
+    else { return 0 }
     return 1
+}
+
+private struct StaticSignalAnalyzerNRFEmbeddedProbeEnvelope:
+    RasterFrameEnvelopeValidator
+{
+    let expected: FrameProvenance
+
+    borrowing func accepts(_ provenance: FrameProvenance) -> Bool {
+        provenance == expected
+    }
 }
 
 private struct StaticSignalAnalyzerNRFTileProbeStroke: StraightLineStrokeView {
