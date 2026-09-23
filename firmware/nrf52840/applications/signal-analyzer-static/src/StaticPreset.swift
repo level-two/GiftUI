@@ -109,9 +109,19 @@ public func giftUISignalAnalyzerStaticPreset() -> UInt32 {
 
 @_cdecl("giftui_signal_analyzer_topology_valid")
 public func giftUISignalAnalyzerTopologyValid(
-    _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32
+    _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32,
+    _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
 ) -> UInt32 {
-    guard let profile, bytes == 39_696 else { return 0 }
+    guard let profile, bytes == 39_696, let capture,
+        captureBytes == 115_392,
+        let captures = StaticSignalAnalyzerNRFCaptureRegions(
+            storage: UnsafeMutableRawBufferPointer(
+                start: capture, count: Int(captureBytes)
+            )
+        )
+    else { return 0 }
+    var model = StaticSignalAnalyzerNRFModelLocation()
+    guard model.activate() != nil else { return 0 }
     let semantic = UnsafeMutableRawBufferPointer(start: profile, count: 3_024)
     func check(_ variant: StaticSignalAnalyzerNRFSemanticVariant,
                count: UInt16) -> Bool {
@@ -131,29 +141,25 @@ public func giftUISignalAnalyzerTopologyValid(
             StaticSignalAnalyzerNRFTopologyWriter.populateInvariantStyles(
                 scopeCount: count, in: semantic
             ),
+            StaticSignalAnalyzerNRFModelTextWriter.populate(
+                variant: variant, model: model, capture: captures,
+                in: semantic
+            ) != nil,
             StaticSignalAnalyzerNRFPackedSemanticRecords.scope(
                 at: 0, in: semantic
             )?.kind == .proxy
         else { return false }
         return true
     }
-    guard check(.normal, count: 96) && check(.diagnostic, count: 98) else {
-        return 0
-    }
-    let title: StaticString = "DIGITAL SIGNAL ANALYZER"
-    return title.withUTF8Buffer { bytes in
-        guard StaticSignalAnalyzerNRFUTF8TextPool.appendBytes(
-            bytes, at: 0, in: semantic
-        ) == 23,
-            StaticSignalAnalyzerNRFUTF8TextPool.scalarCount(
-                from: 0, byteCount: 23, in: semantic
-            ) == 23,
-            StaticSignalAnalyzerNRFUTF8TextPool.scalar(
-                at: 0, from: 0, byteCount: 23, in: semantic
-            ) == 0x44
-        else { return 0 }
-        return 1
-    }
+    guard check(.normal, count: 96),
+        model.beginMutation(),
+        let diagnostic = giftUIStaticSampleDiagnostic(),
+        model.setAcquisitionState(.failed(diagnostic)),
+        model.endMutation(),
+        check(.diagnostic, count: 98)
+    else { return 0 }
+    model.retire()
+    return 1
 }
 
 @_cdecl("giftui_signal_analyzer_source_valid")

@@ -1139,6 +1139,17 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       23 bytes and decoded first scalar in the candidate region. The checked
       image uses 187,840 RAM and 72,796 flash bytes. Dynamic text values and
       complete table publication remain open.
+      A target-compiled model text writer now fills all 20 normal and 21
+      diagnostic text scopes in ordinal order from the fixed model and capture
+      slot. It checks total UTF-8 capacity before writing, formats ruler
+      hundredths with the portable arithmetic, resolves channel levels from
+      retained transitions, and preserves the complete 96-byte diagnostic.
+      A host differential fixture compares status, ruler, labels, and the
+      maximum diagnostic with portable Presentation values. Firmware startup
+      stages both variants through the actual C profile/capture regions; the
+      checked build uses 187,840 RAM and 78,252 flash bytes. Live modifiers,
+      complete semantic validation/publication, layout, rendering, and the
+      production loop remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

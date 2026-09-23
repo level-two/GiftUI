@@ -69,13 +69,18 @@ the region lifetime; no view or pointer to it escapes an opportunity.
 The firmware now compiles the generated packed schema and topology writer.
 Its startup check stages the normal and diagnostic scope shapes and action
 bindings plus invariant primitive, layout modifier, and style payloads in the
-actual candidate region. Live modifier/text population and complete-table
-validation remain outside that Embedded Swift source set while their dependent
-portable Presentation values are lowered. This check does not seal or publish
-a semantic result.
+actual candidate region. The fixed model now supplies all text ranges there.
+Live modifier population and complete-table validation remain outside that
+Embedded Swift source set. This check does not seal or publish a semantic
+result.
 The byte-level UTF-8 pool and scalar decoder also compile on the target. A
 startup probe writes and decodes the invariant title through the real
 candidate region; it does not yet assign text ranges to scope records.
+The fixed model text writer now assigns every normal or diagnostic text scope
+a contiguous UTF-8 range. It reads the target model and capture slot directly,
+checks the full pool need before writing, and uses the same ruler hundredths
+arithmetic as portable Presentation. The target startup probe stages both
+variants; publication still awaits live modifiers and full-table validation.
 
 ## Data and Control Flow
 
