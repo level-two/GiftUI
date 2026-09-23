@@ -4,6 +4,7 @@
 #include "giftui_fault.h"
 #include "ili9486.h"
 #include "static_input_bridge.h"
+#include "static_host_clock.h"
 
 #include <stdbool.h>
 #include <errno.h>
@@ -69,14 +70,28 @@ int giftui_device_validation_run(void)
     }
     display_initialized = true;
 
-    const uint32_t display_started = k_uptime_get_32();
+    uint64_t display_started = 0U;
+    result = giftui_static_host_clock_now(&display_started);
+    if (result != 0) {
+        goto cleanup;
+    }
     result = ili9486_render_color_bars();
     if (result != 0) {
         giftui_fault_record(GIFTUI_FAULT_DISPLAY_CONTROLLER, result);
         goto cleanup;
     }
+    uint64_t display_finished = 0U;
+    result = giftui_static_host_clock_now(&display_finished);
+    if (result != 0) {
+        goto cleanup;
+    }
+    if (display_finished < display_started ||
+        (display_finished - display_started) / 1000U > UINT32_MAX) {
+        result = -ERANGE;
+        goto cleanup;
+    }
     printk("GiftUI display transfer: status=completed elapsed-ms=%u\n",
-           k_uptime_get_32() - display_started);
+           (unsigned int)((display_finished - display_started) / 1000U));
     result = giftui_signal_analyzer_input_install_presentation(0U);
     if (result != 0) {
         giftui_fault_record(GIFTUI_FAULT_CAPACITY, result);

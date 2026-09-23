@@ -891,3 +891,19 @@ enforce the frame boundary, run one application opportunity, and finish pacing
 even when the unbound-root fixture returns `factAdmissionUnavailable`. The
 fixture verifies a second wake can be serviced at the next boundary. The
 presentation transaction is not yet inside this service.
+
+The linked nRF clock seam converts `k_uptime_get()` to checked 64-bit
+microseconds. Its C99 fake-kernel fixture passes null-output, 250 ms,
+negative-uptime, and multiplication-overflow cases. The finite firmware entry
+now uses this seam for display-transfer timing; the direct hardware-free
+build verifies the retained clock symbol and existing ABI, zero-heap,
+no-full-framebuffer, exact-storage, RAM, and flash gates. The inspected totals
+are 184,128 RAM bytes and 34,496 flash bytes. This is still the finite
+diagnostic firmware, not the full application loop.
+
+| Artifact after clock seam | SHA-256 |
+| --- | --- |
+| `zephyr.elf` | `1265dfada38daa1ab2a0bfc7d8143390256289d48090f45630122df3b9777a9e` |
+| `zephyr.hex` | `bb06a5be01ddd599904502801bf1044124acfadd635fe427a96b02f547dd41bf` |
+| `zephyr.map` | `0c90cbb5f015de845ded45e40eb3c63204ab0156b2e46cc7ca7e8637ffc79ec1` |
+| `zephyr.dts` | `042dd0ead8283db2cb12d0ff36caad849f8c88787859202809cd03bf17aef6d7` |

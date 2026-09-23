@@ -1005,6 +1005,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       and completes pacing after application failure as well as success; the
       host fixture proves no-work, early wait, failure completion, and a later
       reusable wake. Full presentation still follows as a separate pending join.
+      The finite nRF device entry now times display transfer through a linked
+      checked 64-bit monotonic-microsecond clock seam. A C99 fake-kernel
+      fixture covers conversion and invalid/overflow inputs; the direct
+      hardware-free build passes at 184,128 RAM and 34,496 flash bytes.
       The production metadata envelope now supplies the preset's one exact
       observable slot, six-action specialization, and dense two-case Canvas
       coverage around a caller-supplied generated callable table; host

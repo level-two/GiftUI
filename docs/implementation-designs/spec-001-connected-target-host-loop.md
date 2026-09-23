@@ -181,6 +181,9 @@ same lifetime as application and profile storage.
 The first paced Static service encloses the application fact/input stage and
 always completes its pacing opportunity before returning a stage result; the
 full semantic-to-display transaction will extend this serialized service.
+The firmware clock seam converts Zephyr's signed 64-bit uptime milliseconds
+to checked monotonic microseconds. The finite device entry uses that same
+source for its display-transfer measurement until the live loop is linked.
 ILI9486 consumes the synchronous borrow before return. No full framebuffer,
 heap, reflection, `Any`, or runtime profile selection is permitted.
 
