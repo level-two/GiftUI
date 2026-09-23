@@ -432,6 +432,52 @@ public func giftUISignalAnalyzerRepositoryProducerValid(
     }
 }
 
+@_cdecl("giftui_signal_analyzer_revision_failure_valid")
+public func giftUISignalAnalyzerRevisionFailureValid(
+    _ profile: UnsafeMutableRawPointer?, _ profileBytes: UInt32,
+    _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
+) -> UInt32 {
+    guard let profile, let capture, profileBytes == 39_696,
+        captureBytes == 115_392
+    else { return 0 }
+    let profileStorage = UnsafeMutableRawBufferPointer(
+        start: profile, count: Int(profileBytes)
+    )
+    let captureStorage = UnsafeMutableRawBufferPointer(
+        start: capture, count: Int(captureBytes)
+    )
+    guard var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
+        activeStorage: UnsafeMutableRawBufferPointer(
+            rebasing: profileStorage[31_632 ..< 35_472]
+        ),
+        sealedStorage: UnsafeMutableRawBufferPointer(
+            rebasing: profileStorage[35_472 ..< 39_312]
+        )
+    ) else { return 0 }
+    var repository = StaticSignalAnalyzerNRFRepositoryProducer(initialRevision: .max)
+    return withUnsafeMutablePointer(to: &giftUIStaticModelLocation) { location in
+        guard location.pointee.activate() != nil,
+            repository.startObservation(
+                admission: &admission, captureStorage: captureStorage
+            ) == .accepted,
+            location.pointee.applyAdmittedBatch(
+                from: &admission, captureStorage: captureStorage
+            ) == .applied(factCount: 2),
+            repository.start(
+                admission: &admission, captureStorage: captureStorage
+            ) == .terminalFailureAdmitted,
+            location.pointee.applyAdmittedBatch(
+                from: &admission, captureStorage: captureStorage
+            ) == .applied(factCount: 2),
+            repository.acquisitionState == location.pointee.acquisitionState,
+            location.pointee.errorMessage?.utf8ByteCount == 26
+        else { return 0 }
+        repository.shutdown()
+        location.pointee.retire()
+        return 1
+    }
+}
+
 @_cdecl("giftui_signal_analyzer_snapshot_view_valid")
 public func giftUISignalAnalyzerSnapshotViewValid(
     _ address: UnsafeMutableRawPointer?, _ bytes: UInt32

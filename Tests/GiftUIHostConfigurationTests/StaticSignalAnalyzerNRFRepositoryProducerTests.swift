@@ -132,3 +132,112 @@ import Testing
                 == portable.capture.transitions[index])
     }
 }
+
+@Test func nRFRepositoryRevisionExhaustionAdmitsStateAndReservedFailure() {
+    let factBytes = 3_840
+    let captureBytes = 115_392
+    let active = UnsafeMutableRawPointer.allocate(byteCount: factBytes, alignment: 8)
+    let sealed = UnsafeMutableRawPointer.allocate(byteCount: factBytes, alignment: 8)
+    let capture = UnsafeMutableRawPointer.allocate(byteCount: captureBytes, alignment: 8)
+    defer {
+        active.deallocate()
+        sealed.deallocate()
+        capture.deallocate()
+    }
+    let captureStorage = UnsafeMutableRawBufferPointer(start: capture, count: captureBytes)
+    guard
+        var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
+            activeStorage: UnsafeMutableRawBufferPointer(start: active, count: factBytes),
+            sealedStorage: UnsafeMutableRawBufferPointer(start: sealed, count: factBytes)
+        ),
+        let expected = SignalAnalyzerDiagnostic(
+            exactUTF8: Array("capture revision exhausted".utf8)
+        )
+    else {
+        Issue.record("Terminal repository setup failed")
+        return
+    }
+    var repository = StaticSignalAnalyzerNRFRepositoryProducer(initialRevision: .max)
+    var model = StaticSignalAnalyzerNRFModelLocation()
+    let generation = model.activate()
+    #expect(generation == 0)
+    let observed = repository.startObservation(
+        admission: &admission, captureStorage: captureStorage
+    )
+    #expect(observed == .accepted)
+    let bootstrap = model.applyAdmittedBatch(
+        from: &admission, captureStorage: captureStorage
+    )
+    #expect(bootstrap == .applied(factCount: 2))
+    let start = repository.start(
+        admission: &admission, captureStorage: captureStorage
+    )
+    #expect(start == .terminalFailureAdmitted)
+    #expect(repository.acquisitionState == .failed(expected))
+    #expect(admission.pendingCompactCount == 1)
+    #expect(admission.pendingOperationalFailureCount == 1)
+    let applied = model.applyAdmittedBatch(
+        from: &admission, captureStorage: captureStorage
+    )
+    #expect(applied == .applied(factCount: 2))
+    #expect(model.acquisitionState == .failed(expected))
+    #expect(model.errorMessage == expected)
+    let repeated = repository.start(
+        admission: &admission, captureStorage: captureStorage
+    )
+    #expect(repeated == .rejected)
+    #expect(repository.nextScheduledDelay == nil)
+}
+
+@Test func nRFRepositoryRevisionFailureRetainsReservedSlotAfterActionQuota() {
+    let factBytes = 3_840
+    let captureBytes = 115_392
+    let active = UnsafeMutableRawPointer.allocate(byteCount: factBytes, alignment: 8)
+    let sealed = UnsafeMutableRawPointer.allocate(byteCount: factBytes, alignment: 8)
+    let capture = UnsafeMutableRawPointer.allocate(byteCount: captureBytes, alignment: 8)
+    defer {
+        active.deallocate()
+        sealed.deallocate()
+        capture.deallocate()
+    }
+    let captureStorage = UnsafeMutableRawBufferPointer(start: capture, count: captureBytes)
+    guard
+        var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
+            activeStorage: UnsafeMutableRawBufferPointer(start: active, count: factBytes),
+            sealedStorage: UnsafeMutableRawBufferPointer(start: sealed, count: factBytes)
+        )
+    else {
+        Issue.record("Reserved quota setup failed")
+        return
+    }
+    var repository = StaticSignalAnalyzerNRFRepositoryProducer(initialRevision: .max)
+    var model = StaticSignalAnalyzerNRFModelLocation()
+    let generation = model.activate()
+    #expect(generation == 0)
+    let observed = repository.startObservation(
+        admission: &admission, captureStorage: captureStorage
+    )
+    #expect(observed == .accepted)
+    let bootstrap = model.applyAdmittedBatch(
+        from: &admission, captureStorage: captureStorage
+    )
+    #expect(bootstrap == .applied(factCount: 2))
+    let began = admission.beginProducer(.action)
+    #expect(began)
+    for _ in 0 ..< 6 {
+        let admitted = admission.admitAcquisitionState(.running)
+        #expect(admitted != .producerCapacityExhausted)
+    }
+    admission.endProducer()
+    let terminal = repository.start(
+        admission: &admission, captureStorage: captureStorage
+    )
+    #expect(terminal == .terminalFailureAdmitted)
+    #expect(admission.pendingCompactCount == 6)
+    #expect(admission.pendingOperationalFailureCount == 1)
+    let applied = model.applyAdmittedBatch(
+        from: &admission, captureStorage: captureStorage
+    )
+    #expect(applied == .applied(factCount: 7))
+    #expect(repository.acquisitionState == model.acquisitionState)
+}

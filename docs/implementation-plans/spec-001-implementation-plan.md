@@ -1113,6 +1113,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       image uses 187,840 RAM and 63,772 flash bytes. This producer still needs
       production clock scheduling, bounded failure normalization, root action
       dispatch, and complete rendering.
+      Revision exhaustion now stops the fixed source and admits the same
+      26-byte diagnostic as a failed acquisition state plus a separately
+      reserved normalized operational failure. When action quota is already
+      full, the reserved failure still reaches the model. Host fixtures cover
+      ordinary and quota-saturated terminal paths; a firmware startup probe
+      retains the target path. The checked image uses 187,840 RAM and 64,620
+      flash bytes. Other source and admission rejection normalization remains
+      open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or
