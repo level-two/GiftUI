@@ -71,9 +71,10 @@ Its startup check stages the normal and diagnostic scope shapes and action
 bindings plus invariant primitive, layout modifier, and style payloads in the
 actual candidate region. The fixed model now supplies all text ranges there.
 The fixed model also supplies all ten live modifier payloads through the
-generated packed schema. Complete-table validation remains outside that
-Embedded Swift source set. This check does not seal or publish a semantic
-result.
+generated packed schema. Target-safe complete-table validation now checks
+topology, payloads, text, action bindings, and Canvas associations. The
+generated root is a background modifier scope. This check does not seal or
+publish a semantic result.
 The byte-level UTF-8 pool and scalar decoder also compile on the target. A
 startup probe writes and decodes the invariant title through the real
 candidate region; it does not yet assign text ranges to scope records.

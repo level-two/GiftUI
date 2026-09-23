@@ -1159,6 +1159,16 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       probe retains the modifier writer, and the checked image uses 187,840
       RAM and 79,068 flash bytes. Whole-table validation and publication are
       still open.
+      A target-safe validator now checks the completed normal/diagnostic table
+      before later stages borrow it: generated topology fingerprint, ordered
+      parent/child/sibling links, unique identities, complete UTF-8 ranges,
+      payload shapes, six exact action targets, and five Canvas occurrences.
+      A host differential fixture compares it with the existing full UTF-8
+      topology validator and rejects a corrupted text offset. This also
+      corrects the earlier firmware startup probe's root-kind expectation:
+      the generated root is a background modifier scope. The target build
+      remains hardware-free at 187,840 RAM and 80,940 flash bytes; semantic
+      publication and the firmware host loop are still open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

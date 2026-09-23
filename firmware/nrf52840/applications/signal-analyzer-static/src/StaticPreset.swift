@@ -144,13 +144,16 @@ public func giftUISignalAnalyzerTopologyValid(
             StaticSignalAnalyzerNRFModelModifierWriter.populate(
                 model: model, capture: captures, in: semantic
             ),
-            StaticSignalAnalyzerNRFModelTextWriter.populate(
+            let textByteCount = StaticSignalAnalyzerNRFModelTextWriter.populate(
                 variant: variant, model: model, capture: captures,
                 in: semantic
-            ) != nil,
+            ),
+            StaticSignalAnalyzerNRFEmbeddedSemanticValidator.validate(
+                variant: variant, textByteCount: textByteCount, in: semantic
+            ),
             StaticSignalAnalyzerNRFPackedSemanticRecords.scope(
                 at: 0, in: semantic
-            )?.kind == .proxy
+            )?.kind == .modifier
         else { return false }
         return true
     }

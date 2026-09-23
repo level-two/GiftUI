@@ -72,11 +72,22 @@ import Testing
                     model: model, capture: captures, in: region
                 )
                 #expect(modifiersPopulated)
-                #expect(
-                    StaticSignalAnalyzerNRFModelTextWriter.populate(
-                        variant: variant, model: model, capture: captures, in: region
-                    ) != nil
+                let textBytes = StaticSignalAnalyzerNRFModelTextWriter.populate(
+                    variant: variant, model: model, capture: captures, in: region
                 )
+                #expect(textBytes != nil)
+                if let textBytes {
+                    #expect(
+                        table.validateUTF8Topology(
+                            scopeCount: count, textByteCount: textBytes, in: region
+                        )
+                    )
+                    #expect(
+                        StaticSignalAnalyzerNRFEmbeddedSemanticValidator.validate(
+                            variant: variant, textByteCount: textBytes, in: region
+                        )
+                    )
+                }
                 let labels = SignalAnalyzerRulerLabels(visibleRange: model.visibleRange)
                 let selectedWindow: VisibleTimeWindow =
                     model.visibleWindowRawValue == 2 ? .fiveSeconds : .twoSeconds
@@ -119,6 +130,14 @@ import Testing
                 #expect(text(95, in: region) == "5 s")
                 if variant == .diagnostic {
                     #expect(text(97, in: region) == String(repeating: "E", count: 96))
+                }
+                region[table.scopeOffset + 6 * table.scopeStride + 12] = 1
+                if let textBytes {
+                    #expect(
+                        !StaticSignalAnalyzerNRFEmbeddedSemanticValidator.validate(
+                            variant: variant, textByteCount: textBytes, in: region
+                        )
+                    )
                 }
             }
         }
