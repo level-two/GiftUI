@@ -187,6 +187,44 @@ public func giftUISignalAnalyzerLayoutScopeValid(
     return 1
 }
 
+@_cdecl("giftui_signal_analyzer_layout_text_valid")
+public func giftUISignalAnalyzerLayoutTextValid(
+    _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32
+) -> UInt32 {
+    guard let profile, bytes == 39_696 else { return 0 }
+    let published = UnsafeMutableRawBufferPointer(
+        start: profile.advanced(by: 3_024), count: 3_024
+    )
+    guard StaticSignalAnalyzerNRFEmbeddedSemanticRegion.verifyPublished(published),
+        let title = StaticSignalAnalyzerNRFPackedSemanticRecords.scope(
+            at: 6, in: published
+        ) else { return 0 }
+    let workspace = UnsafeMutableRawBufferPointer(
+        start: profile.advanced(by: 9_184), count: 4_704
+    )
+    workspace.initializeMemory(as: UInt8.self, repeating: 0)
+    let line = StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.Line(
+        identity: title.identity, lineIndex: 0,
+        x: 0, y: 0, width: 184, height: 16,
+        baselineX: 0, baselineY: 12
+    )
+    let glyph = StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.Glyph(
+        identity: title.identity, lineIndex: 0, glyphID: 1,
+        baselineX: 0, baselineY: 12
+    )
+    guard StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.stageLine(
+        line, at: 0, in: workspace
+    ), StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.stageGlyph(
+        glyph, at: 0, in: workspace
+    ), StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.line(
+        at: 0, in: workspace
+    ) == line,
+        StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.glyph(
+            at: 0, in: workspace
+        ) == glyph else { return 0 }
+    return 1
+}
+
 @_cdecl("giftui_signal_analyzer_source_valid")
 public func giftUISignalAnalyzerSourceValid() -> UInt32 {
     var source = StaticSignalAnalyzerNRFDeterministicSource()

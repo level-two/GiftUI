@@ -1196,6 +1196,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       publication. The checked image uses 187,840 RAM and 83,756 flash bytes.
       This is a codec probe; the common layout measure/place pass and resolved
       result publication remain open.
+      The target-safe render-workspace codec now packs the exact 128 × 16-byte
+      text-line and 224 × 10-byte glyph records in the approved 4,704-byte
+      region. A host differential fixture compares whole-region bytes with
+      the existing layout text codec through staging and glyph-baseline
+      replacement, and checks identity, capacity, and mismatch refusals.
+      Firmware startup exercises one line and glyph in the actual C profile
+      slice; the checked image uses 187,840 RAM and 84,748 flash bytes. This
+      remains a codec probe before complete layout publication.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

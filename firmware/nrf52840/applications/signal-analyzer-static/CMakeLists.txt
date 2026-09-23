@@ -91,6 +91,7 @@ set(giftui_static_swift_inputs
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedSemanticRegion.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedSemanticView.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodec.swift"
+    "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.swift"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/StaticPreset.swift"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/StaticInputABI.swift"
 )

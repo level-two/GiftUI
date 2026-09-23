@@ -114,7 +114,11 @@ these derivations rather than silently discard supplied fields. `publishLayout`
 then checks line/glyph order and replays them into an in-place validating sink.
 The fixed 16-byte line and 10-byte glyph codecs now prove their byte ranges,
 checked geometry, last-slot access, and untouched scratch tail in host tests;
-the fixed-region workspace now verifies the reference font, derives text clips
+the corresponding target-safe codec now cross-builds and a differential
+fixture compares its entire workspace with the host codec after line/glyph
+staging and glyph-baseline replacement. Firmware startup uses the actual
+profile slice for one line and glyph, without claiming layout publication.
+The fixed-region workspace now verifies the reference font, derives text clips
 from placed scope and line bounds, derives glyph indexes from record order, and
 stores its 13-entry scope stack in the reserved scratch tail. Focused host tests
 cover placement, text replacement, duplicate rejection, and complete reset.
