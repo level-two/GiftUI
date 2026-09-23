@@ -1211,8 +1211,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       required backend failure transition, quiesces input, and requires fresh
       construction before the opportunity closes. The paced entry now rejects
       a later cycle before consuming its pending wake or entering profile
-      storage; the focused fixture verifies that refusal. Firmware residual-policy
-      routing and reconstruction remain open.
+      storage; the focused fixture verifies that refusal. A Static nRF
+      residual adapter now routes the completed backend-health transition
+      through the shared host router after drain, health update, and input
+      quiescence; the fixture verifies the selected `quiesceAffectedScope`
+      disposition. Firmware policy-owner composition and reconstruction remain
+      open.
       The Static nRF endpoint now owns one exact 3,840-byte raster tile and
       240-byte coverage map, with raster work limits derived from 150
       operations across the full 480 x 320 surface. A production render-offer

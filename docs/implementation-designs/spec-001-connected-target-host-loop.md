@@ -212,6 +212,11 @@ route through the approved residual policy.
 Once health requires fresh construction, the paced entry rejects later work
 before scheduling or beginning another profile attempt. It preserves the
 pending wake for the reconstruction owner and performs no display offer.
+The Static nRF residual adapter sends only a completed backend-health
+transition to the shared host router after those mandatory effects. The
+router validates the approved policy table and selects the target's
+`quiesceAffectedScope` disposition. Health errors and commit-health mismatch
+remain explicit containment results for the firmware composition.
 
 The semantic/action/drawing transcript is profile-equivalent. Device timing,
 physical extents, payload counts, stack high-water, and transport errors remain

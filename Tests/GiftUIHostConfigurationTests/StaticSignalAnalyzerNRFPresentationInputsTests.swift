@@ -1596,6 +1596,23 @@ import Testing
             #expect(health.requiresFreshConstruction)
             #expect(profile.storageLifetimeState == .idle)
             #expect(!pacing.opportunityIsActive)
+            let table = FixedMVPHostResidualPolicyTable(fatalHookIsAvailable: false)
+            var policy = FixedMVPHostResidualPolicy(table: table)
+            var invariant = StaticNRFResidualInvariantProbe()
+            var fatal = StaticNRFResidualFatalProbe()
+            var diagnostic = StaticNRFResidualDiagnosticProbe()
+            let route = StaticSignalAnalyzerNRFResidualRouting.route(
+                failed,
+                table: table,
+                policy: &policy,
+                invariantOwner: &invariant,
+                fatalHook: &fatal,
+                diagnostic: &diagnostic
+            )
+            #expect(route == .routed(.selected(.quiesceAffectedScope)))
+            #expect(invariant.callCount == 0)
+            #expect(fatal.callCount == 0)
+            #expect(diagnostic.callCount == 1)
             let payloadsBeforeBlockedCycle = endpoint.sink.target.transport.payloads
             #expect(pacing.recordAcceptedFact(at: 750_001) == .success(.requestWake))
             #expect(
@@ -1616,6 +1633,30 @@ import Testing
             #expect(endpoint.sink.target.transport.payloads == payloadsBeforeBlockedCycle)
         }
         #expect(endpoint.sink.target.transport.payloads > 0)
+    }
+}
+
+private struct StaticNRFResidualInvariantProbe: MVPHostInvariantFailureOwner {
+    private(set) var callCount = 0
+
+    mutating func preventNormalRunCycle() { callCount += 1 }
+    mutating func quiesceRuntimeHealth(with _: GiftUIFailureFact) { callCount += 1 }
+    mutating func propagateInvariantFailure(_: GiftUIFailureFact) { callCount += 1 }
+}
+
+private struct StaticNRFResidualFatalProbe: MVPHostFatalHook {
+    private(set) var callCount = 0
+    mutating func invoke() { callCount += 1 }
+}
+
+private struct StaticNRFResidualDiagnosticProbe: MVPHostDiagnosticProjection {
+    private(set) var callCount = 0
+    mutating func project(
+        context _: HostResidualPolicyContext,
+        disposition _: GiftUIResidualDisposition
+    ) -> Bool {
+        callCount += 1
+        return true
     }
 }
 

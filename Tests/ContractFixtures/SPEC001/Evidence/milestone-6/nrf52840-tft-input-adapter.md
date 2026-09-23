@@ -983,3 +983,8 @@ remain open.
 The same fixture then requests another wake and proves the paced entry refuses
 that cycle with `terminalUnavailability` before consuming the wake, beginning
 profile storage, or submitting another display payload.
+The fixture also sends that completed backend-health transition through the
+production Static nRF residual adapter and shared host router. The fixed
+approved table selects `quiesceAffectedScope` after the required effects;
+the invariant and fatal hooks are not invoked. Firmware ownership of those
+hooks and reconstruction remains open.
