@@ -2,22 +2,6 @@ package enum SignalAnalyzerRepositoryCondition: UInt8, Equatable, Sendable {
     case captureRevisionExhausted
 }
 
-package enum SignalCaptureChange: Equatable, Sendable {
-    case insertAndTrim(
-        baseRevision: UInt32,
-        insertionIndex: UInt16,
-        transition: SignalTransition,
-        evictedPrefixCount: UInt16,
-        duration: Duration,
-        retainedLowerBound: Duration,
-        baselines: SignalChannelLevels
-    )
-    case reset(
-        baseRevision: UInt32,
-        baselines: SignalChannelLevels
-    )
-}
-
 package enum SignalCapturePublication: Equatable, Sendable {
     case snapshot(revision: UInt32, capture: SignalCapture)
     case mutation(revision: UInt32, change: SignalCaptureChange)

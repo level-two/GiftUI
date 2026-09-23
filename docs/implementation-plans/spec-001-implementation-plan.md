@@ -994,6 +994,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       ELF-retained startup round-trip. Domain contract audit, host record
       fixture, and target build pass; the image uses 184,384 RAM and 40,764
       flash bytes. Array-backed capture and fact replay remain open.
+      The bounded portable capture-change type now compiles in the target.
+      A scoped snapshot view validates the reserved snapshot slot and yields
+      portable transitions and visible range without allocation. Host tests
+      reject bad revision, lower bound, and ordering; firmware startup checks
+      the actual C capture region. The checked target uses 184,384 RAM and
+      42,556 flash bytes. Mutation replay into the model remains open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

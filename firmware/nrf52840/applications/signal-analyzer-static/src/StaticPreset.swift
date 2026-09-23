@@ -151,6 +151,32 @@ public func giftUISignalAnalyzerCaptureRegionValid(
     return 1
 }
 
+@_cdecl("giftui_signal_analyzer_snapshot_view_valid")
+public func giftUISignalAnalyzerSnapshotViewValid(
+    _ address: UnsafeMutableRawPointer?, _ bytes: UInt32
+) -> UInt32 {
+    guard address != nil, bytes == 115_392 else { return 0 }
+    let storage = UnsafeMutableRawBufferPointer(start: address, count: Int(bytes))
+    let transition = SignalTransition(
+        channelID: SignalChannelID(rawValue: 4),
+        timestamp: .milliseconds(125),
+        level: .high
+    )
+    do {
+        guard var regions = StaticSignalAnalyzerNRFCaptureRegions(storage: storage),
+            let record = StaticSignalAnalyzerNRFCaptureRecord(transition),
+            regions.store(record, in: .snapshot, at: 0)
+        else { return 0 }
+    }
+    guard let view = StaticSignalAnalyzerNRFCaptureSnapshotView(
+        storage: storage, revision: 1, count: 1, duration: .milliseconds(125),
+        retainedLowerBound: .zero, baselineLevels: .allLow
+    ), view.transition(at: 0) == transition,
+        view.visibleRange(window: .seconds(1)) == (.zero ..< .seconds(1))
+    else { return 0 }
+    return 1
+}
+
 @_cdecl("giftui_signal_analyzer_region_map_valid")
 public func giftUISignalAnalyzerRegionMapValid(
     _ profile: UnsafeMutableRawPointer?, _ profileBytes: UInt32,

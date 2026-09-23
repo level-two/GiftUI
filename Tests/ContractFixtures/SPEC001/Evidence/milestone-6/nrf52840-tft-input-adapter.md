@@ -62,6 +62,15 @@ retained startup entry. The Domain contract audit and host record fixture
 pass. The nRF build passes hard-float, zero-heap, symbol, RAM, and flash gates
 at 184,384 RAM and 40,764 flash bytes. Full capture replay into the model
 remains open.
+The portable bounded `SignalCaptureChange` type is now separate from
+array-backed replay and compiled in Embedded Swift. The new scoped snapshot
+view checks record encoding, count, order, lower bound, duration, and
+revision-zero emptiness before exposing indexed transitions and visible
+range. Its host fixture passes valid and malformed cases. Firmware startup
+writes one compact record to the actual C capture region, then validates and
+reads it through the same view. The hardware-free target passes ABI,
+zero-heap, symbol, RAM, and flash gates at 184,384 RAM and 42,556 flash bytes.
+The model does not yet own or apply this snapshot.
 
 The selected connected assembly is the `nrf52840dk/nrf52840` with the
 480 x 320 ILI9486 PiScreen display bridge and its ADS7846 resistive-touch

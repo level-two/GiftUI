@@ -519,6 +519,14 @@ startup round-trips a channel-4 high transition at 125 ms before entering
 device validation. The array-backed channel collection and `SignalCapture`
 remain outside the Embedded Swift source set; repository fact application
 still needs an allocation-free model capture representation.
+The bounded `SignalCaptureChange` declaration is also split from its
+array-backed replay implementation and compiled on nRF. A scoped snapshot
+view now borrows the existing copied capture slot, validates all retained
+portable transitions against count, order, lower bound, duration, and
+revision-zero emptiness, and exposes indexed reads plus the portable visible
+range calculation. Its caller must keep the slot unchanged through the
+synchronous borrow. This read view does not yet apply compact mutations or
+bind the snapshot to the fixed observable model.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact
