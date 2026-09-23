@@ -81,6 +81,7 @@ import Testing
             var runtime = StaticSignalAnalyzerNRFRuntimeStorage(
                 assemblyReport: report,
                 inputSourceRawValue: 51,
+                initialFrameOriginMicroseconds: 0,
                 profileStorage: profileStorage,
                 metadata: metadata
             )
@@ -89,7 +90,7 @@ import Testing
             return
         }
 
-        runtime.withAddressStableOwners { application, profile in
+        runtime.withAddressStableOwners { application, profile, _ in
             let repository = StaticNRFPresentationInputRepository()
             guard case .bound = application.bindRoot(repository: repository) else {
                 Issue.record("Static nRF root did not bind")

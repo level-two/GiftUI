@@ -11,10 +11,12 @@ where Metadata: RuntimeStaticCanvasAuditMetadata & StaticCanvasCallableTable {
     package var application: StaticSignalAnalyzerNRFApplicationStorage
     package var profile:
         StaticRuntimeProfileBinding<StaticSignalAnalyzerNRFProfileRegions, Metadata>
+    package var pacing: HostWakePacingController
 
     package init?(
         assemblyReport: HostAssemblyReport,
         inputSourceRawValue: UInt16,
+        initialFrameOriginMicroseconds: UInt64,
         profileStorage: UnsafeMutableRawBufferPointer,
         metadata: consuming Metadata
     ) {
@@ -32,6 +34,10 @@ where Metadata: RuntimeStaticCanvasAuditMetadata & StaticCanvasCallableTable {
 
         self.application = consume application
         self.profile = consume profile
+        pacing = HostWakePacingController(
+            policy: GeneratedSignalAnalyzerPresets.nrf52840Static().pacing,
+            initialFrameOriginMicroseconds: initialFrameOriginMicroseconds
+        )
     }
 
     /// Lends both owners for one complete address-stable composition scope.
@@ -42,12 +48,16 @@ where Metadata: RuntimeStaticCanvasAuditMetadata & StaticCanvasCallableTable {
             inout StaticRuntimeProfileBinding<
                 StaticSignalAnalyzerNRFProfileRegions,
                 Metadata
-            >
+            >,
+            inout HostWakePacingController
         ) -> Result
     ) -> Result {
-        defer { profile.quiesce() }
+        defer {
+            profile.quiesce()
+            _ = pacing.quiesce()
+        }
         return application.withAddressStableOwner { application in
-            body(&application, &profile)
+            body(&application, &profile, &pacing)
         }
     }
 }

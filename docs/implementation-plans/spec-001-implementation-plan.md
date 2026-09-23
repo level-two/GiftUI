@@ -998,6 +998,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       One noncopyable runtime-storage aggregate now constructs the application
       storage and profile binding from that same exact report and lends both
       through a single address-stable lifetime scope with common quiescence.
+      The same aggregate now owns the shared wake/pacing controller initialized
+      from the generated 250-millisecond policy and an explicit monotonic frame
+      origin; its scoped lifetime quiesces with the application and profile.
       The production metadata envelope now supplies the preset's one exact
       observable slot, six-action specialization, and dense two-case Canvas
       coverage around a caller-supplied generated callable table; host

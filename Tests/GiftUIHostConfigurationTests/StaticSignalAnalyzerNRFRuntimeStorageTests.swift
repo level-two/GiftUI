@@ -69,6 +69,7 @@ private struct IncompleteStaticNRFCanvasTable: StaticCanvasCallableTable {
             var runtime = StaticSignalAnalyzerNRFRuntimeStorage(
                 assemblyReport: report,
                 inputSourceRawValue: 51,
+                initialFrameOriginMicroseconds: 0,
                 profileStorage: profileStorage,
                 metadata: metadata
             )
@@ -77,7 +78,7 @@ private struct IncompleteStaticNRFCanvasTable: StaticCanvasCallableTable {
             return
         }
 
-        runtime.withAddressStableOwners { application, profile in
+        runtime.withAddressStableOwners { application, profile, pacing in
             let rootIsActive = application.rootIsActive
             let lifetimeBeforeUse = profile.storageLifetimeState
             #expect(!rootIsActive)
@@ -96,6 +97,13 @@ private struct IncompleteStaticNRFCanvasTable: StaticCanvasCallableTable {
                 phase: .idle
             )
             #expect(profile.finishOpportunity(context: idle) == nil)
+            #expect(pacing.recordAcceptedFact(at: 1) == .success(.requestWake))
+            #expect(
+                pacing.schedule(at: 249_999)
+                    == .wait(untilMicroseconds: 250_000)
+            )
+            #expect(pacing.beginOpportunity(at: 250_000) == .began(.admittedWork))
+            #expect(pacing.completeOpportunity(at: 250_001) == nil)
         }
 
         let profileIsQuiescent = runtime.profile.isQuiescent
@@ -104,6 +112,7 @@ private struct IncompleteStaticNRFCanvasTable: StaticCanvasCallableTable {
         #expect(profileIsQuiescent)
         #expect(profileLifetime == .tornDown)
         #expect(!rootIsActive)
+        #expect(runtime.pacing.schedule(at: 250_002) == .invalid(.unavailable))
     }
 }
 
@@ -153,6 +162,7 @@ private struct IncompleteStaticNRFCanvasTable: StaticCanvasCallableTable {
         let runtime = StaticSignalAnalyzerNRFRuntimeStorage(
             assemblyReport: report,
             inputSourceRawValue: 51,
+            initialFrameOriginMicroseconds: 0,
             profileStorage: profileStorage,
             metadata: metadata
         )

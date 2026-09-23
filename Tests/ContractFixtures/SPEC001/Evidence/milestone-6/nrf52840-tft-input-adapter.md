@@ -880,3 +880,9 @@ the Static owner; the fixture verifies it leaves input ineligible.
 The same owner path now accepts a replacement presentation, rejects an old
 revision's input, and admits a resynchronized down event for the replacement.
 The connected owner must still use this at the physical offer boundary.
+
+The Static nRF runtime aggregate now owns `HostWakePacingController` alongside
+its application and profile owners. A host fixture injects a frame origin of
+zero and checks the generated 250,000-microsecond boundary, accepted fact wake,
+and quiescence after the address-stable scope. This establishes policy wiring,
+not a connected monotonic clock or firmware scheduler.
