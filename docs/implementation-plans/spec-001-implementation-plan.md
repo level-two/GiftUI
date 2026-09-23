@@ -1009,6 +1009,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       and revision refusal; firmware startup replays a second record through
       the actual C region. The checked image uses 184,384 RAM and 45,404
       flash bytes. Observable-model binding and fact ordering remain open.
+      The fixed target model location now owns bootstrap snapshot metadata
+      and replays later compact mutations in its mutation phase, reporting
+      changed capture state through the direct registration. Host phase and
+      snapshot-once assertions pass; firmware startup uses the same global
+      location and C capture region. The checked image uses 184,384 RAM and
+      45,708 flash bytes. Fact-admission sequencing and the generated root
+      remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

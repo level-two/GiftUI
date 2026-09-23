@@ -12,6 +12,8 @@ package struct StaticSignalAnalyzerNRFModelLocation {
     package private(set) var isMutating = false
     package private(set) var errorMessage: SignalAnalyzerDiagnostic?
     package private(set) var acquisitionState: AcquisitionState = .idle
+    package private(set) var capture = StaticSignalAnalyzerNRFModelCaptureState()
+    private var captureSnapshotInstalled = false
 
     package init() {}
 
@@ -26,6 +28,8 @@ package struct StaticSignalAnalyzerNRFModelLocation {
         isMutating = false
         errorMessage = nil
         acquisitionState = .idle
+        capture = StaticSignalAnalyzerNRFModelCaptureState()
+        captureSnapshotInstalled = false
         return generation
     }
 
@@ -84,6 +88,58 @@ package struct StaticSignalAnalyzerNRFModelLocation {
             return false
         }
         return true
+    }
+
+    package mutating func installCaptureSnapshot(
+        _ snapshot: borrowing StaticSignalAnalyzerNRFCaptureSnapshotView
+    ) -> Bool {
+        guard let generation = activeGeneration, isMutating, !captureSnapshotInstalled
+        else { return false }
+        let next = StaticSignalAnalyzerNRFModelCaptureState(snapshot: snapshot)
+        let changed =
+            next.count != capture.count || next.duration != capture.duration
+            || next.retainedLowerBound != capture.retainedLowerBound
+            || next.baselineLevels != capture.baselineLevels
+        capture = next
+        captureSnapshotInstalled = true
+        if changed {
+            let token = StaticSignalAnalyzerNRFRegistrationToken(slot: 0, generation: generation)
+            guard reportChange(token: token) == .accepted else {
+                capture = StaticSignalAnalyzerNRFModelCaptureState()
+                captureSnapshotInstalled = false
+                return false
+            }
+        }
+        return true
+    }
+
+    package mutating func applyCaptureMutation(
+        revision: UInt32,
+        change: SignalCaptureChange,
+        in regions: inout StaticSignalAnalyzerNRFCaptureRegions
+    ) -> StaticSignalAnalyzerNRFModelCaptureApplyResult {
+        guard let generation = activeGeneration, isMutating, captureSnapshotInstalled
+        else { return .rejected }
+        let result = capture.apply(revision: revision, change: change, in: &regions)
+        guard case .applied(let changed) = result else { return result }
+        if changed {
+            let token = StaticSignalAnalyzerNRFRegistrationToken(slot: 0, generation: generation)
+            guard reportChange(token: token) == .accepted else {
+                return .storageInvariantViolation
+            }
+        }
+        return result
+    }
+
+    package var visibleRange: Range<Duration> {
+        let window: Duration
+        switch visibleWindowRawValue {
+        case 0: window = .seconds(1)
+        case 2: window = .seconds(5)
+        default: window = .seconds(2)
+        }
+        let end = max(window, capture.duration)
+        return max(.zero, end - window) ..< end
     }
 
     package mutating func reportChange(

@@ -93,3 +93,87 @@ import Testing
     #expect(model.baselineLevels == portable.capture.baselineLevels)
     #expect(model.visibleRange(window: .seconds(2)) == (.zero ..< .seconds(2)))
 }
+
+@Test func staticNRFModelLocationAppliesSnapshotAndMutationInOwnedPhase() {
+    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
+    defer { pointer.deallocate() }
+    let storage = UnsafeMutableRawBufferPointer(start: pointer, count: 115_392)
+    let first = SignalTransition(
+        channelID: SignalChannelID(rawValue: 1),
+        timestamp: .milliseconds(125), level: .high
+    )
+    do {
+        guard var regions = StaticSignalAnalyzerNRFCaptureRegions(storage: storage),
+            let record = StaticSignalAnalyzerNRFCaptureRecord(first)
+        else {
+            Issue.record("Bootstrap snapshot setup failed")
+            return
+        }
+        let stored = regions.store(record, in: .snapshot, at: 0)
+        #expect(stored)
+    }
+
+    var model = StaticSignalAnalyzerNRFModelLocation()
+    withUnsafeMutablePointer(to: &model) { location in
+        let generation = location.pointee.activate()
+        let began = location.pointee.beginMutation()
+        #expect(generation == 0)
+        #expect(began)
+        do {
+            guard
+                let view = StaticSignalAnalyzerNRFCaptureSnapshotView(
+                    storage: storage, revision: 1, count: 1,
+                    duration: .milliseconds(125), retainedLowerBound: .zero,
+                    baselineLevels: .allLow
+                )
+            else {
+                Issue.record("Bootstrap snapshot was refused")
+                return
+            }
+            let installed = location.pointee.installCaptureSnapshot(view)
+            #expect(installed)
+            let repeated = location.pointee.installCaptureSnapshot(view)
+            #expect(!repeated)
+        }
+        #expect(location.pointee.capture.revision == 1)
+        #expect(location.pointee.capture.count == 1)
+        #expect(location.pointee.visibleRange == (.zero ..< .seconds(2)))
+        location.pointee.clearDirtyAfterPublication()
+        #expect(!location.pointee.isDirty)
+        let ended = location.pointee.endMutation()
+        #expect(ended)
+
+        guard var regions = StaticSignalAnalyzerNRFCaptureRegions(storage: storage)
+        else {
+            Issue.record("Mutation region was refused")
+            return
+        }
+        let second = SignalTransition(
+            channelID: SignalChannelID(rawValue: 4),
+            timestamp: .milliseconds(200), level: .low
+        )
+        let change = SignalCaptureChange.insertAndTrim(
+            baseRevision: 1, insertionIndex: 1, transition: second,
+            evictedPrefixCount: 0, duration: .milliseconds(200),
+            retainedLowerBound: .zero, baselines: .allLow
+        )
+        let outOfPhase = location.pointee.applyCaptureMutation(
+            revision: 2, change: change, in: &regions
+        )
+        #expect(outOfPhase == .rejected)
+        #expect(location.pointee.capture.count == 1)
+        let restarted = location.pointee.beginMutation()
+        #expect(restarted)
+        let applied = location.pointee.applyCaptureMutation(
+            revision: 2, change: change, in: &regions
+        )
+        #expect(applied == .applied(changed: true))
+        #expect(location.pointee.capture.revision == 2)
+        #expect(location.pointee.capture.count == 2)
+        #expect(location.pointee.isDirty)
+        #expect(regions.load(from: .snapshot, at: 1)?.transition == second)
+        let finished = location.pointee.endMutation()
+        #expect(finished)
+        location.pointee.retire()
+    }
+}

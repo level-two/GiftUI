@@ -83,6 +83,14 @@ middle insertion, a 35-second trim, and Clear. Firmware startup replays one
 additional mutation in the actual C capture region. The checked ELF passes
 hard-float, zero-heap, symbol, RAM, and flash gates at 184,384 RAM and 45,404
 flash bytes. The capture state is not yet attached to the observable model.
+The fixed model location now installs a validated bootstrap snapshot once,
+then applies compact mutations only in the owner mutation phase. A host
+fixture checks duplicate snapshot refusal, out-of-phase refusal, dirty
+reporting, revision, count, record, and visible range. The retained firmware
+startup entry exercises the same global location and actual C capture region.
+The checked target passes hard-float, zero-heap, symbol, RAM, and flash gates
+at 184,384 RAM and 45,708 flash bytes. Production fact admission and root
+binding remain open.
 
 The selected connected assembly is the `nrf52840dk/nrf52840` with the
 480 x 320 ILI9486 PiScreen display bridge and its ADS7846 resistive-touch

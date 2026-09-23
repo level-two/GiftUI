@@ -538,6 +538,14 @@ time trimming, and Clear with the portable store. Firmware startup replays
 one further compact mutation in the actual C capture region. The state is
 still independent of the observable model location; binding and fact
 admission ordering are the next join.
+The fixed observable location now owns that capture metadata. It installs a
+validated bootstrap snapshot once during its mutation opportunity and applies
+later compact mutations only within the same phase discipline. Changed
+captures report through the typed registration and coalesce into the one dirty
+bit; its visible range uses the model's selected 1/2/5-second window.
+Firmware startup exercises the actual global location with the actual C
+capture region. The application fact-admission adapter and portable root
+lowering still need to call this location in production.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact
