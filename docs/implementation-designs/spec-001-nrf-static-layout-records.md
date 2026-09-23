@@ -105,8 +105,12 @@ The target-safe workspace now owns both exact disjoint profile slices during
 an active layout attempt. It appends unique scope identities, replaces staged
 measurements, places scopes, and uses the 26-byte depth stack in the render
 scratch tail. A host differential fixture compares both complete regions
-after each operation, including reset and reuse. Text line/glyph workspace
-methods, publication, and the actual measure/place traversal remain open.
+after each operation, including reset and reuse. The target workspace now
+also appends and replaces text lines and glyph baselines in the same region,
+with dense per-scope indexes, line association, and canonical glyph bounds.
+The differential fixture compares both complete regions after these text
+operations too. Publication and the actual measure/place traversal remain
+open.
 The corresponding target-safe codec now compiles into the nRF image, and a
 host differential fixture compares its entire 3,136-byte region against this
 host codec for a checked measurement and placement. Firmware startup uses the

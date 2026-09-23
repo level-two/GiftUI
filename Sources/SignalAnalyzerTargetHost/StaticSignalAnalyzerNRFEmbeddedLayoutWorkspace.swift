@@ -5,6 +5,8 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
     private let text: UnsafeMutableRawBufferPointer
     package private(set) var isActive = false
     package private(set) var scopeCount: UInt16 = 0
+    package private(set) var textLineCount: UInt16 = 0
+    package private(set) var positionedGlyphCount: UInt16 = 0
     private var depth: UInt16 = 0
 
     package init?(
@@ -28,7 +30,9 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
     }
 
     package mutating func acquire() -> Bool {
-        guard !isActive, scopeCount == 0, depth == 0 else { return false }
+        guard !isActive, scopeCount == 0, textLineCount == 0,
+            positionedGlyphCount == 0, depth == 0
+        else { return false }
         scopes.initializeMemory(as: UInt8.self, repeating: 0)
         text.initializeMemory(as: UInt8.self, repeating: 0)
         isActive = true
@@ -116,6 +120,112 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
         return true
     }
 
+    package mutating func appendTextLine(
+        _ line: StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.Line
+    ) -> Bool {
+        guard isActive,
+            textLineCount < StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.maximumLines,
+            scopeOrdinal(of: line.identity) != nil,
+            line.lineIndex == lineCount(of: line.identity),
+            StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.stageLine(
+                line, at: textLineCount, in: text
+            )
+        else { return false }
+        textLineCount += 1
+        return true
+    }
+
+    package func textLine(
+        at ordinal: UInt16
+    ) -> StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.Line? {
+        guard isActive, ordinal < textLineCount else { return nil }
+        return StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.line(
+            at: ordinal, in: text
+        )
+    }
+
+    package mutating func replaceTextLine(
+        _ line: StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.Line,
+        at ordinal: UInt16
+    ) -> Bool {
+        guard isActive, ordinal < textLineCount else { return false }
+        return StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.replaceLine(
+            line, at: ordinal, in: text
+        )
+    }
+
+    package mutating func appendGlyph(
+        _ glyph: StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.Glyph,
+        glyphIndex: UInt16
+    ) -> Bool {
+        guard isActive,
+            positionedGlyphCount < StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.maximumGlyphs,
+            glyph.glyphID < StaticSignalAnalyzerNRFReferenceMetrics.glyphCount,
+            scopeOrdinal(of: glyph.identity) != nil,
+            hasLine(identity: glyph.identity, index: glyph.lineIndex),
+            glyphIndex == glyphCount(of: glyph.identity),
+            StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.stageGlyph(
+                glyph, at: positionedGlyphCount, in: text
+            )
+        else { return false }
+        positionedGlyphCount += 1
+        return true
+    }
+
+    package func glyph(
+        at ordinal: UInt16
+    ) -> StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.Glyph? {
+        guard isActive, ordinal < positionedGlyphCount else { return nil }
+        return StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.glyph(
+            at: ordinal, in: text
+        )
+    }
+
+    package mutating func replaceGlyphBaseline(
+        _ glyph: StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.Glyph,
+        at ordinal: UInt16
+    ) -> Bool {
+        guard isActive, ordinal < positionedGlyphCount,
+            hasLine(identity: glyph.identity, index: glyph.lineIndex)
+        else { return false }
+        return StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.replaceGlyphBaseline(
+            glyph, at: ordinal, in: text
+        )
+    }
+
+    private func lineCount(of identity: UInt16) -> UInt16 {
+        var ordinal: UInt16 = 0
+        var count: UInt16 = 0
+        while ordinal < textLineCount {
+            if textLine(at: ordinal)?.identity == identity { count += 1 }
+            ordinal += 1
+        }
+        return count
+    }
+
+    private func hasLine(identity: UInt16, index: UInt16) -> Bool {
+        var ordinal: UInt16 = 0
+        while ordinal < textLineCount {
+            if let line = textLine(at: ordinal),
+                line.identity == identity, line.lineIndex == index
+            {
+                return true
+            }
+            ordinal += 1
+        }
+        return false
+    }
+
+    private func glyphCount(of identity: UInt16) -> UInt16 {
+        var ordinal: UInt16 = 0
+        var count: UInt16 = 0
+        while ordinal < positionedGlyphCount {
+            if glyph(at: ordinal)?.identity == identity { count += 1 }
+            ordinal += 1
+        }
+        return count
+    }
+
     package mutating func popScope() {
         guard isActive, depth > 0 else { return }
         depth -= 1
@@ -130,6 +240,8 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
         scopes.initializeMemory(as: UInt8.self, repeating: 0)
         text.initializeMemory(as: UInt8.self, repeating: 0)
         scopeCount = 0
+        textLineCount = 0
+        positionedGlyphCount = 0
         depth = 0
         isActive = false
     }

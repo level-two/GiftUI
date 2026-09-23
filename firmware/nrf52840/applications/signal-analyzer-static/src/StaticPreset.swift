@@ -209,10 +209,12 @@ public func giftUISignalAnalyzerLayoutTextValid(
         let title = StaticSignalAnalyzerNRFPackedSemanticRecords.scope(
             at: 6, in: published
         ) else { return 0 }
+    let scopes = UnsafeMutableRawBufferPointer(
+        start: profile.advanced(by: 6_048), count: 3_136
+    )
     let workspace = UnsafeMutableRawBufferPointer(
         start: profile.advanced(by: 9_184), count: 4_704
     )
-    workspace.initializeMemory(as: UInt8.self, repeating: 0)
     let line = StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.Line(
         identity: title.identity, lineIndex: 0,
         x: 0, y: 0, width: 184, height: 16,
@@ -227,16 +229,17 @@ public func giftUISignalAnalyzerLayoutTextValid(
         identity: title.identity, lineIndex: 0, glyphID: glyphID,
         baselineX: 0, baselineY: 12
     )
-    guard StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.stageLine(
-        line, at: 0, in: workspace
-    ), StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.stageGlyph(
-        glyph, at: 0, in: workspace
-    ), StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.line(
-        at: 0, in: workspace
-    ) == line,
-        StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.glyph(
-            at: 0, in: workspace
-        ) == glyph else { return 0 }
+    guard var layout = StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace(
+        scopes: scopes, text: workspace
+    ), layout.acquire(), layout.appendScope(
+        identity: title.identity,
+        idealWidth: 184, idealHeight: 16,
+        width: 184, height: 16
+    ), layout.appendTextLine(line),
+        layout.appendGlyph(glyph, glyphIndex: 0),
+        layout.textLine(at: 0) == line,
+        layout.glyph(at: 0) == glyph else { return 0 }
+    layout.reset()
     return 1
 }
 
