@@ -122,6 +122,7 @@ where Transport: StaticSignalAnalyzerNRFDisplayTransport {
     private var reservation: DisplayReservationID?
     private var nextReservationRaw: UInt32 = 1
     private var operationalHealth = GiftUIOperationalHealth()
+    private var drainingAfterTransportFailure = false
 
     package init?(
         transport: consuming Transport,
@@ -139,6 +140,9 @@ where Transport: StaticSignalAnalyzerNRFDisplayTransport {
         regionCapacity: UInt16
     ) -> DisplayReservationResult {
         guard reservation == nil else { return .failure(.reentrancyViolation) }
+        guard operationalHealth.state == .available else {
+            return .nonRetryableRefusal
+        }
         guard descriptor == StaticSignalAnalyzerNRFAssembly.descriptor(),
             payloadCapacityBytes == writer.capacityBytes,
             regionCapacity == writer.regionCapacity
@@ -157,7 +161,9 @@ where Transport: StaticSignalAnalyzerNRFDisplayTransport {
         for reservation: DisplayReservationID,
         _ body: (inout StaticSignalAnalyzerNRFDisplayWriter) -> Result
     ) -> Result? {
-        guard self.reservation == reservation else { return nil }
+        guard self.reservation == reservation,
+            !drainingAfterTransportFailure
+        else { return nil }
         return body(&writer)
     }
 
@@ -166,6 +172,9 @@ where Transport: StaticSignalAnalyzerNRFDisplayTransport {
     ) -> DisplayTransferResult {
         guard self.reservation == reservation else {
             return .failureBeforeAcceptance(.invalidReservation)
+        }
+        if drainingAfterTransportFailure {
+            return .failureAfterAcceptance(.transportUnavailable)
         }
         let transportResult = writer.withBorrowedPayload { origin, pixelCount, bytes in
             transport.presentRGB565BigEndian(
@@ -179,7 +188,21 @@ where Transport: StaticSignalAnalyzerNRFDisplayTransport {
             return .failureBeforeAcceptance(.invariantViolation)
         }
         guard transportResult else {
-            return .failureBeforeAcceptance(.transportUnavailable)
+            // A failed synchronous driver call may have sent a prefix of the
+            // payload. Keep responsibility, drain once, and require a fresh
+            // target before another frame.
+            drainingAfterTransportFailure = true
+            writer.discard()
+            operationalHealth.recordFailure(
+                GiftUIFailureFact(
+                    condition: .requiredFacilityUnavailable,
+                    origin: .presentationIntegration,
+                    affectedScope: .component,
+                    containment: .contained
+                ),
+                resultingState: .unavailable
+            )
+            return .failureAfterAcceptance(.transportUnavailable)
         }
         writer.discard()
         return .completed
@@ -188,7 +211,15 @@ where Transport: StaticSignalAnalyzerNRFDisplayTransport {
     package mutating func finishFrame(
         _ reservation: DisplayReservationID
     ) -> DisplayTransferResult {
-        guard self.reservation == reservation,
+        guard self.reservation == reservation else {
+            return .failureBeforeAcceptance(.invalidReservation)
+        }
+        if drainingAfterTransportFailure {
+            self.reservation = nil
+            drainingAfterTransportFailure = false
+            return .completed
+        }
+        guard
             !writer.isFinished,
             writer.writtenRegionCount == 0
         else { return .failureBeforeAcceptance(.invalidReservation) }
@@ -200,6 +231,7 @@ where Transport: StaticSignalAnalyzerNRFDisplayTransport {
         guard self.reservation == reservation else { return }
         writer.discard()
         self.reservation = nil
+        drainingAfterTransportFailure = false
     }
 
     package borrowing func health() -> GiftUIOperationalHealth {

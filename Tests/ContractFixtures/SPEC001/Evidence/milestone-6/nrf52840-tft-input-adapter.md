@@ -828,10 +828,11 @@ claim lacked endpoint evidence.
 The production endpoint factory now constructs the tile store and display
 writer from one caller-supplied raster region, and the same eight-case fixture
 uses this factory entry.
-The transport-failure fixture now proves both sides of the display handoff:
-refusal before the first payload cancels the frame with no accepted
-responsibility, while refusal after one accepted payload preserves the
-accepted offer, records `displayFailure`, and drains to an idle session.
+The transport-failure fixture now proves both first-payload and later-payload
+failure handling. A failed synchronous driver call may already have sent a
+prefix, so both preserve accepted responsibility, record `displayFailure`,
+drain to an idle session, and leave target health unavailable with one failure
+count. The unavailable target refuses another frame pending reconstruction.
 The platform transport value now matches the six-argument ILI9486 C write
 entry with a noncapturing C function pointer. A host test verifies the final
 pixel in the 480 x 320 extent, one-row geometry, exact byte count, malformed
@@ -964,3 +965,10 @@ replaces its value envelope validator while idle, rejects the prior
 provenance before raster work, and accepts the second physical offer using
 the same tile, coverage, transport, profile, and application owners. Firmware
 endpoint lifetime and recovery still need implementation.
+
+The Static display target now treats any failed synchronous transport call as
+a potentially partial transfer. It reports failure after acceptance, records
+one `requiredFacilityUnavailable` health fact, drains the reservation, and
+refuses another frame from the same target. Host fixtures cover failure on
+the first and later payloads. Firmware health consumption and reconstruction
+remain open.

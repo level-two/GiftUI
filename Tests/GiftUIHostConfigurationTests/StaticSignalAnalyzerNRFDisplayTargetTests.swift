@@ -93,9 +93,17 @@ struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTranspo
     #expect(endpoint.sink.failure == .displayFailure)
     #expect(endpoint.sink.target.transport.payloads == 1)
     #expect(endpoint.sink.isIdleForOffer)
+    #expect(endpoint.health().state == .unavailable)
+    #expect(endpoint.health().failureCount == 1)
+    #expect(
+        endpoint.offer(provenance: provenance) { _ in
+            Issue.record("Unavailable display target reached frame body")
+            return .complete
+        } == FrameOfferResult(disposition: .nonRetryableRefusal, failure: nil)!
+    )
 }
 
-@Test func staticNRFDisplayFailureBeforeFirstPayloadCancelsFrame() {
+@Test func staticNRFDisplayFailureOnFirstPayloadRetainsPresentationResponsibility() {
     guard case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate(),
         let bounds = StaticSignalAnalyzerNRFAssembly.descriptor()?.bounds
     else {
@@ -140,10 +148,12 @@ struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTranspo
         else { return .endpointRefused }
         return .complete
     }
-    #expect(offer == FrameOfferResult(disposition: .nonRetryableRefusal, failure: nil)!)
+    #expect(offer == FrameOfferResult(disposition: .accepted, failure: nil)!)
     #expect(endpoint.sink.failure == .displayFailure)
     #expect(endpoint.sink.target.transport.payloads == 0)
     #expect(endpoint.sink.isIdleForOffer)
+    #expect(endpoint.health().state == .unavailable)
+    #expect(endpoint.health().failureCount == 1)
 }
 
 @Test func staticNRFDisplayTargetCompactsSharedRasterWithoutOverwritingUnreadPixels() {
@@ -236,8 +246,15 @@ struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTranspo
     #expect(written == true)
     #expect(
         target.submitPayload(reservation)
-            == .failureBeforeAcceptance(.transportUnavailable))
-    target.cancelFrame(reservation)
+            == .failureAfterAcceptance(.transportUnavailable))
+    #expect(target.health().state == .unavailable)
+    #expect(target.health().failureCount == 1)
+    #expect(target.finishFrame(reservation) == .completed)
+    #expect(
+        target.reserveFrame(
+            descriptor: descriptor, payloadCapacityBytes: 3_840, regionCapacity: 1
+        ) == .nonRetryableRefusal
+    )
     #expect(
         target.finishFrame(reservation)
             == .failureBeforeAcceptance(.invalidReservation))

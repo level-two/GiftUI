@@ -199,6 +199,10 @@ The target's transport value holds a noncapturing C function pointer matching
 `ili9486_write_rgb565`. It passes one horizontal row and the borrowed bytes
 to the C driver before return. A nonzero driver status becomes target transport
 refusal; the driver retains detailed fault counters.
+A failed synchronous write may have emitted a prefix, so the target retains
+presentation responsibility, records one unavailable-health transition, and
+drains the reservation even if this was the first payload. It then refuses
+later frames until the host reconstructs the target and endpoint.
 
 The semantic/action/drawing transcript is profile-equivalent. Device timing,
 physical extents, payload counts, stack high-water, and transport errors remain

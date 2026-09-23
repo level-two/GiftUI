@@ -1201,6 +1201,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       replaces its value envelope validator only while idle; a focused
       two-cycle fixture reuses the same endpoint, rejects stale provenance
       before raster submission, and accepts the next identity.
+      A failed synchronous ILI9486 submission is now treated as a possible
+      partial transfer even on the first payload: the display target records
+      one unavailable-health failure, drains the accepted frame, and refuses
+      another reservation until reconstruction. Focused host fixtures cover
+      first and later payload failure. Host health consumption remains open.
       The Static nRF endpoint now owns one exact 3,840-byte raster tile and
       240-byte coverage map, with raster work limits derived from 150
       operations across the full 480 x 320 surface. A production render-offer
