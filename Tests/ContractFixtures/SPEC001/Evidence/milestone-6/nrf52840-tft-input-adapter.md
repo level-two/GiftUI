@@ -969,6 +969,13 @@ The production runtime aggregate now retains that identity cursor alongside
 its application, profile, and pacing owners. A host fixture reserves inside
 the address-stable owner scope and confirms the next cycle and semantic
 revision remain monotonic after the scope quiesces.
+The presentation composition now joins that aggregate with the one-slot
+endpoint and health controller under one scoped borrow. It rejects overlapping
+or misaligned profile, raster, and coverage regions before entering the body;
+a hardware-free host fixture verifies the successful join and both rejection
+paths. This
+remains host-side construction evidence until the firmware links and invokes
+the composition.
 
 The Static display target now treats any failed synchronous transport call as
 a potentially partial transfer. It reports failure after acceptance, records

@@ -1205,7 +1205,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       before raster submission, and accepts the next identity. The production
       runtime aggregate now owns this cursor with its application, profile,
       and pacing fields; a fixture proves monotonic allocation across the
-      aggregate's quiescing owner scope.
+      aggregate's quiescing owner scope. A scoped presentation composition
+      now constructs the generated runtime, initial identity, one-slot
+      endpoint, and health controller only after checking that the profile,
+      raster, and coverage regions are aligned and disjoint. Its fixture
+      covers complete construction and rejection before invoking the owner
+      body.
       A failed synchronous ILI9486 submission is now treated as a possible
       partial transfer even on the first payload: the display target records
       one unavailable-health failure, drains the accepted frame, and refuses
