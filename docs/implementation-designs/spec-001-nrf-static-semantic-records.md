@@ -73,8 +73,12 @@ actual candidate region. The fixed model now supplies all text ranges there.
 The fixed model also supplies all ten live modifier payloads through the
 generated packed schema. Target-safe complete-table validation now checks
 topology, payloads, text, action bindings, and Canvas associations. The
-generated root is a background modifier scope. This check does not seal or
-publish a semantic result.
+generated root is a background modifier scope.
+The firmware now also stages the exact candidate prefix and table footer,
+checks the whole-region checksum, and copies a validated candidate to the
+disjoint published region with an advancing revision. The host generated
+UTF-8 reader accepts its bytes. The startup probe exercises this mechanism;
+the production host loop does not yet consume the published region.
 The byte-level UTF-8 pool and scalar decoder also compile on the target. A
 startup probe writes and decodes the invariant title through the real
 candidate region; it does not yet assign text ranges to scope records.

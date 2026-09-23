@@ -1169,6 +1169,16 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       the generated root is a background modifier scope. The target build
       remains hardware-free at 187,840 RAM and 80,940 flash bytes; semantic
       publication and the firmware host loop are still open.
+      The target now stages a complete generated UTF-8 semantic candidate
+      with the exact 88-byte prefix, versioned table footer, and whole-region
+      checksum, then publishes it into the disjoint retained region only at
+      an advancing nonzero revision. A host fixture checks that the existing
+      generated UTF-8 reader accepts the candidate, rejects overlapping
+      buffers and corrupt/stale publication, and accepts diagnostic replacement.
+      Firmware startup exercises normal then diagnostic publication through
+      the actual C profile region. The checked image uses 187,840 RAM and
+      82,060 flash bytes. The production host lifecycle, layout/render
+      consumption, and connected display/input evidence remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

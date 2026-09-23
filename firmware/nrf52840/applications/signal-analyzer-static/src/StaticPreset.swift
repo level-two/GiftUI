@@ -122,47 +122,28 @@ public func giftUISignalAnalyzerTopologyValid(
     else { return 0 }
     var model = StaticSignalAnalyzerNRFModelLocation()
     guard model.activate() != nil else { return 0 }
-    let semantic = UnsafeMutableRawBufferPointer(start: profile, count: 3_024)
+    let candidate = UnsafeMutableRawBufferPointer(start: profile, count: 3_024)
+    let published = UnsafeMutableRawBufferPointer(
+        start: profile.advanced(by: 3_024), count: 3_024
+    )
     func check(_ variant: StaticSignalAnalyzerNRFSemanticVariant,
-               count: UInt16) -> Bool {
-        semantic.initializeMemory(as: UInt8.self, repeating: 0)
-        guard StaticSignalAnalyzerNRFTopologyWriter.populateShape(
-            variant: variant, in: semantic
-        ) == count,
-            StaticSignalAnalyzerNRFTopologyWriter.populateBindings(
-                scopeCount: count, in: semantic
+               revision: UInt32) -> Bool {
+        guard StaticSignalAnalyzerNRFEmbeddedSemanticRegion.stage(
+            variant: variant, model: model, capture: captures, in: candidate
+        ) != nil,
+            StaticSignalAnalyzerNRFEmbeddedSemanticRegion.publish(
+                revision: revision, candidate: candidate, published: published
             ),
-            StaticSignalAnalyzerNRFTopologyWriter.populateInvariantPrimitives(
-                scopeCount: count, in: semantic
-            ),
-            StaticSignalAnalyzerNRFTopologyWriter.populateInvariantLayoutModifiers(
-                scopeCount: count, in: semantic
-            ),
-            StaticSignalAnalyzerNRFTopologyWriter.populateInvariantStyles(
-                scopeCount: count, in: semantic
-            ),
-            StaticSignalAnalyzerNRFModelModifierWriter.populate(
-                model: model, capture: captures, in: semantic
-            ),
-            let textByteCount = StaticSignalAnalyzerNRFModelTextWriter.populate(
-                variant: variant, model: model, capture: captures,
-                in: semantic
-            ),
-            StaticSignalAnalyzerNRFEmbeddedSemanticValidator.validate(
-                variant: variant, textByteCount: textByteCount, in: semantic
-            ),
-            StaticSignalAnalyzerNRFPackedSemanticRecords.scope(
-                at: 0, in: semantic
-            )?.kind == .modifier
+            StaticSignalAnalyzerNRFEmbeddedSemanticRegion.verifyPublished(published)
         else { return false }
         return true
     }
-    guard check(.normal, count: 96),
+    guard check(.normal, revision: 1),
         model.beginMutation(),
         let diagnostic = giftUIStaticSampleDiagnostic(),
         model.setAcquisitionState(.failed(diagnostic)),
         model.endMutation(),
-        check(.diagnostic, count: 98)
+        check(.diagnostic, revision: 2)
     else { return 0 }
     model.retire()
     return 1
