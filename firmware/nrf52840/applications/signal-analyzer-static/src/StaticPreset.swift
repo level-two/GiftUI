@@ -465,10 +465,14 @@ public func giftUISignalAnalyzerCanvasPayloadValid(
 @_cdecl("giftui_signal_analyzer_full_canvas_valid")
 public func giftUISignalAnalyzerFullCanvasValid(
     _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32,
-    _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
+    _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32,
+    _ raster: UnsafeMutableRawPointer?, _ rasterBytes: UInt32,
+    _ coverage: UnsafeMutableRawPointer?, _ coverageBytes: UInt32
 ) -> UInt32 {
     guard let profile, bytes == 39_696,
         let capture, captureBytes == 115_392,
+        let raster, rasterBytes == 3_840,
+        let coverage, coverageBytes == 240,
         let semantic = StaticSignalAnalyzerNRFEmbeddedSemanticView(
             published: UnsafeMutableRawBufferPointer(
                 start: profile.advanced(by: 3_024), count: 3_024
@@ -555,6 +559,23 @@ public func giftUISignalAnalyzerFullCanvasValid(
         sink.strokeCount == 5,
         sink.glyphCount == 121
     else { return 0 }
+    guard var rasterSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(
+        rasterRegion: UnsafeMutableRawBufferPointer(
+            start: raster, count: Int(rasterBytes)
+        ), coverageRegion: UnsafeMutableRawBufferPointer(
+            start: coverage, count: Int(coverageBytes)
+        )
+    ), case .success(let rasterHeader) =
+        StaticSignalAnalyzerNRFEmbeddedRenderPreflight.streamCombined(
+            semantic: semantic, layout: resolved,
+            textRegion: UnsafeMutableRawBufferPointer(
+                start: profile.advanced(by: 9_184), count: 4_704
+            ), drawing: drawing, expectedHeader: renderHeader,
+            sink: &rasterSink
+        ), rasterHeader == renderHeader,
+        rasterSink.isFinished, rasterSink.paintedPixels > 0,
+        rasterSink.tileVisits > 0
+    else { return 0 }
     var occurrence: UInt16 = 1
     while occurrence < 5 {
         guard let identity = source.canvasIdentity(at: occurrence),
@@ -640,6 +661,24 @@ public func giftUISignalAnalyzerFullCanvasValid(
         sink.isFinished, !sink.wasDiscarded,
         sink.strokeCount == 5,
         sink.glyphCount == 121
+    else { return 0 }
+    guard var updatedRasterSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(
+        rasterRegion: UnsafeMutableRawBufferPointer(
+            start: raster, count: Int(rasterBytes)
+        ), coverageRegion: UnsafeMutableRawBufferPointer(
+            start: coverage, count: Int(coverageBytes)
+        )
+    ), case .success(let updatedRasterHeader) =
+        StaticSignalAnalyzerNRFEmbeddedRenderPreflight.streamCombined(
+            semantic: semantic, layout: updatedLayout,
+            textRegion: UnsafeMutableRawBufferPointer(
+                start: profile.advanced(by: 9_184), count: 4_704
+            ), drawing: drawing, expectedHeader: updatedRenderHeader,
+            sink: &updatedRasterSink
+        ), updatedRasterHeader == updatedRenderHeader,
+        updatedRasterSink.isFinished,
+        updatedRasterSink.paintedPixels > 0,
+        updatedRasterSink.tileVisits > 0
     else { return 0 }
     drawing.reset()
     layoutWorkspace.packed.reset()

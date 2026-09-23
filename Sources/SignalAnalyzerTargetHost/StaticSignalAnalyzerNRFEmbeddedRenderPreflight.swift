@@ -17,13 +17,13 @@
     }
 
     package enum StaticSignalAnalyzerNRFEmbeddedRenderPreflight {
-        package static func streamCombined(
+        package static func streamCombined<Sink: DrawingOperationSink>(
             semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
             layout: StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView,
             textRegion: UnsafeMutableRawBufferPointer,
             drawing: StaticSignalAnalyzerNRFDrawingWorkspace,
             expectedHeader: RenderPlanHeader,
-            sink: inout StaticSignalAnalyzerNRFEmbeddedCountingSink
+            sink: inout Sink
         ) -> RenderProductionResult {
             guard
                 let limits = RenderLimits(

@@ -14,6 +14,51 @@ package enum RasterStrokeCoverage {
     private typealias Wide = Int128
     private typealias Magnitude = UInt128
 
+    private static func unsignedDivmod(
+        _ numerator: Magnitude, by denominator: Magnitude
+    ) -> (quotient: Magnitude, remainder: Magnitude) {
+        precondition(denominator > 0)
+        #if GIFTUI_NRF_EMBEDDED
+            if numerator < denominator { return (0, numerator) }
+            var remainder = numerator
+            var quotient: Magnitude = 0
+            let shift =
+                denominator.leadingZeroBitCount
+                - numerator.leadingZeroBitCount
+            var divisorBit = denominator << shift
+            var quotientBit: Magnitude = 1 << shift
+            while quotientBit != 0 {
+                if remainder >= divisorBit {
+                    remainder -= divisorBit
+                    quotient |= quotientBit
+                }
+                divisorBit >>= 1
+                quotientBit >>= 1
+            }
+            return (quotient, remainder)
+        #else
+            return (numerator / denominator, numerator % denominator)
+        #endif
+    }
+
+    private static func divideWide(_ numerator: Wide, by denominator: Wide)
+        -> Wide
+    {
+        precondition(denominator > 0)
+        #if GIFTUI_NRF_EMBEDDED
+            let quotient = unsignedDivmod(
+                numerator.magnitude, by: Magnitude(denominator)
+            ).quotient
+            if numerator < 0 {
+                if quotient == Magnitude(1) << 127 { return Wide.min }
+                return -Wide(quotient)
+            }
+            return Wide(quotient)
+        #else
+            return numerator / denominator
+        #endif
+    }
+
     private static let bevelScale: Wide = 1 << 31
     private static let bevelScaleSquared: Magnitude = 1 << 62
 
@@ -451,8 +496,8 @@ package enum RasterStrokeCoverage {
         else { return .arithmeticOverflow }
 
         let point = (
-            x: (centerX * bevelScale) / 2,
-            y: (centerY * bevelScale) / 2
+            x: divideWide(centerX * bevelScale, by: 2),
+            y: divideWide(centerY * bevelScale, by: 2)
         )
         let scaledVertex = (
             x: Wide(vertex.x) * bevelScale,
@@ -479,7 +524,7 @@ package enum RasterStrokeCoverage {
         )
         guard !radicand.overflow else { return nil }
         let root = integerSquareRoot(radicand.partialValue)
-        guard root > 0, root <= Magnitude(Wide.max / 2) else { return nil }
+        guard root > 0, root <= Magnitude(Wide.max >> 1) else { return nil }
         let denominator = Wide(root) * 2
         let scaleSquared = Wide(bevelScaleSquared)
         guard
@@ -505,13 +550,15 @@ package enum RasterStrokeCoverage {
         by denominator: Wide
     ) -> Wide? {
         guard denominator > 0 else { return nil }
-        let half = denominator / 2
+        let half = divideWide(denominator, by: 2)
         if numerator >= 0 {
             let adjusted = numerator.addingReportingOverflow(half)
-            return adjusted.overflow ? nil : adjusted.partialValue / denominator
+            return adjusted.overflow
+                ? nil : divideWide(adjusted.partialValue, by: denominator)
         }
         let adjusted = numerator.subtractingReportingOverflow(half)
-        return adjusted.overflow ? nil : adjusted.partialValue / denominator
+        return adjusted.overflow
+            ? nil : divideWide(adjusted.partialValue, by: denominator)
     }
 
     private static func triangleContains(
@@ -581,15 +628,17 @@ package enum RasterStrokeCoverage {
         var rightDenominator = otherDenominator
         var reversed = false
         while true {
-            let leftQuotient = leftNumerator / leftDenominator
-            let rightQuotient = rightNumerator / rightDenominator
+            let left = unsignedDivmod(leftNumerator, by: leftDenominator)
+            let right = unsignedDivmod(rightNumerator, by: rightDenominator)
+            let leftQuotient = left.quotient
+            let rightQuotient = right.quotient
             if leftQuotient != rightQuotient {
                 return reversed
                     ? leftQuotient > rightQuotient
                     : leftQuotient < rightQuotient
             }
-            let leftRemainder = leftNumerator % leftDenominator
-            let rightRemainder = rightNumerator % rightDenominator
+            let leftRemainder = left.remainder
+            let rightRemainder = right.remainder
             if leftRemainder == 0 || rightRemainder == 0 {
                 if leftRemainder == 0 && rightRemainder == 0 {
                     return true
@@ -611,7 +660,9 @@ package enum RasterStrokeCoverage {
         let significantBits = Magnitude.bitWidth - value.leadingZeroBitCount
         var estimate: Magnitude = 1 << ((significantBits + 1) / 2)
         while true {
-            let next = (estimate + (value / estimate)) / 2
+            let next =
+                (estimate + unsignedDivmod(value, by: estimate).quotient)
+                >> 1
             if next >= estimate { return estimate }
             estimate = next
         }

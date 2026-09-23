@@ -1368,3 +1368,16 @@ registered nRF SPEC-001 run passed at
 The checked image uses 187,904 RAM and 174,124 flash bytes. This establishes
 the traversal primitive; frame operations and display submission are still
 to be connected.
+
+The target now streams each complete five-Canvas frame through a bounded
+raster sink using shared operation-major tile traversal and the shared fill,
+reference-bitmap glyph, and stroke rasterizers. Both the empty capture and a
+one-transition capture finish the counted stream with nonzero painted pixels
+and tile visits in the exact firmware-source native probe. The nRF toolchain
+lacks general 128-bit division helpers, so shared stroke coverage uses exact
+bitwise unsigned division only for the Embedded profile; its host arithmetic
+path remains unchanged. The registered nRF SPEC-001 run passed at
+`.build/contract-reports/spec-001/20260923T224515Z-37644/nrf52840-embedded/`.
+The checked image uses 187,904 RAM and 195,820 flash bytes. The tile consumer
+currently verifies visits; it does not yet submit borrowed RGB565 runs to the
+ILI9486 driver. The production opportunity loop is also still open.

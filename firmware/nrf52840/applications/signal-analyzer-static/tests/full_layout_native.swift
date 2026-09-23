@@ -34,7 +34,10 @@ struct FullLayoutNativeCheck {
             "bounded Canvas payload failed"
         )
         precondition(
-            giftUISignalAnalyzerFullCanvasValid(profile, 39_696, capture, 115_392) == 1,
+            giftUISignalAnalyzerFullCanvasValid(
+                profile, 39_696, capture, 115_392, raster, 3_840,
+                coverage, 240
+            ) == 1,
             "five Canvas derivation failed"
         )
         precondition(
