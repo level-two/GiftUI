@@ -33,6 +33,12 @@ extern uint32_t giftui_signal_analyzer_present_initial(
                  const uint8_t *, size_t));
 extern void giftui_signal_analyzer_retire_initial(void);
 
+/* Keep the future committed-interaction handoff linkable without granting
+ * input eligibility in this finite diagnostic path. */
+__attribute__((used, retain))
+static int32_t (*const giftui_committed_presentation_entry)(uint32_t) =
+    giftui_signal_analyzer_input_install_presentation;
+
 static void wait_microseconds(uint32_t duration)
 {
     k_busy_wait(duration);
@@ -127,11 +133,6 @@ int giftui_device_validation_run(void)
     }
     printk("GiftUI display transfer: status=completed elapsed-ms=%u\n",
            (unsigned int)((display_finished - display_started) / 1000U));
-    result = giftui_signal_analyzer_input_install_presentation(0U);
-    if (result != 0) {
-        giftui_fault_record(GIFTUI_FAULT_CAPACITY, result);
-        goto cleanup;
-    }
 
     uint32_t contacts = 0U;
     uint32_t samples = 0U;

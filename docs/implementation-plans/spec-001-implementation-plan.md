@@ -1661,6 +1661,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       that generation and resets attempt-local Layout and Drawing storage;
       the exact-source native probe verifies later reactivation. The latest
       registered hardware-free gate uses 187,968 RAM and 219,852 flash bytes.
+      The finite display diagnostic now leaves input ineligible because it
+      has no committed interaction candidate. An exact-source probe verifies
+      a touch event is dropped before presentation installation, while the
+      future installation entry remains linked. The latest registered gate
+      uses 187,968 RAM and 219,840 flash bytes.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

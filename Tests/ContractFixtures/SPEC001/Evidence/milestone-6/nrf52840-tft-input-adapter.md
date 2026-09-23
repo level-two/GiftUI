@@ -1478,3 +1478,14 @@ subsequent reactivation. The registered hardware-free gate passed at
 The checked image uses 187,968 RAM and 219,852 flash bytes. This establishes
 model-location lifetime around the first offer; the recurring application
 opportunity owner remains open.
+
+The finite display diagnostic no longer installs a physical presentation
+revision into the input gate. Its one rendered frame has no committed
+interaction candidate, so touch stays ineligible until the production
+handoff can commit both together. The exact-source native probe submits a
+down event after the diagnostic frame and requires
+`presentationNotEstablished` with zero pending input. The future installation
+entry remains linked for the production handoff. The registered nRF gate
+passed at
+`.build/contract-reports/spec-001/20260923T235128Z-62848/nrf52840-embedded/`;
+the image uses 187,968 RAM and 219,840 flash bytes.

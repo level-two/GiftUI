@@ -60,6 +60,12 @@ struct FullLayoutNativeCheck {
             "initial Canvas offer failed"
         )
         precondition(giftUISignalAnalyzerInitialModelActive() == 1)
+        precondition(giftUISignalAnalyzerInputInitialize(1) == 0)
+        precondition(
+            giftUISignalAnalyzerInputAdmit(0, 20, 20, 0, 1) == 0x0101,
+            "uncommitted presentation admitted input"
+        )
+        precondition(giftUISignalAnalyzerInputPendingCount() == 0)
         precondition(
             giftUISignalAnalyzerPresentInitial(
                 profile, 39_696, capture, 115_392, raster, 3_840,
@@ -68,6 +74,7 @@ struct FullLayoutNativeCheck {
             "active model admitted a second initial offer"
         )
         giftUISignalAnalyzerRetireInitial()
+        giftUISignalAnalyzerInputQuiesce()
         precondition(giftUISignalAnalyzerInitialModelActive() == 0)
         precondition(
             giftUISignalAnalyzerPresentInitial(
