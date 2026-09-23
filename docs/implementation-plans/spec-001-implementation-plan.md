@@ -1050,6 +1050,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       and reuse. Firmware startup exercises the actual C profile/capture
       regions; the checked image uses 184,448 RAM and 51,228 flash bytes.
       Acquisition-state and reserved-failure variants remain open.
+      A focused layout probe measures the portable diagnostic and acquisition
+      state at 100 bytes each, the operational failure at 108 bytes, and a
+      typed mutation/state union at 112 bytes on the host compiler. The nRF
+      compiler builds that union and checks inline failed-state retention;
+      the checked image uses 184,448 RAM and 51,484 flash bytes. The existing
+      64-byte ring entry must be replaced with audited larger fixed storage
+      before failed states can enter production admission.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

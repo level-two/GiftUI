@@ -585,6 +585,16 @@ refused while either active or sealed metadata still owns the physical slot;
 after the sealed snapshot is consumed the slot can be reused. Acquisition
 state and reserved operational failure remain outside this target sequencer.
 
+The existing 64-byte mutation-only slot cannot contain the portable failed
+acquisition state. Host layout measurements are 100 bytes for the diagnostic,
+100 for `AcquisitionState`, 80 for `SignalCaptureChange`, and 108 for the
+operational failure value. A typed union of the mutation record and exact
+acquisition state has a 112-byte host stride. The same union and an inline
+failed diagnostic compile in Embedded Swift at no additional linked RAM in
+the current diagnostic image. The fixed admission-region audit must be
+reconciled before this union replaces the 64-byte ring entry; no state fact
+is yet accepted by the target sequencer.
+
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact
 root identity, the six-case `SignalAnalyzerAction` specialization, and dense

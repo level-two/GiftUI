@@ -161,6 +161,20 @@ public func giftUISignalAnalyzerCompactFactValid() -> UInt32 {
     return 1
 }
 
+@_cdecl("giftui_signal_analyzer_presentation_fact_layout_valid")
+public func giftUISignalAnalyzerPresentationFactLayoutValid() -> UInt32 {
+    guard MemoryLayout<StaticSignalAnalyzerNRFCompactPresentationFact>.stride <= 112,
+        let diagnostic = giftUIStaticSampleDiagnostic(),
+        let fact = StaticSignalAnalyzerNRFCompactPresentationFact(
+            sequence: 1, payload: .acquisitionState(.failed(diagnostic))
+        )
+    else { return 0 }
+    if case .acquisitionState(.failed(let retained)) = fact.payload,
+        retained == diagnostic
+    { return 1 }
+    return 0
+}
+
 @_cdecl("giftui_signal_analyzer_compact_ring_valid")
 public func giftUISignalAnalyzerCompactRingValid(
     _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32

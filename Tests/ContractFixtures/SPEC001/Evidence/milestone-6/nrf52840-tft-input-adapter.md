@@ -21,6 +21,14 @@ entry runs a snapshot-only seal/drain against the actual C profile and capture
 regions. The checked image passes at 184,448 RAM and 51,228 flash bytes; no
 connected-board behavior is claimed.
 
+The next payload-layout probe found a 100-byte inline diagnostic, 100-byte
+acquisition state, 80-byte capture mutation, 108-byte operational failure,
+and a 112-byte typed mutation/state union on the host compiler. The nRF
+compiler builds the union and checks that a failed state retains the exact
+diagnostic. The checked image passes at 184,448 RAM and 51,484 flash bytes.
+This is feasibility evidence for a larger audited fact region; the current
+64-byte ring still admits capture mutations only.
+
 ## Compact capture-fact encoding
 
 The target now compiles a 64-byte capture-mutation record with the admission
