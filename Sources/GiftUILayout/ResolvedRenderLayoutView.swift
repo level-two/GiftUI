@@ -67,85 +67,87 @@ package protocol ResolvedRenderLayoutView {
     func glyph(of identity: Identity, at index: UInt16) -> ResolvedRenderGlyph?
 }
 
-package protocol ResolvedRenderLayoutResultStorage: LayoutResultSink,
-    LayoutResultSinkState
-{
-    associatedtype RenderView: ResolvedRenderLayoutView
-    where RenderView.Identity == Identity
+#if !GIFTUI_NRF_EMBEDDED
+    package protocol ResolvedRenderLayoutResultStorage: LayoutResultSink,
+        LayoutResultSinkState
+    {
+        associatedtype RenderView: ResolvedRenderLayoutView
+        where RenderView.Identity == Identity
 
-    var renderView: RenderView { get }
-}
-
-package struct ResolvedRenderLayoutResultSink<Storage>: LayoutResultSink,
-    LayoutResultSinkState
-where Storage: ResolvedRenderLayoutResultStorage {
-    package var storage: Storage
-
-    package init(storage: Storage) {
-        self.storage = storage
+        var renderView: RenderView { get }
     }
 
-    package var isLayoutActive: Bool {
-        storage.isLayoutActive
-    }
+    package struct ResolvedRenderLayoutResultSink<Storage>: LayoutResultSink,
+        LayoutResultSinkState
+    where Storage: ResolvedRenderLayoutResultStorage {
+        package var storage: Storage
 
-    package var renderView: Storage.RenderView {
-        storage.renderView
-    }
+        package init(storage: Storage) {
+            self.storage = storage
+        }
 
-    package mutating func begin(summary: LayoutSummary) -> Bool {
-        storage.begin(summary: summary)
-    }
+        package var isLayoutActive: Bool {
+            storage.isLayoutActive
+        }
 
-    package mutating func stageScope(
-        identity: Storage.Identity,
-        bounds: Rect,
-        clip: Rect
-    ) -> Bool {
-        storage.stageScope(identity: identity, bounds: bounds, clip: clip)
-    }
+        package var renderView: Storage.RenderView {
+            storage.renderView
+        }
 
-    package mutating func stageTextLine(
-        identity: Storage.Identity,
-        lineIndex: UInt16,
-        bounds: Rect,
-        baseline: Point,
-        clip: Rect
-    ) -> Bool {
-        storage.stageTextLine(
-            identity: identity,
-            lineIndex: lineIndex,
-            bounds: bounds,
-            baseline: baseline,
-            clip: clip
-        )
-    }
+        package mutating func begin(summary: LayoutSummary) -> Bool {
+            storage.begin(summary: summary)
+        }
 
-    package mutating func stageGlyph(
-        identity: Storage.Identity,
-        lineIndex: UInt16,
-        glyphIndex: UInt16,
-        instance: FontInstanceID,
-        glyph: GlyphID,
-        baseline: Point,
-        clip: Rect
-    ) -> Bool {
-        storage.stageGlyph(
-            identity: identity,
-            lineIndex: lineIndex,
-            glyphIndex: glyphIndex,
-            instance: instance,
-            glyph: glyph,
-            baseline: baseline,
-            clip: clip
-        )
-    }
+        package mutating func stageScope(
+            identity: Storage.Identity,
+            bounds: Rect,
+            clip: Rect
+        ) -> Bool {
+            storage.stageScope(identity: identity, bounds: bounds, clip: clip)
+        }
 
-    package mutating func publish() -> Bool {
-        storage.publish()
-    }
+        package mutating func stageTextLine(
+            identity: Storage.Identity,
+            lineIndex: UInt16,
+            bounds: Rect,
+            baseline: Point,
+            clip: Rect
+        ) -> Bool {
+            storage.stageTextLine(
+                identity: identity,
+                lineIndex: lineIndex,
+                bounds: bounds,
+                baseline: baseline,
+                clip: clip
+            )
+        }
 
-    package mutating func discard() {
-        storage.discard()
+        package mutating func stageGlyph(
+            identity: Storage.Identity,
+            lineIndex: UInt16,
+            glyphIndex: UInt16,
+            instance: FontInstanceID,
+            glyph: GlyphID,
+            baseline: Point,
+            clip: Rect
+        ) -> Bool {
+            storage.stageGlyph(
+                identity: identity,
+                lineIndex: lineIndex,
+                glyphIndex: glyphIndex,
+                instance: instance,
+                glyph: glyph,
+                baseline: baseline,
+                clip: clip
+            )
+        }
+
+        package mutating func publish() -> Bool {
+            storage.publish()
+        }
+
+        package mutating func discard() {
+            storage.discard()
+        }
     }
-}
+#endif

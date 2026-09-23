@@ -1252,3 +1252,12 @@ production render or connected TFT path.
 The checked nRF image uses 187,840 RAM and 125,212 flash bytes. The registered
 SPEC-001 run completed at
 `.build/contract-reports/spec-001/20260923T210911Z-98610/nrf52840-embedded/`.
+
+The next slice exposes the packed result through the shared
+`ResolvedRenderLayoutView` interface. The firmware-source native probe checks
+the semantic revision, all five Canvas bounds and clips, all 21 text lines,
+and all 121 positioned glyphs. The nRF cross-build retains these checks at
+187,840 RAM and 127,628 flash bytes. Canvas plan derivation and rendering
+remain open.
+The registered SPEC-001 run completed at
+`.build/contract-reports/spec-001/20260923T211706Z-2350/nrf52840-embedded/`.

@@ -77,6 +77,7 @@ set(giftui_static_swift_inputs
     "${giftui_project_root}/Sources/GiftUILayout/LayoutCounters.swift"
     "${giftui_project_root}/Sources/GiftUILayout/LayoutWorkspace.swift"
     "${giftui_project_root}/Sources/GiftUILayout/LayoutGeometry.swift"
+    "${giftui_project_root}/Sources/GiftUILayout/ResolvedRenderLayoutView.swift"
     "${giftui_project_root}/Sources/GiftUILayout/LayoutSemanticValidation.swift"
     "${giftui_project_root}/Sources/GiftUILayout/LayoutEngine.swift"
     "${giftui_project_root}/Sources/GiftUIExecution/ExecutionValues.swift"

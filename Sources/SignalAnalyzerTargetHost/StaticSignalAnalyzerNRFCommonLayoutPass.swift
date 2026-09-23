@@ -55,7 +55,8 @@
                 ),
                 let result = workspace.packed.publish(
                     rootIdentity: layoutSemantic.rootIdentity,
-                    expectedScopeCount: semantic.scopeCount
+                    expectedScopeCount: semantic.scopeCount,
+                    renderSnapshotVersion: semantic.revision
                 )
             else {
                 workspace.resetLayout()

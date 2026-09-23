@@ -247,7 +247,8 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
     }
 
     package mutating func publish(
-        rootIdentity: UInt16, expectedScopeCount: UInt16
+        rootIdentity: UInt16, expectedScopeCount: UInt16,
+        renderSnapshotVersion: UInt32 = 1
     ) -> StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView? {
         guard isActive, depth == 0,
             scopeCount == expectedScopeCount,
@@ -291,7 +292,8 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
             scopeCount: scopeCount,
             lineCount: textLineCount,
             glyphCount: positionedGlyphCount,
-            rootIdentity: rootIdentity
+            rootIdentity: rootIdentity,
+            renderSnapshotVersion: renderSnapshotVersion
         )
     }
 

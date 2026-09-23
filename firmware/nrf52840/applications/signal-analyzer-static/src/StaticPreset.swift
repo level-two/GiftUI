@@ -295,7 +295,62 @@ public func giftUISignalAnalyzerFullLayoutValid(
     ), resolved.isPublished,
         resolved.scopeCount == semantic.scopeCount,
         resolved.rootIdentity == semantic.rootPrimitiveIdentity,
-        resolved.lineCount > 0, resolved.glyphCount > 0
+        resolved.renderSnapshotVersion == semantic.revision,
+        resolved.rootBounds.size.width > 0,
+        resolved.rootBounds.size.height > 0,
+        resolved.lineCount == 21, resolved.glyphCount == 121
+    else { return 0 }
+    var canvasCount: UInt16 = 0
+    var checkedLines: UInt16 = 0
+    var checkedGlyphs: UInt16 = 0
+    var ordinal: UInt16 = 0
+    while ordinal < semantic.scopeCount {
+        guard let identity = semantic.semanticIdentity(at: ordinal),
+            let record = semantic.scope(at: identity)
+        else { return 0 }
+        if record.kind == .canvas {
+            guard record.payload0 == UInt32(canvasCount + 1),
+                let layoutOrdinal = resolved.layoutOrdinal(of: identity),
+                resolved.layoutIdentity(at: layoutOrdinal) == identity,
+                let bounds = resolved.bounds(of: identity),
+                let clip = resolved.clip(of: identity),
+                bounds.size.width > 0, bounds.size.height > 0,
+                clip.size.width > 0, clip.size.height > 0
+            else { return 0 }
+            canvasCount += 1
+        } else if record.kind == .text {
+            guard let lineCount = resolved.textLineCount(of: identity) else {
+                return 0
+            }
+            var lineIndex: UInt16 = 0
+            var localGlyphIndex: UInt16 = 0
+            while lineIndex < lineCount {
+                guard let line = resolved.textLine(of: identity, at: lineIndex),
+                    line.lineIndex == lineIndex
+                else { return 0 }
+                var glyphOnLine: UInt16 = 0
+                while glyphOnLine < line.glyphCount {
+                    guard let glyph = resolved.glyph(
+                        of: identity, at: localGlyphIndex
+                    ), glyph.lineIndex == lineIndex,
+                        glyph.glyphIndex == localGlyphIndex,
+                        glyph.clip == line.clip
+                    else { return 0 }
+                    glyphOnLine += 1
+                    localGlyphIndex += 1
+                    checkedGlyphs += 1
+                }
+                checkedLines += 1
+                lineIndex += 1
+            }
+            guard resolved.glyph(of: identity, at: localGlyphIndex) == nil else {
+                return 0
+            }
+        }
+        ordinal += 1
+    }
+    guard canvasCount == 5, checkedLines == 21,
+        checkedGlyphs == 121
     else { return 0 }
     workspace.packed.reset()
     return resolved.isPublished ? 0 : 1
