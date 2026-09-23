@@ -261,10 +261,3 @@ package struct SignalCaptureStaticStorage: ~Copyable {
         baselineLevels[channelID] ?? .low
     }
 }
-
-package enum AcquisitionState: Equatable, Sendable {
-    case idle
-    case running
-    case stopped
-    case failed(SignalAnalyzerDiagnostic)
-}

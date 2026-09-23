@@ -505,6 +505,13 @@ clears it and coalesces a change report before returning its use-case intent.
 The target startup check constructs a diagnostic from stack bytes and verifies
 the same clear path. Acquisition state, capture value storage, and the
 use-case implementation remain outside this model precursor.
+The portable `AcquisitionState` declaration now lives in its own Domain
+source so the same enum can compile in the Embedded Swift module without
+pulling in the array-backed capture values. The fixed model location applies
+state facts with the same failed-state diagnostic rule as the portable
+ViewModel. Start clears only the error message; the failed acquisition state
+remains until a later repository fact replaces it. Both fields roll back if
+the direct change report refuses.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact

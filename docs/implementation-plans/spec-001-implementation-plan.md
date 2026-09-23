@@ -984,6 +984,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       target checks cover diagnostic replacement, Start clearing, and the
       resulting dirty report. The checked image uses 184,256 RAM and 37,672
       flash bytes while passing the zero-heap and ABI gates.
+      The exact portable acquisition-state enum now compiles in the target
+      beside the fixed diagnostic. Host and firmware checks verify that a
+      failed-state fact installs its diagnostic and Start clears the message
+      while preserving the failed state until a later fact. The checked image
+      uses 184,384 RAM and 38,396 flash bytes.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

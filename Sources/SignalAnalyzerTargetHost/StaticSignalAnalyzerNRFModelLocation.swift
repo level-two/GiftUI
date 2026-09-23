@@ -11,6 +11,7 @@ package struct StaticSignalAnalyzerNRFModelLocation {
     package private(set) var isDirty = false
     package private(set) var isMutating = false
     package private(set) var errorMessage: SignalAnalyzerDiagnostic?
+    package private(set) var acquisitionState: AcquisitionState = .idle
 
     package init() {}
 
@@ -24,6 +25,7 @@ package struct StaticSignalAnalyzerNRFModelLocation {
         isDirty = true
         isMutating = false
         errorMessage = nil
+        acquisitionState = .idle
         return generation
     }
 
@@ -57,6 +59,28 @@ package struct StaticSignalAnalyzerNRFModelLocation {
         let token = StaticSignalAnalyzerNRFRegistrationToken(slot: 0, generation: generation)
         guard reportChange(token: token) == .accepted else {
             errorMessage = previous
+            return false
+        }
+        return true
+    }
+
+    package mutating func setAcquisitionState(_ state: AcquisitionState) -> Bool {
+        guard let generation = activeGeneration, isMutating else { return false }
+        let nextDiagnostic: SignalAnalyzerDiagnostic?
+        if case .failed(let diagnostic) = state {
+            nextDiagnostic = diagnostic
+        } else {
+            nextDiagnostic = errorMessage
+        }
+        guard acquisitionState != state || errorMessage != nextDiagnostic else { return true }
+        let previousState = acquisitionState
+        let previousDiagnostic = errorMessage
+        acquisitionState = state
+        errorMessage = nextDiagnostic
+        let token = StaticSignalAnalyzerNRFRegistrationToken(slot: 0, generation: generation)
+        guard reportChange(token: token) == .accepted else {
+            acquisitionState = previousState
+            errorMessage = previousDiagnostic
             return false
         }
         return true

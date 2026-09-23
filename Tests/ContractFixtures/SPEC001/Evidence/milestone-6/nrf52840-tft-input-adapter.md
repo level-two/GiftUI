@@ -48,6 +48,12 @@ fixed UTF-8 store and exercises the model's Start-clear path; the host fixture
 also verifies the dirty report. The checked ELF passes hard-float, zero-heap,
 symbol, RAM, and flash gates at 184,256 RAM and 37,672 flash bytes. This does
 not yet connect repository facts or complete the portable model.
+The portable `AcquisitionState` declaration is now a standalone Domain source
+compiled into Embedded Swift. The fixed model applies a failed state and its
+diagnostic in one change report; Start clears the message but leaves the
+acquisition state until a later fact. Host and retained target checks pass.
+The hardware-free image passes hard-float, zero-heap, symbol, RAM, and flash
+gates at 184,384 RAM and 38,396 flash bytes.
 
 The selected connected assembly is the `nrf52840dk/nrf52840` with the
 480 x 320 ILI9486 PiScreen display bridge and its ADS7846 resistive-touch
