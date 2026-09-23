@@ -527,6 +527,17 @@ revision-zero emptiness, and exposes indexed reads plus the portable visible
 range calculation. Its caller must keep the slot unchanged through the
 synchronous borrow. This read view does not yet apply compact mutations or
 bind the snapshot to the fixed observable model.
+The first model capture state now replays the exact portable bounded mutation
+type into the same caller-owned snapshot slot. It preflights the full resulting
+sequence, revision, insertion/eviction bounds, encoding, time order, and
+retained interval before writing. Zero eviction shifts right from the end;
+positive eviction copies forward so an unread source is never overwritten.
+The metadata updates only after every record write. A host differential run
+compares 2,405 transitions through capacity pressure, middle insertion,
+time trimming, and Clear with the portable store. Firmware startup replays
+one further compact mutation in the actual C capture region. The state is
+still independent of the observable model location; binding and fact
+admission ordering are the next join.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact

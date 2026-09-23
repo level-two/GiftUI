@@ -1003,6 +1003,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       The registered nRF SPEC-001 driver passes 226 host tests, all seven C
       fixtures, the ownership probe, and SPEC-015 cross-build at this slice;
       only hardware-free evidence is claimed.
+      A target-compiled model capture state now replays compact portable
+      mutations in place in the reserved snapshot slot. Host differential
+      evidence covers 2,405 transitions, middle insertion, time trim, Clear,
+      and revision refusal; firmware startup replays a second record through
+      the actual C region. The checked image uses 184,384 RAM and 45,404
+      flash bytes. Observable-model binding and fact ordering remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

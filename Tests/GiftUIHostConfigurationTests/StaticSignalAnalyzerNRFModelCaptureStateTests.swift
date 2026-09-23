@@ -1,0 +1,95 @@
+import SignalAnalyzerData
+import SignalAnalyzerDomain
+import SignalAnalyzerTargetHost
+import Testing
+
+@Test func staticNRFModelCaptureReplaysPortableMutationsInPlace() {
+    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
+    defer { pointer.deallocate() }
+    guard
+        var regions = StaticSignalAnalyzerNRFCaptureRegions(
+            storage: UnsafeMutableRawBufferPointer(start: pointer, count: 115_392)
+        )
+    else {
+        Issue.record("Exact capture region did not construct")
+        return
+    }
+    var model = StaticSignalAnalyzerNRFModelCaptureState()
+    var portable = SignalCaptureStore()
+
+    for index in 0 ..< 2_405 {
+        let source = SignalTransition(
+            channelID: SignalChannelID(rawValue: index % 4 + 1),
+            timestamp: .milliseconds(index),
+            level: index.isMultiple(of: 2) ? .high : .low
+        )
+        let before = portable.capture
+        guard case .accepted(.mutation(let revision, let change)) = portable.receive(source)
+        else {
+            Issue.record("Portable source refused a valid transition")
+            return
+        }
+        let result = model.apply(revision: revision, change: change, in: &regions)
+        #expect(result == .applied(changed: before != portable.capture))
+        #expect(model.revision == portable.revision)
+        #expect(Int(model.count) == portable.capture.transitions.count)
+        #expect(model.duration == portable.capture.duration)
+        #expect(model.retainedLowerBound == portable.capture.retainedLowerBound)
+        #expect(model.baselineLevels == portable.capture.baselineLevels)
+    }
+
+    for source in [
+        SignalTransition(
+            channelID: SignalChannelID(rawValue: 2),
+            timestamp: .milliseconds(1_200), level: .high
+        ),
+        SignalTransition(
+            channelID: SignalChannelID(rawValue: 3),
+            timestamp: .seconds(35), level: .low
+        ),
+    ] {
+        let before = portable.capture
+        guard case .accepted(.mutation(let revision, let change)) = portable.receive(source)
+        else {
+            Issue.record("Portable source refused a valid insertion or trim")
+            return
+        }
+        let result = model.apply(revision: revision, change: change, in: &regions)
+        #expect(result == .applied(changed: before != portable.capture))
+        #expect(model.revision == portable.revision)
+        #expect(Int(model.count) == portable.capture.transitions.count)
+        #expect(model.duration == portable.capture.duration)
+        #expect(model.retainedLowerBound == portable.capture.retainedLowerBound)
+        #expect(model.baselineLevels == portable.capture.baselineLevels)
+    }
+
+    for index in 0 ..< Int(model.count) {
+        #expect(
+            regions.load(from: .snapshot, at: index)?.transition
+                == portable.capture.transitions[index]
+        )
+    }
+
+    let oldRevision = model.revision
+    let oldCount = model.count
+    let invalid = model.apply(
+        revision: oldRevision,
+        change: .reset(baseRevision: oldRevision, baselines: .allLow),
+        in: &regions
+    )
+    #expect(invalid == .rejected)
+    #expect(model.revision == oldRevision)
+    #expect(model.count == oldCount)
+
+    let beforeClear = portable.capture
+    guard case .accepted(.mutation(let clearRevision, let clearChange)) = portable.clear()
+    else {
+        Issue.record("Portable clear was refused")
+        return
+    }
+    let cleared = model.apply(revision: clearRevision, change: clearChange, in: &regions)
+    #expect(cleared == .applied(changed: beforeClear != portable.capture))
+    #expect(model.count == 0)
+    #expect(model.baselineLevels == portable.capture.baselineLevels)
+    #expect(model.visibleRange(window: .seconds(2)) == (.zero ..< .seconds(2)))
+}

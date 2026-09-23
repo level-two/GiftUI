@@ -177,6 +177,42 @@ public func giftUISignalAnalyzerSnapshotViewValid(
     return 1
 }
 
+@_cdecl("giftui_signal_analyzer_model_capture_replay_valid")
+public func giftUISignalAnalyzerModelCaptureReplayValid(
+    _ address: UnsafeMutableRawPointer?, _ bytes: UInt32
+) -> UInt32 {
+    guard address != nil, bytes == 115_392 else { return 0 }
+    let storage = UnsafeMutableRawBufferPointer(start: address, count: Int(bytes))
+    var modelCapture = StaticSignalAnalyzerNRFModelCaptureState()
+    do {
+        guard let view = StaticSignalAnalyzerNRFCaptureSnapshotView(
+            storage: storage, revision: 1, count: 1,
+            duration: .milliseconds(125), retainedLowerBound: .zero,
+            baselineLevels: .allLow
+        ) else { return 0 }
+        modelCapture = StaticSignalAnalyzerNRFModelCaptureState(snapshot: view)
+    }
+    guard var regions = StaticSignalAnalyzerNRFCaptureRegions(storage: storage)
+    else { return 0 }
+    let transition = SignalTransition(
+        channelID: SignalChannelID(rawValue: 1),
+        timestamp: .milliseconds(200), level: .low
+    )
+    let change = SignalCaptureChange.insertAndTrim(
+        baseRevision: 1, insertionIndex: 1, transition: transition,
+        evictedPrefixCount: 0, duration: .milliseconds(200),
+        retainedLowerBound: .zero, baselines: .allLow
+    )
+    guard modelCapture.apply(revision: 2, change: change, in: &regions)
+        == .applied(changed: true),
+        modelCapture.count == 2,
+        modelCapture.visibleRange(window: .milliseconds(100))
+            == (.milliseconds(100) ..< .milliseconds(200)),
+        regions.load(from: .snapshot, at: 1)?.transition == transition
+    else { return 0 }
+    return 1
+}
+
 @_cdecl("giftui_signal_analyzer_region_map_valid")
 public func giftUISignalAnalyzerRegionMapValid(
     _ profile: UnsafeMutableRawPointer?, _ profileBytes: UInt32,

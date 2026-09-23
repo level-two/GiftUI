@@ -75,6 +75,14 @@ The registered nRF SPEC-001 driver passed this revision: 226 host tests,
 seven touch/input/storage/clock/scheduler/lifecycle C fixtures, ownership
 probe, and the SPEC-015 cross-build. Its immutable report is
 `.build/contract-reports/spec-001/20260923T122626Z-97896/nrf52840-embedded/`.
+The compact mutation replay now operates in place on the existing model
+snapshot slot, with full preflight of revision, insertion/eviction indices,
+time bounds, encoding, and resulting order. A host differential fixture
+matches the portable store through 2,405 transitions, capacity eviction,
+middle insertion, a 35-second trim, and Clear. Firmware startup replays one
+additional mutation in the actual C capture region. The checked ELF passes
+hard-float, zero-heap, symbol, RAM, and flash gates at 184,384 RAM and 45,404
+flash bytes. The capture state is not yet attached to the observable model.
 
 The selected connected assembly is the `nrf52840dk/nrf52840` with the
 480 x 320 ILI9486 PiScreen display bridge and its ADS7846 resistive-touch
