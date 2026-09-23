@@ -212,6 +212,10 @@ The application owner lends generated inputs from its bound model together
 with a noncopyable committer over the disjoint interaction, generation, and
 input fields. This keeps model derivation and physical-offer resolution in
 one synchronous borrow without duplicating the model.
+The production presentation transaction joins semantic publication,
+five-region preparation, and physical handoff in that borrow. It returns
+distinct unbound-root, semantic, preparation, and handoff outcomes to the
+caller, leaving opportunity pacing and recovery with the firmware owner.
 The paced firmware owner still surrounds this focused preparation stage.
 
 ## Resource and Failure Behavior

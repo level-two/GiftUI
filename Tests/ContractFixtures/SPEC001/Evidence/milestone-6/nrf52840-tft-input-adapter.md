@@ -942,3 +942,9 @@ application owner's bound model. A scoped noncopyable committer lends only
 the disjoint interaction, action-generation, and input fields while that
 model is borrowed. The accepted physical offer commits six actions and makes
 input eligible before the callback ends.
+
+The production presentation transaction now composes generated semantic
+publication, five-region preparation, and physical handoff while that model
+borrow remains active. The focused host fixture verifies the unbound-root
+outcome before binding and an accepted physical offer after binding; the
+firmware pacing and recovery join remains open.

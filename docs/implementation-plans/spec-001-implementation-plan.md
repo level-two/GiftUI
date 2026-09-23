@@ -1185,8 +1185,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       publication through physical acceptance. The scoped application owner
       now lends its actual bound model for generated inputs and a disjoint
       noncopyable committer for candidate publication and input eligibility;
-      the focused fixture covers this joined borrow. The paced firmware owner
-      remains open.
+      the focused fixture covers this joined borrow. A production transaction
+      now calls semantic publication, scoped preparation, and physical handoff
+      as one bounded operation, with explicit unbound, semantic, preparation,
+      and handoff outcomes. The focused fixture exercises the unbound and
+      accepted paths. The paced firmware owner remains open.
       The Static nRF endpoint now owns one exact 3,840-byte raster tile and
       240-byte coverage map, with raster work limits derived from 150
       operations across the full 480 x 320 surface. A production render-offer
