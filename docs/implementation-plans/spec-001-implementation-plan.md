@@ -1216,7 +1216,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       modifier chains and exposes the same modifier-scope order as the host
       layout projection. A differential fixture checks the complete diagnostic
       hierarchy and the firmware startup probe checks the primitive root.
-      Payload decoding, measurement, and placement remain open.
+      Modifier payload decoding, measurement, and placement are the next layout
+      work.
+      A target-safe primitive decoder now reads all seven generated layout
+      shapes and their alignment, spacing, and spacer values. The differential
+      fixture compares every diagnostic primitive with the host layout view.
+      Modifier decoding and layout execution remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

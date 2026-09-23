@@ -1,3 +1,4 @@
+import GiftUISemanticCore
 import SignalAnalyzerDomain
 import SignalAnalyzerTargetHost
 import Testing
@@ -105,6 +106,26 @@ import Testing
                     (view.layoutPrimitiveKind(of: identity) != nil)
                         == (layout.primitive(at: identity) != nil)
                 )
+                if let primitive = layout.primitive(at: identity) {
+                    let expected: StaticSignalAnalyzerNRFEmbeddedLayoutPrimitive
+                    switch primitive {
+                    case .proxy: expected = .proxy
+                    case .vStack(let alignment, let spacing):
+                        expected = .vStack(alignment: alignment.rawValue, spacing: spacing)
+                    case .hStack(let alignment, let spacing):
+                        expected = .hStack(alignment: alignment.rawValue, spacing: spacing)
+                    case .zStack(let alignment):
+                        expected = .zStack(
+                            horizontal: alignment.horizontal.rawValue,
+                            vertical: alignment.vertical.rawValue
+                        )
+                    case .spacer(let minLength):
+                        expected = .spacer(minLength: minLength)
+                    case .text: expected = .text
+                    case .canvas: expected = .canvas
+                    }
+                    #expect(view.layoutPrimitive(at: identity) == expected)
+                }
                 if let children = view.childCount(of: identity) {
                     for child in UInt16(0) ..< children {
                         #expect(

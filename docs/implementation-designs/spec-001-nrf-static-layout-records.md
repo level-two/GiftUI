@@ -56,8 +56,10 @@ approved storage audit.
 The target-safe published semantic view now resolves primitive children beneath
 modifier chains and exposes the same modifier-scope order as the host layout
 projection. A differential fixture checks every normal/diagnostic scope and
-edge. Primitive and modifier payload decoding, measurement, and placement
-remain the next layout work.
+edge. The target now decodes all seven layout primitive
+shapes with checked payload fields; a differential test compares every
+primitive in the published diagnostic table with the generated host view.
+Modifier payloads and the actual layout pass remain open.
 
 ## Proposed Internal Organization
 

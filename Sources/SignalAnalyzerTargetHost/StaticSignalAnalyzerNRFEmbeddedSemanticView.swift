@@ -31,6 +31,13 @@ package struct StaticSignalAnalyzerNRFEmbeddedSemanticView {
         return record.kind
     }
 
+    package func layoutPrimitive(
+        at identity: UInt16
+    ) -> StaticSignalAnalyzerNRFEmbeddedLayoutPrimitive? {
+        guard let record = scope(at: identity) else { return nil }
+        return StaticSignalAnalyzerNRFEmbeddedLayoutPrimitive(record: record)
+    }
+
     package func layoutChildCount(of identity: UInt16) -> UInt16? {
         guard layoutPrimitiveKind(of: identity) != nil else { return nil }
         return childCount(of: identity)

@@ -172,7 +172,7 @@ public func giftUISignalAnalyzerLayoutScopeValid(
     guard let view = StaticSignalAnalyzerNRFEmbeddedSemanticView(
         published: published
     ), let root = view.rootPrimitiveIdentity,
-        view.layoutPrimitiveKind(of: root) != nil,
+        view.layoutPrimitive(at: root) != nil,
         view.layoutChildCount(of: root) != nil,
         view.layoutModifierCount(of: root) != nil
     else { return 0 }
