@@ -898,9 +898,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       480 x 4 / 3,840-byte RGB565 submission, raw touch acquisition, and
       saturating fault accounting. The exact pristine firmware build retains
       all driver entry points and passes ARMv7E-M hard-float, zero-heap,
-      RAM/flash, and required-symbol gates. Static host-loop composition,
-      calibrated polling-loop activation, connected stack measurement, and
-      flashing remain open. A
+      RAM/flash, and required-symbol gates. The four firmware regions now
+      expose an 8-byte-aligned, address-stable handoff checked for exact sizes
+      and pairwise disjointness by a C99 fixture and retained-symbol ELF gate.
+      Static host-loop composition, calibrated polling-loop activation,
+      connected stack measurement, and flashing remain open. A
       target-local,
       allocation-free
       touch normalizer

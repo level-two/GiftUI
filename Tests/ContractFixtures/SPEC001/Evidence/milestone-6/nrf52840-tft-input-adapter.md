@@ -988,3 +988,14 @@ production Static nRF residual adapter and shared host router. The fixed
 approved table selects `quiesceAffectedScope` after the required effects;
 the invariant and fatal hooks are not invoked. Firmware ownership of those
 hooks and reconstruction remains open.
+
+The four firmware storage regions now have an explicit address-stable C
+handoff for the production owner. Each region is 8-byte aligned, and a
+hardware-free fixture checks the exact 36,368/115,392/3,840/240-byte sizes,
+pairwise disjointness, stable access, and the 155,840-byte total. The ELF gate
+requires the handoff symbol. These are storage-boundary checks; the current
+firmware entry still runs the finite device validation and does not consume
+the regions through the complete Static host.
+The checked hardware-free build passes ARMv7E-M hard-float, zero-heap,
+required-symbol, RAM, and flash gates at 184,128 RAM bytes and 34,576 flash
+bytes. No board was flashed.
