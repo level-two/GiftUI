@@ -1129,6 +1129,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       70,588 flash bytes. Primitive/text payloads, complete semantic
       validation/publication, rendering, and the production firmware loop
       remain open.
+      The same target probe now applies all generated invariant stack,
+      spacer, frame, padding, and fixed style payloads to both variants.
+      The checked image remains at 187,840 RAM and grows to 72,332 flash
+      bytes. Live modifier and text inputs still need fixed model lowering.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

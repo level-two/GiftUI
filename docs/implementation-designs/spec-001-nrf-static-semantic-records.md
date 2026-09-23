@@ -68,10 +68,11 @@ the region lifetime; no view or pointer to it escapes an opportunity.
 
 The firmware now compiles the generated packed schema and topology writer.
 Its startup check stages the normal and diagnostic scope shapes and action
-bindings in the actual candidate region. Host-only primitive population and
-complete-table validation remain outside that Embedded Swift source set while
-their dependent portable Presentation values are lowered. This check does not
-seal or publish a semantic result.
+bindings plus invariant primitive, layout modifier, and style payloads in the
+actual candidate region. Live modifier/text population and complete-table
+validation remain outside that Embedded Swift source set while their dependent
+portable Presentation values are lowered. This check does not seal or publish
+a semantic result.
 
 ## Data and Control Flow
 

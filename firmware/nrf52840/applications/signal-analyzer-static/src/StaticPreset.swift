@@ -122,6 +122,15 @@ public func giftUISignalAnalyzerTopologyValid(
             StaticSignalAnalyzerNRFTopologyWriter.populateBindings(
                 scopeCount: count, in: semantic
             ),
+            StaticSignalAnalyzerNRFTopologyWriter.populateInvariantPrimitives(
+                scopeCount: count, in: semantic
+            ),
+            StaticSignalAnalyzerNRFTopologyWriter.populateInvariantLayoutModifiers(
+                scopeCount: count, in: semantic
+            ),
+            StaticSignalAnalyzerNRFTopologyWriter.populateInvariantStyles(
+                scopeCount: count, in: semantic
+            ),
             StaticSignalAnalyzerNRFPackedSemanticRecords.scope(
                 at: 0, in: semantic
             )?.kind == .proxy
