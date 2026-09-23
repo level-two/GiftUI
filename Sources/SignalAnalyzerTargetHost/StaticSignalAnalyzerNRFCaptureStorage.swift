@@ -1,17 +1,40 @@
-/// Exact target encoding for one transition. The portable value conversion
-/// is in a separate source so this same record builds in Embedded Swift.
+/// One exact transition in 16 bytes. Attoseconds use fewer than 60 bits;
+/// the upper four bits hold the standard channel and digital level.
 package struct StaticSignalAnalyzerNRFCaptureRecord: Equatable, Sendable {
-    package static let byteCount = 24
+    package static let byteCount = 16
+    package static let attosecondMask: UInt64 = (UInt64(1) << 60) - 1
 
     package let seconds: Int64
-    package let attoseconds: Int64
-    package let channelRawValue: UInt32
-    package let levelRawValue: UInt32
+    package let packedAttoseconds: UInt64
+
+    package var attoseconds: Int64 {
+        Int64(packedAttoseconds & Self.attosecondMask)
+    }
+
+    package var channelRawValue: UInt32 {
+        UInt32((packedAttoseconds >> 60) & 7)
+    }
+
+    package var levelRawValue: UInt32 {
+        UInt32(packedAttoseconds >> 63)
+    }
+
+    package init(
+        seconds: Int64, attoseconds: Int64,
+        channelRawValue: UInt32, levelRawValue: UInt32
+    ) {
+        self.seconds = seconds
+        packedAttoseconds =
+            UInt64(bitPattern: attoseconds) & Self.attosecondMask
+            | (UInt64(channelRawValue & 7) << 60)
+            | (UInt64(levelRawValue & 1) << 63)
+    }
 }
 
 package enum StaticSignalAnalyzerNRFCaptureSlot: UInt8 {
     case live = 0
     case snapshot = 1
+    case admission = 2
 }
 
 /// Borrows the exact 115,392-byte C region without constructing Swift arrays
@@ -19,7 +42,7 @@ package enum StaticSignalAnalyzerNRFCaptureSlot: UInt8 {
 package struct StaticSignalAnalyzerNRFCaptureRegions: ~Copyable {
     package static let entriesPerSlot = 2_404
     package static let requiredByteCount =
-        2 * entriesPerSlot * StaticSignalAnalyzerNRFCaptureRecord.byteCount
+        3 * entriesPerSlot * StaticSignalAnalyzerNRFCaptureRecord.byteCount
 
     private let storage: UnsafeMutableRawBufferPointer
 

@@ -20,8 +20,8 @@ import Testing
             Issue.record("Snapshot storage or records did not construct")
             return
         }
-        let storedFirst = regions.store(firstRecord, in: .snapshot, at: 0)
-        let storedSecond = regions.store(secondRecord, in: .snapshot, at: 1)
+        let storedFirst = regions.store(firstRecord, in: .admission, at: 0)
+        let storedSecond = regions.store(secondRecord, in: .admission, at: 1)
         #expect(storedFirst)
         #expect(storedSecond)
     }
@@ -68,7 +68,7 @@ import Testing
             Issue.record("Malformed snapshot setup failed")
             return
         }
-        let stored = regions.store(unsorted, in: .snapshot, at: 1)
+        let stored = regions.store(unsorted, in: .admission, at: 1)
         #expect(stored)
     }
     let wrongOrder = StaticSignalAnalyzerNRFCaptureSnapshotView(

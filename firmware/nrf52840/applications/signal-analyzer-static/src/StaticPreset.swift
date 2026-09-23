@@ -120,7 +120,7 @@ private func giftUIStaticSampleDiagnostic() -> SignalAnalyzerDiagnostic? {
 public func giftUISignalAnalyzerCaptureLayout() -> UInt32 {
     let recordSize = MemoryLayout<StaticSignalAnalyzerNRFCaptureRecord>.size
     let recordStride = MemoryLayout<StaticSignalAnalyzerNRFCaptureRecord>.stride
-    return recordSize == 24 && recordStride == 24
+    return recordSize == 16 && recordStride == 16
         && StaticSignalAnalyzerNRFCaptureRegions.requiredByteCount == 115_392
         ? 115_392 : 0
 }
@@ -217,7 +217,7 @@ public func giftUISignalAnalyzerSnapshotViewValid(
     do {
         guard var regions = StaticSignalAnalyzerNRFCaptureRegions(storage: storage),
             let record = StaticSignalAnalyzerNRFCaptureRecord(transition),
-            regions.store(record, in: .snapshot, at: 0)
+            regions.store(record, in: .admission, at: 0)
         else { return 0 }
     }
     guard let view = StaticSignalAnalyzerNRFCaptureSnapshotView(
@@ -239,16 +239,16 @@ public func giftUISignalAnalyzerModelCaptureReplayValid(
         guard location.pointee.activate() != nil,
             location.pointee.beginMutation()
         else { return 0 }
+        guard var regions = StaticSignalAnalyzerNRFCaptureRegions(storage: storage)
+        else { return 0 }
         do {
             guard let view = StaticSignalAnalyzerNRFCaptureSnapshotView(
                 storage: storage, revision: 1, count: 1,
                 duration: .milliseconds(125), retainedLowerBound: .zero,
                 baselineLevels: .allLow
-            ), location.pointee.installCaptureSnapshot(view)
+            ), location.pointee.installCaptureSnapshot(view, in: &regions)
             else { return 0 }
         }
-        guard var regions = StaticSignalAnalyzerNRFCaptureRegions(storage: storage)
-        else { return 0 }
         let transition = SignalTransition(
             channelID: SignalChannelID(rawValue: 1),
             timestamp: .milliseconds(200), level: .low

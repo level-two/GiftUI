@@ -1,5 +1,18 @@
 # SPEC-001 T6.8 nRF52840 TFT/Input Adapter Slice
 
+## Three-slot capture isolation
+
+The 115,392-byte C capture symbol now holds live repository, applied model,
+and admitted snapshot slots of 2,404 exact 16-byte records each. The high
+four bits of the attosecond word encode standard channel and digital level;
+the remaining 60 bits preserve every normalized attosecond value. Host tests
+verify independent slots, capture policy equivalence, model attachment in
+the mutation phase, and later admission without model overwrite. The target
+compiler checks the 16-byte size/stride and the unchanged total region size
+at startup. The checked image passes hard-float, zero-heap, symbol, RAM, and
+flash gates at 184,448 RAM and 49,436 flash bytes. The image still enters
+diagnostic device validation after these checks.
+
 ## Compact capture-fact encoding
 
 The target now compiles a 64-byte capture-mutation record with the admission

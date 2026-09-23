@@ -919,9 +919,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       same context at each callback.
       Static host-loop composition, calibrated polling-loop activation,
       connected stack measurement, and flashing remain open. A
-      target-owned 24-byte capture record now encodes the portable transition
+      target-owned compact capture record encodes the portable transition
       value's timestamp components, channel, and level. One checked borrower
-      splits the existing 115,392-byte firmware region into two disjoint
+      originally split the 115,392-byte firmware region into two disjoint
       2,404-entry slots without Swift arrays; host tests verify stride,
       boundary access, round-trip values, and malformed regions. The target
       capture policy now mutates that live slot in place, preserving
@@ -929,7 +929,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       clear rebasing, and revision exhaustion. A host differential fixture
       compares every publication and retained record against the portable
       store across 2,450 transitions. A bounded snapshot copy now freezes
-      initialized live records and scalar metadata in the second slot, and a
+      initialized live records and scalar metadata in the admission slot, and a
       host fixture proves it survives later live mutation and clear. Snapshot
       publication through the application adapter and firmware linkage still
       need to consume these records. The scoped composition now lends the
@@ -937,7 +937,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       owners; its host fixture receives a transition inside that lifetime.
       The compact record and checked region borrower now compile as the same
       shared Swift source in the nRF firmware. Its entry checks the target
-      record size/stride and 115,392-byte two-slot layout before diagnostic
+      record size/stride and 115,392-byte region layout before diagnostic
       device startup; the checked ELF retains the entry at 184,128 RAM and
       35,164 flash bytes. A second retained Swift entry now borrows the actual
       C handoff capture region at startup and rejects a wrong address, byte
@@ -1035,6 +1035,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       sealing, quiescence, and sequence exhaustion. Firmware startup exercises
       the same owner; the checked image uses 184,384 RAM and 49,164 flash
       bytes. Snapshot, state, and reserved-failure admission remain open.
+      The same 115,392-byte capture region now holds three 2,404-entry slots
+      of exact 16-byte records: live repository, applied model, and admitted
+      snapshot. Model attachment copies the admitted slot only inside its
+      mutation phase; a later admitted snapshot cannot overwrite the applied
+      model. Focused host tests and the nRF checked build pass at 184,448 RAM
+      and 49,436 flash bytes. Full fact classification and firmware production
+      composition remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

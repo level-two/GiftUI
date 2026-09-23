@@ -1,6 +1,6 @@
 import SignalAnalyzerDomain
 
-/// Validated, scoped read access to one copied capture snapshot slot.
+/// Validated, scoped read access to the copied admission snapshot slot.
 /// The caller keeps the 115,392-byte region alive and unchanged for this scope.
 package struct StaticSignalAnalyzerNRFCaptureSnapshotView: ~Copyable {
     private let regions: StaticSignalAnalyzerNRFCaptureRegions
@@ -30,7 +30,7 @@ package struct StaticSignalAnalyzerNRFCaptureSnapshotView: ~Copyable {
 
         var preceding = retainedLowerBound
         for index in 0 ..< Int(count) {
-            guard let transition = regions.load(from: .snapshot, at: index)?.transition,
+            guard let transition = regions.load(from: .admission, at: index)?.transition,
                 transition.timestamp >= preceding,
                 transition.timestamp <= duration
             else { return nil }
@@ -47,7 +47,7 @@ package struct StaticSignalAnalyzerNRFCaptureSnapshotView: ~Copyable {
 
     package borrowing func transition(at index: UInt16) -> SignalTransition? {
         guard index < count else { return nil }
-        return regions.load(from: .snapshot, at: Int(index))?.transition
+        return regions.load(from: .admission, at: Int(index))?.transition
     }
 
     package borrowing func visibleRange(window: Duration) -> Range<Duration>? {

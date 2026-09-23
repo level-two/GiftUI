@@ -109,7 +109,7 @@ import Testing
             Issue.record("Bootstrap snapshot setup failed")
             return
         }
-        let stored = regions.store(record, in: .snapshot, at: 0)
+        let stored = regions.store(record, in: .admission, at: 0)
         #expect(stored)
     }
 
@@ -130,10 +130,16 @@ import Testing
                 Issue.record("Bootstrap snapshot was refused")
                 return
             }
-            let installed = location.pointee.installCaptureSnapshot(view)
+            guard var regions = StaticSignalAnalyzerNRFCaptureRegions(storage: storage)
+            else {
+                Issue.record("Model capture region was refused")
+                return
+            }
+            let installed = location.pointee.installCaptureSnapshot(view, in: &regions)
             #expect(installed)
-            let repeated = location.pointee.installCaptureSnapshot(view)
+            let repeated = location.pointee.installCaptureSnapshot(view, in: &regions)
             #expect(!repeated)
+            #expect(regions.load(from: .snapshot, at: 0)?.transition == first)
         }
         #expect(location.pointee.capture.revision == 1)
         #expect(location.pointee.capture.count == 1)
@@ -148,6 +154,18 @@ import Testing
             Issue.record("Mutation region was refused")
             return
         }
+        let nextAdmission = SignalTransition(
+            channelID: SignalChannelID(rawValue: 2),
+            timestamp: .milliseconds(150), level: .low
+        )
+        guard let nextAdmissionRecord = StaticSignalAnalyzerNRFCaptureRecord(nextAdmission)
+        else {
+            Issue.record("Next admission transition was refused")
+            return
+        }
+        let replacedAdmission = regions.store(nextAdmissionRecord, in: .admission, at: 0)
+        #expect(replacedAdmission)
+        #expect(regions.load(from: .snapshot, at: 0)?.transition == first)
         let second = SignalTransition(
             channelID: SignalChannelID(rawValue: 4),
             timestamp: .milliseconds(200), level: .low

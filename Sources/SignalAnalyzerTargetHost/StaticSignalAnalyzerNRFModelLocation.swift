@@ -91,15 +91,27 @@ package struct StaticSignalAnalyzerNRFModelLocation {
     }
 
     package mutating func installCaptureSnapshot(
-        _ snapshot: borrowing StaticSignalAnalyzerNRFCaptureSnapshotView
+        _ snapshot: borrowing StaticSignalAnalyzerNRFCaptureSnapshotView,
+        in regions: inout StaticSignalAnalyzerNRFCaptureRegions
     ) -> Bool {
         guard let generation = activeGeneration, isMutating, !captureSnapshotInstalled
         else { return false }
         let next = StaticSignalAnalyzerNRFModelCaptureState(snapshot: snapshot)
-        let changed =
+        var changed =
             next.count != capture.count || next.duration != capture.duration
             || next.retainedLowerBound != capture.retainedLowerBound
             || next.baselineLevels != capture.baselineLevels
+        for index in 0 ..< Int(snapshot.count) {
+            guard let transition = snapshot.transition(at: UInt16(index)),
+                let record = StaticSignalAnalyzerNRFCaptureRecord(transition)
+            else { return false }
+            if index >= Int(capture.count)
+                || regions.load(from: .snapshot, at: index) != record
+            {
+                changed = true
+            }
+            guard regions.store(record, in: .snapshot, at: index) else { return false }
+        }
         capture = next
         captureSnapshotInstalled = true
         if changed {

@@ -419,9 +419,13 @@ together, then quiesces both before either caller-owned field location or the
 profile buffer can expire. The aggregate remains generic over the concrete
 generated Canvas metadata, so it does not collapse the generation boundary.
 
-The nRF capture region is now split into two 2,404-entry slots of compact
-24-byte records, totaling exactly 115,392 bytes. Each record preserves the
+The nRF capture region is split into three 2,404-entry slots of compact
+16-byte records, totaling exactly 115,392 bytes. Each record preserves the
 portable transition's channel, level, and normalized `Duration` components;
+its attoseconds fit below bit 60, leaving four high bits for the standard
+channel and digital level. The slots separately hold live repository state,
+the applied observable model, and one admitted capture snapshot. This avoids
+overwriting the model while a later snapshot waits for a serialized mutation;
 the portable value remains unchanged. The scoped presentation composition
 checks alignment and pairwise disjointness of capture, profile, raster, and
 coverage regions before lending the capture borrower with its other owners.
@@ -438,7 +442,7 @@ paths stay within the 2,404-record slot without a temporary array. Clear
 preserves current levels, rebases source time, and advances the same revision
 as the portable store. A host differential fixture compares publications,
 metadata, and every retained record through sustained capacity pressure.
-The snapshot operation copies only initialized live records into the second
+The snapshot operation copies only initialized live records into the admission
 slot and returns scalar revision, count, duration, lower-bound, and baseline
 metadata. Later live mutations and clear do not change the copied records;
 the snapshot borrower must complete synchronous delivery before recopying.
@@ -451,7 +455,7 @@ its host fixture mutates the live slot before the scope ends.
 The compact record and raw region borrower are split from portable
 `SignalTransition` conversion. The same primitive source now enters the
 firmware's whole-module Embedded Swift build. A C-called Swift layout entry
-checks the target's 24-byte size/stride and exact two-slot byte count before
+checks the target's 16-byte size/stride and exact three-slot byte count before
 device validation. This proves the encoding layout in the target compiler;
 the current firmware still does not run the capture policy or portable model.
 The firmware entry now also obtains the actual C storage handoff and lends its

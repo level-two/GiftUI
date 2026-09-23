@@ -6,7 +6,7 @@
 uint8_t giftui_signal_analyzer_profile_storage[GIFTUI_STATIC_PROFILE_BYTES]
     __attribute__((aligned(8)));
 
-/* Live capture plus the one complete publication snapshot: 2 * 2,404 * 24. */
+/* Live, model, and admitted snapshot: 3 * 2,404 * 16. */
 uint8_t giftui_signal_analyzer_capture_storage[GIFTUI_STATIC_CAPTURE_BYTES]
     __attribute__((aligned(8)));
 

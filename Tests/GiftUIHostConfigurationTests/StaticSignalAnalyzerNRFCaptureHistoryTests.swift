@@ -100,8 +100,8 @@ import Testing
 
     _ = history.receive(transition(channel: 4, milliseconds: 300, level: .high), in: &regions)
     _ = history.clear(in: &regions)
-    #expect(regions.load(from: .snapshot, at: 0)?.transition == first)
-    #expect(regions.load(from: .snapshot, at: 1)?.transition == second)
+    #expect(regions.load(from: .admission, at: 0)?.transition == first)
+    #expect(regions.load(from: .admission, at: 1)?.transition == second)
     #expect(history.count == 0)
     let cleared = history.snapshot(in: &regions)
     #expect(cleared?.revision == 4)

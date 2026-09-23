@@ -10,8 +10,8 @@ package struct StaticSignalAnalyzerNRFCompactCaptureFact: Equatable, Sendable {
     private let lowerBoundAttoseconds: Int64
     package let sequence: UInt32
     private let baseRevision: UInt32
-    private let durationSeconds: Int32
-    private let lowerBoundSeconds: Int32
+    private let durationSeconds: Int64
+    private let lowerBoundSeconds: Int64
     private let insertionIndex: UInt16
     private let evictedPrefixCount: UInt16
     private let baselineBits: UInt8
@@ -56,9 +56,9 @@ package struct StaticSignalAnalyzerNRFCompactCaptureFact: Equatable, Sendable {
             baselines = nextBaselines
             kind = 1
         }
+        let durationSeconds = duration.components.seconds
+        let lowerBoundSeconds = lowerBound.components.seconds
         guard baseRevision < .max, revision == baseRevision + 1,
-            let durationSeconds = Int32(exactly: duration.components.seconds),
-            let lowerBoundSeconds = Int32(exactly: lowerBound.components.seconds),
             durationSeconds >= 0, lowerBoundSeconds >= 0,
             duration.components.attoseconds >= 0,
             duration.components.attoseconds < 1_000_000_000_000_000_000,
@@ -102,11 +102,11 @@ package struct StaticSignalAnalyzerNRFCompactCaptureFact: Equatable, Sendable {
                     transition: value,
                     evictedPrefixCount: evictedPrefixCount,
                     duration: Duration(
-                        secondsComponent: Int64(durationSeconds),
+                        secondsComponent: durationSeconds,
                         attosecondsComponent: durationAttoseconds
                     ),
                     retainedLowerBound: Duration(
-                        secondsComponent: Int64(lowerBoundSeconds),
+                        secondsComponent: lowerBoundSeconds,
                         attosecondsComponent: lowerBoundAttoseconds
                     ),
                     baselines: levels

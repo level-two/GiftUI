@@ -1,8 +1,8 @@
 import SignalAnalyzerData
 import SignalAnalyzerDomain
 
-/// Metadata for one immutable copied snapshot slot. The record bytes remain
-/// in caller storage until the next snapshot copy or teardown.
+/// Metadata for one copied admission snapshot. The record bytes remain in
+/// caller storage until its fact is applied or explicitly discarded.
 package struct StaticSignalAnalyzerNRFCaptureSnapshot: Equatable, Sendable {
     package let revision: UInt32
     package let count: UInt16
@@ -162,15 +162,15 @@ package struct StaticSignalAnalyzerNRFCaptureHistory {
             ))
     }
 
-    /// Copies only initialized live records to the second reserved slot. The
-    /// caller must finish any synchronous snapshot delivery before recopying.
+    /// Copies only initialized live records to the admission slot. The
+    /// caller must release the admitted fact before recopying this slot.
     package func snapshot(
         in regions: inout StaticSignalAnalyzerNRFCaptureRegions
     ) -> StaticSignalAnalyzerNRFCaptureSnapshot? {
         for index in 0 ..< Int(count) {
             guard let item = regions.load(from: .live, at: index),
                 item.transition != nil,
-                regions.store(item, in: .snapshot, at: index)
+                regions.store(item, in: .admission, at: index)
             else { return nil }
         }
         return StaticSignalAnalyzerNRFCaptureSnapshot(

@@ -2,9 +2,9 @@ import SignalAnalyzerDomain
 import SignalAnalyzerTargetHost
 import Testing
 
-@Test func staticNRFCaptureRecordFitsBothExactFirmwareSlots() {
-    #expect(MemoryLayout<StaticSignalAnalyzerNRFCaptureRecord>.size == 24)
-    #expect(MemoryLayout<StaticSignalAnalyzerNRFCaptureRecord>.stride == 24)
+@Test func staticNRFCaptureRecordFitsThreeExactFirmwareSlots() {
+    #expect(MemoryLayout<StaticSignalAnalyzerNRFCaptureRecord>.size == 16)
+    #expect(MemoryLayout<StaticSignalAnalyzerNRFCaptureRecord>.stride == 16)
     #expect(StaticSignalAnalyzerNRFCaptureRegions.requiredByteCount == 115_392)
 
     let pointer = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
@@ -31,12 +31,12 @@ import Testing
         return
     }
     let wroteLive = regions.store(liveRecord, in: .live, at: 2_403)
-    let wroteSnapshot = regions.store(snapshotRecord, in: .snapshot, at: 0)
+    let wroteSnapshot = regions.store(snapshotRecord, in: .admission, at: 0)
     let loadedLive = regions.load(from: .live, at: 2_403)?.transition
-    let loadedSnapshot = regions.load(from: .snapshot, at: 0)?.transition
+    let loadedSnapshot = regions.load(from: .admission, at: 0)?.transition
     let pastEnd = regions.load(from: .live, at: 2_404)
-    let beforeStart = regions.load(from: .snapshot, at: -1)
-    let wrotePastEnd = regions.store(liveRecord, in: .snapshot, at: 2_404)
+    let beforeStart = regions.load(from: .admission, at: -1)
+    let wrotePastEnd = regions.store(liveRecord, in: .admission, at: 2_404)
     #expect(wroteLive)
     #expect(wroteSnapshot)
     #expect(loadedLive == live)
