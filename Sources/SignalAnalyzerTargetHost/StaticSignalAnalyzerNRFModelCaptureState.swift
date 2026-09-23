@@ -31,6 +31,21 @@ package struct StaticSignalAnalyzerNRFModelCaptureState {
         return max(.zero, end - window) ..< end
     }
 
+    package func currentLevel(
+        for channelID: SignalChannelID,
+        in regions: borrowing StaticSignalAnalyzerNRFCaptureRegions
+    ) -> DigitalLevel? {
+        guard var current = baselineLevels[channelID] else { return nil }
+        var index = 0
+        while index < Int(count) {
+            guard let transition = regions.load(from: .snapshot, at: index)?.transition
+            else { return nil }
+            if transition.channelID == channelID { current = transition.level }
+            index += 1
+        }
+        return current
+    }
+
     package mutating func apply(
         revision nextRevision: UInt32,
         change: SignalCaptureChange,

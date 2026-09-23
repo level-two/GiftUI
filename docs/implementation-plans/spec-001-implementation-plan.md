@@ -1150,6 +1150,15 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       checked build uses 187,840 RAM and 78,252 flash bytes. Live modifiers,
       complete semantic validation/publication, layout, rendering, and the
       production loop remain open.
+      All ten live modifier scopes now lower from the fixed model into the
+      generated table: status color, four channel colors, Start/Stop state,
+      and three window selections. Text and modifier writers share a checked
+      capture-level lookup. A host fixture covers idle/low, running/high with
+      a five-second selection, and failed/high with a maximum diagnostic;
+      each stage checks portable control and ruler values. The target startup
+      probe retains the modifier writer, and the checked image uses 187,840
+      RAM and 79,068 flash bytes. Whole-table validation and publication are
+      still open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

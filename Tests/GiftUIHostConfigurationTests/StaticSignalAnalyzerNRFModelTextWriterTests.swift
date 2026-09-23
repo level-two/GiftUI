@@ -1,4 +1,5 @@
 import GiftUI
+import GiftUISemanticCore
 import SignalAnalyzerDomain
 import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
@@ -11,7 +12,7 @@ import Testing
         count: StaticSignalAnalyzerNRFCaptureRegions.requiredByteCount / 8
     )
     captureWords.withUnsafeMutableBytes { captureBytes in
-        guard let captures = StaticSignalAnalyzerNRFCaptureRegions(storage: captureBytes)
+        guard var captures = StaticSignalAnalyzerNRFCaptureRegions(storage: captureBytes)
         else {
             Issue.record("The capture fixture must be aligned")
             return
@@ -35,7 +36,10 @@ import Testing
             value.withUTF8 { String(decoding: $0, as: UTF8.self) }
         }
 
-        func check(_ variant: StaticSignalAnalyzerNRFSemanticVariant) {
+        func check(
+            _ variant: StaticSignalAnalyzerNRFSemanticVariant,
+            channelOne: String
+        ) {
             var bytes = [UInt8](repeating: 0, count: table.regionByteCount)
             bytes.withUnsafeMutableBytes { region in
                 let count: UInt16 = variant == .normal ? 96 : 98
@@ -64,18 +68,52 @@ import Testing
                         scopeCount: count, in: region
                     )
                 )
+                let modifiersPopulated = StaticSignalAnalyzerNRFModelModifierWriter.populate(
+                    model: model, capture: captures, in: region
+                )
+                #expect(modifiersPopulated)
                 #expect(
                     StaticSignalAnalyzerNRFModelTextWriter.populate(
                         variant: variant, model: model, capture: captures, in: region
                     ) != nil
                 )
                 let labels = SignalAnalyzerRulerLabels(visibleRange: model.visibleRange)
+                let selectedWindow: VisibleTimeWindow =
+                    model.visibleWindowRawValue == 2 ? .fiveSeconds : .twoSeconds
+                let controls = SignalAnalyzerControlState(
+                    acquisitionState: model.acquisitionState,
+                    selectedWindow: selectedWindow
+                )
+                let statusColor: Color
+                switch model.acquisitionState {
+                case .idle, .stopped: statusColor = .white
+                case .running: statusColor = .green
+                case .failed: statusColor = .red
+                }
+                let statusPayload = StaticSignalAnalyzerNRFModifierPayload(
+                    modifier: .passthrough,
+                    renderScope: .foregroundStyle(statusColor)
+                )
+                #expect(table.scope(at: 12, in: region)?.flags == statusPayload?.flags)
+                #expect(table.scope(at: 12, in: region)?.payload0 == statusPayload?.payload0)
+                #expect(
+                    table.scope(at: 39, in: region)?.payload0
+                        == (channelOne == "HIGH" ? 0x00_FF_00 : 0xFF_80_00)
+                )
+                let startFlags = table.scope(at: 72, in: region)?.flags ?? 0
+                let stopFlags = table.scope(at: 76, in: region)?.flags ?? 0
+                #expect((startFlags & 0x40 != 0) == controls.startDisabled)
+                #expect((stopFlags & 0x40 != 0) == controls.stopDisabled)
+                #expect(
+                    table.scope(at: model.visibleWindowRawValue == 2 ? 92 : 88, in: region)?
+                        .flags == 65
+                )
                 #expect(text(6, in: region) == "DIGITAL SIGNAL ANALYZER")
-                #expect(text(13, in: region) == (variant == .normal ? "READY" : "FAILED"))
+                #expect(text(13, in: region) == portable(controls.statusText))
                 #expect(text(25, in: region) == portable(labels.lowerBound))
                 #expect(text(28, in: region) == portable(labels.midpoint))
                 #expect(text(31, in: region) == portable(labels.upperBound))
-                #expect(text(40, in: region) == "LOW")
+                #expect(text(40, in: region) == channelOne)
                 #expect(text(67, in: region) == "LOW")
                 #expect(text(75, in: region) == "Start")
                 #expect(text(95, in: region) == "5 s")
@@ -85,7 +123,34 @@ import Testing
             }
         }
 
-        check(.normal)
+        check(.normal, channelOne: "LOW")
+        let first = SignalTransition(
+            channelID: SignalChannelID(rawValue: 1),
+            timestamp: .seconds(3), level: .high
+        )
+        guard let record = StaticSignalAnalyzerNRFCaptureRecord(first),
+            captures.store(record, in: .admission, at: 0),
+            let snapshot = StaticSignalAnalyzerNRFCaptureSnapshotView(
+                storage: captureBytes, revision: 1, count: 1,
+                duration: .seconds(3), retainedLowerBound: .zero,
+                baselineLevels: .allLow
+            )
+        else {
+            Issue.record("The model snapshot fixture must fit")
+            return
+        }
+        let beganRunning = model.beginMutation()
+        let installed = model.installCaptureSnapshot(snapshot, in: &captures)
+        let running = model.setAcquisitionState(.running)
+        let selected = withUnsafeMutablePointer(to: &model) { location in
+            StaticSignalAnalyzerNRFModelHandle(
+                location: location, generation: location.pointee.activeGeneration!
+            )?.dispatch(actionRawValue: 5)
+        }
+        let endedRunning = model.endMutation()
+        #expect(beganRunning && installed && running && endedRunning)
+        #expect(selected == .visibleWindowChanged)
+        check(.normal, channelOne: "HIGH")
         let diagnostic = SignalAnalyzerDiagnostic(
             exactUTF8: [UInt8](repeating: 0x45, count: 96)
         )!
@@ -93,7 +158,7 @@ import Testing
         let changed = model.setAcquisitionState(.failed(diagnostic))
         let ended = model.endMutation()
         #expect(began && changed && ended)
-        check(.diagnostic)
+        check(.diagnostic, channelOne: "HIGH")
         model.retire()
     }
 }

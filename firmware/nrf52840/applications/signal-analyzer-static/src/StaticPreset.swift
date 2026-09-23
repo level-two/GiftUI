@@ -141,6 +141,9 @@ public func giftUISignalAnalyzerTopologyValid(
             StaticSignalAnalyzerNRFTopologyWriter.populateInvariantStyles(
                 scopeCount: count, in: semantic
             ),
+            StaticSignalAnalyzerNRFModelModifierWriter.populate(
+                model: model, capture: captures, in: semantic
+            ),
             StaticSignalAnalyzerNRFModelTextWriter.populate(
                 variant: variant, model: model, capture: captures,
                 in: semantic

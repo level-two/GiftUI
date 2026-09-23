@@ -122,14 +122,8 @@ package enum StaticSignalAnalyzerNRFModelTextWriter {
         capture: borrowing StaticSignalAnalyzerNRFCaptureRegions
     ) -> SignalAnalyzerDiagnostic? {
         let channelID = SignalChannelID(rawValue: channel)
-        guard var current = model.capture.baselineLevels[channelID] else { return nil }
-        var index = 0
-        while index < Int(model.capture.count) {
-            guard let transition = capture.load(from: .snapshot, at: index)?.transition
-            else { return nil }
-            if transition.channelID == channelID { current = transition.level }
-            index += 1
-        }
+        guard let current = model.capture.currentLevel(for: channelID, in: capture)
+        else { return nil }
         return current == .low ? fixed("LOW") : fixed("HIGH")
     }
 

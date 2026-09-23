@@ -70,7 +70,8 @@ The firmware now compiles the generated packed schema and topology writer.
 Its startup check stages the normal and diagnostic scope shapes and action
 bindings plus invariant primitive, layout modifier, and style payloads in the
 actual candidate region. The fixed model now supplies all text ranges there.
-Live modifier population and complete-table validation remain outside that
+The fixed model also supplies all ten live modifier payloads through the
+generated packed schema. Complete-table validation remains outside that
 Embedded Swift source set. This check does not seal or publish a semantic
 result.
 The byte-level UTF-8 pool and scalar decoder also compile on the target. A
