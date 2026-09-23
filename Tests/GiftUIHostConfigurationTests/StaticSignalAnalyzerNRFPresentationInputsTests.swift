@@ -824,6 +824,45 @@ import Testing
                             )
                             #expect(acceptedInput?.disposition == .queued)
                             #expect(owner.pendingInputCount == 1)
+                            #expect(
+                                owner.buildInteractionCandidate(
+                                    occurrences: occurrences,
+                                    limits: interactionLimits
+                                ) == .ready
+                            )
+                            let replacementRevision = cycle + 100
+                            #expect(
+                                owner.resolveInteractionCandidate(
+                                    offer: offer,
+                                    presentationRevision: PresentationRevision(
+                                        rawValue: replacementRevision
+                                    )
+                                )
+                                    == .committed(
+                                        PresentationRevision(rawValue: replacementRevision)
+                                    )
+                            )
+                            let staleInput = owner.admit(
+                                phaseRawValue: PointerPhase.up.rawValue,
+                                x: 4,
+                                y: 4,
+                                observedPresentationRevisionRawValue: cycle,
+                                priorPhysicalSequenceIsCompleteRawValue: 0
+                            )
+                            #expect(staleInput?.disposition == .dropped)
+                            #expect(
+                                staleInput?.rejection
+                                    == HostNormalizedInputRejection.stalePresentation.rawValue
+                            )
+                            let replacementInput = owner.admit(
+                                phaseRawValue: PointerPhase.down.rawValue,
+                                x: 4,
+                                y: 4,
+                                observedPresentationRevisionRawValue: replacementRevision,
+                                priorPhysicalSequenceIsCompleteRawValue: 1
+                            )
+                            #expect(replacementInput?.disposition == .queued)
+                            #expect(owner.pendingInputCount == 2)
                         }
                     }
                     guard

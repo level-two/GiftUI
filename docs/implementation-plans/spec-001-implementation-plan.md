@@ -1180,7 +1180,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       call only after acceptance; the fixture checks refusal leaves input
       ineligible and acceptance admits input. The owner also rejects an
       accepted offer without a ready interaction candidate, preserving input
-      ineligibility. The
+      ineligibility. An accepted replacement now advances that same physical
+      revision; the host fixture rejects an event tagged with the previous
+      revision and admits a resynchronized event for the replacement. The
       physical offer and firmware loop remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
