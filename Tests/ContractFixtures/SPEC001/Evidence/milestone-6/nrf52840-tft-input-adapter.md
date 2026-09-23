@@ -71,6 +71,10 @@ writes one compact record to the actual C capture region, then validates and
 reads it through the same view. The hardware-free target passes ABI,
 zero-heap, symbol, RAM, and flash gates at 184,384 RAM and 42,556 flash bytes.
 The model does not yet own or apply this snapshot.
+The registered nRF SPEC-001 driver passed this revision: 226 host tests,
+seven touch/input/storage/clock/scheduler/lifecycle C fixtures, ownership
+probe, and the SPEC-015 cross-build. Its immutable report is
+`.build/contract-reports/spec-001/20260923T122626Z-97896/nrf52840-embedded/`.
 
 The selected connected assembly is the `nrf52840dk/nrf52840` with the
 480 x 320 ILI9486 PiScreen display bridge and its ADS7846 resistive-touch

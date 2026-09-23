@@ -1000,6 +1000,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       reject bad revision, lower bound, and ordering; firmware startup checks
       the actual C capture region. The checked target uses 184,384 RAM and
       42,556 flash bytes. Mutation replay into the model remains open.
+      The registered nRF SPEC-001 driver passes 226 host tests, all seven C
+      fixtures, the ownership probe, and SPEC-015 cross-build at this slice;
+      only hardware-free evidence is claimed.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or
