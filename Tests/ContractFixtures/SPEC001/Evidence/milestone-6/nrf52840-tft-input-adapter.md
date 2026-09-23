@@ -1010,3 +1010,12 @@ the regions through the complete Static host.
 The checked hardware-free build passes ARMv7E-M hard-float, zero-heap,
 required-symbol, RAM, and flash gates at 184,128 RAM bytes and 34,576 flash
 bytes. No board was flashed.
+
+The finite validation loop now uses an absolute monotonic deadline waiter in
+at most 1 ms slices instead of one 10 ms busy wait. Its optional watchdog
+callback runs before every wait slice; a build-time guard requires a real
+callback if watchdog support is enabled. The C99 fixture checks due-now,
+exact deadline, maximum slice, watchdog/clock errors, and clock regression.
+The checked hardware-free build retains the waiter and passes ABI,
+zero-heap, symbol, RAM, and flash gates at 184,128 RAM bytes and 34,812 flash
+bytes. The production Static pacing loop and active watchdog remain open.

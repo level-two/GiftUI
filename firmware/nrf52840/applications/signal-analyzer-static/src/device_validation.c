@@ -5,6 +5,7 @@
 #include "ili9486.h"
 #include "static_input_bridge.h"
 #include "static_host_clock.h"
+#include "static_host_scheduler.h"
 
 #include <stdbool.h>
 #include <errno.h>
@@ -16,7 +17,22 @@
 #define GIFTUI_TOUCH_POLL_COUNT 1000U
 #define GIFTUI_TOUCH_POLL_MILLISECONDS 10U
 
+#if defined(CONFIG_WATCHDOG) && CONFIG_WATCHDOG
+#error "An active watchdog requires a service hook in the Static host scheduler"
+#endif
+
 K_THREAD_STACK_DECLARE(z_main_stack, CONFIG_MAIN_STACK_SIZE);
+
+static void wait_microseconds(uint32_t duration)
+{
+    k_busy_wait(duration);
+}
+
+static const struct giftui_static_host_scheduler_hal wait_hal = {
+    .now_microseconds = giftui_static_host_clock_now,
+    .wait_microseconds = wait_microseconds,
+    .service_watchdog = NULL,
+};
 
 static void increment_saturating(uint32_t *value)
 {
@@ -115,7 +131,18 @@ int giftui_device_validation_run(void)
             }
             increment_saturating(&samples);
         }
-        k_busy_wait(GIFTUI_TOUCH_POLL_MILLISECONDS * 1000U);
+        uint64_t now = 0U;
+        result = giftui_static_host_clock_now(&now);
+        if (result != 0 ||
+            now > UINT64_MAX - GIFTUI_TOUCH_POLL_MILLISECONDS * 1000U) {
+            result = result != 0 ? result : -ERANGE;
+            goto cleanup;
+        }
+        result = giftui_static_host_wait_until(
+            now + GIFTUI_TOUCH_POLL_MILLISECONDS * 1000U, &wait_hal);
+        if (result != 0) {
+            goto cleanup;
+        }
     }
 
     printk("GiftUI touch poll: status=completed contacts=%u samples=%u\n",

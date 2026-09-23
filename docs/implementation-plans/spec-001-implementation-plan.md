@@ -901,6 +901,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       RAM/flash, and required-symbol gates. The four firmware regions now
       expose an 8-byte-aligned, address-stable handoff checked for exact sizes
       and pairwise disjointness by a C99 fixture and retained-symbol ELF gate.
+      The finite device-validation loop now waits on absolute monotonic
+      deadlines in at most 1 ms slices through an optional watchdog service
+      hook; its C99 fixture covers deadlines, clock regression, and watchdog
+      failure, and the checked firmware retains the scheduler symbol. No
+      hardware watchdog is enabled in the current configuration.
       Static host-loop composition, calibrated polling-loop activation,
       connected stack measurement, and flashing remain open. A
       target-local,
