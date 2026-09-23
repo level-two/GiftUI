@@ -47,9 +47,9 @@ package enum StaticSignalAnalyzerNRFEmbeddedLayoutPrimitive: Equatable {
         case .text:
             guard record.auxiliary == 0, record.payload2 == 0,
                 record.payload0
-                    <= UInt32(StaticSignalAnalyzerNRFPackedSemanticRecords.maximumScalarCount),
+                    <= UInt32(StaticSignalAnalyzerNRFPackedSemanticRecords.maximumTextByteCount),
                 record.payload1 <= UInt32(
-                    StaticSignalAnalyzerNRFPackedSemanticRecords.maximumScalarCount)
+                    StaticSignalAnalyzerNRFPackedSemanticRecords.maximumTextByteCount)
                     - record.payload0
             else { return nil }
             self = .text

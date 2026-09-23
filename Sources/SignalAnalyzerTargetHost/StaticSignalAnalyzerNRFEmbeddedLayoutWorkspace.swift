@@ -5,6 +5,7 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
     private let text: UnsafeMutableRawBufferPointer
     package private(set) var isActive = false
     package private(set) var scopeCount: UInt16 = 0
+    package private(set) var textScalarCount: UInt16 = 0
     package private(set) var textLineCount: UInt16 = 0
     package private(set) var positionedGlyphCount: UInt16 = 0
     private var depth: UInt16 = 0
@@ -30,7 +31,8 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
     }
 
     package mutating func acquire() -> Bool {
-        guard !isActive, scopeCount == 0, textLineCount == 0,
+        guard !isActive, scopeCount == 0, textScalarCount == 0,
+            textLineCount == 0,
             positionedGlyphCount == 0, depth == 0
         else { return false }
         scopes.initializeMemory(as: UInt8.self, repeating: 0)
@@ -132,6 +134,15 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
             )
         else { return false }
         textLineCount += 1
+        return true
+    }
+
+    package mutating func reserveTextScalars(_ count: UInt16) -> Bool {
+        let next = textScalarCount.addingReportingOverflow(count)
+        guard isActive, !next.overflow, next.partialValue <= 224 else {
+            return false
+        }
+        textScalarCount = next.partialValue
         return true
     }
 
@@ -239,6 +250,7 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
         scopes.initializeMemory(as: UInt8.self, repeating: 0)
         text.initializeMemory(as: UInt8.self, repeating: 0)
         scopeCount = 0
+        textScalarCount = 0
         textLineCount = 0
         positionedGlyphCount = 0
         depth = 0

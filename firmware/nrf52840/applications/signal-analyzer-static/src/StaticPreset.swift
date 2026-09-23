@@ -240,6 +240,19 @@ public func giftUISignalAnalyzerLayoutTextValid(
         layout.textLine(at: 0) == line,
         layout.glyph(at: 0) == glyph else { return 0 }
     layout.reset()
+    guard let semantic = StaticSignalAnalyzerNRFEmbeddedSemanticView(
+        published: published
+    ), layout.acquire(), layout.appendScope(
+        identity: title.identity,
+        idealWidth: 0, idealHeight: 0,
+        width: 0, height: 0
+    ), StaticSignalAnalyzerNRFEmbeddedTextMeasure.run(
+        identity: title.identity, semantic: semantic,
+        proposalWidth: 480, proposalHeight: 320,
+        workspace: &layout
+    ), layout.textLineCount > 0, layout.positionedGlyphCount > 0
+    else { return 0 }
+    layout.reset()
     return 1
 }
 

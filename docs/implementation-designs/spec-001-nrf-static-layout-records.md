@@ -65,6 +65,14 @@ flexible-frame modifiers with checked alignment, optional dimensions, and
 limits. The differential fixture compares every modifier of every diagnostic
 primitive against the host layout projection. Measurement and placement
 remain open.
+The target text measure rule now consumes published UTF-8 scalars and canonical
+glyph advances, stages glyphs before line finalization, handles CR/LF and
+width wrapping, and writes the exact compact scope measurement. A host
+differential fixture compares its complete scope and render regions with the
+common measure engine for every diagnostic text scope, including a 96-LF
+diagnostic. The target primitive decoder now checks text byte offsets against
+the UTF-8 byte pool capacity, which can exceed the old scalar table capacity.
+Container and modifier measurement, placement, and publication remain open.
 
 ## Proposed Internal Organization
 
