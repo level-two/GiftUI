@@ -21,6 +21,18 @@ package struct StaticSignalAnalyzerNRFCompactFactRing: ~Copyable {
         storage.baseAddress!.load(fromByteOffset: Self.metadataOffset, as: UInt16.self)
     }
 
+    package var first: StaticSignalAnalyzerNRFCompactCaptureFact? {
+        guard count > 0, count <= Self.capacity else { return nil }
+        let head = storage.baseAddress!.load(
+            fromByteOffset: Self.metadataOffset + 4, as: UInt16.self
+        )
+        guard head < Self.capacity else { return nil }
+        return storage.baseAddress!.load(
+            fromByteOffset: Int(head) * 64,
+            as: StaticSignalAnalyzerNRFCompactCaptureFact.self
+        )
+    }
+
     package mutating func append(_ fact: StaticSignalAnalyzerNRFCompactCaptureFact) -> Bool {
         let currentCount = count
         guard currentCount < Self.capacity else { return false }

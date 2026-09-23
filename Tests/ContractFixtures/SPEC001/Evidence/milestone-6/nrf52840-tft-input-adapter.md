@@ -13,6 +13,14 @@ at startup. The checked image passes hard-float, zero-heap, symbol, RAM, and
 flash gates at 184,448 RAM and 49,436 flash bytes. The image still enters
 diagnostic device validation after these checks.
 
+The next admission slice puts one capture-snapshot metadata record in the
+reserved bytes of each 2,176-byte fact region. Host tests admit mutation then
+snapshot with consecutive sequences, reject a second snapshot while sealed,
+drain in order, and reuse the physical slot after removal. The target startup
+entry runs a snapshot-only seal/drain against the actual C profile and capture
+regions. The checked image passes at 184,448 RAM and 51,228 flash bytes; no
+connected-board behavior is claimed.
+
 ## Compact capture-fact encoding
 
 The target now compiles a 64-byte capture-mutation record with the admission

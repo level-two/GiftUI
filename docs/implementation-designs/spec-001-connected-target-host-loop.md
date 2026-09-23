@@ -557,14 +557,14 @@ transition record, insertion/eviction indices, two bounded duration components,
 and four baseline bits. Revision continuity and representability are checked
 before encoding; decoding reconstructs the unchanged portable
 `SignalCaptureChange`. The target compiler checks size, stride, and a mutation
-round trip at startup. The active/sealed rings and state/failure fact paths
-still need to use this record within the registered 2,176-byte regions.
+round trip at startup. Active and sealed rings use this record within the
+registered 2,176-byte regions; state and failure fact paths remain open.
 The capture-only active and sealed rings now borrow those two exact regions.
 Each stores 32 records in 2,048 bytes and keeps count, head, and tail in the
 remaining 128 bytes. Sealing transfers ordered records to an empty, distinct
 sealed region; it refuses an occupied destination. Host tests cover full
 capacity, refusal, seal, ordered drain, and reuse, and firmware startup
-exercises the actual C profile storage. Snapshot, acquisition-state, and
+exercises the actual C profile storage. Acquisition-state and
 reserved-failure variants still need target admission and ordering.
 The capture-mutation admission owner now holds the producer category and
 transition/bootstrap/action counters in the active region reserve. It applies
@@ -572,7 +572,18 @@ the generated `20/2/6` producer limits, assigns nonwrapping `UInt32` sequences
 only after representability and capacity checks, seals into the second region,
 and quiesces/discards without allocation. The target startup checks this route
 against the actual C profile storage. Full fact classification still requires
-snapshot, acquisition-state, and reserved-failure paths.
+acquisition-state and reserved-failure paths.
+
+The single admitted capture snapshot now also has fixed metadata in each
+2,176-byte admission region's reserve. Admission checks producer quota and a
+global snapshot occupancy bit before assigning the sequence. An application
+producer checks `canAdmitSnapshot` before copying live records into the third
+capture slot, then admits the validated scoped view in the same synchronous
+executor turn. Sealing moves metadata into the sealed region, and ordered
+removal merges its sequence with the compact ring head. A second snapshot is
+refused while either active or sealed metadata still owns the physical slot;
+after the sealed snapshot is consumed the slot can be reused. Acquisition
+state and reserved operational failure remain outside this target sequencer.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact

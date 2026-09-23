@@ -1042,6 +1042,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       model. Focused host tests and the nRF checked build pass at 184,448 RAM
       and 49,436 flash bytes. Full fact classification and firmware production
       composition remain open.
+      The target sequencer now admits one complete capture snapshot alongside
+      compact mutations, stores only its 48-byte metadata inside each fixed
+      region reserve, and merges its sequence on sealed removal. A producer
+      checks occupancy before copying the live history into the third slot.
+      Host tests cover one-slot refusal, mixed ordering, snapshot-only seal,
+      and reuse. Firmware startup exercises the actual C profile/capture
+      regions; the checked image uses 184,448 RAM and 51,228 flash bytes.
+      Acquisition-state and reserved-failure variants remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

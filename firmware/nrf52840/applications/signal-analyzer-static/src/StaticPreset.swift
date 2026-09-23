@@ -184,8 +184,45 @@ public func giftUISignalAnalyzerCompactRingValid(
     admission.endProducer()
     guard admission.seal(), admission.pendingCompactCount == 0,
         admission.sealedCompactCount == 1,
-        admission.takeNextSealed()?.publication?.change == change,
+        admission.takeNextSealed()?.captureMutation?.change == change,
         admission.sealedCompactCount == 0
+    else { return 0 }
+    return 1
+}
+
+@_cdecl("giftui_signal_analyzer_snapshot_admission_valid")
+public func giftUISignalAnalyzerSnapshotAdmissionValid(
+    _ profile: UnsafeMutableRawPointer?, _ profileBytes: UInt32,
+    _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
+) -> UInt32 {
+    guard let profile, let capture, profileBytes == 36_368,
+        captureBytes == 115_392,
+        MemoryLayout<StaticSignalAnalyzerNRFSnapshotFact>.stride <= 48
+    else { return 0 }
+    let profileStorage = UnsafeMutableRawBufferPointer(
+        start: profile, count: Int(profileBytes)
+    )
+    let captureStorage = UnsafeMutableRawBufferPointer(
+        start: capture, count: Int(captureBytes)
+    )
+    guard var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
+        activeStorage: UnsafeMutableRawBufferPointer(
+            rebasing: profileStorage[31_632 ..< 33_808]
+        ),
+        sealedStorage: UnsafeMutableRawBufferPointer(
+            rebasing: profileStorage[33_808 ..< 35_984]
+        )
+    ), let view = StaticSignalAnalyzerNRFCaptureSnapshotView(
+        storage: captureStorage, revision: 0, count: 0,
+        duration: .zero, retainedLowerBound: .zero,
+        baselineLevels: .allLow
+    ), admission.beginProducer(.bootstrap), admission.canAdmitSnapshot,
+        admission.admitSnapshot(view) == .accepted(sequence: 1)
+    else { return 0 }
+    admission.endProducer()
+    guard admission.seal(), admission.sealedSnapshotCount == 1,
+        admission.takeNextSealed()?.sequence == 1,
+        admission.sealedSnapshotCount == 0
     else { return 0 }
     return 1
 }
