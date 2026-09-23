@@ -477,6 +477,10 @@ host and in Embedded Swift, and firmware startup validates the action map
 before entering device validation. This primitive contains neither capture
 values nor observation/use-case wiring, so it is not yet the generated
 `SignalAnalyzerViewModel` specialization or the production host loop.
+The handle accepts action dispatch only inside an explicit model mutation
+opportunity. Nested starts, unmatched ends, and action delivery outside the
+opportunity reject without changing its window; retirement closes an open
+opportunity. This phase guard is shared by the host fixture and target build.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact

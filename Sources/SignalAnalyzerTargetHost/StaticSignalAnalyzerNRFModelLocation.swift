@@ -5,6 +5,7 @@ package struct StaticSignalAnalyzerNRFModelLocation {
     package private(set) var activeGeneration: UInt32?
     package private(set) var visibleWindowRawValue: UInt8 = 1
     package private(set) var isDirty = false
+    package private(set) var isMutating = false
 
     package init() {}
 
@@ -16,12 +17,26 @@ package struct StaticSignalAnalyzerNRFModelLocation {
         nextGeneration = generation == .max ? nil : generation + 1
         visibleWindowRawValue = 1
         isDirty = true
+        isMutating = false
         return generation
     }
 
     package mutating func retire() {
         activeGeneration = nil
         isDirty = false
+        isMutating = false
+    }
+
+    package mutating func beginMutation() -> Bool {
+        guard activeGeneration != nil, !isMutating else { return false }
+        isMutating = true
+        return true
+    }
+
+    package mutating func endMutation() -> Bool {
+        guard isMutating else { return false }
+        isMutating = false
+        return true
     }
 
     package mutating func clearDirtyAfterPublication() {
@@ -29,7 +44,7 @@ package struct StaticSignalAnalyzerNRFModelLocation {
     }
 
     fileprivate mutating func selectWindow(_ rawValue: UInt8) -> Bool {
-        guard activeGeneration != nil, rawValue <= 2 else { return false }
+        guard activeGeneration != nil, isMutating, rawValue <= 2 else { return false }
         if visibleWindowRawValue != rawValue {
             visibleWindowRawValue = rawValue
             isDirty = true
@@ -61,7 +76,9 @@ package struct StaticSignalAnalyzerNRFModelHandle {
     }
 
     package func dispatch(actionRawValue: UInt16) -> StaticSignalAnalyzerNRFModelIntent? {
-        guard location.pointee.activeGeneration == generation else { return nil }
+        guard location.pointee.activeGeneration == generation,
+            location.pointee.isMutating
+        else { return nil }
         switch actionRawValue {
         case 0: return .start
         case 1: return .stop

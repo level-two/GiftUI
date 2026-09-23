@@ -13,6 +13,11 @@ at 184,128 RAM bytes and 35,756 flash bytes. The image still enters diagnostic
 device validation after this check. Capture publication, direct model/use-case
 integration, and the generated Static root remain to be linked; this entry
 does not establish connected-target behavior.
+The next checked slice gates handle dispatch by an explicit mutation
+opportunity. Host assertions cover out-of-phase delivery, nested begin,
+unmatched end, and unchanged state after rejection. Target startup exercises
+the same phase boundary before diagnostic validation. The checked image still
+uses 184,128 RAM and 35,756 flash bytes and passes the same build gates.
 
 The selected connected assembly is the `nrf52840dk/nrf52840` with the
 480 x 320 ILI9486 PiScreen display bridge and its ADS7846 resistive-touch

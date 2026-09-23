@@ -959,6 +959,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       hard-float, zero-heap, symbol, and resource gates. This is a bounded
       model primitive only; capture publication, direct observation/use-case
       wiring, and the complete firmware root remain open.
+      Its model mutation opportunity now rejects actions outside the active
+      phase, nested begins, and unmatched ends. The host fixture and the
+      hardware-free target build pass with the same 184,128 RAM and 35,756
+      flash byte image.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

@@ -45,7 +45,10 @@ public func giftUISignalAnalyzerModelLocationValid() -> UInt32 {
             )
         else { return 0 }
         let copy = handle
-        guard handle.dispatch(actionRawValue: 0) == .start,
+        guard handle.dispatch(actionRawValue: 0) == nil,
+            location.pointee.beginMutation(),
+            !location.pointee.beginMutation(),
+            handle.dispatch(actionRawValue: 0) == .start,
             handle.dispatch(actionRawValue: 1) == .stop,
             handle.dispatch(actionRawValue: 2) == .clear,
             copy.dispatch(actionRawValue: 3) == .visibleWindowChanged,
@@ -54,7 +57,9 @@ public func giftUISignalAnalyzerModelLocationValid() -> UInt32 {
             location.pointee.visibleWindowRawValue == 1,
             copy.dispatch(actionRawValue: 5) == .visibleWindowChanged,
             location.pointee.visibleWindowRawValue == 2,
-            handle.dispatch(actionRawValue: 6) == nil
+            handle.dispatch(actionRawValue: 6) == nil,
+            location.pointee.endMutation(),
+            handle.dispatch(actionRawValue: 3) == nil
         else { return 0 }
         location.pointee.retire()
         guard handle.dispatch(actionRawValue: 0) == nil else { return 0 }
