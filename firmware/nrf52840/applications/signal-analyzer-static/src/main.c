@@ -19,9 +19,14 @@ extern uint32_t giftui_signal_analyzer_snapshot_admission_valid(
 extern uint32_t giftui_signal_analyzer_sealed_application_valid(
     void *profile, uint32_t profile_bytes,
     void *capture, uint32_t capture_bytes);
+extern uint32_t giftui_signal_analyzer_repository_producer_valid(
+    void *profile, uint32_t profile_bytes,
+    void *capture, uint32_t capture_bytes);
 extern uint32_t giftui_signal_analyzer_model_location_valid(void);
 extern uint32_t giftui_signal_analyzer_diagnostic_value_valid(void);
 extern uint32_t giftui_signal_analyzer_capture_region_valid(
+    void *address, uint32_t bytes);
+extern uint32_t giftui_signal_analyzer_capture_history_valid(
     void *address, uint32_t bytes);
 extern uint32_t giftui_signal_analyzer_snapshot_view_valid(
     void *address, uint32_t bytes);
@@ -49,6 +54,8 @@ int main(void)
         regions.capture_bytes != GIFTUI_STATIC_CAPTURE_BYTES ||
         giftui_signal_analyzer_capture_region_valid(
             regions.capture, (uint32_t)regions.capture_bytes) != 1u ||
+        giftui_signal_analyzer_capture_history_valid(
+            regions.capture, (uint32_t)regions.capture_bytes) != 1u ||
         giftui_signal_analyzer_snapshot_view_valid(
             regions.capture, (uint32_t)regions.capture_bytes) != 1u ||
         giftui_signal_analyzer_model_capture_replay_valid(
@@ -64,6 +71,9 @@ int main(void)
             regions.profile, (uint32_t)regions.profile_bytes,
             regions.capture, (uint32_t)regions.capture_bytes) != 1u ||
         giftui_signal_analyzer_sealed_application_valid(
+            regions.profile, (uint32_t)regions.profile_bytes,
+            regions.capture, (uint32_t)regions.capture_bytes) != 1u ||
+        giftui_signal_analyzer_repository_producer_valid(
             regions.profile, (uint32_t)regions.profile_bytes,
             regions.capture, (uint32_t)regions.capture_bytes) != 1u ||
         ili9486_tile_height() != 4u ||

@@ -1,5 +1,15 @@
-import SignalAnalyzerData
 import SignalAnalyzerDomain
+
+package enum StaticSignalAnalyzerNRFCaptureHistoryRejection: Equatable, Sendable {
+    case invalidTransition
+    case outsideRetainedHistory
+    case revisionExhausted
+}
+
+package enum StaticSignalAnalyzerNRFCaptureHistoryResult: Equatable, Sendable {
+    case accepted(revision: UInt32, change: SignalCaptureChange)
+    case rejected(StaticSignalAnalyzerNRFCaptureHistoryRejection)
+}
 
 /// Metadata for one copied admission snapshot. The record bytes remain in
 /// caller storage until its fact is applied or explicitly discarded.
@@ -30,7 +40,7 @@ package struct StaticSignalAnalyzerNRFCaptureHistory {
     package mutating func receive(
         _ source: SignalTransition,
         in regions: inout StaticSignalAnalyzerNRFCaptureRegions
-    ) -> SignalCaptureStoreResult {
+    ) -> StaticSignalAnalyzerNRFCaptureHistoryResult {
         guard StaticSignalAnalyzerNRFCaptureRecord(source) != nil else {
             return .rejected(.invalidTransition)
         }
@@ -123,23 +133,22 @@ package struct StaticSignalAnalyzerNRFCaptureHistory {
         baselineLevels = nextBaselines
         latestSourceTimestamp = max(latestSourceTimestamp, source.timestamp)
         return .accepted(
-            .mutation(
-                revision: revision,
-                change: .insertAndTrim(
-                    baseRevision: baseRevision,
-                    insertionIndex: UInt16(insertion),
-                    transition: transition,
-                    evictedPrefixCount: UInt16(trim),
-                    duration: duration,
-                    retainedLowerBound: retainedLowerBound,
-                    baselines: baselineLevels
-                )
-            ))
+            revision: revision,
+            change: .insertAndTrim(
+                baseRevision: baseRevision,
+                insertionIndex: UInt16(insertion),
+                transition: transition,
+                evictedPrefixCount: UInt16(trim),
+                duration: duration,
+                retainedLowerBound: retainedLowerBound,
+                baselines: baselineLevels
+            )
+        )
     }
 
     package mutating func clear(
         in regions: inout StaticSignalAnalyzerNRFCaptureRegions
-    ) -> SignalCaptureStoreResult {
+    ) -> StaticSignalAnalyzerNRFCaptureHistoryResult {
         guard revision < .max else { return .rejected(.revisionExhausted) }
         var levels = baselineLevels
         for index in 0 ..< Int(count) {
@@ -156,10 +165,9 @@ package struct StaticSignalAnalyzerNRFCaptureHistory {
         baselineLevels = levels
         epochSourceTimestamp = latestSourceTimestamp
         return .accepted(
-            .mutation(
-                revision: revision,
-                change: .reset(baseRevision: baseRevision, baselines: levels)
-            ))
+            revision: revision,
+            change: .reset(baseRevision: baseRevision, baselines: levels)
+        )
     }
 
     /// Copies only initialized live records to the admission slot. The

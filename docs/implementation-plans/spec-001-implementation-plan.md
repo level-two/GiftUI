@@ -1099,6 +1099,20 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       generation refusal; the checked image uses 187,840 RAM and 57,516 flash
       bytes. Source-to-repository callback wiring and calibrated live timing
       remain open.
+      The fixed capture history no longer returns the host's array-backed
+      publication type; its bounded mutation result preserves the same
+      revision, change, and rejection semantics. The host differential fixture
+      still compares 2,450 transitions and Clear against the portable store,
+      and the same history now compiles into Embedded Swift. A fixed repository
+      producer joins the exact deterministic source, live capture slot, fact
+      admission, and typed model batch path. A 2,400-transition host fixture
+      checks every retained model record against the portable store, then
+      checks Stop, Clear, restart, and another 20 transitions. The firmware
+      startup probe exercises observation, Start, scheduled delivery, Stop,
+      Clear, and restart through the actual C storage regions. The checked
+      image uses 187,840 RAM and 63,772 flash bytes. This producer still needs
+      production clock scheduling, bounded failure normalization, root action
+      dispatch, and complete rendering.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

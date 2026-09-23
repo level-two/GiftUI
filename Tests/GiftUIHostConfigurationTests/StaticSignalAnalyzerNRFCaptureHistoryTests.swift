@@ -20,7 +20,7 @@ import Testing
     func compare(_ source: SignalTransition) {
         let targetResult = target.receive(source, in: &regions)
         let portableResult = portable.receive(source)
-        #expect(targetResult == portableResult)
+        #expect(sameCaptureResult(targetResult, portableResult))
         #expect(target.revision == portable.revision)
         #expect(Int(target.count) == portable.capture.transitions.count)
         #expect(target.duration == portable.capture.duration)
@@ -50,7 +50,7 @@ import Testing
     compare(transition(channel: 4, milliseconds: 1, level: .high))
     let targetClear = target.clear(in: &regions)
     let portableClear = portable.clear()
-    #expect(targetClear == portableClear)
+    #expect(sameCaptureResult(targetClear, portableClear))
     #expect(target.count == 0)
     #expect(target.baselineLevels == portable.capture.baselineLevels)
     compare(transition(channel: 1, milliseconds: 30_000, level: .low))
@@ -70,9 +70,9 @@ import Testing
     var target = StaticSignalAnalyzerNRFCaptureHistory(initialRevision: .max - 1)
     var portable = SignalCaptureStore(initialRevision: .max - 1)
     let first = transition(channel: 1, milliseconds: 1, level: .high)
-    #expect(target.receive(first, in: &regions) == portable.receive(first))
-    #expect(target.receive(first, in: &regions) == portable.receive(first))
-    #expect(target.clear(in: &regions) == portable.clear())
+    #expect(sameCaptureResult(target.receive(first, in: &regions), portable.receive(first)))
+    #expect(sameCaptureResult(target.receive(first, in: &regions), portable.receive(first)))
+    #expect(sameCaptureResult(target.clear(in: &regions), portable.clear()))
 }
 
 @Test func staticNRFCaptureSnapshotSurvivesLiveMutationAndClear() {
@@ -117,4 +117,23 @@ private func transition(
         timestamp: .milliseconds(milliseconds),
         level: level
     )
+}
+
+private func sameCaptureResult(
+    _ target: StaticSignalAnalyzerNRFCaptureHistoryResult,
+    _ portable: SignalCaptureStoreResult
+) -> Bool {
+    switch (target, portable) {
+    case (
+        .accepted(revision: let revision, change: let change),
+        .accepted(.mutation(revision: let portableRevision, change: let portableChange))
+    ):
+        revision == portableRevision && change == portableChange
+    case (.rejected(.invalidTransition), .rejected(.invalidTransition)),
+        (.rejected(.outsideRetainedHistory), .rejected(.outsideRetainedHistory)),
+        (.rejected(.revisionExhausted), .rejected(.revisionExhausted)):
+        true
+    default:
+        false
+    }
 }

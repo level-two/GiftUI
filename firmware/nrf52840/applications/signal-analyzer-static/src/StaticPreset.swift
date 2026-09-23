@@ -289,6 +289,27 @@ public func giftUISignalAnalyzerCaptureRegionValid(
     return 1
 }
 
+@_cdecl("giftui_signal_analyzer_capture_history_valid")
+public func giftUISignalAnalyzerCaptureHistoryValid(
+    _ capture: UnsafeMutableRawPointer?, _ bytes: UInt32
+) -> UInt32 {
+    guard let capture, bytes == 115_392,
+        var regions = StaticSignalAnalyzerNRFCaptureRegions(
+            storage: UnsafeMutableRawBufferPointer(start: capture, count: Int(bytes))
+        )
+    else { return 0 }
+    var generator = DeterministicSignalGenerator(seed: 0x5EED)
+    var history = StaticSignalAnalyzerNRFCaptureHistory()
+    let first = generator.nextTransition()
+    guard case .accepted(revision: 1, change: _) = history.receive(first, in: &regions),
+        history.count == 1,
+        regions.load(from: .live, at: 0)?.transition == first,
+        case .accepted(revision: 2, change: _) = history.clear(in: &regions),
+        history.count == 0
+    else { return 0 }
+    return 1
+}
+
 @_cdecl("giftui_signal_analyzer_sealed_application_valid")
 public func giftUISignalAnalyzerSealedApplicationValid(
     _ profile: UnsafeMutableRawPointer?, _ profileBytes: UInt32,
@@ -333,6 +354,79 @@ public func giftUISignalAnalyzerSealedApplicationValid(
             ) == .applied(factCount: 3),
             location.pointee.acquisitionState == .failed(diagnostic)
         else { return 0 }
+        location.pointee.retire()
+        return 1
+    }
+}
+
+@_cdecl("giftui_signal_analyzer_repository_producer_valid")
+public func giftUISignalAnalyzerRepositoryProducerValid(
+    _ profile: UnsafeMutableRawPointer?, _ profileBytes: UInt32,
+    _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
+) -> UInt32 {
+    guard let profile, let capture, profileBytes == 39_696,
+        captureBytes == 115_392
+    else { return 0 }
+    let profileStorage = UnsafeMutableRawBufferPointer(
+        start: profile, count: Int(profileBytes)
+    )
+    let captureStorage = UnsafeMutableRawBufferPointer(
+        start: capture, count: Int(captureBytes)
+    )
+    guard var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
+        activeStorage: UnsafeMutableRawBufferPointer(
+            rebasing: profileStorage[31_632 ..< 35_472]
+        ),
+        sealedStorage: UnsafeMutableRawBufferPointer(
+            rebasing: profileStorage[35_472 ..< 39_312]
+        )
+    ) else { return 0 }
+    var repository = StaticSignalAnalyzerNRFRepositoryProducer()
+    return withUnsafeMutablePointer(to: &giftUIStaticModelLocation) { location in
+        guard location.pointee.activate() != nil,
+            repository.startObservation(
+                admission: &admission, captureStorage: captureStorage
+            ) == .accepted,
+            location.pointee.applyAdmittedBatch(
+                from: &admission, captureStorage: captureStorage
+            ) == .applied(factCount: 2),
+            repository.start(
+                admission: &admission, captureStorage: captureStorage
+            ) == .accepted,
+            location.pointee.applyAdmittedBatch(
+                from: &admission, captureStorage: captureStorage
+            ) == .applied(factCount: 5),
+            repository.nextScheduledDelay == .milliseconds(80),
+            repository.pollScheduled(
+                admission: &admission, captureStorage: captureStorage
+            ) == .accepted,
+            location.pointee.applyAdmittedBatch(
+                from: &admission, captureStorage: captureStorage
+            ) == .applied(factCount: 1),
+            location.pointee.capture.revision == 5,
+            location.pointee.capture.count == 5,
+            location.pointee.acquisitionState == .running,
+            repository.stop(admission: &admission) == .accepted,
+            location.pointee.applyAdmittedBatch(
+                from: &admission, captureStorage: captureStorage
+            ) == .applied(factCount: 1),
+            repository.clear(
+                admission: &admission, captureStorage: captureStorage
+            ) == .accepted,
+            location.pointee.applyAdmittedBatch(
+                from: &admission, captureStorage: captureStorage
+            ) == .applied(factCount: 1),
+            repository.start(
+                admission: &admission, captureStorage: captureStorage
+            ) == .accepted,
+            location.pointee.applyAdmittedBatch(
+                from: &admission, captureStorage: captureStorage
+            ) == .applied(factCount: 1),
+            location.pointee.capture.revision == 6,
+            location.pointee.capture.count == 0,
+            location.pointee.acquisitionState == .running
+        else { return 0 }
+        repository.shutdown()
         location.pointee.retire()
         return 1
     }
