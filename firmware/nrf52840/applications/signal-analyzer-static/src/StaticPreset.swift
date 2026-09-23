@@ -100,6 +100,31 @@ public func giftUISignalAnalyzerStaticPreset() -> UInt32 {
     return preset.isValid ? 360_515_885 : 0
 }
 
+@_cdecl("giftui_signal_analyzer_source_valid")
+public func giftUISignalAnalyzerSourceValid() -> UInt32 {
+    var source = StaticSignalAnalyzerNRFDeterministicSource()
+    guard source.start() == 1 else { return 0 }
+    for channel in UInt8(1) ... 4 {
+        guard let initial = source.takeInitialTransition(),
+            initial.channelID.rawValue == Int(channel),
+            initial.timestamp == .zero,
+            initial.level == .low
+        else { return 0 }
+    }
+    guard source.nextScheduledDelay == .milliseconds(80),
+        let first = source.deliverScheduledTransition(generation: 1),
+        first.channelID.rawValue == 3,
+        first.timestamp == .milliseconds(80), first.level == .high
+    else { return 0 }
+    source.stop()
+    guard source.deliverScheduledTransition(generation: 1) == nil,
+        source.start() == 2,
+        source.takeInitialTransition() == nil
+    else { return 0 }
+    source.shutdown()
+    return source.start() == nil ? 1 : 0
+}
+
 @_cdecl("giftui_signal_analyzer_diagnostic_value_valid")
 public func giftUISignalAnalyzerDiagnosticValueValid() -> UInt32 {
     guard SignalAnalyzerDiagnostic.maximumUTF8ByteCount == 96,

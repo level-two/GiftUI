@@ -5,6 +5,7 @@
 #include "static_host_storage.h"
 
 extern uint32_t giftui_signal_analyzer_static_preset(void);
+extern uint32_t giftui_signal_analyzer_source_valid(void);
 extern uint32_t giftui_signal_analyzer_storage_bytes(void);
 extern uint32_t giftui_signal_analyzer_capture_layout(void);
 extern uint32_t giftui_signal_analyzer_capture_roundtrip(void);
@@ -36,6 +37,7 @@ int main(void)
 {
     struct giftui_static_host_storage regions;
     if (giftui_signal_analyzer_static_preset() != 360515885u ||
+        giftui_signal_analyzer_source_valid() != 1u ||
         giftui_signal_analyzer_storage_bytes() != 159168u ||
         giftui_signal_analyzer_capture_layout() != 115392u ||
         giftui_signal_analyzer_capture_roundtrip() != 1u ||

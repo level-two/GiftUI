@@ -1091,6 +1091,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       startup probe exercises the batch path. The checked image uses 187,776
       RAM and 55,468 flash bytes. It is still a startup probe, not the firmware
       production loop.
+      The target now compiles the exact portable deterministic generator and
+      wraps it in a fixed-value source with one-transition polling, initial
+      four-low emission, generation checks, stop/restart, and shutdown. A host
+      fixture compares 2,400 scheduled transitions and delays against the
+      portable generator. Firmware startup checks its first event and stale
+      generation refusal; the checked image uses 187,840 RAM and 57,516 flash
+      bytes. Source-to-repository callback wiring and calibrated live timing
+      remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or
