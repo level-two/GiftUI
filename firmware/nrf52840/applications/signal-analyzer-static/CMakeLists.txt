@@ -67,6 +67,18 @@ set(giftui_static_swift_source "${CMAKE_CURRENT_BINARY_DIR}/SignalAnalyzerStatic
 file(WRITE "${giftui_static_swift_source}" "")
 set(giftui_static_swift_inputs
     "${giftui_project_root}/Sources/GiftUI/GiftUI.swift"
+    "${giftui_project_root}/Sources/GiftUI/LayoutValues.swift"
+    "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedLayoutInterfaces.swift"
+    "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedLayoutAdapters.swift"
+    "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCommonLayoutWorkspace.swift"
+    "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCommonLayoutPass.swift"
+    "${giftui_project_root}/Sources/GiftUILayout/LayoutError.swift"
+    "${giftui_project_root}/Sources/GiftUILayout/LayoutValues.swift"
+    "${giftui_project_root}/Sources/GiftUILayout/LayoutCounters.swift"
+    "${giftui_project_root}/Sources/GiftUILayout/LayoutWorkspace.swift"
+    "${giftui_project_root}/Sources/GiftUILayout/LayoutGeometry.swift"
+    "${giftui_project_root}/Sources/GiftUILayout/LayoutSemanticValidation.swift"
+    "${giftui_project_root}/Sources/GiftUILayout/LayoutEngine.swift"
     "${giftui_project_root}/Sources/GiftUIExecution/ExecutionValues.swift"
     "${giftui_project_root}/Sources/GiftUIExecution/AdmissionValues.swift"
     "${giftui_project_root}/Sources/GiftUIExecution/InputSourceSequenceState.swift"

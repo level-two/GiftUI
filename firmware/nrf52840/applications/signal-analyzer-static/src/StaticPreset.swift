@@ -270,6 +270,37 @@ public func giftUISignalAnalyzerLayoutTextValid(
     return 1
 }
 
+@_cdecl("giftui_signal_analyzer_full_layout_valid")
+public func giftUISignalAnalyzerFullLayoutValid(
+    _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32
+) -> UInt32 {
+    guard let profile, bytes == 39_696 else { return 0 }
+    let published = UnsafeMutableRawBufferPointer(
+        start: profile.advanced(by: 3_024), count: 3_024
+    )
+    let scopes = UnsafeMutableRawBufferPointer(
+        start: profile.advanced(by: 6_048), count: 3_136
+    )
+    let text = UnsafeMutableRawBufferPointer(
+        start: profile.advanced(by: 9_184), count: 4_704
+    )
+    guard let semantic = StaticSignalAnalyzerNRFEmbeddedSemanticView(
+        published: published
+    ), let packed = StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace(
+        scopes: scopes, text: text
+    ) else { return 0 }
+    var workspace = StaticSignalAnalyzerNRFCommonLayoutWorkspace(packed: packed)
+    guard let resolved = StaticSignalAnalyzerNRFCommonLayoutPass.run(
+        semantic: semantic, workspace: &workspace
+    ), resolved.isPublished,
+        resolved.scopeCount == semantic.scopeCount,
+        resolved.rootIdentity == semantic.rootPrimitiveIdentity,
+        resolved.lineCount > 0, resolved.glyphCount > 0
+    else { return 0 }
+    workspace.packed.reset()
+    return resolved.isPublished ? 0 : 1
+}
+
 @_cdecl("giftui_signal_analyzer_source_valid")
 public func giftUISignalAnalyzerSourceValid() -> UInt32 {
     var source = StaticSignalAnalyzerNRFDeterministicSource()

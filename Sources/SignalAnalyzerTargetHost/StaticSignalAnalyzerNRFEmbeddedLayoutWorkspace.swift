@@ -253,7 +253,7 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
             scopeCount == expectedScopeCount,
             scopeCount > 0,
             text[StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.scratchOffset + 26] == 0,
-            scope(at: 0)?.identity == rootIdentity
+            scopeOrdinal(of: rootIdentity) != nil
         else { return nil }
         var scopeCursor: UInt16 = 0
         while scopeCursor < scopeCount {

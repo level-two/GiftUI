@@ -241,6 +241,9 @@ stack evidence remain the separate T8.2 gate.
 
 ## Code and Evidence Links
 
+- [Target adapter to shared layout](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCommonLayoutPass.swift)
+- [Target packed workspace adapter](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCommonLayoutWorkspace.swift)
+- [Native execution check](../../scripts/contracts/check-spec-001-nrf-full-layout-native.sh)
 - [Generated semantic region](../../Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFSemanticRegion.generated.swift)
 - [Static profile regions](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFProfileRegions.swift)
 - [Common layout](../../Sources/GiftUILayout/Layout.swift)

@@ -1238,3 +1238,17 @@ the shared Swift region borrower at startup. The entry refuses null,
 incorrect extent, and misalignment before device initialization. Its symbol
 is required by the ELF gate; the image uses 184,128 RAM and 35,228 flash
 bytes. No board was flashed.
+
+The target now compiles the shared `GiftUILayout` validator, measure pass, and
+placer directly into the firmware, with target-only semantic and font adapters
+and a fixed packed workspace. The diagnostic variant's 98 scopes, 21 text
+lines, and 121 glyphs pass a native execution of the exact amalgamated firmware
+Swift source. Publication checks that the root primitive identity occurs in
+the scope records; the shared validator places a root modifier before that
+primitive. The registered nRF gate includes this native execution check after
+the cross-build. Firmware `main` also retains a one-shot full-layout startup
+probe. This establishes a hardware-free diagnostic layout pass, not the
+production render or connected TFT path.
+The checked nRF image uses 187,840 RAM and 125,212 flash bytes. The registered
+SPEC-001 run completed at
+`.build/contract-reports/spec-001/20260923T210911Z-98610/nrf52840-embedded/`.

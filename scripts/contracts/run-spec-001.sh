@@ -182,6 +182,7 @@ if [[ "${profile}" == "nrf52840-embedded" ]]; then
     "${SCRIPT_DIR}/run-spec-015.sh" --profile "${profile}"
     spec015_run_id="$(cat "${PROJECT_ROOT}/.build/contract-reports/spec-015/latest-${profile}.txt")"
     spec015_report_dir="${PROJECT_ROOT}/.build/contract-reports/spec-015/${spec015_run_id}/${profile}"
+    "${SCRIPT_DIR}/check-spec-001-nrf-full-layout-native.sh"
     artifact="${PROJECT_ROOT}/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf"
     artifact_identity="$(shasum -a 256 "${artifact}" | awk '{print $1}')"
     cp "${spec015_report_dir}/semantic.tsv" \
