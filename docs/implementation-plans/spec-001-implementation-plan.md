@@ -1208,9 +1208,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       89,180 flash bytes; the registered nRF SPEC-001 gate passes. Full
       traversal and resolved publication remain open.
       The target workspace now appends and replaces text lines and positioned
-      glyph baselines with dense per-scope indexes and checked line/glyph
-      association. A host differential fixture compares the full render
-      region after staging and movement, and firmware startup uses these
+      glyph baselines with dense per-scope indexes. Glyph staging precedes
+      final line staging as in the common text measure pass; baseline
+      replacement checks line association. A host differential fixture
+      compares the full render region after staging and movement, and firmware startup uses these
       methods on the real profile reservation. The checked image uses 187,840
       RAM and 89,916 flash bytes; the registered nRF SPEC-001 gate passes.
       Full traversal and resolved publication remain open.

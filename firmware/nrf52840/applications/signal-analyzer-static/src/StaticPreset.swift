@@ -235,8 +235,8 @@ public func giftUISignalAnalyzerLayoutTextValid(
         identity: title.identity,
         idealWidth: 184, idealHeight: 16,
         width: 184, height: 16
-    ), layout.appendTextLine(line),
-        layout.appendGlyph(glyph, glyphIndex: 0),
+    ), layout.appendGlyph(glyph, glyphIndex: 0),
+        layout.appendTextLine(line),
         layout.textLine(at: 0) == line,
         layout.glyph(at: 0) == glyph else { return 0 }
     layout.reset()

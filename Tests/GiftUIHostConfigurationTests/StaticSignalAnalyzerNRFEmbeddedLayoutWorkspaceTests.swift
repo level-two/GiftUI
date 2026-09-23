@@ -64,6 +64,23 @@ import Testing
                         origin: Point(x: 0, y: 0),
                         size: Size(width: 0, height: 0)!
                     )!
+                    let instance = GiftUIReferenceTextMetricsView().instance(at: 0)!.id
+                    let targetGlyph = StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.Glyph(
+                        identity: 0xA001, lineIndex: 0, glyphID: 1,
+                        baselineX: 0, baselineY: 16
+                    )
+                    let hostGlyph = LayoutPositionedGlyph(
+                        identity: UInt16(0xA001), lineIndex: 0, glyphIndex: 0,
+                        instance: instance, glyph: GlyphID(rawValue: 1),
+                        baseline: Point(x: 0, y: 16), clip: zero
+                    )
+                    let targetGlyphAppended = target.appendGlyph(
+                        targetGlyph, glyphIndex: 0
+                    )
+                    let hostGlyphAppended = host.appendPositionedGlyph(hostGlyph)
+                    #expect(targetGlyphAppended && hostGlyphAppended)
+                    #expect(target.glyph(at: 0) == targetGlyph)
+                    #expect([UInt8](targetText) == [UInt8](hostText))
                     let lineBounds = Rect(
                         origin: Point(x: 0, y: 0),
                         size: Size(width: 100, height: 20)!
@@ -83,23 +100,6 @@ import Testing
                     let duplicateLine = target.appendTextLine(targetLine)
                     #expect(!duplicateLine)
                     #expect(target.textLine(at: 0) == targetLine)
-                    #expect([UInt8](targetText) == [UInt8](hostText))
-                    let instance = GiftUIReferenceTextMetricsView().instance(at: 0)!.id
-                    let targetGlyph = StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.Glyph(
-                        identity: 0xA001, lineIndex: 0, glyphID: 1,
-                        baselineX: 0, baselineY: 16
-                    )
-                    let hostGlyph = LayoutPositionedGlyph(
-                        identity: UInt16(0xA001), lineIndex: 0, glyphIndex: 0,
-                        instance: instance, glyph: GlyphID(rawValue: 1),
-                        baseline: Point(x: 0, y: 16), clip: zero
-                    )
-                    let targetGlyphAppended = target.appendGlyph(
-                        targetGlyph, glyphIndex: 0
-                    )
-                    let hostGlyphAppended = host.appendPositionedGlyph(hostGlyph)
-                    #expect(targetGlyphAppended && hostGlyphAppended)
-                    #expect(target.glyph(at: 0) == targetGlyph)
                     #expect([UInt8](targetText) == [UInt8](hostText))
                     let placement = LayoutPlacement(
                         bounds: Rect(

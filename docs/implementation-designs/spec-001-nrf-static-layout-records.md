@@ -107,7 +107,9 @@ measurements, places scopes, and uses the 26-byte depth stack in the render
 scratch tail. A host differential fixture compares both complete regions
 after each operation, including reset and reuse. The target workspace now
 also appends and replaces text lines and glyph baselines in the same region,
-with dense per-scope indexes, line association, and canonical glyph bounds.
+with dense per-scope indexes and canonical glyph bounds. Glyphs can precede
+their line records as required by the common text measurement pass; baseline
+replacement requires the line record.
 The differential fixture compares both complete regions after these text
 operations too. Publication and the actual measure/place traversal remain
 open.

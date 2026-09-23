@@ -162,7 +162,6 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
             positionedGlyphCount < StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.maximumGlyphs,
             glyph.glyphID < StaticSignalAnalyzerNRFReferenceMetrics.glyphCount,
             scopeOrdinal(of: glyph.identity) != nil,
-            hasLine(identity: glyph.identity, index: glyph.lineIndex),
             glyphIndex == glyphCount(of: glyph.identity),
             StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.stageGlyph(
                 glyph, at: positionedGlyphCount, in: text
