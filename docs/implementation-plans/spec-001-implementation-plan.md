@@ -1179,6 +1179,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       the actual C profile region. The checked image uses 187,840 RAM and
       82,060 flash bytes. The production host lifecycle, layout/render
       consumption, and connected display/input evidence remain open.
+      A validated, synchronous target semantic view now borrows the published
+      region and exposes generated scope identity, tree children, primitive
+      root, and UTF-8 text scalars without retaining a pointer. A host
+      differential fixture compares all 98 diagnostic identities and child
+      links with the generated render view, plus the primitive root and text
+      counts with the generated layout view. Firmware startup checks the title
+      scalar through this target view. The checked image uses 187,840 RAM and
+      82,860 flash bytes. Layout and render execution remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

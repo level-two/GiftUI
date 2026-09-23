@@ -79,6 +79,10 @@ checks the whole-region checksum, and copies a validated candidate to the
 disjoint published region with an advancing revision. The host generated
 UTF-8 reader accepts its bytes. The startup probe exercises this mechanism;
 the production host loop does not yet consume the published region.
+A target-safe synchronous view now traverses those published bytes by stable
+scope identity and decodes UTF-8 scalars. Its host differential fixture
+compares the complete diagnostic tree against the generated host render and
+layout views. Layout and render stages have not yet been linked on the target.
 The byte-level UTF-8 pool and scalar decoder also compile on the target. A
 startup probe writes and decodes the invariant title through the real
 candidate region; it does not yet assign text ranges to scope records.

@@ -134,7 +134,16 @@ public func giftUISignalAnalyzerTopologyValid(
             StaticSignalAnalyzerNRFEmbeddedSemanticRegion.publish(
                 revision: revision, candidate: candidate, published: published
             ),
-            StaticSignalAnalyzerNRFEmbeddedSemanticRegion.verifyPublished(published)
+            let view = StaticSignalAnalyzerNRFEmbeddedSemanticView(
+                published: published
+            ),
+            view.scopeCount == (variant == .normal ? 96 : 98),
+            view.revision == revision,
+            view.rootPrimitiveIdentity != nil,
+            let title = StaticSignalAnalyzerNRFPackedSemanticRecords.scope(
+                at: 6, in: published
+            ),
+            view.textScalar(of: title.identity, at: 0) == 0x44
         else { return false }
         return true
     }

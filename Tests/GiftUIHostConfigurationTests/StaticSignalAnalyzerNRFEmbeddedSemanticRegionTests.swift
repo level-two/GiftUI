@@ -78,6 +78,42 @@ import Testing
             #expect(published[6] == 2)
             #expect(published[7] == 1)
             #expect(published[28] == 2)
+            guard
+                let view = StaticSignalAnalyzerNRFEmbeddedSemanticView(
+                    published: published
+                ),
+                let layout = StaticSignalAnalyzerNRFUTF8LayoutView(in: published),
+                let render = StaticSignalAnalyzerNRFUTF8RenderView(
+                    in: published, renderSnapshotVersion: 2
+                )
+            else {
+                Issue.record("The published table must project to both readers")
+                return
+            }
+            #expect(view.rootSemanticIdentity == render.rootIdentity)
+            #expect(view.rootPrimitiveIdentity == layout.rootIdentity)
+            #expect(view.revision == 2)
+            #expect(view.scopeCount == render.semanticScopeCount)
+            for ordinal in UInt16(0) ..< view.scopeCount {
+                guard let identity = view.semanticIdentity(at: ordinal) else {
+                    Issue.record("A generated scope identity was missing")
+                    return
+                }
+                #expect(identity == render.semanticIdentity(at: ordinal))
+                #expect(view.childCount(of: identity) == render.childCount(of: identity))
+                if let children = view.childCount(of: identity) {
+                    for child in UInt16(0) ..< children {
+                        #expect(
+                            view.child(of: identity, at: child)
+                                == render.child(of: identity, at: child)
+                        )
+                    }
+                }
+                if view.scope(at: identity)?.kind == .text {
+                    #expect(
+                        view.textScalarCount(of: identity) == layout.textScalarCount(of: identity))
+                }
+            }
         }
     }
     model.retire()
