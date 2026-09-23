@@ -1202,7 +1202,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       candidate frame, and presentation revision. The one-slot endpoint
       replaces its value envelope validator only while idle; a focused
       two-cycle fixture reuses the same endpoint, rejects stale provenance
-      before raster submission, and accepts the next identity.
+      before raster submission, and accepts the next identity. The production
+      runtime aggregate now owns this cursor with its application, profile,
+      and pacing fields; a fixture proves monotonic allocation across the
+      aggregate's quiescing owner scope.
       A failed synchronous ILI9486 submission is now treated as a possible
       partial transfer even on the first payload: the display target records
       one unavailable-health failure, drains the accepted frame, and refuses

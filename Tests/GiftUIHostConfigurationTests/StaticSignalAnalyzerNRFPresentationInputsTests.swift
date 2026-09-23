@@ -91,7 +91,8 @@ import Testing
             return
         }
 
-        runtime.withAddressStableOwners { application, profile, _ in
+        runtime.withAddressStableOwners { application, profile, _, identities in
+            #expect(identities.reserve()?.provenance.semanticRevision.rawValue == 1)
             let repository = StaticNRFPresentationInputRepository()
             guard case .bound = application.bindRoot(repository: repository) else {
                 Issue.record("Static nRF root did not bind")

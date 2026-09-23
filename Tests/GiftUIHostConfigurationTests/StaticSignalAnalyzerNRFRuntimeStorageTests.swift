@@ -78,11 +78,14 @@ private struct IncompleteStaticNRFCanvasTable: StaticCanvasCallableTable {
             return
         }
 
-        runtime.withAddressStableOwners { application, profile, pacing in
+        runtime.withAddressStableOwners { application, profile, pacing, identities in
             let rootIsActive = application.rootIsActive
             let lifetimeBeforeUse = profile.storageLifetimeState
             #expect(!rootIsActive)
             #expect(lifetimeBeforeUse == .beforeUse)
+            let firstIdentity = identities.reserve()
+            #expect(firstIdentity?.provenance.cycle.rawValue == 0)
+            #expect(firstIdentity?.provenance.semanticRevision.rawValue == 1)
             let active = ExecutionContext(
                 cycle: RunCycleID(rawValue: 1),
                 semanticRevision: nil,
@@ -144,6 +147,9 @@ private struct IncompleteStaticNRFCanvasTable: StaticCanvasCallableTable {
         let profileIsQuiescent = runtime.profile.isQuiescent
         let profileLifetime = runtime.profile.storageLifetimeState
         let rootIsActive = runtime.application.root.isActive
+        let nextIdentity = runtime.presentationIdentities.reserve()
+        #expect(nextIdentity?.provenance.cycle.rawValue == 1)
+        #expect(nextIdentity?.provenance.semanticRevision.rawValue == 2)
         #expect(profileIsQuiescent)
         #expect(profileLifetime == .tornDown)
         #expect(!rootIsActive)

@@ -12,6 +12,7 @@ where Metadata: RuntimeStaticCanvasAuditMetadata & StaticCanvasCallableTable {
     package var profile:
         StaticRuntimeProfileBinding<StaticSignalAnalyzerNRFProfileRegions, Metadata>
     package var pacing: HostWakePacingController
+    package var presentationIdentities = StaticSignalAnalyzerNRFPresentationIdentityOwner()
 
     package init?(
         assemblyReport: HostAssemblyReport,
@@ -40,7 +41,8 @@ where Metadata: RuntimeStaticCanvasAuditMetadata & StaticCanvasCallableTable {
         )
     }
 
-    /// Lends both owners for one complete address-stable composition scope.
+    /// Lends the owners and presentation identity cursor for one complete
+    /// address-stable composition scope.
     /// The body must finish an active profile opportunity before returning.
     package mutating func withAddressStableOwners<Result>(
         _ body: (
@@ -49,7 +51,8 @@ where Metadata: RuntimeStaticCanvasAuditMetadata & StaticCanvasCallableTable {
                 StaticSignalAnalyzerNRFProfileRegions,
                 Metadata
             >,
-            inout HostWakePacingController
+            inout HostWakePacingController,
+            inout StaticSignalAnalyzerNRFPresentationIdentityOwner
         ) -> Result
     ) -> Result {
         defer {
@@ -57,7 +60,7 @@ where Metadata: RuntimeStaticCanvasAuditMetadata & StaticCanvasCallableTable {
             _ = pacing.quiesce()
         }
         return application.withAddressStableOwner { application in
-            body(&application, &profile, &pacing)
+            body(&application, &profile, &pacing, &presentationIdentities)
         }
     }
 }

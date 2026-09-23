@@ -965,6 +965,10 @@ replaces its value envelope validator while idle, rejects the prior
 provenance before raster work, and accepts the second physical offer using
 the same tile, coverage, transport, profile, and application owners. Firmware
 endpoint lifetime and recovery still need implementation.
+The production runtime aggregate now retains that identity cursor alongside
+its application, profile, and pacing owners. A host fixture reserves inside
+the address-stable owner scope and confirms the next cycle and semantic
+revision remain monotonic after the scope quiesces.
 
 The Static display target now treats any failed synchronous transport call as
 a potentially partial transfer. It reports failure after acceptance, records
