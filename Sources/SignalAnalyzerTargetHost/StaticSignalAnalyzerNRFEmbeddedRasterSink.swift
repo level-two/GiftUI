@@ -1,4 +1,9 @@
 #if GIFTUI_NRF_EMBEDDED
+    package typealias StaticSignalAnalyzerNRFEmbeddedPixelWrite =
+        @convention(c) (
+            UInt16, UInt16, UInt16, UInt16, UnsafePointer<UInt8>?, Int
+        ) -> Int32
+
     /// Rasterizes the shared operation stream into the one caller-owned tile.
     /// The tile consumer currently records bounded visits; the display join
     /// will replace that consumer with synchronous RGB565 submission.
@@ -17,10 +22,12 @@
         private let metrics = StaticSignalAnalyzerNRFEmbeddedFontMetrics()
         private let raster = StaticSignalAnalyzerNRFEmbeddedFontRaster()
         private let realization: RasterRealizationDescriptor
+        private let write: StaticSignalAnalyzerNRFEmbeddedPixelWrite?
 
         package init?(
             rasterRegion: UnsafeMutableRawBufferPointer,
-            coverageRegion: UnsafeMutableRawBufferPointer
+            coverageRegion: UnsafeMutableRawBufferPointer,
+            write: StaticSignalAnalyzerNRFEmbeddedPixelWrite? = nil
         ) {
             guard
                 let bounds = Rect(
@@ -43,6 +50,7 @@
             else { return nil }
             self.tile = tile
             self.realization = realization
+            self.write = write
         }
 
         package mutating func begin(_ header: RenderPlanHeader) -> Bool {
@@ -61,6 +69,7 @@
             var runs = submittedRuns
             var bytes = submittedBytes
             let descriptor = workspace.descriptor
+            let transportWrite = write
             let result = OperationMajorTileTraversal.visit(
                 operationClip: operation.clip,
                 damageBounds: header.damageBounds,
@@ -82,8 +91,16 @@
                     guard
                         let emitted = StaticSignalAnalyzerNRFEmbeddedTileRuns.emit(
                             completedTile,
-                            { _, _, pixelCount, borrowed in
-                                borrowed.count == Int(pixelCount) * 2
+                            { x, y, pixelCount, borrowed in
+                                guard borrowed.count == Int(pixelCount) * 2,
+                                    let base = borrowed.baseAddress
+                                else { return false }
+                                guard let transportWrite else { return true }
+                                return transportWrite(
+                                    x, y, pixelCount, 1,
+                                    base.assumingMemoryBound(to: UInt8.self),
+                                    borrowed.count
+                                ) == 0
                             }
                         )
                     else { return false }
@@ -128,6 +145,7 @@
             var runs = submittedRuns
             var bytes = submittedBytes
             let descriptor = workspace.descriptor
+            let transportWrite = write
             let result = OperationMajorTileTraversal.visit(
                 operationClip: glyphHeader.clip,
                 damageBounds: header.damageBounds,
@@ -152,8 +170,16 @@
                     guard
                         let emitted = StaticSignalAnalyzerNRFEmbeddedTileRuns.emit(
                             completedTile,
-                            { _, _, pixelCount, borrowed in
-                                borrowed.count == Int(pixelCount) * 2
+                            { x, y, pixelCount, borrowed in
+                                guard borrowed.count == Int(pixelCount) * 2,
+                                    let base = borrowed.baseAddress
+                                else { return false }
+                                guard let transportWrite else { return true }
+                                return transportWrite(
+                                    x, y, pixelCount, 1,
+                                    base.assumingMemoryBound(to: UInt8.self),
+                                    borrowed.count
+                                ) == 0
                             }
                         )
                     else { return false }
@@ -199,6 +225,7 @@
             var runs = submittedRuns
             var bytes = submittedBytes
             let descriptor = workspace.descriptor
+            let transportWrite = write
             let result = OperationMajorTileTraversal.visit(
                 operationClip: strokeView.header.inheritedClip,
                 damageBounds: header.damageBounds,
@@ -220,8 +247,16 @@
                     guard
                         let emitted = StaticSignalAnalyzerNRFEmbeddedTileRuns.emit(
                             completedTile,
-                            { _, _, pixelCount, borrowed in
-                                borrowed.count == Int(pixelCount) * 2
+                            { x, y, pixelCount, borrowed in
+                                guard borrowed.count == Int(pixelCount) * 2,
+                                    let base = borrowed.baseAddress
+                                else { return false }
+                                guard let transportWrite else { return true }
+                                return transportWrite(
+                                    x, y, pixelCount, 1,
+                                    base.assumingMemoryBound(to: UInt8.self),
+                                    borrowed.count
+                                ) == 0
                             }
                         )
                     else { return false }

@@ -564,7 +564,7 @@ public func giftUISignalAnalyzerFullCanvasValid(
             start: raster, count: Int(rasterBytes)
         ), coverageRegion: UnsafeMutableRawBufferPointer(
             start: coverage, count: Int(coverageBytes)
-        )
+        ), write: giftUISignalAnalyzerProbeRGB565
     ), case .success(let rasterHeader) =
         StaticSignalAnalyzerNRFEmbeddedRenderPreflight.streamCombined(
             semantic: semantic, layout: resolved,
@@ -668,7 +668,7 @@ public func giftUISignalAnalyzerFullCanvasValid(
             start: raster, count: Int(rasterBytes)
         ), coverageRegion: UnsafeMutableRawBufferPointer(
             start: coverage, count: Int(coverageBytes)
-        )
+        ), write: giftUISignalAnalyzerProbeRGB565
     ), case .success(let updatedRasterHeader) =
         StaticSignalAnalyzerNRFEmbeddedRenderPreflight.streamCombined(
             semantic: semantic, layout: updatedLayout,
@@ -688,6 +688,18 @@ public func giftUISignalAnalyzerFullCanvasValid(
     captureRegion.initializeMemory(as: UInt8.self, repeating: 0)
     model.retire()
     return resolved.isPublished || drawing.isActive ? 0 : 1
+}
+
+@_cdecl("giftui_signal_analyzer_probe_rgb565")
+public func giftUISignalAnalyzerProbeRGB565(
+    _ x: UInt16, _ y: UInt16, _ width: UInt16, _ height: UInt16,
+    _ pixels: UnsafePointer<UInt8>?, _ byteCount: Int
+) -> Int32 {
+    guard x < 480, y < 320, width > 0, height == 1,
+        UInt32(x) + UInt32(width) <= 480,
+        byteCount == Int(width) * 2, pixels != nil
+    else { return -1 }
+    return 0
 }
 
 @_cdecl("giftui_signal_analyzer_tile_valid")

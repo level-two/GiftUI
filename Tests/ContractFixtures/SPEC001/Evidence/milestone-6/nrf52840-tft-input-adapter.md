@@ -1391,3 +1391,14 @@ borrowed-run path. The registered nRF SPEC-001 run passed at
 The checked image uses 187,904 RAM and 197,084 flash bytes. The run callback
 currently validates payload size; synchronous ILI9486 submission and the
 production application loop remain open.
+
+The raster sink now accepts the existing ILI9486 write function shape as an
+injected synchronous callback. Its full-frame startup probe uses a validating
+callback that checks the x/y/width bounds, one-row height, non-null borrowed
+pointer, and exact two-byte-per-pixel count for every emitted run. No display
+I/O occurs in that pre-initialization probe. The registered nRF SPEC-001 run
+passed at
+`.build/contract-reports/spec-001/20260923T225728Z-42889/nrf52840-embedded/`.
+The checked image uses 187,904 RAM and 197,276 flash bytes. Passing the real
+driver function from the production lifecycle and handling its failures
+remain open.
