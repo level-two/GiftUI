@@ -939,6 +939,56 @@ public func giftUISignalAnalyzerTileValid(
             regionCapacity: 1
         ) == .nonRetryableRefusal
     else { return 0 }
+    guard let sessionTarget = StaticSignalAnalyzerNRFDisplayTarget(
+        transport: StaticSignalAnalyzerNRFILI9486Transport(
+            write: giftUISignalAnalyzerProbeRGB565
+        ), rasterRegion: UnsafeMutableRawBufferPointer(
+            start: raster, count: Int(rasterBytes)
+        )
+    ), let sessionStorage = StaticSignalAnalyzerNRFTileStorage(
+        region: UnsafeMutableRawBufferPointer(
+            start: raster, count: Int(rasterBytes)
+        ), coverage: UnsafeMutableRawBufferPointer(
+            start: coverage, count: Int(coverageBytes)
+        )
+    ), let payloadLimits = RasterPayloadLimits(
+        maximumRasterBytes: 3_840, maximumPayloadBytes: 3_840,
+        maximumRegionsPerPayload: 1,
+        maximumRegionSubmissionsPerFrame: 23_040_000,
+        maximumTileVisitsPerFrame: 12_000,
+        maximumInFlightPayloads: 1,
+        maximumGlyphRasterBytes: 3_840,
+        maximumStrokeWorkspaceBytes: 3_840
+    ), var session = OperationMajorRGB565RasterSession(
+        capacity: RenderSinkCapacity(
+            maximumOperations: 150, maximumPositionedGlyphs: 224
+        ), descriptor: descriptor, payloadLimits: payloadLimits,
+        metrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
+        raster: StaticSignalAnalyzerNRFEmbeddedFontRaster(),
+        realization: RasterRealizationID(rawValue: 0),
+        storage: sessionStorage, target: sessionTarget
+    ) else { return 0 }
+    let sessionReservation: DisplayReservationID
+    switch session.reserveFrame(
+        descriptor: descriptor, payloadCapacityBytes: 3_840,
+        regionCapacity: 1
+    ) {
+    case .reserved(let value): sessionReservation = value
+    default: return 0
+    }
+    guard session.begin(
+        RenderPlanHeader(
+            surfaceBounds: surface, damageBounds: small,
+            operationCount: 1, positionedGlyphCount: 0,
+            maximumObservedClipDepth: 0
+        )
+    ), session.fillRect(
+        FillRectOperation(bounds: small, clip: small, color: .white)
+    ), session.finish(), session.streamCompleted,
+        session.failure == nil,
+        session.isIdleForOffer
+    else { return 0 }
+    _ = sessionReservation
     return 1
 }
 

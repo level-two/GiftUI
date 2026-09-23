@@ -1421,3 +1421,14 @@ and refuses a new reservation. The registered nRF SPEC-001 run passed at
 `.build/contract-reports/spec-001/20260923T231308Z-48272/nrf52840-embedded/`.
 The checked image uses 187,968 RAM and 199,308 flash bytes. The common raster
 session and one-shot endpoint are not yet linked into firmware production.
+
+The firmware now compiles the shared raster work bounds, tracker, tile payload
+emitter, operation-major session, and one-shot endpoint sources. A retained
+probe constructs the shared session with the exact 150-operation/224-glyph
+capacity and 3,840-byte one-slot payload limits, reserves through the approved
+display target, streams a clipped fill, and finishes without a raster or
+display failure. Exact-source native execution and the registered nRF
+SPEC-001 run passed at
+`.build/contract-reports/spec-001/20260923T231915Z-50805/nrf52840-embedded/`.
+The checked image uses 187,968 RAM and 204,252 flash bytes. The one-shot
+endpoint is compiled but has not yet been exercised in this firmware probe.
