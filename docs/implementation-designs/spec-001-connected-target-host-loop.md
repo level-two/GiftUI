@@ -203,6 +203,12 @@ A failed synchronous write may have emitted a prefix, so the target retains
 presentation responsibility, records one unavailable-health transition, and
 drains the reservation even if this was the first payload. It then refuses
 later frames until the host reconstructs the target and endpoint.
+The paced nRF stage reconciles every accepted offer with target-owned health
+before its opportunity ends. A healthy committed offer enables input. A
+post-acceptance failure drains first, then the shared health controller marks
+fresh construction required and the application owner quiesces its input.
+The resulting failure transition remains available for the firmware owner to
+route through the approved residual policy.
 
 The semantic/action/drawing transcript is profile-equivalent. Device timing,
 physical extents, payload counts, stack high-water, and transport errors remain

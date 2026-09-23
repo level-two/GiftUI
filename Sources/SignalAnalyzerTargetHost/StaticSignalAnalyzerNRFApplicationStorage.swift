@@ -163,6 +163,11 @@ package struct StaticSignalAnalyzerNRFApplicationOwner: ~Copyable {
         root.pointee.targetGeneration()
     }
     package var pendingInputCount: UInt16 { input.pointee.pendingCount }
+    package var inputIsEligible: Bool { input.pointee.hasPhysicalPresentation }
+
+    package mutating func quiesceInput() {
+        input.pointee.quiesce()
+    }
 
     package mutating func bindRoot(
         repository: any SignalAcquisitionRepository

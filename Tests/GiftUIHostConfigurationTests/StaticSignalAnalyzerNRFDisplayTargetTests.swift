@@ -7,6 +7,10 @@ import GiftUIRenderCore
 import SignalAnalyzerTargetHost
 import Testing
 
+final class StaticNRFTransportFailureSwitch {
+    var shouldFail = false
+}
+
 struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTransport {
     private(set) var payloads = 0
     private(set) var bytes: UInt32 = 0
@@ -17,12 +21,14 @@ struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTranspo
     private(set) var secondByte: UInt8 = 0
     var accepts = true
     var maximumAcceptedPayloads: Int?
+    var failureSwitch: StaticNRFTransportFailureSwitch?
 
     mutating func presentRGB565BigEndian(
         x: UInt16, y: UInt16, pixelCount: UInt16,
         bytes: UnsafeRawBufferPointer
     ) -> Bool {
         guard accepts,
+            !(failureSwitch?.shouldFail ?? false),
             maximumAcceptedPayloads.map({ payloads < $0 }) ?? true,
             bytes.count == Int(pixelCount) * 2
         else { return false }

@@ -1,6 +1,7 @@
 import GiftUI
 import GiftUIDrawing
 import GiftUIExecution
+import GiftUIFailureCore
 import GiftUIHostConfiguration
 import GiftUIInteraction
 import GiftUILayout
@@ -1378,9 +1379,12 @@ import Testing
             return
         }
         let provenance = first.provenance
+        let failureSwitch = StaticNRFTransportFailureSwitch()
         guard
             var endpoint = StaticSignalAnalyzerNRFEndpointFactory.make(
-                transport: StaticNRFRecordingDisplayTransport(),
+                transport: StaticNRFRecordingDisplayTransport(
+                    failureSwitch: failureSwitch
+                ),
                 provenance: provenance,
                 assemblyReport: report,
                 rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 3_840),
@@ -1394,6 +1398,15 @@ import Testing
             policy: GeneratedSignalAnalyzerPresets.nrf52840Static().pacing,
             initialFrameOriginMicroseconds: 0
         )
+        guard
+            var health = HostEndpointHealthController(
+                initialHealth: endpoint.health(),
+                inputIsEligible: false
+            )
+        else {
+            Issue.record("Static nRF endpoint did not start healthy")
+            return
+        }
         application.withAddressStableOwner { owner in
             let repository = StaticNRFPresentationInputRepository()
             #expect(
@@ -1411,6 +1424,7 @@ import Testing
                     application: &owner,
                     profile: &profile,
                     pacing: &pacing,
+                    health: &health,
                     endpoint: &endpoint,
                     provenance: provenance,
                     renderSnapshotVersion: first.provenance.semanticRevision.rawValue,
@@ -1422,13 +1436,14 @@ import Testing
                 application: &owner,
                 profile: &profile,
                 pacing: &pacing,
+                health: &health,
                 endpoint: &endpoint,
                 provenance: provenance,
                 renderSnapshotVersion: first.provenance.semanticRevision.rawValue,
                 presentationRevision: first.presentationRevision
             )
             switch result {
-            case .completed(let reasons, let applicationResult, let presentation):
+            case .completed(let reasons, let applicationResult, let presentation, let healthResult):
                 #expect(reasons == .admittedWork)
                 guard case .completed(let summary) = applicationResult else {
                     Issue.record("Paced application failed: \(applicationResult)")
@@ -1444,11 +1459,14 @@ import Testing
                             )
                         )
                 )
+                #expect(healthResult == .unchanged(inputEligible: true))
             default:
                 Issue.record("Paced presentation failed: \(result)")
             }
             #expect(!pacing.opportunityIsActive)
             #expect(profile.storageLifetimeState == .idle)
+            let inputIsEligible = owner.inputIsEligible
+            #expect(inputIsEligible)
             owner.withInteraction { state in
                 #expect(state.committedRecordCount == 6)
             }
@@ -1486,13 +1504,14 @@ import Testing
                 application: &owner,
                 profile: &profile,
                 pacing: &pacing,
+                health: &health,
                 endpoint: &endpoint,
                 provenance: next.provenance,
                 renderSnapshotVersion: next.provenance.semanticRevision.rawValue,
                 presentationRevision: next.presentationRevision
             )
             switch second {
-            case .completed(let reasons, let applicationResult, let presentation):
+            case .completed(let reasons, let applicationResult, let presentation, let healthResult):
                 #expect(reasons == .admittedWork)
                 guard case .completed(let summary) = applicationResult else {
                     Issue.record("Second paced application failed: \(applicationResult)")
@@ -1509,9 +1528,72 @@ import Testing
                             )
                         )
                 )
+                #expect(healthResult == .unchanged(inputEligible: true))
             default:
                 Issue.record("Second paced presentation failed: \(second)")
             }
+            #expect(profile.storageLifetimeState == .idle)
+            #expect(!pacing.opportunityIsActive)
+
+            guard let failedIdentity = identities.reserve() else {
+                Issue.record("Static nRF failure identity was unavailable")
+                return
+            }
+            #expect(
+                StaticSignalAnalyzerNRFEndpointFactory.installExpectedProvenance(
+                    failedIdentity.provenance,
+                    endpoint: &endpoint
+                )
+            )
+            failureSwitch.shouldFail = true
+            #expect(pacing.recordAcceptedFact(at: 500_001) == .success(.requestWake))
+            let failed = StaticSignalAnalyzerNRFPacedApplicationStage.serviceAndPresent(
+                at: 750_000,
+                application: &owner,
+                profile: &profile,
+                pacing: &pacing,
+                health: &health,
+                endpoint: &endpoint,
+                provenance: failedIdentity.provenance,
+                renderSnapshotVersion: failedIdentity.provenance.semanticRevision.rawValue,
+                presentationRevision: failedIdentity.presentationRevision
+            )
+            guard case .completed(_, .completed, let presentation, let healthResult) = failed
+            else {
+                Issue.record("Failed transport did not drain: \(failed)")
+                return
+            }
+            #expect(
+                presentation
+                    == .handoff(
+                        .offered(
+                            FrameOfferResult(disposition: .accepted, failure: nil)!,
+                            .committed(failedIdentity.presentationRevision)
+                        )
+                    )
+            )
+            #expect(
+                healthResult
+                    == .transition(
+                        .backendOperationalFailure(
+                            fact: GiftUIFailureFact(
+                                condition: .requiredFacilityUnavailable,
+                                origin: .presentationIntegration,
+                                affectedScope: .component,
+                                containment: .contained
+                            ),
+                            effects: [
+                                .drainTransferredStream,
+                                .updateEndpointHealth,
+                                .quiesceInput,
+                            ]
+                        )
+                    )
+            )
+            let inputAfterFailure = owner.inputIsEligible
+            #expect(!inputAfterFailure)
+            #expect(!health.inputIsEligible)
+            #expect(health.requiresFreshConstruction)
             #expect(profile.storageLifetimeState == .idle)
             #expect(!pacing.opportunityIsActive)
         }

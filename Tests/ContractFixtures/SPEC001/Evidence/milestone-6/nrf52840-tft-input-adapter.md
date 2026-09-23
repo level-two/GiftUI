@@ -972,3 +972,11 @@ one `requiredFacilityUnavailable` health fact, drains the reservation, and
 refuses another frame from the same target. Host fixtures cover failure on
 the first and later payloads. Firmware health consumption and reconstruction
 remain open.
+
+The paced host fixture now runs two accepted frames and then forces a failed
+synchronous write on a third frame. That frame retains accepted disposition
+and drains, while target health reports one unavailable failure. The shared
+endpoint-health controller returns the required backend failure fact and
+effects, makes input ineligible, and requires fresh construction before the
+paced opportunity ends. Firmware residual-policy routing and reconstruction
+remain open.

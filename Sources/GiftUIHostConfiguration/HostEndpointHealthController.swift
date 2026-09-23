@@ -147,6 +147,22 @@ package struct HostEndpointHealthController: Sendable {
         return .freshConstructionRequired(reason)
     }
 
+    /// Enables input only after the accepted offer has been reconciled with
+    /// the target's current healthy state.
+    package mutating func enableInputAfterCommittedOffer<Source: MVPHostEndpointHealthSource>(
+        from source: borrowing Source
+    ) -> Bool {
+        let health = source.health()
+        guard !requiresFreshConstruction,
+            health.state == .available,
+            health.transitionCount == observedTransitionCount,
+            health.operationalCount == observedOperationalCount,
+            health.failureCount == observedFailureCount
+        else { return false }
+        inputIsEligible = true
+        return true
+    }
+
     private mutating func failClosed(
         _ error: HostEndpointHealthError
     ) -> Result<HostEndpointHealthTransition, HostEndpointHealthError> {

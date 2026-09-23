@@ -22,7 +22,8 @@ package enum StaticSignalAnalyzerNRFPacedPresentationResult: Equatable, Sendable
     case completed(
         reasons: ExecutionWakeReasons,
         application: StaticSignalAnalyzerNRFApplicationOpportunityResult,
-        presentation: StaticSignalAnalyzerNRFPresentationTransactionResult?
+        presentation: StaticSignalAnalyzerNRFPresentationTransactionResult?,
+        health: StaticSignalAnalyzerNRFPresentationHealthResult
     )
 }
 
@@ -36,6 +37,7 @@ package enum StaticSignalAnalyzerNRFPacedApplicationStage {
         application: inout StaticSignalAnalyzerNRFApplicationOwner,
         profile: inout StaticSignalAnalyzerNRFProductionProfileBinding,
         pacing: inout HostWakePacingController,
+        health: inout HostEndpointHealthController,
         endpoint: inout StaticSignalAnalyzerNRFEndpoint<Target>,
         provenance: FrameProvenance,
         renderSnapshotVersion: UInt32,
@@ -86,6 +88,12 @@ package enum StaticSignalAnalyzerNRFPacedApplicationStage {
         } else {
             presentation = nil
         }
+        let healthResult = StaticSignalAnalyzerNRFPresentationHealth.reconcile(
+            presentation: presentation,
+            endpoint: endpoint,
+            application: &application,
+            controller: &health
+        )
 
         let idle = ExecutionContext(
             cycle: nil,
@@ -100,7 +108,8 @@ package enum StaticSignalAnalyzerNRFPacedApplicationStage {
         return .completed(
             reasons: reasons,
             application: applicationResult,
-            presentation: presentation
+            presentation: presentation,
+            health: healthResult
         )
     }
 

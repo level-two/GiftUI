@@ -1205,7 +1205,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       partial transfer even on the first payload: the display target records
       one unavailable-health failure, drains the accepted frame, and refuses
       another reservation until reconstruction. Focused host fixtures cover
-      first and later payload failure. Host health consumption remains open.
+      first and later payload failure. The paced stage now consumes target
+      health after the accepted stream drains. A healthy committed offer
+      enables input; a failed third offer in the host fixture produces the
+      required backend failure transition, quiesces input, and requires fresh
+      construction before the opportunity closes. Firmware residual-policy
+      routing and reconstruction remain open.
       The Static nRF endpoint now owns one exact 3,840-byte raster tile and
       240-byte coverage map, with raster work limits derived from 150
       operations across the full 480 x 320 surface. A production render-offer
