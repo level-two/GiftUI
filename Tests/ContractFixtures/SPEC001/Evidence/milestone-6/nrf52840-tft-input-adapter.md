@@ -1019,3 +1019,13 @@ exact deadline, maximum slice, watchdog/clock errors, and clock regression.
 The checked hardware-free build retains the waiter and passes ABI,
 zero-heap, symbol, RAM, and flash gates at 184,128 RAM bytes and 34,812 flash
 bytes. The production Static pacing loop and active watchdog remain open.
+
+A retained C lifecycle entry now accepts device and application callbacks. A
+hardware-free fixture verifies side-effect-free validation before device
+setup, partial initialization cleanup, teardown after attempted activation,
+touch/clock/application/deadline failures, two paced service opportunities,
+and reverse-order cleanup with original-error precedence. The entry is not
+yet called by firmware `main`; the production Swift application callback set
+and physical calibration remain open. The checked hardware-free image retains
+the lifecycle symbol and passes the ABI, zero-heap, required-symbol, RAM, and
+flash gates at 184,128 RAM bytes and 35,100 flash bytes. No board was flashed.

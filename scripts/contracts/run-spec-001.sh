@@ -177,6 +177,7 @@ if [[ "${profile}" == "nrf52840-embedded" ]]; then
     "${SCRIPT_DIR}/check-spec-001-nrf-static-host-clock.sh"
     "${SCRIPT_DIR}/check-spec-001-nrf-static-host-storage.sh"
     "${SCRIPT_DIR}/check-spec-001-nrf-static-host-scheduler.sh"
+    "${SCRIPT_DIR}/check-spec-001-nrf-static-host-lifecycle.sh"
     "${SCRIPT_DIR}/check-spec-001-nrf-input-storage-ownership.sh"
     "${SCRIPT_DIR}/run-spec-015.sh" --profile "${profile}"
     spec015_run_id="$(cat "${PROJECT_ROOT}/.build/contract-reports/spec-015/latest-${profile}.txt")"

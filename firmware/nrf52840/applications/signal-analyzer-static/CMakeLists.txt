@@ -19,6 +19,7 @@ target_sources(app PRIVATE
     src/main.c
     src/static_input_bridge.c
     src/static_host_clock.c
+    src/static_host_lifecycle.c
     src/static_host_scheduler.c
     src/static_touch_pipeline.c
     src/storage.c

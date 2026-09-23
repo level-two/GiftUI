@@ -906,6 +906,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       hook; its C99 fixture covers deadlines, clock regression, and watchdog
       failure, and the checked firmware retains the scheduler symbol. No
       hardware watchdog is enabled in the current configuration.
+      A retained target lifecycle entry now accepts injected device and
+      application callbacks, validates before hardware construction, services
+      touch and paced deadlines, and tears down the application, display, and
+      touch in reverse order. Its C99 fixture proves partial initialization,
+      activation failure, service failure, deadline failure, success, and
+      cleanup precedence. Firmware `main` does not call this entry until the
+      production Swift callbacks are linked.
       Static host-loop composition, calibrated polling-loop activation,
       connected stack measurement, and flashing remain open. A
       target-local,
