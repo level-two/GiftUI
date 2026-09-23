@@ -1328,3 +1328,14 @@ operation and glyph totals without retaining a frame. The cross-build uses
 at `.build/contract-reports/spec-001/20260923T221350Z-24249/nrf52840-embedded/`.
 The sink is a startup verification owner; RGB565 raster submission and the
 production opportunity loop remain open.
+
+The firmware now compiles the shared RGB565 tiled workspace and fill
+rasterizer over the existing 3,840-byte raster region and 240-byte coverage
+map. A retained startup probe and exact-source native run write edge pixels,
+check big-endian bytes and coverage bits, reset a second tile, and rasterize
+a clipped six-pixel fill through the shared implementation. The registered
+nRF SPEC-001 run passed at
+`.build/contract-reports/spec-001/20260923T222102Z-27420/nrf52840-embedded/`.
+The checked image uses 187,904 RAM and 158,316 flash bytes. Glyph and stroke
+rasterization, synchronous display submission, and the production host loop
+remain open.

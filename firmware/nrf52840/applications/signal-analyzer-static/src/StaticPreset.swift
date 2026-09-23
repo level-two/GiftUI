@@ -648,6 +648,79 @@ public func giftUISignalAnalyzerFullCanvasValid(
     return resolved.isPublished || drawing.isActive ? 0 : 1
 }
 
+@_cdecl("giftui_signal_analyzer_tile_valid")
+public func giftUISignalAnalyzerTileValid(
+    _ raster: UnsafeMutableRawPointer?, _ rasterBytes: UInt32,
+    _ coverage: UnsafeMutableRawPointer?, _ coverageBytes: UInt32
+) -> UInt32 {
+    guard let raster, rasterBytes == 3_840,
+        let coverage, coverageBytes == 240,
+        let surface = Rect(
+            origin: Point(x: 0, y: 0),
+            size: Size(width: 480, height: 320)!
+        ),
+        let descriptor = RasterSurfaceDescriptor(
+            bounds: surface, encoding: .rgb565BigEndian,
+            bytesPerRow: 960, realization: .tiled,
+            regionWidth: 480, regionHeight: 4
+        ),
+        let storage = StaticSignalAnalyzerNRFTileStorage(
+            region: UnsafeMutableRawBufferPointer(
+                start: raster, count: Int(rasterBytes)
+            ),
+            coverage: UnsafeMutableRawBufferPointer(
+                start: coverage, count: Int(coverageBytes)
+            )
+        ),
+        var tile = RGB565TileWorkspace(descriptor: descriptor, storage: storage),
+        let first = Rect(
+            origin: Point(x: 0, y: 0), size: Size(width: 480, height: 4)!
+        ),
+        let second = Rect(
+            origin: Point(x: 0, y: 4), size: Size(width: 480, height: 4)!
+        ),
+        tile.beginTile(first),
+        tile.replacePixel(
+            at: Point(x: 0, y: 0),
+            with: CanonicalEncodedPixel(color: .white, encoding: .rgb565BigEndian)
+        ),
+        tile.replacePixel(
+            at: Point(x: 479, y: 3),
+            with: CanonicalEncodedPixel(color: .black, encoding: .rgb565BigEndian)
+        ),
+        tile.storage.byte(at: 0) == 0xff,
+        tile.storage.byte(at: 1) == 0xff,
+        tile.storage.isAffected(pixelIndex: 0),
+        tile.storage.isAffected(pixelIndex: 1_919),
+        !tile.storage.isAffected(pixelIndex: 1_918),
+        tile.finishTile(),
+        tile.beginTile(second),
+        !tile.storage.isAffected(pixelIndex: 0),
+        !tile.storage.isAffected(pixelIndex: 1_919),
+        tile.storage.byte(at: 0) == 0,
+        tile.storage.byte(at: 1) == 0
+    else { return 0 }
+    let fillResult = RasterFillCoverage.rasterize(
+            FillRectOperation(
+                bounds: Rect(
+                    origin: Point(x: 1, y: 4),
+                    size: Size(width: 3, height: 2)!
+                )!,
+                clip: second,
+                color: .white
+            ), descriptor: descriptor, damageBounds: second
+        ) { point, pixel in tile.replacePixel(at: point, with: pixel) }
+    guard fillResult == .completed(pixelCount: 6),
+        tile.storage.isAffected(pixelIndex: 1),
+        tile.storage.isAffected(pixelIndex: 483),
+        !tile.storage.isAffected(pixelIndex: 0),
+        tile.storage.byte(at: 2) == 0xff,
+        tile.storage.byte(at: 3) == 0xff,
+        tile.finishTile()
+    else { return 0 }
+    return 1
+}
+
 @_cdecl("giftui_signal_analyzer_source_valid")
 public func giftUISignalAnalyzerSourceValid() -> UInt32 {
     var source = StaticSignalAnalyzerNRFDeterministicSource()
