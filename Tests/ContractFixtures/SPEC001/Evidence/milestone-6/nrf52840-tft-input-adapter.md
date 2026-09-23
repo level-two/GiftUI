@@ -1441,3 +1441,15 @@ passed at
 `.build/contract-reports/spec-001/20260923T232432Z-53090/nrf52840-embedded/`.
 The checked image uses 187,968 RAM and 206,236 flash bytes. A complete
 five-Canvas render offer through this endpoint remains open.
+
+The exact firmware-source probe now offers both the empty-capture and
+one-transition complete five-Canvas frames through the approved one-shot
+endpoint, shared operation-major raster session, bounded display target, and
+validating synchronous RGB565 write callback. It rebinds the endpoint's
+provenance validator between accepted offers and checks two body calls and
+two reservations. The hardware-free nRF image and exact-source native probe
+passed in the registered SPEC-001 run at
+`.build/contract-reports/spec-001/20260923T233125Z-55415/nrf52840-embedded/`.
+The checked image uses 187,968 RAM and 218,572 flash bytes. The callback is
+still a validator; production ILI9486 submission, recurring opportunities,
+and host lifecycle ownership remain open.

@@ -1646,8 +1646,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       borrowed horizontal runs. The reference bitmap records and payload are
       checked against the host catalogue. A synchronous ILI9486-shaped
       callback validates each run, and an injected post-begin refusal verifies
-      whole-stream discard. The latest registered hardware-free gate passes
-      with 187,904 RAM and 197,628 flash bytes. Real driver submission,
+      whole-stream discard. Both the empty and one-transition complete Canvas
+      frames now pass through the approved one-shot endpoint, shared raster
+      session, and display target in the exact firmware-source probe. The
+      latest registered hardware-free gate passes with 187,968 RAM and
+      218,572 flash bytes. Real driver submission,
       repeated opportunities, normalized action routing, and the firmware
       lifecycle join remain open; see the [nRF T6.8 evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md).
 

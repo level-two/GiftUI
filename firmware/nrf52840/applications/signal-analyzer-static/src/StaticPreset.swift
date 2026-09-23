@@ -577,6 +577,24 @@ public func giftUISignalAnalyzerFullCanvasValid(
         rasterSink.tileVisits > 0, rasterSink.submittedRuns > 0,
         rasterSink.submittedBytes > 0
     else { return 0 }
+    let firstProvenance = FrameProvenance(
+        cycle: RunCycleID(rawValue: 1),
+        semanticRevision: SemanticRevision(rawValue: semantic.revision),
+        candidateFrame: CandidateFrameID(rawValue: 1)
+    )
+    guard var fullEndpoint = giftUIStaticEmbeddedEndpoint(
+        raster: raster, coverage: coverage,
+        provenance: firstProvenance,
+        write: giftUISignalAnalyzerProbeRGB565
+    ), giftUIStaticEmbeddedOffer(
+        endpoint: &fullEndpoint,
+        provenance: firstProvenance,
+        semantic: semantic, layout: resolved,
+        textRegion: UnsafeMutableRawBufferPointer(
+            start: profile.advanced(by: 9_184), count: 4_704
+        ), drawing: drawing, expectedHeader: renderHeader
+    ), fullEndpoint.bodyCallCount == 1
+    else { return 0 }
     guard var refusingSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(
         rasterRegion: UnsafeMutableRawBufferPointer(
             start: raster, count: Int(rasterBytes)
@@ -697,6 +715,25 @@ public func giftUISignalAnalyzerFullCanvasValid(
         updatedRasterSink.tileVisits > 0,
         updatedRasterSink.submittedRuns > 0,
         updatedRasterSink.submittedBytes > 0
+    else { return 0 }
+    let secondProvenance = FrameProvenance(
+        cycle: RunCycleID(rawValue: 2),
+        semanticRevision: SemanticRevision(rawValue: semantic.revision),
+        candidateFrame: CandidateFrameID(rawValue: 2)
+    )
+    guard fullEndpoint.replaceEnvelopeValidator(
+        StaticSignalAnalyzerNRFEmbeddedProbeEnvelope(
+            expected: secondProvenance
+        )
+    ), giftUIStaticEmbeddedOffer(
+        endpoint: &fullEndpoint,
+        provenance: secondProvenance,
+        semantic: semantic, layout: updatedLayout,
+        textRegion: UnsafeMutableRawBufferPointer(
+            start: profile.advanced(by: 9_184), count: 4_704
+        ), drawing: drawing, expectedHeader: updatedRenderHeader
+    ), fullEndpoint.bodyCallCount == 2,
+        fullEndpoint.reservationCallCount == 2
     else { return 0 }
     drawing.reset()
     layoutWorkspace.packed.reset()
@@ -1054,6 +1091,120 @@ public func giftUISignalAnalyzerTileValid(
         endpoint.sink.isIdleForOffer
     else { return 0 }
     return 1
+}
+
+private typealias StaticSignalAnalyzerNRFEmbeddedDisplay =
+    StaticSignalAnalyzerNRFDisplayTarget<StaticSignalAnalyzerNRFILI9486Transport>
+
+private typealias StaticSignalAnalyzerNRFEmbeddedSession =
+    OperationMajorRGB565RasterSession<
+        StaticSignalAnalyzerNRFTileStorage,
+        StaticSignalAnalyzerNRFEmbeddedDisplay,
+        StaticSignalAnalyzerNRFEmbeddedFontMetrics,
+        StaticSignalAnalyzerNRFEmbeddedFontRaster
+    >
+
+private typealias StaticSignalAnalyzerNRFEmbeddedEndpoint =
+    OneShotRasterBackendEndpoint<
+        StaticSignalAnalyzerNRFEmbeddedSession,
+        StaticSignalAnalyzerNRFEmbeddedFontMetrics,
+        StaticSignalAnalyzerNRFEmbeddedFontRaster,
+        StaticSignalAnalyzerNRFEmbeddedProbeEnvelope
+    >
+
+private func giftUIStaticEmbeddedEndpoint(
+    raster: UnsafeMutableRawPointer,
+    coverage: UnsafeMutableRawPointer,
+    provenance: FrameProvenance,
+    write: StaticSignalAnalyzerNRFEmbeddedPixelWrite
+) -> StaticSignalAnalyzerNRFEmbeddedEndpoint? {
+    guard let surface = Rect(
+        origin: Point(x: 0, y: 0),
+        size: Size(width: 480, height: 320)!
+    ), let descriptor = RasterSurfaceDescriptor(
+        bounds: surface, encoding: .rgb565BigEndian,
+        bytesPerRow: 960, realization: .tiled,
+        regionWidth: 480, regionHeight: 4
+    ), let storage = StaticSignalAnalyzerNRFTileStorage(
+        region: UnsafeMutableRawBufferPointer(start: raster, count: 3_840),
+        coverage: UnsafeMutableRawBufferPointer(start: coverage, count: 240)
+    ), let target = StaticSignalAnalyzerNRFDisplayTarget(
+        transport: StaticSignalAnalyzerNRFILI9486Transport(write: write),
+        rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 3_840)
+    ), let limits = RasterPayloadLimits(
+        maximumRasterBytes: 3_840, maximumPayloadBytes: 3_840,
+        maximumRegionsPerPayload: 1,
+        maximumRegionSubmissionsPerFrame: 23_040_000,
+        maximumTileVisitsPerFrame: 12_000,
+        maximumInFlightPayloads: 1,
+        maximumGlyphRasterBytes: 3_840,
+        maximumStrokeWorkspaceBytes: 3_840
+    ), let session = StaticSignalAnalyzerNRFEmbeddedSession(
+        capacity: RenderSinkCapacity(
+            maximumOperations: 150, maximumPositionedGlyphs: 224
+        ), descriptor: descriptor, payloadLimits: limits,
+        metrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
+        raster: StaticSignalAnalyzerNRFEmbeddedFontRaster(),
+        realization: RasterRealizationID(rawValue: 0),
+        storage: storage, target: target
+    ) else { return nil }
+    let effective = EffectiveRasterPresentation(
+        operations: [
+            .opaqueRectangles, .positionedText,
+            .straightLineStrokes, .clipping, .damage,
+        ],
+        extent: CapabilityExtent(width: 480, height: 320)!,
+        regionExtent: CapabilityExtent(width: 480, height: 4)!,
+        rowBytes: CapabilityByteCount(rawValue: 960),
+        operationStream: .synchronousBorrowedOneShot,
+        encoding: .rgb565BigEndian,
+        submissionLifetime: .synchronousBorrow,
+        handoff: .synchronous,
+        realization: .tiled,
+        requiredRasterBytes: CapabilityByteCount(rawValue: 3_840),
+        requiredPayloadBytes: CapabilityByteCount(rawValue: 3_840),
+        inFlightCount: 1,
+        requiredInFlightBytes: CapabilityByteCount(rawValue: 3_840)
+    )
+    return StaticSignalAnalyzerNRFEmbeddedEndpoint(
+        effectivePresentation: effective, descriptor: descriptor,
+        payloadLimits: limits,
+        textMetrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
+        textRaster: StaticSignalAnalyzerNRFEmbeddedFontRaster(),
+        textRasterRealization: RasterRealizationID(rawValue: 0),
+        envelopeValidator: StaticSignalAnalyzerNRFEmbeddedProbeEnvelope(
+            expected: provenance
+        ), sink: session, startupFailure: nil
+    )
+}
+
+private func giftUIStaticEmbeddedOffer(
+    endpoint: inout StaticSignalAnalyzerNRFEmbeddedEndpoint,
+    provenance: FrameProvenance,
+    semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
+    layout: StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView,
+    textRegion: UnsafeMutableRawBufferPointer,
+    drawing: StaticSignalAnalyzerNRFDrawingWorkspace,
+    expectedHeader: RenderPlanHeader
+) -> Bool {
+    let result = endpoint.offer(provenance: provenance) { sink in
+        switch StaticSignalAnalyzerNRFEmbeddedRenderPreflight.streamCombined(
+            semantic: semantic, layout: layout,
+            textRegion: textRegion, drawing: drawing,
+            expectedHeader: expectedHeader, sink: &sink
+        ) {
+        case .success(let header):
+            return header == expectedHeader ? .complete : .contractViolation
+        case .failure(let error):
+            sink.retainProducerError(error)
+            switch error {
+            case .capacityExhausted: return .insufficientCapacity
+            case .sinkRefused: return .endpointRefused
+            default: return .producerFailed
+            }
+        }
+    }
+    return result == FrameOfferResult(disposition: .accepted, failure: nil)
 }
 
 private struct StaticSignalAnalyzerNRFEmbeddedProbeEnvelope:
