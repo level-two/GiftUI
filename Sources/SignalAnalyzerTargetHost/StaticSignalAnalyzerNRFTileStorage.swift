@@ -72,4 +72,21 @@ package struct StaticSignalAnalyzerNRFTileStorage: RGB565TileStorage {
     package borrowing func byte(at offset: UInt32) -> UInt8? {
         offset < byteCapacity ? region[Int(offset)] : nil
     }
+
+    package borrowing func withBorrowedRun<Result>(
+        byteOffset: UInt32,
+        byteCount: UInt32,
+        _ body: (UnsafeRawBufferPointer) -> Result
+    ) -> Result? {
+        guard byteCount > 0, byteOffset < byteCapacity,
+            byteCount <= byteCapacity - byteOffset,
+            let base = region.baseAddress
+        else { return nil }
+        return body(
+            UnsafeRawBufferPointer(
+                start: base.advanced(by: Int(byteOffset)),
+                count: Int(byteCount)
+            )
+        )
+    }
 }

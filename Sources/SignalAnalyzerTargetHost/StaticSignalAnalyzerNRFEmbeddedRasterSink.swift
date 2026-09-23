@@ -6,6 +6,8 @@
         package var capacity: RenderSinkCapacity { counts.capacity }
         package private(set) var paintedPixels: UInt32 = 0
         package private(set) var tileVisits: UInt32 = 0
+        package private(set) var submittedRuns: UInt32 = 0
+        package private(set) var submittedBytes: UInt32 = 0
         package private(set) var isFinished = false
 
         private var counts = StaticSignalAnalyzerNRFEmbeddedCountingSink()
@@ -56,6 +58,8 @@
             var workspace = tile
             var pixels = paintedPixels
             var visits = tileVisits
+            var runs = submittedRuns
+            var bytes = submittedBytes
             let descriptor = workspace.descriptor
             let result = OperationMajorTileTraversal.visit(
                 operationClip: operation.clip,
@@ -74,10 +78,24 @@
                     default: return false
                     }
                 },
-                { _ in
-                    let next = visits.addingReportingOverflow(1)
-                    guard !next.overflow else { return false }
-                    visits = next.partialValue
+                { completedTile in
+                    guard
+                        let emitted = StaticSignalAnalyzerNRFEmbeddedTileRuns.emit(
+                            completedTile,
+                            { _, _, pixelCount, borrowed in
+                                borrowed.count == Int(pixelCount) * 2
+                            }
+                        )
+                    else { return false }
+                    let nextVisits = visits.addingReportingOverflow(1)
+                    let nextRuns = runs.addingReportingOverflow(emitted.runCount)
+                    let nextBytes = bytes.addingReportingOverflow(emitted.byteCount)
+                    guard !nextVisits.overflow, !nextRuns.overflow,
+                        !nextBytes.overflow
+                    else { return false }
+                    visits = nextVisits.partialValue
+                    runs = nextRuns.partialValue
+                    bytes = nextBytes.partialValue
                     return true
                 }
             )
@@ -87,6 +105,8 @@
             tile = workspace
             paintedPixels = pixels
             tileVisits = visits
+            submittedRuns = runs
+            submittedBytes = bytes
             return true
         }
 
@@ -105,6 +125,8 @@
             var workspace = tile
             var pixels = paintedPixels
             var visits = tileVisits
+            var runs = submittedRuns
+            var bytes = submittedBytes
             let descriptor = workspace.descriptor
             let result = OperationMajorTileTraversal.visit(
                 operationClip: glyphHeader.clip,
@@ -126,10 +148,24 @@
                     default: return false
                     }
                 },
-                { _ in
-                    let next = visits.addingReportingOverflow(1)
-                    guard !next.overflow else { return false }
-                    visits = next.partialValue
+                { completedTile in
+                    guard
+                        let emitted = StaticSignalAnalyzerNRFEmbeddedTileRuns.emit(
+                            completedTile,
+                            { _, _, pixelCount, borrowed in
+                                borrowed.count == Int(pixelCount) * 2
+                            }
+                        )
+                    else { return false }
+                    let nextVisits = visits.addingReportingOverflow(1)
+                    let nextRuns = runs.addingReportingOverflow(emitted.runCount)
+                    let nextBytes = bytes.addingReportingOverflow(emitted.byteCount)
+                    guard !nextVisits.overflow, !nextRuns.overflow,
+                        !nextBytes.overflow
+                    else { return false }
+                    visits = nextVisits.partialValue
+                    runs = nextRuns.partialValue
+                    bytes = nextBytes.partialValue
                     return true
                 }
             )
@@ -139,6 +175,8 @@
             tile = workspace
             paintedPixels = pixels
             tileVisits = visits
+            submittedRuns = runs
+            submittedBytes = bytes
             return true
         }
 
@@ -158,6 +196,8 @@
             var workspace = tile
             var pixels = paintedPixels
             var visits = tileVisits
+            var runs = submittedRuns
+            var bytes = submittedBytes
             let descriptor = workspace.descriptor
             let result = OperationMajorTileTraversal.visit(
                 operationClip: strokeView.header.inheritedClip,
@@ -176,10 +216,24 @@
                     default: return false
                     }
                 },
-                { _ in
-                    let next = visits.addingReportingOverflow(1)
-                    guard !next.overflow else { return false }
-                    visits = next.partialValue
+                { completedTile in
+                    guard
+                        let emitted = StaticSignalAnalyzerNRFEmbeddedTileRuns.emit(
+                            completedTile,
+                            { _, _, pixelCount, borrowed in
+                                borrowed.count == Int(pixelCount) * 2
+                            }
+                        )
+                    else { return false }
+                    let nextVisits = visits.addingReportingOverflow(1)
+                    let nextRuns = runs.addingReportingOverflow(emitted.runCount)
+                    let nextBytes = bytes.addingReportingOverflow(emitted.byteCount)
+                    guard !nextVisits.overflow, !nextRuns.overflow,
+                        !nextBytes.overflow
+                    else { return false }
+                    visits = nextVisits.partialValue
+                    runs = nextRuns.partialValue
+                    bytes = nextBytes.partialValue
                     return true
                 }
             )
@@ -189,6 +243,8 @@
             tile = workspace
             paintedPixels = pixels
             tileVisits = visits
+            submittedRuns = runs
+            submittedBytes = bytes
             return true
         }
 

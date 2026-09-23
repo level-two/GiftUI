@@ -1381,3 +1381,13 @@ path remains unchanged. The registered nRF SPEC-001 run passed at
 The checked image uses 187,904 RAM and 195,820 flash bytes. The tile consumer
 currently verifies visits; it does not yet submit borrowed RGB565 runs to the
 ILI9486 driver. The production opportunity loop is also still open.
+
+Coverage is now scanned into horizontal RGB565 runs borrowed directly from
+the one tile region. The retained probe checks two exact 2-pixel runs at
+rows 12 and 13, including four big-endian bytes in each. Both complete
+Canvas raster frames report nonzero run and byte counts through this same
+borrowed-run path. The registered nRF SPEC-001 run passed at
+`.build/contract-reports/spec-001/20260923T225208Z-40556/nrf52840-embedded/`.
+The checked image uses 187,904 RAM and 197,084 flash bytes. The run callback
+currently validates payload size; synchronous ILI9486 submission and the
+production application loop remain open.

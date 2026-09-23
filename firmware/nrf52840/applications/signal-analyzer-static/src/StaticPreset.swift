@@ -574,7 +574,8 @@ public func giftUISignalAnalyzerFullCanvasValid(
             sink: &rasterSink
         ), rasterHeader == renderHeader,
         rasterSink.isFinished, rasterSink.paintedPixels > 0,
-        rasterSink.tileVisits > 0
+        rasterSink.tileVisits > 0, rasterSink.submittedRuns > 0,
+        rasterSink.submittedBytes > 0
     else { return 0 }
     var occurrence: UInt16 = 1
     while occurrence < 5 {
@@ -678,7 +679,9 @@ public func giftUISignalAnalyzerFullCanvasValid(
         ), updatedRasterHeader == updatedRenderHeader,
         updatedRasterSink.isFinished,
         updatedRasterSink.paintedPixels > 0,
-        updatedRasterSink.tileVisits > 0
+        updatedRasterSink.tileVisits > 0,
+        updatedRasterSink.submittedRuns > 0,
+        updatedRasterSink.submittedBytes > 0
     else { return 0 }
     drawing.reset()
     layoutWorkspace.packed.reset()
@@ -794,6 +797,7 @@ public func giftUISignalAnalyzerTileValid(
         origin: Point(x: 0, y: 12), size: Size(width: 2, height: 2)!
     ) else { return 0 }
     var consumedTiles: UInt32 = 0
+    var consumedRuns: UInt32 = 0
     let traversal = OperationMajorTileTraversal.visit(
         operationClip: small, damageBounds: fourth, workspace: &tile,
         { damage, replace in
@@ -804,13 +808,26 @@ public func giftUISignalAnalyzerTileValid(
         },
         { workspace in
             guard workspace.storage.isAffected(pixelIndex: 0),
-                workspace.storage.isAffected(pixelIndex: 481)
+                workspace.storage.isAffected(pixelIndex: 481),
+                let emitted = StaticSignalAnalyzerNRFEmbeddedTileRuns.emit(
+                    workspace,
+                    { x, y, pixels, bytes in
+                        guard x == 0, UInt32(y) == 12 + consumedRuns,
+                            pixels == 2, bytes.count == 4,
+                            bytes[0] == 0xff, bytes[1] == 0xff,
+                            bytes[2] == 0xff, bytes[3] == 0xff
+                        else { return false }
+                        consumedRuns += 1
+                        return true
+                    }
+                ), emitted.runCount == 2, emitted.byteCount == 8
             else { return false }
             consumedTiles += 1
             return true
         }
     )
     guard traversal == .completed(tileVisits: 1), consumedTiles == 1,
+        consumedRuns == 2,
         tile.activeTile == nil
     else { return 0 }
     return 1
