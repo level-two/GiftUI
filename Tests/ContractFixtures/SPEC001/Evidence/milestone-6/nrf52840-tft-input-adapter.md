@@ -1411,3 +1411,13 @@ SPEC-001 run passed at
 `.build/contract-reports/spec-001/20260923T230313Z-45398/nrf52840-embedded/`.
 The checked image uses 187,904 RAM and 197,628 flash bytes. The real driver
 and production lifecycle are not yet joined.
+
+The approved Static nRF `DisplayTarget` and ILI9486 transport now compile in
+the Embedded Swift image. The exact-source native probe reserves a frame,
+writes one RGB565 run through its bounded writer, submits synchronously, and
+finishes. A second injected transport refuses the payload; the target reports
+failure after possible acceptance, drains the frame, becomes unavailable,
+and refuses a new reservation. The registered nRF SPEC-001 run passed at
+`.build/contract-reports/spec-001/20260923T231308Z-48272/nrf52840-embedded/`.
+The checked image uses 187,968 RAM and 199,308 flash bytes. The common raster
+session and one-shot endpoint are not yet linked into firmware production.

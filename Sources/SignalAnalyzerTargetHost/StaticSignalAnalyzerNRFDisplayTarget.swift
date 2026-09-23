@@ -143,7 +143,19 @@ where Transport: StaticSignalAnalyzerNRFDisplayTransport {
         guard operationalHealth.state == .available else {
             return .nonRetryableRefusal
         }
-        guard descriptor == StaticSignalAnalyzerNRFAssembly.descriptor(),
+        #if GIFTUI_NRF_EMBEDDED
+            let expectedDescriptor = RasterSurfaceDescriptor(
+                bounds: Rect(
+                    origin: Point(x: 0, y: 0),
+                    size: Size(width: 480, height: 320)!
+                )!,
+                encoding: .rgb565BigEndian, bytesPerRow: 960,
+                realization: .tiled, regionWidth: 480, regionHeight: 4
+            )
+        #else
+            let expectedDescriptor = StaticSignalAnalyzerNRFAssembly.descriptor()
+        #endif
+        guard descriptor == expectedDescriptor,
             payloadCapacityBytes == writer.capacityBytes,
             regionCapacity == writer.regionCapacity
         else { return .failure(.invalidDescriptor) }

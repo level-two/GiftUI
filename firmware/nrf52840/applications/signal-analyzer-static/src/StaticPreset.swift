@@ -871,6 +871,74 @@ public func giftUISignalAnalyzerTileValid(
         consumedRuns == 2,
         tile.activeTile == nil
     else { return 0 }
+    let transport = StaticSignalAnalyzerNRFILI9486Transport(
+        write: giftUISignalAnalyzerProbeRGB565
+    )
+    guard var target = StaticSignalAnalyzerNRFDisplayTarget(
+        transport: transport,
+        rasterRegion: UnsafeMutableRawBufferPointer(
+            start: raster, count: Int(rasterBytes)
+        )
+    ) else { return 0 }
+    let reservation: DisplayReservationID
+    switch target.reserveFrame(
+        descriptor: descriptor, payloadCapacityBytes: 3_840,
+        regionCapacity: 1
+    ) {
+    case .reserved(let value): reservation = value
+    default: return 0
+    }
+    let written = target.withWriter(for: reservation) { writer in
+        guard writer.beginRegion(
+            origin: Point(x: 0, y: 0), pixelCount: 2,
+            encoding: .rgb565BigEndian
+        ), writer.write(byte: 0xff), writer.write(byte: 0xff),
+            writer.write(byte: 0), writer.write(byte: 0),
+            writer.endRegion(), writer.finish()
+        else { return false }
+        return true
+    }
+    guard written == true,
+        target.submitPayload(reservation) == .completed,
+        target.finishFrame(reservation) == .completed
+    else { return 0 }
+    let refusingTransport = StaticSignalAnalyzerNRFILI9486Transport(
+        write: giftUISignalAnalyzerRefuseRGB565
+    )
+    guard var refusingTarget = StaticSignalAnalyzerNRFDisplayTarget(
+        transport: refusingTransport,
+        rasterRegion: UnsafeMutableRawBufferPointer(
+            start: raster, count: Int(rasterBytes)
+        )
+    ) else { return 0 }
+    let refusingReservation: DisplayReservationID
+    switch refusingTarget.reserveFrame(
+        descriptor: descriptor, payloadCapacityBytes: 3_840,
+        regionCapacity: 1
+    ) {
+    case .reserved(let value): refusingReservation = value
+    default: return 0
+    }
+    let refusalWritten = refusingTarget.withWriter(
+        for: refusingReservation
+    ) { writer in
+        guard writer.beginRegion(
+            origin: Point(x: 0, y: 0), pixelCount: 1,
+            encoding: .rgb565BigEndian
+        ), writer.write(byte: 0xff), writer.write(byte: 0xff),
+            writer.endRegion(), writer.finish()
+        else { return false }
+        return true
+    }
+    guard refusalWritten == true,
+        refusingTarget.submitPayload(refusingReservation)
+            == .failureAfterAcceptance(.transportUnavailable),
+        refusingTarget.finishFrame(refusingReservation) == .completed,
+        refusingTarget.reserveFrame(
+            descriptor: descriptor, payloadCapacityBytes: 3_840,
+            regionCapacity: 1
+        ) == .nonRetryableRefusal
+    else { return 0 }
     return 1
 }
 
