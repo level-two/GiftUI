@@ -161,6 +161,31 @@ public func giftUISignalAnalyzerCompactFactValid() -> UInt32 {
     return 1
 }
 
+@_cdecl("giftui_signal_analyzer_compact_ring_valid")
+public func giftUISignalAnalyzerCompactRingValid(
+    _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32
+) -> UInt32 {
+    guard let profile, bytes == 36_368 else { return 0 }
+    let storage = UnsafeMutableRawBufferPointer(start: profile, count: Int(bytes))
+    guard
+        var active = StaticSignalAnalyzerNRFCompactFactRing(
+            storage: UnsafeMutableRawBufferPointer(rebasing: storage[31_632 ..< 33_808])
+        ),
+        var sealed = StaticSignalAnalyzerNRFCompactFactRing(
+            storage: UnsafeMutableRawBufferPointer(rebasing: storage[33_808 ..< 35_984])
+        )
+    else { return 0 }
+    let change = SignalCaptureChange.reset(baseRevision: 0, baselines: .allLow)
+    guard let fact = StaticSignalAnalyzerNRFCompactCaptureFact(
+        sequence: 1, revision: 1, change: change
+    ), active.append(fact), active.seal(into: &sealed),
+        active.count == 0, sealed.count == 1,
+        sealed.takeFirst()?.publication?.change == change,
+        sealed.count == 0
+    else { return 0 }
+    return 1
+}
+
 @_cdecl("giftui_signal_analyzer_capture_region_valid")
 public func giftUISignalAnalyzerCaptureRegionValid(
     _ address: UnsafeMutableRawPointer?, _ bytes: UInt32

@@ -1020,6 +1020,15 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       mutation with sequence and revision checks. The target compiler validates
       its stride at firmware startup. The checked image uses 184,384 RAM and
       47,964 flash bytes; active/sealed fact storage remains open.
+      The capture-only active/sealed rings now occupy the two exact 2,176-byte
+      profile regions, with metadata stored inside each region. Host tests
+      cover capacity, refusal, seal, ordered drain, and reuse; firmware startup
+      exercises the actual C profile storage. The checked image uses 184,384
+      RAM and 48,780 flash bytes. Other fact variants and production admission
+      remain open.
+      The registered nRF SPEC-001 driver passes 230 host tests, seven C HAL
+      fixtures, the ownership probe, and the SPEC-015 cross-build in report
+      `20260923T124615Z-3807`.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

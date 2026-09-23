@@ -9,6 +9,16 @@ stride. Firmware startup checks size, stride, and a portable mutation round
 trip. The hardware-free checked build passed its hard-float, zero-heap,
 forbidden-symbol, required-symbol, and memory gates at 184,384 RAM and 47,964
 flash bytes. The active and sealed admission regions are not yet connected.
+The next slice places a capture-only 32-entry ring in each registered 2,176-byte
+profile region, including its counters. A host fixture covers full-capacity
+refusal, ordered seal/drain, and reuse. The target startup entry borrows the
+actual C profile storage and repeats a one-fact seal/drain check. The checked
+build passes at 184,384 RAM and 48,780 flash bytes. Other fact variants and
+the production callback path remain pending.
+The registered `nrf52840-embedded` SPEC-001 driver then passed 230 host tests,
+seven C HAL fixtures, the ownership probe, and the SPEC-015 cross-build. Its
+immutable report is
+`.build/contract-reports/spec-001/20260923T124615Z-3807/nrf52840-embedded/`.
 
 ## Fixed typed model-location precursor
 

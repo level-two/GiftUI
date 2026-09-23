@@ -555,6 +555,13 @@ before encoding; decoding reconstructs the unchanged portable
 `SignalCaptureChange`. The target compiler checks size, stride, and a mutation
 round trip at startup. The active/sealed rings and state/failure fact paths
 still need to use this record within the registered 2,176-byte regions.
+The capture-only active and sealed rings now borrow those two exact regions.
+Each stores 32 records in 2,048 bytes and keeps count, head, and tail in the
+remaining 128 bytes. Sealing transfers ordered records to an empty, distinct
+sealed region; it refuses an occupied destination. Host tests cover full
+capacity, refusal, seal, ordered drain, and reuse, and firmware startup
+exercises the actual C profile storage. Snapshot, acquisition-state, and
+reserved-failure variants still need target admission and ordering.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact

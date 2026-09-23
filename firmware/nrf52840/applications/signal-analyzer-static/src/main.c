@@ -9,6 +9,8 @@ extern uint32_t giftui_signal_analyzer_storage_bytes(void);
 extern uint32_t giftui_signal_analyzer_capture_layout(void);
 extern uint32_t giftui_signal_analyzer_capture_roundtrip(void);
 extern uint32_t giftui_signal_analyzer_compact_fact_valid(void);
+extern uint32_t giftui_signal_analyzer_compact_ring_valid(
+    void *profile, uint32_t bytes);
 extern uint32_t giftui_signal_analyzer_model_location_valid(void);
 extern uint32_t giftui_signal_analyzer_diagnostic_value_valid(void);
 extern uint32_t giftui_signal_analyzer_capture_region_valid(
@@ -46,6 +48,8 @@ int main(void)
             regions.capture, (uint32_t)regions.capture_bytes,
             regions.raster, (uint32_t)regions.raster_bytes,
             regions.coverage, (uint32_t)regions.coverage_bytes) != 1u ||
+        giftui_signal_analyzer_compact_ring_valid(
+            regions.profile, (uint32_t)regions.profile_bytes) != 1u ||
         ili9486_tile_height() != 4u ||
         ili9486_spi_segment_bytes() != 3840u) {
         return 1;
