@@ -105,6 +105,9 @@ The corresponding target-safe codec now compiles into the nRF image, and a
 host differential fixture compares its entire 3,136-byte region against this
 host codec for a checked measurement and placement. Firmware startup uses the
 actual profile slice for a root-scope probe; complete layout is still open.
+The target codec now also replaces a staged measurement before placement,
+matching the common workspace's modifier update step and refusing updates
+after placement. The host byte comparison covers that replacement.
 The production adapter must still prove every field's range under the real
 hierarchy; an unrepresentable value fails closed, never wraps or clamps.
 

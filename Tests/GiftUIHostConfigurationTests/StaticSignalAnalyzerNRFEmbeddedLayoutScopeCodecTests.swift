@@ -24,6 +24,22 @@ import Testing
             )
             #expect(targetStaged && hostStaged)
             #expect([UInt8](targetRegion) == [UInt8](hostRegion))
+            let revised = LayoutMeasurement(
+                idealSize: Size(width: 260, height: 110)!,
+                resolvedSize: measurement.resolvedSize
+            )
+            #expect(
+                target.replaceMeasurement(
+                    identity: 0xBF7C, idealWidth: 260, idealHeight: 110,
+                    width: 240, height: 100, at: 0, in: targetRegion
+                )
+            )
+            #expect(
+                host.replaceMeasurement(
+                    revised, for: 0xBF7C, at: 0, in: hostRegion
+                )
+            )
+            #expect([UInt8](targetRegion) == [UInt8](hostRegion))
             let placement = LayoutPlacement(
                 bounds: Rect(
                     origin: Point(x: -20, y: 60),
@@ -54,6 +70,12 @@ import Testing
                 at: 0, in: targetRegion
             )
             #expect(!wrongSize)
+            #expect(
+                !target.replaceMeasurement(
+                    identity: 0xBF7C, idealWidth: 1, idealHeight: 1,
+                    width: 1, height: 1, at: 0, in: targetRegion
+                )
+            )
             targetRegion[24] = 1
             #expect(target.read(at: 0, in: targetRegion) == nil)
         }

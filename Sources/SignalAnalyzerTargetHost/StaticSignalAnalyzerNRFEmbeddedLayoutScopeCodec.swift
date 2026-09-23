@@ -65,6 +65,28 @@ package enum StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodec {
         return true
     }
 
+    package static func replaceMeasurement(
+        identity: UInt16,
+        idealWidth: Int16, idealHeight: Int16,
+        width: Int16, height: Int16,
+        at index: UInt16,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> Bool {
+        guard let offset = slot(index, in: region),
+            region[offset + 2] == 1,
+            word(at: offset, in: region) == identity,
+            idealWidth >= 0, idealHeight >= 0,
+            width >= 0, height >= 0,
+            region[offset + 3] == 0,
+            region[offset + 24 ..< offset + recordByteCount].allSatisfy({ $0 == 0 })
+        else { return false }
+        write(UInt16(bitPattern: idealWidth), at: offset + 4, in: region)
+        write(UInt16(bitPattern: idealHeight), at: offset + 6, in: region)
+        write(UInt16(bitPattern: width), at: offset + 8, in: region)
+        write(UInt16(bitPattern: height), at: offset + 10, in: region)
+        return true
+    }
+
     package static func read(
         at index: UInt16,
         in region: UnsafeMutableRawBufferPointer

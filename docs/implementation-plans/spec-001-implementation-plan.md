@@ -1196,6 +1196,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       publication. The checked image uses 187,840 RAM and 83,756 flash bytes.
       This is a codec probe; the common layout measure/place pass and resolved
       result publication remain open.
+      The target scope codec now supports the common measure pass's in-place
+      measurement replacement before placement. Its differential fixture
+      compares the entire region after replacement and rejects a late update.
       The target-safe render-workspace codec now packs the exact 128 × 16-byte
       text-line and 224 × 10-byte glyph records in the approved 4,704-byte
       region. A host differential fixture compares whole-region bytes with
