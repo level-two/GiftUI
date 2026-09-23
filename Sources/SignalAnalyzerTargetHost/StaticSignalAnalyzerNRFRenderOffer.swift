@@ -6,11 +6,36 @@ import GiftUIExecution
 import GiftUIHostConfiguration
 import GiftUIReferenceTextResources
 import GiftUIRenderCore
+import GiftUIRenderLowering
 
 /// Streams one preflighted generated Static candidate into the validated nRF
 /// raster endpoint. The physical surface is taken from the endpoint rather
 /// than from the narrower layout root.
 package enum StaticSignalAnalyzerNRFRenderOffer {
+    package static func preflight(
+        semantic: borrowing StaticSignalAnalyzerNRFUTF8RenderView,
+        layout: borrowing StaticSignalAnalyzerNRFResolvedLayoutView,
+        drawingPlan: borrowing StaticSignalAnalyzerNRFDrawingWorkspace,
+        workspace: inout StaticSignalAnalyzerNRFRenderWorkspace
+    ) -> RenderProductionResult {
+        let limits = GeneratedSignalAnalyzerPresets.nrf52840Static().runtimeLimits
+        guard let descriptor = StaticSignalAnalyzerNRFAssembly.descriptor() else {
+            return .failure(.invalidInput)
+        }
+        return CanvasRenderProducer.preflight(
+            semantic: semantic,
+            layout: layout,
+            textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
+            drawingPlan: drawingPlan,
+            surfaceBounds: descriptor.bounds,
+            damageMode: .initializeCompleteSurface,
+            rootForeground: .white,
+            limits: limits.render,
+            configuredSinkCapacity: limits.renderSink,
+            workspace: &workspace
+        )
+    }
+
     package static func offer<Target: DisplayTarget>(
         semantic: borrowing StaticSignalAnalyzerNRFUTF8RenderView,
         layout: borrowing StaticSignalAnalyzerNRFResolvedLayoutView,

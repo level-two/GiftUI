@@ -842,16 +842,10 @@ import Testing
                     let renderLimits = GeneratedSignalAnalyzerPresets.nrf52840Static()
                         .runtimeLimits
                     let surfaceBounds = StaticSignalAnalyzerNRFAssembly.descriptor()!.bounds
-                    let preflight = CanvasRenderProducer.preflight(
+                    let preflight = StaticSignalAnalyzerNRFRenderOffer.preflight(
                         semantic: renderView,
                         layout: sink.renderView,
-                        textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
                         drawingPlan: drawingWorkspace,
-                        surfaceBounds: surfaceBounds,
-                        damageMode: .initializeCompleteSurface,
-                        rootForeground: .white,
-                        limits: renderLimits.render,
-                        configuredSinkCapacity: renderLimits.renderSink,
                         workspace: &renderWorkspace
                     )
                     guard case .success(let acceptedHeader) = preflight else {

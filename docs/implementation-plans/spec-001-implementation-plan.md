@@ -1147,6 +1147,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       and 150 combined operation slots from the bounded hierarchy. All eight
       generated normal and diagnostic cases now pass preflight and stream into
       a counting `DrawingOperationSink` under the approved production capacity.
+      The production Static render helper now performs preflight with the
+      validated physical surface and generated render/sink limits; the
+      eight-case hierarchy fixture exercises this entry before each offer.
       The Static nRF endpoint now owns one exact 3,840-byte raster tile and
       240-byte coverage map, with raster work limits derived from 150
       operations across the full 480 x 320 surface. A production render-offer

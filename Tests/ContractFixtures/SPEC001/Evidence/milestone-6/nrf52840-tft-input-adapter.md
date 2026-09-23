@@ -812,6 +812,10 @@ The fixture now calls the production Static nRF render-offer helper, which
 retains exact surface selection and producer-failure mapping for the live
 owner. This remains hardware-free endpoint evidence, not connected display
 evidence.
+The same production helper now performs render preflight using the validated
+physical surface and generated render/sink limits. The eight-case fixture
+calls it before every offer and checks the returned headers and operation
+counts; the live transaction and firmware link remain open.
 
 The Static nRF display target now borrows the same 3,840-byte region as the
 raster tile and packs touched runs toward its front before synchronous
