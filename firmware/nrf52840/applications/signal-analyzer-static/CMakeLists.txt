@@ -11,6 +11,27 @@ set(CMAKE_Swift_COMPILER_WORKS TRUE CACHE BOOL "Embedded Swift cross-compiler" F
 project(GiftUISignalAnalyzerStatic LANGUAGES C Swift)
 
 set(giftui_project_root "${CMAKE_CURRENT_SOURCE_DIR}/../../../..")
+find_program(GIFTUI_RUBY_EXECUTABLE ruby REQUIRED)
+set(giftui_workload_generator
+    "${giftui_project_root}/scripts/contracts/generate-spec-015-workload.rb")
+set(giftui_workload_descriptor
+    "${giftui_project_root}/Tests/ContractFixtures/SPEC015/signal-analyzer-workload.tsv")
+set(giftui_hierarchy_descriptor
+    "${giftui_project_root}/Tests/ContractFixtures/SPEC001/hierarchy-shape-cases.tsv")
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
+    "${giftui_workload_generator}"
+    "${giftui_workload_descriptor}"
+    "${giftui_hierarchy_descriptor}")
+execute_process(
+    COMMAND "${GIFTUI_RUBY_EXECUTABLE}" "${giftui_workload_generator}" --check
+    WORKING_DIRECTORY "${giftui_project_root}"
+    RESULT_VARIABLE giftui_generated_model_check
+    OUTPUT_VARIABLE giftui_generated_model_output
+    ERROR_VARIABLE giftui_generated_model_error)
+if(NOT giftui_generated_model_check EQUAL 0)
+    message(FATAL_ERROR
+        "Signal Analyzer generated workload/model descriptor is stale:\n${giftui_generated_model_error}")
+endif()
 target_sources(app PRIVATE
     src/ads7846.c
     src/device_validation.c

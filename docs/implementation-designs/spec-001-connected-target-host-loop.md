@@ -494,6 +494,10 @@ coalesces accepted reports into its single dirty bit. Window mutation calls
 this route and restores the old value if the report refuses. This validates
 the zero-heap endpoint mechanism, but full attachment, replacement staging,
 capture fact application, and the generated portable model lowering remain.
+The firmware CMake configuration checks the workload generator's complete
+checked-in output set against its descriptor and hierarchy inputs before it
+concatenates Swift sources. Changes to those inputs trigger reconfiguration;
+a stale target model descriptor therefore cannot silently enter the ELF.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact
