@@ -907,3 +907,9 @@ diagnostic firmware, not the full application loop.
 | `zephyr.hex` | `bb06a5be01ddd599904502801bf1044124acfadd635fe427a96b02f547dd41bf` |
 | `zephyr.map` | `0c90cbb5f015de845ded45e40eb3c63204ab0156b2e46cc7ca7e8637ffc79ec1` |
 | `zephyr.dts` | `042dd0ead8283db2cb12d0ff36caad849f8c88787859202809cd03bf17aef6d7` |
+
+The generated eight-hierarchy host fixture now invokes the production Static
+nRF layout pass with the exact proposal, reference metrics, and generated
+limits. It still verifies the published fixed-region layout records before
+Canvas derivation. This is host-only layout integration until the full owner
+and firmware are linked.

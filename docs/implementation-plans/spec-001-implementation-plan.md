@@ -1127,6 +1127,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       cover success and refusal. An attempt-scoped three-region borrow now
       runs the generated normal and three 96-byte diagnostic hierarchies
       through the common full layout pass, including in-place publication.
+      The production Static nRF layout entry now supplies the exact 480 x 320
+      proposal, reference text metrics, and generated limits; the eight-case
+      hierarchy fixture exercises it with the fixed workspace and sink.
       Render/Canvas consumption and firmware join remain open.
       The fixed Static render traversal workspace now uses only the 416-byte
       scratch tail of the same render region; host tests prove visit/foreground

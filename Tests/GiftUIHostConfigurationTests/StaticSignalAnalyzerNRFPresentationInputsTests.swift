@@ -623,13 +623,8 @@ import Testing
                             scopes: layoutRegion, text: renderRegion
                         )
                     else { return false }
-                    let packedLimits = GeneratedSignalAnalyzerPresets.nrf52840Static()
-                        .runtimeLimits.layout
-                    let result = layout(
+                    let result = StaticSignalAnalyzerNRFLayoutPass.run(
                         semantic: semanticView,
-                        metrics: GiftUIReferenceTextResources.targetPackage.metrics,
-                        proposal: ProposedSize(width: 480, height: 320)!,
-                        limits: packedLimits,
                         workspace: &workspace,
                         sink: &sink
                     )
