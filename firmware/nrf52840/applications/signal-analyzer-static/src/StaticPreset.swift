@@ -410,6 +410,145 @@ public func giftUISignalAnalyzerDrawingStorageValid(
     return workspace.isActive ? 0 : 1
 }
 
+@_cdecl("giftui_signal_analyzer_full_canvas_valid")
+public func giftUISignalAnalyzerFullCanvasValid(
+    _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32,
+    _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
+) -> UInt32 {
+    guard let profile, bytes == 39_696,
+        let capture, captureBytes == 115_392,
+        let semantic = StaticSignalAnalyzerNRFEmbeddedSemanticView(
+            published: UnsafeMutableRawBufferPointer(
+                start: profile.advanced(by: 3_024), count: 3_024
+            )
+        ), let packed = StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace(
+            scopes: UnsafeMutableRawBufferPointer(
+                start: profile.advanced(by: 6_048), count: 3_136
+            ),
+            text: UnsafeMutableRawBufferPointer(
+                start: profile.advanced(by: 9_184), count: 4_704
+            )
+        ), let limits = DrawingLimits(
+            maximumLineWidth: 1,
+            maximumCanvasOccurrences: 5,
+            maximumLivePathPoints: 202,
+            maximumLivePathSubpaths: 12,
+            maximumPlanStrokes: 5,
+            maximumPlanPoints: 832,
+            maximumPlanSubpaths: 16,
+            maximumNormalizedStrokeOperations: 5
+        ), var drawing = StaticSignalAnalyzerNRFDrawingWorkspace(
+            pathRegion: UnsafeMutableRawBufferPointer(
+                start: profile.advanced(by: 14_048), count: 3_280
+            ),
+            planRegion: UnsafeMutableRawBufferPointer(
+                start: profile.advanced(by: 17_328), count: 13_536
+            ), capacity: limits
+        )
+    else { return 0 }
+    var layoutWorkspace = StaticSignalAnalyzerNRFCommonLayoutWorkspace(packed: packed)
+    guard let resolved = StaticSignalAnalyzerNRFCommonLayoutPass.run(
+        semantic: semantic, workspace: &layoutWorkspace
+    ) else { return 0 }
+    var model = StaticSignalAnalyzerNRFModelLocation()
+    guard model.activate() != nil,
+        var source = StaticSignalAnalyzerNRFEmbeddedCanvasSource(
+            semantic: semantic, model: model,
+            captureRegion: UnsafeMutableRawBufferPointer(
+                start: capture, count: Int(captureBytes)
+            )
+        )
+    else { return 0 }
+    let result = CanvasPlanProducer.derive(
+        source: &source, layout: resolved,
+        executionContext: ExecutionContext(
+            cycle: RunCycleID(rawValue: 1),
+            semanticRevision: SemanticRevision(rawValue: semantic.revision),
+            candidateFrame: nil, phase: .deriving
+        ), limits: limits, workspace: &drawing
+    )
+    guard case .success(let summary) = result,
+        source.allReleased,
+        summary.canvasOccurrenceCount == 5,
+        summary.strokeCount == 5,
+        summary.pointCount == 32,
+        summary.subpathCount == 16,
+        let gridID = source.canvasIdentity(at: 0),
+        let grid = drawing.strokeHeader(of: gridID, at: 0),
+        grid.color == .gray,
+        grid.lineWidth == 1,
+        grid.pointCount == 24,
+        grid.subpathCount == 12
+    else { return 0 }
+    var occurrence: UInt16 = 1
+    while occurrence < 5 {
+        guard let identity = source.canvasIdentity(at: occurrence),
+            let stroke = drawing.strokeHeader(of: identity, at: 0),
+            stroke.color == .green,
+            stroke.pointCount == 2,
+            stroke.subpathCount == 1,
+            drawing.point(of: identity, stroke: 0, at: 0) != nil,
+            drawing.point(of: identity, stroke: 0, at: 1) != nil
+        else { return 0 }
+        occurrence += 1
+    }
+    drawing.reset()
+    layoutWorkspace.packed.reset()
+    let captureRegion = UnsafeMutableRawBufferPointer(
+        start: capture, count: Int(captureBytes)
+    )
+    guard var regions = StaticSignalAnalyzerNRFCaptureRegions(
+        storage: captureRegion
+    ), let transition = StaticSignalAnalyzerNRFCaptureRecord(
+        SignalTransition(
+            channelID: SignalChannelID(rawValue: 1),
+            timestamp: .seconds(1), level: .high
+        )
+    ), regions.store(transition, in: .admission, at: 0),
+        let snapshot = StaticSignalAnalyzerNRFCaptureSnapshotView(
+            storage: captureRegion,
+            revision: 1, count: 1, duration: .seconds(1),
+            retainedLowerBound: .zero, baselineLevels: .allLow
+        ), model.beginMutation(),
+        model.installCaptureSnapshot(snapshot, in: &regions),
+        model.endMutation(),
+        let updatedLayout = StaticSignalAnalyzerNRFCommonLayoutPass.run(
+            semantic: semantic, workspace: &layoutWorkspace
+        ), var updatedSource = StaticSignalAnalyzerNRFEmbeddedCanvasSource(
+            semantic: semantic, model: model, captureRegion: captureRegion
+        )
+    else { return 0 }
+    let updatedResult = CanvasPlanProducer.derive(
+        source: &updatedSource, layout: updatedLayout,
+        executionContext: ExecutionContext(
+            cycle: RunCycleID(rawValue: 2),
+            semanticRevision: SemanticRevision(rawValue: semantic.revision),
+            candidateFrame: nil, phase: .deriving
+        ), limits: limits, workspace: &drawing
+    )
+    guard case .success(let updatedSummary) = updatedResult,
+        updatedSource.allReleased,
+        updatedSummary.canvasOccurrenceCount == 5,
+        updatedSummary.strokeCount == 5,
+        updatedSummary.pointCount == 34,
+        updatedSummary.subpathCount == 16,
+        let traceID = updatedSource.canvasIdentity(at: 1),
+        let traceBounds = updatedLayout.bounds(of: traceID),
+        let trace = drawing.strokeHeader(of: traceID, at: 0),
+        trace.pointCount == 4,
+        let leading = drawing.point(of: traceID, stroke: 0, at: 1),
+        let rising = drawing.point(of: traceID, stroke: 0, at: 2),
+        leading.x == traceBounds.origin.x + traceBounds.size.width / 2,
+        rising.x == leading.x,
+        leading.y > rising.y
+    else { return 0 }
+    drawing.reset()
+    layoutWorkspace.packed.reset()
+    captureRegion.initializeMemory(as: UInt8.self, repeating: 0)
+    model.retire()
+    return resolved.isPublished || drawing.isActive ? 0 : 1
+}
+
 @_cdecl("giftui_signal_analyzer_source_valid")
 public func giftUISignalAnalyzerSourceValid() -> UInt32 {
     var source = StaticSignalAnalyzerNRFDeterministicSource()

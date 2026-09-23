@@ -80,16 +80,9 @@ package enum CanvasPlanProducer {
                         size: bounds.size
                     )
                 }
-            } catch let error as DrawingError {
-                return fail(
-                    productionError(for: error),
-                    source: &source,
-                    releasingFrom: index,
-                    workspace: &workspace
-                )
             } catch {
                 return fail(
-                    .invariantViolation,
+                    productionError(for: error),
                     source: &source,
                     releasingFrom: index,
                     workspace: &workspace

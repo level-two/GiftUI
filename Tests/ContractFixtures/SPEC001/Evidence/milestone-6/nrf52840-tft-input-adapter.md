@@ -1271,3 +1271,16 @@ the generated grid and trace callables are not yet invoked. The checked image
 uses 187,840 RAM and 133,900 flash bytes before the registered gate.
 The registered SPEC-001 run completed at
 `.build/contract-reports/spec-001/20260923T212453Z-5452/nrf52840-embedded/`.
+
+The shared `CanvasPlanProducer` now runs in the nRF firmware against the five
+published semantic Canvas identities, packed resolved layout, and fixed
+Drawing workspace. The target invocation source implements the approved grid
+and four trace formulas over borrowed capture snapshot records. The native
+firmware-source check derives a 5-stroke, 32-point, 16-subpath empty-capture
+plan, then installs one rising transition and checks a 34-point plan with the
+transition at half the trace width. This is a one-shot startup probe; the
+production input/observation/render loop still needs to call this derivation
+at each opportunity. Callable IDs and captures still need staging in the
+reserved 160-byte profile region. The cross-build uses 187,840 RAM and 144,516
+flash bytes. The registered SPEC-001 run completed at
+`.build/contract-reports/spec-001/20260923T213428Z-9088/nrf52840-embedded/`.

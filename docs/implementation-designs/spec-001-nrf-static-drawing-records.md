@@ -49,6 +49,13 @@ two-case Canvas table invokes the existing portable grid and trace helpers.
 host has one backed by arrays. `LivePathBuilder` and `StrokeSnapshotProducer`
 already own generic construction and validation and should be reused.
 
+The current Embedded Swift source mirrors the portable grid and trace formulas
+over compact snapshot records and drives the common Canvas producer. It has
+empty-capture and one-transition native checks. The static callable IDs and
+captures still need to be staged in the reserved 160-byte profile region and
+dispatched through a generated two-case target table before this source is a
+complete production static payload adapter.
+
 ## Proposed Internal Organization
 
 Keep both fixed-region stores in `SignalAnalyzerTargetHost`. The profile owner
@@ -150,6 +157,7 @@ Golden operation comparison and firmware linkage remain open.
 
 ## Code and Evidence Links
 
+- [Embedded Canvas invocation source](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedCanvasSource.swift)
 - [Fixed live-path store](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLivePathStorage.swift)
 - [Live-path host tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFLivePathStorageTests.swift)
 - [Drawing-plan records](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanRecords.swift)

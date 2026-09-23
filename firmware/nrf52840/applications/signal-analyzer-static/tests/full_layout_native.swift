@@ -23,6 +23,10 @@ struct FullLayoutNativeCheck {
             giftUISignalAnalyzerDrawingStorageValid(profile, 39_696) == 1,
             "fixed Drawing workspace failed"
         )
+        precondition(
+            giftUISignalAnalyzerFullCanvasValid(profile, 39_696, capture, 115_392) == 1,
+            "five Canvas derivation failed"
+        )
         print("nRF layout and Drawing storage: passed")
     }
 }

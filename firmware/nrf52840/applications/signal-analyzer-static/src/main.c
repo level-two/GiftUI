@@ -15,6 +15,8 @@ extern uint32_t giftui_signal_analyzer_full_layout_valid(
     void *profile, uint32_t bytes);
 extern uint32_t giftui_signal_analyzer_drawing_storage_valid(
     void *profile, uint32_t bytes);
+extern uint32_t giftui_signal_analyzer_full_canvas_valid(
+    void *profile, uint32_t bytes, void *capture, uint32_t capture_bytes);
 extern uint32_t giftui_signal_analyzer_source_valid(void);
 extern uint32_t giftui_signal_analyzer_storage_bytes(void);
 extern uint32_t giftui_signal_analyzer_capture_layout(void);
@@ -75,6 +77,9 @@ int main(void)
             regions.profile, (uint32_t)regions.profile_bytes) != 1u ||
         giftui_signal_analyzer_drawing_storage_valid(
             regions.profile, (uint32_t)regions.profile_bytes) != 1u ||
+        giftui_signal_analyzer_full_canvas_valid(
+            regions.profile, (uint32_t)regions.profile_bytes,
+            regions.capture, (uint32_t)regions.capture_bytes) != 1u ||
         regions.capture_bytes != GIFTUI_STATIC_CAPTURE_BYTES ||
         giftui_signal_analyzer_capture_region_valid(
             regions.capture, (uint32_t)regions.capture_bytes) != 1u ||
