@@ -1074,6 +1074,15 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       round-trip, and ordering; the target startup probe and checked build pass
       at 187,776 RAM and 53,804 flash bytes. Production failure producers and
       model application still need wiring.
+      The shared target model now applies each of the three sealed fact
+      classes only inside its mutation phase. Snapshot application validates
+      the third capture slot before copying into model storage; mutation
+      replays its checked portable change; state and operational failure
+      update the typed model diagnostic. A host fixture covers an ordered
+      snapshot/state/mutation/failure batch and out-of-phase refusal. The
+      firmware startup probe retains the same application code; the checked
+      image uses 187,776 RAM and 56,332 flash bytes. Production scheduling,
+      source callbacks, and generated root binding remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

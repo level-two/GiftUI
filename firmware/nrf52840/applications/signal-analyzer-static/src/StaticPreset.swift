@@ -264,6 +264,65 @@ public func giftUISignalAnalyzerCaptureRegionValid(
     return 1
 }
 
+@_cdecl("giftui_signal_analyzer_sealed_application_valid")
+public func giftUISignalAnalyzerSealedApplicationValid(
+    _ profile: UnsafeMutableRawPointer?, _ profileBytes: UInt32,
+    _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
+) -> UInt32 {
+    guard let profile, let capture, profileBytes == 39_696,
+        captureBytes == 115_392,
+        let diagnostic = giftUIStaticSampleDiagnostic()
+    else { return 0 }
+    let profileStorage = UnsafeMutableRawBufferPointer(
+        start: profile, count: Int(profileBytes)
+    )
+    let captureStorage = UnsafeMutableRawBufferPointer(
+        start: capture, count: Int(captureBytes)
+    )
+    guard var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
+        activeStorage: UnsafeMutableRawBufferPointer(
+            rebasing: profileStorage[31_632 ..< 35_472]
+        ),
+        sealedStorage: UnsafeMutableRawBufferPointer(
+            rebasing: profileStorage[35_472 ..< 39_312]
+        )
+    ), let snapshot = StaticSignalAnalyzerNRFCaptureSnapshotView(
+        storage: captureStorage, revision: 0, count: 0,
+        duration: .zero, retainedLowerBound: .zero,
+        baselineLevels: .allLow
+    ), admission.beginProducer(.bootstrap),
+        admission.admitSnapshot(snapshot) == .accepted(sequence: 1),
+        admission.admitAcquisitionState(.running) == .accepted(sequence: 2)
+    else { return 0 }
+    admission.endProducer()
+    guard admission.admitOperationalFailure(
+        conditionRawValue: 5, originRawValue: 9,
+        affectedScopeRawValue: 4, containmentRawValue: 1,
+        diagnostic: diagnostic
+    ) == .accepted(sequence: 3), admission.seal()
+    else { return 0 }
+    return withUnsafeMutablePointer(to: &giftUIStaticModelLocation) { location in
+        guard location.pointee.activate() != nil,
+            location.pointee.beginMutation()
+        else { return 0 }
+        var expected: UInt32 = 1
+        while let fact = admission.takeNextSealed() {
+            guard fact.sequence == expected,
+                location.pointee.applySealedFact(
+                    fact, captureStorage: captureStorage
+                ) == .applied
+            else { return 0 }
+            expected += 1
+        }
+        guard expected == 4,
+            location.pointee.acquisitionState == .failed(diagnostic),
+            location.pointee.endMutation()
+        else { return 0 }
+        location.pointee.retire()
+        return 1
+    }
+}
+
 @_cdecl("giftui_signal_analyzer_snapshot_view_valid")
 public func giftUISignalAnalyzerSnapshotViewValid(
     _ address: UnsafeMutableRawPointer?, _ bytes: UInt32

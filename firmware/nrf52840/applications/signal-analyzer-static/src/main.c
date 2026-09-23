@@ -15,6 +15,9 @@ extern uint32_t giftui_signal_analyzer_compact_ring_valid(
 extern uint32_t giftui_signal_analyzer_snapshot_admission_valid(
     void *profile, uint32_t profile_bytes,
     void *capture, uint32_t capture_bytes);
+extern uint32_t giftui_signal_analyzer_sealed_application_valid(
+    void *profile, uint32_t profile_bytes,
+    void *capture, uint32_t capture_bytes);
 extern uint32_t giftui_signal_analyzer_model_location_valid(void);
 extern uint32_t giftui_signal_analyzer_diagnostic_value_valid(void);
 extern uint32_t giftui_signal_analyzer_capture_region_valid(
@@ -56,6 +59,9 @@ int main(void)
         giftui_signal_analyzer_compact_ring_valid(
             regions.profile, (uint32_t)regions.profile_bytes) != 1u ||
         giftui_signal_analyzer_snapshot_admission_valid(
+            regions.profile, (uint32_t)regions.profile_bytes,
+            regions.capture, (uint32_t)regions.capture_bytes) != 1u ||
+        giftui_signal_analyzer_sealed_application_valid(
             regions.profile, (uint32_t)regions.profile_bytes,
             regions.capture, (uint32_t)regions.capture_bytes) != 1u ||
         ili9486_tile_height() != 4u ||
