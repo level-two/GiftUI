@@ -123,7 +123,7 @@ import Testing
     #expect(report.profile == preset.profile)
     #expect(report.capabilitySnapshot.rasterPresentation == report.effectivePresentation)
     #expect(report.drawingPlanOperationLimit == 5)
-    #expect(report.minimumSinkOperationCapacity == 35)
+    #expect(report.minimumSinkOperationCapacity == 150)
     #expect(report.cardinality == preset.cardinality)
     #expect(report.minimumFrameIntervalMicroseconds == 250_000)
     #expect(report.maximumFactServiceLatencyMicroseconds == 250_000)
