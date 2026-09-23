@@ -543,6 +543,18 @@ public func giftUISignalAnalyzerFullCanvasValid(
             ), renderHeader.operationCount <= 150,
         renderHeader.positionedGlyphCount == 121
     else { return 0 }
+    var sink = StaticSignalAnalyzerNRFEmbeddedCountingSink()
+    guard case .success(let streamedHeader) =
+        StaticSignalAnalyzerNRFEmbeddedRenderPreflight.streamCombined(
+            semantic: semantic, layout: resolved,
+            textRegion: UnsafeMutableRawBufferPointer(
+                start: profile.advanced(by: 9_184), count: 4_704
+            ), drawing: drawing, expectedHeader: renderHeader, sink: &sink
+        ), streamedHeader == renderHeader,
+        sink.isFinished, !sink.wasDiscarded,
+        sink.strokeCount == 5,
+        sink.glyphCount == 121
+    else { return 0 }
     var occurrence: UInt16 = 1
     while occurrence < 5 {
         guard let identity = source.canvasIdentity(at: occurrence),
@@ -615,6 +627,19 @@ public func giftUISignalAnalyzerFullCanvasValid(
                 ), drawing: drawing
             ), updatedRenderHeader.operationCount <= 150,
         updatedRenderHeader.positionedGlyphCount == 121
+    else { return 0 }
+    sink = StaticSignalAnalyzerNRFEmbeddedCountingSink()
+    guard case .success(let updatedStreamedHeader) =
+        StaticSignalAnalyzerNRFEmbeddedRenderPreflight.streamCombined(
+            semantic: semantic, layout: updatedLayout,
+            textRegion: UnsafeMutableRawBufferPointer(
+                start: profile.advanced(by: 9_184), count: 4_704
+            ), drawing: drawing, expectedHeader: updatedRenderHeader,
+            sink: &sink
+        ), updatedStreamedHeader == updatedRenderHeader,
+        sink.isFinished, !sink.wasDiscarded,
+        sink.strokeCount == 5,
+        sink.glyphCount == 121
     else { return 0 }
     drawing.reset()
     layoutWorkspace.packed.reset()

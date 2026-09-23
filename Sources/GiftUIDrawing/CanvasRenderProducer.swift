@@ -49,55 +49,53 @@ package enum CanvasRenderProducer {
         return result
     }
 
-    #if !GIFTUI_NRF_EMBEDDED
-        package static func produce<
-            Semantic, Layout, Metrics, Plan, Workspace, Sink
-        >(
-            semantic: borrowing Semantic,
-            layout: borrowing Layout,
-            textMetrics: borrowing Metrics,
-            drawingPlan: borrowing Plan,
-            surfaceBounds: Rect,
-            damageMode: RenderDamageMode,
-            rootForeground: Color,
-            limits: RenderLimits,
-            expectedHeader: RenderPlanHeader,
-            workspace: inout Workspace,
-            sink: inout Sink
-        ) -> RenderProductionResult
-        where
-            Semantic: SemanticRenderView,
-            Layout: ResolvedRenderLayoutView,
-            Metrics: CanonicalTextMetricsView,
-            Plan: DrawingPlanView,
-            Workspace: RenderProductionWorkspace,
-            Sink: DrawingOperationSink,
-            Semantic.Identity == Layout.Identity,
-            Semantic.Identity == Plan.Identity,
-            Semantic.Identity == Workspace.Identity
-        {
-            var preflightExtension = CanvasPreflightExtension(
-                drawingPlan: copy drawingPlan
-            )
-            var streamingExtension = CanvasStreamingExtension<Plan, Sink>(
-                drawingPlan: copy drawingPlan
-            )
-            return RenderProducer.produce(
-                semantic: semantic,
-                layout: layout,
-                textMetrics: textMetrics,
-                surfaceBounds: surfaceBounds,
-                damageMode: damageMode,
-                rootForeground: rootForeground,
-                limits: limits,
-                expectedHeader: expectedHeader,
-                workspace: &workspace,
-                preflightExtension: &preflightExtension,
-                streamingExtension: &streamingExtension,
-                sink: &sink
-            )
-        }
-    #endif
+    package static func produce<
+        Semantic, Layout, Metrics, Plan, Workspace, Sink
+    >(
+        semantic: borrowing Semantic,
+        layout: borrowing Layout,
+        textMetrics: borrowing Metrics,
+        drawingPlan: borrowing Plan,
+        surfaceBounds: Rect,
+        damageMode: RenderDamageMode,
+        rootForeground: Color,
+        limits: RenderLimits,
+        expectedHeader: RenderPlanHeader,
+        workspace: inout Workspace,
+        sink: inout Sink
+    ) -> RenderProductionResult
+    where
+        Semantic: SemanticRenderView,
+        Layout: ResolvedRenderLayoutView,
+        Metrics: CanonicalTextMetricsView,
+        Plan: DrawingPlanView,
+        Workspace: RenderProductionWorkspace,
+        Sink: DrawingOperationSink,
+        Semantic.Identity == Layout.Identity,
+        Semantic.Identity == Plan.Identity,
+        Semantic.Identity == Workspace.Identity
+    {
+        var preflightExtension = CanvasPreflightExtension(
+            drawingPlan: copy drawingPlan
+        )
+        var streamingExtension = CanvasStreamingExtension<Plan, Sink>(
+            drawingPlan: copy drawingPlan
+        )
+        return RenderProducer.produce(
+            semantic: semantic,
+            layout: layout,
+            textMetrics: textMetrics,
+            surfaceBounds: surfaceBounds,
+            damageMode: damageMode,
+            rootForeground: rootForeground,
+            limits: limits,
+            expectedHeader: expectedHeader,
+            workspace: &workspace,
+            preflightExtension: &preflightExtension,
+            streamingExtension: &streamingExtension,
+            sink: &sink
+        )
+    }
 }
 
 private struct CanvasPreflightExtension<Plan>: RenderPreflightExtension
@@ -265,75 +263,73 @@ where Plan: DrawingPlanView {
     }
 }
 
-#if !GIFTUI_NRF_EMBEDDED
-    private struct CanvasStreamingExtension<Plan, Sink>: RenderStreamingExtension
-    where Plan: DrawingPlanView, Sink: DrawingOperationSink {
-        typealias Identity = Plan.Identity
+private struct CanvasStreamingExtension<Plan, Sink>: RenderStreamingExtension
+where Plan: DrawingPlanView, Sink: DrawingOperationSink {
+    typealias Identity = Plan.Identity
 
-        private var validation: CanvasPreflightExtension<Plan>
+    private var validation: CanvasPreflightExtension<Plan>
 
-        init(drawingPlan: Plan) {
-            validation = CanvasPreflightExtension(drawingPlan: drawingPlan)
-        }
+    init(drawingPlan: Plan) {
+        validation = CanvasPreflightExtension(drawingPlan: drawingPlan)
+    }
 
-        mutating func visit(
-            scope: SemanticRenderScope,
-            identity: Identity,
-            bounds: Rect,
-            clip: Rect,
-            sink: inout Sink
-        ) -> RenderExtensionVisitResult {
-            let result = validation.visit(
-                scope: scope,
-                identity: identity,
-                bounds: bounds,
-                clip: clip
-            )
-            guard case .success(let visit) = result else { return result }
-            guard scope == .canvas else { return result }
+    mutating func visit(
+        scope: SemanticRenderScope,
+        identity: Identity,
+        bounds: Rect,
+        clip: Rect,
+        sink: inout Sink
+    ) -> RenderExtensionVisitResult {
+        let result = validation.visit(
+            scope: scope,
+            identity: identity,
+            bounds: bounds,
+            clip: clip
+        )
+        guard case .success(let visit) = result else { return result }
+        guard scope == .canvas else { return result }
 
-            var strokeIndex: UInt16 = 0
-            while strokeIndex < visit.operationCount {
-                guard
-                    let header = validation.drawingPlan.strokeHeader(
-                        of: identity,
-                        at: strokeIndex
-                    )
-                else {
-                    return .failure(.invariantViolation)
-                }
-                let stroke = CanvasStreamingStrokeView(
-                    drawingPlan: validation.drawingPlan,
-                    canvas: identity,
-                    stroke: strokeIndex,
-                    header: header
+        var strokeIndex: UInt16 = 0
+        while strokeIndex < visit.operationCount {
+            guard
+                let header = validation.drawingPlan.strokeHeader(
+                    of: identity,
+                    at: strokeIndex
                 )
-                guard sink.straightLineStroke(stroke) else {
-                    return .failure(.invariantViolation)
-                }
-                strokeIndex += 1
+            else {
+                return .failure(.invariantViolation)
             }
-            return result
+            let stroke = CanvasStreamingStrokeView(
+                drawingPlan: validation.drawingPlan,
+                canvas: identity,
+                stroke: strokeIndex,
+                header: header
+            )
+            guard sink.straightLineStroke(stroke) else {
+                return .failure(.invariantViolation)
+            }
+            strokeIndex += 1
         }
-
-        mutating func complete() -> RenderExtensionCompletionResult {
-            validation.complete()
-        }
+        return result
     }
 
-    private struct CanvasStreamingStrokeView<Plan>: StraightLineStrokeView
-    where Plan: DrawingPlanView {
-        let drawingPlan: Plan
-        let canvas: Plan.Identity
-        let stroke: UInt16
-        let header: StraightLineStrokeHeader
-
-        func point(at index: UInt16) -> Point? {
-            drawingPlan.point(of: canvas, stroke: stroke, at: index)
-        }
-
-        func subpath(at index: UInt16) -> SubpathRange? {
-            drawingPlan.subpath(of: canvas, stroke: stroke, at: index)
-        }
+    mutating func complete() -> RenderExtensionCompletionResult {
+        validation.complete()
     }
-#endif
+}
+
+private struct CanvasStreamingStrokeView<Plan>: StraightLineStrokeView
+where Plan: DrawingPlanView {
+    let drawingPlan: Plan
+    let canvas: Plan.Identity
+    let stroke: UInt16
+    let header: StraightLineStrokeHeader
+
+    func point(at index: UInt16) -> Point? {
+        drawingPlan.point(of: canvas, stroke: stroke, at: index)
+    }
+
+    func subpath(at index: UInt16) -> SubpathRange? {
+        drawingPlan.subpath(of: canvas, stroke: stroke, at: index)
+    }
+}

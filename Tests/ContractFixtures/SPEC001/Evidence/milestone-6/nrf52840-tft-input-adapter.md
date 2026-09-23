@@ -1318,3 +1318,13 @@ cross-build uses 187,840 RAM and 151,172 flash bytes before the registered
 gate. Operation streaming and RGB565 raster submission remain open.
 The registered SPEC-001 run completed at
 `.build/contract-reports/spec-001/20260923T220647Z-20492/nrf52840-embedded/`.
+
+The nRF firmware now compiles the shared render streamer and streams both
+empty-capture and rising-transition Canvas plans into a bounded target sink.
+The exact-source native probe checks completion, all five Drawing strokes,
+and all 121 positioned glyphs for each frame; the sink enforces the preflight
+operation and glyph totals without retaining a frame. The cross-build uses
+187,840 RAM and 156,084 flash bytes. The registered nRF SPEC-001 run passed
+at `.build/contract-reports/spec-001/20260923T221350Z-24249/nrf52840-embedded/`.
+The sink is a startup verification owner; RGB565 raster submission and the
+production opportunity loop remain open.

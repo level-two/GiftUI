@@ -50,10 +50,8 @@ package protocol StraightLineStrokeView {
     func subpath(at index: UInt16) -> SubpathRange?
 }
 
-#if !GIFTUI_NRF_EMBEDDED
-    package protocol DrawingOperationSink: RenderOperationSink {
-        mutating func straightLineStroke<Stroke: StraightLineStrokeView>(
-            _ stroke: borrowing Stroke
-        ) -> Bool
-    }
-#endif
+package protocol DrawingOperationSink: RenderOperationSink {
+    mutating func straightLineStroke<Stroke: StraightLineStrokeView>(
+        _ stroke: borrowing Stroke
+    ) -> Bool
+}
