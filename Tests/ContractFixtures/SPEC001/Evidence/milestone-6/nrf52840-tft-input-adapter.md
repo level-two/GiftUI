@@ -917,3 +917,8 @@ The same fixture now invokes a production Static Canvas pass that binds the
 generated Drawing limits and deriving context to the five fixed-region
 invocations, with a success check for complete callable release. All eight
 hierarchies still derive five strokes before render preflight.
+The physical endpoint fixture now invokes a production handoff that builds
+six interaction records after preflight, streams the accepted raster offer,
+then commits the presentation and enables input in the same scoped owner.
+Each of the eight cases verifies the committed actions and a queued input
+event after accepted display handoff. Firmware ownership is still pending.

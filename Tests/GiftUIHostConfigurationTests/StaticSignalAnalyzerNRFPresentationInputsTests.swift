@@ -1004,26 +1004,63 @@ import Testing
                                 region: renderRegion,
                                 capacity: renderLimits.render,
                                 structuralCapacity: renderLimits.renderWorkspace
+                            ),
+                            var application = StaticSignalAnalyzerNRFApplicationStorage(
+                                assemblyReport: report,
+                                inputSourceRawValue: 51
                             )
                         else {
                             Issue.record("Static nRF raster endpoint did not construct")
                             return false
                         }
-                        let offer = StaticSignalAnalyzerNRFRenderOffer.offer(
-                            semantic: renderView,
-                            layout: sink.renderView,
-                            drawingPlan: drawingWorkspace,
-                            expectedHeader: acceptedHeader,
-                            workspace: &rasterRenderWorkspace,
-                            endpoint: &endpoint,
-                            provenance: provenance
-                        )
-                        if offer.disposition != .accepted {
-                            Issue.record(
-                                "Static raster offer: \(offer), producer: \(String(describing: endpoint.retainedProducerError)), raster: \(String(describing: endpoint.sink.failure)), header: \(acceptedHeader), descriptor: \(endpoint.descriptor)"
+                        application.withAddressStableOwner { owner in
+                            #expect(
+                                owner.bindRoot(
+                                    repository: StaticNRFPresentationInputRepository()
+                                ) == .bound(ObservableTargetGeneration(rawValue: 0))
+                            )
+                            let handoff =
+                                StaticSignalAnalyzerNRFPresentationHandoff
+                                .offerPreflighted(
+                                    semantic: renderView,
+                                    layout: sink.renderView,
+                                    drawingPlan: drawingWorkspace,
+                                    occurrences: occurrences,
+                                    expectedHeader: acceptedHeader,
+                                    workspace: &rasterRenderWorkspace,
+                                    application: &owner,
+                                    endpoint: &endpoint,
+                                    provenance: provenance,
+                                    presentationRevision: PresentationRevision(rawValue: cycle)
+                                )
+                            if case .offered(let offer, _) = handoff,
+                                offer.disposition != .accepted
+                            {
+                                Issue.record(
+                                    "Static raster offer: \(offer), producer: \(String(describing: endpoint.retainedProducerError)), raster: \(String(describing: endpoint.sink.failure)), header: \(acceptedHeader), descriptor: \(endpoint.descriptor)"
+                                )
+                            }
+                            #expect(
+                                handoff
+                                    == .offered(
+                                        FrameOfferResult(disposition: .accepted, failure: nil)!,
+                                        .committed(PresentationRevision(rawValue: cycle))
+                                    )
+                            )
+                            owner.withInteraction { state in
+                                #expect(state.committedRecordCount == 6)
+                                #expect(state.committedRevision?.rawValue == cycle)
+                            }
+                            #expect(
+                                owner.admit(
+                                    phaseRawValue: PointerPhase.down.rawValue,
+                                    x: 4,
+                                    y: 4,
+                                    observedPresentationRevisionRawValue: cycle,
+                                    priorPhysicalSequenceIsCompleteRawValue: 0
+                                )?.disposition == .queued
                             )
                         }
-                        #expect(offer == FrameOfferResult(disposition: .accepted, failure: nil)!)
                         #expect(endpoint.sink.target.transport.payloads > 0)
                         #expect(endpoint.sink.target.transport.bytes > 0)
                     }

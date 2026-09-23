@@ -1168,6 +1168,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       The production Static render helper now performs preflight with the
       validated physical surface and generated render/sink limits; the
       eight-case hierarchy fixture exercises this entry before each offer.
+      A production handoff now builds generated interaction only after that
+      preflight, streams the physical offer, and resolves action publication
+      plus input eligibility from the offer disposition. The eight-case
+      endpoint fixture exercises the accepted handoff through the scoped
+      application owner; the firmware join remains open.
       The Static nRF endpoint now owns one exact 3,840-byte raster tile and
       240-byte coverage map, with raster work limits derived from 150
       operations across the full 480 x 320 surface. A production render-offer
