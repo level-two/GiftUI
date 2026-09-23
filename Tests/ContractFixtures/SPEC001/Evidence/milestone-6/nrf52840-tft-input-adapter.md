@@ -1339,3 +1339,11 @@ nRF SPEC-001 run passed at
 The checked image uses 187,904 RAM and 158,316 flash bytes. Glyph and stroke
 rasterization, synchronous display submission, and the production host loop
 remain open.
+
+The firmware now also compiles shared `RasterStrokeCoverage`. The same
+four-row tile probe rasterizes a bounded two-point line after the fill and
+requires a positive pixel count without replacement refusal. Exact-source
+native execution and the registered nRF SPEC-001 run passed at
+`.build/contract-reports/spec-001/20260923T222529Z-29702/nrf52840-embedded/`.
+The checked image uses 187,904 RAM and 165,612 flash bytes. The startup probe
+does not yet submit the five produced Canvas strokes to the tile session.

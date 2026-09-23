@@ -715,10 +715,41 @@ public func giftUISignalAnalyzerTileValid(
         tile.storage.isAffected(pixelIndex: 483),
         !tile.storage.isAffected(pixelIndex: 0),
         tile.storage.byte(at: 2) == 0xff,
-        tile.storage.byte(at: 3) == 0xff,
+        tile.storage.byte(at: 3) == 0xff
+    else { return 0 }
+    let stroke = StaticSignalAnalyzerNRFTileProbeStroke(clip: second)
+    let strokeResult = RasterStrokeCoverage.rasterize(
+        stroke, descriptor: descriptor, damageBounds: second
+    ) { point, pixel in tile.replacePixel(at: point, with: pixel) }
+    guard case .completed(let strokePixels) = strokeResult,
+        strokePixels > 0,
         tile.finishTile()
     else { return 0 }
     return 1
+}
+
+private struct StaticSignalAnalyzerNRFTileProbeStroke: StraightLineStrokeView {
+    let header: StraightLineStrokeHeader
+
+    init(clip: Rect) {
+        header = StraightLineStrokeHeader(
+            color: .black, lineWidth: 1, lineCap: .butt,
+            lineJoin: .miter, surfaceOrigin: Point(x: 0, y: 0),
+            inheritedClip: clip, pointCount: 2, subpathCount: 1
+        )
+    }
+
+    func point(at index: UInt16) -> Point? {
+        switch index {
+        case 0: Point(x: 1, y: 4)
+        case 1: Point(x: 6, y: 4)
+        default: nil
+        }
+    }
+
+    func subpath(at index: UInt16) -> SubpathRange? {
+        index == 0 ? SubpathRange(firstPoint: 0, pointCount: 2) : nil
+    }
 }
 
 @_cdecl("giftui_signal_analyzer_source_valid")

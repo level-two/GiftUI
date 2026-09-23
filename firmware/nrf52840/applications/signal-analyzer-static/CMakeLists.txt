@@ -87,6 +87,7 @@ set(giftui_static_swift_inputs
     "${giftui_project_root}/Sources/GiftUISurfaceCore/SurfaceValues.swift"
     "${giftui_project_root}/Sources/GiftUIRasterCore/RGB565TileWorkspace.swift"
     "${giftui_project_root}/Sources/GiftUIRasterCore/RasterFillCoverage.swift"
+    "${giftui_project_root}/Sources/GiftUIRasterCore/RasterStrokeCoverage.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFTileStorage.swift"
     "${giftui_project_root}/Sources/GiftUI/DrawingStyles.swift"
     "${giftui_project_root}/Sources/GiftUI/DrawingSurface.swift"
