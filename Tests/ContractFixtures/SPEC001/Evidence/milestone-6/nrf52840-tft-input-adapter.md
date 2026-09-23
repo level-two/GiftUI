@@ -933,4 +933,6 @@ performs fixed-region layout, Canvas derivation, preflight, and lends the
 checked views to the physical handoff callback before the borrow ends. A
 focused host fixture rejects unstaged semantic input and accepts a staged
 normal hierarchy through display and interaction commit. Semantic publication
-and firmware ownership are still separate work.
+now uses the generated checked stage-and-publish entry before preparation,
+and the focused fixture verifies its retained revision before physical
+handoff. Firmware ownership remains separate work.

@@ -206,8 +206,9 @@ separate physical evidence and are not normalized away.
 The Static preparation entry borrows all five attempt-local regions once and
 performs layout, Canvas derivation, and render preflight before lending checked
 views to a synchronous handoff callback. No region-backed view escapes that
-scope. Semantic publication and the paced firmware owner still surround this
-focused preparation stage.
+scope. The generated semantic stage publishes a complete checked revision
+before preparation and leaves the candidate region intact for that borrow.
+The paced firmware owner still surrounds this focused preparation stage.
 
 ## Resource and Failure Behavior
 

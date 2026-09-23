@@ -1318,7 +1318,17 @@ import Testing
             } else {
                 Issue.record("Unstaged semantic input reached presentation preparation")
             }
-            #expect(inputs.stageGeneratedSemanticCandidate(in: &profile)?.state == .candidate)
+            let publication = StaticSignalAnalyzerNRFSemanticPublication.publish(
+                inputs: &inputs,
+                revision: 1,
+                profile: &profile
+            )
+            if case .published(let header) = publication {
+                #expect(header.state == .published)
+                #expect(header.revision == 1)
+            } else {
+                Issue.record("Generated semantic publication failed: \(publication)")
+            }
             application.withAddressStableOwner { owner in
                 #expect(
                     owner.bindRoot(repository: StaticNRFPresentationInputRepository())
