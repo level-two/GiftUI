@@ -1199,6 +1199,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       The target scope codec now supports the common measure pass's in-place
       measurement replacement before placement. Its differential fixture
       compares the entire region after replacement and rejects a late update.
+      The target-safe layout workspace now owns the exact disjoint scope and
+      render slices for one attempt, with unique scope appends, measurement
+      replacement, placement, a bounded 13-entry depth stack, reset, and
+      reuse. Its host differential fixture compares both complete regions
+      after each operation, and firmware startup exercises the workspace on
+      the real profile reservation. The checked image uses 187,840 RAM and
+      89,180 flash bytes; the registered nRF SPEC-001 gate passes. Text
+      workspace methods, full traversal, and resolved publication remain open.
       The target-safe render-workspace codec now packs the exact 128 × 16-byte
       text-line and 224 × 10-byte glyph records in the approved 4,704-byte
       region. A host differential fixture compares whole-region bytes with

@@ -169,6 +169,9 @@ public func giftUISignalAnalyzerLayoutScopeValid(
     let layout = UnsafeMutableRawBufferPointer(
         start: profile.advanced(by: 6_048), count: 3_136
     )
+    let text = UnsafeMutableRawBufferPointer(
+        start: profile.advanced(by: 9_184), count: 4_704
+    )
     guard let view = StaticSignalAnalyzerNRFEmbeddedSemanticView(
         published: published
     ), let root = view.rootPrimitiveIdentity,
@@ -177,18 +180,20 @@ public func giftUISignalAnalyzerLayoutScopeValid(
         let modifierCount = view.layoutModifierCount(of: root),
         modifierCount == 0 || view.layoutModifier(of: root, at: 0) != nil
     else { return 0 }
-    layout.initializeMemory(as: UInt8.self, repeating: 0)
-    guard StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodec.stage(
+    guard var workspace = StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace(
+        scopes: layout, text: text
+    ), workspace.acquire(), workspace.appendScope(
         identity: root, idealWidth: 480, idealHeight: 320,
-        width: 480, height: 320, at: 0, in: layout
-    ), StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodec.place(
+        width: 480, height: 320
+    ), workspace.placeScope(
         identity: root, originX: 0, originY: 0,
         width: 480, height: 320,
-        clipX: 0, clipY: 0, clipWidth: 480, clipHeight: 320,
-        at: 0, in: layout
-    ), StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodec.read(
-        at: 0, in: layout
-    )?.identity == root else { return 0 }
+        clipX: 0, clipY: 0, clipWidth: 480, clipHeight: 320
+    ), workspace.scope(at: 0)?.identity == root,
+        workspace.pushScope(root)
+    else { return 0 }
+    workspace.popScope()
+    workspace.reset()
     return 1
 }
 

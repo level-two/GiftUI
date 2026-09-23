@@ -101,6 +101,12 @@ prove representability. Decoding reconstructs full `GeometryScalar` values.
 The first checked scope codec now stores stable identity, ideal/resolved
 sizes, placed origin, and clip inside one slot and rejects signed-16-bit
 overflow, duplicate placement, wrong region size, and corrupt reserved bytes.
+The target-safe workspace now owns both exact disjoint profile slices during
+an active layout attempt. It appends unique scope identities, replaces staged
+measurements, places scopes, and uses the 26-byte depth stack in the render
+scratch tail. A host differential fixture compares both complete regions
+after each operation, including reset and reuse. Text line/glyph workspace
+methods, publication, and the actual measure/place traversal remain open.
 The corresponding target-safe codec now compiles into the nRF image, and a
 host differential fixture compares its entire 3,136-byte region against this
 host codec for a checked measurement and placement. Firmware startup uses the
