@@ -963,6 +963,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       phase, nested begins, and unmatched ends. The host fixture and the
       hardware-free target build pass with the same 184,128 RAM and 35,756
       flash byte image.
+      The checked SPEC-015 generator now emits the target model descriptor
+      from the same hierarchy digest as the host preset. The fixed location
+      carries its structural identity and declaration ordinal; host assertions
+      compare all six descriptor fields. The target compiles this generated
+      source and passes the build gates at 184,192 RAM and 35,796 flash bytes.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

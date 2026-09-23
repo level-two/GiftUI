@@ -39,6 +39,15 @@ nonisolated(unsafe) private var giftUIStaticModelLocation = StaticSignalAnalyzer
 @_cdecl("giftui_signal_analyzer_model_location_valid")
 public func giftUISignalAnalyzerModelLocationValid() -> UInt32 {
     withUnsafeMutablePointer(to: &giftUIStaticModelLocation) { location in
+        guard location.pointee.structuralIdentity
+            == StaticSignalAnalyzerNRFModelDescriptor.structuralIdentity,
+            location.pointee.declarationOrdinal
+                == StaticSignalAnalyzerNRFModelDescriptor.declarationOrdinal,
+            StaticSignalAnalyzerNRFModelDescriptor.modelStorageSlots == 2,
+            StaticSignalAnalyzerNRFModelDescriptor.locationCapacity == 1,
+            StaticSignalAnalyzerNRFModelDescriptor.registrationCapacity == 1,
+            StaticSignalAnalyzerNRFModelDescriptor.replacementCapacity == 1
+        else { return 0 }
         guard let generation = location.pointee.activate(),
             let handle = StaticSignalAnalyzerNRFModelHandle(
                 location: location, generation: generation

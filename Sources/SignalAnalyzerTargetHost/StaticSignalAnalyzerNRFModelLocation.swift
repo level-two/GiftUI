@@ -1,6 +1,8 @@
 /// One typed, address-stable target model location. A copied handle refers to
 /// this location and its current generation; no model object is allocated.
 package struct StaticSignalAnalyzerNRFModelLocation {
+    package let structuralIdentity = StaticSignalAnalyzerNRFModelDescriptor.structuralIdentity
+    package let declarationOrdinal = StaticSignalAnalyzerNRFModelDescriptor.declarationOrdinal
     private var nextGeneration: UInt32? = 0
     package private(set) var activeGeneration: UInt32?
     package private(set) var visibleWindowRawValue: UInt8 = 1

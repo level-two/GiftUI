@@ -1,8 +1,21 @@
+import GiftUIHostConfiguration
 import SignalAnalyzerTargetHost
 import Testing
 
 @Test func staticNRFModelHandlePreservesLocationAndRoutesSixActions() {
     var location = StaticSignalAnalyzerNRFModelLocation()
+    let descriptor = GeneratedSignalAnalyzerPresets.nrf52840Static().staticRoot
+    #expect(location.structuralIdentity == descriptor?.structuralIdentity)
+    #expect(location.declarationOrdinal == descriptor?.declarationOrdinal)
+    #expect(
+        StaticSignalAnalyzerNRFModelDescriptor.modelStorageSlots == descriptor?.modelStorageSlots)
+    #expect(StaticSignalAnalyzerNRFModelDescriptor.locationCapacity == descriptor?.locationCapacity)
+    #expect(
+        StaticSignalAnalyzerNRFModelDescriptor.registrationCapacity
+            == descriptor?.registrationCapacity)
+    #expect(
+        StaticSignalAnalyzerNRFModelDescriptor.replacementCapacity
+            == descriptor?.replacementCapacity)
     withUnsafeMutablePointer(to: &location) { pointer in
         guard let generation = pointer.pointee.activate(),
             let handle = StaticSignalAnalyzerNRFModelHandle(

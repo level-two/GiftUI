@@ -481,6 +481,12 @@ The handle accepts action dispatch only inside an explicit model mutation
 opportunity. Nested starts, unmatched ends, and action delivery outside the
 opportunity reject without changing its window; retirement closes an open
 opportunity. This phase guard is shared by the host fixture and target build.
+The SPEC-015 workload generator now emits the nRF model descriptor beside
+the generated host presets from the same hierarchy digest. The fixed target
+location stores that root structural identity and declaration ordinal, and
+host tests compare its descriptor fields to the host preset. The firmware
+compiles the generated descriptor and checks its exact one-location,
+one-registration, one-replacement, and two-model-slot capacities at startup.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact

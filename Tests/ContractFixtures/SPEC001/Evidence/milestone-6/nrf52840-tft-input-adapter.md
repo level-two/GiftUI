@@ -18,6 +18,13 @@ opportunity. Host assertions cover out-of-phase delivery, nested begin,
 unmatched end, and unchanged state after rejection. Target startup exercises
 the same phase boundary before diagnostic validation. The checked image still
 uses 184,128 RAM and 35,756 flash bytes and passes the same build gates.
+The SPEC-015 generator now emits an nRF model descriptor from its existing
+hierarchy digest. `--check` passed; the host fixture matched structural
+identity, declaration ordinal, and all four capacities against the generated
+host preset. The firmware compiles that descriptor and validates its fields
+before diagnostic startup. The checked image passes the hard-float,
+zero-heap, required-symbol, RAM, and flash gates at 184,192 RAM and 35,796
+flash bytes. The generated root and repository are still not linked.
 
 The selected connected assembly is the `nrf52840dk/nrf52840` with the
 480 x 320 ILI9486 PiScreen display bridge and its ADS7846 resistive-touch
