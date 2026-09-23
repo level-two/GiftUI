@@ -282,12 +282,16 @@ package struct StaticSignalAnalyzerNRFApplicationOwner: ~Copyable {
         offer: FrameOfferResult,
         presentationRevision: PresentationRevision
     ) -> RuntimeInteractionCandidateResolution {
-        RuntimeInteractionCandidateTransaction.resolve(
+        let resolution = RuntimeInteractionCandidateTransaction.resolve(
             offer: offer,
             presentationRevision: presentationRevision,
             interaction: &interaction.pointee,
             generations: &actionGenerations.pointee
         )
+        if case .committed(let revision) = resolution {
+            input.pointee.installPhysicalPresentation(rawValue: revision.rawValue)
+        }
+        return resolution
     }
 
     package borrowing func withModel<Result>(

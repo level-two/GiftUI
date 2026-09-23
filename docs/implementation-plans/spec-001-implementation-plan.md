@@ -1175,7 +1175,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       refuses candidate construction before root binding, and delegates
       offer-time commit/discard to the common transaction resolver. A host
       fixture rejects an offer before accepting a later one and verifies that
-      the refused candidate never reaches committed interaction state. The
+      the refused candidate never reaches committed interaction state. Offer
+      resolution now installs the physical input revision in that same owner
+      call only after acceptance; the fixture checks refusal leaves input
+      ineligible and acceptance admits input. The
       physical offer and firmware loop remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence

@@ -871,5 +871,8 @@ rebuild preserves those generations before discard. The address-stable
 application owner now holds the generation allocator and delegates candidate
 build and offer resolution to these production helpers. A host fixture proves
 that an unbound root is refused, a retryably refused offer leaves no committed
-actions, and a later accepted offer commits all six records. The connected
-owner must still use this at the physical offer boundary.
+actions, and a later accepted offer commits all six records. The application
+owner now installs the physical input revision in the same offer-resolution
+call only after interaction commit. The eight-case host fixture verifies that
+input remains ineligible after refusal and becomes eligible after acceptance.
+The connected owner must still use this at the physical offer boundary.

@@ -761,6 +761,20 @@ import Testing
                                 #expect(state.committedRecordCount == 0)
                                 #expect(state.committedRevision == nil)
                             }
+                            let refusedInput = owner.admit(
+                                phaseRawValue: PointerPhase.down.rawValue,
+                                x: 4,
+                                y: 4,
+                                observedPresentationRevisionRawValue: cycle,
+                                priorPhysicalSequenceIsCompleteRawValue: 0
+                            )
+                            #expect(refusedInput?.disposition == .dropped)
+                            #expect(
+                                refusedInput?.rejection
+                                    == HostNormalizedInputRejection.presentationNotEstablished
+                                    .rawValue
+                            )
+                            #expect(owner.pendingInputCount == 0)
                             #expect(
                                 owner.buildInteractionCandidate(
                                     occurrences: occurrences,
@@ -780,6 +794,15 @@ import Testing
                                 #expect(state.committedRecordCount == 6)
                                 #expect(state.committedRevision?.rawValue == cycle)
                             }
+                            let acceptedInput = owner.admit(
+                                phaseRawValue: PointerPhase.down.rawValue,
+                                x: 4,
+                                y: 4,
+                                observedPresentationRevisionRawValue: cycle,
+                                priorPhysicalSequenceIsCompleteRawValue: 0
+                            )
+                            #expect(acceptedInput?.disposition == .queued)
+                            #expect(owner.pendingInputCount == 1)
                         }
                     }
                     guard
