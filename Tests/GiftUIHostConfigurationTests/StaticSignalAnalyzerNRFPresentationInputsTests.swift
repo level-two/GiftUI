@@ -720,9 +720,7 @@ import Testing
                     generations.resolveCandidate(committed: false)
                     #expect(generations.retiredReservationCount == 0)
                     #expect(interaction.committedRevision?.rawValue == cycle)
-                    if cycle == 1,
-                        case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate()
-                    {
+                    if case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate() {
                         guard
                             var application = StaticSignalAnalyzerNRFApplicationStorage(
                                 assemblyReport: report,
@@ -843,12 +841,13 @@ import Testing
                     #expect(backgroundScopes <= 12)
                     let renderLimits = GeneratedSignalAnalyzerPresets.nrf52840Static()
                         .runtimeLimits
+                    let surfaceBounds = StaticSignalAnalyzerNRFAssembly.descriptor()!.bounds
                     let preflight = CanvasRenderProducer.preflight(
                         semantic: renderView,
                         layout: sink.renderView,
                         textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
                         drawingPlan: drawingWorkspace,
-                        surfaceBounds: sink.renderView.rootBounds,
+                        surfaceBounds: surfaceBounds,
                         damageMode: .initializeCompleteSurface,
                         rootForeground: .white,
                         limits: renderLimits.render,
@@ -859,6 +858,7 @@ import Testing
                         Issue.record("generated Canvas render preflight failed: \(preflight)")
                         return false
                     }
+                    #expect(acceptedHeader.surfaceBounds == surfaceBounds)
                     #expect(renderLimits.maximumOrdinaryRenderOperations == 145)
                     #expect(renderLimits.render.maximumOperations == 150)
                     #expect(renderLimits.renderSink.maximumOperations == 150)
@@ -894,7 +894,7 @@ import Testing
                         layout: sink.renderView,
                         textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
                         drawingPlan: drawingWorkspace,
-                        surfaceBounds: sink.renderView.rootBounds,
+                        surfaceBounds: surfaceBounds,
                         damageMode: .initializeCompleteSurface,
                         rootForeground: .white,
                         limits: renderLimits.render,
@@ -905,6 +905,78 @@ import Testing
                     #expect(production == .success(acceptedHeader))
                     #expect(operationSink.publishedHeader == acceptedHeader)
                     #expect(operationSink.strokeCount == 5)
+                    if cycle == 1,
+                        case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate()
+                    {
+                        let raster = UnsafeMutableRawPointer.allocate(
+                            byteCount: 3_840, alignment: 8
+                        )
+                        defer { raster.deallocate() }
+                        let coverage = UnsafeMutableRawPointer.allocate(
+                            byteCount: 240, alignment: 8
+                        )
+                        defer { coverage.deallocate() }
+                        let provenance = FrameProvenance(
+                            cycle: RunCycleID(rawValue: cycle),
+                            semanticRevision: SemanticRevision(rawValue: cycle),
+                            candidateFrame: CandidateFrameID(rawValue: cycle)
+                        )
+                        guard
+                            var endpoint = StaticSignalAnalyzerNRFEndpointFactory.make(
+                                target: StaticNRFEndpointTarget(acceptsOffers: true),
+                                provenance: provenance,
+                                assemblyReport: report,
+                                rasterRegion: UnsafeMutableRawBufferPointer(
+                                    start: raster, count: 3_840
+                                ),
+                                coverageRegion: UnsafeMutableRawBufferPointer(
+                                    start: coverage, count: 240
+                                )
+                            ),
+                            var rasterRenderWorkspace = StaticSignalAnalyzerNRFRenderWorkspace(
+                                region: renderRegion,
+                                capacity: renderLimits.render,
+                                structuralCapacity: renderLimits.renderWorkspace
+                            )
+                        else {
+                            Issue.record("Static nRF raster endpoint did not construct")
+                            return false
+                        }
+                        let offer = endpoint.offer(provenance: provenance) { rasterSink in
+                            switch CanvasRenderProducer.produce(
+                                semantic: renderView,
+                                layout: sink.renderView,
+                                textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
+                                drawingPlan: drawingWorkspace,
+                                surfaceBounds: surfaceBounds,
+                                damageMode: .initializeCompleteSurface,
+                                rootForeground: .white,
+                                limits: renderLimits.render,
+                                expectedHeader: acceptedHeader,
+                                workspace: &rasterRenderWorkspace,
+                                sink: &rasterSink
+                            ) {
+                            case .success(let header):
+                                return header == acceptedHeader ? .complete : .contractViolation
+                            case .failure(let error):
+                                rasterSink.retainProducerError(error)
+                                switch error {
+                                case .capacityExhausted: return .insufficientCapacity
+                                case .sinkRefused: return .endpointRefused
+                                default: return .producerFailed
+                                }
+                            }
+                        }
+                        if offer.disposition != .accepted {
+                            Issue.record(
+                                "Static raster offer: \(offer), producer: \(String(describing: endpoint.retainedProducerError)), raster: \(String(describing: endpoint.sink.failure)), header: \(acceptedHeader), descriptor: \(endpoint.descriptor)"
+                            )
+                        }
+                        #expect(offer == FrameOfferResult(disposition: .accepted, failure: nil)!)
+                        #expect(endpoint.sink.target.submittedPayloads > 0)
+                        #expect(endpoint.sink.target.submittedBytes > 0)
+                        #expect(endpoint.sink.target.completedFrames == 1)
+                    }
                     return true
                 }
                 #expect(resolvedLayoutRead == true)

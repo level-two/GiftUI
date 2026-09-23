@@ -10,7 +10,7 @@ import GiftUISurfaceCore
 import SignalAnalyzerTargetHost
 import Testing
 
-private struct StaticNRFEndpointWriter: DisplayPayloadWriter {
+struct StaticNRFEndpointWriter: DisplayPayloadWriter {
     let capacityBytes: UInt32 = 3_840
     let regionCapacity: UInt16 = 1
     private(set) var writtenBytes: UInt32 = 0
@@ -21,9 +21,10 @@ private struct StaticNRFEndpointWriter: DisplayPayloadWriter {
         origin: Point, pixelCount: UInt16, encoding: CanonicalPixelEncoding
     ) -> Bool {
         guard remainingBytes == 0, writtenRegionCount == 0,
-            pixelCount == 1, encoding == .rgb565BigEndian
+            pixelCount > 0, UInt32(pixelCount) * 2 <= capacityBytes,
+            encoding == .rgb565BigEndian
         else { return false }
-        remainingBytes = 2
+        remainingBytes = UInt32(pixelCount) * 2
         return true
     }
     mutating func write(byte: UInt8) -> Bool {
@@ -47,7 +48,7 @@ private struct StaticNRFEndpointWriter: DisplayPayloadWriter {
     }
 }
 
-private struct StaticNRFEndpointTarget: DisplayTarget {
+struct StaticNRFEndpointTarget: DisplayTarget {
     let submissionLifetime: SubmissionLifetime = .synchronousBorrow
     let handoff: SubmissionHandoff = .synchronous
     let maximumInFlightPayloads: UInt8 = 1
