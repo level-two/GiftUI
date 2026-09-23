@@ -971,6 +971,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       The registered nRF SPEC-001 driver passes 225 host tests, all seven C
       fixtures, and its SPEC-015 cross-build at this revision; it publishes
       cross-build inspection only, with no connected display or input claim.
+      The target model precursor now includes a direct typed change-report
+      registration. Host and firmware startup checks prove phase rejection,
+      accepted dirtying, and stale-token rejection after retirement; the
+      checked target uses 184,192 RAM and 36,020 flash bytes. Full observable
+      attachment/replacement and portable model lowering remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

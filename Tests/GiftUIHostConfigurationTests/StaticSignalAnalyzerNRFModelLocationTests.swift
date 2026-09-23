@@ -20,6 +20,12 @@ import Testing
         guard let generation = pointer.pointee.activate(),
             let handle = StaticSignalAnalyzerNRFModelHandle(
                 location: pointer, generation: generation
+            ),
+            let registration = StaticSignalAnalyzerNRFChangeRegistration(
+                location: pointer,
+                token: StaticSignalAnalyzerNRFRegistrationToken(
+                    slot: 0, generation: generation
+                )
             )
         else {
             Issue.record("Static model location did not activate")
@@ -27,11 +33,22 @@ import Testing
         }
         let copy = handle
         #expect(generation == 0)
+        pointer.pointee.clearDirtyAfterPublication()
+        #expect(registration.reportChange() == .phaseViolation)
+        #expect(!pointer.pointee.isDirty)
         #expect(handle.dispatch(actionRawValue: 0) == nil)
         let began = pointer.pointee.beginMutation()
         let repeatedBegin = pointer.pointee.beginMutation()
         #expect(began)
         #expect(!repeatedBegin)
+        #expect(registration.reportChange() == .accepted)
+        #expect(pointer.pointee.isDirty)
+        pointer.pointee.clearDirtyAfterPublication()
+        let wrongToken = StaticSignalAnalyzerNRFRegistrationToken(
+            slot: 0, generation: generation + 1
+        )
+        #expect(pointer.pointee.reportChange(token: wrongToken) == .staleRegistration)
+        #expect(!pointer.pointee.isDirty)
         #expect(handle.dispatch(actionRawValue: 0) == .start)
         #expect(handle.dispatch(actionRawValue: 1) == .stop)
         #expect(handle.dispatch(actionRawValue: 2) == .clear)
@@ -52,8 +69,10 @@ import Testing
         #expect(handle.dispatch(actionRawValue: 3) == nil)
         #expect(pointer.pointee.visibleWindowRawValue == 2)
         pointer.pointee.retire()
+        #expect(registration.reportChange() == .staleRegistration)
         #expect(handle.dispatch(actionRawValue: 0) == nil)
         #expect(pointer.pointee.activate() == 1)
+        #expect(registration.reportChange() == .staleRegistration)
         #expect(copy.dispatch(actionRawValue: 3) == nil)
     }
 }

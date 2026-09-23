@@ -487,6 +487,13 @@ location stores that root structural identity and declaration ordinal, and
 host tests compare its descriptor fields to the host preset. The firmware
 compiles the generated descriptor and checks its exact one-location,
 one-registration, one-replacement, and two-model-slot capacities at startup.
+The fixed location now accepts a typed `(slot, generation)` change token
+through a direct registration value. It rejects stale generations before
+checking mutation phase, rejects in-phase violations without dirtying, and
+coalesces accepted reports into its single dirty bit. Window mutation calls
+this route and restores the old value if the report refuses. This validates
+the zero-heap endpoint mechanism, but full attachment, replacement staging,
+capture fact application, and the generated portable model lowering remain.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact

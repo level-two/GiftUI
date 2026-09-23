@@ -30,6 +30,14 @@ nrf52840-embedded` driver also passed after this change: 225 host tests, the
 touch/input/storage/clock/scheduler/lifecycle C fixtures, and the SPEC-015
 nRF cross-build. Its immutable SPEC-001 report is
 `.build/contract-reports/spec-001/20260923T113743Z-91221/nrf52840-embedded/`.
+The fixed model location now has a typed direct change-report registration:
+one slot and generation, accepted reports coalescing into one dirty bit,
+out-of-phase refusal, and stale-token refusal after retirement. The host
+fixture and retained firmware startup entry exercise those outcomes. The
+hardware-free target build passes hard-float, zero-heap, symbol, RAM, and
+flash gates at 184,192 RAM and 36,020 flash bytes. The registration is an
+endpoint precursor; it does not yet attach the portable model or run the
+production application.
 
 The selected connected assembly is the `nrf52840dk/nrf52840` with the
 480 x 320 ILI9486 PiScreen display bridge and its ADS7846 resistive-touch

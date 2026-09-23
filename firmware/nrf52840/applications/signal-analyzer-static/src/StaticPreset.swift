@@ -51,12 +51,22 @@ public func giftUISignalAnalyzerModelLocationValid() -> UInt32 {
         guard let generation = location.pointee.activate(),
             let handle = StaticSignalAnalyzerNRFModelHandle(
                 location: location, generation: generation
+            ),
+            let registration = StaticSignalAnalyzerNRFChangeRegistration(
+                location: location,
+                token: StaticSignalAnalyzerNRFRegistrationToken(
+                    slot: 0, generation: generation
+                )
             )
         else { return 0 }
         let copy = handle
-        guard handle.dispatch(actionRawValue: 0) == nil,
+        location.pointee.clearDirtyAfterPublication()
+        guard registration.reportChange() == .phaseViolation,
+            !location.pointee.isDirty,
+            handle.dispatch(actionRawValue: 0) == nil,
             location.pointee.beginMutation(),
             !location.pointee.beginMutation(),
+            registration.reportChange() == .accepted,
             handle.dispatch(actionRawValue: 0) == .start,
             handle.dispatch(actionRawValue: 1) == .stop,
             handle.dispatch(actionRawValue: 2) == .clear,
@@ -71,7 +81,9 @@ public func giftUISignalAnalyzerModelLocationValid() -> UInt32 {
             handle.dispatch(actionRawValue: 3) == nil
         else { return 0 }
         location.pointee.retire()
-        guard handle.dispatch(actionRawValue: 0) == nil else { return 0 }
+        guard handle.dispatch(actionRawValue: 0) == nil,
+            registration.reportChange() == .staleRegistration
+        else { return 0 }
         return 1
     }
 }

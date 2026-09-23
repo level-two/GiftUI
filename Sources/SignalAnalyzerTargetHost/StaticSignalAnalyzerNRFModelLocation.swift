@@ -45,13 +45,70 @@ package struct StaticSignalAnalyzerNRFModelLocation {
         isDirty = false
     }
 
+    package mutating func reportChange(
+        token: StaticSignalAnalyzerNRFRegistrationToken
+    ) -> StaticSignalAnalyzerNRFChangeReportOutcome {
+        guard token.slot == 0, activeGeneration == token.generation else {
+            return .staleRegistration
+        }
+        guard isMutating else { return .phaseViolation }
+        isDirty = true
+        return .accepted
+    }
+
     fileprivate mutating func selectWindow(_ rawValue: UInt8) -> Bool {
-        guard activeGeneration != nil, isMutating, rawValue <= 2 else { return false }
+        guard let generation = activeGeneration, isMutating, rawValue <= 2 else {
+            return false
+        }
         if visibleWindowRawValue != rawValue {
+            let previous = visibleWindowRawValue
             visibleWindowRawValue = rawValue
-            isDirty = true
+            let token = StaticSignalAnalyzerNRFRegistrationToken(
+                slot: 0, generation: generation
+            )
+            guard reportChange(token: token) == .accepted else {
+                visibleWindowRawValue = previous
+                return false
+            }
         }
         return true
+    }
+}
+
+package struct StaticSignalAnalyzerNRFRegistrationToken: Equatable, Sendable {
+    package let slot: UInt16
+    package let generation: UInt32
+
+    package init(slot: UInt16, generation: UInt32) {
+        self.slot = slot
+        self.generation = generation
+    }
+}
+
+package enum StaticSignalAnalyzerNRFChangeReportOutcome: UInt8, Equatable {
+    case accepted = 0
+    case staleRegistration = 1
+    case phaseViolation = 2
+}
+
+/// One bounded direct endpoint; copies still report against the same location.
+package struct StaticSignalAnalyzerNRFChangeRegistration {
+    private let location: UnsafeMutablePointer<StaticSignalAnalyzerNRFModelLocation>
+    package let token: StaticSignalAnalyzerNRFRegistrationToken
+
+    package init?(
+        location: UnsafeMutablePointer<StaticSignalAnalyzerNRFModelLocation>,
+        token: StaticSignalAnalyzerNRFRegistrationToken
+    ) {
+        guard token.slot == 0,
+            location.pointee.activeGeneration == token.generation
+        else { return nil }
+        self.location = location
+        self.token = token
+    }
+
+    package func reportChange() -> StaticSignalAnalyzerNRFChangeReportOutcome {
+        location.pointee.reportChange(token: token)
     }
 }
 
