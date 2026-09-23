@@ -78,6 +78,13 @@ baselines, and glyph baselines with checked 16-bit storage and derives the
 scope/line clips. The differential fixture compares all packed records after
 nonzero-origin placement by the common engine for every diagnostic text
 scope. Container and modifier placement and resolved publication remain open.
+The target workspace now checks complete placed scope, dense line, and
+associated glyph records before setting the same one-byte publication marker
+as the host sink. Its borrowed view reads those records only while the marker
+remains set. A differential fixture compares both complete published regions
+with the host in-place sink, including refusal of a missing scope and
+invalidation on reset. Full hierarchy layout and publication still remain
+open; the firmware startup check publishes only one isolated title scope.
 
 ## Proposed Internal Organization
 

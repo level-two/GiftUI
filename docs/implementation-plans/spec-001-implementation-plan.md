@@ -1266,6 +1266,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       the title. The checked image uses 187,840 RAM and 94,156 flash bytes;
       the registered nRF SPEC-001 gate passes. Container and modifier
       placement and publication remain open.
+      The target workspace now validates its placed scopes, dense text lines,
+      and glyph associations before marking an in-place resolved layout as
+      published. A borrowed view refuses reads after reset. A host
+      differential fixture compares all bytes with the existing in-place
+      result sink, and firmware startup publishes an isolated title scope.
+      The checked image uses 187,840 RAM and 95,436 flash bytes; the
+      registered nRF SPEC-001 gate passes. Full generated hierarchy layout
+      and publication remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

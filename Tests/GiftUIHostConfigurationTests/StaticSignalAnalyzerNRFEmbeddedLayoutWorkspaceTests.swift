@@ -172,3 +172,135 @@ import Testing
         }
     }
 }
+
+@Test func staticNRFEmbeddedLayoutPublishesTheInPlaceHostRecords() {
+    var targetScopes = [UInt8](repeating: 0, count: 3_136)
+    var targetText = [UInt8](repeating: 0, count: 4_704)
+    var hostScopes = [UInt8](repeating: 0, count: 3_136)
+    var hostText = [UInt8](repeating: 0, count: 4_704)
+    targetScopes.withUnsafeMutableBytes { targetScopeRegion in
+        targetText.withUnsafeMutableBytes { targetTextRegion in
+            hostScopes.withUnsafeMutableBytes { hostScopeRegion in
+                hostText.withUnsafeMutableBytes { hostTextRegion in
+                    guard
+                        var target = StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace(
+                            scopes: targetScopeRegion, text: targetTextRegion
+                        ),
+                        var host = StaticSignalAnalyzerNRFLayoutWorkspace(
+                            scopes: hostScopeRegion, text: hostTextRegion
+                        ),
+                        var sink = StaticSignalAnalyzerNRFResolvedLayoutStorage(
+                            scopes: hostScopeRegion, text: hostTextRegion
+                        )
+                    else {
+                        Issue.record("Exact regions must construct")
+                        return
+                    }
+                    let targetAcquired = target.acquire()
+                    let hostAcquired = host.acquireLayout()
+                    #expect(targetAcquired && hostAcquired)
+                    let size = Size(width: 100, height: 20)!
+                    let bounds = Rect(origin: Point(x: 0, y: 0), size: size)!
+                    let zero = Rect(
+                        origin: Point(x: 0, y: 0),
+                        size: Size(width: 0, height: 0)!
+                    )!
+                    let measurement = LayoutMeasurement(
+                        idealSize: size, resolvedSize: size
+                    )
+                    let targetScope = target.appendScope(
+                        identity: 0xA001,
+                        idealWidth: 100, idealHeight: 20,
+                        width: 100, height: 20
+                    )
+                    let hostScope = host.appendScope(
+                        identity: 0xA001, measurement: measurement
+                    )
+                    #expect(targetScope && hostScope)
+                    let instance = GiftUIReferenceTextMetricsView().instance(at: 0)!.id
+                    let glyph = StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.Glyph(
+                        identity: 0xA001, lineIndex: 0, glyphID: 1,
+                        baselineX: 0, baselineY: 16
+                    )
+                    let targetGlyph = target.appendGlyph(glyph, glyphIndex: 0)
+                    let hostGlyph = host.appendPositionedGlyph(
+                        LayoutPositionedGlyph(
+                            identity: UInt16(0xA001), lineIndex: 0,
+                            glyphIndex: 0, instance: instance,
+                            glyph: GlyphID(rawValue: 1),
+                            baseline: Point(x: 0, y: 16), clip: zero
+                        )
+                    )
+                    #expect(targetGlyph && hostGlyph)
+                    let line = StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.Line(
+                        identity: 0xA001, lineIndex: 0,
+                        x: 0, y: 0, width: 100, height: 20,
+                        baselineX: 0, baselineY: 16
+                    )
+                    let targetLine = target.appendTextLine(line)
+                    let hostLine = host.appendTextLine(
+                        LayoutTextLine(
+                            identity: UInt16(0xA001), lineIndex: 0,
+                            bounds: bounds, baseline: Point(x: 0, y: 16),
+                            clip: zero
+                        )
+                    )
+                    #expect(targetLine && hostLine)
+                    let targetPlaced = target.placeScope(
+                        identity: 0xA001,
+                        originX: 0, originY: 0,
+                        width: 100, height: 20,
+                        clipX: 0, clipY: 0,
+                        clipWidth: 100, clipHeight: 20
+                    )
+                    let hostPlaced = host.storePlacement(
+                        LayoutPlacement(bounds: bounds, clip: bounds),
+                        for: 0xA001
+                    )
+                    #expect(targetPlaced && hostPlaced)
+                    let refused = target.publish(
+                        rootIdentity: 0xA001, expectedScopeCount: 2
+                    )
+                    #expect(refused == nil)
+                    #expect(target.isActive)
+                    let summary = LayoutSummary(
+                        scopeCount: 1, textScalarCount: 1,
+                        textLineCount: 1, positionedGlyphCount: 1,
+                        maximumObservedDepth: 1, rootBounds: bounds
+                    )
+                    let began = sink.begin(summary: summary)
+                    let stagedScope = sink.stageScope(
+                        identity: 0xA001, bounds: bounds, clip: bounds
+                    )
+                    let stagedLine = sink.stageTextLine(
+                        identity: 0xA001, lineIndex: 0,
+                        bounds: bounds, baseline: Point(x: 0, y: 16),
+                        clip: bounds
+                    )
+                    let stagedGlyph = sink.stageGlyph(
+                        identity: 0xA001, lineIndex: 0, glyphIndex: 0,
+                        instance: instance, glyph: GlyphID(rawValue: 1),
+                        baseline: Point(x: 0, y: 16), clip: bounds
+                    )
+                    let hostPublished = sink.publish()
+                    let view = target.publish(
+                        rootIdentity: 0xA001, expectedScopeCount: 1
+                    )
+                    #expect(
+                        began && stagedScope && stagedLine && stagedGlyph
+                            && hostPublished
+                    )
+                    #expect(view?.isPublished == true)
+                    #expect(view?.scope(at: 0)?.identity == 0xA001)
+                    #expect(view?.line(at: 0) == line)
+                    #expect(view?.glyph(at: 0) == glyph)
+                    #expect([UInt8](targetScopeRegion) == [UInt8](hostScopeRegion))
+                    #expect([UInt8](targetTextRegion) == [UInt8](hostTextRegion))
+                    target.reset()
+                    #expect(view?.isPublished == false)
+                    #expect(view?.scope(at: 0) == nil)
+                }
+            }
+        }
+    }
+}

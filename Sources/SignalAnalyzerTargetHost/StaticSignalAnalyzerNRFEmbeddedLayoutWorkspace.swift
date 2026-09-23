@@ -246,6 +246,65 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
         text[offset + 1] = 0
     }
 
+    package mutating func publish(
+        rootIdentity: UInt16, expectedScopeCount: UInt16
+    ) -> StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView? {
+        guard isActive, depth == 0,
+            scopeCount == expectedScopeCount,
+            scopeCount > 0,
+            text[StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.scratchOffset + 26] == 0,
+            scope(at: 0)?.identity == rootIdentity
+        else { return nil }
+        var scopeCursor: UInt16 = 0
+        while scopeCursor < scopeCount {
+            guard let scope = scope(at: scopeCursor),
+                scope.originX != nil, scope.originY != nil,
+                scope.clipX != nil, scope.clipY != nil,
+                scope.clipWidth != nil, scope.clipHeight != nil
+            else { return nil }
+            scopeCursor += 1
+        }
+        var lineOrdinal: UInt16 = 0
+        while lineOrdinal < textLineCount {
+            guard let line = textLine(at: lineOrdinal),
+                scopeOrdinal(of: line.identity) != nil,
+                line.lineIndex
+                    == precedingLineCount(
+                        of: line.identity, before: lineOrdinal
+                    )
+            else { return nil }
+            lineOrdinal += 1
+        }
+        var glyphOrdinal: UInt16 = 0
+        while glyphOrdinal < positionedGlyphCount {
+            guard let glyph = glyph(at: glyphOrdinal),
+                glyph.glyphID < StaticSignalAnalyzerNRFReferenceMetrics.glyphCount,
+                scopeOrdinal(of: glyph.identity) != nil,
+                hasLine(identity: glyph.identity, index: glyph.lineIndex)
+            else { return nil }
+            glyphOrdinal += 1
+        }
+        text[StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.scratchOffset + 26] = 1
+        isActive = false
+        return StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView(
+            scopes: scopes, text: text,
+            scopeCount: scopeCount,
+            lineCount: textLineCount,
+            glyphCount: positionedGlyphCount,
+            rootIdentity: rootIdentity
+        )
+    }
+
+    private func precedingLineCount(of identity: UInt16, before ordinal: UInt16) -> UInt16 {
+        var current: UInt16 = 0
+        var count: UInt16 = 0
+        while current < ordinal {
+            if textLine(at: current)?.identity == identity { count += 1 }
+            current += 1
+        }
+        return count
+    }
+
     package mutating func reset() {
         scopes.initializeMemory(as: UInt8.self, repeating: 0)
         text.initializeMemory(as: UInt8.self, repeating: 0)

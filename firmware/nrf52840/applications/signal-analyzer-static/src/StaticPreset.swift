@@ -258,7 +258,15 @@ public func giftUISignalAnalyzerLayoutTextValid(
         workspace: &layout
     ), layout.textLineCount > 0, layout.positionedGlyphCount > 0
     else { return 0 }
+    guard let resolved = layout.publish(
+        rootIdentity: title.identity, expectedScopeCount: 1
+    ), resolved.isPublished,
+        resolved.scope(at: 0)?.identity == title.identity,
+        resolved.line(at: 0)?.identity == title.identity,
+        resolved.glyph(at: 0)?.identity == title.identity
+    else { return 0 }
     layout.reset()
+    guard !resolved.isPublished else { return 0 }
     return 1
 }
 
