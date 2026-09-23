@@ -82,6 +82,8 @@ set(giftui_static_swift_inputs
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFRegionMap.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFModelLocation.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFModelDescriptor.generated.swift"
+    "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift"
+    "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFTopologyWriter.generated.swift"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/StaticPreset.swift"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/StaticInputABI.swift"
 )
@@ -103,7 +105,7 @@ if(NOT CONFIG_FP_HARDABI)
 endif()
 
 target_compile_options(app_swift PRIVATE
-    -parse-as-library -Osize -package-name GiftUI
+    -parse-as-library -Osize -package-name GiftUI -D GIFTUI_NRF_EMBEDDED
     -enable-experimental-feature Embedded
     "SHELL:-Xfrontend -function-sections"
     "SHELL:-Xfrontend -disable-stack-protector"

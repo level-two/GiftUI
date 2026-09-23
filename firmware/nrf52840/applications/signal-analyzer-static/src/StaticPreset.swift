@@ -31,6 +31,13 @@ private struct StaticSignalAnalyzerPreset {
     }
 }
 
+// Embedded lowering uses the exact generated variant codes without compiling
+// the class-backed host Presentation input wrapper.
+package enum StaticSignalAnalyzerNRFSemanticVariant: UInt8, Equatable, Sendable {
+    case normal = 0
+    case diagnostic = 1
+}
+
 // The firmware owns this one typed model location for its entire lifetime.
 // Until the generated application adapter is linked, startup only validates
 // its handle identity, generation, and six action routes.
@@ -98,6 +105,30 @@ public func giftUISignalAnalyzerModelLocationValid() -> UInt32 {
 public func giftUISignalAnalyzerStaticPreset() -> UInt32 {
     let preset = StaticSignalAnalyzerPreset()
     return preset.isValid ? 360_515_885 : 0
+}
+
+@_cdecl("giftui_signal_analyzer_topology_valid")
+public func giftUISignalAnalyzerTopologyValid(
+    _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32
+) -> UInt32 {
+    guard let profile, bytes == 39_696 else { return 0 }
+    let semantic = UnsafeMutableRawBufferPointer(start: profile, count: 3_024)
+    func check(_ variant: StaticSignalAnalyzerNRFSemanticVariant,
+               count: UInt16) -> Bool {
+        semantic.initializeMemory(as: UInt8.self, repeating: 0)
+        guard StaticSignalAnalyzerNRFTopologyWriter.populateShape(
+            variant: variant, in: semantic
+        ) == count,
+            StaticSignalAnalyzerNRFTopologyWriter.populateBindings(
+                scopeCount: count, in: semantic
+            ),
+            StaticSignalAnalyzerNRFPackedSemanticRecords.scope(
+                at: 0, in: semantic
+            )?.kind == .proxy
+        else { return false }
+        return true
+    }
+    return check(.normal, count: 96) && check(.diagnostic, count: 98) ? 1 : 0
 }
 
 @_cdecl("giftui_signal_analyzer_source_valid")

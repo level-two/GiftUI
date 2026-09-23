@@ -5,6 +5,8 @@
 #include "static_host_storage.h"
 
 extern uint32_t giftui_signal_analyzer_static_preset(void);
+extern uint32_t giftui_signal_analyzer_topology_valid(
+    void *profile, uint32_t bytes);
 extern uint32_t giftui_signal_analyzer_source_valid(void);
 extern uint32_t giftui_signal_analyzer_storage_bytes(void);
 extern uint32_t giftui_signal_analyzer_capture_layout(void);
@@ -54,6 +56,8 @@ int main(void)
         giftui_signal_analyzer_model_location_valid() != 1u ||
         giftui_signal_analyzer_diagnostic_value_valid() != 1u ||
         giftui_signal_analyzer_storage_regions(&regions) != 0 ||
+        giftui_signal_analyzer_topology_valid(
+            regions.profile, (uint32_t)regions.profile_bytes) != 1u ||
         regions.capture_bytes != GIFTUI_STATIC_CAPTURE_BYTES ||
         giftui_signal_analyzer_capture_region_valid(
             regions.capture, (uint32_t)regions.capture_bytes) != 1u ||

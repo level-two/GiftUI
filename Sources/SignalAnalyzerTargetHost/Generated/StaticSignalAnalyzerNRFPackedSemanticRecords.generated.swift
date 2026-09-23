@@ -185,6 +185,7 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
         return ordinal < maximumScopeCount ? ordinal : nil
     }
 
+    #if !GIFTUI_NRF_EMBEDDED
     /// Validate an ordered, fully linked projection before its owning region
     /// is checksummed and published. This does not mutate the region.
     package static func validateTopology(
@@ -501,6 +502,8 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
         return (low ^ UInt64(UInt8(truncatingIfNeeded: value >> 8)))
             &* 0x100_0000_01b3
     }
+
+    #endif
 
     private static func footerIsZero(
         in region: UnsafeMutableRawBufferPointer

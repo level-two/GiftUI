@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-09-21
-updated: 2026-09-21
+updated: 2026-09-23
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -65,6 +65,13 @@ hierarchy and compares them with the Dynamic semantic oracle. A package-local
 view borrows a validated region synchronously and implements the existing
 semantic layout/render query contracts over the packed records. The host owns
 the region lifetime; no view or pointer to it escapes an opportunity.
+
+The firmware now compiles the generated packed schema and topology writer.
+Its startup check stages the normal and diagnostic scope shapes and action
+bindings in the actual candidate region. Host-only primitive population and
+complete-table validation remain outside that Embedded Swift source set while
+their dependent portable Presentation values are lowered. This check does not
+seal or publish a semantic result.
 
 ## Data and Control Flow
 

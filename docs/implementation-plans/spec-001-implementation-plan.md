@@ -1121,6 +1121,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       retains the target path. The checked image uses 187,840 RAM and 64,620
       flash bytes. Other source and admission rejection normalization remains
       open.
+      The nRF image now compiles the generated packed semantic schema and
+      normal/diagnostic topology writer. A startup probe stages both exact
+      96-scope and 98-scope shapes and action bindings in the 3,024-byte
+      candidate region. The registered hardware-free gate passes 243 host
+      tests and seven C fixtures; the checked image uses 187,840 RAM and
+      70,588 flash bytes. Primitive/text payloads, complete semantic
+      validation/publication, rendering, and the production firmware loop
+      remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or

@@ -122,6 +122,7 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         return true
     }
 
+    #if !GIFTUI_NRF_EMBEDDED
     /// The current portable tree has the same invariant stack/spacer payloads
     /// in both variants. No text, Canvas, or modifier payload is inferred here.
     package static func populateInvariantPrimitives(
@@ -479,6 +480,8 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         default: (.hStack, 1, 4)
         }
     }
+
+    #endif
 
     private static func actionOrdinal(at index: UInt16) -> UInt16 {
         switch index {
