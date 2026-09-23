@@ -43,6 +43,30 @@ package typealias StaticSignalAnalyzerNRFEndpoint<Target: DisplayTarget> =
 /// display submission have completed. Construction validates the same report
 /// and raster limits used by the Static nRF host assembly.
 package enum StaticSignalAnalyzerNRFEndpointFactory {
+    package static func make<Transport: StaticSignalAnalyzerNRFDisplayTransport>(
+        transport: consuming Transport,
+        provenance: FrameProvenance,
+        assemblyReport: HostAssemblyReport,
+        rasterRegion: UnsafeMutableRawBufferPointer,
+        coverageRegion: UnsafeMutableRawBufferPointer
+    ) -> StaticSignalAnalyzerNRFEndpoint<
+        StaticSignalAnalyzerNRFDisplayTarget<Transport>
+    >? {
+        guard
+            let target = StaticSignalAnalyzerNRFDisplayTarget(
+                transport: transport,
+                rasterRegion: rasterRegion
+            )
+        else { return nil }
+        return make(
+            target: target,
+            provenance: provenance,
+            assemblyReport: assemblyReport,
+            rasterRegion: rasterRegion,
+            coverageRegion: coverageRegion
+        )
+    }
+
     package static func make<Target: DisplayTarget>(
         target: consuming Target,
         provenance: FrameProvenance,

@@ -923,12 +923,8 @@ import Testing
                             start: raster, count: 3_840
                         )
                         guard
-                            let displayTarget = StaticSignalAnalyzerNRFDisplayTarget(
-                                transport: StaticNRFRecordingDisplayTransport(),
-                                rasterRegion: rasterRegion
-                            ),
                             var endpoint = StaticSignalAnalyzerNRFEndpointFactory.make(
-                                target: displayTarget,
+                                transport: StaticNRFRecordingDisplayTransport(),
                                 provenance: provenance,
                                 assemblyReport: report,
                                 rasterRegion: rasterRegion,

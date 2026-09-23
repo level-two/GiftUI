@@ -183,6 +183,9 @@ reads covered pixels in ascending offset order, and the writer packs each
 horizontal run toward the front of that region. Its output offset never
 overtakes the source offset. Submission consumes each run synchronously before
 the writer resets its cursors; reset does not clear unread tile bytes.
+The Static endpoint factory constructs both borrowers from one caller-supplied
+region, so its firmware call site cannot choose distinct raster and payload
+allocations.
 
 The semantic/action/drawing transcript is profile-equivalent. Device timing,
 physical extents, payload counts, stack high-water, and transport errors remain

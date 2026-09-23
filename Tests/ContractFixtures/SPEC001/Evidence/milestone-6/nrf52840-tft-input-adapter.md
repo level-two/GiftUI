@@ -821,6 +821,9 @@ run all eight generated hierarchies through this one-slot target. The focused
 generated hierarchy test passes with all eight raster offers enabled; its
 previous condition exercised only the first offer, so that earlier eight-offer
 claim lacked endpoint evidence.
+The production endpoint factory now constructs the tile store and display
+writer from one caller-supplied raster region, and the same eight-case fixture
+uses this factory entry.
 
 The firmware now reserves a separately named 240-byte touched-pixel bitmap
 beside its existing 3,840-byte raster slot. The entry self-check counts
