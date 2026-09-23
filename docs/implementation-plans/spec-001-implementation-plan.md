@@ -1656,6 +1656,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       cross-build uses 187,968 RAM and 218,892 flash bytes. Repeated
       opportunities, normalized action routing, and the firmware
       lifecycle join remain open; see the [nRF T6.8 evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md).
+      The initial offer now retains the firmware's address-stable typed model
+      location until reverse-order device cleanup. A refused write retires
+      that generation and resets attempt-local Layout and Drawing storage;
+      the exact-source native probe verifies later reactivation. The latest
+      registered hardware-free gate uses 187,968 RAM and 219,852 flash bytes.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

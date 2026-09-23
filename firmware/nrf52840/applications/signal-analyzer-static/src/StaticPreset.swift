@@ -469,11 +469,12 @@ public func giftUISignalAnalyzerFullCanvasValid(
     _ raster: UnsafeMutableRawPointer?, _ rasterBytes: UInt32,
     _ coverage: UnsafeMutableRawPointer?, _ coverageBytes: UInt32
 ) -> UInt32 {
-    giftUIStaticFullCanvas(
+    var model = StaticSignalAnalyzerNRFModelLocation()
+    return giftUIStaticFullCanvas(
         profile, bytes, capture, captureBytes,
         raster, rasterBytes, coverage, coverageBytes,
         write: giftUISignalAnalyzerProbeRGB565,
-        validation: true
+        validation: true, model: &model
     )
 }
 
@@ -488,11 +489,26 @@ public func giftUISignalAnalyzerPresentInitial(
     ) -> Int32)?
 ) -> UInt32 {
     guard let write else { return 0 }
-    return giftUIStaticFullCanvas(
-        profile, bytes, capture, captureBytes,
-        raster, rasterBytes, coverage, coverageBytes,
-        write: write, validation: false
-    )
+    return withUnsafeMutablePointer(to: &giftUIStaticModelLocation) { location in
+        guard location.pointee.activeGeneration == nil else { return 0 }
+        let result = giftUIStaticFullCanvas(
+            profile, bytes, capture, captureBytes,
+            raster, rasterBytes, coverage, coverageBytes,
+            write: write, validation: false, model: &location.pointee
+        )
+        if result == 0 { location.pointee.retire() }
+        return result
+    }
+}
+
+@_cdecl("giftui_signal_analyzer_initial_model_active")
+public func giftUISignalAnalyzerInitialModelActive() -> UInt32 {
+    giftUIStaticModelLocation.activeGeneration == nil ? 0 : 1
+}
+
+@_cdecl("giftui_signal_analyzer_retire_initial")
+public func giftUISignalAnalyzerRetireInitial() {
+    giftUIStaticModelLocation.retire()
 }
 
 private func giftUIStaticFullCanvas(
@@ -501,7 +517,8 @@ private func giftUIStaticFullCanvas(
     _ raster: UnsafeMutableRawPointer?, _ rasterBytes: UInt32,
     _ coverage: UnsafeMutableRawPointer?, _ coverageBytes: UInt32,
     write: StaticSignalAnalyzerNRFEmbeddedPixelWrite,
-    validation: Bool
+    validation: Bool,
+    model: inout StaticSignalAnalyzerNRFModelLocation
 ) -> UInt32 {
     guard let profile, bytes == 39_696,
         let capture, captureBytes == 115_392,
@@ -537,10 +554,14 @@ private func giftUIStaticFullCanvas(
         )
     else { return 0 }
     var layoutWorkspace = StaticSignalAnalyzerNRFCommonLayoutWorkspace(packed: packed)
+    defer {
+        drawing.reset()
+        layoutWorkspace.packed.reset()
+        if validation { model.retire() }
+    }
     guard let resolved = StaticSignalAnalyzerNRFCommonLayoutPass.run(
         semantic: semantic, workspace: &layoutWorkspace
     ) else { return 0 }
-    var model = StaticSignalAnalyzerNRFModelLocation()
     guard model.activate() != nil,
         var source = StaticSignalAnalyzerNRFEmbeddedCanvasSource(
             semantic: semantic, model: model,
@@ -632,9 +653,6 @@ private func giftUIStaticFullCanvas(
     ), fullEndpoint.bodyCallCount == 1
     else { return 0 }
     if !validation {
-        drawing.reset()
-        layoutWorkspace.packed.reset()
-        model.retire()
         return 1
     }
     guard var refusingSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(
@@ -780,7 +798,6 @@ private func giftUIStaticFullCanvas(
     drawing.reset()
     layoutWorkspace.packed.reset()
     captureRegion.initializeMemory(as: UInt8.self, repeating: 0)
-    model.retire()
     return resolved.isPublished || drawing.isActive ? 0 : 1
 }
 

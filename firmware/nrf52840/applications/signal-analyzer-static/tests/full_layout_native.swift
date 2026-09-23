@@ -59,6 +59,16 @@ struct FullLayoutNativeCheck {
             ) == 1,
             "initial Canvas offer failed"
         )
+        precondition(giftUISignalAnalyzerInitialModelActive() == 1)
+        precondition(
+            giftUISignalAnalyzerPresentInitial(
+                profile, 39_696, capture, 115_392, raster, 3_840,
+                coverage, 240, accept
+            ) == 0,
+            "active model admitted a second initial offer"
+        )
+        giftUISignalAnalyzerRetireInitial()
+        precondition(giftUISignalAnalyzerInitialModelActive() == 0)
         precondition(
             giftUISignalAnalyzerPresentInitial(
                 profile, 39_696, capture, 115_392, raster, 3_840,
@@ -66,6 +76,15 @@ struct FullLayoutNativeCheck {
             ) == 0,
             "initial Canvas offer hid display refusal"
         )
+        precondition(giftUISignalAnalyzerInitialModelActive() == 0)
+        precondition(
+            giftUISignalAnalyzerPresentInitial(
+                profile, 39_696, capture, 115_392, raster, 3_840,
+                coverage, 240, accept
+            ) == 1,
+            "retired model could not activate again"
+        )
+        giftUISignalAnalyzerRetireInitial()
         precondition(
             giftUISignalAnalyzerTileValid(raster, 3_840, coverage, 240) == 1,
             "fixed RGB565 tile failed"

@@ -1466,3 +1466,15 @@ the registered cross-build gate passed at
 The image uses 187,968 RAM and 218,892 flash bytes. This is a first physical
 write path in the finite validator, not recurring application operation or
 connected-board evidence. No board was flashed.
+
+The initial real-driver offer now activates the firmware's address-stable
+typed model location and leaves that generation active until explicit
+teardown. An accepted offer refuses a second initial activation; device
+cleanup retires the location before display shutdown. A refused write retires
+it immediately, while attempt-local Drawing and Layout regions reset on
+every exit. The exact-source native probe verifies refusal, retirement, and
+subsequent reactivation. The registered hardware-free gate passed at
+`.build/contract-reports/spec-001/20260923T234559Z-60334/nrf52840-embedded/`.
+The checked image uses 187,968 RAM and 219,852 flash bytes. This establishes
+model-location lifetime around the first offer; the recurring application
+opportunity owner remains open.

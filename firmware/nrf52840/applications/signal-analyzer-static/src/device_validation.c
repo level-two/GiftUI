@@ -31,6 +31,7 @@ extern uint32_t giftui_signal_analyzer_present_initial(
     void *coverage, uint32_t coverage_bytes,
     int (*write)(uint16_t, uint16_t, uint16_t, uint16_t,
                  const uint8_t *, size_t));
+extern void giftui_signal_analyzer_retire_initial(void);
 
 static void wait_microseconds(uint32_t duration)
 {
@@ -176,6 +177,7 @@ int giftui_device_validation_run(void)
 
 cleanup:
     giftui_signal_analyzer_input_quiesce();
+    giftui_signal_analyzer_retire_initial();
     if (display_initialized) {
         const int shutdown_result = ili9486_shutdown();
         if (shutdown_result != 0) {
