@@ -45,3 +45,16 @@ public func giftUISignalAnalyzerCaptureLayout() -> UInt32 {
         && StaticSignalAnalyzerNRFCaptureRegions.requiredByteCount == 115_392
         ? 115_392 : 0
 }
+
+@_cdecl("giftui_signal_analyzer_capture_region_valid")
+public func giftUISignalAnalyzerCaptureRegionValid(
+    _ address: UnsafeMutableRawPointer?, _ bytes: UInt32
+) -> UInt32 {
+    guard address != nil, bytes == 115_392 else { return 0 }
+    let region = UnsafeMutableRawBufferPointer(start: address, count: Int(bytes))
+    guard let capture = StaticSignalAnalyzerNRFCaptureRegions(storage: region) else {
+        return 0
+    }
+    _ = consume capture
+    return 1
+}

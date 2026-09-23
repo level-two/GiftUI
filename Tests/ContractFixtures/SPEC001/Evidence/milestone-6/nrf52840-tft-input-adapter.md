@@ -1072,3 +1072,8 @@ artifacts are under `.build/nrf52840/signal-analyzer-static/`: `zephyr/zephyr.el
 `zephyr/zephyr.hex`, `zephyr/zephyr.map`, `zephyr/zephyr.dts`, and `reports/`.
 The inspected image uses 184,128 RAM bytes and 35,164 flash bytes. It still
 runs diagnostic device validation rather than the production Static host.
+The next checked image also passes the actual C-retained capture pointer into
+the shared Swift region borrower at startup. The entry refuses null,
+incorrect extent, and misalignment before device initialization. Its symbol
+is required by the ELF gate; the image uses 184,128 RAM and 35,228 flash
+bytes. No board was flashed.

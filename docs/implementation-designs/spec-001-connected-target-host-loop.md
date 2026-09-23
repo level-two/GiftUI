@@ -454,6 +454,9 @@ firmware's whole-module Embedded Swift build. A C-called Swift layout entry
 checks the target's 24-byte size/stride and exact two-slot byte count before
 device validation. This proves the encoding layout in the target compiler;
 the current firmware still does not run the capture policy or portable model.
+The firmware entry now also obtains the actual C storage handoff and lends its
+capture pointer and byte count to the shared Swift borrower before device
+construction. A refused address, extent, or alignment stops startup.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact

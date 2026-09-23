@@ -939,7 +939,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       shared Swift source in the nRF firmware. Its entry checks the target
       record size/stride and 115,392-byte two-slot layout before diagnostic
       device startup; the checked ELF retains the entry at 184,128 RAM and
-      35,164 flash bytes. The production model/repository join remains open.
+      35,164 flash bytes. A second retained Swift entry now borrows the actual
+      C handoff capture region at startup and rejects a wrong address, byte
+      count, or alignment. Its checked build uses 184,128 RAM and 35,228 flash
+      bytes. The production model/repository join remains open.
       A
       target-local,
       allocation-free
