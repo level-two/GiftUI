@@ -17,6 +17,7 @@ package enum StaticSignalAnalyzerNRFPacedPresentationResult: Equatable, Sendable
     case noWork
     case wait(untilMicroseconds: UInt64)
     case pacingRejected(HostWakePacingError)
+    case freshConstructionRequired(HostFreshConstructionReason)
     case profileBeginRejected(ExecutionError)
     case profileFinishRejected(ExecutionError)
     case completed(
@@ -43,6 +44,11 @@ package enum StaticSignalAnalyzerNRFPacedApplicationStage {
         renderSnapshotVersion: UInt32,
         presentationRevision: PresentationRevision
     ) -> StaticSignalAnalyzerNRFPacedPresentationResult {
+        if health.requiresFreshConstruction {
+            return .freshConstructionRequired(
+                health.freshConstructionReason ?? .terminalUnavailability
+            )
+        }
         switch pacing.schedule(at: timestampMicroseconds) {
         case .noWork:
             return .noWork

@@ -1209,7 +1209,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       health after the accepted stream drains. A healthy committed offer
       enables input; a failed third offer in the host fixture produces the
       required backend failure transition, quiesces input, and requires fresh
-      construction before the opportunity closes. Firmware residual-policy
+      construction before the opportunity closes. The paced entry now rejects
+      a later cycle before consuming its pending wake or entering profile
+      storage; the focused fixture verifies that refusal. Firmware residual-policy
       routing and reconstruction remain open.
       The Static nRF endpoint now owns one exact 3,840-byte raster tile and
       240-byte coverage map, with raster work limits derived from 150

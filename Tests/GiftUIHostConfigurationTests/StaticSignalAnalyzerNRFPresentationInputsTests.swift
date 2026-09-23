@@ -1596,6 +1596,24 @@ import Testing
             #expect(health.requiresFreshConstruction)
             #expect(profile.storageLifetimeState == .idle)
             #expect(!pacing.opportunityIsActive)
+            let payloadsBeforeBlockedCycle = endpoint.sink.target.transport.payloads
+            #expect(pacing.recordAcceptedFact(at: 750_001) == .success(.requestWake))
+            #expect(
+                StaticSignalAnalyzerNRFPacedApplicationStage.serviceAndPresent(
+                    at: 1_000_000,
+                    application: &owner,
+                    profile: &profile,
+                    pacing: &pacing,
+                    health: &health,
+                    endpoint: &endpoint,
+                    provenance: failedIdentity.provenance,
+                    renderSnapshotVersion: failedIdentity.provenance.semanticRevision.rawValue,
+                    presentationRevision: failedIdentity.presentationRevision
+                ) == .freshConstructionRequired(.terminalUnavailability)
+            )
+            #expect(pacing.wakeIsOutstanding)
+            #expect(profile.storageLifetimeState == .idle)
+            #expect(endpoint.sink.target.transport.payloads == payloadsBeforeBlockedCycle)
         }
         #expect(endpoint.sink.target.transport.payloads > 0)
     }

@@ -980,3 +980,6 @@ endpoint-health controller returns the required backend failure fact and
 effects, makes input ineligible, and requires fresh construction before the
 paced opportunity ends. Firmware residual-policy routing and reconstruction
 remain open.
+The same fixture then requests another wake and proves the paced entry refuses
+that cycle with `terminalUnavailability` before consuming the wake, beginning
+profile storage, or submitting another display payload.

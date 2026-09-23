@@ -209,6 +209,9 @@ post-acceptance failure drains first, then the shared health controller marks
 fresh construction required and the application owner quiesces its input.
 The resulting failure transition remains available for the firmware owner to
 route through the approved residual policy.
+Once health requires fresh construction, the paced entry rejects later work
+before scheduling or beginning another profile attempt. It preserves the
+pending wake for the reconstruction owner and performs no display offer.
 
 The semantic/action/drawing transcript is profile-equivalent. Device timing,
 physical extents, payload counts, stack high-water, and transport errors remain
