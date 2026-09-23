@@ -44,17 +44,19 @@ tracks this under T6.8.
 
 The generated semantic candidate and fixed layout result now complete the
 common layout pass for the normal and maximal diagnostic trees. The generated
-two-case Canvas table invokes the existing portable grid and trace helpers.
+host two-case Canvas table invokes the existing portable grid and trace helpers.
 `CanvasPlanProducer` expects a `DrawingPlanConstructionWorkspace`; the Dynamic
 host has one backed by arrays. `LivePathBuilder` and `StrokeSnapshotProducer`
 already own generic construction and validation and should be reused.
 
 The current Embedded Swift source mirrors the portable grid and trace formulas
 over compact snapshot records and drives the common Canvas producer. It has
-empty-capture and one-transition native checks. Five 32-byte static callable
-records now occupy the reserved 160-byte region and are cleared as each Canvas
-is released. The two-case target dispatch still needs generation from the
-manifest before this is a complete production static payload adapter.
+empty-capture and one-transition native checks. Five 32-byte static capture
+slots now occupy the reserved 160-byte region, with trace fields at the
+manifest's exact offsets, and are cleared as each Canvas is released. The
+target's two-case callable and occurrence mapping is generated from the same
+manifest and checked in the build. A golden comparison with the portable
+helper output and production opportunity integration remain open.
 
 ## Proposed Internal Organization
 
@@ -158,6 +160,8 @@ Golden operation comparison and firmware linkage remain open.
 ## Code and Evidence Links
 
 - [Embedded Canvas invocation source](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedCanvasSource.swift)
+- [Generated Embedded Canvas mapping](../../Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFEmbeddedCanvasTable.generated.swift)
+- [Canvas mapping generator](../../scripts/contracts/generate-spec-001-nrf-canvas-table.rb)
 - [Fixed live-path store](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLivePathStorage.swift)
 - [Live-path host tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFLivePathStorageTests.swift)
 - [Drawing-plan records](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanRecords.swift)

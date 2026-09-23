@@ -1299,3 +1299,11 @@ manifest remains open.
 The checked image uses 187,840 RAM and 146,260 flash bytes; the registered
 SPEC-001 run completed at
 `.build/contract-reports/spec-001/20260923T214658Z-14048/nrf52840-embedded/`.
+
+The target's callable IDs, capture sizes, and channels are now generated from
+the same five-occurrence Canvas manifest as the host table. The manifest audit
+and nRF CMake configuration reject a stale target projection. Native execution
+still derives the empty and rising-transition plans through that mapping.
+The checked image uses 187,840 RAM and 146,340 flash bytes; the registered
+SPEC-001 run completed at
+`.build/contract-reports/spec-001/20260923T215317Z-16468/nrf52840-embedded/`.

@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 require "pathname"
+require "rbconfig"
 require "yaml"
 
 ROOT = Pathname.new(File.expand_path("../..", __dir__))
@@ -55,6 +56,8 @@ expected_fields = [
 ]
 actual_fields = trace.fetch("fields").map { |field| [field.fetch("name"), field.fetch("type"), field.fetch("offset")] }
 fail_check("trace fields differ") unless actual_fields == expected_fields
+target_generator = ROOT.join("scripts/contracts/generate-spec-001-nrf-canvas-table.rb")
+fail_check("target Canvas table is stale") unless system(RbConfig.ruby, target_generator.to_s, "--check")
 
 source = ROOT.join(manifest.fetch("source")).read
 fail_check("grid source expression is missing") unless source.include?("package func makeSignalAnalyzerGridCanvas() -> Canvas")

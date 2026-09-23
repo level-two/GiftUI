@@ -5,7 +5,8 @@
         CanvasInvocationSource
     {
         package typealias Identity = UInt16
-        package let canvasOccurrenceCount: UInt16 = 5
+        package let canvasOccurrenceCount =
+            StaticSignalAnalyzerNRFEmbeddedCanvasTable.occurrenceCount
         private let semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView
         private let captureState: StaticSignalAnalyzerNRFModelCaptureState
         private let captureRegion: UnsafeMutableRawBufferPointer
@@ -19,7 +20,8 @@
             captureRegion: UnsafeMutableRawBufferPointer,
             callableRegion: UnsafeMutableRawBufferPointer
         ) {
-            guard let generation = model.activeGeneration,
+            guard StaticSignalAnalyzerNRFEmbeddedCanvasTable.callableCaseCount == 2,
+                let generation = model.activeGeneration,
                 StaticSignalAnalyzerNRFCaptureRegions(storage: captureRegion) != nil,
                 StaticSignalAnalyzerNRFEmbeddedCanvasPayload.isEmpty(callableRegion)
             else { return nil }
@@ -33,13 +35,26 @@
                 let upper = Self.exactMilliseconds(visibleRange.upperBound)
             else { return nil }
             var index: UInt16 = 0
-            while index < 5 {
+            while index < canvasOccurrenceCount {
                 guard canvasIdentity(at: index) != nil,
+                    let callableID = StaticSignalAnalyzerNRFEmbeddedCanvasTable.callableID(
+                        at: index
+                    ),
+                    let captureBytes =
+                        StaticSignalAnalyzerNRFEmbeddedCanvasTable.captureByteCount(
+                            for: callableID
+                        ),
+                    let channel = StaticSignalAnalyzerNRFEmbeddedCanvasTable.channel(
+                        at: index
+                    ),
+                    (index == 0 && callableID == 1 && captureBytes == 0 && channel == 0)
+                        || (index > 0 && callableID == 2 && captureBytes == 32
+                            && channel == UInt8(index)),
                     index == 0
                         || StaticSignalAnalyzerNRFEmbeddedCanvasPayload.stageTrace(
                             .init(
                                 modelToken: UInt64(generation) + 1,
-                                channelRawValue: Int64(index),
+                                channelRawValue: Int64(channel),
                                 lowerMilliseconds: lower,
                                 upperMilliseconds: upper
                             ), at: index, in: callableRegion
@@ -75,16 +90,31 @@
                 if canvasIdentity(at: index) == identity {
                     let bit = UInt8(1) << UInt8(index)
                     guard released & bit == 0 else { throw .invariantViolation }
-                    switch index == 0 ? UInt8(1) : UInt8(2) {
+                    guard
+                        let callableID =
+                            StaticSignalAnalyzerNRFEmbeddedCanvasTable
+                            .callableID(at: index),
+                        let captureBytes =
+                            StaticSignalAnalyzerNRFEmbeddedCanvasTable
+                            .captureByteCount(for: callableID),
+                        let channel =
+                            StaticSignalAnalyzerNRFEmbeddedCanvasTable
+                            .channel(at: index)
+                    else { throw .invariantViolation }
+                    switch callableID {
                     case 1:
+                        guard captureBytes == 0, channel == 0 else {
+                            throw .invariantViolation
+                        }
                         try drawGrid(context: &context, size: size)
                     case 2:
+                        guard captureBytes == 32 else { throw .invariantViolation }
                         guard
                             let payload =
                                 StaticSignalAnalyzerNRFEmbeddedCanvasPayload.trace(
                                     at: index, in: callableRegion
                                 ), payload.modelToken == UInt64(modelGeneration) + 1,
-                            payload.channelRawValue == Int64(index)
+                            payload.channelRawValue == Int64(channel)
                         else { throw .invariantViolation }
                         try drawTrace(
                             context: &context, size: size,
