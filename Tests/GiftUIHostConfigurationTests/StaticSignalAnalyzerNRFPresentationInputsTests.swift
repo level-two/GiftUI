@@ -1253,6 +1253,127 @@ import Testing
     }
 }
 
+@Test func staticNRFPreparationScopesGeneratedCandidateThroughPhysicalHandoff() {
+    withStaticNRFPresentationInputStorage { storage in
+        guard case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate(),
+            let metadata = StaticSignalAnalyzerNRFGeneratedMetadataFactory.make(
+                assemblyReport: report,
+                canvasTable: StaticSignalAnalyzerNRFCanvasCallableTable()
+            ),
+            var profile = StaticSignalAnalyzerNRFProfileBinding.make(
+                assemblyReport: report,
+                storage: storage,
+                metadata: metadata
+            ),
+            var application = StaticSignalAnalyzerNRFApplicationStorage(
+                assemblyReport: report,
+                inputSourceRawValue: 51
+            )
+        else {
+            Issue.record("Static nRF preparation owners did not construct")
+            return
+        }
+        let raster = UnsafeMutableRawPointer.allocate(byteCount: 3_840, alignment: 8)
+        defer { raster.deallocate() }
+        let coverage = UnsafeMutableRawPointer.allocate(byteCount: 240, alignment: 8)
+        defer { coverage.deallocate() }
+        let provenance = FrameProvenance(
+            cycle: RunCycleID(rawValue: 1),
+            semanticRevision: SemanticRevision(rawValue: 1),
+            candidateFrame: CandidateFrameID(rawValue: 1)
+        )
+        guard
+            var endpoint = StaticSignalAnalyzerNRFEndpointFactory.make(
+                transport: StaticNRFRecordingDisplayTransport(),
+                provenance: provenance,
+                assemblyReport: report,
+                rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 3_840),
+                coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 240)
+            )
+        else {
+            Issue.record("Static nRF preparation endpoint did not construct")
+            return
+        }
+        let active = ExecutionContext(
+            cycle: provenance.cycle,
+            semanticRevision: provenance.semanticRevision,
+            candidateFrame: nil,
+            phase: .admitting
+        )
+        #expect(profile.beginOpportunity(context: active) == nil)
+        let model = staticNRFPresentationInputModel()
+        StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
+            model: model
+        ) { inputs in
+            let unstaged =
+                StaticSignalAnalyzerNRFPresentationPreparation
+                .withPreparedCandidate(
+                    inputs: &inputs,
+                    profile: &profile,
+                    cycle: provenance.cycle,
+                    semanticRevision: provenance.semanticRevision,
+                    renderSnapshotVersion: 1
+                ) { _, _, _, _, _, _ in true }
+            if case .failure(.invalidRegions) = unstaged {
+            } else {
+                Issue.record("Unstaged semantic input reached presentation preparation")
+            }
+            #expect(inputs.stageGeneratedSemanticCandidate(in: &profile)?.state == .candidate)
+            application.withAddressStableOwner { owner in
+                #expect(
+                    owner.bindRoot(repository: StaticNRFPresentationInputRepository())
+                        == .bound(ObservableTargetGeneration(rawValue: 0))
+                )
+                let prepared =
+                    StaticSignalAnalyzerNRFPresentationPreparation
+                    .withPreparedCandidate(
+                        inputs: &inputs,
+                        profile: &profile,
+                        cycle: provenance.cycle,
+                        semanticRevision: provenance.semanticRevision,
+                        renderSnapshotVersion: 1
+                    ) { semantic, layout, drawing, occurrences, header, workspace in
+                        StaticSignalAnalyzerNRFPresentationHandoff.offerPreflighted(
+                            semantic: semantic,
+                            layout: layout,
+                            drawingPlan: drawing,
+                            occurrences: occurrences,
+                            expectedHeader: header,
+                            workspace: &workspace,
+                            application: &owner,
+                            endpoint: &endpoint,
+                            provenance: provenance,
+                            presentationRevision: PresentationRevision(rawValue: 1)
+                        )
+                    }
+                switch prepared {
+                case .ready(let handoff):
+                    #expect(
+                        handoff
+                            == .offered(
+                                FrameOfferResult(disposition: .accepted, failure: nil)!,
+                                .committed(PresentationRevision(rawValue: 1))
+                            )
+                    )
+                case .failure(let failure):
+                    Issue.record("Generated preparation failed: \(failure)")
+                }
+                owner.withInteraction { state in
+                    #expect(state.committedRecordCount == 6)
+                }
+            }
+            #expect(endpoint.sink.target.transport.payloads > 0)
+        }
+        let idle = ExecutionContext(
+            cycle: nil,
+            semanticRevision: nil,
+            candidateFrame: nil,
+            phase: .idle
+        )
+        #expect(profile.finishOpportunity(context: idle) == nil)
+    }
+}
+
 /// Host-only probe for the common validation stage. It is not the production
 /// packed layout workspace and does not claim embedded storage conformance.
 private struct StaticNRFValidationOnlyLayoutWorkspace: LayoutWorkspace {

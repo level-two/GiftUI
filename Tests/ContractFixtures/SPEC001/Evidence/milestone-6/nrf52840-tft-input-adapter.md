@@ -926,3 +926,11 @@ The same eight-case fixture first supplies a deliberately narrower physical
 surface header. The handoff returns `contractViolation` before any display
 payload, discards staged actions, and leaves input ineligible. A subsequent
 offer with the preflighted header succeeds through that same owner and endpoint.
+
+A production preparation entry now borrows the semantic, layout, render,
+path, and Drawing-plan regions for one complete synchronous candidate. It
+performs fixed-region layout, Canvas derivation, preflight, and lends the
+checked views to the physical handoff callback before the borrow ends. A
+focused host fixture rejects unstaged semantic input and accepts a staged
+normal hierarchy through display and interaction commit. Semantic publication
+and firmware ownership are still separate work.

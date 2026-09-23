@@ -1176,6 +1176,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       fixture now fails before transport, discards the action candidate, and
       leaves input ineligible before the valid retry. The firmware join
       remains open.
+      A production preparation entry now keeps layout, five-Canvas derivation,
+      render preflight, and the handoff callback inside one attempt-scoped
+      five-region borrow. A focused host fixture rejects an unstaged semantic
+      input and accepts a staged normal candidate through the physical handoff.
+      Semantic publication and the paced firmware owner remain open.
       The Static nRF endpoint now owns one exact 3,840-byte raster tile and
       240-byte coverage map, with raster work limits derived from 150
       operations across the full 480 x 320 surface. A production render-offer

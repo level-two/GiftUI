@@ -203,6 +203,11 @@ refusal; the driver retains detailed fault counters.
 The semantic/action/drawing transcript is profile-equivalent. Device timing,
 physical extents, payload counts, stack high-water, and transport errors remain
 separate physical evidence and are not normalized away.
+The Static preparation entry borrows all five attempt-local regions once and
+performs layout, Canvas derivation, and render preflight before lending checked
+views to a synchronous handoff callback. No region-backed view escapes that
+scope. Semantic publication and the paced firmware owner still surround this
+focused preparation stage.
 
 ## Resource and Failure Behavior
 
