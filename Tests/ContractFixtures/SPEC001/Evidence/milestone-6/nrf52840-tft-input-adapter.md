@@ -1018,6 +1018,12 @@ overlap. The checked image retains the Swift map entry and passes ABI,
 zero-heap, symbol, RAM, and flash gates at 184,128 RAM and 35,660 flash bytes.
 This does not establish the generated zero-heap ViewModel location or a
 production firmware host loop; those remain open.
+The registered `scripts/contracts/run-spec-001.sh --profile nrf52840-embedded`
+run completed with 224 host tests and the target HAL fixtures passing. It
+published its nRF cross-build report under
+`.build/contract-reports/spec-001/20260923T104958Z-85857/nrf52840-embedded/`.
+This is cross-build and host-fixture evidence; physical TFT/input execution
+remains uncollected.
 
 The finite validation loop now uses an absolute monotonic deadline waiter in
 at most 1 ms slices instead of one 10 ms busy wait. Its optional watchdog

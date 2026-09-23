@@ -952,6 +952,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       address-stable typed model location with zero heap use on nRF. A generated
       static model handle/storage realization is required before `main` can
       enter the complete Static host lifecycle without violating that contract.
+      The registered SPEC-001 nRF driver passes its 224 host tests and all
+      hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
+      it publishes cross-build inspection only, with no connected display or
+      input claim.
       A
       target-local,
       allocation-free
