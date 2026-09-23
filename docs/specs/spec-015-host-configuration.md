@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-09-21
+updated: 2026-09-23
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -113,6 +113,16 @@ target_milestone: MVP
 > profile-store projections do not change;
 > concrete target implementations must still prove their actual transient
 > storage and stack costs under the larger glyph workload.
+>
+> On 2026-09-23, the maintainer explicitly approved the coordinated render
+> operation-capacity amendment. Every preset reserves 145 ordinary and 150
+> combined render/sink operation slots. These are finite release ceilings,
+> not the 30 ordinary/35 combined operation observation from the short
+> diagnostic fixture. The fixed hierarchy has at most 12 background scopes,
+> 128 admitted text lines, and five Canvas strokes, so 145 combined operations
+> is the structural upper bound; the release ceiling adds five slots. The
+> same limits apply to all four presets without changing the profile-store
+> byte projections or the rendering counting rules.
 
 ## Summary
 
@@ -835,10 +845,14 @@ subpath. The combined declared minima are therefore:
 | snapshotted points | 832 |
 | snapshotted subpaths | 16 |
 
-The host's `ordinaryRenderOperations` is generated from the complete fixed
-portable hierarchy using the approved SPEC-008 counting rules and is checked
-into each preset fixture. It MUST be nonzero and identical across all four
-presets. `ordinaryRenderOperations + 5` MUST use checked arithmetic and fit
+The host's `ordinaryRenderOperations` is the generated release ceiling for
+ordinary operations in the complete fixed portable hierarchy under any
+admitted diagnostic. It is `145` for each preset: at most 12 background
+operations plus 128 nonempty text-line groups yields 140, with five reserved
+slots of margin. The previously measured short-diagnostic count of 30 remains
+a fixture observation, not this ceiling. The value MUST be nonzero and
+identical across all four presets. `ordinaryRenderOperations + 5` MUST use
+checked arithmetic and fit
 the runtime render limit, drawing limit, render-sink limit, and endpoint's
 reported lower bound. A different value between profiles or hosts is
 `invalidWorkload`, not a target customization.
@@ -1272,11 +1286,13 @@ software, transport, and observed architecture separately.
   workspace text-line slots.
 - [ ] **HC-005:** The five-Canvas workload proves the 202 live-point, 12 live-
   subpath, five-stroke, 832 plan-point, and 16 plan-subpath minima; generated
-  render structural counts and ordinary operation counts are equal across all
-  hosts and fit every producer, runtime, render-workspace, render, and sink
-  bound; a full 96-byte ASCII diagnostic yields exactly 214 scalar/glyph
+  render structural counts and the 145 ordinary/150 combined operation
+  ceilings are equal across all hosts and fit every producer, runtime,
+  render-workspace, render, and sink bound; a full 96-byte ASCII diagnostic
+  yields exactly 214 scalar/glyph
   occurrences and fits the amended 224-slot limits without truncation; 96 LF
-  bytes fit the 128-line bound.
+  bytes fit the 128-line bound; valid 96-byte printable and mixed-line
+  diagnostics pass render preflight and production within 150 operations.
 - [ ] **HC-006:** Structural Drawing capacity and `rasterPresentation` resolve
   as independent conjunctive gates; neither repairs the other and no Drawing
   capacity enters SPEC-004 vocabulary.
@@ -1332,10 +1348,11 @@ and Canvas tables, provided generated Swift and its input descriptor are
 checked and inspectable. Dynamic presets can instantiate the same logical
 records with bounded retained owners.
 
-The exact ordinary render-operation count is emitted by the deterministic
-manifest generator from the fixed hierarchy and checked into the four preset
-expectations; it is not discovered by executing a client body during host
-validation.
+The ordinary render-operation ceiling is emitted by the deterministic
+manifest generator from the fixed hierarchy's structural bound and checked
+into the four preset expectations; it is not discovered by executing a client
+body during host validation. The short-diagnostic operation count is retained
+as separate measured conformance evidence.
 
 ## Open Issues
 

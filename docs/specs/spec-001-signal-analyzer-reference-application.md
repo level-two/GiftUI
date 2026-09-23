@@ -6,7 +6,7 @@ status: implementing
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-09-22
+updated: 2026-09-23
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -62,6 +62,13 @@ target_milestone: MVP
 > for implementation planning and implementation. Governed implementation
 > began on 2026-09-13; the `implemented` transition remains a separate human
 > decision after conformance review.
+>
+> On 2026-09-23, the maintainer explicitly approved the coordinated
+> SPEC-008/SPEC-015 render-operation capacity amendment for the complete
+> admitted 96-byte diagnostic. All four presets now reserve 145 ordinary and
+> 150 combined render/sink operations. The approved diagnostic contract still
+> requires full text without truncation; the fixed hierarchy's 12-background,
+> 128-line, five-stroke bound leaves five combined-operation slots of margin.
 
 ## Summary
 

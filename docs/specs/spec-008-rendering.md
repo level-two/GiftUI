@@ -6,7 +6,7 @@ status: implemented
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-09-21
+updated: 2026-09-23
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -1158,6 +1158,20 @@ The subsequent full-pipeline measurement also supersedes the application's
 21-line preset ceiling: 96 printable `W` bytes require 27 lines and 96 LF
 bytes require 117, so SPEC-015 now reserves 128 lines in layout and render
 workspace. Generic SPEC-008 fixtures and their counting rules are unchanged.
+
+On 2026-09-23, the maintainer approved the coordinated SPEC-001/SPEC-008/
+SPEC-015 Signal Analyzer render-operation capacity amendment. The former
+35-operation combined ceiling admitted the short diagnostic but rejected
+valid 96-byte diagnostic values: `A`, `W`, and mixed `W`/LF fixtures emitted
+37, 38, and 39 operations on the nRF target. The fixed generated hierarchy
+contains at most 12 background scopes; the approved workspace admits at most
+128 text lines, each of which can emit at most one positioned-glyph group;
+the fixed Drawing plan emits five strokes. Thus 145 combined operations is a
+structural upper bound for this application. The four first-party presets now
+reserve 145 ordinary and 150 combined render/sink operation slots, including
+five slots above that bound. The earlier 30 ordinary/35 combined count remains
+an observation for the short diagnostic fixture, not a release ceiling. This
+application amendment does not change generic operation counting or errors.
 
 ## Open Issues
 
