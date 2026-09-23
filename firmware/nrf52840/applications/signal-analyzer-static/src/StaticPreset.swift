@@ -469,6 +469,40 @@ public func giftUISignalAnalyzerFullCanvasValid(
     _ raster: UnsafeMutableRawPointer?, _ rasterBytes: UInt32,
     _ coverage: UnsafeMutableRawPointer?, _ coverageBytes: UInt32
 ) -> UInt32 {
+    giftUIStaticFullCanvas(
+        profile, bytes, capture, captureBytes,
+        raster, rasterBytes, coverage, coverageBytes,
+        write: giftUISignalAnalyzerProbeRGB565,
+        validation: true
+    )
+}
+
+@_cdecl("giftui_signal_analyzer_present_initial")
+public func giftUISignalAnalyzerPresentInitial(
+    _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32,
+    _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32,
+    _ raster: UnsafeMutableRawPointer?, _ rasterBytes: UInt32,
+    _ coverage: UnsafeMutableRawPointer?, _ coverageBytes: UInt32,
+    _ write: (@convention(c) (
+        UInt16, UInt16, UInt16, UInt16, UnsafePointer<UInt8>?, Int
+    ) -> Int32)?
+) -> UInt32 {
+    guard let write else { return 0 }
+    return giftUIStaticFullCanvas(
+        profile, bytes, capture, captureBytes,
+        raster, rasterBytes, coverage, coverageBytes,
+        write: write, validation: false
+    )
+}
+
+private func giftUIStaticFullCanvas(
+    _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32,
+    _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32,
+    _ raster: UnsafeMutableRawPointer?, _ rasterBytes: UInt32,
+    _ coverage: UnsafeMutableRawPointer?, _ coverageBytes: UInt32,
+    write: StaticSignalAnalyzerNRFEmbeddedPixelWrite,
+    validation: Bool
+) -> UInt32 {
     guard let profile, bytes == 39_696,
         let capture, captureBytes == 115_392,
         let raster, rasterBytes == 3_840,
@@ -559,24 +593,26 @@ public func giftUISignalAnalyzerFullCanvasValid(
         sink.strokeCount == 5,
         sink.glyphCount == 121
     else { return 0 }
-    guard var rasterSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(
-        rasterRegion: UnsafeMutableRawBufferPointer(
-            start: raster, count: Int(rasterBytes)
-        ), coverageRegion: UnsafeMutableRawBufferPointer(
-            start: coverage, count: Int(coverageBytes)
-        ), write: giftUISignalAnalyzerProbeRGB565
-    ), case .success(let rasterHeader) =
-        StaticSignalAnalyzerNRFEmbeddedRenderPreflight.streamCombined(
-            semantic: semantic, layout: resolved,
-            textRegion: UnsafeMutableRawBufferPointer(
-                start: profile.advanced(by: 9_184), count: 4_704
-            ), drawing: drawing, expectedHeader: renderHeader,
-            sink: &rasterSink
-        ), rasterHeader == renderHeader,
-        rasterSink.isFinished, rasterSink.paintedPixels > 0,
-        rasterSink.tileVisits > 0, rasterSink.submittedRuns > 0,
-        rasterSink.submittedBytes > 0
-    else { return 0 }
+    if validation {
+        guard var rasterSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(
+            rasterRegion: UnsafeMutableRawBufferPointer(
+                start: raster, count: Int(rasterBytes)
+            ), coverageRegion: UnsafeMutableRawBufferPointer(
+                start: coverage, count: Int(coverageBytes)
+            ), write: giftUISignalAnalyzerProbeRGB565
+        ), case .success(let rasterHeader) =
+            StaticSignalAnalyzerNRFEmbeddedRenderPreflight.streamCombined(
+                semantic: semantic, layout: resolved,
+                textRegion: UnsafeMutableRawBufferPointer(
+                    start: profile.advanced(by: 9_184), count: 4_704
+                ), drawing: drawing, expectedHeader: renderHeader,
+                sink: &rasterSink
+            ), rasterHeader == renderHeader,
+            rasterSink.isFinished, rasterSink.paintedPixels > 0,
+            rasterSink.tileVisits > 0, rasterSink.submittedRuns > 0,
+            rasterSink.submittedBytes > 0
+        else { return 0 }
+    }
     let firstProvenance = FrameProvenance(
         cycle: RunCycleID(rawValue: 1),
         semanticRevision: SemanticRevision(rawValue: semantic.revision),
@@ -585,7 +621,7 @@ public func giftUISignalAnalyzerFullCanvasValid(
     guard var fullEndpoint = giftUIStaticEmbeddedEndpoint(
         raster: raster, coverage: coverage,
         provenance: firstProvenance,
-        write: giftUISignalAnalyzerProbeRGB565
+        write: write
     ), giftUIStaticEmbeddedOffer(
         endpoint: &fullEndpoint,
         provenance: firstProvenance,
@@ -595,6 +631,12 @@ public func giftUISignalAnalyzerFullCanvasValid(
         ), drawing: drawing, expectedHeader: renderHeader
     ), fullEndpoint.bodyCallCount == 1
     else { return 0 }
+    if !validation {
+        drawing.reset()
+        layoutWorkspace.packed.reset()
+        model.retire()
+        return 1
+    }
     guard var refusingSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(
         rasterRegion: UnsafeMutableRawBufferPointer(
             start: raster, count: Int(rasterBytes)
@@ -1205,6 +1247,8 @@ private func giftUIStaticEmbeddedOffer(
         }
     }
     return result == FrameOfferResult(disposition: .accepted, failure: nil)
+        && endpoint.sink.failure == nil
+        && endpoint.health().state == .available
 }
 
 private struct StaticSignalAnalyzerNRFEmbeddedProbeEnvelope:

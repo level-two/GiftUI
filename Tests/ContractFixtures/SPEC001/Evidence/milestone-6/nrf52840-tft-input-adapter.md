@@ -1453,3 +1453,16 @@ passed in the registered SPEC-001 run at
 The checked image uses 187,968 RAM and 218,572 flash bytes. The callback is
 still a validator; production ILI9486 submission, recurring opportunities,
 and host lifecycle ownership remain open.
+
+The finite device-validation path now replaces the color-bar write with one
+empty-capture generated Canvas frame offered through the approved endpoint
+and the real `ili9486_write_rgb565` callback after controller initialization.
+The callback result is checked through both the accepted offer and the target's
+post-acceptance health, so a failed synchronous display transfer returns a
+device error and enters the existing reverse-order cleanup. The exact-source
+native probe accepts a validating callback and rejects a refusing callback;
+the registered cross-build gate passed at
+`.build/contract-reports/spec-001/20260923T233833Z-57922/nrf52840-embedded/`.
+The image uses 187,968 RAM and 218,892 flash bytes. This is a first physical
+write path in the finite validator, not recurring application operation or
+connected-board evidence. No board was flashed.

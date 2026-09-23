@@ -6,6 +6,7 @@
 #include "static_input_bridge.h"
 #include "static_host_clock.h"
 #include "static_host_scheduler.h"
+#include "static_host_storage.h"
 
 #include <stdbool.h>
 #include <errno.h>
@@ -22,6 +23,14 @@
 #endif
 
 K_THREAD_STACK_DECLARE(z_main_stack, CONFIG_MAIN_STACK_SIZE);
+
+extern uint32_t giftui_signal_analyzer_present_initial(
+    void *profile, uint32_t profile_bytes,
+    void *capture, uint32_t capture_bytes,
+    void *raster, uint32_t raster_bytes,
+    void *coverage, uint32_t coverage_bytes,
+    int (*write)(uint16_t, uint16_t, uint16_t, uint16_t,
+                 const uint8_t *, size_t));
 
 static void wait_microseconds(uint32_t duration)
 {
@@ -91,7 +100,16 @@ int giftui_device_validation_run(void)
     if (result != 0) {
         goto cleanup;
     }
-    result = ili9486_render_color_bars();
+    struct giftui_static_host_storage regions;
+    result = giftui_signal_analyzer_storage_regions(&regions);
+    if (result == 0 && giftui_signal_analyzer_present_initial(
+            regions.profile, (uint32_t)regions.profile_bytes,
+            regions.capture, (uint32_t)regions.capture_bytes,
+            regions.raster, (uint32_t)regions.raster_bytes,
+            regions.coverage, (uint32_t)regions.coverage_bytes,
+            ili9486_write_rgb565) != 1U) {
+        result = -EIO;
+    }
     if (result != 0) {
         giftui_fault_record(GIFTUI_FAULT_DISPLAY_CONTROLLER, result);
         goto cleanup;

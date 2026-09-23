@@ -1650,8 +1650,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       frames now pass through the approved one-shot endpoint, shared raster
       session, and display target in the exact firmware-source probe. The
       latest registered hardware-free gate passes with 187,968 RAM and
-      218,572 flash bytes. Real driver submission,
-      repeated opportunities, normalized action routing, and the firmware
+      218,572 flash bytes. The finite device validator now makes one initial
+      full-frame offer to the real ILI9486 write callback, with post-acceptance
+      display health checked before continuing its polling path. The latest
+      cross-build uses 187,968 RAM and 218,892 flash bytes. Repeated
+      opportunities, normalized action routing, and the firmware
       lifecycle join remain open; see the [nRF T6.8 evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md).
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
