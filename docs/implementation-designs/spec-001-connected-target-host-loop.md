@@ -443,6 +443,10 @@ slot and returns scalar revision, count, duration, lower-bound, and baseline
 metadata. Later live mutations and clear do not change the copied records;
 the snapshot borrower must complete synchronous delivery before recopying.
 The application adapter and firmware repository join remain to be built.
+The scoped presentation composition lends the capture policy and its region
+together with the generated application/profile owners, pacing, identity,
+endpoint, and health. The policy begins at revision zero within that scope;
+its host fixture mutates the live slot before the scope ends.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact

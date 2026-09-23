@@ -932,7 +932,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       initialized live records and scalar metadata in the second slot, and a
       host fixture proves it survives later live mutation and clear. Snapshot
       publication through the application adapter and firmware linkage still
-      need to consume these records.
+      need to consume these records. The scoped composition now lends the
+      live capture history with its exact record region and other application
+      owners; its host fixture receives a transition inside that lifetime.
       A
       target-local,
       allocation-free

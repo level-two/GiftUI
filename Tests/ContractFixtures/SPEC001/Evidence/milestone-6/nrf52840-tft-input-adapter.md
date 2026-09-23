@@ -1059,3 +1059,6 @@ and clear. A separate host fixture proves the second slot's copied records
 and metadata survive live mutation and clear. These establish host policy
 equivalence and bounded storage behavior only; application snapshot delivery
 and production firmware linkage are still open.
+The scoped presentation composition now lends that live history alongside its
+record region and the other target owners. Its host fixture admits and reads
+one transition within the shared lifetime; this is still host-native evidence.

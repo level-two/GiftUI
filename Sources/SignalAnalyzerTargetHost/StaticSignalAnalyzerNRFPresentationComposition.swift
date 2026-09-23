@@ -17,6 +17,7 @@ package enum StaticSignalAnalyzerNRFPresentationComposition {
             inout StaticSignalAnalyzerNRFApplicationOwner,
             inout StaticSignalAnalyzerNRFProductionProfileBinding,
             inout StaticSignalAnalyzerNRFCaptureRegions,
+            inout StaticSignalAnalyzerNRFCaptureHistory,
             inout HostWakePacingController,
             inout StaticSignalAnalyzerNRFPresentationIdentityOwner,
             StaticSignalAnalyzerNRFPresentationIdentity,
@@ -58,12 +59,14 @@ package enum StaticSignalAnalyzerNRFPresentationComposition {
             )
         else { return nil }
 
+        var captureHistory = StaticSignalAnalyzerNRFCaptureHistory()
         return runtime.withAddressStableOwners {
             application, profile, pacing, identities in
             body(
                 &application,
                 &profile,
                 &capture,
+                &captureHistory,
                 &pacing,
                 &identities,
                 initialIdentity,

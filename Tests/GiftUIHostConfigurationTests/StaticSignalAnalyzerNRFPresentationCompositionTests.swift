@@ -38,7 +38,8 @@ private struct StaticNRFCompositionRecordingTransport:
         coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 240),
         transport: StaticNRFCompositionRecordingTransport()
     ) {
-        application, profile, captureOwner, pacing, identities, first, endpoint, health -> UInt32?
+        application, profile, captureOwner, captureHistory, pacing, identities, first, endpoint,
+        health -> UInt32?
         in
         let rootIsActive = application.rootIsActive
         #expect(!rootIsActive)
@@ -52,13 +53,11 @@ private struct StaticNRFCompositionRecordingTransport:
             timestamp: .microseconds(1),
             level: .high
         )
-        guard let record = StaticSignalAnalyzerNRFCaptureRecord(transition) else {
-            Issue.record("Static capture transition did not encode")
-            return nil
-        }
-        let stored = captureOwner.store(record, in: .live, at: 0)
+        let result = captureHistory.receive(transition, in: &captureOwner)
         let loaded = captureOwner.load(from: .live, at: 0)?.transition
-        #expect(stored)
+        #expect(captureHistory.count == 1)
+        #expect(captureHistory.revision == 1)
+        #expect(result != .rejected(.invalidTransition))
         #expect(loaded == transition)
         return identities.reserve()?.provenance.cycle.rawValue
     }
@@ -88,7 +87,7 @@ private struct StaticNRFCompositionRecordingTransport:
             start: storage.advanced(by: 39_968), count: 240
         ),
         transport: StaticNRFCompositionRecordingTransport()
-    ) { _, _, _, _, _, _, _, _ in
+    ) { _, _, _, _, _, _, _, _, _ in
         bodyCalls += 1
     }
     #expect(joined == nil)
@@ -120,7 +119,7 @@ private struct StaticNRFCompositionRecordingTransport:
         rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 3_840),
         coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 240),
         transport: StaticNRFCompositionRecordingTransport()
-    ) { _, _, _, _, _, _, _, _ in
+    ) { _, _, _, _, _, _, _, _, _ in
         bodyCalls += 1
     }
     #expect(joined == nil)
@@ -150,7 +149,7 @@ private struct StaticNRFCompositionRecordingTransport:
         rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 3_840),
         coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 240),
         transport: StaticNRFCompositionRecordingTransport()
-    ) { _, _, _, _, _, _, _, _ in
+    ) { _, _, _, _, _, _, _, _, _ in
         bodyCalls += 1
     }
     #expect(joined == nil)
