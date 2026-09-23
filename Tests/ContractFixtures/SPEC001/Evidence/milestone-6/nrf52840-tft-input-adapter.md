@@ -824,6 +824,10 @@ claim lacked endpoint evidence.
 The production endpoint factory now constructs the tile store and display
 writer from one caller-supplied raster region, and the same eight-case fixture
 uses this factory entry.
+The transport-failure fixture now proves both sides of the display handoff:
+refusal before the first payload cancels the frame with no accepted
+responsibility, while refusal after one accepted payload preserves the
+accepted offer, records `displayFailure`, and drains to an idle session.
 
 The firmware now reserves a separately named 240-byte touched-pixel bitmap
 beside its existing 3,840-byte raster slot. The entry self-check counts

@@ -1,5 +1,9 @@
 import GiftUI
 import GiftUIDisplayCore
+import GiftUIExecution
+import GiftUIHostConfiguration
+import GiftUIRasterCore
+import GiftUIRenderCore
 import SignalAnalyzerTargetHost
 import Testing
 
@@ -12,12 +16,16 @@ struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTranspo
     private(set) var firstByte: UInt8 = 0
     private(set) var secondByte: UInt8 = 0
     var accepts = true
+    var maximumAcceptedPayloads: Int?
 
     mutating func presentRGB565BigEndian(
         x: UInt16, y: UInt16, pixelCount: UInt16,
         bytes: UnsafeRawBufferPointer
     ) -> Bool {
-        guard accepts, bytes.count == Int(pixelCount) * 2 else { return false }
+        guard accepts,
+            maximumAcceptedPayloads.map({ payloads < $0 }) ?? true,
+            bytes.count == Int(pixelCount) * 2
+        else { return false }
         payloads += 1
         self.bytes += UInt32(bytes.count)
         lastX = x
@@ -27,6 +35,115 @@ struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTranspo
         secondByte = bytes[1]
         return true
     }
+}
+
+@Test func staticNRFDisplayFailureAfterFirstPayloadPreservesPresentationResponsibility() {
+    guard case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate(),
+        let bounds = StaticSignalAnalyzerNRFAssembly.descriptor()?.bounds
+    else {
+        Issue.record("Static nRF assembly did not validate")
+        return
+    }
+    let raster = UnsafeMutableRawPointer.allocate(byteCount: 3_840, alignment: 8)
+    defer { raster.deallocate() }
+    let coverage = UnsafeMutableRawPointer.allocate(byteCount: 240, alignment: 8)
+    defer { coverage.deallocate() }
+    let provenance = FrameProvenance(
+        cycle: RunCycleID(rawValue: 8),
+        semanticRevision: SemanticRevision(rawValue: 8),
+        candidateFrame: CandidateFrameID(rawValue: 8)
+    )
+    guard
+        var endpoint = StaticSignalAnalyzerNRFEndpointFactory.make(
+            transport: StaticNRFRecordingDisplayTransport(maximumAcceptedPayloads: 1),
+            provenance: provenance,
+            assemblyReport: report,
+            rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 3_840),
+            coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 240)
+        )
+    else {
+        Issue.record("Static nRF endpoint did not construct")
+        return
+    }
+    let first = Rect(
+        origin: Point(x: 0, y: 0), size: Size(width: 1, height: 1)!
+    )!
+    let second = Rect(
+        origin: Point(x: 2, y: 0), size: Size(width: 1, height: 1)!
+    )!
+    let damage = Rect(
+        origin: Point(x: 0, y: 0), size: Size(width: 3, height: 1)!
+    )!
+    let offer = endpoint.offer(provenance: provenance) { sink in
+        let header = RenderPlanHeader(
+            surfaceBounds: bounds,
+            damageBounds: damage,
+            operationCount: 2,
+            positionedGlyphCount: 0,
+            maximumObservedClipDepth: 1
+        )
+        guard sink.begin(header),
+            sink.fillRect(FillRectOperation(bounds: first, clip: damage, color: .red)),
+            sink.fillRect(FillRectOperation(bounds: second, clip: damage, color: .blue)),
+            sink.finish()
+        else { return .endpointRefused }
+        return .complete
+    }
+    #expect(offer == FrameOfferResult(disposition: .accepted, failure: nil)!)
+    #expect(endpoint.sink.failure == .displayFailure)
+    #expect(endpoint.sink.target.transport.payloads == 1)
+    #expect(endpoint.sink.isIdleForOffer)
+}
+
+@Test func staticNRFDisplayFailureBeforeFirstPayloadCancelsFrame() {
+    guard case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate(),
+        let bounds = StaticSignalAnalyzerNRFAssembly.descriptor()?.bounds
+    else {
+        Issue.record("Static nRF assembly did not validate")
+        return
+    }
+    let raster = UnsafeMutableRawPointer.allocate(byteCount: 3_840, alignment: 8)
+    defer { raster.deallocate() }
+    let coverage = UnsafeMutableRawPointer.allocate(byteCount: 240, alignment: 8)
+    defer { coverage.deallocate() }
+    let provenance = FrameProvenance(
+        cycle: RunCycleID(rawValue: 9),
+        semanticRevision: SemanticRevision(rawValue: 9),
+        candidateFrame: CandidateFrameID(rawValue: 9)
+    )
+    guard
+        var endpoint = StaticSignalAnalyzerNRFEndpointFactory.make(
+            transport: StaticNRFRecordingDisplayTransport(maximumAcceptedPayloads: 0),
+            provenance: provenance,
+            assemblyReport: report,
+            rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 3_840),
+            coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 240)
+        )
+    else {
+        Issue.record("Static nRF endpoint did not construct")
+        return
+    }
+    let pixel = Rect(
+        origin: Point(x: 0, y: 0), size: Size(width: 1, height: 1)!
+    )!
+    let offer = endpoint.offer(provenance: provenance) { sink in
+        let header = RenderPlanHeader(
+            surfaceBounds: bounds,
+            damageBounds: pixel,
+            operationCount: 1,
+            positionedGlyphCount: 0,
+            maximumObservedClipDepth: 1
+        )
+        guard sink.begin(header),
+            sink.fillRect(FillRectOperation(bounds: pixel, clip: pixel, color: .red)),
+            sink.finish()
+        else { return .endpointRefused }
+        return .complete
+    }
+    #expect(offer == FrameOfferResult(disposition: .nonRetryableRefusal, failure: nil)!)
+    #expect(endpoint.sink.failure == .displayFailure)
+    #expect(endpoint.sink.target.transport.payloads == 0)
+    #expect(endpoint.sink.isIdleForOffer)
 }
 
 @Test func staticNRFDisplayTargetCompactsSharedRasterWithoutOverwritingUnreadPixels() {
