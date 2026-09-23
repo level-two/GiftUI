@@ -26,6 +26,8 @@ set(giftui_nrf_canvas_manifest
     "${giftui_project_root}/Tests/ContractFixtures/SPEC001/nrf-static-canvas-manifest.yaml")
 set(giftui_reference_catalogue
     "${giftui_project_root}/Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift")
+set(giftui_reference_bitmap
+    "${giftui_project_root}/Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift")
 set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
     "${giftui_workload_generator}"
     "${giftui_workload_descriptor}"
@@ -33,7 +35,8 @@ set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
     "${giftui_nrf_font_generator}"
     "${giftui_nrf_canvas_generator}"
     "${giftui_nrf_canvas_manifest}"
-    "${giftui_reference_catalogue}")
+    "${giftui_reference_catalogue}"
+    "${giftui_reference_bitmap}")
 execute_process(
     COMMAND "${GIFTUI_RUBY_EXECUTABLE}" "${giftui_workload_generator}" --check
     WORKING_DIRECTORY "${giftui_project_root}"
@@ -88,6 +91,9 @@ set(giftui_static_swift_inputs
     "${giftui_project_root}/Sources/GiftUIRasterCore/RGB565TileWorkspace.swift"
     "${giftui_project_root}/Sources/GiftUIRasterCore/RasterFillCoverage.swift"
     "${giftui_project_root}/Sources/GiftUIRasterCore/RasterStrokeCoverage.swift"
+    "${giftui_project_root}/Sources/GiftUIRasterCore/RasterGlyphCoverage.swift"
+    "${giftui_reference_bitmap}"
+    "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedFontRaster.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFTileStorage.swift"
     "${giftui_project_root}/Sources/GiftUI/DrawingStyles.swift"
     "${giftui_project_root}/Sources/GiftUI/DrawingSurface.swift"

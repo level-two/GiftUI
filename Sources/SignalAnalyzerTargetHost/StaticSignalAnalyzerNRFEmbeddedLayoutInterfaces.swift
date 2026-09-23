@@ -78,6 +78,58 @@
     package struct TextResourceDescriptor: Equatable, Sendable {
         package let instanceCount: UInt16
         package var resource: UInt8 { 0 }
+        package var realizationCount: UInt16 { 1 }
+    }
+
+    package struct TextResourceDigest: Equatable, Sendable {
+        package let word0: UInt32
+        package let word1: UInt32
+        package let word2: UInt32
+        package let word3: UInt32
+        package let word4: UInt32
+        package let word5: UInt32
+        package let word6: UInt32
+        package let word7: UInt32
+    }
+
+    package struct RasterRealizationID: Equatable, Sendable {
+        package let rawValue: UInt16
+    }
+
+    package enum TextRasterKind: UInt8, Equatable, Sendable {
+        case monochromeBitmap1 = 0
+    }
+
+    package struct RasterRealizationDescriptor: Equatable, Sendable {
+        package let id: RasterRealizationID
+        package let instance: FontInstanceID
+        package let kind: TextRasterKind
+        package let glyphCount: UInt16
+        package let payloadByteCount: UInt32
+        package let payloadDigest: TextResourceDigest
+    }
+
+    package struct GlyphRasterRecord: Equatable, Sendable {
+        package let glyph: GlyphID
+        package let offset: UInt32
+        package let byteCount: UInt32
+        package let rowByteCount: UInt16
+        package let pixelWidth: UInt16
+        package let pixelHeight: UInt16
+    }
+
+    package protocol TextRasterResourceView {
+        var descriptor: TextResourceDescriptor { get }
+        func realization(at index: UInt16) -> RasterRealizationDescriptor?
+        func record(
+            for glyph: GlyphID, realization: RasterRealizationID
+        ) -> GlyphRasterRecord?
+        func isPayloadAvailable(for realization: RasterRealizationID) -> Bool
+        func withPayload<Result>(
+            for record: GlyphRasterRecord,
+            realization: RasterRealizationID,
+            _ body: (UnsafeRawBufferPointer) throws -> Result
+        ) rethrows -> Result?
     }
 
     package protocol CanonicalTextMetricsView {

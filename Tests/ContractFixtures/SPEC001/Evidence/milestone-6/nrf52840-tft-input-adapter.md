@@ -1347,3 +1347,14 @@ native execution and the registered nRF SPEC-001 run passed at
 `.build/contract-reports/spec-001/20260923T222529Z-29702/nrf52840-embedded/`.
 The checked image uses 187,904 RAM and 165,612 flash bytes. The startup probe
 does not yet submit the five produced Canvas strokes to the tile session.
+
+The checked nRF font projection now includes all 102 bitmap raster records
+from the same reference catalogue as the host package. Firmware compiles the
+original generated bitmap payload, exposes a one-realization target raster
+view, and rasterizes a reference glyph into the third tile through shared
+`RasterGlyphCoverage`. The exact-source native probe requires nonzero glyph
+coverage and the catalogue's 24-byte payload for that glyph. The registered
+nRF SPEC-001 run passed at
+`.build/contract-reports/spec-001/20260923T223231Z-32771/nrf52840-embedded/`.
+The checked image uses 187,904 RAM and 172,796 flash bytes. The production
+operation stream is not yet connected to this raster path or the display.

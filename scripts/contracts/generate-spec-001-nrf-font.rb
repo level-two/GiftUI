@@ -9,16 +9,20 @@ destination = root.join('Sources/SignalAnalyzerTargetHost/Generated/StaticSignal
 
 mapping = catalogue.scan(/case (\d+): return ScalarGlyphMappingRecord\(scalarValue: 0x([0-9a-f]+), glyph: GlyphID\(rawValue: (\d+)\)\)/)
 metrics = catalogue.scan(/case (\d+): return GlyphMetrics\(advanceX: (-?\d+), offsetX: (-?\d+), offsetY: (-?\d+), inkSize: Size\(width: (\d+), height: (\d+)\)!\)/)
+bitmap_records = catalogue.scan(/case \(0, (\d+)\): return GlyphRasterRecord\(glyph: glyph, offset: (\d+), byteCount: (\d+), rowByteCount: (\d+), pixelWidth: (\d+), pixelHeight: (\d+)\)/)
 line_metrics = catalogue.match(/lineMetrics: FontLineMetrics\(ascent: (\d+), descent: (\d+), lineGap: (\d+)\)/)
 replacement = catalogue.match(/replacementGlyph: GlyphID\(rawValue: (\d+)\)/)
 abort 'reference font mapping count changed' unless mapping.length == 96
 abort 'reference font glyph count changed' unless metrics.length == 102
+abort 'reference bitmap record count changed' unless bitmap_records.length == metrics.length
 abort 'reference font line metrics missing' unless line_metrics && replacement
 abort 'reference font mapping order changed' unless mapping.each_with_index.all? { |row, index| row[0].to_i == index }
 abort 'reference font glyph order changed' unless metrics.each_with_index.all? { |row, index| row[0].to_i == index }
+abort 'reference bitmap record order changed' unless bitmap_records.each_with_index.all? { |row, index| row[0].to_i == index }
 
 lines = [
   '// Generated from ReferenceCatalogue.generated.swift by scripts/contracts/generate-spec-001-nrf-font.rb. Do not edit.',
+  'import GiftUITextResources',
   'package enum StaticSignalAnalyzerNRFReferenceMetrics {',
   "    package static let ascent: Int16 = #{line_metrics[1]}",
   "    package static let descent: Int16 = #{line_metrics[2]}",
@@ -46,6 +50,12 @@ lines += ['        default: return nil', '        }', '    }', '',
           '        switch glyph {']
 metrics.each do |glyph, advance, x, y, width, height|
   lines << "        case #{glyph}: return Metric(advanceX: #{advance}, offsetX: #{x}, offsetY: #{y}, width: #{width}, height: #{height})"
+end
+lines += ['        default: return nil', '        }', '    }', '',
+          '    package static func bitmapRecord(for glyph: GlyphID) -> GlyphRasterRecord? {',
+          '        switch glyph.rawValue {']
+bitmap_records.each do |glyph, offset, count, row_bytes, width, height|
+  lines << "        case #{glyph}: return GlyphRasterRecord(glyph: glyph, offset: #{offset}, byteCount: #{count}, rowByteCount: #{row_bytes}, pixelWidth: #{width}, pixelHeight: #{height})"
 end
 lines += ['        default: return nil', '        }', '    }', '}', '']
 generated = lines.join("\n")

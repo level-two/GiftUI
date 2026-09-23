@@ -679,6 +679,9 @@ public func giftUISignalAnalyzerTileValid(
         let second = Rect(
             origin: Point(x: 0, y: 4), size: Size(width: 480, height: 4)!
         ),
+        let third = Rect(
+            origin: Point(x: 0, y: 8), size: Size(width: 480, height: 4)!
+        ),
         tile.beginTile(first),
         tile.replacePixel(
             at: Point(x: 0, y: 0),
@@ -723,6 +726,27 @@ public func giftUISignalAnalyzerTileValid(
     ) { point, pixel in tile.replacePixel(at: point, with: pixel) }
     guard case .completed(let strokePixels) = strokeResult,
         strokePixels > 0,
+        tile.finishTile(),
+        tile.beginTile(third),
+        let realization = StaticSignalAnalyzerNRFEmbeddedFontRaster().realization(
+            at: 0
+        )
+    else { return 0 }
+    let glyphResult = RasterGlyphCoverage.rasterize(
+        PositionedGlyph(
+            glyph: GlyphID(rawValue: 1), baseline: Point(x: 10, y: 20)
+        ),
+        operation: PositionedGlyphOperationHeader(
+            instance: FontInstanceID(rawValue: 0), clip: third,
+            color: .white, glyphCount: 1
+        ),
+        metrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
+        raster: StaticSignalAnalyzerNRFEmbeddedFontRaster(),
+        realization: realization, descriptor: descriptor,
+        damageBounds: third
+    ) { point, pixel in tile.replacePixel(at: point, with: pixel) }
+    guard case .completed(let glyphPixels, let payloadBytes) = glyphResult,
+        glyphPixels > 0, payloadBytes == 24,
         tile.finishTile()
     else { return 0 }
     return 1
