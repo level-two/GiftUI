@@ -131,12 +131,13 @@ package enum DynamicSignalAnalyzerPiAssembly {
     }
 
     private static func payloadLimits() -> RasterPayloadLimits? {
+        // Approved 150-operation stream over 15 tile rows and 57,600 pixels.
         RasterPayloadLimits(
             maximumRasterBytes: 7_680,
             maximumPayloadBytes: 7_680,
             maximumRegionsPerPayload: 16,
-            maximumRegionSubmissionsPerFrame: 2_016_000,
-            maximumTileVisitsPerFrame: 525,
+            maximumRegionSubmissionsPerFrame: 8_640_000,
+            maximumTileVisitsPerFrame: 2_250,
             maximumInFlightPayloads: 1,
             maximumGlyphRasterBytes: 7_680,
             maximumStrokeWorkspaceBytes: 1
