@@ -119,6 +119,7 @@ run_check root-tests giftui_swiftpm \
     --package-path "${PROJECT_ROOT}" \
     --scratch-path "${report_dir}/swiftpm" \
     --cache-root "${report_dir}" \
+    --swift-flag -DGIFTUI_DYNAMIC_PROFILE \
     -- test
 run_check spec-003-diagnostic-buffer \
     "${PROJECT_ROOT}/scripts/contracts/check-spec-003-diagnostic-buffer.sh"
