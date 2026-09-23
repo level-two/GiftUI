@@ -162,6 +162,7 @@ Golden operation comparison and firmware linkage remain open.
 - [Embedded Canvas invocation source](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedCanvasSource.swift)
 - [Generated Embedded Canvas mapping](../../Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFEmbeddedCanvasTable.generated.swift)
 - [Canvas mapping generator](../../scripts/contracts/generate-spec-001-nrf-canvas-table.rb)
+- [Embedded render preflight](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedRenderPreflight.swift)
 - [Fixed live-path store](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLivePathStorage.swift)
 - [Live-path host tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFLivePathStorageTests.swift)
 - [Drawing-plan records](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanRecords.swift)

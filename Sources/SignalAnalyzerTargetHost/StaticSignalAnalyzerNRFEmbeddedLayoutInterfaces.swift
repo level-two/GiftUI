@@ -42,6 +42,8 @@
 
     package struct FontInstanceID: Equatable, Sendable {
         package let rawValue: UInt8
+        package var resource: UInt8 { 0 }
+        package var instanceIndex: UInt16 { UInt16(rawValue) }
     }
 
     package struct GlyphID: Equatable, Sendable {
@@ -70,10 +72,12 @@
         package let id: FontInstanceID
         package let lineMetrics: FontLineMetrics
         package let replacementGlyph: GlyphID
+        package var glyphCount: UInt16 { StaticSignalAnalyzerNRFReferenceMetrics.glyphCount }
     }
 
     package struct TextResourceDescriptor: Equatable, Sendable {
         package let instanceCount: UInt16
+        package var resource: UInt8 { 0 }
     }
 
     package protocol CanonicalTextMetricsView {

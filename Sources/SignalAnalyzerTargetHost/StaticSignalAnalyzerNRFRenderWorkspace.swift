@@ -13,7 +13,12 @@ package struct StaticSignalAnalyzerNRFRenderWorkspace: RenderProductionWorkspace
     private let region: UnsafeMutableRawBufferPointer
     private var foregroundDepth: UInt16 = 0
 
-    private static let scratchOffset = StaticSignalAnalyzerNRFLayoutTextCodec.scratchOffset
+    #if GIFTUI_NRF_EMBEDDED
+        private static let scratchOffset =
+            StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.scratchOffset
+    #else
+        private static let scratchOffset = StaticSignalAnalyzerNRFLayoutTextCodec.scratchOffset
+    #endif
     private static let semanticOffset = scratchOffset + 32
     private static let layoutOffset = semanticOffset + 98
     private static let foregroundOffset = layoutOffset + 98
@@ -24,7 +29,7 @@ package struct StaticSignalAnalyzerNRFRenderWorkspace: RenderProductionWorkspace
         capacity: RenderLimits,
         structuralCapacity: RenderWorkspaceCapacity
     ) {
-        guard region.count == StaticSignalAnalyzerNRFLayoutTextCodec.regionByteCount,
+        guard region.count == 4_704,
             structuralCapacity.maximumSemanticScopes <= 98,
             structuralCapacity.maximumLayoutScopes <= 98,
             structuralCapacity.maximumTraversalDepth <= 13,

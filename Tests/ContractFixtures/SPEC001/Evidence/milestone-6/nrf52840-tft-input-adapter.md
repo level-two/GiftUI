@@ -1307,3 +1307,14 @@ still derives the empty and rising-transition plans through that mapping.
 The checked image uses 187,840 RAM and 146,340 flash bytes; the registered
 SPEC-001 run completed at
 `.build/contract-reports/spec-001/20260923T215317Z-16468/nrf52840-embedded/`.
+
+The published target layout now names the outer semantic root, matching the
+shared render traversal. A target semantic render adapter exposes every
+packed scope and modifier paint kind. The firmware-source native probe runs
+shared ordinary preflight across all 98 scopes and 121 glyphs, then runs
+combined Canvas preflight for both the empty and rising-transition Drawing
+plans. Both headers remain within 150 operations and 224 glyphs. The nRF
+cross-build uses 187,840 RAM and 151,172 flash bytes before the registered
+gate. Operation streaming and RGB565 raster submission remain open.
+The registered SPEC-001 run completed at
+`.build/contract-reports/spec-001/20260923T220647Z-20492/nrf52840-embedded/`.

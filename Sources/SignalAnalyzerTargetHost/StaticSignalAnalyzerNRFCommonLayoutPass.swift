@@ -54,7 +54,7 @@
                     engine.finalCounters.textScalarCount
                 ),
                 let result = workspace.packed.publish(
-                    rootIdentity: layoutSemantic.rootIdentity,
+                    rootIdentity: semantic.rootSemanticIdentity,
                     expectedScopeCount: semantic.scopeCount,
                     renderSnapshotVersion: semantic.revision
                 )

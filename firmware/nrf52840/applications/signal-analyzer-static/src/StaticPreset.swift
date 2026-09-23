@@ -294,7 +294,7 @@ public func giftUISignalAnalyzerFullLayoutValid(
         semantic: semantic, workspace: &workspace
     ), resolved.isPublished,
         resolved.scopeCount == semantic.scopeCount,
-        resolved.rootIdentity == semantic.rootPrimitiveIdentity,
+        resolved.rootIdentity == semantic.rootSemanticIdentity,
         resolved.renderSnapshotVersion == semantic.revision,
         resolved.rootBounds.size.width > 0,
         resolved.rootBounds.size.height > 0,
@@ -303,10 +303,22 @@ public func giftUISignalAnalyzerFullLayoutValid(
     var canvasCount: UInt16 = 0
     var checkedLines: UInt16 = 0
     var checkedGlyphs: UInt16 = 0
+    let renderSemantic = StaticSignalAnalyzerNRFEmbeddedRenderSemanticAdapter(
+        source: semantic
+    )
+    guard renderSemantic.rootIdentity == resolved.rootIdentity,
+        renderSemantic.renderSnapshotVersion == resolved.renderSnapshotVersion,
+        renderSemantic.semanticScopeCount == resolved.layoutScopeCount
+    else { return 0 }
     var ordinal: UInt16 = 0
     while ordinal < semantic.scopeCount {
         guard let identity = semantic.semanticIdentity(at: ordinal),
-            let record = semantic.scope(at: identity)
+            let record = semantic.scope(at: identity),
+            renderSemantic.semanticIdentity(at: ordinal) == identity,
+            renderSemantic.semanticOrdinal(of: identity) == ordinal,
+            renderSemantic.scope(at: identity) != nil,
+            renderSemantic.layoutIdentity(for: identity) == identity,
+            renderSemantic.childCount(of: identity) != nil
         else { return 0 }
         if record.kind == .canvas {
             guard record.payload0 == UInt32(canvasCount + 1),
@@ -351,6 +363,14 @@ public func giftUISignalAnalyzerFullLayoutValid(
     }
     guard canvasCount == 5, checkedLines == 21,
         checkedGlyphs == 121
+    else { return 0 }
+    guard case .success(let ordinaryHeader) =
+        StaticSignalAnalyzerNRFEmbeddedRenderPreflight.run(
+            semantic: semantic, layout: resolved,
+            textRegion: text
+        ), ordinaryHeader.operationCount > 0,
+        ordinaryHeader.operationCount <= 145,
+        ordinaryHeader.positionedGlyphCount == 121
     else { return 0 }
     workspace.packed.reset()
     return resolved.isPublished ? 0 : 1
@@ -513,7 +533,15 @@ public func giftUISignalAnalyzerFullCanvasValid(
         grid.color == .gray,
         grid.lineWidth == 1,
         grid.pointCount == 24,
-        grid.subpathCount == 12
+        grid.subpathCount == 12,
+        case .success(let renderHeader) =
+            StaticSignalAnalyzerNRFEmbeddedRenderPreflight.runCombined(
+                semantic: semantic, layout: resolved,
+                textRegion: UnsafeMutableRawBufferPointer(
+                    start: profile.advanced(by: 9_184), count: 4_704
+                ), drawing: drawing
+            ), renderHeader.operationCount <= 150,
+        renderHeader.positionedGlyphCount == 121
     else { return 0 }
     var occurrence: UInt16 = 1
     while occurrence < 5 {
@@ -578,7 +606,15 @@ public func giftUISignalAnalyzerFullCanvasValid(
         let rising = drawing.point(of: traceID, stroke: 0, at: 2),
         leading.x == traceBounds.origin.x + traceBounds.size.width / 2,
         rising.x == leading.x,
-        leading.y > rising.y
+        leading.y > rising.y,
+        case .success(let updatedRenderHeader) =
+            StaticSignalAnalyzerNRFEmbeddedRenderPreflight.runCombined(
+                semantic: semantic, layout: updatedLayout,
+                textRegion: UnsafeMutableRawBufferPointer(
+                    start: profile.advanced(by: 9_184), count: 4_704
+                ), drawing: drawing
+            ), updatedRenderHeader.operationCount <= 150,
+        updatedRenderHeader.positionedGlyphCount == 121
     else { return 0 }
     drawing.reset()
     layoutWorkspace.packed.reset()
