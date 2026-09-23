@@ -1001,6 +1001,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       The same aggregate now owns the shared wake/pacing controller initialized
       from the generated 250-millisecond policy and an explicit monotonic frame
       origin; its scoped lifetime quiesces with the application and profile.
+      A Static application-stage service now enters only at that frame boundary
+      and completes pacing after application failure as well as success; the
+      host fixture proves no-work, early wait, failure completion, and a later
+      reusable wake. Full presentation still follows as a separate pending join.
       The production metadata envelope now supplies the preset's one exact
       observable slot, six-action specialization, and dense two-case Canvas
       coverage around a caller-supplied generated callable table; host

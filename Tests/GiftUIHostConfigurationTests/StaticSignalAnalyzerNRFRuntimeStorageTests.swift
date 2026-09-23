@@ -97,13 +97,48 @@ private struct IncompleteStaticNRFCanvasTable: StaticCanvasCallableTable {
                 phase: .idle
             )
             #expect(profile.finishOpportunity(context: idle) == nil)
+            #expect(
+                StaticSignalAnalyzerNRFPacedApplicationStage.service(
+                    at: 0,
+                    application: &application,
+                    pacing: &pacing
+                ) == .noWork
+            )
             #expect(pacing.recordAcceptedFact(at: 1) == .success(.requestWake))
             #expect(
-                pacing.schedule(at: 249_999)
+                StaticSignalAnalyzerNRFPacedApplicationStage.service(
+                    at: 249_999,
+                    application: &application,
+                    pacing: &pacing
+                )
                     == .wait(untilMicroseconds: 250_000)
             )
-            #expect(pacing.beginOpportunity(at: 250_000) == .began(.admittedWork))
-            #expect(pacing.completeOpportunity(at: 250_001) == nil)
+            #expect(
+                StaticSignalAnalyzerNRFPacedApplicationStage.service(
+                    at: 250_000,
+                    application: &application,
+                    pacing: &pacing
+                )
+                    == .completed(
+                        reasons: .admittedWork,
+                        result: .failure(.factAdmissionUnavailable)
+                    )
+            )
+            #expect(!pacing.opportunityIsActive)
+            #expect(
+                pacing.recordAcceptedFact(at: 250_001) == .success(.requestWake)
+            )
+            #expect(
+                StaticSignalAnalyzerNRFPacedApplicationStage.service(
+                    at: 500_000,
+                    application: &application,
+                    pacing: &pacing
+                )
+                    == .completed(
+                        reasons: .admittedWork,
+                        result: .failure(.factAdmissionUnavailable)
+                    )
+            )
         }
 
         let profileIsQuiescent = runtime.profile.isQuiescent
@@ -112,7 +147,7 @@ private struct IncompleteStaticNRFCanvasTable: StaticCanvasCallableTable {
         #expect(profileIsQuiescent)
         #expect(profileLifetime == .tornDown)
         #expect(!rootIsActive)
-        #expect(runtime.pacing.schedule(at: 250_002) == .invalid(.unavailable))
+        #expect(runtime.pacing.schedule(at: 500_001) == .invalid(.unavailable))
     }
 }
 

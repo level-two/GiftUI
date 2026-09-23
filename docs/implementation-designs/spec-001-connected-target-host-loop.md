@@ -178,6 +178,9 @@ and a 240-byte coverage bitmap for touched-pixel run emission.
 Its address-stable runtime aggregate retains the common wake/pacing controller
 with the generated policy and a caller-supplied monotonic frame origin for the
 same lifetime as application and profile storage.
+The first paced Static service encloses the application fact/input stage and
+always completes its pacing opportunity before returning a stage result; the
+full semantic-to-display transaction will extend this serialized service.
 ILI9486 consumes the synchronous borrow before return. No full framebuffer,
 heap, reflection, `Any`, or runtime profile selection is permitted.
 

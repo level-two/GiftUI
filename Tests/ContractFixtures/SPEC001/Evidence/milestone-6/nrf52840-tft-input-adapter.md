@@ -886,3 +886,8 @@ its application and profile owners. A host fixture injects a frame origin of
 zero and checks the generated 250,000-microsecond boundary, accepted fact wake,
 and quiescence after the address-stable scope. This establishes policy wiring,
 not a connected monotonic clock or firmware scheduler.
+The production application-stage service now uses that exact controller to
+enforce the frame boundary, run one application opportunity, and finish pacing
+even when the unbound-root fixture returns `factAdmissionUnavailable`. The
+fixture verifies a second wake can be serviced at the next boundary. The
+presentation transaction is not yet inside this service.
