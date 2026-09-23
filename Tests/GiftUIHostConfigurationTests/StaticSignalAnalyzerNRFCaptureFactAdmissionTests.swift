@@ -1,4 +1,6 @@
+import GiftUIFailureCore
 import SignalAnalyzerDomain
+import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
 import Testing
 
@@ -127,6 +129,108 @@ import Testing
     #expect(second?.captureMutation?.revision == 1)
     let empty = admission.takeNextSealed()
     #expect(empty == nil)
+}
+
+@Test func nRFReservedOperationalFailureHasIndependentCapacityAndOrder() {
+    let bytes = 3_840
+    let active = UnsafeMutableRawPointer.allocate(byteCount: bytes, alignment: 8)
+    let sealed = UnsafeMutableRawPointer.allocate(byteCount: bytes, alignment: 8)
+    defer {
+        active.deallocate()
+        sealed.deallocate()
+    }
+    guard
+        var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
+            activeStorage: UnsafeMutableRawBufferPointer(start: active, count: bytes),
+            sealedStorage: UnsafeMutableRawBufferPointer(start: sealed, count: bytes)
+        ),
+        let diagnostic = SignalAnalyzerDiagnostic(
+            exactUTF8: Array(repeating: 0x46, count: 96)
+        )
+    else {
+        Issue.record("Reserved failure setup failed")
+        return
+    }
+    let began = admission.beginProducer(.action)
+    #expect(began)
+    let first = admission.admitAcquisitionState(.running)
+    #expect(first == .accepted(sequence: 1))
+    admission.endProducer()
+    let failure = admission.admitOperationalFailure(
+        conditionRawValue: 3, originRawValue: 9,
+        affectedScopeRawValue: 3, containmentRawValue: 0,
+        diagnostic: diagnostic
+    )
+    #expect(failure == .accepted(sequence: 2))
+    #expect(admission.pendingCompactCount == 1)
+    #expect(admission.pendingOperationalFailureCount == 1)
+    let excess = admission.admitOperationalFailure(
+        conditionRawValue: 3, originRawValue: 9,
+        affectedScopeRawValue: 3, containmentRawValue: 0,
+        diagnostic: diagnostic
+    )
+    #expect(excess == .reservedFailureCapacityExhausted)
+    let didSeal = admission.seal()
+    #expect(didSeal)
+    #expect(admission.pendingOperationalFailureCount == 0)
+    #expect(admission.sealedOperationalFailureCount == 1)
+    let beforeFailure = admission.admitOperationalFailure(
+        conditionRawValue: 3, originRawValue: 9,
+        affectedScopeRawValue: 3, containmentRawValue: 0,
+        diagnostic: diagnostic
+    )
+    #expect(beforeFailure == .reservedFailureCapacityExhausted)
+    let takenState = admission.takeNextSealed()
+    #expect(takenState?.sequence == 1)
+    #expect(takenState?.acquisitionState == .running)
+    let takenFailure = admission.takeNextSealed()
+    #expect(takenFailure?.sequence == 2)
+    #expect(takenFailure?.operationalFailure?.diagnostic == diagnostic)
+    #expect(takenFailure?.operationalFailure?.conditionRawValue == 3)
+    #expect(admission.sealedOperationalFailureCount == 0)
+    let reused = admission.admitOperationalFailure(
+        conditionRawValue: 5, originRawValue: 9,
+        affectedScopeRawValue: 4, containmentRawValue: 1,
+        diagnostic: diagnostic
+    )
+    #expect(reused == .accepted(sequence: 3))
+}
+
+@Test func nRFReservedFailureRoundTripsPortableValue() {
+    let bytes = 3_840
+    let active = UnsafeMutableRawPointer.allocate(byteCount: bytes, alignment: 8)
+    let sealed = UnsafeMutableRawPointer.allocate(byteCount: bytes, alignment: 8)
+    defer {
+        active.deallocate()
+        sealed.deallocate()
+    }
+    guard
+        var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
+            activeStorage: UnsafeMutableRawBufferPointer(start: active, count: bytes),
+            sealedStorage: UnsafeMutableRawBufferPointer(start: sealed, count: bytes)
+        ),
+        let diagnostic = SignalAnalyzerDiagnostic(
+            exactUTF8: Array(repeating: 0x57, count: 96)
+        )
+    else {
+        Issue.record("Portable failure setup failed")
+        return
+    }
+    let original = SignalAnalyzerOperationalFailure(
+        failure: GiftUIFailureFact(
+            condition: .invalidProvenance,
+            origin: .presentationIntegration,
+            affectedScope: .runtime,
+            containment: .safetyNotProven
+        ),
+        diagnostic: diagnostic
+    )
+    let admitted = admission.admitOperationalFailure(original)
+    #expect(admitted == .accepted(sequence: 1))
+    let didSeal = admission.seal()
+    #expect(didSeal)
+    let sealedFact = admission.takeNextSealed()
+    #expect(sealedFact?.operationalFailure?.portableValue == original)
 }
 
 @Test func nRFSnapshotAdmissionMergesOnePhysicalSlotInSequence() {

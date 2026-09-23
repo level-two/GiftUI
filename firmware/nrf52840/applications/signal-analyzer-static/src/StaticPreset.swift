@@ -201,6 +201,16 @@ public func giftUISignalAnalyzerCompactRingValid(
         admission.takeNextSealed()?.captureMutation?.change == change,
         admission.sealedCompactCount == 0
     else { return 0 }
+    guard let diagnostic = giftUIStaticSampleDiagnostic(),
+        admission.admitOperationalFailure(
+            conditionRawValue: 5, originRawValue: 9,
+            affectedScopeRawValue: 4, containmentRawValue: 1,
+            diagnostic: diagnostic
+        ) == .accepted(sequence: 2),
+        admission.seal(), admission.sealedOperationalFailureCount == 1,
+        admission.takeNextSealed()?.operationalFailure?.diagnostic == diagnostic,
+        admission.sealedOperationalFailureCount == 0
+    else { return 0 }
     return 1
 }
 

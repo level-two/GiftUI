@@ -401,6 +401,14 @@ only the eight attempt-local families; complete reset clears the entire
 caller-owned store. The remaining firmware composition must construct this map
 before lending its regions to semantic, layout, Drawing, and render owners.
 
+The two 3,840-byte admission ranges each devote 3,584 bytes to 32 inline
+112-byte compact facts and 256 bytes to metadata and independent fact slots.
+Snapshot metadata occupies 48 bytes beginning at reserve offset 32; the
+reserved operational-failure value occupies at most 112 bytes beginning at
+offset 80. Their presence flags and nonwrapping sequence counter live in the
+same reserve. Sealing copies each accepted value into its sealed range, and
+removal selects the lowest sequence across the three physical fact classes.
+
 A report-gated factory now consumes that region map together with a concrete
 generated metadata/table value and constructs `StaticRuntimeProfileBinding`
 from the preset's exact structural identity and runtime limits. The common

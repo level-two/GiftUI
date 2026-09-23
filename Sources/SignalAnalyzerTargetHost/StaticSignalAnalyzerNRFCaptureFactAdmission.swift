@@ -19,6 +19,7 @@ package enum StaticSignalAnalyzerNRFCaptureAdmissionOutcome: Equatable {
     case producerUnavailable
     case producerCapacityExhausted
     case snapshotCapacityExhausted
+    case reservedFailureCapacityExhausted
     case compactCapacityExhausted
     case sequenceExhausted
     case unrepresentable
@@ -27,17 +28,20 @@ package enum StaticSignalAnalyzerNRFCaptureAdmissionOutcome: Equatable {
 package enum StaticSignalAnalyzerNRFSealedCaptureFact {
     case snapshot(StaticSignalAnalyzerNRFSnapshotFact)
     case compact(StaticSignalAnalyzerNRFCompactPresentationFact)
+    case operationalFailure(StaticSignalAnalyzerNRFOperationalFailureFact)
 
     package var sequence: UInt32 {
         switch self {
         case .snapshot(let fact): fact.sequence
         case .compact(let fact): fact.sequence
+        case .operationalFailure(let fact): fact.sequence
         }
     }
 
     package var captureMutation: (revision: UInt32, change: SignalCaptureChange)? {
         switch self {
         case .snapshot: nil
+        case .operationalFailure: nil
         case .compact(let fact):
             if case .captureMutation(let mutation) = fact.payload {
                 mutation.publication
@@ -53,6 +57,11 @@ package enum StaticSignalAnalyzerNRFSealedCaptureFact {
         {
             return state
         }
+        return nil
+    }
+
+    package var operationalFailure: StaticSignalAnalyzerNRFOperationalFailureFact? {
+        if case .operationalFailure(let fact) = self { return fact }
         return nil
     }
 }
@@ -88,6 +97,8 @@ package struct StaticSignalAnalyzerNRFCaptureFactAdmission: ~Copyable {
     package var sealedCompactCount: UInt16 { sealed.count }
     package var pendingSnapshotCount: UInt8 { activeSnapshot == nil ? 0 : 1 }
     package var sealedSnapshotCount: UInt8 { sealedSnapshot == nil ? 0 : 1 }
+    package var pendingOperationalFailureCount: UInt8 { activeFailure == nil ? 0 : 1 }
+    package var sealedOperationalFailureCount: UInt8 { sealedFailure == nil ? 0 : 1 }
 
     /// The producer checks this before copying live records into the one
     /// admitted snapshot slot. The application executor keeps that check and
@@ -204,10 +215,47 @@ package struct StaticSignalAnalyzerNRFCaptureFactAdmission: ~Copyable {
         return .accepted(sequence: sequence)
     }
 
+    /// Operational failures have their own physical slot and do not consume
+    /// producer quotas or ordinary compact capacity.
+    package mutating func admitOperationalFailure(
+        conditionRawValue: UInt16,
+        originRawValue: UInt8,
+        affectedScopeRawValue: UInt8,
+        containmentRawValue: UInt8,
+        diagnostic: SignalAnalyzerDiagnostic
+    ) -> StaticSignalAnalyzerNRFCaptureAdmissionOutcome {
+        guard isAvailable else { return .producerUnavailable }
+        guard activeFailure == nil, sealedFailure == nil else {
+            return .reservedFailureCapacityExhausted
+        }
+        let sequence = metadata.load(fromByteOffset: 8, as: UInt32.self)
+        guard sequence != 0 else { return .sequenceExhausted }
+        guard MemoryLayout<StaticSignalAnalyzerNRFOperationalFailureFact>.stride <= 112,
+            let fact = StaticSignalAnalyzerNRFOperationalFailureFact(
+                sequence: sequence,
+                conditionRawValue: conditionRawValue,
+                originRawValue: originRawValue,
+                affectedScopeRawValue: affectedScopeRawValue,
+                containmentRawValue: containmentRawValue,
+                diagnostic: diagnostic
+            )
+        else { return .unrepresentable }
+        metadata.storeBytes(
+            of: fact, toByteOffset: 80,
+            as: StaticSignalAnalyzerNRFOperationalFailureFact.self
+        )
+        metadata.storeBytes(of: UInt8(1), toByteOffset: 21, as: UInt8.self)
+        metadata.storeBytes(
+            of: sequence == .max ? UInt32(0) : sequence + 1,
+            toByteOffset: 8, as: UInt32.self
+        )
+        return .accepted(sequence: sequence)
+    }
+
     package mutating func seal() -> Bool {
         guard isAvailable, activeProducer == nil,
-            active.count > 0 || activeSnapshot != nil,
-            sealed.count == 0, sealedSnapshot == nil
+            active.count > 0 || activeSnapshot != nil || activeFailure != nil,
+            sealed.count == 0, sealedSnapshot == nil, sealedFailure == nil
         else {
             return false
         }
@@ -219,6 +267,14 @@ package struct StaticSignalAnalyzerNRFCaptureFactAdmission: ~Copyable {
             sealedMetadata.storeBytes(of: UInt8(1), toByteOffset: 20, as: UInt8.self)
             metadata.storeBytes(of: UInt8(0), toByteOffset: 20, as: UInt8.self)
         }
+        if let failure = activeFailure {
+            sealedMetadata.storeBytes(
+                of: failure, toByteOffset: 80,
+                as: StaticSignalAnalyzerNRFOperationalFailureFact.self
+            )
+            sealedMetadata.storeBytes(of: UInt8(1), toByteOffset: 21, as: UInt8.self)
+            metadata.storeBytes(of: UInt8(0), toByteOffset: 21, as: UInt8.self)
+        }
         for offset in stride(from: 12, through: 16, by: 2) {
             metadata.storeBytes(of: UInt16(0), toByteOffset: offset, as: UInt16.self)
         }
@@ -227,10 +283,18 @@ package struct StaticSignalAnalyzerNRFCaptureFactAdmission: ~Copyable {
 
     package mutating func takeNextSealed() -> StaticSignalAnalyzerNRFSealedCaptureFact? {
         let snapshot = sealedSnapshot
+        let failure = sealedFailure
         let compact = sealed.first
-        if let snapshot, compact == nil || snapshot.sequence < compact!.sequence {
+        if let snapshot,
+            compact == nil || snapshot.sequence < compact!.sequence,
+            failure == nil || snapshot.sequence < failure!.sequence
+        {
             sealedMetadata.storeBytes(of: UInt8(0), toByteOffset: 20, as: UInt8.self)
             return .snapshot(snapshot)
+        }
+        if let failure, compact == nil || failure.sequence < compact!.sequence {
+            sealedMetadata.storeBytes(of: UInt8(0), toByteOffset: 21, as: UInt8.self)
+            return .operationalFailure(failure)
         }
         guard let compact = sealed.takeFirst() else { return nil }
         return .compact(compact)
@@ -247,6 +311,8 @@ package struct StaticSignalAnalyzerNRFCaptureFactAdmission: ~Copyable {
         sealed.discard()
         metadata.storeBytes(of: UInt8(0), toByteOffset: 20, as: UInt8.self)
         sealedMetadata.storeBytes(of: UInt8(0), toByteOffset: 20, as: UInt8.self)
+        metadata.storeBytes(of: UInt8(0), toByteOffset: 21, as: UInt8.self)
+        sealedMetadata.storeBytes(of: UInt8(0), toByteOffset: 21, as: UInt8.self)
     }
 
     private var isAvailable: Bool {
@@ -267,6 +333,20 @@ package struct StaticSignalAnalyzerNRFCaptureFactAdmission: ~Copyable {
     private var sealedSnapshot: StaticSignalAnalyzerNRFSnapshotFact? {
         guard sealedMetadata.load(fromByteOffset: 20, as: UInt8.self) == 1 else { return nil }
         return sealedMetadata.load(fromByteOffset: 32, as: StaticSignalAnalyzerNRFSnapshotFact.self)
+    }
+
+    private var activeFailure: StaticSignalAnalyzerNRFOperationalFailureFact? {
+        guard metadata.load(fromByteOffset: 21, as: UInt8.self) == 1 else { return nil }
+        return metadata.load(
+            fromByteOffset: 80, as: StaticSignalAnalyzerNRFOperationalFailureFact.self
+        )
+    }
+
+    private var sealedFailure: StaticSignalAnalyzerNRFOperationalFailureFact? {
+        guard sealedMetadata.load(fromByteOffset: 21, as: UInt8.self) == 1 else { return nil }
+        return sealedMetadata.load(
+            fromByteOffset: 80, as: StaticSignalAnalyzerNRFOperationalFailureFact.self
+        )
     }
 
     private func countOffset(for producer: StaticSignalAnalyzerNRFProducerCategory) -> Int {

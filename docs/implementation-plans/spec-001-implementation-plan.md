@@ -1065,6 +1065,15 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       checked target links at 187,776 RAM and 52,124 flash bytes, within the
       SPEC-004 RAM ceiling. Reserved operational-failure admission and the
       complete production host loop remain open.
+      The remaining 256-byte reserve now holds the separately sequenced
+      operational-failure value beside snapshot metadata. It preserves the
+      normalized failure fields and all 96 diagnostic bytes without consuming
+      producer quota or any of the 32 compact slots. Active and sealed owners
+      enforce one physical failure slot and merge its sequence with snapshot
+      and compact facts. Host tests cover refusal, reuse, exact portable-value
+      round-trip, and ordering; the target startup probe and checked build pass
+      at 187,776 RAM and 53,804 flash bytes. Production failure producers and
+      model application still need wiring.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or
