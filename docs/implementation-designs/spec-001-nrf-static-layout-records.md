@@ -118,6 +118,12 @@ the corresponding target-safe codec now cross-builds and a differential
 fixture compares its entire workspace with the host codec after line/glyph
 staging and glyph-baseline replacement. Firmware startup uses the actual
 profile slice for one line and glyph, without claiming layout publication.
+The target now also compiles a compact, allocation-free projection of the
+canonical reference font's 96 scalar mappings, 102 glyph metrics, replacement
+glyph, and line metrics. A generator checks it against the adopted reference
+catalogue at firmware configure time; a host differential test compares every
+mapping and metric. The firmware line/glyph probe obtains its glyph ID from
+this projection. Layout measurement and rasterization have not yet consumed it.
 The fixed-region workspace now verifies the reference font, derives text clips
 from placed scope and line bounds, derives glyph indexes from record order, and
 stores its 13-entry scope stack in the reserved scratch tail. Focused host tests

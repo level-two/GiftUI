@@ -208,8 +208,13 @@ public func giftUISignalAnalyzerLayoutTextValid(
         x: 0, y: 0, width: 184, height: 16,
         baselineX: 0, baselineY: 12
     )
+    guard let glyphID = StaticSignalAnalyzerNRFReferenceMetrics.glyph(for: 0x44),
+        let metric = StaticSignalAnalyzerNRFReferenceMetrics.metric(for: glyphID),
+        metric.advanceX > 0,
+        StaticSignalAnalyzerNRFReferenceMetrics.ascent == 16
+    else { return 0 }
     let glyph = StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.Glyph(
-        identity: title.identity, lineIndex: 0, glyphID: 1,
+        identity: title.identity, lineIndex: 0, glyphID: glyphID,
         baselineX: 0, baselineY: 12
     )
     guard StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.stageLine(

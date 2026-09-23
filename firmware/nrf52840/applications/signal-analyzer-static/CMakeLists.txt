@@ -18,10 +18,16 @@ set(giftui_workload_descriptor
     "${giftui_project_root}/Tests/ContractFixtures/SPEC015/signal-analyzer-workload.tsv")
 set(giftui_hierarchy_descriptor
     "${giftui_project_root}/Tests/ContractFixtures/SPEC001/hierarchy-shape-cases.tsv")
+set(giftui_nrf_font_generator
+    "${giftui_project_root}/scripts/contracts/generate-spec-001-nrf-font.rb")
+set(giftui_reference_catalogue
+    "${giftui_project_root}/Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift")
 set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
     "${giftui_workload_generator}"
     "${giftui_workload_descriptor}"
-    "${giftui_hierarchy_descriptor}")
+    "${giftui_hierarchy_descriptor}"
+    "${giftui_nrf_font_generator}"
+    "${giftui_reference_catalogue}")
 execute_process(
     COMMAND "${GIFTUI_RUBY_EXECUTABLE}" "${giftui_workload_generator}" --check
     WORKING_DIRECTORY "${giftui_project_root}"
@@ -31,6 +37,14 @@ execute_process(
 if(NOT giftui_generated_model_check EQUAL 0)
     message(FATAL_ERROR
         "Signal Analyzer generated workload/model descriptor is stale:\n${giftui_generated_model_error}")
+endif()
+execute_process(
+    COMMAND "${GIFTUI_RUBY_EXECUTABLE}" "${giftui_nrf_font_generator}" --check
+    WORKING_DIRECTORY "${giftui_project_root}"
+    RESULT_VARIABLE giftui_nrf_font_check
+    ERROR_VARIABLE giftui_nrf_font_error)
+if(NOT giftui_nrf_font_check EQUAL 0)
+    message(FATAL_ERROR "nRF reference font projection is stale:\n${giftui_nrf_font_error}")
 endif()
 target_sources(app PRIVATE
     src/ads7846.c
@@ -82,6 +96,7 @@ set(giftui_static_swift_inputs
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFRegionMap.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFModelLocation.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFModelDescriptor.generated.swift"
+    "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFReferenceMetrics.generated.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFTopologyWriter.generated.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFUTF8TextPool.generated.swift"

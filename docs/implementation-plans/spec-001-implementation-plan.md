@@ -1204,6 +1204,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       Firmware startup exercises one line and glyph in the actual C profile
       slice; the checked image uses 187,840 RAM and 84,748 flash bytes. This
       remains a codec probe before complete layout publication.
+      The canonical reference font now has a generated, target-safe scalar
+      mapping and glyph-metric projection. Its generator checks the committed
+      output against the adopted catalogue at firmware configuration, and a
+      host test compares all 96 mappings and 102 metrics. The firmware codec
+      probe resolves its sample glyph through this projection. The checked
+      image uses 187,840 RAM and 86,556 flash bytes; the registered nRF gate
+      passes 248 host tests and the seven C fixtures. Full layout measurement
+      and raster consumption remain open.
       The registered SPEC-001 nRF driver passes its 224 host tests and all
       hardware-free touch, storage, clock, scheduler, and lifecycle fixtures;
       it publishes cross-build inspection only, with no connected display or
