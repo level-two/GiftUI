@@ -438,7 +438,11 @@ paths stay within the 2,404-record slot without a temporary array. Clear
 preserves current levels, rebases source time, and advances the same revision
 as the portable store. A host differential fixture compares publications,
 metadata, and every retained record through sustained capacity pressure.
-The snapshot slot and firmware repository join remain to be built.
+The snapshot operation copies only initialized live records into the second
+slot and returns scalar revision, count, duration, lower-bound, and baseline
+metadata. Later live mutations and clear do not change the copied records;
+the snapshot borrower must complete synchronous delivery before recopying.
+The application adapter and firmware repository join remain to be built.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact

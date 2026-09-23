@@ -1,6 +1,16 @@
 import SignalAnalyzerData
 import SignalAnalyzerDomain
 
+/// Metadata for one immutable copied snapshot slot. The record bytes remain
+/// in caller storage until the next snapshot copy or teardown.
+package struct StaticSignalAnalyzerNRFCaptureSnapshot: Equatable, Sendable {
+    package let revision: UInt32
+    package let count: UInt16
+    package let duration: Duration
+    package let retainedLowerBound: Duration
+    package let baselineLevels: SignalChannelLevels
+}
+
 /// Capture policy state for the caller-owned nRF record region. The live slot
 /// contains exactly `count` initialized records; mutation never allocates.
 package struct StaticSignalAnalyzerNRFCaptureHistory {
@@ -150,6 +160,26 @@ package struct StaticSignalAnalyzerNRFCaptureHistory {
                 revision: revision,
                 change: .reset(baseRevision: baseRevision, baselines: levels)
             ))
+    }
+
+    /// Copies only initialized live records to the second reserved slot. The
+    /// caller must finish any synchronous snapshot delivery before recopying.
+    package func snapshot(
+        in regions: inout StaticSignalAnalyzerNRFCaptureRegions
+    ) -> StaticSignalAnalyzerNRFCaptureSnapshot? {
+        for index in 0 ..< Int(count) {
+            guard let item = regions.load(from: .live, at: index),
+                item.transition != nil,
+                regions.store(item, in: .snapshot, at: index)
+            else { return nil }
+        }
+        return StaticSignalAnalyzerNRFCaptureSnapshot(
+            revision: revision,
+            count: count,
+            duration: duration,
+            retainedLowerBound: retainedLowerBound,
+            baselineLevels: baselineLevels
+        )
     }
 
     private func mergedElement(

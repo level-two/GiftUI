@@ -75,6 +75,40 @@ import Testing
     #expect(target.clear(in: &regions) == portable.clear())
 }
 
+@Test func staticNRFCaptureSnapshotSurvivesLiveMutationAndClear() {
+    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
+    defer { pointer.deallocate() }
+    guard
+        var regions = StaticSignalAnalyzerNRFCaptureRegions(
+            storage: UnsafeMutableRawBufferPointer(start: pointer, count: 115_392)
+        )
+    else {
+        Issue.record("Exact capture region did not construct")
+        return
+    }
+    var history = StaticSignalAnalyzerNRFCaptureHistory()
+    let first = transition(channel: 1, milliseconds: 100, level: .high)
+    let second = transition(channel: 2, milliseconds: 200, level: .low)
+    _ = history.receive(first, in: &regions)
+    _ = history.receive(second, in: &regions)
+    let snapshot = history.snapshot(in: &regions)
+    #expect(snapshot?.revision == 2)
+    #expect(snapshot?.count == 2)
+    #expect(snapshot?.duration == .milliseconds(200))
+    #expect(snapshot?.retainedLowerBound == .zero)
+    #expect(snapshot?.baselineLevels == .allLow)
+
+    _ = history.receive(transition(channel: 4, milliseconds: 300, level: .high), in: &regions)
+    _ = history.clear(in: &regions)
+    #expect(regions.load(from: .snapshot, at: 0)?.transition == first)
+    #expect(regions.load(from: .snapshot, at: 1)?.transition == second)
+    #expect(history.count == 0)
+    let cleared = history.snapshot(in: &regions)
+    #expect(cleared?.revision == 4)
+    #expect(cleared?.count == 0)
+    #expect(cleared?.baselineLevels == history.baselineLevels)
+}
+
 private func transition(
     channel: Int, milliseconds: Int, level: DigitalLevel
 ) -> SignalTransition {

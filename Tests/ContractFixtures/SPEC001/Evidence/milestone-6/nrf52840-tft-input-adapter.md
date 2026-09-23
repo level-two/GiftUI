@@ -1055,5 +1055,7 @@ keeps the lower-bound channel baselines, clears with epoch rebasing, and rejects
 revision exhaustion. A hardware-free differential run compares each mutation
 publication, revision, duration, lower bound, baseline, and retained record
 against the portable store over 2,450 transitions plus out-of-history input
-and clear. This establishes host policy equivalence only; snapshot delivery
+and clear. A separate host fixture proves the second slot's copied records
+and metadata survive live mutation and clear. These establish host policy
+equivalence and bounded storage behavior only; application snapshot delivery
 and production firmware linkage are still open.

@@ -923,13 +923,16 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       value's timestamp components, channel, and level. One checked borrower
       splits the existing 115,392-byte firmware region into two disjoint
       2,404-entry slots without Swift arrays; host tests verify stride,
-      boundary access, round-trip values, and malformed regions. The capture
-      target capture policy now mutates that live slot in place, preserving
+      boundary access, round-trip values, and malformed regions. The target
+      capture policy now mutates that live slot in place, preserving
       stable insertion, 30-second and capacity trimming, baseline changes,
       clear rebasing, and revision exhaustion. A host differential fixture
       compares every publication and retained record against the portable
-      store across 2,450 transitions. Snapshot publication and firmware
-      linkage still need to consume these records.
+      store across 2,450 transitions. A bounded snapshot copy now freezes
+      initialized live records and scalar metadata in the second slot, and a
+      host fixture proves it survives later live mutation and clear. Snapshot
+      publication through the application adapter and firmware linkage still
+      need to consume these records.
       A
       target-local,
       allocation-free
