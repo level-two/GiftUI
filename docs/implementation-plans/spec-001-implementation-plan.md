@@ -1172,7 +1172,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       preflight, streams the physical offer, and resolves action publication
       plus input eligibility from the offer disposition. The eight-case
       endpoint fixture exercises the accepted handoff through the scoped
-      application owner; the firmware join remains open.
+      application owner. A mismatched physical-surface header in the same
+      fixture now fails before transport, discards the action candidate, and
+      leaves input ineligible before the valid retry. The firmware join
+      remains open.
       The Static nRF endpoint now owns one exact 3,840-byte raster tile and
       240-byte coverage map, with raster work limits derived from 150
       operations across the full 480 x 320 surface. A production render-offer

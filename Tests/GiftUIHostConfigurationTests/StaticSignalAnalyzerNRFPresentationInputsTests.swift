@@ -1019,6 +1019,54 @@ import Testing
                                     repository: StaticNRFPresentationInputRepository()
                                 ) == .bound(ObservableTargetGeneration(rawValue: 0))
                             )
+                            let wrongSurfaceHeader = RenderPlanHeader(
+                                surfaceBounds: Rect(
+                                    origin: Point(x: 0, y: 0),
+                                    size: Size(width: 480, height: 319)!
+                                )!,
+                                damageBounds: acceptedHeader.damageBounds,
+                                operationCount: acceptedHeader.operationCount,
+                                positionedGlyphCount: acceptedHeader.positionedGlyphCount,
+                                maximumObservedClipDepth:
+                                    acceptedHeader.maximumObservedClipDepth
+                            )
+                            #expect(wrongSurfaceHeader.surfaceBounds != endpoint.descriptor.bounds)
+                            #expect(
+                                StaticSignalAnalyzerNRFPresentationHandoff.offerPreflighted(
+                                    semantic: renderView,
+                                    layout: sink.renderView,
+                                    drawingPlan: drawingWorkspace,
+                                    occurrences: occurrences,
+                                    expectedHeader: wrongSurfaceHeader,
+                                    workspace: &rasterRenderWorkspace,
+                                    application: &owner,
+                                    endpoint: &endpoint,
+                                    provenance: provenance,
+                                    presentationRevision: PresentationRevision(rawValue: cycle)
+                                )
+                                    == .offered(
+                                        FrameOfferResult(
+                                            disposition: .failed,
+                                            failure: .contractViolation
+                                        )!,
+                                        .discarded
+                                    )
+                            )
+                            #expect(endpoint.sink.target.transport.payloads == 0)
+                            owner.withInteraction { state in
+                                #expect(state.committedRecordCount == 0)
+                            }
+                            #expect(
+                                owner.admit(
+                                    phaseRawValue: PointerPhase.down.rawValue,
+                                    x: 4,
+                                    y: 4,
+                                    observedPresentationRevisionRawValue: cycle,
+                                    priorPhysicalSequenceIsCompleteRawValue: 0
+                                )?.rejection
+                                    == HostNormalizedInputRejection.presentationNotEstablished
+                                    .rawValue
+                            )
                             let handoff =
                                 StaticSignalAnalyzerNRFPresentationHandoff
                                 .offerPreflighted(

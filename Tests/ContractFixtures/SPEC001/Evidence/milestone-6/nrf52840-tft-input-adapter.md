@@ -922,3 +922,7 @@ six interaction records after preflight, streams the accepted raster offer,
 then commits the presentation and enables input in the same scoped owner.
 Each of the eight cases verifies the committed actions and a queued input
 event after accepted display handoff. Firmware ownership is still pending.
+The same eight-case fixture first supplies a deliberately narrower physical
+surface header. The handoff returns `contractViolation` before any display
+payload, discards staged actions, and leaves input ineligible. A subsequent
+offer with the preflighted header succeeds through that same owner and endpoint.
