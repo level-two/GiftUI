@@ -299,24 +299,14 @@ public func giftUISignalAnalyzerSealedApplicationValid(
         conditionRawValue: 5, originRawValue: 9,
         affectedScopeRawValue: 4, containmentRawValue: 1,
         diagnostic: diagnostic
-    ) == .accepted(sequence: 3), admission.seal()
+    ) == .accepted(sequence: 3)
     else { return 0 }
     return withUnsafeMutablePointer(to: &giftUIStaticModelLocation) { location in
         guard location.pointee.activate() != nil,
-            location.pointee.beginMutation()
-        else { return 0 }
-        var expected: UInt32 = 1
-        while let fact = admission.takeNextSealed() {
-            guard fact.sequence == expected,
-                location.pointee.applySealedFact(
-                    fact, captureStorage: captureStorage
-                ) == .applied
-            else { return 0 }
-            expected += 1
-        }
-        guard expected == 4,
-            location.pointee.acquisitionState == .failed(diagnostic),
-            location.pointee.endMutation()
+            location.pointee.applyAdmittedBatch(
+                from: &admission, captureStorage: captureStorage
+            ) == .applied(factCount: 3),
+            location.pointee.acquisitionState == .failed(diagnostic)
         else { return 0 }
         location.pointee.retire()
         return 1

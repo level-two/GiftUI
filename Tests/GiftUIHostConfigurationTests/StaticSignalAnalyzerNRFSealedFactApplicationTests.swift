@@ -85,3 +85,59 @@ import Testing
     let endedMutation = model.endMutation()
     #expect(endedMutation)
 }
+
+@Test func nRFAdmittedBatchSealsAndAppliesWithoutReentry() {
+    let factBytes = 3_840
+    let captureBytes = 115_392
+    let active = UnsafeMutableRawPointer.allocate(byteCount: factBytes, alignment: 8)
+    let sealed = UnsafeMutableRawPointer.allocate(byteCount: factBytes, alignment: 8)
+    let capture = UnsafeMutableRawPointer.allocate(byteCount: captureBytes, alignment: 8)
+    defer {
+        active.deallocate()
+        sealed.deallocate()
+        capture.deallocate()
+    }
+    let captureStorage = UnsafeMutableRawBufferPointer(start: capture, count: captureBytes)
+    guard
+        var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
+            activeStorage: UnsafeMutableRawBufferPointer(start: active, count: factBytes),
+            sealedStorage: UnsafeMutableRawBufferPointer(start: sealed, count: factBytes)
+        ),
+        let snapshot = StaticSignalAnalyzerNRFCaptureSnapshotView(
+            storage: captureStorage, revision: 0, count: 0,
+            duration: .zero, retainedLowerBound: .zero, baselineLevels: .allLow
+        ), let diagnostic = SignalAnalyzerDiagnostic(exactUTF8: [0x45, 0x52, 0x52])
+    else {
+        Issue.record("Batch setup failed")
+        return
+    }
+    let began = admission.beginProducer(.bootstrap)
+    #expect(began)
+    let admittedSnapshot = admission.admitSnapshot(snapshot)
+    let admittedState = admission.admitAcquisitionState(.running)
+    #expect(admittedSnapshot == .accepted(sequence: 1))
+    #expect(admittedState == .accepted(sequence: 2))
+    admission.endProducer()
+    let admittedFailure = admission.admitOperationalFailure(
+        conditionRawValue: 5, originRawValue: 9,
+        affectedScopeRawValue: 4, containmentRawValue: 1,
+        diagnostic: diagnostic
+    )
+    #expect(admittedFailure == .accepted(sequence: 3))
+    var model = StaticSignalAnalyzerNRFModelLocation()
+    let generation = model.activate()
+    #expect(generation == 0)
+    let applied = model.applyAdmittedBatch(
+        from: &admission, captureStorage: captureStorage
+    )
+    #expect(applied == .applied(factCount: 3))
+    #expect(model.acquisitionState == .failed(diagnostic))
+    #expect(!model.isMutating)
+    #expect(admission.sealedCompactCount == 0)
+    #expect(admission.sealedSnapshotCount == 0)
+    #expect(admission.sealedOperationalFailureCount == 0)
+    let empty = model.applyAdmittedBatch(
+        from: &admission, captureStorage: captureStorage
+    )
+    #expect(empty == .applied(factCount: 0))
+}
