@@ -11,6 +11,15 @@ static uint64_t current_time;
 static unsigned service_count;
 static unsigned wait_count;
 static char fail_at;
+static int context_token = 7;
+static unsigned context_visits;
+
+static void check_context(void *context)
+{
+    assert(context == &context_token);
+    assert(*(int *)context == 7);
+    ++context_visits;
+}
 
 static void record(char event)
 {
@@ -25,12 +34,24 @@ static int outcome(char event)
     return fail_at == event ? -EIO : 0;
 }
 
-static int validate(void) { return outcome('V'); }
+static int validate(void *context)
+{
+    check_context(context);
+    return outcome('V');
+}
 static int touch_initialize(void) { return outcome('T'); }
 static int display_initialize(void) { return outcome('D'); }
-static int activate(void) { return outcome('A'); }
+static int activate(void *context)
+{
+    check_context(context);
+    return outcome('A');
+}
 static int touch_poll(void) { return outcome('P'); }
-static int teardown(void) { return outcome('a'); }
+static int teardown(void *context)
+{
+    check_context(context);
+    return outcome('a');
+}
 static int display_shutdown(void) { return outcome('d'); }
 static int touch_shutdown(void) { return outcome('t'); }
 
@@ -54,8 +75,9 @@ static void wait_microseconds(uint32_t duration)
 
 static int service_watchdog(void) { return outcome('W'); }
 
-static int service(uint64_t now, uint64_t *deadline, int *stop)
+static int service(void *context, uint64_t now, uint64_t *deadline, int *stop)
 {
+    check_context(context);
     record('S');
     assert(now == current_time);
     ++service_count;
@@ -85,6 +107,7 @@ static const struct giftui_static_host_lifecycle_hal hal = {
 };
 
 static const struct giftui_static_host_application application = {
+    .context = &context_token,
     .validate = validate,
     .activate = activate,
     .service = service,
@@ -99,16 +122,21 @@ static void reset(char failure)
     service_count = 0U;
     wait_count = 0U;
     fail_at = failure;
+    context_visits = 0U;
 }
 
 int main(void)
 {
     assert(giftui_static_host_run(0, &application) == -EINVAL);
     assert(giftui_static_host_run(&hal, 0) == -EINVAL);
+    struct giftui_static_host_application missing_context = application;
+    missing_context.context = 0;
+    assert(giftui_static_host_run(&hal, &missing_context) == -EINVAL);
 
     reset('V');
     assert(giftui_static_host_run(&hal, &application) == -EIO);
     assert(strcmp(events, "V") == 0);
+    assert(context_visits == 1U);
 
     reset('D');
     assert(giftui_static_host_run(&hal, &application) == -EIO);
@@ -143,6 +171,7 @@ int main(void)
     reset(0);
     assert(giftui_static_host_run(&hal, &application) == 0);
     assert(service_count == 2U && wait_count == 3U);
+    assert(context_visits == 5U);
     assert(current_time == 2600U);
     assert(strcmp(events + event_count - 3U, "adt") == 0);
 

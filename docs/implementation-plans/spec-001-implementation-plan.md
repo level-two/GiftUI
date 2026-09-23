@@ -912,7 +912,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       touch in reverse order. Its C99 fixture proves partial initialization,
       activation failure, service failure, deadline failure, success, and
       cleanup precedence. Firmware `main` does not call this entry until the
-      production Swift callbacks are linked.
+      production Swift callbacks are linked. The application callback table
+      now carries one non-null opaque context through validation, activation,
+      every service, and teardown, allowing the future scoped Swift owner to
+      be borrowed without a global owner pointer; the C99 fixture proves the
+      same context at each callback.
       Static host-loop composition, calibrated polling-loop activation,
       connected stack measurement, and flashing remain open. A
       target-local,

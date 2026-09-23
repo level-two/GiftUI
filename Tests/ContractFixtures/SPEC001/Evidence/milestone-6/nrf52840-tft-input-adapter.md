@@ -1029,3 +1029,10 @@ yet called by firmware `main`; the production Swift application callback set
 and physical calibration remain open. The checked hardware-free image retains
 the lifecycle symbol and passes the ABI, zero-heap, required-symbol, RAM, and
 flash gates at 184,128 RAM bytes and 35,100 flash bytes. No board was flashed.
+The application callback table now carries one required opaque owner context
+through validation, activation, service, and teardown. The hardware-free
+fixture rejects a missing context and checks that every callback receives the
+same address, removing the need for a global Swift owner pointer at the
+future firmware join.
+The checked image remains within the ABI, zero-heap, symbol, RAM, and flash
+gates at 184,128 RAM bytes and 35,132 flash bytes.

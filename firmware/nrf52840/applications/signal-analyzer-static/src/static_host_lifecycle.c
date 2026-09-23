@@ -10,6 +10,7 @@ int giftui_static_host_run(
     const struct giftui_static_host_application *application)
 {
     if (hal == NULL || application == NULL ||
+        application->context == NULL ||
         hal->touch_initialize == NULL || hal->display_initialize == NULL ||
         hal->touch_poll == NULL || hal->display_shutdown == NULL ||
         hal->touch_shutdown == NULL ||
@@ -20,7 +21,7 @@ int giftui_static_host_run(
         return -EINVAL;
     }
 
-    int result = application->validate();
+    int result = application->validate(application->context);
     if (result != 0) {
         return result;
     }
@@ -39,7 +40,7 @@ int giftui_static_host_run(
     }
     display_initialized = 1;
     application_entered = 1;
-    result = application->activate();
+    result = application->activate(application->context);
     if (result != 0) {
         goto cleanup;
     }
@@ -56,7 +57,8 @@ int giftui_static_host_run(
         }
         uint64_t deadline = 0U;
         int stop = 0;
-        result = application->service(now, &deadline, &stop);
+        result = application->service(
+            application->context, now, &deadline, &stop);
         if (result != 0 || stop != 0) {
             break;
         }
@@ -72,7 +74,8 @@ int giftui_static_host_run(
 
 cleanup:
     if (application_entered) {
-        const int teardown_result = application->teardown();
+        const int teardown_result =
+            application->teardown(application->context);
         if (result == 0) {
             result = teardown_result;
         }

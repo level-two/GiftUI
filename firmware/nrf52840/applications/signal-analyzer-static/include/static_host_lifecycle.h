@@ -3,6 +3,7 @@
 
 #include "static_host_scheduler.h"
 
+#include <stddef.h>
 #include <stdint.h>
 
 struct giftui_static_host_lifecycle_hal {
@@ -15,13 +16,15 @@ struct giftui_static_host_lifecycle_hal {
 };
 
 struct giftui_static_host_application {
+    /* Borrowed only for the synchronous run; never retained by the C loop. */
+    void *context;
     /* Validation is side-effect-free and precedes device construction. */
-    int (*validate)(void);
-    int (*activate)(void);
+    int (*validate)(void *context);
+    int (*activate)(void *context);
     /* A completed service supplies the next absolute deadline or stops. */
-    int (*service)(uint64_t now_microseconds,
+    int (*service)(void *context, uint64_t now_microseconds,
                    uint64_t *next_deadline_microseconds, int *stop);
-    int (*teardown)(void);
+    int (*teardown)(void *context);
 };
 
 /* Owns activation, paced service, and reverse-order teardown. */
