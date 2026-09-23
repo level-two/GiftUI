@@ -875,4 +875,6 @@ actions, and a later accepted offer commits all six records. The application
 owner now installs the physical input revision in the same offer-resolution
 call only after interaction commit. The eight-case host fixture verifies that
 input remains ineligible after refusal and becomes eligible after acceptance.
+An accepted result presented before candidate construction is discarded by
+the Static owner; the fixture verifies it leaves input ineligible.
 The connected owner must still use this at the physical offer boundary.

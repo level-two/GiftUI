@@ -1178,7 +1178,9 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       the refused candidate never reaches committed interaction state. Offer
       resolution now installs the physical input revision in that same owner
       call only after acceptance; the fixture checks refusal leaves input
-      ineligible and acceptance admits input. The
+      ineligible and acceptance admits input. The owner also rejects an
+      accepted offer without a ready interaction candidate, preserving input
+      ineligibility. The
       physical offer and firmware loop remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence

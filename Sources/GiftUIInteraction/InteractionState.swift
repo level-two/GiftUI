@@ -279,6 +279,10 @@ where
         committedPresentationRevision
     }
 
+    package var candidateIsReadyForOffer: Bool {
+        phase == .readyForOffer
+    }
+
     package var committedRecordCount: UInt16 {
         committedRecords.count
     }

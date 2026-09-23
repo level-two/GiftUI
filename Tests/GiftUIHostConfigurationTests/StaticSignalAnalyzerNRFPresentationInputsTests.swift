@@ -742,6 +742,27 @@ import Testing
                                     repository: StaticNRFPresentationInputRepository()
                                 ) == .bound(ObservableTargetGeneration(rawValue: 0))
                             )
+                            let prematureOffer = FrameOfferResult(
+                                disposition: .accepted, failure: nil
+                            )!
+                            #expect(
+                                owner.resolveInteractionCandidate(
+                                    offer: prematureOffer,
+                                    presentationRevision: PresentationRevision(rawValue: cycle)
+                                ) == .discarded
+                            )
+                            #expect(owner.pendingInputCount == 0)
+                            #expect(
+                                owner.admit(
+                                    phaseRawValue: PointerPhase.down.rawValue,
+                                    x: 4,
+                                    y: 4,
+                                    observedPresentationRevisionRawValue: cycle,
+                                    priorPhysicalSequenceIsCompleteRawValue: 0
+                                )?.rejection
+                                    == HostNormalizedInputRejection.presentationNotEstablished
+                                    .rawValue
+                            )
                             #expect(
                                 owner.buildInteractionCandidate(
                                     occurrences: occurrences,

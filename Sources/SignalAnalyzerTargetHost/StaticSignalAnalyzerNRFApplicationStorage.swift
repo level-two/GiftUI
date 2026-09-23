@@ -282,6 +282,9 @@ package struct StaticSignalAnalyzerNRFApplicationOwner: ~Copyable {
         offer: FrameOfferResult,
         presentationRevision: PresentationRevision
     ) -> RuntimeInteractionCandidateResolution {
+        guard interaction.pointee.candidateIsReadyForOffer else {
+            return .discarded
+        }
         let resolution = RuntimeInteractionCandidateTransaction.resolve(
             offer: offer,
             presentationRevision: presentationRevision,
