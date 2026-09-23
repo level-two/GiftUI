@@ -58,3 +58,23 @@ public func giftUISignalAnalyzerCaptureRegionValid(
     _ = consume capture
     return 1
 }
+
+@_cdecl("giftui_signal_analyzer_region_map_valid")
+public func giftUISignalAnalyzerRegionMapValid(
+    _ profile: UnsafeMutableRawPointer?, _ profileBytes: UInt32,
+    _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32,
+    _ raster: UnsafeMutableRawPointer?, _ rasterBytes: UInt32,
+    _ coverage: UnsafeMutableRawPointer?, _ coverageBytes: UInt32
+) -> UInt32 {
+    guard profile != nil, capture != nil, raster != nil, coverage != nil,
+        profileBytes == 36_368, captureBytes == 115_392,
+        rasterBytes == 3_840, coverageBytes == 240
+    else { return 0 }
+    let valid = StaticSignalAnalyzerNRFRegionMap.validate(
+        profile: UnsafeMutableRawBufferPointer(start: profile, count: Int(profileBytes)),
+        capture: UnsafeMutableRawBufferPointer(start: capture, count: Int(captureBytes)),
+        raster: UnsafeMutableRawBufferPointer(start: raster, count: Int(rasterBytes)),
+        coverage: UnsafeMutableRawBufferPointer(start: coverage, count: Int(coverageBytes))
+    )
+    return valid ? 1 : 0
+}

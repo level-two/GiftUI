@@ -155,3 +155,35 @@ private struct StaticNRFCompositionRecordingTransport:
     #expect(joined == nil)
     #expect(bodyCalls == 0)
 }
+
+@Test func staticNRFRegionMapRequiresExactExtentAndDisjointness() {
+    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 155_848, alignment: 8)
+    defer { pointer.deallocate() }
+    let profile = UnsafeMutableRawBufferPointer(start: pointer, count: 36_368)
+    let capture = UnsafeMutableRawBufferPointer(
+        start: pointer.advanced(by: 36_368), count: 115_392
+    )
+    let raster = UnsafeMutableRawBufferPointer(
+        start: pointer.advanced(by: 151_760), count: 3_840
+    )
+    let coverage = UnsafeMutableRawBufferPointer(
+        start: pointer.advanced(by: 155_600), count: 240
+    )
+    #expect(
+        StaticSignalAnalyzerNRFRegionMap.validate(
+            profile: profile, capture: capture, raster: raster, coverage: coverage
+        ))
+    #expect(
+        !StaticSignalAnalyzerNRFRegionMap.validate(
+            profile: UnsafeMutableRawBufferPointer(start: pointer, count: 36_367),
+            capture: capture, raster: raster, coverage: coverage
+        ))
+    #expect(
+        !StaticSignalAnalyzerNRFRegionMap.validate(
+            profile: profile,
+            capture: UnsafeMutableRawBufferPointer(
+                start: pointer.advanced(by: 36_360), count: 115_392
+            ),
+            raster: raster, coverage: coverage
+        ))
+}

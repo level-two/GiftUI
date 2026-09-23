@@ -1010,6 +1010,14 @@ the regions through the complete Static host.
 The checked hardware-free build passes ARMv7E-M hard-float, zero-heap,
 required-symbol, RAM, and flash gates at 184,128 RAM bytes and 34,576 flash
 bytes. No board was flashed.
+The target now compiles the same four-region validator used by scoped host
+composition. Startup rejects any wrong 36,368/115,392/3,840/240-byte extent,
+misaligned region, overlap, or address overflow before device initialization.
+The host fixture checks a valid map, a short profile region, and capture
+overlap. The checked image retains the Swift map entry and passes ABI,
+zero-heap, symbol, RAM, and flash gates at 184,128 RAM and 35,660 flash bytes.
+This does not establish the generated zero-heap ViewModel location or a
+production firmware host loop; those remain open.
 
 The finite validation loop now uses an absolute monotonic deadline waiter in
 at most 1 ms slices instead of one 10 ms busy wait. Its optional watchdog

@@ -457,6 +457,16 @@ the current firmware still does not run the capture policy or portable model.
 The firmware entry now also obtains the actual C storage handoff and lends its
 capture pointer and byte count to the shared Swift borrower before device
 construction. A refused address, extent, or alignment stops startup.
+The exact four-region validator is shared source between the host composition
+and Embedded Swift startup. It checks lengths, 8-byte alignment, pairwise
+disjointness, and address-addition overflow before owner construction.
+
+The current host-only `StaticObservableModelStorage` keeps `Model?` fields and
+the bound `SignalAnalyzerViewModel` is a class. That join has semantic host
+fixtures, but it is not the generated, zero-heap typed model location required
+by accepted ADR-026 and SPEC-001. The firmware cannot call the full host loop
+until this static model realization and its direct observation/use-case route
+compile and link with the zero-heap gate. The accepted contract remains intact.
 
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact

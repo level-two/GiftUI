@@ -942,7 +942,16 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       35,164 flash bytes. A second retained Swift entry now borrows the actual
       C handoff capture region at startup and rejects a wrong address, byte
       count, or alignment. Its checked build uses 184,128 RAM and 35,228 flash
-      bytes. The production model/repository join remains open.
+      bytes. The exact four-region validation is now one shared Swift source
+      used by both the scoped host composition and Embedded Swift startup;
+      the target checks all sizes, alignment, and pairwise disjointness before
+      device initialization. The checked image uses 184,128 RAM and 35,660
+      flash bytes. The production model/repository join remains open: current
+      host-only `StaticObservableModelStorage` retains `Model?` and binds a
+      class ViewModel, while accepted ADR-026 and SPEC-001 require an
+      address-stable typed model location with zero heap use on nRF. A generated
+      static model handle/storage realization is required before `main` can
+      enter the complete Static host lifecycle without violating that contract.
       A
       target-local,
       allocation-free
