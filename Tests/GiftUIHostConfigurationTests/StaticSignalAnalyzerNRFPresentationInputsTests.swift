@@ -876,16 +876,11 @@ import Testing
                             "generated Canvas source or Static drawing workspace is invalid")
                         return false
                     }
-                    let drawingResult = CanvasPlanProducer.derive(
+                    let drawingResult = StaticSignalAnalyzerNRFCanvasPass.derive(
                         source: &source,
                         layout: sink.renderView,
-                        executionContext: ExecutionContext(
-                            cycle: RunCycleID(rawValue: cycle),
-                            semanticRevision: SemanticRevision(rawValue: cycle),
-                            candidateFrame: nil,
-                            phase: .deriving
-                        ),
-                        limits: drawingWorkspace.limits,
+                        cycle: RunCycleID(rawValue: cycle),
+                        semanticRevision: SemanticRevision(rawValue: cycle),
                         workspace: &drawingWorkspace
                     )
                     guard case .success(let drawingSummary) = drawingResult else {

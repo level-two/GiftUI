@@ -913,3 +913,7 @@ nRF layout pass with the exact proposal, reference metrics, and generated
 limits. It still verifies the published fixed-region layout records before
 Canvas derivation. This is host-only layout integration until the full owner
 and firmware are linked.
+The same fixture now invokes a production Static Canvas pass that binds the
+generated Drawing limits and deriving context to the five fixed-region
+invocations, with a success check for complete callable release. All eight
+hierarchies still derive five strokes before render preflight.

@@ -1153,7 +1153,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       Canvas source maps five occurrence identities from the packed semantic
       table to the callable manifest; the common `CanvasPlanProducer` derives
       all five against resolved layout for the normal and seven diagnostic
-      hierarchies in host tests. Normalized operation comparison and firmware
+      hierarchies in host tests. The production Static Canvas pass now supplies
+      the deriving context and generated Drawing limits, rejects a workspace
+      with other limits, and checks complete callable release on success. The
+      eight-case fixture invokes it before render preflight. Normalized
+      operation comparison and firmware
       linkage remain open. The first common render preflight exposed an
       application-capacity mismatch: at 480×320, valid 96-byte `A`, `W`,
       and mixed `W`/LF diagnostics require 37, 38, and 39 combined operations.
