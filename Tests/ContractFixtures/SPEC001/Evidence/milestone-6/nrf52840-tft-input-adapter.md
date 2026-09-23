@@ -1036,3 +1036,16 @@ same address, removing the need for a global Swift owner pointer at the
 future firmware join.
 The checked image remains within the ABI, zero-heap, symbol, RAM, and flash
 gates at 184,128 RAM bytes and 35,132 flash bytes.
+
+A target-owned Swift capture record now has a measured 24-byte host stride and
+round-trips the portable channel, level, and `Duration` values. A noncopyable
+borrower splits the existing 115,392-byte region into live and snapshot slots
+of 2,404 records each, with checked boundaries and alignment. The portable
+`SignalTransition` has a measured 32-byte stride on macOS; the compact record
+is therefore necessary to use the reserved firmware bytes without two Swift
+arrays. These are host tests of a target representation, not evidence that the
+full acquisition repository is linked into the firmware.
+The scoped Static presentation composition now borrows that capture region
+with the profile, raster, and coverage regions. Its host fixture writes and
+reads a compact live transition through the joined owner and rejects overlap
+between capture and profile before entering the application body.

@@ -2,19 +2,21 @@ import GiftUIHostConfiguration
 
 /// Joins the generated application/profile owners to one borrowed raster
 /// endpoint for a complete synchronous presentation lifetime. The caller
-/// retains all three disjoint regions until this scope returns.
+/// retains all four disjoint regions until this scope returns.
 package enum StaticSignalAnalyzerNRFPresentationComposition {
     package static func withOwners<Transport, Result>(
         assemblyReport: HostAssemblyReport,
         inputSourceRawValue: UInt16,
         initialFrameOriginMicroseconds: UInt64,
         profileStorage: UnsafeMutableRawBufferPointer,
+        captureRegion: UnsafeMutableRawBufferPointer,
         rasterRegion: UnsafeMutableRawBufferPointer,
         coverageRegion: UnsafeMutableRawBufferPointer,
         transport: consuming Transport,
         _ body: (
             inout StaticSignalAnalyzerNRFApplicationOwner,
             inout StaticSignalAnalyzerNRFProductionProfileBinding,
+            inout StaticSignalAnalyzerNRFCaptureRegions,
             inout HostWakePacingController,
             inout StaticSignalAnalyzerNRFPresentationIdentityOwner,
             StaticSignalAnalyzerNRFPresentationIdentity,
@@ -24,7 +26,13 @@ package enum StaticSignalAnalyzerNRFPresentationComposition {
             inout HostEndpointHealthController
         ) -> Result
     ) -> Result? where Transport: StaticSignalAnalyzerNRFDisplayTransport {
-        guard regionsAreDisjoint(profileStorage, rasterRegion, coverageRegion),
+        guard
+            regionsAreDisjoint(
+                profileStorage, captureRegion, rasterRegion, coverageRegion
+            ),
+            var capture = StaticSignalAnalyzerNRFCaptureRegions(
+                storage: captureRegion
+            ),
             let metadata = StaticSignalAnalyzerNRFGeneratedMetadataFactory.make(
                 assemblyReport: assemblyReport,
                 canvasTable: StaticSignalAnalyzerNRFCanvasCallableTable()
@@ -55,6 +63,7 @@ package enum StaticSignalAnalyzerNRFPresentationComposition {
             body(
                 &application,
                 &profile,
+                &capture,
                 &pacing,
                 &identities,
                 initialIdentity,
@@ -66,12 +75,15 @@ package enum StaticSignalAnalyzerNRFPresentationComposition {
 
     private static func regionsAreDisjoint(
         _ profile: UnsafeMutableRawBufferPointer,
+        _ capture: UnsafeMutableRawBufferPointer,
         _ raster: UnsafeMutableRawBufferPointer,
         _ coverage: UnsafeMutableRawBufferPointer
     ) -> Bool {
-        aligned(profile) && aligned(raster) && aligned(coverage)
-            && disjoint(profile, raster) && disjoint(profile, coverage)
-            && disjoint(raster, coverage)
+        aligned(profile) && aligned(capture) && aligned(raster)
+            && aligned(coverage)
+            && disjoint(profile, capture) && disjoint(profile, raster)
+            && disjoint(profile, coverage) && disjoint(capture, raster)
+            && disjoint(capture, coverage) && disjoint(raster, coverage)
     }
 
     private static func aligned(_ region: UnsafeMutableRawBufferPointer) -> Bool {

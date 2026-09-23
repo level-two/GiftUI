@@ -919,6 +919,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       same context at each callback.
       Static host-loop composition, calibrated polling-loop activation,
       connected stack measurement, and flashing remain open. A
+      target-owned 24-byte capture record now encodes the portable transition
+      value's timestamp components, channel, and level. One checked borrower
+      splits the existing 115,392-byte firmware region into two disjoint
+      2,404-entry slots without Swift arrays; host tests verify stride,
+      boundary access, round-trip values, and malformed regions. The capture
+      store and firmware linkage still need to consume these records.
+      A
       target-local,
       allocation-free
       touch normalizer
@@ -1224,9 +1231,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       aggregate's quiescing owner scope. A scoped presentation composition
       now constructs the generated runtime, initial identity, one-slot
       endpoint, and health controller only after checking that the profile,
-      raster, and coverage regions are aligned and disjoint. Its fixture
-      covers complete construction and rejection before invoking the owner
-      body.
+      capture, raster, and coverage regions are aligned and disjoint. The
+      scoped body now borrows the compact capture slots alongside the other
+      owners; its fixture covers complete construction and rejection before
+      invoking the owner body.
       A failed synchronous ILI9486 submission is now treated as a possible
       partial transfer even on the first payload: the display target records
       one unavailable-health failure, drains the accepted frame, and refuses

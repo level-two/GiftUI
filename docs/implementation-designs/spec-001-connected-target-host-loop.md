@@ -419,6 +419,16 @@ together, then quiesces both before either caller-owned field location or the
 profile buffer can expire. The aggregate remains generic over the concrete
 generated Canvas metadata, so it does not collapse the generation boundary.
 
+The nRF capture region is now split into two 2,404-entry slots of compact
+24-byte records, totaling exactly 115,392 bytes. Each record preserves the
+portable transition's channel, level, and normalized `Duration` components;
+the portable value remains unchanged. The scoped presentation composition
+checks alignment and pairwise disjointness of capture, profile, raster, and
+coverage regions before lending the capture borrower with its other owners.
+This representation is an implementation prerequisite for the Static
+repository and snapshot path; the current firmware still links only the
+diagnostic input slice.
+
 The target metadata factory now fills every generated component that does not
 depend on Canvas capture lowering: one observable slot at the preset's exact
 root identity, the six-case `SignalAnalyzerAction` specialization, and dense
