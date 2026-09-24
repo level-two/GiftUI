@@ -1588,3 +1588,14 @@ The registered nRF gate passed at
 `.build/contract-reports/spec-001/20260924T005343Z-87069/nrf52840-embedded/`.
 The checked image remains at 193,344 RAM and 240,916 flash bytes. Firmware
 opportunity dispatch and recurring presentation still need to use this path.
+
+The exact firmware source now compiles a typed action dispatcher. For an
+admitted action code it checks the active model generation, enters and exits
+the model mutation phase, invokes the matching repository Start, Stop, or
+Clear policy, and applies sealed facts before returning. The existing
+repository validation path now exercises those three actions through this
+dispatcher, and the exact-source native probe calls that path. The registered
+nRF gate passed at
+`.build/contract-reports/spec-001/20260924T010011Z-90095/nrf52840-embedded/`.
+The checked image uses 193,344 RAM and 241,012 flash bytes. Production input
+draining and recurring offers remain open.

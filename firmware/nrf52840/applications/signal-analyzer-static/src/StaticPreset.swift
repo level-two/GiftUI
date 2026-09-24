@@ -1839,19 +1839,18 @@ public func giftUISignalAnalyzerRepositoryProducerValid(
     ) else { return 0 }
     var repository = StaticSignalAnalyzerNRFRepositoryProducer()
     return withUnsafeMutablePointer(to: &giftUIStaticModelLocation) { location in
-        guard location.pointee.activate() != nil,
-            repository.startObservation(
+        guard let generation = location.pointee.activate() else { return 0 }
+        guard repository.startObservation(
                 admission: &admission, captureStorage: captureStorage
             ) == .accepted,
             location.pointee.applyAdmittedBatch(
                 from: &admission, captureStorage: captureStorage
             ) == .applied(factCount: 2),
-            repository.start(
+            StaticSignalAnalyzerNRFEmbeddedActionDispatcher.dispatch(
+                actionCode: 0, modelGeneration: generation,
+                model: &location.pointee, repository: &repository,
                 admission: &admission, captureStorage: captureStorage
-            ) == .accepted,
-            location.pointee.applyAdmittedBatch(
-                from: &admission, captureStorage: captureStorage
-            ) == .applied(factCount: 5),
+            ),
             repository.nextScheduledDelay == .milliseconds(80),
             repository.pollScheduled(
                 admission: &admission, captureStorage: captureStorage
@@ -1862,16 +1861,16 @@ public func giftUISignalAnalyzerRepositoryProducerValid(
             location.pointee.capture.revision == 5,
             location.pointee.capture.count == 5,
             location.pointee.acquisitionState == .running,
-            repository.stop(admission: &admission) == .accepted,
-            location.pointee.applyAdmittedBatch(
-                from: &admission, captureStorage: captureStorage
-            ) == .applied(factCount: 1),
-            repository.clear(
+            StaticSignalAnalyzerNRFEmbeddedActionDispatcher.dispatch(
+                actionCode: 1, modelGeneration: generation,
+                model: &location.pointee, repository: &repository,
                 admission: &admission, captureStorage: captureStorage
-            ) == .accepted,
-            location.pointee.applyAdmittedBatch(
-                from: &admission, captureStorage: captureStorage
-            ) == .applied(factCount: 1),
+            ),
+            StaticSignalAnalyzerNRFEmbeddedActionDispatcher.dispatch(
+                actionCode: 2, modelGeneration: generation,
+                model: &location.pointee, repository: &repository,
+                admission: &admission, captureStorage: captureStorage
+            ),
             repository.start(
                 admission: &admission, captureStorage: captureStorage
             ) == .accepted,

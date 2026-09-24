@@ -1714,6 +1714,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       sequence allocation. A focused test proves two admissions across the
       boundary seal in order; the registered gate remains at 193,344 RAM and
       240,916 flash bytes. The production opportunity loop remains open.
+      A target-only typed dispatcher now applies admitted Start, Stop, and
+      Clear through the model mutation phase and repository, then applies
+      sealed facts. The exact-source native probe and registered gate pass at
+      193,344 RAM and 241,012 flash bytes. Real input draining and repeated
+      display offers remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

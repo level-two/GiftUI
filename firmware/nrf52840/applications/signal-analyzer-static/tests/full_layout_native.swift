@@ -53,6 +53,12 @@ struct FullLayoutNativeCheck {
             "five Canvas derivation failed"
         )
         precondition(
+            giftUISignalAnalyzerRepositoryProducerValid(
+                profile, 39_696, capture, 115_392
+            ) == 1,
+            "embedded action dispatch did not apply repository facts"
+        )
+        precondition(
             giftUISignalAnalyzerPresentInitial(
                 profile, 39_696, nil, 115_392, raster, 3_840,
                 coverage, 240, accept
