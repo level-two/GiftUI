@@ -879,7 +879,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       evidence reconciliation and the connected application scenario remain
       open; see the
       [lifecycle-owner evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-pi-lifecycle-owner.md).
-- [ ] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
+- [x] `T6.8` — After the concrete nRF52840 TFT/input assembly is explicitly
       selected, replace the preset-only firmware entry with the production
       Static target-host composition. Keep the portable Presentation
       unchanged; compose the generated Static root, exact 480 x 4 RGB565
@@ -891,7 +891,7 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       storage/resource accounting. The checked build must preserve the VFP
       ABI, zero-heap, no-full-framebuffer, RAM/flash, and forbidden-symbol
       gates and must not flash a board.
-      **In progress:** the concrete assembly is now the
+      **Complete (hardware-free):** the concrete assembly is now the
       `nrf52840dk/nrf52840` plus 480 x 320 ILI9486/ADS7846 PiScreen. The first
       hardware-free slice installs application-local Devicetree bindings and
       pin/frequency selection, safe-state display and touch drivers, bounded
@@ -1747,13 +1747,16 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       replacements, advances physical input revisions, and tears down in
       reverse order. A C99 callback fixture and the registered nRF gate pass
       at 193,408 RAM and 244,164 flash bytes. The full-ADC touch mapping is a
-      nominal hardware-free default; connected calibration, physical display
-      and input evidence, and final T6.8 disposition remain open.
+      nominal hardware-free default; connected calibration and physical
+      display/input evidence remain assigned to `T8.2`.
       The exact-source native probe now routes Start, Stop, Clear, and all
       three window actions through their committed hit regions over advancing
       physical revisions. The C99 production host fixture adds display and
       touch failure cleanup checks. The registered gate remains at 193,408
       RAM and 244,164 flash bytes; connected calibration is still deferred.
+      Final exact-source native assertions confirm the scheduler sees an idle
+      sentinel before Start, an 80 ms source delay and dirty model after
+      Start, and a clean model at physical revision 2 after replacement.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

@@ -1674,3 +1674,11 @@ also checks initial and replacement display refusals, touch transport
 failure, and cleanup. The registered nRF gate passed at
 `.build/contract-reports/spec-001/20260924T015109Z-8935/nrf52840-embedded/`.
 The linked image remains at 193,408 RAM and 244,164 flash bytes.
+
+T6.8's hardware-free implementation is complete. The exact-source native
+probe also confirms the idle scheduler sentinel, 80 ms post-Start delay,
+dirty-state handoff, and clean revision 2 after replacement. Connected TFT
+output, measured touch calibration, and physical input behavior remain
+separate T8.2 evidence; no board was flashed.
+The final completed-task nRF profile gate passed at
+`.build/contract-reports/spec-001/20260924T015745Z-11176/nrf52840-embedded/`.

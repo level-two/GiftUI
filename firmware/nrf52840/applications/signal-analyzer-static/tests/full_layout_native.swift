@@ -98,6 +98,9 @@ struct FullLayoutNativeCheck {
         precondition(giftUISignalAnalyzerInitialModelActive() == 1)
         precondition(giftUISignalAnalyzerInitialCommittedActions() == 6)
         precondition(giftUISignalAnalyzerInitialGestureReady() == 1)
+        precondition(giftUISignalAnalyzerNeedsPresentation() == 0)
+        precondition(giftUISignalAnalyzerCurrentRevision() == 1)
+        precondition(giftUISignalAnalyzerNextDelayMicroseconds() == UInt64.max)
         let published = UnsafeMutableRawBufferPointer(
             start: profile.advanced(by: 3_024), count: 3_024
         )
@@ -136,6 +139,8 @@ struct FullLayoutNativeCheck {
             "queued Start action did not dispatch through repository"
         )
         precondition(giftUISignalAnalyzerInputPendingCount() == 0)
+        precondition(giftUISignalAnalyzerNeedsPresentation() == 1)
+        precondition(giftUISignalAnalyzerNextDelayMicroseconds() == 80_000)
         let scheduledResult = giftUISignalAnalyzerPollScheduledDue(
             profile, 39_696, capture, 115_392
         )
@@ -143,6 +148,7 @@ struct FullLayoutNativeCheck {
             scheduledResult == 1,
             "scheduled repository fact was not applied"
         )
+        precondition(giftUISignalAnalyzerNeedsPresentation() == 1)
         let nextOffer = giftUISignalAnalyzerPresentNext(
             profile, 39_696, capture, 115_392, raster, 3_840,
             coverage, 240, accept
@@ -151,6 +157,8 @@ struct FullLayoutNativeCheck {
             nextOffer == 1,
             "second physical Canvas offer failed"
         )
+        precondition(giftUISignalAnalyzerNeedsPresentation() == 0)
+        precondition(giftUISignalAnalyzerCurrentRevision() == 2)
         precondition(
             StaticSignalAnalyzerNRFEmbeddedSemanticView(published: published)?
                 .revision == 4,
