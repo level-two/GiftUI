@@ -1741,6 +1741,14 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       cancels a held contact, and waits for release before forwarding a new
       down. The C99 fixture and registered gate pass at 193,344 RAM and
       243,840 flash bytes. Production lifecycle wiring remains open.
+      Firmware main now invokes the production lifecycle runner. A fixed C
+      composition activates the devices and initial frame, polls touch at
+      bounded 10 ms intervals, drains actions, applies due facts, offers dirty
+      replacements, advances physical input revisions, and tears down in
+      reverse order. A C99 callback fixture and the registered nRF gate pass
+      at 193,408 RAM and 244,164 flash bytes. The full-ADC touch mapping is a
+      nominal hardware-free default; connected calibration, physical display
+      and input evidence, and final T6.8 disposition remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

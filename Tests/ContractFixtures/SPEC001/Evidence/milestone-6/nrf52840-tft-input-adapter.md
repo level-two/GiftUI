@@ -1648,3 +1648,19 @@ replacement; the registered nRF gate passed at
 `.build/contract-reports/spec-001/20260924T013346Z-3475/nrf52840-embedded/`.
 The linked image uses 193,344 RAM and 243,840 flash bytes. The production
 lifecycle still must call this handoff after each accepted replacement.
+
+Firmware `main` now enters the retained production lifecycle runner after
+startup contract validation. The application callback set validates fixed
+regions, activates real ADS7846/ILI9486 devices, presents the initial frame,
+installs normalized input revision 1, drains queued actions, applies due
+source facts, offers dirty replacement frames, advances touch revisions, and
+quiesces owners before reverse-order device shutdown. The scheduler uses
+absolute deadlines with a 10 ms input poll ceiling and the repository's
+checked next delay. A new C99 production-host fixture covers activation,
+input-driven replacement, a due fact, second replacement, and teardown;
+the exact-source native probe and registered nRF gate passed at
+`.build/contract-reports/spec-001/20260924T014355Z-6544/nrf52840-embedded/`.
+The linked image uses 193,408 RAM and 244,164 flash bytes. This remains a
+hardware-free cross-build. The 0–4095 full-ADC touch mapping is a nominal
+default; connected board calibration and display/input observation have not
+been measured, and no board was flashed.

@@ -69,6 +69,7 @@ target_sources(app PRIVATE
     src/fault.c
     src/ili9486.c
     src/main.c
+    src/production_host.c
     src/static_input_bridge.c
     src/static_host_clock.c
     src/static_host_lifecycle.c

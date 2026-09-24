@@ -2,6 +2,7 @@
 
 #include "device_validation.h"
 #include "ili9486.h"
+#include "production_host.h"
 #include "static_host_storage.h"
 
 extern uint32_t giftui_signal_analyzer_static_preset(void);
@@ -126,5 +127,5 @@ int main(void)
         ili9486_spi_segment_bytes() != 3840u) {
         return 1;
     }
-    return giftui_device_validation_run();
+    return giftui_production_host_run();
 }

@@ -606,6 +606,35 @@ public func giftUISignalAnalyzerInitialGestureReady() -> UInt32 {
     giftUIStaticGestureSession.hasPresentation ? 1 : 0
 }
 
+@_cdecl("giftui_signal_analyzer_needs_presentation")
+public func giftUISignalAnalyzerNeedsPresentation() -> UInt32 {
+    giftUIStaticModelLocation.activeGeneration != nil
+        && giftUIStaticModelLocation.isDirty ? 1 : 0
+}
+
+@_cdecl("giftui_signal_analyzer_current_revision")
+public func giftUISignalAnalyzerCurrentRevision() -> UInt32 {
+    giftUIStaticInteractionOwner.committedRevision?.rawValue ?? 0
+}
+
+@_cdecl("giftui_signal_analyzer_next_delay_microseconds")
+public func giftUISignalAnalyzerNextDelayMicroseconds() -> UInt64 {
+    guard let delay = giftUIStaticRepository.nextScheduledDelay,
+        delay > .zero
+    else { return UInt64.max }
+    let components = delay.components
+    guard components.seconds >= 0,
+        components.attoseconds >= 0
+    else { return UInt64.max }
+    let seconds = UInt64(components.seconds)
+    guard seconds <= UInt64.max / 1_000_000 else { return UInt64.max }
+    let whole = seconds * 1_000_000
+    let fraction = UInt64(components.attoseconds) / 1_000_000_000_000
+    guard whole <= UInt64.max - fraction else { return UInt64.max }
+    let micros = whole + fraction
+    return micros > 0 ? micros : UInt64.max
+}
+
 @_cdecl("giftui_signal_analyzer_initial_start_point")
 public func giftUISignalAnalyzerInitialStartPoint() -> UInt32 {
     guard let start = giftUIStaticInteractionOwner.committedRecord(at: 0),
@@ -1053,12 +1082,14 @@ private func giftUIStaticFullCanvas(
             drained.2 == 0,
             inputProbe.pendingCount == 0
         else { return 0 }
+        model.clearDirtyAfterPublication()
         return 1
     }
     if !validation {
         gestures.installPhysicalPresentation(
             PresentationRevision(rawValue: frameRevision)
         )
+        model.clearDirtyAfterPublication()
         return 1
     }
     guard interaction.build(
