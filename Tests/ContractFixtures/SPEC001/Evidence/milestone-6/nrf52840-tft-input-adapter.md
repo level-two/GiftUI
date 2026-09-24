@@ -1535,3 +1535,15 @@ registered nRF gate passed at
 The checked image uses 188,288 RAM and 231,040 flash bytes. The interaction
 state is still attempt-local, so production retention and input handoff
 remain open.
+
+The accepted first-frame interaction owner now has an address-stable firmware
+lifetime alongside the model and repository. The full offer commits its six
+action records into that retained owner. A refused write or teardown discards
+the candidate, clears committed records, shuts down the repository, and
+retires the model. The exact-source native probe checks committed count six
+after acceptance and zero after both failure and teardown. The registered
+hardware-free gate passed at
+`.build/contract-reports/spec-001/20260924T002623Z-76225/nrf52840-embedded/`.
+The image uses 193,344 RAM and 236,540 flash bytes. Normalized gesture
+dispatch and physical input revision installation remain open, so the input
+bridge stays ineligible.

@@ -1687,6 +1687,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       discard leaves the prior committed revision intact. The latest gate uses
       188,288 RAM and 231,040 flash bytes. Retaining that committed state
       across the firmware lifetime and connecting input remain open.
+      The accepted first-frame interaction owner is now address-stable for
+      the firmware lifetime, with six committed actions surviving the offer.
+      Failure and teardown clear those records with model and repository
+      cleanup. The latest gate uses 193,344 RAM and 236,540 flash bytes;
+      normalized dispatch and physical input revision installation remain
+      open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

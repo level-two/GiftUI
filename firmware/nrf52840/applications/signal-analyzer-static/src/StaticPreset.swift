@@ -44,6 +44,8 @@ package enum StaticSignalAnalyzerNRFSemanticVariant: UInt8, Equatable, Sendable 
 nonisolated(unsafe) private var giftUIStaticModelLocation = StaticSignalAnalyzerNRFModelLocation()
 nonisolated(unsafe) private var giftUIStaticRepository =
     StaticSignalAnalyzerNRFRepositoryProducer()
+nonisolated(unsafe) private var giftUIStaticInteractionOwner =
+    StaticSignalAnalyzerNRFEmbeddedInteractionOwner()!
 
 @_cdecl("giftui_signal_analyzer_model_location_valid")
 public func giftUISignalAnalyzerModelLocationValid() -> UInt32 {
@@ -472,11 +474,12 @@ public func giftUISignalAnalyzerFullCanvasValid(
     _ coverage: UnsafeMutableRawPointer?, _ coverageBytes: UInt32
 ) -> UInt32 {
     var model = StaticSignalAnalyzerNRFModelLocation()
+    var interaction = StaticSignalAnalyzerNRFEmbeddedInteractionOwner()!
     return giftUIStaticFullCanvas(
         profile, bytes, capture, captureBytes,
         raster, rasterBytes, coverage, coverageBytes,
         write: giftUISignalAnalyzerProbeRGB565,
-        validation: true, model: &model
+        validation: true, model: &model, interaction: &interaction
     )
 }
 
@@ -493,33 +496,39 @@ public func giftUISignalAnalyzerPresentInitial(
     guard let write else { return 0 }
     return withUnsafeMutablePointer(to: &giftUIStaticModelLocation) { location in
         withUnsafeMutablePointer(to: &giftUIStaticRepository) { repository in
-            guard location.pointee.activeGeneration == nil else { return 0 }
-            guard location.pointee.activate() != nil,
-                giftUIStaticBootstrap(
-                    profile: profile, profileBytes: bytes,
-                    capture: capture, captureBytes: captureBytes,
+            withUnsafeMutablePointer(to: &giftUIStaticInteractionOwner) { interaction in
+                guard location.pointee.activeGeneration == nil else { return 0 }
+                guard location.pointee.activate() != nil,
+                    giftUIStaticBootstrap(
+                        profile: profile, profileBytes: bytes,
+                        capture: capture, captureBytes: captureBytes,
+                        model: &location.pointee,
+                        repository: &repository.pointee
+                    )
+                else {
+                    giftUIStaticRetire(
+                        model: &location.pointee,
+                        repository: &repository.pointee,
+                        interaction: &interaction.pointee
+                    )
+                    return 0
+                }
+                let result = giftUIStaticFullCanvas(
+                    profile, bytes, capture, captureBytes,
+                    raster, rasterBytes, coverage, coverageBytes,
+                    write: write, validation: false,
                     model: &location.pointee,
-                    repository: &repository.pointee
+                    interaction: &interaction.pointee
                 )
-            else {
-                giftUIStaticRetire(
-                    model: &location.pointee,
-                    repository: &repository.pointee
-                )
-                return 0
+                if result == 0 {
+                    giftUIStaticRetire(
+                        model: &location.pointee,
+                        repository: &repository.pointee,
+                        interaction: &interaction.pointee
+                    )
+                }
+                return result
             }
-            let result = giftUIStaticFullCanvas(
-                profile, bytes, capture, captureBytes,
-                raster, rasterBytes, coverage, coverageBytes,
-                write: write, validation: false, model: &location.pointee
-            )
-            if result == 0 {
-                giftUIStaticRetire(
-                    model: &location.pointee,
-                    repository: &repository.pointee
-                )
-            }
-            return result
         }
     }
 }
@@ -529,11 +538,17 @@ public func giftUISignalAnalyzerInitialModelActive() -> UInt32 {
     giftUIStaticModelLocation.activeGeneration == nil ? 0 : 1
 }
 
+@_cdecl("giftui_signal_analyzer_initial_committed_actions")
+public func giftUISignalAnalyzerInitialCommittedActions() -> UInt16 {
+    giftUIStaticInteractionOwner.committedRecordCount
+}
+
 @_cdecl("giftui_signal_analyzer_retire_initial")
 public func giftUISignalAnalyzerRetireInitial() {
     giftUIStaticRetire(
         model: &giftUIStaticModelLocation,
-        repository: &giftUIStaticRepository
+        repository: &giftUIStaticRepository,
+        interaction: &giftUIStaticInteractionOwner
     )
 }
 
@@ -572,10 +587,12 @@ private func giftUIStaticBootstrap(
 
 private func giftUIStaticRetire(
     model: inout StaticSignalAnalyzerNRFModelLocation,
-    repository: inout StaticSignalAnalyzerNRFRepositoryProducer
+    repository: inout StaticSignalAnalyzerNRFRepositoryProducer,
+    interaction: inout StaticSignalAnalyzerNRFEmbeddedInteractionOwner
 ) {
     repository.shutdown()
     repository = StaticSignalAnalyzerNRFRepositoryProducer()
+    interaction = StaticSignalAnalyzerNRFEmbeddedInteractionOwner()!
     model.retire()
 }
 
@@ -586,7 +603,8 @@ private func giftUIStaticFullCanvas(
     _ coverage: UnsafeMutableRawPointer?, _ coverageBytes: UInt32,
     write: StaticSignalAnalyzerNRFEmbeddedPixelWrite,
     validation: Bool,
-    model: inout StaticSignalAnalyzerNRFModelLocation
+    model: inout StaticSignalAnalyzerNRFModelLocation,
+    interaction: inout StaticSignalAnalyzerNRFEmbeddedInteractionOwner
 ) -> UInt32 {
     guard let profile, bytes == 39_696,
         let capture, captureBytes == 115_392,
@@ -658,18 +676,17 @@ private func giftUIStaticFullCanvas(
     ), actions.count == 6,
         actions.occurrence(at: 0)?.actionCode == 0,
         actions.occurrence(at: 5)?.actionCode == 5,
-        var interactionProbe = StaticSignalAnalyzerNRFEmbeddedInteractionOwner(),
-        interactionProbe.build(
+        interaction.build(
             occurrences: actions,
             targetGeneration: ObservableTargetGeneration(
                 rawValue: model.activeGeneration ?? 0
             )
-        ), interactionProbe.candidateIsReadyForOffer
+        ), interaction.candidateIsReadyForOffer
     else { return 0 }
     var interactionCandidatePending = true
     defer {
         if interactionCandidatePending {
-            interactionProbe.resolve(
+            interaction.resolve(
                 accepted: false,
                 presentationRevision: PresentationRevision(rawValue: 1)
             )
@@ -765,30 +782,30 @@ private func giftUIStaticFullCanvas(
         ), drawing: drawing, expectedHeader: renderHeader
     ), fullEndpoint.bodyCallCount == 1
     else { return 0 }
-    interactionProbe.resolve(
+    interaction.resolve(
         accepted: true,
         presentationRevision: PresentationRevision(rawValue: 1)
     )
     interactionCandidatePending = false
-    guard interactionProbe.committedRecordCount == 6,
-        interactionProbe.committedRevision?.rawValue == 1,
-        interactionProbe.committedRecord(at: 0)?.action.code == 0,
-        interactionProbe.committedRecord(at: 5)?.action.code == 5
+    guard interaction.committedRecordCount == 6,
+        interaction.committedRevision?.rawValue == 1,
+        interaction.committedRecord(at: 0)?.action.code == 0,
+        interaction.committedRecord(at: 5)?.action.code == 5
     else { return 0 }
     if !validation {
         return 1
     }
-    guard interactionProbe.build(
+    guard interaction.build(
         occurrences: actions,
         targetGeneration: ObservableTargetGeneration(rawValue: 0)
-    ), interactionProbe.candidateIsReadyForOffer
+    ), interaction.candidateIsReadyForOffer
     else { return 0 }
-    interactionProbe.resolve(
+    interaction.resolve(
         accepted: false,
         presentationRevision: PresentationRevision(rawValue: 2)
     )
-    guard interactionProbe.committedRecordCount == 6,
-        interactionProbe.committedRevision?.rawValue == 1
+    guard interaction.committedRecordCount == 6,
+        interaction.committedRevision?.rawValue == 1
     else { return 0 }
     guard var refusingSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(
         rasterRegion: UnsafeMutableRawBufferPointer(
