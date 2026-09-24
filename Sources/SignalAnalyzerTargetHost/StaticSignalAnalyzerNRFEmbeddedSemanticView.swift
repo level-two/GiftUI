@@ -19,6 +19,15 @@ package struct StaticSignalAnalyzerNRFEmbeddedSemanticView {
         StaticSignalAnalyzerNRFPackedSemanticRecords.scope(at: 0, in: region)!.identity
     }
 
+    package func actionScopeOrdinal(at index: UInt16) -> UInt16? {
+        StaticSignalAnalyzerNRFPackedSemanticRecords.actionScope(at: index, in: region)
+    }
+
+    package func scope(atOrdinal ordinal: UInt16) -> StaticSignalAnalyzerNRFScopeRecord? {
+        guard ordinal < scopeCount else { return nil }
+        return StaticSignalAnalyzerNRFPackedSemanticRecords.scope(at: ordinal, in: region)
+    }
+
     package var rootPrimitiveIdentity: UInt16? {
         primitiveIdentity(beneath: 0)
     }

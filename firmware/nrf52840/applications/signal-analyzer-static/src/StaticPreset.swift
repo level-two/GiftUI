@@ -653,7 +653,12 @@ private func giftUIStaticFullCanvas(
     }
     guard let resolved = StaticSignalAnalyzerNRFCommonLayoutPass.run(
         semantic: semantic, workspace: &layoutWorkspace
-    ) else { return 0 }
+    ), let actions = StaticSignalAnalyzerNRFEmbeddedInteractionOccurrences(
+        semantic: semantic, layout: resolved
+    ), actions.count == 6,
+        actions.occurrence(at: 0)?.actionCode == 0,
+        actions.occurrence(at: 5)?.actionCode == 5
+    else { return 0 }
     guard (!validation || model.activate() != nil),
         var source = StaticSignalAnalyzerNRFEmbeddedCanvasSource(
             semantic: semantic, model: model,

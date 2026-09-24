@@ -1676,6 +1676,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       idle acquisition fact to that model before semantic staging. Failure
       and teardown shut down the producer and retire the model together;
       the latest gate uses 188,288 RAM and 221,248 flash bytes.
+      The firmware now borrows six generated action occurrences with resolved
+      geometry, clips, and inherited disabled state inside each frame attempt.
+      The exact-source check and registered gate pass at 188,288 RAM and
+      222,656 flash bytes. Physical interaction candidate construction and
+      commit remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

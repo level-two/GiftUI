@@ -1512,3 +1512,13 @@ registered nRF gate passed at
 `.build/contract-reports/spec-001/20260924T000347Z-67558/nrf52840-embedded/`.
 The checked image uses 188,288 RAM and 221,248 flash bytes. Scheduled source
 facts, normalized action dispatch, and recurring offers remain open.
+
+The firmware source now compiles a synchronous six-action occurrence reader
+over the generated published semantic table and resolved layout. Every frame
+attempt validates all six action scope ordinals, identity geometry, clips,
+and ancestor disabled modifiers before Canvas derivation; the reader retains
+no pointer beyond the workspace borrow. The exact-source native probe and
+registered nRF gate passed at
+`.build/contract-reports/spec-001/20260924T001022Z-69913/nrf52840-embedded/`.
+The checked image uses 188,288 RAM and 222,656 flash bytes. Building and
+committing the physical interaction candidate remains open.
