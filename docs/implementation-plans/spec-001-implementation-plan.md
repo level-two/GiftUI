@@ -1666,6 +1666,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       a touch event is dropped before presentation installation, while the
       future installation entry remains linked. The latest registered gate
       uses 187,968 RAM and 219,840 flash bytes.
+      The real first-frame path now replaces the startup diagnostic semantic
+      table with a normal candidate staged from its retained typed model
+      before Layout, Drawing, and the physical offer. The exact-source probe
+      checks 96 normal scopes, semantic revision advance, and 117 glyphs;
+      the latest gate uses 187,968 RAM and 219,728 flash bytes.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

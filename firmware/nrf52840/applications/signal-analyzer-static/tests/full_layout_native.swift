@@ -60,6 +60,19 @@ struct FullLayoutNativeCheck {
             "initial Canvas offer failed"
         )
         precondition(giftUISignalAnalyzerInitialModelActive() == 1)
+        let published = UnsafeMutableRawBufferPointer(
+            start: profile.advanced(by: 3_024), count: 3_024
+        )
+        precondition(
+            StaticSignalAnalyzerNRFEmbeddedSemanticView(published: published)?
+                .scopeCount == 96,
+            "initial offer retained the diagnostic semantic table"
+        )
+        precondition(
+            StaticSignalAnalyzerNRFEmbeddedSemanticView(published: published)?
+                .revision == 3,
+            "initial offer did not advance semantic revision"
+        )
         precondition(giftUISignalAnalyzerInputInitialize(1) == 0)
         precondition(
             giftUISignalAnalyzerInputAdmit(0, 20, 20, 0, 1) == 0x0101,

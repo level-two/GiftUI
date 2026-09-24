@@ -523,12 +523,36 @@ private func giftUIStaticFullCanvas(
     guard let profile, bytes == 39_696,
         let capture, captureBytes == 115_392,
         let raster, rasterBytes == 3_840,
-        let coverage, coverageBytes == 240,
-        let semantic = StaticSignalAnalyzerNRFEmbeddedSemanticView(
-            published: UnsafeMutableRawBufferPointer(
-                start: profile.advanced(by: 3_024), count: 3_024
+        let coverage, coverageBytes == 240
+    else { return 0 }
+    let candidateRegion = UnsafeMutableRawBufferPointer(
+        start: profile, count: 3_024
+    )
+    let publishedRegion = UnsafeMutableRawBufferPointer(
+        start: profile.advanced(by: 3_024), count: 3_024
+    )
+    if !validation {
+        guard model.activate() != nil,
+            let prior = StaticSignalAnalyzerNRFEmbeddedSemanticView(
+                published: publishedRegion
+            ), prior.revision < .max,
+            let captures = StaticSignalAnalyzerNRFCaptureRegions(
+                storage: UnsafeMutableRawBufferPointer(
+                    start: capture, count: Int(captureBytes)
+                )
+            ), StaticSignalAnalyzerNRFEmbeddedSemanticRegion.stage(
+                variant: .normal, model: model,
+                capture: captures, in: candidateRegion
+            ) != nil,
+            StaticSignalAnalyzerNRFEmbeddedSemanticRegion.publish(
+                revision: prior.revision + 1,
+                candidate: candidateRegion, published: publishedRegion
             )
-        ), let packed = StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace(
+        else { return 0 }
+    }
+    guard let semantic = StaticSignalAnalyzerNRFEmbeddedSemanticView(
+        published: publishedRegion
+    ), let packed = StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace(
             scopes: UnsafeMutableRawBufferPointer(
                 start: profile.advanced(by: 6_048), count: 3_136
             ),
@@ -562,7 +586,7 @@ private func giftUIStaticFullCanvas(
     guard let resolved = StaticSignalAnalyzerNRFCommonLayoutPass.run(
         semantic: semantic, workspace: &layoutWorkspace
     ) else { return 0 }
-    guard model.activate() != nil,
+    guard (!validation || model.activate() != nil),
         var source = StaticSignalAnalyzerNRFEmbeddedCanvasSource(
             semantic: semantic, model: model,
             captureRegion: UnsafeMutableRawBufferPointer(
@@ -600,7 +624,7 @@ private func giftUIStaticFullCanvas(
                     start: profile.advanced(by: 9_184), count: 4_704
                 ), drawing: drawing
             ), renderHeader.operationCount <= 150,
-        renderHeader.positionedGlyphCount == 121
+        renderHeader.positionedGlyphCount == (validation ? 121 : 117)
     else { return 0 }
     var sink = StaticSignalAnalyzerNRFEmbeddedCountingSink()
     guard case .success(let streamedHeader) =
@@ -612,7 +636,7 @@ private func giftUIStaticFullCanvas(
         ), streamedHeader == renderHeader,
         sink.isFinished, !sink.wasDiscarded,
         sink.strokeCount == 5,
-        sink.glyphCount == 121
+        sink.glyphCount == (validation ? 121 : 117)
     else { return 0 }
     if validation {
         guard var rasterSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(

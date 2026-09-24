@@ -1489,3 +1489,13 @@ entry remains linked for the production handoff. The registered nRF gate
 passed at
 `.build/contract-reports/spec-001/20260923T235128Z-62848/nrf52840-embedded/`;
 the image uses 187,968 RAM and 219,840 flash bytes.
+
+The real first-frame path now stages and publishes a fresh generated normal
+semantic table from its active typed model before Layout, five-Canvas
+derivation, and the endpoint offer. This replaces the diagnostic table left
+by startup validation. The exact-source native probe checks the 96-scope
+normal table and revision advance from 2 to 3; its first offer contains 117
+positioned glyphs. The registered nRF gate passed at
+`.build/contract-reports/spec-001/20260923T235807Z-65213/nrf52840-embedded/`.
+The checked image uses 187,968 RAM and 219,728 flash bytes. Repository
+bootstrap and recurring frame ownership remain open.
