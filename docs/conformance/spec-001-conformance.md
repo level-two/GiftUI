@@ -5,7 +5,7 @@ title: SPEC-001 Conformance Report
 status: complete
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-09-20
+updated: 2026-09-24
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -30,6 +30,15 @@ the current implementation design notes, and reviewed implementation revision
 Swift 6.3.2 ARMv6/nRF cross-build inspection, and host-native Pi/nRF semantic
 fixtures. Connected PiScreen and nRF52840 TFT/input execution was not
 authorized or collected.
+
+The 2026-09-24 hardware-free follow-up is recorded at implementation revision
+`da4a410d` under the current approved Spec SHA-256
+`042e21d20ac320d998fa2f7b8cbdf603981692c2ab32ad3918f0e303d1bc50df`.
+T6.7 and T6.8 now compose production target host loops. This update revises
+the connected-gate descriptions below; it does not claim a connected run. The
+registered SPEC-001 `nrf52840-embedded` gate passed at
+`.build/contract-reports/spec-001/20260924T020406Z-13454/nrf52840-embedded/`
+with zero failed checks.
 
 ## Acceptance-Criterion Results
 
@@ -57,9 +66,9 @@ authorized or collected.
 | `SA-AC-020` | pass | [waveform corpus](../../Tests/ContractFixtures/SPEC001/waveform-drawing-cases.tsv) | Ruler bytes and 11-plus-one grid pass. |
 | `SA-AC-021` | pass | [sustained workload](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/sustained-workload-and-resources.md) | 120 consistent frames cover 2,400 events with coalescing. |
 | `SA-AC-022` | pass | [driver suite](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-9/hardware-free-driver-suite.md) | Both macOS executables build, execute, and compare equal. |
-| `SA-AC-023` | blocked | [four-preset evidence](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-6/raspberry-pi-armv6.md), [Pi adapter](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md) | ARMv6 and host-native semantics pass. The exact artifact now owns validated framebuffer/input devices and completed a connected 115,200-byte bounded display transfer, but it has no production analyzer host loop and no physical touch event. |
-| `SA-AC-024` | blocked | [four-preset evidence](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-6/nrf52840-static.md), [nRF adapter](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md) | The selected ILI9486/ADS7846 assembly, device drivers, and finite validation firmware pass exact ELF inspection; no board was flashed and no analyzer host loop exists. |
-| `SA-AC-025` | blocked | [sustained workload](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/sustained-workload-and-resources.md), [nRF adapter](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md) | Binary/RAM/storage/drawing fit and finite-device-entry build are inspected; connected stack high-water and application execution are missing. |
+| `SA-AC-023` | blocked | [four-preset evidence](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-6/raspberry-pi-armv6.md), [Pi adapter](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md), [Pi host loop](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-pi-lifecycle-owner.md) | ARMv6 and host-native semantics pass. The production analyzer host loop now owns framebuffer/input devices; the earlier connected bounded display transfer did not exercise a physical control or the complete analyzer loop. |
+| `SA-AC-024` | blocked | [four-preset evidence](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-6/nrf52840-static.md), [nRF adapter and host loop](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md) | The selected ILI9486/ADS7846 production firmware and exact-source native probe pass the hardware-free gate; no board was flashed or connected output/input measured. |
+| `SA-AC-025` | blocked | [sustained workload](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/sustained-workload-and-resources.md), [nRF adapter and host loop](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md) | Production binary/RAM/storage/drawing fit is inspected; connected stack high-water, timing, and application execution remain missing. |
 | `SA-AC-026` | pass | [source substitution](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/source-and-facility-substitution.md) | Conforming source replacement changes no portable owner. |
 | `SA-AC-027` | pass | [source/facility evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/source-and-facility-substitution.md) | Every required facility fails closed before publication. |
 | `SA-AC-028` | pass | [host structural gates](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/host-structural-gates.md) | Host lifecycle owns observation and adapter sinks. |

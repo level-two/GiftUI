@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-13
-updated: 2026-09-22
+updated: 2026-09-24
 related_design_notes:
   - ../implementation-designs/spec-001-presentation-admission-and-failure.md
   - ../implementation-designs/spec-001-four-host-application-join.md
@@ -1849,10 +1849,13 @@ simulation.
       watchdog/reset behavior, stack high-water where supported, assembled
       RAM/flash/workspaces/timing, artifact identity, and teardown. Never infer
       this evidence from an emulator or cross-build.
-      **Blocked:** the selected ILI9486/ADS7846 firmware builds with a finite
-      device-validation entry, but the Static analyzer host loop is not yet
-      composed. Physical shield provenance, continuity/orientation, and power
-      evidence is also required before flashing.
+      **Blocked pending explicit connected-board authorization and physical
+      target evidence:** T6.8 now composes the production Static analyzer host
+      loop with ILI9486/ADS7846 display and input. Its exact-source native
+      probe and linked firmware pass the hardware-free gate. Physical shield
+      provenance, continuity/orientation, and power evidence is still required
+      before flashing; connected display, touch calibration, input, timing,
+      reset, and stack observations remain uncollected.
 - [ ] `T8.3` — Compare connected semantic/action/drawing traces with the
       hardware-free oracle while preserving target-specific performance and
       display facts. Classify any absent hardware run as an open connected
