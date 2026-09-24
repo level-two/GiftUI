@@ -1570,3 +1570,12 @@ registered nRF gate passed at
 The checked image uses 193,344 RAM and 239,508 flash bytes. The physical
 input bridge remains ineligible until normalized queue draining and action
 dispatch join this session.
+
+The exact firmware source now compiles a bounded input handler that drains
+normalized pointer events into the retained gesture session and buffers up to
+six admitted action codes. An exact-source probe queues a Start down/up pair,
+drains both events, and checks one admitted code and an empty queue. The
+registered nRF gate passed at
+`.build/contract-reports/spec-001/20260924T004634Z-83526/nrf52840-embedded/`.
+The image uses 193,344 RAM and 240,916 flash bytes. The production input
+storage is still not installed; repository action dispatch remains open.

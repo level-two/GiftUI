@@ -1704,6 +1704,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       action code. Refusal and teardown quiesce the session. The exact-source
       probe and registered gate pass at 193,344 RAM and 239,508 flash bytes;
       physical input remains ineligible pending queue drain and dispatch.
+      A bounded target handler now drains normalized down/up input into that
+      session and buffers admitted action codes. An exact-source probe checks
+      Start admission and empty queue after drain. The registered gate uses
+      193,344 RAM and 240,916 flash bytes; production input installation and
+      repository dispatch remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

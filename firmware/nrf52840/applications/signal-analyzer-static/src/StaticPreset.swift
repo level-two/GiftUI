@@ -863,6 +863,38 @@ private func giftUIStaticFullCanvas(
             ) == .rejected,
             gestures.hasPresentation
         else { return 0 }
+        var inputProbe = StaticSignalAnalyzerNRFFirmwareInputStorage(sourceRawValue: 1)
+        guard inputProbe.installPhysicalPresentation(rawValue: 1),
+            inputProbe.admit(
+                phaseRawValue: 0, x: UInt16(point.x), y: UInt16(point.y),
+                observedPresentationRevisionRawValue: 1,
+                priorPhysicalSequenceIsCompleteRawValue: 0
+            )?.disposition == .queued,
+            inputProbe.admit(
+                phaseRawValue: 2, x: UInt16(point.x), y: UInt16(point.y),
+                observedPresentationRevisionRawValue: 1,
+                priorPhysicalSequenceIsCompleteRawValue: 0
+            )?.disposition == .queued
+        else { return 0 }
+        var drainGestures = gestures
+        let drained = withUnsafeMutablePointer(to: &drainGestures) { session in
+            withUnsafeMutablePointer(to: &interaction) { committed in
+                withUnsafeMutablePointer(to: &model) { location in
+                    var handler = StaticSignalAnalyzerNRFEmbeddedInputHandler(
+                        gestures: session, interaction: committed, model: location
+                    )
+                    let result = inputProbe.runOpportunity(into: &handler)
+                    return (result, handler.actionCount, handler.actionCode(at: 0))
+                }
+            }
+        }
+        guard case .completed(let summary) = drained.0,
+            summary.eventCount == 2,
+            summary.cancelledOrRejectedCount == 0,
+            drained.1 == 1,
+            drained.2 == 0,
+            inputProbe.pendingCount == 0
+        else { return 0 }
         return 1
     }
     guard interaction.build(
