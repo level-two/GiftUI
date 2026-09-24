@@ -10,4 +10,4 @@ cc -std=c99 -Wall -Wextra -Werror \
     "${application}/tests/production_host_tests.c" \
     -o "${output}/production-host-tests"
 "${output}/production-host-tests"
-printf 'SPEC-001 nRF production host passed: activation, input, due fact, replacement, teardown.\n'
+printf 'SPEC-001 nRF production host passed: activation, input, due fact, replacement, failure cleanup.\n'

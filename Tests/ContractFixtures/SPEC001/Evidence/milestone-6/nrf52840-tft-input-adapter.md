@@ -1664,3 +1664,13 @@ The linked image uses 193,408 RAM and 244,164 flash bytes. This remains a
 hardware-free cross-build. The 0–4095 full-ADC touch mapping is a nominal
 default; connected board calibration and display/input observation have not
 been measured, and no board was flashed.
+
+The exact-source native probe now activates every committed action in order:
+Start, Stop, Clear, and the three visible-window selections. It obtains each
+enabled action's current committed hit region, queues a normalized down/up
+pair at the current physical revision, requires one dispatch, and accepts a
+replacement frame before the next action. The production-host C99 fixture
+also checks initial and replacement display refusals, touch transport
+failure, and cleanup. The registered nRF gate passed at
+`.build/contract-reports/spec-001/20260924T015109Z-8935/nrf52840-embedded/`.
+The linked image remains at 193,408 RAM and 244,164 flash bytes.

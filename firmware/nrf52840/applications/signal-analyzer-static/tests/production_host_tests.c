@@ -15,11 +15,14 @@ static uint32_t touch_revision;
 static uint32_t teardown_count;
 static uint32_t dirty;
 static uint64_t delay = UINT64_MAX;
+static int refuse_initial;
+static int refuse_next;
+static int pen_result;
 
 void k_busy_wait(uint32_t duration) { (void)duration; }
 int ads7846_initialize(void) { return 0; }
 int ads7846_shutdown(void) { return 0; }
-int ads7846_pen_is_down(void) { return 0; }
+int ads7846_pen_is_down(void) { return pen_result; }
 int ads7846_read_raw(struct ads7846_raw_sample *sample)
 {
     (void)sample;
@@ -95,6 +98,7 @@ uint32_t giftui_signal_analyzer_present_initial(
     (void)profile; (void)profile_bytes; (void)capture; (void)capture_bytes;
     (void)raster; (void)raster_bytes; (void)coverage; (void)coverage_bytes;
     assert(write == ili9486_write_rgb565);
+    if (refuse_initial != 0) { return 0U; }
     revision = 1U;
     frame_count++;
     return 1U;
@@ -108,6 +112,7 @@ uint32_t giftui_signal_analyzer_present_next(
     (void)profile; (void)profile_bytes; (void)capture; (void)capture_bytes;
     (void)raster; (void)raster_bytes; (void)coverage; (void)coverage_bytes;
     assert(write == ili9486_write_rgb565);
+    if (refuse_next != 0) { return 0U; }
     revision++;
     frame_count++;
     dirty = 0U;
@@ -164,7 +169,19 @@ int main(void)
     assert(service(&production, 180000U, &deadline, &stop) == 0);
     assert(deadline == 190000U);
     assert(frame_count == 3U && touch_revision == 3U && poll_count == 1U);
+    delay = UINT64_MAX;
+    production.next_transition_deadline = 0U;
+    dirty = 1U;
+    refuse_next = 1;
+    assert(service(&production, 200000U, &deadline, &stop) == -EIO);
+    refuse_next = 0;
+    pen_result = -EIO;
+    assert(touch_poll() == -EIO);
+    pen_result = 0;
     assert(teardown(&production) == 0);
     assert(teardown_count == 2U && production.touch.valid == 0U);
+    refuse_initial = 1;
+    assert(activate(&production) == -EIO);
+    assert(teardown(&production) == 0);
     return 0;
 }

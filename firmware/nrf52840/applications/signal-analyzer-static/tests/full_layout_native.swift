@@ -2,6 +2,26 @@
 // This checks the production diagnostic semantic-to-layout path without a board.
 @main
 struct FullLayoutNativeCheck {
+    private static func dispatchAction(
+        _ code: UInt16, revision: UInt32,
+        profile: UnsafeMutableRawPointer,
+        capture: UnsafeMutableRawPointer
+    ) {
+        let packed = giftUISignalAnalyzerActionPoint(code)
+        precondition(packed != 0, "enabled action point missing")
+        let x = UInt16(packed & 0xffff)
+        let y = UInt16(packed >> 16)
+        precondition(giftUISignalAnalyzerInputAdmit(0, x, y, revision, 1) == 0xff)
+        precondition(giftUISignalAnalyzerInputAdmit(2, x, y, revision, 0) == 0xff)
+        precondition(
+            giftUISignalAnalyzerDrainInitialInput(
+                profile, 39_696, capture, 115_392
+            ) == 2,
+            "admitted action did not dispatch"
+        )
+        precondition(giftUISignalAnalyzerInputPendingCount() == 0)
+    }
+
     private static let accept: @convention(c) (
         UInt16, UInt16, UInt16, UInt16, UnsafePointer<UInt8>?, Int
     ) -> Int32 = { x, y, width, height, pixels, byteCount in
@@ -142,6 +162,21 @@ struct FullLayoutNativeCheck {
             "prior physical revision admitted a touch after replacement"
         )
         precondition(giftUISignalAnalyzerInputPendingCount() == 0)
+        for code in UInt16(1) ... UInt16(5) {
+            dispatchAction(
+                code, revision: UInt32(code) + 1,
+                profile: profile, capture: capture
+            )
+            if code < 5 {
+                precondition(
+                    giftUISignalAnalyzerPresentNext(
+                        profile, 39_696, capture, 115_392,
+                        raster, 3_840, coverage, 240, accept
+                    ) == 1,
+                    "action did not produce the next physical frame"
+                )
+            }
+        }
         precondition(
             giftUISignalAnalyzerPresentInitial(
                 profile, 39_696, capture, 115_392, raster, 3_840,

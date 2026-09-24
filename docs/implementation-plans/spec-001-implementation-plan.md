@@ -1749,6 +1749,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       at 193,408 RAM and 244,164 flash bytes. The full-ADC touch mapping is a
       nominal hardware-free default; connected calibration, physical display
       and input evidence, and final T6.8 disposition remain open.
+      The exact-source native probe now routes Start, Stop, Clear, and all
+      three window actions through their committed hit regions over advancing
+      physical revisions. The C99 production host fixture adds display and
+      touch failure cleanup checks. The registered gate remains at 193,408
+      RAM and 244,164 flash bytes; connected calibration is still deferred.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

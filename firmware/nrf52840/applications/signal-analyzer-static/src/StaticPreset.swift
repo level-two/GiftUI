@@ -637,11 +637,17 @@ public func giftUISignalAnalyzerNextDelayMicroseconds() -> UInt64 {
 
 @_cdecl("giftui_signal_analyzer_initial_start_point")
 public func giftUISignalAnalyzerInitialStartPoint() -> UInt32 {
-    guard let start = giftUIStaticInteractionOwner.committedRecord(at: 0),
-        start.action.code == 0, start.isEnabled
+    giftUISignalAnalyzerActionPoint(0)
+}
+
+@_cdecl("giftui_signal_analyzer_action_point")
+public func giftUISignalAnalyzerActionPoint(_ code: UInt16) -> UInt32 {
+    guard code < 6,
+        let record = giftUIStaticInteractionOwner.committedRecord(at: code),
+        record.action.code == code, record.isEnabled
     else { return 0 }
-    let x = start.hitBounds.origin.x + start.hitBounds.size.width / 2
-    let y = start.hitBounds.origin.y + start.hitBounds.size.height / 2
+    let x = record.hitBounds.origin.x + record.hitBounds.size.width / 2
+    let y = record.hitBounds.origin.y + record.hitBounds.size.height / 2
     guard x >= 0, x < 480, y >= 0, y < 320 else { return 0 }
     return UInt32(y) << 16 | UInt32(x)
 }
