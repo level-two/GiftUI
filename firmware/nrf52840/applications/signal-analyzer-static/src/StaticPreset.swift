@@ -46,6 +46,8 @@ nonisolated(unsafe) private var giftUIStaticRepository =
     StaticSignalAnalyzerNRFRepositoryProducer()
 nonisolated(unsafe) private var giftUIStaticInteractionOwner =
     StaticSignalAnalyzerNRFEmbeddedInteractionOwner()!
+nonisolated(unsafe) private var giftUIStaticGestureSession =
+    StaticSignalAnalyzerNRFEmbeddedGestureSession()
 
 @_cdecl("giftui_signal_analyzer_model_location_valid")
 public func giftUISignalAnalyzerModelLocationValid() -> UInt32 {
@@ -475,11 +477,13 @@ public func giftUISignalAnalyzerFullCanvasValid(
 ) -> UInt32 {
     var model = StaticSignalAnalyzerNRFModelLocation()
     var interaction = StaticSignalAnalyzerNRFEmbeddedInteractionOwner()!
+    var gestures = StaticSignalAnalyzerNRFEmbeddedGestureSession()
     return giftUIStaticFullCanvas(
         profile, bytes, capture, captureBytes,
         raster, rasterBytes, coverage, coverageBytes,
         write: giftUISignalAnalyzerProbeRGB565,
-        validation: true, model: &model, interaction: &interaction
+        validation: true, model: &model,
+        interaction: &interaction, gestures: &gestures
     )
 }
 
@@ -497,6 +501,7 @@ public func giftUISignalAnalyzerPresentInitial(
     return withUnsafeMutablePointer(to: &giftUIStaticModelLocation) { location in
         withUnsafeMutablePointer(to: &giftUIStaticRepository) { repository in
             withUnsafeMutablePointer(to: &giftUIStaticInteractionOwner) { interaction in
+                withUnsafeMutablePointer(to: &giftUIStaticGestureSession) { gestures in
                 guard location.pointee.activeGeneration == nil else { return 0 }
                 guard location.pointee.activate() != nil,
                     giftUIStaticBootstrap(
@@ -509,7 +514,8 @@ public func giftUISignalAnalyzerPresentInitial(
                     giftUIStaticRetire(
                         model: &location.pointee,
                         repository: &repository.pointee,
-                        interaction: &interaction.pointee
+                        interaction: &interaction.pointee,
+                        gestures: &gestures.pointee
                     )
                     return 0
                 }
@@ -518,16 +524,19 @@ public func giftUISignalAnalyzerPresentInitial(
                     raster, rasterBytes, coverage, coverageBytes,
                     write: write, validation: false,
                     model: &location.pointee,
-                    interaction: &interaction.pointee
+                    interaction: &interaction.pointee,
+                    gestures: &gestures.pointee
                 )
                 if result == 0 {
                     giftUIStaticRetire(
                         model: &location.pointee,
                         repository: &repository.pointee,
-                        interaction: &interaction.pointee
+                        interaction: &interaction.pointee,
+                        gestures: &gestures.pointee
                     )
                 }
                 return result
+                }
             }
         }
     }
@@ -543,12 +552,18 @@ public func giftUISignalAnalyzerInitialCommittedActions() -> UInt16 {
     giftUIStaticInteractionOwner.committedRecordCount
 }
 
+@_cdecl("giftui_signal_analyzer_initial_gesture_ready")
+public func giftUISignalAnalyzerInitialGestureReady() -> UInt32 {
+    giftUIStaticGestureSession.hasPresentation ? 1 : 0
+}
+
 @_cdecl("giftui_signal_analyzer_retire_initial")
 public func giftUISignalAnalyzerRetireInitial() {
     giftUIStaticRetire(
         model: &giftUIStaticModelLocation,
         repository: &giftUIStaticRepository,
-        interaction: &giftUIStaticInteractionOwner
+        interaction: &giftUIStaticInteractionOwner,
+        gestures: &giftUIStaticGestureSession
     )
 }
 
@@ -588,11 +603,13 @@ private func giftUIStaticBootstrap(
 private func giftUIStaticRetire(
     model: inout StaticSignalAnalyzerNRFModelLocation,
     repository: inout StaticSignalAnalyzerNRFRepositoryProducer,
-    interaction: inout StaticSignalAnalyzerNRFEmbeddedInteractionOwner
+    interaction: inout StaticSignalAnalyzerNRFEmbeddedInteractionOwner,
+    gestures: inout StaticSignalAnalyzerNRFEmbeddedGestureSession
 ) {
     repository.shutdown()
     repository = StaticSignalAnalyzerNRFRepositoryProducer()
     interaction = StaticSignalAnalyzerNRFEmbeddedInteractionOwner()!
+    gestures.quiesce()
     model.retire()
 }
 
@@ -604,7 +621,8 @@ private func giftUIStaticFullCanvas(
     write: StaticSignalAnalyzerNRFEmbeddedPixelWrite,
     validation: Bool,
     model: inout StaticSignalAnalyzerNRFModelLocation,
-    interaction: inout StaticSignalAnalyzerNRFEmbeddedInteractionOwner
+    interaction: inout StaticSignalAnalyzerNRFEmbeddedInteractionOwner,
+    gestures: inout StaticSignalAnalyzerNRFEmbeddedGestureSession
 ) -> UInt32 {
     guard let profile, bytes == 39_696,
         let capture, captureBytes == 115_392,
@@ -806,6 +824,44 @@ private func giftUIStaticFullCanvas(
         ), case .activationAdmitted(let up) = ExecutionGestureAdapter.up(
             at: point, capture: &capture, resolver: interaction
         ), down == up, up.identity == start.identity
+        else { return 0 }
+        let revision = PresentationRevision(rawValue: 1)
+        gestures.installPhysicalPresentation(revision)
+        var sequenceProbe = gestures
+        let source = InputSourceID(rawValue: 1)
+        let sequence = PointerSequenceID(rawValue: 1)
+        let downEvent = NormalizedPointerEvent(
+            phase: .down, position: point,
+            source: source, sequence: sequence,
+            ordinal: InputOrdinal(rawValue: 0),
+            presentationRevision: revision
+        )
+        let upEvent = NormalizedPointerEvent(
+            phase: .up, position: point,
+            source: source, sequence: sequence,
+            ordinal: InputOrdinal(rawValue: 1),
+            presentationRevision: revision
+        )
+        let staleEvent = NormalizedPointerEvent(
+            phase: .down, position: point,
+            source: source, sequence: sequence,
+            ordinal: InputOrdinal(rawValue: 0),
+            presentationRevision: PresentationRevision(rawValue: 0)
+        )
+        guard let generation = model.activeGeneration,
+            sequenceProbe.handle(
+                downEvent, interaction: interaction,
+                modelGeneration: generation
+            ) == .consumed,
+            sequenceProbe.handle(
+                upEvent, interaction: interaction,
+                modelGeneration: generation
+            ) == .admitted(actionCode: 0),
+            sequenceProbe.handle(
+                staleEvent, interaction: interaction,
+                modelGeneration: generation
+            ) == .rejected,
+            gestures.hasPresentation
         else { return 0 }
         return 1
     }

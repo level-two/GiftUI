@@ -1698,6 +1698,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       its displayed hit region with identity and generation preserved. The
       latest gate uses 193,344 RAM and 238,076 flash bytes. Normalized input
       queue draining and model action dispatch remain open.
+      The accepted first frame now retains a normalized gesture session at
+      its committed revision. It validates source, sequence, ordinal, and
+      revision, then rechecks action and model generations before yielding an
+      action code. Refusal and teardown quiesce the session. The exact-source
+      probe and registered gate pass at 193,344 RAM and 239,508 flash bytes;
+      physical input remains ineligible pending queue drain and dispatch.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

@@ -42,6 +42,12 @@
             interaction.committedRecord(at: index)
         }
 
+        package borrowing func committedRecord(for identity: UInt32)
+            -> BoundActionRecord<UInt32>?
+        {
+            interaction.committedRecord(for: identity)
+        }
+
         package borrowing func resolveDown(at point: Point) -> PointerGestureOutcome<UInt32> {
             interaction.resolveDown(at: point)
         }

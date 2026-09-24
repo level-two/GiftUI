@@ -1558,3 +1558,15 @@ The registered nRF gate passed at
 The checked image uses 193,344 RAM and 238,076 flash bytes. This is a scoped
 gesture check; normalized queue draining, action dispatch, and calibrated
 physical input remain open.
+
+The accepted first frame now installs its committed revision into a retained
+normalized gesture session. The session checks source, sequence, ordinal, and
+presentation revision across down/up, then rechecks the committed action and
+model generations before yielding Start's action code. Refusal and teardown
+quiesce it. The exact-source native probe verifies session readiness only
+after acceptance and an internal down/up/stale-revision sequence; the
+registered nRF gate passed at
+`.build/contract-reports/spec-001/20260924T004034Z-81158/nrf52840-embedded/`.
+The checked image uses 193,344 RAM and 239,508 flash bytes. The physical
+input bridge remains ineligible until normalized queue draining and action
+dispatch join this session.

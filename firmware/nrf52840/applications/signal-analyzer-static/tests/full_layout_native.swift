@@ -61,6 +61,7 @@ struct FullLayoutNativeCheck {
         )
         precondition(giftUISignalAnalyzerInitialModelActive() == 0)
         precondition(giftUISignalAnalyzerInitialCommittedActions() == 0)
+        precondition(giftUISignalAnalyzerInitialGestureReady() == 0)
         precondition(
             giftUISignalAnalyzerPresentInitial(
                 profile, 39_696, capture, 115_392, raster, 3_840,
@@ -70,6 +71,7 @@ struct FullLayoutNativeCheck {
         )
         precondition(giftUISignalAnalyzerInitialModelActive() == 1)
         precondition(giftUISignalAnalyzerInitialCommittedActions() == 6)
+        precondition(giftUISignalAnalyzerInitialGestureReady() == 1)
         let published = UnsafeMutableRawBufferPointer(
             start: profile.advanced(by: 3_024), count: 3_024
         )
@@ -96,10 +98,12 @@ struct FullLayoutNativeCheck {
             ) == 0,
             "active model admitted a second initial offer"
         )
+        precondition(giftUISignalAnalyzerInitialGestureReady() == 1)
         giftUISignalAnalyzerRetireInitial()
         giftUISignalAnalyzerInputQuiesce()
         precondition(giftUISignalAnalyzerInitialModelActive() == 0)
         precondition(giftUISignalAnalyzerInitialCommittedActions() == 0)
+        precondition(giftUISignalAnalyzerInitialGestureReady() == 0)
         precondition(
             giftUISignalAnalyzerPresentInitial(
                 profile, 39_696, capture, 115_392, raster, 3_840,
@@ -109,6 +113,7 @@ struct FullLayoutNativeCheck {
         )
         precondition(giftUISignalAnalyzerInitialModelActive() == 0)
         precondition(giftUISignalAnalyzerInitialCommittedActions() == 0)
+        precondition(giftUISignalAnalyzerInitialGestureReady() == 0)
         precondition(
             giftUISignalAnalyzerPresentInitial(
                 profile, 39_696, capture, 115_392, raster, 3_840,
@@ -117,8 +122,10 @@ struct FullLayoutNativeCheck {
             "retired model could not activate again"
         )
         precondition(giftUISignalAnalyzerInitialCommittedActions() == 6)
+        precondition(giftUISignalAnalyzerInitialGestureReady() == 1)
         giftUISignalAnalyzerRetireInitial()
         precondition(giftUISignalAnalyzerInitialCommittedActions() == 0)
+        precondition(giftUISignalAnalyzerInitialGestureReady() == 0)
         precondition(
             giftUISignalAnalyzerTileValid(raster, 3_840, coverage, 240) == 1,
             "fixed RGB565 tile failed"
