@@ -1612,3 +1612,18 @@ The registered nRF gate passed at
 The linked image uses 193,344 RAM and 243,208 flash bytes. Recurring frame
 offers, input revision advancement, and the production lifecycle loop remain
 open.
+
+The firmware now retains a replacement physical Canvas offer entry. It
+derives a fresh normal semantic revision, uses advancing cycle and candidate
+frame identities, stages six actions, submits the complete RGB565 stream,
+then commits the next presentation revision to interaction, gestures, and
+normalized input. Later visible state may change glyph count, so later offers
+check the bounded preflight and streamed counts for equality while the exact
+first-frame count remains checked. The exact-source native probe starts the
+repository through queued touch input, accepts a second frame, rejects a
+touch tagged with the prior revision, and verifies a later display refusal
+retires retained owners. The registered nRF gate passed at
+`.build/contract-reports/spec-001/20260924T012121Z-97922/nrf52840-embedded/`.
+The linked image uses 193,344 RAM and 243,468 flash bytes. The firmware main
+still enters its finite validator, so scheduling these repeated offers and
+connected touch calibration remain open.

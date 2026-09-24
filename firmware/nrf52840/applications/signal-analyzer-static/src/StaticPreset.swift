@@ -482,7 +482,7 @@ public func giftUISignalAnalyzerFullCanvasValid(
         profile, bytes, capture, captureBytes,
         raster, rasterBytes, coverage, coverageBytes,
         write: giftUISignalAnalyzerProbeRGB565,
-        validation: true, model: &model,
+        validation: true, frameRevision: 1, model: &model,
         interaction: &interaction, gestures: &gestures
     )
 }
@@ -523,6 +523,7 @@ public func giftUISignalAnalyzerPresentInitial(
                     profile, bytes, capture, captureBytes,
                     raster, rasterBytes, coverage, coverageBytes,
                     write: write, validation: false,
+                    frameRevision: 1,
                     model: &location.pointee,
                     interaction: &interaction.pointee,
                     gestures: &gestures.pointee
@@ -536,6 +537,54 @@ public func giftUISignalAnalyzerPresentInitial(
                     )
                 }
                 return result
+                }
+            }
+        }
+    }
+}
+
+@_cdecl("giftui_signal_analyzer_present_next")
+public func giftUISignalAnalyzerPresentNext(
+    _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32,
+    _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32,
+    _ raster: UnsafeMutableRawPointer?, _ rasterBytes: UInt32,
+    _ coverage: UnsafeMutableRawPointer?, _ coverageBytes: UInt32,
+    _ write: (@convention(c) (
+        UInt16, UInt16, UInt16, UInt16, UnsafePointer<UInt8>?, Int
+    ) -> Int32)?
+) -> UInt32 {
+    guard let write, giftUIStaticModelLocation.activeGeneration != nil,
+        let previous = giftUIStaticInteractionOwner.committedRevision?.rawValue,
+        previous < UInt32.max,
+        giftUIStaticGestureSession.hasPresentation
+    else { return 0 }
+    let revision = previous + 1
+    return withUnsafeMutablePointer(to: &giftUIStaticModelLocation) { model in
+        withUnsafeMutablePointer(to: &giftUIStaticRepository) { repository in
+            withUnsafeMutablePointer(to: &giftUIStaticInteractionOwner) { interaction in
+                withUnsafeMutablePointer(to: &giftUIStaticGestureSession) { gestures in
+                    let offered = giftUIStaticFullCanvas(
+                        profile, bytes, capture, captureBytes,
+                        raster, rasterBytes, coverage, coverageBytes,
+                        write: write, validation: false,
+                        frameRevision: revision,
+                        model: &model.pointee,
+                        interaction: &interaction.pointee,
+                        gestures: &gestures.pointee
+                    )
+                    guard offered == 1,
+                        giftUISignalAnalyzerInputInstallPresentation(revision) == 0
+                    else {
+                        giftUIStaticRetire(
+                            model: &model.pointee,
+                            repository: &repository.pointee,
+                            interaction: &interaction.pointee,
+                            gestures: &gestures.pointee
+                        )
+                        giftUISignalAnalyzerInputQuiesce()
+                        return 0
+                    }
+                    return 1
                 }
             }
         }
@@ -685,6 +734,7 @@ private func giftUIStaticFullCanvas(
     _ coverage: UnsafeMutableRawPointer?, _ coverageBytes: UInt32,
     write: StaticSignalAnalyzerNRFEmbeddedPixelWrite,
     validation: Bool,
+    frameRevision: UInt32,
     model: inout StaticSignalAnalyzerNRFModelLocation,
     interaction: inout StaticSignalAnalyzerNRFEmbeddedInteractionOwner,
     gestures: inout StaticSignalAnalyzerNRFEmbeddedGestureSession
@@ -771,7 +821,7 @@ private func giftUIStaticFullCanvas(
         if interactionCandidatePending {
             interaction.resolve(
                 accepted: false,
-                presentationRevision: PresentationRevision(rawValue: 1)
+                presentationRevision: PresentationRevision(rawValue: frameRevision)
             )
         }
     }
@@ -789,31 +839,37 @@ private func giftUIStaticFullCanvas(
     let result = CanvasPlanProducer.derive(
         source: &source, layout: resolved,
         executionContext: ExecutionContext(
-            cycle: RunCycleID(rawValue: 1),
+            cycle: RunCycleID(rawValue: frameRevision),
             semanticRevision: SemanticRevision(rawValue: semantic.revision),
             candidateFrame: nil, phase: .deriving
         ), limits: limits, workspace: &drawing
     )
-    guard case .success(let summary) = result,
-        source.allReleased,
+    guard case .success(let summary) = result else { return 0 }
+    guard source.allReleased,
         summary.canvasOccurrenceCount == 5,
         summary.strokeCount == 5,
         summary.pointCount == 32,
-        summary.subpathCount == 16,
+        summary.subpathCount == 16
+    else { return 0 }
+    guard
         let gridID = source.canvasIdentity(at: 0),
         let grid = drawing.strokeHeader(of: gridID, at: 0),
         grid.color == .gray,
         grid.lineWidth == 1,
         grid.pointCount == 24,
-        grid.subpathCount == 12,
-        case .success(let renderHeader) =
+        grid.subpathCount == 12
+    else { return 0 }
+    guard case .success(let renderHeader) =
             StaticSignalAnalyzerNRFEmbeddedRenderPreflight.runCombined(
                 semantic: semantic, layout: resolved,
                 textRegion: UnsafeMutableRawBufferPointer(
                     start: profile.advanced(by: 9_184), count: 4_704
                 ), drawing: drawing
             ), renderHeader.operationCount <= 150,
-        renderHeader.positionedGlyphCount == (validation ? 121 : 117)
+        renderHeader.positionedGlyphCount > 0,
+        renderHeader.positionedGlyphCount <= 150,
+        (frameRevision != 1
+            || renderHeader.positionedGlyphCount == (validation ? 121 : 117))
     else { return 0 }
     var sink = StaticSignalAnalyzerNRFEmbeddedCountingSink()
     guard case .success(let streamedHeader) =
@@ -825,7 +881,7 @@ private func giftUIStaticFullCanvas(
         ), streamedHeader == renderHeader,
         sink.isFinished, !sink.wasDiscarded,
         sink.strokeCount == 5,
-        sink.glyphCount == (validation ? 121 : 117)
+        sink.glyphCount == renderHeader.positionedGlyphCount
     else { return 0 }
     if validation {
         guard var rasterSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(
@@ -848,9 +904,9 @@ private func giftUIStaticFullCanvas(
         else { return 0 }
     }
     let firstProvenance = FrameProvenance(
-        cycle: RunCycleID(rawValue: 1),
+        cycle: RunCycleID(rawValue: frameRevision),
         semanticRevision: SemanticRevision(rawValue: semantic.revision),
-        candidateFrame: CandidateFrameID(rawValue: 1)
+        candidateFrame: CandidateFrameID(rawValue: frameRevision)
     )
     guard var fullEndpoint = giftUIStaticEmbeddedEndpoint(
         raster: raster, coverage: coverage,
@@ -867,15 +923,15 @@ private func giftUIStaticFullCanvas(
     else { return 0 }
     interaction.resolve(
         accepted: true,
-        presentationRevision: PresentationRevision(rawValue: 1)
+        presentationRevision: PresentationRevision(rawValue: frameRevision)
     )
     interactionCandidatePending = false
     guard interaction.committedRecordCount == 6,
-        interaction.committedRevision?.rawValue == 1,
+        interaction.committedRevision?.rawValue == frameRevision,
         interaction.committedRecord(at: 0)?.action.code == 0,
         interaction.committedRecord(at: 5)?.action.code == 5
     else { return 0 }
-    if !validation {
+    if !validation && frameRevision == 1 {
         guard let start = interaction.committedRecord(at: 0),
             start.isEnabled
         else { return 0 }
@@ -890,7 +946,7 @@ private func giftUIStaticFullCanvas(
             at: point, capture: &capture, resolver: interaction
         ), down == up, up.identity == start.identity
         else { return 0 }
-        let revision = PresentationRevision(rawValue: 1)
+        let revision = PresentationRevision(rawValue: frameRevision)
         gestures.installPhysicalPresentation(revision)
         var sequenceProbe = gestures
         let source = InputSourceID(rawValue: 1)
@@ -960,6 +1016,12 @@ private func giftUIStaticFullCanvas(
             drained.2 == 0,
             inputProbe.pendingCount == 0
         else { return 0 }
+        return 1
+    }
+    if !validation {
+        gestures.installPhysicalPresentation(
+            PresentationRevision(rawValue: frameRevision)
+        )
         return 1
     }
     guard interaction.build(

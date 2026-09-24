@@ -1725,6 +1725,13 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       probe queues Start and verifies one dispatch; the registered gate passes
       with 193,344 RAM and 243,208 flash bytes. The finite validator still
       leaves physical input closed, and recurring offers remain open.
+      A retained replacement Canvas offer now advances frame and presentation
+      identities, commits the next six-action interaction candidate, and
+      installs the new physical input revision after the full stream. The
+      exact-source probe accepts a second frame after Start, rejects stale
+      input, and checks refusal retirement. The registered gate uses 193,344
+      RAM and 243,468 flash bytes. Firmware main still needs the production
+      lifecycle and recurring scheduler join.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

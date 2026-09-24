@@ -116,6 +116,25 @@ struct FullLayoutNativeCheck {
             "queued Start action did not dispatch through repository"
         )
         precondition(giftUISignalAnalyzerInputPendingCount() == 0)
+        let nextOffer = giftUISignalAnalyzerPresentNext(
+            profile, 39_696, capture, 115_392, raster, 3_840,
+            coverage, 240, accept
+        )
+        precondition(
+            nextOffer == 1,
+            "second physical Canvas offer failed"
+        )
+        precondition(
+            StaticSignalAnalyzerNRFEmbeddedSemanticView(published: published)?
+                .revision == 4,
+            "second offer did not advance semantic revision"
+        )
+        precondition(giftUISignalAnalyzerInitialGestureReady() == 1)
+        precondition(
+            giftUISignalAnalyzerInputAdmit(0, startX, startY, 1, 1) != 0xff,
+            "prior physical revision admitted a touch after replacement"
+        )
+        precondition(giftUISignalAnalyzerInputPendingCount() == 0)
         precondition(
             giftUISignalAnalyzerPresentInitial(
                 profile, 39_696, capture, 115_392, raster, 3_840,
@@ -148,7 +167,13 @@ struct FullLayoutNativeCheck {
         )
         precondition(giftUISignalAnalyzerInitialCommittedActions() == 6)
         precondition(giftUISignalAnalyzerInitialGestureReady() == 1)
-        giftUISignalAnalyzerRetireInitial()
+        precondition(
+            giftUISignalAnalyzerPresentNext(
+                profile, 39_696, capture, 115_392, raster, 3_840,
+                coverage, 240, refuse
+            ) == 0,
+            "replacement display refusal was accepted"
+        )
         precondition(giftUISignalAnalyzerInitialCommittedActions() == 0)
         precondition(giftUISignalAnalyzerInitialGestureReady() == 0)
         precondition(
