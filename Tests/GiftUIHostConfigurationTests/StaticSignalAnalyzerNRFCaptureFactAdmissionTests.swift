@@ -4,6 +4,58 @@ import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
 import Testing
 
+@Test func nRFCaptureAdmissionResumesPendingFactsAndSequenceWithoutReset() {
+    let bytes = 3_840
+    let active = UnsafeMutableRawPointer.allocate(byteCount: bytes, alignment: 8)
+    let sealed = UnsafeMutableRawPointer.allocate(byteCount: bytes, alignment: 8)
+    defer {
+        active.deallocate()
+        sealed.deallocate()
+    }
+    let activeRegion = UnsafeMutableRawBufferPointer(start: active, count: bytes)
+    let sealedRegion = UnsafeMutableRawBufferPointer(start: sealed, count: bytes)
+    let change = SignalCaptureChange.reset(baseRevision: 0, baselines: .allLow)
+    do {
+        guard
+            var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
+                activeStorage: activeRegion, sealedStorage: sealedRegion
+            )
+        else {
+            Issue.record("Initial admission regions refused")
+            return
+        }
+        let began = admission.beginProducer(.transition)
+        #expect(began)
+        let admitted = admission.admitCaptureMutation(revision: 1, change: change)
+        #expect(admitted == .accepted(sequence: 1))
+        admission.endProducer()
+    }
+    do {
+        guard
+            var resumed = StaticSignalAnalyzerNRFCaptureFactAdmission(
+                resumingActiveStorage: activeRegion, sealedStorage: sealedRegion
+            )
+        else {
+            Issue.record("Previously initialized admission regions refused")
+            return
+        }
+        #expect(resumed.pendingCompactCount == 1)
+        let began = resumed.beginProducer(.action)
+        #expect(began)
+        let admitted = resumed.admitCaptureMutation(revision: 1, change: change)
+        #expect(admitted == .accepted(sequence: 2))
+        resumed.endProducer()
+        let sealedFacts = resumed.seal()
+        #expect(sealedFacts)
+        let first = resumed.takeNextSealed()
+        let second = resumed.takeNextSealed()
+        let empty = resumed.takeNextSealed()
+        #expect(first?.sequence == 1)
+        #expect(second?.sequence == 2)
+        #expect(empty == nil)
+    }
+}
+
 @Test func nRFCaptureAdmissionOwnsProducerLimitsAndSequences() {
     let bytes = 3_840
     let active = UnsafeMutableRawPointer.allocate(byteCount: bytes, alignment: 8)

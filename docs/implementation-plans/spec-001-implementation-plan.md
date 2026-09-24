@@ -1709,6 +1709,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       Start admission and empty queue after drain. The registered gate uses
       193,344 RAM and 240,916 flash bytes; production input installation and
       repository dispatch remain open.
+      The exact profile capture rings now support checked rebinding between
+      serialized opportunities without clearing pending facts or resetting
+      sequence allocation. A focused test proves two admissions across the
+      boundary seal in order; the registered gate remains at 193,344 RAM and
+      240,916 flash bytes. The production opportunity loop remains open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

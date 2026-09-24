@@ -1579,3 +1579,12 @@ registered nRF gate passed at
 `.build/contract-reports/spec-001/20260924T004634Z-83526/nrf52840-embedded/`.
 The image uses 193,344 RAM and 240,916 flash bytes. The production input
 storage is still not installed; repository action dispatch remains open.
+
+The fixed capture admission rings now support checked rebinding at a later
+serialized opportunity without clearing pending facts or restarting sequence
+allocation. A focused host test leaves one fact pending, resumes both regions,
+admits another action fact, and verifies seal order and sequence continuity.
+The registered nRF gate passed at
+`.build/contract-reports/spec-001/20260924T005343Z-87069/nrf52840-embedded/`.
+The checked image remains at 193,344 RAM and 240,916 flash bytes. Firmware
+opportunity dispatch and recurring presentation still need to use this path.

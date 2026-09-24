@@ -19,6 +19,23 @@ package struct StaticSignalAnalyzerNRFCompactFactRing: ~Copyable {
         self.storage = storage
     }
 
+    /// Rebinds a previously initialized region without clearing pending facts.
+    package init?(resuming storage: UnsafeMutableRawBufferPointer) {
+        guard storage.count == Self.requiredByteCount,
+            let address = storage.baseAddress,
+            UInt(bitPattern: address) & 7 == 0,
+            MemoryLayout<StaticSignalAnalyzerNRFCompactPresentationFact>.stride
+                <= Self.factStride,
+            address.load(fromByteOffset: Self.metadataOffset, as: UInt16.self)
+                <= Self.capacity,
+            address.load(fromByteOffset: Self.metadataOffset + 2, as: UInt16.self)
+                < Self.capacity,
+            address.load(fromByteOffset: Self.metadataOffset + 4, as: UInt16.self)
+                < Self.capacity
+        else { return nil }
+        self.storage = storage
+    }
+
     package var count: UInt16 {
         storage.baseAddress!.load(fromByteOffset: Self.metadataOffset, as: UInt16.self)
     }

@@ -93,6 +93,32 @@ package struct StaticSignalAnalyzerNRFCaptureFactAdmission: ~Copyable {
         metadata.storeBytes(of: UInt8(1), toByteOffset: 19, as: UInt8.self)
     }
 
+    /// Restores the same fixed regions at the next serialized opportunity.
+    /// The producer must have ended before the previous borrow returned.
+    package init?(
+        resumingActiveStorage activeStorage: UnsafeMutableRawBufferPointer,
+        sealedStorage: UnsafeMutableRawBufferPointer
+    ) {
+        guard activeStorage.baseAddress != sealedStorage.baseAddress,
+            let active = StaticSignalAnalyzerNRFCompactFactRing(resuming: activeStorage),
+            let sealed = StaticSignalAnalyzerNRFCompactFactRing(resuming: sealedStorage)
+        else { return nil }
+        let activeMetadata = activeStorage.baseAddress!.advanced(by: 3_584)
+        let priorSealedMetadata = sealedStorage.baseAddress!.advanced(by: 3_584)
+        guard activeMetadata.load(fromByteOffset: 8, as: UInt32.self) != 0,
+            activeMetadata.load(fromByteOffset: 18, as: UInt8.self) == UInt8.max,
+            activeMetadata.load(fromByteOffset: 19, as: UInt8.self) == 1,
+            activeMetadata.load(fromByteOffset: 20, as: UInt8.self) <= 1,
+            activeMetadata.load(fromByteOffset: 21, as: UInt8.self) <= 1,
+            priorSealedMetadata.load(fromByteOffset: 20, as: UInt8.self) <= 1,
+            priorSealedMetadata.load(fromByteOffset: 21, as: UInt8.self) <= 1
+        else { return nil }
+        self.active = consume active
+        self.sealed = consume sealed
+        metadata = activeMetadata
+        sealedMetadata = priorSealedMetadata
+    }
+
     package var pendingCompactCount: UInt16 { active.count }
     package var sealedCompactCount: UInt16 { sealed.count }
     package var pendingSnapshotCount: UInt8 { activeSnapshot == nil ? 0 : 1 }
