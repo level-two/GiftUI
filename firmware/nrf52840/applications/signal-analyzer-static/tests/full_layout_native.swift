@@ -54,6 +54,14 @@ struct FullLayoutNativeCheck {
         )
         precondition(
             giftUISignalAnalyzerPresentInitial(
+                profile, 39_696, nil, 115_392, raster, 3_840,
+                coverage, 240, accept
+            ) == 0,
+            "invalid bootstrap capture region was accepted"
+        )
+        precondition(giftUISignalAnalyzerInitialModelActive() == 0)
+        precondition(
+            giftUISignalAnalyzerPresentInitial(
                 profile, 39_696, capture, 115_392, raster, 3_840,
                 coverage, 240, accept
             ) == 1,

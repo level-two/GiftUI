@@ -42,6 +42,8 @@ package enum StaticSignalAnalyzerNRFSemanticVariant: UInt8, Equatable, Sendable 
 // Until the generated application adapter is linked, startup only validates
 // its handle identity, generation, and six action routes.
 nonisolated(unsafe) private var giftUIStaticModelLocation = StaticSignalAnalyzerNRFModelLocation()
+nonisolated(unsafe) private var giftUIStaticRepository =
+    StaticSignalAnalyzerNRFRepositoryProducer()
 
 @_cdecl("giftui_signal_analyzer_model_location_valid")
 public func giftUISignalAnalyzerModelLocationValid() -> UInt32 {
@@ -490,14 +492,35 @@ public func giftUISignalAnalyzerPresentInitial(
 ) -> UInt32 {
     guard let write else { return 0 }
     return withUnsafeMutablePointer(to: &giftUIStaticModelLocation) { location in
-        guard location.pointee.activeGeneration == nil else { return 0 }
-        let result = giftUIStaticFullCanvas(
-            profile, bytes, capture, captureBytes,
-            raster, rasterBytes, coverage, coverageBytes,
-            write: write, validation: false, model: &location.pointee
-        )
-        if result == 0 { location.pointee.retire() }
-        return result
+        withUnsafeMutablePointer(to: &giftUIStaticRepository) { repository in
+            guard location.pointee.activeGeneration == nil else { return 0 }
+            guard location.pointee.activate() != nil,
+                giftUIStaticBootstrap(
+                    profile: profile, profileBytes: bytes,
+                    capture: capture, captureBytes: captureBytes,
+                    model: &location.pointee,
+                    repository: &repository.pointee
+                )
+            else {
+                giftUIStaticRetire(
+                    model: &location.pointee,
+                    repository: &repository.pointee
+                )
+                return 0
+            }
+            let result = giftUIStaticFullCanvas(
+                profile, bytes, capture, captureBytes,
+                raster, rasterBytes, coverage, coverageBytes,
+                write: write, validation: false, model: &location.pointee
+            )
+            if result == 0 {
+                giftUIStaticRetire(
+                    model: &location.pointee,
+                    repository: &repository.pointee
+                )
+            }
+            return result
+        }
     }
 }
 
@@ -508,7 +531,52 @@ public func giftUISignalAnalyzerInitialModelActive() -> UInt32 {
 
 @_cdecl("giftui_signal_analyzer_retire_initial")
 public func giftUISignalAnalyzerRetireInitial() {
-    giftUIStaticModelLocation.retire()
+    giftUIStaticRetire(
+        model: &giftUIStaticModelLocation,
+        repository: &giftUIStaticRepository
+    )
+}
+
+private func giftUIStaticBootstrap(
+    profile: UnsafeMutableRawPointer?, profileBytes: UInt32,
+    capture: UnsafeMutableRawPointer?, captureBytes: UInt32,
+    model: inout StaticSignalAnalyzerNRFModelLocation,
+    repository: inout StaticSignalAnalyzerNRFRepositoryProducer
+) -> Bool {
+    guard let profile, profileBytes == 39_696,
+        let capture, captureBytes == 115_392
+    else { return false }
+    let profileStorage = UnsafeMutableRawBufferPointer(
+        start: profile, count: Int(profileBytes)
+    )
+    let captureStorage = UnsafeMutableRawBufferPointer(
+        start: capture, count: Int(captureBytes)
+    )
+    guard var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
+        activeStorage: UnsafeMutableRawBufferPointer(
+            rebasing: profileStorage[31_632 ..< 35_472]
+        ), sealedStorage: UnsafeMutableRawBufferPointer(
+            rebasing: profileStorage[35_472 ..< 39_312]
+        )
+    ), repository.startObservation(
+        admission: &admission, captureStorage: captureStorage
+    ) == .accepted,
+        model.applyAdmittedBatch(
+            from: &admission, captureStorage: captureStorage
+        ) == .applied(factCount: 2),
+        model.capture.revision == 0,
+        model.acquisitionState == .idle
+    else { return false }
+    return true
+}
+
+private func giftUIStaticRetire(
+    model: inout StaticSignalAnalyzerNRFModelLocation,
+    repository: inout StaticSignalAnalyzerNRFRepositoryProducer
+) {
+    repository.shutdown()
+    repository = StaticSignalAnalyzerNRFRepositoryProducer()
+    model.retire()
 }
 
 private func giftUIStaticFullCanvas(
@@ -532,7 +600,7 @@ private func giftUIStaticFullCanvas(
         start: profile.advanced(by: 3_024), count: 3_024
     )
     if !validation {
-        guard model.activate() != nil,
+        guard model.activeGeneration != nil,
             let prior = StaticSignalAnalyzerNRFEmbeddedSemanticView(
                 published: publishedRegion
             ), prior.revision < .max,

@@ -1499,3 +1499,16 @@ positioned glyphs. The registered nRF gate passed at
 `.build/contract-reports/spec-001/20260923T235807Z-65213/nrf52840-embedded/`.
 The checked image uses 187,968 RAM and 219,728 flash bytes. Repository
 bootstrap and recurring frame ownership remain open.
+
+The real first-frame entry now keeps a fixed repository producer alongside
+the address-stable model. Before semantic publication it starts the existing
+repository observation, admits the initial empty capture snapshot and idle
+acquisition fact into the exact compact profile regions, and applies both
+through the model's sealed batch path. A bootstrap failure or display refusal
+shuts down and resets the producer and retires the model; normal teardown does
+the same after a successful offer. The exact-source native probe rejects a
+missing capture region, then accepts a valid bootstrap and later reuse. The
+registered nRF gate passed at
+`.build/contract-reports/spec-001/20260924T000347Z-67558/nrf52840-embedded/`.
+The checked image uses 188,288 RAM and 221,248 flash bytes. Scheduled source
+facts, normalized action dispatch, and recurring offers remain open.

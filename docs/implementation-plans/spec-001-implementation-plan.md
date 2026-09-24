@@ -1671,6 +1671,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       before Layout, Drawing, and the physical offer. The exact-source probe
       checks 96 normal scopes, semantic revision advance, and 117 glyphs;
       the latest gate uses 187,968 RAM and 219,728 flash bytes.
+      The real first-frame entry now retains the fixed repository producer,
+      starts its observation, and applies the admitted bootstrap snapshot and
+      idle acquisition fact to that model before semantic staging. Failure
+      and teardown shut down the producer and retire the model together;
+      the latest gate uses 188,288 RAM and 221,248 flash bytes.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 
