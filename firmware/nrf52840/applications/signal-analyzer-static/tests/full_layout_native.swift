@@ -97,6 +97,25 @@ struct FullLayoutNativeCheck {
             "uncommitted presentation admitted input"
         )
         precondition(giftUISignalAnalyzerInputPendingCount() == 0)
+        let startPoint = giftUISignalAnalyzerInitialStartPoint()
+        let startX = UInt16(startPoint & 0xffff)
+        let startY = UInt16(startPoint >> 16)
+        precondition(startPoint != 0)
+        precondition(giftUISignalAnalyzerInputInstallPresentation(1) == 0)
+        precondition(
+            giftUISignalAnalyzerInputAdmit(0, startX, startY, 1, 0) == 0xff
+        )
+        precondition(
+            giftUISignalAnalyzerInputAdmit(2, startX, startY, 1, 0) == 0xff
+        )
+        precondition(giftUISignalAnalyzerInputPendingCount() == 2)
+        precondition(
+            giftUISignalAnalyzerDrainInitialInput(
+                profile, 39_696, capture, 115_392
+            ) == 2,
+            "queued Start action did not dispatch through repository"
+        )
+        precondition(giftUISignalAnalyzerInputPendingCount() == 0)
         precondition(
             giftUISignalAnalyzerPresentInitial(
                 profile, 39_696, capture, 115_392, raster, 3_840,

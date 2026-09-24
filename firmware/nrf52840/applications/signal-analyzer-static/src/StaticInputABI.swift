@@ -1,6 +1,13 @@
 nonisolated(unsafe) private var giftUIStaticInput =
     StaticSignalAnalyzerNRFFirmwareInputStorage()
 
+func giftUIStaticRunInputOpportunity<Handler>(
+    into handler: inout Handler
+) -> StaticSignalAnalyzerNRFInputOpportunityResult
+where Handler: StaticSignalAnalyzerNRFInputHandler {
+    giftUIStaticInput.runOpportunity(into: &handler)
+}
+
 @_cdecl("giftui_signal_analyzer_input_initialize")
 public func giftUISignalAnalyzerInputInitialize(_ source: UInt16) -> Int32 {
     giftUIStaticInput.initialize(sourceRawValue: source) ? 0 : -1

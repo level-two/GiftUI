@@ -557,6 +557,71 @@ public func giftUISignalAnalyzerInitialGestureReady() -> UInt32 {
     giftUIStaticGestureSession.hasPresentation ? 1 : 0
 }
 
+@_cdecl("giftui_signal_analyzer_initial_start_point")
+public func giftUISignalAnalyzerInitialStartPoint() -> UInt32 {
+    guard let start = giftUIStaticInteractionOwner.committedRecord(at: 0),
+        start.action.code == 0, start.isEnabled
+    else { return 0 }
+    let x = start.hitBounds.origin.x + start.hitBounds.size.width / 2
+    let y = start.hitBounds.origin.y + start.hitBounds.size.height / 2
+    guard x >= 0, x < 480, y >= 0, y < 320 else { return 0 }
+    return UInt32(y) << 16 | UInt32(x)
+}
+
+@_cdecl("giftui_signal_analyzer_drain_initial_input")
+public func giftUISignalAnalyzerDrainInitialInput(
+    _ profile: UnsafeMutableRawPointer?, _ profileBytes: UInt32,
+    _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
+) -> UInt32 {
+    guard let profile, profileBytes == 39_696,
+        let capture, captureBytes == 115_392,
+        giftUIStaticGestureSession.hasPresentation,
+        giftUIStaticModelLocation.activeGeneration != nil
+    else { return 0 }
+    let profileStorage = UnsafeMutableRawBufferPointer(
+        start: profile, count: Int(profileBytes)
+    )
+    let captureStorage = UnsafeMutableRawBufferPointer(
+        start: capture, count: Int(captureBytes)
+    )
+    return withUnsafeMutablePointer(to: &giftUIStaticGestureSession) { gestures in
+        withUnsafeMutablePointer(to: &giftUIStaticInteractionOwner) { interaction in
+            withUnsafeMutablePointer(to: &giftUIStaticModelLocation) { model in
+                withUnsafeMutablePointer(to: &giftUIStaticRepository) { repository in
+                    var handler = StaticSignalAnalyzerNRFEmbeddedInputHandler(
+                        gestures: gestures, interaction: interaction, model: model
+                    )
+                    guard case .completed = giftUIStaticRunInputOpportunity(
+                        into: &handler
+                    ), var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
+                        resumingActiveStorage: UnsafeMutableRawBufferPointer(
+                            rebasing: profileStorage[31_632 ..< 35_472]
+                        ),
+                        sealedStorage: UnsafeMutableRawBufferPointer(
+                            rebasing: profileStorage[35_472 ..< 39_312]
+                        )
+                    ) else { return 0 }
+                    var index: UInt16 = 0
+                    while index < handler.actionCount {
+                        guard let actionCode = handler.actionCode(at: index),
+                            let generation = model.pointee.activeGeneration,
+                            StaticSignalAnalyzerNRFEmbeddedActionDispatcher.dispatch(
+                                actionCode: actionCode, modelGeneration: generation,
+                                model: &model.pointee,
+                                repository: &repository.pointee,
+                                admission: &admission,
+                                captureStorage: captureStorage
+                            )
+                        else { return 0 }
+                        index += 1
+                    }
+                    return UInt32(handler.actionCount) + 1
+                }
+            }
+        }
+    }
+}
+
 @_cdecl("giftui_signal_analyzer_retire_initial")
 public func giftUISignalAnalyzerRetireInitial() {
     giftUIStaticRetire(

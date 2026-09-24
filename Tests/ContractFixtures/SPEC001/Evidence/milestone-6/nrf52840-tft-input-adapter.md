@@ -1599,3 +1599,16 @@ nRF gate passed at
 `.build/contract-reports/spec-001/20260924T010011Z-90095/nrf52840-embedded/`.
 The checked image uses 193,344 RAM and 241,012 flash bytes. Production input
 draining and recurring offers remain open.
+
+The firmware now exports a production input opportunity entry over its
+retained input, gesture, interaction, model, and repository owners. It drains
+normalized contacts, resumes the fixed fact rings, and dispatches each
+admitted action through the typed model/repository path. The exact-source
+native probe installs revision 1, queues a Start down/up pair, and verifies
+one dispatched action and an empty queue. The entry is retained in the
+cross-built ELF even while the finite device validator keeps input closed.
+The registered nRF gate passed at
+`.build/contract-reports/spec-001/20260924T010955Z-94610/nrf52840-embedded/`.
+The linked image uses 193,344 RAM and 243,208 flash bytes. Recurring frame
+offers, input revision advancement, and the production lifecycle loop remain
+open.

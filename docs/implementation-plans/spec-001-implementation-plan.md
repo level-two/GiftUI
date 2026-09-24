@@ -1719,6 +1719,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       sealed facts. The exact-source native probe and registered gate pass at
       193,344 RAM and 241,012 flash bytes. Real input draining and repeated
       display offers remain open.
+      A retained firmware opportunity entry now drains its fixed normalized
+      input queue into the gesture owner, resumes fact regions, and dispatches
+      admitted actions through model and repository. The exact-source native
+      probe queues Start and verifies one dispatch; the registered gate passes
+      with 193,344 RAM and 243,208 flash bytes. The finite validator still
+      leaves physical input closed, and recurring offers remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

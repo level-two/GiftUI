@@ -32,12 +32,20 @@ extern uint32_t giftui_signal_analyzer_present_initial(
     int (*write)(uint16_t, uint16_t, uint16_t, uint16_t,
                  const uint8_t *, size_t));
 extern void giftui_signal_analyzer_retire_initial(void);
+extern uint32_t giftui_signal_analyzer_drain_initial_input(
+    void *profile, uint32_t profile_bytes,
+    void *capture, uint32_t capture_bytes);
 
 /* Keep the future committed-interaction handoff linkable without granting
  * input eligibility in this finite diagnostic path. */
 __attribute__((used, retain))
 static int32_t (*const giftui_committed_presentation_entry)(uint32_t) =
     giftui_signal_analyzer_input_install_presentation;
+
+__attribute__((used, retain))
+static uint32_t (*const giftui_normalized_input_drain_entry)(
+    void *, uint32_t, void *, uint32_t) =
+    giftui_signal_analyzer_drain_initial_input;
 
 static void wait_microseconds(uint32_t duration)
 {
