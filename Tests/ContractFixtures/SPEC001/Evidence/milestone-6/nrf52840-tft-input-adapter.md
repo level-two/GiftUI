@@ -1638,3 +1638,13 @@ first-frame counts. The registered nRF gate passed at
 `.build/contract-reports/spec-001/20260924T012828Z-1086/nrf52840-embedded/`.
 The linked image uses 193,344 RAM and 243,808 flash bytes. The paced firmware
 loop still must call this entry at its deadline.
+
+The C touch pipeline now accepts only advancing physical presentation
+revisions and resets its contact sequence on replacement. It withholds
+contact admission until an observed release, then tags the next down with
+the new revision and completed-prior-sequence evidence. The focused C99
+fixture covers duplicate-revision refusal and a held contact across
+replacement; the registered nRF gate passed at
+`.build/contract-reports/spec-001/20260924T013346Z-3475/nrf52840-embedded/`.
+The linked image uses 193,344 RAM and 243,840 flash bytes. The production
+lifecycle still must call this handoff after each accepted replacement.

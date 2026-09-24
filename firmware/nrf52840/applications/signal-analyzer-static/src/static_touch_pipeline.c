@@ -27,6 +27,20 @@ int giftui_static_touch_pipeline_initialize(
     return 0;
 }
 
+int giftui_static_touch_pipeline_present(
+    struct giftui_static_touch_pipeline *pipeline,
+    uint32_t observed_presentation_revision)
+{
+    if (pipeline == NULL || pipeline->valid == 0U ||
+        observed_presentation_revision == 0U ||
+        observed_presentation_revision <= pipeline->observed_presentation_revision) {
+        return -EINVAL;
+    }
+    pipeline->observed_presentation_revision = observed_presentation_revision;
+    giftui_static_touch_pipeline_transport_reset(pipeline);
+    return 0;
+}
+
 enum giftui_static_touch_pipeline_result giftui_static_touch_pipeline_update(
     struct giftui_static_touch_pipeline *pipeline,
     uint8_t touching,

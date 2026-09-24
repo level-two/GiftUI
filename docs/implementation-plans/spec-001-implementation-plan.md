@@ -1737,6 +1737,10 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       The exact-source probe renders after Start plus one scheduled
       transition; the gate uses 193,344 RAM and 243,808 flash bytes. The
       paced firmware loop still needs to invoke that entry at its deadline.
+      The C touch pipeline now advances only to newer physical revisions,
+      cancels a held contact, and waits for release before forwarding a new
+      down. The C99 fixture and registered gate pass at 193,344 RAM and
+      243,840 flash bytes. Production lifecycle wiring remains open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

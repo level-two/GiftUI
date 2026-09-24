@@ -28,6 +28,11 @@ GIFTUI_STATIC_TOUCH_ENTRY int giftui_static_touch_pipeline_initialize(
     const struct giftui_touch_calibration *calibration,
     uint32_t observed_presentation_revision);
 
+/* Replacement frames invalidate the current physical sequence until release. */
+GIFTUI_STATIC_TOUCH_ENTRY int giftui_static_touch_pipeline_present(
+    struct giftui_static_touch_pipeline *pipeline,
+    uint32_t observed_presentation_revision);
+
 GIFTUI_STATIC_TOUCH_ENTRY enum giftui_static_touch_pipeline_result
 giftui_static_touch_pipeline_update(
     struct giftui_static_touch_pipeline *pipeline,

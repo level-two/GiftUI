@@ -167,10 +167,43 @@ static void invalid_and_refused_handoff_fail_closed(void)
            GIFTUI_STATIC_TOUCH_PIPELINE_NONE);
 }
 
+static void replacement_waits_for_release_before_new_revision(void)
+{
+    struct giftui_static_touch_pipeline pipeline;
+    struct giftui_touch_calibration configured = calibration();
+    struct ads7846_raw_sample sample = {
+        .x = 600U, .y = 1200U, .z1 = 1U, .z2 = 2U,
+    };
+    int32_t outcome = 0;
+    const uint32_t initial_admissions = admission_count;
+    assert(giftui_static_touch_pipeline_initialize(
+               &pipeline, &configured, 20U) == 0);
+    assert(giftui_static_touch_pipeline_update(
+               &pipeline, 1U, &sample, &outcome) ==
+           GIFTUI_STATIC_TOUCH_PIPELINE_SUBMITTED);
+    assert(admitted_revision == 20U);
+    assert(giftui_static_touch_pipeline_present(&pipeline, 20U) == -EINVAL);
+    assert(giftui_static_touch_pipeline_present(&pipeline, 21U) == 0);
+    assert(giftui_static_touch_pipeline_update(
+               &pipeline, 1U, &sample, &outcome) ==
+           GIFTUI_STATIC_TOUCH_PIPELINE_NONE);
+    assert(admission_count == initial_admissions + 1U);
+    assert(giftui_static_touch_pipeline_update(
+               &pipeline, 0U, NULL, &outcome) ==
+           GIFTUI_STATIC_TOUCH_PIPELINE_NONE);
+    assert(giftui_static_touch_pipeline_update(
+               &pipeline, 1U, &sample, &outcome) ==
+           GIFTUI_STATIC_TOUCH_PIPELINE_SUBMITTED);
+    assert(admitted_revision == 21U);
+    assert(admitted_phase == GIFTUI_TOUCH_PHASE_DOWN);
+    assert(admitted_prior_complete == 1U);
+}
+
 int main(void)
 {
     normalized_sequence_reaches_swift_bridge();
     transport_failure_requires_observed_release();
     invalid_and_refused_handoff_fail_closed();
+    replacement_waits_for_release_before_new_revision();
     return 0;
 }
