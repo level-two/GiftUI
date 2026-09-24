@@ -128,15 +128,17 @@ package protocol InteractionGestureResolver {
     ) -> PointerGestureOutcome<Identity>
 }
 
-package protocol ActionModelTargetAccess {
-    associatedtype Model: _GiftUIObservableReference
+#if !GIFTUI_NRF_EMBEDDED
+    package protocol ActionModelTargetAccess {
+        associatedtype Model: _GiftUIObservableReference
 
-    borrowing func currentGeneration() -> ObservableTargetGeneration?
-    mutating func withCurrentModel(
-        matching generation: ObservableTargetGeneration,
-        _ body: (borrowing Model) -> Void
-    ) -> Bool
-}
+        borrowing func currentGeneration() -> ObservableTargetGeneration?
+        mutating func withCurrentModel(
+            matching generation: ObservableTargetGeneration,
+            _ body: (borrowing Model) -> Void
+        ) -> Bool
+    }
+#endif
 
 package protocol InteractionCommittedActionView {
     associatedtype Identity: Equatable & Sendable

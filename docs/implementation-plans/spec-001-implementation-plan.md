@@ -1681,6 +1681,12 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       The exact-source check and registered gate pass at 188,288 RAM and
       222,656 flash bytes. Physical interaction candidate construction and
       commit remain open.
+      The shared Static interaction state now compiles in the firmware image.
+      A scoped probe stages six generated actions with their model generation,
+      commits only after the full physical offer, and proves later candidate
+      discard leaves the prior committed revision intact. The latest gate uses
+      188,288 RAM and 231,040 flash bytes. Retaining that committed state
+      across the firmware lifetime and connecting input remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

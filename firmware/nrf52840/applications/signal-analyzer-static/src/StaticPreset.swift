@@ -657,8 +657,24 @@ private func giftUIStaticFullCanvas(
         semantic: semantic, layout: resolved
     ), actions.count == 6,
         actions.occurrence(at: 0)?.actionCode == 0,
-        actions.occurrence(at: 5)?.actionCode == 5
+        actions.occurrence(at: 5)?.actionCode == 5,
+        var interactionProbe = StaticSignalAnalyzerNRFEmbeddedInteractionOwner(),
+        interactionProbe.build(
+            occurrences: actions,
+            targetGeneration: ObservableTargetGeneration(
+                rawValue: model.activeGeneration ?? 0
+            )
+        ), interactionProbe.candidateIsReadyForOffer
     else { return 0 }
+    var interactionCandidatePending = true
+    defer {
+        if interactionCandidatePending {
+            interactionProbe.resolve(
+                accepted: false,
+                presentationRevision: PresentationRevision(rawValue: 1)
+            )
+        }
+    }
     guard (!validation || model.activate() != nil),
         var source = StaticSignalAnalyzerNRFEmbeddedCanvasSource(
             semantic: semantic, model: model,
@@ -749,9 +765,31 @@ private func giftUIStaticFullCanvas(
         ), drawing: drawing, expectedHeader: renderHeader
     ), fullEndpoint.bodyCallCount == 1
     else { return 0 }
+    interactionProbe.resolve(
+        accepted: true,
+        presentationRevision: PresentationRevision(rawValue: 1)
+    )
+    interactionCandidatePending = false
+    guard interactionProbe.committedRecordCount == 6,
+        interactionProbe.committedRevision?.rawValue == 1,
+        interactionProbe.committedRecord(at: 0)?.action.code == 0,
+        interactionProbe.committedRecord(at: 5)?.action.code == 5
+    else { return 0 }
     if !validation {
         return 1
     }
+    guard interactionProbe.build(
+        occurrences: actions,
+        targetGeneration: ObservableTargetGeneration(rawValue: 0)
+    ), interactionProbe.candidateIsReadyForOffer
+    else { return 0 }
+    interactionProbe.resolve(
+        accepted: false,
+        presentationRevision: PresentationRevision(rawValue: 2)
+    )
+    guard interactionProbe.committedRecordCount == 6,
+        interactionProbe.committedRevision?.rawValue == 1
+    else { return 0 }
     guard var refusingSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(
         rasterRegion: UnsafeMutableRawBufferPointer(
             start: raster, count: Int(rasterBytes)

@@ -1522,3 +1522,16 @@ registered nRF gate passed at
 `.build/contract-reports/spec-001/20260924T001022Z-69913/nrf52840-embedded/`.
 The checked image uses 188,288 RAM and 222,656 flash bytes. Building and
 committing the physical interaction candidate remains open.
+
+The exact firmware source now also compiles the shared Static interaction
+candidate, committed-record, and hit-region stores with six-slot limits.
+A scoped adapter stages all six generated actions with the current typed
+model generation, assigns action generations, and resolves the candidate
+only after the complete endpoint offer. The native probe verifies six
+committed action codes and that discarding a later candidate preserves the
+earlier committed revision. Early exits discard the staged candidate. The
+registered nRF gate passed at
+`.build/contract-reports/spec-001/20260924T002233Z-74969/nrf52840-embedded/`.
+The checked image uses 188,288 RAM and 231,040 flash bytes. The interaction
+state is still attempt-local, so production retention and input handoff
+remain open.
