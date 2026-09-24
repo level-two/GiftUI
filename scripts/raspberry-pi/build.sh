@@ -124,6 +124,12 @@ build_arguments=(
 if [[ "${link_static}" -eq 1 ]]; then
     build_arguments+=(--static-swift-stdlib)
 fi
+if [[ "${package_path}" == "${GIFTUI_PI_PROJECT_ROOT}" &&
+    "${product}" == "SignalAnalyzerRaspberryPiARMv6" ]]; then
+    # The Dynamic profile must retain portable Canvas drawing closures in
+    # every dependency, not only in the executable target.
+    build_arguments+=(-Xswiftc -DGIFTUI_DYNAMIC_PROFILE)
+fi
 
 giftui_pi_note "building ${product} for ${GIFTUI_PI_TARGET} (${configuration}, ${linkage} Swift runtime)"
 "${host_swift}" "${build_arguments[@]}"

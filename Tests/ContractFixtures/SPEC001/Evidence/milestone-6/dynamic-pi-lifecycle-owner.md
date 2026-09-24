@@ -92,3 +92,19 @@ deployment, service restart, or connected-target execution. Console ownership
 and restoration are covered separately by the PiScreen platform-adapter
 evidence. T6.7 is complete; the connected application scenario remains gated
 by explicit authorization under T8.1.
+
+## ARMv6 Dynamic build correction (2026-09-24)
+
+The first authorized T8.1 production run reached the initial grid Canvas and
+failed with `DrawingProductionError.invariantViolation` before any framebuffer
+submission. The Pi build script had omitted `GIFTUI_DYNAMIC_PROFILE`, which
+made `Canvas._giftUIInvokeCanvas` take its Static branch and reject the
+Dynamic drawing closure. `scripts/raspberry-pi/build.sh` now passes the Dynamic
+define to the exact Pi product and all of its dependencies. A full ARMv6
+rebuild passed the ELF and hard-float checks. The installed artifact SHA-256
+`c56cf0dc73e8f011fea47d8cd6905938d19d9edea0631d6c84b094a9c0e03bde`
+matched the local build, and a five-second connected startup reached the timed
+loop without the former Drawing failure. The registered Pi profile passed 251
+host tests and its cross-build report at
+`.build/contract-reports/spec-001/20260924T203137Z-34590/raspberry-pi-armv6/`.
+That short startup is not the 30-second six-control T8.1 run.
