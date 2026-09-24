@@ -793,6 +793,20 @@ private func giftUIStaticFullCanvas(
         interaction.committedRecord(at: 5)?.action.code == 5
     else { return 0 }
     if !validation {
+        guard let start = interaction.committedRecord(at: 0),
+            start.isEnabled
+        else { return 0 }
+        let point = Point(
+            x: start.hitBounds.origin.x + start.hitBounds.size.width / 2,
+            y: start.hitBounds.origin.y + start.hitBounds.size.height / 2
+        )
+        var capture = PointerActionCapture<UInt32>()
+        guard case .captured(let down) = ExecutionGestureAdapter.down(
+            at: point, capture: &capture, resolver: interaction
+        ), case .activationAdmitted(let up) = ExecutionGestureAdapter.up(
+            at: point, capture: &capture, resolver: interaction
+        ), down == up, up.identity == start.identity
+        else { return 0 }
         return 1
     }
     guard interaction.build(

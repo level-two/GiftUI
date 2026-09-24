@@ -1693,6 +1693,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       cleanup. The latest gate uses 193,344 RAM and 236,540 flash bytes;
       normalized dispatch and physical input revision installation remain
       open.
+      The retained owner now lends the shared gesture resolver. A bounded
+      exact-source probe captures and releases the enabled Start action at
+      its displayed hit region with identity and generation preserved. The
+      latest gate uses 193,344 RAM and 238,076 flash bytes. Normalized input
+      queue draining and model action dispatch remain open.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

@@ -1547,3 +1547,14 @@ hardware-free gate passed at
 The image uses 193,344 RAM and 236,540 flash bytes. Normalized gesture
 dispatch and physical input revision installation remain open, so the input
 bridge stays ineligible.
+
+The retained interaction owner now presents the shared gesture-resolver
+interface. After the accepted normal first frame, an exact-source probe
+chooses the enabled Start action's clipped hit region and runs down/up
+through `ExecutionGestureAdapter` and `PointerActionCapture`. It requires the
+same captured identity and generation at release before admitting activation.
+The registered nRF gate passed at
+`.build/contract-reports/spec-001/20260924T003222Z-78564/nrf52840-embedded/`.
+The checked image uses 193,344 RAM and 238,076 flash bytes. This is a scoped
+gesture check; normalized queue draining, action dispatch, and calibrated
+physical input remain open.

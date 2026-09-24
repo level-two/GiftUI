@@ -1,7 +1,10 @@
 #if GIFTUI_NRF_EMBEDDED
     /// Stages generated action records with the shared Static interaction
     /// grammar. The caller resolves each candidate after its physical offer.
-    package struct StaticSignalAnalyzerNRFEmbeddedInteractionOwner {
+    package struct StaticSignalAnalyzerNRFEmbeddedInteractionOwner:
+        InteractionGestureResolver
+    {
+        package typealias Identity = UInt32
         private var interaction: StaticInteractionState<UInt32>
         private var generations = ActionGenerationAllocator()
 
@@ -37,6 +40,22 @@
             -> BoundActionRecord<UInt32>?
         {
             interaction.committedRecord(at: index)
+        }
+
+        package borrowing func resolveDown(at point: Point) -> PointerGestureOutcome<UInt32> {
+            interaction.resolveDown(at: point)
+        }
+
+        package borrowing func resolveMove(
+            _ captured: CapturedAction<UInt32>, at point: Point
+        ) -> PointerGestureOutcome<UInt32> {
+            interaction.resolveMove(captured, at: point)
+        }
+
+        package borrowing func resolveUp(
+            _ captured: CapturedAction<UInt32>, at point: Point
+        ) -> PointerGestureOutcome<UInt32> {
+            interaction.resolveUp(captured, at: point)
         }
 
         package mutating func build(
