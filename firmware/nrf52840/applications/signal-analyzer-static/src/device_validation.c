@@ -35,6 +35,9 @@ extern void giftui_signal_analyzer_retire_initial(void);
 extern uint32_t giftui_signal_analyzer_drain_initial_input(
     void *profile, uint32_t profile_bytes,
     void *capture, uint32_t capture_bytes);
+extern uint32_t giftui_signal_analyzer_poll_scheduled_due(
+    void *profile, uint32_t profile_bytes,
+    void *capture, uint32_t capture_bytes);
 extern uint32_t giftui_signal_analyzer_present_next(
     void *profile, uint32_t profile_bytes,
     void *capture, uint32_t capture_bytes,
@@ -53,6 +56,11 @@ __attribute__((used, retain))
 static uint32_t (*const giftui_normalized_input_drain_entry)(
     void *, uint32_t, void *, uint32_t) =
     giftui_signal_analyzer_drain_initial_input;
+
+__attribute__((used, retain))
+static uint32_t (*const giftui_scheduled_fact_entry)(
+    void *, uint32_t, void *, uint32_t) =
+    giftui_signal_analyzer_poll_scheduled_due;
 
 __attribute__((used, retain))
 static uint32_t (*const giftui_replacement_canvas_entry)(

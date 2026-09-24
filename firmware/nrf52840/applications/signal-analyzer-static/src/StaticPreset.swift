@@ -671,6 +671,39 @@ public func giftUISignalAnalyzerDrainInitialInput(
     }
 }
 
+@_cdecl("giftui_signal_analyzer_poll_scheduled_due")
+public func giftUISignalAnalyzerPollScheduledDue(
+    _ profile: UnsafeMutableRawPointer?, _ profileBytes: UInt32,
+    _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
+) -> UInt32 {
+    guard let profile, profileBytes == 39_696,
+        let capture, captureBytes == 115_392,
+        giftUIStaticModelLocation.activeGeneration != nil,
+        giftUIStaticRepository.nextScheduledDelay != nil
+    else { return 0 }
+    let profileStorage = UnsafeMutableRawBufferPointer(
+        start: profile, count: Int(profileBytes)
+    )
+    let captureStorage = UnsafeMutableRawBufferPointer(
+        start: capture, count: Int(captureBytes)
+    )
+    guard var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
+        resumingActiveStorage: UnsafeMutableRawBufferPointer(
+            rebasing: profileStorage[31_632 ..< 35_472]
+        ),
+        sealedStorage: UnsafeMutableRawBufferPointer(
+            rebasing: profileStorage[35_472 ..< 39_312]
+        )
+    ), giftUIStaticRepository.pollScheduled(
+        admission: &admission, captureStorage: captureStorage
+    ) == .accepted,
+        case .applied(factCount: 1) = giftUIStaticModelLocation.applyAdmittedBatch(
+            from: &admission, captureStorage: captureStorage
+        )
+    else { return 0 }
+    return 1
+}
+
 @_cdecl("giftui_signal_analyzer_retire_initial")
 public func giftUISignalAnalyzerRetireInitial() {
     giftUIStaticRetire(
@@ -848,8 +881,12 @@ private func giftUIStaticFullCanvas(
     guard source.allReleased,
         summary.canvasOccurrenceCount == 5,
         summary.strokeCount == 5,
-        summary.pointCount == 32,
-        summary.subpathCount == 16
+        summary.pointCount >= 32,
+        summary.pointCount <= 832,
+        summary.subpathCount > 0,
+        summary.subpathCount <= 16,
+        (frameRevision != 1
+            || (summary.pointCount == 32 && summary.subpathCount == 16))
     else { return 0 }
     guard
         let gridID = source.canvasIdentity(at: 0),

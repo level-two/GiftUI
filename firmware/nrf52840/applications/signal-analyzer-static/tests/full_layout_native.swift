@@ -116,6 +116,13 @@ struct FullLayoutNativeCheck {
             "queued Start action did not dispatch through repository"
         )
         precondition(giftUISignalAnalyzerInputPendingCount() == 0)
+        let scheduledResult = giftUISignalAnalyzerPollScheduledDue(
+            profile, 39_696, capture, 115_392
+        )
+        precondition(
+            scheduledResult == 1,
+            "scheduled repository fact was not applied"
+        )
         let nextOffer = giftUISignalAnalyzerPresentNext(
             profile, 39_696, capture, 115_392, raster, 3_840,
             coverage, 240, accept

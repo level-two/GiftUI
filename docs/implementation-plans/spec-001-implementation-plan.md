@@ -1732,6 +1732,11 @@ uses the shared Presentation, and emits an immutable assembly/execution report.
       input, and checks refusal retirement. The registered gate uses 193,344
       RAM and 243,468 flash bytes. Firmware main still needs the production
       lifecycle and recurring scheduler join.
+      A retained due-transition entry now resumes exact fact regions, polls
+      one scheduled repository fact, and applies it before the next frame.
+      The exact-source probe renders after Start plus one scheduled
+      transition; the gate uses 193,344 RAM and 243,808 flash bytes. The
+      paced firmware loop still needs to invoke that entry at its deadline.
 
 ### Milestone 7: Exhaust Failure, Workload, and Resource Evidence
 

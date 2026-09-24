@@ -1627,3 +1627,14 @@ retires retained owners. The registered nRF gate passed at
 The linked image uses 193,344 RAM and 243,468 flash bytes. The firmware main
 still enters its finite validator, so scheduling these repeated offers and
 connected touch calibration remain open.
+
+The firmware now retains a scheduled-fact entry for calls made at a due
+deadline. It resumes the fixed fact regions, polls one deterministic source
+transition, and applies the sealed fact to the typed model. The exact-source
+native probe first dispatches Start through queued input, calls this entry,
+then accepts the next physical frame. Later Canvas frames check the variable
+trace point count against fixed Drawing bounds while retaining exact
+first-frame counts. The registered nRF gate passed at
+`.build/contract-reports/spec-001/20260924T012828Z-1086/nrf52840-embedded/`.
+The linked image uses 193,344 RAM and 243,808 flash bytes. The paced firmware
+loop still must call this entry at its deadline.
