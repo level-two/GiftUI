@@ -48,6 +48,8 @@ nonisolated(unsafe) private var giftUIStaticInteractionOwner =
     StaticSignalAnalyzerNRFEmbeddedInteractionOwner()!
 nonisolated(unsafe) private var giftUIStaticGestureSession =
     StaticSignalAnalyzerNRFEmbeddedGestureSession()
+nonisolated(unsafe) private var giftUIStaticGestureProbe =
+    StaticSignalAnalyzerNRFEmbeddedGestureSession()
 
 @_cdecl("giftui_signal_analyzer_model_location_valid")
 public func giftUISignalAnalyzerModelLocationValid() -> UInt32 {
@@ -534,7 +536,7 @@ public func giftUISignalAnalyzerPresentInitial(
                     )
                     return 0
                 }
-                let result = giftUIStaticFullCanvas(
+                var result = giftUIStaticFullCanvas(
                     profile, bytes, capture, captureBytes,
                     raster, rasterBytes, coverage, coverageBytes,
                     write: write, validation: false,
@@ -543,6 +545,14 @@ public func giftUISignalAnalyzerPresentInitial(
                     interaction: &interaction.pointee,
                     gestures: &gestures.pointee
                 )
+                if result == 1 {
+                    result = giftUIStaticVerifyInitialInput(
+                        model: &location.pointee,
+                        interaction: &interaction.pointee,
+                        gestures: &gestures.pointee,
+                        frameRevision: 1
+                    )
+                }
                 if result == 0 {
                     giftUIStaticRetire(
                         model: &location.pointee,
@@ -756,6 +766,7 @@ public func giftUISignalAnalyzerRetireInitial() {
     )
 }
 
+@inline(never)
 private func giftUIStaticBootstrap(
     profile: UnsafeMutableRawPointer?, profileBytes: UInt32,
     capture: UnsafeMutableRawPointer?, captureBytes: UInt32,
@@ -789,6 +800,7 @@ private func giftUIStaticBootstrap(
     return true
 }
 
+@inline(never)
 private func giftUIStaticRetire(
     model: inout StaticSignalAnalyzerNRFModelLocation,
     repository: inout StaticSignalAnalyzerNRFRepositoryProducer,
@@ -809,8 +821,6 @@ private func giftUIStaticVerifyInitialInput(
     gestures: inout StaticSignalAnalyzerNRFEmbeddedGestureSession,
     frameRevision: UInt32
 ) -> UInt32 {
-    // This first-frame probe owns several values that must not overlap the
-    // nested render traversal on the main thread's bounded stack.
     guard let start = interaction.committedRecord(at: 0),
         start.isEnabled
     else { return 0 }
@@ -818,16 +828,48 @@ private func giftUIStaticVerifyInitialInput(
         x: start.hitBounds.origin.x + start.hitBounds.size.width / 2,
         y: start.hitBounds.origin.y + start.hitBounds.size.height / 2
     )
+    guard giftUIStaticVerifyRawGesture(point: point, interaction: &interaction),
+        giftUIStaticVerifyGestureSequence(
+            point: point, model: &model, interaction: &interaction,
+            gestures: &gestures, frameRevision: frameRevision
+        ),
+        giftUIStaticVerifyInputDrain(
+            point: point, model: &model, interaction: &interaction,
+            gestures: gestures
+        )
+    else { return 0 }
+    model.clearDirtyAfterPublication()
+    return 1
+}
+
+@inline(never)
+private func giftUIStaticVerifyRawGesture(
+    point: Point,
+    interaction: inout StaticSignalAnalyzerNRFEmbeddedInteractionOwner
+) -> Bool {
+    guard let start = interaction.committedRecord(at: 0) else { return false }
     var capture = PointerActionCapture<UInt32>()
     guard case .captured(let down) = ExecutionGestureAdapter.down(
         at: point, capture: &capture, resolver: interaction
     ), case .activationAdmitted(let up) = ExecutionGestureAdapter.up(
         at: point, capture: &capture, resolver: interaction
     ), down == up, up.identity == start.identity
-    else { return 0 }
+    else { return false }
+    return true
+}
+
+@inline(never)
+private func giftUIStaticVerifyGestureSequence(
+    point: Point,
+    model: inout StaticSignalAnalyzerNRFModelLocation,
+    interaction: inout StaticSignalAnalyzerNRFEmbeddedInteractionOwner,
+    gestures: inout StaticSignalAnalyzerNRFEmbeddedGestureSession,
+    frameRevision: UInt32
+) -> Bool {
     let revision = PresentationRevision(rawValue: frameRevision)
     gestures.installPhysicalPresentation(revision)
-    var sequenceProbe = gestures
+    giftUIStaticGestureProbe.quiesce()
+    giftUIStaticGestureProbe.installPhysicalPresentation(revision)
     let source = InputSourceID(rawValue: 1)
     let sequence = PointerSequenceID(rawValue: 1)
     let downEvent = NormalizedPointerEvent(
@@ -849,20 +891,30 @@ private func giftUIStaticVerifyInitialInput(
         presentationRevision: PresentationRevision(rawValue: 0)
     )
     guard let generation = model.activeGeneration,
-        sequenceProbe.handle(
+        giftUIStaticGestureProbe.handle(
             downEvent, interaction: interaction,
             modelGeneration: generation
         ) == .consumed,
-        sequenceProbe.handle(
+        giftUIStaticGestureProbe.handle(
             upEvent, interaction: interaction,
             modelGeneration: generation
         ) == .admitted(actionCode: 0),
-        sequenceProbe.handle(
+        giftUIStaticGestureProbe.handle(
             staleEvent, interaction: interaction,
             modelGeneration: generation
         ) == .rejected,
         gestures.hasPresentation
-    else { return 0 }
+    else { return false }
+    return true
+}
+
+@inline(never)
+private func giftUIStaticVerifyInputDrain(
+    point: Point,
+    model: inout StaticSignalAnalyzerNRFModelLocation,
+    interaction: inout StaticSignalAnalyzerNRFEmbeddedInteractionOwner,
+    gestures: StaticSignalAnalyzerNRFEmbeddedGestureSession
+) -> Bool {
     var inputProbe = StaticSignalAnalyzerNRFFirmwareInputStorage(sourceRawValue: 1)
     guard inputProbe.installPhysicalPresentation(rawValue: 1),
         inputProbe.admit(
@@ -875,7 +927,7 @@ private func giftUIStaticVerifyInitialInput(
             observedPresentationRevisionRawValue: 1,
             priorPhysicalSequenceIsCompleteRawValue: 0
         )?.disposition == .queued
-    else { return 0 }
+    else { return false }
     var drainGestures = gestures
     let drained = withUnsafeMutablePointer(to: &drainGestures) { session in
         withUnsafeMutablePointer(to: &interaction) { committed in
@@ -894,9 +946,8 @@ private func giftUIStaticVerifyInitialInput(
         drained.1 == 1,
         drained.2 == 0,
         inputProbe.pendingCount == 0
-    else { return 0 }
-    model.clearDirtyAfterPublication()
-    return 1
+    else { return false }
+    return true
 }
 
 private func giftUIStaticFullCanvas(
@@ -1107,12 +1158,6 @@ private func giftUIStaticFullCanvas(
         interaction.committedRecord(at: 0)?.action.code == 0,
         interaction.committedRecord(at: 5)?.action.code == 5
     else { return 0 }
-    if !validation && frameRevision == 1 {
-        return giftUIStaticVerifyInitialInput(
-            model: &model, interaction: &interaction, gestures: &gestures,
-            frameRevision: frameRevision
-        )
-    }
     if !validation {
         gestures.installPhysicalPresentation(
             PresentationRevision(rawValue: frameRevision)
