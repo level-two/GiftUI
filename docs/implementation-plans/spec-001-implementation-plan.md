@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-13
-updated: 2026-09-24
+updated: 2026-09-25
 related_design_notes:
   - ../implementation-designs/spec-001-presentation-admission-and-failure.md
   - ../implementation-designs/spec-001-four-host-application-join.md
@@ -14,7 +14,8 @@ related_design_notes:
   - ../implementation-designs/spec-001-nrf-static-semantic-records.md
   - ../implementation-designs/spec-001-nrf-static-layout-records.md
 conformance_report: ../conformance/spec-001-conformance.md
-related_future_work: []
+related_future_work:
+  - FW-023
 related_explorations: []
 related_spikes: []
 supersedes: null
@@ -2049,7 +2050,11 @@ not warrant design notes.
 
 ## Deferred and Follow-up Work
 
-SPEC-001 originates no deferred item. This plan schedules none. Public binding
+The connected nRF attempt exposed a physical 240 x 320 direct-SPI module in
+place of the approved 480 x 320 target. Optional support for that separate
+module is captured in
+[FW-023](../future-work/fw-023-ili9341-240x320-target-variant.md); the
+current T8.2 hardware mismatch remains a blocker. Public binding
 and fine-grained property observation remain in RFC-008's linked
 [FW-017](../future-work/fw-017-public-binding-abstraction.md) and
 [FW-019](../future-work/fw-019-fine-grained-observable-dependency-tracking.md);

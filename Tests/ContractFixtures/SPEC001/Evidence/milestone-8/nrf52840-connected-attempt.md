@@ -82,3 +82,32 @@ not contain a reliable untouched fill interval. The maintainer's earlier
 photo showed a partial image from the previous firmware. A fresh visual
 inspection, six physical controls, frame cadence, and touch behavior are
 still needed before T8.2 can pass.
+
+## Physical display identification and blocked gate
+
+The maintainer's follow-up front photo showed a mostly white panel with a few
+colored lines at the top. While the firmware was in its production scheduler,
+the built-in `ili9486_render_color_bars()` diagnostic returned zero through
+J-Link, but the maintainer observed no eight-bar pattern: only top lines and
+green dots at the bottom left. SPI API success therefore does not establish
+correct display output.
+
+The maintainer then supplied a back photo. Its silkscreen reads
+`KMRTM24024-SPI` and `2.4 TFT SPI 240*320`. The display pins are marked
+`CS`, `RESET`, `D/C`, `SDI(MOSI)`, `SCK`, `LED`, and `SDO(MISO)`; separate
+`T_CLK`, `T_CS`, `T_DIN`, `T_OUT`, and `T_IRQ` pins serve touch. This is a
+240 x 320 direct-SPI module, commonly documented as ILI9341-class, rather
+than the approved 480 x 320 ILI9486 PiScreen serial-to-parallel target. The
+flashed firmware's extent, address windows, command framing, and controller
+initialization therefore do not match the physical panel. The visible failure
+is consistent with this mismatch; no display, touch, or 30-second connected
+scenario pass is claimed.
+
+An ILI9486 initialization candidate was briefly cross-built and flashed
+before the back photo arrived. It added the Linux ILI9486 power, VCOM, and
+gamma sequence, but cannot make this 240 x 320 direct-SPI module conform.
+That source change was removed after identification. T8.2 remains open until
+a supported 480 x 320 ILI9486/ADS7846 display is connected or the approved
+contracts are explicitly revised through the lifecycle. An optional
+240 x 320 target variant is preserved separately in
+[FW-023](../../../../docs/future-work/fw-023-ili9341-240x320-target-variant.md).
