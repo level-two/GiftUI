@@ -146,3 +146,6 @@ On 2026-09-25 the maintainer confirmed that the Pi address remains
 Mac lost both packets, and the latest attempt reported `No route to host`.
 No further deployment was attempted; the corrected binary still needs an
 `armv6l` check and connected display/input run when SSH returns.
+The Mac retained its local `192.168.55.15/24` address and an `en0` route to
+`.44`, but ARP for `.44` remained incomplete. This points to target/network
+reachability rather than a missing Mac route.

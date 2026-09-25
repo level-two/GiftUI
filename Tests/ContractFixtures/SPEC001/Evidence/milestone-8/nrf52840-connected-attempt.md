@@ -37,3 +37,10 @@ the later fault demonstrates that this is not the peak. No successful initial
 frame, 30-second run, six-control input sequence, or resource high-water mark
 can be claimed. T8.2 remains blocked on reducing peak render stack use within
 the approved 192 KiB RAM ceiling, then repeating the connected campaign.
+
+A temporary diagnostic image skipped only the startup full-canvas self-check.
+It reached the same main-stack guard fault (`0x20029320`) in the production
+path, so skipping the self-check cannot resolve the connected failure. The
+source was restored, and the committed HEX with SHA-256
+`2d74201c5043f3999e95be187d7b7df233fbc718768fdf9342fd058d96aef5c1`
+was reflashed successfully. The repository working tree is clean.
