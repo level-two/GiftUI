@@ -2,7 +2,7 @@
 id: PROPOSAL-007
 feature: kmrtm24024-spi
 title: KMRTM24024-SPI nRF52840 Target Support
-status: draft
+status: accepted
 authors:
   - codex
 created: 2026-09-25
