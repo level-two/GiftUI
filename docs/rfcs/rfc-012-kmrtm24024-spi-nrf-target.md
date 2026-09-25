@@ -26,7 +26,8 @@ target_milestone: null
 ## Summary
 
 This draft proposes a separately selected nRF52840 target configuration for
-the maintainer's 240 x 320 direct-SPI display and resistive touch module. It
+the maintainer's nominal 240 x 320 direct-SPI display and resistive touch
+module. It
 would retain the portable Signal Analyzer and established render, action, and
 input semantics, while supplying target-specific display framing, geometry,
 touch sampling and calibration, and checked static capacities. The existing
@@ -85,7 +86,8 @@ future 240 x 320 display family.
 
 1. The target must render the full shared analyzer, including status, four
    channels, grid, four data-driven traces, and six controls, on the exact
-   240 x 320 module, with no platform branch in portable Presentation.
+   nominal 240 x 320 module in a reviewed logical orientation, with no
+   platform branch in portable Presentation.
 2. Resistive touch must deliver all six actions through the established
    pointer/gesture/action path, with display and touch coordinates aligned.
 3. Target selection must be explicit and reproducible; the 480 x 320 image,
@@ -104,7 +106,7 @@ future 240 x 320 display family.
 - The nRF52840-DK build remains Embedded Swift plus Zephyr with bounded
   storage and no heap-dependent steady-state path.
 - Approved 480 x 320 fixture extents and capacities remain authoritative for
-  their existing MVP target. A 240 x 320 fixture needs its own approved
+  their existing MVP target. A fixture for this panel needs its own approved
   contract and generated metadata rather than a substituted number.
 - The display and touch may share an SPI peripheral but require independent
   selection and safe chip-select behavior; the board photo alone does not
@@ -141,11 +143,12 @@ step, but is not a conforming target result.
 
 ### Profile and validation
 
-The candidate 240 x 320 profile would reuse the common analyzer workload
-semantics and derive target-specific display and raster bounds. For a
-four-row full-width RGB565 tile, the nominal pixel storage is
-`240 * 4 * 2 = 1,920` bytes, compared with 3,840 bytes at 480 pixels wide.
-That arithmetic is a starting projection only. The approved workload
+The candidate profile would reuse the common analyzer workload semantics and
+derive target-specific display and raster bounds. Four full-width RGB565 rows
+would take 1,920 bytes for a 240 x 320 portrait logical surface or 2,560
+bytes for a 320 x 240 landscape surface, compared with 3,840 bytes at 480
+pixels wide. Orientation is undecided; these are starting projections only.
+The approved workload
 manifest, capability contributions, selected effective presentation, host
 validation, generated constants, physical transfer behavior, and actual
 linker/stack measurements must all agree. If the complete hierarchy does not
@@ -167,12 +170,14 @@ through the applicable contracts rather than weakened at runtime.
 
 The candidate design adds no portable GiftUI or Signal Analyzer API. Build
 and host configuration gain a named target choice. If complete presentation
-requires a portable layout change at 240 x 320, that change must be reviewed
+requires a portable layout change at the selected logical extent, that change
+must be reviewed
 against the already approved application contract before implementation.
 
 ## Capabilities Impact
 
-The new target would contribute its exact 240 x 320 extent, RGB565 encoding,
+The new target would contribute its selected 240 x 320 or 320 x 240 logical
+extent, RGB565 encoding,
 operation coverage, region/payload/in-flight bounds, and synchronous handoff
 to the existing resolver. Touch support is required for the complete target,
 not an optional capability fallback. A missing or incompatible contribution
@@ -211,8 +216,9 @@ behind display transfers.
 
 ## Memory / Binary Size
 
-Four 240-pixel RGB565 rows require 1,920 bytes per raster or payload slot,
-subject to accepted profile capacity and driver segmentation. The existing
+Four RGB565 rows require 1,920 or 2,560 bytes per raster or payload slot,
+according to logical orientation and subject to accepted profile capacity
+and driver segmentation. The existing
 static capture and application storage may dominate RAM, so a smaller tile
 does not by itself prove the target fits. Separate target images may avoid
 retaining both driver code paths in one binary, at the cost of two artifacts
@@ -280,8 +286,9 @@ contract changes subject to normal approval, not implied by this RFC.
    and touch calibration give visible correct output and six reliable actions
    on this board? A bounded diagnostic connected experiment is needed.
 3. **Approval blocker:** Does the existing analyzer hierarchy fit and remain
-   legible/tappable at 240 x 320? Host layout evidence and a physical review
-   are needed; any required portable redesign needs its own approved route.
+   legible/tappable at either logical orientation? Host layout evidence and a
+   physical review are needed; any required portable redesign needs its own
+   approved route.
 4. **Approval blocker:** Which exact Specifications should gain a second
    target fixture versus a separate variant Specification, and what resource
    ceiling is justified? Contract owners must resolve this before approval.
@@ -303,8 +310,9 @@ the blockers above.
 
 If approved after the blockers are resolved, review may extract separate
 ADRs for (1) additive build-time target composition and display transport,
-(2) 240 x 320 static host profile and capability/region bounds, and (3)
-touch-controller acquisition, coordinate calibration, and SPI arbitration.
+(2) the selected-orientation static host profile and capability/region
+bounds, and (3) touch-controller acquisition, coordinate calibration, and
+SPI arbitration.
 These are candidate decisions, not accepted architecture.
 
 ## References
