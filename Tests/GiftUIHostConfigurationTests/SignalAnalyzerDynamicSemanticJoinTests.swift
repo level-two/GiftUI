@@ -50,12 +50,20 @@ private enum SemanticJoinFailure: Error {
 
 private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     let acceptsPayload: Bool
+    let onPresent: (() -> Void)?
+    let capture: ((UnsafeRawBufferPointer, [PiScreenPayloadRegion]) -> Void)?
     private(set) var payloadCount: UInt32 = 0
     private(set) var regionCount: UInt32 = 0
     private(set) var byteCount: UInt32 = 0
 
-    init(acceptsPayload: Bool = true) {
+    init(
+        acceptsPayload: Bool = true,
+        onPresent: (() -> Void)? = nil,
+        capture: ((UnsafeRawBufferPointer, [PiScreenPayloadRegion]) -> Void)? = nil
+    ) {
         self.acceptsPayload = acceptsPayload
+        self.onPresent = onPresent
+        self.capture = capture
     }
 
     mutating func presentRGB565BigEndian(
@@ -67,6 +75,8 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
             return false
         }
         guard acceptsPayload else { return false }
+        onPresent?()
+        capture?(bytes, regions)
         payloadCount += 1
         regionCount += UInt32(regions.count)
         byteCount += UInt32(bytes.count)
@@ -74,7 +84,34 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     }
 }
 
+private final class LogicalFrameCapture {
+    var pixels = [UInt16](repeating: 0, count: 240 * 240)
+    var maximumRegionsPerPayload = 0
+
+    func record(_ bytes: UnsafeRawBufferPointer, _ regions: [PiScreenPayloadRegion]) {
+        maximumRegionsPerPayload = max(maximumRegionsPerPayload, regions.count)
+        for region in regions {
+            let y = Int(region.origin.y)
+            let x = Int(region.origin.x)
+            for pixel in 0 ..< Int(region.pixelCount) {
+                let offset = Int(region.byteOffset) + pixel * 2
+                if y >= 0 && y < 240 && x + pixel >= 0 && x + pixel < 240 {
+                    pixels[y * 240 + x + pixel] =
+                        UInt16(bytes[offset]) << 8 | UInt16(bytes[offset + 1])
+                }
+            }
+        }
+    }
+
+    func nonBlackPixels(rows: Range<Int>) -> Int {
+        rows.reduce(0) { count, y in
+            count + pixels[(y * 240) ..< ((y + 1) * 240)].filter { $0 != 0 }.count
+        }
+    }
+}
+
 @Test func dynamicPiEndpointFactoryStreamsTheProductionCandidate() throws {
+    let capture = LogicalFrameCapture()
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     let effective = dynamicPiEffectivePresentation(preset: preset)
     let provenance = FrameProvenance(
@@ -92,7 +129,8 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
         )
     )
     let target = try #require(
-        PiScreenDisplayTarget(sink: EndpointFramebufferSink(), layout: layout)
+        PiScreenDisplayTarget(
+            sink: EndpointFramebufferSink(capture: capture.record), layout: layout)
     )
     var endpoint = try #require(
         DynamicSignalAnalyzerPiEndpointFactory.make(
@@ -130,6 +168,12 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(endpoint.sink.target.sink.payloadCount > 0)
     #expect(endpoint.sink.target.sink.regionCount > 0)
     #expect(endpoint.sink.target.sink.byteCount > 0)
+    #expect(endpoint.sink.failure == nil)
+    #expect(capture.maximumRegionsPerPayload <= 16)
+    #expect(capture.nonBlackPixels(rows: 4 ..< 24) > 0)
+    #expect(capture.nonBlackPixels(rows: 26 ..< 50) > 0)
+    #expect(capture.nonBlackPixels(rows: 50 ..< 170) > 0)
+    #expect(capture.nonBlackPixels(rows: 174 ..< 220) > 0)
 }
 
 @Test func dynamicPiInitialPresentationEnablesInputOnlyAfterAcceptedFrame() throws {
@@ -847,6 +891,7 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
 
 @Test func dynamicPiLifecycleOwnerRunsSevenStepsAndEightStepTeardown() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    var clock: UInt64 = 0
     let layout = try #require(
         PiScreenFramebufferLayout(
             width: 480,
@@ -857,7 +902,12 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
         )
     )
     let target = try #require(
-        PiScreenDisplayTarget(sink: EndpointFramebufferSink(), layout: layout)
+        PiScreenDisplayTarget(
+            sink: EndpointFramebufferSink(onPresent: {
+                if clock == 0 { clock = 1_000_000 }
+            }),
+            layout: layout
+        )
     )
     guard case .valid(let assemblyReport) = DynamicSignalAnalyzerPiAssembly.validate() else {
         Issue.record("Dynamic Pi production assembly did not validate")
@@ -869,7 +919,7 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
         inputSource: InputSourceID(rawValue: 91),
         initialFrameOriginMicroseconds: 0,
         timingScale: SignalSourceTimingScale(numerator: 1, denominator: 1)!,
-        nowMicroseconds: { 0 }
+        nowMicroseconds: { clock }
     )
     var controller = MVPHostActivationController<RaspberryPiDynamicHostActivationFailure>()
 
@@ -892,9 +942,10 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
                 )
             )
     )
+    let boundary = clock + UInt64(preset.pacing.minimumFrameIntervalMicroseconds)
+    clock = boundary - 1
     #expect(owner.deliverScheduledSourceTransition())
-
-    let boundary = UInt64(preset.pacing.minimumFrameIntervalMicroseconds)
+    clock = boundary + 1
     guard case .completed(_, let result) = owner.service(at: boundary) else {
         Issue.record("active lifecycle owner did not service its paced opportunity")
         return
@@ -1019,6 +1070,7 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(
         pacing.service(
             at: boundary - 1,
+            completionTimeMicroseconds: { boundary - 1 },
             coordinator: &coordinator,
             owner: &owner,
             correlations: correlations
@@ -1027,6 +1079,7 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
     #expect(
         pacing.service(
             at: boundary,
+            completionTimeMicroseconds: { boundary + 7 },
             coordinator: &coordinator,
             owner: &owner,
             correlations: correlations
@@ -1037,9 +1090,11 @@ private struct EndpointFramebufferSink: PiScreenFramebufferSink {
             )
     )
     #expect(!pacing.opportunityIsActive)
+    #expect(pacing.recordQueuedInput(at: boundary + 6) == .failure(.timeRegression))
     #expect(
         pacing.service(
-            at: boundary,
+            at: boundary + 7,
+            completionTimeMicroseconds: { boundary + 7 },
             coordinator: &coordinator,
             owner: &owner,
             correlations: correlations

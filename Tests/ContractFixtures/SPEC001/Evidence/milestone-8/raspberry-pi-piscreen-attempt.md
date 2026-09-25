@@ -95,3 +95,48 @@ ARMv6 machine. The executable still only calls `HardwareFreePresetRunner`; it
 did not open `/dev/fb0` or `/dev/input/event0`. Consequently this run does not
 claim visible PiScreen output, physical control input, presentation cadence,
 or completion of T8.1, SPEC-011 T9.3, or SPEC-015's connected PiScreen gate.
+
+## Production PiScreen Run, 2026-09-24
+
+The maintainer authorized both connected hardware campaigns. The target again
+reported `armv6l`; the working framebuffer was `fb_ili9486` at 480 x 320,
+16-bit RGB565, with ADS7846 at `/dev/input/event0`. The production Dynamic
+Canvas build initially failed before framebuffer submission because the Pi
+cross-build omitted `GIFTUI_DYNAMIC_PROFILE`. The corrected build passed the
+profile gate and produced visible output. The production graphics-console
+transition currently requires `sudo -n`: the `giftui` account can access the
+framebuffer and input but cannot open `/dev/tty0` in its present permissions.
+
+A subsequent 60-second run used the deployed ARMv6 artifact with SHA-256
+`abd6f599689549b53fc82cd212627530111ec2783e7cefabe142b00f87699e37`:
+
+```text
+sudo -n timeout --preserve-status -s TERM 60s \
+  /home/giftui/giftui/bin/SignalAnalyzerRaspberryPiARMv6 --run-signal-analyzer
+status=completed
+```
+
+The maintainer's contemporaneous photograph showed only the title/status area
+and a mostly blank display, and reported that the UI appeared stuck. This is a
+failed visual acceptance observation even though the process exited normally.
+No six-control physical input or four-frame/second measurement was collected.
+After the run, SSH to `192.168.55.44` timed out, preventing framebuffer
+capture and further connected diagnosis. T8.1 remains open; the photo and
+process exit must not be represented as a passing connected display test.
+
+The same production endpoint was then captured through a local framebuffer
+sink. It reproduced the photographed partial frame. The raster session
+reported `capacityExhausted` after its first accepted payload: its contract
+allowed 16 regions per payload, while the Pi target's writer continued to
+advertise its 320-region construction capacity after a 16-region reservation.
+The title's last glyph submitted 21 regions, so the accepted frame drained
+without drawing the subtitle, waveform, or controls. The Pi target now applies
+the requested byte and region limits to its writer for each reservation. A
+focused regression renders the title, subtitle, waveform, and control areas,
+checks that no payload exceeds 16 regions, and requires a failure-free raster
+session. The corrected ARMv6 artifact has SHA-256
+`476bc858700222883dbb73033c364608ade8969b3f5836d4d59f50a5a52a8cdb`;
+the SPEC-001 Pi profile gate passed its 251-test host suite and cross-build at
+`.build/contract-reports/spec-001/20260925T064115Z-48271/raspberry-pi-armv6/`.
+This is local evidence for the fix; the corrected artifact has not yet been
+run on the Pi because SSH remains unavailable.

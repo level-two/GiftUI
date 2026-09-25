@@ -14,12 +14,14 @@ package enum DynamicSignalAnalyzerPiPacedOpportunityResult: Equatable, Sendable 
 
 /// Owns the single pacing state shared by Pi ingress and the serialized host loop.
 package final class DynamicSignalAnalyzerPiWakePacingOwner {
+    private let policy: HostPacingPolicy
     private var controller: HostWakePacingController
 
     package init(
         policy: HostPacingPolicy,
         initialFrameOriginMicroseconds: UInt64
     ) {
+        self.policy = policy
         controller = HostWakePacingController(
             policy: policy,
             initialFrameOriginMicroseconds: initialFrameOriginMicroseconds
@@ -32,6 +34,18 @@ package final class DynamicSignalAnalyzerPiWakePacingOwner {
 
     package var wakeIsOutstanding: Bool { controller.wakeIsOutstanding }
     package var opportunityIsActive: Bool { controller.opportunityIsActive }
+
+    /// Bootstrap facts are sealed by the direct startup opportunity. Begin
+    /// active-loop pacing from that opportunity, before its action can admit
+    /// facts for the next service window.
+    package func consumeBootstrapWake(at timestampMicroseconds: UInt64) -> Bool {
+        guard !controller.opportunityIsActive else { return false }
+        controller = HostWakePacingController(
+            policy: policy,
+            initialFrameOriginMicroseconds: timestampMicroseconds
+        )
+        return true
+    }
 
     @discardableResult
     package func recordAcceptedFact(
@@ -67,6 +81,7 @@ package final class DynamicSignalAnalyzerPiWakePacingOwner {
 
     package func service<Target>(
         at timestampMicroseconds: UInt64,
+        completionTimeMicroseconds: () -> UInt64,
         coordinator: inout DynamicSignalAnalyzerPiInputCoordinator,
         owner: inout DynamicSignalAnalyzerPiInitialPresentationOwner<Target>,
         correlations: DynamicSignalAnalyzerPiCorrelationOwner
@@ -94,7 +109,7 @@ package final class DynamicSignalAnalyzerPiWakePacingOwner {
             into: &owner,
             correlations: correlations
         )
-        if let error = controller.completeOpportunity(at: timestampMicroseconds) {
+        if let error = controller.completeOpportunity(at: completionTimeMicroseconds()) {
             return .rejected(error)
         }
         return .completed(reasons: reasons, result: result)

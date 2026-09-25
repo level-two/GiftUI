@@ -19,8 +19,8 @@ package protocol PiScreenFramebufferSink {
 }
 
 package struct PiScreenPayloadWriter: DisplayPayloadWriter {
-    package let capacityBytes: UInt32
-    package let regionCapacity: UInt16
+    package private(set) var capacityBytes: UInt32
+    package private(set) var regionCapacity: UInt16
     package private(set) var writtenBytes: UInt32 = 0
     package private(set) var writtenRegionCount: UInt16 = 0
     package private(set) var storage: [UInt8]
@@ -94,6 +94,11 @@ package struct PiScreenPayloadWriter: DisplayPayloadWriter {
         remainingRegionBytes = 0
         finished = false
     }
+
+    package mutating func limit(capacityBytes: UInt32, regionCapacity: UInt16) {
+        self.capacityBytes = capacityBytes
+        self.regionCapacity = regionCapacity
+    }
 }
 
 package struct PiScreenDisplayTarget<Sink: PiScreenFramebufferSink>: DisplayTarget {
@@ -103,6 +108,8 @@ package struct PiScreenDisplayTarget<Sink: PiScreenFramebufferSink>: DisplayTarg
     package let maximumInFlightBytes: UInt32 = 7_680
     package private(set) var sink: Sink
     package private(set) var writer: PiScreenPayloadWriter
+    private let maximumWriterBytes: UInt32
+    private let maximumWriterRegions: UInt16
     private let transform: PiScreenAspectFitTransform
     private var descriptor: RasterSurfaceDescriptor?
     private var reservation: DisplayReservationID?
@@ -126,6 +133,8 @@ package struct PiScreenDisplayTarget<Sink: PiScreenFramebufferSink>: DisplayTarg
         else { return nil }
         self.sink = sink
         self.transform = transform
+        maximumWriterBytes = payloadCapacityBytes
+        maximumWriterRegions = regionCapacity
         writer = PiScreenPayloadWriter(
             capacityBytes: payloadCapacityBytes,
             regionCapacity: regionCapacity
@@ -145,9 +154,9 @@ package struct PiScreenDisplayTarget<Sink: PiScreenFramebufferSink>: DisplayTarg
             descriptor.regionHeight == 16,
             descriptor.bytesPerRow == 480,
             payloadCapacityBytes > 0,
-            payloadCapacityBytes <= writer.capacityBytes,
+            payloadCapacityBytes <= maximumWriterBytes,
             regionCapacity > 0,
-            regionCapacity <= writer.regionCapacity
+            regionCapacity <= maximumWriterRegions
         else { return .failure(.invalidDescriptor) }
         let id = DisplayReservationID(rawValue: nextReservationRaw)
         let successor = nextReservationRaw.addingReportingOverflow(1)
@@ -155,6 +164,11 @@ package struct PiScreenDisplayTarget<Sink: PiScreenFramebufferSink>: DisplayTarg
             return .failure(.capacityExhausted)
         }
         nextReservationRaw = successor.partialValue
+        writer.discard()
+        writer.limit(
+            capacityBytes: payloadCapacityBytes,
+            regionCapacity: regionCapacity
+        )
         self.descriptor = descriptor
         reservation = id
         return .reserved(id)

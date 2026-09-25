@@ -236,6 +236,9 @@ where Target: DisplayTarget {
                 observedPresentationRevision: revision
             )
         else { return fail(.configuration(.invariantViolation)) }
+        guard pacing.consumeBootstrapWake(at: nowMicroseconds()) else {
+            return fail(.configuration(.invariantViolation))
+        }
         let result = inputCoordinator.runOpportunity(
             into: &presentationOwner,
             correlations: correlations
@@ -268,6 +271,7 @@ where Target: DisplayTarget {
         }
         let result = pacing.service(
             at: timestampMicroseconds,
+            completionTimeMicroseconds: nowMicroseconds,
             coordinator: &inputCoordinator,
             owner: &presentationOwner,
             correlations: correlations

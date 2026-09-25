@@ -100,10 +100,15 @@
                     nextSource = try sourceDeadline(owner: owner, from: now)
                 }
 
-                let pollBoundary = now.addingReportingOverflow(10_000)
+                // Fact callbacks can observe a later clock value than the one
+                // sampled before input and source delivery.
+                guard let serviceNow = LinuxSignalAnalyzerPiClock.nowMicroseconds() else {
+                    throw .clock
+                }
+                let pollBoundary = serviceNow.addingReportingOverflow(10_000)
                 guard !pollBoundary.overflow else { throw .clock }
                 var nextWake = pollBoundary.partialValue
-                switch owner.service(at: now) {
+                switch owner.service(at: serviceNow) {
                 case .noWork, .completed:
                     break
                 case .wait(let boundary):
@@ -112,8 +117,8 @@
                     throw .pacing(error)
                 }
                 nextWake = min(nextWake, nextSource)
-                if nextWake > now {
-                    let delay = min(nextWake - now, 10_000)
+                if nextWake > serviceNow {
+                    let delay = min(nextWake - serviceNow, 10_000)
                     _ = Glibc.usleep(useconds_t(delay))
                 }
             }
