@@ -180,7 +180,7 @@ where
         var localTarget = target
         var localWork = work
         let traversal = OperationMajorTileTraversal.visit(
-            operationClip: operation.clip,
+            operationClip: operation.bounds,
             damageBounds: header.damageBounds,
             workspace: &localWorkspace,
             { damage, replace in
@@ -266,7 +266,7 @@ where
                 return OperationMajorTileTraversalResult.rasterFailure
             }
             return OperationMajorTileTraversal.visit(
-                operationClip: glyphHeader.clip,
+                operationClip: inkBounds,
                 damageBounds: header.damageBounds,
                 workspace: &localWorkspace,
                 { damage, replace in

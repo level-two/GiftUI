@@ -99,6 +99,27 @@ package enum RasterStrokeCoverage {
             color: header.color,
             encoding: descriptor.encoding
         )
+        #if GIFTUI_NRF_EMBEDDED
+            let twoPointBounds: [TwoPointBounds?] = []
+        #else
+            var twoPointBounds: [TwoPointBounds?] = []
+            twoPointBounds.reserveCapacity(Int(header.subpathCount))
+            for index in 0 ..< header.subpathCount {
+                guard let subpath = stroke.subpath(at: index) else { return .invalidStroke }
+                guard subpath.pointCount == 2 else {
+                    twoPointBounds.append(nil)
+                    continue
+                }
+                guard let firstLocal = stroke.point(at: subpath.firstPoint),
+                    let secondLocal = stroke.point(at: subpath.firstPoint + 1),
+                    let first = translated(firstLocal, by: header.surfaceOrigin),
+                    let second = translated(secondLocal, by: header.surfaceOrigin)
+                else { return .invalidStroke }
+                twoPointBounds.append(
+                    TwoPointBounds(first: first, second: second, width: header.lineWidth)
+                )
+            }
+        #endif
         var replaced: UInt32 = 0
         var y = covered.minY
         while y < covered.maxY {
@@ -107,7 +128,8 @@ package enum RasterStrokeCoverage {
                 switch covers(
                     Point(x: x, y: y),
                     stroke: stroke,
-                    header: header
+                    header: header,
+                    twoPointBounds: twoPointBounds
                 ) {
                 case .covered:
                     guard replace(Point(x: x, y: y), pixel) else {
@@ -143,6 +165,26 @@ package enum RasterStrokeCoverage {
         case valid
         case invalidStroke
         case arithmeticOverflow
+    }
+
+    private struct TwoPointBounds {
+        let minimumX: Int64
+        let maximumX: Int64
+        let minimumY: Int64
+        let maximumY: Int64
+
+        init(first: Point, second: Point, width: Int32) {
+            minimumX = Int64(min(first.x, second.x)) * 2 - Int64(width)
+            maximumX = Int64(max(first.x, second.x)) * 2 + Int64(width)
+            minimumY = Int64(min(first.y, second.y)) * 2 - Int64(width)
+            maximumY = Int64(max(first.y, second.y)) * 2 + Int64(width)
+        }
+
+        func contains(_ point: Point) -> Bool {
+            let x = Int64(point.x) * 2 + 1
+            let y = Int64(point.y) * 2 + 1
+            return x >= minimumX && x <= maximumX && y >= minimumY && y <= maximumY
+        }
     }
 
     private static func validate<Stroke: StraightLineStrokeView>(
@@ -187,7 +229,8 @@ package enum RasterStrokeCoverage {
     private static func covers<Stroke: StraightLineStrokeView>(
         _ pixel: Point,
         stroke: borrowing Stroke,
-        header: StraightLineStrokeHeader
+        header: StraightLineStrokeHeader,
+        twoPointBounds: [TwoPointBounds?]
     ) -> CoverageResult {
         let centerX = (Wide(pixel.x) * 2) + 1
         let centerY = (Wide(pixel.y) * 2) + 1
@@ -196,6 +239,13 @@ package enum RasterStrokeCoverage {
         while subpathIndex < header.subpathCount {
             guard let subpath = stroke.subpath(at: subpathIndex) else {
                 return .invalidStroke
+            }
+            if !twoPointBounds.isEmpty,
+                let bounds = twoPointBounds[Int(subpathIndex)],
+                !bounds.contains(pixel)
+            {
+                subpathIndex += 1
+                continue
             }
             switch subpathCovers(
                 centerX: centerX,
