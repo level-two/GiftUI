@@ -149,3 +149,14 @@ No further deployment was attempted; the corrected binary still needs an
 The Mac retained its local `192.168.55.15/24` address and an `en0` route to
 `.44`, but ARP for `.44` remained incomplete. This points to target/network
 reachability rather than a missing Mac route.
+
+On the next Pi retry, the production product was rebuilt and passed its ARMv6
+hard-float verification. The new deployable artifact is
+`.build/raspberry-pi/artifacts/SignalAnalyzerRaspberryPiARMv6`, SHA-256
+`ab7cd23d5de29b558a84e1c5877d4df45beb40f591045917b5f0d9ad6e4c8c0c`.
+The SPEC-001 Raspberry Pi profile gate passed 251 host tests and published its
+cross-build report at
+`.build/contract-reports/spec-001/20260925T180656Z-73832/raspberry-pi-armv6/`.
+Deployment dry-run verified the intended host-key alias and atomic upload
+sequence. A real SSH `uname -m` to `192.168.55.44` timed out; a later ping
+again lost both packets. No deployment or connected display run occurred.
