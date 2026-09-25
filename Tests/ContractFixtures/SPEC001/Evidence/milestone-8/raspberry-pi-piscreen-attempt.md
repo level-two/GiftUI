@@ -140,3 +140,9 @@ the SPEC-001 Pi profile gate passed its 251-test host suite and cross-build at
 `.build/contract-reports/spec-001/20260925T064115Z-48271/raspberry-pi-armv6/`.
 This is local evidence for the fix; the corrected artifact has not yet been
 run on the Pi because SSH remains unavailable.
+
+On 2026-09-25 the maintainer confirmed that the Pi address remains
+`192.168.55.44` and began checking/rebooting it. Repeated ping from the build
+Mac lost both packets, and the latest attempt reported `No route to host`.
+No further deployment was attempted; the corrected binary still needs an
+`armv6l` check and connected display/input run when SSH returns.
