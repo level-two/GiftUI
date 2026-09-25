@@ -25,8 +25,9 @@ target_milestone: null
 ## Summary
 
 Add the maintainer's KMRTM24024-SPI 240 x 320 module as a separate nRF52840
-Signal Analyzer target. Preserve the approved 480 x 320 target and the shared
-portable application.
+Signal Analyzer display-and-touch target, with all six physical controls
+working. Preserve the approved 480 x 320 target and the shared portable
+application.
 
 ## Problem
 
@@ -46,6 +47,8 @@ to support this specific, available module. A second display size and
 transport would provide concrete evidence that the same Signal Analyzer can
 run on a smaller embedded screen. It is additional post-MVP target support,
 not a substitute for the current MVP's approved 480 x 320 nRF acceptance gate.
+The maintainer confirmed that the first supported configuration should include
+the resistive touch path and all six analyzer controls.
 
 ## Users / Use Cases
 
@@ -107,7 +110,7 @@ not a substitute for the current MVP's approved 480 x 320 nRF acceptance gate.
 
 This proposal covers one additional nRF52840 display and input configuration
 for the Signal Analyzer. Architectural and contract review must determine how
-the smaller extent, direct SPI controller, optional touch hardware, resource
+the smaller extent, direct SPI controller, fitted touch hardware, resource
 profile, build selection, and physical evidence fit the existing stack. It
 does not select those mechanisms here.
 
