@@ -44,3 +44,9 @@ path, so skipping the self-check cannot resolve the connected failure. The
 source was restored, and the committed HEX with SHA-256
 `2d74201c5043f3999e95be187d7b7df233fbc718768fdf9342fd058d96aef5c1`
 was reflashed successfully. The repository working tree is clean.
+
+The final 192-byte RAM headroom was also tested as main stack: 27,840 bytes
+made the linked image exactly 196,608 bytes (192 KiB). The connected run still
+faulted at the main-stack guard (`0x20029338`). The build was returned to its
+committed 27,648-byte stack and the committed HEX was reflashed. Increasing
+the stack within the approved RAM limit is insufficient.
