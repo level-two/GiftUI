@@ -9,52 +9,62 @@ package struct DeterministicSignalGenerator: Equatable, Sendable {
     private var ch2Level = DigitalLevel.low
     private var ch3Level = DigitalLevel.low
     private var ch4Level = DigitalLevel.low
-    private var ch1Next = Duration.milliseconds(250)
-    private var ch2Next = Duration.milliseconds(400)
-    private var ch3Next = Duration.milliseconds(80)
+    // The source schedule is defined in whole milliseconds. Keep its state in
+    // integers so the embedded realization never needs Duration arithmetic.
+    private var ch1NextMilliseconds: Int64 = 250
+    private var ch2NextMilliseconds: Int64 = 400
+    private var ch3NextMilliseconds: Int64 = 80
     private var ch3IntervalIndex = 1
     private var ch4State: UInt64
-    private var ch4Next: Duration
+    private var ch4NextMilliseconds: Int64
 
     package init(seed: UInt64) {
         ch4State = seed
         let firstInterval = Self.advanceLCG(&ch4State)
-        ch4Next = .milliseconds(firstInterval)
+        ch4NextMilliseconds = Int64(firstInterval)
     }
 
     package mutating func nextTransition() -> SignalTransition {
         let channelID: SignalChannelID
-        let timestamp = min(ch1Next, ch2Next, ch3Next, ch4Next)
+        let timestampMilliseconds = nextTimestampMilliseconds
 
-        if ch1Next == timestamp {
+        if ch1NextMilliseconds == timestampMilliseconds {
             channelID = SignalChannelID(rawValue: 1)
             ch1Level.toggle()
-            ch1Next += .milliseconds(250)
-        } else if ch2Next == timestamp {
+            ch1NextMilliseconds += 250
+        } else if ch2NextMilliseconds == timestampMilliseconds {
             channelID = SignalChannelID(rawValue: 2)
             ch2Level.toggle()
-            ch2Next += .milliseconds(400)
-        } else if ch3Next == timestamp {
+            ch2NextMilliseconds += 400
+        } else if ch3NextMilliseconds == timestampMilliseconds {
             channelID = SignalChannelID(rawValue: 3)
             ch3Level.toggle()
-            ch3Next += .milliseconds(Self.ch3Intervals[ch3IntervalIndex])
+            ch3NextMilliseconds += Int64(Self.ch3Intervals[ch3IntervalIndex])
             ch3IntervalIndex = (ch3IntervalIndex + 1) % Self.ch3Intervals.count
         } else {
             channelID = SignalChannelID(rawValue: 4)
             ch4Level.toggle()
             let interval = Self.advanceLCG(&ch4State)
-            ch4Next += .milliseconds(interval)
+            ch4NextMilliseconds += Int64(interval)
         }
 
         return SignalTransition(
             channelID: channelID,
-            timestamp: timestamp,
+            timestamp: Self.duration(milliseconds: timestampMilliseconds),
             level: level(for: channelID)
         )
     }
 
+    package var nextTimestampMilliseconds: Int64 {
+        var earliest = ch1NextMilliseconds
+        if ch2NextMilliseconds < earliest { earliest = ch2NextMilliseconds }
+        if ch3NextMilliseconds < earliest { earliest = ch3NextMilliseconds }
+        if ch4NextMilliseconds < earliest { earliest = ch4NextMilliseconds }
+        return earliest
+    }
+
     package var nextTimestamp: Duration {
-        min(ch1Next, ch2Next, ch3Next, ch4Next)
+        Self.duration(milliseconds: nextTimestampMilliseconds)
     }
 
     package func level(for channelID: SignalChannelID) -> DigitalLevel {
@@ -69,10 +79,10 @@ package struct DeterministicSignalGenerator: Equatable, Sendable {
 
     package func nextTimestamp(for channelID: SignalChannelID) -> Duration? {
         switch channelID.rawValue {
-        case 1: ch1Next
-        case 2: ch2Next
-        case 3: ch3Next
-        case 4: ch4Next
+        case 1: Self.duration(milliseconds: ch1NextMilliseconds)
+        case 2: Self.duration(milliseconds: ch2NextMilliseconds)
+        case 3: Self.duration(milliseconds: ch3NextMilliseconds)
+        case 4: Self.duration(milliseconds: ch4NextMilliseconds)
         default: nil
         }
     }
@@ -80,6 +90,13 @@ package struct DeterministicSignalGenerator: Equatable, Sendable {
     private static func advanceLCG(_ state: inout UInt64) -> Int {
         state = state &* 6_364_136_223_846_793_005 &+ 1
         return 180 + Int(state % 420)
+    }
+
+    package static func duration(milliseconds: Int64) -> Duration {
+        Duration(
+            secondsComponent: milliseconds / 1_000,
+            attosecondsComponent: (milliseconds % 1_000) * 1_000_000_000_000_000
+        )
     }
 }
 

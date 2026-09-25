@@ -24,6 +24,10 @@ package struct StaticSignalAnalyzerNRFRepositoryProducer {
         source.nextScheduledDelay
     }
 
+    package var nextScheduledDelayMilliseconds: Int64? {
+        source.nextScheduledDelayMilliseconds
+    }
+
     package mutating func startObservation(
         admission: inout StaticSignalAnalyzerNRFCaptureFactAdmission,
         captureStorage: UnsafeMutableRawBufferPointer

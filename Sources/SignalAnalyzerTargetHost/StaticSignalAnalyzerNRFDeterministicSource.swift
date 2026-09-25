@@ -7,7 +7,7 @@ package struct StaticSignalAnalyzerNRFDeterministicSource {
     private var generator: DeterministicSignalGenerator
     package private(set) var activeGeneration: UInt32?
     package private(set) var lastGeneration: UInt32 = 0
-    private var lastDeliveredTimestamp: Duration = .zero
+    private var lastDeliveredMilliseconds: Int64 = 0
     private var initialEmissionCount: UInt8 = 0
     private var isShutdown = false
 
@@ -34,16 +34,21 @@ package struct StaticSignalAnalyzerNRFDeterministicSource {
     }
 
     package var nextScheduledDelay: Duration? {
+        guard let milliseconds = nextScheduledDelayMilliseconds else { return nil }
+        return DeterministicSignalGenerator.duration(milliseconds: milliseconds)
+    }
+
+    package var nextScheduledDelayMilliseconds: Int64? {
         guard activeGeneration != nil, initialEmissionCount == 4 else { return nil }
-        return generator.nextTimestamp - lastDeliveredTimestamp
+        return generator.nextTimestampMilliseconds - lastDeliveredMilliseconds
     }
 
     package mutating func deliverScheduledTransition(
         generation: UInt32
     ) -> SignalTransition? {
         guard activeGeneration == generation, initialEmissionCount == 4 else { return nil }
+        lastDeliveredMilliseconds = generator.nextTimestampMilliseconds
         let transition = generator.nextTransition()
-        lastDeliveredTimestamp = transition.timestamp
         return transition
     }
 

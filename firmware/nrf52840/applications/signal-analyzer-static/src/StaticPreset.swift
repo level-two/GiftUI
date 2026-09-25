@@ -619,19 +619,11 @@ public func giftUISignalAnalyzerCurrentRevision() -> UInt32 {
 
 @_cdecl("giftui_signal_analyzer_next_delay_microseconds")
 public func giftUISignalAnalyzerNextDelayMicroseconds() -> UInt64 {
-    guard let delay = giftUIStaticRepository.nextScheduledDelay,
-        delay > .zero
+    guard let milliseconds = giftUIStaticRepository.nextScheduledDelayMilliseconds,
+        milliseconds > 0,
+        milliseconds <= Int64(UInt64.max / 1_000)
     else { return UInt64.max }
-    let components = delay.components
-    guard components.seconds >= 0,
-        components.attoseconds >= 0
-    else { return UInt64.max }
-    let seconds = UInt64(components.seconds)
-    guard seconds <= UInt64.max / 1_000_000 else { return UInt64.max }
-    let whole = seconds * 1_000_000
-    let fraction = UInt64(components.attoseconds) / 1_000_000_000_000
-    guard whole <= UInt64.max - fraction else { return UInt64.max }
-    let micros = whole + fraction
+    let micros = UInt64(milliseconds) * 1_000
     return micros > 0 ? micros : UInt64.max
 }
 
@@ -714,7 +706,7 @@ public func giftUISignalAnalyzerPollScheduledDue(
     guard let profile, profileBytes == 39_696,
         let capture, captureBytes == 115_392,
         giftUIStaticModelLocation.activeGeneration != nil,
-        giftUIStaticRepository.nextScheduledDelay != nil
+        giftUIStaticRepository.nextScheduledDelayMilliseconds != nil
     else { return 0 }
     let profileStorage = UnsafeMutableRawBufferPointer(
         start: profile, count: Int(profileBytes)
@@ -1768,7 +1760,7 @@ public func giftUISignalAnalyzerSourceValid() -> UInt32 {
             initial.level == .low
         else { return 0 }
     }
-    guard source.nextScheduledDelay == .milliseconds(80),
+    guard source.nextScheduledDelayMilliseconds == 80,
         let first = source.deliverScheduledTransition(generation: 1),
         first.channelID.rawValue == 3,
         first.timestamp == .milliseconds(80), first.level == .high
@@ -2052,7 +2044,7 @@ public func giftUISignalAnalyzerRepositoryProducerValid(
                 model: &location.pointee, repository: &repository,
                 admission: &admission, captureStorage: captureStorage
             ),
-            repository.nextScheduledDelay == .milliseconds(80),
+            repository.nextScheduledDelayMilliseconds == 80,
             repository.pollScheduled(
                 admission: &admission, captureStorage: captureStorage
             ) == .accepted,
