@@ -38,10 +38,11 @@ features:
     milestone: MVP
   kmrtm24024-spi:
     title: KMRTM24024-SPI nRF52840 Target Support
-    status: proposal
+    status: rfc
     proposal:
       - PROPOSAL-007
-    rfcs: []
+    rfcs:
+      - RFC-012
     adrs: []
     specs: []
     dependencies:
