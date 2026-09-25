@@ -21,6 +21,8 @@ build_first=1
 run_after=0
 restart_service=""
 dry_run=0
+resume=0
+bandwidth_kib=0
 
 usage() {
     cat <<'USAGE'
@@ -39,6 +41,8 @@ Options:
   --run                   Run the binary over SSH after deployment.
   --restart-service NAME  Restart a user systemd service after deployment.
   --dry-run               Print remote-changing commands without running them.
+  --resume                Resume a staged upload with rsync and verify its hash.
+  --bandwidth-kib N       Cap a resumed upload to N KiB/s.
   -h, --help              Show this help.
 USAGE
 }
@@ -100,6 +104,14 @@ while [[ $# -gt 0 ]]; do
         --dry-run)
             dry_run=1
             ;;
+        --resume)
+            resume=1
+            ;;
+        --bandwidth-kib)
+            [[ $# -ge 2 ]] || giftui_pi_error "--bandwidth-kib requires a value"
+            bandwidth_kib="$2"
+            shift
+            ;;
         -h | --help)
             usage
             exit 0
@@ -124,6 +136,10 @@ fi
     giftui_pi_error "invalid remote directory: ${remote_dir}"
 [[ "${remote_dir}" != *".."* ]] ||
     giftui_pi_error "remote directory must not contain '..'"
+[[ "${bandwidth_kib}" =~ ^(0|[1-9][0-9]*)$ ]] ||
+    giftui_pi_error "invalid bandwidth limit: ${bandwidth_kib}"
+[[ "${resume}" -eq 1 || "${bandwidth_kib}" -eq 0 ]] ||
+    giftui_pi_error "--bandwidth-kib requires --resume"
 if [[ -n "${restart_service}" ]]; then
     [[ "${restart_service}" =~ ^[A-Za-z0-9@._-]+$ ]] ||
         giftui_pi_error "invalid service name: ${restart_service}"
@@ -161,6 +177,12 @@ fi
 target="${user}@${host}"
 incoming="${remote_dir}/${product}.incoming"
 deployed="${remote_dir}/${product}"
+local_hash="$(shasum -a 256 "${artifact}" | awk '{print $1}')"
+printf -v rsync_shell '%q ' ssh "${ssh_options[@]}"
+rsync_options=(-a --append --inplace -e "${rsync_shell}")
+if [[ "${bandwidth_kib}" -gt 0 ]]; then
+    rsync_options+=("--bwlimit=${bandwidth_kib}")
+fi
 
 print_command() {
     printf '+'
@@ -171,7 +193,14 @@ print_command() {
 if [[ "${dry_run}" -eq 1 ]]; then
     print_command ssh "${ssh_options[@]}" "${target}" "uname -m"
     print_command ssh "${ssh_options[@]}" "${target}" "mkdir -p -- '${remote_dir}'"
-    print_command scp "${scp_options[@]}" "${artifact}" "${target}:${incoming}"
+    if [[ "${resume}" -eq 1 ]]; then
+        print_command rsync "${rsync_options[@]}" \
+            "${artifact}" "${target}:${incoming}"
+    else
+        print_command scp "${scp_options[@]}" "${artifact}" "${target}:${incoming}"
+    fi
+    print_command ssh "${ssh_options[@]}" "${target}" \
+        "sha256sum '${incoming}'"
     print_command ssh "${ssh_options[@]}" "${target}" \
         "chmod 0755 '${incoming}' && mv -f '${incoming}' '${deployed}'"
     if [[ -n "${restart_service}" ]]; then
@@ -191,7 +220,16 @@ remote_arch="$(ssh "${ssh_options[@]}" "${target}" uname -m)"
 
 giftui_pi_note "deploying ${product} to ${target}:${deployed}"
 ssh "${ssh_options[@]}" "${target}" "mkdir -p -- '${remote_dir}'"
-scp "${scp_options[@]}" "${artifact}" "${target}:${incoming}"
+if [[ "${resume}" -eq 1 ]]; then
+    command -v rsync >/dev/null || giftui_pi_error "rsync is required for --resume"
+    rsync "${rsync_options[@]}" \
+        "${artifact}" "${target}:${incoming}"
+else
+    scp "${scp_options[@]}" "${artifact}" "${target}:${incoming}"
+fi
+remote_hash="$(ssh "${ssh_options[@]}" "${target}" "sha256sum '${incoming}'" | awk '{print $1}')"
+[[ "${remote_hash}" == "${local_hash}" ]] ||
+    giftui_pi_error "staged artifact hash does not match the local artifact"
 ssh "${ssh_options[@]}" "${target}" \
     "chmod 0755 '${incoming}' && mv -f '${incoming}' '${deployed}'"
 
