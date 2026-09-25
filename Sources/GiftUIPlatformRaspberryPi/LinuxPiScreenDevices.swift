@@ -140,6 +140,7 @@
                 _ = Glibc.close(fileDescriptor)
                 throw .mappingFailed
             }
+            _ = Glibc.memset(mapping, 0, Int(layout.mappedBytes))
             self.fileDescriptor = fileDescriptor
             self.mapping = mapping
             self.layout = layout
