@@ -99,55 +99,44 @@ package enum RasterStrokeCoverage {
             color: header.color,
             encoding: descriptor.encoding
         )
-        #if GIFTUI_NRF_EMBEDDED
-            let twoPointBounds: [TwoPointBounds?] = []
-        #else
-            var twoPointBounds: [TwoPointBounds?] = []
-            twoPointBounds.reserveCapacity(Int(header.subpathCount))
-            for index in 0 ..< header.subpathCount {
-                guard let subpath = stroke.subpath(at: index) else { return .invalidStroke }
-                guard subpath.pointCount == 2 else {
-                    twoPointBounds.append(nil)
-                    continue
-                }
-                guard let firstLocal = stroke.point(at: subpath.firstPoint),
-                    let secondLocal = stroke.point(at: subpath.firstPoint + 1),
-                    let first = translated(firstLocal, by: header.surfaceOrigin),
-                    let second = translated(secondLocal, by: header.surfaceOrigin)
-                else { return .invalidStroke }
-                twoPointBounds.append(
-                    TwoPointBounds(first: first, second: second, width: header.lineWidth)
-                )
-            }
-        #endif
         var replaced: UInt32 = 0
         var y = covered.minY
         while y < covered.maxY {
             var x = covered.minX
             while x < covered.maxX {
-                switch covers(
-                    Point(x: x, y: y),
-                    stroke: stroke,
-                    header: header,
-                    twoPointBounds: twoPointBounds
-                ) {
-                case .covered:
-                    guard replace(Point(x: x, y: y), pixel) else {
-                        return .replacementRefused
-                    }
-                    let next = replaced.addingReportingOverflow(1)
-                    guard !next.overflow else {
+                #if GIFTUI_NRF_EMBEDDED
+                    let endX = covered.maxX
+                #else
+                    guard
+                        let range = nextPotentialRange(
+                            stroke,
+                            header: header,
+                            y: y,
+                            fromX: x,
+                            maximumX: covered.maxX
+                        )
+                    else { break }
+                    x = range.start
+                    let endX = range.end
+                #endif
+                while x < endX {
+                    switch covers(Point(x: x, y: y), stroke: stroke, header: header) {
+                    case .covered:
+                        guard replace(Point(x: x, y: y), pixel) else {
+                            return .replacementRefused
+                        }
+                        let next = replaced.addingReportingOverflow(1)
+                        guard !next.overflow else { return .arithmeticOverflow }
+                        replaced = next.partialValue
+                    case .notCovered:
+                        break
+                    case .invalidStroke:
+                        return .invalidStroke
+                    case .arithmeticOverflow:
                         return .arithmeticOverflow
                     }
-                    replaced = next.partialValue
-                case .notCovered:
-                    break
-                case .invalidStroke:
-                    return .invalidStroke
-                case .arithmeticOverflow:
-                    return .arithmeticOverflow
+                    x += 1
                 }
-                x += 1
             }
             y += 1
         }
@@ -167,24 +156,46 @@ package enum RasterStrokeCoverage {
         case arithmeticOverflow
     }
 
-    private struct TwoPointBounds {
-        let minimumX: Int64
-        let maximumX: Int64
-        let minimumY: Int64
-        let maximumY: Int64
-
-        init(first: Point, second: Point, width: Int32) {
-            minimumX = Int64(min(first.x, second.x)) * 2 - Int64(width)
-            maximumX = Int64(max(first.x, second.x)) * 2 + Int64(width)
-            minimumY = Int64(min(first.y, second.y)) * 2 - Int64(width)
-            maximumY = Int64(max(first.y, second.y)) * 2 + Int64(width)
+    private static func nextPotentialRange<Stroke: StraightLineStrokeView>(
+        _ stroke: borrowing Stroke,
+        header: StraightLineStrokeHeader,
+        y: Int32,
+        fromX: Int32,
+        maximumX: Int32
+    ) -> (start: Int32, end: Int32)? {
+        var bestStart = maximumX
+        var bestEnd = maximumX
+        var index: UInt16 = 0
+        while index < header.subpathCount {
+            guard let subpath = stroke.subpath(at: index) else {
+                return (fromX, maximumX)
+            }
+            if subpath.pointCount > 2 { return (fromX, maximumX) }
+            if subpath.pointCount == 2 {
+                guard let firstLocal = stroke.point(at: subpath.firstPoint),
+                    let secondLocal = stroke.point(at: subpath.firstPoint + 1),
+                    let first = translated(firstLocal, by: header.surfaceOrigin),
+                    let second = translated(secondLocal, by: header.surfaceOrigin)
+                else { return (fromX, maximumX) }
+                let width = Int64(header.lineWidth)
+                let minimumY = Int64(min(first.y, second.y)) - width
+                let maximumY = Int64(max(first.y, second.y)) + width
+                if Int64(y) >= minimumY && Int64(y) <= maximumY {
+                    let left = Int64(min(first.x, second.x)) - width
+                    let right = Int64(max(first.x, second.x)) + width + 1
+                    let start = Int32(min(Int64(maximumX), max(Int64(fromX), left)))
+                    let end = Int32(max(Int64(fromX), min(Int64(maximumX), right)))
+                    if end > start,
+                        start < bestStart || (start == bestStart && end > bestEnd)
+                    {
+                        bestStart = start
+                        bestEnd = end
+                    }
+                }
+            }
+            index += 1
         }
-
-        func contains(_ point: Point) -> Bool {
-            let x = Int64(point.x) * 2 + 1
-            let y = Int64(point.y) * 2 + 1
-            return x >= minimumX && x <= maximumX && y >= minimumY && y <= maximumY
-        }
+        return bestStart < maximumX ? (bestStart, bestEnd) : nil
     }
 
     private static func validate<Stroke: StraightLineStrokeView>(
@@ -229,8 +240,7 @@ package enum RasterStrokeCoverage {
     private static func covers<Stroke: StraightLineStrokeView>(
         _ pixel: Point,
         stroke: borrowing Stroke,
-        header: StraightLineStrokeHeader,
-        twoPointBounds: [TwoPointBounds?]
+        header: StraightLineStrokeHeader
     ) -> CoverageResult {
         let centerX = (Wide(pixel.x) * 2) + 1
         let centerY = (Wide(pixel.y) * 2) + 1
@@ -239,13 +249,6 @@ package enum RasterStrokeCoverage {
         while subpathIndex < header.subpathCount {
             guard let subpath = stroke.subpath(at: subpathIndex) else {
                 return .invalidStroke
-            }
-            if !twoPointBounds.isEmpty,
-                let bounds = twoPointBounds[Int(subpathIndex)],
-                !bounds.contains(pixel)
-            {
-                subpathIndex += 1
-                continue
             }
             switch subpathCovers(
                 centerX: centerX,

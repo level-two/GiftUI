@@ -38,6 +38,18 @@
     }
 
     enum LinuxSignalAnalyzerPiProcessLoop {
+        private static func traceFrameDuration(
+            startedAt: UInt64,
+            result: DynamicSignalAnalyzerPiPacedOpportunityResult
+        ) {
+            guard case .completed = result,
+                Glibc.getenv("GIFTUI_PI_TRACE") != nil,
+                let finishedAt = LinuxSignalAnalyzerPiClock.nowMicroseconds()
+            else { return }
+            let line = "pi-frame-duration-us \(finishedAt - startedAt)\n"
+            _ = line.withCString { Glibc.write(STDERR_FILENO, $0, Glibc.strlen($0)) }
+        }
+
         static func run(
             framebuffer: LinuxPiScreenFramebuffer,
             touch: LinuxPiScreenTouchDevice,
@@ -108,7 +120,9 @@
                 let pollBoundary = serviceNow.addingReportingOverflow(10_000)
                 guard !pollBoundary.overflow else { throw .clock }
                 var nextWake = pollBoundary.partialValue
-                switch owner.service(at: serviceNow) {
+                let result = owner.service(at: serviceNow)
+                traceFrameDuration(startedAt: serviceNow, result: result)
+                switch result {
                 case .noWork, .completed:
                     break
                 case .wait(let boundary):
