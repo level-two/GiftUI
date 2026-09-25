@@ -111,3 +111,8 @@ a supported 480 x 320 ILI9486/ADS7846 display is connected or the approved
 contracts are explicitly revised through the lifecycle. An optional
 240 x 320 target variant is preserved separately in
 [FW-023](../../../../docs/future-work/fw-023-ili9341-240x320-target-variant.md).
+The previously tested commit `c73ed22c` was rebuilt from an isolated clean
+checkout and its HEX SHA-256
+`b3394cd967200621e841166564e4a0d8df4224f0e4cf320366a4e8c65d7938ce`
+was flashed back to J-Link serial `683833660`. The display remains physically
+incompatible with that restored firmware.
