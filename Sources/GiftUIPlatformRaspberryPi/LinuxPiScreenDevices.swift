@@ -195,7 +195,10 @@
                     }
                 }
             }
-            return Glibc.msync(mapping, Int(layout.mappedBytes), MS_SYNC) == 0
+            // The SPI framebuffer driver flushes dirty mmap pages to the panel.
+            // Forcing a synchronous full-map flush for every small raster payload
+            // serializes dozens of panel transfers within one logical frame.
+            return true
         }
 
         private static func readText(path: String) -> [UInt8]? {
