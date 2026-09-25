@@ -889,6 +889,69 @@ private final class LogicalFrameCapture {
     #expect(pacing.accumulatedReasons == .admittedWork)
 }
 
+@Test func dynamicPiContactIngressRecoversAfterCompletedPhysicalSequence() {
+    let source = InputSourceID(rawValue: 30)
+    let revision = PresentationRevision(rawValue: 31)
+    var coordinator = DynamicSignalAnalyzerPiInputCoordinator(
+        source: source,
+        capacity: 16,
+        context: ExecutionContext(
+            cycle: RunCycleID(rawValue: 0),
+            semanticRevision: SemanticRevision(rawValue: 0),
+            candidateFrame: CandidateFrameID(rawValue: 0),
+            phase: .idle
+        )
+    )
+    coordinator.installPhysicalPresentation(revision)
+    let pacing = DynamicSignalAnalyzerPiWakePacingOwner(
+        policy: GeneratedSignalAnalyzerPresets.raspberryPiDynamic().pacing,
+        initialFrameOriginMicroseconds: 0
+    )
+    let ingress = DynamicSignalAnalyzerPiContactIngress(source: source)
+    let point = Point(x: 72, y: 186)
+    let down = DynamicSignalAnalyzerPiContact(phase: .down, position: point)
+    let completedDown = DynamicSignalAnalyzerPiContact(
+        phase: .down,
+        position: point,
+        priorPhysicalSequenceIsComplete: true
+    )
+    let up = DynamicSignalAnalyzerPiContact(phase: .up, position: point)
+
+    #expect(
+        ingress.admit(
+            [down], observedPresentationRevision: revision, at: 1,
+            coordinator: &coordinator, pacing: pacing
+        )
+            == .admitted(
+                .init(
+                    contactCount: 1, queuedCount: 1, rejectedCount: 0,
+                    wakeRequestCount: 1, coalescedWakeCount: 0
+                ))
+    )
+    #expect(
+        ingress.admit(
+            [down], observedPresentationRevision: revision, at: 2,
+            coordinator: &coordinator, pacing: pacing
+        )
+            == .admitted(
+                .init(
+                    contactCount: 1, queuedCount: 0, rejectedCount: 1,
+                    wakeRequestCount: 0, coalescedWakeCount: 0
+                ))
+    )
+    #expect(
+        ingress.admit(
+            [completedDown, up], observedPresentationRevision: revision, at: 3,
+            coordinator: &coordinator, pacing: pacing
+        )
+            == .admitted(
+                .init(
+                    contactCount: 2, queuedCount: 2, rejectedCount: 0,
+                    wakeRequestCount: 0, coalescedWakeCount: 2
+                ))
+    )
+}
+
 @Test func dynamicPiLifecycleOwnerRunsSevenStepsAndEightStepTeardown() throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     var clock: UInt64 = 0

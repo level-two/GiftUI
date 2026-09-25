@@ -104,6 +104,12 @@
                 if case .failure(let failure) = inputResult {
                     throw .ingress(failure)
                 }
+                if case .admitted(let summary) = inputResult,
+                    summary.contactCount > 0,
+                    Glibc.getenv("GIFTUI_PI_TRACE") != nil
+                {
+                    print("pi-input \(summary)")
+                }
 
                 if now >= nextSource {
                     guard owner.deliverScheduledSourceTransition() else {
@@ -122,6 +128,12 @@
                 var nextWake = pollBoundary.partialValue
                 let result = owner.service(at: serviceNow)
                 traceFrameDuration(startedAt: serviceNow, result: result)
+                if case .completed(_, .completed(let summary)) = result,
+                    summary.input.eventCount > 0,
+                    Glibc.getenv("GIFTUI_PI_TRACE") != nil
+                {
+                    print("pi-opportunity-input \(summary.input)")
+                }
                 switch result {
                 case .noWork, .completed:
                     break

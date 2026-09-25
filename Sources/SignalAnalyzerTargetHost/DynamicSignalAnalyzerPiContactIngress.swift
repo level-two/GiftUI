@@ -5,10 +5,16 @@ import GiftUIHostConfiguration
 package struct DynamicSignalAnalyzerPiContact: Equatable, Sendable {
     package let phase: PointerPhase
     package let position: Point
+    package let priorPhysicalSequenceIsComplete: Bool
 
-    package init(phase: PointerPhase, position: Point) {
+    package init(
+        phase: PointerPhase,
+        position: Point,
+        priorPhysicalSequenceIsComplete: Bool = false
+    ) {
         self.phase = phase
         self.position = position
+        self.priorPhysicalSequenceIsComplete = priorPhysicalSequenceIsComplete
     }
 }
 
@@ -73,7 +79,8 @@ package struct DynamicSignalAnalyzerPiContactIngress: Sendable {
                 phase: contact.phase,
                 position: contact.position,
                 source: source,
-                observedPresentationRevision: observedPresentationRevision
+                observedPresentationRevision: observedPresentationRevision,
+                priorPhysicalSequenceIsComplete: contact.priorPhysicalSequenceIsComplete
             )
             switch disposition {
             case .queued:
