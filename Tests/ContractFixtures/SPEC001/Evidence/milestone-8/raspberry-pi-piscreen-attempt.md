@@ -160,3 +160,111 @@ cross-build report at
 Deployment dry-run verified the intended host-key alias and atomic upload
 sequence. A real SSH `uname -m` to `192.168.55.44` timed out; a later ping
 again lost both packets. No deployment or connected display run occurred.
+
+## Connected Retry and Frame-Time Diagnosis, 2026-09-25
+
+The Pi returned at `192.168.55.44` and reported `armv6l`. The corrected
+production artifact (SHA-256
+`ab7cd23d5de29b558a84e1c5877d4df45beb40f591045917b5f0d9ad6e4c8c0c`)
+was deployed through `scripts/raspberry-pi/deploy.sh` after the target check.
+A 90-second foreground run returned `status=completed`. The maintainer's
+photograph showed the title, subtitle, four channel rows, three time rulers,
+and all six controls. This confirms that the preceding region-reservation fix
+removed the title-only failure, but the maintainer then reported that the
+screen draws slowly, clears, and draws again.
+
+The 480 x 320 `fb_ili9486` device has a 960-byte stride and 16-bit pixels.
+Framebuffer captures during execution show progressive drawing, including
+[a partial frame before the row-skip change](piscreen-partial-20260925.png)
+and [a partial frame after it](piscreen-row-skip-live-20260925.png). The left
+letterbox still contains text-console remnants. A 120-second run exited
+cleanly and used approximately 9.4 MiB RSS, but the process stayed CPU-bound.
+This is a failed display-responsiveness observation, not a four-frame/second
+pass.
+
+An opt-in monotonic trace measured the first presentation at approximately
+11 seconds and subsequent frames at 11-13 seconds. Removing the forced
+full-map `MS_SYNC` after each small framebuffer payload did not stop visible
+clearing. Framebuffer writes accounted for only about 0.7 seconds of each
+roughly 10-second frame; operation-level tracing identified the 12-subpath
+grid stroke as the largest cost, approximately 6 seconds. Caching two-point
+segment bounds reduced completed frame times to approximately 5-6 seconds.
+That implementation introduced unaccounted stroke storage, so it was replaced
+with a buffer-free row candidate search. Six connected frame durations from
+the replacement were 4,156,867; 4,472,800; 4,818,261; 4,760,076;
+5,102,640; and 5,208,801 microseconds. The instrumented run completed
+normally after 30 seconds.
+
+The replacement passed the 17 independent SPEC-012 raster golden masks, the
+SPEC-001 Raspberry Pi profile gate's 251 tests and ARMv6 cross-build, and the
+`signal-analyzer-static` nRF52840 build. The exact deployed ARMv6 artifact
+has SHA-256
+`11bd18e6db649d2bbe2f0da10db1f70cf6edc512fca2977624e7e52e2aa49f5c`;
+`armv6l` and the remote SHA-256 were checked before a 30-second foreground
+run returned `status=completed`. No remote service was restarted. A separate
+SPEC-012 profile run failed its module-contract owner check for
+`StaticSignalAnalyzerNRFEmbeddedRasterSink.swift` versus
+`CanvasRenderProducer.swift`; the raster oracle itself passed.
+
+T8.1 remains open. The observed 4-5-second frames miss the required
+four-frame/second cadence and responsiveness. Physical six-control input,
+event loss/duplication/staleness, recovery, and a conforming 30-second
+end-to-end run have not yet been established. The connected evidence must not
+be treated as a passing PiScreen gate.
+
+During a subsequent five-minute foreground run, the maintainer tapped the
+visible controls and reported no response; the screen continued to clear on
+each frame. An independent 15-second read from `/dev/input/event0` captured
+10,144 bytes (634 Linux input events), including 64 `BTN_TOUCH` down events,
+63 up events, and valid `ABS_X`/`ABS_Y` samples. `evtest` identified the device
+as ADS7846 with both axes declared as 0-4095. Thus physical touch reaches the
+kernel, but no action response was demonstrated. The slow synchronous frame
+blocks input polling for several seconds, and the current raw-to-logical
+calibration/interaction routing still requires a connected diagnosis. These
+samples do not prove all six actions, ordering, or event loss behavior.
+
+An opt-in app trace then showed decoded contacts at logical `(73,186)` and
+`(72,186)`, inside the host-tested Start action bounds `(61,176)` through
+`(96,196)`. The first input batches queued some events but dispatched zero
+actions; later batches repeatedly reported `queuedCount: 0` and rejected all
+contacts. The Pi touch decoder emits a new Down only after the preceding
+physical Up, but the ingress had not passed that completion proof to
+`HostNormalizedInputGate`. Once a press crossed a multi-second redraw, the
+gate could remain in its cancelled state and reject subsequent taps with no
+resynchronization proof. Commit `18311a99` forwards the decoder's proof for
+Down events, with a focused recovery test; the SPEC-001 Pi profile gate then
+passed 252 host tests and ARMv6 cross-build. Commit `501cbf02` clears the
+framebuffer at startup to remove stale console text from the letterbox.
+
+The connected 75-second run of the touch-fix build reported clean completion
+and frame durations increasing from about 4.2 to 6.3 seconds. No contacts
+arrived during that run, so physical action dispatch remains unverified. The
+four-frame/second requirement remains failed. The later bounded-arithmetic
+stroke optimization passed all 17 SPEC-012 golden masks, the independent
+raster oracle, and both ARMv6 and nRF52840 cross-builds; its connected timing
+is pending at this point in the record.
+
+The bounded-arithmetic optimization produced connected frame durations of
+4,090,260 through 5,546,760 microseconds over a completed 45-second run.
+The subsequent exact two-point stroke fast path produced 4,111,653 through
+5,618,600 microseconds over another completed 45-second run. Neither change
+materially improved the Pi cadence, so they were reverted in `2541741a` and
+`f4e3bfa4`. The latter run was on the `armv6l` Pi; no contacts were observed.
+
+The touch trace also showed many identical-position Move samples between a
+Down and Up, sufficient to consume the six-event input queue before the Up
+is admitted. Commit `bddacaaa` suppresses only unchanged-position Move
+samples at the physical decoder; a changed position still emits Move and an
+Up still emits the last active point. The focused Pi tests, the 252-test
+SPEC-001 Pi profile gate, ARMv6 cross-build, and nRF52840 static build passed.
+Connected physical action dispatch and a conforming cadence are still open.
+
+The final source state, with both ineffective raster fast paths reverted and
+the stationary-touch suppression retained, passed the 252-test SPEC-001 Pi
+profile gate and ARMv6 cross-build. Its deploy artifact has SHA-256
+`52ee1d9129822cae302f8076d383e045bab1adfa35701b96851d04c632e32df9`.
+The final upload to `192.168.55.44` failed when the Pi host dropped off the
+network (`Host is down`); three subsequent pings were lost. The preceding
+deployed executable remains the last verified connected version. A partial
+`.incoming` file may be present and must be hash-checked if resumed. The
+final touch build has therefore not yet received a connected run.
