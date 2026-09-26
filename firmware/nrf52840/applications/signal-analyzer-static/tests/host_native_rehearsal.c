@@ -32,6 +32,7 @@ static unsigned touch_phase;
 static unsigned action_index;
 static uint32_t action_prior_revision;
 static uint64_t action_started_at;
+static uint32_t last_traced_revision;
 
 struct scripted_action {
     uint16_t code;
@@ -41,7 +42,9 @@ struct scripted_action {
 };
 
 static const struct scripted_action actions[] = {
+    {0U, 0U, 1U, 1U},
     {1U, 1U, 2U, 1U},
+    {1U, 0U, 2U, 1U},
     {0U, 1U, 1U, 1U},
     {0U, 0U, 1U, 1U},
     {2U, 1U, 1U, 1U},
@@ -66,6 +69,19 @@ int ads7846_initialize(void) { return 0; }
 int ads7846_pen_is_down(void)
 {
     touch_polls++;
+    const uint32_t revision = giftui_signal_analyzer_current_revision();
+    if (revision != 0U && revision != last_traced_revision) {
+        assert(revision > last_traced_revision);
+        last_traced_revision = revision;
+        printf("trace=frame\trevision=%u\tcapture_revision=%u"
+               "\tcapture_count=%u\tstate=%u\twindow=%u"
+               "\twrites=%u\tbytes=%u\n",
+               revision, giftui_signal_analyzer_capture_revision(),
+               giftui_signal_analyzer_capture_count(),
+               giftui_signal_analyzer_acquisition_state(),
+               giftui_signal_analyzer_visible_window(), display_writes,
+               display_bytes);
+    }
     if (script_stage == 0U) {
         if (touch_phase == 0U) {
             touch_point = giftui_signal_analyzer_action_point(0U);
@@ -138,6 +154,13 @@ int ads7846_pen_is_down(void)
     if (action->code == 2U) {
         assert(giftui_signal_analyzer_capture_count() == 0U);
     }
+    printf("trace=action\tcode=%u\tdispatched=%u\trevision=%u"
+           "\tcapture_count=%u\tstate=%u\twindow=%u\n",
+           action->code, action->enabled,
+           giftui_signal_analyzer_current_revision(),
+           giftui_signal_analyzer_capture_count(),
+           giftui_signal_analyzer_acquisition_state(),
+           giftui_signal_analyzer_visible_window());
     action_index++;
     touch_phase = 0U;
     if (action_index == sizeof(actions) / sizeof(actions[0])) {

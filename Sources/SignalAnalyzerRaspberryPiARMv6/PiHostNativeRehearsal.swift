@@ -209,12 +209,28 @@ enum PiHostNativeRehearsal {
             guard
                 case .completed(_, .completed(let summary)) = result,
                 summary.application.factCount == (window == 1 ? 25 : 20),
-                summary.presentation != nil,
+                let presentation = summary.presentation,
                 owner.production.applicationCaptureRevision != nil
             else {
                 print("service-failed window=\(window) result=\(result)")
                 throw PiHostNativeRehearsalError.workload
             }
+            guard let state = owner.production.applicationState,
+                let captureRevision = owner.production.applicationCaptureRevision,
+                let presentationRevision = owner.production.currentPresentationRevision
+            else { throw PiHostNativeRehearsalError.workload }
+            print(
+                "trace=frame\tordinal=\(window)\trevision=\(presentationRevision.rawValue)"
+                    + "\tfacts=\(summary.application.factCount)"
+                    + "\tcapture_revision=\(captureRevision)"
+                    + "\tcapture_count=\(state.capture.transitions.count)"
+                    + "\tstate=\(state.acquisitionState)\twindow=\(state.visibleWindow)"
+                    + "\tsemantic_nodes=\(presentation.semantic.semanticNodeCount)"
+                    + "\tlayout_scopes=\(presentation.layout.scopeCount)"
+                    + "\tdrawing_strokes=\(presentation.drawing.strokeCount)"
+                    + "\tdrawing_points=\(presentation.drawing.pointCount)"
+                    + "\trender_operations=\(presentation.render.operationCount)"
+            )
             frames += 1
         }
         guard transitions == 2_400, frames == 120,
@@ -240,6 +256,7 @@ enum PiHostNativeRehearsal {
             (.selectTwoSeconds, .running, .twoSeconds),
         ]
         try tapAction(.start, expectedDispatch: 0, owner: &owner, device: device)
+        try traceAction(.start, dispatched: 0, owner: owner)
         for (code, expectedState, expectedWindow) in actions {
             let beforeRevision = owner.production.currentPresentationRevision
             try tapAction(code, expectedDispatch: 1, owner: &owner, device: device)
@@ -255,14 +272,20 @@ enum PiHostNativeRehearsal {
                 owner.production.applicationState?.visibleWindow == expectedWindow,
                 owner.production.currentPresentationRevision != beforeRevision
             else { throw PiHostNativeRehearsalError.action }
+            try traceAction(code, dispatched: 1, owner: owner)
             if code == .clear {
                 guard owner.production.applicationState?.capture.transitions.isEmpty == true
                 else { throw PiHostNativeRehearsalError.action }
+            }
+            if code == .stop || code == .start {
+                try tapAction(code, expectedDispatch: 0, owner: &owner, device: device)
+                try traceAction(code, dispatched: 0, owner: owner)
             }
             if code == .selectOneSecond || code == .selectFiveSeconds
                 || code == .selectTwoSeconds
             {
                 try tapAction(code, expectedDispatch: 0, owner: &owner, device: device)
+                try traceAction(code, dispatched: 0, owner: owner)
             }
             print("action=\(code)\tstate=\(expectedState)\twindow=\(expectedWindow)")
         }
@@ -310,5 +333,21 @@ enum PiHostNativeRehearsal {
                 summary.presentation == nil
             else { throw PiHostNativeRehearsalError.action }
         }
+    }
+
+    private static func traceAction(
+        _ code: SignalAnalyzerAction,
+        dispatched: UInt16,
+        owner: PiRecordingLifecycleOwner<PiScreenDisplayTarget<PiRecordingDevice>>
+    ) throws {
+        guard let state = owner.production.applicationState,
+            let revision = owner.production.currentPresentationRevision
+        else { throw PiHostNativeRehearsalError.action }
+        print(
+            "trace=action\tcode=\(code.rawValue)\tdispatched=\(dispatched)"
+                + "\trevision=\(revision.rawValue)"
+                + "\tcapture_count=\(state.capture.transitions.count)"
+                + "\tstate=\(state.acquisitionState)\twindow=\(state.visibleWindow)"
+        )
     }
 }
