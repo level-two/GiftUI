@@ -2,6 +2,21 @@ import GiftUIPlatformRaspberryPi
 import SignalAnalyzerPresetHarness
 import SignalAnalyzerTargetHost
 
+#if canImport(Darwin)
+    import Darwin
+#endif
+
+if CommandLine.arguments.dropFirst().contains("--rehearse-host") {
+    do {
+        try PiHostNativeRehearsal.run()
+        print("status=passed\tprofile=raspberry-pi-dynamic\tevidence=host-native-fixture")
+    } catch {
+        print("status=failed\tprofile=raspberry-pi-dynamic\terror=\(error)")
+        exit(1)
+    }
+    exit(0)
+}
+
 #if os(Linux)
     import Glibc
 #endif

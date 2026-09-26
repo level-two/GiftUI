@@ -363,7 +363,10 @@ let package = Package(
             name: "SignalAnalyzerRaspberryPiARMv6",
             dependencies: [
                 "GiftUI",
+                "GiftUIDisplayCore",
+                "GiftUIHostConfiguration",
                 "GiftUIPlatformRaspberryPi",
+                "SignalAnalyzerData",
                 "SignalAnalyzerPresetHarness",
                 "SignalAnalyzerTargetHost",
             ]
