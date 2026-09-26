@@ -40,6 +40,14 @@ struct giftui_production_context {
 
 static struct giftui_production_context production;
 
+/* The target uses the source's real delay. A host-native clock adapter may
+ * accelerate deadlines while retaining the production source and service loop. */
+__attribute__((weak))
+uint64_t giftui_static_host_source_clock_delay(uint64_t duration)
+{
+    return duration;
+}
+
 /* Full ADC range is the hardware-free default; connected calibration remains
  * a separately measured device setting. */
 static const struct giftui_touch_calibration touch_calibration = {
@@ -130,30 +138,31 @@ static int service(void *opaque, uint64_t now,
         giftui_signal_analyzer_input_pending_count() != 0U) {
         return -EIO;
     }
-    uint64_t delay = giftui_signal_analyzer_next_delay_microseconds();
-    if (delay == UINT64_MAX) {
-        context->next_transition_deadline = 0U;
-    } else if (context->next_transition_deadline == 0U) {
-        if (delay == 0U || delay > UINT64_MAX - now) {
-            return -ERANGE;
+    uint8_t due_count = 0U;
+    for (;;) {
+        const uint64_t delay = giftui_static_host_source_clock_delay(
+            giftui_signal_analyzer_next_delay_microseconds());
+        if (delay == UINT64_MAX) {
+            context->next_transition_deadline = 0U;
+            break;
         }
-        context->next_transition_deadline = now + delay;
-    }
-    if (context->next_transition_deadline != 0U &&
-        now >= context->next_transition_deadline) {
-        if (giftui_signal_analyzer_poll_scheduled_due(
-                regions->profile, (uint32_t)regions->profile_bytes,
-                regions->capture, (uint32_t)regions->capture_bytes) != 1U) {
-            return -EIO;
-        }
-        context->next_transition_deadline = 0U;
-        delay = giftui_signal_analyzer_next_delay_microseconds();
-        if (delay != UINT64_MAX) {
-            if (delay == 0U || delay > UINT64_MAX - now) {
+        if (context->next_transition_deadline == 0U) {
+            if (delay > UINT64_MAX - now) {
                 return -ERANGE;
             }
             context->next_transition_deadline = now + delay;
         }
+        if (now < context->next_transition_deadline) {
+            break;
+        }
+        if (due_count == 8U ||
+            giftui_signal_analyzer_poll_scheduled_due(
+                regions->profile, (uint32_t)regions->profile_bytes,
+                regions->capture, (uint32_t)regions->capture_bytes) != 1U) {
+            return -EIO;
+        }
+        due_count++;
+        context->next_transition_deadline = 0U;
     }
     if (giftui_signal_analyzer_needs_presentation() != 0U &&
         now >= context->next_frame_deadline) {

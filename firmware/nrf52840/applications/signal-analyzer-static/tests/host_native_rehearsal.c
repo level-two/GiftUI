@@ -12,6 +12,12 @@ extern uint32_t giftui_signal_analyzer_initial_model_active(void);
 extern uint16_t giftui_signal_analyzer_initial_committed_actions(void);
 extern uint32_t giftui_signal_analyzer_current_revision(void);
 extern uint32_t giftui_signal_analyzer_action_point(uint16_t);
+extern uint32_t giftui_signal_analyzer_hit_point(uint16_t);
+extern uint32_t giftui_signal_analyzer_capture_revision(void);
+extern uint32_t giftui_signal_analyzer_capture_count(void);
+extern uint32_t giftui_signal_analyzer_acquisition_state(void);
+extern uint32_t giftui_signal_analyzer_visible_window(void);
+extern uint64_t giftui_signal_analyzer_next_delay_microseconds(void);
 extern int giftui_firmware_main(void);
 
 static uint64_t clock_microseconds;
@@ -20,30 +26,128 @@ static unsigned display_writes;
 static unsigned display_bytes;
 static unsigned shutdown_order;
 static unsigned paced_frame_observed;
+static uint32_t touch_point;
+static unsigned script_stage;
+static unsigned touch_phase;
+static unsigned action_index;
+static uint32_t action_prior_revision;
+static uint64_t action_started_at;
+
+struct scripted_action {
+    uint16_t code;
+    uint8_t enabled;
+    uint8_t state;
+    uint8_t window;
+};
+
+static const struct scripted_action actions[] = {
+    {1U, 1U, 2U, 1U},
+    {0U, 1U, 1U, 1U},
+    {0U, 0U, 1U, 1U},
+    {2U, 1U, 1U, 1U},
+    {3U, 1U, 1U, 0U},
+    {3U, 0U, 1U, 0U},
+    {5U, 1U, 1U, 2U},
+    {5U, 0U, 1U, 2U},
+    {4U, 1U, 1U, 1U},
+    {4U, 0U, 1U, 1U},
+};
+
+uint64_t giftui_static_host_source_clock_delay(uint64_t duration)
+{
+    if (duration == UINT64_MAX ||
+        giftui_signal_analyzer_capture_revision() >= 2404U) {
+        return UINT64_MAX;
+    }
+    return duration * 2998U / 20177U;
+}
 
 int ads7846_initialize(void) { return 0; }
 int ads7846_pen_is_down(void)
 {
     touch_polls++;
-    if (touch_polls == 1U) {
+    if (script_stage == 0U) {
+        if (touch_phase == 0U) {
+            touch_point = giftui_signal_analyzer_action_point(0U);
+            assert(touch_point != 0U);
+            touch_phase = 1U;
+            return 1;
+        }
+        if (touch_phase == 1U) {
+            touch_phase = 2U;
+            return 0;
+        }
+        if (giftui_signal_analyzer_acquisition_state() == 1U) {
+            script_stage = 1U;
+            touch_phase = 0U;
+        }
+        return 0;
+    }
+    if (script_stage == 1U) {
+        if (clock_microseconds >= 1000000U &&
+            giftui_signal_analyzer_capture_revision() < 50U) {
+            fprintf(stderr, "source-stalled clock=%llu capture=%u frame=%u state=%u delay=%llu\n",
+                    (unsigned long long)clock_microseconds,
+                    giftui_signal_analyzer_capture_revision(),
+                    giftui_signal_analyzer_current_revision(),
+                    giftui_signal_analyzer_acquisition_state(),
+                    (unsigned long long)giftui_signal_analyzer_next_delay_microseconds());
+            return -EIO;
+        }
+        assert(giftui_signal_analyzer_capture_revision() <= 2404U);
+        if (giftui_signal_analyzer_capture_revision() == 2404U &&
+            giftui_signal_analyzer_current_revision() == 121U) {
+            paced_frame_observed = 1U;
+            script_stage = 2U;
+            printf("workload_transitions=2400\tworkload_frames=120\n");
+        }
+        return 0;
+    }
+    if (action_index == sizeof(actions) / sizeof(actions[0])) {
+        return -ECANCELED;
+    }
+    const struct scripted_action *action = &actions[action_index];
+    if (touch_phase == 0U) {
+        touch_point = giftui_signal_analyzer_hit_point(action->code);
+        assert(touch_point != 0U);
+        assert((giftui_signal_analyzer_action_point(action->code) != 0U) ==
+               (action->enabled != 0U));
+        action_prior_revision = giftui_signal_analyzer_current_revision();
+        action_started_at = clock_microseconds;
+        touch_phase = 1U;
         return 1;
     }
-    if (touch_polls == 2U) {
+    if (touch_phase == 1U) {
+        touch_phase = 2U;
         return 0;
     }
-    if (clock_microseconds < 250000U) {
-        assert(giftui_signal_analyzer_current_revision() == 1U);
-        return 0;
+    if (action->enabled != 0U) {
+        if (giftui_signal_analyzer_current_revision() ==
+            action_prior_revision) {
+            return 0;
+        }
+    } else {
+        if (clock_microseconds < action_started_at + 260000U) {
+            return 0;
+        }
+        assert(giftui_signal_analyzer_current_revision() ==
+               action_prior_revision);
     }
-    if (giftui_signal_analyzer_current_revision() < 2U) {
-        return 0;
+    assert(giftui_signal_analyzer_acquisition_state() == action->state);
+    assert(giftui_signal_analyzer_visible_window() == action->window);
+    if (action->code == 2U) {
+        assert(giftui_signal_analyzer_capture_count() == 0U);
     }
-    paced_frame_observed = 1U;
-    return -ECANCELED;
+    action_index++;
+    touch_phase = 0U;
+    if (action_index == sizeof(actions) / sizeof(actions[0])) {
+        return -ECANCELED;
+    }
+    return 0;
 }
 int ads7846_read_raw(struct ads7846_raw_sample *sample)
 {
-    const uint32_t point = giftui_signal_analyzer_action_point(0U);
+    const uint32_t point = touch_point;
     assert(point != 0U && sample != NULL);
     sample->x = (uint16_t)(((point & 0xffffU) * 4095U) / 479U);
     sample->y = (uint16_t)((((point >> 16) & 0xffffU) * 4095U) / 319U);
@@ -98,6 +202,7 @@ int main(void)
     const int result = giftui_firmware_main();
     assert(result == -ECANCELED);
     assert(touch_polls > 2U && paced_frame_observed == 1U);
+    assert(action_index == sizeof(actions) / sizeof(actions[0]));
     assert(display_writes > 0U && display_bytes > 0U);
     assert(giftui_signal_analyzer_initial_committed_actions() == 0U);
     assert(giftui_signal_analyzer_current_revision() == 0U);

@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-20
-updated: 2026-09-23
+updated: 2026-09-27
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -685,6 +685,19 @@ firmware code can duplicate its sequence, queue, or opportunity state. The
 firmware does not yet link the generated root, interaction, rendering, or
 endpoint storage, so the complete Static application lifetime remains the next
 join.
+
+## Host-Native Clock and Source Ties
+
+The nRF production service waits at least 250 milliseconds between completed
+frame submissions. Its next wake is the earliest input poll, scheduled source
+transition, or dirty-frame deadline. Equal-timestamp transitions yield a zero
+source delay; service drains them in the same serialized opportunity with an
+eight-transition guard so the scheduler never mistakes a tie for source
+shutdown or enters a zero-deadline wait. The target uses the source's exact
+delay. The native clock adapter may scale that delay to exercise the 80-facts-
+per-second stress envelope while retaining the production source and service
+loop. The fixture stops the accelerated schedule after exactly 2,400 acquired
+transitions and observes 120 paced frames before physical action scenarios.
 
 ## Code and Evidence Links
 

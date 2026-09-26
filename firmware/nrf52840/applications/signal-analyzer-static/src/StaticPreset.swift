@@ -642,14 +642,39 @@ public func giftUISignalAnalyzerCurrentRevision() -> UInt32 {
     giftUIStaticInteractionOwner.committedRevision?.rawValue ?? 0
 }
 
+@_cdecl("giftui_signal_analyzer_capture_revision")
+public func giftUISignalAnalyzerCaptureRevision() -> UInt32 {
+    giftUIStaticModelLocation.capture.revision
+}
+
+@_cdecl("giftui_signal_analyzer_acquisition_state")
+public func giftUISignalAnalyzerAcquisitionState() -> UInt32 {
+    switch giftUIStaticModelLocation.acquisitionState {
+    case .idle: 0
+    case .running: 1
+    case .stopped: 2
+    case .failed: 3
+    }
+}
+
+@_cdecl("giftui_signal_analyzer_visible_window")
+public func giftUISignalAnalyzerVisibleWindow() -> UInt32 {
+    UInt32(giftUIStaticModelLocation.visibleWindowRawValue)
+}
+
+@_cdecl("giftui_signal_analyzer_capture_count")
+public func giftUISignalAnalyzerCaptureCount() -> UInt32 {
+    UInt32(giftUIStaticModelLocation.capture.count)
+}
+
 @_cdecl("giftui_signal_analyzer_next_delay_microseconds")
 public func giftUISignalAnalyzerNextDelayMicroseconds() -> UInt64 {
     guard let milliseconds = giftUIStaticRepository.nextScheduledDelayMilliseconds,
-        milliseconds > 0,
+        milliseconds >= 0,
         milliseconds <= Int64(UInt64.max / 1_000)
     else { return UInt64.max }
     let micros = UInt64(milliseconds) * 1_000
-    return micros > 0 ? micros : UInt64.max
+    return micros
 }
 
 @_cdecl("giftui_signal_analyzer_initial_start_point")
@@ -662,6 +687,15 @@ public func giftUISignalAnalyzerActionPoint(_ code: UInt16) -> UInt32 {
     guard code < 6,
         let record = giftUIStaticInteractionOwner.committedRecord(at: code),
         record.action.code == code, record.isEnabled
+    else { return 0 }
+    return giftUISignalAnalyzerHitPoint(code)
+}
+
+@_cdecl("giftui_signal_analyzer_hit_point")
+public func giftUISignalAnalyzerHitPoint(_ code: UInt16) -> UInt32 {
+    guard code < 6,
+        let record = giftUIStaticInteractionOwner.committedRecord(at: code),
+        record.action.code == code
     else { return 0 }
     let x = record.hitBounds.origin.x + record.hitBounds.size.width / 2
     let y = record.hitBounds.origin.y + record.hitBounds.size.height / 2

@@ -18,6 +18,7 @@ static uint64_t delay = UINT64_MAX;
 static int refuse_initial;
 static int refuse_next;
 static int pen_result;
+static int zero_delay_pair;
 
 void k_busy_wait(uint32_t duration) { (void)duration; }
 int ads7846_initialize(void) { return 0; }
@@ -136,6 +137,8 @@ uint32_t giftui_signal_analyzer_poll_scheduled_due(
     (void)profile; (void)profile_bytes; (void)capture; (void)capture_bytes;
     poll_count++;
     dirty = 1U;
+    if (zero_delay_pair != 0 && poll_count == 2U) { delay = 0U; }
+    if (zero_delay_pair != 0 && poll_count == 3U) { delay = 80000U; }
     return 1U;
 }
 uint32_t giftui_signal_analyzer_needs_presentation(void) { return dirty; }
@@ -172,6 +175,10 @@ int main(void)
     assert(service(&production, 250000U, &deadline, &stop) == 0);
     assert(deadline == 260000U);
     assert(frame_count == 2U && touch_revision == 2U && poll_count == 1U);
+    zero_delay_pair = 1;
+    assert(service(&production, 260000U, &deadline, &stop) == 0);
+    assert(deadline == 270000U);
+    assert(frame_count == 2U && poll_count == 3U);
     delay = UINT64_MAX;
     production.next_transition_deadline = 0U;
     dirty = 1U;

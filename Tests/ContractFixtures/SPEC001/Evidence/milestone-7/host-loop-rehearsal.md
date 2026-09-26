@@ -122,3 +122,27 @@ doctor and `scripts/nrf52840/build.sh --application signal-analyzer-static`
 passed for `nrf52840dk/nrf52840`; the ARMv7E-M hard-float ELF used 196,480 RAM
 and 241,564 flash bytes. This establishes pacing and one physical Start action,
 not the full nRF T7.6 workload/action matrix.
+
+## T7.6 nRF acquisition and physical action slice
+
+The extended native runner now completes 2,400 scheduled production-source
+transitions and 120 committed workload frames. Its clock adapter scales the
+source's 201,770-millisecond 2,400-transition schedule into just under 30
+logical seconds, then stops scheduling further source transitions at capture
+revision 2,404. The production repository, fact application, semantic/layout/
+Drawing pipeline, 480×320 tiled raster transport, pacing, and C touch path
+remain active. It checks Stop, restart, Clear, and each window through raw
+down/up samples at the committed hit region, plus zero dispatch for disabled
+Start and selected-window controls. The complete run passed with 328,822 tile
+writes and 51,427,778 RGB565 bytes across startup, workload, and actions.
+
+This run found and resolved a source tie defect. Two transitions can have the
+same prescribed timestamp; the former nRF delay bridge returned “no source”
+for the resulting zero delay. The bridge now preserves zero, and the C host
+drains at most eight due transitions in one service call. The focused
+production-host test checks the simultaneous case. After the fix, the target
+build passed with 196,480 RAM and 241,532 flash bytes. The native execution
+remains `host-native-fixture` evidence, not connected-target evidence.
+
+Ordered semantic, action, Drawing, and frame traces against the applicable
+macOS reference remain to complete T7.6.
