@@ -203,6 +203,7 @@ private struct RecordingConsoleTransport: PiScreenConsoleModeTransport {
         decoder.update(point: Point(x: 10, y: 20), touching: true)
             == PiScreenContactEvent(phase: .down, point: Point(x: 10, y: 20))
     )
+    #expect(decoder.update(point: Point(x: 10, y: 20), touching: true) == nil)
     #expect(
         decoder.update(point: Point(x: 11, y: 21), touching: true)
             == PiScreenContactEvent(phase: .move, point: Point(x: 11, y: 21))

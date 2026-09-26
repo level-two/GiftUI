@@ -499,7 +499,9 @@ private final class LogicalFrameCapture {
     coordinator.installPhysicalPresentation(revision)
     var contactDecoder = PiScreenContactDecoder()
     let decodedDown = contactDecoder.update(point: point, touching: true)
-    let decodedMove = contactDecoder.update(point: point, touching: true)
+    let decodedMove = contactDecoder.update(
+        point: Point(x: point.x + 1, y: point.y), touching: true
+    )
     let decodedUp = contactDecoder.update(point: point, touching: false)
     let downContact = try #require(decodedDown)
     let moveContact = try #require(decodedMove)
@@ -837,7 +839,9 @@ private final class LogicalFrameCapture {
     var decoder = PiScreenContactDecoder()
     let point = Point(x: 120, y: 80)
     let decodedDown = decoder.update(point: point, touching: true)
-    let decodedMove = decoder.update(point: point, touching: true)
+    let decodedMove = decoder.update(
+        point: Point(x: point.x + 1, y: point.y), touching: true
+    )
     let decodedUp = decoder.update(point: point, touching: false)
     let contacts = [
         try #require(decodedDown),

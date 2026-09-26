@@ -204,7 +204,8 @@ package struct PiScreenContactDecoder: Sendable {
         case (nil, true, .some(let point)):
             activePoint = point
             return PiScreenContactEvent(phase: .down, point: point)
-        case (.some, true, .some(let point)):
+        case (.some(let previous), true, .some(let point)):
+            guard point != previous else { return nil }
             activePoint = point
             return PiScreenContactEvent(phase: .move, point: point)
         case (.some(let previous), false, _), (.some(let previous), true, nil):
