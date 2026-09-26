@@ -195,6 +195,11 @@ private struct RecordingConsoleTransport: PiScreenConsoleModeTransport {
         transform.logicalPoint(rawX: 2_048, rawY: 2_048, calibration: calibration)
             == Point(x: 119, y: 119))
     #expect(transform.logicalPoint(rawX: 0, rawY: 2_048, calibration: calibration) == nil)
+    let piScreenCalibration = try #require(PiScreenTouchCalibration.signalAnalyzerPiScreen)
+    #expect(
+        transform.logicalPoint(rawX: 1_959, rawY: 2_929, calibration: piScreenCalibration)
+            == Point(x: 111, y: 183)
+    )
 }
 
 @Test func contactDecoderProducesOneOrderedSequenceAndCancelsOutside() {
@@ -204,13 +209,14 @@ private struct RecordingConsoleTransport: PiScreenConsoleModeTransport {
             == PiScreenContactEvent(phase: .down, point: Point(x: 10, y: 20))
     )
     #expect(decoder.update(point: Point(x: 10, y: 20), touching: true) == nil)
+    #expect(decoder.update(point: Point(x: 17, y: 27), touching: true) == nil)
     #expect(
-        decoder.update(point: Point(x: 11, y: 21), touching: true)
-            == PiScreenContactEvent(phase: .move, point: Point(x: 11, y: 21))
+        decoder.update(point: Point(x: 18, y: 28), touching: true)
+            == PiScreenContactEvent(phase: .move, point: Point(x: 18, y: 28))
     )
     #expect(
         decoder.update(point: nil, touching: true)
-            == PiScreenContactEvent(phase: .up, point: Point(x: 11, y: 21))
+            == PiScreenContactEvent(phase: .up, point: Point(x: 18, y: 28))
     )
     #expect(decoder.update(point: nil, touching: false) == nil)
 }

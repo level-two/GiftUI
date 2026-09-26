@@ -285,7 +285,7 @@
         }
 
         package func poll() throws(LinuxPiScreenDeviceError) -> [PiScreenContactEvent] {
-            var input = [LinuxInputEvent](repeating: LinuxInputEvent(), count: 32)
+            var input = [LinuxInputEvent](repeating: LinuxInputEvent(), count: 256)
             let byteCount = input.withUnsafeMutableBytes {
                 Glibc.read(fileDescriptor, $0.baseAddress, $0.count)
             }

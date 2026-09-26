@@ -36,6 +36,15 @@ package struct PiScreenTouchCalibration: Equatable, Sendable {
     package let invertX: Bool
     package let invertY: Bool
 
+    // Connected ADS7846 taps on the Start/Stop row decoded 12 logical
+    // pixels above the visible controls on the 480 x 320 PiScreen.
+    package static let signalAnalyzerPiScreen = Self(
+        minimumX: 0,
+        maximumX: 4_095,
+        minimumY: -205,
+        maximumY: 3_890
+    )
+
     package init?(
         minimumX: Int32,
         maximumX: Int32,
@@ -196,6 +205,9 @@ package struct PiScreenContactEvent: Equatable, Sendable {
 
 package struct PiScreenContactDecoder: Sendable {
     private var activePoint: Point?
+    private var lastEmittedPoint: Point?
+
+    private static let minimumMovePixels: Int64 = 8
 
     package init() {}
 
@@ -203,13 +215,21 @@ package struct PiScreenContactDecoder: Sendable {
         switch (activePoint, touching, point) {
         case (nil, true, .some(let point)):
             activePoint = point
+            lastEmittedPoint = point
             return PiScreenContactEvent(phase: .down, point: point)
-        case (.some(let previous), true, .some(let point)):
-            guard point != previous else { return nil }
+        case (.some, true, .some(let point)):
             activePoint = point
+            guard let lastEmittedPoint,
+                max(
+                    abs(Int64(point.x) - Int64(lastEmittedPoint.x)),
+                    abs(Int64(point.y) - Int64(lastEmittedPoint.y))
+                ) >= Self.minimumMovePixels
+            else { return nil }
+            self.lastEmittedPoint = point
             return PiScreenContactEvent(phase: .move, point: point)
         case (.some(let previous), false, _), (.some(let previous), true, nil):
             activePoint = nil
+            lastEmittedPoint = nil
             return PiScreenContactEvent(phase: .up, point: previous)
         case (nil, false, _), (nil, true, nil):
             return nil

@@ -500,7 +500,7 @@ private final class LogicalFrameCapture {
     var contactDecoder = PiScreenContactDecoder()
     let decodedDown = contactDecoder.update(point: point, touching: true)
     let decodedMove = contactDecoder.update(
-        point: Point(x: point.x + 1, y: point.y), touching: true
+        point: Point(x: point.x + 8, y: point.y), touching: true
     )
     let decodedUp = contactDecoder.update(point: point, touching: false)
     let downContact = try #require(decodedDown)
@@ -840,7 +840,7 @@ private final class LogicalFrameCapture {
     let point = Point(x: 120, y: 80)
     let decodedDown = decoder.update(point: point, touching: true)
     let decodedMove = decoder.update(
-        point: Point(x: point.x + 1, y: point.y), touching: true
+        point: Point(x: point.x + 8, y: point.y), touching: true
     )
     let decodedUp = decoder.update(point: point, touching: false)
     let contacts = [

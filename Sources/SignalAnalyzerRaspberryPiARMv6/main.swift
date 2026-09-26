@@ -22,12 +22,7 @@ import SignalAnalyzerTargetHost
                     logicalWidth: 240,
                     logicalHeight: 240
                 ),
-                let calibration = PiScreenTouchCalibration(
-                    minimumX: 0,
-                    maximumX: 4_095,
-                    minimumY: 0,
-                    maximumY: 4_095
-                )
+                let calibration = PiScreenTouchCalibration.signalAnalyzerPiScreen
             else {
                 fatalError("PiScreen geometry is invalid")
             }
@@ -59,12 +54,7 @@ import SignalAnalyzerTargetHost
                     logicalWidth: 240,
                     logicalHeight: 240
                 ),
-                let calibration = PiScreenTouchCalibration(
-                    minimumX: 0,
-                    maximumX: 4_095,
-                    minimumY: 0,
-                    maximumY: 4_095
-                )
+                let calibration = PiScreenTouchCalibration.signalAnalyzerPiScreen
             else {
                 fatalError("PiScreen geometry is invalid")
             }
@@ -98,12 +88,7 @@ import SignalAnalyzerTargetHost
                     logicalWidth: 240,
                     logicalHeight: 240
                 ),
-                let calibration = PiScreenTouchCalibration(
-                    minimumX: 0,
-                    maximumX: 4_095,
-                    minimumY: 0,
-                    maximumY: 4_095
-                )
+                let calibration = PiScreenTouchCalibration.signalAnalyzerPiScreen
             else {
                 fatalError("PiScreen geometry is invalid")
             }
