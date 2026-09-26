@@ -315,4 +315,20 @@ The attempted resumable deployment to `192.168.55.44` at 16 KiB/s was
 interrupted when all three pings to the Pi timed out. The transfer client was
 stopped; the previously deployed executable remains in place. The matching
 partial `.incoming` file may be resumed only with this exact artifact after
-the Pi becomes reachable. No connected scheduler re-test has yet run.
+the Pi becomes reachable. No connected scheduler re-test had run at that point.
+
+After the maintainer rebooted the Pi, it again reported `armv6l`. An
+append-only resume produced a full-size staged file with an incorrect hash,
+so the live executable was not replaced. The deploy script was changed to
+content-checked in-place rsync; the same local artifact then deployed with a
+matching remote SHA-256 of
+`efc5b24a2044430951f2c160aa38484192f478a487a700b0a077bcf12ca8a126`.
+The next foreground run decoded complete contacts at `(80,186)`/`(81,185)`
+and `(117,185)`/`(118,188)`. The latter Stop contact dispatched one action.
+The application no longer failed with `sourceSchedule`, but exited with
+`pacing(HostWakePacingError.serviceDeadlineMissed)` before Clear or the three
+window controls could be tested. The four completed frame durations were
+4,113,160, 4,535,677, 4,745,764, and 4,827,872 microseconds. The maintainer
+also observed that signal updates repeatedly clear and redraw the full
+screen, taking approximately five seconds. This still fails the connected
+four-frame/second and six-control gates.
