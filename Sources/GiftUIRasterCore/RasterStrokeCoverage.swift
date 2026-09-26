@@ -292,6 +292,49 @@ package enum RasterStrokeCoverage {
             return .arithmeticOverflow
         }
 
+        if subpath.pointCount == 2 {
+            guard let second = stroke.point(at: subpath.firstPoint + 1) else {
+                return .invalidStroke
+            }
+            guard let end = translated(second, by: origin) else {
+                return .arithmeticOverflow
+            }
+            guard previousPoint != end else { return .notCovered }
+            let left = Wide(min(previousPoint.x, end.x)) * 2 - width
+            let right = Wide(max(previousPoint.x, end.x)) * 2 + width
+            let top = Wide(min(previousPoint.y, end.y)) * 2 - width
+            let bottom = Wide(max(previousPoint.y, end.y)) * 2 + width
+            guard centerX >= left, centerX <= right,
+                centerY >= top, centerY <= bottom
+            else { return .notCovered }
+            if segmentCovers(
+                centerX: centerX,
+                centerY: centerY,
+                first: previousPoint,
+                second: end,
+                width: width
+            ) {
+                return .covered
+            }
+            if cap == .round,
+                diskCovers(
+                    centerX: centerX,
+                    centerY: centerY,
+                    center: previousPoint,
+                    width: width
+                )
+                    || diskCovers(
+                        centerX: centerX,
+                        centerY: centerY,
+                        center: end,
+                        width: width
+                    )
+            {
+                return .covered
+            }
+            return .notCovered
+        }
+
         var firstSegmentStart: Point?
         var lastSegmentStart: Point?
         var lastSegmentEnd: Point?
