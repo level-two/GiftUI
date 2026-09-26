@@ -161,7 +161,7 @@ records; they do not drive the host loops.
 Raw records are saved as [Pi](pi-ordered-trace.tsv) (132 lines, SHA-256
 `62ff76e6c47e357c4f520f48c45166504bba99c9a0b033e2da7a24a547a1d9c8`)
 and [nRF](nrf-ordered-trace.tsv) (139 lines, SHA-256
-`9f34a76123653fd51dcf15ae9f76701f3f0b831cb5eba252045e5d5e97b4fc55`).
+`d5f1fee4f126f52a4090e621ba7b436801494a545c8dd72affb61cb08bd7ee8b`).
 Both host-native runner commands passed. The standalone comparison command
 
 ```sh
@@ -179,8 +179,7 @@ follows acquired transitions and empties the capture on both profiles.
 
 The target runs use different production scheduling and raster projections,
 so their frame counts and per-frame acquisition batches differ. The Pi record
-does not yet include its initial or post-workload presentation summaries; the
-nRF record does not yet expose semantic, layout, Drawing, or render summaries.
+does not yet include its initial or post-workload presentation summaries.
 The macOS Dynamic and Static executables still do not run full application
 reference loops. The target-to-target action comparison is an incremental
 check, not the required ordered comparison against independent macOS reference
@@ -220,6 +219,22 @@ This closes the Dynamic workload presentation comparison slice only. The
 macOS Dynamic reference still lacks physical pointer action and raster-frame
 traces, and an independent macOS Static full-application reference remains
 absent. T7.6 remains pending.
+
+## T7.6 completed nRF presentation counts (2026-09-27)
+
+The production Static presentation transaction now publishes five read-only
+counts only after its physical frame and interaction candidate commit:
+semantic scopes, layout scopes, Drawing strokes and points, and render
+operations. Teardown and validation reset the observations. The host-native
+recorder asserts each count and includes them in all 127 committed-frame
+records. No count controls an application transition or a render decision.
+
+The native run and target build passed. The checked `nrf52840dk/nrf52840`
+ELF retained ARMv7E-M hard-float verification and used 196,544 RAM and
+241,644 flash bytes. The refreshed [nRF raw trace](nrf-ordered-trace.tsv) has
+SHA-256 `d5f1fee4f126f52a4090e621ba7b436801494a545c8dd72affb61cb08bd7ee8b`.
+Its 127 frames now retain completed semantic, layout, Drawing, and render
+counts for a future independent macOS Static comparison.
 
 ## Validation boundary
 

@@ -1855,9 +1855,9 @@ the next connected run for the corresponding target.
       records and have a passing 12-action target-to-target comparison, recorded
       in the linked evidence. An independent macOS Dynamic source/admission/
       presentation fixture now matches all 120 Pi workload summaries. Add the
-      missing initial/action frame and physical raster traces, Static
-      semantic/Drawing records, and macOS Static reference comparison before
-      marking T7.6 complete.
+      missing initial/action frame and physical raster traces, plus the macOS
+      Static reference comparison, before marking T7.6 complete. The nRF
+      native trace now records committed semantic/layout/Drawing/render counts.
 - [ ] `T7.7` — Capture canonical final pixels at the exact approved Pi and
       nRF extents for idle, running with four traces, stopped, cleared, each
       selected window, and a visible diagnostic. Reconstruct the nRF tiled

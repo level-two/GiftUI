@@ -1,139 +1,139 @@
-trace=frame	revision=1	capture_revision=0	capture_count=0	state=0	window=1	writes=2460	bytes=403122
-trace=frame	revision=2	capture_revision=24	capture_count=24	state=1	window=1	writes=4993	bytes=807504
-trace=frame	revision=3	capture_revision=43	capture_count=43	state=1	window=1	writes=7481	bytes=1211954
-trace=frame	revision=4	capture_revision=62	capture_count=62	state=1	window=1	writes=10015	bytes=1616750
-trace=frame	revision=5	capture_revision=85	capture_count=85	state=1	window=1	writes=12507	bytes=2021224
-trace=frame	revision=6	capture_revision=104	capture_count=104	state=1	window=1	writes=15027	bytes=2425958
-trace=frame	revision=7	capture_revision=124	capture_count=124	state=1	window=1	writes=17599	bytes=2830778
-trace=frame	revision=8	capture_revision=144	capture_count=144	state=1	window=1	writes=20173	bytes=3235612
-trace=frame	revision=9	capture_revision=164	capture_count=164	state=1	window=1	writes=22706	bytes=3640326
-trace=frame	revision=10	capture_revision=184	capture_count=184	state=1	window=1	writes=25265	bytes=4045126
-trace=frame	revision=11	capture_revision=204	capture_count=204	state=1	window=1	writes=27802	bytes=4449864
-trace=frame	revision=12	capture_revision=223	capture_count=223	state=1	window=1	writes=30370	bytes=4854562
-trace=frame	revision=13	capture_revision=243	capture_count=243	state=1	window=1	writes=32960	bytes=5259348
-trace=frame	revision=14	capture_revision=263	capture_count=263	state=1	window=1	writes=35543	bytes=5664108
-trace=frame	revision=15	capture_revision=280	capture_count=280	state=1	window=1	writes=38079	bytes=6068912
-trace=frame	revision=16	capture_revision=302	capture_count=302	state=1	window=1	writes=40623	bytes=6473712
-trace=frame	revision=17	capture_revision=322	capture_count=322	state=1	window=1	writes=43211	bytes=6878702
-trace=frame	revision=18	capture_revision=340	capture_count=340	state=1	window=1	writes=45782	bytes=7283616
-trace=frame	revision=19	capture_revision=361	capture_count=356	state=1	window=1	writes=48340	bytes=7688576
-trace=frame	revision=20	capture_revision=380	capture_count=356	state=1	window=1	writes=50886	bytes=8093378
-trace=frame	revision=21	capture_revision=400	capture_count=356	state=1	window=1	writes=53452	bytes=8498248
-trace=frame	revision=22	capture_revision=423	capture_count=355	state=1	window=1	writes=56005	bytes=8903282
-trace=frame	revision=23	capture_revision=441	capture_count=354	state=1	window=1	writes=58590	bytes=9308158
-trace=frame	revision=24	capture_revision=460	capture_count=355	state=1	window=1	writes=61155	bytes=9712766
-trace=frame	revision=25	capture_revision=483	capture_count=355	state=1	window=1	writes=63742	bytes=10117916
-trace=frame	revision=26	capture_revision=500	capture_count=354	state=1	window=1	writes=66310	bytes=10522810
-trace=frame	revision=27	capture_revision=520	capture_count=354	state=1	window=1	writes=68873	bytes=10927734
-trace=frame	revision=28	capture_revision=541	capture_count=354	state=1	window=1	writes=71429	bytes=11332798
-trace=frame	revision=29	capture_revision=559	capture_count=353	state=1	window=1	writes=74018	bytes=11737612
-trace=frame	revision=30	capture_revision=577	capture_count=353	state=1	window=1	writes=76607	bytes=12142514
-trace=frame	revision=31	capture_revision=600	capture_count=354	state=1	window=1	writes=79200	bytes=12547528
-trace=frame	revision=32	capture_revision=619	capture_count=356	state=1	window=1	writes=81784	bytes=12952276
-trace=frame	revision=33	capture_revision=641	capture_count=357	state=1	window=1	writes=84341	bytes=13357278
-trace=frame	revision=34	capture_revision=661	capture_count=356	state=1	window=1	writes=86915	bytes=13762396
-trace=frame	revision=35	capture_revision=680	capture_count=358	state=1	window=1	writes=89492	bytes=14167012
-trace=frame	revision=36	capture_revision=703	capture_count=361	state=1	window=1	writes=92090	bytes=14572166
-trace=frame	revision=37	capture_revision=724	capture_count=360	state=1	window=1	writes=94679	bytes=14977144
-trace=frame	revision=38	capture_revision=742	capture_count=361	state=1	window=1	writes=97287	bytes=15382126
-trace=frame	revision=39	capture_revision=764	capture_count=360	state=1	window=1	writes=99883	bytes=15787452
-trace=frame	revision=40	capture_revision=785	capture_count=362	state=1	window=1	writes=102475	bytes=16192600
-trace=frame	revision=41	capture_revision=804	capture_count=361	state=1	window=1	writes=105040	bytes=16597534
-trace=frame	revision=42	capture_revision=826	capture_count=362	state=1	window=1	writes=107626	bytes=17002550
-trace=frame	revision=43	capture_revision=844	capture_count=360	state=1	window=1	writes=110218	bytes=17407532
-trace=frame	revision=44	capture_revision=863	capture_count=361	state=1	window=1	writes=112760	bytes=17812460
-trace=frame	revision=45	capture_revision=885	capture_count=360	state=1	window=1	writes=115332	bytes=18217522
-trace=frame	revision=46	capture_revision=904	capture_count=361	state=1	window=1	writes=117909	bytes=18622448
-trace=frame	revision=47	capture_revision=925	capture_count=363	state=1	window=1	writes=120465	bytes=19027466
-trace=frame	revision=48	capture_revision=946	capture_count=364	state=1	window=1	writes=123050	bytes=19432364
-trace=frame	revision=49	capture_revision=964	capture_count=362	state=1	window=1	writes=125630	bytes=19837330
-trace=frame	revision=50	capture_revision=985	capture_count=363	state=1	window=1	writes=128223	bytes=20242474
-trace=frame	revision=51	capture_revision=1006	capture_count=363	state=1	window=1	writes=130829	bytes=20647486
-trace=frame	revision=52	capture_revision=1024	capture_count=361	state=1	window=1	writes=133406	bytes=21052406
-trace=frame	revision=53	capture_revision=1046	capture_count=361	state=1	window=1	writes=135989	bytes=21457406
-trace=frame	revision=54	capture_revision=1064	capture_count=360	state=1	window=1	writes=138601	bytes=21862430
-trace=frame	revision=55	capture_revision=1084	capture_count=359	state=1	window=1	writes=141171	bytes=22267352
-trace=frame	revision=56	capture_revision=1107	capture_count=361	state=1	window=1	writes=143767	bytes=22672484
-trace=frame	revision=57	capture_revision=1125	capture_count=360	state=1	window=1	writes=146376	bytes=23077652
-trace=frame	revision=58	capture_revision=1145	capture_count=359	state=1	window=1	writes=148935	bytes=23482692
-trace=frame	revision=59	capture_revision=1166	capture_count=357	state=1	window=1	writes=151518	bytes=23887656
-trace=frame	revision=60	capture_revision=1184	capture_count=357	state=1	window=1	writes=154103	bytes=24292626
-trace=frame	revision=61	capture_revision=1203	capture_count=358	state=1	window=1	writes=156740	bytes=24697894
-trace=frame	revision=62	capture_revision=1226	capture_count=358	state=1	window=1	writes=159357	bytes=25102582
-trace=frame	revision=63	capture_revision=1244	capture_count=357	state=1	window=1	writes=161960	bytes=25507582
-trace=frame	revision=64	capture_revision=1262	capture_count=357	state=1	window=1	writes=164558	bytes=25912538
-trace=frame	revision=65	capture_revision=1285	capture_count=357	state=1	window=1	writes=167198	bytes=26317490
-trace=frame	revision=66	capture_revision=1305	capture_count=358	state=1	window=1	writes=169813	bytes=26722664
-trace=frame	revision=67	capture_revision=1323	capture_count=357	state=1	window=1	writes=172444	bytes=27127884
-trace=frame	revision=68	capture_revision=1346	capture_count=357	state=1	window=1	writes=175043	bytes=27532794
-trace=frame	revision=69	capture_revision=1364	capture_count=357	state=1	window=1	writes=177631	bytes=27937980
-trace=frame	revision=70	capture_revision=1386	capture_count=361	state=1	window=1	writes=180246	bytes=28342628
-trace=frame	revision=71	capture_revision=1407	capture_count=358	state=1	window=1	writes=182835	bytes=28747394
-trace=frame	revision=72	capture_revision=1425	capture_count=358	state=1	window=1	writes=185420	bytes=29152388
-trace=frame	revision=73	capture_revision=1446	capture_count=359	state=1	window=1	writes=188033	bytes=29557352
-trace=frame	revision=74	capture_revision=1466	capture_count=358	state=1	window=1	writes=190608	bytes=29962220
-trace=frame	revision=75	capture_revision=1483	capture_count=356	state=1	window=1	writes=193223	bytes=30367418
-trace=frame	revision=76	capture_revision=1506	capture_count=358	state=1	window=1	writes=195847	bytes=30772504
-trace=frame	revision=77	capture_revision=1525	capture_count=356	state=1	window=1	writes=198427	bytes=31177564
-trace=frame	revision=78	capture_revision=1542	capture_count=356	state=1	window=1	writes=201039	bytes=31582642
-trace=frame	revision=79	capture_revision=1564	capture_count=359	state=1	window=1	writes=203645	bytes=31987582
-trace=frame	revision=80	capture_revision=1583	capture_count=356	state=1	window=1	writes=206268	bytes=32392468
-trace=frame	revision=81	capture_revision=1604	capture_count=358	state=1	window=1	writes=208862	bytes=32797486
-trace=frame	revision=82	capture_revision=1623	capture_count=358	state=1	window=1	writes=211471	bytes=33202368
-trace=frame	revision=83	capture_revision=1641	capture_count=355	state=1	window=1	writes=214045	bytes=33607122
-trace=frame	revision=84	capture_revision=1662	capture_count=356	state=1	window=1	writes=216636	bytes=34012104
-trace=frame	revision=85	capture_revision=1683	capture_count=355	state=1	window=1	writes=219237	bytes=34417244
-trace=frame	revision=86	capture_revision=1701	capture_count=354	state=1	window=1	writes=221875	bytes=34822484
-trace=frame	revision=87	capture_revision=1723	capture_count=355	state=1	window=1	writes=224478	bytes=35227400
-trace=frame	revision=88	capture_revision=1743	capture_count=354	state=1	window=1	writes=227105	bytes=35632642
-trace=frame	revision=89	capture_revision=1762	capture_count=354	state=1	window=1	writes=229733	bytes=36037418
-trace=frame	revision=90	capture_revision=1782	capture_count=353	state=1	window=1	writes=232354	bytes=36442550
-trace=frame	revision=91	capture_revision=1800	capture_count=352	state=1	window=1	writes=234946	bytes=36847514
-trace=frame	revision=92	capture_revision=1819	capture_count=352	state=1	window=1	writes=237563	bytes=37252354
-trace=frame	revision=93	capture_revision=1841	capture_count=354	state=1	window=1	writes=240157	bytes=37657228
-trace=frame	revision=94	capture_revision=1861	capture_count=354	state=1	window=1	writes=242781	bytes=38062464
-trace=frame	revision=95	capture_revision=1881	capture_count=356	state=1	window=1	writes=245409	bytes=38467366
-trace=frame	revision=96	capture_revision=1903	capture_count=355	state=1	window=1	writes=247997	bytes=38872456
-trace=frame	revision=97	capture_revision=1921	capture_count=355	state=1	window=1	writes=250620	bytes=39277702
-trace=frame	revision=98	capture_revision=1942	capture_count=358	state=1	window=1	writes=253240	bytes=39682740
-trace=frame	revision=99	capture_revision=1965	capture_count=357	state=1	window=1	writes=255864	bytes=40088004
-trace=frame	revision=100	capture_revision=1983	capture_count=357	state=1	window=1	writes=258488	bytes=40492952
-trace=frame	revision=101	capture_revision=2002	capture_count=358	state=1	window=1	writes=261110	bytes=40897734
-trace=frame	revision=102	capture_revision=2025	capture_count=358	state=1	window=1	writes=263749	bytes=41303058
-trace=frame	revision=103	capture_revision=2042	capture_count=358	state=1	window=1	writes=266351	bytes=41707718
-trace=frame	revision=104	capture_revision=2062	capture_count=359	state=1	window=1	writes=268941	bytes=42112612
-trace=frame	revision=105	capture_revision=2085	capture_count=360	state=1	window=1	writes=271562	bytes=42517792
-trace=frame	revision=106	capture_revision=2104	capture_count=360	state=1	window=1	writes=274165	bytes=42922770
-trace=frame	revision=107	capture_revision=2125	capture_count=363	state=1	window=1	writes=276751	bytes=43327852
-trace=frame	revision=108	capture_revision=2145	capture_count=362	state=1	window=1	writes=279360	bytes=43733038
-trace=frame	revision=109	capture_revision=2164	capture_count=362	state=1	window=1	writes=281989	bytes=44137810
-trace=frame	revision=110	capture_revision=2185	capture_count=363	state=1	window=1	writes=284597	bytes=44542698
-trace=frame	revision=111	capture_revision=2205	capture_count=362	state=1	window=1	writes=287237	bytes=44947654
-trace=frame	revision=112	capture_revision=2222	capture_count=360	state=1	window=1	writes=289849	bytes=45352458
-trace=frame	revision=113	capture_revision=2245	capture_count=362	state=1	window=1	writes=292474	bytes=45757720
-trace=frame	revision=114	capture_revision=2265	capture_count=360	state=1	window=1	writes=295137	bytes=46163074
-trace=frame	revision=115	capture_revision=2283	capture_count=360	state=1	window=1	writes=297746	bytes=46568208
-trace=frame	revision=116	capture_revision=2305	capture_count=359	state=1	window=1	writes=300375	bytes=46973432
-trace=frame	revision=117	capture_revision=2324	capture_count=359	state=1	window=1	writes=303018	bytes=47378544
-trace=frame	revision=118	capture_revision=2345	capture_count=360	state=1	window=1	writes=305636	bytes=47783768
-trace=frame	revision=119	capture_revision=2365	capture_count=357	state=1	window=1	writes=308261	bytes=48189054
-trace=frame	revision=120	capture_revision=2384	capture_count=357	state=1	window=1	writes=310907	bytes=48594228
-trace=frame	revision=121	capture_revision=2404	capture_count=359	state=1	window=1	writes=313503	bytes=48999176
+trace=frame	revision=1	capture_revision=0	capture_count=0	state=0	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=32	render_operations=34	writes=2460	bytes=403122
+trace=frame	revision=2	capture_revision=24	capture_count=24	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=72	render_operations=34	writes=4993	bytes=807504
+trace=frame	revision=3	capture_revision=43	capture_count=43	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=7481	bytes=1211954
+trace=frame	revision=4	capture_revision=62	capture_count=62	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=10015	bytes=1616750
+trace=frame	revision=5	capture_revision=85	capture_count=85	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=88	render_operations=34	writes=12507	bytes=2021224
+trace=frame	revision=6	capture_revision=104	capture_count=104	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=15027	bytes=2425958
+trace=frame	revision=7	capture_revision=124	capture_count=124	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34	writes=17599	bytes=2830778
+trace=frame	revision=8	capture_revision=144	capture_count=144	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=20173	bytes=3235612
+trace=frame	revision=9	capture_revision=164	capture_count=164	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=22706	bytes=3640326
+trace=frame	revision=10	capture_revision=184	capture_count=184	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=25265	bytes=4045126
+trace=frame	revision=11	capture_revision=204	capture_count=204	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=27802	bytes=4449864
+trace=frame	revision=12	capture_revision=223	capture_count=223	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=30370	bytes=4854562
+trace=frame	revision=13	capture_revision=243	capture_count=243	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=32960	bytes=5259348
+trace=frame	revision=14	capture_revision=263	capture_count=263	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=35543	bytes=5664108
+trace=frame	revision=15	capture_revision=280	capture_count=280	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=38079	bytes=6068912
+trace=frame	revision=16	capture_revision=302	capture_count=302	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=40623	bytes=6473712
+trace=frame	revision=17	capture_revision=322	capture_count=322	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=43211	bytes=6878702
+trace=frame	revision=18	capture_revision=340	capture_count=340	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=74	render_operations=34	writes=45782	bytes=7283616
+trace=frame	revision=19	capture_revision=361	capture_count=356	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=48340	bytes=7688576
+trace=frame	revision=20	capture_revision=380	capture_count=356	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=50886	bytes=8093378
+trace=frame	revision=21	capture_revision=400	capture_count=356	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=53452	bytes=8498248
+trace=frame	revision=22	capture_revision=423	capture_count=355	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=56005	bytes=8903282
+trace=frame	revision=23	capture_revision=441	capture_count=354	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=58590	bytes=9308158
+trace=frame	revision=24	capture_revision=460	capture_count=355	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=61155	bytes=9712766
+trace=frame	revision=25	capture_revision=483	capture_count=355	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=63742	bytes=10117916
+trace=frame	revision=26	capture_revision=500	capture_count=354	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=66310	bytes=10522810
+trace=frame	revision=27	capture_revision=520	capture_count=354	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34	writes=68873	bytes=10927734
+trace=frame	revision=28	capture_revision=541	capture_count=354	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=71429	bytes=11332798
+trace=frame	revision=29	capture_revision=559	capture_count=353	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34	writes=74018	bytes=11737612
+trace=frame	revision=30	capture_revision=577	capture_count=353	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34	writes=76607	bytes=12142514
+trace=frame	revision=31	capture_revision=600	capture_count=354	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=79200	bytes=12547528
+trace=frame	revision=32	capture_revision=619	capture_count=356	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=81784	bytes=12952276
+trace=frame	revision=33	capture_revision=641	capture_count=357	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=84341	bytes=13357278
+trace=frame	revision=34	capture_revision=661	capture_count=356	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=86915	bytes=13762396
+trace=frame	revision=35	capture_revision=680	capture_count=358	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=89492	bytes=14167012
+trace=frame	revision=36	capture_revision=703	capture_count=361	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=92090	bytes=14572166
+trace=frame	revision=37	capture_revision=724	capture_count=360	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=94679	bytes=14977144
+trace=frame	revision=38	capture_revision=742	capture_count=361	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=97287	bytes=15382126
+trace=frame	revision=39	capture_revision=764	capture_count=360	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=99883	bytes=15787452
+trace=frame	revision=40	capture_revision=785	capture_count=362	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=86	render_operations=34	writes=102475	bytes=16192600
+trace=frame	revision=41	capture_revision=804	capture_count=361	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34	writes=105040	bytes=16597534
+trace=frame	revision=42	capture_revision=826	capture_count=362	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=107626	bytes=17002550
+trace=frame	revision=43	capture_revision=844	capture_count=360	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=110218	bytes=17407532
+trace=frame	revision=44	capture_revision=863	capture_count=361	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34	writes=112760	bytes=17812460
+trace=frame	revision=45	capture_revision=885	capture_count=360	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=86	render_operations=34	writes=115332	bytes=18217522
+trace=frame	revision=46	capture_revision=904	capture_count=361	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=117909	bytes=18622448
+trace=frame	revision=47	capture_revision=925	capture_count=363	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=120465	bytes=19027466
+trace=frame	revision=48	capture_revision=946	capture_count=364	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=123050	bytes=19432364
+trace=frame	revision=49	capture_revision=964	capture_count=362	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=125630	bytes=19837330
+trace=frame	revision=50	capture_revision=985	capture_count=363	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=128223	bytes=20242474
+trace=frame	revision=51	capture_revision=1006	capture_count=363	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=130829	bytes=20647486
+trace=frame	revision=52	capture_revision=1024	capture_count=361	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=133406	bytes=21052406
+trace=frame	revision=53	capture_revision=1046	capture_count=361	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=135989	bytes=21457406
+trace=frame	revision=54	capture_revision=1064	capture_count=360	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=138601	bytes=21862430
+trace=frame	revision=55	capture_revision=1084	capture_count=359	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=141171	bytes=22267352
+trace=frame	revision=56	capture_revision=1107	capture_count=361	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=143767	bytes=22672484
+trace=frame	revision=57	capture_revision=1125	capture_count=360	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=146376	bytes=23077652
+trace=frame	revision=58	capture_revision=1145	capture_count=359	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=148935	bytes=23482692
+trace=frame	revision=59	capture_revision=1166	capture_count=357	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=151518	bytes=23887656
+trace=frame	revision=60	capture_revision=1184	capture_count=357	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=154103	bytes=24292626
+trace=frame	revision=61	capture_revision=1203	capture_count=358	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34	writes=156740	bytes=24697894
+trace=frame	revision=62	capture_revision=1226	capture_count=358	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=159357	bytes=25102582
+trace=frame	revision=63	capture_revision=1244	capture_count=357	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34	writes=161960	bytes=25507582
+trace=frame	revision=64	capture_revision=1262	capture_count=357	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=164558	bytes=25912538
+trace=frame	revision=65	capture_revision=1285	capture_count=357	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=167198	bytes=26317490
+trace=frame	revision=66	capture_revision=1305	capture_count=358	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=169813	bytes=26722664
+trace=frame	revision=67	capture_revision=1323	capture_count=357	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=172444	bytes=27127884
+trace=frame	revision=68	capture_revision=1346	capture_count=357	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=175043	bytes=27532794
+trace=frame	revision=69	capture_revision=1364	capture_count=357	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34	writes=177631	bytes=27937980
+trace=frame	revision=70	capture_revision=1386	capture_count=361	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=180246	bytes=28342628
+trace=frame	revision=71	capture_revision=1407	capture_count=358	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=182835	bytes=28747394
+trace=frame	revision=72	capture_revision=1425	capture_count=358	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=74	render_operations=34	writes=185420	bytes=29152388
+trace=frame	revision=73	capture_revision=1446	capture_count=359	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=188033	bytes=29557352
+trace=frame	revision=74	capture_revision=1466	capture_count=358	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=190608	bytes=29962220
+trace=frame	revision=75	capture_revision=1483	capture_count=356	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=72	render_operations=34	writes=193223	bytes=30367418
+trace=frame	revision=76	capture_revision=1506	capture_count=358	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=195847	bytes=30772504
+trace=frame	revision=77	capture_revision=1525	capture_count=356	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=198427	bytes=31177564
+trace=frame	revision=78	capture_revision=1542	capture_count=356	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=74	render_operations=34	writes=201039	bytes=31582642
+trace=frame	revision=79	capture_revision=1564	capture_count=359	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=203645	bytes=31987582
+trace=frame	revision=80	capture_revision=1583	capture_count=356	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=206268	bytes=32392468
+trace=frame	revision=81	capture_revision=1604	capture_count=358	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=208862	bytes=32797486
+trace=frame	revision=82	capture_revision=1623	capture_count=358	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=211471	bytes=33202368
+trace=frame	revision=83	capture_revision=1641	capture_count=355	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=214045	bytes=33607122
+trace=frame	revision=84	capture_revision=1662	capture_count=356	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=216636	bytes=34012104
+trace=frame	revision=85	capture_revision=1683	capture_count=355	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=219237	bytes=34417244
+trace=frame	revision=86	capture_revision=1701	capture_count=354	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=221875	bytes=34822484
+trace=frame	revision=87	capture_revision=1723	capture_count=355	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=224478	bytes=35227400
+trace=frame	revision=88	capture_revision=1743	capture_count=354	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=227105	bytes=35632642
+trace=frame	revision=89	capture_revision=1762	capture_count=354	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34	writes=229733	bytes=36037418
+trace=frame	revision=90	capture_revision=1782	capture_count=353	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=232354	bytes=36442550
+trace=frame	revision=91	capture_revision=1800	capture_count=352	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=234946	bytes=36847514
+trace=frame	revision=92	capture_revision=1819	capture_count=352	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34	writes=237563	bytes=37252354
+trace=frame	revision=93	capture_revision=1841	capture_count=354	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=240157	bytes=37657228
+trace=frame	revision=94	capture_revision=1861	capture_count=354	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=242781	bytes=38062464
+trace=frame	revision=95	capture_revision=1881	capture_count=356	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=245409	bytes=38467366
+trace=frame	revision=96	capture_revision=1903	capture_count=355	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=247997	bytes=38872456
+trace=frame	revision=97	capture_revision=1921	capture_count=355	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=250620	bytes=39277702
+trace=frame	revision=98	capture_revision=1942	capture_count=358	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=253240	bytes=39682740
+trace=frame	revision=99	capture_revision=1965	capture_count=357	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=255864	bytes=40088004
+trace=frame	revision=100	capture_revision=1983	capture_count=357	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34	writes=258488	bytes=40492952
+trace=frame	revision=101	capture_revision=2002	capture_count=358	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=261110	bytes=40897734
+trace=frame	revision=102	capture_revision=2025	capture_count=358	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=263749	bytes=41303058
+trace=frame	revision=103	capture_revision=2042	capture_count=358	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=74	render_operations=34	writes=266351	bytes=41707718
+trace=frame	revision=104	capture_revision=2062	capture_count=359	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=268941	bytes=42112612
+trace=frame	revision=105	capture_revision=2085	capture_count=360	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=271562	bytes=42517792
+trace=frame	revision=106	capture_revision=2104	capture_count=360	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=274165	bytes=42922770
+trace=frame	revision=107	capture_revision=2125	capture_count=363	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=276751	bytes=43327852
+trace=frame	revision=108	capture_revision=2145	capture_count=362	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=279360	bytes=43733038
+trace=frame	revision=109	capture_revision=2164	capture_count=362	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=74	render_operations=34	writes=281989	bytes=44137810
+trace=frame	revision=110	capture_revision=2185	capture_count=363	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=284597	bytes=44542698
+trace=frame	revision=111	capture_revision=2205	capture_count=362	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=287237	bytes=44947654
+trace=frame	revision=112	capture_revision=2222	capture_count=360	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=74	render_operations=34	writes=289849	bytes=45352458
+trace=frame	revision=113	capture_revision=2245	capture_count=362	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=292474	bytes=45757720
+trace=frame	revision=114	capture_revision=2265	capture_count=360	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=295137	bytes=46163074
+trace=frame	revision=115	capture_revision=2283	capture_count=360	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=297746	bytes=46568208
+trace=frame	revision=116	capture_revision=2305	capture_count=359	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=86	render_operations=34	writes=300375	bytes=46973432
+trace=frame	revision=117	capture_revision=2324	capture_count=359	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34	writes=303018	bytes=47378544
+trace=frame	revision=118	capture_revision=2345	capture_count=360	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34	writes=305636	bytes=47783768
+trace=frame	revision=119	capture_revision=2365	capture_count=357	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=308261	bytes=48189054
+trace=frame	revision=120	capture_revision=2384	capture_count=357	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34	writes=310907	bytes=48594228
+trace=frame	revision=121	capture_revision=2404	capture_count=359	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=313503	bytes=48999176
 trace=action	code=0	dispatched=0	revision=121	capture_count=359	state=1	window=1
-trace=frame	revision=122	capture_revision=2404	capture_count=359	state=2	window=1	writes=316050	bytes=49403980
+trace=frame	revision=122	capture_revision=2404	capture_count=359	state=2	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=316050	bytes=49403980
 trace=action	code=1	dispatched=1	revision=122	capture_count=359	state=2	window=1
 trace=action	code=1	dispatched=0	revision=122	capture_count=359	state=2	window=1
-trace=frame	revision=123	capture_revision=2404	capture_count=359	state=1	window=1	writes=318646	bytes=49808928
+trace=frame	revision=123	capture_revision=2404	capture_count=359	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	writes=318646	bytes=49808928
 trace=action	code=0	dispatched=1	revision=123	capture_count=359	state=1	window=1
 trace=action	code=0	dispatched=0	revision=123	capture_count=359	state=1	window=1
-trace=frame	revision=124	capture_revision=2405	capture_count=0	state=1	window=1	writes=321191	bytes=50213634
+trace=frame	revision=124	capture_revision=2405	capture_count=0	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=32	render_operations=34	writes=321191	bytes=50213634
 trace=action	code=2	dispatched=1	revision=124	capture_count=0	state=1	window=1
-trace=frame	revision=125	capture_revision=2405	capture_count=0	state=1	window=0	writes=323737	bytes=50618344
+trace=frame	revision=125	capture_revision=2405	capture_count=0	state=1	window=0	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=32	render_operations=34	writes=323737	bytes=50618344
 trace=action	code=3	dispatched=1	revision=125	capture_count=0	state=1	window=0
 trace=action	code=3	dispatched=0	revision=125	capture_count=0	state=1	window=0
-trace=frame	revision=126	capture_revision=2405	capture_count=0	state=1	window=2	writes=326277	bytes=51023072
+trace=frame	revision=126	capture_revision=2405	capture_count=0	state=1	window=2	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=32	render_operations=34	writes=326277	bytes=51023072
 trace=action	code=5	dispatched=1	revision=126	capture_count=0	state=1	window=2
 trace=action	code=5	dispatched=0	revision=126	capture_count=0	state=1	window=2
-trace=frame	revision=127	capture_revision=2405	capture_count=0	state=1	window=1	writes=328822	bytes=51427778
+trace=frame	revision=127	capture_revision=2405	capture_count=0	state=1	window=1	semantic_scopes=96	layout_scopes=96	drawing_strokes=5	drawing_points=32	render_operations=34	writes=328822	bytes=51427778
 trace=action	code=4	dispatched=1	revision=127	capture_count=0	state=1	window=1
 trace=action	code=4	dispatched=0	revision=127	capture_count=0	state=1	window=1
