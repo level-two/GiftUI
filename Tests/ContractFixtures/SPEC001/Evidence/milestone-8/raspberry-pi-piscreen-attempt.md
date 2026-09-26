@@ -267,7 +267,7 @@ The final upload to `192.168.55.44` failed when the Pi host dropped off the
 network (`Host is down`); three subsequent pings were lost. The preceding
 deployed executable remains the last verified connected version. A partial
 `.incoming` file may be present and must be hash-checked if resumed. The
-final touch build has therefore not yet received a connected run.
+final touch build had not yet received a connected run at that point.
 
 The Pi briefly returned and again reported `armv6l`; the partial upload was
 522,240 bytes. A resumable upload of the same artifact was attempted, but the
@@ -275,3 +275,18 @@ Pi stopped responding to ping and SSH during transfer. The stalled client
 was stopped, preserving the partial `.incoming` file. The final artifact is
 still local and T8.1 remains open pending stable Pi connectivity and physical
 control testing.
+
+The final artifact was ultimately resumed at 16 KiB/s through the explicit
+IPv4 address with the saved `giftui-pi.local` host-key alias. The remote
+SHA-256 matched
+`52ee1d9129822cae302f8076d383e045bab1adfa35701b96851d04c632e32df9`.
+A 90-second foreground run on `armv6l` returned `status=completed`. The
+recorded frame durations grew from 4,124,011 to 6,722,685 microseconds, so
+the four-frame/second gate still fails. The app decoded several Down/Up
+contacts and ingress queued them without the previous permanent rejection,
+but the opportunity summaries reported zero dispatched actions. Down points
+included logical `(83,175)` and `(112,171)`, above the host-tested Start and
+Stop hit bounds at y=176-196. The maintainer confirmed these were the Start
+and Stop taps, followed by two more Stop taps. The connected trace therefore
+supports a vertical calibration correction. This run is not evidence of
+six-control success.
