@@ -44,7 +44,7 @@ The unchanged production sources were inventoried at revision
 | nRF `production_host.c` | `6853866169763d8dce88cc454e13de9ba2ca901249ece37544743c36792b99e6` |
 | nRF `StaticPreset.swift` | `4d434a1a42b385c7d9187c7b0c0af0682b37d8f684bb666a884fce3b0323222d` |
 | nRF `StaticInputABI.swift` | `27520259e747b9804d4313beec94ebbe376aa5c1066978ddbaa80231edc98fd8` |
-| nRF generated amalgamation | `6bc926ecd86c14f4378da0e3959b42bad37f8d8f3201468d025b799d71572cf2` |
+| nRF generated amalgamation after the checked firmware build | `1f30b5dcc883d98e9a3c6eb22f10168b5e106e77226a31e405fc38d0aa8bf368` |
 
 ## Commands and results
 
@@ -62,7 +62,19 @@ physical frame. The nRF run ended with the fixture's deliberate input-stop
 sentinel after its first service, and checked the expected reverse teardown.
 The built Pi and nRF native binary SHA-256 values were respectively
 `b344295fe4af4a864b2797365b1fdec82f731e2414c82603b31449e21c843731`
-and `d0af8dbed79981ee6caf4e71e6aadf300b5e22e3830c32ccf6f5e2dee9c79d3b`.
+and `e7bd1fbeef9e5b4fdbc3bdd5dd7ad1065ca0f132b50a80f3de3a271ab93df790`.
+
+The compatibility builds also passed after the runner changes:
+`scripts/raspberry-pi/doctor.sh` and
+`scripts/raspberry-pi/build.sh --product SignalAnalyzerRaspberryPiARMv6`
+produced a verified ARMv6 EABI5 hard-float executable (SHA-256
+`5e63709869c737e673e0dc8e5f9ddf04ccd3cc72c91cd11d97103fb6d21f2f7f`).
+`scripts/nrf52840/doctor.sh` and
+`scripts/nrf52840/build.sh --application signal-analyzer-static` produced
+an ARMv7E-M hard-float ELF (SHA-256
+`1cbfa64cef84695497aab982ba05d0fcbaa3dbd3ac86e5de970accb4a2544381`)
+with 196,480 RAM and 241,436 flash bytes. The nRF native runner passed again
+after that build regenerated the amalgamated Swift source.
 
 The rehearsal establishes the executable production seam for T7.6. The
 scripted actions, workload and semantic comparison, reviewed pixels, faults,
