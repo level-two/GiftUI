@@ -1854,10 +1854,11 @@ the next connected run for the corresponding target.
       Drawing, or frame traces. The target runners now retain ordered frame
       records and have a passing 12-action target-to-target comparison, recorded
       in the linked evidence. An independent macOS Dynamic source/admission/
-      presentation fixture now matches all 120 Pi workload summaries. Add the
-      missing initial/action frame and physical raster traces, plus the macOS
-      Static reference comparison, before marking T7.6 complete. The nRF
-      native trace now records committed semantic/layout/Drawing/render counts.
+      presentation fixture now matches all 120 Pi workload summaries. The
+      target runners match seven initial/action frame summaries and 12 pointer
+      outcomes. Add the macOS action and physical raster comparisons plus an
+      independent macOS Static reference before marking T7.6 complete. Both
+      target traces record committed semantic/layout/Drawing/render counts.
 - [ ] `T7.7` — Capture canonical final pixels at the exact approved Pi and
       nRF extents for idle, running with four traces, stopped, cleared, each
       selected window, and a visible diagnostic. Reconstruct the nRF tiled

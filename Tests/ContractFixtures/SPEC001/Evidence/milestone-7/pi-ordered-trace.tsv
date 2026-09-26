@@ -1,3 +1,4 @@
+trace=other_frame	code=65535	revision=0	capture_revision=0	capture_count=0	state=idle	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=32	render_operations=34	payloads=268	regions=2640	bytes=226960
 trace=frame	ordinal=1	revision=1	facts=25	capture_revision=24	capture_count=24	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=72	render_operations=34
 trace=frame	ordinal=2	revision=2	facts=20	capture_revision=44	capture_count=44	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
 trace=frame	ordinal=3	revision=3	facts=20	capture_revision=64	capture_count=64	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
@@ -119,14 +120,20 @@ trace=frame	ordinal=118	revision=118	facts=20	capture_revision=2364	capture_coun
 trace=frame	ordinal=119	revision=119	facts=20	capture_revision=2384	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
 trace=frame	ordinal=120	revision=120	facts=20	capture_revision=2404	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
 trace=action	code=0	dispatched=0	revision=120	capture_count=359	state=running	window=twoSeconds
+trace=other_frame	code=1	revision=121	capture_revision=2404	capture_count=359	state=stopped	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	payloads=34279	regions=328572	bytes=27760522
 trace=action	code=1	dispatched=1	revision=121	capture_count=359	state=stopped	window=twoSeconds
 trace=action	code=1	dispatched=0	revision=121	capture_count=359	state=stopped	window=twoSeconds
+trace=other_frame	code=0	revision=122	capture_revision=2404	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34	payloads=34563	regions=331272	bytes=27988042
 trace=action	code=0	dispatched=1	revision=122	capture_count=359	state=running	window=twoSeconds
 trace=action	code=0	dispatched=0	revision=122	capture_count=359	state=running	window=twoSeconds
+trace=other_frame	code=2	revision=123	capture_revision=2405	capture_count=0	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=32	render_operations=34	payloads=34835	regions=333921	bytes=28215320
 trace=action	code=2	dispatched=1	revision=123	capture_count=0	state=running	window=twoSeconds
+trace=other_frame	code=3	revision=124	capture_revision=2405	capture_count=0	state=running	window=oneSecond	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=32	render_operations=34	payloads=35107	regions=336571	bytes=28442602
 trace=action	code=3	dispatched=1	revision=124	capture_count=0	state=running	window=oneSecond
 trace=action	code=3	dispatched=0	revision=124	capture_count=0	state=running	window=oneSecond
+trace=other_frame	code=5	revision=125	capture_revision=2405	capture_count=0	state=running	window=fiveSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=32	render_operations=34	payloads=35379	regions=339215	bytes=28669902
 trace=action	code=5	dispatched=1	revision=125	capture_count=0	state=running	window=fiveSeconds
 trace=action	code=5	dispatched=0	revision=125	capture_count=0	state=running	window=fiveSeconds
+trace=other_frame	code=4	revision=126	capture_revision=2405	capture_count=0	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=32	render_operations=34	payloads=35651	regions=341864	bytes=28897180
 trace=action	code=4	dispatched=1	revision=126	capture_count=0	state=running	window=twoSeconds
 trace=action	code=4	dispatched=0	revision=126	capture_count=0	state=running	window=twoSeconds

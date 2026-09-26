@@ -158,8 +158,8 @@ model state plus cumulative tile writes/bytes. Both runners record the same
 post-workload enabled and disabled pointer sequence. These are observation
 records; they do not drive the host loops.
 
-Raw records are saved as [Pi](pi-ordered-trace.tsv) (132 lines, SHA-256
-`62ff76e6c47e357c4f520f48c45166504bba99c9a0b033e2da7a24a547a1d9c8`)
+Raw records are saved as [Pi](pi-ordered-trace.tsv) (139 lines, SHA-256
+`7fb99bc7042a3e3017457d711f9045bd67d6d842df9e6ffdd7233d3bbf682472`)
 and [nRF](nrf-ordered-trace.tsv) (139 lines, SHA-256
 `d5f1fee4f126f52a4090e621ba7b436801494a545c8dd72affb61cb08bd7ee8b`).
 Both host-native runner commands passed. The standalone comparison command
@@ -171,15 +171,15 @@ scripts/contracts/compare-spec-001-target-actions.rb \
 ```
 
 passed: 120 ordered Pi workload frames, 127 ordered nRF committed frames,
-matching terminal capture revision 2404/count 359, and 12 identical ordered
-action outcomes after normalizing the Static state/window codes. The action
+matching terminal capture revision 2404/count 359, seven matching initial and
+action-induced frames, and 12 identical ordered action outcomes after
+normalizing the Static state/window codes. The action
 sequence includes disabled Start before Stop, disabled Stop after Stop,
 disabled Start after restart, and each disabled selected-window control. Clear
 follows acquired transitions and empties the capture on both profiles.
 
 The target runs use different production scheduling and raster projections,
-so their frame counts and per-frame acquisition batches differ. The Pi record
-does not yet include its initial or post-workload presentation summaries.
+so their workload frame numbering and per-frame acquisition batches differ.
 The macOS Dynamic and Static executables still do not run full application
 reference loops. The target-to-target action comparison is an incremental
 check, not the required ordered comparison against independent macOS reference
@@ -235,6 +235,24 @@ ELF retained ARMv7E-M hard-float verification and used 196,544 RAM and
 SHA-256 `d5f1fee4f126f52a4090e621ba7b436801494a545c8dd72affb61cb08bd7ee8b`.
 Its 127 frames now retain completed semantic, layout, Drawing, and render
 counts for a future independent macOS Static comparison.
+
+## T7.6 Pi initial and action frame summaries (2026-09-27)
+
+The Dynamic presentation owner now retains its latest accepted summary for
+read-only observation. The Pi native runner records the idle initial frame and
+each of the six action-induced committed frames, including capture/model state,
+semantic/layout/Drawing/render counts, and cumulative physical payload,
+region, and byte counts. Disabled controls leave the committed revision
+unchanged and create no frame record.
+
+The host-native runner passed with 120 workload frames and seven additional
+initial/action summaries. The expanded target comparison passed all seven
+frames on capture revision/count, model state/window, layout scopes, Drawing
+strokes/points, and render operation count. Pi and nRF retain their distinct
+semantic counting schemes and physical projections. The ARMv6 cross-build
+passed and verified the supported EABI5 hard-float executable without a remote
+run. The refreshed [Pi raw trace](pi-ordered-trace.tsv) has SHA-256
+`7fb99bc7042a3e3017457d711f9045bd67d6d842df9e6ffdd7233d3bbf682472`.
 
 ## Validation boundary
 
