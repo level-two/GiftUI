@@ -50,6 +50,11 @@ nonisolated(unsafe) private var giftUIStaticGestureSession =
     StaticSignalAnalyzerNRFEmbeddedGestureSession()
 nonisolated(unsafe) private var giftUIStaticGestureProbe =
     StaticSignalAnalyzerNRFEmbeddedGestureSession()
+nonisolated(unsafe) private var giftUIStaticLastSemanticScopes: UInt32 = 0
+nonisolated(unsafe) private var giftUIStaticLastLayoutScopes: UInt32 = 0
+nonisolated(unsafe) private var giftUIStaticLastDrawingStrokes: UInt32 = 0
+nonisolated(unsafe) private var giftUIStaticLastDrawingPoints: UInt32 = 0
+nonisolated(unsafe) private var giftUIStaticLastRenderOperations: UInt32 = 0
 
 @_cdecl("giftui_signal_analyzer_model_location_valid")
 public func giftUISignalAnalyzerModelLocationValid() -> UInt32 {
@@ -502,6 +507,15 @@ private func giftUIStaticResetValidationState() {
     giftUIStaticModelLocation = StaticSignalAnalyzerNRFModelLocation()
     giftUIStaticInteractionOwner = StaticSignalAnalyzerNRFEmbeddedInteractionOwner()!
     giftUIStaticGestureSession = StaticSignalAnalyzerNRFEmbeddedGestureSession()
+    giftUIStaticResetPresentationCounts()
+}
+
+private func giftUIStaticResetPresentationCounts() {
+    giftUIStaticLastSemanticScopes = 0
+    giftUIStaticLastLayoutScopes = 0
+    giftUIStaticLastDrawingStrokes = 0
+    giftUIStaticLastDrawingPoints = 0
+    giftUIStaticLastRenderOperations = 0
 }
 
 @_cdecl("giftui_signal_analyzer_present_initial")
@@ -665,6 +679,31 @@ public func giftUISignalAnalyzerVisibleWindow() -> UInt32 {
 @_cdecl("giftui_signal_analyzer_capture_count")
 public func giftUISignalAnalyzerCaptureCount() -> UInt32 {
     UInt32(giftUIStaticModelLocation.capture.count)
+}
+
+@_cdecl("giftui_signal_analyzer_last_semantic_scopes")
+public func giftUISignalAnalyzerLastSemanticScopes() -> UInt32 {
+    giftUIStaticLastSemanticScopes
+}
+
+@_cdecl("giftui_signal_analyzer_last_layout_scopes")
+public func giftUISignalAnalyzerLastLayoutScopes() -> UInt32 {
+    giftUIStaticLastLayoutScopes
+}
+
+@_cdecl("giftui_signal_analyzer_last_drawing_strokes")
+public func giftUISignalAnalyzerLastDrawingStrokes() -> UInt32 {
+    giftUIStaticLastDrawingStrokes
+}
+
+@_cdecl("giftui_signal_analyzer_last_drawing_points")
+public func giftUISignalAnalyzerLastDrawingPoints() -> UInt32 {
+    giftUIStaticLastDrawingPoints
+}
+
+@_cdecl("giftui_signal_analyzer_last_render_operations")
+public func giftUISignalAnalyzerLastRenderOperations() -> UInt32 {
+    giftUIStaticLastRenderOperations
 }
 
 @_cdecl("giftui_signal_analyzer_next_delay_microseconds")
@@ -846,6 +885,7 @@ private func giftUIStaticRetire(
     interaction = StaticSignalAnalyzerNRFEmbeddedInteractionOwner()!
     gestures.quiesce()
     model.retire()
+    giftUIStaticResetPresentationCounts()
 }
 
 @inline(never)
@@ -1193,6 +1233,11 @@ private func giftUIStaticFullCanvas(
         interaction.committedRecord(at: 5)?.action.code == 5
     else { return 0 }
     if !validation {
+        giftUIStaticLastSemanticScopes = UInt32(semantic.scopeCount)
+        giftUIStaticLastLayoutScopes = UInt32(resolved.scopeCount)
+        giftUIStaticLastDrawingStrokes = UInt32(summary.strokeCount)
+        giftUIStaticLastDrawingPoints = UInt32(summary.pointCount)
+        giftUIStaticLastRenderOperations = UInt32(renderHeader.operationCount)
         gestures.installPhysicalPresentation(
             PresentationRevision(rawValue: frameRevision)
         )

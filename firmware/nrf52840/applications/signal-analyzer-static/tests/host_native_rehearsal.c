@@ -17,6 +17,11 @@ extern uint32_t giftui_signal_analyzer_capture_revision(void);
 extern uint32_t giftui_signal_analyzer_capture_count(void);
 extern uint32_t giftui_signal_analyzer_acquisition_state(void);
 extern uint32_t giftui_signal_analyzer_visible_window(void);
+extern uint32_t giftui_signal_analyzer_last_semantic_scopes(void);
+extern uint32_t giftui_signal_analyzer_last_layout_scopes(void);
+extern uint32_t giftui_signal_analyzer_last_drawing_strokes(void);
+extern uint32_t giftui_signal_analyzer_last_drawing_points(void);
+extern uint32_t giftui_signal_analyzer_last_render_operations(void);
 extern uint64_t giftui_signal_analyzer_next_delay_microseconds(void);
 extern int giftui_firmware_main(void);
 
@@ -72,15 +77,27 @@ int ads7846_pen_is_down(void)
     const uint32_t revision = giftui_signal_analyzer_current_revision();
     if (revision != 0U && revision != last_traced_revision) {
         assert(revision > last_traced_revision);
+        assert(giftui_signal_analyzer_last_semantic_scopes() == 96U);
+        assert(giftui_signal_analyzer_last_layout_scopes() == 96U);
+        assert(giftui_signal_analyzer_last_drawing_strokes() == 5U);
+        assert(giftui_signal_analyzer_last_drawing_points() >= 32U);
+        assert(giftui_signal_analyzer_last_render_operations() > 0U);
         last_traced_revision = revision;
         printf("trace=frame\trevision=%u\tcapture_revision=%u"
                "\tcapture_count=%u\tstate=%u\twindow=%u"
-               "\twrites=%u\tbytes=%u\n",
+               "\tsemantic_scopes=%u\tlayout_scopes=%u"
+               "\tdrawing_strokes=%u\tdrawing_points=%u"
+               "\trender_operations=%u\twrites=%u\tbytes=%u\n",
                revision, giftui_signal_analyzer_capture_revision(),
                giftui_signal_analyzer_capture_count(),
                giftui_signal_analyzer_acquisition_state(),
-               giftui_signal_analyzer_visible_window(), display_writes,
-               display_bytes);
+               giftui_signal_analyzer_visible_window(),
+               giftui_signal_analyzer_last_semantic_scopes(),
+               giftui_signal_analyzer_last_layout_scopes(),
+               giftui_signal_analyzer_last_drawing_strokes(),
+               giftui_signal_analyzer_last_drawing_points(),
+               giftui_signal_analyzer_last_render_operations(),
+               display_writes, display_bytes);
     }
     if (script_stage == 0U) {
         if (touch_phase == 0U) {
@@ -229,6 +246,7 @@ int main(void)
     assert(display_writes > 0U && display_bytes > 0U);
     assert(giftui_signal_analyzer_initial_committed_actions() == 0U);
     assert(giftui_signal_analyzer_current_revision() == 0U);
+    assert(giftui_signal_analyzer_last_semantic_scopes() == 0U);
     assert(shutdown_order == 2U);
     printf("status=passed\tprofile=nrf52840-static\tevidence=host-native-fixture"
            "\twrites=%u\tbytes=%u\n", display_writes, display_bytes);
