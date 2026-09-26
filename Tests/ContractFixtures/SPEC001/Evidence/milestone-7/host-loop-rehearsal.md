@@ -14,10 +14,11 @@ Only the monotonic clock, physical input (no contacts in this startup case),
 and framebuffer sink are deterministic. The recording sink accepts each
 borrowed RGB565 payload and counts its regions and bytes. The owner performs
 the seven production activation steps, including observation, initial
-presentation, and Start dispatch. The shared controller performs the eight
-production teardown calls in reverse ownership order. The runner checks the
-active owner and eligible input before teardown, then quiescent source, input,
-and assembly-report state afterward.
+presentation, and Start dispatch. A forwarding recorder observes the seven
+calls in order and the shared controller's eight teardown calls in reverse
+ownership order while forwarding every call to the production owner. The
+runner checks the active owner and eligible input before teardown, then
+quiescent source, input, and assembly-report state afterward.
 
 The nRF runner compiles the firmware's exact `main.c`, `production_host.c`,
 `static_host_lifecycle.c`, scheduler, touch pipeline, input bridge, touch
@@ -32,7 +33,8 @@ display shutdown precedes touch shutdown. It uses the exact 39,696-byte
 profile, 115,392-byte capture, 3,840-byte tile, and 240-byte coverage regions;
 no target framebuffer is added.
 
-At source revision `7f65ce0d38b4879103c755ff95c12a3b9b5b304c`:
+The unchanged production sources were inventoried at revision
+`7f65ce0d38b4879103c755ff95c12a3b9b5b304c`:
 
 | Production source | SHA-256 |
 |---|---|
@@ -59,7 +61,7 @@ synchronous tile writes and 403,122 RGB565 bytes across its first complete
 physical frame. The nRF run ended with the fixture's deliberate input-stop
 sentinel after its first service, and checked the expected reverse teardown.
 The built Pi and nRF native binary SHA-256 values were respectively
-`eb852cc90632d854db6fffb5de0f7f2c7979f6167fa902df19818804277371bc`
+`b344295fe4af4a864b2797365b1fdec82f731e2414c82603b31449e21c843731`
 and `d0af8dbed79981ee6caf4e71e6aadf300b5e22e3830c32ccf6f5e2dee9c79d3b`.
 
 The rehearsal establishes the executable production seam for T7.6. The
