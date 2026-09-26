@@ -36,17 +36,6 @@ features:
       - observable-reference-state
       - canvas-drawing
     milestone: MVP
-  kmrtm24024-spi:
-    title: KMRTM24024-SPI nRF52840 Target Support
-    status: proposal
-    proposal:
-      - PROPOSAL-007
-    rfcs: []
-    adrs: []
-    specs: []
-    dependencies:
-      - signal-analyzer
-    milestone: null
   giftui-mvp-architecture:
     title: GiftUI MVP Architecture Establishment
     status: implementation

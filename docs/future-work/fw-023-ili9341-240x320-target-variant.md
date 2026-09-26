@@ -1,8 +1,8 @@
 ---
 id: FW-023
-feature: kmrtm24024-spi
+feature: signal-analyzer
 title: Optional 240 x 320 ILI9341 Target Variant
-status: promoted
+status: captured
 authors:
   - codex
 created: 2026-09-25
@@ -12,8 +12,7 @@ source:
 related_future_work: []
 related_explorations: []
 related_spikes: []
-promoted_to:
-  - PROPOSAL-007
+promoted_to: []
 supersedes: []
 superseded_by: []
 target_milestone: null
@@ -59,10 +58,8 @@ remove it.
 
 ## Disposition
 
-Promoted to draft
-[PROPOSAL-007](../proposals/proposal-007-kmrtm24024-spi-target.md) after the
-maintainer requested support for the exact connected module. This promotion
-does not approve the Proposal or authorize implementation. The current
+Captured as a possible separate target. Revisit through Proposal and, if
+accepted, RFC/ADR/Specification review before implementation. The current
 approved target and T8.2 remain unchanged.
 
 ## References
@@ -70,4 +67,3 @@ approved target and T8.2 remain unchanged.
 - [SPEC-001 implementation plan](../implementation-plans/spec-001-implementation-plan.md)
 - [Connected nRF attempt](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/nrf52840-connected-attempt.md)
 - [SPEC-015 host configuration](../specs/spec-015-host-configuration.md)
-- [PROPOSAL-007: KMRTM24024-SPI nRF52840 Target Support](../proposals/proposal-007-kmrtm24024-spi-target.md)
