@@ -660,16 +660,6 @@ package enum RasterStrokeCoverage {
         times otherFactor: Magnitude
     ) -> Bool {
         guard value > 0 else { return true }
-        let squaredValue = value.multipliedReportingOverflow(by: value)
-        let squaredFactor = factor.multipliedReportingOverflow(by: factor)
-        if !squaredValue.overflow, !squaredFactor.overflow {
-            let threshold = squaredFactor.partialValue.multipliedReportingOverflow(
-                by: otherFactor
-            )
-            if !threshold.overflow {
-                return squaredValue.partialValue <= threshold.partialValue
-            }
-        }
         return fractionLessThanOrEqual(
             numerator: value,
             denominator: otherFactor,
