@@ -95,6 +95,7 @@ where Target: DisplayTarget {
     package var loopIsEstablished: Bool { phase == .active }
     package var reportRuntimeUseIsValid: Bool { assemblyReportRuntimeUseIsValid }
     package var nextScheduledSourceDelay: Duration? { source?.nextScheduledDelay }
+    package var activeSourceGeneration: UInt32? { source?.activeGeneration }
 
     package mutating func constructRuntimeAndEndpoint() -> HostActivationStepResult<
         ActivationFailure

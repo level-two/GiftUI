@@ -89,7 +89,8 @@
                 _ = Glibc.signal(SIGTERM, SIG_DFL)
             }
 
-            var nextSource = try sourceDeadline(owner: owner, from: origin)
+            var scheduledSourceGeneration = owner.activeSourceGeneration
+            var nextSource: UInt64? = try sourceDeadline(owner: owner, from: origin)
             let inputPump = LinuxSignalAnalyzerPiInputPump()
             while signalAnalyzerStopRequested == 0 {
                 guard let now = LinuxSignalAnalyzerPiClock.nowMicroseconds() else {
@@ -111,7 +112,7 @@
                     print("pi-input \(summary)")
                 }
 
-                if now >= nextSource {
+                if let deadline = nextSource, now >= deadline {
                     guard owner.deliverScheduledSourceTransition() else {
                         throw .sourceSchedule
                     }
@@ -142,7 +143,18 @@
                 case .rejected(let error):
                     throw .pacing(error)
                 }
-                nextWake = min(nextWake, nextSource)
+                let currentSourceGeneration = owner.activeSourceGeneration
+                if currentSourceGeneration != scheduledSourceGeneration {
+                    scheduledSourceGeneration = currentSourceGeneration
+                    if currentSourceGeneration != nil {
+                        guard let restartedAt = LinuxSignalAnalyzerPiClock.nowMicroseconds()
+                        else { throw .clock }
+                        nextSource = try sourceDeadline(owner: owner, from: restartedAt)
+                    } else {
+                        nextSource = nil
+                    }
+                }
+                if let nextSource { nextWake = min(nextWake, nextSource) }
                 if nextWake > serviceNow {
                     let delay = min(nextWake - serviceNow, 10_000)
                     _ = Glibc.usleep(useconds_t(delay))
