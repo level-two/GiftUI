@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-13
-updated: 2026-09-25
+updated: 2026-09-26
 related_design_notes:
   - ../implementation-designs/spec-001-presentation-admission-and-failure.md
   - ../implementation-designs/spec-001-four-host-application-join.md
@@ -156,7 +156,8 @@ contracts are available.
 | `T5.1`-`T5.5` | Milestones 3-4; production SPEC-009/010/011/013 seams | admission storage, model lifetime, action dispatch, cycle fixtures | Admission and model-lifetime fixtures may proceed separately; coordinator joins wait for both |
 | `T6.1`-`T6.6` | Milestones 1-5; production SPEC-014/015 seams | target composition, generated manifests, four host fixtures | Each immutable preset may build independently; equivalence consumes all four reports |
 | `T7.1`-`T7.4` | Complete application graph and owner adapters | failure matrix, workload/resource instrumentation | Failure and performance corpora may execute independently against one frozen graph |
-| `T8.1`-`T8.3` | Corresponding cross-builds and explicit connected-hardware authorization | PiScreen and TFT execution evidence | Pi and nRF connected work is independent and remains separate from hardware-free evidence |
+| `T7.5` | Production Pi/nRF host loops from `T6.7`/`T6.8`; `T7.4` workload | macOS recording input/display adapters, full-loop rehearsal driver, trace and raster evidence | Each profile may rehearse independently; comparison consumes both reports and the macOS references |
+| `T8.1`-`T8.3` | Corresponding cross-builds, passing `T7.5` rehearsal for each target, and explicit connected-hardware authorization | PiScreen and TFT execution evidence | Pi and nRF connected work is independent and remains separate from hardware-free evidence |
 | `T9.1`-`T9.4` | All applicable implementation and evidence tasks | registered driver, repository gate, conformance report | Profile runs may execute independently; final disposition consumes all required evidence |
 
 ## Evidence Lanes and Artifact Ownership
@@ -169,6 +170,10 @@ contracts are available.
   `host-native-fixture` or `simulator`; neither label satisfies target
   execution, display, input, process-memory, stack-high-water, responsiveness,
   or watchdog criteria.
+- `T7.5` full-loop macOS rehearsals are `host-native-fixture` evidence. Record
+  the production source identity and every substituted clock, input, and
+  display boundary; a passing rehearsal is a prerequisite for a new connected
+  attempt, never a disposition for a connected-hardware criterion.
 - Raspberry Pi and nRF52840 compiler, ABI, symbol, link-map, and static-resource
   results are `cross-build-inspection` evidence. Deployable Pi artifacts remain
   under `.build/raspberry-pi/`; nRF52840 ELF, HEX, map, Devicetree, and reports
@@ -196,7 +201,7 @@ governed implementation must still reproduce and record the required evidence.
 | `SA-AC-002` — Logical Domain/Data/Presentation/host graph and inward dependencies | `T0.2`, `T0.5`, `T1.4`, `T6.1`, `T9.1` | Package graph, imports, interfaces, generated graph report | baseline; revalidation pending |
 | `SA-AC-003` — Domain excludes UI/backend/platform/timing/hardware APIs | `T0.2`, `T0.5`, `T1.4`, `T9.1` | Source/import/symbol negative scans in every profile | baseline; revalidation pending |
 | `SA-AC-004` — Presentation excludes Data/platform/timing/renderer/display/hardware APIs | `T0.2`, `T0.5`, `T4.4`, `T9.1` | Import and dependency negative fixtures | pending |
-| `SA-AC-005` — Complete visible screen surface | `T4.1`-`T4.3`, `T6.2`-`T6.5`, `T6.7`, `T6.8`, `T8.1`, `T8.2` | Semantic hierarchy transcript plus rendered/connected display evidence | pending |
+| `SA-AC-005` — Complete visible screen surface | `T4.1`-`T4.3`, `T6.2`-`T6.5`, `T6.7`, `T6.8`, `T7.5`, `T8.1`, `T8.2` | Semantic hierarchy transcript, host-recorded raster, and connected display evidence | pending |
 | `SA-AC-006` — Fixed explicit portable composition shared by four configurations | `T4.1`, `T4.4`, `T6.2`-`T6.5` | Source identity/hash, compile, and hierarchy comparison | pending |
 | `SA-AC-007` — Revisioned current-value sink registration, replacement, detach, and bounded returns | `T1.3`, `T2.2`, `T3.2` | Ordered callback/outcome and lifetime transcript | pending |
 | `SA-AC-008` — Synchronous application delivery and distinct GiftUI mutation without portable concurrency facilities | `T1.4`, `T2.2`, `T3.2`, `T5.3`, `T9.1` | Same-thread/distinct-executor transcript and forbidden-facility scans | pending |
@@ -214,8 +219,8 @@ governed implementation must still reproduce and record the required evidence.
 | `SA-AC-020` — Ruler formatting and 11-plus-one grid | `T4.3` | Text bytes and normalized Drawing operation transcript | baseline; revalidation pending |
 | `SA-AC-021` — Consistent latest state at 250 ms without per-event frames | `T5.3`, `T7.4` | Admission/application/publication/frame timeline and cadence report | pending |
 | `SA-AC-022` — macOS dynamic and static deterministic execution | `T6.2`, `T6.3`, `T9.2` | Two host-execution reports and normalized equivalence | pending |
-| `SA-AC-023` — Raspberry Pi framebuffer/PiScreen display and input | `T6.4`, `T6.7`, `T8.1` | ARMv6 cross-build plus separately labeled connected-target transcript | pending |
-| `SA-AC-024` — nRF52840 static TFT display and input | `T6.5`, `T6.8`, `T8.2` | ELF inspection plus separately labeled connected-target transcript | pending |
+| `SA-AC-023` — Raspberry Pi framebuffer/PiScreen display and input | `T6.4`, `T6.7`, `T7.5`, `T8.1` | ARMv6 cross-build, host rehearsal, and separately labeled connected-target transcript | pending |
+| `SA-AC-024` — nRF52840 static TFT display and input | `T6.5`, `T6.8`, `T7.5`, `T8.2` | ELF inspection, host rehearsal, and separately labeled connected-target transcript | pending |
 | `SA-AC-025` — nRF binary/RAM/storage/drawing/stack fit evidence | `T6.5`, `T6.8`, `T7.4`, `T8.2` | Link map, ELF, stack/high-water, workspace, and run report | pending |
 | `SA-AC-026` — Conforming source replacement changes no portable owners | `T2.3`, `T6.6` | Mock/fixture-source substitution compile and graph comparison | pending |
 | `SA-AC-027` — Missing GiftUI behavior fails configuration without reduced UI | `T6.6`, `T7.1` | Each-required-facility negative and zero-publication transcript | pending |
@@ -1766,6 +1771,8 @@ the relevant profile.
 
 **Exit evidence:** Every failure row, accepted workload, exact preset value,
 and required performance/resource measurement has a reproducible disposition.
+Both full-loop macOS rehearsals and their trace/raster comparisons pass before
+the next connected run for the corresponding target.
 
 - [x] `T7.1` — Exhaust every capacity, availability, sequence, identity,
       revision, phase, reentrancy, invariant, unknown-producer, residual-policy,
@@ -1814,12 +1821,42 @@ and required performance/resource measurement has a reproducible disposition.
       preset comparison preserves every SPEC-015 manifest and physical/resource
       value; Pi/nRF target timing remains `not-collected`. Evidence is in
       `Tests/ContractFixtures/SPEC001/Evidence/milestone-7/sustained-workload-and-resources.md`.
+- [ ] `T7.5` — Rehearse both production target-host application loops on macOS
+      before another connected attempt. Build the Pi Dynamic and nRF Static
+      host-loop source used by `T6.7`/`T6.8` into host-native executables;
+      substitute only the platform clock, physical input, and display transport
+      with deterministic recording adapters. The fixture must execute real
+      startup validation, owner activation, acquisition, fact admission,
+      mutation, layout, Drawing, raster submission, input dispatch, pacing,
+      failure containment, and reverse-order teardown. Drive the exact
+      2,400-transition/120-frame logical workload and all six controls,
+      including disabled controls, stop/restart, clear, and 1/2/5-second
+      windows. Inject startup, display, and input failures and verify their
+      specified disposition and cleanup. Compare semantic, action, Drawing,
+      and raster checksums or exact bytes against the macOS references and
+      the approved preset geometry; inspect at least the initial and a
+      post-action frame as rendered images. Record event/frame ordering,
+      source and binary identities, substituted boundaries, commands, raw
+      traces, image artifacts, expected/actual comparisons, and failure
+      results under
+      `Tests/ContractFixtures/SPEC001/Evidence/milestone-7/host-loop-rehearsal.md`.
+      Add an explicit standalone rehearsal command and invoke it from the
+      registered SPEC-001 profile driver; no profile may be skipped silently.
+      Each profile passes only if its complete loop and comparison pass. If
+      production source cannot run through recording boundaries without a
+      contract or architecture change, report the blocker upstream rather
+      than introducing a second application loop. A failure blocks the next
+      connected run for that profile. This is host-native evidence only and
+      cannot close `SA-AC-023` or `SA-AC-024`.
 
 ### Milestone 8: Collect Separately Authorized Connected-Hardware Evidence
 
 **Entry conditions:** The corresponding hardware-free build, ABI, resource,
-and safety checks pass; the user explicitly requests the connected-target
-change; the physical target is available and reports the required identity.
+and safety checks pass; that profile's `T7.5` full-loop rehearsal passes at
+the source revision selected for the connected run; the user explicitly
+requests the connected-target change; the physical target is available and
+reports the required identity. Existing connected observations remain valid
+evidence but do not waive this gate for a later attempt.
 
 **Exit evidence:** Display, input, pacing, responsiveness, and resource claims
 are recorded as connected-target evidence rather than inferred from build or
@@ -1868,8 +1905,9 @@ for a different criterion. Each group records the exact revision, artifact
 hash, target identity, commands, transports, raw traces, measurements, and
 teardown result needed by every consuming report.
 
-1. **Raspberry Pi / PiScreen group:** after SPEC-003 `T5.4` and `T5.5` pass
-   and SPEC-001 `T6.7` supplies the production display/input-capable artifact,
+1. **Raspberry Pi / PiScreen group:** after SPEC-003 `T5.4` and `T5.5` pass,
+   SPEC-001 `T6.7` supplies the production display/input-capable artifact,
+   and the Pi `T7.5` rehearsal passes for the selected source revision,
    select one Raspberry Pi 1 and obtain a separate explicit request authorizing
    deployment and connected execution. Run the repository Pi doctor, verify
    the exact `T6.4` artifact and hard-float ARMv6 attributes, require the remote
@@ -1878,7 +1916,8 @@ teardown result needed by every consuming report.
    SPEC-011 `T9.3`, and SPEC-015's connected PiScreen gate. A service restart
    remains separately unauthorized unless the same request names it.
 2. **nRF52840 TFT/input group:** after SPEC-001 `T6.8` supplies the production
-   display/input-capable firmware, obtain a separate explicit request authorizing
+   display/input-capable firmware and the nRF `T7.5` rehearsal passes for the
+   selected source revision, obtain a separate explicit request authorizing
    the connected-board change. Run the repository nRF doctor, rebuild and
    inspect the exact `T6.5` firmware, reverify ARMv7E-M and VFP hard-float
    attributes, then flash only `nrf52840dk/nrf52840` through the checked-in
@@ -1991,10 +2030,15 @@ not warrant design notes.
 6. Validate the exact SPEC-015 descriptor and assemble macOS dynamic, macOS
    static, Raspberry Pi ARMv6, and nRF52840 profiles in that order.
 7. Run sustained workload, failure, UTF-8, resource, import, symbol, ABI, and
-   normalized equivalence checks. Hardware-free Pi/nRF builds establish only
-   compile/link/inspection evidence.
-8. With separate explicit authorization, collect connected PiScreen and TFT
-   display/input evidence. Do not let absence of hardware evidence block safe
+   normalized equivalence checks. Rehearse the complete Pi and nRF production
+   host loops on macOS with recording platform boundaries, exact input and
+   raster comparisons, and repeat after changes to either loop or its
+   rendering/input dependencies. Hardware-free Pi/nRF builds establish only
+   compile/link/inspection evidence; host rehearsals establish only host-native
+   execution evidence.
+8. With separate explicit authorization and the corresponding rehearsal pass,
+   collect connected PiScreen and TFT display/input evidence. Do not let absence
+   of hardware evidence block safe
    local implementation progress or turn into an inferred pass.
 9. Run the repository gates, create the conformance report, and request human
    review of any remaining platform exception and the eventual
@@ -2157,19 +2201,26 @@ policy, and one-owner acyclic graph stages before any live owner construction.
 Evidence is in
 `Tests/ContractFixtures/SPEC001/Evidence/milestone-6/host-structural-gates.md`.
 
-Milestone 7 is complete. `T7.1` records the 19-row exhaustive failure matrix,
+The original Milestone 7 tasks are complete. `T7.1` records the 19-row
+exhaustive failure matrix,
 `T7.2` proves six diagnostic-projection modes cannot change Dynamic or Static
 semantics, `T7.3` closes both capture-revision terminal paths, and `T7.4`
 executes the equal 2,400-event/120-frame workload plus 28/32/33 capacity corpus
 in all four hardware-free presets.
 
-Milestone 9 is complete. The interface/dependency audit, all 60 registered
-hardware-free spec/profile driver combinations, formatter, root tests,
+The 2026-09-26 plan revision adds pending `T7.5`: both production target-host
+loops must complete a macOS recording-device rehearsal before a new connected
+attempt. Earlier Milestone 7 task dispositions and connected observations are
+unchanged; the added rehearsal has no passing evidence yet.
+
+The original Milestone 9 tasks are complete. The interface/dependency audit,
+all 60 registered hardware-free spec/profile driver combinations, formatter, root tests,
 governance, and 24-field analyzer comparison pass. The linked conformance
 report maps all 45 criteria once: 40 pass and five remain blocked by the
 separately authorized connected-hardware Milestone 8. The plan therefore
 remains `active`; neither the report nor Milestone 9 marks SPEC-001
-`implemented`.
+`implemented`. Rerun the registered gate after `T7.5` adds its rehearsal
+driver; the earlier pass does not cover the new task.
 
 The 2026-09-13 readiness revision fixed the governed root-package destination,
 seam-level dependency ledger, contract-report and platform-artifact ownership,

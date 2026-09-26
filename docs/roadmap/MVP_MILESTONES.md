@@ -161,8 +161,16 @@ This baseline should be preserved as non-authoritative migration input. Existing
 
 1. macOS dynamic for rapid integration and debugging;
 2. macOS static to expose static-composition restrictions early;
-3. Raspberry Pi/Linux dynamic to validate framebuffer and platform boundaries;
-4. nRF52840 static to validate constrained embedded viability.
+3. rehearse the complete Pi Dynamic and nRF Static application host loops on
+   macOS with deterministic input and recording display transports, then
+   compare their semantic, action, drawing, and raster results with the macOS
+   references;
+4. Raspberry Pi/Linux dynamic to validate framebuffer and platform boundaries;
+5. nRF52840 static to validate constrained embedded viability.
+
+The host-loop rehearsal is an implementation sequencing and debugging gate.
+It cannot establish connected display/input behavior, timing, or resource
+measurements; those remain target-specific validation work.
 
 **Why here:** A cross-stack vertical slice exposes abstraction leaks before the custom-drawing contract adds backend complexity.
 
