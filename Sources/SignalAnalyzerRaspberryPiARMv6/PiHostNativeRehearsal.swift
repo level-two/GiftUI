@@ -179,6 +179,7 @@ enum PiHostNativeRehearsal {
             controller.teardown(owner: &owner)
             throw PiHostNativeRehearsalError.missingFrame
         }
+        try traceOtherFrame(code: nil, owner: owner, device: device)
         try runWorkload(owner: &owner, device: device)
         try runActions(owner: &owner, device: device)
         controller.teardown(owner: &owner)
@@ -272,6 +273,7 @@ enum PiHostNativeRehearsal {
                 owner.production.applicationState?.visibleWindow == expectedWindow,
                 owner.production.currentPresentationRevision != beforeRevision
             else { throw PiHostNativeRehearsalError.action }
+            try traceOtherFrame(code: code, owner: owner, device: device)
             try traceAction(code, dispatched: 1, owner: owner)
             if code == .clear {
                 guard owner.production.applicationState?.capture.transitions.isEmpty == true
@@ -348,6 +350,32 @@ enum PiHostNativeRehearsal {
                 + "\trevision=\(revision.rawValue)"
                 + "\tcapture_count=\(state.capture.transitions.count)"
                 + "\tstate=\(state.acquisitionState)\twindow=\(state.visibleWindow)"
+        )
+    }
+
+    private static func traceOtherFrame(
+        code: SignalAnalyzerAction?,
+        owner: PiRecordingLifecycleOwner<PiScreenDisplayTarget<PiRecordingDevice>>,
+        device: PiRecordingDevice
+    ) throws {
+        guard let summary = owner.production.lastPresentedSummary,
+            let state = owner.production.applicationState,
+            let captureRevision = owner.production.applicationCaptureRevision,
+            let revision = owner.production.currentPresentationRevision
+        else { throw PiHostNativeRehearsalError.missingFrame }
+        print(
+            "trace=other_frame\tcode=\(code?.rawValue ?? UInt16.max)"
+                + "\trevision=\(revision.rawValue)"
+                + "\tcapture_revision=\(captureRevision)"
+                + "\tcapture_count=\(state.capture.transitions.count)"
+                + "\tstate=\(state.acquisitionState)\twindow=\(state.visibleWindow)"
+                + "\tsemantic_nodes=\(summary.semantic.semanticNodeCount)"
+                + "\tlayout_scopes=\(summary.layout.scopeCount)"
+                + "\tdrawing_strokes=\(summary.drawing.strokeCount)"
+                + "\tdrawing_points=\(summary.drawing.pointCount)"
+                + "\trender_operations=\(summary.render.operationCount)"
+                + "\tpayloads=\(device.payloads)\tregions=\(device.regions)"
+                + "\tbytes=\(device.bytes)"
         )
     }
 }

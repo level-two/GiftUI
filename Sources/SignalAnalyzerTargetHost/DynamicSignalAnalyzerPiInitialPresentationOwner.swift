@@ -62,6 +62,7 @@ where Target: DisplayTarget {
     private var model: SignalAnalyzerViewModel?
 
     package private(set) var state: DynamicSignalAnalyzerPiInitialPresentationState = .ready
+    package private(set) var lastPresentedSummary: DynamicSignalAnalyzerPresentationSummary?
 
     package init?(
         target: consuming Target,
@@ -223,6 +224,7 @@ where Target: DisplayTarget {
         self.presentationRevision = presentationRevision
         self.model = model
         state = .inputEligible
+        lastPresentedSummary = summary
         return .presented(summary)
     }
 

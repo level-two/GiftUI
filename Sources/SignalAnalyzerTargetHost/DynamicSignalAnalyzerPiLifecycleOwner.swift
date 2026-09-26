@@ -99,6 +99,9 @@ where Target: DisplayTarget {
 
     package var applicationState: SignalAnalyzerViewState? { model?.state }
     package var applicationCaptureRevision: UInt32? { model?.captureRevision }
+    package var lastPresentedSummary: DynamicSignalAnalyzerPresentationSummary? {
+        presentationOwner?.lastPresentedSummary
+    }
 
     package func committedAction(
         code: SignalAnalyzerAction
