@@ -1821,7 +1821,7 @@ the next connected run for the corresponding target.
       preset comparison preserves every SPEC-015 manifest and physical/resource
       value; Pi/nRF target timing remains `not-collected`. Evidence is in
       `Tests/ContractFixtures/SPEC001/Evidence/milestone-7/sustained-workload-and-resources.md`.
-- [ ] `T7.5` — Build host-native Pi Dynamic and nRF Static rehearsal runners
+- [x] `T7.5` — Build host-native Pi Dynamic and nRF Static rehearsal runners
       from the production host-loop source used by `T6.7` and `T6.8`. Inventory
       the source identities and substitute only platform clock, physical
       input, and display transport with deterministic recording adapters.
@@ -1832,6 +1832,11 @@ the next connected run for the corresponding target.
       without a contract or architecture change, report the blocker upstream
       rather than writing a second application loop. This task establishes
       the executable seam and does not claim application behavior parity.
+      **Completed:** both native runners compile and execute their production
+      host-loop sources with deterministic clock, input, and display boundaries.
+      They pass validation, activation, one physical frame, and ordered
+      teardown. Source/binary identities, commands, and exact limits are in
+      [the T7.5 rehearsal evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/host-loop-rehearsal.md).
 - [ ] `T7.6` — With the `T7.5` runners, execute real acquisition, fact
       admission, mutation, layout, Drawing, raster submission, input dispatch,
       and pacing for the exact 2,400-transition/120-frame logical workload.
@@ -2229,13 +2234,15 @@ semantics, `T7.3` closes both capture-revision terminal paths, and `T7.4`
 executes the equal 2,400-event/120-frame workload plus 28/32/33 capacity corpus
 in all four hardware-free presets.
 
-The 2026-09-26 plan revision adds pending `T7.5` through `T7.9`: both
+The 2026-09-26 plan revision adds `T7.5` through `T7.9`: both
 production target-host loops must complete a macOS recording-device rehearsal
 with full-application pointer scenarios and reviewed final-frame pixel
 references before a new connected attempt. The tasks separate executable
 seams, behavior, visual evidence, faults, and registered comparison. Earlier
 Milestone 7 task dispositions and connected observations are unchanged; the
-new rehearsal tasks have no passing evidence yet.
+`T7.5` now has passing host-native executable-seam evidence. `T7.6` through
+`T7.9` remain pending; no application behavior parity or pixel reference is
+claimed by the startup rehearsal.
 
 The original Milestone 9 tasks are complete. The interface/dependency audit,
 all 60 registered hardware-free spec/profile driver combinations, formatter, root tests,
