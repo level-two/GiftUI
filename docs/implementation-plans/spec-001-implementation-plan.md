@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-13
-updated: 2026-09-26
+updated: 2026-09-27
 related_design_notes:
   - ../implementation-designs/spec-001-presentation-admission-and-failure.md
   - ../implementation-designs/spec-001-four-host-application-join.md
@@ -1846,6 +1846,13 @@ the next connected run for the corresponding target.
       action and leave visible state unchanged. Cover stop/restart and clear
       after acquired transitions. Compare ordered semantic, action, Drawing,
       and frame traces with the applicable macOS reference for both profiles.
+      **In progress:** Both production host-native loops now pass the 2,400-
+      transition/120-frame workload and physical action scenarios, with
+      [evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/host-loop-rehearsal.md).
+      The current macOS Dynamic and Static executables only emit preset/admission
+      checksums; they do not provide ordered full-application semantic, action,
+      Drawing, or frame traces. Create and compare those reference traces before
+      marking T7.6 complete.
 - [ ] `T7.7` — Capture canonical final pixels at the exact approved Pi and
       nRF extents for idle, running with four traces, stopped, cleared, each
       selected window, and a visible diagnostic. Reconstruct the nRF tiled
@@ -2240,9 +2247,10 @@ with full-application pointer scenarios and reviewed final-frame pixel
 references before a new connected attempt. The tasks separate executable
 seams, behavior, visual evidence, faults, and registered comparison. Earlier
 Milestone 7 task dispositions and connected observations are unchanged; the
-`T7.5` now has passing host-native executable-seam evidence. `T7.6` through
-`T7.9` remain pending; no application behavior parity or pixel reference is
-claimed by the startup rehearsal.
+`T7.5` now has passing host-native executable-seam evidence. Both T7.6 target
+behavior slices pass, but its ordered macOS reference comparison remains open.
+`T7.6` through `T7.9` remain pending; no application behavior parity or pixel
+reference is claimed by the current rehearsals.
 
 The original Milestone 9 tasks are complete. The interface/dependency audit,
 all 60 registered hardware-free spec/profile driver combinations, formatter, root tests,

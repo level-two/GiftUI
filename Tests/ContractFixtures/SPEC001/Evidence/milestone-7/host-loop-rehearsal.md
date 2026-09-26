@@ -146,3 +146,21 @@ remains `host-native-fixture` evidence, not connected-target evidence.
 
 Ordered semantic, action, Drawing, and frame traces against the applicable
 macOS reference remain to complete T7.6.
+
+## Validation boundary
+
+After these slices, both host-native rehearsal commands passed, as did the
+nRF production-host check, ARMv6 cross build, nRF hard-float target build,
+formatter lint, governance tooling, and the registered SPEC-001 macOS Dynamic
+driver. The default `scripts/test.sh` run passed its root Swift suite but
+finished with 12 failing other-specification checks. Representative failures
+include the SPEC-002 owned-source inventory and SPEC-008 package boundary
+checks. The detailed local results are under
+`.build/test-reports/macos-dynamic/`; they are not T7.6 parity evidence.
+
+The existing macOS Dynamic and Static executables call
+`HardwareFreePresetRunner.run` and report preset/admission checksums. They do
+not execute the full application loop or emit ordered semantic, action,
+Drawing, and frame traces. Comparing only their current checksums with the
+target rehearsals would not satisfy T7.6's stated comparison. T7.6 therefore
+remains pending while a macOS reference trace source is established.

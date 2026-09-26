@@ -284,6 +284,8 @@ enum PiHostNativeRehearsal {
             x: record.hitBounds.origin.x + record.hitBounds.size.width / 2,
             y: record.hitBounds.origin.y + record.hitBounds.size.height / 2
         )
+        let priorState = owner.production.applicationState
+        let priorRevision = owner.production.currentPresentationRevision
         device.clock += 250_000
         let ingress = owner.production.admit(
             [
@@ -301,6 +303,12 @@ enum PiHostNativeRehearsal {
         else {
             print("action-failed code=\(code) ingress=\(ingress) result=\(result)")
             throw PiHostNativeRehearsalError.action
+        }
+        if expectedDispatch == 0 {
+            guard owner.production.applicationState == priorState,
+                owner.production.currentPresentationRevision == priorRevision,
+                summary.presentation == nil
+            else { throw PiHostNativeRehearsalError.action }
         }
     }
 }
