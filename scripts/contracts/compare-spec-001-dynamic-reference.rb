@@ -28,4 +28,33 @@ mac.zip(pi).each_with_index do |(expected, actual), index|
   end
 end
 
-puts "SPEC-001 macOS Dynamic/Pi reference comparison passed: #{mac.length} ordered frames"
+other_fields = %w[
+  code capture_revision capture_count state window semantic_nodes layout_scopes
+  drawing_strokes drawing_points render_operations
+]
+mac_other = records(ARGV.fetch(0), "reference=macos-dynamic-other-frame\t")
+pi_other = records(ARGV.fetch(1), "trace=other_frame\t")
+abort "expected 7 initial/action frames, got mac=#{mac_other.length} pi=#{pi_other.length}" unless mac_other.length == 7 && pi_other.length == 7
+mac_other.zip(pi_other).each_with_index do |(expected, actual), index|
+  other_fields.each do |field|
+    next if expected.fetch(field) == actual.fetch(field)
+
+    abort "initial/action frame #{index} #{field}: mac=#{expected.fetch(field)} pi=#{actual.fetch(field)}"
+  end
+  abort "initial/action frame #{index} revision mismatch" unless Integer(expected.fetch('revision')) == Integer(actual.fetch('revision')) + 1
+end
+
+action_fields = %w[code dispatched capture_count state window]
+mac_actions = records(ARGV.fetch(0), "reference=macos-dynamic-action\t")
+pi_actions = records(ARGV.fetch(1), "trace=action\t")
+abort "expected 12 actions, got mac=#{mac_actions.length} pi=#{pi_actions.length}" unless mac_actions.length == 12 && pi_actions.length == 12
+mac_actions.zip(pi_actions).each_with_index do |(expected, actual), index|
+  action_fields.each do |field|
+    next if expected.fetch(field) == actual.fetch(field)
+
+    abort "action #{index} #{field}: mac=#{expected.fetch(field)} pi=#{actual.fetch(field)}"
+  end
+  abort "action #{index} revision mismatch" unless Integer(expected.fetch('revision')) == Integer(actual.fetch('revision')) + 1
+end
+
+puts "SPEC-001 macOS Dynamic/Pi reference comparison passed: #{mac.length} workload frames, #{mac_other.length} initial/action frames, #{mac_actions.length} actions"

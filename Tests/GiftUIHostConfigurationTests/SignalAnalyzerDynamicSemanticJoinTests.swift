@@ -1963,6 +1963,9 @@ private func makeSemanticJoinModel(failsStart: Bool = false) -> SignalAnalyzerVi
             presentationRevision: PresentationRevision(rawValue: 1)
         ) == .committed(PresentationRevision(rawValue: 1))
     )
+    printMacOSDynamicReferenceOtherFrame(
+        code: UInt16.max, revision: 1, summary: initialSummary, model: model
+    )
 
     #expect(admission.beginProducer(.bootstrap))
     guard case .started = adapter.startObserving() else {
@@ -2035,8 +2038,118 @@ private func makeSemanticJoinModel(failsStart: Bool = false) -> SignalAnalyzerVi
     }
     #expect(model.captureRevision == 2_404)
     #expect(model.state.capture.transitions.count == 359)
+    let actions: [(SignalAnalyzerAction, Bool, AcquisitionState, VisibleTimeWindow, Int)] = [
+        (.start, false, .running, .twoSeconds, 359),
+        (.stop, true, .stopped, .twoSeconds, 359),
+        (.stop, false, .stopped, .twoSeconds, 359),
+        (.start, true, .running, .twoSeconds, 359),
+        (.start, false, .running, .twoSeconds, 359),
+        (.clear, true, .running, .twoSeconds, 0),
+        (.selectOneSecond, true, .running, .oneSecond, 0),
+        (.selectOneSecond, false, .running, .oneSecond, 0),
+        (.selectFiveSeconds, true, .running, .fiveSeconds, 0),
+        (.selectFiveSeconds, false, .running, .fiveSeconds, 0),
+        (.selectTwoSeconds, true, .running, .twoSeconds, 0),
+        (.selectTwoSeconds, false, .running, .twoSeconds, 0),
+    ]
+    var actionRevision: UInt32 = 121
+    for (code, enabled, expectedState, expectedWindow, expectedCount) in actions {
+        guard
+            let record = (0 ..< pipeline.committedActionCount).compactMap({
+                pipeline.committedAction(at: $0)
+            }).first(where: { $0.action.code == code.rawValue })
+        else {
+            Issue.record("macOS Dynamic action record missing: \(code)")
+            return
+        }
+        #expect(record.isEnabled == enabled)
+        let point = Point(
+            x: record.hitBounds.origin.x + record.hitBounds.size.width / 2,
+            y: record.hitBounds.origin.y + record.hitBounds.size.height / 2
+        )
+        if enabled {
+            #expect(admission.beginProducer(.action))
+            #expect(pipeline.beginApplicationMutation())
+            guard case .captured(let captured) = pipeline.resolveDown(at: point) else {
+                Issue.record("macOS Dynamic action did not capture: \(code)")
+                return
+            }
+            #expect(pipeline.resolveUp(captured, at: point) == .activationAdmitted(captured))
+            #expect(pipeline.dispatch(captured) == .dispatched)
+            #expect(pipeline.endApplicationMutation() != nil)
+            admission.endProducer()
+            if code == .start || code == .stop || code == .clear {
+                #expect(admission.seal())
+                guard case .applied = pipeline.applySealedFacts(from: admission) else {
+                    Issue.record("macOS Dynamic action facts were not applied: \(code)")
+                    return
+                }
+            }
+            actionRevision += 1
+            let result = pipeline.derive(
+                model: model,
+                cycle: RunCycleID(rawValue: actionRevision),
+                semanticRevision: SemanticRevision(rawValue: actionRevision)
+            )
+            guard case .success(let summary) = result else {
+                Issue.record("macOS Dynamic action presentation failed: \(result)")
+                return
+            }
+            let offer = pipeline.offer(
+                endpoint: &endpoint,
+                provenance: FrameProvenance(
+                    cycle: RunCycleID(rawValue: actionRevision),
+                    semanticRevision: SemanticRevision(rawValue: actionRevision),
+                    candidateFrame: CandidateFrameID(rawValue: actionRevision)
+                ),
+                expectedHeader: summary.render
+            )
+            #expect(offer.disposition == .accepted)
+            #expect(
+                pipeline.resolveInteraction(
+                    offer: offer,
+                    presentationRevision: PresentationRevision(rawValue: actionRevision)
+                ) == .committed(PresentationRevision(rawValue: actionRevision))
+            )
+            printMacOSDynamicReferenceOtherFrame(
+                code: code.rawValue, revision: actionRevision, summary: summary, model: model
+            )
+        } else {
+            #expect(pipeline.resolveDown(at: point) == .ignored)
+        }
+        #expect(model.state.acquisitionState == expectedState)
+        #expect(model.state.visibleWindow == expectedWindow)
+        #expect(model.state.capture.transitions.count == expectedCount)
+        print(
+            "reference=macos-dynamic-action\tcode=\(code.rawValue)"
+                + "\tdispatched=\(enabled ? 1 : 0)\trevision=\(actionRevision)"
+                + "\tcapture_count=\(model.state.capture.transitions.count)"
+                + "\tstate=\(model.state.acquisitionState)"
+                + "\twindow=\(model.state.visibleWindow)"
+        )
+    }
     adapter.stopObserving()
     source.shutdown()
+}
+
+private func printMacOSDynamicReferenceOtherFrame(
+    code: UInt16,
+    revision: UInt32,
+    summary: DynamicSignalAnalyzerPresentationSummary,
+    model: SignalAnalyzerViewModel
+) {
+    print(
+        "reference=macos-dynamic-other-frame\tcode=\(code)\trevision=\(revision)"
+            + "\tcapture_revision=\(model.captureRevision)"
+            + "\tcapture_count=\(model.state.capture.transitions.count)"
+            + "\tstate=\(model.state.acquisitionState)"
+            + "\twindow=\(model.state.visibleWindow)"
+            + "\tsemantic_nodes=\(summary.semantic.semanticNodeCount)"
+            + "\tlayout_scopes=\(summary.layout.scopeCount)"
+            + "\tdrawing_strokes=\(summary.drawing.strokeCount)"
+            + "\tdrawing_points=\(summary.drawing.pointCount)"
+            + "\trender_operations=\(summary.render.operationCount)"
+    )
 }
 
 private func dynamicPiEffectivePresentation(
