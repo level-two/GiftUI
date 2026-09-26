@@ -1831,17 +1831,15 @@ simulation.
       continuous seconds on framebuffer/PiScreen, exercise all six controls,
       and record display/input correctness, no loss/duplication/stale events,
       responsiveness, process memory, four-frame/second cadence, teardown,
-      commands, artifact identity, and recovery. **Blocked pending explicit
-      connected-run authorization:** earlier authorized remediation
-      established that the `armv6l` target exposes an accessible `fb_ili9486`
-      framebuffer at `/dev/fb0` and its ADS7846 touchscreen at
-      `/dev/input/event0`; a bounded adapter run transferred all fifteen 240 x
-      16 payloads, but no physical touch was observed. T6.7 now supplies the
-      production analyzer host loop and graphics-console lifecycle. A new
-      authorized run must still exercise the six physical controls and collect
-      semantic/action, pacing, process memory, cursor-suppression, and teardown
-      observations. See the
-      [Pi adapter evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md).
+      commands, artifact identity, and recovery. **Connected run in progress,
+      gate still open:** authorized `armv6l` runs now show the complete screen
+      and decoded ADS7846 contacts. Calibrated Stop dispatched, but a source
+      scheduling failure cut that run short; the corrected build awaits
+      deployment after the Pi became unreachable during transfer. Measured
+      frames took roughly 4-7 seconds, well below the required cadence. All
+      six physical controls, sustained pacing, and recovery still need
+      connected evidence. See the
+      [PiScreen campaign evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/raspberry-pi-piscreen-attempt.md).
 - [ ] `T8.2` — After explicit authorization, inspect and flash the exact `T6.5`
       ELF through the repository nRF workflow, run the deterministic scenario
       for at least 30 continuous seconds on the connected TFT/input target,
