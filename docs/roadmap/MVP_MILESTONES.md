@@ -163,8 +163,8 @@ This baseline should be preserved as non-authoritative migration input. Existing
 2. macOS static to expose static-composition restrictions early;
 3. rehearse the complete Pi Dynamic and nRF Static application host loops on
    macOS with deterministic input and recording display transports, then
-   compare their semantic, action, drawing, and raster results with the macOS
-   references;
+   compare their semantic, action, drawing, and final-frame pixel results with
+   reviewed macOS references;
 4. Raspberry Pi/Linux dynamic to validate framebuffer and platform boundaries;
 5. nRF52840 static to validate constrained embedded viability.
 

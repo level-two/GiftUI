@@ -201,7 +201,7 @@ governed implementation must still reproduce and record the required evidence.
 | `SA-AC-002` — Logical Domain/Data/Presentation/host graph and inward dependencies | `T0.2`, `T0.5`, `T1.4`, `T6.1`, `T9.1` | Package graph, imports, interfaces, generated graph report | baseline; revalidation pending |
 | `SA-AC-003` — Domain excludes UI/backend/platform/timing/hardware APIs | `T0.2`, `T0.5`, `T1.4`, `T9.1` | Source/import/symbol negative scans in every profile | baseline; revalidation pending |
 | `SA-AC-004` — Presentation excludes Data/platform/timing/renderer/display/hardware APIs | `T0.2`, `T0.5`, `T4.4`, `T9.1` | Import and dependency negative fixtures | pending |
-| `SA-AC-005` — Complete visible screen surface | `T4.1`-`T4.3`, `T6.2`-`T6.5`, `T6.7`, `T6.8`, `T7.5`, `T8.1`, `T8.2` | Semantic hierarchy transcript, host-recorded raster, and connected display evidence | pending |
+| `SA-AC-005` — Complete visible screen surface | `T4.1`-`T4.3`, `T6.2`-`T6.5`, `T6.7`, `T6.8`, `T7.5`, `T8.1`, `T8.2` | Semantic hierarchy transcript, reviewed host-frame images and exact pixels, and connected display evidence | pending |
 | `SA-AC-006` — Fixed explicit portable composition shared by four configurations | `T4.1`, `T4.4`, `T6.2`-`T6.5` | Source identity/hash, compile, and hierarchy comparison | pending |
 | `SA-AC-007` — Revisioned current-value sink registration, replacement, detach, and bounded returns | `T1.3`, `T2.2`, `T3.2` | Ordered callback/outcome and lifetime transcript | pending |
 | `SA-AC-008` — Synchronous application delivery and distinct GiftUI mutation without portable concurrency facilities | `T1.4`, `T2.2`, `T3.2`, `T5.3`, `T9.1` | Same-thread/distinct-executor transcript and forbidden-facility scans | pending |
@@ -1829,16 +1829,31 @@ the next connected run for the corresponding target.
       startup validation, owner activation, acquisition, fact admission,
       mutation, layout, Drawing, raster submission, input dispatch, pacing,
       failure containment, and reverse-order teardown. Drive the exact
-      2,400-transition/120-frame logical workload and all six controls,
-      including disabled controls, stop/restart, clear, and 1/2/5-second
-      windows. Inject startup, display, and input failures and verify their
-      specified disposition and cleanup. Compare semantic, action, Drawing,
-      and raster checksums or exact bytes against the macOS references and
-      the approved preset geometry; inspect at least the initial and a
-      post-action frame as rendered images. Record event/frame ordering,
-      source and binary identities, substituted boundaries, commands, raw
-      traces, image artifacts, expected/actual comparisons, and failure
-      results under
+      2,400-transition/120-frame logical workload. Script pointer down/up at
+      the committed hit region for each of the six controls: Start, Stop,
+      Clear, and the 1/2/5-second windows. Verify the resulting action,
+      model state, and next committed frame; a disabled control must dispatch
+      no action and leave the visible state unchanged. Cover stop/restart and
+      clear after acquired transitions. Inject startup, display, and input
+      failures and verify their specified disposition and cleanup.
+
+      Capture the final canonical pixel buffer at the exact approved Pi and
+      nRF extents for idle, running with four traces, stopped, cleared, each
+      selected window, and a visible diagnostic. For the nRF tiled path,
+      reconstruct the final surface only in the macOS recording adapter from
+      the submitted regions; do not add a target framebuffer. Compare exact
+      RGB565 bytes or logical pixels with versioned, independently reviewed
+      references and with the applicable macOS render reference. Save a
+      viewable image for every selected state and inspect the images when
+      establishing or intentionally changing a reference. Later runs fail on
+      any pixel difference and retain a diff image; reference updates require
+      a recorded review of the changed image and its source revision.
+      Window screenshots and AppKit scale are not the pixel oracle.
+
+      Compare semantic, action, and Drawing traces with the macOS references.
+      Record event/frame ordering, source and binary identities, substituted
+      boundaries, commands, raw traces, canonical raster hashes, images and
+      diffs, expected/actual comparisons, and failure results under
       `Tests/ContractFixtures/SPEC001/Evidence/milestone-7/host-loop-rehearsal.md`.
       Add an explicit standalone rehearsal command and invoke it from the
       registered SPEC-001 profile driver; no profile may be skipped silently.
@@ -2209,9 +2224,10 @@ executes the equal 2,400-event/120-frame workload plus 28/32/33 capacity corpus
 in all four hardware-free presets.
 
 The 2026-09-26 plan revision adds pending `T7.5`: both production target-host
-loops must complete a macOS recording-device rehearsal before a new connected
-attempt. Earlier Milestone 7 task dispositions and connected observations are
-unchanged; the added rehearsal has no passing evidence yet.
+loops must complete a macOS recording-device rehearsal with full-application
+pointer scenarios and reviewed final-frame pixel references before a new
+connected attempt. Earlier Milestone 7 task dispositions and connected
+observations are unchanged; the added rehearsal has no passing evidence yet.
 
 The original Milestone 9 tasks are complete. The interface/dependency audit,
 all 60 registered hardware-free spec/profile driver combinations, formatter, root tests,
