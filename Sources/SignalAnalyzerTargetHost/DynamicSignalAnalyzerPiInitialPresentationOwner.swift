@@ -8,6 +8,10 @@ import GiftUIRuntimeDynamic
 import SignalAnalyzerHost
 import SignalAnalyzerPresentation
 
+#if os(Linux)
+    import Glibc
+#endif
+
 package enum DynamicSignalAnalyzerPiInitialPresentationState: UInt8, Equatable, Sendable {
     case ready = 0
     case inputEligible = 1
@@ -165,12 +169,17 @@ where Target: DisplayTarget {
         provenance: FrameProvenance,
         presentationRevision: PresentationRevision
     ) -> DynamicSignalAnalyzerPiInitialPresentationResult {
-
+        #if os(Linux)
+            let deriveStartedAt = Self.traceMicroseconds()
+        #endif
         let result = pipeline.derive(
             model: model,
             cycle: provenance.cycle,
             semanticRevision: provenance.semanticRevision
         )
+        #if os(Linux)
+            let deriveFinishedAt = Self.traceMicroseconds()
+        #endif
         let summary: DynamicSignalAnalyzerPresentationSummary
         switch result {
         case .success(let value):
@@ -185,6 +194,16 @@ where Target: DisplayTarget {
             provenance: provenance,
             expectedHeader: summary.render
         )
+        #if os(Linux)
+            if let deriveStartedAt, let deriveFinishedAt,
+                let offerFinishedAt = Self.traceMicroseconds(),
+                Glibc.getenv("GIFTUI_PI_TRACE") != nil
+            {
+                let line =
+                    "pi-present-us derive=\(deriveFinishedAt - deriveStartedAt) offer=\(offerFinishedAt - deriveFinishedAt)\n"
+                _ = line.withCString { Glibc.write(STDERR_FILENO, $0, Glibc.strlen($0)) }
+            }
+        #endif
         guard offer.disposition == .accepted else {
             _ = pipeline.resolveInteraction(
                 offer: offer,
@@ -206,6 +225,17 @@ where Target: DisplayTarget {
         state = .inputEligible
         return .presented(summary)
     }
+
+    #if os(Linux)
+        private static func traceMicroseconds() -> UInt64? {
+            guard Glibc.getenv("GIFTUI_PI_TRACE") != nil else { return nil }
+            var value = timespec()
+            guard Glibc.clock_gettime(CLOCK_MONOTONIC, &value) == 0,
+                value.tv_sec >= 0, value.tv_nsec >= 0
+            else { return nil }
+            return UInt64(value.tv_sec) * 1_000_000 + UInt64(value.tv_nsec) / 1_000
+        }
+    #endif
 
     package mutating func handle(
         _ event: NormalizedPointerEvent
