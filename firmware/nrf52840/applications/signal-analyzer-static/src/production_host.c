@@ -14,6 +14,7 @@
 #include <zephyr/kernel.h>
 
 #define GIFTUI_INPUT_POLL_MICROSECONDS 10000U
+#define GIFTUI_FRAME_INTERVAL_MICROSECONDS 250000U
 
 extern uint32_t giftui_signal_analyzer_present_initial(
     void *, uint32_t, void *, uint32_t, void *, uint32_t, void *, uint32_t,
@@ -34,6 +35,7 @@ struct giftui_production_context {
     struct giftui_static_host_storage regions;
     struct giftui_static_touch_pipeline touch;
     uint64_t next_transition_deadline;
+    uint64_t next_frame_deadline;
 };
 
 static struct giftui_production_context production;
@@ -82,6 +84,12 @@ static int activate(void *opaque)
         return -EIO;
     }
     context->next_transition_deadline = 0U;
+    uint64_t now = 0U;
+    if (giftui_static_host_clock_now(&now) != 0 ||
+        now > UINT64_MAX - GIFTUI_FRAME_INTERVAL_MICROSECONDS) {
+        return -ERANGE;
+    }
+    context->next_frame_deadline = now + GIFTUI_FRAME_INTERVAL_MICROSECONDS;
     return 0;
 }
 
@@ -147,7 +155,8 @@ static int service(void *opaque, uint64_t now,
             context->next_transition_deadline = now + delay;
         }
     }
-    if (giftui_signal_analyzer_needs_presentation() != 0U) {
+    if (giftui_signal_analyzer_needs_presentation() != 0U &&
+        now >= context->next_frame_deadline) {
         if (giftui_signal_analyzer_present_next(
                 regions->profile, (uint32_t)regions->profile_bytes,
                 regions->capture, (uint32_t)regions->capture_bytes,
@@ -159,6 +168,10 @@ static int service(void *opaque, uint64_t now,
                 giftui_signal_analyzer_current_revision()) != 0) {
             return -EIO;
         }
+        if (now > UINT64_MAX - GIFTUI_FRAME_INTERVAL_MICROSECONDS) {
+            return -ERANGE;
+        }
+        context->next_frame_deadline = now + GIFTUI_FRAME_INTERVAL_MICROSECONDS;
     }
     if (now > UINT64_MAX - GIFTUI_INPUT_POLL_MICROSECONDS) {
         return -ERANGE;
@@ -167,6 +180,10 @@ static int service(void *opaque, uint64_t now,
     if (context->next_transition_deadline != 0U &&
         context->next_transition_deadline < *next_deadline) {
         *next_deadline = context->next_transition_deadline;
+    }
+    if (giftui_signal_analyzer_needs_presentation() != 0U &&
+        context->next_frame_deadline < *next_deadline) {
+        *next_deadline = context->next_frame_deadline;
     }
     return 0;
 }
@@ -178,6 +195,7 @@ static int teardown(void *opaque)
     giftui_signal_analyzer_retire_initial();
     context->touch.valid = 0U;
     context->next_transition_deadline = 0U;
+    context->next_frame_deadline = 0U;
     return 0;
 }
 

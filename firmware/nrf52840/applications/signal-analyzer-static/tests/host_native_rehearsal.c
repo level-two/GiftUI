@@ -11,6 +11,7 @@
 extern uint32_t giftui_signal_analyzer_initial_model_active(void);
 extern uint16_t giftui_signal_analyzer_initial_committed_actions(void);
 extern uint32_t giftui_signal_analyzer_current_revision(void);
+extern uint32_t giftui_signal_analyzer_action_point(uint16_t);
 extern int giftui_firmware_main(void);
 
 static uint64_t clock_microseconds;
@@ -18,17 +19,37 @@ static unsigned touch_polls;
 static unsigned display_writes;
 static unsigned display_bytes;
 static unsigned shutdown_order;
+static unsigned paced_frame_observed;
 
 int ads7846_initialize(void) { return 0; }
 int ads7846_pen_is_down(void)
 {
     touch_polls++;
-    return touch_polls == 1U ? 0 : -ECANCELED;
+    if (touch_polls == 1U) {
+        return 1;
+    }
+    if (touch_polls == 2U) {
+        return 0;
+    }
+    if (clock_microseconds < 250000U) {
+        assert(giftui_signal_analyzer_current_revision() == 1U);
+        return 0;
+    }
+    if (giftui_signal_analyzer_current_revision() < 2U) {
+        return 0;
+    }
+    paced_frame_observed = 1U;
+    return -ECANCELED;
 }
 int ads7846_read_raw(struct ads7846_raw_sample *sample)
 {
-    (void)sample;
-    return -ENODATA;
+    const uint32_t point = giftui_signal_analyzer_action_point(0U);
+    assert(point != 0U && sample != NULL);
+    sample->x = (uint16_t)(((point & 0xffffU) * 4095U) / 479U);
+    sample->y = (uint16_t)((((point >> 16) & 0xffffU) * 4095U) / 319U);
+    sample->z1 = 1U;
+    sample->z2 = 1U;
+    return 0;
 }
 int ads7846_shutdown(void)
 {
@@ -76,7 +97,7 @@ int main(void)
 
     const int result = giftui_firmware_main();
     assert(result == -ECANCELED);
-    assert(touch_polls == 2U);
+    assert(touch_polls > 2U && paced_frame_observed == 1U);
     assert(display_writes > 0U && display_bytes > 0U);
     assert(giftui_signal_analyzer_initial_committed_actions() == 0U);
     assert(giftui_signal_analyzer_current_revision() == 0U);

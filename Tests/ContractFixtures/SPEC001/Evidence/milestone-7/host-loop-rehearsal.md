@@ -102,3 +102,23 @@ regions, and 28,897,180 RGB565 bytes across startup, workload, and actions.
 
 This is Pi `host-native-fixture` evidence. The nRF behavior runner and ordered
 comparison against a macOS reference remain open, so T7.6 remains pending.
+
+## T7.6 nRF pacing correction and first physical action
+
+The production nRF service loop now retains a 250-millisecond presentation
+deadline after the initial frame. Dirty source/model state waits for that
+deadline, and the scheduler includes it among its next wake candidates. The
+production-host unit check covers an 80-millisecond source delivery with no
+early frame, the frame at 250 milliseconds, and a later rejected display
+submission. The native runner sends a raw ADS7846 down/up contact to the
+committed Start hit region. It verifies revision 1 throughout the pre-deadline
+period and observes revision 2 after the deadline, with 4,999 synchronous tile
+writes and 807,666 bytes across the two complete frames.
+
+The checks passed with
+`scripts/contracts/check-spec-001-nrf-production-host.sh` and
+`scripts/contracts/check-spec-001-nrf-host-native-rehearsal.sh`. The target
+doctor and `scripts/nrf52840/build.sh --application signal-analyzer-static`
+passed for `nrf52840dk/nrf52840`; the ARMv7E-M hard-float ELF used 196,480 RAM
+and 241,564 flash bytes. This establishes pacing and one physical Start action,
+not the full nRF T7.6 workload/action matrix.
