@@ -80,6 +80,7 @@ graph.each do |target, entry|
     approved_downstream_joins = %w[
       GiftUIBackendIntegration GiftUIBackendIntegrationTests GiftUIDisplayCore
       GiftUIDisplayCoreTests GiftUIHostConfiguration GiftUIHostConfigurationTests
+      GiftUIPlatformRaspberryPi
     ]
     fail!("#{target} creates a monolithic three-owner boundary") unless
       approved_downstream_joins.include?(target)

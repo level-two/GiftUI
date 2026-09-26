@@ -598,7 +598,10 @@ targets:
     type: executable
     dependencies:
       - GiftUI
+      - GiftUIDisplayCore
+      - GiftUIHostConfiguration
       - GiftUIPlatformRaspberryPi
+      - SignalAnalyzerData
       - SignalAnalyzerPresetHarness
       - SignalAnalyzerTargetHost
   SignalAnalyzerNRF52840HostOracle:
