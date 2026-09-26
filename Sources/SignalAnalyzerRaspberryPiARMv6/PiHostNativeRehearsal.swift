@@ -3,6 +3,8 @@ import GiftUIDisplayCore
 import GiftUIHostConfiguration
 import GiftUIPlatformRaspberryPi
 import SignalAnalyzerData
+import SignalAnalyzerDomain
+import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
 
 private final class PiRecordingDevice: PiScreenFramebufferSink {
@@ -21,7 +23,6 @@ private final class PiRecordingDevice: PiScreenFramebufferSink {
         payloads += 1
         self.bytes += bytes.count
         self.regions += regions.count
-        clock = 1_000_000
         return true
     }
 }
@@ -135,6 +136,8 @@ enum PiHostNativeRehearsalError: Error {
     case activation
     case missingFrame
     case teardown
+    case workload
+    case action
 }
 
 enum PiHostNativeRehearsal {
@@ -176,6 +179,8 @@ enum PiHostNativeRehearsal {
             controller.teardown(owner: &owner)
             throw PiHostNativeRehearsalError.missingFrame
         }
+        try runWorkload(owner: &owner, device: device)
+        try runActions(owner: &owner, device: device)
         controller.teardown(owner: &owner)
         guard controller.lifecycleState == .quiescent,
             owner.teardownSteps == Array(UInt8(1) ... UInt8(8)),
@@ -183,5 +188,119 @@ enum PiHostNativeRehearsal {
             !owner.production.inputIsEligible, !owner.production.reportRuntimeUseIsValid
         else { throw PiHostNativeRehearsalError.teardown }
         print("frames=\(device.payloads)\tregions=\(device.regions)\tbytes=\(device.bytes)")
+    }
+
+    private static func runWorkload(
+        owner: inout PiRecordingLifecycleOwner<PiScreenDisplayTarget<PiRecordingDevice>>,
+        device: PiRecordingDevice
+    ) throws {
+        var transitions = 0
+        var frames = 0
+        for window in 1 ... 120 {
+            for event in 1 ... 20 {
+                device.clock = UInt64((window - 1) * 250_000 + event * 12_500)
+                guard owner.production.deliverScheduledSourceTransition() else {
+                    print("source-failed window=\(window) event=\(event)")
+                    throw PiHostNativeRehearsalError.workload
+                }
+                transitions += 1
+            }
+            let result = owner.production.service(at: device.clock)
+            guard
+                case .completed(_, .completed(let summary)) = result,
+                summary.application.factCount == (window == 1 ? 25 : 20),
+                summary.presentation != nil,
+                owner.production.applicationCaptureRevision != nil
+            else {
+                print("service-failed window=\(window) result=\(result)")
+                throw PiHostNativeRehearsalError.workload
+            }
+            frames += 1
+        }
+        guard transitions == 2_400, frames == 120,
+            owner.production.applicationState?.acquisitionState == .running,
+            owner.production.applicationState?.capture.transitions.count ?? 0 > 0
+        else {
+            print("final-state=\(String(describing: owner.production.applicationState))")
+            throw PiHostNativeRehearsalError.workload
+        }
+        print("workload_transitions=\(transitions)\tworkload_frames=\(frames)")
+    }
+
+    private static func runActions(
+        owner: inout PiRecordingLifecycleOwner<PiScreenDisplayTarget<PiRecordingDevice>>,
+        device: PiRecordingDevice
+    ) throws {
+        let actions: [(SignalAnalyzerAction, AcquisitionState, VisibleTimeWindow)] = [
+            (.stop, .stopped, .twoSeconds),
+            (.start, .running, .twoSeconds),
+            (.clear, .running, .twoSeconds),
+            (.selectOneSecond, .running, .oneSecond),
+            (.selectFiveSeconds, .running, .fiveSeconds),
+            (.selectTwoSeconds, .running, .twoSeconds),
+        ]
+        try tapAction(.start, expectedDispatch: 0, owner: &owner, device: device)
+        for (code, expectedState, expectedWindow) in actions {
+            let beforeRevision = owner.production.currentPresentationRevision
+            try tapAction(code, expectedDispatch: 1, owner: &owner, device: device)
+            if code == .stop || code == .start || code == .clear {
+                device.clock += 250_000
+                guard
+                    case .completed(_, .completed(let applied)) =
+                        owner.production.service(at: device.clock),
+                    applied.application.factCount > 0
+                else { throw PiHostNativeRehearsalError.action }
+            }
+            guard owner.production.applicationState?.acquisitionState == expectedState,
+                owner.production.applicationState?.visibleWindow == expectedWindow,
+                owner.production.currentPresentationRevision != beforeRevision
+            else { throw PiHostNativeRehearsalError.action }
+            if code == .clear {
+                guard owner.production.applicationState?.capture.transitions.isEmpty == true
+                else { throw PiHostNativeRehearsalError.action }
+            }
+            if code == .selectOneSecond || code == .selectFiveSeconds
+                || code == .selectTwoSeconds
+            {
+                try tapAction(code, expectedDispatch: 0, owner: &owner, device: device)
+            }
+            print("action=\(code)\tstate=\(expectedState)\twindow=\(expectedWindow)")
+        }
+    }
+
+    private static func tapAction(
+        _ code: SignalAnalyzerAction,
+        expectedDispatch: UInt16,
+        owner: inout PiRecordingLifecycleOwner<PiScreenDisplayTarget<PiRecordingDevice>>,
+        device: PiRecordingDevice
+    ) throws {
+        guard let record = owner.production.committedAction(code: code),
+            record.isEnabled == (expectedDispatch == 1)
+        else {
+            print("action-unavailable code=\(code)")
+            throw PiHostNativeRehearsalError.action
+        }
+        let point = Point(
+            x: record.hitBounds.origin.x + record.hitBounds.size.width / 2,
+            y: record.hitBounds.origin.y + record.hitBounds.size.height / 2
+        )
+        device.clock += 250_000
+        let ingress = owner.production.admit(
+            [
+                DynamicSignalAnalyzerPiContact(
+                    phase: .down, position: point,
+                    priorPhysicalSequenceIsComplete: true
+                ),
+                DynamicSignalAnalyzerPiContact(phase: .up, position: point),
+            ], at: device.clock
+        )
+        let result = owner.production.service(at: device.clock)
+        guard case .admitted(let admitted) = ingress, admitted.queuedCount == 2,
+            case .completed(_, .completed(let summary)) = result,
+            summary.input.dispatchedActionCount == expectedDispatch
+        else {
+            print("action-failed code=\(code) ingress=\(ingress) result=\(result)")
+            throw PiHostNativeRehearsalError.action
+        }
     }
 }

@@ -79,3 +79,26 @@ after that build regenerated the amalgamated Swift source.
 The rehearsal establishes the executable production seam for T7.6. The
 scripted actions, workload and semantic comparison, reviewed pixels, faults,
 and registered profile gate remain T7.6 through T7.9.
+
+## T7.6 Pi behavior slice
+
+The Pi native runner now drives 2,400 production deterministic-source
+deliveries through repository observation, fact admission, mutation, semantic
+derivation, layout, Drawing, and framebuffer submission. Its substituted clock
+spaces 20 deliveries in each 250-millisecond logical window and services 120
+windows. The source's prescribed transition timestamps remain unchanged; this
+is an ingress-rate stress rehearsal, not a claim that the natural source emits
+80 transitions per second. The first window applies 25 facts because the
+startup Start action leaves four baseline transitions and a running-state fact
+pending; subsequent windows apply 20.
+
+After the workload, the runner taps committed hit regions for Stop, Start,
+Clear, and each 1/2/5-second window. It checks action dispatch, the next
+applied state and committed revision, an empty capture after Clear, and zero
+dispatch for disabled Start and selected-window controls. The full run passed
+with 2,400 deliveries, 120 paced workload opportunities, and all six enabled
+actions. The recording sink observed 35,651 synchronous payloads, 341,864
+regions, and 28,897,180 RGB565 bytes across startup, workload, and actions.
+
+This is Pi `host-native-fixture` evidence. The nRF behavior runner and ordered
+comparison against a macOS reference remain open, so T7.6 remains pending.

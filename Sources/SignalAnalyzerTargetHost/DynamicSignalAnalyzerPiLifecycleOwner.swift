@@ -97,6 +97,25 @@ where Target: DisplayTarget {
     package var nextScheduledSourceDelay: Duration? { source?.nextScheduledDelay }
     package var activeSourceGeneration: UInt32? { source?.activeGeneration }
 
+    package var applicationState: SignalAnalyzerViewState? { model?.state }
+    package var applicationCaptureRevision: UInt32? { model?.captureRevision }
+
+    package func committedAction(
+        code: SignalAnalyzerAction
+    ) -> BoundActionRecord<DynamicSemanticIdentity>? {
+        guard let presentationOwner else { return nil }
+        var index: UInt16 = 0
+        while index < presentationOwner.eligibleActionCount {
+            if let record = presentationOwner.eligibleAction(at: index),
+                record.action.code == code.rawValue
+            {
+                return record
+            }
+            index += 1
+        }
+        return nil
+    }
+
     package mutating func constructRuntimeAndEndpoint() -> HostActivationStepResult<
         ActivationFailure
     > {
