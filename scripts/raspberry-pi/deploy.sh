@@ -179,7 +179,7 @@ incoming="${remote_dir}/${product}.incoming"
 deployed="${remote_dir}/${product}"
 local_hash="$(shasum -a 256 "${artifact}" | awk '{print $1}')"
 printf -v rsync_shell '%q ' ssh "${ssh_options[@]}"
-rsync_options=(-a --append --inplace -e "${rsync_shell}")
+rsync_options=(-a --checksum --inplace -e "${rsync_shell}")
 if [[ "${bandwidth_kib}" -gt 0 ]]; then
     rsync_options+=("--bwlimit=${bandwidth_kib}")
 fi
