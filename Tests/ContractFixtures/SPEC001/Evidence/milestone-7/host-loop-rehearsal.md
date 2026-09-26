@@ -198,8 +198,8 @@ render endpoint. This calculation does not read the Pi trace to choose facts
 or expected values.
 
 The focused test passed. Its [raw reference trace](macos-dynamic-reference-trace.tsv)
-has 120 ordered records (SHA-256
-`1e1ea4cc126abf52fce05da63ad1312c6d9fc40a7489b9f801ab622d03f6c67b`).
+has 139 ordered workload, initial/action-frame, and pointer-action records
+(SHA-256 `00ae0ce81cac24c06f7c43c45e0f4cbc69dd0eea760e8d9e76c1ebadf2f0cc2e`).
 The comparison command
 
 ```sh
@@ -208,17 +208,18 @@ scripts/contracts/compare-spec-001-dynamic-reference.rb \
   Tests/ContractFixtures/SPEC001/Evidence/milestone-7/pi-ordered-trace.tsv
 ```
 
-passed all 120 ordered frames on fact count, capture revision/count, model
-state/window, semantic node count, layout scope count, Drawing stroke/point
-count, and render operation count. The reference uses the same approved source
-and Presentation implementation at its own macOS extent, while constructing
-its own application and admission owners. The recording endpoint checks
-accepted render streams; it does not produce canonical raster pixels.
+passed all 120 ordered workload frames on fact count, capture revision/count,
+model state/window, semantic node count, layout scope count, Drawing
+stroke/point count, and render operation count. It also passed seven initial
+and action-induced presentation summaries and 12 pointer down/up outcomes,
+including disabled controls. The reference uses the same approved source and
+Presentation implementation at its own macOS extent, while constructing its
+own application, admission, and interaction owners. The recording endpoint
+checks accepted render streams; it does not produce canonical raster pixels.
 
-This closes the Dynamic workload presentation comparison slice only. The
-macOS Dynamic reference still lacks physical pointer action and raster-frame
-traces, and an independent macOS Static full-application reference remains
-absent. T7.6 remains pending.
+This closes the Dynamic application and presentation-summary comparison
+slice. A physical raster-frame reference and an independent macOS Static
+full-application reference remain absent. T7.6 remains pending.
 
 ## T7.6 completed nRF presentation counts (2026-09-27)
 

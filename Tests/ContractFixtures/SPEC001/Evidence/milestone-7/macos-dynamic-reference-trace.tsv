@@ -1,3 +1,4 @@
+reference=macos-dynamic-other-frame	code=65535	revision=1	capture_revision=0	capture_count=0	state=idle	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=32	render_operations=34
 reference=macos-dynamic	ordinal=1	facts=25	capture_revision=24	capture_count=24	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=72	render_operations=34
 reference=macos-dynamic	ordinal=2	facts=20	capture_revision=44	capture_count=44	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
 reference=macos-dynamic	ordinal=3	facts=20	capture_revision=64	capture_count=64	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
@@ -118,3 +119,21 @@ reference=macos-dynamic	ordinal=117	facts=20	capture_revision=2344	capture_count
 reference=macos-dynamic	ordinal=118	facts=20	capture_revision=2364	capture_count=358	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
 reference=macos-dynamic	ordinal=119	facts=20	capture_revision=2384	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
 reference=macos-dynamic	ordinal=120	facts=20	capture_revision=2404	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+reference=macos-dynamic-action	code=0	dispatched=0	revision=121	capture_count=359	state=running	window=twoSeconds
+reference=macos-dynamic-other-frame	code=1	revision=122	capture_revision=2404	capture_count=359	state=stopped	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+reference=macos-dynamic-action	code=1	dispatched=1	revision=122	capture_count=359	state=stopped	window=twoSeconds
+reference=macos-dynamic-action	code=1	dispatched=0	revision=122	capture_count=359	state=stopped	window=twoSeconds
+reference=macos-dynamic-other-frame	code=0	revision=123	capture_revision=2404	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+reference=macos-dynamic-action	code=0	dispatched=1	revision=123	capture_count=359	state=running	window=twoSeconds
+reference=macos-dynamic-action	code=0	dispatched=0	revision=123	capture_count=359	state=running	window=twoSeconds
+reference=macos-dynamic-other-frame	code=2	revision=124	capture_revision=2405	capture_count=0	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=32	render_operations=34
+reference=macos-dynamic-action	code=2	dispatched=1	revision=124	capture_count=0	state=running	window=twoSeconds
+reference=macos-dynamic-other-frame	code=3	revision=125	capture_revision=2405	capture_count=0	state=running	window=oneSecond	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=32	render_operations=34
+reference=macos-dynamic-action	code=3	dispatched=1	revision=125	capture_count=0	state=running	window=oneSecond
+reference=macos-dynamic-action	code=3	dispatched=0	revision=125	capture_count=0	state=running	window=oneSecond
+reference=macos-dynamic-other-frame	code=5	revision=126	capture_revision=2405	capture_count=0	state=running	window=fiveSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=32	render_operations=34
+reference=macos-dynamic-action	code=5	dispatched=1	revision=126	capture_count=0	state=running	window=fiveSeconds
+reference=macos-dynamic-action	code=5	dispatched=0	revision=126	capture_count=0	state=running	window=fiveSeconds
+reference=macos-dynamic-other-frame	code=4	revision=127	capture_revision=2405	capture_count=0	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=32	render_operations=34
+reference=macos-dynamic-action	code=4	dispatched=1	revision=127	capture_count=0	state=running	window=twoSeconds
+reference=macos-dynamic-action	code=4	dispatched=0	revision=127	capture_count=0	state=running	window=twoSeconds
