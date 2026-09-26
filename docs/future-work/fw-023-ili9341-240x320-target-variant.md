@@ -59,12 +59,11 @@ remove it.
 
 ## Disposition
 
-Promoted to
+Promoted to draft
 [PROPOSAL-007](../proposals/proposal-007-kmrtm24024-spi-target.md) after the
-maintainer requested support for the exact connected module. The maintainer
-accepted the Proposal on 2026-09-25; [RFC-012](../rfcs/rfc-012-kmrtm24024-spi-nrf-target.md)
-now explores the architecture. Promotion itself does not authorize
-implementation. The current approved target and T8.2 remain unchanged.
+maintainer requested support for the exact connected module. This promotion
+does not approve the Proposal or authorize implementation. The current
+approved target and T8.2 remain unchanged.
 
 ## References
 

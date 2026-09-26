@@ -8,8 +8,7 @@ authors:
 created: 2026-09-25
 updated: 2026-09-25
 proposal: []
-related_rfcs:
-  - RFC-012
+related_rfcs: []
 related_adrs: []
 related_specs: []
 related_future_work:
