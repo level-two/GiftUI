@@ -147,6 +147,45 @@ remains `host-native-fixture` evidence, not connected-target evidence.
 Ordered semantic, action, Drawing, and frame traces against the applicable
 macOS reference remain to complete T7.6.
 
+## T7.6 ordered target trace slice (2026-09-27)
+
+The two native runners now emit ordered records from their production host
+opportunities. The Pi records every workload frame's fact count, capture
+revision/count, model state, semantic and layout counts, Drawing stroke/point
+counts, and render operation count. The nRF recorder observes each committed
+presentation revision after the production tiled frame, including capture and
+model state plus cumulative tile writes/bytes. Both runners record the same
+post-workload enabled and disabled pointer sequence. These are observation
+records; they do not drive the host loops.
+
+Raw records are saved as [Pi](pi-ordered-trace.tsv) (132 lines, SHA-256
+`62ff76e6c47e357c4f520f48c45166504bba99c9a0b033e2da7a24a547a1d9c8`)
+and [nRF](nrf-ordered-trace.tsv) (139 lines, SHA-256
+`9f34a76123653fd51dcf15ae9f76701f3f0b831cb5eba252045e5d5e97b4fc55`).
+Both host-native runner commands passed. The standalone comparison command
+
+```sh
+scripts/contracts/compare-spec-001-target-actions.rb \
+  Tests/ContractFixtures/SPEC001/Evidence/milestone-7/pi-ordered-trace.tsv \
+  Tests/ContractFixtures/SPEC001/Evidence/milestone-7/nrf-ordered-trace.tsv
+```
+
+passed: 120 ordered Pi workload frames, 127 ordered nRF committed frames,
+matching terminal capture revision 2404/count 359, and 12 identical ordered
+action outcomes after normalizing the Static state/window codes. The action
+sequence includes disabled Start before Stop, disabled Stop after Stop,
+disabled Start after restart, and each disabled selected-window control. Clear
+follows acquired transitions and empties the capture on both profiles.
+
+The target runs use different production scheduling and raster projections,
+so their frame counts and per-frame acquisition batches differ. The Pi record
+does not yet include its initial or post-workload presentation summaries; the
+nRF record does not yet expose semantic, layout, Drawing, or render summaries.
+The macOS Dynamic and Static executables still do not run full application
+reference loops. The target-to-target action comparison is an incremental
+check, not the required ordered comparison against independent macOS reference
+traces. T7.6 remains pending.
+
 ## Validation boundary
 
 After these slices, both host-native rehearsal commands passed, as did the

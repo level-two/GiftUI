@@ -1851,8 +1851,11 @@ the next connected run for the corresponding target.
       [evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/host-loop-rehearsal.md).
       The current macOS Dynamic and Static executables only emit preset/admission
       checksums; they do not provide ordered full-application semantic, action,
-      Drawing, or frame traces. Create and compare those reference traces before
-      marking T7.6 complete.
+      Drawing, or frame traces. The target runners now retain ordered frame
+      records and have a passing 12-action target-to-target comparison, recorded
+      in the linked evidence. Add the missing initial/action frame details and
+      Static semantic/Drawing records, then create and compare independent
+      macOS reference traces before marking T7.6 complete.
 - [ ] `T7.7` — Capture canonical final pixels at the exact approved Pi and
       nRF extents for idle, running with four traces, stopped, cleared, each
       selected window, and a visible diagnostic. Reconstruct the nRF tiled
@@ -2249,6 +2252,9 @@ seams, behavior, visual evidence, faults, and registered comparison. Earlier
 Milestone 7 task dispositions and connected observations are unchanged; the
 `T7.5` now has passing host-native executable-seam evidence. Both T7.6 target
 behavior slices pass, but its ordered macOS reference comparison remains open.
+The 2026-09-27 target trace slice records workload frames and a matching
+12-action sequence across both production loops; it does not replace the
+independent macOS reference comparison.
 `T7.6` through `T7.9` remain pending; no application behavior parity or pixel
 reference is claimed by the current rehearsals.
 

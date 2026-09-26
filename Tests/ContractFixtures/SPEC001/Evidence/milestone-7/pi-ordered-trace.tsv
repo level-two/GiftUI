@@ -1,0 +1,132 @@
+trace=frame	ordinal=1	revision=1	facts=25	capture_revision=24	capture_count=24	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=72	render_operations=34
+trace=frame	ordinal=2	revision=2	facts=20	capture_revision=44	capture_count=44	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
+trace=frame	ordinal=3	revision=3	facts=20	capture_revision=64	capture_count=64	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=4	revision=4	facts=20	capture_revision=84	capture_count=84	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=86	render_operations=34
+trace=frame	ordinal=5	revision=5	facts=20	capture_revision=104	capture_count=104	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=6	revision=6	facts=20	capture_revision=124	capture_count=124	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=7	revision=7	facts=20	capture_revision=144	capture_count=144	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=8	revision=8	facts=20	capture_revision=164	capture_count=164	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
+trace=frame	ordinal=9	revision=9	facts=20	capture_revision=184	capture_count=184	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=10	revision=10	facts=20	capture_revision=204	capture_count=204	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=11	revision=11	facts=20	capture_revision=224	capture_count=224	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=12	revision=12	facts=20	capture_revision=244	capture_count=244	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=13	revision=13	facts=20	capture_revision=264	capture_count=264	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=14	revision=14	facts=20	capture_revision=284	capture_count=284	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=15	revision=15	facts=20	capture_revision=304	capture_count=304	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=16	revision=16	facts=20	capture_revision=324	capture_count=324	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=17	revision=17	facts=20	capture_revision=344	capture_count=344	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=18	revision=18	facts=20	capture_revision=364	capture_count=354	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=19	revision=19	facts=20	capture_revision=384	capture_count=356	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=20	revision=20	facts=20	capture_revision=404	capture_count=356	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=21	revision=21	facts=20	capture_revision=424	capture_count=353	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=22	revision=22	facts=20	capture_revision=444	capture_count=354	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=74	render_operations=34
+trace=frame	ordinal=23	revision=23	facts=20	capture_revision=464	capture_count=356	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=24	revision=24	facts=20	capture_revision=484	capture_count=355	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=25	revision=25	facts=20	capture_revision=504	capture_count=353	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=74	render_operations=34
+trace=frame	ordinal=26	revision=26	facts=20	capture_revision=524	capture_count=355	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=27	revision=27	facts=20	capture_revision=544	capture_count=354	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=28	revision=28	facts=20	capture_revision=564	capture_count=355	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=29	revision=29	facts=20	capture_revision=584	capture_count=353	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=30	revision=30	facts=20	capture_revision=604	capture_count=354	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=31	revision=31	facts=20	capture_revision=624	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=32	revision=32	facts=20	capture_revision=644	capture_count=358	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=33	revision=33	facts=20	capture_revision=664	capture_count=356	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=34	revision=34	facts=20	capture_revision=684	capture_count=358	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=35	revision=35	facts=20	capture_revision=704	capture_count=360	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
+trace=frame	ordinal=36	revision=36	facts=20	capture_revision=724	capture_count=360	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
+trace=frame	ordinal=37	revision=37	facts=20	capture_revision=744	capture_count=361	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=38	revision=38	facts=20	capture_revision=764	capture_count=360	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=39	revision=39	facts=20	capture_revision=784	capture_count=361	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=86	render_operations=34
+trace=frame	ordinal=40	revision=40	facts=20	capture_revision=804	capture_count=361	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=41	revision=41	facts=20	capture_revision=824	capture_count=361	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=42	revision=42	facts=20	capture_revision=844	capture_count=360	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=43	revision=43	facts=20	capture_revision=864	capture_count=361	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=44	revision=44	facts=20	capture_revision=884	capture_count=362	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
+trace=frame	ordinal=45	revision=45	facts=20	capture_revision=904	capture_count=361	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=46	revision=46	facts=20	capture_revision=924	capture_count=362	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=47	revision=47	facts=20	capture_revision=944	capture_count=365	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
+trace=frame	ordinal=48	revision=48	facts=20	capture_revision=964	capture_count=362	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
+trace=frame	ordinal=49	revision=49	facts=20	capture_revision=984	capture_count=362	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=50	revision=50	facts=20	capture_revision=1004	capture_count=364	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=86	render_operations=34
+trace=frame	ordinal=51	revision=51	facts=20	capture_revision=1024	capture_count=361	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=52	revision=52	facts=20	capture_revision=1044	capture_count=362	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=53	revision=53	facts=20	capture_revision=1064	capture_count=360	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=54	revision=54	facts=20	capture_revision=1084	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=55	revision=55	facts=20	capture_revision=1104	capture_count=360	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=56	revision=56	facts=20	capture_revision=1124	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=57	revision=57	facts=20	capture_revision=1144	capture_count=358	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=58	revision=58	facts=20	capture_revision=1164	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=59	revision=59	facts=20	capture_revision=1184	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=60	revision=60	facts=20	capture_revision=1204	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=74	render_operations=34
+trace=frame	ordinal=61	revision=61	facts=20	capture_revision=1224	capture_count=360	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
+trace=frame	ordinal=62	revision=62	facts=20	capture_revision=1244	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=63	revision=63	facts=20	capture_revision=1264	capture_count=358	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=64	revision=64	facts=20	capture_revision=1284	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=65	revision=65	facts=20	capture_revision=1304	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=66	revision=66	facts=20	capture_revision=1324	capture_count=358	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=67	revision=67	facts=20	capture_revision=1344	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
+trace=frame	ordinal=68	revision=68	facts=20	capture_revision=1364	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=69	revision=69	facts=20	capture_revision=1384	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=70	revision=70	facts=20	capture_revision=1404	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
+trace=frame	ordinal=71	revision=71	facts=20	capture_revision=1424	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=72	revision=72	facts=20	capture_revision=1444	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=73	revision=73	facts=20	capture_revision=1464	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=74	revision=74	facts=20	capture_revision=1484	capture_count=356	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=72	render_operations=34
+trace=frame	ordinal=75	revision=75	facts=20	capture_revision=1504	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=76	revision=76	facts=20	capture_revision=1524	capture_count=356	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=77	revision=77	facts=20	capture_revision=1544	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=78	revision=78	facts=20	capture_revision=1564	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
+trace=frame	ordinal=79	revision=79	facts=20	capture_revision=1584	capture_count=355	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=80	revision=80	facts=20	capture_revision=1604	capture_count=358	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=81	revision=81	facts=20	capture_revision=1624	capture_count=356	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=82	revision=82	facts=20	capture_revision=1644	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=83	revision=83	facts=20	capture_revision=1664	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=84	revision=84	facts=20	capture_revision=1684	capture_count=354	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
+trace=frame	ordinal=85	revision=85	facts=20	capture_revision=1704	capture_count=354	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=86	revision=86	facts=20	capture_revision=1724	capture_count=355	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=87	revision=87	facts=20	capture_revision=1744	capture_count=354	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=88	revision=88	facts=20	capture_revision=1764	capture_count=352	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=74	render_operations=34
+trace=frame	ordinal=89	revision=89	facts=20	capture_revision=1784	capture_count=351	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=90	revision=90	facts=20	capture_revision=1804	capture_count=351	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=74	render_operations=34
+trace=frame	ordinal=91	revision=91	facts=20	capture_revision=1824	capture_count=353	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=92	revision=92	facts=20	capture_revision=1844	capture_count=352	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=93	revision=93	facts=20	capture_revision=1864	capture_count=353	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=94	revision=94	facts=20	capture_revision=1884	capture_count=355	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=95	revision=95	facts=20	capture_revision=1904	capture_count=355	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=96	revision=96	facts=20	capture_revision=1924	capture_count=355	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=74	render_operations=34
+trace=frame	ordinal=97	revision=97	facts=20	capture_revision=1944	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=98	revision=98	facts=20	capture_revision=1964	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=99	revision=99	facts=20	capture_revision=1984	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=100	revision=100	facts=20	capture_revision=2004	capture_count=358	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=101	revision=101	facts=20	capture_revision=2024	capture_count=358	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=102	revision=102	facts=20	capture_revision=2044	capture_count=358	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=74	render_operations=34
+trace=frame	ordinal=103	revision=103	facts=20	capture_revision=2064	capture_count=360	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=104	revision=104	facts=20	capture_revision=2084	capture_count=360	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
+trace=frame	ordinal=105	revision=105	facts=20	capture_revision=2104	capture_count=360	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=106	revision=106	facts=20	capture_revision=2124	capture_count=362	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=107	revision=107	facts=20	capture_revision=2144	capture_count=362	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=108	revision=108	facts=20	capture_revision=2164	capture_count=362	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=74	render_operations=34
+trace=frame	ordinal=109	revision=109	facts=20	capture_revision=2184	capture_count=363	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=110	revision=110	facts=20	capture_revision=2204	capture_count=362	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
+trace=frame	ordinal=111	revision=111	facts=20	capture_revision=2224	capture_count=362	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=76	render_operations=34
+trace=frame	ordinal=112	revision=112	facts=20	capture_revision=2244	capture_count=362	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=113	revision=113	facts=20	capture_revision=2264	capture_count=361	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=114	revision=114	facts=20	capture_revision=2284	capture_count=361	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=115	revision=115	facts=20	capture_revision=2304	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
+trace=frame	ordinal=116	revision=116	facts=20	capture_revision=2324	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=84	render_operations=34
+trace=frame	ordinal=117	revision=117	facts=20	capture_revision=2344	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=frame	ordinal=118	revision=118	facts=20	capture_revision=2364	capture_count=358	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=80	render_operations=34
+trace=frame	ordinal=119	revision=119	facts=20	capture_revision=2384	capture_count=357	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=82	render_operations=34
+trace=frame	ordinal=120	revision=120	facts=20	capture_revision=2404	capture_count=359	state=running	window=twoSeconds	semantic_nodes=47	layout_scopes=96	drawing_strokes=5	drawing_points=78	render_operations=34
+trace=action	code=0	dispatched=0	revision=120	capture_count=359	state=running	window=twoSeconds
+trace=action	code=1	dispatched=1	revision=121	capture_count=359	state=stopped	window=twoSeconds
+trace=action	code=1	dispatched=0	revision=121	capture_count=359	state=stopped	window=twoSeconds
+trace=action	code=0	dispatched=1	revision=122	capture_count=359	state=running	window=twoSeconds
+trace=action	code=0	dispatched=0	revision=122	capture_count=359	state=running	window=twoSeconds
+trace=action	code=2	dispatched=1	revision=123	capture_count=0	state=running	window=twoSeconds
+trace=action	code=3	dispatched=1	revision=124	capture_count=0	state=running	window=oneSecond
+trace=action	code=3	dispatched=0	revision=124	capture_count=0	state=running	window=oneSecond
+trace=action	code=5	dispatched=1	revision=125	capture_count=0	state=running	window=fiveSeconds
+trace=action	code=5	dispatched=0	revision=125	capture_count=0	state=running	window=fiveSeconds
+trace=action	code=4	dispatched=1	revision=126	capture_count=0	state=running	window=twoSeconds
+trace=action	code=4	dispatched=0	revision=126	capture_count=0	state=running	window=twoSeconds
