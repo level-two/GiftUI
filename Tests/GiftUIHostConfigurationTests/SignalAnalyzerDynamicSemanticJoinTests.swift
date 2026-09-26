@@ -1913,6 +1913,132 @@ private func makeSemanticJoinModel(failsStart: Bool = false) -> SignalAnalyzerVi
     )
 }
 
+@Test func macOSDynamicReferenceRunsOrderedAcquisitionAndPresentationWorkload() throws {
+    let preset = GeneratedSignalAnalyzerPresets.macOSDynamic()
+    let source = DeterministicSignalDataSource()
+    let repository = DefaultSignalAcquisitionRepository(source: source)
+    let admission = DynamicSignalAnalyzerHostFactAdmission()
+    let adapter = SignalAnalyzerPresentationAdmissionAdapter(
+        observeCapture: ObserveSignalCaptureUseCase(repository: repository),
+        observeState: ObserveAcquisitionStateUseCase(repository: repository),
+        admission: admission,
+        failureFactory: DefaultSignalAnalyzerOperationalFailureFactory()
+    )
+    let model = SignalAnalyzerViewModel(
+        startAcquisition: StartSignalAcquisitionUseCase(repository: repository),
+        stopAcquisition: StopSignalAcquisitionUseCase(repository: repository),
+        clearCapture: ClearSignalCaptureUseCase(repository: repository)
+    )
+    var pipeline = try #require(
+        DynamicSignalAnalyzerPresentationPipeline(
+            limits: preset.runtimeLimits,
+            maximumRecordedTraversalIdentities: 203,
+            logicalWidth: preset.raster.logicalWidth,
+            logicalHeight: preset.raster.logicalHeight
+        )
+    )
+    var endpoint = SemanticJoinEndpoint(capacity: preset.runtimeLimits.renderSink)
+    let initial = pipeline.derive(
+        model: model,
+        cycle: RunCycleID(rawValue: 1),
+        semanticRevision: SemanticRevision(rawValue: 1)
+    )
+    guard case .success(let initialSummary) = initial else {
+        Issue.record("macOS Dynamic initial presentation failed: \(initial)")
+        return
+    }
+    let initialOffer = pipeline.offer(
+        endpoint: &endpoint,
+        provenance: FrameProvenance(
+            cycle: RunCycleID(rawValue: 1),
+            semanticRevision: SemanticRevision(rawValue: 1),
+            candidateFrame: CandidateFrameID(rawValue: 1)
+        ),
+        expectedHeader: initialSummary.render
+    )
+    #expect(initialOffer.disposition == .accepted)
+    #expect(
+        pipeline.resolveInteraction(
+            offer: initialOffer,
+            presentationRevision: PresentationRevision(rawValue: 1)
+        ) == .committed(PresentationRevision(rawValue: 1))
+    )
+
+    #expect(admission.beginProducer(.bootstrap))
+    guard case .started = adapter.startObserving() else {
+        Issue.record("macOS Dynamic observation did not start")
+        return
+    }
+    admission.endProducer()
+    #expect(admission.seal())
+    guard case .applied(let bootstrap) = pipeline.applySealedFacts(from: admission) else {
+        Issue.record("macOS Dynamic bootstrap facts were not applied")
+        return
+    }
+    #expect(bootstrap.factCount == 2)
+    #expect(admission.beginProducer(.action))
+    model.startTapped()
+    admission.endProducer()
+    let generation = try #require(source.activeGeneration)
+
+    for window in 1 ... 120 {
+        for _ in 1 ... 20 {
+            #expect(admission.beginProducer(.transition))
+            #expect(source.deliverScheduledTransition(generation: generation))
+            admission.endProducer()
+        }
+        #expect(admission.seal())
+        let applied = pipeline.applySealedFacts(from: admission)
+        guard case .applied(let application) = applied else {
+            Issue.record("macOS Dynamic fact application failed: \(applied)")
+            return
+        }
+        #expect(application.factCount == (window == 1 ? 25 : 20))
+        let revision = UInt32(window + 1)
+        let result = pipeline.derive(
+            model: model,
+            cycle: RunCycleID(rawValue: revision),
+            semanticRevision: SemanticRevision(rawValue: revision)
+        )
+        guard case .success(let summary) = result else {
+            Issue.record("macOS Dynamic workload presentation failed: \(result)")
+            return
+        }
+        let offer = pipeline.offer(
+            endpoint: &endpoint,
+            provenance: FrameProvenance(
+                cycle: RunCycleID(rawValue: revision),
+                semanticRevision: SemanticRevision(rawValue: revision),
+                candidateFrame: CandidateFrameID(rawValue: revision)
+            ),
+            expectedHeader: summary.render
+        )
+        #expect(offer.disposition == .accepted)
+        #expect(
+            pipeline.resolveInteraction(
+                offer: offer,
+                presentationRevision: PresentationRevision(rawValue: revision)
+            ) == .committed(PresentationRevision(rawValue: revision))
+        )
+        print(
+            "reference=macos-dynamic\tordinal=\(window)\tfacts=\(application.factCount)"
+                + "\tcapture_revision=\(model.captureRevision)"
+                + "\tcapture_count=\(model.state.capture.transitions.count)"
+                + "\tstate=\(model.state.acquisitionState)"
+                + "\twindow=\(model.state.visibleWindow)"
+                + "\tsemantic_nodes=\(summary.semantic.semanticNodeCount)"
+                + "\tlayout_scopes=\(summary.layout.scopeCount)"
+                + "\tdrawing_strokes=\(summary.drawing.strokeCount)"
+                + "\tdrawing_points=\(summary.drawing.pointCount)"
+                + "\trender_operations=\(summary.render.operationCount)"
+        )
+    }
+    #expect(model.captureRevision == 2_404)
+    #expect(model.state.capture.transitions.count == 359)
+    adapter.stopObserving()
+    source.shutdown()
+}
+
 private func dynamicPiEffectivePresentation(
     preset: GeneratedSignalAnalyzerPreset
 ) -> EffectiveRasterPresentation {
