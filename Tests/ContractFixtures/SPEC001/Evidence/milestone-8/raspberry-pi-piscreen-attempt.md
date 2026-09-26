@@ -268,3 +268,10 @@ network (`Host is down`); three subsequent pings were lost. The preceding
 deployed executable remains the last verified connected version. A partial
 `.incoming` file may be present and must be hash-checked if resumed. The
 final touch build has therefore not yet received a connected run.
+
+The Pi briefly returned and again reported `armv6l`; the partial upload was
+522,240 bytes. A resumable upload of the same artifact was attempted, but the
+Pi stopped responding to ping and SSH during transfer. The stalled client
+was stopped, preserving the partial `.incoming` file. The final artifact is
+still local and T8.1 remains open pending stable Pi connectivity and physical
+control testing.
