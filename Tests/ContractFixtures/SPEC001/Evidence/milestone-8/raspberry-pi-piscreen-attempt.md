@@ -290,3 +290,20 @@ Stop hit bounds at y=176-196. The maintainer confirmed these were the Start
 and Stop taps, followed by two more Stop taps. The connected trace therefore
 supports a vertical calibration correction. This run is not evidence of
 six-control success.
+
+The calibrated and coalesced touch build was deployed to `192.168.55.44`
+after `armv6l` verification. The remote executable matched SHA-256
+`27b1939e7cae917b7fd4dea16e1842eb071ec27db02774e336a829b120e0318c`.
+Its foreground trace decoded Start `(84,187)`/`(81,187)`, Stop
+`(120,185)`/`(121,187)`, and Clear `(154,189)` contacts. Both Start and Stop
+entered input admission in complete two-event sequences. The Stop sequence
+dispatched one action; the initial Start sequence dispatched none, consistent
+with acquisition already running. Immediately after Stop, the Pi process
+failed with `sourceSchedule`: its loop still required a next source deadline
+after the action stopped source generation. The run therefore ended before
+Clear drained and before six-control or sustained-cadence evidence could be
+collected. Five frame durations preceding the failure were 4,137,079,
+4,411,461, 4,769,928, 4,885,580, and 4,905,747 microseconds. The process
+loop was corrected to make the deadline absent while the source is stopped
+and to rebase it when a new source generation starts; that correction is
+pending connected re-test.
