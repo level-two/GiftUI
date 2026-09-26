@@ -186,6 +186,41 @@ reference loops. The target-to-target action comparison is an incremental
 check, not the required ordered comparison against independent macOS reference
 traces. T7.6 remains pending.
 
+## T7.6 macOS Dynamic workload presentation reference (2026-09-27)
+
+The focused macOS Dynamic test constructs a fresh deterministic source,
+repository, observation adapter, sequenced fact admission, ViewModel, and
+production Dynamic semantic/layout/Drawing/render pipeline at the approved
+320×240 macOS extent. It derives and accepts an idle candidate, applies the two
+bootstrap facts in the startup opportunity, starts the source, then delivers
+20 scheduled transitions before each of 120 application/presentation
+opportunities. It records completed outcomes through a synchronous recording
+render endpoint. This calculation does not read the Pi trace to choose facts
+or expected values.
+
+The focused test passed. Its [raw reference trace](macos-dynamic-reference-trace.tsv)
+has 120 ordered records (SHA-256
+`1e1ea4cc126abf52fce05da63ad1312c6d9fc40a7489b9f801ab622d03f6c67b`).
+The comparison command
+
+```sh
+scripts/contracts/compare-spec-001-dynamic-reference.rb \
+  Tests/ContractFixtures/SPEC001/Evidence/milestone-7/macos-dynamic-reference-trace.tsv \
+  Tests/ContractFixtures/SPEC001/Evidence/milestone-7/pi-ordered-trace.tsv
+```
+
+passed all 120 ordered frames on fact count, capture revision/count, model
+state/window, semantic node count, layout scope count, Drawing stroke/point
+count, and render operation count. The reference uses the same approved source
+and Presentation implementation at its own macOS extent, while constructing
+its own application and admission owners. The recording endpoint checks
+accepted render streams; it does not produce canonical raster pixels.
+
+This closes the Dynamic workload presentation comparison slice only. The
+macOS Dynamic reference still lacks physical pointer action and raster-frame
+traces, and an independent macOS Static full-application reference remains
+absent. T7.6 remains pending.
+
 ## Validation boundary
 
 After these slices, both host-native rehearsal commands passed, as did the
@@ -197,9 +232,8 @@ include the SPEC-002 owned-source inventory and SPEC-008 package boundary
 checks. The detailed local results are under
 `.build/test-reports/macos-dynamic/`; they are not T7.6 parity evidence.
 
-The existing macOS Dynamic and Static executables call
-`HardwareFreePresetRunner.run` and report preset/admission checksums. They do
-not execute the full application loop or emit ordered semantic, action,
-Drawing, and frame traces. Comparing only their current checksums with the
-target rehearsals would not satisfy T7.6's stated comparison. T7.6 therefore
-remains pending while a macOS reference trace source is established.
+The macOS Dynamic and Static executables call `HardwareFreePresetRunner.run`
+and report preset/admission checksums. The new focused Dynamic reference above
+adds an ordered workload presentation calculation but does not turn either
+executable into a full application loop. Remaining action, raster, and Static
+reference comparisons must pass before T7.6 can be completed.

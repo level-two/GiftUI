@@ -1853,9 +1853,11 @@ the next connected run for the corresponding target.
       checksums; they do not provide ordered full-application semantic, action,
       Drawing, or frame traces. The target runners now retain ordered frame
       records and have a passing 12-action target-to-target comparison, recorded
-      in the linked evidence. Add the missing initial/action frame details and
-      Static semantic/Drawing records, then create and compare independent
-      macOS reference traces before marking T7.6 complete.
+      in the linked evidence. An independent macOS Dynamic source/admission/
+      presentation fixture now matches all 120 Pi workload summaries. Add the
+      missing initial/action frame and physical raster traces, Static
+      semantic/Drawing records, and macOS Static reference comparison before
+      marking T7.6 complete.
 - [ ] `T7.7` — Capture canonical final pixels at the exact approved Pi and
       nRF extents for idle, running with four traces, stopped, cleared, each
       selected window, and a visible diagnostic. Reconstruct the nRF tiled
@@ -2255,6 +2257,9 @@ behavior slices pass, but its ordered macOS reference comparison remains open.
 The 2026-09-27 target trace slice records workload frames and a matching
 12-action sequence across both production loops; it does not replace the
 independent macOS reference comparison.
+The focused macOS Dynamic reference now matches Pi workload summaries for all
+120 frames. The remaining T7.6 comparisons concern actions, physical frames,
+and the independent Static reference.
 `T7.6` through `T7.9` remain pending; no application behavior parity or pixel
 reference is claimed by the current rehearsals.
 
