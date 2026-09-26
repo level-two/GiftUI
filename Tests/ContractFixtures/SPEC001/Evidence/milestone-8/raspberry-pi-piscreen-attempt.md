@@ -307,3 +307,12 @@ collected. Five frame durations preceding the failure were 4,137,079,
 loop was corrected to make the deadline absent while the source is stopped
 and to rebase it when a new source generation starts; that correction is
 pending connected re-test.
+
+The scheduler-corrected ARMv6 artifact passed the SPEC-001 Raspberry Pi
+cross-build gate and has SHA-256
+`efc5b24a2044430951f2c160aa38484192f478a487a700b0a077bcf12ca8a126`.
+The attempted resumable deployment to `192.168.55.44` at 16 KiB/s was
+interrupted when all three pings to the Pi timed out. The transfer client was
+stopped; the previously deployed executable remains in place. The matching
+partial `.incoming` file may be resumed only with this exact artifact after
+the Pi becomes reachable. No connected scheduler re-test has yet run.
