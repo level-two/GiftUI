@@ -4,17 +4,18 @@
 #include <zephyr/drivers/spi.h>
 
 #include <assert.h>
+#include <stdbool.h>
 #include <errno.h>
 #include <stdint.h>
 #include <string.h>
 
 struct transfer {
-    uint8_t bytes[1920];
+    uint8_t bytes[2560];
     size_t count;
     int dc;
 };
 
-static struct transfer transfers[32];
+static struct transfer transfers[1024];
 static size_t transfer_count;
 static int dc_level;
 static int fail_transfer = -1;
@@ -48,7 +49,7 @@ int spi_cs_is_gpio_dt(const struct spi_dt_spec *spec)
 int spi_write_dt(const struct spi_dt_spec *spec, const struct spi_buf_set *buffers)
 {
     (void)spec;
-    assert(buffers->count == 1 && transfer_count < 32);
+    assert(buffers->count == 1 && transfer_count < 1024);
     const struct spi_buf *buffer = buffers->buffers;
     assert(buffer->len <= sizeof(transfers[0].bytes));
     if ((int)transfer_count == fail_transfer) { return -EIO; }
@@ -75,14 +76,27 @@ static void expect_transfer(size_t index, int dc, const uint8_t *bytes, size_t c
 int main(void)
 {
     assert(spi_tft_initialize() == 0);
+    const uint8_t landscape_madctl[] = {0x28};
+    bool saw_landscape_madctl = false;
+    for (size_t index = 1; index < transfer_count; ++index) {
+        if (transfers[index - 1].dc == 0 &&
+            transfers[index - 1].count == 1 &&
+            transfers[index - 1].bytes[0] == 0x36 &&
+            transfers[index].dc == 1 &&
+            transfers[index].count == 1 &&
+            transfers[index].bytes[0] == landscape_madctl[0]) {
+            saw_landscape_madctl = true;
+        }
+    }
+    assert(saw_landscape_madctl);
     transfer_count = 0;
     const uint8_t pixels[] = {0x12, 0x34, 0xab, 0xcd};
-    assert(spi_tft_write_rgb565(238, 319, 2, 1, pixels, sizeof(pixels)) == 0);
+    assert(spi_tft_write_rgb565(318, 239, 2, 1, pixels, sizeof(pixels)) == 0);
     assert(transfer_count == 6);
     const uint8_t case_command[] = {0x2a};
-    const uint8_t columns[] = {0x00, 0xee, 0x00, 0xef};
+    const uint8_t columns[] = {0x01, 0x3e, 0x01, 0x3f};
     const uint8_t page_command[] = {0x2b};
-    const uint8_t pages[] = {0x01, 0x3f, 0x01, 0x3f};
+    const uint8_t pages[] = {0x00, 0xef, 0x00, 0xef};
     const uint8_t ram_command[] = {0x2c};
     expect_transfer(0, 0, case_command, sizeof(case_command));
     expect_transfer(1, 1, columns, sizeof(columns));
@@ -90,8 +104,8 @@ int main(void)
     expect_transfer(3, 1, pages, sizeof(pages));
     expect_transfer(4, 0, ram_command, sizeof(ram_command));
     expect_transfer(5, 1, pixels, sizeof(pixels));
-    assert(spi_tft_write_rgb565(239, 319, 2, 1, pixels, sizeof(pixels)) == -EINVAL);
-    assert(spi_tft_write_rgb565(238, 319, 2, 1, pixels, 2) == -EMSGSIZE);
+    assert(spi_tft_write_rgb565(319, 239, 2, 1, pixels, sizeof(pixels)) == -EINVAL);
+    assert(spi_tft_write_rgb565(318, 239, 2, 1, pixels, 2) == -EMSGSIZE);
     assert(transfer_count == 6);
 
     transfer_count = 0;

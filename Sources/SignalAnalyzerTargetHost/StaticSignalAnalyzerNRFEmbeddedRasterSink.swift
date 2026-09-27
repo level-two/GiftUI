@@ -32,12 +32,12 @@
             guard
                 let bounds = Rect(
                     origin: Point(x: 0, y: 0),
-                    size: Size(width: 240, height: 320)!
+                    size: Size(width: 320, height: 240)!
                 ),
                 let descriptor = RasterSurfaceDescriptor(
                     bounds: bounds, encoding: .rgb565BigEndian,
-                    bytesPerRow: 480, realization: .tiled,
-                    regionWidth: 240, regionHeight: 4
+                    bytesPerRow: 640, realization: .tiled,
+                    regionWidth: 320, regionHeight: 4
                 ),
                 let storage = StaticSignalAnalyzerNRFTileStorage(
                     region: rasterRegion, coverage: coverageRegion

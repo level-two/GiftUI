@@ -25,8 +25,8 @@ struct FullLayoutNativeCheck {
     private static let accept: @convention(c) (
         UInt16, UInt16, UInt16, UInt16, UnsafePointer<UInt8>?, Int
     ) -> Int32 = { x, y, width, height, pixels, byteCount in
-        x < 240 && y < 320 && width > 0 && height == 1
-            && UInt32(x) + UInt32(width) <= 240
+        x < 320 && y < 240 && width > 0 && height == 1
+            && UInt32(x) + UInt32(width) <= 320
             && byteCount == Int(width) * 2 && pixels != nil ? 0 : -1
     }
 
@@ -37,8 +37,8 @@ struct FullLayoutNativeCheck {
     static func main() {
         let profile = UnsafeMutableRawPointer.allocate(byteCount: 39_696, alignment: 8)
         let capture = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
-        let raster = UnsafeMutableRawPointer.allocate(byteCount: 1_920, alignment: 8)
-        let coverage = UnsafeMutableRawPointer.allocate(byteCount: 120, alignment: 8)
+        let raster = UnsafeMutableRawPointer.allocate(byteCount: 2_560, alignment: 8)
+        let coverage = UnsafeMutableRawPointer.allocate(byteCount: 160, alignment: 8)
         defer {
             profile.deallocate()
             capture.deallocate()
@@ -47,8 +47,8 @@ struct FullLayoutNativeCheck {
         }
         profile.initializeMemory(as: UInt8.self, repeating: 0, count: 39_696)
         capture.initializeMemory(as: UInt8.self, repeating: 0, count: 115_392)
-        raster.initializeMemory(as: UInt8.self, repeating: 0, count: 1_920)
-        coverage.initializeMemory(as: UInt8.self, repeating: 0, count: 120)
+        raster.initializeMemory(as: UInt8.self, repeating: 0, count: 2_560)
+        coverage.initializeMemory(as: UInt8.self, repeating: 0, count: 160)
         precondition(
             giftUISignalAnalyzerTopologyValid(profile, 39_696, capture, 115_392) == 1,
             "diagnostic semantic topology failed"
@@ -67,8 +67,8 @@ struct FullLayoutNativeCheck {
         )
         precondition(
             giftUISignalAnalyzerFullCanvasValid(
-                profile, 39_696, capture, 115_392, raster, 1_920,
-                coverage, 120
+                profile, 39_696, capture, 115_392, raster, 2_560,
+                coverage, 160
             ) == 1,
             "five Canvas derivation failed"
         )
@@ -80,8 +80,8 @@ struct FullLayoutNativeCheck {
         )
         precondition(
             giftUISignalAnalyzerPresentInitial(
-                profile, 39_696, nil, 115_392, raster, 1_920,
-                coverage, 120, accept
+                profile, 39_696, nil, 115_392, raster, 2_560,
+                coverage, 160, accept
             ) == 0,
             "invalid bootstrap capture region was accepted"
         )
@@ -90,8 +90,8 @@ struct FullLayoutNativeCheck {
         precondition(giftUISignalAnalyzerInitialGestureReady() == 0)
         precondition(
             giftUISignalAnalyzerPresentInitial(
-                profile, 39_696, capture, 115_392, raster, 1_920,
-                coverage, 120, accept
+                profile, 39_696, capture, 115_392, raster, 2_560,
+                coverage, 160, accept
             ) == 1,
             "initial Canvas offer failed"
         )
@@ -150,8 +150,8 @@ struct FullLayoutNativeCheck {
         )
         precondition(giftUISignalAnalyzerNeedsPresentation() == 1)
         let nextOffer = giftUISignalAnalyzerPresentNext(
-            profile, 39_696, capture, 115_392, raster, 1_920,
-            coverage, 120, accept
+            profile, 39_696, capture, 115_392, raster, 2_560,
+            coverage, 160, accept
         )
         precondition(
             nextOffer == 1,
@@ -179,7 +179,7 @@ struct FullLayoutNativeCheck {
                 precondition(
                     giftUISignalAnalyzerPresentNext(
                         profile, 39_696, capture, 115_392,
-                        raster, 1_920, coverage, 120, accept
+                        raster, 2_560, coverage, 160, accept
                     ) == 1,
                     "action did not produce the next physical frame"
                 )
@@ -187,8 +187,8 @@ struct FullLayoutNativeCheck {
         }
         precondition(
             giftUISignalAnalyzerPresentInitial(
-                profile, 39_696, capture, 115_392, raster, 1_920,
-                coverage, 120, accept
+                profile, 39_696, capture, 115_392, raster, 2_560,
+                coverage, 160, accept
             ) == 0,
             "active model admitted a second initial offer"
         )
@@ -200,8 +200,8 @@ struct FullLayoutNativeCheck {
         precondition(giftUISignalAnalyzerInitialGestureReady() == 0)
         precondition(
             giftUISignalAnalyzerPresentInitial(
-                profile, 39_696, capture, 115_392, raster, 1_920,
-                coverage, 120, refuse
+                profile, 39_696, capture, 115_392, raster, 2_560,
+                coverage, 160, refuse
             ) == 0,
             "initial Canvas offer hid display refusal"
         )
@@ -210,8 +210,8 @@ struct FullLayoutNativeCheck {
         precondition(giftUISignalAnalyzerInitialGestureReady() == 0)
         precondition(
             giftUISignalAnalyzerPresentInitial(
-                profile, 39_696, capture, 115_392, raster, 1_920,
-                coverage, 120, accept
+                profile, 39_696, capture, 115_392, raster, 2_560,
+                coverage, 160, accept
             ) == 1,
             "retired model could not activate again"
         )
@@ -219,15 +219,15 @@ struct FullLayoutNativeCheck {
         precondition(giftUISignalAnalyzerInitialGestureReady() == 1)
         precondition(
             giftUISignalAnalyzerPresentNext(
-                profile, 39_696, capture, 115_392, raster, 1_920,
-                coverage, 120, refuse
+                profile, 39_696, capture, 115_392, raster, 2_560,
+                coverage, 160, refuse
             ) == 0,
             "replacement display refusal was accepted"
         )
         precondition(giftUISignalAnalyzerInitialCommittedActions() == 0)
         precondition(giftUISignalAnalyzerInitialGestureReady() == 0)
         precondition(
-            giftUISignalAnalyzerTileValid(raster, 1_920, coverage, 120) == 1,
+            giftUISignalAnalyzerTileValid(raster, 2_560, coverage, 160) == 1,
             "fixed RGB565 tile failed"
         )
         print("nRF layout and Drawing storage: passed")

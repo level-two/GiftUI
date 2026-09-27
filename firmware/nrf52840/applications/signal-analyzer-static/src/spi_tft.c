@@ -23,6 +23,7 @@
 #define SPI_TFT_MAX_COMMAND_PARAMETERS 16U
 
 #define SPI_TFT_MADCTL_BGR BIT(3)
+#define SPI_TFT_MADCTL_MV BIT(5)
 #define SPI_TFT_RGB565_FORMAT 0x55U
 
 static const struct spi_dt_spec display_spi = SPI_DT_SPEC_GET(
@@ -215,8 +216,8 @@ int spi_tft_initialize(void)
         goto fail;
     }
 
-    /* Candidate portrait BGR setting; verify the controller and orientation on hardware. */
-    const uint8_t memory_access = SPI_TFT_MADCTL_BGR;
+    /* Rotate the controller address map to the 320 x 240 landscape surface. */
+    const uint8_t memory_access = SPI_TFT_MADCTL_MV | SPI_TFT_MADCTL_BGR;
     result = write_command(SPI_TFT_MADCTL, &memory_access, 1U);
     if (result != 0) {
         goto fail;
@@ -227,6 +228,13 @@ int spi_tft_initialize(void)
         goto fail;
     }
     k_msleep(120);
+
+    /* Clear the full panel before the first sparse UI presentation. */
+    result = spi_tft_fill_rgb565(
+        0U, 0U, GIFTUI_SPI_TFT_WIDTH, GIFTUI_SPI_TFT_HEIGHT, 0x0000U);
+    if (result != 0) {
+        goto fail;
+    }
 
     result = write_command(SPI_TFT_DISPON, NULL, 0U);
     if (result != 0) {

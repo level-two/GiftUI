@@ -42,7 +42,7 @@ static unsigned action_index;
 static uint32_t action_prior_revision;
 static uint64_t action_started_at;
 static uint32_t last_traced_revision;
-static uint8_t recorded_surface[240U * 320U * 2U];
+static uint8_t recorded_surface[320U * 240U * 2U];
 static const char *fault_mode;
 static unsigned diagnostic_mode;
 static unsigned diagnostic_injected;
@@ -276,8 +276,8 @@ int ads7846_read_raw(struct ads7846_raw_sample *sample)
     }
     const uint32_t point = touch_point;
     assert(point != 0U && sample != NULL);
-    sample->x = (uint16_t)(((point & 0xffffU) * 4095U) / 239U);
-    sample->y = (uint16_t)((((point >> 16) & 0xffffU) * 4095U) / 319U);
+    sample->x = (uint16_t)(((point & 0xffffU) * 4095U) / 319U);
+    sample->y = (uint16_t)((((point >> 16) & 0xffffU) * 4095U) / 239U);
     sample->z1 = 1U;
     sample->z2 = 1U;
     return 0;
@@ -293,13 +293,13 @@ int spi_tft_initialize(void)
     return fault_mode != NULL && fault_mode[0] == 'd' ? -EIO : 0;
 }
 uint16_t spi_tft_tile_height(void) { return 4U; }
-uint32_t spi_tft_spi_segment_bytes(void) { return 1920U; }
+uint32_t spi_tft_spi_segment_bytes(void) { return 2560U; }
 int spi_tft_write_rgb565(uint16_t x, uint16_t y, uint16_t width,
                           uint16_t height, const uint8_t *pixels,
                           size_t byte_count)
 {
-    assert(x < 240U && y < 320U && width > 0U && height == 1U);
-    assert((uint32_t)x + width <= 240U);
+    assert(x < 320U && y < 240U && width > 0U && height == 1U);
+    assert((uint32_t)x + width <= 320U);
     assert(pixels != NULL && byte_count == (size_t)width * 2U);
     if (fault_mode != NULL &&
         (strcmp(fault_mode, "write-initial") == 0 ||
@@ -309,7 +309,7 @@ int spi_tft_write_rgb565(uint16_t x, uint16_t y, uint16_t width,
         return -EIO;
     }
     for (uint16_t column = 0U; column < width; column++) {
-        const size_t destination = ((size_t)y * 240U + x + column) * 2U;
+        const size_t destination = ((size_t)y * 320U + x + column) * 2U;
         recorded_surface[destination] = pixels[(size_t)column * 2U];
         recorded_surface[destination + 1U] = pixels[(size_t)column * 2U + 1U];
     }
@@ -339,8 +339,8 @@ int main(void)
     assert(giftui_signal_analyzer_storage_regions(&regions) == 0);
     assert(regions.profile_bytes == 39696U);
     assert(regions.capture_bytes == 115392U);
-    assert(regions.raster_bytes == 1920U);
-    assert(regions.coverage_bytes == 120U);
+    assert(regions.raster_bytes == 2560U);
+    assert(regions.coverage_bytes == 160U);
 
 
     const int result = giftui_firmware_main();
@@ -380,6 +380,10 @@ int main(void)
                fault_mode, result, shutdown_order, display_writes,
                (unsigned long long)recorded_frame_hash());
         return 0;
+    }
+    if (result != -ECANCELED) {
+        fprintf(stderr, "host rehearsal result=%d writes=%u bytes=%u\n",
+                result, display_writes, display_bytes);
     }
     assert(result == -ECANCELED);
     assert(touch_polls > 2U && paced_frame_observed == 1U);

@@ -13,7 +13,7 @@
                     maximumTextScalars: 224,
                     maximumTextLines: 128,
                     maximumPositionedGlyphs: 224
-                ), let proposal = ProposedSize(width: 240, height: 320)
+                ), let proposal = ProposedSize(width: 320, height: 240)
             else { return nil }
             let layoutSemantic = StaticSignalAnalyzerNRFEmbeddedLayoutSemanticAdapter(
                 source: semantic

@@ -11,7 +11,7 @@ package enum StaticSignalAnalyzerNRFLayoutPass {
         workspace: inout StaticSignalAnalyzerNRFLayoutWorkspace,
         sink: inout StaticSignalAnalyzerNRFResolvedLayoutStorage
     ) -> LayoutResult {
-        guard let proposal = ProposedSize(width: 240, height: 320) else {
+        guard let proposal = ProposedSize(width: 320, height: 240) else {
             return .failure(.invariantViolation)
         }
         return layout(

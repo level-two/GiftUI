@@ -1,6 +1,6 @@
-# generated from 08cb1c6afd8825e036d1ba8455a3ed8cf8ff59076f4d796f943deffc110f416a
+# generated from 2184b27fcd696f55cb0b98ffbece0d51e90600c8e69f8935049e1e972e8c9a7a
 schema_version	3
-descriptor_sha256	08cb1c6afd8825e036d1ba8455a3ed8cf8ff59076f4d796f943deffc110f416a
+descriptor_sha256	2184b27fcd696f55cb0b98ffbece0d51e90600c8e69f8935049e1e972e8c9a7a
 host_kind	3
 profile	static
 semantic_node_occurrences	48
@@ -22,12 +22,12 @@ snapshotted_points	832
 snapshotted_subpaths	16
 normalized_stroke_operations	5
 combined_render_operations	150
-logical_width	240
-logical_height	320
+logical_width	320
+logical_height	240
 region_height	4
-bytes_per_row	480
-maximum_raster_bytes	1920
-maximum_payload_bytes	1920
+bytes_per_row	640
+maximum_raster_bytes	2560
+maximum_payload_bytes	2560
 maximum_in_flight_payloads	1
 static_callable_cases	2
 maximum_static_capture_bytes	32

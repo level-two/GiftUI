@@ -108,7 +108,7 @@ int giftui_device_validation_run(void)
     bool touch_initialized = false;
     bool display_initialized = false;
     printk("GiftUI target: nrf52840dk/nrf52840 + KMRTM24024-SPI geometry\n");
-    printk("GiftUI transfer: 240x4 RGB565, segment<=%u bytes\n",
+    printk("GiftUI transfer: 320x4 RGB565, segment<=%u bytes\n",
            (unsigned int)spi_tft_spi_segment_bytes());
 
     int result = giftui_signal_analyzer_input_initialize(1U);

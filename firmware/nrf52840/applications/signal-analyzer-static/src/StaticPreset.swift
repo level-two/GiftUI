@@ -1,9 +1,9 @@
 private struct StaticSignalAnalyzerPreset {
-    let logicalWidth: UInt16 = 240
-    let logicalHeight: UInt16 = 320
+    let logicalWidth: UInt16 = 320
+    let logicalHeight: UInt16 = 240
     let regionHeight: UInt16 = 4
-    let bytesPerRow: UInt32 = 480
-    let rasterBytes: UInt32 = 1_920
+    let bytesPerRow: UInt32 = 640
+    let rasterBytes: UInt32 = 2_560
     let profileStorageBytes: UInt32 = 39_696
     let captureEntries: UInt16 = 2_404
     let canvasCount: UInt16 = 5
@@ -17,8 +17,8 @@ private struct StaticSignalAnalyzerPreset {
     let observableReplacementCapacity: UInt16 = 1
 
     var isValid: Bool {
-        logicalWidth == 240 && logicalHeight == 320
-            && regionHeight == 4 && bytesPerRow == 480
+        logicalWidth == 320 && logicalHeight == 240
+            && regionHeight == 4 && bytesPerRow == 640
             && rasterBytes == bytesPerRow * UInt32(regionHeight)
             && profileStorageBytes == 39_696
             && captureEntries == 2_404
@@ -196,12 +196,12 @@ public func giftUISignalAnalyzerLayoutScopeValid(
     guard var workspace = StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace(
         scopes: layout, text: text
     ), workspace.acquire(), workspace.appendScope(
-        identity: root, idealWidth: 240, idealHeight: 320,
-        width: 240, height: 320
+        identity: root, idealWidth: 320, idealHeight: 240,
+        width: 320, height: 240
     ), workspace.placeScope(
         identity: root, originX: 0, originY: 0,
-        width: 240, height: 320,
-        clipX: 0, clipY: 0, clipWidth: 240, clipHeight: 320
+        width: 320, height: 240,
+        clipX: 0, clipY: 0, clipWidth: 320, clipHeight: 240
     ), workspace.scope(at: 0)?.identity == root,
         workspace.pushScope(root)
     else { return 0 }
@@ -261,13 +261,13 @@ public func giftUISignalAnalyzerLayoutTextValid(
         width: 0, height: 0
     ), StaticSignalAnalyzerNRFEmbeddedTextMeasure.run(
         identity: title.identity, semantic: semantic,
-        proposalWidth: 240, proposalHeight: 320,
+        proposalWidth: 320, proposalHeight: 240,
         workspace: &layout
     ), StaticSignalAnalyzerNRFEmbeddedTextPlace.run(
         identity: title.identity, semantic: semantic,
         originX: 0, originY: 0,
         inheritedClipX: 0, inheritedClipY: 0,
-        inheritedClipWidth: 240, inheritedClipHeight: 320,
+        inheritedClipWidth: 320, inheritedClipHeight: 240,
         workspace: &layout
     ), layout.textLineCount > 0, layout.positionedGlyphCount > 0
     else { return 0 }
@@ -383,7 +383,7 @@ public func giftUISignalAnalyzerFullLayoutValid(
             textRegion: text
         ), ordinaryHeader.operationCount > 0,
         ordinaryHeader.operationCount <= 145,
-        ordinaryHeader.positionedGlyphCount == 121
+        ordinaryHeader.positionedGlyphCount == 118
     else { return 0 }
     workspace.packed.reset()
     return resolved.isPublished ? 0 : 1
@@ -412,7 +412,7 @@ public func giftUISignalAnalyzerDrawingStorageValid(
             ), capacity: limits
         ), workspace.acquire(),
         let clip = Rect(
-            origin: Point(x: 0, y: 0), size: Size(width: 240, height: 320)!
+            origin: Point(x: 0, y: 0), size: Size(width: 320, height: 240)!
         )
     else { return 0 }
     var canvas: UInt16 = 1
@@ -738,7 +738,7 @@ public func giftUISignalAnalyzerHitPoint(_ code: UInt16) -> UInt32 {
     else { return 0 }
     let x = record.hitBounds.origin.x + record.hitBounds.size.width / 2
     let y = record.hitBounds.origin.y + record.hitBounds.size.height / 2
-    guard x >= 0, x < 240, y >= 0, y < 320 else { return 0 }
+    guard x >= 0, x < 320, y >= 0, y < 240 else { return 0 }
     return UInt32(y) << 16 | UInt32(x)
 }
 
@@ -1038,8 +1038,8 @@ private func giftUIStaticFullCanvas(
 ) -> UInt32 {
     guard let profile, bytes == 39_696,
         let capture, captureBytes == 115_392,
-        let raster, rasterBytes == 1_920,
-        let coverage, coverageBytes == 120
+        let raster, rasterBytes == 2_560,
+        let coverage, coverageBytes == 160
     else { return 0 }
     let candidateRegion = UnsafeMutableRawBufferPointer(
         start: profile, count: 3_024
@@ -1171,7 +1171,7 @@ private func giftUIStaticFullCanvas(
         renderHeader.positionedGlyphCount > 0,
         renderHeader.positionedGlyphCount <= 150,
         (frameRevision != 1
-            || renderHeader.positionedGlyphCount == (validation ? 121 : 117))
+            || renderHeader.positionedGlyphCount == (validation ? 118 : 117))
     else { return 0 }
     var sink = StaticSignalAnalyzerNRFEmbeddedCountingSink()
     guard case .success(let streamedHeader) =
@@ -1343,7 +1343,7 @@ private func giftUIStaticFullCanvas(
                     start: profile.advanced(by: 9_184), count: 4_704
                 ), drawing: drawing
             ), updatedRenderHeader.operationCount <= 150,
-        updatedRenderHeader.positionedGlyphCount == 121
+        updatedRenderHeader.positionedGlyphCount == 118
     else { return 0 }
     sink = StaticSignalAnalyzerNRFEmbeddedCountingSink()
     guard case .success(let updatedStreamedHeader) =
@@ -1356,7 +1356,7 @@ private func giftUIStaticFullCanvas(
         ), updatedStreamedHeader == updatedRenderHeader,
         sink.isFinished, !sink.wasDiscarded,
         sink.strokeCount == 5,
-        sink.glyphCount == 121
+        sink.glyphCount == 118
     else { return 0 }
     guard var updatedRasterSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(
         rasterRegion: UnsafeMutableRawBufferPointer(
@@ -1408,8 +1408,8 @@ public func giftUISignalAnalyzerProbeRGB565(
     _ x: UInt16, _ y: UInt16, _ width: UInt16, _ height: UInt16,
     _ pixels: UnsafePointer<UInt8>?, _ byteCount: Int
 ) -> Int32 {
-    guard x < 240, y < 320, width > 0, height == 1,
-        UInt32(x) + UInt32(width) <= 240,
+    guard x < 320, y < 240, width > 0, height == 1,
+        UInt32(x) + UInt32(width) <= 320,
         byteCount == Int(width) * 2, pixels != nil
     else { return -1 }
     return 0
@@ -1434,16 +1434,16 @@ public func giftUISignalAnalyzerTileValid(
     _ raster: UnsafeMutableRawPointer?, _ rasterBytes: UInt32,
     _ coverage: UnsafeMutableRawPointer?, _ coverageBytes: UInt32
 ) -> UInt32 {
-    guard let raster, rasterBytes == 1_920,
-        let coverage, coverageBytes == 120,
+    guard let raster, rasterBytes == 2_560,
+        let coverage, coverageBytes == 160,
         let surface = Rect(
             origin: Point(x: 0, y: 0),
-            size: Size(width: 240, height: 320)!
+            size: Size(width: 320, height: 240)!
         ),
         let descriptor = RasterSurfaceDescriptor(
             bounds: surface, encoding: .rgb565BigEndian,
-            bytesPerRow: 480, realization: .tiled,
-            regionWidth: 240, regionHeight: 4
+            bytesPerRow: 640, realization: .tiled,
+            regionWidth: 320, regionHeight: 4
         ),
         let storage = StaticSignalAnalyzerNRFTileStorage(
             region: UnsafeMutableRawBufferPointer(
@@ -1455,13 +1455,13 @@ public func giftUISignalAnalyzerTileValid(
         ),
         var tile = RGB565TileWorkspace(descriptor: descriptor, storage: storage),
         let first = Rect(
-            origin: Point(x: 0, y: 0), size: Size(width: 240, height: 4)!
+            origin: Point(x: 0, y: 0), size: Size(width: 320, height: 4)!
         ),
         let second = Rect(
-            origin: Point(x: 0, y: 4), size: Size(width: 240, height: 4)!
+            origin: Point(x: 0, y: 4), size: Size(width: 320, height: 4)!
         ),
         let third = Rect(
-            origin: Point(x: 0, y: 8), size: Size(width: 240, height: 4)!
+            origin: Point(x: 0, y: 8), size: Size(width: 320, height: 4)!
         ),
         tile.beginTile(first),
         tile.replacePixel(
@@ -1469,18 +1469,18 @@ public func giftUISignalAnalyzerTileValid(
             with: CanonicalEncodedPixel(color: .white, encoding: .rgb565BigEndian)
         ),
         tile.replacePixel(
-            at: Point(x: 239, y: 3),
+            at: Point(x: 319, y: 3),
             with: CanonicalEncodedPixel(color: .black, encoding: .rgb565BigEndian)
         ),
         tile.storage.byte(at: 0) == 0xff,
         tile.storage.byte(at: 1) == 0xff,
         tile.storage.isAffected(pixelIndex: 0),
-        tile.storage.isAffected(pixelIndex: 959),
-        !tile.storage.isAffected(pixelIndex: 958),
+        tile.storage.isAffected(pixelIndex: 1279),
+        !tile.storage.isAffected(pixelIndex: 1278),
         tile.finishTile(),
         tile.beginTile(second),
         !tile.storage.isAffected(pixelIndex: 0),
-        !tile.storage.isAffected(pixelIndex: 959),
+        !tile.storage.isAffected(pixelIndex: 1279),
         tile.storage.byte(at: 0) == 0,
         tile.storage.byte(at: 1) == 0
     else { return 0 }
@@ -1496,7 +1496,7 @@ public func giftUISignalAnalyzerTileValid(
         ) { point, pixel in tile.replacePixel(at: point, with: pixel) }
     guard fillResult == .completed(pixelCount: 6),
         tile.storage.isAffected(pixelIndex: 1),
-        tile.storage.isAffected(pixelIndex: 243),
+        tile.storage.isAffected(pixelIndex: 323),
         !tile.storage.isAffected(pixelIndex: 0),
         tile.storage.byte(at: 2) == 0xff,
         tile.storage.byte(at: 3) == 0xff
@@ -1531,7 +1531,7 @@ public func giftUISignalAnalyzerTileValid(
         tile.finishTile()
     else { return 0 }
     guard let fourth = Rect(
-        origin: Point(x: 0, y: 12), size: Size(width: 240, height: 4)!
+        origin: Point(x: 0, y: 12), size: Size(width: 320, height: 4)!
     ), let small = Rect(
         origin: Point(x: 0, y: 12), size: Size(width: 2, height: 2)!
     ) else { return 0 }
@@ -1547,7 +1547,7 @@ public func giftUISignalAnalyzerTileValid(
         },
         { workspace in
             guard workspace.storage.isAffected(pixelIndex: 0),
-                workspace.storage.isAffected(pixelIndex: 241),
+                workspace.storage.isAffected(pixelIndex: 321),
                 let emitted = StaticSignalAnalyzerNRFEmbeddedTileRuns.emit(
                     workspace,
                     { x, y, pixels, bytes in
@@ -1580,7 +1580,7 @@ public func giftUISignalAnalyzerTileValid(
     ) else { return 0 }
     let reservation: DisplayReservationID
     switch target.reserveFrame(
-        descriptor: descriptor, payloadCapacityBytes: 1_920,
+        descriptor: descriptor, payloadCapacityBytes: 2_560,
         regionCapacity: 1
     ) {
     case .reserved(let value): reservation = value
@@ -1611,7 +1611,7 @@ public func giftUISignalAnalyzerTileValid(
     ) else { return 0 }
     let refusingReservation: DisplayReservationID
     switch refusingTarget.reserveFrame(
-        descriptor: descriptor, payloadCapacityBytes: 1_920,
+        descriptor: descriptor, payloadCapacityBytes: 2_560,
         regionCapacity: 1
     ) {
     case .reserved(let value): refusingReservation = value
@@ -1633,7 +1633,7 @@ public func giftUISignalAnalyzerTileValid(
             == .failureAfterAcceptance(.transportUnavailable),
         refusingTarget.finishFrame(refusingReservation) == .completed,
         refusingTarget.reserveFrame(
-            descriptor: descriptor, payloadCapacityBytes: 1_920,
+            descriptor: descriptor, payloadCapacityBytes: 2_560,
             regionCapacity: 1
         ) == .nonRetryableRefusal
     else { return 0 }
@@ -1650,13 +1650,13 @@ public func giftUISignalAnalyzerTileValid(
             start: coverage, count: Int(coverageBytes)
         )
     ), let payloadLimits = RasterPayloadLimits(
-        maximumRasterBytes: 1_920, maximumPayloadBytes: 1_920,
+        maximumRasterBytes: 2_560, maximumPayloadBytes: 2_560,
         maximumRegionsPerPayload: 1,
         maximumRegionSubmissionsPerFrame: 11_520_000,
         maximumTileVisitsPerFrame: 12_000,
         maximumInFlightPayloads: 1,
-        maximumGlyphRasterBytes: 1_920,
-        maximumStrokeWorkspaceBytes: 1_920
+        maximumGlyphRasterBytes: 2_560,
+        maximumStrokeWorkspaceBytes: 2_560
     ), var session = OperationMajorRGB565RasterSession(
         capacity: RenderSinkCapacity(
             maximumOperations: 150, maximumPositionedGlyphs: 224
@@ -1668,7 +1668,7 @@ public func giftUISignalAnalyzerTileValid(
     ) else { return 0 }
     let sessionReservation: DisplayReservationID
     switch session.reserveFrame(
-        descriptor: descriptor, payloadCapacityBytes: 1_920,
+        descriptor: descriptor, payloadCapacityBytes: 2_560,
         regionCapacity: 1
     ) {
     case .reserved(let value): sessionReservation = value
@@ -1697,18 +1697,18 @@ public func giftUISignalAnalyzerTileValid(
             .opaqueRectangles, .positionedText,
             .straightLineStrokes, .clipping, .damage,
         ],
-        extent: CapabilityExtent(width: 240, height: 320)!,
-        regionExtent: CapabilityExtent(width: 240, height: 4)!,
-        rowBytes: CapabilityByteCount(rawValue: 480),
+        extent: CapabilityExtent(width: 320, height: 240)!,
+        regionExtent: CapabilityExtent(width: 320, height: 4)!,
+        rowBytes: CapabilityByteCount(rawValue: 640),
         operationStream: .synchronousBorrowedOneShot,
         encoding: .rgb565BigEndian,
         submissionLifetime: .synchronousBorrow,
         handoff: .synchronous,
         realization: .tiled,
-        requiredRasterBytes: CapabilityByteCount(rawValue: 1_920),
-        requiredPayloadBytes: CapabilityByteCount(rawValue: 1_920),
+        requiredRasterBytes: CapabilityByteCount(rawValue: 2_560),
+        requiredPayloadBytes: CapabilityByteCount(rawValue: 2_560),
         inFlightCount: 1,
-        requiredInFlightBytes: CapabilityByteCount(rawValue: 1_920)
+        requiredInFlightBytes: CapabilityByteCount(rawValue: 2_560)
     )
     guard var endpoint = OneShotRasterBackendEndpoint(
         effectivePresentation: effective,
@@ -1781,25 +1781,25 @@ private func giftUIStaticEmbeddedEndpoint(
 ) -> StaticSignalAnalyzerNRFEmbeddedEndpoint? {
     guard let surface = Rect(
         origin: Point(x: 0, y: 0),
-        size: Size(width: 240, height: 320)!
+        size: Size(width: 320, height: 240)!
     ), let descriptor = RasterSurfaceDescriptor(
         bounds: surface, encoding: .rgb565BigEndian,
-        bytesPerRow: 480, realization: .tiled,
-        regionWidth: 240, regionHeight: 4
+        bytesPerRow: 640, realization: .tiled,
+        regionWidth: 320, regionHeight: 4
     ), let storage = StaticSignalAnalyzerNRFTileStorage(
-        region: UnsafeMutableRawBufferPointer(start: raster, count: 1_920),
-        coverage: UnsafeMutableRawBufferPointer(start: coverage, count: 120)
+        region: UnsafeMutableRawBufferPointer(start: raster, count: 2_560),
+        coverage: UnsafeMutableRawBufferPointer(start: coverage, count: 160)
     ), let target = StaticSignalAnalyzerNRFDisplayTarget(
         transport: StaticSignalAnalyzerNRFSPITFTTransport(write: write),
-        rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 1_920)
+        rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 2_560)
     ), let limits = RasterPayloadLimits(
-        maximumRasterBytes: 1_920, maximumPayloadBytes: 1_920,
+        maximumRasterBytes: 2_560, maximumPayloadBytes: 2_560,
         maximumRegionsPerPayload: 1,
         maximumRegionSubmissionsPerFrame: 11_520_000,
         maximumTileVisitsPerFrame: 12_000,
         maximumInFlightPayloads: 1,
-        maximumGlyphRasterBytes: 1_920,
-        maximumStrokeWorkspaceBytes: 1_920
+        maximumGlyphRasterBytes: 2_560,
+        maximumStrokeWorkspaceBytes: 2_560
     ), let session = StaticSignalAnalyzerNRFEmbeddedSession(
         capacity: RenderSinkCapacity(
             maximumOperations: 150, maximumPositionedGlyphs: 224
@@ -1814,18 +1814,18 @@ private func giftUIStaticEmbeddedEndpoint(
             .opaqueRectangles, .positionedText,
             .straightLineStrokes, .clipping, .damage,
         ],
-        extent: CapabilityExtent(width: 240, height: 320)!,
-        regionExtent: CapabilityExtent(width: 240, height: 4)!,
-        rowBytes: CapabilityByteCount(rawValue: 480),
+        extent: CapabilityExtent(width: 320, height: 240)!,
+        regionExtent: CapabilityExtent(width: 320, height: 4)!,
+        rowBytes: CapabilityByteCount(rawValue: 640),
         operationStream: .synchronousBorrowedOneShot,
         encoding: .rgb565BigEndian,
         submissionLifetime: .synchronousBorrow,
         handoff: .synchronous,
         realization: .tiled,
-        requiredRasterBytes: CapabilityByteCount(rawValue: 1_920),
-        requiredPayloadBytes: CapabilityByteCount(rawValue: 1_920),
+        requiredRasterBytes: CapabilityByteCount(rawValue: 2_560),
+        requiredPayloadBytes: CapabilityByteCount(rawValue: 2_560),
         inFlightCount: 1,
-        requiredInFlightBytes: CapabilityByteCount(rawValue: 1_920)
+        requiredInFlightBytes: CapabilityByteCount(rawValue: 2_560)
     )
     return StaticSignalAnalyzerNRFEmbeddedEndpoint(
         effectivePresentation: effective, descriptor: descriptor,
@@ -2358,7 +2358,7 @@ public func giftUISignalAnalyzerRegionMapValid(
 ) -> UInt32 {
     guard profile != nil, capture != nil, raster != nil, coverage != nil,
         profileBytes == 39_696, captureBytes == 115_392,
-        rasterBytes == 1_920, coverageBytes == 120
+        rasterBytes == 2_560, coverageBytes == 160
     else { return 0 }
     let valid = StaticSignalAnalyzerNRFRegionMap.validate(
         profile: UnsafeMutableRawBufferPointer(start: profile, count: Int(profileBytes)),

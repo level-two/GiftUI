@@ -26,8 +26,8 @@ package struct StaticSignalAnalyzerNRFSPITFTTransport:
         bytes: UnsafeRawBufferPointer
     ) -> Bool {
         guard pixelCount > 0,
-            x < 240, y < 320,
-            UInt32(x) + UInt32(pixelCount) <= 240,
+            x < 320, y < 240,
+            UInt32(x) + UInt32(pixelCount) <= 320,
             bytes.count == Int(pixelCount) * 2,
             let baseAddress = bytes.baseAddress
         else { return false }

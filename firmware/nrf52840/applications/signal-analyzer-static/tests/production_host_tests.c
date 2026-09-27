@@ -5,8 +5,8 @@
 
 static uint8_t profile_region[39696];
 static uint8_t capture_region[115392];
-static uint8_t raster_region[1920];
-static uint8_t coverage_region[120];
+static uint8_t raster_region[2560];
+static uint8_t coverage_region[160];
 static uint32_t revision;
 static uint32_t frame_count;
 static uint32_t poll_count;
@@ -65,7 +65,7 @@ int giftui_static_touch_pipeline_initialize(
     struct giftui_static_touch_pipeline *pipeline,
     const struct giftui_touch_calibration *calibration, uint32_t next)
 {
-    assert(calibration->logical_width == 240U);
+    assert(calibration->logical_width == 320U);
     pipeline->valid = 1U;
     touch_revision = next;
     return 0;

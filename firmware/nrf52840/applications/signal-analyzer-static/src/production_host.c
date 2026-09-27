@@ -55,8 +55,8 @@ static const struct giftui_touch_calibration touch_calibration = {
     .horizontal_maximum = 4095U,
     .vertical_minimum = 0U,
     .vertical_maximum = 4095U,
-    .logical_width = 240U,
-    .logical_height = 320U,
+    .logical_width = 320U,
+    .logical_height = 240U,
     .swap_axes = 0U,
     .invert_horizontal = 0U,
     .invert_vertical = 0U,
@@ -68,8 +68,8 @@ static int validate(void *opaque)
     if (giftui_signal_analyzer_storage_regions(&context->regions) != 0 ||
         context->regions.profile_bytes != 39696U ||
         context->regions.capture_bytes != 115392U ||
-        context->regions.raster_bytes != 1920U ||
-        context->regions.coverage_bytes != 120U) {
+        context->regions.raster_bytes != 2560U ||
+        context->regions.coverage_bytes != 160U) {
         return -EINVAL;
     }
     return 0;

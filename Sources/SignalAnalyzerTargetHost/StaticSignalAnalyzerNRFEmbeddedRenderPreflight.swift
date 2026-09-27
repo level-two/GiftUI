@@ -43,7 +43,7 @@
                 ),
                 let surface = Rect(
                     origin: Point(x: 0, y: 0),
-                    size: Size(width: 240, height: 320)!
+                    size: Size(width: 320, height: 240)!
                 )
             else { return .failure(.invariantViolation) }
             return CanvasRenderProducer.produce(
@@ -86,7 +86,7 @@
                 ),
                 let surface = Rect(
                     origin: Point(x: 0, y: 0),
-                    size: Size(width: 240, height: 320)!
+                    size: Size(width: 320, height: 240)!
                 )
             else { return .failure(.invariantViolation) }
             return CanvasRenderProducer.preflight(
@@ -128,7 +128,7 @@
                 ),
                 let surface = Rect(
                     origin: Point(x: 0, y: 0),
-                    size: Size(width: 240, height: 320)!
+                    size: Size(width: 320, height: 240)!
                 )
             else { return .failure(.invariantViolation) }
             var canvas = StaticSignalAnalyzerNRFEmptyCanvasPreflight()

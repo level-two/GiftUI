@@ -10,11 +10,11 @@ uint8_t giftui_signal_analyzer_profile_storage[GIFTUI_STATIC_PROFILE_BYTES]
 uint8_t giftui_signal_analyzer_capture_storage[GIFTUI_STATIC_CAPTURE_BYTES]
     __attribute__((aligned(8)));
 
-/* One full-width 240 x 4 RGB565 raster/payload/in-flight slot. */
+/* One full-width 320 x 4 RGB565 raster/payload/in-flight slot. */
 uint8_t giftui_signal_analyzer_raster_staging[GIFTUI_STATIC_RASTER_BYTES]
     __attribute__((aligned(8)));
 
-/* One bit per pixel in the 240 x 4 tile for touched-run emission. */
+/* One bit per pixel in the 320 x 4 tile for touched-run emission. */
 uint8_t giftui_signal_analyzer_raster_coverage[GIFTUI_STATIC_COVERAGE_BYTES]
     __attribute__((aligned(8)));
 
