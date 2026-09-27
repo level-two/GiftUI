@@ -2,7 +2,7 @@
 
 #include "ads7846.h"
 #include "giftui_fault.h"
-#include "ili9486.h"
+#include "spi_tft.h"
 #include "static_input_bridge.h"
 #include "static_host_clock.h"
 #include "static_host_scheduler.h"
@@ -109,7 +109,7 @@ int giftui_device_validation_run(void)
     bool display_initialized = false;
     printk("GiftUI target: nrf52840dk/nrf52840 + KMRTM24024-SPI geometry\n");
     printk("GiftUI transfer: 240x4 RGB565, segment<=%u bytes\n",
-           (unsigned int)ili9486_spi_segment_bytes());
+           (unsigned int)spi_tft_spi_segment_bytes());
 
     int result = giftui_signal_analyzer_input_initialize(1U);
     if (result != 0 || giftui_signal_analyzer_input_pending_count() != 0U) {
@@ -126,7 +126,7 @@ int giftui_device_validation_run(void)
         goto cleanup;
     }
     touch_initialized = true;
-    result = ili9486_initialize();
+    result = spi_tft_initialize();
     if (result != 0) {
         giftui_fault_record(GIFTUI_FAULT_DISPLAY_CONTROLLER, result);
         goto cleanup;
@@ -145,7 +145,7 @@ int giftui_device_validation_run(void)
             regions.capture, (uint32_t)regions.capture_bytes,
             regions.raster, (uint32_t)regions.raster_bytes,
             regions.coverage, (uint32_t)regions.coverage_bytes,
-            ili9486_write_rgb565) != 1U) {
+            spi_tft_write_rgb565) != 1U) {
         result = -EIO;
     }
     if (result != 0) {
@@ -211,7 +211,7 @@ cleanup:
     giftui_signal_analyzer_input_quiesce();
     giftui_signal_analyzer_retire_initial();
     if (display_initialized) {
-        const int shutdown_result = ili9486_shutdown();
+        const int shutdown_result = spi_tft_shutdown();
         if (shutdown_result != 0) {
             giftui_fault_record(
                 GIFTUI_FAULT_DISPLAY_CONTROLLER,

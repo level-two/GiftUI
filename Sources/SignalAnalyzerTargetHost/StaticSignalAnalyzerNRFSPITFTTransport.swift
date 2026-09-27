@@ -1,21 +1,21 @@
 import GiftUI
 
-/// Matches `ili9486_write_rgb565(x, y, width, height, pixels, byte_count)`.
+/// Matches `spi_tft_write_rgb565(x, y, width, height, pixels, byte_count)`.
 /// Firmware supplies that C symbol when constructing the Static host.
-package typealias StaticSignalAnalyzerNRFILI9486Write =
+package typealias StaticSignalAnalyzerNRFSPITFTWrite =
     @convention(c) (
         UInt16, UInt16, UInt16, UInt16, UnsafePointer<UInt8>?, Int
     ) -> Int32
 
-/// Keeps the hardware call synchronous and allocation-free. The ILI9486 C
+/// Keeps the hardware call synchronous and allocation-free. The SPITFT C
 /// driver owns controller state and reports transport errors through its
 /// return code and fault counters.
-package struct StaticSignalAnalyzerNRFILI9486Transport:
+package struct StaticSignalAnalyzerNRFSPITFTTransport:
     StaticSignalAnalyzerNRFDisplayTransport
 {
-    private let write: StaticSignalAnalyzerNRFILI9486Write
+    private let write: StaticSignalAnalyzerNRFSPITFTWrite
 
-    package init(write: @escaping StaticSignalAnalyzerNRFILI9486Write) {
+    package init(write: @escaping StaticSignalAnalyzerNRFSPITFTWrite) {
         self.write = write
     }
 

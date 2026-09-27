@@ -1,7 +1,7 @@
 #include <stdint.h>
 
 #include "device_validation.h"
-#include "ili9486.h"
+#include "spi_tft.h"
 #include "production_host.h"
 #include "static_host_storage.h"
 
@@ -66,7 +66,7 @@ int main(void)
     struct giftui_static_host_storage regions;
     if (giftui_signal_analyzer_static_preset() != 360515885u ||
         giftui_signal_analyzer_source_valid() != 1u ||
-        giftui_signal_analyzer_storage_bytes() != 159168u ||
+        giftui_signal_analyzer_storage_bytes() != 157128u ||
         giftui_signal_analyzer_capture_layout() != 115392u ||
         giftui_signal_analyzer_capture_roundtrip() != 1u ||
         giftui_signal_analyzer_compact_fact_valid() != 1u ||
@@ -123,8 +123,8 @@ int main(void)
         giftui_signal_analyzer_revision_failure_valid(
             regions.profile, (uint32_t)regions.profile_bytes,
             regions.capture, (uint32_t)regions.capture_bytes) != 1u ||
-        ili9486_tile_height() != 4u ||
-        ili9486_spi_segment_bytes() != 1920u) {
+        spi_tft_tile_height() != 4u ||
+        spi_tft_spi_segment_bytes() != 1920u) {
         return 1;
     }
     return giftui_production_host_run();

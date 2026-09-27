@@ -37,7 +37,7 @@ static struct giftui_touch_calibration calibration(void)
         .horizontal_maximum = 1100U,
         .vertical_minimum = 200U,
         .vertical_maximum = 2200U,
-        .logical_width = 480U,
+        .logical_width = 240U,
         .logical_height = 320U,
         .swap_axes = 0U,
         .invert_horizontal = 0U,
@@ -65,7 +65,7 @@ static void normalized_sequence_reaches_swift_bridge(void)
     assert(outcome == 0x00ff);
     assert(admission_count == 1U);
     assert(admitted_phase == GIFTUI_TOUCH_PHASE_DOWN);
-    assert(admitted_x == 239U && admitted_y == 159U);
+    assert(admitted_x == 119U && admitted_y == 159U);
     assert(admitted_revision == 17U);
     assert(admitted_prior_complete == 1U);
 
@@ -75,7 +75,7 @@ static void normalized_sequence_reaches_swift_bridge(void)
                &pipeline, 1U, &sample, &outcome) ==
            GIFTUI_STATIC_TOUCH_PIPELINE_SUBMITTED);
     assert(admitted_phase == GIFTUI_TOUCH_PHASE_MOVE);
-    assert(admitted_x == 479U && admitted_y == 319U);
+    assert(admitted_x == 239U && admitted_y == 319U);
     assert(admitted_prior_complete == 0U);
 
     assert(giftui_static_touch_pipeline_update(

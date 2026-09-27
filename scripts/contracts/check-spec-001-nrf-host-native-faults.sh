@@ -35,7 +35,7 @@ for mode in touch-startup display-startup write-initial write-next \
         input-idle | read-input | write-next)
             grep -Fq "last_frame_hash=${idle_hash}" "${trace}" ;;
         poll-after-frame) grep -Fq "last_frame_hash=${next_hash}" "${trace}" ;;
-        *) grep -Fq 'last_frame_hash=1544404854829998885' "${trace}" ;;
+        *) grep -Fq 'last_frame_hash=1225258071749886757' "${trace}" ;;
     esac
 done
 printf 'SPEC-001 nRF production-loop faults passed: seven injected paths and retained frames.\n'

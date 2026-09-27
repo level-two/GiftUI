@@ -25,7 +25,7 @@ evidence="${project_root}/Tests/ContractFixtures/SPEC001/Evidence/milestone-7"
 if [[ "${candidate_only}" == false ]]; then
     states=(idle running-four-traces stopped cleared window-one-second
         window-five-seconds window-two-seconds diagnostic)
-    expected_bytes=307200
+    expected_bytes=153600
     [[ "${target}" == pi ]] && expected_bytes=115200
     for state in "${states[@]}"; do
         reference="${references}/${target}-${state}.rgb565"
@@ -103,7 +103,7 @@ if [[ "${target}" == pi ]]; then
         | shasum -a 256 | awk '{print $1}')"
 else
     binary="${project_root}/.build/contract-generated/spec-001/nrf-host-native-rehearsal/host-native-rehearsal"
-    substitutions="ILI9486 write callback, ADS7846 callbacks, deterministic clock"
+    substitutions="direct SPI TFT write callback, ADS7846 callbacks, deterministic clock"
     diagnostic_command="GIFTUI_REHEARSAL_DIAGNOSTIC=1 ${binary}"
     source_identity="$(shasum -a 256 \
         "${project_root}/firmware/nrf52840/applications/signal-analyzer-static/src/StaticPreset.swift" \

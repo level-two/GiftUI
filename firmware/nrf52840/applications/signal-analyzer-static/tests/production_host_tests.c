@@ -5,8 +5,8 @@
 
 static uint8_t profile_region[39696];
 static uint8_t capture_region[115392];
-static uint8_t raster_region[3840];
-static uint8_t coverage_region[240];
+static uint8_t raster_region[1920];
+static uint8_t coverage_region[120];
 static uint32_t revision;
 static uint32_t frame_count;
 static uint32_t poll_count;
@@ -29,9 +29,9 @@ int ads7846_read_raw(struct ads7846_raw_sample *sample)
     (void)sample;
     return -EIO;
 }
-int ili9486_initialize(void) { return 0; }
-int ili9486_shutdown(void) { return 0; }
-int ili9486_write_rgb565(uint16_t x, uint16_t y, uint16_t width,
+int spi_tft_initialize(void) { return 0; }
+int spi_tft_shutdown(void) { return 0; }
+int spi_tft_write_rgb565(uint16_t x, uint16_t y, uint16_t width,
                           uint16_t height, const uint8_t *pixels,
                           size_t byte_count)
 {
@@ -65,7 +65,7 @@ int giftui_static_touch_pipeline_initialize(
     struct giftui_static_touch_pipeline *pipeline,
     const struct giftui_touch_calibration *calibration, uint32_t next)
 {
-    assert(calibration->logical_width == 480U);
+    assert(calibration->logical_width == 240U);
     pipeline->valid = 1U;
     touch_revision = next;
     return 0;
@@ -98,7 +98,7 @@ uint32_t giftui_signal_analyzer_present_initial(
 {
     (void)profile; (void)profile_bytes; (void)capture; (void)capture_bytes;
     (void)raster; (void)raster_bytes; (void)coverage; (void)coverage_bytes;
-    assert(write == ili9486_write_rgb565);
+    assert(write == spi_tft_write_rgb565);
     if (refuse_initial != 0) { return 0U; }
     revision = 1U;
     frame_count++;
@@ -112,7 +112,7 @@ uint32_t giftui_signal_analyzer_present_next(
 {
     (void)profile; (void)profile_bytes; (void)capture; (void)capture_bytes;
     (void)raster; (void)raster_bytes; (void)coverage; (void)coverage_bytes;
-    assert(write == ili9486_write_rgb565);
+    assert(write == spi_tft_write_rgb565);
     if (refuse_next != 0) { return 0U; }
     revision++;
     frame_count++;

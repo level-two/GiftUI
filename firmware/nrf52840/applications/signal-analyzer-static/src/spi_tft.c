@@ -1,53 +1,51 @@
-#include "ili9486.h"
+#include "spi_tft.h"
 #include "giftui_fault.h"
 
 #include <errno.h>
 #include <stdbool.h>
-#include <string.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/spi.h>
 #include <zephyr/kernel.h>
 #include <zephyr/sys/util.h>
 
-#define ILI9486_NODE DT_ALIAS(giftui_ili9486)
+#define SPI_TFT_NODE DT_ALIAS(giftui_spi_tft)
 
-#define ILI9486_SWRESET 0x01U
-#define ILI9486_SLPOUT 0x11U
-#define ILI9486_DISPOFF 0x28U
-#define ILI9486_DISPON 0x29U
-#define ILI9486_CASET 0x2AU
-#define ILI9486_PASET 0x2BU
-#define ILI9486_RAMWR 0x2CU
-#define ILI9486_MADCTL 0x36U
-#define ILI9486_PIXFMT 0x3AU
+#define SPI_TFT_SWRESET 0x01U
+#define SPI_TFT_SLPOUT 0x11U
+#define SPI_TFT_DISPOFF 0x28U
+#define SPI_TFT_DISPON 0x29U
+#define SPI_TFT_CASET 0x2AU
+#define SPI_TFT_PASET 0x2BU
+#define SPI_TFT_RAMWR 0x2CU
+#define SPI_TFT_MADCTL 0x36U
+#define SPI_TFT_PIXFMT 0x3AU
 
-#define ILI9486_MAX_COMMAND_PARAMETERS 16U
+#define SPI_TFT_MAX_COMMAND_PARAMETERS 16U
 
-#define ILI9486_MADCTL_MV BIT(5)
-#define ILI9486_MADCTL_BGR BIT(3)
-#define ILI9486_RGB565_FORMAT 0x55U
+#define SPI_TFT_MADCTL_BGR BIT(3)
+#define SPI_TFT_RGB565_FORMAT 0x55U
 
 static const struct spi_dt_spec display_spi = SPI_DT_SPEC_GET(
-    ILI9486_NODE,
+    SPI_TFT_NODE,
     SPI_OP_MODE_MASTER | SPI_WORD_SET(8) | SPI_TRANSFER_MSB);
 static const struct gpio_dt_spec display_dc =
-    GPIO_DT_SPEC_GET(ILI9486_NODE, dc_gpios);
+    GPIO_DT_SPEC_GET(SPI_TFT_NODE, dc_gpios);
 static const struct gpio_dt_spec display_reset =
-    GPIO_DT_SPEC_GET(ILI9486_NODE, reset_gpios);
+    GPIO_DT_SPEC_GET(SPI_TFT_NODE, reset_gpios);
 static uint8_t pixel_scratch[
-    (GIFTUI_ILI9486_WIDTH / 8U) * GIFTUI_ILI9486_TILE_HEIGHT *
-    GIFTUI_ILI9486_BYTES_PER_PIXEL];
+    (GIFTUI_SPI_TFT_WIDTH / 8U) * GIFTUI_SPI_TFT_TILE_HEIGHT *
+    GIFTUI_SPI_TFT_BYTES_PER_PIXEL];
 static bool display_initialized;
 
-BUILD_ASSERT(GIFTUI_ILI9486_SPI_SEGMENT_BYTES > 0U);
+BUILD_ASSERT(GIFTUI_SPI_TFT_SPI_SEGMENT_BYTES > 0U);
 BUILD_ASSERT(
-    GIFTUI_ILI9486_SPI_SEGMENT_BYTES % GIFTUI_ILI9486_BYTES_PER_PIXEL == 0U);
+    GIFTUI_SPI_TFT_SPI_SEGMENT_BYTES % GIFTUI_SPI_TFT_BYTES_PER_PIXEL == 0U);
 BUILD_ASSERT(
-    GIFTUI_ILI9486_SPI_SEGMENT_BYTES <= GIFTUI_ILI9486_MAX_TRANSFER_BYTES);
+    GIFTUI_SPI_TFT_SPI_SEGMENT_BYTES <= GIFTUI_SPI_TFT_MAX_TRANSFER_BYTES);
 
-#if DT_NODE_HAS_PROP(ILI9486_NODE, backlight_gpios)
+#if DT_NODE_HAS_PROP(SPI_TFT_NODE, backlight_gpios)
 static const struct gpio_dt_spec display_backlight =
-    GPIO_DT_SPEC_GET(ILI9486_NODE, backlight_gpios);
+    GPIO_DT_SPEC_GET(SPI_TFT_NODE, backlight_gpios);
 #endif
 
 static int write_bytes(const uint8_t *bytes, size_t byte_count)
@@ -68,35 +66,12 @@ static int write_bytes(const uint8_t *bytes, size_t byte_count)
     return result;
 }
 
-/*
- * PiScreen and Waveshare rpi-lcd-35 boards place a serial-to-16-bit-parallel
- * converter in front of the ILI9486. Commands and 8-bit register parameters
- * must therefore be clocked as 16-bit values with a zero high byte. RGB565
- * pixel payloads are already complete 16-bit parallel values and must not be
- * expanded here.
- */
-static int write_parallel_register_bytes(const uint8_t *bytes,
-                                         size_t byte_count)
-{
-    if (byte_count > ILI9486_MAX_COMMAND_PARAMETERS) {
-        giftui_fault_record(GIFTUI_FAULT_CAPACITY, -EMSGSIZE);
-        return -EMSGSIZE;
-    }
-
-    uint8_t framed[ILI9486_MAX_COMMAND_PARAMETERS * 2U];
-    for (size_t index = 0U; index < byte_count; ++index) {
-        framed[index * 2U] = 0U;
-        framed[index * 2U + 1U] = bytes[index];
-    }
-    return write_bytes(framed, byte_count * 2U);
-}
-
 static int write_pixel_segments(const uint8_t *bytes, size_t byte_count)
 {
     size_t offset = 0U;
     while (offset < byte_count) {
         const size_t segment_byte_count = MIN(
-            (size_t)GIFTUI_ILI9486_SPI_SEGMENT_BYTES,
+            (size_t)GIFTUI_SPI_TFT_SPI_SEGMENT_BYTES,
             byte_count - offset);
         const int result = write_bytes(bytes + offset, segment_byte_count);
         if (result != 0) {
@@ -111,11 +86,16 @@ static int write_command(uint8_t command,
                          const uint8_t *parameters,
                          size_t parameter_count)
 {
+    if (parameter_count > SPI_TFT_MAX_COMMAND_PARAMETERS ||
+        (parameter_count > 0U && parameters == NULL)) {
+        giftui_fault_record(GIFTUI_FAULT_CAPACITY, -EMSGSIZE);
+        return -EMSGSIZE;
+    }
     int result = gpio_pin_set_dt(&display_dc, 0);
     if (result != 0) {
         return result;
     }
-    result = write_parallel_register_bytes(&command, sizeof(command));
+    result = write_bytes(&command, sizeof(command));
     if (result != 0 || parameter_count == 0U) {
         return result;
     }
@@ -124,7 +104,7 @@ static int write_command(uint8_t command,
     if (result != 0) {
         return result;
     }
-    return write_parallel_register_bytes(parameters, parameter_count);
+    return write_bytes(parameters, parameter_count);
 }
 
 static int configure_safe_state(void)
@@ -155,7 +135,7 @@ static int configure_safe_state(void)
         return result;
     }
 
-#if DT_NODE_HAS_PROP(ILI9486_NODE, backlight_gpios)
+#if DT_NODE_HAS_PROP(SPI_TFT_NODE, backlight_gpios)
     if (!gpio_is_ready_dt(&display_backlight)) {
         return -ENODEV;
     }
@@ -190,23 +170,23 @@ static int set_address_window(uint16_t x,
         (uint8_t)end_y,
     };
 
-    int result = write_command(ILI9486_CASET, columns, sizeof(columns));
+    int result = write_command(SPI_TFT_CASET, columns, sizeof(columns));
     if (result != 0) {
         return result;
     }
-    result = write_command(ILI9486_PASET, pages, sizeof(pages));
+    result = write_command(SPI_TFT_PASET, pages, sizeof(pages));
     if (result != 0) {
         return result;
     }
-    return write_command(ILI9486_RAMWR, NULL, 0U);
+    return write_command(SPI_TFT_RAMWR, NULL, 0U);
 }
 
-int ili9486_initialize(void)
+int spi_tft_initialize(void)
 {
     int result = configure_safe_state();
     if (result != 0) {
         if (result != -ENODEV) {
-            (void)ili9486_shutdown();
+            (void)spi_tft_shutdown();
         }
         return result;
     }
@@ -218,43 +198,43 @@ int ili9486_initialize(void)
     }
     k_msleep(120);
 
-    result = write_command(ILI9486_SWRESET, NULL, 0U);
+    result = write_command(SPI_TFT_SWRESET, NULL, 0U);
     if (result != 0) {
         goto fail;
     }
     k_msleep(120);
 
-    result = write_command(ILI9486_DISPOFF, NULL, 0U);
+    result = write_command(SPI_TFT_DISPOFF, NULL, 0U);
     if (result != 0) {
         goto fail;
     }
 
-    const uint8_t pixel_format = ILI9486_RGB565_FORMAT;
-    result = write_command(ILI9486_PIXFMT, &pixel_format, 1U);
+    const uint8_t pixel_format = SPI_TFT_RGB565_FORMAT;
+    result = write_command(SPI_TFT_PIXFMT, &pixel_format, 1U);
     if (result != 0) {
         goto fail;
     }
 
-    /* Geometry-only staging; controller identity and orientation remain unverified. */
-    const uint8_t memory_access = ILI9486_MADCTL_BGR;
-    result = write_command(ILI9486_MADCTL, &memory_access, 1U);
+    /* Candidate portrait BGR setting; verify the controller and orientation on hardware. */
+    const uint8_t memory_access = SPI_TFT_MADCTL_BGR;
+    result = write_command(SPI_TFT_MADCTL, &memory_access, 1U);
     if (result != 0) {
         goto fail;
     }
 
-    result = write_command(ILI9486_SLPOUT, NULL, 0U);
+    result = write_command(SPI_TFT_SLPOUT, NULL, 0U);
     if (result != 0) {
         goto fail;
     }
     k_msleep(120);
 
-    result = write_command(ILI9486_DISPON, NULL, 0U);
+    result = write_command(SPI_TFT_DISPON, NULL, 0U);
     if (result != 0) {
         goto fail;
     }
     k_msleep(20);
 
-#if DT_NODE_HAS_PROP(ILI9486_NODE, backlight_gpios)
+#if DT_NODE_HAS_PROP(SPI_TFT_NODE, backlight_gpios)
     result = gpio_pin_set_dt(&display_backlight, 1);
     if (result != 0) {
         goto fail;
@@ -265,17 +245,17 @@ int ili9486_initialize(void)
     return 0;
 
 fail:
-    (void)ili9486_shutdown();
+    (void)spi_tft_shutdown();
     return result;
 }
 
-int ili9486_shutdown(void)
+int spi_tft_shutdown(void)
 {
     int result = 0;
     if (display_initialized) {
-        result = write_command(ILI9486_DISPOFF, NULL, 0U);
+        result = write_command(SPI_TFT_DISPOFF, NULL, 0U);
     }
-#if DT_NODE_HAS_PROP(ILI9486_NODE, backlight_gpios)
+#if DT_NODE_HAS_PROP(SPI_TFT_NODE, backlight_gpios)
     const int backlight_result = gpio_pin_set_dt(&display_backlight, 0);
     if (result == 0) {
         result = backlight_result;
@@ -301,17 +281,17 @@ int ili9486_shutdown(void)
     return result;
 }
 
-uint16_t ili9486_tile_height(void)
+uint16_t spi_tft_tile_height(void)
 {
-    return GIFTUI_ILI9486_TILE_HEIGHT;
+    return GIFTUI_SPI_TFT_TILE_HEIGHT;
 }
 
-size_t ili9486_spi_segment_bytes(void)
+size_t spi_tft_spi_segment_bytes(void)
 {
-    return GIFTUI_ILI9486_SPI_SEGMENT_BYTES;
+    return GIFTUI_SPI_TFT_SPI_SEGMENT_BYTES;
 }
 
-int ili9486_write_rgb565(uint16_t x,
+int spi_tft_write_rgb565(uint16_t x,
                          uint16_t y,
                          uint16_t width,
                          uint16_t height,
@@ -319,17 +299,17 @@ int ili9486_write_rgb565(uint16_t x,
                          size_t byte_count)
 {
     if (pixels == NULL || width == 0U || height == 0U ||
-        x >= GIFTUI_ILI9486_WIDTH || y >= GIFTUI_ILI9486_HEIGHT ||
-        width > GIFTUI_ILI9486_WIDTH - x ||
-        height > GIFTUI_ILI9486_HEIGHT - y) {
+        x >= GIFTUI_SPI_TFT_WIDTH || y >= GIFTUI_SPI_TFT_HEIGHT ||
+        width > GIFTUI_SPI_TFT_WIDTH - x ||
+        height > GIFTUI_SPI_TFT_HEIGHT - y) {
         giftui_fault_record(GIFTUI_FAULT_CAPACITY, -EINVAL);
         return -EINVAL;
     }
 
     const size_t expected_byte_count =
-        (size_t)width * height * GIFTUI_ILI9486_BYTES_PER_PIXEL;
+        (size_t)width * height * GIFTUI_SPI_TFT_BYTES_PER_PIXEL;
     if (byte_count != expected_byte_count ||
-        byte_count > GIFTUI_ILI9486_MAX_TRANSFER_BYTES) {
+        byte_count > GIFTUI_SPI_TFT_MAX_TRANSFER_BYTES) {
         giftui_fault_record(GIFTUI_FAULT_CAPACITY, -EMSGSIZE);
         return -EMSGSIZE;
     }
@@ -345,16 +325,16 @@ int ili9486_write_rgb565(uint16_t x,
     return write_pixel_segments(pixels, byte_count);
 }
 
-int ili9486_fill_rgb565(uint16_t x,
+int spi_tft_fill_rgb565(uint16_t x,
                         uint16_t y,
                         uint16_t width,
                         uint16_t height,
                         uint16_t pixel)
 {
     if (width == 0U || height == 0U ||
-        x >= GIFTUI_ILI9486_WIDTH || y >= GIFTUI_ILI9486_HEIGHT ||
-        width > GIFTUI_ILI9486_WIDTH - x ||
-        height > GIFTUI_ILI9486_HEIGHT - y) {
+        x >= GIFTUI_SPI_TFT_WIDTH || y >= GIFTUI_SPI_TFT_HEIGHT ||
+        width > GIFTUI_SPI_TFT_WIDTH - x ||
+        height > GIFTUI_SPI_TFT_HEIGHT - y) {
         giftui_fault_record(GIFTUI_FAULT_CAPACITY, -EINVAL);
         return -EINVAL;
     }
@@ -374,7 +354,7 @@ int ili9486_fill_rgb565(uint16_t x,
     }
 
     size_t remaining =
-        (size_t)width * height * GIFTUI_ILI9486_BYTES_PER_PIXEL;
+        (size_t)width * height * GIFTUI_SPI_TFT_BYTES_PER_PIXEL;
     while (remaining > 0U) {
         const size_t byte_count = MIN(remaining, sizeof(pixel_scratch));
         result = write_pixel_segments(pixel_scratch, byte_count);
@@ -386,7 +366,7 @@ int ili9486_fill_rgb565(uint16_t x,
     return 0;
 }
 
-int ili9486_render_color_bars(void)
+int spi_tft_render_color_bars(void)
 {
     static const uint16_t colors[] = {
         0xF800U,
@@ -398,14 +378,14 @@ int ili9486_render_color_bars(void)
         0xFFFFU,
         0x0000U,
     };
-    const uint16_t bar_width = GIFTUI_ILI9486_WIDTH / ARRAY_SIZE(colors);
+    const uint16_t bar_width = GIFTUI_SPI_TFT_WIDTH / ARRAY_SIZE(colors);
 
     for (uint16_t bar = 0U; bar < ARRAY_SIZE(colors); ++bar) {
-        const int result = ili9486_fill_rgb565(
+        const int result = spi_tft_fill_rgb565(
             bar * bar_width,
             0U,
             bar_width,
-            GIFTUI_ILI9486_HEIGHT,
+            GIFTUI_SPI_TFT_HEIGHT,
             colors[bar]);
         if (result != 0) {
             return result;

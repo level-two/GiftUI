@@ -67,7 +67,7 @@ target_sources(app PRIVATE
     src/ads7846.c
     src/device_validation.c
     src/fault.c
-    src/ili9486.c
+    src/spi_tft.c
     src/main.c
     src/production_host.c
     src/static_input_bridge.c
@@ -100,7 +100,7 @@ set(giftui_static_swift_inputs
     "${giftui_project_root}/Sources/GiftUIFailureCore/GiftUIFailureCore.swift"
     "${giftui_project_root}/Sources/GiftUIDisplayCore/DisplayContracts.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDisplayTarget.swift"
-    "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFILI9486Transport.swift"
+    "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFSPITFTTransport.swift"
     "${giftui_project_root}/Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift"
     "${giftui_project_root}/Sources/GiftUIBackendIntegration/RasterFrameWorkAdmission.swift"
     "${giftui_project_root}/Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift"

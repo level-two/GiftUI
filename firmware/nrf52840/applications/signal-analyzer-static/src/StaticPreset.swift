@@ -1469,18 +1469,18 @@ public func giftUISignalAnalyzerTileValid(
             with: CanonicalEncodedPixel(color: .white, encoding: .rgb565BigEndian)
         ),
         tile.replacePixel(
-            at: Point(x: 479, y: 3),
+            at: Point(x: 239, y: 3),
             with: CanonicalEncodedPixel(color: .black, encoding: .rgb565BigEndian)
         ),
         tile.storage.byte(at: 0) == 0xff,
         tile.storage.byte(at: 1) == 0xff,
         tile.storage.isAffected(pixelIndex: 0),
-        tile.storage.isAffected(pixelIndex: 1_919),
-        !tile.storage.isAffected(pixelIndex: 1_918),
+        tile.storage.isAffected(pixelIndex: 959),
+        !tile.storage.isAffected(pixelIndex: 958),
         tile.finishTile(),
         tile.beginTile(second),
         !tile.storage.isAffected(pixelIndex: 0),
-        !tile.storage.isAffected(pixelIndex: 1_919),
+        !tile.storage.isAffected(pixelIndex: 959),
         tile.storage.byte(at: 0) == 0,
         tile.storage.byte(at: 1) == 0
     else { return 0 }
@@ -1496,7 +1496,7 @@ public func giftUISignalAnalyzerTileValid(
         ) { point, pixel in tile.replacePixel(at: point, with: pixel) }
     guard fillResult == .completed(pixelCount: 6),
         tile.storage.isAffected(pixelIndex: 1),
-        tile.storage.isAffected(pixelIndex: 483),
+        tile.storage.isAffected(pixelIndex: 243),
         !tile.storage.isAffected(pixelIndex: 0),
         tile.storage.byte(at: 2) == 0xff,
         tile.storage.byte(at: 3) == 0xff
@@ -1547,7 +1547,7 @@ public func giftUISignalAnalyzerTileValid(
         },
         { workspace in
             guard workspace.storage.isAffected(pixelIndex: 0),
-                workspace.storage.isAffected(pixelIndex: 481),
+                workspace.storage.isAffected(pixelIndex: 241),
                 let emitted = StaticSignalAnalyzerNRFEmbeddedTileRuns.emit(
                     workspace,
                     { x, y, pixels, bytes in
@@ -1569,7 +1569,7 @@ public func giftUISignalAnalyzerTileValid(
         consumedRuns == 2,
         tile.activeTile == nil
     else { return 0 }
-    let transport = StaticSignalAnalyzerNRFILI9486Transport(
+    let transport = StaticSignalAnalyzerNRFSPITFTTransport(
         write: giftUISignalAnalyzerProbeRGB565
     )
     guard var target = StaticSignalAnalyzerNRFDisplayTarget(
@@ -1600,7 +1600,7 @@ public func giftUISignalAnalyzerTileValid(
         target.submitPayload(reservation) == .completed,
         target.finishFrame(reservation) == .completed
     else { return 0 }
-    let refusingTransport = StaticSignalAnalyzerNRFILI9486Transport(
+    let refusingTransport = StaticSignalAnalyzerNRFSPITFTTransport(
         write: giftUISignalAnalyzerRefuseRGB565
     )
     guard var refusingTarget = StaticSignalAnalyzerNRFDisplayTarget(
@@ -1638,7 +1638,7 @@ public func giftUISignalAnalyzerTileValid(
         ) == .nonRetryableRefusal
     else { return 0 }
     guard let sessionTarget = StaticSignalAnalyzerNRFDisplayTarget(
-        transport: StaticSignalAnalyzerNRFILI9486Transport(
+        transport: StaticSignalAnalyzerNRFSPITFTTransport(
             write: giftUISignalAnalyzerProbeRGB565
         ), rasterRegion: UnsafeMutableRawBufferPointer(
             start: raster, count: Int(rasterBytes)
@@ -1755,7 +1755,7 @@ public func giftUISignalAnalyzerTileValid(
 }
 
 private typealias StaticSignalAnalyzerNRFEmbeddedDisplay =
-    StaticSignalAnalyzerNRFDisplayTarget<StaticSignalAnalyzerNRFILI9486Transport>
+    StaticSignalAnalyzerNRFDisplayTarget<StaticSignalAnalyzerNRFSPITFTTransport>
 
 private typealias StaticSignalAnalyzerNRFEmbeddedSession =
     OperationMajorRGB565RasterSession<
@@ -1790,7 +1790,7 @@ private func giftUIStaticEmbeddedEndpoint(
         region: UnsafeMutableRawBufferPointer(start: raster, count: 1_920),
         coverage: UnsafeMutableRawBufferPointer(start: coverage, count: 120)
     ), let target = StaticSignalAnalyzerNRFDisplayTarget(
-        transport: StaticSignalAnalyzerNRFILI9486Transport(write: write),
+        transport: StaticSignalAnalyzerNRFSPITFTTransport(write: write),
         rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 1_920)
     ), let limits = RasterPayloadLimits(
         maximumRasterBytes: 1_920, maximumPayloadBytes: 1_920,

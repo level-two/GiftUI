@@ -12,7 +12,7 @@ static struct giftui_touch_calibration calibration(void)
         .horizontal_maximum = 1100U,
         .vertical_minimum = 200U,
         .vertical_maximum = 2200U,
-        .logical_width = 480U,
+        .logical_width = 240U,
         .logical_height = 320U,
         .swap_axes = 0U,
         .invert_horizontal = 0U,
@@ -44,11 +44,11 @@ static void ordered_contact_sequence(void)
     assert(giftui_touch_input_update(&input, 1U, &sample, &contact) ==
            GIFTUI_TOUCH_UPDATE_EVENT);
     assert(contact.phase == GIFTUI_TOUCH_PHASE_MOVE);
-    assert(contact.x == 239U && contact.y == 159U);
+    assert(contact.x == 119U && contact.y == 159U);
     assert(giftui_touch_input_update(&input, 0U, NULL, &contact) ==
            GIFTUI_TOUCH_UPDATE_EVENT);
     assert(contact.phase == GIFTUI_TOUCH_PHASE_UP);
-    assert(contact.x == 239U && contact.y == 159U);
+    assert(contact.x == 119U && contact.y == 159U);
     assert(giftui_touch_input_update(&input, 0U, NULL, &contact) ==
            GIFTUI_TOUCH_UPDATE_NONE);
 }
@@ -71,7 +71,7 @@ static void orientation_and_bounds(void)
     assert(giftui_touch_input_update(&input, 1U, &sample, &contact) ==
            GIFTUI_TOUCH_UPDATE_EVENT);
     assert(contact.phase == GIFTUI_TOUCH_PHASE_DOWN);
-    assert(contact.x == 479U && contact.y == 319U);
+    assert(contact.x == 239U && contact.y == 319U);
 
     sample.x = 2200U;
     sample.y = 1100U;

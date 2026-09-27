@@ -1,0 +1,28 @@
+title: GiftUI project-local KMRTM24024-SPI direct-SPI display
+
+description: |
+  Hardware bring-up binding for the 240 x 320 KMRTM24024-SPI module. Commands,
+  parameters, and RGB565 pixel bytes use native 8-bit SPI transfers. The
+  application owns bounded transfers. The exact controller and electrical
+  wiring require connected validation.
+
+compatible: "giftui,spi-tft"
+
+include: spi-device.yaml
+
+properties:
+  dc-gpios:
+    type: phandle-array
+    required: true
+    description: Command/data select; active means pixel or command data.
+
+  reset-gpios:
+    type: phandle-array
+    required: true
+    description: Active-low controller hardware reset.
+
+  backlight-gpios:
+    type: phandle-array
+    description: |
+      Optional verified backlight enable. Omit until the module's backlight
+      polarity and drive circuit have been confirmed on the exact board.

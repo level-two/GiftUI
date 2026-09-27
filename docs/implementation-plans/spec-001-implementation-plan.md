@@ -61,11 +61,22 @@ and the preset runner; controller-specific firmware and connected validation
 remain separate steps.
 
 The firmware Static preset and caller-owned display regions also use the new
-geometry. A hardware-free `signal-analyzer-static` build linked with 194,240
-bytes of RAM and 235,620 bytes of flash and passed its symbol-size and
-ARMv7E-M/VFP checks. This is a geometry staging build: its existing ILI9486
-bridge command path is still present and cannot drive the connected module
-correctly. It is not a connected-image or display-conformance result.
+geometry. The display path now sends command and parameter bytes directly over
+8-bit SPI and has a module-neutral binding and C/Swift transport name; the
+PiScreen serial-to-parallel byte expansion is gone. The hardware-free
+`signal-analyzer-static` build linked with 194,240 bytes of RAM and 241,460
+bytes of flash and passed its symbol-size and ARMv7E-M/VFP checks. The
+initialization uses a minimal DCS-compatible portrait candidate. Exact
+controller identity, wiring, backlight, touch behavior, and orientation still
+require the connected diagnostic before this can be claimed as a working
+display or connected conformance result.
+
+The 240 x 320 host-native capture now renders the full title, subtitle,
+status, ruler, four channel rows, controls, traces, and visible diagnostic.
+Direct-SPI transport, touch normalization, full layout, production-loop fault,
+and raster candidate checks pass. The revised eight-state PNG set remains a
+candidate under the existing independent pixel-review gate; no RGB565
+reference has been promoted.
 
 ## Authority and Scope
 

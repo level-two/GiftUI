@@ -1,7 +1,7 @@
 #include "production_host.h"
 
 #include "ads7846.h"
-#include "ili9486.h"
+#include "spi_tft.h"
 #include "static_host_clock.h"
 #include "static_host_lifecycle.h"
 #include "static_host_storage.h"
@@ -85,7 +85,7 @@ static int activate(void *opaque)
             regions->capture, (uint32_t)regions->capture_bytes,
             regions->raster, (uint32_t)regions->raster_bytes,
             regions->coverage, (uint32_t)regions->coverage_bytes,
-            ili9486_write_rgb565) != 1U ||
+            spi_tft_write_rgb565) != 1U ||
         giftui_signal_analyzer_input_install_presentation(1U) != 0 ||
         giftui_static_touch_pipeline_initialize(
             &context->touch, &touch_calibration, 1U) != 0) {
@@ -171,7 +171,7 @@ static int service(void *opaque, uint64_t now,
                 regions->capture, (uint32_t)regions->capture_bytes,
                 regions->raster, (uint32_t)regions->raster_bytes,
                 regions->coverage, (uint32_t)regions->coverage_bytes,
-                ili9486_write_rgb565) != 1U ||
+                spi_tft_write_rgb565) != 1U ||
             giftui_static_touch_pipeline_present(
                 &context->touch,
                 giftui_signal_analyzer_current_revision()) != 0) {
@@ -217,9 +217,9 @@ int giftui_production_host_run(void)
 {
     const struct giftui_static_host_lifecycle_hal hal = {
         .touch_initialize = ads7846_initialize,
-        .display_initialize = ili9486_initialize,
+        .display_initialize = spi_tft_initialize,
         .touch_poll = touch_poll,
-        .display_shutdown = ili9486_shutdown,
+        .display_shutdown = spi_tft_shutdown,
         .touch_shutdown = ads7846_shutdown,
         .scheduler = {
             .now_microseconds = giftui_static_host_clock_now,
