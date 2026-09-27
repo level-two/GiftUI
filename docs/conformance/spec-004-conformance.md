@@ -21,8 +21,11 @@ superseded_by: null
 
 The approved nRF fixture is now 320×240, 320×4 RGB565, and 2,560 bytes per
 borrowed tile. Updated exact capability fixtures and the nRF SPEC-004 profile
-pass. Connected resource and display behavior remain open under SPEC-001. The
-240×320 follow-up and original review below are historical.
+pass. The maintainer's
+[connected photograph](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/nrf52840-320x240-connected-landscape.jpg)
+confirms a visible landscape idle image; sustained connected resource and
+display behavior remain open under SPEC-001. The 240×320 follow-up and
+original review below are historical.
 
 > This report records evidence. It does not authorize the governing
 > Specification's `implemented` transition.

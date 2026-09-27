@@ -38,12 +38,12 @@ landscape surface, 320×4 RGB565 tiles, 640-byte rows, 2,560-byte
 raster/payload/in-flight limits, and 160-byte tile coverage. The code and
 cross-build are committed at `37b08184`; the
 [landscape candidate evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/nrf52840-320x240-landscape-candidate.md)
-records the flash and host-native raster. The 240×320 sequence below is
-historical.
+records the flash, host-native raster, and maintainer's visual confirmation of
+horizontal, non-mirrored output. The 240×320 sequence below is historical.
 
 Finish the 320×240 fixture and four-profile contract updates, resolve the
 host-native long diagnostic clipping, review new pixel references,
-and repeat connected visual, touch, cadence, and resource checks. The shared
+and repeat connected touch, cadence, and resource checks. The shared
 root layout now exposes both control rows in the host-native raster. Until the
 diagnostic and all six controls are visible and responsive on the physical
 panel, `T8.2` and the affected acceptance criteria remain open.

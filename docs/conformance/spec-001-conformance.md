@@ -20,13 +20,14 @@ superseded_by: null
 
 The [320×240 candidate](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/nrf52840-320x240-landscape-candidate.md)
 has a passing cross-build and host-native raster rehearsal and was flashed to
-the connected nRF52840-DK. The earlier photograph proves panel output but
-shows the portrait image mirrored. A photograph or equivalent observation of
-the new landscape firmware is still pending. The latest host-native raster
-shows both control rows and the short error label but clips longer failure
-diagnostics; pixel
-review, all six physical controls, touch, and the connected criteria remain
-blocked. The older review below applies to its stated target.
+the connected nRF52840-DK. The maintainer's
+[connected photograph](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/nrf52840-320x240-connected-landscape.jpg)
+confirms a horizontal, readable, non-mirrored idle image with four channels,
+both control rows, and no visible white strip. The host-native raster clips
+longer failure diagnostics. Pixel reference review, physical control actions,
+touch calibration, cadence, and resource high-water remain open; the connected
+criteria are still blocked. The older review below applies to its stated
+target.
 
 > This report records evidence. It does not authorize the governing
 > Specification's `implemented` transition.

@@ -21,8 +21,9 @@ superseded_by: null
 The approved nRF preset and generated workload now use 320×240 with a 320×4
 RGB565 tile and 2,560-byte raster, payload, and in-flight limits. Generator
 freshness and the [four-preset comparison](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-6/320x240-four-preset-comparison.md)
-pass. The old 240×320 comparison below is historical. Connected
-display and input evidence remains open.
+pass. A [connected photograph](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/nrf52840-320x240-connected-landscape.jpg)
+confirms a visible landscape idle frame. Input and sustained connected-host
+evidence remain open. The old 240×320 comparison below is historical.
 
 > This report records evidence. It does not authorize the governing
 > Specification's `implemented` transition.

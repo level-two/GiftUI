@@ -22,8 +22,11 @@ superseded_by: null
 The [320×240 nRF cross-build](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/nrf52840-320x240-cross-build.md)
 passes its capability fixture, hard-float link, and tile/resource collector.
 The aggregate driver still has unrelated Raspberry Pi migration, module-edge,
-and plan-status failures. Connected display and resource high-water evidence
-is open. The older target reviews below do not establish landscape conformance.
+and plan-status failures. The maintainer's
+[connected photograph](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/nrf52840-320x240-connected-landscape.jpg)
+confirms a visible landscape idle frame. Frame cadence, touch, failure
+presentation, and resource high-water remain open. The older target reviews
+below do not establish landscape conformance.
 
 > This report records evidence. It does not authorize the governing
 > Specification's `implemented` transition.

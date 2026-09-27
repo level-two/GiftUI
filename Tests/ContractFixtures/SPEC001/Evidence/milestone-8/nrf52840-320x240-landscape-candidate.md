@@ -35,8 +35,14 @@ its HEX SHA-256 is
 `67fef78c96844fe6530d0e25d0b765ce3c8d16b3945be20a77c79ea2000d9211`.
 That HEX was flashed through `scripts/nrf52840/flash.sh --application
 signal-analyzer-static --no-build` with the J-Link runner. The board reset
-after flashing. A fresh physical photograph is still needed to confirm
-orientation and mirror correction on the panel.
+after flashing. The maintainer then supplied the
+[connected landscape photograph](nrf52840-320x240-connected-landscape.jpg).
+It shows a horizontal image with left-to-right title, ruler, channel, and
+control text. The horizontal mirroring seen in the earlier portrait photograph
+is absent. All four channel rows and the six `Start`, `Stop`, `Clear`, `1 s`,
+`2 s`, and `5 s` control labels are visible. The earlier white strip is absent
+from the visible panel area. This confirms orientation and the static idle
+presentation, not touch or frame cadence.
 
 A later read-only J-Link snapshot on probe `683833660` reported 3.300 V and
 halted the Cortex-M4 in thread mode (`IPSR=0`). The display driver's
@@ -46,7 +52,7 @@ core was resumed with `g`. This confirms initialization and absence of
 recorded faults at the snapshot, but cannot establish visual orientation,
 touch behavior, or display cadence.
 
-Physical verification of the new orientation, readable text, full-panel clear,
-touch alignment, all six controls, frame cadence, and stack high water remains
-open pending a new connected observation. No connected conformance claim or
-`implemented` transition follows from this candidate.
+Physical touch alignment, all six control actions, frame cadence, failure
+presentation, and stack high water remain open. The long-diagnostic clipping
+also remains unresolved in the host-native candidate. No full connected
+conformance claim or `implemented` transition follows from this visual check.
